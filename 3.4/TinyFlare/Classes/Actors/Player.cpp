@@ -8,23 +8,28 @@
 
 #include "Player.h"
 #include "ActorsManager.h"
+#include "ParticleSystemHelper.h"
 USING_NS_CC;
 
 Player::Player()
 {
     m_type = AT_PLAYER;
     m_bScheduledFire = false;
-    m_fMaxSpeed = 10.0f;
+    m_fMaxSpeed = 8.0f;
     m_fAccel = 20.0f;
-    m_fDecel = -1.0f;
     m_pMaskModel = nullptr;
     m_WeaponType = WT_NORMAL;
+    m_pLeftTail = nullptr;
+    m_pRightTail = nullptr;
+    m_bIsLive = true;
 }
 Player::~Player()
 {
 }
 void Player::update(float delta)
 {
+    if(!m_bIsLive)
+        return;
     float maskRotationZ = CC_RADIANS_TO_DEGREES(Vec2::angle(m_Orientation, Vec2::UNIT_Y));
     if (m_Orientation.x < 0)
         maskRotationZ = -maskRotationZ;
@@ -36,6 +41,11 @@ void Player::update(float delta)
         if (m_Direction.x < 0)
             mainRotationZ = -mainRotationZ;
         m_pModel->setRotation(mainRotationZ);
+        
+        if(m_pLeftTail)
+            m_pLeftTail->setPosition(getLeftTailLocalPos().rotateByAngle(Vec2::ZERO, -M_PI*(mainRotationZ/180.0f)));
+        if(m_pRightTail)
+            m_pRightTail->setPosition(getRightTailLocalPos().rotateByAngle(Vec2::ZERO, -M_PI*(mainRotationZ/180.0f)));
     }
     
     if(!m_bBounce)
@@ -71,13 +81,20 @@ void Player::loadMaskModel(const std::string& texName)
         CCLOGERROR("Load mask model %s failed!" , texName.c_str());
     m_pMaskModel->setScale(0.5f);
     addChild(m_pMaskModel);
+    
+    m_pLeftTail = ParticleSystemHelper::spawnPlayerWidget(PlayerWidgetType::PWT_TAIL, getLeftTailLocalPos());
+    m_pRightTail = ParticleSystemHelper::spawnPlayerWidget(PlayerWidgetType::PWT_TAIL, getRightTailLocalPos());
 }
 void Player::onJoystickUpdateDirection(TwoJoysticks* joystick, const cocos2d::Vec2& dir)
 {
+    if(!m_bIsLive)
+        return;
     setDirection(dir);
 }
 void Player::onJoystickUpdateOrientation(TwoJoysticks* joystick, const cocos2d::Vec2& dir)
 {
+    if(!m_bIsLive)
+        return;
     if(dir == Vec2::ZERO)
         return;
     setOrientation(dir);
@@ -99,20 +116,33 @@ void Player::onJoystickReleased(TwoJoysticks* joystick, float pressedTime)
     }
 }
 
-Vec2 Player::getFirePos()
+Vec2 Player::getFireWorldPos()
 {
     Vec2 ret = getPosition();
     ret += m_Orientation*m_fRadius*0.8f;
     return ret;
 }
-
+Vec2 Player::getFireLocalPos()
+{
+    return m_Orientation*m_fRadius*0.8f;
+}
+Vec2 Player::getLeftTailLocalPos()
+{
+    return Vec2(-1.0f,-1.0f)*m_fRadius*0.5f;
+}
+Vec2 Player::getRightTailLocalPos()
+{
+    return Vec2(1.0f,-1.0f)*m_fRadius*0.5f;
+}
 void Player::fire(float delta)
 {
+    if(!m_bIsLive)
+        return;
     switch (m_WeaponType) {
         case WT_NORMAL:
             {
-                ActorsManager::spawnBullet(GameActor::AT_PLAYER_BULLET, getFirePos(), getOrientation(), 2.0f,"bullet1.png");
-                ActorsManager::spawnExplosion(Explosion::ExplosionType::ET_BLUE, getFirePos());
+                ActorsManager::spawnBullet(GameActor::AT_PLAYER_BULLET, getFireWorldPos(), getOrientation(),m_fMaxSpeed*2.0f,"bullet1.png");
+                ParticleSystemHelper::spawnPlayerWidget(PlayerWidgetType::PWT_FIRE_FLARE, getFireLocalPos());
             }
             break;
             
@@ -120,10 +150,16 @@ void Player::fire(float delta)
             break;
     }
 }
-void Player::hurt()
-{
-}
 void Player::die()
 {
+    ParticleSystemHelper::spawnExplosion(ExplosionType::ET_EXPLOSION_BLUE, getPosition());
+    m_bIsLive = false;
 }
-
+void Player::respawn()
+{
+    m_bIsLive = true;
+}
+bool Player::islive() const
+{
+    return m_bIsLive;
+}

@@ -87,32 +87,16 @@ void GameController::update(float delta)
 {
     if(m_pActorCamera && m_pPlayer)
     {
-        Vec2 newPos = m_pPlayer->getPosition();
-        Vec2 velocity = m_pPlayer->getVelocity();
-        Vec2 camPos = m_pActorCamera->getPosition();
-        Vec2 camVelocity = m_pPlayer->getVelocity()*0.8f;
-        camPos += camVelocity;
-        CCLOG("camPos %f, %f", camPos.x, camPos.y);
-        m_pActorCamera->setPosition(camPos);
+        if(m_pPlayer->islive())
+        {
+            Vec2 camPos = m_pActorCamera->getPosition();
+            Vec2 camVelocity = m_pPlayer->getVelocity()*0.8f;
+            camPos += camVelocity;
+            CCLOG("camPos %f, %f", camPos.x, camPos.y);
+            m_pActorCamera->setPosition(camPos);
         
-        float minX = newPos.x - m_pPlayer->getRadius();
-        float maxX = newPos.x + m_pPlayer->getRadius();
-        float minY = newPos.y - m_pPlayer->getRadius();
-        float maxY = newPos.y + m_pPlayer->getRadius();
-        float boundX = m_BoundSize.width*0.5f;
-        float boundY = m_BoundSize.height*0.5f;
-        bool bounced = false;
-        if (minX <= -boundX + m_pPlayer->getMaxSpeed() || maxX >= boundX - m_pPlayer->getMaxSpeed() ){
-            velocity.x = - velocity.x;
-            bounced = true;
+            checkBounce(m_pPlayer);
         }
-        if( minY <= -boundY + m_pPlayer->getMaxSpeed() || maxY >= boundY - m_pPlayer->getMaxSpeed() ){
-            velocity.y = - velocity.y;
-            bounced = true;
-        }
-        m_pPlayer->setBounce(bounced);
-        if(bounced)
-            m_pPlayer->setVelocity(velocity);
     }
     ActorsManager::getInstance()->update(delta);
 }
@@ -173,9 +157,44 @@ Player* GameController::getPlayer() const
 {
     return m_pPlayer;
 }
-cocos2d::Camera* GameController::getActorCamera() const
+Layer* GameController::getGameLayer() const
+{
+    return m_pGameLayer;
+}
+Camera* GameController::getActorCamera() const
 {
     return m_pActorCamera;
+}
+
+Size GameController::getBoundSize() const
+{
+    return m_BoundSize;
+}
+
+void GameController::checkBounce(GameActor* actor)
+{
+    if(actor == nullptr)
+        return;
+    Vec2 newPos = actor->getPosition();
+    Vec2 velocity = actor->getVelocity();
+    float minX = newPos.x - actor->getRadius();
+    float maxX = newPos.x + actor->getRadius();
+    float minY = newPos.y - actor->getRadius();
+    float maxY = newPos.y + actor->getRadius();
+    float boundX = m_BoundSize.width*0.5f;
+    float boundY = m_BoundSize.height*0.5f;
+    bool bounced = false;
+    if (minX <= -boundX + actor->getMaxSpeed() || maxX >= boundX - actor->getMaxSpeed() ){
+        velocity.x = - velocity.x;
+        bounced = true;
+    }
+    if( minY <= -boundY + actor->getMaxSpeed() || maxY >= boundY - actor->getMaxSpeed() ){
+        velocity.y = - velocity.y;
+        bounced = true;
+    }
+    actor->setBounce(bounced);
+    if(bounced)
+        actor->setVelocity(velocity);
 }
 void GameController::onEnterSplash()
 {
@@ -208,14 +227,14 @@ void GameController::onExitPause()
 
 void GameController::onEnterDebug()
 {
-//    for (int i = 0; i<10; ++i) {
-//        ///test brown
-//        Vec3 playerPos = getPlayer()->getPosition3D();
-//        Vec3 enemyPos = EnemiesGeneratorHelper::getRandomPosInScreen(playerPos);
-//        Vec3 dir = playerPos - enemyPos;
-//        dir.normalize();
-//        ActorsManager::getInstance()->spawnEnemy(Enemy::EnemyType::ET_BROWN, enemyPos, dir, 1);
-//    }
+    for (int i = 0; i<10; ++i) {
+        Vec2 playerPos = getPlayer()->getPosition();
+        Rect rect = Rect(-m_BoundSize.width*0.5f, -m_BoundSize.height*0.5f, m_BoundSize.width, m_BoundSize.height);
+        Vec2 enemyPos = EnemiesGeneratorHelper::getRandomPosOutScreenInBoundRect(playerPos, rect);
+        Vec2 dir = playerPos - enemyPos;
+        dir.normalize();
+        ActorsManager::getInstance()->spawnEnemy(Enemy::EnemyType::ET_CIRCLE, enemyPos, dir, cocos2d::random(2.0f, 3.0f));
+    }
 }
 void GameController::onExitDebug()
 {

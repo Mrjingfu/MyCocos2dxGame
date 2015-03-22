@@ -34,8 +34,12 @@ public:
     void setGameState(GameState state);
     
     Player* getPlayer() const;
-    
+    cocos2d::Layer* getGameLayer() const;
     cocos2d::Camera* getActorCamera() const;
+    
+    cocos2d::Size getBoundSize() const;
+    
+    void checkBounce(GameActor* actor);
 private:
     void onEnterSplash();
     void onExitSplash();

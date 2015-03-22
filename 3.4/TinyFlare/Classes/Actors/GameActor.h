@@ -46,7 +46,10 @@ public:
         m_Orientation.normalize();
     }
     
-    float getRadius() const { return m_fRadius; }
+    float getRadius() {
+        caculateRadius();
+        return m_fRadius;
+    }
     void setRadius(float radius) { m_fRadius = radius; }
     
     float getMaxSpeed() const { return m_fMaxSpeed; }
@@ -57,15 +60,17 @@ public:
         m_Velocity = velocity;
     }
     
+    cocos2d::Node* getModel() const { return m_pModel; }
+    
     void setBounce(bool bounce);
 
     virtual void caculateRadius();
+    virtual void updateOrientation();
 protected:
     cocos2d::Sprite*    m_pModel;
     cocos2d::Vec2       m_Direction;            ///指示移动方向
     cocos2d::Vec2       m_Orientation;          ///朝向
     float               m_fAccel;               ///加速度
-    float               m_fDecel;               ///减速度
     float               m_fMaxSpeed;            ///最大速度
     cocos2d::Vec2       m_Velocity;             ///当前速度
     ActorType           m_type;

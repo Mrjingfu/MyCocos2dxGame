@@ -49,8 +49,6 @@
 		52B47A471A53D09C004E4C60 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B47A461A53D09B004E4C60 /* Security.framework */; };
 		5515DA441AB8197400CD018F /* explosion.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5515DA431AB8197400CD018F /* explosion.plist */; };
 		5515DA451AB8198100CD018F /* explosion.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5515DA431AB8197400CD018F /* explosion.plist */; };
-		5515DA481AB8571500CD018F /* Explosion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5515DA461AB8571500CD018F /* Explosion.cpp */; };
-		5515DA491AB85B9100CD018F /* Explosion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5515DA461AB8571500CD018F /* Explosion.cpp */; };
 		555B81511AB13B8800E9B69C /* bullet1.png in Resources */ = {isa = PBXBuildFile; fileRef = 555B81491AB13B8800E9B69C /* bullet1.png */; };
 		555B81521AB13B8800E9B69C /* circle.png in Resources */ = {isa = PBXBuildFile; fileRef = 555B814A1AB13B8800E9B69C /* circle.png */; };
 		555B81531AB13B8800E9B69C /* diamond.png in Resources */ = {isa = PBXBuildFile; fileRef = 555B814B1AB13B8800E9B69C /* diamond.png */; };
@@ -91,6 +89,14 @@
 		555B81C21AB161EA00E9B69C /* triangle.png in Resources */ = {isa = PBXBuildFile; fileRef = 555B81501AB13B8800E9B69C /* triangle.png */; };
 		555B81C41AB195F300E9B69C /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 555B81C31AB195F300E9B69C /* bg.png */; };
 		555B81C51AB1966E00E9B69C /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 555B81C31AB195F300E9B69C /* bg.png */; };
+		5585C1C81AB9410400B694FD /* ParticleSystemHelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5585C1C61AB9410400B694FD /* ParticleSystemHelper.cpp */; };
+		5585C1C91AB9496B00B694FD /* ParticleSystemHelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5585C1C61AB9410400B694FD /* ParticleSystemHelper.cpp */; };
+		5585C1CB1AB9858B00B694FD /* collisionexplosion.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5585C1CA1AB9858B00B694FD /* collisionexplosion.plist */; };
+		5585C1CC1AB9859C00B694FD /* collisionexplosion.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5585C1CA1AB9858B00B694FD /* collisionexplosion.plist */; };
+		5585C1CE1AB9978400B694FD /* collision.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5585C1CD1AB9978400B694FD /* collision.plist */; };
+		5585C1CF1AB9979300B694FD /* collision.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5585C1CD1AB9978400B694FD /* collision.plist */; };
+		5585C1D21AB9A76700B694FD /* tail.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5585C1D11AB9A76700B694FD /* tail.plist */; };
+		5585C1D31AB9A77B00B694FD /* tail.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5585C1D11AB9A76700B694FD /* tail.plist */; };
 		55FEC88D1AB698D600F39535 /* TwoJoysticks.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55FEC88B1AB698D600F39535 /* TwoJoysticks.cpp */; };
 		55FEC8901AB6F79900F39535 /* playermask.png in Resources */ = {isa = PBXBuildFile; fileRef = 55FEC88E1AB6F79900F39535 /* playermask.png */; };
 		55FEC8911AB6F79900F39535 /* playermain.png in Resources */ = {isa = PBXBuildFile; fileRef = 55FEC88F1AB6F79900F39535 /* playermain.png */; };
@@ -182,8 +188,6 @@
 		521A8E6319F0C34300D177D7 /* Default-736h@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-736h@3x.png"; sourceTree = "<group>"; };
 		52B47A461A53D09B004E4C60 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.1.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
 		5515DA431AB8197400CD018F /* explosion.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = explosion.plist; sourceTree = "<group>"; };
-		5515DA461AB8571500CD018F /* Explosion.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Explosion.cpp; sourceTree = "<group>"; };
-		5515DA471AB8571500CD018F /* Explosion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Explosion.h; sourceTree = "<group>"; };
 		555B81491AB13B8800E9B69C /* bullet1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bullet1.png; sourceTree = "<group>"; };
 		555B814A1AB13B8800E9B69C /* circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = circle.png; sourceTree = "<group>"; };
 		555B814B1AB13B8800E9B69C /* diamond.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = diamond.png; sourceTree = "<group>"; };
@@ -212,6 +216,11 @@
 		555B81A41AB1518500E9B69C /* joystick1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = joystick1.png; sourceTree = "<group>"; };
 		555B81A51AB1518500E9B69C /* joystick2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = joystick2.png; sourceTree = "<group>"; };
 		555B81C31AB195F300E9B69C /* bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg.png; sourceTree = "<group>"; };
+		5585C1C61AB9410400B694FD /* ParticleSystemHelper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ParticleSystemHelper.cpp; sourceTree = "<group>"; };
+		5585C1C71AB9410400B694FD /* ParticleSystemHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParticleSystemHelper.h; sourceTree = "<group>"; };
+		5585C1CA1AB9858B00B694FD /* collisionexplosion.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = collisionexplosion.plist; sourceTree = "<group>"; };
+		5585C1CD1AB9978400B694FD /* collision.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = collision.plist; sourceTree = "<group>"; };
+		5585C1D11AB9A76700B694FD /* tail.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = tail.plist; sourceTree = "<group>"; };
 		55FEC88B1AB698D600F39535 /* TwoJoysticks.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TwoJoysticks.cpp; sourceTree = "<group>"; };
 		55FEC88C1AB698D600F39535 /* TwoJoysticks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwoJoysticks.h; sourceTree = "<group>"; };
 		55FEC88E1AB6F79900F39535 /* playermask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = playermask.png; sourceTree = "<group>"; };
@@ -408,6 +417,9 @@
 		5515DA421AB8197400CD018F /* particles */ = {
 			isa = PBXGroup;
 			children = (
+				5585C1D11AB9A76700B694FD /* tail.plist */,
+				5585C1CD1AB9978400B694FD /* collision.plist */,
+				5585C1CA1AB9858B00B694FD /* collisionexplosion.plist */,
 				5515DA431AB8197400CD018F /* explosion.plist */,
 			);
 			path = particles;
@@ -445,8 +457,6 @@
 				555B816D1AB13DDC00E9B69C /* GameActor.h */,
 				555B81701AB13DDC00E9B69C /* Player.cpp */,
 				555B81711AB13DDC00E9B69C /* Player.h */,
-				5515DA461AB8571500CD018F /* Explosion.cpp */,
-				5515DA471AB8571500CD018F /* Explosion.h */,
 			);
 			path = Actors;
 			sourceTree = "<group>";
@@ -460,6 +470,8 @@
 				555B81601AB13C2300E9B69C /* GameController.h */,
 				555B81651AB13D9E00E9B69C /* ActorsManager.cpp */,
 				555B81661AB13D9E00E9B69C /* ActorsManager.h */,
+				5585C1C61AB9410400B694FD /* ParticleSystemHelper.cpp */,
+				5585C1C71AB9410400B694FD /* ParticleSystemHelper.h */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -581,7 +593,9 @@
 				555B81521AB13B8800E9B69C /* circle.png in Resources */,
 				5087E77F17EB970100C73F5D /* Default@2x.png in Resources */,
 				50EF629917ECD46A001EB2F8 /* Icon-100.png in Resources */,
+				5585C1D21AB9A76700B694FD /* tail.plist in Resources */,
 				555B81A91AB1518500E9B69C /* joystick2.png in Resources */,
+				5585C1CB1AB9858B00B694FD /* collisionexplosion.plist in Resources */,
 				5087E78317EB970100C73F5D /* Icon-152.png in Resources */,
 				555B81581AB13B8800E9B69C /* triangle.png in Resources */,
 				555B81541AB13B8800E9B69C /* hexagon.png in Resources */,
@@ -607,6 +621,7 @@
 				555B81C41AB195F300E9B69C /* bg.png in Resources */,
 				521A8E6419F0C34300D177D7 /* Default-667h@2x.png in Resources */,
 				50EF629717ECD46A001EB2F8 /* Icon-58.png in Resources */,
+				5585C1CE1AB9978400B694FD /* collision.plist in Resources */,
 				5515DA441AB8197400CD018F /* explosion.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -615,6 +630,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5585C1D31AB9A77B00B694FD /* tail.plist in Resources */,
+				5585C1CF1AB9979300B694FD /* collision.plist in Resources */,
+				5585C1CC1AB9859C00B694FD /* collisionexplosion.plist in Resources */,
 				5515DA451AB8198100CD018F /* explosion.plist in Resources */,
 				55FEC8931AB6F81E00F39535 /* playermask.png in Resources */,
 				55FEC8941AB6F81E00F39535 /* playermain.png in Resources */,
@@ -646,13 +664,13 @@
 				555B81741AB13DDC00E9B69C /* GameActor.cpp in Sources */,
 				555B81731AB13DDC00E9B69C /* Enemies.cpp in Sources */,
 				55FEC88D1AB698D600F39535 /* TwoJoysticks.cpp in Sources */,
-				5515DA481AB8571500CD018F /* Explosion.cpp in Sources */,
 				555B81671AB13D9E00E9B69C /* ActorsManager.cpp in Sources */,
 				555B81791AB1401400E9B69C /* EnemiesGeneratorHelper.cpp in Sources */,
 				555B81611AB13C2300E9B69C /* GameController.cpp in Sources */,
 				555B81761AB13DDC00E9B69C /* Player.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
+				5585C1C81AB9410400B694FD /* ParticleSystemHelper.cpp in Sources */,
 				555B815E1AB13BC300E9B69C /* TinyFlare.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
 			);
@@ -662,7 +680,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5515DA491AB85B9100CD018F /* Explosion.cpp in Sources */,
+				5585C1C91AB9496B00B694FD /* ParticleSystemHelper.cpp in Sources */,
 				55FEC8921AB6F81400F39535 /* TwoJoysticks.cpp in Sources */,
 				555B81AE1AB161D800E9B69C /* Bullet.cpp in Sources */,
 				555B81AF1AB161D800E9B69C /* Enemies.cpp in Sources */,

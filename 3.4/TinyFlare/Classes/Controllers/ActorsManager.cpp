@@ -8,6 +8,7 @@
 
 #include "ActorsManager.h"
 #include "GameController.h"
+#include "ParticleSystemHelper.h"
 USING_NS_CC;
 
 ActorsManager* g_pActorsManagerInstance = nullptr;
@@ -42,6 +43,7 @@ Bullet* ActorsManager::spawnBullet(GameActor::ActorType type, const cocos2d::Vec
         bullet->setOrientation(dir);
         bullet->setMaxSpeed(speed);
         bullet->caculateRadius();
+        bullet->updateOrientation();
         ActorsManager::getInstance()->m_Bullets.pushBack(bullet);
         ActorsManager::getInstance()->m_pActorLayer->addChild(bullet);
         ActorsManager::getInstance()->m_pActorLayer->setCameraMask((unsigned short)CameraFlag::USER1);
@@ -60,50 +62,43 @@ Enemy* ActorsManager::spawnEnemy(Enemy::EnemyType enemyType, const Vec2& pos, co
         return nullptr;
     Enemy* enemy = nullptr;
     switch (enemyType) {
-        case Enemy::EnemyType::ET_BLUE:
-        {
-        }
+        case Enemy::EnemyType::ET_CIRCLE:
+            {
+                enemy = new(std::nothrow) Circle();
+                if (enemy && enemy->init()) {
+                    enemy->loadModel("circle.png");
+                    enemy->setPosition(pos);
+                    enemy->setDirection(dir);
+                    enemy->setOrientation(dir);
+                    enemy->setMaxSpeed(speed);
+                    enemy->setCascadeOpacityEnabled(true);
+                    enemy->setOpacity(0);
+                    enemy->setScale(0.5f);
+                    //enemy->setColor(Color3B(253,255,112));
+                    //enemy->setColor(Color3B(cocos2d::random(230,254),cocos2d::random(110,180),cocos2d::random(220,240)));
+                    enemy->caculateRadius();
+                    ActorsManager::getInstance()->m_Enemies.pushBack(enemy);
+                    ActorsManager::getInstance()->m_pActorLayer->addChild(enemy);
+                    ActorsManager::getInstance()->m_pActorLayer->setCameraMask((unsigned short)CameraFlag::USER1);
+                    enemy->autorelease();
+                }
+                else
+                    CC_SAFE_DELETE(enemy);
+            }
             break;
-
         default:
             break;
     }
+    if(enemy)
+    {
+        EaseSineOut* easeOut1 = EaseSineOut::create(ScaleTo::create(2.0f, 0.8f));
+        EaseSineOut* easeOut2 = EaseSineOut::create(FadeIn::create(2.0f));
+        Spawn* spawn = Spawn::createWithTwoActions(easeOut1, easeOut2);
+        enemy->runAction(spawn);
+    }
     return enemy;
 }
-Explosion* ActorsManager::spawnExplosion(Explosion::ExplosionType explosionType, const Vec2& pos)
-{
-    if(!ActorsManager::getInstance()->m_pActorLayer)
-        return nullptr;
 
-    Explosion*explosion = new(std::nothrow) Explosion();
-    if (explosion && explosion->init())
-    {
-        switch (explosionType) {
-            case Explosion::ET_BLUE:
-            {
-                explosion->loadParticleSystem("explosion.plist");
-                explosion->setScale(0.4f);
-                explosion->getParticleSystem()->setStartColor(Color4F(0.0f, 224.0f/255.0f, 252.0f/255.0f, 1.0f));
-                explosion->getParticleSystem()->setPosition(pos);
-                explosion->getParticleSystem()->setLife(0.3f);
-                explosion->setLifeTime(explosion->getParticleSystem()->getLife() + explosion->getParticleSystem()->getLifeVar() );
-            }
-                break;
-            default:
-                break;
-        }
-        ActorsManager::getInstance()->m_Explosions.pushBack(explosion);
-        ActorsManager::getInstance()->m_pActorLayer->addChild(explosion);
-        ActorsManager::getInstance()->m_pActorLayer->setCameraMask((unsigned short)CameraFlag::USER1);
-        explosion->autorelease();
-    }
-    else
-    {
-        CC_SAFE_DELETE(explosion);
-        return nullptr;
-    }
-    return explosion;
-}
 bool ActorsManager::init(cocos2d::Layer* actorLayer)
 {
     if(!actorLayer)
@@ -113,36 +108,112 @@ bool ActorsManager::init(cocos2d::Layer* actorLayer)
 }
 void ActorsManager::update(float delta)
 {
+    Size boundSize =  GameController::getInstance()->getBoundSize();
+    Vec2 playerPos = GameController::getInstance()->getPlayer()->getPosition();
+    float playerRadius = GameController::getInstance()->getPlayer()->getRadius();
+    
     CCLOG("Current bullets number %zd", m_Bullets.size());
-    
-    for (ssize_t i = 0; i<m_Explosions.size(); ++i) {
-        Explosion* explosion = m_Explosions.at(i);
-        if(explosion)
-        {
-            float lifeTime = explosion->getLifeTime();
-            lifeTime -= delta;
-            if(lifeTime <= 0)
-            {
-                eraseExplosion(explosion);
-            }
-            else
-                explosion->setLifeTime(lifeTime);
-        }
-    }
-    
     for (ssize_t i = 0; i<m_Bullets.size(); ++i) {
         Bullet* bullet = m_Bullets.at(i);
         if(bullet)
         {
-            float radius = bullet->getRadius();
-            Vec3 min = Vec3(-radius, -radius, -0.5f) + bullet->getPosition3D();
-            Vec3 max = Vec3(radius, radius, 0.5f) + bullet->getPosition3D();
+            float bulletRadius = bullet->getRadius();
+            Vec2 bulletPos = bullet->getPosition();
+            
+            Vec3 min = Vec3(-bulletRadius, -bulletRadius, -0.5f) + bullet->getPosition3D();
+            Vec3 max = Vec3(bulletRadius, bulletRadius, 0.5f) + bullet->getPosition3D();
             AABB aabb = AABB(min, max);
             bool isVisible = GameController::getInstance()->getActorCamera()->isVisibleInFrustum(&aabb);
             if(!isVisible)
             {
                 eraseBullet(bullet);
+                continue;
             }
+            
+            float minX = bulletPos.x - bullet->getRadius();
+            float maxX = bulletPos.x + bullet->getRadius();
+            float minY = bulletPos.y - bullet->getRadius();
+            float maxY = bulletPos.y + bullet->getRadius();
+            float boundX = boundSize.width*0.5f;
+            float boundY = boundSize.height*0.5f;
+            if (minY <= -boundY + bullet->getMaxSpeed() || maxY >= boundY - bullet->getMaxSpeed()){
+                ParticleSystemQuad* collision = ParticleSystemHelper::spawnExplosion(ExplosionType::ET_EXPLOSION_BULLET_COLLISION, bulletPos);
+                if(collision)
+                {
+                    Vec2 orient = bullet->getOrientation();
+                    float rotationZ = CC_RADIANS_TO_DEGREES(cocos2d::Vec2::angle(orient, cocos2d::Vec2::UNIT_Y));
+                    if (orient.x > 0)
+                        rotationZ = -rotationZ;
+                    collision->setRotation(rotationZ);
+                }
+                eraseBullet(bullet);
+                continue;
+            }
+            
+            if (minX <= -boundX + bullet->getMaxSpeed() || maxX >= boundX - bullet->getMaxSpeed()) {
+                ParticleSystemQuad* collision = ParticleSystemHelper::spawnExplosion(ExplosionType::ET_EXPLOSION_BULLET_COLLISION, bulletPos);
+                if(collision)
+                {
+                    Vec2 orient = bullet->getOrientation();
+                    float rotationZ = CC_RADIANS_TO_DEGREES(cocos2d::Vec2::angle(orient, cocos2d::Vec2::UNIT_Y));
+                    if (orient.x > 0)
+                        rotationZ = 180.0f - rotationZ;
+                    else
+                        rotationZ = 180.0f + rotationZ;
+                    collision->setRotation(rotationZ);
+                }
+                eraseBullet(bullet);
+                continue;
+            }
+            
+            if (bullet->getType() == GameActor::AT_PLAYER_BULLET) {
+                for (ssize_t i = 0; i<m_Enemies.size(); ++i) {
+                    Enemy* enemy = m_Enemies.at(i);
+                    if(enemy)
+                    {
+                        float enemyRadius = enemy->getRadius();
+                        float dist = enemy->getPosition().distance(bulletPos);
+                        if (dist <= enemyRadius) {
+                            enemy->die();
+                            eraseEnemy(enemy);
+                            eraseBullet(bullet);
+                            break;
+                        }
+                    }
+                }
+            }
+            else if(bullet->getType() == GameActor::AT_ENEMY_BULLET)
+            {
+                if(GameController::getInstance()->getPlayer()->islive())
+                {
+                    float dist = playerPos.distance(bulletPos);
+                    if(dist <= playerRadius)
+                    {
+                        GameController::getInstance()->getPlayer()->die();
+                        eraseBullet(bullet);
+                        break;
+                    }
+                }
+            }
+        }
+    }
+    
+    CCLOG("Current Enemies number %zd", m_Enemies.size());
+    for (ssize_t i = 0; i<m_Enemies.size(); ++i) {
+        Enemy* enemy = m_Enemies.at(i);
+        if(enemy)
+        {
+            if(GameController::getInstance()->getPlayer()->islive())
+            {
+                float dist = enemy->getPosition().distance(playerPos);
+                if (dist <= playerRadius) {
+                    GameController::getInstance()->getPlayer()->die();
+                    enemy->die();
+                    eraseEnemy(enemy);
+                    continue;
+                }
+            }
+            GameController::getInstance()->checkBounce(enemy);
         }
     }
 }
@@ -178,18 +249,4 @@ void ActorsManager::eraseEnemy(int i)
     auto enemy = m_Enemies.at(i);
     m_Enemies.erase(i);
     enemy->removeFromParentAndCleanup(true);
-}
-
-void ActorsManager::eraseExplosion(Explosion* explosion)
-{
-    if(!explosion)
-        return;
-    m_Explosions.eraseObject(explosion);
-    explosion->removeFromParentAndCleanup(true);
-}
-void ActorsManager::eraseExplosion(int i)
-{
-    auto explosion = m_Explosions.at(i);
-    m_Explosions.erase(i);
-    explosion->removeFromParentAndCleanup(true);
 }

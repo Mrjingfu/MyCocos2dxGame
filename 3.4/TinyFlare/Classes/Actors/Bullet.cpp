@@ -16,10 +16,6 @@ Bullet::~Bullet()
 }
 void Bullet::update(float delta)
 {
-    float rotationZ = CC_RADIANS_TO_DEGREES(Vec2::angle(m_Orientation, Vec2::UNIT_Y));
-    if (m_Orientation.x < 0)
-        rotationZ = -rotationZ;
-    setRotation(rotationZ);
     m_Velocity = m_Direction*m_fMaxSpeed;
     Vec2 pos = getPosition();
     Vec2 newPos = pos + m_Velocity;

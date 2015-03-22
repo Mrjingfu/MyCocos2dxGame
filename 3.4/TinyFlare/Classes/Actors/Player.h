@@ -31,15 +31,21 @@ public:
     void onJoystickPressed(TwoJoysticks* joystick, float pressedTime);
     void onJoystickReleased(TwoJoysticks* joystick, float pressedTime);
     
-    cocos2d::Vec2 getFirePos();
-    
+    cocos2d::Vec2 getFireWorldPos();
+    cocos2d::Vec2 getFireLocalPos();
+    cocos2d::Vec2 getLeftTailLocalPos();
+    cocos2d::Vec2 getRightTailLocalPos();
     void fire(float delta);
-    void hurt();
     void die();
+    void respawn();
+    bool islive() const;
 private:
     bool        m_bScheduledFire;
-    cocos2d::Sprite*      m_pMaskModel;
-    WeaponType            m_WeaponType;
+    cocos2d::Sprite*                m_pMaskModel;
+    WeaponType                      m_WeaponType;
+    cocos2d::ParticleSystemQuad*    m_pLeftTail;
+    cocos2d::ParticleSystemQuad*    m_pRightTail;
+    bool                            m_bIsLive;
 };
 
 #endif /* defined(__Geometry_Wars__Player__) */

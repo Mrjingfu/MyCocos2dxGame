@@ -14,17 +14,20 @@
 class EnemiesGeneratorHelper
 {
 public:
-    static cocos2d::Vec3 getRandomPosLeftOutOfScreen(const cocos2d::Vec3& playerPos);
-    static cocos2d::Vec3 getRandomPosRightOutOfScreen(const cocos2d::Vec3& playerPos);
-    static cocos2d::Vec3 getRandomPosTopOutOfScreen(const cocos2d::Vec3& playerPos);
-    static cocos2d::Vec3 getRandomPosBottomOutOfScreen(const cocos2d::Vec3& playerPos);
-    static cocos2d::Vec3 getRandomPosOutOfScreen(const cocos2d::Vec3& playerPos);
+    static cocos2d::Vec2 getRandomPosLeftOutOfScreen(const cocos2d::Vec2& playerPos);
+    static cocos2d::Vec2 getRandomPosRightOutOfScreen(const cocos2d::Vec2& playerPos);
+    static cocos2d::Vec2 getRandomPosTopOutOfScreen(const cocos2d::Vec2& playerPos);
+    static cocos2d::Vec2 getRandomPosBottomOutOfScreen(const cocos2d::Vec2& playerPos);
+    static cocos2d::Vec2 getRandomPosOutOfScreen(const cocos2d::Vec2& playerPos);
     
-    static cocos2d::Vec3 getRandomPosLeftInScreen(const cocos2d::Vec3& playerPos);
-    static cocos2d::Vec3 getRandomPosRightInScreen(const cocos2d::Vec3& playerPos);
-    static cocos2d::Vec3 getRandomPosTopInScreen(const cocos2d::Vec3& playerPos);
-    static cocos2d::Vec3 getRandomPosBottomInScreen(const cocos2d::Vec3& playerPos);
-    static cocos2d::Vec3 getRandomPosInScreen(const cocos2d::Vec3& playerPos);
+    static cocos2d::Vec2 getRandomPosLeftInScreen(const cocos2d::Vec2& playerPos);
+    static cocos2d::Vec2 getRandomPosRightInScreen(const cocos2d::Vec2& playerPos);
+    static cocos2d::Vec2 getRandomPosTopInScreen(const cocos2d::Vec2& playerPos);
+    static cocos2d::Vec2 getRandomPosBottomInScreen(const cocos2d::Vec2& playerPos);
+    static cocos2d::Vec2 getRandomPosInScreen(const cocos2d::Vec2& playerPos);
+    
+    static cocos2d::Vec2 getRandomPosOutScreenInBoundRect(const cocos2d::Vec2& playerPos, const cocos2d::Rect& boundRect);
+    static cocos2d::Vec2 getRandomPosInScreenInBoundRect(const cocos2d::Vec2& playerPos, const cocos2d::Rect& boundRect);
 };
 
 #endif /* defined(__Geometry_Wars__EnemiesGeneratorHelper__) */
