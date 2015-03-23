@@ -10,6 +10,15 @@
 #define __Geometry_Wars__GameActor__
 
 #include "cocos2d.h"
+
+typedef enum {
+    AS_UNDERCONTROL = 0,
+    AS_TRACK,
+    AS_IDLE,
+    AS_DEAD,
+    AS_UNKNOWN
+} ActorState;
+
 class GameActor : public cocos2d::Node
 {
 public:
@@ -23,6 +32,18 @@ public:
 protected:
     GameActor();
     virtual ~GameActor();
+    
+    virtual void onEnterUnderControl(){};
+    virtual void onExitUnderControl(){};
+    
+    virtual void onEnterTrack(){};
+    virtual void onExitTrack(){};
+    
+    virtual void onEnterIdle(){};
+    virtual void onExitIdle(){};
+    
+    virtual void onEnterDead(){};
+    virtual void onExitDead(){};
 public:
     virtual void onEnter();
     virtual void onExit();
@@ -66,6 +87,9 @@ public:
 
     virtual void caculateRadius();
     virtual void updateOrientation();
+    
+    ActorState getActorState() const { return m_curState; }
+    void setActorState(ActorState state);
 protected:
     cocos2d::Sprite*    m_pModel;
     cocos2d::Vec2       m_Direction;            ///指示移动方向
@@ -75,7 +99,9 @@ protected:
     cocos2d::Vec2       m_Velocity;             ///当前速度
     ActorType           m_type;
     float               m_fRadius;              ///半径
-    bool                m_bBounce;
+    bool                m_bBounce;              ///是否碰撞了
+    
+    ActorState          m_curState;             ///Actor当前状态
 };
 
 #endif /* defined(__Geometry_Wars__GameActor__) */

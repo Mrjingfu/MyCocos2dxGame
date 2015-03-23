@@ -85,14 +85,14 @@ ParticleSystemQuad* ParticleSystemHelper::spawnExplosion(ExplosionType explosion
     return explosion;
 }
 
-ParticleSystemQuad* ParticleSystemHelper::spawnPlayerWidget(PlayerWidgetType playerWidgetType, const cocos2d::Vec2& pos)
+ParticleSystemQuad* ParticleSystemHelper::spawnActorWidget(ActorWidgetType actorWidgetType, const cocos2d::Vec2& pos, GameActor* actor)
 {
-    if(!GameController::getInstance()->getPlayer())
+    if(!actor)
         return nullptr;
     
     ParticleSystemQuad* widget = nullptr;
-    switch (playerWidgetType) {
-        case PlayerWidgetType::PWT_FIRE_FLARE:
+    switch (actorWidgetType) {
+        case ActorWidgetType::AWT_FIRE_FLARE:
             {
                 widget = ParticleSystemQuad::create("explosion.plist");
                 if(!widget)
@@ -109,11 +109,11 @@ ParticleSystemQuad* ParticleSystemHelper::spawnPlayerWidget(PlayerWidgetType pla
                 widget->setPositionType(ParticleSystem::PositionType::RELATIVE);
                 widget->setPosition(pos);
                 widget->setAutoRemoveOnFinish(true);
-                GameController::getInstance()->getPlayer()->addChild(widget);
-                GameController::getInstance()->getPlayer()->setCameraMask((unsigned short)CameraFlag::USER1);
+                actor->addChild(widget);
+                actor->setCameraMask((unsigned short)CameraFlag::USER1);
             }
             break;
-        case PlayerWidgetType::PWT_TAIL:
+        case ActorWidgetType::AWT_PLAYER_TAIL:
             {
                 widget = ParticleSystemQuad::create("tail.plist");
                 if(!widget)
@@ -126,9 +126,26 @@ ParticleSystemQuad* ParticleSystemHelper::spawnPlayerWidget(PlayerWidgetType pla
                 widget->setStartSize(8.0f);
                 widget->setStartSizeVar(1.0f);
                 widget->setAutoRemoveOnFinish(true);
-                GameController::getInstance()->getPlayer()->addChild(widget);
-                GameController::getInstance()->getPlayer()->setCameraMask((unsigned short)CameraFlag::USER1);
+                actor->addChild(widget);
+                actor->setCameraMask((unsigned short)CameraFlag::USER1);
             }
+            break;
+        case ActorWidgetType::AWT_COLOR_ENEMY_TAIL:
+            {
+                widget = ParticleSystemQuad::create("colorgeometry.plist");
+                if(!widget)
+                {
+                    CCLOG("Load actor widget particle system failed! file: colorgeometry.plist");
+                    return nullptr;
+                }
+                widget->setPositionType(ParticleSystem::PositionType::RELATIVE);
+                widget->setPosition(pos);
+                widget->setScale(0.5f);
+                widget->setAutoRemoveOnFinish(true);
+                actor->addChild(widget);
+                actor->setCameraMask((unsigned short)CameraFlag::USER1);
+            }
+            break;
         default:
             break;
     }

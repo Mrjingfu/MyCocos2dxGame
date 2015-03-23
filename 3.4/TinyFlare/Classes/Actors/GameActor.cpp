@@ -21,6 +21,7 @@ GameActor::GameActor()
     m_fRadius = 0.0f;
     m_fMaxSpeed = 1.0f;
     m_bBounce = false;
+    m_curState   = ActorState::AS_UNKNOWN;
 }
 GameActor::~GameActor()
 {
@@ -87,4 +88,46 @@ void GameActor::updateOrientation()
     if (m_Orientation.x < 0)
         rotationZ = -rotationZ;
     setRotation(rotationZ);
+}
+void GameActor::setActorState(ActorState state)
+{
+    if (m_curState == state)
+        return;
+    ///处理上一个状态退出逻辑
+    switch (m_curState) {
+        case ActorState::AS_UNDERCONTROL:
+            onExitUnderControl();
+            break;
+        case ActorState::AS_TRACK:
+            onExitTrack();
+            break;
+        case ActorState::AS_IDLE:
+            onExitIdle();
+            break;
+        case ActorState::AS_DEAD:
+            onExitDead();
+            break;
+        default:
+            break;
+    }
+    
+    m_curState = state;
+    ///处理下一个状态进入逻辑
+    switch (m_curState) {
+        case ActorState::AS_UNDERCONTROL:
+            onEnterUnderControl();
+            break;
+        case ActorState::AS_TRACK:
+            onEnterTrack();
+            break;
+        case ActorState::AS_IDLE:
+            onEnterIdle();
+            break;
+        case ActorState::AS_DEAD:
+            onEnterDead();
+            break;
+        default:
+            break;
+    }
+
 }

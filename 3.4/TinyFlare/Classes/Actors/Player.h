@@ -36,16 +36,14 @@ public:
     cocos2d::Vec2 getLeftTailLocalPos();
     cocos2d::Vec2 getRightTailLocalPos();
     void fire(float delta);
-    void die();
-    void respawn();
-    bool islive() const;
+    
+    virtual void onEnterDead() override;
 private:
     bool        m_bScheduledFire;
     cocos2d::Sprite*                m_pMaskModel;
     WeaponType                      m_WeaponType;
     cocos2d::ParticleSystemQuad*    m_pLeftTail;
     cocos2d::ParticleSystemQuad*    m_pRightTail;
-    bool                            m_bIsLive;
 };
 
 #endif /* defined(__Geometry_Wars__Player__) */

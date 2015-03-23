@@ -49,6 +49,10 @@
 		52B47A471A53D09C004E4C60 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B47A461A53D09B004E4C60 /* Security.framework */; };
 		5515DA441AB8197400CD018F /* explosion.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5515DA431AB8197400CD018F /* explosion.plist */; };
 		5515DA451AB8198100CD018F /* explosion.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5515DA431AB8197400CD018F /* explosion.plist */; };
+		552985E41ABFB57100159D23 /* colorgeometry.plist in Resources */ = {isa = PBXBuildFile; fileRef = 552985E31ABFB57100159D23 /* colorgeometry.plist */; };
+		552985E51ABFEE6E00159D23 /* colorgeometry.plist in Resources */ = {isa = PBXBuildFile; fileRef = 552985E31ABFB57100159D23 /* colorgeometry.plist */; };
+		552985E81AC0056E00159D23 /* EnemiesGenerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 552985E61AC0056E00159D23 /* EnemiesGenerator.cpp */; };
+		552985E91AC0061C00159D23 /* EnemiesGenerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 552985E61AC0056E00159D23 /* EnemiesGenerator.cpp */; };
 		555B81511AB13B8800E9B69C /* bullet1.png in Resources */ = {isa = PBXBuildFile; fileRef = 555B81491AB13B8800E9B69C /* bullet1.png */; };
 		555B81521AB13B8800E9B69C /* circle.png in Resources */ = {isa = PBXBuildFile; fileRef = 555B814A1AB13B8800E9B69C /* circle.png */; };
 		555B81531AB13B8800E9B69C /* diamond.png in Resources */ = {isa = PBXBuildFile; fileRef = 555B814B1AB13B8800E9B69C /* diamond.png */; };
@@ -188,6 +192,9 @@
 		521A8E6319F0C34300D177D7 /* Default-736h@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-736h@3x.png"; sourceTree = "<group>"; };
 		52B47A461A53D09B004E4C60 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.1.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
 		5515DA431AB8197400CD018F /* explosion.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = explosion.plist; sourceTree = "<group>"; };
+		552985E31ABFB57100159D23 /* colorgeometry.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = colorgeometry.plist; sourceTree = "<group>"; };
+		552985E61AC0056E00159D23 /* EnemiesGenerator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EnemiesGenerator.cpp; sourceTree = "<group>"; };
+		552985E71AC0056E00159D23 /* EnemiesGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnemiesGenerator.h; sourceTree = "<group>"; };
 		555B81491AB13B8800E9B69C /* bullet1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bullet1.png; sourceTree = "<group>"; };
 		555B814A1AB13B8800E9B69C /* circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = circle.png; sourceTree = "<group>"; };
 		555B814B1AB13B8800E9B69C /* diamond.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = diamond.png; sourceTree = "<group>"; };
@@ -417,6 +424,7 @@
 		5515DA421AB8197400CD018F /* particles */ = {
 			isa = PBXGroup;
 			children = (
+				552985E31ABFB57100159D23 /* colorgeometry.plist */,
 				5585C1D11AB9A76700B694FD /* tail.plist */,
 				5585C1CD1AB9978400B694FD /* collision.plist */,
 				5585C1CA1AB9858B00B694FD /* collisionexplosion.plist */,
@@ -472,6 +480,8 @@
 				555B81661AB13D9E00E9B69C /* ActorsManager.h */,
 				5585C1C61AB9410400B694FD /* ParticleSystemHelper.cpp */,
 				5585C1C71AB9410400B694FD /* ParticleSystemHelper.h */,
+				552985E61AC0056E00159D23 /* EnemiesGenerator.cpp */,
+				552985E71AC0056E00159D23 /* EnemiesGenerator.h */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -612,6 +622,7 @@
 				50EF62A217ECD613001EB2F8 /* Icon-29.png in Resources */,
 				50EF629617ECD46A001EB2F8 /* Icon-40.png in Resources */,
 				5087E78217EB970100C73F5D /* Icon-144.png in Resources */,
+				552985E41ABFB57100159D23 /* colorgeometry.plist in Resources */,
 				50EF629817ECD46A001EB2F8 /* Icon-80.png in Resources */,
 				55FEC8901AB6F79900F39535 /* playermask.png in Resources */,
 				5087E78417EB970100C73F5D /* Icon-57.png in Resources */,
@@ -630,6 +641,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				552985E51ABFEE6E00159D23 /* colorgeometry.plist in Resources */,
 				5585C1D31AB9A77B00B694FD /* tail.plist in Resources */,
 				5585C1CF1AB9979300B694FD /* collision.plist in Resources */,
 				5585C1CC1AB9859C00B694FD /* collisionexplosion.plist in Resources */,
@@ -664,6 +676,7 @@
 				555B81741AB13DDC00E9B69C /* GameActor.cpp in Sources */,
 				555B81731AB13DDC00E9B69C /* Enemies.cpp in Sources */,
 				55FEC88D1AB698D600F39535 /* TwoJoysticks.cpp in Sources */,
+				552985E81AC0056E00159D23 /* EnemiesGenerator.cpp in Sources */,
 				555B81671AB13D9E00E9B69C /* ActorsManager.cpp in Sources */,
 				555B81791AB1401400E9B69C /* EnemiesGeneratorHelper.cpp in Sources */,
 				555B81611AB13C2300E9B69C /* GameController.cpp in Sources */,
@@ -680,6 +693,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				552985E91AC0061C00159D23 /* EnemiesGenerator.cpp in Sources */,
 				5585C1C91AB9496B00B694FD /* ParticleSystemHelper.cpp in Sources */,
 				55FEC8921AB6F81400F39535 /* TwoJoysticks.cpp in Sources */,
 				555B81AE1AB161D800E9B69C /* Bullet.cpp in Sources */,

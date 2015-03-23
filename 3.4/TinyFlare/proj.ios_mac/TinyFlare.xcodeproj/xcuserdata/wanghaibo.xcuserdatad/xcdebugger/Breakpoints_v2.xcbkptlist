@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Actors/GameActor.cpp"
-            timestampString = "448721137.776063"
+            timestampString = "448783574.072523"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "49"
-            endingLineNumber = "49"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
             landmarkName = "GameActor::loadModel(const std::string&amp; texName)"
             landmarkType = "5">
          </BreakpointContent>
@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Controllers/GameController.cpp"
-            timestampString = "448179223.513989"
+            timestampString = "448796208.315656"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "43"
-            endingLineNumber = "43"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
             landmarkName = "GameController::init(Layer* pMainLayer)"
             landmarkType = "5">
          </BreakpointContent>
@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Controllers/GameController.cpp"
-            timestampString = "448199080.677366"
+            timestampString = "448796208.315656"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "66"
-            endingLineNumber = "66"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
             landmarkName = "GameController::init(Layer* pMainLayer)"
             landmarkType = "5">
          </BreakpointContent>
@@ -90,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Controllers/GameController.cpp"
-            timestampString = "448199080.677366"
+            timestampString = "448796208.315656"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "68"
-            endingLineNumber = "68"
+            startingLineNumber = "73"
+            endingLineNumber = "73"
             landmarkName = "GameController::init(Layer* pMainLayer)"
             landmarkType = "5">
          </BreakpointContent>
@@ -170,11 +170,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Actors/Player.cpp"
-            timestampString = "448728396.263972"
+            timestampString = "448783574.072523"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "51"
-            endingLineNumber = "51"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
             landmarkName = "Player::update(float delta)"
             landmarkType = "5">
          </BreakpointContent>
@@ -186,11 +186,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Actors/Player.cpp"
-            timestampString = "448728396.263972"
+            timestampString = "448783574.072523"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "59"
-            endingLineNumber = "59"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
             landmarkName = "Player::update(float delta)"
             landmarkType = "5">
          </BreakpointContent>
@@ -202,11 +202,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Controllers/ActorsManager.cpp"
-            timestampString = "448727490.735859"
+            timestampString = "448810110.022986"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "123"
-            endingLineNumber = "123"
+            startingLineNumber = "159"
+            endingLineNumber = "159"
             landmarkName = "ActorsManager::update(float delta)"
             landmarkType = "5">
          </BreakpointContent>
@@ -239,7 +239,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "100"
             endingLineNumber = "100"
-            landmarkName = "ParticleSystemHelper::spawnPlayerWidget(PlayerWidgetType playerWidgetType, const cocos2d::Vec2&amp; pos)"
+            landmarkName = "ParticleSystemHelper::spawnActorWidget(ActorWidgetType actorWidgetType, const cocos2d::Vec2&amp; pos, GameActor* actor)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -287,7 +287,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "107"
             endingLineNumber = "107"
-            landmarkName = "ParticleSystemHelper::spawnPlayerWidget(PlayerWidgetType playerWidgetType, const cocos2d::Vec2&amp; pos)"
+            landmarkName = "ParticleSystemHelper::spawnActorWidget(ActorWidgetType actorWidgetType, const cocos2d::Vec2&amp; pos, GameActor* actor)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -314,11 +314,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Actors/Player.cpp"
-            timestampString = "448729680.528194"
+            timestampString = "448783574.072523"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "122"
-            endingLineNumber = "122"
+            startingLineNumber = "123"
+            endingLineNumber = "123"
             landmarkName = "Player::getFireWorldPos()"
             landmarkType = "5">
          </BreakpointContent>
@@ -346,11 +346,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Controllers/ActorsManager.cpp"
-            timestampString = "448727490.735859"
+            timestampString = "448810110.022986"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "155"
-            endingLineNumber = "155"
+            startingLineNumber = "191"
+            endingLineNumber = "191"
             landmarkName = "ActorsManager::update(float delta)"
             landmarkType = "5">
          </BreakpointContent>
@@ -362,11 +362,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Controllers/ActorsManager.cpp"
-            timestampString = "448727490.735859"
+            timestampString = "448810110.022986"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "143"
-            endingLineNumber = "143"
+            startingLineNumber = "179"
+            endingLineNumber = "179"
             landmarkName = "ActorsManager::update(float delta)"
             landmarkType = "5">
          </BreakpointContent>
@@ -383,7 +383,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "90"
             endingLineNumber = "90"
-            landmarkName = "ParticleSystemHelper::spawnPlayerWidget(PlayerWidgetType playerWidgetType, const cocos2d::Vec2&amp; pos)"
+            landmarkName = "ParticleSystemHelper::spawnActorWidget(ActorWidgetType actorWidgetType, const cocos2d::Vec2&amp; pos, GameActor* actor)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -394,11 +394,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Actors/Player.cpp"
-            timestampString = "448729680.528194"
+            timestampString = "448783574.072523"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "131"
-            endingLineNumber = "131"
+            startingLineNumber = "132"
+            endingLineNumber = "132"
             landmarkName = "Player::getLeftTailLocalPos()"
             landmarkType = "5">
          </BreakpointContent>
@@ -410,11 +410,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Actors/Player.cpp"
-            timestampString = "448729680.528194"
+            timestampString = "448783574.072523"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "135"
-            endingLineNumber = "135"
+            startingLineNumber = "136"
+            endingLineNumber = "136"
             landmarkName = "Player::getRightTailLocalPos()"
             landmarkType = "5">
          </BreakpointContent>
@@ -426,11 +426,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Actors/GameActor.cpp"
-            timestampString = "448721137.776063"
+            timestampString = "448783574.072523"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "48"
-            endingLineNumber = "48"
+            startingLineNumber = "49"
+            endingLineNumber = "49"
             landmarkName = "GameActor::loadModel(const std::string&amp; texName)"
             landmarkType = "5">
          </BreakpointContent>
@@ -442,11 +442,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Actors/Player.cpp"
-            timestampString = "448728396.263972"
+            timestampString = "448783574.072523"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "38"
-            endingLineNumber = "38"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
             landmarkName = "Player::update(float delta)"
             landmarkType = "5">
          </BreakpointContent>
@@ -458,11 +458,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Actors/Player.cpp"
-            timestampString = "448728396.263972"
+            timestampString = "448783574.072523"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "44"
-            endingLineNumber = "44"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
             landmarkName = "Player::update(float delta)"
             landmarkType = "5">
          </BreakpointContent>
@@ -474,11 +474,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Actors/Player.cpp"
-            timestampString = "448728396.263972"
+            timestampString = "448783574.072523"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "44"
-            endingLineNumber = "44"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
             landmarkName = "Player::update(float delta)"
             landmarkType = "5">
          </BreakpointContent>
@@ -490,11 +490,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Actors/Player.cpp"
-            timestampString = "448728396.263972"
+            timestampString = "448783574.072523"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "49"
-            endingLineNumber = "49"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
             landmarkName = "Player::update(float delta)"
             landmarkType = "5">
          </BreakpointContent>
@@ -506,23 +506,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Actors/Player.cpp"
-            timestampString = "448728396.263972"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "46"
-            endingLineNumber = "46"
-            landmarkName = "Player::update(float delta)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../Classes/Actors/Player.cpp"
-            timestampString = "448728396.263972"
+            timestampString = "448783574.072523"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "45"
@@ -537,12 +521,28 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../Classes/Controllers/GameController.cpp"
-            timestampString = "448729291.946763"
+            filePath = "../Classes/Actors/Player.cpp"
+            timestampString = "448783574.072523"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "230"
-            endingLineNumber = "230"
+            startingLineNumber = "44"
+            endingLineNumber = "44"
+            landmarkName = "Player::update(float delta)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/Controllers/GameController.cpp"
+            timestampString = "448810410.957348"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "252"
+            endingLineNumber = "252"
             landmarkName = "GameController::onEnterDebug()"
             landmarkType = "5">
          </BreakpointContent>
@@ -554,11 +554,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Actors/Enemies.cpp"
-            timestampString = "448727490.735859"
+            timestampString = "448809581.224699"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "64"
-            endingLineNumber = "64"
+            startingLineNumber = "74"
+            endingLineNumber = "74"
             landmarkName = "Circle::update(float delta)"
             landmarkType = "5">
          </BreakpointContent>
@@ -576,6 +576,494 @@
             startingLineNumber = "30"
             endingLineNumber = "30"
             landmarkName = "ParticleSystemHelper::spawnExplosion(ExplosionType explosionType, const cocos2d::Vec2&amp; pos)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/Actors/Enemies.cpp"
+            timestampString = "448809581.224699"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
+            landmarkName = "Enemy::beginTrack()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/Controllers/ParticleSystemHelper.cpp"
+            timestampString = "448785986.459883"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "135"
+            endingLineNumber = "135"
+            landmarkName = "ParticleSystemHelper::spawnActorWidget(ActorWidgetType actorWidgetType, const cocos2d::Vec2&amp; pos, GameActor* actor)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/Controllers/EnemiesGenerator.cpp"
+            timestampString = "448806715.985659"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
+            landmarkName = "EnemiesGenerator::generateEnemiesByTime(Enemy::EnemyType type, float durationTime, float lastTime)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/Controllers/EnemiesGenerator.cpp"
+            timestampString = "448806715.985659"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
+            landmarkName = "EnemiesGenerator::generateEnemiesByTime(Enemy::EnemyType type, float durationTime, float lastTime)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/Controllers/EnemiesGenerator.cpp"
+            timestampString = "448802145.454747"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "27"
+            endingLineNumber = "27"
+            landmarkName = "EnemiesGenerator::generateOneEnemyOnRandomPos(cocos2d::Node* node, void* data)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/Controllers/EnemiesGenerator.cpp"
+            timestampString = "448806715.985659"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
+            landmarkName = "EnemiesGenerator::generateEnemiesByTime(Enemy::EnemyType type, float durationTime, float lastTime)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../cocos2d/cocos/2d/CCActionInterval.cpp"
+            timestampString = "448796787.718001"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "531"
+            endingLineNumber = "531"
+            landmarkName = "RepeatForever::step(float dt)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../cocos2d/cocos/2d/CCActionInterval.cpp"
+            timestampString = "448796790.063893"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "530"
+            endingLineNumber = "530"
+            landmarkName = "RepeatForever::step(float dt)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/Controllers/EnemiesGenerator.cpp"
+            timestampString = "448806715.985659"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
+            landmarkName = "EnemiesGenerator::generateEnemiesByTime(Enemy::EnemyType type, float durationTime, float lastTime)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../cocos2d/cocos/2d/CCActionInterval.cpp"
+            timestampString = "448796964.956675"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "301"
+            endingLineNumber = "301"
+            landmarkName = "Sequence::update(float t)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../cocos2d/cocos/2d/CCActionInterval.cpp"
+            timestampString = "448797011.343549"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "323"
+            endingLineNumber = "323"
+            landmarkName = "Sequence::update(float t)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../cocos2d/cocos/2d/CCActionInterval.cpp"
+            timestampString = "448797019.977655"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "338"
+            endingLineNumber = "338"
+            landmarkName = "Sequence::update(float t)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../cocos2d/cocos/2d/CCActionInterval.cpp"
+            timestampString = "448797085.835526"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "304"
+            endingLineNumber = "304"
+            landmarkName = "Sequence::update(float t)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../cocos2d/cocos/2d/CCActionInterval.cpp"
+            timestampString = "448797106.689645"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "348"
+            endingLineNumber = "348"
+            landmarkName = "Sequence::update(float t)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../cocos2d/cocos/2d/CCActionInterval.cpp"
+            timestampString = "448797107.473216"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "353"
+            endingLineNumber = "353"
+            landmarkName = "Sequence::update(float t)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../cocos2d/cocos/2d/CCActionInterval.cpp"
+            timestampString = "448797108.380338"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "358"
+            endingLineNumber = "358"
+            landmarkName = "Sequence::update(float t)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../cocos2d/cocos/2d/CCActionInterval.cpp"
+            timestampString = "448797283.146285"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "284"
+            endingLineNumber = "284"
+            landmarkName = "Sequence::startWithTarget(Node *target)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/Layers/TwoJoysticks.cpp"
+            timestampString = "448799503.847203"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "163"
+            endingLineNumber = "163"
+            landmarkName = "TwoJoysticks::onTouchesBegan(const std::vector&lt;Touch*&gt;&amp; touches, Event *event)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/Controllers/EnemiesGenerator.cpp"
+            timestampString = "448806715.985659"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
+            landmarkName = "EnemiesGenerator::generateEnemiesByTime(Enemy::EnemyType type, float durationTime, float lastTime)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/Controllers/EnemiesGenerator.cpp"
+            timestampString = "448806715.985659"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "79"
+            endingLineNumber = "79"
+            landmarkName = "EnemiesGenerator::generateEnemiesByNum(Enemy::EnemyType type, float durationTime, int num)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../cocos2d/cocos/2d/CCActionInstant.cpp"
+            timestampString = "448802954.675611"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "516"
+            endingLineNumber = "516"
+            landmarkName = "__CCCallFuncND::execute()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/Controllers/EnemiesGenerator.cpp"
+            timestampString = "448806715.985659"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "78"
+            endingLineNumber = "78"
+            landmarkName = "EnemiesGenerator::generateEnemiesByNum(Enemy::EnemyType type, float durationTime, int num)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../cocos2d/cocos/2d/CCActionInstant.h"
+            timestampString = "448804187.720936"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "444"
+            endingLineNumber = "444"
+            landmarkName = "~__CCCallFuncND()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "cocos2d::__CCCallFuncND::~__CCCallFuncND()"
+                  moduleName = "TinyFlare Mac"
+                  urlString = "file:///Users/wanghaibo/Desktop/MyCocos2dxGame/3.4/TinyFlare/cocos2d/build/../cocos/2d/CCActionInstant.h"
+                  timestampString = "448804190.629175"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "444"
+                  endingLineNumber = "444"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "cocos2d::__CCCallFuncND::~__CCCallFuncND()"
+                  moduleName = "TinyFlare Mac"
+                  urlString = "file:///Users/wanghaibo/Desktop/MyCocos2dxGame/3.4/TinyFlare/cocos2d/build/../cocos/2d/CCActionInstant.h"
+                  timestampString = "448804190.629401"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "444"
+                  endingLineNumber = "444"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "non-virtual thunk to cocos2d::__CCCallFuncND::~__CCCallFuncND()"
+                  moduleName = "TinyFlare Mac"
+                  urlString = "file:///Users/wanghaibo/Desktop/MyCocos2dxGame/3.4/TinyFlare/cocos2d/build/../cocos/2d/CCActionInstant.h"
+                  timestampString = "448804190.629585"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "444"
+                  endingLineNumber = "444"
+                  offsetFromSymbolStart = "12">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "non-virtual thunk to cocos2d::__CCCallFuncND::~__CCCallFuncND()"
+                  moduleName = "TinyFlare Mac"
+                  urlString = "file:///Users/wanghaibo/Desktop/MyCocos2dxGame/3.4/TinyFlare/cocos2d/build/../cocos/2d/CCActionInstant.h"
+                  timestampString = "448804190.629759"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "444"
+                  endingLineNumber = "444"
+                  offsetFromSymbolStart = "12">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "cocos2d::__CCCallFuncND::~__CCCallFuncND()"
+                  moduleName = "TinyFlare Mac"
+                  urlString = "file:///Users/wanghaibo/Desktop/MyCocos2dxGame/3.4/TinyFlare/cocos2d/build/../cocos/2d/CCActionInstant.h"
+                  timestampString = "448804190.629932"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "444"
+                  endingLineNumber = "444"
+                  offsetFromSymbolStart = "16">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/Controllers/EnemiesGenerator.cpp"
+            timestampString = "448806931.499831"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
+            landmarkName = "EnemiesGenerator::generateOneEnemyOnPos(cocos2d::Node* node, void* data)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/Actors/Enemies.cpp"
+            timestampString = "448809581.224699"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "105"
+            endingLineNumber = "105"
+            landmarkName = "ColorCircle::onEnterDead()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/Controllers/EnemiesGenerator.cpp"
+            timestampString = "448807144.75852"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
+            landmarkName = "EnemiesGenerator::generateOneEnemyOnPos(cocos2d::Node* node, void* data)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

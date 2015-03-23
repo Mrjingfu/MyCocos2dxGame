@@ -22,7 +22,7 @@ public:
     
     static Bullet* spawnBullet(GameActor::ActorType type, const cocos2d::Vec2& pos, const cocos2d::Vec2& dir, float speed, const std::string& texName);
     
-    static Enemy* spawnEnemy(Enemy::EnemyType enemyType, const cocos2d::Vec2& pos, const cocos2d::Vec2& dir, float speed);
+    static Enemy* spawnEnemy(Enemy::EnemyType enemyType, const cocos2d::Vec2& pos, const cocos2d::Vec2& dir);
     
     bool init(cocos2d::Layer* actorLayer);
     void update(float delta);

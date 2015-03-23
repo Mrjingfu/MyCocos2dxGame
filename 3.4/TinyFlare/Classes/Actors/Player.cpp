@@ -21,14 +21,13 @@ Player::Player()
     m_WeaponType = WT_NORMAL;
     m_pLeftTail = nullptr;
     m_pRightTail = nullptr;
-    m_bIsLive = true;
 }
 Player::~Player()
 {
 }
 void Player::update(float delta)
 {
-    if(!m_bIsLive)
+    if(m_curState == ActorState::AS_DEAD)
         return;
     float maskRotationZ = CC_RADIANS_TO_DEGREES(Vec2::angle(m_Orientation, Vec2::UNIT_Y));
     if (m_Orientation.x < 0)
@@ -82,18 +81,20 @@ void Player::loadMaskModel(const std::string& texName)
     m_pMaskModel->setScale(0.5f);
     addChild(m_pMaskModel);
     
-    m_pLeftTail = ParticleSystemHelper::spawnPlayerWidget(PlayerWidgetType::PWT_TAIL, getLeftTailLocalPos());
-    m_pRightTail = ParticleSystemHelper::spawnPlayerWidget(PlayerWidgetType::PWT_TAIL, getRightTailLocalPos());
+    m_pLeftTail = ParticleSystemHelper::spawnActorWidget(ActorWidgetType::AWT_PLAYER_TAIL, getLeftTailLocalPos(), this);
+    m_pRightTail = ParticleSystemHelper::spawnActorWidget(ActorWidgetType::AWT_PLAYER_TAIL, getRightTailLocalPos(), this);
+    
+    setActorState(ActorState::AS_UNDERCONTROL);
 }
 void Player::onJoystickUpdateDirection(TwoJoysticks* joystick, const cocos2d::Vec2& dir)
 {
-    if(!m_bIsLive)
+    if(m_curState != ActorState::AS_UNDERCONTROL)
         return;
     setDirection(dir);
 }
 void Player::onJoystickUpdateOrientation(TwoJoysticks* joystick, const cocos2d::Vec2& dir)
 {
-    if(!m_bIsLive)
+    if(m_curState != ActorState::AS_UNDERCONTROL)
         return;
     if(dir == Vec2::ZERO)
         return;
@@ -103,7 +104,7 @@ void Player::onJoystickPressed(TwoJoysticks* joystick, float pressedTime)
 {
     if(!m_bScheduledFire)
     {
-        schedule(schedule_selector(Player::fire), 0.5f, -1, 0);
+        schedule(CC_SCHEDULE_SELECTOR(Player::fire), 0.5f, -1, 0);
         m_bScheduledFire = true;
     }
 }
@@ -111,7 +112,7 @@ void Player::onJoystickReleased(TwoJoysticks* joystick, float pressedTime)
 {
     if(m_bScheduledFire)
     {
-        unschedule(schedule_selector(Player::fire));
+        unschedule(CC_SCHEDULE_SELECTOR(Player::fire));
         m_bScheduledFire = false;
     }
 }
@@ -136,13 +137,13 @@ Vec2 Player::getRightTailLocalPos()
 }
 void Player::fire(float delta)
 {
-    if(!m_bIsLive)
+    if(m_curState != ActorState::AS_UNDERCONTROL)
         return;
     switch (m_WeaponType) {
         case WT_NORMAL:
             {
                 ActorsManager::spawnBullet(GameActor::AT_PLAYER_BULLET, getFireWorldPos(), getOrientation(),m_fMaxSpeed*2.0f,"bullet1.png");
-                ParticleSystemHelper::spawnPlayerWidget(PlayerWidgetType::PWT_FIRE_FLARE, getFireLocalPos());
+                ParticleSystemHelper::spawnActorWidget(ActorWidgetType::AWT_FIRE_FLARE, getFireLocalPos(), this);
             }
             break;
             
@@ -150,16 +151,8 @@ void Player::fire(float delta)
             break;
     }
 }
-void Player::die()
+
+void Player::onEnterDead()
 {
     ParticleSystemHelper::spawnExplosion(ExplosionType::ET_EXPLOSION_BLUE, getPosition());
-    m_bIsLive = false;
-}
-void Player::respawn()
-{
-    m_bIsLive = true;
-}
-bool Player::islive() const
-{
-    return m_bIsLive;
 }

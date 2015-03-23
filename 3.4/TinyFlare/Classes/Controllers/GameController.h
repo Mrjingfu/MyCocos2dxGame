@@ -12,6 +12,7 @@
 #include "cocos2d.h"
 #include "TwoJoysticks.h"
 #include "Player.h"
+#include "EnemiesGenerator.h"
 typedef enum {
     GS_SPLASH = 0,
     GS_MENU,
@@ -36,8 +37,12 @@ public:
     Player* getPlayer() const;
     cocos2d::Layer* getGameLayer() const;
     cocos2d::Camera* getActorCamera() const;
+    EnemiesGenerator* getEnemiesGenerator() const;
     
     cocos2d::Size getBoundSize() const;
+    
+    cocos2d::Vec2 getPlayerPos();
+    cocos2d::Vec2 getPlayerOrientation();
     
     void checkBounce(GameActor* actor);
 private:
@@ -57,6 +62,7 @@ private:
     void onExitDebug();
 private:
     cocos2d::Layer*     m_pGameLayer;
+    EnemiesGenerator*   m_pEnemiesGenerator;
     cocos2d::Camera*    m_pActorCamera;
     TwoJoysticks*       m_pTwoJoysticks;
     cocos2d::Layer*     m_pMainLayer;

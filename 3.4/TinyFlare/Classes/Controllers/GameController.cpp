@@ -8,7 +8,7 @@
 
 #include "GameController.h"
 #include "ActorsManager.h"
-#include "EnemiesGeneratorHelper.h"
+
 USING_NS_CC;
 
 GameController* g_pGameControllerInstance = nullptr;
@@ -27,6 +27,7 @@ GameController::GameController()
     m_pTwoJoysticks     = nullptr;
     m_pActorCamera      = nullptr;
     m_BoundSize         = Size(2048, 1536);
+    m_pEnemiesGenerator = nullptr;
     m_curGameState      = GS_UNKNOWN;
 }
 GameController::~GameController()
@@ -37,6 +38,10 @@ bool GameController::init(Layer* pMainLayer)
     if(pMainLayer == nullptr)
         return false;
     m_pMainLayer = pMainLayer;
+    
+    m_pEnemiesGenerator = EnemiesGenerator::create();
+    if(m_pEnemiesGenerator)
+        m_pMainLayer->addChild(m_pEnemiesGenerator);
     
     auto size = Director::getInstance()->getWinSize();
     
@@ -87,7 +92,7 @@ void GameController::update(float delta)
 {
     if(m_pActorCamera && m_pPlayer)
     {
-        if(m_pPlayer->islive())
+        if(m_pPlayer->getActorState() != ActorState::AS_DEAD)
         {
             Vec2 camPos = m_pActorCamera->getPosition();
             Vec2 camVelocity = m_pPlayer->getVelocity()*0.8f;
@@ -165,12 +170,26 @@ Camera* GameController::getActorCamera() const
 {
     return m_pActorCamera;
 }
-
+EnemiesGenerator* GameController::getEnemiesGenerator() const
+{
+    return m_pEnemiesGenerator;
+}
 Size GameController::getBoundSize() const
 {
     return m_BoundSize;
 }
-
+Vec2 GameController::getPlayerPos()
+{
+    if(m_pPlayer)
+        return m_pPlayer->getPosition();
+    return Vec2::ZERO;
+}
+cocos2d::Vec2 GameController::getPlayerOrientation()
+{
+    if(m_pPlayer)
+        return m_pPlayer->getOrientation();
+    return Vec2::ZERO;
+}
 void GameController::checkBounce(GameActor* actor)
 {
     if(actor == nullptr)
@@ -227,13 +246,10 @@ void GameController::onExitPause()
 
 void GameController::onEnterDebug()
 {
-    for (int i = 0; i<10; ++i) {
-        Vec2 playerPos = getPlayer()->getPosition();
-        Rect rect = Rect(-m_BoundSize.width*0.5f, -m_BoundSize.height*0.5f, m_BoundSize.width, m_BoundSize.height);
-        Vec2 enemyPos = EnemiesGeneratorHelper::getRandomPosOutScreenInBoundRect(playerPos, rect);
-        Vec2 dir = playerPos - enemyPos;
-        dir.normalize();
-        ActorsManager::getInstance()->spawnEnemy(Enemy::EnemyType::ET_CIRCLE, enemyPos, dir, cocos2d::random(2.0f, 3.0f));
+    if(m_pEnemiesGenerator)
+    {
+        m_pEnemiesGenerator->generateEnemiesByTime(Enemy::ET_CIRCLE, 1.0f);
+        m_pEnemiesGenerator->generateEnemiesByNum(Enemy::ET_CIRCLE_COLORED, 5.0f, 5);
     }
 }
 void GameController::onExitDebug()

@@ -10,7 +10,7 @@
 #define __TinyFlare__ParticleSystemHelper__
 
 #include "cocos2d.h"
-
+#include "GameActor.h"
 typedef enum {
     ET_EXPLOSION_BLUE = 0,
     ET_EXPLOSION_WHITE,
@@ -19,14 +19,15 @@ typedef enum {
 } ExplosionType;
 
 typedef enum {
-    PWT_FIRE_FLARE = 0,
-    PWT_TAIL
-} PlayerWidgetType;
+    AWT_FIRE_FLARE = 0,
+    AWT_PLAYER_TAIL,
+    AWT_COLOR_ENEMY_TAIL
+} ActorWidgetType;
 class ParticleSystemHelper
 {
 public:
     static cocos2d::ParticleSystemQuad* spawnExplosion(ExplosionType explosionType, const cocos2d::Vec2& pos);
-    static cocos2d::ParticleSystemQuad* spawnPlayerWidget(PlayerWidgetType playerWidgetType, const cocos2d::Vec2& pos);
+    static cocos2d::ParticleSystemQuad* spawnActorWidget(ActorWidgetType actorWidgetType, const cocos2d::Vec2& pos, GameActor* actor);
 };
 
 #endif /* defined(__TinyFlare__ParticleSystemHelper__) */

@@ -16,6 +16,7 @@ class Enemy : public GameActor
     friend class ActorsManager;
 public:
     typedef enum{
+        ET_UNKNOWN = 0,         ///未知
         ET_CIRCLE,              ///线性追踪
         ET_CIRCLE_COLORED,      ///死后分裂CIRCLE，死后有几率掉落屏幕炸弹
         ET_TRIANGLE,            ///快速追踪，
@@ -26,14 +27,14 @@ public:
         ET_HEXAGON_COLORED,     ///单独出现，生成HEXAGON,编制激光，死后生成黑洞静力场，死后有几率掉落武器强化道具
         ET_STAR,                ///慢速躲避，五星旋转弹幕
         ET_STAR_COLORED,        ///慢速躲避，快速五星旋转弹幕， 死后几率五方向弹幕
-        ET_UNKNOWN
+        
     } EnemyType;
     
     cocos2d::Color3B getColor();
     void setColor(const cocos2d::Color3B& color);
     
     virtual void fire(float delta){};
-    virtual void die(){};
+    virtual void beginTrack();
 protected:
     Enemy();
     virtual ~Enemy();
@@ -45,7 +46,7 @@ class Circle : public Enemy
 {
     friend class ActorsManager;
 public:
-    virtual void die() override;
+    virtual void onEnterDead() override;
 protected:
     Circle();
     virtual ~Circle();
@@ -53,5 +54,15 @@ protected:
     virtual void update(float delta) override;
 };
 
+/// 线性追踪
+class ColorCircle : public Circle
+{
+    friend class ActorsManager;
+public:
+    virtual void onEnterDead() override;
+protected:
+    ColorCircle();
+    virtual ~ColorCircle();
+};
 
 #endif /* defined(__Geometry_Wars__Enemies__) */

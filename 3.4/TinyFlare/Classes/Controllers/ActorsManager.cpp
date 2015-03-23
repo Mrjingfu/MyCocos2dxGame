@@ -56,7 +56,7 @@ Bullet* ActorsManager::spawnBullet(GameActor::ActorType type, const cocos2d::Vec
         return nullptr;
     }
 }
-Enemy* ActorsManager::spawnEnemy(Enemy::EnemyType enemyType, const Vec2& pos, const Vec2& dir, float speed)
+Enemy* ActorsManager::spawnEnemy(Enemy::EnemyType enemyType, const Vec2& pos, const Vec2& dir)
 {
     if(!ActorsManager::getInstance()->m_pActorLayer)
         return nullptr;
@@ -70,16 +70,59 @@ Enemy* ActorsManager::spawnEnemy(Enemy::EnemyType enemyType, const Vec2& pos, co
                     enemy->setPosition(pos);
                     enemy->setDirection(dir);
                     enemy->setOrientation(dir);
-                    enemy->setMaxSpeed(speed);
                     enemy->setCascadeOpacityEnabled(true);
                     enemy->setOpacity(0);
-                    enemy->setScale(0.5f);
+                    enemy->setScale(0.2f);
+                    enemy->setActorState(ActorState::AS_UNDERCONTROL);
                     //enemy->setColor(Color3B(253,255,112));
                     //enemy->setColor(Color3B(cocos2d::random(230,254),cocos2d::random(110,180),cocos2d::random(220,240)));
                     enemy->caculateRadius();
                     ActorsManager::getInstance()->m_Enemies.pushBack(enemy);
                     ActorsManager::getInstance()->m_pActorLayer->addChild(enemy);
                     ActorsManager::getInstance()->m_pActorLayer->setCameraMask((unsigned short)CameraFlag::USER1);
+                    
+                    EaseSineOut* easeOut1 = EaseSineOut::create(ScaleTo::create(1.5f, 0.8f));
+                    EaseSineOut* easeOut2 = EaseSineOut::create(FadeIn::create(1.5f));
+                    
+                    DelayTime* delay = DelayTime::create(0.2f);
+                    CallFunc* callFunc = CallFunc::create(CC_CALLBACK_0(Enemy::beginTrack,enemy));
+                    Sequence* sequence = Sequence::createWithTwoActions(delay, callFunc);
+                    
+                    Spawn* spawn = Spawn::create(easeOut1, easeOut2, sequence, NULL);
+                    enemy->runAction(spawn);
+                    enemy->autorelease();
+                }
+                else
+                    CC_SAFE_DELETE(enemy);
+            }
+            break;
+        case Enemy::EnemyType::ET_CIRCLE_COLORED:
+            {
+                enemy = new(std::nothrow) ColorCircle();
+                if (enemy && enemy->init()) {
+                    enemy->loadModel("circle.png");
+                    enemy->getModel()->setVisible(false);
+                    enemy->setPosition(pos);
+                    enemy->setDirection(dir);
+                    enemy->setOrientation(dir);
+                    enemy->setCascadeOpacityEnabled(true);
+                    enemy->setOpacity(0);
+                    enemy->setScale(0.2f);
+                    enemy->setActorState(ActorState::AS_UNDERCONTROL);
+                    enemy->caculateRadius();
+                    ActorsManager::getInstance()->m_Enemies.pushBack(enemy);
+                    ActorsManager::getInstance()->m_pActorLayer->addChild(enemy);
+                    ActorsManager::getInstance()->m_pActorLayer->setCameraMask((unsigned short)CameraFlag::USER1);
+                    
+                    ParticleSystemHelper::spawnActorWidget(ActorWidgetType::AWT_COLOR_ENEMY_TAIL, Vec2::ZERO, enemy);
+                    
+                    EaseSineOut* easeOut1 = EaseSineOut::create(ScaleTo::create(1.5f, 0.8f));
+                    EaseSineOut* easeOut2 = EaseSineOut::create(FadeIn::create(1.5f));
+                    Spawn* spawn = Spawn::createWithTwoActions(easeOut1, easeOut2);
+                    
+                    CallFunc* callFunc = CallFunc::create(CC_CALLBACK_0(Enemy::beginTrack,enemy));
+                    Sequence* sequence = Sequence::createWithTwoActions(spawn, callFunc);
+                    enemy->runAction(sequence);
                     enemy->autorelease();
                 }
                 else
@@ -88,13 +131,6 @@ Enemy* ActorsManager::spawnEnemy(Enemy::EnemyType enemyType, const Vec2& pos, co
             break;
         default:
             break;
-    }
-    if(enemy)
-    {
-        EaseSineOut* easeOut1 = EaseSineOut::create(ScaleTo::create(2.0f, 0.8f));
-        EaseSineOut* easeOut2 = EaseSineOut::create(FadeIn::create(2.0f));
-        Spawn* spawn = Spawn::createWithTwoActions(easeOut1, easeOut2);
-        enemy->runAction(spawn);
     }
     return enemy;
 }
@@ -109,7 +145,7 @@ bool ActorsManager::init(cocos2d::Layer* actorLayer)
 void ActorsManager::update(float delta)
 {
     Size boundSize =  GameController::getInstance()->getBoundSize();
-    Vec2 playerPos = GameController::getInstance()->getPlayer()->getPosition();
+    Vec2 playerPos = GameController::getInstance()->getPlayerPos();
     float playerRadius = GameController::getInstance()->getPlayer()->getRadius();
     
     CCLOG("Current bullets number %zd", m_Bullets.size());
@@ -174,7 +210,7 @@ void ActorsManager::update(float delta)
                         float enemyRadius = enemy->getRadius();
                         float dist = enemy->getPosition().distance(bulletPos);
                         if (dist <= enemyRadius) {
-                            enemy->die();
+                            enemy->setActorState(ActorState::AS_DEAD);
                             eraseEnemy(enemy);
                             eraseBullet(bullet);
                             break;
@@ -184,12 +220,12 @@ void ActorsManager::update(float delta)
             }
             else if(bullet->getType() == GameActor::AT_ENEMY_BULLET)
             {
-                if(GameController::getInstance()->getPlayer()->islive())
+                if(GameController::getInstance()->getPlayer()->getActorState() != ActorState::AS_DEAD)
                 {
                     float dist = playerPos.distance(bulletPos);
                     if(dist <= playerRadius)
                     {
-                        GameController::getInstance()->getPlayer()->die();
+                        GameController::getInstance()->getPlayer()->setActorState(ActorState::AS_DEAD);
                         eraseBullet(bullet);
                         break;
                     }
@@ -203,12 +239,12 @@ void ActorsManager::update(float delta)
         Enemy* enemy = m_Enemies.at(i);
         if(enemy)
         {
-            if(GameController::getInstance()->getPlayer()->islive())
+            if(GameController::getInstance()->getPlayer()->getActorState() != ActorState::AS_DEAD)
             {
                 float dist = enemy->getPosition().distance(playerPos);
                 if (dist <= playerRadius) {
-                    GameController::getInstance()->getPlayer()->die();
-                    enemy->die();
+                    GameController::getInstance()->getPlayer()->setActorState(ActorState::AS_DEAD);
+                    enemy->setActorState(ActorState::AS_DEAD);
                     eraseEnemy(enemy);
                     continue;
                 }
