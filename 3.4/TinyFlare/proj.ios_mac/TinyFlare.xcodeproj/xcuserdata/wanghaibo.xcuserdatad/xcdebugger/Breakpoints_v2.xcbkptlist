@@ -202,11 +202,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Controllers/ActorsManager.cpp"
-            timestampString = "448880981.717469"
+            timestampString = "448893243.647157"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "223"
-            endingLineNumber = "223"
+            startingLineNumber = "254"
+            endingLineNumber = "254"
             landmarkName = "ActorsManager::update(float delta)"
             landmarkType = "5">
          </BreakpointContent>
@@ -234,11 +234,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Controllers/ParticleSystemHelper.cpp"
-            timestampString = "448880858.238136"
+            timestampString = "448893243.647157"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "116"
-            endingLineNumber = "116"
+            startingLineNumber = "135"
+            endingLineNumber = "135"
             landmarkName = "ParticleSystemHelper::spawnActorWidget(ActorWidgetType actorWidgetType, const cocos2d::Vec2&amp; pos, GameActor* actor)"
             landmarkType = "5">
          </BreakpointContent>
@@ -282,11 +282,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Controllers/ParticleSystemHelper.cpp"
-            timestampString = "448880858.238136"
+            timestampString = "448893243.647157"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "123"
-            endingLineNumber = "123"
+            startingLineNumber = "142"
+            endingLineNumber = "142"
             landmarkName = "ParticleSystemHelper::spawnActorWidget(ActorWidgetType actorWidgetType, const cocos2d::Vec2&amp; pos, GameActor* actor)"
             landmarkType = "5">
          </BreakpointContent>
@@ -330,11 +330,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Controllers/ParticleSystemHelper.cpp"
-            timestampString = "448880858.238136"
+            timestampString = "448893243.647157"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "71"
-            endingLineNumber = "71"
+            startingLineNumber = "90"
+            endingLineNumber = "90"
             landmarkName = "ParticleSystemHelper::spawnExplosion(ExplosionType explosionType, const cocos2d::Vec2&amp; pos)"
             landmarkType = "5">
          </BreakpointContent>
@@ -346,11 +346,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Controllers/ActorsManager.cpp"
-            timestampString = "448880981.717469"
+            timestampString = "448893243.647157"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "255"
-            endingLineNumber = "255"
+            startingLineNumber = "286"
+            endingLineNumber = "286"
             landmarkName = "ActorsManager::update(float delta)"
             landmarkType = "5">
          </BreakpointContent>
@@ -362,11 +362,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Controllers/ActorsManager.cpp"
-            timestampString = "448880981.717469"
+            timestampString = "448893243.647157"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "243"
-            endingLineNumber = "243"
+            startingLineNumber = "274"
+            endingLineNumber = "274"
             landmarkName = "ActorsManager::update(float delta)"
             landmarkType = "5">
          </BreakpointContent>
@@ -378,11 +378,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Controllers/ParticleSystemHelper.cpp"
-            timestampString = "448880858.238136"
+            timestampString = "448893243.647157"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "106"
-            endingLineNumber = "106"
+            startingLineNumber = "125"
+            endingLineNumber = "125"
             landmarkName = "ParticleSystemHelper::spawnActorWidget(ActorWidgetType actorWidgetType, const cocos2d::Vec2&amp; pos, GameActor* actor)"
             landmarkType = "5">
          </BreakpointContent>
@@ -586,11 +586,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Controllers/ParticleSystemHelper.cpp"
-            timestampString = "448880858.238136"
+            timestampString = "448893243.647157"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "151"
-            endingLineNumber = "151"
+            startingLineNumber = "170"
+            endingLineNumber = "170"
             landmarkName = "ParticleSystemHelper::spawnActorWidget(ActorWidgetType actorWidgetType, const cocos2d::Vec2&amp; pos, GameActor* actor)"
             landmarkType = "5">
          </BreakpointContent>
@@ -1058,11 +1058,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Controllers/ActorsManager.cpp"
-            timestampString = "448880891.614433"
+            timestampString = "448893243.647157"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "165"
-            endingLineNumber = "165"
+            startingLineNumber = "164"
+            endingLineNumber = "164"
             landmarkName = "ActorsManager::spawnEnemy(Enemy::EnemyType enemyType, const Vec2&amp; pos, const Vec2&amp; dir)"
             landmarkType = "5">
          </BreakpointContent>

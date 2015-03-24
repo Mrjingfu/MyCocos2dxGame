@@ -17,6 +17,7 @@ typedef enum {
     AS_IDLE,
     AS_DEAD,
     AS_CHARGE,
+    AS_FLEE,
     AS_UNKNOWN
 } ActorState;
 
@@ -48,6 +49,9 @@ protected:
     
     virtual void onEnterCharge(){};
     virtual void onExitCharge(){};
+    
+    virtual void onEnterFlee(){};
+    virtual void onExitFlee(){};
 public:
     virtual void onEnter();
     virtual void onExit();

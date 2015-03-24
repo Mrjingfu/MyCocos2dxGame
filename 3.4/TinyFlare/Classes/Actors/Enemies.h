@@ -86,12 +86,27 @@ protected:
     virtual ~ColorTriangle();
 public:
     virtual void update(float delta) override;
-    virtual void onEnterCharge();
-    virtual void onExitCharge();
+    virtual void onEnterCharge() override;
+    virtual void onExitCharge() override;
 private:
     float   m_fTrackTime;
     float   m_fChargeTime;
     float   m_fIdleTime;
+};
+
+///躲避攻击，射击发射子弹
+class Diamond : public Enemy
+{
+    friend class ActorsManager;
+public:
+    virtual void update(float delta) override;
+    virtual void onEnterDead() override;
+    virtual void onEnterFlee() override;
+    virtual void onExitFlee() override;
+    virtual void beginTrack();
+protected:
+    Diamond();
+    virtual ~Diamond();
 };
 
 #endif /* defined(__Geometry_Wars__Enemies__) */

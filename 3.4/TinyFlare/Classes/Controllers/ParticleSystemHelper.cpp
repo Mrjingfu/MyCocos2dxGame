@@ -50,6 +50,7 @@ ParticleSystemQuad* ParticleSystemHelper::spawnExplosion(ExplosionType explosion
                 GameController::getInstance()->getGameLayer()->addChild(explosion);
                 GameController::getInstance()->getGameLayer()->setCameraMask((unsigned short)CameraFlag::USER1);
             }
+            break;
         case ET_EXPLOSION_YELLOW:
             {
                 explosion= ParticleSystemQuad::create("explosion.plist");
@@ -66,6 +67,24 @@ ParticleSystemQuad* ParticleSystemHelper::spawnExplosion(ExplosionType explosion
                 GameController::getInstance()->getGameLayer()->addChild(explosion);
                 GameController::getInstance()->getGameLayer()->setCameraMask((unsigned short)CameraFlag::USER1);
             }
+            break;
+        case ET_EXPLOSION_GREEN:
+            {
+                explosion= ParticleSystemQuad::create("explosion.plist");
+                if(!explosion)
+                {
+                    CCLOG("Load explosion particle system failed! file: explosion.plist");
+                    return nullptr;
+                }
+                explosion->setScale(0.4f);
+                explosion->setStartColor(Color4F(212.0f/255.0f, 242.0f/255.0f, 128.0f/255.0f, 1.0f));
+                explosion->setLife(0.5f);
+                explosion->setPosition(pos);
+                explosion->setAutoRemoveOnFinish(true);
+                GameController::getInstance()->getGameLayer()->addChild(explosion);
+                GameController::getInstance()->getGameLayer()->setCameraMask((unsigned short)CameraFlag::USER1);
+            }
+            break;
         case ET_EXPLOSION_BULLET_COLLISION:
             {
                 explosion= ParticleSystemQuad::create("collisionexplosion.plist");

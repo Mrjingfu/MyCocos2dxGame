@@ -115,6 +115,9 @@ void GameActor::setActorState(ActorState state)
         case ActorState::AS_CHARGE:
             onExitCharge();
             break;
+        case ActorState::AS_FLEE:
+            onExitCharge();
+            break;
         default:
             break;
     }
@@ -137,6 +140,8 @@ void GameActor::setActorState(ActorState state)
         case ActorState::AS_CHARGE:
             onEnterCharge();
             break;
+        case ActorState::AS_FLEE:
+            onEnterFlee();
         default:
             break;
     }
