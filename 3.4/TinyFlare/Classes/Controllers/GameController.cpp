@@ -248,8 +248,8 @@ void GameController::onEnterDebug()
 {
     if(m_pEnemiesGenerator)
     {
-        m_pEnemiesGenerator->generateEnemiesByTime(Enemy::ET_CIRCLE, 1.0f);
-        m_pEnemiesGenerator->generateEnemiesByNum(Enemy::ET_CIRCLE_COLORED, 5.0f, 5);
+        //m_pEnemiesGenerator->generateEnemiesByTime(Enemy::ET_TRIANGLE, 1.0f);
+        m_pEnemiesGenerator->generateEnemiesByNum(Enemy::ET_TRIANGLE_COLORED, 5.0f, 1);
     }
 }
 void GameController::onExitDebug()

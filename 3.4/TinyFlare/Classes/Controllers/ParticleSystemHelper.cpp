@@ -50,6 +50,22 @@ ParticleSystemQuad* ParticleSystemHelper::spawnExplosion(ExplosionType explosion
                 GameController::getInstance()->getGameLayer()->addChild(explosion);
                 GameController::getInstance()->getGameLayer()->setCameraMask((unsigned short)CameraFlag::USER1);
             }
+        case ET_EXPLOSION_YELLOW:
+            {
+                explosion= ParticleSystemQuad::create("explosion.plist");
+                if(!explosion)
+                {
+                    CCLOG("Load explosion particle system failed! file: explosion.plist");
+                    return nullptr;
+                }
+                explosion->setScale(0.4f);
+                explosion->setStartColor(Color4F(253.0f/255.0f, 1.0f, 112.0f/255.0f, 1.0f));
+                explosion->setLife(0.5f);
+                explosion->setPosition(pos);
+                explosion->setAutoRemoveOnFinish(true);
+                GameController::getInstance()->getGameLayer()->addChild(explosion);
+                GameController::getInstance()->getGameLayer()->setCameraMask((unsigned short)CameraFlag::USER1);
+            }
         case ET_EXPLOSION_BULLET_COLLISION:
             {
                 explosion= ParticleSystemQuad::create("collisionexplosion.plist");
@@ -130,7 +146,7 @@ ParticleSystemQuad* ParticleSystemHelper::spawnActorWidget(ActorWidgetType actor
                 actor->setCameraMask((unsigned short)CameraFlag::USER1);
             }
             break;
-        case ActorWidgetType::AWT_COLOR_ENEMY_TAIL:
+        case ActorWidgetType::AWT_COLOR_CIRCLE_TAIL:
             {
                 widget = ParticleSystemQuad::create("colorgeometry.plist");
                 if(!widget)
@@ -141,6 +157,27 @@ ParticleSystemQuad* ParticleSystemHelper::spawnActorWidget(ActorWidgetType actor
                 widget->setPositionType(ParticleSystem::PositionType::RELATIVE);
                 widget->setPosition(pos);
                 widget->setScale(0.5f);
+                widget->setAutoRemoveOnFinish(true);
+                actor->addChild(widget);
+                actor->setCameraMask((unsigned short)CameraFlag::USER1);
+            }
+            break;
+        case ActorWidgetType::AWT_COLOR_TRIANGLE_TAIL:
+            {
+                widget = ParticleSystemQuad::create("colorgeometry.plist");
+                if(!widget)
+                {
+                    CCLOG("Load actor widget particle system failed! file: colorgeometry.plist");
+                    return nullptr;
+                }
+                widget->setPositionType(ParticleSystem::PositionType::FREE);
+                widget->setPosition(pos);
+                widget->setTotalParticles(50);
+                widget->setSpeed(0);
+                widget->setSpeedVar(0);
+                widget->setScale(0.5f);
+                Texture2D* texture = Director::getInstance()->getTextureCache()->addImage("triangle.png");
+                widget->setTexture(texture);
                 widget->setAutoRemoveOnFinish(true);
                 actor->addChild(widget);
                 actor->setCameraMask((unsigned short)CameraFlag::USER1);

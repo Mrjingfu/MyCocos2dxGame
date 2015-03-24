@@ -14,6 +14,7 @@
 typedef enum {
     ET_EXPLOSION_BLUE = 0,
     ET_EXPLOSION_WHITE,
+    ET_EXPLOSION_YELLOW,
     ET_EXPLOSION_BULLET_COLLISION,
     ET_EXPLOSION_ACTOR_COLLISION
 } ExplosionType;
@@ -21,7 +22,8 @@ typedef enum {
 typedef enum {
     AWT_FIRE_FLARE = 0,
     AWT_PLAYER_TAIL,
-    AWT_COLOR_ENEMY_TAIL
+    AWT_COLOR_CIRCLE_TAIL,
+    AWT_COLOR_TRIANGLE_TAIL
 } ActorWidgetType;
 class ParticleSystemHelper
 {

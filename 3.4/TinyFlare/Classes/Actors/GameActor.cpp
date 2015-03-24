@@ -79,7 +79,12 @@ void GameActor::caculateRadius()
         Vec2 min = Vec2(rect.getMaxX(), rect.getMaxY());
         Vec2 max = Vec2(rect.getMinX(), rect.getMinY());
         m_fRadius = max.distance(min) * 0.5f;
-        m_fRadius *= getScale();
+        float scaleX = getScaleX();
+        float scaleY = getScaleY();
+        if(scaleX == scaleY)
+            m_fRadius *= getScale();
+        else
+            m_fRadius *= MAX(scaleX, scaleY);
     }
 }
 void GameActor::updateOrientation()
@@ -107,6 +112,9 @@ void GameActor::setActorState(ActorState state)
         case ActorState::AS_DEAD:
             onExitDead();
             break;
+        case ActorState::AS_CHARGE:
+            onExitCharge();
+            break;
         default:
             break;
     }
@@ -125,6 +133,9 @@ void GameActor::setActorState(ActorState state)
             break;
         case ActorState::AS_DEAD:
             onEnterDead();
+            break;
+        case ActorState::AS_CHARGE:
+            onEnterCharge();
             break;
         default:
             break;

@@ -35,6 +35,8 @@ public:
     
     virtual void fire(float delta){};
     virtual void beginTrack();
+    
+    virtual void update(float delta) override;
 protected:
     Enemy();
     virtual ~Enemy();
@@ -50,8 +52,6 @@ public:
 protected:
     Circle();
     virtual ~Circle();
-    
-    virtual void update(float delta) override;
 };
 
 /// 线性追踪
@@ -63,6 +63,35 @@ public:
 protected:
     ColorCircle();
     virtual ~ColorCircle();
+};
+
+/// 快速追踪
+class Triangle : public Enemy
+{
+    friend class ActorsManager;
+public:
+    virtual void onEnterDead() override;
+    virtual void beginTrack();
+protected:
+    Triangle();
+    virtual ~Triangle();
+};
+
+/// 快速追踪，会长距离直线冲锋，死后有几率掉落防护罩
+class ColorTriangle : public Triangle
+{
+    friend class ActorsManager;
+protected:
+    ColorTriangle();
+    virtual ~ColorTriangle();
+public:
+    virtual void update(float delta) override;
+    virtual void onEnterCharge();
+    virtual void onExitCharge();
+private:
+    float   m_fTrackTime;
+    float   m_fChargeTime;
+    float   m_fIdleTime;
 };
 
 #endif /* defined(__Geometry_Wars__Enemies__) */
