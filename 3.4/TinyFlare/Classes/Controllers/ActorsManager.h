@@ -20,7 +20,7 @@ class ActorsManager : public cocos2d::Ref
 public:
     static ActorsManager* getInstance();
     
-    static Bullet* spawnBullet(GameActor::ActorType type, const cocos2d::Vec2& pos, const cocos2d::Vec2& dir, float speed, const std::string& texName);
+    static Bullet* spawnBullet(GameActor::ActorType type, const cocos2d::Vec2& pos, const cocos2d::Vec2& dir, float speed, const std::string& texName, const cocos2d::Color3B& colormask = cocos2d::Color3B::WHITE, float scaleX = 1.0f, float scaleY = 1.0f);
     
     static Enemy* spawnEnemy(Enemy::EnemyType enemyType, const cocos2d::Vec2& pos, const cocos2d::Vec2& dir);
     

@@ -16,6 +16,7 @@
 typedef enum {
     GS_SPLASH = 0,
     GS_MENU,
+    GS_LEVEL_FROZEN,
     GS_GAME,
     GS_PAUSE,
     GS_DEBUG,

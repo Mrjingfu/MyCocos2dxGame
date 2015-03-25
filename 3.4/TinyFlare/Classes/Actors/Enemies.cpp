@@ -9,6 +9,7 @@
 #include "Enemies.h"
 #include "GameController.h"
 #include "ParticleSystemHelper.h"
+#include "ActorsManager.h"
 USING_NS_CC;
 Enemy::Enemy()
 {
@@ -30,6 +31,8 @@ void Enemy::update(float delta)
         }
         else
             setDirection(Vec2::ZERO);
+        
+        m_Orientation = m_Direction;
     }
     
     float mainRotationZ = CC_RADIANS_TO_DEGREES(Vec2::angle(m_Direction, Vec2::UNIT_Y));
@@ -160,6 +163,8 @@ void ColorTriangle::update(float delta)
         }
         else
             setDirection(Vec2::ZERO);
+        
+        m_Orientation = m_Direction;
     }
     else if(m_curState == ActorState::AS_IDLE)
     {
@@ -184,13 +189,10 @@ void ColorTriangle::update(float delta)
         }
     }
     
-    //if(m_curState != ActorState::AS_CHARGE)
-    {
-        float mainRotationZ = CC_RADIANS_TO_DEGREES(Vec2::angle(m_Direction, Vec2::UNIT_Y));
-        if (m_Direction.x < 0)
-            mainRotationZ = -mainRotationZ;
-        setRotation(mainRotationZ);
-    }
+    float mainRotationZ = CC_RADIANS_TO_DEGREES(Vec2::angle(m_Direction, Vec2::UNIT_Y));
+    if (m_Direction.x < 0)
+        mainRotationZ = -mainRotationZ;
+    setRotation(mainRotationZ);
     
     if(!m_bBounce)
     {
@@ -237,6 +239,7 @@ Diamond::Diamond()
     m_EnemyType = ET_DIAMOND;
     m_fAccel = cocos2d::random(2.0f, 3.0f);
     m_fMaxSpeed = cocos2d::random(1.0f, 2.0f);
+    m_bScheduledFire = false;
 }
 Diamond::~Diamond()
 {
@@ -255,15 +258,55 @@ void Diamond::onEnterDead()
 {
     ParticleSystemHelper::spawnExplosion(ExplosionType::ET_EXPLOSION_GREEN, getPosition());
 }
+void Diamond::onEnterTrack()
+{
+    if(!m_bScheduledFire)
+    {
+        schedule(CC_SCHEDULE_SELECTOR(Diamond::fire), 1.0f, -1, 0);
+        m_bScheduledFire = true;
+    }
+}
+void Diamond::onExitTrack()
+{
+    if(m_bScheduledFire)
+    {
+        unschedule(CC_SCHEDULE_SELECTOR(Diamond::fire));
+        m_bScheduledFire = false;
+    }
+}
 void Diamond::onEnterFlee()
 {
-    m_fAccel = cocos2d::random(8.0f, 10.0f);
+    m_fAccel = cocos2d::random(4.0f, 5.0f);
     m_fMaxSpeed = cocos2d::random(4.0f, 6.0f);
+    if(!m_bScheduledFire)
+    {
+        schedule(CC_SCHEDULE_SELECTOR(Diamond::fire), 2.0f, -1, 0);
+        m_bScheduledFire = true;
+    }
+    
 }
 void Diamond::onExitFlee()
 {
     m_fAccel = cocos2d::random(2.0f, 3.0f);
     m_fMaxSpeed = cocos2d::random(1.0f, 2.0f);
+    if(m_bScheduledFire)
+    {
+        unschedule(CC_SCHEDULE_SELECTOR(Diamond::fire));
+        m_bScheduledFire = false;
+    }
+}
+
+void Diamond::fire(float delta)
+{
+    if(m_curState == ActorState::AS_UNDERCONTROL)
+        return;
+    ActorsManager::spawnBullet(GameActor::AT_ENEMY_BULLET, getFireWorldPos(), getOrientation(),MAX(m_fMaxSpeed*2.0f,10.0f),"bullet2.png", Color3B(64,255,1), 0.2f, 1.0f);
+}
+Vec2 Diamond::getFireWorldPos()
+{
+    Vec2 ret = getPosition();
+    ret += m_Orientation*m_fRadius*0.8f;
+    return ret;
 }
 void Diamond::update(float delta)
 {
@@ -280,6 +323,8 @@ void Diamond::update(float delta)
         float dist = GameController::getInstance()->getPlayerPos().distance(getPosition());
         if(dist <= GameController::getInstance()->getBoundSize().width*0.2f)
             setActorState(ActorState::AS_FLEE);
+        
+        m_Orientation = m_Direction;
     }
     else if(m_curState == ActorState::AS_FLEE)
     {
@@ -294,6 +339,8 @@ void Diamond::update(float delta)
         float dist = GameController::getInstance()->getPlayerPos().distance(getPosition());
         if(dist >= GameController::getInstance()->getBoundSize().width*0.4f)
             setActorState(ActorState::AS_TRACK);
+        
+        m_Orientation = -m_Direction;
     }
     
     float mainRotationZ = CC_RADIANS_TO_DEGREES(Vec2::angle(m_Direction, Vec2::UNIT_Y));
@@ -321,4 +368,29 @@ void Diamond::update(float delta)
     Vec2 pos = getPosition();
     Vec2 newPos = pos + m_Velocity;
     setPosition(newPos);
+}
+
+///躲避玩家，甚至躲避玩家发射的子弹, 分裂攻击 死后有几率掉落武器强化道具
+ColorDiamond::ColorDiamond()
+{
+    m_EnemyType = ET_DIAMOND_COLORED;
+}
+ColorDiamond::~ColorDiamond()
+{
+}
+void ColorDiamond::fire(float delta)
+{
+    if(m_curState == ActorState::AS_UNDERCONTROL)
+        return;
+    ActorsManager::spawnBullet(GameActor::AT_ENEMY_BULLET, getFireWorldPos(), getOrientation(),MAX(m_fMaxSpeed*2.0f,10.0f),"bullet2.png", Color3B(64,255,1), 0.2f, 1.0f);
+    Vec2 orient = getOrientation();
+    orient.rotate(Vec2::ZERO, M_PI*0.125f);
+    ActorsManager::spawnBullet(GameActor::AT_ENEMY_BULLET, getFireWorldPos(), orient, MAX(m_fMaxSpeed*2.0f,10.0f),"bullet2.png", Color3B(64,255,1), 0.2f, 1.0f);
+    orient.rotate(Vec2::ZERO, M_PI*0.125f);
+    ActorsManager::spawnBullet(GameActor::AT_ENEMY_BULLET, getFireWorldPos(), orient, MAX(m_fMaxSpeed*2.0f,10.0f),"bullet2.png", Color3B(64,255,1), 0.2f, 1.0f);
+    orient = getOrientation();
+    orient.rotate(Vec2::ZERO, -M_PI*0.125f);
+    ActorsManager::spawnBullet(GameActor::AT_ENEMY_BULLET, getFireWorldPos(), orient, MAX(m_fMaxSpeed*2.0f,10.0f),"bullet2.png", Color3B(64,255,1), 0.2f, 1.0f);
+    orient.rotate(Vec2::ZERO, -M_PI*0.125f);
+    ActorsManager::spawnBullet(GameActor::AT_ENEMY_BULLET, getFireWorldPos(), orient, MAX(m_fMaxSpeed*2.0f,10.0f),"bullet2.png", Color3B(64,255,1), 0.2f, 1.0f);
 }

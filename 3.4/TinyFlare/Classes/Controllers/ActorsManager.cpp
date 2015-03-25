@@ -28,7 +28,7 @@ ActorsManager::~ActorsManager()
 }
 
 
-Bullet* ActorsManager::spawnBullet(GameActor::ActorType type, const cocos2d::Vec2& pos, const cocos2d::Vec2& dir, float speed, const std::string& texName)
+Bullet* ActorsManager::spawnBullet(GameActor::ActorType type, const cocos2d::Vec2& pos, const cocos2d::Vec2& dir, float speed, const std::string& texName, const cocos2d::Color3B& colormask, float scaleX, float scaleY)
 {
     if(!ActorsManager::getInstance()->m_pActorLayer)
         return nullptr;
@@ -42,6 +42,8 @@ Bullet* ActorsManager::spawnBullet(GameActor::ActorType type, const cocos2d::Vec
         bullet->setDirection(dir);
         bullet->setOrientation(dir);
         bullet->setMaxSpeed(speed);
+        bullet->setColorMask(colormask);
+        bullet->getModel()->setScale(scaleX,scaleY);
         bullet->caculateRadius();
         bullet->updateOrientation();
         ActorsManager::getInstance()->m_Bullets.pushBack(bullet);
@@ -99,7 +101,7 @@ Enemy* ActorsManager::spawnEnemy(Enemy::EnemyType enemyType, const Vec2& pos, co
                 enemy = new(std::nothrow) ColorCircle();
                 if (enemy && enemy->init()) {
                     enemy->loadModel("circle.png");
-                    enemy->getModel()->setVisible(false);
+                    //enemy->getModel()->setVisible(false);
                     enemy->setPosition(pos);
                     enemy->setDirection(dir);
                     enemy->setOrientation(dir);
@@ -139,7 +141,7 @@ Enemy* ActorsManager::spawnEnemy(Enemy::EnemyType enemyType, const Vec2& pos, co
                     enemy->setOpacity(0);
                     enemy->setScale(0.2f);
                     enemy->setActorState(ActorState::AS_UNDERCONTROL);
-                    enemy->setColor(Color3B(253,255,112));
+                    enemy->setColor(Color3B(253,255,12));
                     enemy->caculateRadius();
                     ActorsManager::getInstance()->m_Enemies.pushBack(enemy);
                     ActorsManager::getInstance()->m_pActorLayer->addChild(enemy);
@@ -171,7 +173,7 @@ Enemy* ActorsManager::spawnEnemy(Enemy::EnemyType enemyType, const Vec2& pos, co
                     enemy->setOpacity(0);
                     enemy->setScale(0.2f);
                     enemy->setActorState(ActorState::AS_UNDERCONTROL);
-                    enemy->setColor(Color3B(253,255,112));
+                    enemy->setColor(Color3B(253,255,12));
                     enemy->caculateRadius();
                     ActorsManager::getInstance()->m_Enemies.pushBack(enemy);
                     ActorsManager::getInstance()->m_pActorLayer->addChild(enemy);
@@ -204,12 +206,44 @@ Enemy* ActorsManager::spawnEnemy(Enemy::EnemyType enemyType, const Vec2& pos, co
                     enemy->setOpacity(0);
                     enemy->setScale(0.2f);
                     enemy->setActorState(ActorState::AS_UNDERCONTROL);
-                    enemy->setColor(Color3B(212,242,128));
+                    enemy->setColor(Color3B(64,255,1));
                     enemy->caculateRadius();
                     ActorsManager::getInstance()->m_Enemies.pushBack(enemy);
                     ActorsManager::getInstance()->m_pActorLayer->addChild(enemy);
                     ActorsManager::getInstance()->m_pActorLayer->setCameraMask((unsigned short)CameraFlag::USER1);
                 
+                    EaseSineOut* easeOut1 = EaseSineOut::create(ScaleTo::create(1.5f, 1.0f));
+                    EaseSineOut* easeOut2 = EaseSineOut::create(FadeIn::create(1.5f));
+                    Spawn* spawn = Spawn::createWithTwoActions(easeOut1, easeOut2);
+                
+                    CallFunc* callFunc = CallFunc::create(CC_CALLBACK_0(Enemy::beginTrack, enemy));
+                    Sequence* sequence = Sequence::createWithTwoActions(spawn, callFunc);
+                    enemy->runAction(sequence);
+                    enemy->autorelease();
+                }
+                else
+                    CC_SAFE_DELETE(enemy);
+            }
+            break;
+        case Enemy::EnemyType::ET_DIAMOND_COLORED:
+            {
+                enemy = new(std::nothrow) ColorDiamond();
+                if (enemy && enemy->init()) {
+                    enemy->loadModel("diamond.png");
+                    enemy->setPosition(pos);
+                    enemy->setDirection(dir);
+                    enemy->setOrientation(dir);
+                    enemy->setCascadeOpacityEnabled(true);
+                    enemy->setOpacity(0);
+                    enemy->setScale(0.2f);
+                    enemy->setActorState(ActorState::AS_UNDERCONTROL);
+                    enemy->setColor(Color3B(64,255,1));
+                    enemy->caculateRadius();
+                    ActorsManager::getInstance()->m_Enemies.pushBack(enemy);
+                    ActorsManager::getInstance()->m_pActorLayer->addChild(enemy);
+                    ActorsManager::getInstance()->m_pActorLayer->setCameraMask((unsigned short)CameraFlag::USER1);
+                
+                    ParticleSystemHelper::spawnActorWidget(ActorWidgetType::AWT_COLOR_DIAMOND_TAIL, Vec2::ZERO, enemy);
                 
                     EaseSineOut* easeOut1 = EaseSineOut::create(ScaleTo::create(1.5f, 1.0f));
                     EaseSineOut* easeOut2 = EaseSineOut::create(FadeIn::create(1.5f));

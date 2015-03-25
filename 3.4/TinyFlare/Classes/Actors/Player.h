@@ -26,6 +26,10 @@ public:
     void update(float delta);
     void loadMaskModel(const std::string& texName);
     
+    void respawn();
+    void beginShadow();
+    void endShadow();
+    
     void onJoystickUpdateDirection(TwoJoysticks* joystick, const cocos2d::Vec2& dir);
     void onJoystickUpdateOrientation(TwoJoysticks* joystick, const cocos2d::Vec2& dir);
     void onJoystickPressed(TwoJoysticks* joystick, float pressedTime);
@@ -38,12 +42,14 @@ public:
     void fire(float delta);
     
     virtual void onEnterDead() override;
+    virtual void onExitDead() override;
 private:
-    bool        m_bScheduledFire;
+    bool                            m_bScheduledFire;
     cocos2d::Sprite*                m_pMaskModel;
     WeaponType                      m_WeaponType;
     cocos2d::ParticleSystemQuad*    m_pLeftTail;
     cocos2d::ParticleSystemQuad*    m_pRightTail;
+    cocos2d::Node*                  m_pShadowNode;
 };
 
 #endif /* defined(__Geometry_Wars__Player__) */

@@ -21,6 +21,7 @@ Player::Player()
     m_WeaponType = WT_NORMAL;
     m_pLeftTail = nullptr;
     m_pRightTail = nullptr;
+    m_pShadowNode = nullptr;
 }
 Player::~Player()
 {
@@ -80,10 +81,60 @@ void Player::loadMaskModel(const std::string& texName)
         CCLOGERROR("Load mask model %s failed!" , texName.c_str());
     m_pMaskModel->setScale(0.5f);
     addChild(m_pMaskModel);
+}
+
+void Player::respawn()
+{
+    ParticleSystemHelper::spawnExplosion(ExplosionType::ET_EXPLOSION_ACTOR_RESPAWN, Vec2::ZERO);
+    EaseSineIn* easeIn = EaseSineIn::create(FadeIn::create(1.0f));
+    CallFunc* callFunc = CallFunc::create(CC_CALLBACK_0(Player::beginShadow,this));
     
-    m_pLeftTail = ParticleSystemHelper::spawnActorWidget(ActorWidgetType::AWT_PLAYER_TAIL, getLeftTailLocalPos(), this);
-    m_pRightTail = ParticleSystemHelper::spawnActorWidget(ActorWidgetType::AWT_PLAYER_TAIL, getRightTailLocalPos(), this);
-    
+    Sequence* sequence = Sequence::create(easeIn, callFunc, NULL);
+    runAction(sequence);
+}
+void Player::beginShadow()
+{
+    m_pShadowNode = Node::create();
+    if(m_pShadowNode && m_pModel && m_pMaskModel)
+    {
+        auto shadowModel = Sprite::createWithTexture(m_pModel->getTexture());
+        if(shadowModel)
+        {
+            shadowModel->setBlendFunc(BlendFunc::ADDITIVE);
+            m_pShadowNode->addChild(shadowModel);
+        }
+        auto shadowMaskModel = Sprite::createWithTexture(m_pMaskModel->getTexture());
+        if(shadowMaskModel)
+        {
+            shadowMaskModel->setBlendFunc(BlendFunc::ADDITIVE);
+            m_pShadowNode->addChild(shadowMaskModel);
+        }
+        m_pShadowNode->setCascadeOpacityEnabled(true);
+        m_pShadowNode->setOpacity(255);
+        m_pShadowNode->setScale(0.5f);
+        m_pShadowNode->setCameraMask((unsigned short)CameraFlag::USER1);
+        
+        addChild(m_pShadowNode);
+        
+        EaseSineIn* easeIn1 = EaseSineIn::create(FadeOut::create(0.5f));
+        EaseSineIn* easeIn2 = EaseSineIn::create(ScaleTo::create(0.5f, 1.3f));
+        Spawn* spawn = Spawn::createWithTwoActions(easeIn1, easeIn2);
+        CallFunc* callFunc = CallFunc::create(CC_CALLBACK_0(Player::endShadow,this));
+        Sequence* sequence = Sequence::create(spawn, callFunc, NULL);
+        
+        m_pShadowNode->runAction(sequence);
+        
+        m_pLeftTail = ParticleSystemHelper::spawnActorWidget(ActorWidgetType::AWT_PLAYER_TAIL, getLeftTailLocalPos(), this);
+        m_pRightTail = ParticleSystemHelper::spawnActorWidget(ActorWidgetType::AWT_PLAYER_TAIL, getRightTailLocalPos(), this);
+    }
+}
+void Player::endShadow()
+{
+    if(m_pShadowNode)
+    {
+        m_pShadowNode->removeFromParentAndCleanup(true);
+        m_pShadowNode = nullptr;
+    }
     setActorState(ActorState::AS_UNDERCONTROL);
 }
 void Player::onJoystickUpdateDirection(TwoJoysticks* joystick, const cocos2d::Vec2& dir)
@@ -142,7 +193,7 @@ void Player::fire(float delta)
     switch (m_WeaponType) {
         case WT_NORMAL:
             {
-                ActorsManager::spawnBullet(GameActor::AT_PLAYER_BULLET, getFireWorldPos(), getOrientation(),m_fMaxSpeed*2.0f,"bullet1.png");
+                ActorsManager::spawnBullet(GameActor::AT_PLAYER_BULLET, getFireWorldPos(), getOrientation(),m_fMaxSpeed*2.0f,"bullet1.png", Color3B(254,148,236), 0.5f, 3.0f);
                 ParticleSystemHelper::spawnActorWidget(ActorWidgetType::AWT_FIRE_FLARE, getFireLocalPos(), this);
             }
             break;
@@ -155,4 +206,19 @@ void Player::fire(float delta)
 void Player::onEnterDead()
 {
     ParticleSystemHelper::spawnExplosion(ExplosionType::ET_EXPLOSION_BLUE, getPosition());
+    if (m_pModel)
+        m_pModel->setVisible(false);
+    if(m_pMaskModel)
+        m_pMaskModel->setVisible(false);
+    if(m_pLeftTail)
+        m_pLeftTail->removeFromParentAndCleanup(true);
+    if(m_pRightTail)
+        m_pRightTail->removeFromParentAndCleanup(true);
+}
+void Player::onExitDead()
+{
+    if (m_pModel)
+        m_pModel->setVisible(true);
+    if(m_pMaskModel)
+        m_pMaskModel->setVisible(true);
 }

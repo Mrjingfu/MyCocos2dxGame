@@ -25,9 +25,13 @@ ParticleSystemQuad* ParticleSystemHelper::spawnExplosion(ExplosionType explosion
                     CCLOG("Load explosion particle system failed! file: explosion.plist");
                     return nullptr;
                 }
-                explosion->setScale(0.8f);
                 explosion->setStartColor(Color4F(0.0f, 224.0f/255.0f, 252.0f/255.0f, 1.0f));
-                explosion->setLife(1.0f);
+                explosion->setDuration(0.4f);
+                explosion->setEmitterMode(ParticleSystem::Mode::RADIUS);
+                explosion->setStartRadius(50.0f);
+                explosion->setStartRadiusVar(100.0f);
+                explosion->setEndRadius(300.0f);
+                explosion->setEndRadiusVar(400.0f);
                 explosion->setPosition(pos);
                 explosion->setAutoRemoveOnFinish(true);
                 GameController::getInstance()->getGameLayer()->addChild(explosion);
@@ -44,6 +48,7 @@ ParticleSystemQuad* ParticleSystemHelper::spawnExplosion(ExplosionType explosion
                 }
                 explosion->setScale(0.4f);
                 explosion->setStartColor(Color4F::WHITE);
+                explosion->setEndColor(Color4F::WHITE);
                 explosion->setLife(0.5f);
                 explosion->setPosition(pos);
                 explosion->setAutoRemoveOnFinish(true);
@@ -60,7 +65,8 @@ ParticleSystemQuad* ParticleSystemHelper::spawnExplosion(ExplosionType explosion
                     return nullptr;
                 }
                 explosion->setScale(0.4f);
-                explosion->setStartColor(Color4F(253.0f/255.0f, 1.0f, 112.0f/255.0f, 1.0f));
+                explosion->setStartColor(Color4F(253.0f/255.0f, 1.0f, 12.0f/255.0f, 1.0f));
+                explosion->setEndColor(Color4F(253.0f/255.0f, 1.0f, 12.0f/255.0f, 1.0f));
                 explosion->setLife(0.5f);
                 explosion->setPosition(pos);
                 explosion->setAutoRemoveOnFinish(true);
@@ -77,7 +83,8 @@ ParticleSystemQuad* ParticleSystemHelper::spawnExplosion(ExplosionType explosion
                     return nullptr;
                 }
                 explosion->setScale(0.4f);
-                explosion->setStartColor(Color4F(212.0f/255.0f, 242.0f/255.0f, 128.0f/255.0f, 1.0f));
+                explosion->setStartColor(Color4F(64.0f/255.0f, 1.0f, 1.0f/255.0f, 1.0f));
+                explosion->setEndColor(Color4F(64.0f/255.0f, 1.0f, 1.0f/255.0f, 1.0f));
                 explosion->setLife(0.5f);
                 explosion->setPosition(pos);
                 explosion->setAutoRemoveOnFinish(true);
@@ -112,6 +119,35 @@ ParticleSystemQuad* ParticleSystemHelper::spawnExplosion(ExplosionType explosion
                 explosion->setAutoRemoveOnFinish(true);
                 GameController::getInstance()->getGameLayer()->addChild(explosion);
                 GameController::getInstance()->getGameLayer()->setCameraMask((unsigned short)CameraFlag::USER1);
+            }
+            break;
+        case ET_EXPLOSION_ACTOR_RESPAWN:
+            {
+                explosion= ParticleSystemQuad::create("explosion.plist");
+                if(!explosion)
+                {
+                    CCLOG("Load collision particle system failed! file: explosion.plist");
+                    return nullptr;
+                }
+                explosion->setScale(0.3f);
+                explosion->setDuration(0.4f);
+                explosion->setStartColor(Color4F(0.0f, 224.0f/255.0f, 252.0f/255.0f, 1.0f));
+                explosion->setEmitterMode(ParticleSystem::Mode::RADIUS);
+                explosion->setStartRadius(100.0f);
+                explosion->setStartRadiusVar(600.0f);
+                explosion->setEndRadius(0.0f);
+                explosion->setEndRadiusVar(50.0f);
+                explosion->setRotatePerSecond(90.0f);
+                explosion->setRotatePerSecondVar(0.0f);
+                explosion->setLife(0.4f);
+                explosion->setLifeVar(0.4f);
+                explosion->setEndSize(30.0f);
+                explosion->setEndSizeVar(30.0f);
+                explosion->setPosition(pos);
+                explosion->setAutoRemoveOnFinish(true);
+                GameController::getInstance()->getGameLayer()->addChild(explosion);
+                GameController::getInstance()->getGameLayer()->setCameraMask((unsigned short)CameraFlag::USER1);
+
             }
             break;
         default:
@@ -158,8 +194,9 @@ ParticleSystemQuad* ParticleSystemHelper::spawnActorWidget(ActorWidgetType actor
                 }
                 widget->setPositionType(ParticleSystem::PositionType::FREE);
                 widget->setPosition(pos);
-                widget->setStartSize(8.0f);
+                widget->setStartSize(6.0f);
                 widget->setStartSizeVar(1.0f);
+                widget->setRotatePerSecond(30.0f);
                 widget->setAutoRemoveOnFinish(true);
                 actor->addChild(widget);
                 actor->setCameraMask((unsigned short)CameraFlag::USER1);
@@ -173,8 +210,11 @@ ParticleSystemQuad* ParticleSystemHelper::spawnActorWidget(ActorWidgetType actor
                     CCLOG("Load actor widget particle system failed! file: colorgeometry.plist");
                     return nullptr;
                 }
-                widget->setPositionType(ParticleSystem::PositionType::RELATIVE);
+                widget->setPositionType(ParticleSystem::PositionType::FREE);
                 widget->setPosition(pos);
+                widget->setTotalParticles(50);
+                widget->setSpeed(0);
+                widget->setSpeedVar(0);
                 widget->setScale(0.5f);
                 widget->setAutoRemoveOnFinish(true);
                 actor->addChild(widget);
@@ -196,6 +236,27 @@ ParticleSystemQuad* ParticleSystemHelper::spawnActorWidget(ActorWidgetType actor
                 widget->setSpeedVar(0);
                 widget->setScale(0.5f);
                 Texture2D* texture = Director::getInstance()->getTextureCache()->addImage("triangle.png");
+                widget->setTexture(texture);
+                widget->setAutoRemoveOnFinish(true);
+                actor->addChild(widget);
+                actor->setCameraMask((unsigned short)CameraFlag::USER1);
+            }
+            break;
+        case ActorWidgetType::AWT_COLOR_DIAMOND_TAIL:
+            {
+                widget = ParticleSystemQuad::create("colorgeometry.plist");
+                if(!widget)
+                {
+                    CCLOG("Load actor widget particle system failed! file: colorgeometry.plist");
+                    return nullptr;
+                }
+                widget->setPositionType(ParticleSystem::PositionType::FREE);
+                widget->setPosition(pos);
+                widget->setTotalParticles(50);
+                widget->setSpeed(0);
+                widget->setSpeedVar(0);
+                widget->setScale(0.5f);
+                Texture2D* texture = Director::getInstance()->getTextureCache()->addImage("diamond.png");
                 widget->setTexture(texture);
                 widget->setAutoRemoveOnFinish(true);
                 actor->addChild(widget);
