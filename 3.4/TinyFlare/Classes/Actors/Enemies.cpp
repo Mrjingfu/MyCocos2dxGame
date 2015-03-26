@@ -246,7 +246,6 @@ Diamond::~Diamond()
 }
 void Diamond::beginTrack()
 {
-    
     ScaleTo* scaleTo1 = ScaleBy::create(0.5f, 0.5f, 1.0f);
     ScaleTo* scaleTo2 = ScaleBy::create(0.5f, 2.0f, 1.0f);
     Sequence* sequence = Sequence::createWithTwoActions(scaleTo1, scaleTo2);
@@ -393,4 +392,305 @@ void ColorDiamond::fire(float delta)
     ActorsManager::spawnBullet(GameActor::AT_ENEMY_BULLET, getFireWorldPos(), orient, MAX(m_fMaxSpeed*2.0f,10.0f),"bullet2.png", Color3B(64,255,1), 0.2f, 1.0f);
     orient.rotate(Vec2::ZERO, -M_PI*0.125f);
     ActorsManager::spawnBullet(GameActor::AT_ENEMY_BULLET, getFireWorldPos(), orient, MAX(m_fMaxSpeed*2.0f,10.0f),"bullet2.png", Color3B(64,255,1), 0.2f, 1.0f);
+}
+
+///慢速追踪，五星旋转弹幕
+Star::Star()
+{
+    m_EnemyType = ET_STAR;
+    m_fAccel = 2.0f;
+    m_fMaxSpeed = 2.0f;
+    m_bScheduledFire = false;
+}
+Star::~Star()
+{
+}
+void Star::update(float delta)
+{
+    if(m_curState == AS_TRACK)
+    {
+        m_fTrackTime += delta;
+        float dist = GameController::getInstance()->getPlayerPos().distance(getPosition());
+        if(m_fTrackTime >= 5.0f && dist >= GameController::getInstance()->getBoundSize().width*0.15f)
+        {
+            m_fTrackTime = 0.0f;
+            setActorState(ActorState::AS_IDLE);
+        }
+        if(GameController::getInstance()->getPlayer())
+        {
+            Vec2 playerPos = GameController::getInstance()->getPlayerPos();
+            Vec2 dir = playerPos - getPosition();
+            setDirection(dir);
+        }
+        else
+            setDirection(Vec2::ZERO);
+        
+        m_Orientation = m_Direction;
+    }
+    else if(m_curState == ActorState::AS_IDLE)
+    {
+        m_fIdleTime += delta;
+        if(m_fIdleTime >= 3.0f)
+        {
+            m_fIdleTime = 0.0f;
+            setActorState(ActorState::AS_TRACK);
+        }
+    }
+    if(!m_bBounce)
+    {
+        if (m_Direction == Vec2::ZERO) {
+            m_Velocity *= 0.99f;
+            if(m_Velocity.length() <0.001f)
+                m_Velocity = Vec2::ZERO;
+        }
+        else
+        {
+            m_Velocity += m_Direction*m_fAccel*delta;
+            if(m_Velocity.length() >= m_fMaxSpeed)
+            {
+                m_Velocity.normalize();
+                m_Velocity = m_Velocity*m_fMaxSpeed;
+            }
+        }
+    }
+    if(m_curState != ActorState::AS_IDLE)
+    {
+        Vec2 pos = getPosition();
+        Vec2 newPos = pos + m_Velocity;
+        setPosition(newPos);
+    }
+
+}
+void Star::onEnterIdle()
+{
+    EaseSineIn* easeIn1 = EaseSineIn::create(RotateBy::create(0.5f, 180));
+    Repeat* repeat = Repeat::create(easeIn1, 6);
+    runAction(repeat);
+    if(!m_bScheduledFire)
+    {
+        schedule(CC_SCHEDULE_SELECTOR(Star::fire), 0.5f, -1, 0.5);
+        m_bScheduledFire = true;
+    }
+}
+void Star::onExitIdle()
+{
+    stopAllActions();
+    if(m_bScheduledFire)
+    {
+        unschedule(CC_SCHEDULE_SELECTOR(Diamond::fire));
+        m_bScheduledFire = false;
+    }
+}
+
+void Star::onEnterTrack()
+{
+    RotateBy* rotateBy = RotateBy::create(1.0f, 90);
+    RepeatForever* repeatForever = RepeatForever::create(rotateBy);
+    runAction(repeatForever);
+}
+void Star::onExitTrack()
+{
+    stopAllActions();
+}
+void Star::onEnterDead()
+{
+    ParticleSystemHelper::spawnExplosion(ExplosionType::ET_EXPLOSION_RED, getPosition());
+}
+void Star::beginTrack()
+{
+    m_fAccel = 3.0f;
+    m_fMaxSpeed = 3.0f;
+    setActorState(ActorState::AS_TRACK);
+    
+}
+void Star::fire(float delta)
+{
+    if(m_curState != ActorState::AS_IDLE)
+        return;
+    
+    Vec2 pos = getPosition();
+    Vec2 orient = m_Orientation*m_fRadius*0.8f;
+    pos += orient;
+    ActorsManager::spawnBullet(GameActor::AT_ENEMY_BULLET, pos, orient,2.0f,"bullet2.png", Color3B(254,64,64), 0.5f, 0.5f);
+    pos = getPosition();
+    orient.rotate(Vec2::ZERO, M_PI*0.4f);
+    pos += orient;
+    ActorsManager::spawnBullet(GameActor::AT_ENEMY_BULLET, pos, orient,2.0f,"bullet2.png", Color3B(254,64,64), 0.5f, 0.5f);
+    pos = getPosition();
+    orient.rotate(Vec2::ZERO, M_PI*0.4f);
+    pos += orient;
+    ActorsManager::spawnBullet(GameActor::AT_ENEMY_BULLET, pos, orient,2.0f,"bullet2.png", Color3B(254,64,64), 0.5f, 0.5f);
+    pos = getPosition();
+    orient.rotate(Vec2::ZERO, M_PI*0.4f);
+    pos += orient;
+    ActorsManager::spawnBullet(GameActor::AT_ENEMY_BULLET, pos, orient,2.0f,"bullet2.png", Color3B(254,64,64), 0.5f, 0.5f);
+    pos = getPosition();
+    orient.rotate(Vec2::ZERO, M_PI*0.4f);
+    pos += orient;
+    ActorsManager::spawnBullet(GameActor::AT_ENEMY_BULLET, pos, orient,2.0f,"bullet2.png", Color3B(254,64,64), 0.5f, 0.5f);
+}
+
+ColorStar::ColorStar()
+{
+    m_EnemyType = ET_STAR_COLORED;
+    m_pNode1    = nullptr;
+    m_pNode2    = nullptr;
+    m_pNode3    = nullptr;
+    m_pNode4    = nullptr;
+    m_pNode5    = nullptr;
+}
+ColorStar::~ColorStar()
+{
+}
+void ColorStar::update(float delta)
+{
+    if(m_curState == AS_TRACK)
+    {
+        m_fTrackTime += delta;
+        float dist = GameController::getInstance()->getPlayerPos().distance(getPosition());
+        if(m_fTrackTime >= 3.0f && dist >= GameController::getInstance()->getBoundSize().width*0.15f)
+        {
+            m_fTrackTime = 0.0f;
+            setActorState(ActorState::AS_IDLE);
+        }
+        if(GameController::getInstance()->getPlayer())
+        {
+            Vec2 playerPos = GameController::getInstance()->getPlayerPos();
+            Vec2 dir = playerPos - getPosition();
+            setDirection(dir);
+        }
+        else
+            setDirection(Vec2::ZERO);
+        
+        m_Orientation = m_Direction;
+    }
+    else if(m_curState == ActorState::AS_IDLE)
+    {
+        m_fIdleTime += delta;
+        if(m_fIdleTime >= 1.0f)
+        {
+            m_fIdleTime = 0.0f;
+            setActorState(ActorState::AS_TRACK);
+        }
+    }
+    if(!m_bBounce)
+    {
+        if (m_Direction == Vec2::ZERO) {
+            m_Velocity *= 0.99f;
+            if(m_Velocity.length() <0.001f)
+                m_Velocity = Vec2::ZERO;
+        }
+        else
+        {
+            m_Velocity += m_Direction*m_fAccel*delta;
+            if(m_Velocity.length() >= m_fMaxSpeed)
+            {
+                m_Velocity.normalize();
+                m_Velocity = m_Velocity*m_fMaxSpeed;
+            }
+        }
+    }
+    if(m_curState != ActorState::AS_IDLE)
+    {
+        Vec2 pos = getPosition();
+        Vec2 newPos = pos + m_Velocity;
+        setPosition(newPos);
+    }
+    
+}
+void ColorStar::onEnterIdle()
+{
+    RotateBy* rotateBy = RotateBy::create(0.5f, 720);
+    Repeat* repeat = Repeat::create(rotateBy, 2);
+    runAction(repeat);
+    if(!m_bScheduledFire)
+    {
+        schedule(CC_SCHEDULE_SELECTOR(Star::fire), 0.05f, -1, 0.5);
+        m_bScheduledFire = true;
+    }
+
+}
+void ColorStar::onExitIdle()
+{
+    stopAllActions();
+    if(m_bScheduledFire)
+    {
+        unschedule(CC_SCHEDULE_SELECTOR(Diamond::fire));
+        m_bScheduledFire = false;
+    }
+}
+
+void ColorStar::beginTrack()
+{
+    m_fAccel = 4.0f;
+    m_fMaxSpeed = 4.0f;
+    setActorState(ActorState::AS_TRACK);
+}
+void ColorStar::fire(float delta)
+{
+    if(m_curState != ActorState::AS_IDLE)
+        return;
+    
+    Vec2 pos = getPosition();
+    Vec2 node1Pos = m_pNode1->getPosition();
+    node1Pos = convertToWorldSpace(node1Pos);
+    Vec2 orient1 = node1Pos - pos;
+    orient1.normalize();
+    ActorsManager::spawnBullet(GameActor::AT_ENEMY_BULLET, node1Pos, orient1, 2.0f,"bullet2.png", Color3B(254,64,64), 0.5f, 0.6f);
+    
+    Vec2 node2Pos = m_pNode2->getPosition();
+    node2Pos = convertToWorldSpace(node2Pos);
+    Vec2 orient2 = node2Pos - pos;
+    orient2.normalize();
+    ActorsManager::spawnBullet(GameActor::AT_ENEMY_BULLET, node2Pos, orient2, 2.0f,"bullet2.png", Color3B(254,64,64), 0.5f, 0.6f);
+    
+    Vec2 node3Pos = m_pNode3->getPosition();
+    node3Pos = convertToWorldSpace(node3Pos);
+    Vec2 orient3 = node3Pos - pos;
+    orient3.normalize();
+    ActorsManager::spawnBullet(GameActor::AT_ENEMY_BULLET, node3Pos, orient3, 2.0f,"bullet2.png", Color3B(254,64,64), 0.5f, 0.6f);
+    
+    Vec2 node4Pos = m_pNode4->getPosition();
+    node4Pos = convertToWorldSpace(node4Pos);
+    Vec2 orient4 = node4Pos - pos;
+    orient4.normalize();
+    ActorsManager::spawnBullet(GameActor::AT_ENEMY_BULLET, node4Pos, orient4, 2.0f,"bullet2.png", Color3B(254,64,64), 0.5f, 0.6f);
+    
+    Vec2 node5Pos = m_pNode5->getPosition();
+    node5Pos = convertToWorldSpace(node5Pos);
+    Vec2 orient5 = node5Pos - pos;
+    orient5.normalize();
+    ActorsManager::spawnBullet(GameActor::AT_ENEMY_BULLET, node5Pos, orient5, 2.0f,"bullet2.png", Color3B(254,64,64), 0.5f, 0.6f);}
+
+void ColorStar::initFirePos()
+{
+    Vec2 pos = getPosition();
+    Vec2 orient = m_Orientation*m_fRadius*0.8f;
+    m_pNode1 = Node::create();
+    m_pNode1->setPosition(orient);
+    addChild(m_pNode1);
+    
+    pos = getPosition();
+    orient.rotate(Vec2::ZERO, M_PI*0.4f);
+    m_pNode2 = Node::create();
+    m_pNode2->setPosition(orient);
+    addChild(m_pNode2);
+    
+    pos = getPosition();
+    orient.rotate(Vec2::ZERO, M_PI*0.4f);
+    m_pNode3 = Node::create();
+    m_pNode3->setPosition(orient);
+    addChild(m_pNode3);
+    
+    pos = getPosition();
+    orient.rotate(Vec2::ZERO, M_PI*0.4f);
+    m_pNode4 = Node::create();
+    m_pNode4->setPosition(orient);
+    addChild(m_pNode4);
+    
+    pos = getPosition();
+    orient.rotate(Vec2::ZERO, M_PI*0.4f);
+    m_pNode5 = Node::create();
+    m_pNode5->setPosition(orient);
+    addChild(m_pNode5);
 }

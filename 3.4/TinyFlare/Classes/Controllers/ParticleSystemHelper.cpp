@@ -92,6 +92,24 @@ ParticleSystemQuad* ParticleSystemHelper::spawnExplosion(ExplosionType explosion
                 GameController::getInstance()->getGameLayer()->setCameraMask((unsigned short)CameraFlag::USER1);
             }
             break;
+        case ET_EXPLOSION_RED:
+            {
+                explosion= ParticleSystemQuad::create("explosion.plist");
+                if(!explosion)
+                {
+                    CCLOG("Load explosion particle system failed! file: explosion.plist");
+                    return nullptr;
+                }
+                explosion->setScale(0.4f);
+                explosion->setStartColor(Color4F(254.0f/255.0f, 64.0f/255.0f, 64.0f/255.0f, 1.0f));
+                explosion->setEndColor(Color4F(254.0f/255.0f, 64.0f/255.0f, 64.0f/255.0f, 1.0f));
+                explosion->setLife(0.5f);
+                explosion->setPosition(pos);
+                explosion->setAutoRemoveOnFinish(true);
+                GameController::getInstance()->getGameLayer()->addChild(explosion);
+                GameController::getInstance()->getGameLayer()->setCameraMask((unsigned short)CameraFlag::USER1);
+            }
+            break;
         case ET_EXPLOSION_BULLET_COLLISION:
             {
                 explosion= ParticleSystemQuad::create("collisionexplosion.plist");
@@ -257,6 +275,27 @@ ParticleSystemQuad* ParticleSystemHelper::spawnActorWidget(ActorWidgetType actor
                 widget->setSpeedVar(0);
                 widget->setScale(0.5f);
                 Texture2D* texture = Director::getInstance()->getTextureCache()->addImage("diamond.png");
+                widget->setTexture(texture);
+                widget->setAutoRemoveOnFinish(true);
+                actor->addChild(widget);
+                actor->setCameraMask((unsigned short)CameraFlag::USER1);
+            }
+            break;
+        case ActorWidgetType::AWT_COLOR_STAR_TAIL:
+            {
+                widget = ParticleSystemQuad::create("colorgeometry.plist");
+                if(!widget)
+                {
+                    CCLOG("Load actor widget particle system failed! file: colorgeometry.plist");
+                    return nullptr;
+                }
+                widget->setPositionType(ParticleSystem::PositionType::FREE);
+                widget->setPosition(pos);
+                widget->setTotalParticles(50);
+                widget->setSpeed(0);
+                widget->setSpeedVar(0);
+                widget->setScale(0.5f);
+                Texture2D* texture = Director::getInstance()->getTextureCache()->addImage("star.png");
                 widget->setTexture(texture);
                 widget->setAutoRemoveOnFinish(true);
                 actor->addChild(widget);
