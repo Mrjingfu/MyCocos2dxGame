@@ -520,3 +520,21 @@ void ActorsManager::eraseEnemy(int i)
     m_Enemies.erase(i);
     enemy->removeFromParentAndCleanup(true);
 }
+void ActorsManager::reset()
+{
+    for (ssize_t i = 0; i<m_Bullets.size(); ++i) {
+        Bullet* bullet = m_Bullets.at(i);
+        if(bullet)
+        {
+            eraseBullet(bullet);
+        }
+    }
+    for (ssize_t i = 0; i<m_Enemies.size(); ++i) {
+        Enemy* enemy = m_Enemies.at(i);
+        if(enemy)
+        {
+            enemy->setActorState(ActorState::AS_DEAD);
+            eraseEnemy(enemy);
+        }
+    }
+}

@@ -9,6 +9,7 @@
 #include "Player.h"
 #include "ActorsManager.h"
 #include "ParticleSystemHelper.h"
+#include "GameController.h"
 USING_NS_CC;
 
 Player::Player()
@@ -214,6 +215,8 @@ void Player::onEnterDead()
         m_pLeftTail->removeFromParentAndCleanup(true);
     if(m_pRightTail)
         m_pRightTail->removeFromParentAndCleanup(true);
+    
+    GameController::getInstance()->setGameState(GameState::GS_PAUSE);
 }
 void Player::onExitDead()
 {

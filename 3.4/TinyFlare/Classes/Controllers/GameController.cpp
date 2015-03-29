@@ -106,6 +106,19 @@ void GameController::update(float delta)
         }
     }
     ActorsManager::getInstance()->update(delta);
+    
+    if(m_curGameState == GameState::GS_PAUSE)
+    {
+        if(m_fRespawnTime > 0)
+        {
+            m_fRespawnTime -= delta;
+            if(m_fRespawnTime <= 0)
+            {
+                m_fRespawnTime = 0;
+                setGameState(GameState::GS_DEBUG);
+            }
+        }
+    }
 }
 void GameController::destroy()
 {
@@ -127,7 +140,7 @@ void GameController::setGameState(GameState state)
             onExitGame();
             break;
         case GameState::GS_PAUSE:
-            onEnterPause();
+            onExitPause();
             break;
         case GameState::GS_DEBUG:
             onExitDebug();
@@ -241,9 +254,13 @@ void GameController::onExitGame()
 
 void GameController::onEnterPause()
 {
+    m_fRespawnTime = 5.0f;
+    m_pEnemiesGenerator->reset();
+    
 }
 void GameController::onExitPause()
 {
+    ActorsManager::getInstance()->reset();
 }
 
 void GameController::onEnterDebug()
@@ -263,4 +280,5 @@ void GameController::onEnterDebug()
 }
 void GameController::onExitDebug()
 {
+    
 }

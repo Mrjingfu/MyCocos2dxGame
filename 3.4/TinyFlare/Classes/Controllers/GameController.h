@@ -70,6 +70,8 @@ private:
     Player*             m_pPlayer;
     GameState           m_curGameState;
     cocos2d::Size       m_BoundSize;
+    
+    float               m_fRespawnTime;
 };
 
 

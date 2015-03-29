@@ -33,6 +33,8 @@ public:
     
     void eraseEnemy(Enemy* enemy);
     void eraseEnemy(int i);
+    
+    void reset();
 private:
     cocos2d::Vector<Bullet*>                m_Bullets;
     cocos2d::Vector<Enemy*>                 m_Enemies;
