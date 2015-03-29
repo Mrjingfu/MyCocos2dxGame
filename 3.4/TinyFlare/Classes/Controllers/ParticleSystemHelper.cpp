@@ -92,7 +92,7 @@ ParticleSystemQuad* ParticleSystemHelper::spawnExplosion(ExplosionType explosion
                 GameController::getInstance()->getGameLayer()->setCameraMask((unsigned short)CameraFlag::USER1);
             }
             break;
-        case ET_EXPLOSION_RED:
+        case ET_EXPLOSION_ORANGE:
             {
                 explosion= ParticleSystemQuad::create("explosion.plist");
                 if(!explosion)
@@ -101,8 +101,8 @@ ParticleSystemQuad* ParticleSystemHelper::spawnExplosion(ExplosionType explosion
                     return nullptr;
                 }
                 explosion->setScale(0.4f);
-                explosion->setStartColor(Color4F(254.0f/255.0f, 64.0f/255.0f, 64.0f/255.0f, 1.0f));
-                explosion->setEndColor(Color4F(254.0f/255.0f, 64.0f/255.0f, 64.0f/255.0f, 1.0f));
+                explosion->setStartColor(Color4F(253.0f/255.0f, 153.0f/255.0f, 31.0f/255.0f, 1.0f));
+                explosion->setEndColor(Color4F(253.0f/255.0f, 153.0f/255.0f, 31.0f/255.0f, 1.0f));
                 explosion->setLife(0.5f);
                 explosion->setPosition(pos);
                 explosion->setAutoRemoveOnFinish(true);

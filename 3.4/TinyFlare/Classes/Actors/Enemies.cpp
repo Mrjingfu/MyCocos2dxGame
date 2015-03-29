@@ -494,7 +494,7 @@ void Star::onExitTrack()
 }
 void Star::onEnterDead()
 {
-    ParticleSystemHelper::spawnExplosion(ExplosionType::ET_EXPLOSION_RED, getPosition());
+    ParticleSystemHelper::spawnExplosion(ExplosionType::ET_EXPLOSION_BLUE, getPosition());
 }
 void Star::beginTrack()
 {
@@ -511,23 +511,23 @@ void Star::fire(float delta)
     Vec2 pos = getPosition();
     Vec2 orient = m_Orientation*m_fRadius*0.8f;
     pos += orient;
-    ActorsManager::spawnBullet(GameActor::AT_ENEMY_BULLET, pos, orient,2.0f,"bullet2.png", Color3B(254,64,64), 0.5f, 0.5f);
+    ActorsManager::spawnBullet(GameActor::AT_ENEMY_BULLET, pos, orient,2.0f,"bullet2.png", Color3B(0,224,252), 0.5f, 0.5f);
     pos = getPosition();
     orient.rotate(Vec2::ZERO, M_PI*0.4f);
     pos += orient;
-    ActorsManager::spawnBullet(GameActor::AT_ENEMY_BULLET, pos, orient,2.0f,"bullet2.png", Color3B(254,64,64), 0.5f, 0.5f);
+    ActorsManager::spawnBullet(GameActor::AT_ENEMY_BULLET, pos, orient,2.0f,"bullet2.png", Color3B(0,224,252), 0.5f, 0.5f);
     pos = getPosition();
     orient.rotate(Vec2::ZERO, M_PI*0.4f);
     pos += orient;
-    ActorsManager::spawnBullet(GameActor::AT_ENEMY_BULLET, pos, orient,2.0f,"bullet2.png", Color3B(254,64,64), 0.5f, 0.5f);
+    ActorsManager::spawnBullet(GameActor::AT_ENEMY_BULLET, pos, orient,2.0f,"bullet2.png", Color3B(0,224,252), 0.5f, 0.5f);
     pos = getPosition();
     orient.rotate(Vec2::ZERO, M_PI*0.4f);
     pos += orient;
-    ActorsManager::spawnBullet(GameActor::AT_ENEMY_BULLET, pos, orient,2.0f,"bullet2.png", Color3B(254,64,64), 0.5f, 0.5f);
+    ActorsManager::spawnBullet(GameActor::AT_ENEMY_BULLET, pos, orient,2.0f,"bullet2.png", Color3B(0,224,252), 0.5f, 0.5f);
     pos = getPosition();
     orient.rotate(Vec2::ZERO, M_PI*0.4f);
     pos += orient;
-    ActorsManager::spawnBullet(GameActor::AT_ENEMY_BULLET, pos, orient,2.0f,"bullet2.png", Color3B(254,64,64), 0.5f, 0.5f);
+    ActorsManager::spawnBullet(GameActor::AT_ENEMY_BULLET, pos, orient,2.0f,"bullet2.png", Color3B(0,224,252), 0.5f, 0.5f);
 }
 
 ColorStar::ColorStar()
@@ -636,31 +636,31 @@ void ColorStar::fire(float delta)
     node1Pos = convertToWorldSpace(node1Pos);
     Vec2 orient1 = node1Pos - pos;
     orient1.normalize();
-    ActorsManager::spawnBullet(GameActor::AT_ENEMY_BULLET, node1Pos, orient1, 2.0f,"bullet2.png", Color3B(254,64,64), 0.5f, 0.6f);
+    ActorsManager::spawnBullet(GameActor::AT_ENEMY_BULLET, node1Pos, orient1, 2.0f,"bullet2.png", Color3B(0,224,252), 0.5f, 0.6f);
     
     Vec2 node2Pos = m_pNode2->getPosition();
     node2Pos = convertToWorldSpace(node2Pos);
     Vec2 orient2 = node2Pos - pos;
     orient2.normalize();
-    ActorsManager::spawnBullet(GameActor::AT_ENEMY_BULLET, node2Pos, orient2, 2.0f,"bullet2.png", Color3B(254,64,64), 0.5f, 0.6f);
+    ActorsManager::spawnBullet(GameActor::AT_ENEMY_BULLET, node2Pos, orient2, 2.0f,"bullet2.png", Color3B(0,224,252), 0.5f, 0.6f);
     
     Vec2 node3Pos = m_pNode3->getPosition();
     node3Pos = convertToWorldSpace(node3Pos);
     Vec2 orient3 = node3Pos - pos;
     orient3.normalize();
-    ActorsManager::spawnBullet(GameActor::AT_ENEMY_BULLET, node3Pos, orient3, 2.0f,"bullet2.png", Color3B(254,64,64), 0.5f, 0.6f);
+    ActorsManager::spawnBullet(GameActor::AT_ENEMY_BULLET, node3Pos, orient3, 2.0f,"bullet2.png", Color3B(0,224,252), 0.5f, 0.6f);
     
     Vec2 node4Pos = m_pNode4->getPosition();
     node4Pos = convertToWorldSpace(node4Pos);
     Vec2 orient4 = node4Pos - pos;
     orient4.normalize();
-    ActorsManager::spawnBullet(GameActor::AT_ENEMY_BULLET, node4Pos, orient4, 2.0f,"bullet2.png", Color3B(254,64,64), 0.5f, 0.6f);
+    ActorsManager::spawnBullet(GameActor::AT_ENEMY_BULLET, node4Pos, orient4, 2.0f,"bullet2.png", Color3B(0,224,252), 0.5f, 0.6f);
     
     Vec2 node5Pos = m_pNode5->getPosition();
     node5Pos = convertToWorldSpace(node5Pos);
     Vec2 orient5 = node5Pos - pos;
     orient5.normalize();
-    ActorsManager::spawnBullet(GameActor::AT_ENEMY_BULLET, node5Pos, orient5, 2.0f,"bullet2.png", Color3B(254,64,64), 0.5f, 0.6f);}
+    ActorsManager::spawnBullet(GameActor::AT_ENEMY_BULLET, node5Pos, orient5, 2.0f,"bullet2.png", Color3B(0,224,252), 0.5f, 0.6f);}
 
 void ColorStar::initFirePos()
 {
@@ -693,4 +693,17 @@ void ColorStar::initFirePos()
     m_pNode5 = Node::create();
     m_pNode5->setPosition(orient);
     addChild(m_pNode5);
+}
+
+//慢速追踪，绘制激光
+Hexagon::Hexagon()
+{
+    m_EnemyType = ET_HEXAGON;
+}
+Hexagon::~Hexagon()
+{
+}
+void Hexagon::onEnterDead()
+{
+    ParticleSystemHelper::spawnExplosion(ExplosionType::ET_EXPLOSION_ORANGE, getPosition());
 }
