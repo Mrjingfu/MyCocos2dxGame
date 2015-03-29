@@ -17,3 +17,6 @@
 *.exe
 *.out
 *.app
+
+# ignore folders
+3.4/DDDice/cocos2d
