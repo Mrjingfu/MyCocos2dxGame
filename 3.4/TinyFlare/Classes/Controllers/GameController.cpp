@@ -8,7 +8,7 @@
 
 #include "GameController.h"
 #include "ActorsManager.h"
-
+#include "LaserSprite.h"
 USING_NS_CC;
 
 GameController* g_pGameControllerInstance = nullptr;
@@ -42,6 +42,7 @@ bool GameController::init(Layer* pMainLayer)
     m_pEnemiesGenerator = EnemiesGenerator::create();
     if(m_pEnemiesGenerator)
         m_pMainLayer->addChild(m_pEnemiesGenerator);
+    
     
     auto size = Director::getInstance()->getWinSize();
     
@@ -99,7 +100,7 @@ void GameController::update(float delta)
             Vec2 camPos = m_pActorCamera->getPosition();
             Vec2 camVelocity = m_pPlayer->getVelocity()*0.8f;
             camPos += camVelocity;
-            CCLOG("camPos %f, %f", camPos.x, camPos.y);
+            //CCLOG("camPos %f, %f", camPos.x, camPos.y);
             m_pActorCamera->setPosition(camPos);
         
             checkBounce(m_pPlayer);
@@ -256,7 +257,6 @@ void GameController::onEnterPause()
 {
     m_fRespawnTime = 5.0f;
     m_pEnemiesGenerator->reset();
-    
 }
 void GameController::onExitPause()
 {
@@ -267,10 +267,12 @@ void GameController::onEnterDebug()
 {
     if(m_pPlayer)
         m_pPlayer->respawn();
+    if(m_pActorCamera)
+        m_pActorCamera->setPosition(m_pPlayer->getPosition());
     if(m_pEnemiesGenerator)
     {
-        m_pEnemiesGenerator->generateEnemiesByTime(Enemy::ET_STAR, 5.0f);
-        m_pEnemiesGenerator->generateEnemiesByTime(Enemy::ET_HEXAGON, 5.0f);
+        //m_pEnemiesGenerator->generateEnemiesByTime(Enemy::ET_STAR, 5.0f);
+        m_pEnemiesGenerator->generateEnemiesByNum(Enemy::ET_HEXAGON_COLORED, 5.0f, 1);
         //m_pEnemiesGenerator->generateEnemiesByTime(Enemy::ET_TRIANGLE, 7.0f);
         //m_pEnemiesGenerator->generateEnemiesByTime(Enemy::ET_DIAMOND, 10.0f);
         //m_pEnemiesGenerator->generateEnemiesByNum(Enemy::ET_CIRCLE_COLORED, 15.0f, 1);

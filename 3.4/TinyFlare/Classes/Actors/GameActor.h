@@ -29,6 +29,7 @@ public:
         AT_PLAYER,
         AT_ENEMY_BULLET,
         AT_PLAYER_BULLET,
+        AT_LASER,
         AT_UNKNOWN
     } ActorType;
 protected:

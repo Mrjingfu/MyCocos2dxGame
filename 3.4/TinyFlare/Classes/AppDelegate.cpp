@@ -39,6 +39,11 @@ bool AppDelegate::applicationDidFinishLaunching() {
     searchPaths.push_back("particles");
     FileUtils::getInstance()->setSearchPaths(searchPaths);
     
+    Director::getInstance()->getTextureCache()->addImage("mask.png");
+    Director::getInstance()->getTextureCache()->addImage("mask2.png");
+    Director::getInstance()->getTextureCache()->addImage("noise.png");
+    Director::getInstance()->getTextureCache()->addImage("noise2.png");
+    
 #if COCOS2D_DEBUG
     // turn on display FPS
     director->setDisplayStats(true);

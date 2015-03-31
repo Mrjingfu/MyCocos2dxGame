@@ -86,7 +86,18 @@ void Player::loadMaskModel(const std::string& texName)
 
 void Player::respawn()
 {
+    setVelocity(Vec2::ZERO);
+    setPosition(Vec2::ZERO);
+    setDirection(Vec2::ZERO);
+    setOrientation(Vec2::UNIT_Y);
+    
+    if(m_pModel)
+        m_pModel->setRotation(0);
+    if(m_pMaskModel)
+        m_pMaskModel->setRotation(0);
+    
     ParticleSystemHelper::spawnExplosion(ExplosionType::ET_EXPLOSION_ACTOR_RESPAWN, Vec2::ZERO);
+    
     EaseSineIn* easeIn = EaseSineIn::create(FadeIn::create(1.0f));
     CallFunc* callFunc = CallFunc::create(CC_CALLBACK_0(Player::beginShadow,this));
     
@@ -207,10 +218,7 @@ void Player::fire(float delta)
 void Player::onEnterDead()
 {
     ParticleSystemHelper::spawnExplosion(ExplosionType::ET_EXPLOSION_BLUE, getPosition());
-    if (m_pModel)
-        m_pModel->setVisible(false);
-    if(m_pMaskModel)
-        m_pMaskModel->setVisible(false);
+    setOpacity(0);
     if(m_pLeftTail)
         m_pLeftTail->removeFromParentAndCleanup(true);
     if(m_pRightTail)
@@ -220,8 +228,4 @@ void Player::onEnterDead()
 }
 void Player::onExitDead()
 {
-    if (m_pModel)
-        m_pModel->setVisible(true);
-    if(m_pMaskModel)
-        m_pMaskModel->setVisible(true);
 }

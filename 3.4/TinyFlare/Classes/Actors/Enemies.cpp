@@ -699,11 +699,243 @@ void ColorStar::initFirePos()
 Hexagon::Hexagon()
 {
     m_EnemyType = ET_HEXAGON;
+    m_fTrackTime = 0.0f;
+    m_fIdleTime = 0.0f;
+    m_fChargeTime = 0.0f;
 }
 Hexagon::~Hexagon()
 {
 }
+void Hexagon::update(float delta)
+{
+    if(m_curState == AS_TRACK)
+    {
+        m_fTrackTime += delta;
+        float dist = GameController::getInstance()->getPlayerPos().distance(getPosition());
+        if(m_fTrackTime >= 8.0f && dist >= GameController::getInstance()->getBoundSize().width*0.05f)
+        {
+            m_fTrackTime = 0.0f;
+            setActorState(ActorState::AS_IDLE);
+        }
+        if(GameController::getInstance()->getPlayer())
+        {
+            Vec2 playerPos = GameController::getInstance()->getPlayerPos();
+            Vec2 dir = playerPos - getPosition();
+            setDirection(dir);
+        }
+        else
+            setDirection(Vec2::ZERO);
+        
+        m_Orientation = m_Direction;
+    }
+    else if(m_curState == ActorState::AS_IDLE)
+    {
+        m_fIdleTime += delta;
+        if(m_fIdleTime >= 2.0f)
+        {
+            m_fIdleTime = 0.0f;
+            setActorState(ActorState::AS_CHARGE);
+        }
+    }
+    else if(m_curState == ActorState::AS_CHARGE)
+    {
+        m_fChargeTime += delta;
+        if(m_fChargeTime >= 1.0f)
+        {
+            m_fChargeTime = 0.0f;
+            setActorState(ActorState::AS_TRACK);
+        }
+        else
+        {
+            if(m_pLaser)
+                m_pLaser->setEnd(getPosition());
+        }
+    }
+    
+    if(!m_bBounce)
+    {
+        if (m_Direction == Vec2::ZERO) {
+            m_Velocity *= 0.99f;
+            if(m_Velocity.length() <0.001f)
+                m_Velocity = Vec2::ZERO;
+        }
+        else
+        {
+            m_Velocity += m_Direction*m_fAccel*delta;
+            if(m_Velocity.length() >= m_fMaxSpeed)
+            {
+                m_Velocity.normalize();
+                m_Velocity = m_Velocity*m_fMaxSpeed;
+            }
+        }
+    }
+    if(m_curState != ActorState::AS_IDLE)
+    {
+        Vec2 pos = getPosition();
+        Vec2 newPos = pos + m_Velocity;
+        setPosition(newPos);
+    }
+}
+void Hexagon::onEnterIdle()
+{
+    RotateBy* rotateBy = RotateBy::create(0.5f, -360);
+    Repeat* repeat = Repeat::create(rotateBy, 4);
+    runAction(repeat);
+}
+void Hexagon::onExitIdle()
+{
+    stopAllActions();
+}
+void Hexagon::onEnterTrack()
+{
+    RotateBy* rotateBy = RotateBy::create(1.0f, -180);
+    RepeatForever* repeatForever = RepeatForever::create(rotateBy);
+    runAction(repeatForever);
+}
+void Hexagon::onExitTrack()
+{
+    stopAllActions();
+}
+void Hexagon::onEnterCharge()
+{
+    Vec2 dir = GameController::getInstance()->getPlayerPos() - getPosition();
+    dir.normalize();
+    setDirection(dir);
+    m_fAccel = 30.0f;
+    m_fMaxSpeed = 5.0f;
+    m_pLaser = ActorsManager::getInstance()->spawnLaser(getPosition(), getPosition() + dir);
+}
+void Hexagon::onExitCharge()
+{
+    setDirection(Vec2::ZERO);
+    m_fAccel = 3.0f;
+    m_fMaxSpeed = 1.0f;
+    if(m_pLaser)
+    {
+        m_pLaser->setEnd(getPosition());
+        m_pLaser = nullptr;
+    }
+}
 void Hexagon::onEnterDead()
 {
     ParticleSystemHelper::spawnExplosion(ExplosionType::ET_EXPLOSION_ORANGE, getPosition());
+}
+void Hexagon::beginTrack()
+{
+    m_fAccel = 3.0f;
+    m_fMaxSpeed = 1.0f;
+    setActorState(ActorState::AS_TRACK);
+}
+//慢速追踪，生成黑洞静力场，死后有几率掉落武器强化道具
+ColorHexagon::ColorHexagon()
+{
+    m_EnemyType = ET_HEXAGON_COLORED;
+    m_fMaxRadius    = 300.0f;
+    m_fMinRadius    = 100.0f;
+    m_pBlackHole    = nullptr;
+}
+ColorHexagon::~ColorHexagon()
+{
+}
+void ColorHexagon::update(float delta)
+{
+    if(m_curState == AS_TRACK)
+    {
+        m_fTrackTime += delta;
+        float dist = GameController::getInstance()->getPlayerPos().distance(getPosition());
+        if(m_fTrackTime >= 8.0f && dist >= GameController::getInstance()->getBoundSize().width*0.05f)
+        {
+            m_fTrackTime = 0.0f;
+            setActorState(ActorState::AS_IDLE);
+        }
+        m_Orientation = m_Direction;
+    }
+    else if(m_curState == ActorState::AS_IDLE)
+    {
+        m_fIdleTime += delta;
+        if(m_fIdleTime >= 18.0f)
+        {
+            m_fIdleTime = 0.0f;
+            setActorState(ActorState::AS_TRACK);
+        }
+        else
+        {
+            Vec2 playerPos = GameController::getInstance()->getPlayerPos();
+            Vec2 velocity = GameController::getInstance()->getPlayer()->getVelocity();
+            float dist = getPosition().distance(playerPos);
+            if(dist < m_fMaxRadius)
+            {
+                Vec2 forceDir = (getPosition() - playerPos).getNormalized()*30.0f*delta;
+                if (dist < m_fMinRadius) {
+                    GameController::getInstance()->getPlayer()->setVelocity(velocity);
+                    velocity += forceDir*3;
+                }
+                else
+                {
+                    velocity += forceDir;
+                    GameController::getInstance()->getPlayer()->setVelocity(velocity);
+                }
+            }
+        }
+    }
+    
+    if(GameController::getInstance()->getPlayer())
+    {
+        Vec2 playerPos = GameController::getInstance()->getPlayerPos();
+        Vec2 dir = playerPos - getPosition();
+        setDirection(dir);
+    }
+    else
+        setDirection(Vec2::ZERO);
+    
+    if(!m_bBounce)
+    {
+        if (m_Direction == Vec2::ZERO) {
+            m_Velocity *= 0.99f;
+            if(m_Velocity.length() <0.001f)
+                m_Velocity = Vec2::ZERO;
+        }
+        else
+        {
+            m_Velocity += m_Direction*m_fAccel*delta;
+            if(m_Velocity.length() >= m_fMaxSpeed)
+            {
+                m_Velocity.normalize();
+                m_Velocity = m_Velocity*m_fMaxSpeed;
+            }
+        }
+    }
+
+    Vec2 pos = getPosition();
+    Vec2 newPos = pos + m_Velocity;
+    setPosition(newPos);
+    if(m_pBlackHole)
+        m_pBlackHole->setPosition(newPos);
+}
+void ColorHexagon::onEnterIdle()
+{
+    RotateBy* rotateBy = RotateBy::create(0.5f, -360);
+    Repeat* repeat = Repeat::create(rotateBy, 36);
+    runAction(repeat);
+    m_pBlackHole = ParticleSystemHelper::spawnExplosion(ExplosionType::ET_EXPLOSION_BLACK_HOLE, getPosition());
+    m_pBlackHole->retain();
+}
+void ColorHexagon::onExitIdle()
+{
+    stopAllActions();
+}
+void ColorHexagon::onEnterDead()
+{
+    ParticleSystemHelper::spawnExplosion(ExplosionType::ET_EXPLOSION_ORANGE, getPosition());
+    if(m_pBlackHole)
+    {
+        m_pBlackHole->stopSystem();
+        m_pBlackHole->release();
+    }
+}
+void ColorHexagon::beginTrack()
+{
+    m_fAccel = 4.0f;
+    m_fMaxSpeed = 2.0f;
+    setActorState(ActorState::AS_TRACK);
 }

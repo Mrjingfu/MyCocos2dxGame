@@ -144,7 +144,7 @@ ParticleSystemQuad* ParticleSystemHelper::spawnExplosion(ExplosionType explosion
                 explosion= ParticleSystemQuad::create("explosion.plist");
                 if(!explosion)
                 {
-                    CCLOG("Load collision particle system failed! file: explosion.plist");
+                    CCLOG("Load explosion particle system failed! file: explosion.plist");
                     return nullptr;
                 }
                 explosion->setScale(0.3f);
@@ -166,6 +166,23 @@ ParticleSystemQuad* ParticleSystemHelper::spawnExplosion(ExplosionType explosion
                 GameController::getInstance()->getGameLayer()->addChild(explosion);
                 GameController::getInstance()->getGameLayer()->setCameraMask((unsigned short)CameraFlag::USER1);
 
+            }
+            break;
+        case ET_EXPLOSION_BLACK_HOLE:
+            {
+                explosion= ParticleSystemQuad::create("blackhole.plist");
+                if(!explosion)
+                {
+                    CCLOG("Load explosion particle system failed! file: blackhole.plist");
+                    return nullptr;
+                }
+                
+                explosion->setPositionType(ParticleSystem::PositionType::GROUPED);
+                explosion->setPosition(pos);
+                explosion->setDuration(15.0f);
+                explosion->setAutoRemoveOnFinish(true);
+                GameController::getInstance()->getGameLayer()->addChild(explosion);
+                GameController::getInstance()->getGameLayer()->setCameraMask((unsigned short)CameraFlag::USER1);
             }
             break;
         default:
@@ -296,6 +313,24 @@ ParticleSystemQuad* ParticleSystemHelper::spawnActorWidget(ActorWidgetType actor
                 widget->setSpeedVar(0);
                 widget->setScale(0.5f);
                 Texture2D* texture = Director::getInstance()->getTextureCache()->addImage("star.png");
+                widget->setTexture(texture);
+                widget->setAutoRemoveOnFinish(true);
+                actor->addChild(widget);
+                actor->setCameraMask((unsigned short)CameraFlag::USER1);
+            }
+            break;
+        case ActorWidgetType::AWT_COLOR_HEXAGON_TAIL:
+            {
+                widget = ParticleSystemQuad::create("colorgeometry.plist");
+                if(!widget)
+                {
+                    CCLOG("Load actor widget particle system failed! file: colorgeometry.plist");
+                    return nullptr;
+                }
+                widget->setPositionType(ParticleSystem::PositionType::RELATIVE);
+                widget->setPosition(pos);
+                widget->setScale(0.6f);
+                Texture2D* texture = Director::getInstance()->getTextureCache()->addImage("hexagon.png");
                 widget->setTexture(texture);
                 widget->setAutoRemoveOnFinish(true);
                 actor->addChild(widget);

@@ -9,6 +9,7 @@
 #include "ActorsManager.h"
 #include "GameController.h"
 #include "ParticleSystemHelper.h"
+#include "UtilityHelper.h"
 USING_NS_CC;
 
 ActorsManager* g_pActorsManagerInstance = nullptr;
@@ -360,15 +361,69 @@ Enemy* ActorsManager::spawnEnemy(Enemy::EnemyType enemyType, const Vec2& pos, co
                 }
                 else
                     CC_SAFE_DELETE(enemy);
-        }
+            }
             break;
-
+        case Enemy::EnemyType::ET_HEXAGON_COLORED:
+            {
+                enemy = new(std::nothrow) ColorHexagon();
+                if (enemy && enemy->init()) {
+                    enemy->loadModel("hexagon.png");
+                    enemy->getModel()->setVisible(false);
+                    enemy->setPosition(pos);
+                    enemy->setDirection(dir);
+                    //enemy->setOrientation(dir);
+                    enemy->setCascadeOpacityEnabled(true);
+                    enemy->setOpacity(0);
+                    enemy->setScale(0.3f);
+                    enemy->setActorState(ActorState::AS_UNDERCONTROL);
+                    enemy->setColor(Color3B(253,153,31));
+                    enemy->caculateRadius();
+                    ActorsManager::getInstance()->m_Enemies.pushBack(enemy);
+                    ActorsManager::getInstance()->m_pActorLayer->addChild(enemy);
+                    ActorsManager::getInstance()->m_pActorLayer->setCameraMask((unsigned short)CameraFlag::USER1);
+                    
+                    ParticleSystemHelper::spawnActorWidget(ActorWidgetType::AWT_COLOR_HEXAGON_TAIL, Vec2::ZERO, enemy);
+                
+                    EaseSineOut* easeOut1 = EaseSineOut::create(ScaleTo::create(1.5f, 1.0f));
+                    EaseSineOut* easeOut2 = EaseSineOut::create(FadeIn::create(1.5f));
+                
+                    DelayTime* delay = DelayTime::create(0.2f);
+                    CallFunc* callFunc = CallFunc::create(CC_CALLBACK_0(Enemy::beginTrack,enemy));
+                    Sequence* sequence = Sequence::createWithTwoActions(delay, callFunc);
+                
+                    Spawn* spawn = Spawn::create(easeOut1, easeOut2, sequence, NULL);
+                    enemy->runAction(spawn);
+                    enemy->autorelease();
+                }
+                else
+                    CC_SAFE_DELETE(enemy);
+            }
+            break;
         default:
             break;
     }
     return enemy;
 }
-
+Laser* ActorsManager::spawnLaser(const cocos2d::Vec2& start, const cocos2d::Vec2& end)
+{
+    if(!ActorsManager::getInstance()->m_pActorLayer)
+        return nullptr;
+    Laser* laser = new(std::nothrow) Laser();
+    if(laser)
+    {
+        laser->initLaser();
+        laser->setStart(start);
+        laser->setEnd(end);
+        laser->setActorState(ActorState::AS_IDLE);
+        ActorsManager::getInstance()->m_Lasers.pushBack(laser);
+        ActorsManager::getInstance()->m_pActorLayer->addChild(laser);
+        ActorsManager::getInstance()->m_pActorLayer->setCameraMask((unsigned short)CameraFlag::USER1);
+        laser->autorelease();
+    }
+    else
+        CC_SAFE_DELETE(laser);
+    return laser;
+}
 bool ActorsManager::init(cocos2d::Layer* actorLayer)
 {
     if(!actorLayer)
@@ -382,7 +437,7 @@ void ActorsManager::update(float delta)
     Vec2 playerPos = GameController::getInstance()->getPlayerPos();
     float playerRadius = GameController::getInstance()->getPlayer()->getRadius();
     
-    CCLOG("Current bullets number %zd", m_Bullets.size());
+    //CCLOG("Current bullets number %zd", m_Bullets.size());
     for (ssize_t i = 0; i<m_Bullets.size(); ++i) {
         Bullet* bullet = m_Bullets.at(i);
         if(bullet)
@@ -468,7 +523,7 @@ void ActorsManager::update(float delta)
         }
     }
     
-    CCLOG("Current Enemies number %zd", m_Enemies.size());
+    //CCLOG("Current Enemies number %zd", m_Enemies.size());
     for (ssize_t i = 0; i<m_Enemies.size(); ++i) {
         Enemy* enemy = m_Enemies.at(i);
         if(enemy)
@@ -486,12 +541,36 @@ void ActorsManager::update(float delta)
             GameController::getInstance()->checkBounce(enemy);
         }
     }
+    
+    //CCLOG("Current Lasers number %zd", m_Lasers.size());
+    for (ssize_t i = 0; i<m_Lasers.size(); ++i) {
+        Laser* laser = m_Lasers.at(i);
+        if(laser)
+        {
+            if(laser->getActorState() == ActorState::AS_DEAD)
+            {
+                eraseLaser(laser);
+                continue;
+            }
+            if(GameController::getInstance()->getPlayer()->getActorState() != ActorState::AS_DEAD)
+            {
+                Vec2 start = laser->getStart();
+                Vec2 end = laser->getEnd();
+                bool intersect = UtilityHelper::checkCircleIntersectWithSegment(playerPos, playerRadius*0.3f, start, end);
+                if (intersect) {
+                    GameController::getInstance()->getPlayer()->setActorState(ActorState::AS_DEAD);
+                    continue;
+                }
+            }
+        }
+    }
 }
 void ActorsManager::destroy()
 {
     m_pActorLayer = nullptr;
     m_Bullets.clear();
     m_Enemies.clear();
+    m_Lasers.clear();
 }
 void ActorsManager::eraseBullet(Bullet* bullet)
 {
@@ -520,6 +599,19 @@ void ActorsManager::eraseEnemy(int i)
     m_Enemies.erase(i);
     enemy->removeFromParentAndCleanup(true);
 }
+void ActorsManager::eraseLaser(Laser* laser)
+{
+    if(!laser)
+        return;
+    m_Lasers.eraseObject(laser);
+    laser->removeFromParentAndCleanup(true);
+}
+void ActorsManager::eraseLaser(int i)
+{
+    auto laser = m_Lasers.at(i);
+    m_Lasers.erase(i);
+    laser->removeFromParentAndCleanup(true);
+}
 void ActorsManager::reset()
 {
     for (ssize_t i = 0; i<m_Bullets.size(); ++i) {
@@ -537,4 +629,13 @@ void ActorsManager::reset()
             eraseEnemy(enemy);
         }
     }
+    for (ssize_t i = 0; i<m_Lasers.size(); ++i) {
+        Laser* laser = m_Lasers.at(i);
+        if(laser)
+        {
+            laser->setActorState(ActorState::AS_DEAD);
+            eraseLaser(laser);
+        }
+    }
+
 }

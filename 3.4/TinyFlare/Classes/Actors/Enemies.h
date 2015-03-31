@@ -10,7 +10,7 @@
 #define __Geometry_Wars__Enemies__
 
 #include "GameActor.h"
-
+#include "Laser.h"
 class Enemy : public GameActor
 {
     friend class ActorsManager;
@@ -24,7 +24,7 @@ public:
         ET_DIAMOND,             ///躲避攻击，射击发射子弹
         ET_DIAMOND_COLORED,     ///躲避玩家，甚至躲避玩家发射的子弹, 分裂攻击 死后有几率掉落武器强化道具
         ET_HEXAGON,             ///慢速追踪，绘制激光
-        ET_HEXAGON_COLORED,     ///单独出现，生成HEXAGON,编制激光，死后生成黑洞静力场，死后有几率掉落武器强化道具
+        ET_HEXAGON_COLORED,     ///慢速追踪，生成黑洞静力场，死后有几率掉落武器强化道具
         ET_STAR,                ///慢速追踪，五方向弹幕
         ET_STAR_COLORED,        ///慢速追踪，快速五星旋转弹幕
         
@@ -186,6 +186,42 @@ protected:
     Hexagon();
     virtual ~Hexagon();
 public:
+    virtual void update(float delta) override;
+    virtual void onEnterIdle() override;
+    virtual void onExitIdle() override;
+    
+    virtual void onEnterTrack() override;
+    virtual void onExitTrack() override;
+    
+    virtual void onEnterCharge() override;
+    virtual void onExitCharge() override;
+    
     virtual void onEnterDead() override;
+    virtual void beginTrack() override;
+protected:
+    float   m_fTrackTime;
+    float   m_fIdleTime;
+private:
+    float   m_fChargeTime;
+    Laser*  m_pLaser;
 };
+//慢速追踪，生成黑洞静力场，死后有几率掉落武器强化道具
+class ColorHexagon : public Hexagon
+{
+    friend class ActorsManager;
+protected:
+    ColorHexagon();
+    virtual ~ColorHexagon();
+public:
+    virtual void update(float delta) override;
+    virtual void onEnterIdle() override;
+    virtual void onExitIdle() override;
+    virtual void onEnterDead() override;
+    virtual void beginTrack() override;
+private:
+    float   m_fMaxRadius;
+    float   m_fMinRadius;
+    cocos2d::ParticleSystemQuad* m_pBlackHole;
+};
+
 #endif /* defined(__Geometry_Wars__Enemies__) */
