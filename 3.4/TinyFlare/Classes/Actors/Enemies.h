@@ -89,6 +89,7 @@ public:
     virtual void update(float delta) override;
     virtual void onEnterCharge() override;
     virtual void onExitCharge() override;
+    virtual void onEnterDead() override;
 private:
     float   m_fTrackTime;
     float   m_fChargeTime;
@@ -126,6 +127,7 @@ protected:
     virtual ~ColorDiamond();
 public:
     virtual void fire(float delta) override;
+    virtual void onEnterDead() override;
 };
 
 ///慢速追踪，五星旋转弹幕
@@ -164,6 +166,7 @@ public:
     virtual void update(float delta) override;
     virtual void onEnterIdle() override;
     virtual void onExitIdle() override;
+    virtual void onEnterDead() override;
     
     virtual void beginTrack() override;
     

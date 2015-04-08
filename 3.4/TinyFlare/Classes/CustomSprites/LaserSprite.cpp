@@ -197,6 +197,7 @@ void LaserSprite::updateStartAndEnd()
     }else{
         A=(2*M_PI-acosf(dir.x))*180/M_PI;
     }
+    ///crush
     this->setPosition(mid);
     this->setRotation(A);
     

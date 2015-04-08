@@ -118,6 +118,9 @@ void GameActor::setActorState(ActorState state)
         case ActorState::AS_FLEE:
             onExitCharge();
             break;
+        case ActorState::AS_BLINK:
+            onExitBlink();
+            break;
         default:
             break;
     }
@@ -142,6 +145,10 @@ void GameActor::setActorState(ActorState state)
             break;
         case ActorState::AS_FLEE:
             onEnterFlee();
+            break;
+        case ActorState::AS_BLINK:
+            onEnterBlink();
+            break;
         default:
             break;
     }

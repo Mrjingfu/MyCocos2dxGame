@@ -18,6 +18,7 @@ typedef enum {
     AS_DEAD,
     AS_CHARGE,
     AS_FLEE,
+    AS_BLINK,
     AS_UNKNOWN
 } ActorState;
 
@@ -30,6 +31,7 @@ public:
         AT_ENEMY_BULLET,
         AT_PLAYER_BULLET,
         AT_LASER,
+        AT_ITEM,
         AT_UNKNOWN
     } ActorType;
 protected:
@@ -53,6 +55,9 @@ protected:
     
     virtual void onEnterFlee(){};
     virtual void onExitFlee(){};
+    
+    virtual void onEnterBlink(){};
+    virtual void onExitBlink(){};
 public:
     virtual void onEnter();
     virtual void onExit();

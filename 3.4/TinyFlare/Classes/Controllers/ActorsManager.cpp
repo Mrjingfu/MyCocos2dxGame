@@ -424,6 +424,44 @@ Laser* ActorsManager::spawnLaser(const cocos2d::Vec2& start, const cocos2d::Vec2
         CC_SAFE_DELETE(laser);
     return laser;
 }
+Item* ActorsManager::spawnItem(Item::ItemType type, const Vec2& pos)
+{
+    if(!ActorsManager::getInstance()->m_pActorLayer)
+        return nullptr;
+    Item* item = new(std::nothrow) Item();
+    if (item) {
+        switch (type) {
+            case Item::IT_ACCEL:
+                item->loadTexture("accel.png");
+                break;
+            case Item::IT_BOOM:
+                item->loadTexture("boom.png");
+                break;
+            case Item::IT_MULTI:
+                item->loadTexture("multi.png");
+                break;
+            case Item::IT_PROTETED:
+                item->loadTexture("protected.png");
+                break;
+            case Item::IT_TIME:
+                item->loadTexture("time.png");
+                break;
+            default:
+                break;
+        }
+        item->setCascadeOpacityEnabled(true);
+        item->setItemType(type);
+        item->setPosition(pos);
+        item->setActorState(ActorState::AS_IDLE);
+        ActorsManager::getInstance()->m_Items.pushBack(item);
+        ActorsManager::getInstance()->m_pActorLayer->addChild(item);
+        ActorsManager::getInstance()->m_pActorLayer->setCameraMask((unsigned short)CameraFlag::USER1);
+        item->autorelease();
+    }
+    else
+        CC_SAFE_DELETE(item);
+    return item;
+}
 bool ActorsManager::init(cocos2d::Layer* actorLayer)
 {
     if(!actorLayer)
@@ -564,6 +602,39 @@ void ActorsManager::update(float delta)
             }
         }
     }
+    //CCLOG("Current Items number %zd", m_Items.size());
+    for (ssize_t i = 0; i<m_Items.size(); ++i) {
+        Item* item = m_Items.at(i);
+        if(item)
+        {
+            if(item->getActorState() == ActorState::AS_DEAD)
+            {
+                eraseItem(item);
+                continue;
+            }
+            if(GameController::getInstance()->getPlayer()->getActorState() != ActorState::AS_DEAD)
+            {
+                float dist = item->getPosition().distance(playerPos);
+                if (dist <= playerRadius) {
+                    Item::ItemType iType = item->getItemType();
+                    if(iType == Item::IT_ACCEL)
+                        GameController::getInstance()->getPlayer()->addBuffer(Player::BT_ACCEL);
+                    else if(iType == Item::IT_BOOM)
+                        GameController::getInstance()->getPlayer()->addBuffer(Player::BT_BOOM);
+                    else if(iType == Item::IT_MULTI)
+                        GameController::getInstance()->getPlayer()->addBuffer(Player::BT_MULTI);
+                    else if(iType == Item::IT_PROTETED)
+                        GameController::getInstance()->getPlayer()->addBuffer(Player::BT_PROTECTED);
+                    else if(iType == Item::IT_TIME)
+                        GameController::getInstance()->getPlayer()->addBuffer(Player::BT_TIME);
+                    item->setActorState(ActorState::AS_DEAD);
+                    eraseItem(item);
+                    continue;
+                }
+            }
+        }
+    }
+
 }
 void ActorsManager::destroy()
 {
@@ -571,6 +642,7 @@ void ActorsManager::destroy()
     m_Bullets.clear();
     m_Enemies.clear();
     m_Lasers.clear();
+    m_Items.clear();
 }
 void ActorsManager::eraseBullet(Bullet* bullet)
 {
@@ -612,6 +684,19 @@ void ActorsManager::eraseLaser(int i)
     m_Lasers.erase(i);
     laser->removeFromParentAndCleanup(true);
 }
+void ActorsManager::eraseItem(Item* item)
+{
+    if(!item)
+        return;
+    m_Items.eraseObject(item);
+    item->removeFromParentAndCleanup(true);
+}
+void ActorsManager::eraseItem(int i)
+{
+    auto item = m_Items.at(i);
+    m_Items.erase(i);
+    item->removeFromParentAndCleanup(true);
+}
 void ActorsManager::reset()
 {
     for (ssize_t i = 0; i<m_Bullets.size(); ++i) {
@@ -637,5 +722,12 @@ void ActorsManager::reset()
             eraseLaser(laser);
         }
     }
-
+    for (ssize_t i = 0; i<m_Items.size(); ++i) {
+        Item* item = m_Items.at(i);
+        if(item)
+        {
+            item->setActorState(ActorState::AS_DEAD);
+            eraseItem(item);
+        }
+    }
 }

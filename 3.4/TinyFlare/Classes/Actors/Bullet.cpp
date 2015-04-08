@@ -25,7 +25,7 @@ void Bullet::loadTexture(const std::string& textureName)
 {
     m_pModel = Sprite::create(textureName);
     if(!m_pModel)
-        CCLOG("Load bullet texture failed!");
+        CCLOGERROR("Load bullet texture failed!");
     addChild(m_pModel);
     caculateRadius();
 }

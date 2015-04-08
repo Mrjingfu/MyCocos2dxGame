@@ -23,12 +23,21 @@ Player::Player()
     m_pLeftTail = nullptr;
     m_pRightTail = nullptr;
     m_pShadowNode = nullptr;
+    m_nBufferType = BT_NORMAL;
+    m_fProtectedTime = 0.0f;
+    m_fSlowTime      = 0.0f;
+    m_fFireDelta     = 0.5f;
 }
 Player::~Player()
 {
 }
+void Player::updateBuffer(float delta)
+{
+
+}
 void Player::update(float delta)
 {
+    updateBuffer(delta);
     if(m_curState == ActorState::AS_DEAD)
         return;
     float maskRotationZ = CC_RADIANS_TO_DEGREES(Vec2::angle(m_Orientation, Vec2::UNIT_Y));
@@ -83,7 +92,40 @@ void Player::loadMaskModel(const std::string& texName)
     m_pMaskModel->setScale(0.5f);
     addChild(m_pMaskModel);
 }
-
+void Player::addBuffer(BufferType type)
+{
+    m_nBufferType |= type;
+    if(m_nBufferType & BT_ACCEL)
+        m_fFireDelta = 0.1f;
+    if(m_nBufferType & BT_MULTI)
+    {}
+    if(m_nBufferType & BT_PROTECTED)
+    {}
+    if(m_nBufferType & BT_BOOM)
+    {
+        removeBuffer(BT_BOOM);
+        ParticleSystemHelper::spawnExplosion(ET_EXPLOSION_CLEAR, getPosition());
+        Vec2 orient = Vec2::UNIT_Y;
+        for (int i = 0; i<40; ++i) {
+            orient.rotate(Vec2::ZERO, M_PI*0.05f);
+            ActorsManager::spawnBullet(GameActor::AT_PLAYER_BULLET, getPosition(), orient, 10.0f,"bullet1.png", Color3B(0,224,252), 1.0f, 3.0f);
+        }
+    }
+    if(m_nBufferType & BT_TIME)
+    {}
+}
+void Player::removeBuffer(BufferType type)
+{
+    if(type == BT_ACCEL)
+        m_fFireDelta = 0.5f;
+    if(type == BT_MULTI)
+    {}
+    if(type == BT_PROTECTED)
+    {}
+    if(type == BT_TIME)
+    {}
+    m_nBufferType |= type;
+}
 void Player::respawn()
 {
     setVelocity(Vec2::ZERO);
@@ -167,7 +209,7 @@ void Player::onJoystickPressed(TwoJoysticks* joystick, float pressedTime)
 {
     if(!m_bScheduledFire)
     {
-        schedule(CC_SCHEDULE_SELECTOR(Player::fire), 0.5f, -1, 0);
+        schedule(CC_SCHEDULE_SELECTOR(Player::fire), m_fFireDelta, -1, 0);
         m_bScheduledFire = true;
     }
 }

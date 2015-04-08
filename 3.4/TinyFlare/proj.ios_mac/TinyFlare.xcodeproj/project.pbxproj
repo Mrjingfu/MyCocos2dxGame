@@ -118,8 +118,28 @@
 		5585C1CF1AB9979300B694FD /* collision.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5585C1CD1AB9978400B694FD /* collision.plist */; };
 		5585C1D21AB9A76700B694FD /* tail.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5585C1D11AB9A76700B694FD /* tail.plist */; };
 		5585C1D31AB9A77B00B694FD /* tail.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5585C1D11AB9A76700B694FD /* tail.plist */; };
+		559C576B1AD4E40C00AE5B20 /* AlisaMethod.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 559C57691AD4E40C00AE5B20 /* AlisaMethod.cpp */; };
+		559C576E1AD50B4B00AE5B20 /* AlisaMethod.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 559C57691AD4E40C00AE5B20 /* AlisaMethod.cpp */; };
+		559C57711AD566B200AE5B20 /* clearexplosion.plist in Resources */ = {isa = PBXBuildFile; fileRef = 559C57701AD566B200AE5B20 /* clearexplosion.plist */; };
+		559C57721AD566CD00AE5B20 /* clearexplosion.plist in Resources */ = {isa = PBXBuildFile; fileRef = 559C57701AD566B200AE5B20 /* clearexplosion.plist */; };
 		55C70E751ACABD4300D06754 /* UtilityHelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55C70E731ACABD4300D06754 /* UtilityHelper.cpp */; };
 		55C70E761ACAC11700D06754 /* UtilityHelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55C70E731ACABD4300D06754 /* UtilityHelper.cpp */; };
+		55D8789D1AD3A81D00442E32 /* accel.png in Resources */ = {isa = PBXBuildFile; fileRef = 55D878961AD3A81D00442E32 /* accel.png */; };
+		55D8789E1AD3A81D00442E32 /* boom.png in Resources */ = {isa = PBXBuildFile; fileRef = 55D878971AD3A81D00442E32 /* boom.png */; };
+		55D8789F1AD3A81D00442E32 /* bound.png in Resources */ = {isa = PBXBuildFile; fileRef = 55D878981AD3A81D00442E32 /* bound.png */; };
+		55D878A01AD3A81D00442E32 /* multi.png in Resources */ = {isa = PBXBuildFile; fileRef = 55D878991AD3A81D00442E32 /* multi.png */; };
+		55D878A11AD3A81D00442E32 /* playermask2.png in Resources */ = {isa = PBXBuildFile; fileRef = 55D8789A1AD3A81D00442E32 /* playermask2.png */; };
+		55D878A21AD3A81D00442E32 /* protected.png in Resources */ = {isa = PBXBuildFile; fileRef = 55D8789B1AD3A81D00442E32 /* protected.png */; };
+		55D878A31AD3A81D00442E32 /* time.png in Resources */ = {isa = PBXBuildFile; fileRef = 55D8789C1AD3A81D00442E32 /* time.png */; };
+		55D878A61AD3AD2D00442E32 /* Item.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55D878A41AD3AD2D00442E32 /* Item.cpp */; };
+		55D878A71AD3B46800442E32 /* Item.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55D878A41AD3AD2D00442E32 /* Item.cpp */; };
+		55D878A81AD3C76000442E32 /* accel.png in Resources */ = {isa = PBXBuildFile; fileRef = 55D878961AD3A81D00442E32 /* accel.png */; };
+		55D878A91AD3C76000442E32 /* boom.png in Resources */ = {isa = PBXBuildFile; fileRef = 55D878971AD3A81D00442E32 /* boom.png */; };
+		55D878AA1AD3C76000442E32 /* bound.png in Resources */ = {isa = PBXBuildFile; fileRef = 55D878981AD3A81D00442E32 /* bound.png */; };
+		55D878AB1AD3C76000442E32 /* multi.png in Resources */ = {isa = PBXBuildFile; fileRef = 55D878991AD3A81D00442E32 /* multi.png */; };
+		55D878AC1AD3C76000442E32 /* playermask2.png in Resources */ = {isa = PBXBuildFile; fileRef = 55D8789A1AD3A81D00442E32 /* playermask2.png */; };
+		55D878AD1AD3C76000442E32 /* protected.png in Resources */ = {isa = PBXBuildFile; fileRef = 55D8789B1AD3A81D00442E32 /* protected.png */; };
+		55D878AE1AD3C76000442E32 /* time.png in Resources */ = {isa = PBXBuildFile; fileRef = 55D8789C1AD3A81D00442E32 /* time.png */; };
 		55E6B2CB1AC56E0800E30B90 /* light.png in Resources */ = {isa = PBXBuildFile; fileRef = 55E6B2C61AC56E0800E30B90 /* light.png */; };
 		55E6B2CC1AC56E0800E30B90 /* mask.png in Resources */ = {isa = PBXBuildFile; fileRef = 55E6B2C71AC56E0800E30B90 /* mask.png */; };
 		55E6B2CD1AC56E0800E30B90 /* mask2.png in Resources */ = {isa = PBXBuildFile; fileRef = 55E6B2C81AC56E0800E30B90 /* mask2.png */; };
@@ -260,8 +280,20 @@
 		5585C1CA1AB9858B00B694FD /* collisionexplosion.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = collisionexplosion.plist; sourceTree = "<group>"; };
 		5585C1CD1AB9978400B694FD /* collision.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = collision.plist; sourceTree = "<group>"; };
 		5585C1D11AB9A76700B694FD /* tail.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = tail.plist; sourceTree = "<group>"; };
+		559C57691AD4E40C00AE5B20 /* AlisaMethod.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AlisaMethod.cpp; sourceTree = "<group>"; };
+		559C576A1AD4E40C00AE5B20 /* AlisaMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlisaMethod.h; sourceTree = "<group>"; };
+		559C57701AD566B200AE5B20 /* clearexplosion.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = clearexplosion.plist; sourceTree = "<group>"; };
 		55C70E731ACABD4300D06754 /* UtilityHelper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UtilityHelper.cpp; sourceTree = "<group>"; };
 		55C70E741ACABD4300D06754 /* UtilityHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UtilityHelper.h; sourceTree = "<group>"; };
+		55D878961AD3A81D00442E32 /* accel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = accel.png; sourceTree = "<group>"; };
+		55D878971AD3A81D00442E32 /* boom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = boom.png; sourceTree = "<group>"; };
+		55D878981AD3A81D00442E32 /* bound.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bound.png; sourceTree = "<group>"; };
+		55D878991AD3A81D00442E32 /* multi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = multi.png; sourceTree = "<group>"; };
+		55D8789A1AD3A81D00442E32 /* playermask2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = playermask2.png; sourceTree = "<group>"; };
+		55D8789B1AD3A81D00442E32 /* protected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = protected.png; sourceTree = "<group>"; };
+		55D8789C1AD3A81D00442E32 /* time.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = time.png; sourceTree = "<group>"; };
+		55D878A41AD3AD2D00442E32 /* Item.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Item.cpp; sourceTree = "<group>"; };
+		55D878A51AD3AD2D00442E32 /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Item.h; sourceTree = "<group>"; };
 		55E6B2C61AC56E0800E30B90 /* light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = light.png; sourceTree = "<group>"; };
 		55E6B2C71AC56E0800E30B90 /* mask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mask.png; sourceTree = "<group>"; };
 		55E6B2C81AC56E0800E30B90 /* mask2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mask2.png; sourceTree = "<group>"; };
@@ -466,6 +498,7 @@
 		5515DA421AB8197400CD018F /* particles */ = {
 			isa = PBXGroup;
 			children = (
+				559C57701AD566B200AE5B20 /* clearexplosion.plist */,
 				557179521ACAD79A00915125 /* blackhole.plist */,
 				552985E31ABFB57100159D23 /* colorgeometry.plist */,
 				5585C1D11AB9A76700B694FD /* tail.plist */,
@@ -498,6 +531,13 @@
 		555B81481AB13B8800E9B69C /* textures */ = {
 			isa = PBXGroup;
 			children = (
+				55D878961AD3A81D00442E32 /* accel.png */,
+				55D878971AD3A81D00442E32 /* boom.png */,
+				55D878981AD3A81D00442E32 /* bound.png */,
+				55D878991AD3A81D00442E32 /* multi.png */,
+				55D8789A1AD3A81D00442E32 /* playermask2.png */,
+				55D8789B1AD3A81D00442E32 /* protected.png */,
+				55D8789C1AD3A81D00442E32 /* time.png */,
 				55E6B2C61AC56E0800E30B90 /* light.png */,
 				55E6B2C71AC56E0800E30B90 /* mask.png */,
 				55E6B2C81AC56E0800E30B90 /* mask2.png */,
@@ -534,6 +574,8 @@
 				555B81711AB13DDC00E9B69C /* Player.h */,
 				552CB5691AC97BFE0071DA60 /* Laser.cpp */,
 				552CB56A1AC97BFE0071DA60 /* Laser.h */,
+				55D878A41AD3AD2D00442E32 /* Item.cpp */,
+				55D878A51AD3AD2D00442E32 /* Item.h */,
 			);
 			path = Actors;
 			sourceTree = "<group>";
@@ -571,6 +613,8 @@
 			children = (
 				55C70E731ACABD4300D06754 /* UtilityHelper.cpp */,
 				55C70E741ACABD4300D06754 /* UtilityHelper.h */,
+				559C57691AD4E40C00AE5B20 /* AlisaMethod.cpp */,
+				559C576A1AD4E40C00AE5B20 /* AlisaMethod.h */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -677,12 +721,15 @@
 			files = (
 				557179531ACAD79A00915125 /* blackhole.plist in Resources */,
 				5087E78117EB970100C73F5D /* Icon-120.png in Resources */,
+				55D878A31AD3A81D00442E32 /* time.png in Resources */,
 				555B817C1AB142BF00E9B69C /* bullet2.png in Resources */,
 				5087E78617EB970100C73F5D /* Icon-76.png in Resources */,
 				55E6B2CF1AC56E0800E30B90 /* noise2.png in Resources */,
+				55D8789F1AD3A81D00442E32 /* bound.png in Resources */,
 				555B81521AB13B8800E9B69C /* circle.png in Resources */,
 				55E6B2CB1AC56E0800E30B90 /* light.png in Resources */,
 				55E6B2CE1AC56E0800E30B90 /* noise.png in Resources */,
+				55D8789E1AD3A81D00442E32 /* boom.png in Resources */,
 				5087E77F17EB970100C73F5D /* Default@2x.png in Resources */,
 				50EF629917ECD46A001EB2F8 /* Icon-100.png in Resources */,
 				5585C1D21AB9A76700B694FD /* tail.plist in Resources */,
@@ -703,10 +750,13 @@
 				521A8E6519F0C34300D177D7 /* Default-736h@3x.png in Resources */,
 				50EF62A317ECD613001EB2F8 /* Icon-50.png in Resources */,
 				5087E78017EB970100C73F5D /* Icon-114.png in Resources */,
+				55D878A21AD3A81D00442E32 /* protected.png in Resources */,
 				55E6B2CC1AC56E0800E30B90 /* mask.png in Resources */,
 				50EF62A217ECD613001EB2F8 /* Icon-29.png in Resources */,
 				50EF629617ECD46A001EB2F8 /* Icon-40.png in Resources */,
+				55D878A01AD3A81D00442E32 /* multi.png in Resources */,
 				5087E78217EB970100C73F5D /* Icon-144.png in Resources */,
+				55D8789D1AD3A81D00442E32 /* accel.png in Resources */,
 				552985E41ABFB57100159D23 /* colorgeometry.plist in Resources */,
 				50EF629817ECD46A001EB2F8 /* Icon-80.png in Resources */,
 				55FEC8901AB6F79900F39535 /* playermask.png in Resources */,
@@ -715,7 +765,9 @@
 				555B81A81AB1518500E9B69C /* joystick1.png in Resources */,
 				552CB5611AC8FF090071DA60 /* tailEffect.fsh in Resources */,
 				5087E77E17EB970100C73F5D /* Default.png in Resources */,
+				559C57711AD566B200AE5B20 /* clearexplosion.plist in Resources */,
 				55E6B2CD1AC56E0800E30B90 /* mask2.png in Resources */,
+				55D878A11AD3A81D00442E32 /* playermask2.png in Resources */,
 				555B81C41AB195F300E9B69C /* bg.png in Resources */,
 				521A8E6419F0C34300D177D7 /* Default-667h@2x.png in Resources */,
 				50EF629717ECD46A001EB2F8 /* Icon-58.png in Resources */,
@@ -728,6 +780,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				559C57721AD566CD00AE5B20 /* clearexplosion.plist in Resources */,
+				55D878A81AD3C76000442E32 /* accel.png in Resources */,
+				55D878A91AD3C76000442E32 /* boom.png in Resources */,
+				55D878AA1AD3C76000442E32 /* bound.png in Resources */,
+				55D878AB1AD3C76000442E32 /* multi.png in Resources */,
+				55D878AC1AD3C76000442E32 /* playermask2.png in Resources */,
+				55D878AD1AD3C76000442E32 /* protected.png in Resources */,
+				55D878AE1AD3C76000442E32 /* time.png in Resources */,
 				557179541ACAD7A700915125 /* blackhole.plist in Resources */,
 				552CB5631AC8FF210071DA60 /* laser.fsh in Resources */,
 				552CB5641AC8FF210071DA60 /* tailEffect.fsh in Resources */,
@@ -778,9 +838,11 @@
 				555B81671AB13D9E00E9B69C /* ActorsManager.cpp in Sources */,
 				555B81791AB1401400E9B69C /* EnemiesGeneratorHelper.cpp in Sources */,
 				55C70E751ACABD4300D06754 /* UtilityHelper.cpp in Sources */,
+				55D878A61AD3AD2D00442E32 /* Item.cpp in Sources */,
 				555B81611AB13C2300E9B69C /* GameController.cpp in Sources */,
 				555B81761AB13DDC00E9B69C /* Player.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
+				559C576B1AD4E40C00AE5B20 /* AlisaMethod.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				5585C1C81AB9410400B694FD /* ParticleSystemHelper.cpp in Sources */,
 				555B815E1AB13BC300E9B69C /* TinyFlare.cpp in Sources */,
@@ -792,6 +854,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				559C576E1AD50B4B00AE5B20 /* AlisaMethod.cpp in Sources */,
+				55D878A71AD3B46800442E32 /* Item.cpp in Sources */,
 				55C70E761ACAC11700D06754 /* UtilityHelper.cpp in Sources */,
 				552CB56C1AC985580071DA60 /* Laser.cpp in Sources */,
 				552CB5561AC8F4560071DA60 /* LaserSprite.cpp in Sources */,

@@ -168,6 +168,20 @@ ParticleSystemQuad* ParticleSystemHelper::spawnExplosion(ExplosionType explosion
 
             }
             break;
+        case ET_EXPLOSION_CLEAR:
+            {
+                explosion= ParticleSystemQuad::create("clearexplosion.plist");
+                if(!explosion)
+                {
+                    CCLOG("Load explosion particle system failed! file: clearexplosion.plist");
+                    return nullptr;
+                }
+                explosion->setPosition(pos);
+                explosion->setAutoRemoveOnFinish(true);
+                GameController::getInstance()->getGameLayer()->addChild(explosion);
+                GameController::getInstance()->getGameLayer()->setCameraMask((unsigned short)CameraFlag::USER1);
+            }
+            break;
         case ET_EXPLOSION_BLACK_HOLE:
             {
                 explosion= ParticleSystemQuad::create("blackhole.plist");

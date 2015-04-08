@@ -10,6 +10,7 @@
 #include "GameController.h"
 #include "ParticleSystemHelper.h"
 #include "ActorsManager.h"
+#include "AlisaMethod.h"
 USING_NS_CC;
 Enemy::Enemy()
 {
@@ -90,6 +91,9 @@ Circle::~Circle()
 void Circle::onEnterDead()
 {
     ParticleSystemHelper::spawnExplosion(ExplosionType::ET_EXPLOSION_WHITE, getPosition());
+    AlisaMethod* am = AlisaMethod::createWithOnePercent(0.02f);
+    if(am && am->getRandomIndex() == 0)
+        ActorsManager::getInstance()->spawnItem(Item::IT_MULTI, getPosition());
 }
 
 /////ColorCircle
@@ -106,6 +110,9 @@ void ColorCircle::onEnterDead()
 {
     ParticleSystemHelper::spawnExplosion(ExplosionType::ET_EXPLOSION_WHITE, getPosition());
     GameController::getInstance()->getEnemiesGenerator()->generateEnemiesByExplosion(Enemy::ET_CIRCLE, getPosition(), 2);
+    AlisaMethod* am = AlisaMethod::createWithOnePercent(0.2f);
+    if(am && am->getRandomIndex() == 0)
+        ActorsManager::getInstance()->spawnItem(Item::IT_MULTI, getPosition());
 }
 
 /////Triangle
@@ -121,6 +128,9 @@ Triangle::~Triangle()
 void Triangle::onEnterDead()
 {
     ParticleSystemHelper::spawnExplosion(ExplosionType::ET_EXPLOSION_YELLOW, getPosition());
+    AlisaMethod* am = AlisaMethod::createWithOnePercent(1.0f);
+    if(am && am->getRandomIndex() == 0)
+        ActorsManager::getInstance()->spawnItem(Item::IT_ACCEL, getPosition());
 }
 void Triangle::beginTrack()
 {
@@ -232,7 +242,13 @@ void ColorTriangle::onExitCharge()
     m_fAccel = cocos2d::random(8.0f, 10.0f);
     m_fMaxSpeed = cocos2d::random(4.0f, 6.0f);
 }
-
+void ColorTriangle::onEnterDead()
+{
+    ParticleSystemHelper::spawnExplosion(ExplosionType::ET_EXPLOSION_YELLOW, getPosition());
+    AlisaMethod* am = AlisaMethod::createWithOnePercent(0.2f);
+    if(am && am->getRandomIndex() == 0)
+        ActorsManager::getInstance()->spawnItem(Item::IT_ACCEL, getPosition());
+}
 ///躲避攻击，射击发射子弹
 Diamond::Diamond()
 {
@@ -256,6 +272,9 @@ void Diamond::beginTrack()
 void Diamond::onEnterDead()
 {
     ParticleSystemHelper::spawnExplosion(ExplosionType::ET_EXPLOSION_GREEN, getPosition());
+    AlisaMethod* am = AlisaMethod::createWithOnePercent(0.02f);
+    if(am && am->getRandomIndex() == 0)
+        ActorsManager::getInstance()->spawnItem(Item::IT_TIME, getPosition());
 }
 void Diamond::onEnterTrack()
 {
@@ -393,7 +412,13 @@ void ColorDiamond::fire(float delta)
     orient.rotate(Vec2::ZERO, -M_PI*0.125f);
     ActorsManager::spawnBullet(GameActor::AT_ENEMY_BULLET, getFireWorldPos(), orient, MAX(m_fMaxSpeed*2.0f,10.0f),"bullet2.png", Color3B(64,255,1), 0.2f, 1.0f);
 }
-
+void ColorDiamond::onEnterDead()
+{
+    ParticleSystemHelper::spawnExplosion(ExplosionType::ET_EXPLOSION_GREEN, getPosition());
+    AlisaMethod* am = AlisaMethod::createWithOnePercent(0.2f);
+    if(am && am->getRandomIndex() == 0)
+        ActorsManager::getInstance()->spawnItem(Item::IT_TIME, getPosition());
+}
 ///慢速追踪，五星旋转弹幕
 Star::Star()
 {
@@ -495,6 +520,9 @@ void Star::onExitTrack()
 void Star::onEnterDead()
 {
     ParticleSystemHelper::spawnExplosion(ExplosionType::ET_EXPLOSION_BLUE, getPosition());
+    AlisaMethod* am = AlisaMethod::createWithOnePercent(0.02f);
+    if(am && am->getRandomIndex() == 0)
+        ActorsManager::getInstance()->spawnItem(Item::IT_PROTETED, getPosition());
 }
 void Star::beginTrack()
 {
@@ -619,7 +647,13 @@ void ColorStar::onExitIdle()
         m_bScheduledFire = false;
     }
 }
-
+void ColorStar::onEnterDead()
+{
+    ParticleSystemHelper::spawnExplosion(ExplosionType::ET_EXPLOSION_BLUE, getPosition());
+    AlisaMethod* am = AlisaMethod::createWithOnePercent(0.2f);
+    if(am && am->getRandomIndex() == 0)
+        ActorsManager::getInstance()->spawnItem(Item::IT_PROTETED, getPosition());
+}
 void ColorStar::beginTrack()
 {
     m_fAccel = 4.0f;
@@ -819,6 +853,9 @@ void Hexagon::onExitCharge()
 void Hexagon::onEnterDead()
 {
     ParticleSystemHelper::spawnExplosion(ExplosionType::ET_EXPLOSION_ORANGE, getPosition());
+    AlisaMethod* am = AlisaMethod::createWithOnePercent(0.02f);
+    if(am && am->getRandomIndex() == 0)
+        ActorsManager::getInstance()->spawnItem(Item::IT_BOOM, getPosition());
 }
 void Hexagon::beginTrack()
 {
@@ -932,6 +969,9 @@ void ColorHexagon::onEnterDead()
         m_pBlackHole->stopSystem();
         m_pBlackHole->release();
     }
+    AlisaMethod* am = AlisaMethod::createWithOnePercent(1.0f);
+    if(am && am->getRandomIndex() == 0)
+        ActorsManager::getInstance()->spawnItem(Item::IT_BOOM, getPosition());
 }
 void ColorHexagon::beginTrack()
 {
