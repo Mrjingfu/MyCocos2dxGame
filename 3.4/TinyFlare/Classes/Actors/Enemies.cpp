@@ -11,6 +11,7 @@
 #include "ParticleSystemHelper.h"
 #include "ActorsManager.h"
 #include "AlisaMethod.h"
+#include "EncrytionUtility.h"
 USING_NS_CC;
 Enemy::Enemy()
 {
@@ -75,7 +76,7 @@ void Enemy::setColor(const cocos2d::Color3B& color)
 }
 void Enemy::beginTrack()
 {
-    m_fAccel = cocos2d::random(4.0f, 5.0f);
+    m_fAccel = cocos2d::random(3.0f, 4.0f);
     m_fMaxSpeed = cocos2d::random(2.0f, 3.0f);
     setActorState(ActorState::AS_TRACK);
 }
@@ -91,7 +92,7 @@ Circle::~Circle()
 void Circle::onEnterDead()
 {
     ParticleSystemHelper::spawnExplosion(ExplosionType::ET_EXPLOSION_WHITE, getPosition());
-    AlisaMethod* am = AlisaMethod::createWithOnePercent(0.02f);
+    AlisaMethod* am = AlisaMethod::createWithOnePercent(0.02f*EncrytionUtility::getIntegerForKey("DropLevel", 1));
     if(am && am->getRandomIndex() == 0)
         ActorsManager::getInstance()->spawnItem(Item::IT_MULTI, getPosition());
 }
@@ -100,7 +101,7 @@ void Circle::onEnterDead()
 ColorCircle::ColorCircle()
 {
     m_EnemyType = ET_CIRCLE_COLORED;
-    m_fAccel = cocos2d::random(4.0f, 5.0f);
+    m_fAccel = cocos2d::random(3.0f, 4.0f);
     m_fMaxSpeed = cocos2d::random(2.0f, 3.0f);
 }
 ColorCircle::~ColorCircle()
@@ -110,7 +111,7 @@ void ColorCircle::onEnterDead()
 {
     ParticleSystemHelper::spawnExplosion(ExplosionType::ET_EXPLOSION_WHITE, getPosition());
     GameController::getInstance()->getEnemiesGenerator()->generateEnemiesByExplosion(Enemy::ET_CIRCLE, getPosition(), 2);
-    AlisaMethod* am = AlisaMethod::createWithOnePercent(0.2f);
+    AlisaMethod* am = AlisaMethod::createWithOnePercent(0.15f*EncrytionUtility::getIntegerForKey("DropLevel", 1));
     if(am && am->getRandomIndex() == 0)
         ActorsManager::getInstance()->spawnItem(Item::IT_MULTI, getPosition());
 }
@@ -128,7 +129,7 @@ Triangle::~Triangle()
 void Triangle::onEnterDead()
 {
     ParticleSystemHelper::spawnExplosion(ExplosionType::ET_EXPLOSION_YELLOW, getPosition());
-    AlisaMethod* am = AlisaMethod::createWithOnePercent(1.0f);
+    AlisaMethod* am = AlisaMethod::createWithOnePercent(0.02f*EncrytionUtility::getIntegerForKey("DropLevel", 1));
     if(am && am->getRandomIndex() == 0)
         ActorsManager::getInstance()->spawnItem(Item::IT_ACCEL, getPosition());
 }
@@ -245,7 +246,7 @@ void ColorTriangle::onExitCharge()
 void ColorTriangle::onEnterDead()
 {
     ParticleSystemHelper::spawnExplosion(ExplosionType::ET_EXPLOSION_YELLOW, getPosition());
-    AlisaMethod* am = AlisaMethod::createWithOnePercent(0.2f);
+    AlisaMethod* am = AlisaMethod::createWithOnePercent(0.15f*EncrytionUtility::getIntegerForKey("DropLevel", 1));
     if(am && am->getRandomIndex() == 0)
         ActorsManager::getInstance()->spawnItem(Item::IT_ACCEL, getPosition());
 }
@@ -272,7 +273,7 @@ void Diamond::beginTrack()
 void Diamond::onEnterDead()
 {
     ParticleSystemHelper::spawnExplosion(ExplosionType::ET_EXPLOSION_GREEN, getPosition());
-    AlisaMethod* am = AlisaMethod::createWithOnePercent(0.02f);
+    AlisaMethod* am = AlisaMethod::createWithOnePercent(0.02f*EncrytionUtility::getIntegerForKey("DropLevel", 1));
     if(am && am->getRandomIndex() == 0)
         ActorsManager::getInstance()->spawnItem(Item::IT_TIME, getPosition());
 }
@@ -415,7 +416,7 @@ void ColorDiamond::fire(float delta)
 void ColorDiamond::onEnterDead()
 {
     ParticleSystemHelper::spawnExplosion(ExplosionType::ET_EXPLOSION_GREEN, getPosition());
-    AlisaMethod* am = AlisaMethod::createWithOnePercent(0.2f);
+    AlisaMethod* am = AlisaMethod::createWithOnePercent(0.15f*EncrytionUtility::getIntegerForKey("DropLevel", 1));
     if(am && am->getRandomIndex() == 0)
         ActorsManager::getInstance()->spawnItem(Item::IT_TIME, getPosition());
 }
@@ -520,7 +521,7 @@ void Star::onExitTrack()
 void Star::onEnterDead()
 {
     ParticleSystemHelper::spawnExplosion(ExplosionType::ET_EXPLOSION_BLUE, getPosition());
-    AlisaMethod* am = AlisaMethod::createWithOnePercent(0.02f);
+    AlisaMethod* am = AlisaMethod::createWithOnePercent(0.02f*EncrytionUtility::getIntegerForKey("DropLevel", 50));
     if(am && am->getRandomIndex() == 0)
         ActorsManager::getInstance()->spawnItem(Item::IT_PROTETED, getPosition());
 }
@@ -650,7 +651,7 @@ void ColorStar::onExitIdle()
 void ColorStar::onEnterDead()
 {
     ParticleSystemHelper::spawnExplosion(ExplosionType::ET_EXPLOSION_BLUE, getPosition());
-    AlisaMethod* am = AlisaMethod::createWithOnePercent(0.2f);
+    AlisaMethod* am = AlisaMethod::createWithOnePercent(0.15f*EncrytionUtility::getIntegerForKey("DropLevel", 1));
     if(am && am->getRandomIndex() == 0)
         ActorsManager::getInstance()->spawnItem(Item::IT_PROTETED, getPosition());
 }
@@ -853,7 +854,7 @@ void Hexagon::onExitCharge()
 void Hexagon::onEnterDead()
 {
     ParticleSystemHelper::spawnExplosion(ExplosionType::ET_EXPLOSION_ORANGE, getPosition());
-    AlisaMethod* am = AlisaMethod::createWithOnePercent(0.02f);
+    AlisaMethod* am = AlisaMethod::createWithOnePercent(0.02f*EncrytionUtility::getIntegerForKey("DropLevel", 1));
     if(am && am->getRandomIndex() == 0)
         ActorsManager::getInstance()->spawnItem(Item::IT_BOOM, getPosition());
 }
@@ -969,7 +970,7 @@ void ColorHexagon::onEnterDead()
         m_pBlackHole->stopSystem();
         m_pBlackHole->release();
     }
-    AlisaMethod* am = AlisaMethod::createWithOnePercent(1.0f);
+    AlisaMethod* am = AlisaMethod::createWithOnePercent(0.15f*EncrytionUtility::getIntegerForKey("DropLevel", 1));
     if(am && am->getRandomIndex() == 0)
         ActorsManager::getInstance()->spawnItem(Item::IT_BOOM, getPosition());
 }

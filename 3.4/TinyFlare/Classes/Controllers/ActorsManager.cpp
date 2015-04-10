@@ -473,7 +473,6 @@ void ActorsManager::update(float delta)
 {
     Size boundSize =  GameController::getInstance()->getBoundSize();
     Vec2 playerPos = GameController::getInstance()->getPlayerPos();
-    float playerRadius = GameController::getInstance()->getPlayer()->getRadius();
     
     //CCLOG("Current bullets number %zd", m_Bullets.size());
     for (ssize_t i = 0; i<m_Bullets.size(); ++i) {
@@ -547,13 +546,14 @@ void ActorsManager::update(float delta)
             }
             else if(bullet->getType() == GameActor::AT_ENEMY_BULLET)
             {
-                if(GameController::getInstance()->getPlayer()->getActorState() != ActorState::AS_DEAD)
+                Player* player = GameController::getInstance()->getPlayer();
+                if(player && (player->getActorState() != ActorState::AS_DEAD))
                 {
                     float dist = playerPos.distance(bulletPos);
-                    if(dist <= playerRadius)
+                    if(dist <= player->getRadius())
                     {
-                        GameController::getInstance()->getPlayer()->setActorState(ActorState::AS_DEAD);
                         eraseBullet(bullet);
+                        player->setActorState(ActorState::AS_DEAD);
                         break;
                     }
                 }
@@ -566,13 +566,14 @@ void ActorsManager::update(float delta)
         Enemy* enemy = m_Enemies.at(i);
         if(enemy)
         {
-            if(GameController::getInstance()->getPlayer()->getActorState() != ActorState::AS_DEAD)
+            Player* player = GameController::getInstance()->getPlayer();
+            if(player && (player->getActorState() != ActorState::AS_DEAD))
             {
                 float dist = enemy->getPosition().distance(playerPos);
-                if (dist <= playerRadius) {
-                    GameController::getInstance()->getPlayer()->setActorState(ActorState::AS_DEAD);
+                if (dist <= player->getRadius()) {
                     enemy->setActorState(ActorState::AS_DEAD);
                     eraseEnemy(enemy);
+                    player->setActorState(ActorState::AS_DEAD);
                     continue;
                 }
             }
@@ -590,13 +591,14 @@ void ActorsManager::update(float delta)
                 eraseLaser(laser);
                 continue;
             }
-            if(GameController::getInstance()->getPlayer()->getActorState() != ActorState::AS_DEAD)
+            Player* player = GameController::getInstance()->getPlayer();
+            if(player && (player->getActorState() != ActorState::AS_DEAD))
             {
                 Vec2 start = laser->getStart();
                 Vec2 end = laser->getEnd();
-                bool intersect = UtilityHelper::checkCircleIntersectWithSegment(playerPos, playerRadius*0.3f, start, end);
+                bool intersect = UtilityHelper::checkCircleIntersectWithSegment(playerPos, player->getRadius()*0.3f, start, end);
                 if (intersect) {
-                    GameController::getInstance()->getPlayer()->setActorState(ActorState::AS_DEAD);
+                    player->setActorState(ActorState::AS_DEAD);
                     continue;
                 }
             }
@@ -612,21 +614,22 @@ void ActorsManager::update(float delta)
                 eraseItem(item);
                 continue;
             }
-            if(GameController::getInstance()->getPlayer()->getActorState() != ActorState::AS_DEAD)
+            Player* player = GameController::getInstance()->getPlayer();
+            if(player && (player->getActorState() != ActorState::AS_DEAD))
             {
                 float dist = item->getPosition().distance(playerPos);
-                if (dist <= playerRadius) {
+                if (dist <= player->getRadius()) {
                     Item::ItemType iType = item->getItemType();
                     if(iType == Item::IT_ACCEL)
-                        GameController::getInstance()->getPlayer()->addBuffer(Player::BT_ACCEL);
+                        player->addBuffer(BufferType::BT_ACCEL);
                     else if(iType == Item::IT_BOOM)
-                        GameController::getInstance()->getPlayer()->addBuffer(Player::BT_BOOM);
+                        player->addBuffer(BufferType::BT_BOOM);
                     else if(iType == Item::IT_MULTI)
-                        GameController::getInstance()->getPlayer()->addBuffer(Player::BT_MULTI);
+                        player->addBuffer(BufferType::BT_MULTI);
                     else if(iType == Item::IT_PROTETED)
-                        GameController::getInstance()->getPlayer()->addBuffer(Player::BT_PROTECTED);
+                        player->addBuffer(BufferType::BT_PROTECTED);
                     else if(iType == Item::IT_TIME)
-                        GameController::getInstance()->getPlayer()->addBuffer(Player::BT_TIME);
+                        player->addBuffer(BufferType::BT_TIME);
                     item->setActorState(ActorState::AS_DEAD);
                     eraseItem(item);
                     continue;
@@ -650,12 +653,14 @@ void ActorsManager::eraseBullet(Bullet* bullet)
         return;
     m_Bullets.eraseObject(bullet);
     bullet->removeFromParentAndCleanup(true);
+    bullet = nullptr;
 }
 void ActorsManager::eraseBullet(int i)
 {
     auto bullet = m_Bullets.at(i);
     m_Bullets.erase(i);
     bullet->removeFromParentAndCleanup(true);
+    bullet = nullptr;
 }
 
 void ActorsManager::eraseEnemy(Enemy* enemy)
@@ -664,12 +669,14 @@ void ActorsManager::eraseEnemy(Enemy* enemy)
         return;
     m_Enemies.eraseObject(enemy);
     enemy->removeFromParentAndCleanup(true);
+    enemy = nullptr;
 }
 void ActorsManager::eraseEnemy(int i)
 {
     auto enemy = m_Enemies.at(i);
     m_Enemies.erase(i);
     enemy->removeFromParentAndCleanup(true);
+    enemy = nullptr;
 }
 void ActorsManager::eraseLaser(Laser* laser)
 {
@@ -677,12 +684,14 @@ void ActorsManager::eraseLaser(Laser* laser)
         return;
     m_Lasers.eraseObject(laser);
     laser->removeFromParentAndCleanup(true);
+    laser = nullptr;
 }
 void ActorsManager::eraseLaser(int i)
 {
     auto laser = m_Lasers.at(i);
     m_Lasers.erase(i);
     laser->removeFromParentAndCleanup(true);
+    laser = nullptr;
 }
 void ActorsManager::eraseItem(Item* item)
 {
@@ -690,12 +699,14 @@ void ActorsManager::eraseItem(Item* item)
         return;
     m_Items.eraseObject(item);
     item->removeFromParentAndCleanup(true);
+    item = nullptr;
 }
 void ActorsManager::eraseItem(int i)
 {
     auto item = m_Items.at(i);
     m_Items.erase(i);
     item->removeFromParentAndCleanup(true);
+    item = nullptr;
 }
 void ActorsManager::reset()
 {

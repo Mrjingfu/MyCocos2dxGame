@@ -10,6 +10,7 @@
 #include "ActorsManager.h"
 #include "ParticleSystemHelper.h"
 #include "GameController.h"
+#include "EncrytionUtility.h"
 USING_NS_CC;
 
 Player::Player()
@@ -23,17 +24,50 @@ Player::Player()
     m_pLeftTail = nullptr;
     m_pRightTail = nullptr;
     m_pShadowNode = nullptr;
-    m_nBufferType = BT_NORMAL;
+    m_pMultiNode  = nullptr;
+    m_pProtectedNode = nullptr;
     m_fProtectedTime = 0.0f;
+    m_fMultiTime     = 0.0f;
     m_fSlowTime      = 0.0f;
     m_fFireDelta     = 0.5f;
+    m_nBoomBulletNum = 8;
 }
 Player::~Player()
 {
 }
+void Player::onEnter()
+{
+    Node::onEnter();
+    scheduleUpdate();
+}
+void Player::onExit()
+{
+    unscheduleUpdate();
+    Node::onExit();
+}
 void Player::updateBuffer(float delta)
 {
-
+    if(m_nBufferType & BufferType::BT_MULTI)
+    {
+        if(m_fMultiTime > 0.0f)
+            m_fMultiTime -= delta;
+        else
+            removeBuffer(BufferType::BT_MULTI);
+    }
+    if(m_nBufferType & BufferType::BT_PROTECTED)
+    {
+        if(m_fProtectedTime > 0.0f)
+            m_fProtectedTime -= delta;
+        else
+            removeBuffer(BufferType::BT_PROTECTED);
+        if(m_pProtectedNode)
+        {
+            float startSkewX = m_pProtectedNode->getRotationSkewX();
+            float startSkewY = m_pProtectedNode->getRotationSkewY();
+            m_pProtectedNode->setRotationSkewX(startSkewX + delta*90.0f);
+            m_pProtectedNode->setRotationSkewY(startSkewY + delta*90.0f);
+        }
+    }
 }
 void Player::update(float delta)
 {
@@ -44,6 +78,8 @@ void Player::update(float delta)
     if (m_Orientation.x < 0)
         maskRotationZ = -maskRotationZ;
     m_pMaskModel->setRotation(maskRotationZ);
+    if(m_pMultiNode)
+        m_pMultiNode->setRotation(maskRotationZ);
     
     if(m_Direction != Vec2::ZERO)
     {
@@ -96,55 +132,54 @@ void Player::addBuffer(BufferType type)
 {
     m_nBufferType |= type;
     if(m_nBufferType & BT_ACCEL)
-        m_fFireDelta = 0.1f;
+        m_fFireDelta = 0.5f*(powf(0.8f, EncrytionUtility::getIntegerForKey("AccelLevel", 1)));
     if(m_nBufferType & BT_MULTI)
-    {}
+    {
+        removeMulti();
+        m_fMultiTime = 15.0f*(powf(1.1f, EncrytionUtility::getIntegerForKey("MultiLevel", 1)));
+        beginMulti();
+    }
     if(m_nBufferType & BT_PROTECTED)
-    {}
+    {
+        removeProtected();
+        m_fProtectedTime = 10.0f*(powf(1.1f, EncrytionUtility::getIntegerForKey("ProtectedLevel", 1)));
+        beginProtected();
+    }
     if(m_nBufferType & BT_BOOM)
     {
         removeBuffer(BT_BOOM);
         ParticleSystemHelper::spawnExplosion(ET_EXPLOSION_CLEAR, getPosition());
         Vec2 orient = Vec2::UNIT_Y;
-        for (int i = 0; i<40; ++i) {
-            orient.rotate(Vec2::ZERO, M_PI*0.05f);
+        m_nBoomBulletNum = 8*EncrytionUtility::getIntegerForKey("BoomLevel", 1);
+        for (int i = 0; i<(int)(m_nBoomBulletNum.GetLongValue()); ++i) {
+            orient.rotate(Vec2::ZERO, M_PI*2.0f/(int)(m_nBoomBulletNum.GetLongValue()));
             ActorsManager::spawnBullet(GameActor::AT_PLAYER_BULLET, getPosition(), orient, 10.0f,"bullet1.png", Color3B(0,224,252), 1.0f, 3.0f);
         }
     }
     if(m_nBufferType & BT_TIME)
-    {}
+    {
+        m_fSlowTime = 8.0f*(powf(1.1f, EncrytionUtility::getIntegerForKey("SlowLevel", 1)));
+    }
 }
 void Player::removeBuffer(BufferType type)
 {
     if(type == BT_ACCEL)
         m_fFireDelta = 0.5f;
     if(type == BT_MULTI)
-    {}
+    {
+        endMulti();
+        m_fMultiTime = 0.0f;
+    }
     if(type == BT_PROTECTED)
-    {}
+    {
+        endProtected();
+        m_fProtectedTime = 0.0f;
+    }
     if(type == BT_TIME)
-    {}
-    m_nBufferType |= type;
-}
-void Player::respawn()
-{
-    setVelocity(Vec2::ZERO);
-    setPosition(Vec2::ZERO);
-    setDirection(Vec2::ZERO);
-    setOrientation(Vec2::UNIT_Y);
-    
-    if(m_pModel)
-        m_pModel->setRotation(0);
-    if(m_pMaskModel)
-        m_pMaskModel->setRotation(0);
-    
-    ParticleSystemHelper::spawnExplosion(ExplosionType::ET_EXPLOSION_ACTOR_RESPAWN, Vec2::ZERO);
-    
-    EaseSineIn* easeIn = EaseSineIn::create(FadeIn::create(1.0f));
-    CallFunc* callFunc = CallFunc::create(CC_CALLBACK_0(Player::beginShadow,this));
-    
-    Sequence* sequence = Sequence::create(easeIn, callFunc, NULL);
-    runAction(sequence);
+    {
+        m_fSlowTime = 0.0f;
+    }
+    m_nBufferType = m_nBufferType&~type;
 }
 void Player::beginShadow()
 {
@@ -191,6 +226,78 @@ void Player::endShadow()
     }
     setActorState(ActorState::AS_UNDERCONTROL);
 }
+void Player::beginMulti()
+{
+    m_pMultiNode = Sprite::create("playermask2.png");
+    if(m_pMultiNode == nullptr)
+        CCLOGERROR("Load multi model playermask2.png failed!");
+    m_pMultiNode->setCascadeOpacityEnabled(true);
+    m_pMultiNode->setOpacity(0);
+    addChild(m_pMultiNode);
+    
+    ScaleTo* scaleTo = ScaleTo::create(0.5f, 0.55f);
+    FadeIn* fadeIn = FadeIn::create(0.5f);
+    Spawn* spawn = Spawn::createWithTwoActions(scaleTo, fadeIn);
+    m_pMultiNode->runAction(spawn);
+    m_pMultiNode->setCameraMask((unsigned short)CameraFlag::USER1);
+}
+void Player::endMulti()
+{
+    if(m_pMultiNode)
+    {
+        m_pMultiNode->stopAllActions();
+        ScaleTo* scaleTo = ScaleTo::create(0.5f, 1.0f);
+        FadeOut* fadeOut = FadeOut::create(0.5f);
+        Spawn* spawn = Spawn::createWithTwoActions(scaleTo, fadeOut);
+        CallFunc* callFunc = CallFunc::create(CC_CALLBACK_0(Player::removeMulti,this));
+        Sequence* sequence = Sequence::createWithTwoActions(spawn, callFunc);
+        m_pMultiNode->runAction(sequence);
+    }
+}
+void Player::removeMulti()
+{
+    if(m_pMultiNode)
+    {
+        m_pMultiNode->removeFromParentAndCleanup(true);
+        m_pMultiNode = nullptr;
+    }
+}
+void Player::beginProtected()
+{
+    m_pProtectedNode = Sprite::create("protected.png");
+    if(m_pProtectedNode == nullptr)
+        CCLOGERROR("Load multi model protected.png failed!");
+    m_pProtectedNode->setCascadeOpacityEnabled(true);
+    m_pProtectedNode->setOpacity(0);
+    addChild(m_pProtectedNode);
+    
+    ScaleTo* scaleTo = ScaleTo::create(0.5f, 0.5f);
+    FadeIn* fadeIn = FadeIn::create(0.5f);
+    Spawn* spawn = Spawn::createWithTwoActions(scaleTo, fadeIn);
+    m_pProtectedNode->runAction(spawn);
+    m_pProtectedNode->setCameraMask((unsigned short)CameraFlag::USER1);
+}
+void Player::endProtected()
+{
+    if(m_pProtectedNode)
+    {
+        m_pProtectedNode->stopAllActions();
+        ScaleTo* scaleTo = ScaleTo::create(0.5f, 1.0f);
+        FadeOut* fadeOut = FadeOut::create(0.5f);
+        Spawn* spawn = Spawn::createWithTwoActions(scaleTo, fadeOut);
+        CallFunc* callFunc = CallFunc::create(CC_CALLBACK_0(Player::removeProtected,this));
+        Sequence* sequence = Sequence::createWithTwoActions(spawn, callFunc);
+        m_pProtectedNode->runAction(sequence);
+    }
+}
+void Player::removeProtected()
+{
+    if(m_pProtectedNode)
+    {
+        m_pProtectedNode->removeFromParentAndCleanup(true);
+        m_pProtectedNode = nullptr;
+    }
+}
 void Player::onJoystickUpdateDirection(TwoJoysticks* joystick, const cocos2d::Vec2& dir)
 {
     if(m_curState != ActorState::AS_UNDERCONTROL)
@@ -222,15 +329,15 @@ void Player::onJoystickReleased(TwoJoysticks* joystick, float pressedTime)
     }
 }
 
-Vec2 Player::getFireWorldPos()
+Vec2 Player::getFireWorldPos(const Vec2& orient)
 {
     Vec2 ret = getPosition();
-    ret += m_Orientation*m_fRadius*0.8f;
+    ret += orient*m_fRadius*0.8f;
     return ret;
 }
-Vec2 Player::getFireLocalPos()
+Vec2 Player::getFireLocalPos(const Vec2& orient)
 {
-    return m_Orientation*m_fRadius*0.8f;
+    return orient*m_fRadius*0.8f;
 }
 Vec2 Player::getLeftTailLocalPos()
 {
@@ -247,8 +354,23 @@ void Player::fire(float delta)
     switch (m_WeaponType) {
         case WT_NORMAL:
             {
-                ActorsManager::spawnBullet(GameActor::AT_PLAYER_BULLET, getFireWorldPos(), getOrientation(),m_fMaxSpeed*2.0f,"bullet1.png", Color3B(254,148,236), 0.5f, 3.0f);
-                ParticleSystemHelper::spawnActorWidget(ActorWidgetType::AWT_FIRE_FLARE, getFireLocalPos(), this);
+                if(m_pMultiNode)
+                {
+                    Vec2 orient = getOrientation();
+                    ActorsManager::spawnBullet(GameActor::AT_PLAYER_BULLET, getFireWorldPos(orient), orient,m_fMaxSpeed*2.0f,"bullet1.png", Color3B(174,250,27), 0.5f, 2.0f);
+                    ParticleSystemHelper::spawnActorWidget(ActorWidgetType::AWT_FIRE_FLARE_MULTI, getFireLocalPos(orient), this);
+                    orient.rotate(Vec2::ZERO, M_PI*0.125f);
+                    ActorsManager::spawnBullet(GameActor::AT_PLAYER_BULLET, getFireWorldPos(orient), orient,m_fMaxSpeed*2.0f,"bullet1.png", Color3B(174,250,27), 0.5f, 2.0f);
+                    ParticleSystemHelper::spawnActorWidget(ActorWidgetType::AWT_FIRE_FLARE_MULTI, getFireLocalPos(orient), this);
+                    orient.rotate(Vec2::ZERO, -M_PI*0.25f);
+                    ActorsManager::spawnBullet(GameActor::AT_PLAYER_BULLET, getFireWorldPos(orient), orient,m_fMaxSpeed*2.0f,"bullet1.png", Color3B(174,250,27), 0.5f, 2.0f);
+                    ParticleSystemHelper::spawnActorWidget(ActorWidgetType::AWT_FIRE_FLARE_MULTI, getFireLocalPos(orient), this);
+                }
+                else
+                {
+                    ActorsManager::spawnBullet(GameActor::AT_PLAYER_BULLET, getFireWorldPos(m_Orientation), m_Orientation,m_fMaxSpeed*2.0f,"bullet1.png", Color3B(254,148,236), 0.5f, 2.0f);
+                    ParticleSystemHelper::spawnActorWidget(ActorWidgetType::AWT_FIRE_FLARE, getFireLocalPos(m_Orientation), this);
+                }
             }
             break;
             
@@ -259,12 +381,20 @@ void Player::fire(float delta)
 
 void Player::onEnterDead()
 {
-    ParticleSystemHelper::spawnExplosion(ExplosionType::ET_EXPLOSION_BLUE, getPosition());
+    ParticleSystemHelper::spawnExplosion(ExplosionType::ET_EXPLOSION_PLAYER, getPosition());
     setOpacity(0);
     if(m_pLeftTail)
+    {
         m_pLeftTail->removeFromParentAndCleanup(true);
+        m_pLeftTail = nullptr;
+    }
     if(m_pRightTail)
+    {
         m_pRightTail->removeFromParentAndCleanup(true);
+        m_pRightTail = nullptr;
+    }
+    removeMulti();
+    removeProtected();
     
     GameController::getInstance()->setGameState(GameState::GS_PAUSE);
 }

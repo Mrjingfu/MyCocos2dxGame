@@ -109,7 +109,3 @@ void EnemiesGenerator::generateEnemiesByExplosion(Enemy::EnemyType type, const c
         runAction(repeat);
     }
 }
-void EnemiesGenerator::reset()
-{
-    this->stopAllActions();
-}

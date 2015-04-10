@@ -17,7 +17,7 @@ ParticleSystemQuad* ParticleSystemHelper::spawnExplosion(ExplosionType explosion
     
     ParticleSystemQuad* explosion = nullptr;
     switch (explosionType) {
-        case ET_EXPLOSION_BLUE:
+        case ET_EXPLOSION_PLAYER:
             {
                 explosion= ParticleSystemQuad::create("explosion.plist");
                 if(!explosion)
@@ -103,6 +103,24 @@ ParticleSystemQuad* ParticleSystemHelper::spawnExplosion(ExplosionType explosion
                 explosion->setScale(0.4f);
                 explosion->setStartColor(Color4F(253.0f/255.0f, 153.0f/255.0f, 31.0f/255.0f, 1.0f));
                 explosion->setEndColor(Color4F(253.0f/255.0f, 153.0f/255.0f, 31.0f/255.0f, 1.0f));
+                explosion->setLife(0.5f);
+                explosion->setPosition(pos);
+                explosion->setAutoRemoveOnFinish(true);
+                GameController::getInstance()->getGameLayer()->addChild(explosion);
+                GameController::getInstance()->getGameLayer()->setCameraMask((unsigned short)CameraFlag::USER1);
+            }
+            break;
+            case ET_EXPLOSION_BLUE:
+            {
+                explosion= ParticleSystemQuad::create("explosion.plist");
+                if(!explosion)
+                {
+                    CCLOG("Load explosion particle system failed! file: explosion.plist");
+                    return nullptr;
+                }
+                explosion->setScale(0.4f);
+                explosion->setStartColor(Color4F(0.0f, 224.0f/255.0f, 252.0f/255.0f, 1.0f));
+                explosion->setEndColor(Color4F(0.0f, 224.0f/255.0f, 252.0f/255.0f, 1.0f));
                 explosion->setLife(0.5f);
                 explosion->setPosition(pos);
                 explosion->setAutoRemoveOnFinish(true);
@@ -199,6 +217,18 @@ ParticleSystemQuad* ParticleSystemHelper::spawnExplosion(ExplosionType explosion
                 GameController::getInstance()->getGameLayer()->setCameraMask((unsigned short)CameraFlag::USER1);
             }
             break;
+        case ET_EXPLOSION_STARFIELD:
+            {
+                explosion= ParticleSystemQuad::create("starfield.plist");
+                if(!explosion)
+                {
+                    CCLOG("Load explosion particle system failed! file: starfield.plist");
+                    return nullptr;
+                }
+                GameController::getInstance()->getGameLayer()->addChild(explosion);
+                GameController::getInstance()->getGameLayer()->setCameraMask((unsigned short)CameraFlag::USER1);
+            }
+            break;
         default:
             break;
     }
@@ -222,6 +252,28 @@ ParticleSystemQuad* ParticleSystemHelper::spawnActorWidget(ActorWidgetType actor
                 }
                 widget->setEmitterMode(ParticleSystem::Mode::RADIUS);
                 widget->setStartColor(Color4F(0.0f, 224.0f/255.0f, 252.0f/255.0f, 1.0f));
+                widget->setTotalParticles(100);
+                widget->setStartSize(1.0f);
+                widget->setLife(0.1f);
+                widget->setLifeVar(0.1f);
+                widget->setPositionType(ParticleSystem::PositionType::RELATIVE);
+                widget->setPosition(pos);
+                widget->setAutoRemoveOnFinish(true);
+                actor->addChild(widget);
+                actor->setCameraMask((unsigned short)CameraFlag::USER1);
+            }
+            break;
+        case ActorWidgetType::AWT_FIRE_FLARE_MULTI:
+            {
+                widget = ParticleSystemQuad::create("explosion.plist");
+                if(!widget)
+                {
+                    CCLOG("Load player widget particle system failed! file: explosion.plist");
+                    return nullptr;
+                }
+                widget->setEmitterMode(ParticleSystem::Mode::RADIUS);
+                widget->setStartColor(Color4F(174.0f/255.0f, 250.0f/255.0f, 27.0f/255.0f, 1.0f));
+                widget->setEndColor(Color4F(174.0f/255.0f, 250.0f/255.0f, 27.0f/255.0f, 1.0f));
                 widget->setTotalParticles(100);
                 widget->setStartSize(1.0f);
                 widget->setLife(0.1f);

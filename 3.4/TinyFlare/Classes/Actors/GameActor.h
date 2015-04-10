@@ -21,6 +21,14 @@ typedef enum {
     AS_BLINK,
     AS_UNKNOWN
 } ActorState;
+typedef enum{
+    BT_NORMAL = 1<<0,
+    BT_ACCEL = 1<<1,
+    BT_BOOM = 1<<2,
+    BT_MULTI = 1<<3,
+    BT_PROTECTED = 1<<4,
+    BT_TIME = 1<<5
+} BufferType;
 
 class GameActor : public cocos2d::Node
 {
@@ -116,6 +124,8 @@ protected:
     bool                m_bBounce;              ///是否碰撞了
     
     ActorState          m_curState;             ///Actor当前状态
+    int                 m_nBufferType;
+
 };
 
 #endif /* defined(__Geometry_Wars__GameActor__) */

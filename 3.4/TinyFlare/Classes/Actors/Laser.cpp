@@ -29,7 +29,7 @@ void Laser::update(float delta)
         if(m_fLifeTime <= 0)
         {
             m_fLifeTime = 0;
-            //setActorState(ActorState::AS_DEAD);
+            setActorState(ActorState::AS_DEAD);
         }
     }
 }

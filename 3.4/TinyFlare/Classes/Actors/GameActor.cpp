@@ -22,6 +22,7 @@ GameActor::GameActor()
     m_fMaxSpeed = 1.0f;
     m_bBounce = false;
     m_curState   = ActorState::AS_UNKNOWN;
+    m_nBufferType = BufferType::BT_NORMAL;
 }
 GameActor::~GameActor()
 {
@@ -98,6 +99,9 @@ void GameActor::setActorState(ActorState state)
 {
     if (m_curState == state)
         return;
+    if((m_nBufferType & BufferType::BT_PROTECTED) && (state == ActorState::AS_DEAD))
+        return;
+        
     ///处理上一个状态退出逻辑
     switch (m_curState) {
         case ActorState::AS_UNDERCONTROL:

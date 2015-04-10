@@ -9,6 +9,7 @@
 #include "GameController.h"
 #include "ActorsManager.h"
 #include "LaserSprite.h"
+#include "ParticleSystemHelper.h"
 USING_NS_CC;
 
 GameController* g_pGameControllerInstance = nullptr;
@@ -39,18 +40,13 @@ bool GameController::init(Layer* pMainLayer)
         return false;
     m_pMainLayer = pMainLayer;
     
-    m_pEnemiesGenerator = EnemiesGenerator::create();
-    if(m_pEnemiesGenerator)
-        m_pMainLayer->addChild(m_pEnemiesGenerator);
-    
-    
-    auto size = Director::getInstance()->getWinSize();
-    
     m_pGameLayer = Layer::create();
     if(!m_pGameLayer)
         return false;
     m_pGameLayer->setAnchorPoint(Vec2::ZERO);
     m_pMainLayer->addChild(m_pGameLayer);
+    
+    ParticleSystemHelper::spawnExplosion(ExplosionType::ET_EXPLOSION_STARFIELD, Vec2::ZERO);
     
     Sprite* bgSprite = Sprite::create("bg.png");
     if(!bgSprite)
@@ -58,34 +54,18 @@ bool GameController::init(Layer* pMainLayer)
     bgSprite->setScale(2.0);
     m_pGameLayer->addChild(bgSprite);
     
-    m_pPlayer = Player::create();
-    if(!m_pPlayer)
+    if(!ActorsManager::getInstance()->init(m_pGameLayer))
         return false;
-    m_pPlayer->loadModel("playermain.png");
-    m_pPlayer->loadMaskModel("playermask.png");
-    m_pPlayer->setCascadeOpacityEnabled(true);
-    m_pPlayer->setOpacity(0);
-    m_pGameLayer->addChild(m_pPlayer);
+    m_pGameLayer->setCameraMask((unsigned short)CameraFlag::USER1);
     
     m_pActorCamera = Camera::create();
     if(!m_pActorCamera)
         return false;
     m_pGameLayer->addChild(m_pActorCamera);
-    m_pActorCamera->setPosition(m_pPlayer->getPosition());
+    m_pActorCamera->setPosition(Vec2::ZERO);
     if(Director::getInstance()->getZEye() > 640.0f);
-        m_pActorCamera->setPositionZ(640.0f);
+    m_pActorCamera->setPositionZ(640.0f);
     m_pActorCamera->setCameraFlag(CameraFlag::USER1);
-    m_pGameLayer->setCameraMask((unsigned short)CameraFlag::USER1);
-    
-    if(!ActorsManager::getInstance()->init(m_pGameLayer))
-        return false;
-    
-    m_pTwoJoysticks = TwoJoysticks::create("joystick_bg1.png", "joystick1.png", "joystick_bg2.png", "joystick2.png");
-    if(!m_pTwoJoysticks)
-        return false;
-    m_pTwoJoysticks->setJoystickLeftListener(m_pPlayer);
-    m_pTwoJoysticks->setJoystickRightListener(m_pPlayer);
-    m_pMainLayer->addChild(m_pTwoJoysticks);
     
     setGameState(GS_DEBUG);
     
@@ -256,7 +236,6 @@ void GameController::onExitGame()
 void GameController::onEnterPause()
 {
     m_fRespawnTime = 5.0f;
-    m_pEnemiesGenerator->reset();
 }
 void GameController::onExitPause()
 {
@@ -265,14 +244,12 @@ void GameController::onExitPause()
 
 void GameController::onEnterDebug()
 {
-    if(m_pPlayer)
-        m_pPlayer->respawn();
-    if(m_pActorCamera)
-        m_pActorCamera->setPosition(m_pPlayer->getPosition());
+    gameStart();
     if(m_pEnemiesGenerator)
     {
-        //m_pEnemiesGenerator->generateEnemiesByTime(Enemy::ET_STAR, 5.0f);
-        m_pEnemiesGenerator->generateEnemiesByNum(Enemy::ET_HEXAGON_COLORED, 5.0f, 10);
+        m_pEnemiesGenerator->generateEnemiesByTime(Enemy::ET_STAR, 3.0f);
+        //m_pEnemiesGenerator->generateEnemiesByTime(Enemy::ET_CIRCLE, 13.0f);
+        //m_pEnemiesGenerator->generateEnemiesByNum(Enemy::ET_HEXAGON_COLORED, 5.0f, 10);
         //m_pEnemiesGenerator->generateEnemiesByTime(Enemy::ET_TRIANGLE, 7.0f);
         //m_pEnemiesGenerator->generateEnemiesByTime(Enemy::ET_DIAMOND, 10.0f);
         //m_pEnemiesGenerator->generateEnemiesByNum(Enemy::ET_CIRCLE_COLORED, 15.0f, 1);
@@ -282,5 +259,61 @@ void GameController::onEnterDebug()
 }
 void GameController::onExitDebug()
 {
+    gameEnd();
+}
+
+void GameController::gameStart()
+{
+    m_pEnemiesGenerator = EnemiesGenerator::create();
+    if(m_pEnemiesGenerator)
+        m_pMainLayer->addChild(m_pEnemiesGenerator);
     
+    m_pPlayer = Player::create();
+    if(!m_pPlayer)
+        return;
+    m_pPlayer->loadModel("playermain.png");
+    m_pPlayer->loadMaskModel("playermask.png");
+    m_pPlayer->setCascadeOpacityEnabled(true);
+    m_pPlayer->setOpacity(0);
+    m_pGameLayer->addChild(m_pPlayer);
+    
+    ParticleSystemHelper::spawnExplosion(ExplosionType::ET_EXPLOSION_ACTOR_RESPAWN, Vec2::ZERO);
+    
+    EaseSineIn* easeIn = EaseSineIn::create(FadeIn::create(1.0f));
+    CallFunc* callFunc = CallFunc::create(CC_CALLBACK_0(Player::beginShadow,m_pPlayer));
+    Sequence* sequence = Sequence::create(easeIn, callFunc, NULL);
+    m_pPlayer->runAction(sequence);
+    
+    if(m_pActorCamera)
+        m_pActorCamera->setPosition(m_pPlayer->getPosition());
+    m_pGameLayer->setCameraMask((unsigned short)CameraFlag::USER1);
+    
+    m_pTwoJoysticks = TwoJoysticks::create("joystick_bg1.png", "joystick1.png", "joystick_bg2.png", "joystick2.png");
+    if(!m_pTwoJoysticks)
+        return;
+    m_pTwoJoysticks->setJoystickLeftListener(m_pPlayer);
+    m_pTwoJoysticks->setJoystickRightListener(m_pPlayer);
+    m_pMainLayer->addChild(m_pTwoJoysticks);
+}
+
+void GameController::gamePause()
+{
+}
+void GameController::gameEnd()
+{
+    if(m_pEnemiesGenerator)
+    {
+        m_pEnemiesGenerator->removeFromParentAndCleanup(true);
+        m_pEnemiesGenerator = nullptr;
+    }
+    if(m_pPlayer)
+    {
+        m_pPlayer->removeFromParentAndCleanup(true);
+        m_pPlayer = nullptr;
+    }
+    if(m_pTwoJoysticks)
+    {
+        m_pTwoJoysticks->removeFromParentAndCleanup(true);
+        m_pTwoJoysticks = nullptr;
+    }
 }

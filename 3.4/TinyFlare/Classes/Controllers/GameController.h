@@ -61,6 +61,10 @@ private:
     
     void onEnterDebug();
     void onExitDebug();
+    
+    void gameStart();
+    void gamePause();
+    void gameEnd();
 private:
     cocos2d::Layer*     m_pGameLayer;
     EnemiesGenerator*   m_pEnemiesGenerator;
