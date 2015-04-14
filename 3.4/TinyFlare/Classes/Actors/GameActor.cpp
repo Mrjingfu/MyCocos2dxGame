@@ -158,3 +158,11 @@ void GameActor::setActorState(ActorState state)
     }
 
 }
+void GameActor::resumeScheduler(void)
+{
+    _scheduler->resumeTarget(this);
+}
+void GameActor::pauseScheduler(void)
+{
+    _scheduler->pauseTarget(this);
+}

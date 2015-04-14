@@ -251,7 +251,7 @@ void GameController::onEnterDebug()
         //m_pEnemiesGenerator->generateEnemiesByTime(Enemy::ET_CIRCLE, 13.0f);
         //m_pEnemiesGenerator->generateEnemiesByNum(Enemy::ET_HEXAGON_COLORED, 5.0f, 10);
         //m_pEnemiesGenerator->generateEnemiesByTime(Enemy::ET_TRIANGLE, 7.0f);
-        //m_pEnemiesGenerator->generateEnemiesByTime(Enemy::ET_DIAMOND, 10.0f);
+        m_pEnemiesGenerator->generateEnemiesByTime(Enemy::ET_DIAMOND, 5.0f);
         //m_pEnemiesGenerator->generateEnemiesByNum(Enemy::ET_CIRCLE_COLORED, 15.0f, 1);
         //m_pEnemiesGenerator->generateEnemiesByTime(Enemy::ET_TRIANGLE_COLORED, 20.0f, 1);
         //m_pEnemiesGenerator->generateEnemiesByNum(Enemy::ET_DIAMOND_COLORED, 25.0f, 1);

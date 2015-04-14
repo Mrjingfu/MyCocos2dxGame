@@ -125,13 +125,13 @@ Vec2 EnemiesGeneratorHelper::getRandomPosOutScreenInBoundRect(const cocos2d::Vec
     if(boundRect.containsPoint(ret))
         return ret;
     if(ret.x <= boundRect.getMinX() + 100.0f)
-        ret.x += 2*(boundRect.getMinX() + 100.0f - ret.x);
+        ret.x += 2*(boundRect.getMinX() + 150.0f - ret.x);
     if(ret.x >= boundRect.getMaxX() - 100.0f)
-        ret.x -= 2*(ret.x - boundRect.getMaxX() + 100.0f);
+        ret.x -= 2*(ret.x - boundRect.getMaxX() + 150.0f);
     if(ret.y <= boundRect.getMinY() + 100.0f)
-        ret.y += 2*(boundRect.getMinY() + 100.0f - ret.y);
+        ret.y += 2*(boundRect.getMinY() + 150.0f - ret.y);
     if(ret.y >= boundRect.getMaxY() - 100.0f)
-        ret.y -= 2*(ret.y - boundRect.getMaxY() + 100.0f);
+        ret.y -= 2*(ret.y - boundRect.getMaxY() + 150.0f);
     return ret;
 }
 Vec2 EnemiesGeneratorHelper::getRandomPosInScreenInBoundRect(const cocos2d::Vec2& playerPos, const cocos2d::Rect& boundRect)

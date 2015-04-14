@@ -229,6 +229,21 @@ ParticleSystemQuad* ParticleSystemHelper::spawnExplosion(ExplosionType explosion
                 GameController::getInstance()->getGameLayer()->setCameraMask((unsigned short)CameraFlag::USER1);
             }
             break;
+        case ET_EXPLOSION_FLARE:
+            {
+                explosion= ParticleSystemQuad::create("flare.plist");
+                if(!explosion)
+                {
+                    CCLOG("Load explosion particle system failed! file: flare.plist");
+                    return nullptr;
+                }
+                explosion->setPosition(pos);
+                explosion->setAutoRemoveOnFinish(true);
+                GameController::getInstance()->getGameLayer()->addChild(explosion);
+                GameController::getInstance()->getGameLayer()->setCameraMask((unsigned short)CameraFlag::USER1);
+                CCLOG("Flare!!!!!");
+            }
+            break;
         default:
             break;
     }

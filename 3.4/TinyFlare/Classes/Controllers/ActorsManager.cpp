@@ -23,6 +23,7 @@ ActorsManager* ActorsManager::getInstance()
 ActorsManager::ActorsManager()
 {
     m_pActorLayer = nullptr;
+    m_bEnemyActorPause = false;
 }
 ActorsManager::~ActorsManager()
 {
@@ -50,6 +51,10 @@ Bullet* ActorsManager::spawnBullet(GameActor::ActorType type, const cocos2d::Vec
         ActorsManager::getInstance()->m_Bullets.pushBack(bullet);
         ActorsManager::getInstance()->m_pActorLayer->addChild(bullet);
         ActorsManager::getInstance()->m_pActorLayer->setCameraMask((unsigned short)CameraFlag::USER1);
+        
+        if(ActorsManager::getInstance()->getEnemyActorPause() && type == GameActor::AT_ENEMY_BULLET)
+            bullet->pauseScheduler();
+
         bullet->autorelease();
         return bullet;
     }
@@ -82,15 +87,18 @@ Enemy* ActorsManager::spawnEnemy(Enemy::EnemyType enemyType, const Vec2& pos, co
                     ActorsManager::getInstance()->m_pActorLayer->addChild(enemy);
                     ActorsManager::getInstance()->m_pActorLayer->setCameraMask((unsigned short)CameraFlag::USER1);
                     
+                    if(ActorsManager::getInstance()->getEnemyActorPause())
+                        enemy->pauseScheduler();
+                    
                     EaseSineOut* easeOut1 = EaseSineOut::create(ScaleTo::create(1.5f, 0.8f));
                     EaseSineOut* easeOut2 = EaseSineOut::create(FadeIn::create(1.5f));
                     
+                    Spawn* spawn = Spawn::createWithTwoActions(easeOut1, easeOut2);
                     DelayTime* delay = DelayTime::create(0.2f);
                     CallFunc* callFunc = CallFunc::create(CC_CALLBACK_0(Enemy::beginTrack,enemy));
-                    Sequence* sequence = Sequence::createWithTwoActions(delay, callFunc);
                     
-                    Spawn* spawn = Spawn::create(easeOut1, easeOut2, sequence, NULL);
-                    enemy->runAction(spawn);
+                    Sequence* sequence = Sequence::create(spawn, delay, callFunc, NULL);
+                    enemy->runAction(sequence);
                     enemy->autorelease();
                 }
                 else
@@ -115,14 +123,19 @@ Enemy* ActorsManager::spawnEnemy(Enemy::EnemyType enemyType, const Vec2& pos, co
                     ActorsManager::getInstance()->m_pActorLayer->addChild(enemy);
                     ActorsManager::getInstance()->m_pActorLayer->setCameraMask((unsigned short)CameraFlag::USER1);
                     
+                    if(ActorsManager::getInstance()->getEnemyActorPause())
+                        enemy->pauseScheduler();
+                    
                     ParticleSystemHelper::spawnActorWidget(ActorWidgetType::AWT_COLOR_CIRCLE_TAIL, Vec2::ZERO, enemy);
                     
                     EaseSineOut* easeOut1 = EaseSineOut::create(ScaleTo::create(1.5f, 0.8f));
                     EaseSineOut* easeOut2 = EaseSineOut::create(FadeIn::create(1.5f));
-                    Spawn* spawn = Spawn::createWithTwoActions(easeOut1, easeOut2);
                     
+                    Spawn* spawn = Spawn::createWithTwoActions(easeOut1, easeOut2);
+                    DelayTime* delay = DelayTime::create(0.2f);
                     CallFunc* callFunc = CallFunc::create(CC_CALLBACK_0(Enemy::beginTrack,enemy));
-                    Sequence* sequence = Sequence::createWithTwoActions(spawn, callFunc);
+                    
+                    Sequence* sequence = Sequence::create(spawn, delay, callFunc, NULL);
                     enemy->runAction(sequence);
                     enemy->autorelease();
                 }
@@ -147,14 +160,18 @@ Enemy* ActorsManager::spawnEnemy(Enemy::EnemyType enemyType, const Vec2& pos, co
                     ActorsManager::getInstance()->m_Enemies.pushBack(enemy);
                     ActorsManager::getInstance()->m_pActorLayer->addChild(enemy);
                     ActorsManager::getInstance()->m_pActorLayer->setCameraMask((unsigned short)CameraFlag::USER1);
-                
+                    
+                    if(ActorsManager::getInstance()->getEnemyActorPause())
+                        enemy->pauseScheduler();
                 
                     EaseSineOut* easeOut1 = EaseSineOut::create(ScaleTo::create(1.5f, 1.0f));
                     EaseSineOut* easeOut2 = EaseSineOut::create(FadeIn::create(1.5f));
+                    
                     Spawn* spawn = Spawn::createWithTwoActions(easeOut1, easeOut2);
-                
+                    DelayTime* delay = DelayTime::create(0.2f);
                     CallFunc* callFunc = CallFunc::create(CC_CALLBACK_0(Enemy::beginTrack,enemy));
-                    Sequence* sequence = Sequence::createWithTwoActions(spawn, callFunc);
+                    
+                    Sequence* sequence = Sequence::create(spawn, delay, callFunc, NULL);
                     enemy->runAction(sequence);
                     enemy->autorelease();
                 }
@@ -179,15 +196,20 @@ Enemy* ActorsManager::spawnEnemy(Enemy::EnemyType enemyType, const Vec2& pos, co
                     ActorsManager::getInstance()->m_Enemies.pushBack(enemy);
                     ActorsManager::getInstance()->m_pActorLayer->addChild(enemy);
                     ActorsManager::getInstance()->m_pActorLayer->setCameraMask((unsigned short)CameraFlag::USER1);
+                    
+                    if(ActorsManager::getInstance()->getEnemyActorPause())
+                        enemy->pauseScheduler();
                 
                     ParticleSystemHelper::spawnActorWidget(ActorWidgetType::AWT_COLOR_TRIANGLE_TAIL, Vec2::ZERO, enemy);
                 
                     EaseSineOut* easeOut1 = EaseSineOut::create(ScaleTo::create(1.5f, 1.0f));
                     EaseSineOut* easeOut2 = EaseSineOut::create(FadeIn::create(1.5f));
+                    
                     Spawn* spawn = Spawn::createWithTwoActions(easeOut1, easeOut2);
-                
+                    DelayTime* delay = DelayTime::create(0.2f);
                     CallFunc* callFunc = CallFunc::create(CC_CALLBACK_0(Enemy::beginTrack,enemy));
-                    Sequence* sequence = Sequence::createWithTwoActions(spawn, callFunc);
+                    
+                    Sequence* sequence = Sequence::create(spawn, delay, callFunc, NULL);
                     enemy->runAction(sequence);
                     enemy->autorelease();
                 }
@@ -212,13 +234,18 @@ Enemy* ActorsManager::spawnEnemy(Enemy::EnemyType enemyType, const Vec2& pos, co
                     ActorsManager::getInstance()->m_Enemies.pushBack(enemy);
                     ActorsManager::getInstance()->m_pActorLayer->addChild(enemy);
                     ActorsManager::getInstance()->m_pActorLayer->setCameraMask((unsigned short)CameraFlag::USER1);
+                    
+                    if(ActorsManager::getInstance()->getEnemyActorPause())
+                        enemy->pauseScheduler();
                 
                     EaseSineOut* easeOut1 = EaseSineOut::create(ScaleTo::create(1.5f, 1.0f));
                     EaseSineOut* easeOut2 = EaseSineOut::create(FadeIn::create(1.5f));
+                    
                     Spawn* spawn = Spawn::createWithTwoActions(easeOut1, easeOut2);
-                
-                    CallFunc* callFunc = CallFunc::create(CC_CALLBACK_0(Enemy::beginTrack, enemy));
-                    Sequence* sequence = Sequence::createWithTwoActions(spawn, callFunc);
+                    DelayTime* delay = DelayTime::create(0.2f);
+                    CallFunc* callFunc = CallFunc::create(CC_CALLBACK_0(Enemy::beginTrack,enemy));
+                    
+                    Sequence* sequence = Sequence::create(spawn, delay, callFunc, NULL);
                     enemy->runAction(sequence);
                     enemy->autorelease();
                 }
@@ -243,15 +270,20 @@ Enemy* ActorsManager::spawnEnemy(Enemy::EnemyType enemyType, const Vec2& pos, co
                     ActorsManager::getInstance()->m_Enemies.pushBack(enemy);
                     ActorsManager::getInstance()->m_pActorLayer->addChild(enemy);
                     ActorsManager::getInstance()->m_pActorLayer->setCameraMask((unsigned short)CameraFlag::USER1);
+                    
+                    if(ActorsManager::getInstance()->getEnemyActorPause())
+                        enemy->pauseScheduler();
                 
                     ParticleSystemHelper::spawnActorWidget(ActorWidgetType::AWT_COLOR_DIAMOND_TAIL, Vec2::ZERO, enemy);
                 
                     EaseSineOut* easeOut1 = EaseSineOut::create(ScaleTo::create(1.5f, 1.0f));
                     EaseSineOut* easeOut2 = EaseSineOut::create(FadeIn::create(1.5f));
+                    
                     Spawn* spawn = Spawn::createWithTwoActions(easeOut1, easeOut2);
-                
+                    DelayTime* delay = DelayTime::create(0.2f);
                     CallFunc* callFunc = CallFunc::create(CC_CALLBACK_0(Enemy::beginTrack,enemy));
-                    Sequence* sequence = Sequence::createWithTwoActions(spawn, callFunc);
+                    
+                    Sequence* sequence = Sequence::create(spawn, delay, callFunc, NULL);
                     enemy->runAction(sequence);
                     enemy->autorelease();
                 }
@@ -277,16 +309,19 @@ Enemy* ActorsManager::spawnEnemy(Enemy::EnemyType enemyType, const Vec2& pos, co
                     ActorsManager::getInstance()->m_Enemies.pushBack(enemy);
                     ActorsManager::getInstance()->m_pActorLayer->addChild(enemy);
                     ActorsManager::getInstance()->m_pActorLayer->setCameraMask((unsigned short)CameraFlag::USER1);
+                    
+                    if(ActorsManager::getInstance()->getEnemyActorPause())
+                        enemy->pauseScheduler();
                 
                     EaseSineOut* easeOut1 = EaseSineOut::create(ScaleTo::create(1.5f, 1.0f));
                     EaseSineOut* easeOut2 = EaseSineOut::create(FadeIn::create(1.5f));
                 
+                    Spawn* spawn = Spawn::createWithTwoActions(easeOut1, easeOut2);
                     DelayTime* delay = DelayTime::create(0.2f);
                     CallFunc* callFunc = CallFunc::create(CC_CALLBACK_0(Enemy::beginTrack,enemy));
-                    Sequence* sequence = Sequence::createWithTwoActions(delay, callFunc);
-                
-                    Spawn* spawn = Spawn::create(easeOut1, easeOut2, sequence, NULL);
-                    enemy->runAction(spawn);
+                    
+                    Sequence* sequence = Sequence::create(spawn, delay, callFunc, NULL);
+                    enemy->runAction(sequence);
                     enemy->autorelease();
                 }
                 else
@@ -313,17 +348,21 @@ Enemy* ActorsManager::spawnEnemy(Enemy::EnemyType enemyType, const Vec2& pos, co
                     ActorsManager::getInstance()->m_pActorLayer->addChild(enemy);
                     ActorsManager::getInstance()->m_pActorLayer->setCameraMask((unsigned short)CameraFlag::USER1);
                     
+                    if(ActorsManager::getInstance()->getEnemyActorPause())
+                        enemy->pauseScheduler();
+                    
                     ParticleSystemHelper::spawnActorWidget(ActorWidgetType::AWT_COLOR_STAR_TAIL, Vec2::ZERO, enemy);
                 
                     EaseSineOut* easeOut1 = EaseSineOut::create(ScaleTo::create(1.5f, 1.0f));
                     EaseSineOut* easeOut2 = EaseSineOut::create(FadeIn::create(1.5f));
-                
+                    
+                    Spawn* spawn = Spawn::createWithTwoActions(easeOut1, easeOut2);
                     DelayTime* delay = DelayTime::create(0.2f);
                     CallFunc* callFunc = CallFunc::create(CC_CALLBACK_0(Enemy::beginTrack,enemy));
-                    Sequence* sequence = Sequence::createWithTwoActions(delay, callFunc);
-                
-                    Spawn* spawn = Spawn::create(easeOut1, easeOut2, sequence, NULL);
-                    enemy->runAction(spawn);
+                    
+                    Sequence* sequence = Sequence::create(spawn, delay, callFunc, NULL);
+                    
+                    enemy->runAction(sequence);
                     enemy->autorelease();
                 }
                 else
@@ -347,16 +386,20 @@ Enemy* ActorsManager::spawnEnemy(Enemy::EnemyType enemyType, const Vec2& pos, co
                     ActorsManager::getInstance()->m_Enemies.pushBack(enemy);
                     ActorsManager::getInstance()->m_pActorLayer->addChild(enemy);
                     ActorsManager::getInstance()->m_pActorLayer->setCameraMask((unsigned short)CameraFlag::USER1);
+                    
+                    if(ActorsManager::getInstance()->getEnemyActorPause())
+                        enemy->pauseScheduler();
                 
                     EaseSineOut* easeOut1 = EaseSineOut::create(ScaleTo::create(1.5f, 1.0f));
                     EaseSineOut* easeOut2 = EaseSineOut::create(FadeIn::create(1.5f));
-                
+                    
+                    Spawn* spawn = Spawn::createWithTwoActions(easeOut1, easeOut2);
                     DelayTime* delay = DelayTime::create(0.2f);
                     CallFunc* callFunc = CallFunc::create(CC_CALLBACK_0(Enemy::beginTrack,enemy));
-                    Sequence* sequence = Sequence::createWithTwoActions(delay, callFunc);
-                
-                    Spawn* spawn = Spawn::create(easeOut1, easeOut2, sequence, NULL);
-                    enemy->runAction(spawn);
+                    
+                    Sequence* sequence = Sequence::create(spawn, delay, callFunc, NULL);
+                    
+                    enemy->runAction(sequence);
                     enemy->autorelease();
                 }
                 else
@@ -382,17 +425,21 @@ Enemy* ActorsManager::spawnEnemy(Enemy::EnemyType enemyType, const Vec2& pos, co
                     ActorsManager::getInstance()->m_pActorLayer->addChild(enemy);
                     ActorsManager::getInstance()->m_pActorLayer->setCameraMask((unsigned short)CameraFlag::USER1);
                     
+                    if(ActorsManager::getInstance()->getEnemyActorPause())
+                        enemy->pauseScheduler();
+                    
                     ParticleSystemHelper::spawnActorWidget(ActorWidgetType::AWT_COLOR_HEXAGON_TAIL, Vec2::ZERO, enemy);
                 
                     EaseSineOut* easeOut1 = EaseSineOut::create(ScaleTo::create(1.5f, 1.0f));
                     EaseSineOut* easeOut2 = EaseSineOut::create(FadeIn::create(1.5f));
-                
+                    
+                    Spawn* spawn = Spawn::createWithTwoActions(easeOut1, easeOut2);
                     DelayTime* delay = DelayTime::create(0.2f);
                     CallFunc* callFunc = CallFunc::create(CC_CALLBACK_0(Enemy::beginTrack,enemy));
-                    Sequence* sequence = Sequence::createWithTwoActions(delay, callFunc);
-                
-                    Spawn* spawn = Spawn::create(easeOut1, easeOut2, sequence, NULL);
-                    enemy->runAction(spawn);
+                    
+                    Sequence* sequence = Sequence::create(spawn, delay, callFunc, NULL);
+                    
+                    enemy->runAction(sequence);
                     enemy->autorelease();
                 }
                 else
@@ -707,6 +754,37 @@ void ActorsManager::eraseItem(int i)
     m_Items.erase(i);
     item->removeFromParentAndCleanup(true);
     item = nullptr;
+}
+void ActorsManager::setEnemyActorPause(bool pause)
+{
+    m_bEnemyActorPause = pause;
+    for (ssize_t i = 0; i<m_Bullets.size(); ++i) {
+        Bullet* bullet = m_Bullets.at(i);
+        if(bullet)
+        {
+            if(bullet->getType() == GameActor::AT_ENEMY_BULLET)
+            {
+                if (m_bEnemyActorPause)
+                    bullet->pauseScheduler();
+                else
+                    bullet->resumeScheduler();
+            }
+        }
+    }
+    for (ssize_t i = 0; i<m_Enemies.size(); ++i) {
+        Enemy* enemy = m_Enemies.at(i);
+        if(enemy)
+        {
+            if (m_bEnemyActorPause)
+                enemy->pauseScheduler();
+            else
+                enemy->resumeScheduler();
+        }
+    }
+}
+bool ActorsManager::getEnemyActorPause() const
+{
+    return m_bEnemyActorPause;
 }
 void ActorsManager::reset()
 {

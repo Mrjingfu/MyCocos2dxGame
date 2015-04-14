@@ -68,6 +68,13 @@ void Player::updateBuffer(float delta)
             m_pProtectedNode->setRotationSkewY(startSkewY + delta*90.0f);
         }
     }
+    if(m_nBufferType & BufferType::BT_TIME)
+    {
+        if(m_fSlowTime > 0.0f)
+            m_fSlowTime -= delta;
+        else
+            removeBuffer(BufferType::BT_TIME);
+    }
 }
 void Player::update(float delta)
 {
@@ -131,21 +138,21 @@ void Player::loadMaskModel(const std::string& texName)
 void Player::addBuffer(BufferType type)
 {
     m_nBufferType |= type;
-    if(m_nBufferType & BT_ACCEL)
+    if(type == BT_ACCEL)
         m_fFireDelta = 0.5f*(powf(0.8f, EncrytionUtility::getIntegerForKey("AccelLevel", 1)));
-    if(m_nBufferType & BT_MULTI)
+    if(type == BT_MULTI)
     {
         removeMulti();
         m_fMultiTime = 15.0f*(powf(1.1f, EncrytionUtility::getIntegerForKey("MultiLevel", 1)));
         beginMulti();
     }
-    if(m_nBufferType & BT_PROTECTED)
+    if(type == BT_PROTECTED)
     {
         removeProtected();
         m_fProtectedTime = 10.0f*(powf(1.1f, EncrytionUtility::getIntegerForKey("ProtectedLevel", 1)));
         beginProtected();
     }
-    if(m_nBufferType & BT_BOOM)
+    if(type == BT_BOOM)
     {
         removeBuffer(BT_BOOM);
         ParticleSystemHelper::spawnExplosion(ET_EXPLOSION_CLEAR, getPosition());
@@ -156,9 +163,19 @@ void Player::addBuffer(BufferType type)
             ActorsManager::spawnBullet(GameActor::AT_PLAYER_BULLET, getPosition(), orient, 10.0f,"bullet1.png", Color3B(0,224,252), 1.0f, 3.0f);
         }
     }
-    if(m_nBufferType & BT_TIME)
+    if(type == BT_TIME)
     {
+        ParticleSystemHelper::spawnExplosion(ET_EXPLOSION_FLARE, getPosition());
         m_fSlowTime = 8.0f*(powf(1.1f, EncrytionUtility::getIntegerForKey("SlowLevel", 1)));
+        ActorsManager::getInstance()->setEnemyActorPause(true);
+        _scheduler->setTimeScale(0.3f);
+
+        if(m_bScheduledFire)
+        {
+            unschedule(CC_SCHEDULE_SELECTOR(Player::fire));
+            schedule(CC_SCHEDULE_SELECTOR(Player::fire), m_fFireDelta*_scheduler->getTimeScale(), -1, 0);
+            m_bScheduledFire = true;
+        }
     }
 }
 void Player::removeBuffer(BufferType type)
@@ -178,6 +195,14 @@ void Player::removeBuffer(BufferType type)
     if(type == BT_TIME)
     {
         m_fSlowTime = 0.0f;
+        ActorsManager::getInstance()->setEnemyActorPause(false);
+        _scheduler->setTimeScale(1.0f);
+        if(m_bScheduledFire)
+        {
+            unschedule(CC_SCHEDULE_SELECTOR(Player::fire));
+            schedule(CC_SCHEDULE_SELECTOR(Player::fire), m_fFireDelta*_scheduler->getTimeScale(), -1, 0);
+            m_bScheduledFire = true;
+        }
     }
     m_nBufferType = m_nBufferType&~type;
 }
@@ -316,7 +341,7 @@ void Player::onJoystickPressed(TwoJoysticks* joystick, float pressedTime)
 {
     if(!m_bScheduledFire)
     {
-        schedule(CC_SCHEDULE_SELECTOR(Player::fire), m_fFireDelta, -1, 0);
+        schedule(CC_SCHEDULE_SELECTOR(Player::fire), m_fFireDelta*_scheduler->getTimeScale(), -1, 0);
         m_bScheduledFire = true;
     }
 }
@@ -395,7 +420,7 @@ void Player::onEnterDead()
     }
     removeMulti();
     removeProtected();
-    
+    removeBuffer(BT_TIME);
     GameController::getInstance()->setGameState(GameState::GS_PAUSE);
 }
 void Player::onExitDead()

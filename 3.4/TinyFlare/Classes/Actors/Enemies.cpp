@@ -31,8 +31,6 @@ void Enemy::update(float delta)
             Vec2 dir = playerPos - getPosition();
             setDirection(dir);
         }
-        else
-            setDirection(Vec2::ZERO);
         
         m_Orientation = m_Direction;
     }
@@ -172,8 +170,6 @@ void ColorTriangle::update(float delta)
             Vec2 dir = playerPos - getPosition();
             setDirection(dir);
         }
-        else
-            setDirection(Vec2::ZERO);
         
         m_Orientation = m_Direction;
     }
@@ -268,12 +264,13 @@ void Diamond::beginTrack()
     Sequence* sequence = Sequence::createWithTwoActions(scaleTo1, scaleTo2);
     RepeatForever* repeatForever = RepeatForever::create(sequence);
     runAction(repeatForever);
+    
     setActorState(ActorState::AS_TRACK);
 }
 void Diamond::onEnterDead()
 {
     ParticleSystemHelper::spawnExplosion(ExplosionType::ET_EXPLOSION_GREEN, getPosition());
-    AlisaMethod* am = AlisaMethod::createWithOnePercent(0.02f*EncrytionUtility::getIntegerForKey("DropLevel", 1));
+    AlisaMethod* am = AlisaMethod::createWithOnePercent(0.02f*EncrytionUtility::getIntegerForKey("DropLevel", 50));
     if(am && am->getRandomIndex() == 0)
         ActorsManager::getInstance()->spawnItem(Item::IT_TIME, getPosition());
 }
@@ -319,6 +316,8 @@ void Diamond::fire(float delta)
 {
     if(m_curState == ActorState::AS_UNDERCONTROL)
         return;
+    if(ActorsManager::getInstance()->getEnemyActorPause())
+        return;
     ActorsManager::spawnBullet(GameActor::AT_ENEMY_BULLET, getFireWorldPos(), getOrientation(),MAX(m_fMaxSpeed*2.0f,10.0f),"bullet2.png", Color3B(64,255,1), 0.2f, 1.0f);
 }
 Vec2 Diamond::getFireWorldPos()
@@ -337,8 +336,6 @@ void Diamond::update(float delta)
             Vec2 dir = playerPos - getPosition();
             setDirection(dir);
         }
-        else
-            setDirection(Vec2::ZERO);
         float dist = GameController::getInstance()->getPlayerPos().distance(getPosition());
         if(dist <= GameController::getInstance()->getBoundSize().width*0.2f)
             setActorState(ActorState::AS_FLEE);
@@ -353,8 +350,6 @@ void Diamond::update(float delta)
             Vec2 dir = playerPos - getPosition();
             setDirection(-dir);
         }
-        else
-            setDirection(Vec2::ZERO);
         float dist = GameController::getInstance()->getPlayerPos().distance(getPosition());
         if(dist >= GameController::getInstance()->getBoundSize().width*0.4f)
             setActorState(ActorState::AS_TRACK);
@@ -400,6 +395,8 @@ ColorDiamond::~ColorDiamond()
 void ColorDiamond::fire(float delta)
 {
     if(m_curState == ActorState::AS_UNDERCONTROL)
+        return;
+    if(ActorsManager::getInstance()->getEnemyActorPause())
         return;
     ActorsManager::spawnBullet(GameActor::AT_ENEMY_BULLET, getFireWorldPos(), getOrientation(),MAX(m_fMaxSpeed*2.0f,10.0f),"bullet2.png", Color3B(64,255,1), 0.2f, 1.0f);
     Vec2 orient = getOrientation();
@@ -448,8 +445,6 @@ void Star::update(float delta)
             Vec2 dir = playerPos - getPosition();
             setDirection(dir);
         }
-        else
-            setDirection(Vec2::ZERO);
         
         m_Orientation = m_Direction;
     }
@@ -536,6 +531,8 @@ void Star::fire(float delta)
 {
     if(m_curState != ActorState::AS_IDLE)
         return;
+    if(ActorsManager::getInstance()->getEnemyActorPause())
+        return;
     
     Vec2 pos = getPosition();
     Vec2 orient = m_Orientation*m_fRadius*0.8f;
@@ -588,8 +585,6 @@ void ColorStar::update(float delta)
             Vec2 dir = playerPos - getPosition();
             setDirection(dir);
         }
-        else
-            setDirection(Vec2::ZERO);
         
         m_Orientation = m_Direction;
     }
@@ -664,6 +659,8 @@ void ColorStar::beginTrack()
 void ColorStar::fire(float delta)
 {
     if(m_curState != ActorState::AS_IDLE)
+        return;
+    if(ActorsManager::getInstance()->getEnemyActorPause())
         return;
     
     Vec2 pos = getPosition();
@@ -758,8 +755,6 @@ void Hexagon::update(float delta)
             Vec2 dir = playerPos - getPosition();
             setDirection(dir);
         }
-        else
-            setDirection(Vec2::ZERO);
         
         m_Orientation = m_Direction;
     }
@@ -898,20 +893,23 @@ void ColorHexagon::update(float delta)
         }
         else
         {
-            Vec2 playerPos = GameController::getInstance()->getPlayerPos();
-            Vec2 velocity = GameController::getInstance()->getPlayer()->getVelocity();
-            float dist = getPosition().distance(playerPos);
-            if(dist < m_fMaxRadius)
+            if(GameController::getInstance()->getPlayer())
             {
-                Vec2 forceDir = (getPosition() - playerPos).getNormalized()*30.0f*delta;
-                if (dist < m_fMinRadius) {
-                    GameController::getInstance()->getPlayer()->setVelocity(velocity);
-                    velocity += forceDir*3;
-                }
-                else
+                Vec2 playerPos = GameController::getInstance()->getPlayerPos();
+                Vec2 velocity = GameController::getInstance()->getPlayer()->getVelocity();
+                float dist = getPosition().distance(playerPos);
+                if(dist < m_fMaxRadius)
                 {
-                    velocity += forceDir;
-                    GameController::getInstance()->getPlayer()->setVelocity(velocity);
+                    Vec2 forceDir = (getPosition() - playerPos).getNormalized()*30.0f*delta;
+                    if (dist < m_fMinRadius) {
+                        GameController::getInstance()->getPlayer()->setVelocity(velocity);
+                        velocity += forceDir*3;
+                    }
+                    else
+                    {
+                        velocity += forceDir;
+                        GameController::getInstance()->getPlayer()->setVelocity(velocity);
+                    }
                 }
             }
         }
@@ -923,8 +921,6 @@ void ColorHexagon::update(float delta)
         Vec2 dir = playerPos - getPosition();
         setDirection(dir);
     }
-    else
-        setDirection(Vec2::ZERO);
     
     if(!m_bBounce)
     {

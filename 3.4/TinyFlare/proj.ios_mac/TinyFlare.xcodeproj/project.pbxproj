@@ -72,6 +72,8 @@
 		552CB56C1AC985580071DA60 /* Laser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 552CB5691AC97BFE0071DA60 /* Laser.cpp */; };
 		552DF7961AD7E71600A9E63E /* starfield.plist in Resources */ = {isa = PBXBuildFile; fileRef = 552DF7951AD7E71600A9E63E /* starfield.plist */; };
 		552DF7971AD7E81F00A9E63E /* starfield.plist in Resources */ = {isa = PBXBuildFile; fileRef = 552DF7951AD7E71600A9E63E /* starfield.plist */; };
+		554A27821ADBF0390074B541 /* flare.plist in Resources */ = {isa = PBXBuildFile; fileRef = 554A27811ADBF0390074B541 /* flare.plist */; };
+		554A27831ADBF0420074B541 /* flare.plist in Resources */ = {isa = PBXBuildFile; fileRef = 554A27811ADBF0390074B541 /* flare.plist */; };
 		555B81511AB13B8800E9B69C /* bullet1.png in Resources */ = {isa = PBXBuildFile; fileRef = 555B81491AB13B8800E9B69C /* bullet1.png */; };
 		555B81521AB13B8800E9B69C /* circle.png in Resources */ = {isa = PBXBuildFile; fileRef = 555B814A1AB13B8800E9B69C /* circle.png */; };
 		555B81531AB13B8800E9B69C /* diamond.png in Resources */ = {isa = PBXBuildFile; fileRef = 555B814B1AB13B8800E9B69C /* diamond.png */; };
@@ -253,6 +255,7 @@
 		552CB5691AC97BFE0071DA60 /* Laser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Laser.cpp; sourceTree = "<group>"; };
 		552CB56A1AC97BFE0071DA60 /* Laser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Laser.h; sourceTree = "<group>"; };
 		552DF7951AD7E71600A9E63E /* starfield.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = starfield.plist; sourceTree = "<group>"; };
+		554A27811ADBF0390074B541 /* flare.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = flare.plist; sourceTree = "<group>"; };
 		555B81491AB13B8800E9B69C /* bullet1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bullet1.png; sourceTree = "<group>"; };
 		555B814A1AB13B8800E9B69C /* circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = circle.png; sourceTree = "<group>"; };
 		555B814B1AB13B8800E9B69C /* diamond.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = diamond.png; sourceTree = "<group>"; };
@@ -511,6 +514,7 @@
 		5515DA421AB8197400CD018F /* particles */ = {
 			isa = PBXGroup;
 			children = (
+				554A27811ADBF0390074B541 /* flare.plist */,
 				552DF7951AD7E71600A9E63E /* starfield.plist */,
 				559C57701AD566B200AE5B20 /* clearexplosion.plist */,
 				557179521ACAD79A00915125 /* blackhole.plist */,
@@ -792,6 +796,7 @@
 				555B81A81AB1518500E9B69C /* joystick1.png in Resources */,
 				552CB5611AC8FF090071DA60 /* tailEffect.fsh in Resources */,
 				5087E77E17EB970100C73F5D /* Default.png in Resources */,
+				554A27821ADBF0390074B541 /* flare.plist in Resources */,
 				559C57711AD566B200AE5B20 /* clearexplosion.plist in Resources */,
 				55E6B2CD1AC56E0800E30B90 /* mask2.png in Resources */,
 				55D878A11AD3A81D00442E32 /* playermask2.png in Resources */,
@@ -807,6 +812,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				554A27831ADBF0420074B541 /* flare.plist in Resources */,
 				552DF7971AD7E81F00A9E63E /* starfield.plist in Resources */,
 				559C57721AD566CD00AE5B20 /* clearexplosion.plist in Resources */,
 				55D878A81AD3C76000442E32 /* accel.png in Resources */,

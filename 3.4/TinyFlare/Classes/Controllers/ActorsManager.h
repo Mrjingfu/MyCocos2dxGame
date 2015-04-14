@@ -45,6 +45,9 @@ public:
     void eraseItem(Item* item);
     void eraseItem(int i);
     
+    void setEnemyActorPause(bool pause);
+    bool getEnemyActorPause() const;
+    
     void reset();
 private:
     cocos2d::Vector<Bullet*>                m_Bullets;
@@ -52,6 +55,8 @@ private:
     cocos2d::Vector<Laser*>                 m_Lasers;
     cocos2d::Vector<Item*>                  m_Items;
     cocos2d::Layer*                         m_pActorLayer;
+    
+    bool                                    m_bEnemyActorPause;
 };
 
 #endif /* defined(__TinyFlare__ActorsManager__) */

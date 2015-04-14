@@ -112,6 +112,9 @@ public:
     
     ActorState getActorState() const { return m_curState; }
     void setActorState(ActorState state);
+    
+    virtual void resumeScheduler(void);
+    virtual void pauseScheduler(void);
 protected:
     cocos2d::Sprite*    m_pModel;
     cocos2d::Vec2       m_Direction;            ///指示移动方向
