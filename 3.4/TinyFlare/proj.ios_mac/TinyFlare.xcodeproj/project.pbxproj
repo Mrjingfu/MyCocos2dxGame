@@ -138,6 +138,14 @@
 		5584ED661ADCFED800C793EB /* Pickup_Speed02.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5584ED4C1ADCEA9700C793EB /* Pickup_Speed02.wav */; };
 		5584ED671ADCFED800C793EB /* Pickup_Speed03.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5584ED4D1ADCEA9700C793EB /* Pickup_Speed03.wav */; };
 		5584ED681ADD0EB000C793EB /* Flux2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5584ED3D1ADCEA9700C793EB /* Flux2.mp3 */; };
+		5584ED731ADD49EF00C793EB /* ShatterAction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5584ED711ADD49EF00C793EB /* ShatterAction.cpp */; };
+		5584ED761ADD4A0A00C793EB /* ShatterSprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5584ED741ADD4A0A00C793EB /* ShatterSprite.cpp */; };
+		5584ED771ADD50F100C793EB /* ShatterAction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5584ED711ADD49EF00C793EB /* ShatterAction.cpp */; };
+		5584ED781ADD50F100C793EB /* ShatterSprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5584ED741ADD4A0A00C793EB /* ShatterSprite.cpp */; };
+		5584ED7A1ADD596100C793EB /* fish2.png in Resources */ = {isa = PBXBuildFile; fileRef = 5584ED791ADD596100C793EB /* fish2.png */; };
+		5584ED7B1ADD597B00C793EB /* fish2.png in Resources */ = {isa = PBXBuildFile; fileRef = 5584ED791ADD596100C793EB /* fish2.png */; };
+		5584ED7D1ADD614900C793EB /* Laser_Shot23.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5584ED7C1ADD614900C793EB /* Laser_Shot23.wav */; };
+		5584ED7E1ADD615500C793EB /* Laser_Shot23.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5584ED7C1ADD614900C793EB /* Laser_Shot23.wav */; };
 		5585C1C81AB9410400B694FD /* ParticleSystemHelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5585C1C61AB9410400B694FD /* ParticleSystemHelper.cpp */; };
 		5585C1C91AB9496B00B694FD /* ParticleSystemHelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5585C1C61AB9410400B694FD /* ParticleSystemHelper.cpp */; };
 		5585C1CB1AB9858B00B694FD /* collisionexplosion.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5585C1CA1AB9858B00B694FD /* collisionexplosion.plist */; };
@@ -319,6 +327,12 @@
 		5584ED4C1ADCEA9700C793EB /* Pickup_Speed02.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Pickup_Speed02.wav; sourceTree = "<group>"; };
 		5584ED4D1ADCEA9700C793EB /* Pickup_Speed03.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Pickup_Speed03.wav; sourceTree = "<group>"; };
 		5584ED5F1ADCF02600C793EB /* explodeEffect2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = explodeEffect2.wav; sourceTree = "<group>"; };
+		5584ED711ADD49EF00C793EB /* ShatterAction.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ShatterAction.cpp; sourceTree = "<group>"; };
+		5584ED721ADD49EF00C793EB /* ShatterAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShatterAction.h; sourceTree = "<group>"; };
+		5584ED741ADD4A0A00C793EB /* ShatterSprite.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ShatterSprite.cpp; sourceTree = "<group>"; };
+		5584ED751ADD4A0A00C793EB /* ShatterSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShatterSprite.h; sourceTree = "<group>"; };
+		5584ED791ADD596100C793EB /* fish2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fish2.png; sourceTree = "<group>"; };
+		5584ED7C1ADD614900C793EB /* Laser_Shot23.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Laser_Shot23.wav; sourceTree = "<group>"; };
 		5585C1C61AB9410400B694FD /* ParticleSystemHelper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ParticleSystemHelper.cpp; sourceTree = "<group>"; };
 		5585C1C71AB9410400B694FD /* ParticleSystemHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParticleSystemHelper.h; sourceTree = "<group>"; };
 		5585C1CA1AB9858B00B694FD /* collisionexplosion.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = collisionexplosion.plist; sourceTree = "<group>"; };
@@ -487,6 +501,7 @@
 		46880B8319C43A87006E1F66 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				5584ED701ADD49EF00C793EB /* CustomActions */,
 				559B966C1AD6ABF60073570C /* Const */,
 				55C70E721ACABD2600D06754 /* Utilities */,
 				552CB5521AC8F4440071DA60 /* CustomSprites */,
@@ -568,6 +583,8 @@
 			children = (
 				552CB5531AC8F4440071DA60 /* LaserSprite.cpp */,
 				552CB5541AC8F4440071DA60 /* LaserSprite.h */,
+				5584ED741ADD4A0A00C793EB /* ShatterSprite.cpp */,
+				5584ED751ADD4A0A00C793EB /* ShatterSprite.h */,
 			);
 			path = CustomSprites;
 			sourceTree = "<group>";
@@ -585,6 +602,7 @@
 		555B81481AB13B8800E9B69C /* textures */ = {
 			isa = PBXGroup;
 			children = (
+				5584ED791ADD596100C793EB /* fish2.png */,
 				5584ED371ADCDB4E00C793EB /* logo.png */,
 				55D878961AD3A81D00442E32 /* accel.png */,
 				55D878971AD3A81D00442E32 /* boom.png */,
@@ -676,6 +694,7 @@
 		5584ED3E1ADCEA9700C793EB /* sounds */ = {
 			isa = PBXGroup;
 			children = (
+				5584ED7C1ADD614900C793EB /* Laser_Shot23.wav */,
 				5584ED5F1ADCF02600C793EB /* explodeEffect2.wav */,
 				5584ED431ADCEA9700C793EB /* explodeEffect.mp3 */,
 				5584ED451ADCEA9700C793EB /* Laser_Shot21.wav */,
@@ -686,6 +705,15 @@
 				5584ED4D1ADCEA9700C793EB /* Pickup_Speed03.wav */,
 			);
 			path = sounds;
+			sourceTree = "<group>";
+		};
+		5584ED701ADD49EF00C793EB /* CustomActions */ = {
+			isa = PBXGroup;
+			children = (
+				5584ED711ADD49EF00C793EB /* ShatterAction.cpp */,
+				5584ED721ADD49EF00C793EB /* ShatterAction.h */,
+			);
+			path = CustomActions;
 			sourceTree = "<group>";
 		};
 		559B966C1AD6ABF60073570C /* Const */ = {
@@ -856,6 +884,7 @@
 				55D8789D1AD3A81D00442E32 /* accel.png in Resources */,
 				552985E41ABFB57100159D23 /* colorgeometry.plist in Resources */,
 				50EF629817ECD46A001EB2F8 /* Icon-80.png in Resources */,
+				5584ED7D1ADD614900C793EB /* Laser_Shot23.wav in Resources */,
 				55FEC8901AB6F79900F39535 /* playermask.png in Resources */,
 				5087E78417EB970100C73F5D /* Icon-57.png in Resources */,
 				55FEC8911AB6F79900F39535 /* playermain.png in Resources */,
@@ -874,6 +903,7 @@
 				521A8E6419F0C34300D177D7 /* Default-667h@2x.png in Resources */,
 				5584ED4E1ADCEA9700C793EB /* Flux2.mp3 in Resources */,
 				50EF629717ECD46A001EB2F8 /* Icon-58.png in Resources */,
+				5584ED7A1ADD596100C793EB /* fish2.png in Resources */,
 				5584ED5C1ADCEA9700C793EB /* Pickup_Speed02.wav in Resources */,
 				5585C1CE1AB9978400B694FD /* collision.plist in Resources */,
 				5515DA441AB8197400CD018F /* explosion.plist in Resources */,
@@ -884,6 +914,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5584ED7E1ADD615500C793EB /* Laser_Shot23.wav in Resources */,
+				5584ED7B1ADD597B00C793EB /* fish2.png in Resources */,
 				5584ED681ADD0EB000C793EB /* Flux2.mp3 in Resources */,
 				5584ED651ADCFED800C793EB /* Pickup_GemBells14.wav in Resources */,
 				5584ED661ADCFED800C793EB /* Pickup_Speed02.wav in Resources */,
@@ -950,10 +982,12 @@
 				555B81721AB13DDC00E9B69C /* Bullet.cpp in Sources */,
 				555B81741AB13DDC00E9B69C /* GameActor.cpp in Sources */,
 				555B81731AB13DDC00E9B69C /* Enemies.cpp in Sources */,
+				5584ED761ADD4A0A00C793EB /* ShatterSprite.cpp in Sources */,
 				55FEC88D1AB698D600F39535 /* TwoJoysticks.cpp in Sources */,
 				552985E81AC0056E00159D23 /* EnemiesGenerator.cpp in Sources */,
 				555B81671AB13D9E00E9B69C /* ActorsManager.cpp in Sources */,
 				555B81791AB1401400E9B69C /* EnemiesGeneratorHelper.cpp in Sources */,
+				5584ED731ADD49EF00C793EB /* ShatterAction.cpp in Sources */,
 				55C70E751ACABD4300D06754 /* UtilityHelper.cpp in Sources */,
 				55D878A61AD3AD2D00442E32 /* Item.cpp in Sources */,
 				555B81611AB13C2300E9B69C /* GameController.cpp in Sources */,
@@ -973,6 +1007,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5584ED771ADD50F100C793EB /* ShatterAction.cpp in Sources */,
+				5584ED781ADD50F100C793EB /* ShatterSprite.cpp in Sources */,
 				5584ED3A1ADCDBEB00C793EB /* Logo.cpp in Sources */,
 				5505CA561AD6BDDE002EBFC4 /* ChaosNumber.cpp in Sources */,
 				5505CA571AD6BDDE002EBFC4 /* EncrytionUtility.cpp in Sources */,

@@ -1,5 +1,5 @@
 #include "AppDelegate.h"
-#include "TinyFlare.h"
+#include "Logo.h"
 #include "SimpleAudioEngine.h"
 USING_NS_CC;
 using namespace CocosDenshion;
@@ -52,7 +52,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     director->setAnimationInterval(1.0 / 60);
 
     // create a scene. it's an autorelease object
-    auto scene = TinyFlare::createScene();
+    auto scene = Logo::createScene();
 
     // run
     director->runWithScene(scene);

@@ -578,6 +578,7 @@ void Star::fire(float delta)
     orient.rotate(Vec2::ZERO, M_PI*0.4f);
     pos += orient;
     ActorsManager::spawnBullet(GameActor::AT_ENEMY_BULLET, pos, orient,2.0f,"bullet2.png", Color3B(0,224,252), 0.5f, 0.5f);
+    SimpleAudioEngine::getInstance()->playEffect("Laser_Shot23.wav");
 }
 
 ColorStar::ColorStar()
@@ -717,7 +718,9 @@ void ColorStar::fire(float delta)
     node5Pos = convertToWorldSpace(node5Pos);
     Vec2 orient5 = node5Pos - pos;
     orient5.normalize();
-    ActorsManager::spawnBullet(GameActor::AT_ENEMY_BULLET, node5Pos, orient5, 2.0f,"bullet2.png", Color3B(0,224,252), 0.5f, 0.6f);}
+    ActorsManager::spawnBullet(GameActor::AT_ENEMY_BULLET, node5Pos, orient5, 2.0f,"bullet2.png", Color3B(0,224,252), 0.5f, 0.6f);
+    SimpleAudioEngine::getInstance()->playEffect("Laser_Shot23.wav");
+}
 
 void ColorStar::initFirePos()
 {

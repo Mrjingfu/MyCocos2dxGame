@@ -10,7 +10,7 @@
 #define __TinyFlare__Logo__
 
 #include "cocos2d.h"
-
+#include "ShatterSprite.h"
 class Logo : public cocos2d::Layer
 {
     Logo();
@@ -24,11 +24,10 @@ public:
     // implement the "static create()" method manually
     CREATE_FUNC(Logo);
     
-    virtual void onEnter();
-    virtual void onExit();
-    virtual void update(float delta);
+    void beginShatter();
+    void endShatter();
 private:
-    cocos2d::Sprite*        m_pLogo;
+    ShatterSprite*        m_pLogo;
 };
 
 #endif /* defined(__TinyFlare__Logo__) */
