@@ -12,7 +12,9 @@
 #include "ActorsManager.h"
 #include "AlisaMethod.h"
 #include "EncrytionUtility.h"
+#include "SimpleAudioEngine.h"
 USING_NS_CC;
+using namespace CocosDenshion;
 Enemy::Enemy()
 {
     m_type = AT_ENEMY;
@@ -93,6 +95,7 @@ void Circle::onEnterDead()
     AlisaMethod* am = AlisaMethod::createWithOnePercent(0.02f*EncrytionUtility::getIntegerForKey("DropLevel", 1));
     if(am && am->getRandomIndex() == 0)
         ActorsManager::getInstance()->spawnItem(Item::IT_MULTI, getPosition());
+    SimpleAudioEngine::getInstance()->playEffect("explodeEffect.mp3");
 }
 
 /////ColorCircle
@@ -112,6 +115,7 @@ void ColorCircle::onEnterDead()
     AlisaMethod* am = AlisaMethod::createWithOnePercent(0.15f*EncrytionUtility::getIntegerForKey("DropLevel", 1));
     if(am && am->getRandomIndex() == 0)
         ActorsManager::getInstance()->spawnItem(Item::IT_MULTI, getPosition());
+    SimpleAudioEngine::getInstance()->playEffect("explodeEffect.mp3");
 }
 
 /////Triangle
@@ -130,6 +134,7 @@ void Triangle::onEnterDead()
     AlisaMethod* am = AlisaMethod::createWithOnePercent(0.02f*EncrytionUtility::getIntegerForKey("DropLevel", 1));
     if(am && am->getRandomIndex() == 0)
         ActorsManager::getInstance()->spawnItem(Item::IT_ACCEL, getPosition());
+    SimpleAudioEngine::getInstance()->playEffect("explodeEffect.mp3");
 }
 void Triangle::beginTrack()
 {
@@ -245,6 +250,7 @@ void ColorTriangle::onEnterDead()
     AlisaMethod* am = AlisaMethod::createWithOnePercent(0.15f*EncrytionUtility::getIntegerForKey("DropLevel", 1));
     if(am && am->getRandomIndex() == 0)
         ActorsManager::getInstance()->spawnItem(Item::IT_ACCEL, getPosition());
+    SimpleAudioEngine::getInstance()->playEffect("explodeEffect.mp3");
 }
 ///躲避攻击，射击发射子弹
 Diamond::Diamond()
@@ -273,6 +279,7 @@ void Diamond::onEnterDead()
     AlisaMethod* am = AlisaMethod::createWithOnePercent(0.02f*EncrytionUtility::getIntegerForKey("DropLevel", 50));
     if(am && am->getRandomIndex() == 0)
         ActorsManager::getInstance()->spawnItem(Item::IT_TIME, getPosition());
+    SimpleAudioEngine::getInstance()->playEffect("explodeEffect.mp3");
 }
 void Diamond::onEnterTrack()
 {
@@ -318,7 +325,15 @@ void Diamond::fire(float delta)
         return;
     if(ActorsManager::getInstance()->getEnemyActorPause())
         return;
+    
     ActorsManager::spawnBullet(GameActor::AT_ENEMY_BULLET, getFireWorldPos(), getOrientation(),MAX(m_fMaxSpeed*2.0f,10.0f),"bullet2.png", Color3B(64,255,1), 0.2f, 1.0f);
+    
+    Vec3 min = Vec3(-getRadius(), -getRadius(), -0.5f) + getPosition3D();
+    Vec3 max = Vec3(getRadius(), getRadius(), 0.5f) + getPosition3D();
+    AABB aabb = AABB(min, max);
+    bool isVisible = GameController::getInstance()->getActorCamera()->isVisibleInFrustum(&aabb);
+    if(isVisible)
+        SimpleAudioEngine::getInstance()->playEffect("Laser_Shot21.wav");
 }
 Vec2 Diamond::getFireWorldPos()
 {
@@ -409,6 +424,13 @@ void ColorDiamond::fire(float delta)
     ActorsManager::spawnBullet(GameActor::AT_ENEMY_BULLET, getFireWorldPos(), orient, MAX(m_fMaxSpeed*2.0f,10.0f),"bullet2.png", Color3B(64,255,1), 0.2f, 1.0f);
     orient.rotate(Vec2::ZERO, -M_PI*0.125f);
     ActorsManager::spawnBullet(GameActor::AT_ENEMY_BULLET, getFireWorldPos(), orient, MAX(m_fMaxSpeed*2.0f,10.0f),"bullet2.png", Color3B(64,255,1), 0.2f, 1.0f);
+    
+    Vec3 min = Vec3(-getRadius(), -getRadius(), -0.5f) + getPosition3D();
+    Vec3 max = Vec3(getRadius(), getRadius(), 0.5f) + getPosition3D();
+    AABB aabb = AABB(min, max);
+    bool isVisible = GameController::getInstance()->getActorCamera()->isVisibleInFrustum(&aabb);
+    if(isVisible)
+        SimpleAudioEngine::getInstance()->playEffect("Laser_Shot21.wav");
 }
 void ColorDiamond::onEnterDead()
 {
@@ -416,6 +438,7 @@ void ColorDiamond::onEnterDead()
     AlisaMethod* am = AlisaMethod::createWithOnePercent(0.15f*EncrytionUtility::getIntegerForKey("DropLevel", 1));
     if(am && am->getRandomIndex() == 0)
         ActorsManager::getInstance()->spawnItem(Item::IT_TIME, getPosition());
+    SimpleAudioEngine::getInstance()->playEffect("explodeEffect.mp3");
 }
 ///慢速追踪，五星旋转弹幕
 Star::Star()
@@ -519,6 +542,7 @@ void Star::onEnterDead()
     AlisaMethod* am = AlisaMethod::createWithOnePercent(0.02f*EncrytionUtility::getIntegerForKey("DropLevel", 50));
     if(am && am->getRandomIndex() == 0)
         ActorsManager::getInstance()->spawnItem(Item::IT_PROTETED, getPosition());
+    SimpleAudioEngine::getInstance()->playEffect("explodeEffect.mp3");
 }
 void Star::beginTrack()
 {
@@ -649,6 +673,7 @@ void ColorStar::onEnterDead()
     AlisaMethod* am = AlisaMethod::createWithOnePercent(0.15f*EncrytionUtility::getIntegerForKey("DropLevel", 1));
     if(am && am->getRandomIndex() == 0)
         ActorsManager::getInstance()->spawnItem(Item::IT_PROTETED, getPosition());
+    SimpleAudioEngine::getInstance()->playEffect("explodeEffect.mp3");
 }
 void ColorStar::beginTrack()
 {
@@ -852,6 +877,7 @@ void Hexagon::onEnterDead()
     AlisaMethod* am = AlisaMethod::createWithOnePercent(0.02f*EncrytionUtility::getIntegerForKey("DropLevel", 1));
     if(am && am->getRandomIndex() == 0)
         ActorsManager::getInstance()->spawnItem(Item::IT_BOOM, getPosition());
+    SimpleAudioEngine::getInstance()->playEffect("explodeEffect.mp3");
 }
 void Hexagon::beginTrack()
 {
@@ -969,6 +995,7 @@ void ColorHexagon::onEnterDead()
     AlisaMethod* am = AlisaMethod::createWithOnePercent(0.15f*EncrytionUtility::getIntegerForKey("DropLevel", 1));
     if(am && am->getRandomIndex() == 0)
         ActorsManager::getInstance()->spawnItem(Item::IT_BOOM, getPosition());
+    SimpleAudioEngine::getInstance()->playEffect("explodeEffect.mp3");
 }
 void ColorHexagon::beginTrack()
 {

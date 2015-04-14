@@ -509,11 +509,15 @@ Item* ActorsManager::spawnItem(Item::ItemType type, const Vec2& pos)
         CC_SAFE_DELETE(item);
     return item;
 }
-bool ActorsManager::init(cocos2d::Layer* actorLayer)
+bool ActorsManager::init(cocos2d::Layer* gameLayer)
 {
-    if(!actorLayer)
+    if(!gameLayer)
         return false;
-    m_pActorLayer = actorLayer;
+    m_pActorLayer = Layer::create();
+    if(!m_pActorLayer)
+        return false;
+    m_pActorLayer->setCameraMask((unsigned short)CameraFlag::USER1);
+    gameLayer->addChild(m_pActorLayer);
     return true;
 }
 void ActorsManager::update(float delta)
@@ -795,6 +799,7 @@ void ActorsManager::reset()
             eraseBullet(bullet);
         }
     }
+    m_Bullets.clear();
     for (ssize_t i = 0; i<m_Enemies.size(); ++i) {
         Enemy* enemy = m_Enemies.at(i);
         if(enemy)
@@ -803,6 +808,7 @@ void ActorsManager::reset()
             eraseEnemy(enemy);
         }
     }
+    m_Enemies.clear();
     for (ssize_t i = 0; i<m_Lasers.size(); ++i) {
         Laser* laser = m_Lasers.at(i);
         if(laser)
@@ -811,6 +817,7 @@ void ActorsManager::reset()
             eraseLaser(laser);
         }
     }
+    m_Lasers.clear();
     for (ssize_t i = 0; i<m_Items.size(); ++i) {
         Item* item = m_Items.at(i);
         if(item)
@@ -819,4 +826,7 @@ void ActorsManager::reset()
             eraseItem(item);
         }
     }
+    m_Items.clear();
+    if(m_pActorLayer)
+        m_pActorLayer->removeAllChildrenWithCleanup(true);
 }

@@ -10,7 +10,9 @@
 #include "ActorsManager.h"
 #include "LaserSprite.h"
 #include "ParticleSystemHelper.h"
+#include "SimpleAudioEngine.h"
 USING_NS_CC;
+using namespace CocosDenshion;
 
 GameController* g_pGameControllerInstance = nullptr;
 GameController* GameController::getInstance()
@@ -199,12 +201,34 @@ void GameController::checkBounce(GameActor* actor)
     float boundX = m_BoundSize.width*0.5f;
     float boundY = m_BoundSize.height*0.5f;
     bool bounced = false;
-    if (minX <= -boundX + actor->getMaxSpeed() || maxX >= boundX - actor->getMaxSpeed() ){
-        velocity.x = - velocity.x;
+    if (minX <= -boundX + actor->getMaxSpeed()){
+        if(velocity.x > -actor->getMaxSpeed())
+            velocity.x = actor->getMaxSpeed();
+        else
+            velocity.x = - velocity.x;
         bounced = true;
     }
-    if( minY <= -boundY + actor->getMaxSpeed() || maxY >= boundY - actor->getMaxSpeed() ){
-        velocity.y = - velocity.y;
+    else if( maxX >= boundX - actor->getMaxSpeed() )
+    {
+        if(velocity.x < actor->getMaxSpeed())
+            velocity.x = -actor->getMaxSpeed();
+        else
+            velocity.x = - velocity.x;
+        bounced = true;
+    }
+    if( minY <= -boundY + actor->getMaxSpeed() ){
+        if(velocity.y > - actor->getMaxSpeed())
+            velocity.y = actor->getMaxSpeed();
+        else
+            velocity.y = - velocity.y;
+        bounced = true;
+    }
+    else if(maxY >= boundY - actor->getMaxSpeed())
+    {
+        if(velocity.y < actor->getMaxSpeed())
+            velocity.y = -actor->getMaxSpeed();
+        else
+            velocity.y = - velocity.y;
         bounced = true;
     }
     actor->setBounce(bounced);
@@ -294,6 +318,8 @@ void GameController::gameStart()
     m_pTwoJoysticks->setJoystickLeftListener(m_pPlayer);
     m_pTwoJoysticks->setJoystickRightListener(m_pPlayer);
     m_pMainLayer->addChild(m_pTwoJoysticks);
+    
+    SimpleAudioEngine::getInstance()->playBackgroundMusic("Flux2.mp3");
 }
 
 void GameController::gamePause()
@@ -316,4 +342,5 @@ void GameController::gameEnd()
         m_pTwoJoysticks->removeFromParentAndCleanup(true);
         m_pTwoJoysticks = nullptr;
     }
+    SimpleAudioEngine::getInstance()->stopBackgroundMusic();
 }

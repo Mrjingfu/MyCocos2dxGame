@@ -3,7 +3,6 @@
 #include "SimpleAudioEngine.h"
 USING_NS_CC;
 using namespace CocosDenshion;
-USING_NS_CC;
 
 AppDelegate::AppDelegate() {
 

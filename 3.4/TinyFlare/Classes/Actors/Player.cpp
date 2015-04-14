@@ -11,7 +11,9 @@
 #include "ParticleSystemHelper.h"
 #include "GameController.h"
 #include "EncrytionUtility.h"
+#include "SimpleAudioEngine.h"
 USING_NS_CC;
+using namespace CocosDenshion;
 
 Player::Player()
 {
@@ -50,14 +52,14 @@ void Player::updateBuffer(float delta)
     if(m_nBufferType & BufferType::BT_MULTI)
     {
         if(m_fMultiTime > 0.0f)
-            m_fMultiTime -= delta;
+            m_fMultiTime -= delta/_scheduler->getTimeScale();
         else
             removeBuffer(BufferType::BT_MULTI);
     }
     if(m_nBufferType & BufferType::BT_PROTECTED)
     {
         if(m_fProtectedTime > 0.0f)
-            m_fProtectedTime -= delta;
+            m_fProtectedTime -= delta/_scheduler->getTimeScale();
         else
             removeBuffer(BufferType::BT_PROTECTED);
         if(m_pProtectedNode)
@@ -71,7 +73,7 @@ void Player::updateBuffer(float delta)
     if(m_nBufferType & BufferType::BT_TIME)
     {
         if(m_fSlowTime > 0.0f)
-            m_fSlowTime -= delta;
+            m_fSlowTime -= delta/_scheduler->getTimeScale();
         else
             removeBuffer(BufferType::BT_TIME);
     }
@@ -137,6 +139,7 @@ void Player::loadMaskModel(const std::string& texName)
 }
 void Player::addBuffer(BufferType type)
 {
+    SimpleAudioEngine::getInstance()->playEffect("Pickup_GemBells14.wav");
     m_nBufferType |= type;
     if(type == BT_ACCEL)
         m_fFireDelta = 0.5f*(powf(0.8f, EncrytionUtility::getIntegerForKey("AccelLevel", 1)));
@@ -176,6 +179,7 @@ void Player::addBuffer(BufferType type)
             schedule(CC_SCHEDULE_SELECTOR(Player::fire), m_fFireDelta*_scheduler->getTimeScale(), -1, 0);
             m_bScheduledFire = true;
         }
+        SimpleAudioEngine::getInstance()->playEffect("Pickup_Speed02.wav");
     }
 }
 void Player::removeBuffer(BufferType type)
@@ -203,6 +207,7 @@ void Player::removeBuffer(BufferType type)
             schedule(CC_SCHEDULE_SELECTOR(Player::fire), m_fFireDelta*_scheduler->getTimeScale(), -1, 0);
             m_bScheduledFire = true;
         }
+        SimpleAudioEngine::getInstance()->playEffect("Pickup_Speed03.wav");
     }
     m_nBufferType = m_nBufferType&~type;
 }
@@ -390,11 +395,13 @@ void Player::fire(float delta)
                     orient.rotate(Vec2::ZERO, -M_PI*0.25f);
                     ActorsManager::spawnBullet(GameActor::AT_PLAYER_BULLET, getFireWorldPos(orient), orient,m_fMaxSpeed*2.0f,"bullet1.png", Color3B(174,250,27), 0.5f, 2.0f);
                     ParticleSystemHelper::spawnActorWidget(ActorWidgetType::AWT_FIRE_FLARE_MULTI, getFireLocalPos(orient), this);
+                    SimpleAudioEngine::getInstance()->playEffect("LaserRifle_Shot06.wav");
                 }
                 else
                 {
                     ActorsManager::spawnBullet(GameActor::AT_PLAYER_BULLET, getFireWorldPos(m_Orientation), m_Orientation,m_fMaxSpeed*2.0f,"bullet1.png", Color3B(254,148,236), 0.5f, 2.0f);
                     ParticleSystemHelper::spawnActorWidget(ActorWidgetType::AWT_FIRE_FLARE, getFireLocalPos(m_Orientation), this);
+                    SimpleAudioEngine::getInstance()->playEffect("LaserRifle_Shot04.wav");
                 }
             }
             break;
@@ -421,6 +428,7 @@ void Player::onEnterDead()
     removeMulti();
     removeProtected();
     removeBuffer(BT_TIME);
+    SimpleAudioEngine::getInstance()->playEffect("explodeEffect2.wav");
     GameController::getInstance()->setGameState(GameState::GS_PAUSE);
 }
 void Player::onExitDead()

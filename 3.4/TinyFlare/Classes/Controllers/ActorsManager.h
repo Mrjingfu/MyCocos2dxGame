@@ -29,7 +29,7 @@ public:
     
     static Item* spawnItem(Item::ItemType type, const cocos2d::Vec2& pos);
     
-    bool init(cocos2d::Layer* actorLayer);
+    bool init(cocos2d::Layer* gameLayer);
     void update(float delta);
     void destroy();
     
