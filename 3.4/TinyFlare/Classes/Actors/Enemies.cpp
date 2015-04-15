@@ -578,7 +578,12 @@ void Star::fire(float delta)
     orient.rotate(Vec2::ZERO, M_PI*0.4f);
     pos += orient;
     ActorsManager::spawnBullet(GameActor::AT_ENEMY_BULLET, pos, orient,2.0f,"bullet2.png", Color3B(0,224,252), 0.5f, 0.5f);
-    SimpleAudioEngine::getInstance()->playEffect("Laser_Shot23.wav");
+    Vec3 min = Vec3(-getRadius(), -getRadius(), -0.5f) + getPosition3D();
+    Vec3 max = Vec3(getRadius(), getRadius(), 0.5f) + getPosition3D();
+    AABB aabb = AABB(min, max);
+    bool isVisible = GameController::getInstance()->getActorCamera()->isVisibleInFrustum(&aabb);
+    if(isVisible)
+        SimpleAudioEngine::getInstance()->playEffect("Laser_Shot23.wav");
 }
 
 ColorStar::ColorStar()
@@ -674,7 +679,12 @@ void ColorStar::onEnterDead()
     AlisaMethod* am = AlisaMethod::createWithOnePercent(0.15f*EncrytionUtility::getIntegerForKey("DropLevel", 1));
     if(am && am->getRandomIndex() == 0)
         ActorsManager::getInstance()->spawnItem(Item::IT_PROTETED, getPosition());
-    SimpleAudioEngine::getInstance()->playEffect("explodeEffect.mp3");
+    Vec3 min = Vec3(-getRadius(), -getRadius(), -0.5f) + getPosition3D();
+    Vec3 max = Vec3(getRadius(), getRadius(), 0.5f) + getPosition3D();
+    AABB aabb = AABB(min, max);
+    bool isVisible = GameController::getInstance()->getActorCamera()->isVisibleInFrustum(&aabb);
+    if(isVisible)
+        SimpleAudioEngine::getInstance()->playEffect("explodeEffect.mp3");
 }
 void ColorStar::beginTrack()
 {
