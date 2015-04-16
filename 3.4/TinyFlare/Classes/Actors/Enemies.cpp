@@ -84,7 +84,7 @@ Circle::Circle()
 {
     m_EnemyType = ET_CIRCLE;
     m_fAccel = 40.0f;
-    m_fMaxSpeed = 10.0f;
+    m_fMaxSpeed = 2.0f;
 }
 Circle::~Circle()
 {
@@ -111,7 +111,7 @@ ColorCircle::~ColorCircle()
 void ColorCircle::onEnterDead()
 {
     ParticleSystemHelper::spawnExplosion(ExplosionType::ET_EXPLOSION_WHITE, getPosition());
-    GameController::getInstance()->getEnemiesGenerator()->generateEnemiesByExplosion(Enemy::ET_CIRCLE, getPosition(), 2);
+    GameController::getInstance()->getEnemiesGenerator()->generateEnemiesByExplosion(Enemy::ET_CIRCLE, getPosition(), 6);
     AlisaMethod* am = AlisaMethod::createWithOnePercent(0.15f*EncrytionUtility::getIntegerForKey("DropLevel", 1));
     if(am && am->getRandomIndex() == 0)
         ActorsManager::getInstance()->spawnItem(Item::IT_MULTI, getPosition());

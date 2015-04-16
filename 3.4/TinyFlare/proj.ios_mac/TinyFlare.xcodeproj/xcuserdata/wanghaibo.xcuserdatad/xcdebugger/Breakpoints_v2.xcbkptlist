@@ -490,13 +490,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Controllers/GameController.cpp"
-            timestampString = "450700086.482436"
+            timestampString = "450890898.152486"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "281"
-            endingLineNumber = "281"
-            landmarkName = "GameController::onEnterDebug()"
-            landmarkType = "5">
+            startingLineNumber = "280"
+            endingLineNumber = "280">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1346,7 +1344,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Controllers/GameController.cpp"
-            timestampString = "450694958.699459"
+            timestampString = "450873821.869408"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "100"
@@ -1362,12 +1360,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Controllers/GameController.cpp"
-            timestampString = "450700086.482436"
+            timestampString = "450890898.152486"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "265"
-            endingLineNumber = "265"
-            landmarkName = "GameController::onExitPause()"
+            startingLineNumber = "263"
+            endingLineNumber = "263"
+            landmarkName = "GameController::onEnterGame()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1586,12 +1584,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Controllers/GameController.cpp"
-            timestampString = "450694958.699459"
+            timestampString = "450873821.869408"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "82"
             endingLineNumber = "82"
-            landmarkName = "GameController::update(float delta)"
+            landmarkName = "GameController::init(Layer* pMainLayer)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1650,11 +1648,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Utilities/UtilityHelper.cpp"
-            timestampString = "449500244.986586"
+            timestampString = "450879323.947227"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "32"
-            endingLineNumber = "32"
+            startingLineNumber = "92"
+            endingLineNumber = "92"
             landmarkName = "UtilityHelper::checkCircleIntersectWithSegment(const Vec2&amp; center, float radius, const Vec2&amp; start, const Vec2&amp; end)"
             landmarkType = "5">
          </BreakpointContent>
@@ -1666,11 +1664,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Utilities/UtilityHelper.cpp"
-            timestampString = "449497853.57933"
+            timestampString = "450879323.947227"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "14"
-            endingLineNumber = "14"
+            startingLineNumber = "74"
+            endingLineNumber = "74"
             landmarkName = "UtilityHelper::checkCircleIntersectWithSegment(const Vec2&amp; center, float radius, const Vec2&amp; start, const Vec2&amp; end)"
             landmarkType = "5">
          </BreakpointContent>
@@ -1682,11 +1680,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Utilities/UtilityHelper.cpp"
-            timestampString = "449499661.312643"
+            timestampString = "450879323.947227"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "17"
-            endingLineNumber = "17"
+            startingLineNumber = "77"
+            endingLineNumber = "77"
             landmarkName = "UtilityHelper::checkCircleIntersectWithSegment(const Vec2&amp; center, float radius, const Vec2&amp; start, const Vec2&amp; end)"
             landmarkType = "5">
          </BreakpointContent>
@@ -1698,11 +1696,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Utilities/UtilityHelper.cpp"
-            timestampString = "449499661.312643"
+            timestampString = "450879323.947227"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "23"
-            endingLineNumber = "23"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
             landmarkName = "UtilityHelper::checkCircleIntersectWithSegment(const Vec2&amp; center, float radius, const Vec2&amp; start, const Vec2&amp; end)"
             landmarkType = "5">
          </BreakpointContent>
@@ -2098,12 +2096,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Controllers/GameController.cpp"
-            timestampString = "450700086.482436"
+            timestampString = "450891206.364972"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "344"
-            endingLineNumber = "344"
-            landmarkName = "GameController::gameEnd()"
+            startingLineNumber = "345"
+            endingLineNumber = "345"
+            landmarkName = "GameController::gameStart()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2210,7 +2208,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Controllers/GameController.cpp"
-            timestampString = "450694958.699459"
+            timestampString = "450873821.869408"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "91"
@@ -2242,12 +2240,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Controllers/GameController.cpp"
-            timestampString = "450700086.482436"
+            timestampString = "450890898.152486"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "291"
-            endingLineNumber = "291"
-            landmarkName = "GameController::gameStart()"
+            startingLineNumber = "290"
+            endingLineNumber = "290"
+            landmarkName = "GameController::onEnterDebug()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2640,12 +2638,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Controllers/GameController.cpp"
-            timestampString = "450694958.699459"
+            timestampString = "450873821.869408"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "183"
             endingLineNumber = "183"
-            landmarkName = "GameController::getPlayerPos()"
+            landmarkName = "GameController::getEnemiesGenerator()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2656,12 +2654,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Controllers/GameController.cpp"
-            timestampString = "450694958.699459"
+            timestampString = "450873821.869408"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "182"
             endingLineNumber = "182"
-            landmarkName = "GameController::getPlayerPos()"
+            landmarkName = "GameController::getEnemiesGenerator()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2736,12 +2734,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Controllers/GameController.cpp"
-            timestampString = "450700086.482436"
+            timestampString = "450890898.152486"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "266"
-            endingLineNumber = "266"
-            landmarkName = "GameController::onExitPause()"
+            startingLineNumber = "264"
+            endingLineNumber = "264"
+            landmarkName = "GameController::onEnterGame()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2870,6 +2868,102 @@
             startingLineNumber = "81"
             endingLineNumber = "81"
             landmarkName = "Logo::endShatter()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../cocos2d/cocos/renderer/CCRenderer.cpp"
+            timestampString = "450858902.966297"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "598"
+            endingLineNumber = "598"
+            landmarkName = "Renderer::visitRenderQueue(RenderQueue&amp; queue)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../cocos2d/cocos/2d/CCProtectedNode.cpp"
+            timestampString = "450859459.587178"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "274"
+            endingLineNumber = "274"
+            landmarkName = "ProtectedNode::visit(Renderer* renderer, const Mat4 &amp;parentTransform, uint32_t parentFlags)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/Actors/Enemies.cpp"
+            timestampString = "450872188.726395"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "86"
+            endingLineNumber = "86"
+            landmarkName = "Circle::Circle()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/Actors/Enemies.cpp"
+            timestampString = "450872213.068186"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "79"
+            endingLineNumber = "79"
+            landmarkName = "Enemy::beginTrack()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/UI/MenuUI.cpp"
+            timestampString = "450890496.785064"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "114"
+            endingLineNumber = "114"
+            landmarkName = "MenuUI::pressPlayGameBtn(Ref* p,TouchEventType eventType)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/UI/MenuUI.cpp"
+            timestampString = "450890526.45239"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "115"
+            endingLineNumber = "115"
+            landmarkName = "MenuUI::pressPlayGameBtn(Ref* p,TouchEventType eventType)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

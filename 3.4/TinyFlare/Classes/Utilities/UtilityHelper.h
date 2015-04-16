@@ -14,6 +14,8 @@
 class UtilityHelper
 {
 public:
+    static std::string getLocalString(const char* key);
+    static void screenshot(const std::string& fileName,const std::function<void(const std::string&)>& callback);
     static bool checkCircleIntersectWithSegment(const cocos2d::Vec2& center, float radius, const cocos2d::Vec2& start, const cocos2d::Vec2& end);
 };
 

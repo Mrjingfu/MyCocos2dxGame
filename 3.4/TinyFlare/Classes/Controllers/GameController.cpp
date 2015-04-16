@@ -26,12 +26,17 @@ GameController::GameController()
 {
     m_pMainLayer        = nullptr;
     m_pGameLayer        = nullptr;
+    m_pUILayer          = nullptr;
     m_pPlayer           = nullptr;
     m_pTwoJoysticks     = nullptr;
     m_pActorCamera      = nullptr;
     m_BoundSize         = Size(2048, 1536);
     m_pEnemiesGenerator = nullptr;
     m_curGameState      = GS_UNKNOWN;
+    m_bDebugMode        = false;
+    m_fRespawnTime      = 0.0f;
+    
+    m_pMenuUI           = nullptr;
 }
 GameController::~GameController()
 {
@@ -47,6 +52,12 @@ bool GameController::init(Layer* pMainLayer)
         return false;
     m_pGameLayer->setAnchorPoint(Vec2::ZERO);
     m_pMainLayer->addChild(m_pGameLayer);
+    
+    m_pUILayer = Layer::create();
+    if(!m_pUILayer)
+        return false;
+    m_pUILayer->setGlobalZOrder(1);
+    m_pMainLayer->addChild(m_pUILayer);
     
     ParticleSystemHelper::spawnExplosion(ExplosionType::ET_EXPLOSION_STARFIELD, Vec2::ZERO);
     
@@ -69,7 +80,8 @@ bool GameController::init(Layer* pMainLayer)
     m_pActorCamera->setPositionZ(640.0f);
     m_pActorCamera->setCameraFlag(CameraFlag::USER1);
     
-    setGameState(GS_DEBUG);
+    //setGameState(GS_DEBUG);
+    setGameState(GS_MENU);
     
     return true;
 }
@@ -90,7 +102,7 @@ void GameController::update(float delta)
     }
     ActorsManager::getInstance()->update(delta);
     
-    if(m_curGameState == GameState::GS_PAUSE)
+    if(m_bDebugMode && m_curGameState == GameState::GS_PAUSE)
     {
         if(m_fRespawnTime > 0)
         {
@@ -113,11 +125,11 @@ void GameController::setGameState(GameState state)
         return;
     ///处理上一个状态退出逻辑
     switch (m_curGameState) {
-        case GameState::GS_SPLASH:
-            onExitSplash();
-            break;
         case GameState::GS_MENU:
             onExitMenu();
+            break;
+        case GameState::GS_LEVEL_FROZEN:
+            onExitLevelFrozen();
             break;
         case GameState::GS_GAME:
             onExitGame();
@@ -135,11 +147,11 @@ void GameController::setGameState(GameState state)
     m_curGameState = state;
     ///处理下一个状态进入逻辑
     switch (m_curGameState) {
-        case GameState::GS_SPLASH:
-            onEnterSplash();
-            break;
         case GameState::GS_MENU:
             onEnterMenu();
+            break;
+        case GameState::GS_LEVEL_FROZEN:
+            onEnterLevelFrozen();
             break;
         case GameState::GS_GAME:
             onEnterGame();
@@ -154,7 +166,6 @@ void GameController::setGameState(GameState state)
             break;
     }
 }
-
 
 Player* GameController::getPlayer() const
 {
@@ -235,26 +246,27 @@ void GameController::checkBounce(GameActor* actor)
     if(bounced)
         actor->setVelocity(velocity);
 }
-void GameController::onEnterSplash()
-{
-}
-void GameController::onExitSplash()
-{
-}
-
 void GameController::onEnterMenu()
 {
+    menuStart();
 }
 void GameController::onExitMenu()
 {
+    menuEnd();
 }
-
+void GameController::onEnterLevelFrozen()
+{
+}
+void GameController::onExitLevelFrozen()
+{
+}
 void GameController::onEnterGame()
 {
-    
+    gameStart();
 }
 void GameController::onExitGame()
 {
+    gameEnd();
 }
 
 void GameController::onEnterPause()
@@ -268,15 +280,16 @@ void GameController::onExitPause()
 
 void GameController::onEnterDebug()
 {
+    m_bDebugMode    = true;
     gameStart();
     if(m_pEnemiesGenerator)
     {
-        m_pEnemiesGenerator->generateEnemiesByTime(Enemy::ET_STAR_COLORED, 3.0f);
-        //m_pEnemiesGenerator->generateEnemiesByTime(Enemy::ET_CIRCLE, 13.0f);
+        //m_pEnemiesGenerator->generateEnemiesByTime(Enemy::ET_STAR_COLORED, 3.0f);
+        //m_pEnemiesGenerator->generateEnemiesByTime(Enemy::ET_CIRCLE, 3.0f);
         //m_pEnemiesGenerator->generateEnemiesByNum(Enemy::ET_HEXAGON_COLORED, 5.0f, 10);
         //m_pEnemiesGenerator->generateEnemiesByTime(Enemy::ET_TRIANGLE, 7.0f);
-        m_pEnemiesGenerator->generateEnemiesByTime(Enemy::ET_DIAMOND, 5.0f);
-        //m_pEnemiesGenerator->generateEnemiesByNum(Enemy::ET_CIRCLE_COLORED, 15.0f, 1);
+        //m_pEnemiesGenerator->generateEnemiesByTime(Enemy::ET_DIAMOND, 5.0f);
+        m_pEnemiesGenerator->generateEnemiesByNum(Enemy::ET_CIRCLE_COLORED, 5.0f, 1);
         //m_pEnemiesGenerator->generateEnemiesByTime(Enemy::ET_TRIANGLE_COLORED, 20.0f, 1);
         //m_pEnemiesGenerator->generateEnemiesByNum(Enemy::ET_DIAMOND_COLORED, 25.0f, 1);
     }
@@ -285,7 +298,17 @@ void GameController::onExitDebug()
 {
     gameEnd();
 }
-
+void GameController::menuStart()
+{
+    m_pMenuUI = MenuUI::create();
+    m_pMenuUI->setCascadeColorEnabled(true);
+    m_pUILayer->addChild(m_pMenuUI);
+}
+void GameController::menuEnd()
+{
+    m_pMenuUI->removeFromParentAndCleanup(true);
+    m_pMenuUI = nullptr;
+}
 void GameController::gameStart()
 {
     m_pEnemiesGenerator = EnemiesGenerator::create();
@@ -320,6 +343,7 @@ void GameController::gameStart()
     m_pMainLayer->addChild(m_pTwoJoysticks);
     
     SimpleAudioEngine::getInstance()->playBackgroundMusic("Flux2.mp3");
+    SimpleAudioEngine::getInstance()->setBackgroundMusicVolume(0.5f);
 }
 
 void GameController::gamePause()

@@ -90,8 +90,8 @@ Enemy* ActorsManager::spawnEnemy(Enemy::EnemyType enemyType, const Vec2& pos, co
                     if(ActorsManager::getInstance()->getEnemyActorPause())
                         enemy->pauseScheduler();
                     
-                    EaseSineOut* easeOut1 = EaseSineOut::create(ScaleTo::create(1.5f, 0.8f));
-                    EaseSineOut* easeOut2 = EaseSineOut::create(FadeIn::create(1.5f));
+                    EaseSineOut* easeOut1 = EaseSineOut::create(ScaleTo::create(0.5f, 0.8f));
+                    EaseSineOut* easeOut2 = EaseSineOut::create(FadeIn::create(0.5f));
                     
                     Spawn* spawn = Spawn::createWithTwoActions(easeOut1, easeOut2);
                     DelayTime* delay = DelayTime::create(0.2f);

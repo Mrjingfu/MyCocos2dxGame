@@ -49,7 +49,7 @@ bool Logo::init()
     m_pLogo->setScale(scale);
     addChild(m_pLogo);
     
-    EaseSineOut* easeOut = EaseSineOut::create(FadeIn::create(1.5f));
+    EaseSineOut* easeOut = EaseSineOut::create(FadeIn::create(1.0f));
     DelayTime* delay = DelayTime::create(1.0f);
     CallFunc* callFunc = CallFunc::create(CC_CALLBACK_0(Logo::beginShatter, this));
     

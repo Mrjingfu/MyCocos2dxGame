@@ -13,9 +13,9 @@
 #include "TwoJoysticks.h"
 #include "Player.h"
 #include "EnemiesGenerator.h"
+#include "MenuUI.h"
 typedef enum {
-    GS_SPLASH = 0,
-    GS_MENU,
+    GS_MENU = 0,
     GS_LEVEL_FROZEN,
     GS_GAME,
     GS_PAUSE,
@@ -46,12 +46,13 @@ public:
     cocos2d::Vec2 getPlayerOrientation();
     
     void checkBounce(GameActor* actor);
+
 private:
-    void onEnterSplash();
-    void onExitSplash();
-    
     void onEnterMenu();
     void onExitMenu();
+    
+    void onEnterLevelFrozen();
+    void onExitLevelFrozen();
     
     void onEnterGame();
     void onExitGame();
@@ -62,11 +63,15 @@ private:
     void onEnterDebug();
     void onExitDebug();
     
+    void menuStart();
+    void menuEnd();
+    
     void gameStart();
     void gamePause();
     void gameEnd();
 private:
     cocos2d::Layer*     m_pGameLayer;
+    cocos2d::Layer*     m_pUILayer;
     EnemiesGenerator*   m_pEnemiesGenerator;
     cocos2d::Camera*    m_pActorCamera;
     TwoJoysticks*       m_pTwoJoysticks;
@@ -75,7 +80,10 @@ private:
     GameState           m_curGameState;
     cocos2d::Size       m_BoundSize;
     
+    bool                m_bDebugMode;
     float               m_fRespawnTime;
+    
+    MenuUI*             m_pMenuUI;
 };
 
 
