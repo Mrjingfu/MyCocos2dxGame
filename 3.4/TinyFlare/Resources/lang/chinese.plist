@@ -6,5 +6,7 @@
 	<string>Space Geometry War</string>
 	<key>PRESS_BEGIN</key>
 	<string>点击这里开始！</string>
+	<key>STAGE</key>
+	<string>阶段 </string>
 </dict>
 </plist>

@@ -28,11 +28,14 @@ Player::Player()
     m_pShadowNode = nullptr;
     m_pMultiNode  = nullptr;
     m_pProtectedNode = nullptr;
+    m_fAccelTime     = 0.0f;
     m_fProtectedTime = 0.0f;
     m_fMultiTime     = 0.0f;
     m_fSlowTime      = 0.0f;
     m_fFireDelta     = 0.5f;
     m_nBoomBulletNum = 8;
+    
+    m_pPlayerListener = nullptr;
 }
 Player::~Player()
 {
@@ -49,6 +52,13 @@ void Player::onExit()
 }
 void Player::updateBuffer(float delta)
 {
+    if(m_nBufferType & BufferType::BT_ACCEL)
+    {
+        if(m_fAccelTime > 0.0f)
+            m_fAccelTime -= delta/_scheduler->getTimeScale();
+        else
+            removeBuffer(BufferType::BT_ACCEL);
+    }
     if(m_nBufferType & BufferType::BT_MULTI)
     {
         if(m_fMultiTime > 0.0f)
@@ -142,17 +152,17 @@ void Player::addBuffer(BufferType type)
     SimpleAudioEngine::getInstance()->playEffect("Pickup_GemBells14.wav");
     m_nBufferType |= type;
     if(type == BT_ACCEL)
-        m_fFireDelta = 0.5f*(powf(0.8f, EncrytionUtility::getIntegerForKey("AccelLevel", 1)));
+    {
+        beginAccel();
+    }
     if(type == BT_MULTI)
     {
         removeMulti();
-        m_fMultiTime = 15.0f*(powf(1.1f, EncrytionUtility::getIntegerForKey("MultiLevel", 1)));
         beginMulti();
     }
     if(type == BT_PROTECTED)
     {
         removeProtected();
-        m_fProtectedTime = 10.0f*(powf(1.1f, EncrytionUtility::getIntegerForKey("ProtectedLevel", 1)));
         beginProtected();
     }
     if(type == BT_BOOM)
@@ -168,46 +178,26 @@ void Player::addBuffer(BufferType type)
     }
     if(type == BT_TIME)
     {
-        ParticleSystemHelper::spawnExplosion(ET_EXPLOSION_FLARE, getPosition());
-        m_fSlowTime = 8.0f*(powf(1.1f, EncrytionUtility::getIntegerForKey("SlowLevel", 1)));
-        ActorsManager::getInstance()->setEnemyActorPause(true);
-        _scheduler->setTimeScale(0.3f);
-
-        if(m_bScheduledFire)
-        {
-            unschedule(CC_SCHEDULE_SELECTOR(Player::fire));
-            schedule(CC_SCHEDULE_SELECTOR(Player::fire), m_fFireDelta*_scheduler->getTimeScale(), -1, 0);
-            m_bScheduledFire = true;
-        }
-        SimpleAudioEngine::getInstance()->playEffect("Pickup_Speed02.wav");
+        beginTime();
     }
 }
 void Player::removeBuffer(BufferType type)
 {
     if(type == BT_ACCEL)
-        m_fFireDelta = 0.5f;
+    {
+        endAccel();
+    }
     if(type == BT_MULTI)
     {
         endMulti();
-        m_fMultiTime = 0.0f;
     }
     if(type == BT_PROTECTED)
     {
         endProtected();
-        m_fProtectedTime = 0.0f;
     }
     if(type == BT_TIME)
     {
-        m_fSlowTime = 0.0f;
-        ActorsManager::getInstance()->setEnemyActorPause(false);
-        _scheduler->setTimeScale(1.0f);
-        if(m_bScheduledFire)
-        {
-            unschedule(CC_SCHEDULE_SELECTOR(Player::fire));
-            schedule(CC_SCHEDULE_SELECTOR(Player::fire), m_fFireDelta*_scheduler->getTimeScale(), -1, 0);
-            m_bScheduledFire = true;
-        }
-        SimpleAudioEngine::getInstance()->playEffect("Pickup_Speed03.wav");
+        endTime();
     }
     m_nBufferType = m_nBufferType&~type;
 }
@@ -216,7 +206,7 @@ void Player::beginShadow()
     m_pShadowNode = Node::create();
     if(m_pShadowNode && m_pModel && m_pMaskModel)
     {
-        auto shadowModel = Sprite::createWithTexture(m_pModel->getTexture());
+        auto shadowModel = Sprite::createWithTexture(((Sprite*)m_pModel)->getTexture());
         if(shadowModel)
         {
             shadowModel->setBlendFunc(BlendFunc::ADDITIVE);
@@ -256,8 +246,25 @@ void Player::endShadow()
     }
     setActorState(ActorState::AS_UNDERCONTROL);
 }
+
+void Player::beginAccel()
+{
+    m_fFireDelta = 0.5f*(powf(0.8f, EncrytionUtility::getIntegerForKey("AccelLevel", 1)));
+    m_fAccelTime = 15.0f*(powf(1.1f, EncrytionUtility::getIntegerForKey("EffectTimeLevel", 1)));
+    if(m_pPlayerListener)
+        m_pPlayerListener->onBeginAccel(m_fAccelTime);
+}
+void Player::endAccel()
+{
+    m_fFireDelta = 0.5f;
+    m_fAccelTime = 0.0f;
+    if(m_pPlayerListener)
+        m_pPlayerListener->onEndAccel();
+}
+
 void Player::beginMulti()
 {
+    m_fMultiTime = 15.0f*(powf(1.1f, EncrytionUtility::getIntegerForKey("EffectTimeLevel", 1)));
     m_pMultiNode = Sprite::create("playermask2.png");
     if(m_pMultiNode == nullptr)
         CCLOGERROR("Load multi model playermask2.png failed!");
@@ -270,9 +277,13 @@ void Player::beginMulti()
     Spawn* spawn = Spawn::createWithTwoActions(scaleTo, fadeIn);
     m_pMultiNode->runAction(spawn);
     m_pMultiNode->setCameraMask((unsigned short)CameraFlag::USER1);
+    
+    if(m_pPlayerListener)
+        m_pPlayerListener->onBeginMulti(m_fMultiTime);
 }
 void Player::endMulti()
 {
+    m_fMultiTime = 0.0f;
     if(m_pMultiNode)
     {
         m_pMultiNode->stopAllActions();
@@ -282,6 +293,9 @@ void Player::endMulti()
         CallFunc* callFunc = CallFunc::create(CC_CALLBACK_0(Player::removeMulti,this));
         Sequence* sequence = Sequence::createWithTwoActions(spawn, callFunc);
         m_pMultiNode->runAction(sequence);
+        
+        if(m_pPlayerListener)
+            m_pPlayerListener->onEndMulti();
     }
 }
 void Player::removeMulti()
@@ -294,6 +308,7 @@ void Player::removeMulti()
 }
 void Player::beginProtected()
 {
+    m_fProtectedTime = 10.0f*(powf(1.1f, EncrytionUtility::getIntegerForKey("EffectTimeLevel", 1)));
     m_pProtectedNode = Sprite::create("protected.png");
     if(m_pProtectedNode == nullptr)
         CCLOGERROR("Load multi model protected.png failed!");
@@ -306,9 +321,13 @@ void Player::beginProtected()
     Spawn* spawn = Spawn::createWithTwoActions(scaleTo, fadeIn);
     m_pProtectedNode->runAction(spawn);
     m_pProtectedNode->setCameraMask((unsigned short)CameraFlag::USER1);
+    
+    if(m_pPlayerListener)
+        m_pPlayerListener->onBeginProtected(m_fProtectedTime);
 }
 void Player::endProtected()
 {
+    m_fProtectedTime = 0.0f;
     if(m_pProtectedNode)
     {
         m_pProtectedNode->stopAllActions();
@@ -318,6 +337,9 @@ void Player::endProtected()
         CallFunc* callFunc = CallFunc::create(CC_CALLBACK_0(Player::removeProtected,this));
         Sequence* sequence = Sequence::createWithTwoActions(spawn, callFunc);
         m_pProtectedNode->runAction(sequence);
+        
+        if(m_pPlayerListener)
+            m_pPlayerListener->onEndProtected();
     }
 }
 void Player::removeProtected()
@@ -328,6 +350,41 @@ void Player::removeProtected()
         m_pProtectedNode = nullptr;
     }
 }
+
+void Player::beginTime()
+{
+    ParticleSystemHelper::spawnExplosion(ET_EXPLOSION_FLARE, getPosition());
+    m_fSlowTime = 8.0f*(powf(1.1f, EncrytionUtility::getIntegerForKey("EffectTimeLevel", 1)));
+    ActorsManager::getInstance()->setEnemyActorPause(true);
+    _scheduler->setTimeScale(0.3f);
+    
+    if(m_bScheduledFire)
+    {
+        unschedule(CC_SCHEDULE_SELECTOR(Player::fire));
+        schedule(CC_SCHEDULE_SELECTOR(Player::fire), m_fFireDelta*_scheduler->getTimeScale(), -1, 0);
+        m_bScheduledFire = true;
+    }
+    SimpleAudioEngine::getInstance()->playEffect("Pickup_Speed02.wav");
+    if(m_pPlayerListener)
+        m_pPlayerListener->onBeginTime(m_fSlowTime);
+}
+void Player::endTime()
+{
+    m_fSlowTime = 0.0f;
+    ActorsManager::getInstance()->setEnemyActorPause(false);
+    _scheduler->setTimeScale(1.0f);
+    if(m_bScheduledFire)
+    {
+        unschedule(CC_SCHEDULE_SELECTOR(Player::fire));
+        schedule(CC_SCHEDULE_SELECTOR(Player::fire), m_fFireDelta*_scheduler->getTimeScale(), -1, 0);
+        m_bScheduledFire = true;
+    }
+    SimpleAudioEngine::getInstance()->playEffect("Pickup_Speed03.wav");
+    if(m_pPlayerListener)
+        m_pPlayerListener->onEndTime();
+}
+
+
 void Player::onJoystickUpdateDirection(TwoJoysticks* joystick, const cocos2d::Vec2& dir)
 {
     if(m_curState != ActorState::AS_UNDERCONTROL)

@@ -198,11 +198,23 @@
 		55D878AC1AD3C76000442E32 /* playermask2.png in Resources */ = {isa = PBXBuildFile; fileRef = 55D8789A1AD3A81D00442E32 /* playermask2.png */; };
 		55D878AD1AD3C76000442E32 /* protected.png in Resources */ = {isa = PBXBuildFile; fileRef = 55D8789B1AD3A81D00442E32 /* protected.png */; };
 		55D878AE1AD3C76000442E32 /* time.png in Resources */ = {isa = PBXBuildFile; fileRef = 55D8789C1AD3A81D00442E32 /* time.png */; };
+		55E4EAA11AE63F1D00AA4BEF /* pause.png in Resources */ = {isa = PBXBuildFile; fileRef = 55E4EAA01AE63F1D00AA4BEF /* pause.png */; };
+		55E4EAA21AE63F2D00AA4BEF /* pause.png in Resources */ = {isa = PBXBuildFile; fileRef = 55E4EAA01AE63F1D00AA4BEF /* pause.png */; };
 		55E6B2CB1AC56E0800E30B90 /* light.png in Resources */ = {isa = PBXBuildFile; fileRef = 55E6B2C61AC56E0800E30B90 /* light.png */; };
 		55E6B2CC1AC56E0800E30B90 /* mask.png in Resources */ = {isa = PBXBuildFile; fileRef = 55E6B2C71AC56E0800E30B90 /* mask.png */; };
 		55E6B2CD1AC56E0800E30B90 /* mask2.png in Resources */ = {isa = PBXBuildFile; fileRef = 55E6B2C81AC56E0800E30B90 /* mask2.png */; };
 		55E6B2CE1AC56E0800E30B90 /* noise.png in Resources */ = {isa = PBXBuildFile; fileRef = 55E6B2C91AC56E0800E30B90 /* noise.png */; };
 		55E6B2CF1AC56E0800E30B90 /* noise2.png in Resources */ = {isa = PBXBuildFile; fileRef = 55E6B2CA1AC56E0800E30B90 /* noise2.png */; };
+		55F2E5521AE49B6700E49BD4 /* MainUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55F2E5501AE49B6700E49BD4 /* MainUI.cpp */; };
+		55F2E5531AE49BA800E49BD4 /* MainUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55F2E5501AE49B6700E49BD4 /* MainUI.cpp */; };
+		55F2E5571AE49E4800E49BD4 /* BufferContainer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55F2E5551AE49E4800E49BD4 /* BufferContainer.cpp */; };
+		55F2E5581AE4DFD800E49BD4 /* BufferContainer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55F2E5551AE49E4800E49BD4 /* BufferContainer.cpp */; };
+		55F2E55A1AE50E4E00E49BD4 /* diamonditem.png in Resources */ = {isa = PBXBuildFile; fileRef = 55F2E5591AE50E4E00E49BD4 /* diamonditem.png */; };
+		55F2E55B1AE50E6200E49BD4 /* diamonditem.png in Resources */ = {isa = PBXBuildFile; fileRef = 55F2E5591AE50E4E00E49BD4 /* diamonditem.png */; };
+		55F2E55D1AE5375C00E49BD4 /* magicfire.plist in Resources */ = {isa = PBXBuildFile; fileRef = 55F2E55C1AE5375C00E49BD4 /* magicfire.plist */; };
+		55F2E55E1AE5379100E49BD4 /* magicfire.plist in Resources */ = {isa = PBXBuildFile; fileRef = 55F2E55C1AE5375C00E49BD4 /* magicfire.plist */; };
+		55F2E5611AE5388F00E49BD4 /* Stardust.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55F2E55F1AE5388F00E49BD4 /* Stardust.cpp */; };
+		55F2E5621AE538AD00E49BD4 /* Stardust.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55F2E55F1AE5388F00E49BD4 /* Stardust.cpp */; };
 		55FEC88D1AB698D600F39535 /* TwoJoysticks.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55FEC88B1AB698D600F39535 /* TwoJoysticks.cpp */; };
 		55FEC8901AB6F79900F39535 /* playermask.png in Resources */ = {isa = PBXBuildFile; fileRef = 55FEC88E1AB6F79900F39535 /* playermask.png */; };
 		55FEC8911AB6F79900F39535 /* playermain.png in Resources */ = {isa = PBXBuildFile; fileRef = 55FEC88F1AB6F79900F39535 /* playermain.png */; };
@@ -388,11 +400,20 @@
 		55D8789C1AD3A81D00442E32 /* time.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = time.png; sourceTree = "<group>"; };
 		55D878A41AD3AD2D00442E32 /* Item.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Item.cpp; sourceTree = "<group>"; };
 		55D878A51AD3AD2D00442E32 /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Item.h; sourceTree = "<group>"; };
+		55E4EAA01AE63F1D00AA4BEF /* pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pause.png; sourceTree = "<group>"; };
 		55E6B2C61AC56E0800E30B90 /* light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = light.png; sourceTree = "<group>"; };
 		55E6B2C71AC56E0800E30B90 /* mask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mask.png; sourceTree = "<group>"; };
 		55E6B2C81AC56E0800E30B90 /* mask2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mask2.png; sourceTree = "<group>"; };
 		55E6B2C91AC56E0800E30B90 /* noise.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noise.png; sourceTree = "<group>"; };
 		55E6B2CA1AC56E0800E30B90 /* noise2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noise2.png; sourceTree = "<group>"; };
+		55F2E5501AE49B6700E49BD4 /* MainUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MainUI.cpp; sourceTree = "<group>"; };
+		55F2E5511AE49B6700E49BD4 /* MainUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainUI.h; sourceTree = "<group>"; };
+		55F2E5551AE49E4800E49BD4 /* BufferContainer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BufferContainer.cpp; sourceTree = "<group>"; };
+		55F2E5561AE49E4800E49BD4 /* BufferContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BufferContainer.h; sourceTree = "<group>"; };
+		55F2E5591AE50E4E00E49BD4 /* diamonditem.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = diamonditem.png; sourceTree = "<group>"; };
+		55F2E55C1AE5375C00E49BD4 /* magicfire.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = magicfire.plist; sourceTree = "<group>"; };
+		55F2E55F1AE5388F00E49BD4 /* Stardust.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Stardust.cpp; sourceTree = "<group>"; };
+		55F2E5601AE5388F00E49BD4 /* Stardust.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Stardust.h; sourceTree = "<group>"; };
 		55FEC88B1AB698D600F39535 /* TwoJoysticks.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TwoJoysticks.cpp; sourceTree = "<group>"; };
 		55FEC88C1AB698D600F39535 /* TwoJoysticks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwoJoysticks.h; sourceTree = "<group>"; };
 		55FEC88E1AB6F79900F39535 /* playermask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = playermask.png; sourceTree = "<group>"; };
@@ -599,6 +620,7 @@
 		5515DA421AB8197400CD018F /* particles */ = {
 			isa = PBXGroup;
 			children = (
+				55F2E55C1AE5375C00E49BD4 /* magicfire.plist */,
 				554A27811ADBF0390074B541 /* flare.plist */,
 				552DF7951AD7E71600A9E63E /* starfield.plist */,
 				559C57701AD566B200AE5B20 /* clearexplosion.plist */,
@@ -638,6 +660,10 @@
 			children = (
 				5539EF4D1ADEAD28007E52D6 /* MenuUI.cpp */,
 				5539EF4E1ADEAD28007E52D6 /* MenuUI.h */,
+				55F2E5501AE49B6700E49BD4 /* MainUI.cpp */,
+				55F2E5511AE49B6700E49BD4 /* MainUI.h */,
+				55F2E5551AE49E4800E49BD4 /* BufferContainer.cpp */,
+				55F2E5561AE49E4800E49BD4 /* BufferContainer.h */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -645,6 +671,8 @@
 		555B81481AB13B8800E9B69C /* textures */ = {
 			isa = PBXGroup;
 			children = (
+				55E4EAA01AE63F1D00AA4BEF /* pause.png */,
+				55F2E5591AE50E4E00E49BD4 /* diamonditem.png */,
 				5578711E1AE00399008770F5 /* help.png */,
 				5578711F1AE00399008770F5 /* rank.png */,
 				557871201AE00399008770F5 /* share.png */,
@@ -696,6 +724,8 @@
 				552CB56A1AC97BFE0071DA60 /* Laser.h */,
 				55D878A41AD3AD2D00442E32 /* Item.cpp */,
 				55D878A51AD3AD2D00442E32 /* Item.h */,
+				55F2E55F1AE5388F00E49BD4 /* Stardust.cpp */,
+				55F2E5601AE5388F00E49BD4 /* Stardust.h */,
 			);
 			path = Actors;
 			sourceTree = "<group>";
@@ -927,6 +957,7 @@
 				5585C1D21AB9A76700B694FD /* tail.plist in Resources */,
 				557871111ADFB996008770F5 /* v5prophit.fnt in Resources */,
 				552CB5601AC8FF090071DA60 /* laser.fsh in Resources */,
+				55F2E55D1AE5375C00E49BD4 /* magicfire.plist in Resources */,
 				555B81A91AB1518500E9B69C /* joystick2.png in Resources */,
 				5585C1CB1AB9858B00B694FD /* collisionexplosion.plist in Resources */,
 				5087E78317EB970100C73F5D /* Icon-152.png in Resources */,
@@ -946,6 +977,7 @@
 				5087E78517EB970100C73F5D /* Icon-72.png in Resources */,
 				521A8E6519F0C34300D177D7 /* Default-736h@3x.png in Resources */,
 				50EF62A317ECD613001EB2F8 /* Icon-50.png in Resources */,
+				55E4EAA11AE63F1D00AA4BEF /* pause.png in Resources */,
 				5087E78017EB970100C73F5D /* Icon-114.png in Resources */,
 				55D878A21AD3A81D00442E32 /* protected.png in Resources */,
 				5584ED5A1ADCEA9700C793EB /* Pickup_GemBells14.wav in Resources */,
@@ -972,6 +1004,7 @@
 				5584ED571ADCEA9700C793EB /* LaserRifle_Shot04.wav in Resources */,
 				559C57711AD566B200AE5B20 /* clearexplosion.plist in Resources */,
 				5584ED531ADCEA9700C793EB /* explodeEffect.mp3 in Resources */,
+				55F2E55A1AE50E4E00E49BD4 /* diamonditem.png in Resources */,
 				55E6B2CD1AC56E0800E30B90 /* mask2.png in Resources */,
 				5584ED381ADCDB4E00C793EB /* logo.png in Resources */,
 				55D878A11AD3A81D00442E32 /* playermask2.png in Resources */,
@@ -989,6 +1022,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55E4EAA21AE63F2D00AA4BEF /* pause.png in Resources */,
+				55F2E55E1AE5379100E49BD4 /* magicfire.plist in Resources */,
+				55F2E55B1AE50E6200E49BD4 /* diamonditem.png in Resources */,
 				557871241AE0047F008770F5 /* help.png in Resources */,
 				557871251AE0047F008770F5 /* rank.png in Resources */,
 				557871261AE0047F008770F5 /* share.png in Resources */,
@@ -1063,10 +1099,13 @@
 				552CB56B1AC97BFE0071DA60 /* Laser.cpp in Sources */,
 				46880B8819C43A87006E1F66 /* AppDelegate.cpp in Sources */,
 				552CB5551AC8F4440071DA60 /* LaserSprite.cpp in Sources */,
+				55F2E5521AE49B6700E49BD4 /* MainUI.cpp in Sources */,
 				555B81721AB13DDC00E9B69C /* Bullet.cpp in Sources */,
 				555B81741AB13DDC00E9B69C /* GameActor.cpp in Sources */,
 				555B81731AB13DDC00E9B69C /* Enemies.cpp in Sources */,
 				5584ED761ADD4A0A00C793EB /* ShatterSprite.cpp in Sources */,
+				55F2E5611AE5388F00E49BD4 /* Stardust.cpp in Sources */,
+				55F2E5571AE49E4800E49BD4 /* BufferContainer.cpp in Sources */,
 				55FEC88D1AB698D600F39535 /* TwoJoysticks.cpp in Sources */,
 				552985E81AC0056E00159D23 /* EnemiesGenerator.cpp in Sources */,
 				555B81671AB13D9E00E9B69C /* ActorsManager.cpp in Sources */,
@@ -1092,6 +1131,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55F2E5621AE538AD00E49BD4 /* Stardust.cpp in Sources */,
+				55F2E5581AE4DFD800E49BD4 /* BufferContainer.cpp in Sources */,
+				55F2E5531AE49BA800E49BD4 /* MainUI.cpp in Sources */,
 				5539EF501ADEAD50007E52D6 /* MenuUI.cpp in Sources */,
 				5584ED771ADD50F100C793EB /* ShatterAction.cpp in Sources */,
 				5584ED781ADD50F100C793EB /* ShatterSprite.cpp in Sources */,

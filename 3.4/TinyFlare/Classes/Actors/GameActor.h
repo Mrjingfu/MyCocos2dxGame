@@ -116,7 +116,7 @@ public:
     virtual void resumeScheduler(void);
     virtual void pauseScheduler(void);
 protected:
-    cocos2d::Sprite*    m_pModel;
+    cocos2d::Node*      m_pModel;
     cocos2d::Vec2       m_Direction;            ///指示移动方向
     cocos2d::Vec2       m_Orientation;          ///朝向
     float               m_fAccel;               ///加速度

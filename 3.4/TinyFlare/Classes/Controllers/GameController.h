@@ -14,6 +14,7 @@
 #include "Player.h"
 #include "EnemiesGenerator.h"
 #include "MenuUI.h"
+#include "MainUI.h"
 typedef enum {
     GS_MENU = 0,
     GS_LEVEL_FROZEN,
@@ -84,6 +85,7 @@ private:
     float               m_fRespawnTime;
     
     MenuUI*             m_pMenuUI;
+    MainUI*             m_pMainUI;
 };
 
 

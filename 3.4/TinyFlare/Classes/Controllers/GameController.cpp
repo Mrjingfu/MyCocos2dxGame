@@ -301,7 +301,6 @@ void GameController::onExitDebug()
 void GameController::menuStart()
 {
     m_pMenuUI = MenuUI::create();
-    m_pMenuUI->setCascadeColorEnabled(true);
     m_pUILayer->addChild(m_pMenuUI);
 }
 void GameController::menuEnd()
@@ -311,6 +310,9 @@ void GameController::menuEnd()
 }
 void GameController::gameStart()
 {
+    m_pMainUI = MainUI::create();
+    m_pUILayer->addChild(m_pMainUI);
+    
     m_pEnemiesGenerator = EnemiesGenerator::create();
     if(m_pEnemiesGenerator)
         m_pMainLayer->addChild(m_pEnemiesGenerator);
@@ -322,6 +324,7 @@ void GameController::gameStart()
     m_pPlayer->loadMaskModel("playermask.png");
     m_pPlayer->setCascadeOpacityEnabled(true);
     m_pPlayer->setOpacity(0);
+    m_pPlayer->setPlayerListener(m_pMainUI);
     m_pGameLayer->addChild(m_pPlayer);
     
     ParticleSystemHelper::spawnExplosion(ExplosionType::ET_EXPLOSION_ACTOR_RESPAWN, Vec2::ZERO);
@@ -344,6 +347,22 @@ void GameController::gameStart()
     
     SimpleAudioEngine::getInstance()->playBackgroundMusic("Flux2.mp3");
     SimpleAudioEngine::getInstance()->setBackgroundMusicVolume(0.5f);
+    
+    
+    ActorsManager::getInstance()->spawnItem(Item::IT_ACCEL, Vec2(100,100));
+    ActorsManager::getInstance()->spawnItem(Item::IT_MULTI, Vec2(200,100));
+    ActorsManager::getInstance()->spawnItem(Item::IT_PROTETED, Vec2(-100,100));
+    ActorsManager::getInstance()->spawnItem(Item::IT_TIME, Vec2(-200,100));
+    
+    ActorsManager::getInstance()->spawnItem(Item::IT_ACCEL, Vec2(100,200));
+    ActorsManager::getInstance()->spawnItem(Item::IT_MULTI, Vec2(200,200));
+    ActorsManager::getInstance()->spawnItem(Item::IT_PROTETED, Vec2(-100,200));
+    ActorsManager::getInstance()->spawnItem(Item::IT_TIME, Vec2(-200,200));
+    
+    ActorsManager::getInstance()->spawnItem(Item::IT_ACCEL, Vec2(100,300));
+    ActorsManager::getInstance()->spawnItem(Item::IT_MULTI, Vec2(200,300));
+    ActorsManager::getInstance()->spawnItem(Item::IT_PROTETED, Vec2(-100,300));
+    ActorsManager::getInstance()->spawnItem(Item::IT_TIME, Vec2(-200,300));
 }
 
 void GameController::gamePause()
@@ -358,6 +377,7 @@ void GameController::gameEnd()
     }
     if(m_pPlayer)
     {
+        m_pPlayer->setPlayerListener(nullptr);
         m_pPlayer->removeFromParentAndCleanup(true);
         m_pPlayer = nullptr;
     }
@@ -367,4 +387,7 @@ void GameController::gameEnd()
         m_pTwoJoysticks = nullptr;
     }
     SimpleAudioEngine::getInstance()->stopBackgroundMusic();
+    
+    m_pMainUI->removeFromParentAndCleanup(true);
+    m_pMainUI = nullptr;
 }

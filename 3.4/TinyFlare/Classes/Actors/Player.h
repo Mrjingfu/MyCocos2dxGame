@@ -12,6 +12,21 @@
 #include "GameActor.h"
 #include "TwoJoysticks.h"
 #include "ChaosNumber.h"
+class PlayerListener
+{
+public:
+    virtual void onBeginAccel(float time) = 0;
+    virtual void onEndAccel() = 0;
+    
+    virtual void onBeginMulti(float time) = 0;
+    virtual void onEndMulti() = 0;
+    
+    virtual void onBeginProtected(float time) = 0;
+    virtual void onEndProtected() = 0;
+    
+    virtual void onBeginTime(float time) = 0;
+    virtual void onEndTime() = 0;
+};
 class Player : public GameActor, public JoystickLeftListener, public JoystickRightListener
 {
 public:
@@ -29,14 +44,24 @@ public:
     void addBuffer(BufferType type);
     void removeBuffer(BufferType type);
     
+    void setPlayerListener(PlayerListener* listener) { m_pPlayerListener = listener; }
+    
     void beginShadow();
     void endShadow();
+    
+    void beginAccel();
+    void endAccel();
+    
     void beginMulti();
     void endMulti();
     void removeMulti();
+    
     void beginProtected();
     void endProtected();
     void removeProtected();
+    
+    void beginTime();
+    void endTime();
     
     void onJoystickUpdateDirection(TwoJoysticks* joystick, const cocos2d::Vec2& dir);
     void onJoystickUpdateOrientation(TwoJoysticks* joystick, const cocos2d::Vec2& dir);
@@ -62,11 +87,14 @@ private:
     cocos2d::Node*                  m_pShadowNode;
     cocos2d::Sprite*                m_pMultiNode;
     cocos2d::Sprite*                m_pProtectedNode;
+    float                           m_fAccelTime;
     float                           m_fProtectedTime;
     float                           m_fMultiTime;
     float                           m_fSlowTime;
     float                           m_fFireDelta;
     CChaosNumber                    m_nBoomBulletNum;
+    
+    PlayerListener*                 m_pPlayerListener;
 };
 
 #endif /* defined(__Geometry_Wars__Player__) */

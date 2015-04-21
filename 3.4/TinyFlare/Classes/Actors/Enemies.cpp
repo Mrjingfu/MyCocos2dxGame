@@ -92,9 +92,19 @@ Circle::~Circle()
 void Circle::onEnterDead()
 {
     ParticleSystemHelper::spawnExplosion(ExplosionType::ET_EXPLOSION_WHITE, getPosition());
-    AlisaMethod* am = AlisaMethod::createWithOnePercent(0.02f*EncrytionUtility::getIntegerForKey("DropLevel", 1));
-    if(am && am->getRandomIndex() == 0)
-        ActorsManager::getInstance()->spawnItem(Item::IT_MULTI, getPosition());
+    float percent1 = 0.02f*EncrytionUtility::getIntegerForKey("ItemDropLevel", 1);
+    float percent2 = 0.02f*EncrytionUtility::getIntegerForKey("StardustDropLevel", 1);
+    float percent3 = 1.0f - percent1 -percent2;
+    AlisaMethod* am = AlisaMethod::create(percent1,percent2,percent3, -1.0f, NULL);
+    if(am)
+    {
+        int index = am->getRandomIndex();
+        if(index == 0)
+            ActorsManager::getInstance()->spawnItem(Item::IT_MULTI, getPosition());
+        else if(index == 1)
+            ActorsManager::getInstance()->spawnStardust(Stardust::ST_SMALL, getPosition());
+    }
+    
     SimpleAudioEngine::getInstance()->playEffect("explodeEffect.mp3");
 }
 
@@ -112,9 +122,20 @@ void ColorCircle::onEnterDead()
 {
     ParticleSystemHelper::spawnExplosion(ExplosionType::ET_EXPLOSION_WHITE, getPosition());
     GameController::getInstance()->getEnemiesGenerator()->generateEnemiesByExplosion(Enemy::ET_CIRCLE, getPosition(), 6);
-    AlisaMethod* am = AlisaMethod::createWithOnePercent(0.15f*EncrytionUtility::getIntegerForKey("DropLevel", 1));
-    if(am && am->getRandomIndex() == 0)
-        ActorsManager::getInstance()->spawnItem(Item::IT_MULTI, getPosition());
+    
+    float percent1 = 0.15f*EncrytionUtility::getIntegerForKey("ItemDropLevel", 1);
+    float percent2 = 0.02f*EncrytionUtility::getIntegerForKey("StardustDropLevel", 1);;
+    float percent3 = 1.0f - percent1 - percent2;
+    AlisaMethod* am = AlisaMethod::create(percent1,percent2,percent3, -1.0f, NULL);
+    if(am)
+    {
+        int index = am->getRandomIndex();
+        if(index == 0)
+            ActorsManager::getInstance()->spawnItem(Item::IT_MULTI, getPosition());
+        else if(index == 1)
+            ActorsManager::getInstance()->spawnStardust(Stardust::ST_LARGE, getPosition());
+    }
+
     SimpleAudioEngine::getInstance()->playEffect("explodeEffect.mp3");
 }
 
@@ -131,9 +152,18 @@ Triangle::~Triangle()
 void Triangle::onEnterDead()
 {
     ParticleSystemHelper::spawnExplosion(ExplosionType::ET_EXPLOSION_YELLOW, getPosition());
-    AlisaMethod* am = AlisaMethod::createWithOnePercent(0.02f*EncrytionUtility::getIntegerForKey("DropLevel", 1));
-    if(am && am->getRandomIndex() == 0)
-        ActorsManager::getInstance()->spawnItem(Item::IT_ACCEL, getPosition());
+    float percent1 = 0.02f*EncrytionUtility::getIntegerForKey("ItemDropLevel", 1);
+    float percent2 = 0.02f*EncrytionUtility::getIntegerForKey("StardustDropLevel", 1);;
+    float percent3 = 1.0f - percent1 -percent2;
+    AlisaMethod* am = AlisaMethod::create(percent1,percent2,percent3, -1.0f, NULL);
+    if(am)
+    {
+        int index = am->getRandomIndex();
+        if(index == 0)
+            ActorsManager::getInstance()->spawnItem(Item::IT_ACCEL, getPosition());
+        else if(index == 1)
+            ActorsManager::getInstance()->spawnStardust(Stardust::ST_SMALL, getPosition());
+    }
     SimpleAudioEngine::getInstance()->playEffect("explodeEffect.mp3");
 }
 void Triangle::beginTrack()
@@ -247,9 +277,18 @@ void ColorTriangle::onExitCharge()
 void ColorTriangle::onEnterDead()
 {
     ParticleSystemHelper::spawnExplosion(ExplosionType::ET_EXPLOSION_YELLOW, getPosition());
-    AlisaMethod* am = AlisaMethod::createWithOnePercent(0.15f*EncrytionUtility::getIntegerForKey("DropLevel", 1));
-    if(am && am->getRandomIndex() == 0)
-        ActorsManager::getInstance()->spawnItem(Item::IT_ACCEL, getPosition());
+    float percent1 = 0.15f*EncrytionUtility::getIntegerForKey("ItemDropLevel", 1);
+    float percent2 = 0.02f*EncrytionUtility::getIntegerForKey("StardustDropLevel", 1);;
+    float percent3 = 1.0f - percent1 -percent2;
+    AlisaMethod* am = AlisaMethod::create(percent1,percent2,percent3, -1.0f, NULL);
+    if(am)
+    {
+        int index = am->getRandomIndex();
+        if(index == 0)
+            ActorsManager::getInstance()->spawnItem(Item::IT_ACCEL, getPosition());
+        else if(index == 1)
+            ActorsManager::getInstance()->spawnStardust(Stardust::ST_LARGE, getPosition());
+    }
     SimpleAudioEngine::getInstance()->playEffect("explodeEffect.mp3");
 }
 ///躲避攻击，射击发射子弹
@@ -276,9 +315,18 @@ void Diamond::beginTrack()
 void Diamond::onEnterDead()
 {
     ParticleSystemHelper::spawnExplosion(ExplosionType::ET_EXPLOSION_GREEN, getPosition());
-    AlisaMethod* am = AlisaMethod::createWithOnePercent(0.02f*EncrytionUtility::getIntegerForKey("DropLevel", 50));
-    if(am && am->getRandomIndex() == 0)
-        ActorsManager::getInstance()->spawnItem(Item::IT_TIME, getPosition());
+    float percent1 = 0.02f*EncrytionUtility::getIntegerForKey("ItemDropLevel", 1);
+    float percent2 = 0.02f*EncrytionUtility::getIntegerForKey("StardustDropLevel", 1);;
+    float percent3 = 1.0f - percent1 -percent2;
+    AlisaMethod* am = AlisaMethod::create(percent1,percent2,percent3, -1.0f, NULL);
+    if(am)
+    {
+        int index = am->getRandomIndex();
+        if(index == 0)
+            ActorsManager::getInstance()->spawnItem(Item::IT_TIME, getPosition());
+        else if(index == 1)
+            ActorsManager::getInstance()->spawnStardust(Stardust::ST_SMALL, getPosition());
+    }
     SimpleAudioEngine::getInstance()->playEffect("explodeEffect.mp3");
 }
 void Diamond::onEnterTrack()
@@ -435,9 +483,18 @@ void ColorDiamond::fire(float delta)
 void ColorDiamond::onEnterDead()
 {
     ParticleSystemHelper::spawnExplosion(ExplosionType::ET_EXPLOSION_GREEN, getPosition());
-    AlisaMethod* am = AlisaMethod::createWithOnePercent(0.15f*EncrytionUtility::getIntegerForKey("DropLevel", 1));
-    if(am && am->getRandomIndex() == 0)
-        ActorsManager::getInstance()->spawnItem(Item::IT_TIME, getPosition());
+    float percent1 = 0.15f*EncrytionUtility::getIntegerForKey("ItemDropLevel", 1);
+    float percent2 = 0.02f*EncrytionUtility::getIntegerForKey("StardustDropLevel", 1);;
+    float percent3 = 1.0f - percent1 -percent2;
+    AlisaMethod* am = AlisaMethod::create(percent1,percent2,percent3, -1.0f, NULL);
+    if(am)
+    {
+        int index = am->getRandomIndex();
+        if(index == 0)
+            ActorsManager::getInstance()->spawnItem(Item::IT_TIME, getPosition());
+        else if(index == 1)
+            ActorsManager::getInstance()->spawnStardust(Stardust::ST_LARGE, getPosition());
+    }
     SimpleAudioEngine::getInstance()->playEffect("explodeEffect.mp3");
 }
 ///慢速追踪，五星旋转弹幕
@@ -539,9 +596,18 @@ void Star::onExitTrack()
 void Star::onEnterDead()
 {
     ParticleSystemHelper::spawnExplosion(ExplosionType::ET_EXPLOSION_BLUE, getPosition());
-    AlisaMethod* am = AlisaMethod::createWithOnePercent(0.02f*EncrytionUtility::getIntegerForKey("DropLevel", 50));
-    if(am && am->getRandomIndex() == 0)
-        ActorsManager::getInstance()->spawnItem(Item::IT_PROTETED, getPosition());
+    float percent1 = 0.02f*EncrytionUtility::getIntegerForKey("ItemDropLevel", 1);
+    float percent2 = 0.02f*EncrytionUtility::getIntegerForKey("StardustDropLevel", 1);;
+    float percent3 = 1.0f - percent1 -percent2;
+    AlisaMethod* am = AlisaMethod::create(percent1,percent2,percent3, -1.0f, NULL);
+    if(am)
+    {
+        int index = am->getRandomIndex();
+        if(index == 0)
+            ActorsManager::getInstance()->spawnItem(Item::IT_PROTETED, getPosition());
+        else if(index == 1)
+            ActorsManager::getInstance()->spawnStardust(Stardust::ST_SMALL, getPosition());
+    }
     SimpleAudioEngine::getInstance()->playEffect("explodeEffect.mp3");
 }
 void Star::beginTrack()
@@ -676,9 +742,18 @@ void ColorStar::onExitIdle()
 void ColorStar::onEnterDead()
 {
     ParticleSystemHelper::spawnExplosion(ExplosionType::ET_EXPLOSION_BLUE, getPosition());
-    AlisaMethod* am = AlisaMethod::createWithOnePercent(0.15f*EncrytionUtility::getIntegerForKey("DropLevel", 1));
-    if(am && am->getRandomIndex() == 0)
-        ActorsManager::getInstance()->spawnItem(Item::IT_PROTETED, getPosition());
+    float percent1 = 0.15f*EncrytionUtility::getIntegerForKey("ItemDropLevel", 1);
+    float percent2 = 0.02f*EncrytionUtility::getIntegerForKey("StardustDropLevel", 1);;
+    float percent3 = 1.0f - percent1 -percent2;
+    AlisaMethod* am = AlisaMethod::create(percent1,percent2,percent3, -1.0f, NULL);
+    if(am)
+    {
+        int index = am->getRandomIndex();
+        if(index == 0)
+            ActorsManager::getInstance()->spawnItem(Item::IT_PROTETED, getPosition());
+        else if(index == 1)
+            ActorsManager::getInstance()->spawnStardust(Stardust::ST_LARGE, getPosition());
+    }
     Vec3 min = Vec3(-getRadius(), -getRadius(), -0.5f) + getPosition3D();
     Vec3 max = Vec3(getRadius(), getRadius(), 0.5f) + getPosition3D();
     AABB aabb = AABB(min, max);
@@ -887,9 +962,18 @@ void Hexagon::onExitCharge()
 void Hexagon::onEnterDead()
 {
     ParticleSystemHelper::spawnExplosion(ExplosionType::ET_EXPLOSION_ORANGE, getPosition());
-    AlisaMethod* am = AlisaMethod::createWithOnePercent(0.02f*EncrytionUtility::getIntegerForKey("DropLevel", 1));
-    if(am && am->getRandomIndex() == 0)
-        ActorsManager::getInstance()->spawnItem(Item::IT_BOOM, getPosition());
+    float percent1 = 0.02f*EncrytionUtility::getIntegerForKey("ItemDropLevel", 1);
+    float percent2 = 0.02f*EncrytionUtility::getIntegerForKey("StardustDropLevel", 1);;
+    float percent3 = 1.0f - percent1 -percent2;
+    AlisaMethod* am = AlisaMethod::create(percent1,percent2,percent3, -1.0f, NULL);
+    if(am)
+    {
+        int index = am->getRandomIndex();
+        if(index == 0)
+            ActorsManager::getInstance()->spawnItem(Item::IT_BOOM, getPosition());
+        else if(index == 1)
+            ActorsManager::getInstance()->spawnStardust(Stardust::ST_SMALL, getPosition());
+    }
     SimpleAudioEngine::getInstance()->playEffect("explodeEffect.mp3");
 }
 void Hexagon::beginTrack()
@@ -1005,9 +1089,19 @@ void ColorHexagon::onEnterDead()
         m_pBlackHole->stopSystem();
         m_pBlackHole->release();
     }
-    AlisaMethod* am = AlisaMethod::createWithOnePercent(0.15f*EncrytionUtility::getIntegerForKey("DropLevel", 1));
-    if(am && am->getRandomIndex() == 0)
-        ActorsManager::getInstance()->spawnItem(Item::IT_BOOM, getPosition());
+    float percent1 = 0.15f*EncrytionUtility::getIntegerForKey("ItemDropLevel", 1);
+    float percent2 = 0.02f*EncrytionUtility::getIntegerForKey("StardustDropLevel", 1);;
+    float percent3 = 1.0f - percent1 -percent2;
+    AlisaMethod* am = AlisaMethod::create(percent1,percent2,percent3, -1.0f, NULL);
+    if(am)
+    {
+        int index = am->getRandomIndex();
+        if(index == 0)
+            ActorsManager::getInstance()->spawnItem(Item::IT_BOOM, getPosition());
+        else if(index == 1)
+            ActorsManager::getInstance()->spawnStardust(Stardust::ST_LARGE, getPosition());
+    }
+
     SimpleAudioEngine::getInstance()->playEffect("explodeEffect.mp3");
 }
 void ColorHexagon::beginTrack()

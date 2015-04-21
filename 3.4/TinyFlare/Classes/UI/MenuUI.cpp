@@ -40,6 +40,7 @@ bool MenuUI::init()
 {
     bool ret = ui::Layout::init();
     auto size = Director::getInstance()->getVisibleSize();
+    float scale = size.height/640.0f;
     m_pMenuBg = ui::ImageView::create("menubg.png");
     if(!m_pMenuBg)
         return false;
@@ -56,7 +57,7 @@ bool MenuUI::init()
     m_pMenuBg->runAction(spawn);
     
     m_pGameTitle = ui::TextBMFont::create(UtilityHelper::getLocalString("GAME_NAME"), "v5prophit.fnt");
-    m_pGameTitle->setScale(0.45f, 0.6f);
+    m_pGameTitle->setScale(0.45f*scale, 0.6f*scale);
     m_pGameTitle->setPosition(Vec2(size.width*1.5f, size.height*0.65f));
     addChild(m_pGameTitle);
     
@@ -89,23 +90,22 @@ bool MenuUI::init()
     RepeatForever* repeat = RepeatForever::create(sequence3);
     m_pPlayText->runAction(repeat);
     
-    float scale = 256.0f/size.height;
     m_pRankBtn = ui::Button::create("rank.png");
     m_pRankBtn->addTouchEventListener(CC_CALLBACK_2(MenuUI::pressRankBtn, this));
-    m_pRankBtn->setPosition(Vec2(size.width*0.80f, size.height*0.1f));
-    m_pRankBtn->setScale(scale);
+    m_pRankBtn->setPosition(Vec2(size.width*0.8f, size.height*0.1f));
+    m_pRankBtn->setScale(0.4f*scale);
     addChild(m_pRankBtn);
     
     m_pShareBtn = ui::Button::create("share.png");
     m_pShareBtn->addTouchEventListener(CC_CALLBACK_2(MenuUI::pressShareBtn, this));
-    m_pShareBtn->setPosition(Vec2(size.width*0.80f + m_pRankBtn->getContentSize().width*0.5f, size.height*0.1f));
-    m_pShareBtn->setScale(scale);
+    m_pShareBtn->setPosition(Vec2(size.width*0.8f + m_pRankBtn->getContentSize().width*0.5f*scale, size.height*0.1f));
+    m_pShareBtn->setScale(0.4f*scale);
     addChild(m_pShareBtn);
     
     m_pHelpBtn = ui::Button::create("help.png");
     m_pHelpBtn->addTouchEventListener(CC_CALLBACK_2(MenuUI::pressHelpBtn, this));
-    m_pHelpBtn->setPosition(Vec2(size.width*0.80f + m_pShareBtn->getContentSize().width, size.height*0.1f));
-    m_pHelpBtn->setScale(scale);
+    m_pHelpBtn->setPosition(Vec2(size.width*0.8f + m_pShareBtn->getContentSize().width*scale, size.height*0.1f));
+    m_pHelpBtn->setScale(0.4f*scale);
     addChild(m_pHelpBtn);
     return ret;
 }

@@ -19,6 +19,7 @@ AlisaMethod* AlisaMethod::createWithOnePercent(float percent)
     return ret;
 
 }
+///必须用-1.0f结尾
 AlisaMethod* AlisaMethod::create(float percent1, ...)
 {
     va_list params;
@@ -109,7 +110,7 @@ bool AlisaMethod::initWithPercentVariableList(float percent1, va_list args)
     while (1)
     {
         float nextPercent = va_arg(args, double);
-        if (nextPercent < 1.0f)
+        if (nextPercent < 1.0f && nextPercent >= 0.0f)
         {
             total += nextPercent;
             percentArray.push_back(nextPercent);
@@ -180,7 +181,7 @@ void AlisaMethod::printAlisaArray()
     CCLOG("\n");
 }
 ///test
-//AlisaMethod* am = AlisaMethod::create(0.1f,0.2f,0.3f,0.4f,NULL);
+//AlisaMethod* am = AlisaMethod::create(0.1f,0.2f,0.3f,0.4f,-1.0f,NULL);
 //if(am)
 //{
 //    am->printProbArray();

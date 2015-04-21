@@ -14,6 +14,7 @@
 #include "Enemies.h"
 #include "Laser.h"
 #include "Item.h"
+#include "Stardust.h"
 class ActorsManager : public cocos2d::Ref
 {
     ActorsManager();
@@ -28,6 +29,8 @@ public:
     static Laser* spawnLaser(const cocos2d::Vec2& start, const cocos2d::Vec2& end);
     
     static Item* spawnItem(Item::ItemType type, const cocos2d::Vec2& pos);
+    
+    static Stardust* spawnStardust(Stardust::StardustType type, const cocos2d::Vec2& pos);
     
     bool init(cocos2d::Layer* gameLayer);
     void update(float delta);
@@ -45,6 +48,9 @@ public:
     void eraseItem(Item* item);
     void eraseItem(int i);
     
+    void eraseStardust(Stardust* stardust);
+    void eraseStardust(int i);
+    
     void setEnemyActorPause(bool pause);
     bool getEnemyActorPause() const;
     
@@ -54,6 +60,7 @@ private:
     cocos2d::Vector<Enemy*>                 m_Enemies;
     cocos2d::Vector<Laser*>                 m_Lasers;
     cocos2d::Vector<Item*>                  m_Items;
+    cocos2d::Vector<Stardust*>              m_Stardusts;
     cocos2d::Layer*                         m_pActorLayer;
     
     bool                                    m_bEnemyActorPause;

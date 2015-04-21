@@ -509,6 +509,36 @@ Item* ActorsManager::spawnItem(Item::ItemType type, const Vec2& pos)
         CC_SAFE_DELETE(item);
     return item;
 }
+Stardust* ActorsManager::spawnStardust(Stardust::StardustType type, const cocos2d::Vec2& pos)
+{
+    Stardust* stardust = new(std::nothrow) Stardust();
+    if (stardust) {
+        stardust->loadModel("magicfire.plist");
+        switch (type) {
+            case Stardust::ST_SMALL:
+                stardust->setScale(0.3f);
+                break;
+            case Stardust::ST_LARGE:
+                stardust->setScale(0.6f);
+                break;
+            default:
+                break;
+        }
+        stardust->setCascadeOpacityEnabled(true);
+        stardust->setStardustType(type);
+        stardust->setPosition(pos);
+        stardust->setActorState(ActorState::AS_IDLE);
+        ActorsManager::getInstance()->m_Stardusts.pushBack(stardust);
+        ActorsManager::getInstance()->m_pActorLayer->addChild(stardust);
+        ActorsManager::getInstance()->m_pActorLayer->setCameraMask((unsigned short)CameraFlag::USER1);
+        stardust->autorelease();
+    }
+    else
+        CC_SAFE_DELETE(stardust);
+    return stardust;
+
+}
+
 bool ActorsManager::init(cocos2d::Layer* gameLayer)
 {
     if(!gameLayer)
@@ -688,7 +718,19 @@ void ActorsManager::update(float delta)
             }
         }
     }
-
+    
+    //CCLOG("Current Stardust number %zd", m_Stardusts.size());
+    for (ssize_t i = 0; i<m_Stardusts.size(); ++i) {
+        Stardust* stardust = m_Stardusts.at(i);
+        if(stardust)
+        {
+            if(stardust->getActorState() == ActorState::AS_DEAD)
+            {
+                eraseStardust(stardust);
+                continue;
+            }
+        }
+    }
 }
 void ActorsManager::destroy()
 {
@@ -697,6 +739,7 @@ void ActorsManager::destroy()
     m_Enemies.clear();
     m_Lasers.clear();
     m_Items.clear();
+    m_Stardusts.clear();
 }
 void ActorsManager::eraseBullet(Bullet* bullet)
 {
@@ -759,6 +802,22 @@ void ActorsManager::eraseItem(int i)
     item->removeFromParentAndCleanup(true);
     item = nullptr;
 }
+void ActorsManager::eraseStardust(Stardust* stardust)
+{
+    if(!stardust)
+        return;
+    m_Stardusts.eraseObject(stardust);
+    stardust->removeFromParentAndCleanup(true);
+    stardust = nullptr;
+}
+void ActorsManager::eraseStardust(int i)
+{
+    auto stardust = m_Stardusts.at(i);
+    m_Stardusts.erase(i);
+    stardust->removeFromParentAndCleanup(true);
+    stardust = nullptr;
+}
+
 void ActorsManager::setEnemyActorPause(bool pause)
 {
     m_bEnemyActorPause = pause;
@@ -827,6 +886,17 @@ void ActorsManager::reset()
         }
     }
     m_Items.clear();
+    
+    for (ssize_t i = 0; i<m_Stardusts.size(); ++i) {
+        Stardust* stardust = m_Stardusts.at(i);
+        if(stardust)
+        {
+            stardust->setActorState(ActorState::AS_DEAD);
+            eraseStardust(stardust);
+        }
+    }
+    m_Stardusts.clear();
+    
     if(m_pActorLayer)
         m_pActorLayer->removeAllChildrenWithCleanup(true);
 }
