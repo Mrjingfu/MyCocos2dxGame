@@ -15,6 +15,7 @@
 #include "EnemiesGenerator.h"
 #include "MenuUI.h"
 #include "MainUI.h"
+#include "PauseUI.h"
 typedef enum {
     GS_MENU = 0,
     GS_LEVEL_FROZEN,
@@ -34,6 +35,7 @@ public:
     void update(float delta);
     void destroy();
     
+    GameState getGameState() const;
     void setGameState(GameState state);
     
     Player* getPlayer() const;
@@ -47,6 +49,12 @@ public:
     cocos2d::Vec2 getPlayerOrientation();
     
     void checkBounce(GameActor* actor);
+    
+    void pause();
+    void resume();
+    bool isPaused() const;
+    void pauseStart();
+    void pauseEnd();
 
 private:
     void onEnterMenu();
@@ -68,7 +76,6 @@ private:
     void menuEnd();
     
     void gameStart();
-    void gamePause();
     void gameEnd();
 private:
     cocos2d::Layer*     m_pGameLayer;
@@ -84,8 +91,11 @@ private:
     bool                m_bDebugMode;
     float               m_fRespawnTime;
     
+    bool                m_pPaused;
+    
     MenuUI*             m_pMenuUI;
     MainUI*             m_pMainUI;
+    PauseUI*            m_pPauseUI;
 };
 
 

@@ -35,8 +35,11 @@ GameController::GameController()
     m_curGameState      = GS_UNKNOWN;
     m_bDebugMode        = false;
     m_fRespawnTime      = 0.0f;
+    m_pPaused           = false;
     
     m_pMenuUI           = nullptr;
+    m_pMainUI           = nullptr;
+    m_pPauseUI          = nullptr;
 }
 GameController::~GameController()
 {
@@ -119,6 +122,10 @@ void GameController::destroy()
 {
     ActorsManager::getInstance()->destroy();
 }
+GameState GameController::getGameState() const
+{
+    return m_curGameState;
+}
 void GameController::setGameState(GameState state)
 {
     if (m_curGameState == state)
@@ -132,7 +139,8 @@ void GameController::setGameState(GameState state)
             onExitLevelFrozen();
             break;
         case GameState::GS_GAME:
-            onExitGame();
+            if(!m_pPaused)
+                onExitGame();
             break;
         case GameState::GS_PAUSE:
             onExitPause();
@@ -154,7 +162,8 @@ void GameController::setGameState(GameState state)
             onEnterLevelFrozen();
             break;
         case GameState::GS_GAME:
-            onEnterGame();
+            if(!m_pPaused)
+                onEnterGame();
             break;
         case GameState::GS_PAUSE:
             onEnterPause();
@@ -271,11 +280,16 @@ void GameController::onExitGame()
 
 void GameController::onEnterPause()
 {
-    m_fRespawnTime = 5.0f;
+    if(m_bDebugMode)
+        m_fRespawnTime = 5.0f;
 }
 void GameController::onExitPause()
 {
-    ActorsManager::getInstance()->reset();
+    m_pPauseUI->removeFromParentAndCleanup(true);
+    m_pPauseUI = nullptr;
+    if(m_bDebugMode)
+        ActorsManager::getInstance()->reset();
+    
 }
 
 void GameController::onEnterDebug()
@@ -345,7 +359,7 @@ void GameController::gameStart()
     m_pTwoJoysticks->setJoystickRightListener(m_pPlayer);
     m_pMainLayer->addChild(m_pTwoJoysticks);
     
-    SimpleAudioEngine::getInstance()->playBackgroundMusic("Flux2.mp3");
+    SimpleAudioEngine::getInstance()->playBackgroundMusic("Flux2.mp3", true);
     SimpleAudioEngine::getInstance()->setBackgroundMusicVolume(0.5f);
     
     
@@ -365,9 +379,6 @@ void GameController::gameStart()
     ActorsManager::getInstance()->spawnItem(Item::IT_TIME, Vec2(-200,300));
 }
 
-void GameController::gamePause()
-{
-}
 void GameController::gameEnd()
 {
     if(m_pEnemiesGenerator)
@@ -390,4 +401,41 @@ void GameController::gameEnd()
     
     m_pMainUI->removeFromParentAndCleanup(true);
     m_pMainUI = nullptr;
+}
+void GameController::pause()
+{
+    if (m_curGameState == GS_GAME || m_curGameState == GS_DEBUG) {
+        m_pPaused = true;
+        m_pPauseUI = PauseUI::create();
+        m_pUILayer->addChild(m_pPauseUI);
+        m_pPauseUI->beginToPause();
+    }
+}
+void GameController::resume()
+{
+    Director::getInstance()->resume();
+    if(m_pPauseUI)
+        m_pPauseUI->endToPause();
+}
+bool GameController::isPaused() const
+{
+    return m_pPaused;
+}
+void GameController::pauseStart()
+{
+    Director::getInstance()->pause();
+    if(m_pMainUI)
+        m_pMainUI->onPause();
+    if(m_pTwoJoysticks)
+        m_pTwoJoysticks->setVisible(false);
+    setGameState(GS_PAUSE);
+}
+void GameController::pauseEnd()
+{
+    if(m_pMainUI)
+        m_pMainUI->onResume();
+    if(m_pTwoJoysticks)
+        m_pTwoJoysticks->setVisible(true);
+    setGameState(GS_GAME);
+    m_pPaused = false;
 }

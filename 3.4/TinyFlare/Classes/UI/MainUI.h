@@ -33,6 +33,9 @@ public:
     
     virtual void onBeginTime(float time);
     virtual void onEndTime();
+    
+    void onPause();
+    void onResume();
 private:
     void pressPauseGameBtn(Ref* p,TouchEventType eventType);
     void onKeyReleased(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event *unused_event);

@@ -26,6 +26,7 @@ MenuUI* MenuUI::create()
 MenuUI::MenuUI()
 {
     m_pPlayGameBtn      = nullptr;
+    m_pRemoveADSBtn     = nullptr;
     m_pRankBtn          = nullptr;
     m_pShareBtn         = nullptr;
     m_pHelpBtn          = nullptr;
@@ -38,7 +39,6 @@ MenuUI::~MenuUI()
 }
 bool MenuUI::init()
 {
-    bool ret = ui::Layout::init();
     auto size = Director::getInstance()->getVisibleSize();
     float scale = size.height/640.0f;
     m_pMenuBg = ui::ImageView::create("menubg.png");
@@ -57,7 +57,9 @@ bool MenuUI::init()
     m_pMenuBg->runAction(spawn);
     
     m_pGameTitle = ui::TextBMFont::create(UtilityHelper::getLocalString("GAME_NAME"), "v5prophit.fnt");
-    m_pGameTitle->setScale(0.45f*scale, 0.6f*scale);
+    if(!m_pGameTitle)
+        return false;
+    m_pGameTitle->setScale(0.4f*scale, 0.6f*scale);
     m_pGameTitle->setPosition(Vec2(size.width*1.5f, size.height*0.65f));
     addChild(m_pGameTitle);
     
@@ -67,6 +69,8 @@ bool MenuUI::init()
     m_pGameTitle->runAction(sequence);
     
     m_pPlayGameBtn = ui::Button::create("menubg.png");
+    if(!m_pPlayGameBtn)
+        return false;
     m_pPlayGameBtn->addTouchEventListener(CC_CALLBACK_2(MenuUI::pressPlayGameBtn, this));
     m_pPlayGameBtn->setScale9Enabled(true);
     m_pPlayGameBtn->setCapInsets(Rect(0,2,128,0.5f));
@@ -79,6 +83,8 @@ bool MenuUI::init()
     m_pPlayGameBtn->runAction(sequence2);
     
     m_pPlayText = ui::Text::create(UtilityHelper::getLocalString("PRESS_BEGIN"), "FZXS12.TTF", size.height*0.05f);
+    if(!m_pPlayText)
+        return false;
     m_pPlayText->setPosition(Size(size.width*0.5f,size.height*0.3f));
     m_pPlayText->setOpacity(0);
     m_pPlayText->setColor(Color3B(208,255,208));
@@ -90,29 +96,48 @@ bool MenuUI::init()
     RepeatForever* repeat = RepeatForever::create(sequence3);
     m_pPlayText->runAction(repeat);
     
+    m_pRemoveADSBtn = ui::Button::create("rank.png");
+    if(!m_pRemoveADSBtn)
+        return false;
+    m_pRemoveADSBtn->addTouchEventListener(CC_CALLBACK_2(MenuUI::pressRemoveADSBtn, this));
+    m_pRemoveADSBtn->setPosition(Vec2(size.width - m_pRemoveADSBtn->getContentSize().width*scale*1.4f, size.height*0.1f));
+    m_pRemoveADSBtn->setScale(0.4f*scale);
+    addChild(m_pRemoveADSBtn);
+    
     m_pRankBtn = ui::Button::create("rank.png");
+    if(!m_pRankBtn)
+        return false;
     m_pRankBtn->addTouchEventListener(CC_CALLBACK_2(MenuUI::pressRankBtn, this));
-    m_pRankBtn->setPosition(Vec2(size.width*0.8f, size.height*0.1f));
+    m_pRankBtn->setPosition(Vec2(size.width - m_pRankBtn->getContentSize().width*scale*0.7f, size.height*0.1f));
     m_pRankBtn->setScale(0.4f*scale);
+    m_pRankBtn->setVisible(false);
     addChild(m_pRankBtn);
     
     m_pShareBtn = ui::Button::create("share.png");
+    if(!m_pShareBtn)
+        return false;
     m_pShareBtn->addTouchEventListener(CC_CALLBACK_2(MenuUI::pressShareBtn, this));
-    m_pShareBtn->setPosition(Vec2(size.width*0.8f + m_pRankBtn->getContentSize().width*0.5f*scale, size.height*0.1f));
+    m_pShareBtn->setPosition(Vec2(size.width - m_pShareBtn->getContentSize().width*scale*0.7f, size.height*0.1f));
     m_pShareBtn->setScale(0.4f*scale);
+    m_pShareBtn->setVisible(false);
     addChild(m_pShareBtn);
     
     m_pHelpBtn = ui::Button::create("help.png");
+    if(!m_pHelpBtn)
+        return false;
     m_pHelpBtn->addTouchEventListener(CC_CALLBACK_2(MenuUI::pressHelpBtn, this));
-    m_pHelpBtn->setPosition(Vec2(size.width*0.8f + m_pShareBtn->getContentSize().width*scale, size.height*0.1f));
+    m_pHelpBtn->setPosition(Vec2(size.width - m_pHelpBtn->getContentSize().width*scale*0.7f, size.height*0.1f));
     m_pHelpBtn->setScale(0.4f*scale);
     addChild(m_pHelpBtn);
-    return ret;
+    return true;
 }
 void MenuUI::pressPlayGameBtn(Ref* p,TouchEventType eventType)
 {
     if(eventType == TouchEventType::ENDED)
         GameController::getInstance()->setGameState(GS_GAME);
+}
+void MenuUI::pressRemoveADSBtn(Ref* p,TouchEventType eventType)
+{
 }
 void MenuUI::pressRankBtn(Ref* p,TouchEventType eventType)
 {

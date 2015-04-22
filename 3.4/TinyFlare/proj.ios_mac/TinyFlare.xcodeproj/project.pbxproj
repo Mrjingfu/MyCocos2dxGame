@@ -44,8 +44,6 @@
 		50EF629917ECD46A001EB2F8 /* Icon-100.png in Resources */ = {isa = PBXBuildFile; fileRef = 50EF629517ECD46A001EB2F8 /* Icon-100.png */; };
 		50EF62A217ECD613001EB2F8 /* Icon-29.png in Resources */ = {isa = PBXBuildFile; fileRef = 50EF62A017ECD613001EB2F8 /* Icon-29.png */; };
 		50EF62A317ECD613001EB2F8 /* Icon-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 50EF62A117ECD613001EB2F8 /* Icon-50.png */; };
-		521A8E6419F0C34300D177D7 /* Default-667h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 521A8E6219F0C34300D177D7 /* Default-667h@2x.png */; };
-		521A8E6519F0C34300D177D7 /* Default-736h@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 521A8E6319F0C34300D177D7 /* Default-736h@3x.png */; };
 		52B47A471A53D09C004E4C60 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B47A461A53D09B004E4C60 /* Security.framework */; };
 		5505CA561AD6BDDE002EBFC4 /* ChaosNumber.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 559B966E1AD6ADE20073570C /* ChaosNumber.cpp */; };
 		5505CA571AD6BDDE002EBFC4 /* EncrytionUtility.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 559B96691AD6ABC40073570C /* EncrytionUtility.cpp */; };
@@ -180,6 +178,12 @@
 		559C576E1AD50B4B00AE5B20 /* AlisaMethod.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 559C57691AD4E40C00AE5B20 /* AlisaMethod.cpp */; };
 		559C57711AD566B200AE5B20 /* clearexplosion.plist in Resources */ = {isa = PBXBuildFile; fileRef = 559C57701AD566B200AE5B20 /* clearexplosion.plist */; };
 		559C57721AD566CD00AE5B20 /* clearexplosion.plist in Resources */ = {isa = PBXBuildFile; fileRef = 559C57701AD566B200AE5B20 /* clearexplosion.plist */; };
+		559EF0521AE73AA30038C676 /* PauseUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 559EF0501AE73AA30038C676 /* PauseUI.cpp */; };
+		559EF0591AE73B5A0038C676 /* PauseUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 559EF0501AE73AA30038C676 /* PauseUI.cpp */; };
+		559EF05D1AE7E1000038C676 /* exit.png in Resources */ = {isa = PBXBuildFile; fileRef = 559EF05C1AE7E1000038C676 /* exit.png */; };
+		559EF05E1AE7E1130038C676 /* exit.png in Resources */ = {isa = PBXBuildFile; fileRef = 559EF05C1AE7E1000038C676 /* exit.png */; };
+		559EF0611AE7E6620038C676 /* removeads.png in Resources */ = {isa = PBXBuildFile; fileRef = 559EF0601AE7E6620038C676 /* removeads.png */; };
+		559EF0621AE7E66C0038C676 /* removeads.png in Resources */ = {isa = PBXBuildFile; fileRef = 559EF0601AE7E6620038C676 /* removeads.png */; };
 		55C70E751ACABD4300D06754 /* UtilityHelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55C70E731ACABD4300D06754 /* UtilityHelper.cpp */; };
 		55C70E761ACAC11700D06754 /* UtilityHelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55C70E731ACABD4300D06754 /* UtilityHelper.cpp */; };
 		55D8789D1AD3A81D00442E32 /* accel.png in Resources */ = {isa = PBXBuildFile; fileRef = 55D878961AD3A81D00442E32 /* accel.png */; };
@@ -302,8 +306,6 @@
 		50EF629517ECD46A001EB2F8 /* Icon-100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-100.png"; sourceTree = "<group>"; };
 		50EF62A017ECD613001EB2F8 /* Icon-29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-29.png"; sourceTree = "<group>"; };
 		50EF62A117ECD613001EB2F8 /* Icon-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-50.png"; sourceTree = "<group>"; };
-		521A8E6219F0C34300D177D7 /* Default-667h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-667h@2x.png"; sourceTree = "<group>"; };
-		521A8E6319F0C34300D177D7 /* Default-736h@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-736h@3x.png"; sourceTree = "<group>"; };
 		52B47A461A53D09B004E4C60 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.1.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
 		5515DA431AB8197400CD018F /* explosion.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = explosion.plist; sourceTree = "<group>"; };
 		552985E31ABFB57100159D23 /* colorgeometry.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = colorgeometry.plist; sourceTree = "<group>"; };
@@ -389,6 +391,10 @@
 		559C57691AD4E40C00AE5B20 /* AlisaMethod.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AlisaMethod.cpp; sourceTree = "<group>"; };
 		559C576A1AD4E40C00AE5B20 /* AlisaMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlisaMethod.h; sourceTree = "<group>"; };
 		559C57701AD566B200AE5B20 /* clearexplosion.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = clearexplosion.plist; sourceTree = "<group>"; };
+		559EF0501AE73AA30038C676 /* PauseUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PauseUI.cpp; sourceTree = "<group>"; };
+		559EF0511AE73AA30038C676 /* PauseUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PauseUI.h; sourceTree = "<group>"; };
+		559EF05C1AE7E1000038C676 /* exit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = exit.png; sourceTree = "<group>"; };
+		559EF0601AE7E6620038C676 /* removeads.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = removeads.png; sourceTree = "<group>"; };
 		55C70E731ACABD4300D06754 /* UtilityHelper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UtilityHelper.cpp; sourceTree = "<group>"; };
 		55C70E741ACABD4300D06754 /* UtilityHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UtilityHelper.h; sourceTree = "<group>"; };
 		55D878961AD3A81D00442E32 /* accel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = accel.png; sourceTree = "<group>"; };
@@ -593,8 +599,6 @@
 		5087E77117EB970100C73F5D /* Icons */ = {
 			isa = PBXGroup;
 			children = (
-				521A8E6219F0C34300D177D7 /* Default-667h@2x.png */,
-				521A8E6319F0C34300D177D7 /* Default-736h@3x.png */,
 				5087E77217EB970100C73F5D /* Default-568h@2x.png */,
 				5087E77317EB970100C73F5D /* Default.png */,
 				5087E77417EB970100C73F5D /* Default@2x.png */,
@@ -664,6 +668,8 @@
 				55F2E5511AE49B6700E49BD4 /* MainUI.h */,
 				55F2E5551AE49E4800E49BD4 /* BufferContainer.cpp */,
 				55F2E5561AE49E4800E49BD4 /* BufferContainer.h */,
+				559EF0501AE73AA30038C676 /* PauseUI.cpp */,
+				559EF0511AE73AA30038C676 /* PauseUI.h */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -671,6 +677,8 @@
 		555B81481AB13B8800E9B69C /* textures */ = {
 			isa = PBXGroup;
 			children = (
+				559EF0601AE7E6620038C676 /* removeads.png */,
+				559EF05C1AE7E1000038C676 /* exit.png */,
 				55E4EAA01AE63F1D00AA4BEF /* pause.png */,
 				55F2E5591AE50E4E00E49BD4 /* diamonditem.png */,
 				5578711E1AE00399008770F5 /* help.png */,
@@ -957,6 +965,7 @@
 				5585C1D21AB9A76700B694FD /* tail.plist in Resources */,
 				557871111ADFB996008770F5 /* v5prophit.fnt in Resources */,
 				552CB5601AC8FF090071DA60 /* laser.fsh in Resources */,
+				559EF0611AE7E6620038C676 /* removeads.png in Resources */,
 				55F2E55D1AE5375C00E49BD4 /* magicfire.plist in Resources */,
 				555B81A91AB1518500E9B69C /* joystick2.png in Resources */,
 				5585C1CB1AB9858B00B694FD /* collisionexplosion.plist in Resources */,
@@ -964,6 +973,7 @@
 				555B81581AB13B8800E9B69C /* triangle.png in Resources */,
 				557871191ADFDE51008770F5 /* chinese.plist in Resources */,
 				555B81541AB13B8800E9B69C /* hexagon.png in Resources */,
+				559EF05D1AE7E1000038C676 /* exit.png in Resources */,
 				555B81531AB13B8800E9B69C /* diamond.png in Resources */,
 				555B81571AB13B8800E9B69C /* star.png in Resources */,
 				555B81511AB13B8800E9B69C /* bullet1.png in Resources */,
@@ -975,7 +985,6 @@
 				555B81A61AB1518500E9B69C /* joystick_bg1.png in Resources */,
 				552CB5621AC8FF090071DA60 /* tailEffect.vsh in Resources */,
 				5087E78517EB970100C73F5D /* Icon-72.png in Resources */,
-				521A8E6519F0C34300D177D7 /* Default-736h@3x.png in Resources */,
 				50EF62A317ECD613001EB2F8 /* Icon-50.png in Resources */,
 				55E4EAA11AE63F1D00AA4BEF /* pause.png in Resources */,
 				5087E78017EB970100C73F5D /* Icon-114.png in Resources */,
@@ -1009,7 +1018,6 @@
 				5584ED381ADCDB4E00C793EB /* logo.png in Resources */,
 				55D878A11AD3A81D00442E32 /* playermask2.png in Resources */,
 				555B81C41AB195F300E9B69C /* bg.png in Resources */,
-				521A8E6419F0C34300D177D7 /* Default-667h@2x.png in Resources */,
 				5584ED4E1ADCEA9700C793EB /* Flux2.mp3 in Resources */,
 				50EF629717ECD46A001EB2F8 /* Icon-58.png in Resources */,
 				5584ED5C1ADCEA9700C793EB /* Pickup_Speed02.wav in Resources */,
@@ -1022,6 +1030,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				559EF0621AE7E66C0038C676 /* removeads.png in Resources */,
+				559EF05E1AE7E1130038C676 /* exit.png in Resources */,
 				55E4EAA21AE63F2D00AA4BEF /* pause.png in Resources */,
 				55F2E55E1AE5379100E49BD4 /* magicfire.plist in Resources */,
 				55F2E55B1AE50E6200E49BD4 /* diamonditem.png in Resources */,
@@ -1109,6 +1119,7 @@
 				55FEC88D1AB698D600F39535 /* TwoJoysticks.cpp in Sources */,
 				552985E81AC0056E00159D23 /* EnemiesGenerator.cpp in Sources */,
 				555B81671AB13D9E00E9B69C /* ActorsManager.cpp in Sources */,
+				559EF0521AE73AA30038C676 /* PauseUI.cpp in Sources */,
 				555B81791AB1401400E9B69C /* EnemiesGeneratorHelper.cpp in Sources */,
 				5584ED731ADD49EF00C793EB /* ShatterAction.cpp in Sources */,
 				55C70E751ACABD4300D06754 /* UtilityHelper.cpp in Sources */,
@@ -1131,6 +1142,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				559EF0591AE73B5A0038C676 /* PauseUI.cpp in Sources */,
 				55F2E5621AE538AD00E49BD4 /* Stardust.cpp in Sources */,
 				55F2E5581AE4DFD800E49BD4 /* BufferContainer.cpp in Sources */,
 				55F2E5531AE49BA800E49BD4 /* MainUI.cpp in Sources */,

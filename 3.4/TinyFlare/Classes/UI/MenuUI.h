@@ -21,6 +21,7 @@ public:
     static MenuUI* create();
 private:
     void pressPlayGameBtn(Ref* p,TouchEventType eventType);
+    void pressRemoveADSBtn(Ref* p,TouchEventType eventType);
     void pressRankBtn(Ref* p,TouchEventType eventType);
     void pressShareBtn(Ref* p,TouchEventType eventType);
     void pressHelpBtn(Ref* p,TouchEventType eventType);
@@ -28,6 +29,7 @@ private:
     void onKeyReleased(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event *unused_event);
 private:
     cocos2d::ui::Button*     m_pPlayGameBtn;
+    cocos2d::ui::Button*     m_pRemoveADSBtn;
     cocos2d::ui::Button*     m_pRankBtn;
     cocos2d::ui::Button*     m_pShareBtn;
     cocos2d::ui::Button*     m_pHelpBtn;

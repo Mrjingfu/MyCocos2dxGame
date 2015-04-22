@@ -9,8 +9,8 @@
 #include "MainUI.h"
 #include "EncrytionUtility.h"
 #include "UtilityHelper.h"
+#include "GameController.h"
 USING_NS_CC;
-
 
 MainUI* MainUI::create()
 {
@@ -52,18 +52,21 @@ bool MainUI::init()
     m_pStardust->setScale(0.05f*scale, 0.07f*scale);
     addChild(m_pStardust);
     
-    m_pStardustX = ui::Text::create(" x ", "FZX12.TTF", m_pStardust->getContentSize().height*0.05f*scale);
+    m_pStardustX = ui::Text::create(" x ", "FZXS12.TTF", m_pStardust->getContentSize().height*0.05f*scale);
     if(!m_pStardustX)
         return false;
     m_pStardustX->setPosition(m_pStardust->getPosition() + Vec2(m_pStardust->getContentSize().width*0.05f*scale, 0));
+    m_pStardustX->setAnchorPoint(Vec2(0.5, 0.5f));
+    m_pStardustX->setColor(Color3B(208,255,208));
     addChild(m_pStardustX);
     
     int stardustNum = EncrytionUtility::getIntegerForKey("CurStardustNum", 0);
-    m_pStardustNum = ui::Text::create(Value(stardustNum).asString(), "FZX12.TTF", m_pStardust->getContentSize().height*0.05f*scale);
+    m_pStardustNum = ui::Text::create(Value(stardustNum).asString(), "FZXS12.TTF", m_pStardust->getContentSize().height*0.05f*scale);
     if(!m_pStardustNum)
         return false;
-    m_pStardustNum->setAnchorPoint(Vec2(0, 0.5f));
-    m_pStardustNum->setPosition(m_pStardustX->getPosition() + Vec2(m_pStardustX->getContentSize().width*0.5f, 0));
+    m_pStardustNum->setColor(Color3B(208,255,208));
+    m_pStardustNum->setAnchorPoint(Vec2(0, 0.6f));
+    m_pStardustNum->setPosition(m_pStardustX->getPosition() + Vec2(m_pStardustX->getContentSize().width*0.3f*scale, 0));
     addChild(m_pStardustNum);
     
     m_pBufferContainer = BufferContainer::create();
@@ -119,21 +122,21 @@ bool MainUI::init()
     std::string strStage = UtilityHelper::getLocalString("STAGE");
     Value stageNum = Value(EncrytionUtility::getIntegerForKey("StageNum", 1));
     strStage += stageNum.asString();
-    m_pStageText = ui::Text::create(strStage, "FZX12.TTF", m_pStardust->getContentSize().height*0.08f*scale);
+    m_pStageText = ui::Text::create(strStage, "FZXS12.TTF", m_pStardust->getContentSize().height*0.05f*scale);
     if(!m_pStageText)
         return false;
-    m_pStageText->setPosition(Vec2(size.width*0.75f, size.height*0.5f));
+    m_pStageText->setPosition(Vec2(size.width*0.75f, size.height*0.7f));
     m_pStageText->setColor(Color3B(208,255,208));
     m_pStageText->setOpacity(0);
     addChild(m_pStageText);
     
-    EaseSineIn* easeOut1 = EaseSineIn::create(FadeIn::create(0.5f));
-    EaseSineOut* easeOut2 = EaseSineOut::create(MoveTo::create(0.5f, Vec2(size.width*0.5f, size.height*0.5f)));
-    Spawn* spawn1 = Spawn::createWithTwoActions(easeOut1, easeOut2);
+    EaseSineIn* easeIn = EaseSineIn::create(FadeIn::create(0.5f));
+    EaseSineOut* easeOut1 = EaseSineOut::create(MoveTo::create(0.5f, Vec2(size.width*0.5f, size.height*0.7f)));
+    Spawn* spawn1 = Spawn::createWithTwoActions(easeIn, easeOut1);
     DelayTime* delay = DelayTime::create(1.0f);
-    EaseSineOut* easeOut3 = EaseSineOut::create(FadeOut::create(0.2f));
+    EaseSineOut* easeOut2 = EaseSineOut::create(FadeOut::create(0.2f));
     ScaleTo* scaleTo = ScaleTo::create(0.2f, 2.0f);
-    Spawn* spawn2 = Spawn::createWithTwoActions(easeOut3, scaleTo);
+    Spawn* spawn2 = Spawn::createWithTwoActions(easeOut2, scaleTo);
     Sequence* sequece = Sequence::create(spawn1, delay, spawn2, NULL);
     m_pStageText->runAction(sequece);
     return true;
@@ -142,10 +145,24 @@ bool MainUI::init()
 
 void MainUI::pressPauseGameBtn(Ref* p,TouchEventType eventType)
 {
+    if(eventType == TouchEventType::ENDED)
+    {
+        if(GameController::getInstance()->isPaused())
+            GameController::getInstance()->resume();
+        else
+            GameController::getInstance()->pause();
+    }
 }
 
 void MainUI::onKeyReleased(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event *unused_event)
 {
+    if(keyCode == EventKeyboard::KeyCode::KEY_ESCAPE)
+    {
+        if(GameController::getInstance()->isPaused())
+            GameController::getInstance()->resume();
+        else
+            GameController::getInstance()->pause();
+    }
 }
 void MainUI::setLevelPercent(float percent)
 {
@@ -210,4 +227,26 @@ void MainUI::onEndTime()
     if (m_pBufferContainer) {
         m_pBufferContainer->hideTime();
     }
+}
+void MainUI::onPause()
+{
+    if(m_pLevelProgressBg)
+        m_pLevelProgressBg->setVisible(false);
+    if(m_pLevelProgress)
+        m_pLevelProgress->setVisible(false);
+    if(m_pLevelProgressBar)
+        m_pLevelProgressBar->setVisible(false);
+    if(m_pLevelProgressComplete)
+        m_pLevelProgressComplete->setVisible(false);
+}
+void MainUI::onResume()
+{
+    if(m_pLevelProgressBg)
+        m_pLevelProgressBg->setVisible(true);
+    if(m_pLevelProgress)
+        m_pLevelProgress->setVisible(true);
+    if(m_pLevelProgressBar)
+        m_pLevelProgressBar->setVisible(true);
+    if(m_pLevelProgressComplete)
+        m_pLevelProgressComplete->setVisible(true);
 }
