@@ -8,7 +8,9 @@
 
 #include "PauseUI.h"
 #include "GameController.h"
+#include "SimpleAudioEngine.h"
 USING_NS_CC;
+using namespace CocosDenshion;
 
 PauseUI* PauseUI::create()
 {
@@ -24,7 +26,7 @@ PauseUI* PauseUI::create()
 
 PauseUI::PauseUI()
 {
-    m_pRankBtn      = nullptr;
+    //m_pRankBtn      = nullptr;
     m_pRemoveADSBtn = nullptr;
     m_pHelpBtn      = nullptr;
     m_pBackBtn      = nullptr;
@@ -110,19 +112,32 @@ void PauseUI::endToPause()
         m_pPanelBg->runAction(sequnce);
     }
 }
-void PauseUI::pressRankBtn(Ref* p,TouchEventType eventType)
-{
-}
+//void PauseUI::pressRankBtn(Ref* p,TouchEventType eventType)
+//{
+//        if(eventType == TouchEventType::ENDED)
+//        {
+//            SimpleAudioEngine::getInstance()->playEffect("btnclick.wav");
+//        }
+//}
 void PauseUI::pressRemoveADSBtn(Ref* p,TouchEventType eventType)
 {
+    if(eventType == TouchEventType::ENDED)
+    {
+        SimpleAudioEngine::getInstance()->playEffect("btnclick.wav");
+    }
 }
 void PauseUI::pressHelpBtn(Ref* p,TouchEventType eventType)
 {
+    if(eventType == TouchEventType::ENDED)
+    {
+        SimpleAudioEngine::getInstance()->playEffect("btnclick.wav");
+    }
 }
 void PauseUI::pressBackBtn(Ref* p,TouchEventType eventType)
 {
     if(eventType == TouchEventType::ENDED)
     {
+        SimpleAudioEngine::getInstance()->playEffect("btnclick.wav");
         Director::getInstance()->end();
     }
 }

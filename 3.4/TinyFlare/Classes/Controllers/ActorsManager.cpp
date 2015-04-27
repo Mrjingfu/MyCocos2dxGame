@@ -10,6 +10,7 @@
 #include "GameController.h"
 #include "ParticleSystemHelper.h"
 #include "UtilityHelper.h"
+#include "StageManager.h"
 USING_NS_CC;
 
 ActorsManager* g_pActorsManagerInstance = nullptr;
@@ -618,6 +619,7 @@ void ActorsManager::update(float delta)
                         float dist = enemy->getPosition().distance(bulletPos);
                         if (dist <= enemyRadius) {
                             enemy->setActorState(ActorState::AS_DEAD);
+                            StageManager::getInstance()->addScore(enemy->getScore());
                             eraseEnemy(enemy);
                             eraseBullet(bullet);
                             break;

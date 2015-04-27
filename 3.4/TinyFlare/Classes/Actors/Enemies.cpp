@@ -19,6 +19,7 @@ Enemy::Enemy()
 {
     m_type = AT_ENEMY;
     m_EnemyType = ET_UNKNOWN;
+    m_nScore = 1;
 }
 Enemy::~Enemy()
 {
@@ -85,6 +86,7 @@ Circle::Circle()
     m_EnemyType = ET_CIRCLE;
     m_fAccel = 40.0f;
     m_fMaxSpeed = 2.0f;
+    m_nScore = 1;
 }
 Circle::~Circle()
 {
@@ -114,6 +116,7 @@ ColorCircle::ColorCircle()
     m_EnemyType = ET_CIRCLE_COLORED;
     m_fAccel = cocos2d::random(3.0f, 4.0f);
     m_fMaxSpeed = cocos2d::random(2.0f, 3.0f);
+    m_nScore = 4;
 }
 ColorCircle::~ColorCircle()
 {
@@ -121,7 +124,8 @@ ColorCircle::~ColorCircle()
 void ColorCircle::onEnterDead()
 {
     ParticleSystemHelper::spawnExplosion(ExplosionType::ET_EXPLOSION_WHITE, getPosition());
-    GameController::getInstance()->getEnemiesGenerator()->generateEnemiesByExplosion(Enemy::ET_CIRCLE, getPosition(), 6);
+    if(GameController::getInstance()->getEnemiesGenerator())
+        GameController::getInstance()->getEnemiesGenerator()->generateEnemiesByExplosion(Enemy::ET_CIRCLE, getPosition(), 6);
     
     float percent1 = 0.15f*EncrytionUtility::getIntegerForKey("ItemDropLevel", 1);
     float percent2 = 0.02f*EncrytionUtility::getIntegerForKey("StardustDropLevel", 1);;
@@ -145,6 +149,7 @@ Triangle::Triangle()
     m_EnemyType = ET_TRIANGLE;
     m_fAccel = cocos2d::random(4.0f, 5.0f);
     m_fMaxSpeed = cocos2d::random(2.0f, 3.0f);
+    m_nScore = 2;
 }
 Triangle::~Triangle()
 {
@@ -267,6 +272,7 @@ void ColorTriangle::onEnterCharge()
     setDirection(dir);
     m_fAccel = 100.0f;
     m_fMaxSpeed = 20.0f;
+    m_nScore = 4;
 }
 void ColorTriangle::onExitCharge()
 {
@@ -298,6 +304,7 @@ Diamond::Diamond()
     m_fAccel = cocos2d::random(2.0f, 3.0f);
     m_fMaxSpeed = cocos2d::random(1.0f, 2.0f);
     m_bScheduledFire = false;
+    m_nScore = 3;
 }
 Diamond::~Diamond()
 {
@@ -451,6 +458,7 @@ void Diamond::update(float delta)
 ColorDiamond::ColorDiamond()
 {
     m_EnemyType = ET_DIAMOND_COLORED;
+    m_nScore = 6;
 }
 ColorDiamond::~ColorDiamond()
 {
@@ -504,6 +512,7 @@ Star::Star()
     m_fAccel = 2.0f;
     m_fMaxSpeed = 2.0f;
     m_bScheduledFire = false;
+    m_nScore = 4;
 }
 Star::~Star()
 {
@@ -660,6 +669,7 @@ ColorStar::ColorStar()
     m_pNode3    = nullptr;
     m_pNode4    = nullptr;
     m_pNode5    = nullptr;
+    m_nScore    = 8;
 }
 ColorStar::~ColorStar()
 {
@@ -847,6 +857,7 @@ Hexagon::Hexagon()
     m_fTrackTime = 0.0f;
     m_fIdleTime = 0.0f;
     m_fChargeTime = 0.0f;
+    m_nScore = 5;
 }
 Hexagon::~Hexagon()
 {
@@ -989,6 +1000,7 @@ ColorHexagon::ColorHexagon()
     m_fMaxRadius    = 300.0f;
     m_fMinRadius    = 100.0f;
     m_pBlackHole    = nullptr;
+    m_nScore        = 10;
 }
 ColorHexagon::~ColorHexagon()
 {

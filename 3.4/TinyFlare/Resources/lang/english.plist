@@ -8,5 +8,9 @@
 	<string>PRESS HERE TO BEGIN!</string>
 	<key>STAGE</key>
 	<string>Stage </string>
+	<key>DEAD</key>
+	<string>You are dead!</string>
+	<key>PRESS_CONTINUE</key>
+	<string>PRESS HERE TO CONTINUE!</string>
 </dict>
 </plist>

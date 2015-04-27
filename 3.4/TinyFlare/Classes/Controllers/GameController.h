@@ -16,9 +16,9 @@
 #include "MenuUI.h"
 #include "MainUI.h"
 #include "PauseUI.h"
+#include "DeathUI.h"
 typedef enum {
     GS_MENU = 0,
-    GS_LEVEL_FROZEN,
     GS_GAME,
     GS_PAUSE,
     GS_DEBUG,
@@ -34,6 +34,8 @@ public:
     bool init(cocos2d::Layer* pMainLayer);
     void update(float delta);
     void destroy();
+    
+    void nextStage();
     
     GameState getGameState() const;
     void setGameState(GameState state);
@@ -59,9 +61,6 @@ public:
 private:
     void onEnterMenu();
     void onExitMenu();
-    
-    void onEnterLevelFrozen();
-    void onExitLevelFrozen();
     
     void onEnterGame();
     void onExitGame();
@@ -96,6 +95,7 @@ private:
     MenuUI*             m_pMenuUI;
     MainUI*             m_pMainUI;
     PauseUI*            m_pPauseUI;
+    DeathUI*            m_pDeathUI;
 };
 
 

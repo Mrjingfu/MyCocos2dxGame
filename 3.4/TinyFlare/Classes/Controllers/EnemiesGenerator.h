@@ -52,9 +52,10 @@ private:
     void generateOneEnemyOnRandomPos(cocos2d::Node* node, void* data);
     void generateOneEnemyOnPos(cocos2d::Node* node, void* data);
 public:
-    void generateEnemiesByTime(Enemy::EnemyType type, float durationTime, float lastTime = -1);
-    void generateEnemiesByNum(Enemy::EnemyType type, float durationTime, int num);
+    void generateEnemiesByTime(Enemy::EnemyType type, float durationTime, float delayTime = 0.0f, float lastTime = -1);
+    void generateEnemiesByNum(Enemy::EnemyType type, float durationTime, int num, float delayTime = 0.0f);
     void generateEnemiesByExplosion(Enemy::EnemyType type, const cocos2d::Vec2& pos, int num, float durationTime = -1);
+    void stopGenerateEnemies();
 };
 
 #endif /* defined(__TinyFlare__EnemiesGenerator__) */

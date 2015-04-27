@@ -11,6 +11,8 @@
 #include "LaserSprite.h"
 #include "ParticleSystemHelper.h"
 #include "SimpleAudioEngine.h"
+#include "StageManager.h"
+#include "EncrytionUtility.h"
 USING_NS_CC;
 using namespace CocosDenshion;
 
@@ -40,6 +42,7 @@ GameController::GameController()
     m_pMenuUI           = nullptr;
     m_pMainUI           = nullptr;
     m_pPauseUI          = nullptr;
+    m_pDeathUI          = nullptr;
 }
 GameController::~GameController()
 {
@@ -63,6 +66,8 @@ bool GameController::init(Layer* pMainLayer)
     m_pMainLayer->addChild(m_pUILayer);
     
     ParticleSystemHelper::spawnExplosion(ExplosionType::ET_EXPLOSION_STARFIELD, Vec2::ZERO);
+    if(!StageManager::getInstance()->init())
+        return false;
     
     Sprite* bgSprite = Sprite::create("bg.png");
     if(!bgSprite)
@@ -117,10 +122,23 @@ void GameController::update(float delta)
             }
         }
     }
+    if(m_pMainUI)
+    {
+        m_pMainUI->setLevelPercent(StageManager::getInstance()->getCurrentPercent());
+    }
 }
 void GameController::destroy()
 {
     ActorsManager::getInstance()->destroy();
+}
+void GameController::nextStage()
+{
+    int stage = EncrytionUtility::getIntegerForKey("CurrentStage", 1);
+    if(m_pMainUI)
+    {
+        m_pMainUI->nextStage(stage);
+        StageManager::getInstance()->nextStage(stage);
+    }
 }
 GameState GameController::getGameState() const
 {
@@ -134,9 +152,6 @@ void GameController::setGameState(GameState state)
     switch (m_curGameState) {
         case GameState::GS_MENU:
             onExitMenu();
-            break;
-        case GameState::GS_LEVEL_FROZEN:
-            onExitLevelFrozen();
             break;
         case GameState::GS_GAME:
             if(!m_pPaused)
@@ -157,9 +172,6 @@ void GameController::setGameState(GameState state)
     switch (m_curGameState) {
         case GameState::GS_MENU:
             onEnterMenu();
-            break;
-        case GameState::GS_LEVEL_FROZEN:
-            onEnterLevelFrozen();
             break;
         case GameState::GS_GAME:
             if(!m_pPaused)
@@ -263,12 +275,6 @@ void GameController::onExitMenu()
 {
     menuEnd();
 }
-void GameController::onEnterLevelFrozen()
-{
-}
-void GameController::onExitLevelFrozen()
-{
-}
 void GameController::onEnterGame()
 {
     gameStart();
@@ -280,16 +286,32 @@ void GameController::onExitGame()
 
 void GameController::onEnterPause()
 {
-    if(m_bDebugMode)
-        m_fRespawnTime = 5.0f;
+    if(!m_pPaused)
+    {
+        if(m_bDebugMode)
+            m_fRespawnTime = 5.0f;
+        m_pDeathUI = DeathUI::create();
+        m_pUILayer->addChild(m_pDeathUI);
+    }
 }
 void GameController::onExitPause()
 {
-    m_pPauseUI->removeFromParentAndCleanup(true);
-    m_pPauseUI = nullptr;
-    if(m_bDebugMode)
-        ActorsManager::getInstance()->reset();
-    
+    if(!m_pPaused)
+    {
+        if(m_bDebugMode)
+            ActorsManager::getInstance()->reset();
+        
+        if(m_pDeathUI)
+        {
+            m_pDeathUI->removeFromParentAndCleanup(true);
+            m_pDeathUI = nullptr;
+        }
+    }
+    else
+    {
+        m_pPauseUI->removeFromParentAndCleanup(true);
+        m_pPauseUI = nullptr;
+    }
 }
 
 void GameController::onEnterDebug()
@@ -316,9 +338,12 @@ void GameController::menuStart()
 {
     m_pMenuUI = MenuUI::create();
     m_pUILayer->addChild(m_pMenuUI);
+    SimpleAudioEngine::getInstance()->playBackgroundMusic("Flux1.mp3", true);
+    SimpleAudioEngine::getInstance()->setBackgroundMusicVolume(0.5f);
 }
 void GameController::menuEnd()
 {
+    SimpleAudioEngine::getInstance()->stopBackgroundMusic();
     m_pMenuUI->removeFromParentAndCleanup(true);
     m_pMenuUI = nullptr;
 }
@@ -362,25 +387,12 @@ void GameController::gameStart()
     SimpleAudioEngine::getInstance()->playBackgroundMusic("Flux2.mp3", true);
     SimpleAudioEngine::getInstance()->setBackgroundMusicVolume(0.5f);
     
-    
-    ActorsManager::getInstance()->spawnItem(Item::IT_ACCEL, Vec2(100,100));
-    ActorsManager::getInstance()->spawnItem(Item::IT_MULTI, Vec2(200,100));
-    ActorsManager::getInstance()->spawnItem(Item::IT_PROTETED, Vec2(-100,100));
-    ActorsManager::getInstance()->spawnItem(Item::IT_TIME, Vec2(-200,100));
-    
-    ActorsManager::getInstance()->spawnItem(Item::IT_ACCEL, Vec2(100,200));
-    ActorsManager::getInstance()->spawnItem(Item::IT_MULTI, Vec2(200,200));
-    ActorsManager::getInstance()->spawnItem(Item::IT_PROTETED, Vec2(-100,200));
-    ActorsManager::getInstance()->spawnItem(Item::IT_TIME, Vec2(-200,200));
-    
-    ActorsManager::getInstance()->spawnItem(Item::IT_ACCEL, Vec2(100,300));
-    ActorsManager::getInstance()->spawnItem(Item::IT_MULTI, Vec2(200,300));
-    ActorsManager::getInstance()->spawnItem(Item::IT_PROTETED, Vec2(-100,300));
-    ActorsManager::getInstance()->spawnItem(Item::IT_TIME, Vec2(-200,300));
+    nextStage();
 }
 
 void GameController::gameEnd()
 {
+    StageManager::getInstance()->reset();
     if(m_pEnemiesGenerator)
     {
         m_pEnemiesGenerator->removeFromParentAndCleanup(true);
@@ -392,15 +404,18 @@ void GameController::gameEnd()
         m_pPlayer->removeFromParentAndCleanup(true);
         m_pPlayer = nullptr;
     }
+    ActorsManager::getInstance()->reset();
     if(m_pTwoJoysticks)
     {
         m_pTwoJoysticks->removeFromParentAndCleanup(true);
         m_pTwoJoysticks = nullptr;
     }
+    if(m_pMainUI)
+    {
+        m_pMainUI->removeFromParentAndCleanup(true);
+        m_pMainUI = nullptr;
+    }
     SimpleAudioEngine::getInstance()->stopBackgroundMusic();
-    
-    m_pMainUI->removeFromParentAndCleanup(true);
-    m_pMainUI = nullptr;
 }
 void GameController::pause()
 {

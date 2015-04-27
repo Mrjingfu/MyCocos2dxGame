@@ -44,6 +44,10 @@ bool AppDelegate::applicationDidFinishLaunching() {
     Director::getInstance()->getTextureCache()->addImage("noise.png");
     Director::getInstance()->getTextureCache()->addImage("noise2.png");
     
+    SimpleAudioEngine::getInstance()->preloadEffect("btnclick.wav");
+    SimpleAudioEngine::getInstance()->preloadBackgroundMusic("Flux1.mp3");
+    SimpleAudioEngine::getInstance()->preloadBackgroundMusic("Flux2.mp3");
+    
 #if COCOS2D_DEBUG
     // turn on display FPS
     director->setDisplayStats(true);

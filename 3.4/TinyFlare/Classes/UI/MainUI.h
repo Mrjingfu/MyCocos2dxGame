@@ -36,11 +36,13 @@ public:
     
     void onPause();
     void onResume();
+    
+    void nextStage(int stage);
+    
+    void setLevelPercent(float percent);
 private:
     void pressPauseGameBtn(Ref* p,TouchEventType eventType);
     void onKeyReleased(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event *unused_event);
-    
-    void setLevelPercent(float percent);
 private:
     cocos2d::ui::Button*     m_pPauseGameBtn;
     cocos2d::ui::ImageView*  m_pLevelProgressBg;
@@ -48,6 +50,7 @@ private:
     cocos2d::ui::ImageView*  m_pLevelProgressBar;
     cocos2d::ui::ImageView*  m_pLevelProgressComplete;
     cocos2d::ui::Text*       m_pStageText;
+    cocos2d::ui::Text*       m_pStageTextBottom;
     BufferContainer*         m_pBufferContainer;
     
     cocos2d::ui::ImageView*  m_pStardust;

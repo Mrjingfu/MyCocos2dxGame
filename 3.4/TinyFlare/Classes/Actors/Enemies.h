@@ -38,11 +38,14 @@ public:
     virtual void initFirePos(){};
     
     virtual void update(float delta) override;
+    
+    int getScore() const  { return m_nScore; }
 protected:
     Enemy();
     virtual ~Enemy();
 protected:
     EnemyType   m_EnemyType;
+    int         m_nScore;
 };
 /// 线性追踪
 class Circle : public Enemy

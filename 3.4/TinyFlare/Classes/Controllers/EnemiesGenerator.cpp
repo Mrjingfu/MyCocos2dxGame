@@ -42,7 +42,7 @@ void EnemiesGenerator::generateOneEnemyOnPos(cocos2d::Node* node, void* data)
         ActorsManager::getInstance()->spawnEnemy((Enemy::EnemyType)(info->m_nCurType), info->m_Pos, info->m_Dir);
     }
 }
-void EnemiesGenerator::generateEnemiesByTime(Enemy::EnemyType type, float durationTime, float lastTime)
+void EnemiesGenerator::generateEnemiesByTime(Enemy::EnemyType type, float durationTime, float delayTime, float lastTime)
 {
     GeneratorInfo* info = GeneratorInfo::create();
     if(info == nullptr)
@@ -55,7 +55,9 @@ void EnemiesGenerator::generateEnemiesByTime(Enemy::EnemyType type, float durati
         __CCCallFuncND* callFuncND = __CCCallFuncND::create(this, CC_CALLFUNCND_SELECTOR(EnemiesGenerator::generateOneEnemyOnRandomPos), (void*)info);
         Sequence* sequence1 = Sequence::createWithTwoActions(callFuncND, duration);
         RepeatForever* repeatForever = RepeatForever::create(sequence1);
-        runAction(repeatForever);
+        DelayTime* delay = DelayTime::create(delayTime);
+        Sequence* sequence2 = Sequence::createWithTwoActions(delay, repeatForever);
+        runAction(sequence2);
     }
     else
     {
@@ -65,10 +67,12 @@ void EnemiesGenerator::generateEnemiesByTime(Enemy::EnemyType type, float durati
         CCASSERT(durationTime > 0.0f, "divisor can not be 0!");
         int times = (int)(lastTime / durationTime);
         Repeat* repeat = Repeat::create(sequence1, times);
-        runAction(repeat);
+        DelayTime* delay = DelayTime::create(delayTime);
+        Sequence* sequence2 = Sequence::createWithTwoActions(delay, repeat);
+        runAction(sequence2);
     }
 }
-void EnemiesGenerator::generateEnemiesByNum(Enemy::EnemyType type, float durationTime, int num)
+void EnemiesGenerator::generateEnemiesByNum(Enemy::EnemyType type, float durationTime, int num, float delayTime)
 {
     GeneratorInfo* info = GeneratorInfo::create();
     if(info == nullptr)
@@ -78,11 +82,12 @@ void EnemiesGenerator::generateEnemiesByNum(Enemy::EnemyType type, float duratio
     DelayTime* duration = DelayTime::create(durationTime);
     __CCCallFuncND* callFuncND = __CCCallFuncND::create(this, CC_CALLFUNCND_SELECTOR(EnemiesGenerator::generateOneEnemyOnRandomPos), (void*)info);
     Sequence* sequence1 = Sequence::createWithTwoActions(callFuncND, duration);
-
     Repeat* repeat = Repeat::create(sequence1, num);
-    runAction(repeat);
+    DelayTime* delay = DelayTime::create(delayTime);
+    Sequence* sequence2 = Sequence::createWithTwoActions(delay, repeat);
+    runAction(sequence2);
 }
-void EnemiesGenerator::generateEnemiesByExplosion(Enemy::EnemyType type, const cocos2d::Vec2& pos, int num, float durationTime )
+void EnemiesGenerator::generateEnemiesByExplosion(Enemy::EnemyType type, const cocos2d::Vec2& pos, int num, float durationTime)
 {
     CCASSERT(num >=1, "num must >= 1 !");
     GeneratorInfo* info = GeneratorInfo::create();
@@ -98,7 +103,6 @@ void EnemiesGenerator::generateEnemiesByExplosion(Enemy::EnemyType type, const c
         DelayTime* duration = DelayTime::create(durationTime);
         __CCCallFuncND* callFuncND = __CCCallFuncND::create(this, CC_CALLFUNCND_SELECTOR(EnemiesGenerator::generateOneEnemyOnPos), (void*)info);
         Sequence* sequence1 = Sequence::createWithTwoActions(callFuncND, duration);
-    
         Repeat* repeat = Repeat::create(sequence1, num);
         runAction(repeat);
     }
@@ -108,4 +112,8 @@ void EnemiesGenerator::generateEnemiesByExplosion(Enemy::EnemyType type, const c
         Repeat* repeat = Repeat::create(callFuncND, num);
         runAction(repeat);
     }
+}
+void EnemiesGenerator::stopGenerateEnemies()
+{
+    stopAllActions();
 }

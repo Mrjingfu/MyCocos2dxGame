@@ -8,5 +8,9 @@
 	<string>点击这里开始！</string>
 	<key>STAGE</key>
 	<string>阶段 </string>
+	<key>DEAD</key>
+	<string>你挂了!</string>
+	<key>PRESS_CONTINUE</key>
+	<string>点击这里继续!</string>
 </dict>
 </plist>

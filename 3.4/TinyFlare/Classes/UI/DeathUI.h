@@ -1,30 +1,31 @@
 //
-//  MenuUI.h
+//  DeathUI.h
 //  TinyFlare
 //
-//  Created by wang haibo on 15/4/15.
+//  Created by wang haibo on 15/4/27.
 //
 //
 
-#ifndef __TinyFlare__MenuUI__
-#define __TinyFlare__MenuUI__
+#ifndef __TinyFlare__DeathUI__
+#define __TinyFlare__DeathUI__
 
 #include "cocos2d.h"
 #include "ui/CocosGUI.h"
-class MenuUI : public cocos2d::ui::Layout
+class DeathUI : public cocos2d::ui::Layout
 {
 protected:
-    MenuUI();
-    virtual ~MenuUI();
+    DeathUI();
+    virtual ~DeathUI();
     virtual bool init() override;
 public:
-    static MenuUI* create();
+    static DeathUI* create();
 private:
-    void pressPlayGameBtn(Ref* p,TouchEventType eventType);
+    void pressContinueGameBtn(Ref* p,TouchEventType eventType);
     void pressRemoveADSBtn(Ref* p,TouchEventType eventType);
-    void pressRankBtn(Ref* p,TouchEventType eventType);
-    void pressShareBtn(Ref* p,TouchEventType eventType);
+//    void pressRankBtn(Ref* p,TouchEventType eventType);
+//    void pressShareBtn(Ref* p,TouchEventType eventType);
     void pressHelpBtn(Ref* p,TouchEventType eventType);
+    void pressBackBtn(Ref* p,TouchEventType eventType);
     
     void onKeyReleased(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event *unused_event);
 private:
@@ -33,10 +34,11 @@ private:
 //    cocos2d::ui::Button*     m_pRankBtn;
 //    cocos2d::ui::Button*     m_pShareBtn;
     cocos2d::ui::Button*     m_pHelpBtn;
+    cocos2d::ui::Button*     m_pBackBtn;
     
     cocos2d::ui::ImageView*     m_pMenuBg;
-    cocos2d::ui::TextBMFont*    m_pGameTitle;
+    cocos2d::ui::Text*          m_pGameTitle;
     cocos2d::ui::Text*          m_pPlayText;
 };
 
-#endif /* defined(__TinyFlare__MenuUI__) */
+#endif /* defined(__TinyFlare__DeathUI__) */

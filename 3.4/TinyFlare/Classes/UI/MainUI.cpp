@@ -10,7 +10,9 @@
 #include "EncrytionUtility.h"
 #include "UtilityHelper.h"
 #include "GameController.h"
+#include "SimpleAudioEngine.h"
 USING_NS_CC;
+using namespace CocosDenshion;
 
 MainUI* MainUI::create()
 {
@@ -32,6 +34,7 @@ MainUI::MainUI()
     m_pLevelProgressBar     = nullptr;
     m_pLevelProgressComplete= nullptr;
     m_pStageText            = nullptr;
+    m_pStageTextBottom      = nullptr;
     m_pBufferContainer      = nullptr;
     m_pStardust             = nullptr;
     m_pStardustX            = nullptr;
@@ -120,9 +123,9 @@ bool MainUI::init()
     addChild(m_pLevelProgressComplete);
     
     std::string strStage = UtilityHelper::getLocalString("STAGE");
-    Value stageNum = Value(EncrytionUtility::getIntegerForKey("StageNum", 1));
+    Value stageNum = Value(EncrytionUtility::getIntegerForKey("CurrentStage", 1));
     strStage += stageNum.asString();
-    m_pStageText = ui::Text::create(strStage, "FZXS12.TTF", m_pStardust->getContentSize().height*0.05f*scale);
+    m_pStageText = ui::Text::create(strStage, "FZXS12.TTF", m_pStardust->getContentSize().height*0.08f*scale);
     if(!m_pStageText)
         return false;
     m_pStageText->setPosition(Vec2(size.width*0.75f, size.height*0.7f));
@@ -130,15 +133,13 @@ bool MainUI::init()
     m_pStageText->setOpacity(0);
     addChild(m_pStageText);
     
-    EaseSineIn* easeIn = EaseSineIn::create(FadeIn::create(0.5f));
-    EaseSineOut* easeOut1 = EaseSineOut::create(MoveTo::create(0.5f, Vec2(size.width*0.5f, size.height*0.7f)));
-    Spawn* spawn1 = Spawn::createWithTwoActions(easeIn, easeOut1);
-    DelayTime* delay = DelayTime::create(1.0f);
-    EaseSineOut* easeOut2 = EaseSineOut::create(FadeOut::create(0.2f));
-    ScaleTo* scaleTo = ScaleTo::create(0.2f, 2.0f);
-    Spawn* spawn2 = Spawn::createWithTwoActions(easeOut2, scaleTo);
-    Sequence* sequece = Sequence::create(spawn1, delay, spawn2, NULL);
-    m_pStageText->runAction(sequece);
+    m_pStageTextBottom = ui::Text::create(strStage, "FZXS12.TTF", m_pStardust->getContentSize().height*0.04f*scale);
+    if(!m_pStageTextBottom)
+        return false;
+    m_pStageTextBottom->setPosition(Vec2(size.width*0.5f, 70.0f*scale));
+    m_pStageTextBottom->setColor(Color3B(208,255,208));
+    m_pStageTextBottom->setOpacity(0);
+    addChild(m_pStageTextBottom);
     return true;
 }
 
@@ -147,6 +148,7 @@ void MainUI::pressPauseGameBtn(Ref* p,TouchEventType eventType)
 {
     if(eventType == TouchEventType::ENDED)
     {
+        SimpleAudioEngine::getInstance()->playEffect("btnclick.wav");
         if(GameController::getInstance()->isPaused())
             GameController::getInstance()->resume();
         else
@@ -158,20 +160,64 @@ void MainUI::onKeyReleased(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Eve
 {
     if(keyCode == EventKeyboard::KeyCode::KEY_ESCAPE)
     {
+        SimpleAudioEngine::getInstance()->playEffect("btnclick.wav");
         if(GameController::getInstance()->isPaused())
             GameController::getInstance()->resume();
         else
             GameController::getInstance()->pause();
     }
 }
+void MainUI::nextStage(int stage)
+{
+    auto size = Director::getInstance()->getVisibleSize();
+    float scale = size.height/480.0f;
+    std::string strStage = UtilityHelper::getLocalString("STAGE");
+    Value stageNum = Value(stage);
+    strStage += stageNum.asString();
+    
+    if(m_pStageText)
+    {
+        m_pStageText->stopAllActions();
+        m_pStageText->setString(strStage);
+        m_pStageText->setOpacity(0);
+        m_pStageText->setScale(1.0f);
+        m_pStageText->setPosition(Vec2(size.width*0.75f, size.height*0.7f));
+        EaseSineIn* easeIn = EaseSineIn::create(FadeIn::create(0.5f));
+        EaseSineOut* easeOut1 = EaseSineOut::create(MoveTo::create(0.5f, Vec2(size.width*0.5f, size.height*0.7f)));
+        Spawn* spawn1 = Spawn::createWithTwoActions(easeIn, easeOut1);
+        DelayTime* delay = DelayTime::create(1.0f);
+        EaseSineOut* easeOut2 = EaseSineOut::create(FadeOut::create(0.2f));
+        ScaleTo* scaleTo = ScaleTo::create(0.2f, 2.0f);
+        Spawn* spawn2 = Spawn::createWithTwoActions(easeOut2, scaleTo);
+        Sequence* sequece = Sequence::create(spawn1, delay, spawn2, NULL);
+        m_pStageText->runAction(sequece);
+    }
+    if(m_pStageTextBottom)
+    {
+        m_pStageTextBottom->stopAllActions();
+        m_pStageTextBottom->setString(strStage);
+        m_pStageTextBottom->setOpacity(0);
+        m_pStageTextBottom->setPosition(Vec2(size.width*0.5f, 70.0f*scale));
+        DelayTime* delay2 = DelayTime::create(1.0f);
+        EaseSineIn* easeIn1 = EaseSineIn::create(FadeIn::create(1.0f));
+        EaseSineOut* easeOut3 = EaseSineOut::create(MoveTo::create(1.0f, Vec2(m_pLevelProgressBg->getPosition().x - size.width*0.12f, 70.0f*scale)));
+        Spawn* spawn3 = Spawn::createWithTwoActions(easeIn1, easeOut3);
+        
+        Sequence* sequece1 = Sequence::createWithTwoActions(delay2, spawn3);
+        m_pStageTextBottom->runAction(sequece1);
+    }
+    
+    setLevelPercent(0);
+}
+
 void MainUI::setLevelPercent(float percent)
 {
     auto size = Director::getInstance()->getVisibleSize();
     float scale = size.height/480.0f;
     if(m_pLevelProgress)
-        m_pLevelProgress->setPercent(percent);
+        m_pLevelProgress->setPercent(percent*100);
     if(m_pLevelProgressBar)
-        m_pLevelProgressBar->setPosition(Vec2(m_pLevelProgressBar->getPosition().x + size.width*0.4f*percent/100.0f, 50.0f*scale));
+        m_pLevelProgressBar->setPosition(Vec2(m_pLevelProgressBg->getPosition().x - size.width*0.2f + size.width*0.4f*percent, 50.0f*scale));
     if(percent == 100.0f)
     {
     }
