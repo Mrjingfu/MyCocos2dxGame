@@ -94,7 +94,7 @@ Circle::~Circle()
 void Circle::onEnterDead()
 {
     ParticleSystemHelper::spawnExplosion(ExplosionType::ET_EXPLOSION_WHITE, getPosition());
-    float percent1 = 0.02f*EncrytionUtility::getIntegerForKey("ItemDropLevel", 1);
+    float percent1 = 0.05f*EncrytionUtility::getIntegerForKey("ItemDropLevel", 1);
     float percent2 = 0.02f*EncrytionUtility::getIntegerForKey("StardustDropLevel", 1);
     float percent3 = 1.0f - percent1 -percent2;
     AlisaMethod* am = AlisaMethod::create(percent1,percent2,percent3, -1.0f, NULL);
@@ -157,7 +157,7 @@ Triangle::~Triangle()
 void Triangle::onEnterDead()
 {
     ParticleSystemHelper::spawnExplosion(ExplosionType::ET_EXPLOSION_YELLOW, getPosition());
-    float percent1 = 0.02f*EncrytionUtility::getIntegerForKey("ItemDropLevel", 1);
+    float percent1 = 0.05f*EncrytionUtility::getIntegerForKey("ItemDropLevel", 1);
     float percent2 = 0.02f*EncrytionUtility::getIntegerForKey("StardustDropLevel", 1);;
     float percent3 = 1.0f - percent1 -percent2;
     AlisaMethod* am = AlisaMethod::create(percent1,percent2,percent3, -1.0f, NULL);
@@ -322,7 +322,7 @@ void Diamond::beginTrack()
 void Diamond::onEnterDead()
 {
     ParticleSystemHelper::spawnExplosion(ExplosionType::ET_EXPLOSION_GREEN, getPosition());
-    float percent1 = 0.02f*EncrytionUtility::getIntegerForKey("ItemDropLevel", 1);
+    float percent1 = 0.05f*EncrytionUtility::getIntegerForKey("ItemDropLevel", 1);
     float percent2 = 0.02f*EncrytionUtility::getIntegerForKey("StardustDropLevel", 1);;
     float percent3 = 1.0f - percent1 -percent2;
     AlisaMethod* am = AlisaMethod::create(percent1,percent2,percent3, -1.0f, NULL);
@@ -605,7 +605,7 @@ void Star::onExitTrack()
 void Star::onEnterDead()
 {
     ParticleSystemHelper::spawnExplosion(ExplosionType::ET_EXPLOSION_BLUE, getPosition());
-    float percent1 = 0.02f*EncrytionUtility::getIntegerForKey("ItemDropLevel", 1);
+    float percent1 = 0.05f*EncrytionUtility::getIntegerForKey("ItemDropLevel", 1);
     float percent2 = 0.02f*EncrytionUtility::getIntegerForKey("StardustDropLevel", 1);;
     float percent3 = 1.0f - percent1 -percent2;
     AlisaMethod* am = AlisaMethod::create(percent1,percent2,percent3, -1.0f, NULL);
@@ -973,7 +973,7 @@ void Hexagon::onExitCharge()
 void Hexagon::onEnterDead()
 {
     ParticleSystemHelper::spawnExplosion(ExplosionType::ET_EXPLOSION_ORANGE, getPosition());
-    float percent1 = 0.02f*EncrytionUtility::getIntegerForKey("ItemDropLevel", 1);
+    float percent1 = 0.05f*EncrytionUtility::getIntegerForKey("ItemDropLevel", 1);
     float percent2 = 0.02f*EncrytionUtility::getIntegerForKey("StardustDropLevel", 1);;
     float percent3 = 1.0f - percent1 -percent2;
     AlisaMethod* am = AlisaMethod::create(percent1,percent2,percent3, -1.0f, NULL);

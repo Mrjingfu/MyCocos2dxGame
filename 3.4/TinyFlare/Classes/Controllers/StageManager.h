@@ -10,7 +10,7 @@
 #define __TinyFlare__StageManager__
 
 #include "cocos2d.h"
-
+#include "ChaosNumber.h"
 
 class StageManager : public cocos2d::Ref
 {
@@ -38,11 +38,11 @@ public:
     float getCurrentPercent() const { return m_fCurrentPercent; }
     
 private:
-    int     m_nCurrentIndex;
-    int     m_nCurrentScore;
-    float   m_fCurrentPercent;
-    float   m_fLastPercent;
-    int     m_nTargetScore;
+    CChaosNumber     m_nCurrentIndex;
+    CChaosNumber     m_nCurrentScore;
+    float            m_fCurrentPercent;
+    float            m_fLastPercent;
+    CChaosNumber     m_nTargetScore;
     
     cocos2d::ValueVector   m_StageList;
 };
