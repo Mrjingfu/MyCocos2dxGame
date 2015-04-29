@@ -92,7 +92,7 @@ private:
     float                           m_fMultiTime;
     float                           m_fSlowTime;
     float                           m_fFireDelta;
-    CChaosNumber                    m_nBoomBulletNum;
+    int                             m_nBoomBulletNum;
     
     PlayerListener*                 m_pPlayerListener;
 };

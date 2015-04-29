@@ -38,11 +38,11 @@ public:
     float getCurrentPercent() const { return m_fCurrentPercent; }
     
 private:
-    CChaosNumber     m_nCurrentIndex;
-    CChaosNumber     m_nCurrentScore;
+    int              m_nCurrentIndex;
+    int              m_nCurrentScore;
     float            m_fCurrentPercent;
     float            m_fLastPercent;
-    CChaosNumber     m_nTargetScore;
+    int              m_nTargetScore;
     
     cocos2d::ValueVector   m_StageList;
 };

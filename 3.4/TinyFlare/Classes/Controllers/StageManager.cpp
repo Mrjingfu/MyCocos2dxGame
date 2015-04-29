@@ -52,7 +52,7 @@ void StageManager::nextStage(int stage)
     if(m_StageList.size() >= stage)
     {
         m_nCurrentIndex = stage - 1;
-        ValueMap stageItem = m_StageList.at((int)(m_nCurrentIndex.GetLongValue())).asValueMap();
+        ValueMap stageItem = m_StageList.at(m_nCurrentIndex).asValueMap();
         StageType stageType = (StageType)(stageItem["stageType"].asInt());
         if (stageType == ST_DEFAULT) {
             m_nTargetScore = stageItem["targetScore"].asInt();
@@ -123,7 +123,7 @@ void StageManager::addScore(int score)
         m_fCurrentPercent = 1.0f;
     ValueMap stageItem;
     if(m_StageList.size() >= m_nCurrentIndex + 1)
-        stageItem = m_StageList.at((int)(m_nCurrentIndex.GetLongValue())).asValueMap();
+        stageItem = m_StageList.at(m_nCurrentIndex).asValueMap();
     else
         stageItem = m_StageList.back().asValueMap();
     ValueVector enemyList = stageItem["enemyList"].asValueVector();

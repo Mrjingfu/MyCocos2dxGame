@@ -364,6 +364,9 @@ void GameController::gameStart()
     m_pPlayer->setCascadeOpacityEnabled(true);
     m_pPlayer->setOpacity(0);
     m_pPlayer->setPlayerListener(m_pMainUI);
+    ////lwwhb add for debug
+    m_pPlayer->addBuffer(BT_PROTECTED);
+    ///
     m_pGameLayer->addChild(m_pPlayer);
     
     ParticleSystemHelper::spawnExplosion(ExplosionType::ET_EXPLOSION_ACTOR_RESPAWN, Vec2::ZERO);

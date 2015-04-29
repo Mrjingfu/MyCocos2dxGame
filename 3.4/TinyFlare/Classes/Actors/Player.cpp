@@ -34,9 +34,7 @@ Player::Player()
     m_fSlowTime      = 0.0f;
     m_fFireDelta     = 0.5f;
     m_nBoomBulletNum = 8;
-    ////lwwhb add for debug
-    addBuffer(BT_PROTECTED);
-    ///
+    
     m_pPlayerListener = nullptr;
 }
 Player::~Player()
@@ -175,8 +173,8 @@ void Player::addBuffer(BufferType type)
         ParticleSystemHelper::spawnExplosion(ET_EXPLOSION_CLEAR, getPosition());
         Vec2 orient = Vec2::UNIT_Y;
         m_nBoomBulletNum = 8*EncrytionUtility::getIntegerForKey("BoomLevel", 1);
-        for (int i = 0; i<(int)(m_nBoomBulletNum.GetLongValue()); ++i) {
-            orient.rotate(Vec2::ZERO, M_PI*2.0f/(int)(m_nBoomBulletNum.GetLongValue()));
+        for (int i = 0; i< m_nBoomBulletNum; ++i) {
+            orient.rotate(Vec2::ZERO, M_PI*2.0f/m_nBoomBulletNum);
             ActorsManager::spawnBullet(GameActor::AT_PLAYER_BULLET, getPosition(), orient, 10.0f,"bullet1.png", Color3B(0,224,252), 1.0f, 3.0f);
         }
     }
