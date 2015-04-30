@@ -21,7 +21,7 @@
 				<key>duration</key>
 				<integer>4</integer>
 				<key>number</key>
-				<integer>10</integer>
+				<integer>15</integer>
 				<key>percent</key>
 				<integer>0</integer>
 			</dict>
@@ -46,7 +46,7 @@
 				<key>duration</key>
 				<integer>2</integer>
 				<key>number</key>
-				<integer>20</integer>
+				<integer>30</integer>
 				<key>percent</key>
 				<integer>0</integer>
 			</dict>

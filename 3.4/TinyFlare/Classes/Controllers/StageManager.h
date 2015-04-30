@@ -35,14 +35,14 @@ public:
     
     void addScore(int score);
     
-    float getCurrentPercent() const { return m_fCurrentPercent; }
+    float getCurrentPercent() { return m_fCurrentPercent.GetFloatValue(); }
     
 private:
-    int              m_nCurrentIndex;
-    int              m_nCurrentScore;
-    float            m_fCurrentPercent;
-    float            m_fLastPercent;
-    int              m_nTargetScore;
+    ChaosNumber              m_nCurrentIndex;
+    ChaosNumber              m_nCurrentScore;
+    ChaosNumber              m_fCurrentPercent;
+    ChaosNumber              m_fLastPercent;
+    ChaosNumber              m_nTargetScore;
     
     cocos2d::ValueVector   m_StageList;
 };

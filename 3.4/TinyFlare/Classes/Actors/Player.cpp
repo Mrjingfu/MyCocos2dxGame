@@ -55,14 +55,14 @@ void Player::updateBuffer(float delta)
     if(m_nBufferType & BufferType::BT_ACCEL)
     {
         if(m_fAccelTime > 0.0f)
-            m_fAccelTime -= delta/_scheduler->getTimeScale();
+            m_fAccelTime = m_fAccelTime - delta/_scheduler->getTimeScale();
         else
             removeBuffer(BufferType::BT_ACCEL);
     }
     if(m_nBufferType & BufferType::BT_MULTI)
     {
         if(m_fMultiTime > 0.0f)
-            m_fMultiTime -= delta/_scheduler->getTimeScale();
+            m_fMultiTime = m_fMultiTime - delta/_scheduler->getTimeScale();
         else
             removeBuffer(BufferType::BT_MULTI);
     }
@@ -70,7 +70,7 @@ void Player::updateBuffer(float delta)
     {
         ////lwwhb add for debug
 //        if(m_fProtectedTime > 0.0f)
-//            m_fProtectedTime -= delta/_scheduler->getTimeScale();
+//            m_fProtectedTime = m_fProtectedTime - delta/_scheduler->getTimeScale();
 //        else
 //            removeBuffer(BufferType::BT_PROTECTED);
         ///
@@ -85,7 +85,7 @@ void Player::updateBuffer(float delta)
     if(m_nBufferType & BufferType::BT_TIME)
     {
         if(m_fSlowTime > 0.0f)
-            m_fSlowTime -= delta/_scheduler->getTimeScale();
+            m_fSlowTime = m_fSlowTime - delta/_scheduler->getTimeScale();
         else
             removeBuffer(BufferType::BT_TIME);
     }
@@ -173,8 +173,8 @@ void Player::addBuffer(BufferType type)
         ParticleSystemHelper::spawnExplosion(ET_EXPLOSION_CLEAR, getPosition());
         Vec2 orient = Vec2::UNIT_Y;
         m_nBoomBulletNum = 8*EncrytionUtility::getIntegerForKey("BoomLevel", 1);
-        for (int i = 0; i< m_nBoomBulletNum; ++i) {
-            orient.rotate(Vec2::ZERO, M_PI*2.0f/m_nBoomBulletNum);
+        for (int i = 0; i< (int)(m_nBoomBulletNum.GetLongValue()); ++i) {
+            orient.rotate(Vec2::ZERO, M_PI*2.0f/m_nBoomBulletNum.GetLongValue());
             ActorsManager::spawnBullet(GameActor::AT_PLAYER_BULLET, getPosition(), orient, 10.0f,"bullet1.png", Color3B(0,224,252), 1.0f, 3.0f);
         }
     }
@@ -254,7 +254,7 @@ void Player::beginAccel()
     m_fFireDelta = 0.5f*(powf(0.8f, EncrytionUtility::getIntegerForKey("AccelLevel", 1)));
     m_fAccelTime = 15.0f*(powf(1.1f, EncrytionUtility::getIntegerForKey("EffectTimeLevel", 1)));
     if(m_pPlayerListener)
-        m_pPlayerListener->onBeginAccel(m_fAccelTime);
+        m_pPlayerListener->onBeginAccel(m_fAccelTime.GetFloatValue());
 }
 void Player::endAccel()
 {
@@ -281,7 +281,7 @@ void Player::beginMulti()
     m_pMultiNode->setCameraMask((unsigned short)CameraFlag::USER1);
     
     if(m_pPlayerListener)
-        m_pPlayerListener->onBeginMulti(m_fMultiTime);
+        m_pPlayerListener->onBeginMulti(m_fMultiTime.GetFloatValue());
 }
 void Player::endMulti()
 {
@@ -325,7 +325,7 @@ void Player::beginProtected()
     m_pProtectedNode->setCameraMask((unsigned short)CameraFlag::USER1);
     
     if(m_pPlayerListener)
-        m_pPlayerListener->onBeginProtected(m_fProtectedTime);
+        m_pPlayerListener->onBeginProtected(m_fProtectedTime.GetFloatValue());
 }
 void Player::endProtected()
 {
@@ -368,7 +368,7 @@ void Player::beginTime()
     }
     SimpleAudioEngine::getInstance()->playEffect("Pickup_Speed02.wav");
     if(m_pPlayerListener)
-        m_pPlayerListener->onBeginTime(m_fSlowTime);
+        m_pPlayerListener->onBeginTime(m_fSlowTime.GetFloatValue());
 }
 void Player::endTime()
 {

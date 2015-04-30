@@ -137,7 +137,9 @@ void PauseUI::pressBackBtn(Ref* p,TouchEventType eventType)
 {
     if(eventType == TouchEventType::ENDED)
     {
+        GameController::getInstance()->resume();
+        GameController::getInstance()->pauseEnd();
         SimpleAudioEngine::getInstance()->playEffect("btnclick.wav");
-        Director::getInstance()->end();
+        GameController::getInstance()->setGameState(GS_MENU);
     }
 }

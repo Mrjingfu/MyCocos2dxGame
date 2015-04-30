@@ -87,12 +87,12 @@ private:
     cocos2d::Node*                  m_pShadowNode;
     cocos2d::Sprite*                m_pMultiNode;
     cocos2d::Sprite*                m_pProtectedNode;
-    float                           m_fAccelTime;
-    float                           m_fProtectedTime;
-    float                           m_fMultiTime;
-    float                           m_fSlowTime;
-    float                           m_fFireDelta;
-    int                             m_nBoomBulletNum;
+    ChaosNumber                     m_fAccelTime;
+    ChaosNumber                     m_fProtectedTime;
+    ChaosNumber                     m_fMultiTime;
+    ChaosNumber                     m_fSlowTime;
+    ChaosNumber                     m_fFireDelta;
+    ChaosNumber                     m_nBoomBulletNum;
     
     PlayerListener*                 m_pPlayerListener;
 };
