@@ -517,10 +517,10 @@ Stardust* ActorsManager::spawnStardust(Stardust::StardustType type, const cocos2
         stardust->loadModel("magicfire.plist");
         switch (type) {
             case Stardust::ST_SMALL:
-                stardust->setScale(0.3f);
+                stardust->setScale(0.6f);
                 break;
             case Stardust::ST_LARGE:
-                stardust->setScale(0.6f);
+                stardust->setScale(1.0f);
                 break;
             default:
                 break;
@@ -655,6 +655,8 @@ void ActorsManager::update(float delta)
                 float dist = enemy->getPosition().distance(playerPos);
                 if (dist <= player->getRadius()) {
                     enemy->setActorState(ActorState::AS_DEAD);
+                    if(player->getBufferType() & BufferType::BT_PROTECTED)
+                        StageManager::getInstance()->addScore(enemy->getScore());
                     eraseEnemy(enemy);
                     player->setActorState(ActorState::AS_DEAD);
                     continue;

@@ -11,6 +11,7 @@
 #include "UtilityHelper.h"
 #include "GameController.h"
 #include "SimpleAudioEngine.h"
+#include "ActorsManager.h"
 USING_NS_CC;
 using namespace CocosDenshion;
 
@@ -169,6 +170,8 @@ void MainUI::onKeyReleased(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Eve
 }
 void MainUI::nextStage(int stage)
 {
+    if(stage > 1)
+        setLevelPercent(100);
     auto size = Director::getInstance()->getVisibleSize();
     float scale = size.height/480.0f;
     std::string strStage = UtilityHelper::getLocalString("STAGE");
@@ -209,7 +212,39 @@ void MainUI::nextStage(int stage)
     
     setLevelPercent(0);
 }
-
+void MainUI::addStardust(ChaosNumber& num)
+{
+    ChaosNumber curStarDust;
+    curStarDust = EncrytionUtility::getIntegerForKey("CurStardustNum", 0);
+    curStarDust = curStarDust + num.GetLongValue();
+    EncrytionUtility::setIntegerForKey("CurStardustNum", (int)(curStarDust.GetLongValue()));
+    if(m_pStardustNum)
+    {
+        m_pStardustNum->setString(Value((int)(curStarDust.GetLongValue())).asString());
+        m_pStardustNum->stopAllActions();
+        EaseSineIn* easeIn1 = EaseSineIn::create(ScaleTo::create(0.2f, 1.2f));
+        EaseSineIn* easeIn2 = EaseSineIn::create(ScaleTo::create(0.2f, 1.0f));
+        Sequence* sequece = Sequence::createWithTwoActions(easeIn1, easeIn2);
+        m_pStardustNum->runAction(sequece);
+    }
+    SimpleAudioEngine::getInstance()->playEffect("Pickup_GemBells11.wav");
+}
+void MainUI::subStardust(ChaosNumber& num)
+{
+    ChaosNumber curStarDust;
+    curStarDust = EncrytionUtility::getIntegerForKey("CurStardustNum", 0);
+    curStarDust = curStarDust - num.GetLongValue();
+    EncrytionUtility::setIntegerForKey("CurStardustNum", (int)(curStarDust.GetLongValue()));
+    if(m_pStardustNum)
+    {
+        m_pStardustNum->setString(Value((int)(curStarDust.GetLongValue())).asString());
+        m_pStardustNum->stopAllActions();
+        EaseSineIn* easeIn1 = EaseSineIn::create(ScaleTo::create(0.2f, 0.8f));
+        EaseSineIn* easeIn2 = EaseSineIn::create(ScaleTo::create(0.2f, 1.0f));
+        Sequence* sequece = Sequence::createWithTwoActions(easeIn1, easeIn2);
+        m_pStardustNum->runAction(sequece);
+    }
+}
 void MainUI::setLevelPercent(float percent)
 {
     auto size = Director::getInstance()->getVisibleSize();
@@ -220,9 +255,20 @@ void MainUI::setLevelPercent(float percent)
         m_pLevelProgressBar->setPosition(Vec2(m_pLevelProgressBg->getPosition().x - size.width*0.2f + size.width*0.4f*percent, 50.0f*scale));
     if(percent == 100.0f)
     {
+        this->stopAllActions();
+        ChaosNumber curStage(1);
+        curStage = EncrytionUtility::getIntegerForKey("CurrentStage", 1);
+        CallFunc* callFunc = CallFunc::create(CC_CALLBACK_0(MainUI::spawnLevelStardust,this));
+        DelayTime* delay = DelayTime::create(2.0f/curStage.GetLongValue());
+        Sequence* sequece = Sequence::createWithTwoActions(callFunc, delay);
+        Repeat* repeat = Repeat::create(sequece, (int)(curStage.GetLongValue()));
+        this->runAction(repeat);
     }
 }
-
+void MainUI::spawnLevelStardust()
+{
+    ActorsManager::spawnStardust(Stardust::ST_LARGE, GameController::getInstance()->getStardustStartPos());
+}
 void MainUI::onBeginAccel(float time)
 {
     if (m_pBufferContainer) {
@@ -284,6 +330,12 @@ void MainUI::onPause()
         m_pLevelProgressBar->setVisible(false);
     if(m_pLevelProgressComplete)
         m_pLevelProgressComplete->setVisible(false);
+    if(m_pStageText)
+        m_pStageText->setVisible(false);
+    if(m_pStageTextBottom)
+        m_pStageTextBottom->setVisible(false);
+    if(m_pBufferContainer)
+        m_pBufferContainer->setVisible(false);
 }
 void MainUI::onResume()
 {
@@ -295,4 +347,10 @@ void MainUI::onResume()
         m_pLevelProgressBar->setVisible(true);
     if(m_pLevelProgressComplete)
         m_pLevelProgressComplete->setVisible(true);
+    if(m_pStageText)
+        m_pStageText->setVisible(true);
+    if(m_pStageTextBottom)
+        m_pStageTextBottom->setVisible(true);
+    if(m_pBufferContainer)
+        m_pBufferContainer->setVisible(true);
 }

@@ -32,7 +32,7 @@ Player::Player()
     m_fProtectedTime = 0.0f;
     m_fMultiTime     = 0.0f;
     m_fSlowTime      = 0.0f;
-    m_fFireDelta     = 0.5f;
+    m_fFireDelta     = 0.4f;
     m_nBoomBulletNum = 8;
     
     m_pPlayerListener = nullptr;
@@ -172,7 +172,7 @@ void Player::addBuffer(BufferType type)
         removeBuffer(BT_BOOM);
         ParticleSystemHelper::spawnExplosion(ET_EXPLOSION_CLEAR, getPosition());
         Vec2 orient = Vec2::UNIT_Y;
-        m_nBoomBulletNum = 8*EncrytionUtility::getIntegerForKey("BoomLevel", 1);
+        m_nBoomBulletNum = 8*EncrytionUtility::getIntegerForKey("ItemEffectLevel", 1);
         for (int i = 0; i< (int)(m_nBoomBulletNum.GetLongValue()); ++i) {
             orient.rotate(Vec2::ZERO, M_PI*2.0f/m_nBoomBulletNum.GetLongValue());
             ActorsManager::spawnBullet(GameActor::AT_PLAYER_BULLET, getPosition(), orient, 10.0f,"bullet1.png", Color3B(0,224,252), 1.0f, 3.0f);
@@ -251,22 +251,32 @@ void Player::endShadow()
 
 void Player::beginAccel()
 {
-    m_fFireDelta = 0.5f*(powf(0.8f, EncrytionUtility::getIntegerForKey("AccelLevel", 1)));
-    m_fAccelTime = 15.0f*(powf(1.1f, EncrytionUtility::getIntegerForKey("EffectTimeLevel", 1)));
+    m_fFireDelta = 0.4f*(powf(0.8f, EncrytionUtility::getIntegerForKey("ItemEffectLevel", 1)));
+    m_fAccelTime = 15.0f*(powf(1.1f, EncrytionUtility::getIntegerForKey("ItemEffectLevel", 1)));
+    if(m_bScheduledFire)
+    {
+        unschedule(CC_SCHEDULE_SELECTOR(Player::fire));
+        m_bScheduledFire = false;
+    }
     if(m_pPlayerListener)
         m_pPlayerListener->onBeginAccel(m_fAccelTime.GetFloatValue());
 }
 void Player::endAccel()
 {
-    m_fFireDelta = 0.5f;
+    m_fFireDelta = 0.4f;
     m_fAccelTime = 0.0f;
+    if(m_bScheduledFire)
+    {
+        unschedule(CC_SCHEDULE_SELECTOR(Player::fire));
+        m_bScheduledFire = false;
+    }
     if(m_pPlayerListener)
         m_pPlayerListener->onEndAccel();
 }
 
 void Player::beginMulti()
 {
-    m_fMultiTime = 15.0f*(powf(1.1f, EncrytionUtility::getIntegerForKey("EffectTimeLevel", 1)));
+    m_fMultiTime = 15.0f*(powf(1.1f, EncrytionUtility::getIntegerForKey("ItemEffectLevel", 1)));
     m_pMultiNode = Sprite::create("playermask2.png");
     if(m_pMultiNode == nullptr)
         CCLOGERROR("Load multi model playermask2.png failed!");
@@ -310,7 +320,7 @@ void Player::removeMulti()
 }
 void Player::beginProtected()
 {
-    m_fProtectedTime = 10.0f*(powf(1.1f, EncrytionUtility::getIntegerForKey("EffectTimeLevel", 1)));
+    m_fProtectedTime = 10.0f*(powf(1.1f, EncrytionUtility::getIntegerForKey("ItemEffectLevel", 1)));
     m_pProtectedNode = Sprite::create("protected.png");
     if(m_pProtectedNode == nullptr)
         CCLOGERROR("Load multi model protected.png failed!");
@@ -356,7 +366,7 @@ void Player::removeProtected()
 void Player::beginTime()
 {
     ParticleSystemHelper::spawnExplosion(ET_EXPLOSION_FLARE, getPosition());
-    m_fSlowTime = 8.0f*(powf(1.1f, EncrytionUtility::getIntegerForKey("EffectTimeLevel", 1)));
+    m_fSlowTime = 8.0f*(powf(1.1f, EncrytionUtility::getIntegerForKey("ItemEffectLevel", 1)));
     ActorsManager::getInstance()->setEnemyActorPause(true);
     _scheduler->setTimeScale(0.3f);
     

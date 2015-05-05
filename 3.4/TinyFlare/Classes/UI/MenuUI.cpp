@@ -139,9 +139,6 @@ void MenuUI::pressPlayGameBtn(Ref* p,TouchEventType eventType)
 {
     if(eventType == TouchEventType::ENDED)
     {
-        ///lwwhb add for debug
-        //EncrytionUtility::setIntegerForKey("CurrentStage", 1);
-        ///
         SimpleAudioEngine::getInstance()->playEffect("btnclick.wav");
         GameController::getInstance()->setGameState(GS_GAME);
     }

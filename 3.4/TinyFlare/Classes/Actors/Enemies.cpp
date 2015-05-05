@@ -1102,7 +1102,7 @@ void ColorHexagon::onEnterDead()
         m_pBlackHole->release();
     }
     float percent1 = 0.15f*EncrytionUtility::getIntegerForKey("ItemDropLevel", 1);
-    float percent2 = 0.02f*EncrytionUtility::getIntegerForKey("StardustDropLevel", 1);;
+    float percent2 = 0.02f*EncrytionUtility::getIntegerForKey("StardustDropLevel", 1);
     float percent3 = 1.0f - percent1 -percent2;
     AlisaMethod* am = AlisaMethod::create(percent1,percent2,percent3, -1.0f, NULL);
     if(am)

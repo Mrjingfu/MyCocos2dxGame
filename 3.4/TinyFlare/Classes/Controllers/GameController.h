@@ -57,6 +57,14 @@ public:
     bool isPaused() const;
     void pauseStart();
     void pauseEnd();
+    
+    void addStardust(ChaosNumber& num);
+    void subStardust(ChaosNumber& num);
+    
+    cocos2d::Vec2 getStardustTargetPos();
+    cocos2d::Vec2 getStardustStartPos();
+    
+    void resetData();
 
 private:
     void onEnterMenu();
@@ -91,6 +99,8 @@ private:
     float               m_fRespawnTime;
     
     bool                m_pPaused;
+    
+    cocos2d::Vec2       m_StardustTargetPos;
     
     MenuUI*             m_pMenuUI;
     MainUI*             m_pMainUI;

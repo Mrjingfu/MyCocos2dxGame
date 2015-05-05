@@ -12,5 +12,19 @@
 	<string>You are dead!</string>
 	<key>PRESS_CONTINUE</key>
 	<string>PRESS HERE TO CONTINUE!</string>
+	<key>LEVEL_FAILED</key>
+	<string>Need %d stardust, lack of stardust, you cannot upgrade!</string>
+	<key>STARDUST_DROP</key>
+	<string>Take %d stardust enhanced your drop rate of stardust to level %d!</string>
+	<key>STARDUST_DROP_MAX</key>
+	<string>You have reached the maximum level of stardust drop rate!</string>
+	<key>ITEM_DROP</key>
+	<string>Take %d stardust enhanced your drop rate of reinforced props to level %d!</string>
+	<key>ITEM_DROP_MAX</key>
+	<string>You have reached the maximum level of reinforced props drop rate!</string>
+	<key>ITEM_EFFECT</key>
+	<string>Take %d stardust enhanced your effect or effect duration of reinforced props to level %d!</string>
+	<key>ITEM_EFFECT_MAX</key>
+	<string>You have reached the maximum level of reinforced props effect or effect duration!</string>
 </dict>
 </plist>

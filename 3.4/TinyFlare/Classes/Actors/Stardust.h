@@ -22,6 +22,10 @@ public:
 protected:
     Stardust();
     virtual ~Stardust();
+    
+    virtual void update(float delta) override;
+    virtual void onEnterDead() override;
+    
     void setStardustType(StardustType stardustType) { m_StardustType = stardustType; }
     StardustType getStardustType() const { return m_StardustType; }
 public:

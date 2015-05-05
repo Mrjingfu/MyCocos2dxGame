@@ -88,6 +88,8 @@ bool GameController::init(Layer* pMainLayer)
     m_pActorCamera->setPositionZ(640.0f);
     m_pActorCamera->setCameraFlag(CameraFlag::USER1);
     
+    SimpleAudioEngine::getInstance()->setBackgroundMusicVolume(0.5f);
+    SimpleAudioEngine::getInstance()->setEffectsVolume(0.5f);
     //setGameState(GS_DEBUG);
     setGameState(GS_MENU);
     
@@ -339,7 +341,6 @@ void GameController::menuStart()
     m_pMenuUI = MenuUI::create();
     m_pUILayer->addChild(m_pMenuUI);
     SimpleAudioEngine::getInstance()->playBackgroundMusic("Flux1.mp3", true);
-    SimpleAudioEngine::getInstance()->setBackgroundMusicVolume(0.5f);
 }
 void GameController::menuEnd()
 {
@@ -388,7 +389,6 @@ void GameController::gameStart()
     m_pMainLayer->addChild(m_pTwoJoysticks);
     
     SimpleAudioEngine::getInstance()->playBackgroundMusic("Flux2.mp3", true);
-    SimpleAudioEngine::getInstance()->setBackgroundMusicVolume(0.5f);
     
     nextStage();
 }
@@ -446,6 +446,8 @@ void GameController::pauseStart()
         m_pMainUI->onPause();
     if(m_pTwoJoysticks)
         m_pTwoJoysticks->setVisible(false);
+    if(m_pGameLayer)
+        m_pGameLayer->setVisible(false);
     setGameState(GS_PAUSE);
 }
 void GameController::pauseEnd()
@@ -454,6 +456,41 @@ void GameController::pauseEnd()
         m_pMainUI->onResume();
     if(m_pTwoJoysticks)
         m_pTwoJoysticks->setVisible(true);
+    if(m_pGameLayer)
+        m_pGameLayer->setVisible(true);
     setGameState(GS_GAME);
     m_pPaused = false;
+}
+void GameController::addStardust(ChaosNumber& num)
+{
+    if(m_pMainUI)
+        m_pMainUI->addStardust(num);
+}
+void GameController::subStardust(ChaosNumber& num)
+{
+    if(m_pMainUI)
+        m_pMainUI->subStardust(num);
+}
+Vec2 GameController::getStardustTargetPos()
+{
+    Size size = Director::getInstance()->getVisibleSize();
+    if(!m_pActorCamera)
+        return Vec2(-size.width * 0.5f, size.height * 0.5f) ;
+    return m_pActorCamera->getPosition() + Vec2(-size.width * 0.5f, size.height * 0.5f);
+}
+Vec2 GameController::getStardustStartPos()
+{
+    Size size = Director::getInstance()->getVisibleSize();
+    if(!m_pActorCamera)
+        return Vec2(-size.width * 0.5f, size.height * 0.5f) ;
+    return m_pActorCamera->getPosition() + Vec2(size.width * 0.25f, -size.height * 0.45f);
+}
+void GameController::resetData()
+{
+    EncrytionUtility::setIntegerForKey("CurrentStage", 1);
+    EncrytionUtility::setIntegerForKey("CurStardustNum", 3000);
+    EncrytionUtility::setIntegerForKey("StardustDropLevel", 1);
+    EncrytionUtility::setIntegerForKey("ItemDropLevel", 1);
+    EncrytionUtility::setIntegerForKey("ItemEffectLevel", 1);
+    
 }

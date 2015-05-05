@@ -12,5 +12,19 @@
 	<string>你挂了!</string>
 	<key>PRESS_CONTINUE</key>
 	<string>点击这里继续!</string>
+	<key>LEVEL_FAILED</key>
+	<string>需要 %d 个星尘，您的星尘不足，无法升级!</string>
+	<key>STARDUST_DROP</key>
+	<string>花费 %d 个星尘提升您的星尘掉率等级到 %d 级!</string>
+	<key>STARDUST_DROP_MAX</key>
+	<string>你的星尘掉率等级已经提升到最大等级!</string>
+	<key>ITEM_DROP</key>
+	<string>花费 %d 个星尘提升你的增强道具掉率等级到 %d 级!</string>
+	<key>ITEM_DROP_MAX</key>
+	<string>你的增强道具掉率等级已经提升到最大等级!</string>
+	<key>ITEM_EFFECT</key>
+	<string>花费 %d 个星尘提升你的增强道具效果或效果时间等级到 %d 级!</string>
+	<key>ITEM_EFFECT_MAX</key>
+	<string>你的增强道具效果或效果时间等级已经提升到最大等级!</string>
 </dict>
 </plist>

@@ -13,6 +13,7 @@
 #include "ui/CocosGUI.h"
 #include "BufferContainer.h"
 #include "Player.h"
+#include "ChaosNumber.h"
 class MainUI : public cocos2d::ui::Layout, public PlayerListener
 {
 protected:
@@ -38,6 +39,10 @@ public:
     void onResume();
     
     void nextStage(int stage);
+    void addStardust(ChaosNumber& num);
+    void subStardust(ChaosNumber& num);
+    
+    void spawnLevelStardust();
     
     void setLevelPercent(float percent);
 private:

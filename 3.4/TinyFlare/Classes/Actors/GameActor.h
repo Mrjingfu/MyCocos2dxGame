@@ -113,6 +113,8 @@ public:
     ActorState getActorState() const { return m_curState; }
     void setActorState(ActorState state);
     
+    int getBufferType() const { return m_nBufferType; }
+    
     virtual void resumeScheduler(void);
     virtual void pauseScheduler(void);
 protected:
