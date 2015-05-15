@@ -12,6 +12,7 @@
 #include "UtilityHelper.h"
 #include "EncrytionUtility.h"
 #include "ChaosNumber.h"
+#include "HelpScene.h"
 USING_NS_CC;
 using namespace CocosDenshion;
 
@@ -72,8 +73,8 @@ bool PauseUI::init()
     if(!m_pPanelBg)
         return false;
     m_pPanelBg->setScale9Enabled(true);
-    m_pPanelBg->setCapInsets(Rect(0,2,128,0.5f));
-    m_pPanelBg->setContentSize(Size(size.width,size.height*0.7f));
+    m_pPanelBg->setCapInsets(cocos2d::Rect(0,2,128,0.5f));
+    m_pPanelBg->setContentSize(cocos2d::Size(size.width,size.height*0.7f));
     m_pPanelBg->setPosition(Vec2(size.width*0.5f, size.height*0.5f));
     m_pPanelBg->setScale(0);
     addChild(m_pPanelBg);
@@ -126,8 +127,8 @@ bool PauseUI::init()
         return false;
     m_pStardustDropLevel1->setAnchorPoint(Vec2(0, 0.5f));
     m_pStardustDropLevel1->setScale9Enabled(true);
-    m_pStardustDropLevel1->setCapInsets(Rect(20,20,88,88));
-    m_pStardustDropLevel1->setContentSize(Size(size.height*0.3f,size.height*0.1f));
+    m_pStardustDropLevel1->setCapInsets(cocos2d::Rect(20,20,88,88));
+    m_pStardustDropLevel1->setContentSize(cocos2d::Size(size.height*0.3f,size.height*0.1f));
     m_pStardustDropLevel1->setPosition(Vec2(m_pStardustDropLevelText->getPosition().x, m_pStardustDropLevelText->getPosition().y -50*scale));
     m_pStardustDropLevel1->setScale(0.5f);
     m_pPanelBg->addChild(m_pStardustDropLevel1);
@@ -137,8 +138,8 @@ bool PauseUI::init()
         return false;
     m_pStardustDropLevel2->setAnchorPoint(Vec2(0, 0.5f));
     m_pStardustDropLevel2->setScale9Enabled(true);
-    m_pStardustDropLevel2->setCapInsets(Rect(20,20,88,88));
-    m_pStardustDropLevel2->setContentSize(Size(size.height*0.3f,size.height*0.1f));
+    m_pStardustDropLevel2->setCapInsets(cocos2d::Rect(20,20,88,88));
+    m_pStardustDropLevel2->setContentSize(cocos2d::Size(size.height*0.3f,size.height*0.1f));
     m_pStardustDropLevel2->setPosition(Vec2(m_pStardustDropLevel1->getPosition().x + size.height*0.15f + 10*scale, m_pStardustDropLevelText->getPosition().y -50*scale));
     m_pStardustDropLevel2->setScale(0.5f);
     m_pPanelBg->addChild(m_pStardustDropLevel2);
@@ -148,8 +149,8 @@ bool PauseUI::init()
         return false;
     m_pStardustDropLevel3->setAnchorPoint(Vec2(0, 0.5f));
     m_pStardustDropLevel3->setScale9Enabled(true);
-    m_pStardustDropLevel3->setCapInsets(Rect(20,20,88,88));
-    m_pStardustDropLevel3->setContentSize(Size(size.height*0.3f,size.height*0.1f));
+    m_pStardustDropLevel3->setCapInsets(cocos2d::Rect(20,20,88,88));
+    m_pStardustDropLevel3->setContentSize(cocos2d::Size(size.height*0.3f,size.height*0.1f));
     m_pStardustDropLevel3->setPosition(Vec2(m_pStardustDropLevel2->getPosition().x + size.height*0.15f + 10*scale, m_pStardustDropLevelText->getPosition().y -50*scale));
     m_pStardustDropLevel3->setScale(0.5f);
     m_pPanelBg->addChild(m_pStardustDropLevel3);
@@ -159,8 +160,8 @@ bool PauseUI::init()
         return false;
     m_pStardustDropLevel4->setAnchorPoint(Vec2(0, 0.5f));
     m_pStardustDropLevel4->setScale9Enabled(true);
-    m_pStardustDropLevel4->setCapInsets(Rect(20,20,88,88));
-    m_pStardustDropLevel4->setContentSize(Size(size.height*0.3f,size.height*0.1f));
+    m_pStardustDropLevel4->setCapInsets(cocos2d::Rect(20,20,88,88));
+    m_pStardustDropLevel4->setContentSize(cocos2d::Size(size.height*0.3f,size.height*0.1f));
     m_pStardustDropLevel4->setPosition(Vec2(m_pStardustDropLevel3->getPosition().x + size.height*0.15f + 10*scale, m_pStardustDropLevelText->getPosition().y -50*scale));
     m_pStardustDropLevel4->setScale(0.5f);
     m_pPanelBg->addChild(m_pStardustDropLevel4);
@@ -170,8 +171,8 @@ bool PauseUI::init()
         return false;
     m_pStardustDropLevel5->setAnchorPoint(Vec2(0, 0.5f));
     m_pStardustDropLevel5->setScale9Enabled(true);
-    m_pStardustDropLevel5->setCapInsets(Rect(20,20,88,88));
-    m_pStardustDropLevel5->setContentSize(Size(size.height*0.3f,size.height*0.1f));
+    m_pStardustDropLevel5->setCapInsets(cocos2d::Rect(20,20,88,88));
+    m_pStardustDropLevel5->setContentSize(cocos2d::Size(size.height*0.3f,size.height*0.1f));
     m_pStardustDropLevel5->setPosition(Vec2(m_pStardustDropLevel4->getPosition().x + size.height*0.15f + 10*scale, m_pStardustDropLevelText->getPosition().y -50*scale));
     m_pStardustDropLevel5->setScale(0.5f);
     m_pPanelBg->addChild(m_pStardustDropLevel5);
@@ -199,8 +200,8 @@ bool PauseUI::init()
         return false;
     m_pItemDropLevel1->setAnchorPoint(Vec2(0, 0.5f));
     m_pItemDropLevel1->setScale9Enabled(true);
-    m_pItemDropLevel1->setCapInsets(Rect(20,20,88,88));
-    m_pItemDropLevel1->setContentSize(Size(size.height*0.3f,size.height*0.1f));
+    m_pItemDropLevel1->setCapInsets(cocos2d::Rect(20,20,88,88));
+    m_pItemDropLevel1->setContentSize(cocos2d::Size(size.height*0.3f,size.height*0.1f));
     m_pItemDropLevel1->setPosition(Vec2(m_pItemDropLevelText->getPosition().x, m_pItemDropLevelText->getPosition().y -50*scale));
     m_pItemDropLevel1->setScale(0.5f);
     m_pPanelBg->addChild(m_pItemDropLevel1);
@@ -211,8 +212,8 @@ bool PauseUI::init()
         return false;
     m_pItemDropLevel2->setAnchorPoint(Vec2(0, 0.5f));
     m_pItemDropLevel2->setScale9Enabled(true);
-    m_pItemDropLevel2->setCapInsets(Rect(20,20,88,88));
-    m_pItemDropLevel2->setContentSize(Size(size.height*0.3f,size.height*0.1f));
+    m_pItemDropLevel2->setCapInsets(cocos2d::Rect(20,20,88,88));
+    m_pItemDropLevel2->setContentSize(cocos2d::Size(size.height*0.3f,size.height*0.1f));
     m_pItemDropLevel2->setPosition(Vec2(m_pItemDropLevel1->getPosition().x + size.height*0.15f + 10*scale, m_pItemDropLevelText->getPosition().y -50*scale));
     m_pItemDropLevel2->setScale(0.5f);
     m_pPanelBg->addChild(m_pItemDropLevel2);
@@ -222,8 +223,8 @@ bool PauseUI::init()
         return false;
     m_pItemDropLevel3->setAnchorPoint(Vec2(0, 0.5f));
     m_pItemDropLevel3->setScale9Enabled(true);
-    m_pItemDropLevel3->setCapInsets(Rect(20,20,88,88));
-    m_pItemDropLevel3->setContentSize(Size(size.height*0.3f,size.height*0.1f));
+    m_pItemDropLevel3->setCapInsets(cocos2d::Rect(20,20,88,88));
+    m_pItemDropLevel3->setContentSize(cocos2d::Size(size.height*0.3f,size.height*0.1f));
     m_pItemDropLevel3->setPosition(Vec2(m_pItemDropLevel2->getPosition().x + size.height*0.15f + 10*scale, m_pItemDropLevelText->getPosition().y -50*scale));
     m_pItemDropLevel3->setScale(0.5f);
     m_pPanelBg->addChild(m_pItemDropLevel3);
@@ -233,8 +234,8 @@ bool PauseUI::init()
         return false;
     m_pItemDropLevel4->setAnchorPoint(Vec2(0, 0.5f));
     m_pItemDropLevel4->setScale9Enabled(true);
-    m_pItemDropLevel4->setCapInsets(Rect(20,20,88,88));
-    m_pItemDropLevel4->setContentSize(Size(size.height*0.3f,size.height*0.1f));
+    m_pItemDropLevel4->setCapInsets(cocos2d::Rect(20,20,88,88));
+    m_pItemDropLevel4->setContentSize(cocos2d::Size(size.height*0.3f,size.height*0.1f));
     m_pItemDropLevel4->setPosition(Vec2(m_pItemDropLevel3->getPosition().x + size.height*0.15f + 10*scale, m_pItemDropLevelText->getPosition().y -50*scale));
     m_pItemDropLevel4->setScale(0.5f);
     m_pPanelBg->addChild(m_pItemDropLevel4);
@@ -244,8 +245,8 @@ bool PauseUI::init()
         return false;
     m_pItemDropLevel5->setAnchorPoint(Vec2(0, 0.5f));
     m_pItemDropLevel5->setScale9Enabled(true);
-    m_pItemDropLevel5->setCapInsets(Rect(15,15,98,98));
-    m_pItemDropLevel5->setContentSize(Size(size.height*0.3f,size.height*0.1f));
+    m_pItemDropLevel5->setCapInsets(cocos2d::Rect(15,15,98,98));
+    m_pItemDropLevel5->setContentSize(cocos2d::Size(size.height*0.3f,size.height*0.1f));
     m_pItemDropLevel5->setPosition(Vec2(m_pItemDropLevel4->getPosition().x + size.height*0.15f + 10*scale, m_pItemDropLevelText->getPosition().y -50*scale));
     m_pItemDropLevel5->setScale(0.5f);
     m_pPanelBg->addChild(m_pItemDropLevel5);
@@ -272,8 +273,8 @@ bool PauseUI::init()
         return false;
     m_pItemEffectLevel1->setAnchorPoint(Vec2(0, 0.5f));
     m_pItemEffectLevel1->setScale9Enabled(true);
-    m_pItemEffectLevel1->setCapInsets(Rect(20,20,88,88));
-    m_pItemEffectLevel1->setContentSize(Size(size.height*0.3f,size.height*0.1f));
+    m_pItemEffectLevel1->setCapInsets(cocos2d::Rect(20,20,88,88));
+    m_pItemEffectLevel1->setContentSize(cocos2d::Size(size.height*0.3f,size.height*0.1f));
     m_pItemEffectLevel1->setPosition(Vec2(m_pItemEffectLevelText->getPosition().x, m_pItemEffectLevelText->getPosition().y -50*scale));
     m_pItemEffectLevel1->setScale(0.5f);
     m_pPanelBg->addChild(m_pItemEffectLevel1);
@@ -283,8 +284,8 @@ bool PauseUI::init()
         return false;
     m_pItemEffectLevel2->setAnchorPoint(Vec2(0, 0.5f));
     m_pItemEffectLevel2->setScale9Enabled(true);
-    m_pItemEffectLevel2->setCapInsets(Rect(20,20,88,88));
-    m_pItemEffectLevel2->setContentSize(Size(size.height*0.3f,size.height*0.1f));
+    m_pItemEffectLevel2->setCapInsets(cocos2d::Rect(20,20,88,88));
+    m_pItemEffectLevel2->setContentSize(cocos2d::Size(size.height*0.3f,size.height*0.1f));
     m_pItemEffectLevel2->setPosition(Vec2(m_pItemEffectLevel1->getPosition().x + size.height*0.15f + 10*scale, m_pItemEffectLevelText->getPosition().y -50*scale));
     m_pItemEffectLevel2->setScale(0.5f);
     m_pPanelBg->addChild(m_pItemEffectLevel2);
@@ -294,8 +295,8 @@ bool PauseUI::init()
         return false;
     m_pItemEffectLevel3->setAnchorPoint(Vec2(0, 0.5f));
     m_pItemEffectLevel3->setScale9Enabled(true);
-    m_pItemEffectLevel3->setCapInsets(Rect(20,20,88,88));
-    m_pItemEffectLevel3->setContentSize(Size(size.height*0.3f,size.height*0.1f));
+    m_pItemEffectLevel3->setCapInsets(cocos2d::Rect(20,20,88,88));
+    m_pItemEffectLevel3->setContentSize(cocos2d::Size(size.height*0.3f,size.height*0.1f));
     m_pItemEffectLevel3->setPosition(Vec2(m_pItemEffectLevel2->getPosition().x + size.height*0.15f + 10*scale, m_pItemEffectLevelText->getPosition().y -50*scale));
     m_pItemEffectLevel3->setScale(0.5f);
     m_pPanelBg->addChild(m_pItemEffectLevel3);
@@ -305,8 +306,8 @@ bool PauseUI::init()
         return false;
     m_pItemEffectLevel4->setAnchorPoint(Vec2(0, 0.5f));
     m_pItemEffectLevel4->setScale9Enabled(true);
-    m_pItemEffectLevel4->setCapInsets(Rect(20,20,88,88));
-    m_pItemEffectLevel4->setContentSize(Size(size.height*0.3f,size.height*0.1f));
+    m_pItemEffectLevel4->setCapInsets(cocos2d::Rect(20,20,88,88));
+    m_pItemEffectLevel4->setContentSize(cocos2d::Size(size.height*0.3f,size.height*0.1f));
     m_pItemEffectLevel4->setPosition(Vec2(m_pItemEffectLevel3->getPosition().x + size.height*0.15f + 10*scale, m_pItemEffectLevelText->getPosition().y -50*scale));
     m_pItemEffectLevel4->setScale(0.5f);
     m_pPanelBg->addChild(m_pItemEffectLevel4);
@@ -316,8 +317,8 @@ bool PauseUI::init()
         return false;
     m_pItemEffectLevel5->setAnchorPoint(Vec2(0, 0.5f));
     m_pItemEffectLevel5->setScale9Enabled(true);
-    m_pItemEffectLevel5->setCapInsets(Rect(20,20,88,88));
-    m_pItemEffectLevel5->setContentSize(Size(size.height*0.3f,size.height*0.1f));
+    m_pItemEffectLevel5->setCapInsets(cocos2d::Rect(20,20,88,88));
+    m_pItemEffectLevel5->setContentSize(cocos2d::Size(size.height*0.3f,size.height*0.1f));
     m_pItemEffectLevel5->setPosition(Vec2(m_pItemEffectLevel4->getPosition().x + size.height*0.15f + 10*scale, m_pItemEffectLevelText->getPosition().y -50*scale));
     m_pItemEffectLevel5->setScale(0.5f);
     m_pPanelBg->addChild(m_pItemEffectLevel5);
@@ -553,6 +554,8 @@ void PauseUI::pressHelpBtn(Ref* p,TouchEventType eventType)
     if(eventType == TouchEventType::ENDED)
     {
         SimpleAudioEngine::getInstance()->playEffect("btnclick.wav");
+        Scene* scene = HelpScene::createScene();
+        Director::getInstance()->pushScene(scene);
     }
 }
 void PauseUI::pressBackBtn(Ref* p,TouchEventType eventType)

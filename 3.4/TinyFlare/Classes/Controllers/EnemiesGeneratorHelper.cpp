@@ -11,7 +11,7 @@ USING_NS_CC;
 
 Vec2 EnemiesGeneratorHelper::getRandomPosLeftOutOfScreen(const cocos2d::Vec2& playerPos)
 {
-    Size size = Director::getInstance()->getWinSize();
+    cocos2d::Size size = Director::getInstance()->getWinSize();
     float generatorWidth = cocos2d::random(0.0f, 100.0f);
     float x = playerPos.x -(size.width*0.5f + generatorWidth);
     float y = playerPos.y +(size.height*0.5f*CCRANDOM_MINUS1_1());
@@ -19,7 +19,7 @@ Vec2 EnemiesGeneratorHelper::getRandomPosLeftOutOfScreen(const cocos2d::Vec2& pl
 }
 Vec2 EnemiesGeneratorHelper::getRandomPosRightOutOfScreen(const cocos2d::Vec2& playerPos)
 {
-    Size size = Director::getInstance()->getWinSize();
+    cocos2d::Size size = Director::getInstance()->getWinSize();
     float generatorWidth = cocos2d::random(0.0f, 100.0f);
     float x = playerPos.x + (size.width*0.5f + generatorWidth);
     float y = playerPos.y + (size.height*0.5f*CCRANDOM_MINUS1_1());
@@ -27,7 +27,7 @@ Vec2 EnemiesGeneratorHelper::getRandomPosRightOutOfScreen(const cocos2d::Vec2& p
 }
 Vec2 EnemiesGeneratorHelper::getRandomPosTopOutOfScreen(const cocos2d::Vec2& playerPos)
 {
-    Size size = Director::getInstance()->getWinSize();
+    cocos2d::Size size = Director::getInstance()->getWinSize();
     float generatorHeight = cocos2d::random(0.0f, 100.0f);
     float x = playerPos.x + (size.width*0.5f*CCRANDOM_MINUS1_1());
     float y = playerPos.y + (size.height*0.5f + generatorHeight);
@@ -35,7 +35,7 @@ Vec2 EnemiesGeneratorHelper::getRandomPosTopOutOfScreen(const cocos2d::Vec2& pla
 }
 Vec2 EnemiesGeneratorHelper::getRandomPosBottomOutOfScreen(const cocos2d::Vec2& playerPos)
 {
-    Size size = Director::getInstance()->getWinSize();
+    cocos2d::Size size = Director::getInstance()->getWinSize();
     float generatorHeight = cocos2d::random(0.0f, 100.0f);
     float x = playerPos.x + (size.width*0.5f*CCRANDOM_MINUS1_1());
     float y = playerPos.y - (size.height*0.5f + generatorHeight);
@@ -66,7 +66,7 @@ Vec2 EnemiesGeneratorHelper::getRandomPosOutOfScreen(const cocos2d::Vec2& player
 
 Vec2 EnemiesGeneratorHelper::getRandomPosLeftInScreen(const cocos2d::Vec2& playerPos)
 {
-    Size size = Director::getInstance()->getWinSize();
+    cocos2d::Size size = Director::getInstance()->getWinSize();
     float generatorWidth = cocos2d::random(0.0f, size.height*0.1f);
     float x = playerPos.x - (size.width*0.5f - generatorWidth);
     float y = playerPos.y + (size.height*0.5f*CCRANDOM_MINUS1_1());
@@ -74,7 +74,7 @@ Vec2 EnemiesGeneratorHelper::getRandomPosLeftInScreen(const cocos2d::Vec2& playe
 }
 Vec2 EnemiesGeneratorHelper::getRandomPosRightInScreen(const cocos2d::Vec2& playerPos)
 {
-    Size size = Director::getInstance()->getWinSize();
+    cocos2d::Size size = Director::getInstance()->getWinSize();
     float generatorWidth = cocos2d::random(0.0f, size.height*0.1f);
     float x = playerPos.x + (size.width*0.5f - generatorWidth);
     float y = playerPos.y + (size.height*0.5f*CCRANDOM_MINUS1_1());
@@ -82,7 +82,7 @@ Vec2 EnemiesGeneratorHelper::getRandomPosRightInScreen(const cocos2d::Vec2& play
 }
 Vec2 EnemiesGeneratorHelper::getRandomPosTopInScreen(const cocos2d::Vec2& playerPos)
 {
-    Size size = Director::getInstance()->getWinSize();
+    cocos2d::Size size = Director::getInstance()->getWinSize();
     float generatorHeight = cocos2d::random(0.0f, size.height*0.1f);
     float x = playerPos.x + (size.width*0.5f*CCRANDOM_MINUS1_1());
     float y = playerPos.y + (size.height*0.5f - generatorHeight);
@@ -90,7 +90,7 @@ Vec2 EnemiesGeneratorHelper::getRandomPosTopInScreen(const cocos2d::Vec2& player
 }
 Vec2 EnemiesGeneratorHelper::getRandomPosBottomInScreen(const cocos2d::Vec2& playerPos)
 {
-    Size size = Director::getInstance()->getWinSize();
+    cocos2d::Size size = Director::getInstance()->getWinSize();
     float generatorHeight = cocos2d::random(0.0f, size.height*0.1f);
     float x = playerPos.x + (size.width*0.5f*CCRANDOM_MINUS1_1());
     float y = playerPos.y - (size.height*0.5f - generatorHeight);

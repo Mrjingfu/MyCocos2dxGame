@@ -25,8 +25,8 @@ void EnemiesGenerator::generateOneEnemyOnRandomPos(cocos2d::Node* node, void* da
     if(info != nullptr)
     {
         Vec2 playerPos = GameController::getInstance()->getPlayerPos();
-        Size boundSize = GameController::getInstance()->getBoundSize();
-        Rect rect = Rect(-boundSize.width*0.5f, -boundSize.height*0.5f, boundSize.width, boundSize.height);
+        cocos2d::Size boundSize = GameController::getInstance()->getBoundSize();
+        cocos2d::Rect rect = cocos2d::Rect(-boundSize.width*0.5f, -boundSize.height*0.5f, boundSize.width, boundSize.height);
         Vec2 enemyPos = EnemiesGeneratorHelper::getRandomPosOutScreenInBoundRect(playerPos, rect);
         Vec2 dir = playerPos - enemyPos;
         dir.normalize();

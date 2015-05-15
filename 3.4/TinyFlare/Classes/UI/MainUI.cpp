@@ -93,8 +93,8 @@ bool MainUI::init()
     if(!m_pLevelProgressBg)
         return false;
     m_pLevelProgressBg->setScale9Enabled(true);
-    m_pLevelProgressBg->setCapInsets(Rect(0,2,128,0.5f));
-    m_pLevelProgressBg->setContentSize(Size(size.width*0.4f,8.0f*scale));
+    m_pLevelProgressBg->setCapInsets(cocos2d::Rect(0,2,128,0.5f));
+    m_pLevelProgressBg->setContentSize(cocos2d::Size(size.width*0.4f,8.0f*scale));
     m_pLevelProgressBg->setPosition(Vec2(size.width*0.5f, 50.0f*scale));
     m_pLevelProgressBg->setOpacity(128);
     addChild(m_pLevelProgressBg);
@@ -103,8 +103,8 @@ bool MainUI::init()
     if(!m_pLevelProgress)
         return false;
     m_pLevelProgress->setScale9Enabled(true);
-    m_pLevelProgress->setCapInsets(Rect(0,1,128,0.5f));
-    m_pLevelProgress->setContentSize(Size(size.width*0.4f,8.0f*scale));
+    m_pLevelProgress->setCapInsets(cocos2d::Rect(0,1,128,0.5f));
+    m_pLevelProgress->setContentSize(cocos2d::Size(size.width*0.4f,8.0f*scale));
     m_pLevelProgress->setPosition(Vec2(size.width*0.5f, 50.0f*scale));
     addChild(m_pLevelProgress);
     

@@ -42,7 +42,7 @@ bool TwoJoysticks::init(const std::string& leftBgTex, const std::string& leftTex
     if (!Layer::init())
         return false;
     
-    Size visibleSize = Director::getInstance()->getVisibleSize();
+    cocos2d::Size visibleSize = Director::getInstance()->getVisibleSize();
     m_fScale = visibleSize.height/640.0f;
     m_JoystickLeftPos = m_JoystickLeftPos*m_fScale;
     m_JoystickRightPos = Vec2(visibleSize.width - m_JoystickLeftPos.x, m_JoystickLeftPos.y);

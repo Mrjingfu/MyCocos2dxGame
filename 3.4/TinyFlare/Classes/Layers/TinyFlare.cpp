@@ -8,6 +8,7 @@
 
 #include "TinyFlare.h"
 #include "GameController.h"
+#include "NativeBridge.h"
 USING_NS_CC;
 
 Scene* TinyFlare::createScene()
@@ -47,6 +48,7 @@ bool TinyFlare::init()
 void TinyFlare::onEnter()
 {
     Layer::onEnter();
+    NativeBridge::getInstance()->showRateAppView();
     scheduleUpdate();
     if(!GameController::getInstance()->init(this))
         CCLOGERROR("GameController init failed!");

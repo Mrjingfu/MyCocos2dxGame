@@ -553,7 +553,7 @@ bool ActorsManager::init(cocos2d::Layer* gameLayer)
 }
 void ActorsManager::update(float delta)
 {
-    Size boundSize =  GameController::getInstance()->getBoundSize();
+    cocos2d::Size boundSize =  GameController::getInstance()->getBoundSize();
     Vec2 playerPos = GameController::getInstance()->getPlayerPos();
     
     //CCLOG("Current bullets number %zd", m_Bullets.size());

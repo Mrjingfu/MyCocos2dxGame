@@ -47,7 +47,7 @@ bool ShatterSprite::init(const std::string& texFileName)
 
 void ShatterSprite::createShatter()
 {
-    Size contentSize = getContentSize();
+    cocos2d::Size contentSize = getContentSize();
     const int nRow= (int) floorf(contentSize.height / m_fGridSideLen);
     const int nCol= (int) floorf(contentSize.width / m_fGridSideLen);
     const int fragCount = nRow * nCol;
@@ -76,7 +76,7 @@ void ShatterSprite::createShatter()
 }
 void ShatterSprite::resetShatter()
 {
-    Size contentSize= getContentSize();
+    cocos2d::Size contentSize= getContentSize();
     int nRow = (int)m_GridSprite.size();
     int nCol = ( nRow == 0 ? 0 : (int)m_GridSprite[0].size());
     const float halfGridSideLen= 0.5f * m_fGridSideLen;
@@ -85,7 +85,7 @@ void ShatterSprite::resetShatter()
             FragSprite* frag = m_GridSprite[i][j];
             float x = j * m_fGridSideLen + halfGridSideLen;
             float y = contentSize.height - (i * m_fGridSideLen + halfGridSideLen);
-            frag->setTextureRect(Rect(x - halfGridSideLen,(contentSize.height - y) - halfGridSideLen, m_fGridSideLen,m_fGridSideLen));
+            frag->setTextureRect(cocos2d::Rect(x - halfGridSideLen,(contentSize.height - y) - halfGridSideLen, m_fGridSideLen,m_fGridSideLen));
             frag->setPosition(x,y);
             frag->setScale(m_fInitalFrageScale);
             frag->setOpacity(255);
@@ -95,7 +95,7 @@ void ShatterSprite::resetShatter()
 }
 void ShatterSprite::updateShatterAction(float time, float delta,float growSpeedOfTargetR)
 {
-    Size contentSize = getContentSize();
+    cocos2d::Size contentSize = getContentSize();
     Vec2 center = Vec2(contentSize.width*0.5f, contentSize.height*0.5f);
     float initalTargetR = center.length();
     int nRow = (int)m_GridSprite.size();

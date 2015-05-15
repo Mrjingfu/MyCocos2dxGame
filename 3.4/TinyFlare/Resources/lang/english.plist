@@ -26,5 +26,55 @@
 	<string>Take %d stardust enhanced your effect or effect duration of reinforced props to level %d!</string>
 	<key>ITEM_EFFECT_MAX</key>
 	<string>You have reached the maximum level of reinforced props effect or effect duration!</string>
+	<key>RATE_TITLE</key>
+	<string>Rate SpaceGeomtryWar</string>
+	<key>RATE_MESSAGE</key>
+	<string>thanks for your supports!</string>
+	<key>RATE_NOW</key>
+	<string>Very good, support you!</string>
+	<key>RATE_NEVER</key>
+	<string>Too bad, refused!</string>
+	<key>RATE_LATER</key>
+	<string>Play more a while, rate later!</string>
+	<key>CONTROL_DESC</key>
+	<string>CONTROL INSTRUCTIONS</string>
+	<key>ENEMY_DESC</key>
+	<string>ENEMY INSTRUCTIONS</string>
+	<key>ITEM_DESC</key>
+	<string>GOODS INSTRUCTIONS</string>
+	<key>JOYSTICK_LEFT_DESC</key>
+	<string>Left blue joystick is used to control the moving direction of aircraft.</string>
+	<key>JOYSTICK_RIGHT_DESC</key>
+	<string>Right blue joystick is used to control the shooting direction of aircraft, press and hold the middle of the joystick button to keep shooting.</string>
+	<key>CIRCLE_DESC</key>
+	<string>Circle enemy will track and crash your aircraft, killing it!</string>
+	<key>COLOR_CIRCLE_DESC</key>
+	<string>Color circle enemy will be at a higher speed tracking and crash your aircraft, when it destroyed will be split into six ordinary circle enemy, you have to be careful!</string>
+	<key>TRIANGLE_DESC</key>
+	<string>Triangle enemy will be at a high speed tracking and crash your aircraft, and will be short of the charge, avoid it!</string>
+	<key>COLOR_TRIANGLE_DESC</key>
+	<string>Color triangle enemy will use the super high speed impact and crash your aircraft, you&apos;ll be very sorry!</string>
+	<key>DIAMOND_DESC</key>
+	<string>Diamond enemy will avoid and shooting your aircraft, you will to be a target!</string>
+	<key>COLOR_DIAMOND_DESC</key>
+	<string>Color diamond enemy will avoid and multiple shooting your aircraft, you will die!</string>
+	<key>STAR_DESC</key>
+	<string>Star enemy will track your aircraft, and the five corners of the direction will continuous shot, can you escape?</string>
+	<key>COLOR_STAR_DESC</key>
+	<string>Color star enemy will track your aircraft, and to launch a large number of barrage around, to play psikyo!</string>
+	<key>HEXAGON_DESC</key>
+	<string>Hexagon enemy will manufacturing  laser in space, you hit hung up!</string>
+	<key>COLOR_HEXAGON_DESC</key>
+	<string>Color Hexagon enemy will make black holes in space, once near you, you will be sucked in to flee, run!</string>
+	<key>ACCEL_DESC</key>
+	<string>Accelerating shooting props, accelerate the shooting speed of aircraft.</string>
+	<key>MULTI_DESC</key>
+	<string>Multiple shooting props, you can also make the aircraft to the three directions of shooting.</string>
+	<key>PROTECTED_DESC</key>
+	<string>The protection props, to make your aircraft in the invincible state.</string>
+	<key>TIME_DESC</key>
+	<string>The time props, space time stationary, but your aircraft is not affected.</string>
+	<key>BOOM_DESC</key>
+	<string>The bomb props,the explosion barrage around your aircraft, help you get rid of the enemy.</string>
 </dict>
 </plist>

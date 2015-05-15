@@ -24,11 +24,12 @@
  ****************************************************************************/
 
 #import <UIKit/UIKit.h>
-
+#import "RateThisAppDialog.h"
 
 @interface RootViewController : UIViewController {
 
 }
 - (BOOL) prefersStatusBarHidden;
-
+- (void) showRateAppViewCH;
+- (void) showRateAppViewEN;
 @end

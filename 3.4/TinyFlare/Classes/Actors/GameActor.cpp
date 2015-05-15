@@ -76,7 +76,7 @@ void GameActor::setBounce(bool bounce)
 void GameActor::caculateRadius()
 {
     if (m_pModel) {
-        Rect rect = m_pModel->getBoundingBox();
+        cocos2d::Rect rect = m_pModel->getBoundingBox();
         Vec2 min = Vec2(rect.getMaxX(), rect.getMaxY());
         Vec2 max = Vec2(rect.getMinX(), rect.getMinY());
         m_fRadius = max.distance(min) * 0.5f;

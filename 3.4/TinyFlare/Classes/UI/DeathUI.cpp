@@ -10,6 +10,7 @@
 #include "UtilityHelper.h"
 #include "GameController.h"
 #include "SimpleAudioEngine.h"
+#include "HelpScene.h"
 USING_NS_CC;
 using namespace CocosDenshion;
 
@@ -44,12 +45,21 @@ bool DeathUI::init()
 {
     auto size = Director::getInstance()->getVisibleSize();
     float scale = size.height/640.0f;
+    
+    ParticleSystemQuad* starfield= ParticleSystemQuad::create("starfield.plist");
+    if(!starfield)
+    {
+        CCLOG("Load explosion particle system failed! file: starfield.plist");
+        return nullptr;
+    }
+    this->addChild(starfield);
+    
     m_pMenuBg = ui::ImageView::create("menubg.png");
     if(!m_pMenuBg)
         return false;
     m_pMenuBg->setScale9Enabled(true);
-    m_pMenuBg->setCapInsets(Rect(0,1,128,2));
-    m_pMenuBg->setContentSize(Size(size.width,size.height*0.3f));
+    m_pMenuBg->setCapInsets(cocos2d::Rect(0,1,128,2));
+    m_pMenuBg->setContentSize(cocos2d::Size(size.width,size.height*0.3f));
     m_pMenuBg->setPosition(Vec2(size.width*0.5f, size.height*0.65f));
     m_pMenuBg->setScale(0);
     addChild(m_pMenuBg);
@@ -76,8 +86,8 @@ bool DeathUI::init()
         return false;
     m_pPlayGameBtn->addTouchEventListener(CC_CALLBACK_2(DeathUI::pressContinueGameBtn, this));
     m_pPlayGameBtn->setScale9Enabled(true);
-    m_pPlayGameBtn->setCapInsets(Rect(0,2,128,0.5f));
-    m_pPlayGameBtn->setContentSize(Size(size.width,size.height*0.1f));
+    m_pPlayGameBtn->setCapInsets(cocos2d::Rect(0,2,128,0.5f));
+    m_pPlayGameBtn->setContentSize(cocos2d::Size(size.width,size.height*0.1f));
     m_pPlayGameBtn->setPosition(Vec2(size.width*0.5f, size.height*0.3f));
     m_pPlayGameBtn->setScale(0);
     addChild(m_pPlayGameBtn);
@@ -88,7 +98,7 @@ bool DeathUI::init()
     m_pPlayText = ui::Text::create(UtilityHelper::getLocalString("PRESS_CONTINUE"), "FZXS12.TTF", size.height*0.05f);
     if(!m_pPlayText)
         return false;
-    m_pPlayText->setPosition(Size(size.width*0.5f,size.height*0.3f));
+    m_pPlayText->setPosition(cocos2d::Size(size.width*0.5f,size.height*0.3f));
     m_pPlayText->setOpacity(0);
     m_pPlayText->setColor(Color3B(208,255,208));
     addChild(m_pPlayText);
@@ -174,6 +184,8 @@ void DeathUI::pressHelpBtn(Ref* p,TouchEventType eventType)
     if(eventType == TouchEventType::ENDED)
     {
         SimpleAudioEngine::getInstance()->playEffect("btnclick.wav");
+        Scene* scene = HelpScene::createScene();
+        Director::getInstance()->pushScene(scene);
     }
 }
 void DeathUI::pressBackBtn(Ref* p,TouchEventType eventType)

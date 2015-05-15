@@ -11,6 +11,7 @@
 #include "GameController.h"
 #include "SimpleAudioEngine.h"
 #include "EncrytionUtility.h"
+#include "HelpScene.h"
 USING_NS_CC;
 using namespace CocosDenshion;
 MenuUI* MenuUI::create()
@@ -47,8 +48,8 @@ bool MenuUI::init()
     if(!m_pMenuBg)
         return false;
     m_pMenuBg->setScale9Enabled(true);
-    m_pMenuBg->setCapInsets(Rect(0,1,128,2));
-    m_pMenuBg->setContentSize(Size(size.width,size.height*0.3f));
+    m_pMenuBg->setCapInsets(cocos2d::Rect(0,1,128,2));
+    m_pMenuBg->setContentSize(cocos2d::Size(size.width,size.height*0.3f));
     m_pMenuBg->setPosition(Vec2(size.width*0.5f, size.height*0.65f));
     m_pMenuBg->setScale(0);
     addChild(m_pMenuBg);
@@ -75,8 +76,8 @@ bool MenuUI::init()
         return false;
     m_pPlayGameBtn->addTouchEventListener(CC_CALLBACK_2(MenuUI::pressPlayGameBtn, this));
     m_pPlayGameBtn->setScale9Enabled(true);
-    m_pPlayGameBtn->setCapInsets(Rect(0,2,128,0.5f));
-    m_pPlayGameBtn->setContentSize(Size(size.width,size.height*0.1f));
+    m_pPlayGameBtn->setCapInsets(cocos2d::Rect(0,2,128,0.5f));
+    m_pPlayGameBtn->setContentSize(cocos2d::Size(size.width,size.height*0.1f));
     m_pPlayGameBtn->setPosition(Vec2(size.width*0.5f, size.height*0.3f));
     m_pPlayGameBtn->setScale(0);
     addChild(m_pPlayGameBtn);
@@ -89,7 +90,7 @@ bool MenuUI::init()
         return false;
     if(EncrytionUtility::getIntegerForKey("CurrentStage", 1) != 1)
         m_pPlayText->setString(UtilityHelper::getLocalString("PRESS_CONTINUE"));
-    m_pPlayText->setPosition(Size(size.width*0.5f,size.height*0.3f));
+    m_pPlayText->setPosition(cocos2d::Size(size.width*0.5f,size.height*0.3f));
     m_pPlayText->setOpacity(0);
     m_pPlayText->setColor(Color3B(208,255,208));
     addChild(m_pPlayText);
@@ -169,6 +170,8 @@ void MenuUI::pressHelpBtn(Ref* p,TouchEventType eventType)
     if(eventType == TouchEventType::ENDED)
     {
         SimpleAudioEngine::getInstance()->playEffect("btnclick.wav");
+        Scene* scene = HelpScene::createScene();
+        Director::getInstance()->pushScene(scene);
     }
 }
 

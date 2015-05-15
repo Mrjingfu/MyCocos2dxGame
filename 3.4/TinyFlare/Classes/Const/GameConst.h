@@ -11,7 +11,7 @@
 
 #include "cocos2d.h"
 
-static const char* PACKAGE_NAME = "com.wanax.tinyflare";
+static const char* PACKAGE_NAME = "com.wanax.spacegeomtrywar";
 
 static int MAX_LEVEL = 42;
 

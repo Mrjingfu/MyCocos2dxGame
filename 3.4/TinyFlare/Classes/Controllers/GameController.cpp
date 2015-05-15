@@ -32,7 +32,7 @@ GameController::GameController()
     m_pPlayer           = nullptr;
     m_pTwoJoysticks     = nullptr;
     m_pActorCamera      = nullptr;
-    m_BoundSize         = Size(2048, 1536);
+    m_BoundSize         = cocos2d::Size(2048, 1536);
     m_pEnemiesGenerator = nullptr;
     m_curGameState      = GS_UNKNOWN;
     m_bDebugMode        = false;
@@ -206,7 +206,7 @@ EnemiesGenerator* GameController::getEnemiesGenerator() const
 {
     return m_pEnemiesGenerator;
 }
-Size GameController::getBoundSize() const
+cocos2d::Size GameController::getBoundSize() const
 {
     return m_BoundSize;
 }
@@ -473,14 +473,14 @@ void GameController::subStardust(ChaosNumber& num)
 }
 Vec2 GameController::getStardustTargetPos()
 {
-    Size size = Director::getInstance()->getVisibleSize();
+    cocos2d::Size size = Director::getInstance()->getVisibleSize();
     if(!m_pActorCamera)
         return Vec2(-size.width * 0.5f, size.height * 0.5f) ;
     return m_pActorCamera->getPosition() + Vec2(-size.width * 0.5f, size.height * 0.5f);
 }
 Vec2 GameController::getStardustStartPos()
 {
-    Size size = Director::getInstance()->getVisibleSize();
+    cocos2d::Size size = Director::getInstance()->getVisibleSize();
     if(!m_pActorCamera)
         return Vec2(-size.width * 0.5f, size.height * 0.5f) ;
     return m_pActorCamera->getPosition() + Vec2(size.width * 0.25f, -size.height * 0.45f);

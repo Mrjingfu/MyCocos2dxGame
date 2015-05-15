@@ -26,5 +26,55 @@
 	<string>花费 %d 个星尘提升你的增强道具效果或效果时间等级到 %d 级!</string>
 	<key>ITEM_EFFECT_MAX</key>
 	<string>你的增强道具效果或效果时间等级已经提升到最大等级!</string>
+	<key>RATE_TITLE</key>
+	<string>评价太空几何大战</string>
+	<key>RATE_MESSAGE</key>
+	<string>谢谢您的支持!</string>
+	<key>RATE_NOW</key>
+	<string>赞一个,支持一下!</string>
+	<key>RATE_NEVER</key>
+	<string>很烂,拒绝评价！</string>
+	<key>RATE_LATER</key>
+	<string>再玩一下,稍后再说!</string>
+	<key>CONTROL_DESC</key>
+	<string>操作说明</string>
+	<key>ENEMY_DESC</key>
+	<string>敌人说明</string>
+	<key>ITEM_DESC</key>
+	<string>道具说明</string>
+	<key>JOYSTICK_LEFT_DESC</key>
+	<string>蓝色虚拟摇杆用来控制飞行器移动方向。</string>
+	<key>JOYSTICK_RIGHT_DESC</key>
+	<string>红色虚拟摇杆用来控制飞行器射击方向，按住中间摇杆按键来保持射击。</string>
+	<key>CIRCLE_DESC</key>
+	<string>圆形敌人会追踪撞毁你的飞行器，干掉它!</string>
+	<key>COLOR_CIRCLE_DESC</key>
+	<string>彩色圆形敌人会以更高速度追踪撞毁你的飞行器，它被击毁后仍能分裂出6个普通圆形敌人，你要小心了!</string>
+	<key>TRIANGLE_DESC</key>
+	<string>三角形敌人会以高速追踪撞毁你的飞行器，并会短暂进行冲锋，躲着它点哦!</string>
+	<key>COLOR_TRIANGLE_DESC</key>
+	<string>彩色三角形敌人会以超高速冲击撞毁你的飞行器，它会超级冲锋，有你好看！</string>
+	<key>DIAMOND_DESC</key>
+	<string>菱形敌人会躲避你的飞行器，并向你的飞行器射击，你要成靶子了！</string>
+	<key>COLOR_DIAMOND_DESC</key>
+	<string>菱形敌人会躲避你的飞行器，并向你的飞行器做多重射击，你要成筛子了！</string>
+	<key>STAR_DESC</key>
+	<string>五角星敌人会追踪你的飞行器，并向五个角方向连续发射子弹，你能躲开么？</string>
+	<key>COLOR_STAR_DESC</key>
+	<string>彩色五角星敌人会追踪你的飞行器，并向周围发射大量弹幕，你要玩彩京吗！</string>
+	<key>HEXAGON_DESC</key>
+	<string>五边形敌人会在空间中制造激光带，你撞上就挂了！</string>
+	<key>COLOR_HEXAGON_DESC</key>
+	<string>彩色五边形敌人会在空间中制造黑洞，一旦你靠近，你就会被吸进去了～快逃！</string>
+	<key>ACCEL_DESC</key>
+	<string>加速射击道具，加快飞行器的射击速度。</string>
+	<key>MULTI_DESC</key>
+	<string>多重射击道具，使你的飞行器可以同时向三个方向射击。</string>
+	<key>PROTECTED_DESC</key>
+	<string>保护道具，使你的飞行器处于无敌状态。</string>
+	<key>TIME_DESC</key>
+	<string>时间道具，使空间时间静止，但你的飞行器不受影响。</string>
+	<key>BOOM_DESC</key>
+	<string>炸弹道具，在你的飞行器周围产生爆炸弹幕，帮你清除敌人。</string>
 </dict>
 </plist>
