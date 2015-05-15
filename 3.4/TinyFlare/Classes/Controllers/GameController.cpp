@@ -131,7 +131,10 @@ void GameController::update(float delta)
 }
 void GameController::destroy()
 {
+    setGameState(GS_UNKNOWN);
     ActorsManager::getInstance()->destroy();
+    m_pMainLayer->removeAllChildren();
+    m_pMainLayer = nullptr;
 }
 void GameController::nextStage()
 {

@@ -32,7 +32,6 @@ DeathUI::DeathUI()
     m_pRemoveADSBtn     = nullptr;
 //    m_pRankBtn          = nullptr;
 //    m_pShareBtn         = nullptr;
-    m_pHelpBtn          = nullptr;
     m_pBackBtn          = nullptr;
     m_pMenuBg           = nullptr;
     m_pGameTitle        = nullptr;
@@ -45,14 +44,6 @@ bool DeathUI::init()
 {
     auto size = Director::getInstance()->getVisibleSize();
     float scale = size.height/640.0f;
-    
-    ParticleSystemQuad* starfield= ParticleSystemQuad::create("starfield.plist");
-    if(!starfield)
-    {
-        CCLOG("Load explosion particle system failed! file: starfield.plist");
-        return nullptr;
-    }
-    this->addChild(starfield);
     
     m_pMenuBg = ui::ImageView::create("menubg.png");
     if(!m_pMenuBg)
@@ -113,7 +104,7 @@ bool DeathUI::init()
     if(!m_pRemoveADSBtn)
         return false;
     m_pRemoveADSBtn->addTouchEventListener(CC_CALLBACK_2(DeathUI::pressRemoveADSBtn, this));
-    m_pRemoveADSBtn->setPosition(Vec2(size.width - m_pRemoveADSBtn->getContentSize().width*scale*2.1f, size.height*0.1f));
+    m_pRemoveADSBtn->setPosition(Vec2(size.width - m_pRemoveADSBtn->getContentSize().width*scale*1.4f, size.height*0.1f));
     m_pRemoveADSBtn->setScale(0.4f*scale);
     addChild(m_pRemoveADSBtn);
     
@@ -132,14 +123,6 @@ bool DeathUI::init()
 //    m_pShareBtn->setPosition(Vec2(size.width - m_pShareBtn->getContentSize().width*scale*0.7f, size.height*0.1f));
 //    m_pShareBtn->setScale(0.4f*scale);
 //    addChild(m_pShareBtn);
-    
-    m_pHelpBtn = ui::Button::create("help.png");
-    if(!m_pHelpBtn)
-        return false;
-    m_pHelpBtn->addTouchEventListener(CC_CALLBACK_2(DeathUI::pressHelpBtn, this));
-    m_pHelpBtn->setPosition(Vec2(size.width - m_pHelpBtn->getContentSize().width*scale*1.4f, size.height*0.1f));
-    m_pHelpBtn->setScale(0.4f*scale);
-    addChild(m_pHelpBtn);
     
     m_pBackBtn = ui::Button::create("exit.png");
     if(!m_pBackBtn)
@@ -179,15 +162,6 @@ void DeathUI::pressRemoveADSBtn(Ref* p,TouchEventType eventType)
 //        SimpleAudioEngine::getInstance()->playEffect("btnclick.wav");
 //    }
 //}
-void DeathUI::pressHelpBtn(Ref* p,TouchEventType eventType)
-{
-    if(eventType == TouchEventType::ENDED)
-    {
-        SimpleAudioEngine::getInstance()->playEffect("btnclick.wav");
-        Scene* scene = HelpScene::createScene();
-        Director::getInstance()->pushScene(scene);
-    }
-}
 void DeathUI::pressBackBtn(Ref* p,TouchEventType eventType)
 {
     if(eventType == TouchEventType::ENDED)

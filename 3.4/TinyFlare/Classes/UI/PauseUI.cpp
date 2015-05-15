@@ -32,7 +32,6 @@ PauseUI::PauseUI()
 {
     //m_pRankBtn      = nullptr;
     m_pRemoveADSBtn = nullptr;
-    m_pHelpBtn      = nullptr;
     m_pBackBtn      = nullptr;
     
     m_pStardustDropLevelText    = nullptr;
@@ -93,17 +92,9 @@ bool PauseUI::init()
     if(!m_pRemoveADSBtn)
         return false;
     m_pRemoveADSBtn->addTouchEventListener(CC_CALLBACK_2(PauseUI::pressRemoveADSBtn, this));
-    m_pRemoveADSBtn->setPosition(Vec2(size.width - m_pRemoveADSBtn->getContentSize().width*scale*2.1f, size.height*0.08f));
+    m_pRemoveADSBtn->setPosition(Vec2(size.width - m_pRemoveADSBtn->getContentSize().width*scale*1.4f, size.height*0.08f));
     m_pRemoveADSBtn->setScale(0.4f*scale);
     m_pPanelBg->addChild(m_pRemoveADSBtn);
-    
-    m_pHelpBtn = ui::Button::create("help.png");
-    if(!m_pHelpBtn)
-        return false;
-    m_pHelpBtn->addTouchEventListener(CC_CALLBACK_2(PauseUI::pressHelpBtn, this));
-    m_pHelpBtn->setPosition(Vec2(size.width - m_pHelpBtn->getContentSize().width*scale*1.4f, size.height*0.08f));
-    m_pHelpBtn->setScale(0.4f*scale);
-    m_pPanelBg->addChild(m_pHelpBtn);
     
     m_pBackBtn = ui::Button::create("exit.png");
     if(!m_pBackBtn)
@@ -547,15 +538,6 @@ void PauseUI::pressRemoveADSBtn(Ref* p,TouchEventType eventType)
     if(eventType == TouchEventType::ENDED)
     {
         SimpleAudioEngine::getInstance()->playEffect("btnclick.wav");
-    }
-}
-void PauseUI::pressHelpBtn(Ref* p,TouchEventType eventType)
-{
-    if(eventType == TouchEventType::ENDED)
-    {
-        SimpleAudioEngine::getInstance()->playEffect("btnclick.wav");
-        Scene* scene = HelpScene::createScene();
-        Director::getInstance()->pushScene(scene);
     }
 }
 void PauseUI::pressBackBtn(Ref* p,TouchEventType eventType)

@@ -86,7 +86,7 @@ bool MainUI::init()
         return false;
     m_pPauseGameBtn->addTouchEventListener(CC_CALLBACK_2(MainUI::pressPauseGameBtn, this));
     m_pPauseGameBtn->setPosition(Vec2(size.width - 30*scale, size.height - 30*scale));
-    m_pPauseGameBtn->setScale(0.2f*scale);
+    m_pPauseGameBtn->setScale(0.3f*scale);
     addChild(m_pPauseGameBtn);
     
     m_pLevelProgressBg = ui::ImageView::create("menubg.png");

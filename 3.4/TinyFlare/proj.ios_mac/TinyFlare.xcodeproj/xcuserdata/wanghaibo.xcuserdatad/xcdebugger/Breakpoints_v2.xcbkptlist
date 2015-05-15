@@ -490,11 +490,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Controllers/GameController.cpp"
-            timestampString = "452519625.992906"
+            timestampString = "453395790.737408"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "318"
-            endingLineNumber = "318">
+            startingLineNumber = "321"
+            endingLineNumber = "321">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1349,11 +1349,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Controllers/GameController.cpp"
-            timestampString = "452519625.992906"
+            timestampString = "453395790.737408"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "280"
-            endingLineNumber = "280"
+            startingLineNumber = "283"
+            endingLineNumber = "283"
             landmarkName = "GameController::onEnterGame()"
             landmarkType = "5">
          </BreakpointContent>
@@ -2053,11 +2053,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Controllers/GameController.cpp"
-            timestampString = "452519625.992906"
+            timestampString = "453395790.737408"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "391"
-            endingLineNumber = "391"
+            startingLineNumber = "394"
+            endingLineNumber = "394"
             landmarkName = "GameController::gameStart()"
             landmarkType = "5">
          </BreakpointContent>
@@ -2197,11 +2197,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Controllers/GameController.cpp"
-            timestampString = "452519625.992906"
+            timestampString = "453395790.737408"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "328"
-            endingLineNumber = "328"
+            startingLineNumber = "331"
+            endingLineNumber = "331"
             landmarkName = "GameController::onEnterDebug()"
             landmarkType = "5">
          </BreakpointContent>
@@ -2561,11 +2561,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Controllers/GameController.cpp"
-            timestampString = "452519625.992906"
+            timestampString = "453395790.737408"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "206"
-            endingLineNumber = "206"
+            startingLineNumber = "209"
+            endingLineNumber = "209"
             landmarkName = "GameController::getEnemiesGenerator()"
             landmarkType = "5">
          </BreakpointContent>
@@ -2577,11 +2577,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Controllers/GameController.cpp"
-            timestampString = "452519625.992906"
+            timestampString = "453395790.737408"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "205"
-            endingLineNumber = "205"
+            startingLineNumber = "208"
+            endingLineNumber = "208"
             landmarkName = "GameController::getEnemiesGenerator()"
             landmarkType = "5">
          </BreakpointContent>
@@ -2641,11 +2641,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Controllers/GameController.cpp"
-            timestampString = "452519625.992906"
+            timestampString = "453395790.737408"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "281"
-            endingLineNumber = "281"
+            startingLineNumber = "284"
+            endingLineNumber = "284"
             landmarkName = "GameController::onEnterGame()"
             landmarkType = "5">
          </BreakpointContent>
@@ -3201,11 +3201,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/UI/PauseUI.cpp"
-            timestampString = "453288130.203982"
+            timestampString = "453396083.025866"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "70"
-            endingLineNumber = "70"
+            startingLineNumber = "69"
+            endingLineNumber = "69"
             landmarkName = "PauseUI::init()"
             landmarkType = "5">
          </BreakpointContent>
@@ -3279,11 +3279,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Controllers/GameController.cpp"
-            timestampString = "452519625.992906"
+            timestampString = "453395790.737408"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "179"
-            endingLineNumber = "179"
+            startingLineNumber = "182"
+            endingLineNumber = "182"
             landmarkName = "GameController::setGameState(GameState state)"
             landmarkType = "5">
          </BreakpointContent>
@@ -3295,11 +3295,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Controllers/GameController.cpp"
-            timestampString = "452519625.992906"
+            timestampString = "453395790.737408"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "180"
-            endingLineNumber = "180"
+            startingLineNumber = "183"
+            endingLineNumber = "183"
             landmarkName = "GameController::setGameState(GameState state)"
             landmarkType = "5">
          </BreakpointContent>
@@ -3311,11 +3311,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Controllers/GameController.cpp"
-            timestampString = "452018232.66314"
+            timestampString = "453395790.737408"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "443"
-            endingLineNumber = "443"
+            startingLineNumber = "446"
+            endingLineNumber = "446"
             landmarkName = "GameController::pauseStart()"
             landmarkType = "5">
          </BreakpointContent>
@@ -3375,11 +3375,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Controllers/GameController.cpp"
-            timestampString = "452506530.879889"
+            timestampString = "453395790.737408"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "461"
-            endingLineNumber = "461"
+            startingLineNumber = "464"
+            endingLineNumber = "464"
             landmarkName = "GameController::pauseEnd()"
             landmarkType = "5">
          </BreakpointContent>
@@ -3391,11 +3391,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Controllers/GameController.cpp"
-            timestampString = "452506530.879889"
+            timestampString = "453395790.737408"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "451"
-            endingLineNumber = "451"
+            startingLineNumber = "454"
+            endingLineNumber = "454"
             landmarkName = "GameController::pauseStart()"
             landmarkType = "5">
          </BreakpointContent>
@@ -3407,11 +3407,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/UI/PauseUI.cpp"
-            timestampString = "453288130.203982"
+            timestampString = "453396083.025866"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "360"
-            endingLineNumber = "360"
+            startingLineNumber = "351"
+            endingLineNumber = "351"
             landmarkName = "PauseUI::endToPause()"
             landmarkType = "5">
          </BreakpointContent>
@@ -3423,11 +3423,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Controllers/GameController.cpp"
-            timestampString = "452519625.992906"
+            timestampString = "453395790.737408"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "295"
-            endingLineNumber = "295"
+            startingLineNumber = "298"
+            endingLineNumber = "298"
             landmarkName = "GameController::onEnterPause()"
             landmarkType = "5">
          </BreakpointContent>
@@ -3455,11 +3455,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Controllers/GameController.cpp"
-            timestampString = "452519625.992906"
+            timestampString = "453395790.737408"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "341"
-            endingLineNumber = "341"
+            startingLineNumber = "344"
+            endingLineNumber = "344"
             landmarkName = "GameController::menuStart()"
             landmarkType = "5">
          </BreakpointContent>
@@ -3471,11 +3471,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Controllers/GameController.cpp"
-            timestampString = "452018232.66314"
+            timestampString = "453395790.737408"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "399"
-            endingLineNumber = "399"
+            startingLineNumber = "402"
+            endingLineNumber = "402"
             landmarkName = "GameController::gameEnd()"
             landmarkType = "5">
          </BreakpointContent>
@@ -3567,11 +3567,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Controllers/GameController.cpp"
-            timestampString = "452018232.66314"
+            timestampString = "453395790.737408"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "393"
-            endingLineNumber = "393"
+            startingLineNumber = "396"
+            endingLineNumber = "396"
             landmarkName = "GameController::gameStart()"
             landmarkType = "5">
          </BreakpointContent>
@@ -3647,11 +3647,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Controllers/GameController.cpp"
-            timestampString = "452519625.992906"
+            timestampString = "453395790.737408"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "138"
-            endingLineNumber = "138"
+            startingLineNumber = "141"
+            endingLineNumber = "141"
             landmarkName = "GameController::nextStage()"
             landmarkType = "5">
          </BreakpointContent>
@@ -3663,11 +3663,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Controllers/GameController.cpp"
-            timestampString = "452519625.992906"
+            timestampString = "453395790.737408"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "163"
-            endingLineNumber = "163"
+            startingLineNumber = "166"
+            endingLineNumber = "166"
             landmarkName = "GameController::setGameState(GameState state)"
             landmarkType = "5">
          </BreakpointContent>
@@ -3695,11 +3695,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Controllers/GameController.cpp"
-            timestampString = "452519625.992906"
+            timestampString = "453395790.737408"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "183"
-            endingLineNumber = "183"
+            startingLineNumber = "186"
+            endingLineNumber = "186"
             landmarkName = "GameController::setGameState(GameState state)"
             landmarkType = "5">
          </BreakpointContent>
@@ -3727,11 +3727,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Controllers/GameController.cpp"
-            timestampString = "452519625.992906"
+            timestampString = "453395790.737408"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "141"
-            endingLineNumber = "141"
+            startingLineNumber = "144"
+            endingLineNumber = "144"
             landmarkName = "GameController::nextStage()"
             landmarkType = "5">
          </BreakpointContent>
@@ -3871,11 +3871,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Layers/HelpScene.cpp"
-            timestampString = "453362369.592293"
+            timestampString = "453396556.53284"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "43"
-            endingLineNumber = "43"
+            startingLineNumber = "44"
+            endingLineNumber = "44"
             landmarkName = "HelpScene::init()"
             landmarkType = "5">
          </BreakpointContent>
@@ -3989,6 +3989,54 @@
             startingLineNumber = "456"
             endingLineNumber = "456"
             landmarkName = "HelpInfoUI::pressPreviousBtn(Ref* p,TouchEventType eventType)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/Layers/TinyFlare.cpp"
+            timestampString = "453394947.083668"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
+            landmarkName = "TinyFlare::init()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/Layers/TinyFlare.cpp"
+            timestampString = "453394953.390017"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
+            landmarkName = "TinyFlare::onEnter()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/Layers/TinyFlare.cpp"
+            timestampString = "453394984.539874"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "61"
+            endingLineNumber = "61"
+            landmarkName = "TinyFlare::onExit()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

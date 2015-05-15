@@ -41,7 +41,7 @@ bool HelpInfoUI::init()
     _eventDispatcher->addEventListenerWithSceneGraphPriority(keyboardListener,this);
     
     cocos2d::Size size = Director::getInstance()->getVisibleSize();
-    float scale = size.height/640.0f;
+    float scale = size.height/480.0f;
     
     ParticleSystemQuad* starfield= ParticleSystemQuad::create("starfield.plist");
     if(!starfield)
@@ -73,8 +73,8 @@ bool HelpInfoUI::init()
     
     m_pExitBtn = ui::Button::create("exit.png");
     m_pExitBtn->addTouchEventListener(CC_CALLBACK_2(HelpInfoUI::pressExitBtn, this));
-    m_pExitBtn->setPosition(Vec2(size.width - 50.0f*scale, size.height - 50.0f*scale));
-    m_pExitBtn->setScale(0.5f);
+    m_pExitBtn->setPosition(Vec2(size.width - 30.0f*scale, size.height - 30.0f*scale));
+    m_pExitBtn->setScale(0.3f*scale);
     this->addChild(m_pExitBtn);
     
     m_pTableView->reloadData();

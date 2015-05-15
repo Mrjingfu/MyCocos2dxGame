@@ -23,6 +23,9 @@ public:
     
     // implement the "static create()" method manually
     CREATE_FUNC(HelpScene);
+    
+    virtual void onEnter();
+    virtual void onExit();
 private:
     cocos2d::ui::Layout*    m_pHelpInfoUI;
 };
