@@ -50,3 +50,21 @@ void NativeBridge::showRateAppView()
     }
 #endif
 }
+void NativeBridge::logWithUserData()
+{
+#if CC_TARGET_PLATFORM == CC_PLATFORM_IOS
+    cocos2d::Value currentStage(EncrytionUtility::getIntegerForKey("CurrentStage", 1));
+    cocos2d::Value currentStardustNum(EncrytionUtility::getIntegerForKey("CurStardustNum", 0));
+    cocos2d::Value stardustDropLevel(EncrytionUtility::getIntegerForKey("StardustDropLevel", 1));
+    cocos2d::Value itemDropLevel(EncrytionUtility::getIntegerForKey("ItemDropLevel", 1));
+    cocos2d::Value itemEffectLevel(EncrytionUtility::getIntegerForKey("ItemEffectLevel", 1));
+
+    NSDictionary* dictionary = [NSDictionary dictionaryWithObjectsAndKeys:
+                                [NSString stringWithUTF8String: currentStage.asString().c_str()],@"CurrentStage",
+                                [NSString stringWithUTF8String: currentStardustNum.asString().c_str()],@"CurStardustNum",
+                                [NSString stringWithUTF8String: stardustDropLevel.asString().c_str()],@"StardustDropLevel",
+                                [NSString stringWithUTF8String: itemDropLevel.asString().c_str()],@"ItemDropLevel",
+                                [NSString stringWithUTF8String: itemEffectLevel.asString().c_str()],@"ItemEffectLevel", nil];
+    [Flurry logEvent:@"USER_DATA" withParameters:dictionary];
+#endif
+}

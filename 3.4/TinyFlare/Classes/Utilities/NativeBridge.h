@@ -11,7 +11,9 @@
 
 #include "cocos2d.h"
 #if CC_TARGET_PLATFORM == CC_PLATFORM_IOS
+#import <UIKit/UIKit.h>
 #import "RootViewController.h"
+#import "Flurry.h"
 #endif
 class NativeBridge : public cocos2d::Ref
 {
@@ -23,6 +25,7 @@ public:
     void setRootViewController(RootViewController* viewController);
 #endif
     void showRateAppView();
+    void logWithUserData();
 private:
 #if CC_TARGET_PLATFORM == CC_PLATFORM_IOS
     RootViewController* mViewController;

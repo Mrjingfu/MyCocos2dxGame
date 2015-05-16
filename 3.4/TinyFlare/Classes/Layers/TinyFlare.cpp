@@ -49,6 +49,7 @@ void TinyFlare::onEnter()
 {
     Layer::onEnter();
     NativeBridge::getInstance()->showRateAppView();
+    NativeBridge::getInstance()->logWithUserData();
     scheduleUpdate();
     if(!GameController::getInstance()->init(this))
         CCLOGERROR("GameController init failed!");

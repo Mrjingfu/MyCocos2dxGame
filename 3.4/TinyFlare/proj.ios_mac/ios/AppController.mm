@@ -26,6 +26,7 @@
 #import "platform/ios/CCEAGLView-ios.h"
 #import "cocos2d.h"
 #import "AppDelegate.h"
+#import "Flurry.h"
 #import "RootViewController.h"
 #include "NativeBridge.h"
 
@@ -39,6 +40,10 @@ static AppDelegate s_sharedApplication;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
 
+    ///Flurry App Key KCCCDQR9WM83362PR3CJ
+    [Flurry startSession:@"KCCCDQR9WM83362PR3CJ"];
+    [Flurry setCrashReportingEnabled:YES];
+    
     cocos2d::Application *app = cocos2d::Application::getInstance();
     app->initGLContextAttrs();
     cocos2d::GLViewImpl::convertAttrs();
