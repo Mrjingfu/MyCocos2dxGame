@@ -40,7 +40,7 @@ MainUI::MainUI()
     m_pStardust             = nullptr;
     m_pStardustX            = nullptr;
     m_pStardustNum          = nullptr;
-    
+    m_bFirst                = true;
 }
 MainUI::~MainUI()
 {
@@ -170,7 +170,7 @@ void MainUI::onKeyReleased(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Eve
 }
 void MainUI::nextStage(int stage)
 {
-    if(stage > 1)
+    if(stage > 1 && !m_bFirst)
         setLevelPercent(100);
     auto size = Director::getInstance()->getVisibleSize();
     float scale = size.height/480.0f;
@@ -211,6 +211,7 @@ void MainUI::nextStage(int stage)
     }
     
     setLevelPercent(0);
+    m_bFirst = false;
 }
 void MainUI::addStardust(ChaosNumber& num)
 {

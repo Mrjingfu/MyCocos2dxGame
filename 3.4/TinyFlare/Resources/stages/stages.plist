@@ -209,6 +209,22 @@
 		<array>
 			<dict>
 				<key>enemyType</key>
+				<integer>1</integer>
+				<key>updateType</key>
+				<integer>0</integer>
+				<key>delayTime</key>
+				<real>1</real>
+				<key>lastTime</key>
+				<integer>180</integer>
+				<key>duration</key>
+				<integer>4</integer>
+				<key>number</key>
+				<integer>0</integer>
+				<key>percent</key>
+				<integer>0</integer>
+			</dict>
+			<dict>
+				<key>enemyType</key>
 				<integer>5</integer>
 				<key>updateType</key>
 				<integer>1</integer>
@@ -217,9 +233,9 @@
 				<key>lastTime</key>
 				<integer>200</integer>
 				<key>duration</key>
-				<integer>10</integer>
+				<integer>6</integer>
 				<key>number</key>
-				<integer>20</integer>
+				<integer>30</integer>
 				<key>percent</key>
 				<integer>0</integer>
 			</dict>
@@ -242,7 +258,7 @@
 				<key>lastTime</key>
 				<integer>180</integer>
 				<key>duration</key>
-				<integer>4</integer>
+				<integer>2</integer>
 				<key>number</key>
 				<integer>0</integer>
 				<key>percent</key>
@@ -258,9 +274,9 @@
 				<key>lastTime</key>
 				<integer>180</integer>
 				<key>duration</key>
-				<integer>10</integer>
+				<integer>6</integer>
 				<key>number</key>
-				<integer>20</integer>
+				<integer>30</integer>
 				<key>percent</key>
 				<integer>0</integer>
 			</dict>
@@ -285,7 +301,7 @@
 				<key>duration</key>
 				<integer>3</integer>
 				<key>number</key>
-				<integer>10</integer>
+				<integer>30</integer>
 				<key>percent</key>
 				<integer>0</integer>
 			</dict>
@@ -383,7 +399,7 @@
 				<key>duration</key>
 				<integer>8</integer>
 				<key>number</key>
-				<integer>10</integer>
+				<integer>30</integer>
 				<key>percent</key>
 				<integer>0</integer>
 			</dict>
@@ -424,7 +440,7 @@
 				<key>duration</key>
 				<integer>8</integer>
 				<key>number</key>
-				<integer>10</integer>
+				<integer>20</integer>
 				<key>percent</key>
 				<integer>0</integer>
 			</dict>
@@ -445,11 +461,11 @@
 				<key>delayTime</key>
 				<integer>2</integer>
 				<key>lastTime</key>
-				<integer>90</integer>
+				<integer>150</integer>
 				<key>duration</key>
 				<integer>3</integer>
 				<key>number</key>
-				<integer>20</integer>
+				<integer>50</integer>
 				<key>percent</key>
 				<integer>0</integer>
 			</dict>
@@ -470,11 +486,11 @@
 				<key>delayTime</key>
 				<real>1</real>
 				<key>lastTime</key>
-				<integer>120</integer>
+				<integer>160</integer>
 				<key>duration</key>
 				<integer>4</integer>
 				<key>number</key>
-				<integer>30</integer>
+				<integer>40</integer>
 				<key>percent</key>
 				<integer>0</integer>
 			</dict>
@@ -490,7 +506,7 @@
 				<key>duration</key>
 				<integer>8</integer>
 				<key>number</key>
-				<integer>10</integer>
+				<integer>20</integer>
 				<key>percent</key>
 				<integer>0</integer>
 			</dict>
@@ -515,7 +531,7 @@
 				<key>duration</key>
 				<integer>5</integer>
 				<key>number</key>
-				<integer>30</integer>
+				<integer>36</integer>
 				<key>percent</key>
 				<integer>0</integer>
 			</dict>
@@ -531,7 +547,7 @@
 				<key>duration</key>
 				<integer>5</integer>
 				<key>number</key>
-				<integer>30</integer>
+				<integer>36</integer>
 				<key>percent</key>
 				<integer>0</integer>
 			</dict>
@@ -547,7 +563,7 @@
 				<key>duration</key>
 				<integer>5</integer>
 				<key>number</key>
-				<integer>30</integer>
+				<integer>36</integer>
 				<key>percent</key>
 				<integer>0</integer>
 			</dict>
@@ -572,7 +588,7 @@
 				<key>duration</key>
 				<integer>3</integer>
 				<key>number</key>
-				<integer>30</integer>
+				<integer>60</integer>
 				<key>percent</key>
 				<integer>0</integer>
 			</dict>
@@ -588,7 +604,7 @@
 				<key>duration</key>
 				<integer>5</integer>
 				<key>number</key>
-				<integer>30</integer>
+				<integer>36</integer>
 				<key>percent</key>
 				<integer>0</integer>
 			</dict>
@@ -604,7 +620,7 @@
 				<key>duration</key>
 				<integer>5</integer>
 				<key>number</key>
-				<integer>30</integer>
+				<integer>36</integer>
 				<key>percent</key>
 				<integer>0</integer>
 			</dict>
@@ -620,7 +636,7 @@
 				<key>duration</key>
 				<integer>10</integer>
 				<key>number</key>
-				<integer>10</integer>
+				<integer>18</integer>
 				<key>percent</key>
 				<integer>0</integer>
 			</dict>
@@ -645,7 +661,7 @@
 				<key>duration</key>
 				<integer>3</integer>
 				<key>number</key>
-				<integer>30</integer>
+				<integer>60</integer>
 				<key>percent</key>
 				<integer>0</integer>
 			</dict>
@@ -661,7 +677,7 @@
 				<key>duration</key>
 				<integer>5</integer>
 				<key>number</key>
-				<integer>30</integer>
+				<integer>36</integer>
 				<key>percent</key>
 				<integer>0</integer>
 			</dict>
@@ -677,7 +693,7 @@
 				<key>duration</key>
 				<integer>5</integer>
 				<key>number</key>
-				<integer>10</integer>
+				<integer>36</integer>
 				<key>percent</key>
 				<integer>0</integer>
 			</dict>
@@ -693,7 +709,7 @@
 				<key>duration</key>
 				<integer>10</integer>
 				<key>number</key>
-				<integer>10</integer>
+				<integer>18</integer>
 				<key>percent</key>
 				<integer>0</integer>
 			</dict>
@@ -718,7 +734,7 @@
 				<key>duration</key>
 				<integer>3</integer>
 				<key>number</key>
-				<integer>20</integer>
+				<integer>30</integer>
 				<key>percent</key>
 				<integer>0</integer>
 			</dict>
@@ -743,7 +759,7 @@
 				<key>duration</key>
 				<integer>4</integer>
 				<key>number</key>
-				<integer>20</integer>
+				<integer>45</integer>
 				<key>percent</key>
 				<integer>0</integer>
 			</dict>
@@ -755,11 +771,11 @@
 				<key>delayTime</key>
 				<integer>5</integer>
 				<key>lastTime</key>
-				<integer>160</integer>
+				<integer>180</integer>
 				<key>duration</key>
 				<integer>5</integer>
 				<key>number</key>
-				<integer>10</integer>
+				<integer>36</integer>
 				<key>percent</key>
 				<integer>0</integer>
 			</dict>
@@ -784,7 +800,7 @@
 				<key>duration</key>
 				<integer>4</integer>
 				<key>number</key>
-				<integer>20</integer>
+				<integer>45</integer>
 				<key>percent</key>
 				<integer>0</integer>
 			</dict>
@@ -796,11 +812,11 @@
 				<key>delayTime</key>
 				<integer>5</integer>
 				<key>lastTime</key>
-				<integer>160</integer>
+				<integer>180</integer>
 				<key>duration</key>
 				<integer>5</integer>
 				<key>number</key>
-				<integer>10</integer>
+				<integer>36</integer>
 				<key>percent</key>
 				<integer>0</integer>
 			</dict>
@@ -825,7 +841,7 @@
 				<key>duration</key>
 				<integer>3</integer>
 				<key>number</key>
-				<integer>30</integer>
+				<integer>60</integer>
 				<key>percent</key>
 				<integer>0</integer>
 			</dict>
@@ -841,7 +857,7 @@
 				<key>duration</key>
 				<integer>5</integer>
 				<key>number</key>
-				<integer>10</integer>
+				<integer>36</integer>
 				<key>percent</key>
 				<integer>0</integer>
 			</dict>
@@ -857,7 +873,7 @@
 				<key>duration</key>
 				<integer>5</integer>
 				<key>number</key>
-				<integer>10</integer>
+				<integer>36</integer>
 				<key>percent</key>
 				<integer>0</integer>
 			</dict>
@@ -873,7 +889,7 @@
 				<key>duration</key>
 				<integer>10</integer>
 				<key>number</key>
-				<integer>10</integer>
+				<integer>18</integer>
 				<key>percent</key>
 				<integer>0</integer>
 			</dict>
@@ -898,7 +914,7 @@
 				<key>duration</key>
 				<integer>3</integer>
 				<key>number</key>
-				<integer>20</integer>
+				<integer>30</integer>
 				<key>percent</key>
 				<integer>0</integer>
 			</dict>
@@ -923,7 +939,7 @@
 				<key>duration</key>
 				<integer>3</integer>
 				<key>number</key>
-				<integer>30</integer>
+				<integer>60</integer>
 				<key>percent</key>
 				<integer>0</integer>
 			</dict>
@@ -939,7 +955,7 @@
 				<key>duration</key>
 				<integer>5</integer>
 				<key>number</key>
-				<integer>30</integer>
+				<integer>36</integer>
 				<key>percent</key>
 				<integer>0</integer>
 			</dict>
@@ -955,7 +971,7 @@
 				<key>duration</key>
 				<integer>5</integer>
 				<key>number</key>
-				<integer>30</integer>
+				<integer>36</integer>
 				<key>percent</key>
 				<integer>0</integer>
 			</dict>
@@ -980,7 +996,7 @@
 				<key>duration</key>
 				<integer>3</integer>
 				<key>number</key>
-				<integer>30</integer>
+				<integer>60</integer>
 				<key>percent</key>
 				<integer>0</integer>
 			</dict>
@@ -996,7 +1012,7 @@
 				<key>duration</key>
 				<integer>5</integer>
 				<key>number</key>
-				<integer>30</integer>
+				<integer>36</integer>
 				<key>percent</key>
 				<integer>0</integer>
 			</dict>
@@ -1012,7 +1028,7 @@
 				<key>duration</key>
 				<integer>4</integer>
 				<key>number</key>
-				<integer>30</integer>
+				<integer>45</integer>
 				<key>percent</key>
 				<integer>0</integer>
 			</dict>
@@ -1060,9 +1076,9 @@
 				<key>lastTime</key>
 				<integer>120</integer>
 				<key>duration</key>
-				<integer>4</integer>
+				<integer>3</integer>
 				<key>number</key>
-				<integer>30</integer>
+				<integer>40</integer>
 				<key>percent</key>
 				<integer>0</integer>
 			</dict>
@@ -1074,11 +1090,11 @@
 				<key>delayTime</key>
 				<integer>5</integer>
 				<key>lastTime</key>
-				<integer>160</integer>
+				<integer>120</integer>
 				<key>duration</key>
-				<integer>8</integer>
+				<integer>5</integer>
 				<key>number</key>
-				<integer>10</integer>
+				<integer>24</integer>
 				<key>percent</key>
 				<integer>0</integer>
 			</dict>
@@ -1117,9 +1133,9 @@
 				<key>lastTime</key>
 				<integer>160</integer>
 				<key>duration</key>
-				<integer>8</integer>
+				<integer>5</integer>
 				<key>number</key>
-				<integer>10</integer>
+				<integer>32</integer>
 				<key>percent</key>
 				<integer>0</integer>
 			</dict>
@@ -1144,7 +1160,7 @@
 				<key>duration</key>
 				<integer>4</integer>
 				<key>number</key>
-				<integer>20</integer>
+				<integer>45</integer>
 				<key>percent</key>
 				<integer>0</integer>
 			</dict>
@@ -1156,11 +1172,11 @@
 				<key>delayTime</key>
 				<integer>5</integer>
 				<key>lastTime</key>
-				<integer>160</integer>
+				<integer>180</integer>
 				<key>duration</key>
 				<integer>5</integer>
 				<key>number</key>
-				<integer>10</integer>
+				<integer>36</integer>
 				<key>percent</key>
 				<integer>0</integer>
 			</dict>
@@ -1172,11 +1188,11 @@
 				<key>delayTime</key>
 				<integer>8</integer>
 				<key>lastTime</key>
-				<integer>160</integer>
+				<integer>180</integer>
 				<key>duration</key>
 				<integer>5</integer>
 				<key>number</key>
-				<integer>10</integer>
+				<integer>36</integer>
 				<key>percent</key>
 				<integer>0</integer>
 			</dict>
@@ -1201,7 +1217,7 @@
 				<key>duration</key>
 				<integer>4</integer>
 				<key>number</key>
-				<integer>20</integer>
+				<integer>45</integer>
 				<key>percent</key>
 				<integer>0</integer>
 			</dict>
@@ -1217,7 +1233,7 @@
 				<key>duration</key>
 				<integer>4</integer>
 				<key>number</key>
-				<integer>20</integer>
+				<integer>45</integer>
 				<key>percent</key>
 				<integer>0</integer>
 			</dict>
@@ -1229,11 +1245,11 @@
 				<key>delayTime</key>
 				<integer>10</integer>
 				<key>lastTime</key>
-				<integer>160</integer>
+				<integer>180</integer>
 				<key>duration</key>
 				<integer>10</integer>
 				<key>number</key>
-				<integer>10</integer>
+				<integer>18</integer>
 				<key>percent</key>
 				<integer>0</integer>
 			</dict>
@@ -1245,11 +1261,11 @@
 				<key>delayTime</key>
 				<integer>15</integer>
 				<key>lastTime</key>
-				<integer>160</integer>
+				<integer>180</integer>
 				<key>duration</key>
 				<integer>5</integer>
 				<key>number</key>
-				<integer>10</integer>
+				<integer>36</integer>
 				<key>percent</key>
 				<integer>0</integer>
 			</dict>
@@ -1274,7 +1290,7 @@
 				<key>duration</key>
 				<integer>4</integer>
 				<key>number</key>
-				<integer>20</integer>
+				<integer>45</integer>
 				<key>percent</key>
 				<integer>0</integer>
 			</dict>
@@ -1290,7 +1306,7 @@
 				<key>duration</key>
 				<integer>4</integer>
 				<key>number</key>
-				<integer>20</integer>
+				<integer>45</integer>
 				<key>percent</key>
 				<integer>0</integer>
 			</dict>
@@ -1306,7 +1322,7 @@
 				<key>duration</key>
 				<integer>4</integer>
 				<key>number</key>
-				<integer>20</integer>
+				<integer>45</integer>
 				<key>percent</key>
 				<integer>0</integer>
 			</dict>
@@ -1318,11 +1334,11 @@
 				<key>delayTime</key>
 				<integer>15</integer>
 				<key>lastTime</key>
-				<integer>160</integer>
+				<integer>180</integer>
 				<key>duration</key>
 				<integer>5</integer>
 				<key>number</key>
-				<integer>10</integer>
+				<integer>36</integer>
 				<key>percent</key>
 				<integer>0</integer>
 			</dict>
@@ -1334,11 +1350,11 @@
 				<key>delayTime</key>
 				<integer>20</integer>
 				<key>lastTime</key>
-				<integer>160</integer>
+				<integer>180</integer>
 				<key>duration</key>
 				<integer>5</integer>
 				<key>number</key>
-				<integer>10</integer>
+				<integer>36</integer>
 				<key>percent</key>
 				<integer>0</integer>
 			</dict>
@@ -1363,7 +1379,7 @@
 				<key>duration</key>
 				<integer>4</integer>
 				<key>number</key>
-				<integer>20</integer>
+				<integer>45</integer>
 				<key>percent</key>
 				<integer>0</integer>
 			</dict>
@@ -1379,7 +1395,7 @@
 				<key>duration</key>
 				<integer>4</integer>
 				<key>number</key>
-				<integer>20</integer>
+				<integer>45</integer>
 				<key>percent</key>
 				<integer>0</integer>
 			</dict>
@@ -1395,7 +1411,7 @@
 				<key>duration</key>
 				<integer>4</integer>
 				<key>number</key>
-				<integer>20</integer>
+				<integer>45</integer>
 				<key>percent</key>
 				<integer>0</integer>
 			</dict>
@@ -1411,7 +1427,7 @@
 				<key>duration</key>
 				<integer>4</integer>
 				<key>number</key>
-				<integer>20</integer>
+				<integer>45</integer>
 				<key>percent</key>
 				<integer>0</integer>
 			</dict>
@@ -1427,7 +1443,7 @@
 				<key>duration</key>
 				<integer>4</integer>
 				<key>number</key>
-				<integer>20</integer>
+				<integer>45</integer>
 				<key>percent</key>
 				<integer>0</integer>
 			</dict>
@@ -1443,7 +1459,7 @@
 				<key>duration</key>
 				<integer>4</integer>
 				<key>number</key>
-				<integer>20</integer>
+				<integer>45</integer>
 				<key>percent</key>
 				<integer>0</integer>
 			</dict>
@@ -1455,11 +1471,11 @@
 				<key>delayTime</key>
 				<integer>15</integer>
 				<key>lastTime</key>
-				<integer>160</integer>
+				<integer>180</integer>
 				<key>duration</key>
 				<integer>5</integer>
 				<key>number</key>
-				<integer>10</integer>
+				<integer>36</integer>
 				<key>percent</key>
 				<integer>0</integer>
 			</dict>
@@ -1471,11 +1487,11 @@
 				<key>delayTime</key>
 				<integer>15</integer>
 				<key>lastTime</key>
-				<integer>160</integer>
+				<integer>180</integer>
 				<key>duration</key>
 				<integer>5</integer>
 				<key>number</key>
-				<integer>10</integer>
+				<integer>36</integer>
 				<key>percent</key>
 				<integer>0</integer>
 			</dict>
@@ -1487,11 +1503,11 @@
 				<key>delayTime</key>
 				<integer>20</integer>
 				<key>lastTime</key>
-				<integer>160</integer>
+				<integer>180</integer>
 				<key>duration</key>
 				<integer>5</integer>
 				<key>number</key>
-				<integer>10</integer>
+				<integer>36</integer>
 				<key>percent</key>
 				<integer>0</integer>
 			</dict>
@@ -1503,11 +1519,11 @@
 				<key>delayTime</key>
 				<integer>20</integer>
 				<key>lastTime</key>
-				<integer>160</integer>
+				<integer>180</integer>
 				<key>duration</key>
 				<integer>5</integer>
 				<key>number</key>
-				<integer>10</integer>
+				<integer>36</integer>
 				<key>percent</key>
 				<integer>0</integer>
 			</dict>
@@ -1524,7 +1540,7 @@
 				<key>enemyType</key>
 				<integer>1</integer>
 				<key>updateType</key>
-				<integer>1</integer>
+				<integer>0</integer>
 				<key>delayTime</key>
 				<real>1</real>
 				<key>lastTime</key>
@@ -1532,7 +1548,7 @@
 				<key>duration</key>
 				<integer>4</integer>
 				<key>number</key>
-				<integer>20</integer>
+				<integer>30</integer>
 				<key>percent</key>
 				<integer>0</integer>
 			</dict>
@@ -1540,9 +1556,25 @@
 				<key>enemyType</key>
 				<integer>2</integer>
 				<key>updateType</key>
-				<integer>1</integer>
+				<integer>0</integer>
 				<key>delayTime</key>
 				<integer>2</integer>
+				<key>lastTime</key>
+				<integer>180</integer>
+				<key>duration</key>
+				<integer>4</integer>
+				<key>number</key>
+				<integer>30</integer>
+				<key>percent</key>
+				<integer>0</integer>
+			</dict>
+			<dict>
+				<key>enemyType</key>
+				<integer>3</integer>
+				<key>updateType</key>
+				<integer>0</integer>
+				<key>delayTime</key>
+				<integer>3</integer>
 				<key>lastTime</key>
 				<integer>180</integer>
 				<key>duration</key>
@@ -1554,25 +1586,9 @@
 			</dict>
 			<dict>
 				<key>enemyType</key>
-				<integer>3</integer>
-				<key>updateType</key>
-				<integer>1</integer>
-				<key>delayTime</key>
-				<integer>3</integer>
-				<key>lastTime</key>
-				<integer>180</integer>
-				<key>duration</key>
 				<integer>4</integer>
-				<key>number</key>
-				<integer>20</integer>
-				<key>percent</key>
+				<key>updateType</key>
 				<integer>0</integer>
-			</dict>
-			<dict>
-				<key>enemyType</key>
-				<integer>4</integer>
-				<key>updateType</key>
-				<integer>1</integer>
 				<key>delayTime</key>
 				<integer>4</integer>
 				<key>lastTime</key>
@@ -1588,7 +1604,7 @@
 				<key>enemyType</key>
 				<integer>5</integer>
 				<key>updateType</key>
-				<integer>1</integer>
+				<integer>0</integer>
 				<key>delayTime</key>
 				<integer>5</integer>
 				<key>lastTime</key>
@@ -1604,7 +1620,7 @@
 				<key>enemyType</key>
 				<integer>6</integer>
 				<key>updateType</key>
-				<integer>1</integer>
+				<integer>0</integer>
 				<key>delayTime</key>
 				<integer>6</integer>
 				<key>lastTime</key>
@@ -1620,7 +1636,7 @@
 				<key>enemyType</key>
 				<integer>9</integer>
 				<key>updateType</key>
-				<integer>1</integer>
+				<integer>0</integer>
 				<key>delayTime</key>
 				<integer>7</integer>
 				<key>lastTime</key>
@@ -1636,7 +1652,7 @@
 				<key>enemyType</key>
 				<integer>10</integer>
 				<key>updateType</key>
-				<integer>1</integer>
+				<integer>0</integer>
 				<key>delayTime</key>
 				<integer>8</integer>
 				<key>lastTime</key>
@@ -1652,7 +1668,7 @@
 				<key>enemyType</key>
 				<integer>7</integer>
 				<key>updateType</key>
-				<integer>1</integer>
+				<integer>0</integer>
 				<key>delayTime</key>
 				<integer>9</integer>
 				<key>lastTime</key>
@@ -1668,7 +1684,7 @@
 				<key>enemyType</key>
 				<integer>8</integer>
 				<key>updateType</key>
-				<integer>1</integer>
+				<integer>0</integer>
 				<key>delayTime</key>
 				<integer>10</integer>
 				<key>lastTime</key>

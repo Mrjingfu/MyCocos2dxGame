@@ -241,7 +241,7 @@ ParticleSystemQuad* ParticleSystemHelper::spawnExplosion(ExplosionType explosion
                 explosion->setAutoRemoveOnFinish(true);
                 GameController::getInstance()->getGameLayer()->addChild(explosion);
                 GameController::getInstance()->getGameLayer()->setCameraMask((unsigned short)CameraFlag::USER1);
-                CCLOG("Flare!!!!!");
+                //CCLOG("Flare!!!!!");
             }
             break;
         default:

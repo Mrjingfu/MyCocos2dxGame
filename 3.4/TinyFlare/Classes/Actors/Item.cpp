@@ -15,7 +15,7 @@ Item::Item()
     m_pModel = nullptr;
     m_pBoundModel = nullptr;
     m_ItemType = IT_UNKNOWN;
-    m_fLifeTime = 20.0f;
+    m_fLifeTime = 10.0f;
     m_bHasBeginFadeOut = false;
 }
 Item::~Item()

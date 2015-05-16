@@ -366,7 +366,7 @@ void Player::removeProtected()
 void Player::beginTime()
 {
     ParticleSystemHelper::spawnExplosion(ET_EXPLOSION_FLARE, getPosition());
-    m_fSlowTime = 8.0f*(powf(1.1f, EncrytionUtility::getIntegerForKey("ItemEffectLevel", 1)));
+    m_fSlowTime = 6.0f*(powf(1.1f, EncrytionUtility::getIntegerForKey("ItemEffectLevel", 1)));
     ActorsManager::getInstance()->setEnemyActorPause(true);
     _scheduler->setTimeScale(0.3f);
     
@@ -455,21 +455,48 @@ void Player::fire(float delta)
             {
                 if(m_pMultiNode)
                 {
-                    Vec2 orient = getOrientation();
-                    ActorsManager::spawnBullet(GameActor::AT_PLAYER_BULLET, getFireWorldPos(orient), orient,m_fMaxSpeed*2.0f,"bullet1.png", Color3B(174,250,27), 0.5f, 2.0f);
-                    ParticleSystemHelper::spawnActorWidget(ActorWidgetType::AWT_FIRE_FLARE_MULTI, getFireLocalPos(orient), this);
-                    orient.rotate(Vec2::ZERO, M_PI*0.125f);
-                    ActorsManager::spawnBullet(GameActor::AT_PLAYER_BULLET, getFireWorldPos(orient), orient,m_fMaxSpeed*2.0f,"bullet1.png", Color3B(174,250,27), 0.5f, 2.0f);
-                    ParticleSystemHelper::spawnActorWidget(ActorWidgetType::AWT_FIRE_FLARE_MULTI, getFireLocalPos(orient), this);
-                    orient.rotate(Vec2::ZERO, -M_PI*0.25f);
-                    ActorsManager::spawnBullet(GameActor::AT_PLAYER_BULLET, getFireWorldPos(orient), orient,m_fMaxSpeed*2.0f,"bullet1.png", Color3B(174,250,27), 0.5f, 2.0f);
-                    ParticleSystemHelper::spawnActorWidget(ActorWidgetType::AWT_FIRE_FLARE_MULTI, getFireLocalPos(orient), this);
+                    Vec2 orient1 = getOrientation();
+                    
+                    orient1.rotate(Vec2::ZERO, -M_PI*0.08f);
+                    ActorsManager::spawnBullet(GameActor::AT_PLAYER_BULLET, getFireWorldPos(orient1), m_Orientation,m_fMaxSpeed*2.0f,"bullet1.png", Color3B(174,250,27), 0.5f, 2.0f);
+                    ParticleSystemHelper::spawnActorWidget(ActorWidgetType::AWT_FIRE_FLARE_MULTI, getFireLocalPos(orient1), this);
+                    orient1.rotate(Vec2::ZERO, M_PI*0.16f);
+                    ActorsManager::spawnBullet(GameActor::AT_PLAYER_BULLET, getFireWorldPos(orient1), m_Orientation,m_fMaxSpeed*2.0f,"bullet1.png", Color3B(174,250,27), 0.5f, 2.0f);
+                    ParticleSystemHelper::spawnActorWidget(ActorWidgetType::AWT_FIRE_FLARE_MULTI, getFireLocalPos(orient1), this);
+                    
+                    Vec2 orient2 = getOrientation();
+                    orient2.rotate(Vec2::ZERO, M_PI*0.125f);
+                    
+                    Vec2 orient3 = orient2;
+                    orient3.rotate(Vec2::ZERO, -M_PI*0.08f);
+                    ActorsManager::spawnBullet(GameActor::AT_PLAYER_BULLET, getFireWorldPos(orient3), orient2,m_fMaxSpeed*2.0f,"bullet1.png", Color3B(174,250,27), 0.5f, 2.0f);
+                    ParticleSystemHelper::spawnActorWidget(ActorWidgetType::AWT_FIRE_FLARE_MULTI, getFireLocalPos(orient3), this);
+                    orient3.rotate(Vec2::ZERO, M_PI*0.16f);
+                    ActorsManager::spawnBullet(GameActor::AT_PLAYER_BULLET, getFireWorldPos(orient3), orient2,m_fMaxSpeed*2.0f,"bullet1.png", Color3B(174,250,27), 0.5f, 2.0f);
+                    ParticleSystemHelper::spawnActorWidget(ActorWidgetType::AWT_FIRE_FLARE_MULTI, getFireLocalPos(orient3), this);
+                    
+                    Vec2 orient4 = getOrientation();
+                    orient4.rotate(Vec2::ZERO, -M_PI*0.125f);
+                    
+                    Vec2 orient5 = orient4;
+                    orient5.rotate(Vec2::ZERO, -M_PI*0.08f);
+                    ActorsManager::spawnBullet(GameActor::AT_PLAYER_BULLET, getFireWorldPos(orient5), orient4,m_fMaxSpeed*2.0f,"bullet1.png", Color3B(174,250,27), 0.5f, 2.0f);
+                    ParticleSystemHelper::spawnActorWidget(ActorWidgetType::AWT_FIRE_FLARE_MULTI, getFireLocalPos(orient5), this);
+                    orient5.rotate(Vec2::ZERO, M_PI*0.16f);
+                    ActorsManager::spawnBullet(GameActor::AT_PLAYER_BULLET, getFireWorldPos(orient5), orient4,m_fMaxSpeed*2.0f,"bullet1.png", Color3B(174,250,27), 0.5f, 2.0f);
+                    ParticleSystemHelper::spawnActorWidget(ActorWidgetType::AWT_FIRE_FLARE_MULTI, getFireLocalPos(orient5), this);
+                    
                     SimpleAudioEngine::getInstance()->playEffect("LaserRifle_Shot06.wav");
                 }
                 else
                 {
-                    ActorsManager::spawnBullet(GameActor::AT_PLAYER_BULLET, getFireWorldPos(m_Orientation), m_Orientation,m_fMaxSpeed*2.0f,"bullet1.png", Color3B(254,148,236), 0.5f, 2.0f);
-                    ParticleSystemHelper::spawnActorWidget(ActorWidgetType::AWT_FIRE_FLARE, getFireLocalPos(m_Orientation), this);
+                    Vec2 orient = getOrientation();
+                    orient.rotate(Vec2::ZERO, -M_PI*0.08f);
+                    ActorsManager::spawnBullet(GameActor::AT_PLAYER_BULLET, getFireWorldPos(orient), m_Orientation,m_fMaxSpeed*2.0f,"bullet1.png", Color3B(254,148,236), 0.5f, 2.0f);
+                    ParticleSystemHelper::spawnActorWidget(ActorWidgetType::AWT_FIRE_FLARE, getFireLocalPos(orient), this);
+                    orient.rotate(Vec2::ZERO, M_PI*0.16f);
+                    ActorsManager::spawnBullet(GameActor::AT_PLAYER_BULLET, getFireWorldPos(orient), m_Orientation,m_fMaxSpeed*2.0f,"bullet1.png", Color3B(254,148,236), 0.5f, 2.0f);
+                    ParticleSystemHelper::spawnActorWidget(ActorWidgetType::AWT_FIRE_FLARE, getFireLocalPos(orient), this);
                     SimpleAudioEngine::getInstance()->playEffect("LaserRifle_Shot04.wav");
                 }
             }

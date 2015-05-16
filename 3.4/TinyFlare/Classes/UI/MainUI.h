@@ -61,6 +61,8 @@ private:
     cocos2d::ui::ImageView*  m_pStardust;
     cocos2d::ui::Text*       m_pStardustX;
     cocos2d::ui::Text*       m_pStardustNum;
+    
+    bool                     m_bFirst;
 };
 
 #endif /* defined(__TinyFlare__MainUI__) */
