@@ -11,6 +11,7 @@
 #include "GameController.h"
 #include "SimpleAudioEngine.h"
 #include "HelpScene.h"
+#include "NativeBridge.h"
 USING_NS_CC;
 using namespace CocosDenshion;
 
@@ -131,6 +132,7 @@ bool DeathUI::init()
     m_pBackBtn->setPosition(Vec2(size.width - m_pBackBtn->getContentSize().width*scale*0.7f, size.height*0.1f));
     m_pBackBtn->setScale(0.4f*scale);
     addChild(m_pBackBtn);
+    NativeBridge::getInstance()->playInterstitialAds();
     return true;
 }
 void DeathUI::pressContinueGameBtn(Ref* p,TouchEventType eventType)
@@ -168,6 +170,7 @@ void DeathUI::pressBackBtn(Ref* p,TouchEventType eventType)
     {
         SimpleAudioEngine::getInstance()->playEffect("btnclick.wav");
         GameController::getInstance()->setGameState(GS_MENU);
+        NativeBridge::getInstance()->showAdsView();
     }
 }
 void DeathUI::onKeyReleased(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event *unused_event)

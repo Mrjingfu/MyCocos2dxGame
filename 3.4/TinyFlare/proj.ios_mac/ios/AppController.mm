@@ -29,7 +29,7 @@
 #import "Flurry.h"
 #import "RootViewController.h"
 #include "NativeBridge.h"
-
+#include "EncrytionUtility.h"
 @implementation AppController
 
 #pragma mark -
@@ -69,6 +69,11 @@ static AppDelegate s_sharedApplication;
     _viewController = [[RootViewController alloc] initWithNibName:nil bundle:nil];
     _viewController.wantsFullScreenLayout = YES;
     _viewController.view = eaglView;
+    
+    if (!EncrytionUtility::getBoolForKey("RemoveAds",false)) {
+        ///add ad banner view
+        [_viewController initAdmob];
+    }
     
     NativeBridge::getInstance()->setRootViewController(_viewController);
 

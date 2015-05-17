@@ -2,6 +2,7 @@
 #include "Logo.h"
 #include "SimpleAudioEngine.h"
 #include "GameController.h"
+#include "NativeBridge.h"
 USING_NS_CC;
 using namespace CocosDenshion;
 
@@ -73,6 +74,7 @@ void AppDelegate::applicationDidEnterBackground() {
     SimpleAudioEngine::getInstance()->pauseBackgroundMusic();
     Director::getInstance()->stopAnimation();
     GameController::getInstance()->pause();
+    NativeBridge::getInstance()->playInterstitialAds();
 }
 
 // this function will be called when the app is active again

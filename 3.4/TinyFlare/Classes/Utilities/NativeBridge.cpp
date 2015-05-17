@@ -31,6 +31,32 @@ void NativeBridge::setRootViewController(RootViewController* viewController)
     mViewController = viewController;
 }
 #endif
+void NativeBridge::showAdsView()
+{
+#if CC_TARGET_PLATFORM == CC_PLATFORM_IOS
+    if (!EncrytionUtility::getBoolForKey("RemoveAds",false)) {
+        CCLOG("showAdsView");
+        if(mViewController != nil)
+            [mViewController showAdsView];
+    }
+#endif
+}
+void NativeBridge::hideAdsView()
+{
+#if CC_TARGET_PLATFORM == CC_PLATFORM_IOS
+    CCLOG("hideAdsView");
+    if(mViewController != nil)
+        [mViewController hideAdsView];
+#endif
+}
+void NativeBridge::playInterstitialAds()
+{
+#if CC_TARGET_PLATFORM == CC_PLATFORM_IOS
+    CCLOG("playInterstitialAds");
+    if(mViewController != nil)
+        [mViewController playInterstitialAds];
+#endif
+}
 void NativeBridge::showRateAppView()
 {
 #if CC_TARGET_PLATFORM == CC_PLATFORM_IOS

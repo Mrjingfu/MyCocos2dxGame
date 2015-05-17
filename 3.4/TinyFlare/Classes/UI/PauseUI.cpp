@@ -13,6 +13,7 @@
 #include "EncrytionUtility.h"
 #include "ChaosNumber.h"
 #include "HelpScene.h"
+#include "NativeBridge.h"
 USING_NS_CC;
 using namespace CocosDenshion;
 
@@ -548,6 +549,7 @@ void PauseUI::pressBackBtn(Ref* p,TouchEventType eventType)
         GameController::getInstance()->pauseEnd();
         SimpleAudioEngine::getInstance()->playEffect("btnclick.wav");
         GameController::getInstance()->setGameState(GS_MENU);
+        NativeBridge::getInstance()->showAdsView();
     }
 }
 void PauseUI::updateUI()

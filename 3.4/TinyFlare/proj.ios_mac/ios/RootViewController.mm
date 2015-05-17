@@ -138,4 +138,97 @@
                               rateLaterButtonText:rateLater
                               rateNeverButtonText:rateNever];
 }
+- (void)initAdmob {
+    
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+        
+        CGPoint origin = CGPointMake(0,self.view.frame.size.height - kGADAdSizeBanner.size.height);
+        // NOTE:
+        // Add your publisher ID here and fill in the GADAdSize constant for the ad
+        // you would like to request.
+        admobBannerView = [[GADBannerView alloc] initWithAdSize:kGADAdSizeBanner origin:origin];
+    } else {
+        CGPoint origin = CGPointMake(0,self.view.frame.size.height - kGADAdSizeFullBanner.size.height);
+        // NOTE:
+        // Add your publisher ID here and fill in the GADAdSize constant for the ad
+        // you would like to request.
+        admobBannerView = [[GADBannerView alloc] initWithAdSize:kGADAdSizeFullBanner origin:origin];
+    }
+    if(admobBannerView != nil)
+    {
+        admobBannerView.adUnitID = @"ca-app-pub-3628527903442392/3305707866";
+        [admobBannerView setRootViewController:self];
+        admobBannerView.hidden = YES;
+        [self.view addSubview:admobBannerView];
+    }
+    [self requestAndLoadInterstitialAds];
+}
+- (GADRequest *)createRequest {
+    GADRequest *request = [GADRequest request];
+    // Requests test ads on devices you specify. Your test device ID is printed to the console when
+    // an ad request is made.
+    request.testDevices = [NSArray arrayWithObjects:
+                           @"63c2655bf2b6d8b7776d3e37639a6a0add8ea741",
+                           nil];
+    return request;
+}
+- (void) showAdsView {
+    if(admobBannerView != nil)
+    {
+        admobBannerView.delegate = self;
+        [admobBannerView loadRequest:[self createRequest]];
+    }
+}
+- (void) hideAdsView {
+    if(admobBannerView != nil)
+    {
+        admobBannerView.delegate = nil;
+        admobBannerView.hidden = YES;
+    }
+}
+- (void) requestAndLoadInterstitialAds {
+    admobInterstitial = [[GADInterstitial alloc] initWithAdUnitID:@"ca-app-pub-3628527903442392/4782441069"];
+    if(admobInterstitial != nil)
+    {
+        admobInterstitial.delegate = self;
+        [admobInterstitial loadRequest:[self createRequest]];
+    }
+}
+- (void) playInterstitialAds {
+    if(admobInterstitial != nil)
+    {
+        if (admobInterstitial.isReady)
+            [admobInterstitial presentFromRootViewController:self];
+        else
+            NSLog(@"The interstitial didn't finish loading or failed to load");
+    }
+}
+#pragma mark GADBannerViewDelegate impl
+
+- (void)adViewDidReceiveAd:(GADBannerView *)adView {
+    NSLog(@"Received ad");
+    admobBannerView.hidden = NO;
+    [admobBannerView.superview bringSubviewToFront:admobBannerView];
+}
+
+- (void)adView:(GADBannerView *)view
+didFailToReceiveAdWithError:(GADRequestError *)error {
+    NSLog(@"Failed to receive ad with error: %@", [error localizedFailureReason]);
+}
+#pragma mark GADInterstitialDelegate implementation
+- (void)interstitialDidReceiveAd:(GADInterstitial *)ad
+{
+     NSLog(@"Received interstitial ad");
+}
+
+- (void)interstitial:(GADInterstitial *)interstitial
+didFailToReceiveAdWithError:(GADRequestError *)error {
+    NSLog(@"interstitialDidFailToReceiveAdWithError: %@", [error localizedDescription]);
+    [self requestAndLoadInterstitialAds];
+}
+
+- (void)interstitialDidDismissScreen:(GADInterstitial *)interstitial {
+    NSLog(@"interstitialDidDismissScreen");
+    [self requestAndLoadInterstitialAds];
+}
 @end

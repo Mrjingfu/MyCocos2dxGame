@@ -12,6 +12,7 @@
 #include "SimpleAudioEngine.h"
 #include "EncrytionUtility.h"
 #include "HelpScene.h"
+#include "NativeBridge.h"
 USING_NS_CC;
 using namespace CocosDenshion;
 MenuUI* MenuUI::create()
@@ -141,6 +142,7 @@ void MenuUI::pressPlayGameBtn(Ref* p,TouchEventType eventType)
     if(eventType == TouchEventType::ENDED)
     {
         SimpleAudioEngine::getInstance()->playEffect("btnclick.wav");
+        NativeBridge::getInstance()->hideAdsView();
         GameController::getInstance()->setGameState(GS_GAME);
     }
 }

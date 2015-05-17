@@ -9,6 +9,7 @@
 #include "HelpScene.h"
 #include "HelpInfoUI.h"
 #include "SimpleAudioEngine.h"
+#include "NativeBridge.h"
 USING_NS_CC;
 using namespace CocosDenshion;
 Scene* HelpScene::createScene()
@@ -49,10 +50,12 @@ bool HelpScene::init()
 void HelpScene::onEnter()
 {
     Layer::onEnter();
+    NativeBridge::getInstance()->showAdsView();
     SimpleAudioEngine::getInstance()->playBackgroundMusic("Flux1.mp3", true);
 }
 void HelpScene::onExit()
 {
+    NativeBridge::getInstance()->hideAdsView();
     SimpleAudioEngine::getInstance()->stopBackgroundMusic();
     Layer::onExit();
 }

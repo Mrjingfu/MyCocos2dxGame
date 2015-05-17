@@ -25,11 +25,21 @@
 
 #import <UIKit/UIKit.h>
 #import "RateThisAppDialog.h"
-
-@interface RootViewController : UIViewController {
-
+#import <GoogleMobileAds/GADBannerView.h>
+#import <GoogleMobileAds/GADInterstitial.h>
+@interface RootViewController : UIViewController<GADBannerViewDelegate, GADInterstitialDelegate> {
+    GADBannerView *admobBannerView;
+    GADInterstitial *admobInterstitial;
 }
 - (BOOL) prefersStatusBarHidden;
 - (void) showRateAppViewCH;
 - (void) showRateAppViewEN;
+
+- (void) initAdmob;
+- (void) showAdsView;
+- (void) hideAdsView;
+- (void) requestAndLoadInterstitialAds;
+- (void) playInterstitialAds;
+
+- (GADRequest *)createRequest;
 @end
