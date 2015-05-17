@@ -12,11 +12,11 @@
 // Please use the "iTunes Link Maker" to create this url:
 // http://itunes.apple.com/linkmaker/
 // you do not need to put "itms://" at the front or anything like that.
-#define APP_STORE_LINK @"https://itunes.apple.com/us/app/super-life-game/id961888931?l=zh&ls=1&mt=8"
+#define APP_STORE_LINK @"itms://itunes.apple.com/us/app/space-geometry-wars/id995591428?l=zh&ls=1&mt=8"
 
 // this is how many times your app can launch before showing this dialog
 // ie. setting this to 2 will cause the dialog to appear on the second time the app is launched
-#define PROMPT_AFTER_X_LAUNCHES 15
+#define PROMPT_AFTER_X_LAUNCHES 10
 
 @interface RateThisAppDialog : NSObject {
     
