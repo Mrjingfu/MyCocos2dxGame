@@ -250,6 +250,7 @@
 		55F2E55E1AE5379100E49BD4 /* magicfire.plist in Resources */ = {isa = PBXBuildFile; fileRef = 55F2E55C1AE5375C00E49BD4 /* magicfire.plist */; };
 		55F2E5611AE5388F00E49BD4 /* Stardust.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55F2E55F1AE5388F00E49BD4 /* Stardust.cpp */; };
 		55F2E5621AE538AD00E49BD4 /* Stardust.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55F2E55F1AE5388F00E49BD4 /* Stardust.cpp */; };
+		55F635D21B0861C9008F4158 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 55F635D41B0861C9008F4158 /* InfoPlist.strings */; };
 		55FEC88D1AB698D600F39535 /* TwoJoysticks.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55FEC88B1AB698D600F39535 /* TwoJoysticks.cpp */; };
 		55FEC8901AB6F79900F39535 /* playermask.png in Resources */ = {isa = PBXBuildFile; fileRef = 55FEC88E1AB6F79900F39535 /* playermask.png */; };
 		55FEC8911AB6F79900F39535 /* playermain.png in Resources */ = {isa = PBXBuildFile; fileRef = 55FEC88F1AB6F79900F39535 /* playermain.png */; };
@@ -477,6 +478,8 @@
 		55F2E55C1AE5375C00E49BD4 /* magicfire.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = magicfire.plist; sourceTree = "<group>"; };
 		55F2E55F1AE5388F00E49BD4 /* Stardust.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Stardust.cpp; sourceTree = "<group>"; };
 		55F2E5601AE5388F00E49BD4 /* Stardust.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Stardust.h; sourceTree = "<group>"; };
+		55F635D31B0861C9008F4158 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		55F635D51B0861CE008F4158 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		55FEC88B1AB698D600F39535 /* TwoJoysticks.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TwoJoysticks.cpp; sourceTree = "<group>"; };
 		55FEC88C1AB698D600F39535 /* TwoJoysticks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwoJoysticks.h; sourceTree = "<group>"; };
 		55FEC88E1AB6F79900F39535 /* playermask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = playermask.png; sourceTree = "<group>"; };
@@ -681,6 +684,7 @@
 				5087E77A17EB970100C73F5D /* Icon-72.png */,
 				5087E77B17EB970100C73F5D /* Icon-76.png */,
 				5087E77C17EB970100C73F5D /* Info.plist */,
+				55F635D41B0861C9008F4158 /* InfoPlist.strings */,
 			);
 			name = Icons;
 			path = ios;
@@ -1006,6 +1010,7 @@
 				Japanese,
 				French,
 				German,
+				"zh-Hans",
 			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
 			projectDirPath = "";
@@ -1124,6 +1129,7 @@
 				5584ED571ADCEA9700C793EB /* LaserRifle_Shot04.wav in Resources */,
 				559C57711AD566B200AE5B20 /* clearexplosion.plist in Resources */,
 				5584ED531ADCEA9700C793EB /* explodeEffect.mp3 in Resources */,
+				55F635D21B0861C9008F4158 /* InfoPlist.strings in Resources */,
 				55F2E55A1AE50E4E00E49BD4 /* diamonditem.png in Resources */,
 				55E6B2CD1AC56E0800E30B90 /* mask2.png in Resources */,
 				5584ED381ADCDB4E00C793EB /* logo.png in Resources */,
@@ -1318,6 +1324,18 @@
 			targetProxy = 1AC6FB24180E99E1004C840B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		55F635D41B0861C9008F4158 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				55F635D31B0861C9008F4158 /* zh-Hans */,
+				55F635D51B0861CE008F4158 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		1D6058940D05DD3E006BFB54 /* Debug */ = {
