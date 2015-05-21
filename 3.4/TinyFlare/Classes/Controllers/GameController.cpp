@@ -505,7 +505,7 @@ Vec2 GameController::getStardustStartPos()
 void GameController::resetData()
 {
     EncrytionUtility::setIntegerForKey("CurrentStage", 1);
-    EncrytionUtility::setIntegerForKey("CurStardustNum", 3000);
+    EncrytionUtility::setIntegerForKey("CurStardustNum", 0);
     EncrytionUtility::setIntegerForKey("StardustDropLevel", 1);
     EncrytionUtility::setIntegerForKey("ItemDropLevel", 1);
     EncrytionUtility::setIntegerForKey("ItemEffectLevel", 1);

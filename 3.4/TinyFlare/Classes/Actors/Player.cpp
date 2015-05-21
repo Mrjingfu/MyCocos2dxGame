@@ -69,10 +69,10 @@ void Player::updateBuffer(float delta)
     if(m_nBufferType & BufferType::BT_PROTECTED)
     {
         ////lwwhb add for debug
-//        if(m_fProtectedTime > 0.0f)
-//            m_fProtectedTime = m_fProtectedTime - delta/_scheduler->getTimeScale();
-//        else
-//            removeBuffer(BufferType::BT_PROTECTED);
+        if(m_fProtectedTime > 0.0f)
+            m_fProtectedTime = m_fProtectedTime - delta/_scheduler->getTimeScale();
+        else
+            removeBuffer(BufferType::BT_PROTECTED);
         ///
         if(m_pProtectedNode)
         {
