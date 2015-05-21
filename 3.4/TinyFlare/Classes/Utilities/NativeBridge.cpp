@@ -52,9 +52,11 @@ void NativeBridge::hideAdsView()
 void NativeBridge::playInterstitialAds()
 {
 #if CC_TARGET_PLATFORM == CC_PLATFORM_IOS
-    CCLOG("playInterstitialAds");
-    if(mViewController != nil)
-        [mViewController playInterstitialAds];
+    if (!EncrytionUtility::getBoolForKey("RemoveAds",false)) {
+        CCLOG("playInterstitialAds");
+        if(mViewController != nil)
+            [mViewController playInterstitialAds];
+    }
 #endif
 }
 void NativeBridge::showRateAppView()

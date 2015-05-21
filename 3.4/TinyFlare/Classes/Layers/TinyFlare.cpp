@@ -9,7 +9,9 @@
 #include "TinyFlare.h"
 #include "GameController.h"
 #include "NativeBridge.h"
+#include "StoreEventHandler.h"
 USING_NS_CC;
+using namespace soomla;
 
 Scene* TinyFlare::createScene()
 {
@@ -51,6 +53,11 @@ void TinyFlare::onEnter()
     NativeBridge::getInstance()->logWithUserData();
     NativeBridge::getInstance()->showRateAppView();
     NativeBridge::getInstance()->showAdsView();
+    
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+    CCSoomlaStore::getInstance()->startIabServiceInBg();
+#endif
+    
     scheduleUpdate();
     if(!GameController::getInstance()->init(this))
         CCLOGERROR("GameController init failed!");
@@ -60,6 +67,9 @@ void TinyFlare::onEnter()
 }
 void TinyFlare::onExit()
 {
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+    CCSoomlaStore::getInstance()->stopIabServiceInBg();
+#endif
     NativeBridge::getInstance()->hideAdsView();
     GameController::getInstance()->destroy();
     unscheduleUpdate();

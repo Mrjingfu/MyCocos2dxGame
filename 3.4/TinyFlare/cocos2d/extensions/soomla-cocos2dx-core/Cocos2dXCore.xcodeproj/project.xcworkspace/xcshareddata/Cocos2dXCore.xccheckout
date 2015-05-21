@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>6E3222BB-BCE5-40B6-B66E-F063C3BCC85D</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Cocos2dXCore</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>852ED3691A47A99B0D19C820A500AE9772B2A44E</key>
+		<string>https://github.com/cocos2d/cocos2d-x.git</string>
+		<key>BAD866C9FDD19D65B7E9CC9A77F606F8843B9079</key>
+		<string>github.com:soomla/soomla-cocos2dx-core.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Cocos2dXCore.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>852ED3691A47A99B0D19C820A500AE9772B2A44E</key>
+		<string>../../..</string>
+		<key>BAD866C9FDD19D65B7E9CC9A77F606F8843B9079</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>github.com:soomla/soomla-cocos2dx-core.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>BAD866C9FDD19D65B7E9CC9A77F606F8843B9079</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>852ED3691A47A99B0D19C820A500AE9772B2A44E</string>
+			<key>IDESourceControlWCCName</key>
+			<string></string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>BAD866C9FDD19D65B7E9CC9A77F606F8843B9079</string>
+			<key>IDESourceControlWCCName</key>
+			<string>soomla-cocos2dx-core</string>
+		</dict>
+	</array>
+</dict>
+</plist>

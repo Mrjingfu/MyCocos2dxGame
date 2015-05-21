@@ -66,6 +66,7 @@ public:
     
     void resetData();
 
+    void setToShowAds() { m_bToShowAds = true; }
 private:
     void onEnterMenu();
     void onExitMenu();
@@ -106,6 +107,8 @@ private:
     MainUI*             m_pMainUI;
     PauseUI*            m_pPauseUI;
     DeathUI*            m_pDeathUI;
+    
+    bool                m_bToShowAds;
 };
 
 

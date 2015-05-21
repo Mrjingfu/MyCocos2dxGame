@@ -28,8 +28,11 @@ private:
     void pressRankBtn(Ref* p,TouchEventType eventType);
     void pressRemoveADSBtn(Ref* p,TouchEventType eventType);
     void pressBackBtn(Ref* p,TouchEventType eventType);
+    void pressPurchaseBtn(Ref* p,TouchEventType eventType);
     
     void updateUI();
+    virtual void updateGoodBalance(cocos2d::EventCustom *event);
+    virtual void updateCurrencyBalance(cocos2d::EventCustom *event);
 private:
     //cocos2d::ui::Button*     m_pRankBtn;
     cocos2d::ui::Button*     m_pRemoveADSBtn;
@@ -62,6 +65,15 @@ private:
     
     cocos2d::ui::ImageView*     m_pPanelBg;
     cocos2d::ui::Text*          m_pPlayText;
+    
+    cocos2d::ui::ImageView*     m_pStardust;
+    cocos2d::ui::Text*          m_pStardustX;
+    cocos2d::ui::Text*          m_pStardustNum;
+    
+    cocos2d::ui::Button*        m_pPurchaseBtn;
+    
+    cocos2d::EventListener *currencyBalanceChangedHandler;
+    cocos2d::EventListener *goodBalanceChangedHandler;
 };
 
 #endif /* defined(__TinyFlare__PauseUI__) */

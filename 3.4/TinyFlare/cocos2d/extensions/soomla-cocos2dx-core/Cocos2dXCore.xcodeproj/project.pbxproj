@@ -1,0 +1,776 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		372B7222D15E89FF731A78BD /* CCSchedule.h in Headers */ = {isa = PBXBuildFile; fileRef = 372B7B53C5A571B92A25C08C /* CCSchedule.h */; };
+		372B72C58DE0C3DFE3522984 /* CCSoomlaEntity.h in Headers */ = {isa = PBXBuildFile; fileRef = 372B7DF784D9DB67349CF869 /* CCSoomlaEntity.h */; };
+		372B74CD5188E48BE19BAC31 /* CCRewardStorage.h in Headers */ = {isa = PBXBuildFile; fileRef = 372B7A7FFA3D34A23C31687B /* CCRewardStorage.h */; };
+		372B781D8BC07D3AA891021B /* CCSchedule.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 372B73C62BBFD3700BD6DE74 /* CCSchedule.cpp */; };
+		372B790F7E37797D2E10ED65 /* CCSoomlaUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 372B75AEF9E49C7BD45C6ED6 /* CCSoomlaUtils.cpp */; };
+		372B7A1D5F372FCFD9E68388 /* CCSoomlaUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 372B748E4E8020FCD1396DDC /* CCSoomlaUtils.h */; };
+		372B7E556799F8D93570725F /* CCSoomlaEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 372B74257254F43D38DF97CA /* CCSoomlaEntity.cpp */; };
+		372B7FBE9869CD7B1B70ED0E /* CCRewardStorage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 372B73021AB74279EE404D33 /* CCRewardStorage.cpp */; };
+		9D41014A1978CFAD00907FA8 /* CCAbstractAggregatedEventHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = 9D4101251978CFAD00907FA8 /* CCAbstractAggregatedEventHandler.h */; };
+		9D41014B1978CFAD00907FA8 /* CCCoreConsts.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D4101261978CFAD00907FA8 /* CCCoreConsts.cpp */; };
+		9D41014C1978CFAD00907FA8 /* CCCoreConsts.h in Headers */ = {isa = PBXBuildFile; fileRef = 9D4101271978CFAD00907FA8 /* CCCoreConsts.h */; };
+		9D41014D1978CFAD00907FA8 /* CCCoreEventDispatcher.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D4101281978CFAD00907FA8 /* CCCoreEventDispatcher.cpp */; };
+		9D41014E1978CFAD00907FA8 /* CCCoreEventDispatcher.h in Headers */ = {isa = PBXBuildFile; fileRef = 9D4101291978CFAD00907FA8 /* CCCoreEventDispatcher.h */; };
+		9D4101521978CFAD00907FA8 /* CCDomainFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D41012D1978CFAD00907FA8 /* CCDomainFactory.cpp */; };
+		9D4101531978CFAD00907FA8 /* CCDomainFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = 9D41012E1978CFAD00907FA8 /* CCDomainFactory.h */; };
+		9D4101541978CFAD00907FA8 /* CCDomainHelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D41012F1978CFAD00907FA8 /* CCDomainHelper.cpp */; };
+		9D4101551978CFAD00907FA8 /* CCDomainHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 9D4101301978CFAD00907FA8 /* CCDomainHelper.h */; };
+		9D4101561978CFAD00907FA8 /* CCError.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D4101311978CFAD00907FA8 /* CCError.cpp */; };
+		9D4101571978CFAD00907FA8 /* CCError.h in Headers */ = {isa = PBXBuildFile; fileRef = 9D4101321978CFAD00907FA8 /* CCError.h */; };
+		9D4101581978CFAD00907FA8 /* CCJsonHelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D4101331978CFAD00907FA8 /* CCJsonHelper.cpp */; };
+		9D4101591978CFAD00907FA8 /* CCJsonHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 9D4101341978CFAD00907FA8 /* CCJsonHelper.h */; };
+		9D41015A1978CFAD00907FA8 /* CCNdkBridge.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D4101351978CFAD00907FA8 /* CCNdkBridge.cpp */; };
+		9D41015B1978CFAD00907FA8 /* CCNdkBridge.h in Headers */ = {isa = PBXBuildFile; fileRef = 9D4101361978CFAD00907FA8 /* CCNdkBridge.h */; };
+		9D41015E1978CFAD00907FA8 /* CCSoomlaEventDispatcher.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D4101391978CFAD00907FA8 /* CCSoomlaEventDispatcher.cpp */; };
+		9D41015F1978CFAD00907FA8 /* CCSoomlaEventDispatcher.h in Headers */ = {isa = PBXBuildFile; fileRef = 9D41013A1978CFAD00907FA8 /* CCSoomlaEventDispatcher.h */; };
+		9D4101601978CFAD00907FA8 /* CCSoomlaMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = 9D41013B1978CFAD00907FA8 /* CCSoomlaMacros.h */; };
+		9D4101611978CFAD00907FA8 /* CCDomain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D41013D1978CFAD00907FA8 /* CCDomain.cpp */; };
+		9D4101621978CFAD00907FA8 /* CCDomain.h in Headers */ = {isa = PBXBuildFile; fileRef = 9D41013E1978CFAD00907FA8 /* CCDomain.h */; };
+		9D4101631978CFAD00907FA8 /* CCAggregateReward.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D4101401978CFAD00907FA8 /* CCAggregateReward.cpp */; };
+		9D4101641978CFAD00907FA8 /* CCAggregateReward.h in Headers */ = {isa = PBXBuildFile; fileRef = 9D4101411978CFAD00907FA8 /* CCAggregateReward.h */; };
+		9D4101651978CFAD00907FA8 /* CCBadgeReward.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D4101421978CFAD00907FA8 /* CCBadgeReward.cpp */; };
+		9D4101661978CFAD00907FA8 /* CCBadgeReward.h in Headers */ = {isa = PBXBuildFile; fileRef = 9D4101431978CFAD00907FA8 /* CCBadgeReward.h */; };
+		9D4101671978CFAD00907FA8 /* CCRandomReward.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D4101441978CFAD00907FA8 /* CCRandomReward.cpp */; };
+		9D4101681978CFAD00907FA8 /* CCRandomReward.h in Headers */ = {isa = PBXBuildFile; fileRef = 9D4101451978CFAD00907FA8 /* CCRandomReward.h */; };
+		9D4101691978CFAD00907FA8 /* CCReward.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D4101461978CFAD00907FA8 /* CCReward.cpp */; };
+		9D41016A1978CFAD00907FA8 /* CCReward.h in Headers */ = {isa = PBXBuildFile; fileRef = 9D4101471978CFAD00907FA8 /* CCReward.h */; };
+		9D41016B1978CFAD00907FA8 /* CCSequenceReward.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D4101481978CFAD00907FA8 /* CCSequenceReward.cpp */; };
+		9D41016C1978CFAD00907FA8 /* CCSequenceReward.h in Headers */ = {isa = PBXBuildFile; fileRef = 9D4101491978CFAD00907FA8 /* CCSequenceReward.h */; };
+		9D63D0A019B1B20D0054EA87 /* libSoomlaiOSCore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D63D09E19B1B20D0054EA87 /* libSoomlaiOSCore.a */; };
+		C0B3C5F3168C6D0C00161FAA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0B3C5F2168C6D0C00161FAA /* Foundation.framework */; };
+		F861D66519BF5F7F008834EF /* Cocos2dxCore.h in Headers */ = {isa = PBXBuildFile; fileRef = F861D66419BF5F6E008834EF /* Cocos2dxCore.h */; };
+		F865E1CF1AB0A018006DA7E2 /* CCSoomla.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F865E1C71AB0A018006DA7E2 /* CCSoomla.cpp */; };
+		F865E1D01AB0A018006DA7E2 /* CCSoomla.h in Headers */ = {isa = PBXBuildFile; fileRef = F865E1C81AB0A018006DA7E2 /* CCSoomla.h */; };
+		F865E1D11AB0A018006DA7E2 /* CCCoreBridge.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F865E1C91AB0A018006DA7E2 /* CCCoreBridge.cpp */; };
+		F865E1D41AB0A018006DA7E2 /* CCCoreBridge.h in Headers */ = {isa = PBXBuildFile; fileRef = F865E1CC1AB0A018006DA7E2 /* CCCoreBridge.h */; };
+		F8694AF81A1CF6DE001738B4 /* CCCoreConsts.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D4101261978CFAD00907FA8 /* CCCoreConsts.cpp */; };
+		F8694AF91A1CF6E1001738B4 /* CCCoreEventDispatcher.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D4101281978CFAD00907FA8 /* CCCoreEventDispatcher.cpp */; };
+		F8694B031A1CF6F1001738B4 /* CCDomainFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D41012D1978CFAD00907FA8 /* CCDomainFactory.cpp */; };
+		F8694B051A1CF6F1001738B4 /* CCDomainHelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D41012F1978CFAD00907FA8 /* CCDomainHelper.cpp */; };
+		F8694B071A1CF6F1001738B4 /* CCError.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D4101311978CFAD00907FA8 /* CCError.cpp */; };
+		F8694B091A1CF6F1001738B4 /* CCJsonHelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D4101331978CFAD00907FA8 /* CCJsonHelper.cpp */; };
+		F8694B0B1A1CF6F1001738B4 /* CCNdkBridge.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D4101351978CFAD00907FA8 /* CCNdkBridge.cpp */; };
+		F8694B0F1A1CF6F1001738B4 /* CCSoomlaEventDispatcher.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D4101391978CFAD00907FA8 /* CCSoomlaEventDispatcher.cpp */; };
+		F8694B121A1CF6F1001738B4 /* CCDomain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D41013D1978CFAD00907FA8 /* CCDomain.cpp */; };
+		F8694B141A1CF6F1001738B4 /* CCSoomlaEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 372B74257254F43D38DF97CA /* CCSoomlaEntity.cpp */; };
+		F8694B161A1CF6F1001738B4 /* CCAggregateReward.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D4101401978CFAD00907FA8 /* CCAggregateReward.cpp */; };
+		F8694B181A1CF6F1001738B4 /* CCBadgeReward.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D4101421978CFAD00907FA8 /* CCBadgeReward.cpp */; };
+		F8694B1A1A1CF6F1001738B4 /* CCRandomReward.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D4101441978CFAD00907FA8 /* CCRandomReward.cpp */; };
+		F8694B1C1A1CF6F1001738B4 /* CCReward.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D4101461978CFAD00907FA8 /* CCReward.cpp */; };
+		F8694B1E1A1CF6F1001738B4 /* CCSequenceReward.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D4101481978CFAD00907FA8 /* CCSequenceReward.cpp */; };
+		F8694B201A1CF6F1001738B4 /* CCSchedule.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 372B73C62BBFD3700BD6DE74 /* CCSchedule.cpp */; };
+		F8694B241A1CF6F1001738B4 /* CCKeyValueStorage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F8B27ED919B9F51F0094A771 /* CCKeyValueStorage.cpp */; };
+		F8694B261A1CF6F1001738B4 /* CCRewardStorage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 372B73021AB74279EE404D33 /* CCRewardStorage.cpp */; };
+		F8694B401A1CF717001738B4 /* CCSoomlaUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 372B75AEF9E49C7BD45C6ED6 /* CCSoomlaUtils.cpp */; };
+		F8694B451A1CF730001738B4 /* Cocos2dxCore.h in Headers */ = {isa = PBXBuildFile; fileRef = F861D66419BF5F6E008834EF /* Cocos2dxCore.h */; };
+		F8694B461A1CF730001738B4 /* CCAbstractAggregatedEventHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = 9D4101251978CFAD00907FA8 /* CCAbstractAggregatedEventHandler.h */; };
+		F8694B481A1CF730001738B4 /* CCCoreConsts.h in Headers */ = {isa = PBXBuildFile; fileRef = 9D4101271978CFAD00907FA8 /* CCCoreConsts.h */; };
+		F8694B4A1A1CF730001738B4 /* CCCoreEventDispatcher.h in Headers */ = {isa = PBXBuildFile; fileRef = 9D4101291978CFAD00907FA8 /* CCCoreEventDispatcher.h */; };
+		F8694B4F1A1CF730001738B4 /* CCDomainFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = 9D41012E1978CFAD00907FA8 /* CCDomainFactory.h */; };
+		F8694B511A1CF730001738B4 /* CCDomainHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 9D4101301978CFAD00907FA8 /* CCDomainHelper.h */; };
+		F8694B531A1CF730001738B4 /* CCError.h in Headers */ = {isa = PBXBuildFile; fileRef = 9D4101321978CFAD00907FA8 /* CCError.h */; };
+		F8694B551A1CF731001738B4 /* CCJsonHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 9D4101341978CFAD00907FA8 /* CCJsonHelper.h */; };
+		F8694B571A1CF731001738B4 /* CCNdkBridge.h in Headers */ = {isa = PBXBuildFile; fileRef = 9D4101361978CFAD00907FA8 /* CCNdkBridge.h */; };
+		F8694B5B1A1CF731001738B4 /* CCSoomlaEventDispatcher.h in Headers */ = {isa = PBXBuildFile; fileRef = 9D41013A1978CFAD00907FA8 /* CCSoomlaEventDispatcher.h */; };
+		F8694B5C1A1CF731001738B4 /* CCSoomlaMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = 9D41013B1978CFAD00907FA8 /* CCSoomlaMacros.h */; };
+		F8694B5E1A1CF731001738B4 /* CCDomain.h in Headers */ = {isa = PBXBuildFile; fileRef = 9D41013E1978CFAD00907FA8 /* CCDomain.h */; };
+		F8694B601A1CF731001738B4 /* CCSoomlaEntity.h in Headers */ = {isa = PBXBuildFile; fileRef = 372B7DF784D9DB67349CF869 /* CCSoomlaEntity.h */; };
+		F8694B621A1CF731001738B4 /* CCAggregateReward.h in Headers */ = {isa = PBXBuildFile; fileRef = 9D4101411978CFAD00907FA8 /* CCAggregateReward.h */; };
+		F8694B641A1CF731001738B4 /* CCBadgeReward.h in Headers */ = {isa = PBXBuildFile; fileRef = 9D4101431978CFAD00907FA8 /* CCBadgeReward.h */; };
+		F8694B661A1CF731001738B4 /* CCRandomReward.h in Headers */ = {isa = PBXBuildFile; fileRef = 9D4101451978CFAD00907FA8 /* CCRandomReward.h */; };
+		F8694B681A1CF731001738B4 /* CCReward.h in Headers */ = {isa = PBXBuildFile; fileRef = 9D4101471978CFAD00907FA8 /* CCReward.h */; };
+		F8694B6A1A1CF731001738B4 /* CCSequenceReward.h in Headers */ = {isa = PBXBuildFile; fileRef = 9D4101491978CFAD00907FA8 /* CCSequenceReward.h */; };
+		F8694B6C1A1CF731001738B4 /* CCSchedule.h in Headers */ = {isa = PBXBuildFile; fileRef = 372B7B53C5A571B92A25C08C /* CCSchedule.h */; };
+		F8694B6D1A1CF731001738B4 /* CCSoomlaUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 372B748E4E8020FCD1396DDC /* CCSoomlaUtils.h */; };
+		F8694B701A1CF731001738B4 /* CCKeyValueStorage.h in Headers */ = {isa = PBXBuildFile; fileRef = F8B27EDA19B9F51F0094A771 /* CCKeyValueStorage.h */; };
+		F8694B721A1CF731001738B4 /* CCRewardStorage.h in Headers */ = {isa = PBXBuildFile; fileRef = 372B7A7FFA3D34A23C31687B /* CCRewardStorage.h */; };
+		F89F71FC1AB187E6000ECC23 /* CCNativeKeyValueStorage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F89F71F81AB187E6000ECC23 /* CCNativeKeyValueStorage.cpp */; };
+		F89F71FD1AB187E6000ECC23 /* CCNativeKeyValueStorage.h in Headers */ = {isa = PBXBuildFile; fileRef = F89F71F91AB187E6000ECC23 /* CCNativeKeyValueStorage.h */; };
+		F89F71FE1AB187E6000ECC23 /* CCNativeRewardStorage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F89F71FA1AB187E6000ECC23 /* CCNativeRewardStorage.cpp */; };
+		F89F71FF1AB187E6000ECC23 /* CCNativeRewardStorage.h in Headers */ = {isa = PBXBuildFile; fileRef = F89F71FB1AB187E6000ECC23 /* CCNativeRewardStorage.h */; };
+		F89F72001AB1881C000ECC23 /* CCNativeKeyValueStorage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F89F71F81AB187E6000ECC23 /* CCNativeKeyValueStorage.cpp */; };
+		F89F72011AB1881C000ECC23 /* CCNativeRewardStorage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F89F71FA1AB187E6000ECC23 /* CCNativeRewardStorage.cpp */; };
+		F89F72031AB1881C000ECC23 /* CCCoreBridge.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F865E1C91AB0A018006DA7E2 /* CCCoreBridge.cpp */; };
+		F89F720C1AB18D03000ECC23 /* CCBridgelessKeyValueStorage.h in Headers */ = {isa = PBXBuildFile; fileRef = F89F720A1AB18D03000ECC23 /* CCBridgelessKeyValueStorage.h */; };
+		F89F720D1AB18D03000ECC23 /* CCBridgelessKeyValueStorage.h in Headers */ = {isa = PBXBuildFile; fileRef = F89F720A1AB18D03000ECC23 /* CCBridgelessKeyValueStorage.h */; };
+		F89F720E1AB18D03000ECC23 /* CCBridgelessKeyValueStorage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F89F720B1AB18D03000ECC23 /* CCBridgelessKeyValueStorage.cpp */; };
+		F89F720F1AB18D03000ECC23 /* CCBridgelessKeyValueStorage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F89F720B1AB18D03000ECC23 /* CCBridgelessKeyValueStorage.cpp */; };
+		F89F72101AB18DA1000ECC23 /* CCSoomla.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F865E1C71AB0A018006DA7E2 /* CCSoomla.cpp */; };
+		F89F72221AB19307000ECC23 /* CCNativeCoreBridge.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F89F72201AB19307000ECC23 /* CCNativeCoreBridge.cpp */; };
+		F89F72231AB19307000ECC23 /* CCNativeCoreBridge.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F89F72201AB19307000ECC23 /* CCNativeCoreBridge.cpp */; };
+		F89F72241AB19307000ECC23 /* CCNativeCoreBridge.h in Headers */ = {isa = PBXBuildFile; fileRef = F89F72211AB19307000ECC23 /* CCNativeCoreBridge.h */; };
+		F89F72251AB19307000ECC23 /* CCNativeCoreBridge.h in Headers */ = {isa = PBXBuildFile; fileRef = F89F72211AB19307000ECC23 /* CCNativeCoreBridge.h */; };
+		F8B27EDB19B9F51F0094A771 /* CCKeyValueStorage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F8B27ED919B9F51F0094A771 /* CCKeyValueStorage.cpp */; };
+		F8B27EDC19B9F51F0094A771 /* CCKeyValueStorage.h in Headers */ = {isa = PBXBuildFile; fileRef = F8B27EDA19B9F51F0094A771 /* CCKeyValueStorage.h */; };
+		F8B27EEA19B9FE6D0094A771 /* libCocos2dXiOSCore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F8B27EE919B9FE6D0094A771 /* libCocos2dXiOSCore.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		372B73021AB74279EE404D33 /* CCRewardStorage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCRewardStorage.cpp; sourceTree = "<group>"; };
+		372B73C62BBFD3700BD6DE74 /* CCSchedule.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCSchedule.cpp; sourceTree = "<group>"; };
+		372B74257254F43D38DF97CA /* CCSoomlaEntity.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCSoomlaEntity.cpp; sourceTree = "<group>"; };
+		372B748E4E8020FCD1396DDC /* CCSoomlaUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCSoomlaUtils.h; sourceTree = "<group>"; };
+		372B75AEF9E49C7BD45C6ED6 /* CCSoomlaUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCSoomlaUtils.cpp; sourceTree = "<group>"; };
+		372B7A7FFA3D34A23C31687B /* CCRewardStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCRewardStorage.h; sourceTree = "<group>"; };
+		372B7B53C5A571B92A25C08C /* CCSchedule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCSchedule.h; sourceTree = "<group>"; };
+		372B7DF784D9DB67349CF869 /* CCSoomlaEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCSoomlaEntity.h; sourceTree = "<group>"; };
+		9D4101251978CFAD00907FA8 /* CCAbstractAggregatedEventHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCAbstractAggregatedEventHandler.h; sourceTree = "<group>"; };
+		9D4101261978CFAD00907FA8 /* CCCoreConsts.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCCoreConsts.cpp; sourceTree = "<group>"; };
+		9D4101271978CFAD00907FA8 /* CCCoreConsts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCCoreConsts.h; sourceTree = "<group>"; };
+		9D4101281978CFAD00907FA8 /* CCCoreEventDispatcher.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCCoreEventDispatcher.cpp; sourceTree = "<group>"; };
+		9D4101291978CFAD00907FA8 /* CCCoreEventDispatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCCoreEventDispatcher.h; sourceTree = "<group>"; };
+		9D41012D1978CFAD00907FA8 /* CCDomainFactory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCDomainFactory.cpp; sourceTree = "<group>"; };
+		9D41012E1978CFAD00907FA8 /* CCDomainFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCDomainFactory.h; sourceTree = "<group>"; };
+		9D41012F1978CFAD00907FA8 /* CCDomainHelper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCDomainHelper.cpp; sourceTree = "<group>"; };
+		9D4101301978CFAD00907FA8 /* CCDomainHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCDomainHelper.h; sourceTree = "<group>"; };
+		9D4101311978CFAD00907FA8 /* CCError.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCError.cpp; sourceTree = "<group>"; };
+		9D4101321978CFAD00907FA8 /* CCError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCError.h; sourceTree = "<group>"; };
+		9D4101331978CFAD00907FA8 /* CCJsonHelper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCJsonHelper.cpp; sourceTree = "<group>"; };
+		9D4101341978CFAD00907FA8 /* CCJsonHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCJsonHelper.h; sourceTree = "<group>"; };
+		9D4101351978CFAD00907FA8 /* CCNdkBridge.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCNdkBridge.cpp; sourceTree = "<group>"; };
+		9D4101361978CFAD00907FA8 /* CCNdkBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCNdkBridge.h; sourceTree = "<group>"; };
+		9D4101391978CFAD00907FA8 /* CCSoomlaEventDispatcher.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCSoomlaEventDispatcher.cpp; sourceTree = "<group>"; };
+		9D41013A1978CFAD00907FA8 /* CCSoomlaEventDispatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCSoomlaEventDispatcher.h; sourceTree = "<group>"; };
+		9D41013B1978CFAD00907FA8 /* CCSoomlaMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCSoomlaMacros.h; sourceTree = "<group>"; };
+		9D41013D1978CFAD00907FA8 /* CCDomain.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCDomain.cpp; sourceTree = "<group>"; };
+		9D41013E1978CFAD00907FA8 /* CCDomain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCDomain.h; sourceTree = "<group>"; };
+		9D4101401978CFAD00907FA8 /* CCAggregateReward.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCAggregateReward.cpp; sourceTree = "<group>"; };
+		9D4101411978CFAD00907FA8 /* CCAggregateReward.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCAggregateReward.h; sourceTree = "<group>"; };
+		9D4101421978CFAD00907FA8 /* CCBadgeReward.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCBadgeReward.cpp; sourceTree = "<group>"; };
+		9D4101431978CFAD00907FA8 /* CCBadgeReward.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCBadgeReward.h; sourceTree = "<group>"; };
+		9D4101441978CFAD00907FA8 /* CCRandomReward.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCRandomReward.cpp; sourceTree = "<group>"; };
+		9D4101451978CFAD00907FA8 /* CCRandomReward.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCRandomReward.h; sourceTree = "<group>"; };
+		9D4101461978CFAD00907FA8 /* CCReward.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCReward.cpp; sourceTree = "<group>"; };
+		9D4101471978CFAD00907FA8 /* CCReward.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCReward.h; sourceTree = "<group>"; };
+		9D4101481978CFAD00907FA8 /* CCSequenceReward.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCSequenceReward.cpp; sourceTree = "<group>"; };
+		9D4101491978CFAD00907FA8 /* CCSequenceReward.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCSequenceReward.h; sourceTree = "<group>"; };
+		9D63D09E19B1B20D0054EA87 /* libSoomlaiOSCore.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSoomlaiOSCore.a; path = build/ios/libSoomlaiOSCore.a; sourceTree = "<group>"; };
+		C0B3C5EF168C6D0C00161FAA /* libCocos2dXCore.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCocos2dXCore.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		C0B3C5F2168C6D0C00161FAA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		F861D66419BF5F6E008834EF /* Cocos2dxCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Cocos2dxCore.h; sourceTree = "<group>"; };
+		F865E1C71AB0A018006DA7E2 /* CCSoomla.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCSoomla.cpp; sourceTree = "<group>"; };
+		F865E1C81AB0A018006DA7E2 /* CCSoomla.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCSoomla.h; sourceTree = "<group>"; };
+		F865E1C91AB0A018006DA7E2 /* CCCoreBridge.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCCoreBridge.cpp; sourceTree = "<group>"; };
+		F865E1CC1AB0A018006DA7E2 /* CCCoreBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCCoreBridge.h; sourceTree = "<group>"; };
+		F8694AD91A1CF680001738B4 /* libCocos2dXCore Mac.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libCocos2dXCore Mac.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F8694B731A1CF75B001738B4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		F89F71F81AB187E6000ECC23 /* CCNativeKeyValueStorage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCNativeKeyValueStorage.cpp; sourceTree = "<group>"; };
+		F89F71F91AB187E6000ECC23 /* CCNativeKeyValueStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCNativeKeyValueStorage.h; sourceTree = "<group>"; };
+		F89F71FA1AB187E6000ECC23 /* CCNativeRewardStorage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCNativeRewardStorage.cpp; sourceTree = "<group>"; };
+		F89F71FB1AB187E6000ECC23 /* CCNativeRewardStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCNativeRewardStorage.h; sourceTree = "<group>"; };
+		F89F720A1AB18D03000ECC23 /* CCBridgelessKeyValueStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCBridgelessKeyValueStorage.h; sourceTree = "<group>"; };
+		F89F720B1AB18D03000ECC23 /* CCBridgelessKeyValueStorage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCBridgelessKeyValueStorage.cpp; sourceTree = "<group>"; };
+		F89F72201AB19307000ECC23 /* CCNativeCoreBridge.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCNativeCoreBridge.cpp; sourceTree = "<group>"; };
+		F89F72211AB19307000ECC23 /* CCNativeCoreBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCNativeCoreBridge.h; sourceTree = "<group>"; };
+		F8B27ED919B9F51F0094A771 /* CCKeyValueStorage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCKeyValueStorage.cpp; sourceTree = "<group>"; };
+		F8B27EDA19B9F51F0094A771 /* CCKeyValueStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCKeyValueStorage.h; sourceTree = "<group>"; };
+		F8B27EE919B9FE6D0094A771 /* libCocos2dXiOSCore.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libCocos2dXiOSCore.a; path = build/ios/libCocos2dXiOSCore.a; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C0B3C5EC168C6D0C00161FAA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F8B27EEA19B9FE6D0094A771 /* libCocos2dXiOSCore.a in Frameworks */,
+				9D63D0A019B1B20D0054EA87 /* libSoomlaiOSCore.a in Frameworks */,
+				C0B3C5F3168C6D0C00161FAA /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F8694AD61A1CF680001738B4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		372B7A1EA12379CCB201D0E1 /* data */ = {
+			isa = PBXGroup;
+			children = (
+				F89F720A1AB18D03000ECC23 /* CCBridgelessKeyValueStorage.h */,
+				F89F720B1AB18D03000ECC23 /* CCBridgelessKeyValueStorage.cpp */,
+				F8B27ED919B9F51F0094A771 /* CCKeyValueStorage.cpp */,
+				F8B27EDA19B9F51F0094A771 /* CCKeyValueStorage.h */,
+				372B73021AB74279EE404D33 /* CCRewardStorage.cpp */,
+				372B7A7FFA3D34A23C31687B /* CCRewardStorage.h */,
+			);
+			path = data;
+			sourceTree = "<group>";
+		};
+		9D4101241978CFAD00907FA8 /* Soomla */ = {
+			isa = PBXGroup;
+			children = (
+				F89F71F71AB187E6000ECC23 /* NativeImpl */,
+				F865E1C71AB0A018006DA7E2 /* CCSoomla.cpp */,
+				F865E1C81AB0A018006DA7E2 /* CCSoomla.h */,
+				F865E1C91AB0A018006DA7E2 /* CCCoreBridge.cpp */,
+				F865E1CC1AB0A018006DA7E2 /* CCCoreBridge.h */,
+				F861D66419BF5F6E008834EF /* Cocos2dxCore.h */,
+				9D4101251978CFAD00907FA8 /* CCAbstractAggregatedEventHandler.h */,
+				9D4101261978CFAD00907FA8 /* CCCoreConsts.cpp */,
+				9D4101271978CFAD00907FA8 /* CCCoreConsts.h */,
+				9D4101281978CFAD00907FA8 /* CCCoreEventDispatcher.cpp */,
+				9D4101291978CFAD00907FA8 /* CCCoreEventDispatcher.h */,
+				9D41012D1978CFAD00907FA8 /* CCDomainFactory.cpp */,
+				9D41012E1978CFAD00907FA8 /* CCDomainFactory.h */,
+				9D41012F1978CFAD00907FA8 /* CCDomainHelper.cpp */,
+				9D4101301978CFAD00907FA8 /* CCDomainHelper.h */,
+				9D4101311978CFAD00907FA8 /* CCError.cpp */,
+				9D4101321978CFAD00907FA8 /* CCError.h */,
+				9D4101331978CFAD00907FA8 /* CCJsonHelper.cpp */,
+				9D4101341978CFAD00907FA8 /* CCJsonHelper.h */,
+				9D4101351978CFAD00907FA8 /* CCNdkBridge.cpp */,
+				9D4101361978CFAD00907FA8 /* CCNdkBridge.h */,
+				9D4101391978CFAD00907FA8 /* CCSoomlaEventDispatcher.cpp */,
+				9D41013A1978CFAD00907FA8 /* CCSoomlaEventDispatcher.h */,
+				9D41013B1978CFAD00907FA8 /* CCSoomlaMacros.h */,
+				9D41013C1978CFAD00907FA8 /* domain */,
+				9D41013F1978CFAD00907FA8 /* rewards */,
+				372B73C62BBFD3700BD6DE74 /* CCSchedule.cpp */,
+				372B7B53C5A571B92A25C08C /* CCSchedule.h */,
+				372B748E4E8020FCD1396DDC /* CCSoomlaUtils.h */,
+				372B75AEF9E49C7BD45C6ED6 /* CCSoomlaUtils.cpp */,
+				372B7A1EA12379CCB201D0E1 /* data */,
+			);
+			path = Soomla;
+			sourceTree = "<group>";
+		};
+		9D41013C1978CFAD00907FA8 /* domain */ = {
+			isa = PBXGroup;
+			children = (
+				9D41013D1978CFAD00907FA8 /* CCDomain.cpp */,
+				9D41013E1978CFAD00907FA8 /* CCDomain.h */,
+				372B74257254F43D38DF97CA /* CCSoomlaEntity.cpp */,
+				372B7DF784D9DB67349CF869 /* CCSoomlaEntity.h */,
+			);
+			path = domain;
+			sourceTree = "<group>";
+		};
+		9D41013F1978CFAD00907FA8 /* rewards */ = {
+			isa = PBXGroup;
+			children = (
+				9D4101401978CFAD00907FA8 /* CCAggregateReward.cpp */,
+				9D4101411978CFAD00907FA8 /* CCAggregateReward.h */,
+				9D4101421978CFAD00907FA8 /* CCBadgeReward.cpp */,
+				9D4101431978CFAD00907FA8 /* CCBadgeReward.h */,
+				9D4101441978CFAD00907FA8 /* CCRandomReward.cpp */,
+				9D4101451978CFAD00907FA8 /* CCRandomReward.h */,
+				9D4101461978CFAD00907FA8 /* CCReward.cpp */,
+				9D4101471978CFAD00907FA8 /* CCReward.h */,
+				9D4101481978CFAD00907FA8 /* CCSequenceReward.cpp */,
+				9D4101491978CFAD00907FA8 /* CCSequenceReward.h */,
+			);
+			path = rewards;
+			sourceTree = "<group>";
+		};
+		C0B3C5E4168C6D0C00161FAA = {
+			isa = PBXGroup;
+			children = (
+				9D4101241978CFAD00907FA8 /* Soomla */,
+				C0B3C5F1168C6D0C00161FAA /* Frameworks */,
+				C0B3C5F0168C6D0C00161FAA /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C0B3C5F0168C6D0C00161FAA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C0B3C5EF168C6D0C00161FAA /* libCocos2dXCore.a */,
+				F8694AD91A1CF680001738B4 /* libCocos2dXCore Mac.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C0B3C5F1168C6D0C00161FAA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F8694B731A1CF75B001738B4 /* Foundation.framework */,
+				F8B27EE919B9FE6D0094A771 /* libCocos2dXiOSCore.a */,
+				9D63D09E19B1B20D0054EA87 /* libSoomlaiOSCore.a */,
+				C0B3C5F2168C6D0C00161FAA /* Foundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F89F71F71AB187E6000ECC23 /* NativeImpl */ = {
+			isa = PBXGroup;
+			children = (
+				F89F72201AB19307000ECC23 /* CCNativeCoreBridge.cpp */,
+				F89F72211AB19307000ECC23 /* CCNativeCoreBridge.h */,
+				F89F71F81AB187E6000ECC23 /* CCNativeKeyValueStorage.cpp */,
+				F89F71F91AB187E6000ECC23 /* CCNativeKeyValueStorage.h */,
+				F89F71FA1AB187E6000ECC23 /* CCNativeRewardStorage.cpp */,
+				F89F71FB1AB187E6000ECC23 /* CCNativeRewardStorage.h */,
+			);
+			path = NativeImpl;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		9D64AAD0190653C40091D664 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F865E1D41AB0A018006DA7E2 /* CCCoreBridge.h in Headers */,
+				F861D66519BF5F7F008834EF /* Cocos2dxCore.h in Headers */,
+				9D41014A1978CFAD00907FA8 /* CCAbstractAggregatedEventHandler.h in Headers */,
+				9D41016A1978CFAD00907FA8 /* CCReward.h in Headers */,
+				F89F71FF1AB187E6000ECC23 /* CCNativeRewardStorage.h in Headers */,
+				F8B27EDC19B9F51F0094A771 /* CCKeyValueStorage.h in Headers */,
+				9D4101551978CFAD00907FA8 /* CCDomainHelper.h in Headers */,
+				9D4101661978CFAD00907FA8 /* CCBadgeReward.h in Headers */,
+				9D41016C1978CFAD00907FA8 /* CCSequenceReward.h in Headers */,
+				9D4101641978CFAD00907FA8 /* CCAggregateReward.h in Headers */,
+				9D4101681978CFAD00907FA8 /* CCRandomReward.h in Headers */,
+				9D4101591978CFAD00907FA8 /* CCJsonHelper.h in Headers */,
+				9D4101531978CFAD00907FA8 /* CCDomainFactory.h in Headers */,
+				9D41014C1978CFAD00907FA8 /* CCCoreConsts.h in Headers */,
+				F89F72241AB19307000ECC23 /* CCNativeCoreBridge.h in Headers */,
+				9D41015B1978CFAD00907FA8 /* CCNdkBridge.h in Headers */,
+				F865E1D01AB0A018006DA7E2 /* CCSoomla.h in Headers */,
+				9D41015F1978CFAD00907FA8 /* CCSoomlaEventDispatcher.h in Headers */,
+				9D41014E1978CFAD00907FA8 /* CCCoreEventDispatcher.h in Headers */,
+				9D4101601978CFAD00907FA8 /* CCSoomlaMacros.h in Headers */,
+				9D4101621978CFAD00907FA8 /* CCDomain.h in Headers */,
+				9D4101571978CFAD00907FA8 /* CCError.h in Headers */,
+				372B72C58DE0C3DFE3522984 /* CCSoomlaEntity.h in Headers */,
+				F89F720C1AB18D03000ECC23 /* CCBridgelessKeyValueStorage.h in Headers */,
+				372B7222D15E89FF731A78BD /* CCSchedule.h in Headers */,
+				F89F71FD1AB187E6000ECC23 /* CCNativeKeyValueStorage.h in Headers */,
+				372B7A1D5F372FCFD9E68388 /* CCSoomlaUtils.h in Headers */,
+				372B74CD5188E48BE19BAC31 /* CCRewardStorage.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F8694AD71A1CF680001738B4 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F8694B451A1CF730001738B4 /* Cocos2dxCore.h in Headers */,
+				F8694B461A1CF730001738B4 /* CCAbstractAggregatedEventHandler.h in Headers */,
+				F8694B481A1CF730001738B4 /* CCCoreConsts.h in Headers */,
+				F8694B4A1A1CF730001738B4 /* CCCoreEventDispatcher.h in Headers */,
+				F8694B4F1A1CF730001738B4 /* CCDomainFactory.h in Headers */,
+				F8694B511A1CF730001738B4 /* CCDomainHelper.h in Headers */,
+				F8694B531A1CF730001738B4 /* CCError.h in Headers */,
+				F89F720D1AB18D03000ECC23 /* CCBridgelessKeyValueStorage.h in Headers */,
+				F8694B551A1CF731001738B4 /* CCJsonHelper.h in Headers */,
+				F8694B571A1CF731001738B4 /* CCNdkBridge.h in Headers */,
+				F8694B5B1A1CF731001738B4 /* CCSoomlaEventDispatcher.h in Headers */,
+				F8694B5C1A1CF731001738B4 /* CCSoomlaMacros.h in Headers */,
+				F89F72251AB19307000ECC23 /* CCNativeCoreBridge.h in Headers */,
+				F8694B5E1A1CF731001738B4 /* CCDomain.h in Headers */,
+				F8694B601A1CF731001738B4 /* CCSoomlaEntity.h in Headers */,
+				F8694B621A1CF731001738B4 /* CCAggregateReward.h in Headers */,
+				F8694B641A1CF731001738B4 /* CCBadgeReward.h in Headers */,
+				F8694B661A1CF731001738B4 /* CCRandomReward.h in Headers */,
+				F8694B681A1CF731001738B4 /* CCReward.h in Headers */,
+				F8694B6A1A1CF731001738B4 /* CCSequenceReward.h in Headers */,
+				F8694B6C1A1CF731001738B4 /* CCSchedule.h in Headers */,
+				F8694B6D1A1CF731001738B4 /* CCSoomlaUtils.h in Headers */,
+				F8694B701A1CF731001738B4 /* CCKeyValueStorage.h in Headers */,
+				F8694B721A1CF731001738B4 /* CCRewardStorage.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		C0B3C5EE168C6D0C00161FAA /* Cocos2dXCore */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C0B3C5FD168C6D0C00161FAA /* Build configuration list for PBXNativeTarget "Cocos2dXCore" */;
+			buildPhases = (
+				C0B3C5EB168C6D0C00161FAA /* Sources */,
+				C0B3C5EC168C6D0C00161FAA /* Frameworks */,
+				9D64AAD0190653C40091D664 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Cocos2dXCore;
+			productName = SoomlaIOSStore;
+			productReference = C0B3C5EF168C6D0C00161FAA /* libCocos2dXCore.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		F8694AD81A1CF680001738B4 /* Cocos2dXCore Mac */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F8694AEA1A1CF681001738B4 /* Build configuration list for PBXNativeTarget "Cocos2dXCore Mac" */;
+			buildPhases = (
+				F8694AD51A1CF680001738B4 /* Sources */,
+				F8694AD61A1CF680001738B4 /* Frameworks */,
+				F8694AD71A1CF680001738B4 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Cocos2dXCore Mac";
+			productName = "Cocos2dXCore Mac";
+			productReference = F8694AD91A1CF680001738B4 /* libCocos2dXCore Mac.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C0B3C5E6168C6D0C00161FAA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0450;
+				ORGANIZATIONNAME = SOOMLA;
+				TargetAttributes = {
+					F8694AD81A1CF680001738B4 = {
+						CreatedOnToolsVersion = 6.1;
+					};
+				};
+			};
+			buildConfigurationList = C0B3C5E9168C6D0C00161FAA /* Build configuration list for PBXProject "Cocos2dXCore" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = C0B3C5E4168C6D0C00161FAA;
+			productRefGroup = C0B3C5F0168C6D0C00161FAA /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C0B3C5EE168C6D0C00161FAA /* Cocos2dXCore */,
+				F8694AD81A1CF680001738B4 /* Cocos2dXCore Mac */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C0B3C5EB168C6D0C00161FAA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F89F71FC1AB187E6000ECC23 /* CCNativeKeyValueStorage.cpp in Sources */,
+				9D4101631978CFAD00907FA8 /* CCAggregateReward.cpp in Sources */,
+				9D41015E1978CFAD00907FA8 /* CCSoomlaEventDispatcher.cpp in Sources */,
+				9D4101691978CFAD00907FA8 /* CCReward.cpp in Sources */,
+				F89F72221AB19307000ECC23 /* CCNativeCoreBridge.cpp in Sources */,
+				F89F720E1AB18D03000ECC23 /* CCBridgelessKeyValueStorage.cpp in Sources */,
+				9D41015A1978CFAD00907FA8 /* CCNdkBridge.cpp in Sources */,
+				9D4101581978CFAD00907FA8 /* CCJsonHelper.cpp in Sources */,
+				9D41014D1978CFAD00907FA8 /* CCCoreEventDispatcher.cpp in Sources */,
+				9D4101651978CFAD00907FA8 /* CCBadgeReward.cpp in Sources */,
+				9D41014B1978CFAD00907FA8 /* CCCoreConsts.cpp in Sources */,
+				9D41016B1978CFAD00907FA8 /* CCSequenceReward.cpp in Sources */,
+				9D4101541978CFAD00907FA8 /* CCDomainHelper.cpp in Sources */,
+				F865E1CF1AB0A018006DA7E2 /* CCSoomla.cpp in Sources */,
+				9D4101611978CFAD00907FA8 /* CCDomain.cpp in Sources */,
+				9D4101521978CFAD00907FA8 /* CCDomainFactory.cpp in Sources */,
+				9D4101561978CFAD00907FA8 /* CCError.cpp in Sources */,
+				9D4101671978CFAD00907FA8 /* CCRandomReward.cpp in Sources */,
+				F89F71FE1AB187E6000ECC23 /* CCNativeRewardStorage.cpp in Sources */,
+				372B7E556799F8D93570725F /* CCSoomlaEntity.cpp in Sources */,
+				372B781D8BC07D3AA891021B /* CCSchedule.cpp in Sources */,
+				372B790F7E37797D2E10ED65 /* CCSoomlaUtils.cpp in Sources */,
+				F865E1D11AB0A018006DA7E2 /* CCCoreBridge.cpp in Sources */,
+				F8B27EDB19B9F51F0094A771 /* CCKeyValueStorage.cpp in Sources */,
+				372B7FBE9869CD7B1B70ED0E /* CCRewardStorage.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F8694AD51A1CF680001738B4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F89F72101AB18DA1000ECC23 /* CCSoomla.cpp in Sources */,
+				F89F72001AB1881C000ECC23 /* CCNativeKeyValueStorage.cpp in Sources */,
+				F89F72011AB1881C000ECC23 /* CCNativeRewardStorage.cpp in Sources */,
+				F89F72031AB1881C000ECC23 /* CCCoreBridge.cpp in Sources */,
+				F89F72231AB19307000ECC23 /* CCNativeCoreBridge.cpp in Sources */,
+				F8694B401A1CF717001738B4 /* CCSoomlaUtils.cpp in Sources */,
+				F8694B031A1CF6F1001738B4 /* CCDomainFactory.cpp in Sources */,
+				F8694B051A1CF6F1001738B4 /* CCDomainHelper.cpp in Sources */,
+				F8694B071A1CF6F1001738B4 /* CCError.cpp in Sources */,
+				F8694B091A1CF6F1001738B4 /* CCJsonHelper.cpp in Sources */,
+				F8694B0B1A1CF6F1001738B4 /* CCNdkBridge.cpp in Sources */,
+				F8694B0F1A1CF6F1001738B4 /* CCSoomlaEventDispatcher.cpp in Sources */,
+				F8694B121A1CF6F1001738B4 /* CCDomain.cpp in Sources */,
+				F8694B141A1CF6F1001738B4 /* CCSoomlaEntity.cpp in Sources */,
+				F8694B161A1CF6F1001738B4 /* CCAggregateReward.cpp in Sources */,
+				F8694B181A1CF6F1001738B4 /* CCBadgeReward.cpp in Sources */,
+				F8694B1A1A1CF6F1001738B4 /* CCRandomReward.cpp in Sources */,
+				F8694B1C1A1CF6F1001738B4 /* CCReward.cpp in Sources */,
+				F8694B1E1A1CF6F1001738B4 /* CCSequenceReward.cpp in Sources */,
+				F8694B201A1CF6F1001738B4 /* CCSchedule.cpp in Sources */,
+				F8694B241A1CF6F1001738B4 /* CCKeyValueStorage.cpp in Sources */,
+				F8694B261A1CF6F1001738B4 /* CCRewardStorage.cpp in Sources */,
+				F89F720F1AB18D03000ECC23 /* CCBridgelessKeyValueStorage.cpp in Sources */,
+				F8694AF81A1CF6DE001738B4 /* CCCoreConsts.cpp in Sources */,
+				F8694AF91A1CF6E1001738B4 /* CCCoreEventDispatcher.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		C0B3C5FB168C6D0C00161FAA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = c11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREFIX_HEADER = "";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+					"COCOS2D_DEBUG=1",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(SRCROOT)/../../cocos",
+					"$(SRCROOT)/../../cocos/base",
+					"$(SRCROOT)/../../cocos/2d",
+					"$(SRCROOT)/../../external/jansson",
+				);
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				LIBRARY_SEARCH_PATHS = "";
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SYMROOT = out;
+			};
+			name = Debug;
+		};
+		C0B3C5FC168C6D0C00161FAA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = c11;
+				GCC_PREFIX_HEADER = "";
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(SRCROOT)/../../cocos",
+					"$(SRCROOT)/../../cocos/base",
+					"$(SRCROOT)/../../cocos/2d",
+					"$(SRCROOT)/../../external/jansson",
+				);
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				LIBRARY_SEARCH_PATHS = "";
+				SDKROOT = iphoneos;
+				SYMROOT = out;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C0B3C5FE168C6D0C00161FAA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/SoomlaIOSStore.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					CC_TARGET_OS_IPHONE,
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(SRCROOT)/../../cocos/platform/ios",
+					"$(SRCROOT)/../../cocos/platform/ios/Simulation",
+					"$(SRCROOT)/build/ios/headers/**",
+				);
+				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/build/ios";
+				LINK_WITH_STANDARD_LIBRARIES = NO;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-ObjC";
+				PRIVATE_HEADERS_FOLDER_PATH = headers/private;
+				PRODUCT_NAME = Cocos2dXCore;
+				PUBLIC_HEADERS_FOLDER_PATH = headers/public;
+				SKIP_INSTALL = YES;
+				SYMROOT = out;
+				WRAPPER_EXTENSION = framework;
+			};
+			name = Debug;
+		};
+		C0B3C5FF168C6D0C00161FAA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/SoomlaIOSStore.dst;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = CC_TARGET_OS_IPHONE;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(SRCROOT)/../../cocos/platform/ios",
+					"$(SRCROOT)/../../cocos/platform/ios/Simulation",
+					"$(SRCROOT)/build/ios/headers/**",
+				);
+				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/build/ios";
+				LINK_WITH_STANDARD_LIBRARIES = NO;
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = "-ObjC";
+				PRIVATE_HEADERS_FOLDER_PATH = headers/private;
+				PRODUCT_NAME = Cocos2dXCore;
+				PUBLIC_HEADERS_FOLDER_PATH = headers/public;
+				SKIP_INSTALL = YES;
+				SYMROOT = out;
+				WRAPPER_EXTENSION = framework;
+			};
+			name = Release;
+		};
+		F8694AEB1A1CF681001738B4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				EXECUTABLE_PREFIX = lib;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					CC_TARGET_OS_MAC,
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(SRCROOT)/../../cocos",
+					"$(SRCROOT)/../../cocos/base",
+					"$(SRCROOT)/../../cocos/2d",
+					"$(SRCROOT)/../../cocos/platform/mac",
+					"$(SRCROOT)/../../cocos/platform/desktop",
+					"$(SRCROOT)/../../external/glfw3/include/mac",
+				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SYMROOT = out;
+			};
+			name = Debug;
+		};
+		F8694AEC1A1CF681001738B4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				EXECUTABLE_PREFIX = lib;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = CC_TARGET_OS_MAC;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(SRCROOT)/../../cocos",
+					"$(SRCROOT)/../../cocos/base",
+					"$(SRCROOT)/../../cocos/2d",
+					"$(SRCROOT)/../../cocos/platform/mac",
+					"$(SRCROOT)/../../cocos/platform/desktop",
+					"$(SRCROOT)/../../external/glfw3/include/mac",
+				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SYMROOT = out;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C0B3C5E9168C6D0C00161FAA /* Build configuration list for PBXProject "Cocos2dXCore" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C0B3C5FB168C6D0C00161FAA /* Debug */,
+				C0B3C5FC168C6D0C00161FAA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C0B3C5FD168C6D0C00161FAA /* Build configuration list for PBXNativeTarget "Cocos2dXCore" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C0B3C5FE168C6D0C00161FAA /* Debug */,
+				C0B3C5FF168C6D0C00161FAA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F8694AEA1A1CF681001738B4 /* Build configuration list for PBXNativeTarget "Cocos2dXCore Mac" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F8694AEB1A1CF681001738B4 /* Debug */,
+				F8694AEC1A1CF681001738B4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C0B3C5E6168C6D0C00161FAA /* Project object */;
+}

@@ -2,16 +2,20 @@
 #include "Logo.h"
 #include "SimpleAudioEngine.h"
 #include "GameController.h"
-#include "NativeBridge.h"
+#include "Cocos2dxStore.h"
+#include "GameConst.h"
+#include "TinyFlareAssets.h"
+#include "EncrytionUtility.h"
 USING_NS_CC;
 using namespace CocosDenshion;
 
 AppDelegate::AppDelegate() {
-
+    m_pHandler = nullptr;
 }
 
 AppDelegate::~AppDelegate() 
 {
+    CC_SAFE_DELETE(m_pHandler);
 }
 
 //if you want a different context,just modify the value of glContextAttrs
@@ -26,6 +30,19 @@ void AppDelegate::initGLContextAttrs()
 }
 
 bool AppDelegate::applicationDidFinishLaunching() {
+    
+    m_pHandler = new StoreEventHandler();
+    soomla::CCSoomla::initialize(PACKAGE_NAME);
+    
+    TinyFlareAssets *assets = TinyFlareAssets::create();
+    
+    __Dictionary *storeParams = __Dictionary::create();
+    storeParams->setObject(__String::create(ANDROID_PUBLIC_KEY), "androidPublicKey");
+    storeParams->setObject(__Bool::create(true), "testPurchases");
+    storeParams->setObject(__Bool::create(false), "SSV");
+    
+    soomla::CCSoomlaStore::initialize(assets, storeParams);
+    
     // initialize director
     auto director = Director::getInstance();
     auto glview = director->getOpenGLView();
@@ -69,12 +86,8 @@ bool AppDelegate::applicationDidFinishLaunching() {
 // This function will be called when the app is inactive. When comes a phone call,it's be invoked too
 void AppDelegate::applicationDidEnterBackground() {
     Director::getInstance()->stopAnimation();
-
     SimpleAudioEngine::getInstance()->pauseAllEffects();
     SimpleAudioEngine::getInstance()->pauseBackgroundMusic();
-    Director::getInstance()->stopAnimation();
-    GameController::getInstance()->pause();
-    NativeBridge::getInstance()->playInterstitialAds();
 }
 
 // this function will be called when the app is active again
@@ -84,5 +97,6 @@ void AppDelegate::applicationWillEnterForeground() {
     SimpleAudioEngine::getInstance()->resumeAllEffects();
     SimpleAudioEngine::getInstance()->resumeBackgroundMusic();
     
-    Director::getInstance()->startAnimation();
+    GameController::getInstance()->pause();
+    GameController::getInstance()->setToShowAds();
 }

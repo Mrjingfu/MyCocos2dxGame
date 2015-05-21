@@ -12,6 +12,16 @@
 	<string>You are dead!</string>
 	<key>PRESS_CONTINUE</key>
 	<string>PRESS HERE TO CONTINUE!</string>
+	<key>STARDUST</key>
+	<string>Stardust</string>
+	<key>THOUSAND_STARDUST</key>
+	<string>1000 stardust</string>
+	<key>THOUSAND_STARDUST_DESC</key>
+	<string>A pack of 1000 stardust</string>
+	<key>NO_ADS</key>
+	<string>Remove Ads</string>
+	<key>NO_ADS_DESC</key>
+	<string>No More Ads!</string>
 	<key>LEVEL_FAILED</key>
 	<string>Need %d stardust, lack of stardust, you cannot upgrade!</string>
 	<key>STARDUST_DROP</key>

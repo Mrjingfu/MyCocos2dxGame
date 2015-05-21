@@ -14,8 +14,11 @@
 #include "ChaosNumber.h"
 #include "HelpScene.h"
 #include "NativeBridge.h"
+#include "Cocos2dxStore.h"
+#include "TinyFlareAssets.h"
 USING_NS_CC;
 using namespace CocosDenshion;
+using namespace soomla;
 
 PauseUI* PauseUI::create()
 {
@@ -34,6 +37,12 @@ PauseUI::PauseUI()
     //m_pRankBtn      = nullptr;
     m_pRemoveADSBtn = nullptr;
     m_pBackBtn      = nullptr;
+    
+    m_pStardust             = nullptr;
+    m_pStardustX            = nullptr;
+    m_pStardustNum          = nullptr;
+    
+    m_pPurchaseBtn          = nullptr;
     
     m_pStardustDropLevelText    = nullptr;
     m_pStardustDropLevel1       = nullptr;
@@ -61,9 +70,15 @@ PauseUI::PauseUI()
     
     m_pPanelBg  = nullptr;
     m_pPlayText = nullptr;
+    
+    currencyBalanceChangedHandler = Director::getInstance()->getEventDispatcher()->addCustomEventListener(CCStoreConsts::EVENT_CURRENCY_BALANCE_CHANGED,
+                                                                                                          CC_CALLBACK_1(PauseUI::updateCurrencyBalance, this));
+    goodBalanceChangedHandler = Director::getInstance()->getEventDispatcher()->addCustomEventListener(CCStoreConsts::EVENT_GOOD_BALANCE_CHANGED,
+                                                                                                      CC_CALLBACK_1(PauseUI::updateGoodBalance, this));
 }
 PauseUI::~PauseUI()
 {
+    Director::getInstance()->getEventDispatcher()->removeEventListener(goodBalanceChangedHandler);
 }
 bool PauseUI::init()
 {
@@ -88,14 +103,16 @@ bool PauseUI::init()
 //    m_pRankBtn->setVisible(false);
 //    addChild(m_pRankBtn);
     
-    
-    m_pRemoveADSBtn = ui::Button::create("removeads.png");
-    if(!m_pRemoveADSBtn)
-        return false;
-    m_pRemoveADSBtn->addTouchEventListener(CC_CALLBACK_2(PauseUI::pressRemoveADSBtn, this));
-    m_pRemoveADSBtn->setPosition(Vec2(size.width - m_pRemoveADSBtn->getContentSize().width*scale*1.4f, size.height*0.08f));
-    m_pRemoveADSBtn->setScale(0.4f*scale);
-    m_pPanelBg->addChild(m_pRemoveADSBtn);
+    if(!EncrytionUtility::getBoolForKey("RemoveAds",false))
+    {
+        m_pRemoveADSBtn = ui::Button::create("removeads.png");
+        if(!m_pRemoveADSBtn)
+            return false;
+        m_pRemoveADSBtn->addTouchEventListener(CC_CALLBACK_2(PauseUI::pressRemoveADSBtn, this));
+        m_pRemoveADSBtn->setPosition(Vec2(size.width - m_pRemoveADSBtn->getContentSize().width*scale*1.4f, size.height*0.08f));
+        m_pRemoveADSBtn->setScale(0.4f*scale);
+        m_pPanelBg->addChild(m_pRemoveADSBtn);
+    }
     
     m_pBackBtn = ui::Button::create("exit.png");
     if(!m_pBackBtn)
@@ -105,12 +122,42 @@ bool PauseUI::init()
     m_pBackBtn->setScale(0.4f*scale);
     m_pPanelBg->addChild(m_pBackBtn);
     
+    m_pStardust = ui::ImageView::create("diamonditem.png");
+    if(!m_pStardust)
+        return false;
+    m_pStardust->setPosition(Vec2(size.width*0.78f, size.height*0.5f));
+    m_pStardust->setScale(0.1f*scale, 0.14f*scale);
+    m_pPanelBg->addChild(m_pStardust);
     
-    m_pStardustDropLevelText = ui::Text::create(UtilityHelper::getLocalString("STARDUST_DROP"), "FZXS12.TTF", size.height*0.03f);
+    m_pStardustX = ui::Text::create(" + ", "FZXS12.TTF", m_pStardust->getContentSize().height*0.1f*scale);
+    if(!m_pStardustX)
+        return false;
+    m_pStardustX->setPosition(m_pStardust->getPosition() + Vec2(m_pStardust->getContentSize().width*0.1f*scale, 0));
+    m_pStardustX->setAnchorPoint(Vec2(0.5, 0.5f));
+    m_pStardustX->setColor(Color3B(208,255,208));
+    m_pPanelBg->addChild(m_pStardustX);
+    
+    m_pStardustNum = ui::Text::create(Value(1000).asString(), "FZXS12.TTF", m_pStardust->getContentSize().height*0.1f*scale);
+    if(!m_pStardustNum)
+        return false;
+    m_pStardustNum->setColor(Color3B(208,255,208));
+    m_pStardustNum->setAnchorPoint(Vec2(0, 0.5f));
+    m_pStardustNum->setPosition(m_pStardustX->getPosition() + Vec2(m_pStardustX->getContentSize().width*0.3f*scale, 0));
+    m_pPanelBg->addChild(m_pStardustNum);
+    
+    m_pPurchaseBtn = ui::Button::create("purchase.png");
+    if(!m_pPurchaseBtn)
+        return false;
+    m_pPurchaseBtn->addTouchEventListener(CC_CALLBACK_2(PauseUI::pressPurchaseBtn, this));
+    m_pPurchaseBtn->setPosition(Vec2(size.width*0.85f, size.height*0.35f));
+    m_pPurchaseBtn->setScale(0.8f*scale);
+    m_pPanelBg->addChild(m_pPurchaseBtn);
+    
+    m_pStardustDropLevelText = ui::Text::create(UtilityHelper::getLocalString("STARDUST_DROP"), "FZXS12.TTF", size.height*0.04f);
     if(!m_pStardustDropLevelText)
         return false;
     m_pStardustDropLevelText->setAnchorPoint(Vec2(0, 0.5f));
-    m_pStardustDropLevelText->setPosition(Vec2(size.width*0.1f, size.height*0.65f));
+    m_pStardustDropLevelText->setPosition(Vec2(size.width*0.1f, size.height*0.6f));
     m_pStardustDropLevelText->setColor(Color3B(208,255,208));
     m_pPanelBg->addChild(m_pStardustDropLevelText);
     
@@ -179,11 +226,11 @@ bool PauseUI::init()
     m_pPanelBg->addChild(m_pStardustDropLevelAdd);
     
     
-    m_pItemDropLevelText = ui::Text::create(UtilityHelper::getLocalString("ITEM_DROP"), "FZXS12.TTF", size.height*0.03f);
+    m_pItemDropLevelText = ui::Text::create(UtilityHelper::getLocalString("ITEM_DROP"), "FZXS12.TTF", size.height*0.04f);
     if(!m_pItemDropLevelText)
         return false;
     m_pItemDropLevelText->setAnchorPoint(Vec2(0, 0.5f));
-    m_pItemDropLevelText->setPosition(Vec2(size.width*0.1f, size.height*0.45f));
+    m_pItemDropLevelText->setPosition(Vec2(size.width*0.1f, size.height*0.4f));
     m_pItemDropLevelText->setColor(Color3B(208,255,208));
     m_pPanelBg->addChild(m_pItemDropLevelText);
     
@@ -252,11 +299,11 @@ bool PauseUI::init()
     m_pItemDropLevelAdd->addTouchEventListener(CC_CALLBACK_2(PauseUI::pressItemDropLevelAddBtn, this));
     m_pPanelBg->addChild(m_pItemDropLevelAdd);
     
-    m_pItemEffectLevelText = ui::Text::create(UtilityHelper::getLocalString("ITEM_EFFECT"), "FZXS12.TTF", size.height*0.03f);
+    m_pItemEffectLevelText = ui::Text::create(UtilityHelper::getLocalString("ITEM_EFFECT"), "FZXS12.TTF", size.height*0.04f);
     if(!m_pItemEffectLevelText)
         return false;
     m_pItemEffectLevelText->setAnchorPoint(Vec2(0, 0.5f));
-    m_pItemEffectLevelText->setPosition(Vec2(size.width*0.1f, size.height*0.25f));
+    m_pItemEffectLevelText->setPosition(Vec2(size.width*0.1f, size.height*0.2f));
     m_pItemEffectLevelText->setColor(Color3B(208,255,208));
     m_pPanelBg->addChild(m_pItemEffectLevelText);
 
@@ -539,6 +586,12 @@ void PauseUI::pressRemoveADSBtn(Ref* p,TouchEventType eventType)
     if(eventType == TouchEventType::ENDED)
     {
         SimpleAudioEngine::getInstance()->playEffect("btnclick.wav");
+        CCError *soomlaError = NULL;
+        CCStoreInventory::sharedStoreInventory()->buyItem(NO_ADS_ITEM_ID, &soomlaError);
+        if (soomlaError) {
+            CCSoomlaUtils::logException("PauseUI::pressRemoveADSBtn", soomlaError);
+            return;
+        }
     }
 }
 void PauseUI::pressBackBtn(Ref* p,TouchEventType eventType)
@@ -550,6 +603,19 @@ void PauseUI::pressBackBtn(Ref* p,TouchEventType eventType)
         SimpleAudioEngine::getInstance()->playEffect("btnclick.wav");
         GameController::getInstance()->setGameState(GS_MENU);
         NativeBridge::getInstance()->showAdsView();
+    }
+}
+void PauseUI::pressPurchaseBtn(Ref* p,TouchEventType eventType)
+{
+    if(eventType == TouchEventType::ENDED)
+    {
+        SimpleAudioEngine::getInstance()->playEffect("btnclick.wav");
+        CCError *soomlaError = NULL;
+        CCStoreInventory::sharedStoreInventory()->buyItem(THOUSAND_STARDUST_ITEM_ID, &soomlaError);
+        if (soomlaError) {
+            CCSoomlaUtils::logException("PauseUI::pressPurchaseBtn", soomlaError);
+            return;
+        }
     }
 }
 void PauseUI::updateUI()
@@ -939,4 +1005,21 @@ void PauseUI::updateUI()
             m_pItemEffectLevel1->loadTexture("level_full.png");
     }
 
+}
+void PauseUI::updateGoodBalance(cocos2d::EventCustom *event) {
+    __Dictionary *eventData = (__Dictionary *)event->getUserData();
+    soomla::CCVirtualGood *virtualGood = dynamic_cast<CCVirtualGood *>(eventData->objectForKey(CCStoreConsts::DICT_ELEMENT_GOOD));
+    __Integer *balance = dynamic_cast<__Integer *>(eventData->objectForKey(CCStoreConsts::DICT_ELEMENT_BALANCE));
+    if (virtualGood->getItemId()->compare(NO_ADS_ITEM_ID) == 0 && balance->getValue() == 1) {
+        EncrytionUtility::setBoolForKey("RemoveAds",true);
+        NativeBridge::getInstance()->hideAdsView();
+        m_pRemoveADSBtn->removeFromParentAndCleanup(true);
+        m_pRemoveADSBtn = nullptr;
+    }
+}
+void PauseUI::updateCurrencyBalance(cocos2d::EventCustom *event) {
+    __Dictionary *eventData = (__Dictionary *)event->getUserData();
+    __Integer *amountAdded = dynamic_cast<__Integer *>(eventData->objectForKey(CCStoreConsts::DICT_ELEMENT_AMOUNT_ADDED));
+    ChaosNumber add(amountAdded->getValue());
+    GameController::getInstance()->addStardust(add);
 }

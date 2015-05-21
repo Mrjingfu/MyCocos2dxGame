@@ -12,8 +12,12 @@
 #include "SimpleAudioEngine.h"
 #include "HelpScene.h"
 #include "NativeBridge.h"
+#include "Cocos2dxStore.h"
+#include "TinyFlareAssets.h"
+#include "EncrytionUtility.h"
 USING_NS_CC;
 using namespace CocosDenshion;
+using namespace soomla;
 
 DeathUI* DeathUI::create()
 {
@@ -37,9 +41,13 @@ DeathUI::DeathUI()
     m_pMenuBg           = nullptr;
     m_pGameTitle        = nullptr;
     m_pPlayText         = nullptr;
+    
+    goodBalanceChangedHandler = Director::getInstance()->getEventDispatcher()->addCustomEventListener(CCStoreConsts::EVENT_GOOD_BALANCE_CHANGED,
+                                                                                                      CC_CALLBACK_1(DeathUI::updateGoodBalance, this));
 }
 DeathUI::~DeathUI()
 {
+    Director::getInstance()->getEventDispatcher()->removeEventListener(goodBalanceChangedHandler);
 }
 bool DeathUI::init()
 {
@@ -101,13 +109,16 @@ bool DeathUI::init()
     RepeatForever* repeat = RepeatForever::create(sequence3);
     m_pPlayText->runAction(repeat);
     
-    m_pRemoveADSBtn = ui::Button::create("removeads.png");
-    if(!m_pRemoveADSBtn)
-        return false;
-    m_pRemoveADSBtn->addTouchEventListener(CC_CALLBACK_2(DeathUI::pressRemoveADSBtn, this));
-    m_pRemoveADSBtn->setPosition(Vec2(size.width - m_pRemoveADSBtn->getContentSize().width*scale*1.4f, size.height*0.1f));
-    m_pRemoveADSBtn->setScale(0.4f*scale);
-    addChild(m_pRemoveADSBtn);
+    if(!EncrytionUtility::getBoolForKey("RemoveAds",false))
+    {
+        m_pRemoveADSBtn = ui::Button::create("removeads.png");
+        if(!m_pRemoveADSBtn)
+            return false;
+        m_pRemoveADSBtn->addTouchEventListener(CC_CALLBACK_2(DeathUI::pressRemoveADSBtn, this));
+        m_pRemoveADSBtn->setPosition(Vec2(size.width - m_pRemoveADSBtn->getContentSize().width*scale*1.4f, size.height*0.1f));
+        m_pRemoveADSBtn->setScale(0.4f*scale);
+        addChild(m_pRemoveADSBtn);
+    }
     
 //    m_pRankBtn = ui::Button::create("rank.png");
 //    if(!m_pRankBtn)
@@ -148,6 +159,12 @@ void DeathUI::pressRemoveADSBtn(Ref* p,TouchEventType eventType)
     if(eventType == TouchEventType::ENDED)
     {
         SimpleAudioEngine::getInstance()->playEffect("btnclick.wav");
+        CCError *soomlaError = NULL;
+        CCStoreInventory::sharedStoreInventory()->buyItem(NO_ADS_ITEM_ID, &soomlaError);
+        if (soomlaError) {
+            CCSoomlaUtils::logException("DeathUI::pressRemoveADSBtn", soomlaError);
+            return;
+        }
     }
 }
 //void DeathUI::pressRankBtn(Ref* p,TouchEventType eventType)
@@ -179,5 +196,17 @@ void DeathUI::onKeyReleased(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Ev
     {
         SimpleAudioEngine::getInstance()->playEffect("btnclick.wav");
         GameController::getInstance()->setGameState(GS_MENU);
+    }
+}
+void DeathUI::updateGoodBalance(cocos2d::EventCustom *event) {
+    __Dictionary *eventData = (__Dictionary *)event->getUserData();
+    soomla::CCVirtualGood *virtualGood = dynamic_cast<CCVirtualGood *>(eventData->objectForKey(CCStoreConsts::DICT_ELEMENT_GOOD));
+    __Integer *balance = dynamic_cast<__Integer *>(eventData->objectForKey(CCStoreConsts::DICT_ELEMENT_BALANCE));
+    CCLOG("----sssss = %d", balance->getValue());
+    if (virtualGood->getItemId()->compare(NO_ADS_ITEM_ID) == 0 && balance->getValue() == 1) {
+        EncrytionUtility::setBoolForKey("RemoveAds",true);
+        NativeBridge::getInstance()->hideAdsView();
+        m_pRemoveADSBtn->removeFromParentAndCleanup(true);
+        m_pRemoveADSBtn = nullptr;
     }
 }

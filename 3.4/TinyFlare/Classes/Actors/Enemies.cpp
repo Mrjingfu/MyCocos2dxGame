@@ -199,7 +199,7 @@ void ColorTriangle::update(float delta)
     {
         m_fTrackTime += delta;
         float dist = GameController::getInstance()->getPlayerPos().distance(getPosition());
-        if(m_fTrackTime >= 5.0f && dist >= GameController::getInstance()->getBoundSize().width*0.15f)
+        if(m_fTrackTime >= 3.0f && dist >= GameController::getInstance()->getBoundSize().width*0.15f)
         {
             m_fTrackTime = 0.0f;
             setActorState(ActorState::AS_IDLE);
@@ -523,7 +523,7 @@ void Star::update(float delta)
     {
         m_fTrackTime += delta;
         float dist = GameController::getInstance()->getPlayerPos().distance(getPosition());
-        if(m_fTrackTime >= 5.0f && dist >= GameController::getInstance()->getBoundSize().width*0.15f)
+        if(m_fTrackTime >= 3.0f && dist >= GameController::getInstance()->getBoundSize().width*0.15f)
         {
             m_fTrackTime = 0.0f;
             setActorState(ActorState::AS_IDLE);
@@ -868,7 +868,7 @@ void Hexagon::update(float delta)
     {
         m_fTrackTime += delta;
         float dist = GameController::getInstance()->getPlayerPos().distance(getPosition());
-        if(m_fTrackTime >= 8.0f && dist >= GameController::getInstance()->getBoundSize().width*0.05f)
+        if(m_fTrackTime >= 3.0f && dist >= GameController::getInstance()->getBoundSize().width*0.05f)
         {
             m_fTrackTime = 0.0f;
             setActorState(ActorState::AS_IDLE);
@@ -1011,7 +1011,7 @@ void ColorHexagon::update(float delta)
     {
         m_fTrackTime += delta;
         float dist = GameController::getInstance()->getPlayerPos().distance(getPosition());
-        if(m_fTrackTime >= 8.0f && dist >= GameController::getInstance()->getBoundSize().width*0.05f)
+        if(m_fTrackTime >= 3.0f && dist >= GameController::getInstance()->getBoundSize().width*0.05f)
         {
             m_fTrackTime = 0.0f;
             setActorState(ActorState::AS_IDLE);

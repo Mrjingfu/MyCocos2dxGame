@@ -469,6 +469,22 @@
 				<key>percent</key>
 				<integer>0</integer>
 			</dict>
+			<dict>
+				<key>enemyType</key>
+				<integer>4</integer>
+				<key>updateType</key>
+				<integer>1</integer>
+				<key>delayTime</key>
+				<integer>2</integer>
+				<key>lastTime</key>
+				<integer>120</integer>
+				<key>duration</key>
+				<integer>4</integer>
+				<key>number</key>
+				<integer>30</integer>
+				<key>percent</key>
+				<integer>0</integer>
+			</dict>
 		</array>
 	</dict>
 	<dict>

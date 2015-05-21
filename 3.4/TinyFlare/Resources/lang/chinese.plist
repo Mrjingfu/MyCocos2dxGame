@@ -12,6 +12,16 @@
 	<string>你挂了!</string>
 	<key>PRESS_CONTINUE</key>
 	<string>点击这里继续!</string>
+	<key>STARDUST</key>
+	<string>星尘</string>
+	<key>THOUSAND_STARDUST</key>
+	<string>星尘包</string>
+	<key>THOUSAND_STARDUST_DESC</key>
+	<string>包含1000个星尘</string>
+	<key>NO_ADS</key>
+	<string>删除广告</string>
+	<key>NO_ADS_DESC</key>
+	<string>删除所有广告，不再有广告出现!</string>
 	<key>LEVEL_FAILED</key>
 	<string>需要 %d 个星尘，您的星尘不足，无法升级!</string>
 	<key>STARDUST_DROP</key>

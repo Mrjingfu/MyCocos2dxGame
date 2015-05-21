@@ -13,6 +13,7 @@
 #include "SimpleAudioEngine.h"
 #include "StageManager.h"
 #include "EncrytionUtility.h"
+#include "NativeBridge.h"
 USING_NS_CC;
 using namespace CocosDenshion;
 
@@ -43,6 +44,8 @@ GameController::GameController()
     m_pMainUI           = nullptr;
     m_pPauseUI          = nullptr;
     m_pDeathUI          = nullptr;
+    
+    m_bToShowAds          = false;
 }
 GameController::~GameController()
 {
@@ -298,6 +301,14 @@ void GameController::onEnterPause()
         m_pDeathUI = DeathUI::create();
         m_pUILayer->addChild(m_pDeathUI);
     }
+    else
+    {
+        if(m_bToShowAds)
+        {
+            NativeBridge::getInstance()->playInterstitialAds();
+            m_bToShowAds = false;
+        }
+    }
 }
 void GameController::onExitPause()
 {
@@ -463,6 +474,9 @@ void GameController::pauseEnd()
         m_pGameLayer->setVisible(true);
     setGameState(GS_GAME);
     m_pPaused = false;
+    
+    if(m_pPlayer && m_pPlayer->getActorState() == AS_DEAD)
+        setGameState(GS_PAUSE);
 }
 void GameController::addStardust(ChaosNumber& num)
 {

@@ -27,6 +27,8 @@ private:
     void pressBackBtn(Ref* p,TouchEventType eventType);
     
     void onKeyReleased(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event *unused_event);
+    
+    virtual void updateGoodBalance(cocos2d::EventCustom *event);
 private:
     cocos2d::ui::Button*     m_pPlayGameBtn;
     cocos2d::ui::Button*     m_pRemoveADSBtn;
@@ -37,6 +39,8 @@ private:
     cocos2d::ui::ImageView*     m_pMenuBg;
     cocos2d::ui::Text*          m_pGameTitle;
     cocos2d::ui::Text*          m_pPlayText;
+    
+    cocos2d::EventListener *goodBalanceChangedHandler;
 };
 
 #endif /* defined(__TinyFlare__DeathUI__) */
