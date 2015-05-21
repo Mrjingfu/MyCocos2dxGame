@@ -4271,11 +4271,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ios/RootViewController.mm"
-            timestampString = "453555814.634508"
+            timestampString = "453888267.568068"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "227"
-            endingLineNumber = "227"
+            startingLineNumber = "245"
+            endingLineNumber = "245"
             landmarkName = "-interstitial:didFailToReceiveAdWithError:"
             landmarkType = "5">
          </BreakpointContent>
@@ -4287,11 +4287,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ios/RootViewController.mm"
-            timestampString = "453555814.634508"
+            timestampString = "453888267.568068"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "232"
-            endingLineNumber = "232"
+            startingLineNumber = "250"
+            endingLineNumber = "250"
             landmarkName = "-interstitialDidDismissScreen:"
             landmarkType = "5">
          </BreakpointContent>
@@ -4303,11 +4303,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ios/RootViewController.mm"
-            timestampString = "453555814.634508"
+            timestampString = "453888267.568068"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "221"
-            endingLineNumber = "221"
+            startingLineNumber = "239"
+            endingLineNumber = "239"
             landmarkName = "-interstitialDidReceiveAd:"
             landmarkType = "5">
          </BreakpointContent>
@@ -4383,11 +4383,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Utilities/StoreEventHandler.cpp"
-            timestampString = "453730589.632699"
+            timestampString = "453890792.145963"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "45"
-            endingLineNumber = "45"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
             landmarkName = "StoreEventHandler::onBillingNotSupported(EventCustom *event)"
             landmarkType = "5">
          </BreakpointContent>
@@ -4399,11 +4399,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Utilities/StoreEventHandler.cpp"
-            timestampString = "453730589.632699"
+            timestampString = "453890792.145963"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "49"
-            endingLineNumber = "49"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
             landmarkName = "StoreEventHandler::onBillingSupported(EventCustom *event)"
             landmarkType = "5">
          </BreakpointContent>
@@ -4415,11 +4415,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Utilities/StoreEventHandler.cpp"
-            timestampString = "453731697.626483"
+            timestampString = "453890792.145963"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "53"
-            endingLineNumber = "53"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
             landmarkName = "StoreEventHandler::onCurrencyBalanceChanged(EventCustom *event)"
             landmarkType = "5">
          </BreakpointContent>
@@ -4431,11 +4431,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Utilities/StoreEventHandler.cpp"
-            timestampString = "453731697.626483"
+            timestampString = "453890792.145963"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "64"
-            endingLineNumber = "64"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
             landmarkName = "StoreEventHandler::onGoodBalanceChanged(EventCustom *event)"
             landmarkType = "5">
          </BreakpointContent>
@@ -4447,11 +4447,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Utilities/StoreEventHandler.cpp"
-            timestampString = "453731697.626483"
+            timestampString = "453890792.145963"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "75"
-            endingLineNumber = "75"
+            startingLineNumber = "77"
+            endingLineNumber = "77"
             landmarkName = "StoreEventHandler::onGoodEquipped(EventCustom *event)"
             landmarkType = "5">
          </BreakpointContent>
@@ -4463,11 +4463,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Utilities/StoreEventHandler.cpp"
-            timestampString = "453731697.626483"
+            timestampString = "453890792.145963"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "81"
-            endingLineNumber = "81"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
             landmarkName = "StoreEventHandler::onGoodUnEquipped(EventCustom *event)"
             landmarkType = "5">
          </BreakpointContent>
@@ -4479,11 +4479,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Utilities/StoreEventHandler.cpp"
-            timestampString = "453731697.626483"
+            timestampString = "453890792.145963"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "88"
-            endingLineNumber = "88"
+            startingLineNumber = "90"
+            endingLineNumber = "90"
             landmarkName = "StoreEventHandler::onGoodUpgrade(EventCustom *event)"
             landmarkType = "5">
          </BreakpointContent>
@@ -4495,11 +4495,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Utilities/StoreEventHandler.cpp"
-            timestampString = "453731697.626483"
+            timestampString = "453890792.145963"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "95"
-            endingLineNumber = "95"
+            startingLineNumber = "97"
+            endingLineNumber = "97"
             landmarkName = "StoreEventHandler::onItemPurchased(EventCustom *event)"
             landmarkType = "5">
          </BreakpointContent>
@@ -4511,11 +4511,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Utilities/StoreEventHandler.cpp"
-            timestampString = "453731697.626483"
+            timestampString = "453890792.145963"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "104"
-            endingLineNumber = "104"
+            startingLineNumber = "107"
+            endingLineNumber = "107"
             landmarkName = "StoreEventHandler::onItemPurchaseStarted(EventCustom *event)"
             landmarkType = "5">
          </BreakpointContent>
@@ -4527,11 +4527,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Utilities/StoreEventHandler.cpp"
-            timestampString = "453731697.626483"
+            timestampString = "453890792.145963"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "110"
-            endingLineNumber = "110"
+            startingLineNumber = "114"
+            endingLineNumber = "114"
             landmarkName = "StoreEventHandler::onMarketPurchaseCancelled(EventCustom *event)"
             landmarkType = "5">
          </BreakpointContent>
@@ -4543,11 +4543,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Utilities/StoreEventHandler.cpp"
-            timestampString = "453731697.626483"
+            timestampString = "453890792.145963"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "116"
-            endingLineNumber = "116"
+            startingLineNumber = "121"
+            endingLineNumber = "121"
             landmarkName = "StoreEventHandler::onMarketPurchase(EventCustom *event)"
             landmarkType = "5">
          </BreakpointContent>
@@ -4559,11 +4559,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Utilities/StoreEventHandler.cpp"
-            timestampString = "453731697.626483"
+            timestampString = "453890792.145963"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "141"
-            endingLineNumber = "141"
+            startingLineNumber = "146"
+            endingLineNumber = "146"
             landmarkName = "StoreEventHandler::onMarketPurchaseStarted(EventCustom *event)"
             landmarkType = "5">
          </BreakpointContent>
@@ -4571,15 +4571,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Utilities/StoreEventHandler.cpp"
-            timestampString = "453731697.626483"
+            timestampString = "453890792.145963"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "147"
-            endingLineNumber = "147"
+            startingLineNumber = "152"
+            endingLineNumber = "152"
             landmarkName = "StoreEventHandler::onMarketPurchaseVerification(EventCustom *event)"
             landmarkType = "5">
          </BreakpointContent>
@@ -4587,15 +4587,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Utilities/StoreEventHandler.cpp"
-            timestampString = "453731697.626483"
+            timestampString = "453890792.145963"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "153"
-            endingLineNumber = "153"
+            startingLineNumber = "158"
+            endingLineNumber = "158"
             landmarkName = "StoreEventHandler::onRestoreTransactionsStarted(EventCustom *event)"
             landmarkType = "5">
          </BreakpointContent>
@@ -4603,15 +4603,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Utilities/StoreEventHandler.cpp"
-            timestampString = "453731697.626483"
+            timestampString = "453890792.145963"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "158"
-            endingLineNumber = "158"
+            startingLineNumber = "164"
+            endingLineNumber = "164"
             landmarkName = "StoreEventHandler::onRestoreTransactionsFinished(EventCustom *event)"
             landmarkType = "5">
          </BreakpointContent>
@@ -4623,11 +4623,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Utilities/StoreEventHandler.cpp"
-            timestampString = "453731697.626483"
+            timestampString = "453890792.145963"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "164"
-            endingLineNumber = "164"
+            startingLineNumber = "171"
+            endingLineNumber = "171"
             landmarkName = "StoreEventHandler::onUnexpectedErrorInStore(EventCustom *event)"
             landmarkType = "5">
          </BreakpointContent>
@@ -4639,11 +4639,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Utilities/StoreEventHandler.cpp"
-            timestampString = "453731697.626483"
+            timestampString = "453890792.145963"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "169"
-            endingLineNumber = "169"
+            startingLineNumber = "182"
+            endingLineNumber = "182"
             landmarkName = "StoreEventHandler::onSoomlaStoreInitialized(EventCustom *event)"
             landmarkType = "5">
          </BreakpointContent>
@@ -4655,11 +4655,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Utilities/StoreEventHandler.cpp"
-            timestampString = "453731697.626483"
+            timestampString = "453890792.145963"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "173"
-            endingLineNumber = "173"
+            startingLineNumber = "186"
+            endingLineNumber = "186"
             landmarkName = "StoreEventHandler::onMarketItemsRefreshed(EventCustom *event)"
             landmarkType = "5">
          </BreakpointContent>
@@ -4671,11 +4671,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Utilities/StoreEventHandler.cpp"
-            timestampString = "453731697.626483"
+            timestampString = "453890792.145963"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "188"
-            endingLineNumber = "188"
+            startingLineNumber = "201"
+            endingLineNumber = "201"
             landmarkName = "StoreEventHandler::onMarketItemsRefreshStarted(EventCustom *event)"
             landmarkType = "5">
          </BreakpointContent>
@@ -4687,11 +4687,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Utilities/StoreEventHandler.cpp"
-            timestampString = "453731697.626483"
+            timestampString = "453890792.145963"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "192"
-            endingLineNumber = "192"
+            startingLineNumber = "205"
+            endingLineNumber = "205"
             landmarkName = "StoreEventHandler::onMarketItemsRefreshFailed(EventCustom *event)"
             landmarkType = "5">
          </BreakpointContent>
@@ -4703,11 +4703,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Utilities/StoreEventHandler.cpp"
-            timestampString = "453731697.626483"
+            timestampString = "453890792.145963"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "198"
-            endingLineNumber = "198"
+            startingLineNumber = "211"
+            endingLineNumber = "211"
             landmarkName = "StoreEventHandler::onMarketRefund(EventCustom *event)"
             landmarkType = "5">
          </BreakpointContent>
@@ -4719,11 +4719,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Utilities/StoreEventHandler.cpp"
-            timestampString = "453731697.626483"
+            timestampString = "453890792.145963"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "202"
-            endingLineNumber = "202"
+            startingLineNumber = "215"
+            endingLineNumber = "215"
             landmarkName = "StoreEventHandler::onIabServiceStarted(EventCustom *event)"
             landmarkType = "5">
          </BreakpointContent>
@@ -4735,11 +4735,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Utilities/StoreEventHandler.cpp"
-            timestampString = "453731697.626483"
+            timestampString = "453890792.145963"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "206"
-            endingLineNumber = "206"
+            startingLineNumber = "219"
+            endingLineNumber = "219"
             landmarkName = "StoreEventHandler::onIabServiceStopped(EventCustom *event)"
             landmarkType = "5">
          </BreakpointContent>
@@ -4815,11 +4815,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Utilities/StoreEventHandler.cpp"
-            timestampString = "453814568.411881"
+            timestampString = "453890792.145963"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "111"
-            endingLineNumber = "111"
+            startingLineNumber = "115"
+            endingLineNumber = "115"
             landmarkName = "StoreEventHandler::onMarketPurchaseCancelled(EventCustom *event)"
             landmarkType = "5">
          </BreakpointContent>
@@ -4933,6 +4933,86 @@
             startingLineNumber = "479"
             endingLineNumber = "479"
             landmarkName = "GameController::pauseEnd()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/Utilities/StoreEventHandler.cpp"
+            timestampString = "453890792.145963"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "103"
+            endingLineNumber = "103"
+            landmarkName = "StoreEventHandler::onItemPurchased(EventCustom *event)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ios/RootViewController.mm"
+            timestampString = "453890847.626358"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "179"
+            endingLineNumber = "179"
+            landmarkName = "-showAdsView"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ios/RootViewController.mm"
+            timestampString = "453890896.19738"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "234"
+            endingLineNumber = "234"
+            landmarkName = "-adView:didFailToReceiveAdWithError:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ios/RootViewController.mm"
+            timestampString = "453890996.302705"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "200"
+            endingLineNumber = "200"
+            landmarkName = "-playInterstitialAds"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ios/RootViewController.mm"
+            timestampString = "453891022.003306"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "198"
+            endingLineNumber = "198"
+            landmarkName = "-playInterstitialAds"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

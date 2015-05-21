@@ -203,6 +203,24 @@
             NSLog(@"The interstitial didn't finish loading or failed to load");
     }
 }
+
+- (void) showIndicatorView {
+     activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    activityIndicator.center = self.view.center;
+    [self.view addSubview:activityIndicator];
+    [self.view bringSubviewToFront:activityIndicator];
+    self.view.window.userInteractionEnabled = NO;
+    [activityIndicator startAnimating];
+}
+- (void) hideIndicatorView {
+    if(activityIndicator != nil)
+    {
+        [activityIndicator stopAnimating];
+        [activityIndicator removeFromSuperview];
+        self.view.window.userInteractionEnabled = YES;
+    }
+}
+
 #pragma mark GADBannerViewDelegate impl
 
 - (void)adViewDidReceiveAd:(GADBannerView *)adView {

@@ -86,5 +86,7 @@
 	<string>The time props, space time stationary, but your aircraft is not affected.</string>
 	<key>BOOM_DESC</key>
 	<string>The bomb props,the explosion barrage around your aircraft, help you get rid of the enemy.</string>
+	<key>NET_ERROR</key>
+	<string>Please check the network for connections!</string>
 </dict>
 </plist>

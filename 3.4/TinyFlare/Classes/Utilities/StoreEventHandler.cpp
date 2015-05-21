@@ -9,6 +9,8 @@
 #include "StoreEventHandler.h"
 #include "CCStoreInfo.h"
 #include "TinyFlareAssets.h"
+#include "NativeBridge.h"
+#include "UtilityHelper.h"
 
 #define TAG "StoreEventHandler >>>"
 USING_NS_CC;
@@ -98,18 +100,21 @@ void StoreEventHandler::onItemPurchased(EventCustom *event) {
     CCSoomlaUtils::logDebug(TAG, __String::createWithFormat("ItemPurchased: %s %s",
                                                             purchasable->getItemId()->getCString(),
                                                             payload->getCString())->getCString());
+    NativeBridge::getInstance()->hideIndicatorView();
 }
 
 void StoreEventHandler::onItemPurchaseStarted(EventCustom *event) {
     __Dictionary *eventData = (__Dictionary *)event->getUserData();
     CCPurchasableVirtualItem *purchasable = dynamic_cast<CCPurchasableVirtualItem *>(eventData->objectForKey(CCStoreConsts::DICT_ELEMENT_PURCHASABLE));
     CCSoomlaUtils::logDebug(TAG, __String::createWithFormat("ItemPurchaseStarted: %s", purchasable->getItemId()->getCString())->getCString());
+    NativeBridge::getInstance()->showIndicatorView();
 }
 
 void StoreEventHandler::onMarketPurchaseCancelled(EventCustom *event) {
     __Dictionary *eventData = (__Dictionary *)event->getUserData();
     CCPurchasableVirtualItem *purchasable = dynamic_cast<CCPurchasableVirtualItem *>(eventData->objectForKey(CCStoreConsts::DICT_ELEMENT_PURCHASABLE));
     CCSoomlaUtils::logDebug(TAG, __String::createWithFormat("MarketPurchaseCancelled: %s", purchasable->getItemId()->getCString())->getCString());
+    NativeBridge::getInstance()->hideIndicatorView();
 }
 
 void StoreEventHandler::onMarketPurchase(EventCustom *event) {
@@ -151,18 +156,26 @@ void StoreEventHandler::onMarketPurchaseVerification(EventCustom *event) {
 
 void StoreEventHandler::onRestoreTransactionsStarted(EventCustom *event) {
     CCSoomlaUtils::logDebug(TAG, "RestoreTransactionsStarted");
+    NativeBridge::getInstance()->showIndicatorView();
 }
 
 void StoreEventHandler::onRestoreTransactionsFinished(EventCustom *event) {
     __Dictionary *eventData = (__Dictionary *)event->getUserData();
     __Bool *success = dynamic_cast<__Bool *>(eventData->objectForKey(CCStoreConsts::DICT_ELEMENT_SUCCESS));
     CCSoomlaUtils::logDebug(TAG, __String::createWithFormat("RestoreTransactionsFinished: %s", success ? "YES" : "NO")->getCString());
+    NativeBridge::getInstance()->hideIndicatorView();
 }
 
 void StoreEventHandler::onUnexpectedErrorInStore(EventCustom *event) {
     __Dictionary *eventData = (__Dictionary *)event->getUserData();
     __String *errorMessage = dynamic_cast<__String *>(eventData->objectForKey(CCStoreConsts::DICT_ELEMENT_ERROR_MESSAGE));
     CCSoomlaUtils::logDebug(TAG, __String::createWithFormat("UnexpectedErrorInStore: %s", errorMessage->getCString())->getCString());
+    
+    if(errorMessage->getCString() == NULL || strlen(errorMessage->getCString()) == 0)
+        MessageBox(errorMessage->getCString(), UtilityHelper::getLocalString("NET_ERROR").c_str());
+    else
+        MessageBox(errorMessage->getCString(), "");
+    NativeBridge::getInstance()->hideIndicatorView();
 }
 
 void StoreEventHandler::onSoomlaStoreInitialized(EventCustom *event) {

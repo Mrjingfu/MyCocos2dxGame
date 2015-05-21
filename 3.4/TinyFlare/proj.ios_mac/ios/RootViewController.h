@@ -30,6 +30,7 @@
 @interface RootViewController : UIViewController<GADBannerViewDelegate, GADInterstitialDelegate> {
     GADBannerView *admobBannerView;
     GADInterstitial *admobInterstitial;
+    UIActivityIndicatorView *activityIndicator;
 }
 - (BOOL) prefersStatusBarHidden;
 - (void) showRateAppViewCH;
@@ -40,6 +41,9 @@
 - (void) hideAdsView;
 - (void) requestAndLoadInterstitialAds;
 - (void) playInterstitialAds;
+
+- (void) showIndicatorView;
+- (void) hideIndicatorView;
 
 - (GADRequest *)createRequest;
 @end

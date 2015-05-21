@@ -59,6 +59,22 @@ void NativeBridge::playInterstitialAds()
     }
 #endif
 }
+void NativeBridge::showIndicatorView()
+{
+#if CC_TARGET_PLATFORM == CC_PLATFORM_IOS
+    CCLOG("showIndicatorView");
+    if(mViewController != nil)
+        [mViewController showIndicatorView];
+#endif
+}
+void NativeBridge::hideIndicatorView()
+{
+#if CC_TARGET_PLATFORM == CC_PLATFORM_IOS
+    CCLOG("hideIndicatorView");
+    if(mViewController != nil)
+        [mViewController hideIndicatorView];
+#endif
+}
 void NativeBridge::showRateAppView()
 {
 #if CC_TARGET_PLATFORM == CC_PLATFORM_IOS

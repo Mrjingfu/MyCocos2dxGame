@@ -27,6 +27,8 @@ public:
     void showAdsView();
     void hideAdsView();
     void playInterstitialAds();
+    void showIndicatorView();
+    void hideIndicatorView();
     void showRateAppView();
     void logWithUserData();
 private:

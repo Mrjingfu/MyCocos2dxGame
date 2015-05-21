@@ -86,5 +86,7 @@
 	<string>时间道具，使空间时间静止，但你的飞行器不受影响。</string>
 	<key>BOOM_DESC</key>
 	<string>炸弹道具，在你的飞行器周围产生爆炸弹幕，帮你清除敌人。</string>
+	<key>NET_ERROR</key>
+	<string>连接超时，请检查网络！</string>
 </dict>
 </plist>
