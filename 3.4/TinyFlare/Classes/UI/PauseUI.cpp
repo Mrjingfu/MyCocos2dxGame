@@ -78,6 +78,7 @@ PauseUI::PauseUI()
 }
 PauseUI::~PauseUI()
 {
+    Director::getInstance()->getEventDispatcher()->removeEventListener(currencyBalanceChangedHandler);
     Director::getInstance()->getEventDispatcher()->removeEventListener(goodBalanceChangedHandler);
 }
 bool PauseUI::init()
