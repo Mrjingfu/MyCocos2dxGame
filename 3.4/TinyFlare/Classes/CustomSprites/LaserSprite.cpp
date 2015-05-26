@@ -40,17 +40,17 @@ LaserSprite::LaserSprite()
     
     
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-    _backgroundListener = EventListenerCustom::create(EVENT_RENDERER_RECREATED,
+    m_pBackgroundListener = EventListenerCustom::create(EVENT_RENDERER_RECREATED,
                                                       [this](EventCustom*)
                                                       {
-                                                          auto glProgram = _glprogramstate->getGLProgram();
+                                                          auto glProgram = m_pGLprogramstate->getGLProgram();
                                                           glProgram->reset();
                                                           glProgram->initWithByteArrays(m_strVertSource.c_str(), m_strFragSource.c_str());
                                                           glProgram->link();
                                                           glProgram->updateUniforms();
                                                       }
                                                       );
-    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(_backgroundListener, -1);
+    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(m_pBackgroundListener, -1);
 #endif
     
 }
@@ -175,7 +175,7 @@ bool LaserSprite::initGLProgramState(const std::string& vertFilename, const std:
     auto glprogram = GLProgram::createWithByteArrays(ccPositionTextureColor_noMVP_vert, fragSource.c_str());
     
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-    m_strVertSource = vertSource
+    m_strVertSource = vertSource;
     m_strFragSource = fragSource;
 #endif
     

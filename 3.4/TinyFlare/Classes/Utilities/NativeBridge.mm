@@ -1,5 +1,5 @@
 //
-//  NativeBridge.cpp
+//  NativeBridge.mm
 //  TinyFlare
 //
 //  Created by wang haibo on 15/5/14.

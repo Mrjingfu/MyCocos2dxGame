@@ -9,27 +9,27 @@ typedef char MATRIX[4][4];
 ChaosNumber::ChaosNumber()
 {
     m_ValueType = valueNone;
-    m_pMatrix = NULL;
+    m_pMatrix = nullptr;
 }
 
 ChaosNumber::ChaosNumber(long lValue)
 {
     m_ValueType = valueNone;
-    m_pMatrix = NULL;
+    m_pMatrix = nullptr;
     SetLongValue(lValue);
 }
 
 ChaosNumber::ChaosNumber(int nValue)
 {
     m_ValueType = valueNone;
-    m_pMatrix = NULL;
+    m_pMatrix = nullptr;
     SetLongValue((long)nValue);
 }
 
 ChaosNumber::ChaosNumber(float fValue)
 {
     m_ValueType = valueNone;
-    m_pMatrix = NULL;
+    m_pMatrix = nullptr;
     SetFloatValue(fValue);
 }
 

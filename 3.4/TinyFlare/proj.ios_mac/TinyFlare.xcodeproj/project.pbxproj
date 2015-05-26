@@ -150,8 +150,8 @@
 		557871251AE0047F008770F5 /* rank.png in Resources */ = {isa = PBXBuildFile; fileRef = 5578711F1AE00399008770F5 /* rank.png */; };
 		557871261AE0047F008770F5 /* share.png in Resources */ = {isa = PBXBuildFile; fileRef = 557871201AE00399008770F5 /* share.png */; };
 		557E4CCB1B04924200A985CE /* HelpScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 557E4CC91B04924200A985CE /* HelpScene.cpp */; };
-		557E4CCF1B0492E200A985CE /* NativeBridge.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 557E4CCD1B0492E200A985CE /* NativeBridge.cpp */; };
-		557E4CD01B04948700A985CE /* NativeBridge.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 557E4CCD1B0492E200A985CE /* NativeBridge.cpp */; };
+		557E4CCF1B0492E200A985CE /* NativeBridge.mm in Sources */ = {isa = PBXBuildFile; fileRef = 557E4CCD1B0492E200A985CE /* NativeBridge.mm */; };
+		557E4CD01B04948700A985CE /* NativeBridge.mm in Sources */ = {isa = PBXBuildFile; fileRef = 557E4CCD1B0492E200A985CE /* NativeBridge.mm */; };
 		557E4CD11B04948700A985CE /* HelpScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 557E4CC91B04924200A985CE /* HelpScene.cpp */; };
 		557E4CD51B04AA9500A985CE /* left.png in Resources */ = {isa = PBXBuildFile; fileRef = 557E4CD21B04AA9500A985CE /* left.png */; };
 		557E4CD61B04AA9500A985CE /* right.png in Resources */ = {isa = PBXBuildFile; fileRef = 557E4CD31B04AA9500A985CE /* right.png */; };
@@ -490,7 +490,7 @@
 		557871201AE00399008770F5 /* share.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = share.png; sourceTree = "<group>"; };
 		557E4CC91B04924200A985CE /* HelpScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HelpScene.cpp; sourceTree = "<group>"; };
 		557E4CCA1B04924200A985CE /* HelpScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelpScene.h; sourceTree = "<group>"; };
-		557E4CCD1B0492E200A985CE /* NativeBridge.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NativeBridge.cpp; sourceTree = "<group>"; };
+		557E4CCD1B0492E200A985CE /* NativeBridge.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = NativeBridge.mm; sourceTree = "<group>"; };
 		557E4CCE1B0492E200A985CE /* NativeBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NativeBridge.h; sourceTree = "<group>"; };
 		557E4CD21B04AA9500A985CE /* left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = left.png; sourceTree = "<group>"; };
 		557E4CD31B04AA9500A985CE /* right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = right.png; sourceTree = "<group>"; };
@@ -1092,7 +1092,7 @@
 				55C70E741ACABD4300D06754 /* UtilityHelper.h */,
 				559C57691AD4E40C00AE5B20 /* AlisaMethod.cpp */,
 				559C576A1AD4E40C00AE5B20 /* AlisaMethod.h */,
-				557E4CCD1B0492E200A985CE /* NativeBridge.cpp */,
+				557E4CCD1B0492E200A985CE /* NativeBridge.mm */,
 				557E4CCE1B0492E200A985CE /* NativeBridge.h */,
 				5538F6681B0B313F00E9E632 /* TinyFlareAssets.cpp */,
 				5538F6691B0B313F00E9E632 /* TinyFlareAssets.h */,
@@ -1472,7 +1472,7 @@
 				557E4CCB1B04924200A985CE /* HelpScene.cpp in Sources */,
 				559EF0521AE73AA30038C676 /* PauseUI.cpp in Sources */,
 				555B81791AB1401400E9B69C /* EnemiesGeneratorHelper.cpp in Sources */,
-				557E4CCF1B0492E200A985CE /* NativeBridge.cpp in Sources */,
+				557E4CCF1B0492E200A985CE /* NativeBridge.mm in Sources */,
 				5584ED731ADD49EF00C793EB /* ShatterAction.cpp in Sources */,
 				55C70E751ACABD4300D06754 /* UtilityHelper.cpp in Sources */,
 				55D878A61AD3AD2D00442E32 /* Item.cpp in Sources */,
@@ -1498,7 +1498,7 @@
 				55B519661B0B73D600F2A5C3 /* TinyFlareAssets.cpp in Sources */,
 				55B519671B0B73D600F2A5C3 /* StoreEventHandler.cpp in Sources */,
 				557E4CDE1B04E40800A985CE /* HelpInfoUI.cpp in Sources */,
-				557E4CD01B04948700A985CE /* NativeBridge.cpp in Sources */,
+				557E4CD01B04948700A985CE /* NativeBridge.mm in Sources */,
 				557E4CD11B04948700A985CE /* HelpScene.cpp in Sources */,
 				55D4AD0C1AEE362A00FD74AB /* DeathUI.cpp in Sources */,
 				5511F2FD1AEA4BF300313420 /* StageManager.cpp in Sources */,

@@ -5,13 +5,14 @@
 #ifndef __TinyFlare___ChaosNumber_h
 #define __TinyFlare___ChaosNumber_h
 
+#include <stdlib.h>
 template <typename Type_>
 static inline void SafeFreePtr(Type_ *ptr)
 {
     if(ptr)
     {
         free(ptr);
-        ptr = NULL;
+        ptr = nullptr;
     }
 }
 typedef enum _valueType
