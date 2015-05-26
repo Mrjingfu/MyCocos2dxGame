@@ -3,13 +3,15 @@
 	<classpathentry kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.DEPENDENCIES"/>
-	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="src" path="gen"/>
 	<classpathentry kind="lib" path="/Users/wanghaibo/Desktop/MyCocos2dxGame/3.4/TinyFlare/cocos2d/extensions/soomla-cocos2dx-core/build/android/Cocos2dxAndroidCore.jar"/>
 	<classpathentry kind="lib" path="/Users/wanghaibo/Desktop/MyCocos2dxGame/3.4/TinyFlare/cocos2d/extensions/soomla-cocos2dx-core/build/android/SoomlaAndroidCore.jar"/>
 	<classpathentry kind="lib" path="/Users/wanghaibo/Desktop/MyCocos2dxGame/3.4/TinyFlare/cocos2d/extensions/soomla-cocos2dx-core/build/android/square-otto-1.3.2.jar"/>
 	<classpathentry kind="lib" path="/Users/wanghaibo/Desktop/MyCocos2dxGame/3.4/TinyFlare/cocos2d/extensions/cocos2dx-store/build/android/AndroidStore.jar"/>
 	<classpathentry kind="lib" path="/Users/wanghaibo/Desktop/MyCocos2dxGame/3.4/TinyFlare/cocos2d/extensions/cocos2dx-store/build/android/Cocos2dxAndroidStore.jar"/>
 	<classpathentry kind="lib" path="/Users/wanghaibo/Desktop/MyCocos2dxGame/3.4/TinyFlare/cocos2d/extensions/cocos2dx-store/build/android/billing-services/google-play/AndroidStoreGooglePlay.jar"/>
+	<classpathentry kind="lib" path="libs/FlurryAnalytics-5.5.0.jar"/>
+	<classpathentry kind="lib" path="libs/android-support-v4.jar"/>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="gen"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>
