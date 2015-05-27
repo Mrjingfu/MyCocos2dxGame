@@ -47,6 +47,10 @@ MainUI::~MainUI()
 }
 bool MainUI::init()
 {
+    auto keyboardListener=EventListenerKeyboard::create();
+    keyboardListener->onKeyReleased=CC_CALLBACK_2(MainUI::onKeyReleased,this);
+    _eventDispatcher->addEventListenerWithSceneGraphPriority(keyboardListener,this);
+    
     auto size = Director::getInstance()->getVisibleSize();
     float scale = size.height/480.0f;
     m_pStardust = ui::ImageView::create("diamonditem.png");

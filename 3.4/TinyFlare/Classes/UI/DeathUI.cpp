@@ -51,6 +51,10 @@ DeathUI::~DeathUI()
 }
 bool DeathUI::init()
 {
+    auto keyboardListener=EventListenerKeyboard::create();
+    keyboardListener->onKeyReleased=CC_CALLBACK_2(DeathUI::onKeyReleased,this);
+    _eventDispatcher->addEventListenerWithSceneGraphPriority(keyboardListener,this);
+    
     auto size = Director::getInstance()->getVisibleSize();
     float scale = size.height/640.0f;
     

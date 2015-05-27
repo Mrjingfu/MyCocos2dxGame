@@ -50,6 +50,10 @@ MenuUI::~MenuUI()
 }
 bool MenuUI::init()
 {
+    auto keyboardListener=EventListenerKeyboard::create();
+    keyboardListener->onKeyReleased=CC_CALLBACK_2(MenuUI::onKeyReleased,this);
+    _eventDispatcher->addEventListenerWithSceneGraphPriority(keyboardListener,this);
+    
     auto size = Director::getInstance()->getVisibleSize();
     float scale = size.height/640.0f;
     m_pMenuBg = ui::ImageView::create("menubg.png");

@@ -10,7 +10,9 @@
 #include "GameController.h"
 #include "NativeBridge.h"
 #include "StoreEventHandler.h"
+#include "SimpleAudioEngine.h"
 USING_NS_CC;
+using namespace CocosDenshion;
 using namespace soomla;
 
 Scene* TinyFlare::createScene()
@@ -39,11 +41,6 @@ bool TinyFlare::init()
     {
         return false;
     }
-    
-    auto keyboardListener=EventListenerKeyboard::create();
-    keyboardListener->onKeyReleased=CC_CALLBACK_2(TinyFlare::onKeyReleased,this);
-    _eventDispatcher->addEventListenerWithSceneGraphPriority(keyboardListener,this);
-    
     return true;
 }
 
@@ -78,8 +75,4 @@ void TinyFlare::onExit()
 void TinyFlare::update(float delta)
 {
     GameController::getInstance()->update(delta);
-}
-void TinyFlare::onKeyReleased(EventKeyboard::KeyCode keyCode, cocos2d::Event *unused_event)
-{
-    Director::getInstance()->end();
 }

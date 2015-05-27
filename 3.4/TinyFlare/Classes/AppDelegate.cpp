@@ -52,9 +52,14 @@ bool AppDelegate::applicationDidFinishLaunching() {
     }
 
     std::vector<std::string> searchPaths;
+    searchPaths.push_back("stages");
+    searchPaths.push_back("lang");
     searchPaths.push_back("fonts");
-    searchPaths.push_back("textures");
+    searchPaths.push_back("music");
+    searchPaths.push_back("sounds");
+    searchPaths.push_back("shaders");
     searchPaths.push_back("particles");
+    searchPaths.push_back("textures");
     FileUtils::getInstance()->setSearchPaths(searchPaths);
     
     Director::getInstance()->getTextureCache()->addImage("mask.png");

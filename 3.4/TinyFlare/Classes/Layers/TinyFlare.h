@@ -27,8 +27,6 @@ public:
     virtual void onEnter();
     virtual void onExit();
     virtual void update(float delta);
-    
-    virtual void onKeyReleased(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event *unused_event);
 };
 
 #endif /* defined(__TinyFlare__TinyFlare__) */

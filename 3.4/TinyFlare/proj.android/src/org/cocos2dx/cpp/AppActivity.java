@@ -26,6 +26,8 @@ THE SOFTWARE.
 ****************************************************************************/
 package org.cocos2dx.cpp;
 
+import java.util.Hashtable;
+
 import org.cocos2dx.lib.Cocos2dxActivity;
 
 import com.flurry.android.FlurryAgent;
@@ -36,6 +38,8 @@ import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.InterstitialAd;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
@@ -45,6 +49,7 @@ public class AppActivity extends Cocos2dxActivity {
 	private static String MY_FLURRY_APIKEY = "QGVT3H2VCZQKYGCZHK2H";
 	private static String MY_AD_BANNER_UNIT_ID = "ca-app-pub-3628527903442392/7735907467";
 	private static String MY_AD_INTERSTITIAL_UNIT_ID = "ca-app-pub-3628527903442392/9212640662";
+	private final static int HANDLER_PLAY = 1;
 	private static AppActivity context; 
 	private AdView adView;
 	private InterstitialAd interstitial;
@@ -61,7 +66,21 @@ public class AppActivity extends Cocos2dxActivity {
 		
 		requestAndLoadInterstitialAds();
 	}
-	
+	private static Handler handler = new Handler() {  
+        public void handleMessage(Message msg) {   
+            switch (msg.what) {   
+                 case HANDLER_PLAY: 
+                 {
+               	  if (context.interstitial.isLoaded())
+               		context.interstitial.show();
+               	  else
+           			Log.d("SpaceGeometryWars", "The interstitial didn't finish loading or failed to load");
+                 }
+                 break;
+            }   
+            super.handleMessage(msg);   
+       }   
+	};   
 	private class InterstitialAdsListener extends AdListener { 
 	    @Override
 	    public void onAdLoaded() {
@@ -122,11 +141,10 @@ public class AppActivity extends Cocos2dxActivity {
 	}
 	public void displayInterstitialAds()
 	{
-		if (interstitial.isLoaded())
-		      interstitial.show();
-		else
-			Log.d("SpaceGeometryWars", "The interstitial didn't finish loading or failed to load");
-
+		
+	   Message msg = new Message();
+       msg.what = HANDLER_PLAY;
+       handler.sendMessage(msg);
 	}
 	private class BannerAdsListener extends AdListener { 
 	    @Override
@@ -254,4 +272,12 @@ public class AppActivity extends Cocos2dxActivity {
 		else
 			context.hideAds();
 	} 
+	
+	public static void setIndicatorViewVisible(boolean b) {
+	}
+	
+	public static void logWithUserData(Hashtable<String, String> data) {
+		final Hashtable<String, String> curData = data;
+		FlurryAgent.logEvent("USER_DATA", curData);
+	}
 }
