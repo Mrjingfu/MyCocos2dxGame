@@ -82,7 +82,8 @@ bool DeathUI::init()
     
     DelayTime* delay = DelayTime::create(0.2f);
     MoveTo* moveTo = MoveTo::create(0.2f, Vec2(size.width*0.5f, size.height*0.65f));
-    Sequence* sequence = Sequence::createWithTwoActions(delay, moveTo);
+    CallFunc* callFunc = CallFunc::create(CC_CALLBACK_0(DeathUI::playInterstitialAds,this));
+    Sequence* sequence = Sequence::create(delay, moveTo, callFunc, NULL);
     m_pGameTitle->runAction(sequence);
     
     m_pPlayGameBtn = ui::Button::create("menubg.png");
@@ -147,7 +148,6 @@ bool DeathUI::init()
     m_pBackBtn->setPosition(Vec2(size.width - m_pBackBtn->getContentSize().width*scale*0.7f, size.height*0.1f));
     m_pBackBtn->setScale(0.4f*scale);
     addChild(m_pBackBtn);
-    NativeBridge::getInstance()->playInterstitialAds();
     return true;
 }
 void DeathUI::pressContinueGameBtn(Ref* p,TouchEventType eventType)
@@ -213,4 +213,8 @@ void DeathUI::updateGoodBalance(cocos2d::EventCustom *event) {
         m_pRemoveADSBtn->removeFromParentAndCleanup(true);
         m_pRemoveADSBtn = nullptr;
     }
+}
+void DeathUI::playInterstitialAds()
+{
+    NativeBridge::getInstance()->playInterstitialAds();
 }

@@ -27,7 +27,7 @@ class ShatterSprite : public cocos2d::Sprite
     friend class ShatterAction;
 protected:
     ShatterSprite(){
-        m_fGridSideLen = 5.0f;
+        m_fGridSideLen = 10.0f;
         m_fInitalFrageScale = 2.5f;
         m_pFragBatchNode = nullptr;
     }

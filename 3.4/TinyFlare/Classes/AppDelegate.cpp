@@ -68,6 +68,16 @@ bool AppDelegate::applicationDidFinishLaunching() {
     Director::getInstance()->getTextureCache()->addImage("noise2.png");
     
     SimpleAudioEngine::getInstance()->preloadEffect("btnclick.wav");
+    SimpleAudioEngine::getInstance()->preloadEffect("explodeEffect.mp3");
+    SimpleAudioEngine::getInstance()->preloadEffect("explodeEffect2.wav");
+    SimpleAudioEngine::getInstance()->preloadEffect("Laser_Shot21.wav");
+    SimpleAudioEngine::getInstance()->preloadEffect("Laser_Shot23.wav");
+    SimpleAudioEngine::getInstance()->preloadEffect("Pickup_GemBells11.wav");
+    SimpleAudioEngine::getInstance()->preloadEffect("Pickup_GemBells14.wav");
+    SimpleAudioEngine::getInstance()->preloadEffect("Pickup_Speed02.wav");
+    SimpleAudioEngine::getInstance()->preloadEffect("Pickup_Speed03.wav");
+    SimpleAudioEngine::getInstance()->preloadEffect("LaserRifle_Shot04.wav");
+    SimpleAudioEngine::getInstance()->preloadEffect("LaserRifle_Shot06.wav");
     SimpleAudioEngine::getInstance()->preloadBackgroundMusic("Flux1.mp3");
     SimpleAudioEngine::getInstance()->preloadBackgroundMusic("Flux2.mp3");
     

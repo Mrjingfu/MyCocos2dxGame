@@ -203,7 +203,7 @@ void MenuUI::onKeyReleased(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Eve
     if(keyCode == EventKeyboard::KeyCode::KEY_ESCAPE)
     {
         SimpleAudioEngine::getInstance()->playEffect("btnclick.wav");
-        Director::getInstance()->end();
+        //Director::getInstance()->end();
     }
 }
 

@@ -29,6 +29,8 @@ private:
     void onKeyReleased(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event *unused_event);
     
     virtual void updateGoodBalance(cocos2d::EventCustom *event);
+    
+    void playInterstitialAds();
 private:
     cocos2d::ui::Button*     m_pPlayGameBtn;
     cocos2d::ui::Button*     m_pRemoveADSBtn;

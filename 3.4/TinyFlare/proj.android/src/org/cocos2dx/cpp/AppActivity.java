@@ -37,6 +37,7 @@ import com.google.android.gms.ads.AdSize;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.InterstitialAd;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -53,6 +54,7 @@ public class AppActivity extends Cocos2dxActivity {
 	private static AppActivity context; 
 	private AdView adView;
 	private InterstitialAd interstitial;
+	private ProgressDialog	progressDialog;
 	private WindowManager windowMgr;
 	protected void onCreate(Bundle savedInstanceState)
 	{
@@ -236,7 +238,22 @@ public class AppActivity extends Cocos2dxActivity {
     		}
     	});
     }
-	
+    public void showIndicatorView(){
+    	context.runOnUiThread(new Runnable() { 
+    		@Override 
+            public void run() { 
+    			progressDialog = ProgressDialog.show(context, null, null);
+    		}
+    	});
+    }
+    public void hideIndicatorView(){
+    	context.runOnUiThread(new Runnable() { 
+    		@Override 
+            public void run() { 
+    			progressDialog.dismiss();
+    		}
+    	});
+    }
 	@Override
 	protected void onStart()
 	{
@@ -274,6 +291,10 @@ public class AppActivity extends Cocos2dxActivity {
 	} 
 	
 	public static void setIndicatorViewVisible(boolean b) {
+		if(b)
+			context.showIndicatorView();
+		else
+			context.hideIndicatorView();
 	}
 	
 	public static void logWithUserData(Hashtable<String, String> data) {
