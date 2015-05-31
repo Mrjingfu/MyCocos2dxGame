@@ -87,8 +87,8 @@ bool GameController::init(Layer* pMainLayer)
         return false;
     m_pGameLayer->addChild(m_pActorCamera);
     m_pActorCamera->setPosition(Vec2::ZERO);
-    if(Director::getInstance()->getZEye() > 640.0f);
-    m_pActorCamera->setPositionZ(640.0f);
+    if(Director::getInstance()->getZEye() > 640.0f)
+        m_pActorCamera->setPositionZ(640.0f);
     m_pActorCamera->setCameraFlag(CameraFlag::USER1);
     
     SimpleAudioEngine::getInstance()->setBackgroundMusicVolume(0.5f);
@@ -500,7 +500,7 @@ Vec2 GameController::getStardustStartPos()
     cocos2d::Size size = Director::getInstance()->getVisibleSize();
     if(!m_pActorCamera)
         return Vec2(-size.width * 0.5f, size.height * 0.5f) ;
-    return m_pActorCamera->getPosition() + Vec2(size.width * 0.25f, -size.height * 0.45f);
+    return m_pActorCamera->getPosition() + Vec2(size.width * 0.22f, -size.height * 0.42f);
 }
 void GameController::resetData()
 {

@@ -100,6 +100,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
 
 // This function will be called when the app is inactive. When comes a phone call,it's be invoked too
 void AppDelegate::applicationDidEnterBackground() {
+    GameController::getInstance()->pause();
     Director::getInstance()->stopAnimation();
     SimpleAudioEngine::getInstance()->pauseAllEffects();
     SimpleAudioEngine::getInstance()->pauseBackgroundMusic();
@@ -112,7 +113,6 @@ void AppDelegate::applicationWillEnterForeground() {
     SimpleAudioEngine::getInstance()->resumeAllEffects();
     SimpleAudioEngine::getInstance()->resumeBackgroundMusic();
     
-    GameController::getInstance()->pause();
 #if CC_TARGET_PLATFORM == CC_PLATFORM_IOS
     GameController::getInstance()->setToShowAds();
 #endif
