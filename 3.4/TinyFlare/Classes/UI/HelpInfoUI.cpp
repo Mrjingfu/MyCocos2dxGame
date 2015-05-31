@@ -41,7 +41,7 @@ bool HelpInfoUI::init()
     _eventDispatcher->addEventListenerWithSceneGraphPriority(keyboardListener,this);
     
     cocos2d::Size size = Director::getInstance()->getVisibleSize();
-    float scale = size.height/480.0f;
+    float scale = size.height/640.0f;
     
     ParticleSystemQuad* starfield= ParticleSystemQuad::create("starfield.plist");
     if(!starfield)
@@ -61,20 +61,20 @@ bool HelpInfoUI::init()
     m_pPreviousBtn = ui::Button::create("left.png");
     m_pPreviousBtn->addTouchEventListener(CC_CALLBACK_2(HelpInfoUI::pressPreviousBtn, this));
     m_pPreviousBtn->setPosition(Vec2(size.width*0.8f, size.height*0.1f));
-    m_pPreviousBtn->setScale(0.5f);
+    m_pPreviousBtn->setScale(0.5f*scale);
     m_pPreviousBtn->setScale(0);
     this->addChild(m_pPreviousBtn);
     
     m_pNextBtn = ui::Button::create("right.png");
     m_pNextBtn->addTouchEventListener(CC_CALLBACK_2(HelpInfoUI::pressNextBtn, this));
     m_pNextBtn->setPosition(Vec2(size.width*0.9f, size.height*0.1f));
-    m_pNextBtn->setScale(0.5f);
+    m_pNextBtn->setScale(0.5f*scale);
     this->addChild(m_pNextBtn);
     
     m_pExitBtn = ui::Button::create("exit.png");
     m_pExitBtn->addTouchEventListener(CC_CALLBACK_2(HelpInfoUI::pressExitBtn, this));
-    m_pExitBtn->setPosition(Vec2(size.width - 30.0f*scale, size.height - 30.0f*scale));
-    m_pExitBtn->setScale(0.3f*scale);
+    m_pExitBtn->setPosition(Vec2(size.width - 50.0f*scale, size.height - 50.0f*scale));
+    m_pExitBtn->setScale(0.4f*scale);
     this->addChild(m_pExitBtn);
     
     m_pTableView->reloadData();
@@ -90,6 +90,7 @@ cocos2d::extension::TableViewCell* HelpInfoUI::tableCellAtIndex(cocos2d::extensi
 {
     CCLOG("%zd",idx);
     cocos2d::Size size = Director::getInstance()->getVisibleSize();
+    float scale = size.height/640.0f;
     TableViewCell *cell = table->cellAtIndex(idx);
     if (!cell) {
         cell = TableViewCell::create();
@@ -104,12 +105,12 @@ cocos2d::extension::TableViewCell* HelpInfoUI::tableCellAtIndex(cocos2d::extensi
                     
                     cocos2d::Sprite* joystickLeftBg = Sprite::create("joystick_bg1.png");
                     joystickLeftBg->setPosition(size.width*0.2f, size.height*0.65f);
-                    joystickLeftBg->setScale(0.8f);
+                    joystickLeftBg->setScale(0.8f*scale);
                     cell->addChild(joystickLeftBg);
                     
                     cocos2d::Sprite* joystickLeft = Sprite::create("joystick1.png");
                     joystickLeft->setPosition(size.width*0.2f, size.height*0.65f);
-                    joystickLeft->setScale(0.8f);
+                    joystickLeft->setScale(0.8f*scale);
                     cell->addChild(joystickLeft);
                     
                     Label* leftDesc = Label::createWithTTF(UtilityHelper::getLocalString("JOYSTICK_LEFT_DESC"), "FZXS12.TTF", size.height*0.04f);
@@ -121,7 +122,7 @@ cocos2d::extension::TableViewCell* HelpInfoUI::tableCellAtIndex(cocos2d::extensi
                     
                     cocos2d::Sprite* joystickRightBg = Sprite::create("joystick_bg2.png");
                     joystickRightBg->setPosition(size.width*0.2f, size.height*0.35f);
-                    joystickRightBg->setScale(0.8f);
+                    joystickRightBg->setScale(0.8f*scale);
                     cell->addChild(joystickRightBg);
                     
                     Label* rightDesc = Label::createWithTTF(UtilityHelper::getLocalString("JOYSTICK_RIGHT_DESC"), "FZXS12.TTF", size.height*0.04f);
@@ -133,7 +134,7 @@ cocos2d::extension::TableViewCell* HelpInfoUI::tableCellAtIndex(cocos2d::extensi
                     
                     cocos2d::Sprite* joystickRight = Sprite::create("joystick1.png");
                     joystickRight->setPosition(size.width*0.2f, size.height*0.35f);
-                    joystickRight->setScale(0.8f);
+                    joystickRight->setScale(0.8f*scale);
                     cell->addChild(joystickRight);
                 }
                 break;
@@ -149,14 +150,14 @@ cocos2d::extension::TableViewCell* HelpInfoUI::tableCellAtIndex(cocos2d::extensi
                     auto accel = ui::ImageView::create("accel.png");
                     accelIcon->addChild(bound);
                     accelIcon->addChild(accel);
-                    accelIcon->setPosition(size.width*0.2f, size.height*0.76f);
-                    accelIcon->setScale(0.5f);
+                    accelIcon->setPosition(size.width*0.15f, size.height*0.76f);
+                    accelIcon->setScale(0.5f*scale);
                     cell->addChild(accelIcon);
                     
                     Label* accelDesc = Label::createWithTTF(UtilityHelper::getLocalString("ACCEL_DESC"), "FZXS12.TTF", size.height*0.04f);
-                    accelDesc->setPosition(size.width*0.6f, size.height*0.76f);
+                    accelDesc->setPosition(size.width*0.55f, size.height*0.76f);
                     accelDesc->setAlignment(cocos2d::TextHAlignment::LEFT, cocos2d::TextVAlignment::TOP);
-                    accelDesc->setDimensions(size.width*0.6f, size.height*0.08f);
+                    accelDesc->setDimensions(size.width*0.65f, size.height*0.08f);
                     accelDesc->setColor(Color3B(208,255,208));
                     cell->addChild(accelDesc);
                     
@@ -165,14 +166,14 @@ cocos2d::extension::TableViewCell* HelpInfoUI::tableCellAtIndex(cocos2d::extensi
                     auto multi = ui::ImageView::create("multi.png");
                     multiIcon->addChild(bound);
                     multiIcon->addChild(multi);
-                    multiIcon->setPosition(size.width*0.2f, size.height*0.62f);
-                    multiIcon->setScale(0.5f);
+                    multiIcon->setPosition(size.width*0.15f, size.height*0.62f);
+                    multiIcon->setScale(0.5f*scale);
                     cell->addChild(multiIcon);
                     
                     Label* multiDesc = Label::createWithTTF(UtilityHelper::getLocalString("MULTI_DESC"), "FZXS12.TTF", size.height*0.04f);
-                    multiDesc->setPosition(size.width*0.6f, size.height*0.62f);
+                    multiDesc->setPosition(size.width*0.55f, size.height*0.62f);
                     multiDesc->setAlignment(cocos2d::TextHAlignment::LEFT, cocos2d::TextVAlignment::TOP);
-                    multiDesc->setDimensions(size.width*0.6f, size.height*0.08f);
+                    multiDesc->setDimensions(size.width*0.65f, size.height*0.12f);
                     multiDesc->setColor(Color3B(208,255,208));
                     cell->addChild(multiDesc);
                     
@@ -181,14 +182,14 @@ cocos2d::extension::TableViewCell* HelpInfoUI::tableCellAtIndex(cocos2d::extensi
                     auto pprotected = ui::ImageView::create("protected.png");
                     protectedIcon->addChild(bound);
                     protectedIcon->addChild(pprotected);
-                    protectedIcon->setPosition(size.width*0.2f, size.height*0.48f);
-                    protectedIcon->setScale(0.5f);
+                    protectedIcon->setPosition(size.width*0.15f, size.height*0.48f);
+                    protectedIcon->setScale(0.5f*scale);
                     cell->addChild(protectedIcon);
                     
                     Label* protectedDesc = Label::createWithTTF(UtilityHelper::getLocalString("PROTECTED_DESC"), "FZXS12.TTF", size.height*0.04f);
-                    protectedDesc->setPosition(size.width*0.6f, size.height*0.48f);
+                    protectedDesc->setPosition(size.width*0.55f, size.height*0.48f);
                     protectedDesc->setAlignment(cocos2d::TextHAlignment::LEFT, cocos2d::TextVAlignment::TOP);
-                    protectedDesc->setDimensions(size.width*0.6f, size.height*0.08f);
+                    protectedDesc->setDimensions(size.width*0.65f, size.height*0.08f);
                     protectedDesc->setColor(Color3B(208,255,208));
                     cell->addChild(protectedDesc);
                     
@@ -197,14 +198,14 @@ cocos2d::extension::TableViewCell* HelpInfoUI::tableCellAtIndex(cocos2d::extensi
                     auto time = ui::ImageView::create("time.png");
                     timeIcon->addChild(bound);
                     timeIcon->addChild(time);
-                    timeIcon->setPosition(size.width*0.2f, size.height*0.34f);
-                    timeIcon->setScale(0.5f);
+                    timeIcon->setPosition(size.width*0.15f, size.height*0.34f);
+                    timeIcon->setScale(0.5f*scale);
                     cell->addChild(timeIcon);
                     
                     Label* timeDesc = Label::createWithTTF(UtilityHelper::getLocalString("TIME_DESC"), "FZXS12.TTF", size.height*0.04f);
-                    timeDesc->setPosition(size.width*0.6f, size.height*0.34f);
+                    timeDesc->setPosition(size.width*0.55f, size.height*0.34f);
                     timeDesc->setAlignment(cocos2d::TextHAlignment::LEFT, cocos2d::TextVAlignment::TOP);
-                    timeDesc->setDimensions(size.width*0.6f, size.height*0.08f);
+                    timeDesc->setDimensions(size.width*0.65f, size.height*0.08f);
                     timeDesc->setColor(Color3B(208,255,208));
                     cell->addChild(timeDesc);
                     
@@ -213,14 +214,14 @@ cocos2d::extension::TableViewCell* HelpInfoUI::tableCellAtIndex(cocos2d::extensi
                     auto boom = ui::ImageView::create("boom.png");
                     boomIcon->addChild(bound);
                     boomIcon->addChild(boom);
-                    boomIcon->setPosition(size.width*0.2f, size.height*0.2f);
-                    boomIcon->setScale(0.5f);
+                    boomIcon->setPosition(size.width*0.15f, size.height*0.2f);
+                    boomIcon->setScale(0.5f*scale);
                     cell->addChild(boomIcon);
                     
                     Label* boomDesc = Label::createWithTTF(UtilityHelper::getLocalString("BOOM_DESC"), "FZXS12.TTF", size.height*0.04f);
-                    boomDesc->setPosition(size.width*0.6f, size.height*0.2f);
+                    boomDesc->setPosition(size.width*0.55f, size.height*0.2f);
                     boomDesc->setAlignment(cocos2d::TextHAlignment::LEFT, cocos2d::TextVAlignment::TOP);
-                    boomDesc->setDimensions(size.width*0.6f, size.height*0.08f);
+                    boomDesc->setDimensions(size.width*0.65f, size.height*0.12f);
                     boomDesc->setColor(Color3B(208,255,208));
                     cell->addChild(boomDesc);
 
@@ -234,36 +235,36 @@ cocos2d::extension::TableViewCell* HelpInfoUI::tableCellAtIndex(cocos2d::extensi
                     cell->addChild(desc);
                     
                     cocos2d::Sprite* circle = Sprite::create("circle.png");
-                    circle->setPosition(size.width*0.2f, size.height*0.75f);
-                    circle->setScale(0.8f);
+                    circle->setPosition(size.width*0.15f, size.height*0.75f);
+                    circle->setScale(0.8f*scale);
                     cell->addChild(circle);
                     
                     Label* circleDesc = Label::createWithTTF(UtilityHelper::getLocalString("CIRCLE_DESC"), "FZXS12.TTF", size.height*0.04f);
-                    circleDesc->setPosition(size.width*0.6f, size.height*0.75f);
+                    circleDesc->setPosition(size.width*0.55f, size.height*0.75f);
                     circleDesc->setAlignment(cocos2d::TextHAlignment::LEFT, cocos2d::TextVAlignment::TOP);
-                    circleDesc->setDimensions(size.width*0.6f, size.height*0.08f);
+                    circleDesc->setDimensions(size.width*0.65f, size.height*0.08f);
                     circleDesc->setColor(Color3B(208,255,208));
                     cell->addChild(circleDesc);
                     
                     ParticleSystemQuad* colorCircle = ParticleSystemQuad::create("colorgeometry.plist");
                     colorCircle->setPositionType(ParticleSystem::PositionType::RELATIVE);
-                    colorCircle->setPosition(size.width*0.2f, size.height*0.65f);
-                    colorCircle->setScale(0.6f);
+                    colorCircle->setPosition(size.width*0.15f, size.height*0.65f);
+                    colorCircle->setScale(0.6f*scale);
                     Texture2D* texture = Director::getInstance()->getTextureCache()->addImage("circle.png");
                     colorCircle->setTexture(texture);
                     colorCircle->setAutoRemoveOnFinish(true);
                     cell->addChild(colorCircle);
                     
                     Label* colorCircleDesc = Label::createWithTTF(UtilityHelper::getLocalString("COLOR_CIRCLE_DESC"), "FZXS12.TTF", size.height*0.04f);
-                    colorCircleDesc->setPosition(size.width*0.6f, size.height*0.6f);
+                    colorCircleDesc->setPosition(size.width*0.55f, size.height*0.6f);
                     colorCircleDesc->setAlignment(cocos2d::TextHAlignment::LEFT, cocos2d::TextVAlignment::TOP);
-                    colorCircleDesc->setDimensions(size.width*0.6f, size.height*0.2f);
+                    colorCircleDesc->setDimensions(size.width*0.65f, size.height*0.2f);
                     colorCircleDesc->setColor(Color3B(208,255,208));
                     cell->addChild(colorCircleDesc);
                     
                     cocos2d::Sprite* triangle = Sprite::create("triangle.png");
-                    triangle->setPosition(size.width*0.2f, size.height*0.45f);
-                    triangle->setScale(0.8f);
+                    triangle->setPosition(size.width*0.15f, size.height*0.45f);
+                    triangle->setScale(0.8f*scale);
                     triangle->setColor(Color3B(253,255,12));
                     cell->addChild(triangle);
                     ScaleTo* scaleTo1 = ScaleBy::create(0.2f, 0.8f);
@@ -273,16 +274,16 @@ cocos2d::extension::TableViewCell* HelpInfoUI::tableCellAtIndex(cocos2d::extensi
                     triangle->runAction(repeatForever);
                     
                     Label* triangleDesc = Label::createWithTTF(UtilityHelper::getLocalString("TRIANGLE_DESC"), "FZXS12.TTF", size.height*0.04f);
-                    triangleDesc->setPosition(size.width*0.6f, size.height*0.40f);
+                    triangleDesc->setPosition(size.width*0.55f, size.height*0.40f);
                     triangleDesc->setAlignment(cocos2d::TextHAlignment::LEFT, cocos2d::TextVAlignment::TOP);
-                    triangleDesc->setDimensions(size.width*0.6f, size.height*0.2f);
+                    triangleDesc->setDimensions(size.width*0.65f, size.height*0.2f);
                     triangleDesc->setColor(Color3B(208,255,208));
                     cell->addChild(triangleDesc);
                     
                     ParticleSystemQuad* colorTriangle = ParticleSystemQuad::create("colorgeometry.plist");
                     colorTriangle->setPositionType(ParticleSystem::PositionType::RELATIVE);
-                    colorTriangle->setPosition(size.width*0.2f, size.height*0.25f);
-                    colorTriangle->setScale(0.6f);
+                    colorTriangle->setPosition(size.width*0.15f, size.height*0.25f);
+                    colorTriangle->setScale(0.6f*scale);
                     colorTriangle->setColor(Color3B(253,255,12));
                     texture = Director::getInstance()->getTextureCache()->addImage("triangle.png");
                     colorTriangle->setTexture(texture);
@@ -295,9 +296,9 @@ cocos2d::extension::TableViewCell* HelpInfoUI::tableCellAtIndex(cocos2d::extensi
                     colorTriangle->runAction(repeatForever);
                     
                     Label* colorTriangleDesc = Label::createWithTTF(UtilityHelper::getLocalString("COLOR_TRIANGLE_DESC"), "FZXS12.TTF", size.height*0.04f);
-                    colorTriangleDesc->setPosition(size.width*0.6f, size.height*0.25f);
+                    colorTriangleDesc->setPosition(size.width*0.55f, size.height*0.25f);
                     colorTriangleDesc->setAlignment(cocos2d::TextHAlignment::LEFT, cocos2d::TextVAlignment::TOP);
-                    colorTriangleDesc->setDimensions(size.width*0.6f, size.height*0.1f);
+                    colorTriangleDesc->setDimensions(size.width*0.65f, size.height*0.12f);
                     colorTriangleDesc->setColor(Color3B(208,255,208));
                     cell->addChild(colorTriangleDesc);
                 }
@@ -310,8 +311,8 @@ cocos2d::extension::TableViewCell* HelpInfoUI::tableCellAtIndex(cocos2d::extensi
                     cell->addChild(desc);
                 
                     cocos2d::Sprite* diamond = Sprite::create("diamond.png");
-                    diamond->setPosition(size.width*0.2f, size.height*0.75f);
-                    diamond->setScale(0.8f);
+                    diamond->setPosition(size.width*0.15f, size.height*0.75f);
+                    diamond->setScale(0.8f*scale);
                     diamond->setColor(Color3B(64,255,1));
                     cell->addChild(diamond);
                     ScaleTo* scaleTo1 = ScaleBy::create(0.5f, 0.5f, 1.0f);
@@ -321,16 +322,16 @@ cocos2d::extension::TableViewCell* HelpInfoUI::tableCellAtIndex(cocos2d::extensi
                     diamond->runAction(repeatForever);
                     
                     Label* diamondDesc = Label::createWithTTF(UtilityHelper::getLocalString("DIAMOND_DESC"), "FZXS12.TTF", size.height*0.04f);
-                    diamondDesc->setPosition(size.width*0.6f, size.height*0.75f);
+                    diamondDesc->setPosition(size.width*0.55f, size.height*0.75f);
                     diamondDesc->setAlignment(cocos2d::TextHAlignment::LEFT, cocos2d::TextVAlignment::TOP);
-                    diamondDesc->setDimensions(size.width*0.6f, size.height*0.08f);
+                    diamondDesc->setDimensions(size.width*0.65f, size.height*0.08f);
                     diamondDesc->setColor(Color3B(208,255,208));
                     cell->addChild(diamondDesc);
                     
                     ParticleSystemQuad* colorDiamond = ParticleSystemQuad::create("colorgeometry.plist");
                     colorDiamond->setPositionType(ParticleSystem::PositionType::RELATIVE);
-                    colorDiamond->setPosition(size.width*0.2f, size.height*0.6f);
-                    colorDiamond->setScale(0.6f);
+                    colorDiamond->setPosition(size.width*0.15f, size.height*0.6f);
+                    colorDiamond->setScale(0.6f*scale);
                     Texture2D* texture = Director::getInstance()->getTextureCache()->addImage("diamond.png");
                     colorDiamond->setTexture(texture);
                     colorDiamond->setAutoRemoveOnFinish(true);
@@ -343,15 +344,15 @@ cocos2d::extension::TableViewCell* HelpInfoUI::tableCellAtIndex(cocos2d::extensi
                     colorDiamond->runAction(repeatForever);
                     
                     Label* colorDiamondDesc = Label::createWithTTF(UtilityHelper::getLocalString("COLOR_DIAMOND_DESC"), "FZXS12.TTF", size.height*0.04f);
-                    colorDiamondDesc->setPosition(size.width*0.6f, size.height*0.55f);
+                    colorDiamondDesc->setPosition(size.width*0.55f, size.height*0.55f);
                     colorDiamondDesc->setAlignment(cocos2d::TextHAlignment::LEFT, cocos2d::TextVAlignment::TOP);
-                    colorDiamondDesc->setDimensions(size.width*0.6f, size.height*0.2f);
+                    colorDiamondDesc->setDimensions(size.width*0.65f, size.height*0.2f);
                     colorDiamondDesc->setColor(Color3B(208,255,208));
                     cell->addChild(colorDiamondDesc);
                     
                     cocos2d::Sprite* star = Sprite::create("star.png");
-                    star->setPosition(size.width*0.2f, size.height*0.45f);
-                    star->setScale(0.8f);
+                    star->setPosition(size.width*0.15f, size.height*0.45f);
+                    star->setScale(0.8f*scale);
                     star->setColor(Color3B(0,224,252));
                     cell->addChild(star);
                     RotateBy* rotateBy = RotateBy::create(1.0f, 90);
@@ -359,16 +360,16 @@ cocos2d::extension::TableViewCell* HelpInfoUI::tableCellAtIndex(cocos2d::extensi
                     star->runAction(repeatForever);
                     
                     Label* starDesc = Label::createWithTTF(UtilityHelper::getLocalString("STAR_DESC"), "FZXS12.TTF", size.height*0.04f);
-                    starDesc->setPosition(size.width*0.6f, size.height*0.40f);
+                    starDesc->setPosition(size.width*0.55f, size.height*0.40f);
                     starDesc->setAlignment(cocos2d::TextHAlignment::LEFT, cocos2d::TextVAlignment::TOP);
-                    starDesc->setDimensions(size.width*0.6f, size.height*0.2f);
+                    starDesc->setDimensions(size.width*0.65f, size.height*0.2f);
                     starDesc->setColor(Color3B(208,255,208));
                     cell->addChild(starDesc);
                     
                     ParticleSystemQuad* colorStar = ParticleSystemQuad::create("colorgeometry.plist");
                     colorStar->setPositionType(ParticleSystem::PositionType::RELATIVE);
-                    colorStar->setPosition(size.width*0.2f, size.height*0.25f);
-                    colorStar->setScale(0.6f);
+                    colorStar->setPosition(size.width*0.15f, size.height*0.25f);
+                    colorStar->setScale(0.6f*scale);
                     colorStar->setColor(Color3B(0,224,252));
                     texture = Director::getInstance()->getTextureCache()->addImage("star.png");
                     colorStar->setTexture(texture);
@@ -379,9 +380,9 @@ cocos2d::extension::TableViewCell* HelpInfoUI::tableCellAtIndex(cocos2d::extensi
                     colorStar->runAction(repeatForever);
                     
                     Label* colorStarDesc = Label::createWithTTF(UtilityHelper::getLocalString("COLOR_STAR_DESC"), "FZXS12.TTF", size.height*0.04f);
-                    colorStarDesc->setPosition(size.width*0.6f, size.height*0.25f);
+                    colorStarDesc->setPosition(size.width*0.55f, size.height*0.25f);
                     colorStarDesc->setAlignment(cocos2d::TextHAlignment::LEFT, cocos2d::TextVAlignment::TOP);
-                    colorStarDesc->setDimensions(size.width*0.6f, size.height*0.1f);
+                    colorStarDesc->setDimensions(size.width*0.65f, size.height*0.12f);
                     colorStarDesc->setColor(Color3B(208,255,208));
                     cell->addChild(colorStarDesc);
                 }
@@ -394,8 +395,8 @@ cocos2d::extension::TableViewCell* HelpInfoUI::tableCellAtIndex(cocos2d::extensi
                     cell->addChild(desc);
                 
                     cocos2d::Sprite* hexagon = Sprite::create("hexagon.png");
-                    hexagon->setPosition(size.width*0.2f, size.height*0.75f);
-                    hexagon->setScale(0.8f);
+                    hexagon->setPosition(size.width*0.15f, size.height*0.75f);
+                    hexagon->setScale(0.8f*scale);
                     hexagon->setColor(Color3B(64,255,1));
                     cell->addChild(hexagon);
                     RotateBy* rotateBy = RotateBy::create(1.0f, -180);
@@ -403,16 +404,16 @@ cocos2d::extension::TableViewCell* HelpInfoUI::tableCellAtIndex(cocos2d::extensi
                     hexagon->runAction(repeatForever);
                     
                     Label* hexagonDesc = Label::createWithTTF(UtilityHelper::getLocalString("HEXAGON_DESC"), "FZXS12.TTF", size.height*0.04f);
-                    hexagonDesc->setPosition(size.width*0.6f, size.height*0.75f);
+                    hexagonDesc->setPosition(size.width*0.55f, size.height*0.75f);
                     hexagonDesc->setAlignment(cocos2d::TextHAlignment::LEFT, cocos2d::TextVAlignment::TOP);
-                    hexagonDesc->setDimensions(size.width*0.6f, size.height*0.08f);
+                    hexagonDesc->setDimensions(size.width*0.65f, size.height*0.08f);
                     hexagonDesc->setColor(Color3B(208,255,208));
                     cell->addChild(hexagonDesc);
                     
                     ParticleSystemQuad* colorHexagon = ParticleSystemQuad::create("colorgeometry.plist");
                     colorHexagon->setPositionType(ParticleSystem::PositionType::RELATIVE);
-                    colorHexagon->setPosition(size.width*0.2f, size.height*0.6f);
-                    colorHexagon->setScale(0.6f);
+                    colorHexagon->setPosition(size.width*0.15f, size.height*0.6f);
+                    colorHexagon->setScale(0.6f*scale);
                     Texture2D* texture = Director::getInstance()->getTextureCache()->addImage("hexagon.png");
                     colorHexagon->setTexture(texture);
                     colorHexagon->setAutoRemoveOnFinish(true);
@@ -423,9 +424,9 @@ cocos2d::extension::TableViewCell* HelpInfoUI::tableCellAtIndex(cocos2d::extensi
                     colorHexagon->runAction(repeatForever);
                     
                     Label* colorHexagonDesc = Label::createWithTTF(UtilityHelper::getLocalString("COLOR_HEXAGON_DESC"), "FZXS12.TTF", size.height*0.04f);
-                    colorHexagonDesc->setPosition(size.width*0.6f, size.height*0.55f);
+                    colorHexagonDesc->setPosition(size.width*0.55f, size.height*0.55f);
                     colorHexagonDesc->setAlignment(cocos2d::TextHAlignment::LEFT, cocos2d::TextVAlignment::TOP);
-                    colorHexagonDesc->setDimensions(size.width*0.6f, size.height*0.2f);
+                    colorHexagonDesc->setDimensions(size.width*0.65f, size.height*0.2f);
                     colorHexagonDesc->setColor(Color3B(208,255,208));
                     cell->addChild(colorHexagonDesc);
                 }
@@ -453,17 +454,19 @@ void HelpInfoUI::pressPreviousBtn(Ref* p,TouchEventType eventType)
     {
         SimpleAudioEngine::getInstance()->playEffect("btnclick.wav");
         cocos2d::Size size = Director::getInstance()->getVisibleSize();
+        float scale = size.height/640.0f;
+
         m_nCurrentPage--;
         m_pTableView->setContentOffsetInDuration(Vec2(-size.width*m_nCurrentPage,0),0.1f);
         if(m_nCurrentPage == 0)
         {
-            m_pNextBtn->setScale(0.5f);
+            m_pNextBtn->setScale(0.5f*scale);
             m_pPreviousBtn->setScale(0);
         }
         else
         {
-            m_pNextBtn->setScale(0.5f);
-            m_pPreviousBtn->setScale(0.5f);
+            m_pNextBtn->setScale(0.5f*scale);
+            m_pPreviousBtn->setScale(0.5f*scale);
         }
     }
 }
@@ -473,17 +476,19 @@ void HelpInfoUI::pressNextBtn(Ref* p,TouchEventType eventType)
     {
         SimpleAudioEngine::getInstance()->playEffect("btnclick.wav");
         cocos2d::Size size = Director::getInstance()->getVisibleSize();
+        float scale = size.height/640.0f;
+        
         m_nCurrentPage++;
         m_pTableView->setContentOffsetInDuration(Vec2(-size.width*m_nCurrentPage,0),0.1f);
         if(m_nCurrentPage == 4)
         {
             m_pNextBtn->setScale(0);
-            m_pPreviousBtn->setScale(0.5f);
+            m_pPreviousBtn->setScale(0.5f*scale);
         }
         else
         {
-            m_pNextBtn->setScale(0.5f);
-            m_pPreviousBtn->setScale(0.5f);
+            m_pNextBtn->setScale(0.5f*scale);
+            m_pPreviousBtn->setScale(0.5f*scale);
         }
     }
 }

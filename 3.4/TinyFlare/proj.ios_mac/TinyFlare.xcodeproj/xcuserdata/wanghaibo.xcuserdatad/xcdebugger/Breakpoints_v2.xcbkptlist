@@ -3407,11 +3407,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/UI/PauseUI.cpp"
-            timestampString = "454068844.219861"
+            timestampString = "454749295.370062"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "391"
-            endingLineNumber = "391"
+            startingLineNumber = "394"
+            endingLineNumber = "394"
             landmarkName = "PauseUI::endToPause()"
             landmarkType = "5">
          </BreakpointContent>
@@ -3935,11 +3935,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/UI/HelpInfoUI.cpp"
-            timestampString = "453391078.699335"
+            timestampString = "454743700.919651"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "457"
-            endingLineNumber = "457"
+            startingLineNumber = "460"
+            endingLineNumber = "460"
             landmarkName = "HelpInfoUI::pressPreviousBtn(Ref* p,TouchEventType eventType)"
             landmarkType = "5">
          </BreakpointContent>
@@ -3951,11 +3951,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/UI/HelpInfoUI.cpp"
-            timestampString = "453391078.699335"
+            timestampString = "454743700.919651"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "477"
-            endingLineNumber = "477"
+            startingLineNumber = "482"
+            endingLineNumber = "482"
             landmarkName = "HelpInfoUI::pressNextBtn(Ref* p,TouchEventType eventType)"
             landmarkType = "5">
          </BreakpointContent>
@@ -3967,11 +3967,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/UI/HelpInfoUI.cpp"
-            timestampString = "453391078.699335"
+            timestampString = "454743700.919651"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "456"
-            endingLineNumber = "456"
+            startingLineNumber = "459"
+            endingLineNumber = "459"
             landmarkName = "HelpInfoUI::pressPreviousBtn(Ref* p,TouchEventType eventType)"
             landmarkType = "5">
          </BreakpointContent>
@@ -5007,11 +5007,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/UI/PauseUI.cpp"
-            timestampString = "454068844.219861"
+            timestampString = "454749295.370062"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1023"
-            endingLineNumber = "1023"
+            startingLineNumber = "1026"
+            endingLineNumber = "1026"
             landmarkName = "PauseUI::updateCurrencyBalance(cocos2d::EventCustom *event)"
             landmarkType = "5">
          </BreakpointContent>
@@ -5045,6 +5045,22 @@
             startingLineNumber = "74"
             endingLineNumber = "74"
             landmarkName = "PauseUI::PauseUI()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/UI/PauseUI.cpp"
+            timestampString = "454749094.214318"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "226"
+            endingLineNumber = "226"
+            landmarkName = "PauseUI::init()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

@@ -38,7 +38,7 @@ private:
     cocos2d::ui::Button*     m_pRemoveADSBtn;
     cocos2d::ui::Button*     m_pBackBtn;
     
-    cocos2d::ui::Text*          m_pStardustDropLevelText;
+    cocos2d::Label*             m_pStardustDropLevelLabel;
     cocos2d::ui::ImageView*     m_pStardustDropLevel1;
     cocos2d::ui::ImageView*     m_pStardustDropLevel2;
     cocos2d::ui::ImageView*     m_pStardustDropLevel3;
@@ -46,7 +46,7 @@ private:
     cocos2d::ui::ImageView*     m_pStardustDropLevel5;
     cocos2d::ui::Button*        m_pStardustDropLevelAdd;
     
-    cocos2d::ui::Text*          m_pItemDropLevelText;
+    cocos2d::Label*             m_pItemDropLevelLabel;
     cocos2d::ui::ImageView*     m_pItemDropLevel1;
     cocos2d::ui::ImageView*     m_pItemDropLevel2;
     cocos2d::ui::ImageView*     m_pItemDropLevel3;
@@ -54,7 +54,7 @@ private:
     cocos2d::ui::ImageView*     m_pItemDropLevel5;
     cocos2d::ui::Button*        m_pItemDropLevelAdd;
     
-    cocos2d::ui::Text*          m_pItemEffectLevelText;
+    cocos2d::Label*             m_pItemEffectLevelLabel;
     cocos2d::ui::ImageView*     m_pItemEffectLevel1;
     cocos2d::ui::ImageView*     m_pItemEffectLevel2;
     cocos2d::ui::ImageView*     m_pItemEffectLevel3;

@@ -74,7 +74,7 @@ bool MenuUI::init()
     m_pGameTitle = ui::TextBMFont::create(UtilityHelper::getLocalString("GAME_NAME"), "v5prophit.fnt");
     if(!m_pGameTitle)
         return false;
-    m_pGameTitle->setScale(0.4f*scale, 0.6f*scale);
+    m_pGameTitle->setScale(0.38f*scale, 0.6f*scale);
     m_pGameTitle->setPosition(Vec2(size.width*1.5f, size.height*0.65f));
     addChild(m_pGameTitle);
     
@@ -211,7 +211,7 @@ void MenuUI::updateGoodBalance(cocos2d::EventCustom *event) {
     __Dictionary *eventData = (__Dictionary *)event->getUserData();
     soomla::CCVirtualGood *virtualGood = dynamic_cast<CCVirtualGood *>(eventData->objectForKey(CCStoreConsts::DICT_ELEMENT_GOOD));
     __Integer *balance = dynamic_cast<__Integer *>(eventData->objectForKey(CCStoreConsts::DICT_ELEMENT_BALANCE));
-    CCLOG("----sssss = %d", balance->getValue());
+
     if (virtualGood->getItemId()->compare(NO_ADS_ITEM_ID) == 0 && balance->getValue() == 1) {
         EncrytionUtility::setBoolForKey("RemoveAds",true);
         NativeBridge::getInstance()->hideAdsView();

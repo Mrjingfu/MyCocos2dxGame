@@ -44,7 +44,7 @@ PauseUI::PauseUI()
     
     m_pPurchaseBtn          = nullptr;
     
-    m_pStardustDropLevelText    = nullptr;
+    m_pStardustDropLevelLabel   = nullptr;
     m_pStardustDropLevel1       = nullptr;
     m_pStardustDropLevel2       = nullptr;
     m_pStardustDropLevel3       = nullptr;
@@ -52,7 +52,7 @@ PauseUI::PauseUI()
     m_pStardustDropLevel5       = nullptr;
     m_pStardustDropLevelAdd     = nullptr;
     
-    m_pItemDropLevelText        = nullptr;
+    m_pItemDropLevelLabel       = nullptr;
     m_pItemDropLevel1           = nullptr;
     m_pItemDropLevel2           = nullptr;
     m_pItemDropLevel3           = nullptr;
@@ -60,7 +60,7 @@ PauseUI::PauseUI()
     m_pItemDropLevel5           = nullptr;
     m_pItemDropLevelAdd         = nullptr;
     
-    m_pItemEffectLevelText      = nullptr;
+    m_pItemEffectLevelLabel     = nullptr;
     m_pItemEffectLevel1         = nullptr;
     m_pItemEffectLevel2         = nullptr;
     m_pItemEffectLevel3         = nullptr;
@@ -126,7 +126,7 @@ bool PauseUI::init()
     m_pStardust = ui::ImageView::create("diamonditem.png");
     if(!m_pStardust)
         return false;
-    m_pStardust->setPosition(Vec2(size.width*0.78f, size.height*0.5f));
+    m_pStardust->setPosition(Vec2(size.width*0.7f, size.height*0.5f));
     m_pStardust->setScale(0.1f*scale, 0.14f*scale);
     m_pPanelBg->addChild(m_pStardust);
     
@@ -143,24 +143,25 @@ bool PauseUI::init()
         return false;
     m_pStardustNum->setColor(Color3B(208,255,208));
     m_pStardustNum->setAnchorPoint(Vec2(0, 0.5f));
-    m_pStardustNum->setPosition(m_pStardustX->getPosition() + Vec2(m_pStardustX->getContentSize().width*0.3f*scale, 0));
+    m_pStardustNum->setPosition(m_pStardustX->getPosition() + Vec2(m_pStardustX->getContentSize().width*0.3f, 0));
     m_pPanelBg->addChild(m_pStardustNum);
     
     m_pPurchaseBtn = ui::Button::create("purchase.png");
     if(!m_pPurchaseBtn)
         return false;
     m_pPurchaseBtn->addTouchEventListener(CC_CALLBACK_2(PauseUI::pressPurchaseBtn, this));
-    m_pPurchaseBtn->setPosition(Vec2(size.width*0.85f, size.height*0.35f));
+    m_pPurchaseBtn->setPosition(Vec2(size.width*0.78f, size.height*0.35f));
     m_pPurchaseBtn->setScale(0.8f*scale);
     m_pPanelBg->addChild(m_pPurchaseBtn);
     
-    m_pStardustDropLevelText = ui::Text::create(UtilityHelper::getLocalString("STARDUST_DROP"), "FZXS12.TTF", size.height*0.04f);
-    if(!m_pStardustDropLevelText)
+    m_pStardustDropLevelLabel = Label::createWithTTF(UtilityHelper::getLocalString("STARDUST_DROP"), "FZXS12.TTF", size.height*0.03f);
+    if(!m_pStardustDropLevelLabel)
         return false;
-    m_pStardustDropLevelText->setAnchorPoint(Vec2(0, 0.5f));
-    m_pStardustDropLevelText->setPosition(Vec2(size.width*0.1f, size.height*0.6f));
-    m_pStardustDropLevelText->setColor(Color3B(208,255,208));
-    m_pPanelBg->addChild(m_pStardustDropLevelText);
+    m_pStardustDropLevelLabel->setAnchorPoint(Vec2(0, 0.5f));
+    m_pStardustDropLevelLabel->setPosition(Vec2(size.width*0.05f, size.height*0.6f));
+    m_pStardustDropLevelLabel->setDimensions(size.width*0.55f, size.height*0.1f);
+    m_pStardustDropLevelLabel->setColor(Color3B(208,255,208));
+    m_pPanelBg->addChild(m_pStardustDropLevelLabel);
     
     m_pStardustDropLevel1 = ui::ImageView::create("level_empty.png");
     if(!m_pStardustDropLevel1)
@@ -169,8 +170,8 @@ bool PauseUI::init()
     m_pStardustDropLevel1->setScale9Enabled(true);
     m_pStardustDropLevel1->setCapInsets(cocos2d::Rect(20,20,88,88));
     m_pStardustDropLevel1->setContentSize(cocos2d::Size(size.height*0.3f,size.height*0.1f));
-    m_pStardustDropLevel1->setPosition(Vec2(m_pStardustDropLevelText->getPosition().x, m_pStardustDropLevelText->getPosition().y -50*scale));
-    m_pStardustDropLevel1->setScale(0.5f);
+    m_pStardustDropLevel1->setPosition(Vec2(m_pStardustDropLevelLabel->getPosition().x, m_pStardustDropLevelLabel->getPosition().y -30*scale));
+    m_pStardustDropLevel1->setScale(0.4f);
     m_pPanelBg->addChild(m_pStardustDropLevel1);
     
     m_pStardustDropLevel2 = ui::ImageView::create("level_empty.png");
@@ -180,8 +181,8 @@ bool PauseUI::init()
     m_pStardustDropLevel2->setScale9Enabled(true);
     m_pStardustDropLevel2->setCapInsets(cocos2d::Rect(20,20,88,88));
     m_pStardustDropLevel2->setContentSize(cocos2d::Size(size.height*0.3f,size.height*0.1f));
-    m_pStardustDropLevel2->setPosition(Vec2(m_pStardustDropLevel1->getPosition().x + size.height*0.15f + 10*scale, m_pStardustDropLevelText->getPosition().y -50*scale));
-    m_pStardustDropLevel2->setScale(0.5f);
+    m_pStardustDropLevel2->setPosition(Vec2(m_pStardustDropLevel1->getPosition().x + size.height*0.12f + 10*scale, m_pStardustDropLevelLabel->getPosition().y -30*scale));
+    m_pStardustDropLevel2->setScale(0.4f);
     m_pPanelBg->addChild(m_pStardustDropLevel2);
     
     m_pStardustDropLevel3 = ui::ImageView::create("level_empty.png");
@@ -191,8 +192,8 @@ bool PauseUI::init()
     m_pStardustDropLevel3->setScale9Enabled(true);
     m_pStardustDropLevel3->setCapInsets(cocos2d::Rect(20,20,88,88));
     m_pStardustDropLevel3->setContentSize(cocos2d::Size(size.height*0.3f,size.height*0.1f));
-    m_pStardustDropLevel3->setPosition(Vec2(m_pStardustDropLevel2->getPosition().x + size.height*0.15f + 10*scale, m_pStardustDropLevelText->getPosition().y -50*scale));
-    m_pStardustDropLevel3->setScale(0.5f);
+    m_pStardustDropLevel3->setPosition(Vec2(m_pStardustDropLevel2->getPosition().x + size.height*0.12f + 10*scale, m_pStardustDropLevelLabel->getPosition().y -30*scale));
+    m_pStardustDropLevel3->setScale(0.4f);
     m_pPanelBg->addChild(m_pStardustDropLevel3);
     
     m_pStardustDropLevel4 = ui::ImageView::create("level_empty.png");
@@ -202,8 +203,8 @@ bool PauseUI::init()
     m_pStardustDropLevel4->setScale9Enabled(true);
     m_pStardustDropLevel4->setCapInsets(cocos2d::Rect(20,20,88,88));
     m_pStardustDropLevel4->setContentSize(cocos2d::Size(size.height*0.3f,size.height*0.1f));
-    m_pStardustDropLevel4->setPosition(Vec2(m_pStardustDropLevel3->getPosition().x + size.height*0.15f + 10*scale, m_pStardustDropLevelText->getPosition().y -50*scale));
-    m_pStardustDropLevel4->setScale(0.5f);
+    m_pStardustDropLevel4->setPosition(Vec2(m_pStardustDropLevel3->getPosition().x + size.height*0.12f + 10*scale, m_pStardustDropLevelLabel->getPosition().y -30*scale));
+    m_pStardustDropLevel4->setScale(0.4f);
     m_pPanelBg->addChild(m_pStardustDropLevel4);
     
     m_pStardustDropLevel5 = ui::ImageView::create("level_empty.png");
@@ -213,27 +214,28 @@ bool PauseUI::init()
     m_pStardustDropLevel5->setScale9Enabled(true);
     m_pStardustDropLevel5->setCapInsets(cocos2d::Rect(20,20,88,88));
     m_pStardustDropLevel5->setContentSize(cocos2d::Size(size.height*0.3f,size.height*0.1f));
-    m_pStardustDropLevel5->setPosition(Vec2(m_pStardustDropLevel4->getPosition().x + size.height*0.15f + 10*scale, m_pStardustDropLevelText->getPosition().y -50*scale));
-    m_pStardustDropLevel5->setScale(0.5f);
+    m_pStardustDropLevel5->setPosition(Vec2(m_pStardustDropLevel4->getPosition().x + size.height*0.12f + 10*scale, m_pStardustDropLevelLabel->getPosition().y -30*scale));
+    m_pStardustDropLevel5->setScale(0.4f);
     m_pPanelBg->addChild(m_pStardustDropLevel5);
     
     m_pStardustDropLevelAdd = ui::Button::create("plus.png");
     if(!m_pStardustDropLevelAdd)
         return false;
     m_pStardustDropLevelAdd->setAnchorPoint(Vec2(0, 0.5f));
-    m_pStardustDropLevelAdd->setPosition(Vec2(m_pStardustDropLevel5->getPosition().x + size.height*0.15f + 50*scale, m_pStardustDropLevelText->getPosition().y -50*scale));
-    m_pStardustDropLevelAdd->setScale(0.25f);
+    m_pStardustDropLevelAdd->setPosition(Vec2(m_pStardustDropLevel5->getPosition().x + size.height*0.12f + 50*scale, m_pStardustDropLevelLabel->getPosition().y -30*scale));
+    m_pStardustDropLevelAdd->setScale(0.2f*scale);
     m_pStardustDropLevelAdd->addTouchEventListener(CC_CALLBACK_2(PauseUI::pressStardustDropLevelAddBtn, this));
     m_pPanelBg->addChild(m_pStardustDropLevelAdd);
     
     
-    m_pItemDropLevelText = ui::Text::create(UtilityHelper::getLocalString("ITEM_DROP"), "FZXS12.TTF", size.height*0.04f);
-    if(!m_pItemDropLevelText)
+    m_pItemDropLevelLabel = Label::createWithTTF(UtilityHelper::getLocalString("ITEM_DROP"), "FZXS12.TTF", size.height*0.03f);
+    if(!m_pItemDropLevelLabel)
         return false;
-    m_pItemDropLevelText->setAnchorPoint(Vec2(0, 0.5f));
-    m_pItemDropLevelText->setPosition(Vec2(size.width*0.1f, size.height*0.4f));
-    m_pItemDropLevelText->setColor(Color3B(208,255,208));
-    m_pPanelBg->addChild(m_pItemDropLevelText);
+    m_pItemDropLevelLabel->setAnchorPoint(Vec2(0, 0.5f));
+    m_pItemDropLevelLabel->setPosition(Vec2(size.width*0.05f, size.height*0.4f));
+    m_pItemDropLevelLabel->setDimensions(size.width*0.55f, size.height*0.1f);
+    m_pItemDropLevelLabel->setColor(Color3B(208,255,208));
+    m_pPanelBg->addChild(m_pItemDropLevelLabel);
     
     m_pItemDropLevel1 = ui::ImageView::create("level_empty.png");
     if(!m_pItemDropLevel1)
@@ -242,8 +244,8 @@ bool PauseUI::init()
     m_pItemDropLevel1->setScale9Enabled(true);
     m_pItemDropLevel1->setCapInsets(cocos2d::Rect(20,20,88,88));
     m_pItemDropLevel1->setContentSize(cocos2d::Size(size.height*0.3f,size.height*0.1f));
-    m_pItemDropLevel1->setPosition(Vec2(m_pItemDropLevelText->getPosition().x, m_pItemDropLevelText->getPosition().y -50*scale));
-    m_pItemDropLevel1->setScale(0.5f);
+    m_pItemDropLevel1->setPosition(Vec2(m_pItemDropLevelLabel->getPosition().x, m_pItemDropLevelLabel->getPosition().y -30*scale));
+    m_pItemDropLevel1->setScale(0.4f);
     m_pPanelBg->addChild(m_pItemDropLevel1);
     
 
@@ -254,8 +256,8 @@ bool PauseUI::init()
     m_pItemDropLevel2->setScale9Enabled(true);
     m_pItemDropLevel2->setCapInsets(cocos2d::Rect(20,20,88,88));
     m_pItemDropLevel2->setContentSize(cocos2d::Size(size.height*0.3f,size.height*0.1f));
-    m_pItemDropLevel2->setPosition(Vec2(m_pItemDropLevel1->getPosition().x + size.height*0.15f + 10*scale, m_pItemDropLevelText->getPosition().y -50*scale));
-    m_pItemDropLevel2->setScale(0.5f);
+    m_pItemDropLevel2->setPosition(Vec2(m_pItemDropLevel1->getPosition().x + size.height*0.12f + 10*scale, m_pItemDropLevelLabel->getPosition().y -30*scale));
+    m_pItemDropLevel2->setScale(0.4f);
     m_pPanelBg->addChild(m_pItemDropLevel2);
     
     m_pItemDropLevel3 = ui::ImageView::create("level_empty.png");
@@ -265,8 +267,8 @@ bool PauseUI::init()
     m_pItemDropLevel3->setScale9Enabled(true);
     m_pItemDropLevel3->setCapInsets(cocos2d::Rect(20,20,88,88));
     m_pItemDropLevel3->setContentSize(cocos2d::Size(size.height*0.3f,size.height*0.1f));
-    m_pItemDropLevel3->setPosition(Vec2(m_pItemDropLevel2->getPosition().x + size.height*0.15f + 10*scale, m_pItemDropLevelText->getPosition().y -50*scale));
-    m_pItemDropLevel3->setScale(0.5f);
+    m_pItemDropLevel3->setPosition(Vec2(m_pItemDropLevel2->getPosition().x + size.height*0.12f + 10*scale, m_pItemDropLevelLabel->getPosition().y -30*scale));
+    m_pItemDropLevel3->setScale(0.4f);
     m_pPanelBg->addChild(m_pItemDropLevel3);
 
     m_pItemDropLevel4 = ui::ImageView::create("level_empty.png");
@@ -276,8 +278,8 @@ bool PauseUI::init()
     m_pItemDropLevel4->setScale9Enabled(true);
     m_pItemDropLevel4->setCapInsets(cocos2d::Rect(20,20,88,88));
     m_pItemDropLevel4->setContentSize(cocos2d::Size(size.height*0.3f,size.height*0.1f));
-    m_pItemDropLevel4->setPosition(Vec2(m_pItemDropLevel3->getPosition().x + size.height*0.15f + 10*scale, m_pItemDropLevelText->getPosition().y -50*scale));
-    m_pItemDropLevel4->setScale(0.5f);
+    m_pItemDropLevel4->setPosition(Vec2(m_pItemDropLevel3->getPosition().x + size.height*0.12f + 10*scale, m_pItemDropLevelLabel->getPosition().y -30*scale));
+    m_pItemDropLevel4->setScale(0.4f);
     m_pPanelBg->addChild(m_pItemDropLevel4);
     
     m_pItemDropLevel5 = ui::ImageView::create("level_empty.png");
@@ -287,26 +289,27 @@ bool PauseUI::init()
     m_pItemDropLevel5->setScale9Enabled(true);
     m_pItemDropLevel5->setCapInsets(cocos2d::Rect(15,15,98,98));
     m_pItemDropLevel5->setContentSize(cocos2d::Size(size.height*0.3f,size.height*0.1f));
-    m_pItemDropLevel5->setPosition(Vec2(m_pItemDropLevel4->getPosition().x + size.height*0.15f + 10*scale, m_pItemDropLevelText->getPosition().y -50*scale));
-    m_pItemDropLevel5->setScale(0.5f);
+    m_pItemDropLevel5->setPosition(Vec2(m_pItemDropLevel4->getPosition().x + size.height*0.12f + 10*scale, m_pItemDropLevelLabel->getPosition().y -30*scale));
+    m_pItemDropLevel5->setScale(0.4f);
     m_pPanelBg->addChild(m_pItemDropLevel5);
 
     m_pItemDropLevelAdd = ui::Button::create("plus.png");
     if(!m_pItemDropLevelAdd)
         return false;
     m_pItemDropLevelAdd->setAnchorPoint(Vec2(0, 0.5f));
-    m_pItemDropLevelAdd->setPosition(Vec2(m_pStardustDropLevel5->getPosition().x + size.height*0.15f + 50*scale, m_pItemDropLevelText->getPosition().y -50*scale));
-    m_pItemDropLevelAdd->setScale(0.25f);
+    m_pItemDropLevelAdd->setPosition(Vec2(m_pStardustDropLevel5->getPosition().x + size.height*0.12f + 50*scale, m_pItemDropLevelLabel->getPosition().y -30*scale));
+    m_pItemDropLevelAdd->setScale(0.2f*scale);
     m_pItemDropLevelAdd->addTouchEventListener(CC_CALLBACK_2(PauseUI::pressItemDropLevelAddBtn, this));
     m_pPanelBg->addChild(m_pItemDropLevelAdd);
     
-    m_pItemEffectLevelText = ui::Text::create(UtilityHelper::getLocalString("ITEM_EFFECT"), "FZXS12.TTF", size.height*0.04f);
-    if(!m_pItemEffectLevelText)
+    m_pItemEffectLevelLabel = Label::createWithTTF(UtilityHelper::getLocalString("ITEM_EFFECT"), "FZXS12.TTF", size.height*0.03f);
+    if(!m_pItemEffectLevelLabel)
         return false;
-    m_pItemEffectLevelText->setAnchorPoint(Vec2(0, 0.5f));
-    m_pItemEffectLevelText->setPosition(Vec2(size.width*0.1f, size.height*0.2f));
-    m_pItemEffectLevelText->setColor(Color3B(208,255,208));
-    m_pPanelBg->addChild(m_pItemEffectLevelText);
+    m_pItemEffectLevelLabel->setAnchorPoint(Vec2(0, 0.5f));
+    m_pItemEffectLevelLabel->setPosition(Vec2(size.width*0.05f, size.height*0.2f));
+    m_pItemEffectLevelLabel->setDimensions(size.width*0.55f, size.height*0.1f);
+    m_pItemEffectLevelLabel->setColor(Color3B(208,255,208));
+    m_pPanelBg->addChild(m_pItemEffectLevelLabel);
 
     m_pItemEffectLevel1 = ui::ImageView::create("level_empty.png");
     if(!m_pItemEffectLevel1)
@@ -315,8 +318,8 @@ bool PauseUI::init()
     m_pItemEffectLevel1->setScale9Enabled(true);
     m_pItemEffectLevel1->setCapInsets(cocos2d::Rect(20,20,88,88));
     m_pItemEffectLevel1->setContentSize(cocos2d::Size(size.height*0.3f,size.height*0.1f));
-    m_pItemEffectLevel1->setPosition(Vec2(m_pItemEffectLevelText->getPosition().x, m_pItemEffectLevelText->getPosition().y -50*scale));
-    m_pItemEffectLevel1->setScale(0.5f);
+    m_pItemEffectLevel1->setPosition(Vec2(m_pItemEffectLevelLabel->getPosition().x, m_pItemEffectLevelLabel->getPosition().y -30*scale));
+    m_pItemEffectLevel1->setScale(0.4f);
     m_pPanelBg->addChild(m_pItemEffectLevel1);
     
     m_pItemEffectLevel2 = ui::ImageView::create("level_empty.png");
@@ -326,8 +329,8 @@ bool PauseUI::init()
     m_pItemEffectLevel2->setScale9Enabled(true);
     m_pItemEffectLevel2->setCapInsets(cocos2d::Rect(20,20,88,88));
     m_pItemEffectLevel2->setContentSize(cocos2d::Size(size.height*0.3f,size.height*0.1f));
-    m_pItemEffectLevel2->setPosition(Vec2(m_pItemEffectLevel1->getPosition().x + size.height*0.15f + 10*scale, m_pItemEffectLevelText->getPosition().y -50*scale));
-    m_pItemEffectLevel2->setScale(0.5f);
+    m_pItemEffectLevel2->setPosition(Vec2(m_pItemEffectLevel1->getPosition().x + size.height*0.12f + 10*scale, m_pItemEffectLevelLabel->getPosition().y -30*scale));
+    m_pItemEffectLevel2->setScale(0.4f);
     m_pPanelBg->addChild(m_pItemEffectLevel2);
     
     m_pItemEffectLevel3 = ui::ImageView::create("level_empty.png");
@@ -337,8 +340,8 @@ bool PauseUI::init()
     m_pItemEffectLevel3->setScale9Enabled(true);
     m_pItemEffectLevel3->setCapInsets(cocos2d::Rect(20,20,88,88));
     m_pItemEffectLevel3->setContentSize(cocos2d::Size(size.height*0.3f,size.height*0.1f));
-    m_pItemEffectLevel3->setPosition(Vec2(m_pItemEffectLevel2->getPosition().x + size.height*0.15f + 10*scale, m_pItemEffectLevelText->getPosition().y -50*scale));
-    m_pItemEffectLevel3->setScale(0.5f);
+    m_pItemEffectLevel3->setPosition(Vec2(m_pItemEffectLevel2->getPosition().x + size.height*0.12f + 10*scale, m_pItemEffectLevelLabel->getPosition().y -30*scale));
+    m_pItemEffectLevel3->setScale(0.4f);
     m_pPanelBg->addChild(m_pItemEffectLevel3);
     
     m_pItemEffectLevel4 = ui::ImageView::create("level_empty.png");
@@ -348,8 +351,8 @@ bool PauseUI::init()
     m_pItemEffectLevel4->setScale9Enabled(true);
     m_pItemEffectLevel4->setCapInsets(cocos2d::Rect(20,20,88,88));
     m_pItemEffectLevel4->setContentSize(cocos2d::Size(size.height*0.3f,size.height*0.1f));
-    m_pItemEffectLevel4->setPosition(Vec2(m_pItemEffectLevel3->getPosition().x + size.height*0.15f + 10*scale, m_pItemEffectLevelText->getPosition().y -50*scale));
-    m_pItemEffectLevel4->setScale(0.5f);
+    m_pItemEffectLevel4->setPosition(Vec2(m_pItemEffectLevel3->getPosition().x + size.height*0.12f + 10*scale, m_pItemEffectLevelLabel->getPosition().y -30*scale));
+    m_pItemEffectLevel4->setScale(0.4f);
     m_pPanelBg->addChild(m_pItemEffectLevel4);
     
     m_pItemEffectLevel5 = ui::ImageView::create("level_empty.png");
@@ -359,16 +362,16 @@ bool PauseUI::init()
     m_pItemEffectLevel5->setScale9Enabled(true);
     m_pItemEffectLevel5->setCapInsets(cocos2d::Rect(20,20,88,88));
     m_pItemEffectLevel5->setContentSize(cocos2d::Size(size.height*0.3f,size.height*0.1f));
-    m_pItemEffectLevel5->setPosition(Vec2(m_pItemEffectLevel4->getPosition().x + size.height*0.15f + 10*scale, m_pItemEffectLevelText->getPosition().y -50*scale));
-    m_pItemEffectLevel5->setScale(0.5f);
+    m_pItemEffectLevel5->setPosition(Vec2(m_pItemEffectLevel4->getPosition().x + size.height*0.12f + 10*scale, m_pItemEffectLevelLabel->getPosition().y -30*scale));
+    m_pItemEffectLevel5->setScale(0.4f);
     m_pPanelBg->addChild(m_pItemEffectLevel5);
     
     m_pItemEffectLevelAdd = ui::Button::create("plus.png");
     if(!m_pItemEffectLevelAdd)
         return false;
     m_pItemEffectLevelAdd->setAnchorPoint(Vec2(0, 0.5f));
-    m_pItemEffectLevelAdd->setPosition(Vec2(m_pItemEffectLevel5->getPosition().x + size.height*0.15f + 50*scale, m_pItemEffectLevelText->getPosition().y -50*scale));
-    m_pItemEffectLevelAdd->setScale(0.25f);
+    m_pItemEffectLevelAdd->setPosition(Vec2(m_pItemEffectLevel5->getPosition().x + size.height*0.12f + 50*scale, m_pItemEffectLevelLabel->getPosition().y -30*scale));
+    m_pItemEffectLevelAdd->setScale(0.2f*scale);
     m_pItemEffectLevelAdd->addTouchEventListener(CC_CALLBACK_2(PauseUI::pressItemEffectLevelAddBtn, this));
     m_pPanelBg->addChild(m_pItemEffectLevelAdd);
     
@@ -632,10 +635,10 @@ void PauseUI::updateUI()
     
     if(stardustDropLevel >= 5)
     {
-        if(m_pStardustDropLevelText)
+        if(m_pStardustDropLevelLabel)
         {
-            m_pStardustDropLevelText->setColor(Color3B(208,255,208));
-            m_pStardustDropLevelText->setString(UtilityHelper::getLocalString("STARDUST_DROP_MAX"));
+            m_pStardustDropLevelLabel->setColor(Color3B(208,255,208));
+            m_pStardustDropLevelLabel->setString(UtilityHelper::getLocalString("STARDUST_DROP_MAX"));
         }
         if (m_pStardustDropLevelAdd)
             m_pStardustDropLevelAdd->setVisible(false);
@@ -652,21 +655,21 @@ void PauseUI::updateUI()
     }
     else if(stardustDropLevel == 4)
     {
-        if(m_pStardustDropLevelText && m_pStardustDropLevelAdd)
+        if(m_pStardustDropLevelLabel && m_pStardustDropLevelAdd)
         {
             ChaosNumber needStardust(600);
             if(curStardustNum >= needStardust)
             {
                 std::string strStardustDropLevel = String::createWithFormat(UtilityHelper::getLocalString("STARDUST_DROP").c_str(), (int)(needStardust.GetLongValue()), 5)->getCString();
-                m_pStardustDropLevelText->setColor(Color3B(208,255,208));
-                m_pStardustDropLevelText->setString(strStardustDropLevel);
+                m_pStardustDropLevelLabel->setColor(Color3B(208,255,208));
+                m_pStardustDropLevelLabel->setString(strStardustDropLevel);
                 m_pStardustDropLevelAdd->setVisible(true);
             }
             else
             {
                 std::string strStardustDropLevel = String::createWithFormat(UtilityHelper::getLocalString("LEVEL_FAILED").c_str(), (int)(needStardust.GetLongValue()))->getCString();
-                m_pStardustDropLevelText->setColor(Color3B(255,100,220));
-                m_pStardustDropLevelText->setString(strStardustDropLevel);
+                m_pStardustDropLevelLabel->setColor(Color3B(255,100,220));
+                m_pStardustDropLevelLabel->setString(strStardustDropLevel);
                 m_pStardustDropLevelAdd->setVisible(false);
             }
         }
@@ -681,21 +684,21 @@ void PauseUI::updateUI()
     }
     else if(stardustDropLevel == 3)
     {
-        if(m_pStardustDropLevelText && m_pStardustDropLevelAdd)
+        if(m_pStardustDropLevelLabel && m_pStardustDropLevelAdd)
         {
             ChaosNumber needStardust(270);
             if(curStardustNum >= needStardust)
             {
                 std::string strStardustDropLevel = String::createWithFormat(UtilityHelper::getLocalString("STARDUST_DROP").c_str(), (int)(needStardust.GetLongValue()), 4)->getCString();
-                m_pStardustDropLevelText->setColor(Color3B(208,255,208));
-                m_pStardustDropLevelText->setString(strStardustDropLevel);
+                m_pStardustDropLevelLabel->setColor(Color3B(208,255,208));
+                m_pStardustDropLevelLabel->setString(strStardustDropLevel);
                 m_pStardustDropLevelAdd->setVisible(true);
             }
             else
             {
                 std::string strStardustDropLevel = String::createWithFormat(UtilityHelper::getLocalString("LEVEL_FAILED").c_str(), (int)(needStardust.GetLongValue()))->getCString();
-                m_pStardustDropLevelText->setColor(Color3B(255,100,220));
-                m_pStardustDropLevelText->setString(strStardustDropLevel);
+                m_pStardustDropLevelLabel->setColor(Color3B(255,100,220));
+                m_pStardustDropLevelLabel->setString(strStardustDropLevel);
                 m_pStardustDropLevelAdd->setVisible(false);
             }
         }
@@ -708,21 +711,21 @@ void PauseUI::updateUI()
     }
     else if(stardustDropLevel == 2)
     {
-        if(m_pStardustDropLevelText && m_pStardustDropLevelAdd)
+        if(m_pStardustDropLevelLabel && m_pStardustDropLevelAdd)
         {
             ChaosNumber needStardust(100);
             if(curStardustNum >= needStardust)
             {
                 std::string strStardustDropLevel = String::createWithFormat(UtilityHelper::getLocalString("STARDUST_DROP").c_str(), (int)(needStardust.GetLongValue()), 3)->getCString();
-                m_pStardustDropLevelText->setColor(Color3B(208,255,208));
-                m_pStardustDropLevelText->setString(strStardustDropLevel);
+                m_pStardustDropLevelLabel->setColor(Color3B(208,255,208));
+                m_pStardustDropLevelLabel->setString(strStardustDropLevel);
                 m_pStardustDropLevelAdd->setVisible(true);
             }
             else
             {
                 std::string strStardustDropLevel = String::createWithFormat(UtilityHelper::getLocalString("LEVEL_FAILED").c_str(), (int)(needStardust.GetLongValue()))->getCString();
-                m_pStardustDropLevelText->setColor(Color3B(255,100,220));
-                m_pStardustDropLevelText->setString(strStardustDropLevel);
+                m_pStardustDropLevelLabel->setColor(Color3B(255,100,220));
+                m_pStardustDropLevelLabel->setString(strStardustDropLevel);
                 m_pStardustDropLevelAdd->setVisible(false);
             }
         }
@@ -733,21 +736,21 @@ void PauseUI::updateUI()
     }
     else if(stardustDropLevel == 1)
     {
-        if(m_pStardustDropLevelText && m_pStardustDropLevelAdd)
+        if(m_pStardustDropLevelLabel && m_pStardustDropLevelAdd)
         {
             ChaosNumber needStardust(30);
             if(curStardustNum >= needStardust)
             {
                 std::string strStardustDropLevel = String::createWithFormat(UtilityHelper::getLocalString("STARDUST_DROP").c_str(), (int)(needStardust.GetLongValue()), 2)->getCString();
-                m_pStardustDropLevelText->setColor(Color3B(208,255,208));
-                m_pStardustDropLevelText->setString(strStardustDropLevel);
+                m_pStardustDropLevelLabel->setColor(Color3B(208,255,208));
+                m_pStardustDropLevelLabel->setString(strStardustDropLevel);
                 m_pStardustDropLevelAdd->setVisible(true);
             }
             else
             {
                 std::string strStardustDropLevel = String::createWithFormat(UtilityHelper::getLocalString("LEVEL_FAILED").c_str(), (int)(needStardust.GetLongValue()))->getCString();
-                m_pStardustDropLevelText->setColor(Color3B(255,100,220));
-                m_pStardustDropLevelText->setString(strStardustDropLevel);
+                m_pStardustDropLevelLabel->setColor(Color3B(255,100,220));
+                m_pStardustDropLevelLabel->setString(strStardustDropLevel);
                 m_pStardustDropLevelAdd->setVisible(false);
             }
         }
@@ -758,10 +761,10 @@ void PauseUI::updateUI()
     
     if(itemDropLevel >= 5)
     {
-        if(m_pItemDropLevelText)
+        if(m_pItemDropLevelLabel)
         {
-            m_pItemDropLevelText->setColor(Color3B(208,255,208));
-            m_pItemDropLevelText->setString(UtilityHelper::getLocalString("ITEM_DROP_MAX"));
+            m_pItemDropLevelLabel->setColor(Color3B(208,255,208));
+            m_pItemDropLevelLabel->setString(UtilityHelper::getLocalString("ITEM_DROP_MAX"));
         }
         if (m_pItemDropLevelAdd)
             m_pItemDropLevelAdd->setVisible(false);
@@ -778,21 +781,21 @@ void PauseUI::updateUI()
     }
     else if(itemDropLevel == 4)
     {
-        if(m_pItemDropLevelText && m_pItemDropLevelAdd)
+        if(m_pItemDropLevelLabel && m_pItemDropLevelAdd)
         {
             ChaosNumber needStardust(700);
             if(curStardustNum >= needStardust)
             {
                 std::string strItemDropLevel = String::createWithFormat(UtilityHelper::getLocalString("ITEM_DROP").c_str(), (int)(needStardust.GetLongValue()), 5)->getCString();
-                m_pItemDropLevelText->setColor(Color3B(208,255,208));
-                m_pItemDropLevelText->setString(strItemDropLevel);
+                m_pItemDropLevelLabel->setColor(Color3B(208,255,208));
+                m_pItemDropLevelLabel->setString(strItemDropLevel);
                 m_pItemDropLevelAdd->setVisible(true);
             }
             else
             {
                 std::string strItemDropLevel = String::createWithFormat(UtilityHelper::getLocalString("LEVEL_FAILED").c_str(), (int)(needStardust.GetLongValue()))->getCString();
-                m_pItemDropLevelText->setColor(Color3B(255,100,220));
-                m_pItemDropLevelText->setString(strItemDropLevel);
+                m_pItemDropLevelLabel->setColor(Color3B(255,100,220));
+                m_pItemDropLevelLabel->setString(strItemDropLevel);
                 m_pItemDropLevelAdd->setVisible(false);
             }
         }
@@ -807,21 +810,21 @@ void PauseUI::updateUI()
     }
     else if(itemDropLevel == 3)
     {
-        if(m_pItemDropLevelText && m_pItemDropLevelAdd)
+        if(m_pItemDropLevelLabel && m_pItemDropLevelAdd)
         {
             ChaosNumber needStardust(320);
             if(curStardustNum >= needStardust)
             {
                 std::string strItemDropLevel = String::createWithFormat(UtilityHelper::getLocalString("ITEM_DROP").c_str(), (int)(needStardust.GetLongValue()), 4)->getCString();
-                m_pItemDropLevelText->setColor(Color3B(208,255,208));
-                m_pItemDropLevelText->setString(strItemDropLevel);
+                m_pItemDropLevelLabel->setColor(Color3B(208,255,208));
+                m_pItemDropLevelLabel->setString(strItemDropLevel);
                 m_pItemDropLevelAdd->setVisible(true);
             }
             else
             {
                 std::string strItemDropLevel = String::createWithFormat(UtilityHelper::getLocalString("LEVEL_FAILED").c_str(), (int)(needStardust.GetLongValue()))->getCString();
-                m_pItemDropLevelText->setColor(Color3B(255,100,220));
-                m_pItemDropLevelText->setString(strItemDropLevel);
+                m_pItemDropLevelLabel->setColor(Color3B(255,100,220));
+                m_pItemDropLevelLabel->setString(strItemDropLevel);
                 m_pItemDropLevelAdd->setVisible(false);
             }
         }
@@ -834,21 +837,21 @@ void PauseUI::updateUI()
     }
     else if(itemDropLevel == 2)
     {
-        if(m_pItemDropLevelText && m_pItemDropLevelAdd)
+        if(m_pItemDropLevelLabel && m_pItemDropLevelAdd)
         {
             ChaosNumber needStardust(140);
             if(curStardustNum >= needStardust)
             {
                 std::string strItemDropLevel = String::createWithFormat(UtilityHelper::getLocalString("ITEM_DROP").c_str(), (int)(needStardust.GetLongValue()), 3)->getCString();
-                m_pItemDropLevelText->setColor(Color3B(208,255,208));
-                m_pItemDropLevelText->setString(strItemDropLevel);
+                m_pItemDropLevelLabel->setColor(Color3B(208,255,208));
+                m_pItemDropLevelLabel->setString(strItemDropLevel);
                 m_pItemDropLevelAdd->setVisible(true);
             }
             else
             {
                 std::string strItemDropLevel = String::createWithFormat(UtilityHelper::getLocalString("LEVEL_FAILED").c_str(), (int)(needStardust.GetLongValue()))->getCString();
-                m_pItemDropLevelText->setColor(Color3B(255,100,220));
-                m_pItemDropLevelText->setString(strItemDropLevel);
+                m_pItemDropLevelLabel->setColor(Color3B(255,100,220));
+                m_pItemDropLevelLabel->setString(strItemDropLevel);
                 m_pItemDropLevelAdd->setVisible(false);
             }
         }
@@ -859,21 +862,21 @@ void PauseUI::updateUI()
     }
     else if(itemDropLevel == 1)
     {
-        if(m_pItemDropLevelText && m_pItemDropLevelAdd)
+        if(m_pItemDropLevelLabel && m_pItemDropLevelAdd)
         {
             ChaosNumber needStardust(40);
             if(curStardustNum >= needStardust)
             {
                 std::string strItemDropLevel = String::createWithFormat(UtilityHelper::getLocalString("ITEM_DROP").c_str(), (int)(needStardust.GetLongValue()), 2)->getCString();
-                m_pItemDropLevelText->setColor(Color3B(208,255,208));
-                m_pItemDropLevelText->setString(strItemDropLevel);
+                m_pItemDropLevelLabel->setColor(Color3B(208,255,208));
+                m_pItemDropLevelLabel->setString(strItemDropLevel);
                 m_pItemDropLevelAdd->setVisible(true);
             }
             else
             {
                 std::string strItemDropLevel = String::createWithFormat(UtilityHelper::getLocalString("LEVEL_FAILED").c_str(), (int)(needStardust.GetLongValue()))->getCString();
-                m_pItemDropLevelText->setColor(Color3B(255,100,220));
-                m_pItemDropLevelText->setString(strItemDropLevel);
+                m_pItemDropLevelLabel->setColor(Color3B(255,100,220));
+                m_pItemDropLevelLabel->setString(strItemDropLevel);
                 m_pItemDropLevelAdd->setVisible(false);
             }
         }
@@ -883,10 +886,10 @@ void PauseUI::updateUI()
 
     if(itemEffectLevel >= 5)
     {
-        if(m_pItemEffectLevelText)
+        if(m_pItemEffectLevelLabel)
         {
-            m_pItemEffectLevelText->setColor(Color3B(208,255,208));
-            m_pItemEffectLevelText->setString(UtilityHelper::getLocalString("ITEM_EFFECT_MAX"));
+            m_pItemEffectLevelLabel->setColor(Color3B(208,255,208));
+            m_pItemEffectLevelLabel->setString(UtilityHelper::getLocalString("ITEM_EFFECT_MAX"));
         }
         if (m_pItemEffectLevelAdd)
             m_pItemEffectLevelAdd->setVisible(false);
@@ -903,21 +906,21 @@ void PauseUI::updateUI()
     }
     else if(itemEffectLevel == 4)
     {
-        if(m_pItemEffectLevelText && m_pItemEffectLevelAdd)
+        if(m_pItemEffectLevelLabel && m_pItemEffectLevelAdd)
         {
             ChaosNumber needStardust(800);
             if(curStardustNum >= needStardust)
             {
                 std::string strItemEffectLevel = String::createWithFormat(UtilityHelper::getLocalString("ITEM_EFFECT").c_str(), (int)(needStardust.GetLongValue()), 5)->getCString();
-                m_pItemEffectLevelText->setColor(Color3B(208,255,208));
-                m_pItemEffectLevelText->setString(strItemEffectLevel);
+                m_pItemEffectLevelLabel->setColor(Color3B(208,255,208));
+                m_pItemEffectLevelLabel->setString(strItemEffectLevel);
                 m_pItemEffectLevelAdd->setVisible(true);
             }
             else
             {
                 std::string strItemEffectLevel = String::createWithFormat(UtilityHelper::getLocalString("LEVEL_FAILED").c_str(), (int)(needStardust.GetLongValue()))->getCString();
-                m_pItemEffectLevelText->setColor(Color3B(255,100,220));
-                m_pItemEffectLevelText->setString(strItemEffectLevel);
+                m_pItemEffectLevelLabel->setColor(Color3B(255,100,220));
+                m_pItemEffectLevelLabel->setString(strItemEffectLevel);
                 m_pItemEffectLevelAdd->setVisible(false);
             }
         }
@@ -932,21 +935,21 @@ void PauseUI::updateUI()
     }
     else if(itemEffectLevel == 3)
     {
-        if(m_pItemEffectLevelText && m_pItemEffectLevelAdd)
+        if(m_pItemEffectLevelLabel && m_pItemEffectLevelAdd)
         {
             ChaosNumber needStardust(390);
             if(curStardustNum >= needStardust)
             {
                 std::string strItemEffectLevel = String::createWithFormat(UtilityHelper::getLocalString("ITEM_EFFECT").c_str(), (int)(needStardust.GetLongValue()), 4)->getCString();
-                m_pItemEffectLevelText->setColor(Color3B(208,255,208));
-                m_pItemEffectLevelText->setString(strItemEffectLevel);
+                m_pItemEffectLevelLabel->setColor(Color3B(208,255,208));
+                m_pItemEffectLevelLabel->setString(strItemEffectLevel);
                 m_pItemEffectLevelAdd->setVisible(true);
             }
             else
             {
                 std::string strItemEffectLevel = String::createWithFormat(UtilityHelper::getLocalString("LEVEL_FAILED").c_str(), (int)(needStardust.GetLongValue()))->getCString();
-                m_pItemEffectLevelText->setColor(Color3B(255,100,220));
-                m_pItemEffectLevelText->setString(strItemEffectLevel);
+                m_pItemEffectLevelLabel->setColor(Color3B(255,100,220));
+                m_pItemEffectLevelLabel->setString(strItemEffectLevel);
                 m_pItemEffectLevelAdd->setVisible(false);
             }
         }
@@ -959,21 +962,21 @@ void PauseUI::updateUI()
     }
     else if(itemEffectLevel == 2)
     {
-        if(m_pItemEffectLevelText && m_pItemEffectLevelAdd)
+        if(m_pItemEffectLevelLabel && m_pItemEffectLevelAdd)
         {
             ChaosNumber needStardust(160);
             if(curStardustNum >= needStardust)
             {
                 std::string strItemEffectLevel = String::createWithFormat(UtilityHelper::getLocalString("ITEM_EFFECT").c_str(), (int)(needStardust.GetLongValue()), 3)->getCString();
-                m_pItemEffectLevelText->setColor(Color3B(208,255,208));
-                m_pItemEffectLevelText->setString(strItemEffectLevel);
+                m_pItemEffectLevelLabel->setColor(Color3B(208,255,208));
+                m_pItemEffectLevelLabel->setString(strItemEffectLevel);
                 m_pItemEffectLevelAdd->setVisible(true);
             }
             else
             {
                 std::string strItemEffectLevel = String::createWithFormat(UtilityHelper::getLocalString("LEVEL_FAILED").c_str(), (int)(needStardust.GetLongValue()))->getCString();
-                m_pItemEffectLevelText->setColor(Color3B(255,100,220));
-                m_pItemEffectLevelText->setString(strItemEffectLevel);
+                m_pItemEffectLevelLabel->setColor(Color3B(255,100,220));
+                m_pItemEffectLevelLabel->setString(strItemEffectLevel);
                 m_pItemEffectLevelAdd->setVisible(false);
             }
         }
@@ -984,21 +987,21 @@ void PauseUI::updateUI()
     }
     else if(itemEffectLevel == 1)
     {
-        if(m_pItemEffectLevelText && m_pItemEffectLevelAdd)
+        if(m_pItemEffectLevelLabel && m_pItemEffectLevelAdd)
         {
             ChaosNumber needStardust(50);
             if(curStardustNum >= needStardust)
             {
                 std::string strItemEffectLevel = String::createWithFormat(UtilityHelper::getLocalString("ITEM_EFFECT").c_str(), (int)(needStardust.GetLongValue()), 2)->getCString();
-                m_pItemEffectLevelText->setColor(Color3B(208,255,208));
-                m_pItemEffectLevelText->setString(strItemEffectLevel);
+                m_pItemEffectLevelLabel->setColor(Color3B(208,255,208));
+                m_pItemEffectLevelLabel->setString(strItemEffectLevel);
                 m_pItemEffectLevelAdd->setVisible(true);
             }
             else
             {
                 std::string strItemEffectLevel = String::createWithFormat(UtilityHelper::getLocalString("LEVEL_FAILED").c_str(), (int)(needStardust.GetLongValue()))->getCString();
-                m_pItemEffectLevelText->setColor(Color3B(255,100,220));
-                m_pItemEffectLevelText->setString(strItemEffectLevel);
+                m_pItemEffectLevelLabel->setColor(Color3B(255,100,220));
+                m_pItemEffectLevelLabel->setString(strItemEffectLevel);
                 m_pItemEffectLevelAdd->setVisible(false);
             }
         }
