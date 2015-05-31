@@ -49,7 +49,6 @@ void GameActor::loadModel(const std::string& texName)
         CCLOGERROR("Load model %s failed!" , texName.c_str());
     m_pModel->setScale(0.5f);
     addChild(m_pModel);
-    caculateRadius();
 }
 void GameActor::setBounce(bool bounce)
 {
@@ -57,21 +56,6 @@ void GameActor::setBounce(bool bounce)
     if(m_bBounce)
     {
         ParticleSystemHelper::spawnExplosion(ExplosionType::ET_EXPLOSION_ACTOR_COLLISION, getPosition());
-    }
-}
-void GameActor::caculateRadius()
-{
-    if (m_pModel) {
-        cocos2d::Rect rect = m_pModel->getBoundingBox();
-        Vec2 min = Vec2(rect.getMaxX(), rect.getMaxY());
-        Vec2 max = Vec2(rect.getMinX(), rect.getMinY());
-        m_fRadius = max.distance(min) * 0.5f;
-        float scaleX = getScaleX();
-        float scaleY = getScaleY();
-        if(scaleX == scaleY)
-            m_fRadius *= getScale();
-        else
-            m_fRadius *= MAX(scaleX, scaleY);
     }
 }
 void GameActor::updateOrientation()

@@ -10,6 +10,7 @@
 USING_NS_CC;
 Bullet::Bullet()
 {
+    m_fRadius = 16.0f;
 }
 Bullet::~Bullet()
 {
@@ -27,7 +28,6 @@ void Bullet::loadTexture(const std::string& textureName)
     if(!m_pModel)
         CCLOGERROR("Load bullet texture failed!");
     addChild(m_pModel);
-    caculateRadius();
 }
 void Bullet::setColorMask(const cocos2d::Color3B& mask)
 {

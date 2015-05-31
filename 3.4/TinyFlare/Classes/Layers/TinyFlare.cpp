@@ -59,7 +59,7 @@ void TinyFlare::onEnter()
     if(!GameController::getInstance()->init(this))
         CCLOGERROR("GameController init failed!");
     ////lwwhb add for debug
-    GameController::getInstance()->resetData();
+    //GameController::getInstance()->resetData();
     ////
 }
 void TinyFlare::onExit()

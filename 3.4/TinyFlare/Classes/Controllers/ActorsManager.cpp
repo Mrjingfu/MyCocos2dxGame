@@ -47,7 +47,6 @@ Bullet* ActorsManager::spawnBullet(GameActor::ActorType type, const cocos2d::Vec
         bullet->setMaxSpeed(speed);
         bullet->setColorMask(colormask);
         bullet->getModel()->setScale(scaleX,scaleY);
-        bullet->caculateRadius();
         bullet->updateOrientation();
         ActorsManager::getInstance()->m_Bullets.pushBack(bullet);
         ActorsManager::getInstance()->m_pActorLayer->addChild(bullet);
@@ -83,7 +82,6 @@ Enemy* ActorsManager::spawnEnemy(Enemy::EnemyType enemyType, const Vec2& pos, co
                     enemy->setOpacity(0);
                     enemy->setScale(0.2f);
                     enemy->setActorState(ActorState::AS_UNDERCONTROL);
-                    enemy->caculateRadius();
                     ActorsManager::getInstance()->m_Enemies.pushBack(enemy);
                     ActorsManager::getInstance()->m_pActorLayer->addChild(enemy);
                     ActorsManager::getInstance()->m_pActorLayer->setCameraMask((unsigned short)CameraFlag::USER1);
@@ -110,7 +108,7 @@ Enemy* ActorsManager::spawnEnemy(Enemy::EnemyType enemyType, const Vec2& pos, co
             {
                 enemy = new(std::nothrow) ColorCircle();
                 if (enemy && enemy->init()) {
-                    enemy->loadModel("circle.png");
+                    //enemy->loadModel("circle.png");
                     //enemy->getModel()->setVisible(false);
                     enemy->setPosition(pos);
                     enemy->setDirection(dir);
@@ -119,7 +117,6 @@ Enemy* ActorsManager::spawnEnemy(Enemy::EnemyType enemyType, const Vec2& pos, co
                     enemy->setOpacity(0);
                     enemy->setScale(0.2f);
                     enemy->setActorState(ActorState::AS_UNDERCONTROL);
-                    enemy->caculateRadius();
                     ActorsManager::getInstance()->m_Enemies.pushBack(enemy);
                     ActorsManager::getInstance()->m_pActorLayer->addChild(enemy);
                     ActorsManager::getInstance()->m_pActorLayer->setCameraMask((unsigned short)CameraFlag::USER1);
@@ -157,7 +154,6 @@ Enemy* ActorsManager::spawnEnemy(Enemy::EnemyType enemyType, const Vec2& pos, co
                     enemy->setScale(0.2f);
                     enemy->setActorState(ActorState::AS_UNDERCONTROL);
                     enemy->setColor(Color3B(253,255,12));
-                    enemy->caculateRadius();
                     ActorsManager::getInstance()->m_Enemies.pushBack(enemy);
                     ActorsManager::getInstance()->m_pActorLayer->addChild(enemy);
                     ActorsManager::getInstance()->m_pActorLayer->setCameraMask((unsigned short)CameraFlag::USER1);
@@ -184,7 +180,7 @@ Enemy* ActorsManager::spawnEnemy(Enemy::EnemyType enemyType, const Vec2& pos, co
             {
                 enemy = new(std::nothrow) ColorTriangle();
                 if (enemy && enemy->init()) {
-                    enemy->loadModel("triangle.png");
+                    //enemy->loadModel("triangle.png");
                     enemy->setPosition(pos);
                     enemy->setDirection(dir);
                     enemy->setOrientation(dir);
@@ -193,7 +189,6 @@ Enemy* ActorsManager::spawnEnemy(Enemy::EnemyType enemyType, const Vec2& pos, co
                     enemy->setScale(0.2f);
                     enemy->setActorState(ActorState::AS_UNDERCONTROL);
                     enemy->setColor(Color3B(253,255,12));
-                    enemy->caculateRadius();
                     ActorsManager::getInstance()->m_Enemies.pushBack(enemy);
                     ActorsManager::getInstance()->m_pActorLayer->addChild(enemy);
                     ActorsManager::getInstance()->m_pActorLayer->setCameraMask((unsigned short)CameraFlag::USER1);
@@ -231,7 +226,6 @@ Enemy* ActorsManager::spawnEnemy(Enemy::EnemyType enemyType, const Vec2& pos, co
                     enemy->setScale(0.2f);
                     enemy->setActorState(ActorState::AS_UNDERCONTROL);
                     enemy->setColor(Color3B(64,255,1));
-                    enemy->caculateRadius();
                     ActorsManager::getInstance()->m_Enemies.pushBack(enemy);
                     ActorsManager::getInstance()->m_pActorLayer->addChild(enemy);
                     ActorsManager::getInstance()->m_pActorLayer->setCameraMask((unsigned short)CameraFlag::USER1);
@@ -258,7 +252,7 @@ Enemy* ActorsManager::spawnEnemy(Enemy::EnemyType enemyType, const Vec2& pos, co
             {
                 enemy = new(std::nothrow) ColorDiamond();
                 if (enemy && enemy->init()) {
-                    enemy->loadModel("diamond.png");
+                    //enemy->loadModel("diamond.png");
                     enemy->setPosition(pos);
                     enemy->setDirection(dir);
                     enemy->setOrientation(dir);
@@ -267,7 +261,6 @@ Enemy* ActorsManager::spawnEnemy(Enemy::EnemyType enemyType, const Vec2& pos, co
                     enemy->setScale(0.2f);
                     enemy->setActorState(ActorState::AS_UNDERCONTROL);
                     enemy->setColor(Color3B(64,255,1));
-                    enemy->caculateRadius();
                     ActorsManager::getInstance()->m_Enemies.pushBack(enemy);
                     ActorsManager::getInstance()->m_pActorLayer->addChild(enemy);
                     ActorsManager::getInstance()->m_pActorLayer->setCameraMask((unsigned short)CameraFlag::USER1);
@@ -306,7 +299,6 @@ Enemy* ActorsManager::spawnEnemy(Enemy::EnemyType enemyType, const Vec2& pos, co
                     enemy->setActorState(ActorState::AS_UNDERCONTROL);
                     //enemy->setColor(Color3B(254,64,64));
                     enemy->setColor(Color3B(0,224,252));
-                    enemy->caculateRadius();
                     ActorsManager::getInstance()->m_Enemies.pushBack(enemy);
                     ActorsManager::getInstance()->m_pActorLayer->addChild(enemy);
                     ActorsManager::getInstance()->m_pActorLayer->setCameraMask((unsigned short)CameraFlag::USER1);
@@ -333,7 +325,7 @@ Enemy* ActorsManager::spawnEnemy(Enemy::EnemyType enemyType, const Vec2& pos, co
             {
                 enemy = new(std::nothrow) ColorStar();
                 if (enemy && enemy->init()) {
-                    enemy->loadModel("star.png");
+                    //enemy->loadModel("star.png");
                     enemy->setPosition(pos);
                     enemy->setDirection(dir);
                     //enemy->setOrientation(dir);
@@ -344,7 +336,6 @@ Enemy* ActorsManager::spawnEnemy(Enemy::EnemyType enemyType, const Vec2& pos, co
                     enemy->setActorState(ActorState::AS_UNDERCONTROL);
                     //enemy->setColor(Color3B(254,64,64));
                     enemy->setColor(Color3B(0,224,252));
-                    enemy->caculateRadius();
                     ActorsManager::getInstance()->m_Enemies.pushBack(enemy);
                     ActorsManager::getInstance()->m_pActorLayer->addChild(enemy);
                     ActorsManager::getInstance()->m_pActorLayer->setCameraMask((unsigned short)CameraFlag::USER1);
@@ -383,7 +374,6 @@ Enemy* ActorsManager::spawnEnemy(Enemy::EnemyType enemyType, const Vec2& pos, co
                     enemy->setScale(0.3f);
                     enemy->setActorState(ActorState::AS_UNDERCONTROL);
                     enemy->setColor(Color3B(253,153,31));
-                    enemy->caculateRadius();
                     ActorsManager::getInstance()->m_Enemies.pushBack(enemy);
                     ActorsManager::getInstance()->m_pActorLayer->addChild(enemy);
                     ActorsManager::getInstance()->m_pActorLayer->setCameraMask((unsigned short)CameraFlag::USER1);
@@ -411,8 +401,8 @@ Enemy* ActorsManager::spawnEnemy(Enemy::EnemyType enemyType, const Vec2& pos, co
             {
                 enemy = new(std::nothrow) ColorHexagon();
                 if (enemy && enemy->init()) {
-                    enemy->loadModel("hexagon.png");
-                    enemy->getModel()->setVisible(false);
+                    //enemy->loadModel("hexagon.png");
+                    //enemy->getModel()->setVisible(false);
                     enemy->setPosition(pos);
                     enemy->setDirection(dir);
                     //enemy->setOrientation(dir);
@@ -421,7 +411,6 @@ Enemy* ActorsManager::spawnEnemy(Enemy::EnemyType enemyType, const Vec2& pos, co
                     enemy->setScale(0.3f);
                     enemy->setActorState(ActorState::AS_UNDERCONTROL);
                     enemy->setColor(Color3B(253,153,31));
-                    enemy->caculateRadius();
                     ActorsManager::getInstance()->m_Enemies.pushBack(enemy);
                     ActorsManager::getInstance()->m_pActorLayer->addChild(enemy);
                     ActorsManager::getInstance()->m_pActorLayer->setCameraMask((unsigned short)CameraFlag::USER1);

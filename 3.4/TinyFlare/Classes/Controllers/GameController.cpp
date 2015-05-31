@@ -334,17 +334,6 @@ void GameController::onEnterDebug()
 {
     m_bDebugMode    = true;
     gameStart();
-    if(m_pEnemiesGenerator)
-    {
-        //m_pEnemiesGenerator->generateEnemiesByTime(Enemy::ET_STAR_COLORED, 3.0f);
-        //m_pEnemiesGenerator->generateEnemiesByTime(Enemy::ET_CIRCLE, 3.0f);
-        //m_pEnemiesGenerator->generateEnemiesByNum(Enemy::ET_HEXAGON_COLORED, 5.0f, 10);
-        //m_pEnemiesGenerator->generateEnemiesByTime(Enemy::ET_TRIANGLE, 7.0f);
-        //m_pEnemiesGenerator->generateEnemiesByTime(Enemy::ET_DIAMOND, 5.0f);
-        m_pEnemiesGenerator->generateEnemiesByNum(Enemy::ET_CIRCLE_COLORED, 5.0f, 1);
-        //m_pEnemiesGenerator->generateEnemiesByTime(Enemy::ET_TRIANGLE_COLORED, 20.0f, 1);
-        //m_pEnemiesGenerator->generateEnemiesByNum(Enemy::ET_DIAMOND_COLORED, 25.0f, 1);
-    }
 }
 void GameController::onExitDebug()
 {
@@ -380,7 +369,7 @@ void GameController::gameStart()
     m_pPlayer->setOpacity(0);
     m_pPlayer->setPlayerListener(m_pMainUI);
     ////lwwhb add for debug
-    m_pPlayer->addBuffer(BT_PROTECTED);
+    //m_pPlayer->addBuffer(BT_PROTECTED);
     ///
     m_pGameLayer->addChild(m_pPlayer);
     
@@ -403,8 +392,23 @@ void GameController::gameStart()
     m_pMainLayer->addChild(m_pTwoJoysticks);
     
     SimpleAudioEngine::getInstance()->playBackgroundMusic("Flux2.mp3", true);
-    
-    nextStage();
+    if(!m_bDebugMode)
+        nextStage();
+    else
+    {
+        if(m_pEnemiesGenerator)
+        {
+            m_pEnemiesGenerator->generateEnemiesByTime(Enemy::ET_STAR_COLORED, 10.0f, 1.0f, 90.0f);
+            //m_pEnemiesGenerator->generateEnemiesByTime(Enemy::ET_CIRCLE, 3.0f);
+            //m_pEnemiesGenerator->generateEnemiesByNum(Enemy::ET_HEXAGON_COLORED, 5.0f, 10);
+            //m_pEnemiesGenerator->generateEnemiesByTime(Enemy::ET_TRIANGLE, 7.0f);
+            //m_pEnemiesGenerator->generateEnemiesByTime(Enemy::ET_DIAMOND, 5.0f);
+            //m_pEnemiesGenerator->generateEnemiesByNum(Enemy::ET_CIRCLE_COLORED, 5.0f, 1);
+            //m_pEnemiesGenerator->generateEnemiesByTime(Enemy::ET_TRIANGLE_COLORED, 20.0f, 1);
+            //m_pEnemiesGenerator->generateEnemiesByNum(Enemy::ET_DIAMOND_COLORED, 25.0f, 1);
+        }
+        NativeBridge::getInstance()->hideAdsView();
+    }
 }
 
 void GameController::gameEnd()
@@ -504,10 +508,10 @@ Vec2 GameController::getStardustStartPos()
 }
 void GameController::resetData()
 {
-    EncrytionUtility::setIntegerForKey("CurrentStage", 32);
-    EncrytionUtility::setIntegerForKey("TotalGems", 2000);
-    EncrytionUtility::setIntegerForKey("StardustDropLevel", 3);
-    EncrytionUtility::setIntegerForKey("ItemDropLevel", 2);
-    EncrytionUtility::setIntegerForKey("ItemEffectLevel", 4);
+    EncrytionUtility::setIntegerForKey("CurrentStage", 1);
+    EncrytionUtility::setIntegerForKey("TotalGems", 0);
+    EncrytionUtility::setIntegerForKey("StardustDropLevel", 1);
+    EncrytionUtility::setIntegerForKey("ItemDropLevel", 1);
+    EncrytionUtility::setIntegerForKey("ItemEffectLevel", 1);
     
 }

@@ -89,7 +89,6 @@ public:
     }
     
     float getRadius() {
-        caculateRadius();
         return m_fRadius;
     }
     void setRadius(float radius) { m_fRadius = radius; }
@@ -106,7 +105,6 @@ public:
     
     void setBounce(bool bounce);
 
-    virtual void caculateRadius();
     virtual void updateOrientation();
     
     ActorState getActorState() const { return m_curState; }

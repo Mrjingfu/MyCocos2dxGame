@@ -17,6 +17,7 @@ Item::Item()
     m_ItemType = IT_UNKNOWN;
     m_fLifeTime = 10.0f;
     m_bHasBeginFadeOut = false;
+    m_fRadius = 25.0f;
 }
 Item::~Item()
 {
@@ -65,5 +66,4 @@ void Item::loadTexture(const std::string& textureName)
         CCLOGERROR("Load bound model bound.png failed!");
     m_pBoundModel->setScale(0.2f);
     addChild(m_pBoundModel);
-    caculateRadius();
 }
