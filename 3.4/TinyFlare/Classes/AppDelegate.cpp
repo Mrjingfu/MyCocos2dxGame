@@ -67,6 +67,9 @@ bool AppDelegate::applicationDidFinishLaunching() {
     Director::getInstance()->getTextureCache()->addImage("noise.png");
     Director::getInstance()->getTextureCache()->addImage("noise2.png");
     
+    SpriteFrameCache::getInstance()->addSpriteFramesWithFile("UI.plist", "UI.png");
+    SpriteFrameCache::getInstance()->addSpriteFramesWithFile("GameSprite.plist", "GameSprite.png");
+    
     SimpleAudioEngine::getInstance()->preloadEffect("btnclick.wav");
     SimpleAudioEngine::getInstance()->preloadEffect("explodeEffect.mp3");
     SimpleAudioEngine::getInstance()->preloadEffect("explodeEffect2.wav");

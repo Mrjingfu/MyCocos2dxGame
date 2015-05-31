@@ -37,10 +37,10 @@ bool BufferContainer::init()
     m_pAccelIcon = Node::create();
     if(!m_pAccelIcon)
         return false;
-    auto bound = ui::ImageView::create("bound.png");
+    auto bound = ui::ImageView::create("bound.png", TextureResType::PLIST);
     if(!bound)
         return false;
-    auto accel = ui::ImageView::create("accel.png");
+    auto accel = ui::ImageView::create("accel.png", TextureResType::PLIST);
     if(!accel)
         return false;
     m_pAccelIcon->addChild(bound);
@@ -57,10 +57,10 @@ bool BufferContainer::init()
     m_pMultiIcon = Node::create();
     if(!m_pMultiIcon)
         return false;
-    bound = ui::ImageView::create("bound.png");
+    bound = ui::ImageView::create("bound.png", TextureResType::PLIST);
     if(!bound)
         return false;
-    auto multi = ui::ImageView::create("multi.png");
+    auto multi = ui::ImageView::create("multi.png", TextureResType::PLIST);
     if(!multi)
         return false;
     m_pMultiIcon->addChild(bound);
@@ -75,10 +75,10 @@ bool BufferContainer::init()
     m_pProtectedIcon = Node::create();
     if(!m_pProtectedIcon)
         return false;
-    bound = ui::ImageView::create("bound.png");
+    bound = ui::ImageView::create("bound.png", TextureResType::PLIST);
     if(!bound)
         return false;
-    auto protect = ui::ImageView::create("protected.png");
+    auto protect = ui::ImageView::create("protected.png", TextureResType::PLIST);
     if(!protect)
         return false;
     m_pProtectedIcon->addChild(bound);
@@ -93,10 +93,10 @@ bool BufferContainer::init()
     m_pTimeIcon = Node::create();
     if(!m_pTimeIcon)
         return false;
-    bound = ui::ImageView::create("bound.png");
+    bound = ui::ImageView::create("bound.png", TextureResType::PLIST);
     if(!bound)
         return false;
-    auto time = ui::ImageView::create("time.png");
+    auto time = ui::ImageView::create("time.png", TextureResType::PLIST);
     if(!time)
         return false;
     m_pTimeIcon->addChild(bound);

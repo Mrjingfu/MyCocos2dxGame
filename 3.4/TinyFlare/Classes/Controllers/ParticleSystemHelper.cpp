@@ -351,8 +351,8 @@ ParticleSystemQuad* ParticleSystemHelper::spawnActorWidget(ActorWidgetType actor
                 widget->setSpeed(0);
                 widget->setSpeedVar(0);
                 widget->setScale(0.5f);
-                Texture2D* texture = Director::getInstance()->getTextureCache()->addImage("triangle.png");
-                widget->setTexture(texture);
+                SpriteFrame* spriteFrame = SpriteFrameCache::getInstance()->getSpriteFrameByName("triangle.png");
+                widget->setTextureWithRect(spriteFrame->getTexture(), spriteFrame->getRect());
                 widget->setAutoRemoveOnFinish(true);
                 actor->addChild(widget);
                 actor->setCameraMask((unsigned short)CameraFlag::USER1);
@@ -372,8 +372,8 @@ ParticleSystemQuad* ParticleSystemHelper::spawnActorWidget(ActorWidgetType actor
                 widget->setSpeed(0);
                 widget->setSpeedVar(0);
                 widget->setScale(0.5f);
-                Texture2D* texture = Director::getInstance()->getTextureCache()->addImage("diamond.png");
-                widget->setTexture(texture);
+                SpriteFrame* spriteFrame = SpriteFrameCache::getInstance()->getSpriteFrameByName("diamond.png");
+                widget->setTextureWithRect(spriteFrame->getTexture(), spriteFrame->getRect());
                 widget->setAutoRemoveOnFinish(true);
                 actor->addChild(widget);
                 actor->setCameraMask((unsigned short)CameraFlag::USER1);
@@ -393,8 +393,8 @@ ParticleSystemQuad* ParticleSystemHelper::spawnActorWidget(ActorWidgetType actor
                 widget->setSpeed(0);
                 widget->setSpeedVar(0);
                 widget->setScale(0.5f);
-                Texture2D* texture = Director::getInstance()->getTextureCache()->addImage("star.png");
-                widget->setTexture(texture);
+                SpriteFrame* spriteFrame = SpriteFrameCache::getInstance()->getSpriteFrameByName("star.png");
+                widget->setTextureWithRect(spriteFrame->getTexture(), spriteFrame->getRect());
                 widget->setAutoRemoveOnFinish(true);
                 actor->addChild(widget);
                 actor->setCameraMask((unsigned short)CameraFlag::USER1);
@@ -411,8 +411,8 @@ ParticleSystemQuad* ParticleSystemHelper::spawnActorWidget(ActorWidgetType actor
                 widget->setPositionType(ParticleSystem::PositionType::RELATIVE);
                 widget->setPosition(pos);
                 widget->setScale(0.6f);
-                Texture2D* texture = Director::getInstance()->getTextureCache()->addImage("hexagon.png");
-                widget->setTexture(texture);
+                SpriteFrame* spriteFrame = SpriteFrameCache::getInstance()->getSpriteFrameByName("hexagon.png");
+                widget->setTextureWithRect(spriteFrame->getTexture(), spriteFrame->getRect());
                 widget->setAutoRemoveOnFinish(true);
                 actor->addChild(widget);
                 actor->setCameraMask((unsigned short)CameraFlag::USER1);

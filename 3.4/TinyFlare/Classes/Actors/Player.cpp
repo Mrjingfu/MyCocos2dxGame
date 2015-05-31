@@ -69,10 +69,10 @@ void Player::updateBuffer(float delta)
     if(m_nBufferType & BufferType::BT_PROTECTED)
     {
         ////lwwhb add for debug
-        if(m_fProtectedTime > 0.0f)
-            m_fProtectedTime = m_fProtectedTime - delta/_scheduler->getTimeScale();
-        else
-            removeBuffer(BufferType::BT_PROTECTED);
+//        if(m_fProtectedTime > 0.0f)
+//            m_fProtectedTime = m_fProtectedTime - delta/_scheduler->getTimeScale();
+//        else
+//            removeBuffer(BufferType::BT_PROTECTED);
         ///
         if(m_pProtectedNode)
         {
@@ -143,7 +143,7 @@ void Player::loadMaskModel(const std::string& texName)
         removeChild(m_pMaskModel);
         m_pMaskModel = nullptr;
     }
-    m_pMaskModel = Sprite::create(texName);
+    m_pMaskModel = Sprite::createWithSpriteFrameName(texName);
     if(m_pMaskModel == nullptr)
         CCLOGERROR("Load mask model %s failed!" , texName.c_str());
     m_pMaskModel->setScale(0.5f);
@@ -208,13 +208,13 @@ void Player::beginShadow()
     m_pShadowNode = Node::create();
     if(m_pShadowNode && m_pModel && m_pMaskModel)
     {
-        auto shadowModel = Sprite::createWithTexture(((Sprite*)m_pModel)->getTexture());
+        auto shadowModel = Sprite::createWithSpriteFrame(((Sprite*)m_pModel)->getSpriteFrame());
         if(shadowModel)
         {
             shadowModel->setBlendFunc(BlendFunc::ADDITIVE);
             m_pShadowNode->addChild(shadowModel);
         }
-        auto shadowMaskModel = Sprite::createWithTexture(m_pMaskModel->getTexture());
+        auto shadowMaskModel = Sprite::createWithSpriteFrame(m_pMaskModel->getSpriteFrame());
         if(shadowMaskModel)
         {
             shadowMaskModel->setBlendFunc(BlendFunc::ADDITIVE);
@@ -277,7 +277,7 @@ void Player::endAccel()
 void Player::beginMulti()
 {
     m_fMultiTime = 15.0f*(powf(1.1f, EncrytionUtility::getIntegerForKey("ItemEffectLevel", 1)));
-    m_pMultiNode = Sprite::create("playermask2.png");
+    m_pMultiNode = Sprite::createWithSpriteFrameName("playermask2.png");
     if(m_pMultiNode == nullptr)
         CCLOGERROR("Load multi model playermask2.png failed!");
     m_pMultiNode->setCascadeOpacityEnabled(true);
@@ -321,7 +321,7 @@ void Player::removeMulti()
 void Player::beginProtected()
 {
     m_fProtectedTime = 10.0f*(powf(1.1f, EncrytionUtility::getIntegerForKey("ItemEffectLevel", 1)));
-    m_pProtectedNode = Sprite::create("protected.png");
+    m_pProtectedNode = Sprite::createWithSpriteFrameName("protected.png");
     if(m_pProtectedNode == nullptr)
         CCLOGERROR("Load multi model protected.png failed!");
     m_pProtectedNode->setCascadeOpacityEnabled(true);

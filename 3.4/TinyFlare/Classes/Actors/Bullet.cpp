@@ -23,7 +23,7 @@ void Bullet::update(float delta)
 }
 void Bullet::loadTexture(const std::string& textureName)
 {
-    m_pModel = Sprite::create(textureName);
+    m_pModel = Sprite::createWithSpriteFrameName(textureName);
     if(!m_pModel)
         CCLOGERROR("Load bullet texture failed!");
     addChild(m_pModel);

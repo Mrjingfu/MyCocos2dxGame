@@ -58,7 +58,7 @@ bool DeathUI::init()
     auto size = Director::getInstance()->getVisibleSize();
     float scale = size.height/640.0f;
     
-    m_pMenuBg = ui::ImageView::create("menubg.png");
+    m_pMenuBg = ui::ImageView::create("menubg.png", TextureResType::PLIST);
     if(!m_pMenuBg)
         return false;
     m_pMenuBg->setScale9Enabled(true);
@@ -86,7 +86,7 @@ bool DeathUI::init()
     Sequence* sequence = Sequence::create(delay, moveTo, callFunc, NULL);
     m_pGameTitle->runAction(sequence);
     
-    m_pPlayGameBtn = ui::Button::create("menubg.png");
+    m_pPlayGameBtn = ui::Button::create("menubg.png", "", "", TextureResType::PLIST);
     if(!m_pPlayGameBtn)
         return false;
     m_pPlayGameBtn->addTouchEventListener(CC_CALLBACK_2(DeathUI::pressContinueGameBtn, this));
@@ -116,7 +116,7 @@ bool DeathUI::init()
     
     if(!EncrytionUtility::getBoolForKey("RemoveAds",false))
     {
-        m_pRemoveADSBtn = ui::Button::create("removeads.png");
+        m_pRemoveADSBtn = ui::Button::create("removeads.png", "", "", TextureResType::PLIST);
         if(!m_pRemoveADSBtn)
             return false;
         m_pRemoveADSBtn->addTouchEventListener(CC_CALLBACK_2(DeathUI::pressRemoveADSBtn, this));
@@ -141,7 +141,7 @@ bool DeathUI::init()
 //    m_pShareBtn->setScale(0.4f*scale);
 //    addChild(m_pShareBtn);
     
-    m_pBackBtn = ui::Button::create("exit.png");
+    m_pBackBtn = ui::Button::create("exit.png", "", "", TextureResType::PLIST);
     if(!m_pBackBtn)
         return false;
     m_pBackBtn->addTouchEventListener(CC_CALLBACK_2(DeathUI::pressBackBtn, this));

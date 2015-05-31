@@ -47,7 +47,7 @@ void Item::update(float delta)
 }
 void Item::loadTexture(const std::string& textureName)
 {
-    m_pModel = Sprite::create(textureName);
+    m_pModel = Sprite::createWithSpriteFrameName(textureName);
     if(!m_pModel)
         CCLOGERROR("Load Item texture %s failed!", textureName.c_str());
     m_pModel->setScale(0.2f);
@@ -60,7 +60,7 @@ void Item::loadTexture(const std::string& textureName)
     RepeatForever* repeatForever = RepeatForever::create(sequence);
     m_pModel->runAction(repeatForever);
     
-    m_pBoundModel = Sprite::create("bound.png");
+    m_pBoundModel = Sprite::createWithSpriteFrameName("bound.png");
     if(m_pBoundModel == nullptr)
         CCLOGERROR("Load bound model bound.png failed!");
     m_pBoundModel->setScale(0.2f);

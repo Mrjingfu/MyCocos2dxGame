@@ -1829,11 +1829,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/AppDelegate.cpp"
-            timestampString = "454651919.416871"
+            timestampString = "454779577.340898"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "90"
-            endingLineNumber = "90"
+            startingLineNumber = "93"
+            endingLineNumber = "93"
             landmarkName = "AppDelegate::applicationDidFinishLaunching()"
             landmarkType = "5">
          </BreakpointContent>
@@ -1845,11 +1845,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/AppDelegate.cpp"
-            timestampString = "454651919.416871"
+            timestampString = "454779577.340898"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "89"
-            endingLineNumber = "89"
+            startingLineNumber = "92"
+            endingLineNumber = "92"
             landmarkName = "AppDelegate::applicationDidFinishLaunching()"
             landmarkType = "5">
          </BreakpointContent>
@@ -2021,11 +2021,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Actors/GameActor.cpp"
-            timestampString = "450621037.614566"
+            timestampString = "454782081.438058"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "103"
-            endingLineNumber = "103"
+            startingLineNumber = "89"
+            endingLineNumber = "89"
             landmarkName = "GameActor::setActorState(ActorState state)"
             landmarkType = "5">
          </BreakpointContent>
@@ -3887,22 +3887,6 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/UI/HelpInfoUI.cpp"
-            timestampString = "453389086.748284"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "54"
-            endingLineNumber = "54"
-            landmarkName = "HelpInfoUI::init()"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../Classes/UI/HelpInfoUI.cpp"
             timestampString = "454743700.919651"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
@@ -5125,6 +5109,22 @@
             startingLineNumber = "59"
             endingLineNumber = "59"
             landmarkName = "EncrytionUtility::getIntegerForKey(const char* pKey, int defaultValue)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../cocos2d/cocos/ui/UIImageView.cpp"
+            timestampString = "454778807.552362"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
+            landmarkName = "ImageView::create(const std::string &amp;imageFileName, TextureResType texType)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

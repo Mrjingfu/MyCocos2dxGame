@@ -53,7 +53,7 @@ bool MainUI::init()
     
     auto size = Director::getInstance()->getVisibleSize();
     float scale = size.height/480.0f;
-    m_pStardust = ui::ImageView::create("diamonditem.png");
+    m_pStardust = ui::ImageView::create("diamonditem.png", TextureResType::PLIST);
     if(!m_pStardust)
         return false;
     m_pStardust->setPosition(Vec2(30*scale, size.height - 30*scale));
@@ -85,7 +85,7 @@ bool MainUI::init()
     m_pBufferContainer->setPosition(Vec2(size.width*0.2f, m_pStardust->getPosition().y));
     m_pBufferContainer->setScale(0.2f*scale);
     
-    m_pPauseGameBtn = ui::Button::create("pause.png");
+    m_pPauseGameBtn = ui::Button::create("pause.png", "", "", TextureResType::PLIST);
     if(!m_pPauseGameBtn)
         return false;
     m_pPauseGameBtn->addTouchEventListener(CC_CALLBACK_2(MainUI::pressPauseGameBtn, this));
@@ -93,7 +93,7 @@ bool MainUI::init()
     m_pPauseGameBtn->setScale(0.3f*scale);
     addChild(m_pPauseGameBtn);
     
-    m_pLevelProgressBg = ui::ImageView::create("menubg.png");
+    m_pLevelProgressBg = ui::ImageView::create("menubg.png", TextureResType::PLIST);
     if(!m_pLevelProgressBg)
         return false;
     m_pLevelProgressBg->setScale9Enabled(true);
@@ -103,7 +103,7 @@ bool MainUI::init()
     m_pLevelProgressBg->setOpacity(128);
     addChild(m_pLevelProgressBg);
     
-    m_pLevelProgress = ui::LoadingBar::create("menubg.png");
+    m_pLevelProgress = ui::LoadingBar::create("menubg.png", TextureResType::PLIST);
     if(!m_pLevelProgress)
         return false;
     m_pLevelProgress->setScale9Enabled(true);
@@ -112,7 +112,7 @@ bool MainUI::init()
     m_pLevelProgress->setPosition(Vec2(size.width*0.5f, 50.0f*scale));
     addChild(m_pLevelProgress);
     
-    m_pLevelProgressBar = ui::ImageView::create("playermain.png");
+    m_pLevelProgressBar = ui::ImageView::create("playermain.png", TextureResType::PLIST);
     if(!m_pLevelProgressBar)
         return false;
     m_pLevelProgressBar->setPosition(Vec2(m_pLevelProgressBg->getPosition().x - size.width*0.2f, 50.0f*scale));
@@ -120,7 +120,7 @@ bool MainUI::init()
     m_pLevelProgressBar->setScale(0.25f*scale);
     addChild(m_pLevelProgressBar);
     
-    m_pLevelProgressComplete = ui::ImageView::create("diamonditem.png");
+    m_pLevelProgressComplete = ui::ImageView::create("diamonditem.png", TextureResType::PLIST);
     if(!m_pLevelProgressComplete)
         return false;
     m_pLevelProgressComplete->setPosition(Vec2(m_pLevelProgressBg->getPosition().x + size.width*0.2f + 5.0f*scale, 50.0f*scale));

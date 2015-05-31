@@ -85,7 +85,7 @@ bool PauseUI::init()
 {
     auto size = Director::getInstance()->getVisibleSize();
     float scale = size.height/640.0f;
-    m_pPanelBg = ui::ImageView::create("menubg.png");
+    m_pPanelBg = ui::ImageView::create("menubg.png", TextureResType::PLIST);
     if(!m_pPanelBg)
         return false;
     m_pPanelBg->setScale9Enabled(true);
@@ -106,7 +106,7 @@ bool PauseUI::init()
     
     if(!EncrytionUtility::getBoolForKey("RemoveAds",false))
     {
-        m_pRemoveADSBtn = ui::Button::create("removeads.png");
+        m_pRemoveADSBtn = ui::Button::create("removeads.png", "", "", TextureResType::PLIST);
         if(!m_pRemoveADSBtn)
             return false;
         m_pRemoveADSBtn->addTouchEventListener(CC_CALLBACK_2(PauseUI::pressRemoveADSBtn, this));
@@ -115,7 +115,7 @@ bool PauseUI::init()
         m_pPanelBg->addChild(m_pRemoveADSBtn);
     }
     
-    m_pBackBtn = ui::Button::create("exit.png");
+    m_pBackBtn = ui::Button::create("exit.png", "", "", TextureResType::PLIST);
     if(!m_pBackBtn)
         return false;
     m_pBackBtn->addTouchEventListener(CC_CALLBACK_2(PauseUI::pressBackBtn, this));
@@ -123,7 +123,7 @@ bool PauseUI::init()
     m_pBackBtn->setScale(0.4f*scale);
     m_pPanelBg->addChild(m_pBackBtn);
     
-    m_pStardust = ui::ImageView::create("diamonditem.png");
+    m_pStardust = ui::ImageView::create("diamonditem.png", TextureResType::PLIST);
     if(!m_pStardust)
         return false;
     m_pStardust->setPosition(Vec2(size.width*0.7f, size.height*0.5f));
@@ -146,7 +146,7 @@ bool PauseUI::init()
     m_pStardustNum->setPosition(m_pStardustX->getPosition() + Vec2(m_pStardustX->getContentSize().width*0.3f, 0));
     m_pPanelBg->addChild(m_pStardustNum);
     
-    m_pPurchaseBtn = ui::Button::create("purchase.png");
+    m_pPurchaseBtn = ui::Button::create("purchase.png", "", "", TextureResType::PLIST);
     if(!m_pPurchaseBtn)
         return false;
     m_pPurchaseBtn->addTouchEventListener(CC_CALLBACK_2(PauseUI::pressPurchaseBtn, this));
@@ -163,7 +163,7 @@ bool PauseUI::init()
     m_pStardustDropLevelLabel->setColor(Color3B(208,255,208));
     m_pPanelBg->addChild(m_pStardustDropLevelLabel);
     
-    m_pStardustDropLevel1 = ui::ImageView::create("level_empty.png");
+    m_pStardustDropLevel1 = ui::ImageView::create("level_empty.png", TextureResType::PLIST);
     if(!m_pStardustDropLevel1)
         return false;
     m_pStardustDropLevel1->setAnchorPoint(Vec2(0, 0.5f));
@@ -174,7 +174,7 @@ bool PauseUI::init()
     m_pStardustDropLevel1->setScale(0.4f);
     m_pPanelBg->addChild(m_pStardustDropLevel1);
     
-    m_pStardustDropLevel2 = ui::ImageView::create("level_empty.png");
+    m_pStardustDropLevel2 = ui::ImageView::create("level_empty.png", TextureResType::PLIST);
     if(!m_pStardustDropLevel2)
         return false;
     m_pStardustDropLevel2->setAnchorPoint(Vec2(0, 0.5f));
@@ -185,7 +185,7 @@ bool PauseUI::init()
     m_pStardustDropLevel2->setScale(0.4f);
     m_pPanelBg->addChild(m_pStardustDropLevel2);
     
-    m_pStardustDropLevel3 = ui::ImageView::create("level_empty.png");
+    m_pStardustDropLevel3 = ui::ImageView::create("level_empty.png", TextureResType::PLIST);
     if(!m_pStardustDropLevel3)
         return false;
     m_pStardustDropLevel3->setAnchorPoint(Vec2(0, 0.5f));
@@ -196,7 +196,7 @@ bool PauseUI::init()
     m_pStardustDropLevel3->setScale(0.4f);
     m_pPanelBg->addChild(m_pStardustDropLevel3);
     
-    m_pStardustDropLevel4 = ui::ImageView::create("level_empty.png");
+    m_pStardustDropLevel4 = ui::ImageView::create("level_empty.png", TextureResType::PLIST);
     if(!m_pStardustDropLevel4)
         return false;
     m_pStardustDropLevel4->setAnchorPoint(Vec2(0, 0.5f));
@@ -207,7 +207,7 @@ bool PauseUI::init()
     m_pStardustDropLevel4->setScale(0.4f);
     m_pPanelBg->addChild(m_pStardustDropLevel4);
     
-    m_pStardustDropLevel5 = ui::ImageView::create("level_empty.png");
+    m_pStardustDropLevel5 = ui::ImageView::create("level_empty.png", TextureResType::PLIST);
     if(!m_pStardustDropLevel5)
         return false;
     m_pStardustDropLevel5->setAnchorPoint(Vec2(0, 0.5f));
@@ -218,7 +218,7 @@ bool PauseUI::init()
     m_pStardustDropLevel5->setScale(0.4f);
     m_pPanelBg->addChild(m_pStardustDropLevel5);
     
-    m_pStardustDropLevelAdd = ui::Button::create("plus.png");
+    m_pStardustDropLevelAdd = ui::Button::create("plus.png", "", "", TextureResType::PLIST);
     if(!m_pStardustDropLevelAdd)
         return false;
     m_pStardustDropLevelAdd->setAnchorPoint(Vec2(0, 0.5f));
@@ -237,7 +237,7 @@ bool PauseUI::init()
     m_pItemDropLevelLabel->setColor(Color3B(208,255,208));
     m_pPanelBg->addChild(m_pItemDropLevelLabel);
     
-    m_pItemDropLevel1 = ui::ImageView::create("level_empty.png");
+    m_pItemDropLevel1 = ui::ImageView::create("level_empty.png", TextureResType::PLIST);
     if(!m_pItemDropLevel1)
         return false;
     m_pItemDropLevel1->setAnchorPoint(Vec2(0, 0.5f));
@@ -249,7 +249,7 @@ bool PauseUI::init()
     m_pPanelBg->addChild(m_pItemDropLevel1);
     
 
-    m_pItemDropLevel2 = ui::ImageView::create("level_empty.png");
+    m_pItemDropLevel2 = ui::ImageView::create("level_empty.png", TextureResType::PLIST);
     if(!m_pItemDropLevel2)
         return false;
     m_pItemDropLevel2->setAnchorPoint(Vec2(0, 0.5f));
@@ -260,7 +260,7 @@ bool PauseUI::init()
     m_pItemDropLevel2->setScale(0.4f);
     m_pPanelBg->addChild(m_pItemDropLevel2);
     
-    m_pItemDropLevel3 = ui::ImageView::create("level_empty.png");
+    m_pItemDropLevel3 = ui::ImageView::create("level_empty.png", TextureResType::PLIST);
     if(!m_pItemDropLevel3)
         return false;
     m_pItemDropLevel3->setAnchorPoint(Vec2(0, 0.5f));
@@ -271,7 +271,7 @@ bool PauseUI::init()
     m_pItemDropLevel3->setScale(0.4f);
     m_pPanelBg->addChild(m_pItemDropLevel3);
 
-    m_pItemDropLevel4 = ui::ImageView::create("level_empty.png");
+    m_pItemDropLevel4 = ui::ImageView::create("level_empty.png", TextureResType::PLIST);
     if(!m_pItemDropLevel4)
         return false;
     m_pItemDropLevel4->setAnchorPoint(Vec2(0, 0.5f));
@@ -282,7 +282,7 @@ bool PauseUI::init()
     m_pItemDropLevel4->setScale(0.4f);
     m_pPanelBg->addChild(m_pItemDropLevel4);
     
-    m_pItemDropLevel5 = ui::ImageView::create("level_empty.png");
+    m_pItemDropLevel5 = ui::ImageView::create("level_empty.png", TextureResType::PLIST);
     if(!m_pItemDropLevel5)
         return false;
     m_pItemDropLevel5->setAnchorPoint(Vec2(0, 0.5f));
@@ -293,7 +293,7 @@ bool PauseUI::init()
     m_pItemDropLevel5->setScale(0.4f);
     m_pPanelBg->addChild(m_pItemDropLevel5);
 
-    m_pItemDropLevelAdd = ui::Button::create("plus.png");
+    m_pItemDropLevelAdd = ui::Button::create("plus.png", "", "", TextureResType::PLIST);
     if(!m_pItemDropLevelAdd)
         return false;
     m_pItemDropLevelAdd->setAnchorPoint(Vec2(0, 0.5f));
@@ -311,7 +311,7 @@ bool PauseUI::init()
     m_pItemEffectLevelLabel->setColor(Color3B(208,255,208));
     m_pPanelBg->addChild(m_pItemEffectLevelLabel);
 
-    m_pItemEffectLevel1 = ui::ImageView::create("level_empty.png");
+    m_pItemEffectLevel1 = ui::ImageView::create("level_empty.png", TextureResType::PLIST);
     if(!m_pItemEffectLevel1)
         return false;
     m_pItemEffectLevel1->setAnchorPoint(Vec2(0, 0.5f));
@@ -322,7 +322,7 @@ bool PauseUI::init()
     m_pItemEffectLevel1->setScale(0.4f);
     m_pPanelBg->addChild(m_pItemEffectLevel1);
     
-    m_pItemEffectLevel2 = ui::ImageView::create("level_empty.png");
+    m_pItemEffectLevel2 = ui::ImageView::create("level_empty.png", TextureResType::PLIST);
     if(!m_pItemEffectLevel2)
         return false;
     m_pItemEffectLevel2->setAnchorPoint(Vec2(0, 0.5f));
@@ -333,7 +333,7 @@ bool PauseUI::init()
     m_pItemEffectLevel2->setScale(0.4f);
     m_pPanelBg->addChild(m_pItemEffectLevel2);
     
-    m_pItemEffectLevel3 = ui::ImageView::create("level_empty.png");
+    m_pItemEffectLevel3 = ui::ImageView::create("level_empty.png", TextureResType::PLIST);
     if(!m_pItemEffectLevel3)
         return false;
     m_pItemEffectLevel3->setAnchorPoint(Vec2(0, 0.5f));
@@ -344,7 +344,7 @@ bool PauseUI::init()
     m_pItemEffectLevel3->setScale(0.4f);
     m_pPanelBg->addChild(m_pItemEffectLevel3);
     
-    m_pItemEffectLevel4 = ui::ImageView::create("level_empty.png");
+    m_pItemEffectLevel4 = ui::ImageView::create("level_empty.png", TextureResType::PLIST);
     if(!m_pItemEffectLevel4)
         return false;
     m_pItemEffectLevel4->setAnchorPoint(Vec2(0, 0.5f));
@@ -355,7 +355,7 @@ bool PauseUI::init()
     m_pItemEffectLevel4->setScale(0.4f);
     m_pPanelBg->addChild(m_pItemEffectLevel4);
     
-    m_pItemEffectLevel5 = ui::ImageView::create("level_empty.png");
+    m_pItemEffectLevel5 = ui::ImageView::create("level_empty.png", TextureResType::PLIST);
     if(!m_pItemEffectLevel5)
         return false;
     m_pItemEffectLevel5->setAnchorPoint(Vec2(0, 0.5f));
@@ -366,7 +366,7 @@ bool PauseUI::init()
     m_pItemEffectLevel5->setScale(0.4f);
     m_pPanelBg->addChild(m_pItemEffectLevel5);
     
-    m_pItemEffectLevelAdd = ui::Button::create("plus.png");
+    m_pItemEffectLevelAdd = ui::Button::create("plus.png", "", "", TextureResType::PLIST);
     if(!m_pItemEffectLevelAdd)
         return false;
     m_pItemEffectLevelAdd->setAnchorPoint(Vec2(0, 0.5f));
@@ -643,15 +643,15 @@ void PauseUI::updateUI()
         if (m_pStardustDropLevelAdd)
             m_pStardustDropLevelAdd->setVisible(false);
         if (m_pStardustDropLevel1)
-            m_pStardustDropLevel1->loadTexture("level_full.png");
+            m_pStardustDropLevel1->loadTexture("level_full.png", TextureResType::PLIST);
         if (m_pStardustDropLevel2)
-            m_pStardustDropLevel2->loadTexture("level_full.png");
+            m_pStardustDropLevel2->loadTexture("level_full.png", TextureResType::PLIST);
         if (m_pStardustDropLevel3)
-            m_pStardustDropLevel3->loadTexture("level_full.png");
+            m_pStardustDropLevel3->loadTexture("level_full.png", TextureResType::PLIST);
         if (m_pStardustDropLevel4)
-            m_pStardustDropLevel4->loadTexture("level_full.png");
+            m_pStardustDropLevel4->loadTexture("level_full.png", TextureResType::PLIST);
         if (m_pStardustDropLevel5)
-            m_pStardustDropLevel5->loadTexture("level_full.png");
+            m_pStardustDropLevel5->loadTexture("level_full.png", TextureResType::PLIST);
     }
     else if(stardustDropLevel == 4)
     {
@@ -674,13 +674,13 @@ void PauseUI::updateUI()
             }
         }
         if (m_pStardustDropLevel1)
-            m_pStardustDropLevel1->loadTexture("level_full.png");
+            m_pStardustDropLevel1->loadTexture("level_full.png", TextureResType::PLIST);
         if (m_pStardustDropLevel2)
-            m_pStardustDropLevel2->loadTexture("level_full.png");
+            m_pStardustDropLevel2->loadTexture("level_full.png", TextureResType::PLIST);
         if (m_pStardustDropLevel3)
-            m_pStardustDropLevel3->loadTexture("level_full.png");
+            m_pStardustDropLevel3->loadTexture("level_full.png", TextureResType::PLIST);
         if (m_pStardustDropLevel4)
-            m_pStardustDropLevel4->loadTexture("level_full.png");
+            m_pStardustDropLevel4->loadTexture("level_full.png", TextureResType::PLIST);
     }
     else if(stardustDropLevel == 3)
     {
@@ -703,11 +703,11 @@ void PauseUI::updateUI()
             }
         }
         if (m_pStardustDropLevel1)
-            m_pStardustDropLevel1->loadTexture("level_full.png");
+            m_pStardustDropLevel1->loadTexture("level_full.png", TextureResType::PLIST);
         if (m_pStardustDropLevel2)
-            m_pStardustDropLevel2->loadTexture("level_full.png");
+            m_pStardustDropLevel2->loadTexture("level_full.png", TextureResType::PLIST);
         if (m_pStardustDropLevel3)
-            m_pStardustDropLevel3->loadTexture("level_full.png");
+            m_pStardustDropLevel3->loadTexture("level_full.png", TextureResType::PLIST);
     }
     else if(stardustDropLevel == 2)
     {
@@ -730,9 +730,9 @@ void PauseUI::updateUI()
             }
         }
         if (m_pStardustDropLevel1)
-            m_pStardustDropLevel1->loadTexture("level_full.png");
+            m_pStardustDropLevel1->loadTexture("level_full.png", TextureResType::PLIST);
         if (m_pStardustDropLevel2)
-            m_pStardustDropLevel2->loadTexture("level_full.png");
+            m_pStardustDropLevel2->loadTexture("level_full.png", TextureResType::PLIST);
     }
     else if(stardustDropLevel == 1)
     {
@@ -755,7 +755,7 @@ void PauseUI::updateUI()
             }
         }
         if (m_pStardustDropLevel1)
-            m_pStardustDropLevel1->loadTexture("level_full.png");
+            m_pStardustDropLevel1->loadTexture("level_full.png", TextureResType::PLIST);
     }
     
     
@@ -769,15 +769,15 @@ void PauseUI::updateUI()
         if (m_pItemDropLevelAdd)
             m_pItemDropLevelAdd->setVisible(false);
         if (m_pItemDropLevel1)
-            m_pItemDropLevel1->loadTexture("level_full.png");
+            m_pItemDropLevel1->loadTexture("level_full.png", TextureResType::PLIST);
         if (m_pItemDropLevel2)
-            m_pItemDropLevel2->loadTexture("level_full.png");
+            m_pItemDropLevel2->loadTexture("level_full.png", TextureResType::PLIST);
         if (m_pItemDropLevel3)
-            m_pItemDropLevel3->loadTexture("level_full.png");
+            m_pItemDropLevel3->loadTexture("level_full.png", TextureResType::PLIST);
         if (m_pItemDropLevel4)
-            m_pItemDropLevel4->loadTexture("level_full.png");
+            m_pItemDropLevel4->loadTexture("level_full.png", TextureResType::PLIST);
         if (m_pItemDropLevel5)
-            m_pItemDropLevel5->loadTexture("level_full.png");
+            m_pItemDropLevel5->loadTexture("level_full.png", TextureResType::PLIST);
     }
     else if(itemDropLevel == 4)
     {
@@ -800,13 +800,13 @@ void PauseUI::updateUI()
             }
         }
         if (m_pItemDropLevel1)
-            m_pItemDropLevel1->loadTexture("level_full.png");
+            m_pItemDropLevel1->loadTexture("level_full.png", TextureResType::PLIST);
         if (m_pItemDropLevel2)
-            m_pItemDropLevel2->loadTexture("level_full.png");
+            m_pItemDropLevel2->loadTexture("level_full.png", TextureResType::PLIST);
         if (m_pItemDropLevel3)
-            m_pItemDropLevel3->loadTexture("level_full.png");
+            m_pItemDropLevel3->loadTexture("level_full.png", TextureResType::PLIST);
         if (m_pItemDropLevel4)
-            m_pItemDropLevel4->loadTexture("level_full.png");
+            m_pItemDropLevel4->loadTexture("level_full.png", TextureResType::PLIST);
     }
     else if(itemDropLevel == 3)
     {
@@ -829,11 +829,11 @@ void PauseUI::updateUI()
             }
         }
         if (m_pItemDropLevel1)
-            m_pItemDropLevel1->loadTexture("level_full.png");
+            m_pItemDropLevel1->loadTexture("level_full.png", TextureResType::PLIST);
         if (m_pItemDropLevel2)
-            m_pItemDropLevel2->loadTexture("level_full.png");
+            m_pItemDropLevel2->loadTexture("level_full.png", TextureResType::PLIST);
         if (m_pItemDropLevel3)
-            m_pItemDropLevel3->loadTexture("level_full.png");
+            m_pItemDropLevel3->loadTexture("level_full.png", TextureResType::PLIST);
     }
     else if(itemDropLevel == 2)
     {
@@ -856,9 +856,9 @@ void PauseUI::updateUI()
             }
         }
         if (m_pItemDropLevel1)
-            m_pItemDropLevel1->loadTexture("level_full.png");
+            m_pItemDropLevel1->loadTexture("level_full.png", TextureResType::PLIST);
         if (m_pItemDropLevel2)
-            m_pItemDropLevel2->loadTexture("level_full.png");
+            m_pItemDropLevel2->loadTexture("level_full.png", TextureResType::PLIST);
     }
     else if(itemDropLevel == 1)
     {
@@ -881,7 +881,7 @@ void PauseUI::updateUI()
             }
         }
         if (m_pItemDropLevel1)
-            m_pItemDropLevel1->loadTexture("level_full.png");
+            m_pItemDropLevel1->loadTexture("level_full.png", TextureResType::PLIST);
     }
 
     if(itemEffectLevel >= 5)
@@ -894,15 +894,15 @@ void PauseUI::updateUI()
         if (m_pItemEffectLevelAdd)
             m_pItemEffectLevelAdd->setVisible(false);
         if (m_pItemEffectLevel1)
-            m_pItemEffectLevel1->loadTexture("level_full.png");
+            m_pItemEffectLevel1->loadTexture("level_full.png", TextureResType::PLIST);
         if (m_pItemEffectLevel2)
-            m_pItemEffectLevel2->loadTexture("level_full.png");
+            m_pItemEffectLevel2->loadTexture("level_full.png", TextureResType::PLIST);
         if (m_pItemEffectLevel3)
-            m_pItemEffectLevel3->loadTexture("level_full.png");
+            m_pItemEffectLevel3->loadTexture("level_full.png", TextureResType::PLIST);
         if (m_pItemEffectLevel4)
-            m_pItemEffectLevel4->loadTexture("level_full.png");
+            m_pItemEffectLevel4->loadTexture("level_full.png", TextureResType::PLIST);
         if (m_pItemEffectLevel5)
-            m_pItemEffectLevel5->loadTexture("level_full.png");
+            m_pItemEffectLevel5->loadTexture("level_full.png", TextureResType::PLIST);
     }
     else if(itemEffectLevel == 4)
     {
@@ -925,13 +925,13 @@ void PauseUI::updateUI()
             }
         }
         if (m_pItemEffectLevel1)
-            m_pItemEffectLevel1->loadTexture("level_full.png");
+            m_pItemEffectLevel1->loadTexture("level_full.png", TextureResType::PLIST);
         if (m_pItemEffectLevel2)
-            m_pItemEffectLevel2->loadTexture("level_full.png");
+            m_pItemEffectLevel2->loadTexture("level_full.png", TextureResType::PLIST);
         if (m_pItemEffectLevel3)
-            m_pItemEffectLevel3->loadTexture("level_full.png");
+            m_pItemEffectLevel3->loadTexture("level_full.png", TextureResType::PLIST);
         if (m_pItemEffectLevel4)
-            m_pItemEffectLevel4->loadTexture("level_full.png");
+            m_pItemEffectLevel4->loadTexture("level_full.png", TextureResType::PLIST);
     }
     else if(itemEffectLevel == 3)
     {
@@ -954,11 +954,11 @@ void PauseUI::updateUI()
             }
         }
         if (m_pItemEffectLevel1)
-            m_pItemEffectLevel1->loadTexture("level_full.png");
+            m_pItemEffectLevel1->loadTexture("level_full.png", TextureResType::PLIST);
         if (m_pItemEffectLevel2)
-            m_pItemEffectLevel2->loadTexture("level_full.png");
+            m_pItemEffectLevel2->loadTexture("level_full.png", TextureResType::PLIST);
         if (m_pItemEffectLevel3)
-            m_pItemEffectLevel3->loadTexture("level_full.png");
+            m_pItemEffectLevel3->loadTexture("level_full.png", TextureResType::PLIST);
     }
     else if(itemEffectLevel == 2)
     {
@@ -981,9 +981,9 @@ void PauseUI::updateUI()
             }
         }
         if (m_pItemEffectLevel1)
-            m_pItemEffectLevel1->loadTexture("level_full.png");
+            m_pItemEffectLevel1->loadTexture("level_full.png", TextureResType::PLIST);
         if (m_pItemEffectLevel2)
-            m_pItemEffectLevel2->loadTexture("level_full.png");
+            m_pItemEffectLevel2->loadTexture("level_full.png", TextureResType::PLIST);
     }
     else if(itemEffectLevel == 1)
     {
@@ -1006,7 +1006,7 @@ void PauseUI::updateUI()
             }
         }
         if (m_pItemEffectLevel1)
-            m_pItemEffectLevel1->loadTexture("level_full.png");
+            m_pItemEffectLevel1->loadTexture("level_full.png", TextureResType::PLIST);
     }
 
 }

@@ -58,20 +58,20 @@ bool HelpInfoUI::init()
     m_pTableView->setDelegate(this);
     this->addChild(m_pTableView);
     
-    m_pPreviousBtn = ui::Button::create("left.png");
+    m_pPreviousBtn = ui::Button::create("left.png", "", "", TextureResType::PLIST);
     m_pPreviousBtn->addTouchEventListener(CC_CALLBACK_2(HelpInfoUI::pressPreviousBtn, this));
     m_pPreviousBtn->setPosition(Vec2(size.width*0.8f, size.height*0.1f));
     m_pPreviousBtn->setScale(0.5f*scale);
     m_pPreviousBtn->setScale(0);
     this->addChild(m_pPreviousBtn);
     
-    m_pNextBtn = ui::Button::create("right.png");
+    m_pNextBtn = ui::Button::create("right.png", "", "", TextureResType::PLIST);
     m_pNextBtn->addTouchEventListener(CC_CALLBACK_2(HelpInfoUI::pressNextBtn, this));
     m_pNextBtn->setPosition(Vec2(size.width*0.9f, size.height*0.1f));
     m_pNextBtn->setScale(0.5f*scale);
     this->addChild(m_pNextBtn);
     
-    m_pExitBtn = ui::Button::create("exit.png");
+    m_pExitBtn = ui::Button::create("exit.png", "", "", TextureResType::PLIST);
     m_pExitBtn->addTouchEventListener(CC_CALLBACK_2(HelpInfoUI::pressExitBtn, this));
     m_pExitBtn->setPosition(Vec2(size.width - 50.0f*scale, size.height - 50.0f*scale));
     m_pExitBtn->setScale(0.4f*scale);
@@ -103,12 +103,12 @@ cocos2d::extension::TableViewCell* HelpInfoUI::tableCellAtIndex(cocos2d::extensi
                     desc->setPosition(Vec2(size.width*0.5f, size.height*0.9f));
                     cell->addChild(desc);
                     
-                    cocos2d::Sprite* joystickLeftBg = Sprite::create("joystick_bg1.png");
+                    cocos2d::Sprite* joystickLeftBg = Sprite::createWithSpriteFrameName("joystick_bg1.png");
                     joystickLeftBg->setPosition(size.width*0.2f, size.height*0.65f);
                     joystickLeftBg->setScale(0.8f*scale);
                     cell->addChild(joystickLeftBg);
                     
-                    cocos2d::Sprite* joystickLeft = Sprite::create("joystick1.png");
+                    cocos2d::Sprite* joystickLeft = Sprite::createWithSpriteFrameName("joystick1.png");
                     joystickLeft->setPosition(size.width*0.2f, size.height*0.65f);
                     joystickLeft->setScale(0.8f*scale);
                     cell->addChild(joystickLeft);
@@ -120,10 +120,15 @@ cocos2d::extension::TableViewCell* HelpInfoUI::tableCellAtIndex(cocos2d::extensi
                     leftDesc->setColor(Color3B(208,255,208));
                     cell->addChild(leftDesc);
                     
-                    cocos2d::Sprite* joystickRightBg = Sprite::create("joystick_bg2.png");
+                    cocos2d::Sprite* joystickRightBg = Sprite::createWithSpriteFrameName("joystick_bg2.png");
                     joystickRightBg->setPosition(size.width*0.2f, size.height*0.35f);
                     joystickRightBg->setScale(0.8f*scale);
                     cell->addChild(joystickRightBg);
+                    
+                    cocos2d::Sprite* joystickRight = Sprite::createWithSpriteFrameName("joystick2.png");
+                    joystickRight->setPosition(size.width*0.2f, size.height*0.35f);
+                    joystickRight->setScale(0.8f*scale);
+                    cell->addChild(joystickRight);
                     
                     Label* rightDesc = Label::createWithTTF(UtilityHelper::getLocalString("JOYSTICK_RIGHT_DESC"), "FZXS12.TTF", size.height*0.04f);
                     rightDesc->setPosition(size.width*0.6f, size.height*0.35f);
@@ -131,11 +136,6 @@ cocos2d::extension::TableViewCell* HelpInfoUI::tableCellAtIndex(cocos2d::extensi
                     rightDesc->setDimensions(size.width*0.5f, size.height*0.2f);
                     rightDesc->setColor(Color3B(208,255,208));
                     cell->addChild(rightDesc);
-                    
-                    cocos2d::Sprite* joystickRight = Sprite::create("joystick1.png");
-                    joystickRight->setPosition(size.width*0.2f, size.height*0.35f);
-                    joystickRight->setScale(0.8f*scale);
-                    cell->addChild(joystickRight);
                 }
                 break;
             case 1:
@@ -146,8 +146,8 @@ cocos2d::extension::TableViewCell* HelpInfoUI::tableCellAtIndex(cocos2d::extensi
                     cell->addChild(desc);
                     
                     Node* accelIcon = Node::create();
-                    auto bound = ui::ImageView::create("bound.png");
-                    auto accel = ui::ImageView::create("accel.png");
+                    auto bound = ui::ImageView::create("bound.png", TextureResType::PLIST);
+                    auto accel = ui::ImageView::create("accel.png", TextureResType::PLIST);
                     accelIcon->addChild(bound);
                     accelIcon->addChild(accel);
                     accelIcon->setPosition(size.width*0.15f, size.height*0.76f);
@@ -162,8 +162,8 @@ cocos2d::extension::TableViewCell* HelpInfoUI::tableCellAtIndex(cocos2d::extensi
                     cell->addChild(accelDesc);
                     
                     Node* multiIcon = Node::create();
-                    bound = ui::ImageView::create("bound.png");
-                    auto multi = ui::ImageView::create("multi.png");
+                    bound = ui::ImageView::create("bound.png", TextureResType::PLIST);
+                    auto multi = ui::ImageView::create("multi.png", TextureResType::PLIST);
                     multiIcon->addChild(bound);
                     multiIcon->addChild(multi);
                     multiIcon->setPosition(size.width*0.15f, size.height*0.62f);
@@ -178,8 +178,8 @@ cocos2d::extension::TableViewCell* HelpInfoUI::tableCellAtIndex(cocos2d::extensi
                     cell->addChild(multiDesc);
                     
                     Node* protectedIcon = Node::create();
-                    bound = ui::ImageView::create("bound.png");
-                    auto pprotected = ui::ImageView::create("protected.png");
+                    bound = ui::ImageView::create("bound.png", TextureResType::PLIST);
+                    auto pprotected = ui::ImageView::create("protected.png", TextureResType::PLIST);
                     protectedIcon->addChild(bound);
                     protectedIcon->addChild(pprotected);
                     protectedIcon->setPosition(size.width*0.15f, size.height*0.48f);
@@ -194,8 +194,8 @@ cocos2d::extension::TableViewCell* HelpInfoUI::tableCellAtIndex(cocos2d::extensi
                     cell->addChild(protectedDesc);
                     
                     Node* timeIcon = Node::create();
-                    bound = ui::ImageView::create("bound.png");
-                    auto time = ui::ImageView::create("time.png");
+                    bound = ui::ImageView::create("bound.png", TextureResType::PLIST);
+                    auto time = ui::ImageView::create("time.png", TextureResType::PLIST);
                     timeIcon->addChild(bound);
                     timeIcon->addChild(time);
                     timeIcon->setPosition(size.width*0.15f, size.height*0.34f);
@@ -210,8 +210,8 @@ cocos2d::extension::TableViewCell* HelpInfoUI::tableCellAtIndex(cocos2d::extensi
                     cell->addChild(timeDesc);
                     
                     Node* boomIcon = Node::create();
-                    bound = ui::ImageView::create("bound.png");
-                    auto boom = ui::ImageView::create("boom.png");
+                    bound = ui::ImageView::create("bound.png", TextureResType::PLIST);
+                    auto boom = ui::ImageView::create("boom.png", TextureResType::PLIST);
                     boomIcon->addChild(bound);
                     boomIcon->addChild(boom);
                     boomIcon->setPosition(size.width*0.15f, size.height*0.2f);
@@ -234,7 +234,7 @@ cocos2d::extension::TableViewCell* HelpInfoUI::tableCellAtIndex(cocos2d::extensi
                     desc->setPosition(Vec2(size.width*0.5f, size.height*0.9f));
                     cell->addChild(desc);
                     
-                    cocos2d::Sprite* circle = Sprite::create("circle.png");
+                    cocos2d::Sprite* circle = Sprite::createWithSpriteFrameName("circle.png");
                     circle->setPosition(size.width*0.15f, size.height*0.75f);
                     circle->setScale(0.8f*scale);
                     cell->addChild(circle);
@@ -250,8 +250,8 @@ cocos2d::extension::TableViewCell* HelpInfoUI::tableCellAtIndex(cocos2d::extensi
                     colorCircle->setPositionType(ParticleSystem::PositionType::RELATIVE);
                     colorCircle->setPosition(size.width*0.15f, size.height*0.65f);
                     colorCircle->setScale(0.6f*scale);
-                    Texture2D* texture = Director::getInstance()->getTextureCache()->addImage("circle.png");
-                    colorCircle->setTexture(texture);
+                    SpriteFrame* spriteFrame = SpriteFrameCache::getInstance()->getSpriteFrameByName("circle.png");
+                    colorCircle->setTextureWithRect(spriteFrame->getTexture(), spriteFrame->getRect());
                     colorCircle->setAutoRemoveOnFinish(true);
                     cell->addChild(colorCircle);
                     
@@ -262,7 +262,7 @@ cocos2d::extension::TableViewCell* HelpInfoUI::tableCellAtIndex(cocos2d::extensi
                     colorCircleDesc->setColor(Color3B(208,255,208));
                     cell->addChild(colorCircleDesc);
                     
-                    cocos2d::Sprite* triangle = Sprite::create("triangle.png");
+                    cocos2d::Sprite* triangle = Sprite::createWithSpriteFrameName("triangle.png");
                     triangle->setPosition(size.width*0.15f, size.height*0.45f);
                     triangle->setScale(0.8f*scale);
                     triangle->setColor(Color3B(253,255,12));
@@ -285,8 +285,8 @@ cocos2d::extension::TableViewCell* HelpInfoUI::tableCellAtIndex(cocos2d::extensi
                     colorTriangle->setPosition(size.width*0.15f, size.height*0.25f);
                     colorTriangle->setScale(0.6f*scale);
                     colorTriangle->setColor(Color3B(253,255,12));
-                    texture = Director::getInstance()->getTextureCache()->addImage("triangle.png");
-                    colorTriangle->setTexture(texture);
+                    spriteFrame = SpriteFrameCache::getInstance()->getSpriteFrameByName("triangle.png");
+                    colorTriangle->setTextureWithRect(spriteFrame->getTexture(), spriteFrame->getRect());
                     colorTriangle->setAutoRemoveOnFinish(true);
                     cell->addChild(colorTriangle);
                     scaleTo1 = ScaleBy::create(0.2f, 0.8f);
@@ -310,7 +310,7 @@ cocos2d::extension::TableViewCell* HelpInfoUI::tableCellAtIndex(cocos2d::extensi
                     desc->setPosition(Vec2(size.width*0.5f, size.height*0.9f));
                     cell->addChild(desc);
                 
-                    cocos2d::Sprite* diamond = Sprite::create("diamond.png");
+                    cocos2d::Sprite* diamond = Sprite::createWithSpriteFrameName("diamond.png");
                     diamond->setPosition(size.width*0.15f, size.height*0.75f);
                     diamond->setScale(0.8f*scale);
                     diamond->setColor(Color3B(64,255,1));
@@ -332,8 +332,8 @@ cocos2d::extension::TableViewCell* HelpInfoUI::tableCellAtIndex(cocos2d::extensi
                     colorDiamond->setPositionType(ParticleSystem::PositionType::RELATIVE);
                     colorDiamond->setPosition(size.width*0.15f, size.height*0.6f);
                     colorDiamond->setScale(0.6f*scale);
-                    Texture2D* texture = Director::getInstance()->getTextureCache()->addImage("diamond.png");
-                    colorDiamond->setTexture(texture);
+                    SpriteFrame* spriteFrame = SpriteFrameCache::getInstance()->getSpriteFrameByName("diamond.png");
+                    colorDiamond->setTextureWithRect(spriteFrame->getTexture(), spriteFrame->getRect());
                     colorDiamond->setAutoRemoveOnFinish(true);
                     colorDiamond->setColor(Color3B(64,255,1));
                     cell->addChild(colorDiamond);
@@ -350,7 +350,7 @@ cocos2d::extension::TableViewCell* HelpInfoUI::tableCellAtIndex(cocos2d::extensi
                     colorDiamondDesc->setColor(Color3B(208,255,208));
                     cell->addChild(colorDiamondDesc);
                     
-                    cocos2d::Sprite* star = Sprite::create("star.png");
+                    cocos2d::Sprite* star = Sprite::createWithSpriteFrameName("star.png");
                     star->setPosition(size.width*0.15f, size.height*0.45f);
                     star->setScale(0.8f*scale);
                     star->setColor(Color3B(0,224,252));
@@ -371,8 +371,8 @@ cocos2d::extension::TableViewCell* HelpInfoUI::tableCellAtIndex(cocos2d::extensi
                     colorStar->setPosition(size.width*0.15f, size.height*0.25f);
                     colorStar->setScale(0.6f*scale);
                     colorStar->setColor(Color3B(0,224,252));
-                    texture = Director::getInstance()->getTextureCache()->addImage("star.png");
-                    colorStar->setTexture(texture);
+                    spriteFrame = SpriteFrameCache::getInstance()->getSpriteFrameByName("star.png");
+                    colorStar->setTextureWithRect(spriteFrame->getTexture(), spriteFrame->getRect());
                     colorStar->setAutoRemoveOnFinish(true);
                     cell->addChild(colorStar);
                     rotateBy = RotateBy::create(1.0f, 90);
@@ -394,7 +394,7 @@ cocos2d::extension::TableViewCell* HelpInfoUI::tableCellAtIndex(cocos2d::extensi
                     desc->setPosition(Vec2(size.width*0.5f, size.height*0.9f));
                     cell->addChild(desc);
                 
-                    cocos2d::Sprite* hexagon = Sprite::create("hexagon.png");
+                    cocos2d::Sprite* hexagon = Sprite::createWithSpriteFrameName("hexagon.png");
                     hexagon->setPosition(size.width*0.15f, size.height*0.75f);
                     hexagon->setScale(0.8f*scale);
                     hexagon->setColor(Color3B(64,255,1));
@@ -414,8 +414,8 @@ cocos2d::extension::TableViewCell* HelpInfoUI::tableCellAtIndex(cocos2d::extensi
                     colorHexagon->setPositionType(ParticleSystem::PositionType::RELATIVE);
                     colorHexagon->setPosition(size.width*0.15f, size.height*0.6f);
                     colorHexagon->setScale(0.6f*scale);
-                    Texture2D* texture = Director::getInstance()->getTextureCache()->addImage("hexagon.png");
-                    colorHexagon->setTexture(texture);
+                    SpriteFrame* spriteFrame = SpriteFrameCache::getInstance()->getSpriteFrameByName("hexagon.png");
+                    colorHexagon->setTextureWithRect(spriteFrame->getTexture(), spriteFrame->getRect());
                     colorHexagon->setAutoRemoveOnFinish(true);
                     colorHexagon->setColor(Color3B(64,255,1));
                     cell->addChild(colorHexagon);

@@ -50,7 +50,7 @@ bool TwoJoysticks::init(const std::string& leftBgTex, const std::string& leftTex
     m_fRadius = m_fRadius*m_fScale;
     m_fMinRadius = m_fMinRadius*m_fScale;
     // joystickLeft的背景
-    m_pJoystickLeftBg = Sprite::create(leftBgTex);
+    m_pJoystickLeftBg = Sprite::createWithSpriteFrameName(leftBgTex);
     if (m_pJoystickLeftBg == nullptr)
         return false;
     m_pJoystickLeftBg->setGlobalZOrder(10);
@@ -60,7 +60,7 @@ bool TwoJoysticks::init(const std::string& leftBgTex, const std::string& leftTex
     m_pJoystickLeftBg->setOpacity(200);
     addChild(m_pJoystickLeftBg);
     
-    m_pJoystickLeft = Sprite::create(leftTex);
+    m_pJoystickLeft = Sprite::createWithSpriteFrameName(leftTex);
     if (m_pJoystickLeft == nullptr)
         return false;
     m_pJoystickLeft->setGlobalZOrder(10);
@@ -71,7 +71,7 @@ bool TwoJoysticks::init(const std::string& leftBgTex, const std::string& leftTex
     addChild(m_pJoystickLeft);
     
     // joystickRight的背景
-    m_pJoystickRightBg = Sprite::create(rightBgTex);
+    m_pJoystickRightBg = Sprite::createWithSpriteFrameName(rightBgTex);
     if (m_pJoystickRightBg == nullptr)
         return false;
     m_pJoystickRightBg->setGlobalZOrder(10);
@@ -81,7 +81,7 @@ bool TwoJoysticks::init(const std::string& leftBgTex, const std::string& leftTex
     m_pJoystickRightBg->setOpacity(200);
     addChild(m_pJoystickRightBg);
     
-    m_pJoystickRight = Sprite::create(rightTex);
+    m_pJoystickRight = Sprite::createWithSpriteFrameName(rightTex);
     if (m_pJoystickRight == nullptr)
         return false;
     m_pJoystickRight->setGlobalZOrder(10);

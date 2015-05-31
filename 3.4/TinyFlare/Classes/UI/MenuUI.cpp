@@ -56,7 +56,7 @@ bool MenuUI::init()
     
     auto size = Director::getInstance()->getVisibleSize();
     float scale = size.height/640.0f;
-    m_pMenuBg = ui::ImageView::create("menubg.png");
+    m_pMenuBg = ui::ImageView::create("menubg.png", TextureResType::PLIST);
     if(!m_pMenuBg)
         return false;
     m_pMenuBg->setScale9Enabled(true);
@@ -83,7 +83,7 @@ bool MenuUI::init()
     Sequence* sequence = Sequence::createWithTwoActions(delay, moveTo);
     m_pGameTitle->runAction(sequence);
     
-    m_pPlayGameBtn = ui::Button::create("menubg.png");
+    m_pPlayGameBtn = ui::Button::create("menubg.png", "", "", TextureResType::PLIST);
     if(!m_pPlayGameBtn)
         return false;
     m_pPlayGameBtn->addTouchEventListener(CC_CALLBACK_2(MenuUI::pressPlayGameBtn, this));
@@ -115,7 +115,7 @@ bool MenuUI::init()
     
     if(!EncrytionUtility::getBoolForKey("RemoveAds",false))
     {
-        m_pRemoveADSBtn = ui::Button::create("removeads.png");
+        m_pRemoveADSBtn = ui::Button::create("removeads.png", "", "", TextureResType::PLIST);
         if(!m_pRemoveADSBtn)
             return false;
         m_pRemoveADSBtn->addTouchEventListener(CC_CALLBACK_2(MenuUI::pressRemoveADSBtn, this));
@@ -142,7 +142,7 @@ bool MenuUI::init()
 //    m_pShareBtn->setVisible(false);
 //    addChild(m_pShareBtn);
     
-    m_pHelpBtn = ui::Button::create("help.png");
+    m_pHelpBtn = ui::Button::create("help.png", "", "", TextureResType::PLIST);
     if(!m_pHelpBtn)
         return false;
     m_pHelpBtn->addTouchEventListener(CC_CALLBACK_2(MenuUI::pressHelpBtn, this));

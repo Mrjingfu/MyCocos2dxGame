@@ -44,21 +44,7 @@ void GameActor::loadModel(const std::string& texName)
         removeChild(m_pModel);
         m_pModel = nullptr;
     }
-    m_pModel = Sprite::create(texName);
-    if(m_pModel == nullptr)
-        CCLOGERROR("Load model %s failed!" , texName.c_str());
-    m_pModel->setScale(0.5f);
-    addChild(m_pModel);
-    caculateRadius();
-}
-void GameActor::loadModel(const std::string& texName, const cocos2d::Rect& rect)
-{
-    if(m_pModel)
-    {
-        removeChild(m_pModel);
-        m_pModel = nullptr;
-    }
-    m_pModel = Sprite::create(texName, rect);
+    m_pModel = Sprite::createWithSpriteFrameName(texName);
     if(m_pModel == nullptr)
         CCLOGERROR("Load model %s failed!" , texName.c_str());
     m_pModel->setScale(0.5f);

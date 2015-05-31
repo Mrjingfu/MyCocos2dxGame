@@ -72,7 +72,6 @@ public:
     virtual void update(float delta){};
     
     void loadModel(const std::string& texName);
-    void loadModel(const std::string& texName, const cocos2d::Rect& rect);
     
     void setType(ActorType type) {m_type = type;}
     int getType() const {return m_type;}
