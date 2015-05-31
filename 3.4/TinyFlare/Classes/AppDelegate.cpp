@@ -113,5 +113,7 @@ void AppDelegate::applicationWillEnterForeground() {
     SimpleAudioEngine::getInstance()->resumeBackgroundMusic();
     
     GameController::getInstance()->pause();
+#if CC_TARGET_PLATFORM == CC_PLATFORM_IOS
     GameController::getInstance()->setToShowAds();
+#endif
 }

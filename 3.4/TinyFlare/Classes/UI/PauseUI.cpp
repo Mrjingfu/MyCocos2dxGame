@@ -414,7 +414,7 @@ void PauseUI::pressStardustDropLevelAddBtn(Ref* p,TouchEventType eventType)
         if(stardustDropLevel.GetLongValue() < 5)
         {
             ChaosNumber curStardustNum;
-            curStardustNum = EncrytionUtility::getIntegerForKey("CurStardustNum", 0);
+            curStardustNum = EncrytionUtility::getIntegerForKey("TotalGems", 0);
             if(stardustDropLevel == 4)
             {
                 ChaosNumber needStardust(600);
@@ -472,7 +472,7 @@ void PauseUI::pressItemDropLevelAddBtn(Ref* p,TouchEventType eventType)
         if(itemDropLevel.GetLongValue() < 5)
         {
             ChaosNumber curStardustNum;
-            curStardustNum = EncrytionUtility::getIntegerForKey("CurStardustNum", 0);
+            curStardustNum = EncrytionUtility::getIntegerForKey("TotalGems", 0);
             if(itemDropLevel == 4)
             {
                 ChaosNumber needStardust(700);
@@ -530,7 +530,7 @@ void PauseUI::pressItemEffectLevelAddBtn(Ref* p,TouchEventType eventType)
         if(itemEffectLevel.GetLongValue() < 5)
         {
             ChaosNumber curStardustNum;
-            curStardustNum = EncrytionUtility::getIntegerForKey("CurStardustNum", 0);
+            curStardustNum = EncrytionUtility::getIntegerForKey("TotalGems", 0);
             if(itemEffectLevel == 4)
             {
                 ChaosNumber needStardust(800);
@@ -625,7 +625,7 @@ void PauseUI::pressPurchaseBtn(Ref* p,TouchEventType eventType)
 void PauseUI::updateUI()
 {
     ChaosNumber curStardustNum;
-    curStardustNum = EncrytionUtility::getIntegerForKey("CurStardustNum", 0);
+    curStardustNum = EncrytionUtility::getIntegerForKey("TotalGems", 0);
     ChaosNumber stardustDropLevel;
     stardustDropLevel = EncrytionUtility::getIntegerForKey("StardustDropLevel", 1);
     ChaosNumber itemDropLevel;

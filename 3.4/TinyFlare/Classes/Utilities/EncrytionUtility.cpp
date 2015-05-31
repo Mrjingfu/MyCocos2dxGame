@@ -152,6 +152,7 @@ void EncrytionUtility::setBoolForKey(const char* pKey, bool value)
     strXor(strValue, 0, (int)(strValue.length()-1), PACKAGE_NAME);
     UserDefault::getInstance()->setStringForKey(key.c_str(), strValue);
 #endif
+    UserDefault::getInstance()->flush();
 }
 void EncrytionUtility::setIntegerForKey(const char* pKey, int value)
 {
@@ -164,6 +165,7 @@ void EncrytionUtility::setIntegerForKey(const char* pKey, int value)
     strXor(strValue, 0, (int)(strValue.length()-1), PACKAGE_NAME);
     UserDefault::getInstance()->setStringForKey(key.c_str(), strValue);
 #endif
+    UserDefault::getInstance()->flush();
 }
 void EncrytionUtility::setFloatForKey(const char* pKey, float value)
 {
@@ -176,6 +178,7 @@ void EncrytionUtility::setFloatForKey(const char* pKey, float value)
     strXor(strValue, 0, (int)(strValue.length()-1), PACKAGE_NAME);
     UserDefault::getInstance()->setStringForKey(key.c_str(), strValue);
 #endif
+    UserDefault::getInstance()->flush();
 }
 void EncrytionUtility::setDoubleForKey(const char* pKey, double value)
 {
@@ -188,6 +191,7 @@ void EncrytionUtility::setDoubleForKey(const char* pKey, double value)
     strXor(strValue, 0, (int)(strValue.length()-1), PACKAGE_NAME);
     UserDefault::getInstance()->setStringForKey(key.c_str(), strValue);
 #endif
+    UserDefault::getInstance()->flush();
 }
 void EncrytionUtility::setStringForKey(const char* pKey, const std::string & value)
 {
@@ -200,6 +204,7 @@ void EncrytionUtility::setStringForKey(const char* pKey, const std::string & val
     strXor(strValue, 0, (int)(strValue.length()-1), PACKAGE_NAME);
     UserDefault::getInstance()->setStringForKey(key.c_str(), strValue);
 #endif
+    UserDefault::getInstance()->flush();
 }
 
 bool EncrytionUtility::strXor(std::string& stream, int begin, int end, const char* secret)

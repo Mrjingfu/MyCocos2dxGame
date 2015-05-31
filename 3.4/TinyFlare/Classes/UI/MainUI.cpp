@@ -68,7 +68,7 @@ bool MainUI::init()
     m_pStardustX->setColor(Color3B(208,255,208));
     addChild(m_pStardustX);
     
-    int stardustNum = EncrytionUtility::getIntegerForKey("CurStardustNum", 0);
+    int stardustNum = EncrytionUtility::getIntegerForKey("TotalGems", 0);
     m_pStardustNum = ui::Text::create(Value(stardustNum).asString(), "FZXS12.TTF", m_pStardust->getContentSize().height*0.05f*scale);
     if(!m_pStardustNum)
         return false;
@@ -220,9 +220,9 @@ void MainUI::nextStage(int stage)
 void MainUI::addStardust(ChaosNumber& num)
 {
     ChaosNumber curStarDust;
-    curStarDust = EncrytionUtility::getIntegerForKey("CurStardustNum", 0);
+    curStarDust = EncrytionUtility::getIntegerForKey("TotalGems", 0);
     curStarDust = curStarDust + num.GetLongValue();
-    EncrytionUtility::setIntegerForKey("CurStardustNum", (int)(curStarDust.GetLongValue()));
+    EncrytionUtility::setIntegerForKey("TotalGems", (int)(curStarDust.GetLongValue()));
     if(m_pStardustNum)
     {
         m_pStardustNum->setString(Value((int)(curStarDust.GetLongValue())).asString());
@@ -237,9 +237,9 @@ void MainUI::addStardust(ChaosNumber& num)
 void MainUI::subStardust(ChaosNumber& num)
 {
     ChaosNumber curStarDust;
-    curStarDust = EncrytionUtility::getIntegerForKey("CurStardustNum", 0);
+    curStarDust = EncrytionUtility::getIntegerForKey("TotalGems", 0);
     curStarDust = curStarDust - num.GetLongValue();
-    EncrytionUtility::setIntegerForKey("CurStardustNum", (int)(curStarDust.GetLongValue()));
+    EncrytionUtility::setIntegerForKey("TotalGems", (int)(curStarDust.GetLongValue()));
     if(m_pStardustNum)
     {
         m_pStardustNum->setString(Value((int)(curStarDust.GetLongValue())).asString());
