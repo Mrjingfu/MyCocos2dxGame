@@ -24,6 +24,12 @@ ActorsManager* ActorsManager::getInstance()
 ActorsManager::ActorsManager()
 {
     m_pActorLayer = nullptr;
+    m_pColorCircleLayer = nullptr;
+    m_pColorTriangleLayer = nullptr;
+    m_pColorDiamondLayer = nullptr;
+    m_pColorStarLayer = nullptr;
+    m_pColorHexagonLayer = nullptr;
+    m_pColorLaserLayer = nullptr;
     m_bEnemyActorPause = false;
 }
 ActorsManager::~ActorsManager()
@@ -118,7 +124,7 @@ Enemy* ActorsManager::spawnEnemy(Enemy::EnemyType enemyType, const Vec2& pos, co
                     enemy->setScale(0.2f);
                     enemy->setActorState(ActorState::AS_UNDERCONTROL);
                     ActorsManager::getInstance()->m_Enemies.pushBack(enemy);
-                    ActorsManager::getInstance()->m_pActorLayer->addChild(enemy);
+                    ActorsManager::getInstance()->m_pColorCircleLayer->addChild(enemy);
                     ActorsManager::getInstance()->m_pActorLayer->setCameraMask((unsigned short)CameraFlag::USER1);
                     
                     if(ActorsManager::getInstance()->getEnemyActorPause())
@@ -190,7 +196,7 @@ Enemy* ActorsManager::spawnEnemy(Enemy::EnemyType enemyType, const Vec2& pos, co
                     enemy->setActorState(ActorState::AS_UNDERCONTROL);
                     enemy->setColor(Color3B(253,255,12));
                     ActorsManager::getInstance()->m_Enemies.pushBack(enemy);
-                    ActorsManager::getInstance()->m_pActorLayer->addChild(enemy);
+                    ActorsManager::getInstance()->m_pColorTriangleLayer->addChild(enemy);
                     ActorsManager::getInstance()->m_pActorLayer->setCameraMask((unsigned short)CameraFlag::USER1);
                     
                     if(ActorsManager::getInstance()->getEnemyActorPause())
@@ -262,7 +268,7 @@ Enemy* ActorsManager::spawnEnemy(Enemy::EnemyType enemyType, const Vec2& pos, co
                     enemy->setActorState(ActorState::AS_UNDERCONTROL);
                     enemy->setColor(Color3B(64,255,1));
                     ActorsManager::getInstance()->m_Enemies.pushBack(enemy);
-                    ActorsManager::getInstance()->m_pActorLayer->addChild(enemy);
+                    ActorsManager::getInstance()->m_pColorDiamondLayer->addChild(enemy);
                     ActorsManager::getInstance()->m_pActorLayer->setCameraMask((unsigned short)CameraFlag::USER1);
                     
                     if(ActorsManager::getInstance()->getEnemyActorPause())
@@ -337,7 +343,7 @@ Enemy* ActorsManager::spawnEnemy(Enemy::EnemyType enemyType, const Vec2& pos, co
                     //enemy->setColor(Color3B(254,64,64));
                     enemy->setColor(Color3B(0,224,252));
                     ActorsManager::getInstance()->m_Enemies.pushBack(enemy);
-                    ActorsManager::getInstance()->m_pActorLayer->addChild(enemy);
+                    ActorsManager::getInstance()->m_pColorStarLayer->addChild(enemy);
                     ActorsManager::getInstance()->m_pActorLayer->setCameraMask((unsigned short)CameraFlag::USER1);
                     
                     if(ActorsManager::getInstance()->getEnemyActorPause())
@@ -412,7 +418,7 @@ Enemy* ActorsManager::spawnEnemy(Enemy::EnemyType enemyType, const Vec2& pos, co
                     enemy->setActorState(ActorState::AS_UNDERCONTROL);
                     enemy->setColor(Color3B(253,153,31));
                     ActorsManager::getInstance()->m_Enemies.pushBack(enemy);
-                    ActorsManager::getInstance()->m_pActorLayer->addChild(enemy);
+                    ActorsManager::getInstance()->m_pColorHexagonLayer->addChild(enemy);
                     ActorsManager::getInstance()->m_pActorLayer->setCameraMask((unsigned short)CameraFlag::USER1);
                     
                     if(ActorsManager::getInstance()->getEnemyActorPause())
@@ -453,7 +459,7 @@ Laser* ActorsManager::spawnLaser(const cocos2d::Vec2& start, const cocos2d::Vec2
         laser->setEnd(end);
         laser->setActorState(ActorState::AS_IDLE);
         ActorsManager::getInstance()->m_Lasers.pushBack(laser);
-        ActorsManager::getInstance()->m_pActorLayer->addChild(laser);
+        ActorsManager::getInstance()->m_pColorLaserLayer->addChild(laser);
         ActorsManager::getInstance()->m_pActorLayer->setCameraMask((unsigned short)CameraFlag::USER1);
         laser->autorelease();
     }
@@ -536,8 +542,40 @@ bool ActorsManager::init(cocos2d::Layer* gameLayer)
     m_pActorLayer = Layer::create();
     if(!m_pActorLayer)
         return false;
+    
+    m_pColorCircleLayer = Layer::create();
+    if(!m_pColorCircleLayer)
+        return false;
+    m_pActorLayer->addChild(m_pColorCircleLayer);
+    
+    m_pColorTriangleLayer = Layer::create();
+    if(!m_pColorTriangleLayer)
+        return false;
+    m_pActorLayer->addChild(m_pColorTriangleLayer);
+    
+    m_pColorDiamondLayer = Layer::create();
+    if(!m_pColorDiamondLayer)
+        return false;
+    m_pActorLayer->addChild(m_pColorDiamondLayer);
+    
+    m_pColorStarLayer = Layer::create();
+    if(!m_pColorStarLayer)
+        return false;
+    m_pActorLayer->addChild(m_pColorStarLayer);
+    
+    m_pColorHexagonLayer = Layer::create();
+    if(!m_pColorHexagonLayer)
+        return false;
+    m_pActorLayer->addChild(m_pColorHexagonLayer);
+    
+    m_pColorLaserLayer = Layer::create();
+    if(!m_pColorLaserLayer)
+        return false;
+    m_pActorLayer->addChild(m_pColorLaserLayer);
+    
     m_pActorLayer->setCameraMask((unsigned short)CameraFlag::USER1);
     gameLayer->addChild(m_pActorLayer);
+    
     return true;
 }
 void ActorsManager::update(float delta)
@@ -727,6 +765,12 @@ void ActorsManager::update(float delta)
 }
 void ActorsManager::destroy()
 {
+    m_pColorCircleLayer = nullptr;
+    m_pColorTriangleLayer = nullptr;
+    m_pColorDiamondLayer = nullptr;
+    m_pColorStarLayer = nullptr;
+    m_pColorHexagonLayer = nullptr;
+    m_pColorLaserLayer = nullptr;
     m_pActorLayer = nullptr;
     m_Bullets.clear();
     m_Enemies.clear();
@@ -892,4 +936,36 @@ void ActorsManager::reset()
     
     if(m_pActorLayer)
         m_pActorLayer->removeAllChildrenWithCleanup(true);
+    
+    m_pColorCircleLayer = Layer::create();
+    if(!m_pColorCircleLayer)
+        return;
+    m_pActorLayer->addChild(m_pColorCircleLayer);
+    
+    m_pColorTriangleLayer = Layer::create();
+    if(!m_pColorTriangleLayer)
+        return;
+    m_pActorLayer->addChild(m_pColorTriangleLayer);
+    
+    m_pColorDiamondLayer = Layer::create();
+    if(!m_pColorDiamondLayer)
+        return;
+    m_pActorLayer->addChild(m_pColorDiamondLayer);
+    
+    m_pColorStarLayer = Layer::create();
+    if(!m_pColorStarLayer)
+        return;
+    m_pActorLayer->addChild(m_pColorStarLayer);
+    
+    m_pColorHexagonLayer = Layer::create();
+    if(!m_pColorHexagonLayer)
+        return;
+    m_pActorLayer->addChild(m_pColorHexagonLayer);
+    
+    m_pColorLaserLayer = Layer::create();
+    if(!m_pColorLaserLayer)
+        return;
+    m_pActorLayer->addChild(m_pColorLaserLayer);
+    
+    m_pActorLayer->setCameraMask((unsigned short)CameraFlag::USER1);
 }

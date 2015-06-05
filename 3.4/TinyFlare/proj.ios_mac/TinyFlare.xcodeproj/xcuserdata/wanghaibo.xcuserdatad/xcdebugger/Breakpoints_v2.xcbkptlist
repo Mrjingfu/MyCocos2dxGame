@@ -159,7 +159,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "555"
             endingLineNumber = "555"
-            landmarkName = "ActorsManager::update(float delta)"
+            landmarkName = "ActorsManager::init(cocos2d::Layer* gameLayer)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -319,7 +319,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "575"
             endingLineNumber = "575"
-            landmarkName = "ActorsManager::update(float delta)"
+            landmarkName = "ActorsManager::init(cocos2d::Layer* gameLayer)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -541,7 +541,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "273"
             endingLineNumber = "273"
-            landmarkName = "ParticleSystemHelper::spawnActorWidget(ActorWidgetType actorWidgetType, const cocos2d::Vec2&amp; pos, GameActor* actor)"
+            landmarkName = "ParticleSystemHelper::spawnExplosion(ExplosionType explosionType, const cocos2d::Vec2&amp; pos)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1348,22 +1348,6 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../Classes/AppDelegate.cpp"
-            timestampString = "454386369.145183"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "65"
-            endingLineNumber = "65"
-            landmarkName = "AppDelegate::applicationDidFinishLaunching()"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "../Classes/CustomSprites/LaserSprite.cpp"
             timestampString = "449475612.642839"
             startingColumnNumber = "9223372036854775807"
@@ -1418,7 +1402,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "445"
             endingLineNumber = "445"
-            landmarkName = "ActorsManager::spawnLaser(const cocos2d::Vec2&amp; start, const cocos2d::Vec2&amp; end)"
+            landmarkName = "ActorsManager::spawnEnemy(Enemy::EnemyType enemyType, const Vec2&amp; pos, const Vec2&amp; dir)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2053,12 +2037,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Controllers/ActorsManager.cpp"
-            timestampString = "454793003.79665"
+            timestampString = "455195116.231873"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "849"
-            endingLineNumber = "849"
-            landmarkName = "ActorsManager::reset()"
+            startingLineNumber = "855"
+            endingLineNumber = "855"
+            landmarkName = "ActorsManager::eraseStardust(int i)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2074,7 +2058,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "755"
             endingLineNumber = "755"
-            landmarkName = "ActorsManager::eraseEnemy(Enemy* enemy)"
+            landmarkName = "ActorsManager::update(float delta)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2085,12 +2069,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Controllers/ActorsManager.cpp"
-            timestampString = "454793003.79665"
+            timestampString = "455195116.231873"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "854"
-            endingLineNumber = "854"
-            landmarkName = "ActorsManager::reset()"
+            startingLineNumber = "860"
+            endingLineNumber = "860"
+            landmarkName = "ActorsManager::setEnemyActorPause(bool pause)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2122,7 +2106,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "544"
             endingLineNumber = "544"
-            landmarkName = "ActorsManager::update(float delta)"
+            landmarkName = "ActorsManager::init(cocos2d::Layer* gameLayer)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2149,12 +2133,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Controllers/ActorsManager.cpp"
-            timestampString = "454793003.79665"
+            timestampString = "455195116.231873"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "853"
-            endingLineNumber = "853"
-            landmarkName = "ActorsManager::reset()"
+            startingLineNumber = "859"
+            endingLineNumber = "859"
+            landmarkName = "ActorsManager::setEnemyActorPause(bool pause)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -3791,12 +3775,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Controllers/ActorsManager.cpp"
-            timestampString = "454793003.79665"
+            timestampString = "455195116.231873"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "800"
-            endingLineNumber = "800"
-            landmarkName = "ActorsManager::eraseStardust(Stardust* stardust)"
+            startingLineNumber = "806"
+            endingLineNumber = "806"
+            landmarkName = "ActorsManager::eraseEnemy(int i)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -3807,12 +3791,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Controllers/ActorsManager.cpp"
-            timestampString = "454793003.79665"
+            timestampString = "455195116.231873"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "808"
-            endingLineNumber = "808"
-            landmarkName = "ActorsManager::eraseStardust(int i)"
+            startingLineNumber = "814"
+            endingLineNumber = "814"
+            landmarkName = "ActorsManager::eraseLaser(Laser* laser)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -5205,6 +5189,38 @@
             startingLineNumber = "107"
             endingLineNumber = "107"
             landmarkName = "ParticleSystemHelper::spawnExplosion(ExplosionType explosionType, const cocos2d::Vec2&amp; pos)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/Controllers/ActorsManager.cpp"
+            timestampString = "455195325.13363"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "546"
+            endingLineNumber = "546"
+            landmarkName = "ActorsManager::init(cocos2d::Layer* gameLayer)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/Controllers/ActorsManager.cpp"
+            timestampString = "455207610.111071"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "772"
+            endingLineNumber = "772"
+            landmarkName = "ActorsManager::destroy()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

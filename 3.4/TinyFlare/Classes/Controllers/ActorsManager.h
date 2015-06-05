@@ -62,6 +62,12 @@ private:
     cocos2d::Vector<Item*>                  m_Items;
     cocos2d::Vector<Stardust*>              m_Stardusts;
     cocos2d::Layer*                         m_pActorLayer;
+    cocos2d::Layer*                         m_pColorCircleLayer;
+    cocos2d::Layer*                         m_pColorTriangleLayer;
+    cocos2d::Layer*                         m_pColorDiamondLayer;
+    cocos2d::Layer*                         m_pColorStarLayer;
+    cocos2d::Layer*                         m_pColorHexagonLayer;
+    cocos2d::Layer*                         m_pColorLaserLayer;
     
     bool                                    m_bEnemyActorPause;
 };
