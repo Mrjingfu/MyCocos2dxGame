@@ -49,7 +49,7 @@ ParticleSystemQuad* ParticleSystemHelper::spawnExplosion(ExplosionType explosion
                 explosion->setScale(0.4f);
                 explosion->setStartColor(Color4F::WHITE);
                 explosion->setEndColor(Color4F::WHITE);
-                explosion->setLife(0.5f);
+                explosion->setLife(0.3f);
                 explosion->setPosition(pos);
                 explosion->setAutoRemoveOnFinish(true);
                 GameController::getInstance()->getGameLayer()->addChild(explosion);
@@ -67,7 +67,7 @@ ParticleSystemQuad* ParticleSystemHelper::spawnExplosion(ExplosionType explosion
                 explosion->setScale(0.4f);
                 explosion->setStartColor(Color4F(253.0f/255.0f, 1.0f, 12.0f/255.0f, 1.0f));
                 explosion->setEndColor(Color4F(253.0f/255.0f, 1.0f, 12.0f/255.0f, 1.0f));
-                explosion->setLife(0.5f);
+                explosion->setLife(0.3f);
                 explosion->setPosition(pos);
                 explosion->setAutoRemoveOnFinish(true);
                 GameController::getInstance()->getGameLayer()->addChild(explosion);
@@ -85,7 +85,7 @@ ParticleSystemQuad* ParticleSystemHelper::spawnExplosion(ExplosionType explosion
                 explosion->setScale(0.4f);
                 explosion->setStartColor(Color4F(64.0f/255.0f, 1.0f, 1.0f/255.0f, 1.0f));
                 explosion->setEndColor(Color4F(64.0f/255.0f, 1.0f, 1.0f/255.0f, 1.0f));
-                explosion->setLife(0.5f);
+                explosion->setLife(0.3f);
                 explosion->setPosition(pos);
                 explosion->setAutoRemoveOnFinish(true);
                 GameController::getInstance()->getGameLayer()->addChild(explosion);
@@ -103,7 +103,7 @@ ParticleSystemQuad* ParticleSystemHelper::spawnExplosion(ExplosionType explosion
                 explosion->setScale(0.4f);
                 explosion->setStartColor(Color4F(253.0f/255.0f, 153.0f/255.0f, 31.0f/255.0f, 1.0f));
                 explosion->setEndColor(Color4F(253.0f/255.0f, 153.0f/255.0f, 31.0f/255.0f, 1.0f));
-                explosion->setLife(0.5f);
+                explosion->setLife(0.3f);
                 explosion->setPosition(pos);
                 explosion->setAutoRemoveOnFinish(true);
                 GameController::getInstance()->getGameLayer()->addChild(explosion);
@@ -121,7 +121,7 @@ ParticleSystemQuad* ParticleSystemHelper::spawnExplosion(ExplosionType explosion
                 explosion->setScale(0.4f);
                 explosion->setStartColor(Color4F(0.0f, 224.0f/255.0f, 252.0f/255.0f, 1.0f));
                 explosion->setEndColor(Color4F(0.0f, 224.0f/255.0f, 252.0f/255.0f, 1.0f));
-                explosion->setLife(0.5f);
+                explosion->setLife(0.3f);
                 explosion->setPosition(pos);
                 explosion->setAutoRemoveOnFinish(true);
                 GameController::getInstance()->getGameLayer()->addChild(explosion);
@@ -212,6 +212,7 @@ ParticleSystemQuad* ParticleSystemHelper::spawnExplosion(ExplosionType explosion
                 explosion->setPositionType(ParticleSystem::PositionType::GROUPED);
                 explosion->setPosition(pos);
                 explosion->setDuration(15.0f);
+                explosion->setTotalParticles(400);
                 explosion->setAutoRemoveOnFinish(true);
                 GameController::getInstance()->getGameLayer()->addChild(explosion);
                 GameController::getInstance()->getGameLayer()->setCameraMask((unsigned short)CameraFlag::USER1);
@@ -267,7 +268,7 @@ ParticleSystemQuad* ParticleSystemHelper::spawnActorWidget(ActorWidgetType actor
                 }
                 widget->setEmitterMode(ParticleSystem::Mode::RADIUS);
                 widget->setStartColor(Color4F(0.0f, 224.0f/255.0f, 252.0f/255.0f, 1.0f));
-                widget->setTotalParticles(100);
+                widget->setTotalParticles(80);
                 widget->setStartSize(1.0f);
                 widget->setLife(0.1f);
                 widget->setLifeVar(0.1f);
@@ -289,7 +290,7 @@ ParticleSystemQuad* ParticleSystemHelper::spawnActorWidget(ActorWidgetType actor
                 widget->setEmitterMode(ParticleSystem::Mode::RADIUS);
                 widget->setStartColor(Color4F(174.0f/255.0f, 250.0f/255.0f, 27.0f/255.0f, 1.0f));
                 widget->setEndColor(Color4F(174.0f/255.0f, 250.0f/255.0f, 27.0f/255.0f, 1.0f));
-                widget->setTotalParticles(100);
+                widget->setTotalParticles(80);
                 widget->setStartSize(1.0f);
                 widget->setLife(0.1f);
                 widget->setLifeVar(0.1f);
@@ -328,7 +329,7 @@ ParticleSystemQuad* ParticleSystemHelper::spawnActorWidget(ActorWidgetType actor
                 }
                 widget->setPositionType(ParticleSystem::PositionType::FREE);
                 widget->setPosition(pos);
-                widget->setTotalParticles(50);
+                widget->setTotalParticles(80);
                 widget->setSpeed(0);
                 widget->setSpeedVar(0);
                 widget->setScale(0.5f);
@@ -347,7 +348,7 @@ ParticleSystemQuad* ParticleSystemHelper::spawnActorWidget(ActorWidgetType actor
                 }
                 widget->setPositionType(ParticleSystem::PositionType::FREE);
                 widget->setPosition(pos);
-                widget->setTotalParticles(50);
+                widget->setTotalParticles(80);
                 widget->setSpeed(0);
                 widget->setSpeedVar(0);
                 widget->setScale(0.5f);
@@ -368,7 +369,7 @@ ParticleSystemQuad* ParticleSystemHelper::spawnActorWidget(ActorWidgetType actor
                 }
                 widget->setPositionType(ParticleSystem::PositionType::FREE);
                 widget->setPosition(pos);
-                widget->setTotalParticles(50);
+                widget->setTotalParticles(80);
                 widget->setSpeed(0);
                 widget->setSpeedVar(0);
                 widget->setScale(0.5f);
@@ -389,7 +390,7 @@ ParticleSystemQuad* ParticleSystemHelper::spawnActorWidget(ActorWidgetType actor
                 }
                 widget->setPositionType(ParticleSystem::PositionType::FREE);
                 widget->setPosition(pos);
-                widget->setTotalParticles(50);
+                widget->setTotalParticles(80);
                 widget->setSpeed(0);
                 widget->setSpeedVar(0);
                 widget->setScale(0.5f);

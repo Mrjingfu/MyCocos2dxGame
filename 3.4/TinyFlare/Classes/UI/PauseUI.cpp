@@ -223,7 +223,7 @@ bool PauseUI::init()
         return false;
     m_pStardustDropLevelAdd->setAnchorPoint(Vec2(0, 0.5f));
     m_pStardustDropLevelAdd->setPosition(Vec2(m_pStardustDropLevel5->getPosition().x + size.height*0.12f + 50*scale, m_pStardustDropLevelLabel->getPosition().y -30*scale));
-    m_pStardustDropLevelAdd->setScale(0.2f*scale);
+    m_pStardustDropLevelAdd->setScale(0.4f*scale);
     m_pStardustDropLevelAdd->addTouchEventListener(CC_CALLBACK_2(PauseUI::pressStardustDropLevelAddBtn, this));
     m_pPanelBg->addChild(m_pStardustDropLevelAdd);
     
@@ -298,7 +298,7 @@ bool PauseUI::init()
         return false;
     m_pItemDropLevelAdd->setAnchorPoint(Vec2(0, 0.5f));
     m_pItemDropLevelAdd->setPosition(Vec2(m_pStardustDropLevel5->getPosition().x + size.height*0.12f + 50*scale, m_pItemDropLevelLabel->getPosition().y -30*scale));
-    m_pItemDropLevelAdd->setScale(0.2f*scale);
+    m_pItemDropLevelAdd->setScale(0.4f*scale);
     m_pItemDropLevelAdd->addTouchEventListener(CC_CALLBACK_2(PauseUI::pressItemDropLevelAddBtn, this));
     m_pPanelBg->addChild(m_pItemDropLevelAdd);
     
@@ -371,7 +371,7 @@ bool PauseUI::init()
         return false;
     m_pItemEffectLevelAdd->setAnchorPoint(Vec2(0, 0.5f));
     m_pItemEffectLevelAdd->setPosition(Vec2(m_pItemEffectLevel5->getPosition().x + size.height*0.12f + 50*scale, m_pItemEffectLevelLabel->getPosition().y -30*scale));
-    m_pItemEffectLevelAdd->setScale(0.2f*scale);
+    m_pItemEffectLevelAdd->setScale(0.4f*scale);
     m_pItemEffectLevelAdd->addTouchEventListener(CC_CALLBACK_2(PauseUI::pressItemEffectLevelAddBtn, this));
     m_pPanelBg->addChild(m_pItemEffectLevelAdd);
     
