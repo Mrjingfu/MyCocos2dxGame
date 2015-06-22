@@ -37,6 +37,7 @@ MenuUI::MenuUI()
 //    m_pRankBtn          = nullptr;
 //    m_pShareBtn         = nullptr;
     m_pHelpBtn          = nullptr;
+    m_pRestoreBtn       = nullptr;
     m_pMenuBg           = nullptr;
     m_pGameTitle        = nullptr;
     m_pPlayText         = nullptr;
@@ -119,9 +120,17 @@ bool MenuUI::init()
         if(!m_pRemoveADSBtn)
             return false;
         m_pRemoveADSBtn->addTouchEventListener(CC_CALLBACK_2(MenuUI::pressRemoveADSBtn, this));
-        m_pRemoveADSBtn->setPosition(Vec2(size.width - m_pRemoveADSBtn->getContentSize().width*scale*1.4f, size.height*0.1f));
+        m_pRemoveADSBtn->setPosition(Vec2(size.width - m_pRemoveADSBtn->getContentSize().width*scale*2.1f, size.height*0.1f));
         m_pRemoveADSBtn->setScale(0.4f*scale);
         addChild(m_pRemoveADSBtn);
+        
+        m_pRestoreBtn = ui::Button::create("restore.png");
+        if(!m_pRestoreBtn)
+            return false;
+        m_pRestoreBtn->addTouchEventListener(CC_CALLBACK_2(MenuUI::pressRestoreBtn, this));
+        m_pRestoreBtn->setPosition(Vec2(size.width - m_pRestoreBtn->getContentSize().width*scale*1.4f, size.height*0.1f));
+        m_pRestoreBtn->setScale(0.4f*scale);
+        addChild(m_pRestoreBtn);
     }
     
 //    m_pRankBtn = ui::Button::create("rank.png");
@@ -174,6 +183,14 @@ void MenuUI::pressRemoveADSBtn(Ref* p,TouchEventType eventType)
 
     }
 }
+void MenuUI::pressRestoreBtn(Ref* p,TouchEventType eventType)
+{
+    if(eventType == TouchEventType::ENDED)
+    {
+        SimpleAudioEngine::getInstance()->playEffect("btnclick.wav");
+        CCSoomlaStore::getInstance()->restoreTransactions();
+    }
+}
 //void MenuUI::pressRankBtn(Ref* p,TouchEventType eventType)
 //{
 //  if(eventType == TouchEventType::ENDED)
@@ -217,5 +234,7 @@ void MenuUI::updateGoodBalance(cocos2d::EventCustom *event) {
         NativeBridge::getInstance()->hideAdsView();
         m_pRemoveADSBtn->removeFromParentAndCleanup(true);
         m_pRemoveADSBtn = nullptr;
+        m_pRestoreBtn->removeFromParentAndCleanup(true);
+        m_pRestoreBtn = nullptr;
     }
 }

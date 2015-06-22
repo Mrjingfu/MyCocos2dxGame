@@ -36,6 +36,7 @@ import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdSize;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.InterstitialAd;
+import com.soomla.SoomlaConfig;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
@@ -65,6 +66,8 @@ public class AppActivity extends Cocos2dxActivity {
         FlurryAgent.setLogEnabled(false);
 		//FlurryAgent.setLogLevel(Log.VERBOSE);
 		FlurryAgent.init(this, MY_FLURRY_APIKEY);
+		
+		SoomlaConfig.logDebug = true;
 		
 		requestAndLoadInterstitialAds();
 	}

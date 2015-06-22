@@ -88,5 +88,9 @@
 	<string>炸弹道具，在你的飞行器周围产生爆炸弹幕，帮你清除敌人。</string>
 	<key>NET_ERROR</key>
 	<string>连接超时，请检查网络！</string>
+	<key>RESTORE_OK</key>
+	<string>恢复购买成功！</string>
+	<key>RESTORE_FAILED</key>
+	<string>恢复购买失败！</string>
 </dict>
 </plist>

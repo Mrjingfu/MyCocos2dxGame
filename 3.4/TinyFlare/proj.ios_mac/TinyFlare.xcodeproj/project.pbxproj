@@ -44,6 +44,8 @@
 		50EF629917ECD46A001EB2F8 /* Icon-100.png in Resources */ = {isa = PBXBuildFile; fileRef = 50EF629517ECD46A001EB2F8 /* Icon-100.png */; };
 		50EF62A217ECD613001EB2F8 /* Icon-29.png in Resources */ = {isa = PBXBuildFile; fileRef = 50EF62A017ECD613001EB2F8 /* Icon-29.png */; };
 		50EF62A317ECD613001EB2F8 /* Icon-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 50EF62A117ECD613001EB2F8 /* Icon-50.png */; };
+		550058171B33120200B08E5E /* restore.png in Resources */ = {isa = PBXBuildFile; fileRef = 550058161B33120200B08E5E /* restore.png */; };
+		550058181B33121600B08E5E /* restore.png in Resources */ = {isa = PBXBuildFile; fileRef = 550058161B33120200B08E5E /* restore.png */; };
 		5505CA561AD6BDDE002EBFC4 /* ChaosNumber.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 559B966E1AD6ADE20073570C /* ChaosNumber.cpp */; };
 		5505CA571AD6BDDE002EBFC4 /* EncrytionUtility.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 559B96691AD6ABC40073570C /* EncrytionUtility.cpp */; };
 		5511F2F51AEA4BAA00313420 /* StageManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5511F2F31AEA4BAA00313420 /* StageManager.cpp */; };
@@ -356,6 +358,7 @@
 		50EF62A017ECD613001EB2F8 /* Icon-29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-29.png"; sourceTree = "<group>"; };
 		50EF62A117ECD613001EB2F8 /* Icon-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-50.png"; sourceTree = "<group>"; };
 		52B47A461A53D09B004E4C60 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.1.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
+		550058161B33120200B08E5E /* restore.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = restore.png; sourceTree = "<group>"; };
 		5511F2F31AEA4BAA00313420 /* StageManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StageManager.cpp; sourceTree = "<group>"; };
 		5511F2F41AEA4BAA00313420 /* StageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StageManager.h; sourceTree = "<group>"; };
 		5511F2FF1AEA5CDC00313420 /* stages.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = stages.plist; sourceTree = "<group>"; };
@@ -813,6 +816,7 @@
 		555B81481AB13B8800E9B69C /* textures */ = {
 			isa = PBXGroup;
 			children = (
+				550058161B33120200B08E5E /* restore.png */,
 				55BA4AC21B1B5D8E00C3647F /* GameSprite.plist */,
 				55BA4AC31B1B5D8E00C3647F /* GameSprite.png */,
 				55BA4AC41B1B5D8E00C3647F /* UI.plist */,
@@ -1184,6 +1188,7 @@
 				5584ED7D1ADD614900C793EB /* Laser_Shot23.wav in Resources */,
 				5087E78417EB970100C73F5D /* Icon-57.png in Resources */,
 				55F635E11B088E07008F4158 /* README.txt in Resources */,
+				550058171B33120200B08E5E /* restore.png in Resources */,
 				55BA4AC71B1B5D8E00C3647F /* GameSprite.png in Resources */,
 				5584ED591ADCEA9700C793EB /* LaserRifle_Shot06.wav in Resources */,
 				552CB5611AC8FF090071DA60 /* tailEffect.fsh in Resources */,
@@ -1210,6 +1215,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				550058181B33121600B08E5E /* restore.png in Resources */,
 				55BA4ACA1B1B5DD000C3647F /* GameSprite.plist in Resources */,
 				55BA4ACB1B1B5DD000C3647F /* GameSprite.png in Resources */,
 				55BA4ACC1B1B5DD000C3647F /* UI.plist in Resources */,

@@ -35,7 +35,7 @@ StoreEventHandler::StoreEventHandler() {
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(CCStoreConsts::EVENT_MARKET_PURCHASE_STARTED, CC_CALLBACK_1(StoreEventHandler::onMarketPurchaseStarted, this));
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(CCStoreConsts::EVENT_MARKET_PURCHASE_VERIFICATION, CC_CALLBACK_1(StoreEventHandler::onMarketPurchaseVerification, this));
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(CCStoreConsts::EVENT_RESTORE_TRANSACTION_FINISHED, CC_CALLBACK_1(StoreEventHandler::onRestoreTransactionsFinished, this));
-    Director::getInstance()->getEventDispatcher()->addCustomEventListener(CCStoreConsts::EVENT_RESTORE_TRANSACTION_STARTED, CC_CALLBACK_1(StoreEventHandler::onMarketItemsRefreshStarted, this));
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(CCStoreConsts::EVENT_RESTORE_TRANSACTION_STARTED, CC_CALLBACK_1(StoreEventHandler::onRestoreTransactionsStarted, this));
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(CCStoreConsts::EVENT_SOOMLA_STORE_INITIALIZED, CC_CALLBACK_1(StoreEventHandler::onSoomlaStoreInitialized, this));
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(CCStoreConsts::EVENT_UNEXPECTED_ERROR_IN_STORE, CC_CALLBACK_1(StoreEventHandler::onUnexpectedErrorInStore, this));
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(CCStoreConsts::EVENT_IAB_SERVICE_STARTED, CC_CALLBACK_1(StoreEventHandler::onIabServiceStarted, this));
@@ -163,6 +163,11 @@ void StoreEventHandler::onRestoreTransactionsFinished(EventCustom *event) {
     __Dictionary *eventData = (__Dictionary *)event->getUserData();
     __Bool *success = dynamic_cast<__Bool *>(eventData->objectForKey(CCStoreConsts::DICT_ELEMENT_SUCCESS));
     CCSoomlaUtils::logDebug(TAG, __String::createWithFormat("RestoreTransactionsFinished: %s", success ? "YES" : "NO")->getCString());
+
+    if(success->getValue())
+        MessageBox(UtilityHelper::getLocalString("RESTORE_OK").c_str(), "");
+    else
+        MessageBox(UtilityHelper::getLocalString("RESTORE_FAILED").c_str(), "");
     NativeBridge::getInstance()->hideIndicatorView();
 }
 

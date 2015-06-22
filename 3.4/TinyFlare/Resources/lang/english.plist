@@ -88,5 +88,9 @@
 	<string>The bomb props,the explosion barrage around your aircraft, help you get rid of the enemy.</string>
 	<key>NET_ERROR</key>
 	<string>Please check the network for connections!</string>
+	<key>RESTORE_OK</key>
+	<string>Restore purchases successed!</string>
+	<key>RESTORE_FAILED</key>
+	<string>Restore purchases failed!</string>
 </dict>
 </plist>

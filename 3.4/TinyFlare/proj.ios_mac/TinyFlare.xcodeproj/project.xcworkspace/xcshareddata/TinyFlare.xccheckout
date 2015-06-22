@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>19B5149E-8934-4371-8901-90762D40C51B</string>
 	<key>IDESourceControlProjectName</key>
-	<string>TinyFlare</string>
+	<string>project</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>B21A601E1A9BC8D2FC57E848C52F99145476039E</key>
 		<string>github.com:lwwhb/MyCocos2dxGame.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>3.4/TinyFlare/proj.ios_mac/TinyFlare.xcodeproj</string>
+	<string>3.4/TinyFlare/proj.ios_mac/TinyFlare.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>B21A601E1A9BC8D2FC57E848C52F99145476039E</key>

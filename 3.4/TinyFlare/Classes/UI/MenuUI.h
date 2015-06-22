@@ -22,8 +22,9 @@ public:
 private:
     void pressPlayGameBtn(Ref* p,TouchEventType eventType);
     void pressRemoveADSBtn(Ref* p,TouchEventType eventType);
-    void pressRankBtn(Ref* p,TouchEventType eventType);
-    void pressShareBtn(Ref* p,TouchEventType eventType);
+    //void pressRankBtn(Ref* p,TouchEventType eventType);
+    //void pressShareBtn(Ref* p,TouchEventType eventType);
+    void pressRestoreBtn(Ref* p,TouchEventType eventType);
     void pressHelpBtn(Ref* p,TouchEventType eventType);
     
     void onKeyReleased(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event *unused_event);
@@ -35,6 +36,7 @@ private:
 //    cocos2d::ui::Button*     m_pRankBtn;
 //    cocos2d::ui::Button*     m_pShareBtn;
     cocos2d::ui::Button*     m_pHelpBtn;
+    cocos2d::ui::Button*     m_pRestoreBtn;
     
     cocos2d::ui::ImageView*     m_pMenuBg;
     cocos2d::ui::TextBMFont*    m_pGameTitle;

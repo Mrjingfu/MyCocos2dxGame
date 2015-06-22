@@ -680,7 +680,7 @@ void ActorsManager::update(float delta)
             if(player && (player->getActorState() != ActorState::AS_DEAD))
             {
                 float dist = enemy->getPosition().distance(playerPos);
-                if (dist <= player->getRadius()) {
+                if (dist <= player->getRadius() && enemy->getActorState() != ActorState::AS_UNDERCONTROL) {
                     enemy->setActorState(ActorState::AS_DEAD);
                     if(player->getBufferType() & BufferType::BT_PROTECTED)
                         StageManager::getInstance()->addScore(enemy->getScore());
