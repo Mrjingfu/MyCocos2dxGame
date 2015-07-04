@@ -1,8 +1,8 @@
 #include "AppDelegate.h"
-#include "HelloWorldScene.h"
-
+#include "LogoScene.h"
+#include "SimpleAudioEngine.h"
 USING_NS_CC;
-
+using namespace CocosDenshion;
 AppDelegate::AppDelegate() {
 
 }
@@ -38,6 +38,21 @@ bool AppDelegate::applicationDidFinishLaunching() {
         director->setOpenGLView(glview);
     }
 
+    std::vector<std::string> searchPaths;
+    searchPaths.push_back("maps");
+    searchPaths.push_back("lang");
+    searchPaths.push_back("fonts");
+    searchPaths.push_back("music");
+    searchPaths.push_back("sounds");
+    searchPaths.push_back("shaders");
+    searchPaths.push_back("particles");
+    searchPaths.push_back("textures");
+    searchPaths.push_back("models");
+    FileUtils::getInstance()->setSearchPaths(searchPaths);
+    
+    director->setClearColor(Color4F(153.0f/255.0f, 204.0f/255.0f, 1.0f, 1.0f));
+    //director->setClearColor(Color4F(115.0f/255.0f, 218.0f/255.0f, 1.0f, 1.0f));
+    //director->setClearColor(Color4F(181.0f/255.0f, 235.0f/255.0f, 99.0f/255.0f, 1.0f));
     // turn on display FPS
     director->setDisplayStats(true);
 
@@ -47,7 +62,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     register_all_packages();
 
     // create a scene. it's an autorelease object
-    auto scene = HelloWorld::createScene();
+    auto scene = LogoScene::createScene();
 
     // run
     director->runWithScene(scene);
@@ -60,7 +75,7 @@ void AppDelegate::applicationDidEnterBackground() {
     Director::getInstance()->stopAnimation();
 
     // if you use SimpleAudioEngine, it must be pause
-    // SimpleAudioEngine::getInstance()->pauseBackgroundMusic();
+    SimpleAudioEngine::getInstance()->pauseBackgroundMusic();
 }
 
 // this function will be called when the app is active again
@@ -68,5 +83,5 @@ void AppDelegate::applicationWillEnterForeground() {
     Director::getInstance()->startAnimation();
 
     // if you use SimpleAudioEngine, it must resume here
-    // SimpleAudioEngine::getInstance()->resumeBackgroundMusic();
+    SimpleAudioEngine::getInstance()->resumeBackgroundMusic();
 }
