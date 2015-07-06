@@ -25,12 +25,20 @@ public:
     
     cocos2d::Vec3 getOffset() const { return m_Offset; }
     float getGroundRadius() { return MAX(m_fCellRadius*m_MapSize.width, m_fCellRadius*m_MapSize.height); }
+    cocos2d::Size  getMapSize() const { return m_MapSize; }
     
     void setCamera(cocos2d::Camera* camera) { m_pCamera = camera; }
     
     cocos2d::Vector<GroundCell*> getNeighborCells(GroundCell* currentCell);
-protected:
+    
+    float getCellRadius() const { return m_fCellRadius; }
+    
+    GroundCell* getNextCell(int nextIndexX, int nextIndexY);
+    
+    void flipIndexCell(int indexX, int indexY);
     void setCurrentCellTypeOK();
+    void showArrow();
+protected:
     // 处理输入
     virtual void onTouchesBegan(const std::vector<cocos2d::Touch*>& touches, cocos2d::Event *event);
     virtual void onTouchesMoved(const std::vector<cocos2d::Touch*>& touches, cocos2d::Event *event);

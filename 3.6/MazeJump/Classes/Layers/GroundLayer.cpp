@@ -8,6 +8,7 @@
 
 #include "GroundLayer.h"
 #include "UtilityHelper.h"
+#include "GroundLayer.h"
 USING_NS_CC;
 
 GroundLayer* GroundLayer::create(const std::string& tmxFile)
@@ -122,84 +123,200 @@ Vector<GroundCell*> GroundLayer::getNeighborCells(GroundCell* currentCell)
     Vector<GroundCell*> cells;
     if(currentCell != nullptr)
     {
-        for (int i = currentCell->getIndexY()-1; i <= currentCell->getIndexY()+1; ++i) {
-            for (int j = currentCell->getIndexX()-1; j <= currentCell->getIndexX()+1; ++j) {
-                if(i == currentCell->getIndexY() && j == currentCell->getIndexX())
-                    continue;
-                if( i < 0 || i >= m_MapSize.height || j<0 || j >= m_MapSize.width)
-                    continue;
-                else
-                {
-                    int index = i*m_MapSize.height + j;
-                    GroundCell* neighborCell = m_GroundCellList.at(index);
-                    if(neighborCell && m_pPlayer)
+        ///down
+        int indexX = currentCell->getIndexX();
+        int indexY = currentCell->getIndexY()-1;
+        if(indexY >= 0 && indexY < m_MapSize.height)
+        {
+            int index = indexY*m_MapSize.height + indexX;
+            GroundCell* neighborCell = m_GroundCellList.at(index);
+            if(neighborCell && m_pPlayer)
+            {
+                switch (m_pPlayer->getType()) {
+                    case Player::PT_STRENGTH:
                     {
-                        switch (m_pPlayer->getType()) {
-                            case Player::PT_STRENGTH:
-                                {
-                                    if (neighborCell->getType() == GroundCell::CT_NOT || neighborCell->getType() == GroundCell::CT_BOMB) {
-                                        cells.pushBack(neighborCell);
-                                    }
-                                }
-                                break;
-                                
-                            default:
-                                break;
+                        if (neighborCell->getType() == GroundCell::CT_NOT || neighborCell->getType() == GroundCell::CT_BOMB) {
+                            cells.pushBack(neighborCell);
                         }
                     }
+                    break;
+                        
+                    default:
+                        break;
                 }
             }
         }
+        ////up
+        indexX = currentCell->getIndexX();
+        indexY = currentCell->getIndexY()+1;
+        if(indexY >= 0 && indexY < m_MapSize.height)
+        {
+            int index = indexY*m_MapSize.height + indexX;
+            GroundCell* neighborCell = m_GroundCellList.at(index);
+            if(neighborCell && m_pPlayer)
+            {
+                switch (m_pPlayer->getType()) {
+                    case Player::PT_STRENGTH:
+                    {
+                        if (neighborCell->getType() == GroundCell::CT_NOT || neighborCell->getType() == GroundCell::CT_BOMB) {
+                            cells.pushBack(neighborCell);
+                        }
+                    }
+                        break;
+                        
+                    default:
+                        break;
+                }
+            }
+        }
+        ///left
+        indexX = currentCell->getIndexX() - 1;
+        indexY = currentCell->getIndexY();
+        if(indexX >= 0 && indexX < m_MapSize.width)
+        {
+            int index = indexY*m_MapSize.height + indexX;
+            GroundCell* neighborCell = m_GroundCellList.at(index);
+            if(neighborCell && m_pPlayer)
+            {
+                switch (m_pPlayer->getType()) {
+                    case Player::PT_STRENGTH:
+                    {
+                        if (neighborCell->getType() == GroundCell::CT_NOT || neighborCell->getType() == GroundCell::CT_BOMB) {
+                            cells.pushBack(neighborCell);
+                        }
+                    }
+                        break;
+                        
+                    default:
+                        break;
+                }
+            }
+        }
+        ////right
+        indexX = currentCell->getIndexX() + 1;
+        indexY = currentCell->getIndexY();
+        if(indexX >= 0 && indexX < m_MapSize.width)
+        {
+            int index = indexY*m_MapSize.height + indexX;
+            GroundCell* neighborCell = m_GroundCellList.at(index);
+            if(neighborCell && m_pPlayer)
+            {
+                switch (m_pPlayer->getType()) {
+                    case Player::PT_STRENGTH:
+                    {
+                        if (neighborCell->getType() == GroundCell::CT_NOT || neighborCell->getType() == GroundCell::CT_BOMB) {
+                            cells.pushBack(neighborCell);
+                        }
+                    }
+                        break;
+                        
+                    default:
+                        break;
+                }
+            }
+        }
+
     }
     return cells;
 }
+GroundCell* GroundLayer::getNextCell(int nextIndexX, int nextIndexY)
+{
+    int nextIndex = nextIndexY*m_MapSize.height + nextIndexX;
+    return m_GroundCellList.at(nextIndex);
+}
+
+void GroundLayer::flipIndexCell(int indexX, int indexY)
+{
+    if(indexX < 0 || indexX >= m_MapSize.width)
+        return;
+    if(indexY < 0 || indexY >= m_MapSize.height)
+        return;
+    
+    int index = indexY*m_MapSize.width + indexX;
+    m_pCurrentCell = m_GroundCellList.at(index);
+    if(m_pCurrentCell && m_pPlayer)
+    {
+        RotateTo* ratateTo = nullptr;
+        switch (m_pPlayer->getPlayerState()) {
+            case Player::PS_MOVE_LEFT:
+                ratateTo = RotateTo::create(0.3f, Vec3(-180,0,0));
+                break;
+            case Player::PS_MOVE_RIGHT:
+                ratateTo = RotateTo::create(0.3f, Vec3(180,0,0));
+                break;
+            case Player::PS_MOVE_UP:
+                ratateTo = RotateTo::create(0.3f, Vec3(0,0,180));
+                break;
+            case Player::PS_MOVE_DOWN:
+                ratateTo = RotateTo::create(0.3f, Vec3(0,0,-180));
+                break;
+            default:
+                break;
+        }
+        
+        MoveTo* moveTo = MoveTo::create(0.3f, Vec3(m_pCurrentCell->getPositionX(), 2, m_pCurrentCell->getPositionZ()));
+        Spawn* spawn = Spawn::createWithTwoActions(ratateTo, moveTo);
+        CallFunc* callFunc = CallFunc::create(CC_CALLBACK_0(GroundLayer::setCurrentCellTypeOK,this));
+        Sequence* sequence = Sequence::create(spawn, callFunc, NULL);
+        m_pCurrentCell->runAction(sequence);
+    }
+}
+
 void GroundLayer::setCurrentCellTypeOK()
 {
     if(m_pCurrentCell)
     {
         m_pCurrentCell->setType(GroundCell::CT_OK);
-        m_pPlayer = Player::create(Player::PT_STRENGTH);
-        if(m_pPlayer)
+        if(m_pPlayer == nullptr)
         {
-            m_pPlayer->setCameraMask((unsigned short)CameraFlag::USER1);
-            m_pPlayer->setPosition3D(m_pCurrentCell->getPosition3D());
-            addChild(m_pPlayer);
-        }
-
-        Vector<GroundCell*> neighborCells = getNeighborCells(m_pCurrentCell);
-        for (int i = 0; i < neighborCells.size(); ++i) {
-            GroundCell* cell = neighborCells.at(i);
-            if(cell)
+            m_pPlayer = Player::create(Player::PT_STRENGTH, this);
+            if(m_pPlayer)
             {
-                if(cell->getIndexY() == m_pCurrentCell->getIndexY())
-                {
-                    if (cell->getIndexX() > m_pCurrentCell->getIndexX()) {
-                        m_pArrowRight->setVisible(true);
-                        m_pArrowRight->setIndexX(cell->getIndexX());
-                        m_pArrowRight->setIndexY(cell->getIndexY());
-                        m_pArrowRight->setPosition3D(cell->getPosition3D() + Vec3(0,2,0));
-                    }
-                    else if(cell->getIndexX() < m_pCurrentCell->getIndexX()) {
-                        m_pArrowLeft->setVisible(true);
-                        m_pArrowLeft->setIndexX(cell->getIndexX());
-                        m_pArrowLeft->setIndexY(cell->getIndexY());
-                        m_pArrowLeft->setPosition3D(cell->getPosition3D() + Vec3(0,2,0));
-                    }
+                m_pPlayer->setIndexX(m_pCurrentCell->getIndexX());
+                m_pPlayer->setIndexY(m_pCurrentCell->getIndexY());
+                m_pPlayer->setCameraMask((unsigned short)CameraFlag::USER1);
+                m_pPlayer->setPosition3D(m_pCurrentCell->getPosition3D());
+                m_pPlayer->setPlayerState(Player::PS_IDLE);
+                addChild(m_pPlayer);
+            }
+        }
+    }
+}
+void GroundLayer::showArrow()
+{
+    Vector<GroundCell*> neighborCells = getNeighborCells(m_pCurrentCell);
+    for (int i = 0; i < neighborCells.size(); ++i) {
+        GroundCell* cell = neighborCells.at(i);
+        if(cell)
+        {
+            if(cell->getIndexY() == m_pCurrentCell->getIndexY())
+            {
+                if (cell->getIndexX() > m_pCurrentCell->getIndexX()) {
+                    m_pArrowRight->setVisible(true);
+                    m_pArrowRight->setIndexX(cell->getIndexX());
+                    m_pArrowRight->setIndexY(cell->getIndexY());
+                    m_pArrowRight->setPosition3D(cell->getPosition3D() + Vec3(0,2,0));
                 }
-                if(cell->getIndexX() == m_pCurrentCell->getIndexX())
-                {
-                    if (cell->getIndexY() > m_pCurrentCell->getIndexY()) {
-                        m_pArrowUp->setVisible(true);
-                        m_pArrowUp->setIndexX(cell->getIndexX());
-                        m_pArrowUp->setIndexY(cell->getIndexY());
-                        m_pArrowUp->setPosition3D(cell->getPosition3D() + Vec3(0,2,0));
-                    }
-                    else if(cell->getIndexY() < m_pCurrentCell->getIndexY()) {
-                        m_pArrowDown->setVisible(true);
-                        m_pArrowDown->setIndexX(cell->getIndexX());
-                        m_pArrowDown->setIndexY(cell->getIndexY());
-                        m_pArrowDown->setPosition3D(cell->getPosition3D() + Vec3(0,2,0));
-                    }
+                else if(cell->getIndexX() < m_pCurrentCell->getIndexX()) {
+                    m_pArrowLeft->setVisible(true);
+                    m_pArrowLeft->setIndexX(cell->getIndexX());
+                    m_pArrowLeft->setIndexY(cell->getIndexY());
+                    m_pArrowLeft->setPosition3D(cell->getPosition3D() + Vec3(0,2,0));
+                }
+            }
+            if(cell->getIndexX() == m_pCurrentCell->getIndexX())
+            {
+                if (cell->getIndexY() > m_pCurrentCell->getIndexY()) {
+                    m_pArrowUp->setVisible(true);
+                    m_pArrowUp->setIndexX(cell->getIndexX());
+                    m_pArrowUp->setIndexY(cell->getIndexY());
+                    m_pArrowUp->setPosition3D(cell->getPosition3D() + Vec3(0,2,0));
+                }
+                else if(cell->getIndexY() < m_pCurrentCell->getIndexY()) {
+                    m_pArrowDown->setVisible(true);
+                    m_pArrowDown->setIndexX(cell->getIndexX());
+                    m_pArrowDown->setIndexY(cell->getIndexY());
+                    m_pArrowDown->setPosition3D(cell->getPosition3D() + Vec3(0,2,0));
                 }
             }
         }
@@ -221,8 +338,7 @@ void GroundLayer::onTouchesBegan(const std::vector<Touch*>& touches, Event *even
                     if(ray.intersects(cell->getAABB()) && cell->getType() == GroundCell::CT_NOT)
                     {
                         m_pCurrentCell = cell;
-                        CCLOG("x = %d y = %d", m_pCurrentCell->getIndexX(), m_pCurrentCell->getIndexY());
-                        RotateTo* ratateTo = RotateTo::create(0.5f, Vec3(0,0,180));
+                        RotateTo* ratateTo = RotateTo::create(0.5f, Vec3(180,0,0));
                         MoveTo* moveTo = MoveTo::create(0.5f, Vec3(cell->getPositionX(), 2, cell->getPositionZ()));
                         Spawn* spawn = Spawn::createWithTwoActions(ratateTo, moveTo);
                         CallFunc* callFunc = CallFunc::create(CC_CALLBACK_0(GroundLayer::setCurrentCellTypeOK,this));
@@ -235,7 +351,7 @@ void GroundLayer::onTouchesBegan(const std::vector<Touch*>& touches, Event *even
         }
         else
         {
-            if(m_pArrowDown)
+            if(m_pArrowDown && m_pArrowDown->isVisible())
             {
                 if(ray.intersects(m_pArrowDown->getAABB()) && m_pArrowDown->getType() == Arrow::AT_DOWN)
                 {
@@ -243,9 +359,11 @@ void GroundLayer::onTouchesBegan(const std::vector<Touch*>& touches, Event *even
                     m_pArrowLeft->setVisible(false);
                     m_pArrowRight->setVisible(false);
                     m_pArrowUp->setVisible(false);
+                    if (m_pPlayer)
+                        m_pPlayer->setPlayerState(Player::PS_MOVE_DOWN);
                 }
             }
-            if(m_pArrowLeft)
+            if(m_pArrowLeft && m_pArrowLeft->isVisible())
             {
                 if(ray.intersects(m_pArrowLeft->getAABB()) && m_pArrowLeft->getType() == Arrow::AT_LEFT)
                 {
@@ -253,9 +371,11 @@ void GroundLayer::onTouchesBegan(const std::vector<Touch*>& touches, Event *even
                     m_pArrowLeft->setVisible(false);
                     m_pArrowRight->setVisible(false);
                     m_pArrowUp->setVisible(false);
+                    if (m_pPlayer)
+                        m_pPlayer->setPlayerState(Player::PS_MOVE_LEFT);
                 }
             }
-            if(m_pArrowRight)
+            if(m_pArrowRight && m_pArrowRight->isVisible())
             {
                 if(ray.intersects(m_pArrowRight->getAABB()) && m_pArrowRight->getType() == Arrow::AT_RIGHT)
                 {
@@ -263,9 +383,11 @@ void GroundLayer::onTouchesBegan(const std::vector<Touch*>& touches, Event *even
                     m_pArrowLeft->setVisible(false);
                     m_pArrowRight->setVisible(false);
                     m_pArrowUp->setVisible(false);
+                    if (m_pPlayer)
+                        m_pPlayer->setPlayerState(Player::PS_MOVE_RIGHT);
                 }
             }
-            if(m_pArrowUp)
+            if(m_pArrowUp && m_pArrowUp->isVisible())
             {
                 if(ray.intersects(m_pArrowUp->getAABB()) && m_pArrowUp->getType() == Arrow::AT_UP)
                 {
@@ -273,6 +395,8 @@ void GroundLayer::onTouchesBegan(const std::vector<Touch*>& touches, Event *even
                     m_pArrowLeft->setVisible(false);
                     m_pArrowRight->setVisible(false);
                     m_pArrowUp->setVisible(false);
+                    if (m_pPlayer)
+                        m_pPlayer->setPlayerState(Player::PS_MOVE_UP);
                 }
             }
         }

@@ -47,6 +47,7 @@
 		521A8E6419F0C34300D177D7 /* Default-667h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 521A8E6219F0C34300D177D7 /* Default-667h@2x.png */; };
 		521A8E6519F0C34300D177D7 /* Default-736h@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 521A8E6319F0C34300D177D7 /* Default-736h@3x.png */; };
 		52B47A471A53D09C004E4C60 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B47A461A53D09B004E4C60 /* Security.framework */; };
+		5535FC131B47B88D00197B27 /* GameController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5535FC111B47B88D00197B27 /* GameController.cpp */; };
 		5542EEB61B3942FE00CD9496 /* MenuScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5542EEB41B3942FE00CD9496 /* MenuScene.cpp */; };
 		5542EEB91B3943B900CD9496 /* LevelSelectScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5542EEB71B3943B900CD9496 /* LevelSelectScene.cpp */; };
 		5542EEBC1B3943C600CD9496 /* GameScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5542EEBA1B3943C600CD9496 /* GameScene.cpp */; };
@@ -170,6 +171,8 @@
 		521A8E6219F0C34300D177D7 /* Default-667h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-667h@2x.png"; sourceTree = "<group>"; };
 		521A8E6319F0C34300D177D7 /* Default-736h@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-736h@3x.png"; sourceTree = "<group>"; };
 		52B47A461A53D09B004E4C60 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.1.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
+		5535FC111B47B88D00197B27 /* GameController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameController.cpp; sourceTree = "<group>"; };
+		5535FC121B47B88D00197B27 /* GameController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameController.h; sourceTree = "<group>"; };
 		5542EEB41B3942FE00CD9496 /* MenuScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MenuScene.cpp; sourceTree = "<group>"; };
 		5542EEB51B3942FE00CD9496 /* MenuScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuScene.h; sourceTree = "<group>"; };
 		5542EEB71B3943B900CD9496 /* LevelSelectScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LevelSelectScene.cpp; sourceTree = "<group>"; };
@@ -340,6 +343,7 @@
 		46880B8319C43A87006E1F66 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				5535FC101B47B87E00197B27 /* Controllers */,
 				55F3B9991B4580660090BE1A /* Utilities */,
 				55C7F21E1B3AEEDD0046B048 /* Sprites */,
 				55781EF41B393D370070BB08 /* Layers */,
@@ -397,6 +401,15 @@
 			name = Icons;
 			path = ios;
 			sourceTree = SOURCE_ROOT;
+		};
+		5535FC101B47B87E00197B27 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				5535FC111B47B88D00197B27 /* GameController.cpp */,
+				5535FC121B47B88D00197B27 /* GameController.h */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
 		};
 		5542EEBD1B395D0500CD9496 /* models */ = {
 			isa = PBXGroup;
@@ -682,6 +695,7 @@
 				55F3B99C1B45808B0090BE1A /* UtilityHelper.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				55C8908E1B46B3C8009AF1DA /* Player.cpp in Sources */,
+				5535FC131B47B88D00197B27 /* GameController.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				5542EEBC1B3943C600CD9496 /* GameScene.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
