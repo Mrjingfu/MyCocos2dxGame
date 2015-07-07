@@ -8,6 +8,7 @@
 
 #include "GameScene.h"
 #include "GroundLayer.h"
+#include "GameController.h"
 USING_NS_CC;
 
 Scene* GameScene::createScene()
@@ -38,22 +39,23 @@ bool GameScene::init()
         return false;
     }
     
-    GroundLayer* ground = GroundLayer::create("5x5-1.tmx");
-    ground->setPosition(Vec2(0,-20));
-    addChild( ground );
-    ground->setCameraMask((unsigned short)CameraFlag::USER1);
-    
-    m_pMainCamera = Camera::create();
-    if(!m_pMainCamera)
-        return false;
-    m_pMainCamera->setPosition3D(Vec3(0,-500*cosf(M_PI/3),500*sinf(M_PI/3)));
-    m_pMainCamera->lookAt(ground->getPosition3D());
-    addChild(m_pMainCamera);
-    //if(Director::getInstance()->getZEye() > 640.0f)
-    //    m_pMainCamera->setPositionZ(640.0f);
-    m_pMainCamera->setCameraFlag(CameraFlag::USER1);
-    
-    
-    
     return true;
+}
+void GameScene::onEnter()
+{
+    Layer::onEnter();
+    
+    scheduleUpdate();
+    if(!GameController::getInstance()->init(this))
+        CCLOGERROR("GameController init failed!");
+}
+void GameScene::onExit()
+{
+    GameController::getInstance()->destroy();
+    unscheduleUpdate();
+    Layer::onExit();
+}
+void GameScene::update(float delta)
+{
+    GameController::getInstance()->update(delta);
 }

@@ -60,11 +60,20 @@ bool GroundLayer::init(const std::string& tmxFile)
                     cell->setType(GroundCell::CellType(type));
                     m_fCellRadius = cell->getRadius();
                     cell->setPosition3D(Vec3(i*(cell->getRadius())*2, -40, j*(cell->getRadius())*2));
+                    cell->setScale(0.9f);
                     cell->setOpacity(0);
                     cell->setIndexX(j);
                     cell->setIndexY(i);
                     addChild( cell );
                     m_GroundCellList.pushBack(cell);
+                    
+                    switch (type) {
+                        case GroundCell::CT_HIDE:
+                            cell->setVisible(false);
+                            break;
+                        default:
+                            break;
+                    }
 
                     float time = cocos2d::random(0.8f, 1.6f);
                     EaseBackInOut* moveTo = EaseBackInOut::create(MoveTo::create(time, Vec3(i*(cell->getRadius())*2, 0, j*(cell->getRadius())*2)));
@@ -84,12 +93,14 @@ bool GroundLayer::init(const std::string& tmxFile)
     if(!m_pArrowUp)
         return false;
     m_pArrowUp->setVisible(false);
+    m_pArrowUp->setScale(0.9f);
     addChild(m_pArrowUp);
     
     m_pArrowDown = Arrow::create(Arrow::AT_DOWN);
     if(!m_pArrowDown)
         return false;
     m_pArrowDown->setVisible(false);
+    m_pArrowDown->setScale(0.9f);
     m_pArrowDown->setRotation3D(Vec3(0,180,0));
     addChild(m_pArrowDown);
     
@@ -97,6 +108,7 @@ bool GroundLayer::init(const std::string& tmxFile)
     if(!m_pArrowLeft)
         return false;
     m_pArrowLeft->setVisible(false);
+    m_pArrowLeft->setScale(0.9f);
     m_pArrowLeft->setRotation3D(Vec3(0,90,0));
     addChild(m_pArrowLeft);
     
@@ -104,6 +116,7 @@ bool GroundLayer::init(const std::string& tmxFile)
     if(!m_pArrowRight)
         return false;
     m_pArrowRight->setVisible(false);
+    m_pArrowRight->setScale(0.9f);
     m_pArrowRight->setRotation3D(Vec3(0,-90,0));
     addChild(m_pArrowRight);
     
@@ -276,6 +289,7 @@ void GroundLayer::setCurrentCellTypeOK()
                 m_pPlayer->setIndexY(m_pCurrentCell->getIndexY());
                 m_pPlayer->setCameraMask((unsigned short)CameraFlag::USER1);
                 m_pPlayer->setPosition3D(m_pCurrentCell->getPosition3D());
+                m_pPlayer->setScale(0.9f);
                 m_pPlayer->setPlayerState(Player::PS_IDLE);
                 addChild(m_pPlayer);
             }

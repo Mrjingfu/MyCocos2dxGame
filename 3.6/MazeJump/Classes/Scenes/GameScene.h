@@ -23,6 +23,9 @@ public:
     // implement the "static create()" method manually
     CREATE_FUNC(GameScene);
     
+    virtual void onEnter();
+    virtual void onExit();
+    virtual void update(float delta);
 private:
     cocos2d::Camera*    m_pMainCamera;
 };

@@ -9,9 +9,9 @@
 #ifndef __MazeJump__Arrow__
 #define __MazeJump__Arrow__
 
-#include "cocos2d.h"
+#include "EffectSprite3D.h"
 
-class Arrow : public cocos2d::Sprite3D
+class Arrow : public EffectSprite3D
 {
 public:
     typedef enum

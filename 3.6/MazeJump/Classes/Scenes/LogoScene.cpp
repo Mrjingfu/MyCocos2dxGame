@@ -9,6 +9,7 @@
 #include "LogoScene.h"
 #include "GroundLayer.h"
 #include "MenuScene.h"
+#include "GameScene.h"
 USING_NS_CC;
 
 Scene* LogoScene::createScene()
@@ -67,6 +68,6 @@ void LogoScene::precache()
 void LogoScene::endcache()
 {
     m_pLogoSprite->setVisible(false);
-    auto scene = MenuScene::createScene();
+    auto scene = GameScene::createScene();
     Director::getInstance()->replaceScene(scene);
 }

@@ -9,6 +9,21 @@
 #ifndef __MazeJump__GameController__
 #define __MazeJump__GameController__
 
-#include <stdio.h>
+#include "cocos2d.h"
+#include "GroundLayer.h"
+class GameController : public cocos2d::Ref
+{
+    GameController();
+    ~GameController();
+public:
+    static GameController* getInstance();
+    bool init(cocos2d::Layer* pMainLayer);
+    void update(float delta);
+    void destroy();
+private:
+    cocos2d::Layer*     m_pMainLayer;
+    GroundLayer*        m_pGroundLayer;
+    cocos2d::Camera*    m_pMainCamera;
+};
 
 #endif /* defined(__MazeJump__GameController__) */

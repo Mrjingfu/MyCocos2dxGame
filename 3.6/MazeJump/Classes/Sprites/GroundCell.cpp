@@ -7,6 +7,7 @@
 //
 
 #include "GroundCell.h"
+#include "OutlineEffect3D.h"
 USING_NS_CC;
 
 GroundCell* GroundCell::create()
@@ -17,6 +18,12 @@ GroundCell* GroundCell::create()
         cell->setTexture("IndexColor.png");
         cell->_contentSize = cell->getBoundingBox().size;
         cell->m_fRadius = cell->_contentSize.width*0.5f;
+        
+        OutlineEffect3D* outline = OutlineEffect3D::create();
+        outline->setOutlineColor(Vec3(0.3f, 0.3f, 0.3f));
+        outline->setOutlineWidth(0.03f);
+        cell->addEffect(outline, 1);
+        
         cell->autorelease();
         return cell;
     }

@@ -9,9 +9,9 @@
 #ifndef __MazeJump__Player__
 #define __MazeJump__Player__
 
-#include "cocos2d.h"
+#include "EffectSprite3D.h"
 class GroundLayer;
-class Player : public cocos2d::Sprite3D
+class Player : public EffectSprite3D
 {
 public:
     typedef enum

@@ -9,19 +9,18 @@
 #ifndef __MazeJump__GroundCell__
 #define __MazeJump__GroundCell__
 
-#include "cocos2d.h"
+#include "EffectSprite3D.h"
 
-class GroundCell : public cocos2d::Sprite3D
+class GroundCell : public EffectSprite3D
 {
 public:
     typedef enum
     {
-        CT_HIDE,    ///不显示 RED
-        CT_NOT,     ///没翻转 ORANGE
-        CT_OK,      ///已翻转 GREEN
-        CT_STEP,    ///台阶   BLUE
-        CT_MASTER,  ///有怪物 CYAN
-        CT_BOMB,    ///有炸弹 YELLOW
+        CT_HIDE = 0,    ///不显示 RED
+        CT_NOT,         ///没翻转 ORANGE
+        CT_OK,          ///已翻转 GREEN
+        CT_MASTER,      ///有怪物 CYAN
+        CT_BOMB,        ///有炸弹 YELLOW
         CT_UNKNOWN
     }
     CellType;
