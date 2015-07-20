@@ -26,7 +26,7 @@ protected:
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
     std::string     m_strVertSource;
     std::string     m_strFragSource;
-    EventListenerCustom* m_pBackgroundListener;
+    cocos2d::EventListenerCustom* m_pBackgroundListener;
 #endif
 };
 
