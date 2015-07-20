@@ -123,6 +123,8 @@ void EffectSprite3D::draw(cocos2d::Renderer *renderer, const cocos2d::Mat4 &tran
         _command.init(_globalZOrder);
         _command.func = CC_CALLBACK_0(BaseEffect3D::drawWithSprite3D, m_pDefaultEffect, this, transform);
         renderer->addCommand(&_command);
+        if(m_pDefaultEffect->isUseSpriteSelfDraw())
+            Sprite3D::draw(renderer, transform, flags);
     }
     
     for(auto &effect : m_effects)

@@ -22,21 +22,26 @@ bool OutlineEffect3D::init()
     bool ret = initGLProgramState("outLine.vert", "outLine.frag");
     if(ret)
     {
-        m_pGLprogramstate->setUniformVec3("OutLineColor", m_OutlineColor);
-        m_pGLprogramstate->setUniformFloat("OutlineWidth", m_fOutlineWidth);
+        m_pGLprogramstate->setUniformVec3("u_outlineColor", m_OutlineColor);
+        m_pGLprogramstate->setUniformFloat("u_outlineWidth", m_fOutlineWidth);
+        m_bDirty = true;
     }
     return ret;
 }
 void OutlineEffect3D::drawWithSprite3D(EffectSprite3D* sprite, const cocos2d::Mat4 &transform)
 {
-    auto mesh = sprite->getMesh();
-    long offset = 0;
-    for (auto i = 0; i < mesh->getMeshVertexAttribCount(); i++)
+    if(m_bDirty && sprite)
     {
-        auto meshvertexattrib = mesh->getMeshVertexAttribute(i);
-        
-        m_pGLprogramstate->setVertexAttribPointer(s_attributeNames[meshvertexattrib.vertexAttrib], meshvertexattrib.size, meshvertexattrib.type, GL_FALSE, mesh->getVertexSizeInBytes(), (GLvoid*)offset);
-        offset += meshvertexattrib.attribSizeBytes;
+        auto mesh = sprite->getMesh();
+        long offset = 0;
+        for (auto i = 0; i < mesh->getMeshVertexAttribCount(); i++)
+        {
+            auto meshvertexattrib = mesh->getMeshVertexAttribute(i);
+            
+            m_pGLprogramstate->setVertexAttribPointer(s_attributeNames[meshvertexattrib.vertexAttrib], meshvertexattrib.size, meshvertexattrib.type, GL_FALSE, mesh->getVertexSizeInBytes(), (GLvoid*)offset);
+            offset += meshvertexattrib.attribSizeBytes;
+        }
+        m_bDirty = false;
     }
     //draw
     {
@@ -60,14 +65,14 @@ void OutlineEffect3D::drawWithSprite3D(EffectSprite3D* sprite, const cocos2d::Ma
         glCullFace(GL_BACK);
         glDisable(GL_CULL_FACE);
     }
-
 }
 void OutlineEffect3D::setOutlineColor(const cocos2d::Vec3& color)
 {
     if(m_OutlineColor != color)
     {
         m_OutlineColor = color;
-        m_pGLprogramstate->setUniformVec3("OutLineColor", m_OutlineColor);
+        m_pGLprogramstate->setUniformVec3("u_outlineColor", m_OutlineColor);
+        m_bDirty = true;
     }
 }
 void OutlineEffect3D::setOutlineWidth(float width)
@@ -75,6 +80,7 @@ void OutlineEffect3D::setOutlineWidth(float width)
     if(m_fOutlineWidth != width)
     {
         m_fOutlineWidth = width;
-        m_pGLprogramstate->setUniformFloat("OutlineWidth", m_fOutlineWidth);
+        m_pGLprogramstate->setUniformFloat("u_outlineWidth", m_fOutlineWidth);
+        m_bDirty = true;
     }
 }

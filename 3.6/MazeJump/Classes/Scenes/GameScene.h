@@ -12,6 +12,7 @@
 #include "cocos2d.h"
 class GameScene : public cocos2d::Layer
 {
+    friend class GroundLayer;
     GameScene();
 public:
     // there's no 'id' in cpp, so we recommend returning the class instance pointer
@@ -27,7 +28,8 @@ public:
     virtual void onExit();
     virtual void update(float delta);
 private:
-    cocos2d::Camera*    m_pMainCamera;
+    void gameWin();
+    void gameLose(); 
 };
 
 #endif /* defined(__MazeJump__GameScene__) */

@@ -10,7 +10,7 @@
 USING_NS_CC;
 
 BaseEffect3D::BaseEffect3D()
-: m_pGLprogramstate(nullptr)
+: m_pGLprogramstate(nullptr),m_bDirty(false),m_bSpriteSelfDraw(false)
 {
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
     _backgroundListener = EventListenerCustom::create(EVENT_RENDERER_RECREATED,

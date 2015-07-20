@@ -79,6 +79,32 @@
 		5542EED61B3960C700CD9496 /* IndexColor.png in Resources */ = {isa = PBXBuildFile; fileRef = 5542EED41B3960AB00CD9496 /* IndexColor.png */; };
 		55781EF81B393D6F0070BB08 /* LogoScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55781EF61B393D6F0070BB08 /* LogoScene.cpp */; };
 		55781EF91B393D890070BB08 /* LogoScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55781EF61B393D6F0070BB08 /* LogoScene.cpp */; };
+		558215821B5C6B6B00173C79 /* life.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5582157E1B5C6B6B00173C79 /* life.mp3 */; };
+		558215831B5C6B6B00173C79 /* start.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5582157F1B5C6B6B00173C79 /* start.mp3 */; };
+		558215841B5C6B6B00173C79 /* stoneflip.wav in Resources */ = {isa = PBXBuildFile; fileRef = 558215801B5C6B6B00173C79 /* stoneflip.wav */; };
+		558215851B5C6B6B00173C79 /* stoneroll.wav in Resources */ = {isa = PBXBuildFile; fileRef = 558215811B5C6B6B00173C79 /* stoneroll.wav */; };
+		558215861B5C6B7F00173C79 /* life.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5582157E1B5C6B6B00173C79 /* life.mp3 */; };
+		558215871B5C6B7F00173C79 /* start.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5582157F1B5C6B6B00173C79 /* start.mp3 */; };
+		558215881B5C6B7F00173C79 /* stoneflip.wav in Resources */ = {isa = PBXBuildFile; fileRef = 558215801B5C6B6B00173C79 /* stoneflip.wav */; };
+		558215891B5C6B7F00173C79 /* stoneroll.wav in Resources */ = {isa = PBXBuildFile; fileRef = 558215811B5C6B6B00173C79 /* stoneroll.wav */; };
+		5582158B1B5C7EA000173C79 /* levels.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5582158A1B5C7EA000173C79 /* levels.plist */; };
+		5582158E1B5C7FA700173C79 /* LevelsManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5582158C1B5C7FA700173C79 /* LevelsManager.cpp */; };
+		558215921B5C820D00173C79 /* levels.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5582158A1B5C7EA000173C79 /* levels.plist */; };
+		558215931B5C87EE00173C79 /* LevelsManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5582158C1B5C7FA700173C79 /* LevelsManager.cpp */; };
+		558215BB1B5CB9CE00173C79 /* castle.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 558215AD1B5CB9CE00173C79 /* castle.mtl */; };
+		558215BC1B5CB9CE00173C79 /* castle.obj in Resources */ = {isa = PBXBuildFile; fileRef = 558215AE1B5CB9CE00173C79 /* castle.obj */; };
+		558215C91B5CBA7C00173C79 /* castle.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 558215AD1B5CB9CE00173C79 /* castle.mtl */; };
+		558215CA1B5CBA7C00173C79 /* castle.obj in Resources */ = {isa = PBXBuildFile; fileRef = 558215AE1B5CB9CE00173C79 /* castle.obj */; };
+		558215D91B5CBBF100173C79 /* DecoratorLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 558215D71B5CBBF100173C79 /* DecoratorLayer.cpp */; };
+		558215DA1B5CBBFE00173C79 /* DecoratorLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 558215D71B5CBBF100173C79 /* DecoratorLayer.cpp */; };
+		558215DD1B5CC69400173C79 /* FogEffect3D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 558215DB1B5CC69400173C79 /* FogEffect3D.cpp */; };
+		558215E01B5CC9A400173C79 /* fog.frag in Resources */ = {isa = PBXBuildFile; fileRef = 558215DE1B5CC9A400173C79 /* fog.frag */; };
+		558215E11B5CC9A400173C79 /* fog.vert in Resources */ = {isa = PBXBuildFile; fileRef = 558215DF1B5CC9A400173C79 /* fog.vert */; };
+		558215E21B5CC9B000173C79 /* fog.frag in Resources */ = {isa = PBXBuildFile; fileRef = 558215DE1B5CC9A400173C79 /* fog.frag */; };
+		558215E31B5CC9B000173C79 /* fog.vert in Resources */ = {isa = PBXBuildFile; fileRef = 558215DF1B5CC9A400173C79 /* fog.vert */; };
+		558215E41B5CC9B700173C79 /* FogEffect3D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 558215DB1B5CC69400173C79 /* FogEffect3D.cpp */; };
+		558215E71B5D239C00173C79 /* skydome.c3b in Resources */ = {isa = PBXBuildFile; fileRef = 558215E61B5D239C00173C79 /* skydome.c3b */; };
+		558215E81B5D23B200173C79 /* skydome.c3b in Resources */ = {isa = PBXBuildFile; fileRef = 558215E61B5D239C00173C79 /* skydome.c3b */; };
 		55C7F2191B3AE6DB0046B048 /* GroundLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55C7F2171B3AE6DB0046B048 /* GroundLayer.cpp */; };
 		55C7F2211B3AEEF10046B048 /* GroundCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55C7F21F1B3AEEF10046B048 /* GroundCell.cpp */; };
 		55C7F2221B3AEF180046B048 /* GroundCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55C7F21F1B3AEEF10046B048 /* GroundCell.cpp */; };
@@ -216,6 +242,22 @@
 		5542EED41B3960AB00CD9496 /* IndexColor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IndexColor.png; sourceTree = "<group>"; };
 		55781EF61B393D6F0070BB08 /* LogoScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LogoScene.cpp; sourceTree = "<group>"; };
 		55781EF71B393D6F0070BB08 /* LogoScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogoScene.h; sourceTree = "<group>"; };
+		5582157E1B5C6B6B00173C79 /* life.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = life.mp3; sourceTree = "<group>"; };
+		5582157F1B5C6B6B00173C79 /* start.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = start.mp3; sourceTree = "<group>"; };
+		558215801B5C6B6B00173C79 /* stoneflip.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = stoneflip.wav; sourceTree = "<group>"; };
+		558215811B5C6B6B00173C79 /* stoneroll.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = stoneroll.wav; sourceTree = "<group>"; };
+		5582158A1B5C7EA000173C79 /* levels.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = levels.plist; sourceTree = "<group>"; };
+		5582158C1B5C7FA700173C79 /* LevelsManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LevelsManager.cpp; sourceTree = "<group>"; };
+		5582158D1B5C7FA700173C79 /* LevelsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelsManager.h; sourceTree = "<group>"; };
+		558215AD1B5CB9CE00173C79 /* castle.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = castle.mtl; sourceTree = "<group>"; };
+		558215AE1B5CB9CE00173C79 /* castle.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = castle.obj; sourceTree = "<group>"; };
+		558215D71B5CBBF100173C79 /* DecoratorLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DecoratorLayer.cpp; sourceTree = "<group>"; };
+		558215D81B5CBBF100173C79 /* DecoratorLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DecoratorLayer.h; sourceTree = "<group>"; };
+		558215DB1B5CC69400173C79 /* FogEffect3D.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FogEffect3D.cpp; sourceTree = "<group>"; };
+		558215DC1B5CC69400173C79 /* FogEffect3D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FogEffect3D.h; sourceTree = "<group>"; };
+		558215DE1B5CC9A400173C79 /* fog.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = fog.frag; sourceTree = "<group>"; };
+		558215DF1B5CC9A400173C79 /* fog.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = fog.vert; sourceTree = "<group>"; };
+		558215E61B5D239C00173C79 /* skydome.c3b */ = {isa = PBXFileReference; lastKnownFileType = file; path = skydome.c3b; sourceTree = "<group>"; };
 		55C7F2171B3AE6DB0046B048 /* GroundLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GroundLayer.cpp; sourceTree = "<group>"; };
 		55C7F2181B3AE6DB0046B048 /* GroundLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroundLayer.h; sourceTree = "<group>"; };
 		55C7F21F1B3AEEF10046B048 /* GroundCell.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GroundCell.cpp; sourceTree = "<group>"; };
@@ -444,6 +486,8 @@
 				55066CCE1B4BAB4E007FCF3F /* BaseEffect3D.h */,
 				55066CCF1B4BAB4E007FCF3F /* OutlineEffect3D.cpp */,
 				55066CD01B4BAB4E007FCF3F /* OutlineEffect3D.h */,
+				558215DB1B5CC69400173C79 /* FogEffect3D.cpp */,
+				558215DC1B5CC69400173C79 /* FogEffect3D.h */,
 			);
 			path = Effects;
 			sourceTree = "<group>";
@@ -460,6 +504,9 @@
 		5542EEBD1B395D0500CD9496 /* models */ = {
 			isa = PBXGroup;
 			children = (
+				558215E61B5D239C00173C79 /* skydome.c3b */,
+				558215AD1B5CB9CE00173C79 /* castle.mtl */,
+				558215AE1B5CB9CE00173C79 /* castle.obj */,
 				55C890961B46C2B8009AF1DA /* strength.mtl */,
 				55C890971B46C2B8009AF1DA /* strength.obj */,
 				55C8907B1B46A291009AF1DA /* arrow.mtl */,
@@ -501,6 +548,8 @@
 		5542EED11B395E1300CD9496 /* shaders */ = {
 			isa = PBXGroup;
 			children = (
+				558215DE1B5CC9A400173C79 /* fog.frag */,
+				558215DF1B5CC9A400173C79 /* fog.vert */,
 				55066CD51B4BAC26007FCF3F /* outLine.frag */,
 				55066CD61B4BAC26007FCF3F /* outLine.vert */,
 			);
@@ -510,6 +559,10 @@
 		5542EED21B395E1300CD9496 /* sounds */ = {
 			isa = PBXGroup;
 			children = (
+				5582157E1B5C6B6B00173C79 /* life.mp3 */,
+				5582157F1B5C6B6B00173C79 /* start.mp3 */,
+				558215801B5C6B6B00173C79 /* stoneflip.wav */,
+				558215811B5C6B6B00173C79 /* stoneroll.wav */,
 			);
 			path = sounds;
 			sourceTree = "<group>";
@@ -529,6 +582,8 @@
 			children = (
 				55C7F2171B3AE6DB0046B048 /* GroundLayer.cpp */,
 				55C7F2181B3AE6DB0046B048 /* GroundLayer.h */,
+				558215D71B5CBBF100173C79 /* DecoratorLayer.cpp */,
+				558215D81B5CBBF100173C79 /* DecoratorLayer.h */,
 			);
 			path = Layers;
 			sourceTree = "<group>";
@@ -572,6 +627,7 @@
 				55066CE11B4BD07E007FCF3F /* 5x5-3.tmx */,
 				55066CDB1B4BCC6C007FCF3F /* 5x5-2.tmx */,
 				55F3B98B1B4522360090BE1A /* 5x5-1.tmx */,
+				5582158A1B5C7EA000173C79 /* levels.plist */,
 			);
 			path = maps;
 			sourceTree = "<group>";
@@ -581,6 +637,8 @@
 			children = (
 				55F3B99A1B45808B0090BE1A /* UtilityHelper.cpp */,
 				55F3B99B1B45808B0090BE1A /* UtilityHelper.h */,
+				5582158C1B5C7FA700173C79 /* LevelsManager.cpp */,
+				5582158D1B5C7FA700173C79 /* LevelsManager.h */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -630,7 +688,7 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0640;
 				TargetAttributes = {
 					1D6058900D05DD3D006BFB54 = {
 						DevelopmentTeam = 6NA476HDMX;
@@ -687,9 +745,12 @@
 			files = (
 				55F3B98C1B4522360090BE1A /* 5x5-1.tmx in Resources */,
 				55C890981B46C2B8009AF1DA /* strength.mtl in Resources */,
+				558215821B5C6B6B00173C79 /* life.mp3 in Resources */,
 				5087E78117EB970100C73F5D /* Icon-120.png in Resources */,
+				558215831B5C6B6B00173C79 /* start.mp3 in Resources */,
 				55C890821B46A291009AF1DA /* platform.obj in Resources */,
 				55C890811B46A291009AF1DA /* platform.mtl in Resources */,
+				558215851B5C6B6B00173C79 /* stoneroll.wav in Resources */,
 				55066CD81B4BAC26007FCF3F /* outLine.vert in Resources */,
 				5087E78617EB970100C73F5D /* Icon-76.png in Resources */,
 				55EEE8011B3BA48700B16AEE /* logo.png in Resources */,
@@ -697,8 +758,10 @@
 				5087E77F17EB970100C73F5D /* Default@2x.png in Resources */,
 				50EF629917ECD46A001EB2F8 /* Icon-100.png in Resources */,
 				55C8907F1B46A291009AF1DA /* arrow.mtl in Resources */,
+				558215E01B5CC9A400173C79 /* fog.frag in Resources */,
 				5087E78317EB970100C73F5D /* Icon-152.png in Resources */,
 				5087E77D17EB970100C73F5D /* Default-568h@2x.png in Resources */,
+				5582158B1B5C7EA000173C79 /* levels.plist in Resources */,
 				55C890991B46C2B8009AF1DA /* strength.obj in Resources */,
 				5087E78517EB970100C73F5D /* Icon-72.png in Resources */,
 				5542EED51B3960AB00CD9496 /* IndexColor.png in Resources */,
@@ -706,14 +769,19 @@
 				521A8E6519F0C34300D177D7 /* Default-736h@3x.png in Resources */,
 				55066CE21B4BD07E007FCF3F /* 5x5-3.tmx in Resources */,
 				55F3B98F1B4527F30090BE1A /* colorlist.png in Resources */,
+				558215841B5C6B6B00173C79 /* stoneflip.wav in Resources */,
+				558215BC1B5CB9CE00173C79 /* castle.obj in Resources */,
 				55066CE91B4BD92B007FCF3F /* 5x5-5.tmx in Resources */,
 				55C890801B46A291009AF1DA /* arrow.obj in Resources */,
 				55066CD71B4BAC26007FCF3F /* outLine.frag in Resources */,
 				50EF62A317ECD613001EB2F8 /* Icon-50.png in Resources */,
+				558215BB1B5CB9CE00173C79 /* castle.mtl in Resources */,
+				558215E71B5D239C00173C79 /* skydome.c3b in Resources */,
 				55066CE51B4BD6B9007FCF3F /* 5x5-4.tmx in Resources */,
 				5087E78017EB970100C73F5D /* Icon-114.png in Resources */,
 				50EF62A217ECD613001EB2F8 /* Icon-29.png in Resources */,
 				50EF629617ECD46A001EB2F8 /* Icon-40.png in Resources */,
+				558215E11B5CC9A400173C79 /* fog.vert in Resources */,
 				5087E78217EB970100C73F5D /* Icon-144.png in Resources */,
 				50EF629817ECD46A001EB2F8 /* Icon-80.png in Resources */,
 				5087E78417EB970100C73F5D /* Icon-57.png in Resources */,
@@ -727,6 +795,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				558215E81B5D23B200173C79 /* skydome.c3b in Resources */,
+				558215E21B5CC9B000173C79 /* fog.frag in Resources */,
+				558215E31B5CC9B000173C79 /* fog.vert in Resources */,
+				558215C91B5CBA7C00173C79 /* castle.mtl in Resources */,
+				558215CA1B5CBA7C00173C79 /* castle.obj in Resources */,
+				558215921B5C820D00173C79 /* levels.plist in Resources */,
+				558215861B5C6B7F00173C79 /* life.mp3 in Resources */,
+				558215871B5C6B7F00173C79 /* start.mp3 in Resources */,
+				558215881B5C6B7F00173C79 /* stoneflip.wav in Resources */,
+				558215891B5C6B7F00173C79 /* stoneroll.wav in Resources */,
 				55066CEB1B4BD934007FCF3F /* 5x5-5.tmx in Resources */,
 				55066CEC1B4BD934007FCF3F /* 5x5-6.tmx in Resources */,
 				55066CE61B4BD6C2007FCF3F /* 5x5-4.tmx in Resources */,
@@ -761,14 +839,17 @@
 				55C7F2211B3AEEF10046B048 /* GroundCell.cpp in Sources */,
 				55781EF81B393D6F0070BB08 /* LogoScene.cpp in Sources */,
 				5542EEB91B3943B900CD9496 /* LevelSelectScene.cpp in Sources */,
+				5582158E1B5C7FA700173C79 /* LevelsManager.cpp in Sources */,
 				55066CD21B4BAB4E007FCF3F /* OutlineEffect3D.cpp in Sources */,
 				55066CCA1B4BAB2C007FCF3F /* EffectSprite3D.cpp in Sources */,
 				55C890891B46A2E7009AF1DA /* Arrow.cpp in Sources */,
 				55F3B99C1B45808B0090BE1A /* UtilityHelper.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
+				558215DD1B5CC69400173C79 /* FogEffect3D.cpp in Sources */,
 				55C8908E1B46B3C8009AF1DA /* Player.cpp in Sources */,
 				5535FC131B47B88D00197B27 /* GameController.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
+				558215D91B5CBBF100173C79 /* DecoratorLayer.cpp in Sources */,
 				5542EEBC1B3943C600CD9496 /* GameScene.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
 				55C7F2191B3AE6DB0046B048 /* GroundLayer.cpp in Sources */,
@@ -779,6 +860,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				558215E41B5CC9B700173C79 /* FogEffect3D.cpp in Sources */,
+				558215DA1B5CBBFE00173C79 /* DecoratorLayer.cpp in Sources */,
+				558215931B5C87EE00173C79 /* LevelsManager.cpp in Sources */,
 				55066CD31B4BAB5B007FCF3F /* BaseEffect3D.cpp in Sources */,
 				55066CD41B4BAB5B007FCF3F /* OutlineEffect3D.cpp in Sources */,
 				55066CCB1B4BAB33007FCF3F /* EffectSprite3D.cpp in Sources */,
@@ -887,10 +971,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CODE_SIGN_IDENTITY = "Mac Developer: haibo wang (FT8YEJMWBH)";
+				COMBINE_HIDPI_IMAGES = YES;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -922,10 +1006,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CODE_SIGN_IDENTITY = "Mac Developer: haibo wang (FT8YEJMWBH)";
+				COMBINE_HIDPI_IMAGES = YES;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = mac/Prefix.pch;

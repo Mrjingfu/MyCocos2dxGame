@@ -107,7 +107,10 @@ void Player::setPlayerState(PlayerState state)
 void Player::onEnterIdle()
 {
     if(m_pGround)
+    {
         m_pGround->showArrow();
+        m_pGround->checkWinOrLose();
+    }
 }
 void Player::onEnterMoveLeft()
 {

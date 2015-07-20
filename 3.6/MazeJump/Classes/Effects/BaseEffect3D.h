@@ -15,6 +15,7 @@ class BaseEffect3D : public cocos2d::Ref
 {
 public:
     cocos2d::GLProgramState* getGLProgramState() const { return m_pGLprogramstate; }
+    bool isUseSpriteSelfDraw() const { return m_bSpriteSelfDraw; }
 protected:
     bool initGLProgramState(const std::string& vertFilename, const std::string& fragFilename);
     BaseEffect3D();
@@ -28,6 +29,8 @@ protected:
     std::string     m_strFragSource;
     EventListenerCustom* m_pBackgroundListener;
 #endif
+    bool                        m_bDirty;
+    bool                        m_bSpriteSelfDraw;
 };
 
 #endif /* defined(__Geometry_Wars__BaseEffect3D__) */

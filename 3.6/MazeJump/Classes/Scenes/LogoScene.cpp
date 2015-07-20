@@ -10,8 +10,10 @@
 #include "GroundLayer.h"
 #include "MenuScene.h"
 #include "GameScene.h"
+#include "LevelsManager.h"
+#include "SimpleAudioEngine.h"
 USING_NS_CC;
-
+using namespace CocosDenshion;
 Scene* LogoScene::createScene()
 {
     // 'scene' is an autorelease object
@@ -50,16 +52,23 @@ bool LogoScene::init()
     addChild(m_pLogoSprite);
     
     EaseSineOut* easeOut = EaseSineOut::create(FadeIn::create(1.0f));
-    DelayTime* delay = DelayTime::create(1.0f);
     CallFunc* callFunc = CallFunc::create(CC_CALLBACK_0(LogoScene::precache, this));
     
-    Sequence* sequence = Sequence::create( easeOut, delay, callFunc, NULL);
+    Sequence* sequence = Sequence::create( easeOut, callFunc, NULL);
     m_pLogoSprite->runAction(sequence);
     
     return true;
 }
 void LogoScene::precache()
 {
+    if(!LevelsManager::getInstance()->init("levels.plist"))
+        CCLOGERROR("no levels file!");
+    
+    SimpleAudioEngine::getInstance()->preloadEffect("life.mp3");
+    SimpleAudioEngine::getInstance()->preloadEffect("start.mp3");
+    SimpleAudioEngine::getInstance()->preloadEffect("stoneroll.wav");
+    SimpleAudioEngine::getInstance()->preloadEffect("stoneflip.wav");
+    SimpleAudioEngine::getInstance()->setEffectsVolume(0.5);
     CallFunc* callFunc = CallFunc::create(CC_CALLBACK_0(LogoScene::endcache, this));
     EaseSineOut* easeOut = EaseSineOut::create(FadeOut::create(1.0f));
     Sequence* sequence = Sequence::create(easeOut, callFunc, NULL);

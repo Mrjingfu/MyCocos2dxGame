@@ -38,6 +38,7 @@ public:
     void flipIndexCell(int indexX, int indexY);
     void setCurrentCellTypeOK();
     void showArrow();
+    void checkWinOrLose();
 protected:
     // 处理输入
     virtual void onTouchesBegan(const std::vector<cocos2d::Touch*>& touches, cocos2d::Event *event);

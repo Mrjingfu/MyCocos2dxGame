@@ -9,8 +9,10 @@
 #include "GroundLayer.h"
 #include "UtilityHelper.h"
 #include "GroundLayer.h"
+#include "SimpleAudioEngine.h"
+#include "GameScene.h"
 USING_NS_CC;
-
+using namespace CocosDenshion;
 GroundLayer* GroundLayer::create(const std::string& tmxFile)
 {
     GroundLayer *pRet = new(std::nothrow) GroundLayer();
@@ -75,11 +77,11 @@ bool GroundLayer::init(const std::string& tmxFile)
                             break;
                     }
 
-                    float time = cocos2d::random(0.8f, 1.6f);
+                    float time = cocos2d::random(1.0f, 2.0f);
                     EaseBackInOut* moveTo = EaseBackInOut::create(MoveTo::create(time, Vec3(i*(cell->getRadius())*2, 0, j*(cell->getRadius())*2)));
                     EaseExponentialIn* fadeIn = EaseExponentialIn::create(FadeIn::create(time*0.5f));
                     Spawn* spawn = Spawn::createWithTwoActions(moveTo, fadeIn);
-                    float delayTime = cocos2d::random(0.0f, 0.2f);
+                    float delayTime = cocos2d::random(0.0f, 0.5f);
                     DelayTime* delay = DelayTime::create(delayTime);
                     Sequence* sequence = Sequence::createWithTwoActions(delay, spawn);
                     cell->runAction(sequence);
@@ -88,6 +90,7 @@ bool GroundLayer::init(const std::string& tmxFile)
         }
         m_Offset = Vec3((m_MapSize.width-1)*m_fCellRadius , 0, (m_MapSize.height-1)*m_fCellRadius);
     }
+    SimpleAudioEngine::getInstance()->playEffect("stoneroll.wav");
     
     m_pArrowUp = Arrow::create(Arrow::AT_UP);
     if(!m_pArrowUp)
@@ -266,7 +269,7 @@ void GroundLayer::flipIndexCell(int indexX, int indexY)
             default:
                 break;
         }
-        
+        SimpleAudioEngine::getInstance()->playEffect("stoneflip.wav");
         MoveTo* moveTo = MoveTo::create(0.3f, Vec3(m_pCurrentCell->getPositionX(), 2, m_pCurrentCell->getPositionZ()));
         Spawn* spawn = Spawn::createWithTwoActions(ratateTo, moveTo);
         CallFunc* callFunc = CallFunc::create(CC_CALLBACK_0(GroundLayer::setCurrentCellTypeOK,this));
@@ -295,6 +298,49 @@ void GroundLayer::setCurrentCellTypeOK()
             }
         }
     }
+}
+void GroundLayer::checkWinOrLose()
+{
+    if(!m_pCurrentCell || !m_pPlayer)
+        return;
+    if(m_pCurrentCell->getType() == GroundCell::CT_NOT)
+        return;
+    if(m_pPlayer->getPlayerState() != Player::PS_IDLE)
+        return;
+    GameScene* gameScene = static_cast<GameScene*>(getParent());
+    if(!gameScene)
+        return;
+    Vector<GroundCell*> neighborCells = getNeighborCells(m_pCurrentCell);
+    for (int i = 0; i < neighborCells.size(); ++i) {
+        GroundCell* cell = neighborCells.at(i);
+        if(cell && cell->getType() == GroundCell::CT_NOT)
+            return;
+    }
+    bool win = true;
+    for (int i = 0; i<m_GroundCellList.size(); ++i) {
+        GroundCell* cell = m_GroundCellList.at(i);
+        if (!cell || cell->getType() == GroundCell::CT_NOT) {
+            win = false;
+            break;
+        }
+    }
+    if(win)
+    {
+           // EaseBackInOut* scaleTo = EaseBackInOut::create(ScaleTo::create(1.0f, 1.8f));
+            DelayTime* delay = DelayTime::create(2.0f);
+            CallFunc* callFunc = CallFunc::create(CC_CALLBACK_0(GameScene::gameWin,gameScene));
+            Sequence* sequence = Sequence::create(callFunc, delay, NULL);
+            this->runAction(sequence);
+    }
+    else
+    {
+        //EaseBackInOut* scaleTo = EaseBackInOut::create(ScaleTo::create(1.0f, 0.0f));
+        DelayTime* delay = DelayTime::create(2.0f);
+        CallFunc* callFunc = CallFunc::create(CC_CALLBACK_0(GameScene::gameLose,gameScene));
+        Sequence* sequence = Sequence::create(callFunc, delay, NULL);
+        this->runAction(sequence);
+    }
+    
 }
 void GroundLayer::showArrow()
 {
@@ -352,6 +398,7 @@ void GroundLayer::onTouchesBegan(const std::vector<Touch*>& touches, Event *even
                     if(ray.intersects(cell->getAABB()) && cell->getType() == GroundCell::CT_NOT)
                     {
                         m_pCurrentCell = cell;
+                        SimpleAudioEngine::getInstance()->playEffect("stoneflip.wav");
                         RotateTo* ratateTo = RotateTo::create(0.5f, Vec3(180,0,0));
                         MoveTo* moveTo = MoveTo::create(0.5f, Vec3(cell->getPositionX(), 2, cell->getPositionZ()));
                         Spawn* spawn = Spawn::createWithTwoActions(ratateTo, moveTo);

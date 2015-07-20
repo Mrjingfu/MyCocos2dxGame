@@ -27,7 +27,6 @@ Scene* GameScene::createScene()
 }
 GameScene::GameScene()
 {
-    m_pMainCamera = nullptr;
 }
 // on "init" you need to initialize your instance
 bool GameScene::init()
@@ -38,7 +37,6 @@ bool GameScene::init()
     {
         return false;
     }
-    
     return true;
 }
 void GameScene::onEnter()
@@ -58,4 +56,12 @@ void GameScene::onExit()
 void GameScene::update(float delta)
 {
     GameController::getInstance()->update(delta);
+}
+void GameScene::gameWin()
+{
+    CCLOG("gameWin");
+}
+void GameScene::gameLose()
+{
+    CCLOG("gameLose");
 }
