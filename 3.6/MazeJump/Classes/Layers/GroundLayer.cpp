@@ -62,8 +62,7 @@ bool GroundLayer::init(const std::string& tmxFile)
                     cell->setType(GroundCell::CellType(type));
                     m_fCellRadius = cell->getRadius();
                     cell->setPosition3D(Vec3(i*(cell->getRadius())*2, -40, j*(cell->getRadius())*2));
-                    cell->setScale(0.9f);
-                    cell->setOpacity(0);
+                    cell->setScale(0.0f);
                     cell->setIndexX(j);
                     cell->setIndexY(i);
                     addChild( cell );
@@ -79,8 +78,8 @@ bool GroundLayer::init(const std::string& tmxFile)
 
                     float time = cocos2d::random(1.0f, 2.0f);
                     EaseBackInOut* moveTo = EaseBackInOut::create(MoveTo::create(time, Vec3(i*(cell->getRadius())*2, 0, j*(cell->getRadius())*2)));
-                    EaseExponentialIn* fadeIn = EaseExponentialIn::create(FadeIn::create(time*0.5f));
-                    Spawn* spawn = Spawn::createWithTwoActions(moveTo, fadeIn);
+                    EaseSineIn* scaleTo = EaseSineIn::create(ScaleTo::create(1.0f, 0.9f));
+                    Spawn* spawn = Spawn::createWithTwoActions(moveTo, scaleTo);
                     float delayTime = cocos2d::random(0.0f, 0.5f);
                     DelayTime* delay = DelayTime::create(delayTime);
                     Sequence* sequence = Sequence::createWithTwoActions(delay, spawn);

@@ -11,7 +11,6 @@
 
 #include "cocos2d.h"
 #include "GroundLayer.h"
-#include "DecoratorLayer.h"
 class GameController : public cocos2d::Ref
 {
     GameController();
@@ -24,7 +23,6 @@ public:
 private:
     cocos2d::Layer*     m_pMainLayer;
     cocos2d::Skybox*    m_pSkyBox;
-    DecoratorLayer*     m_pDecoratorLayer;
     GroundLayer*        m_pGroundLayer;
     cocos2d::Camera*    m_pMainCamera;
 };

@@ -22,7 +22,6 @@ GameController::GameController()
 {
     m_pMainLayer        = nullptr;
     m_pSkyBox           = nullptr;
-    m_pDecoratorLayer   = nullptr;
     m_pGroundLayer      = nullptr;
     m_pMainCamera       = nullptr;
 }
@@ -34,25 +33,17 @@ bool GameController::init(Layer* pMainLayer)
     if(pMainLayer == nullptr)
         return false;
     m_pMainLayer = pMainLayer;
-    m_pSkyBox = Skybox::create("sky1.png", "sky1.png", "sky1_t.png", "sky1_b.png", "sky1.png", "sky1.png");
+    std::string skyTexName = LevelsManager::getInstance()->getCurrentLevelSkyTextureName();
+    std::string skyTexTop = skyTexName + "_t.png";
+    std::string skyTexBottom = skyTexName + "_b.png";
+    std::string skyTex = skyTexName + ".png";
+    m_pSkyBox = Skybox::create(skyTex, skyTex, skyTexTop, skyTexBottom, skyTex, skyTex);
     if(!m_pSkyBox)
         return false;
     m_pSkyBox->setScale(1000);
     m_pSkyBox->setCameraMask((unsigned short)CameraFlag::USER1);
     pMainLayer->addChild(m_pSkyBox);
     
-    Color4F fogColor = Color4F(255.0f/255.0f, 149.0f/225.0f, 148.0f/255.0f,1.0f);
-    Director::getInstance()->getRenderer()->setClearColor(fogColor);
-    Sequence* sequence = Sequence::create(EaseSineOut::create(RotateBy::create(10, 5)), EaseSineOut::create(RotateBy::create(20, -10)), EaseSineOut::create(RotateBy::create(10, 5)), nullptr);
-    RepeatForever* repeat = RepeatForever::create(sequence);
-    m_pSkyBox->runAction(repeat);
-    m_pDecoratorLayer = DecoratorLayer::create("castle.obj", fogColor);
-    if(!m_pDecoratorLayer)
-        return false;
-    m_pDecoratorLayer->setCameraMask((unsigned short)CameraFlag::USER1);
-    ///focus
-    m_pDecoratorLayer->setAnchorPoint(Vec2::ZERO);
-    m_pMainLayer->addChild(m_pDecoratorLayer);
     
     m_pGroundLayer = GroundLayer::create(LevelsManager::getInstance()->getCurrentLevelName());
     if(!m_pGroundLayer)
@@ -63,11 +54,11 @@ bool GameController::init(Layer* pMainLayer)
     m_pMainLayer->addChild(m_pGroundLayer);
     
     auto size = Director::getInstance()->getVisibleSize();
-    m_pMainCamera = Camera::createPerspective(60, size.width/size.height, 1, 5000);
+    m_pMainCamera = Camera::createPerspective(90, size.width/size.height, 1, 5000);
     if(!m_pMainCamera)
         return false;
     m_pMainCamera->setPosition3D(Vec3(0,m_pGroundLayer->getGroundRadius()*2.5f*cosf(M_PI/7.0f),m_pGroundLayer->getGroundRadius()*2.5f*sinf(M_PI/7.0f)) + m_pGroundLayer->getOffset());
-    m_pMainCamera->lookAt(m_pGroundLayer->getPosition3D() + m_pGroundLayer->getOffset());
+    m_pMainCamera->lookAt(m_pGroundLayer->getPosition3D() + m_pGroundLayer->getOffset() + Vec3(0,0,-5));
     m_pMainLayer->addChild(m_pMainCamera);
     m_pMainCamera->setCameraFlag(CameraFlag::USER1);
     m_pGroundLayer->setCamera(m_pMainCamera);
