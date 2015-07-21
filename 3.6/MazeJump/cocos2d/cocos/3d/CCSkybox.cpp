@@ -96,7 +96,14 @@ bool Skybox::init(const std::string& positive_x, const std::string& negative_x,
     auto texture = TextureCube::create(positive_x, negative_x, positive_y, negative_y, positive_z, negative_z);
     if (texture == nullptr)
         return false;
-    
+    ///lwwhb add 2015.7.21
+    Texture2D::TexParams tRepeatParams;
+    tRepeatParams.magFilter = GL_LINEAR;
+    tRepeatParams.minFilter = GL_LINEAR;
+    tRepeatParams.wrapS = GL_MIRRORED_REPEAT;
+    tRepeatParams.wrapT = GL_MIRRORED_REPEAT;
+    texture->setTexParameters(tRepeatParams);
+    //
     init();
     setTexture(texture);
     return true;

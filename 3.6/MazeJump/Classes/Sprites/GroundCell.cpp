@@ -15,7 +15,6 @@ GroundCell* GroundCell::create()
     auto cell = new (std::nothrow) GroundCell();
     if (cell && cell->initWithFile("platform.obj"))
     {
-        cell->setTexture("IndexColor.png");
         cell->_contentSize = cell->getBoundingBox().size;
         cell->m_fRadius = cell->_contentSize.width*0.5f;
         

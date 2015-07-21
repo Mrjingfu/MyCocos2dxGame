@@ -34,24 +34,23 @@ bool GameController::init(Layer* pMainLayer)
     if(pMainLayer == nullptr)
         return false;
     m_pMainLayer = pMainLayer;
-    m_pSkyBox = Sprite3D::create("skydome.c3b", "IndexColor.png");
-    if (!m_pSkyBox)
+    m_pSkyBox = Skybox::create("sky1.png", "sky1.png", "sky1_t.png", "sky1_b.png", "sky1.png", "sky1.png");
+    if(!m_pSkyBox)
         return false;
+    m_pSkyBox->setScale(1000);
     m_pSkyBox->setCameraMask((unsigned short)CameraFlag::USER1);
-    m_pSkyBox->setRotation3D(Vec3(-95,0,0));
-    m_pSkyBox->setScale(100);
-    m_pMainLayer->addChild(m_pSkyBox);
+    pMainLayer->addChild(m_pSkyBox);
     
     Sequence* sequence = Sequence::create(EaseSineOut::create(RotateBy::create(10, 5)), EaseSineOut::create(RotateBy::create(20, -10)), EaseSineOut::create(RotateBy::create(10, 5)), nullptr);
     RepeatForever* repeat = RepeatForever::create(sequence);
     m_pSkyBox->runAction(repeat);
-    m_pDecoratorLayer = DecoratorLayer::create();
+    m_pDecoratorLayer = DecoratorLayer::create("castle.obj", Color4F(255.0f/255.0f, 149.0f/225.0f, 148.0f/255.0f,1.0f));
     if(!m_pDecoratorLayer)
         return false;
     m_pDecoratorLayer->setCameraMask((unsigned short)CameraFlag::USER1);
     ///focus
     m_pDecoratorLayer->setAnchorPoint(Vec2::ZERO);
-    
+    m_pMainLayer->addChild(m_pDecoratorLayer);
     
     m_pGroundLayer = GroundLayer::create(LevelsManager::getInstance()->getCurrentLevelName());
     if(!m_pGroundLayer)
@@ -59,6 +58,7 @@ bool GameController::init(Layer* pMainLayer)
     m_pGroundLayer->setCameraMask((unsigned short)CameraFlag::USER1);
     ///focus
     m_pGroundLayer->setAnchorPoint(Vec2::ZERO);
+    m_pMainLayer->addChild(m_pGroundLayer);
     
     auto size = Director::getInstance()->getVisibleSize();
     m_pMainCamera = Camera::createPerspective(60, size.width/size.height, 1, 5000);
@@ -69,10 +69,6 @@ bool GameController::init(Layer* pMainLayer)
     m_pMainLayer->addChild(m_pMainCamera);
     m_pMainCamera->setCameraFlag(CameraFlag::USER1);
     m_pGroundLayer->setCamera(m_pMainCamera);
-    
-    m_pSkyBox->setPosition3D(m_pGroundLayer->getOffset() + Vec3(0, -100, 120));
-    m_pMainLayer->addChild(m_pDecoratorLayer);
-    m_pMainLayer->addChild(m_pGroundLayer);
     
     AmbientLight* ambLight = AmbientLight::create(Color3B(150, 150, 150));
     m_pMainLayer->addChild(ambLight);

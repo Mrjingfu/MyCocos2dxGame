@@ -522,11 +522,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Controllers/GameController.cpp"
-            timestampString = "459093091.585737"
+            timestampString = "459147258.906789"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "61"
-            endingLineNumber = "61"
+            startingLineNumber = "60"
+            endingLineNumber = "60"
             landmarkName = "GameController::init(Layer* pMainLayer)"
             landmarkType = "5">
          </BreakpointContent>
@@ -838,11 +838,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../cocos2d/cocos/3d/CCSkybox.cpp"
-            timestampString = "459054243.137138"
+            timestampString = "459138196.593003"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "155"
-            endingLineNumber = "155"
+            startingLineNumber = "162"
+            endingLineNumber = "162"
             landmarkName = "Skybox::onDraw(const Mat4&amp; transform, uint32_t flags)"
             landmarkType = "5">
          </BreakpointContent>
@@ -854,12 +854,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Layers/DecoratorLayer.cpp"
-            timestampString = "459077257.297515"
+            timestampString = "459135217.980989"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "25"
-            endingLineNumber = "25"
-            landmarkName = "DecoratorLayer::init()"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
+            landmarkName = "DecoratorLayer::init(const std::string&amp; modelFile, const cocos2d::Color4F&amp; fogColor)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1254,12 +1254,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Controllers/GameController.cpp"
-            timestampString = "459093091.585737"
+            timestampString = "459147258.906789"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "73"
-            endingLineNumber = "73"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
             landmarkName = "GameController::init(Layer* pMainLayer)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../cocos2d/cocos/3d/CCSkybox.cpp"
+            timestampString = "459138291.641973"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "169"
+            endingLineNumber = "169"
+            landmarkName = "Skybox::onDraw(const Mat4&amp; transform, uint32_t flags)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

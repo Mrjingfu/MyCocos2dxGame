@@ -23,7 +23,7 @@ public:
     void destroy();
 private:
     cocos2d::Layer*     m_pMainLayer;
-    cocos2d::Sprite3D*  m_pSkyBox;
+    cocos2d::Skybox*    m_pSkyBox;
     DecoratorLayer*     m_pDecoratorLayer;
     GroundLayer*        m_pGroundLayer;
     cocos2d::Camera*    m_pMainCamera;

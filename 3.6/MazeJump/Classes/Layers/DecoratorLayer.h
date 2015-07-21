@@ -15,9 +15,9 @@ class DecoratorLayer : public cocos2d::Layer
 {
     DecoratorLayer();
 public:
-    virtual bool init();
+    static DecoratorLayer* create(const std::string& modelFile, const cocos2d::Color4F& fogColor);
     
-    CREATE_FUNC(DecoratorLayer);
+    virtual bool init(const std::string& modelFile, const cocos2d::Color4F& fogColor);
 };
 
 #endif /* defined(__MazeJump__DecoratorLayer__) */
