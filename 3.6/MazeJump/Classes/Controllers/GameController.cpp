@@ -41,10 +41,12 @@ bool GameController::init(Layer* pMainLayer)
     m_pSkyBox->setCameraMask((unsigned short)CameraFlag::USER1);
     pMainLayer->addChild(m_pSkyBox);
     
+    Color4F fogColor = Color4F(255.0f/255.0f, 149.0f/225.0f, 148.0f/255.0f,1.0f);
+    Director::getInstance()->getRenderer()->setClearColor(fogColor);
     Sequence* sequence = Sequence::create(EaseSineOut::create(RotateBy::create(10, 5)), EaseSineOut::create(RotateBy::create(20, -10)), EaseSineOut::create(RotateBy::create(10, 5)), nullptr);
     RepeatForever* repeat = RepeatForever::create(sequence);
     m_pSkyBox->runAction(repeat);
-    m_pDecoratorLayer = DecoratorLayer::create("castle.obj", Color4F(255.0f/255.0f, 149.0f/225.0f, 148.0f/255.0f,1.0f));
+    m_pDecoratorLayer = DecoratorLayer::create("castle.obj", fogColor);
     if(!m_pDecoratorLayer)
         return false;
     m_pDecoratorLayer->setCameraMask((unsigned short)CameraFlag::USER1);
@@ -72,7 +74,7 @@ bool GameController::init(Layer* pMainLayer)
     
     AmbientLight* ambLight = AmbientLight::create(Color3B(150, 150, 150));
     m_pMainLayer->addChild(ambLight);
-    DirectionLight* directionLight = DirectionLight::create(Vec3(-3, -4, -2), Color3B(128, 128, 128));
+    DirectionLight* directionLight = DirectionLight::create(Vec3(-3, -4, -2), Color3B(158, 158, 158));
     m_pMainLayer->addChild(directionLight);
     
     return true;
