@@ -107,6 +107,18 @@
 		5592AE121B5F42640062AF08 /* MainScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5592AE071B5F2A0F0062AF08 /* MainScene.cpp */; };
 		5592AE151B5F4AF90062AF08 /* Runner.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5592AE131B5F4AF90062AF08 /* Runner.cpp */; };
 		5592AE161B5F6A7F0062AF08 /* Runner.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5592AE131B5F4AF90062AF08 /* Runner.cpp */; };
+		5592AE191B5FC2B30062AF08 /* TerrainCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5592AE171B5FC2B30062AF08 /* TerrainCell.cpp */; };
+		5592AE241B5FCFFD0062AF08 /* patterns.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5592AE231B5FCFFD0062AF08 /* patterns.plist */; };
+		5592AE281B5FD0550062AF08 /* startpoint.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 5592AE251B5FD0550062AF08 /* startpoint.mtl */; };
+		5592AE291B5FD0550062AF08 /* startpoint.obj in Resources */ = {isa = PBXBuildFile; fileRef = 5592AE261B5FD0550062AF08 /* startpoint.obj */; };
+		5592AE2A1B5FD0550062AF08 /* startpoint.png in Resources */ = {isa = PBXBuildFile; fileRef = 5592AE271B5FD0550062AF08 /* startpoint.png */; };
+		5592AE2F1B5FD1730062AF08 /* PatternsManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5592AE2D1B5FD1730062AF08 /* PatternsManager.cpp */; };
+		5592AE301B5FD7E30062AF08 /* patterns.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5592AE231B5FCFFD0062AF08 /* patterns.plist */; };
+		5592AE311B5FD7FE0062AF08 /* PatternsManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5592AE2D1B5FD1730062AF08 /* PatternsManager.cpp */; };
+		5592AE321B5FD8080062AF08 /* TerrainCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5592AE171B5FC2B30062AF08 /* TerrainCell.cpp */; };
+		5592AE331B5FE0D60062AF08 /* startpoint.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 5592AE251B5FD0550062AF08 /* startpoint.mtl */; };
+		5592AE341B5FE0D60062AF08 /* startpoint.obj in Resources */ = {isa = PBXBuildFile; fileRef = 5592AE261B5FD0550062AF08 /* startpoint.obj */; };
+		5592AE351B5FE0D60062AF08 /* startpoint.png in Resources */ = {isa = PBXBuildFile; fileRef = 5592AE271B5FD0550062AF08 /* startpoint.png */; };
 		55C7F2191B3AE6DB0046B048 /* GroundLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55C7F2171B3AE6DB0046B048 /* GroundLayer.cpp */; };
 		55C7F2211B3AEEF10046B048 /* GroundCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55C7F21F1B3AEEF10046B048 /* GroundCell.cpp */; };
 		55C7F2221B3AEF180046B048 /* GroundCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55C7F21F1B3AEEF10046B048 /* GroundCell.cpp */; };
@@ -263,6 +275,14 @@
 		5592AE0E1B5F2CFB0062AF08 /* RunController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RunController.h; sourceTree = "<group>"; };
 		5592AE131B5F4AF90062AF08 /* Runner.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Runner.cpp; sourceTree = "<group>"; };
 		5592AE141B5F4AF90062AF08 /* Runner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Runner.h; sourceTree = "<group>"; };
+		5592AE171B5FC2B30062AF08 /* TerrainCell.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TerrainCell.cpp; sourceTree = "<group>"; };
+		5592AE181B5FC2B30062AF08 /* TerrainCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TerrainCell.h; sourceTree = "<group>"; };
+		5592AE231B5FCFFD0062AF08 /* patterns.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = patterns.plist; sourceTree = "<group>"; };
+		5592AE251B5FD0550062AF08 /* startpoint.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = startpoint.mtl; sourceTree = "<group>"; };
+		5592AE261B5FD0550062AF08 /* startpoint.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = startpoint.obj; sourceTree = "<group>"; };
+		5592AE271B5FD0550062AF08 /* startpoint.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = startpoint.png; sourceTree = "<group>"; };
+		5592AE2D1B5FD1730062AF08 /* PatternsManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PatternsManager.cpp; sourceTree = "<group>"; };
+		5592AE2E1B5FD1730062AF08 /* PatternsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PatternsManager.h; sourceTree = "<group>"; };
 		55C7F2171B3AE6DB0046B048 /* GroundLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GroundLayer.cpp; sourceTree = "<group>"; };
 		55C7F2181B3AE6DB0046B048 /* GroundLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroundLayer.h; sourceTree = "<group>"; };
 		55C7F21F1B3AEEF10046B048 /* GroundCell.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GroundCell.cpp; sourceTree = "<group>"; };
@@ -509,6 +529,9 @@
 		5542EEBD1B395D0500CD9496 /* models */ = {
 			isa = PBXGroup;
 			children = (
+				5592AE251B5FD0550062AF08 /* startpoint.mtl */,
+				5592AE261B5FD0550062AF08 /* startpoint.obj */,
+				5592AE271B5FD0550062AF08 /* startpoint.png */,
 				5544E1F01B5E160E0049EB2D /* platform.png */,
 				55C890961B46C2B8009AF1DA /* strength.mtl */,
 				55C890971B46C2B8009AF1DA /* strength.obj */,
@@ -622,6 +645,8 @@
 				55C8908D1B46B3C8009AF1DA /* Player.h */,
 				5592AE131B5F4AF90062AF08 /* Runner.cpp */,
 				5592AE141B5F4AF90062AF08 /* Runner.h */,
+				5592AE171B5FC2B30062AF08 /* TerrainCell.cpp */,
+				5592AE181B5FC2B30062AF08 /* TerrainCell.h */,
 			);
 			path = Sprites;
 			sourceTree = "<group>";
@@ -636,6 +661,7 @@
 				55066CDB1B4BCC6C007FCF3F /* 5x5-2.tmx */,
 				55F3B98B1B4522360090BE1A /* 5x5-1.tmx */,
 				5582158A1B5C7EA000173C79 /* levels.plist */,
+				5592AE231B5FCFFD0062AF08 /* patterns.plist */,
 			);
 			path = maps;
 			sourceTree = "<group>";
@@ -647,6 +673,8 @@
 				55F3B99B1B45808B0090BE1A /* UtilityHelper.h */,
 				5582158C1B5C7FA700173C79 /* LevelsManager.cpp */,
 				5582158D1B5C7FA700173C79 /* LevelsManager.h */,
+				5592AE2D1B5FD1730062AF08 /* PatternsManager.cpp */,
+				5592AE2E1B5FD1730062AF08 /* PatternsManager.h */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -759,6 +787,8 @@
 				558215831B5C6B6B00173C79 /* start.mp3 in Resources */,
 				55C890821B46A291009AF1DA /* platform.obj in Resources */,
 				55C890811B46A291009AF1DA /* platform.mtl in Resources */,
+				5592AE241B5FCFFD0062AF08 /* patterns.plist in Resources */,
+				5592AE2A1B5FD0550062AF08 /* startpoint.png in Resources */,
 				558215851B5C6B6B00173C79 /* stoneroll.wav in Resources */,
 				55066CD81B4BAC26007FCF3F /* outLine.vert in Resources */,
 				5087E78617EB970100C73F5D /* Icon-76.png in Resources */,
@@ -775,6 +805,7 @@
 				5087E78517EB970100C73F5D /* Icon-72.png in Resources */,
 				5542EED51B3960AB00CD9496 /* IndexColor.png in Resources */,
 				55066CEA1B4BD92B007FCF3F /* 5x5-6.tmx in Resources */,
+				5592AE281B5FD0550062AF08 /* startpoint.mtl in Resources */,
 				521A8E6519F0C34300D177D7 /* Default-736h@3x.png in Resources */,
 				55066CE21B4BD07E007FCF3F /* 5x5-3.tmx in Resources */,
 				55F3B98F1B4527F30090BE1A /* colorlist.png in Resources */,
@@ -784,6 +815,7 @@
 				55066CD71B4BAC26007FCF3F /* outLine.frag in Resources */,
 				50EF62A317ECD613001EB2F8 /* Icon-50.png in Resources */,
 				5544E1E21B5DD2AF0049EB2D /* sky1_t.png in Resources */,
+				5592AE291B5FD0550062AF08 /* startpoint.obj in Resources */,
 				55066CE51B4BD6B9007FCF3F /* 5x5-4.tmx in Resources */,
 				5087E78017EB970100C73F5D /* Icon-114.png in Resources */,
 				5544E1E11B5DD2AF0049EB2D /* sky1_b.png in Resources */,
@@ -802,6 +834,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5592AE331B5FE0D60062AF08 /* startpoint.mtl in Resources */,
+				5592AE341B5FE0D60062AF08 /* startpoint.obj in Resources */,
+				5592AE351B5FE0D60062AF08 /* startpoint.png in Resources */,
+				5592AE301B5FD7E30062AF08 /* patterns.plist in Resources */,
 				5544E1F21B5E161A0049EB2D /* platform.png in Resources */,
 				5544E1E41B5DD2BD0049EB2D /* sky1_b.png in Resources */,
 				5544E1E51B5DD2BD0049EB2D /* sky1_t.png in Resources */,
@@ -847,9 +883,11 @@
 				5592AE091B5F2A0F0062AF08 /* MainScene.cpp in Sources */,
 				55781EF81B393D6F0070BB08 /* LogoScene.cpp in Sources */,
 				5542EEB91B3943B900CD9496 /* LevelSelectScene.cpp in Sources */,
+				5592AE2F1B5FD1730062AF08 /* PatternsManager.cpp in Sources */,
 				5582158E1B5C7FA700173C79 /* LevelsManager.cpp in Sources */,
 				55066CD21B4BAB4E007FCF3F /* OutlineEffect3D.cpp in Sources */,
 				55066CCA1B4BAB2C007FCF3F /* EffectSprite3D.cpp in Sources */,
+				5592AE191B5FC2B30062AF08 /* TerrainCell.cpp in Sources */,
 				55C890891B46A2E7009AF1DA /* Arrow.cpp in Sources */,
 				55F3B99C1B45808B0090BE1A /* UtilityHelper.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
@@ -868,6 +906,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5592AE321B5FD8080062AF08 /* TerrainCell.cpp in Sources */,
+				5592AE311B5FD7FE0062AF08 /* PatternsManager.cpp in Sources */,
 				5592AE161B5F6A7F0062AF08 /* Runner.cpp in Sources */,
 				5592AE101B5F42640062AF08 /* RunController.cpp in Sources */,
 				5592AE111B5F42640062AF08 /* TerrainLayer.cpp in Sources */,

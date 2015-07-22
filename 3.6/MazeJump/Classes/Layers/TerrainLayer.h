@@ -34,12 +34,15 @@ private:
     void jumpForward();
     void jumpSuper();
     void clearClick(float time);
+    
+    bool generatePattern(int index);
 private:
     cocos2d::Vec2   m_TouchBegin;
     cocos2d::Vec2   m_TouchEnd;
     int             m_nTouchCount;
     
     float           m_fCellRadius;
+    int             m_nCurrentPattern;
 };
 
 #endif /* defined(__MazeJump__TerrainLayer__) */

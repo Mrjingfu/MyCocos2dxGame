@@ -11,6 +11,8 @@
 #include "SimpleAudioEngine.h"
 #include "MainScene.h"
 #include "RunController.h"
+#include "PatternsManager.h"
+#include "TerrainCell.h"
 USING_NS_CC;
 using namespace CocosDenshion;
 TerrainLayer* TerrainLayer::create()
@@ -27,7 +29,7 @@ TerrainLayer* TerrainLayer::create()
 TerrainLayer::TerrainLayer()
 {
     m_nTouchCount     = 0;
-    m_fCellRadius     = 5.0f;
+    m_fCellRadius     = 4.0f;
 }
 
 bool TerrainLayer::init()
@@ -35,6 +37,8 @@ bool TerrainLayer::init()
     if ( !Layer::init() )
         return false;
     
+    if(!generatePattern(0))
+        return false;
     
     auto dispatcher = Director::getInstance()->getEventDispatcher();
     auto touchListener = EventListenerTouchOneByOne::create();
@@ -123,4 +127,27 @@ void TerrainLayer::clearClick(float time)
             jumpForward();
         m_nTouchCount = 0;
     }
+}
+bool TerrainLayer::generatePattern(int index)
+{
+    ValueVector terrainCells = PatternsManager::getInstance()->getPatternTerrainCells(index);
+    
+    for (Value value : terrainCells) {
+        ValueMap cellMap = value.asValueMap();
+        std::string modelName = cellMap.at("ModelName").asString();
+        int cellType = cellMap.at("CellType").asInt();
+        float scaleX = cellMap.at("ScaleX").asFloat();
+        float scaleY = cellMap.at("ScaleY").asFloat();
+        float scaleZ = cellMap.at("ScaleZ").asFloat();
+        TerrainCell* cell = TerrainCell::create(modelName);
+        if(!cell)
+            return false;
+        cell->setType(TerrainCell::CellType(cellType));
+        cell->setScaleX(scaleX);
+        cell->setScaleY(scaleY);
+        cell->setScaleZ(scaleZ);
+        cell->setCameraMask((unsigned short)CameraFlag::USER1);
+        addChild(cell);
+    }
+    return true;
 }

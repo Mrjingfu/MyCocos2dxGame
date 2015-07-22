@@ -12,6 +12,7 @@
 #include "GameScene.h"
 #include "MainScene.h"
 #include "LevelsManager.h"
+#include "PatternsManager.h"
 #include "SimpleAudioEngine.h"
 USING_NS_CC;
 using namespace CocosDenshion;
@@ -62,6 +63,9 @@ bool LogoScene::init()
 }
 void LogoScene::precache()
 {
+    if(!PatternsManager::getInstance()->init("patterns.plist"))
+        CCLOGERROR("no patterns file!");
+    
     if(!LevelsManager::getInstance()->init("levels.plist"))
         CCLOGERROR("no levels file!");
     

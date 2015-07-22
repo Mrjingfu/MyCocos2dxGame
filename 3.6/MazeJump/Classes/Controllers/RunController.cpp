@@ -46,14 +46,15 @@ bool RunController::init(Layer* pMainLayer)
     if(!m_pMainPlayer)
         return false;
     m_pMainPlayer->setCameraMask((unsigned short)CameraFlag::USER1);
+    m_pMainPlayer->setPositionY(1);
     m_pTerrainLayer->addChild(m_pMainPlayer);
     
     auto size = Director::getInstance()->getVisibleSize();
-    m_pMainCamera = Camera::createPerspective(90, size.width/size.height, 1, 5000);
+    m_pMainCamera = Camera::createPerspective(60, size.width/size.height, 1, 5000);
     if(!m_pMainCamera)
         return false;
-    Vec3 camPos = Vec3(m_pTerrainLayer->getPositionX(),m_pTerrainLayer->getPositionY(),m_pMainPlayer->getPositionZ()) + Vec3(0,50.0f*cosf(M_PI/7.0f),50.0f*sinf(M_PI/7.0f));
-    Vec3 lookAt = Vec3(m_pTerrainLayer->getPositionX(),m_pTerrainLayer->getPositionY(),m_pMainPlayer->getPositionZ()) + Vec3(0,0,-20);
+    Vec3 camPos = Vec3(m_pTerrainLayer->getPositionX(),m_pTerrainLayer->getPositionY(),m_pMainPlayer->getPositionZ()) + Vec3(0,60.0f*cosf(M_PI/6.0f),60.0f*sinf(M_PI/6.0f));
+    Vec3 lookAt = Vec3(m_pTerrainLayer->getPositionX(),m_pTerrainLayer->getPositionY(),m_pMainPlayer->getPositionZ()) + Vec3(0,0,-30);
     m_pMainCamera->setPosition3D(camPos);
     m_pMainCamera->lookAt(lookAt);
     m_pMainLayer->addChild(m_pMainCamera);
@@ -78,8 +79,8 @@ void RunController::cameraTrackPlayer()
 {
     if(m_pMainPlayer && m_pMainCamera)
     {
-        Vec3 camPos = Vec3(m_pTerrainLayer->getPositionX(),m_pTerrainLayer->getPositionY(),m_pMainPlayer->getPositionZ()) + Vec3(0,50.0f*cosf(M_PI/7.0f),50.0f*sinf(M_PI/7.0f));;
-        Vec3 targetLookAt = Vec3(m_pTerrainLayer->getPositionX(),m_pTerrainLayer->getPositionY(),m_pMainPlayer->getPositionZ()) + Vec3(0,0,-20);
+        Vec3 camPos = Vec3(m_pTerrainLayer->getPositionX(),m_pTerrainLayer->getPositionY(),m_pMainPlayer->getPositionZ()) + Vec3(0,60.0f*cosf(M_PI/6.0f),60.0f*sinf(M_PI/6.0f));;
+        Vec3 targetLookAt = Vec3(m_pTerrainLayer->getPositionX(),m_pTerrainLayer->getPositionY(),m_pMainPlayer->getPositionZ()) + Vec3(0,0,-30);
         EaseSineOut* moveTo = EaseSineOut::create(MoveTo::create(0.4f, camPos));
         m_pMainCamera->runAction(moveTo);
     }
