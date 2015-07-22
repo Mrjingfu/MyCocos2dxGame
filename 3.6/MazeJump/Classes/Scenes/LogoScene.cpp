@@ -10,6 +10,7 @@
 #include "GroundLayer.h"
 #include "MenuScene.h"
 #include "GameScene.h"
+#include "MainScene.h"
 #include "LevelsManager.h"
 #include "SimpleAudioEngine.h"
 USING_NS_CC;
@@ -77,6 +78,6 @@ void LogoScene::precache()
 void LogoScene::endcache()
 {
     m_pLogoSprite->setVisible(false);
-    auto scene = GameScene::createScene();
+    auto scene = MainScene::createScene();
     Director::getInstance()->replaceScene(scene);
 }

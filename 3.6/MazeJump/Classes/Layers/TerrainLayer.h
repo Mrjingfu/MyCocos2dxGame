@@ -11,8 +11,7 @@
 
 #include "cocos2d.h"
 #include "GroundCell.h"
-#include "Arrow.h"
-#include "Player.h"
+
 class TerrainLayer : public cocos2d::Layer
 {
     TerrainLayer();
@@ -23,12 +22,24 @@ public:
     // Here's a difference. Method 'init' in cocos2d-x returns bool, instead of returning 'id' in cocos2d-iphone
     virtual bool init();
     
+    float getCellRadius() const { return m_fCellRadius; }
 protected:
     // 处理输入
-    virtual void onTouchesBegan(const std::vector<cocos2d::Touch*>& touches, cocos2d::Event *event);
-    virtual void onTouchesMoved(const std::vector<cocos2d::Touch*>& touches, cocos2d::Event *event);
-    virtual void onTouchesEnded(const std::vector<cocos2d::Touch*>& touches, cocos2d::Event *event);
+    virtual bool onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event) override;
+    virtual void onTouchMoved(cocos2d::Touch *touch, cocos2d::Event *event) override;
+    virtual void onTouchEnded(cocos2d::Touch *touch, cocos2d::Event *event) override;
 private:
+    void jumpLeft();
+    void jumpRight();
+    void jumpForward();
+    void jumpSuper();
+    void clearClick(float time);
+private:
+    cocos2d::Vec2   m_TouchBegin;
+    cocos2d::Vec2   m_TouchEnd;
+    int             m_nTouchCount;
+    
+    float           m_fCellRadius;
 };
 
 #endif /* defined(__MazeJump__TerrainLayer__) */
