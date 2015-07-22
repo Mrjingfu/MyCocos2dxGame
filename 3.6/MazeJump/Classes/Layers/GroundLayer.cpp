@@ -8,7 +8,6 @@
 
 #include "GroundLayer.h"
 #include "UtilityHelper.h"
-#include "GroundLayer.h"
 #include "SimpleAudioEngine.h"
 #include "GameScene.h"
 USING_NS_CC;
