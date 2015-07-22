@@ -33,7 +33,7 @@ bool LevelsManager::init(const std::string& file)
 
 std::string LevelsManager::getCurrentLevelName()
 {
-    if(m_nCurrentLevel > m_Levels.size())
+    if(m_nCurrentLevel >= m_Levels.size())
     {
         ValueMap map = m_Levels.at(0).asValueMap();
         return map.at("LevelName").asString();
@@ -44,7 +44,7 @@ std::string LevelsManager::getCurrentLevelName()
 
 std::string LevelsManager::getCurrentLevelSkyTextureName()
 {
-    if(m_nCurrentLevel > m_Levels.size())
+    if(m_nCurrentLevel >= m_Levels.size())
     {
         ValueMap map = m_Levels.at(0).asValueMap();
         return map.at("SkyTex").asString();
@@ -54,7 +54,7 @@ std::string LevelsManager::getCurrentLevelSkyTextureName()
 }
 std::string LevelsManager::getCurrentLevelPlatformModelName()
 {
-    if(m_nCurrentLevel > m_Levels.size())
+    if(m_nCurrentLevel >= m_Levels.size())
     {
         ValueMap map = m_Levels.at(0).asValueMap();
         return map.at("PlatformModel").asString();
@@ -64,7 +64,7 @@ std::string LevelsManager::getCurrentLevelPlatformModelName()
 }
 void LevelsManager::setCurrentLevel(int currentLevel)
 {
-    if(currentLevel > m_Levels.size())
+    if(currentLevel >= m_Levels.size())
         return;
     m_nCurrentLevel = currentLevel;
     if(m_nCurrentLevel > m_nMaxReachLevel)
@@ -72,7 +72,7 @@ void LevelsManager::setCurrentLevel(int currentLevel)
 }
 void LevelsManager::setMaxReachLevel(int maxReachLevel)
 {
-    if(maxReachLevel > m_Levels.size())
+    if(maxReachLevel >= m_Levels.size())
         return;
     m_nMaxReachLevel = maxReachLevel;
     UserDefault::getInstance()->setIntegerForKey("MaxReachLevel", m_nMaxReachLevel);
