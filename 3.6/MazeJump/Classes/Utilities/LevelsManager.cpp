@@ -41,18 +41,7 @@ std::string LevelsManager::getCurrentLevelName()
     ValueMap map = m_Levels.at(m_nCurrentLevel).asValueMap();
     return map.at("LevelName").asString();
 }
-Color4F LevelsManager::getCurrentLevelFogColor()
-{
-    if(m_nCurrentLevel > m_Levels.size())
-    {
-        ValueMap map = m_Levels.at(0).asValueMap();
-        ValueVector color = map.at("FogColor").asValueVector();
-        return Color4F(color.at(0).asFloat()/255.0f, color.at(1).asFloat()/255.0f, color.at(2).asFloat()/255.0f, color.at(3).asFloat()/255.0f);
-    }
-    ValueMap map = m_Levels.at(m_nCurrentLevel).asValueMap();
-    ValueVector color = map.at("FogColor").asValueVector();
-    return Color4F(color.at(0).asFloat()/255.0f, color.at(1).asFloat()/255.0f, color.at(2).asFloat()/255.0f, color.at(3).asFloat()/255.0f);
-}
+
 std::string LevelsManager::getCurrentLevelSkyTextureName()
 {
     if(m_nCurrentLevel > m_Levels.size())

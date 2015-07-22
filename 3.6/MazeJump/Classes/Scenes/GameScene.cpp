@@ -9,6 +9,7 @@
 #include "GameScene.h"
 #include "GroundLayer.h"
 #include "GameController.h"
+#include "LevelsManager.h"
 USING_NS_CC;
 
 Scene* GameScene::createScene()
@@ -60,8 +61,14 @@ void GameScene::update(float delta)
 void GameScene::gameWin()
 {
     CCLOG("gameWin");
+    LevelsManager::getInstance()->setCurrentLevel(LevelsManager::getInstance()->getCurrentLevel()+1);
+    GameController::getInstance()->destroy();
+    GameController::getInstance()->init(this);
+    
 }
 void GameScene::gameLose()
 {
     CCLOG("gameLose");
+    GameController::getInstance()->destroy();
+    GameController::getInstance()->init(this);
 }
