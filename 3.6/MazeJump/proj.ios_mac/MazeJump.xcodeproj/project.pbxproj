@@ -99,6 +99,9 @@
 		5582158E1B5C7FA700173C79 /* LevelsManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5582158C1B5C7FA700173C79 /* LevelsManager.cpp */; };
 		558215921B5C820D00173C79 /* levels.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5582158A1B5C7EA000173C79 /* levels.plist */; };
 		558215931B5C87EE00173C79 /* LevelsManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5582158C1B5C7FA700173C79 /* LevelsManager.cpp */; };
+		5592AE091B5F2A0F0062AF08 /* MainScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5592AE071B5F2A0F0062AF08 /* MainScene.cpp */; };
+		5592AE0C1B5F2A8C0062AF08 /* TerrainLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5592AE0A1B5F2A8C0062AF08 /* TerrainLayer.cpp */; };
+		5592AE0F1B5F2CFB0062AF08 /* RunController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5592AE0D1B5F2CFB0062AF08 /* RunController.cpp */; };
 		55C7F2191B3AE6DB0046B048 /* GroundLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55C7F2171B3AE6DB0046B048 /* GroundLayer.cpp */; };
 		55C7F2211B3AEEF10046B048 /* GroundCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55C7F21F1B3AEEF10046B048 /* GroundCell.cpp */; };
 		55C7F2221B3AEF180046B048 /* GroundCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55C7F21F1B3AEEF10046B048 /* GroundCell.cpp */; };
@@ -247,6 +250,12 @@
 		5582158A1B5C7EA000173C79 /* levels.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = levels.plist; sourceTree = "<group>"; };
 		5582158C1B5C7FA700173C79 /* LevelsManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LevelsManager.cpp; sourceTree = "<group>"; };
 		5582158D1B5C7FA700173C79 /* LevelsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelsManager.h; sourceTree = "<group>"; };
+		5592AE071B5F2A0F0062AF08 /* MainScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MainScene.cpp; sourceTree = "<group>"; };
+		5592AE081B5F2A0F0062AF08 /* MainScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainScene.h; sourceTree = "<group>"; };
+		5592AE0A1B5F2A8C0062AF08 /* TerrainLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TerrainLayer.cpp; sourceTree = "<group>"; };
+		5592AE0B1B5F2A8C0062AF08 /* TerrainLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TerrainLayer.h; sourceTree = "<group>"; };
+		5592AE0D1B5F2CFB0062AF08 /* RunController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RunController.cpp; sourceTree = "<group>"; };
+		5592AE0E1B5F2CFB0062AF08 /* RunController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RunController.h; sourceTree = "<group>"; };
 		55C7F2171B3AE6DB0046B048 /* GroundLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GroundLayer.cpp; sourceTree = "<group>"; };
 		55C7F2181B3AE6DB0046B048 /* GroundLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroundLayer.h; sourceTree = "<group>"; };
 		55C7F21F1B3AEEF10046B048 /* GroundCell.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GroundCell.cpp; sourceTree = "<group>"; };
@@ -484,6 +493,8 @@
 			children = (
 				5535FC111B47B88D00197B27 /* GameController.cpp */,
 				5535FC121B47B88D00197B27 /* GameController.h */,
+				5592AE0D1B5F2CFB0062AF08 /* RunController.cpp */,
+				5592AE0E1B5F2CFB0062AF08 /* RunController.h */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -568,6 +579,8 @@
 			children = (
 				55C7F2171B3AE6DB0046B048 /* GroundLayer.cpp */,
 				55C7F2181B3AE6DB0046B048 /* GroundLayer.h */,
+				5592AE0A1B5F2A8C0062AF08 /* TerrainLayer.cpp */,
+				5592AE0B1B5F2A8C0062AF08 /* TerrainLayer.h */,
 			);
 			path = Layers;
 			sourceTree = "<group>";
@@ -583,6 +596,8 @@
 				5542EEB81B3943B900CD9496 /* LevelSelectScene.h */,
 				5542EEBA1B3943C600CD9496 /* GameScene.cpp */,
 				5542EEBB1B3943C600CD9496 /* GameScene.h */,
+				5592AE071B5F2A0F0062AF08 /* MainScene.cpp */,
+				5592AE081B5F2A0F0062AF08 /* MainScene.h */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -818,7 +833,9 @@
 				55066CD11B4BAB4E007FCF3F /* BaseEffect3D.cpp in Sources */,
 				46880B8819C43A87006E1F66 /* AppDelegate.cpp in Sources */,
 				5542EEB61B3942FE00CD9496 /* MenuScene.cpp in Sources */,
+				5592AE0C1B5F2A8C0062AF08 /* TerrainLayer.cpp in Sources */,
 				55C7F2211B3AEEF10046B048 /* GroundCell.cpp in Sources */,
+				5592AE091B5F2A0F0062AF08 /* MainScene.cpp in Sources */,
 				55781EF81B393D6F0070BB08 /* LogoScene.cpp in Sources */,
 				5542EEB91B3943B900CD9496 /* LevelSelectScene.cpp in Sources */,
 				5582158E1B5C7FA700173C79 /* LevelsManager.cpp in Sources */,
@@ -829,6 +846,7 @@
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				55C8908E1B46B3C8009AF1DA /* Player.cpp in Sources */,
 				5535FC131B47B88D00197B27 /* GameController.cpp in Sources */,
+				5592AE0F1B5F2CFB0062AF08 /* RunController.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				5542EEBC1B3943C600CD9496 /* GameScene.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
