@@ -19,7 +19,6 @@ public:
     bool init(const std::string& file);
     
     std::string getCurrentLevelName();
-    cocos2d::Color4F getCurrentLevelFogColor();
     std::string getCurrentLevelSkyTextureName();
     std::string getCurrentLevelPlatformModelName();
     

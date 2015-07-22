@@ -33,7 +33,7 @@ bool LevelsManager::init(const std::string& file)
 
 std::string LevelsManager::getCurrentLevelName()
 {
-    if(m_nCurrentLevel > m_Levels.size())
+    if(m_nCurrentLevel >= m_Levels.size())
     {
         ValueMap map = m_Levels.at(0).asValueMap();
         return map.at("LevelName").asString();
@@ -41,21 +41,10 @@ std::string LevelsManager::getCurrentLevelName()
     ValueMap map = m_Levels.at(m_nCurrentLevel).asValueMap();
     return map.at("LevelName").asString();
 }
-Color4F LevelsManager::getCurrentLevelFogColor()
-{
-    if(m_nCurrentLevel > m_Levels.size())
-    {
-        ValueMap map = m_Levels.at(0).asValueMap();
-        ValueVector color = map.at("FogColor").asValueVector();
-        return Color4F(color.at(0).asFloat()/255.0f, color.at(1).asFloat()/255.0f, color.at(2).asFloat()/255.0f, color.at(3).asFloat()/255.0f);
-    }
-    ValueMap map = m_Levels.at(m_nCurrentLevel).asValueMap();
-    ValueVector color = map.at("FogColor").asValueVector();
-    return Color4F(color.at(0).asFloat()/255.0f, color.at(1).asFloat()/255.0f, color.at(2).asFloat()/255.0f, color.at(3).asFloat()/255.0f);
-}
+
 std::string LevelsManager::getCurrentLevelSkyTextureName()
 {
-    if(m_nCurrentLevel > m_Levels.size())
+    if(m_nCurrentLevel >= m_Levels.size())
     {
         ValueMap map = m_Levels.at(0).asValueMap();
         return map.at("SkyTex").asString();
@@ -65,7 +54,7 @@ std::string LevelsManager::getCurrentLevelSkyTextureName()
 }
 std::string LevelsManager::getCurrentLevelPlatformModelName()
 {
-    if(m_nCurrentLevel > m_Levels.size())
+    if(m_nCurrentLevel >= m_Levels.size())
     {
         ValueMap map = m_Levels.at(0).asValueMap();
         return map.at("PlatformModel").asString();
@@ -75,7 +64,7 @@ std::string LevelsManager::getCurrentLevelPlatformModelName()
 }
 void LevelsManager::setCurrentLevel(int currentLevel)
 {
-    if(currentLevel > m_Levels.size())
+    if(currentLevel >= m_Levels.size())
         return;
     m_nCurrentLevel = currentLevel;
     if(m_nCurrentLevel > m_nMaxReachLevel)
@@ -83,7 +72,7 @@ void LevelsManager::setCurrentLevel(int currentLevel)
 }
 void LevelsManager::setMaxReachLevel(int maxReachLevel)
 {
-    if(maxReachLevel > m_Levels.size())
+    if(maxReachLevel >= m_Levels.size())
         return;
     m_nMaxReachLevel = maxReachLevel;
     UserDefault::getInstance()->setIntegerForKey("MaxReachLevel", m_nMaxReachLevel);

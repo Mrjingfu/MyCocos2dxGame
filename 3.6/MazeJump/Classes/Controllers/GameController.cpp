@@ -37,13 +37,24 @@ bool GameController::init(Layer* pMainLayer)
     std::string skyTexTop = skyTexName + "_t.png";
     std::string skyTexBottom = skyTexName + "_b.png";
     std::string skyTex = skyTexName + ".png";
-    m_pSkyBox = Skybox::create(skyTex, skyTex, skyTexTop, skyTexBottom, skyTex, skyTex);
+    m_pSkyBox = Skybox::create(skyTex, skyTex, skyTex, skyTex, skyTex, skyTex);
     if(!m_pSkyBox)
         return false;
     m_pSkyBox->setScale(1000);
     m_pSkyBox->setCameraMask((unsigned short)CameraFlag::USER1);
     pMainLayer->addChild(m_pSkyBox);
     
+    ParticleSystemQuad* starfield= ParticleSystemQuad::create("starfield.plist");
+    if(!starfield)
+    {
+        CCLOG("Load explosion particle system failed! file: starfield.plist");
+        return false;
+    }
+    starfield->setStartSize(5.0f);
+    starfield->setStartSizeVar(3.0f);
+    starfield->setGravity(Vec2(-40.0f, 0));
+     pMainLayer->addChild(starfield);
+
     
     m_pGroundLayer = GroundLayer::create(LevelsManager::getInstance()->getCurrentLevelName());
     if(!m_pGroundLayer)
@@ -57,8 +68,8 @@ bool GameController::init(Layer* pMainLayer)
     m_pMainCamera = Camera::createPerspective(90, size.width/size.height, 1, 5000);
     if(!m_pMainCamera)
         return false;
-    m_pMainCamera->setPosition3D(Vec3(0,m_pGroundLayer->getGroundRadius()*2.5f*cosf(M_PI/7.0f),m_pGroundLayer->getGroundRadius()*2.5f*sinf(M_PI/7.0f)) + m_pGroundLayer->getOffset());
-    m_pMainCamera->lookAt(m_pGroundLayer->getPosition3D() + m_pGroundLayer->getOffset() + Vec3(0,0,-5));
+    m_pMainCamera->setPosition3D(Vec3(0,-m_pGroundLayer->getGroundRadius()*2.5f*cosf(M_PI),-m_pGroundLayer->getGroundRadius()*2.5f*sinf(M_PI)) + m_pGroundLayer->getOffset());
+    m_pMainCamera->lookAt(m_pGroundLayer->getPosition3D() + m_pGroundLayer->getOffset());
     m_pMainLayer->addChild(m_pMainCamera);
     m_pMainCamera->setCameraFlag(CameraFlag::USER1);
     m_pGroundLayer->setCamera(m_pMainCamera);
