@@ -12,7 +12,6 @@
 #include "MainScene.h"
 #include "RunController.h"
 #include "PatternsManager.h"
-#include "TerrainCell.h"
 USING_NS_CC;
 using namespace CocosDenshion;
 TerrainLayer* TerrainLayer::create()
@@ -29,7 +28,10 @@ TerrainLayer* TerrainLayer::create()
 TerrainLayer::TerrainLayer()
 {
     m_nTouchCount     = 0;
-    m_fCellRadius     = 4.0f;
+    m_fCellBaseRadius     = 4.0f;
+    m_nCurrentPatternIndex = -1;
+    m_nColumn = 0;
+    m_nRow = -3;
 }
 
 bool TerrainLayer::init()
@@ -37,7 +39,7 @@ bool TerrainLayer::init()
     if ( !Layer::init() )
         return false;
     
-    if(!generatePattern(0))
+    if(!generateStartPoint())
         return false;
     
     auto dispatcher = Director::getInstance()->getEventDispatcher();
@@ -50,6 +52,51 @@ bool TerrainLayer::init()
     dispatcher->addEventListenerWithSceneGraphPriority(touchListener, this);
     
     return true;
+}
+void TerrainLayer::update(float delta)
+{
+    for (TerrainPatternLayer* layer : m_TerrainPatternList) {
+        if(layer)
+            layer->update(delta);
+    }
+}
+void TerrainLayer::setCurrentPatternIndex( int index )
+{
+    if(index < 0)
+        return;
+    if(m_nCurrentPatternIndex != index)
+    {
+        m_nCurrentPatternIndex = index;
+        if(m_nCurrentPatternIndex == 0)
+        {
+            generatePattern(m_nCurrentPatternIndex+1);
+            generatePattern(m_nCurrentPatternIndex+2);
+            generatePattern(m_nCurrentPatternIndex+3);
+        }
+        else
+            generatePattern(m_nCurrentPatternIndex+3);
+    }
+}
+void TerrainLayer::setCurrentColumn( int column )
+{
+    if(m_nColumn != column)
+        m_nColumn = column;
+}
+void TerrainLayer::setCurrentRow( int row )
+{
+    if(m_nRow != row)
+        m_nRow = row;
+}
+bool TerrainLayer::checkRunnerDrop()
+{
+    TerrainPatternLayer* layer = m_TerrainPatternList.at(m_nCurrentPatternIndex);
+    if(layer)
+    {
+        bool drop = layer->checkRunnerDrop();
+        if(drop)
+            return true;
+    }
+    return false;
 }
 bool TerrainLayer::onTouchBegan(Touch *touch, Event *event)
 {
@@ -87,14 +134,34 @@ void TerrainLayer::jumpLeft()
     CCLOG("jumpLeft");
     Runner* runner = RunController::getInstance()->getMainPlayer();
     if(runner && runner->getState() == Runner::RS_IDLE)
-        runner->setState(Runner::RS_MOVE_LEFT);
+    {
+        TerrainPatternLayer* patternLayer = m_TerrainPatternList.at(m_nCurrentPatternIndex);
+        if(patternLayer)
+        {
+            if(m_nColumn == -2 &&( patternLayer->getPatternType() == TerrainPatternLayer::PT_DOUBLESIDEBAR
+            || patternLayer->getPatternType() == TerrainPatternLayer::PT_LEFTSIDEBAR || patternLayer->getPatternType() == TerrainPatternLayer::PT_STARTER))
+                runner->setState(Runner::RS_MOVE_JUMPLOCAL);
+            else
+                runner->setState(Runner::RS_MOVE_LEFT);
+        }
+    }
 }
 void TerrainLayer::jumpRight()
 {
     CCLOG("jumpRight");
     Runner* runner = RunController::getInstance()->getMainPlayer();
     if(runner && runner->getState() == Runner::RS_IDLE)
-        runner->setState(Runner::RS_MOVE_RIGHT);
+    {
+        TerrainPatternLayer* patternLayer = m_TerrainPatternList.at(m_nCurrentPatternIndex);
+        if(patternLayer)
+        {
+            if(m_nColumn == 2 &&( patternLayer->getPatternType() == TerrainPatternLayer::PT_DOUBLESIDEBAR
+                                 || patternLayer->getPatternType() == TerrainPatternLayer::PT_RIGHTSIDEBAR || patternLayer->getPatternType() == TerrainPatternLayer::PT_STARTER))
+                runner->setState(Runner::RS_MOVE_JUMPLOCAL);
+            else
+                runner->setState(Runner::RS_MOVE_RIGHT);
+        }
+    }
 }
 void TerrainLayer::jumpForward()
 {
@@ -109,6 +176,13 @@ void TerrainLayer::jumpSuper()
     Runner* runner = RunController::getInstance()->getMainPlayer();
     if(runner && runner->getState() == Runner::RS_IDLE)
         runner->setState(Runner::RS_MOVE_SUPERJUMP);
+}
+void TerrainLayer::jumpLocal()
+{
+    CCLOG("jumpLocal");
+    Runner* runner = RunController::getInstance()->getMainPlayer();
+    if(runner && runner->getState() == Runner::RS_IDLE)
+        runner->setState(Runner::RS_MOVE_JUMPLOCAL);
 }
 void TerrainLayer::clearClick(float time)
 {
@@ -128,26 +202,26 @@ void TerrainLayer::clearClick(float time)
         m_nTouchCount = 0;
     }
 }
-bool TerrainLayer::generatePattern(int index)
+bool TerrainLayer::generateStartPoint()
 {
-    ValueVector terrainCells = PatternsManager::getInstance()->getPatternTerrainCells(index);
-    
-    for (Value value : terrainCells) {
-        ValueMap cellMap = value.asValueMap();
-        std::string modelName = cellMap.at("ModelName").asString();
-        int cellType = cellMap.at("CellType").asInt();
-        float scaleX = cellMap.at("ScaleX").asFloat();
-        float scaleY = cellMap.at("ScaleY").asFloat();
-        float scaleZ = cellMap.at("ScaleZ").asFloat();
-        TerrainCell* cell = TerrainCell::create(modelName);
-        if(!cell)
-            return false;
-        cell->setType(TerrainCell::CellType(cellType));
-        cell->setScaleX(scaleX);
-        cell->setScaleY(scaleY);
-        cell->setScaleZ(scaleZ);
-        cell->setCameraMask((unsigned short)CameraFlag::USER1);
-        addChild(cell);
-    }
+    TerrainPatternLayer* layer = TerrainPatternLayer::create(0);
+    if(!layer)
+        return false;
+    layer->setCameraMask((unsigned short)CameraFlag::USER1);
+    addChild(layer);
+    m_TerrainPatternList.pushBack(layer);
     return true;
+}
+void TerrainLayer::generatePattern(int count)
+{
+    TerrainPatternLayer* layer = TerrainPatternLayer::create(1);
+    if(!layer)
+        return;
+    layer->setCameraMask((unsigned short)CameraFlag::USER1);
+    addChild(layer);
+    if(count == 0)
+        layer->setPositionZ(0);
+    else
+        layer->setPositionZ(-count*5*m_fCellBaseRadius*2 + m_fCellBaseRadius*2);
+    m_TerrainPatternList.pushBack(layer);
 }

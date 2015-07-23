@@ -31,7 +31,16 @@ bool PatternsManager::init(const std::string& file)
 
 ValueVector PatternsManager::getPatternTerrainCells(int patternIndex)
 {
-    if(patternIndex >= m_Patterns.size())
-        return m_Patterns.at(0).asValueMap().at("TerrainCells").asValueVector();
+    CCASSERT(patternIndex < m_Patterns.size(), "patternIndex must be samller than pattern array size!");
     return m_Patterns.at(patternIndex).asValueMap().at("TerrainCells").asValueVector();
+}
+int PatternsManager::getPatternFadeInType(int patternIndex)
+{
+    CCASSERT(patternIndex < m_Patterns.size(), "patternIndex must be samller than pattern array size!");
+    return m_Patterns.at(patternIndex).asValueMap().at("FadeInType").asInt();
+}
+int PatternsManager::getPatternType(int patternIndex)
+{
+    CCASSERT(patternIndex < m_Patterns.size(), "patternIndex must be samller than pattern array size!");
+    return m_Patterns.at(patternIndex).asValueMap().at("PatternType").asInt();
 }

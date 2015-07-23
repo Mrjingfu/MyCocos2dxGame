@@ -10,6 +10,7 @@
 #define __MazeJump__Runner__
 
 #include "EffectSprite3D.h"
+#include "TerrainCell.h"
 class Runner : public EffectSprite3D
 {
 public:
@@ -19,6 +20,8 @@ public:
         RS_MOVE_RIGHT,
         RS_MOVE_FORWARD,
         RS_MOVE_SUPERJUMP,
+        RS_MOVE_JUMPLOCAL,
+        RS_MOVE_DROP,
         RS_UNKNOWN
     } RunnerState;
 protected:
@@ -31,18 +34,23 @@ public:
     RunnerState getState() const { return m_curState; }
     void setState(RunnerState state);
     
+    void onCollision(TerrainCell* cell);
 private:
     void onEnterIdle();
     void onEnterMoveLeft();
     void onEnterMoveRight();
     void onEnterMoveForward();
     void onEnterMoveSuperJump();
+    void onEnterMoveJumpLocal();
+    void onEnterMoveDrop();
     
     void onExitIdle();
     void onExitMoveLeft();
     void onExitMoveRight();
     void onExitMoveForward();
     void onExitMoveSuperJump();
+    void onExitMoveJumpLocal();
+    void onExitMoveDrop();
     
     void checkSafe();
 protected:

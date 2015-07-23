@@ -37,7 +37,9 @@ Runner::Runner()
     m_curState  = RS_UNKNOWN;
     m_fRadius   = 2.5f;
 }
-
+void Runner::onCollision(TerrainCell* cell)
+{
+}
 void Runner::setState(RunnerState state)
 {
     if (m_curState == state)
@@ -59,6 +61,12 @@ void Runner::setState(RunnerState state)
             break;
         case RunnerState::RS_MOVE_SUPERJUMP:
             onExitMoveSuperJump();
+            break;
+        case RunnerState::RS_MOVE_JUMPLOCAL:
+            onExitMoveJumpLocal();
+            break;
+        case RunnerState::RS_MOVE_DROP:
+            onExitMoveDrop();
             break;
         default:
             break;
@@ -82,20 +90,37 @@ void Runner::setState(RunnerState state)
         case RunnerState::RS_MOVE_SUPERJUMP:
             onEnterMoveSuperJump();
             break;
+        case RunnerState::RS_MOVE_JUMPLOCAL:
+            onEnterMoveJumpLocal();
+            break;
+        case RunnerState::RS_MOVE_DROP:
+            onEnterMoveDrop();
+            break;
         default:
             break;
     }
 }
 void Runner::onEnterIdle()
 {
-    RunController::getInstance()->cameraTrackPlayer();
+    TerrainLayer* layer = RunController::getInstance()->getTerrainLayer();
+    if(layer)
+    {
+        float x = getPositionX();
+        float z = getPositionZ() - layer->getCellBaseRadius()*6;
+        int colunm = x / (layer->getCellBaseRadius()*2);
+        int row = -z / (layer->getCellBaseRadius()*2);
+        int currentPatternIndex = row/5;
+        layer->setCurrentColumn(colunm);
+        layer->setCurrentRow(row);
+        layer->setCurrentPatternIndex(currentPatternIndex);
+    }
 }
 void Runner::onEnterMoveLeft()
 {
     TerrainLayer* terrainLayer = RunController::getInstance()->getTerrainLayer();
     if(terrainLayer)
     {
-        float cellRadius = terrainLayer->getCellRadius();
+        float cellRadius = terrainLayer->getCellBaseRadius();
         EaseSineOut* scaleTo1 = EaseSineOut::create(ScaleTo::create(0.05f, 1, 0.9f, 1));
         EaseSineIn* scaleTo2 = EaseSineIn::create(ScaleTo::create(0.1f, 1, 1.0f, 1));
         Sequence* sequenceScale = Sequence::create(scaleTo1, scaleTo2, NULL);
@@ -119,7 +144,7 @@ void Runner::onEnterMoveRight()
     TerrainLayer* terrainLayer = RunController::getInstance()->getTerrainLayer();
     if(terrainLayer)
     {
-        float cellRadius = terrainLayer->getCellRadius();
+        float cellRadius = terrainLayer->getCellBaseRadius();
         EaseSineOut* scaleTo1 = EaseSineOut::create(ScaleTo::create(0.05f, 1, 0.9f, 1));
         EaseSineIn* scaleTo2 = EaseSineIn::create(ScaleTo::create(0.1f, 1, 1.0f, 1));
         Sequence* sequenceScale = Sequence::create(scaleTo1, scaleTo2, NULL);
@@ -142,7 +167,7 @@ void Runner::onEnterMoveForward()
     TerrainLayer* terrainLayer = RunController::getInstance()->getTerrainLayer();
     if(terrainLayer)
     {
-        float cellRadius = terrainLayer->getCellRadius();
+        float cellRadius = terrainLayer->getCellBaseRadius();
 
         EaseSineOut* scaleTo1 = EaseSineOut::create(ScaleTo::create(0.05f, 1, 0.9f, 1));
         EaseSineIn* scaleTo2 = EaseSineIn::create(ScaleTo::create(0.1f, 1, 1.0f,1));
@@ -167,7 +192,7 @@ void Runner::onEnterMoveSuperJump()
     TerrainLayer* terrainLayer = RunController::getInstance()->getTerrainLayer();
     if(terrainLayer)
     {
-        float cellRadius = terrainLayer->getCellRadius();
+        float cellRadius = terrainLayer->getCellBaseRadius();
         
         EaseSineOut* scaleTo1 = EaseSineOut::create(ScaleTo::create(0.1f, 1, 0.8f, 1));
         EaseSineIn* scaleTo2 = EaseSineIn::create(ScaleTo::create(0.2f, 1, 1.0f,1));
@@ -185,7 +210,35 @@ void Runner::onEnterMoveSuperJump()
         Sequence* sequence = Sequence::create(spawn, callFunc, NULL);
         runAction(sequence);
     }
-
+}
+void Runner::onEnterMoveJumpLocal()
+{
+    TerrainLayer* terrainLayer = RunController::getInstance()->getTerrainLayer();
+    if(terrainLayer)
+    {
+        float cellRadius = terrainLayer->getCellBaseRadius();
+        
+        EaseSineOut* scaleTo1 = EaseSineOut::create(ScaleTo::create(0.05f, 1, 0.9f, 1));
+        EaseSineIn* scaleTo2 = EaseSineIn::create(ScaleTo::create(0.1f, 1, 1.0f,1));
+        Sequence* sequenceScale = Sequence::create(scaleTo1, scaleTo2, NULL);
+        
+        DelayTime* delay = DelayTime::create(0.05f);
+        
+        EaseSineOut* moveUp = EaseSineOut::create(MoveTo::create(0.2f, Vec3(getPositionX(), getPositionY() + cellRadius, getPositionZ())));
+        EaseSineOut* moveDown = EaseSineOut::create(MoveTo::create(0.2f, Vec3(getPositionX(), getPositionY(), getPositionZ())));
+        Sequence* sequenceJump = Sequence::create(delay, moveUp, moveDown, NULL);
+        Spawn* spawn = Spawn::create(sequenceScale, sequenceJump, NULL);
+        CallFunc* callFunc = CallFunc::create(CC_CALLBACK_0(Runner::checkSafe,this));
+        Sequence* sequence = Sequence::create(spawn, callFunc, NULL);
+        runAction(sequence);
+    }
+}
+void Runner::onEnterMoveDrop()
+{
+    EaseSineOut* moveTo = EaseSineOut::create(MoveTo::create(1.0f, Vec3(getPositionX(), -50, getPositionZ())));
+    CallFunc* callFunc = CallFunc::create(CC_CALLBACK_0(RunController::gameOver,RunController::getInstance()));
+    Sequence* sequence = Sequence::create(moveTo, callFunc, NULL);
+    runAction(sequence);
 }
 void Runner::onExitIdle()
 {
@@ -202,7 +255,18 @@ void Runner::onExitMoveForward()
 void Runner::onExitMoveSuperJump()
 {
 }
+void Runner::onExitMoveJumpLocal()
+{
+}
+void Runner::onExitMoveDrop()
+{
+}
 void Runner::checkSafe()
 {
     setState(RS_IDLE);
+    bool isDrop = RunController::getInstance()->getTerrainLayer()->checkRunnerDrop();
+    if(isDrop)
+        setState(RS_MOVE_DROP);
+    else
+        RunController::getInstance()->cameraTrackPlayer();
 }
