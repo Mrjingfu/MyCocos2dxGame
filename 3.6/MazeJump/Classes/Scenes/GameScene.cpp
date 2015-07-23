@@ -10,6 +10,7 @@
 #include "GroundLayer.h"
 #include "GameController.h"
 #include "LevelsManager.h"
+#include "StepManager.h"
 USING_NS_CC;
 
 Scene* GameScene::createScene()
@@ -43,7 +44,6 @@ bool GameScene::init()
 void GameScene::onEnter()
 {
     Layer::onEnter();
-    
     scheduleUpdate();
     if(!GameController::getInstance()->init(this))
         CCLOGERROR("GameController init failed!");
@@ -64,6 +64,8 @@ void GameScene::gameWin()
     LevelsManager::getInstance()->setCurrentLevel(LevelsManager::getInstance()->getCurrentLevel()+1);
     GameController::getInstance()->destroy();
     GameController::getInstance()->init(this);
+    StepManager::getInstance()->setLevelStep(LevelsManager::getInstance()->getCurrentLevel());
+    StepManager::getInstance()->printfStep(LevelsManager::getInstance()->getCurrentLevel());
     
 }
 void GameScene::gameLose()
@@ -71,4 +73,6 @@ void GameScene::gameLose()
     CCLOG("gameLose");
     GameController::getInstance()->destroy();
     GameController::getInstance()->init(this);
+    StepManager::getInstance()->setLevelStep(LevelsManager::getInstance()->getCurrentLevel());
+    StepManager::getInstance()->printfStep(LevelsManager::getInstance()->getCurrentLevel());
 }

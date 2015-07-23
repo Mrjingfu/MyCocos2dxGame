@@ -10,6 +10,7 @@
 #include "UtilityHelper.h"
 #include "SimpleAudioEngine.h"
 #include "GameScene.h"
+#include "StepManager.h"
 USING_NS_CC;
 using namespace CocosDenshion;
 GroundLayer* GroundLayer::create(const std::string& tmxFile)
@@ -70,6 +71,9 @@ bool GroundLayer::init(const std::string& tmxFile)
                     switch (type) {
                         case GroundCell::CT_HIDE:
                             cell->setVisible(false);
+                            break;
+                        case GroundCell::CT_CARRY:
+                            cell->setCarryProp(value.asValueMap()["carryprop"].asInt());
                             break;
                         default:
                             break;
@@ -149,7 +153,7 @@ Vector<GroundCell*> GroundLayer::getNeighborCells(GroundCell* currentCell)
                 switch (m_pPlayer->getType()) {
                     case Player::PT_STRENGTH:
                     {
-                        if (neighborCell->getType() == GroundCell::CT_NOT || neighborCell->getType() == GroundCell::CT_BOMB) {
+                        if (neighborCell->isWalkCell()) {
                             cells.pushBack(neighborCell);
                         }
                     }
@@ -172,7 +176,7 @@ Vector<GroundCell*> GroundLayer::getNeighborCells(GroundCell* currentCell)
                 switch (m_pPlayer->getType()) {
                     case Player::PT_STRENGTH:
                     {
-                        if (neighborCell->getType() == GroundCell::CT_NOT || neighborCell->getType() == GroundCell::CT_BOMB) {
+                        if (neighborCell->isWalkCell()) {
                             cells.pushBack(neighborCell);
                         }
                     }
@@ -195,7 +199,7 @@ Vector<GroundCell*> GroundLayer::getNeighborCells(GroundCell* currentCell)
                 switch (m_pPlayer->getType()) {
                     case Player::PT_STRENGTH:
                     {
-                        if (neighborCell->getType() == GroundCell::CT_NOT || neighborCell->getType() == GroundCell::CT_BOMB) {
+                        if (neighborCell->isWalkCell()) {
                             cells.pushBack(neighborCell);
                         }
                     }
@@ -218,7 +222,7 @@ Vector<GroundCell*> GroundLayer::getNeighborCells(GroundCell* currentCell)
                 switch (m_pPlayer->getType()) {
                     case Player::PT_STRENGTH:
                     {
-                        if (neighborCell->getType() == GroundCell::CT_NOT || neighborCell->getType() == GroundCell::CT_BOMB) {
+                        if (neighborCell->isWalkCell()) {
                             cells.pushBack(neighborCell);
                         }
                     }
@@ -247,6 +251,7 @@ void GroundLayer::flipIndexCell(int indexX, int indexY)
         return;
     
     int index = indexY*m_MapSize.width + indexX;
+    StepManager::getInstance()->setStep(index);
     m_pCurrentCell = m_GroundCellList.at(index);
     if(m_pCurrentCell && m_pPlayer)
     {
@@ -275,12 +280,29 @@ void GroundLayer::flipIndexCell(int indexX, int indexY)
         m_pCurrentCell->runAction(sequence);
     }
 }
+void GroundLayer::carryCell(int indexX,int indexY)
+{
+    if(indexX < 0 || indexX >= m_MapSize.width)
+        return;
+    if(indexY < 0 || indexY >= m_MapSize.height)
+        return;
+    
+    int index = indexY*m_MapSize.width + indexX;
+    StepManager::getInstance()->setStep(index);
+    m_pCurrentCell = m_GroundCellList.at(index);
+    RotateTo* ratateTo = RotateTo::create(0.5f, Vec3(180,0,0));
+    MoveTo* moveTo = MoveTo::create(0.5f, Vec3(m_pCurrentCell->getPositionX(), 2, m_pCurrentCell->getPositionZ()));
+    Spawn* spawn = Spawn::createWithTwoActions(ratateTo, moveTo);
+    m_pCurrentCell->setType(GroundCell::CT_OK);
+    m_pCurrentCell->runAction(spawn);
 
+}
 void GroundLayer::setCurrentCellTypeOK()
 {
     if(m_pCurrentCell)
     {
         m_pCurrentCell->setType(GroundCell::CT_OK);
+        
         if(m_pPlayer == nullptr)
         {
             m_pPlayer = Player::create(Player::PT_STRENGTH, this);
@@ -311,7 +333,7 @@ void GroundLayer::checkWinOrLose()
     Vector<GroundCell*> neighborCells = getNeighborCells(m_pCurrentCell);
     for (int i = 0; i < neighborCells.size(); ++i) {
         GroundCell* cell = neighborCells.at(i);
-        if(cell && cell->getType() == GroundCell::CT_NOT)
+        if(cell && cell->isWalkCell())
             return;
     }
     bool win = true;
@@ -329,6 +351,7 @@ void GroundLayer::checkWinOrLose()
             CallFunc* callFunc = CallFunc::create(CC_CALLBACK_0(GameScene::gameWin,gameScene));
             Sequence* sequence = Sequence::create(callFunc, delay, NULL);
             this->runAction(sequence);
+        
     }
     else
     {
@@ -354,12 +377,21 @@ void GroundLayer::showArrow()
                     m_pArrowRight->setIndexX(cell->getIndexX());
                     m_pArrowRight->setIndexY(cell->getIndexY());
                     m_pArrowRight->setPosition3D(cell->getPosition3D() + Vec3(0,2,0));
+                    if (cell->getType() == GroundCell::CT_CARRY) {
+                        m_pArrowRight->setSpecialArt(true);
+                        m_pArrowRight->setVisible(false);
+                    }
                 }
                 else if(cell->getIndexX() < m_pCurrentCell->getIndexX()) {
                     m_pArrowLeft->setVisible(true);
                     m_pArrowLeft->setIndexX(cell->getIndexX());
                     m_pArrowLeft->setIndexY(cell->getIndexY());
                     m_pArrowLeft->setPosition3D(cell->getPosition3D() + Vec3(0,2,0));
+                    if (cell->getType() == GroundCell::CT_CARRY) {
+                        m_pArrowLeft->setSpecialArt(true);
+                        m_pArrowLeft->setVisible(false);
+                    }
+
                 }
             }
             if(cell->getIndexX() == m_pCurrentCell->getIndexX())
@@ -369,12 +401,20 @@ void GroundLayer::showArrow()
                     m_pArrowUp->setIndexX(cell->getIndexX());
                     m_pArrowUp->setIndexY(cell->getIndexY());
                     m_pArrowUp->setPosition3D(cell->getPosition3D() + Vec3(0,2,0));
+                    if (cell->getType() == GroundCell::CT_CARRY) {
+                        m_pArrowUp->setSpecialArt(true);
+                        m_pArrowUp->setVisible(false);
+                    }
                 }
                 else if(cell->getIndexY() < m_pCurrentCell->getIndexY()) {
                     m_pArrowDown->setVisible(true);
                     m_pArrowDown->setIndexX(cell->getIndexX());
                     m_pArrowDown->setIndexY(cell->getIndexY());
                     m_pArrowDown->setPosition3D(cell->getPosition3D() + Vec3(0,2,0));
+                    if (cell->getType() == GroundCell::CT_CARRY) {
+                        m_pArrowDown->setSpecialArt(true);
+                        m_pArrowDown->setVisible(false);
+                    }
                 }
             }
         }
@@ -410,53 +450,154 @@ void GroundLayer::onTouchesBegan(const std::vector<Touch*>& touches, Event *even
         }
         else
         {
-            if(m_pArrowDown && m_pArrowDown->isVisible())
+
+            if(m_pArrowDown)
             {
-                if(ray.intersects(m_pArrowDown->getAABB()) && m_pArrowDown->getType() == Arrow::AT_DOWN)
+                bool isCheckTouchDown = false;
+                if( m_pArrowDown->isVisible() && !m_pArrowDown->getSpecialArt())
                 {
+                    if(ray.intersects(m_pArrowDown->getAABB()) && m_pArrowDown->getType() == Arrow::AT_DOWN)
+                    {
+                        isCheckTouchDown = true;
+                    }
+                }else if(m_pArrowDown->getSpecialArt())
+                {
+                    int index = (m_pCurrentCell->getIndexY() -1)*m_MapSize.height + m_pCurrentCell->getIndexX();
+                    GroundCell* speicalcell = m_GroundCellList.at(index);
+                    if(speicalcell && speicalcell->getSpecialArtCell() )
+                    {
+                        if (ray.intersects(speicalcell->getSpecialArtCell()->getAABB())&&
+                            (speicalcell->getType() == GroundCell::CT_CARRY|| speicalcell->getType() == GroundCell::CT_BOMB)) {
+                            isCheckTouchDown = true;
+                        }
+                        
+                    }
+                }
+                if (isCheckTouchDown) {
                     m_pArrowDown->setVisible(false);
                     m_pArrowLeft->setVisible(false);
                     m_pArrowRight->setVisible(false);
                     m_pArrowUp->setVisible(false);
+                    
+                    m_pArrowDown->setSpecialArt(false);
+                    m_pArrowLeft->setSpecialArt(false);
+                    m_pArrowRight->setSpecialArt(false);
+                    m_pArrowUp->setSpecialArt(false);
+ 
                     if (m_pPlayer)
                         m_pPlayer->setPlayerState(Player::PS_MOVE_DOWN);
                 }
+                
             }
-            if(m_pArrowLeft && m_pArrowLeft->isVisible())
+            if(m_pArrowLeft )
             {
-                if(ray.intersects(m_pArrowLeft->getAABB()) && m_pArrowLeft->getType() == Arrow::AT_LEFT)
+                bool isCheckToucLeft = false;
+                if( m_pArrowLeft->isVisible() && !m_pArrowLeft->getSpecialArt())
                 {
+                    if(ray.intersects(m_pArrowLeft->getAABB()) && m_pArrowLeft->getType() == Arrow::AT_LEFT)
+                    {
+                        isCheckToucLeft = true;
+                    }
+                }else if(m_pArrowLeft->getSpecialArt())
+                {
+                    
+                    int index = m_pCurrentCell->getIndexY()*m_MapSize.height + m_pCurrentCell->getIndexX()-1;
+                    GroundCell* speicalcell = m_GroundCellList.at(index);
+                     if(speicalcell && speicalcell->getSpecialArtCell() )
+                    {
+                        
+                        if (ray.intersects(speicalcell->getSpecialArtCell()->getAABB())&&
+                            (speicalcell->getType() == GroundCell::CT_CARRY|| speicalcell->getType() == GroundCell::CT_BOMB)) {
+                            isCheckToucLeft = true;
+                        }
+                    }
+                }
+                if (isCheckToucLeft) {
                     m_pArrowDown->setVisible(false);
                     m_pArrowLeft->setVisible(false);
                     m_pArrowRight->setVisible(false);
                     m_pArrowUp->setVisible(false);
+                    
+                    m_pArrowDown->setSpecialArt(false);
+                    m_pArrowLeft->setSpecialArt(false);
+                    m_pArrowRight->setSpecialArt(false);
+                    m_pArrowUp->setSpecialArt(false);
                     if (m_pPlayer)
                         m_pPlayer->setPlayerState(Player::PS_MOVE_LEFT);
                 }
             }
-            if(m_pArrowRight && m_pArrowRight->isVisible())
+            if(m_pArrowRight )
             {
-                if(ray.intersects(m_pArrowRight->getAABB()) && m_pArrowRight->getType() == Arrow::AT_RIGHT)
+                bool isCheckToucRight = false;
+                if(m_pArrowRight->isVisible() && !m_pArrowRight->getSpecialArt()  )
                 {
+                    if(ray.intersects(m_pArrowRight->getAABB()) && m_pArrowRight->getType() == Arrow::AT_RIGHT)
+                    {
+                        isCheckToucRight= true;
+                    }
+                }else if(m_pArrowRight->getSpecialArt())
+                {
+                    int index = m_pCurrentCell->getIndexY()*m_MapSize.height + m_pCurrentCell->getIndexX()+1;
+                    GroundCell* speicalcell = m_GroundCellList.at(index);
+                     if(speicalcell && speicalcell->getSpecialArtCell() )
+                    {
+                        if (ray.intersects(speicalcell->getSpecialArtCell()->getAABB())&&
+                            (speicalcell->getType() == GroundCell::CT_CARRY|| speicalcell->getType() == GroundCell::CT_BOMB)) {
+                            isCheckToucRight = true;
+                        }
+                    }
+                }
+                if (isCheckToucRight) {
                     m_pArrowDown->setVisible(false);
                     m_pArrowLeft->setVisible(false);
                     m_pArrowRight->setVisible(false);
                     m_pArrowUp->setVisible(false);
+                    
+                    m_pArrowDown->setSpecialArt(false);
+                    m_pArrowLeft->setSpecialArt(false);
+                    m_pArrowRight->setSpecialArt(false);
+                    m_pArrowUp->setSpecialArt(false);
                     if (m_pPlayer)
                         m_pPlayer->setPlayerState(Player::PS_MOVE_RIGHT);
                 }
+                
+                
             }
-            if(m_pArrowUp && m_pArrowUp->isVisible())
+            if(m_pArrowUp )
             {
-                if(ray.intersects(m_pArrowUp->getAABB()) && m_pArrowUp->getType() == Arrow::AT_UP)
+                bool isCheckToucUp = false;
+                if ( m_pArrowUp->isVisible() && !m_pArrowUp->getSpecialArt())
                 {
+                    if(ray.intersects(m_pArrowUp->getAABB()) && m_pArrowUp->getType() == Arrow::AT_UP)
+                    {
+                        isCheckToucUp = true;
+                    }
+                }else if(m_pArrowUp->getSpecialArt())
+                {
+                    int index = (m_pCurrentCell->getIndexY()+1)*m_MapSize.height + m_pCurrentCell->getIndexX();
+                    GroundCell* speicalcell = m_GroundCellList.at(index);
+                     if(speicalcell && speicalcell->getSpecialArtCell() )
+                    {
+                        if (ray.intersects(speicalcell->getSpecialArtCell()->getAABB())&&
+                            (speicalcell->getType() == GroundCell::CT_CARRY|| speicalcell->getType() == GroundCell::CT_BOMB)) {
+                            isCheckToucUp = true;
+                        }
+                    }
+                }
+                if (isCheckToucUp) {
                     m_pArrowDown->setVisible(false);
                     m_pArrowLeft->setVisible(false);
                     m_pArrowRight->setVisible(false);
                     m_pArrowUp->setVisible(false);
+                    
+                    m_pArrowDown->setSpecialArt(false);
+                    m_pArrowLeft->setSpecialArt(false);
+                    m_pArrowRight->setSpecialArt(false);
+                    m_pArrowUp->setSpecialArt(false);
                     if (m_pPlayer)
                         m_pPlayer->setPlayerState(Player::PS_MOVE_UP);
                 }
+                
             }
         }
     }

@@ -25,13 +25,29 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../cocos2d/cocos/3d/CCSprite3D.cpp"
-            timestampString = "459243371.717302"
+            filePath = "../Classes/Layers/GroundLayer.cpp"
+            timestampString = "459350070.976514"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "606"
-            endingLineNumber = "606"
-            landmarkName = "Sprite3D::setTexture(Texture2D* texture)"
+            startingLineNumber = "405"
+            endingLineNumber = "405"
+            landmarkName = "GroundLayer::showArrow()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/Layers/GroundLayer.cpp"
+            timestampString = "459350070.976514"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "324"
+            endingLineNumber = "324"
+            landmarkName = "GroundLayer::checkWinOrLose()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -41,13 +57,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../cocos2d/cocos/3d/CCMesh.cpp"
-            timestampString = "459243377.362753"
+            filePath = "../Classes/Sprites/Player.cpp"
+            timestampString = "459350070.976514"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "183"
-            endingLineNumber = "183"
-            landmarkName = "Mesh::setTexture(Texture2D* tex)"
+            startingLineNumber = "397"
+            endingLineNumber = "397"
+            landmarkName = "Player::carryFinish(Node* node,GroundCell* cell)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -57,14 +73,14 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../cocos2d/cocos/3d/CCObjLoader.cpp"
-            timestampString = "459243806.888783"
+            filePath = "../Classes/Layers/GroundLayer.cpp"
+            timestampString = "459350070.976514"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "278"
-            endingLineNumber = "278"
-            landmarkName = "LoadMtl ( std::map&lt;std::string, ObjLoader::material_t&gt;&amp; material_map, const char* filename, const char* mtl_basepath)"
-            landmarkType = "7">
+            startingLineNumber = "285"
+            endingLineNumber = "285"
+            landmarkName = "GroundLayer::carryCell(int indexX,int indexY)"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

@@ -11,6 +11,7 @@
 
 #include "EffectSprite3D.h"
 class GroundLayer;
+class GroundCell;
 class Player : public EffectSprite3D
 {
 public:
@@ -31,6 +32,7 @@ public:
         PS_MOVE_DOWN,
         PS_JUMP_STAY,
         PS_CHECK_NEXT_CELL,
+        PS_CHECK_SPEICAL_ART,
         PS_UNKNOWN
     } PlayerState;
 protected:
@@ -58,6 +60,8 @@ private:
     void onEnterMoveDown();
     void onEnterJumpStay();
     void onEnterCheckNextCell();
+    void onEnterCheckSpeicalArt();
+    
     
     void onExitIdle();
     void onExitMoveLeft();
@@ -66,9 +70,12 @@ private:
     void onExitMoveDown();
     void onExitJumpStay();
     void onExitCheckNextCell();
+    void onExitCheckSpeicalArt();
     
     void recalculateCells();
     void jumpFinish();
+    void carryStar(Node* node,GroundCell* cell);
+    void carryFinish(Node* node,GroundCell* cell);
 protected:
     PlayerState     m_curState;
     float           m_fRadius;

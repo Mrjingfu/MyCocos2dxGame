@@ -10,7 +10,6 @@
 #define __MazeJump__GroundCell__
 
 #include "EffectSprite3D.h"
-
 class GroundCell : public EffectSprite3D
 {
 public:
@@ -21,6 +20,7 @@ public:
         CT_OK,          ///已翻转 GREEN
         CT_MASTER,      ///有怪物 CYAN
         CT_BOMB,        ///有炸弹 YELLOW
+        CT_CARRY,       ///传送   BLUE
         CT_UNKNOWN
     }
     CellType;
@@ -36,11 +36,18 @@ public:
     void setIndexX(int indexX) { m_nIndexX = indexX; }
     int getIndexY() const { return m_nIndexY; }
     void setIndexY(int indexY) { m_nIndexY = indexY; }
+    void setCarryProp(int prop);
+    int getCarryProp(){return m_carryProp;}
+    bool isSpeicalArtCell();//判断是否是特殊地板
+    bool isWalkCell();      //判断地板是否可行走
+    EffectSprite3D* getSpecialArtCell(){return specialArtCell;}
 protected:
     float       m_fRadius;
     CellType    m_Type;
     int         m_nIndexX;
     int         m_nIndexY;
+    int         m_carryProp;            //传送属性 默认为-1
+    EffectSprite3D* specialArtCell;     //特殊地板
 };
 
 #endif /* defined(__MazeJump__GroundCell__) */

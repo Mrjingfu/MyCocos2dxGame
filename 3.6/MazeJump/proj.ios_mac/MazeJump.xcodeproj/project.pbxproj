@@ -170,6 +170,20 @@
 		EC496E221B5FCDAA007C9A08 /* platform2.png in Resources */ = {isa = PBXBuildFile; fileRef = EC496E0F1B5F9A0B007C9A08 /* platform2.png */; };
 		EC496E231B5FCDB1007C9A08 /* sky4.png in Resources */ = {isa = PBXBuildFile; fileRef = EC496E151B5FC967007C9A08 /* sky4.png */; };
 		EC496E241B5FCDB1007C9A08 /* sky3.png in Resources */ = {isa = PBXBuildFile; fileRef = EC496DFF1B5F9772007C9A08 /* sky3.png */; };
+		EC96D7311B607B62009C64F5 /* 5x5-7.tmx in Resources */ = {isa = PBXBuildFile; fileRef = EC96D7301B607B62009C64F5 /* 5x5-7.tmx */; };
+		EC96D7321B607B91009C64F5 /* 5x5-7.tmx in Resources */ = {isa = PBXBuildFile; fileRef = EC96D7301B607B62009C64F5 /* 5x5-7.tmx */; };
+		EC96D7341B608850009C64F5 /* 5x5-8.tmx in Resources */ = {isa = PBXBuildFile; fileRef = EC96D7331B608850009C64F5 /* 5x5-8.tmx */; };
+		EC96D73A1B609A54009C64F5 /* circle.mtl in Resources */ = {isa = PBXBuildFile; fileRef = EC96D7371B609A54009C64F5 /* circle.mtl */; };
+		EC96D73B1B609A54009C64F5 /* circle.obj in Resources */ = {isa = PBXBuildFile; fileRef = EC96D7381B609A54009C64F5 /* circle.obj */; };
+		EC96D73C1B609A54009C64F5 /* circle.png in Resources */ = {isa = PBXBuildFile; fileRef = EC96D7391B609A54009C64F5 /* circle.png */; };
+		EC96D73F1B60F47E009C64F5 /* 5x5-8.tmx in Resources */ = {isa = PBXBuildFile; fileRef = EC96D7331B608850009C64F5 /* 5x5-8.tmx */; };
+		EC96D7401B60F485009C64F5 /* circle.mtl in Resources */ = {isa = PBXBuildFile; fileRef = EC96D7371B609A54009C64F5 /* circle.mtl */; };
+		EC96D7411B60F485009C64F5 /* circle.obj in Resources */ = {isa = PBXBuildFile; fileRef = EC96D7381B609A54009C64F5 /* circle.obj */; };
+		EC96D7421B60F485009C64F5 /* circle.png in Resources */ = {isa = PBXBuildFile; fileRef = EC96D7391B609A54009C64F5 /* circle.png */; };
+		EC96D7441B60FA5B009C64F5 /* 5x5-9.tmx in Resources */ = {isa = PBXBuildFile; fileRef = EC96D7431B60FA5B009C64F5 /* 5x5-9.tmx */; };
+		EC96D7451B60FA66009C64F5 /* 5x5-9.tmx in Resources */ = {isa = PBXBuildFile; fileRef = EC96D7431B60FA5B009C64F5 /* 5x5-9.tmx */; };
+		EC96D7481B610BBD009C64F5 /* StepManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC96D7461B610BBD009C64F5 /* StepManager.cpp */; };
+		EC96D7491B612495009C64F5 /* StepManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC96D7461B610BBD009C64F5 /* StepManager.cpp */; };
 		ECA02B781B5F72F6007EFC0F /* sky2.png in Resources */ = {isa = PBXBuildFile; fileRef = ECA02B771B5F72F6007EFC0F /* sky2.png */; };
 /* End PBXBuildFile section */
 
@@ -333,6 +347,14 @@
 		EC496E0F1B5F9A0B007C9A08 /* platform2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = platform2.png; sourceTree = "<group>"; };
 		EC496E151B5FC967007C9A08 /* sky4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sky4.png; sourceTree = "<group>"; };
 		EC496E1D1B5FCCB5007C9A08 /* platform4.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = platform4.mtl; sourceTree = "<group>"; };
+		EC96D7301B607B62009C64F5 /* 5x5-7.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "5x5-7.tmx"; sourceTree = "<group>"; };
+		EC96D7331B608850009C64F5 /* 5x5-8.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "5x5-8.tmx"; sourceTree = "<group>"; };
+		EC96D7371B609A54009C64F5 /* circle.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = circle.mtl; sourceTree = "<group>"; };
+		EC96D7381B609A54009C64F5 /* circle.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = circle.obj; sourceTree = "<group>"; };
+		EC96D7391B609A54009C64F5 /* circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = circle.png; sourceTree = "<group>"; };
+		EC96D7431B60FA5B009C64F5 /* 5x5-9.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "5x5-9.tmx"; sourceTree = "<group>"; };
+		EC96D7461B610BBD009C64F5 /* StepManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StepManager.cpp; sourceTree = "<group>"; };
+		EC96D7471B610BBD009C64F5 /* StepManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StepManager.h; sourceTree = "<group>"; };
 		ECA02B771B5F72F6007EFC0F /* sky2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sky2.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -553,6 +575,9 @@
 		5542EEBD1B395D0500CD9496 /* models */ = {
 			isa = PBXGroup;
 			children = (
+				EC96D7371B609A54009C64F5 /* circle.mtl */,
+				EC96D7381B609A54009C64F5 /* circle.obj */,
+				EC96D7391B609A54009C64F5 /* circle.png */,
 				5592AE371B5FF43F0062AF08 /* startpoint.mtl */,
 				5592AE381B5FF43F0062AF08 /* startpoint.obj */,
 				5592AE391B5FF43F0062AF08 /* startpoint.png */,
@@ -686,6 +711,9 @@
 		55F3B98A1B4522360090BE1A /* maps */ = {
 			isa = PBXGroup;
 			children = (
+				EC96D7431B60FA5B009C64F5 /* 5x5-9.tmx */,
+				EC96D7331B608850009C64F5 /* 5x5-8.tmx */,
+				EC96D7301B607B62009C64F5 /* 5x5-7.tmx */,
 				5592AE471B5FF4B50062AF08 /* patterns.plist */,
 				55066CE71B4BD92B007FCF3F /* 5x5-5.tmx */,
 				55066CE81B4BD92B007FCF3F /* 5x5-6.tmx */,
@@ -701,6 +729,8 @@
 		55F3B9991B4580660090BE1A /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				EC96D7461B610BBD009C64F5 /* StepManager.cpp */,
+				EC96D7471B610BBD009C64F5 /* StepManager.h */,
 				5592AE441B5FF4AB0062AF08 /* PatternsManager.cpp */,
 				5592AE451B5FF4AB0062AF08 /* PatternsManager.h */,
 				55F3B99A1B45808B0090BE1A /* UtilityHelper.cpp */,
@@ -842,10 +872,14 @@
 				5087E78517EB970100C73F5D /* Icon-72.png in Resources */,
 				EC496DF41B5F8918007C9A08 /* platform1.obj in Resources */,
 				5542EED51B3960AB00CD9496 /* IndexColor.png in Resources */,
+				EC96D73A1B609A54009C64F5 /* circle.mtl in Resources */,
+				EC96D7441B60FA5B009C64F5 /* 5x5-9.tmx in Resources */,
 				55066CEA1B4BD92B007FCF3F /* 5x5-6.tmx in Resources */,
 				521A8E6519F0C34300D177D7 /* Default-736h@3x.png in Resources */,
 				EC496DFB1B5F8C8A007C9A08 /* starfield.plist in Resources */,
 				55066CE21B4BD07E007FCF3F /* 5x5-3.tmx in Resources */,
+				EC96D7311B607B62009C64F5 /* 5x5-7.tmx in Resources */,
+				EC96D73B1B609A54009C64F5 /* circle.obj in Resources */,
 				55F3B98F1B4527F30090BE1A /* colorlist.png in Resources */,
 				558215841B5C6B6B00173C79 /* stoneflip.wav in Resources */,
 				55066CE91B4BD92B007FCF3F /* 5x5-5.tmx in Resources */,
@@ -855,6 +889,7 @@
 				EC496E111B5F9A0B007C9A08 /* platform2.obj in Resources */,
 				EC496E121B5F9A0B007C9A08 /* platform2.png in Resources */,
 				50EF62A317ECD613001EB2F8 /* Icon-50.png in Resources */,
+				EC96D7341B608850009C64F5 /* 5x5-8.tmx in Resources */,
 				55066CE51B4BD6B9007FCF3F /* 5x5-4.tmx in Resources */,
 				5087E78017EB970100C73F5D /* Icon-114.png in Resources */,
 				50EF62A217ECD613001EB2F8 /* Icon-29.png in Resources */,
@@ -863,6 +898,7 @@
 				5592AE481B5FF4B50062AF08 /* patterns.plist in Resources */,
 				50EF629817ECD46A001EB2F8 /* Icon-80.png in Resources */,
 				5087E78417EB970100C73F5D /* Icon-57.png in Resources */,
+				EC96D73C1B609A54009C64F5 /* circle.png in Resources */,
 				5087E77E17EB970100C73F5D /* Default.png in Resources */,
 				EC496DF51B5F8918007C9A08 /* platform1.png in Resources */,
 				521A8E6419F0C34300D177D7 /* Default-667h@2x.png in Resources */,
@@ -874,6 +910,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC96D7451B60FA66009C64F5 /* 5x5-9.tmx in Resources */,
+				EC96D7401B60F485009C64F5 /* circle.mtl in Resources */,
+				EC96D7411B60F485009C64F5 /* circle.obj in Resources */,
+				EC96D7421B60F485009C64F5 /* circle.png in Resources */,
+				EC96D73F1B60F47E009C64F5 /* 5x5-8.tmx in Resources */,
+				EC96D7321B607B91009C64F5 /* 5x5-7.tmx in Resources */,
 				5592AE4A1B5FF4C90062AF08 /* patterns.plist in Resources */,
 				5592AE3D1B5FF4470062AF08 /* startpoint.mtl in Resources */,
 				5592AE3E1B5FF4470062AF08 /* startpoint.obj in Resources */,
@@ -941,6 +983,7 @@
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				55C8908E1B46B3C8009AF1DA /* Player.cpp in Sources */,
 				5535FC131B47B88D00197B27 /* GameController.cpp in Sources */,
+				EC96D7481B610BBD009C64F5 /* StepManager.cpp in Sources */,
 				5592AE0F1B5F2CFB0062AF08 /* RunController.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				5542EEBC1B3943C600CD9496 /* GameScene.cpp in Sources */,
@@ -954,6 +997,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC96D7491B612495009C64F5 /* StepManager.cpp in Sources */,
 				5592AE491B5FF4BC0062AF08 /* PatternsManager.cpp in Sources */,
 				5592AE431B5FF4980062AF08 /* TerrainCell.cpp in Sources */,
 				5592AE161B5F6A7F0062AF08 /* Runner.cpp in Sources */,

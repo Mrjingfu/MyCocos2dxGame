@@ -29,6 +29,39 @@ GroundCell* GroundCell::create()
     CC_SAFE_DELETE(cell);
     return nullptr;
 }
-GroundCell::GroundCell()
+GroundCell::GroundCell():m_carryProp(-1)
 {
+    specialArtCell = nullptr;
+}
+bool GroundCell::isSpeicalArtCell()
+{
+    if (m_Type == CT_BOMB|| m_Type == CT_CARRY) {
+        return true;
+    }
+    return false;
+}
+
+bool GroundCell::isWalkCell()
+{
+    if (m_Type == CT_NOT || isSpeicalArtCell()) {
+        return true;
+    }
+    return false;
+}
+void GroundCell::setCarryProp(int prop)
+{
+    m_carryProp = prop;
+    specialArtCell = EffectSprite3D::create("circle.obj");
+    OutlineEffect3D* outline = OutlineEffect3D::create();
+    outline->setOutlineColor(Vec3(0.3f, 0.3f, 0.3f));
+    outline->setOutlineWidth(0.03f);
+    specialArtCell->addEffect(outline, 1);
+    specialArtCell->setAnchorPoint(Vec2::ZERO);
+    specialArtCell->setPosition3D(Vec3(0, 2, 0));
+    specialArtCell->setScale(0.3);
+    
+    specialArtCell->runAction(RepeatForever::create(Sequence::create(ScaleTo::create(0.1f, 0.3f),ScaleTo::create(0.3f, 0.5f),ScaleTo::create(0.5f, 0.6f),ScaleTo::create(0.3f, 0.8f) ,ScaleTo::create(0.4f, 0.8f),NULL)));
+    
+    addChild(specialArtCell);
+    
 }

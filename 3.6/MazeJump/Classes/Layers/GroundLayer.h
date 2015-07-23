@@ -36,6 +36,7 @@ public:
     GroundCell* getNextCell(int nextIndexX, int nextIndexY);
     
     void flipIndexCell(int indexX, int indexY);
+    void carryCell(int indexX,int indexY);
     void setCurrentCellTypeOK();
     void showArrow();
     void checkWinOrLose();
