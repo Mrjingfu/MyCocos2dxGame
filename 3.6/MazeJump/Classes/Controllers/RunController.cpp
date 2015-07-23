@@ -46,7 +46,7 @@ bool RunController::init(Layer* pMainLayer)
     if(!m_pMainPlayer)
         return false;
     m_pMainPlayer->setCameraMask((unsigned short)CameraFlag::USER1);
-    m_pMainPlayer->setPositionY(1);
+    m_pMainPlayer->setPositionY(2);
     m_pTerrainLayer->addChild(m_pMainPlayer);
     
     auto size = Director::getInstance()->getVisibleSize();
@@ -69,6 +69,8 @@ bool RunController::init(Layer* pMainLayer)
 }
 void RunController::update(float delta)
 {
+    if(m_pTerrainLayer)
+        m_pTerrainLayer->update(delta);
 }
 void RunController::destroy()
 {
@@ -84,4 +86,8 @@ void RunController::cameraTrackPlayer()
         EaseSineOut* moveTo = EaseSineOut::create(MoveTo::create(0.4f, camPos));
         m_pMainCamera->runAction(moveTo);
     }
+}
+void RunController::gameOver()
+{
+    CCLOG("gameOver");
 }

@@ -9,13 +9,15 @@
 #ifndef __MazeJump__TerrainCell__
 #define __MazeJump__TerrainCell__
 
-#include "cocos2d.h"
-class TerrainCell : public cocos2d::Sprite3D
+#include "EffectSprite3D.h"
+class TerrainCell : public EffectSprite3D
 {
 public:
     typedef enum
     {
         CT_STARTPOINT = 0,
+        CT_SLIDBAR,
+        CT_NORMAL_PLATFORM,
         CT_UNKNOWN
     }
     CellType;

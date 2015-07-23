@@ -27,6 +27,8 @@ public:
     Runner* getMainPlayer() const { return m_pMainPlayer; }
 
     void cameraTrackPlayer();
+    
+    void gameOver();
 private:
     cocos2d::Layer*     m_pMainLayer;
     TerrainLayer*       m_pTerrainLayer;

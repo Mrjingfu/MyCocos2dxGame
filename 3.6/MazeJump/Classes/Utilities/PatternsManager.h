@@ -19,7 +19,8 @@ public:
     bool init(const std::string& file);
     
     cocos2d::ValueVector getPatternTerrainCells(int patternIndex);
-    
+    int getPatternFadeInType(int patternIndex);
+    int getPatternType(int patternIndex);
 
 private:
     cocos2d::ValueVector    m_Patterns;
