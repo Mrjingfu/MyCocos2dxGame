@@ -8,6 +8,7 @@
 
 #include "GameController.h"
 #include "LevelsManager.h"
+#include "CocosGUI.h"
 USING_NS_CC;
 
 GameController* g_pGameControllerInstance = nullptr;
@@ -24,6 +25,7 @@ GameController::GameController()
     m_pSkyBox           = nullptr;
     m_pGroundLayer      = nullptr;
     m_pMainCamera       = nullptr;
+
 }
 GameController::~GameController()
 {
@@ -33,6 +35,41 @@ bool GameController::init(Layer* pMainLayer)
     if(pMainLayer == nullptr)
         return false;
     m_pMainLayer = pMainLayer;
+    
+    if (!createMap(false)) {
+        return false;
+    }
+    
+    auto size = Director::getInstance()->getVisibleSize();
+    cocos2d::ui::Button* button = cocos2d::ui::Button::create("button_retry_up.png",
+                                    "button_retry_down.png");
+    button->setPosition(Vec2(size.width * 0.8f, size.height * 0.8f));
+    button->setPressedActionEnabled(true);
+    button->addClickEventListener([=](Ref* sender){
+        
+    });
+    m_pMainLayer->addChild(button);
+    return true;
+}
+void GameController::update(float delta)
+{
+
+}
+void GameController::destroy()
+{
+    m_pMainLayer->removeAllChildren();
+    m_pMainLayer = nullptr;
+}
+
+bool GameController::createMap(bool _playing)
+{
+
+    if (m_pSkyBox) {
+         m_pMainLayer->removeChild(m_pSkyBox);
+    }
+   
+    m_pMainLayer->removeChild(m_pGroundLayer);
+    m_pMainLayer->removeChild(m_pMainCamera);
     std::string skyTexName = LevelsManager::getInstance()->getCurrentLevelSkyTextureName();
     std::string skyTexTop = skyTexName + "_t.png";
     std::string skyTexBottom = skyTexName + "_b.png";
@@ -42,7 +79,7 @@ bool GameController::init(Layer* pMainLayer)
         return false;
     m_pSkyBox->setScale(1000);
     m_pSkyBox->setCameraMask((unsigned short)CameraFlag::USER1);
-    pMainLayer->addChild(m_pSkyBox);
+    m_pMainLayer->addChild(m_pSkyBox);
     
     ParticleSystemQuad* starfield= ParticleSystemQuad::create("starfield.plist");
     if(!starfield)
@@ -53,10 +90,11 @@ bool GameController::init(Layer* pMainLayer)
     starfield->setStartSize(5.0f);
     starfield->setStartSizeVar(3.0f);
     starfield->setGravity(Vec2(-40.0f, 0));
-     pMainLayer->addChild(starfield);
-
+    m_pMainLayer->addChild(starfield);
     
-    m_pGroundLayer = GroundLayer::create(LevelsManager::getInstance()->getCurrentLevelName());
+    
+    
+    m_pGroundLayer = GroundLayer::create(LevelsManager::getInstance()->getCurrentLevelName(),_playing);
     if(!m_pGroundLayer)
         return false;
     m_pGroundLayer->setCameraMask((unsigned short)CameraFlag::USER1);
@@ -78,15 +116,5 @@ bool GameController::init(Layer* pMainLayer)
     m_pMainLayer->addChild(ambLight);
     DirectionLight* directionLight = DirectionLight::create(Vec3(-3, -4, -2), Color3B(158, 158, 158));
     m_pMainLayer->addChild(directionLight);
-    
     return true;
-}
-void GameController::update(float delta)
-{
-
-}
-void GameController::destroy()
-{
-    m_pMainLayer->removeAllChildren();
-    m_pMainLayer = nullptr;
 }

@@ -47,6 +47,8 @@ void GameScene::onEnter()
     scheduleUpdate();
     if(!GameController::getInstance()->init(this))
         CCLOGERROR("GameController init failed!");
+    
+    
 }
 void GameScene::onExit()
 {

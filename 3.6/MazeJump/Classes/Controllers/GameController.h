@@ -20,6 +20,7 @@ public:
     bool init(cocos2d::Layer* pMainLayer);
     void update(float delta);
     void destroy();
+    bool createMap(bool _playing);
 private:
     cocos2d::Layer*     m_pMainLayer;
     cocos2d::Skybox*    m_pSkyBox;

@@ -23,9 +23,12 @@ StepManager* StepManager::getInstance()
     
     return g_pStepManagerInstance;
 }
-void StepManager::setStep(int index)
+void StepManager::setStep(int index,int direction)
 {
-    m_Steps.push_back(cocos2d::Value(index));
+    ValueVector localVector;
+    localVector.push_back(Value(index));
+    localVector.push_back(Value(direction));
+    m_Steps.push_back(cocos2d::Value(localVector));
 }
 void StepManager::setLevelStep(int level)
 {

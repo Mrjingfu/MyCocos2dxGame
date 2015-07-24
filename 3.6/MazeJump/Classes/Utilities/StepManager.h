@@ -17,13 +17,16 @@ protected:
     StepManager();
 public:
     static StepManager* getInstance();
-    void setStep(int index);
+    void setStep(int index,int direction);
     void setLevelStep(int level);
     cocos2d::ValueVector getLevelSteps(int level);
     void printfStep(int level)
     {
         for (cocos2d::Value  i:getLevelSteps(level)) {
-            CCLOG("step:%d",i.asInt());
+            cocos2d::ValueVector pt =i.asValueVector();
+            cocos2d::Value pts = pt[0];
+            cocos2d::Value ore = pt[1];
+            CCLOG("step 位置:%d,方向:%d",pts.asInt(),ore.asInt());
         }
     }
 private:

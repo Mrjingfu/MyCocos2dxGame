@@ -181,6 +181,10 @@
 		D44C620E132DFF430009C878 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620D132DFF430009C878 /* AVFoundation.framework */; };
 		D44C6210132DFF4E0009C878 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620F132DFF4E0009C878 /* AudioToolbox.framework */; };
 		D6B0611B1803AB670077942B /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6B0611A1803AB670077942B /* CoreMotion.framework */; };
+		EC339D6D1B6209CD00781575 /* button_retry_down.png in Resources */ = {isa = PBXBuildFile; fileRef = EC339D6B1B6209CD00781575 /* button_retry_down.png */; };
+		EC339D6E1B6209CD00781575 /* button_retry_up.png in Resources */ = {isa = PBXBuildFile; fileRef = EC339D6C1B6209CD00781575 /* button_retry_up.png */; };
+		EC339D711B6213DC00781575 /* button_retry_down.png in Resources */ = {isa = PBXBuildFile; fileRef = EC339D6B1B6209CD00781575 /* button_retry_down.png */; };
+		EC339D721B6213DC00781575 /* button_retry_up.png in Resources */ = {isa = PBXBuildFile; fileRef = EC339D6C1B6209CD00781575 /* button_retry_up.png */; };
 		EC496DDA1B5F831D007C9A08 /* sky2.png in Resources */ = {isa = PBXBuildFile; fileRef = ECA02B771B5F72F6007EFC0F /* sky2.png */; };
 		EC496DF31B5F8918007C9A08 /* platform1.mtl in Resources */ = {isa = PBXBuildFile; fileRef = EC496DF01B5F8918007C9A08 /* platform1.mtl */; };
 		EC496DF41B5F8918007C9A08 /* platform1.obj in Resources */ = {isa = PBXBuildFile; fileRef = EC496DF11B5F8918007C9A08 /* platform1.obj */; };
@@ -386,6 +390,8 @@
 		D44C620D132DFF430009C878 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		D44C620F132DFF4E0009C878 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		D6B0611A1803AB670077942B /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/CoreMotion.framework; sourceTree = DEVELOPER_DIR; };
+		EC339D6B1B6209CD00781575 /* button_retry_down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_retry_down.png; sourceTree = "<group>"; };
+		EC339D6C1B6209CD00781575 /* button_retry_up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_retry_up.png; sourceTree = "<group>"; };
 		EC496DF01B5F8918007C9A08 /* platform1.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = platform1.mtl; sourceTree = "<group>"; };
 		EC496DF11B5F8918007C9A08 /* platform1.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = platform1.obj; sourceTree = "<group>"; };
 		EC496DF21B5F8918007C9A08 /* platform1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = platform1.png; sourceTree = "<group>"; };
@@ -714,6 +720,8 @@
 		5542EED31B395E1300CD9496 /* textures */ = {
 			isa = PBXGroup;
 			children = (
+				EC339D6B1B6209CD00781575 /* button_retry_down.png */,
+				EC339D6C1B6209CD00781575 /* button_retry_up.png */,
 				EC496E151B5FC967007C9A08 /* sky4.png */,
 				EC496DFF1B5F9772007C9A08 /* sky3.png */,
 				ECA02B771B5F72F6007EFC0F /* sky2.png */,
@@ -917,6 +925,7 @@
 				558215821B5C6B6B00173C79 /* life.mp3 in Resources */,
 				55B740231B60890A00DDA3D8 /* 1x1.png in Resources */,
 				5087E78117EB970100C73F5D /* Icon-120.png in Resources */,
+				EC339D6D1B6209CD00781575 /* button_retry_down.png in Resources */,
 				5544E1F11B5E160E0049EB2D /* platform4.png in Resources */,
 				558215831B5C6B6B00173C79 /* start.mp3 in Resources */,
 				55B740281B60890A00DDA3D8 /* 2x1.obj in Resources */,
@@ -965,6 +974,7 @@
 				EC496E111B5F9A0B007C9A08 /* platform2.obj in Resources */,
 				55B740241B60890A00DDA3D8 /* 1x2.mtl in Resources */,
 				EC496E121B5F9A0B007C9A08 /* platform2.png in Resources */,
+				EC339D6E1B6209CD00781575 /* button_retry_up.png in Resources */,
 				50EF62A317ECD613001EB2F8 /* Icon-50.png in Resources */,
 				EC96D7341B608850009C64F5 /* 5x5-8.tmx in Resources */,
 				55066CE51B4BD6B9007FCF3F /* 5x5-4.tmx in Resources */,
@@ -991,6 +1001,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC339D711B6213DC00781575 /* button_retry_down.png in Resources */,
+				EC339D721B6213DC00781575 /* button_retry_up.png in Resources */,
 				EC96D7451B60FA66009C64F5 /* 5x5-9.tmx in Resources */,
 				EC96D7401B60F485009C64F5 /* circle.mtl in Resources */,
 				EC96D7411B60F485009C64F5 /* circle.obj in Resources */,

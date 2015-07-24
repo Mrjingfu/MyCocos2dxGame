@@ -18,7 +18,7 @@ class GroundLayer : public cocos2d::Layer
     GroundLayer();
 public:
     // there's no 'id' in cpp, so we recommend returning the class instance pointer
-    static GroundLayer* create(const std::string& tmxFile);
+    static GroundLayer* create(const std::string& tmxFile,bool _isPlaying);
     
     // Here's a difference. Method 'init' in cocos2d-x returns bool, instead of returning 'id' in cocos2d-iphone
     virtual bool init(const std::string& tmxFile);
@@ -40,6 +40,13 @@ public:
     void setCurrentCellTypeOK();
     void showArrow();
     void checkWinOrLose();
+    //移动检测
+    void checkSildeHandle( bool isTouchDown , bool isToucLeft,bool isToucRight , bool isToucUp  );
+    //选择主角开始位置
+    void seleckStartRolePlace(int index);
+    
+    bool getPlaying(){return m_Playing;};
+    void setPlaying(bool _isPlaying){m_Playing = _isPlaying;}
 protected:
     // 处理输入
     virtual void onTouchesBegan(const std::vector<cocos2d::Touch*>& touches, cocos2d::Event *event) override;
@@ -60,6 +67,9 @@ private:
     cocos2d::Vec3   m_Offset;
     
     cocos2d::Camera*    m_pCamera;
+    cocos2d::Vec2   m_GroundTouchBegin;
+    
+    bool m_Playing;
 };
 
 #endif /* defined(__MazeJump__GroundLayer__) */
