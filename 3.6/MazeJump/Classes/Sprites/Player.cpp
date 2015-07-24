@@ -72,6 +72,8 @@ void Player::setPlayerState(PlayerState state)
         case PlayerState::PS_CHECK_NEXT_CELL:
             onExitCheckNextCell();
             break;
+        case PlayerState::PS_CHECK_SPEICAL_ART:
+            break;
         default:
             break;
     }
@@ -100,6 +102,8 @@ void Player::setPlayerState(PlayerState state)
         case PlayerState::PS_CHECK_NEXT_CELL:
             onEnterCheckNextCell();
             break;
+        case PlayerState::PS_CHECK_SPEICAL_ART:
+            onEnterCheckSpeicalArt();
         default:
             break;
     }
@@ -110,6 +114,9 @@ void Player::onEnterIdle()
     {
         m_pGround->showArrow();
         m_pGround->checkWinOrLose();
+        if (m_pGround->getPlaying()) {
+            m_pGround->setRecordState(GroundLayer::RecordState::RD_NEXT);
+        }
     }
 }
 void Player::onEnterMoveLeft()
@@ -198,7 +205,7 @@ void Player::onEnterCheckNextCell()
             switch (m_Type) {
                 case PT_STRENGTH:
                     {
-                        if (pNextCell->getType() != GroundCell::CT_NOT && pNextCell->getType() != GroundCell::CT_BOMB)
+                        if (!pNextCell->isWalkCell())
                             setPlayerState(PS_JUMP_STAY);
                         else
                         {
@@ -233,7 +240,44 @@ void Player::onEnterCheckNextCell()
         }
     }
 }
-
+void Player::onEnterCheckSpeicalArt()
+{
+    GroundCell* currentCell = m_pGround->getNextCell(m_nIndexX, m_nIndexY);
+    Size mapSize = m_pGround->getMapSize();
+    if (currentCell) {
+        GroundCell::CellType currentType = currentCell->getType();
+        switch (currentType) {
+            case GroundCell::CellType::CT_CARRY:
+                {
+                    for (int i = 0; i < mapSize.width ;i++) {
+                        for (int j = 0; j < mapSize.height; j++) {
+                            GroundCell* checkGroudCell = m_pGround->getNextCell(i, j);
+                            if (currentCell->getIndexX()== checkGroudCell->getIndexX() &&
+                                currentCell->getIndexY()== checkGroudCell->getIndexY()) {
+                                continue;
+                            }
+                            if (currentType == checkGroudCell->getType() &&
+                                currentCell->getCarryProp() == checkGroudCell->getCarryProp())
+                                {
+                                    
+                                    auto jumpByPlayer = JumpBy::create(0.5, Vec2(0, 0), 5, 1);
+                                    auto spawnPlayer = Spawn::create( MoveTo::create(0.3f, Vec3(this->getPositionX(), 2, this->getPositionZ())), Sequence::create(ScaleTo::create(0.5f, 0.3f),NULL), NULL);
+                                    
+                                    runAction(Sequence::create(Sequence::createWithTwoActions(jumpByPlayer, spawnPlayer),CallFuncN::create( CC_CALLBACK_1(Player::carryStar, this, checkGroudCell)),NULL));
+                                
+                                }
+                        }
+                    }
+                }
+                break;
+            case GroundCell::CellType::CT_BOMB:
+                break;
+            default:
+                break;
+        }
+    }
+    
+}
 void Player::onExitIdle()
 {
 }
@@ -255,6 +299,10 @@ void Player::onExitJumpStay()
 void Player::onExitCheckNextCell()
 {
 }
+void Player::onExitCheckSpeicalArt()
+{
+    
+}
 void Player::recalculateCells()
 {
     if(!m_pGround)
@@ -265,11 +313,17 @@ void Player::recalculateCells()
                 m_nIndexX -= 1;
                 m_nNextIndexX = m_nIndexX - 1;
                 m_nNextIndexY = m_nIndexY;
-                m_pGround->flipIndexCell(m_nIndexX, m_nIndexY);
-                if (m_nNextIndexX < 0)
-                    setPlayerState(PlayerState::PS_JUMP_STAY);
-                else
-                    setPlayerState(PlayerState::PS_CHECK_NEXT_CELL);
+                GroundCell* nextCell = m_pGround->getNextCell(m_nIndexX, m_nIndexY);
+                if (nextCell && nextCell->isSpeicalArtCell()) {
+                    setPlayerState(PlayerState::PS_CHECK_SPEICAL_ART);
+                }else{
+                    m_pGround->flipIndexCell(m_nIndexX, m_nIndexY);
+                    if (m_nNextIndexX < 0)
+                        setPlayerState(PlayerState::PS_JUMP_STAY);
+                    else
+                        setPlayerState(PlayerState::PS_CHECK_NEXT_CELL);
+                }
+                
             }
             break;
         case PS_MOVE_RIGHT:
@@ -277,11 +331,17 @@ void Player::recalculateCells()
                 m_nIndexX += 1;
                 m_nNextIndexX = m_nIndexX + 1;
                 m_nNextIndexY = m_nIndexY;
-                m_pGround->flipIndexCell(m_nIndexX, m_nIndexY);
-                if (m_nNextIndexX >= m_pGround->getMapSize().width)
-                    setPlayerState(PlayerState::PS_JUMP_STAY);
-                else
-                    setPlayerState(PlayerState::PS_CHECK_NEXT_CELL);
+                GroundCell* nextCell = m_pGround->getNextCell(m_nIndexX, m_nIndexY);
+                if (nextCell && nextCell->isSpeicalArtCell()) {
+                    setPlayerState(PlayerState::PS_CHECK_SPEICAL_ART);
+                }else{
+                    m_pGround->flipIndexCell(m_nIndexX, m_nIndexY);
+                    if (m_nNextIndexX >= m_pGround->getMapSize().width)
+                        setPlayerState(PlayerState::PS_JUMP_STAY);
+                    else
+                        setPlayerState(PlayerState::PS_CHECK_NEXT_CELL);
+                }
+               
             }
             break;
         case PS_MOVE_DOWN:
@@ -289,11 +349,17 @@ void Player::recalculateCells()
                 m_nIndexY -= 1;
                 m_nNextIndexX = m_nIndexX;
                 m_nNextIndexY = m_nIndexY - 1;
-                m_pGround->flipIndexCell(m_nIndexX, m_nIndexY);
-                if (m_nNextIndexY < 0)
-                    setPlayerState(PlayerState::PS_JUMP_STAY);
-                else
-                    setPlayerState(PlayerState::PS_CHECK_NEXT_CELL);
+                GroundCell* nextCell = m_pGround->getNextCell(m_nIndexX, m_nIndexY);
+                if (nextCell && nextCell->isSpeicalArtCell()) {
+                    setPlayerState(PlayerState::PS_CHECK_SPEICAL_ART);
+                }else{
+                    m_pGround->flipIndexCell(m_nIndexX, m_nIndexY);
+                    if (m_nNextIndexY < 0)
+                        setPlayerState(PlayerState::PS_JUMP_STAY);
+                    else
+                        setPlayerState(PlayerState::PS_CHECK_NEXT_CELL);
+                }
+                
             }
             break;
         case PS_MOVE_UP:
@@ -301,11 +367,17 @@ void Player::recalculateCells()
                 m_nIndexY += 1;
                 m_nNextIndexX = m_nIndexX;
                 m_nNextIndexY = m_nIndexY + 1;
-                m_pGround->flipIndexCell(m_nIndexX, m_nIndexY);
-                if (m_nNextIndexY >= m_pGround->getMapSize().height)
-                    setPlayerState(PlayerState::PS_JUMP_STAY);
-                else
-                    setPlayerState(PlayerState::PS_CHECK_NEXT_CELL);
+                GroundCell* nextCell = m_pGround->getNextCell(m_nIndexX, m_nIndexY);
+                if (nextCell && nextCell->isSpeicalArtCell()) {
+                    setPlayerState(PlayerState::PS_CHECK_SPEICAL_ART);
+                }else{
+                    m_pGround->flipIndexCell(m_nIndexX, m_nIndexY);
+                    if (m_nNextIndexY >= m_pGround->getMapSize().height)
+                        setPlayerState(PlayerState::PS_JUMP_STAY);
+                    else
+                        setPlayerState(PlayerState::PS_CHECK_NEXT_CELL);
+                }
+                
             }
             break;
         default:
@@ -314,5 +386,19 @@ void Player::recalculateCells()
 }
 void Player::jumpFinish()
 {
+    setPlayerState(PlayerState::PS_IDLE);
+}
+void Player::carryStar(Node* node,GroundCell* cell)
+{
+    this->setPosition3D(cell->getPosition3D() + Vec3(0,4,0));
+    auto jumpByPlayer = JumpBy::create(0.5, Vec2(0, 0), 5, 1);
+    runAction(Sequence::create(Sequence::createWithTwoActions(ScaleTo::create(0.5f, 1.0f),jumpByPlayer),CallFuncN::create( CC_CALLBACK_1(Player::carryFinish, this, cell)),NULL));
+}
+void Player::carryFinish(Node* node,GroundCell* cell)
+{
+    m_pGround->carryCell(m_nIndexX, m_nIndexY);
+    m_pGround->carryCell(cell->getIndexX(), cell->getIndexY());
+    m_nIndexX = cell->getIndexX();
+    m_nIndexY = cell->getIndexY();
     setPlayerState(PlayerState::PS_IDLE);
 }

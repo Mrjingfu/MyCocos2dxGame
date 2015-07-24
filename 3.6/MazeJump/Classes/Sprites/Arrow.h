@@ -36,11 +36,15 @@ public:
     void setIndexX(int indexX) { m_nIndexX = indexX; }
     int getIndexY() const { return m_nIndexY; }
     void setIndexY(int indexY) { m_nIndexY = indexY; }
+    bool getSpecialArt(){return m_specialArt;}
+    void setSpecialArt(bool isSpecialArt){m_specialArt = isSpecialArt;}
+
 protected:
     float           m_fRadius;
     ArrowType       m_Type;
-    int         m_nIndexX;
-    int         m_nIndexY;
+    int             m_nIndexX;
+    int             m_nIndexY;
+    bool            m_specialArt;   //标记特殊地板
 };
 
 #endif /* defined(__MazeJump__Arrow__) */

@@ -10,12 +10,15 @@
 #include "UtilityHelper.h"
 #include "SimpleAudioEngine.h"
 #include "GameScene.h"
+#include "StepManager.h"
+#include "LevelsManager.h"
 USING_NS_CC;
 using namespace CocosDenshion;
-GroundLayer* GroundLayer::create(const std::string& tmxFile)
+GroundLayer* GroundLayer::create(int level,bool _isPlaying)
 {
     GroundLayer *pRet = new(std::nothrow) GroundLayer();
-    if (pRet && pRet->init(tmxFile))
+    pRet->setPlaying(_isPlaying);
+    if (pRet && pRet->init(level))
     {
         pRet->autorelease();
         return pRet;
@@ -34,13 +37,19 @@ GroundLayer::GroundLayer()
     m_pCurrentCell = nullptr;
     m_pPlayer = nullptr;
     m_pCamera = nullptr;
+    m_Playing = false;
+    m_isInit = false;
+    m_GroundTouchBegin = Vec2::ZERO;
+    m_Level = -1;
 }
 
-bool GroundLayer::init(const std::string& tmxFile)
+bool GroundLayer::init(int level)
 {
     if ( !Layer::init() )
         return false;
     
+    m_Level = level;
+    std::string tmxFile = LevelsManager::getInstance()->getLevelName(m_Level);
     TMXMapInfo *mapInfo = TMXMapInfo::create(tmxFile);
     if (!mapInfo || mapInfo->getObjectGroups().size() < 1)
         return false;
@@ -52,7 +61,7 @@ bool GroundLayer::init(const std::string& tmxFile)
     {
         for (int i = 0; i<m_MapSize.height; i++) {
             for (int j = 0; j<m_MapSize.width; j++) {
-                GroundCell* cell = GroundCell::create();
+                GroundCell* cell = GroundCell::create(level);
                 if(cell)
                 {
                     int index = i*m_MapSize.width + j;
@@ -70,6 +79,9 @@ bool GroundLayer::init(const std::string& tmxFile)
                     switch (type) {
                         case GroundCell::CT_HIDE:
                             cell->setVisible(false);
+                            break;
+                        case GroundCell::CT_CARRY:
+                            cell->setCarryProp(value.asValueMap()["carryprop"].asInt());
                             break;
                         default:
                             break;
@@ -130,6 +142,10 @@ bool GroundLayer::init(const std::string& tmxFile)
     touchListener->onTouchesEnded = CC_CALLBACK_2(GroundLayer::onTouchesEnded, this);
     dispatcher->addEventListenerWithSceneGraphPriority(touchListener, this);
 
+    DelayTime* delay = DelayTime::create(2.5f);
+    runAction(Sequence::createWithTwoActions(delay, CallFunc::create(CC_CALLBACK_0(GroundLayer::initEnd,this))));
+    
+    
     return true;
 }
 Vector<GroundCell*> GroundLayer::getNeighborCells(GroundCell* currentCell)
@@ -149,7 +165,7 @@ Vector<GroundCell*> GroundLayer::getNeighborCells(GroundCell* currentCell)
                 switch (m_pPlayer->getType()) {
                     case Player::PT_STRENGTH:
                     {
-                        if (neighborCell->getType() == GroundCell::CT_NOT || neighborCell->getType() == GroundCell::CT_BOMB) {
+                        if (neighborCell->isWalkCell()) {
                             cells.pushBack(neighborCell);
                         }
                     }
@@ -172,7 +188,7 @@ Vector<GroundCell*> GroundLayer::getNeighborCells(GroundCell* currentCell)
                 switch (m_pPlayer->getType()) {
                     case Player::PT_STRENGTH:
                     {
-                        if (neighborCell->getType() == GroundCell::CT_NOT || neighborCell->getType() == GroundCell::CT_BOMB) {
+                        if (neighborCell->isWalkCell()) {
                             cells.pushBack(neighborCell);
                         }
                     }
@@ -195,7 +211,7 @@ Vector<GroundCell*> GroundLayer::getNeighborCells(GroundCell* currentCell)
                 switch (m_pPlayer->getType()) {
                     case Player::PT_STRENGTH:
                     {
-                        if (neighborCell->getType() == GroundCell::CT_NOT || neighborCell->getType() == GroundCell::CT_BOMB) {
+                        if (neighborCell->isWalkCell()) {
                             cells.pushBack(neighborCell);
                         }
                     }
@@ -218,7 +234,7 @@ Vector<GroundCell*> GroundLayer::getNeighborCells(GroundCell* currentCell)
                 switch (m_pPlayer->getType()) {
                     case Player::PT_STRENGTH:
                     {
-                        if (neighborCell->getType() == GroundCell::CT_NOT || neighborCell->getType() == GroundCell::CT_BOMB) {
+                        if (neighborCell->isWalkCell()) {
                             cells.pushBack(neighborCell);
                         }
                     }
@@ -268,19 +284,31 @@ void GroundLayer::flipIndexCell(int indexX, int indexY)
                 break;
         }
         SimpleAudioEngine::getInstance()->playEffect("stoneflip.wav");
-        MoveTo* moveTo = MoveTo::create(0.3f, Vec3(m_pCurrentCell->getPositionX(), 2, m_pCurrentCell->getPositionZ()));
-        Spawn* spawn = Spawn::createWithTwoActions(ratateTo, moveTo);
         CallFunc* callFunc = CallFunc::create(CC_CALLBACK_0(GroundLayer::setCurrentCellTypeOK,this));
-        Sequence* sequence = Sequence::create(spawn, callFunc, NULL);
+        Sequence* sequence = Sequence::create(ratateTo, callFunc, NULL);
         m_pCurrentCell->runAction(sequence);
     }
 }
+void GroundLayer::carryCell(int indexX,int indexY)
+{
+    if(indexX < 0 || indexX >= m_MapSize.width)
+        return;
+    if(indexY < 0 || indexY >= m_MapSize.height)
+        return;
+    
+    int index = indexY*m_MapSize.width + indexX;
+    m_pCurrentCell = m_GroundCellList.at(index);
+    RotateTo* ratateTo = RotateTo::create(0.5f, Vec3(180,0,0));
+    m_pCurrentCell->setType(GroundCell::CT_OK);
+    m_pCurrentCell->runAction(ratateTo);
 
+}
 void GroundLayer::setCurrentCellTypeOK()
 {
     if(m_pCurrentCell)
     {
         m_pCurrentCell->setType(GroundCell::CT_OK);
+        
         if(m_pPlayer == nullptr)
         {
             m_pPlayer = Player::create(Player::PT_STRENGTH, this);
@@ -291,6 +319,7 @@ void GroundLayer::setCurrentCellTypeOK()
                 m_pPlayer->setCameraMask((unsigned short)CameraFlag::USER1);
                 m_pPlayer->setPosition3D(m_pCurrentCell->getPosition3D());
                 m_pPlayer->setScale(0.9f);
+                m_pPlayer->setPositionY(4.0f);
                 m_pPlayer->setPlayerState(Player::PS_IDLE);
                 addChild(m_pPlayer);
             }
@@ -299,6 +328,7 @@ void GroundLayer::setCurrentCellTypeOK()
 }
 void GroundLayer::checkWinOrLose()
 {
+    
     if(!m_pCurrentCell || !m_pPlayer)
         return;
     if(m_pCurrentCell->getType() == GroundCell::CT_NOT)
@@ -311,7 +341,7 @@ void GroundLayer::checkWinOrLose()
     Vector<GroundCell*> neighborCells = getNeighborCells(m_pCurrentCell);
     for (int i = 0; i < neighborCells.size(); ++i) {
         GroundCell* cell = neighborCells.at(i);
-        if(cell && cell->getType() == GroundCell::CT_NOT)
+        if(cell && cell->isWalkCell())
             return;
     }
     bool win = true;
@@ -322,6 +352,10 @@ void GroundLayer::checkWinOrLose()
             break;
         }
     }
+    if (m_Playing) {
+        setRecordState(RD_END);
+        return;
+    }
     if(win)
     {
            // EaseBackInOut* scaleTo = EaseBackInOut::create(ScaleTo::create(1.0f, 1.8f));
@@ -329,6 +363,7 @@ void GroundLayer::checkWinOrLose()
             CallFunc* callFunc = CallFunc::create(CC_CALLBACK_0(GameScene::gameWin,gameScene));
             Sequence* sequence = Sequence::create(callFunc, delay, NULL);
             this->runAction(sequence);
+        
     }
     else
     {
@@ -354,12 +389,21 @@ void GroundLayer::showArrow()
                     m_pArrowRight->setIndexX(cell->getIndexX());
                     m_pArrowRight->setIndexY(cell->getIndexY());
                     m_pArrowRight->setPosition3D(cell->getPosition3D() + Vec3(0,2,0));
+                    if (cell->getType() == GroundCell::CT_CARRY) {
+                        m_pArrowRight->setSpecialArt(true);
+                        m_pArrowRight->setVisible(false);
+                    }
                 }
                 else if(cell->getIndexX() < m_pCurrentCell->getIndexX()) {
                     m_pArrowLeft->setVisible(true);
                     m_pArrowLeft->setIndexX(cell->getIndexX());
                     m_pArrowLeft->setIndexY(cell->getIndexY());
                     m_pArrowLeft->setPosition3D(cell->getPosition3D() + Vec3(0,2,0));
+                    if (cell->getType() == GroundCell::CT_CARRY) {
+                        m_pArrowLeft->setSpecialArt(true);
+                        m_pArrowLeft->setVisible(false);
+                    }
+
                 }
             }
             if(cell->getIndexX() == m_pCurrentCell->getIndexX())
@@ -369,12 +413,20 @@ void GroundLayer::showArrow()
                     m_pArrowUp->setIndexX(cell->getIndexX());
                     m_pArrowUp->setIndexY(cell->getIndexY());
                     m_pArrowUp->setPosition3D(cell->getPosition3D() + Vec3(0,2,0));
+                    if (cell->getType() == GroundCell::CT_CARRY) {
+                        m_pArrowUp->setSpecialArt(true);
+                        m_pArrowUp->setVisible(false);
+                    }
                 }
                 else if(cell->getIndexY() < m_pCurrentCell->getIndexY()) {
                     m_pArrowDown->setVisible(true);
                     m_pArrowDown->setIndexX(cell->getIndexX());
                     m_pArrowDown->setIndexY(cell->getIndexY());
                     m_pArrowDown->setPosition3D(cell->getPosition3D() + Vec3(0,2,0));
+                    if (cell->getType() == GroundCell::CT_CARRY) {
+                        m_pArrowDown->setSpecialArt(true);
+                        m_pArrowDown->setVisible(false);
+                    }
                 }
             }
         }
@@ -382,11 +434,18 @@ void GroundLayer::showArrow()
 }
 void GroundLayer::onTouchesBegan(const std::vector<Touch*>& touches, Event *event)
 {
+    if (!m_isInit) {
+        return;
+    }
+    
+    if (m_Playing) {
+        return;
+    }
     if(touches.size() > 0)
     {
-        Vec2 locationInNode = convertToNodeSpace(touches[0]->getLocation());
+        m_GroundTouchBegin = convertToNodeSpace(touches[0]->getLocation());
         Ray ray;
-        UtilityHelper::getCameraToViewportRay(m_pCamera, locationInNode, &ray);
+        UtilityHelper::getCameraToViewportRay(m_pCamera, m_GroundTouchBegin, &ray);
         if(m_pCurrentCell == nullptr)
         {
             for (int i = 0; i< m_GroundCellList.size(); i++) {
@@ -395,75 +454,224 @@ void GroundLayer::onTouchesBegan(const std::vector<Touch*>& touches, Event *even
                 {
                     if(ray.intersects(cell->getAABB()) && cell->getType() == GroundCell::CT_NOT)
                     {
-                        m_pCurrentCell = cell;
-                        SimpleAudioEngine::getInstance()->playEffect("stoneflip.wav");
-                        RotateTo* ratateTo = RotateTo::create(0.5f, Vec3(180,0,0));
-                        MoveTo* moveTo = MoveTo::create(0.5f, Vec3(cell->getPositionX(), 2, cell->getPositionZ()));
-                        Spawn* spawn = Spawn::createWithTwoActions(ratateTo, moveTo);
-                        CallFunc* callFunc = CallFunc::create(CC_CALLBACK_0(GroundLayer::setCurrentCellTypeOK,this));
-                        Sequence* sequence = Sequence::create(spawn, callFunc, NULL);
-                        cell->runAction(sequence);
+                        seleckStartRolePlace(i);
                         break;
                     }
                 }
             }
         }
-        else
-        {
-            if(m_pArrowDown && m_pArrowDown->isVisible())
-            {
-                if(ray.intersects(m_pArrowDown->getAABB()) && m_pArrowDown->getType() == Arrow::AT_DOWN)
-                {
-                    m_pArrowDown->setVisible(false);
-                    m_pArrowLeft->setVisible(false);
-                    m_pArrowRight->setVisible(false);
-                    m_pArrowUp->setVisible(false);
-                    if (m_pPlayer)
-                        m_pPlayer->setPlayerState(Player::PS_MOVE_DOWN);
-                }
-            }
-            if(m_pArrowLeft && m_pArrowLeft->isVisible())
-            {
-                if(ray.intersects(m_pArrowLeft->getAABB()) && m_pArrowLeft->getType() == Arrow::AT_LEFT)
-                {
-                    m_pArrowDown->setVisible(false);
-                    m_pArrowLeft->setVisible(false);
-                    m_pArrowRight->setVisible(false);
-                    m_pArrowUp->setVisible(false);
-                    if (m_pPlayer)
-                        m_pPlayer->setPlayerState(Player::PS_MOVE_LEFT);
-                }
-            }
-            if(m_pArrowRight && m_pArrowRight->isVisible())
-            {
-                if(ray.intersects(m_pArrowRight->getAABB()) && m_pArrowRight->getType() == Arrow::AT_RIGHT)
-                {
-                    m_pArrowDown->setVisible(false);
-                    m_pArrowLeft->setVisible(false);
-                    m_pArrowRight->setVisible(false);
-                    m_pArrowUp->setVisible(false);
-                    if (m_pPlayer)
-                        m_pPlayer->setPlayerState(Player::PS_MOVE_RIGHT);
-                }
-            }
-            if(m_pArrowUp && m_pArrowUp->isVisible())
-            {
-                if(ray.intersects(m_pArrowUp->getAABB()) && m_pArrowUp->getType() == Arrow::AT_UP)
-                {
-                    m_pArrowDown->setVisible(false);
-                    m_pArrowLeft->setVisible(false);
-                    m_pArrowRight->setVisible(false);
-                    m_pArrowUp->setVisible(false);
-                    if (m_pPlayer)
-                        m_pPlayer->setPlayerState(Player::PS_MOVE_UP);
-                }
-            }
-        }
+        
     }
 }
 void GroundLayer::onTouchesMoved(const std::vector<Touch*>& touches, Event *event)
 {
+    
 }
 void GroundLayer::onTouchesEnded(const std::vector<Touch*>& touches, Event *event)
 {
+    if (m_Playing) {
+        return;
+    }
+    auto localTouchEnd = convertToNodeSpace(touches[0]->getLocation());
+    float distanceX = fabsf(localTouchEnd.x - m_GroundTouchBegin.x);
+    float distanceY = fabsf(localTouchEnd.y - m_GroundTouchBegin.y);
+    if(distanceX>10 && distanceX >= distanceY)
+    {
+        if(localTouchEnd.x < m_GroundTouchBegin.x)
+        {
+            CCLOG("向左移动");
+            checkSildeHandle(true, false, false, false);
+        }
+        
+        else if(localTouchEnd.x > m_GroundTouchBegin.x)
+        {
+            CCLOG("向右移动");
+            checkSildeHandle(false, false, false, true);
+        }
+        
+    }
+    if (distanceY >10 && distanceX <= distanceY) {
+         if (localTouchEnd.y < m_GroundTouchBegin.y)
+         {
+             CCLOG("向下移动");
+             checkSildeHandle(false, false, true, false);
+         }
+        
+        else if (localTouchEnd.y > m_GroundTouchBegin.y)
+        {
+            CCLOG("向上移动");
+            checkSildeHandle(false, true, false, false);
+        }
+        
+    }
+}
+void GroundLayer::seleckStartRolePlace(int index)
+{
+    if(m_pCurrentCell == nullptr)
+    {
+        auto cell = m_GroundCellList.at(index);
+        
+        StepManager::getInstance()->setStep(index, Arrow::AT_UNKNOWN);
+        
+        m_pCurrentCell = cell;
+        SimpleAudioEngine::getInstance()->playEffect("stoneflip.wav");
+        RotateTo* ratateTo = RotateTo::create(0.5f, Vec3(180,0,0));
+        CallFunc* callFunc = CallFunc::create(CC_CALLBACK_0(GroundLayer::setCurrentCellTypeOK,this));
+        Sequence* sequence = Sequence::create(ratateTo, callFunc, NULL);
+        cell->runAction(sequence);
+    }
+
+}
+void GroundLayer::checkSildeHandle( bool isTouchDown , bool isToucLeft,bool isToucRight , bool isToucUp  )
+{
+    bool isCheckTouchDown = false;
+    bool isCheckToucLeft = false;
+    bool isCheckToucRight = false;
+    bool isCheckToucUp = false;
+    
+    if (m_pArrowDown || m_pArrowLeft || m_pArrowRight || m_pArrowUp) {
+
+        if(isTouchDown && m_pArrowDown->isVisible()
+                && m_pArrowDown->getType() == Arrow::AT_DOWN)
+           isCheckTouchDown = true;
+        
+        if(isToucLeft && m_pArrowLeft->isVisible()
+                && m_pArrowLeft->getType() == Arrow::AT_LEFT)
+            isCheckToucLeft = true;
+        
+        if(isToucRight && m_pArrowRight->isVisible()
+                && m_pArrowRight->getType() == Arrow::AT_RIGHT)
+            isCheckToucRight= true;
+        
+        if (isToucUp && m_pArrowUp->isVisible()
+                && m_pArrowUp->getType() == Arrow::AT_UP)
+            isCheckToucUp = true;
+        
+        if(isTouchDown && m_pArrowDown->getSpecialArt())
+        {
+            int index = (m_pCurrentCell->getIndexY() -1)*m_MapSize.height + m_pCurrentCell->getIndexX();
+            GroundCell* speicalcell = m_GroundCellList.at(index);
+            if(speicalcell && speicalcell->isSpeicalArtCell())
+                isCheckTouchDown = true;
+        }
+        if(isToucLeft && m_pArrowLeft->getSpecialArt())
+        {
+            
+            int index = m_pCurrentCell->getIndexY()*m_MapSize.height + m_pCurrentCell->getIndexX()-1;
+            GroundCell* speicalcell = m_GroundCellList.at(index);
+            if(speicalcell && speicalcell->isSpeicalArtCell())
+                isCheckToucLeft = true;
+            
+        }
+        if(isToucRight && m_pArrowRight->getSpecialArt())
+        {
+            int index = m_pCurrentCell->getIndexY()*m_MapSize.height + m_pCurrentCell->getIndexX()+1;
+            GroundCell* speicalcell = m_GroundCellList.at(index);
+            if(speicalcell  && speicalcell->isSpeicalArtCell())
+                isCheckToucRight = true;
+            
+        }
+        if(isToucUp && m_pArrowUp->getSpecialArt())
+        {
+            int index = (m_pCurrentCell->getIndexY()+1)*m_MapSize.height + m_pCurrentCell->getIndexX();
+            GroundCell* speicalcell = m_GroundCellList.at(index);
+            if(speicalcell && speicalcell->isSpeicalArtCell())
+                isCheckToucUp = true;
+        }
+
+    }
+
+    if (isCheckTouchDown || isCheckToucLeft || isCheckToucRight || isCheckToucUp) {
+        m_pArrowDown->setVisible(false);
+        m_pArrowLeft->setVisible(false);
+        m_pArrowRight->setVisible(false);
+        m_pArrowUp->setVisible(false);
+        
+        m_pArrowDown->setSpecialArt(false);
+        m_pArrowLeft->setSpecialArt(false);
+        m_pArrowRight->setSpecialArt(false);
+        m_pArrowUp->setSpecialArt(false);
+    }
+    if (m_pPlayer) {
+        
+        int index = m_pCurrentCell->getIndexY()*m_MapSize.height + m_pCurrentCell->getIndexX();
+       
+        if (isCheckTouchDown){
+            StepManager::getInstance()->setStep(index, Arrow::AT_DOWN);
+            m_pPlayer->setPlayerState(Player::PS_MOVE_DOWN);
+        }
+        if (isCheckToucLeft){
+            StepManager::getInstance()->setStep(index, Arrow::AT_LEFT);
+            m_pPlayer->setPlayerState(Player::PS_MOVE_LEFT);
+        }
+        if (isCheckToucRight){
+            StepManager::getInstance()->setStep(index, Arrow::AT_RIGHT);
+            m_pPlayer->setPlayerState(Player::PS_MOVE_RIGHT);
+        }
+        if (isCheckToucUp){
+            StepManager::getInstance()->setStep(index, Arrow::AT_UP);
+            m_pPlayer->setPlayerState(Player::PS_MOVE_UP);
+        }
+    }
+}
+void GroundLayer::initEnd()
+{
+    m_isInit = true;
+    setRecordState(RD_START);
+}
+void GroundLayer::playRecord()
+{
+    
+        if (recordSteps.size() > 0) {
+            
+            Value step = recordSteps.front();
+            
+            CCLOG("step 位置:%d,方向:%d",step.asValueVector()[0].asInt(),step.asValueVector()[1].asInt());
+            switch (step.asValueVector()[1].asInt()) {
+                case Arrow::AT_UNKNOWN:
+                    seleckStartRolePlace(step.asValueVector()[0].asInt());
+                    break;
+                case Arrow::AT_DOWN:
+                    checkSildeHandle(true,false,false,false);
+                    break;
+                case Arrow::AT_LEFT:
+                    checkSildeHandle(false,true,false,false);
+                    break;
+                case Arrow::AT_RIGHT:
+                    checkSildeHandle(false,false,true,false);
+                    break;
+                case Arrow::AT_UP:
+                    checkSildeHandle(false,false,false,true);
+                    break;
+                default:
+                    break;
+            }
+            recordSteps.erase(recordSteps.begin());
+            
+        }
+}
+void GroundLayer::setRecordState(RecordState state)
+{
+    if (!m_Playing)
+        return;
+    switch (state) {
+        case RD_START:
+            if(StepManager::getInstance()->getLevelSteps(m_Level).size() == 0)
+            {
+                m_Playing = false;
+                 return;
+            }
+            
+            recordSteps = StepManager::getInstance()->getLevelSteps(m_Level)[0].asValueVector()[1].asValueVector();
+            playRecord();
+            break;
+        case RD_NEXT:
+            playRecord();
+            break;
+        case RD_END:
+            CCLOG("播放结束");
+            break;
+        default:
+            break;
+    }
 }
