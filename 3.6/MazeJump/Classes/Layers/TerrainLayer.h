@@ -25,8 +25,8 @@ public:
     virtual void update(float delta);
     
     float getCellBaseRadius() const { return m_fCellBaseRadius; }
-    int getCurrentPatternIndex() const { return m_nCurrentPatternIndex; }
-    void setCurrentPatternIndex( int index );
+    int getCurrentPatternNum() const { return m_nCurrentPatternNum; }
+    void setCurrentPatternNum( int num );
     
     int getCurrentColumn() const { return m_nColumn; }
     void setCurrentColumn( int column );
@@ -54,7 +54,7 @@ private:
     cocos2d::Vec2   m_TouchEnd;
     int             m_nTouchCount;
     
-    int             m_nCurrentPatternIndex;
+    int             m_nCurrentPatternNum;
     int             m_nColumn;  //-2, -1, -, 1, 2
     int             m_nRow;
     

@@ -135,6 +135,8 @@
 		5592AE481B5FF4B50062AF08 /* patterns.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5592AE471B5FF4B50062AF08 /* patterns.plist */; };
 		5592AE491B5FF4BC0062AF08 /* PatternsManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5592AE441B5FF4AB0062AF08 /* PatternsManager.cpp */; };
 		5592AE4A1B5FF4C90062AF08 /* patterns.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5592AE471B5FF4B50062AF08 /* patterns.plist */; };
+		55AAFCB31B623B7D00B0E327 /* AlisaMethod.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55AAFCB11B623B7D00B0E327 /* AlisaMethod.cpp */; };
+		55AAFCB41B623BC800B0E327 /* AlisaMethod.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55AAFCB11B623B7D00B0E327 /* AlisaMethod.cpp */; };
 		55B740231B60890A00DDA3D8 /* 1x1.png in Resources */ = {isa = PBXBuildFile; fileRef = 55B740171B60890A00DDA3D8 /* 1x1.png */; };
 		55B740261B60890A00DDA3D8 /* 1x2.png in Resources */ = {isa = PBXBuildFile; fileRef = 55B7401A1B60890A00DDA3D8 /* 1x2.png */; };
 		55B740291B60890A00DDA3D8 /* 2x1.png in Resources */ = {isa = PBXBuildFile; fileRef = 55B7401D1B60890A00DDA3D8 /* 2x1.png */; };
@@ -319,6 +321,8 @@
 		5592AE441B5FF4AB0062AF08 /* PatternsManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PatternsManager.cpp; sourceTree = "<group>"; };
 		5592AE451B5FF4AB0062AF08 /* PatternsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PatternsManager.h; sourceTree = "<group>"; };
 		5592AE471B5FF4B50062AF08 /* patterns.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = patterns.plist; sourceTree = "<group>"; };
+		55AAFCB11B623B7D00B0E327 /* AlisaMethod.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AlisaMethod.cpp; sourceTree = "<group>"; };
+		55AAFCB21B623B7D00B0E327 /* AlisaMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlisaMethod.h; sourceTree = "<group>"; };
 		55B740171B60890A00DDA3D8 /* 1x1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1x1.png; sourceTree = "<group>"; };
 		55B7401A1B60890A00DDA3D8 /* 1x2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1x2.png; sourceTree = "<group>"; };
 		55B7401D1B60890A00DDA3D8 /* 2x1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2x1.png; sourceTree = "<group>"; };
@@ -733,6 +737,8 @@
 				55F3B99B1B45808B0090BE1A /* UtilityHelper.h */,
 				5582158C1B5C7FA700173C79 /* LevelsManager.cpp */,
 				5582158D1B5C7FA700173C79 /* LevelsManager.h */,
+				55AAFCB11B623B7D00B0E327 /* AlisaMethod.cpp */,
+				55AAFCB21B623B7D00B0E327 /* AlisaMethod.h */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -976,6 +982,7 @@
 				55F3B99C1B45808B0090BE1A /* UtilityHelper.cpp in Sources */,
 				55B7403E1B608C9300DDA3D8 /* TerrainPatternLayer.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
+				55AAFCB31B623B7D00B0E327 /* AlisaMethod.cpp in Sources */,
 				55C8908E1B46B3C8009AF1DA /* Player.cpp in Sources */,
 				5535FC131B47B88D00197B27 /* GameController.cpp in Sources */,
 				5592AE0F1B5F2CFB0062AF08 /* RunController.cpp in Sources */,
@@ -991,6 +998,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55AAFCB41B623BC800B0E327 /* AlisaMethod.cpp in Sources */,
 				55B7403F1B608DDF00DDA3D8 /* TerrainPatternLayer.cpp in Sources */,
 				5592AE491B5FF4BC0062AF08 /* PatternsManager.cpp in Sources */,
 				5592AE431B5FF4980062AF08 /* TerrainCell.cpp in Sources */,

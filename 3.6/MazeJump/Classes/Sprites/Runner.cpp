@@ -115,10 +115,10 @@ void Runner::onEnterIdle()
         float z = getPositionZ() - layer->getCellBaseRadius()*6;
         int colunm = x / (layer->getCellBaseRadius()*2);
         int row = -z / (layer->getCellBaseRadius()*2);
-        int currentPatternIndex = row/5;
+        int currentPatternCount = row/5;
         layer->setCurrentColumn(colunm);
         layer->setCurrentRow(row);
-        layer->setCurrentPatternIndex(currentPatternIndex);
+        layer->setCurrentPatternNum(currentPatternCount);
     }
 }
 void Runner::onEnterMoveLeft()

@@ -44,3 +44,7 @@ int PatternsManager::getPatternType(int patternIndex)
     CCASSERT(patternIndex < m_Patterns.size(), "patternIndex must be samller than pattern array size!");
     return m_Patterns.at(patternIndex).asValueMap().at("PatternType").asInt();
 }
+int PatternsManager::getMaxPatterns()
+{
+    return m_Patterns.size();
+}

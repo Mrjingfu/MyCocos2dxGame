@@ -23,11 +23,11 @@ public:
     
     typedef enum {
         PT_STARTER = 0,
-        PT_DOUBLESIDEBAR,
-        PT_LEFTSIDEBAR,
-        PT_RIGHTSIDEBAR,
-        PT_NOBAR,
-        PT_CHECKPOINT
+        PT_DOUBLESIDEBAR = 1,
+        PT_LEFTSIDEBAR = 2,
+        PT_RIGHTSIDEBAR = 3,
+        PT_NOBAR = 4,
+        PT_CHECKPOINT = 5
     } PatternType;
 
     // there's no 'id' in cpp, so we recommend returning the class instance pointer

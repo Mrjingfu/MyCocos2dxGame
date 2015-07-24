@@ -21,6 +21,8 @@ public:
     cocos2d::ValueVector getPatternTerrainCells(int patternIndex);
     int getPatternFadeInType(int patternIndex);
     int getPatternType(int patternIndex);
+    
+    int getMaxPatterns();
 
 private:
     cocos2d::ValueVector    m_Patterns;

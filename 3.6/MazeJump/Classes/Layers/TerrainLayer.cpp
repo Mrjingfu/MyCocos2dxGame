@@ -12,6 +12,7 @@
 #include "MainScene.h"
 #include "RunController.h"
 #include "PatternsManager.h"
+#include "AlisaMethod.h"
 USING_NS_CC;
 using namespace CocosDenshion;
 TerrainLayer* TerrainLayer::create()
@@ -29,7 +30,7 @@ TerrainLayer::TerrainLayer()
 {
     m_nTouchCount     = 0;
     m_fCellBaseRadius     = 4.0f;
-    m_nCurrentPatternIndex = -1;
+    m_nCurrentPatternNum = -1;
     m_nColumn = 0;
     m_nRow = -3;
 }
@@ -60,21 +61,21 @@ void TerrainLayer::update(float delta)
             layer->update(delta);
     }
 }
-void TerrainLayer::setCurrentPatternIndex( int index )
+void TerrainLayer::setCurrentPatternNum( int num )
 {
     if(index < 0)
         return;
-    if(m_nCurrentPatternIndex != index)
+    if(m_nCurrentPatternNum != num)
     {
-        m_nCurrentPatternIndex = index;
-        if(m_nCurrentPatternIndex == 0)
+        m_nCurrentPatternNum = num;
+        if(m_nCurrentPatternNum == 0)
         {
-            generatePattern(m_nCurrentPatternIndex+1);
-            generatePattern(m_nCurrentPatternIndex+2);
-            generatePattern(m_nCurrentPatternIndex+3);
+            generatePattern(m_nCurrentPatternNum+1);
+            generatePattern(m_nCurrentPatternNum+2);
+            generatePattern(m_nCurrentPatternNum+3);
         }
         else
-            generatePattern(m_nCurrentPatternIndex+3);
+            generatePattern(m_nCurrentPatternNum+3);
     }
 }
 void TerrainLayer::setCurrentColumn( int column )
@@ -89,7 +90,7 @@ void TerrainLayer::setCurrentRow( int row )
 }
 bool TerrainLayer::checkRunnerDrop()
 {
-    TerrainPatternLayer* layer = m_TerrainPatternList.at(m_nCurrentPatternIndex);
+    TerrainPatternLayer* layer = m_TerrainPatternList.at(m_nCurrentPatternNum);
     if(layer)
     {
         bool drop = layer->checkRunnerDrop();
@@ -135,7 +136,7 @@ void TerrainLayer::jumpLeft()
     Runner* runner = RunController::getInstance()->getMainPlayer();
     if(runner && runner->getState() == Runner::RS_IDLE)
     {
-        TerrainPatternLayer* patternLayer = m_TerrainPatternList.at(m_nCurrentPatternIndex);
+        TerrainPatternLayer* patternLayer = m_TerrainPatternList.at(m_nCurrentPatternNum);
         if(patternLayer)
         {
             if(m_nColumn == -2 &&( patternLayer->getPatternType() == TerrainPatternLayer::PT_DOUBLESIDEBAR
@@ -152,7 +153,7 @@ void TerrainLayer::jumpRight()
     Runner* runner = RunController::getInstance()->getMainPlayer();
     if(runner && runner->getState() == Runner::RS_IDLE)
     {
-        TerrainPatternLayer* patternLayer = m_TerrainPatternList.at(m_nCurrentPatternIndex);
+        TerrainPatternLayer* patternLayer = m_TerrainPatternList.at(m_nCurrentPatternNum);
         if(patternLayer)
         {
             if(m_nColumn == 2 &&( patternLayer->getPatternType() == TerrainPatternLayer::PT_DOUBLESIDEBAR
@@ -214,7 +215,83 @@ bool TerrainLayer::generateStartPoint()
 }
 void TerrainLayer::generatePattern(int count)
 {
-    TerrainPatternLayer* layer = TerrainPatternLayer::create(1);
+    int difficultLevel = count/10;
+    int residueNum = count%10;
+    int patternIndex = 1;
+    if(residueNum == 1)
+        patternIndex = 1;
+    else
+    {
+        if(difficultLevel == 0)
+        {
+            int patternBeginIndex = 2;
+            int patternEndIndex = 10;
+            
+            float percent9 = 0.02;
+            float percent8 = 0.04;
+            float percent7 = 0.06;
+            float percent6 = 0.08;
+            float percent5 = 0.1;
+            float percent4 = 0.12;
+            float percent3 = 0.14;
+            float percent2 = 0.16;
+            float percent1 = 1.0 - percent2 - percent3 - percent4 - percent5 - percent6 - percent7 - percent8 - percent9;
+            AlisaMethod* am = AlisaMethod::create(percent1,percent2,percent3,percent4,percent5,percent6,percent7,percent8,percent9,-1.0, NULL);
+            if(am)
+            {
+                patternIndex = am->getRandomIndex() + patternBeginIndex;
+                CCASSERT(patternIndex >=patternBeginIndex && patternIndex <= patternEndIndex, "pattern index must between patternBeginIndex and patternEndIndex");
+            }
+        }
+        else
+        {
+            int patternBeginIndex = difficultLevel + 1;
+            int patternEndIndex = difficultLevel + 10;
+            if(patternEndIndex >= PatternsManager::getInstance()->getMaxPatterns()-1)
+            {
+                patternBeginIndex = PatternsManager::getInstance()->getMaxPatterns() - 11;
+                patternEndIndex = PatternsManager::getInstance()->getMaxPatterns() - 1;
+                
+                float percent10 = 0.1;
+                float percent9 = 0.1;
+                float percent8 = 0.1;
+                float percent7 = 0.1;
+                float percent6 = 0.1;
+                float percent5 = 0.1;
+                float percent4 = 0.1;
+                float percent3 = 0.1;
+                float percent2 = 0.1;
+                float percent1 = 1.0 - percent2 - percent3 - percent4 - percent5 - percent6 - percent7 - percent8 - percent9 - percent10;
+                AlisaMethod* am = AlisaMethod::create(percent1,percent2,percent3,percent4,percent5,percent6,percent7,percent8,percent9,percent10,-1.0, NULL);
+                if(am)
+                {
+                    patternIndex = am->getRandomIndex() + patternBeginIndex;
+                    CCASSERT(patternIndex >=patternBeginIndex && patternIndex <= patternEndIndex, "pattern index must between patternBeginIndex and patternEndIndex");
+                }
+            }
+            else
+            {
+                float percent10 = 0.03;
+                float percent9 = 0.03;
+                float percent8 = 0.04;
+                float percent7 = 0.05;
+                float percent6 = 0.06;
+                float percent5 = 0.1;
+                float percent4 = 0.14;
+                float percent3 = 0.3;
+                float percent2 = 0.15;
+                float percent1 = 1.0 - percent2 - percent3 - percent4 - percent5 - percent6 - percent7 - percent8 - percent9 - percent10;
+                AlisaMethod* am = AlisaMethod::create(percent1,percent2,percent3,percent4,percent5,percent6,percent7,percent8,percent9,percent10,-1.0, NULL);
+                if(am)
+                {
+                    patternIndex = am->getRandomIndex() + patternBeginIndex;
+                    CCASSERT(patternIndex >=patternBeginIndex && patternIndex <= patternEndIndex, "pattern index must between patternBeginIndex and patternEndIndex");
+                }
+
+            }
+        }
+    }
+    TerrainPatternLayer* layer = TerrainPatternLayer::create(patternIndex);
     if(!layer)
         return;
     layer->setCameraMask((unsigned short)CameraFlag::USER1);

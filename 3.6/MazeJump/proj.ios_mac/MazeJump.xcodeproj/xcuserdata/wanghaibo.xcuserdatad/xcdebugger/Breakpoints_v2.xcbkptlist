@@ -1350,11 +1350,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Layers/TerrainLayer.cpp"
-            timestampString = "459346246.392022"
+            timestampString = "459425383.974872"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "190"
-            endingLineNumber = "190"
+            startingLineNumber = "191"
+            endingLineNumber = "191"
             landmarkName = "TerrainLayer::clearClick(float time)"
             landmarkType = "5">
          </BreakpointContent>
@@ -1366,11 +1366,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Layers/TerrainLayer.cpp"
-            timestampString = "459341198.004162"
+            timestampString = "459425383.974872"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "106"
-            endingLineNumber = "106"
+            startingLineNumber = "107"
+            endingLineNumber = "107"
             landmarkName = "TerrainLayer::onTouchBegan(Touch *touch, Event *event)"
             landmarkType = "5">
          </BreakpointContent>
@@ -1526,11 +1526,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Layers/TerrainLayer.cpp"
-            timestampString = "459341198.004162"
+            timestampString = "459425383.974872"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "92"
-            endingLineNumber = "92"
+            startingLineNumber = "93"
+            endingLineNumber = "93"
             landmarkName = "TerrainLayer::checkRunnerDrop()"
             landmarkType = "5">
          </BreakpointContent>
@@ -1542,11 +1542,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Layers/TerrainLayer.cpp"
-            timestampString = "459341198.004162"
+            timestampString = "459425383.974872"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "95"
-            endingLineNumber = "95"
+            startingLineNumber = "96"
+            endingLineNumber = "96"
             landmarkName = "TerrainLayer::checkRunnerDrop()"
             landmarkType = "5">
          </BreakpointContent>
@@ -1734,12 +1734,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Layers/TerrainLayer.cpp"
-            timestampString = "459341198.004162"
+            timestampString = "459425383.974872"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "67"
-            endingLineNumber = "67"
-            landmarkName = "TerrainLayer::setCurrentPatternIndex( int index )"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
+            landmarkName = "TerrainLayer::setCurrentPatternNum( int num )"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1750,11 +1750,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Layers/TerrainLayer.cpp"
-            timestampString = "459346361.603063"
+            timestampString = "459425383.974872"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "143"
-            endingLineNumber = "143"
+            startingLineNumber = "144"
+            endingLineNumber = "144"
             landmarkName = "TerrainLayer::jumpLeft()"
             landmarkType = "5">
          </BreakpointContent>
