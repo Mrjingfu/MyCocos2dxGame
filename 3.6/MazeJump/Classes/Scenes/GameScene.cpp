@@ -66,8 +66,8 @@ void GameScene::gameWin()
     LevelsManager::getInstance()->setCurrentLevel(LevelsManager::getInstance()->getCurrentLevel()+1);
     GameController::getInstance()->destroy();
     GameController::getInstance()->init(this);
-    StepManager::getInstance()->setLevelStep(LevelsManager::getInstance()->getCurrentLevel());
-    StepManager::getInstance()->printfStep(LevelsManager::getInstance()->getCurrentLevel());
+    StepManager::getInstance()->setLevelStep(LevelsManager::getInstance()->getCurrentLevel(),StepManager::LEVEL_WIN);
+
     
 }
 void GameScene::gameLose()
@@ -75,6 +75,6 @@ void GameScene::gameLose()
     CCLOG("gameLose");
     GameController::getInstance()->destroy();
     GameController::getInstance()->init(this);
-    StepManager::getInstance()->setLevelStep(LevelsManager::getInstance()->getCurrentLevel());
-    StepManager::getInstance()->printfStep(LevelsManager::getInstance()->getCurrentLevel());
+    StepManager::getInstance()->setLevelStep(LevelsManager::getInstance()->getCurrentLevel(),StepManager::LEVEL_WIN);
+   
 }

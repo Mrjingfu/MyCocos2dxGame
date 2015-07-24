@@ -114,6 +114,9 @@ void Player::onEnterIdle()
     {
         m_pGround->showArrow();
         m_pGround->checkWinOrLose();
+        if (m_pGround->getPlaying()) {
+            m_pGround->setRecordState(GroundLayer::RecordState::RD_NEXT);
+        }
     }
 }
 void Player::onEnterMoveLeft()

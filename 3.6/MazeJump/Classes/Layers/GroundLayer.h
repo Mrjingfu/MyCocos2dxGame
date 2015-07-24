@@ -17,11 +17,18 @@ class GroundLayer : public cocos2d::Layer
 {
     GroundLayer();
 public:
+    typedef enum {
+        RD_START,
+        RD_NEXT,
+        RD_END
+    } RecordState;
+    
+    
     // there's no 'id' in cpp, so we recommend returning the class instance pointer
-    static GroundLayer* create(const std::string& tmxFile,bool _isPlaying);
+    static GroundLayer* create(int level,bool _isPlaying);
     
     // Here's a difference. Method 'init' in cocos2d-x returns bool, instead of returning 'id' in cocos2d-iphone
-    virtual bool init(const std::string& tmxFile);
+    virtual bool init(int level);
     
     cocos2d::Vec3 getOffset() const { return m_Offset; }
     float getGroundRadius() { return MAX(m_fCellRadius*m_MapSize.width, m_fCellRadius*m_MapSize.height); }
@@ -47,6 +54,10 @@ public:
     
     bool getPlaying(){return m_Playing;};
     void setPlaying(bool _isPlaying){m_Playing = _isPlaying;}
+    
+    void playRecord();
+    void initEnd();
+    void setRecordState(RecordState state);
 protected:
     // 处理输入
     virtual void onTouchesBegan(const std::vector<cocos2d::Touch*>& touches, cocos2d::Event *event) override;
@@ -68,8 +79,10 @@ private:
     
     cocos2d::Camera*    m_pCamera;
     cocos2d::Vec2   m_GroundTouchBegin;
-    
+    int             m_Level;
     bool m_Playing;
+    bool m_isInit;
+    cocos2d::ValueVector recordSteps;
 };
 
 #endif /* defined(__MazeJump__GroundLayer__) */

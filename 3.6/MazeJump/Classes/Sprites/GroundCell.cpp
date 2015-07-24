@@ -11,10 +11,10 @@
 #include "LevelsManager.h"
 USING_NS_CC;
 
-GroundCell* GroundCell::create()
+GroundCell* GroundCell::create(int level)
 {
     auto cell = new (std::nothrow) GroundCell();
-    if (cell && cell->initWithFile(LevelsManager::getInstance()->getCurrentLevelPlatformModelName()))
+    if (cell && cell->initWithFile(LevelsManager::getInstance()->getLevelPlatformModelName(level)))
     {
         cell->_contentSize = cell->getBoundingBox().size;
         cell->m_fRadius = cell->_contentSize.width*0.5f;

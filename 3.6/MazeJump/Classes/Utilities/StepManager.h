@@ -14,23 +14,25 @@
 class StepManager : public cocos2d::Ref
 {
 protected:
+
+   
     StepManager();
 public:
+    typedef enum
+    {
+        lEVEL_LOSE =0,
+        LEVEL_WIN,
+        LEVEL_UNKNOWN
+    }
+    LevelType;
     static StepManager* getInstance();
     void setStep(int index,int direction);
-    void setLevelStep(int level);
+    void setLevelStep(int level,int levelStaus);
+    cocos2d::ValueVector getLevelWinSteps(int level);
     cocos2d::ValueVector getLevelSteps(int level);
-    void printfStep(int level)
-    {
-        for (cocos2d::Value  i:getLevelSteps(level)) {
-            cocos2d::ValueVector pt =i.asValueVector();
-            cocos2d::Value pts = pt[0];
-            cocos2d::Value ore = pt[1];
-            CCLOG("step 位置:%d,方向:%d",pts.asInt(),ore.asInt());
-        }
-    }
+    cocos2d::ValueVector atVectorValue(int index);
 private:
-    cocos2d::ValueMapIntKey m_levelSteps;
+    cocos2d::ValueMap m_levelSteps;
     cocos2d::ValueVector m_Steps;
 };
 

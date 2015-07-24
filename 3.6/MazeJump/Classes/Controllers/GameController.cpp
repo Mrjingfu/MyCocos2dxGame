@@ -8,7 +8,7 @@
 
 #include "GameController.h"
 #include "LevelsManager.h"
-#include "CocosGUI.h"
+#include "ui/CocosGUI.h"
 USING_NS_CC;
 
 GameController* g_pGameControllerInstance = nullptr;
@@ -36,17 +36,42 @@ bool GameController::init(Layer* pMainLayer)
         return false;
     m_pMainLayer = pMainLayer;
     
-    if (!createMap(false)) {
+    auto size = Director::getInstance()->getVisibleSize();
+    m_pMainCamera = Camera::createPerspective(90, size.width/size.height, 1, 5000);
+    if(!m_pMainCamera)
+        return false;
+    m_pMainLayer->addChild(m_pMainCamera);
+    
+    
+    if (!createMap(false,LevelsManager::getInstance()->getCurrentLevel())) {
         return false;
     }
     
-    auto size = Director::getInstance()->getVisibleSize();
+    ParticleSystemQuad* starfield= ParticleSystemQuad::create("starfield.plist");
+    if(!starfield)
+    {
+        CCLOG("Load explosion particle system failed! file: starfield.plist");
+        return false;
+    }
+    starfield->setStartSize(5.0f);
+    starfield->setStartSizeVar(3.0f);
+    starfield->setGravity(Vec2(-40.0f, 0));
+    m_pMainLayer->addChild(starfield);
+    
+    
+    AmbientLight* ambLight = AmbientLight::create(Color3B(150, 150, 150));
+    m_pMainLayer->addChild(ambLight);
+    DirectionLight* directionLight = DirectionLight::create(Vec3(-3, -4, -2), Color3B(158, 158, 158));
+    m_pMainLayer->addChild(directionLight);
+
+    
     cocos2d::ui::Button* button = cocos2d::ui::Button::create("button_retry_up.png",
                                     "button_retry_down.png");
     button->setPosition(Vec2(size.width * 0.8f, size.height * 0.8f));
     button->setPressedActionEnabled(true);
     button->addClickEventListener([=](Ref* sender){
         
+        createMap(true,LevelsManager::getInstance()->getCurrentLevel());
     });
     m_pMainLayer->addChild(button);
     return true;
@@ -61,16 +86,19 @@ void GameController::destroy()
     m_pMainLayer = nullptr;
 }
 
-bool GameController::createMap(bool _playing)
+bool GameController::createMap(bool _playing,int level)
 {
 
     if (m_pSkyBox) {
          m_pMainLayer->removeChild(m_pSkyBox);
+        m_pSkyBox = nullptr;
     }
-   
-    m_pMainLayer->removeChild(m_pGroundLayer);
-    m_pMainLayer->removeChild(m_pMainCamera);
-    std::string skyTexName = LevelsManager::getInstance()->getCurrentLevelSkyTextureName();
+    if (m_pGroundLayer) {
+        m_pMainLayer->removeChild(m_pGroundLayer);
+        m_pGroundLayer = nullptr;
+    }
+    
+    std::string skyTexName = LevelsManager::getInstance()->getLevelSkyTextureName(level);
     std::string skyTexTop = skyTexName + "_t.png";
     std::string skyTexBottom = skyTexName + "_b.png";
     std::string skyTex = skyTexName + ".png";
@@ -81,20 +109,8 @@ bool GameController::createMap(bool _playing)
     m_pSkyBox->setCameraMask((unsigned short)CameraFlag::USER1);
     m_pMainLayer->addChild(m_pSkyBox);
     
-    ParticleSystemQuad* starfield= ParticleSystemQuad::create("starfield.plist");
-    if(!starfield)
-    {
-        CCLOG("Load explosion particle system failed! file: starfield.plist");
-        return false;
-    }
-    starfield->setStartSize(5.0f);
-    starfield->setStartSizeVar(3.0f);
-    starfield->setGravity(Vec2(-40.0f, 0));
-    m_pMainLayer->addChild(starfield);
     
-    
-    
-    m_pGroundLayer = GroundLayer::create(LevelsManager::getInstance()->getCurrentLevelName(),_playing);
+    m_pGroundLayer = GroundLayer::create(level,_playing);
     if(!m_pGroundLayer)
         return false;
     m_pGroundLayer->setCameraMask((unsigned short)CameraFlag::USER1);
@@ -102,19 +118,13 @@ bool GameController::createMap(bool _playing)
     m_pGroundLayer->setAnchorPoint(Vec2::ZERO);
     m_pMainLayer->addChild(m_pGroundLayer);
     
-    auto size = Director::getInstance()->getVisibleSize();
-    m_pMainCamera = Camera::createPerspective(90, size.width/size.height, 1, 5000);
-    if(!m_pMainCamera)
-        return false;
+   
     m_pMainCamera->setPosition3D(Vec3(0,-m_pGroundLayer->getGroundRadius()*2.5f*cosf(M_PI),-m_pGroundLayer->getGroundRadius()*2.5f*sinf(M_PI)) + m_pGroundLayer->getOffset());
     m_pMainCamera->lookAt(m_pGroundLayer->getPosition3D() + m_pGroundLayer->getOffset());
-    m_pMainLayer->addChild(m_pMainCamera);
+
     m_pMainCamera->setCameraFlag(CameraFlag::USER1);
     m_pGroundLayer->setCamera(m_pMainCamera);
     
-    AmbientLight* ambLight = AmbientLight::create(Color3B(150, 150, 150));
-    m_pMainLayer->addChild(ambLight);
-    DirectionLight* directionLight = DirectionLight::create(Vec3(-3, -4, -2), Color3B(158, 158, 158));
-    m_pMainLayer->addChild(directionLight);
+    
     return true;
 }

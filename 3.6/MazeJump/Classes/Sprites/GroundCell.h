@@ -27,7 +27,7 @@ public:
 protected:
     GroundCell();
 public:
-    static GroundCell* create();
+    static GroundCell* create(int level);
     
     float getRadius() const { return m_fRadius; }
     CellType getType() const { return m_Type; }

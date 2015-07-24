@@ -25,6 +25,11 @@ public:
     int getCurrentLevel() const { return m_nCurrentLevel; }
     void setCurrentLevel(int currentLevel);
     int getMaxReachLevel() const { return m_nMaxReachLevel; }
+    
+    std::string getLevelName(int level);
+    std::string getLevelSkyTextureName(int level);
+    std::string getLevelPlatformModelName(int level);
+    
 private:
     void setMaxReachLevel(int maxReachLevel);
 private:

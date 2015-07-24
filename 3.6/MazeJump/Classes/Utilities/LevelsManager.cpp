@@ -77,3 +77,44 @@ void LevelsManager::setMaxReachLevel(int maxReachLevel)
     m_nMaxReachLevel = maxReachLevel;
     UserDefault::getInstance()->setIntegerForKey("MaxReachLevel", m_nMaxReachLevel);
 }
+std::string LevelsManager::getLevelName(int level)
+{
+
+//    if(level > m_nMaxReachLevel)
+//        level = m_nCurrentLevel;
+    
+    if(level >= m_Levels.size())
+    {
+        ValueMap map = m_Levels.at(0).asValueMap();
+        return map.at("LevelName").asString();
+    }
+    ValueMap map = m_Levels.at(level).asValueMap();
+    return map.at("LevelName").asString();
+}
+
+std::string LevelsManager::getLevelSkyTextureName(int level)
+{
+//    if(level > m_nMaxReachLevel)
+//        level = m_nCurrentLevel;
+    
+    if(level >= m_Levels.size())
+    {
+        ValueMap map = m_Levels.at(0).asValueMap();
+        return map.at("SkyTex").asString();
+    }
+    ValueMap map = m_Levels.at(level).asValueMap();
+    return map.at("SkyTex").asString();
+}
+std::string LevelsManager::getLevelPlatformModelName(int level)
+{
+//    if(level > m_nMaxReachLevel)
+//        level = m_nCurrentLevel;
+    
+    if(level >= m_Levels.size())
+    {
+        ValueMap map = m_Levels.at(0).asValueMap();
+        return map.at("PlatformModel").asString();
+    }
+    ValueMap map = m_Levels.at(level).asValueMap();
+    return map.at("PlatformModel").asString();
+}
