@@ -14,9 +14,9 @@ USING_NS_CC;
 Player* Player::create(PlayerType type, GroundLayer* ground)
 {
     auto player = new (std::nothrow) Player();
-    if (player && player->initWithFile("strength.obj"))
+    if (player && player->initWithFile("strength.c3b"))
     {
-        player->setTexture("IndexColor.png");
+        player->setTexture("strength.png");
         player->setType(type);
         player->_contentSize = player->getBoundingBox().size;
         player->m_fRadius = player->_contentSize.width*0.5f;

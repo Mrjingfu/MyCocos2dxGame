@@ -14,7 +14,7 @@ USING_NS_CC;
 GroundCell* GroundCell::create()
 {
     auto cell = new (std::nothrow) GroundCell();
-    if (cell && cell->initWithFile(LevelsManager::getInstance()->getCurrentLevelPlatformModelName()))
+    if (cell && cell->initWithFile(LevelsManager::getInstance()->getCurrentLevelPlatformModelName() + ".c3b"))
     {
         cell->_contentSize = cell->getBoundingBox().size;
         cell->m_fRadius = cell->_contentSize.width*0.5f;

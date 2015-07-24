@@ -14,9 +14,9 @@ USING_NS_CC;
 Runner* Runner::create()
 {
     auto runner = new (std::nothrow) Runner();
-    if (runner && runner->initWithFile("strength.obj"))
+    if (runner && runner->initWithFile("strength.c3b"))
     {
-        runner->setTexture("IndexColor.png");
+        runner->setTexture("strength.png");
         runner->_contentSize = runner->getBoundingBox().size;
         runner->m_fRadius = runner->_contentSize.width*0.5f;
         runner->setState(RS_IDLE);
@@ -39,6 +39,12 @@ Runner::Runner()
 }
 void Runner::onCollision(TerrainCell* cell)
 {
+}
+const AABB& Runner::getModifyAABB()
+{
+    m_modifyAABB = getAABB();
+    m_modifyAABB.merge(AABB(Vec3(m_modifyAABB._min)+Vec3(0,-0.5f, 0), Vec3(m_modifyAABB._max)));
+    return m_modifyAABB;
 }
 void Runner::setState(RunnerState state)
 {

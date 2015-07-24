@@ -46,7 +46,7 @@ bool RunController::init(Layer* pMainLayer)
     if(!m_pMainPlayer)
         return false;
     m_pMainPlayer->setCameraMask((unsigned short)CameraFlag::USER1);
-    m_pMainPlayer->setPositionY(2);
+    m_pMainPlayer->setPositionY(4);
     m_pTerrainLayer->addChild(m_pMainPlayer);
     
     auto size = Director::getInstance()->getVisibleSize();

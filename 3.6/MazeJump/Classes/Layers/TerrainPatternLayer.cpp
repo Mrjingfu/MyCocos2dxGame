@@ -47,7 +47,7 @@ bool TerrainPatternLayer::init(int index)
         float scaleX = cellMap.at("ScaleX").asFloat();
         float scaleY = cellMap.at("ScaleY").asFloat();
         float scaleZ = cellMap.at("ScaleZ").asFloat();
-        TerrainCell* cell = TerrainCell::create(modelName);
+        TerrainCell* cell = TerrainCell::create(modelName + ".c3b");
         if(!cell)
             return false;
         cell->setType(TerrainCell::CellType(cellType));
@@ -108,7 +108,7 @@ void TerrainPatternLayer::update(float delta)
 //    for (TerrainCell* cell : m_TerrainCellList) {
 //        if(cell)
 //        {
-//            bool collision = runner->getAABB().intersects(cell->getAABB());
+//            bool collision = runner->getModifyAABB().intersects(cell->getAABB());
 //            if(collision)
 //            {
 //                runner->onCollision(cell);
@@ -126,7 +126,7 @@ bool TerrainPatternLayer::checkRunnerDrop()
     for (TerrainCell* cell : m_TerrainCellList) {
         if(cell)
         {
-            collision = runner->getAABB().intersects(cell->getAABB());
+            collision = runner->getModifyAABB().intersects(cell->getAABB());
             if(!collision)
                 continue;
             else

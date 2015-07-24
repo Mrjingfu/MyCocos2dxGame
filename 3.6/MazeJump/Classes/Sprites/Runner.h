@@ -35,6 +35,8 @@ public:
     void setState(RunnerState state);
     
     void onCollision(TerrainCell* cell);
+    
+    const cocos2d::AABB& getModifyAABB();
 private:
     void onEnterIdle();
     void onEnterMoveLeft();
@@ -56,6 +58,7 @@ private:
 protected:
     RunnerState     m_curState;
     float           m_fRadius;
+    mutable cocos2d::AABB    m_modifyAABB;
 };
 
 #endif /* defined(__MazeJump__Runner__) */

@@ -11,15 +11,15 @@
 		<array>
 			<dict>
 				<key>ModelName</key>
-				<string>startpoint.obj</string>
+				<string>startpoint</string>
 				<key>CellType</key>
 				<real>0</real>
 				<key>PosX</key>
 				<integer>0</integer>
 				<key>PosY</key>
-				<integer>1</integer>
+				<real>0.5</real>
 				<key>PosZ</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>RotX</key>
 				<integer>0</integer>
 				<key>RotY</key>
@@ -44,11 +44,131 @@
 		<array>
 			<dict>
 				<key>ModelName</key>
-				<string>sidebar.obj</string>
+				<string>sidebar</string>
 				<key>CellType</key>
 				<integer>1</integer>
 				<key>PosX</key>
-				<integer>-24</integer>
+				<integer>-21</integer>
+				<key>PosY</key>
+				<integer>2</integer>
+				<key>PosZ</key>
+				<integer>16</integer>
+				<key>RotX</key>
+				<integer>0</integer>
+				<key>RotY</key>
+				<integer>0</integer>
+				<key>RotZ</key>
+				<integer>0</integer>
+				<key>ScaleX</key>
+				<integer>1</integer>
+				<key>ScaleY</key>
+				<integer>1</integer>
+				<key>ScaleZ</key>
+				<integer>1</integer>
+			</dict>
+			<dict>
+				<key>ModelName</key>
+				<string>sidebar</string>
+				<key>CellType</key>
+				<integer>1</integer>
+				<key>PosX</key>
+				<integer>-21</integer>
+				<key>PosY</key>
+				<integer>2</integer>
+				<key>PosZ</key>
+				<integer>8</integer>
+				<key>RotX</key>
+				<integer>0</integer>
+				<key>RotY</key>
+				<integer>0</integer>
+				<key>RotZ</key>
+				<integer>0</integer>
+				<key>ScaleX</key>
+				<integer>1</integer>
+				<key>ScaleY</key>
+				<integer>1</integer>
+				<key>ScaleZ</key>
+				<integer>1</integer>
+			</dict>
+			<dict>
+				<key>ModelName</key>
+				<string>sidebar</string>
+				<key>CellType</key>
+				<integer>1</integer>
+				<key>PosX</key>
+				<integer>-21</integer>
+				<key>PosY</key>
+				<integer>2</integer>
+				<key>PosZ</key>
+				<integer>0</integer>
+				<key>RotX</key>
+				<integer>0</integer>
+				<key>RotY</key>
+				<integer>0</integer>
+				<key>RotZ</key>
+				<integer>0</integer>
+				<key>ScaleX</key>
+				<integer>1</integer>
+				<key>ScaleY</key>
+				<integer>1</integer>
+				<key>ScaleZ</key>
+				<integer>1</integer>
+			</dict>
+			<dict>
+				<key>ModelName</key>
+				<string>sidebar</string>
+				<key>CellType</key>
+				<integer>1</integer>
+				<key>PosX</key>
+				<integer>-21</integer>
+				<key>PosY</key>
+				<integer>2</integer>
+				<key>PosZ</key>
+				<integer>-8</integer>
+				<key>RotX</key>
+				<integer>0</integer>
+				<key>RotY</key>
+				<integer>0</integer>
+				<key>RotZ</key>
+				<integer>0</integer>
+				<key>ScaleX</key>
+				<integer>1</integer>
+				<key>ScaleY</key>
+				<integer>1</integer>
+				<key>ScaleZ</key>
+				<integer>1</integer>
+			</dict>
+			<dict>
+				<key>ModelName</key>
+				<string>sidebar</string>
+				<key>CellType</key>
+				<integer>1</integer>
+				<key>PosX</key>
+				<integer>-21</integer>
+				<key>PosY</key>
+				<integer>2</integer>
+				<key>PosZ</key>
+				<integer>-16</integer>
+				<key>RotX</key>
+				<integer>0</integer>
+				<key>RotY</key>
+				<integer>0</integer>
+				<key>RotZ</key>
+				<integer>0</integer>
+				<key>ScaleX</key>
+				<integer>1</integer>
+				<key>ScaleY</key>
+				<integer>1</integer>
+				<key>ScaleZ</key>
+				<integer>1</integer>
+			</dict>
+			<dict>
+				<key>ModelName</key>
+				<string>1x1</string>
+				<key>CellType</key>
+				<integer>2</integer>
+				<key>PosX</key>
+				<integer>-16</integer>
 				<key>PosY</key>
 				<integer>0</integer>
 				<key>PosZ</key>
@@ -68,127 +188,7 @@
 			</dict>
 			<dict>
 				<key>ModelName</key>
-				<string>sidebar.obj</string>
-				<key>CellType</key>
-				<integer>1</integer>
-				<key>PosX</key>
-				<integer>-24</integer>
-				<key>PosY</key>
-				<integer>0</integer>
-				<key>PosZ</key>
-				<integer>8</integer>
-				<key>RotX</key>
-				<integer>0</integer>
-				<key>RotY</key>
-				<integer>0</integer>
-				<key>RotZ</key>
-				<integer>0</integer>
-				<key>ScaleX</key>
-				<integer>1</integer>
-				<key>ScaleY</key>
-				<integer>1</integer>
-				<key>ScaleZ</key>
-				<integer>1</integer>
-			</dict>
-			<dict>
-				<key>ModelName</key>
-				<string>sidebar.obj</string>
-				<key>CellType</key>
-				<integer>1</integer>
-				<key>PosX</key>
-				<integer>-24</integer>
-				<key>PosY</key>
-				<integer>0</integer>
-				<key>PosZ</key>
-				<integer>0</integer>
-				<key>RotX</key>
-				<integer>0</integer>
-				<key>RotY</key>
-				<integer>0</integer>
-				<key>RotZ</key>
-				<integer>0</integer>
-				<key>ScaleX</key>
-				<integer>1</integer>
-				<key>ScaleY</key>
-				<integer>1</integer>
-				<key>ScaleZ</key>
-				<integer>1</integer>
-			</dict>
-			<dict>
-				<key>ModelName</key>
-				<string>sidebar.obj</string>
-				<key>CellType</key>
-				<integer>1</integer>
-				<key>PosX</key>
-				<integer>-24</integer>
-				<key>PosY</key>
-				<integer>0</integer>
-				<key>PosZ</key>
-				<integer>-8</integer>
-				<key>RotX</key>
-				<integer>0</integer>
-				<key>RotY</key>
-				<integer>0</integer>
-				<key>RotZ</key>
-				<integer>0</integer>
-				<key>ScaleX</key>
-				<integer>1</integer>
-				<key>ScaleY</key>
-				<integer>1</integer>
-				<key>ScaleZ</key>
-				<integer>1</integer>
-			</dict>
-			<dict>
-				<key>ModelName</key>
-				<string>sidebar.obj</string>
-				<key>CellType</key>
-				<integer>1</integer>
-				<key>PosX</key>
-				<integer>-24</integer>
-				<key>PosY</key>
-				<integer>0</integer>
-				<key>PosZ</key>
-				<integer>-16</integer>
-				<key>RotX</key>
-				<integer>0</integer>
-				<key>RotY</key>
-				<integer>0</integer>
-				<key>RotZ</key>
-				<integer>0</integer>
-				<key>ScaleX</key>
-				<integer>1</integer>
-				<key>ScaleY</key>
-				<integer>1</integer>
-				<key>ScaleZ</key>
-				<integer>1</integer>
-			</dict>
-			<dict>
-				<key>ModelName</key>
-				<string>1x1.obj</string>
-				<key>CellType</key>
-				<integer>2</integer>
-				<key>PosX</key>
-				<integer>-16</integer>
-				<key>PosY</key>
-				<integer>0</integer>
-				<key>PosZ</key>
-				<integer>16</integer>
-				<key>RotX</key>
-				<integer>0</integer>
-				<key>RotY</key>
-				<integer>0</integer>
-				<key>RotZ</key>
-				<integer>0</integer>
-				<key>ScaleX</key>
-				<integer>1</integer>
-				<key>ScaleY</key>
-				<integer>1</integer>
-				<key>ScaleZ</key>
-				<integer>1</integer>
-			</dict>
-			<dict>
-				<key>ModelName</key>
-				<string>1x1.obj</string>
+				<string>1x1</string>
 				<key>CellType</key>
 				<integer>2</integer>
 				<key>PosX</key>
@@ -212,7 +212,7 @@
 			</dict>
 			<dict>
 				<key>ModelName</key>
-				<string>1x1.obj</string>
+				<string>1x1</string>
 				<key>CellType</key>
 				<integer>2</integer>
 				<key>PosX</key>
@@ -236,7 +236,7 @@
 			</dict>
 			<dict>
 				<key>ModelName</key>
-				<string>1x1.obj</string>
+				<string>1x1</string>
 				<key>CellType</key>
 				<integer>2</integer>
 				<key>PosX</key>
@@ -260,7 +260,7 @@
 			</dict>
 			<dict>
 				<key>ModelName</key>
-				<string>1x1.obj</string>
+				<string>1x1</string>
 				<key>CellType</key>
 				<integer>2</integer>
 				<key>PosX</key>
@@ -284,7 +284,7 @@
 			</dict>
 			<dict>
 				<key>ModelName</key>
-				<string>1x1.obj</string>
+				<string>1x1</string>
 				<key>CellType</key>
 				<integer>2</integer>
 				<key>PosX</key>
@@ -308,7 +308,7 @@
 			</dict>
 			<dict>
 				<key>ModelName</key>
-				<string>1x1.obj</string>
+				<string>1x1</string>
 				<key>CellType</key>
 				<integer>2</integer>
 				<key>PosX</key>
@@ -332,7 +332,7 @@
 			</dict>
 			<dict>
 				<key>ModelName</key>
-				<string>1x1.obj</string>
+				<string>1x1</string>
 				<key>CellType</key>
 				<integer>2</integer>
 				<key>PosX</key>
@@ -356,7 +356,7 @@
 			</dict>
 			<dict>
 				<key>ModelName</key>
-				<string>1x1.obj</string>
+				<string>1x1</string>
 				<key>CellType</key>
 				<integer>2</integer>
 				<key>PosX</key>
@@ -380,7 +380,7 @@
 			</dict>
 			<dict>
 				<key>ModelName</key>
-				<string>1x1.obj</string>
+				<string>1x1</string>
 				<key>CellType</key>
 				<integer>2</integer>
 				<key>PosX</key>
@@ -404,7 +404,7 @@
 			</dict>
 			<dict>
 				<key>ModelName</key>
-				<string>1x1.obj</string>
+				<string>1x1</string>
 				<key>CellType</key>
 				<integer>2</integer>
 				<key>PosX</key>
@@ -428,7 +428,7 @@
 			</dict>
 			<dict>
 				<key>ModelName</key>
-				<string>1x1.obj</string>
+				<string>1x1</string>
 				<key>CellType</key>
 				<integer>2</integer>
 				<key>PosX</key>
@@ -452,7 +452,7 @@
 			</dict>
 			<dict>
 				<key>ModelName</key>
-				<string>1x1.obj</string>
+				<string>1x1</string>
 				<key>CellType</key>
 				<integer>2</integer>
 				<key>PosX</key>
@@ -476,7 +476,7 @@
 			</dict>
 			<dict>
 				<key>ModelName</key>
-				<string>1x1.obj</string>
+				<string>1x1</string>
 				<key>CellType</key>
 				<integer>2</integer>
 				<key>PosX</key>
@@ -500,7 +500,7 @@
 			</dict>
 			<dict>
 				<key>ModelName</key>
-				<string>1x1.obj</string>
+				<string>1x1</string>
 				<key>CellType</key>
 				<integer>2</integer>
 				<key>PosX</key>
@@ -524,7 +524,7 @@
 			</dict>
 			<dict>
 				<key>ModelName</key>
-				<string>1x1.obj</string>
+				<string>1x1</string>
 				<key>CellType</key>
 				<integer>2</integer>
 				<key>PosX</key>
@@ -548,7 +548,7 @@
 			</dict>
 			<dict>
 				<key>ModelName</key>
-				<string>1x1.obj</string>
+				<string>1x1</string>
 				<key>CellType</key>
 				<integer>2</integer>
 				<key>PosX</key>
@@ -572,7 +572,7 @@
 			</dict>
 			<dict>
 				<key>ModelName</key>
-				<string>1x1.obj</string>
+				<string>1x1</string>
 				<key>CellType</key>
 				<integer>2</integer>
 				<key>PosX</key>
@@ -596,7 +596,7 @@
 			</dict>
 			<dict>
 				<key>ModelName</key>
-				<string>1x1.obj</string>
+				<string>1x1</string>
 				<key>CellType</key>
 				<integer>2</integer>
 				<key>PosX</key>
@@ -620,7 +620,7 @@
 			</dict>
 			<dict>
 				<key>ModelName</key>
-				<string>1x1.obj</string>
+				<string>1x1</string>
 				<key>CellType</key>
 				<integer>2</integer>
 				<key>PosX</key>
@@ -644,7 +644,7 @@
 			</dict>
 			<dict>
 				<key>ModelName</key>
-				<string>1x1.obj</string>
+				<string>1x1</string>
 				<key>CellType</key>
 				<integer>2</integer>
 				<key>PosX</key>
@@ -668,7 +668,7 @@
 			</dict>
 			<dict>
 				<key>ModelName</key>
-				<string>1x1.obj</string>
+				<string>1x1</string>
 				<key>CellType</key>
 				<integer>2</integer>
 				<key>PosX</key>
@@ -692,7 +692,7 @@
 			</dict>
 			<dict>
 				<key>ModelName</key>
-				<string>1x1.obj</string>
+				<string>1x1</string>
 				<key>CellType</key>
 				<integer>2</integer>
 				<key>PosX</key>
@@ -716,7 +716,7 @@
 			</dict>
 			<dict>
 				<key>ModelName</key>
-				<string>1x1.obj</string>
+				<string>1x1</string>
 				<key>CellType</key>
 				<integer>2</integer>
 				<key>PosX</key>
@@ -740,7 +740,7 @@
 			</dict>
 			<dict>
 				<key>ModelName</key>
-				<string>1x1.obj</string>
+				<string>1x1</string>
 				<key>CellType</key>
 				<integer>2</integer>
 				<key>PosX</key>
@@ -764,13 +764,13 @@
 			</dict>
 			<dict>
 				<key>ModelName</key>
-				<string>sidebar.obj</string>
+				<string>sidebar</string>
 				<key>CellType</key>
 				<integer>1</integer>
 				<key>PosX</key>
-				<integer>24</integer>
+				<integer>21</integer>
 				<key>PosY</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>PosZ</key>
 				<integer>16</integer>
 				<key>RotX</key>
@@ -788,13 +788,13 @@
 			</dict>
 			<dict>
 				<key>ModelName</key>
-				<string>sidebar.obj</string>
+				<string>sidebar</string>
 				<key>CellType</key>
 				<integer>1</integer>
 				<key>PosX</key>
-				<integer>24</integer>
+				<integer>21</integer>
 				<key>PosY</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>PosZ</key>
 				<integer>8</integer>
 				<key>RotX</key>
@@ -812,13 +812,13 @@
 			</dict>
 			<dict>
 				<key>ModelName</key>
-				<string>sidebar.obj</string>
+				<string>sidebar</string>
 				<key>CellType</key>
 				<integer>1</integer>
 				<key>PosX</key>
-				<integer>24</integer>
+				<integer>21</integer>
 				<key>PosY</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>PosZ</key>
 				<integer>0</integer>
 				<key>RotX</key>
@@ -836,13 +836,13 @@
 			</dict>
 			<dict>
 				<key>ModelName</key>
-				<string>sidebar.obj</string>
+				<string>sidebar</string>
 				<key>CellType</key>
 				<integer>1</integer>
 				<key>PosX</key>
-				<integer>24</integer>
+				<integer>21</integer>
 				<key>PosY</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>PosZ</key>
 				<integer>-8</integer>
 				<key>RotX</key>
@@ -860,13 +860,13 @@
 			</dict>
 			<dict>
 				<key>ModelName</key>
-				<string>sidebar.obj</string>
+				<string>sidebar</string>
 				<key>CellType</key>
 				<integer>1</integer>
 				<key>PosX</key>
-				<integer>24</integer>
+				<integer>21</integer>
 				<key>PosY</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>PosZ</key>
 				<integer>-16</integer>
 				<key>RotX</key>

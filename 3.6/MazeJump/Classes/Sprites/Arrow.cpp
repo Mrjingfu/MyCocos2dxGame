@@ -13,9 +13,9 @@ USING_NS_CC;
 Arrow* Arrow::create(ArrowType type)
 {
     auto arrow = new (std::nothrow) Arrow();
-    if (arrow && arrow->initWithFile("arrow.obj"))
+    if (arrow && arrow->initWithFile("arrow.c3b"))
     {
-        arrow->setTexture("IndexColor.png");
+        arrow->setTexture("arrow.png");
         arrow->setType(type);
         arrow->_contentSize = arrow->getBoundingBox().size;
         arrow->m_fRadius = arrow->_contentSize.width*0.5f;
