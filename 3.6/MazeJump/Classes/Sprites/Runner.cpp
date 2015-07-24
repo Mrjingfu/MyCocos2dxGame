@@ -127,7 +127,7 @@ void Runner::onEnterMoveLeft()
     if(terrainLayer)
     {
         float cellRadius = terrainLayer->getCellBaseRadius();
-        EaseSineOut* scaleTo1 = EaseSineOut::create(ScaleTo::create(0.05f, 1, 0.9f, 1));
+        EaseSineOut* scaleTo1 = EaseSineOut::create(ScaleTo::create(0.05f, 1, 0.8f, 1));
         EaseSineIn* scaleTo2 = EaseSineIn::create(ScaleTo::create(0.1f, 1, 1.0f, 1));
         Sequence* sequenceScale = Sequence::create(scaleTo1, scaleTo2, NULL);
         
@@ -151,7 +151,7 @@ void Runner::onEnterMoveRight()
     if(terrainLayer)
     {
         float cellRadius = terrainLayer->getCellBaseRadius();
-        EaseSineOut* scaleTo1 = EaseSineOut::create(ScaleTo::create(0.05f, 1, 0.9f, 1));
+        EaseSineOut* scaleTo1 = EaseSineOut::create(ScaleTo::create(0.05f, 1, 0.8f, 1));
         EaseSineIn* scaleTo2 = EaseSineIn::create(ScaleTo::create(0.1f, 1, 1.0f, 1));
         Sequence* sequenceScale = Sequence::create(scaleTo1, scaleTo2, NULL);
         
@@ -175,7 +175,7 @@ void Runner::onEnterMoveForward()
     {
         float cellRadius = terrainLayer->getCellBaseRadius();
 
-        EaseSineOut* scaleTo1 = EaseSineOut::create(ScaleTo::create(0.05f, 1, 0.9f, 1));
+        EaseSineOut* scaleTo1 = EaseSineOut::create(ScaleTo::create(0.05f, 1, 0.8f, 1));
         EaseSineIn* scaleTo2 = EaseSineIn::create(ScaleTo::create(0.1f, 1, 1.0f,1));
         Sequence* sequenceScale = Sequence::create(scaleTo1, scaleTo2, NULL);
         
@@ -200,7 +200,7 @@ void Runner::onEnterMoveSuperJump()
     {
         float cellRadius = terrainLayer->getCellBaseRadius();
         
-        EaseSineOut* scaleTo1 = EaseSineOut::create(ScaleTo::create(0.1f, 1, 0.8f, 1));
+        EaseSineOut* scaleTo1 = EaseSineOut::create(ScaleTo::create(0.1f, 1, 0.6f, 1));
         EaseSineIn* scaleTo2 = EaseSineIn::create(ScaleTo::create(0.2f, 1, 1.0f,1));
         Sequence* sequenceScale = Sequence::create(scaleTo1, scaleTo2, NULL);
         
