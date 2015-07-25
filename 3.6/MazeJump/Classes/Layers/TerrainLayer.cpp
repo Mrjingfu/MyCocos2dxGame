@@ -140,7 +140,7 @@ void TerrainLayer::jumpLeft()
         if(patternLayer)
         {
             if(m_nColumn == -2 &&( patternLayer->getPatternType() == TerrainPatternLayer::PT_DOUBLESIDEBAR
-            || patternLayer->getPatternType() == TerrainPatternLayer::PT_LEFTSIDEBAR || patternLayer->getPatternType() == TerrainPatternLayer::PT_STARTER))
+            || patternLayer->getPatternType() == TerrainPatternLayer::PT_CHECKPOINT || patternLayer->getPatternType() == TerrainPatternLayer::PT_LEFTSIDEBAR || patternLayer->getPatternType() == TerrainPatternLayer::PT_STARTER))
                 runner->setState(Runner::RS_MOVE_JUMPLOCAL);
             else
                 runner->setState(Runner::RS_MOVE_LEFT);
@@ -157,7 +157,7 @@ void TerrainLayer::jumpRight()
         if(patternLayer)
         {
             if(m_nColumn == 2 &&( patternLayer->getPatternType() == TerrainPatternLayer::PT_DOUBLESIDEBAR
-                                 || patternLayer->getPatternType() == TerrainPatternLayer::PT_RIGHTSIDEBAR || patternLayer->getPatternType() == TerrainPatternLayer::PT_STARTER))
+                                 || patternLayer->getPatternType() == TerrainPatternLayer::PT_CHECKPOINT || patternLayer->getPatternType() == TerrainPatternLayer::PT_RIGHTSIDEBAR || patternLayer->getPatternType() == TerrainPatternLayer::PT_STARTER))
                 runner->setState(Runner::RS_MOVE_JUMPLOCAL);
             else
                 runner->setState(Runner::RS_MOVE_RIGHT);

@@ -9,6 +9,7 @@
 #include "TerrainPatternLayer.h"
 #include "RunController.h"
 #include "PatternsManager.h"
+#include "UtilityHelper.h"
 USING_NS_CC;
 TerrainPatternLayer* TerrainPatternLayer::create(int index)
 {
@@ -33,6 +34,7 @@ bool TerrainPatternLayer::init(int index)
     m_nIndex = index;
     m_patternType = PatternType(PatternsManager::getInstance()->getPatternType(index));
     m_fadeInType = FadeInType(PatternsManager::getInstance()->getPatternFadeInType(index));
+    
     ValueVector terrainCells = PatternsManager::getInstance()->getPatternTerrainCells(index);
     for (Value value : terrainCells) {
         ValueMap cellMap = value.asValueMap();
@@ -66,6 +68,8 @@ bool TerrainPatternLayer::init(int index)
                 break;
             case FIT_RANDOM_UP:
                 {
+                    Color3B randomColor = UtilityHelper::randomColor();
+                    cell->setColor(randomColor);
                     cell->setType(TerrainCell::CellType(cellType));
                     cell->setPosition3D(Vec3(posX, -50, posZ));
                     cell->setRotation3D(Vec3(rotX, rotY, rotZ));
@@ -74,7 +78,7 @@ bool TerrainPatternLayer::init(int index)
                     cell->setScaleZ(0);
                     float time = cocos2d::random(1.0f, 1.5f);
                     EaseBackInOut* moveTo = EaseBackInOut::create(MoveTo::create(time, Vec3(posX, posY, posZ)));
-                    EaseSineIn* scaleTo = EaseSineIn::create(ScaleTo::create(0.5f, 1.0f));
+                    EaseSineIn* scaleTo = EaseSineIn::create(ScaleTo::create(0.5f, 0.985f));
                     Spawn* spawn = Spawn::createWithTwoActions(moveTo, scaleTo);
                     cell->runAction(spawn);
                 }
