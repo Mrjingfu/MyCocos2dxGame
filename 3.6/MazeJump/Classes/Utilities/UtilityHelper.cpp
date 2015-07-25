@@ -135,3 +135,26 @@ void UtilityHelper::getCameraToViewportRay(Camera* camera,const Vec2& screenPoin
     }
 
 }
+Color3B UtilityHelper::randomColor()
+{
+    const int minSum = 650;
+    const int minDelta = 10;
+    int r, g, b, min, max;
+    while (true) {
+#if CC_TARGET_PLATFORM == CC_PLATFORM_IOS
+        r = arc4random_uniform(255);
+        g = arc4random_uniform(255);
+        b = arc4random_uniform(255);
+#else
+        r = arc4random() % 256;
+        g = arc4random() % 256;
+        b = arc4random() % 256;
+#endif
+        min = MIN(MIN(r, g), b);
+        max = MAX(MAX(r, g), b);
+        if (max-min < minDelta) continue;
+        if (r+g+b < minSum) continue;
+        break;
+    }
+    return Color3B(r, g, b);
+}

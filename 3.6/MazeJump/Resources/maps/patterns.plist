@@ -17,9 +17,9 @@
 				<key>PosX</key>
 				<integer>0</integer>
 				<key>PosY</key>
-				<real>0.5</real>
+				<integer>2</integer>
 				<key>PosZ</key>
-				<integer>1</integer>
+				<integer>3</integer>
 				<key>RotX</key>
 				<integer>0</integer>
 				<key>RotY</key>

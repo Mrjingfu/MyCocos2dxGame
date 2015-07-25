@@ -33,6 +33,12 @@ bool RunController::init(Layer* pMainLayer)
         return false;
     m_pMainLayer = pMainLayer;
     
+    Skybox* m_pSkyBox = Skybox::create("sky4.png", "sky4.png", "sky4.png", "sky4.png", "sky4.png", "sky4.png");
+    if(!m_pSkyBox)
+        return false;
+    m_pSkyBox->setScale(1000);
+    m_pSkyBox->setCameraMask((unsigned short)CameraFlag::USER1);
+    m_pMainLayer->addChild(m_pSkyBox);
     
     m_pTerrainLayer = TerrainLayer::create();
     if(!m_pTerrainLayer)
@@ -48,6 +54,30 @@ bool RunController::init(Layer* pMainLayer)
     m_pMainPlayer->setCameraMask((unsigned short)CameraFlag::USER1);
     m_pMainPlayer->setPositionY(4);
     m_pTerrainLayer->addChild(m_pMainPlayer);
+    
+    Sprite3D* cloud = Sprite3D::create("manycloud.c3b");
+    if(!cloud)
+        return false;
+    cloud->setCameraMask((unsigned short)CameraFlag::USER1);
+    cloud->setPositionZ(m_pMainPlayer->getPositionZ() -200);
+    cloud->setPositionY(-80);
+    cloud->setScaleX(2.5f);
+    cloud->setScaleY(2.5f);
+    cloud->setScaleZ(2.5f);
+    
+    m_pMainLayer->addChild(cloud);
+    
+    Sprite3D* cloud2 = Sprite3D::create("manycloud.c3b");
+    if(!cloud2)
+        return false;
+    cloud2->setCameraMask((unsigned short)CameraFlag::USER1);
+    cloud2->setPositionZ(m_pMainPlayer->getPositionZ() -400);
+    cloud2->setPositionY(-80);
+    cloud2->setScaleX(2.5f);
+    cloud2->setScaleY(2.5f);
+    cloud2->setScaleZ(2.5f);
+    cloud2->setRotation3D(Vec3(0,180,0));
+    m_pMainLayer->addChild(cloud2);
     
     auto size = Director::getInstance()->getVisibleSize();
     m_pMainCamera = Camera::createPerspective(60, size.width/size.height, 1, 5000);
