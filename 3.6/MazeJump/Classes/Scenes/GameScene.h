@@ -29,7 +29,8 @@ public:
     virtual void update(float delta);
 private:
     void gameWin();
-    void gameLose(); 
+    void gameLose();
+    void gameRecordEnd();
 };
 
 #endif /* defined(__MazeJump__GameScene__) */

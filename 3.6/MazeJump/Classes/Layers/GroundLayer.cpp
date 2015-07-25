@@ -656,20 +656,28 @@ void GroundLayer::setRecordState(RecordState state)
         return;
     switch (state) {
         case RD_START:
-            if(StepManager::getInstance()->getLevelSteps(m_Level).size() == 0)
+            if(StepManager::getInstance()->getLevelWinSteps(m_Level).size() == 0)
             {
                 m_Playing = false;
                  return;
             }
-            
-            recordSteps = StepManager::getInstance()->getLevelSteps(m_Level)[0].asValueVector()[1].asValueVector();
+            recordSteps = StepManager::getInstance()->getLevelWinSteps(m_Level);
             playRecord();
             break;
         case RD_NEXT:
             playRecord();
             break;
         case RD_END:
-            CCLOG("播放结束");
+        {
+            GameScene* gameScene = static_cast<GameScene*>(getParent());
+            if (!gameScene) {
+                return;
+            }
+            DelayTime* delay = DelayTime::create(2.0f);
+            CallFunc* callFunc = CallFunc::create(CC_CALLBACK_0(GameScene::gameRecordEnd,gameScene));
+            Sequence* sequence = Sequence::create(callFunc, delay, NULL);
+            this->runAction(sequence);
+        }
             break;
         default:
             break;

@@ -31,7 +31,7 @@ GroundCell* GroundCell::create(int level)
 }
 GroundCell::GroundCell():m_carryProp(-1)
 {
-    specialArtCell = nullptr;
+    
 }
 bool GroundCell::isSpeicalArtCell()
 {
@@ -51,7 +51,7 @@ bool GroundCell::isWalkCell()
 void GroundCell::setCarryProp(int prop)
 {
     m_carryProp = prop;
-    specialArtCell = EffectSprite3D::create("circle.obj");
+    auto specialArtCell = EffectSprite3D::create("circle.obj");
     OutlineEffect3D* outline = OutlineEffect3D::create();
     outline->setOutlineColor(Vec3(0.3f, 0.3f, 0.3f));
     outline->setOutlineWidth(0.03f);
@@ -63,5 +63,12 @@ void GroundCell::setCarryProp(int prop)
     specialArtCell->runAction(RepeatForever::create(Sequence::create(ScaleTo::create(0.1f, 0.3f),ScaleTo::create(0.3f, 0.5f),ScaleTo::create(0.5f, 0.6f),ScaleTo::create(0.3f, 0.8f) ,ScaleTo::create(0.4f, 0.8f),NULL)));
     
     addChild(specialArtCell);
+    
+//    auto rootps = PUParticleSystem3D::create("flareShield.pu");
+//    rootps->setCameraMask((unsigned short)CameraFlag::USER1);
+//    rootps->setAnchorPoint(Vec2::ZERO);
+//    rootps->setPosition3D(Vec3(0, 2, -5));
+//    rootps->startParticleSystem();
+//    addChild(rootps);
     
 }
