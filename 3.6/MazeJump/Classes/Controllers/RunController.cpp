@@ -23,6 +23,8 @@ RunController::RunController()
     m_pTerrainLayer     = nullptr;
     m_pMainCamera       = nullptr;
     m_pMainPlayer       = nullptr;
+    m_pCloud1            = nullptr;
+    m_pCloud2            = nullptr;
 }
 RunController::~RunController()
 {
@@ -40,6 +42,9 @@ bool RunController::init(Layer* pMainLayer)
     m_pSkyBox->setCameraMask((unsigned short)CameraFlag::USER1);
     m_pMainLayer->addChild(m_pSkyBox);
     
+    if(!initCloud())
+        return false;
+    
     m_pTerrainLayer = TerrainLayer::create();
     if(!m_pTerrainLayer)
         return false;
@@ -55,30 +60,6 @@ bool RunController::init(Layer* pMainLayer)
     m_pMainPlayer->setPositionY(4);
     m_pTerrainLayer->addChild(m_pMainPlayer);
     
-    Sprite3D* cloud = Sprite3D::create("manycloud.c3b");
-    if(!cloud)
-        return false;
-    cloud->setCameraMask((unsigned short)CameraFlag::USER1);
-    cloud->setPositionZ(m_pMainPlayer->getPositionZ() -200);
-    cloud->setPositionY(-80);
-    cloud->setScaleX(2.5f);
-    cloud->setScaleY(2.5f);
-    cloud->setScaleZ(2.5f);
-    
-    m_pMainLayer->addChild(cloud);
-    
-    Sprite3D* cloud2 = Sprite3D::create("manycloud.c3b");
-    if(!cloud2)
-        return false;
-    cloud2->setCameraMask((unsigned short)CameraFlag::USER1);
-    cloud2->setPositionZ(m_pMainPlayer->getPositionZ() -400);
-    cloud2->setPositionY(-80);
-    cloud2->setScaleX(2.5f);
-    cloud2->setScaleY(2.5f);
-    cloud2->setScaleZ(2.5f);
-    cloud2->setRotation3D(Vec3(0,180,0));
-    m_pMainLayer->addChild(cloud2);
-    
     auto size = Director::getInstance()->getVisibleSize();
     m_pMainCamera = Camera::createPerspective(60, size.width/size.height, 1, 5000);
     if(!m_pMainCamera)
@@ -92,7 +73,7 @@ bool RunController::init(Layer* pMainLayer)
     
     AmbientLight* ambLight = AmbientLight::create(Color3B(150, 150, 150));
     m_pMainLayer->addChild(ambLight);
-    DirectionLight* directionLight = DirectionLight::create(Vec3(-3, -4, -2), Color3B(158, 158, 158));
+    DirectionLight* directionLight = DirectionLight::create(Vec3(-2, -4, -3), Color3B(158, 158, 158));
     m_pMainLayer->addChild(directionLight);
     
     return true;
@@ -111,13 +92,75 @@ void RunController::cameraTrackPlayer()
 {
     if(m_pMainPlayer && m_pMainCamera)
     {
-        Vec3 camPos = Vec3(m_pTerrainLayer->getPositionX(),m_pTerrainLayer->getPositionY(),m_pMainPlayer->getPositionZ()) + Vec3(0,60.0f*cosf(M_PI/6.0f),60.0f*sinf(M_PI/6.0f));;
+        Vec3 camPos = Vec3(m_pTerrainLayer->getPositionX(),m_pTerrainLayer->getPositionY(),m_pMainPlayer->getPositionZ()) + Vec3(0,60.0f*cosf(M_PI/6.0f),60.0f*sinf(M_PI/6.0f));
         Vec3 targetLookAt = Vec3(m_pTerrainLayer->getPositionX(),m_pTerrainLayer->getPositionY(),m_pMainPlayer->getPositionZ()) + Vec3(0,0,-30);
         EaseSineOut* moveTo = EaseSineOut::create(MoveTo::create(0.4f, camPos));
         m_pMainCamera->runAction(moveTo);
+        if(m_pMainCamera->getPositionZ() - m_pMainPlayer->getPositionZ() > 60.0f*sinf(M_PI/6.0f))
+            updateCloud();
     }
 }
 void RunController::gameOver()
 {
     CCLOG("gameOver");
+}
+bool RunController::initCloud()
+{
+    m_pCloud1 = Sprite3D::create("cloud.c3b");
+    if(!m_pCloud1)
+        return false;
+    m_pCloud1->setCameraMask((unsigned short)CameraFlag::USER1);
+    m_pCloud1->setPositionZ(-200);
+    m_pCloud1->setPositionY(-80);
+    m_pCloud1->setScaleX(2.5f);
+    m_pCloud1->setScaleY(2.5f);
+    m_pCloud1->setScaleZ(2.5f);
+    m_pCloud1->setForceDepthWrite(true);
+    m_pMainLayer->addChild(m_pCloud1);
+    
+    m_pCloud2 = Sprite3D::create("cloud.c3b");
+    if(!m_pCloud2)
+        return false;
+    m_pCloud2->setCameraMask((unsigned short)CameraFlag::USER1);
+    m_pCloud2->setPositionZ(-400);
+    m_pCloud2->setPositionY(-80);
+    m_pCloud2->setOpacity(0);
+    m_pCloud2->setScaleX(2.5f);
+    m_pCloud2->setScaleY(2.5f);
+    m_pCloud2->setScaleZ(2.5f);
+    m_pCloud2->setRotation3D(Vec3(0,180,0));
+    m_pCloud2->setForceDepthWrite(true);
+    m_pMainLayer->addChild(m_pCloud2);
+    return true;
+}
+void RunController::updateCloud()
+{
+    if(m_pCloud1 && m_pCloud2 && m_pMainPlayer)
+    {
+        if(m_pMainPlayer->getPositionZ() <= m_pCloud1->getPositionZ())
+        {
+            m_pCloud1->setPosition3D(m_pCloud2->getPosition3D() + Vec3(0,0,-200));
+            m_pCloud1->setOpacity(0);
+        }
+        else
+        {
+            int opacity =  m_pCloud2->getOpacity()+51;
+            if(opacity>=255)
+                opacity = 255;
+            m_pCloud2->setOpacity(opacity);
+        }
+
+        if(m_pMainPlayer->getPositionZ() <= m_pCloud2->getPositionZ())
+        {
+            m_pCloud2->setPosition3D(m_pCloud1->getPosition3D() + Vec3(0,0,-200));
+            m_pCloud2->setOpacity(0);
+        }
+        else
+        {
+            int opacity =  m_pCloud1->getOpacity()+51;
+            if(opacity>=255)
+                opacity = 255;
+            m_pCloud1->setOpacity(opacity);
+        }
+    }
 }

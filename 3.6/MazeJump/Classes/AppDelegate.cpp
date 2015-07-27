@@ -50,7 +50,9 @@ bool AppDelegate::applicationDidFinishLaunching() {
     searchPaths.push_back("models");
     FileUtils::getInstance()->setSearchPaths(searchPaths);
     
-    director->setClearColor(Color4F(153.0f/255.0f, 204.0f/255.0f, 1.0f, 1.0f));
+    //director->setClearColor(Color4F(153.0f/255.0f, 204.0f/255.0f, 1.0f, 1.0f));
+    director->setClearColor(Color4F(0.8f, 0.8f, 0.8f, 1.0f));
+
     // turn on display FPS
     director->setDisplayStats(true);
 

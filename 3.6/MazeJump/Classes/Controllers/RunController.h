@@ -30,10 +30,15 @@ public:
     
     void gameOver();
 private:
+    bool initCloud();
+    void updateCloud();
+private:
     cocos2d::Layer*     m_pMainLayer;
     TerrainLayer*       m_pTerrainLayer;
     cocos2d::Camera*    m_pMainCamera;
     Runner*             m_pMainPlayer;
+    cocos2d::Sprite3D*           m_pCloud1;
+    cocos2d::Sprite3D*           m_pCloud2;
 };
 
 #endif /* defined(__MazeJump__RunController__) */
