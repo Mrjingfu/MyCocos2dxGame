@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="5" height="5" tilewidth="32" tileheight="32" nextobjectid="51">
+ <tileset firstgid="1" name="colorlist" tilewidth="32" tileheight="32">
+  <image source="../textures/colorlist.png" width="64" height="128"/>
+ </tileset>
+ <objectgroup name="celllist">
+  <object id="26" type="1" gid="4" x="0" y="32" width="32" height="32"/>
+  <object id="27" type="1" gid="4" x="32" y="32" width="32" height="32"/>
+  <object id="28" type="1" gid="4" x="64" y="32" width="32" height="32"/>
+  <object id="29" type="1" gid="4" x="96" y="32" width="32" height="32"/>
+  <object id="30" type="1" gid="4" x="128" y="32" width="32" height="32"/>
+  <object id="31" type="5" gid="8" x="0" y="64" width="32" height="32">
+   <properties>
+    <property name="carryprop" value="1"/>
+   </properties>
+  </object>
+  <object id="32" type="0" gid="2" x="32" y="64" width="32" height="32"/>
+  <object id="33" type="1" gid="4" x="64" y="64" width="32" height="32"/>
+  <object id="34" type="1" gid="4" x="96" y="64" width="32" height="32"/>
+  <object id="35" type="1" gid="4" x="128" y="64" width="32" height="32"/>
+  <object id="36" type="1" gid="4" x="0" y="96" width="32" height="32"/>
+  <object id="37" type="1" gid="4" x="32" y="96" width="32" height="32"/>
+  <object id="38" type="1" gid="4" x="64" y="96" width="32" height="32"/>
+  <object id="39" type="1" gid="4" x="96" y="96" width="32" height="32"/>
+  <object id="40" type="1" gid="4" x="128" y="96" width="32" height="32"/>
+  <object id="41" type="1" gid="4" x="0" y="128" width="32" height="32"/>
+  <object id="42" type="1" gid="4" x="32" y="128" width="32" height="32"/>
+  <object id="43" type="0" gid="2" x="64" y="128" width="32" height="32"/>
+  <object id="44" type="1" gid="4" x="96" y="128" width="32" height="32"/>
+  <object id="45" type="1" gid="4" x="128" y="128" width="32" height="32"/>
+  <object id="46" type="5" gid="8" x="0" y="160" width="32" height="32">
+   <properties>
+    <property name="carryprop" value="1"/>
+   </properties>
+  </object>
+  <object id="47" type="1" gid="4" x="32" y="160" width="32" height="32"/>
+  <object id="48" type="0" gid="2" x="64" y="160" width="32" height="32"/>
+  <object id="49" type="1" gid="4" x="96" y="160" width="32" height="32"/>
+  <object id="50" type="1" gid="4" x="128" y="160" width="32" height="32"/>
+ </objectgroup>
+</map>

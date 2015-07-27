@@ -137,7 +137,7 @@ void UtilityHelper::getCameraToViewportRay(Camera* camera,const Vec2& screenPoin
 }
 Color3B UtilityHelper::randomColor()
 {
-    const int minSum = 600;
+    const int minSum = 650;
     const int minDelta = 10;
     int r, g, b, min, max;
     while (true) {

@@ -31,7 +31,7 @@ Arrow* Arrow::create(ArrowType type)
     CC_SAFE_DELETE(arrow);
     return nullptr;
 }
-Arrow::Arrow():m_specialArt(false)
+Arrow::Arrow()
 {
    
 }

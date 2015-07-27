@@ -61,13 +61,13 @@ bool GroundLayer::init(int level)
     {
         for (int i = 0; i<m_MapSize.height; i++) {
             for (int j = 0; j<m_MapSize.width; j++) {
-                GroundCell* cell = GroundCell::create(level);
+                int index = i*m_MapSize.width + j;
+                Value value = objectGroup->getObjects().at(index);
+                int type = value.asValueMap()["type"].asInt();
+                GroundCell* cell = GroundCell::create(level,GroundCell::CellType(type));
                 if(cell)
                 {
-                    int index = i*m_MapSize.width + j;
-                    Value value = objectGroup->getObjects().at(index);
-                    int type = value.asValueMap()["type"].asInt();
-                    cell->setType(GroundCell::CellType(type));
+                    
                     m_fCellRadius = cell->getRadius();
                     cell->setPosition3D(Vec3(i*(cell->getRadius())*2, -40, j*(cell->getRadius())*2));
                     cell->setScale(0.0f);
@@ -82,6 +82,27 @@ bool GroundLayer::init(int level)
                             break;
                         case GroundCell::CT_CARRY:
                             cell->setCarryProp(value.asValueMap()["carryprop"].asInt());
+                            break;
+                        case GroundCell::CT_REVIVE:
+                        {
+                            GroundCell* reveiveCell = GroundCell::create(level, GroundCell::CT_NOT);
+                            reveiveCell->setPosition3D(Vec3(i*(cell->getRadius())*2, -40, j*(cell->getRadius())*2));
+                            reveiveCell->setIndexX(j);
+                            reveiveCell->setIndexY(i);
+                            cell->setReviveCell(reveiveCell);
+                            addChild(reveiveCell);
+                            float time = cocos2d::random(1.0f, 2.0f);
+                            EaseBackInOut* moveTo = EaseBackInOut::create(MoveTo::create(time, Vec3(i*(reveiveCell->getRadius())*2, 0, j*(reveiveCell->getRadius())*2)));
+                            EaseSineIn* scaleTo = EaseSineIn::create(ScaleTo::create(1.0f, 0.9f));
+                            Spawn* spawn = Spawn::createWithTwoActions(moveTo, scaleTo);
+                            float delayTime = cocos2d::random(0.0f, 0.5f);
+                            DelayTime* delay = DelayTime::create(delayTime);
+                            Sequence* sequence = Sequence::createWithTwoActions(delay, spawn);
+                            reveiveCell->runAction(sequence);
+                            reveiveCell->setVisible(false);
+                            
+                        }
+
                             break;
                         default:
                             break;
@@ -286,7 +307,16 @@ void GroundLayer::flipIndexCell(int indexX, int indexY)
         SimpleAudioEngine::getInstance()->playEffect("stoneflip.wav");
         CallFunc* callFunc = CallFunc::create(CC_CALLBACK_0(GroundLayer::setCurrentCellTypeOK,this));
         Sequence* sequence = Sequence::create(ratateTo, callFunc, NULL);
-        m_pCurrentCell->runAction(sequence);
+        GroundCell* reviceCell = m_pCurrentCell->getReviveCell();
+        if (reviceCell)
+        {
+            if (m_pCurrentCell->getType() == GroundCell::CT_NOT && reviceCell->getType() == GroundCell::CT_NOT)
+                reviceCell->runAction(sequence);
+            else
+                m_pCurrentCell->runAction(sequence);
+        }else
+            m_pCurrentCell->runAction(sequence);
+        
     }
 }
 void GroundLayer::carryCell(int indexX,int indexY)
@@ -298,6 +328,9 @@ void GroundLayer::carryCell(int indexX,int indexY)
     
     int index = indexY*m_MapSize.width + indexX;
     m_pCurrentCell = m_GroundCellList.at(index);
+    if (!m_pCurrentCell->isWalkCell()) {
+        return;
+    }
     RotateTo* ratateTo = RotateTo::create(0.5f, Vec3(180,0,0));
     m_pCurrentCell->setType(GroundCell::CT_OK);
     m_pCurrentCell->runAction(ratateTo);
@@ -307,7 +340,12 @@ void GroundLayer::setCurrentCellTypeOK()
 {
     if(m_pCurrentCell)
     {
-        m_pCurrentCell->setType(GroundCell::CT_OK);
+        if (m_pCurrentCell->getType() == GroundCell::CT_REVIVE) {
+            m_pCurrentCell->setType(GroundCell::CT_NOT);
+            m_pCurrentCell->getReviveCell()->setVisible(true);
+            m_pCurrentCell->setVisible(false);
+        }else
+            m_pCurrentCell->setType(GroundCell::CT_OK);
         
         if(m_pPlayer == nullptr)
         {
@@ -331,8 +369,11 @@ void GroundLayer::checkWinOrLose()
     
     if(!m_pCurrentCell || !m_pPlayer)
         return;
-    if(m_pCurrentCell->getType() == GroundCell::CT_NOT)
+    GroundCell* cell = m_pCurrentCell->getReviveCell();
+    if(!cell && m_pCurrentCell->getType() == GroundCell::CT_NOT)
         return;
+    
+   
     if(m_pPlayer->getPlayerState() != Player::PS_IDLE)
         return;
     GameScene* gameScene = static_cast<GameScene*>(getParent());
@@ -389,20 +430,14 @@ void GroundLayer::showArrow()
                     m_pArrowRight->setIndexX(cell->getIndexX());
                     m_pArrowRight->setIndexY(cell->getIndexY());
                     m_pArrowRight->setPosition3D(cell->getPosition3D() + Vec3(0,2,0));
-                    if (cell->getType() == GroundCell::CT_CARRY) {
-                        m_pArrowRight->setSpecialArt(true);
-                        m_pArrowRight->setVisible(false);
-                    }
+                    
                 }
                 else if(cell->getIndexX() < m_pCurrentCell->getIndexX()) {
                     m_pArrowLeft->setVisible(true);
                     m_pArrowLeft->setIndexX(cell->getIndexX());
                     m_pArrowLeft->setIndexY(cell->getIndexY());
                     m_pArrowLeft->setPosition3D(cell->getPosition3D() + Vec3(0,2,0));
-                    if (cell->getType() == GroundCell::CT_CARRY) {
-                        m_pArrowLeft->setSpecialArt(true);
-                        m_pArrowLeft->setVisible(false);
-                    }
+                    
 
                 }
             }
@@ -413,20 +448,14 @@ void GroundLayer::showArrow()
                     m_pArrowUp->setIndexX(cell->getIndexX());
                     m_pArrowUp->setIndexY(cell->getIndexY());
                     m_pArrowUp->setPosition3D(cell->getPosition3D() + Vec3(0,2,0));
-                    if (cell->getType() == GroundCell::CT_CARRY) {
-                        m_pArrowUp->setSpecialArt(true);
-                        m_pArrowUp->setVisible(false);
-                    }
+                    
                 }
                 else if(cell->getIndexY() < m_pCurrentCell->getIndexY()) {
                     m_pArrowDown->setVisible(true);
                     m_pArrowDown->setIndexX(cell->getIndexX());
                     m_pArrowDown->setIndexY(cell->getIndexY());
                     m_pArrowDown->setPosition3D(cell->getPosition3D() + Vec3(0,2,0));
-                    if (cell->getType() == GroundCell::CT_CARRY) {
-                        m_pArrowDown->setSpecialArt(true);
-                        m_pArrowDown->setVisible(false);
-                    }
+                    
                 }
             }
         }
@@ -547,37 +576,6 @@ void GroundLayer::checkSildeHandle( bool isTouchDown , bool isToucLeft,bool isTo
                 && m_pArrowUp->getType() == Arrow::AT_UP)
             isCheckToucUp = true;
         
-        if(isTouchDown && m_pArrowDown->getSpecialArt())
-        {
-            int index = (m_pCurrentCell->getIndexY() -1)*m_MapSize.height + m_pCurrentCell->getIndexX();
-            GroundCell* speicalcell = m_GroundCellList.at(index);
-            if(speicalcell && speicalcell->isSpeicalArtCell())
-                isCheckTouchDown = true;
-        }
-        if(isToucLeft && m_pArrowLeft->getSpecialArt())
-        {
-            
-            int index = m_pCurrentCell->getIndexY()*m_MapSize.height + m_pCurrentCell->getIndexX()-1;
-            GroundCell* speicalcell = m_GroundCellList.at(index);
-            if(speicalcell && speicalcell->isSpeicalArtCell())
-                isCheckToucLeft = true;
-            
-        }
-        if(isToucRight && m_pArrowRight->getSpecialArt())
-        {
-            int index = m_pCurrentCell->getIndexY()*m_MapSize.height + m_pCurrentCell->getIndexX()+1;
-            GroundCell* speicalcell = m_GroundCellList.at(index);
-            if(speicalcell  && speicalcell->isSpeicalArtCell())
-                isCheckToucRight = true;
-            
-        }
-        if(isToucUp && m_pArrowUp->getSpecialArt())
-        {
-            int index = (m_pCurrentCell->getIndexY()+1)*m_MapSize.height + m_pCurrentCell->getIndexX();
-            GroundCell* speicalcell = m_GroundCellList.at(index);
-            if(speicalcell && speicalcell->isSpeicalArtCell())
-                isCheckToucUp = true;
-        }
 
     }
 
@@ -587,10 +585,6 @@ void GroundLayer::checkSildeHandle( bool isTouchDown , bool isToucLeft,bool isTo
         m_pArrowRight->setVisible(false);
         m_pArrowUp->setVisible(false);
         
-        m_pArrowDown->setSpecialArt(false);
-        m_pArrowLeft->setSpecialArt(false);
-        m_pArrowRight->setSpecialArt(false);
-        m_pArrowUp->setSpecialArt(false);
     }
     if (m_pPlayer) {
         
@@ -656,20 +650,28 @@ void GroundLayer::setRecordState(RecordState state)
         return;
     switch (state) {
         case RD_START:
-            if(StepManager::getInstance()->getLevelSteps(m_Level).size() == 0)
+            if(StepManager::getInstance()->getLevelWinSteps(m_Level).size() == 0)
             {
                 m_Playing = false;
                  return;
             }
-            
-            recordSteps = StepManager::getInstance()->getLevelSteps(m_Level)[0].asValueVector()[1].asValueVector();
+            recordSteps = StepManager::getInstance()->getLevelWinSteps(m_Level);
             playRecord();
             break;
         case RD_NEXT:
             playRecord();
             break;
         case RD_END:
-            CCLOG("播放结束");
+        {
+            GameScene* gameScene = static_cast<GameScene*>(getParent());
+            if (!gameScene) {
+                return;
+            }
+            DelayTime* delay = DelayTime::create(2.0f);
+            CallFunc* callFunc = CallFunc::create(CC_CALLBACK_0(GameScene::gameRecordEnd,gameScene));
+            Sequence* sequence = Sequence::create(callFunc, delay, NULL);
+            this->runAction(sequence);
+        }
             break;
         default:
             break;

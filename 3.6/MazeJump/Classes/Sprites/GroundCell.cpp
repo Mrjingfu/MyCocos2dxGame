@@ -11,10 +11,11 @@
 #include "LevelsManager.h"
 USING_NS_CC;
 
-GroundCell* GroundCell::create(int level)
+GroundCell* GroundCell::create(int level,CellType type)
 {
-    auto cell = new (std::nothrow) GroundCell();
-    if (cell && cell->initWithFile(LevelsManager::getInstance()->getLevelPlatformModelName(level) + ".c3b"))
+    auto cell = new (std::nothrow) GroundCell(level);
+    cell->setType(type);
+    if (cell && cell->init())
     {
         cell->_contentSize = cell->getBoundingBox().size;
         cell->m_fRadius = cell->_contentSize.width*0.5f;
@@ -29,13 +30,46 @@ GroundCell* GroundCell::create(int level)
     CC_SAFE_DELETE(cell);
     return nullptr;
 }
-GroundCell::GroundCell():m_carryProp(-1)
+GroundCell::GroundCell(int level):m_carryProp(-1),m_level(level)
 {
-    specialArtCell = nullptr;
+    m_ModelName = "";
+    m_reviveCell = nullptr;
+}
+bool GroundCell::init()
+{
+    if (!initWithFile(m_ModelName)) {
+        return false;
+    }
+    return true;
+}
+void GroundCell::setType(CellType type)
+{
+    m_Type = type;
+    
+    switch (m_Type) {
+        case CT_CARRY:
+            m_ModelName = "platform2.c3b";
+            break;
+        case CT_JUMP:
+            m_ModelName = "platform2.c3b";
+            break;
+        case CT_REVIVE:
+            m_ModelName =  "platform3.c3b";
+            break;
+        case CT_NOT:
+        case CT_HIDE:
+        case CT_OK:
+        case CT_MASTER:
+        case CT_UNKNOWN:
+            m_ModelName = LevelsManager::getInstance()->getLevelPlatformModelName(m_level) + ".c3b";
+            break;
+        default:
+            break;
+    }
 }
 bool GroundCell::isSpeicalArtCell()
 {
-    if (m_Type == CT_BOMB|| m_Type == CT_CARRY) {
+    if (m_Type == CT_BOMB|| m_Type == CT_CARRY || m_Type == CT_JUMP ) {
         return true;
     }
     return false;
@@ -43,25 +77,10 @@ bool GroundCell::isSpeicalArtCell()
 
 bool GroundCell::isWalkCell()
 {
-    if (m_Type == CT_NOT || isSpeicalArtCell()) {
+    if (m_Type == CT_NOT || isSpeicalArtCell()|| m_Type == CT_REVIVE) {
         return true;
     }
     return false;
 }
-void GroundCell::setCarryProp(int prop)
-{
-    m_carryProp = prop;
-    specialArtCell = EffectSprite3D::create("circle.obj");
-    OutlineEffect3D* outline = OutlineEffect3D::create();
-    outline->setOutlineColor(Vec3(0.3f, 0.3f, 0.3f));
-    outline->setOutlineWidth(0.03f);
-    specialArtCell->addEffect(outline, 1);
-    specialArtCell->setAnchorPoint(Vec2::ZERO);
-    specialArtCell->setPosition3D(Vec3(0, 2, 0));
-    specialArtCell->setScale(0.3);
-    
-    specialArtCell->runAction(RepeatForever::create(Sequence::create(ScaleTo::create(0.1f, 0.3f),ScaleTo::create(0.3f, 0.5f),ScaleTo::create(0.5f, 0.6f),ScaleTo::create(0.3f, 0.8f) ,ScaleTo::create(0.4f, 0.8f),NULL)));
-    
-    addChild(specialArtCell);
-    
-}
+
+

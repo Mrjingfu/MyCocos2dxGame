@@ -13,6 +13,7 @@
 class GameScene : public cocos2d::Layer
 {
     friend class GroundLayer;
+    friend class Player;
     GameScene();
 public:
     // there's no 'id' in cpp, so we recommend returning the class instance pointer
@@ -29,7 +30,8 @@ public:
     virtual void update(float delta);
 private:
     void gameWin();
-    void gameLose(); 
+    void gameLose();
+    void gameRecordEnd();
 };
 
 #endif /* defined(__MazeJump__GameScene__) */

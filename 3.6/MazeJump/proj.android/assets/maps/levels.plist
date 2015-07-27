@@ -4,11 +4,11 @@
 <array>
 	<dict>
 		<key>LevelName</key>
-		<string>5x5-9.tmx</string>
+		<string>5x5-1.tmx</string>
 		<key>SkyTex</key>
 		<string>sky1</string>
 		<key>PlatformModel</key>
-		<string>platform1.obj</string>
+		<string>platform1</string>
 	</dict>
 	<dict>
 		<key>LevelName</key>
@@ -16,7 +16,7 @@
 		<key>SkyTex</key>
 		<string>sky2</string>
 		<key>PlatformModel</key>
-		<string>platform2.obj</string>
+		<string>platform2</string>
 	</dict>
 	<dict>
 		<key>LevelName</key>
@@ -24,7 +24,7 @@
 		<key>SkyTex</key>
 		<string>sky3</string>
 		<key>PlatformModel</key>
-		<string>platform1.obj</string>
+		<string>platform1</string>
 	</dict>
 	<dict>
 		<key>LevelName</key>
@@ -32,7 +32,7 @@
 		<key>SkyTex</key>
 		<string>sky2</string>
 		<key>PlatformModel</key>
-		<string>platform1.obj</string>
+		<string>platform1</string>
 	</dict>
 	<dict>
 		<key>LevelName</key>
@@ -40,7 +40,7 @@
 		<key>SkyTex</key>
 		<string>sky2</string>
 		<key>PlatformModel</key>
-		<string>platform1.obj</string>
+		<string>platform1</string>
 	</dict>
 	<dict>
 		<key>LevelName</key>
@@ -48,7 +48,39 @@
 		<key>SkyTex</key>
 		<string>sky2</string>
 		<key>PlatformModel</key>
-		<string>platform1.obj</string>
+		<string>platform1</string>
+	</dict>
+	<dict>
+		<key>LevelName</key>
+		<string>5x5-7.tmx</string>
+		<key>SkyTex</key>
+		<string>sky2</string>
+		<key>PlatformModel</key>
+		<string>platform1</string>
+	</dict>
+	<dict>
+		<key>LevelName</key>
+		<string>5x5-8.tmx</string>
+		<key>SkyTex</key>
+		<string>sky2</string>
+		<key>PlatformModel</key>
+		<string>platform1</string>
+	</dict>
+	<dict>
+		<key>LevelName</key>
+		<string>6x6-1.tmx</string>
+		<key>SkyTex</key>
+		<string>sky2</string>
+		<key>PlatformModel</key>
+		<string>platform1</string>
+	</dict>
+	<dict>
+		<key>LevelName</key>
+		<string>6x6-2.tmx</string>
+		<key>SkyTex</key>
+		<string>sky2</string>
+		<key>PlatformModel</key>
+		<string>platform1</string>
 	</dict>
 </array>
 </plist>
