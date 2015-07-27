@@ -207,13 +207,7 @@
 		EC96D7311B607B62009C64F5 /* 5x5-7.tmx in Resources */ = {isa = PBXBuildFile; fileRef = EC96D7301B607B62009C64F5 /* 5x5-7.tmx */; };
 		EC96D7321B607B91009C64F5 /* 5x5-7.tmx in Resources */ = {isa = PBXBuildFile; fileRef = EC96D7301B607B62009C64F5 /* 5x5-7.tmx */; };
 		EC96D7341B608850009C64F5 /* 5x5-8.tmx in Resources */ = {isa = PBXBuildFile; fileRef = EC96D7331B608850009C64F5 /* 5x5-8.tmx */; };
-		EC96D73A1B609A54009C64F5 /* circle.mtl in Resources */ = {isa = PBXBuildFile; fileRef = EC96D7371B609A54009C64F5 /* circle.mtl */; };
-		EC96D73B1B609A54009C64F5 /* circle.obj in Resources */ = {isa = PBXBuildFile; fileRef = EC96D7381B609A54009C64F5 /* circle.obj */; };
-		EC96D73C1B609A54009C64F5 /* circle.png in Resources */ = {isa = PBXBuildFile; fileRef = EC96D7391B609A54009C64F5 /* circle.png */; };
 		EC96D73F1B60F47E009C64F5 /* 5x5-8.tmx in Resources */ = {isa = PBXBuildFile; fileRef = EC96D7331B608850009C64F5 /* 5x5-8.tmx */; };
-		EC96D7401B60F485009C64F5 /* circle.mtl in Resources */ = {isa = PBXBuildFile; fileRef = EC96D7371B609A54009C64F5 /* circle.mtl */; };
-		EC96D7411B60F485009C64F5 /* circle.obj in Resources */ = {isa = PBXBuildFile; fileRef = EC96D7381B609A54009C64F5 /* circle.obj */; };
-		EC96D7421B60F485009C64F5 /* circle.png in Resources */ = {isa = PBXBuildFile; fileRef = EC96D7391B609A54009C64F5 /* circle.png */; };
 		EC96D7481B610BBD009C64F5 /* StepManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC96D7461B610BBD009C64F5 /* StepManager.cpp */; };
 		EC96D7491B612495009C64F5 /* StepManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC96D7461B610BBD009C64F5 /* StepManager.cpp */; };
 		ECA02B781B5F72F6007EFC0F /* sky2.png in Resources */ = {isa = PBXBuildFile; fileRef = ECA02B771B5F72F6007EFC0F /* sky2.png */; };
@@ -400,9 +394,6 @@
 		EC937B671B632C71008CFE60 /* 6x6-2.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "6x6-2.tmx"; sourceTree = "<group>"; };
 		EC96D7301B607B62009C64F5 /* 5x5-7.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "5x5-7.tmx"; sourceTree = "<group>"; };
 		EC96D7331B608850009C64F5 /* 5x5-8.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "5x5-8.tmx"; sourceTree = "<group>"; };
-		EC96D7371B609A54009C64F5 /* circle.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = circle.mtl; sourceTree = "<group>"; };
-		EC96D7381B609A54009C64F5 /* circle.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = circle.obj; sourceTree = "<group>"; };
-		EC96D7391B609A54009C64F5 /* circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = circle.png; sourceTree = "<group>"; };
 		EC96D7461B610BBD009C64F5 /* StepManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StepManager.cpp; sourceTree = "<group>"; };
 		EC96D7471B610BBD009C64F5 /* StepManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StepManager.h; sourceTree = "<group>"; };
 		ECA02B771B5F72F6007EFC0F /* sky2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sky2.png; sourceTree = "<group>"; };
@@ -642,9 +633,6 @@
 				551350941B62749A00A99AD7 /* startpoint.c3b */,
 				551350951B62749A00A99AD7 /* strength.c3b */,
 				551350961B62749A00A99AD7 /* strength.png */,
-				EC96D7371B609A54009C64F5 /* circle.mtl */,
-				EC96D7381B609A54009C64F5 /* circle.obj */,
-				EC96D7391B609A54009C64F5 /* circle.png */,
 				55B740421B60C8A500DDA3D8 /* sidebar.png */,
 				55B740171B60890A00DDA3D8 /* 1x1.png */,
 				5592AE391B5FF43F0062AF08 /* startpoint.png */,
@@ -943,14 +931,12 @@
 				5513509E1B62749A00A99AD7 /* platform2.c3b in Resources */,
 				EC3F330D1B64F3D70072775F /* 6x6-3.tmx in Resources */,
 				55B0BF7C1B6346D00012DDC2 /* Cloud.png in Resources */,
-				EC96D73A1B609A54009C64F5 /* circle.mtl in Resources */,
 				55066CEA1B4BD92B007FCF3F /* 5x5-6.tmx in Resources */,
 				551350A31B62749A00A99AD7 /* strength.c3b in Resources */,
 				521A8E6519F0C34300D177D7 /* Default-736h@3x.png in Resources */,
 				EC496DFB1B5F8C8A007C9A08 /* starfield.plist in Resources */,
 				55066CE21B4BD07E007FCF3F /* 5x5-3.tmx in Resources */,
 				EC96D7311B607B62009C64F5 /* 5x5-7.tmx in Resources */,
-				EC96D73B1B609A54009C64F5 /* circle.obj in Resources */,
 				55F3B98F1B4527F30090BE1A /* colorlist.png in Resources */,
 				558215841B5C6B6B00173C79 /* stoneflip.wav in Resources */,
 				55066CE91B4BD92B007FCF3F /* 5x5-5.tmx in Resources */,
@@ -975,7 +961,6 @@
 				55B0BF831B6360830012DDC2 /* manycloud.png in Resources */,
 				EC3F330E1B64F3D70072775F /* 6x6-4.tmx in Resources */,
 				5087E78417EB970100C73F5D /* Icon-57.png in Resources */,
-				EC96D73C1B609A54009C64F5 /* circle.png in Resources */,
 				551350A41B62749A00A99AD7 /* strength.png in Resources */,
 				551350A21B62749A00A99AD7 /* startpoint.c3b in Resources */,
 				5513509D1B62749A00A99AD7 /* platform1.c3b in Resources */,
@@ -1019,9 +1004,6 @@
 				551350B21B6274C500A99AD7 /* strength.png in Resources */,
 				EC339D711B6213DC00781575 /* button_retry_down.png in Resources */,
 				EC339D721B6213DC00781575 /* button_retry_up.png in Resources */,
-				EC96D7401B60F485009C64F5 /* circle.mtl in Resources */,
-				EC96D7411B60F485009C64F5 /* circle.obj in Resources */,
-				EC96D7421B60F485009C64F5 /* circle.png in Resources */,
 				EC96D73F1B60F47E009C64F5 /* 5x5-8.tmx in Resources */,
 				EC96D7321B607B91009C64F5 /* 5x5-7.tmx in Resources */,
 				55B740481B60C8B000DDA3D8 /* sidebar.png in Resources */,
