@@ -16,13 +16,13 @@
 		<key>SkyTex</key>
 		<string>sky2</string>
 		<key>PlatformModel</key>
-		<string>platform2</string>
+		<string>platform1</string>
 	</dict>
 	<dict>
 		<key>LevelName</key>
 		<string>5x5-3.tmx</string>
 		<key>SkyTex</key>
-		<string>sky3</string>
+		<string>sky2</string>
 		<key>PlatformModel</key>
 		<string>platform1</string>
 	</dict>
@@ -30,7 +30,7 @@
 		<key>LevelName</key>
 		<string>5x5-4.tmx</string>
 		<key>SkyTex</key>
-		<string>sky2</string>
+		<string>sky1</string>
 		<key>PlatformModel</key>
 		<string>platform1</string>
 	</dict>
@@ -68,6 +68,22 @@
 	</dict>
 	<dict>
 		<key>LevelName</key>
+		<string>5x5-9.tmx</string>
+		<key>SkyTex</key>
+		<string>sky2</string>
+		<key>PlatformModel</key>
+		<string>platform1</string>
+	</dict>
+	<dict>
+		<key>LevelName</key>
+		<string>5x5-10.tmx</string>
+		<key>SkyTex</key>
+		<string>sky2</string>
+		<key>PlatformModel</key>
+		<string>platform1</string>
+	</dict>
+	<dict>
+		<key>LevelName</key>
 		<string>6x6-1.tmx</string>
 		<key>SkyTex</key>
 		<string>sky2</string>
@@ -77,6 +93,38 @@
 	<dict>
 		<key>LevelName</key>
 		<string>6x6-2.tmx</string>
+		<key>SkyTex</key>
+		<string>sky2</string>
+		<key>PlatformModel</key>
+		<string>platform1</string>
+	</dict>
+	<dict>
+		<key>LevelName</key>
+		<string>6x6-3.tmx</string>
+		<key>SkyTex</key>
+		<string>sky2</string>
+		<key>PlatformModel</key>
+		<string>platform1</string>
+	</dict>
+	<dict>
+		<key>LevelName</key>
+		<string>6x6-4.tmx</string>
+		<key>SkyTex</key>
+		<string>sky2</string>
+		<key>PlatformModel</key>
+		<string>platform1</string>
+	</dict>
+	<dict>
+		<key>LevelName</key>
+		<string>6x6-5.tmx</string>
+		<key>SkyTex</key>
+		<string>sky2</string>
+		<key>PlatformModel</key>
+		<string>platform1</string>
+	</dict>
+	<dict>
+		<key>LevelName</key>
+		<string>6x6-5.tmx</string>
 		<key>SkyTex</key>
 		<string>sky2</string>
 		<key>PlatformModel</key>

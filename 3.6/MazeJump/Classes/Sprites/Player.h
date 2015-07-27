@@ -75,7 +75,9 @@ private:
     void recalculateCells();
     void jumpFinish();
     void carryStar(Node* node,GroundCell* cell);
-    void carryFinish(Node* node,GroundCell* cell);
+    void speicaArtFinish(Node* node,GroundCell* cell);
+    
+    
 protected:
     PlayerState     m_curState;
     float           m_fRadius;

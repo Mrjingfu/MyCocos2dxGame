@@ -9,6 +9,7 @@
 #include "Player.h"
 #include "GroundLayer.h"
 #include "OutlineEffect3D.h"
+#include "GameScene.h"
 USING_NS_CC;
 
 Player* Player::create(PlayerType type, GroundLayer* ground)
@@ -244,9 +245,11 @@ void Player::onEnterCheckSpeicalArt()
 {
     GroundCell* currentCell = m_pGround->getNextCell(m_nIndexX, m_nIndexY);
     Size mapSize = m_pGround->getMapSize();
-    if (currentCell) {
+    if (currentCell)
+    {
         GroundCell::CellType currentType = currentCell->getType();
-        switch (currentType) {
+        switch (currentType)
+        {
             case GroundCell::CellType::CT_CARRY:
                 {
                     for (int i = 0; i < mapSize.width ;i++) {
@@ -270,10 +273,75 @@ void Player::onEnterCheckSpeicalArt()
                     }
                 }
                 break;
-            case GroundCell::CellType::CT_BOMB:
+            case GroundCell::CellType::CT_JUMP:
+            {
+                if(m_nNextIndexX < 0 || m_nNextIndexX >= m_pGround->getMapSize().width)
+                    return;
+                if(m_nNextIndexY < 0 || m_nNextIndexY >= m_pGround->getMapSize().height)
+                    return;
+                int targetIndexX = -1;
+                int targetIndexY = -1;
+                if(m_nNextIndexY == m_nIndexY)
+                {
+                    targetIndexY = m_nIndexY;
+                    if (m_nNextIndexX > m_nIndexX)
+                        targetIndexX = m_nNextIndexX + 1;
+                    
+                    else if(m_nNextIndexX < m_nIndexX)
+                        targetIndexX = m_nNextIndexX - 1;
+
+                    if (targetIndexX < 0 || targetIndexX >= m_pGround->getMapSize().width)
+                        targetIndexX = m_nIndexX;
+                }
+                if(m_nNextIndexX == m_nIndexX)
+                {
+                    targetIndexX = m_nIndexX;
+                    if (m_nNextIndexY > m_nIndexY)
+                        targetIndexY = m_nNextIndexY + 1;
+                    
+                    else if(m_nNextIndexY < m_nIndexY)
+                         targetIndexY = m_nNextIndexY - 1;
+                    if (targetIndexY < 0 || targetIndexY >=m_pGround->getMapSize().width )
+                        targetIndexY = m_nIndexY;
+                   
+                    
+                }
+                GroundCell* targetCell  = m_pGround->getNextCell(targetIndexX, targetIndexY);
+                if (targetCell->getType() == GroundCell::CT_HIDE) {
+                    
+                    GameScene* gameScene = static_cast<GameScene*>(m_pGround->getParent());
+                    EaseSineOut* scaleTo = EaseSineOut::create(ScaleTo::create(1.0f, 0));
+                    float cellRadius = m_pGround->getCellRadius();
+                    EaseSineOut* moveUp = EaseSineOut::create(MoveTo::create(0.25f, Vec3(getPositionX(), getPositionY() + cellRadius, getPositionZ()-cellRadius)));
+                    EaseSineIn* moveDown = EaseSineIn::create(MoveTo::create(0.25f, Vec3(targetCell->getPositionX(), targetCell->getPositionY()+cellRadius, targetCell->getPositionZ())));
+                    EaseSineOut* moveTo = EaseSineOut::create(MoveTo::create(1.0f, Vec3(targetCell->getPositionX(), targetCell->getPositionY()+cellRadius-50, targetCell->getPositionZ())));
+                    
+                    EaseSineOut* fadeOut = EaseSineOut::create(FadeOut::create(1.0f));
+                    Spawn* spawn = Spawn::create( moveUp,moveDown,scaleTo,moveTo,fadeOut, NULL);
+                    CallFunc* callFunc = CallFunc::create(CC_CALLBACK_0(GameScene::gameWin,gameScene));
+                    Sequence* sequence = Sequence::create(spawn, callFunc, NULL);
+                    runAction(sequence);
+                }else
+                {
+                    float cellRadius = m_pGround->getCellRadius();
+                    EaseSineOut* moveUp = EaseSineOut::create(MoveTo::create(0.25f, Vec3(getPositionX(), getPositionY() + cellRadius, getPositionZ()-cellRadius)));
+                    EaseSineIn* moveDown = EaseSineIn::create(MoveTo::create(0.25f, Vec3(targetCell->getPositionX(), targetCell->getPositionY()+cellRadius, targetCell->getPositionZ())));
+                    CallFunc* callFunc = CallFuncN::create( CC_CALLBACK_1(Player::speicaArtFinish, this, targetCell));
+                    Sequence* sequence = Sequence::create(moveUp,moveDown, callFunc, NULL);
+                    runAction(sequence);
+                }
+                
+            }
+                break;
+            case GroundCell::CellType::CT_REVIVE:
+            {
+                
+            }
                 break;
             default:
                 break;
+                
+
         }
     }
     
@@ -392,9 +460,9 @@ void Player::carryStar(Node* node,GroundCell* cell)
 {
     this->setPosition3D(cell->getPosition3D() + Vec3(0,4,0));
     auto jumpByPlayer = JumpBy::create(0.5, Vec2(0, 0), 5, 1);
-    runAction(Sequence::create(Sequence::createWithTwoActions(ScaleTo::create(0.5f, 1.0f),jumpByPlayer),CallFuncN::create( CC_CALLBACK_1(Player::carryFinish, this, cell)),NULL));
+    runAction(Sequence::create(Sequence::createWithTwoActions(ScaleTo::create(0.5f, 1.0f),jumpByPlayer),CallFuncN::create( CC_CALLBACK_1(Player::speicaArtFinish, this, cell)),NULL));
 }
-void Player::carryFinish(Node* node,GroundCell* cell)
+void Player::speicaArtFinish(Node* node,GroundCell* cell)
 {
     m_pGround->carryCell(m_nIndexX, m_nIndexY);
     m_pGround->carryCell(cell->getIndexX(), cell->getIndexY());

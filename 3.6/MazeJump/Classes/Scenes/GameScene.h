@@ -13,6 +13,7 @@
 class GameScene : public cocos2d::Layer
 {
     friend class GroundLayer;
+    friend class Player;
     GameScene();
 public:
     // there's no 'id' in cpp, so we recommend returning the class instance pointer

@@ -177,6 +177,16 @@
 		EC339D6E1B6209CD00781575 /* button_retry_up.png in Resources */ = {isa = PBXBuildFile; fileRef = EC339D6C1B6209CD00781575 /* button_retry_up.png */; };
 		EC339D711B6213DC00781575 /* button_retry_down.png in Resources */ = {isa = PBXBuildFile; fileRef = EC339D6B1B6209CD00781575 /* button_retry_down.png */; };
 		EC339D721B6213DC00781575 /* button_retry_up.png in Resources */ = {isa = PBXBuildFile; fileRef = EC339D6C1B6209CD00781575 /* button_retry_up.png */; };
+		EC3F330B1B64F3D70072775F /* 5x5-9.tmx in Resources */ = {isa = PBXBuildFile; fileRef = EC3F33061B64F3D70072775F /* 5x5-9.tmx */; };
+		EC3F330C1B64F3D70072775F /* 5x5-10.tmx in Resources */ = {isa = PBXBuildFile; fileRef = EC3F33071B64F3D70072775F /* 5x5-10.tmx */; };
+		EC3F330D1B64F3D70072775F /* 6x6-3.tmx in Resources */ = {isa = PBXBuildFile; fileRef = EC3F33081B64F3D70072775F /* 6x6-3.tmx */; };
+		EC3F330E1B64F3D70072775F /* 6x6-4.tmx in Resources */ = {isa = PBXBuildFile; fileRef = EC3F33091B64F3D70072775F /* 6x6-4.tmx */; };
+		EC3F330F1B64F3D70072775F /* 6x6-5.tmx in Resources */ = {isa = PBXBuildFile; fileRef = EC3F330A1B64F3D70072775F /* 6x6-5.tmx */; };
+		EC3F33101B64F4460072775F /* 5x5-9.tmx in Resources */ = {isa = PBXBuildFile; fileRef = EC3F33061B64F3D70072775F /* 5x5-9.tmx */; };
+		EC3F33111B64F4460072775F /* 5x5-10.tmx in Resources */ = {isa = PBXBuildFile; fileRef = EC3F33071B64F3D70072775F /* 5x5-10.tmx */; };
+		EC3F33121B64F4460072775F /* 6x6-3.tmx in Resources */ = {isa = PBXBuildFile; fileRef = EC3F33081B64F3D70072775F /* 6x6-3.tmx */; };
+		EC3F33131B64F4460072775F /* 6x6-4.tmx in Resources */ = {isa = PBXBuildFile; fileRef = EC3F33091B64F3D70072775F /* 6x6-4.tmx */; };
+		EC3F33141B64F4460072775F /* 6x6-5.tmx in Resources */ = {isa = PBXBuildFile; fileRef = EC3F330A1B64F3D70072775F /* 6x6-5.tmx */; };
 		EC496DDA1B5F831D007C9A08 /* sky2.png in Resources */ = {isa = PBXBuildFile; fileRef = ECA02B771B5F72F6007EFC0F /* sky2.png */; };
 		EC496DF51B5F8918007C9A08 /* platform1.png in Resources */ = {isa = PBXBuildFile; fileRef = EC496DF21B5F8918007C9A08 /* platform1.png */; };
 		EC496DF81B5F8941007C9A08 /* platform1.png in Resources */ = {isa = PBXBuildFile; fileRef = EC496DF21B5F8918007C9A08 /* platform1.png */; };
@@ -188,6 +198,8 @@
 		EC496E221B5FCDAA007C9A08 /* platform2.png in Resources */ = {isa = PBXBuildFile; fileRef = EC496E0F1B5F9A0B007C9A08 /* platform2.png */; };
 		EC496E231B5FCDB1007C9A08 /* sky4.png in Resources */ = {isa = PBXBuildFile; fileRef = EC496E151B5FC967007C9A08 /* sky4.png */; };
 		EC496E241B5FCDB1007C9A08 /* sky3.png in Resources */ = {isa = PBXBuildFile; fileRef = EC496DFF1B5F9772007C9A08 /* sky3.png */; };
+		EC5C99121B65CB8300EC0177 /* 6x6-7.tmx in Resources */ = {isa = PBXBuildFile; fileRef = EC5C99111B65CB8300EC0177 /* 6x6-7.tmx */; };
+		EC5C99131B65CBA600EC0177 /* 6x6-7.tmx in Resources */ = {isa = PBXBuildFile; fileRef = EC5C99111B65CB8300EC0177 /* 6x6-7.tmx */; };
 		EC937B651B632880008CFE60 /* 6x6-1.tmx in Resources */ = {isa = PBXBuildFile; fileRef = EC937B641B632880008CFE60 /* 6x6-1.tmx */; };
 		EC937B661B6329AF008CFE60 /* 6x6-1.tmx in Resources */ = {isa = PBXBuildFile; fileRef = EC937B641B632880008CFE60 /* 6x6-1.tmx */; };
 		EC937B681B632C71008CFE60 /* 6x6-2.tmx in Resources */ = {isa = PBXBuildFile; fileRef = EC937B671B632C71008CFE60 /* 6x6-2.tmx */; };
@@ -373,11 +385,17 @@
 		D6B0611A1803AB670077942B /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/CoreMotion.framework; sourceTree = DEVELOPER_DIR; };
 		EC339D6B1B6209CD00781575 /* button_retry_down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_retry_down.png; sourceTree = "<group>"; };
 		EC339D6C1B6209CD00781575 /* button_retry_up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_retry_up.png; sourceTree = "<group>"; };
+		EC3F33061B64F3D70072775F /* 5x5-9.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "5x5-9.tmx"; sourceTree = "<group>"; };
+		EC3F33071B64F3D70072775F /* 5x5-10.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "5x5-10.tmx"; sourceTree = "<group>"; };
+		EC3F33081B64F3D70072775F /* 6x6-3.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "6x6-3.tmx"; sourceTree = "<group>"; };
+		EC3F33091B64F3D70072775F /* 6x6-4.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "6x6-4.tmx"; sourceTree = "<group>"; };
+		EC3F330A1B64F3D70072775F /* 6x6-5.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "6x6-5.tmx"; sourceTree = "<group>"; };
 		EC496DF21B5F8918007C9A08 /* platform1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = platform1.png; sourceTree = "<group>"; };
 		EC496DFA1B5F8C8A007C9A08 /* starfield.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = starfield.plist; sourceTree = "<group>"; };
 		EC496DFF1B5F9772007C9A08 /* sky3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sky3.png; sourceTree = "<group>"; };
 		EC496E0F1B5F9A0B007C9A08 /* platform2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = platform2.png; sourceTree = "<group>"; };
 		EC496E151B5FC967007C9A08 /* sky4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sky4.png; sourceTree = "<group>"; };
+		EC5C99111B65CB8300EC0177 /* 6x6-7.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "6x6-7.tmx"; sourceTree = "<group>"; };
 		EC937B641B632880008CFE60 /* 6x6-1.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "6x6-1.tmx"; sourceTree = "<group>"; };
 		EC937B671B632C71008CFE60 /* 6x6-2.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "6x6-2.tmx"; sourceTree = "<group>"; };
 		EC96D7301B607B62009C64F5 /* 5x5-7.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "5x5-7.tmx"; sourceTree = "<group>"; };
@@ -752,6 +770,12 @@
 		55F3B98A1B4522360090BE1A /* maps */ = {
 			isa = PBXGroup;
 			children = (
+				EC5C99111B65CB8300EC0177 /* 6x6-7.tmx */,
+				EC3F33061B64F3D70072775F /* 5x5-9.tmx */,
+				EC3F33071B64F3D70072775F /* 5x5-10.tmx */,
+				EC3F33081B64F3D70072775F /* 6x6-3.tmx */,
+				EC3F33091B64F3D70072775F /* 6x6-4.tmx */,
+				EC3F330A1B64F3D70072775F /* 6x6-5.tmx */,
 				EC937B671B632C71008CFE60 /* 6x6-2.tmx */,
 				EC937B641B632880008CFE60 /* 6x6-1.tmx */,
 				EC96D7331B608850009C64F5 /* 5x5-8.tmx */,
@@ -887,7 +911,6 @@
 			files = (
 				55F3B98C1B4522360090BE1A /* 5x5-1.tmx in Resources */,
 				EC937B681B632C71008CFE60 /* 6x6-2.tmx in Resources */,
-				55B740291B60890A00DDA3D8 /* 2x1.png in Resources */,
 				EC496E001B5F9772007C9A08 /* sky3.png in Resources */,
 				5513509C1B62749A00A99AD7 /* arrow.png in Resources */,
 				EC496E161B5FC967007C9A08 /* sky4.png in Resources */,
@@ -895,6 +918,7 @@
 				55B740231B60890A00DDA3D8 /* 1x1.png in Resources */,
 				55B0BF7B1B6346D00012DDC2 /* cloud.c3b in Resources */,
 				5087E78117EB970100C73F5D /* Icon-120.png in Resources */,
+				EC3F330C1B64F3D70072775F /* 5x5-10.tmx in Resources */,
 				55B0BF881B636C710012DDC2 /* smallcloud.c3b in Resources */,
 				EC339D6D1B6209CD00781575 /* button_retry_down.png in Resources */,
 				5513509F1B62749A00A99AD7 /* platform3.c3b in Resources */,
@@ -917,6 +941,7 @@
 				5582158B1B5C7EA000173C79 /* levels.plist in Resources */,
 				5087E78517EB970100C73F5D /* Icon-72.png in Resources */,
 				5513509E1B62749A00A99AD7 /* platform2.c3b in Resources */,
+				EC3F330D1B64F3D70072775F /* 6x6-3.tmx in Resources */,
 				55B0BF7C1B6346D00012DDC2 /* Cloud.png in Resources */,
 				EC96D73A1B609A54009C64F5 /* circle.mtl in Resources */,
 				55066CEA1B4BD92B007FCF3F /* 5x5-6.tmx in Resources */,
@@ -934,9 +959,11 @@
 				EC496E121B5F9A0B007C9A08 /* platform2.png in Resources */,
 				EC339D6E1B6209CD00781575 /* button_retry_up.png in Resources */,
 				50EF62A317ECD613001EB2F8 /* Icon-50.png in Resources */,
+				EC3F330F1B64F3D70072775F /* 6x6-5.tmx in Resources */,
 				551350971B62749A00A99AD7 /* 1x1.c3b in Resources */,
 				EC96D7341B608850009C64F5 /* 5x5-8.tmx in Resources */,
 				551350A01B62749A00A99AD7 /* platform3.png in Resources */,
+				EC3F330B1B64F3D70072775F /* 5x5-9.tmx in Resources */,
 				55066CE51B4BD6B9007FCF3F /* 5x5-4.tmx in Resources */,
 				5087E78017EB970100C73F5D /* Icon-114.png in Resources */,
 				55B0BF891B636C710012DDC2 /* smallcloud.png in Resources */,
@@ -946,6 +973,7 @@
 				5592AE481B5FF4B50062AF08 /* patterns.plist in Resources */,
 				50EF629817ECD46A001EB2F8 /* Icon-80.png in Resources */,
 				55B0BF831B6360830012DDC2 /* manycloud.png in Resources */,
+				EC3F330E1B64F3D70072775F /* 6x6-4.tmx in Resources */,
 				5087E78417EB970100C73F5D /* Icon-57.png in Resources */,
 				EC96D73C1B609A54009C64F5 /* circle.png in Resources */,
 				551350A41B62749A00A99AD7 /* strength.png in Resources */,
@@ -953,6 +981,7 @@
 				5513509D1B62749A00A99AD7 /* platform1.c3b in Resources */,
 				5087E77E17EB970100C73F5D /* Default.png in Resources */,
 				EC496DF51B5F8918007C9A08 /* platform1.png in Resources */,
+				EC5C99121B65CB8300EC0177 /* 6x6-7.tmx in Resources */,
 				521A8E6419F0C34300D177D7 /* Default-667h@2x.png in Resources */,
 				5513509B1B62749A00A99AD7 /* arrow.c3b in Resources */,
 				50EF629717ECD46A001EB2F8 /* Icon-58.png in Resources */,
@@ -963,6 +992,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC5C99131B65CBA600EC0177 /* 6x6-7.tmx in Resources */,
+				EC3F33101B64F4460072775F /* 5x5-9.tmx in Resources */,
+				EC3F33111B64F4460072775F /* 5x5-10.tmx in Resources */,
+				EC3F33121B64F4460072775F /* 6x6-3.tmx in Resources */,
+				EC3F33131B64F4460072775F /* 6x6-4.tmx in Resources */,
+				EC3F33141B64F4460072775F /* 6x6-5.tmx in Resources */,
 				EC937B691B633FD7008CFE60 /* 6x6-2.tmx in Resources */,
 				EC937B661B6329AF008CFE60 /* 6x6-1.tmx in Resources */,
 				55B0BF8A1B636C7B0012DDC2 /* smallcloud.c3b in Resources */,
