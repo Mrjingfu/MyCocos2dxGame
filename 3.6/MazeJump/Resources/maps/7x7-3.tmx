@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="7" height="7" tilewidth="32" tileheight="32" nextobjectid="156">
+ <tileset firstgid="1" name="colorlist" tilewidth="32" tileheight="32">
+  <image source="../textures/colorlist.png" width="64" height="128"/>
+ </tileset>
+ <objectgroup name="celllist">
+  <object id="69" type="1" gid="4" x="0" y="32" width="32" height="32"/>
+  <object id="70" type="1" gid="4" x="32" y="32" width="32" height="32"/>
+  <object id="71" type="1" gid="4" x="64" y="32" width="32" height="32"/>
+  <object id="72" type="1" gid="4" x="96" y="32" width="32" height="32"/>
+  <object id="73" type="1" gid="4" x="128" y="32" width="32" height="32"/>
+  <object id="74" type="1" gid="4" x="160" y="32" width="32" height="32"/>
+  <object id="75" type="1" gid="4" x="192" y="32" width="32" height="32"/>
+  <object id="76" type="1" gid="4" x="0" y="64" width="32" height="32"/>
+  <object id="77" type="1" gid="4" x="32" y="64" width="32" height="32"/>
+  <object id="78" type="1" gid="4" x="64" y="64" width="32" height="32"/>
+  <object id="79" type="1" gid="4" x="96" y="64" width="32" height="32"/>
+  <object id="80" type="1" gid="4" x="128" y="64" width="32" height="32"/>
+  <object id="119" type="0" gid="2" x="160" y="64" width="32" height="32"/>
+  <object id="120" type="1" gid="4" x="192" y="64" width="32" height="32"/>
+  <object id="121" type="1" gid="4" x="0" y="96" width="32" height="32"/>
+  <object id="122" type="1" gid="4" x="32" y="96" width="32" height="32"/>
+  <object id="123" type="1" gid="4" x="64" y="96" width="32" height="32"/>
+  <object id="124" type="1" gid="4" x="96" y="96" width="32" height="32"/>
+  <object id="125" type="1" gid="4" x="128" y="96" width="32" height="32"/>
+  <object id="126" type="0" gid="2" x="160" y="96" width="32" height="32"/>
+  <object id="127" type="1" gid="4" x="192" y="96" width="32" height="32"/>
+  <object id="128" type="1" gid="4" x="0" y="128" width="32" height="32"/>
+  <object id="129" type="1" gid="4" x="32" y="128" width="32" height="32"/>
+  <object id="130" type="6" gid="1" x="64" y="128" width="32" height="32"/>
+  <object id="131" type="6" gid="1" x="96" y="128" width="32" height="32"/>
+  <object id="132" type="6" gid="1" x="128" y="128" width="32" height="32"/>
+  <object id="133" type="1" gid="4" x="160" y="128" width="32" height="32"/>
+  <object id="134" type="1" gid="4" x="192" y="128" width="32" height="32"/>
+  <object id="135" type="1" gid="4" x="0" y="160" width="32" height="32"/>
+  <object id="136" type="0" gid="2" x="32" y="160" width="32" height="32"/>
+  <object id="137" type="1" gid="4" x="64" y="160" width="32" height="32"/>
+  <object id="138" type="1" gid="4" x="96" y="160" width="32" height="32"/>
+  <object id="139" type="1" gid="4" x="128" y="160" width="32" height="32"/>
+  <object id="140" type="1" gid="4" x="160" y="160" width="32" height="32"/>
+  <object id="141" type="1" gid="4" x="192" y="160" width="32" height="32"/>
+  <object id="142" type="1" gid="4" x="0" y="192" width="32" height="32"/>
+  <object id="143" type="5" gid="8" x="32" y="192" width="32" height="32">
+   <properties>
+    <property name="carryprop" value="1"/>
+   </properties>
+  </object>
+  <object id="144" type="1" gid="4" x="64" y="192" width="32" height="32"/>
+  <object id="145" type="1" gid="4" x="96" y="192" width="32" height="32"/>
+  <object id="146" type="1" gid="4" x="128" y="192" width="32" height="32"/>
+  <object id="147" type="5" gid="8" x="160" y="192" width="32" height="32">
+   <properties>
+    <property name="carryprop" value="1"/>
+   </properties>
+  </object>
+  <object id="148" type="1" gid="4" x="192" y="192" width="32" height="32"/>
+  <object id="149" type="1" gid="4" x="0" y="224" width="32" height="32"/>
+  <object id="150" type="1" gid="4" x="32" y="224" width="32" height="32"/>
+  <object id="151" type="1" gid="4" x="64" y="224" width="32" height="32"/>
+  <object id="152" type="1" gid="4" x="96" y="224" width="32" height="32"/>
+  <object id="153" type="1" gid="4" x="128" y="224" width="32" height="32"/>
+  <object id="154" type="1" gid="4" x="160" y="224" width="32" height="32"/>
+  <object id="155" type="1" gid="4" x="192" y="224" width="32" height="32"/>
+ </objectgroup>
+</map>

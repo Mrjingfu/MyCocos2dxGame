@@ -192,6 +192,14 @@
 		EC496E241B5FCDB1007C9A08 /* sky3.png in Resources */ = {isa = PBXBuildFile; fileRef = EC496DFF1B5F9772007C9A08 /* sky3.png */; };
 		EC5C99121B65CB8300EC0177 /* 6x6-7.tmx in Resources */ = {isa = PBXBuildFile; fileRef = EC5C99111B65CB8300EC0177 /* 6x6-7.tmx */; };
 		EC5C99131B65CBA600EC0177 /* 6x6-7.tmx in Resources */ = {isa = PBXBuildFile; fileRef = EC5C99111B65CB8300EC0177 /* 6x6-7.tmx */; };
+		EC6E12541B67165600CAC4B5 /* 6x6-6.tmx in Resources */ = {isa = PBXBuildFile; fileRef = EC6E12531B67165600CAC4B5 /* 6x6-6.tmx */; };
+		EC6E12551B6716A000CAC4B5 /* 6x6-6.tmx in Resources */ = {isa = PBXBuildFile; fileRef = EC6E12531B67165600CAC4B5 /* 6x6-6.tmx */; };
+		EC6E12571B6722F500CAC4B5 /* 6x6-8.tmx in Resources */ = {isa = PBXBuildFile; fileRef = EC6E12561B6722F500CAC4B5 /* 6x6-8.tmx */; };
+		EC6E12581B67231400CAC4B5 /* 6x6-8.tmx in Resources */ = {isa = PBXBuildFile; fileRef = EC6E12561B6722F500CAC4B5 /* 6x6-8.tmx */; };
+		EC6E125A1B6735E200CAC4B5 /* 6x6-9.tmx in Resources */ = {isa = PBXBuildFile; fileRef = EC6E12591B6735E200CAC4B5 /* 6x6-9.tmx */; };
+		EC6E125B1B6735FD00CAC4B5 /* 6x6-9.tmx in Resources */ = {isa = PBXBuildFile; fileRef = EC6E12591B6735E200CAC4B5 /* 6x6-9.tmx */; };
+		EC6E125D1B67504C00CAC4B5 /* 6x6-10.tmx in Resources */ = {isa = PBXBuildFile; fileRef = EC6E125C1B67504C00CAC4B5 /* 6x6-10.tmx */; };
+		EC6E125E1B67507600CAC4B5 /* 6x6-10.tmx in Resources */ = {isa = PBXBuildFile; fileRef = EC6E125C1B67504C00CAC4B5 /* 6x6-10.tmx */; };
 		EC937B651B632880008CFE60 /* 6x6-1.tmx in Resources */ = {isa = PBXBuildFile; fileRef = EC937B641B632880008CFE60 /* 6x6-1.tmx */; };
 		EC937B661B6329AF008CFE60 /* 6x6-1.tmx in Resources */ = {isa = PBXBuildFile; fileRef = EC937B641B632880008CFE60 /* 6x6-1.tmx */; };
 		EC937B681B632C71008CFE60 /* 6x6-2.tmx in Resources */ = {isa = PBXBuildFile; fileRef = EC937B671B632C71008CFE60 /* 6x6-2.tmx */; };
@@ -203,6 +211,18 @@
 		EC96D7481B610BBD009C64F5 /* StepManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC96D7461B610BBD009C64F5 /* StepManager.cpp */; };
 		EC96D7491B612495009C64F5 /* StepManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC96D7461B610BBD009C64F5 /* StepManager.cpp */; };
 		ECA02B781B5F72F6007EFC0F /* sky2.png in Resources */ = {isa = PBXBuildFile; fileRef = ECA02B771B5F72F6007EFC0F /* sky2.png */; };
+		ECF82B171B67661600C8095A /* 7x7-1.tmx in Resources */ = {isa = PBXBuildFile; fileRef = ECF82B161B67661600C8095A /* 7x7-1.tmx */; };
+		ECF82B181B67663300C8095A /* 7x7-1.tmx in Resources */ = {isa = PBXBuildFile; fileRef = ECF82B161B67661600C8095A /* 7x7-1.tmx */; };
+		ECF82B1A1B6771FE00C8095A /* 7x7-2.tmx in Resources */ = {isa = PBXBuildFile; fileRef = ECF82B191B6771FE00C8095A /* 7x7-2.tmx */; };
+		ECF82B1B1B67720800C8095A /* 7x7-2.tmx in Resources */ = {isa = PBXBuildFile; fileRef = ECF82B191B6771FE00C8095A /* 7x7-2.tmx */; };
+		ECF82B1D1B67795200C8095A /* 7x7-3.tmx in Resources */ = {isa = PBXBuildFile; fileRef = ECF82B1C1B67795200C8095A /* 7x7-3.tmx */; };
+		ECF82B1E1B67796B00C8095A /* 7x7-3.tmx in Resources */ = {isa = PBXBuildFile; fileRef = ECF82B1C1B67795200C8095A /* 7x7-3.tmx */; };
+		ECF82B201B67863900C8095A /* 7x7-4.tmx in Resources */ = {isa = PBXBuildFile; fileRef = ECF82B1F1B67863900C8095A /* 7x7-4.tmx */; };
+		ECF82B211B67864500C8095A /* 7x7-4.tmx in Resources */ = {isa = PBXBuildFile; fileRef = ECF82B1F1B67863900C8095A /* 7x7-4.tmx */; };
+		ECF82B231B6792FA00C8095A /* 7x7-5.tmx in Resources */ = {isa = PBXBuildFile; fileRef = ECF82B221B6792FA00C8095A /* 7x7-5.tmx */; };
+		ECF82B241B67931F00C8095A /* 7x7-5.tmx in Resources */ = {isa = PBXBuildFile; fileRef = ECF82B221B6792FA00C8095A /* 7x7-5.tmx */; };
+		ECF82B261B679CFE00C8095A /* levelpromp in Resources */ = {isa = PBXBuildFile; fileRef = ECF82B251B679CFE00C8095A /* levelpromp */; };
+		ECF82B2A1B67AB1800C8095A /* levelpromp in Resources */ = {isa = PBXBuildFile; fileRef = ECF82B251B679CFE00C8095A /* levelpromp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -378,6 +398,10 @@
 		EC496E0F1B5F9A0B007C9A08 /* platform2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = platform2.png; sourceTree = "<group>"; };
 		EC496E151B5FC967007C9A08 /* sky4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sky4.png; sourceTree = "<group>"; };
 		EC5C99111B65CB8300EC0177 /* 6x6-7.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "6x6-7.tmx"; sourceTree = "<group>"; };
+		EC6E12531B67165600CAC4B5 /* 6x6-6.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "6x6-6.tmx"; sourceTree = "<group>"; };
+		EC6E12561B6722F500CAC4B5 /* 6x6-8.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "6x6-8.tmx"; sourceTree = "<group>"; };
+		EC6E12591B6735E200CAC4B5 /* 6x6-9.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "6x6-9.tmx"; sourceTree = "<group>"; };
+		EC6E125C1B67504C00CAC4B5 /* 6x6-10.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "6x6-10.tmx"; sourceTree = "<group>"; };
 		EC937B641B632880008CFE60 /* 6x6-1.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "6x6-1.tmx"; sourceTree = "<group>"; };
 		EC937B671B632C71008CFE60 /* 6x6-2.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "6x6-2.tmx"; sourceTree = "<group>"; };
 		EC96D7301B607B62009C64F5 /* 5x5-7.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "5x5-7.tmx"; sourceTree = "<group>"; };
@@ -385,6 +409,12 @@
 		EC96D7461B610BBD009C64F5 /* StepManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StepManager.cpp; sourceTree = "<group>"; };
 		EC96D7471B610BBD009C64F5 /* StepManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StepManager.h; sourceTree = "<group>"; };
 		ECA02B771B5F72F6007EFC0F /* sky2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sky2.png; sourceTree = "<group>"; };
+		ECF82B161B67661600C8095A /* 7x7-1.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "7x7-1.tmx"; sourceTree = "<group>"; };
+		ECF82B191B6771FE00C8095A /* 7x7-2.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "7x7-2.tmx"; sourceTree = "<group>"; };
+		ECF82B1C1B67795200C8095A /* 7x7-3.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "7x7-3.tmx"; sourceTree = "<group>"; };
+		ECF82B1F1B67863900C8095A /* 7x7-4.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "7x7-4.tmx"; sourceTree = "<group>"; };
+		ECF82B221B6792FA00C8095A /* 7x7-5.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "7x7-5.tmx"; sourceTree = "<group>"; };
+		ECF82B251B679CFE00C8095A /* levelpromp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = levelpromp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -742,6 +772,16 @@
 		55F3B98A1B4522360090BE1A /* maps */ = {
 			isa = PBXGroup;
 			children = (
+				ECF82B251B679CFE00C8095A /* levelpromp */,
+				ECF82B221B6792FA00C8095A /* 7x7-5.tmx */,
+				ECF82B1F1B67863900C8095A /* 7x7-4.tmx */,
+				ECF82B1C1B67795200C8095A /* 7x7-3.tmx */,
+				ECF82B191B6771FE00C8095A /* 7x7-2.tmx */,
+				ECF82B161B67661600C8095A /* 7x7-1.tmx */,
+				EC6E125C1B67504C00CAC4B5 /* 6x6-10.tmx */,
+				EC6E12591B6735E200CAC4B5 /* 6x6-9.tmx */,
+				EC6E12561B6722F500CAC4B5 /* 6x6-8.tmx */,
+				EC6E12531B67165600CAC4B5 /* 6x6-6.tmx */,
 				EC5C99111B65CB8300EC0177 /* 6x6-7.tmx */,
 				EC3F33061B64F3D70072775F /* 5x5-9.tmx */,
 				EC3F33071B64F3D70072775F /* 5x5-10.tmx */,
@@ -883,18 +923,25 @@
 			files = (
 				55F3B98C1B4522360090BE1A /* 5x5-1.tmx in Resources */,
 				EC937B681B632C71008CFE60 /* 6x6-2.tmx in Resources */,
+				EC6E125A1B6735E200CAC4B5 /* 6x6-9.tmx in Resources */,
 				EC496E001B5F9772007C9A08 /* sky3.png in Resources */,
+				EC6E12541B67165600CAC4B5 /* 6x6-6.tmx in Resources */,
 				5513509C1B62749A00A99AD7 /* arrow.png in Resources */,
 				EC496E161B5FC967007C9A08 /* sky4.png in Resources */,
 				558215821B5C6B6B00173C79 /* life.mp3 in Resources */,
 				55B740231B60890A00DDA3D8 /* 1x1.png in Resources */,
+				ECF82B261B679CFE00C8095A /* levelpromp in Resources */,
 				55B0BF7B1B6346D00012DDC2 /* cloud.c3b in Resources */,
+				ECF82B171B67661600C8095A /* 7x7-1.tmx in Resources */,
 				5087E78117EB970100C73F5D /* Icon-120.png in Resources */,
+				ECF82B231B6792FA00C8095A /* 7x7-5.tmx in Resources */,
 				EC3F330C1B64F3D70072775F /* 5x5-10.tmx in Resources */,
 				EC339D6D1B6209CD00781575 /* button_retry_down.png in Resources */,
 				5513509F1B62749A00A99AD7 /* platform3.c3b in Resources */,
 				558215831B5C6B6B00173C79 /* start.mp3 in Resources */,
+				EC6E12571B6722F500CAC4B5 /* 6x6-8.tmx in Resources */,
 				551350A11B62749A00A99AD7 /* sidebar.c3b in Resources */,
+				EC6E125D1B67504C00CAC4B5 /* 6x6-10.tmx in Resources */,
 				EC937B651B632880008CFE60 /* 6x6-1.tmx in Resources */,
 				558215851B5C6B6B00173C79 /* stoneroll.wav in Resources */,
 				55066CD81B4BAC26007FCF3F /* outLine.vert in Resources */,
@@ -909,6 +956,7 @@
 				5087E78317EB970100C73F5D /* Icon-152.png in Resources */,
 				5087E77D17EB970100C73F5D /* Default-568h@2x.png in Resources */,
 				5582158B1B5C7EA000173C79 /* levels.plist in Resources */,
+				ECF82B1A1B6771FE00C8095A /* 7x7-2.tmx in Resources */,
 				5087E78517EB970100C73F5D /* Icon-72.png in Resources */,
 				5513509E1B62749A00A99AD7 /* platform2.c3b in Resources */,
 				EC3F330D1B64F3D70072775F /* 6x6-3.tmx in Resources */,
@@ -921,10 +969,12 @@
 				EC96D7311B607B62009C64F5 /* 5x5-7.tmx in Resources */,
 				55F3B98F1B4527F30090BE1A /* colorlist.png in Resources */,
 				558215841B5C6B6B00173C79 /* stoneflip.wav in Resources */,
+				ECF82B201B67863900C8095A /* 7x7-4.tmx in Resources */,
 				55066CE91B4BD92B007FCF3F /* 5x5-5.tmx in Resources */,
 				55066CD71B4BAC26007FCF3F /* outLine.frag in Resources */,
 				55B740451B60C8A500DDA3D8 /* sidebar.png in Resources */,
 				EC496E121B5F9A0B007C9A08 /* platform2.png in Resources */,
+				ECF82B1D1B67795200C8095A /* 7x7-3.tmx in Resources */,
 				EC339D6E1B6209CD00781575 /* button_retry_up.png in Resources */,
 				50EF62A317ECD613001EB2F8 /* Icon-50.png in Resources */,
 				EC3F330F1B64F3D70072775F /* 6x6-5.tmx in Resources */,
@@ -957,6 +1007,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ECF82B2A1B67AB1800C8095A /* levelpromp in Resources */,
+				ECF82B241B67931F00C8095A /* 7x7-5.tmx in Resources */,
+				ECF82B211B67864500C8095A /* 7x7-4.tmx in Resources */,
+				ECF82B1E1B67796B00C8095A /* 7x7-3.tmx in Resources */,
+				ECF82B1B1B67720800C8095A /* 7x7-2.tmx in Resources */,
+				ECF82B181B67663300C8095A /* 7x7-1.tmx in Resources */,
+				EC6E125E1B67507600CAC4B5 /* 6x6-10.tmx in Resources */,
+				EC6E125B1B6735FD00CAC4B5 /* 6x6-9.tmx in Resources */,
+				EC6E12581B67231400CAC4B5 /* 6x6-8.tmx in Resources */,
+				EC6E12551B6716A000CAC4B5 /* 6x6-6.tmx in Resources */,
 				EC5C99131B65CBA600EC0177 /* 6x6-7.tmx in Resources */,
 				EC3F33101B64F4460072775F /* 5x5-9.tmx in Resources */,
 				EC3F33111B64F4460072775F /* 5x5-10.tmx in Resources */,

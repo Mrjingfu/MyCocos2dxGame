@@ -38,6 +38,11 @@ void StepManager::setLevelStep(int level,int levelStaus)
     m_levelSteps = FileUtils::getInstance()->getValueMapFromFile(FileUtils::getInstance()->getWritablePath().append("steps"));
     ValueVector levelIndexVector  = atVectorValue(level);
     
+    if (levelIndexVector.size() >= 1) {
+        levelIndexVector.clear();
+    }
+    
+    
     //记录当前关卡胜负状态及步数
     ValueVector stepVector;
     stepVector.push_back(Value(levelStaus));
@@ -61,7 +66,17 @@ void StepManager::setLevelStep(int level,int levelStaus)
 }
 cocos2d::ValueVector StepManager::getLevelWinSteps(int level)
 {
-    m_levelSteps = FileUtils::getInstance()->getValueMapFromFile(FileUtils::getInstance()->getWritablePath().append("steps"));
+    
+    std::string file=FileUtils::getInstance()->getWritablePath().append("steps");
+    return getLevelWinSteps(level,file);
+}
+cocos2d::ValueVector StepManager::getLevelPromptSteps(int level)
+{
+    return getLevelWinSteps(level,"levelpromp");
+}
+cocos2d::ValueVector  StepManager::getLevelWinSteps(int level,std::string stepfile)
+{
+    m_levelSteps = FileUtils::getInstance()->getValueMapFromFile(stepfile);
     ValueVector levelIndexVector  = atVectorValue(level);
     if(levelIndexVector.size() > 0)
     {
@@ -75,17 +90,7 @@ cocos2d::ValueVector StepManager::getLevelWinSteps(int level)
     }
     return ValueVector();
 }
-cocos2d::ValueVector StepManager::getLevelSteps(int level)
-{
-   
-    m_levelSteps = FileUtils::getInstance()->getValueMapFromFile(FileUtils::getInstance()->getWritablePath().append("steps"));
-    ValueVector levelIndexVector  = atVectorValue(level);
-    if(levelIndexVector.size() > 0)
-    {
-        return levelIndexVector;
-    }
-    return ValueVector();
-}
+
 cocos2d::ValueVector StepManager::atVectorValue(int index)
 {
     Value  indexValue(index);

@@ -42,7 +42,7 @@ bool GameController::init(Layer* pMainLayer)
         return false;
     m_pMainLayer->addChild(m_pMainCamera);
     
-    
+    CCLOG("LEVEL:%d",LevelsManager::getInstance()->getCurrentLevel());
     if (!createMap(false,LevelsManager::getInstance()->getCurrentLevel())) {
         return false;
     }
