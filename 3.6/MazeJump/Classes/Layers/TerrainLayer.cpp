@@ -73,9 +73,11 @@ void TerrainLayer::setCurrentPatternNum( int num )
             generatePattern(m_nCurrentPatternNum+1);
             generatePattern(m_nCurrentPatternNum+2);
             generatePattern(m_nCurrentPatternNum+3);
+            generatePattern(m_nCurrentPatternNum+4);
         }
         else
-            generatePattern(m_nCurrentPatternNum+3);
+            generatePattern(m_nCurrentPatternNum+4);
+        collapseCurrentPattern();
     }
 }
 void TerrainLayer::setCurrentColumn( int column )
@@ -301,4 +303,14 @@ void TerrainLayer::generatePattern(int count)
     else
         layer->setPositionZ(-count*5*m_fCellBaseRadius*2 + m_fCellBaseRadius*2);
     m_TerrainPatternList.pushBack(layer);
+}
+void TerrainLayer::collapseCurrentPattern()
+{
+    TerrainPatternLayer* patternLayer = m_TerrainPatternList.at(m_nCurrentPatternNum);
+    if(patternLayer)
+    {
+        if(patternLayer->getPatternType() == TerrainPatternLayer::PT_STARTER || patternLayer->getPatternType() == TerrainPatternLayer::PT_CHECKPOINT)
+            return;
+        patternLayer->beginCollapse();
+    }
 }

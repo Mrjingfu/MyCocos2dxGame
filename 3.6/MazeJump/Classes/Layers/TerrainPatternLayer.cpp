@@ -34,7 +34,6 @@ bool TerrainPatternLayer::init(int index)
     m_nIndex = index;
     m_patternType = PatternType(PatternsManager::getInstance()->getPatternType(index));
     m_fadeInType = FadeInType(PatternsManager::getInstance()->getPatternFadeInType(index));
-    
     ValueVector terrainCells = PatternsManager::getInstance()->getPatternTerrainCells(index);
     for (Value value : terrainCells) {
         ValueMap cellMap = value.asValueMap();
@@ -70,16 +69,17 @@ bool TerrainPatternLayer::init(int index)
                 {
                     Color3B randomColor = UtilityHelper::randomColor();
                     cell->setColor(randomColor);
-                    cell->setType(TerrainCell::CellType(cellType));
                     cell->setPosition3D(Vec3(posX, -50, posZ));
                     cell->setRotation3D(Vec3(rotX, rotY, rotZ));
-                    cell->setScaleX(0);
+                    cell->setScale(0);
                     cell->setScaleY(0);
                     cell->setScaleZ(0);
+                    cell->setOpacity(0);
                     float time = cocos2d::random(1.0f, 1.5f);
                     EaseBackInOut* moveTo = EaseBackInOut::create(MoveTo::create(time, Vec3(posX, posY, posZ)));
                     EaseSineIn* scaleTo = EaseSineIn::create(ScaleTo::create(0.5f, 0.985f));
-                    Spawn* spawn = Spawn::createWithTwoActions(moveTo, scaleTo);
+                    EaseSineIn* fadeIn = EaseSineIn::create(FadeIn::create(0.5f));
+                    Spawn* spawn = Spawn::create(moveTo, scaleTo, fadeIn, NULL);
                     cell->runAction(spawn);
                 }
                 break;
@@ -141,6 +141,31 @@ bool TerrainPatternLayer::checkRunnerDrop()
         }
     }
     return !collision;
+}
+void TerrainPatternLayer::beginCollapse()
+{
+    TerrainLayer* layer = RunController::getInstance()->getTerrainLayer();
+    if(layer)
+    {
+        for (TerrainCell* cell : m_TerrainCellList)
+        {
+            if(cell)
+            {
+                int row = -cell->getPositionZ()/layer->getCellBaseRadius() + 2;
+                float time = cocos2d::random(1.0f, 1.5f);
+                DelayTime* delayTime = DelayTime::create(2.5f + row*0.25f);
+                EaseSineOut* moveTo = EaseSineOut::create(MoveTo::create(time, Vec3(cell->getPositionX(), -50, cell->getPositionZ())));
+                EaseSineIn* rotateBy = EaseSineIn::create(RotateBy::create(time, Vec3(cocos2d::random(90.0f, -90.0f),cocos2d::random(-90.0f, 90.0f),0)));
+                EaseSineOut* scaleTo = EaseSineOut::create(ScaleTo::create(time, 0.8f));
+                DelayTime* delayTime2 = DelayTime::create(0.5f*time);
+                EaseSineOut* fadeOut = EaseSineOut::create(FadeOut::create(0.5f*time));
+                Sequence* sequece1 = Sequence::create(delayTime2, fadeOut, NULL);
+                Spawn* spawn = Spawn::create(moveTo,rotateBy, scaleTo, sequece1, NULL);
+                Sequence* sequence2 = Sequence::create(delayTime, spawn, NULL);
+                cell->runAction(sequence2);
+            }
+        }
+    }
 }
 void TerrainPatternLayer::onLand(TerrainCell* cell)
 {

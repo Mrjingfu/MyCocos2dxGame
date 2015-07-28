@@ -41,6 +41,7 @@ public:
     PatternType getPatternType() const { return m_patternType; }
 
     bool checkRunnerDrop();
+    void beginCollapse();
 private:
     void onLand(TerrainCell* cell);
 private:

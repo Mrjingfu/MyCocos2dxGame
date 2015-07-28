@@ -39,6 +39,7 @@ private:
     Runner*             m_pMainPlayer;
     cocos2d::Sprite3D*           m_pCloud1;
     cocos2d::Sprite3D*           m_pCloud2;
+    cocos2d::Sprite3D*           m_pCloud3;
 };
 
 #endif /* defined(__MazeJump__RunController__) */

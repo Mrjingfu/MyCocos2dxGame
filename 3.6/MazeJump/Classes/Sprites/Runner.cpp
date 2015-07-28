@@ -37,6 +37,15 @@ Runner::Runner()
     m_curState  = RS_UNKNOWN;
     m_fRadius   = 2.5f;
 }
+void Runner::update(float delta)
+{
+    if(m_curState == RS_IDLE)
+    {
+        bool isDrop = RunController::getInstance()->getTerrainLayer()->checkRunnerDrop();
+        if(isDrop)
+            setState(RS_MOVE_DROP);
+    }
+}
 void Runner::onCollision(TerrainCell* cell)
 {
 }
@@ -241,10 +250,12 @@ void Runner::onEnterMoveJumpLocal()
 }
 void Runner::onEnterMoveDrop()
 {
-    EaseSineOut* scaleTo = EaseSineOut::create(ScaleTo::create(1.0f, 0));
     EaseSineOut* moveTo = EaseSineOut::create(MoveTo::create(1.0f, Vec3(getPositionX(), -50, getPositionZ())));
-    EaseSineOut* fadeOut = EaseSineOut::create(FadeOut::create(1.0f));
-    Spawn* spawn = Spawn::create(scaleTo, moveTo, fadeOut, NULL);
+    EaseSineOut* scaleTo = EaseSineOut::create(ScaleTo::create(1.0, 0.8f));
+    DelayTime* delayTime = DelayTime::create(0.5f);
+    EaseSineOut* fadeOut = EaseSineOut::create(FadeOut::create(0.5f));
+    Sequence* sequece = Sequence::create(delayTime, fadeOut, NULL);
+    Spawn* spawn = Spawn::create(moveTo, scaleTo, sequece, NULL);
     CallFunc* callFunc = CallFunc::create(CC_CALLBACK_0(RunController::gameOver,RunController::getInstance()));
     Sequence* sequence = Sequence::create(spawn, callFunc, NULL);
     runAction(sequence);

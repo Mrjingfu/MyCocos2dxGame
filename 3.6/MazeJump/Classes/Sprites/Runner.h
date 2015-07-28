@@ -29,6 +29,8 @@ protected:
 public:
     static Runner* create();
     
+    virtual void update(float delta);
+    
     float getRadius() const { return m_fRadius; }
     
     RunnerState getState() const { return m_curState; }

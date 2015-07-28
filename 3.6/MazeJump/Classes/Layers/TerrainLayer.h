@@ -49,6 +49,7 @@ private:
     
     bool generateStartPoint();
     void generatePattern(int index);
+    void collapseCurrentPattern();
 private:
     cocos2d::Vec2   m_TouchBegin;
     cocos2d::Vec2   m_TouchEnd;
