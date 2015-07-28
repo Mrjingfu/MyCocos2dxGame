@@ -43,6 +43,7 @@ bool GameScene::init()
 }
 void GameScene::onEnter()
 {
+
     Layer::onEnter();
     scheduleUpdate();
     if(!GameController::getInstance()->init(this))

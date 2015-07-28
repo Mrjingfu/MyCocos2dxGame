@@ -650,11 +650,6 @@ void GroundLayer::setRecordState(RecordState state)
         return;
     switch (state) {
         case RD_START:
-            if(StepManager::getInstance()->getLevelWinSteps(m_Level).size() == 0)
-            {
-                m_Playing = false;
-                 return;
-            }
             recordSteps = StepManager::getInstance()->getLevelWinSteps(m_Level);
             playRecord();
             break;

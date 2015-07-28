@@ -29,9 +29,10 @@ public:
     void setStep(int index,int direction);
     void setLevelStep(int level,int levelStaus);
     cocos2d::ValueVector getLevelWinSteps(int level);
-    cocos2d::ValueVector getLevelSteps(int level);
-    cocos2d::ValueVector atVectorValue(int index);
+    cocos2d::ValueVector getLevelPromptSteps(int level);
 private:
+    cocos2d::ValueVector getLevelWinSteps(int level,std::string stepfile);
+    cocos2d::ValueVector atVectorValue(int index);
     cocos2d::ValueMap m_levelSteps;
     cocos2d::ValueVector m_Steps;
 };

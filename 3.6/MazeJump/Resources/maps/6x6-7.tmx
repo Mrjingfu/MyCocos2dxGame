@@ -1,44 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="6" height="6" tilewidth="32" tileheight="32" nextobjectid="91">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="6" height="6" tilewidth="32" tileheight="32" nextobjectid="167">
  <tileset firstgid="1" name="colorlist" tilewidth="32" tileheight="32">
   <image source="../textures/colorlist.png" width="64" height="128"/>
  </tileset>
  <objectgroup name="celllist">
-  <object id="55" type="1" gid="4" x="0" y="32" width="32" height="32"/>
-  <object id="56" type="1" gid="4" x="32" y="32" width="32" height="32"/>
-  <object id="57" type="1" gid="4" x="64" y="32" width="32" height="32"/>
-  <object id="58" type="1" gid="4" x="96" y="32" width="32" height="32"/>
-  <object id="59" type="1" gid="4" x="128" y="32" width="32" height="32"/>
-  <object id="60" type="1" gid="4" x="160" y="32" width="32" height="32"/>
-  <object id="61" type="1" gid="4" x="0" y="64" width="32" height="32"/>
-  <object id="62" type="1" gid="4" x="32" y="64" width="32" height="32"/>
-  <object id="63" type="1" gid="4" x="64" y="64" width="32" height="32"/>
-  <object id="64" type="6" gid="1" x="96" y="64" width="32" height="32"/>
-  <object id="65" type="0" gid="2" x="128" y="64" width="32" height="32"/>
-  <object id="66" type="1" gid="4" x="160" y="64" width="32" height="32"/>
-  <object id="67" type="1" gid="4" x="0" y="96" width="32" height="32"/>
-  <object id="68" type="1" gid="4" x="32" y="96" width="32" height="32"/>
-  <object id="69" type="1" gid="4" x="64" y="96" width="32" height="32"/>
-  <object id="70" type="1" gid="4" x="96" y="96" width="32" height="32"/>
-  <object id="71" type="1" gid="4" x="128" y="96" width="32" height="32"/>
-  <object id="72" type="1" gid="4" x="160" y="96" width="32" height="32"/>
-  <object id="73" type="1" gid="4" x="0" y="128" width="32" height="32"/>
-  <object id="74" type="6" gid="1" x="32" y="128" width="32" height="32"/>
-  <object id="75" type="1" gid="4" x="64" y="128" width="32" height="32"/>
-  <object id="76" type="1" gid="4" x="96" y="128" width="32" height="32"/>
-  <object id="77" type="1" gid="4" x="128" y="128" width="32" height="32"/>
-  <object id="78" type="1" gid="4" x="160" y="128" width="32" height="32"/>
-  <object id="79" type="1" gid="4" x="0" y="160" width="32" height="32"/>
-  <object id="80" type="1" gid="4" x="32" y="160" width="32" height="32"/>
-  <object id="81" type="1" gid="4" x="64" y="160" width="32" height="32"/>
-  <object id="82" type="1" gid="4" x="96" y="160" width="32" height="32"/>
-  <object id="83" type="1" gid="4" x="128" y="160" width="32" height="32"/>
-  <object id="84" type="1" gid="4" x="160" y="160" width="32" height="32"/>
-  <object id="85" type="1" gid="4" x="0" y="192" width="32" height="32"/>
-  <object id="86" type="1" gid="4" x="32" y="192" width="32" height="32"/>
-  <object id="87" type="1" gid="4" x="64" y="192" width="32" height="32"/>
-  <object id="88" type="1" gid="4" x="96" y="192" width="32" height="32"/>
-  <object id="89" type="1" gid="4" x="128" y="192" width="32" height="32"/>
-  <object id="90" type="1" gid="4" x="160" y="192" width="32" height="32"/>
+  <object id="131" type="1" gid="4" x="0" y="32" width="32" height="32"/>
+  <object id="132" type="6" gid="1" x="32" y="32" width="32" height="32"/>
+  <object id="133" type="1" gid="4" x="64" y="32" width="32" height="32"/>
+  <object id="134" type="1" gid="4" x="96" y="32" width="32" height="32"/>
+  <object id="135" type="1" gid="4" x="128" y="32" width="32" height="32"/>
+  <object id="136" type="1" gid="4" x="160" y="32" width="32" height="32"/>
+  <object id="137" type="1" gid="4" x="0" y="64" width="32" height="32"/>
+  <object id="138" type="1" gid="4" x="32" y="64" width="32" height="32"/>
+  <object id="139" type="1" gid="4" x="64" y="64" width="32" height="32"/>
+  <object id="140" type="0" gid="2" x="96" y="64" width="32" height="32"/>
+  <object id="141" type="1" gid="4" x="128" y="64" width="32" height="32"/>
+  <object id="142" type="1" gid="4" x="160" y="64" width="32" height="32"/>
+  <object id="143" type="1" gid="4" x="0" y="96" width="32" height="32"/>
+  <object id="144" type="1" gid="4" x="32" y="96" width="32" height="32"/>
+  <object id="145" type="6" gid="1" x="64" y="96" width="32" height="32"/>
+  <object id="146" type="1" gid="4" x="96" y="96" width="32" height="32"/>
+  <object id="147" type="6" gid="1" x="128" y="96" width="32" height="32"/>
+  <object id="148" type="1" gid="4" x="160" y="96" width="32" height="32"/>
+  <object id="149" type="1" gid="4" x="0" y="128" width="32" height="32"/>
+  <object id="150" type="1" gid="4" x="32" y="128" width="32" height="32"/>
+  <object id="151" type="1" gid="4" x="64" y="128" width="32" height="32"/>
+  <object id="152" type="1" gid="4" x="96" y="128" width="32" height="32"/>
+  <object id="153" type="1" gid="4" x="128" y="128" width="32" height="32"/>
+  <object id="154" type="1" gid="4" x="160" y="128" width="32" height="32"/>
+  <object id="155" type="1" gid="4" x="0" y="160" width="32" height="32"/>
+  <object id="156" type="1" gid="4" x="32" y="160" width="32" height="32"/>
+  <object id="157" type="1" gid="4" x="64" y="160" width="32" height="32"/>
+  <object id="158" type="1" gid="4" x="96" y="160" width="32" height="32"/>
+  <object id="159" type="1" gid="4" x="128" y="160" width="32" height="32"/>
+  <object id="160" type="1" gid="4" x="160" y="160" width="32" height="32"/>
+  <object id="161" type="1" gid="4" x="0" y="192" width="32" height="32"/>
+  <object id="162" type="1" gid="4" x="32" y="192" width="32" height="32"/>
+  <object id="163" type="1" gid="4" x="64" y="192" width="32" height="32"/>
+  <object id="164" type="1" gid="4" x="96" y="192" width="32" height="32"/>
+  <object id="165" type="1" gid="4" x="128" y="192" width="32" height="32"/>
+  <object id="166" type="1" gid="4" x="160" y="192" width="32" height="32"/>
  </objectgroup>
 </map>
