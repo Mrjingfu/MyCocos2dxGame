@@ -40,6 +40,7 @@ bool RunController::init(Layer* pMainLayer)
         return false;
     m_pSkyBox->setScale(1000);
     m_pSkyBox->setCameraMask((unsigned short)CameraFlag::USER1);
+    m_pSkyBox->setGlobalZOrder(-1);
     m_pMainLayer->addChild(m_pSkyBox);
     
     if(!initCloud())
