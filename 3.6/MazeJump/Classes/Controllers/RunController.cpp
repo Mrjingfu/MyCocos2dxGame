@@ -7,6 +7,8 @@
 //
 
 #include "RunController.h"
+#include "ui/CocosGUI.h"
+#include "MainScene.h"
 USING_NS_CC;
 
 RunController* g_pRunControllerInstance = nullptr;
@@ -26,6 +28,8 @@ RunController::RunController()
     m_pCloud1           = nullptr;
     m_pCloud2           = nullptr;
     m_pCloud3           = nullptr;
+    m_nDifficultLevel   = 0;
+    m_nInitDifficultLevel = 0;
 }
 RunController::~RunController()
 {
@@ -35,6 +39,8 @@ bool RunController::init(Layer* pMainLayer)
     if(pMainLayer == nullptr)
         return false;
     m_pMainLayer = pMainLayer;
+    
+    m_nInitDifficultLevel = getDifficultLevel();
     
     Skybox* m_pSkyBox = Skybox::create("sky4.png", "sky4.png", "sky4.png", "sky4.png", "sky4.png", "sky4.png");
     if(!m_pSkyBox)
@@ -55,12 +61,13 @@ bool RunController::init(Layer* pMainLayer)
     m_pTerrainLayer->setAnchorPoint(Vec2::ZERO);
     m_pMainLayer->addChild(m_pTerrainLayer);
     
+    
     m_pMainPlayer = Runner::create();
     if(!m_pMainPlayer)
         return false;
     m_pMainPlayer->setCameraMask((unsigned short)CameraFlag::USER1);
-    m_pMainPlayer->setPositionY(4);
     m_pTerrainLayer->addChild(m_pMainPlayer);
+    m_pMainPlayer->setState(Runner::RS_IDLE);
     
     auto size = Director::getInstance()->getVisibleSize();
     m_pMainCamera = Camera::createPerspective(60, size.width/size.height, 1, 5000);
@@ -78,6 +85,16 @@ bool RunController::init(Layer* pMainLayer)
     DirectionLight* directionLight = DirectionLight::create(Vec3(-2, -4, -3), Color3B(158, 158, 158));
     m_pMainLayer->addChild(directionLight);
     
+    cocos2d::ui::Button* button = cocos2d::ui::Button::create("button_retry_up.png",
+                                                              "button_retry_down.png");
+    button->setPosition(Vec2(size.width * 0.8f, size.height * 0.8f));
+    button->setPressedActionEnabled(true);
+    button->addClickEventListener([=](Ref* sender){
+        auto scene = MainScene::createScene();
+        Director::getInstance()->replaceScene(scene);
+    });
+    m_pMainLayer->addChild(button);
+    
     return true;
 }
 void RunController::update(float delta)
@@ -91,6 +108,17 @@ void RunController::destroy()
 {
     m_pMainLayer->removeAllChildren();
     m_pMainLayer = nullptr;
+}
+int RunController::getDifficultLevel()
+{
+    m_nDifficultLevel = UserDefault::getInstance()->getIntegerForKey("LastReachDifficultLevel", 0);
+    return m_nDifficultLevel;
+}
+void RunController::setDifficultLevel(int difficult)
+{
+    m_nDifficultLevel = difficult;
+    UserDefault::getInstance()->setIntegerForKey("LastReachDifficultLevel", m_nDifficultLevel);
+    CCLOG("Difficult Level %d", m_nDifficultLevel);
 }
 void RunController::cameraTrackPlayer()
 {
@@ -107,6 +135,7 @@ void RunController::cameraTrackPlayer()
 void RunController::gameOver()
 {
     CCLOG("gameOver");
+    setDifficultLevel(0);
 }
 bool RunController::initCloud()
 {

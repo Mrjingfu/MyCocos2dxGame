@@ -33,6 +33,7 @@ public:
     
     int getCurrentRow() const { return m_nRow; }
     void setCurrentRow( int row );
+    
     bool checkRunnerDrop();
 protected:
     // 处理输入

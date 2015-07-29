@@ -11,7 +11,7 @@
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>B21A601E1A9BC8D2FC57E848C52F99145476039E</key>
-		<string>https://github.com/lwwhb/MyCocos2dxGame.git</string>
+		<string>github.com:lwwhb/MyCocos2dxGame.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>3.6/MazeJump/proj.ios_mac/MazeJump.xcodeproj</string>
@@ -21,7 +21,7 @@
 		<string>../../../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/lwwhb/MyCocos2dxGame.git</string>
+	<string>github.com:lwwhb/MyCocos2dxGame.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>

@@ -25,6 +25,10 @@ public:
     TerrainLayer* getTerrainLayer() const { return m_pTerrainLayer; }
     cocos2d::Camera* getMainCamera() const { return m_pMainCamera; }
     Runner* getMainPlayer() const { return m_pMainPlayer; }
+    
+    int getInitDifficultLevel() const { return m_nInitDifficultLevel; }
+    int getDifficultLevel();
+    void setDifficultLevel(int difficult);
 
     void cameraTrackPlayer();
     
@@ -40,6 +44,9 @@ private:
     cocos2d::Sprite3D*           m_pCloud1;
     cocos2d::Sprite3D*           m_pCloud2;
     cocos2d::Sprite3D*           m_pCloud3;
+    
+    int             m_nInitDifficultLevel;
+    int             m_nDifficultLevel;
 };
 
 #endif /* defined(__MazeJump__RunController__) */
