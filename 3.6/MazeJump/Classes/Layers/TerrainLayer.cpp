@@ -56,9 +56,14 @@ bool TerrainLayer::init()
 }
 void TerrainLayer::update(float delta)
 {
-    for (TerrainPatternLayer* layer : m_TerrainPatternList) {
+    for (int i = 0; i<m_TerrainPatternList.size()-1; ++i) {
+        TerrainPatternLayer* layer = m_TerrainPatternList.at(i);
         if(layer)
+        {
             layer->update(delta);
+            if(i == m_nCurrentPatternNum)
+                layer->checkCollisionDecorator();
+        }
     }
 }
 void TerrainLayer::setCurrentPatternNum( int num )

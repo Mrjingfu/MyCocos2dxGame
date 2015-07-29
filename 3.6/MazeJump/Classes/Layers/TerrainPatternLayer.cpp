@@ -10,6 +10,7 @@
 #include "RunController.h"
 #include "PatternsManager.h"
 #include "UtilityHelper.h"
+#include "AlisaMethod.h"
 USING_NS_CC;
 TerrainPatternLayer* TerrainPatternLayer::create(int index)
 {
@@ -52,6 +53,7 @@ bool TerrainPatternLayer::init(int index)
         if(!cell)
             return false;
         cell->setType(TerrainCell::CellType(cellType));
+        cell->setCascadeOpacityEnabled(true);
         addChild(cell);
         m_TerrainCellList.pushBack(cell);
         
@@ -81,6 +83,8 @@ bool TerrainPatternLayer::init(int index)
                     EaseSineIn* fadeIn = EaseSineIn::create(FadeIn::create(0.5f));
                     Spawn* spawn = Spawn::create(moveTo, scaleTo, fadeIn, NULL);
                     cell->runAction(spawn);
+                    if(cell->getType() == TerrainCell::CT_NORMAL_PLATFORM)
+                        generateDecorator(cell, index);
                 }
                 break;
                 
@@ -167,9 +171,63 @@ void TerrainPatternLayer::beginCollapse()
         }
     }
 }
+void TerrainPatternLayer::checkCollisionDecorator()
+{
+    Runner* runner = RunController::getInstance()->getMainPlayer();
+    if(!runner)
+        return;
+    for (Decorator* decorator : m_DecoratorList) {
+        if(decorator && decorator->getNeedToCollision())
+        {
+            bool collision = runner->getModifyAABB().intersects(decorator->getAABB());
+            if(collision)
+            {
+                decorator->setNeedToCollision(false);
+                switch (decorator->getType()) {
+                    case Decorator::DT_GOLD:
+                        {
+                            EaseBackInOut* moveTo = EaseBackInOut::create(MoveTo::create(0.5f, Vec3(decorator->getPositionX(), decorator->getPositionY() + 10, decorator->getPositionZ())));
+                            EaseBackInOut* scaleTo = EaseBackInOut::create(ScaleTo::create(0.5f, 0.5f));
+                            Spawn* spawn = Spawn::create(moveTo, scaleTo, NULL);
+                            CallFunc* callfunc = CallFunc::create(CC_CALLBACK_0(Decorator::deleteSelf,decorator));
+                            Sequence* sequece = Sequence::create(spawn, callfunc, NULL);
+                            decorator->runAction(sequece);
+
+                        }
+                        break;
+                    case Decorator::DT_HEART:
+                        {
+                            EaseBackInOut* moveTo = EaseBackInOut::create(MoveTo::create(0.5f, Vec3(decorator->getPositionX(), decorator->getPositionY() + 10, decorator->getPositionZ())));
+                            EaseBackInOut* scaleTo = EaseBackInOut::create(ScaleTo::create(0.5f, 0.6f));
+                            Spawn* spawn = Spawn::create(moveTo, scaleTo, NULL);
+                            CallFunc* callfunc = CallFunc::create(CC_CALLBACK_0(Decorator::deleteSelf,decorator));
+                            Sequence* sequece = Sequence::create(spawn, callfunc, NULL);
+                            decorator->runAction(sequece);
+                        }
+                        break;
+                    case Decorator::DT_GOLD_BIG:
+                        {
+                            EaseBackInOut* moveTo = EaseBackInOut::create(MoveTo::create(0.5f, Vec3(decorator->getPositionX(), decorator->getPositionY() + 10, decorator->getPositionZ())));
+                            EaseBackInOut* scaleTo = EaseBackInOut::create(ScaleTo::create(0.5f, 0.8f));
+                            Spawn* spawn = Spawn::create(moveTo, scaleTo, NULL);
+                            CallFunc* callfunc = CallFunc::create(CC_CALLBACK_0(Decorator::deleteSelf,decorator));
+                            Sequence* sequece = Sequence::create(spawn, callfunc, NULL);
+                            decorator->runAction(sequece);
+                        }
+                        break;
+                    case Decorator::DT_TURRET:
+                        {}
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+    }
+}
 void TerrainPatternLayer::onLand(TerrainCell* cell)
 {
-    TerrainCell::CellType type = cell->getType();
+//    TerrainCell::CellType type = cell->getType();
 //    switch (type) {
 //        case <#constant#>:
 //            <#statements#>
@@ -178,4 +236,98 @@ void TerrainPatternLayer::onLand(TerrainCell* cell)
 //        default:
 //            break;
 //    }
+}
+void TerrainPatternLayer::generateDecorator(TerrainCell* cell, int patternIndex)
+{
+    if(m_patternType != PT_STARTER)
+    {
+        if(m_patternType == PT_CHECKPOINT)
+        {
+        }
+        else
+        {
+            if(patternIndex <= 11)
+            {
+                float percent1 = 0.005*patternIndex;
+                float percent2 = 0.0001*patternIndex;
+                float percent3 = 1.0 - percent1 - percent2;
+                AlisaMethod* am = AlisaMethod::create(percent1,percent2,percent3,-1.0, NULL);
+                if(am)
+                {
+                    if(am->getRandomIndex() == 0)
+                    {
+                        Decorator* gold = Decorator::create(Decorator::DT_GOLD);
+                        if(gold)
+                        {
+                            cell->addChild(gold);
+                            m_DecoratorList.pushBack(gold);
+                            RepeatForever* repeat = RepeatForever::create(RotateBy::create(1.0f, Vec3(0, 180, 0)));
+                            gold->runAction(repeat);
+                        }
+                    }
+                    else if(am->getRandomIndex() == 1)
+                    {
+                        Decorator* heart = Decorator::create(Decorator::DT_HEART);
+                        if(heart)
+                        {
+                            cell->addChild(heart);
+                            m_DecoratorList.pushBack(heart);
+                            RepeatForever* repeat = RepeatForever::create(RotateBy::create(1.0f, Vec3(0, 180, 0)));
+                            heart->runAction(repeat);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                float percent1 = 0.005*patternIndex;
+                float percent2 = 0.0001*patternIndex;
+                float percent3 = 0.0005*patternIndex;
+                float percent4 = 0.001*patternIndex;
+                float percent5 = 1.0 - percent1 - percent2 - percent3 - percent4 - percent5;
+                AlisaMethod* am = AlisaMethod::create(percent1,percent2,percent3,percent4,percent5,-1.0, NULL);
+                if(am)
+                {
+                    if(am->getRandomIndex() == 0)
+                    {
+                        Decorator* gold = Decorator::create(Decorator::DT_GOLD);
+                        if(gold)
+                        {
+                            cell->addChild(gold);
+                            m_DecoratorList.pushBack(gold);
+                            RepeatForever* repeat = RepeatForever::create(RotateBy::create(1.0f, Vec3(0, 180, 0)));
+                            gold->runAction(repeat);
+                        }
+                    }
+                    else if(am->getRandomIndex() == 1)
+                    {
+                        Decorator* heart = Decorator::create(Decorator::DT_HEART);
+                        if(heart)
+                        {
+                            cell->addChild(heart);
+                            m_DecoratorList.pushBack(heart);
+                            RepeatForever* repeat = RepeatForever::create(RotateBy::create(1.0f, Vec3(0, 180, 0)));
+                            heart->runAction(repeat);
+                        }
+                    }
+                    else if(am->getRandomIndex() == 2)
+                    {
+                        Decorator* gold = Decorator::create(Decorator::DT_GOLD_BIG);
+                        if(gold)
+                        {
+                            cell->addChild(gold);
+                            m_DecoratorList.pushBack(gold);
+                            RepeatForever* repeat = RepeatForever::create(RotateBy::create(1.0f, Vec3(0, 180, 0)));
+                            gold->runAction(repeat);
+                        }
+                    }
+                    else if(am->getRandomIndex() == 3)
+                    {
+                    }
+                }
+                
+            }
+        }
+    }
+
 }

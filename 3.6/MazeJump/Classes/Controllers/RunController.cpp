@@ -39,7 +39,7 @@ bool RunController::init(Layer* pMainLayer)
     if(pMainLayer == nullptr)
         return false;
     m_pMainLayer = pMainLayer;
-    
+    setDifficultLevel(30);
     m_nInitDifficultLevel = getDifficultLevel();
     
     Skybox* m_pSkyBox = Skybox::create("sky4.png", "sky4.png", "sky4.png", "sky4.png", "sky4.png", "sky4.png");
