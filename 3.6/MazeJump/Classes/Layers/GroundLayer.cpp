@@ -558,6 +558,11 @@ void GroundLayer::checkSildeHandle( bool isTouchDown , bool isToucLeft,bool isTo
     bool isCheckToucRight = false;
     bool isCheckToucUp = false;
     
+    CCLOG("isTouchDown:%d , isToucLeft:%d, isToucRight:%d , isToucUp:%d", isTouchDown ,  isToucLeft, isToucRight ,  isToucUp);
+    CCLOG("m_pArrowDown isVisible:%d ",m_pArrowDown->isVisible());
+    CCLOG("m_pArrowLeft isVisible:%d",m_pArrowLeft->isVisible());
+    CCLOG("m_pArrowRight isVisible:%d",m_pArrowRight->isVisible());
+    CCLOG("m_pArrowUp isVisible:%d",m_pArrowUp->isVisible());
     if (m_pArrowDown || m_pArrowLeft || m_pArrowRight || m_pArrowUp) {
 
         if(isTouchDown && m_pArrowDown->isVisible()

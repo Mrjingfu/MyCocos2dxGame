@@ -14,17 +14,16 @@ class GameScene : public cocos2d::Layer
 {
     friend class GroundLayer;
     friend class Player;
-    GameScene();
+    GameScene(int cuttrnyIndex);
 public:
     // there's no 'id' in cpp, so we recommend returning the class instance pointer
-    static cocos2d::Scene* createScene();
+    static cocos2d::Scene* createScene(int currentIndex);
     
     // Here's a difference. Method 'init' in cocos2d-x returns bool, instead of returning 'id' in cocos2d-iphone
     virtual bool init();
     
     // implement the "static create()" method manually
-    CREATE_FUNC(GameScene);
-    
+
     virtual void onEnter();
     virtual void onExit();
     virtual void update(float delta);
@@ -32,6 +31,8 @@ private:
     void gameWin();
     void gameLose();
     void gameRecordEnd();
+private:
+    int m_currentIndex;
 };
 
 #endif /* defined(__MazeJump__GameScene__) */

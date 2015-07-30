@@ -9,6 +9,7 @@
 #include "GameController.h"
 #include "LevelsManager.h"
 #include "ui/CocosGUI.h"
+#include "AlisaMethod.h"
 USING_NS_CC;
 
 GameController* g_pGameControllerInstance = nullptr;
@@ -30,7 +31,7 @@ GameController::GameController()
 GameController::~GameController()
 {
 }
-bool GameController::init(Layer* pMainLayer)
+bool GameController::init(Layer* pMainLayer,int index)
 {
     if(pMainLayer == nullptr)
         return false;
@@ -42,8 +43,9 @@ bool GameController::init(Layer* pMainLayer)
         return false;
     m_pMainLayer->addChild(m_pMainCamera);
     
-    CCLOG("LEVEL:%d",LevelsManager::getInstance()->getCurrentLevel());
-    if (!createMap(false,LevelsManager::getInstance()->getCurrentLevel())) {
+    int rLevel = randomLevel(index);
+    CCLOG("LEVEL:%d",rLevel);
+    if (!createMap(false,rLevel)) {
         return false;
     }
     
@@ -71,11 +73,35 @@ bool GameController::init(Layer* pMainLayer)
     button->setPressedActionEnabled(true);
     button->addClickEventListener([=](Ref* sender){
         
-        createMap(true,LevelsManager::getInstance()->getCurrentLevel());
+        createMap(true,rLevel);
     });
     m_pMainLayer->addChild(button);
     return true;
 }
+int GameController::randomLevel(int index)
+{
+    int patternIndex = 0;
+    int patternBeginIndex = index ;
+    int patternEndIndex = index + 4;
+    if(patternEndIndex >= LevelsManager::getInstance()->getMaxLevels()-1)
+    {
+        patternBeginIndex = LevelsManager::getInstance()->getMaxLevels() - 6;
+        patternEndIndex = LevelsManager::getInstance()->getMaxLevels() - 1;
+    }
+    float percent5 = 0.1;
+    float percent4 = 0.1;
+    float percent3 = 0.1;
+    float percent2 = 0.2;
+    float percent1 = 1.0 - percent2 - percent3 - percent4 - percent5 ;
+    AlisaMethod* am = AlisaMethod::create(percent1,percent2,percent3,percent4,percent5,-1.0, NULL);
+    if(am)
+    {
+        patternIndex = am->getRandomIndex() + patternBeginIndex;
+        CCASSERT(patternIndex >=patternBeginIndex && patternIndex <= patternEndIndex, "pattern index must between patternBeginIndex and patternEndIndex");
+    }
+    return patternIndex;
+}
+
 void GameController::update(float delta)
 {
 
