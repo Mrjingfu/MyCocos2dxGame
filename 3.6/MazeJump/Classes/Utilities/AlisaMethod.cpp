@@ -118,7 +118,7 @@ bool AlisaMethod::initWithPercentVariableList(float percent1, va_list args)
         else
             break;
     }
-    CCASSERT(total == 1.0f, "the sum of those percents must be 1.0f");
+    CCASSERT(fabsf(total - 1.0f) < FLT_EPSILON, "the sum of those percents must be 1.0f");
     
     return initWithPercentArray(percentArray);
 }
