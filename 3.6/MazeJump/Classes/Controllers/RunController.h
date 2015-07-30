@@ -30,6 +30,9 @@ public:
     int getDifficultLevel();
     void setDifficultLevel(int difficult);
 
+    int getMaxDifficultLevel();
+    void setMaxDifficultLevel(int difficult);
+    
     void cameraTrackPlayer();
     
     void gameOver();
@@ -47,6 +50,7 @@ private:
     
     int             m_nInitDifficultLevel;
     int             m_nDifficultLevel;
+    int             m_nMaxReachDifficultLevel;
 };
 
 #endif /* defined(__MazeJump__RunController__) */

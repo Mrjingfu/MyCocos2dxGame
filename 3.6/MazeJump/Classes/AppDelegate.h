@@ -34,6 +34,9 @@ public:
     @param  the pointer of the application
     */
     virtual void applicationWillEnterForeground();
+private:
+    void resetUserDataTable();
+    void printUserTataTable();
 };
 
 #endif // _APP_DELEGATE_H_

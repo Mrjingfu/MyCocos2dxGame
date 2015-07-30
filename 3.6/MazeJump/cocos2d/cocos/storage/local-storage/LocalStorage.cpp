@@ -67,6 +67,10 @@ void localStorageInit( const std::string& fullpath/* = "" */)
 		else
 			ret = sqlite3_open(fullpath.c_str(), &_db);
 
+        ///sqlcipher
+        const char* key = "MazeJump0730";
+        sqlite3_key(_db, key, strlen(key));
+        
 		localStorageCreateTable();
 
 		// SELECT
