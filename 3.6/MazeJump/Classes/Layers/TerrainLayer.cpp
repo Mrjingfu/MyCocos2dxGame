@@ -56,9 +56,14 @@ bool TerrainLayer::init()
 }
 void TerrainLayer::update(float delta)
 {
-    for (TerrainPatternLayer* layer : m_TerrainPatternList) {
+    for (int i = 0; i<m_TerrainPatternList.size()-1; ++i) {
+        TerrainPatternLayer* layer = m_TerrainPatternList.at(i);
         if(layer)
+        {
             layer->update(delta);
+            if(i == m_nCurrentPatternNum)
+                layer->checkCollisionDecorator();
+        }
     }
 }
 void TerrainLayer::setCurrentPatternNum( int num )
@@ -68,6 +73,12 @@ void TerrainLayer::setCurrentPatternNum( int num )
     if(m_nCurrentPatternNum != num)
     {
         m_nCurrentPatternNum = num;
+        int residueNum = m_nCurrentPatternNum%10;
+        if(residueNum == 1)
+        {
+            int currentDifficultLevel = RunController::getInstance()->getInitDifficultLevel() + m_nCurrentPatternNum/10;
+            RunController::getInstance()->setDifficultLevel(currentDifficultLevel);
+        }
         if(m_nCurrentPatternNum == 0)
         {
             generatePattern(m_nCurrentPatternNum+1);
@@ -217,14 +228,15 @@ bool TerrainLayer::generateStartPoint()
 }
 void TerrainLayer::generatePattern(int count)
 {
-    int difficultLevel = count/10;
     int residueNum = count%10;
     int patternIndex = 1;
     if(residueNum == 1)
+    {
         patternIndex = 1;
+    }
     else
     {
-        if(difficultLevel == 0)
+        if(RunController::getInstance()->getDifficultLevel() == 0)
         {
             int patternBeginIndex = 2;
             int patternEndIndex = 10;
@@ -247,8 +259,8 @@ void TerrainLayer::generatePattern(int count)
         }
         else
         {
-            int patternBeginIndex = difficultLevel + 1;
-            int patternEndIndex = difficultLevel + 10;
+            int patternBeginIndex = RunController::getInstance()->getDifficultLevel() + 1;
+            int patternEndIndex = RunController::getInstance()->getDifficultLevel() + 10;
             if(patternEndIndex >= PatternsManager::getInstance()->getMaxPatterns()-1)
             {
                 patternBeginIndex = PatternsManager::getInstance()->getMaxPatterns() - 11;

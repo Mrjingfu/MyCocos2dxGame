@@ -19,7 +19,7 @@ Runner* Runner::create()
         runner->setTexture("strength.png");
         runner->_contentSize = runner->getBoundingBox().size;
         runner->m_fRadius = runner->_contentSize.width*0.5f;
-        runner->setState(RS_IDLE);
+        runner->setPositionY(4);
         
         OutlineEffect3D* outline = OutlineEffect3D::create();
         outline->setOutlineColor(Vec3(0.3f, 0.3f, 0.3f));

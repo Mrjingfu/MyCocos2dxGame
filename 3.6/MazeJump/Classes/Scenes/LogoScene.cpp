@@ -82,6 +82,6 @@ void LogoScene::precache()
 void LogoScene::endcache()
 {
     m_pLogoSprite->setVisible(false);
-    auto scene = GameScene::createScene();
+    auto scene = MainScene::createScene();
     Director::getInstance()->replaceScene(scene);
 }

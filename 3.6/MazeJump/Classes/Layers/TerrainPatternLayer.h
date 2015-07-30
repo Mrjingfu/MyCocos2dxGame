@@ -11,6 +11,7 @@
 
 #include "cocos2d.h"
 #include "TerrainCell.h"
+#include "Decorator.h"
 #include "Runner.h"
 class TerrainPatternLayer : public cocos2d::Layer
 {
@@ -42,11 +43,14 @@ public:
 
     bool checkRunnerDrop();
     void beginCollapse();
+    void checkCollisionDecorator();
 private:
     void onLand(TerrainCell* cell);
+    void generateDecorator(TerrainCell* cell, int patternIndex);
 private:
     int         m_nIndex;
     cocos2d::Vector<TerrainCell*>   m_TerrainCellList;
+    cocos2d::Vector<Decorator*>   m_DecoratorList;
     FadeInType  m_fadeInType;
     PatternType m_patternType;
 };
