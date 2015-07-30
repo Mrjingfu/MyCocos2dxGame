@@ -1,0 +1,12 @@
+SQLCipher for Android 2.2.0
+
+6/27/2013
+
+The follow highlights changes included in this release:
+
+- Based on SQLite version 3.7.17
+- SQLCipher core 2.2.0
+- Removed usage of android::MemoryBase in CursorWindow
+- Fix for SQL injection when keying database
+- Support for Cursor.getType(...)
+- Support for SQLiteStatement.executeUpdateDelete()

@@ -7,13 +7,13 @@
 //
 
 #include "LevelsManager.h"
+#include "storage/local-storage/LocalStorage.h"
 USING_NS_CC;
 
 LevelsManager* g_pLevelsManagerInstance = nullptr;
 LevelsManager::LevelsManager()
 {
-    m_nMaxReachLevel = UserDefault::getInstance()->getIntegerForKey("MaxReachLevel", 0);
-    m_nCurrentLevel = m_nMaxReachLevel;
+    m_nCurrentLevel = 0;
 }
 LevelsManager::~LevelsManager()
 {
@@ -67,15 +67,6 @@ void LevelsManager::setCurrentLevel(int currentLevel)
     if(currentLevel >= m_Levels.size())
         return;
     m_nCurrentLevel = currentLevel;
-    if(m_nCurrentLevel > m_nMaxReachLevel)
-        setMaxReachLevel(m_nCurrentLevel);
-}
-void LevelsManager::setMaxReachLevel(int maxReachLevel)
-{
-    if(maxReachLevel >= m_Levels.size())
-        return;
-    m_nMaxReachLevel = maxReachLevel;
-    UserDefault::getInstance()->setIntegerForKey("MaxReachLevel", m_nMaxReachLevel);
 }
 std::string LevelsManager::getLevelName(int level)
 {

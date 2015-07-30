@@ -9,6 +9,7 @@
 #include "RunController.h"
 #include "ui/CocosGUI.h"
 #include "MainScene.h"
+#include "storage/local-storage/LocalStorage.h"
 USING_NS_CC;
 
 RunController* g_pRunControllerInstance = nullptr;
@@ -30,6 +31,7 @@ RunController::RunController()
     m_pCloud3           = nullptr;
     m_nDifficultLevel   = 0;
     m_nInitDifficultLevel = 0;
+    m_nMaxReachDifficultLevel = 0;
 }
 RunController::~RunController()
 {
@@ -39,7 +41,6 @@ bool RunController::init(Layer* pMainLayer)
     if(pMainLayer == nullptr)
         return false;
     m_pMainLayer = pMainLayer;
-    setDifficultLevel(30);
     m_nInitDifficultLevel = getDifficultLevel();
     
     Skybox* m_pSkyBox = Skybox::create("sky4.png", "sky4.png", "sky4.png", "sky4.png", "sky4.png", "sky4.png");
@@ -111,14 +112,27 @@ void RunController::destroy()
 }
 int RunController::getDifficultLevel()
 {
-    m_nDifficultLevel = UserDefault::getInstance()->getIntegerForKey("LastReachDifficultLevel", 0);
+    m_nDifficultLevel = Value(localStorageGetItem("LastReachDifficultLevel")).asInt();
     return m_nDifficultLevel;
 }
 void RunController::setDifficultLevel(int difficult)
 {
     m_nDifficultLevel = difficult;
-    UserDefault::getInstance()->setIntegerForKey("LastReachDifficultLevel", m_nDifficultLevel);
-    CCLOG("Difficult Level %d", m_nDifficultLevel);
+    localStorageSetItem("LastReachDifficultLevel", Value(m_nDifficultLevel).asString());
+    CCLOG("Current Difficult Level %d", m_nDifficultLevel);
+    if(m_nDifficultLevel > getMaxDifficultLevel())
+        setMaxDifficultLevel(m_nDifficultLevel);
+}
+int RunController::getMaxDifficultLevel()
+{
+    m_nMaxReachDifficultLevel = Value(localStorageGetItem("MaxReachDifficultLevel")).asInt();
+    return m_nMaxReachDifficultLevel;
+}
+void RunController::setMaxDifficultLevel(int difficult)
+{
+    m_nMaxReachDifficultLevel = difficult;
+    localStorageSetItem("LastReachDifficultLevel", Value(m_nMaxReachDifficultLevel).asString());
+    CCLOG("Max reach Difficult Level %d", m_nMaxReachDifficultLevel);
 }
 void RunController::cameraTrackPlayer()
 {

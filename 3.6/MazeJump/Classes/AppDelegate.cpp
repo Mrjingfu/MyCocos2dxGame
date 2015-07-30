@@ -1,6 +1,7 @@
 #include "AppDelegate.h"
 #include "LogoScene.h"
 #include "SimpleAudioEngine.h"
+#include "storage/local-storage/LocalStorage.h"
 USING_NS_CC;
 using namespace CocosDenshion;
 AppDelegate::AppDelegate() {
@@ -9,6 +10,7 @@ AppDelegate::AppDelegate() {
 
 AppDelegate::~AppDelegate() 
 {
+    localStorageFree();
 }
 
 //if you want a different context,just modify the value of glContextAttrs
@@ -39,6 +41,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     }
 
     std::vector<std::string> searchPaths;
+    searchPaths.push_back("database");
     searchPaths.push_back("maps");
     searchPaths.push_back("lang");
     searchPaths.push_back("fonts");
@@ -50,11 +53,26 @@ bool AppDelegate::applicationDidFinishLaunching() {
     searchPaths.push_back("models");
     FileUtils::getInstance()->setSearchPaths(searchPaths);
     
+    //load database
+    std::string path = FileUtils::getInstance()->fullPathForFilename("userdata.db");
+    localStorageInit(path);
+#if COCOS2D_DEBUG
+    // turn on display FPS
+    //resetUserDataTable();
+    printUserTataTable();
+#endif
+    //
+    
     //director->setClearColor(Color4F(153.0f/255.0f, 204.0f/255.0f, 1.0f, 1.0f));
     director->setClearColor(Color4F(0.8f, 0.8f, 0.8f, 1.0f));
 
+#if COCOS2D_DEBUG
     // turn on display FPS
     director->setDisplayStats(true);
+#else
+    // turn off display FPS
+    director->setDisplayStats(false);
+#endif
 
     // set FPS. the default value is 1.0/60 if you don't call this
     director->setAnimationInterval(1.0 / 60);
@@ -84,4 +102,18 @@ void AppDelegate::applicationWillEnterForeground() {
 
     // if you use SimpleAudioEngine, it must resume here
     SimpleAudioEngine::getInstance()->resumeBackgroundMusic();
+}
+void AppDelegate::resetUserDataTable()
+{
+    localStorageSetItem("MaxReachDifficultLevel", "0");
+    localStorageSetItem("LastReachDifficultLevel", "0");
+    localStorageSetItem("UserHeartNum", "0");
+    localStorageSetItem("UserGoldNum", "0");
+}
+void AppDelegate::printUserTataTable()
+{
+    CCLOG("MaxReachDifficultLevel : %s", localStorageGetItem("MaxReachDifficultLevel").c_str());
+    CCLOG("LastReachDifficultLevel : %s", localStorageGetItem("LastReachDifficultLevel").c_str());
+    CCLOG("UserHeartNum : %s", localStorageGetItem("UserHeartNum").c_str());
+    CCLOG("UserGoldNum : %s", localStorageGetItem("UserGoldNum").c_str());
 }

@@ -24,17 +24,17 @@ public:
     
     int getCurrentLevel() const { return m_nCurrentLevel; }
     void setCurrentLevel(int currentLevel);
-    int getMaxReachLevel() const { return m_nMaxReachLevel; }
     
     std::string getLevelName(int level);
     std::string getLevelSkyTextureName(int level);
     std::string getLevelPlatformModelName(int level);
+
     int getMaxLevels();
 private:
     void setMaxReachLevel(int maxReachLevel);
+
 private:
     cocos2d::ValueVector    m_Levels;
-    int                     m_nMaxReachLevel;
     int                     m_nCurrentLevel;
 };
 
