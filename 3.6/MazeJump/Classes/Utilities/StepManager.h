@@ -20,7 +20,7 @@ protected:
 public:
     typedef enum
     {
-        lEVEL_LOSE =0,
+        LEVEL_LOSE =0,
         LEVEL_WIN,
         LEVEL_UNKNOWN
     }
