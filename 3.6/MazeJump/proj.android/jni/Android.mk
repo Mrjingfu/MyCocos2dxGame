@@ -33,6 +33,7 @@ LOCAL_C_INCLUDES := $(FILE_INCLUDES)
 
 
 LOCAL_STATIC_LIBRARIES := cocos2dx_static
+LOCAL_STATIC_LIBRARIES += cocos_localstorage_static
 #LOCAL_STATIC_LIBRARIES += cocos_ui_static
 #LOCAL_STATIC_LIBRARIES += cocos_extension_static
 # _COCOS_LIB_ANDROID_BEGIN
@@ -41,5 +42,6 @@ LOCAL_STATIC_LIBRARIES := cocos2dx_static
 include $(BUILD_SHARED_LIBRARY)
 
 $(call import-module,.)
+$(call import-module,storage/local-storage)
 # _COCOS_LIB_IMPORT_ANDROID_BEGIN
 # _COCOS_LIB_IMPORT_ANDROID_END

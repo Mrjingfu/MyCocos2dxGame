@@ -13,21 +13,24 @@
 #include "StepManager.h"
 USING_NS_CC;
 
-Scene* GameScene::createScene()
+Scene* GameScene::createScene(int currentIndex)
 {
-    // 'scene' is an autorelease object
+    GameScene *pRet = new(std::nothrow) GameScene(currentIndex);
     auto scene = Scene::create();
-    
-    // 'layer' is an autorelease object
-    auto layer = GameScene::create();
-    
-    // add layer as a child to scene
-    scene->addChild(layer);
-    
-    // return the scene
-    return scene;
+    if (pRet && pRet->init())
+    {
+        pRet->autorelease();
+        scene->addChild(pRet);
+        return scene;
+    }
+    else
+    {
+        delete pRet;
+        pRet = NULL;
+        return NULL;
+    }
 }
-GameScene::GameScene()
+GameScene::GameScene(int currentIndex):m_currentIndex(currentIndex)
 {
 }
 // on "init" you need to initialize your instance
@@ -46,7 +49,7 @@ void GameScene::onEnter()
 
     Layer::onEnter();
     scheduleUpdate();
-    if(!GameController::getInstance()->init(this))
+    if(!GameController::getInstance()->init(this,m_currentIndex))
         CCLOGERROR("GameController init failed!");
     
     
@@ -64,21 +67,21 @@ void GameScene::update(float delta)
 void GameScene::gameWin()
 {
     CCLOG("gameWin");
-    StepManager::getInstance()->setLevelStep(LevelsManager::getInstance()->getCurrentLevel(),StepManager::LEVEL_WIN);
-    LevelsManager::getInstance()->setCurrentLevel(LevelsManager::getInstance()->getCurrentLevel()+1);
-    GameController::getInstance()->destroy();
-    GameController::getInstance()->init(this);  
+//    StepManager::getInstance()->setLevelStep(LevelsManager::getInstance()->getCurrentLevel(),StepManager::LEVEL_WIN);
+//    LevelsManager::getInstance()->setCurrentLevel(LevelsManager::getInstance()->getCurrentLevel()+1);
+//    GameController::getInstance()->destroy();
+//    GameController::getInstance()->init(this,m_currentIndex);
 }
 void GameScene::gameLose()
 {
     CCLOG("gameLose");
-    GameController::getInstance()->destroy();
-    GameController::getInstance()->init(this);
+//    GameController::getInstance()->destroy();
+//    GameController::getInstance()->init(this,m_currentIndex);
 }
 void GameScene::gameRecordEnd()
 {
     //测试
-    LevelsManager::getInstance()->setCurrentLevel(LevelsManager::getInstance()->getCurrentLevel()+1);
-    GameController::getInstance()->destroy();
-    GameController::getInstance()->init(this);
+//    LevelsManager::getInstance()->setCurrentLevel(LevelsManager::getInstance()->getCurrentLevel()+1);
+//    GameController::getInstance()->destroy();
+//    GameController::getInstance()->init(this,m_currentIndex);
 }

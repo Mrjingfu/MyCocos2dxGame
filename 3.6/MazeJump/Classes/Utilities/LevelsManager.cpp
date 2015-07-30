@@ -109,3 +109,7 @@ std::string LevelsManager::getLevelPlatformModelName(int level)
     ValueMap map = m_Levels.at(level).asValueMap();
     return map.at("PlatformModel").asString();
 }
+int LevelsManager::getMaxLevels()
+{
+    return m_Levels.size();
+}

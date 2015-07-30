@@ -41,7 +41,6 @@ bool AppDelegate::applicationDidFinishLaunching() {
     }
 
     std::vector<std::string> searchPaths;
-    searchPaths.push_back("database");
     searchPaths.push_back("maps");
     searchPaths.push_back("lang");
     searchPaths.push_back("fonts");
@@ -54,10 +53,10 @@ bool AppDelegate::applicationDidFinishLaunching() {
     FileUtils::getInstance()->setSearchPaths(searchPaths);
     
     //load database
-    std::string path = FileUtils::getInstance()->fullPathForFilename("userdata.db");
+    std::string path = FileUtils::getInstance()->getWritablePath() + "userdata.db";
+    CCLOG("path:%s",path.c_str());
     localStorageInit(path);
 #if COCOS2D_DEBUG
-    // turn on display FPS
     //resetUserDataTable();
     printUserTataTable();
 #endif

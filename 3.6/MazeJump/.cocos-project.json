@@ -1,3 +1,4 @@
 {
-    "project_type": "cpp"
+    "project_type": "cpp",
+    "custom_step_script": "proj.android/custom_script.py"
 }

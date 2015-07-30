@@ -28,6 +28,11 @@ public:
     std::string getLevelName(int level);
     std::string getLevelSkyTextureName(int level);
     std::string getLevelPlatformModelName(int level);
+
+    int getMaxLevels();
+private:
+    void setMaxReachLevel(int maxReachLevel);
+
 private:
     cocos2d::ValueVector    m_Levels;
     int                     m_nCurrentLevel;

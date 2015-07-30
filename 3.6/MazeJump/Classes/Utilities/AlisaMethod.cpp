@@ -186,7 +186,7 @@ void AlisaMethod::printAlisaArray()
 //{
 //    am->printProbArray();
 //    am->printAlisaArray();
-//    int a,b,c,d = 0;
+//    int a=0,b=0,c=0,d = 0;
 //    for (int i = 0; i<10000; ++i) {
 //        int index = am->getRandomIndex();
 //        if(index == 0)
