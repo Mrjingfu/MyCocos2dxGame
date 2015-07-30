@@ -54,7 +54,6 @@ private:
 private:
     cocos2d::Vec2   m_TouchBegin;
     cocos2d::Vec2   m_TouchEnd;
-    int             m_nTouchCount;
     
     int             m_nCurrentPatternNum;
     int             m_nColumn;  //-2, -1, -, 1, 2

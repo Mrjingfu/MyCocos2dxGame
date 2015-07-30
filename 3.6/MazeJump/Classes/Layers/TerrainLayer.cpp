@@ -28,7 +28,6 @@ TerrainLayer* TerrainLayer::create()
 }
 TerrainLayer::TerrainLayer()
 {
-    m_nTouchCount     = 0;
     m_fCellBaseRadius     = 4.0f;
     m_nCurrentPatternNum = -1;
     m_nColumn = 0;
@@ -115,19 +114,8 @@ bool TerrainLayer::checkRunnerDrop()
 bool TerrainLayer::onTouchBegan(Touch *touch, Event *event)
 {
     if(!touch)
-        return true;
+        return false;
     m_TouchBegin = touch->getLocationInView();
-    if(m_nTouchCount == 0)
-    {
-        m_nTouchCount = 1;
-        scheduleOnce(schedule_selector(TerrainLayer::clearClick), 0.2f);
-    }
-    else if(m_nTouchCount == 1)
-    {
-        jumpSuper();
-        m_nTouchCount = 0;
-    }
-    
     return true;
 }
 void TerrainLayer::onTouchMoved(cocos2d::Touch *touch, cocos2d::Event *event)
@@ -142,6 +130,22 @@ void TerrainLayer::onTouchEnded(Touch *touch, Event *event)
     if(!touch)
         return;
     m_TouchEnd = touch->getLocationInView();
+    float distanceX = fabsf(m_TouchEnd.x - m_TouchBegin.x);
+    float distanceY = fabsf(m_TouchEnd.y - m_TouchBegin.y);
+    if(distanceX>10 && distanceX >= distanceY)
+    {
+        if(m_TouchEnd.x < m_TouchBegin.x)
+            jumpLeft();
+        else if(m_TouchEnd.x > m_TouchBegin.x)
+            jumpRight();
+    }
+    else
+    {
+        if(distanceY>10 && m_TouchEnd.y < m_TouchBegin.y)
+            jumpSuper();
+        else
+            jumpForward();
+    }
 }
 void TerrainLayer::jumpLeft()
 {
@@ -198,24 +202,7 @@ void TerrainLayer::jumpLocal()
     if(runner && runner->getState() == Runner::RS_IDLE)
         runner->setState(Runner::RS_MOVE_JUMPLOCAL);
 }
-void TerrainLayer::clearClick(float time)
-{
-    if(m_nTouchCount == 1)
-    {
-        float distanceX = fabsf(m_TouchEnd.x - m_TouchBegin.x);
-        float distanceY = fabsf(m_TouchEnd.y - m_TouchBegin.y);
-        if(distanceX>10 && distanceX >= distanceY)
-        {
-            if(m_TouchEnd.x < m_TouchBegin.x)
-                jumpLeft();
-            else if(m_TouchEnd.x > m_TouchBegin.x)
-                jumpRight();
-        }
-        else
-            jumpForward();
-        m_nTouchCount = 0;
-    }
-}
+
 bool TerrainLayer::generateStartPoint()
 {
     TerrainPatternLayer* layer = TerrainPatternLayer::create(0);

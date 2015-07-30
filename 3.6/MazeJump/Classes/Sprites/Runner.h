@@ -24,6 +24,12 @@ public:
         RS_MOVE_DROP,
         RS_UNKNOWN
     } RunnerState;
+    typedef enum {
+        RD_FORWARD = 0,
+        RD_LEFT,
+        RD_RIGHT,
+        RD_UNKNOWN
+    } RunnerDir;
 protected:
     Runner();
 public:
@@ -59,6 +65,7 @@ private:
     void checkSafe();
 protected:
     RunnerState     m_curState;
+    RunnerDir       m_dir;
     float           m_fRadius;
     mutable cocos2d::AABB    m_modifyAABB;
 };
