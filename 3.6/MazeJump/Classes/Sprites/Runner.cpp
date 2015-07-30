@@ -35,6 +35,7 @@ Runner* Runner::create()
 Runner::Runner()
 {
     m_curState  = RS_UNKNOWN;
+    m_dir       = RD_FORWARD;
     m_fRadius   = 2.5f;
 }
 void Runner::update(float delta)
@@ -152,6 +153,7 @@ void Runner::onEnterMoveLeft()
         CallFunc* callFunc = CallFunc::create(CC_CALLBACK_0(Runner::checkSafe,this));
         Sequence* sequence = Sequence::create(spawn, callFunc, NULL);
         runAction(sequence);
+        m_dir = RD_LEFT;
     }
 }
 void Runner::onEnterMoveRight()
@@ -175,6 +177,7 @@ void Runner::onEnterMoveRight()
         CallFunc* callFunc = CallFunc::create(CC_CALLBACK_0(Runner::checkSafe,this));
         Sequence* sequence = Sequence::create(spawn, callFunc, NULL);
         runAction(sequence);
+        m_dir = RD_RIGHT;
     }
 }
 void Runner::onEnterMoveForward()
@@ -199,6 +202,7 @@ void Runner::onEnterMoveForward()
         CallFunc* callFunc = CallFunc::create(CC_CALLBACK_0(Runner::checkSafe,this));
         Sequence* sequence = Sequence::create(spawn, callFunc, NULL);
         runAction(sequence);
+        m_dir = RD_FORWARD;
     }
 
 }
@@ -208,22 +212,31 @@ void Runner::onEnterMoveSuperJump()
     if(terrainLayer)
     {
         float cellRadius = terrainLayer->getCellBaseRadius();
-        
+        this->stopAllActions();
         EaseSineOut* scaleTo1 = EaseSineOut::create(ScaleTo::create(0.05f, 1, 0.6f, 1));
-        EaseSineIn* scaleTo2 = EaseSineIn::create(ScaleTo::create(0.075f, 1, 1.0f,1));
+        EaseSineIn* scaleTo2 = EaseSineIn::create(ScaleTo::create(0.015f, 1, 1.0f,1));
         Sequence* sequenceScale = Sequence::create(scaleTo1, scaleTo2, NULL);
         
         DelayTime* delay = DelayTime::create(0.05f);
-        RotateTo* ratateTo = RotateTo::create(0.075f, Vec3(0,0,0));
+        RotateTo* ratateTo = RotateTo::create(0.15f, Vec3(0,0,0));
         Sequence* sequenceRotate = Sequence::create(delay, ratateTo, NULL);
+        EaseSineOut* rotateBy = nullptr;
+        if(m_dir == RD_FORWARD)
+            rotateBy = EaseSineOut::create(RotateBy::create(0.35f, Vec3(-360,0,0)));
+        else if(m_dir == RD_LEFT)
+            rotateBy = EaseSineOut::create(RotateBy::create(0.35f, Vec3(-360,-90,0)));
+        else if(m_dir == RD_RIGHT)
+            rotateBy = EaseSineOut::create(RotateBy::create(0.35f, Vec3(-360,90,0)));
+        Spawn* spawnRotateBy = Spawn::create(sequenceRotate, rotateBy, NULL);
         
         EaseSineOut* moveUp = EaseSineOut::create(MoveTo::create(0.15f, Vec3(getPositionX(), getPositionY() + cellRadius*2, getPositionZ() - cellRadius*4)));
         EaseSineIn* moveDown = EaseSineIn::create(MoveTo::create(0.15f, Vec3(getPositionX(), getPositionY(), getPositionZ() - cellRadius*4)));
         Sequence* sequenceJump = Sequence::create(delay, moveUp, moveDown, NULL);
-        Spawn* spawn = Spawn::create(sequenceScale, sequenceRotate, sequenceJump, NULL);
+        Spawn* spawn = Spawn::create(sequenceScale, spawnRotateBy, sequenceJump, NULL);
         CallFunc* callFunc = CallFunc::create(CC_CALLBACK_0(Runner::checkSafe,this));
         Sequence* sequence = Sequence::create(spawn, callFunc, NULL);
         runAction(sequence);
+        m_dir = RD_FORWARD;
     }
 }
 void Runner::onEnterMoveJumpLocal()
