@@ -88,13 +88,25 @@ void TerrainLayer::setCurrentPatternNum( int num )
         }
         if(m_nCurrentPatternNum == 0)
         {
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+            generatePattern(m_nCurrentPatternNum+1);
+            generatePattern(m_nCurrentPatternNum+2);
+            generatePattern(m_nCurrentPatternNum+3);
+#else
             generatePattern(m_nCurrentPatternNum+1);
             generatePattern(m_nCurrentPatternNum+2);
             generatePattern(m_nCurrentPatternNum+3);
             generatePattern(m_nCurrentPatternNum+4);
+#endif
         }
         else
+        {
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+            generatePattern(m_nCurrentPatternNum+3);
+#else
             generatePattern(m_nCurrentPatternNum+4);
+#endif 
+        }
         collapseCurrentPattern();
     }
 }
