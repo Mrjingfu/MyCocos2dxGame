@@ -34,6 +34,7 @@ GroundCell::GroundCell(int level):m_carryProp(-1),m_level(level)
 {
     m_ModelName = "";
     m_reviveCell = nullptr;
+    m_deType = Decorator::DecoratorType::DT_UNKNOWN;
 }
 bool GroundCell::init()
 {
@@ -48,13 +49,13 @@ void GroundCell::setType(CellType type)
     
     switch (m_Type) {
         case CT_CARRY:
-            m_ModelName = "platform2.c3b";
+            m_ModelName = "platform5.c3b";
             break;
         case CT_JUMP:
             m_ModelName = "platform2.c3b";
             break;
         case CT_REVIVE:
-            m_ModelName =  "platform3.c3b";
+            m_ModelName =  "platform4.c3b";
             break;
         case CT_NOT:
         case CT_HIDE:

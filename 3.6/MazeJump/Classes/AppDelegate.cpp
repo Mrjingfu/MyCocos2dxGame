@@ -1,6 +1,7 @@
 #include "AppDelegate.h"
 #include "LogoScene.h"
 #include "SimpleAudioEngine.h"
+#include "GameConst.h"
 #include "storage/local-storage/LocalStorage.h"
 USING_NS_CC;
 using namespace CocosDenshion;
@@ -104,15 +105,15 @@ void AppDelegate::applicationWillEnterForeground() {
 }
 void AppDelegate::resetUserDataTable()
 {
-    localStorageSetItem("MaxReachDifficultLevel", "0");
-    localStorageSetItem("LastReachDifficultLevel", "0");
-    localStorageSetItem("UserHeartNum", "0");
-    localStorageSetItem("UserGoldNum", "0");
+    localStorageSetItem(USER_MAX_LEVEL, "0");
+    localStorageSetItem(USER_LAST_LEVEL, "0");
+    localStorageSetItem(USER_HEART_NUM, "0");
+    localStorageSetItem(USER_GOLD_NUM, "0");
 }
 void AppDelegate::printUserTataTable()
 {
-    CCLOG("MaxReachDifficultLevel : %s", localStorageGetItem("MaxReachDifficultLevel").c_str());
-    CCLOG("LastReachDifficultLevel : %s", localStorageGetItem("LastReachDifficultLevel").c_str());
-    CCLOG("UserHeartNum : %s", localStorageGetItem("UserHeartNum").c_str());
-    CCLOG("UserGoldNum : %s", localStorageGetItem("UserGoldNum").c_str());
+    CCLOG("%s : %s", USER_MAX_LEVEL.c_str(),localStorageGetItem(USER_MAX_LEVEL).c_str());
+    CCLOG("%s : %s", USER_LAST_LEVEL.c_str(),localStorageGetItem(USER_LAST_LEVEL).c_str());
+    CCLOG("%s : %s", USER_HEART_NUM.c_str(),localStorageGetItem(USER_HEART_NUM).c_str());
+    CCLOG("%s : %s", USER_GOLD_NUM.c_str(),localStorageGetItem(USER_GOLD_NUM).c_str());
 }

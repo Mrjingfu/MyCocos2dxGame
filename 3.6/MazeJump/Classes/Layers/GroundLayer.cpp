@@ -12,6 +12,9 @@
 #include "GameScene.h"
 #include "StepManager.h"
 #include "LevelsManager.h"
+#include "AlisaMethod.h"
+#include "GameConst.h"
+#include "storage/local-storage/LocalStorage.h"
 USING_NS_CC;
 using namespace CocosDenshion;
 GroundLayer* GroundLayer::create(int level,bool _isPlaying)
@@ -75,7 +78,7 @@ bool GroundLayer::init(int level)
                     cell->setIndexY(i);
                     addChild( cell );
                     m_GroundCellList.pushBack(cell);
-                    
+                    generateDecorator(cell);
                     switch (type) {
                         case GroundCell::CT_HIDE:
                             cell->setVisible(false);
@@ -306,7 +309,7 @@ void GroundLayer::flipIndexCell(int indexX, int indexY)
         }
         SimpleAudioEngine::getInstance()->playEffect("stoneflip.wav");
         CallFunc* callFunc = CallFunc::create(CC_CALLBACK_0(GroundLayer::setCurrentCellTypeOK,this));
-        Sequence* sequence = Sequence::create(ratateTo, callFunc, NULL);
+        Sequence* sequence = Sequence::create(ratateTo,callFunc, CallFuncN::create( CC_CALLBACK_1(GroundLayer::decoratorOpe, this, m_pCurrentCell)),NULL);
         GroundCell* reviceCell = m_pCurrentCell->getReviveCell();
         if (reviceCell)
         {
@@ -333,7 +336,8 @@ void GroundLayer::carryCell(int indexX,int indexY)
     }
     RotateTo* ratateTo = RotateTo::create(0.5f, Vec3(180,0,0));
     m_pCurrentCell->setType(GroundCell::CT_OK);
-    m_pCurrentCell->runAction(ratateTo);
+    CallFunc* callFunc = CallFuncN::create( CC_CALLBACK_1(GroundLayer::decoratorOpe, this, m_GroundCellList.at(index)));
+    m_pCurrentCell->runAction(Sequence::createWithTwoActions(ratateTo,callFunc));
 
 }
 void GroundLayer::setCurrentCellTypeOK()
@@ -546,7 +550,7 @@ void GroundLayer::seleckStartRolePlace(int index)
         SimpleAudioEngine::getInstance()->playEffect("stoneflip.wav");
         RotateTo* ratateTo = RotateTo::create(0.5f, Vec3(180,0,0));
         CallFunc* callFunc = CallFunc::create(CC_CALLBACK_0(GroundLayer::setCurrentCellTypeOK,this));
-        Sequence* sequence = Sequence::create(ratateTo, callFunc, NULL);
+        Sequence* sequence = Sequence::create(ratateTo,callFunc,CallFuncN::create( CC_CALLBACK_1(GroundLayer::decoratorOpe, this, m_GroundCellList.at(index))),NULL);
         cell->runAction(sequence);
     }
 
@@ -676,4 +680,143 @@ void GroundLayer::setRecordState(RecordState state)
         default:
             break;
     }
+}
+void GroundLayer::generateDecorator(GroundCell* cell)
+{
+        int index = cell->getIndexY()*m_MapSize.height + cell->getIndexX();
+        int pattentIndex = m_Level;
+        if (pattentIndex == 0)
+            pattentIndex =1;
+        if(m_Level <= 11)
+        {
+//            float percent1 = 0.009*m_Level;
+//            float percent2 = 0.0005*m_Level;
+            float percent1 = 0.3;
+            float percent2 = 0.4;
+            float percent3 = 1.0 - percent1 - percent2;
+            AlisaMethod* am = AlisaMethod::create(percent1,percent2,percent3,-1.0, NULL);
+            if(am)
+            {
+                if(am->getRandomIndex() == 0)
+                {
+                    
+                    
+                    Decorator* gold = Decorator::create(Decorator::DT_GOLD);
+                    if(gold)
+                    {
+                        gold->setPosition3D(Vec3(0, -4, 0));
+                        gold->setRotation3D(Vec3(180,0,0));
+                        cell->addChild(gold);
+                        cell->setDeType(Decorator::DT_GOLD);
+                        m_DecoratorList.insert(index, gold);
+                        RepeatForever* repeat = RepeatForever::create(RotateBy::create(1.0f, Vec3(0, 180, 0)));
+                        gold->runAction(repeat);
+                    }
+                }
+                else if(am->getRandomIndex() == 1)
+                {
+                    Decorator* heart = Decorator::create(Decorator::DT_HEART);
+                    if(heart)
+                    {
+                        heart->setPosition3D(Vec3(0, -4, 0));
+                        heart->setRotation3D(Vec3(180,0,0));
+                        cell->addChild(heart);
+                        cell->setDeType(Decorator::DT_HEART);
+                        m_DecoratorList.insert(index, heart);
+                        RepeatForever* repeat = RepeatForever::create(RotateBy::create(1.0f, Vec3(0, 180, 0)));
+                        heart->runAction(repeat);
+                    }
+                }
+            }
+        }else
+        {
+//            float percent1 = 0.005*m_Level;
+//            float percent2 = 0.0001*m_Level;
+//            float percent3 = 0.0005*m_Level;
+//            float percent4 = 0.001*m_Level;
+            float percent1 = 0.4;
+            float percent2 = 0.1;
+            float percent3 = 0.1;
+            float percent4 = 0.1;
+
+            float percent5 = 1.0 - percent1 - percent2 - percent3 - percent4 - percent5;
+            AlisaMethod* am = AlisaMethod::create(percent1,percent2,percent3,percent4,percent5,-1.0, NULL);
+            if(am)
+            {
+                if(am->getRandomIndex() == 0)
+                {
+                    Decorator* gold = Decorator::create(Decorator::DT_GOLD);
+                    if(gold)
+                    {
+                        gold->setPosition3D(Vec3(0, -4, 0));
+                        gold->setRotation3D(Vec3(180,0,0));
+                        cell->addChild(gold);
+                        cell->setDeType(Decorator::DT_GOLD);
+                        m_DecoratorList.insert(index, gold);
+                        RepeatForever* repeat = RepeatForever::create(RotateBy::create(1.0f, Vec3(0, 180, 0)));
+                        gold->runAction(repeat);
+                    }
+                }
+                else if(am->getRandomIndex() == 1)
+                {
+                    Decorator* heart = Decorator::create(Decorator::DT_HEART);
+                    if(heart)
+                    {
+                        heart->setPosition3D(Vec3(0, -4, 0));
+                        heart->setRotation3D(Vec3(180,0,0));
+                        cell->addChild(heart);
+                        cell->setDeType(Decorator::DT_HEART);
+                        m_DecoratorList.insert(index, heart);
+                        RepeatForever* repeat = RepeatForever::create(RotateBy::create(1.0f, Vec3(0, 180, 0)));
+                        heart->runAction(repeat);
+                    }
+                }
+                else if(am->getRandomIndex() == 2)
+                {
+                    Decorator* gold = Decorator::create(Decorator::DT_GOLD_BIG);
+                    if(gold)
+                    {
+                        gold->setPosition3D(Vec3(0, -4, 0));
+                        cell->addChild(gold);
+                        cell->setDeType(Decorator::DT_GOLD_BIG);
+                        m_DecoratorList.insert(index, gold);
+                        RepeatForever* repeat = RepeatForever::create(RotateBy::create(1.0f, Vec3(0, 180, 0)));
+                        gold->runAction(repeat);
+                    }
+                }
+                else if(am->getRandomIndex() == 3)
+                {
+                }
+            }
+        }
+}
+void GroundLayer::decoratorOpe(Node* node,GroundCell* cell)
+{
+    int index = cell->getIndexY()*m_MapSize.height + cell->getIndexX();
+    
+    if (m_pCurrentCell->getDetype() != Decorator::DecoratorType::DT_UNKNOWN) {
+        Decorator* decorator = m_DecoratorList.at(index);
+        if (decorator) {
+            EaseBackInOut* moveTo = EaseBackInOut::create(MoveTo::create(0.7f, Vec3(decorator->getPositionX(), decorator->getPositionY() -12, decorator->getPositionZ())));
+            EaseBackInOut* scaleTo = EaseBackInOut::create(ScaleTo::create(0.7f, 0.5f));
+            Spawn* spawn = Spawn::create(moveTo, scaleTo, NULL);
+            CallFunc* callfunc = CallFunc::create(CC_CALLBACK_0(Decorator::deleteSelf,decorator));
+            Sequence* sequece = Sequence::create(spawn, callfunc, NULL);
+            decorator->runAction(sequece);
+            std::string type;
+            switch (m_pCurrentCell->getDetype()) {
+                case Decorator::DecoratorType::DT_GOLD:
+                    type = USER_GOLD_NUM;
+                    break;
+                case Decorator::DecoratorType::DT_HEART:
+                    type = USER_HEART_NUM;
+                    break;
+                default:
+                    break;
+            }
+            localStorageSetItem(type, Value(Value(localStorageGetItem(type)).asInt()+1).asString());
+            m_DecoratorList.erase(index);
+        }
+    }
+    
 }
