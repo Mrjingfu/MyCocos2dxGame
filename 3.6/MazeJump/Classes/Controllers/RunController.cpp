@@ -123,6 +123,11 @@ void RunController::reset()
         m_pTerrainLayer->reset();
     if(m_pMainPlayer)
         m_pMainPlayer->fadeIn();
+    if(m_pMainCamera)
+    {
+        m_pMainCamera->stopAllActions();
+        cameraTrackPlayer();
+    }
 }
 void RunController::update(float delta)
 {
