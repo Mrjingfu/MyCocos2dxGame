@@ -20,23 +20,34 @@ Decorator* Decorator::create(DecoratorType type)
                 if(decorator->initWithFile("heart.c3b"))
                 {
                     decorator->setScale(0.5);
+                    decorator->setPositionY(5);
                 }
                 break;
             case DT_GOLD:
                 if(decorator->initWithFile("goldbig.c3b"))
                 {
                     decorator->setScale(0.4);
+                    decorator->setPositionY(5);
                 }
                 break;
             case DT_GOLD_BIG:
                 if(decorator->initWithFile("goldbig.c3b"))
                 {
                     decorator->setScale(0.7);
+                    decorator->setPositionY(5);
                 }
                 break;
             case DT_TURRET:
                 if(decorator->initWithFile("goldbig.c3b"))
                 {
+                    decorator->setPositionY(5);
+                }
+                break;
+            case DT_PORTAL:
+                if(decorator->initWithFile("8x8x8.c3b"))
+                {
+                    decorator->setPositionY(10);
+                    decorator->setRotation3D(Vec3(0,45,55));
                 }
                 break;
             default:
@@ -44,7 +55,6 @@ Decorator* Decorator::create(DecoratorType type)
         }
         decorator->_contentSize = decorator->getBoundingBox().size;
         decorator->m_fRadius = decorator->_contentSize.width*0.5f;
-        decorator->setPositionY(5);
         
         OutlineEffect3D* outline = OutlineEffect3D::create();
         outline->setOutlineColor(Vec3(0.3f, 0.3f, 0.3f));

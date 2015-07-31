@@ -20,6 +20,7 @@ Runner* Runner::create()
         runner->_contentSize = runner->getBoundingBox().size;
         runner->m_fRadius = runner->_contentSize.width*0.5f;
         runner->setPositionY(4);
+        runner->setOpacity(0);
         
         OutlineEffect3D* outline = OutlineEffect3D::create();
         outline->setOutlineColor(Vec3(0.3f, 0.3f, 0.3f));
@@ -302,4 +303,20 @@ void Runner::checkSafe()
         setState(RS_MOVE_DROP);
     else
         RunController::getInstance()->cameraTrackPlayer();
+}
+void Runner::fadeIn()
+{
+    setPositionY(4);
+    setState(RS_IDLE);
+    DelayTime* delay = DelayTime::create(1.0f);
+    EaseSineOut* fadeIn = EaseSineOut::create(FadeIn::create(0.5f));
+    CallFunc* callback = CallFunc::create(CC_CALLBACK_0(RunController::setGameState, RunController::getInstance(), RunController::RGS_NORMAL));
+    Sequence* sequence = Sequence::create(delay, fadeIn, callback, NULL);
+    runAction(sequence);
+}
+void Runner::fadeOut()
+{
+    RunController::getInstance()->setGameState(RunController::RGS_FROZEN);
+    EaseSineOut* fadeOut = EaseSineOut::create(FadeOut::create(0.5f));
+    runAction(fadeOut);
 }

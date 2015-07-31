@@ -17,16 +17,22 @@ class GameController : public cocos2d::Ref
     ~GameController();
 public:
     static GameController* getInstance();
-    bool init(cocos2d::Layer* pMainLayer,int index);
+    bool init(cocos2d::Layer* pMainLayer,int difficultLevel);
     void update(float delta);
     void destroy();
-    int randomLevel(int index);
+    int randomLevel(int difficultLevel);
+    
+    void switchToRainbowRun();
+private:
+    void switchToMainScene();
 private:
     cocos2d::Layer*     m_pMainLayer;
     cocos2d::Skybox*    m_pSkyBox;
     GroundLayer*        m_pGroundLayer;
     cocos2d::Camera*    m_pMainCamera;
     bool createMap(bool _playing,int level);
+    
+    cocos2d::LayerColor*        m_pWhiteLayer;
 };
 
 #endif /* defined(__MazeJump__GameController__) */

@@ -10,6 +10,7 @@
 #include "LevelsManager.h"
 #include "ui/CocosGUI.h"
 #include "AlisaMethod.h"
+#include "MainScene.h"
 USING_NS_CC;
 
 GameController* g_pGameControllerInstance = nullptr;
@@ -26,16 +27,23 @@ GameController::GameController()
     m_pSkyBox           = nullptr;
     m_pGroundLayer      = nullptr;
     m_pMainCamera       = nullptr;
-
+    m_pWhiteLayer       = nullptr;
 }
 GameController::~GameController()
 {
 }
-bool GameController::init(Layer* pMainLayer,int index)
+bool GameController::init(Layer* pMainLayer,int difficultLevel)
 {
     if(pMainLayer == nullptr)
         return false;
     m_pMainLayer = pMainLayer;
+    
+    m_pWhiteLayer = LayerColor::create(Color4B::WHITE);
+    if(!m_pWhiteLayer)
+        return false;
+    m_pMainLayer->addChild(m_pWhiteLayer);
+    EaseExponentialIn* fadeOut = EaseExponentialIn::create(FadeOut::create(1.0f));
+    m_pWhiteLayer->runAction(fadeOut);
     
     auto size = Director::getInstance()->getVisibleSize();
     m_pMainCamera = Camera::createPerspective(90, size.width/size.height, 1, 5000);
@@ -43,7 +51,7 @@ bool GameController::init(Layer* pMainLayer,int index)
         return false;
     m_pMainLayer->addChild(m_pMainCamera);
     
-    int rLevel = randomLevel(index);
+    int rLevel = randomLevel(difficultLevel);
     CCLOG("LEVEL:%d",rLevel);
     if (!createMap(false,rLevel)) {
         return false;
@@ -73,16 +81,17 @@ bool GameController::init(Layer* pMainLayer,int index)
     button->setPressedActionEnabled(true);
     button->addClickEventListener([=](Ref* sender){
         
-        createMap(true,rLevel);
+        //createMap(true,rLevel);
+        switchToRainbowRun();
     });
     m_pMainLayer->addChild(button);
     return true;
 }
-int GameController::randomLevel(int index)
+int GameController::randomLevel(int difficultLevel)
 {
     int patternIndex = 0;
-    int patternBeginIndex = index ;
-    int patternEndIndex = index + 4;
+    int patternBeginIndex = difficultLevel ;
+    int patternEndIndex = difficultLevel + 4;
     if(patternEndIndex >= LevelsManager::getInstance()->getMaxLevels()-1)
     {
         patternBeginIndex = LevelsManager::getInstance()->getMaxLevels() - 6;
@@ -153,4 +162,18 @@ bool GameController::createMap(bool _playing,int level)
     
     
     return true;
+}
+void GameController::switchToRainbowRun()
+{
+    if(m_pWhiteLayer)
+    {
+        EaseExponentialOut* fadeIn = EaseExponentialOut::create(FadeIn::create(1.0f));
+        CallFunc* callFunc = CallFunc::create(CC_CALLBACK_0(GameController::switchToMainScene, this));
+        Sequence* sequence = Sequence::create( fadeIn, callFunc, NULL);
+        m_pWhiteLayer->runAction(sequence);
+    }
+}
+void GameController::switchToMainScene()
+{
+    Director::getInstance()->popScene();
 }
