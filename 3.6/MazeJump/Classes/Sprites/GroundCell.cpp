@@ -34,6 +34,7 @@ GroundCell::GroundCell(int level):m_carryProp(-1),m_level(level)
 {
     m_ModelName = "";
     m_reviveCell = nullptr;
+    m_deType = Decorator::DecoratorType::DT_UNKNOWN;
 }
 bool GroundCell::init()
 {

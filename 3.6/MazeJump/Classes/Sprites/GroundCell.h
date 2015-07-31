@@ -10,6 +10,7 @@
 #define __MazeJump__GroundCell__
 
 #include "EffectSprite3D.h"
+#include "Decorator.h"
 class GroundCell : public EffectSprite3D
 {
 public:
@@ -44,7 +45,8 @@ public:
     bool isWalkCell();      //判断地板是否可行走
     void setReviveCell(GroundCell* cell){ m_reviveCell = cell;};
     GroundCell* getReviveCell(){return m_reviveCell;};
-
+    void setDeType(Decorator::DecoratorType type){m_deType = type;};
+    Decorator::DecoratorType getDetype(){return m_deType;};
 protected:
     GroundCell* m_reviveCell;
     float       m_fRadius;
@@ -54,7 +56,7 @@ protected:
     int         m_carryProp;            //传送属性 默认为-1
     std::string m_ModelName;
     int         m_level;
-
+    Decorator::DecoratorType m_deType;
 };
 
 #endif /* defined(__MazeJump__GroundCell__) */

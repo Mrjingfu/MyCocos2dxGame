@@ -9,6 +9,7 @@
 #include "RunController.h"
 #include "ui/CocosGUI.h"
 #include "MainScene.h"
+#include "GameConst.h"
 #include "storage/local-storage/LocalStorage.h"
 USING_NS_CC;
 
@@ -112,26 +113,26 @@ void RunController::destroy()
 }
 int RunController::getDifficultLevel()
 {
-    m_nDifficultLevel = Value(localStorageGetItem("LastReachDifficultLevel")).asInt();
+    m_nDifficultLevel = Value(localStorageGetItem(USER_LAST_LEVEL)).asInt();
     return m_nDifficultLevel;
 }
 void RunController::setDifficultLevel(int difficult)
 {
     m_nDifficultLevel = difficult;
-    localStorageSetItem("LastReachDifficultLevel", Value(m_nDifficultLevel).asString());
+    localStorageSetItem(USER_LAST_LEVEL, Value(m_nDifficultLevel).asString());
     CCLOG("Current Difficult Level %d", m_nDifficultLevel);
     if(m_nDifficultLevel > getMaxDifficultLevel())
         setMaxDifficultLevel(m_nDifficultLevel);
 }
 int RunController::getMaxDifficultLevel()
 {
-    m_nMaxReachDifficultLevel = Value(localStorageGetItem("MaxReachDifficultLevel")).asInt();
+    m_nMaxReachDifficultLevel = Value(localStorageGetItem(USER_MAX_LEVEL)).asInt();
     return m_nMaxReachDifficultLevel;
 }
 void RunController::setMaxDifficultLevel(int difficult)
 {
     m_nMaxReachDifficultLevel = difficult;
-    localStorageSetItem("LastReachDifficultLevel", Value(m_nMaxReachDifficultLevel).asString());
+    localStorageSetItem(USER_MAX_LEVEL, Value(m_nMaxReachDifficultLevel).asString());
     CCLOG("Max reach Difficult Level %d", m_nMaxReachDifficultLevel);
 }
 void RunController::cameraTrackPlayer()

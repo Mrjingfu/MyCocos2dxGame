@@ -425,6 +425,7 @@
 		EC96D7461B610BBD009C64F5 /* StepManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StepManager.cpp; sourceTree = "<group>"; };
 		EC96D7471B610BBD009C64F5 /* StepManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StepManager.h; sourceTree = "<group>"; };
 		ECA02B771B5F72F6007EFC0F /* sky2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sky2.png; sourceTree = "<group>"; };
+		ECAF62421B6B6582008A10B9 /* GameConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameConst.h; sourceTree = "<group>"; };
 		ECF82B161B67661600C8095A /* 7x7-1.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "7x7-1.tmx"; sourceTree = "<group>"; };
 		ECF82B191B6771FE00C8095A /* 7x7-2.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "7x7-2.tmx"; sourceTree = "<group>"; };
 		ECF82B1C1B67795200C8095A /* 7x7-3.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "7x7-3.tmx"; sourceTree = "<group>"; };
@@ -829,6 +830,7 @@
 		55F3B9991B4580660090BE1A /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				ECAF62421B6B6582008A10B9 /* GameConst.h */,
 				551350B31B62755A00A99AD7 /* AlisaMethod.cpp */,
 				551350B41B62755A00A99AD7 /* AlisaMethod.h */,
 				EC96D7461B610BBD009C64F5 /* StepManager.cpp */,

@@ -13,6 +13,7 @@
 #include "GroundCell.h"
 #include "Arrow.h"
 #include "Player.h"
+#include "Decorator.h"
 class GroundLayer : public cocos2d::Layer
 {
     GroundLayer();
@@ -58,6 +59,8 @@ public:
     void playRecord();
     void initEnd();
     void setRecordState(RecordState state);
+    void generateDecorator(GroundCell* cell);
+    void decoratorOpe(Node* node,GroundCell* cell);
 protected:
     // 处理输入
     virtual void onTouchesBegan(const std::vector<cocos2d::Touch*>& touches, cocos2d::Event *event) override;
@@ -83,6 +86,7 @@ private:
     bool m_Playing;
     bool m_isInit;
     cocos2d::ValueVector recordSteps;
+    cocos2d::Map<int, Decorator*>   m_DecoratorList;
 };
 
 #endif /* defined(__MazeJump__GroundLayer__) */
