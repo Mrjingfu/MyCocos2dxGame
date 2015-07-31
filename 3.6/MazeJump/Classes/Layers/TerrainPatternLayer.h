@@ -32,12 +32,14 @@ public:
     } PatternType;
 
     // there's no 'id' in cpp, so we recommend returning the class instance pointer
-    static TerrainPatternLayer* create(int index);
+    static TerrainPatternLayer* create(int index, bool generateCheckPoint);
     
     // Here's a difference. Method 'init' in cocos2d-x returns bool, instead of returning 'id' in cocos2d-iphone
-    virtual bool init(int index);
+    virtual bool init(int index, bool generateCheckPoint);
     
     virtual void update(float delta);
+    
+    void reset();
     
     PatternType getPatternType() const { return m_patternType; }
 
@@ -47,6 +49,7 @@ public:
 private:
     void onLand(TerrainCell* cell);
     void generateDecorator(TerrainCell* cell, int patternIndex);
+    void generateCheckPointDecorator();
 private:
     int         m_nIndex;
     cocos2d::Vector<TerrainCell*>   m_TerrainCellList;

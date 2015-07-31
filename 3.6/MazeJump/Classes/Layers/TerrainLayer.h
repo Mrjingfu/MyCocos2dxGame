@@ -24,6 +24,8 @@ public:
     
     virtual void update(float delta);
     
+    void reset();
+    
     float getCellBaseRadius() const { return m_fCellBaseRadius; }
     int getCurrentPatternNum() const { return m_nCurrentPatternNum; }
     void setCurrentPatternNum( int num );

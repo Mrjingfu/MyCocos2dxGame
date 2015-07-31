@@ -65,6 +65,14 @@ void TerrainLayer::update(float delta)
         }
     }
 }
+void TerrainLayer::reset()
+{
+    for (int i = 0; i<m_TerrainPatternList.size()-1; ++i) {
+        TerrainPatternLayer* layer = m_TerrainPatternList.at(i);
+        if(layer)
+            layer->reset();
+    }
+}
 void TerrainLayer::setCurrentPatternNum( int num )
 {
     if(index < 0)
@@ -115,6 +123,8 @@ bool TerrainLayer::onTouchBegan(Touch *touch, Event *event)
 {
     if(!touch)
         return false;
+    if(RunController::getInstance()->getGameState() != RunController::RGS_NORMAL)
+        return false;
     m_TouchBegin = touch->getLocationInView();
     return true;
 }
@@ -122,12 +132,16 @@ void TerrainLayer::onTouchMoved(cocos2d::Touch *touch, cocos2d::Event *event)
 {
     if(!touch)
         return;
+    if(RunController::getInstance()->getGameState() != RunController::RGS_NORMAL)
+        return;
     m_TouchEnd = touch->getLocationInView();
 }
 
 void TerrainLayer::onTouchEnded(Touch *touch, Event *event)
 {
     if(!touch)
+        return;
+    if(RunController::getInstance()->getGameState() != RunController::RGS_NORMAL)
         return;
     m_TouchEnd = touch->getLocationInView();
     float distanceX = fabsf(m_TouchEnd.x - m_TouchBegin.x);
@@ -205,7 +219,7 @@ void TerrainLayer::jumpLocal()
 
 bool TerrainLayer::generateStartPoint()
 {
-    TerrainPatternLayer* layer = TerrainPatternLayer::create(0);
+    TerrainPatternLayer* layer = TerrainPatternLayer::create(0, false);
     if(!layer)
         return false;
     layer->setCameraMask((unsigned short)CameraFlag::USER1);
@@ -216,6 +230,9 @@ bool TerrainLayer::generateStartPoint()
 void TerrainLayer::generatePattern(int count)
 {
     int residueNum = count%10;
+    bool generateCheckPointDecorator = true;
+    if(count == 1)
+        generateCheckPointDecorator = false;
     int patternIndex = 1;
     if(residueNum == 1)
     {
@@ -292,7 +309,7 @@ void TerrainLayer::generatePattern(int count)
             }
         }
     }
-    TerrainPatternLayer* layer = TerrainPatternLayer::create(patternIndex);
+    TerrainPatternLayer* layer = TerrainPatternLayer::create(patternIndex,generateCheckPointDecorator);
     if(!layer)
         return;
     layer->setCameraMask((unsigned short)CameraFlag::USER1);

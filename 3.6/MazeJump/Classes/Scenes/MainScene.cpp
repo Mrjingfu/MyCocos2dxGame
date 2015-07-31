@@ -34,9 +34,7 @@ bool MainScene::init()
     //////////////////////////////
     // 1. super init first
     if ( !Layer::init() )
-    {
         return false;
-    }
     return true;
 }
 void MainScene::onEnter()
@@ -44,12 +42,18 @@ void MainScene::onEnter()
     Layer::onEnter();
     
     scheduleUpdate();
-    if(!RunController::getInstance()->init(this))
-        CCLOGERROR("RunController init failed!");
+    if(RunController::getInstance()->isInMazeJump())
+        RunController::getInstance()->reset();
+    else
+    {
+        if(!RunController::getInstance()->init(this))
+            CCLOGERROR("RunController init failed!");
+    }
 }
 void MainScene::onExit()
 {
-    RunController::getInstance()->destroy();
+    if(!RunController::getInstance()->isInMazeJump())
+        RunController::getInstance()->destroy();
     unscheduleUpdate();
     Layer::onExit();
 }

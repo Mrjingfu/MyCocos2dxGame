@@ -13,9 +13,9 @@
 #include "StepManager.h"
 USING_NS_CC;
 
-Scene* GameScene::createScene(int currentIndex)
+Scene* GameScene::createScene(int difficultLevel)
 {
-    GameScene *pRet = new(std::nothrow) GameScene(currentIndex);
+    GameScene *pRet = new(std::nothrow) GameScene(difficultLevel);
     auto scene = Scene::create();
     if (pRet && pRet->init())
     {
@@ -30,7 +30,7 @@ Scene* GameScene::createScene(int currentIndex)
         return NULL;
     }
 }
-GameScene::GameScene(int currentIndex):m_currentIndex(currentIndex)
+GameScene::GameScene(int difficultLevel):m_nDifficultLevel(difficultLevel)
 {
 }
 // on "init" you need to initialize your instance
@@ -49,7 +49,7 @@ void GameScene::onEnter()
 
     Layer::onEnter();
     scheduleUpdate();
-    if(!GameController::getInstance()->init(this,m_currentIndex))
+    if(!GameController::getInstance()->init(this,m_nDifficultLevel))
         CCLOGERROR("GameController init failed!");
     
     
@@ -70,18 +70,18 @@ void GameScene::gameWin()
 //    StepManager::getInstance()->setLevelStep(LevelsManager::getInstance()->getCurrentLevel(),StepManager::LEVEL_WIN);
 //    LevelsManager::getInstance()->setCurrentLevel(LevelsManager::getInstance()->getCurrentLevel()+1);
 //    GameController::getInstance()->destroy();
-//    GameController::getInstance()->init(this,m_currentIndex);
+//    GameController::getInstance()->init(this,m_nDifficultLevel);
 }
 void GameScene::gameLose()
 {
     CCLOG("gameLose");
 //    GameController::getInstance()->destroy();
-//    GameController::getInstance()->init(this,m_currentIndex);
+//    GameController::getInstance()->init(this,m_nDifficultLevel);
 }
 void GameScene::gameRecordEnd()
 {
     //测试
 //    LevelsManager::getInstance()->setCurrentLevel(LevelsManager::getInstance()->getCurrentLevel()+1);
 //    GameController::getInstance()->destroy();
-//    GameController::getInstance()->init(this,m_currentIndex);
+//    GameController::getInstance()->init(this,m_nDifficultLevel);
 }

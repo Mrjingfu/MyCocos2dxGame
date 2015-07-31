@@ -14,10 +14,10 @@ class GameScene : public cocos2d::Layer
 {
     friend class GroundLayer;
     friend class Player;
-    GameScene(int cuttrnyIndex);
+    GameScene(int difficultLevel);
 public:
     // there's no 'id' in cpp, so we recommend returning the class instance pointer
-    static cocos2d::Scene* createScene(int currentIndex);
+    static cocos2d::Scene* createScene(int difficultLevel);
     
     // Here's a difference. Method 'init' in cocos2d-x returns bool, instead of returning 'id' in cocos2d-iphone
     virtual bool init();
@@ -32,7 +32,7 @@ private:
     void gameLose();
     void gameRecordEnd();
 private:
-    int m_currentIndex;
+    int m_nDifficultLevel;
 };
 
 #endif /* defined(__MazeJump__GameScene__) */

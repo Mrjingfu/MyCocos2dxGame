@@ -19,6 +19,7 @@ public:
         DT_GOLD,
         DT_GOLD_BIG,
         DT_TURRET,
+        DT_PORTAL,
         DT_UNKNOWN
     }
     DecoratorType;

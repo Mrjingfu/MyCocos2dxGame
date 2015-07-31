@@ -9,6 +9,8 @@
 #include "RunController.h"
 #include "ui/CocosGUI.h"
 #include "MainScene.h"
+#include "GameScene.h"
+#include "MenuScene.h"
 #include "storage/local-storage/LocalStorage.h"
 USING_NS_CC;
 
@@ -32,6 +34,9 @@ RunController::RunController()
     m_nDifficultLevel   = 0;
     m_nInitDifficultLevel = 0;
     m_nMaxReachDifficultLevel = 0;
+    m_pWhiteLayer   = nullptr;
+    m_bInMazeJump   = false;
+    m_GameState = RGS_FROZEN;
 }
 RunController::~RunController()
 {
@@ -42,6 +47,13 @@ bool RunController::init(Layer* pMainLayer)
         return false;
     m_pMainLayer = pMainLayer;
     m_nInitDifficultLevel = getDifficultLevel();
+    
+    m_pWhiteLayer = LayerColor::create(Color4B::WHITE);
+    if(!m_pWhiteLayer)
+        return false;
+    m_pMainLayer->addChild(m_pWhiteLayer);
+    EaseExponentialIn* fadeOut = EaseExponentialIn::create(FadeOut::create(1.0f));
+    m_pWhiteLayer->runAction(fadeOut);
     
     Skybox* m_pSkyBox = Skybox::create("sky4.png", "sky4.png", "sky4.png", "sky4.png", "sky4.png", "sky4.png");
     if(!m_pSkyBox)
@@ -68,7 +80,7 @@ bool RunController::init(Layer* pMainLayer)
         return false;
     m_pMainPlayer->setCameraMask((unsigned short)CameraFlag::USER1);
     m_pTerrainLayer->addChild(m_pMainPlayer);
-    m_pMainPlayer->setState(Runner::RS_IDLE);
+    m_pMainPlayer->fadeIn();
     
     auto size = Director::getInstance()->getVisibleSize();
     m_pMainCamera = Camera::createPerspective(60, size.width/size.height, 1, 5000);
@@ -97,6 +109,20 @@ bool RunController::init(Layer* pMainLayer)
     m_pMainLayer->addChild(button);
     
     return true;
+}
+void RunController::reset()
+{
+    m_bInMazeJump = false;
+    if(m_pWhiteLayer)
+    {
+        EaseExponentialIn* fadeOut = EaseExponentialIn::create(FadeOut::create(1.0f));
+        m_pWhiteLayer->runAction(fadeOut);
+    }
+    
+    if(m_pTerrainLayer)
+        m_pTerrainLayer->reset();
+    if(m_pMainPlayer)
+        m_pMainPlayer->fadeIn();
 }
 void RunController::update(float delta)
 {
@@ -150,6 +176,41 @@ void RunController::gameOver()
 {
     CCLOG("gameOver");
     setDifficultLevel(0);
+}
+void RunController::switchToMazeJump()
+{
+    if(m_pWhiteLayer)
+    {
+        EaseExponentialOut* fadeIn = EaseExponentialOut::create(FadeIn::create(1.0f));
+        CallFunc* callFunc = CallFunc::create(CC_CALLBACK_0(RunController::switchToGameScene, this));
+        Sequence* sequence = Sequence::create( fadeIn, callFunc, NULL);
+        m_pWhiteLayer->runAction(sequence);
+    }
+}
+void RunController::switchToMenu()
+{
+    if(m_pWhiteLayer)
+    {
+        EaseExponentialOut* fadeIn = EaseExponentialOut::create(FadeIn::create(1.0f));
+        CallFunc* callFunc = CallFunc::create(CC_CALLBACK_0(RunController::switchToMenuScene, this));
+        Sequence* sequence = Sequence::create( fadeIn, callFunc, NULL);
+        m_pWhiteLayer->runAction(sequence);
+    }
+}
+void RunController::switchToGameScene()
+{
+    Scene* scene = GameScene::createScene(getDifficultLevel());
+    if(scene)
+    {
+        m_bInMazeJump = true;
+        Director::getInstance()->pushScene(scene);
+    }
+}
+void RunController::switchToMenuScene()
+{
+    Scene* scene = MenuScene::createScene();
+    if(scene)
+        Director::getInstance()->replaceScene(scene);
 }
 bool RunController::initCloud()
 {

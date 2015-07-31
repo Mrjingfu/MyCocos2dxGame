@@ -45,6 +45,9 @@ public:
     void onCollision(TerrainCell* cell);
     
     const cocos2d::AABB& getModifyAABB();
+    
+    void fadeIn();
+    void fadeOut();
 private:
     void onEnterIdle();
     void onEnterMoveLeft();

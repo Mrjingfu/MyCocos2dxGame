@@ -19,7 +19,7 @@ public:
     static bool checkCircleIntersectWithSegment(const cocos2d::Vec2& center, float radius, const cocos2d::Vec2& start, const cocos2d::Vec2& end);
     static void getCameraToViewportRay(cocos2d::Camera* camera, const cocos2d::Vec2& screenPoint, cocos2d::Ray* outRay);
     
-    static cocos2d::Color3B randomColor();
+    static cocos2d::Color3B randomColor(int minSum = 650, int minDelta = 10);
 };
 
 #endif /* defined(__MazeJump__UtilityHelper__) */

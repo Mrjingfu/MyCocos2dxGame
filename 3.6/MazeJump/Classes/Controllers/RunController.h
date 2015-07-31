@@ -17,14 +17,23 @@ class RunController : public cocos2d::Ref
     RunController();
     ~RunController();
 public:
+    typedef enum {
+        RGS_NORMAL = 0,
+        RGS_FROZEN,
+        RGS_GAMEOVER
+    } RunnerGameState;
     static RunController* getInstance();
     bool init(cocos2d::Layer* pMainLayer);
+    void reset();
     void update(float delta);
     void destroy();
     
     TerrainLayer* getTerrainLayer() const { return m_pTerrainLayer; }
     cocos2d::Camera* getMainCamera() const { return m_pMainCamera; }
     Runner* getMainPlayer() const { return m_pMainPlayer; }
+    
+    RunnerGameState getGameState() const { return m_GameState; }
+    void setGameState(RunnerGameState state) { m_GameState = state; }
     
     int getInitDifficultLevel() const { return m_nInitDifficultLevel; }
     int getDifficultLevel();
@@ -36,7 +45,13 @@ public:
     void cameraTrackPlayer();
     
     void gameOver();
+    void switchToMazeJump();
+    void switchToMenu();
+    
+    bool isInMazeJump() const { return m_bInMazeJump; }
 private:
+    void switchToGameScene();
+    void switchToMenuScene();
     bool initCloud();
     void updateCloud();
 private:
@@ -51,6 +66,11 @@ private:
     int             m_nInitDifficultLevel;
     int             m_nDifficultLevel;
     int             m_nMaxReachDifficultLevel;
+    
+    cocos2d::LayerColor*        m_pWhiteLayer;
+    bool            m_bInMazeJump;
+    
+    RunnerGameState m_GameState;
 };
 
 #endif /* defined(__MazeJump__RunController__) */
