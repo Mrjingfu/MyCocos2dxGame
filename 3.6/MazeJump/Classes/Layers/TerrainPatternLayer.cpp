@@ -217,7 +217,7 @@ void TerrainPatternLayer::checkCollisionDecorator()
                             CallFunc* callfunc = CallFunc::create(CC_CALLBACK_0(TerrainPatternLayer::eraseDecorator, this,decorator));
                             Sequence* sequece = Sequence::create(spawn, callfunc, NULL);
                             decorator->runAction(sequece);
-                            localStorageSetItem(USER_GOLD_NUM, localStorageGetItem(USER_GOLD_NUM) + Value(1).asString());
+                            localStorageSetItem(USER_GOLD_NUM, Value(Value(localStorageGetItem(USER_GOLD_NUM)).asInt()+1).asString());
                         }
                         break;
                     case Decorator::DT_HEART:
@@ -228,7 +228,7 @@ void TerrainPatternLayer::checkCollisionDecorator()
                             CallFunc* callfunc = CallFunc::create(CC_CALLBACK_0(TerrainPatternLayer::eraseDecorator, this,decorator));
                             Sequence* sequece = Sequence::create(spawn, callfunc, NULL);
                             decorator->runAction(sequece);
-                            localStorageSetItem(USER_HEART_NUM, localStorageGetItem(USER_HEART_NUM) + Value(1).asString());
+                            localStorageSetItem(USER_HEART_NUM, Value(Value(localStorageGetItem(USER_HEART_NUM)).asInt()+1).asString());
                         }
                         break;
                     case Decorator::DT_GOLD_BIG:
@@ -239,7 +239,7 @@ void TerrainPatternLayer::checkCollisionDecorator()
                             CallFunc* callfunc = CallFunc::create(CC_CALLBACK_0(TerrainPatternLayer::eraseDecorator, this,decorator));
                             Sequence* sequece = Sequence::create(spawn, callfunc, NULL);
                             decorator->runAction(sequece);
-                            localStorageSetItem(USER_GOLD_NUM, localStorageGetItem(USER_GOLD_NUM) + Value(5).asString());
+                            localStorageSetItem(USER_GOLD_NUM, Value(Value(localStorageGetItem(USER_GOLD_NUM)).asInt()+5).asString());
                         }
                         break;
                     case Decorator::DT_PORTAL:
@@ -281,7 +281,7 @@ void TerrainPatternLayer::generatePlane()
     if(m_nIndex < 1)
         return;
 
-    float percent1 = 0.1*m_nIndex;
+    float percent1 = 0.01*m_nIndex;
     float percent2 = 1.0 - percent1;
     AlisaMethod* am = AlisaMethod::create(percent1,percent2,-1.0, NULL);
     if(am)
@@ -303,14 +303,14 @@ void TerrainPatternLayer::generatePlane()
                 {
                     plane->setPositionX(32.0);
                 }
-                float z = cocos2d::random(-20.0f, -60.0f);
+                float z = cocos2d::random(-30.0f, -60.0f);
                 plane->setPositionZ(z);
                 plane->setCameraMask((unsigned short)CameraFlag::USER1);
                 addChild(plane);
                 m_DecoratorList.pushBack(plane);
                     
                 float time = cocos2d::random(1.0f, 2.5f);
-                float moveTime = cocos2d::random(1.0f, 1.5f);
+                float moveTime = cocos2d::random(1.5f, 2.5f);
                 DelayTime* delay = DelayTime::create(time);
                 EaseSineOut* fadeIn = EaseSineOut::create(FadeIn::create(0.5f));
                 MoveTo* moveTo = MoveTo::create(moveTime, plane->getPosition3D() + Vec3(targetX, 0, 0));
