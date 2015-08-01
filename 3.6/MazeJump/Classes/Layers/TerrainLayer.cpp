@@ -329,7 +329,7 @@ void TerrainLayer::collapseCurrentPattern()
     {
         if(patternLayer->getPatternType() == TerrainPatternLayer::PT_STARTER || patternLayer->getPatternType() == TerrainPatternLayer::PT_CHECKPOINT)
             return;
-        //patternLayer->beginCollapse();
+        patternLayer->beginCollapse();
     }
 }
 void TerrainLayer::randomGeneratePlane()
