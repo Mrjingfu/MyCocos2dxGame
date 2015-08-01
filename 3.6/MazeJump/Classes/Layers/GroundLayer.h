@@ -61,6 +61,7 @@ public:
     void setRecordState(RecordState state);
     void generateDecorator(GroundCell* cell);
     void decoratorOpe(Node* node,GroundCell* cell);
+    void eraseDecorator(int index);
 protected:
     // 处理输入
     virtual void onTouchesBegan(const std::vector<cocos2d::Touch*>& touches, cocos2d::Event *event) override;

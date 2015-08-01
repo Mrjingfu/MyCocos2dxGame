@@ -8,9 +8,13 @@
 
 #include "Decorator.h"
 #include "OutlineEffect3D.h"
+#include "RunController.h"
 USING_NS_CC;
 Decorator* Decorator::create(DecoratorType type)
 {
+    TerrainLayer* layer = RunController::getInstance()->getTerrainLayer();
+    if(!layer)
+        return nullptr;
     auto decorator = new (std::nothrow) Decorator();
     if (decorator)
     {
@@ -37,10 +41,22 @@ Decorator* Decorator::create(DecoratorType type)
                     decorator->setPositionY(5);
                 }
                 break;
-            case DT_TURRET:
-                if(decorator->initWithFile("goldbig.c3b"))
+            case DT_BIRD:
+                if(decorator->initWithFile("bird.c3b"))
                 {
+                    decorator->setScale(0.5);
+                    decorator->setPositionY(layer->getCellBaseRadius()*2);
+                    decorator->setRotation3D(Vec3(0, 90, 0));
+                    decorator->setOpacity(0);
+                }
+                break;
+            case DT_PLANE:
+                if(decorator->initWithFile("plane.c3b"))
+                {
+                    decorator->setScale(0.8);
                     decorator->setPositionY(5);
+                    decorator->setOpacity(0);
+                    decorator->setNeedToUpdate(true);
                 }
                 break;
             case DT_PORTAL:
@@ -70,11 +86,53 @@ Decorator* Decorator::create(DecoratorType type)
 Decorator::Decorator()
 {
     m_bNeedToCollision = true;
+    m_bNeedToUpdate = false;
+    m_fTime = 0;
 }
 Decorator::~Decorator()
 {
 }
-void Decorator::deleteSelf()
+void Decorator::update(float delta)
 {
-    removeFromParentAndCleanup(true);
+    TerrainLayer* layer = RunController::getInstance()->getTerrainLayer();
+    if(!layer)
+        return;
+    if(m_bNeedToUpdate)
+    {
+        if (m_Type == DT_BIRD) {
+            float z = getPositionZ();
+            float y = getPositionY();
+            z += layer->getCellBaseRadius()*4*delta;
+            m_fTime += delta;
+            y = layer->getCellBaseRadius()*2 + sinf(M_PI*m_fTime)*layer->getCellBaseRadius()*1.5f;
+            setPositionY(y);
+            setPositionZ(z);
+            
+            Runner* runner = RunController::getInstance()->getMainPlayer();
+            if(runner && m_bNeedToCollision)
+            {
+                bool collision = runner->getModifyAABB().intersects(getAABB());
+                if(collision)
+                {
+                    setNeedToCollision(false);
+                    runner->setState(Runner::RS_DEATH);
+                    RunController::getInstance()->setGameState(RunController::RGS_GAMEOVER);
+                }
+            }
+        }
+        else if(m_Type == DT_PLANE)
+        {
+            Runner* runner = RunController::getInstance()->getMainPlayer();
+            if(runner && m_bNeedToCollision)
+            {
+                bool collision = runner->getModifyAABB().intersects(getAABB());
+                if(collision)
+                {
+                    setNeedToCollision(false);
+                    runner->setState(Runner::RS_DEATH);
+                    RunController::getInstance()->setGameState(RunController::RGS_GAMEOVER);
+                }
+            }
+        }
+    }
 }

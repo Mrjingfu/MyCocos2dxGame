@@ -18,7 +18,8 @@ public:
         DT_HEART = 0,
         DT_GOLD,
         DT_GOLD_BIG,
-        DT_TURRET,
+        DT_BIRD,
+        DT_PLANE,
         DT_PORTAL,
         DT_UNKNOWN
     }
@@ -27,19 +28,24 @@ public:
     static Decorator* create(DecoratorType type);
     Decorator();
     virtual ~Decorator();
+    virtual void update(float delta);
     
     float getRadius() const { return m_fRadius; }
     bool getNeedToCollision() const { return m_bNeedToCollision; }
     void setNeedToCollision(bool need) { m_bNeedToCollision = need; }
     
+    bool getNeedToUpdate() const { return m_bNeedToUpdate; }
+    void setNeedToUpdate(bool need) { m_bNeedToUpdate = need; }
+    
     DecoratorType getType() const { return m_Type; }
     void setType(DecoratorType type) { m_Type = type; }
     
-    void deleteSelf();
 protected:
     DecoratorType           m_Type;
     float                   m_fRadius;
     bool                    m_bNeedToCollision;
+    bool                    m_bNeedToUpdate;
+    float                   m_fTime;
 };
 
 #endif /* defined(__MazeJump__Decorator__) */

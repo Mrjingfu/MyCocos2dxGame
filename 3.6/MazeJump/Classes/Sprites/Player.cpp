@@ -17,7 +17,6 @@ Player* Player::create(PlayerType type, GroundLayer* ground)
     auto player = new (std::nothrow) Player();
     if (player && player->initWithFile("strength.c3b"))
     {
-        player->setTexture("strength.png");
         player->setType(type);
         player->_contentSize = player->getBoundingBox().size;
         player->m_fRadius = player->_contentSize.width*0.5f;

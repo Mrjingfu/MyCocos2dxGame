@@ -12,6 +12,8 @@
 #include "UtilityHelper.h"
 #include "AlisaMethod.h"
 #include "OutlineEffect3D.h"
+#include "GameConst.h"
+#include "storage/local-storage/LocalStorage.h"
 USING_NS_CC;
 TerrainPatternLayer* TerrainPatternLayer::create(int index, bool generateCheckPoint)
 {
@@ -95,10 +97,25 @@ bool TerrainPatternLayer::init(int index, bool generateCheckPoint)
     }
     if(m_patternType == PT_CHECKPOINT && generateCheckPoint)
         generateCheckPointDecorator();
+    
     return true;
 }
 void TerrainPatternLayer::update(float delta)
 {
+    for (int i = 0; i<m_DecoratorList.size(); ++i) {
+        Decorator* decorator = m_DecoratorList.at(i);
+        if(decorator)
+        {
+            bool isVisible = RunController::getInstance()->getMainCamera()->isVisibleInFrustum(&decorator->getAABB());
+            if(!isVisible)
+            {
+                eraseDecorator(decorator);
+                continue;
+            }
+            decorator->update(delta);
+        }
+    }
+    
     for (int i = 0; i<m_TerrainCellList.size(); ++i) {
         TerrainCell* cell = m_TerrainCellList.at(i);
         if(cell)
@@ -107,7 +124,8 @@ void TerrainPatternLayer::update(float delta)
             if(!isVisible)
             {
                 m_TerrainCellList.eraseObject(cell);
-                cell->removeFromParentAndCleanup(true);
+                if(cell->getReferenceCount() > 0)
+                    cell->removeFromParentAndCleanup(true);
                 cell = nullptr;
             }
         }
@@ -125,7 +143,7 @@ void TerrainPatternLayer::reset()
             EaseSineOut* scaleTo = EaseSineOut::create(ScaleTo::create(1.5f, 0));
             EaseSineOut* fadeOut = EaseSineOut::create(FadeOut::create(1.5f));
             Spawn* spawn = Spawn::create(scaleTo, fadeOut, NULL);
-            CallFunc* callfunc = CallFunc::create(CC_CALLBACK_0(Decorator::deleteSelf, decorator));
+            CallFunc* callfunc = CallFunc::create(CC_CALLBACK_0(TerrainPatternLayer::eraseDecorator, this,decorator));
             Sequence* sequence = Sequence::create(delay, spawn, callfunc, NULL);
             decorator->runAction(sequence);
             break;
@@ -146,7 +164,7 @@ bool TerrainPatternLayer::checkRunnerDrop()
                 continue;
             else
             {
-                onLand(cell);
+                runner->onCollision(cell);
                 break;
             }
         }
@@ -196,10 +214,10 @@ void TerrainPatternLayer::checkCollisionDecorator()
                             EaseBackInOut* moveTo = EaseBackInOut::create(MoveTo::create(0.5f, Vec3(decorator->getPositionX(), decorator->getPositionY() + 10, decorator->getPositionZ())));
                             EaseBackInOut* scaleTo = EaseBackInOut::create(ScaleTo::create(0.5f, 0.5f));
                             Spawn* spawn = Spawn::create(moveTo, scaleTo, NULL);
-                            CallFunc* callfunc = CallFunc::create(CC_CALLBACK_0(Decorator::deleteSelf,decorator));
+                            CallFunc* callfunc = CallFunc::create(CC_CALLBACK_0(TerrainPatternLayer::eraseDecorator, this,decorator));
                             Sequence* sequece = Sequence::create(spawn, callfunc, NULL);
                             decorator->runAction(sequece);
-
+                            localStorageSetItem(USER_GOLD_NUM, localStorageGetItem(USER_GOLD_NUM) + Value(1).asString());
                         }
                         break;
                     case Decorator::DT_HEART:
@@ -207,9 +225,10 @@ void TerrainPatternLayer::checkCollisionDecorator()
                             EaseBackInOut* moveTo = EaseBackInOut::create(MoveTo::create(0.5f, Vec3(decorator->getPositionX(), decorator->getPositionY() + 10, decorator->getPositionZ())));
                             EaseBackInOut* scaleTo = EaseBackInOut::create(ScaleTo::create(0.5f, 0.6f));
                             Spawn* spawn = Spawn::create(moveTo, scaleTo, NULL);
-                            CallFunc* callfunc = CallFunc::create(CC_CALLBACK_0(Decorator::deleteSelf,decorator));
+                            CallFunc* callfunc = CallFunc::create(CC_CALLBACK_0(TerrainPatternLayer::eraseDecorator, this,decorator));
                             Sequence* sequece = Sequence::create(spawn, callfunc, NULL);
                             decorator->runAction(sequece);
+                            localStorageSetItem(USER_HEART_NUM, localStorageGetItem(USER_HEART_NUM) + Value(1).asString());
                         }
                         break;
                     case Decorator::DT_GOLD_BIG:
@@ -217,13 +236,11 @@ void TerrainPatternLayer::checkCollisionDecorator()
                             EaseBackInOut* moveTo = EaseBackInOut::create(MoveTo::create(0.5f, Vec3(decorator->getPositionX(), decorator->getPositionY() + 10, decorator->getPositionZ())));
                             EaseBackInOut* scaleTo = EaseBackInOut::create(ScaleTo::create(0.5f, 0.8f));
                             Spawn* spawn = Spawn::create(moveTo, scaleTo, NULL);
-                            CallFunc* callfunc = CallFunc::create(CC_CALLBACK_0(Decorator::deleteSelf,decorator));
+                            CallFunc* callfunc = CallFunc::create(CC_CALLBACK_0(TerrainPatternLayer::eraseDecorator, this,decorator));
                             Sequence* sequece = Sequence::create(spawn, callfunc, NULL);
                             decorator->runAction(sequece);
+                            localStorageSetItem(USER_GOLD_NUM, localStorageGetItem(USER_GOLD_NUM) + Value(5).asString());
                         }
-                        break;
-                    case Decorator::DT_TURRET:
-                        {}
                         break;
                     case Decorator::DT_PORTAL:
                         {
@@ -248,17 +265,61 @@ void TerrainPatternLayer::checkCollisionDecorator()
         }
     }
 }
-void TerrainPatternLayer::onLand(TerrainCell* cell)
+void TerrainPatternLayer::eraseDecorator(Decorator* decorator)
 {
-//    TerrainCell::CellType type = cell->getType();
-//    switch (type) {
-//        case <#constant#>:
-//            <#statements#>
-//            break;
-//            
-//        default:
-//            break;
-//    }
+    if(!decorator)
+        return;
+    m_DecoratorList.eraseObject(decorator);
+    if(decorator->getReferenceCount() > 0)
+        decorator->removeFromParentAndCleanup(true);
+    decorator = nullptr;
+}
+void TerrainPatternLayer::generatePlane()
+{
+    if(m_patternType == PT_CHECKPOINT || m_patternType == PT_STARTER)
+        return;
+    if(m_nIndex < 1)
+        return;
+
+    float percent1 = 0.1*m_nIndex;
+    float percent2 = 1.0 - percent1;
+    AlisaMethod* am = AlisaMethod::create(percent1,percent2,-1.0, NULL);
+    if(am)
+    {
+        if(am->getRandomIndex() == 0)
+        {
+            Decorator* plane = Decorator::create(Decorator::DT_PLANE);
+            if(plane)
+            {
+                float targetX = -100;
+                int isLeft = cocos2d::random(0, 1);
+                if(isLeft)
+                {
+                    plane->setRotation3D(Vec3(0, 180, 0));
+                    plane->setPositionX(-32.0);
+                    targetX = 100;
+                }
+                else
+                {
+                    plane->setPositionX(32.0);
+                }
+                float z = cocos2d::random(-20.0f, -60.0f);
+                plane->setPositionZ(z);
+                plane->setCameraMask((unsigned short)CameraFlag::USER1);
+                addChild(plane);
+                m_DecoratorList.pushBack(plane);
+                    
+                float time = cocos2d::random(1.0f, 2.5f);
+                float moveTime = cocos2d::random(1.0f, 1.5f);
+                DelayTime* delay = DelayTime::create(time);
+                EaseSineOut* fadeIn = EaseSineOut::create(FadeIn::create(0.5f));
+                MoveTo* moveTo = MoveTo::create(moveTime, plane->getPosition3D() + Vec3(targetX, 0, 0));
+                Spawn* spawn = Spawn::create(fadeIn, moveTo, NULL);
+                Sequence* sequence = Sequence::create(delay, spawn, NULL);
+                plane->runAction(sequence);
+            }
+        }
+    }
 }
 void TerrainPatternLayer::generateCheckPointDecorator()
 {
@@ -302,8 +363,9 @@ void TerrainPatternLayer::generateDecorator(TerrainCell* cell, int patternIndex)
         {
             float percent1 = 0.005*patternIndex;
             float percent2 = 0.0001*patternIndex;
-            float percent3 = 1.0 - percent1 - percent2;
-            AlisaMethod* am = AlisaMethod::create(percent1,percent2,percent3,-1.0, NULL);
+            float percent3 = 0.001*patternIndex;
+            float percent4 = 1.0 - percent1 - percent2 - percent3;
+            AlisaMethod* am = AlisaMethod::create(percent1,percent2,percent3,percent4,-1.0, NULL);
             if(am)
             {
                 if(am->getRandomIndex() == 0)
@@ -328,6 +390,22 @@ void TerrainPatternLayer::generateDecorator(TerrainCell* cell, int patternIndex)
                         heart->runAction(repeat);
                     }
                 }
+                else if(am->getRandomIndex() == 2)
+                {
+                    Decorator* bird = Decorator::create(Decorator::DT_BIRD);
+                    if(bird)
+                    {
+                        cell->addChild(bird);
+                        m_DecoratorList.pushBack(bird);
+                        
+                        float time = cocos2d::random(1.0f, 3.0f);
+                        DelayTime* delay = DelayTime::create(time);
+                        EaseSineOut* fadeIn = EaseSineOut::create(FadeIn::create(0.5f));
+                        CallFunc* callfunc = CallFunc::create(CC_CALLBACK_0(Decorator::setNeedToUpdate, bird, true));
+                        Sequence* sequence = Sequence::create(delay, fadeIn, callfunc, NULL);
+                        bird->runAction(sequence);
+                    }
+                }
             }
         }
         else
@@ -336,7 +414,7 @@ void TerrainPatternLayer::generateDecorator(TerrainCell* cell, int patternIndex)
             float percent2 = 0.0001*patternIndex;
             float percent3 = 0.0005*patternIndex;
             float percent4 = 0.001*patternIndex;
-            float percent5 = 1.0 - percent1 - percent2 - percent3 - percent4 - percent5;
+            float percent5 = 1.0 - percent1 - percent2 - percent3 - percent4;
             AlisaMethod* am = AlisaMethod::create(percent1,percent2,percent3,percent4,percent5,-1.0, NULL);
             if(am)
             {
@@ -375,6 +453,23 @@ void TerrainPatternLayer::generateDecorator(TerrainCell* cell, int patternIndex)
                 }
                 else if(am->getRandomIndex() == 3)
                 {
+                    Decorator* bird = Decorator::create(Decorator::DT_BIRD);
+                    if(bird)
+                    {
+                        Runner* runner = RunController::getInstance()->getMainPlayer();
+                        if(runner)
+                        {
+                            cell->addChild(bird);
+                            m_DecoratorList.pushBack(bird);
+                            
+                            float time = cocos2d::random(1.0f, 2.0f);
+                            DelayTime* delay = DelayTime::create(time);
+                            EaseSineOut* fadeIn = EaseSineOut::create(FadeIn::create(0.5f));
+                            CallFunc* callfunc = CallFunc::create(CC_CALLBACK_0(Decorator::setNeedToUpdate, bird, true));
+                            Sequence* sequence = Sequence::create(delay, fadeIn, callfunc, NULL);
+                            bird->runAction(sequence);
+                        }
+                    }
                 }
             }
                 

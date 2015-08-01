@@ -22,6 +22,7 @@ public:
         RS_MOVE_SUPERJUMP,
         RS_MOVE_JUMPLOCAL,
         RS_MOVE_DROP,
+        RS_DEATH,
         RS_UNKNOWN
     } RunnerState;
     typedef enum {
@@ -56,6 +57,7 @@ private:
     void onEnterMoveSuperJump();
     void onEnterMoveJumpLocal();
     void onEnterMoveDrop();
+    void onEnterDeath();
     
     void onExitIdle();
     void onExitMoveLeft();
@@ -64,6 +66,7 @@ private:
     void onExitMoveSuperJump();
     void onExitMoveJumpLocal();
     void onExitMoveDrop();
+    void onExitDeath();
     
     void checkSafe();
 protected:

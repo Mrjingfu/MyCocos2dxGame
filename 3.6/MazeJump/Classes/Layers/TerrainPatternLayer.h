@@ -46,8 +46,9 @@ public:
     bool checkRunnerDrop();
     void beginCollapse();
     void checkCollisionDecorator();
+    void eraseDecorator(Decorator* decorator);
+    void generatePlane();
 private:
-    void onLand(TerrainCell* cell);
     void generateDecorator(TerrainCell* cell, int patternIndex);
     void generateCheckPointDecorator();
 private:

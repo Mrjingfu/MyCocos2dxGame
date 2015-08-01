@@ -16,7 +16,6 @@ Runner* Runner::create()
     auto runner = new (std::nothrow) Runner();
     if (runner && runner->initWithFile("strength.c3b"))
     {
-        runner->setTexture("strength.png");
         runner->_contentSize = runner->getBoundingBox().size;
         runner->m_fRadius = runner->_contentSize.width*0.5f;
         runner->setPositionY(4);
@@ -85,6 +84,9 @@ void Runner::setState(RunnerState state)
         case RunnerState::RS_MOVE_DROP:
             onExitMoveDrop();
             break;
+        case RunnerState::RS_DEATH:
+            onExitDeath();
+            break;
         default:
             break;
     }
@@ -112,6 +114,9 @@ void Runner::setState(RunnerState state)
             break;
         case RunnerState::RS_MOVE_DROP:
             onEnterMoveDrop();
+            break;
+        case RunnerState::RS_DEATH:
+            onEnterDeath();
             break;
         default:
             break;
@@ -147,7 +152,7 @@ void Runner::onEnterMoveLeft()
         Sequence* sequenceRotate = Sequence::create(delay, ratateTo, NULL);
 
         
-        EaseSineOut* moveUp = EaseSineOut::create(MoveTo::create(0.1f, Vec3(getPositionX() - cellRadius*2, getPositionY() + cellRadius, getPositionZ())));
+        EaseSineOut* moveUp = EaseSineOut::create(MoveTo::create(0.1f, Vec3(getPositionX() - cellRadius*2, getPositionY() + cellRadius*1.5, getPositionZ())));
         EaseSineOut* moveDown = EaseSineOut::create(MoveTo::create(0.1f, Vec3(getPositionX() - cellRadius*2, getPositionY(), getPositionZ())));
         Sequence* sequenceJump = Sequence::create(delay, moveUp, moveDown, NULL);
         Spawn* spawn = Spawn::create(sequenceScale, sequenceRotate, sequenceJump, NULL);
@@ -171,7 +176,7 @@ void Runner::onEnterMoveRight()
         EaseSineOut* ratateTo = EaseSineOut::create(RotateTo::create(0.2f, Vec3(0,-90,0)));
         Sequence* sequenceRotate = Sequence::create(delay, ratateTo, NULL);
         
-        EaseSineOut* moveUp = EaseSineOut::create(MoveTo::create(0.1f, Vec3(getPositionX() + cellRadius*2, getPositionY() + cellRadius, getPositionZ())));
+        EaseSineOut* moveUp = EaseSineOut::create(MoveTo::create(0.1f, Vec3(getPositionX() + cellRadius*2, getPositionY() + cellRadius*1.5, getPositionZ())));
         EaseSineOut* moveDown = EaseSineOut::create(MoveTo::create(0.1f, Vec3(getPositionX() + cellRadius*2, getPositionY(), getPositionZ())));
         Sequence* sequenceJump = Sequence::create(delay, moveUp, moveDown, NULL);
         Spawn* spawn = Spawn::create(sequenceScale,sequenceRotate, sequenceJump, NULL);
@@ -196,7 +201,7 @@ void Runner::onEnterMoveForward()
         RotateTo* ratateTo = RotateTo::create(0.1f, Vec3(0,0,0));
         Sequence* sequenceRotate = Sequence::create(delay, ratateTo, NULL);
                                                                   
-        EaseSineOut* moveUp = EaseSineOut::create(MoveTo::create(0.1f, Vec3(getPositionX(), getPositionY() + cellRadius, getPositionZ() - cellRadius*2)));
+        EaseSineOut* moveUp = EaseSineOut::create(MoveTo::create(0.1f, Vec3(getPositionX(), getPositionY() + cellRadius*1.5, getPositionZ() - cellRadius*2)));
         EaseSineOut* moveDown = EaseSineOut::create(MoveTo::create(0.1f, Vec3(getPositionX(), getPositionY(), getPositionZ() - cellRadius*2)));
         Sequence* sequenceJump = Sequence::create(delay, moveUp, moveDown, NULL);
         Spawn* spawn = Spawn::create(sequenceScale, sequenceRotate, sequenceJump, NULL);
@@ -230,7 +235,7 @@ void Runner::onEnterMoveSuperJump()
             rotateBy = EaseSineOut::create(RotateBy::create(0.35f, Vec3(-360,90,0)));
         Spawn* spawnRotateBy = Spawn::create(sequenceRotate, rotateBy, NULL);
         
-        EaseSineOut* moveUp = EaseSineOut::create(MoveTo::create(0.15f, Vec3(getPositionX(), getPositionY() + cellRadius*2, getPositionZ() - cellRadius*4)));
+        EaseSineOut* moveUp = EaseSineOut::create(MoveTo::create(0.15f, Vec3(getPositionX(), getPositionY() + cellRadius*3, getPositionZ() - cellRadius*4)));
         EaseSineIn* moveDown = EaseSineIn::create(MoveTo::create(0.15f, Vec3(getPositionX(), getPositionY(), getPositionZ() - cellRadius*4)));
         Sequence* sequenceJump = Sequence::create(delay, moveUp, moveDown, NULL);
         Spawn* spawn = Spawn::create(sequenceScale, spawnRotateBy, sequenceJump, NULL);
@@ -253,7 +258,7 @@ void Runner::onEnterMoveJumpLocal()
         
         DelayTime* delay = DelayTime::create(0.05f);
         
-        EaseSineOut* moveUp = EaseSineOut::create(MoveTo::create(0.1f, Vec3(getPositionX(), getPositionY() + cellRadius, getPositionZ())));
+        EaseSineOut* moveUp = EaseSineOut::create(MoveTo::create(0.1f, Vec3(getPositionX(), getPositionY() + cellRadius*1.5, getPositionZ())));
         EaseSineOut* moveDown = EaseSineOut::create(MoveTo::create(0.1f, Vec3(getPositionX(), getPositionY(), getPositionZ())));
         Sequence* sequenceJump = Sequence::create(delay, moveUp, moveDown, NULL);
         Spawn* spawn = Spawn::create(sequenceScale, sequenceJump, NULL);
@@ -270,9 +275,12 @@ void Runner::onEnterMoveDrop()
     EaseSineOut* fadeOut = EaseSineOut::create(FadeOut::create(0.5f));
     Sequence* sequece = Sequence::create(delayTime, fadeOut, NULL);
     Spawn* spawn = Spawn::create(moveTo, scaleTo, sequece, NULL);
-    CallFunc* callFunc = CallFunc::create(CC_CALLBACK_0(RunController::gameOver,RunController::getInstance()));
+    CallFunc* callFunc = CallFunc::create(CC_CALLBACK_0(RunController::setGameState,RunController::getInstance(), RunController::RGS_GAMEOVER));
     Sequence* sequence = Sequence::create(spawn, callFunc, NULL);
     runAction(sequence);
+}
+void Runner::onEnterDeath()
+{
 }
 void Runner::onExitIdle()
 {
@@ -293,6 +301,9 @@ void Runner::onExitMoveJumpLocal()
 {
 }
 void Runner::onExitMoveDrop()
+{
+}
+void Runner::onExitDeath()
 {
 }
 void Runner::checkSafe()
