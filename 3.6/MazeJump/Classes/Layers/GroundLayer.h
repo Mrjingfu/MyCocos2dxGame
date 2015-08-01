@@ -61,8 +61,11 @@ public:
     void setRecordState(RecordState state);
     void generateDecorator(GroundCell* cell);
     void decoratorOpe(Node* node,GroundCell* cell);
+
     void setPattentIndex(int index){m_pattentIndex = index;};
     int getPattentIndex(){return m_pattentIndex;}
+    void eraseDecorator(int index);
+
 protected:
     // 处理输入
     virtual void onTouchesBegan(const std::vector<cocos2d::Touch*>& touches, cocos2d::Event *event) override;

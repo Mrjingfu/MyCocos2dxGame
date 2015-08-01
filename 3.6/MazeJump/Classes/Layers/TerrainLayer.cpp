@@ -55,7 +55,7 @@ bool TerrainLayer::init()
 }
 void TerrainLayer::update(float delta)
 {
-    for (int i = 0; i<m_TerrainPatternList.size()-1; ++i) {
+    for (int i = 0; i<m_TerrainPatternList.size(); ++i) {
         TerrainPatternLayer* layer = m_TerrainPatternList.at(i);
         if(layer)
         {
@@ -67,7 +67,7 @@ void TerrainLayer::update(float delta)
 }
 void TerrainLayer::reset()
 {
-    for (int i = 0; i<m_TerrainPatternList.size()-1; ++i) {
+    for (int i = 0; i<m_TerrainPatternList.size(); ++i) {
         TerrainPatternLayer* layer = m_TerrainPatternList.at(i);
         if(layer)
             layer->reset();
@@ -88,26 +88,16 @@ void TerrainLayer::setCurrentPatternNum( int num )
         }
         if(m_nCurrentPatternNum == 0)
         {
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
             generatePattern(m_nCurrentPatternNum+1);
             generatePattern(m_nCurrentPatternNum+2);
             generatePattern(m_nCurrentPatternNum+3);
-#else
-            generatePattern(m_nCurrentPatternNum+1);
-            generatePattern(m_nCurrentPatternNum+2);
-            generatePattern(m_nCurrentPatternNum+3);
-            generatePattern(m_nCurrentPatternNum+4);
-#endif
         }
         else
         {
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
             generatePattern(m_nCurrentPatternNum+3);
-#else
-            generatePattern(m_nCurrentPatternNum+4);
-#endif 
         }
         collapseCurrentPattern();
+        randomGeneratePlane();
     }
 }
 void TerrainLayer::setCurrentColumn( int column )
@@ -341,4 +331,10 @@ void TerrainLayer::collapseCurrentPattern()
             return;
         patternLayer->beginCollapse();
     }
+}
+void TerrainLayer::randomGeneratePlane()
+{
+    TerrainPatternLayer* patternLayer = m_TerrainPatternList.at(m_nCurrentPatternNum);
+    if(patternLayer)
+        patternLayer->generatePlane();
 }

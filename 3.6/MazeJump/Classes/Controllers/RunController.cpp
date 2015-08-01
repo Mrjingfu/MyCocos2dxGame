@@ -142,6 +142,27 @@ void RunController::destroy()
     m_pMainLayer->removeAllChildren();
     m_pMainLayer = nullptr;
 }
+void RunController::setGameState(RunnerGameState state)
+{
+    if (m_GameState != state)
+    {
+        m_GameState = state;
+        switch (m_GameState) {
+            case RGS_NORMAL:
+                break;
+            case RGS_FROZEN:
+                break;
+            case RGS_GAMEOVER:
+                {
+                    CCLOG("gameOver");
+                    setDifficultLevel(0);
+                }
+                break;
+            default:
+                break;
+        }
+    }
+}
 int RunController::getDifficultLevel()
 {
     m_nDifficultLevel = Value(localStorageGetItem(USER_LAST_LEVEL)).asInt();
@@ -177,11 +198,6 @@ void RunController::cameraTrackPlayer()
         if(m_pMainCamera->getPositionZ() - m_pMainPlayer->getPositionZ() > 80.0f*sinf(M_PI/6.0f))
             updateCloud();
     }
-}
-void RunController::gameOver()
-{
-    CCLOG("gameOver");
-    setDifficultLevel(0);
 }
 void RunController::switchToMazeJump()
 {

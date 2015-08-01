@@ -33,8 +33,8 @@ public:
     Runner* getMainPlayer() const { return m_pMainPlayer; }
     
     RunnerGameState getGameState() const { return m_GameState; }
-    void setGameState(RunnerGameState state) { m_GameState = state; }
-    
+    void setGameState(RunnerGameState state);
+
     int getInitDifficultLevel() const { return m_nInitDifficultLevel; }
     int getDifficultLevel();
     void setDifficultLevel(int difficult);
@@ -44,7 +44,6 @@ public:
     
     void cameraTrackPlayer();
     
-    void gameOver();
     void switchToMazeJump();
     void switchToMenu();
     

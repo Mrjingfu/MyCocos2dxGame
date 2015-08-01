@@ -794,23 +794,44 @@ void GroundLayer::decoratorOpe(Node* node,GroundCell* cell)
             EaseBackInOut* moveTo = EaseBackInOut::create(MoveTo::create(0.7f, Vec3(decorator->getPositionX(), decorator->getPositionY() -12, decorator->getPositionZ())));
             EaseBackInOut* scaleTo = EaseBackInOut::create(ScaleTo::create(0.7f, 0.5f));
             Spawn* spawn = Spawn::create(moveTo, scaleTo, NULL);
-            CallFunc* callfunc = CallFunc::create(CC_CALLBACK_0(Decorator::deleteSelf,decorator));
+            CallFunc* callfunc = CallFunc::create(CC_CALLBACK_0(GroundLayer::eraseDecorator,this, index));
             Sequence* sequece = Sequence::create(spawn, callfunc, NULL);
             decorator->runAction(sequece);
             std::string type;
+            int addNum = 1;
             switch (m_pCurrentCell->getDetype()) {
                 case Decorator::DecoratorType::DT_GOLD:
+                {
+                    addNum = 1;
                     type = USER_GOLD_NUM;
+                }
+
                     break;
                 case Decorator::DecoratorType::DT_HEART:
+                {
+                    addNum = 1;
                     type = USER_HEART_NUM;
+                }
+                    break;
+                case Decorator::DecoratorType::DT_GOLD_BIG:
+                {
+                    addNum = 5;
+                    type = USER_GOLD_NUM;
+                }
                     break;
                 default:
                     break;
             }
-            localStorageSetItem(type, Value(Value(localStorageGetItem(type)).asInt()+1).asString());
-            m_DecoratorList.erase(index);
+            localStorageSetItem(type, Value(Value(localStorageGetItem(type)).asInt()+addNum).asString());
         }
     }
     
+}
+void GroundLayer::eraseDecorator(int index)
+{
+    cocos2d::Map<int, Decorator*>::iterator iter = m_DecoratorList.find(index);
+    m_DecoratorList.erase(iter);
+    if(iter->second->getReferenceCount() > 0)
+        iter->second->removeFromParentAndCleanup(true);
+    iter->second = nullptr;
 }
