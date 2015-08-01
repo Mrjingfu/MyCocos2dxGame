@@ -44,6 +44,7 @@ GroundLayer::GroundLayer()
     m_isInit = false;
     m_GroundTouchBegin = Vec2::ZERO;
     m_Level = -1;
+    m_pattentIndex = 1;
 }
 
 bool GroundLayer::init(int level)
@@ -683,16 +684,14 @@ void GroundLayer::setRecordState(RecordState state)
 }
 void GroundLayer::generateDecorator(GroundCell* cell)
 {
+    if (m_pattentIndex == 0)
+        m_pattentIndex =1;
         int index = cell->getIndexY()*m_MapSize.height + cell->getIndexX();
-        int pattentIndex = m_Level;
-        if (pattentIndex == 0)
-            pattentIndex =1;
-        if(m_Level <= 11)
+    
+        if(m_pattentIndex <= 11)
         {
-//            float percent1 = 0.009*m_Level;
-//            float percent2 = 0.0005*m_Level;
-            float percent1 = 0.3;
-            float percent2 = 0.4;
+            float percent1 = 0.009*m_pattentIndex;
+            float percent2 = 0.0005*m_pattentIndex;
             float percent3 = 1.0 - percent1 - percent2;
             AlisaMethod* am = AlisaMethod::create(percent1,percent2,percent3,-1.0, NULL);
             if(am)
@@ -730,15 +729,10 @@ void GroundLayer::generateDecorator(GroundCell* cell)
             }
         }else
         {
-//            float percent1 = 0.005*m_Level;
-//            float percent2 = 0.0001*m_Level;
-//            float percent3 = 0.0005*m_Level;
-//            float percent4 = 0.001*m_Level;
-            float percent1 = 0.4;
-            float percent2 = 0.1;
-            float percent3 = 0.1;
-            float percent4 = 0.1;
-
+            float percent1 = 0.004*m_pattentIndex;
+            float percent2 = 0.0005*m_pattentIndex;
+            float percent3 = 0.0009*m_pattentIndex;
+            float percent4 = 0.005*m_pattentIndex;
             float percent5 = 1.0 - percent1 - percent2 - percent3 - percent4 - percent5;
             AlisaMethod* am = AlisaMethod::create(percent1,percent2,percent3,percent4,percent5,-1.0, NULL);
             if(am)
@@ -804,18 +798,31 @@ void GroundLayer::decoratorOpe(Node* node,GroundCell* cell)
             Sequence* sequece = Sequence::create(spawn, callfunc, NULL);
             decorator->runAction(sequece);
             std::string type;
+            int addNum = 1;
             switch (m_pCurrentCell->getDetype()) {
                 case Decorator::DecoratorType::DT_GOLD:
+                {
+                    addNum = 1;
                     type = USER_GOLD_NUM;
+                }
+
                     break;
                 case Decorator::DecoratorType::DT_HEART:
+                {
+                    addNum = 1;
                     type = USER_HEART_NUM;
+                }
+                    break;
+                case Decorator::DecoratorType::DT_GOLD_BIG:
+                {
+                    addNum = 5;
+                    type = USER_GOLD_NUM;
+                }
                     break;
                 default:
                     break;
             }
-            localStorageSetItem(type, Value(Value(localStorageGetItem(type)).asInt()+1).asString());
-            m_DecoratorList.erase(index);
+            localStorageSetItem(type, Value(Value(localStorageGetItem(type)).asInt()+addNum).asString());
         }
     }
     
