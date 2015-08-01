@@ -53,7 +53,7 @@ bool GameController::init(Layer* pMainLayer,int difficultLevel)
     
     int rLevel = randomLevel(difficultLevel);
     CCLOG("LEVEL:%d",rLevel);
-    if (!createMap(false,rLevel)) {
+    if (!createMap(false,rLevel,difficultLevel)) {
         return false;
     }
     
@@ -121,7 +121,7 @@ void GameController::destroy()
     m_pMainLayer = nullptr;
 }
 
-bool GameController::createMap(bool _playing,int level)
+bool GameController::createMap(bool _playing,int level,int difficultLevel)
 {
 
     if (m_pSkyBox) {

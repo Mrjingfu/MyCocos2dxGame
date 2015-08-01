@@ -67,21 +67,14 @@ void GameScene::update(float delta)
 void GameScene::gameWin()
 {
     CCLOG("gameWin");
-//    StepManager::getInstance()->setLevelStep(LevelsManager::getInstance()->getCurrentLevel(),StepManager::LEVEL_WIN);
-//    LevelsManager::getInstance()->setCurrentLevel(LevelsManager::getInstance()->getCurrentLevel()+1);
-//    GameController::getInstance()->destroy();
-//    GameController::getInstance()->init(this,m_nDifficultLevel);
+
 }
 void GameScene::gameLose()
 {
     CCLOG("gameLose");
-//    GameController::getInstance()->destroy();
-//    GameController::getInstance()->init(this,m_nDifficultLevel);
+
 }
 void GameScene::gameRecordEnd()
 {
-    //测试
-//    LevelsManager::getInstance()->setCurrentLevel(LevelsManager::getInstance()->getCurrentLevel()+1);
-//    GameController::getInstance()->destroy();
-//    GameController::getInstance()->init(this,m_nDifficultLevel);
+
 }

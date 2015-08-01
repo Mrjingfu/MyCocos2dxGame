@@ -30,7 +30,7 @@ private:
     cocos2d::Skybox*    m_pSkyBox;
     GroundLayer*        m_pGroundLayer;
     cocos2d::Camera*    m_pMainCamera;
-    bool createMap(bool _playing,int level);
+    bool createMap(bool _playing,int level,int difficultLevel);
     
     cocos2d::LayerColor*        m_pWhiteLayer;
 };

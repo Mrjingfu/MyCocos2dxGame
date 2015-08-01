@@ -61,6 +61,8 @@ public:
     void setRecordState(RecordState state);
     void generateDecorator(GroundCell* cell);
     void decoratorOpe(Node* node,GroundCell* cell);
+    void setPattentIndex(int index){m_pattentIndex = index;};
+    int getPattentIndex(){return m_pattentIndex;}
 protected:
     // 处理输入
     virtual void onTouchesBegan(const std::vector<cocos2d::Touch*>& touches, cocos2d::Event *event) override;
@@ -87,6 +89,7 @@ private:
     bool m_isInit;
     cocos2d::ValueVector recordSteps;
     cocos2d::Map<int, Decorator*>   m_DecoratorList;
+    int m_pattentIndex;
 };
 
 #endif /* defined(__MazeJump__GroundLayer__) */

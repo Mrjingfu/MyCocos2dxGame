@@ -6,7 +6,7 @@
 		<key>LevelName</key>
 		<string>5x5-1.tmx</string>
 		<key>SkyTex</key>
-		<string>sky1</string>
+		<string>sky2</string>
 		<key>PlatformModel</key>
 		<string>platform1</string>
 	</dict>
@@ -30,7 +30,7 @@
 		<key>LevelName</key>
 		<string>5x5-4.tmx</string>
 		<key>SkyTex</key>
-		<string>sky1</string>
+		<string>sky2</string>
 		<key>PlatformModel</key>
 		<string>platform1</string>
 	</dict>

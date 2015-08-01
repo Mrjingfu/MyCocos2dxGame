@@ -296,6 +296,7 @@ void TerrainPatternLayer::generateCheckPointDecorator()
 }
 void TerrainPatternLayer::generateDecorator(TerrainCell* cell, int patternIndex)
 {
+    CCASSERT(patternIndex!=0, "patternIndex not equal to zero");
     if(m_patternType != PT_STARTER && m_patternType != PT_CHECKPOINT)
     {
         if(patternIndex <= 11)
