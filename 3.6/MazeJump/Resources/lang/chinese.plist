@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>GAME_NAME</key>
+	<string>Barrage Space</string>
+	<key>PRESS_BEGIN</key>
+	<string>点击这里开始！</string>
+	<key>PRESS_CONTINUE</key>
+	<string>点击这里继续!</string>
+	<key>NO_ADS</key>
+	<string>删除广告</string>
+	<key>NO_ADS_DESC</key>
+	<string>删除所有广告，不再有广告出现!</string>
+	<key>RATE_TITLE</key>
+	<string>评价几何太空战</string>
+	<key>RATE_MESSAGE</key>
+	<string>谢谢您的支持!</string>
+	<key>RATE_NOW</key>
+	<string>赞一个,支持一下!</string>
+	<key>RATE_NEVER</key>
+	<string>很烂,拒绝评价！</string>
+	<key>RATE_LATER</key>
+	<string>再玩一下,稍后再说!</string>
+	<key>NET_ERROR</key>
+	<string>连接超时，请检查网络！</string>
+	<key>RESTORE_OK</key>
+	<string>恢复购买成功！</string>
+	<key>RESTORE_FAILED</key>
+	<string>恢复购买失败！</string>
+	<key>BEST_SCORE</key>
+	<string>最高分: %d</string>
+</dict>
+</plist>

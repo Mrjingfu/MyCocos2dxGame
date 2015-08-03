@@ -7,6 +7,7 @@
 //
 
 #include "MenuScene.h"
+#include "MainUI.h"
 USING_NS_CC;
 
 Scene* MenuScene::createScene()
@@ -36,6 +37,8 @@ bool MenuScene::init()
     {
         return false;
     }
+    auto mainUi = MainUI::create();
+    addChild(mainUi);
     
     return true;
 }

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>GAME_NAME</key>
+	<string>Barrage Space</string>
+	<key>PRESS_BEGIN</key>
+	<string>PRESS HERE TO BEGIN!</string>
+	<key>PRESS_CONTINUE</key>
+	<string>PRESS HERE TO CONTINUE!</string>
+	<key>NO_ADS</key>
+	<string>Remove Ads</string>
+	<key>NO_ADS_DESC</key>
+	<string>No More Ads!</string>
+	<key>RATE_TITLE</key>
+	<string>Rate SpaceGeomtryWar</string>
+	<key>RATE_MESSAGE</key>
+	<string>thanks for your supports!</string>
+	<key>RATE_NOW</key>
+	<string>Very good, support you!</string>
+	<key>RATE_NEVER</key>
+	<string>Too bad, refused!</string>
+	<key>RATE_LATER</key>
+	<string>Play more a while, rate later!</string>
+	<key>NET_ERROR</key>
+	<string>Please check the network for connections!</string>
+	<key>RESTORE_OK</key>
+	<string>Restore purchases successed!</string>
+	<key>RESTORE_FAILED</key>
+	<string>Restore purchases failed!</string>
+	<key>BEST_SCORE</key>
+	<string></string>
+</dict>
+</plist>

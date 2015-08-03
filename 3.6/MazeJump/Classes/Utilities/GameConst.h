@@ -12,6 +12,11 @@ static std::string USER_HEART_NUM = "UserHeartNum";
 
 static std::string USER_GOLD_NUM = "UserGoldNum";
 
+///Font
+static std::string FONT_FXZS = "FZXS12.TTF";
+
+//Local
+static std:: string LOCAL_BEST_SCORE = "BEST_SCORE";
 
 
 #endif //_Scene_Const_h_
