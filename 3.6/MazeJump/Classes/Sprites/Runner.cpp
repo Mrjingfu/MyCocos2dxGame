@@ -9,7 +9,9 @@
 #include "Runner.h"
 #include "OutlineEffect3D.h"
 #include "RunController.h"
+#include "AudioEngine.h"
 USING_NS_CC;
+using namespace experimental;
 
 Runner* Runner::create()
 {
@@ -142,6 +144,7 @@ void Runner::onEnterMoveLeft()
     TerrainLayer* terrainLayer = RunController::getInstance()->getTerrainLayer();
     if(terrainLayer)
     {
+        AudioEngine::play2d("jump.wav", false, 0.3f);
         float cellRadius = terrainLayer->getCellBaseRadius();
         EaseSineOut* scaleTo1 = EaseSineOut::create(ScaleTo::create(0.05f, 1, 0.8f, 1));
         EaseSineIn* scaleTo2 = EaseSineIn::create(ScaleTo::create(0.05f, 1, 1.0f, 1));
@@ -167,6 +170,7 @@ void Runner::onEnterMoveRight()
     TerrainLayer* terrainLayer = RunController::getInstance()->getTerrainLayer();
     if(terrainLayer)
     {
+        AudioEngine::play2d("jump.wav", false, 0.3f);
         float cellRadius = terrainLayer->getCellBaseRadius();
         EaseSineOut* scaleTo1 = EaseSineOut::create(ScaleTo::create(0.05f, 1, 0.8f, 1));
         EaseSineIn* scaleTo2 = EaseSineIn::create(ScaleTo::create(0.05f, 1, 1.0f, 1));
@@ -191,6 +195,7 @@ void Runner::onEnterMoveForward()
     TerrainLayer* terrainLayer = RunController::getInstance()->getTerrainLayer();
     if(terrainLayer)
     {
+        AudioEngine::play2d("jump.wav", false, 0.3f);
         float cellRadius = terrainLayer->getCellBaseRadius();
 
         EaseSineOut* scaleTo1 = EaseSineOut::create(ScaleTo::create(0.05f, 1, 0.8f, 1));
@@ -217,6 +222,7 @@ void Runner::onEnterMoveSuperJump()
     TerrainLayer* terrainLayer = RunController::getInstance()->getTerrainLayer();
     if(terrainLayer)
     {
+        AudioEngine::play2d("superjump.wav", false, 0.3f);
         float cellRadius = terrainLayer->getCellBaseRadius();
         this->stopAllActions();
         EaseSineOut* scaleTo1 = EaseSineOut::create(ScaleTo::create(0.05f, 1, 0.6f, 1));
@@ -250,6 +256,7 @@ void Runner::onEnterMoveJumpLocal()
     TerrainLayer* terrainLayer = RunController::getInstance()->getTerrainLayer();
     if(terrainLayer)
     {
+        AudioEngine::play2d("jump.wav", false, 0.3f);
         float cellRadius = terrainLayer->getCellBaseRadius();
         
         EaseSineOut* scaleTo1 = EaseSineOut::create(ScaleTo::create(0.05f, 1, 0.9f, 1));
@@ -269,6 +276,7 @@ void Runner::onEnterMoveJumpLocal()
 }
 void Runner::onEnterMoveDrop()
 {
+    AudioEngine::play2d("drop.wav");
     EaseSineOut* moveTo = EaseSineOut::create(MoveTo::create(1.0f, Vec3(getPositionX(), -50, getPositionZ())));
     EaseSineOut* scaleTo = EaseSineOut::create(ScaleTo::create(1.0, 0.8f));
     DelayTime* delayTime = DelayTime::create(0.5f);
@@ -281,6 +289,7 @@ void Runner::onEnterMoveDrop()
 }
 void Runner::onEnterDeath()
 {
+    AudioEngine::play2d("hit.wav", false, 0.5);
 }
 void Runner::onExitIdle()
 {

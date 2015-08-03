@@ -8,7 +8,7 @@
 
 #include "GroundLayer.h"
 #include "UtilityHelper.h"
-#include "SimpleAudioEngine.h"
+#include "AudioEngine.h"
 #include "GameScene.h"
 #include "StepManager.h"
 #include "LevelsManager.h"
@@ -16,7 +16,7 @@
 #include "GameConst.h"
 #include "storage/local-storage/LocalStorage.h"
 USING_NS_CC;
-using namespace CocosDenshion;
+using namespace experimental;
 GroundLayer* GroundLayer::create(int level,bool _isPlaying)
 {
     GroundLayer *pRet = new(std::nothrow) GroundLayer();
@@ -125,7 +125,7 @@ bool GroundLayer::init(int level)
         }
         m_Offset = Vec3((m_MapSize.width-1)*m_fCellRadius , 0, (m_MapSize.height-1)*m_fCellRadius);
     }
-    SimpleAudioEngine::getInstance()->playEffect("stoneroll.wav");
+    AudioEngine::play2d("stoneroll.wav");
     
     m_pArrowUp = Arrow::create(Arrow::AT_UP);
     if(!m_pArrowUp)
@@ -308,7 +308,7 @@ void GroundLayer::flipIndexCell(int indexX, int indexY)
             default:
                 break;
         }
-        SimpleAudioEngine::getInstance()->playEffect("stoneflip.wav");
+        AudioEngine::play2d("stoneflip.wav");
         CallFunc* callFunc = CallFunc::create(CC_CALLBACK_0(GroundLayer::setCurrentCellTypeOK,this));
         Sequence* sequence = Sequence::create(ratateTo,callFunc, CallFuncN::create( CC_CALLBACK_1(GroundLayer::decoratorOpe, this, m_pCurrentCell)),NULL);
         GroundCell* reviceCell = m_pCurrentCell->getReviveCell();
@@ -548,7 +548,7 @@ void GroundLayer::seleckStartRolePlace(int index)
         StepManager::getInstance()->setStep(index, Arrow::AT_UNKNOWN);
         
         m_pCurrentCell = cell;
-        SimpleAudioEngine::getInstance()->playEffect("stoneflip.wav");
+        AudioEngine::play2d("stoneflip.wav");
         RotateTo* ratateTo = RotateTo::create(0.5f, Vec3(180,0,0));
         CallFunc* callFunc = CallFunc::create(CC_CALLBACK_0(GroundLayer::setCurrentCellTypeOK,this));
         Sequence* sequence = Sequence::create(ratateTo,callFunc,CallFuncN::create( CC_CALLBACK_1(GroundLayer::decoratorOpe, this, m_GroundCellList.at(index))),NULL);

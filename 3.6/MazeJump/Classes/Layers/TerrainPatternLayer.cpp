@@ -14,7 +14,9 @@
 #include "OutlineEffect3D.h"
 #include "GameConst.h"
 #include "storage/local-storage/LocalStorage.h"
+#include "AudioEngine.h"
 USING_NS_CC;
+using namespace experimental;
 TerrainPatternLayer* TerrainPatternLayer::create(int index, bool generateCheckPoint)
 {
     TerrainPatternLayer *pRet = new(std::nothrow) TerrainPatternLayer();
@@ -97,7 +99,6 @@ bool TerrainPatternLayer::init(int index, bool generateCheckPoint)
     }
     if(m_patternType == PT_CHECKPOINT && generateCheckPoint)
         generateCheckPointDecorator();
-    
     return true;
 }
 void TerrainPatternLayer::update(float delta)
@@ -211,6 +212,7 @@ void TerrainPatternLayer::checkCollisionDecorator()
                 switch (decorator->getType()) {
                     case Decorator::DT_GOLD:
                         {
+                            AudioEngine::play2d("pickupgold.wav");
                             EaseBackInOut* moveTo = EaseBackInOut::create(MoveTo::create(0.5f, Vec3(decorator->getPositionX(), decorator->getPositionY() + 10, decorator->getPositionZ())));
                             EaseBackInOut* scaleTo = EaseBackInOut::create(ScaleTo::create(0.5f, 0.5f));
                             Spawn* spawn = Spawn::create(moveTo, scaleTo, NULL);
@@ -222,6 +224,7 @@ void TerrainPatternLayer::checkCollisionDecorator()
                         break;
                     case Decorator::DT_HEART:
                         {
+                            AudioEngine::play2d("pickupheart.wav");
                             EaseBackInOut* moveTo = EaseBackInOut::create(MoveTo::create(0.5f, Vec3(decorator->getPositionX(), decorator->getPositionY() + 10, decorator->getPositionZ())));
                             EaseBackInOut* scaleTo = EaseBackInOut::create(ScaleTo::create(0.5f, 0.6f));
                             Spawn* spawn = Spawn::create(moveTo, scaleTo, NULL);
@@ -233,6 +236,7 @@ void TerrainPatternLayer::checkCollisionDecorator()
                         break;
                     case Decorator::DT_GOLD_BIG:
                         {
+                            AudioEngine::play2d("pickupgold.wav");
                             EaseBackInOut* moveTo = EaseBackInOut::create(MoveTo::create(0.5f, Vec3(decorator->getPositionX(), decorator->getPositionY() + 10, decorator->getPositionZ())));
                             EaseBackInOut* scaleTo = EaseBackInOut::create(ScaleTo::create(0.5f, 0.8f));
                             Spawn* spawn = Spawn::create(moveTo, scaleTo, NULL);
@@ -248,6 +252,7 @@ void TerrainPatternLayer::checkCollisionDecorator()
                             Camera* mainCamera = RunController::getInstance()->getMainCamera();
                             if(mainCamera && runner)
                             {
+                                AudioEngine::play2d("fadeout.wav");
                                 EaseSineOut* moveTo = EaseSineOut::create(MoveTo::create(300.0f, runner->getPosition3D()));
                                 DelayTime* delay = DelayTime::create(0.5);
                                 CallFunc* callback = CallFunc::create(CC_CALLBACK_0(RunController::switchToMazeJump, RunController::getInstance()));
@@ -288,6 +293,7 @@ void TerrainPatternLayer::generatePlane()
     {
         if(am->getRandomIndex() == 0)
         {
+            AudioEngine::play2d("plane.wav", false, 0.1);
             Decorator* plane = Decorator::create(Decorator::DT_PLANE);
             if(plane)
             {

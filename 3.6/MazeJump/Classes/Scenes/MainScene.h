@@ -30,6 +30,8 @@ public:
 private:
     void gameWin();
     void gameLose();
+    
+    int  m_nBgID;
 };
 
 #endif /* defined(__MazeJump__MainScene__) */

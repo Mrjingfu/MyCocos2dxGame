@@ -73,7 +73,7 @@
 	<key>COLOR_STAR_DESC</key>
 	<string>彩色五角星敌人会追踪你的飞行器，并向周围发射大量弹幕，你要玩彩京吗！</string>
 	<key>HEXAGON_DESC</key>
-	<string>五边形敌人会在空间中制造激光带，你撞上就挂了！</string>
+	<string>六边形敌人会在空间中制造激光带，你撞上就挂了！</string>
 	<key>COLOR_HEXAGON_DESC</key>
 	<string>彩色五边形敌人会在空间中制造黑洞，一旦你靠近，你就会被吸进去了～快逃！</string>
 	<key>ACCEL_DESC</key>
