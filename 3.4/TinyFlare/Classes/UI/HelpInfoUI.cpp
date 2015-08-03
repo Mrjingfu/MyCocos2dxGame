@@ -397,7 +397,7 @@ cocos2d::extension::TableViewCell* HelpInfoUI::tableCellAtIndex(cocos2d::extensi
                     cocos2d::Sprite* hexagon = Sprite::createWithSpriteFrameName("hexagon.png");
                     hexagon->setPosition(size.width*0.15f, size.height*0.75f);
                     hexagon->setScale(0.8f*scale);
-                    hexagon->setColor(Color3B(64,255,1));
+                    hexagon->setColor(Color3B(253,153,31));
                     cell->addChild(hexagon);
                     RotateBy* rotateBy = RotateBy::create(1.0f, -180);
                     RepeatForever* repeatForever = RepeatForever::create(rotateBy);

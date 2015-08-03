@@ -33,6 +33,7 @@ private:
     void gameRecordEnd();
 private:
     int m_nDifficultLevel;
+    int  m_nBgID;
 };
 
 #endif /* defined(__MazeJump__GameScene__) */

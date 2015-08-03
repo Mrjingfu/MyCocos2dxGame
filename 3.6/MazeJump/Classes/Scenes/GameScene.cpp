@@ -11,7 +11,9 @@
 #include "GameController.h"
 #include "LevelsManager.h"
 #include "StepManager.h"
+#include "AudioEngine.h"
 USING_NS_CC;
+using namespace experimental;
 
 Scene* GameScene::createScene(int difficultLevel)
 {
@@ -46,9 +48,9 @@ bool GameScene::init()
 }
 void GameScene::onEnter()
 {
-
     Layer::onEnter();
     scheduleUpdate();
+    m_nBgID = AudioEngine::play2d("loop.wav",true, 0.5);
     if(!GameController::getInstance()->init(this,m_nDifficultLevel))
         CCLOGERROR("GameController init failed!");
     
@@ -56,6 +58,7 @@ void GameScene::onEnter()
 }
 void GameScene::onExit()
 {
+    AudioEngine::stop(m_nBgID);
     GameController::getInstance()->destroy();
     unscheduleUpdate();
     Layer::onExit();

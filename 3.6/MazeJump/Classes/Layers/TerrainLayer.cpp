@@ -8,13 +8,14 @@
 
 #include "TerrainLayer.h"
 #include "UtilityHelper.h"
-#include "SimpleAudioEngine.h"
+#include "AudioEngine.h"
 #include "MainScene.h"
 #include "RunController.h"
 #include "PatternsManager.h"
 #include "AlisaMethod.h"
+#include "AudioEngine.h"
 USING_NS_CC;
-using namespace CocosDenshion;
+using namespace experimental;
 TerrainLayer* TerrainLayer::create()
 {
     TerrainLayer *pRet = new(std::nothrow) TerrainLayer();
@@ -85,16 +86,20 @@ void TerrainLayer::setCurrentPatternNum( int num )
         {
             int currentDifficultLevel = RunController::getInstance()->getInitDifficultLevel() + m_nCurrentPatternNum/10;
             RunController::getInstance()->setDifficultLevel(currentDifficultLevel);
+            if(m_nCurrentPatternNum != 1)
+                AudioEngine::play2d("checkpoint.wav");
         }
         if(m_nCurrentPatternNum == 0)
         {
             generatePattern(m_nCurrentPatternNum+1);
             generatePattern(m_nCurrentPatternNum+2);
             generatePattern(m_nCurrentPatternNum+3);
+            AudioEngine::play2d("stoneroll.wav",false, 0.2f);
         }
         else
         {
             generatePattern(m_nCurrentPatternNum+3);
+            AudioEngine::play2d("stoneroll.wav", false, 0.1f);
         }
         collapseCurrentPattern();
         randomGeneratePlane();

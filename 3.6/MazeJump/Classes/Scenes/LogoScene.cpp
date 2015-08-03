@@ -69,11 +69,6 @@ void LogoScene::precache()
     if(!LevelsManager::getInstance()->init("levels.plist"))
         CCLOGERROR("no levels file!");
     
-    SimpleAudioEngine::getInstance()->preloadEffect("life.mp3");
-    SimpleAudioEngine::getInstance()->preloadEffect("start.mp3");
-    SimpleAudioEngine::getInstance()->preloadEffect("stoneroll.wav");
-    SimpleAudioEngine::getInstance()->preloadEffect("stoneflip.wav");
-    SimpleAudioEngine::getInstance()->setEffectsVolume(0.5);
     CallFunc* callFunc = CallFunc::create(CC_CALLBACK_0(LogoScene::endcache, this));
     EaseSineOut* easeOut = EaseSineOut::create(FadeOut::create(1.0f));
     Sequence* sequence = Sequence::create(easeOut, callFunc, NULL);
