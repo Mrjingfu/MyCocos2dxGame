@@ -1,0 +1,45 @@
+system explosion1
+{
+    category                                    Explosion
+    technique 
+    {
+        material                                BaseWhite
+        renderer                                Box
+        {
+        }
+        emitter                                 Point DebrisEmitter
+        {
+            emission_rate                       20
+            angle                               45
+            time_to_live                        1
+            velocity                            dyn_random
+            {
+                min                             4
+                max                             6
+            }
+            particle_width                      0.3
+            particle_height                     0.3
+            particle_depth                      0.3
+            enabled                             false
+            force_emission                      true
+        }
+        affector                                Colour 
+        {
+            time_colour                         0    1 1 1 1
+            time_colour                         1    0 0 0 1
+        }
+        affector                                LinearForce 
+        {
+            force_vector                        0 -10 0
+        }
+        observer                                OnTime 
+        {
+            handler                             DoEnableComponent 
+            {
+                enable_component                emitter_component DebrisEmitter true
+            }
+            since_start_system                  true
+            on_time                             greater_than 0.3
+        }
+    }
+}

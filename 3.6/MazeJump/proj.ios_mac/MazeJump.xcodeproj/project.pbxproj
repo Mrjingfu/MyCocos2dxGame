@@ -119,6 +119,8 @@
 		5542EEC41B395D3600CD9496 /* GameScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5542EEBA1B3943C600CD9496 /* GameScene.cpp */; };
 		5544E1E31B5DD2AF0049EB2D /* sky1.png in Resources */ = {isa = PBXBuildFile; fileRef = 5544E1E01B5DD2AF0049EB2D /* sky1.png */; };
 		5544E1E61B5DD2BD0049EB2D /* sky1.png in Resources */ = {isa = PBXBuildFile; fileRef = 5544E1E01B5DD2AF0049EB2D /* sky1.png */; };
+		555E76391B7085970085B335 /* explosion1.pu in Resources */ = {isa = PBXBuildFile; fileRef = 555E76381B7085970085B335 /* explosion1.pu */; };
+		555E763A1B7085AF0085B335 /* explosion1.pu in Resources */ = {isa = PBXBuildFile; fileRef = 555E76381B7085970085B335 /* explosion1.pu */; };
 		55781EF81B393D6F0070BB08 /* LogoScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55781EF61B393D6F0070BB08 /* LogoScene.cpp */; };
 		55781EF91B393D890070BB08 /* LogoScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55781EF61B393D6F0070BB08 /* LogoScene.cpp */; };
 		5579F74D1B68DBC5006861F1 /* Decorator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5579F74B1B68DBC5006861F1 /* Decorator.cpp */; };
@@ -465,6 +467,7 @@
 		5542EEBA1B3943C600CD9496 /* GameScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameScene.cpp; sourceTree = "<group>"; };
 		5542EEBB1B3943C600CD9496 /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameScene.h; sourceTree = "<group>"; };
 		5544E1E01B5DD2AF0049EB2D /* sky1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sky1.png; sourceTree = "<group>"; };
+		555E76381B7085970085B335 /* explosion1.pu */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = explosion1.pu; sourceTree = "<group>"; };
 		55781EF61B393D6F0070BB08 /* LogoScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LogoScene.cpp; sourceTree = "<group>"; };
 		55781EF71B393D6F0070BB08 /* LogoScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogoScene.h; sourceTree = "<group>"; };
 		5579F74B1B68DBC5006861F1 /* Decorator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Decorator.cpp; sourceTree = "<group>"; };
@@ -893,6 +896,7 @@
 		5542EED01B395E1300CD9496 /* particles */ = {
 			isa = PBXGroup;
 			children = (
+				555E76381B7085970085B335 /* explosion1.pu */,
 				EC496DFA1B5F8C8A007C9A08 /* starfield.plist */,
 			);
 			path = particles;
@@ -1229,6 +1233,7 @@
 				ECA02B781B5F72F6007EFC0F /* sky2.png in Resources */,
 				5510DE731B6B7C4D00C2FB15 /* platform4.c3b in Resources */,
 				EC721EF21B6F79CF0073B845 /* btn_heartbuy_normal.png in Resources */,
+				555E76391B7085970085B335 /* explosion1.pu in Resources */,
 				55EEE8011B3BA48700B16AEE /* logo.png in Resources */,
 				55AEF25D1B6C5CA700460B84 /* bird.png in Resources */,
 				ECE0D6761B6F13A300B5E416 /* btn_rank_press.png in Resources */,
@@ -1329,6 +1334,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				555E763A1B7085AF0085B335 /* explosion1.pu in Resources */,
 				EC721F021B6F8E710073B845 /* shopicon.png in Resources */,
 				EC721F031B6F8E710073B845 /* btn_back_normal.png in Resources */,
 				EC721F041B6F8E710073B845 /* btn_back_press.png in Resources */,

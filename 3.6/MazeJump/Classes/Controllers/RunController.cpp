@@ -13,6 +13,8 @@
 #include "GameScene.h"
 #include "MenuScene.h"
 #include "storage/local-storage/LocalStorage.h"
+#include "Particle3D/CCParticleSystem3D.h"
+#include "Particle3D/PU/CCPUParticleSystem3D.h"
 USING_NS_CC;
 
 RunController* g_pRunControllerInstance = nullptr;
@@ -319,5 +321,16 @@ void RunController::updateCloud()
                 opacity = 255;
             m_pCloud1->setOpacity(opacity);
         }
+    }
+}
+void RunController::addPlayerExplosion()
+{
+    if(m_pMainLayer)
+    {
+        auto explosion = PUParticleSystem3D::create("explosion1.pu");
+        explosion->setCameraMask((unsigned short)CameraFlag::USER1);
+        explosion->startParticleSystem();
+    
+        m_pMainLayer->addChild(explosion);
     }
 }

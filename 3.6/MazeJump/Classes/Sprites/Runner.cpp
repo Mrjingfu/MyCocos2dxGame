@@ -290,6 +290,7 @@ void Runner::onEnterMoveDrop()
 void Runner::onEnterDeath()
 {
     AudioEngine::play2d("hit.wav", false, 0.5);
+    RunController::getInstance()->addPlayerExplosion();
 }
 void Runner::onExitIdle()
 {
