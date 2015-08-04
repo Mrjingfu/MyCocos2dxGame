@@ -52,7 +52,7 @@ bool MainUI::init()
     scoreView->setScale(scale);
     addChild(scoreView);
     
-    ui::ImageView* glodView = ui::ImageView::create("glod.png");
+    ui::ImageView* glodView = ui::ImageView::create("uigold.png");
     glodView->setPosition(Vec2(size.width*0.35, size.height*0.5));
     glodView->setScale(scale);
     addChild(glodView);
@@ -62,7 +62,7 @@ bool MainUI::init()
     goldTv->setScale(scale);
     addChild(goldTv);
     
-    ui::ImageView* heartView = ui::ImageView::create("heart.png");
+    ui::ImageView* heartView = ui::ImageView::create("uiheart.png");
     heartView->setPosition(Vec2(size.width*0.35, size.height*0.5- glodView->getContentSize().height*scale -10*scale));
     heartView->setScale(scale);
     addChild(heartView);
