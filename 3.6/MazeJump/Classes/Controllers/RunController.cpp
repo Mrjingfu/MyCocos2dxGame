@@ -325,12 +325,14 @@ void RunController::updateCloud()
 }
 void RunController::addPlayerExplosion()
 {
-    if(m_pMainLayer)
+    if(m_pMainPlayer && m_pMainLayer)
     {
-        auto explosion = PUParticleSystem3D::create("explosion1.pu");
+        auto explosion = PUParticleSystem3D::create("explosionSystem.pu");
         explosion->setCameraMask((unsigned short)CameraFlag::USER1);
-        explosion->startParticleSystem();
-    
+        explosion->setPosition3D(m_pMainPlayer->getPosition3D());
         m_pMainLayer->addChild(explosion);
+        explosion->startParticleSystem();
+        m_pMainPlayer->removeFromParentAndCleanup(true);
+        m_pMainPlayer = nullptr;
     }
 }

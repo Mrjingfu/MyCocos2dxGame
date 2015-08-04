@@ -42,6 +42,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     }
 
     std::vector<std::string> searchPaths;
+    searchPaths.push_back("Particle3D");
     searchPaths.push_back("maps");
     searchPaths.push_back("lang");
     searchPaths.push_back("fonts");

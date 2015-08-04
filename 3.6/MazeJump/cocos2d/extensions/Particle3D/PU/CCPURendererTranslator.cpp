@@ -69,21 +69,23 @@ void PURendererTranslator::translate(PUScriptCompiler* compiler, PUAbstractNode 
     
     if (parent && parent->context)
     {
+        //// lwwhb modify path
          PUParticleSystem3D* system = static_cast<PUParticleSystem3D*>(parent->context);
          PUMaterial *material = PUMaterialCache::Instance()->getMaterial(system->getMaterialName());
-         std::string texFolder = "textures/";
+         std::string texFolder = "/";
          if (material){
              std::string::size_type pos = obj->file.find_last_of("/");
              //if (pos != std::string::npos)
              //    texFolder = obj->file.substr(0, pos + 1) + texFolder;
              if (pos != std::string::npos){
-                 std::string temp = obj->file.substr(0, pos);
-                 pos = temp.find_last_of("/");
-                 if (pos != std::string::npos){
-                     texFolder = temp.substr(0, pos + 1) + texFolder;
-                 }
+                 texFolder = obj->file.substr(0, pos) + texFolder;
+//                 pos = temp.find_last_of("/");
+//                 if (pos != std::string::npos){
+//                     texFolder = temp.substr(0, pos + 1) + texFolder;
+//                 }
              }
          }
+        ///
         if (type == "Billboard"){
             if (material)
                 _renderer = PUParticle3DQuadRender::create(texFolder + material->textureFile);

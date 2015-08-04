@@ -54,7 +54,7 @@ Decorator* Decorator::create(DecoratorType type)
                 if(decorator->initWithFile("plane.c3b"))
                 {
                     decorator->setScale(0.8);
-                    decorator->setPositionY(5);
+                    decorator->setPositionY(10);
                     decorator->setOpacity(0);
                     decorator->setNeedToUpdate(true);
                 }
