@@ -15,7 +15,7 @@ USING_NS_CC;
 DeathUI* DeathUI::create()
 {
     DeathUI *pRet = new(std::nothrow) DeathUI();
-    if (pRet && pRet->init())
+    if (pRet )
     {
         pRet->autorelease();
         return pRet;
@@ -29,6 +29,15 @@ DeathUI::DeathUI()
 }
 DeathUI::~DeathUI()
 {
+}
+void DeathUI::onEnter()
+{
+    BaseUI::onEnter();
+    init();
+}
+void DeathUI::onExit()
+{
+    BaseUI::onExit();
 }
 bool DeathUI::init()
 {

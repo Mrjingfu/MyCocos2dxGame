@@ -9,14 +9,16 @@
 #define __MazeJump__GameLose__
 
 #include "cocos2d.h"
-#include "ui/CocosGUI.h"
-class GameLose : public cocos2d::ui::Layout
+#include "BaseUI.h"
+class GameLose : public BaseUI
 {
 protected:
     GameLose();
     virtual ~GameLose();
-    virtual bool init() override;
+    virtual bool init() ;
 public:
+    virtual void onEnter();
+    virtual void onExit();
     static GameLose* create();
 
 
