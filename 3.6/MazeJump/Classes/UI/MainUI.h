@@ -9,21 +9,25 @@
 #define __MazeJump__MainUI__
 
 #include "cocos2d.h"
-#include "ui/CocosGUI.h"
-class MainUI : public cocos2d::ui::Layout
+#include "BaseUI.h"
+class StartUI;
+class MainUI : public BaseUI
 {
 protected:
     MainUI();
     virtual ~MainUI();
-    virtual bool init() override;
+    bool init();
 public:
+    virtual void onEnter();
+    virtual void onExit();
     static MainUI* create();
     void onPlayGame(Ref* ref);
-    void onResumeGame(Ref* ref);
     void onShop(Ref* ref);
     void onSound(Ref* ref);
     void onRank(Ref* ref);
-
+private:
+    StartUI* startui;
+    
 };
 
 #endif /* defined(__MazeJump__MainUI__) */

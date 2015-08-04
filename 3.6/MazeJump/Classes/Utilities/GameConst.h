@@ -15,8 +15,17 @@ static std::string USER_GOLD_NUM = "UserGoldNum";
 ///Font
 static std::string FONT_FXZS = "FZXS12.TTF";
 
-//Local
-static std:: string LOCAL_BEST_SCORE = "BEST_SCORE";
 
+//UI
+static const std::string LAYER_NAME_UI = "UILayer";
+static const int LAYER_UI = 0;
+
+
+static const std::string LAYER_NAME_MASK = "MaskLayer";
+static const int LAYER_MASK = 1;
+
+
+static const std::string LAYER_NAME_DIALOG = "UIDialogLayer";
+static const int LAYER_DIALOG = 2;
 
 #endif //_Scene_Const_h_

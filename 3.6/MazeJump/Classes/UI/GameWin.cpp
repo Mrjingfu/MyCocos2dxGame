@@ -15,7 +15,7 @@ USING_NS_CC;
 GameWin* GameWin::create()
 {
     GameWin *pRet = new(std::nothrow) GameWin();
-    if (pRet && pRet->init())
+    if (pRet )
     {
         pRet->autorelease();
         return pRet;
@@ -30,6 +30,16 @@ GameWin::GameWin()
 GameWin::~GameWin()
 {
 }
+void GameWin::onEnter()
+{
+    BaseUI::onEnter();
+    init();
+}
+void GameWin::onExit()
+{
+    BaseUI::onExit();
+}
+
 bool GameWin::init()
 {
 

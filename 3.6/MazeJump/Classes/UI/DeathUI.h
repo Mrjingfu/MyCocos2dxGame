@@ -9,14 +9,16 @@
 #define __MazeJump__DeathUI__
 
 #include "cocos2d.h"
-#include "ui/CocosGUI.h"
-class DeathUI : public cocos2d::ui::Layout
+#include "BaseUI.h"
+class DeathUI : public BaseUI
 {
 protected:
     DeathUI();
     virtual ~DeathUI();
-    virtual bool init() override;
+    virtual bool init() ;
 public:
+    virtual void onEnter();
+    virtual void onExit();
     static DeathUI* create();
 
 
