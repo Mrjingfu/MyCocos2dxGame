@@ -27,5 +27,8 @@ static const int LAYER_MASK = 1;
 
 static const std::string LAYER_NAME_DIALOG = "UIDialogLayer";
 static const int LAYER_DIALOG = 2;
-
+//SHOP
+static const std::string SHOP_HEART_NOT_ENOUGH= "HEART_NOT_ENOUGH";
+static const std::string SHOP_GOLD_NOT_ENOUGH= "GOLDT_NOT_ENOUGH";
+static const std::string SHOP_BUY= "SHOP_BUY";
 #endif //_Scene_Const_h_

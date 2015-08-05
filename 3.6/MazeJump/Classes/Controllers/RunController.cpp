@@ -40,6 +40,7 @@ RunController::RunController()
     m_pWhiteLayer   = nullptr;
     m_bInMazeJump   = false;
     m_GameState = RGS_FROZEN;
+    m_gameUI = nullptr;
 }
 RunController::~RunController()
 {
@@ -51,6 +52,8 @@ bool RunController::init(Layer* pMainLayer)
     m_pMainLayer = pMainLayer;
     m_nInitDifficultLevel = getDifficultLevel();
     
+    m_gameUI =GameUI::create();
+    m_pMainLayer->addChild(m_gameUI);
     m_pWhiteLayer = LayerColor::create(Color4B::WHITE);
     if(!m_pWhiteLayer)
         return false;
@@ -157,7 +160,8 @@ void RunController::setGameState(RunnerGameState state)
             case RGS_GAMEOVER:
                 {
                     CCLOG("gameOver");
-                    setDifficultLevel(0);
+                    //setDifficultLevel(0);
+                    m_gameUI->setGameMessage(GameUI::UIMessage::GU_RUN_LOSE);
                 }
                 break;
             default:

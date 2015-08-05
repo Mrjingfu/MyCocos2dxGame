@@ -200,6 +200,7 @@ void TerrainPatternLayer::beginCollapse()
 void TerrainPatternLayer::checkCollisionDecorator()
 {
     Runner* runner = RunController::getInstance()->getMainPlayer();
+    GameUI* gameUI = RunController::getInstance()->getGameUiLayer();
     if(!runner)
         return;
     for (Decorator* decorator : m_DecoratorList) {
@@ -220,6 +221,7 @@ void TerrainPatternLayer::checkCollisionDecorator()
                             Sequence* sequece = Sequence::create(spawn, callfunc, NULL);
                             decorator->runAction(sequece);
                             localStorageSetItem(USER_GOLD_NUM, Value(Value(localStorageGetItem(USER_GOLD_NUM)).asInt()+1).asString());
+                            gameUI->setGameMessage(GameUI::UIMessage::GU_ADD_GOLD);
                         }
                         break;
                     case Decorator::DT_HEART:
@@ -232,6 +234,7 @@ void TerrainPatternLayer::checkCollisionDecorator()
                             Sequence* sequece = Sequence::create(spawn, callfunc, NULL);
                             decorator->runAction(sequece);
                             localStorageSetItem(USER_HEART_NUM, Value(Value(localStorageGetItem(USER_HEART_NUM)).asInt()+1).asString());
+                            gameUI->setGameMessage(GameUI::UIMessage::GU_ADD_HEART);
                         }
                         break;
                     case Decorator::DT_GOLD_BIG:
@@ -244,6 +247,7 @@ void TerrainPatternLayer::checkCollisionDecorator()
                             Sequence* sequece = Sequence::create(spawn, callfunc, NULL);
                             decorator->runAction(sequece);
                             localStorageSetItem(USER_GOLD_NUM, Value(Value(localStorageGetItem(USER_GOLD_NUM)).asInt()+5).asString());
+                            gameUI->setGameMessage(GameUI::UIMessage::GU_ADD_GOLD);
                         }
                         break;
                     case Decorator::DT_PORTAL:

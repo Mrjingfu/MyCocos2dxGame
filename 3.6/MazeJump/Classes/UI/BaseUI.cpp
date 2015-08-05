@@ -55,9 +55,17 @@ void BaseUI::onEnter()
     m_dialogLayer = cocos2d::Layer::create();
     m_dialogLayer->setName(LAYER_NAME_DIALOG);
     addChild(m_dialogLayer,LAYER_DIALOG,LAYER_DIALOG);
+    m_dialogLayer->setVisible(false);
+   
+    
 
 }
 void BaseUI::onExit()
 {
     Layout::onExit();
 }
+cocos2d::Layer* BaseUI::getLayer(std::string layerName)
+{
+    return static_cast<Layer*>(this->getChildByName(layerName));
+}
+

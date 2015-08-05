@@ -9,6 +9,7 @@
 #include "UtilityHelper.h"
 #include "GameConst.h"
 #include "MainScene.h"
+#include "ShopScene.h"
 #include "storage/local-storage/LocalStorage.h"
 USING_NS_CC;
 
@@ -53,7 +54,7 @@ bool StartUI::init(BaseUI* baseUi)
     goldView->setScale(scale);
     addChild(goldView);
 
-    ui::Text* goldTv = ui::Text::create(StringUtils::format("%d",Value(localStorageGetItem(USER_GOLD_NUM)).asInt()), FONT_FXZS, 40);
+     goldTv = ui::Text::create(StringUtils::format("%d",Value(localStorageGetItem(USER_GOLD_NUM)).asInt()), FONT_FXZS, 40);
     goldTv->setPosition(Vec2(size.width*0.6+goldView->getContentSize().width*scale+20*scale, size.height*0.58));
     goldTv->setScale(scale);
     addChild(goldTv);
@@ -63,18 +64,18 @@ bool StartUI::init(BaseUI* baseUi)
     heartView->setScale(scale);
     addChild(heartView);
 
-    ui::Text* heartTv = ui::Text::create(StringUtils::format("%d",Value(localStorageGetItem(USER_HEART_NUM)).asInt()), FONT_FXZS, 40);
+     heartTv = ui::Text::create(StringUtils::format("%d",Value(localStorageGetItem(USER_HEART_NUM)).asInt()), FONT_FXZS, 40);
     heartTv->setPosition(Vec2(size.width*0.25+heartView->getContentSize().width*scale+20*scale, size.height*0.58));
     heartTv->setScale(scale);
     addChild(heartTv);
     
-    ui::Text* lastScoreView = ui::Text::create(StringUtils::format(UtilityHelper::getLocalString("LAST_SCORE").c_str(),Value(localStorageGetItem(USER_LAST_LEVEL).c_str()).asInt()), FONT_FXZS, 40);
-    lastScoreView->setPosition(Vec2(size.width*0.4, size.height*0.51));
+     lastScoreView = ui::Text::create(StringUtils::format(UtilityHelper::getLocalString("LAST_SCORE").c_str(),Value(localStorageGetItem(USER_LAST_LEVEL).c_str()).asInt()), FONT_FXZS, 40);
+    lastScoreView->setPosition(Vec2(size.width*0.42, size.height*0.51));
     lastScoreView->setScale(scale);
     addChild(lastScoreView);
     
-    ui::Text* bestscoreView = ui::Text::create(StringUtils::format(UtilityHelper::getLocalString("BEST_SCORE").c_str(),Value(localStorageGetItem(USER_MAX_LEVEL).c_str()).asInt()), FONT_FXZS, 40);
-    bestscoreView->setPosition(Vec2(size.width*0.4, size.height*0.51-lastScoreView->getContentSize().height*scale-30*scale));
+     bestscoreView = ui::Text::create(StringUtils::format(UtilityHelper::getLocalString("BEST_SCORE").c_str(),Value(localStorageGetItem(USER_MAX_LEVEL).c_str()).asInt()), FONT_FXZS, 40);
+    bestscoreView->setPosition(Vec2(size.width*0.42, size.height*0.51-lastScoreView->getContentSize().height*scale-30*scale));
     bestscoreView->setScale(scale);
     addChild(bestscoreView);
 
@@ -128,6 +129,7 @@ bool StartUI::init(BaseUI* baseUi)
 }
 void StartUI::onPlayGame(cocos2d::Ref *ref)
 {
+    localStorageSetItem(USER_LAST_LEVEL, Value(0).asString());
     m_baseUi->setShowDilog(false);
     auto scene = MainScene::createScene();
     Director::getInstance()->replaceScene(scene);
@@ -135,4 +137,38 @@ void StartUI::onPlayGame(cocos2d::Ref *ref)
 void StartUI::onResumeGame(cocos2d::Ref *ref)
 {
     CCLOG("onResumeGame");
+    
+    int heartNum = Value(localStorageGetItem(USER_HEART_NUM)).asInt();
+    if (heartNum>0) {
+        localStorageSetItem(USER_HEART_NUM, Value(heartNum-1).asString());
+        m_baseUi->setShowDilog(false);
+        auto scene = MainScene::createScene();
+        Director::getInstance()->replaceScene(scene);
+    }else
+    {
+        CCLOG("Shop");
+        auto scene = ShopScene::createScene(SHOP_HEART_NOT_ENOUGH);
+        Director::getInstance()->pushScene(scene);
+    }
+    
+}
+void StartUI::onEnter()
+{
+    Layout::onEnter();
+    if (heartTv) {
+        heartTv->setString(StringUtils::format("%d",Value(localStorageGetItem(USER_HEART_NUM)).asInt()));
+    }
+    if (goldTv) {
+        goldTv->setString(StringUtils::format("%d",Value(localStorageGetItem(USER_GOLD_NUM)).asInt()));
+    }
+    if (lastScoreView) {
+        lastScoreView->setString(StringUtils::format(UtilityHelper::getLocalString("LAST_SCORE").c_str(),Value(localStorageGetItem(USER_LAST_LEVEL).c_str()).asInt()));
+    }
+    if (bestscoreView) {
+        bestscoreView->setString(StringUtils::format(UtilityHelper::getLocalString("BEST_SCORE").c_str(),Value(localStorageGetItem(USER_MAX_LEVEL).c_str()).asInt()));
+    }
+}
+void StartUI::onExit()
+{
+     Layout::onExit();
 }

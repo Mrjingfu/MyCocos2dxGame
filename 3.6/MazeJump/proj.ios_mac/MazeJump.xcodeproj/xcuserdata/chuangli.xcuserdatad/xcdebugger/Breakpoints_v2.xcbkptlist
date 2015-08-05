@@ -111,7 +111,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "244"
             endingLineNumber = "244"
-            landmarkName = "Runner::onEnterMoveJumpLocal()"
+            landmarkName = "Runner::onEnterMoveSuperJump()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -169,13 +169,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../Classes/UI/StartUI.cpp"
-            timestampString = "460381233.16025"
+            filePath = "../Classes/Controllers/RunController.cpp"
+            timestampString = "460440089.363062"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "39"
-            endingLineNumber = "39"
-            landmarkName = "StartUI::init(BaseUI* baseUi)"
+            startingLineNumber = "61"
+            endingLineNumber = "61"
+            landmarkName = "RunController::init(Layer* pMainLayer)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -185,13 +185,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../Classes/UI/StartUI.cpp"
-            timestampString = "460381262.916619"
+            filePath = "../Classes/UI/ShopUI.cpp"
+            timestampString = "460455018.579991"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "131"
-            endingLineNumber = "131"
-            landmarkName = "StartUI::onPlayGame(cocos2d::Ref *ref)"
+            startingLineNumber = "240"
+            endingLineNumber = "240"
+            landmarkName = "ShopUI::onProduct(const std::string &amp;productId)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

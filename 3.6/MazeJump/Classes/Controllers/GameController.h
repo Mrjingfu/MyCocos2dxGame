@@ -11,6 +11,7 @@
 
 #include "cocos2d.h"
 #include "GroundLayer.h"
+#include "GameUI.h"
 class GameController : public cocos2d::Ref
 {
     GameController();
@@ -21,7 +22,7 @@ public:
     void update(float delta);
     void destroy();
     int randomLevel(int difficultLevel);
-    
+    GameUI* getGameUiLayer()const {return m_gameUI;}
     void switchToRainbowRun();
 private:
     void switchToMainScene();
@@ -31,7 +32,7 @@ private:
     GroundLayer*        m_pGroundLayer;
     cocos2d::Camera*    m_pMainCamera;
     bool createMap(bool _playing,int level,int difficultLevel);
-    
+    GameUI* m_gameUI;
     cocos2d::LayerColor*        m_pWhiteLayer;
 };
 
