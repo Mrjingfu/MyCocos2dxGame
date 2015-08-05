@@ -1,11 +1,12 @@
 
-material BaseWhite
+material BaseTexture
 {
     technique
     {
         pass
         {
             lighting off
+            scene_blend add
             depth_write off
             texture_unit
             {
