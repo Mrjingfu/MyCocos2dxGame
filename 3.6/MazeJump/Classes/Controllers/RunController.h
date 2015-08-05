@@ -48,6 +48,8 @@ public:
     void switchToMenu();
     
     bool isInMazeJump() const { return m_bInMazeJump; }
+    
+    void addPlayerExplosion();
 private:
     void switchToGameScene();
     void switchToMenuScene();

@@ -271,21 +271,23 @@ bool PUParticleSystem3D::initWithFilePath( const std::string &filePath )
     std::string fullPath = FileUtils::getInstance()->fullPathForFilename(filePath);
     convertToUnixStylePath(fullPath);
     std::string::size_type pos = fullPath.find_last_of("/");
-    std::string materialFolder = "materials";
-    if (pos != std::string::npos){
-        std::string temp = fullPath.substr(0, pos);
-        pos = temp.find_last_of("/");
-        if (pos != std::string::npos){
-            materialFolder = temp.substr(0, pos + 1) + materialFolder;
-        }
-    }
-    static std::vector<std::string> loadedFolder;
-    if (std::find(loadedFolder.begin(), loadedFolder.end(), materialFolder) == loadedFolder.end())
-    {
+    std::string materialFolder = fullPath.substr(0, pos + 1);
+    ////lwwhb modify path
+//    std::string materialFolder = "materials";
+//    if (pos != std::string::npos){
+//        std::string temp = fullPath.substr(0, pos);
+//        pos = temp.find_last_of("/");
+//        if (pos != std::string::npos){
+//            materialFolder = temp.substr(0, pos + 1) + materialFolder;
+//        }
+//    }
+//    static std::vector<std::string> loadedFolder;
+//    if (std::find(loadedFolder.begin(), loadedFolder.end(), materialFolder) == loadedFolder.end())
+//    {
         PUMaterialCache::Instance()->loadMaterialsFromSearchPaths(materialFolder);
-        loadedFolder.push_back(materialFolder);
-    }
-
+//        loadedFolder.push_back(materialFolder);
+//    }
+    ////
     if (!initSystem(fullPath)){
         return false;
     }
