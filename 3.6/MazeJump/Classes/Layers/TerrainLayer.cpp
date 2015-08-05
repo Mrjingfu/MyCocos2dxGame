@@ -86,6 +86,7 @@ void TerrainLayer::setCurrentPatternNum( int num )
         {
             int currentDifficultLevel = RunController::getInstance()->getInitDifficultLevel() + m_nCurrentPatternNum/10;
             RunController::getInstance()->setDifficultLevel(currentDifficultLevel);
+            RunController::getInstance()->getGameUiLayer()->setGameMessage(GameUI::UIMessage::GU_ADD_SCORE);
             if(m_nCurrentPatternNum != 1)
                 AudioEngine::play2d("checkpoint.wav");
         }

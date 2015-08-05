@@ -9,16 +9,15 @@
 #define __MazeJump__GameWin__
 
 #include "cocos2d.h"
-#include "BaseUI.h"
-class GameWin : public BaseUI
+#include "ui/CocosGUI.h"
+class GameWin : public cocos2d::ui::Layout
 {
 protected:
     GameWin();
     virtual ~GameWin();
     virtual bool init() ;
 public:
-    virtual void onEnter();
-    virtual void onExit();
+
     static GameWin* create();
 
 

@@ -28,6 +28,7 @@ GameController::GameController()
     m_pGroundLayer      = nullptr;
     m_pMainCamera       = nullptr;
     m_pWhiteLayer       = nullptr;
+    m_gameUI            = nullptr;
 }
 GameController::~GameController()
 {
@@ -37,7 +38,8 @@ bool GameController::init(Layer* pMainLayer,int difficultLevel)
     if(pMainLayer == nullptr)
         return false;
     m_pMainLayer = pMainLayer;
-    
+    m_gameUI =GameUI::create();
+    m_pMainLayer->addChild(m_gameUI);
     m_pWhiteLayer = LayerColor::create(Color4B::WHITE);
     if(!m_pWhiteLayer)
         return false;

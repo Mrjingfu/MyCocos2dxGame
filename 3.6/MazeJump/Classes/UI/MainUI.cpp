@@ -28,6 +28,8 @@ MainUI* MainUI::create()
 
 MainUI::MainUI()
 {
+    m_sound = true;
+    startui = nullptr;
 }
 MainUI::~MainUI()
 {
@@ -65,14 +67,19 @@ bool MainUI::init()
     m_uiLayer->addChild(playBtn);
 
     
-    ui::Button* soundBtn = ui::Button::create("btn_sound_normal.png","btn_sound_press.png");
+    soundBtn = ui::Button::create("btn_sounds_on.png");
     soundBtn->setScale(scale);
-    soundBtn->setPosition(Vec2(size.width*0.3, size.height*0.2));
+    soundBtn->setPosition(Vec2(size.width*0.9, size.height*0.9));
     m_uiLayer->addChild(soundBtn);
+    
+    ui::Button* commonBtn = ui::Button::create("btn_comment_normal.png","btn_comment_press.png");
+    commonBtn->setScale(scale);
+    commonBtn->setPosition(Vec2(size.width*0.3, size.height*0.2));
+    m_uiLayer->addChild(commonBtn);
     
     ui::Button* rankBtn = ui::Button::create("btn_rank_normal.png","btn_rank_press.png");
     rankBtn->setScale(scale);
-    rankBtn->setPosition(Vec2(size.width*0.3+soundBtn->getContentSize().width*scale+30*scale, size.height*0.2));
+    rankBtn->setPosition(Vec2(size.width*0.3+commonBtn->getContentSize().width*scale+35*scale, size.height*0.2));
     m_uiLayer->addChild(rankBtn);
     
     ui::Button* shopBtn = ui::Button::create("btn_shop_normal.png","btn_shop_press.png");
@@ -108,7 +115,7 @@ void MainUI::onPlayGame(cocos2d::Ref *ref)
 void MainUI::onShop(cocos2d::Ref *ref)
 {
     CCLOG("Shop");
-    auto scene = ShopScene::createScene();
+    auto scene = ShopScene::createScene(SHOP_BUY);
     Director::getInstance()->pushScene(scene);
 }
 void MainUI::onRank(cocos2d::Ref *ref)
@@ -117,5 +124,13 @@ void MainUI::onRank(cocos2d::Ref *ref)
 }
 void MainUI::onSound(cocos2d::Ref *ref)
 {
-    CCLOG("onsound");
+    if(m_sound)
+    {
+        soundBtn->loadTextureNormal("btn_sounds_off.png");
+        m_sound = false;
+    }else
+    {
+        soundBtn->loadTextureNormal("btn_sounds_on.png");
+        m_sound = true;
+    }
 }

@@ -29,6 +29,18 @@
 	<key>RESTORE_FAILED</key>
 	<string>恢复购买失败！</string>
 	<key>BEST_SCORE</key>
-	<string>最高分: %s</string>
+	<string>最高得分:%     d</string>
+	<key>LAST_SCORE</key>
+	<string>最后得分:%     d</string>
+	<key>START_GAME</key>
+	<string>开始游戏</string>
+	<key>RESTART_GAME</key>
+	<string>重新开始</string>
+	<key>RESUME_GAME</key>
+	<string>继续游戏</string>
+	<key>SHOP_BUY</key>
+	<string>商店</string>
+	<key>HEART_NOT_ENOUGH</key>
+	<string>红心不够咯!</string>
 </dict>
 </plist>

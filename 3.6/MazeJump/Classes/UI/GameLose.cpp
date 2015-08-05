@@ -15,7 +15,7 @@ USING_NS_CC;
 GameLose* GameLose::create()
 {
     GameLose *pRet = new(std::nothrow) GameLose();
-    if (pRet)
+    if (pRet&& pRet->init())
     {
         pRet->autorelease();
         return pRet;
@@ -30,15 +30,7 @@ GameLose::GameLose()
 GameLose::~GameLose()
 {
 }
-void GameLose::onEnter()
-{
-    BaseUI::onEnter();
-    init();
-}
-void GameLose::onExit()
-{
-    BaseUI::onExit();
-}
+
 bool GameLose::init()
 {
 

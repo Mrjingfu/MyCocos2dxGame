@@ -25,9 +25,11 @@ public:
     void onShop(Ref* ref);
     void onSound(Ref* ref);
     void onRank(Ref* ref);
+    void onComment(Ref* ref);
 private:
     StartUI* startui;
-    
+    cocos2d::ui::Button* soundBtn;
+    bool m_sound;
 };
 
 #endif /* defined(__MazeJump__MainUI__) */

@@ -14,6 +14,7 @@
 #include "LevelsManager.h"
 #include "AlisaMethod.h"
 #include "GameConst.h"
+#include "GameController.h"
 #include "storage/local-storage/LocalStorage.h"
 USING_NS_CC;
 using namespace experimental;
@@ -797,32 +798,31 @@ void GroundLayer::decoratorOpe(Node* node,GroundCell* cell)
             CallFunc* callfunc = CallFunc::create(CC_CALLBACK_0(GroundLayer::eraseDecorator,this, index));
             Sequence* sequece = Sequence::create(spawn, callfunc, NULL);
             decorator->runAction(sequece);
-            std::string type;
-            int addNum = 1;
+
             switch (m_pCurrentCell->getDetype()) {
                 case Decorator::DecoratorType::DT_GOLD:
                 {
-                    addNum = 1;
-                    type = USER_GOLD_NUM;
+                localStorageSetItem(USER_GOLD_NUM, Value(Value(localStorageGetItem(USER_GOLD_NUM)).asInt()+1).asString());
+                    GameController::getInstance()->getGameUiLayer()->setGameMessage(GameUI::UIMessage::GU_ADD_GOLD);
                 }
-
                     break;
                 case Decorator::DecoratorType::DT_HEART:
                 {
-                    addNum = 1;
-                    type = USER_HEART_NUM;
+                    localStorageSetItem(USER_HEART_NUM, Value(Value(localStorageGetItem(USER_HEART_NUM)).asInt()+1).asString());
+                    GameController::getInstance()->getGameUiLayer()->setGameMessage(GameUI::UIMessage::GU_ADD_GOLD);
                 }
                     break;
                 case Decorator::DecoratorType::DT_GOLD_BIG:
                 {
-                    addNum = 5;
-                    type = USER_GOLD_NUM;
+                  localStorageSetItem(USER_GOLD_NUM, Value(Value(localStorageGetItem(USER_GOLD_NUM)).asInt()+5).asString());
+                  GameController::getInstance()->getGameUiLayer()->setGameMessage(GameUI::UIMessage::GU_ADD_GOLD);
                 }
+
                     break;
                 default:
                     break;
             }
-            localStorageSetItem(type, Value(Value(localStorageGetItem(type)).asInt()+addNum).asString());
+            
         }
     }
     

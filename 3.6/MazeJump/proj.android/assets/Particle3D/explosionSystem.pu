@@ -1,0 +1,38 @@
+system explosionSystem
+{
+    category                                    Explosion
+    technique 
+    {
+        material                                BaseWhite
+        renderer                                Entity
+        {
+            mesh_name                           1x1x1.mesh
+        }
+        emitter                                 Point DebrisEmitter
+        {
+            emission_rate                       20
+            angle                               45
+            time_to_live                        1
+            velocity                            dyn_random
+            {
+                min                             36
+                max                             72
+            }
+            particle_width                      1.0
+            particle_height                     1.0
+            particle_depth                      1.0
+            enabled                             true
+            direction                           0 1 0
+            force_emission                      true
+        }
+        affector                                Colour 
+        {
+            time_colour                         0    1 1 1 1
+            time_colour                         1    0 0 0 0
+        }
+        affector                                LinearForce 
+        {
+            force_vector                        0 -100 0
+        }
+    }
+}

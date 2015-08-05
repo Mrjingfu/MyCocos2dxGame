@@ -10,21 +10,24 @@
 #include "ShopUI.h"
 USING_NS_CC;
 
-Scene* ShopScene::createScene()
+Scene* ShopScene::createScene(const std::string& tip)
 {
-    // 'scene' is an autorelease object
+    ShopScene *pRet = new(std::nothrow) ShopScene(tip);
     auto scene = Scene::create();
-    
-    // 'layer' is an autorelease object
-    auto layer = ShopScene::create();
-    
-    // add layer as a child to scene
-    scene->addChild(layer);
-    
-    // return the scene
-    return scene;
+    if (pRet && pRet->init())
+    {
+        pRet->autorelease();
+        scene->addChild(pRet);
+        return scene;
+    }
+    else
+    {
+        delete pRet;
+        pRet = NULL;
+        return NULL;
+    }
 }
-ShopScene::ShopScene()
+ShopScene::ShopScene(const std::string& tip):m_tip(tip)
 {
     m_pMainCamera = nullptr;
 }
@@ -37,7 +40,7 @@ bool ShopScene::init()
     {
         return false;
     }
-    auto shopUi = ShopUI::create();
+    auto shopUi = ShopUI::create(m_tip);
     addChild(shopUi);
     
     return true;

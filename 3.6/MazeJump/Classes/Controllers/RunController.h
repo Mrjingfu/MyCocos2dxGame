@@ -12,6 +12,7 @@
 #include "cocos2d.h"
 #include "TerrainLayer.h"
 #include "Runner.h"
+#include "GameUI.h"
 class RunController : public cocos2d::Ref
 {
     RunController();
@@ -31,7 +32,7 @@ public:
     TerrainLayer* getTerrainLayer() const { return m_pTerrainLayer; }
     cocos2d::Camera* getMainCamera() const { return m_pMainCamera; }
     Runner* getMainPlayer() const { return m_pMainPlayer; }
-    
+    GameUI* getGameUiLayer()const {return m_gameUI;}
     RunnerGameState getGameState() const { return m_GameState; }
     void setGameState(RunnerGameState state);
 
@@ -72,6 +73,7 @@ private:
     bool            m_bInMazeJump;
     
     RunnerGameState m_GameState;
+    GameUI* m_gameUI;
 };
 
 #endif /* defined(__MazeJump__RunController__) */

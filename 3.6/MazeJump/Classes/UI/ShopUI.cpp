@@ -12,9 +12,9 @@
 #include "storage/local-storage/LocalStorage.h"
 USING_NS_CC;
 
-ShopUI* ShopUI::create()
+ShopUI* ShopUI::create(const std::string& tip)
 {
-    ShopUI *pRet = new(std::nothrow) ShopUI();
+    ShopUI *pRet = new(std::nothrow) ShopUI(tip);
     if (pRet )
     {
         pRet->autorelease();
@@ -24,7 +24,7 @@ ShopUI* ShopUI::create()
     return nullptr;
 }
 
-ShopUI::ShopUI()
+ShopUI::ShopUI(const std::string& tip):m_tip(tip)
 {
 }
 ShopUI::~ShopUI()
@@ -66,7 +66,7 @@ bool ShopUI::init()
     glodView->setScale(scale);
     m_uiLayer->addChild(glodView);
     
-    ui::Text* goldTv = ui::Text::create(StringUtils::format("%d",Value(localStorageGetItem(USER_GOLD_NUM)).asInt()), FONT_FXZS, 40);
+     goldTv = ui::Text::create(StringUtils::format("%d",Value(localStorageGetItem(USER_GOLD_NUM)).asInt()), FONT_FXZS, 40);
     goldTv->setPosition(Vec2(size.width*0.7, size.height*0.92));
     goldTv->setScale(scale);
     m_uiLayer->addChild(goldTv);
@@ -76,16 +76,21 @@ bool ShopUI::init()
     heartView->setScale(scale);
     m_uiLayer->addChild(heartView);
     
-    ui::Text* heartTv = ui::Text::create(StringUtils::format("%d",Value(localStorageGetItem(USER_HEART_NUM)).asInt()), FONT_FXZS, 40);
+     heartTv = ui::Text::create(StringUtils::format("%d",Value(localStorageGetItem(USER_HEART_NUM)).asInt()), FONT_FXZS, 40);
     heartTv->setPosition(Vec2(size.width*0.7, size.height*0.92- glodView->getContentSize().height*scale -10*scale));
     heartTv->setScale(scale);
     m_uiLayer->addChild(heartTv);
     
     
     ui::ImageView* shopTv = ui::ImageView::create("ui_shop_icon.png");
-    shopTv->setPosition(Vec2(size.width*0.48, size.height*0.75));
+    shopTv->setPosition(Vec2(size.width*0.32, size.height*0.75));
     shopTv->setScale(scale);
     m_uiLayer->addChild(shopTv);
+    
+    tipTv = ui::Text::create(UtilityHelper::getLocalString(m_tip.c_str()), FONT_FXZS, 40);
+    tipTv->setPosition(Vec2(size.width*0.34+shopTv->getContentSize().width*scale +70*scale,  size.height*0.75));
+    tipTv->setScale(scale);
+    addChild(tipTv);
     
     
     ui::Button* goldBuyBtn = ui::Button::create("btn_glodmore_normal.png","btn_glodmore_press.png");
@@ -155,9 +160,13 @@ bool ShopUI::init()
     
     return true;
 }
+
 void ShopUI::onBack(cocos2d::Ref *ref)
 {
     if (goldProductLayer->isVisible()) {
+        if (std::strcmp(m_tip.c_str(), SHOP_BUY.c_str())) {
+            setTips(SHOP_BUY);
+        }
         goldProductLayer->setVisible(false);
         productLayer->setVisible(true);
     }else{
@@ -172,6 +181,24 @@ void ShopUI::onBuyGold(cocos2d::Ref *ref)
 void ShopUI::onBuyHeart(cocos2d::Ref *ref)
 {
     CCLOG("onBuyHeart");
+    int goldNum = Value(localStorageGetItem(USER_GOLD_NUM)).asInt();
+    if (goldNum >= 150) {
+        localStorageSetItem(USER_HEART_NUM, Value(Value(localStorageGetItem(USER_HEART_NUM)).asInt()+15).asString());
+        localStorageSetItem(USER_GOLD_NUM, Value(Value(localStorageGetItem(USER_GOLD_NUM)).asInt()-150).asString());
+        updateUserData();
+    }else
+    {
+        setTips(SHOP_GOLD_NOT_ENOUGH);
+        productLayer->setVisible(false);
+        goldProductLayer->setVisible(true);
+    }
+    
+    
+}
+void ShopUI::setTips(const std::string &tipkey)
+{
+    m_tip = tipkey;
+    tipTv->setString(UtilityHelper::getLocalString(m_tip.c_str()));
 }
 void ShopUI::onBuyRemoveAds(cocos2d::Ref *ref)
 {
@@ -185,21 +212,62 @@ void ShopUI::onRestore(cocos2d::Ref *ref)
 void ShopUI::onBuyCoin1(cocos2d::Ref *ref)
 {
     CCLOG("onBuyCoin1");
+    onProduct("buyCoin1");
 }
 void ShopUI::onBuyCoin2(cocos2d::Ref *ref)
 {
     CCLOG("onBuyCoin2");
+    onProduct("buyCoin2");
 }
 void ShopUI::onBuyCoin3(cocos2d::Ref *ref)
 {
     CCLOG("onBuyCoin3");
+    onProduct("buyCoin3");
 }
 void ShopUI::onBuyCoin4(cocos2d::Ref *ref)
 {
     CCLOG("onBuyCoin4");
+    onProduct("buyCoin4");
 }
 void ShopUI::onBuyCoin5(cocos2d::Ref *ref)
 {
     CCLOG("onBuyCoin5");
+    onProduct("buyCoin5");
+    
 }
-
+void ShopUI::onProduct(const std::string &productId)
+{
+    int num = 0;
+    CCLOG("product:%s",productId.c_str());
+    if (!std::strcmp(productId.c_str(), "buyCoin1"))
+    {
+        num = 200;
+    }
+    else if (!std::strcmp(productId.c_str(), "buyCoin2"))
+    {
+        num = 500;
+    }
+    else if (!std::strcmp(productId.c_str(), "buyCoin3"))
+    {
+        num = 1000;
+    }
+    else if (!std::strcmp(productId.c_str(), "buyCoin4"))
+    {
+        num = 2500;
+    }
+    else if (!std::strcmp(productId.c_str(), "buyCoin5"))
+    {
+        num = 10000;
+    }
+    localStorageSetItem(USER_GOLD_NUM, Value(Value(localStorageGetItem(USER_GOLD_NUM)).asInt()+num).asString());
+    updateUserData();
+}
+void ShopUI::updateUserData()
+{
+    if (heartTv) {
+        heartTv->setString(StringUtils::format("%d",Value(localStorageGetItem(USER_HEART_NUM)).asInt()));
+    }
+    if (goldTv) {
+        goldTv->setString(StringUtils::format("%d",Value(localStorageGetItem(USER_GOLD_NUM)).asInt()));
+    }
+}

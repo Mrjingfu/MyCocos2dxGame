@@ -10,6 +10,7 @@
 
 #include "cocos2d.h"
 #include "ui/CocosGUI.h"
+
 class BaseUI : public cocos2d::ui::Layout
 {
 protected:
@@ -20,10 +21,12 @@ public:
 	virtual void onExit();
     void setShowDilog(bool isShowDialog){m_isShowDialog = isShowDialog;};
     bool isShowDialog(){return m_isShowDialog;};
+    cocos2d::Layer* getLayer(std::string layerName);
 protected:
     cocos2d::Layer* m_uiLayer;
     cocos2d::Layer* m_maskLayer;
     cocos2d::Layer* m_dialogLayer;
+    cocos2d::Layer* m_gameLayer;
     bool m_isShowDialog;
 
     
