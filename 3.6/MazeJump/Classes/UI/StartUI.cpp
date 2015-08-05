@@ -79,14 +79,14 @@ bool StartUI::init(BaseUI* baseUi)
     addChild(bestscoreView);
 
     ui::Button* playBtn = ui::Button::create("btn_ok_normal.png","btn_ok_press.png");
-    playBtn->setPosition(Vec2(size.width*0.33, bestscoreView->getPositionY()-bestscoreView->getContentSize().height*scale -50*scale));
+    playBtn->setPosition(Vec2(size.width*0.35, size.height*0.35));
     
     playBtn->setScale(scale);
     playBtn->setTitleText(UtilityHelper::getLocalString("RESTART_GAME"));
     playBtn->setTitleFontName(FONT_FXZS);
     playBtn->setTitleFontSize(22);
     Label* playLable = playBtn->getTitleRenderer();
-    playLable->setDimensions(playBtn->getContentSize().width*scale*0.5, playBtn->getContentSize().height*0.5*scale);
+    playLable->setDimensions(playBtn->getContentSize().width*0.5, playBtn->getContentSize().height*0.5);
     playBtn->addTouchEventListener([=](Ref* sender, Widget::TouchEventType type)
                                     {
                                         if (type == Widget::TouchEventType::ENDED)
@@ -101,13 +101,13 @@ bool StartUI::init(BaseUI* baseUi)
     addChild(playBtn);
 
     ui::Button* resumeBtn = ui::Button::create("btn_ok_normal.png","btn_ok_press.png");
-    resumeBtn->setPosition(Vec2(size.width*0.33+playBtn->getContentSize().width*scale+10*scale, bestscoreView->getPositionY()-bestscoreView->getContentSize().height*scale -50*scale));
+    resumeBtn->setPosition(Vec2(size.width*0.35+playBtn->getContentSize().width*scale+10*scale,size.height*0.35));
     resumeBtn->setScale(scale);
     resumeBtn->setTitleFontName(FONT_FXZS);
     resumeBtn->setTitleText(UtilityHelper::getLocalString("RESUME_GAME"));
     resumeBtn->setTitleFontSize(22);
     Label* resumeLable = resumeBtn->getTitleRenderer();
-    resumeLable->setDimensions(resumeBtn->getContentSize().width*0.5*scale, resumeBtn->getContentSize().height*0.5*scale);
+    resumeLable->setDimensions(resumeBtn->getContentSize().width*0.5, resumeBtn->getContentSize().height*0.5);
     resumeBtn->addTouchEventListener([=](Ref* sender, Widget::TouchEventType type)
                                    {
                                        if (type == Widget::TouchEventType::ENDED)
