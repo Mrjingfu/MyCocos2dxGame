@@ -3775,7 +3775,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../cocos2d/extensions/Particle3D/PU/CCPURender.cpp"
-            timestampString = "460387528.853757"
+            timestampString = "460432600.9258"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "468"
@@ -3855,7 +3855,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../cocos2d/extensions/Particle3D/PU/CCPURender.cpp"
-            timestampString = "460387528.853757"
+            timestampString = "460432600.9258"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "448"
@@ -3871,7 +3871,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../cocos2d/extensions/Particle3D/PU/CCPURender.cpp"
-            timestampString = "460387528.853757"
+            timestampString = "460432600.9258"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "450"
@@ -3887,7 +3887,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../cocos2d/extensions/Particle3D/PU/CCPURender.cpp"
-            timestampString = "460387528.853757"
+            timestampString = "460432600.9258"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "486"
@@ -3967,7 +3967,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../cocos2d/extensions/Particle3D/PU/CCPURender.cpp"
-            timestampString = "460387528.853757"
+            timestampString = "460432600.9258"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "478"
@@ -4101,6 +4101,70 @@
             startingLineNumber = "779"
             endingLineNumber = "779"
             landmarkName = "FileUtils::fullPathForFilename(const std::string &amp;filename)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../cocos2d/extensions/Particle3D/PU/CCPURender.cpp"
+            timestampString = "460432600.9258"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "446"
+            endingLineNumber = "446"
+            landmarkName = "PUParticle3DModelRender::render( Renderer* renderer, const Mat4 &amp;transform, ParticleSystem3D* particleSystem )"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../cocos2d/cocos/3d/CCSprite3D.cpp"
+            timestampString = "460432344.855939"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "746"
+            endingLineNumber = "746"
+            landmarkName = "Sprite3D::draw(Renderer *renderer, const Mat4 &amp;transform, uint32_t flags)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../cocos2d/cocos/3d/CCSprite3D.cpp"
+            timestampString = "460432516.77256"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "794"
+            endingLineNumber = "794"
+            landmarkName = "Sprite3D::setGLProgramState(GLProgramState *glProgramState)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../cocos2d/extensions/Particle3D/PU/CCPURender.cpp"
+            timestampString = "460432592.313295"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "484"
+            endingLineNumber = "484"
+            landmarkName = "PUParticle3DModelRender::render( Renderer* renderer, const Mat4 &amp;transform, ParticleSystem3D* particleSystem )"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
