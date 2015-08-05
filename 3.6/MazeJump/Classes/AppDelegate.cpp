@@ -64,7 +64,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
 #endif
     //
     
-    //director->setClearColor(Color4F(153.0f/255.0f, 204.0f/255.0f, 1.0f, 1.0f));
+    director->setClearColor(Color4F(153.0f/255.0f, 204.0f/255.0f, 1.0f, 1.0f));
     //director->setClearColor(Color4F(0.8f, 0.8f, 0.8f, 1.0f));
 
 #if COCOS2D_DEBUG

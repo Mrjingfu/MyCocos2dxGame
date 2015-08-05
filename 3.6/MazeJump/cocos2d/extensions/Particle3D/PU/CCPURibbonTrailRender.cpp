@@ -85,9 +85,10 @@ void PURibbonTrailRender::render( Renderer* renderer, const Mat4 &transform, Par
             needDraw = true;
         }
     }
-
+    ///lwwhb modify
     if (needDraw)
-        _trail->render(renderer, transform, particleSystem);
+        _trail->render(renderer, transform, particleSystem->getBlendFunc());
+    ///
 }
 
 PURibbonTrailRender::PURibbonTrailRender() : 

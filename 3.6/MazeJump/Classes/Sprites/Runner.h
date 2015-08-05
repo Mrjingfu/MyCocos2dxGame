@@ -11,6 +11,7 @@
 
 #include "EffectSprite3D.h"
 #include "TerrainCell.h"
+#include "RibbonTrail.h"
 class Runner : public EffectSprite3D
 {
 public:
@@ -49,6 +50,8 @@ public:
     
     void fadeIn();
     void fadeOut();
+    
+    void setRibbonTrail(const std::string& file);
 private:
     void onEnterIdle();
     void onEnterMoveLeft();
@@ -74,6 +77,7 @@ protected:
     RunnerDir       m_dir;
     float           m_fRadius;
     mutable cocos2d::AABB    m_modifyAABB;
+    RibbonTrail*            m_pRibbonTrail;
 };
 
 #endif /* defined(__MazeJump__Runner__) */

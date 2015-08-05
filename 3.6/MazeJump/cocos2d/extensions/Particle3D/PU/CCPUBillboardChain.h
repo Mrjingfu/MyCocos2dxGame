@@ -29,7 +29,6 @@
 #include "base/CCRef.h"
 #include "math/CCMath.h"
 #include <vector>
-
 NS_CC_BEGIN
 
 class MeshCommand;
@@ -39,7 +38,9 @@ class VertexBuffer;
 class Texture2D;
 class ParticleSystem3D;
 class Renderer;
-
+////lwwhb modify
+struct BlendFunc;
+///
 class PUBillboardChain
 {
 
@@ -221,9 +222,9 @@ public:
 
     virtual void setDepthTest(bool isDepthTest);
     virtual void setDepthWrite(bool isDepthWrite);
-
-    void render(Renderer* renderer, const Mat4 &transform, ParticleSystem3D* particleSystem);
-
+    ///lwwhb modify
+    void render(Renderer* renderer, const Mat4 &transform, const BlendFunc& blendFunc);
+    ///
     // Overridden members follow
     //void _updateRenderQueue(RenderQueue *);
     //void getRenderOperation(RenderOperation &);

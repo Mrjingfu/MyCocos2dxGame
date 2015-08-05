@@ -1460,11 +1460,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites/Runner.cpp"
-            timestampString = "460286768.048669"
+            timestampString = "460464347.220354"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "285"
-            endingLineNumber = "285"
+            startingLineNumber = "306"
+            endingLineNumber = "306"
             landmarkName = "Runner::onEnterMoveDrop()"
             landmarkType = "5">
          </BreakpointContent>
@@ -1476,11 +1476,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites/Runner.cpp"
-            timestampString = "460375445.990176"
+            timestampString = "460464347.220354"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "320"
-            endingLineNumber = "320"
+            startingLineNumber = "341"
+            endingLineNumber = "341"
             landmarkName = "Runner::checkSafe()"
             landmarkType = "5">
          </BreakpointContent>
@@ -1588,11 +1588,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites/Runner.cpp"
-            timestampString = "460281601.521936"
+            timestampString = "460464347.220354"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "138"
-            endingLineNumber = "138"
+            startingLineNumber = "159"
+            endingLineNumber = "159"
             landmarkName = "Runner::onEnterIdle()"
             landmarkType = "5">
          </BreakpointContent>
@@ -1604,11 +1604,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites/Runner.cpp"
-            timestampString = "460281601.521936"
+            timestampString = "460464347.220354"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "132"
-            endingLineNumber = "132"
+            startingLineNumber = "153"
+            endingLineNumber = "153"
             landmarkName = "Runner::onEnterIdle()"
             landmarkType = "5">
          </BreakpointContent>
@@ -1620,11 +1620,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites/Runner.cpp"
-            timestampString = "460281601.521936"
+            timestampString = "460464347.220354"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "133"
-            endingLineNumber = "133"
+            startingLineNumber = "154"
+            endingLineNumber = "154"
             landmarkName = "Runner::onEnterIdle()"
             landmarkType = "5">
          </BreakpointContent>
@@ -1716,11 +1716,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites/Runner.cpp"
-            timestampString = "460281601.521936"
+            timestampString = "460464347.220354"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "57"
-            endingLineNumber = "57"
+            startingLineNumber = "78"
+            endingLineNumber = "78"
             landmarkName = "Runner::getModifyAABB()"
             landmarkType = "5">
          </BreakpointContent>
@@ -1764,7 +1764,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Controllers/RunController.cpp"
-            timestampString = "460385121.078862"
+            timestampString = "460475711.631732"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "345"
@@ -1796,7 +1796,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Controllers/RunController.cpp"
-            timestampString = "460385121.078862"
+            timestampString = "460475711.631732"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "345"
@@ -1812,7 +1812,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Controllers/RunController.cpp"
-            timestampString = "460385121.078862"
+            timestampString = "460475711.631732"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "344"
@@ -1828,7 +1828,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Controllers/RunController.cpp"
-            timestampString = "460385121.078862"
+            timestampString = "460475711.631732"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "358"
@@ -2052,7 +2052,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Controllers/RunController.cpp"
-            timestampString = "460385121.078862"
+            timestampString = "460475711.631732"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "371"
@@ -2068,7 +2068,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Controllers/RunController.cpp"
-            timestampString = "460385121.078862"
+            timestampString = "460475711.631732"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "345"
@@ -2084,7 +2084,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Controllers/RunController.cpp"
-            timestampString = "460385121.078862"
+            timestampString = "460475711.631732"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "359"
@@ -2100,7 +2100,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Controllers/RunController.cpp"
-            timestampString = "460385121.078862"
+            timestampString = "460475711.631732"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "346"
@@ -2116,7 +2116,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Controllers/RunController.cpp"
-            timestampString = "460385121.078862"
+            timestampString = "460475711.631732"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "351"
@@ -2132,7 +2132,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Controllers/RunController.cpp"
-            timestampString = "460385121.078862"
+            timestampString = "460475711.631732"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "364"
@@ -2148,7 +2148,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Controllers/RunController.cpp"
-            timestampString = "460385121.078862"
+            timestampString = "460475711.631732"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "377"
@@ -2164,11 +2164,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites/Runner.cpp"
-            timestampString = "460281601.521936"
+            timestampString = "460464347.220354"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "62"
-            endingLineNumber = "62"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
             landmarkName = "Runner::setState(RunnerState state)"
             landmarkType = "5">
          </BreakpointContent>
@@ -2212,11 +2212,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites/Runner.cpp"
-            timestampString = "460375445.990176"
+            timestampString = "460464347.220354"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "322"
-            endingLineNumber = "322"
+            startingLineNumber = "343"
+            endingLineNumber = "343"
             landmarkName = "Runner::checkSafe()"
             landmarkType = "5">
          </BreakpointContent>
@@ -2228,11 +2228,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites/Runner.cpp"
-            timestampString = "460281601.521936"
+            timestampString = "460455215.055003"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "45"
-            endingLineNumber = "45"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
             landmarkName = "Runner::update(float delta)"
             landmarkType = "5">
          </BreakpointContent>
@@ -2833,11 +2833,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites/Runner.cpp"
-            timestampString = "460375445.990176"
+            timestampString = "460464347.220354"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "336"
-            endingLineNumber = "336"
+            startingLineNumber = "357"
+            endingLineNumber = "357"
             landmarkName = "Runner::fadeIn()"
             landmarkType = "5">
          </BreakpointContent>
@@ -2849,11 +2849,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites/Runner.cpp"
-            timestampString = "460286768.048669"
+            timestampString = "460464347.220354"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "222"
-            endingLineNumber = "222"
+            startingLineNumber = "243"
+            endingLineNumber = "243"
             landmarkName = "Runner::onEnterMoveSuperJump()"
             landmarkType = "5">
          </BreakpointContent>
@@ -2881,11 +2881,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites/Runner.cpp"
-            timestampString = "460286768.048669"
+            timestampString = "460464347.220354"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "280"
-            endingLineNumber = "280"
+            startingLineNumber = "301"
+            endingLineNumber = "301"
             landmarkName = "Runner::onEnterMoveDrop()"
             landmarkType = "5">
          </BreakpointContent>
@@ -2897,11 +2897,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites/Runner.cpp"
-            timestampString = "460375445.990176"
+            timestampString = "460464347.220354"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "329"
-            endingLineNumber = "329"
+            startingLineNumber = "350"
+            endingLineNumber = "350"
             landmarkName = "Runner::fadeIn()"
             landmarkType = "5">
          </BreakpointContent>
@@ -2913,11 +2913,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites/Runner.cpp"
-            timestampString = "460281601.521936"
+            timestampString = "460455215.055003"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "49"
-            endingLineNumber = "49"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
             landmarkName = "Runner::update(float delta)"
             landmarkType = "5">
          </BreakpointContent>
@@ -3327,11 +3327,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites/Runner.cpp"
-            timestampString = "460375445.990176"
+            timestampString = "460464347.220354"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "324"
-            endingLineNumber = "324"
+            startingLineNumber = "345"
+            endingLineNumber = "345"
             landmarkName = "Runner::checkSafe()"
             landmarkType = "5">
          </BreakpointContent>
@@ -4165,6 +4165,550 @@
             startingLineNumber = "484"
             endingLineNumber = "484"
             landmarkName = "PUParticle3DModelRender::render( Renderer* renderer, const Mat4 &amp;transform, ParticleSystem3D* particleSystem )"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/Sprites/RibbonTrail.cpp"
+            timestampString = "460464474.169416"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
+            landmarkName = "RibbonTrail::update(float delta)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/Sprites/Runner.cpp"
+            timestampString = "460455214.93484"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
+            landmarkName = "Runner::create()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/Sprites/RibbonTrail.cpp"
+            timestampString = "460464474.169416"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
+            landmarkName = "RibbonTrail::draw(Renderer* renderer, const Mat4&amp; transform, uint32_t flags)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../cocos2d/cocos/renderer/CCRenderer.cpp"
+            timestampString = "460457175.665553"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "408"
+            endingLineNumber = "408"
+            landmarkName = "Renderer::processRenderCommand(RenderCommand* command)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../cocos2d/extensions/Particle3D/PU/CCPUBillboardChain.cpp"
+            timestampString = "460457620.15627"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "161"
+            endingLineNumber = "161"
+            landmarkName = "PUBillboardChain::setupBuffers(void)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/Layers/TerrainPatternLayer.cpp"
+            timestampString = "460458846.758322"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "375"
+            endingLineNumber = "375"
+            landmarkName = "TerrainPatternLayer::generateDecorator(TerrainCell* cell, int patternIndex)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../cocos2d/extensions/Particle3D/PU/CCPUBillboardChain.cpp"
+            timestampString = "460459027.122941"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "678"
+            endingLineNumber = "678"
+            landmarkName = "PUBillboardChain::render( Renderer* renderer, const Mat4 &amp;transform, const cocos2d::BlendFunc&amp; blendFunc )"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../cocos2d/extensions/Particle3D/PU/CCPUBillboardChain.cpp"
+            timestampString = "460459057.556253"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "195"
+            endingLineNumber = "195"
+            landmarkName = "PUBillboardChain::setMaxChainElements(size_t maxElements)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../cocos2d/extensions/Particle3D/PU/CCPUBillboardChain.cpp"
+            timestampString = "460459058.948251"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "203"
+            endingLineNumber = "203"
+            landmarkName = "PUBillboardChain::setNumberOfChains(size_t numChains)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../cocos2d/extensions/Particle3D/PU/CCPUBillboardChain.cpp"
+            timestampString = "460459061.415742"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "209"
+            endingLineNumber = "209"
+            landmarkName = "PUBillboardChain::setUseTextureCoords(bool use)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../cocos2d/extensions/Particle3D/PU/CCPUBillboardChain.cpp"
+            timestampString = "460459062.156196"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "215"
+            endingLineNumber = "215"
+            landmarkName = "PUBillboardChain::setTextureCoordDirection(PUBillboardChain::TexCoordDirection dir)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../cocos2d/extensions/Particle3D/PU/CCPUBillboardChain.cpp"
+            timestampString = "460459063.883891"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "222"
+            endingLineNumber = "222"
+            landmarkName = "PUBillboardChain::setOtherTextureCoordRange(float start, float end)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../cocos2d/extensions/Particle3D/PU/CCPUBillboardChain.cpp"
+            timestampString = "460459065.657831"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "229"
+            endingLineNumber = "229"
+            landmarkName = "PUBillboardChain::setUseVertexColours(bool use)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../cocos2d/extensions/Particle3D/PU/CCPUBillboardChain.cpp"
+            timestampString = "460459066.483635"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "235"
+            endingLineNumber = "235"
+            landmarkName = "PUBillboardChain::setDynamic(bool dyn)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../cocos2d/extensions/Particle3D/PU/CCPUBillboardChain.cpp"
+            timestampString = "460459070.013739"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "276"
+            endingLineNumber = "276"
+            landmarkName = "PUBillboardChain::addChainElement(size_t chainIndex, const PUBillboardChain::Element&amp; dtls)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../cocos2d/extensions/Particle3D/PU/CCPUBillboardChain.cpp"
+            timestampString = "460459072.147318"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "309"
+            endingLineNumber = "309"
+            landmarkName = "PUBillboardChain::removeChainElement(size_t chainIndex)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../cocos2d/extensions/Particle3D/PU/CCPUBillboardChain.cpp"
+            timestampString = "460459074.164966"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "327"
+            endingLineNumber = "327"
+            landmarkName = "PUBillboardChain::clearChain(size_t chainIndex)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../cocos2d/extensions/Particle3D/PU/CCPUBillboardChain.cpp"
+            timestampString = "460459076.907894"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "349"
+            endingLineNumber = "349"
+            landmarkName = "PUBillboardChain::setFaceCamera( bool faceCamera, const Vec3 &amp;normalVector )"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../cocos2d/extensions/Particle3D/PU/CCPUBillboardChain.cpp"
+            timestampString = "460459080.025522"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "365"
+            endingLineNumber = "365"
+            landmarkName = "PUBillboardChain::updateChainElement(size_t chainIndex, size_t elementIndex, const PUBillboardChain::Element&amp; dtls)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../cocos2d/extensions/Particle3D/PU/CCPURibbonTrail.cpp"
+            timestampString = "460459112.631319"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "416"
+            endingLineNumber = "416"
+            landmarkName = "PURibbonTrail::update( float deltaTime )"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../cocos2d/extensions/Particle3D/PU/CCPURibbonTrail.cpp"
+            timestampString = "460459291.808296"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "417"
+            endingLineNumber = "417"
+            landmarkName = "PURibbonTrail::update( float deltaTime )"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../cocos2d/extensions/Particle3D/PU/CCPURibbonTrail.cpp"
+            timestampString = "460459292.976845"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "426"
+            endingLineNumber = "426"
+            landmarkName = "PURibbonTrail::update( float deltaTime )"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../cocos2d/extensions/Particle3D/PU/CCPURibbonTrail.cpp"
+            timestampString = "460459599.836415"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
+            landmarkName = "PURibbonTrail::addNode(Node* n)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../cocos2d/extensions/Particle3D/PU/CCPURibbonTrail.cpp"
+            timestampString = "460461112.393096"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "359"
+            endingLineNumber = "359"
+            landmarkName = "PURibbonTrail::timeUpdate(float time)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../cocos2d/extensions/Particle3D/PU/CCPURibbonTrail.cpp"
+            timestampString = "460461137.499683"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "368"
+            endingLineNumber = "368"
+            landmarkName = "PURibbonTrail::timeUpdate(float time)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../cocos2d/extensions/Particle3D/PU/CCPURibbonTrail.cpp"
+            timestampString = "460461182.854067"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "369"
+            endingLineNumber = "369"
+            landmarkName = "PURibbonTrail::timeUpdate(float time)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../cocos2d/extensions/Particle3D/PU/CCPURibbonTrailRender.cpp"
+            timestampString = "460463646.45004"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
+            landmarkName = "PURibbonTrailRender::render( Renderer* renderer, const Mat4 &amp;transform, ParticleSystem3D* particleSystem )"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../cocos2d/extensions/Particle3D/PU/CCPURibbonTrailRender.h"
+            timestampString = "460463700.592717"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "67"
+            endingLineNumber = "67"
+            landmarkName = "setVisible(bool visible)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../cocos2d/extensions/Particle3D/PU/CCPURibbonTrailRender.h"
+            timestampString = "460463701.897165"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "61"
+            endingLineNumber = "61"
+            landmarkName = "setVisible(bool visible)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../cocos2d/extensions/Particle3D/PU/CCPURibbonTrailRender.h"
+            timestampString = "460463704.354514"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
+            landmarkName = "setVisible(bool visible)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../cocos2d/extensions/Particle3D/PU/CCPURibbonTrailRender.cpp"
+            timestampString = "460463731.406865"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "402"
+            endingLineNumber = "402"
+            landmarkName = "PURibbonTrailRender::updateParticles( const ParticlePool &amp;pool )"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../cocos2d/extensions/Particle3D/PU/CCPURibbonTrail.cpp"
+            timestampString = "460464044.925112"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "288"
+            endingLineNumber = "288"
+            landmarkName = "PURibbonTrail::updateTrail(size_t index, const Node* node)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../cocos2d/extensions/Particle3D/PU/CCPURibbonTrail.cpp"
+            timestampString = "460464063.319135"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "287"
+            endingLineNumber = "287"
+            landmarkName = "PURibbonTrail::updateTrail(size_t index, const Node* node)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../cocos2d/extensions/Particle3D/PU/CCPURibbonTrail.cpp"
+            timestampString = "460464174.259918"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "392"
+            endingLineNumber = "392"
+            landmarkName = "PURibbonTrail::resetTrail(size_t index, const Node* node)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

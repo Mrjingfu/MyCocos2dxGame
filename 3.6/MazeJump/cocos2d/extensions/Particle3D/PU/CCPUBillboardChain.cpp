@@ -672,7 +672,7 @@ void PUBillboardChain::init( const std::string &texFile )
     _meshCommand->setCullFaceEnabled(true);
 }
 
-void PUBillboardChain::render( Renderer* renderer, const Mat4 &transform, ParticleSystem3D* particleSystem )
+void PUBillboardChain::render( Renderer* renderer, const Mat4 &transform, const cocos2d::BlendFunc& blendFunc )
 {
     auto camera = Camera::getVisitingCamera();
     auto cameraMat = camera->getNodeToWorldTransform();
@@ -682,7 +682,7 @@ void PUBillboardChain::render( Renderer* renderer, const Mat4 &transform, Partic
         updateIndexBuffer();
         if (!_vertices.empty() && !_indices.empty()){
             GLuint texId = (_texture ? _texture->getName() : 0);
-            _meshCommand->init(0, texId, _glProgramState, particleSystem->getBlendFunc(), _vertexBuffer->getVBO(), _indexBuffer->getVBO(), GL_TRIANGLES, GL_UNSIGNED_SHORT, _indices.size(), transform, Node::FLAGS_RENDER_AS_3D);
+            _meshCommand->init(0, texId, _glProgramState, blendFunc, _vertexBuffer->getVBO(), _indexBuffer->getVBO(), GL_TRIANGLES, GL_UNSIGNED_SHORT, _indices.size(), transform, Node::FLAGS_RENDER_AS_3D);
             _meshCommand->setTransparent(true);
             renderer->addCommand(_meshCommand);
         }

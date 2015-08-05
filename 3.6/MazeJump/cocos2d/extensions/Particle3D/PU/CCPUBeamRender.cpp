@@ -104,8 +104,9 @@ void PUBeamRender::render( Renderer* renderer, const Mat4 &transform, ParticleSy
             visualData->setVisible(true);
         }
     }
-
-    _billboardChain->render(renderer, transform, particleSystem);
+    /// lwwhb modify
+    _billboardChain->render(renderer, transform, particleSystem->getBlendFunc());
+    //
 }
 
 PUBeamRender::PUBeamRender() : 

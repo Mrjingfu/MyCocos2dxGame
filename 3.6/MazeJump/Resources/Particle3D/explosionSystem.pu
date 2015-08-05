@@ -12,7 +12,7 @@ system explosionSystem
         {
             emission_rate                       20
             angle                               30
-            time_to_live                        1
+            time_to_live                        1.5
             velocity                            dyn_random
             {
                 min                             36
@@ -24,18 +24,25 @@ system explosionSystem
             enabled                             true
             direction                           0 1 0
             force_emission                      true
-            start_colour_range                  0.15 0.2 0.1 1
+            start_colour_range                  0.35 0.4 0.3 1
         }
         affector                                Colour
         {
             time_colour                         0    1 1 1 1
             time_colour                         0.8  1 1 1 1
-            time_colour                         1    0 0 0 0
+            time_colour                         1    1 1 1 0
             colour_operation                    multiply
         }
         affector                                LinearForce
         {
             force_vector                        0 -100 0
+        }
+        affector                                PlaneCollider
+        {
+            position                            0 -5 0
+            friction                            0.5
+            bouncyness                          0.5
+            normal                              0 1 0
         }
     }
 }

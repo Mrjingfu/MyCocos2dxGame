@@ -28,6 +28,7 @@ Runner* Runner::create()
         outline->setOutlineWidth(0.03f);
         runner->addEffect(outline, 1);
         
+        runner->setRibbonTrail("ribbontrail.png");
         runner->autorelease();
         return runner;
     }
@@ -39,6 +40,7 @@ Runner::Runner()
     m_curState  = RS_UNKNOWN;
     m_dir       = RD_FORWARD;
     m_fRadius   = 2.5f;
+    m_pRibbonTrail = nullptr;
 }
 void Runner::update(float delta)
 {
@@ -48,6 +50,25 @@ void Runner::update(float delta)
         if(isDrop)
             setState(RS_MOVE_DROP);
     }
+    if(m_pRibbonTrail)
+        m_pRibbonTrail->update(delta);
+}
+void Runner::setRibbonTrail(const std::string& file)
+{
+    if(m_pRibbonTrail)
+    {
+        m_pRibbonTrail->removeFromParentAndCleanup(true);
+        m_pRibbonTrail = nullptr;
+    }
+    m_pRibbonTrail = RibbonTrail::create(file);
+    if(m_pRibbonTrail)
+    {
+        m_pRibbonTrail->setCameraMask((unsigned short)CameraFlag::USER1);
+        this->addChild(m_pRibbonTrail);
+        m_pRibbonTrail->getTrail()->addNode(this);
+    }
+    else
+        CCLOG("create ribbon trail with texture %s failed!", file.c_str());
 }
 void Runner::onCollision(TerrainCell* cell)
 {
