@@ -20,6 +20,14 @@ public:
     static void getCameraToViewportRay(cocos2d::Camera* camera, const cocos2d::Vec2& screenPoint, cocos2d::Ray* outRay);
     
     static cocos2d::Color3B randomColor(int minSum = 650, int minDelta = 10);
+    
+    static cocos2d::Color3B randomRedColor();
+    static cocos2d::Color3B randomOrangeColor();
+    static cocos2d::Color3B randomYellowColor();
+    static cocos2d::Color3B randomGreenColor();
+    static cocos2d::Color3B randomCyanColor();
+    static cocos2d::Color3B randomBlueColor();
+    static cocos2d::Color3B randompurpleColor();
 };
 
 #endif /* defined(__MazeJump__UtilityHelper__) */

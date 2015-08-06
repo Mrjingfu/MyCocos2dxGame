@@ -51,6 +51,9 @@ public:
     bool isInMazeJump() const { return m_bInMazeJump; }
     
     void addPlayerExplosion();
+    
+    cocos2d::Color3B getRandomColorByIndex(int index);
+    cocos2d::Color3B getSameColor() const { return m_sameColor; };
 private:
     void switchToGameScene();
     void switchToMenuScene();
@@ -74,6 +77,15 @@ private:
     
     RunnerGameState m_GameState;
     GameUI* m_gameUI;
+private:
+    cocos2d::Color3B         m_randomColor0;
+    cocos2d::Color3B         m_randomColor1;
+    cocos2d::Color3B         m_randomColor2;
+    cocos2d::Color3B         m_randomColor3;
+    cocos2d::Color3B         m_randomColor4;
+    cocos2d::Color3B         m_randomColor5;
+    cocos2d::Color3B         m_randomColor6;
+    cocos2d::Color3B         m_sameColor;
 };
 
 #endif /* defined(__MazeJump__RunController__) */

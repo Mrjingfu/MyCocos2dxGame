@@ -34,8 +34,10 @@ MenuScene::MenuScene()
     m_pSea3                 = nullptr;
     m_pStandPlatform        = nullptr;
     m_pRunner               = nullptr;
+    m_pRainbow              = nullptr;
     m_pWhiteLayer           = nullptr;
     m_bStartGame            = false;
+    m_fTime = 0;
 }
 // on "init" you need to initialize your instance
 bool MenuScene::init()
@@ -97,11 +99,11 @@ bool MenuScene::init()
     m_pSea->setScale(8);
     addChild(m_pSea);
     
-    EaseSineInOut* moveTo1 = EaseSineInOut::create(MoveTo::create(10.0f, Vec3(-565, -15, -390)));
-    EaseSineInOut* moveTo2= EaseSineInOut::create(MoveTo::create(10.0f, Vec3(-580, 0, -375)));
-    Sequence* sequence1 = Sequence::create(moveTo1, moveTo2, NULL);
-    RepeatForever* repeat1 = RepeatForever::create(sequence1);
-    m_pSea->runAction(repeat1);
+//    EaseSineInOut* moveTo1 = EaseSineInOut::create(MoveTo::create(10.0f, Vec3(-565, -15, -390)));
+//    EaseSineInOut* moveTo2= EaseSineInOut::create(MoveTo::create(10.0f, Vec3(-580, 0, -375)));
+//    Sequence* sequence1 = Sequence::create(moveTo1, moveTo2, NULL);
+//    RepeatForever* repeat1 = RepeatForever::create(sequence1);
+//    m_pSea->runAction(repeat1);
 
     
     m_pStandPlatform = EffectSprite3D::create("platform_stand.c3b");
@@ -130,6 +132,7 @@ bool MenuScene::init()
     m_pRunner->setScale(0.5);
     m_pStandPlatform->addChild(m_pRunner);
     
+    
     auto size = Director::getInstance()->getVisibleSize();
     m_pMainCamera = Camera::createPerspective(60, size.width/size.height, 1, 5000);
     if(!m_pMainCamera)
@@ -146,6 +149,26 @@ bool MenuScene::init()
     DirectionLight* directionLight = DirectionLight::create(Vec3(-3, -4, -2), Color3B(158, 158, 158));
     m_pSea->addChild(directionLight);
     
+    
+    m_pRainbow = RibbonTrail::create("ribbontrail.png");
+    if(!m_pRainbow)
+        return false;
+    m_pRainbow->setPosition3D(Vec3(-1100, -50, -800));
+    m_pRainbow->setCameraMask((unsigned short)CameraFlag::USER1);
+    this->addChild(m_pRainbow);
+    m_pRainbow->getTrail()->addNode(m_pRainbow);
+    
+    Vec3 pos = m_pRainbow->getPosition3D();
+    Vec3 target = m_pMainCamera->getPosition3D() + Vec3(0, -30, 0);
+    m_dirDist = target - pos;
+    
+//    EaseSineIn* moveTo = EaseSineIn::create(MoveTo::create(1.0f, Vec3(camPos.x, camPos.y - 30, camPos.z)));
+//    m_pRainbow->runAction(moveTo);
+    
+//    EaseSineOut* moveUp = EaseSineOut::create(MoveTo::create(0.5f, Vec3(camPos.x-650, camPos.y - 100, camPos.z-452.5)));
+//    EaseSineIn* moveDown = EaseSineIn::create(MoveTo::create(1.0f, Vec3(camPos.x, camPos.y - 30, camPos.z)));
+//    Sequence* sequenceJump = Sequence::create( moveUp, moveDown, NULL);
+//    m_pRainbow->runAction(sequenceJump);
     //auto mainUi = MainUI::create();
     //addChild(mainUi);
     
@@ -158,6 +181,33 @@ bool MenuScene::init()
     
     return true;
 }
+
+void MenuScene::onEnter()
+{
+    Layer::onEnter();
+    scheduleUpdate();
+}
+void MenuScene::onExit()
+{
+    unscheduleUpdate();
+    Layer::onExit();
+}
+void MenuScene::update(float delta)
+{
+    if(m_pRainbow && m_pMainCamera)
+    {
+        m_fTime += delta;
+        if(m_fTime <=2.0f)
+        {
+            Vec3 pos = m_pRainbow->getPosition3D();
+            Vec3 target = m_pMainCamera->getPosition3D() + Vec3(0, -30, 0);
+            pos = pos + m_dirDist*delta*0.5f - Vec3(0, cosf(M_PI*(m_fTime-0.5f))*2, 0);
+            m_pRainbow->setPosition3D(pos);
+            m_pRainbow->update(delta);
+        }
+    }
+}
+
 bool MenuScene::onTouchBegan(Touch *touch, Event *event)
 {
     if(!touch)

@@ -157,3 +157,52 @@ Color3B UtilityHelper::randomColor(int minSum, int minDelta)
     }
     return Color3B(r, g, b);
 }
+Color3B UtilityHelper::randomRedColor()
+{
+    int r = cocos2d::random(252, 255);
+    int g = cocos2d::random(132, 200);
+    int b = g;
+    return Color3B(r,g,b);
+}
+Color3B UtilityHelper::randomOrangeColor()
+{
+    int r = cocos2d::random(252, 255);
+    int g = cocos2d::random(200, 238);
+    int b = g-cocos2d::random(40, 50);
+    return Color3B(r,g,b);
+}
+Color3B UtilityHelper::randomYellowColor()
+{
+    int r = cocos2d::random(252, 255);
+    int g = cocos2d::random(252, 255);
+    int b = cocos2d::random(103, 203);
+    return Color3B(r,g,b);
+}
+Color3B UtilityHelper::randomGreenColor()
+{
+    int r = cocos2d::random(200, 234);
+    int g = cocos2d::random(238, 252);
+    int b = r-cocos2d::random(40, 50);
+    return Color3B(r,g,b);
+}
+Color3B UtilityHelper::randomCyanColor()
+{
+    int g = cocos2d::random(238, 250);
+    int b = cocos2d::random(252, 255);
+    int r = g - cocos2d::random(40, 50);
+    return Color3B(r,g,b);
+}
+Color3B UtilityHelper::randomBlueColor()
+{
+    int g = cocos2d::random(186, 230);
+    int b = cocos2d::random(252, 255);
+    int r = g - cocos2d::random(40, 50);
+    return Color3B(r,g,b);
+}
+Color3B UtilityHelper::randompurpleColor()
+{
+    int r = cocos2d::random(209, 240);
+    int g = r -cocos2d::random(40, 50);
+    int b = cocos2d::random(252, 255);
+    return Color3B(r,g,b);
+}

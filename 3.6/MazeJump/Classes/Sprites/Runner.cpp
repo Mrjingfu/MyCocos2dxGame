@@ -27,8 +27,7 @@ Runner* Runner::create()
         outline->setOutlineColor(Vec3(0.3f, 0.3f, 0.3f));
         outline->setOutlineWidth(0.03f);
         runner->addEffect(outline, 1);
-        
-        runner->setRibbonTrail("ribbontrail.png");
+
         runner->autorelease();
         return runner;
     }
@@ -66,6 +65,8 @@ void Runner::setRibbonTrail(const std::string& file)
         m_pRibbonTrail->setCameraMask((unsigned short)CameraFlag::USER1);
         this->addChild(m_pRibbonTrail);
         m_pRibbonTrail->getTrail()->addNode(this);
+        if(getParent() != nullptr)
+            m_pRibbonTrail->getTrail()->setAttachedNode(getParent());
     }
     else
         CCLOG("create ribbon trail with texture %s failed!", file.c_str());

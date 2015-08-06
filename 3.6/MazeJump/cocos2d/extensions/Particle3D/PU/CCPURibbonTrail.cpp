@@ -369,7 +369,6 @@ void PURibbonTrail::timeUpdate(float time)
                 elem.width = 0.0f < elem.width? elem.width: 0.0f;
                 elem.color = elem.color - (_deltaColor[s] * time);
                 elem.color.clamp(Vec4(0.0f, 0.0f, 0.0f, 0.0f), Vec4(1.0f, 1.0f, 1.0f, 1.0f));
-
                 if (e == seg.tail)
                     break;
 

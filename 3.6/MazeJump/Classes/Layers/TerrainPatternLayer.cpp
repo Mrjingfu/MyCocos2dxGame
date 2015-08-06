@@ -74,8 +74,27 @@ bool TerrainPatternLayer::init(int index, bool generateCheckPoint)
                 break;
             case FIT_RANDOM_UP:
                 {
-                    Color3B randomColor = UtilityHelper::randomColor();
-                    cell->setColor(randomColor);
+                    if(m_patternType == PT_CHECKPOINT)
+                        cell->setColor(RunController::getInstance()->getSameColor());
+                    else
+                    {
+                        int index = 0;
+                        if(posX == -21)
+                            index = 0;
+                        else if(posX == -16)
+                            index = 1;
+                        else if(posX == -8)
+                            index = 2;
+                        else if(posX == 0)
+                            index = 3;
+                        else if(posX == 8)
+                            index = 4;
+                        else if(posX == 16)
+                            index = 5;
+                        else if(posX == 21)
+                            index = 6;
+                        cell->setColor(RunController::getInstance()->getRandomColorByIndex(index));
+                    }
                     cell->setPosition3D(Vec3(posX, -50, posZ));
                     cell->setRotation3D(Vec3(rotX, rotY, rotZ));
                     cell->setScale(0);

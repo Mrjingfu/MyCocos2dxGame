@@ -15,6 +15,7 @@
 #include "storage/local-storage/LocalStorage.h"
 #include "Particle3D/CCParticleSystem3D.h"
 #include "Particle3D/PU/CCPUParticleSystem3D.h"
+#include "UtilityHelper.h"
 USING_NS_CC;
 
 RunController* g_pRunControllerInstance = nullptr;
@@ -51,6 +52,22 @@ bool RunController::init(Layer* pMainLayer)
         return false;
     m_pMainLayer = pMainLayer;
     m_nInitDifficultLevel = getDifficultLevel();
+//    m_randomColor0 = UtilityHelper::randomColor();
+//    m_randomColor1 = UtilityHelper::randomColor();
+//    m_randomColor2 = UtilityHelper::randomColor();
+//    m_randomColor3 = UtilityHelper::randomColor();
+//    m_randomColor4 = UtilityHelper::randomColor();
+//    m_randomColor5 = UtilityHelper::randomColor();
+//    m_randomColor6 = UtilityHelper::randomColor();
+    
+    m_randomColor0 = UtilityHelper::randomRedColor();
+    m_randomColor1 = UtilityHelper::randomOrangeColor();
+    m_randomColor2 = UtilityHelper::randomYellowColor();
+    m_randomColor3 = UtilityHelper::randomGreenColor();
+    m_randomColor4 = UtilityHelper::randomCyanColor();
+    m_randomColor5 = UtilityHelper::randomBlueColor();
+    m_randomColor6 = UtilityHelper::randompurpleColor();
+    m_sameColor = UtilityHelper::randomColor();
     
     m_gameUI =GameUI::create();
     m_pMainLayer->addChild(m_gameUI);
@@ -86,6 +103,7 @@ bool RunController::init(Layer* pMainLayer)
         return false;
     m_pMainPlayer->setCameraMask((unsigned short)CameraFlag::USER1);
     m_pTerrainLayer->addChild(m_pMainPlayer);
+    //m_pMainPlayer->setRibbonTrail("ribbontrail.png");
     m_pMainPlayer->fadeIn();
     
     auto size = Director::getInstance()->getVisibleSize();
@@ -114,6 +132,7 @@ bool RunController::init(Layer* pMainLayer)
     });
     m_pMainLayer->addChild(button);
     
+    setGameState(RGS_FROZEN);
     return true;
 }
 void RunController::reset()
@@ -339,4 +358,22 @@ void RunController::addPlayerExplosion()
         m_pMainPlayer->removeFromParentAndCleanup(true);
         m_pMainPlayer = nullptr;
     }
+}
+cocos2d::Color3B RunController::getRandomColorByIndex(int index)
+{
+    CCASSERT(index<=6 && index>=0, "index must between 0-6");
+    if(index == 0)
+        return m_randomColor0;
+    else if(index == 1)
+        return m_randomColor1;
+    else if(index == 2)
+        return m_randomColor2;
+    else if(index == 3)
+        return m_randomColor3;
+    else if(index == 4)
+        return m_randomColor4;
+    else if(index == 5)
+        return m_randomColor5;
+    else if(index == 6)
+        return m_randomColor6;
 }

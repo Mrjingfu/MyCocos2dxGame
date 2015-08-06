@@ -25,8 +25,9 @@ RibbonTrail* RibbonTrail::create(const std::string &textureFile)
 
 }
 RibbonTrail::RibbonTrail()
-:m_pTrail(nullptr), m_BlendFunc(BlendFunc::ADDITIVE)
+:m_pTrail(nullptr)
 {
+    m_BlendFunc = {GL_SRC_ALPHA , GL_ONE};
 }
 RibbonTrail::~RibbonTrail()
 {
@@ -36,11 +37,13 @@ bool RibbonTrail::initWithFile(const std::string &path)
     m_pTrail = new (std::nothrow) PURibbonTrail("RibbonTrail", path);
     if(m_pTrail)
     {
-        m_pTrail->setTrailLength(50);
-        m_pTrail->setInitialColour(0, CCRANDOM_0_1(), CCRANDOM_0_1(), CCRANDOM_0_1());
-        m_pTrail->setColourChange(0, CCRANDOM_0_1(), CCRANDOM_0_1(), CCRANDOM_0_1(), 1.0f);
-        m_pTrail->setWidthChange(0, 3);
-        m_pTrail->setInitialWidth(0, 5);
+        m_pTrail->setNumberOfChains(1);
+        m_pTrail->setMaxChainElements(100);
+        m_pTrail->setTrailLength(2000);
+        m_pTrail->setUseVertexColours(true);
+        m_pTrail->setInitialColour(0, Vec4(1, 1, 1, 1));
+        //m_pTrail->setColourChange(0, Vec4(0.8, 0.8, 0.8, 0.8));
+        m_pTrail->setInitialWidth(0, 70);
         m_pTrail->setDepthTest(true);
         m_pTrail->setDepthWrite(true);
         return true;
