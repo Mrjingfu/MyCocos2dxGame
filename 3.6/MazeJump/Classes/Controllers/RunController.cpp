@@ -58,7 +58,7 @@ bool RunController::init(Layer* pMainLayer)
     if(!m_pWhiteLayer)
         return false;
     m_pMainLayer->addChild(m_pWhiteLayer);
-    EaseExponentialIn* fadeOut = EaseExponentialIn::create(FadeOut::create(1.0f));
+    EaseExponentialOut* fadeOut = EaseExponentialOut::create(FadeOut::create(1.0f));
     m_pWhiteLayer->runAction(fadeOut);
     
     Skybox* m_pSkyBox = Skybox::create("sky4.png", "sky4.png", "sky4.png", "sky4.png", "sky4.png", "sky4.png");
@@ -121,7 +121,7 @@ void RunController::reset()
     m_bInMazeJump = false;
     if(m_pWhiteLayer)
     {
-        EaseExponentialIn* fadeOut = EaseExponentialIn::create(FadeOut::create(1.0f));
+        EaseExponentialOut* fadeOut = EaseExponentialOut::create(FadeOut::create(1.0f));
         m_pWhiteLayer->runAction(fadeOut);
     }
     

@@ -10,6 +10,8 @@
 #define __MazeJump__MenuScene__
 
 #include "cocos2d.h"
+#include "EffectSprite3D.h"
+#include "Runner.h"
 class MenuScene : public cocos2d::Layer
 {
     MenuScene();
@@ -22,9 +24,22 @@ public:
     
     // implement the "static create()" method manually
     CREATE_FUNC(MenuScene);
-    
+    // 处理输入
+    virtual bool onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event) override;
+private:
+    void switchToMainScene();
+    void startGame();
+    void runnerJump();
 private:
     cocos2d::Camera*    m_pMainCamera;
+    EffectSprite3D*     m_pSea;
+    EffectSprite3D*     m_pSea1;
+    EffectSprite3D*     m_pSea2;
+    EffectSprite3D*     m_pSea3;
+    EffectSprite3D*     m_pStandPlatform;
+    Runner*             m_pRunner;
+    cocos2d::LayerColor*        m_pWhiteLayer;
+    bool                m_bStartGame;
 };
 
 #endif /* defined(__MazeJump__MenuScene__) */

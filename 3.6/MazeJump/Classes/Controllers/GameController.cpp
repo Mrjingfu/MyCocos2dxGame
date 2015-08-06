@@ -44,7 +44,7 @@ bool GameController::init(Layer* pMainLayer,int difficultLevel)
     if(!m_pWhiteLayer)
         return false;
     m_pMainLayer->addChild(m_pWhiteLayer);
-    EaseExponentialIn* fadeOut = EaseExponentialIn::create(FadeOut::create(1.0f));
+    EaseExponentialOut* fadeOut = EaseExponentialOut::create(FadeOut::create(1.0f));
     m_pWhiteLayer->runAction(fadeOut);
     
     auto size = Director::getInstance()->getVisibleSize();

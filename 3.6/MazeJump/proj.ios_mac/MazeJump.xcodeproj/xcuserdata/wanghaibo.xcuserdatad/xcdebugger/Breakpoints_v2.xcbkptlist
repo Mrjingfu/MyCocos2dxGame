@@ -1705,7 +1705,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "171"
             endingLineNumber = "171"
-            landmarkName = "TerrainLayer::jumpLeft()"
+            landmarkName = "TerrainLayer::onTouchEnded(Touch *touch, Event *event)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1849,7 +1849,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "242"
             endingLineNumber = "242"
-            landmarkName = "RunController::initCloud()"
+            landmarkName = "RunController::switchToMenuScene()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2375,7 +2375,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "169"
             endingLineNumber = "169"
-            landmarkName = "RunController::getDifficultLevel()"
+            landmarkName = "RunController::setGameState(RunnerGameState state)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2646,7 +2646,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "143"
             endingLineNumber = "143"
-            landmarkName = "RunController::destroy()"
+            landmarkName = "RunController::update(float delta)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2790,7 +2790,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "205"
             endingLineNumber = "205"
-            landmarkName = "RunController::switchToMazeJump()"
+            landmarkName = "RunController::cameraTrackPlayer()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -3316,7 +3316,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "331"
             endingLineNumber = "331"
-            landmarkName = "TerrainPatternLayer::generateCheckPointDecorator()"
+            landmarkName = "TerrainPatternLayer::generatePlane()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -3364,7 +3364,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "328"
             endingLineNumber = "328"
-            landmarkName = "RunController::addPlayerExplosion()"
+            landmarkName = "RunController::updateCloud()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -3988,7 +3988,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "194"
             endingLineNumber = "194"
-            landmarkName = "RunController::cameraTrackPlayer()"
+            landmarkName = "RunController::setMaxDifficultLevel(int difficult)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -4004,7 +4004,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "137"
             endingLineNumber = "137"
-            landmarkName = "RunController::update(float delta)"
+            landmarkName = "RunController::reset()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

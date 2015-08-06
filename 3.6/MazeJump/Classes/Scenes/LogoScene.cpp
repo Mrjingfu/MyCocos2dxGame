@@ -33,6 +33,7 @@ Scene* LogoScene::createScene()
 LogoScene::LogoScene()
 {
     m_pLogoSprite = nullptr;
+    m_pWhiteLayer = nullptr;
 }
 // on "init" you need to initialize your instance
 bool LogoScene::init()
@@ -43,6 +44,7 @@ bool LogoScene::init()
     {
         return false;
     }
+    
     auto size = Director::getInstance()->getVisibleSize();
     m_pLogoSprite = Sprite::create("logo.png");
     if(!m_pLogoSprite)
@@ -59,6 +61,12 @@ bool LogoScene::init()
     Sequence* sequence = Sequence::create( easeOut, callFunc, NULL);
     m_pLogoSprite->runAction(sequence);
     
+    m_pWhiteLayer = LayerColor::create(Color4B::WHITE);
+    if(!m_pWhiteLayer)
+        return false;
+    this->addChild(m_pWhiteLayer);
+    EaseExponentialIn* fadeOut = EaseExponentialIn::create(FadeOut::create(1.0f));
+    m_pWhiteLayer->runAction(fadeOut);
     return true;
 }
 void LogoScene::precache()
@@ -69,10 +77,14 @@ void LogoScene::precache()
     if(!LevelsManager::getInstance()->init("levels.plist"))
         CCLOGERROR("no levels file!");
     
-    CallFunc* callFunc = CallFunc::create(CC_CALLBACK_0(LogoScene::endcache, this));
-    EaseSineOut* easeOut = EaseSineOut::create(FadeOut::create(1.0f));
-    Sequence* sequence = Sequence::create(easeOut, callFunc, NULL);
-    m_pLogoSprite->runAction(sequence);
+    if(m_pWhiteLayer)
+    {
+        DelayTime* delay = DelayTime::create(2.0f);
+        EaseExponentialOut* fadeIn = EaseExponentialOut::create(FadeIn::create(1.0f));
+        CallFunc* callFunc = CallFunc::create(CC_CALLBACK_0(LogoScene::endcache, this));
+        Sequence* sequence = Sequence::create(delay, fadeIn, callFunc, NULL);
+        m_pWhiteLayer->runAction(sequence);
+    }
 }
 void LogoScene::endcache()
 {

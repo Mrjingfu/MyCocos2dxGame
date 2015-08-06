@@ -27,6 +27,7 @@ private:
     void endcache();
 private:
     cocos2d::Sprite*    m_pLogoSprite;
+    cocos2d::LayerColor*        m_pWhiteLayer;
 };
 
 #endif /* defined(__MazeJump__LogoScene__) */
