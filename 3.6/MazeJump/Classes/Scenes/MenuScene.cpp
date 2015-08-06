@@ -9,6 +9,9 @@
 #include "MenuScene.h"
 #include "MainUI.h"
 #include "MainScene.h"
+#include "GameConst.h"
+#include "StarPopUpUI.h"
+#include "storage/local-storage/LocalStorage.h"
 USING_NS_CC;
 
 Scene* MenuScene::createScene()
@@ -47,6 +50,9 @@ bool MenuScene::init()
         return false;
     }
     this->setAnchorPoint(Vec2::ZERO);
+    
+    auto mainUi = MainUI::create();
+    addChild(mainUi);
     
     m_pWhiteLayer = LayerColor::create(Color4B::WHITE);
     if(!m_pWhiteLayer)
@@ -146,9 +152,7 @@ bool MenuScene::init()
     DirectionLight* directionLight = DirectionLight::create(Vec3(-3, -4, -2), Color3B(158, 158, 158));
     m_pSea->addChild(directionLight);
     
-    //auto mainUi = MainUI::create();
-    //addChild(mainUi);
-    
+
     auto dispatcher = Director::getInstance()->getEventDispatcher();
     auto touchListener = EventListenerTouchOneByOne::create();
     if(touchListener == nullptr)
@@ -176,13 +180,21 @@ void MenuScene::switchToMainScene()
 }
 void MenuScene::startGame()
 {
-    if(m_pWhiteLayer)
+    int maxLevel = Value(localStorageGetItem(USER_MAX_LEVEL)).asInt();
+    if (maxLevel > 0) {
+        auto startPopUpUi = StarPopUpUI::create();
+        startPopUpUi->showPopUp(this);
+    }else
     {
-        EaseExponentialOut* fadeIn = EaseExponentialOut::create(FadeIn::create(1.0f));
-        CallFunc* callFunc = CallFunc::create(CC_CALLBACK_0(MenuScene::switchToMainScene, this));
-        Sequence* sequence = Sequence::create( fadeIn, callFunc, NULL);
-        m_pWhiteLayer->runAction(sequence);
+        if(m_pWhiteLayer)
+        {
+            EaseExponentialOut* fadeIn = EaseExponentialOut::create(FadeIn::create(1.0f));
+            CallFunc* callFunc = CallFunc::create(CC_CALLBACK_0(MenuScene::switchToMainScene, this));
+            Sequence* sequence = Sequence::create( fadeIn, callFunc, NULL);
+            m_pWhiteLayer->runAction(sequence);
+        }
     }
+
 }
 void MenuScene::runnerJump()
 {

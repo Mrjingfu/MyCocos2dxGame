@@ -9,8 +9,8 @@
 #define __MazeJump__GameUI__
 
 #include "cocos2d.h"
-#include "BaseUI.h"
-class GameUI : public BaseUI
+#include "ui/CocosGUI.h"
+class GameUI : public cocos2d::ui::Layout
 {
 public:
     typedef enum {
@@ -33,9 +33,7 @@ protected:
 
     
 public:
-    
-    virtual void onEnter();
-    virtual void onExit();
+
     static GameUI* create();
 private:
     void onAddGold();

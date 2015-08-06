@@ -9,8 +9,8 @@
 #define __MazeJump__DeathUI__
 
 #include "cocos2d.h"
-#include "BaseUI.h"
-class DeathUI : public BaseUI
+#include "BasePopUpUI.h"
+class DeathUI : public BasePopUpUI
 {
 protected:
     DeathUI();

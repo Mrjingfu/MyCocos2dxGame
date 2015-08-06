@@ -47,7 +47,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "225"
             endingLineNumber = "225"
-            landmarkName = "Runner::onEnterMoveSuperJump()"
+            landmarkName = "Runner::onEnterMoveForward()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -63,7 +63,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "199"
             endingLineNumber = "199"
-            landmarkName = "Runner::onEnterMoveForward()"
+            landmarkName = "Runner::onEnterMoveRight()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -79,7 +79,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "174"
             endingLineNumber = "174"
-            landmarkName = "Runner::onEnterMoveRight()"
+            landmarkName = "Runner::onEnterMoveLeft()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -96,22 +96,6 @@
             startingLineNumber = "309"
             endingLineNumber = "309"
             landmarkName = "Player::onEnterCheckSpeicalArt()"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../Classes/Sprites/Runner.cpp"
-            timestampString = "459670244.154661"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "244"
-            endingLineNumber = "244"
-            landmarkName = "Runner::onEnterMoveSuperJump()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -160,38 +144,6 @@
             startingLineNumber = "70"
             endingLineNumber = "70"
             landmarkName = "StepManager::getLevelWinSteps(int level)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../Classes/Controllers/RunController.cpp"
-            timestampString = "460440089.363062"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "61"
-            endingLineNumber = "61"
-            landmarkName = "RunController::init(Layer* pMainLayer)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../Classes/UI/ShopUI.cpp"
-            timestampString = "460455018.579991"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "240"
-            endingLineNumber = "240"
-            landmarkName = "ShopUI::onProduct(const std::string &amp;productId)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
