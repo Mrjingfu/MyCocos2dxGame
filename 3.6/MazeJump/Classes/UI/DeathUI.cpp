@@ -32,12 +32,12 @@ DeathUI::~DeathUI()
 }
 void DeathUI::onEnter()
 {
-    BaseUI::onEnter();
+    BasePopUpUI::onEnter();
     init();
 }
 void DeathUI::onExit()
 {
-    BaseUI::onExit();
+    BasePopUpUI::onExit();
 }
 bool DeathUI::init()
 {

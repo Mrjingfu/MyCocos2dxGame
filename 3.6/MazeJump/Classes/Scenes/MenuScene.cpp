@@ -9,6 +9,9 @@
 #include "MenuScene.h"
 #include "MainUI.h"
 #include "MainScene.h"
+#include "GameConst.h"
+#include "StarPopUpUI.h"
+#include "storage/local-storage/LocalStorage.h"
 USING_NS_CC;
 
 Scene* MenuScene::createScene()
@@ -49,6 +52,9 @@ bool MenuScene::init()
         return false;
     }
     this->setAnchorPoint(Vec2::ZERO);
+    
+    auto mainUi = MainUI::create();
+    addChild(mainUi);
     
     m_pWhiteLayer = LayerColor::create(Color4B::WHITE);
     if(!m_pWhiteLayer)
@@ -149,7 +155,6 @@ bool MenuScene::init()
     DirectionLight* directionLight = DirectionLight::create(Vec3(-3, -4, -2), Color3B(158, 158, 158));
     m_pSea->addChild(directionLight);
     
-    
     m_pRainbow = RibbonTrail::create("ribbontrail.png");
     if(!m_pRainbow)
         return false;
@@ -161,16 +166,6 @@ bool MenuScene::init()
     Vec3 pos = m_pRainbow->getPosition3D();
     Vec3 target = m_pMainCamera->getPosition3D() + Vec3(0, -30, 0);
     m_dirDist = target - pos;
-    
-//    EaseSineIn* moveTo = EaseSineIn::create(MoveTo::create(1.0f, Vec3(camPos.x, camPos.y - 30, camPos.z)));
-//    m_pRainbow->runAction(moveTo);
-    
-//    EaseSineOut* moveUp = EaseSineOut::create(MoveTo::create(0.5f, Vec3(camPos.x-650, camPos.y - 100, camPos.z-452.5)));
-//    EaseSineIn* moveDown = EaseSineIn::create(MoveTo::create(1.0f, Vec3(camPos.x, camPos.y - 30, camPos.z)));
-//    Sequence* sequenceJump = Sequence::create( moveUp, moveDown, NULL);
-//    m_pRainbow->runAction(sequenceJump);
-    //auto mainUi = MainUI::create();
-    //addChild(mainUi);
     
     auto dispatcher = Director::getInstance()->getEventDispatcher();
     auto touchListener = EventListenerTouchOneByOne::create();
@@ -226,13 +221,21 @@ void MenuScene::switchToMainScene()
 }
 void MenuScene::startGame()
 {
-    if(m_pWhiteLayer)
+    int maxLevel = Value(localStorageGetItem(USER_MAX_LEVEL)).asInt();
+    if (maxLevel > 0) {
+        auto startPopUpUi = StarPopUpUI::create();
+        startPopUpUi->showPopUp(this);
+    }else
     {
-        EaseExponentialOut* fadeIn = EaseExponentialOut::create(FadeIn::create(1.0f));
-        CallFunc* callFunc = CallFunc::create(CC_CALLBACK_0(MenuScene::switchToMainScene, this));
-        Sequence* sequence = Sequence::create( fadeIn, callFunc, NULL);
-        m_pWhiteLayer->runAction(sequence);
+        if(m_pWhiteLayer)
+        {
+            EaseExponentialOut* fadeIn = EaseExponentialOut::create(FadeIn::create(1.0f));
+            CallFunc* callFunc = CallFunc::create(CC_CALLBACK_0(MenuScene::switchToMainScene, this));
+            Sequence* sequence = Sequence::create( fadeIn, callFunc, NULL);
+            m_pWhiteLayer->runAction(sequence);
+        }
     }
+
 }
 void MenuScene::runnerJump()
 {

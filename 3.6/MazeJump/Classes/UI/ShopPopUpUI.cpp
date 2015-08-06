@@ -5,16 +5,16 @@
 //
 //
 
-#include "ShopUI.h"
+#include "ShopPopUpUI.h"
 #include "UtilityHelper.h"
 #include "GameConst.h"
 #include "MainScene.h"
 #include "storage/local-storage/LocalStorage.h"
 USING_NS_CC;
 
-ShopUI* ShopUI::create(const std::string& tip)
+ShopPopUpUI* ShopPopUpUI::create()
 {
-    ShopUI *pRet = new(std::nothrow) ShopUI(tip);
+    ShopPopUpUI *pRet = new(std::nothrow) ShopPopUpUI();
     if (pRet )
     {
         pRet->autorelease();
@@ -24,22 +24,22 @@ ShopUI* ShopUI::create(const std::string& tip)
     return nullptr;
 }
 
-ShopUI::ShopUI(const std::string& tip):m_tip(tip)
+ShopPopUpUI::ShopPopUpUI()
 {
 }
-ShopUI::~ShopUI()
+ShopPopUpUI::~ShopPopUpUI()
 {
 }
-void ShopUI::onEnter()
+void ShopPopUpUI::onEnter()
 {
-    BaseUI::onEnter();
+    BasePopUpUI::onEnter();
     init();
 }
-void ShopUI::onExit()
+void ShopPopUpUI::onExit()
 {
-    BaseUI::onExit();
+    BasePopUpUI::onExit();
 }
-bool ShopUI::init()
+bool ShopPopUpUI::init()
 {
 
     auto size = Director::getInstance()->getVisibleSize();
@@ -47,52 +47,28 @@ bool ShopUI::init()
     
     auto bg = LayerColor::create(Color4B(107, 223, 255,255),size.width,size.height);
     bg->setPosition(Vec2::ZERO);
-    m_uiLayer->addChild(bg);
+    m_dialogLayer->addChild(bg);
     
     
      productLayer = Layer::create();
-    m_uiLayer->addChild(productLayer);
+    m_dialogLayer->addChild(productLayer);
     
      goldProductLayer = Layer::create();
-    m_uiLayer->addChild(goldProductLayer);
+    m_dialogLayer->addChild(goldProductLayer);
     
     ui::Button* backBtn = ui::Button::create("btn_back_normal.png","btn_back_press.png");
     backBtn->setPosition(Vec2(size.width*0.2, size.height*0.9));
     backBtn->setScale(scale);
-    m_uiLayer->addChild(backBtn);
+    m_dialogLayer->addChild(backBtn);
     
-    ui::ImageView* glodView = ui::ImageView::create("ui_gold.png");
-    glodView->setPosition(Vec2(size.width*0.85, size.height*0.92));
-    glodView->setScale(scale);
-    m_uiLayer->addChild(glodView);
-    
-     goldTv = ui::Text::create(StringUtils::format("%d",Value(localStorageGetItem(USER_GOLD_NUM)).asInt()), FONT_FXZS, 40);
-    goldTv->setPosition(Vec2(size.width*0.7, size.height*0.92));
-    goldTv->setScale(scale);
-    m_uiLayer->addChild(goldTv);
-    
-    ui::ImageView* heartView = ui::ImageView::create("ui_heart.png");
-    heartView->setPosition(Vec2(size.width*0.85, size.height*0.92- glodView->getContentSize().height*scale -10*scale));
-    heartView->setScale(scale);
-    m_uiLayer->addChild(heartView);
-    
-     heartTv = ui::Text::create(StringUtils::format("%d",Value(localStorageGetItem(USER_HEART_NUM)).asInt()), FONT_FXZS, 40);
-    heartTv->setPosition(Vec2(size.width*0.7, size.height*0.92- glodView->getContentSize().height*scale -10*scale));
-    heartTv->setScale(scale);
-    m_uiLayer->addChild(heartTv);
+
     
     
     ui::ImageView* shopTv = ui::ImageView::create("ui_shop_icon.png");
     shopTv->setPosition(Vec2(size.width*0.32, size.height*0.75));
     shopTv->setScale(scale);
-    m_uiLayer->addChild(shopTv);
-    
-    tipTv = ui::Text::create(UtilityHelper::getLocalString(m_tip.c_str()), FONT_FXZS, 40);
-    tipTv->setPosition(Vec2(size.width*0.34+shopTv->getContentSize().width*scale +70*scale,  size.height*0.75));
-    tipTv->setScale(scale);
-    addChild(tipTv);
-    
-    
+    m_dialogLayer->addChild(shopTv);
+
     ui::Button* goldBuyBtn = ui::Button::create("btn_glodmore_normal.png","btn_glodmore_press.png");
     goldBuyBtn->setPosition(Vec2(size.width*0.35, size.height*0.6));
     goldBuyBtn->setScale(scale);
@@ -142,18 +118,18 @@ bool ShopUI::init()
     coin5_Btn->setScale(scale);
     goldProductLayer->addChild(coin5_Btn);
     
-    backBtn->addClickEventListener(CC_CALLBACK_1(ShopUI::onBack, this));
+
     
-    goldBuyBtn->addClickEventListener(CC_CALLBACK_1(ShopUI::onBuyGold, this));
-    heartBuyBtn->addClickEventListener(CC_CALLBACK_1(ShopUI::onBuyHeart, this));
-    adsBuyBtn->addClickEventListener(CC_CALLBACK_1(ShopUI::onBuyRemoveAds, this));
-    restoreBtn->addClickEventListener(CC_CALLBACK_1(ShopUI::onRestore, this));
+    goldBuyBtn->addClickEventListener(CC_CALLBACK_1(ShopPopUpUI::onBuyGold, this));
+    heartBuyBtn->addClickEventListener(CC_CALLBACK_1(ShopPopUpUI::onBuyHeart, this));
+    adsBuyBtn->addClickEventListener(CC_CALLBACK_1(ShopPopUpUI::onBuyRemoveAds, this));
+    restoreBtn->addClickEventListener(CC_CALLBACK_1(ShopPopUpUI::onRestore, this));
     
-    coin1_Btn->addClickEventListener(CC_CALLBACK_1(ShopUI::onBuyCoin1, this));
-    coin2_Btn->addClickEventListener(CC_CALLBACK_1(ShopUI::onBuyCoin2, this));
-    coin3_Btn->addClickEventListener(CC_CALLBACK_1(ShopUI::onBuyCoin3, this));
-    coin4_Btn->addClickEventListener(CC_CALLBACK_1(ShopUI::onBuyCoin4, this));
-    coin5_Btn->addClickEventListener(CC_CALLBACK_1(ShopUI::onBuyCoin5, this));
+    coin1_Btn->addClickEventListener(CC_CALLBACK_1(ShopPopUpUI::onBuyCoin1, this));
+    coin2_Btn->addClickEventListener(CC_CALLBACK_1(ShopPopUpUI::onBuyCoin2, this));
+    coin3_Btn->addClickEventListener(CC_CALLBACK_1(ShopPopUpUI::onBuyCoin3, this));
+    coin4_Btn->addClickEventListener(CC_CALLBACK_1(ShopPopUpUI::onBuyCoin4, this));
+    coin5_Btn->addClickEventListener(CC_CALLBACK_1(ShopPopUpUI::onBuyCoin5, this));
     
     productLayer->setVisible(true);
     goldProductLayer->setVisible(false);
@@ -161,113 +137,76 @@ bool ShopUI::init()
     return true;
 }
 
-void ShopUI::onBack(cocos2d::Ref *ref)
-{
-    if (goldProductLayer->isVisible()) {
-        if (std::strcmp(m_tip.c_str(), SHOP_BUY.c_str())) {
-            setTips(SHOP_BUY);
-        }
-        goldProductLayer->setVisible(false);
-        productLayer->setVisible(true);
-    }else{
-        Director::getInstance()->popScene();
-    }
-}
-void ShopUI::onBuyGold(cocos2d::Ref *ref)
+void ShopPopUpUI::onBuyGold(cocos2d::Ref *ref)
 {
     productLayer->setVisible(false);
     goldProductLayer->setVisible(true);
 }
-void ShopUI::onBuyHeart(cocos2d::Ref *ref)
+void ShopPopUpUI::onBuyHeart(cocos2d::Ref *ref)
 {
     CCLOG("onBuyHeart");
-    int goldNum = Value(localStorageGetItem(USER_GOLD_NUM)).asInt();
-    if (goldNum >= 150) {
-        localStorageSetItem(USER_HEART_NUM, Value(Value(localStorageGetItem(USER_HEART_NUM)).asInt()+15).asString());
-        localStorageSetItem(USER_GOLD_NUM, Value(Value(localStorageGetItem(USER_GOLD_NUM)).asInt()-150).asString());
-        updateUserData();
-    }else
-    {
-        setTips(SHOP_GOLD_NOT_ENOUGH);
-        productLayer->setVisible(false);
-        goldProductLayer->setVisible(true);
-    }
-    
-    
-}
-void ShopUI::setTips(const std::string &tipkey)
-{
-    m_tip = tipkey;
-    tipTv->setString(UtilityHelper::getLocalString(m_tip.c_str()));
-}
-void ShopUI::onBuyRemoveAds(cocos2d::Ref *ref)
+  }
+
+void ShopPopUpUI::onBuyRemoveAds(cocos2d::Ref *ref)
 {
     CCLOG("onBuyRemoveAds");
 }
 
-void ShopUI::onRestore(cocos2d::Ref *ref)
+void ShopPopUpUI::onRestore(cocos2d::Ref *ref)
 {
     CCLOG("onRestore");
 }
-void ShopUI::onBuyCoin1(cocos2d::Ref *ref)
+void ShopPopUpUI::onBuyCoin1(cocos2d::Ref *ref)
 {
     CCLOG("onBuyCoin1");
     onProduct("buyCoin1");
 }
-void ShopUI::onBuyCoin2(cocos2d::Ref *ref)
+void ShopPopUpUI::onBuyCoin2(cocos2d::Ref *ref)
 {
     CCLOG("onBuyCoin2");
     onProduct("buyCoin2");
 }
-void ShopUI::onBuyCoin3(cocos2d::Ref *ref)
+void ShopPopUpUI::onBuyCoin3(cocos2d::Ref *ref)
 {
     CCLOG("onBuyCoin3");
     onProduct("buyCoin3");
 }
-void ShopUI::onBuyCoin4(cocos2d::Ref *ref)
+void ShopPopUpUI::onBuyCoin4(cocos2d::Ref *ref)
 {
     CCLOG("onBuyCoin4");
     onProduct("buyCoin4");
 }
-void ShopUI::onBuyCoin5(cocos2d::Ref *ref)
+void ShopPopUpUI::onBuyCoin5(cocos2d::Ref *ref)
 {
     CCLOG("onBuyCoin5");
     onProduct("buyCoin5");
     
 }
-void ShopUI::onProduct(const std::string &productId)
+void ShopPopUpUI::onProduct(const std::string &productId)
 {
     int num = 0;
     CCLOG("product:%s",productId.c_str());
-    if (!std::strcmp(productId.c_str(), "buyCoin1"))
+    if (!strcmp(productId.c_str(), "buyCoin1"))
     {
         num = 200;
     }
-    else if (!std::strcmp(productId.c_str(), "buyCoin2"))
+    else if (!strcmp(productId.c_str(), "buyCoin2"))
     {
         num = 500;
     }
-    else if (!std::strcmp(productId.c_str(), "buyCoin3"))
+    else if (!strcmp(productId.c_str(), "buyCoin3"))
     {
         num = 1000;
     }
-    else if (!std::strcmp(productId.c_str(), "buyCoin4"))
+    else if (!strcmp(productId.c_str(), "buyCoin4"))
     {
         num = 2500;
     }
-    else if (!std::strcmp(productId.c_str(), "buyCoin5"))
+    else if (!strcmp(productId.c_str(), "buyCoin5"))
     {
         num = 10000;
     }
     localStorageSetItem(USER_GOLD_NUM, Value(Value(localStorageGetItem(USER_GOLD_NUM)).asInt()+num).asString());
-    updateUserData();
+    
 }
-void ShopUI::updateUserData()
-{
-    if (heartTv) {
-        heartTv->setString(StringUtils::format("%d",Value(localStorageGetItem(USER_HEART_NUM)).asInt()));
-    }
-    if (goldTv) {
-        goldTv->setString(StringUtils::format("%d",Value(localStorageGetItem(USER_GOLD_NUM)).asInt()));
-    }
-}
+

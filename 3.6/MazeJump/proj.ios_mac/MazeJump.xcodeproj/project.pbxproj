@@ -269,6 +269,12 @@
 		EC0A159D1B7083ED0094AE6D /* btn_coins04_press.png in Resources */ = {isa = PBXBuildFile; fileRef = EC0A15891B7083DE0094AE6D /* btn_coins04_press.png */; };
 		EC0A159E1B7083ED0094AE6D /* btn_coins05_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = EC0A158A1B7083DE0094AE6D /* btn_coins05_normal.png */; };
 		EC0A159F1B7083ED0094AE6D /* btn_coins05_press.png in Resources */ = {isa = PBXBuildFile; fileRef = EC0A158B1B7083DE0094AE6D /* btn_coins05_press.png */; };
+		EC177F711B73580D0059519B /* BasePopUpUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC177F6F1B73580D0059519B /* BasePopUpUI.cpp */; };
+		EC177F721B7361250059519B /* BasePopUpUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC177F6F1B73580D0059519B /* BasePopUpUI.cpp */; };
+		EC177F781B737DB90059519B /* btn_heart5_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = EC177F761B737DB90059519B /* btn_heart5_normal.png */; };
+		EC177F791B737DB90059519B /* btn_heart5_press.png in Resources */ = {isa = PBXBuildFile; fileRef = EC177F771B737DB90059519B /* btn_heart5_press.png */; };
+		EC177F7A1B737E150059519B /* btn_heart5_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = EC177F761B737DB90059519B /* btn_heart5_normal.png */; };
+		EC177F7B1B737E150059519B /* btn_heart5_press.png in Resources */ = {isa = PBXBuildFile; fileRef = EC177F771B737DB90059519B /* btn_heart5_press.png */; };
 		EC1969511B71A41A002AECA7 /* btn_play_press.png in Resources */ = {isa = PBXBuildFile; fileRef = EC1969501B71A41A002AECA7 /* btn_play_press.png */; };
 		EC1969521B71A425002AECA7 /* btn_play_press.png in Resources */ = {isa = PBXBuildFile; fileRef = EC1969501B71A41A002AECA7 /* btn_play_press.png */; };
 		EC1969551B71A7BB002AECA7 /* GameUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC1969531B71A7BB002AECA7 /* GameUI.cpp */; };
@@ -281,8 +287,8 @@
 		EC1969651B720A36002AECA7 /* btn_comment_press.png in Resources */ = {isa = PBXBuildFile; fileRef = EC1969611B7209BA002AECA7 /* btn_comment_press.png */; };
 		EC1969661B720A36002AECA7 /* btn_sounds_off.png in Resources */ = {isa = PBXBuildFile; fileRef = EC19695C1B720589002AECA7 /* btn_sounds_off.png */; };
 		EC1969671B720A36002AECA7 /* btn_sounds_on.png in Resources */ = {isa = PBXBuildFile; fileRef = EC19695D1B720589002AECA7 /* btn_sounds_on.png */; };
-		EC1969691B720CB2002AECA7 /* StartUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC1969681B720CB2002AECA7 /* StartUI.cpp */; };
-		EC19696A1B720E69002AECA7 /* StartUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC1969681B720CB2002AECA7 /* StartUI.cpp */; };
+		EC1969691B720CB2002AECA7 /* StarPopUpUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC1969681B720CB2002AECA7 /* StarPopUpUI.cpp */; };
+		EC19696A1B720E69002AECA7 /* StarPopUpUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC1969681B720CB2002AECA7 /* StarPopUpUI.cpp */; };
 		EC339D6D1B6209CD00781575 /* button_retry_down.png in Resources */ = {isa = PBXBuildFile; fileRef = EC339D6B1B6209CD00781575 /* button_retry_down.png */; };
 		EC339D6E1B6209CD00781575 /* button_retry_up.png in Resources */ = {isa = PBXBuildFile; fileRef = EC339D6C1B6209CD00781575 /* button_retry_up.png */; };
 		EC339D711B6213DC00781575 /* button_retry_down.png in Resources */ = {isa = PBXBuildFile; fileRef = EC339D6B1B6209CD00781575 /* button_retry_down.png */; };
@@ -312,8 +318,6 @@
 		EC5C99131B65CBA600EC0177 /* 6x6-7.tmx in Resources */ = {isa = PBXBuildFile; fileRef = EC5C99111B65CB8300EC0177 /* 6x6-7.tmx */; };
 		EC66AD511B70A73000FFB244 /* btn_play_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = EC66AD4F1B70A73000FFB244 /* btn_play_normal.png */; };
 		EC66AD531B70A99100FFB244 /* btn_play_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = EC66AD4F1B70A73000FFB244 /* btn_play_normal.png */; };
-		EC66AD5C1B70AC7F00FFB244 /* BaseUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC66AD5A1B70AC7F00FFB244 /* BaseUI.cpp */; };
-		EC66AD5D1B70B01800FFB244 /* BaseUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC66AD5A1B70AC7F00FFB244 /* BaseUI.cpp */; };
 		EC66AD611B70BDB600FFB244 /* ui_start_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = EC66AD601B70BDB600FFB244 /* ui_start_bg.png */; };
 		EC66AD621B70BE7E00FFB244 /* ui_start_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = EC66AD601B70BDB600FFB244 /* ui_start_bg.png */; };
 		EC6E12541B67165600CAC4B5 /* 6x6-6.tmx in Resources */ = {isa = PBXBuildFile; fileRef = EC6E12531B67165600CAC4B5 /* 6x6-6.tmx */; };
@@ -334,13 +338,11 @@
 		EC721EF51B6F79CF0073B845 /* btn_removeads_press.png in Resources */ = {isa = PBXBuildFile; fileRef = EC721EEB1B6F79CF0073B845 /* btn_removeads_press.png */; };
 		EC721EF61B6F79CF0073B845 /* btn_restore_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = EC721EEC1B6F79CF0073B845 /* btn_restore_normal.png */; };
 		EC721EF71B6F79CF0073B845 /* btn_restore_press.png in Resources */ = {isa = PBXBuildFile; fileRef = EC721EED1B6F79CF0073B845 /* btn_restore_press.png */; };
-		EC721EFA1B6F8DD80073B845 /* ShopScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC721EF81B6F8DD80073B845 /* ShopScene.cpp */; };
 		EC721EFC1B6F8DE60073B845 /* ui_shop_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = EC721EFB1B6F8DE60073B845 /* ui_shop_icon.png */; };
 		EC721EFD1B6F8E370073B845 /* DeathUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECE0D6A11B6F565A00B5E416 /* DeathUI.cpp */; };
 		EC721EFE1B6F8E370073B845 /* GameLose.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECE0D6A41B6F565A00B5E416 /* GameLose.cpp */; };
 		EC721EFF1B6F8E370073B845 /* GameWin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECE0D6A51B6F565A00B5E416 /* GameWin.cpp */; };
-		EC721F001B6F8E370073B845 /* ShopUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECE0D6A71B6F565A00B5E416 /* ShopUI.cpp */; };
-		EC721F011B6F8E370073B845 /* ShopScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC721EF81B6F8DD80073B845 /* ShopScene.cpp */; };
+		EC721F001B6F8E370073B845 /* ShopPopUpUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECE0D6A71B6F565A00B5E416 /* ShopPopUpUI.cpp */; };
 		EC721F021B6F8E710073B845 /* ui_shop_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = EC721EFB1B6F8DE60073B845 /* ui_shop_icon.png */; };
 		EC721F031B6F8E710073B845 /* btn_back_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = EC721EE41B6F79CF0073B845 /* btn_back_normal.png */; };
 		EC721F041B6F8E710073B845 /* btn_back_press.png in Resources */ = {isa = PBXBuildFile; fileRef = EC721EE51B6F79CF0073B845 /* btn_back_press.png */; };
@@ -394,7 +396,7 @@
 		ECE0D6A91B6F565A00B5E416 /* DeathUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECE0D6A11B6F565A00B5E416 /* DeathUI.cpp */; };
 		ECE0D6AA1B6F565A00B5E416 /* GameLose.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECE0D6A41B6F565A00B5E416 /* GameLose.cpp */; };
 		ECE0D6AB1B6F565A00B5E416 /* GameWin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECE0D6A51B6F565A00B5E416 /* GameWin.cpp */; };
-		ECE0D6AC1B6F565A00B5E416 /* ShopUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECE0D6A71B6F565A00B5E416 /* ShopUI.cpp */; };
+		ECE0D6AC1B6F565A00B5E416 /* ShopPopUpUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECE0D6A71B6F565A00B5E416 /* ShopPopUpUI.cpp */; };
 		ECF82B171B67661600C8095A /* 7x7-1.tmx in Resources */ = {isa = PBXBuildFile; fileRef = ECF82B161B67661600C8095A /* 7x7-1.tmx */; };
 		ECF82B181B67663300C8095A /* 7x7-1.tmx in Resources */ = {isa = PBXBuildFile; fileRef = ECF82B161B67661600C8095A /* 7x7-1.tmx */; };
 		ECF82B1A1B6771FE00C8095A /* 7x7-2.tmx in Resources */ = {isa = PBXBuildFile; fileRef = ECF82B191B6771FE00C8095A /* 7x7-2.tmx */; };
@@ -622,6 +624,10 @@
 		EC0A15891B7083DE0094AE6D /* btn_coins04_press.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_coins04_press.png; sourceTree = "<group>"; };
 		EC0A158A1B7083DE0094AE6D /* btn_coins05_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_coins05_normal.png; sourceTree = "<group>"; };
 		EC0A158B1B7083DE0094AE6D /* btn_coins05_press.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_coins05_press.png; sourceTree = "<group>"; };
+		EC177F6F1B73580D0059519B /* BasePopUpUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BasePopUpUI.cpp; sourceTree = "<group>"; };
+		EC177F701B73580D0059519B /* BasePopUpUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasePopUpUI.h; sourceTree = "<group>"; };
+		EC177F761B737DB90059519B /* btn_heart5_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_heart5_normal.png; sourceTree = "<group>"; };
+		EC177F771B737DB90059519B /* btn_heart5_press.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_heart5_press.png; sourceTree = "<group>"; };
 		EC1969501B71A41A002AECA7 /* btn_play_press.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_play_press.png; sourceTree = "<group>"; };
 		EC1969531B71A7BB002AECA7 /* GameUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameUI.cpp; sourceTree = "<group>"; };
 		EC1969541B71A7BB002AECA7 /* GameUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameUI.h; sourceTree = "<group>"; };
@@ -629,7 +635,7 @@
 		EC19695D1B720589002AECA7 /* btn_sounds_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_sounds_on.png; sourceTree = "<group>"; };
 		EC1969601B7209BA002AECA7 /* btn_comment_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_comment_normal.png; sourceTree = "<group>"; };
 		EC1969611B7209BA002AECA7 /* btn_comment_press.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_comment_press.png; sourceTree = "<group>"; };
-		EC1969681B720CB2002AECA7 /* StartUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StartUI.cpp; sourceTree = "<group>"; };
+		EC1969681B720CB2002AECA7 /* StarPopUpUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StarPopUpUI.cpp; sourceTree = "<group>"; };
 		EC339D6B1B6209CD00781575 /* button_retry_down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_retry_down.png; sourceTree = "<group>"; };
 		EC339D6C1B6209CD00781575 /* button_retry_up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_retry_up.png; sourceTree = "<group>"; };
 		EC3F33061B64F3D70072775F /* 5x5-9.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "5x5-9.tmx"; sourceTree = "<group>"; };
@@ -644,9 +650,7 @@
 		EC496E151B5FC967007C9A08 /* sky4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sky4.png; sourceTree = "<group>"; };
 		EC5C99111B65CB8300EC0177 /* 6x6-7.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "6x6-7.tmx"; sourceTree = "<group>"; };
 		EC66AD4F1B70A73000FFB244 /* btn_play_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_play_normal.png; sourceTree = "<group>"; };
-		EC66AD561B70A99D00FFB244 /* StartUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartUI.h; sourceTree = "<group>"; };
-		EC66AD5A1B70AC7F00FFB244 /* BaseUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BaseUI.cpp; sourceTree = "<group>"; };
-		EC66AD5B1B70AC7F00FFB244 /* BaseUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseUI.h; sourceTree = "<group>"; };
+		EC66AD561B70A99D00FFB244 /* StarPopUpUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StarPopUpUI.h; sourceTree = "<group>"; };
 		EC66AD601B70BDB600FFB244 /* ui_start_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ui_start_bg.png; sourceTree = "<group>"; };
 		EC6E12531B67165600CAC4B5 /* 6x6-6.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "6x6-6.tmx"; sourceTree = "<group>"; };
 		EC6E12561B6722F500CAC4B5 /* 6x6-8.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "6x6-8.tmx"; sourceTree = "<group>"; };
@@ -662,8 +666,6 @@
 		EC721EEB1B6F79CF0073B845 /* btn_removeads_press.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_removeads_press.png; sourceTree = "<group>"; };
 		EC721EEC1B6F79CF0073B845 /* btn_restore_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_restore_normal.png; sourceTree = "<group>"; };
 		EC721EED1B6F79CF0073B845 /* btn_restore_press.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_restore_press.png; sourceTree = "<group>"; };
-		EC721EF81B6F8DD80073B845 /* ShopScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ShopScene.cpp; sourceTree = "<group>"; };
-		EC721EF91B6F8DD80073B845 /* ShopScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopScene.h; sourceTree = "<group>"; };
 		EC721EFB1B6F8DE60073B845 /* ui_shop_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ui_shop_icon.png; sourceTree = "<group>"; };
 		EC937B641B632880008CFE60 /* 6x6-1.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "6x6-1.tmx"; sourceTree = "<group>"; };
 		EC937B671B632C71008CFE60 /* 6x6-2.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "6x6-2.tmx"; sourceTree = "<group>"; };
@@ -694,8 +696,8 @@
 		ECE0D6A41B6F565A00B5E416 /* GameLose.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameLose.cpp; sourceTree = "<group>"; };
 		ECE0D6A51B6F565A00B5E416 /* GameWin.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameWin.cpp; sourceTree = "<group>"; };
 		ECE0D6A61B6F565A00B5E416 /* GameWin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameWin.h; sourceTree = "<group>"; };
-		ECE0D6A71B6F565A00B5E416 /* ShopUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ShopUI.cpp; sourceTree = "<group>"; };
-		ECE0D6A81B6F565A00B5E416 /* ShopUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopUI.h; sourceTree = "<group>"; };
+		ECE0D6A71B6F565A00B5E416 /* ShopPopUpUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ShopPopUpUI.cpp; sourceTree = "<group>"; };
+		ECE0D6A81B6F565A00B5E416 /* ShopPopUpUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopPopUpUI.h; sourceTree = "<group>"; };
 		ECF82B161B67661600C8095A /* 7x7-1.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "7x7-1.tmx"; sourceTree = "<group>"; };
 		ECF82B191B6771FE00C8095A /* 7x7-2.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "7x7-2.tmx"; sourceTree = "<group>"; };
 		ECF82B1C1B67795200C8095A /* 7x7-3.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "7x7-3.tmx"; sourceTree = "<group>"; };
@@ -1039,6 +1041,8 @@
 		5542EED31B395E1300CD9496 /* textures */ = {
 			isa = PBXGroup;
 			children = (
+				EC177F761B737DB90059519B /* btn_heart5_normal.png */,
+				EC177F771B737DB90059519B /* btn_heart5_press.png */,
 				EC1969601B7209BA002AECA7 /* btn_comment_normal.png */,
 				EC1969611B7209BA002AECA7 /* btn_comment_press.png */,
 				EC19695C1B720589002AECA7 /* btn_sounds_off.png */,
@@ -1105,8 +1109,6 @@
 		55781EF51B393D370070BB08 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				EC721EF81B6F8DD80073B845 /* ShopScene.cpp */,
-				EC721EF91B6F8DD80073B845 /* ShopScene.h */,
 				55781EF61B393D6F0070BB08 /* LogoScene.cpp */,
 				55781EF71B393D6F0070BB08 /* LogoScene.h */,
 				5542EEB41B3942FE00CD9496 /* MenuScene.cpp */,
@@ -1207,20 +1209,20 @@
 		ECE0D6611B6F04A600B5E416 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				EC1969681B720CB2002AECA7 /* StartUI.cpp */,
+				EC177F6F1B73580D0059519B /* BasePopUpUI.cpp */,
+				EC177F701B73580D0059519B /* BasePopUpUI.h */,
+				EC1969681B720CB2002AECA7 /* StarPopUpUI.cpp */,
 				EC1969531B71A7BB002AECA7 /* GameUI.cpp */,
 				EC1969541B71A7BB002AECA7 /* GameUI.h */,
-				EC66AD5A1B70AC7F00FFB244 /* BaseUI.cpp */,
-				EC66AD5B1B70AC7F00FFB244 /* BaseUI.h */,
-				EC66AD561B70A99D00FFB244 /* StartUI.h */,
+				EC66AD561B70A99D00FFB244 /* StarPopUpUI.h */,
 				ECE0D6A11B6F565A00B5E416 /* DeathUI.cpp */,
 				ECE0D6A21B6F565A00B5E416 /* DeathUI.h */,
 				ECE0D6A31B6F565A00B5E416 /* GameLose.h */,
 				ECE0D6A41B6F565A00B5E416 /* GameLose.cpp */,
 				ECE0D6A51B6F565A00B5E416 /* GameWin.cpp */,
 				ECE0D6A61B6F565A00B5E416 /* GameWin.h */,
-				ECE0D6A71B6F565A00B5E416 /* ShopUI.cpp */,
-				ECE0D6A81B6F565A00B5E416 /* ShopUI.h */,
+				ECE0D6A71B6F565A00B5E416 /* ShopPopUpUI.cpp */,
+				ECE0D6A81B6F565A00B5E416 /* ShopPopUpUI.h */,
 				ECE0D6621B6F04A600B5E416 /* MainUI.cpp */,
 				ECE0D6631B6F04A600B5E416 /* MainUI.h */,
 			);
@@ -1350,6 +1352,7 @@
 				55B0BF7B1B6346D00012DDC2 /* cloud.c3b in Resources */,
 				ECF82B171B67661600C8095A /* 7x7-1.tmx in Resources */,
 				5087E78117EB970100C73F5D /* Icon-120.png in Resources */,
+				EC177F791B737DB90059519B /* btn_heart5_press.png in Resources */,
 				EC19695F1B720589002AECA7 /* btn_sounds_on.png in Resources */,
 				55EB5C291B6F1C08005BD1A4 /* pickupgold.wav in Resources */,
 				ECF82B231B6792FA00C8095A /* 7x7-5.tmx in Resources */,
@@ -1482,6 +1485,7 @@
 				EC5C99121B65CB8300EC0177 /* 6x6-7.tmx in Resources */,
 				EC0A158C1B7083DE0094AE6D /* btn_coins01_normal.png in Resources */,
 				EC1969631B7209BA002AECA7 /* btn_comment_press.png in Resources */,
+				EC177F781B737DB90059519B /* btn_heart5_normal.png in Resources */,
 				521A8E6419F0C34300D177D7 /* Default-667h@2x.png in Resources */,
 				55EB5C2F1B6F3DF4005BD1A4 /* checkpoint.wav in Resources */,
 				5510DE791B6B7C5600C2FB15 /* platform5.c3b in Resources */,
@@ -1496,6 +1500,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC177F7A1B737E150059519B /* btn_heart5_normal.png in Resources */,
+				EC177F7B1B737E150059519B /* btn_heart5_press.png in Resources */,
 				556520E81B732A9C00B7447F /* sea1.c3b in Resources */,
 				556520E91B732A9C00B7447F /* sea1.png in Resources */,
 				556520EA1B732A9C00B7447F /* sea2.c3b in Resources */,
@@ -1651,6 +1657,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				55066CD11B4BAB4E007FCF3F /* BaseEffect3D.cpp in Sources */,
+				EC177F711B73580D0059519B /* BasePopUpUI.cpp in Sources */,
 				46880B8819C43A87006E1F66 /* AppDelegate.cpp in Sources */,
 				ECE0D6AA1B6F565A00B5E416 /* GameLose.cpp in Sources */,
 				5542EEB61B3942FE00CD9496 /* MenuScene.cpp in Sources */,
@@ -1669,7 +1676,7 @@
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				551350B51B62755A00A99AD7 /* AlisaMethod.cpp in Sources */,
 				ECE0D6AB1B6F565A00B5E416 /* GameWin.cpp in Sources */,
-				ECE0D6AC1B6F565A00B5E416 /* ShopUI.cpp in Sources */,
+				ECE0D6AC1B6F565A00B5E416 /* ShopPopUpUI.cpp in Sources */,
 				55C8908E1B46B3C8009AF1DA /* Player.cpp in Sources */,
 				ECE0D6641B6F04A600B5E416 /* MainUI.cpp in Sources */,
 				5535FC131B47B88D00197B27 /* GameController.cpp in Sources */,
@@ -1678,13 +1685,11 @@
 				5579F74D1B68DBC5006861F1 /* Decorator.cpp in Sources */,
 				5592AE0F1B5F2CFB0062AF08 /* RunController.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
-				EC1969691B720CB2002AECA7 /* StartUI.cpp in Sources */,
+				EC1969691B720CB2002AECA7 /* StarPopUpUI.cpp in Sources */,
 				5542EEBC1B3943C600CD9496 /* GameScene.cpp in Sources */,
-				EC721EFA1B6F8DD80073B845 /* ShopScene.cpp in Sources */,
 				55CED79E1B72555F0050F69F /* RibbonTrail.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
 				ECE0D6A91B6F565A00B5E416 /* DeathUI.cpp in Sources */,
-				EC66AD5C1B70AC7F00FFB244 /* BaseUI.cpp in Sources */,
 				55C7F2191B3AE6DB0046B048 /* GroundLayer.cpp in Sources */,
 				5592AE151B5F4AF90062AF08 /* Runner.cpp in Sources */,
 			);
@@ -1694,15 +1699,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC177F721B7361250059519B /* BasePopUpUI.cpp in Sources */,
 				55CED79F1B72556A0050F69F /* RibbonTrail.cpp in Sources */,
-				EC19696A1B720E69002AECA7 /* StartUI.cpp in Sources */,
+				EC19696A1B720E69002AECA7 /* StarPopUpUI.cpp in Sources */,
 				EC1969561B71AD30002AECA7 /* GameUI.cpp in Sources */,
-				EC66AD5D1B70B01800FFB244 /* BaseUI.cpp in Sources */,
 				EC721EFD1B6F8E370073B845 /* DeathUI.cpp in Sources */,
 				EC721EFE1B6F8E370073B845 /* GameLose.cpp in Sources */,
 				EC721EFF1B6F8E370073B845 /* GameWin.cpp in Sources */,
-				EC721F001B6F8E370073B845 /* ShopUI.cpp in Sources */,
-				EC721F011B6F8E370073B845 /* ShopScene.cpp in Sources */,
+				EC721F001B6F8E370073B845 /* ShopPopUpUI.cpp in Sources */,
 				ECE0D6811B6F168D00B5E416 /* MainUI.cpp in Sources */,
 				5579F75A1B68FD18006861F1 /* Decorator.cpp in Sources */,
 				551350B61B62756200A99AD7 /* AlisaMethod.cpp in Sources */,

@@ -15,7 +15,7 @@ USING_NS_CC;
 GameUI* GameUI::create()
 {
     GameUI *pRet = new(std::nothrow) GameUI();
-    if (pRet )
+    if (pRet&& pRet->init() )
     {
         pRet->autorelease();
         return pRet;
@@ -31,15 +31,7 @@ GameUI::GameUI()
 GameUI::~GameUI()
 {
 }
-void GameUI::onEnter()
-{
-    BaseUI::onEnter();
-    init();
-}
-void GameUI::onExit()
-{
-    BaseUI::onExit();
-}
+
 bool GameUI::init()
 {
 
@@ -49,28 +41,28 @@ bool GameUI::init()
     ui::ImageView* glodView = ui::ImageView::create("ui_gold.png");
     glodView->setPosition(Vec2(size.width*0.1, size.height*0.92));
     glodView->setScale(scale);
-    m_uiLayer->addChild(glodView);
+    addChild(glodView);
     
      goldTv = ui::Text::create(StringUtils::format("%d",Value(localStorageGetItem(USER_GOLD_NUM)).asInt()), FONT_FXZS, 35);
     goldTv->setPosition(Vec2(size.width*0.1+glodView->getContentSize().width*scale+8*scale, size.height*0.92));
     goldTv->setScale(scale);
-    m_uiLayer->addChild(goldTv);
+    addChild(goldTv);
     
     ui::ImageView* heartView = ui::ImageView::create("ui_heart.png");
     heartView->setPosition(Vec2(size.width*0.8, size.height*0.92));
     heartView->setScale(scale);
-    m_uiLayer->addChild(heartView);
+    addChild(heartView);
     
      heartTv = ui::Text::create(StringUtils::format("%d",Value(localStorageGetItem(USER_HEART_NUM)).asInt()), FONT_FXZS, 35);
     heartTv->setPosition(Vec2(size.width*0.8+heartView->getContentSize().width*scale+8*scale, size.height*0.92));
     heartTv->setScale(scale);
-    m_uiLayer->addChild(heartTv);
+    addChild(heartTv);
     
     
      gameScoreTv = ui::Text::create(StringUtils::format(UtilityHelper::getLocalString("GAME_SCORE").c_str(),Value(localStorageGetItem(USER_LAST_LEVEL)).asInt()), FONT_FXZS, 35);
     gameScoreTv->setPosition(Vec2(size.width*0.5, size.height*0.92));
     gameScoreTv->setScale(scale);
-    m_uiLayer->addChild(gameScoreTv);
+    addChild(gameScoreTv);
 
     return true;
 }
