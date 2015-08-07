@@ -12,6 +12,7 @@
 #include "GameConst.h"
 #include "GameScene.h"
 #include "MenuScene.h"
+#include "UIManager.h"
 #include "storage/local-storage/LocalStorage.h"
 #include "Particle3D/CCParticleSystem3D.h"
 #include "Particle3D/PU/CCPUParticleSystem3D.h"
@@ -41,7 +42,7 @@ RunController::RunController()
     m_pWhiteLayer   = nullptr;
     m_bInMazeJump   = false;
     m_GameState = RGS_FROZEN;
-    m_gameUI = nullptr;
+    
 }
 RunController::~RunController()
 {
@@ -69,8 +70,8 @@ bool RunController::init(Layer* pMainLayer)
     m_randomColor6 = UtilityHelper::randompurpleColor();
     m_sameColor = UtilityHelper::randomColor();
     
-    m_gameUI =GameUI::create();
-    m_pMainLayer->addChild(m_gameUI);
+
+    
     m_pWhiteLayer = LayerColor::create(Color4B::WHITE);
     if(!m_pWhiteLayer)
         return false;
@@ -122,16 +123,20 @@ bool RunController::init(Layer* pMainLayer)
     DirectionLight* directionLight = DirectionLight::create(Vec3(-2, -4, -3), Color3B(158, 158, 158));
     m_pMainLayer->addChild(directionLight);
     
-    cocos2d::ui::Button* button = cocos2d::ui::Button::create("button_retry_up.png",
-                                                              "button_retry_down.png");
-    button->setPosition(Vec2(size.width * 0.8f, size.height * 0.8f));
-    button->setPressedActionEnabled(true);
-    button->addClickEventListener([=](Ref* sender){
-        auto scene = MainScene::createScene();
-        Director::getInstance()->replaceScene(scene);
-    });
-    m_pMainLayer->addChild(button);
+//    cocos2d::ui::Button* button = cocos2d::ui::Button::create("button_retry_up.png",
+//                                                              "button_retry_down.png");
+//    button->setPosition(Vec2(size.width * 0.8f, size.height * 0.8f));
+//    button->setPressedActionEnabled(true);
+//    button->addClickEventListener([=](Ref* sender){
+////        auto scene = MainScene::createScene();
+////        Director::getInstance()->replaceScene(scene);
+//        CCLOG("sdsd");
+//    });
+//    m_pMainLayer->addChild(button);
     
+    
+    UIManager::getInstance()->init(m_pMainLayer);
+    UIManager::getInstance()->showInfo(true);
     setGameState(RGS_FROZEN);
     return true;
 }
@@ -163,6 +168,7 @@ void RunController::update(float delta)
 }
 void RunController::destroy()
 {
+    UIManager::getInstance()->destory();
     m_pMainLayer->removeAllChildren();
     m_pMainLayer = nullptr;
 }
@@ -180,7 +186,6 @@ void RunController::setGameState(RunnerGameState state)
                 {
                     CCLOG("gameOver");
                     //setDifficultLevel(0);
-                    m_gameUI->setGameMessage(GameUI::UIMessage::GU_RUN_LOSE);
                 }
                 break;
             default:

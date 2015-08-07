@@ -70,13 +70,13 @@ void GameScene::update(float delta)
 void GameScene::gameWin()
 {
     CCLOG("gameWin");
-    GameController::getInstance()->getGameUiLayer()->setGameMessage(GameUI::UIMessage::GU_GROUND_WIN);
+    
 
 }
 void GameScene::gameLose()
 {
     CCLOG("gameLose");
-    GameController::getInstance()->getGameUiLayer()->setGameMessage(GameUI::UIMessage::GU_GROUND_LOST);
+   
 }
 void GameScene::gameRecordEnd()
 {

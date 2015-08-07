@@ -803,19 +803,19 @@ void GroundLayer::decoratorOpe(Node* node,GroundCell* cell)
                 case Decorator::DecoratorType::DT_GOLD:
                 {
                 localStorageSetItem(USER_GOLD_NUM, Value(Value(localStorageGetItem(USER_GOLD_NUM)).asInt()+1).asString());
-                    GameController::getInstance()->getGameUiLayer()->setGameMessage(GameUI::UIMessage::GU_ADD_GOLD);
+                    
                 }
                     break;
                 case Decorator::DecoratorType::DT_HEART:
                 {
                     localStorageSetItem(USER_HEART_NUM, Value(Value(localStorageGetItem(USER_HEART_NUM)).asInt()+1).asString());
-                    GameController::getInstance()->getGameUiLayer()->setGameMessage(GameUI::UIMessage::GU_ADD_GOLD);
+                    
                 }
                     break;
                 case Decorator::DecoratorType::DT_GOLD_BIG:
                 {
                   localStorageSetItem(USER_GOLD_NUM, Value(Value(localStorageGetItem(USER_GOLD_NUM)).asInt()+5).asString());
-                  GameController::getInstance()->getGameUiLayer()->setGameMessage(GameUI::UIMessage::GU_ADD_GOLD);
+                  
                 }
 
                     break;

@@ -10,7 +10,7 @@
 #include "MainUI.h"
 #include "MainScene.h"
 #include "GameConst.h"
-#include "StarPopUpUI.h"
+#include "UIManager.h"
 #include "storage/local-storage/LocalStorage.h"
 USING_NS_CC;
 
@@ -53,8 +53,6 @@ bool MenuScene::init()
     }
     this->setAnchorPoint(Vec2::ZERO);
     
-    auto mainUi = MainUI::create();
-    addChild(mainUi);
     
     m_pWhiteLayer = LayerColor::create(Color4B::WHITE);
     if(!m_pWhiteLayer)
@@ -180,11 +178,15 @@ bool MenuScene::init()
 void MenuScene::onEnter()
 {
     Layer::onEnter();
+    
+    UIManager::getInstance()->init(this);
+    UIManager::getInstance()->setGameUi(UIManager::UI_MAIN);
     scheduleUpdate();
 }
 void MenuScene::onExit()
 {
     unscheduleUpdate();
+    UIManager::getInstance()->destory();
     Layer::onExit();
 }
 void MenuScene::update(float delta)
@@ -223,8 +225,8 @@ void MenuScene::startGame()
 {
     int maxLevel = Value(localStorageGetItem(USER_MAX_LEVEL)).asInt();
     if (maxLevel > 0) {
-        auto startPopUpUi = StarPopUpUI::create();
-        startPopUpUi->showPopUp(this);
+        UIManager::getInstance()->addPopUp(BasePopUpUI::POPUP_START);
+        UIManager::getInstance()->showPopUp();
     }else
     {
         if(m_pWhiteLayer)

@@ -11,7 +11,7 @@
 #include "cocos2d.h"
 #include "ui/CocosGUI.h"
 
-class MainUI : public cocos2d::ui::Layout
+class MainUI : public cocos2d::Layer
 {
 protected:
     MainUI();

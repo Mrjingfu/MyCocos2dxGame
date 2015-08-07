@@ -10,6 +10,7 @@
 #include "GameConst.h"
 #include "MainScene.h"
 #include "StarPopUpUI.h"
+#include "UIManager.h"
 #include "storage/local-storage/LocalStorage.h"
 USING_NS_CC;
 
@@ -78,6 +79,9 @@ bool MainUI::init()
 void MainUI::onShop(cocos2d::Ref *ref)
 {
     CCLOG("Shop");
+    UIManager::getInstance()->addPopUp(BasePopUpUI::POPUP_SHOP);
+    UIManager::getInstance()->showPopUp(BasePopUpUI::POPUP_HORIZONTAL);
+    UIManager::getInstance()->showInfo(true);
 }
 void MainUI::onRank(cocos2d::Ref *ref)
 {
