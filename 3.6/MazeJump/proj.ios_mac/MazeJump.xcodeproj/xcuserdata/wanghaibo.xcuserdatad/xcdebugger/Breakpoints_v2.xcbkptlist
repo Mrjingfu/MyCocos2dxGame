@@ -15,7 +15,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "16"
             endingLineNumber = "16"
-            landmarkName = "GroundCell::create(int level)"
+            landmarkName = "GroundCell::create(int level,CellType type)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -31,7 +31,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "17"
             endingLineNumber = "17"
-            landmarkName = "GroundCell::create(int level)"
+            landmarkName = "GroundCell::create(int level,CellType type)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -873,7 +873,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "67"
             endingLineNumber = "67"
-            landmarkName = "OutlineEffect3D::drawWithSprite3D(EffectSprite3D* sprite, const cocos2d::Mat4 &amp;transform)"
+            landmarkName = "OutlineEffect3D::drawWithSprite3D(EffectSprite3D* sprite, cocos2d::Renderer *renderer, const cocos2d::Mat4 &amp;transform, uint32_t flags)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1012,7 +1012,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites/EffectSprite3D.cpp"
-            timestampString = "459084131.891206"
+            timestampString = "460612708.648883"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "135"
@@ -1044,7 +1044,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites/EffectSprite3D.cpp"
-            timestampString = "459084131.891206"
+            timestampString = "460612708.648883"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "132"
@@ -1092,7 +1092,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites/EffectSprite3D.cpp"
-            timestampString = "459084131.891206"
+            timestampString = "460612708.648883"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "134"
@@ -1194,22 +1194,6 @@
             startingLineNumber = "51"
             endingLineNumber = "51"
             landmarkName = "FogEffect3D::drawWithSprite3D(EffectSprite3D* sprite, const cocos2d::Mat4 &amp;transform)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../Classes/Sprites/EffectSprite3D.cpp"
-            timestampString = "459084131.891206"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "126"
-            endingLineNumber = "126"
-            landmarkName = "EffectSprite3D::draw(cocos2d::Renderer *renderer, const cocos2d::Mat4 &amp;transform, uint32_t flags)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1380,11 +1364,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Controllers/RunController.cpp"
-            timestampString = "460568319.662878"
+            timestampString = "460632261.252429"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "112"
-            endingLineNumber = "112"
+            startingLineNumber = "116"
+            endingLineNumber = "116"
             landmarkName = "RunController::init(Layer* pMainLayer)"
             landmarkType = "5">
          </BreakpointContent>
@@ -1396,11 +1380,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Controllers/RunController.cpp"
-            timestampString = "460568319.662878"
+            timestampString = "460632261.252429"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "113"
-            endingLineNumber = "113"
+            startingLineNumber = "117"
+            endingLineNumber = "117"
             landmarkName = "RunController::init(Layer* pMainLayer)"
             landmarkType = "5">
          </BreakpointContent>
@@ -1460,11 +1444,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites/Runner.cpp"
-            timestampString = "460553544.036711"
+            timestampString = "460639773.891239"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "307"
-            endingLineNumber = "307"
+            startingLineNumber = "383"
+            endingLineNumber = "383"
             landmarkName = "Runner::onEnterMoveDrop()"
             landmarkType = "5">
          </BreakpointContent>
@@ -1476,11 +1460,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites/Runner.cpp"
-            timestampString = "460553544.036711"
+            timestampString = "460639773.891239"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "342"
-            endingLineNumber = "342"
+            startingLineNumber = "422"
+            endingLineNumber = "422"
             landmarkName = "Runner::checkSafe()"
             landmarkType = "5">
          </BreakpointContent>
@@ -1540,7 +1524,23 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Layers/TerrainPatternLayer.cpp"
-            timestampString = "460568319.662878"
+            timestampString = "460630414.63239"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "180"
+            endingLineNumber = "180"
+            landmarkName = "TerrainPatternLayer::checkRunnerDrop()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/Layers/TerrainPatternLayer.cpp"
+            timestampString = "460630414.63239"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "182"
@@ -1556,27 +1556,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Layers/TerrainPatternLayer.cpp"
-            timestampString = "460568319.662878"
+            timestampString = "460630414.63239"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "184"
-            endingLineNumber = "184"
-            landmarkName = "TerrainPatternLayer::checkRunnerDrop()"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../Classes/Layers/TerrainPatternLayer.cpp"
-            timestampString = "460568319.662878"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "192"
-            endingLineNumber = "192"
+            startingLineNumber = "190"
+            endingLineNumber = "190"
             landmarkName = "TerrainPatternLayer::checkRunnerDrop()"
             landmarkType = "5">
          </BreakpointContent>
@@ -1588,11 +1572,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites/Runner.cpp"
-            timestampString = "460553544.036711"
+            timestampString = "460633340.668719"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "160"
-            endingLineNumber = "160"
+            startingLineNumber = "218"
+            endingLineNumber = "218"
             landmarkName = "Runner::onEnterIdle()"
             landmarkType = "5">
          </BreakpointContent>
@@ -1604,11 +1588,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites/Runner.cpp"
-            timestampString = "460553544.036711"
+            timestampString = "460633340.668719"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "154"
-            endingLineNumber = "154"
+            startingLineNumber = "212"
+            endingLineNumber = "212"
             landmarkName = "Runner::onEnterIdle()"
             landmarkType = "5">
          </BreakpointContent>
@@ -1620,11 +1604,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites/Runner.cpp"
-            timestampString = "460553544.036711"
+            timestampString = "460633340.668719"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "155"
-            endingLineNumber = "155"
+            startingLineNumber = "213"
+            endingLineNumber = "213"
             landmarkName = "Runner::onEnterIdle()"
             landmarkType = "5">
          </BreakpointContent>
@@ -1636,11 +1620,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Layers/TerrainPatternLayer.cpp"
-            timestampString = "460568319.662878"
+            timestampString = "460630414.63239"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "187"
-            endingLineNumber = "187"
+            startingLineNumber = "185"
+            endingLineNumber = "185"
             landmarkName = "TerrainPatternLayer::checkRunnerDrop()"
             landmarkType = "5">
          </BreakpointContent>
@@ -1652,11 +1636,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Layers/TerrainPatternLayer.cpp"
-            timestampString = "460568319.662878"
+            timestampString = "460630414.63239"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "101"
-            endingLineNumber = "101"
+            startingLineNumber = "99"
+            endingLineNumber = "99"
             landmarkName = "TerrainPatternLayer::init(int index, bool generateCheckPoint)"
             landmarkType = "5">
          </BreakpointContent>
@@ -1716,11 +1700,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites/Runner.cpp"
-            timestampString = "460553544.036711"
+            timestampString = "460633340.668719"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "79"
-            endingLineNumber = "79"
+            startingLineNumber = "137"
+            endingLineNumber = "137"
             landmarkName = "Runner::getModifyAABB()"
             landmarkType = "5">
          </BreakpointContent>
@@ -1732,11 +1716,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Controllers/RunController.cpp"
-            timestampString = "460568319.662878"
+            timestampString = "460632261.252429"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "86"
-            endingLineNumber = "86"
+            startingLineNumber = "89"
+            endingLineNumber = "89"
             landmarkName = "RunController::init(Layer* pMainLayer)"
             landmarkType = "5">
          </BreakpointContent>
@@ -1748,11 +1732,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Controllers/RunController.cpp"
-            timestampString = "460568770.148719"
+            timestampString = "460641819.089162"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "308"
-            endingLineNumber = "308"
+            startingLineNumber = "346"
+            endingLineNumber = "346"
             landmarkName = "RunController::updateCloud()"
             landmarkType = "5">
          </BreakpointContent>
@@ -1764,11 +1748,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Controllers/RunController.cpp"
-            timestampString = "460568770.148719"
+            timestampString = "460643377.032196"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "382"
-            endingLineNumber = "382"
+            startingLineNumber = "495"
+            endingLineNumber = "495"
             landmarkName = "RunController::getRandomColorByIndex(int index)"
             landmarkType = "5">
          </BreakpointContent>
@@ -1780,11 +1764,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Controllers/RunController.cpp"
-            timestampString = "460568770.148719"
+            timestampString = "460641819.089162"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "322"
-            endingLineNumber = "322"
+            startingLineNumber = "360"
+            endingLineNumber = "360"
             landmarkName = "RunController::updateCloud()"
             landmarkType = "5">
          </BreakpointContent>
@@ -1796,11 +1780,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Controllers/RunController.cpp"
-            timestampString = "460568770.148719"
+            timestampString = "460643377.032196"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "382"
-            endingLineNumber = "382"
+            startingLineNumber = "495"
+            endingLineNumber = "495"
             landmarkName = "RunController::getRandomColorByIndex(int index)"
             landmarkType = "5">
          </BreakpointContent>
@@ -1812,11 +1796,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Controllers/RunController.cpp"
-            timestampString = "460568770.148719"
+            timestampString = "460643377.032196"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "381"
-            endingLineNumber = "381"
+            startingLineNumber = "494"
+            endingLineNumber = "494"
             landmarkName = "RunController::getRandomColorByIndex(int index)"
             landmarkType = "5">
          </BreakpointContent>
@@ -1828,11 +1812,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Controllers/RunController.cpp"
-            timestampString = "460568770.148719"
+            timestampString = "460643377.032196"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "395"
-            endingLineNumber = "395"
+            startingLineNumber = "508"
+            endingLineNumber = "508"
             landmarkName = "RunController::getRandomColorByIndex(int index)"
             landmarkType = "5">
          </BreakpointContent>
@@ -1844,11 +1828,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Controllers/RunController.cpp"
-            timestampString = "460568770.148719"
+            timestampString = "460641819.089162"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "261"
-            endingLineNumber = "261"
+            startingLineNumber = "296"
+            endingLineNumber = "296"
             landmarkName = "RunController::switchToMenuScene()"
             landmarkType = "5">
          </BreakpointContent>
@@ -2020,23 +2004,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Layers/TerrainPatternLayer.cpp"
-            timestampString = "460568319.662878"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "206"
-            endingLineNumber = "206"
-            landmarkName = "TerrainPatternLayer::beginCollapse()"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../Classes/Layers/TerrainPatternLayer.cpp"
-            timestampString = "460568319.662878"
+            timestampString = "460630414.63239"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "204"
@@ -2051,12 +2019,28 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../Classes/Controllers/RunController.cpp"
-            timestampString = "460568770.148719"
+            filePath = "../Classes/Layers/TerrainPatternLayer.cpp"
+            timestampString = "460630414.63239"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "408"
-            endingLineNumber = "408"
+            startingLineNumber = "202"
+            endingLineNumber = "202"
+            landmarkName = "TerrainPatternLayer::beginCollapse()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/Controllers/RunController.cpp"
+            timestampString = "460643377.032196"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "521"
+            endingLineNumber = "521"
             landmarkName = "RunController::getRandomColorByIndex(int index)"
             landmarkType = "5">
          </BreakpointContent>
@@ -2068,11 +2052,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Controllers/RunController.cpp"
-            timestampString = "460568770.148719"
+            timestampString = "460643377.032196"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "382"
-            endingLineNumber = "382"
+            startingLineNumber = "495"
+            endingLineNumber = "495"
             landmarkName = "RunController::getRandomColorByIndex(int index)"
             landmarkType = "5">
          </BreakpointContent>
@@ -2084,11 +2068,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Controllers/RunController.cpp"
-            timestampString = "460568770.148719"
+            timestampString = "460643377.032196"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "396"
-            endingLineNumber = "396"
+            startingLineNumber = "509"
+            endingLineNumber = "509"
             landmarkName = "RunController::getRandomColorByIndex(int index)"
             landmarkType = "5">
          </BreakpointContent>
@@ -2100,11 +2084,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Controllers/RunController.cpp"
-            timestampString = "460568770.148719"
+            timestampString = "460643377.032196"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "383"
-            endingLineNumber = "383"
+            startingLineNumber = "496"
+            endingLineNumber = "496"
             landmarkName = "RunController::getRandomColorByIndex(int index)"
             landmarkType = "5">
          </BreakpointContent>
@@ -2116,11 +2100,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Controllers/RunController.cpp"
-            timestampString = "460568770.148719"
+            timestampString = "460643377.032196"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "388"
-            endingLineNumber = "388"
+            startingLineNumber = "501"
+            endingLineNumber = "501"
             landmarkName = "RunController::getRandomColorByIndex(int index)"
             landmarkType = "5">
          </BreakpointContent>
@@ -2132,11 +2116,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Controllers/RunController.cpp"
-            timestampString = "460568770.148719"
+            timestampString = "460643377.032196"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "401"
-            endingLineNumber = "401"
+            startingLineNumber = "514"
+            endingLineNumber = "514"
             landmarkName = "RunController::getRandomColorByIndex(int index)"
             landmarkType = "5">
          </BreakpointContent>
@@ -2148,11 +2132,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Controllers/RunController.cpp"
-            timestampString = "460568770.148719"
+            timestampString = "460643377.032196"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "414"
-            endingLineNumber = "414"
+            startingLineNumber = "527"
+            endingLineNumber = "527"
             landmarkName = "RunController::getRandomColorByIndex(int index)"
             landmarkType = "5">
          </BreakpointContent>
@@ -2164,11 +2148,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites/Runner.cpp"
-            timestampString = "460553544.036711"
+            timestampString = "460633340.668719"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "84"
-            endingLineNumber = "84"
+            startingLineNumber = "142"
+            endingLineNumber = "142"
             landmarkName = "Runner::setState(RunnerState state)"
             landmarkType = "5">
          </BreakpointContent>
@@ -2180,11 +2164,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Layers/TerrainPatternLayer.cpp"
-            timestampString = "460568319.662878"
+            timestampString = "460630414.63239"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "175"
-            endingLineNumber = "175"
+            startingLineNumber = "173"
+            endingLineNumber = "173"
             landmarkName = "TerrainPatternLayer::checkRunnerDrop()"
             landmarkType = "5">
          </BreakpointContent>
@@ -2212,11 +2196,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites/Runner.cpp"
-            timestampString = "460553544.036711"
+            timestampString = "460640165.868734"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "344"
-            endingLineNumber = "344"
+            startingLineNumber = "428"
+            endingLineNumber = "428"
             landmarkName = "Runner::checkSafe()"
             landmarkType = "5">
          </BreakpointContent>
@@ -2228,11 +2212,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites/Runner.cpp"
-            timestampString = "460544257.105868"
+            timestampString = "460633340.668719"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "46"
-            endingLineNumber = "46"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
             landmarkName = "Runner::update(float delta)"
             landmarkType = "5">
          </BreakpointContent>
@@ -2290,11 +2274,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Layers/TerrainPatternLayer.cpp"
-            timestampString = "460568319.662878"
+            timestampString = "460630414.63239"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "437"
-            endingLineNumber = "437"
+            startingLineNumber = "436"
+            endingLineNumber = "436"
             landmarkName = "TerrainPatternLayer::generateDecorator(TerrainCell* cell, int patternIndex)"
             landmarkType = "5">
          </BreakpointContent>
@@ -2370,11 +2354,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Controllers/RunController.cpp"
-            timestampString = "460568770.148719"
+            timestampString = "460641819.089162"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "188"
-            endingLineNumber = "188"
+            startingLineNumber = "223"
+            endingLineNumber = "223"
             landmarkName = "RunController::setGameState(RunnerGameState state)"
             landmarkType = "5">
          </BreakpointContent>
@@ -2386,11 +2370,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Layers/TerrainPatternLayer.cpp"
-            timestampString = "460568319.662878"
+            timestampString = "460630414.63239"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "287"
-            endingLineNumber = "287"
+            startingLineNumber = "285"
+            endingLineNumber = "285"
             landmarkName = "TerrainPatternLayer::checkCollisionDecorator()"
             landmarkType = "5">
          </BreakpointContent>
@@ -2402,7 +2386,23 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Layers/TerrainPatternLayer.cpp"
-            timestampString = "460568319.662878"
+            timestampString = "460630414.63239"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "223"
+            endingLineNumber = "223"
+            landmarkName = "TerrainPatternLayer::checkCollisionDecorator()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/Layers/TerrainPatternLayer.cpp"
+            timestampString = "460630414.63239"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "225"
@@ -2418,11 +2418,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Layers/TerrainPatternLayer.cpp"
-            timestampString = "460568319.662878"
+            timestampString = "460630414.63239"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "227"
-            endingLineNumber = "227"
+            startingLineNumber = "222"
+            endingLineNumber = "222"
             landmarkName = "TerrainPatternLayer::checkCollisionDecorator()"
             landmarkType = "5">
          </BreakpointContent>
@@ -2434,11 +2434,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Layers/TerrainPatternLayer.cpp"
-            timestampString = "460568319.662878"
+            timestampString = "460630414.63239"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "224"
-            endingLineNumber = "224"
+            startingLineNumber = "257"
+            endingLineNumber = "257"
             landmarkName = "TerrainPatternLayer::checkCollisionDecorator()"
             landmarkType = "5">
          </BreakpointContent>
@@ -2450,27 +2450,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Layers/TerrainPatternLayer.cpp"
-            timestampString = "460568319.662878"
+            timestampString = "460630414.63239"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "259"
-            endingLineNumber = "259"
-            landmarkName = "TerrainPatternLayer::checkCollisionDecorator()"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../Classes/Layers/TerrainPatternLayer.cpp"
-            timestampString = "460568319.662878"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "235"
-            endingLineNumber = "235"
+            startingLineNumber = "233"
+            endingLineNumber = "233"
             landmarkName = "TerrainPatternLayer::checkCollisionDecorator()"
             landmarkType = "5">
          </BreakpointContent>
@@ -2609,11 +2593,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Layers/TerrainPatternLayer.cpp"
-            timestampString = "460568319.662878"
+            timestampString = "460630414.63239"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "276"
-            endingLineNumber = "276"
+            startingLineNumber = "274"
+            endingLineNumber = "274"
             landmarkName = "TerrainPatternLayer::checkCollisionDecorator()"
             landmarkType = "5">
          </BreakpointContent>
@@ -2641,11 +2625,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Controllers/RunController.cpp"
-            timestampString = "460568770.148719"
+            timestampString = "460641819.089162"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "162"
-            endingLineNumber = "162"
+            startingLineNumber = "186"
+            endingLineNumber = "186"
             landmarkName = "RunController::update(float delta)"
             landmarkType = "5">
          </BreakpointContent>
@@ -2689,7 +2673,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Scenes/MainScene.cpp"
-            timestampString = "460267404.639928"
+            timestampString = "460626325.762521"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "58"
@@ -2705,7 +2689,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Scenes/MainScene.cpp"
-            timestampString = "460267404.639928"
+            timestampString = "460626325.762521"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "59"
@@ -2785,11 +2769,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Controllers/RunController.cpp"
-            timestampString = "460568770.148719"
+            timestampString = "460641819.089162"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "224"
-            endingLineNumber = "224"
+            startingLineNumber = "259"
+            endingLineNumber = "259"
             landmarkName = "RunController::cameraTrackPlayer()"
             landmarkType = "5">
          </BreakpointContent>
@@ -2801,11 +2785,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Layers/TerrainPatternLayer.cpp"
-            timestampString = "460568319.662878"
+            timestampString = "460630414.63239"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "271"
-            endingLineNumber = "271"
+            startingLineNumber = "269"
+            endingLineNumber = "269"
             landmarkName = "TerrainPatternLayer::checkCollisionDecorator()"
             landmarkType = "5">
          </BreakpointContent>
@@ -2817,11 +2801,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Layers/TerrainPatternLayer.cpp"
-            timestampString = "460568319.662878"
+            timestampString = "460630414.63239"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "275"
-            endingLineNumber = "275"
+            startingLineNumber = "273"
+            endingLineNumber = "273"
             landmarkName = "TerrainPatternLayer::checkCollisionDecorator()"
             landmarkType = "5">
          </BreakpointContent>
@@ -2833,11 +2817,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites/Runner.cpp"
-            timestampString = "460553544.036711"
+            timestampString = "460640165.868734"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "358"
-            endingLineNumber = "358"
+            startingLineNumber = "443"
+            endingLineNumber = "443"
             landmarkName = "Runner::fadeIn()"
             landmarkType = "5">
          </BreakpointContent>
@@ -2849,11 +2833,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites/Runner.cpp"
-            timestampString = "460553544.036711"
+            timestampString = "460639773.891239"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "244"
-            endingLineNumber = "244"
+            startingLineNumber = "314"
+            endingLineNumber = "314"
             landmarkName = "Runner::onEnterMoveSuperJump()"
             landmarkType = "5">
          </BreakpointContent>
@@ -2865,11 +2849,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Controllers/RunController.cpp"
-            timestampString = "460568770.148719"
+            timestampString = "460636714.29264"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "158"
-            endingLineNumber = "158"
+            startingLineNumber = "183"
+            endingLineNumber = "183"
             landmarkName = "RunController::update(float delta)"
             landmarkType = "5">
          </BreakpointContent>
@@ -2881,11 +2865,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites/Runner.cpp"
-            timestampString = "460553544.036711"
+            timestampString = "460639773.891239"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "302"
-            endingLineNumber = "302"
+            startingLineNumber = "378"
+            endingLineNumber = "378"
             landmarkName = "Runner::onEnterMoveDrop()"
             landmarkType = "5">
          </BreakpointContent>
@@ -2897,11 +2881,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites/Runner.cpp"
-            timestampString = "460553544.036711"
+            timestampString = "460640165.868734"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "351"
-            endingLineNumber = "351"
+            startingLineNumber = "436"
+            endingLineNumber = "436"
             landmarkName = "Runner::fadeIn()"
             landmarkType = "5">
          </BreakpointContent>
@@ -2913,11 +2897,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites/Runner.cpp"
-            timestampString = "460544257.105868"
+            timestampString = "460633340.668719"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "50"
-            endingLineNumber = "50"
+            startingLineNumber = "67"
+            endingLineNumber = "67"
             landmarkName = "Runner::update(float delta)"
             landmarkType = "5">
          </BreakpointContent>
@@ -2929,11 +2913,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Controllers/RunController.h"
-            timestampString = "460106695.224028"
+            timestampString = "460625301.39614"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "35"
-            endingLineNumber = "35">
+            startingLineNumber = "36"
+            endingLineNumber = "36">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2943,11 +2927,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites/Decorator.cpp"
-            timestampString = "460112621.376283"
+            timestampString = "460643552.792717"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "72"
-            endingLineNumber = "72"
+            startingLineNumber = "74"
+            endingLineNumber = "74"
             landmarkName = "Decorator::create(DecoratorType type)"
             landmarkType = "5">
          </BreakpointContent>
@@ -2959,11 +2943,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites/Decorator.cpp"
-            timestampString = "460100725.620057"
+            timestampString = "460643552.792717"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "51"
-            endingLineNumber = "51"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
             landmarkName = "Decorator::create(DecoratorType type)"
             landmarkType = "5">
          </BreakpointContent>
@@ -2975,11 +2959,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites/Decorator.cpp"
-            timestampString = "460100725.620057"
+            timestampString = "460643552.792717"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "48"
-            endingLineNumber = "48"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
             landmarkName = "Decorator::create(DecoratorType type)"
             landmarkType = "5">
          </BreakpointContent>
@@ -2991,11 +2975,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Layers/TerrainPatternLayer.cpp"
-            timestampString = "460568319.662878"
+            timestampString = "460630414.63239"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "421"
-            endingLineNumber = "421"
+            startingLineNumber = "419"
+            endingLineNumber = "419"
             landmarkName = "TerrainPatternLayer::generateDecorator(TerrainCell* cell, int patternIndex)"
             landmarkType = "5">
          </BreakpointContent>
@@ -3023,11 +3007,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites/Decorator.cpp"
-            timestampString = "460112621.376283"
+            timestampString = "460643552.792717"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "99"
-            endingLineNumber = "99"
+            startingLineNumber = "109"
+            endingLineNumber = "109"
             landmarkName = "Decorator::update(float delta)"
             landmarkType = "5">
          </BreakpointContent>
@@ -3055,11 +3039,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites/Decorator.cpp"
-            timestampString = "460112621.376283"
+            timestampString = "460643552.792717"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "103"
-            endingLineNumber = "103"
+            startingLineNumber = "113"
+            endingLineNumber = "113"
             landmarkName = "Decorator::update(float delta)"
             landmarkType = "5">
          </BreakpointContent>
@@ -3071,11 +3055,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Layers/TerrainPatternLayer.cpp"
-            timestampString = "460568319.662878"
+            timestampString = "460630414.63239"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "126"
-            endingLineNumber = "126"
+            startingLineNumber = "124"
+            endingLineNumber = "124"
             landmarkName = "TerrainPatternLayer::update(float delta)"
             landmarkType = "5">
          </BreakpointContent>
@@ -3087,11 +3071,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Layers/TerrainPatternLayer.cpp"
-            timestampString = "460568319.662878"
+            timestampString = "460630414.63239"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "135"
-            endingLineNumber = "135"
+            startingLineNumber = "133"
+            endingLineNumber = "133"
             landmarkName = "TerrainPatternLayer::update(float delta)"
             landmarkType = "5">
          </BreakpointContent>
@@ -3119,11 +3103,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Layers/TerrainPatternLayer.cpp"
-            timestampString = "460568319.662878"
+            timestampString = "460630414.63239"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "132"
-            endingLineNumber = "132"
+            startingLineNumber = "130"
+            endingLineNumber = "130"
             landmarkName = "TerrainPatternLayer::update(float delta)"
             landmarkType = "5">
          </BreakpointContent>
@@ -3135,11 +3119,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Layers/TerrainPatternLayer.cpp"
-            timestampString = "460568319.662878"
+            timestampString = "460630414.63239"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "422"
-            endingLineNumber = "422"
+            startingLineNumber = "420"
+            endingLineNumber = "420"
             landmarkName = "TerrainPatternLayer::generateDecorator(TerrainCell* cell, int patternIndex)"
             landmarkType = "5">
          </BreakpointContent>
@@ -3167,11 +3151,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites/Decorator.cpp"
-            timestampString = "460113496.56717"
+            timestampString = "460643552.792717"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "116"
-            endingLineNumber = "116"
+            startingLineNumber = "135"
+            endingLineNumber = "135"
             landmarkName = "Decorator::update(float delta)"
             landmarkType = "5">
          </BreakpointContent>
@@ -3183,11 +3167,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Layers/TerrainPatternLayer.cpp"
-            timestampString = "460568319.662878"
+            timestampString = "460630414.63239"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "308"
-            endingLineNumber = "308"
+            startingLineNumber = "306"
+            endingLineNumber = "306"
             landmarkName = "TerrainPatternLayer::generatePlane()"
             landmarkType = "5">
          </BreakpointContent>
@@ -3199,11 +3183,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Layers/TerrainPatternLayer.cpp"
-            timestampString = "460568319.662878"
+            timestampString = "460630414.63239"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "333"
-            endingLineNumber = "333"
+            startingLineNumber = "331"
+            endingLineNumber = "331"
             landmarkName = "TerrainPatternLayer::generatePlane()"
             landmarkType = "5">
          </BreakpointContent>
@@ -3215,11 +3199,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Layers/TerrainPatternLayer.cpp"
-            timestampString = "460568319.662878"
+            timestampString = "460630414.63239"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "388"
-            endingLineNumber = "388"
+            startingLineNumber = "386"
+            endingLineNumber = "386"
             landmarkName = "TerrainPatternLayer::generateDecorator(TerrainCell* cell, int patternIndex)"
             landmarkType = "5">
          </BreakpointContent>
@@ -3231,11 +3215,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites/Decorator.cpp"
-            timestampString = "460375445.990176"
+            timestampString = "460643912.129394"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "131"
-            endingLineNumber = "131"
+            startingLineNumber = "164"
+            endingLineNumber = "164"
             landmarkName = "Decorator::update(float delta)"
             landmarkType = "5">
          </BreakpointContent>
@@ -3295,11 +3279,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Layers/TerrainPatternLayer.cpp"
-            timestampString = "460568319.662878"
+            timestampString = "460630414.63239"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "241"
-            endingLineNumber = "241"
+            startingLineNumber = "239"
+            endingLineNumber = "239"
             landmarkName = "TerrainPatternLayer::checkCollisionDecorator()"
             landmarkType = "5">
          </BreakpointContent>
@@ -3311,11 +3295,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Layers/TerrainPatternLayer.cpp"
-            timestampString = "460568319.662878"
+            timestampString = "460630414.63239"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "350"
-            endingLineNumber = "350"
+            startingLineNumber = "348"
+            endingLineNumber = "348"
             landmarkName = "TerrainPatternLayer::generatePlane()"
             landmarkType = "5">
          </BreakpointContent>
@@ -3327,11 +3311,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites/Runner.cpp"
-            timestampString = "460553544.036711"
+            timestampString = "460640165.868734"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "346"
-            endingLineNumber = "346"
+            startingLineNumber = "430"
+            endingLineNumber = "430"
             landmarkName = "Runner::checkSafe()"
             landmarkType = "5">
          </BreakpointContent>
@@ -3359,11 +3343,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Controllers/RunController.cpp"
-            timestampString = "460568770.148719"
+            timestampString = "460641819.089162"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "347"
-            endingLineNumber = "347"
+            startingLineNumber = "385"
+            endingLineNumber = "385"
             landmarkName = "RunController::updateCloud()"
             landmarkType = "5">
          </BreakpointContent>
@@ -3775,11 +3759,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../cocos2d/extensions/Particle3D/PU/CCPURender.cpp"
-            timestampString = "460432600.9258"
+            timestampString = "460642783.591493"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "468"
-            endingLineNumber = "468"
+            startingLineNumber = "471"
+            endingLineNumber = "471"
             landmarkName = "PUParticle3DModelRender::render( Renderer* renderer, const Mat4 &amp;transform, ParticleSystem3D* particleSystem )"
             landmarkType = "5">
          </BreakpointContent>
@@ -3855,11 +3839,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../cocos2d/extensions/Particle3D/PU/CCPURender.cpp"
-            timestampString = "460432600.9258"
+            timestampString = "460642783.591493"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "448"
-            endingLineNumber = "448"
+            startingLineNumber = "451"
+            endingLineNumber = "451"
             landmarkName = "PUParticle3DModelRender::render( Renderer* renderer, const Mat4 &amp;transform, ParticleSystem3D* particleSystem )"
             landmarkType = "5">
          </BreakpointContent>
@@ -3871,11 +3855,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../cocos2d/extensions/Particle3D/PU/CCPURender.cpp"
-            timestampString = "460432600.9258"
+            timestampString = "460642783.591493"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "450"
-            endingLineNumber = "450"
+            startingLineNumber = "453"
+            endingLineNumber = "453"
             landmarkName = "PUParticle3DModelRender::render( Renderer* renderer, const Mat4 &amp;transform, ParticleSystem3D* particleSystem )"
             landmarkType = "5">
          </BreakpointContent>
@@ -3887,11 +3871,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../cocos2d/extensions/Particle3D/PU/CCPURender.cpp"
-            timestampString = "460432600.9258"
+            timestampString = "460642783.591493"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "486"
-            endingLineNumber = "486"
+            startingLineNumber = "489"
+            endingLineNumber = "489"
             landmarkName = "PUParticle3DModelRender::render( Renderer* renderer, const Mat4 &amp;transform, ParticleSystem3D* particleSystem )"
             landmarkType = "5">
          </BreakpointContent>
@@ -3967,11 +3951,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../cocos2d/extensions/Particle3D/PU/CCPURender.cpp"
-            timestampString = "460432600.9258"
+            timestampString = "460642783.591493"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "478"
-            endingLineNumber = "478"
+            startingLineNumber = "481"
+            endingLineNumber = "481"
             landmarkName = "PUParticle3DModelRender::render( Renderer* renderer, const Mat4 &amp;transform, ParticleSystem3D* particleSystem )"
             landmarkType = "5">
          </BreakpointContent>
@@ -3983,11 +3967,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Controllers/RunController.cpp"
-            timestampString = "460568770.148719"
+            timestampString = "460641819.089162"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "213"
-            endingLineNumber = "213"
+            startingLineNumber = "248"
+            endingLineNumber = "248"
             landmarkName = "RunController::setMaxDifficultLevel(int difficult)"
             landmarkType = "5">
          </BreakpointContent>
@@ -3999,11 +3983,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Controllers/RunController.cpp"
-            timestampString = "460568770.148719"
+            timestampString = "460636714.29264"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "156"
-            endingLineNumber = "156"
+            startingLineNumber = "181"
+            endingLineNumber = "181"
             landmarkName = "RunController::reset()"
             landmarkType = "5">
          </BreakpointContent>
@@ -4111,7 +4095,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../cocos2d/extensions/Particle3D/PU/CCPURender.cpp"
-            timestampString = "460432600.9258"
+            timestampString = "460642710.140172"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "446"
@@ -4139,7 +4123,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../cocos2d/cocos/3d/CCSprite3D.cpp"
@@ -4159,11 +4143,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../cocos2d/extensions/Particle3D/PU/CCPURender.cpp"
-            timestampString = "460432592.313295"
+            timestampString = "460642783.591493"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "484"
-            endingLineNumber = "484"
+            startingLineNumber = "487"
+            endingLineNumber = "487"
             landmarkName = "PUParticle3DModelRender::render( Renderer* renderer, const Mat4 &amp;transform, ParticleSystem3D* particleSystem )"
             landmarkType = "5">
          </BreakpointContent>
@@ -4191,11 +4175,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites/Runner.cpp"
-            timestampString = "460544257.105868"
+            timestampString = "460632840.737748"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "30"
-            endingLineNumber = "30"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
             landmarkName = "Runner::create()"
             landmarkType = "5">
          </BreakpointContent>
@@ -4255,11 +4239,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Layers/TerrainPatternLayer.cpp"
-            timestampString = "460568319.662878"
+            timestampString = "460630414.63239"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "394"
-            endingLineNumber = "394"
+            startingLineNumber = "392"
+            endingLineNumber = "392"
             landmarkName = "TerrainPatternLayer::generateDecorator(TerrainCell* cell, int patternIndex)"
             landmarkType = "5">
          </BreakpointContent>
@@ -4884,7 +4868,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "43"
             endingLineNumber = "43"
-            landmarkName = "RibbonTrail::initWithFile(const std::string &amp;path)"
+            landmarkName = "RibbonTrail::initWithFile(const std::string &amp;path, float width, float length )"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -4975,11 +4959,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites/Runner.cpp"
-            timestampString = "460552825.723061"
+            timestampString = "460633340.668719"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "59"
-            endingLineNumber = "59"
+            startingLineNumber = "84"
+            endingLineNumber = "84"
             landmarkName = "Runner::setRibbonTrail(const std::string&amp; file)"
             landmarkType = "5">
          </BreakpointContent>
@@ -4991,11 +4975,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites/Runner.cpp"
-            timestampString = "460552828.866744"
+            timestampString = "460633340.668719"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "65"
-            endingLineNumber = "65"
+            startingLineNumber = "90"
+            endingLineNumber = "90"
             landmarkName = "Runner::setRibbonTrail(const std::string&amp; file)"
             landmarkType = "5">
          </BreakpointContent>
@@ -5039,7 +5023,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Scenes/MenuScene.cpp"
-            timestampString = "460569035.370135"
+            timestampString = "460624852.961247"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "191"
@@ -5071,7 +5055,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Scenes/MenuScene.cpp"
-            timestampString = "460563532.940426"
+            timestampString = "460623541.105803"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "134"
@@ -5087,7 +5071,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Scenes/MenuScene.cpp"
-            timestampString = "460569035.370135"
+            timestampString = "460624852.961247"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "163"
@@ -5103,7 +5087,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Scenes/MenuScene.cpp"
-            timestampString = "460569035.370135"
+            timestampString = "460624852.961247"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "189"
@@ -5119,12 +5103,300 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Controllers/RunController.cpp"
-            timestampString = "460568489.481477"
+            timestampString = "460632261.252429"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "53"
-            endingLineNumber = "53"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
             landmarkName = "RunController::init(Layer* pMainLayer)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/Effects/FakeShadowEffect3D.cpp"
+            timestampString = "460612708.648883"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "27"
+            endingLineNumber = "27"
+            landmarkName = "FakeShadowEffect3D::drawWithSprite3D(EffectSprite3D* sprite, const cocos2d::Mat4 &amp;transform)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/Effects/FakeShadowEffect3D.cpp"
+            timestampString = "460612708.648883"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
+            landmarkName = "FakeShadowEffect3D::drawWithSprite3D(EffectSprite3D* sprite, const cocos2d::Mat4 &amp;transform)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/Effects/FakeShadowEffect3D.cpp"
+            timestampString = "460612381.768922"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "44"
+            endingLineNumber = "44"
+            landmarkName = "FakeShadowEffect3D::setNodeToWorldTransform(const cocos2d::Mat4&amp; transform)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/Effects/FakeShadowEffect3D.cpp"
+            timestampString = "460612381.768922"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
+            landmarkName = "FakeShadowEffect3D::setTargetPos(const cocos2d::Vec3&amp; targetPos)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/Effects/FakeShadowEffect3D.cpp"
+            timestampString = "460612381.768922"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
+            landmarkName = "FakeShadowEffect3D::setShadowTexture(Texture2D* tex)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/Sprites/EffectSprite3D.cpp"
+            timestampString = "460611401.448392"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
+            landmarkName = "EffectSprite3D::setEffect(BaseEffect3D* effect)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/Sprites/EffectSprite3D.cpp"
+            timestampString = "460611536.469758"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "124"
+            endingLineNumber = "124"
+            landmarkName = "EffectSprite3D::draw(cocos2d::Renderer *renderer, const cocos2d::Mat4 &amp;transform, uint32_t flags)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/Sprites/EffectSprite3D.cpp"
+            timestampString = "460612708.441453"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "127"
+            endingLineNumber = "127"
+            landmarkName = "EffectSprite3D::draw(cocos2d::Renderer *renderer, const cocos2d::Mat4 &amp;transform, uint32_t flags)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/Sprites/Runner.cpp"
+            timestampString = "460633340.668719"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "209"
+            endingLineNumber = "209"
+            landmarkName = "Runner::onEnterIdle()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/Sprites/Runner.cpp"
+            timestampString = "460633340.668719"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "222"
+            endingLineNumber = "222"
+            landmarkName = "Runner::onEnterIdle()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/Sprites/Decorator.cpp"
+            timestampString = "460643912.129394"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "213"
+            endingLineNumber = "213"
+            landmarkName = "Decorator::setFakeShadow(cocos2d::Layer* ownerLayer)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/Sprites/Decorator.cpp"
+            timestampString = "460643912.129394"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "213"
+            endingLineNumber = "213"
+            landmarkName = "Decorator::setFakeShadow(cocos2d::Layer* ownerLayer)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/Sprites/Runner.cpp"
+            timestampString = "460633340.668719"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "120"
+            endingLineNumber = "120"
+            landmarkName = "Runner::setFakeShadow(cocos2d::Layer* ownerLayer)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/Sprites/Runner.cpp"
+            timestampString = "460633340.668719"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "77"
+            endingLineNumber = "77"
+            landmarkName = "Runner::update(float delta)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/Sprites/Runner.cpp"
+            timestampString = "460633340.668719"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
+            landmarkName = "Runner::update(float delta)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../cocos2d/cocos/renderer/CCRenderer.cpp"
+            timestampString = "460625294.16025"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "673"
+            endingLineNumber = "673"
+            landmarkName = "Renderer::setDepthTest(bool enable)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/Controllers/RunController.cpp"
+            timestampString = "460643377.032196"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "413"
+            endingLineNumber = "413"
+            landmarkName = "RunController::showRainbow()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/Controllers/RunController.cpp"
+            timestampString = "460643377.032196"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "467"
+            endingLineNumber = "467"
+            landmarkName = "RunController::checkRainbowIsShowOrHide()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

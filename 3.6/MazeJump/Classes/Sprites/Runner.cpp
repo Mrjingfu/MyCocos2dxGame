@@ -27,6 +27,8 @@ Runner* Runner::create()
         outline->setOutlineColor(Vec3(0.3f, 0.3f, 0.3f));
         outline->setOutlineWidth(0.03f);
         runner->addEffect(outline, 1);
+        
+        runner->setLightMask((unsigned int)LightFlag::LIGHT0);
 
         runner->autorelease();
         return runner;
@@ -40,10 +42,25 @@ Runner::Runner()
     m_dir       = RD_FORWARD;
     m_fRadius   = 2.5f;
     m_pRibbonTrail = nullptr;
+    m_pFakeShadow  = nullptr;
+    m_bSpeedUp      = false;
+}
+Runner::~Runner()
+{
+    if(m_pRibbonTrail)
+    {
+        m_pRibbonTrail->removeFromParentAndCleanup(true);
+        m_pRibbonTrail = nullptr;
+    }
+    if(m_pFakeShadow)
+    {
+        m_pFakeShadow->removeFromParentAndCleanup(true);
+        m_pFakeShadow = nullptr;
+    }
 }
 void Runner::update(float delta)
 {
-    if(m_curState == RS_IDLE)
+    if(m_curState == RS_IDLE && (!isSpeedUp()))
     {
         bool isDrop = RunController::getInstance()->getTerrainLayer()->checkRunnerDrop();
         if(isDrop)
@@ -51,6 +68,14 @@ void Runner::update(float delta)
     }
     if(m_pRibbonTrail)
         m_pRibbonTrail->update(delta);
+    if(m_pFakeShadow)
+    {
+        Mat4 trans = getNodeToWorldTransform();
+        Vec3 pos;
+        trans.getTranslation(&pos);
+        m_pFakeShadow->setPositionX(pos.x);
+        m_pFakeShadow->setPositionZ(pos.z);
+    }
 }
 void Runner::setRibbonTrail(const std::string& file)
 {
@@ -59,7 +84,7 @@ void Runner::setRibbonTrail(const std::string& file)
         m_pRibbonTrail->removeFromParentAndCleanup(true);
         m_pRibbonTrail = nullptr;
     }
-    m_pRibbonTrail = RibbonTrail::create(file);
+    m_pRibbonTrail = RibbonTrail::create(file, 5, 30);
     if(m_pRibbonTrail)
     {
         m_pRibbonTrail->setCameraMask((unsigned short)CameraFlag::USER1);
@@ -70,6 +95,39 @@ void Runner::setRibbonTrail(const std::string& file)
     }
     else
         CCLOG("create ribbon trail with texture %s failed!", file.c_str());
+}
+void Runner::setFakeShadow(cocos2d::Layer* ownerLayer)
+{
+    if(!ownerLayer)
+        return;
+    if(m_pFakeShadow)
+    {
+        m_pFakeShadow->removeFromParentAndCleanup(true);
+        m_pFakeShadow = nullptr;
+    }
+    m_pFakeShadow = Sprite3D::create("fakeshadow.c3b");
+    if(m_pFakeShadow)
+    {
+        m_pFakeShadow->setCameraMask((unsigned short)CameraFlag::USER1);
+        ownerLayer->addChild(m_pFakeShadow, 1);
+        
+        Mat4 trans = getNodeToWorldTransform();
+        Vec3 pos;
+        trans.getTranslation(&pos);
+        m_pFakeShadow->setPositionX(pos.x);
+        m_pFakeShadow->setPositionZ(pos.z);
+        
+        m_pFakeShadow->setPositionY(pos.y - m_fRadius*getScale());
+        
+        m_pFakeShadow->setForceDepthWrite(true);
+        m_pFakeShadow->setOpacity(0);
+        DelayTime* delay = DelayTime::create(1.0f);
+        EaseSineOut* fadeIn = EaseSineOut::create(FadeIn::create(0.5f));
+        Sequence* sequence = Sequence::create(delay, fadeIn, NULL);
+        m_pFakeShadow->runAction(sequence);
+    }
+    else
+        CCLOG("create fake shadow failed!");
 }
 void Runner::onCollision(TerrainCell* cell)
 {
@@ -159,6 +217,9 @@ void Runner::onEnterIdle()
         layer->setCurrentColumn(colunm);
         layer->setCurrentRow(row);
         layer->setCurrentPatternNum(currentPatternCount);
+        
+        if(m_pFakeShadow)
+            m_pFakeShadow->setVisible(true);
     }
 }
 void Runner::onEnterMoveLeft()
@@ -183,7 +244,10 @@ void Runner::onEnterMoveLeft()
         Spawn* spawn = Spawn::create(sequenceScale, sequenceRotate, sequenceJump, NULL);
         CallFunc* callFunc = CallFunc::create(CC_CALLBACK_0(Runner::checkSafe,this));
         Sequence* sequence = Sequence::create(spawn, callFunc, NULL);
-        runAction(sequence);
+        if (m_bSpeedUp)
+            runAction(Speed::create(sequence, 2.0f));
+        else
+            runAction(sequence);
         m_dir = RD_LEFT;
     }
 }
@@ -208,7 +272,10 @@ void Runner::onEnterMoveRight()
         Spawn* spawn = Spawn::create(sequenceScale,sequenceRotate, sequenceJump, NULL);
         CallFunc* callFunc = CallFunc::create(CC_CALLBACK_0(Runner::checkSafe,this));
         Sequence* sequence = Sequence::create(spawn, callFunc, NULL);
-        runAction(sequence);
+        if (m_bSpeedUp)
+            runAction(Speed::create(sequence, 2.0f));
+        else
+            runAction(sequence);
         m_dir = RD_RIGHT;
     }
 }
@@ -234,7 +301,10 @@ void Runner::onEnterMoveForward()
         Spawn* spawn = Spawn::create(sequenceScale, sequenceRotate, sequenceJump, NULL);
         CallFunc* callFunc = CallFunc::create(CC_CALLBACK_0(Runner::checkSafe,this));
         Sequence* sequence = Sequence::create(spawn, callFunc, NULL);
-        runAction(sequence);
+        if (m_bSpeedUp)
+            runAction(Speed::create(sequence, 2.0f));
+        else
+            runAction(sequence);
         m_dir = RD_FORWARD;
     }
 
@@ -269,7 +339,10 @@ void Runner::onEnterMoveSuperJump()
         Spawn* spawn = Spawn::create(sequenceScale, spawnRotateBy, sequenceJump, NULL);
         CallFunc* callFunc = CallFunc::create(CC_CALLBACK_0(Runner::checkSafe,this));
         Sequence* sequence = Sequence::create(spawn, callFunc, NULL);
-        runAction(sequence);
+        if (m_bSpeedUp)
+            runAction(Speed::create(sequence, 2.0f));
+        else
+            runAction(sequence);
         m_dir = RD_FORWARD;
     }
 }
@@ -293,7 +366,10 @@ void Runner::onEnterMoveJumpLocal()
         Spawn* spawn = Spawn::create(sequenceScale, sequenceJump, NULL);
         CallFunc* callFunc = CallFunc::create(CC_CALLBACK_0(Runner::checkSafe,this));
         Sequence* sequence = Sequence::create(spawn, callFunc, NULL);
-        runAction(sequence);
+        if (m_bSpeedUp)
+            runAction(Speed::create(sequence, 2.0f));
+        else
+            runAction(sequence);
     }
 }
 void Runner::onEnterMoveDrop()
@@ -308,11 +384,15 @@ void Runner::onEnterMoveDrop()
     CallFunc* callFunc = CallFunc::create(CC_CALLBACK_0(RunController::setGameState,RunController::getInstance(), RunController::RGS_GAMEOVER));
     Sequence* sequence = Sequence::create(spawn, callFunc, NULL);
     runAction(sequence);
+    if(m_pFakeShadow)
+        m_pFakeShadow->setVisible(false);
 }
 void Runner::onEnterDeath()
 {
     AudioEngine::play2d("hit.wav", false, 0.5);
     RunController::getInstance()->addPlayerExplosion();
+    if(m_pFakeShadow)
+        m_pFakeShadow->setVisible(false);
 }
 void Runner::onExitIdle()
 {
@@ -341,11 +421,16 @@ void Runner::onExitDeath()
 void Runner::checkSafe()
 {
     setState(RS_IDLE);
-    bool isDrop = RunController::getInstance()->getTerrainLayer()->checkRunnerDrop();
-    if(isDrop)
-        setState(RS_MOVE_DROP);
-    else
+    if(isSpeedUp())
         RunController::getInstance()->cameraTrackPlayer();
+    else
+    {
+        bool isDrop = RunController::getInstance()->getTerrainLayer()->checkRunnerDrop();
+        if(isDrop)
+            setState(RS_MOVE_DROP);
+        else
+            RunController::getInstance()->cameraTrackPlayer();
+    }
 }
 void Runner::fadeIn()
 {

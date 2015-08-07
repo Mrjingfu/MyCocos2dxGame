@@ -13,6 +13,7 @@
 #include "TerrainLayer.h"
 #include "Runner.h"
 #include "GameUI.h"
+#include "RibbonTrail.h"
 class RunController : public cocos2d::Ref
 {
     RunController();
@@ -51,6 +52,11 @@ public:
     bool isInMazeJump() const { return m_bInMazeJump; }
     
     void addPlayerExplosion();
+    void addDecoratorExplosion(const cocos2d::Vec3& pos);
+    
+    void showRainbow();
+    void hideRainbow();
+    void checkRainbowIsShowOrHide();
     
     cocos2d::Color3B getRandomColorByIndex(int index);
     cocos2d::Color3B getSameColor() const { return m_sameColor; };
@@ -75,8 +81,13 @@ private:
     cocos2d::LayerColor*        m_pWhiteLayer;
     bool            m_bInMazeJump;
     
+    RibbonTrail*        m_pRainbow;
+    cocos2d::AmbientLight*       m_pTerrainAmbLight;
+    cocos2d::DirectionLight*     m_pTerrainDirectionLight;
+    
     RunnerGameState m_GameState;
     GameUI* m_gameUI;
+    
 private:
     cocos2d::Color3B         m_randomColor0;
     cocos2d::Color3B         m_randomColor1;

@@ -37,7 +37,7 @@
 #include "3d/CCSprite3D.h"
 #include "3d/CCMesh.h"
 #include "2d/CCCamera.h"
-
+#include "2d/CCLight.h"
 NS_CC_BEGIN
 
 void PURender::copyAttributesTo( PURender *render )
@@ -444,6 +444,9 @@ void PUParticle3DModelRender::render( Renderer* renderer, const Mat4 &transform,
                 continue;
             }
             sprite->setTexture(_texFile);
+            ///lwwhb modify
+            sprite->setLightMask((unsigned int)LightFlag::LIGHT0);
+            //
             sprite->retain();
             _spriteList.push_back(sprite);
         }

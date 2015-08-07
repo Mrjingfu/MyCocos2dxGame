@@ -40,6 +40,9 @@ RunController::RunController()
     m_nMaxReachDifficultLevel = 0;
     m_pWhiteLayer   = nullptr;
     m_bInMazeJump   = false;
+    m_pRainbow      = nullptr;
+    m_pTerrainAmbLight = nullptr;
+    m_pTerrainDirectionLight   = nullptr;
     m_GameState = RGS_FROZEN;
     m_gameUI = nullptr;
 }
@@ -103,6 +106,7 @@ bool RunController::init(Layer* pMainLayer)
         return false;
     m_pMainPlayer->setCameraMask((unsigned short)CameraFlag::USER1);
     m_pTerrainLayer->addChild(m_pMainPlayer);
+    m_pMainPlayer->setFakeShadow(m_pTerrainLayer);
     //m_pMainPlayer->setRibbonTrail("ribbontrail.png");
     m_pMainPlayer->fadeIn();
     
@@ -118,9 +122,20 @@ bool RunController::init(Layer* pMainLayer)
     m_pMainCamera->setCameraFlag(CameraFlag::USER1);
     
     AmbientLight* ambLight = AmbientLight::create(Color3B(150, 150, 150));
+    ambLight->setLightFlag(LightFlag::LIGHT0);
     m_pMainLayer->addChild(ambLight);
+
     DirectionLight* directionLight = DirectionLight::create(Vec3(-2, -4, -3), Color3B(158, 158, 158));
+    directionLight->setLightFlag(LightFlag::LIGHT0);
     m_pMainLayer->addChild(directionLight);
+    
+    m_pTerrainAmbLight = AmbientLight::create(Color3B(150, 150, 150));
+    m_pTerrainAmbLight->setLightFlag(LightFlag::LIGHT1);
+    m_pMainLayer->addChild(m_pTerrainAmbLight);
+    
+    m_pTerrainDirectionLight = DirectionLight::create(Vec3(-2, -4, -3), Color3B(158, 158, 158));
+    m_pTerrainDirectionLight->setLightFlag(LightFlag::LIGHT1);
+    m_pMainLayer->addChild(m_pTerrainDirectionLight);
     
     cocos2d::ui::Button* button = cocos2d::ui::Button::create("button_retry_up.png",
                                                               "button_retry_down.png");
@@ -131,6 +146,16 @@ bool RunController::init(Layer* pMainLayer)
         Director::getInstance()->replaceScene(scene);
     });
     m_pMainLayer->addChild(button);
+    
+    
+    cocos2d::ui::Button* button2 = cocos2d::ui::Button::create("button_retry_up.png",
+                                                              "button_retry_down.png");
+    button2->setPosition(Vec2(size.width * 0.8f, size.height * 0.2f));
+    button2->setPressedActionEnabled(true);
+    button2->addClickEventListener([=](Ref* sender){
+        showRainbow();
+    });
+    m_pMainLayer->addChild(button2);
     
     setGameState(RGS_FROZEN);
     return true;
@@ -158,11 +183,21 @@ void RunController::update(float delta)
 {
     if(m_pTerrainLayer)
         m_pTerrainLayer->update(delta);
+    if(m_pRainbow)
+        m_pRainbow->update(delta);
     if(m_pMainPlayer)
         m_pMainPlayer->update(delta);
+    if(m_pMainPlayer && m_pMainPlayer)
+        checkRainbowIsShowOrHide();
 }
 void RunController::destroy()
 {
+    if(m_pRainbow)
+    {
+        if(m_pRainbow->getReferenceCount() > 0)
+            m_pRainbow->removeFromParentAndCleanup(true);
+        m_pRainbow = nullptr;
+    }
     m_pMainLayer->removeAllChildren();
     m_pMainLayer = nullptr;
 }
@@ -265,6 +300,7 @@ bool RunController::initCloud()
     if(!m_pCloud1)
         return false;
     m_pCloud1->setCameraMask((unsigned short)CameraFlag::USER1);
+    m_pCloud1->setLightMask((unsigned int)LightFlag::LIGHT0);
     m_pCloud1->setPositionZ(-200);
     m_pCloud1->setPositionY(-80);
     m_pCloud1->setScaleX(2.5f);
@@ -277,6 +313,7 @@ bool RunController::initCloud()
     if(!m_pCloud2)
         return false;
     m_pCloud2->setCameraMask((unsigned short)CameraFlag::USER1);
+    m_pCloud2->setLightMask((unsigned int)LightFlag::LIGHT0);
     m_pCloud2->setPositionZ(-400);
     m_pCloud2->setPositionY(-80);
     m_pCloud2->setOpacity(0);
@@ -291,6 +328,7 @@ bool RunController::initCloud()
     if(!m_pCloud2)
         return false;
     m_pCloud3->setCameraMask((unsigned short)CameraFlag::USER1);
+    m_pCloud3->setLightMask((unsigned int)LightFlag::LIGHT0);
     m_pCloud3->setPositionZ(0);
     m_pCloud3->setPositionY(-80);
     m_pCloud3->setOpacity(0);
@@ -359,6 +397,79 @@ void RunController::addPlayerExplosion()
         m_pMainPlayer = nullptr;
     }
 }
+void RunController::addDecoratorExplosion(const cocos2d::Vec3& pos)
+{
+    if(m_pMainPlayer && m_pMainLayer)
+    {
+        auto explosion = PUParticleSystem3D::create("explosionSystem.pu");
+        explosion->setCameraMask((unsigned short)CameraFlag::USER1);
+        explosion->setPosition3D(pos);
+        m_pMainLayer->addChild(explosion);
+        explosion->startParticleSystem();
+    }
+}
+void RunController::showRainbow()
+{
+    if(m_pMainLayer == nullptr || m_pMainPlayer == nullptr)
+        return;
+    if(m_pMainPlayer->isSpeedUp())
+        return;
+    if(m_pMainPlayer->getState() != Runner::RS_IDLE)
+        return;
+    if(m_pRainbow)
+    {
+        if(m_pRainbow->getReferenceCount() > 0)
+            m_pRainbow->removeFromParentAndCleanup(true);
+        m_pRainbow = nullptr;
+    }
+
+    m_pRainbow = RibbonTrail::create("ribbontrail.png", 42, 3100);
+    if(!m_pRainbow)
+        return;
+    m_pRainbow->setPosition3D(Vec3(0, 20, m_pMainPlayer->getPositionZ()-500));
+    m_pRainbow->setCameraMask((unsigned short)CameraFlag::USER1);
+    m_pMainLayer->addChild(m_pRainbow);
+    m_pRainbow->getTrail()->addNode(m_pRainbow);
+        
+    EaseSineOut* moveTo = EaseSineOut::create(MoveBy::create(10, Vec3(0,0,3500)));
+    m_pRainbow->runAction(moveTo);
+    
+    if(m_pTerrainAmbLight)
+    {
+        EaseSineIn* tinyIn = EaseSineIn::create(TintBy::create(1.0f, -150, -150, -150));
+        CallFunc* callFunc = CallFunc::create(CC_CALLBACK_0(Runner::setSpeedUp, m_pMainPlayer, true));
+        Sequence* sequence = Sequence::create(tinyIn, callFunc, NULL);
+        m_pTerrainAmbLight->runAction(sequence);
+    }
+}
+void RunController::hideRainbow()
+{
+    if(m_pRainbow)
+    {
+        if(m_pRainbow->getReferenceCount() > 0)
+            m_pRainbow->removeFromParentAndCleanup(true);
+        m_pRainbow = nullptr;
+    }
+    if(m_pMainPlayer)
+        m_pMainPlayer->setSpeedUp(false);
+}
+void RunController::checkRainbowIsShowOrHide()
+{
+    if(m_pMainPlayer->isSpeedUp())
+    {
+        float playerPosZ = m_pMainPlayer->getPositionZ();
+        float rainbowPosZ = m_pRainbow->getPositionZ();
+        if(rainbowPosZ - playerPosZ >= 3000)
+        {
+            hideRainbow();
+            if(m_pTerrainAmbLight)
+            {
+                EaseSineOut* tinyIn = EaseSineOut::create(TintBy::create(1.0f, 150, 150, 150));
+                m_pTerrainAmbLight->runAction(tinyIn);
+            }
+        }
+    }
+}
 cocos2d::Color3B RunController::getRandomColorByIndex(int index)
 {
     CCASSERT(index<=6 && index>=0, "index must between 0-6");
@@ -376,4 +487,6 @@ cocos2d::Color3B RunController::getRandomColorByIndex(int index)
         return m_randomColor5;
     else if(index == 6)
         return m_randomColor6;
+    else
+        return m_sameColor;
 }

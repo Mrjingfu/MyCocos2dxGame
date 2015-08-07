@@ -34,6 +34,7 @@ public:
     } RunnerDir;
 protected:
     Runner();
+    virtual ~Runner();
 public:
     static Runner* create();
     
@@ -52,6 +53,10 @@ public:
     void fadeOut();
     
     void setRibbonTrail(const std::string& file);
+    void setFakeShadow(cocos2d::Layer* ownerLayer);
+    
+    bool isSpeedUp() const { return m_bSpeedUp; }
+    void setSpeedUp(bool speedUp) { m_bSpeedUp = speedUp; }
 private:
     void onEnterIdle();
     void onEnterMoveLeft();
@@ -78,6 +83,9 @@ protected:
     float           m_fRadius;
     mutable cocos2d::AABB    m_modifyAABB;
     RibbonTrail*            m_pRibbonTrail;
+    cocos2d::Sprite3D*         m_pFakeShadow;
+    
+    bool    m_bSpeedUp;
 };
 
 #endif /* defined(__MazeJump__Runner__) */

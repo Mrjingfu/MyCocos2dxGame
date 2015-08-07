@@ -16,8 +16,8 @@ class RibbonTrail : public cocos2d::Node, public cocos2d::BlendProtocol
     RibbonTrail();
     virtual ~RibbonTrail();
 public:
-    static RibbonTrail* create(const std::string &textureFile);
-    bool initWithFile(const std::string &path);
+    static RibbonTrail* create(const std::string &textureFile, float width, float length);
+    bool initWithFile(const std::string &path, float width, float length);
     virtual void update(float delta);
     virtual void draw(cocos2d::Renderer* renderer, const cocos2d::Mat4& transform, uint32_t flags) override;
     // overrides

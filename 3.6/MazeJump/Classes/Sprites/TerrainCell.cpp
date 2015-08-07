@@ -22,6 +22,7 @@ TerrainCell* TerrainCell::create(const std::string& modelName)
         outline->setOutlineWidth(0.03f);
         cell->addEffect(outline, 1);
         
+        cell->setLightMask((unsigned int)LightFlag::LIGHT1);
         cell->autorelease();
         return cell;
     }
