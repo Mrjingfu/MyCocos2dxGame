@@ -11,6 +11,7 @@
 #include "ui/CocosGUI.h"
 #include "AlisaMethod.h"
 #include "MainScene.h"
+#include "UIManager.h"
 USING_NS_CC;
 
 GameController* g_pGameControllerInstance = nullptr;
@@ -28,7 +29,6 @@ GameController::GameController()
     m_pGroundLayer      = nullptr;
     m_pMainCamera       = nullptr;
     m_pWhiteLayer       = nullptr;
-    m_gameUI            = nullptr;
 }
 GameController::~GameController()
 {
@@ -38,8 +38,11 @@ bool GameController::init(Layer* pMainLayer,int difficultLevel)
     if(pMainLayer == nullptr)
         return false;
     m_pMainLayer = pMainLayer;
-    m_gameUI =GameUI::create();
-    m_pMainLayer->addChild(m_gameUI);
+    
+    UIManager::getInstance()->init(m_pMainLayer);
+    UIManager::getInstance()->showInfo(true);
+    
+    
     m_pWhiteLayer = LayerColor::create(Color4B::WHITE);
     if(!m_pWhiteLayer)
         return false;
@@ -119,13 +122,13 @@ void GameController::update(float delta)
 }
 void GameController::destroy()
 {
+    UIManager::getInstance()->destory();
     m_pMainLayer->removeAllChildren();
     m_pMainLayer = nullptr;
 }
 
 bool GameController::createMap(bool _playing,int level,int difficultLevel)
 {
-
     if (m_pSkyBox) {
          m_pMainLayer->removeChild(m_pSkyBox);
         m_pSkyBox = nullptr;

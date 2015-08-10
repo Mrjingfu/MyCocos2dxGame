@@ -814,7 +814,7 @@ void GroundLayer::decoratorOpe(Node* node,GroundCell* cell)
                     break;
                 case Decorator::DecoratorType::DT_GOLD_BIG:
                 {
-                  localStorageSetItem(USER_GOLD_NUM, Value(Value(localStorageGetItem(USER_GOLD_NUM)).asInt()+5).asString());
+                    localStorageSetItem(USER_GOLD_NUM, Value(Value(localStorageGetItem(USER_GOLD_NUM)).asInt()+5).asString());
                     Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_GOLD_CHANGE);
                 }
 

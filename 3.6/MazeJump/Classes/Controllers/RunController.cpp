@@ -12,6 +12,7 @@
 #include "GameConst.h"
 #include "GameScene.h"
 #include "MenuScene.h"
+#include "UIManager.h"
 #include "storage/local-storage/LocalStorage.h"
 #include "Particle3D/CCParticleSystem3D.h"
 #include "Particle3D/PU/CCPUParticleSystem3D.h"
@@ -44,7 +45,7 @@ RunController::RunController()
     m_pTerrainAmbLight = nullptr;
     m_pTerrainDirectionLight   = nullptr;
     m_GameState = RGS_FROZEN;
-    m_gameUI = nullptr;
+    
 }
 RunController::~RunController()
 {
@@ -72,8 +73,8 @@ bool RunController::init(Layer* pMainLayer)
     m_randomColor6 = UtilityHelper::randompurpleColor();
     m_sameColor = UtilityHelper::randomColor();
     
-    m_gameUI =GameUI::create();
-    m_pMainLayer->addChild(m_gameUI);
+
+    
     m_pWhiteLayer = LayerColor::create(Color4B::WHITE);
     if(!m_pWhiteLayer)
         return false;
@@ -128,7 +129,7 @@ bool RunController::init(Layer* pMainLayer)
     DirectionLight* directionLight = DirectionLight::create(Vec3(-2, -4, -3), Color3B(158, 158, 158));
     directionLight->setLightFlag(LightFlag::LIGHT0);
     m_pMainLayer->addChild(directionLight);
-    
+
     m_pTerrainAmbLight = AmbientLight::create(Color3B(150, 150, 150));
     m_pTerrainAmbLight->setLightFlag(LightFlag::LIGHT1);
     m_pMainLayer->addChild(m_pTerrainAmbLight);
@@ -156,6 +157,9 @@ bool RunController::init(Layer* pMainLayer)
         showRainbow();
     });
     m_pMainLayer->addChild(button2);
+    
+    UIManager::getInstance()->init(m_pMainLayer);
+    UIManager::getInstance()->showInfo(true);
     
     setGameState(RGS_FROZEN);
     return true;
@@ -192,12 +196,16 @@ void RunController::update(float delta)
 }
 void RunController::destroy()
 {
+
+    UIManager::getInstance()->destory();
+
     if(m_pRainbow)
     {
         if(m_pRainbow->getReferenceCount() > 0)
             m_pRainbow->removeFromParentAndCleanup(true);
         m_pRainbow = nullptr;
     }
+
     m_pMainLayer->removeAllChildren();
     m_pMainLayer = nullptr;
 }

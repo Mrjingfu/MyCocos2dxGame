@@ -217,7 +217,6 @@ void TerrainPatternLayer::beginCollapse()
 void TerrainPatternLayer::checkCollisionDecorator()
 {
     Runner* runner = RunController::getInstance()->getMainPlayer();
-    GameUI* gameUI = RunController::getInstance()->getGameUiLayer();
     if(!runner)
         return;
     for (Decorator* decorator : m_DecoratorList) {

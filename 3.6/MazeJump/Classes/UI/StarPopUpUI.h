@@ -18,11 +18,11 @@ protected:
     virtual ~StarPopUpUI();
     virtual bool init() ;
 public:
-    virtual void onEnter();
-    virtual void onExit();
+
     static StarPopUpUI* create();
     void onPlayGame(Ref* ref);
     void onResumeGame(Ref* ref);
+    void onHidePop();
 private:
     cocos2d::ui::Text* heartTv;
     cocos2d::ui::Text* goldTv;

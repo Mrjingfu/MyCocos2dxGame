@@ -10,7 +10,7 @@
 
 #include "cocos2d.h"
 #include "ui/CocosGUI.h"
-class GameWin : public cocos2d::ui::Layout
+class GameWin : public cocos2d::Layer
 {
 protected:
     GameWin();

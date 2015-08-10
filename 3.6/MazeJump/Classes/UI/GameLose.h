@@ -10,7 +10,7 @@
 
 #include "cocos2d.h"
 #include "ui/CocosGUI.h"
-class GameLose : public cocos2d::ui::Layout
+class GameLose : public cocos2d::Layer
 {
 protected:
     GameLose();

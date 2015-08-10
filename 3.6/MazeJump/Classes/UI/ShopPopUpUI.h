@@ -18,8 +18,6 @@ protected:
     virtual bool init();
 public:
 
-    virtual void onEnter();
-    virtual void onExit();
     
     static ShopPopUpUI* create();
 

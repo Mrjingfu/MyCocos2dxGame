@@ -12,8 +12,8 @@
 #include "cocos2d.h"
 #include "TerrainLayer.h"
 #include "Runner.h"
-#include "GameUI.h"
 #include "RibbonTrail.h"
+
 class RunController : public cocos2d::Ref
 {
     RunController();
@@ -33,7 +33,7 @@ public:
     TerrainLayer* getTerrainLayer() const { return m_pTerrainLayer; }
     cocos2d::Camera* getMainCamera() const { return m_pMainCamera; }
     Runner* getMainPlayer() const { return m_pMainPlayer; }
-    GameUI* getGameUiLayer()const {return m_gameUI;}
+
     RunnerGameState getGameState() const { return m_GameState; }
     void setGameState(RunnerGameState state);
 
@@ -86,7 +86,7 @@ private:
     cocos2d::DirectionLight*     m_pTerrainDirectionLight;
     
     RunnerGameState m_GameState;
-    GameUI* m_gameUI;
+
     
 private:
     cocos2d::Color3B         m_randomColor0;
