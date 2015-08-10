@@ -12,7 +12,10 @@
 #include "GameConst.h"
 #include "UIManager.h"
 #include "storage/local-storage/LocalStorage.h"
+#include "AudioEngine.h"
 USING_NS_CC;
+using namespace experimental;
+
 
 Scene* MenuScene::createScene()
 {
@@ -62,7 +65,7 @@ bool MenuScene::init()
     m_pWhiteLayer->runAction(fadeOut);
 
     
-    Skybox* skyBox = Skybox::create("sky3.png", "sky3.png", "sky3.png", "sky3.png", "sky3.png", "sky3.png");
+    Skybox* skyBox = Skybox::create("sky5.png", "sky5.png", "sky5.png", "sky5.png", "sky5.png", "sky5.png");
     if(!skyBox)
         return false;
     skyBox->setScale(1000);
@@ -156,13 +159,13 @@ bool MenuScene::init()
     m_pRainbow = RibbonTrail::create("ribbontrail.png", 70, 2000);
     if(!m_pRainbow)
         return false;
-    m_pRainbow->setPosition3D(Vec3(-1100, -50, -800));
+    m_pRainbow->setPosition3D(Vec3(-1100, -35, -800));
     m_pRainbow->setCameraMask((unsigned short)CameraFlag::USER1);
     this->addChild(m_pRainbow);
     m_pRainbow->getTrail()->addNode(m_pRainbow);
     
     Vec3 pos = m_pRainbow->getPosition3D();
-    Vec3 target = m_pMainCamera->getPosition3D() + Vec3(0, -30, 0);
+    Vec3 target = m_pMainCamera->getPosition3D() + Vec3(0, -25, 0);
     m_dirDist = target - pos;
     
     auto dispatcher = Director::getInstance()->getEventDispatcher();
@@ -182,9 +185,13 @@ void MenuScene::onEnter()
     UIManager::getInstance()->init(this);
     UIManager::getInstance()->setGameUi(UIManager::UI_MAIN);
     scheduleUpdate();
+    
+    AudioEngine::play2d("rainbow.wav", false, 0.5f);
+    m_nBgID = AudioEngine::play2d("menubg.mp3", true, 0.5f);
 }
 void MenuScene::onExit()
 {
+    AudioEngine::stop(m_nBgID);
     unscheduleUpdate();
     UIManager::getInstance()->destory();
     Layer::onExit();
@@ -197,8 +204,8 @@ void MenuScene::update(float delta)
         if(m_fTime <=2.0f)
         {
             Vec3 pos = m_pRainbow->getPosition3D();
-            Vec3 target = m_pMainCamera->getPosition3D() + Vec3(0, -30, 0);
-            pos = pos + m_dirDist*delta*0.5f - Vec3(0, cosf(M_PI*(m_fTime-0.5f))*2, 0);
+            Vec3 target = m_pMainCamera->getPosition3D() + Vec3(0, -25, 0);
+            pos = pos + m_dirDist*delta*0.5f - Vec3(0, cosf(M_PI*(m_fTime-0.5f))*150*delta, 0);
             m_pRainbow->setPosition3D(pos);
             m_pRainbow->update(delta);
         }
@@ -261,5 +268,7 @@ void MenuScene::runnerJump()
         CallFunc* callFunc = CallFunc::create(CC_CALLBACK_0(MenuScene::startGame,this));
         Sequence* sequence = Sequence::create(spawn, callFunc, NULL);
         m_pRunner->runAction(sequence);
+        
+        AudioEngine::play2d("superjump.wav", false, 0.3f);
     }
 }

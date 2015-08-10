@@ -129,6 +129,11 @@ void Runner::setFakeShadow(cocos2d::Layer* ownerLayer)
     else
         CCLOG("create fake shadow failed!");
 }
+void Runner::setSpeedUp(bool speedUp)
+{
+    if(m_bSpeedUp != speedUp)
+        m_bSpeedUp = speedUp;
+}
 void Runner::onCollision(TerrainCell* cell)
 {
 }

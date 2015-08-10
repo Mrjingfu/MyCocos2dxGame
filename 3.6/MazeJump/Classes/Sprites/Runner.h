@@ -56,7 +56,7 @@ public:
     void setFakeShadow(cocos2d::Layer* ownerLayer);
     
     bool isSpeedUp() const { return m_bSpeedUp; }
-    void setSpeedUp(bool speedUp) { m_bSpeedUp = speedUp; }
+    void setSpeedUp(bool speedUp);
 private:
     void onEnterIdle();
     void onEnterMoveLeft();

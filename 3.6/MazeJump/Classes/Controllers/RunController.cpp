@@ -17,7 +17,9 @@
 #include "Particle3D/CCParticleSystem3D.h"
 #include "Particle3D/PU/CCPUParticleSystem3D.h"
 #include "UtilityHelper.h"
+#include "AudioEngine.h"
 USING_NS_CC;
+using namespace experimental;
 
 RunController* g_pRunControllerInstance = nullptr;
 RunController* RunController::getInstance()
@@ -45,7 +47,7 @@ RunController::RunController()
     m_pTerrainAmbLight = nullptr;
     m_pTerrainDirectionLight   = nullptr;
     m_GameState = RGS_FROZEN;
-    
+    m_bHasShowRainbow = false;
 }
 RunController::~RunController()
 {
@@ -154,6 +156,8 @@ bool RunController::init(Layer* pMainLayer)
     button2->setPosition(Vec2(size.width * 0.8f, size.height * 0.2f));
     button2->setPressedActionEnabled(true);
     button2->addClickEventListener([=](Ref* sender){
+        if (m_bHasShowRainbow)
+            return;
         showRainbow();
     });
     m_pMainLayer->addChild(button2);
@@ -162,6 +166,8 @@ bool RunController::init(Layer* pMainLayer)
     UIManager::getInstance()->showInfo(true);
     
     setGameState(RGS_FROZEN);
+    
+    m_nBgID = AudioEngine::play2d("mainbg.mp3",true, 0.5);
     return true;
 }
 void RunController::reset()
@@ -182,12 +188,14 @@ void RunController::reset()
         m_pMainCamera->stopAllActions();
         cameraTrackPlayer();
     }
+    AudioEngine::resume(m_nBgID);
+    AudioEngine::play2d("fadeout.wav");
 }
 void RunController::update(float delta)
 {
     if(m_pTerrainLayer)
         m_pTerrainLayer->update(delta);
-    if(m_pRainbow)
+    if(m_pRainbow&&m_bHasShowRainbow)
         m_pRainbow->update(delta);
     if(m_pMainPlayer)
         m_pMainPlayer->update(delta);
@@ -196,14 +204,14 @@ void RunController::update(float delta)
 }
 void RunController::destroy()
 {
-
+    AudioEngine::stop(m_nBgID);
     UIManager::getInstance()->destory();
 
     if(m_pRainbow)
     {
-        if(m_pRainbow->getReferenceCount() > 0)
-            m_pRainbow->removeFromParentAndCleanup(true);
-        m_pRainbow = nullptr;
+        AudioEngine::stop(m_nSpeedupSoundID);
+        m_pRainbow->getTrail()->removeNode(m_pRainbow);
+        m_bHasShowRainbow = false;
     }
 
     m_pMainLayer->removeAllChildren();
@@ -292,6 +300,7 @@ void RunController::switchToGameScene()
     if(scene)
     {
         m_bInMazeJump = true;
+        AudioEngine::pause(m_nBgID);
         Director::getInstance()->pushScene(scene);
     }
 }
@@ -415,20 +424,26 @@ void RunController::addDecoratorExplosion(const cocos2d::Vec3& pos)
         explosion->startParticleSystem();
     }
 }
+void RunController::pauseBgMusic()
+{
+    AudioEngine::pause(m_nBgID);
+    m_nSpeedupSoundID = AudioEngine::play2d("speedup.wav", true);
+}
+void RunController::resumeBgMusic()
+{
+    AudioEngine::stop(m_nSpeedupSoundID);
+    AudioEngine::resume(m_nBgID);
+}
 void RunController::showRainbow()
 {
+    if(m_bHasShowRainbow)
+        return;
     if(m_pMainLayer == nullptr || m_pMainPlayer == nullptr)
         return;
     if(m_pMainPlayer->isSpeedUp())
         return;
     if(m_pMainPlayer->getState() != Runner::RS_IDLE)
         return;
-    if(m_pRainbow)
-    {
-        if(m_pRainbow->getReferenceCount() > 0)
-            m_pRainbow->removeFromParentAndCleanup(true);
-        m_pRainbow = nullptr;
-    }
 
     m_pRainbow = RibbonTrail::create("ribbontrail.png", 42, 3000);
     if(!m_pRainbow)
@@ -445,35 +460,46 @@ void RunController::showRainbow()
     {
         EaseSineIn* tinyIn = EaseSineIn::create(TintBy::create(1.0f, -150, -150, -150));
         CallFunc* callFunc = CallFunc::create(CC_CALLBACK_0(Runner::setSpeedUp, m_pMainPlayer, true));
-        Sequence* sequence = Sequence::create(tinyIn, callFunc, NULL);
+        CallFunc* callFunc1 = CallFunc::create(CC_CALLBACK_0(RunController::pauseBgMusic, this));
+        Sequence* sequence = Sequence::create(tinyIn, callFunc, callFunc1,NULL);
         m_pTerrainAmbLight->runAction(sequence);
+            
+        AudioEngine::play2d("rainbowin.wav", false, 2.0f);
     }
+    m_bHasShowRainbow = true;
 }
 void RunController::hideRainbow()
 {
     if(m_pRainbow)
     {
+        m_pRainbow->getTrail()->removeNode(m_pRainbow);
         if(m_pRainbow->getReferenceCount() > 0)
             m_pRainbow->removeFromParentAndCleanup(true);
         m_pRainbow = nullptr;
     }
     if(m_pMainPlayer)
+    {
         m_pMainPlayer->setSpeedUp(false);
+        resumeBgMusic();
+    }
 }
 void RunController::checkRainbowIsShowOrHide()
 {
-    if(m_pMainPlayer->isSpeedUp())
+    if(m_bHasShowRainbow && m_pMainPlayer->isSpeedUp())
     {
         float playerPosZ = m_pMainPlayer->getPositionZ();
         float rainbowPosZ = m_pRainbow->getPositionZ();
         if(rainbowPosZ - playerPosZ >= 3000)
         {
-            hideRainbow();
+            AudioEngine::play2d("rainbowout.wav",false, 0.2f);
             if(m_pTerrainAmbLight)
             {
                 EaseSineOut* tinyIn = EaseSineOut::create(TintBy::create(1.0f, 150, 150, 150));
-                m_pTerrainAmbLight->runAction(tinyIn);
+                CallFunc* callFunc = CallFunc::create(CC_CALLBACK_0(RunController::hideRainbow, this));
+                Sequence* sequence = Sequence::create(tinyIn, callFunc,NULL);
+                m_pTerrainAmbLight->runAction(sequence);
             }
+            m_bHasShowRainbow = false;
         }
     }
 }

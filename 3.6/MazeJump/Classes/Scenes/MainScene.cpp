@@ -9,10 +9,8 @@
 #include "MainScene.h"
 #include "TerrainLayer.h"
 #include "RunController.h"
-#include "AudioEngine.h"
 #include "UIManager.h"
 USING_NS_CC;
-using namespace experimental;
 Scene* MainScene::createScene()
 {
     // 'scene' is an autorelease object
@@ -45,8 +43,6 @@ void MainScene::onEnter()
     
     scheduleUpdate();
     
-    
-    m_nBgID = AudioEngine::play2d("bg.mp3",true, 0.5);
     if(RunController::getInstance()->isInMazeJump())
         RunController::getInstance()->reset();
     else
@@ -57,7 +53,6 @@ void MainScene::onEnter()
 }
 void MainScene::onExit()
 {
-    AudioEngine::stop(m_nBgID);
     if(!RunController::getInstance()->isInMazeJump())
         RunController::getInstance()->destroy();
 

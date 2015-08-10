@@ -65,6 +65,8 @@ private:
     void switchToMenuScene();
     bool initCloud();
     void updateCloud();
+    void pauseBgMusic();
+    void resumeBgMusic();
 private:
     cocos2d::Layer*     m_pMainLayer;
     TerrainLayer*       m_pTerrainLayer;
@@ -87,7 +89,9 @@ private:
     
     RunnerGameState m_GameState;
 
-    
+    int     m_nBgID;
+    int     m_nSpeedupSoundID;
+    bool    m_bHasShowRainbow;
 private:
     cocos2d::Color3B         m_randomColor0;
     cocos2d::Color3B         m_randomColor1;

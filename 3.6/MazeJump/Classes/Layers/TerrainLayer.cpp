@@ -158,7 +158,7 @@ void TerrainLayer::onTouchEnded(Touch *touch, Event *event)
     m_TouchEnd = touch->getLocationInView();
     float distanceX = fabsf(m_TouchEnd.x - m_TouchBegin.x);
     float distanceY = fabsf(m_TouchEnd.y - m_TouchBegin.y);
-    if(distanceX>10 && distanceX >= distanceY)
+    if(distanceX>20 && distanceX >= distanceY)
     {
         if(m_TouchEnd.x < m_TouchBegin.x)
             jumpLeft();
@@ -167,7 +167,7 @@ void TerrainLayer::onTouchEnded(Touch *touch, Event *event)
     }
     else
     {
-        if(distanceY>10 && m_TouchEnd.y < m_TouchBegin.y)
+        if(distanceY>20 && m_TouchEnd.y < m_TouchBegin.y)
             jumpSuper();
         else
             jumpForward();
