@@ -14,6 +14,7 @@
 #include "PatternsManager.h"
 #include "AlisaMethod.h"
 #include "AudioEngine.h"
+#include "GameConst.h"
 USING_NS_CC;
 using namespace experimental;
 TerrainLayer* TerrainLayer::create()
@@ -86,7 +87,7 @@ void TerrainLayer::setCurrentPatternNum( int num )
         {
             int currentDifficultLevel = RunController::getInstance()->getInitDifficultLevel() + m_nCurrentPatternNum/10;
             RunController::getInstance()->setDifficultLevel(currentDifficultLevel);
-            RunController::getInstance()->getGameUiLayer()->setGameMessage(GameUI::UIMessage::GU_ADD_SCORE);
+            Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_MAX_DISTANCE_CHANGE);
             if(m_nCurrentPatternNum != 1)
                 AudioEngine::play2d("checkpoint.wav");
         }
@@ -109,7 +110,10 @@ void TerrainLayer::setCurrentPatternNum( int num )
 void TerrainLayer::setCurrentColumn( int column )
 {
     if(m_nColumn != column)
+    {
         m_nColumn = column;
+        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_RAINBOW_VALUE_CHANGE);
+    }
 }
 void TerrainLayer::setCurrentRow( int row )
 {
