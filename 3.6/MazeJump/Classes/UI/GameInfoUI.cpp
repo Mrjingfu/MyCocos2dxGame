@@ -10,6 +10,7 @@
 #include "GameConst.h"
 #include "MainScene.h"
 #include "UIManager.h"
+#include "GameConst.h"
 #include "storage/local-storage/LocalStorage.h"
 USING_NS_CC;
 
@@ -78,6 +79,16 @@ bool GameInfoUI::init()
     
     pauseImg->addClickEventListener(CC_CALLBACK_1(GameInfoUI::onPause, this));
 
+    
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_GOLD_CHANGE, std::bind(&GameInfoUI::onGoldChange, this, std::placeholders::_1));
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_HEART_CHANGE, std::bind(&GameInfoUI::onHeartChange, this, std::placeholders::_1));
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_MAX_DISTANCE_CHANGE, std::bind(&GameInfoUI::onMaxDistanceChange, this, std::placeholders::_1));
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_RAINBOW_VALUE_CHANGE, std::bind(&GameInfoUI::onRainbowValueChange, this, std::placeholders::_1));
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_RUNNER_LOSE, std::bind(&GameInfoUI::onRunnerLose, this, std::placeholders::_1));
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_MAZEJUMP_WIN, std::bind(&GameInfoUI::onMazeJumpWin, this, std::placeholders::_1));
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_MAZEJUMP_LOSE, std::bind(&GameInfoUI::onMazeJumpLose, this, std::placeholders::_1));
+
+
     return true;
 }
 void GameInfoUI::setPopUpId(BasePopUpUI::PopUp_UI popUpId)
@@ -113,31 +124,35 @@ void GameInfoUI::onhidePopup()
         this->setVisible(false);
     }
 }
-void GameInfoUI::onAddGold()
+void GameInfoUI::onGoldChange(cocos2d::EventCustom* sender)
 {
-    goldTv->setString(localStorageGetItem(USER_GOLD_NUM));
+    //goldTv->setString(localStorageGetItem(USER_GOLD_NUM));
 }
-void GameInfoUI::onAddHeart()
+void GameInfoUI::onHeartChange(cocos2d::EventCustom* sender)
 {
-    heartTv->setString(localStorageGetItem(USER_HEART_NUM));
+    //heartTv->setString(localStorageGetItem(USER_HEART_NUM));
 }
-void GameInfoUI::onAddScore()
+void GameInfoUI::onMaxDistanceChange(cocos2d::EventCustom* sender)
 {
     
 }
-void GameInfoUI::onRunLost()
+void GameInfoUI::onRainbowValueChange(cocos2d::EventCustom* sender)
+{
+}
+void GameInfoUI::onRunnerLose(cocos2d::EventCustom* sender)
 {
     CCLOG("GAME OVER");
 }
-void GameInfoUI::onGrounLost()
+void GameInfoUI::onMazeJumpWin(cocos2d::EventCustom* sender)
 {
     
 }
-void GameInfoUI::onGroundWin()
+void GameInfoUI::onMazeJumpLose(cocos2d::EventCustom* sender)
 {
     
 }
-void GameInfoUI::onGroundRecordEnd()
+
+void GameInfoUI::onGroundRecordEnd(cocos2d::EventCustom* sender)
 {
     
 }

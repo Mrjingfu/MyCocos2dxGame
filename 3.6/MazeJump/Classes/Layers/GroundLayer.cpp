@@ -803,19 +803,19 @@ void GroundLayer::decoratorOpe(Node* node,GroundCell* cell)
                 case Decorator::DecoratorType::DT_GOLD:
                 {
                 localStorageSetItem(USER_GOLD_NUM, Value(Value(localStorageGetItem(USER_GOLD_NUM)).asInt()+1).asString());
-                    
+                    Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_GOLD_CHANGE);
                 }
                     break;
                 case Decorator::DecoratorType::DT_HEART:
                 {
                     localStorageSetItem(USER_HEART_NUM, Value(Value(localStorageGetItem(USER_HEART_NUM)).asInt()+1).asString());
-                    
+                    Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_HEART_CHANGE);
                 }
                     break;
                 case Decorator::DecoratorType::DT_GOLD_BIG:
                 {
-                  localStorageSetItem(USER_GOLD_NUM, Value(Value(localStorageGetItem(USER_GOLD_NUM)).asInt()+5).asString());
-                  
+                    localStorageSetItem(USER_GOLD_NUM, Value(Value(localStorageGetItem(USER_GOLD_NUM)).asInt()+5).asString());
+                    Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_GOLD_CHANGE);
                 }
 
                     break;

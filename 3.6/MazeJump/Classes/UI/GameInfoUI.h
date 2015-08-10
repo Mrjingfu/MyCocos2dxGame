@@ -29,13 +29,15 @@ public:
 
     static GameInfoUI* create();
 private:
-    void onAddGold();
-    void onAddHeart();
-    void onAddScore();
-    void onRunLost();
-    void onGroundWin();
-    void onGrounLost();
-    void onGroundRecordEnd();
+    void onGoldChange(cocos2d::EventCustom* sender);
+    void onHeartChange(cocos2d::EventCustom* sender);
+    void onMaxDistanceChange(cocos2d::EventCustom* sender);
+    void onRainbowValueChange(cocos2d::EventCustom* sender);
+    void onRunnerLose(cocos2d::EventCustom* sender);
+    void onMazeJumpWin(cocos2d::EventCustom* sender);
+    void onMazeJumpLose(cocos2d::EventCustom* sender);
+    
+    void onGroundRecordEnd(cocos2d::EventCustom* sender);
     
     void onPause(cocos2d::Ref *ref);
     void onhidePopup();

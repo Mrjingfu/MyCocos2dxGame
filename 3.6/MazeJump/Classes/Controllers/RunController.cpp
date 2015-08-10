@@ -222,7 +222,7 @@ void RunController::setGameState(RunnerGameState state)
             case RGS_GAMEOVER:
                 {
                     CCLOG("gameOver");
-                    //setDifficultLevel(0);
+                    Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_RUNNER_LOSE);
                 }
                 break;
             default:

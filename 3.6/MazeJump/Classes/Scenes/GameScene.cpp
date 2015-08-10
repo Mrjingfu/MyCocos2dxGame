@@ -12,6 +12,7 @@
 #include "LevelsManager.h"
 #include "StepManager.h"
 #include "AudioEngine.h"
+#include "GameConst.h"
 USING_NS_CC;
 using namespace experimental;
 
@@ -70,13 +71,13 @@ void GameScene::update(float delta)
 void GameScene::gameWin()
 {
     CCLOG("gameWin");
-    
+    Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_MAZEJUMP_WIN);
 
 }
 void GameScene::gameLose()
 {
     CCLOG("gameLose");
-   
+    Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_MAZEJUMP_LOSE);
 }
 void GameScene::gameRecordEnd()
 {
