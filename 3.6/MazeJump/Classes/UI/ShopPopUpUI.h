@@ -18,7 +18,8 @@ protected:
     virtual bool init();
 public:
 
-    
+    virtual void onEnter() override;
+    virtual void onExit() override;
     static ShopPopUpUI* create();
 
     void onBuyGold(Ref* ref);
@@ -31,7 +32,8 @@ public:
     void onBuyCoin3(Ref* ref);
     void onBuyCoin4(Ref* ref);
     void onBuyCoin5(Ref* ref);
-
+    void onBackShop(Ref* ref);
+    
     void onProduct(const std::string& productId);
 private:
     cocos2d::Layer* productLayer;

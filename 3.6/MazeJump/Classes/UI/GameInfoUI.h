@@ -15,9 +15,7 @@
 
 class GameInfoUI : public cocos2d::Layer
 {
-public:
 
-    void setPopUpId(BasePopUpUI::PopUp_UI popUpId);
 protected:
 
     GameInfoUI();
@@ -26,8 +24,12 @@ protected:
 
     
 public:
-
+    virtual void onEnter() override;
+    virtual void onExit() override;
     static GameInfoUI* create();
+    void setPopUpId(BasePopUpUI::PopUp_UI popUpId);
+    void removePopUpId();
+    void onhideEndPopup();
 private:
     void onGoldChange(cocos2d::EventCustom* sender);
     void onHeartChange(cocos2d::EventCustom* sender);
@@ -40,12 +42,14 @@ private:
     void onGroundRecordEnd(cocos2d::EventCustom* sender);
     
     void onPause(cocos2d::Ref *ref);
-    void onhidePopup();
+    
+    void onshowStartEnd();
     cocos2d::ui::Text* goldTv;
     cocos2d::ui::Text* heartTv;
     cocos2d::ui::Text* gameScoreTv;
     cocos2d::ui::Button* pauseImg;
-    BasePopUpUI::PopUp_UI m_popUpUiId;
+    cocos2d::Layer* disLayer;
+    std::vector<BasePopUpUI::PopUp_UI> m_popUpIds;
     bool  isNowHidePopup;
 };
 

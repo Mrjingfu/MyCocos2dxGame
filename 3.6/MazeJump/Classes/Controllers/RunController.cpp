@@ -164,6 +164,7 @@ bool RunController::init(Layer* pMainLayer)
     
     UIManager::getInstance()->init(m_pMainLayer);
     UIManager::getInstance()->showInfo(true);
+    UIManager::getInstance()->setGameUi(UIManager::UI_GAME);
     
     setGameState(RGS_FROZEN);
     
@@ -216,6 +217,8 @@ void RunController::destroy()
 
     m_pMainLayer->removeAllChildren();
     m_pMainLayer = nullptr;
+    UIManager::getInstance()->destory();
+    
 }
 void RunController::setGameState(RunnerGameState state)
 {

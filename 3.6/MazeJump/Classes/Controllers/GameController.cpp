@@ -41,7 +41,7 @@ bool GameController::init(Layer* pMainLayer,int difficultLevel)
     
     UIManager::getInstance()->init(m_pMainLayer);
     UIManager::getInstance()->showInfo(true);
-    
+    UIManager::getInstance()->setGameUi(UIManager::UI_GAME);
     
     m_pWhiteLayer = LayerColor::create(Color4B::WHITE);
     if(!m_pWhiteLayer)
@@ -122,9 +122,9 @@ void GameController::update(float delta)
 }
 void GameController::destroy()
 {
-    UIManager::getInstance()->destory();
     m_pMainLayer->removeAllChildren();
     m_pMainLayer = nullptr;
+    UIManager::getInstance()->destory();
 }
 
 bool GameController::createMap(bool _playing,int level,int difficultLevel)

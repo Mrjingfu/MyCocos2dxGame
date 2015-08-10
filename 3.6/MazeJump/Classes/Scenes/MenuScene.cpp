@@ -56,6 +56,8 @@ bool MenuScene::init()
     }
     this->setAnchorPoint(Vec2::ZERO);
     
+    UIManager::getInstance()->init(this);
+    UIManager::getInstance()->setGameUi(UIManager::UI_MAIN);
     
     m_pWhiteLayer = LayerColor::create(Color4B::WHITE);
     if(!m_pWhiteLayer)
@@ -175,15 +177,15 @@ bool MenuScene::init()
     touchListener->onTouchBegan = CC_CALLBACK_2(MenuScene::onTouchBegan, this);
     dispatcher->addEventListenerWithSceneGraphPriority(touchListener, this);
     
+    
+
+    
     return true;
 }
 
 void MenuScene::onEnter()
 {
     Layer::onEnter();
-    
-    UIManager::getInstance()->init(this);
-    UIManager::getInstance()->setGameUi(UIManager::UI_MAIN);
     scheduleUpdate();
     
     AudioEngine::play2d("rainbow.wav", false, 0.5f);

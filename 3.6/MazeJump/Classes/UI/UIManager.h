@@ -25,17 +25,16 @@ public:
     static UIManager* getInstance();
     
     void addPopUp(BasePopUpUI::PopUp_UI popid);
-
-    void showPopUp(BasePopUpUI::Popup_Show popupShow =BasePopUpUI::POPUP_VERTICAL ,bool isShowMask = true  ,const std::function<void()> &func = nullptr );
+    void showPopUp(bool isPlayAn = true,BasePopUpUI::Popup_Show popupShow =BasePopUpUI::POPUP_VERTICAL ,const std::function<void()> &endfunc = nullptr,cocos2d::Vec2= cocos2d::Vec2::ZERO );
     
     void setGameUi(Game_UI gameui);
-    
-    void hidePopUp(const std::function<void()> &func = nullptr);
+    void hidePopUp(const std::function<void()> &endfunc = nullptr);
     Game_UI getGameId(){return m_gameUiId;}
     void showInfo(bool isShowInfo);
     void init(cocos2d::Layer* layer);
     void destory();
     void removePopUp(BasePopUpUI* popUi);
+    void onGameInfoHidePopUp();
 private:
     
     
@@ -43,11 +42,8 @@ private:
     cocos2d::Vector<BasePopUpUI*> m_popUps;
     cocos2d::Node* m_parent;
     cocos2d::Layer* m_gameLayer;
-    cocos2d::Layer* m_maskLayer;
-    cocos2d::Layer* m_maskLayerBg;
     cocos2d::Layer* m_dialogLayer;
     GameInfoUI* m_gameInfoLayer;
-    bool m_isShowDialog;
     Game_UI m_gameUiId;
 };
 

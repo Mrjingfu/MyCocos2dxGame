@@ -28,7 +28,6 @@ GameInfoUI* GameInfoUI::create()
 
 GameInfoUI::GameInfoUI()
 {
-    m_popUpUiId = BasePopUpUI::POPUP_UNKOWN;
     isNowHidePopup = false;
 }
 GameInfoUI::~GameInfoUI()
@@ -41,45 +40,63 @@ bool GameInfoUI::init()
     auto size = Director::getInstance()->getVisibleSize();
     float scale = size.height /960.0f;
     
+    disLayer = cocos2d::Layer::create();
+    addChild(disLayer);
+    
     ui::ImageView* glodView = ui::ImageView::create("ui_gold_bar.png");
     glodView->setPosition(Vec2(size.width*0.15, size.height*0.95));
     glodView->setScale(scale);
     addChild(glodView);
     
-     goldTv = ui::Text::create(StringUtils::format("%d",Value(localStorageGetItem(USER_GOLD_NUM)).asInt()), FONT_FXZS, 35);
-    goldTv->setPosition(Vec2(glodView->getContentSize().width/2*scale+10*scale,glodView->getContentSize().height/2*scale +8*scale));
+    goldTv = ui::Text::create(StringUtils::format("%d",Value(localStorageGetItem(USER_GOLD_NUM)).asInt()), FONT_FXZS, 25);
+    goldTv->setPosition(Vec2(size.width*0.15+25*scale,size.height*0.95 ));
     goldTv->setScale(scale);
-    glodView->addChild(goldTv);
+    addChild(goldTv);
     
     ui::ImageView* heartView = ui::ImageView::create("ui_heart_bar.png");
     heartView->setPosition(Vec2(size.width*0.13, size.height*0.95-glodView->getContentSize().height*scale - 5*scale));
     heartView->setScale(scale);
     addChild(heartView);
     
-     heartTv = ui::Text::create(StringUtils::format("%d",Value(localStorageGetItem(USER_HEART_NUM)).asInt()), FONT_FXZS, 35);
-    heartTv->setPosition(Vec2(heartView->getContentSize().width/2*scale+15*scale, heartView->getContentSize().height/2*scale+8*scale));
+    heartTv = ui::Text::create(StringUtils::format("%d",Value(localStorageGetItem(USER_HEART_NUM)).asInt()), FONT_FXZS, 25);
+    heartTv->setPosition(Vec2(size.width*0.13+22*scale, size.height*0.95-glodView->getContentSize().height*scale - 5*scale));
     heartTv->setScale(scale);
-    heartView->addChild(heartTv);
+    addChild(heartTv);
     
     
     ui::ImageView* disImg = ui::ImageView::create("ui_distance.png");
-    disImg->setPosition(Vec2(size.width*0.53, size.height*0.92));
+    disImg->setPosition(Vec2(size.width*0.53, size.height*0.95));
     disImg->setScale(scale);
-    addChild(disImg);
+    disLayer->addChild(disImg);
 
-    gameScoreTv = ui::Text::create(UtilityHelper::getLocalString("GAME_DISTANCE"), FONT_FXZS, 35);
-    gameScoreTv->setPosition(Vec2(size.width*0.53, size.height*0.96));
+    gameScoreTv = ui::Text::create(StringUtils::format(UtilityHelper::getLocalString("GAME_DISTANCE").c_str(),Value(localStorageGetItem(USER_LAST_LEVEL)).asInt()), FONT_FXZS, 25);
+    gameScoreTv->setPosition(Vec2(size.width*0.48, size.height*0.95));
     gameScoreTv->setScale(scale);
-    addChild(gameScoreTv);
+    disLayer->addChild(gameScoreTv);
     
     pauseImg = ui::Button::create("btn_pause_normal.png","btn_pause_press.png");
     pauseImg->setPosition(Vec2(size.width*0.9, size.height*0.93));
     pauseImg->setScale(scale);
-    addChild(pauseImg);
+    disLayer->addChild(pauseImg);
     
     pauseImg->addClickEventListener(CC_CALLBACK_1(GameInfoUI::onPause, this));
 
-    
+
+
+    return true;
+}
+void GameInfoUI::setPopUpId(BasePopUpUI::PopUp_UI popUpId)
+{
+     m_popUpIds.push_back(popUpId);
+}
+void GameInfoUI::removePopUpId()
+{
+    auto it = std::next( m_popUpIds.begin(), m_popUpIds.size()-1 );
+    m_popUpIds.erase(it);
+}
+ void GameInfoUI::onEnter()
+{
+    Layer::onEnter();
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_GOLD_CHANGE, std::bind(&GameInfoUI::onGoldChange, this, std::placeholders::_1));
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_HEART_CHANGE, std::bind(&GameInfoUI::onHeartChange, this, std::placeholders::_1));
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_MAX_DISTANCE_CHANGE, std::bind(&GameInfoUI::onMaxDistanceChange, this, std::placeholders::_1));
@@ -87,54 +104,86 @@ bool GameInfoUI::init()
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_RUNNER_LOSE, std::bind(&GameInfoUI::onRunnerLose, this, std::placeholders::_1));
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_MAZEJUMP_WIN, std::bind(&GameInfoUI::onMazeJumpWin, this, std::placeholders::_1));
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_MAZEJUMP_LOSE, std::bind(&GameInfoUI::onMazeJumpLose, this, std::placeholders::_1));
-
-
-    return true;
 }
-void GameInfoUI::setPopUpId(BasePopUpUI::PopUp_UI popUpId)
+ void GameInfoUI::onExit()
 {
-    m_popUpUiId = popUpId;
-    if (m_popUpUiId!=BasePopUpUI::POPUP_UNKOWN) {
+    Layer::onExit();
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_GOLD_CHANGE);
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_HEART_CHANGE);
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_MAX_DISTANCE_CHANGE);
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_RAINBOW_VALUE_CHANGE);
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_RUNNER_LOSE);
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_MAZEJUMP_WIN);
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_MAZEJUMP_LOSE);
+}
+void GameInfoUI::onPause(cocos2d::Ref *ref)
+{
+
+    if (isNowHidePopup)
+        return;
+    
+    
+    if ( m_popUpIds.size()>0) {
+        
+
+        if (UIManager::getInstance()->getGameId() == UIManager::UI_GAME && m_popUpIds.size() ==1)
+        {
+            Director::getInstance()->resume();
+        }
+        isNowHidePopup = true;
+        UIManager::getInstance()->hidePopUp(CC_CALLBACK_0(GameInfoUI::onhideEndPopup, this));
+        
+
+    }else{
+
+        UIManager::getInstance()->addPopUp(BasePopUpUI::POPUP_SHOP);
+        UIManager::getInstance()->showPopUp(true,BasePopUpUI::POPUP_HORIZONTAL,CC_CALLBACK_0(GameInfoUI::onshowStartEnd, this));
+    }
+    
+    if (m_popUpIds.size() > 0) {
         pauseImg->loadTextureNormal("btn_back_normal.png");
         pauseImg->loadTexturePressed("btn_back_press.png");
+    }
+    
+    
+}
+void GameInfoUI::onshowStartEnd()
+{
+    if (UIManager::getInstance()->getGameId() == UIManager::UI_GAME && m_popUpIds.size()>0) {
+        Director::getInstance()->pause();
+    }
+}
+
+void GameInfoUI::onhideEndPopup()
+{
+    isNowHidePopup = false;
+    BasePopUpUI::PopUp_UI lpopUpId = m_popUpIds.back();
+    if (UIManager::getInstance()->getGameId() == UIManager::UI_MAIN && lpopUpId==BasePopUpUI::POPUP_SHOP) {
+        this->setVisible(false);
     }else{
+        removePopUpId();
+    }
+    if (m_popUpIds.size() ==0) {
+        
         pauseImg->loadTextureNormal("btn_pause_normal.png");
         pauseImg->loadTexturePressed("btn_pause_press.png");
     }
     
 }
-
-void GameInfoUI::onPause(cocos2d::Ref *ref)
-{
-    if (isNowHidePopup)
-        return;
-        CCLOG("on pause");
-    if (m_popUpUiId!=BasePopUpUI::POPUP_UNKOWN) {
-        UIManager::getInstance()->hidePopUp(CC_CALLBACK_0(GameInfoUI::onhidePopup, this));
-        isNowHidePopup = true;
-    }else{
-        UIManager::getInstance()->addPopUp(BasePopUpUI::POPUP_SHOP);
-        UIManager::getInstance()->showPopUp(BasePopUpUI::POPUP_HORIZONTAL);
-    }
-}
-void GameInfoUI::onhidePopup()
-{
-    isNowHidePopup = false;
-    if (UIManager::getInstance()->getGameId() == UIManager::UI_MAIN) {
-        this->setVisible(false);
-    }
-}
 void GameInfoUI::onGoldChange(cocos2d::EventCustom* sender)
 {
-    //goldTv->setString(localStorageGetItem(USER_GOLD_NUM));
+    if(goldTv)
+        goldTv->setString(localStorageGetItem(USER_GOLD_NUM));
 }
 void GameInfoUI::onHeartChange(cocos2d::EventCustom* sender)
 {
-    //heartTv->setString(localStorageGetItem(USER_HEART_NUM));
+    if (heartTv)
+        heartTv->setString(localStorageGetItem(USER_HEART_NUM));
 }
 void GameInfoUI::onMaxDistanceChange(cocos2d::EventCustom* sender)
 {
-    
+    if (gameScoreTv)
+        gameScoreTv->setString(StringUtils::format(UtilityHelper::getLocalString("GAME_DISTANCE").c_str(),Value(localStorageGetItem(USER_LAST_LEVEL)).asInt()));
 }
 void GameInfoUI::onRainbowValueChange(cocos2d::EventCustom* sender)
 {
@@ -142,6 +191,9 @@ void GameInfoUI::onRainbowValueChange(cocos2d::EventCustom* sender)
 void GameInfoUI::onRunnerLose(cocos2d::EventCustom* sender)
 {
     CCLOG("GAME OVER");
+    UIManager::getInstance()->addPopUp(BasePopUpUI::POPUP_CONTINUE);
+    UIManager::getInstance()->showPopUp();
+    
 }
 void GameInfoUI::onMazeJumpWin(cocos2d::EventCustom* sender)
 {
