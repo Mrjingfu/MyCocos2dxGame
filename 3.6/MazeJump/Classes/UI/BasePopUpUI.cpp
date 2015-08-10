@@ -17,76 +17,129 @@ BasePopUpUI::BasePopUpUI()
 
 
     m_popupShow = POPUP_VERTICAL;
-
+    m_isShowDialog = false;
+    m_isPlayAn = true;
+    m_pt = Vec2::ZERO;
 }
 BasePopUpUI::~BasePopUpUI()
 {
 }
-
-
-void BasePopUpUI::showPopUp(Popup_Show popupShow,const std::function<void()> &func)
+void BasePopUpUI::onEnter()
 {
+    Layer::onEnter();
     Size size = Director::getInstance()->getVisibleSize();
-    m_popupShow = popupShow;
- 
-        if (m_popupShow==POPUP_HORIZONTAL) {
-            
-           setPosition(Vec2(size.width, 0));
-            
-            cocos2d::MoveTo* moveTo = cocos2d::MoveTo::create(0.5,Vec2::ZERO);
-            cocos2d::EaseBackOut* inout = cocos2d::EaseBackOut::create(moveTo);
-            if (func) {
-                CallFunc* callFunc = CallFunc::create(func);
-                runAction(Sequence::create(inout,callFunc, NULL));
-            }else{
-                runAction(inout);
-            }
-            
-        }else if (m_popupShow==POPUP_VERTICAL)
-        {
-            setPosition(Vec2(0, size.height));
-            cocos2d::MoveTo* moveTo = cocos2d::MoveTo::create(0.5,Vec2::ZERO);
-            cocos2d::EaseBackOut* inout = cocos2d::EaseBackOut::create(moveTo);
-            if (func) {
-                CallFunc* callFunc = CallFunc::create(func);
-                runAction(Sequence::create(moveTo,callFunc, NULL));
-            }else{
-                runAction(inout);
-            }
+    m_maskLayer = cocos2d::Layer::create();
+    addChild(m_maskLayer,LAYER_MASK);
+    
+    
+    auto m_maskLayerBg = cocos2d::LayerColor::create(cocos2d::Color4B(0, 0, 0, 150));
+    m_maskLayerBg->setContentSize(size);
+    m_maskLayer->addChild(m_maskLayerBg);
+    
+    auto listener = EventListenerTouchOneByOne::create();
+    listener->setSwallowTouches(true);
+    listener->onTouchBegan =  [this](Touch * ,Event *)
+    {
+        if (m_isShowDialog) {
+            return true;
+        }else{
+            return false;
         }
-
-}
-void BasePopUpUI::hidePopUp(const std::function<void()> &func )
-{
-     Size size = Director::getInstance()->getVisibleSize();
-
         
-        if (m_popupShow == POPUP_VERTICAL ) {
-            
-            cocos2d::MoveTo* moveTo = cocos2d::MoveTo::create(0.5,Vec2(0,size.height));
-            cocos2d::EaseBackIn* backIn = cocos2d::EaseBackIn::create(moveTo);
-            CallFunc* callFunc1 = CallFunc::create(CC_CALLBACK_0(UIManager::removePopUp,UIManager::getInstance(),this));
-            if (func) {
-                CallFunc* callFunc2 = CallFunc::create(func);
-                runAction(Sequence::create (backIn,callFunc1,callFunc2,NULL));
-            }else
-            {
-                runAction(Sequence::create( backIn,callFunc1,NULL));
-            }
-        }else if (m_popupShow == POPUP_HORIZONTAL)
-        {
-            cocos2d::MoveTo* moveTo = cocos2d::MoveTo::create(0.5,Vec2(size.width,0));
-            cocos2d::EaseBackIn* backIn = cocos2d::EaseBackIn::create(moveTo);
-            CallFunc* callFunc1 = CallFunc::create(CC_CALLBACK_0(UIManager::removePopUp,UIManager::getInstance(),this));
-            if (func) {
-                CallFunc* callFunc2 = CallFunc::create(func);
-                runAction(Sequence::create(backIn,callFunc1,callFunc2,NULL));
-            }else
-            {
-                runAction(Sequence::create( backIn,callFunc1,NULL));
-            }
-        }
+    };
+    Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener,m_maskLayer);
+    
+    m_dialogLayer = cocos2d::Layer::create();
+    addChild(m_dialogLayer,LAYER_DIALOG,LAYER_DIALOG);
+    
+    }
 
+void BasePopUpUI::onExit()
+{
+    Layer::onExit();
     
 }
 
+void BasePopUpUI::showPopUp(bool isPlayAn,cocos2d::Vec2 vc,Popup_Show popupShow,const std::function<void()> &endfunc)
+{
+    Size size = Director::getInstance()->getVisibleSize();
+    m_isShowDialog =true;
+    m_isPlayAn = isPlayAn;
+    m_pt = vc;
+    m_popupShow = popupShow;
+    
+    if (!m_isPlayAn) {
+        m_dialogLayer->setPosition(vc);
+        if ( endfunc)
+        {
+            CallFunc* endcallFunc = CallFunc::create(endfunc);
+            m_dialogLayer->runAction(endcallFunc);
+        }
+        return;
+    }
+
+    if (m_popupShow==POPUP_HORIZONTAL) {
+        
+       m_dialogLayer->setPosition(Vec2(size.width, 0));
+        
+    }else if (m_popupShow==POPUP_VERTICAL)
+    {
+        m_dialogLayer->setPosition(Vec2(0, size.height));
+        
+    }
+    cocos2d::MoveTo* moveTo = cocos2d::MoveTo::create(0.5,vc);
+    cocos2d::EaseBackOut* inout = cocos2d::EaseBackOut::create(moveTo);
+    if ( endfunc)
+    {
+        CallFunc* endcallFunc = CallFunc::create(endfunc);
+        m_dialogLayer->runAction(Sequence::create(inout,endcallFunc, NULL));
+    }else{
+        m_dialogLayer->runAction(inout);
+    }
+}
+void BasePopUpUI::hidePopUp(const std::function<void()> &endfunc )
+{
+     Size size = Director::getInstance()->getVisibleSize();
+    if (!m_isPlayAn) {
+
+        onHidePopUpEnd();
+        UIManager::getInstance()->onGameInfoHidePopUp();
+        UIManager::getInstance()->removePopUp(this);
+        
+        
+        return;
+    }
+    
+        cocos2d::MoveTo* moveTo = nullptr;
+        if (m_popupShow == POPUP_VERTICAL ) {
+            
+            moveTo = cocos2d::MoveTo::create(0.5,Vec2(0,size.height));
+            
+        }else if (m_popupShow == POPUP_HORIZONTAL)
+        {
+             moveTo = cocos2d::MoveTo::create(0.5,Vec2(size.width,0));
+        }
+    cocos2d::EaseBackIn* backIn = cocos2d::EaseBackIn::create(moveTo);
+    CallFunc* callFunc1 = CallFunc::create(CC_CALLBACK_0(BasePopUpUI::onHidePopUpEnd,this));
+    CallFunc* callFunc2 = CallFunc::create(CC_CALLBACK_0(UIManager::removePopUp,UIManager::getInstance(),this));
+     if (endfunc)
+    {
+        CallFunc* endcallFunc = CallFunc::create(endfunc);
+        m_dialogLayer->runAction(Sequence::create (backIn,callFunc1,endcallFunc,callFunc2,NULL));
+    }else
+    {
+        m_dialogLayer->runAction(Sequence::create( backIn,callFunc1,callFunc2,NULL));
+    }
+    
+}
+void BasePopUpUI::onHidePopUpEnd()
+{
+    m_isShowDialog=false;
+    m_isPlayAn = true;
+    if (m_dialogLayer)
+    {
+        m_dialogLayer->setPosition(m_pt);
+ 
+    }
+
+}

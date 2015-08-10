@@ -18,7 +18,8 @@ protected:
     virtual ~StarPopUpUI();
     virtual bool init() ;
 public:
-
+    virtual void onEnter() override;
+    virtual void onExit() override;
     static StarPopUpUI* create();
     void onPlayGame(Ref* ref);
     void onResumeGame(Ref* ref);

@@ -9,13 +9,14 @@
 #include "UtilityHelper.h"
 #include "GameConst.h"
 #include "MainScene.h"
+#include "UIManager.h"
 #include "storage/local-storage/LocalStorage.h"
 USING_NS_CC;
 
 ShopPopUpUI* ShopPopUpUI::create()
 {
     ShopPopUpUI *pRet = new(std::nothrow) ShopPopUpUI();
-    if (pRet && pRet->init())
+    if (pRet)
     {
         pRet->autorelease();
         return pRet;
@@ -30,7 +31,16 @@ ShopPopUpUI::ShopPopUpUI()
 ShopPopUpUI::~ShopPopUpUI()
 {
 }
-
+void ShopPopUpUI::onEnter()
+{
+    BasePopUpUI::onEnter();
+    init();
+}
+void ShopPopUpUI::onExit()
+{
+    BasePopUpUI::onExit();
+    
+}
 bool ShopPopUpUI::init()
 {
 
@@ -42,71 +52,71 @@ bool ShopPopUpUI::init()
     ui::ImageView* bgView = ui::ImageView::create("ui_shop_bg.png");
     bgView->setPosition(Vec2(size.width*0.5, size.height*0.4));
     bgView->setScale(scale);
-    addChild(bgView);
+    m_dialogLayer->addChild(bgView);
     
     productLayer = Layer::create();
-    addChild(productLayer);
+    m_dialogLayer->addChild(productLayer);
     
     goldProductLayer = Layer::create();
-    addChild(goldProductLayer);
+    m_dialogLayer->addChild(goldProductLayer);
     
    
     
     ui::ImageView* shopTv = ui::ImageView::create("ui_shop_icon.png");
     shopTv->setPosition(Vec2(size.width*0.4, size.height*0.7));
     shopTv->setScale(scale);
-    addChild(shopTv);
+    m_dialogLayer->addChild(shopTv);
 
     ui::Button* goldBuyBtn = ui::Button::create("btn_glodmore_normal.png","btn_glodmore_press.png");
-    goldBuyBtn->setPosition(Vec2(size.width*0.42, size.height*0.48));
+    goldBuyBtn->setPosition(Vec2(size.width*0.4, size.height*0.48));
     goldBuyBtn->setScale(scale);
     productLayer->addChild(goldBuyBtn);
     
     ui::Button* heartBuyBtn = ui::Button::create("btn_heartbuy_normal.png","btn_heartbuy_press.png");
-    heartBuyBtn->setPosition(Vec2(size.width*0.42+goldBuyBtn->getContentSize().width*scale+50*scale, size.height*0.48));
+    heartBuyBtn->setPosition(Vec2(size.width*0.4+goldBuyBtn->getContentSize().width*scale+50*scale, size.height*0.48));
     heartBuyBtn->setScale(scale);
     productLayer->addChild(heartBuyBtn);
 
     ui::Button* adsBuyBtn = ui::Button::create("btn_removeadd_noraml.png","btn_removeadd_press.png");
-    adsBuyBtn->setPosition(Vec2(size.width*0.42, size.height*0.44-goldBuyBtn->getContentSize().height*scale ));
+    adsBuyBtn->setPosition(Vec2(size.width*0.4, size.height*0.44-goldBuyBtn->getContentSize().height*scale ));
     adsBuyBtn->setScale(scale);
     productLayer->addChild(adsBuyBtn);
     
     ui::Button* restoreBtn = ui::Button::create("btn_restore_normal.png","btn_restore_press.png");
-    restoreBtn->setPosition(Vec2(size.width*0.42+adsBuyBtn->getContentSize().width*scale+50*scale, size.height*0.44-goldBuyBtn->getContentSize().height*scale));
+    restoreBtn->setPosition(Vec2(size.width*0.4+adsBuyBtn->getContentSize().width*scale+50*scale, size.height*0.44-goldBuyBtn->getContentSize().height*scale));
     restoreBtn->setScale(scale);
     productLayer->addChild(restoreBtn);
     
     
 
     ui::Button* coin1_Btn = ui::Button::create("btn_coins01_normal.png","btn_coins01_press.png");
-    coin1_Btn->setPosition(Vec2(size.width*0.42, size.height*0.5));
+    coin1_Btn->setPosition(Vec2(size.width*0.4, size.height*0.52));
     coin1_Btn->setScale(scale);
     goldProductLayer->addChild(coin1_Btn);
     
     
     ui::Button* coin2_Btn = ui::Button::create("btn_coins02_normal.png","btn_coins02_press.png");
-    coin2_Btn->setPosition(Vec2(size.width*0.42+coin1_Btn->getContentSize().width*scale+50*scale, size.height*0.5));
+    coin2_Btn->setPosition(Vec2(size.width*0.4+coin1_Btn->getContentSize().width*scale+50*scale, size.height*0.52));
     coin2_Btn->setScale(scale);
     goldProductLayer->addChild(coin2_Btn);
     
     ui::Button* coin3_Btn = ui::Button::create("btn_coins03_normal.png","btn_coins03_press.png");
-    coin3_Btn->setPosition(Vec2(size.width*0.42, size.height*0.5-coin2_Btn->getContentSize().width*scale - 20*scale));
+    coin3_Btn->setPosition(Vec2(size.width*0.4, size.height*0.52-coin2_Btn->getContentSize().width*scale - 20*scale));
     coin3_Btn->setScale(scale);
     goldProductLayer->addChild(coin3_Btn);
     
     ui::Button* coin4_Btn = ui::Button::create("btn_coins04_normal.png","btn_coins04_press.png");
-    coin4_Btn->setPosition(Vec2(size.width*0.42+coin1_Btn->getContentSize().width*scale+50*scale, size.height*0.5-coin2_Btn->getContentSize().width*scale - 20*scale));
+    coin4_Btn->setPosition(Vec2(size.width*0.4+coin1_Btn->getContentSize().width*scale+50*scale, size.height*0.52-coin2_Btn->getContentSize().width*scale - 20*scale));
     coin4_Btn->setScale(scale);
     goldProductLayer->addChild(coin4_Btn);
     
     ui::Button* coin5_Btn = ui::Button::create("btn_coins05_normal.png","btn_coins05_press.png");
-    coin5_Btn->setPosition(Vec2(size.width*0.42, size.height*0.5-coin2_Btn->getContentSize().width*2*scale - 40*scale));
+    coin5_Btn->setPosition(Vec2(size.width*0.4, size.height*0.52-coin2_Btn->getContentSize().width*2*scale - 40*scale));
     coin5_Btn->setScale(scale);
     goldProductLayer->addChild(coin5_Btn);
     
-    ui::Button* backBtn = ui::Button::create("btn_back_normal.png","btn_back_press.png");
-    backBtn->setPosition(Vec2(size.width*0.42+coin1_Btn->getContentSize().width*scale+50*scale, size.height*0.5-coin2_Btn->getContentSize().width*2*scale - 40*scale));
+    ui::Button* backBtn = ui::Button::create("btn_shopback_normal.png","btn_shopback_press.png");
+    backBtn->setPosition(Vec2(size.width*0.4+coin1_Btn->getContentSize().width*scale+50*scale, size.height*0.52-coin2_Btn->getContentSize().width*2*scale - 40*scale));
     backBtn->setScale(scale);
     goldProductLayer->addChild(backBtn);
 
@@ -136,8 +146,11 @@ void ShopPopUpUI::onBuyGold(cocos2d::Ref *ref)
 }
 void ShopPopUpUI::onBuyHeart(cocos2d::Ref *ref)
 {
+
     CCLOG("onBuyHeart");
-  }
+    UIManager::getInstance()->addPopUp(BasePopUpUI::POPUP_CONTINUE);
+    UIManager::getInstance()->showPopUp(false);
+}
 
 void ShopPopUpUI::onBuyRemoveAds(cocos2d::Ref *ref)
 {

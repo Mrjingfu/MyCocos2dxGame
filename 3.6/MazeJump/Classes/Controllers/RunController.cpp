@@ -160,6 +160,7 @@ bool RunController::init(Layer* pMainLayer)
     
     UIManager::getInstance()->init(m_pMainLayer);
     UIManager::getInstance()->showInfo(true);
+    UIManager::getInstance()->setGameUi(UIManager::UI_GAME);
     
     setGameState(RGS_FROZEN);
     return true;

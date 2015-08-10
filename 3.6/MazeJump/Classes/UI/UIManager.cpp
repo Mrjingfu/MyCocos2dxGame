@@ -10,6 +10,8 @@
 #include "ShopPopUpUI.h"
 #include "GameInfoUI.h"
 #include "MainUI.h"
+#include "GameUI.h"
+#include "ContinueUI.h"
 #include "GameConst.h"
 USING_NS_CC;
 
@@ -40,53 +42,27 @@ void UIManager::addPopUp(BasePopUpUI::PopUp_UI popid)
 
 UIManager::UIManager()
 {
-    m_maskLayer = nullptr;
     m_dialogLayer = nullptr;
     m_gameInfoLayer = nullptr;
-    m_isShowDialog = false;
     m_parent = nullptr;
+
 }
 UIManager::~UIManager()
 {
 }
 void UIManager::init(cocos2d::Layer* layer)
 {
+    
     m_parent = layer;
     m_gameUiId = UI_UNKOWN;
-    auto size = Director::getInstance()->getVisibleSize();
     
     m_gameLayer = cocos2d::Layer::create();
     m_gameLayer->setName(LAYER_NAME_UI);
     m_parent->addChild(m_gameLayer,LAYER_UI,LAYER_NAME_UI);
-    
-    m_maskLayer = cocos2d::Layer::create();
-    m_maskLayer->setName(LAYER_NAME_MASK);
-    m_parent->addChild(m_maskLayer,LAYER_MASK,LAYER_MASK);
-    
-    
-    m_maskLayerBg = cocos2d::LayerColor::create(cocos2d::Color4B(0, 0, 0, 150));
-    m_maskLayerBg->setContentSize(size);
-    m_maskLayer->addChild(m_maskLayerBg);
-    m_maskLayerBg->setVisible(false);
-    
-    auto listener = EventListenerTouchOneByOne::create();
-    listener->setSwallowTouches(true);
-    listener->onTouchBegan =  [this](Touch * ,Event *)
-    {
-        if (m_isShowDialog) {
-            return true;
-        }else{
-            return false;
-        }
-        
-    };
-    Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener,m_maskLayer);
-    
     m_dialogLayer = cocos2d::Layer::create();
     m_dialogLayer->setName(LAYER_NAME_DIALOG);
     m_parent->addChild(m_dialogLayer,LAYER_DIALOG,LAYER_DIALOG);
     m_dialogLayer->setVisible(false);
-    
 
     
     m_gameInfoLayer = GameInfoUI::create();
@@ -103,6 +79,7 @@ void UIManager::setGameUi(Game_UI gameuiStaus)
             gameUi = MainUI::create();
             break;
         case UI_GAME:
+            gameUi = GameUI::create();
             break;
         case UI_GROUND_GAME:
             break;
@@ -125,39 +102,38 @@ BasePopUpUI* UIManager::createPopUp(BasePopUpUI::PopUp_UI popid)
         case BasePopUpUI::POPUP_SHOP:
             popUp = ShopPopUpUI::create();
             break;
+        case BasePopUpUI::POPUP_CONTINUE:
+            popUp = ContinueUI::create();
+            break;
         default:
             break;
     }
     if (m_dialogLayer) {
         m_dialogLayer->addChild(popUp);
     }
-    popUp->setPopUpId(popid);
-    m_gameInfoLayer->setPopUpId(popid);
+    if(popUp)
+        popUp->setPopUpId(popid);
+    if (m_gameInfoLayer)
+        m_gameInfoLayer->setPopUpId(popid);
     return popUp;
 }
 
-void UIManager::showPopUp(BasePopUpUI::Popup_Show popupShow,bool isShowMask, const std::function<void()> &func )
+void UIManager::showPopUp(bool isPlayAn,BasePopUpUI::Popup_Show popupShow, const std::function<void()> &endfunc ,cocos2d::Vec2 vt)
 {
-    BasePopUpUI* popUi = m_popUps.front();
+    BasePopUpUI* popUi = m_popUps.back();
     if (popUi) {
-        m_isShowDialog = true;
         m_dialogLayer->setVisible(true);
-        m_maskLayer->setVisible(true);
-        if (isShowMask) {
-            m_maskLayerBg->setVisible(true);
-        }else
-        {
-            m_maskLayerBg->setVisible(false);
-        }
-        popUi->showPopUp(popupShow,func);
+        popUi->showPopUp(isPlayAn,vt,popupShow,endfunc);
+        
         CCLOG("showPopUp");
     }
 }
-void UIManager::hidePopUp(const std::function<void()> &func)
+
+void UIManager::hidePopUp(const std::function<void()> &endfunc)
 {
-    BasePopUpUI* popUi = m_popUps.front();
+    BasePopUpUI* popUi = m_popUps.back();
     if (popUi) {
-        popUi->hidePopUp(func);
+        popUi->hidePopUp(endfunc);
         CCLOG("hidePopUp");
     }
 }
@@ -172,12 +148,7 @@ void UIManager::showInfo(bool isShowInfo)
 }
 void UIManager::removePopUp(BasePopUpUI* popUi)
 {
-    m_isShowDialog = false;
-    m_maskLayer->setVisible(false);
-    
     popUi->setPopUpId(BasePopUpUI::POPUP_UNKOWN);
-    m_gameInfoLayer->setPopUpId(BasePopUpUI::POPUP_UNKOWN);
-    
     m_popUps.eraseObject(popUi);
     if(popUi->getReferenceCount() > 0)
         popUi->removeFromParentAndCleanup(true);
@@ -185,10 +156,22 @@ void UIManager::removePopUp(BasePopUpUI* popUi)
 }
 void UIManager::destory()
 {
+    if (m_popUps.size() > 0) {
+        for (int i =0; i< m_popUps.size(); i++) {
+            removePopUp(m_popUps.at(i));
+        }
+    }
     if(m_parent)
     {
         m_parent->removeAllChildren();
         m_parent = nullptr;
     }
 
+}
+void UIManager::onGameInfoHidePopUp()
+{
+    if (m_gameInfoLayer) {
+        m_gameInfoLayer->onhideEndPopup();
+    }
+    
 }

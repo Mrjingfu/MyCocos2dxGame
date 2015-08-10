@@ -18,7 +18,8 @@ protected:
     virtual bool init();
 public:
 
-    
+    virtual void onEnter() override;
+    virtual void onExit() override;
     static ShopPopUpUI* create();
 
     void onBuyGold(Ref* ref);

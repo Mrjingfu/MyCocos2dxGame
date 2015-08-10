@@ -41,7 +41,7 @@ bool GameController::init(Layer* pMainLayer,int difficultLevel)
     
     UIManager::getInstance()->init(m_pMainLayer);
     UIManager::getInstance()->showInfo(true);
-    
+    UIManager::getInstance()->setGameUi(UIManager::UI_GAME);
     
     m_pWhiteLayer = LayerColor::create(Color4B::WHITE);
     if(!m_pWhiteLayer)

@@ -26,18 +26,26 @@ public:
     typedef enum {
         POPUP_START,
         POPUP_SHOP,
+        POPUP_CONTINUE,
         POPUP_UNKOWN
     } PopUp_UI;
     
-    void showPopUp(Popup_Show popupShow = POPUP_VERTICAL,const std::function<void()> &func = nullptr);
-    void hidePopUp(const std::function<void()> &func = nullptr);
+    virtual void onEnter() override;
+    virtual void onExit() override;
+    void showPopUp(bool isPlayAn,cocos2d::Vec2 = cocos2d::Vec2::ZERO,Popup_Show popupShow = POPUP_VERTICAL,const std::function<void()> &endfunc = nullptr);
+    void hidePopUp(const std::function<void()> &endfunc = nullptr);
     void setPopUpId(PopUp_UI popId){m_popUpUiId = popId;};
     PopUp_UI getPopUpId(){return m_popUpUiId;};
 
 protected:
-    
+    cocos2d::Layer* m_maskLayer;
+    cocos2d::Layer* m_dialogLayer;
     Popup_Show m_popupShow;
     PopUp_UI m_popUpUiId;
+    bool m_isShowDialog;
+    bool m_isPlayAn;
+    cocos2d::Vec2 m_pt;
+    void onHidePopUpEnd();
 };
 
 #endif /* defined(__MazeJump__BasePopUpUI__) */
