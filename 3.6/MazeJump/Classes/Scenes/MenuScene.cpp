@@ -153,7 +153,7 @@ bool MenuScene::init()
     DirectionLight* directionLight = DirectionLight::create(Vec3(-3, -4, -2), Color3B(158, 158, 158));
     m_pSea->addChild(directionLight);
     
-    m_pRainbow = RibbonTrail::create("ribbontrail.png");
+    m_pRainbow = RibbonTrail::create("ribbontrail.png", 70, 2000);
     if(!m_pRainbow)
         return false;
     m_pRainbow->setPosition3D(Vec3(-1100, -50, -800));

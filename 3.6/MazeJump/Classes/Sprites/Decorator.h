@@ -40,12 +40,14 @@ public:
     DecoratorType getType() const { return m_Type; }
     void setType(DecoratorType type) { m_Type = type; }
     
+    void setFakeShadow(cocos2d::Layer* ownerLayer);
 protected:
     DecoratorType           m_Type;
     float                   m_fRadius;
     bool                    m_bNeedToCollision;
     bool                    m_bNeedToUpdate;
     float                   m_fTime;
+    cocos2d::Sprite3D*         m_pFakeShadow;
 };
 
 #endif /* defined(__MazeJump__Decorator__) */

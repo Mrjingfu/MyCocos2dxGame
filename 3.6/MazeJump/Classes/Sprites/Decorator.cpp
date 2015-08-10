@@ -9,7 +9,9 @@
 #include "Decorator.h"
 #include "OutlineEffect3D.h"
 #include "RunController.h"
+#include "AudioEngine.h"
 USING_NS_CC;
+using namespace experimental;
 Decorator* Decorator::create(DecoratorType type)
 {
     TerrainLayer* layer = RunController::getInstance()->getTerrainLayer();
@@ -77,6 +79,8 @@ Decorator* Decorator::create(DecoratorType type)
         outline->setOutlineWidth(0.03f);
         decorator->addEffect(outline, 1);
         
+        decorator->setLightMask((unsigned int)LightFlag::LIGHT0);
+        
         decorator->autorelease();
         return decorator;
     }
@@ -88,9 +92,15 @@ Decorator::Decorator()
     m_bNeedToCollision = true;
     m_bNeedToUpdate = false;
     m_fTime = 0;
+    m_pFakeShadow   = nullptr;
 }
 Decorator::~Decorator()
 {
+    if(m_pFakeShadow)
+    {
+        m_pFakeShadow->removeFromParentAndCleanup(true);
+        m_pFakeShadow = nullptr;
+    }
 }
 void Decorator::update(float delta)
 {
@@ -108,6 +118,15 @@ void Decorator::update(float delta)
             setPositionY(y);
             setPositionZ(z);
             
+            if(m_pFakeShadow)
+            {
+                Mat4 trans = getNodeToWorldTransform();
+                Vec3 pos;
+                trans.getTranslation(&pos);
+                m_pFakeShadow->setPositionX(pos.x);
+                m_pFakeShadow->setPositionZ(pos.z+1);
+            }
+            
             Runner* runner = RunController::getInstance()->getMainPlayer();
             if(runner && m_bNeedToCollision)
             {
@@ -115,8 +134,21 @@ void Decorator::update(float delta)
                 if(collision)
                 {
                     setNeedToCollision(false);
-                    runner->setState(Runner::RS_DEATH);
-                    RunController::getInstance()->setGameState(RunController::RGS_GAMEOVER);
+                    if(runner->isSpeedUp())
+                    {
+                        AudioEngine::play2d("hit.wav", false, 0.5);
+                        Vec3 pos;
+                        getNodeToWorldTransform().getTranslation(&pos);
+                        RunController::getInstance()->addDecoratorExplosion(pos);
+                        TerrainPatternLayer* layer = static_cast<TerrainPatternLayer*>(getParent()->getParent());
+                        if(layer)
+                            layer->eraseDecorator(this);
+                    }
+                    else
+                    {
+                        runner->setState(Runner::RS_DEATH);
+                        RunController::getInstance()->setGameState(RunController::RGS_GAMEOVER);
+                    }
                 }
             }
         }
@@ -129,10 +161,57 @@ void Decorator::update(float delta)
                 if(collision)
                 {
                     setNeedToCollision(false);
-                    runner->setState(Runner::RS_DEATH);
-                    RunController::getInstance()->setGameState(RunController::RGS_GAMEOVER);
+                    if(runner->isSpeedUp())
+                    {
+                        AudioEngine::play2d("hit.wav", false, 0.5);
+                        Vec3 pos;
+                        getNodeToWorldTransform().getTranslation(&pos);
+                        RunController::getInstance()->addDecoratorExplosion(pos);
+                        TerrainPatternLayer* layer = static_cast<TerrainPatternLayer*>(getParent()->getParent());
+                        if(layer)
+                            layer->eraseDecorator(this);
+                    }
+                    else
+                    {
+                        runner->setState(Runner::RS_DEATH);
+                        RunController::getInstance()->setGameState(RunController::RGS_GAMEOVER);
+                    }
                 }
             }
         }
     }
+}
+void Decorator::setFakeShadow(cocos2d::Layer* ownerLayer)
+{
+    if(!ownerLayer)
+        return;
+    if(m_pFakeShadow)
+    {
+        m_pFakeShadow->removeFromParentAndCleanup(true);
+        m_pFakeShadow = nullptr;
+    }
+    m_pFakeShadow = Sprite3D::create("fakeshadow.c3b");
+    if(m_pFakeShadow)
+    {
+        m_pFakeShadow->setCameraMask((unsigned short)CameraFlag::USER1);
+        ownerLayer->addChild(m_pFakeShadow, 1);
+        Mat4 trans = getNodeToWorldTransform();
+        Vec3 pos;
+        trans.getTranslation(&pos);
+        m_pFakeShadow->setPositionX(pos.x);
+        m_pFakeShadow->setPositionZ(pos.z+1);
+
+        m_pFakeShadow->setPositionY(1.5);
+        
+        m_pFakeShadow->setScale(0.7f);
+
+        m_pFakeShadow->setForceDepthWrite(true);
+        m_pFakeShadow->setOpacity(0);
+        DelayTime* delay = DelayTime::create(3.0f);
+        EaseSineOut* fadeIn = EaseSineOut::create(FadeIn::create(0.5f));
+        Sequence* sequence = Sequence::create(delay, fadeIn, NULL);
+        m_pFakeShadow->runAction(sequence);
+    }
+    else
+        CCLOG("create fake shadow failed!");
 }

@@ -74,27 +74,25 @@ bool TerrainPatternLayer::init(int index, bool generateCheckPoint)
                 break;
             case FIT_RANDOM_UP:
                 {
-                    if(m_patternType == PT_CHECKPOINT)
-                        cell->setColor(RunController::getInstance()->getSameColor());
-                    else
-                    {
-                        int index = 0;
-                        if(posX == -21)
-                            index = 0;
-                        else if(posX == -16)
-                            index = 1;
-                        else if(posX == -8)
-                            index = 2;
-                        else if(posX == 0)
-                            index = 3;
-                        else if(posX == 8)
-                            index = 4;
-                        else if(posX == 16)
-                            index = 5;
-                        else if(posX == 21)
-                            index = 6;
-                        cell->setColor(RunController::getInstance()->getRandomColorByIndex(index));
-                    }
+                    
+                    int index = 0;
+                    if(posX == -21)
+                        index = 0;
+                    else if(posX == -16)
+                        index = 1;
+                    else if(posX == -8)
+                        index = 2;
+                    else if(posX == 0)
+                        index = 3;
+                    else if(posX == 8)
+                        index = 4;
+                    else if(posX == 16)
+                        index = 5;
+                    else if(posX == 21)
+                        index = 6;
+                        
+                    cell->setColor(RunController::getInstance()->getRandomColorByIndex(index));
+                    
                     cell->setPosition3D(Vec3(posX, -50, posZ));
                     cell->setRotation3D(Vec3(rotX, rotY, rotZ));
                     cell->setScale(0);
@@ -271,7 +269,7 @@ void TerrainPatternLayer::checkCollisionDecorator()
                         {
                             Runner* runner = RunController::getInstance()->getMainPlayer();
                             Camera* mainCamera = RunController::getInstance()->getMainCamera();
-                            if(mainCamera && runner)
+                            if(mainCamera && runner && !runner->isSpeedUp())
                             {
                                 AudioEngine::play2d("fadeout.wav");
                                 EaseSineOut* moveTo = EaseSineOut::create(MoveTo::create(300.0f, runner->getPosition3D()));
@@ -425,6 +423,7 @@ void TerrainPatternLayer::generateDecorator(TerrainCell* cell, int patternIndex)
                     {
                         cell->addChild(bird);
                         m_DecoratorList.pushBack(bird);
+                        bird->setFakeShadow(RunController::getInstance()->getTerrainLayer());
                         
                         float time = cocos2d::random(1.0f, 3.0f);
                         DelayTime* delay = DelayTime::create(time);
@@ -489,6 +488,7 @@ void TerrainPatternLayer::generateDecorator(TerrainCell* cell, int patternIndex)
                         {
                             cell->addChild(bird);
                             m_DecoratorList.pushBack(bird);
+                            bird->setFakeShadow(RunController::getInstance()->getTerrainLayer());
                             
                             float time = cocos2d::random(1.0f, 2.0f);
                             DelayTime* delay = DelayTime::create(time);
