@@ -197,8 +197,6 @@ void RunController::update(float delta)
 void RunController::destroy()
 {
 
-    UIManager::getInstance()->destory();
-
     if(m_pRainbow)
     {
         if(m_pRainbow->getReferenceCount() > 0)
@@ -208,6 +206,8 @@ void RunController::destroy()
 
     m_pMainLayer->removeAllChildren();
     m_pMainLayer = nullptr;
+    UIManager::getInstance()->destory();
+    
 }
 void RunController::setGameState(RunnerGameState state)
 {

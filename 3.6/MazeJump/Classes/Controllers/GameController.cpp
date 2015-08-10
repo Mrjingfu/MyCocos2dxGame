@@ -122,9 +122,9 @@ void GameController::update(float delta)
 }
 void GameController::destroy()
 {
-    UIManager::getInstance()->destory();
     m_pMainLayer->removeAllChildren();
     m_pMainLayer = nullptr;
+    UIManager::getInstance()->destory();
 }
 
 bool GameController::createMap(bool _playing,int level,int difficultLevel)

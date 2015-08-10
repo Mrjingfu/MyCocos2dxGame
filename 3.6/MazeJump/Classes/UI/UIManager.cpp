@@ -185,6 +185,10 @@ void UIManager::removePopUp(BasePopUpUI* popUi)
 }
 void UIManager::destory()
 {
-    m_parent->removeAllChildren();
-    m_parent = nullptr;
+    if(m_parent)
+    {
+        m_parent->removeAllChildren();
+        m_parent = nullptr;
+    }
+
 }

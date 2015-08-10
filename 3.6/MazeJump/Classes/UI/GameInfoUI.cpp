@@ -61,15 +61,15 @@ bool GameInfoUI::init()
     heartView->addChild(heartTv);
     
     
-    ui::ImageView* disImg = ui::ImageView::create("ui_distance.png");
-    disImg->setPosition(Vec2(size.width*0.53, size.height*0.92));
-    disImg->setScale(scale);
-    addChild(disImg);
-
-    gameScoreTv = ui::Text::create(UtilityHelper::getLocalString("GAME_DISTANCE"), FONT_FXZS, 35);
-    gameScoreTv->setPosition(Vec2(size.width*0.53, size.height*0.96));
-    gameScoreTv->setScale(scale);
-    addChild(gameScoreTv);
+//    ui::ImageView* disImg = ui::ImageView::create("ui_distance.png");
+//    disImg->setPosition(Vec2(size.width*0.53, size.height*0.92));
+//    disImg->setScale(scale);
+//    addChild(disImg);
+//
+//    gameScoreTv = ui::Text::create(UtilityHelper::getLocalString("GAME_DISTANCE"), FONT_FXZS, 35);
+//    gameScoreTv->setPosition(Vec2(size.width*0.53, size.height*0.96));
+//    gameScoreTv->setScale(scale);
+//    addChild(gameScoreTv);
     
     pauseImg = ui::Button::create("btn_pause_normal.png","btn_pause_press.png");
     pauseImg->setPosition(Vec2(size.width*0.9, size.height*0.93));
