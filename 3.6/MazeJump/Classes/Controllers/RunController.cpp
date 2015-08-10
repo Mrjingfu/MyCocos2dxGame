@@ -430,7 +430,7 @@ void RunController::showRainbow()
         m_pRainbow = nullptr;
     }
 
-    m_pRainbow = RibbonTrail::create("ribbontrail.png", 42, 3100);
+    m_pRainbow = RibbonTrail::create("ribbontrail.png", 42, 3000);
     if(!m_pRainbow)
         return;
     m_pRainbow->setPosition3D(Vec3(0, 20, m_pMainPlayer->getPositionZ()-500));
@@ -438,7 +438,7 @@ void RunController::showRainbow()
     m_pMainLayer->addChild(m_pRainbow);
     m_pRainbow->getTrail()->addNode(m_pRainbow);
         
-    EaseSineOut* moveTo = EaseSineOut::create(MoveBy::create(10, Vec3(0,0,3500)));
+    EaseSineOut* moveTo = EaseSineOut::create(MoveBy::create(10, Vec3(0,0,3600)));
     m_pRainbow->runAction(moveTo);
     
     if(m_pTerrainAmbLight)
