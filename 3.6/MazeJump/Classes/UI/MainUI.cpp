@@ -11,6 +11,7 @@
 #include "MainScene.h"
 #include "StarPopUpUI.h"
 #include "UIManager.h"
+#include "UtilityHelper.h"
 #include "storage/local-storage/LocalStorage.h"
 USING_NS_CC;
 
@@ -39,32 +40,32 @@ bool MainUI::init()
 {
 
     auto size = Director::getInstance()->getVisibleSize();
-    float scale = size.height /960.0f;
+    float scale = size.width /640;
     
-    ui::ImageView* titleView = ui::ImageView::create("ui_title.png");
-    titleView->setPosition(Vec2(size.width*0.5, size.height*0.8));
+    ui::ImageView* titleView = ui::ImageView::create(UtilityHelper::getLocalString("UI_TITLE_TEX"));
+    titleView->setPosition(Vec2(size.width*0.5, size.height*0.77));
     titleView->setScale(scale);
     addChild(titleView);
     
     
     soundBtn = ui::Button::create("btn_sounds_on.png");
     soundBtn->setScale(scale);
-    soundBtn->setPosition(Vec2(size.width*0.88, size.height*0.9));
+    soundBtn->setPosition(Vec2(size.width*0.9, size.height*0.93));
     addChild(soundBtn);
     
     ui::Button* shopBtn = ui::Button::create("btn_shop_normal.png","btn_shop_press.png");
     shopBtn->setScale(scale);
-    shopBtn->setPosition(Vec2(size.width*0.88,size.height*0.27));
+    shopBtn->setPosition(Vec2(size.width*0.9,size.height*0.27));
     addChild(shopBtn);
     
     ui::Button* rankBtn = ui::Button::create("btn_rank_normal.png","btn_rank_press.png");
     rankBtn->setScale(scale);
-    rankBtn->setPosition(Vec2(size.width*0.88,size.height*0.27-shopBtn->getContentSize().height*scale-20*scale));
+    rankBtn->setPosition(Vec2(size.width*0.9,size.height*0.27-shopBtn->getContentSize().height*scale-20*scale));
     addChild(rankBtn);
     
     ui::Button* commonBtn = ui::Button::create("btn_comment_normal.png","btn_comment_press.png");
     commonBtn->setScale(scale);
-    commonBtn->setPosition(Vec2(size.width*0.88,size.height*0.27-rankBtn->getContentSize().height*scale*2-40*scale));
+    commonBtn->setPosition(Vec2(size.width*0.9,size.height*0.27-rankBtn->getContentSize().height*scale*2-40*scale));
     addChild(commonBtn);
 
     soundBtn->addClickEventListener(CC_CALLBACK_1(MainUI::onSound, this));

@@ -48,5 +48,7 @@
 	<string>距离:  %d</string>
 	<key>CONTINUE_GAME</key>
 	<string>是否使用红心继续游戏?</string>
+	<key>UI_TITLE_TEX</key>
+	<string>ui_title1.png</string>
 </dict>
 </plist>

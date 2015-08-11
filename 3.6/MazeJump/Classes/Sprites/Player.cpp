@@ -15,12 +15,13 @@ USING_NS_CC;
 Player* Player::create(PlayerType type, GroundLayer* ground)
 {
     auto player = new (std::nothrow) Player();
-    if (player && player->initWithFile("strength.c3b"))
+    if (player && player->initWithFile("girl1.c3b"))
     {
         player->setType(type);
         player->_contentSize = player->getBoundingBox().size;
         player->m_fRadius = player->_contentSize.width*0.5f;
         player->m_pGround = ground;
+        player->setScale(0.375f);
         
         OutlineEffect3D* outline = OutlineEffect3D::create();
         outline->setOutlineColor(Vec3(0.3f, 0.3f, 0.3f));
@@ -124,7 +125,7 @@ void Player::onEnterMoveLeft()
     if(m_pGround)
     {
         float cellRadius = m_pGround->getCellRadius();
-        RotateTo* ratateTo = RotateTo::create(0.25f, Vec3(0,180,0));
+        RotateTo* ratateTo = RotateTo::create(0.25f, Vec3(0,0,0));
         EaseSineOut* moveUp = EaseSineOut::create(MoveTo::create(0.25f, Vec3(getPositionX(), getPositionY() + cellRadius, getPositionZ() - cellRadius*2)));
         EaseSineIn* moveDown = EaseSineIn::create(MoveTo::create(0.25f, Vec3(getPositionX(), getPositionY(), getPositionZ() - cellRadius*2)));
         Sequence* sequenceJump = Sequence::create(moveUp, moveDown, NULL);
@@ -139,7 +140,7 @@ void Player::onEnterMoveRight()
     if(m_pGround)
     {
         float cellRadius = m_pGround->getCellRadius();
-        RotateTo* ratateTo = RotateTo::create(0.25f, Vec3(0,0,0));
+        RotateTo* ratateTo = RotateTo::create(0.25f, Vec3(0,180,0));
         EaseSineOut* moveUp = EaseSineOut::create(MoveTo::create(0.25f, Vec3(getPositionX(), getPositionY() + cellRadius, getPositionZ() + cellRadius*2)));
         EaseSineIn* moveDown = EaseSineIn::create(MoveTo::create(0.25f, Vec3(getPositionX(), getPositionY(), getPositionZ() + cellRadius*2)));
         Sequence* sequenceJump = Sequence::create(moveUp, moveDown, NULL);
@@ -154,7 +155,7 @@ void Player::onEnterMoveUp()
     if(m_pGround)
     {
         float cellRadius = m_pGround->getCellRadius();
-        RotateTo* ratateTo = RotateTo::create(0.25f, Vec3(0,90,0));
+        RotateTo* ratateTo = RotateTo::create(0.25f, Vec3(0,-90,0));
         EaseSineOut* moveUp = EaseSineOut::create(MoveTo::create(0.25f, Vec3(getPositionX() + cellRadius*2, getPositionY() + cellRadius, getPositionZ())));
         EaseSineIn* moveDown = EaseSineIn::create(MoveTo::create(0.25f, Vec3(getPositionX() + cellRadius*2, getPositionY(), getPositionZ())));
         Sequence* sequenceJump = Sequence::create(moveUp, moveDown, NULL);
@@ -169,7 +170,7 @@ void Player::onEnterMoveDown()
     if(m_pGround)
     {
         float cellRadius = m_pGround->getCellRadius();
-        RotateTo* ratateTo = RotateTo::create(0.25f, Vec3(0,-90,0));
+        RotateTo* ratateTo = RotateTo::create(0.25f, Vec3(0,90,0));
         EaseSineOut* moveUp = EaseSineOut::create(MoveTo::create(0.25f, Vec3(getPositionX() - cellRadius*2, getPositionY() + cellRadius, getPositionZ())));
         EaseSineIn* moveDown = EaseSineIn::create(MoveTo::create(0.25f, Vec3(getPositionX() - cellRadius*2, getPositionY(), getPositionZ())));
         Sequence* sequenceJump = Sequence::create(moveUp, moveDown, NULL);

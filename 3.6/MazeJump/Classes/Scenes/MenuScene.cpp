@@ -136,9 +136,9 @@ bool MenuScene::init()
     m_pRunner->setOpacity(255);
     m_pRunner->setRotation3D(Vec3(0,-90,0));
     m_pRunner->setPositionX(1);
-    m_pRunner->setPositionY(4.3);
+    m_pRunner->setPositionY(4.6);
     m_pRunner->setPositionZ(2);
-    m_pRunner->setScale(0.5);
+    m_pRunner->setScale(0.1875f);
     m_pStandPlatform->addChild(m_pRunner);
     
     
@@ -252,8 +252,8 @@ void MenuScene::runnerJump()
 {
     if(m_pRunner)
     {
-        EaseSineOut* scaleTo1 = EaseSineOut::create(ScaleTo::create(0.05f, 0.5, 0.3f, 0.5));
-        EaseSineIn* scaleTo2 = EaseSineIn::create(ScaleTo::create(0.015f, 0.5, 0.5f,0.5));
+        EaseSineOut* scaleTo1 = EaseSineOut::create(ScaleTo::create(0.05f, 0.1125, 0.3f, 0.1875));
+        EaseSineIn* scaleTo2 = EaseSineIn::create(ScaleTo::create(0.015f, 0.1875, 0.1875,0.1875));
         Sequence* sequenceScale = Sequence::create(scaleTo1, scaleTo2, NULL);
         
         DelayTime* delay = DelayTime::create(0.05f);
@@ -263,7 +263,7 @@ void MenuScene::runnerJump()
         rotateBy = EaseSineOut::create(RotateBy::create(0.5f, Vec3(-360,0,0)));
         Spawn* spawnRotateBy = Spawn::create(sequenceRotate, rotateBy, NULL);
         
-        EaseSineOut* moveUp = EaseSineOut::create(MoveTo::create(0.25f, Vec3(m_pRunner->getPositionX(), m_pRunner->getPositionY() + m_pRunner->getRadius()*2, m_pRunner->getPositionZ())));
+        EaseSineOut* moveUp = EaseSineOut::create(MoveTo::create(0.25f, Vec3(m_pRunner->getPositionX(), m_pRunner->getPositionY() + m_pRunner->getRadius()*4*m_pRunner->getScale(), m_pRunner->getPositionZ())));
         EaseSineIn* moveDown = EaseSineIn::create(MoveTo::create(0.25f, Vec3(m_pRunner->getPositionX(), m_pRunner->getPositionY(), m_pRunner->getPositionZ())));
         Sequence* sequenceJump = Sequence::create(delay, moveUp, moveDown, NULL);
         Spawn* spawn = Spawn::create(sequenceScale, spawnRotateBy, sequenceJump, NULL);

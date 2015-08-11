@@ -16,12 +16,13 @@ using namespace experimental;
 Runner* Runner::create()
 {
     auto runner = new (std::nothrow) Runner();
-    if (runner && runner->initWithFile("strength.c3b"))
+    if (runner && runner->initWithFile("girl1.c3b"))
     {
         runner->_contentSize = runner->getBoundingBox().size;
         runner->m_fRadius = runner->_contentSize.width*0.5f;
-        runner->setPositionY(4);
+        runner->setPositionY(4.8f);
         runner->setOpacity(0);
+        runner->setScale(0.375f);
         
         OutlineEffect3D* outline = OutlineEffect3D::create();
         outline->setOutlineColor(Vec3(0.3f, 0.3f, 0.3f));
@@ -234,8 +235,8 @@ void Runner::onEnterMoveLeft()
     {
         AudioEngine::play2d("jump.wav", false, 0.3f);
         float cellRadius = terrainLayer->getCellBaseRadius();
-        EaseSineOut* scaleTo1 = EaseSineOut::create(ScaleTo::create(0.05f, 1, 0.8f, 1));
-        EaseSineIn* scaleTo2 = EaseSineIn::create(ScaleTo::create(0.05f, 1, 1.0f, 1));
+        EaseSineOut* scaleTo1 = EaseSineOut::create(ScaleTo::create(0.05f, 0.375f, 0.3f, 0.375f));
+        EaseSineIn* scaleTo2 = EaseSineIn::create(ScaleTo::create(0.05f, 0.375f, 0.375f, 0.375f));
         Sequence* sequenceScale = Sequence::create(scaleTo1, scaleTo2, NULL);
         
         DelayTime* delay = DelayTime::create(0.05f);
@@ -263,8 +264,8 @@ void Runner::onEnterMoveRight()
     {
         AudioEngine::play2d("jump.wav", false, 0.3f);
         float cellRadius = terrainLayer->getCellBaseRadius();
-        EaseSineOut* scaleTo1 = EaseSineOut::create(ScaleTo::create(0.05f, 1, 0.8f, 1));
-        EaseSineIn* scaleTo2 = EaseSineIn::create(ScaleTo::create(0.05f, 1, 1.0f, 1));
+        EaseSineOut* scaleTo1 = EaseSineOut::create(ScaleTo::create(0.05f, 0.375f, 0.3f, 0.375f));
+        EaseSineIn* scaleTo2 = EaseSineIn::create(ScaleTo::create(0.05f, 0.375f, 0.375f, 0.375f));
         Sequence* sequenceScale = Sequence::create(scaleTo1, scaleTo2, NULL);
         
         DelayTime* delay = DelayTime::create(0.05f);
@@ -292,8 +293,8 @@ void Runner::onEnterMoveForward()
         AudioEngine::play2d("jump.wav", false, 0.3f);
         float cellRadius = terrainLayer->getCellBaseRadius();
 
-        EaseSineOut* scaleTo1 = EaseSineOut::create(ScaleTo::create(0.05f, 1, 0.8f, 1));
-        EaseSineIn* scaleTo2 = EaseSineIn::create(ScaleTo::create(0.05f, 1, 1.0f,1));
+        EaseSineOut* scaleTo1 = EaseSineOut::create(ScaleTo::create(0.05f, 0.375f, 0.3f, 0.375f));
+        EaseSineIn* scaleTo2 = EaseSineIn::create(ScaleTo::create(0.05f, 0.375f, 0.375f,0.375f));
         Sequence* sequenceScale = Sequence::create(scaleTo1, scaleTo2, NULL);
         
         DelayTime* delay = DelayTime::create(0.05f);
@@ -322,8 +323,8 @@ void Runner::onEnterMoveSuperJump()
         AudioEngine::play2d("superjump.wav", false, 0.3f);
         float cellRadius = terrainLayer->getCellBaseRadius();
         this->stopAllActions();
-        EaseSineOut* scaleTo1 = EaseSineOut::create(ScaleTo::create(0.05f, 1, 0.6f, 1));
-        EaseSineIn* scaleTo2 = EaseSineIn::create(ScaleTo::create(0.015f, 1, 1.0f,1));
+        EaseSineOut* scaleTo1 = EaseSineOut::create(ScaleTo::create(0.05f, 0.375f, 0.225f, 0.375f));
+        EaseSineIn* scaleTo2 = EaseSineIn::create(ScaleTo::create(0.015f, 0.375f, 0.375f,0.375f));
         Sequence* sequenceScale = Sequence::create(scaleTo1, scaleTo2, NULL);
         
         DelayTime* delay = DelayTime::create(0.05f);
@@ -359,8 +360,8 @@ void Runner::onEnterMoveJumpLocal()
         AudioEngine::play2d("jump.wav", false, 0.3f);
         float cellRadius = terrainLayer->getCellBaseRadius();
         
-        EaseSineOut* scaleTo1 = EaseSineOut::create(ScaleTo::create(0.05f, 1, 0.9f, 1));
-        EaseSineIn* scaleTo2 = EaseSineIn::create(ScaleTo::create(0.05f, 1, 1.0f,1));
+        EaseSineOut* scaleTo1 = EaseSineOut::create(ScaleTo::create(0.05f, 0.375f, 0.3375, 0.375f));
+        EaseSineIn* scaleTo2 = EaseSineIn::create(ScaleTo::create(0.05f, 0.375f, 0.375f,0.375f));
         Sequence* sequenceScale = Sequence::create(scaleTo1, scaleTo2, NULL);
         
         DelayTime* delay = DelayTime::create(0.05f);
@@ -381,7 +382,7 @@ void Runner::onEnterMoveDrop()
 {
     AudioEngine::play2d("drop.wav");
     EaseSineOut* moveTo = EaseSineOut::create(MoveTo::create(1.0f, Vec3(getPositionX(), -50, getPositionZ())));
-    EaseSineOut* scaleTo = EaseSineOut::create(ScaleTo::create(1.0, 0.8f));
+    EaseSineOut* scaleTo = EaseSineOut::create(ScaleTo::create(0.375f, 0.3f));
     DelayTime* delayTime = DelayTime::create(0.5f);
     EaseSineOut* fadeOut = EaseSineOut::create(FadeOut::create(0.5f));
     Sequence* sequece = Sequence::create(delayTime, fadeOut, NULL);
@@ -439,7 +440,7 @@ void Runner::checkSafe()
 }
 void Runner::fadeIn()
 {
-    setPositionY(4);
+    setPositionY(4.8f);
     setState(RS_IDLE);
     DelayTime* delay = DelayTime::create(1.0f);
     EaseSineOut* fadeIn = EaseSineOut::create(FadeIn::create(0.5f));

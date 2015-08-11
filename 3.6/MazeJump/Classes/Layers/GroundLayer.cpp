@@ -362,8 +362,9 @@ void GroundLayer::setCurrentCellTypeOK()
                 m_pPlayer->setIndexY(m_pCurrentCell->getIndexY());
                 m_pPlayer->setCameraMask((unsigned short)CameraFlag::USER1);
                 m_pPlayer->setPosition3D(m_pCurrentCell->getPosition3D());
-                m_pPlayer->setScale(0.9f);
-                m_pPlayer->setPositionY(4.0f);
+                m_pPlayer->setRotation3D(Vec3(0,180,0));
+                m_pPlayer->setScale(0.375f);
+                m_pPlayer->setPositionY(4.8f);
                 m_pPlayer->setPlayerState(Player::PS_IDLE);
                 addChild(m_pPlayer);
             }
