@@ -32,34 +32,46 @@ void BasePopUpUI::onEnter()
     addChild(m_maskLayer,LAYER_MASK);
     
     
-    auto m_maskLayerBg = cocos2d::LayerColor::create(cocos2d::Color4B(0, 0, 0, 150));
+    m_maskLayerBg = cocos2d::LayerColor::create(cocos2d::Color4B(0, 0, 0, 150));
     m_maskLayerBg->setContentSize(size);
     m_maskLayer->addChild(m_maskLayerBg);
     
     auto listener = EventListenerTouchOneByOne::create();
     listener->setSwallowTouches(true);
-    listener->onTouchBegan =  [this](Touch * ,Event *)
-    {
-        if (m_isShowDialog) {
-            return true;
-        }else{
-            return false;
-        }
-        
-    };
+    listener->onTouchBegan =  CC_CALLBACK_2(BasePopUpUI::onTouchBegan, this);
+   
     Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener,m_maskLayer);
     
     m_dialogLayer = cocos2d::Layer::create();
     addChild(m_dialogLayer,LAYER_DIALOG,LAYER_DIALOG);
     
-    }
+}
 
+bool BasePopUpUI::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event)
+{
+    if (m_isShowDialog) {
+//        UIManager::getInstance()->hidePopUp();
+//        UIManager::getInstance()->setCancel(true);
+        return true;
+    }else{
+        return false;
+    }
+}
 void BasePopUpUI::onExit()
 {
     Layer::onExit();
     
 }
-
+void BasePopUpUI::setShowMaskBg(bool isShowMaskBg)
+{
+    if (m_maskLayerBg) {
+        if (isShowMaskBg) {
+            m_maskLayerBg->setVisible(true);
+        }else{
+            m_maskLayerBg->setVisible(false);
+        }
+    }
+}
 void BasePopUpUI::showPopUp(bool isPlayAn,cocos2d::Vec2 vc,Popup_Show popupShow,const std::function<void()> &endfunc)
 {
     Size size = Director::getInstance()->getVisibleSize();
@@ -67,7 +79,7 @@ void BasePopUpUI::showPopUp(bool isPlayAn,cocos2d::Vec2 vc,Popup_Show popupShow,
     m_isPlayAn = isPlayAn;
     m_pt = vc;
     m_popupShow = popupShow;
-    
+   
     if (!m_isPlayAn) {
         m_dialogLayer->setPosition(vc);
         if ( endfunc)
@@ -105,7 +117,6 @@ void BasePopUpUI::hidePopUp(const std::function<void()> &endfunc )
         onHidePopUpEnd();
         UIManager::getInstance()->onGameInfoHidePopUp();
         UIManager::getInstance()->removePopUp(this);
-        
         
         return;
     }

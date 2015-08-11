@@ -53,9 +53,9 @@ void MainScene::onEnter()
 }
 void MainScene::onExit()
 {
+        UIManager::getInstance()->destory();
     if(!RunController::getInstance()->isInMazeJump())
         RunController::getInstance()->destroy();
-
     unscheduleUpdate();
     Layer::onExit();
 }

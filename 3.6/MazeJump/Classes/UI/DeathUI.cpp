@@ -46,5 +46,7 @@ bool DeathUI::init()
     float scale = size.height /960.0f;
 
     
+    
+    
     return true;
 }

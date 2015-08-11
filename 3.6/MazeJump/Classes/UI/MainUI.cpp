@@ -40,7 +40,7 @@ bool MainUI::init()
 {
 
     auto size = Director::getInstance()->getVisibleSize();
-    float scale = size.width /640;
+    float scale = size.width /640.0f;
     
     ui::ImageView* titleView = ui::ImageView::create(UtilityHelper::getLocalString("UI_TITLE_TEX"));
     titleView->setPosition(Vec2(size.width*0.5, size.height*0.77));
@@ -81,7 +81,7 @@ void MainUI::onShop(cocos2d::Ref *ref)
 {
     CCLOG("Shop");
     UIManager::getInstance()->addPopUp(BasePopUpUI::POPUP_SHOP);
-    UIManager::getInstance()->showPopUp(BasePopUpUI::POPUP_HORIZONTAL);
+    UIManager::getInstance()->showPopUp(true,BasePopUpUI::POPUP_HORIZONTAL);
     UIManager::getInstance()->showInfo(true);
 }
 void MainUI::onRank(cocos2d::Ref *ref)

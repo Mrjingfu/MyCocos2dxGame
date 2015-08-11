@@ -38,7 +38,7 @@ bool GameInfoUI::init()
 {
 
     auto size = Director::getInstance()->getVisibleSize();
-    float scale = size.height /960.0f;
+    float scale = size.width /640.0f;
     
     disLayer = cocos2d::Layer::create();
     addChild(disLayer);
@@ -125,17 +125,14 @@ void GameInfoUI::onPause(cocos2d::Ref *ref)
     
     if ( m_popUpIds.size()>0) {
         
-
         if (UIManager::getInstance()->getGameId() == UIManager::UI_GAME && m_popUpIds.size() ==1)
         {
             Director::getInstance()->resume();
         }
         isNowHidePopup = true;
         UIManager::getInstance()->hidePopUp(CC_CALLBACK_0(GameInfoUI::onhideEndPopup, this));
-        
-
+        UIManager::getInstance()->setCancel(true);
     }else{
-
         UIManager::getInstance()->addPopUp(BasePopUpUI::POPUP_SHOP);
         UIManager::getInstance()->showPopUp(true,BasePopUpUI::POPUP_HORIZONTAL,CC_CALLBACK_0(GameInfoUI::onshowStartEnd, this));
     }
@@ -163,7 +160,7 @@ void GameInfoUI::onhideEndPopup()
     }else{
         removePopUpId();
     }
-    if (m_popUpIds.size() ==0) {
+    if (m_popUpIds.size() == 0) {
         
         pauseImg->loadTextureNormal("btn_pause_normal.png");
         pauseImg->loadTexturePressed("btn_pause_press.png");
@@ -191,9 +188,7 @@ void GameInfoUI::onRainbowValueChange(cocos2d::EventCustom* sender)
 void GameInfoUI::onRunnerLose(cocos2d::EventCustom* sender)
 {
     CCLOG("GAME OVER");
-    UIManager::getInstance()->addPopUp(BasePopUpUI::POPUP_CONTINUE);
-    UIManager::getInstance()->showPopUp();
-    
+    runAction(Sequence::create(DelayTime::create(0.5),CallFunc::create(CC_CALLBACK_0(GameInfoUI::onDelayTimeMazeJumpLose,this)), NULL));
 }
 void GameInfoUI::onMazeJumpWin(cocos2d::EventCustom* sender)
 {
@@ -207,4 +202,10 @@ void GameInfoUI::onMazeJumpLose(cocos2d::EventCustom* sender)
 void GameInfoUI::onGroundRecordEnd(cocos2d::EventCustom* sender)
 {
     
+}
+void GameInfoUI::onDelayTimeMazeJumpLose()
+{
+    UIManager::getInstance()->addPopUp(BasePopUpUI::POPUP_CONTINUE);
+    UIManager::getInstance()->showPopUp(true,BasePopUpUI::POPUP_HORIZONTAL);
+
 }

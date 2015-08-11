@@ -12,12 +12,12 @@
 #include "BasePopUpUI.h"
 class ShopPopUpUI : public BasePopUpUI
 {
-protected:
-    ShopPopUpUI();
-    virtual ~ShopPopUpUI();
-    virtual bool init();
-public:
 
+public:
+    typedef enum {
+        SHOP_GOLD = 0,
+        SHOP_NORMAL,
+    } ShopType;
     virtual void onEnter() override;
     virtual void onExit() override;
     static ShopPopUpUI* create();
@@ -35,12 +35,19 @@ public:
     void onBackShop(Ref* ref);
     
     void onProduct(const std::string& productId);
+    
+    void setShopDisplay(ShopType type);
+protected:
+    ShopPopUpUI();
+    virtual ~ShopPopUpUI();
+    virtual bool init();
 private:
     cocos2d::Layer* productLayer;
     cocos2d::Layer* goldProductLayer;
     cocos2d::ui::Text* tipTv;
     cocos2d::ui::Text* heartTv;
     cocos2d::ui::Text* goldTv;
+    ShopType m_shopType;
 };
 
 #endif /* defined(__MazeJump__ShopUI__) */

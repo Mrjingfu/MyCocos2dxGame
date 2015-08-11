@@ -27,6 +27,7 @@ public:
     void showStarUi();
     void showShopUi();
 private:
+
     cocos2d::ui::Button* soundBtn;
     bool m_sound;
 };

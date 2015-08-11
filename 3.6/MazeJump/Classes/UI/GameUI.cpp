@@ -32,7 +32,6 @@ GameUI::~GameUI()
 
 bool GameUI::init()
 {
-
     auto size = Director::getInstance()->getVisibleSize();
     float scale = size.height /960.0f;
     

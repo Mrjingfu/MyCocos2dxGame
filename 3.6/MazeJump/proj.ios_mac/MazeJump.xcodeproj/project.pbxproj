@@ -288,6 +288,8 @@
 		EC06D76B1B748F480084B13C /* UIManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC06D7671B7488FD0084B13C /* UIManager.cpp */; };
 		EC06D76D1B749BBA0084B13C /* ui_shop_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = EC06D76C1B749BBA0084B13C /* ui_shop_bg.png */; };
 		EC06D76E1B749BD80084B13C /* ui_shop_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = EC06D76C1B749BBA0084B13C /* ui_shop_bg.png */; };
+		EC07A10B1B7990A0004F34F5 /* TipsUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC07A1091B7990A0004F34F5 /* TipsUI.cpp */; };
+		EC07A10C1B7999E3004F34F5 /* TipsUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC07A1091B7990A0004F34F5 /* TipsUI.cpp */; };
 		EC0A158C1B7083DE0094AE6D /* btn_coins01_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = EC0A15821B7083DE0094AE6D /* btn_coins01_normal.png */; };
 		EC0A158D1B7083DE0094AE6D /* btn_coins01_press.png in Resources */ = {isa = PBXBuildFile; fileRef = EC0A15831B7083DE0094AE6D /* btn_coins01_press.png */; };
 		EC0A158E1B7083DE0094AE6D /* btn_coins02_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = EC0A15841B7083DE0094AE6D /* btn_coins02_normal.png */; };
@@ -685,6 +687,8 @@
 		EC06D7671B7488FD0084B13C /* UIManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UIManager.cpp; sourceTree = "<group>"; };
 		EC06D7681B7488FD0084B13C /* UIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIManager.h; sourceTree = "<group>"; };
 		EC06D76C1B749BBA0084B13C /* ui_shop_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ui_shop_bg.png; sourceTree = "<group>"; };
+		EC07A1091B7990A0004F34F5 /* TipsUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TipsUI.cpp; sourceTree = "<group>"; };
+		EC07A10A1B7990A0004F34F5 /* TipsUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TipsUI.h; sourceTree = "<group>"; };
 		EC0A15821B7083DE0094AE6D /* btn_coins01_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_coins01_normal.png; sourceTree = "<group>"; };
 		EC0A15831B7083DE0094AE6D /* btn_coins01_press.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_coins01_press.png; sourceTree = "<group>"; };
 		EC0A15841B7083DE0094AE6D /* btn_coins02_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_coins02_normal.png; sourceTree = "<group>"; };
@@ -1309,6 +1313,8 @@
 		ECE0D6611B6F04A600B5E416 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				EC07A1091B7990A0004F34F5 /* TipsUI.cpp */,
+				EC07A10A1B7990A0004F34F5 /* TipsUI.h */,
 				EC363FAE1B789C6F00EC4890 /* ContinueUI.cpp */,
 				EC363FAF1B789C6F00EC4890 /* ContinueUI.h */,
 				EC363FAA1B78800D00EC4890 /* GameUI.cpp */,
@@ -1807,6 +1813,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				55066CD11B4BAB4E007FCF3F /* BaseEffect3D.cpp in Sources */,
+				EC07A10B1B7990A0004F34F5 /* TipsUI.cpp in Sources */,
 				EC177F711B73580D0059519B /* BasePopUpUI.cpp in Sources */,
 				46880B8819C43A87006E1F66 /* AppDelegate.cpp in Sources */,
 				ECE0D6AA1B6F565A00B5E416 /* GameLose.cpp in Sources */,
@@ -1852,6 +1859,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC07A10C1B7999E3004F34F5 /* TipsUI.cpp in Sources */,
 				EC363FB71B78A16E00EC4890 /* ContinueUI.cpp in Sources */,
 				EC363FAD1B78801D00EC4890 /* GameUI.cpp in Sources */,
 				EC06D76B1B748F480084B13C /* UIManager.cpp in Sources */,

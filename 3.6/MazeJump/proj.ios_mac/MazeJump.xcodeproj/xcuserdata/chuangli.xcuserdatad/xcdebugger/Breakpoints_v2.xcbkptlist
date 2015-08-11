@@ -89,13 +89,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../Classes/UI/GameInfoUI.cpp"
-            timestampString = "460900520.768694"
+            filePath = "../Classes/Controllers/RunController.cpp"
+            timestampString = "460971475.301081"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "90"
-            endingLineNumber = "90"
-            landmarkName = "GameInfoUI::setPopUpId(BasePopUpUI::PopUp_UI popUpId)"
+            startingLineNumber = "197"
+            endingLineNumber = "197"
+            landmarkName = "RunController::reset()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -105,29 +105,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../Classes/UI/BasePopUpUI.cpp"
-            timestampString = "460907288.853274"
+            filePath = "../Classes/UI/ContinueUI.cpp"
+            timestampString = "460973482.69269"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "137"
-            endingLineNumber = "137"
-            landmarkName = "BasePopUpUI::onHidePopUpEnd()"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../Classes/UI/UIManager.cpp"
-            timestampString = "460907313.838053"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "173"
-            endingLineNumber = "173"
-            landmarkName = "UIManager::onGameInfoHidePopUp()"
+            startingLineNumber = "69"
+            endingLineNumber = "69"
+            landmarkName = "ContinueUI::onContinueGame(cocos2d::Ref *ref)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -138,44 +122,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/UI/GameInfoUI.cpp"
-            timestampString = "460907346.585697"
+            timestampString = "460973517.699278"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "122"
-            endingLineNumber = "122"
-            landmarkName = "GameInfoUI::onPause(cocos2d::Ref *ref)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../Classes/UI/BasePopUpUI.cpp"
-            timestampString = "460907365.882931"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "103"
-            endingLineNumber = "103"
-            landmarkName = "BasePopUpUI::hidePopUp(const std::function&lt;void()&gt; &amp;endfunc )"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../Classes/UI/GameInfoUI.cpp"
-            timestampString = "460907442.218871"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "159"
-            endingLineNumber = "159"
-            landmarkName = "GameInfoUI::onhideEndPopup()"
+            startingLineNumber = "191"
+            endingLineNumber = "191"
+            landmarkName = "GameInfoUI::onRunnerLose(cocos2d::EventCustom* sender)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

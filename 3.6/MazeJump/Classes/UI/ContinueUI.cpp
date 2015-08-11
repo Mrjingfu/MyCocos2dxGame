@@ -44,7 +44,7 @@ bool ContinueUI::init()
 {
 
     auto size = Director::getInstance()->getVisibleSize();
-    float scale = size.height /960.0f;
+    float scale = size.width /640.0f;
     
     ui::ImageView* bgView = ui::ImageView::create("ui_continue_bg.png");
     bgView->setPosition(Vec2(size.width*0.5, size.height*0.45));
@@ -74,7 +74,8 @@ void ContinueUI::onContinueGame(cocos2d::Ref *ref)
         UIManager::getInstance()->hidePopUp(CC_CALLBACK_0(ContinueUI::onHideEndPopUp, this));
     }else
     {
-        
+         UIManager::getInstance()->addPopUp(BasePopUpUI::POPUP_HEART_NOT_ENOUGT);
+         UIManager::getInstance()->showPopUp(false);
     }
 }
 void ContinueUI::onHideEndPopUp()
