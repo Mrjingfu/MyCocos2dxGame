@@ -27,6 +27,7 @@ ShopPopUpUI* ShopPopUpUI::create()
 
 ShopPopUpUI::ShopPopUpUI()
 {
+    m_shopType = SHOP_NORMAL;
 }
 ShopPopUpUI::~ShopPopUpUI()
 {
@@ -45,7 +46,7 @@ bool ShopPopUpUI::init()
 {
 
     auto size = Director::getInstance()->getVisibleSize();
-    float scale = size.height /960.0f;
+   float scale = size.width /640.0f;
     
    
     
@@ -133,12 +134,24 @@ bool ShopPopUpUI::init()
     coin5_Btn->addClickEventListener(CC_CALLBACK_1(ShopPopUpUI::onBuyCoin5, this));
     
     backBtn->addClickEventListener(CC_CALLBACK_1(ShopPopUpUI::onBackShop, this));
-    productLayer->setVisible(true);
-    goldProductLayer->setVisible(false);
+    
+    setShopDisplay(m_shopType);
+    
     
     return true;
 }
-
+void ShopPopUpUI::setShopDisplay(ShopType type)
+{
+    m_shopType = type;
+    if (m_shopType == ShopType::SHOP_GOLD) {
+        productLayer->setVisible(false);
+        goldProductLayer->setVisible(true);
+    }else if (m_shopType == SHOP_NORMAL)
+    {
+        productLayer->setVisible(true);
+        goldProductLayer->setVisible(false);
+    }
+}
 void ShopPopUpUI::onBuyGold(cocos2d::Ref *ref)
 {
     productLayer->setVisible(false);
@@ -148,8 +161,21 @@ void ShopPopUpUI::onBuyHeart(cocos2d::Ref *ref)
 {
 
     CCLOG("onBuyHeart");
-    UIManager::getInstance()->addPopUp(BasePopUpUI::POPUP_CONTINUE);
-    UIManager::getInstance()->showPopUp(false);
+    int goldNum = Value(localStorageGetItem(USER_GOLD_NUM)).asInt();
+    if (goldNum>=150) {
+        localStorageSetItem(USER_GOLD_NUM, Value(goldNum-150).asString());
+        localStorageSetItem(USER_HEART_NUM, Value(Value(localStorageGetItem(USER_HEART_NUM)).asInt()+15).asString());
+        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_START_HEART_CHANGE);
+        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_START_GOLD_CHANGE);
+        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_HEART_CHANGE);
+        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_GOLD_CHANGE);
+    }else
+    {
+        CCLOG("Shop");
+        UIManager::getInstance()->addPopUp(BasePopUpUI::POPUP_GLOD_NOT_ENOUGT);
+        UIManager::getInstance()->showPopUp(false);
+        
+    }
 }
 
 void ShopPopUpUI::onBuyRemoveAds(cocos2d::Ref *ref)

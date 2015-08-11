@@ -162,9 +162,12 @@ bool RunController::init(Layer* pMainLayer)
     });
     m_pMainLayer->addChild(button2);
     
-    UIManager::getInstance()->init(m_pMainLayer);
+    uiLayer = Layer::create();
+    m_pMainLayer->addChild(uiLayer);
+    UIManager::getInstance()->init(uiLayer);
     UIManager::getInstance()->showInfo(true);
     UIManager::getInstance()->setGameUi(UIManager::UI_GAME);
+
     
     setGameState(RGS_FROZEN);
     
@@ -189,6 +192,12 @@ void RunController::reset()
         m_pMainCamera->stopAllActions();
         cameraTrackPlayer();
     }
+    
+    if (uiLayer) {
+        UIManager::getInstance()->init(uiLayer);
+        UIManager::getInstance()->showInfo(true);
+        UIManager::getInstance()->setGameUi(UIManager::UI_GAME);
+    }
     AudioEngine::resume(m_nBgID);
     AudioEngine::play2d("fadeout.wav");
 }
@@ -206,7 +215,6 @@ void RunController::update(float delta)
 void RunController::destroy()
 {
     AudioEngine::stop(m_nBgID);
-    UIManager::getInstance()->destory();
 
     if(m_pRainbow)
     {
@@ -217,7 +225,6 @@ void RunController::destroy()
 
     m_pMainLayer->removeAllChildren();
     m_pMainLayer = nullptr;
-    UIManager::getInstance()->destory();
     
 }
 void RunController::setGameState(RunnerGameState state)

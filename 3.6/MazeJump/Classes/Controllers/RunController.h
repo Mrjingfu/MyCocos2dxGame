@@ -72,6 +72,7 @@ private:
     TerrainLayer*       m_pTerrainLayer;
     cocos2d::Camera*    m_pMainCamera;
     Runner*             m_pMainPlayer;
+    cocos2d::Layer* uiLayer;
     cocos2d::Sprite3D*           m_pCloud1;
     cocos2d::Sprite3D*           m_pCloud2;
     cocos2d::Sprite3D*           m_pCloud3;

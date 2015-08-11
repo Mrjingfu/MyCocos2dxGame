@@ -39,6 +39,10 @@ private:
     void onMazeJumpWin(cocos2d::EventCustom* sender);
     void onMazeJumpLose(cocos2d::EventCustom* sender);
     
+    void onDelayTimeRunnerLose();
+    void onDelayTimeMazeJumpWin();
+    void onDelayTimeMazeJumpLose();
+    
     void onGroundRecordEnd(cocos2d::EventCustom* sender);
     
     void onPause(cocos2d::Ref *ref);

@@ -22,6 +22,7 @@ public:
     static ContinueUI* create();
     void onContinueGame(Ref* ref);
     void onHideEndPopUp();
+    
 };
 
 #endif /* defined(__MazeJump__ContinueUI__) */

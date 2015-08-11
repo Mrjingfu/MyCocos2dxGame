@@ -27,19 +27,23 @@ public:
         POPUP_START,
         POPUP_SHOP,
         POPUP_CONTINUE,
+        POPUP_GLOD_NOT_ENOUGT,
+        POPUP_HEART_NOT_ENOUGT,
         POPUP_UNKOWN
     } PopUp_UI;
     
     virtual void onEnter() override;
     virtual void onExit() override;
     void showPopUp(bool isPlayAn,cocos2d::Vec2 = cocos2d::Vec2::ZERO,Popup_Show popupShow = POPUP_VERTICAL,const std::function<void()> &endfunc = nullptr);
+    void setShowMaskBg(bool isShowMaskBg);
     void hidePopUp(const std::function<void()> &endfunc = nullptr);
     void setPopUpId(PopUp_UI popId){m_popUpUiId = popId;};
     PopUp_UI getPopUpId(){return m_popUpUiId;};
-
+    virtual bool onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event) override;
 protected:
     cocos2d::Layer* m_maskLayer;
     cocos2d::Layer* m_dialogLayer;
+    cocos2d::Layer* m_maskLayerBg;
     Popup_Show m_popupShow;
     PopUp_UI m_popUpUiId;
     bool m_isShowDialog;

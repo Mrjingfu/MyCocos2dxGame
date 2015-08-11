@@ -27,7 +27,7 @@ StarPopUpUI* StarPopUpUI::create()
 
 StarPopUpUI::StarPopUpUI()
 {
-   
+    isContinue = false;
 }
 StarPopUpUI::~StarPopUpUI()
 {
@@ -37,7 +37,7 @@ bool StarPopUpUI::init()
 {
     
     auto size = Director::getInstance()->getVisibleSize();
-    float scale = size.height /960.0f;
+    float scale = size.width /640.0f;
     ui::ImageView* bgView = ui::ImageView::create("ui_start_bg.png");
     bgView->setPosition(Vec2(size.width*0.5,size.height*0.5));
     bgView->setScale(scale);
@@ -112,21 +112,52 @@ bool StarPopUpUI::init()
 void StarPopUpUI::onEnter()
 {
     BasePopUpUI::onEnter();
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_START_GOLD_CHANGE, std::bind(&StarPopUpUI::onGoldChange, this, std::placeholders::_1));
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_START_HEART_CHANGE, std::bind(&StarPopUpUI::onHeartChange, this, std::placeholders::_1));
     init();
 }
 void StarPopUpUI::onExit()
 {
     BasePopUpUI::onExit();
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_START_GOLD_CHANGE);
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_START_HEART_CHANGE);
+
 }
+void StarPopUpUI::onGoldChange(cocos2d::EventCustom *sender)
+{
+    CCLOG("StarPopUpUI::onGoldChange");
+    if (goldTv) {
+        goldTv->setString(localStorageGetItem(USER_GOLD_NUM));
+    }
+}
+void StarPopUpUI::onHeartChange(cocos2d::EventCustom *sender)
+{
+    CCLOG("StarPopUpUI::onHeartChange");
+    if (heartTv) {
+        heartTv->setString(localStorageGetItem(USER_HEART_NUM));
+    }
+}
+
 void StarPopUpUI::onPlayGame(cocos2d::Ref *ref)
 {
+    isContinue = false;
     UIManager::getInstance()->hidePopUp(CC_CALLBACK_0(StarPopUpUI::onHidePop, this));
 }
 void StarPopUpUI::onHidePop()
 {
-    localStorageSetItem(USER_LAST_LEVEL, Value(0).asString());
-    auto scene = MainScene::createScene();
-    Director::getInstance()->replaceScene(scene);
+    if (isContinue) {
+        localStorageSetItem(USER_HEART_NUM, Value(Value(localStorageGetItem(USER_HEART_NUM)).asInt()-5).asString());
+        localStorageSetItem(USER_LAST_LEVEL, localStorageGetItem(USER_MAX_LEVEL));
+        auto scene = MainScene::createScene();
+        Director::getInstance()->replaceScene(scene);
+        isContinue = false;
+    }else
+    {
+        localStorageSetItem(USER_LAST_LEVEL, Value(0).asString());
+        auto scene = MainScene::createScene();
+        Director::getInstance()->replaceScene(scene);
+    }
+
 }
 void StarPopUpUI::onResumeGame(cocos2d::Ref *ref)
 {
@@ -134,15 +165,13 @@ void StarPopUpUI::onResumeGame(cocos2d::Ref *ref)
     
     int heartNum = Value(localStorageGetItem(USER_HEART_NUM)).asInt();
     if (heartNum>=5) {
-        localStorageSetItem(USER_HEART_NUM, Value(heartNum-5).asString());
-        localStorageSetItem(USER_LAST_LEVEL, localStorageGetItem(USER_MAX_LEVEL));
+        isContinue = true;
         UIManager::getInstance()->hidePopUp(CC_CALLBACK_0(StarPopUpUI::onHidePop, this));
     }else
     {
         CCLOG("Shop");
-//        auto scene = ShopScene::createScene(SHOP_HEART_NOT_ENOUGH);
-//        Director::getInstance()->pushScene(scene);
-
+        UIManager::getInstance()->addPopUp(BasePopUpUI::POPUP_HEART_NOT_ENOUGT);
+        UIManager::getInstance()->showPopUp(false);
     }
     
 }
