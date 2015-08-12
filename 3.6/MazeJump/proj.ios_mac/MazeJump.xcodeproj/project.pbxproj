@@ -169,6 +169,10 @@
 		5582158E1B5C7FA700173C79 /* LevelsManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5582158C1B5C7FA700173C79 /* LevelsManager.cpp */; };
 		558215921B5C820D00173C79 /* levels.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5582158A1B5C7EA000173C79 /* levels.plist */; };
 		558215931B5C87EE00173C79 /* LevelsManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5582158C1B5C7FA700173C79 /* LevelsManager.cpp */; };
+		5587F3821B7B22FC00279D49 /* SkillButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5587F3801B7B22FC00279D49 /* SkillButton.cpp */; };
+		5587F3831B7B2EAB00279D49 /* SkillButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5587F3801B7B22FC00279D49 /* SkillButton.cpp */; };
+		5587F3871B7B32AF00279D49 /* stencil.png in Resources */ = {isa = PBXBuildFile; fileRef = 5587F3851B7B32AF00279D49 /* stencil.png */; };
+		5587F3891B7B32CF00279D49 /* stencil.png in Resources */ = {isa = PBXBuildFile; fileRef = 5587F3851B7B32AF00279D49 /* stencil.png */; };
 		5592AE091B5F2A0F0062AF08 /* MainScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5592AE071B5F2A0F0062AF08 /* MainScene.cpp */; };
 		5592AE0C1B5F2A8C0062AF08 /* TerrainLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5592AE0A1B5F2A8C0062AF08 /* TerrainLayer.cpp */; };
 		5592AE0F1B5F2CFB0062AF08 /* RunController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5592AE0D1B5F2CFB0062AF08 /* RunController.cpp */; };
@@ -608,6 +612,9 @@
 		5582158A1B5C7EA000173C79 /* levels.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = levels.plist; sourceTree = "<group>"; };
 		5582158C1B5C7FA700173C79 /* LevelsManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LevelsManager.cpp; sourceTree = "<group>"; };
 		5582158D1B5C7FA700173C79 /* LevelsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelsManager.h; sourceTree = "<group>"; };
+		5587F3801B7B22FC00279D49 /* SkillButton.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SkillButton.cpp; sourceTree = "<group>"; };
+		5587F3811B7B22FC00279D49 /* SkillButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SkillButton.h; sourceTree = "<group>"; };
+		5587F3851B7B32AF00279D49 /* stencil.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stencil.png; sourceTree = "<group>"; };
 		5592AE071B5F2A0F0062AF08 /* MainScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MainScene.cpp; sourceTree = "<group>"; };
 		5592AE081B5F2A0F0062AF08 /* MainScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainScene.h; sourceTree = "<group>"; };
 		5592AE0A1B5F2A8C0062AF08 /* TerrainLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TerrainLayer.cpp; sourceTree = "<group>"; };
@@ -1134,6 +1141,7 @@
 		5542EED31B395E1300CD9496 /* textures */ = {
 			isa = PBXGroup;
 			children = (
+				5587F3851B7B32AF00279D49 /* stencil.png */,
 				55C8A3271B79B915004E9218 /* ui_title1.png */,
 				5570740F1B78EE7F002A02C3 /* sky5.png */,
 				EC363FB11B789D5F00EC4890 /* btn_heart1_normal.png */,
@@ -1337,6 +1345,8 @@
 				ECE0D6A81B6F565A00B5E416 /* ShopPopUpUI.h */,
 				ECE0D6621B6F04A600B5E416 /* MainUI.cpp */,
 				ECE0D6631B6F04A600B5E416 /* MainUI.h */,
+				5587F3801B7B22FC00279D49 /* SkillButton.cpp */,
+				5587F3811B7B22FC00279D49 /* SkillButton.h */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -1526,6 +1536,7 @@
 				55066CEA1B4BD92B007FCF3F /* 5x5-6.tmx in Resources */,
 				556520D71B72F13C00B7447F /* sea.png in Resources */,
 				5579F7521B68EF85006861F1 /* goldbig.c3b in Resources */,
+				5587F3871B7B32AF00279D49 /* stencil.png in Resources */,
 				55E8B1031B744A85007BB9F2 /* fakeshadow.c3b in Resources */,
 				521A8E6519F0C34300D177D7 /* Default-736h@3x.png in Resources */,
 				55E8B1041B744A85007BB9F2 /* shadowCircle.png in Resources */,
@@ -1635,6 +1646,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5587F3891B7B32CF00279D49 /* stencil.png in Resources */,
 				55C8A3971B79EEBF004E9218 /* girl1.c3b in Resources */,
 				55C8A3981B79EEBF004E9218 /* girl1.png in Resources */,
 				55C8A3291B79B91B004E9218 /* ui_title1.png in Resources */,
@@ -1813,6 +1825,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				55066CD11B4BAB4E007FCF3F /* BaseEffect3D.cpp in Sources */,
+				5587F3821B7B22FC00279D49 /* SkillButton.cpp in Sources */,
 				EC07A10B1B7990A0004F34F5 /* TipsUI.cpp in Sources */,
 				EC177F711B73580D0059519B /* BasePopUpUI.cpp in Sources */,
 				46880B8819C43A87006E1F66 /* AppDelegate.cpp in Sources */,
@@ -1859,6 +1872,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5587F3831B7B2EAB00279D49 /* SkillButton.cpp in Sources */,
 				EC07A10C1B7999E3004F34F5 /* TipsUI.cpp in Sources */,
 				EC363FB71B78A16E00EC4890 /* ContinueUI.cpp in Sources */,
 				EC363FAD1B78801D00EC4890 /* GameUI.cpp in Sources */,

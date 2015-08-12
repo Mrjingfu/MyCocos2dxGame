@@ -13,6 +13,7 @@
 #include "GameScene.h"
 #include "MenuScene.h"
 #include "UIManager.h"
+#include "SkillButton.h"
 #include "storage/local-storage/LocalStorage.h"
 #include "Particle3D/CCParticleSystem3D.h"
 #include "Particle3D/PU/CCPUParticleSystem3D.h"
@@ -151,16 +152,25 @@ bool RunController::init(Layer* pMainLayer)
     m_pMainLayer->addChild(button);
     
     
-    cocos2d::ui::Button* button2 = cocos2d::ui::Button::create("button_retry_up.png",
-                                                              "button_retry_down.png");
-    button2->setPosition(Vec2(size.width * 0.8f, size.height * 0.2f));
-    button2->setPressedActionEnabled(true);
-    button2->addClickEventListener([=](Ref* sender){
-        if (m_bHasShowRainbow)
-            return;
-        showRainbow();
-    });
-    m_pMainLayer->addChild(button2);
+//    cocos2d::ui::Button* button2 = cocos2d::ui::Button::create("button_retry_up.png",
+//                                                              "button_retry_down.png");
+//    button2->setPosition(Vec2(size.width * 0.8f, size.height * 0.2f));
+//    button2->setPressedActionEnabled(true);
+//    button2->addClickEventListener([=](Ref* sender){
+//        if (m_bHasShowRainbow)
+//            return;
+//        showRainbow();
+//    });
+//    m_pMainLayer->addChild(button2);
+    
+    
+    SkillButton* skillBtn = SkillButton::create("button_retry_up.png", "stencil.png");
+    if(!skillBtn)
+        return false;
+    skillBtn->setPosition(Vec2(size.width * 0.1f, size.height * 0.1f));
+    m_pMainLayer->addChild(skillBtn);
+    return true;
+
     
     uiLayer = Layer::create();
     m_pMainLayer->addChild(uiLayer);
