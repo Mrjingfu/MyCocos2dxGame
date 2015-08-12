@@ -34,7 +34,6 @@ private:
     void onGoldChange(cocos2d::EventCustom* sender);
     void onHeartChange(cocos2d::EventCustom* sender);
     void onMaxDistanceChange(cocos2d::EventCustom* sender);
-    void onRainbowValueChange(cocos2d::EventCustom* sender);
     void onRunnerLose(cocos2d::EventCustom* sender);
     void onMazeJumpWin(cocos2d::EventCustom* sender);
     void onMazeJumpLose(cocos2d::EventCustom* sender);

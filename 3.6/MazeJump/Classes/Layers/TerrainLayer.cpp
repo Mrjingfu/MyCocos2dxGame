@@ -112,6 +112,10 @@ void TerrainLayer::setCurrentColumn( int column )
     if(m_nColumn != column)
     {
         m_nColumn = column;
+        if(m_nCurrentPatternNum == 0)
+            return;
+        if(m_nCurrentPatternNum%10 == 1)
+            return;
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_RAINBOW_VALUE_CHANGE);
     }
 }

@@ -100,7 +100,6 @@ void GameInfoUI::removePopUpId()
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_GOLD_CHANGE, std::bind(&GameInfoUI::onGoldChange, this, std::placeholders::_1));
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_HEART_CHANGE, std::bind(&GameInfoUI::onHeartChange, this, std::placeholders::_1));
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_MAX_DISTANCE_CHANGE, std::bind(&GameInfoUI::onMaxDistanceChange, this, std::placeholders::_1));
-    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_RAINBOW_VALUE_CHANGE, std::bind(&GameInfoUI::onRainbowValueChange, this, std::placeholders::_1));
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_RUNNER_LOSE, std::bind(&GameInfoUI::onRunnerLose, this, std::placeholders::_1));
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_MAZEJUMP_WIN, std::bind(&GameInfoUI::onMazeJumpWin, this, std::placeholders::_1));
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_MAZEJUMP_LOSE, std::bind(&GameInfoUI::onMazeJumpLose, this, std::placeholders::_1));
@@ -111,7 +110,6 @@ void GameInfoUI::removePopUpId()
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_GOLD_CHANGE);
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_HEART_CHANGE);
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_MAX_DISTANCE_CHANGE);
-    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_RAINBOW_VALUE_CHANGE);
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_RUNNER_LOSE);
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_MAZEJUMP_WIN);
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_MAZEJUMP_LOSE);
@@ -181,9 +179,6 @@ void GameInfoUI::onMaxDistanceChange(cocos2d::EventCustom* sender)
 {
     if (gameScoreTv)
         gameScoreTv->setString(StringUtils::format(UtilityHelper::getLocalString("GAME_DISTANCE").c_str(),Value(localStorageGetItem(USER_LAST_LEVEL)).asInt()));
-}
-void GameInfoUI::onRainbowValueChange(cocos2d::EventCustom* sender)
-{
 }
 void GameInfoUI::onRunnerLose(cocos2d::EventCustom* sender)
 {
