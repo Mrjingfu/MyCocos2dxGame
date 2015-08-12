@@ -9,8 +9,7 @@
 #ifndef __MazeJump__SkillButton__
 #define __MazeJump__SkillButton__
 
-#include "cocos2d.h"
-
+#include "HueSprite.h"
 class SkillButton : public cocos2d::Node
 {
     SkillButton();
@@ -26,7 +25,7 @@ private:
     void onRainbowValueChange(cocos2d::EventCustom* sender);
     bool onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event);
 private:
-    cocos2d::Sprite*        m_pBtnSprite;
+    HueSprite*              m_pBtnSprite;
     cocos2d::Sprite*        m_pMaskSprite;
     cocos2d::ProgressTimer*     m_pProgressTimer;
     int                     m_nCurrentRainbowValue;

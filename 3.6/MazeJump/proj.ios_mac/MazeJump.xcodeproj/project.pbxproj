@@ -173,6 +173,8 @@
 		5587F3831B7B2EAB00279D49 /* SkillButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5587F3801B7B22FC00279D49 /* SkillButton.cpp */; };
 		5587F3871B7B32AF00279D49 /* stencil.png in Resources */ = {isa = PBXBuildFile; fileRef = 5587F3851B7B32AF00279D49 /* stencil.png */; };
 		5587F3891B7B32CF00279D49 /* stencil.png in Resources */ = {isa = PBXBuildFile; fileRef = 5587F3851B7B32AF00279D49 /* stencil.png */; };
+		5587F38F1B7B4EC400279D49 /* HueSprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5587F38D1B7B4EC400279D49 /* HueSprite.cpp */; };
+		5587F3901B7B53E500279D49 /* HueSprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5587F38D1B7B4EC400279D49 /* HueSprite.cpp */; };
 		5592AE091B5F2A0F0062AF08 /* MainScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5592AE071B5F2A0F0062AF08 /* MainScene.cpp */; };
 		5592AE0C1B5F2A8C0062AF08 /* TerrainLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5592AE0A1B5F2A8C0062AF08 /* TerrainLayer.cpp */; };
 		5592AE0F1B5F2CFB0062AF08 /* RunController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5592AE0D1B5F2CFB0062AF08 /* RunController.cpp */; };
@@ -615,6 +617,8 @@
 		5587F3801B7B22FC00279D49 /* SkillButton.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SkillButton.cpp; sourceTree = "<group>"; };
 		5587F3811B7B22FC00279D49 /* SkillButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SkillButton.h; sourceTree = "<group>"; };
 		5587F3851B7B32AF00279D49 /* stencil.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stencil.png; sourceTree = "<group>"; };
+		5587F38D1B7B4EC400279D49 /* HueSprite.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HueSprite.cpp; sourceTree = "<group>"; };
+		5587F38E1B7B4EC400279D49 /* HueSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HueSprite.h; sourceTree = "<group>"; };
 		5592AE071B5F2A0F0062AF08 /* MainScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MainScene.cpp; sourceTree = "<group>"; };
 		5592AE081B5F2A0F0062AF08 /* MainScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainScene.h; sourceTree = "<group>"; };
 		5592AE0A1B5F2A8C0062AF08 /* TerrainLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TerrainLayer.cpp; sourceTree = "<group>"; };
@@ -1252,6 +1256,8 @@
 				5592AE141B5F4AF90062AF08 /* Runner.h */,
 				5579F74B1B68DBC5006861F1 /* Decorator.cpp */,
 				5579F74C1B68DBC5006861F1 /* Decorator.h */,
+				5587F38D1B7B4EC400279D49 /* HueSprite.cpp */,
+				5587F38E1B7B4EC400279D49 /* HueSprite.h */,
 			);
 			path = Sprites;
 			sourceTree = "<group>";
@@ -1861,6 +1867,7 @@
 				55CED79E1B72555F0050F69F /* RibbonTrail.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
 				ECE0D6A91B6F565A00B5E416 /* DeathUI.cpp in Sources */,
+				5587F38F1B7B4EC400279D49 /* HueSprite.cpp in Sources */,
 				EC06D7691B7488FD0084B13C /* UIManager.cpp in Sources */,
 				EC363FB01B789C6F00EC4890 /* ContinueUI.cpp in Sources */,
 				55C7F2191B3AE6DB0046B048 /* GroundLayer.cpp in Sources */,
@@ -1872,6 +1879,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5587F3901B7B53E500279D49 /* HueSprite.cpp in Sources */,
 				5587F3831B7B2EAB00279D49 /* SkillButton.cpp in Sources */,
 				EC07A10C1B7999E3004F34F5 /* TipsUI.cpp in Sources */,
 				EC363FB71B78A16E00EC4890 /* ContinueUI.cpp in Sources */,

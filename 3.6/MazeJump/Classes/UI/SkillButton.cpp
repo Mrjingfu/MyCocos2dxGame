@@ -37,9 +37,10 @@ SkillButton::SkillButton()
 
 bool SkillButton::init(const std::string& btnTex, const std::string& maskTex)
 {
-    m_pBtnSprite = Sprite::create(btnTex);
+    m_pBtnSprite = HueSprite::create(btnTex);
     if(!m_pBtnSprite)
         return false;
+    //m_pBtnSprite->setHue(M_PI);
     addChild(m_pBtnSprite);
     
     m_pMaskSprite = Sprite::create(maskTex);
