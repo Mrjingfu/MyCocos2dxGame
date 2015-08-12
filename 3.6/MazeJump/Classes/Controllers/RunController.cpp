@@ -169,9 +169,7 @@ bool RunController::init(Layer* pMainLayer)
         return false;
     skillBtn->setPosition(Vec2(size.width * 0.1f, size.height * 0.1f));
     m_pMainLayer->addChild(skillBtn);
-    return true;
-
-    
+   
     uiLayer = Layer::create();
     m_pMainLayer->addChild(uiLayer);
     UIManager::getInstance()->init(uiLayer);
