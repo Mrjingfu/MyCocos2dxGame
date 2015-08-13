@@ -113,6 +113,14 @@
 		5542EEBC1B3943C600CD9496 /* GameScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5542EEBA1B3943C600CD9496 /* GameScene.cpp */; };
 		5542EEC21B395D3600CD9496 /* MenuScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5542EEB41B3942FE00CD9496 /* MenuScene.cpp */; };
 		5542EEC41B395D3600CD9496 /* GameScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5542EEBA1B3943C600CD9496 /* GameScene.cpp */; };
+		5560D7161B7CAAA4004DDD67 /* comic_sans_ms.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 5560D7121B7CAAA4004DDD67 /* comic_sans_ms.fnt */; };
+		5560D7171B7CAAA4004DDD67 /* comic_sans_ms.png in Resources */ = {isa = PBXBuildFile; fileRef = 5560D7131B7CAAA4004DDD67 /* comic_sans_ms.png */; };
+		5560D7271B7CABA5004DDD67 /* DFWaWaW5-GB.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 5560D7251B7CABA5004DDD67 /* DFWaWaW5-GB.fnt */; };
+		5560D7281B7CABA5004DDD67 /* DFWaWaW5-GB.png in Resources */ = {isa = PBXBuildFile; fileRef = 5560D7261B7CABA5004DDD67 /* DFWaWaW5-GB.png */; };
+		5560D72C1B7CAE50004DDD67 /* DFWaWaW5-GB.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 5560D7251B7CABA5004DDD67 /* DFWaWaW5-GB.fnt */; };
+		5560D72D1B7CAE50004DDD67 /* DFWaWaW5-GB.png in Resources */ = {isa = PBXBuildFile; fileRef = 5560D7261B7CABA5004DDD67 /* DFWaWaW5-GB.png */; };
+		5560D72E1B7CAE50004DDD67 /* comic_sans_ms.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 5560D7121B7CAAA4004DDD67 /* comic_sans_ms.fnt */; };
+		5560D72F1B7CAE50004DDD67 /* comic_sans_ms.png in Resources */ = {isa = PBXBuildFile; fileRef = 5560D7131B7CAAA4004DDD67 /* comic_sans_ms.png */; };
 		556520D41B72F13C00B7447F /* platform_stand.c3b in Resources */ = {isa = PBXBuildFile; fileRef = 556520D01B72F13C00B7447F /* platform_stand.c3b */; };
 		556520D51B72F13C00B7447F /* platform_stand.png in Resources */ = {isa = PBXBuildFile; fileRef = 556520D11B72F13C00B7447F /* platform_stand.png */; };
 		556520D61B72F13C00B7447F /* sea.c3b in Resources */ = {isa = PBXBuildFile; fileRef = 556520D21B72F13C00B7447F /* sea.c3b */; };
@@ -583,6 +591,10 @@
 		5542EEB51B3942FE00CD9496 /* MenuScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuScene.h; sourceTree = "<group>"; };
 		5542EEBA1B3943C600CD9496 /* GameScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameScene.cpp; sourceTree = "<group>"; };
 		5542EEBB1B3943C600CD9496 /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameScene.h; sourceTree = "<group>"; };
+		5560D7121B7CAAA4004DDD67 /* comic_sans_ms.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = comic_sans_ms.fnt; sourceTree = "<group>"; };
+		5560D7131B7CAAA4004DDD67 /* comic_sans_ms.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = comic_sans_ms.png; sourceTree = "<group>"; };
+		5560D7251B7CABA5004DDD67 /* DFWaWaW5-GB.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "DFWaWaW5-GB.fnt"; sourceTree = "<group>"; };
+		5560D7261B7CABA5004DDD67 /* DFWaWaW5-GB.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "DFWaWaW5-GB.png"; sourceTree = "<group>"; };
 		556520D01B72F13C00B7447F /* platform_stand.c3b */ = {isa = PBXFileReference; lastKnownFileType = file; path = platform_stand.c3b; sourceTree = "<group>"; };
 		556520D11B72F13C00B7447F /* platform_stand.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = platform_stand.png; sourceTree = "<group>"; };
 		556520D21B72F13C00B7447F /* sea.c3b */ = {isa = PBXFileReference; lastKnownFileType = file; path = sea.c3b; sourceTree = "<group>"; };
@@ -1076,6 +1088,10 @@
 		5542EECD1B395E1300CD9496 /* fonts */ = {
 			isa = PBXGroup;
 			children = (
+				5560D7251B7CABA5004DDD67 /* DFWaWaW5-GB.fnt */,
+				5560D7261B7CABA5004DDD67 /* DFWaWaW5-GB.png */,
+				5560D7121B7CAAA4004DDD67 /* comic_sans_ms.fnt */,
+				5560D7131B7CAAA4004DDD67 /* comic_sans_ms.png */,
 				ECE0D6821B6F337500B5E416 /* FZXS12.TTF */,
 			);
 			path = fonts;
@@ -1522,6 +1538,7 @@
 				EC363F9B1B783A7600EC4890 /* btn_removeadd_press.png in Resources */,
 				5570740C1B78EE6C002A02C3 /* rainbowin.wav in Resources */,
 				ECE0D6761B6F13A300B5E416 /* btn_rank_press.png in Resources */,
+				5560D7171B7CAAA4004DDD67 /* comic_sans_ms.png in Resources */,
 				EC721EF71B6F79CF0073B845 /* btn_restore_press.png in Resources */,
 				EC0A15911B7083DE0094AE6D /* btn_coins03_press.png in Resources */,
 				55066CDC1B4BCC6C007FCF3F /* 5x5-2.tmx in Resources */,
@@ -1592,6 +1609,7 @@
 				55EB5C371B6F597B005BD1A4 /* plane.wav in Resources */,
 				5510DE741B6B7C4D00C2FB15 /* platform4.png in Resources */,
 				55CECC371B70F98C00434427 /* particle3d.material in Resources */,
+				5560D7271B7CABA5004DDD67 /* DFWaWaW5-GB.fnt in Resources */,
 				EC363FA61B7879A100EC4890 /* btn_shopback_normal.png in Resources */,
 				EC0A158F1B7083DE0094AE6D /* btn_coins02_press.png in Resources */,
 				EC06D75F1B745E4C0084B13C /* ui_heart_bar.png in Resources */,
@@ -1609,6 +1627,7 @@
 				5592AE481B5FF4B50062AF08 /* patterns.plist in Resources */,
 				55EB5C401B6F6A9B005BD1A4 /* superjump.wav in Resources */,
 				50EF629817ECD46A001EB2F8 /* Icon-80.png in Resources */,
+				5560D7281B7CABA5004DDD67 /* DFWaWaW5-GB.png in Resources */,
 				EC721EF01B6F79CF0073B845 /* btn_glodmore_normal.png in Resources */,
 				556520D61B72F13C00B7447F /* sea.c3b in Resources */,
 				EC3F330E1B64F3D70072775F /* 6x6-4.tmx in Resources */,
@@ -1627,6 +1646,7 @@
 				556520E51B732A0900B7447F /* sea2.png in Resources */,
 				5087E77E17EB970100C73F5D /* Default.png in Resources */,
 				556520E21B732A0900B7447F /* sea1.c3b in Resources */,
+				5560D7161B7CAAA4004DDD67 /* comic_sans_ms.fnt in Resources */,
 				EC19695E1B720589002AECA7 /* btn_sounds_off.png in Resources */,
 				556520E71B732A0900B7447F /* sea3.png in Resources */,
 				EC66AD511B70A73000FFB244 /* btn_play_normal.png in Resources */,
@@ -1652,6 +1672,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5560D72C1B7CAE50004DDD67 /* DFWaWaW5-GB.fnt in Resources */,
+				5560D72D1B7CAE50004DDD67 /* DFWaWaW5-GB.png in Resources */,
+				5560D72E1B7CAE50004DDD67 /* comic_sans_ms.fnt in Resources */,
+				5560D72F1B7CAE50004DDD67 /* comic_sans_ms.png in Resources */,
 				5587F3891B7B32CF00279D49 /* stencil.png in Resources */,
 				55C8A3971B79EEBF004E9218 /* girl1.c3b in Resources */,
 				55C8A3981B79EEBF004E9218 /* girl1.png in Resources */,
