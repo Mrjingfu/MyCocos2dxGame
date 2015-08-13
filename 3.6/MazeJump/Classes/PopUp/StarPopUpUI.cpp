@@ -44,26 +44,26 @@ bool StarPopUpUI::init()
     
     m_dialogLayer->addChild(bgView);
 
-
-    goldTv =Label::createWithTTF(StringUtils::format("%d",Value(localStorageGetItem(USER_GOLD_NUM)).asInt()), FONT_FXZS, 30);
+   
+    goldTv = Label::createWithBMFont(UtilityHelper::getLocalString("FONT_NUMBER"),localStorageGetItem(USER_GOLD_NUM));
     goldTv->setAnchorPoint(Vec2(1, 0.5));
     goldTv->setPosition(Vec2(size.width*0.7, size.height*0.6));
-    goldTv->setScale(scale);
+    goldTv->setScale(scale*0.5);
     goldTv->setHorizontalAlignment(TextHAlignment::RIGHT);
     m_dialogLayer->addChild(goldTv);
 
    
 
-    heartTv = Label::createWithTTF(StringUtils::format("%d",Value(localStorageGetItem(USER_HEART_NUM)).asInt()), FONT_FXZS, 30);
+    heartTv = Label::createWithBMFont(UtilityHelper::getLocalString("FONT_NUMBER"),localStorageGetItem(USER_HEART_NUM));
     heartTv->setAnchorPoint(Vec2(1, 0.5));
     heartTv->setPosition(Vec2(size.width*0.7, size.height*0.53));
-    heartTv->setScale(scale);
+    heartTv->setScale(scale*0.5);
 heartTv->setHorizontalAlignment(TextHAlignment::RIGHT);
     m_dialogLayer->addChild(heartTv);
     
-     lastScoreView = Label::createWithTTF(localStorageGetItem(USER_MAX_LEVEL), FONT_FXZS, 30);
+     lastScoreView = Label::createWithBMFont(UtilityHelper::getLocalString("FONT_NUMBER"),localStorageGetItem(USER_MAX_LEVEL));
     lastScoreView->setPosition(Vec2(size.width*0.7, size.height*0.45));
-    lastScoreView->setScale(scale);
+    lastScoreView->setScale(scale*0.5);
     lastScoreView->setAnchorPoint(Vec2(1, 0.5));
     lastScoreView->setHorizontalAlignment(TextHAlignment::RIGHT);
     m_dialogLayer->addChild(lastScoreView);

@@ -30,6 +30,8 @@
 	<string>Restore purchases failed!</string>
 	<key>BEST_SCORE</key>
 	<string></string>
+	<key>FONT_NUMBER</key>
+	<string>comic_sans_ms.png</string>
 	<key>UI_TITLE_TEX</key>
 	<string>ui_title.png</string>
 	<key>UI_START_BTN_NEW</key>
