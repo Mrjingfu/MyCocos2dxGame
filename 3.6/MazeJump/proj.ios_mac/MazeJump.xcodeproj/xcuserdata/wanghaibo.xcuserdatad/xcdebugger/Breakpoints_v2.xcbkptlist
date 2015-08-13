@@ -1833,7 +1833,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "306"
             endingLineNumber = "306"
-            landmarkName = "RunController::switchToMazeJump()"
+            landmarkName = "RunController::switchToMenu()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2089,7 +2089,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "524"
             endingLineNumber = "524"
-            landmarkName = "RunController::checkRainbowIsShowOrHide()"
+            landmarkName = "RunController::getRandomColorByIndex(int index)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -5540,7 +5540,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "446"
             endingLineNumber = "446"
-            landmarkName = "RunController::addDecoratorExplosion(const cocos2d::Vec3&amp; pos)"
+            landmarkName = "RunController::pauseBgMusic()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -5636,7 +5636,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "224"
             endingLineNumber = "224"
-            landmarkName = "RunController::update(float delta)"
+            landmarkName = "RunController::destroy()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
