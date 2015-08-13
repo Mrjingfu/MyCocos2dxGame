@@ -29,6 +29,9 @@ public:
         POPUP_CONTINUE,
         POPUP_GLOD_NOT_ENOUGT,
         POPUP_HEART_NOT_ENOUGT,
+        POPUP_DEATH,
+        POPUP_GROUND_WIN,
+        POPUP_GROUND_LOSE,
         POPUP_UNKOWN
     } PopUp_UI;
     

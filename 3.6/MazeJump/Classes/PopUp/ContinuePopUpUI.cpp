@@ -5,7 +5,7 @@
 //
 //
 
-#include "ContinueUI.h"
+#include "ContinuePopUpUI.h"
 #include "UtilityHelper.h"
 #include "GameConst.h"
 #include "MainScene.h"
@@ -13,9 +13,9 @@
 #include "storage/local-storage/LocalStorage.h"
 USING_NS_CC;
 
-ContinueUI* ContinueUI::create()
+ContinuePopUpUI* ContinuePopUpUI::create()
 {
-    ContinueUI *pRet = new(std::nothrow) ContinueUI();
+    ContinuePopUpUI *pRet = new(std::nothrow) ContinuePopUpUI();
     if (pRet )
     {
         pRet->autorelease();
@@ -25,22 +25,22 @@ ContinueUI* ContinueUI::create()
     return nullptr;
 }
 
-ContinueUI::ContinueUI()
+ContinuePopUpUI::ContinuePopUpUI()
 {
 }
-ContinueUI::~ContinueUI()
+ContinuePopUpUI::~ContinuePopUpUI()
 {
 }
-void ContinueUI::onEnter()
+void ContinuePopUpUI::onEnter()
 {
     BasePopUpUI::onEnter();
     init();
 }
-void ContinueUI::onExit()
+void ContinuePopUpUI::onExit()
 {
     BasePopUpUI::onExit();
 }
-bool ContinueUI::init()
+bool ContinuePopUpUI::init()
 {
 
     auto size = Director::getInstance()->getVisibleSize();
@@ -61,24 +61,24 @@ bool ContinueUI::init()
     saveBtn->setPosition(Vec2(size.width*0.5, size.height*0.41));
     m_dialogLayer->addChild(saveBtn);
     
-    saveBtn->addClickEventListener(CC_CALLBACK_1(ContinueUI::onContinueGame,this));
+    saveBtn->addClickEventListener(CC_CALLBACK_1(ContinuePopUpUI::onContinueGame,this));
     return true;
 }
-void ContinueUI::onContinueGame(cocos2d::Ref *ref)
+void ContinuePopUpUI::onContinueGame(cocos2d::Ref *ref)
 {
     int heartNum = Value(localStorageGetItem(USER_HEART_NUM)).asInt();
     if (heartNum>=1) {
         localStorageSetItem(USER_HEART_NUM, Value(heartNum-1).asString());
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_HEART_CHANGE);
         localStorageSetItem(USER_LAST_LEVEL, localStorageGetItem(USER_LAST_LEVEL));
-        UIManager::getInstance()->hidePopUp(CC_CALLBACK_0(ContinueUI::onHideEndPopUp, this));
+        UIManager::getInstance()->hidePopUp(CC_CALLBACK_0(ContinuePopUpUI::onHideEndPopUp, this));
     }else
     {
          UIManager::getInstance()->addPopUp(BasePopUpUI::POPUP_HEART_NOT_ENOUGT);
          UIManager::getInstance()->showPopUp(false);
     }
 }
-void ContinueUI::onHideEndPopUp()
+void ContinuePopUpUI::onHideEndPopUp()
 {
     auto scene = MainScene::createScene();
     Director::getInstance()->replaceScene(scene);

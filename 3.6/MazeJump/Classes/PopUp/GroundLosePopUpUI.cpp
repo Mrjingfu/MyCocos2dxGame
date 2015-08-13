@@ -1,21 +1,21 @@
 //
-//  DeathUI.cpp
+//  GroundLosePopUpUI.cpp
 //
 //
 //
 //
 
-#include "DeathUI.h"
+#include "GroundLosePopUpUI.h"
 #include "UtilityHelper.h"
 #include "GameConst.h"
 #include "MainScene.h"
 #include "storage/local-storage/LocalStorage.h"
 USING_NS_CC;
 
-DeathUI* DeathUI::create()
+GroundLosePopUpUI* GroundLosePopUpUI::create()
 {
-    DeathUI *pRet = new(std::nothrow) DeathUI();
-    if (pRet )
+    GroundLosePopUpUI *pRet = new(std::nothrow) GroundLosePopUpUI();
+    if (pRet)
     {
         pRet->autorelease();
         return pRet;
@@ -24,29 +24,27 @@ DeathUI* DeathUI::create()
     return nullptr;
 }
 
-DeathUI::DeathUI()
+GroundLosePopUpUI::GroundLosePopUpUI()
 {
 }
-DeathUI::~DeathUI()
+GroundLosePopUpUI::~GroundLosePopUpUI()
 {
 }
-void DeathUI::onEnter()
+void GroundLosePopUpUI::onEnter()
 {
     BasePopUpUI::onEnter();
     init();
 }
-void DeathUI::onExit()
+void GroundLosePopUpUI::onExit()
 {
     BasePopUpUI::onExit();
 }
-bool DeathUI::init()
+bool GroundLosePopUpUI::init()
 {
 
     auto size = Director::getInstance()->getVisibleSize();
-    float scale = size.height /960.0f;
+    float scale = size.height /640.0f;
 
-    
-    
     
     return true;
 }

@@ -5,7 +5,7 @@
 //
 //
 
-#include "TipsUI.h"
+#include "TipsPopUpUI.h"
 #include "UtilityHelper.h"
 #include "GameConst.h"
 #include "UIManager.h"
@@ -13,9 +13,9 @@
 #include "storage/local-storage/LocalStorage.h"
 USING_NS_CC;
 
-TipsUI* TipsUI::create(TipsType type)
+TipsPopUpUI* TipsPopUpUI::create(TipsType type)
 {
-    TipsUI *pRet = new(std::nothrow) TipsUI(type);
+    TipsPopUpUI *pRet = new(std::nothrow) TipsPopUpUI(type);
     if (pRet )
     {
         pRet->autorelease();
@@ -25,23 +25,23 @@ TipsUI* TipsUI::create(TipsType type)
     return nullptr;
 }
 
-TipsUI::TipsUI(TipsType type):m_tipType(type)
+TipsPopUpUI::TipsPopUpUI(TipsType type):m_tipType(type)
 {
 }
-TipsUI::~TipsUI()
+TipsPopUpUI::~TipsPopUpUI()
 {
 }
-void TipsUI::onEnter()
+void TipsPopUpUI::onEnter()
 {
     BasePopUpUI::onEnter();
     init();
 }
-void TipsUI::onExit()
+void TipsPopUpUI::onExit()
 {
     BasePopUpUI::onExit();
 }
 
-bool TipsUI::init()
+bool TipsPopUpUI::init()
 {
 
     auto size = Director::getInstance()->getVisibleSize();
@@ -102,12 +102,12 @@ bool TipsUI::init()
                                    });
     m_dialogLayer->addChild(oKBtn);
 
-    oKBtn->addClickEventListener(CC_CALLBACK_1(TipsUI::onOk, this));
-    cancelBtn->addClickEventListener(CC_CALLBACK_1(TipsUI::onCancel, this));
+    oKBtn->addClickEventListener(CC_CALLBACK_1(TipsPopUpUI::onOk, this));
+    cancelBtn->addClickEventListener(CC_CALLBACK_1(TipsPopUpUI::onCancel, this));
 
     return true;
 }
-void TipsUI::onOk(Ref* ref)
+void TipsPopUpUI::onOk(Ref* ref)
 {
     UIManager::getInstance()->hidePopUp();
     if (m_tipType == TipsType::TIP_HEART) {
@@ -126,11 +126,11 @@ void TipsUI::onOk(Ref* ref)
         UIManager::getInstance()->showPopUp(false);
     }
 }
-void TipsUI::onhideEndPopup()
+void TipsPopUpUI::onhideEndPopup()
 {
     
 }
-void TipsUI::onCancel(Ref* ref)
+void TipsPopUpUI::onCancel(Ref* ref)
 {
     UIManager::getInstance()->hidePopUp();
 }

@@ -21,8 +21,11 @@ public:
     bool init(cocos2d::Layer* pMainLayer,int difficultLevel);
     void update(float delta);
     void destroy();
-    int randomLevel(int difficultLevel);
+    int randomLevel();
     void switchToRainbowRun();
+    int getCurrentLevel(){return m_currentLevel;}
+    int getDifficultLevel(){return m_difficultLevel;}
+    bool createMap(bool _playing,int level);
 private:
     void switchToMainScene();
 private:
@@ -30,8 +33,10 @@ private:
     cocos2d::Skybox*    m_pSkyBox;
     GroundLayer*        m_pGroundLayer;
     cocos2d::Camera*    m_pMainCamera;
-    bool createMap(bool _playing,int level,int difficultLevel);
+
     cocos2d::LayerColor*        m_pWhiteLayer;
+    int m_currentLevel;
+    int m_difficultLevel;
 };
 
 #endif /* defined(__MazeJump__GameController__) */

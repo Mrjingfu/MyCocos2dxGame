@@ -18,7 +18,12 @@ protected:
     virtual ~GameUI();
     bool init();
 public:
+    virtual void onEnter() override;
+    virtual void onExit() override;
     static GameUI* create();
+private:
+    void onRunnerLose(cocos2d::EventCustom* sender);
+    void onDelayTimeRunnerLose();
 };
 
 #endif /* defined(__MazeJump__GameUI__) */

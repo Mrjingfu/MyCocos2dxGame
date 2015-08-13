@@ -81,5 +81,6 @@ void GameScene::gameLose()
 }
 void GameScene::gameRecordEnd()
 {
-
+    CCLOG("gameRecordEnd");
+    Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_MAZEJUMP_RECORD_END);
 }

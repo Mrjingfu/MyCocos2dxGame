@@ -38,13 +38,21 @@ public:
     void setCancel(bool lCancel){m_isCancel = lCancel;}
     BasePopUpUI* getPopUpUI(BasePopUpUI::PopUp_UI popid);
 private:
+    
+    void onExitMenu();
+    void onEnterMenu();
+    void onExitGame();
+    void onEnterGame();
+    void onExitGroundGame();
+    void onEnterGronudGame();
 
     BasePopUpUI* createPopUp(BasePopUpUI::PopUp_UI popid) ;
     cocos2d::Vector<BasePopUpUI*> m_popUps;
     cocos2d::Node* m_parent;
-    cocos2d::Layer* m_gameLayer;
+
     cocos2d::Layer* m_dialogLayer;
     GameInfoUI* m_gameInfoLayer;
+    cocos2d::Layer* m_gameUi;
     Game_UI m_gameUiId;
     bool m_isCancel;
 };

@@ -141,39 +141,8 @@ bool RunController::init(Layer* pMainLayer)
     m_pTerrainDirectionLight->setLightFlag(LightFlag::LIGHT1);
     m_pMainLayer->addChild(m_pTerrainDirectionLight);
     
-    cocos2d::ui::Button* button = cocos2d::ui::Button::create("button_retry_up.png",
-                                                              "button_retry_down.png");
-    button->setPosition(Vec2(size.width * 0.8f, size.height * 0.8f));
-    button->setPressedActionEnabled(true);
-    button->addClickEventListener([=](Ref* sender){
-        auto scene = MainScene::createScene();
-        Director::getInstance()->replaceScene(scene);
-    });
-    m_pMainLayer->addChild(button);
-    
-    
-//    cocos2d::ui::Button* button2 = cocos2d::ui::Button::create("button_retry_up.png",
-//                                                              "button_retry_down.png");
-//    button2->setPosition(Vec2(size.width * 0.8f, size.height * 0.2f));
-//    button2->setPressedActionEnabled(true);
-//    button2->addClickEventListener([=](Ref* sender){
-//        if (m_bHasShowRainbow)
-//            return;
-//        showRainbow();
-//    });
-//    m_pMainLayer->addChild(button2);
-    
-    
-    SkillButton* skillBtn = SkillButton::create("button_retry_up.png", "stencil.png");
-    if(!skillBtn)
-        return false;
-    skillBtn->setPosition(Vec2(size.width * 0.1f, size.height * 0.1f));
-    m_pMainLayer->addChild(skillBtn);
-   
-    uiLayer = Layer::create();
-    m_pMainLayer->addChild(uiLayer);
-    UIManager::getInstance()->init(uiLayer);
-    UIManager::getInstance()->showInfo(true);
+
+    UIManager::getInstance()->init(m_pMainLayer);
     UIManager::getInstance()->setGameUi(UIManager::UI_GAME);
 
     
@@ -201,9 +170,8 @@ void RunController::reset()
         cameraTrackPlayer();
     }
     
-    if (uiLayer) {
-        UIManager::getInstance()->init(uiLayer);
-        UIManager::getInstance()->showInfo(true);
+    if (m_pMainLayer) {
+        UIManager::getInstance()->init(m_pMainLayer);
         UIManager::getInstance()->setGameUi(UIManager::UI_GAME);
     }
     AudioEngine::resume(m_nBgID);
@@ -224,13 +192,13 @@ void RunController::destroy()
 {
     AudioEngine::stop(m_nBgID);
 
+    UIManager::getInstance()->destory();
     if(m_pRainbow)
     {
         AudioEngine::stop(m_nSpeedupSoundID);
         m_pRainbow->getTrail()->removeNode(m_pRainbow);
         m_bHasShowRainbow = false;
     }
-
     m_pMainLayer->removeAllChildren();
     m_pMainLayer = nullptr;
     

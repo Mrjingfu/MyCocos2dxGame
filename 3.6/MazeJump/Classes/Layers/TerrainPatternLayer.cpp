@@ -270,7 +270,7 @@ void TerrainPatternLayer::checkCollisionDecorator()
                         {
                             Runner* runner = RunController::getInstance()->getMainPlayer();
                             Camera* mainCamera = RunController::getInstance()->getMainCamera();
-                            if(mainCamera && runner && !runner->isSpeedUp())
+                            if(mainCamera && runner && !runner->isSpeedUp() && runner->getState() != Runner::RS_DEATH)
                             {
                                 AudioEngine::play2d("fadeout.wav");
                                 EaseSineOut* moveTo = EaseSineOut::create(MoveTo::create(300.0f, runner->getPosition3D()));

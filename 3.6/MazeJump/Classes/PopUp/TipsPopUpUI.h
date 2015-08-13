@@ -1,16 +1,16 @@
 //
-//  TipsUI.h
+//  TipsPopUpUI.h
 //  MazeJump
 //
 //
 //
 
-#ifndef __MazeJump__TipsUI__
-#define __MazeJump__TipsUI__
+#ifndef __MazeJump__TipsPopUpUI__
+#define __MazeJump__TipsPopUpUI__
 
 #include "cocos2d.h"
 #include "BasePopUpUI.h"
-class TipsUI : public BasePopUpUI
+class TipsPopUpUI : public BasePopUpUI
 {
 public:
     typedef enum {
@@ -19,10 +19,10 @@ public:
     } TipsType;
     virtual void onEnter();
     virtual void onExit();
-    static TipsUI* create(TipsType type);
+    static TipsPopUpUI* create(TipsType type);
 protected:
-    TipsUI(TipsType type);
-    virtual ~TipsUI();
+    TipsPopUpUI(TipsType type);
+    virtual ~TipsPopUpUI();
     virtual bool init() ;
     cocos2d::ui::Text* tipsTv;
     TipsType m_tipType;
@@ -33,4 +33,4 @@ protected:
     
 };
 
-#endif /* defined(__MazeJump__TipsUI__) */
+#endif /* defined(__MazeJump__TipsPopUpUI__) */
