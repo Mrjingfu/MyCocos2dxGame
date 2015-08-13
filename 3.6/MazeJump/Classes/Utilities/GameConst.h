@@ -40,6 +40,7 @@ static const std::string EVENT_RAINBOW_VALUE_CHANGE = "RAINBOW_VALUE_CHANGE";
 static const std::string EVENT_RUNNER_LOSE = "RUNNER_LOSE";
 static const std::string EVENT_MAZEJUMP_WIN = "MAZEJUMP_WIN";
 static const std::string EVENT_MAZEJUMP_LOSE = "MAZEJUMP_LOSE";
+static const std::string EVENT_MAZEJUMP_RECORD_END = "MAZEJUMP_RECORD_END";
 static const std::string EVENT_START_GOLD_CHANGE = "START_GOLD_CHANGE";
 static const std::string EVENT_START_HEART_CHANGE = "START_HEART_CHANGE";
 #endif //_Scene_Const_h_

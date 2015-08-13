@@ -45,7 +45,7 @@ GroundLayer::GroundLayer()
     m_isInit = false;
     m_GroundTouchBegin = Vec2::ZERO;
     m_Level = -1;
-    m_pattentIndex = 1;
+
 }
 
 bool GroundLayer::init(int level)
@@ -80,7 +80,10 @@ bool GroundLayer::init(int level)
                     cell->setIndexY(i);
                     addChild( cell );
                     m_GroundCellList.pushBack(cell);
-                    generateDecorator(cell);
+                    if (!m_Playing) {
+                        generateDecorator(cell);
+                    }
+                    
                     switch (type) {
                         case GroundCell::CT_HIDE:
                             cell->setVisible(false);
@@ -662,7 +665,7 @@ void GroundLayer::setRecordState(RecordState state)
         return;
     switch (state) {
         case RD_START:
-            recordSteps = StepManager::getInstance()->getLevelWinSteps(m_Level);
+            recordSteps = StepManager::getInstance()->getLevelPromptSteps(m_Level);
             playRecord();
             break;
         case RD_NEXT:
@@ -686,14 +689,15 @@ void GroundLayer::setRecordState(RecordState state)
 }
 void GroundLayer::generateDecorator(GroundCell* cell)
 {
-    if (m_pattentIndex == 0)
-        m_pattentIndex =1;
+    int pattentIndex = GameController::getInstance()->getDifficultLevel();
+    if (pattentIndex == 0)
+        pattentIndex =1;
         int index = cell->getIndexY()*m_MapSize.height + cell->getIndexX();
     
-        if(m_pattentIndex <= 11)
+        if(pattentIndex <= 11)
         {
-            float percent1 = 0.009*m_pattentIndex;
-            float percent2 = 0.0005*m_pattentIndex;
+            float percent1 = 0.03*pattentIndex;
+            float percent2 = 0.01*pattentIndex;
             float percent3 = 1.0 - percent1 - percent2;
             AlisaMethod* am = AlisaMethod::create(percent1,percent2,percent3,-1.0, NULL);
             if(am)
@@ -731,10 +735,10 @@ void GroundLayer::generateDecorator(GroundCell* cell)
             }
         }else
         {
-            float percent1 = 0.004*m_pattentIndex;
-            float percent2 = 0.0005*m_pattentIndex;
-            float percent3 = 0.0009*m_pattentIndex;
-            float percent4 = 0.005*m_pattentIndex;
+            float percent1 = 0.03*pattentIndex;
+            float percent2 = 0.01*pattentIndex;
+            float percent3 = 0.02*pattentIndex;
+            float percent4 = 0.02*pattentIndex;
             float percent5 = 1.0 - percent1 - percent2 - percent3 - percent4 - percent5;
             AlisaMethod* am = AlisaMethod::create(percent1,percent2,percent3,percent4,percent5,-1.0, NULL);
             if(am)

@@ -29,6 +29,8 @@ GameController::GameController()
     m_pGroundLayer      = nullptr;
     m_pMainCamera       = nullptr;
     m_pWhiteLayer       = nullptr;
+    m_currentLevel      = 0;
+    m_difficultLevel    = 0 ;
 }
 GameController::~GameController()
 {
@@ -38,10 +40,9 @@ bool GameController::init(Layer* pMainLayer,int difficultLevel)
     if(pMainLayer == nullptr)
         return false;
     m_pMainLayer = pMainLayer;
-    
+    m_difficultLevel = difficultLevel;
     UIManager::getInstance()->init(m_pMainLayer);
-    UIManager::getInstance()->showInfo(true);
-    UIManager::getInstance()->setGameUi(UIManager::UI_GAME);
+    UIManager::getInstance()->setGameUi(UIManager::UI_GROUND_GAME);
     
     m_pWhiteLayer = LayerColor::create(Color4B::WHITE);
     if(!m_pWhiteLayer)
@@ -56,9 +57,9 @@ bool GameController::init(Layer* pMainLayer,int difficultLevel)
         return false;
     m_pMainLayer->addChild(m_pMainCamera);
     
-    int rLevel = randomLevel(difficultLevel);
-    CCLOG("LEVEL:%d",rLevel);
-    if (!createMap(false,rLevel,difficultLevel)) {
+    m_currentLevel = randomLevel();
+    CCLOG("LEVEL:%d",m_currentLevel);
+    if (!createMap(false,m_currentLevel)) {
         return false;
     }
     
@@ -80,23 +81,14 @@ bool GameController::init(Layer* pMainLayer,int difficultLevel)
     m_pMainLayer->addChild(directionLight);
 
     
-    cocos2d::ui::Button* button = cocos2d::ui::Button::create("button_retry_up.png",
-                                    "button_retry_down.png");
-    button->setPosition(Vec2(size.width * 0.8f, size.height * 0.8f));
-    button->setPressedActionEnabled(true);
-    button->addClickEventListener([=](Ref* sender){
-        
-        //createMap(true,rLevel);
-        switchToRainbowRun();
-    });
-    m_pMainLayer->addChild(button);
+   
     return true;
 }
-int GameController::randomLevel(int difficultLevel)
+int GameController::randomLevel()
 {
     int patternIndex = 0;
-    int patternBeginIndex = difficultLevel ;
-    int patternEndIndex = difficultLevel + 4;
+    int patternBeginIndex = m_difficultLevel ;
+    int patternEndIndex = m_difficultLevel + 4;
     if(patternEndIndex >= LevelsManager::getInstance()->getMaxLevels()-1)
     {
         patternBeginIndex = LevelsManager::getInstance()->getMaxLevels() - 6;
@@ -127,7 +119,7 @@ void GameController::destroy()
     UIManager::getInstance()->destory();
 }
 
-bool GameController::createMap(bool _playing,int level,int difficultLevel)
+bool GameController::createMap(bool _playing,int level)
 {
     if (m_pSkyBox) {
          m_pMainLayer->removeChild(m_pSkyBox);

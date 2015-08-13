@@ -264,7 +264,7 @@ void Player::onEnterCheckSpeicalArt()
                                 {
                                     
                                     auto jumpByPlayer = JumpBy::create(0.5, Vec2(0, 0), 5, 1);
-                                    auto spawnPlayer = Spawn::create( MoveTo::create(0.3f, Vec3(this->getPositionX(), 2, this->getPositionZ())), Sequence::create(ScaleTo::create(0.5f, 0.3f),NULL), NULL);
+                                    auto spawnPlayer = Spawn::create( MoveTo::create(0.3f, Vec3(this->getPositionX(), 2, this->getPositionZ())), Sequence::create(ScaleTo::create(0.5f, 0.1f),NULL), NULL);
                                     
                                     runAction(Sequence::create(Sequence::createWithTwoActions(jumpByPlayer, spawnPlayer),CallFuncN::create( CC_CALLBACK_1(Player::carryStar, this, checkGroudCell)),NULL));
                                 
@@ -462,7 +462,7 @@ void Player::carryStar(Node* node,GroundCell* cell)
     this->setPosition3D(cell->getPosition3D() + Vec3(0,4,0));
     auto jumpByPlayer = JumpBy::create(0.5, Vec2(0, 0), 5, 1);
     m_pGround->carryCell(m_nIndexX, m_nIndexY);
-    runAction(Sequence::create(Sequence::createWithTwoActions(ScaleTo::create(0.5f, 1.0f),jumpByPlayer),CallFuncN::create( CC_CALLBACK_1(Player::speicaArtFinish, this, cell)),NULL));
+    runAction(Sequence::create(Sequence::createWithTwoActions(ScaleTo::create(0.5f, 0.375f),jumpByPlayer),CallFuncN::create( CC_CALLBACK_1(Player::speicaArtFinish, this, cell)),NULL));
 }
 void Player::speicaArtFinish(Node* node,GroundCell* cell)
 {

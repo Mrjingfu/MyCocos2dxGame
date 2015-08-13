@@ -10,18 +10,18 @@
 
 #include "cocos2d.h"
 #include "BasePopUpUI.h"
-class DeathUI : public BasePopUpUI
+class DeathPopUpUI : public BasePopUpUI
 {
 protected:
-    DeathUI();
-    virtual ~DeathUI();
+    DeathPopUpUI();
+    virtual ~DeathPopUpUI();
     virtual bool init() ;
 public:
     virtual void onEnter();
     virtual void onExit();
-    static DeathUI* create();
+    static DeathPopUpUI* create();
 
 
 };
 
-#endif /* defined(__MazeJump__DeathUI__) */
+#endif /* defined(__MazeJump__DeathPopUpUI__) */

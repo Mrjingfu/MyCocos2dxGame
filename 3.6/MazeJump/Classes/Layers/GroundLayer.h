@@ -21,7 +21,8 @@ public:
     typedef enum {
         RD_START,
         RD_NEXT,
-        RD_END
+        RD_END,
+        RD_UNKOWN
     } RecordState;
     
     
@@ -62,8 +63,6 @@ public:
     void generateDecorator(GroundCell* cell);
     void decoratorOpe(Node* node,GroundCell* cell);
 
-    void setPattentIndex(int index){m_pattentIndex = index;};
-    int getPattentIndex(){return m_pattentIndex;}
     void eraseDecorator(int index);
 
 protected:
@@ -92,7 +91,7 @@ private:
     bool m_isInit;
     cocos2d::ValueVector recordSteps;
     cocos2d::Map<int, Decorator*>   m_DecoratorList;
-    int m_pattentIndex;
+
 };
 
 #endif /* defined(__MazeJump__GroundLayer__) */

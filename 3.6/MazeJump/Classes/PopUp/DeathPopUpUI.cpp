@@ -1,21 +1,21 @@
 //
-//  GameWin.cpp
+//  DeathPopUpUI.cpp
 //
 //
 //
 //
 
-#include "GameWin.h"
+#include "DeathPopUpUI.h"
 #include "UtilityHelper.h"
 #include "GameConst.h"
 #include "MainScene.h"
 #include "storage/local-storage/LocalStorage.h"
 USING_NS_CC;
 
-GameWin* GameWin::create()
+DeathPopUpUI* DeathPopUpUI::create()
 {
-    GameWin *pRet = new(std::nothrow) GameWin();
-    if (pRet && pRet->init())
+    DeathPopUpUI *pRet = new(std::nothrow) DeathPopUpUI();
+    if (pRet )
     {
         pRet->autorelease();
         return pRet;
@@ -24,20 +24,29 @@ GameWin* GameWin::create()
     return nullptr;
 }
 
-GameWin::GameWin()
+DeathPopUpUI::DeathPopUpUI()
 {
 }
-GameWin::~GameWin()
+DeathPopUpUI::~DeathPopUpUI()
 {
 }
-
-
-bool GameWin::init()
+void DeathPopUpUI::onEnter()
+{
+    BasePopUpUI::onEnter();
+    init();
+}
+void DeathPopUpUI::onExit()
+{
+    BasePopUpUI::onExit();
+}
+bool DeathPopUpUI::init()
 {
 
     auto size = Director::getInstance()->getVisibleSize();
     float scale = size.height /960.0f;
 
+    
+    
     
     return true;
 }

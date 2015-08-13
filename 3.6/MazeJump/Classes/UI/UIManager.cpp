@@ -11,8 +11,10 @@
 #include "GameInfoUI.h"
 #include "MainUI.h"
 #include "GameUI.h"
-#include "TipsUI.h"
-#include "ContinueUI.h"
+#include "GroundGameUI.h"
+#include "TipsPopUpUI.h"
+#include "GameInfoUI.h"
+#include "ContinuePopUpUI.h"
 #include "GameConst.h"
 #include "UtilityHelper.h"
 USING_NS_CC;
@@ -33,7 +35,9 @@ UIManager::UIManager()
     m_dialogLayer = nullptr;
     m_gameInfoLayer = nullptr;
     m_parent = nullptr;
+    m_gameUi = nullptr;
     m_isCancel = false;
+    m_gameUiId = UI_UNKOWN;
 
 }
 UIManager::~UIManager()
@@ -41,43 +45,109 @@ UIManager::~UIManager()
 }
 void UIManager::init(cocos2d::Layer* layer)
 {
-    
-    m_parent = layer;
-    m_gameUiId = UI_UNKOWN;
-    m_gameLayer = cocos2d::Layer::create();
-    m_gameLayer->setName(LAYER_NAME_UI);
-    m_parent->addChild(m_gameLayer,LAYER_UI,LAYER_NAME_UI);
-    m_dialogLayer = cocos2d::Layer::create();
-    m_dialogLayer->setName(LAYER_NAME_DIALOG);
-    m_parent->addChild(m_dialogLayer,LAYER_DIALOG,LAYER_DIALOG);
-    m_dialogLayer->setVisible(false);
 
     
-    m_gameInfoLayer = GameInfoUI::create();
-    m_parent->addChild(m_gameInfoLayer,LAYER_DIALOG);
-    m_gameInfoLayer->setVisible(false);
+    m_parent = layer;
+    
+    if (m_dialogLayer) {
+        m_dialogLayer->removeFromParentAndCleanup(true);
+        m_dialogLayer = nullptr;
+    }
+    
+    
+    m_dialogLayer = cocos2d::Layer::create();
+    m_parent->addChild(m_dialogLayer,LAYER_DIALOG,LAYER_DIALOG);
+    m_dialogLayer->setVisible(false);
+    
+    
+    
+    if (m_gameInfoLayer) {
+        m_gameInfoLayer->removeFromParentAndCleanup(true);
+        m_gameInfoLayer = nullptr;
+    }
+        m_gameInfoLayer = GameInfoUI::create();
+        m_parent->addChild(m_gameInfoLayer,LAYER_DIALOG);
+        m_gameInfoLayer->setVisible(false);
+
     
 }
 void UIManager::setGameUi(Game_UI gameuiStaus)
 {
-    m_gameUiId = gameuiStaus;
-    cocos2d::Layer* gameUi = nullptr;
+
     switch (m_gameUiId) {
         case UI_MAIN:
-            gameUi = MainUI::create();
+            onExitMenu();
             break;
         case UI_GAME:
-            gameUi = GameUI::create();
+            onExitGame();
             break;
         case UI_GROUND_GAME:
+            onExitGroundGame();
             break;
         default:
             break;
     }
-    if (m_parent) {
-        m_gameLayer->addChild(gameUi);
-    }
     
+    m_gameUiId = gameuiStaus;
+    
+    switch (m_gameUiId) {
+        case UI_MAIN:
+            onEnterMenu();
+            break;
+        case UI_GAME:
+            onEnterGame();
+            break;
+        case UI_GROUND_GAME:
+            onEnterGronudGame();
+            break;
+        default:
+            break;
+    }
+   
+}
+void UIManager::onExitMenu()
+{
+    
+}
+void UIManager::onExitGame()
+{
+    if (m_gameUi) {
+        m_gameUi->setVisible(false);
+    }
+
+}
+void UIManager::onExitGroundGame()
+{
+    if (m_gameUi) {
+        m_gameUi->setVisible(true);
+    }
+}
+void UIManager::onEnterMenu()
+{
+    Layer* lLayer = MainUI::create();
+    if (m_parent) {
+        m_parent->addChild(lLayer);
+    }
+}
+
+void UIManager::onEnterGame()
+{
+    if (m_parent && !m_gameUi) {
+        
+            Layer* lLayer = GameUI::create();
+            m_parent->addChild(lLayer);
+            m_gameUi = lLayer;
+    }
+    showInfo(true);
+}
+
+void UIManager::onEnterGronudGame()
+{
+    if (m_parent) {
+            Layer* lLayer = GroundGameUI::create();
+            m_parent->addChild(lLayer);
+            showInfo(true);
+    }
 }
 BasePopUpUI* UIManager::getPopUpUI(BasePopUpUI::PopUp_UI popid)
 {
@@ -101,13 +171,13 @@ BasePopUpUI* UIManager::createPopUp(BasePopUpUI::PopUp_UI popid)
             break;
 
         case BasePopUpUI::POPUP_CONTINUE:
-            popUp = ContinueUI::create();
+            popUp = ContinuePopUpUI::create();
             break;
         case BasePopUpUI::POPUP_GLOD_NOT_ENOUGT:
-            popUp = TipsUI::create(TipsUI::TIP_GOLD);
+            popUp = TipsPopUpUI::create(TipsPopUpUI::TIP_GOLD);
             break;
         case BasePopUpUI::POPUP_HEART_NOT_ENOUGT:
-            popUp = TipsUI::create(TipsUI::TIP_HEART);
+            popUp = TipsPopUpUI::create(TipsPopUpUI::TIP_HEART);
             break;
 
         default:
@@ -194,9 +264,15 @@ void UIManager::destory()
             removePopUp(m_popUps.at(i));
         }
     }
+    
+    if (m_gameUiId == UI_GAME) {
+        m_gameUi = nullptr;
+    }
+    
     if(m_parent)
     {
-        m_parent->removeAllChildren();
+        m_dialogLayer = nullptr;
+        m_gameInfoLayer = nullptr;
         m_parent = nullptr;
     }
 
