@@ -53,17 +53,17 @@ bool MainUI::init()
     soundBtn->setPosition(Vec2(size.width*0.9, size.height*0.93));
     addChild(soundBtn);
     
-    ui::Button* shopBtn = ui::Button::create("btn_shop_normal.png","btn_shop_press.png");
+    ui::Button* shopBtn = ui::Button::create("btn_shop_normal.png","btn_shop_pressed.png");
     shopBtn->setScale(scale);
     shopBtn->setPosition(Vec2(size.width*0.9,size.height*0.27));
     addChild(shopBtn);
     
-    ui::Button* rankBtn = ui::Button::create("btn_rank_normal.png","btn_rank_press.png");
+    ui::Button* rankBtn = ui::Button::create("btn_rank_normal.png","btn_rank_pressed.png");
     rankBtn->setScale(scale);
     rankBtn->setPosition(Vec2(size.width*0.9,size.height*0.27-shopBtn->getContentSize().height*scale-20*scale));
     addChild(rankBtn);
     
-    ui::Button* commonBtn = ui::Button::create("btn_comment_normal.png","btn_comment_press.png");
+    ui::Button* commonBtn = ui::Button::create("btn_rate_normal.png","btn_rate_pressed.png");
     commonBtn->setScale(scale);
     commonBtn->setPosition(Vec2(size.width*0.9,size.height*0.27-rankBtn->getContentSize().height*scale*2-40*scale));
     addChild(commonBtn);

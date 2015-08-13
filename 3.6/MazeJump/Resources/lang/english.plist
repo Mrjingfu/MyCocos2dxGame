@@ -32,5 +32,11 @@
 	<string></string>
 	<key>UI_TITLE_TEX</key>
 	<string>ui_title.png</string>
+	<key>UI_START_BTN_NEW</key>
+	<string>btn_start new_en.png</string>
+	<key>UI_START_BTN_CONTINUE</key>
+	<string>btn_start_continue_en.png</string>
+	<key>UI_START_PANEL</key>
+	<string>panel_startgame_en.png</string>
 </dict>
 </plist>

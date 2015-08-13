@@ -38,68 +38,47 @@ bool StarPopUpUI::init()
     
     auto size = Director::getInstance()->getVisibleSize();
     float scale = size.width /640.0f;
-    ui::ImageView* bgView = ui::ImageView::create("ui_start_bg.png");
+    ui::ImageView* bgView = ui::ImageView::create(UtilityHelper::getLocalString("UI_START_PANEL"));
     bgView->setPosition(Vec2(size.width*0.5,size.height*0.5));
     bgView->setScale(scale);
     
     m_dialogLayer->addChild(bgView);
-    
-    ui::Text* titleView = ui::Text::create(UtilityHelper::getLocalString("START_GAME"), FONT_FXZS, 35);
-    titleView->setPosition(Vec2(size.width*0.5, size.height*0.5+bgView->getContentSize().height*0.5*scale -40*scale));
-    titleView->setScale(scale);
-    m_dialogLayer->addChild(titleView);
-    
-    ui::ImageView* goldView = ui::ImageView::create("ui_gold.png");
-    goldView->setPosition(Vec2(size.width*0.58, size.height*0.55));
-    goldView->setScale(scale);
-    m_dialogLayer->addChild(goldView);
 
-     goldTv = ui::Text::create(StringUtils::format("%d",Value(localStorageGetItem(USER_GOLD_NUM)).asInt()), FONT_FXZS, 30);
-    goldTv->setPosition(Vec2(size.width*0.58+goldView->getContentSize().width*scale+20*scale, size.height*0.55));
+
+    goldTv =Label::createWithTTF(StringUtils::format("%d",Value(localStorageGetItem(USER_GOLD_NUM)).asInt()), FONT_FXZS, 30);
+    goldTv->setAnchorPoint(Vec2(1, 0.5));
+    goldTv->setPosition(Vec2(size.width*0.7, size.height*0.6));
     goldTv->setScale(scale);
+    goldTv->setHorizontalAlignment(TextHAlignment::RIGHT);
     m_dialogLayer->addChild(goldTv);
 
-    ui::ImageView* heartView = ui::ImageView::create("ui_heart.png");
-    heartView->setPosition(Vec2(size.width*0.33, size.height*0.55));
-    heartView->setScale(scale);
-    m_dialogLayer->addChild(heartView);
+   
 
-     heartTv = ui::Text::create(StringUtils::format("%d",Value(localStorageGetItem(USER_HEART_NUM)).asInt()), FONT_FXZS, 40);
-    heartTv->setPosition(Vec2(size.width*0.33+heartView->getContentSize().width*scale+20*scale, size.height*0.55));
+    heartTv = Label::createWithTTF(StringUtils::format("%d",Value(localStorageGetItem(USER_HEART_NUM)).asInt()), FONT_FXZS, 30);
+    heartTv->setAnchorPoint(Vec2(1, 0.5));
+    heartTv->setPosition(Vec2(size.width*0.7, size.height*0.53));
     heartTv->setScale(scale);
+heartTv->setHorizontalAlignment(TextHAlignment::RIGHT);
     m_dialogLayer->addChild(heartTv);
     
-     lastScoreView = ui::Text::create(StringUtils::format(UtilityHelper::getLocalString("BEST_DISTANCE").c_str(),Value(localStorageGetItem(USER_MAX_LEVEL).c_str()).asInt()), FONT_FXZS, 35);
-    lastScoreView->setPosition(Vec2(size.width*0.45, size.height*0.48));
+     lastScoreView = Label::createWithTTF(localStorageGetItem(USER_MAX_LEVEL), FONT_FXZS, 30);
+    lastScoreView->setPosition(Vec2(size.width*0.7, size.height*0.45));
     lastScoreView->setScale(scale);
+    lastScoreView->setAnchorPoint(Vec2(1, 0.5));
+    lastScoreView->setHorizontalAlignment(TextHAlignment::RIGHT);
     m_dialogLayer->addChild(lastScoreView);
     
 
 
-    ui::Button* playBtn = ui::Button::create("btn_ok_normal.png","btn_ok_press.png");
-    playBtn->setPosition(Vec2(size.width*0.38, size.height*0.4));
+    ui::Button* playBtn = ui::Button::create(UtilityHelper::getLocalString("UI_START_BTN_NEW"));
+    playBtn->setPosition(Vec2(size.width*0.38, size.height*0.37));
     
     playBtn->setScale(scale);
-    playBtn->setTitleText(UtilityHelper::getLocalString("RESTART_GAME"));
-    playBtn->setTitleFontName(FONT_FXZS);
-    playBtn->setTitleFontSize(18);
-    Label* playLable = playBtn->getTitleRenderer();
-    playLable->setDimensions(playBtn->getContentSize().width*0.5, playBtn->getContentSize().height*0.5);
-    playBtn->addTouchEventListener([=](Ref* sender, cocos2d::ui::Widget::TouchEventType type)
-                                    {
-                                        if (type == cocos2d::ui::Widget::TouchEventType::ENDED)
-                                        {
-                                            playLable->setScale(1);
-                                        }else if(type == cocos2d::ui::Widget::TouchEventType::BEGAN)
-                                        {
-                                            playLable->setScale(0.95);
-                                        }
-                                    });
     playBtn->addClickEventListener(CC_CALLBACK_1(StarPopUpUI::onPlayGame, this));
     m_dialogLayer->addChild(playBtn);
 
-    ui::Button* resumeBtn = ui::Button::create("btn_heart5_normal.png","btn_heart5_press.png");
-    resumeBtn->setPosition(Vec2(size.width*0.38+playBtn->getContentSize().width*scale+10*scale,size.height*0.4));
+    ui::Button* resumeBtn = ui::Button::create(UtilityHelper::getLocalString("UI_START_BTN_CONTINUE"));
+    resumeBtn->setPosition(Vec2(size.width*0.38+playBtn->getContentSize().width*scale+25*scale,size.height*0.37));
     resumeBtn->setScale(scale);
     resumeBtn->addClickEventListener(CC_CALLBACK_1(StarPopUpUI::onResumeGame, this));
 
