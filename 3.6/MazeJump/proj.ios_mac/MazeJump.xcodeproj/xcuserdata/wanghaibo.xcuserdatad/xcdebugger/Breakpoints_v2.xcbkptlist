@@ -873,7 +873,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "67"
             endingLineNumber = "67"
-            landmarkName = "OutlineEffect3D::drawWithSprite3D(EffectSprite3D* sprite, cocos2d::Renderer *renderer, const cocos2d::Mat4 &amp;transform, uint32_t flags)"
+            landmarkName = "OutlineEffect3D::drawWithSprite3D(EffectSprite3D* sprite, const cocos2d::Mat4 &amp;transform)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
