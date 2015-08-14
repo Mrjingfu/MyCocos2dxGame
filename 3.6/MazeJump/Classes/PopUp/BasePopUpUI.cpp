@@ -23,6 +23,7 @@ BasePopUpUI::BasePopUpUI()
     m_maskLayer = nullptr;
     m_maskLayerBg = nullptr;
     m_dialogLayer = nullptr;
+    m_isNotBlank =false;
 }
 BasePopUpUI::~BasePopUpUI()
 {
@@ -58,7 +59,7 @@ bool BasePopUpUI::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event)
         if (m_popupBgLayer && m_popupBgLayer->getBoundingBox().containsPoint(touchBegin)) {
             return true;
         }
-        UIManager::getInstance()->hidePopUp();
+        UIManager::getInstance()->hideBlank();
         return true;
     }else{
         return false;

@@ -43,6 +43,8 @@ public:
     void hidePopUp(bool isPlayAn,const std::function<void()> &endfunc = nullptr);
     void setPopUpId(PopUp_UI popId){m_popUpUiId = popId;};
     PopUp_UI getPopUpId(){return m_popUpUiId;};
+    void setNotBlank(bool _isBlank){m_isNotBlank = _isBlank;}
+    bool getNotBlank(){return m_isNotBlank;};
     virtual bool onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event) override;
 protected:
     cocos2d::Layer* m_maskLayer;
@@ -51,6 +53,8 @@ protected:
     Popup_Show m_popupShow;
     PopUp_UI m_popUpUiId;
     bool m_isShowDialog;
+    bool m_isNotBlank;
+    
     cocos2d::Vec2 m_pt;
     void onHidePopUpEnd();
     cocos2d::ui::ImageView* m_popupBgLayer;

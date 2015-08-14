@@ -62,5 +62,7 @@
 	<string>panel_startgame_cn.png</string>
 	<key>UI_PASUE_PANEL</key>
 	<string>panel_pause_cn.png</string>
+	<key>UI_SHOP_PANEL</key>
+	<string>panel_shop_cn.png</string>
 </dict>
 </plist>

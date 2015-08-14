@@ -165,23 +165,45 @@ BasePopUpUI* UIManager::createPopUp(BasePopUpUI::PopUp_UI popid)
     BasePopUpUI* popUp = nullptr;
     switch (popid) {
         case BasePopUpUI::POPUP_START:
-            popUp= StarPopUpUI::create();
+            {
+                popUp= StarPopUpUI::create();
+                popUp->setNotBlank(false);
+            }
+
             break;
         case BasePopUpUI::POPUP_SHOP:
-            popUp = ShopPopUpUI::create();
+            {
+                popUp = ShopPopUpUI::create();
+                popUp->setNotBlank(true);
+            }
+
             break;
 
         case BasePopUpUI::POPUP_CONTINUE:
-            popUp = ContinuePopUpUI::create();
+            {
+                popUp = ContinuePopUpUI::create();
+                popUp->setNotBlank(true);
+            }
             break;
         case BasePopUpUI::POPUP_GLOD_NOT_ENOUGT:
-            popUp = TipsPopUpUI::create(TipsPopUpUI::TIP_GOLD);
+            {
+                popUp = TipsPopUpUI::create(TipsPopUpUI::TIP_GOLD);
+                popUp->setNotBlank(true);
+            }
+
             break;
         case BasePopUpUI::POPUP_HEART_NOT_ENOUGT:
-            popUp = TipsPopUpUI::create(TipsPopUpUI::TIP_HEART);
+            {
+                popUp = TipsPopUpUI::create(TipsPopUpUI::TIP_HEART);
+                popUp->setNotBlank(true);
+            }
             break;
         case BasePopUpUI::POPUP_PAUSE:
-            popUp = PausePopUpUI::create();
+            {
+                popUp = PausePopUpUI::create();
+                popUp->setNotBlank(true);
+            }
+
         default:
             break;
     }
@@ -226,7 +248,18 @@ void UIManager::showPopUp(bool isPlayAn,BasePopUpUI::Popup_Show popupShow, const
         CCLOG("showPopUp");
     }
 }
-
+void UIManager::hideBlank()
+{
+    BasePopUpUI* popUi = m_popUps.back();
+    if (popUi->getNotBlank()) {
+        return;
+    }
+    if (popUi) {
+        popUi->hidePopUp(true,nullptr);
+        CCLOG("hidePopUp");
+        
+    }
+}
 void UIManager::hidePopUp(bool isPlayAn,const std::function<void()> &endfunc)
 {
     BasePopUpUI* popUi = m_popUps.back();

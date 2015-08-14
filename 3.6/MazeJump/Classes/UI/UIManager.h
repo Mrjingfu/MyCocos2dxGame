@@ -27,6 +27,7 @@ public:
     void showPopUp(bool isPlayAn = true,BasePopUpUI::Popup_Show popupShow =BasePopUpUI::POPUP_VERTICAL ,const std::function<void()> &endfunc = nullptr,cocos2d::Vec2= cocos2d::Vec2::ZERO );
     void addPopUp(BasePopUpUI::PopUp_UI popid);
     void setGameUi(Game_UI gameui);
+    void hideBlank();
     void hidePopUp(bool isPlayAn = true,const std::function<void()> &endfunc = nullptr);
     Game_UI getGameId(){return m_gameUiId;}
     void showInfo(bool isShowInfo);
