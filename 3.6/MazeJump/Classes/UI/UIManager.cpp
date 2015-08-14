@@ -17,6 +17,7 @@
 #include "ContinuePopUpUI.h"
 #include "GameConst.h"
 #include "UtilityHelper.h"
+#include "PausePopUpUI.h"
 USING_NS_CC;
 
 UIManager* g_pPopManagerInstance = nullptr;
@@ -179,7 +180,8 @@ BasePopUpUI* UIManager::createPopUp(BasePopUpUI::PopUp_UI popid)
         case BasePopUpUI::POPUP_HEART_NOT_ENOUGT:
             popUp = TipsPopUpUI::create(TipsPopUpUI::TIP_HEART);
             break;
-
+        case BasePopUpUI::POPUP_PAUSE:
+            popUp = PausePopUpUI::create();
         default:
             break;
     }
@@ -225,11 +227,11 @@ void UIManager::showPopUp(bool isPlayAn,BasePopUpUI::Popup_Show popupShow, const
     }
 }
 
-void UIManager::hidePopUp(const std::function<void()> &endfunc)
+void UIManager::hidePopUp(bool isPlayAn,const std::function<void()> &endfunc)
 {
     BasePopUpUI* popUi = m_popUps.back();
     if (popUi) {
-        popUi->hidePopUp(endfunc);
+        popUi->hidePopUp(isPlayAn,endfunc);
         CCLOG("hidePopUp");
 
     }
@@ -278,10 +280,4 @@ void UIManager::destory()
     }
 
 }
-void UIManager::onGameInfoHidePopUp()
-{
-    if (m_gameInfoLayer) {
-        m_gameInfoLayer->onhideEndPopup();
-    }
-    
-}
+

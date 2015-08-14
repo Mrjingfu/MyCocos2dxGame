@@ -32,6 +32,7 @@ public:
         POPUP_DEATH,
         POPUP_GROUND_WIN,
         POPUP_GROUND_LOSE,
+        POPUP_PAUSE,
         POPUP_UNKOWN
     } PopUp_UI;
     
@@ -39,7 +40,7 @@ public:
     virtual void onExit() override;
     void showPopUp(bool isPlayAn,cocos2d::Vec2 = cocos2d::Vec2::ZERO,Popup_Show popupShow = POPUP_VERTICAL,const std::function<void()> &endfunc = nullptr);
  
-    void hidePopUp(const std::function<void()> &endfunc = nullptr);
+    void hidePopUp(bool isPlayAn,const std::function<void()> &endfunc = nullptr);
     void setPopUpId(PopUp_UI popId){m_popUpUiId = popId;};
     PopUp_UI getPopUpId(){return m_popUpUiId;};
     virtual bool onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event) override;
@@ -50,7 +51,6 @@ protected:
     Popup_Show m_popupShow;
     PopUp_UI m_popUpUiId;
     bool m_isShowDialog;
-    bool m_isPlayAn;
     cocos2d::Vec2 m_pt;
     void onHidePopUpEnd();
     cocos2d::ui::ImageView* m_popupBgLayer;

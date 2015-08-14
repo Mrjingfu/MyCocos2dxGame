@@ -71,7 +71,7 @@ void ContinuePopUpUI::onContinueGame(cocos2d::Ref *ref)
         localStorageSetItem(USER_HEART_NUM, Value(heartNum-1).asString());
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_HEART_CHANGE);
         localStorageSetItem(USER_LAST_LEVEL, localStorageGetItem(USER_LAST_LEVEL));
-        UIManager::getInstance()->hidePopUp(CC_CALLBACK_0(ContinuePopUpUI::onHideEndPopUp, this));
+        UIManager::getInstance()->hidePopUp(true,CC_CALLBACK_0(ContinuePopUpUI::onHideEndPopUp, this));
     }else
     {
          UIManager::getInstance()->addPopUp(BasePopUpUI::POPUP_HEART_NOT_ENOUGT);

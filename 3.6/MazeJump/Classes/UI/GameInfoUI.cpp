@@ -74,12 +74,7 @@ bool GameInfoUI::init()
     gameScoreTv->setScale(scale);
     disLayer->addChild(gameScoreTv);
     
-    pauseImg = ui::Button::create("btn_pause_normal.png","btn_pause_press.png");
-    pauseImg->setPosition(Vec2(size.width*0.9, size.height*0.93));
-    pauseImg->setScale(scale);
-    disLayer->addChild(pauseImg);
-    
-    pauseImg->addClickEventListener(CC_CALLBACK_1(GameInfoUI::onPause, this));
+
 
 
 
@@ -89,7 +84,8 @@ bool GameInfoUI::init()
  void GameInfoUI::onEnter()
 {
     Layer::onEnter();
-  
+    
+
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_GOLD_CHANGE, std::bind(&GameInfoUI::onGoldChange, this, std::placeholders::_1));
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_HEART_CHANGE, std::bind(&GameInfoUI::onHeartChange, this, std::placeholders::_1));
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_MAX_DISTANCE_CHANGE, std::bind(&GameInfoUI::onMaxDistanceChange, this, std::placeholders::_1));
@@ -104,11 +100,6 @@ bool GameInfoUI::init()
 
     
 }
-void GameInfoUI::onPause(cocos2d::Ref *ref)
-{
-
-}
-
 
 void GameInfoUI::onhideEndPopup()
 {

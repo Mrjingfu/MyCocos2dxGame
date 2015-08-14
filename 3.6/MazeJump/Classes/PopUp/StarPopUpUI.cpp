@@ -119,7 +119,7 @@ void StarPopUpUI::onHeartChange(cocos2d::EventCustom *sender)
 void StarPopUpUI::onPlayGame(cocos2d::Ref *ref)
 {
     isContinue = false;
-    UIManager::getInstance()->hidePopUp(CC_CALLBACK_0(StarPopUpUI::onHidePop, this));
+    UIManager::getInstance()->hidePopUp(true,CC_CALLBACK_0(StarPopUpUI::onHidePop, this));
 }
 void StarPopUpUI::onHidePop()
 {
@@ -144,7 +144,7 @@ void StarPopUpUI::onResumeGame(cocos2d::Ref *ref)
     int heartNum = Value(localStorageGetItem(USER_HEART_NUM)).asInt();
     if (heartNum>=5) {
         isContinue = true;
-        UIManager::getInstance()->hidePopUp(CC_CALLBACK_0(StarPopUpUI::onHidePop, this));
+        UIManager::getInstance()->hidePopUp(true,CC_CALLBACK_0(StarPopUpUI::onHidePop, this));
     }else
     {
         CCLOG("Shop");

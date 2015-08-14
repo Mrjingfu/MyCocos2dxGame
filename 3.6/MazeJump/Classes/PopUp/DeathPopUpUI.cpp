@@ -43,7 +43,7 @@ bool DeathPopUpUI::init()
 {
 
     auto size = Director::getInstance()->getVisibleSize();
-    float scale = size.height /960.0f;
+    float scale = size.width /960.0f;
 
     
     

@@ -36,14 +36,14 @@ private:
     void onMaxDistanceChange(cocos2d::EventCustom* sender);
 
     
-    void onPause(cocos2d::Ref *ref);
+    
 
     cocos2d::ui::Text* goldTv;
     cocos2d::ui::Text* heartTv;
     cocos2d::ui::Text* gameScoreTv;
-    cocos2d::ui::Button* pauseImg;
-    cocos2d::Layer* disLayer;
 
+    cocos2d::Layer* disLayer;
+    
 };
 
 #endif /* defined(__MazeJump__GameInfoUI__) */

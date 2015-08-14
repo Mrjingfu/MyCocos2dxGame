@@ -47,7 +47,7 @@ void GroundGameUI::onExit()
 bool GroundGameUI::init()
 {
     auto size = Director::getInstance()->getVisibleSize();
-    float scale = size.height /640.f;
+    float scale = size.width /640.f;
     
     
     cocos2d::ui::Button* button = cocos2d::ui::Button::create("button_retry_up.png",

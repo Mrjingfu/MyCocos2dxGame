@@ -18,7 +18,6 @@ BasePopUpUI::BasePopUpUI()
 
     m_popupShow = POPUP_VERTICAL;
     m_isShowDialog = false;
-    m_isPlayAn = true;
     m_pt = Vec2::ZERO;
     m_popupBgLayer = nullptr;
     m_maskLayer = nullptr;
@@ -75,11 +74,10 @@ void BasePopUpUI::showPopUp(bool isPlayAn,cocos2d::Vec2 vc,Popup_Show popupShow,
 {
     Size size = Director::getInstance()->getVisibleSize();
     m_isShowDialog =true;
-    m_isPlayAn = isPlayAn;
     m_pt = vc;
     m_popupShow = popupShow;
    
-    if (!m_isPlayAn) {
+    if (!isPlayAn) {
         m_dialogLayer->setPosition(vc);
         if ( endfunc)
         {
@@ -108,13 +106,13 @@ void BasePopUpUI::showPopUp(bool isPlayAn,cocos2d::Vec2 vc,Popup_Show popupShow,
         m_dialogLayer->runAction(inout);
     }
 }
-void BasePopUpUI::hidePopUp(const std::function<void()> &endfunc )
+void BasePopUpUI::hidePopUp(bool isPlayAn,const std::function<void()> &endfunc )
 {
      Size size = Director::getInstance()->getVisibleSize();
-    if (!m_isPlayAn) {
+    if (!isPlayAn) {
 
         onHidePopUpEnd();
-        UIManager::getInstance()->onGameInfoHidePopUp();
+
         UIManager::getInstance()->removePopUp(true,this);
         
         return;
@@ -145,7 +143,6 @@ void BasePopUpUI::hidePopUp(const std::function<void()> &endfunc )
 void BasePopUpUI::onHidePopUpEnd()
 {
     m_isShowDialog=false;
-    m_isPlayAn = true;
     if (m_dialogLayer)
     {
         m_dialogLayer->setPosition(m_pt);

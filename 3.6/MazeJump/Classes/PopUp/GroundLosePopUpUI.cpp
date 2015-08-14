@@ -43,7 +43,7 @@ bool GroundLosePopUpUI::init()
 {
 
     auto size = Director::getInstance()->getVisibleSize();
-    float scale = size.height /640.0f;
+    float scale = size.width /640.0f;
 
     
     return true;

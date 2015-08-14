@@ -56,9 +56,6 @@ bool MenuScene::init()
     }
     this->setAnchorPoint(Vec2::ZERO);
     
-    UIManager::getInstance()->init(this);
-    UIManager::getInstance()->setGameUi(UIManager::UI_MAIN);
-    
     m_pWhiteLayer = LayerColor::create(Color4B::WHITE);
     if(!m_pWhiteLayer)
         return false;
@@ -187,7 +184,8 @@ void MenuScene::onEnter()
 {
     Layer::onEnter();
     scheduleUpdate();
-    
+    UIManager::getInstance()->init(this);
+    UIManager::getInstance()->setGameUi(UIManager::UI_MAIN);
     AudioEngine::play2d("rainbow.wav", false, 0.5f);
     m_nBgID = AudioEngine::play2d("menubg.mp3", true, 0.5f);
 }

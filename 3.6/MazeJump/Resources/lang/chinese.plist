@@ -55,10 +55,12 @@
 	<key>UI_TITLE_TEX</key>
 	<string>ui_title1.png</string>
 	<key>UI_START_BTN_NEW</key>
-	<string>btn_start new_cn.png</string>
+	<string>btn_start_new_cn.png</string>
 	<key>UI_START_BTN_CONTINUE</key>
 	<string>btn_start_continue_cn.png</string>
 	<key>UI_START_PANEL</key>
 	<string>panel_startgame_cn.png</string>
+	<key>UI_PASUE_PANEL</key>
+	<string>panel_pause_cn.png</string>
 </dict>
 </plist>
