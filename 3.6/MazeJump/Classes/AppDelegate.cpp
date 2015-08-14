@@ -58,6 +58,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     std::string path = FileUtils::getInstance()->getWritablePath() + "userdata.db";
     CCLOG("path:%s",path.c_str());
     localStorageInit(path);
+    localStorageSetItem(USER_MAX_LEVEL, "12");
 #if COCOS2D_DEBUG
     //resetUserDataTable();
     printUserTataTable();

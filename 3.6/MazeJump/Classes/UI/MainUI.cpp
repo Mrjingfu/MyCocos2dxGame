@@ -82,7 +82,7 @@ void MainUI::onShop(cocos2d::Ref *ref)
     CCLOG("Shop");
     UIManager::getInstance()->addPopUp(BasePopUpUI::POPUP_SHOP);
     UIManager::getInstance()->showPopUp(true,BasePopUpUI::POPUP_HORIZONTAL);
-    UIManager::getInstance()->showInfo(true);
+
 }
 void MainUI::onRank(cocos2d::Ref *ref)
 {

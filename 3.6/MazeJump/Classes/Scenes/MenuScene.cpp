@@ -42,7 +42,7 @@ MenuScene::MenuScene()
     m_pRunner               = nullptr;
     m_pRainbow              = nullptr;
     m_pWhiteLayer           = nullptr;
-    m_bStartGame            = false;
+
     m_fTime = 0;
 }
 // on "init" you need to initialize your instance
@@ -218,11 +218,8 @@ bool MenuScene::onTouchBegan(Touch *touch, Event *event)
 {
     if(!touch)
         return false;
-    if(!m_bStartGame)
-    {
-        runnerJump();
-        m_bStartGame = true;
-    }
+    
+    runnerJump();
     return true;
 }
 void MenuScene::switchToMainScene()

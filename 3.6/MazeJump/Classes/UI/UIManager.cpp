@@ -188,8 +188,7 @@ BasePopUpUI* UIManager::createPopUp(BasePopUpUI::PopUp_UI popid)
     }
     if(popUp)
         popUp->setPopUpId(popid);
-    if (m_gameInfoLayer)
-        m_gameInfoLayer->setPopUpId(popid);
+
     return popUp;
 }
 void UIManager::addPopUp(BasePopUpUI::PopUp_UI popid)
@@ -218,7 +217,7 @@ void UIManager::showPopUp(bool isPlayAn,BasePopUpUI::Popup_Show popupShow, const
         m_dialogLayer->setVisible(true);
         if (m_popUps.size()>1) {
             BasePopUpUI* prePopUi = m_popUps.front();
-            prePopUi->setShowMaskBg(false);
+            prePopUi->setVisible(false);
         }
         popUi->showPopUp(isPlayAn,vt,popupShow,endfunc);
         
@@ -244,11 +243,13 @@ void UIManager::showInfo(bool isShowInfo)
         m_gameInfoLayer->setVisible(false);
     }
 }
-void UIManager::removePopUp(BasePopUpUI* popUi)
+void UIManager::removePopUp(bool isCallBack,BasePopUpUI* popUi)
 {
-    if (m_popUps.size()>1) {
-        BasePopUpUI* prePopUi = m_popUps.front();
-        prePopUi->setShowMaskBg(true);
+    if (isCallBack) {
+        if (m_popUps.size()>1) {
+            BasePopUpUI* prePopUi = m_popUps.front();
+            prePopUi->setVisible(true);
+        }
     }
     
     popUi->setPopUpId(BasePopUpUI::POPUP_UNKOWN);
@@ -261,7 +262,7 @@ void UIManager::destory()
 {
     if (m_popUps.size() > 0) {
         for (int i =0; i< m_popUps.size(); i++) {
-            removePopUp(m_popUps.at(i));
+            removePopUp(false,m_popUps.at(i));
         }
     }
     

@@ -46,10 +46,10 @@ bool ContinuePopUpUI::init()
     auto size = Director::getInstance()->getVisibleSize();
     float scale = size.width /640.0f;
     
-    ui::ImageView* bgView = ui::ImageView::create("ui_continue_bg.png");
-    bgView->setPosition(Vec2(size.width*0.5, size.height*0.45));
-    bgView->setScale(scale);
-    m_dialogLayer->addChild(bgView);
+    m_popupBgLayer = ui::ImageView::create("ui_continue_bg.png");
+    m_popupBgLayer->setPosition(Vec2(size.width*0.5, size.height*0.45));
+    m_popupBgLayer->setScale(scale);
+    m_dialogLayer->addChild(m_popupBgLayer);
     
     ui::Text* tv = ui::Text::create(UtilityHelper::getLocalString("CONTINUE_GAME"), FONT_FXZS, 30);
     tv->setPosition(Vec2(size.width*0.5, size.height*0.50));

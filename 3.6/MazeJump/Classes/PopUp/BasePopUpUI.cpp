@@ -20,6 +20,10 @@ BasePopUpUI::BasePopUpUI()
     m_isShowDialog = false;
     m_isPlayAn = true;
     m_pt = Vec2::ZERO;
+    m_popupBgLayer = nullptr;
+    m_maskLayer = nullptr;
+    m_maskLayerBg = nullptr;
+    m_dialogLayer = nullptr;
 }
 BasePopUpUI::~BasePopUpUI()
 {
@@ -50,8 +54,12 @@ void BasePopUpUI::onEnter()
 bool BasePopUpUI::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event)
 {
     if (m_isShowDialog) {
-//        UIManager::getInstance()->hidePopUp();
-//        UIManager::getInstance()->setCancel(true);
+        
+        Point touchBegin = touch->getLocation();
+        if (m_popupBgLayer && m_popupBgLayer->getBoundingBox().containsPoint(touchBegin)) {
+            return true;
+        }
+        UIManager::getInstance()->hidePopUp();
         return true;
     }else{
         return false;
@@ -62,16 +70,7 @@ void BasePopUpUI::onExit()
     Layer::onExit();
     
 }
-void BasePopUpUI::setShowMaskBg(bool isShowMaskBg)
-{
-    if (m_maskLayerBg) {
-        if (isShowMaskBg) {
-            m_maskLayerBg->setVisible(true);
-        }else{
-            m_maskLayerBg->setVisible(false);
-        }
-    }
-}
+
 void BasePopUpUI::showPopUp(bool isPlayAn,cocos2d::Vec2 vc,Popup_Show popupShow,const std::function<void()> &endfunc)
 {
     Size size = Director::getInstance()->getVisibleSize();
@@ -116,7 +115,7 @@ void BasePopUpUI::hidePopUp(const std::function<void()> &endfunc )
 
         onHidePopUpEnd();
         UIManager::getInstance()->onGameInfoHidePopUp();
-        UIManager::getInstance()->removePopUp(this);
+        UIManager::getInstance()->removePopUp(true,this);
         
         return;
     }
@@ -132,7 +131,7 @@ void BasePopUpUI::hidePopUp(const std::function<void()> &endfunc )
         }
     cocos2d::EaseBackIn* backIn = cocos2d::EaseBackIn::create(moveTo);
     CallFunc* callFunc1 = CallFunc::create(CC_CALLBACK_0(BasePopUpUI::onHidePopUpEnd,this));
-    CallFunc* callFunc2 = CallFunc::create(CC_CALLBACK_0(UIManager::removePopUp,UIManager::getInstance(),this));
+    CallFunc* callFunc2 = CallFunc::create(CC_CALLBACK_0(UIManager::removePopUp,UIManager::getInstance(),true,this));
      if (endfunc)
     {
         CallFunc* endcallFunc = CallFunc::create(endfunc);

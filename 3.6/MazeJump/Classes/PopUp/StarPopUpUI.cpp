@@ -38,35 +38,34 @@ bool StarPopUpUI::init()
     
     auto size = Director::getInstance()->getVisibleSize();
     float scale = size.width /640.0f;
-    ui::ImageView* bgView = ui::ImageView::create(UtilityHelper::getLocalString("UI_START_PANEL"));
-    bgView->setPosition(Vec2(size.width*0.5,size.height*0.5));
-    bgView->setScale(scale);
+    m_popupBgLayer = ui::ImageView::create(UtilityHelper::getLocalString("UI_START_PANEL"));
+    m_popupBgLayer->setPosition(Vec2(size.width*0.5,size.height*0.5));
+    m_popupBgLayer->setScale(scale);
     
-    m_dialogLayer->addChild(bgView);
+    m_dialogLayer->addChild(m_popupBgLayer);
 
    
-    goldTv = Label::createWithBMFont(UtilityHelper::getLocalString("FONT_NUMBER"),localStorageGetItem(USER_GOLD_NUM));
-    goldTv->setAnchorPoint(Vec2(1, 0.5));
-    goldTv->setPosition(Vec2(size.width*0.7, size.height*0.6));
-    goldTv->setScale(scale*0.5);
-    goldTv->setHorizontalAlignment(TextHAlignment::RIGHT);
-    m_dialogLayer->addChild(goldTv);
+    m_goldTv = Label::createWithBMFont(UtilityHelper::getLocalString("FONT_NUMBER"),Value(Value(localStorageGetItem(USER_GOLD_NUM)).asInt()).asString());
+    m_goldTv->setAnchorPoint(Vec2(1, 0.5));
+    m_goldTv->setPosition(Vec2(size.width*0.7, size.height*0.6));
+    m_goldTv->setScale(scale*0.5);
+    m_goldTv->setHorizontalAlignment(TextHAlignment::RIGHT);
+    m_dialogLayer->addChild(m_goldTv);
 
-   
 
-    heartTv = Label::createWithBMFont(UtilityHelper::getLocalString("FONT_NUMBER"),localStorageGetItem(USER_HEART_NUM));
-    heartTv->setAnchorPoint(Vec2(1, 0.5));
-    heartTv->setPosition(Vec2(size.width*0.7, size.height*0.53));
-    heartTv->setScale(scale*0.5);
-heartTv->setHorizontalAlignment(TextHAlignment::RIGHT);
-    m_dialogLayer->addChild(heartTv);
+    m_heartTv = Label::createWithBMFont(UtilityHelper::getLocalString("FONT_NUMBER"),Value(Value(localStorageGetItem(USER_HEART_NUM)).asInt()).asString());
+    m_heartTv->setAnchorPoint(Vec2(1, 0.5));
+    m_heartTv->setPosition(Vec2(size.width*0.7, size.height*0.53));
+    m_heartTv->setScale(scale*0.5);
+    m_heartTv->setHorizontalAlignment(TextHAlignment::RIGHT);
+    m_dialogLayer->addChild(m_heartTv);
     
-     lastScoreView = Label::createWithBMFont(UtilityHelper::getLocalString("FONT_NUMBER"),localStorageGetItem(USER_MAX_LEVEL));
-    lastScoreView->setPosition(Vec2(size.width*0.7, size.height*0.45));
-    lastScoreView->setScale(scale*0.5);
-    lastScoreView->setAnchorPoint(Vec2(1, 0.5));
-    lastScoreView->setHorizontalAlignment(TextHAlignment::RIGHT);
-    m_dialogLayer->addChild(lastScoreView);
+     m_maxLevelTv = Label::createWithBMFont(UtilityHelper::getLocalString("FONT_NUMBER"),Value(Value(localStorageGetItem(USER_MAX_LEVEL)).asInt()).asString());
+    m_maxLevelTv->setPosition(Vec2(size.width*0.7, size.height*0.45));
+    m_maxLevelTv->setScale(scale*0.5);
+    m_maxLevelTv->setAnchorPoint(Vec2(1, 0.5));
+    m_maxLevelTv->setHorizontalAlignment(TextHAlignment::RIGHT);
+    m_dialogLayer->addChild(m_maxLevelTv);
     
 
 
@@ -105,15 +104,15 @@ void StarPopUpUI::onExit()
 void StarPopUpUI::onGoldChange(cocos2d::EventCustom *sender)
 {
     CCLOG("StarPopUpUI::onGoldChange");
-    if (goldTv) {
-        goldTv->setString(localStorageGetItem(USER_GOLD_NUM));
+    if (m_goldTv) {
+        m_goldTv->setString(localStorageGetItem(USER_GOLD_NUM));
     }
 }
 void StarPopUpUI::onHeartChange(cocos2d::EventCustom *sender)
 {
     CCLOG("StarPopUpUI::onHeartChange");
-    if (heartTv) {
-        heartTv->setString(localStorageGetItem(USER_HEART_NUM));
+    if (m_heartTv) {
+        m_heartTv->setString(localStorageGetItem(USER_HEART_NUM));
     }
 }
 

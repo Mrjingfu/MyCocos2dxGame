@@ -36,10 +36,16 @@ void ShopPopUpUI::onEnter()
 {
     BasePopUpUI::onEnter();
     init();
+    if (UIManager::getInstance()->getGameId() == UIManager::UI_MAIN) {
+        UIManager::getInstance()->showInfo(true);
+    }
 }
 void ShopPopUpUI::onExit()
 {
     BasePopUpUI::onExit();
+    if (UIManager::getInstance()->getGameId() == UIManager::UI_MAIN) {
+        UIManager::getInstance()->showInfo(false);
+    }
     
 }
 bool ShopPopUpUI::init()
@@ -49,11 +55,10 @@ bool ShopPopUpUI::init()
    float scale = size.width /640.0f;
     
    
-    
-    ui::ImageView* bgView = ui::ImageView::create("ui_shop_bg.png");
-    bgView->setPosition(Vec2(size.width*0.5, size.height*0.4));
-    bgView->setScale(scale);
-    m_dialogLayer->addChild(bgView);
+    m_popupBgLayer = ui::ImageView::create("ui_shop_bg.png");
+    m_popupBgLayer->setPosition(Vec2(size.width*0.5, size.height*0.4));
+    m_popupBgLayer->setScale(scale);
+    m_dialogLayer->addChild(m_popupBgLayer);
     
     productLayer = Layer::create();
     m_dialogLayer->addChild(productLayer);

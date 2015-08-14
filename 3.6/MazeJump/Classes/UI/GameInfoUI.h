@@ -27,8 +27,8 @@ public:
     virtual void onEnter() override;
     virtual void onExit() override;
     static GameInfoUI* create();
-    void setPopUpId(BasePopUpUI::PopUp_UI popUpId);
-    void removePopUpId();
+
+
     void onhideEndPopup();
 private:
     void onGoldChange(cocos2d::EventCustom* sender);
@@ -37,15 +37,13 @@ private:
 
     
     void onPause(cocos2d::Ref *ref);
-    
-    void onshowStartEnd();
+
     cocos2d::ui::Text* goldTv;
     cocos2d::ui::Text* heartTv;
     cocos2d::ui::Text* gameScoreTv;
     cocos2d::ui::Button* pauseImg;
     cocos2d::Layer* disLayer;
-    std::vector<BasePopUpUI::PopUp_UI> m_popUpIds;
-    bool  isNowHidePopup;
+
 };
 
 #endif /* defined(__MazeJump__GameInfoUI__) */

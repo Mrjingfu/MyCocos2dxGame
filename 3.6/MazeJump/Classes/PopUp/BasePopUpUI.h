@@ -38,7 +38,7 @@ public:
     virtual void onEnter() override;
     virtual void onExit() override;
     void showPopUp(bool isPlayAn,cocos2d::Vec2 = cocos2d::Vec2::ZERO,Popup_Show popupShow = POPUP_VERTICAL,const std::function<void()> &endfunc = nullptr);
-    void setShowMaskBg(bool isShowMaskBg);
+ 
     void hidePopUp(const std::function<void()> &endfunc = nullptr);
     void setPopUpId(PopUp_UI popId){m_popUpUiId = popId;};
     PopUp_UI getPopUpId(){return m_popUpUiId;};
@@ -53,6 +53,7 @@ protected:
     bool m_isPlayAn;
     cocos2d::Vec2 m_pt;
     void onHidePopUpEnd();
+    cocos2d::ui::ImageView* m_popupBgLayer;
 };
 
 #endif /* defined(__MazeJump__BasePopUpUI__) */

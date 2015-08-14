@@ -28,10 +28,10 @@ public:
 private:
     void onGoldChange(cocos2d::EventCustom* sender);
     void onHeartChange(cocos2d::EventCustom* sender);
-    cocos2d::Label* heartTv;
-    cocos2d::Label* goldTv;
-    cocos2d::Label* lastScoreView;
-    cocos2d::Label* bestscoreView;
+    cocos2d::Label* m_heartTv;
+    cocos2d::Label* m_goldTv;
+    cocos2d::Label* m_maxLevelTv;
+
     bool isContinue;
 };
 

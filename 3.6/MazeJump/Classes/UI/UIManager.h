@@ -32,10 +32,8 @@ public:
     void showInfo(bool isShowInfo);
     void init(cocos2d::Layer* layer);
     void destory();
-    void removePopUp(BasePopUpUI* popUi);
+    void removePopUp(bool isCallBack,BasePopUpUI* popUi);
     void onGameInfoHidePopUp();
-    bool isCancel(){return m_isCancel;};
-    void setCancel(bool lCancel){m_isCancel = lCancel;}
     BasePopUpUI* getPopUpUI(BasePopUpUI::PopUp_UI popid);
 private:
     

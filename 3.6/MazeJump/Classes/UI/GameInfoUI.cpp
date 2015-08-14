@@ -28,7 +28,7 @@ GameInfoUI* GameInfoUI::create()
 
 GameInfoUI::GameInfoUI()
 {
-    isNowHidePopup = false;
+
 }
 GameInfoUI::~GameInfoUI()
 {
@@ -85,18 +85,11 @@ bool GameInfoUI::init()
 
     return true;
 }
-void GameInfoUI::setPopUpId(BasePopUpUI::PopUp_UI popUpId)
-{
-     m_popUpIds.push_back(popUpId);
-}
-void GameInfoUI::removePopUpId()
-{
-    auto it = std::next( m_popUpIds.begin(), m_popUpIds.size()-1 );
-    m_popUpIds.erase(it);
-}
+
  void GameInfoUI::onEnter()
 {
     Layer::onEnter();
+  
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_GOLD_CHANGE, std::bind(&GameInfoUI::onGoldChange, this, std::placeholders::_1));
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_HEART_CHANGE, std::bind(&GameInfoUI::onHeartChange, this, std::placeholders::_1));
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_MAX_DISTANCE_CHANGE, std::bind(&GameInfoUI::onMaxDistanceChange, this, std::placeholders::_1));
@@ -114,52 +107,11 @@ void GameInfoUI::removePopUpId()
 void GameInfoUI::onPause(cocos2d::Ref *ref)
 {
 
-    if (isNowHidePopup)
-        return;
-    
-    
-    if ( m_popUpIds.size()>0) {
-        
-        if (UIManager::getInstance()->getGameId() == UIManager::UI_GAME && m_popUpIds.size() ==1)
-        {
-            Director::getInstance()->resume();
-        }
-        isNowHidePopup = true;
-        UIManager::getInstance()->hidePopUp(CC_CALLBACK_0(GameInfoUI::onhideEndPopup, this));
-        UIManager::getInstance()->setCancel(true);
-    }else{
-        UIManager::getInstance()->addPopUp(BasePopUpUI::POPUP_SHOP);
-        UIManager::getInstance()->showPopUp(true,BasePopUpUI::POPUP_HORIZONTAL,CC_CALLBACK_0(GameInfoUI::onshowStartEnd, this));
-    }
-    
-    if (m_popUpIds.size() > 0) {
-        pauseImg->loadTextureNormal("btn_back_normal.png");
-        pauseImg->loadTexturePressed("btn_back_press.png");
-    }
-    
-    
 }
-void GameInfoUI::onshowStartEnd()
-{
-    if (UIManager::getInstance()->getGameId() == UIManager::UI_GAME && m_popUpIds.size()>0) {
-        Director::getInstance()->pause();
-    }
-}
+
 
 void GameInfoUI::onhideEndPopup()
 {
-    isNowHidePopup = false;
-    BasePopUpUI::PopUp_UI lpopUpId = m_popUpIds.back();
-    if (UIManager::getInstance()->getGameId() == UIManager::UI_MAIN && lpopUpId==BasePopUpUI::POPUP_SHOP) {
-        this->setVisible(false);
-    }else{
-        removePopUpId();
-    }
-    if (m_popUpIds.size() == 0) {
-        
-        pauseImg->loadTextureNormal("btn_pause_normal.png");
-        pauseImg->loadTexturePressed("btn_pause_press.png");
-    }
     
 }
 void GameInfoUI::onGoldChange(cocos2d::EventCustom* sender)
