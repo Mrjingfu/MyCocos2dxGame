@@ -28,10 +28,10 @@ public:
 private:
     void onGoldChange(cocos2d::EventCustom* sender);
     void onHeartChange(cocos2d::EventCustom* sender);
-    cocos2d::ui::Text* heartTv;
-    cocos2d::ui::Text* goldTv;
-    cocos2d::ui::Text* lastScoreView;
-    cocos2d::ui::Text* bestscoreView;
+    cocos2d::Label* heartTv;
+    cocos2d::Label* goldTv;
+    cocos2d::Label* lastScoreView;
+    cocos2d::Label* bestscoreView;
     bool isContinue;
 };
 
