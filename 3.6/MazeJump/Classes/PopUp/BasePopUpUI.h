@@ -27,8 +27,6 @@ public:
         POPUP_START,
         POPUP_SHOP,
         POPUP_CONTINUE,
-        POPUP_GLOD_NOT_ENOUGT,
-        POPUP_HEART_NOT_ENOUGT,
         POPUP_DEATH,
         POPUP_GROUND_WIN,
         POPUP_GROUND_LOSE,

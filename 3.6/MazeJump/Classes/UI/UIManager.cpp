@@ -185,19 +185,6 @@ BasePopUpUI* UIManager::createPopUp(BasePopUpUI::PopUp_UI popid)
                 popUp->setNotBlank(true);
             }
             break;
-        case BasePopUpUI::POPUP_GLOD_NOT_ENOUGT:
-            {
-                popUp = TipsPopUpUI::create(TipsPopUpUI::TIP_GOLD);
-                popUp->setNotBlank(true);
-            }
-
-            break;
-        case BasePopUpUI::POPUP_HEART_NOT_ENOUGT:
-            {
-                popUp = TipsPopUpUI::create(TipsPopUpUI::TIP_HEART);
-                popUp->setNotBlank(true);
-            }
-            break;
         case BasePopUpUI::POPUP_PAUSE:
             {
                 popUp = PausePopUpUI::create();

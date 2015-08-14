@@ -74,7 +74,7 @@ void ContinuePopUpUI::onContinueGame(cocos2d::Ref *ref)
         UIManager::getInstance()->hidePopUp(true,CC_CALLBACK_0(ContinuePopUpUI::onHideEndPopUp, this));
     }else
     {
-         UIManager::getInstance()->addPopUp(BasePopUpUI::POPUP_HEART_NOT_ENOUGT);
+         UIManager::getInstance()->addPopUp(BasePopUpUI::POPUP_SHOP);
          UIManager::getInstance()->showPopUp(false);
     }
 }

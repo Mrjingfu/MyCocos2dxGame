@@ -33,16 +33,11 @@ public:
 private:
     void onGoldChange(cocos2d::EventCustom* sender);
     void onHeartChange(cocos2d::EventCustom* sender);
-    void onMaxDistanceChange(cocos2d::EventCustom* sender);
-
-    
     
 
-    cocos2d::ui::Text* goldTv;
-    cocos2d::ui::Text* heartTv;
-    cocos2d::ui::Text* gameScoreTv;
+    cocos2d::Label* goldTv;
+    cocos2d::Label* heartTv;
 
-    cocos2d::Layer* disLayer;
     
 };
 

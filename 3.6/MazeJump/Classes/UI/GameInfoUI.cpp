@@ -40,43 +40,30 @@ bool GameInfoUI::init()
     auto size = Director::getInstance()->getVisibleSize();
     float scale = size.width /640.0f;
     
-    disLayer = cocos2d::Layer::create();
-    addChild(disLayer);
-    
-    ui::ImageView* glodView = ui::ImageView::create("ui_gold_bar.png");
-    glodView->setPosition(Vec2(size.width*0.15, size.height*0.95));
+    ui::ImageView* glodView = ui::ImageView::create("ui_gold.png");
+    glodView->setPosition(Vec2(70*scale, size.height*0.95));
     glodView->setScale(scale);
     addChild(glodView);
     
-    goldTv = ui::Text::create(StringUtils::format("%d",Value(localStorageGetItem(USER_GOLD_NUM)).asInt()), FONT_FXZS, 25);
-    goldTv->setPosition(Vec2(size.width*0.15+25*scale,size.height*0.95 ));
-    goldTv->setScale(scale);
+    goldTv = Label::createWithBMFont(UtilityHelper::getLocalString("FONT_NUMBER"),Value(Value(localStorageGetItem(USER_GOLD_NUM)).asInt()).asString());
+    goldTv->setAnchorPoint(Vec2(0, 0.5));
+    goldTv->setPosition(Vec2(100*scale,size.height*0.95 ));
+    goldTv->setScale(scale*0.5);
     addChild(goldTv);
     
-    ui::ImageView* heartView = ui::ImageView::create("ui_heart_bar.png");
-    heartView->setPosition(Vec2(size.width*0.13, size.height*0.95-glodView->getContentSize().height*scale - 5*scale));
+    
+    
+    
+    ui::ImageView* heartView = ui::ImageView::create("ui_heart.png");
+    heartView->setPosition(Vec2(70*scale, size.height*0.95-glodView->getContentSize().height*scale - 5*scale));
     heartView->setScale(scale);
     addChild(heartView);
     
-    heartTv = ui::Text::create(StringUtils::format("%d",Value(localStorageGetItem(USER_HEART_NUM)).asInt()), FONT_FXZS, 25);
-    heartTv->setPosition(Vec2(size.width*0.13+22*scale, size.height*0.95-glodView->getContentSize().height*scale - 5*scale));
-    heartTv->setScale(scale);
+    heartTv = Label::createWithBMFont(UtilityHelper::getLocalString("FONT_NUMBER"),Value(Value(localStorageGetItem(USER_HEART_NUM)).asInt()).asString());
+    heartTv->setAnchorPoint(Vec2(0, 0.5));
+    heartTv->setPosition(Vec2(100*scale, size.height*0.95-glodView->getContentSize().height*scale - 5*scale));
+    heartTv->setScale(scale*0.5);
     addChild(heartTv);
-    
-    
-    ui::ImageView* disImg = ui::ImageView::create("ui_distance.png");
-    disImg->setPosition(Vec2(size.width*0.53, size.height*0.95));
-    disImg->setScale(scale);
-    disLayer->addChild(disImg);
-
-    gameScoreTv = ui::Text::create(StringUtils::format(UtilityHelper::getLocalString("GAME_DISTANCE").c_str(),Value(localStorageGetItem(USER_LAST_LEVEL)).asInt()), FONT_FXZS, 25);
-    gameScoreTv->setPosition(Vec2(size.width*0.48, size.height*0.95));
-    gameScoreTv->setScale(scale);
-    disLayer->addChild(gameScoreTv);
-    
-
-
-
 
     return true;
 }
@@ -88,7 +75,7 @@ bool GameInfoUI::init()
 
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_GOLD_CHANGE, std::bind(&GameInfoUI::onGoldChange, this, std::placeholders::_1));
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_HEART_CHANGE, std::bind(&GameInfoUI::onHeartChange, this, std::placeholders::_1));
-    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_MAX_DISTANCE_CHANGE, std::bind(&GameInfoUI::onMaxDistanceChange, this, std::placeholders::_1));
+
 
 }
  void GameInfoUI::onExit()
@@ -96,7 +83,7 @@ bool GameInfoUI::init()
     Layer::onExit();
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_GOLD_CHANGE);
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_HEART_CHANGE);
-    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_MAX_DISTANCE_CHANGE);
+
 
     
 }
@@ -115,11 +102,7 @@ void GameInfoUI::onHeartChange(cocos2d::EventCustom* sender)
     if (heartTv)
         heartTv->setString(localStorageGetItem(USER_HEART_NUM));
 }
-void GameInfoUI::onMaxDistanceChange(cocos2d::EventCustom* sender)
-{
-    if (gameScoreTv)
-        gameScoreTv->setString(StringUtils::format(UtilityHelper::getLocalString("GAME_DISTANCE").c_str(),Value(localStorageGetItem(USER_LAST_LEVEL)).asInt()));
-}
+
 
 
 

@@ -40,11 +40,11 @@ private:
 
     cocos2d::Layer* productLayer;
     cocos2d::Layer* goldProductLayer;
-    cocos2d::ui::Button* roleBtn;
     cocos2d::ui::Text* tipTv;
     cocos2d::ui::Text* heartTv;
     cocos2d::ui::Text* goldTv;
     ShopType m_shopType;
+    bool m_isOnGold;
 };
 
 #endif /* defined(__MazeJump__ShopUI__) */

@@ -39,6 +39,7 @@ void GameUI::onEnter()
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_RUNNER_LOSE, std::bind(&GameUI::onRunnerLose, this, std::placeholders::_1));
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_RUNNER_RECOVER_PAUSE, std::bind(&GameUI::onRecoverPause, this, std::placeholders::_1));
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_RUNNER_PAUSE_RESUME, std::bind(&GameUI::onEventSetResume, this, std::placeholders::_1));
+        Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_MAX_DISTANCE_CHANGE, std::bind(&GameUI::onMaxDistanceChange, this, std::placeholders::_1));
 }
 void GameUI::onExit()
 {
@@ -46,6 +47,11 @@ void GameUI::onExit()
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_RUNNER_LOSE);
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_RUNNER_RECOVER_PAUSE);
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_RUNNER_PAUSE_RESUME);
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_MAX_DISTANCE_CHANGE);
+}
+void GameUI::onMaxDistanceChange(cocos2d::EventCustom *sender)
+{
+    
 }
 bool GameUI::init()
 {
@@ -53,6 +59,18 @@ bool GameUI::init()
     float scale = size.width /640.0f;
     
     
+    ui::Button* goldBuyBtn = ui::Button::create("btn_plus_normal.png","btn_plus_pressed.png");
+    goldBuyBtn->setPosition(Vec2(25*scale, size.height*0.95));
+    goldBuyBtn->setScale(scale);
+    addChild(goldBuyBtn);
+    
+    
+    ui::Button* heartBuyBtn = ui::Button::create("btn_plus_normal.png","btn_plus_pressed.png");
+    heartBuyBtn->setPosition(Vec2(25*scale, size.height*0.95-50*scale));
+    heartBuyBtn->setScale(scale);
+    addChild(heartBuyBtn);
+    
+        
     pauseImg = ui::Button::create("btn_pause_normal.png","btn_pause_press.png");
     pauseImg->setPosition(Vec2(size.width*0.9, size.height*0.93));
     pauseImg->setScale(scale);

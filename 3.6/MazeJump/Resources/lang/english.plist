@@ -44,5 +44,7 @@
 	<string>panel_pause_en.png</string>
 	<key>UI_SHOP_PANEL</key>
 	<string>panel_shop_en.png</string>
+	<key>UI_GAME_BEST_TV</key>
+	<string>best_en.png</string>
 </dict>
 </plist>

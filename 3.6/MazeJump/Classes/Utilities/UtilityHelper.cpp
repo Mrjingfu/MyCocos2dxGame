@@ -13,7 +13,7 @@ std::string UtilityHelper::getLocalString(const char* key)
 {
     ValueMap dict;
 //    LanguageType lt= CCApplication::getInstance()->getCurrentLanguage();
-    LanguageType lt = LanguageType::ENGLISH;
+    LanguageType lt = LanguageType::CHINESE;
     switch (lt) {
         case LanguageType::CHINESE:
             dict = FileUtils::getInstance()->getValueMapFromFile("chinese.plist");

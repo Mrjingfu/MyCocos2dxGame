@@ -28,6 +28,7 @@ ShopPopUpUI* ShopPopUpUI::create()
 ShopPopUpUI::ShopPopUpUI()
 {
     m_shopType = SHOP_NORMAL;
+    m_isOnGold = false;
 }
 ShopPopUpUI::~ShopPopUpUI()
 {
@@ -38,10 +39,7 @@ void ShopPopUpUI::onEnter()
     init();
     if (UIManager::getInstance()->getGameId() == UIManager::UI_MAIN) {
         UIManager::getInstance()->showInfo(true);
-        if (roleBtn) {
-            roleBtn->setBright(true);
-            roleBtn->setTouchEnabled(true);
-        }
+
     }
     
 }
@@ -50,9 +48,7 @@ void ShopPopUpUI::onExit()
     BasePopUpUI::onExit();
     if (UIManager::getInstance()->getGameId() == UIManager::UI_MAIN) {
         UIManager::getInstance()->showInfo(false);
-        if (roleBtn) {
-           roleBtn->setEnabled(true);
-        }
+       
     }
     
 }
@@ -95,23 +91,41 @@ bool ShopPopUpUI::init()
     heartGoldNumLabel->setScale(scale*0.35);
     productLayer->addChild(heartGoldNumLabel);
     
-    roleBtn = ui::Button::create("btn_character_normal.png","btn_character_pressed.png");
-    roleBtn->setPosition(Vec2(size.width*0.4, size.height*0.6-heartBuyBtn->getContentSize().width*scale-20*scale));
-    roleBtn->setScale(scale);
-    roleBtn->setBright(false);
-    roleBtn->setTouchEnabled(false);
-    productLayer->addChild(roleBtn);
     
-    ui::Button* adsBuyBtn = ui::Button::create("btn_removeads_normal.png","btn_removeads_pressed.png");
-    adsBuyBtn->setPosition(Vec2(size.width*0.4+roleBtn->getContentSize().width*scale+50*scale, size.height*0.6-heartBuyBtn->getContentSize().width*scale-20*scale ));
-    adsBuyBtn->setScale(scale);
-    productLayer->addChild(adsBuyBtn);
-    
-    ui::Button* restoreBtn = ui::Button::create("btn_restore_normal.png","btn_restore_pressed.png");
-    restoreBtn->setPosition(Vec2(size.width*0.4, size.height*0.6-adsBuyBtn->getContentSize().width*2*scale-40*scale ));
-    restoreBtn->setScale(scale);
-    productLayer->addChild(restoreBtn);
+    ui::Button* roleBtn = nullptr;
+    ui::Button* adsBuyBtn = nullptr;
+    ui::Button* restoreBtn = nullptr;
+    if (UIManager::getInstance()->getGameId()==UIManager::UI_MAIN) {
+        roleBtn = ui::Button::create("btn_character_normal.png","btn_character_pressed.png");
+        roleBtn->setPosition(Vec2(size.width*0.4, size.height*0.6-heartBuyBtn->getContentSize().width*scale-20*scale));
+        roleBtn->setScale(scale);
+        //禁用设置灰色
+//      roleBtn->setBright(false);
+//      roleBtn->setTouchEnabled(false);
+        productLayer->addChild(roleBtn);
+        
+        adsBuyBtn = ui::Button::create("btn_removeads_normal.png","btn_removeads_pressed.png");
+        adsBuyBtn->setPosition(Vec2(size.width*0.4+roleBtn->getContentSize().width*scale+50*scale, size.height*0.6-heartBuyBtn->getContentSize().width*scale-20*scale ));
+        adsBuyBtn->setScale(scale);
+        productLayer->addChild(adsBuyBtn);
+        
+        restoreBtn = ui::Button::create("btn_restore_normal.png","btn_restore_pressed.png");
+        restoreBtn->setPosition(Vec2(size.width*0.4, size.height*0.6-adsBuyBtn->getContentSize().width*2*scale-40*scale ));
+        restoreBtn->setScale(scale);
+        productLayer->addChild(restoreBtn);
 
+    }else if(UIManager::getInstance()->getGameId()==UIManager::UI_GAME)
+    {
+        adsBuyBtn = ui::Button::create("btn_removeads_normal.png","btn_removeads_pressed.png");
+        adsBuyBtn->setPosition(Vec2(size.width*0.4, size.height*0.6-heartBuyBtn->getContentSize().width*scale-20*scale));
+        adsBuyBtn->setScale(scale);
+        productLayer->addChild(adsBuyBtn);
+        
+        restoreBtn = ui::Button::create("btn_restore_normal.png","btn_restore_pressed.png");
+        restoreBtn->setPosition(Vec2(size.width*0.4+adsBuyBtn->getContentSize().width*scale+50*scale, size.height*0.6-heartBuyBtn->getContentSize().width*scale-20*scale ));
+        restoreBtn->setScale(scale);
+        productLayer->addChild(restoreBtn);
+    }
 
     ui::Button* coin1_Btn = ui::Button::create("btn_gold1_normal.png","btn_gold1_pressed.png");
     coin1_Btn->setPosition(Vec2(size.width*0.4, size.height*0.6));
@@ -161,7 +175,7 @@ bool ShopPopUpUI::init()
     goldProductLayer->addChild(coin3_money_NumLabel);
     
     ui::Button* coin4_Btn = ui::Button::create("btn_gold4_normal.png","btn_gold4_pressed.png");
-    coin4_Btn->setPosition(Vec2(size.width*0.4+roleBtn->getContentSize().width*scale+50*scale, size.height*0.6-heartBuyBtn->getContentSize().width*scale-20*scale ));
+    coin4_Btn->setPosition(Vec2(size.width*0.4+coin2_Btn->getContentSize().width*scale+50*scale, size.height*0.6-heartBuyBtn->getContentSize().width*scale-20*scale ));
     coin4_Btn->setScale(scale);
     goldProductLayer->addChild(coin4_Btn);
     
@@ -202,7 +216,10 @@ bool ShopPopUpUI::init()
     heartBuyBtn->addClickEventListener(CC_CALLBACK_1(ShopPopUpUI::onBuyHeart, this));
     adsBuyBtn->addClickEventListener(CC_CALLBACK_1(ShopPopUpUI::onBuyRemoveAds, this));
     restoreBtn->addClickEventListener(CC_CALLBACK_1(ShopPopUpUI::onRestore, this));
-    roleBtn->addClickEventListener(CC_CALLBACK_1(ShopPopUpUI::onRole,this));
+    if (roleBtn) {
+        roleBtn->addClickEventListener(CC_CALLBACK_1(ShopPopUpUI::onRole,this));
+    }
+    
     coin1_Btn->addClickEventListener(CC_CALLBACK_1(ShopPopUpUI::onProduct, this,"buyCoin1"));
     coin2_Btn->addClickEventListener(CC_CALLBACK_1(ShopPopUpUI::onProduct, this,"buyCoin2"));
     coin3_Btn->addClickEventListener(CC_CALLBACK_1(ShopPopUpUI::onProduct, this,"buyCoin3"));
@@ -231,6 +248,7 @@ void ShopPopUpUI::setShopDisplay(ShopType type)
 }
 void ShopPopUpUI::onBuyGold(cocos2d::Ref *ref)
 {
+    m_isOnGold = true;
     setShopDisplay(SHOP_GOLD);
 }
 void ShopPopUpUI::onBuyHeart(cocos2d::Ref *ref)
@@ -248,8 +266,7 @@ void ShopPopUpUI::onBuyHeart(cocos2d::Ref *ref)
     }else
     {
         CCLOG("Shop");
-        UIManager::getInstance()->addPopUp(BasePopUpUI::POPUP_GLOD_NOT_ENOUGT);
-        UIManager::getInstance()->showPopUp(false);
+        onBuyGold(this);
         
     }
 }
@@ -269,8 +286,9 @@ void ShopPopUpUI::onRestore(cocos2d::Ref *ref)
 
 void ShopPopUpUI::onBackShop(cocos2d::Ref *ref)
 {
-    if (goldProductLayer->isVisible()) {
+    if (m_isOnGold) {
         setShopDisplay(ShopType::SHOP_NORMAL);
+        m_isOnGold = false;
     }else
     {
         if (UIManager::getInstance()->getGameId() == UIManager::UI_MAIN) {

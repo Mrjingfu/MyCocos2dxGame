@@ -148,7 +148,7 @@ void StarPopUpUI::onResumeGame(cocos2d::Ref *ref)
     }else
     {
         CCLOG("Shop");
-        UIManager::getInstance()->addPopUp(BasePopUpUI::POPUP_HEART_NOT_ENOUGT);
+        UIManager::getInstance()->addPopUp(BasePopUpUI::POPUP_SHOP);
         UIManager::getInstance()->showPopUp(false);
     }
     
