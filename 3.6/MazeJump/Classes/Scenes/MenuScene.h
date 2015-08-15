@@ -46,7 +46,7 @@ private:
     Runner*             m_pRunner;
     RibbonTrail*        m_pRainbow;
     cocos2d::LayerColor*        m_pWhiteLayer;
-
+    bool                m_bStartGame;
     float               m_fTime;
     cocos2d::Vec3       m_dirDist;
     int  m_nBgID;

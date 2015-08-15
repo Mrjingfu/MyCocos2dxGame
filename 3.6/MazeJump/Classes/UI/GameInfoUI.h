@@ -28,16 +28,24 @@ public:
     virtual void onExit() override;
     static GameInfoUI* create();
 
-
     void onhideEndPopup();
+
+    void setCurrentLayerVisible(bool isVisible);
+    
 private:
+    
+    void onRunnerLose(cocos2d::EventCustom* sender);
+    void onDelayTimeRunnerLose();
     void onGoldChange(cocos2d::EventCustom* sender);
     void onHeartChange(cocos2d::EventCustom* sender);
-    
+    void onMaxDistanceChange(cocos2d::EventCustom* sender);
 
     cocos2d::Label* goldTv;
     cocos2d::Label* heartTv;
-
+    cocos2d::Label* m_maxLevelTv;
+    cocos2d::Label* m_CurrentLevelTv;
+    Layer* maxLayer;
+    Layer* currentLayer;
     
 };
 

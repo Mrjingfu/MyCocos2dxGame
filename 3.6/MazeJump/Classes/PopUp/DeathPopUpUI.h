@@ -21,7 +21,11 @@ public:
     virtual void onExit();
     static DeathPopUpUI* create();
 
-
+private:
+    void onHome(Ref* ref);
+    void onShop(Ref* ref);
+    void onAgiain(Ref* ref);
+    void onRevive(Ref* ref);
 };
 
 #endif /* defined(__MazeJump__DeathPopUpUI__) */

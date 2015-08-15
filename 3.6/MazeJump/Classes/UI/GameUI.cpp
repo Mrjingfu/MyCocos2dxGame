@@ -11,6 +11,7 @@
 #include "GameConst.h"
 #include "UIManager.h"
 #include "UtilityHelper.h"
+#include "storage/local-storage/LocalStorage.h"
 USING_NS_CC;
 
 GameUI* GameUI::create()
@@ -36,23 +37,19 @@ GameUI::~GameUI()
 void GameUI::onEnter()
 {
     Layer::onEnter();
-    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_RUNNER_LOSE, std::bind(&GameUI::onRunnerLose, this, std::placeholders::_1));
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_RUNNER_RECOVER_PAUSE, std::bind(&GameUI::onRecoverPause, this, std::placeholders::_1));
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_RUNNER_PAUSE_RESUME, std::bind(&GameUI::onEventSetResume, this, std::placeholders::_1));
-        Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_MAX_DISTANCE_CHANGE, std::bind(&GameUI::onMaxDistanceChange, this, std::placeholders::_1));
+
 }
 void GameUI::onExit()
 {
     Layer::onExit();
-    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_RUNNER_LOSE);
+
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_RUNNER_RECOVER_PAUSE);
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_RUNNER_PAUSE_RESUME);
-    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_MAX_DISTANCE_CHANGE);
+   
 }
-void GameUI::onMaxDistanceChange(cocos2d::EventCustom *sender)
-{
-    
-}
+
 bool GameUI::init()
 {
     auto size = Director::getInstance()->getVisibleSize();
@@ -71,30 +68,18 @@ bool GameUI::init()
     addChild(heartBuyBtn);
     
         
-    pauseImg = ui::Button::create("btn_pause_normal.png","btn_pause_press.png");
+    pauseImg = ui::Button::create("btn_pause_normal.png","btn_pause_pressed.png");
     pauseImg->setPosition(Vec2(size.width*0.9, size.height*0.93));
     pauseImg->setScale(scale);
     addChild(pauseImg);
     pauseImg->addClickEventListener(CC_CALLBACK_1(GameUI::onPause, this));
+ 
     
-    
-    
-    cocos2d::ui::Button* button = cocos2d::ui::Button::create("button_retry_up.png",
-                                                              "button_retry_down.png");
-    button->setPosition(Vec2(size.width * 0.8f, size.height * 0.8f));
-    button->setScale(scale);
-    button->setPressedActionEnabled(true);
-    button->addClickEventListener([=](Ref* sender){
-        auto scene = MainScene::createScene();
-        Director::getInstance()->replaceScene(scene);
-    });
-    addChild(button);
-    
-    SkillButton* skillBtn = SkillButton::create("button_retry_up.png", "stencil.png");
+    SkillButton* skillBtn = SkillButton::create("btn_skill_normal.png", "btn_skill_mask.png");
     if(!skillBtn)
         return false;
     skillBtn->setScale(scale);
-    skillBtn->setPosition(Vec2(size.width * 0.1f, size.height * 0.1f));
+    skillBtn->setPosition(Vec2(size.width * 0.1f, size.height * 0.05f));
     addChild(skillBtn);
     
     
@@ -129,7 +114,7 @@ void GameUI::onPause(cocos2d::Ref *ref)
 {
     isRecover = true;
     UIManager::getInstance()->addPopUp(BasePopUpUI::POPUP_PAUSE);
-    UIManager::getInstance()->showPopUp(false,BasePopUpUI::POPUP_HORIZONTAL,CC_CALLBACK_0(GameUI::setPause, this));
+    UIManager::getInstance()->showPopUp(true,BasePopUpUI::POPUP_HORIZONTAL,CC_CALLBACK_0(GameUI::setPause, this));
 
 }
 
@@ -153,16 +138,6 @@ void GameUI::setResume()
     }
 }
 
-void GameUI::onRunnerLose(cocos2d::EventCustom* sender)
-{
-    CCLOG("GAME OVER");
-    runAction(Sequence::create(DelayTime::create(0.5),CallFunc::create(CC_CALLBACK_0(GameUI::onDelayTimeRunnerLose,this)), NULL));
-}
-void GameUI::onDelayTimeRunnerLose()
-{
-    UIManager::getInstance()->addPopUp(BasePopUpUI::POPUP_CONTINUE);
-    UIManager::getInstance()->showPopUp(true,BasePopUpUI::POPUP_HORIZONTAL);
-}
 void GameUI::onEventSetResume(cocos2d::EventCustom *sender)
 {
     setResume();

@@ -30,10 +30,10 @@ private:
     cocos2d::Label* resmueLabel;
     cocos2d::ui::Button* pauseImg;
 
-    void onRunnerLose(cocos2d::EventCustom* sender);
+
     void onRecoverPause(cocos2d::EventCustom* sender);
-    void onMaxDistanceChange(cocos2d::EventCustom* sender);
-    void onDelayTimeRunnerLose();
+
+
     void onPause(cocos2d::Ref *ref);
     void onEventSetResume(cocos2d::EventCustom* sender);
     void onResumeAn(float dt);

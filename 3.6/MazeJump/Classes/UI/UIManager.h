@@ -30,7 +30,7 @@ public:
     void hideBlank();
     void hidePopUp(bool isPlayAn = true,const std::function<void()> &endfunc = nullptr);
     Game_UI getGameId(){return m_gameUiId;}
-    void showInfo(bool isShowInfo);
+    void showInfo(bool isShowInfo,bool isShowCurrentLayer = false);
     void init(cocos2d::Layer* layer);
     void destory();
     void removePopUp(bool isCallBack,BasePopUpUI* popUi);

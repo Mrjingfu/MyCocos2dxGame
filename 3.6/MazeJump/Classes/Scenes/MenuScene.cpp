@@ -11,6 +11,7 @@
 #include "MainScene.h"
 #include "GameConst.h"
 #include "UIManager.h"
+#include "RoleManager.h"
 #include "storage/local-storage/LocalStorage.h"
 #include "AudioEngine.h"
 USING_NS_CC;
@@ -42,7 +43,7 @@ MenuScene::MenuScene()
     m_pRunner               = nullptr;
     m_pRainbow              = nullptr;
     m_pWhiteLayer           = nullptr;
-
+    m_bStartGame            = false;
     m_fTime = 0;
 }
 // on "init" you need to initialize your instance
@@ -184,6 +185,8 @@ void MenuScene::onEnter()
 {
     Layer::onEnter();
     scheduleUpdate();
+    RoleManager::getInstance()->init();
+    
     UIManager::getInstance()->init(this);
     UIManager::getInstance()->setGameUi(UIManager::UI_MAIN);
     AudioEngine::play2d("rainbow.wav", false, 0.5f);
@@ -216,8 +219,11 @@ bool MenuScene::onTouchBegan(Touch *touch, Event *event)
 {
     if(!touch)
         return false;
-    
-    runnerJump();
+    if(!m_bStartGame)
+    {
+        runnerJump();
+        m_bStartGame = true;
+    }
     return true;
 }
 void MenuScene::switchToMainScene()
@@ -231,6 +237,7 @@ void MenuScene::startGame()
     if (maxLevel > 0) {
         UIManager::getInstance()->addPopUp(BasePopUpUI::POPUP_START);
         UIManager::getInstance()->showPopUp();
+        m_bStartGame=false;
     }else
     {
         if(m_pWhiteLayer)

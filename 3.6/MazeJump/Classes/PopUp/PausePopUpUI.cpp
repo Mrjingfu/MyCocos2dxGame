@@ -53,12 +53,12 @@ bool PausePopUpUI::init()
     
     ui::Button* homeBtn = ui::Button::create("btn_home_normal.png","btn_home_pressed.png");
     homeBtn->setScale(scale);
-    homeBtn->setPosition(Vec2(size.width*0.33,size.height*0.48));
+    homeBtn->setPosition(Vec2(size.width*0.35,size.height*0.48));
     m_dialogLayer->addChild(homeBtn);
     
     ui::Button* shopBtn = ui::Button::create("btn_shop_normal.png","btn_shop_pressed.png");
     shopBtn->setScale(scale);
-    shopBtn->setPosition(Vec2(size.width*0.33+homeBtn->getContentSize().width*scale+35*scale,size.height*0.48));
+    shopBtn->setPosition(Vec2(size.width*0.35+homeBtn->getContentSize().width*scale+35*scale,size.height*0.48));
     m_dialogLayer->addChild(shopBtn);
     
     ui::Button* playnBtn = ui::Button::create("btn_play_normal.png","btn_play_pressed.png");

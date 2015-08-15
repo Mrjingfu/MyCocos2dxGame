@@ -1,0 +1,45 @@
+{"roles":
+    [
+     {
+     "RoleId":"role_girl1",
+     "RoleModel": "girl1.c3b",
+     "RoleLock": false,
+     "RoleSound": "",
+     "RoleImg": "role_girl1.png",
+     "RolePrice": 600
+     },
+     {
+     "RoleId":"role_girl2",
+     "RoleModel": "girl1.c3b",
+     "RoleLock": true,
+     "RoleSound": "",
+     "RoleImg": "role_girl1.png",
+     "RolePrice": 200
+     },
+     {
+     "RoleId":"role_girl3",
+     "RoleModel": "girl1.c3b",
+     "RoleLock": true,
+     "RoleSound": "",
+     "RoleImg": "role_girl1.png",
+     "RolePrice": 300
+     },
+     {
+     "RoleId":"role_girl4",
+     "RoleModel": "girl1.c3b",
+     "RoleLock": false,
+     "RoleSound": "",
+     "RoleImg": "role_girl1.png",
+     "RolePrice": 400
+     },
+     {
+     "RoleId":"role_girl5",
+     "RoleModel": "girl1.c3b",
+     "RoleLock": false,
+     "RoleSound": "",
+     "RoleImg": "role_girl1.png",
+     "RolePrice": 500
+     }
+     
+     ]
+}

@@ -28,7 +28,12 @@ GameInfoUI* GameInfoUI::create()
 
 GameInfoUI::GameInfoUI()
 {
-
+     goldTv             = nullptr;
+     heartTv            = nullptr;
+     m_maxLevelTv       = nullptr;
+     m_CurrentLevelTv   = nullptr;
+     maxLayer           = nullptr;
+     currentLayer       = nullptr;
 }
 GameInfoUI::~GameInfoUI()
 {
@@ -52,8 +57,6 @@ bool GameInfoUI::init()
     addChild(goldTv);
     
     
-    
-    
     ui::ImageView* heartView = ui::ImageView::create("ui_heart.png");
     heartView->setPosition(Vec2(70*scale, size.height*0.95-glodView->getContentSize().height*scale - 5*scale));
     heartView->setScale(scale);
@@ -64,15 +67,60 @@ bool GameInfoUI::init()
     heartTv->setPosition(Vec2(100*scale, size.height*0.95-glodView->getContentSize().height*scale - 5*scale));
     heartTv->setScale(scale*0.5);
     addChild(heartTv);
+    
+    
+    maxLayer = Layer::create();
+    addChild(maxLayer);
+    
+    currentLayer = Layer::create();
+    currentLayer->setPosition(Vec2(0, 50*scale));
+    addChild(currentLayer);
+    
+    ui::ImageView* bestImg = ui::ImageView::create(UtilityHelper::getLocalString("UI_GAME_BEST_TV"));
+    bestImg->setAnchorPoint(Vec2(1, 0.5));
+    bestImg->setPosition(Vec2(size.width*0.62,size.height*0.95));
+    bestImg->setScale(scale);
+    maxLayer->addChild(bestImg);
+    
+    
+     m_maxLevelTv = Label::createWithBMFont(UtilityHelper::getLocalString("FONT_NUMBER"),Value(Value(localStorageGetItem(USER_MAX_LEVEL)).asInt()).asString());
+    m_maxLevelTv->setPosition(Vec2(size.width*0.72, size.height*0.948));
+    m_maxLevelTv->setScale(scale*0.5);
+    m_maxLevelTv->setAnchorPoint(Vec2(1, 0.5));
+    maxLayer->addChild(m_maxLevelTv);
+    
+    
+    ui::ImageView* currentImg = ui::ImageView::create(UtilityHelper::getLocalString("UI_GAME_CURRENT_TV"));
+    currentImg->setPosition(Vec2(size.width*0.5,size.height*0.9));
+    currentImg->setScale(scale);
+    currentLayer->addChild(currentImg);
+    
+    
+     m_CurrentLevelTv = Label::createWithBMFont(UtilityHelper::getLocalString("FONT_NUMBER"),Value(Value(localStorageGetItem(USER_LAST_LEVEL)).asInt()).asString());
+    m_CurrentLevelTv->setPosition(Vec2(size.width*0.72, size.height*0.898));
+    m_CurrentLevelTv->setScale(scale*0.5);
+    m_CurrentLevelTv->setAnchorPoint(Vec2(1, 0.5));
+    currentLayer->addChild(m_CurrentLevelTv);
+    
 
+    maxLayer->setVisible(false);
+    currentLayer->setVisible(true);
+    
     return true;
 }
 
+void GameInfoUI::setCurrentLayerVisible(bool isVisible)
+{
+    if (currentLayer) {
+        currentLayer->setVisible(isVisible);
+    }
+}
  void GameInfoUI::onEnter()
 {
     Layer::onEnter();
-    
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_RUNNER_LOSE, std::bind(&GameInfoUI::onRunnerLose, this, std::placeholders::_1));
 
+        Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_MAX_DISTANCE_CHANGE, std::bind(&GameInfoUI::onMaxDistanceChange, this, std::placeholders::_1));
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_GOLD_CHANGE, std::bind(&GameInfoUI::onGoldChange, this, std::placeholders::_1));
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_HEART_CHANGE, std::bind(&GameInfoUI::onHeartChange, this, std::placeholders::_1));
 
@@ -81,11 +129,34 @@ bool GameInfoUI::init()
  void GameInfoUI::onExit()
 {
     Layer::onExit();
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_RUNNER_LOSE);
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_MAX_DISTANCE_CHANGE);
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_GOLD_CHANGE);
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_HEART_CHANGE);
-
-
     
+}
+
+void GameInfoUI::onRunnerLose(cocos2d::EventCustom* sender)
+{
+    CCLOG("GAME OVER");
+    if (maxLayer&&m_maxLevelTv) {
+        maxLayer->setVisible(true);
+        currentLayer->setPosition(Vec2::ZERO);
+        m_maxLevelTv->setString(localStorageGetItem(USER_MAX_LEVEL));
+    }
+    UIManager::getInstance()->addPopUp(BasePopUpUI::POPUP_DEATH);
+    UIManager::getInstance()->showPopUp(true,BasePopUpUI::POPUP_HORIZONTAL);
+}
+void GameInfoUI::onDelayTimeRunnerLose()
+{
+
+}
+
+void GameInfoUI::onMaxDistanceChange(cocos2d::EventCustom *sender)
+{
+    if (m_CurrentLevelTv) {
+        m_CurrentLevelTv->setString(localStorageGetItem(USER_LAST_LEVEL));
+    }
 }
 
 void GameInfoUI::onhideEndPopup()

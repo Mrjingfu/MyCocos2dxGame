@@ -46,5 +46,15 @@
 	<string>panel_shop_en.png</string>
 	<key>UI_GAME_BEST_TV</key>
 	<string>best_en.png</string>
+	<key>UI_GAME_CURRENT_TV</key>
+	<string>current_en.png</string>
+	<key>UI_DEATH_PANEL</key>
+	<string>panel_gameover_en.png</string>
+	<key>UI_DEATH_BTN_REVICE</key>
+	<string>btn_revive_en.png</string>
+	<key>UI_ROLE_BTN_LOCK_NORMAL</key>
+	<string>btn_unlock_normal_en.png</string>
+	<key>UI_ROLE_BTN_LOCK_PRESSED</key>
+	<string>btn_unlock_pressed_en.png</string>
 </dict>
 </plist>

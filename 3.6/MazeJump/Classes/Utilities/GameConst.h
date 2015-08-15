@@ -12,6 +12,8 @@ static const std::string USER_HEART_NUM = "UserHeartNum";
 
 static const std::string USER_GOLD_NUM = "UserGoldNum";
 
+static const std::string USER_ROLE_DATA  = "UserRoleData";
+
 ///Font
 static std::string FONT_FXZS = "FZXS12.TTF";
 

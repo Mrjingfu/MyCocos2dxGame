@@ -57,7 +57,6 @@ bool GroundGameUI::init()
     button->setPressedActionEnabled(true);
     button->addClickEventListener([=](Ref* sender){
         
-        
         GameController::getInstance()->switchToRainbowRun();
         
     });

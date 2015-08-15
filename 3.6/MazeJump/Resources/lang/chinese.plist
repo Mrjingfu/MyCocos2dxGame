@@ -28,28 +28,12 @@
 	<string>恢复购买成功！</string>
 	<key>RESTORE_FAILED</key>
 	<string>恢复购买失败！</string>
-	<key>BEST_DISTANCE</key>
-	<string>最远距离:  %d</string>
-	<key>LAST_DISTANCE</key>
-	<string>当前距离:  %d</string>
 	<key>START_GAME</key>
 	<string>开始游戏</string>
 	<key>RESTART_GAME</key>
 	<string>重新开始</string>
 	<key>RESUME_GAME</key>
 	<string>继续游戏</string>
-	<key>SHOP_BUY</key>
-	<string>商店</string>
-	<key>HEART_NOT_ENOUGH</key>
-	<string>红心不够咯!</string>
-	<key>GOLD_NOT_ENOUGH</key>
-	<string>金币不够咯！</string>
-	<key>CONTINUE_GAME</key>
-	<string>是否使用红心继续游戏?</string>
-	<key>CANCEL</key>
-	<string>取消</string>
-	<key>OK</key>
-	<string>确定</string>
 	<key>FONT_NUMBER</key>
 	<string>DFWaWaW5-GB.fnt</string>
 	<key>UI_TITLE_TEX</key>
@@ -66,5 +50,15 @@
 	<string>panel_shop_cn.png</string>
 	<key>UI_GAME_BEST_TV</key>
 	<string>best_cn.png</string>
+	<key>UI_GAME_CURRENT_TV</key>
+	<string>current_cn.png</string>
+	<key>UI_DEATH_PANEL</key>
+	<string>panel_gameover_cn.png</string>
+	<key>UI_DEATH_BTN_REVICE</key>
+	<string>btn_revive_cn.png</string>
+	<key>UI_ROLE_BTN_LOCK_NORMAL</key>
+	<string>btn_unlock_normal_cn.png</string>
+	<key>UI_ROLE_BTN_LOCK_PRESSED</key>
+	<string>btn_unlock_pressed_cn.png</string>
 </dict>
 </plist>

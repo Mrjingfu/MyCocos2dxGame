@@ -26,11 +26,11 @@ public:
     typedef enum {
         POPUP_START,
         POPUP_SHOP,
-        POPUP_CONTINUE,
         POPUP_DEATH,
         POPUP_GROUND_WIN,
         POPUP_GROUND_LOSE,
         POPUP_PAUSE,
+        POPUP_ROLE,
         POPUP_UNKOWN
     } PopUp_UI;
     

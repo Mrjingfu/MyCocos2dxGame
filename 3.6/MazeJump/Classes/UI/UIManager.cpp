@@ -12,9 +12,9 @@
 #include "MainUI.h"
 #include "GameUI.h"
 #include "GroundGameUI.h"
-#include "TipsPopUpUI.h"
 #include "GameInfoUI.h"
-#include "ContinuePopUpUI.h"
+#include "DeathPopUpUI.h"
+#include "RolePopUpUI.h"
 #include "GameConst.h"
 #include "UtilityHelper.h"
 #include "PausePopUpUI.h"
@@ -139,7 +139,7 @@ void UIManager::onEnterGame()
             m_parent->addChild(lLayer);
             m_gameUi = lLayer;
     }
-    showInfo(true);
+    showInfo(true,true);
 }
 
 void UIManager::onEnterGronudGame()
@@ -147,7 +147,7 @@ void UIManager::onEnterGronudGame()
     if (m_parent) {
             Layer* lLayer = GroundGameUI::create();
             m_parent->addChild(lLayer);
-            showInfo(true);
+            showInfo(true,true);
     }
 }
 BasePopUpUI* UIManager::getPopUpUI(BasePopUpUI::PopUp_UI popid)
@@ -178,19 +178,24 @@ BasePopUpUI* UIManager::createPopUp(BasePopUpUI::PopUp_UI popid)
             }
 
             break;
-
-        case BasePopUpUI::POPUP_CONTINUE:
-            {
-                popUp = ContinuePopUpUI::create();
-                popUp->setNotBlank(true);
-            }
-            break;
         case BasePopUpUI::POPUP_PAUSE:
             {
                 popUp = PausePopUpUI::create();
                 popUp->setNotBlank(true);
             }
-
+            break;
+        case BasePopUpUI::POPUP_DEATH:
+            {
+                popUp =DeathPopUpUI::create();
+                popUp->setNotBlank(true);
+            }
+            break;
+        case BasePopUpUI::POPUP_ROLE:
+        {
+            popUp = RolePopUpUI::create();
+            popUp->setNotBlank(true);
+        }
+            break;
         default:
             break;
     }
@@ -256,14 +261,13 @@ void UIManager::hidePopUp(bool isPlayAn,const std::function<void()> &endfunc)
 
     }
 }
-void UIManager::showInfo(bool isShowInfo)
+void UIManager::showInfo(bool isShowInfo,bool isShowCurrentLayer)
 {
-    if (isShowInfo) {
-        m_gameInfoLayer->setVisible(true);
-    }else
-    {
-        m_gameInfoLayer->setVisible(false);
+    if (m_gameInfoLayer) {
+        m_gameInfoLayer->setVisible(isShowInfo);
+        m_gameInfoLayer->setCurrentLayerVisible(isShowCurrentLayer);
     }
+    
 }
 void UIManager::removePopUp(bool isCallBack,BasePopUpUI* popUi)
 {

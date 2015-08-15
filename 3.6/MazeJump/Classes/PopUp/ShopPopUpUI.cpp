@@ -272,6 +272,9 @@ void ShopPopUpUI::onBuyHeart(cocos2d::Ref *ref)
 }
 void ShopPopUpUI::onRole(cocos2d::Ref *ref)
 {
+    UIManager::getInstance()->hidePopUp(false);
+    UIManager::getInstance()->addPopUp(BasePopUpUI::POPUP_ROLE);
+    UIManager::getInstance()->showPopUp(true,BasePopUpUI::POPUP_HORIZONTAL);
     CCLOG("onRole");
 }
 void ShopPopUpUI::onBuyRemoveAds(cocos2d::Ref *ref)
@@ -292,7 +295,16 @@ void ShopPopUpUI::onBackShop(cocos2d::Ref *ref)
     }else
     {
         if (UIManager::getInstance()->getGameId() == UIManager::UI_MAIN) {
-            UIManager::getInstance()->hidePopUp();
+            
+           
+            BasePopUpUI* popup = UIManager::getInstance()->getPopUpUI(BasePopUpUI::POPUP_ROLE);
+            if (popup) {
+                 UIManager::getInstance()->hidePopUp(false);
+                UIManager::getInstance()->showInfo(true);
+            }else
+            {
+                UIManager::getInstance()->hidePopUp();
+            }
         }else if(UIManager::getInstance()->getGameId() == UIManager::UI_GAME)
         {
             UIManager::getInstance()->hidePopUp(false);
