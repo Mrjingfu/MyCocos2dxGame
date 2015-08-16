@@ -100,8 +100,19 @@ void DeathPopUpUI::onAgiain(cocos2d::Ref *ref)
 }
 void DeathPopUpUI::onRevive(cocos2d::Ref *ref)
 {
-    UIManager::getInstance()->hidePopUp(false);
-    localStorageSetItem(USER_HEART_NUM, Value(Value(localStorageGetItem(USER_HEART_NUM)).asInt()-1).asString());
-    auto scene = MainScene::createScene();
-    Director::getInstance()->replaceScene(scene);
+   
+    
+    int heartNum = Value(localStorageGetItem(USER_HEART_NUM)).asInt();
+    if (heartNum >=1) {
+         UIManager::getInstance()->hidePopUp(false);
+        localStorageSetItem(USER_HEART_NUM, Value(Value(localStorageGetItem(USER_HEART_NUM)).asInt()-1).asString());
+        auto scene = MainScene::createScene();
+        Director::getInstance()->replaceScene(scene);
+    }else
+    {
+        UIManager::getInstance()->addPopUp(BasePopUpUI::POPUP_SHOP);
+        UIManager::getInstance()->showPopUp(false);
+    }
+    
+
 }

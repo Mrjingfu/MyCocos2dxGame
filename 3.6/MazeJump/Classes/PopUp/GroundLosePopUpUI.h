@@ -16,6 +16,9 @@ protected:
     GroundLosePopUpUI();
     virtual ~GroundLosePopUpUI();
     virtual bool init() ;
+    void onBack(Ref* ref);
+    void onHidePopUpEnd();
+    void onHelpRecover(Ref* ref);
 public:
     virtual void onEnter() override;
     virtual void onExit() override;

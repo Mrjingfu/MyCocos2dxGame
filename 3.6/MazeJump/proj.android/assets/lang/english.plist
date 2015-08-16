@@ -28,7 +28,45 @@
 	<string>Restore purchases successed!</string>
 	<key>RESTORE_FAILED</key>
 	<string>Restore purchases failed!</string>
-	<key>BEST_SCORE</key>
-	<string></string>
+	<key>FONT_NUMBER</key>
+	<string>comic_sans_ms.fnt</string>
+	<key>UI_TITLE_TEX</key>
+	<string>ui_title.png</string>
+	<key>UI_START_BTN_NEW</key>
+	<string>btn_start_new_en.png</string>
+	<key>UI_START_BTN_CONTINUE</key>
+	<string>btn_start_continue_en.png</string>
+	<key>UI_START_PANEL</key>
+	<string>panel_startgame_en.png</string>
+	<key>UI_PASUE_PANEL</key>
+	<string>panel_pause_en.png</string>
+	<key>UI_SHOP_PANEL</key>
+	<string>panel_shop_en.png</string>
+	<key>UI_GAME_BEST_TV</key>
+	<string>best_en.png</string>
+	<key>UI_GAME_CURRENT_TV</key>
+	<string>current_en.png</string>
+	<key>UI_DEATH_PANEL</key>
+	<string>panel_gameover_en.png</string>
+	<key>UI_DEATH_BTN_REVICE</key>
+	<string>btn_revive_en.png</string>
+	<key>UI_ROLE_BTN_LOCK_NORMAL</key>
+	<string>btn_unlock_normal_en.png</string>
+	<key>UI_ROLE_BTN_LOCK_PRESSED</key>
+	<string>btn_unlock_pressed_en.png</string>
+	<key>UI_GROUND_BTN_FAILED_BACK</key>
+	<string>btn_challenge_failed_back_en.png</string>
+	<key>UI_GROUND_BTN_SUC_BACK</key>
+	<string>btn_challenge_success_back_en.png</string>
+	<key>UI_GROUND_BTN_FAILED_HELP</key>
+	<string>btn_challenge_failed_help_en.png</string>
+	<key>UI_GROUND_AWARD_TV</key>
+	<string>challengeaward_en.png</string>
+	<key>UI_GROUND_FAILED_PANEL</key>
+	<string>panel_challenge_failed_en.png</string>
+	<key>UI_GROUND_HELP_PANEL</key>
+	<string>panel_challenge_helpok_en.png</string>
+	<key>UI_GROUND_SUC_PANEL</key>
+	<string>panel_challenge_success_en.png</string>
 </dict>
 </plist>

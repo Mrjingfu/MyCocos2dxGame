@@ -18,6 +18,9 @@
 #include "GameConst.h"
 #include "UtilityHelper.h"
 #include "PausePopUpUI.h"
+#include "GroundRecordPopUpUI.h"
+#include "GroundLosePopUpUI.h"
+#include "GroundWinPopUpUI.h"
 USING_NS_CC;
 
 UIManager* g_pPopManagerInstance = nullptr;
@@ -196,6 +199,23 @@ BasePopUpUI* UIManager::createPopUp(BasePopUpUI::PopUp_UI popid)
             popUp->setNotBlank(true);
         }
             break;
+        case BasePopUpUI::POPUP_GROUND_LOSE:
+        {
+            popUp = GroundLosePopUpUI::create();
+            popUp->setNotBlank(true);
+        }
+            break;
+        case BasePopUpUI::POPUP_GROUND_WIN:
+        {
+            popUp = GroundWinPopUpUI::create();
+            popUp->setNotBlank(true);
+        }
+            break;
+        case BasePopUpUI::POPUP_GROUND_RECOVER:
+        {
+            popUp = GroundRecordPopUpUI::create();
+            popUp->setNotBlank(true);
+        }
         default:
             break;
     }

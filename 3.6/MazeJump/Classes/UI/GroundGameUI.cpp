@@ -8,6 +8,9 @@
 #include "GroundGameUI.h"
 #include "GameController.h"
 #include "GameConst.h"
+#include "UtilityHelper.h"
+#include "UIManager.h"
+#include "storage/local-storage/LocalStorage.h"
 USING_NS_CC;
 
 GroundGameUI* GroundGameUI::create()
@@ -50,45 +53,44 @@ bool GroundGameUI::init()
     float scale = size.width /640.f;
     
     
-    cocos2d::ui::Button* button = cocos2d::ui::Button::create("button_retry_up.png",
-                                                            "button_retry_down.png");
-    button->setScale(scale);
-    button->setPosition(Vec2(size.width * 0.8f, size.height * 0.8f));
-    button->setPressedActionEnabled(true);
-    button->addClickEventListener([=](Ref* sender){
-        
-        GameController::getInstance()->switchToRainbowRun();
-        
-    });
-    addChild(button);
-    
-    cocos2d::ui::Button* promptBtn = cocos2d::ui::Button::create("button_retry_up.png",
-                                                              "button_retry_down.png");
-    promptBtn->setPosition(Vec2(size.width * 0.5f, size.height * 0.8f));
-    promptBtn->setTitleText("教程");
-    promptBtn->setPressedActionEnabled(true);
-    promptBtn->addClickEventListener([=](Ref* sender){
-        
-        
-        GameController::getInstance()->createMap(true,GameController::getInstance()->getCurrentLevel());
-        
-    });
-    promptBtn->setScale(scale);
-    addChild(promptBtn);
+    ui::ImageView* awardImg = ui::ImageView::create(UtilityHelper::getLocalString("UI_GROUND_AWARD_TV"));
+    awardImg->setScale(scale);
+    awardImg->setPosition(Vec2(size.width*0.5, size.height*0.15));
+    addChild(awardImg);
   
+    Label* goldRewardTv = Label::createWithBMFont(UtilityHelper::getLocalString("FONT_NUMBER"),Value(Value(localStorageGetItem(USER_GOLD_NUM)).asInt()).asString());
+    goldRewardTv->setAnchorPoint(Vec2(1, 0.5));
+    goldRewardTv->setPosition(Vec2(size.width*0.6, size.height*0.16));
+    goldRewardTv->setScale(scale*0.5);
+    goldRewardTv->setHorizontalAlignment(TextHAlignment::RIGHT);
+   addChild(goldRewardTv);
     
+    Label* heartRewardTv = Label::createWithBMFont(UtilityHelper::getLocalString("FONT_NUMBER"),Value(Value(localStorageGetItem(USER_GOLD_NUM)).asInt()).asString());
+    heartRewardTv->setAnchorPoint(Vec2(1, 0.5));
+    heartRewardTv->setPosition(Vec2(size.width*0.6, size.height*0.07));
+    heartRewardTv->setScale(scale*0.5);
+    heartRewardTv->setHorizontalAlignment(TextHAlignment::RIGHT);
+   addChild(heartRewardTv);
 
     return true;
 }
 void GroundGameUI::onMazeJumpWin(cocos2d::EventCustom *sender)
 {
     CCLOG("onMazeJumpWin");
+    UIManager::getInstance()->addPopUp(BasePopUpUI::POPUP_GROUND_WIN);
+    UIManager::getInstance()->showPopUp();
+    
 }
 void GroundGameUI::onMazeJumpLose(cocos2d::EventCustom *sender)
 {
     CCLOG("onMazeJumpLose");
+    UIManager::getInstance()->addPopUp(BasePopUpUI::POPUP_GROUND_LOSE);
+    UIManager::getInstance()->showPopUp();
 }
 void GroundGameUI::onGroundRecordEnd(cocos2d::EventCustom *sender)
 {
     CCLOG("onGroundRecordEnd");
+    UIManager::getInstance()->addPopUp(BasePopUpUI::POPUP_GROUND_RECOVER);
+    UIManager::getInstance()->showPopUp();
 }
+
