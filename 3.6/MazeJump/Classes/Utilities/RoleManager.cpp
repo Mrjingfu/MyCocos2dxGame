@@ -33,6 +33,7 @@ bool RoleManager::init()
 
     std::string userRoleStr = localStorageGetItem(USER_ROLE_DATA);
     if (userRoleStr.length() <=0) {
+         CCLOG("roleStr:%s",roleStr.c_str());
         localStorageSetItem(USER_ROLE_DATA, roleStr);
     }else{
         //对比
@@ -220,6 +221,7 @@ ValueMap RoleManager::parseValueMap(const std::string &str)
         const rapidjson::Value& roleArrValue = doc["roles"];
         if (roleArrValue.IsArray()) {
                ValueMap lvalueMap;
+            CCLOG("roleArrValue:%d",roleArrValue.Size());
             for (int i =0 ; i<roleArrValue.Size(); i++) {
                 const rapidjson::Value& roleValue = roleArrValue[i];
                 if (roleValue.IsObject())

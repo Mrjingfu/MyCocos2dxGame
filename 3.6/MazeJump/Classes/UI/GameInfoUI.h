@@ -34,8 +34,8 @@ public:
     
 private:
     
-    void onRunnerLose(cocos2d::EventCustom* sender);
-    void onDelayTimeRunnerLose();
+    void onRunnerLoseChangeView(cocos2d::EventCustom* sender);
+
     void onGoldChange(cocos2d::EventCustom* sender);
     void onHeartChange(cocos2d::EventCustom* sender);
     void onMaxDistanceChange(cocos2d::EventCustom* sender);

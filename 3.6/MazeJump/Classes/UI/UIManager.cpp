@@ -21,6 +21,7 @@
 #include "GroundRecordPopUpUI.h"
 #include "GroundLosePopUpUI.h"
 #include "GroundWinPopUpUI.h"
+#include "AudioEngine.h"
 USING_NS_CC;
 
 UIManager* g_pPopManagerInstance = nullptr;
@@ -324,4 +325,7 @@ void UIManager::destory()
     }
 
 }
-
+void UIManager::playSound()
+{
+    cocos2d::experimental::AudioEngine::play2d("btnclick.wav", false, 5.0f);
+}

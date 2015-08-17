@@ -35,6 +35,8 @@ public:
     void destory();
     void removePopUp(bool isCallBack,BasePopUpUI* popUi);
 
+    void playSound();
+    
     BasePopUpUI* getPopUpUI(BasePopUpUI::PopUp_UI popid);
 private:
     

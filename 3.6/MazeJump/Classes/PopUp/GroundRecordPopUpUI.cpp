@@ -64,7 +64,7 @@ bool GroundRecordPopUpUI::init()
 }
 void GroundRecordPopUpUI::onBack(cocos2d::Ref *ref)
 {
-    
+     UIManager::getInstance()->playSound();
     UIManager::getInstance()->hidePopUp(true,CC_CALLBACK_0(GroundRecordPopUpUI::onHidePopUpEnd, this));
 }
 void GroundRecordPopUpUI::onHidePopUpEnd()

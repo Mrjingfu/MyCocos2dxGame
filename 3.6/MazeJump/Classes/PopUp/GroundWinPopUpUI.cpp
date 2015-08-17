@@ -53,14 +53,26 @@ bool GroundWinPopUpUI::init()
     m_popupBgLayer->setScale(scale);
     m_dialogLayer->addChild(m_popupBgLayer);
     
-    Label* goldRewardTv = Label::createWithBMFont(UtilityHelper::getLocalString("FONT_NUMBER"),"1000");
+    ui::ImageView* glodView = ui::ImageView::create("ui_gold.png");
+    glodView->setPosition(Vec2(size.width*0.3,size.height*0.56));
+    glodView->setScale(scale);
+    m_dialogLayer->addChild(glodView);
+    
+    ui::ImageView* heartView = ui::ImageView::create("ui_heart.png");
+    heartView->setPosition(Vec2(size.width*0.3,size.height*0.48));
+    heartView->setScale(scale);
+    m_dialogLayer->addChild(heartView);
+    
+    
+    
+    Label* goldRewardTv = Label::createWithBMFont(UtilityHelper::getLocalString("FONT_NUMBER"),Value(GameController::getInstance()->getCurrentGoldReward()).asString());
     goldRewardTv->setAnchorPoint(Vec2(1, 0.5));
-    goldRewardTv->setPosition(Vec2(size.width*0.7, size.height*0.58));
+    goldRewardTv->setPosition(Vec2(size.width*0.7, size.height*0.56));
     goldRewardTv->setScale(scale*0.5);
     goldRewardTv->setHorizontalAlignment(TextHAlignment::RIGHT);
     m_dialogLayer->addChild(goldRewardTv);
     
-    Label* heartRewardTv = Label::createWithBMFont(UtilityHelper::getLocalString("FONT_NUMBER"),"190");
+    Label* heartRewardTv = Label::createWithBMFont(UtilityHelper::getLocalString("FONT_NUMBER"),Value(GameController::getInstance()->getCurrentHeartReward()).asString());
     heartRewardTv->setAnchorPoint(Vec2(1, 0.5));
     heartRewardTv->setPosition(Vec2(size.width*0.7, size.height*0.48));
     heartRewardTv->setScale(scale*0.5);
@@ -69,7 +81,7 @@ bool GroundWinPopUpUI::init()
     
     ui::Button* reviveBtn = ui::Button::create(UtilityHelper::getLocalString("UI_GROUND_BTN_SUC_BACK"));
     reviveBtn->setScale(scale);
-    reviveBtn->setPosition(Vec2(size.width*0.5,size.height*0.38));
+    reviveBtn->setPosition(Vec2(size.width*0.5,size.height*0.4));
     m_dialogLayer->addChild(reviveBtn);
     
     reviveBtn->addClickEventListener(CC_CALLBACK_1(GroundWinPopUpUI::onBack, this));
@@ -79,7 +91,7 @@ bool GroundWinPopUpUI::init()
 }
 void GroundWinPopUpUI::onBack(cocos2d::Ref *ref)
 {
-  
+     UIManager::getInstance()->playSound();
     UIManager::getInstance()->hidePopUp(true,CC_CALLBACK_0(GroundWinPopUpUI::onHidePopUpEnd, this));
 }
 void GroundWinPopUpUI::onHidePopUpEnd()

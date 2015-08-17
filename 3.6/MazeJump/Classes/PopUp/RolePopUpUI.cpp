@@ -124,13 +124,13 @@ bool RolePopUpUI::init()
     
     ui::ListView* uiListView = ui::ListView::create();
     uiListView->setAnchorPoint(Vec2(0.5,0.5));
-    uiListView->setContentSize(m_popupBgLayer->getContentSize()*scale);
-    uiListView->setPosition(Vec2(m_popupBgLayer->getContentSize().width*0.5*scale+20*scale, size.height*0.7));
+    uiListView->setContentSize(Size(m_popupBgLayer->getContentSize().width*scale-20*scale, m_popupBgLayer->getContentSize().height*scale));
+    uiListView->setPosition(Vec2(m_popupBgLayer->getContentSize().width*0.5*scale+10*scale, size.height*0.7));
     uiListView->setDirection(ui::ScrollView::Direction::HORIZONTAL);
     uiListView->setTouchEnabled(true);
     uiListView->setBounceEnabled(true);
     uiListView->setBackGroundImageScale9Enabled(true);
-    uiListView->setItemsMargin(25*scale);
+    uiListView->setItemsMargin(20*scale);
     uiListView->setGravity(cocos2d::ui::ListView::Gravity::CENTER_VERTICAL);
     uiListView->addEventListener((ui::ListView::ccListViewCallback)CC_CALLBACK_2(RolePopUpUI::selectedItemEvent, this));
     m_dialogLayer->addChild(uiListView);
@@ -182,7 +182,9 @@ void RolePopUpUI::selectedItemEvent(cocos2d::Ref *sender, cocos2d::ui::ListView:
     if (m_isNowShowLockBtn) {
         return;
     }
+    
     if (type == cocos2d::ui::ListView::EventType::ON_SELECTED_ITEM_END) {
+        UIManager::getInstance()->playSound();
         cocos2d::ui::ListView* listView = static_cast<cocos2d::ui::ListView*>(sender);
         RoleItem* item = static_cast<RoleItem*>(listView->getItem(listView->getCurSelectedIndex()));
         if (m_currentRoleItem) {
@@ -206,6 +208,7 @@ void RolePopUpUI::selectedItemEvent(cocos2d::Ref *sender, cocos2d::ui::ListView:
 }
 void RolePopUpUI::showLockButton(int price)
 {
+    
     if (m_lockTv) {
         m_lockTv->setString(Value(price).asString());
     }
@@ -250,10 +253,12 @@ void RolePopUpUI::onHideShowLockCall(int price)
 }
 void RolePopUpUI::onBack(cocos2d::Ref *Ref)
 {
+    UIManager::getInstance()->playSound();
     UIManager::getInstance()->hidePopUp();
 }
 void RolePopUpUI::onLock(cocos2d::Ref *ref)
 {
+     UIManager::getInstance()->playSound();
     if (m_currentRoleItem) {
         
         int goldNum = Value(localStorageGetItem(USER_GOLD_NUM)).asInt();
@@ -262,6 +267,8 @@ void RolePopUpUI::onLock(cocos2d::Ref *ref)
             m_currentRoleItem->setLock(true);
             CCLOG("currentRoleId:%s isLock:%d",m_currentRoleItem->getRoleId().c_str(),m_currentRoleItem->getIsLock());
             RoleManager::getInstance()->updateRoleLock(m_currentRoleItem->getRoleId(), m_currentRoleItem->getIsLock());
+            hideLockButton();
+            
         }else
         {
             UIManager::getInstance()->addPopUp(BasePopUpUI::POPUP_SHOP);

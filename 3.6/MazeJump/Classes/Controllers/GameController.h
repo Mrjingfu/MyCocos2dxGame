@@ -26,6 +26,8 @@ public:
     int getCurrentLevel(){return m_currentLevel;}
     int getDifficultLevel(){return m_difficultLevel;}
     bool createMap(bool _playing,int level);
+    int  getCurrentGoldReward();
+    int  getCurrentHeartReward();
 private:
     void switchToMainScene();
 private:

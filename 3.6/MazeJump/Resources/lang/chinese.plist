@@ -46,6 +46,12 @@
 	<string>best_cn.png</string>
 	<key>UI_GAME_CURRENT_TV</key>
 	<string>current_cn.png</string>
+	<key>UI_GAME_HANDLE_TIPS</key>
+	<string>jumptip_runner_cn.png</string>
+	<key>UI_GAME_MODE_TIPS</key>
+	<string>rainbowmodetip_cn.png</string>
+	<key>UI_GAME_PAUSE_TIPS</key>
+	<string>pausetip_cn.png</string>
 	<key>UI_DEATH_PANEL</key>
 	<string>panel_gameover_cn.png</string>
 	<key>UI_DEATH_BTN_REVICE</key>
@@ -68,5 +74,13 @@
 	<string>panel_challenge_helpok_cn.png</string>
 	<key>UI_GROUND_SUC_PANEL</key>
 	<string>panel_challenge_success_cn.png</string>
+	<key>UI_GROUND_HANDLE_TIPS</key>
+	<string>jumptip_mazejump_cn.png</string>
+	<key>UI_GROUND_RULE_TIPS</key>
+	<string>rulestip_cn.png</string>
+	<key>UI_GAMEINFO_TIPS</key>
+	<string>gameinfotip_cn.png</string>
+	<key>UI_HELP_TIPS</key>
+	<string>helptip_cn.png</string>
 </dict>
 </plist>

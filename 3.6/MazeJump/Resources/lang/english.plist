@@ -38,6 +38,8 @@
 	<string>btn_start_continue_en.png</string>
 	<key>UI_START_PANEL</key>
 	<string>panel_startgame_en.png</string>
+	<key>UI_START_DISTANCE</key>
+	<string>ui_disttext_en.png</string>
 	<key>UI_PASUE_PANEL</key>
 	<string>panel_pause_en.png</string>
 	<key>UI_SHOP_PANEL</key>
@@ -46,6 +48,12 @@
 	<string>best_en.png</string>
 	<key>UI_GAME_CURRENT_TV</key>
 	<string>current_en.png</string>
+	<key>UI_GAME_HANDLE_TIPS</key>
+	<string>jumptip_runner_en.png</string>
+	<key>UI_GAME_MODE_TIPS</key>
+	<string>rainbowmodetip_en.png</string>
+	<key>UI_GAME_PAUSE_TIPS</key>
+	<string>pausetip_en.png</string>
 	<key>UI_DEATH_PANEL</key>
 	<string>panel_gameover_en.png</string>
 	<key>UI_DEATH_BTN_REVICE</key>
@@ -68,5 +76,13 @@
 	<string>panel_challenge_helpok_en.png</string>
 	<key>UI_GROUND_SUC_PANEL</key>
 	<string>panel_challenge_success_en.png</string>
+	<key>UI_GROUND_HANDLE_TIPS</key>
+	<string>jumptip_mazejump_en.png</string>
+	<key>UI_GROUND_RULE_TIPS</key>
+	<string>rulestip_en.png</string>
+	<key>UI_GAMEINFO_TIPS</key>
+	<string>gameinfotip_en.png</string>
+	<key>UI_HELP_TIPS</key>
+	<string>helptip_en.png</string>
 </dict>
 </plist>

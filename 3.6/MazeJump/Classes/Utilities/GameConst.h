@@ -40,6 +40,7 @@ static const std::string EVENT_HEART_CHANGE = "HEART_CHANGE";
 static const std::string EVENT_MAX_DISTANCE_CHANGE = "MAX_DISTANCE_CHANGE";
 static const std::string EVENT_RAINBOW_VALUE_CHANGE = "RAINBOW_VALUE_CHANGE";
 static const std::string EVENT_RUNNER_LOSE = "RUNNER_LOSE";
+static const std::string EVENT_RUNNER_LOSE_CHANGE_VIEW = "RUNNER_LOSE_CHANGE_VIEW";
 static const std::string EVENT_RUNNER_RECOVER_PAUSE = "RUNNER_RECOVER_PAUSE";
 static const std::string EVENT_RUNNER_PAUSE_RESUME = "RUNNER_PAUSE_RESUME";
 static const std::string EVENT_MAZEJUMP_WIN = "MAZEJUMP_WIN";

@@ -174,3 +174,11 @@ void GameController::switchToMainScene()
 {
     Director::getInstance()->popScene();
 }
+int GameController::getCurrentGoldReward()
+{
+    return m_currentLevel*m_currentLevel+5;
+}
+int GameController::getCurrentHeartReward()
+{
+    return  1;
+}

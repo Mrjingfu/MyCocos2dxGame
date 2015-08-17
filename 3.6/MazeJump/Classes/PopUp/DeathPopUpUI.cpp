@@ -81,6 +81,7 @@ bool DeathPopUpUI::init()
 }
 void DeathPopUpUI::onHome(cocos2d::Ref *ref)
 {
+     UIManager::getInstance()->playSound();
     UIManager::getInstance()->hidePopUp(false);
     auto scene = MenuScene::createScene();
     Director::getInstance()->replaceScene(scene);
@@ -88,6 +89,7 @@ void DeathPopUpUI::onHome(cocos2d::Ref *ref)
 }
 void DeathPopUpUI::onShop(cocos2d::Ref *ref)
 {
+     UIManager::getInstance()->playSound();
     UIManager::getInstance()->addPopUp(BasePopUpUI::POPUP_SHOP);
     UIManager::getInstance()->showPopUp(false);
 }
@@ -101,7 +103,7 @@ void DeathPopUpUI::onAgiain(cocos2d::Ref *ref)
 void DeathPopUpUI::onRevive(cocos2d::Ref *ref)
 {
    
-    
+     UIManager::getInstance()->playSound();
     int heartNum = Value(localStorageGetItem(USER_HEART_NUM)).asInt();
     if (heartNum >=1) {
          UIManager::getInstance()->hidePopUp(false);

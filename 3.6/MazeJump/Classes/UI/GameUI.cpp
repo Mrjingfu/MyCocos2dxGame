@@ -29,7 +29,13 @@ GameUI* GameUI::create()
 GameUI::GameUI()
 {
     conut = 3;
+    m_maskLayerBg = nullptr;
+    resmueLabel = nullptr;
+    pauseImg = nullptr;
+    helpLayer = nullptr;
     isRecover = false;
+    isShwoHelp= false;
+    isDead = false;
 }
 GameUI::~GameUI()
 {
@@ -39,12 +45,13 @@ void GameUI::onEnter()
     Layer::onEnter();
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_RUNNER_RECOVER_PAUSE, std::bind(&GameUI::onRecoverPause, this, std::placeholders::_1));
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_RUNNER_PAUSE_RESUME, std::bind(&GameUI::onEventSetResume, this, std::placeholders::_1));
-
+    
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_RUNNER_LOSE, std::bind(&GameUI::onRunnerLose, this, std::placeholders::_1));
 }
 void GameUI::onExit()
 {
     Layer::onExit();
-
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_RUNNER_LOSE);
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_RUNNER_RECOVER_PAUSE);
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_RUNNER_PAUSE_RESUME);
    
@@ -82,6 +89,10 @@ bool GameUI::init()
     skillBtn->setPosition(Vec2(size.width * 0.1f, size.height * 0.05f));
     addChild(skillBtn);
     
+    ui::Button* helpBtn = ui::Button::create("question.png");
+    helpBtn->setPosition(Vec2(size.width*0.93, size.height*0.05));
+    helpBtn->setScale(scale);
+    addChild(helpBtn);
     
     m_maskLayerBg = cocos2d::LayerColor::create(cocos2d::Color4B(0, 0, 0, 150));
     m_maskLayerBg->setContentSize(size);
@@ -99,7 +110,80 @@ bool GameUI::init()
     resmueLabel->setPosition(Vec2(size.width*0.5, size.height*0.5));
     resmueLabel->setVisible(false);
     addChild(resmueLabel);
+    
+ 
+    
+    helpLayer = cocos2d::LayerColor::create(cocos2d::Color4B(0, 0, 0, 150));
+    helpLayer->setContentSize(size);
+    addChild(helpLayer);
+    
+    auto helplistener = EventListenerTouchOneByOne::create();
+    helplistener->setSwallowTouches(true);
+    helplistener->onTouchBegan =  [this](Touch * ,Event *)
+    {
+        if (isShwoHelp) {
+            UIManager::getInstance()->playSound();
+            isShwoHelp = false;
+            helpLayer->setVisible(false);
+            return true;
+        }else{
+            return false;
+        }
+        
+    };
+    
+    _eventDispatcher->addEventListenerWithSceneGraphPriority(helplistener,helpLayer);
+    
+
+    
+    cocos2d::ui::ImageView* handleTipsImg = ui::ImageView::create(UtilityHelper::getLocalString("UI_GAME_HANDLE_TIPS"));
+    handleTipsImg->setPosition(Vec2(size.width*0.5, size.height*0.5));
+    handleTipsImg->setScale(scale);
+    helpLayer->addChild(handleTipsImg);
+    
+    cocos2d::ui::ImageView* pauseTipsImg = ui::ImageView::create(UtilityHelper::getLocalString("UI_GAME_PAUSE_TIPS"));
+    pauseTipsImg->setPosition(Vec2(size.width*0.8, size.height*0.8));
+    pauseTipsImg->setScale(scale);
+    helpLayer->addChild(pauseTipsImg);
+    
+    cocos2d::ui::ImageView* infoTipsImg = ui::ImageView::create(UtilityHelper::getLocalString("UI_GAMEINFO_TIPS"));
+    infoTipsImg->setPosition(Vec2(size.width*0.18, size.height*0.8));
+    infoTipsImg->setScale(scale);
+    helpLayer->addChild(infoTipsImg);
+    
+    cocos2d::ui::ImageView* modeTipsImg = ui::ImageView::create(UtilityHelper::getLocalString("UI_GAME_MODE_TIPS"));
+    modeTipsImg->setPosition(Vec2(size.width*0.23, size.height*0.15));
+    modeTipsImg->setScale(scale);
+    helpLayer->addChild(modeTipsImg);
+    
+    cocos2d::ui::ImageView* helpTipsImg = ui::ImageView::create(UtilityHelper::getLocalString("UI_HELP_TIPS"));
+    helpTipsImg->setPosition(Vec2(size.width*0.85, size.height*0.15));
+    helpTipsImg->setScale(scale);
+    helpLayer->addChild(helpTipsImg);
+    
+    helpBtn->addClickEventListener(CC_CALLBACK_1(GameUI::onHelp, this));
+    
+    
+    int maxLevel = Value(localStorageGetItem(USER_MAX_LEVEL)).asInt();
+    if (maxLevel<=0) {
+        helpLayer->setVisible(true);
+        isShwoHelp= true;
+    }else
+    {
+        helpLayer ->setVisible(false);
+    }
+    
+
     return true;
+}
+void GameUI::onHelp(cocos2d::Ref *ref)
+{
+     UIManager::getInstance()->playSound();
+    if (!isShwoHelp) {
+        helpLayer->setVisible(true);
+        isShwoHelp = true;
+    }
+    
 }
 bool GameUI::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event)
 {
@@ -112,10 +196,13 @@ bool GameUI::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event)
 }
 void GameUI::onPause(cocos2d::Ref *ref)
 {
+    
+    if (isDead)
+        return;
     isRecover = true;
     UIManager::getInstance()->addPopUp(BasePopUpUI::POPUP_PAUSE);
     UIManager::getInstance()->showPopUp(true,BasePopUpUI::POPUP_HORIZONTAL,CC_CALLBACK_0(GameUI::setPause, this));
-
+     UIManager::getInstance()->playSound();
 }
 
 void GameUI::setPause()
@@ -165,4 +252,19 @@ void GameUI::onResumeAn(float dt)
             unschedule(schedule_selector(GameUI::onResumeAn));
         
     }
+}
+void GameUI::onRunnerLose(cocos2d::EventCustom* sender)
+{
+    isDead = true;
+    runAction(Sequence::createWithTwoActions(DelayTime::create(0.3), CCCallFunc::create(CC_CALLBACK_0(GameUI::onDelayTimeRunnerLose, this))));
+}
+void GameUI::onDelayTimeRunnerLose()
+{
+    Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_RUNNER_LOSE_CHANGE_VIEW);
+    UIManager::getInstance()->addPopUp(BasePopUpUI::POPUP_DEATH);
+    UIManager::getInstance()->showPopUp(true,BasePopUpUI::POPUP_HORIZONTAL,CC_CALLBACK_0(GameUI::onShowLosePopUpEnd, this));
+}
+void GameUI::onShowLosePopUpEnd()
+{
+    isDead = false;
 }

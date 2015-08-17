@@ -50,9 +50,9 @@ bool GameInfoUI::init()
     glodView->setScale(scale);
     addChild(glodView);
     
-    goldTv = Label::createWithBMFont(UtilityHelper::getLocalString("FONT_NUMBER"),Value(Value(localStorageGetItem(USER_GOLD_NUM)).asInt()).asString());
-    goldTv->setAnchorPoint(Vec2(0, 0.5));
-    goldTv->setPosition(Vec2(100*scale,size.height*0.95 ));
+    goldTv = Label::createWithBMFont(UtilityHelper::getLocalString("FONT_NUMBER"),Value(Value(localStorageGetItem(USER_GOLD_NUM)).asInt()).asString(),TextHAlignment::RIGHT);
+    goldTv->setAnchorPoint(Vec2::ANCHOR_MIDDLE_RIGHT);
+    goldTv->setPosition(Vec2(size.width*0.3,size.height*0.95 ));
     goldTv->setScale(scale*0.5);
     addChild(goldTv);
     
@@ -62,9 +62,9 @@ bool GameInfoUI::init()
     heartView->setScale(scale);
     addChild(heartView);
     
-    heartTv = Label::createWithBMFont(UtilityHelper::getLocalString("FONT_NUMBER"),Value(Value(localStorageGetItem(USER_HEART_NUM)).asInt()).asString());
-    heartTv->setAnchorPoint(Vec2(0, 0.5));
-    heartTv->setPosition(Vec2(100*scale, size.height*0.95-glodView->getContentSize().height*scale - 5*scale));
+    heartTv = Label::createWithBMFont(UtilityHelper::getLocalString("FONT_NUMBER"),Value(Value(localStorageGetItem(USER_HEART_NUM)).asInt()).asString(),TextHAlignment::RIGHT);
+    heartTv->setAnchorPoint(Vec2::ANCHOR_MIDDLE_RIGHT);
+    heartTv->setPosition(Vec2(size.width*0.3, size.height*0.95-glodView->getContentSize().height*scale - 5*scale));
     heartTv->setScale(scale*0.5);
     addChild(heartTv);
     
@@ -83,7 +83,7 @@ bool GameInfoUI::init()
     maxLayer->addChild(bestImg);
     
     
-     m_maxLevelTv = Label::createWithBMFont(UtilityHelper::getLocalString("FONT_NUMBER"),Value(Value(localStorageGetItem(USER_MAX_LEVEL)).asInt()).asString());
+     m_maxLevelTv =Label::createWithBMFont(UtilityHelper::getLocalString("FONT_NUMBER"),Value(Value(localStorageGetItem(USER_MAX_LEVEL)).asInt()).asString(),TextHAlignment::RIGHT);
     m_maxLevelTv->setPosition(Vec2(size.width*0.72, size.height*0.948));
     m_maxLevelTv->setScale(scale*0.5);
     m_maxLevelTv->setAnchorPoint(Vec2(1, 0.5));
@@ -96,7 +96,7 @@ bool GameInfoUI::init()
     currentLayer->addChild(currentImg);
     
     
-     m_CurrentLevelTv = Label::createWithBMFont(UtilityHelper::getLocalString("FONT_NUMBER"),Value(Value(localStorageGetItem(USER_LAST_LEVEL)).asInt()).asString());
+    m_CurrentLevelTv = Label::createWithBMFont(UtilityHelper::getLocalString("FONT_NUMBER"),Value(Value(localStorageGetItem(USER_LAST_LEVEL)).asInt()).asString());
     m_CurrentLevelTv->setPosition(Vec2(size.width*0.72, size.height*0.898));
     m_CurrentLevelTv->setScale(scale*0.5);
     m_CurrentLevelTv->setAnchorPoint(Vec2(1, 0.5));
@@ -118,7 +118,7 @@ void GameInfoUI::setCurrentLayerVisible(bool isVisible)
  void GameInfoUI::onEnter()
 {
     Layer::onEnter();
-    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_RUNNER_LOSE, std::bind(&GameInfoUI::onRunnerLose, this, std::placeholders::_1));
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_RUNNER_LOSE_CHANGE_VIEW, std::bind(&GameInfoUI::onRunnerLoseChangeView, this, std::placeholders::_1));
 
         Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_MAX_DISTANCE_CHANGE, std::bind(&GameInfoUI::onMaxDistanceChange, this, std::placeholders::_1));
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_GOLD_CHANGE, std::bind(&GameInfoUI::onGoldChange, this, std::placeholders::_1));
@@ -129,26 +129,21 @@ void GameInfoUI::setCurrentLayerVisible(bool isVisible)
  void GameInfoUI::onExit()
 {
     Layer::onExit();
-    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_RUNNER_LOSE);
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_RUNNER_LOSE_CHANGE_VIEW);
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_MAX_DISTANCE_CHANGE);
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_GOLD_CHANGE);
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_HEART_CHANGE);
     
 }
 
-void GameInfoUI::onRunnerLose(cocos2d::EventCustom* sender)
+void GameInfoUI::onRunnerLoseChangeView(cocos2d::EventCustom* sender)
 {
     CCLOG("GAME OVER");
     if (maxLayer&&m_maxLevelTv) {
         maxLayer->setVisible(true);
         currentLayer->setPosition(Vec2::ZERO);
-        m_maxLevelTv->setString(localStorageGetItem(USER_MAX_LEVEL));
+        m_maxLevelTv->setString(Value(Value(localStorageGetItem(USER_MAX_LEVEL)).asInt()).asString());
     }
-    UIManager::getInstance()->addPopUp(BasePopUpUI::POPUP_DEATH);
-    UIManager::getInstance()->showPopUp(true,BasePopUpUI::POPUP_HORIZONTAL);
-}
-void GameInfoUI::onDelayTimeRunnerLose()
-{
 
 }
 
