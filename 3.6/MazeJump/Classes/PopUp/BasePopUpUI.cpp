@@ -31,7 +31,7 @@ BasePopUpUI::~BasePopUpUI()
 void BasePopUpUI::onEnter()
 {
     Layer::onEnter();
-    Size size = Director::getInstance()->getVisibleSize();
+    cocos2d::Size size = Director::getInstance()->getVisibleSize();
     m_maskLayer = cocos2d::Layer::create();
     addChild(m_maskLayer,LAYER_MASK);
     
@@ -55,7 +55,7 @@ bool BasePopUpUI::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event)
 {
     if (m_isShowDialog) {
         
-        Point touchBegin = touch->getLocation();
+        cocos2d::Point touchBegin = touch->getLocation();
         if (m_popupBgLayer && m_popupBgLayer->getBoundingBox().containsPoint(touchBegin)) {
             return true;
         }
@@ -73,7 +73,7 @@ void BasePopUpUI::onExit()
 
 void BasePopUpUI::showPopUp(bool isPlayAn,cocos2d::Vec2 vc,Popup_Show popupShow,const std::function<void()> &endfunc)
 {
-    Size size = Director::getInstance()->getVisibleSize();
+    cocos2d::Size size = Director::getInstance()->getVisibleSize();
     m_isShowDialog =true;
     m_pt = vc;
     m_popupShow = popupShow;
@@ -109,7 +109,7 @@ void BasePopUpUI::showPopUp(bool isPlayAn,cocos2d::Vec2 vc,Popup_Show popupShow,
 }
 void BasePopUpUI::hidePopUp(bool isPlayAn,const std::function<void()> &endfunc )
 {
-     Size size = Director::getInstance()->getVisibleSize();
+    cocos2d::Size size = Director::getInstance()->getVisibleSize();
     if (!isPlayAn) {
 
         onHidePopUpEnd();

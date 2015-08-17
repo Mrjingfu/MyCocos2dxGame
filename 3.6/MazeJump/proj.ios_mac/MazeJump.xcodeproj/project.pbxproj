@@ -113,6 +113,7 @@
 		5542EEC41B395D3600CD9496 /* GameScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5542EEBA1B3943C600CD9496 /* GameScene.cpp */; };
 		554DD3A61B817B070069E4C5 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 554DD3A51B817B070069E4C5 /* GameKit.framework */; };
 		554DD3A81B817B100069E4C5 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 554DD3A71B817B100069E4C5 /* StoreKit.framework */; };
+		554DD3B11B8181D70069E4C5 /* NCSGameCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 554DD3B01B8181D70069E4C5 /* NCSGameCenter.m */; };
 		5560D7161B7CAAA4004DDD67 /* comic_sans_ms.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 5560D7121B7CAAA4004DDD67 /* comic_sans_ms.fnt */; };
 		5560D7171B7CAAA4004DDD67 /* comic_sans_ms.png in Resources */ = {isa = PBXBuildFile; fileRef = 5560D7131B7CAAA4004DDD67 /* comic_sans_ms.png */; };
 		5560D7271B7CABA5004DDD67 /* DFWaWaW5-GB.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 5560D7251B7CABA5004DDD67 /* DFWaWaW5-GB.fnt */; };
@@ -280,6 +281,10 @@
 		55F3B9901B4528030090BE1A /* colorlist.png in Resources */ = {isa = PBXBuildFile; fileRef = 55F3B98E1B4527F30090BE1A /* colorlist.png */; };
 		55F3B99C1B45808B0090BE1A /* UtilityHelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55F3B99A1B45808B0090BE1A /* UtilityHelper.cpp */; };
 		55F3B9A01B4591F20090BE1A /* UtilityHelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55F3B99A1B45808B0090BE1A /* UtilityHelper.cpp */; };
+		55F833F11B81C077001F1F6C /* achievement.plist in Resources */ = {isa = PBXBuildFile; fileRef = 55F833F01B81C077001F1F6C /* achievement.plist */; };
+		55F833F41B81CB8D001F1F6C /* GameCenterController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 55F833F21B81CB8D001F1F6C /* GameCenterController.mm */; };
+		55F833FD1B81EAD7001F1F6C /* RateThisAppDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 55F833FC1B81EAD7001F1F6C /* RateThisAppDialog.m */; };
+		55F834001B81ED18001F1F6C /* NativeBridge.mm in Sources */ = {isa = PBXBuildFile; fileRef = 55F833FE1B81ED18001F1F6C /* NativeBridge.mm */; };
 		8262943E1AAF051F00CB7CF7 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8262943D1AAF051F00CB7CF7 /* Security.framework */; };
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
 		BF1712471292920000B8313A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB412928DE900B8313A /* libz.dylib */; };
@@ -682,6 +687,8 @@
 		5542EEBB1B3943C600CD9496 /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameScene.h; sourceTree = "<group>"; };
 		554DD3A51B817B070069E4C5 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.4.sdk/System/Library/Frameworks/GameKit.framework; sourceTree = DEVELOPER_DIR; };
 		554DD3A71B817B100069E4C5 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.4.sdk/System/Library/Frameworks/StoreKit.framework; sourceTree = DEVELOPER_DIR; };
+		554DD3AF1B8181D70069E4C5 /* NCSGameCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NCSGameCenter.h; path = ios/NCSGameCenter.h; sourceTree = SOURCE_ROOT; };
+		554DD3B01B8181D70069E4C5 /* NCSGameCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NCSGameCenter.m; path = ios/NCSGameCenter.m; sourceTree = SOURCE_ROOT; };
 		5560D7121B7CAAA4004DDD67 /* comic_sans_ms.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = comic_sans_ms.fnt; sourceTree = "<group>"; };
 		5560D7131B7CAAA4004DDD67 /* comic_sans_ms.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = comic_sans_ms.png; sourceTree = "<group>"; };
 		5560D7251B7CABA5004DDD67 /* DFWaWaW5-GB.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "DFWaWaW5-GB.fnt"; sourceTree = "<group>"; };
@@ -785,6 +792,13 @@
 		55F3B98E1B4527F30090BE1A /* colorlist.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = colorlist.png; sourceTree = "<group>"; };
 		55F3B99A1B45808B0090BE1A /* UtilityHelper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UtilityHelper.cpp; sourceTree = "<group>"; };
 		55F3B99B1B45808B0090BE1A /* UtilityHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UtilityHelper.h; sourceTree = "<group>"; };
+		55F833F01B81C077001F1F6C /* achievement.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = achievement.plist; sourceTree = "<group>"; };
+		55F833F21B81CB8D001F1F6C /* GameCenterController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GameCenterController.mm; sourceTree = "<group>"; };
+		55F833F31B81CB8D001F1F6C /* GameCenterController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameCenterController.h; sourceTree = "<group>"; };
+		55F833FB1B81EAD7001F1F6C /* RateThisAppDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RateThisAppDialog.h; path = ios/RateThisAppDialog.h; sourceTree = SOURCE_ROOT; };
+		55F833FC1B81EAD7001F1F6C /* RateThisAppDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RateThisAppDialog.m; path = ios/RateThisAppDialog.m; sourceTree = SOURCE_ROOT; };
+		55F833FE1B81ED18001F1F6C /* NativeBridge.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = NativeBridge.mm; sourceTree = "<group>"; };
+		55F833FF1B81ED18001F1F6C /* NativeBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NativeBridge.h; sourceTree = "<group>"; };
 		8262943D1AAF051F00CB7CF7 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB412928DE900B8313A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
@@ -996,6 +1010,8 @@
 		080E96DDFE201D6D7F000001 /* ios */ = {
 			isa = PBXGroup;
 			children = (
+				55F833FB1B81EAD7001F1F6C /* RateThisAppDialog.h */,
+				55F833FC1B81EAD7001F1F6C /* RateThisAppDialog.m */,
 				5087E77117EB970100C73F5D /* Icons */,
 				503AE0FA17EB989F00D1A890 /* AppController.h */,
 				503AE0FB17EB989F00D1A890 /* AppController.mm */,
@@ -1003,6 +1019,8 @@
 				503AE0FD17EB989F00D1A890 /* Prefix.pch */,
 				503AE0FE17EB989F00D1A890 /* RootViewController.h */,
 				503AE0FF17EB989F00D1A890 /* RootViewController.mm */,
+				554DD3AF1B8181D70069E4C5 /* NCSGameCenter.h */,
+				554DD3B01B8181D70069E4C5 /* NCSGameCenter.m */,
 			);
 			name = ios;
 			path = Classes;
@@ -1168,6 +1186,8 @@
 				5535FC121B47B88D00197B27 /* GameController.h */,
 				5592AE0D1B5F2CFB0062AF08 /* RunController.cpp */,
 				5592AE0E1B5F2CFB0062AF08 /* RunController.h */,
+				55F833F21B81CB8D001F1F6C /* GameCenterController.mm */,
+				55F833F31B81CB8D001F1F6C /* GameCenterController.h */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1503,6 +1523,7 @@
 				55F3B98B1B4522360090BE1A /* 5x5-1.tmx */,
 				5582158A1B5C7EA000173C79 /* levels.plist */,
 				EC7C206E1B7F905100EECFBB /* roles.json */,
+				55F833F01B81C077001F1F6C /* achievement.plist */,
 			);
 			path = maps;
 			sourceTree = "<group>";
@@ -1523,6 +1544,8 @@
 				55F3B99B1B45808B0090BE1A /* UtilityHelper.h */,
 				5582158C1B5C7FA700173C79 /* LevelsManager.cpp */,
 				5582158D1B5C7FA700173C79 /* LevelsManager.h */,
+				55F833FE1B81ED18001F1F6C /* NativeBridge.mm */,
+				55F833FF1B81ED18001F1F6C /* NativeBridge.h */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -1910,6 +1933,7 @@
 				5513509B1B62749A00A99AD7 /* arrow.c3b in Resources */,
 				EC19EEDC1B80269400BC2827 /* panel_challenge_failed_cn.png in Resources */,
 				EC828CB31B7DF69300623B4B /* character_mask.png in Resources */,
+				55F833F11B81C077001F1F6C /* achievement.plist in Resources */,
 				EC7162651B7D906D0081833C /* btn_play_pressed.png in Resources */,
 				50EF629717ECD46A001EB2F8 /* Icon-58.png in Resources */,
 			);
@@ -2155,6 +2179,7 @@
 				5592AE091B5F2A0F0062AF08 /* MainScene.cpp in Sources */,
 				55781EF81B393D6F0070BB08 /* LogoScene.cpp in Sources */,
 				EC71625C1B7D8E2A0081833C /* PausePopUpUI.cpp in Sources */,
+				55F834001B81ED18001F1F6C /* NativeBridge.mm in Sources */,
 				EC363FAC1B78800D00EC4890 /* GameUI.cpp in Sources */,
 				5592AE461B5FF4AB0062AF08 /* PatternsManager.cpp in Sources */,
 				5582158E1B5C7FA700173C79 /* LevelsManager.cpp in Sources */,
@@ -2163,6 +2188,7 @@
 				55066CCA1B4BAB2C007FCF3F /* EffectSprite3D.cpp in Sources */,
 				EC7C204A1B7EDF3600EECFBB /* RolePopUpUI.cpp in Sources */,
 				5592AE421B5FF48A0062AF08 /* TerrainCell.cpp in Sources */,
+				554DD3B11B8181D70069E4C5 /* NCSGameCenter.m in Sources */,
 				55C890891B46A2E7009AF1DA /* Arrow.cpp in Sources */,
 				55F3B99C1B45808B0090BE1A /* UtilityHelper.cpp in Sources */,
 				55B7403E1B608C9300DDA3D8 /* TerrainPatternLayer.cpp in Sources */,
@@ -2176,10 +2202,12 @@
 				EC1D3EE61B7C963100C9911D /* StarPopUpUI.cpp in Sources */,
 				5579F74D1B68DBC5006861F1 /* Decorator.cpp in Sources */,
 				5592AE0F1B5F2CFB0062AF08 /* RunController.cpp in Sources */,
+				55F833FD1B81EAD7001F1F6C /* RateThisAppDialog.m in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				EC1D3EE31B7C963100C9911D /* GroundLosePopUpUI.cpp in Sources */,
 				5542EEBC1B3943C600CD9496 /* GameScene.cpp in Sources */,
 				EC1D3EE21B7C963100C9911D /* DeathPopUpUI.cpp in Sources */,
+				55F833F41B81CB8D001F1F6C /* GameCenterController.mm in Sources */,
 				55CED79E1B72555F0050F69F /* RibbonTrail.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
 				5587F38F1B7B4EC400279D49 /* HueSprite.cpp in Sources */,
@@ -2277,6 +2305,7 @@
 				COMPRESS_PNG_FILES = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_INPUT_FILETYPE = sourcecode.cpp.objcpp;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = ios/Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -2315,6 +2344,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COMPRESS_PNG_FILES = NO;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_INPUT_FILETYPE = sourcecode.cpp.objcpp;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = ios/Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = (

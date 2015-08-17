@@ -91,7 +91,34 @@
 {
     return YES;
 }
-
+- (void) showRateAppViewCH {
+    NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"chinese" ofType:@"plist"];
+    NSMutableDictionary *data = [[NSMutableDictionary alloc] initWithContentsOfFile:plistPath];
+    NSString* rateTitle = [data objectForKey:@"RATE_TITLE"];
+    NSString* rateMessage = [data objectForKey:@"RATE_MESSAGE"];
+    NSString* rateNow = [data objectForKey:@"RATE_NOW"];
+    NSString* rateNever = [data objectForKey:@"RATE_NEVER"];
+    NSString* rateLater = [data objectForKey:@"RATE_LATER"];
+    [RateThisAppDialog threeButtonLayoutWithTitle:rateTitle
+                                          message:rateMessage
+                                rateNeverButtonText:rateNever
+                                rateLaterButtonText:rateLater
+                                rateNowButtonText:rateNow];
+}
+- (void) showRateAppViewEN {
+    NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"english" ofType:@"plist"];
+    NSMutableDictionary *data = [[NSMutableDictionary alloc] initWithContentsOfFile:plistPath];
+    NSString* rateTitle = [data objectForKey:@"RATE_TITLE"];
+    NSString* rateMessage = [data objectForKey:@"RATE_MESSAGE"];
+    NSString* rateNow = [data objectForKey:@"RATE_NOW"];
+    NSString* rateNever = [data objectForKey:@"RATE_NEVER"];
+    NSString* rateLater = [data objectForKey:@"RATE_LATER"];
+    [RateThisAppDialog threeButtonLayoutWithTitle:rateTitle
+                                          message:rateMessage
+                                rateNeverButtonText:rateNever
+                                rateLaterButtonText:rateLater
+                                rateNowButtonText:rateNow];
+}
 - (void)didReceiveMemoryWarning {
     // Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
@@ -109,6 +136,5 @@
 - (void)dealloc {
     [super dealloc];
 }
-
 
 @end

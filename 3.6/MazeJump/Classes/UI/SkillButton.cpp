@@ -92,7 +92,7 @@ bool SkillButton::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event)
         return false;
     
     Vec2 touchPoint = m_pBtnSprite->convertTouchToNodeSpaceAR(touch);
-    Rect bbox = m_pBtnSprite->getBoundingBox();
+    cocos2d::Rect bbox = m_pBtnSprite->getBoundingBox();
     if(!bbox.containsPoint(touchPoint))
         return false;
     

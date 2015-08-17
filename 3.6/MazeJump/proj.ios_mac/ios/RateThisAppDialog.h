@@ -12,7 +12,7 @@
 // Please use the "iTunes Link Maker" to create this url:
 // http://itunes.apple.com/linkmaker/
 // you do not need to put "itms://" at the front or anything like that.
-#define APP_STORE_LINK @"itms://itunes.apple.com/us/app/barrage-space/id995591428?l=zh&ls=1&mt=8"
+#define APP_STORE_LINK @"itms://itunes.apple.com/us/app/rainbows-end/id1031110631?l=zh&ls=1&mt=8"
 
 // this is how many times your app can launch before showing this dialog
 // ie. setting this to 2 will cause the dialog to appear on the second time the app is launched
@@ -34,9 +34,9 @@
 
 + (void)threeButtonLayoutWithTitle:(NSString*)title
                            message:(NSString*)message
-                 rateNowButtonText:(NSString*)rateNowButtonText
-               rateLaterButtonText:(NSString*)rateLaterButtonText
-               rateNeverButtonText:(NSString*)rateNeverButtonText;
+                rateNeverButtonText:(NSString*)rateNeverButtonText
+                rateLaterButtonText:(NSString*)rateLaterButtonText
+                rateNowButtonText:(NSString*)rateNowButtonText;
 
 + (void)twoButtonLayoutWithTitle:(NSString*)title
                          message:(NSString*)message
