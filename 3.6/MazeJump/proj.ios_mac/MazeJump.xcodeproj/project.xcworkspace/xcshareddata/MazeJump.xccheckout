@@ -7,7 +7,7 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>319F1D6E-3314-4AF1-A721-FFCDF4293B02</string>
 	<key>IDESourceControlProjectName</key>
-	<string>project</string>
+	<string>MazeJump</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>55011AEBD444630C0E9DF47BD2E18FDBBDCC285D</key>
@@ -18,7 +18,7 @@
 		<string>https://github.com/sqlcipher/openssl-xcode.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>3.6/MazeJump/proj.ios_mac/MazeJump.xcodeproj/project.xcworkspace</string>
+	<string>3.6/MazeJump/proj.ios_mac/MazeJump.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>55011AEBD444630C0E9DF47BD2E18FDBBDCC285D</key>
