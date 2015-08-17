@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>GAME_NAME</key>
-	<string>Barrage Space</string>
+	<string>彩虹尽头</string>
 	<key>PRESS_BEGIN</key>
 	<string>点击这里开始！</string>
 	<key>PRESS_CONTINUE</key>
@@ -13,7 +13,7 @@
 	<key>NO_ADS_DESC</key>
 	<string>删除所有广告，不再有广告出现!</string>
 	<key>RATE_TITLE</key>
-	<string>评价几何太空战</string>
+	<string>评价彩虹尽头</string>
 	<key>RATE_MESSAGE</key>
 	<string>谢谢您的支持!</string>
 	<key>RATE_NOW</key>

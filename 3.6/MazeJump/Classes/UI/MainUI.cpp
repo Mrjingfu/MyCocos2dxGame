@@ -14,6 +14,7 @@
 #include "AudioEngine.h"
 #include "UtilityHelper.h"
 #include "storage/local-storage/LocalStorage.h"
+#include "GameCenterController.h"
 USING_NS_CC;
 
 MainUI* MainUI::create()
@@ -90,6 +91,7 @@ void MainUI::onRank(cocos2d::Ref *ref)
 {
      UIManager::getInstance()->playSound();
     CCLOG("rank");
+    GameCenterController::getInstance()->openLeaderBoard();
 }
 void MainUI::onSound(cocos2d::Ref *ref)
 {

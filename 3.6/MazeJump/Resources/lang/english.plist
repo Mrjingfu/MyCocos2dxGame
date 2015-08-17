@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>GAME_NAME</key>
-	<string>Barrage Space</string>
+	<string>Rainbow&apos;s End</string>
 	<key>PRESS_BEGIN</key>
 	<string>PRESS HERE TO BEGIN!</string>
 	<key>PRESS_CONTINUE</key>
@@ -13,7 +13,7 @@
 	<key>NO_ADS_DESC</key>
 	<string>No More Ads!</string>
 	<key>RATE_TITLE</key>
-	<string>Rate SpaceGeomtryWar</string>
+	<string>Rate Rainbow&apos;s End</string>
 	<key>RATE_MESSAGE</key>
 	<string>thanks for your supports!</string>
 	<key>RATE_NOW</key>

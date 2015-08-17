@@ -244,7 +244,7 @@ void Player::onEnterCheckNextCell()
 void Player::onEnterCheckSpeicalArt()
 {
     GroundCell* currentCell = m_pGround->getNextCell(m_nIndexX, m_nIndexY);
-    Size mapSize = m_pGround->getMapSize();
+    cocos2d::Size mapSize = m_pGround->getMapSize();
     if (currentCell)
     {
         GroundCell::CellType currentType = currentCell->getType();

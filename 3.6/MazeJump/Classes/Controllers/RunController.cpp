@@ -19,6 +19,7 @@
 #include "Particle3D/PU/CCPUParticleSystem3D.h"
 #include "UtilityHelper.h"
 #include "AudioEngine.h"
+#include "GameCenterController.h"
 USING_NS_CC;
 using namespace experimental;
 
@@ -217,6 +218,7 @@ void RunController::setGameState(RunnerGameState state)
                 {
                     CCLOG("gameOver");
                     Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_RUNNER_LOSE);
+                    GameCenterController::getInstance()->reportScore(Value(localStorageGetItem(USER_MAX_LEVEL)).asInt());
                 }
                 break;
             default:
