@@ -39,23 +39,23 @@ bool StarPopUpUI::init()
     
     auto size = Director::getInstance()->getVisibleSize();
     float scale = size.width /640.0f;
-    m_popupBgLayer = ui::ImageView::create(UtilityHelper::getLocalString("UI_START_PANEL"));
+    m_popupBgLayer = cocos2d::ui::ImageView::create(UtilityHelper::getLocalString("UI_START_PANEL"));
     m_popupBgLayer->setPosition(Vec2(size.width*0.5,size.height*0.5));
     m_popupBgLayer->setScale(scale);
     m_dialogLayer->addChild(m_popupBgLayer);
     
-    ui::ImageView* glodView = ui::ImageView::create("ui_gold.png");
+    cocos2d::ui::ImageView* glodView = cocos2d::ui::ImageView::create("ui_gold.png");
     glodView->setPosition(Vec2(size.width*0.3,size.height*0.6));
     glodView->setScale(scale);
     m_dialogLayer->addChild(glodView);
     
-    ui::ImageView* heartView = ui::ImageView::create("ui_heart.png");
+    cocos2d::ui::ImageView* heartView = cocos2d::ui::ImageView::create("ui_heart.png");
     heartView->setPosition(Vec2(size.width*0.3,size.height*0.52));
     heartView->setScale(scale);
     m_dialogLayer->addChild(heartView);
     
     
-    ui::ImageView* distanceView = ui::ImageView::create(UtilityHelper::getLocalString("UI_GAME_BEST_TV"));
+    cocos2d::ui::ImageView* distanceView = cocos2d::ui::ImageView::create(UtilityHelper::getLocalString("UI_GAME_BEST_TV"));
     distanceView->setPosition(Vec2(size.width*0.39,size.height*0.44));
     distanceView->setScale(scale);
     m_dialogLayer->addChild(distanceView);
@@ -83,14 +83,14 @@ bool StarPopUpUI::init()
     
 
     
-    ui::Button* playBtn = ui::Button::create(UtilityHelper::getLocalString("UI_START_BTN_NEW"));
+    cocos2d::ui::Button* playBtn = cocos2d::ui::Button::create(UtilityHelper::getLocalString("UI_START_BTN_NEW"));
     playBtn->setPosition(Vec2(size.width*0.36, size.height*0.36));
     
     playBtn->setScale(scale*1.2);
     playBtn->addClickEventListener(CC_CALLBACK_1(StarPopUpUI::onPlayGame, this));
     m_dialogLayer->addChild(playBtn);
 
-    ui::Button* resumeBtn = ui::Button::create(UtilityHelper::getLocalString("UI_START_BTN_CONTINUE"));
+    cocos2d::ui::Button* resumeBtn = cocos2d::ui::Button::create(UtilityHelper::getLocalString("UI_START_BTN_CONTINUE"));
     resumeBtn->setPosition(Vec2(size.width*0.36+playBtn->getContentSize().width*scale+40*scale,size.height*0.36));
     resumeBtn->setScale(scale*1.2);
     resumeBtn->addClickEventListener(CC_CALLBACK_1(StarPopUpUI::onResumeGame, this));

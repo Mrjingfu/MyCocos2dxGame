@@ -53,22 +53,22 @@ bool DeathPopUpUI::init()
     
     m_dialogLayer->addChild(m_popupBgLayer);
     
-    ui::Button* homeBtn = ui::Button::create("btn_home_normal.png","btn_home_pressed.png");
+    ui::Button* homeBtn = cocos2d::ui::Button::create("btn_home_normal.png","btn_home_pressed.png");
     homeBtn->setScale(scale);
     homeBtn->setPosition(Vec2(size.width*0.33,size.height*0.53));
     m_dialogLayer->addChild(homeBtn);
     
-    ui::Button* shopBtn = ui::Button::create("btn_shop_normal.png","btn_shop_pressed.png");
+    ui::Button* shopBtn = cocos2d::ui::Button::create("btn_shop_normal.png","btn_shop_pressed.png");
     shopBtn->setScale(scale);
     shopBtn->setPosition(Vec2(size.width*0.33+homeBtn->getContentSize().width*scale+35*scale,size.height*0.53));
     m_dialogLayer->addChild(shopBtn);
     
-    ui::Button* agiainBtn = ui::Button::create("btn_agiain_normal.png","btn_agiain_pressed.png");
+    ui::Button* agiainBtn = cocos2d::ui::Button::create("btn_agiain_normal.png","btn_agiain_pressed.png");
     agiainBtn->setScale(scale);
     agiainBtn->setPosition(Vec2(size.width*0.33+shopBtn->getContentSize().width*2*scale+70*scale,size.height*0.53));
     m_dialogLayer->addChild(agiainBtn);
     
-    ui::Button* reviveBtn = ui::Button::create(UtilityHelper::getLocalString("UI_DEATH_BTN_REVICE"));
+    ui::Button* reviveBtn = cocos2d::ui::Button::create(UtilityHelper::getLocalString("UI_DEATH_BTN_REVICE"));
     reviveBtn->setScale(scale);
     reviveBtn->setPosition(Vec2(size.width*0.5,size.height*0.4));
     m_dialogLayer->addChild(reviveBtn);

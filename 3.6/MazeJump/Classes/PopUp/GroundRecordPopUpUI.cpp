@@ -48,13 +48,13 @@ bool GroundRecordPopUpUI::init()
     auto size = Director::getInstance()->getVisibleSize();
     float scale = size.width /640.0f;
 
-    m_popupBgLayer = ui::ImageView::create(UtilityHelper::getLocalString("UI_GROUND_HELP_PANEL"));
+    m_popupBgLayer = cocos2d::ui::ImageView::create(UtilityHelper::getLocalString("UI_GROUND_HELP_PANEL"));
     m_popupBgLayer->setPosition(Vec2(size.width*0.5,size.height*0.5));
     m_popupBgLayer->setScale(scale);
     m_dialogLayer->addChild(m_popupBgLayer);
     
     
-    ui::Button* reviveBtn = ui::Button::create(UtilityHelper::getLocalString("UI_GROUND_BTN_SUC_BACK"));
+    cocos2d::ui::Button* reviveBtn = cocos2d::ui::Button::create(UtilityHelper::getLocalString("UI_GROUND_BTN_SUC_BACK"));
     reviveBtn->setScale(scale);
     reviveBtn->setPosition(Vec2(size.width*0.5,size.height*0.47));
     m_dialogLayer->addChild(reviveBtn);

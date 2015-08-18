@@ -48,17 +48,17 @@ bool GroundWinPopUpUI::init()
     auto size = Director::getInstance()->getVisibleSize();
     float scale = size.width /640.0f;
 
-    m_popupBgLayer = ui::ImageView::create(UtilityHelper::getLocalString("UI_GROUND_SUC_PANEL"));
+    m_popupBgLayer = cocos2d::ui::ImageView::create(UtilityHelper::getLocalString("UI_GROUND_SUC_PANEL"));
     m_popupBgLayer->setPosition(Vec2(size.width*0.5,size.height*0.5));
     m_popupBgLayer->setScale(scale);
     m_dialogLayer->addChild(m_popupBgLayer);
     
-    ui::ImageView* glodView = ui::ImageView::create("ui_gold.png");
+    cocos2d::ui::ImageView* glodView = cocos2d::ui::ImageView::create("ui_gold.png");
     glodView->setPosition(Vec2(size.width*0.3,size.height*0.56));
     glodView->setScale(scale);
     m_dialogLayer->addChild(glodView);
     
-    ui::ImageView* heartView = ui::ImageView::create("ui_heart.png");
+    cocos2d::ui::ImageView* heartView = cocos2d::ui::ImageView::create("ui_heart.png");
     heartView->setPosition(Vec2(size.width*0.3,size.height*0.48));
     heartView->setScale(scale);
     m_dialogLayer->addChild(heartView);
@@ -79,7 +79,7 @@ bool GroundWinPopUpUI::init()
     heartRewardTv->setHorizontalAlignment(TextHAlignment::RIGHT);
     m_dialogLayer->addChild(heartRewardTv);
     
-    ui::Button* reviveBtn = ui::Button::create(UtilityHelper::getLocalString("UI_GROUND_BTN_SUC_BACK"));
+   cocos2d::ui::Button* reviveBtn = cocos2d::ui::Button::create(UtilityHelper::getLocalString("UI_GROUND_BTN_SUC_BACK"));
     reviveBtn->setScale(scale);
     reviveBtn->setPosition(Vec2(size.width*0.5,size.height*0.4));
     m_dialogLayer->addChild(reviveBtn);

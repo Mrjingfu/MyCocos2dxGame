@@ -45,7 +45,7 @@ bool GameInfoUI::init()
     auto size = Director::getInstance()->getVisibleSize();
     float scale = size.width /640.0f;
     
-    ui::ImageView* glodView = ui::ImageView::create("ui_gold.png");
+    cocos2d::ui::ImageView* glodView = cocos2d::ui::ImageView::create("ui_gold.png");
     glodView->setPosition(Vec2(70*scale, size.height*0.95));
     glodView->setScale(scale);
     addChild(glodView);
@@ -57,7 +57,7 @@ bool GameInfoUI::init()
     addChild(goldTv);
     
     
-    ui::ImageView* heartView = ui::ImageView::create("ui_heart.png");
+    cocos2d::ui::ImageView* heartView = cocos2d::ui::ImageView::create("ui_heart.png");
     heartView->setPosition(Vec2(70*scale, size.height*0.95-glodView->getContentSize().height*scale - 5*scale));
     heartView->setScale(scale);
     addChild(heartView);
@@ -76,7 +76,7 @@ bool GameInfoUI::init()
     currentLayer->setPosition(Vec2(0, 50*scale));
     addChild(currentLayer);
     
-    ui::ImageView* bestImg = ui::ImageView::create(UtilityHelper::getLocalString("UI_GAME_BEST_TV"));
+    cocos2d::ui::ImageView* bestImg = cocos2d::ui::ImageView::create(UtilityHelper::getLocalString("UI_GAME_BEST_TV"));
     bestImg->setAnchorPoint(Vec2(1, 0.5));
     bestImg->setPosition(Vec2(size.width*0.62,size.height*0.95));
     bestImg->setScale(scale);
@@ -90,7 +90,7 @@ bool GameInfoUI::init()
     maxLayer->addChild(m_maxLevelTv);
     
     
-    ui::ImageView* currentImg = ui::ImageView::create(UtilityHelper::getLocalString("UI_GAME_CURRENT_TV"));
+   cocos2d:: ui::ImageView* currentImg = cocos2d::ui::ImageView::create(UtilityHelper::getLocalString("UI_GAME_CURRENT_TV"));
     currentImg->setPosition(Vec2(size.width*0.5,size.height*0.9));
     currentImg->setScale(scale);
     currentLayer->addChild(currentImg);

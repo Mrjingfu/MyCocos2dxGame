@@ -54,7 +54,7 @@ bool GroundGameUI::init()
     float scale = size.width /640.f;
     
     
-    ui::ImageView* awardImg = ui::ImageView::create(UtilityHelper::getLocalString("UI_GROUND_AWARD_TV"));
+    cocos2d::ui::ImageView* awardImg = cocos2d::ui::ImageView::create(UtilityHelper::getLocalString("UI_GROUND_AWARD_TV"));
     awardImg->setScale(scale);
     awardImg->setPosition(Vec2(size.width*0.5, size.height*0.15));
     addChild(awardImg);
@@ -73,7 +73,7 @@ bool GroundGameUI::init()
     heartRewardTv->setHorizontalAlignment(TextHAlignment::RIGHT);
    addChild(heartRewardTv);
 
-    ui::Button* helpBtn = ui::Button::create("question.png");
+   cocos2d::ui::Button* helpBtn = cocos2d::ui::Button::create("question.png");
     helpBtn->setPosition(Vec2(size.width*0.93, size.height*0.03));
     helpBtn->setScale(scale);
     addChild(helpBtn);
@@ -99,12 +99,12 @@ bool GroundGameUI::init()
     _eventDispatcher->addEventListenerWithSceneGraphPriority(helplistener,helpLayer);
     
     
-    cocos2d::ui::ImageView* handleTipsImg = ui::ImageView::create(UtilityHelper::getLocalString("UI_GROUND_HANDLE_TIPS"));
+    cocos2d::ui::ImageView* handleTipsImg = cocos2d::ui::ImageView::create(UtilityHelper::getLocalString("UI_GROUND_HANDLE_TIPS"));
     handleTipsImg->setPosition(Vec2(size.width*0.5, size.height*0.25));
     handleTipsImg->setScale(scale);
     helpLayer->addChild(handleTipsImg);
     
-    cocos2d::ui::ImageView* ruleTipsImg = ui::ImageView::create(UtilityHelper::getLocalString("UI_GROUND_RULE_TIPS"));
+    cocos2d::ui::ImageView* ruleTipsImg = cocos2d::ui::ImageView::create(UtilityHelper::getLocalString("UI_GROUND_RULE_TIPS"));
     ruleTipsImg->setPosition(Vec2(size.width*0.5, size.height*0.65));
     ruleTipsImg->setScale(scale);
     helpLayer->addChild(ruleTipsImg);

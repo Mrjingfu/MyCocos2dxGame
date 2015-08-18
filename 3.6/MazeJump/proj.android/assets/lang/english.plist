@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>GAME_NAME</key>
-	<string>Barrage Space</string>
+	<string>Rainbow&apos;s End</string>
 	<key>PRESS_BEGIN</key>
 	<string>PRESS HERE TO BEGIN!</string>
 	<key>PRESS_CONTINUE</key>
@@ -13,7 +13,7 @@
 	<key>NO_ADS_DESC</key>
 	<string>No More Ads!</string>
 	<key>RATE_TITLE</key>
-	<string>Rate SpaceGeomtryWar</string>
+	<string>Rate Rainbow&apos;s End</string>
 	<key>RATE_MESSAGE</key>
 	<string>thanks for your supports!</string>
 	<key>RATE_NOW</key>
@@ -38,6 +38,8 @@
 	<string>btn_start_continue_en.png</string>
 	<key>UI_START_PANEL</key>
 	<string>panel_startgame_en.png</string>
+	<key>UI_START_DISTANCE</key>
+	<string>ui_disttext_en.png</string>
 	<key>UI_PASUE_PANEL</key>
 	<string>panel_pause_en.png</string>
 	<key>UI_SHOP_PANEL</key>
@@ -46,6 +48,12 @@
 	<string>best_en.png</string>
 	<key>UI_GAME_CURRENT_TV</key>
 	<string>current_en.png</string>
+	<key>UI_GAME_HANDLE_TIPS</key>
+	<string>jumptip_runner_en.png</string>
+	<key>UI_GAME_MODE_TIPS</key>
+	<string>rainbowmodetip_en.png</string>
+	<key>UI_GAME_PAUSE_TIPS</key>
+	<string>pausetip_en.png</string>
 	<key>UI_DEATH_PANEL</key>
 	<string>panel_gameover_en.png</string>
 	<key>UI_DEATH_BTN_REVICE</key>
@@ -68,5 +76,13 @@
 	<string>panel_challenge_helpok_en.png</string>
 	<key>UI_GROUND_SUC_PANEL</key>
 	<string>panel_challenge_success_en.png</string>
+	<key>UI_GROUND_HANDLE_TIPS</key>
+	<string>jumptip_mazejump_en.png</string>
+	<key>UI_GROUND_RULE_TIPS</key>
+	<string>rulestip_en.png</string>
+	<key>UI_GAMEINFO_TIPS</key>
+	<string>gameinfotip_en.png</string>
+	<key>UI_HELP_TIPS</key>
+	<string>helptip_en.png</string>
 </dict>
 </plist>

@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>GAME_NAME</key>
-	<string>Barrage Space</string>
+	<string>彩虹尽头</string>
 	<key>PRESS_BEGIN</key>
 	<string>点击这里开始！</string>
 	<key>PRESS_CONTINUE</key>
@@ -13,7 +13,7 @@
 	<key>NO_ADS_DESC</key>
 	<string>删除所有广告，不再有广告出现!</string>
 	<key>RATE_TITLE</key>
-	<string>评价几何太空战</string>
+	<string>评价彩虹尽头</string>
 	<key>RATE_MESSAGE</key>
 	<string>谢谢您的支持!</string>
 	<key>RATE_NOW</key>
@@ -29,7 +29,7 @@
 	<key>RESTORE_FAILED</key>
 	<string>恢复购买失败！</string>
 	<key>FONT_NUMBER</key>
-	<string>DFWaWaW5-GB.fnt</string>
+	<string>comic_sans_ms.fnt</string>
 	<key>UI_TITLE_TEX</key>
 	<string>ui_title1.png</string>
 	<key>UI_START_BTN_NEW</key>
@@ -46,6 +46,12 @@
 	<string>best_cn.png</string>
 	<key>UI_GAME_CURRENT_TV</key>
 	<string>current_cn.png</string>
+	<key>UI_GAME_HANDLE_TIPS</key>
+	<string>jumptip_runner_cn.png</string>
+	<key>UI_GAME_MODE_TIPS</key>
+	<string>rainbowmodetip_cn.png</string>
+	<key>UI_GAME_PAUSE_TIPS</key>
+	<string>pausetip_cn.png</string>
 	<key>UI_DEATH_PANEL</key>
 	<string>panel_gameover_cn.png</string>
 	<key>UI_DEATH_BTN_REVICE</key>
@@ -68,5 +74,13 @@
 	<string>panel_challenge_helpok_cn.png</string>
 	<key>UI_GROUND_SUC_PANEL</key>
 	<string>panel_challenge_success_cn.png</string>
+	<key>UI_GROUND_HANDLE_TIPS</key>
+	<string>jumptip_mazejump_cn.png</string>
+	<key>UI_GROUND_RULE_TIPS</key>
+	<string>rulestip_cn.png</string>
+	<key>UI_GAMEINFO_TIPS</key>
+	<string>gameinfotip_cn.png</string>
+	<key>UI_HELP_TIPS</key>
+	<string>helptip_cn.png</string>
 </dict>
 </plist>

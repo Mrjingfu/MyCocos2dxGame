@@ -64,19 +64,19 @@ bool GameUI::init()
     float scale = size.width /640.0f;
     
     
-    ui::Button* goldBuyBtn = ui::Button::create("btn_plus_normal.png","btn_plus_pressed.png");
+    cocos2d::ui::Button* goldBuyBtn = cocos2d::ui::Button::create("btn_plus_normal.png","btn_plus_pressed.png");
     goldBuyBtn->setPosition(Vec2(25*scale, size.height*0.95));
     goldBuyBtn->setScale(scale);
     addChild(goldBuyBtn);
     
     
-    ui::Button* heartBuyBtn = ui::Button::create("btn_plus_normal.png","btn_plus_pressed.png");
+    cocos2d::ui::Button* heartBuyBtn = cocos2d::ui::Button::create("btn_plus_normal.png","btn_plus_pressed.png");
     heartBuyBtn->setPosition(Vec2(25*scale, size.height*0.95-50*scale));
     heartBuyBtn->setScale(scale);
     addChild(heartBuyBtn);
     
         
-    pauseImg = ui::Button::create("btn_pause_normal.png","btn_pause_pressed.png");
+    pauseImg = cocos2d::ui::Button::create("btn_pause_normal.png","btn_pause_pressed.png");
     pauseImg->setPosition(Vec2(size.width*0.9, size.height*0.93));
     pauseImg->setScale(scale);
     addChild(pauseImg);
@@ -89,7 +89,7 @@ bool GameUI::init()
     skillBtn->setScale(scale);
     addChild(skillBtn);
     
-    ui::Button* helpBtn = ui::Button::create("question.png");
+    cocos2d::ui::Button* helpBtn = cocos2d::ui::Button::create("question.png");
     helpBtn->setPosition(Vec2(size.width*0.93, size.height*0.03));
     helpBtn->setScale(scale);
     addChild(helpBtn);
@@ -136,27 +136,27 @@ bool GameUI::init()
     
 
     
-    cocos2d::ui::ImageView* handleTipsImg = ui::ImageView::create(UtilityHelper::getLocalString("UI_GAME_HANDLE_TIPS"));
+    cocos2d::ui::ImageView* handleTipsImg = cocos2d::ui::ImageView::create(UtilityHelper::getLocalString("UI_GAME_HANDLE_TIPS"));
     handleTipsImg->setPosition(Vec2(size.width*0.5, size.height*0.5));
     handleTipsImg->setScale(scale);
     helpLayer->addChild(handleTipsImg);
     
-    cocos2d::ui::ImageView* pauseTipsImg = ui::ImageView::create(UtilityHelper::getLocalString("UI_GAME_PAUSE_TIPS"));
+    cocos2d::ui::ImageView* pauseTipsImg = cocos2d::ui::ImageView::create(UtilityHelper::getLocalString("UI_GAME_PAUSE_TIPS"));
     pauseTipsImg->setPosition(Vec2(size.width*0.8, size.height*0.8));
     pauseTipsImg->setScale(scale);
     helpLayer->addChild(pauseTipsImg);
     
-    cocos2d::ui::ImageView* infoTipsImg = ui::ImageView::create(UtilityHelper::getLocalString("UI_GAMEINFO_TIPS"));
+    cocos2d::ui::ImageView* infoTipsImg = cocos2d::ui::ImageView::create(UtilityHelper::getLocalString("UI_GAMEINFO_TIPS"));
     infoTipsImg->setPosition(Vec2(size.width*0.18, size.height*0.8));
     infoTipsImg->setScale(scale);
     helpLayer->addChild(infoTipsImg);
     
-    cocos2d::ui::ImageView* modeTipsImg = ui::ImageView::create(UtilityHelper::getLocalString("UI_GAME_MODE_TIPS"));
+    cocos2d::ui::ImageView* modeTipsImg = cocos2d::ui::ImageView::create(UtilityHelper::getLocalString("UI_GAME_MODE_TIPS"));
     modeTipsImg->setPosition(Vec2(size.width*0.23, size.height*0.15));
     modeTipsImg->setScale(scale);
     helpLayer->addChild(modeTipsImg);
     
-    cocos2d::ui::ImageView* helpTipsImg = ui::ImageView::create(UtilityHelper::getLocalString("UI_HELP_TIPS"));
+    cocos2d::ui::ImageView* helpTipsImg = cocos2d::ui::ImageView::create(UtilityHelper::getLocalString("UI_HELP_TIPS"));
     helpTipsImg->setPosition(Vec2(size.width*0.85, size.height*0.15));
     helpTipsImg->setScale(scale);
     helpLayer->addChild(helpTipsImg);

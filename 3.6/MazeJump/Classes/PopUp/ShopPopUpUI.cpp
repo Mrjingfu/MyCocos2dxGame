@@ -59,7 +59,7 @@ bool ShopPopUpUI::init()
    float scale = size.width /640.0f;
     
    
-    m_popupBgLayer = ui::ImageView::create(UtilityHelper::getLocalString("UI_SHOP_PANEL"));
+    m_popupBgLayer = cocos2d::ui::ImageView::create(UtilityHelper::getLocalString("UI_SHOP_PANEL"));
     m_popupBgLayer->setPosition(Vec2(size.width*0.5, size.height*0.5));
     m_popupBgLayer->setScale(scale);
     m_dialogLayer->addChild(m_popupBgLayer);
@@ -70,12 +70,12 @@ bool ShopPopUpUI::init()
     goldProductLayer = Layer::create();
     m_dialogLayer->addChild(goldProductLayer);
     
-    ui::Button* goldBuyBtn = ui::Button::create("btn_gold_normal.png","btn_gold_pressed.png");
+    cocos2d::ui::Button* goldBuyBtn = cocos2d::ui::Button::create("btn_gold_normal.png","btn_gold_pressed.png");
     goldBuyBtn->setPosition(Vec2(size.width*0.4, size.height*0.61));
     goldBuyBtn->setScale(scale*1.2);
     productLayer->addChild(goldBuyBtn);
     
-    ui::Button* heartBuyBtn = ui::Button::create("btn_heart_normal.png","btn_heart_pressed.png");
+    cocos2d::ui::Button* heartBuyBtn = cocos2d::ui::Button::create("btn_heart_normal.png","btn_heart_pressed.png");
     heartBuyBtn->setPosition(Vec2(size.width*0.4+goldBuyBtn->getContentSize().width*scale+50*scale, size.height*0.61));
     heartBuyBtn->setScale(scale*1.2);
     productLayer->addChild(heartBuyBtn);
@@ -92,11 +92,11 @@ bool ShopPopUpUI::init()
     productLayer->addChild(heartGoldNumLabel);
     
     
-    ui::Button* roleBtn = nullptr;
-    ui::Button* adsBuyBtn = nullptr;
-    ui::Button* restoreBtn = nullptr;
+    cocos2d::ui::Button* roleBtn = nullptr;
+    cocos2d::ui::Button* adsBuyBtn = nullptr;
+    cocos2d::ui::Button* restoreBtn = nullptr;
     if (UIManager::getInstance()->getGameId()==UIManager::UI_MAIN) {
-        roleBtn = ui::Button::create("btn_character_normal.png","btn_character_pressed.png");
+        roleBtn = cocos2d::ui::Button::create("btn_character_normal.png","btn_character_pressed.png");
         roleBtn->setPosition(Vec2(size.width*0.4, size.height*0.61-heartBuyBtn->getContentSize().width*scale-30*scale));
         roleBtn->setScale(scale*1.2);
         //禁用设置灰色
@@ -104,30 +104,30 @@ bool ShopPopUpUI::init()
 //      roleBtn->setTouchEnabled(false);
         productLayer->addChild(roleBtn);
         
-        adsBuyBtn = ui::Button::create("btn_removeads_normal.png","btn_removeads_pressed.png");
+        adsBuyBtn = cocos2d::ui::Button::create("btn_removeads_normal.png","btn_removeads_pressed.png");
         adsBuyBtn->setPosition(Vec2(size.width*0.4+roleBtn->getContentSize().width*scale+50*scale, size.height*0.61-heartBuyBtn->getContentSize().width*scale-30*scale ));
         adsBuyBtn->setScale(scale*1.2);
         productLayer->addChild(adsBuyBtn);
         
-        restoreBtn = ui::Button::create("btn_restore_normal.png","btn_restore_pressed.png");
+        restoreBtn = cocos2d::ui::Button::create("btn_restore_normal.png","btn_restore_pressed.png");
         restoreBtn->setPosition(Vec2(size.width*0.4, size.height*0.61-adsBuyBtn->getContentSize().width*2*scale-60*scale ));
         restoreBtn->setScale(scale*1.2);
         productLayer->addChild(restoreBtn);
 
     }else
     {
-        adsBuyBtn = ui::Button::create("btn_removeads_normal.png","btn_removeads_pressed.png");
+        adsBuyBtn = cocos2d::ui::Button::create("btn_removeads_normal.png","btn_removeads_pressed.png");
         adsBuyBtn->setPosition(Vec2(size.width*0.4, size.height*0.61-heartBuyBtn->getContentSize().width*scale-30*scale));
         adsBuyBtn->setScale(scale*1.2);
         productLayer->addChild(adsBuyBtn);
         
-        restoreBtn = ui::Button::create("btn_restore_normal.png","btn_restore_pressed.png");
+        restoreBtn = cocos2d::ui::Button::create("btn_restore_normal.png","btn_restore_pressed.png");
         restoreBtn->setPosition(Vec2(size.width*0.4+adsBuyBtn->getContentSize().width*scale+50*scale, size.height*0.61-heartBuyBtn->getContentSize().width*scale-30*scale ));
         restoreBtn->setScale(scale*1.2);
         productLayer->addChild(restoreBtn);
     }
 
-    ui::Button* coin1_Btn = ui::Button::create("btn_gold1_normal.png","btn_gold1_pressed.png");
+    cocos2d::ui::Button* coin1_Btn = cocos2d::ui::Button::create("btn_gold1_normal.png","btn_gold1_pressed.png");
     coin1_Btn->setPosition(Vec2(size.width*0.4, size.height*0.61));
     coin1_Btn->setScale(scale*1.2);
     goldProductLayer->addChild(coin1_Btn);
@@ -144,7 +144,7 @@ bool ShopPopUpUI::init()
     goldProductLayer->addChild(coin1_money_NumLabel);
 
     
-    ui::Button* coin2_Btn = ui::Button::create("btn_gold2_normal.png","btn_gold2_pressed.png");;
+    cocos2d::ui::Button* coin2_Btn = cocos2d::ui::Button::create("btn_gold2_normal.png","btn_gold2_pressed.png");;
     coin2_Btn->setPosition(Vec2(size.width*0.4+goldBuyBtn->getContentSize().width*scale+50*scale, size.height*0.61));
     coin2_Btn->setScale(scale*1.2);
     goldProductLayer->addChild(coin2_Btn);
@@ -160,7 +160,7 @@ bool ShopPopUpUI::init()
     coin2_money_NumLabel->setScale(scale);
     goldProductLayer->addChild(coin2_money_NumLabel);
     
-    ui::Button* coin3_Btn = ui::Button::create("btn_gold3_normal.png","btn_gold3_pressed.png");
+    cocos2d::ui::Button* coin3_Btn = cocos2d::ui::Button::create("btn_gold3_normal.png","btn_gold3_pressed.png");
     coin3_Btn->setPosition(Vec2(size.width*0.4, size.height*0.61-heartBuyBtn->getContentSize().width*scale-30*scale));
     coin3_Btn->setScale(scale*1.2);
     goldProductLayer->addChild(coin3_Btn);
@@ -175,7 +175,7 @@ bool ShopPopUpUI::init()
     coin3_money_NumLabel->setScale(scale);
     goldProductLayer->addChild(coin3_money_NumLabel);
     
-    ui::Button* coin4_Btn = ui::Button::create("btn_gold4_normal.png","btn_gold4_pressed.png");
+    cocos2d::ui::Button* coin4_Btn = cocos2d::ui::Button::create("btn_gold4_normal.png","btn_gold4_pressed.png");
     coin4_Btn->setPosition(Vec2(size.width*0.4+coin2_Btn->getContentSize().width*scale+50*scale, size.height*0.61-heartBuyBtn->getContentSize().width*scale-30*scale ));
     coin4_Btn->setScale(scale*1.2);
     goldProductLayer->addChild(coin4_Btn);
@@ -191,7 +191,7 @@ bool ShopPopUpUI::init()
     goldProductLayer->addChild(coin4_money_NumLabel);
     
     
-    ui::Button* coin5_Btn = ui::Button::create("btn_gold5_normal.png","btn_gold5_pressed.png");
+    cocos2d::ui::Button* coin5_Btn = cocos2d::ui::Button::create("btn_gold5_normal.png","btn_gold5_pressed.png");
     coin5_Btn->setPosition(Vec2(size.width*0.4, size.height*0.61-goldBuyBtn->getContentSize().width*2*scale-60*scale ));
     coin5_Btn->setScale(scale*1.2);
     goldProductLayer->addChild(coin5_Btn);
@@ -207,7 +207,7 @@ bool ShopPopUpUI::init()
     goldProductLayer->addChild(coin5_money_NumLabel);
     
     
-    ui::Button* backBtn = ui::Button::create("btn_back_normal.png","btn_back_pressed.png");
+    cocos2d::ui::Button* backBtn = cocos2d::ui::Button::create("btn_back_normal.png","btn_back_pressed.png");
     backBtn->setPosition(Vec2(size.width*0.4+restoreBtn->getContentSize().width*scale+50*scale, size.height*0.61-heartBuyBtn->getContentSize().width*2*scale-60*scale));
     backBtn->setScale(scale*1.2);
     m_dialogLayer->addChild(backBtn);

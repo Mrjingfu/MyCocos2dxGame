@@ -48,19 +48,19 @@ bool GroundLosePopUpUI::init()
     auto size = Director::getInstance()->getVisibleSize();
     float scale = size.width /640.0f;
     
-    m_popupBgLayer = ui::ImageView::create(UtilityHelper::getLocalString("UI_GROUND_FAILED_PANEL"));
+    m_popupBgLayer = cocos2d::ui::ImageView::create(UtilityHelper::getLocalString("UI_GROUND_FAILED_PANEL"));
     m_popupBgLayer->setPosition(Vec2(size.width*0.5,size.height*0.5));
     m_popupBgLayer->setScale(scale);
 
     m_dialogLayer->addChild(m_popupBgLayer);
     
-    ui::Button* backtn = ui::Button::create(UtilityHelper::getLocalString("UI_GROUND_BTN_FAILED_BACK"));
+    ui::Button* backtn = cocos2d::ui::Button::create(UtilityHelper::getLocalString("UI_GROUND_BTN_FAILED_BACK"));
     backtn->setScale(scale);
     backtn->setPosition(Vec2(size.width*0.5,size.height*0.55));
     m_dialogLayer->addChild(backtn);
 
     
-    ui::Button* reviveBtn = ui::Button::create(UtilityHelper::getLocalString("UI_GROUND_BTN_FAILED_HELP"));
+    ui::Button* reviveBtn = cocos2d::ui::Button::create(UtilityHelper::getLocalString("UI_GROUND_BTN_FAILED_HELP"));
     reviveBtn->setScale(scale);
     reviveBtn->setPosition(Vec2(size.width*0.5,size.height*0.4));
     m_dialogLayer->addChild(reviveBtn);

@@ -122,7 +122,7 @@ bool RolePopUpUI::init()
     m_dialogLayer->addChild(m_popupBgLayer);
     
     
-    ui::ListView* uiListView = ui::ListView::create();
+    ui::ListView* uiListView = cocos2d::ui::ListView::create();
     uiListView->setAnchorPoint(Vec2(0.5,0.5));
     uiListView->setContentSize(cocos2d::Size(m_popupBgLayer->getContentSize().width*scale-20*scale, m_popupBgLayer->getContentSize().height*scale));
     uiListView->setPosition(Vec2(m_popupBgLayer->getContentSize().width*0.5*scale+10*scale, size.height*0.7));
@@ -154,7 +154,7 @@ bool RolePopUpUI::init()
         
     }
     
-    ui::Button* backButton = ui::Button::create("btn_scrollback_normal.png","btn_scrollback_pressed.png");
+    ui::Button* backButton = cocos2d::ui::Button::create("btn_scrollback_normal.png","btn_scrollback_pressed.png");
     backButton->setScale(scale);
     backButton->setPosition(Vec2(backButton->getContentSize().width*0.5*scale, size.height*0.557));
     m_dialogLayer->addChild(backButton);
@@ -162,7 +162,7 @@ bool RolePopUpUI::init()
      m_lockLayer = Layer::create();
     m_dialogLayer->addChild(m_lockLayer);
     m_lockLayer->setPosition(Vec2(size.width, 0));
-    ui::Button* m_lockButton = ui::Button::create(UtilityHelper::getLocalString("UI_ROLE_BTN_LOCK_NORMAL"),UtilityHelper::getLocalString("UI_ROLE_BTN_LOCK_PRESSED"));
+    cocos2d::ui::Button* m_lockButton = ui::Button::create(UtilityHelper::getLocalString("UI_ROLE_BTN_LOCK_NORMAL"),UtilityHelper::getLocalString("UI_ROLE_BTN_LOCK_PRESSED"));
     m_lockButton->setScale(scale);
     m_lockButton->setPosition(Vec2(size.width-m_lockButton->getContentSize().width*0.5*scale, size.height*0.557));
     m_lockLayer->addChild(m_lockButton);

@@ -218,7 +218,9 @@ void RunController::setGameState(RunnerGameState state)
                 {
                     CCLOG("gameOver");
                     Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_RUNNER_LOSE);
+#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS )
                     GameCenterController::getInstance()->reportScore(Value(localStorageGetItem(USER_MAX_LEVEL)).asInt());
+#endif
                 }
                 break;
             default:
