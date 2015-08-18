@@ -82,13 +82,13 @@ bool ShopPopUpUI::init()
 
     
     cocos2d::Label* heartNumLabel = Label::createWithBMFont(UtilityHelper::getLocalString("FONT_NUMBER"),"+15");
-    heartNumLabel->setPosition(Vec2(size.width*0.4+goldBuyBtn->getContentSize().width*scale+70*scale, size.height*0.61+20*scale));
-    heartNumLabel->setScale(scale);
+    heartNumLabel->setPosition(Vec2(size.width*0.4+goldBuyBtn->getContentSize().width*scale+75*scale, size.height*0.61+20*scale));
+    heartNumLabel->setScale(scale*0.75);
     productLayer->addChild(heartNumLabel);
     
     cocos2d::Label* heartGoldNumLabel = Label::createWithBMFont(UtilityHelper::getLocalString("FONT_NUMBER"),"-150");
-    heartGoldNumLabel->setPosition(Vec2(size.width*0.4+goldBuyBtn->getContentSize().width*scale+70*scale, size.height*0.61-17*scale));
-    heartGoldNumLabel->setScale(scale);
+    heartGoldNumLabel->setPosition(Vec2(size.width*0.4+goldBuyBtn->getContentSize().width*scale+75*scale, size.height*0.61-17*scale));
+    heartGoldNumLabel->setScale(scale*0.75);
     productLayer->addChild(heartGoldNumLabel);
     
     
@@ -133,12 +133,13 @@ bool ShopPopUpUI::init()
     goldProductLayer->addChild(coin1_Btn);
     
     cocos2d::Label* coin1_gold_NumLabel = Label::createWithBMFont(UtilityHelper::getLocalString("FONT_NUMBER"),"200");
-    coin1_gold_NumLabel->setPosition(Vec2(size.width*0.4+18*scale, size.height*0.61+20*scale));
-    coin1_gold_NumLabel->setScale(scale);
+    coin1_gold_NumLabel->setPosition(Vec2(size.width*0.4+18*scale, size.height*0.61+23*scale));
+    coin1_gold_NumLabel->setScale(scale*0.7);
     goldProductLayer->addChild(coin1_gold_NumLabel);
     
-    cocos2d::Label* coin1_money_NumLabel = Label::createWithBMFont(UtilityHelper::getLocalString("FONT_NUMBER"),"150");
-    coin1_money_NumLabel->setPosition(Vec2(size.width*0.4+5*scale, size.height*0.61-20*scale));
+
+    cocos2d::Label* coin1_money_NumLabel = Label::createWithSystemFont("150", FONT_FXZS, 30);
+    coin1_money_NumLabel->setPosition(Vec2(size.width*0.4+5*scale, size.height*0.61-18*scale));
     coin1_money_NumLabel->setScale(scale);
     goldProductLayer->addChild(coin1_money_NumLabel);
 
@@ -150,12 +151,12 @@ bool ShopPopUpUI::init()
     
     
     cocos2d::Label* coin2_gold_NumLabel = Label::createWithBMFont(UtilityHelper::getLocalString("FONT_NUMBER"),"500");
-    coin2_gold_NumLabel->setPosition(Vec2(size.width*0.4+goldBuyBtn->getContentSize().width*scale+68*scale, size.height*0.61+18*scale));
-    coin2_gold_NumLabel->setScale(scale);
+    coin2_gold_NumLabel->setPosition(Vec2(size.width*0.4+goldBuyBtn->getContentSize().width*scale+68*scale, size.height*0.61+20*scale));
+    coin2_gold_NumLabel->setScale(scale*0.7);
     goldProductLayer->addChild(coin2_gold_NumLabel);
     
-    cocos2d::Label* coin2_money_NumLabel = Label::createWithBMFont(UtilityHelper::getLocalString("FONT_NUMBER"),"150");
-    coin2_money_NumLabel->setPosition(Vec2(size.width*0.4+goldBuyBtn->getContentSize().width*scale+55*scale, size.height*0.61-20*scale));
+    cocos2d::Label* coin2_money_NumLabel = Label::createWithSystemFont("150", FONT_FXZS, 30);
+    coin2_money_NumLabel->setPosition(Vec2(size.width*0.4+goldBuyBtn->getContentSize().width*scale+55*scale, size.height*0.61-18*scale));
     coin2_money_NumLabel->setScale(scale);
     goldProductLayer->addChild(coin2_money_NumLabel);
     
@@ -165,12 +166,12 @@ bool ShopPopUpUI::init()
     goldProductLayer->addChild(coin3_Btn);
     
     cocos2d::Label* coin3_gold_NumLabel = Label::createWithBMFont(UtilityHelper::getLocalString("FONT_NUMBER"),"1000");
-    coin3_gold_NumLabel->setPosition(Vec2(size.width*0.4+18*scale, size.height*0.61-heartBuyBtn->getContentSize().width*scale-16*scale));
-    coin3_gold_NumLabel->setScale(scale);
+    coin3_gold_NumLabel->setPosition(Vec2(size.width*0.4+20*scale, size.height*0.61-heartBuyBtn->getContentSize().width*scale-14*scale));
+    coin3_gold_NumLabel->setScale(scale*0.7);
     goldProductLayer->addChild(coin3_gold_NumLabel);
     
-    cocos2d::Label* coin3_money_NumLabel = Label::createWithBMFont(UtilityHelper::getLocalString("FONT_NUMBER"),"150");
-    coin3_money_NumLabel->setPosition(Vec2(size.width*0.4+5*scale, size.height*0.61-heartBuyBtn->getContentSize().width*scale-48*scale));
+    cocos2d::Label* coin3_money_NumLabel = Label::createWithSystemFont("150", FONT_FXZS, 30);
+    coin3_money_NumLabel->setPosition(Vec2(size.width*0.4+5*scale, size.height*0.61-heartBuyBtn->getContentSize().width*scale-46*scale));
     coin3_money_NumLabel->setScale(scale);
     goldProductLayer->addChild(coin3_money_NumLabel);
     
@@ -180,12 +181,12 @@ bool ShopPopUpUI::init()
     goldProductLayer->addChild(coin4_Btn);
     
     cocos2d::Label* coin4_gold_NumLabel = Label::createWithBMFont(UtilityHelper::getLocalString("FONT_NUMBER"),"5000");
-    coin4_gold_NumLabel->setPosition(Vec2(size.width*0.4+goldBuyBtn->getContentSize().width*scale+70*scale, size.height*0.61-heartBuyBtn->getContentSize().width*scale-16*scale));
-    coin4_gold_NumLabel->setScale(scale);
+    coin4_gold_NumLabel->setPosition(Vec2(size.width*0.4+goldBuyBtn->getContentSize().width*scale+75*scale, size.height*0.61-heartBuyBtn->getContentSize().width*scale-12*scale));
+    coin4_gold_NumLabel->setScale(scale*0.7);
     goldProductLayer->addChild(coin4_gold_NumLabel);
     
-    cocos2d::Label* coin4_money_NumLabel = Label::createWithBMFont(UtilityHelper::getLocalString("FONT_NUMBER"),"150");
-    coin4_money_NumLabel->setPosition(Vec2(size.width*0.4+goldBuyBtn->getContentSize().width*scale+55*scale, size.height*0.61-heartBuyBtn->getContentSize().width*scale-48*scale));
+    cocos2d::Label* coin4_money_NumLabel = Label::createWithSystemFont("150", FONT_FXZS, 30);
+    coin4_money_NumLabel->setPosition(Vec2(size.width*0.4+goldBuyBtn->getContentSize().width*scale+55*scale, size.height*0.61-heartBuyBtn->getContentSize().width*scale-46*scale));
     coin4_money_NumLabel->setScale(scale);
     goldProductLayer->addChild(coin4_money_NumLabel);
     
@@ -196,11 +197,11 @@ bool ShopPopUpUI::init()
     goldProductLayer->addChild(coin5_Btn);
     
     cocos2d::Label* coin5_gold_NumLabel = Label::createWithBMFont(UtilityHelper::getLocalString("FONT_NUMBER"),"8000");
-    coin5_gold_NumLabel->setPosition(Vec2(size.width*0.4+26*scale, size.height*0.61-heartBuyBtn->getContentSize().width*2*scale-43*scale));
-    coin5_gold_NumLabel->setScale(scale);
+    coin5_gold_NumLabel->setPosition(Vec2(size.width*0.4+26*scale, size.height*0.61-heartBuyBtn->getContentSize().width*2*scale-48*scale));
+    coin5_gold_NumLabel->setScale(scale*0.7);
     goldProductLayer->addChild(coin5_gold_NumLabel);
     
-    cocos2d::Label* coin5_money_NumLabel = Label::createWithBMFont(UtilityHelper::getLocalString("FONT_NUMBER"),"150");
+    cocos2d::Label* coin5_money_NumLabel = Label::createWithSystemFont("150", FONT_FXZS, 30);
     coin5_money_NumLabel->setPosition(Vec2(size.width*0.4+5*scale, size.height*0.61-heartBuyBtn->getContentSize().width*2*scale-83*scale));
     coin5_money_NumLabel->setScale(scale);
     goldProductLayer->addChild(coin5_money_NumLabel);

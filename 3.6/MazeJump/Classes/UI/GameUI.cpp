@@ -28,9 +28,9 @@ GameUI* GameUI::create()
 
 GameUI::GameUI()
 {
-    conut = 3;
+    m_conut = 3;
     m_maskLayerBg = nullptr;
-    resmueLabel = nullptr;
+    m_countDonwImg = nullptr;
     pauseImg = nullptr;
     helpLayer = nullptr;
     isRecover = false;
@@ -47,6 +47,7 @@ void GameUI::onEnter()
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_RUNNER_PAUSE_RESUME, std::bind(&GameUI::onEventSetResume, this, std::placeholders::_1));
     
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_RUNNER_LOSE, std::bind(&GameUI::onRunnerLose, this, std::placeholders::_1));
+        Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_GAME_PAUSE, std::bind(&GameUI::onPauseEvent, this, std::placeholders::_1));
 }
 void GameUI::onExit()
 {
@@ -54,7 +55,7 @@ void GameUI::onExit()
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_RUNNER_LOSE);
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_RUNNER_RECOVER_PAUSE);
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_RUNNER_PAUSE_RESUME);
-   
+   Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_GAME_PAUSE);
 }
 
 bool GameUI::init()
@@ -90,7 +91,7 @@ bool GameUI::init()
     addChild(skillBtn);
     
     ui::Button* helpBtn = ui::Button::create("question.png");
-    helpBtn->setPosition(Vec2(size.width*0.93, size.height*0.05));
+    helpBtn->setPosition(Vec2(size.width*0.93, size.height*0.03));
     helpBtn->setScale(scale);
     addChild(helpBtn);
     
@@ -105,11 +106,11 @@ bool GameUI::init()
     
     Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener,m_maskLayerBg);
     
-    resmueLabel = Label::createWithBMFont(UtilityHelper::getLocalString("FONT_NUMBER"),"3");
-    resmueLabel->setScale(scale*4);
-    resmueLabel->setPosition(Vec2(size.width*0.5, size.height*0.5));
-    resmueLabel->setVisible(false);
-    addChild(resmueLabel);
+    m_countDonwImg = cocos2d::ui::ImageView::create(StringUtils::format("ui_count_down_%d.png",m_conut));
+    m_countDonwImg->setScale(scale);
+    m_countDonwImg->setPosition(Vec2(size.width*0.5, size.height*0.5));
+    m_countDonwImg->setVisible(false);
+    addChild(m_countDonwImg);
     
  
     
@@ -199,10 +200,20 @@ void GameUI::onPause(cocos2d::Ref *ref)
     
     if (isDead)
         return;
+    showPause();
+}
+
+void GameUI::onPauseEvent(cocos2d::EventCustom *sender)
+{
+    showPause();
+}
+
+void GameUI::showPause()
+{
     isRecover = true;
     UIManager::getInstance()->addPopUp(BasePopUpUI::POPUP_PAUSE);
     UIManager::getInstance()->showPopUp(true,BasePopUpUI::POPUP_HORIZONTAL,CC_CALLBACK_0(GameUI::setPause, this));
-     UIManager::getInstance()->playSound();
+    UIManager::getInstance()->playSound();
 }
 
 void GameUI::setPause()
@@ -233,21 +244,21 @@ void GameUI::onRecoverPause(cocos2d::EventCustom *sender)
 {
     CCLOG("onRecoverPause");
     m_maskLayerBg->setVisible(true);
-    resmueLabel->setVisible(true);
-    conut=3;
+    m_countDonwImg->setVisible(true);
+    m_conut=3;
     this->schedule(schedule_selector(GameUI::onResumeAn), 1.0f);
     
 }
 void GameUI::onResumeAn(float dt)
 {
-    resmueLabel->setString(Value(--conut).asString());
-    CCLOG("count:%d",conut);
-    if (conut<=0) {
+    m_countDonwImg->loadTexture(StringUtils::format("ui_count_down_%d.png",--m_conut));
+    CCLOG("count:%d",m_conut);
+    if (m_conut<=0) {
 
             setResume();
             m_maskLayerBg->setVisible(false);
-            resmueLabel->setVisible(false);
-            resmueLabel->setString("3");
+            m_countDonwImg->setVisible(false);
+            m_countDonwImg->loadTexture(StringUtils::format("ui_count_down_%d.png",3));
             isRecover = false;
             unschedule(schedule_selector(GameUI::onResumeAn));
         
@@ -256,7 +267,7 @@ void GameUI::onResumeAn(float dt)
 void GameUI::onRunnerLose(cocos2d::EventCustom* sender)
 {
     isDead = true;
-    runAction(Sequence::createWithTwoActions(DelayTime::create(0.3), CCCallFunc::create(CC_CALLBACK_0(GameUI::onDelayTimeRunnerLose, this))));
+    runAction(Sequence::createWithTwoActions(DelayTime::create(0.5), CCCallFunc::create(CC_CALLBACK_0(GameUI::onDelayTimeRunnerLose, this))));
 }
 void GameUI::onDelayTimeRunnerLose()
 {

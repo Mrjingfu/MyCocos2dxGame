@@ -24,15 +24,19 @@ public:
     
      virtual bool onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event) override;
 private:
-    int conut;
+    int m_conut;
     bool isRecover;
     bool isShwoHelp;
     bool isDead;
     cocos2d::Layer* m_maskLayerBg;
-    cocos2d::Label* resmueLabel;
+    cocos2d::ui::ImageView* m_countDonwImg;
     cocos2d::ui::Button* pauseImg;
     cocos2d::LayerColor* helpLayer;
 
+    void onPauseEvent(cocos2d::EventCustom* sender);
+    
+    void showPause();
+    
     void onRecoverPause(cocos2d::EventCustom* sender);
     void onRunnerLose(cocos2d::EventCustom* sender);
     void onDelayTimeRunnerLose();

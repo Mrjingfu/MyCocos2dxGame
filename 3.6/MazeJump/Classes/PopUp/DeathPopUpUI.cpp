@@ -10,6 +10,7 @@
 #include "GameConst.h"
 #include "MainScene.h"
 #include "MenuScene.h"
+#include "RunController.h"
 #include "UIManager.h"
 #include "storage/local-storage/LocalStorage.h"
 USING_NS_CC;
@@ -83,8 +84,7 @@ void DeathPopUpUI::onHome(cocos2d::Ref *ref)
 {
      UIManager::getInstance()->playSound();
     UIManager::getInstance()->hidePopUp(false);
-    auto scene = MenuScene::createScene();
-    Director::getInstance()->replaceScene(scene);
+    RunController::getInstance()->switchToMenu();
 
 }
 void DeathPopUpUI::onShop(cocos2d::Ref *ref)

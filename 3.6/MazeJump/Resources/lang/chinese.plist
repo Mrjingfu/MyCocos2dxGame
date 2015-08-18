@@ -29,7 +29,7 @@
 	<key>RESTORE_FAILED</key>
 	<string>恢复购买失败！</string>
 	<key>FONT_NUMBER</key>
-	<string>DFWaWaW5-GB.fnt</string>
+	<string>comic_sans_ms.fnt</string>
 	<key>UI_TITLE_TEX</key>
 	<string>ui_title1.png</string>
 	<key>UI_START_BTN_NEW</key>

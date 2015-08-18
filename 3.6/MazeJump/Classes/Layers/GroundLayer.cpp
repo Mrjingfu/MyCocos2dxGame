@@ -500,6 +500,33 @@ void GroundLayer::onTouchesBegan(const std::vector<Touch*>& touches, Event *even
             }
         }
         
+        bool isCheckTouchDown = false;
+        bool isCheckToucLeft = false;
+        bool isCheckToucRight = false;
+        bool isCheckToucUp = false;
+        
+        if (m_pArrowDown || m_pArrowLeft || m_pArrowRight || m_pArrowUp) {
+            
+            if(ray.intersects(m_pArrowDown->getAABB()) && m_pArrowDown->getType() == Arrow::AT_DOWN)
+            {
+               isCheckTouchDown = true;
+            }
+            if(ray.intersects(m_pArrowLeft->getAABB()) && m_pArrowLeft->getType() == Arrow::AT_LEFT)
+            {
+                isCheckToucLeft = true;
+            }
+            if(ray.intersects(m_pArrowRight->getAABB()) && m_pArrowRight->getType() == Arrow::AT_RIGHT)
+            {
+                isCheckToucRight = true;
+            }
+            if(ray.intersects(m_pArrowUp->getAABB()) && m_pArrowUp->getType() == Arrow::AT_UP)
+            {
+                isCheckToucUp = true;
+            }
+            checkSildeHandle(isCheckTouchDown, isCheckToucLeft, isCheckToucRight, isCheckToucUp);
+        }
+        
+        
     }
 }
 void GroundLayer::onTouchesMoved(const std::vector<Touch*>& touches, Event *event)
@@ -692,12 +719,14 @@ void GroundLayer::generateDecorator(GroundCell* cell)
     int pattentIndex = GameController::getInstance()->getDifficultLevel();
     if (pattentIndex == 0)
         pattentIndex =1;
+    
+    
         int index = cell->getIndexY()*m_MapSize.height + cell->getIndexX();
     
         if(pattentIndex <= 11)
         {
-            float percent1 = 0.03*pattentIndex;
-            float percent2 = 0.01*pattentIndex;
+            float percent1 = 0.003*pattentIndex;
+            float percent2 = 0.001*pattentIndex;
             float percent3 = 1.0 - percent1 - percent2;
             AlisaMethod* am = AlisaMethod::create(percent1,percent2,percent3,-1.0, NULL);
             if(am)
@@ -735,12 +764,11 @@ void GroundLayer::generateDecorator(GroundCell* cell)
             }
         }else
         {
-            float percent1 = 0.03*pattentIndex;
-            float percent2 = 0.01*pattentIndex;
-            float percent3 = 0.02*pattentIndex;
-            float percent4 = 0.02*pattentIndex;
-            float percent5 = 1.0 - percent1 - percent2 - percent3 - percent4 - percent5;
-            AlisaMethod* am = AlisaMethod::create(percent1,percent2,percent3,percent4,percent5,-1.0, NULL);
+            float percent1 = 0.003*pattentIndex;
+            float percent2 = 0.001*pattentIndex;
+            float percent3 = 0.001*pattentIndex;
+            float percent4 = 1.0 - percent1 - percent2 - percent3  - percent4;
+            AlisaMethod* am = AlisaMethod::create(percent1,percent2,percent3,percent4,-1.0, NULL);
             if(am)
             {
                 if(am->getRandomIndex() == 0)
@@ -784,9 +812,7 @@ void GroundLayer::generateDecorator(GroundCell* cell)
                         gold->runAction(repeat);
                     }
                 }
-                else if(am->getRandomIndex() == 3)
-                {
-                }
+               
             }
         }
 }
@@ -807,18 +833,21 @@ void GroundLayer::decoratorOpe(Node* node,GroundCell* cell)
             switch (m_pCurrentCell->getDetype()) {
                 case Decorator::DecoratorType::DT_GOLD:
                 {
-                localStorageSetItem(USER_GOLD_NUM, Value(Value(localStorageGetItem(USER_GOLD_NUM)).asInt()+1).asString());
+                    cocos2d::experimental::AudioEngine::play2d("pickupgold.wav");
+                    localStorageSetItem(USER_GOLD_NUM, Value(Value(localStorageGetItem(USER_GOLD_NUM)).asInt()+1).asString());
                     Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_GOLD_CHANGE);
                 }
                     break;
                 case Decorator::DecoratorType::DT_HEART:
                 {
+                    cocos2d::experimental::AudioEngine::play2d("pickupheart.wav");
                     localStorageSetItem(USER_HEART_NUM, Value(Value(localStorageGetItem(USER_HEART_NUM)).asInt()+1).asString());
                     Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_HEART_CHANGE);
                 }
                     break;
                 case Decorator::DecoratorType::DT_GOLD_BIG:
                 {
+                    cocos2d::experimental::AudioEngine::play2d("pickupgold.wav");
                     localStorageSetItem(USER_GOLD_NUM, Value(Value(localStorageGetItem(USER_GOLD_NUM)).asInt()+5).asString());
                     Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_GOLD_CHANGE);
                 }

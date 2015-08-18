@@ -10,6 +10,7 @@
 #include "GameConst.h"
 #include "UtilityHelper.h"
 #include "UIManager.h"
+#include "AudioEngine.h"
 #include "storage/local-storage/LocalStorage.h"
 USING_NS_CC;
 
@@ -59,21 +60,21 @@ bool GroundGameUI::init()
     addChild(awardImg);
   
     Label* goldRewardTv = Label::createWithBMFont(UtilityHelper::getLocalString("FONT_NUMBER"),Value(GameController::getInstance()->getCurrentGoldReward()).asString());
-    goldRewardTv->setAnchorPoint(Vec2(1, 0.5));
-    goldRewardTv->setPosition(Vec2(size.width*0.6, size.height*0.16));
+    goldRewardTv->setAnchorPoint(Vec2::ANCHOR_MIDDLE_LEFT);
+    goldRewardTv->setPosition(Vec2(size.width*0.5, size.height*0.16));
     goldRewardTv->setScale(scale);
     goldRewardTv->setHorizontalAlignment(TextHAlignment::RIGHT);
    addChild(goldRewardTv);
     
     Label* heartRewardTv = Label::createWithBMFont(UtilityHelper::getLocalString("FONT_NUMBER"),Value(GameController::getInstance()->getCurrentHeartReward()).asString());
-    heartRewardTv->setAnchorPoint(Vec2(1, 0.5));
-    heartRewardTv->setPosition(Vec2(size.width*0.6, size.height*0.07));
+    heartRewardTv->setAnchorPoint(Vec2::ANCHOR_MIDDLE_LEFT);
+    heartRewardTv->setPosition(Vec2(size.width*0.5, size.height*0.07));
     heartRewardTv->setScale(scale);
     heartRewardTv->setHorizontalAlignment(TextHAlignment::RIGHT);
    addChild(heartRewardTv);
 
     ui::Button* helpBtn = ui::Button::create("question.png");
-    helpBtn->setPosition(Vec2(size.width*0.93, size.height*0.05));
+    helpBtn->setPosition(Vec2(size.width*0.93, size.height*0.03));
     helpBtn->setScale(scale);
     addChild(helpBtn);
     
@@ -137,8 +138,12 @@ void GroundGameUI::onHelp(Ref* ref)
 void GroundGameUI::onMazeJumpWin(cocos2d::EventCustom *sender)
 {
     CCLOG("onMazeJumpWin");
-    localStorageSetItem(USER_GOLD_NUM, Value(Value(localStorageGetItem(USER_GOLD_NUM)).asInt()+ GameController::getInstance()->getCurrentGoldReward()).asString());
-        localStorageSetItem(USER_GOLD_NUM, Value(Value(localStorageGetItem(USER_HEART_NUM)).asInt()+ GameController::getInstance()->getCurrentHeartReward()).asString());
+    cocos2d::experimental::AudioEngine::play2d("mazejump_sucess.wav", false, 0.5f);
+    int goldReward = GameController::getInstance()->getCurrentGoldReward();
+    int heartReward = GameController::getInstance()->getCurrentHeartReward();
+    CCLOG("goldreward:%d,heartReward%d",goldReward,heartReward);
+    localStorageSetItem(USER_GOLD_NUM, Value(Value(localStorageGetItem(USER_GOLD_NUM)).asInt()+goldReward).asString());
+        localStorageSetItem(USER_HEART_NUM, Value(Value(localStorageGetItem(USER_HEART_NUM)).asInt()+ heartReward).asString());
     Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_GOLD_CHANGE);
     Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_HEART_CHANGE);
     UIManager::getInstance()->addPopUp(BasePopUpUI::POPUP_GROUND_WIN);
@@ -148,6 +153,7 @@ void GroundGameUI::onMazeJumpWin(cocos2d::EventCustom *sender)
 void GroundGameUI::onMazeJumpLose(cocos2d::EventCustom *sender)
 {
     CCLOG("onMazeJumpLose");
+    cocos2d::experimental::AudioEngine::play2d("mazejump_failed.wav", false, 0.6f);
     UIManager::getInstance()->addPopUp(BasePopUpUI::POPUP_GROUND_LOSE);
     UIManager::getInstance()->showPopUp();
 }

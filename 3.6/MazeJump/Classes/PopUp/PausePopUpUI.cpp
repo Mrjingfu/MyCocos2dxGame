@@ -10,6 +10,7 @@
 #include "GameConst.h"
 #include "MenuScene.h"
 #include "UIManager.h"
+#include "RunController.h"
 #include "storage/local-storage/LocalStorage.h"
 USING_NS_CC;
 
@@ -77,8 +78,9 @@ void PausePopUpUI::onHome(cocos2d::Ref *ref)
      UIManager::getInstance()->playSound();
     UIManager::getInstance()->hidePopUp(false);
     Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_RUNNER_PAUSE_RESUME);
-    auto scene = MenuScene::createScene();
-    Director::getInstance()->replaceScene(scene);
+//    auto scene = MenuScene::createScene();
+//    Director::getInstance()->replaceScene(scene);
+    RunController::getInstance()->switchToMenu();
 }
 void PausePopUpUI::onShop(cocos2d::Ref *ref)
 {

@@ -49,6 +49,7 @@ public:
     void switchToMazeJump();
     void switchToMenu();
     
+    
     bool isInMazeJump() const { return m_bInMazeJump; }
     
     void addPlayerExplosion();

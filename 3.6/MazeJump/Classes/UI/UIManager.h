@@ -35,6 +35,7 @@ public:
     void destory();
     void removePopUp(bool isCallBack,BasePopUpUI* popUi);
 
+    cocos2d::Node* getParent(){return m_parent;};
     void playSound();
     
     BasePopUpUI* getPopUpUI(BasePopUpUI::PopUp_UI popid);

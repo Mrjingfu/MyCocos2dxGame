@@ -51,8 +51,8 @@ bool GameInfoUI::init()
     addChild(glodView);
     
     goldTv = Label::createWithBMFont(UtilityHelper::getLocalString("FONT_NUMBER"),Value(Value(localStorageGetItem(USER_GOLD_NUM)).asInt()).asString(),TextHAlignment::RIGHT);
-    goldTv->setAnchorPoint(Vec2::ANCHOR_MIDDLE_RIGHT);
-    goldTv->setPosition(Vec2(size.width*0.3,size.height*0.95 ));
+    goldTv->setAnchorPoint(Vec2::ANCHOR_MIDDLE_LEFT);
+    goldTv->setPosition(Vec2(size.width*0.18,size.height*0.95 +5*scale ));
     goldTv->setScale(scale);
     addChild(goldTv);
     
@@ -63,8 +63,8 @@ bool GameInfoUI::init()
     addChild(heartView);
     
     heartTv = Label::createWithBMFont(UtilityHelper::getLocalString("FONT_NUMBER"),Value(Value(localStorageGetItem(USER_HEART_NUM)).asInt()).asString(),TextHAlignment::RIGHT);
-    heartTv->setAnchorPoint(Vec2::ANCHOR_MIDDLE_RIGHT);
-    heartTv->setPosition(Vec2(size.width*0.3, size.height*0.95-glodView->getContentSize().height*scale - 5*scale));
+    heartTv->setAnchorPoint(Vec2::ANCHOR_MIDDLE_LEFT);
+    heartTv->setPosition(Vec2(size.width*0.18, size.height*0.95-glodView->getContentSize().height*scale - 3*scale));
     heartTv->setScale(scale);
     addChild(heartTv);
     

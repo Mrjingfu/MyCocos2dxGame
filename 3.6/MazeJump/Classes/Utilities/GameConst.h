@@ -15,10 +15,13 @@ static const std::string USER_GOLD_NUM = "UserGoldNum";
 static const std::string USER_ROLE_DATA  = "UserRoleData";
 
 ///Font
-static std::string FONT_FXZS = "FZXS12.TTF";
+static std::string FONT_FXZS = "comic_sans_ms.ttf";
 
 
 //UI
+
+static const int LAYER_WHITE = 3;
+
 static const std::string LAYER_NAME_UI = "UILayer";
 static const int LAYER_UI = 0;
 
@@ -35,6 +38,7 @@ static const int LAYER_DIALOG = 2;
 
 
 ////Event
+static const std::string EVENT_GAME_PAUSE = "GAME_PAUSE";
 static const std::string EVENT_GOLD_CHANGE = "GOLD_CHANGE";
 static const std::string EVENT_HEART_CHANGE = "HEART_CHANGE";
 static const std::string EVENT_MAX_DISTANCE_CHANGE = "MAX_DISTANCE_CHANGE";

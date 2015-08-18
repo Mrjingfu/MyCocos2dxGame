@@ -10,6 +10,7 @@
 #include "GameConst.h"
 #include "MainScene.h"
 #include "UIManager.h"
+#include "MenuScene.h"
 #include "storage/local-storage/LocalStorage.h"
 USING_NS_CC;
 
@@ -137,23 +138,29 @@ void StarPopUpUI::onPlayGame(cocos2d::Ref *ref)
 }
 void StarPopUpUI::onHidePop()
 {
+
+    MenuScene* menuScene = static_cast<MenuScene*>(UIManager::getInstance()->getParent());
     if (isContinue) {
         localStorageSetItem(USER_HEART_NUM, Value(Value(localStorageGetItem(USER_HEART_NUM)).asInt()-5).asString());
         localStorageSetItem(USER_LAST_LEVEL, localStorageGetItem(USER_MAX_LEVEL));
-        auto scene = MainScene::createScene();
-        Director::getInstance()->replaceScene(scene);
+//        auto scene = MainScene::createScene();
+//        Director::getInstance()->replaceScene(scene);
+        menuScene->fadeOutScene();
         isContinue = false;
     }else
     {
         localStorageSetItem(USER_LAST_LEVEL, Value(0).asString());
-        auto scene = MainScene::createScene();
-        Director::getInstance()->replaceScene(scene);
+//        auto scene = MainScene::createScene();
+//        Director::getInstance()->replaceScene(scene);
+        menuScene->fadeOutScene();
     }
 
 }
 void StarPopUpUI::onResumeGame(cocos2d::Ref *ref)
 {
     CCLOG("onResumeGame");
+    
+    
      UIManager::getInstance()->playSound();
     int heartNum = Value(localStorageGetItem(USER_HEART_NUM)).asInt();
     if (heartNum>=5) {

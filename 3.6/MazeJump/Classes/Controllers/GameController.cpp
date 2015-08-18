@@ -12,6 +12,7 @@
 #include "AlisaMethod.h"
 #include "MainScene.h"
 #include "UIManager.h"
+#include "GameConst.h"
 USING_NS_CC;
 
 GameController* g_pGameControllerInstance = nullptr;
@@ -47,7 +48,7 @@ bool GameController::init(Layer* pMainLayer,int difficultLevel)
     m_pWhiteLayer = LayerColor::create(Color4B::WHITE);
     if(!m_pWhiteLayer)
         return false;
-    m_pMainLayer->addChild(m_pWhiteLayer);
+    m_pMainLayer->addChild(m_pWhiteLayer,LAYER_WHITE);
     EaseExponentialOut* fadeOut = EaseExponentialOut::create(FadeOut::create(1.0f));
     m_pWhiteLayer->runAction(fadeOut);
     
@@ -81,7 +82,7 @@ bool GameController::init(Layer* pMainLayer,int difficultLevel)
     m_pMainLayer->addChild(directionLight);
 
     
-   
+
     return true;
 }
 int GameController::randomLevel()
@@ -176,7 +177,8 @@ void GameController::switchToMainScene()
 }
 int GameController::getCurrentGoldReward()
 {
-    return m_currentLevel*m_currentLevel+5;
+    
+    return m_difficultLevel*m_difficultLevel - (m_difficultLevel*m_difficultLevel)%10 + m_difficultLevel*5+10;
 }
 int GameController::getCurrentHeartReward()
 {

@@ -82,7 +82,7 @@ bool RunController::init(Layer* pMainLayer)
     m_pWhiteLayer = LayerColor::create(Color4B::WHITE);
     if(!m_pWhiteLayer)
         return false;
-    m_pMainLayer->addChild(m_pWhiteLayer);
+    m_pMainLayer->addChild(m_pWhiteLayer,LAYER_WHITE);
     EaseExponentialOut* fadeOut = EaseExponentialOut::create(FadeOut::create(1.0f));
     m_pWhiteLayer->runAction(fadeOut);
     

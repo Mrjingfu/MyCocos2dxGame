@@ -61,7 +61,7 @@ bool MenuScene::init()
     m_pWhiteLayer = LayerColor::create(Color4B::WHITE);
     if(!m_pWhiteLayer)
         return false;
-    this->addChild(m_pWhiteLayer);
+    this->addChild(m_pWhiteLayer,LAYER_WHITE);
     EaseExponentialOut* fadeOut = EaseExponentialOut::create(FadeOut::create(1.0f));
     m_pWhiteLayer->runAction(fadeOut);
 
@@ -234,6 +234,18 @@ void MenuScene::switchToMainScene()
     auto scene = MainScene::createScene();
     Director::getInstance()->replaceScene(scene);
 }
+
+void MenuScene::fadeOutScene()
+{
+    if(m_pWhiteLayer)
+    {
+        EaseExponentialOut* fadeIn = EaseExponentialOut::create(FadeIn::create(1.0f));
+        CallFunc* callFunc = CallFunc::create(CC_CALLBACK_0(MenuScene::switchToMainScene, this));
+        Sequence* sequence = Sequence::create( fadeIn, callFunc, NULL);
+        m_pWhiteLayer->runAction(sequence);
+    }
+}
+
 void MenuScene::startGame()
 {
     int maxLevel = Value(localStorageGetItem(USER_MAX_LEVEL)).asInt();
@@ -243,13 +255,7 @@ void MenuScene::startGame()
         m_bStartGame=false;
     }else
     {
-        if(m_pWhiteLayer)
-        {
-            EaseExponentialOut* fadeIn = EaseExponentialOut::create(FadeIn::create(1.0f));
-            CallFunc* callFunc = CallFunc::create(CC_CALLBACK_0(MenuScene::switchToMainScene, this));
-            Sequence* sequence = Sequence::create( fadeIn, callFunc, NULL);
-            m_pWhiteLayer->runAction(sequence);
-        }
+        fadeOutScene();
     }
 
 }

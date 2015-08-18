@@ -26,6 +26,8 @@ public:
     // implement the "static create()" method manually
     CREATE_FUNC(MenuScene);
     
+    void fadeOutScene();
+    
     virtual void onEnter();
     virtual void onExit();
     virtual void update(float delta);
