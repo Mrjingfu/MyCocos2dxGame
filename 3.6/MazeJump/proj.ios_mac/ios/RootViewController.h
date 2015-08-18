@@ -32,4 +32,6 @@
 - (BOOL) prefersStatusBarHidden;
 - (void) showRateAppViewCH;
 - (void) showRateAppViewEN;
+
+- (void) openItunesURL;
 @end

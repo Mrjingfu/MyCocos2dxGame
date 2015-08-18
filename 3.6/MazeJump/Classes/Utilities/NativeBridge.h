@@ -29,6 +29,7 @@ public:
 //    void showIndicatorView();
 //    void hideIndicatorView();
     void showRateAppView();
+    void openItunesURL();
 //    void logWithUserData();
 private:
 #if CC_TARGET_PLATFORM == CC_PLATFORM_IOS

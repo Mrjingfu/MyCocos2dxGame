@@ -16,7 +16,7 @@ using namespace experimental;
 Runner* Runner::create()
 {
     auto runner = new (std::nothrow) Runner();
-    if (runner && runner->initWithFile("girl1.c3b"))
+    if (runner && runner->initWithFile("question.c3b"))
     {
         runner->_contentSize = runner->getBoundingBox().size;
         runner->m_fRadius = runner->_contentSize.width*0.5f;

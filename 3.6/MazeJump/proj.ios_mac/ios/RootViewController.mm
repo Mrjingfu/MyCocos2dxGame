@@ -119,6 +119,17 @@
                                 rateLaterButtonText:rateLater
                                 rateNowButtonText:rateNow];
 }
+
+- (void)openItunesURL {
+    NSURL *url = [NSURL URLWithString:APP_STORE_LINK];
+    
+    BOOL launchSuccess = [[UIApplication sharedApplication] openURL:url];
+    
+    if(launchSuccess == NO)
+    {
+        NSLog(@"RateThisAppDialog :: Failed to open URL (this is normal in the iOS Simulator ...)");
+    }
+}
 - (void)didReceiveMemoryWarning {
     // Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];

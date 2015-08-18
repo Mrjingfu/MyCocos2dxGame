@@ -93,6 +93,14 @@ void NativeBridge::showRateAppView()
     }
 #endif
 }
+void NativeBridge::openItunesURL()
+{
+#if CC_TARGET_PLATFORM == CC_PLATFORM_IOS
+    CCLOG("openItunesURL");
+    if[(mViewController != nil)
+       [mViewController openItunesURL];
+#endif
+}
 //void NativeBridge::logWithUserData()
 //{
 //#if CC_TARGET_PLATFORM == CC_PLATFORM_IOS

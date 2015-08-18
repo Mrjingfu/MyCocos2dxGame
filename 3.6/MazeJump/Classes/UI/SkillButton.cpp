@@ -111,7 +111,7 @@ void SkillButton::onRainbowValueChange(cocos2d::EventCustom* sender)
 {
     if(sender && m_pProgressTimer)
     {
-        m_fCurrentRainbowValue -=0.25f;
+        m_fCurrentRainbowValue -=0.5f;
         m_pProgressTimer->setPercentage(m_fCurrentRainbowValue);
         if(m_fCurrentRainbowValue <= 75.0f)
         {

@@ -16,6 +16,7 @@
 #include "storage/local-storage/LocalStorage.h"
 #include "GameCenterController.h"
 #include "AudioEngine.h"
+#include "NativeBridge.h"
 USING_NS_CC;
 using namespace experimental;
 
@@ -120,4 +121,5 @@ void MainUI::onSound(cocos2d::Ref *ref)
 void MainUI::onComment(cocos2d::Ref *ref)
 {
     UIManager::getInstance()->playSound();
+    NativeBridge::getInstance()->openItunesURL();
 }
