@@ -281,7 +281,21 @@ public:
      */
     static AudioProfile* getProfile(const std::string &profileName);
 
+    ///lwwhb add
+    static bool isEnable()  { return m_bEnable; }
+    static void setEnable(bool enable)
+    {
+        m_bEnable = enable;
+        if(m_bEnable)
+            resumeAll();
+        else
+            pauseAll();
+    }
+    ///
 protected:
+    ////lwwhb add
+    static bool            m_bEnable;
+    ////
     
     static void remove(int audioID);
     

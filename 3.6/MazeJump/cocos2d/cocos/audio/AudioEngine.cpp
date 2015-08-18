@@ -52,6 +52,10 @@ using namespace cocos2d::experimental;
 const int AudioEngine::INVALID_AUDIO_ID = -1;
 const float AudioEngine::TIME_UNKNOWN = -1.0f;
 
+////lwwhb add
+bool AudioEngine::m_bEnable = true;
+////
+
 //audio file path,audio IDs
 std::unordered_map<std::string,std::list<int>> AudioEngine::_audioPathIDMap;
 //profileName,ProfileHelper
@@ -88,7 +92,10 @@ bool AudioEngine::lazyInit()
 int AudioEngine::play2d(const std::string& filePath, bool loop, float volume, const AudioProfile *profile)
 {
     int ret = AudioEngine::INVALID_AUDIO_ID;
-
+    ////lwwhb add
+    if(!m_bEnable)
+        return ret;
+    ///
     do {
         if ( !lazyInit() ){
             break;
@@ -205,6 +212,10 @@ void AudioEngine::pauseAll()
 
 void AudioEngine::resume(int audioID)
 {
+    ////lwwhb add
+    if(!m_bEnable)
+        return;
+    ///
     auto it = _audioIDInfoMap.find(audioID);
     if (it != _audioIDInfoMap.end() && it->second.state == AudioState::PAUSED){
         _audioEngineImpl->resume(audioID);
@@ -214,6 +225,10 @@ void AudioEngine::resume(int audioID)
 
 void AudioEngine::resumeAll()
 {
+    ///lwwhb add
+    if(!m_bEnable)
+        return;
+    ///
     auto itEnd = _audioIDInfoMap.end();
     for (auto it = _audioIDInfoMap.begin(); it != itEnd; ++it)
     {

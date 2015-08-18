@@ -191,13 +191,11 @@ void MenuScene::onEnter()
     UIManager::getInstance()->init(this);
     UIManager::getInstance()->setGameUi(UIManager::UI_MAIN);
     AudioEngine::play2d("rainbow.wav", false, 0.5f);
-    m_nBgID = AudioEngine::play2d("menubg.mp3", true, 0.5f);
     
     NativeBridge::getInstance()->showRateAppView();
 }
 void MenuScene::onExit()
 {
-    AudioEngine::stop(m_nBgID);
     unscheduleUpdate();
     UIManager::getInstance()->destory();
     Layer::onExit();

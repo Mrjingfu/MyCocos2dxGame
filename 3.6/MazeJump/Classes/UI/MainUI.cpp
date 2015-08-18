@@ -15,7 +15,9 @@
 #include "UtilityHelper.h"
 #include "storage/local-storage/LocalStorage.h"
 #include "GameCenterController.h"
+#include "AudioEngine.h"
 USING_NS_CC;
+using namespace experimental;
 
 MainUI* MainUI::create()
 {
@@ -31,11 +33,11 @@ MainUI* MainUI::create()
 
 MainUI::MainUI()
 {
-    m_sound = true;
-
+    m_nBgID = AudioEngine::INVALID_AUDIO_ID;
 }
 MainUI::~MainUI()
 {
+    AudioEngine::stop(m_nBgID);
 }
 
 bool MainUI::init()
@@ -49,8 +51,13 @@ bool MainUI::init()
     titleView->setScale(scale);
     addChild(titleView);
     
-    
-    soundBtn = ui::Button::create("btn_sounds_on.png");
+    if(cocos2d::experimental::AudioEngine::isEnable())
+    {
+        soundBtn = ui::Button::create("btn_sounds_on.png");
+        m_nBgID = AudioEngine::play2d("menubg.mp3", true, 0.5f);
+    }
+    else
+        soundBtn = ui::Button::create("btn_sounds_off.png");
     soundBtn->setScale(scale);
     soundBtn->setPosition(Vec2(size.width*0.9, size.height*0.93));
     addChild(soundBtn);
@@ -96,16 +103,16 @@ void MainUI::onRank(cocos2d::Ref *ref)
 void MainUI::onSound(cocos2d::Ref *ref)
 {
      UIManager::getInstance()->playSound();
-    if(m_sound)
+    if(cocos2d::experimental::AudioEngine::isEnable())
     {
-        cocos2d::experimental::AudioEngine::pauseAll();
+        cocos2d::experimental::AudioEngine::setEnable(false);
         soundBtn->loadTextureNormal("btn_sounds_off.png");
-        m_sound = false;
     }else
     {
-        cocos2d::experimental::AudioEngine::resumeAll();
+        cocos2d::experimental::AudioEngine::setEnable(true);
         soundBtn->loadTextureNormal("btn_sounds_on.png");
-        m_sound = true;
+        if(m_nBgID == AudioEngine::INVALID_AUDIO_ID)
+            m_nBgID = AudioEngine::play2d("menubg.mp3", true, 0.5f);
     }
 }
 void MainUI::onComment(cocos2d::Ref *ref)

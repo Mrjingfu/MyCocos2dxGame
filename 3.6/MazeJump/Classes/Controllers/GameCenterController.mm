@@ -23,7 +23,9 @@ GameCenterController* GameCenterController::getInstance()
 
 GameCenterController::GameCenterController()
 {
+#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS )
     m_AchievementDict = FileUtils::getInstance()->getValueMapFromFile("achievement.plist");
+#endif
 }
 
 GameCenterController::~GameCenterController()

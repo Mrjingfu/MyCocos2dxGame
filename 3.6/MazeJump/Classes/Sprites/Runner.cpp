@@ -382,7 +382,7 @@ void Runner::onEnterMoveDrop()
 {
     AudioEngine::play2d("drop.wav");
     EaseSineOut* moveTo = EaseSineOut::create(MoveTo::create(1.0f, Vec3(getPositionX(), -50, getPositionZ())));
-    EaseSineOut* scaleTo = EaseSineOut::create(ScaleTo::create(0.375f, 0.3f));
+    EaseSineOut* scaleTo = EaseSineOut::create(ScaleTo::create(0.3f, 0.375f));
     DelayTime* delayTime = DelayTime::create(0.5f);
     EaseSineOut* fadeOut = EaseSineOut::create(FadeOut::create(0.5f));
     Sequence* sequece = Sequence::create(delayTime, fadeOut, NULL);
