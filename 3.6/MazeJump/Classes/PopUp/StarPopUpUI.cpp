@@ -55,7 +55,7 @@ bool StarPopUpUI::init()
     
     
     ui::ImageView* distanceView = ui::ImageView::create(UtilityHelper::getLocalString("UI_GAME_BEST_TV"));
-    distanceView->setPosition(Vec2(size.width*0.37,size.height*0.44));
+    distanceView->setPosition(Vec2(size.width*0.39,size.height*0.44));
     distanceView->setScale(scale);
     m_dialogLayer->addChild(distanceView);
    
@@ -83,14 +83,14 @@ bool StarPopUpUI::init()
 
     
     ui::Button* playBtn = ui::Button::create(UtilityHelper::getLocalString("UI_START_BTN_NEW"));
-    playBtn->setPosition(Vec2(size.width*0.36, size.height*0.38));
+    playBtn->setPosition(Vec2(size.width*0.36, size.height*0.36));
     
     playBtn->setScale(scale*1.2);
     playBtn->addClickEventListener(CC_CALLBACK_1(StarPopUpUI::onPlayGame, this));
     m_dialogLayer->addChild(playBtn);
 
     ui::Button* resumeBtn = ui::Button::create(UtilityHelper::getLocalString("UI_START_BTN_CONTINUE"));
-    resumeBtn->setPosition(Vec2(size.width*0.36+playBtn->getContentSize().width*scale+40*scale,size.height*0.38));
+    resumeBtn->setPosition(Vec2(size.width*0.36+playBtn->getContentSize().width*scale+40*scale,size.height*0.36));
     resumeBtn->setScale(scale*1.2);
     resumeBtn->addClickEventListener(CC_CALLBACK_1(StarPopUpUI::onResumeGame, this));
 

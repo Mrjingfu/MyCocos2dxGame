@@ -53,7 +53,7 @@ bool GameInfoUI::init()
     goldTv = Label::createWithBMFont(UtilityHelper::getLocalString("FONT_NUMBER"),Value(Value(localStorageGetItem(USER_GOLD_NUM)).asInt()).asString(),TextHAlignment::RIGHT);
     goldTv->setAnchorPoint(Vec2::ANCHOR_MIDDLE_RIGHT);
     goldTv->setPosition(Vec2(size.width*0.3,size.height*0.95 ));
-    goldTv->setScale(scale*0.5);
+    goldTv->setScale(scale);
     addChild(goldTv);
     
     
@@ -65,7 +65,7 @@ bool GameInfoUI::init()
     heartTv = Label::createWithBMFont(UtilityHelper::getLocalString("FONT_NUMBER"),Value(Value(localStorageGetItem(USER_HEART_NUM)).asInt()).asString(),TextHAlignment::RIGHT);
     heartTv->setAnchorPoint(Vec2::ANCHOR_MIDDLE_RIGHT);
     heartTv->setPosition(Vec2(size.width*0.3, size.height*0.95-glodView->getContentSize().height*scale - 5*scale));
-    heartTv->setScale(scale*0.5);
+    heartTv->setScale(scale);
     addChild(heartTv);
     
     
@@ -85,7 +85,7 @@ bool GameInfoUI::init()
     
      m_maxLevelTv =Label::createWithBMFont(UtilityHelper::getLocalString("FONT_NUMBER"),Value(Value(localStorageGetItem(USER_MAX_LEVEL)).asInt()).asString(),TextHAlignment::RIGHT);
     m_maxLevelTv->setPosition(Vec2(size.width*0.72, size.height*0.948));
-    m_maxLevelTv->setScale(scale*0.5);
+    m_maxLevelTv->setScale(scale);
     m_maxLevelTv->setAnchorPoint(Vec2(1, 0.5));
     maxLayer->addChild(m_maxLevelTv);
     
@@ -98,7 +98,7 @@ bool GameInfoUI::init()
     
     m_CurrentLevelTv = Label::createWithBMFont(UtilityHelper::getLocalString("FONT_NUMBER"),Value(Value(localStorageGetItem(USER_LAST_LEVEL)).asInt()).asString());
     m_CurrentLevelTv->setPosition(Vec2(size.width*0.72, size.height*0.898));
-    m_CurrentLevelTv->setScale(scale*0.5);
+    m_CurrentLevelTv->setScale(scale);
     m_CurrentLevelTv->setAnchorPoint(Vec2(1, 0.5));
     currentLayer->addChild(m_CurrentLevelTv);
     

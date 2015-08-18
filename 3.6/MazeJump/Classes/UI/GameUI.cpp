@@ -106,7 +106,7 @@ bool GameUI::init()
     Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener,m_maskLayerBg);
     
     resmueLabel = Label::createWithBMFont(UtilityHelper::getLocalString("FONT_NUMBER"),"3");
-    resmueLabel->setScale(scale*2);
+    resmueLabel->setScale(scale*4);
     resmueLabel->setPosition(Vec2(size.width*0.5, size.height*0.5));
     resmueLabel->setVisible(false);
     addChild(resmueLabel);

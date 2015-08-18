@@ -124,7 +124,7 @@ bool RolePopUpUI::init()
     
     ui::ListView* uiListView = ui::ListView::create();
     uiListView->setAnchorPoint(Vec2(0.5,0.5));
-    uiListView->setContentSize(Size(m_popupBgLayer->getContentSize().width*scale-20*scale, m_popupBgLayer->getContentSize().height*scale));
+    uiListView->setContentSize(cocos2d::Size(m_popupBgLayer->getContentSize().width*scale-20*scale, m_popupBgLayer->getContentSize().height*scale));
     uiListView->setPosition(Vec2(m_popupBgLayer->getContentSize().width*0.5*scale+10*scale, size.height*0.7));
     uiListView->setDirection(ui::ScrollView::Direction::HORIZONTAL);
     uiListView->setTouchEnabled(true);
@@ -169,7 +169,7 @@ bool RolePopUpUI::init()
     
     m_lockTv = Label::createWithBMFont(UtilityHelper::getLocalString("FONT_NUMBER"),Value(Value(localStorageGetItem(USER_GOLD_NUM)).asInt()).asString());
     m_lockTv->setPosition(Vec2(size.width-60*scale, size.height*0.557));
-    m_lockTv->setScale(scale*0.5);
+    m_lockTv->setScale(scale);
     m_lockLayer->addChild(m_lockTv);
     
     

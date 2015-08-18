@@ -7,7 +7,9 @@
 //
 
 #include "GameCenterController.h"
+#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS )
 #include "NCSGameCenter.h"
+#endif
 USING_NS_CC;
 
 GameCenterController* g_pGameCenterControllerInstance = nullptr;
@@ -27,28 +29,38 @@ GameCenterController::GameCenterController()
 GameCenterController::~GameCenterController()
 {
 }
+#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS )
 void GameCenterController::registerGameCenterController()
 {
     [[NCSGameCenter sharedGameCenter] authenticateLocalUser];
 }
+#endif
 
 void GameCenterController::openLeaderBoard()
 {
+#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS )
     [[NCSGameCenter sharedGameCenter] showLeaderboard];
+#endif
 }
 void GameCenterController::reportScore(int score)
 {
+#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS )
     [[NCSGameCenter sharedGameCenter] reportScore:score];
+#endif
 }
 void GameCenterController::reportCachedScores()
 {
+#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS )
     [[NCSGameCenter sharedGameCenter] reportCachedScores];
+#endif
 }
 void GameCenterController::retrieveTopXScores(int num)
 {
+#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS )
     [[NCSGameCenter sharedGameCenter] retrieveTopXScores:num];
+#endif
 }
-
+#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS )
 //公共函数，通过成就id获取成就指针
 GKAchievement* getAchievementByID(const char* id)
 {
@@ -61,31 +73,34 @@ GKAchievement* getAchievementByID(const char* id)
     
     return pRet;
 }
-
+#endif
 // 打开成就页。
 void GameCenterController::openAchievementBoard()
 {
+#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS )
     [[NCSGameCenter sharedGameCenter] showAchievementboard];
+#endif
 }
 
 //判断成就是否已经解锁
 bool GameCenterController::isAchievementUnlocked(const std::string& strId)
 {
     bool ret = true;
-    
+#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS )
     const char* pIdentifier = m_AchievementDict[strId].asString().c_str();
-    
     GKAchievement* achievement = getAchievementByID(pIdentifier);
     if ( achievement )
     {
         ret = achievement.completed;
     }
+#endif
     return ret;
 }
 
 //解锁成就
 void GameCenterController::unlockAchievement(const std::string& strId)
 {
+#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS )
     const char* pIdentifier = m_AchievementDict[strId].asString().c_str();
     
     GKAchievement* achievement = getAchievementByID(pIdentifier);
@@ -94,4 +109,5 @@ void GameCenterController::unlockAchievement(const std::string& strId)
         [[NCSGameCenter sharedGameCenter] unlockAchievement:achievement
                                                     percent:100.0];
     }
+#endif
 }

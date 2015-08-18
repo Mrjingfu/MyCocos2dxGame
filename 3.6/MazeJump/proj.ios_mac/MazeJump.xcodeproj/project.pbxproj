@@ -339,6 +339,8 @@
 		EC19EEF51B802EBD00BC2827 /* panel_challenge_success_en.png in Resources */ = {isa = PBXBuildFile; fileRef = EC19EED11B80269400BC2827 /* panel_challenge_success_en.png */; };
 		EC19EEF71B802F0D00BC2827 /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC19EEF61B802F0D00BC2827 /* AppDelegate.cpp */; };
 		EC19EEF81B802F1900BC2827 /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC19EEF61B802F0D00BC2827 /* AppDelegate.cpp */; };
+		EC1B24271B8209D400066566 /* NativeBridge.mm in Sources */ = {isa = PBXBuildFile; fileRef = 55F833FE1B81ED18001F1F6C /* NativeBridge.mm */; };
+		EC1B24281B8209F000066566 /* GameCenterController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 55F833F21B81CB8D001F1F6C /* GameCenterController.mm */; };
 		EC1D3E8B1B7C3A1200C9911D /* GroundGameUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC1D3E891B7C3A1200C9911D /* GroundGameUI.cpp */; };
 		EC1D3E8C1B7C415C00C9911D /* GroundGameUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC1D3E891B7C3A1200C9911D /* GroundGameUI.cpp */; };
 		EC1D3EE01B7C963100C9911D /* BasePopUpUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC1D3ED01B7C963100C9911D /* BasePopUpUI.cpp */; };
@@ -2312,6 +2314,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC1B24281B8209F000066566 /* GameCenterController.mm in Sources */,
+				EC1B24271B8209D400066566 /* NativeBridge.mm in Sources */,
 				EC19EEF81B802F1900BC2827 /* AppDelegate.cpp in Sources */,
 				EC19EEE51B802E8600BC2827 /* GroundRecordPopUpUI.cpp in Sources */,
 				EC7C20661B7F2E4D00EECFBB /* RoleManager.cpp in Sources */,

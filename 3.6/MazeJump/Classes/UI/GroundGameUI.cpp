@@ -61,14 +61,14 @@ bool GroundGameUI::init()
     Label* goldRewardTv = Label::createWithBMFont(UtilityHelper::getLocalString("FONT_NUMBER"),Value(GameController::getInstance()->getCurrentGoldReward()).asString());
     goldRewardTv->setAnchorPoint(Vec2(1, 0.5));
     goldRewardTv->setPosition(Vec2(size.width*0.6, size.height*0.16));
-    goldRewardTv->setScale(scale*0.5);
+    goldRewardTv->setScale(scale);
     goldRewardTv->setHorizontalAlignment(TextHAlignment::RIGHT);
    addChild(goldRewardTv);
     
     Label* heartRewardTv = Label::createWithBMFont(UtilityHelper::getLocalString("FONT_NUMBER"),Value(GameController::getInstance()->getCurrentHeartReward()).asString());
     heartRewardTv->setAnchorPoint(Vec2(1, 0.5));
     heartRewardTv->setPosition(Vec2(size.width*0.6, size.height*0.07));
-    heartRewardTv->setScale(scale*0.5);
+    heartRewardTv->setScale(scale);
     heartRewardTv->setHorizontalAlignment(TextHAlignment::RIGHT);
    addChild(heartRewardTv);
 
