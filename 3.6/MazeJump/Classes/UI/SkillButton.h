@@ -14,9 +14,9 @@ class SkillButton : public cocos2d::Node
 {
     SkillButton();
 public:
-    static SkillButton* create(const std::string& btnTex, const std::string& maskTex);
+    static SkillButton* create(const std::string& btnTex, const std::string& maskTex, const std::string& colorTex);
     
-    bool init(const std::string& btnTex, const std::string& maskTex);
+    bool init(const std::string& btnTex, const std::string& maskTex, const std::string& colorTex);
     
     virtual void onEnter();
     virtual void onExit();
@@ -25,10 +25,13 @@ private:
     void onRainbowValueChange(cocos2d::EventCustom* sender);
     bool onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event);
 private:
+    cocos2d::Node*          m_pRootNode;
     HueSprite*              m_pBtnSprite;
     cocos2d::Sprite*        m_pMaskSprite;
+    cocos2d::Sprite*        m_pColorSprite;
+    cocos2d::Sprite*        m_pStepSprite;
     cocos2d::ProgressTimer*     m_pProgressTimer;
-    int                     m_nCurrentRainbowValue;
+    float                   m_fCurrentRainbowValue;
     bool                    m_bTouchEnable;
 };
 

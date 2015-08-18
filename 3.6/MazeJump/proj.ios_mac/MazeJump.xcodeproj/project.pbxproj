@@ -200,6 +200,9 @@
 		5592AE481B5FF4B50062AF08 /* patterns.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5592AE471B5FF4B50062AF08 /* patterns.plist */; };
 		5592AE491B5FF4BC0062AF08 /* PatternsManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5592AE441B5FF4AB0062AF08 /* PatternsManager.cpp */; };
 		5592AE4A1B5FF4C90062AF08 /* patterns.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5592AE471B5FF4B50062AF08 /* patterns.plist */; };
+		55A8F5A01B83134B0051787A /* rainbowmodeok.wav in Resources */ = {isa = PBXBuildFile; fileRef = 55A8F59F1B83134B0051787A /* rainbowmodeok.wav */; };
+		55A8F5A11B8313730051787A /* achievement.plist in Resources */ = {isa = PBXBuildFile; fileRef = 55F833F01B81C077001F1F6C /* achievement.plist */; };
+		55A8F5A21B8313730051787A /* rainbowmodeok.wav in Resources */ = {isa = PBXBuildFile; fileRef = 55A8F59F1B83134B0051787A /* rainbowmodeok.wav */; };
 		55AEF25C1B6C5CA700460B84 /* bird.c3b in Resources */ = {isa = PBXBuildFile; fileRef = 55AEF2561B6C5CA700460B84 /* bird.c3b */; };
 		55AEF25D1B6C5CA700460B84 /* bird.png in Resources */ = {isa = PBXBuildFile; fileRef = 55AEF2571B6C5CA700460B84 /* bird.png */; };
 		55AEF2601B6C5CA700460B84 /* plane.c3b in Resources */ = {isa = PBXBuildFile; fileRef = 55AEF25A1B6C5CA700460B84 /* plane.c3b */; };
@@ -775,6 +778,7 @@
 		5592AE441B5FF4AB0062AF08 /* PatternsManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PatternsManager.cpp; sourceTree = "<group>"; };
 		5592AE451B5FF4AB0062AF08 /* PatternsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PatternsManager.h; sourceTree = "<group>"; };
 		5592AE471B5FF4B50062AF08 /* patterns.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = patterns.plist; sourceTree = "<group>"; };
+		55A8F59F1B83134B0051787A /* rainbowmodeok.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = rainbowmodeok.wav; sourceTree = "<group>"; };
 		55AEF2561B6C5CA700460B84 /* bird.c3b */ = {isa = PBXFileReference; lastKnownFileType = file; path = bird.c3b; sourceTree = "<group>"; };
 		55AEF2571B6C5CA700460B84 /* bird.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bird.png; sourceTree = "<group>"; };
 		55AEF25A1B6C5CA700460B84 /* plane.c3b */ = {isa = PBXFileReference; lastKnownFileType = file; path = plane.c3b; sourceTree = "<group>"; };
@@ -1348,6 +1352,7 @@
 		5542EED21B395E1300CD9496 /* sounds */ = {
 			isa = PBXGroup;
 			children = (
+				55A8F59F1B83134B0051787A /* rainbowmodeok.wav */,
 				5570741B1B78F4EC002A02C3 /* btnclick.wav */,
 				557074071B78EE6C002A02C3 /* rainbow.wav */,
 				557074081B78EE6C002A02C3 /* rainbowin.wav */,
@@ -1883,6 +1888,7 @@
 				ECAD6CB91B81705E0033E0DF /* rulestip_cn.png in Resources */,
 				55E8B11B1B7500B7007BB9F2 /* ribbontrail.png in Resources */,
 				ECF82B201B67863900C8095A /* 7x7-4.tmx in Resources */,
+				55A8F5A01B83134B0051787A /* rainbowmodeok.wav in Resources */,
 				EC7162991B7DCBF50081833C /* btn_removeads_normal.png in Resources */,
 				EC19EED91B80269400BC2827 /* challenge_award_en.png in Resources */,
 				55066CE91B4BD92B007FCF3F /* 5x5-5.tmx in Resources */,
@@ -2020,6 +2026,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55A8F5A11B8313730051787A /* achievement.plist in Resources */,
+				55A8F5A21B8313730051787A /* rainbowmodeok.wav in Resources */,
 				ECAD6CBB1B81761E0033E0DF /* gameinfotip_cn.png in Resources */,
 				ECAD6CBC1B81761E0033E0DF /* gameinfotip_en.png in Resources */,
 				ECAD6CBD1B81761E0033E0DF /* helptip_cn.png in Resources */,

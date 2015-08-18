@@ -82,11 +82,10 @@ bool GameUI::init()
     pauseImg->addClickEventListener(CC_CALLBACK_1(GameUI::onPause, this));
  
     
-    SkillButton* skillBtn = SkillButton::create("btn_skill_normal.png", "btn_skill_mask.png");
+    SkillButton* skillBtn = SkillButton::create("btn_skill_normal.png", "btn_skill_mask.png", "btn_skill_color.png");
     if(!skillBtn)
         return false;
     skillBtn->setScale(scale);
-    skillBtn->setPosition(Vec2(size.width * 0.1f, size.height * 0.05f));
     addChild(skillBtn);
     
     ui::Button* helpBtn = ui::Button::create("question.png");
@@ -256,7 +255,7 @@ void GameUI::onResumeAn(float dt)
 void GameUI::onRunnerLose(cocos2d::EventCustom* sender)
 {
     isDead = true;
-    runAction(Sequence::createWithTwoActions(DelayTime::create(0.3), CCCallFunc::create(CC_CALLBACK_0(GameUI::onDelayTimeRunnerLose, this))));
+    runAction(Sequence::createWithTwoActions(DelayTime::create(1.0), CCCallFunc::create(CC_CALLBACK_0(GameUI::onDelayTimeRunnerLose, this))));
 }
 void GameUI::onDelayTimeRunnerLose()
 {

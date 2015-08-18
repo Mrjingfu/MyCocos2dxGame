@@ -7,13 +7,12 @@
 //
 
 #import "NCSGameCenter.h"
-
+#import "AppController.h"
 @implementation NCSGameCenter
 @synthesize gameCenterAvailable;
 @synthesize leaderboardName;
 //静态初始化 对外接口
 static NCSGameCenter *sharedHelper = nil;
-static UIViewController* currentModalViewController = nil;
 + (NCSGameCenter *) sharedGameCenter {
     if (!sharedHelper) {
         sharedHelper = [[NCSGameCenter alloc] init];
@@ -40,12 +39,7 @@ static UIViewController* currentModalViewController = nil;
         leaderboardName = @"BS_01";
         gameCenterAvailable = [self isGameCenterAvailable];
         if (gameCenterAvailable) {
-            NSNotificationCenter *nc =
-            [NSNotificationCenter defaultCenter];
-            [nc addObserver:self
-                   selector:@selector(authenticationChanged)
-                       name:GKPlayerAuthenticationDidChangeNotificationName
-                     object:nil];
+            [self registerForAuthenticationNotification];
         }
     }
     return self;
@@ -66,15 +60,53 @@ static UIViewController* currentModalViewController = nil;
 - (void)authenticateLocalUser {
     
     if (!gameCenterAvailable) return;
-    if ([GKLocalPlayer localPlayer].authenticated == NO) {
-        [[GKLocalPlayer localPlayer] authenticateWithCompletionHandler:nil];
+    GKLocalPlayer* localPlayer = [GKLocalPlayer localPlayer];
+    if (localPlayer.authenticated == NO) {
+        if ([[GKLocalPlayer class] instancesRespondToSelector:@selector(setAuthenticateHandler:)]) {
+            [localPlayer setAuthenticateHandler:^(UIViewController *viewController,NSError *error) {
+                if (viewController != nil)
+                {
+                    AppController* delegate = (AppController*) [UIApplication sharedApplication].delegate;
+                    [delegate.viewController presentModalViewController:viewController animated:YES];
+                }
+                else if (localPlayer.isAuthenticated)
+                {
+                    //认证完毕后从gamecenter中获取成就状态，以备后面上传成就时查询
+                    [self loadAchievement];
+                    //上传缓存积分
+                    [self reportCachedScores];
+                }
+                else
+                {
+                    if(error != nil)
+                        NSLog(@"error: %@", error.localizedDescription);
+                    else
+                        NSLog(@"error: your game is running on does not support Game Center!");
+                }
+            }];
+        }
+        else // alternative for iOS < 6
+        {
+            [[GKLocalPlayer localPlayer] authenticateWithCompletionHandler:^(NSError* error){
+                if (error == nil)
+                {
+                    //认证完毕后从gamecenter中获取成就状态，以备后面上传成就时查询
+                    [self loadAchievement];
+                    //上传缓存积分
+                    [self reportCachedScores];
+                }
+                else
+                    NSLog(@"error: %@", error.localizedDescription);
+            }];
+
+        }
     } else {
         NSLog(@"Already authenticated!");
+        //认证完毕后从gamecenter中获取成就状态，以备后面上传成就时查询
+        [self loadAchievement];
+        //上传缓存积分
+        [self reportCachedScores];
     }
-    //认证完毕后从gamecenter中获取成就状态，以备后面上传成就时查询
-    [self loadAchievement];
-    //上传缓存积分
-    [self reportCachedScores];
 }
 
 - (void) registerForAuthenticationNotification
@@ -95,10 +127,8 @@ static UIViewController* currentModalViewController = nil;
     if (leaderboardController != nil) {
         leaderboardController.leaderboardDelegate = self;
         
-        UIWindow *window = [[UIApplication sharedApplication] keyWindow];
-        currentModalViewController = [[UIViewController alloc] init];
-        [window addSubview:currentModalViewController.view];
-        [currentModalViewController presentModalViewController:leaderboardController animated:YES];
+        AppController* delegate = (AppController*) [UIApplication sharedApplication].delegate;
+        [delegate.viewController presentModalViewController:leaderboardController animated:YES];
     }
     
     [self reportCachedScores];
@@ -227,10 +257,8 @@ static UIViewController* currentModalViewController = nil;
     if (achievementController != nil) {
         achievementController.achievementDelegate = self;
         
-        UIWindow *window = [[UIApplication sharedApplication] keyWindow];
-        currentModalViewController = [[UIViewController alloc] init];
-        [window addSubview:currentModalViewController.view];
-        [currentModalViewController presentModalViewController:achievementController animated:YES];
+        AppController* delegate = (AppController*) [UIApplication sharedApplication].delegate;
+        [delegate.viewController presentModalViewController:achievementController animated:YES];
     }
     
 }
@@ -295,51 +323,30 @@ static UIViewController* currentModalViewController = nil;
         [self unlockAchievement:(GKAchievement*)obj percent:0.0];
     }
 }
-
 //关闭排行榜回调
 #pragma mark GKLeaderboardViewControllerDelegate
 - (void)leaderboardViewControllerDidFinish:(GKLeaderboardViewController *)viewController{
-    if(currentModalViewController !=nil){
-        [currentModalViewController dismissModalViewControllerAnimated:NO];
-        [currentModalViewController release];
-        [currentModalViewController.view removeFromSuperview];
-        currentModalViewController = nil;
-    }
+    AppController* delegate = (AppController*) [UIApplication sharedApplication].delegate;
+    [delegate.viewController dismissModalViewControllerAnimated:YES];
 }
 
 //关闭成就回调
 #pragma mark GKAchievementViewControllerDelegate
 - (void)achievementViewControllerDidFinish:(GKAchievementViewController *)viewController{
-    if(currentModalViewController !=nil){
-        [currentModalViewController dismissModalViewControllerAnimated:NO];
-        [currentModalViewController release];
-        [currentModalViewController.view removeFromSuperview];
-        currentModalViewController = nil;
-    }
+    AppController* delegate = (AppController*) [UIApplication sharedApplication].delegate;
+    [delegate.viewController dismissModalViewControllerAnimated:YES];
 }
 
 #pragma mark GKMatchmakerViewControllerDelegate
 - (void)matchmakerViewControllerWasCancelled:(GKMatchmakerViewController *)viewController{
     
-    if(currentModalViewController != nil)
-    {
-        [currentModalViewController dismissModalViewControllerAnimated:NO];
-        [currentModalViewController release];
-        [currentModalViewController.view removeFromSuperview];
-        currentModalViewController = nil;
-    }
-    
+    AppController* delegate = (AppController*) [UIApplication sharedApplication].delegate;
+    [delegate.viewController dismissModalViewControllerAnimated:YES];
 }
 #pragma mark GKMatchDelegate
 - (void)matchmakerViewController:(GKMatchmakerViewController *)viewController didFailWithError:(NSError *)error{
     
-    if(currentModalViewController != nil)
-    {
-         NSLog(@"Error finding match: %@", error.localizedDescription);
-        [currentModalViewController dismissModalViewControllerAnimated:NO];
-        [currentModalViewController release];
-        [currentModalViewController.view removeFromSuperview];
-        currentModalViewController = nil;
-    }
+    AppController* delegate = (AppController*) [UIApplication sharedApplication].delegate;
+    [delegate.viewController dismissModalViewControllerAnimated:YES];
 }
 @end

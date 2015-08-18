@@ -9,13 +9,15 @@
 #include "SkillButton.h"
 #include "GameConst.h"
 #include "RunController.h"
+#include "storage/local-storage/LocalStorage.h"
+#include "AudioEngine.h"
 USING_NS_CC;
+using namespace experimental;
 
-
-SkillButton* SkillButton::create(const std::string& btnTex, const std::string& maskTex)
+SkillButton* SkillButton::create(const std::string& btnTex, const std::string& maskTex,  const std::string& colorTex)
 {
     SkillButton *pRet = new(std::nothrow) SkillButton();
-    if (pRet && pRet->init(btnTex, maskTex))
+    if (pRet && pRet->init(btnTex, maskTex, colorTex))
     {
         pRet->autorelease();
         return pRet;
@@ -26,33 +28,62 @@ SkillButton* SkillButton::create(const std::string& btnTex, const std::string& m
 
 SkillButton::SkillButton()
 {
+    m_pRootNode = nullptr;
     m_pBtnSprite = nullptr;
     m_pMaskSprite = nullptr;
+    m_pColorSprite = nullptr;
+    m_pStepSprite = nullptr;
     m_pProgressTimer = nullptr;
-    m_nCurrentRainbowValue = 100;
+    int maxLevel = Value(localStorageGetItem(USER_MAX_LEVEL)).asInt();
+    if(maxLevel == 0)
+        m_fCurrentRainbowValue = 75.0f;
+    else
+        m_fCurrentRainbowValue = 100.0f;
     m_bTouchEnable = false;
 }
 
 
 
-bool SkillButton::init(const std::string& btnTex, const std::string& maskTex)
+bool SkillButton::init(const std::string& btnTex, const std::string& maskTex,  const std::string& colorTex)
 {
+    m_pRootNode = Node::create();
+    if(!m_pRootNode)
+        return false;
+    addChild(m_pRootNode);
     m_pBtnSprite = HueSprite::create(btnTex);
     if(!m_pBtnSprite)
         return false;
     //m_pBtnSprite->setHue(M_PI);
-    addChild(m_pBtnSprite);
+    m_pBtnSprite->setAnchorPoint(Vec2(0,0));
+    m_pRootNode->addChild(m_pBtnSprite);
+    
+    m_pColorSprite = Sprite::create(colorTex);
+    if(!m_pColorSprite)
+        return false;
+    m_pRootNode->addChild(m_pColorSprite);
+    m_pColorSprite->setOpacity(200);
+    RepeatForever* repeat = RepeatForever::create(RotateBy::create(1.0f, 180));
+    m_pColorSprite->runAction(repeat);
+    
+    m_pStepSprite = Sprite::create(colorTex);
+    if(!m_pStepSprite)
+        return false;
+    m_pStepSprite->setColor(Color3B::BLACK);
+    m_pProgressTimer = ProgressTimer::create(m_pStepSprite);
+    if(!m_pProgressTimer)
+        return false;
+    m_pProgressTimer->setReverseProgress(true);
+    m_pProgressTimer->setPercentage(m_fCurrentRainbowValue);
+    m_pRootNode->addChild(m_pProgressTimer);
     
     m_pMaskSprite = Sprite::create(maskTex);
     if(!m_pMaskSprite)
         return false;
+    m_pMaskSprite->setAnchorPoint(Vec2(0,0));
+    m_pRootNode->addChild(m_pMaskSprite);
+    m_pRootNode->setScale(0.3f);
     
-    m_pProgressTimer = ProgressTimer::create(m_pMaskSprite);
-    if(!m_pProgressTimer)
-        return false;
-    m_pProgressTimer->setReverseProgress(true);
-    m_pProgressTimer->setPercentage(m_nCurrentRainbowValue);
-    addChild(m_pProgressTimer);
+    m_pRootNode->runAction(EaseBackInOut::create(ScaleTo::create(0.5f, 0.7f)));
     
     auto dispatcher = Director::getInstance()->getEventDispatcher();
     auto touchListener = EventListenerTouchOneByOne::create();
@@ -80,10 +111,18 @@ void SkillButton::onRainbowValueChange(cocos2d::EventCustom* sender)
 {
     if(sender && m_pProgressTimer)
     {
-        m_nCurrentRainbowValue -=1;
-        m_pProgressTimer->setPercentage(m_nCurrentRainbowValue);
-        if(m_nCurrentRainbowValue <= 0)
-            m_bTouchEnable = true;
+        m_fCurrentRainbowValue -=0.25f;
+        m_pProgressTimer->setPercentage(m_fCurrentRainbowValue);
+        if(m_fCurrentRainbowValue <= 75.0f)
+        {
+            if(!m_bTouchEnable)
+            {
+                m_bTouchEnable = true;
+                m_pRootNode->runAction(EaseBackInOut::create(ScaleTo::create(0.5f, 1.0f)));
+                m_pMaskSprite->runAction(EaseSineOut::create(FadeOut::create(0.5f)));
+                AudioEngine::play2d("rainbowmodeok.wav", false, 0.5f);
+            }
+        }
     }
 }
 bool SkillButton::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event)
@@ -98,9 +137,11 @@ bool SkillButton::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event)
     
     if(m_bTouchEnable)
     {
-        m_nCurrentRainbowValue = 100;
-        m_pProgressTimer->setPercentage(m_nCurrentRainbowValue);
+        m_fCurrentRainbowValue = 100.0f;
+        m_pProgressTimer->setPercentage(m_fCurrentRainbowValue);
         m_bTouchEnable = false;
+        m_pRootNode->runAction(EaseBackInOut::create(ScaleTo::create(0.5f, 0.7f)));
+        m_pMaskSprite->runAction(EaseSineOut::create(FadeIn::create(0.5f)));
         RunController::getInstance()->showRainbow();
     }
     return true;

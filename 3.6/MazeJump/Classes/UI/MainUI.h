@@ -29,7 +29,7 @@ public:
 private:
 
     cocos2d::ui::Button* soundBtn;
-    bool m_sound;
+    int  m_nBgID;
 };
 
 #endif /* defined(__MazeJump__MainUI__) */
