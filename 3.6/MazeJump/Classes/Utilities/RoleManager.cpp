@@ -39,6 +39,20 @@ bool RoleManager::init()
         //对比
         ValueMap userRoles = parseValueMap(userRoleStr);
         ValueMap fileRoles = parseValueMap(roleStr);
+        for(std::unordered_map<std::string, Value>::iterator it = userRoles.begin(); it!=userRoles.end();)
+        {
+            std::string userRoleIdStr = it->first;
+            ValueMap userRoleMap = it->second.asValueMap();
+            auto userFindRoleIt = fileRoles.find(userRoleIdStr);
+            if (userFindRoleIt==fileRoles.end()) {
+                userRoles.erase(it++);
+            }else
+            {
+                ++it;
+            }
+           
+        }
+        
         for(std::unordered_map<std::string, Value>::iterator it = fileRoles.begin(); it!=fileRoles.end();it++)
         {
             std::string RoleIdStr = it->first;
@@ -60,7 +74,6 @@ bool RoleManager::init()
                 CCLOG("userMap RoleLock:%d",userMap["RoleLock"].asBool());
                 CCLOG("userMap RolePrice:%d",userMap["RolePrice"].asInt());
                 CCLOG("             ");
-                
                 CCLOG("roleMap RoleId:%s",RoleIdStr.c_str());
                 CCLOG("roleMap RoleModel:%s",roleMap["RoleModel"].asString().c_str());
                 CCLOG("roleMap RoleSound:%s",roleMap["RoleSound"].asString().c_str());
@@ -73,26 +86,8 @@ bool RoleManager::init()
                 userRoles.insert(std::pair<std::string, Value>(RoleIdStr,Value(roleMap)));
             }
 
-
         }
-//    for(std::unordered_map<std::string, Value>::iterator it = fileRoles.begin(); it!=fileRoles.end();it++)
-//    {
-//        std::string RoleIdStr = it->first;
-//        ValueMap roleMap = it->second.asValueMap();
-//        for(std::unordered_map<std::string, Value>::iterator roteIt = userRoles.begin(); roteIt!=userRoles.end();roteIt++)
-//        {
-//            std::string keyStr = it->first;
-//            ValueMap roleValue = it->second.asValueMap();
-//            CCLOG("RoleId:%s",RoleIdStr.c_str());
-//            CCLOG("RoleModel:%s",roleValue["RoleModel"].asString().c_str());
-//            CCLOG("RoleSound:%s",roleValue["RoleSound"].asString().c_str());
-//            CCLOG("RoleImg:%s",roleValue["RoleImg"].asString().c_str());
-//            CCLOG("RoleLock:%d",roleValue["RoleLock"].asBool());
-//            CCLOG("RolePrice:%d",roleValue["RolePrice"].asInt());
-//            CCLOG("             ");
-//            break;
-//        }
-//    }
+
 //        CCLOG("valueMapToJsonStr:%s",valueMapToJsonStr(userRoles).c_str());
           CCLOG("valueMapToStr:%s",valueMapToStr(userRoles).c_str());
           localStorageSetItem(USER_ROLE_DATA, valueMapToStr(userRoles).c_str());
@@ -272,17 +267,7 @@ void RoleManager::updateRoleLock(const std::string& str,cocos2d::ValueMap _lvalu
     rapidjson::Writer<rapidjson::StringBuffer> writer(buffer);
     doc.Accept(writer);
     localStorageSetItem(USER_ROLE_DATA, buffer.GetString());
-//    for(std::unordered_map<std::string, Value>::iterator it = _lvalueMap.begin(); it!=_lvalueMap.end();it++)
-//    {
-//        std::string RoleIdStr = it->first;
-//        ValueMap roleMap = it->second.asValueMap();
-//        for(std::unordered_map<std::string, Value>::iterator roteIt = _lvalueMap.begin(); roteIt!=_lvalueMap.end();roteIt++)
-//        {
-//            std::string keyStr = it->first;
-//            Value roleValue = it->second;
-//            
-//        }
-//    }
+
 }
 
 std::string RoleManager::getRoleModel(std::string &roleId)
@@ -313,4 +298,23 @@ void RoleManager::updateRoleLock(std::string roleId,bool _lock)
     CCLOG(" replace isLock:%d",m_Roles[roleId].asValueMap()["RoleLock"].asBool());
     
     updateRoleLock(localStorageGetItem(USER_ROLE_DATA),m_Roles);
+}
+std::string RoleManager::getDefaultRoleModel()
+{
+    std::string ldefaultModel;
+    std::string defaultRolelId = localStorageGetItem(USER_DEFAULT_ROLE_ID);
+    if (defaultRolelId.length()>0) {
+        ldefaultModel = getRoleModel(defaultRolelId);
+    }
+    return ldefaultModel;
+}
+std::string RoleManager::getDefaultRoleSound()
+{
+    std::string ldefaultSound;
+    std::string defaultRolelId = localStorageGetItem(USER_DEFAULT_ROLE_ID);
+    if (defaultRolelId.length()>0) {
+        ldefaultSound = getRoleSound(defaultRolelId);
+    }
+    return ldefaultSound;
+
 }

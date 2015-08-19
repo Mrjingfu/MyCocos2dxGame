@@ -20,6 +20,7 @@ public:
     int getPrice(){return m_price;}
     std::string getRoleId(){return m_roleId;}
     virtual bool init(std::string _roleId,int preice,std::string _roleImg,std::string _rolModel,bool _isLock,std::string _roleSound);
+
 protected:
     RoleItem();
     ~RoleItem();
@@ -29,7 +30,7 @@ private:
     std::string m_roleSound;
     bool m_isLock;
     int  m_price;
-    cocos2d::ui::ImageView* m_itemNormalImg;
+    cocos2d::ui::Button* m_itemNormal;
     cocos2d::ui::ImageView* m_itemLockImg;
 };
 
@@ -40,7 +41,8 @@ protected:
     virtual ~RolePopUpUI();
     cocos2d::Label* m_lockTv;
     cocos2d::Layer* m_lockLayer;
-    RoleItem* m_currentRoleItem;
+    RoleItem* m_currentNotLockRoleItem;
+    RoleItem* m_cureentSelectIteml;
     bool m_isShowLockBtn;
     bool m_isNowShowLockBtn;
 public:

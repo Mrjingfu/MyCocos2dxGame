@@ -99,9 +99,7 @@ void MainUI::onRank(cocos2d::Ref *ref)
 {
      UIManager::getInstance()->playSound();
     CCLOG("rank");
-#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS )
     GameCenterController::getInstance()->openLeaderBoard();
-#endif
 }
 void MainUI::onSound(cocos2d::Ref *ref)
 {

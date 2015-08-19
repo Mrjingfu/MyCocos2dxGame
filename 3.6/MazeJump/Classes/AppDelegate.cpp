@@ -60,6 +60,11 @@ bool AppDelegate::applicationDidFinishLaunching() {
     std::string path = FileUtils::getInstance()->getWritablePath() + "userdata.db";
     CCLOG("path:%s",path.c_str());
     localStorageInit(path);
+    std::string defualutRole = localStorageGetItem(USER_DEFAULT_ROLE_ID);
+    if (defualutRole.length()<=0) {
+        localStorageSetItem(USER_DEFAULT_ROLE_ID, "role_girl1");
+    }
+    
 #if COCOS2D_DEBUG
     //resetUserDataTable();
     printUserTataTable();

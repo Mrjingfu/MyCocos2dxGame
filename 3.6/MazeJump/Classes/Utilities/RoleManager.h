@@ -29,6 +29,8 @@ public:
     void updateRoleLock(std::string roleId,bool _lock);
     std::string valueMapToJsonStr(cocos2d::ValueMap _valueMap);
     std::string valueMapToStr(cocos2d::ValueMap _valueMap);
+    std::string getDefaultRoleModel();
+    std::string getDefaultRoleSound();
 private:
     void updateRoleLock(const std::string& str,cocos2d::ValueMap _lvalueMap);
     cocos2d::ValueMap parseValueMap(const std::string& str);
