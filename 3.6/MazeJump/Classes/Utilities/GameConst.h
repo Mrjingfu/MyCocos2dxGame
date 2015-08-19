@@ -48,6 +48,7 @@ static const std::string PURCHASE_ID6 = "remove_ads";
 static const std::string EVENT_GAME_PAUSE = "GAME_PAUSE";
 static const std::string EVENT_GOLD_CHANGE = "GOLD_CHANGE";
 static const std::string EVENT_HEART_CHANGE = "HEART_CHANGE";
+static const std::string EVENT_RUNNER_ADD_PRODUCT = "RUNNER_ADD_PRODUCT";
 static const std::string EVENT_MAX_DISTANCE_CHANGE = "MAX_DISTANCE_CHANGE";
 static const std::string EVENT_RAINBOW_VALUE_CHANGE = "RAINBOW_VALUE_CHANGE";
 static const std::string EVENT_RUNNER_LOSE = "RUNNER_LOSE";

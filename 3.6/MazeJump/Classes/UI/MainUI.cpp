@@ -90,20 +90,20 @@ bool MainUI::init()
 void MainUI::onShop(cocos2d::Ref *ref)
 {
     CCLOG("Shop");
-    UIManager::getInstance()->playSound();
+    UIManager::getInstance()->playBtnSound();
     UIManager::getInstance()->addPopUp(BasePopUpUI::POPUP_SHOP);
     UIManager::getInstance()->showPopUp(true,BasePopUpUI::POPUP_HORIZONTAL);
 
 }
 void MainUI::onRank(cocos2d::Ref *ref)
 {
-     UIManager::getInstance()->playSound();
+     UIManager::getInstance()->playBtnSound();
     CCLOG("rank");
     GameCenterController::getInstance()->openLeaderBoard();
 }
 void MainUI::onSound(cocos2d::Ref *ref)
 {
-     UIManager::getInstance()->playSound();
+     UIManager::getInstance()->playBtnSound();
     if(cocos2d::experimental::AudioEngine::isEnable())
     {
         cocos2d::experimental::AudioEngine::setEnable(false);
@@ -118,6 +118,6 @@ void MainUI::onSound(cocos2d::Ref *ref)
 }
 void MainUI::onComment(cocos2d::Ref *ref)
 {
-    UIManager::getInstance()->playSound();
+    UIManager::getInstance()->playBtnSound();
     NativeBridge::getInstance()->openItunesURL();
 }

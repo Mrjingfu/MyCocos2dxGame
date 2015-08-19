@@ -50,13 +50,13 @@ bool StarPopUpUI::init()
     m_dialogLayer->addChild(glodView);
     
     cocos2d::ui::ImageView* heartView = cocos2d::ui::ImageView::create("ui_heart.png");
-    heartView->setPosition(Vec2(size.width*0.3,size.height*0.52));
+    heartView->setPosition(Vec2(size.width*0.3,size.height*0.54));
     heartView->setScale(scale);
     m_dialogLayer->addChild(heartView);
     
     
     cocos2d::ui::ImageView* distanceView = cocos2d::ui::ImageView::create(UtilityHelper::getLocalString("UI_GAME_BEST_TV"));
-    distanceView->setPosition(Vec2(size.width*0.39,size.height*0.44));
+    distanceView->setPosition(Vec2(size.width*0.39,size.height*0.48));
     distanceView->setScale(scale);
     m_dialogLayer->addChild(distanceView);
    
@@ -70,28 +70,28 @@ bool StarPopUpUI::init()
     m_heartTv = Label::createWithBMFont(UtilityHelper::getLocalString("FONT_NUMBER"),Value(Value(localStorageGetItem(USER_HEART_NUM)).asInt()).asString());
     m_heartTv->setAnchorPoint(Vec2::ANCHOR_MIDDLE_RIGHT);
 
-    m_heartTv->setPosition(Vec2(size.width*0.7, size.height*0.52));
+    m_heartTv->setPosition(Vec2(size.width*0.7, size.height*0.54));
     m_heartTv->setScale(scale);
     m_dialogLayer->addChild(m_heartTv);
     
      m_maxLevelTv = Label::createWithBMFont(UtilityHelper::getLocalString("FONT_NUMBER"),Value(Value(localStorageGetItem(USER_MAX_LEVEL)).asInt()).asString());
     m_maxLevelTv->setAnchorPoint(Vec2::ANCHOR_MIDDLE_RIGHT);
 
-    m_maxLevelTv->setPosition(Vec2(size.width*0.7, size.height*0.44));
+    m_maxLevelTv->setPosition(Vec2(size.width*0.7, size.height*0.48));
     m_maxLevelTv->setScale(scale);
     m_dialogLayer->addChild(m_maxLevelTv);
     
 
     
     cocos2d::ui::Button* playBtn = cocos2d::ui::Button::create(UtilityHelper::getLocalString("UI_START_BTN_NEW"));
-    playBtn->setPosition(Vec2(size.width*0.36, size.height*0.36));
+    playBtn->setPosition(Vec2(size.width*0.38, size.height*0.4));
     
     playBtn->setScale(scale*1.2);
     playBtn->addClickEventListener(CC_CALLBACK_1(StarPopUpUI::onPlayGame, this));
     m_dialogLayer->addChild(playBtn);
 
     cocos2d::ui::Button* resumeBtn = cocos2d::ui::Button::create(UtilityHelper::getLocalString("UI_START_BTN_CONTINUE"));
-    resumeBtn->setPosition(Vec2(size.width*0.36+playBtn->getContentSize().width*scale+40*scale,size.height*0.36));
+    resumeBtn->setPosition(Vec2(size.width*0.38+playBtn->getContentSize().width*scale+40*scale,size.height*0.4));
     resumeBtn->setScale(scale*1.2);
     resumeBtn->addClickEventListener(CC_CALLBACK_1(StarPopUpUI::onResumeGame, this));
 
@@ -119,39 +119,34 @@ void StarPopUpUI::onGoldChange(cocos2d::EventCustom *sender)
 {
     CCLOG("StarPopUpUI::onGoldChange");
     if (m_goldTv) {
-        m_goldTv->setString(localStorageGetItem(USER_GOLD_NUM));
+        m_goldTv->setString(Value(Value(localStorageGetItem(USER_GOLD_NUM)).asInt()).asString());
     }
 }
 void StarPopUpUI::onHeartChange(cocos2d::EventCustom *sender)
 {
     CCLOG("StarPopUpUI::onHeartChange");
     if (m_heartTv) {
-        m_heartTv->setString(localStorageGetItem(USER_HEART_NUM));
+        m_heartTv->setString(Value(Value(localStorageGetItem(USER_HEART_NUM)).asInt()).asString());
     }
 }
 
 void StarPopUpUI::onPlayGame(cocos2d::Ref *ref)
 {
-     UIManager::getInstance()->playSound();
+     UIManager::getInstance()->playBtnSound();
     isContinue = false;
     UIManager::getInstance()->hidePopUp(true,CC_CALLBACK_0(StarPopUpUI::onHidePop, this));
 }
 void StarPopUpUI::onHidePop()
 {
-
     MenuScene* menuScene = static_cast<MenuScene*>(UIManager::getInstance()->getParent());
     if (isContinue) {
         localStorageSetItem(USER_HEART_NUM, Value(Value(localStorageGetItem(USER_HEART_NUM)).asInt()-5).asString());
         localStorageSetItem(USER_LAST_LEVEL, localStorageGetItem(USER_MAX_LEVEL));
-//        auto scene = MainScene::createScene();
-//        Director::getInstance()->replaceScene(scene);
         menuScene->fadeOutScene();
         isContinue = false;
     }else
     {
         localStorageSetItem(USER_LAST_LEVEL, Value(0).asString());
-//        auto scene = MainScene::createScene();
-//        Director::getInstance()->replaceScene(scene);
         menuScene->fadeOutScene();
     }
 
@@ -159,9 +154,7 @@ void StarPopUpUI::onHidePop()
 void StarPopUpUI::onResumeGame(cocos2d::Ref *ref)
 {
     CCLOG("onResumeGame");
-    
-    
-     UIManager::getInstance()->playSound();
+    UIManager::getInstance()->playBtnSound();
     int heartNum = Value(localStorageGetItem(USER_HEART_NUM)).asInt();
     if (heartNum>=5) {
         isContinue = true;

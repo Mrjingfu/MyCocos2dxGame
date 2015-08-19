@@ -73,7 +73,7 @@ bool GroundLosePopUpUI::init()
 }
 void GroundLosePopUpUI::onHelpRecover(cocos2d::Ref *ref)
 {
-     UIManager::getInstance()->playSound();
+     UIManager::getInstance()->playBtnSound();
     int goldNum = Value(localStorageGetItem(USER_GOLD_NUM)).asInt();
     if (goldNum >= 80) {
         
@@ -95,7 +95,7 @@ void GroundLosePopUpUI::onHelpRecover(cocos2d::Ref *ref)
 }
 void GroundLosePopUpUI::onBack(cocos2d::Ref *ref)
 {
-     UIManager::getInstance()->playSound();
+     UIManager::getInstance()->playBtnSound();
     UIManager::getInstance()->hidePopUp(true,CC_CALLBACK_0(GroundLosePopUpUI::onHidePopUpEnd, this));
 }
 void GroundLosePopUpUI::onHidePopUpEnd()

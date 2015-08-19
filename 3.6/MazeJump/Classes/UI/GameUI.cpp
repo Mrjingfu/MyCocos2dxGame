@@ -11,6 +11,7 @@
 #include "GameConst.h"
 #include "UIManager.h"
 #include "UtilityHelper.h"
+#include "ShopPopUpUI.h"
 #include "storage/local-storage/LocalStorage.h"
 USING_NS_CC;
 
@@ -36,6 +37,7 @@ GameUI::GameUI()
     isRecover = false;
     isShwoHelp= false;
     isDead = false;
+    isTouchShopBuy = false;
 }
 GameUI::~GameUI()
 {
@@ -47,7 +49,9 @@ void GameUI::onEnter()
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_RUNNER_PAUSE_RESUME, std::bind(&GameUI::onEventSetResume, this, std::placeholders::_1));
     
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_RUNNER_LOSE, std::bind(&GameUI::onRunnerLose, this, std::placeholders::_1));
-        Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_GAME_PAUSE, std::bind(&GameUI::onPauseEvent, this, std::placeholders::_1));
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_GAME_PAUSE, std::bind(&GameUI::onPauseEvent, this, std::placeholders::_1));
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_RUNNER_ADD_PRODUCT, std::bind(&GameUI::onShopBuyEvenet, this, std::placeholders::_1));
+    
 }
 void GameUI::onExit()
 {
@@ -75,7 +79,11 @@ bool GameUI::init()
     heartBuyBtn->setScale(scale);
     addChild(heartBuyBtn);
     
-        
+    
+    goldBuyBtn->addClickEventListener(CC_CALLBACK_1(GameUI::onShopBuyGold, this));
+    
+    heartBuyBtn->addClickEventListener(CC_CALLBACK_1(GameUI::onShopBuyHeart, this));
+    
     pauseImg = cocos2d::ui::Button::create("btn_pause_normal.png","btn_pause_pressed.png");
     pauseImg->setPosition(Vec2(size.width*0.9, size.height*0.93));
     pauseImg->setScale(scale);
@@ -122,7 +130,7 @@ bool GameUI::init()
     helplistener->onTouchBegan =  [this](Touch * ,Event *)
     {
         if (isShwoHelp) {
-            UIManager::getInstance()->playSound();
+            UIManager::getInstance()->playBtnSound();
             isShwoHelp = false;
             helpLayer->setVisible(false);
             return true;
@@ -178,7 +186,7 @@ bool GameUI::init()
 }
 void GameUI::onHelp(cocos2d::Ref *ref)
 {
-     UIManager::getInstance()->playSound();
+     UIManager::getInstance()->playBtnSound();
     if (!isShwoHelp) {
         helpLayer->setVisible(true);
         isShwoHelp = true;
@@ -212,7 +220,7 @@ void GameUI::showPause()
     isRecover = true;
     UIManager::getInstance()->addPopUp(BasePopUpUI::POPUP_PAUSE);
     UIManager::getInstance()->showPopUp(true,BasePopUpUI::POPUP_HORIZONTAL,CC_CALLBACK_0(GameUI::setPause, this));
-    UIManager::getInstance()->playSound();
+    UIManager::getInstance()->playBtnSound();
 }
 
 void GameUI::setPause()
@@ -277,4 +285,34 @@ void GameUI::onDelayTimeRunnerLose()
 void GameUI::onShowLosePopUpEnd()
 {
     isDead = false;
+}
+void GameUI::onShopBuyGold(cocos2d::Ref *ref)
+{
+    isTouchShopBuy = true;
+    UIManager::getInstance()->playBtnSound();
+    UIManager::getInstance()->addPopUp(BasePopUpUI::POPUP_SHOP);
+    ShopPopUpUI* shopPopUi = static_cast<ShopPopUpUI*>(UIManager::getInstance()->getPopUpUI(BasePopUpUI::POPUP_SHOP));
+    if (shopPopUi) {
+        shopPopUi->setShopDisplay(ShopPopUpUI::SHOP_GOLD);
+    }
+    UIManager::getInstance()->showPopUp(true,BasePopUpUI::POPUP_HORIZONTAL,CC_CALLBACK_0(GameUI::setPause, this));
+    
+}
+void GameUI::onShopBuyHeart(cocos2d::Ref *ref)
+{
+    isTouchShopBuy = true;
+    UIManager::getInstance()->playBtnSound();
+    UIManager::getInstance()->addPopUp(BasePopUpUI::POPUP_SHOP);
+    UIManager::getInstance()->showPopUp(true,BasePopUpUI::POPUP_HORIZONTAL,CC_CALLBACK_0(GameUI::setPause, this));
+}
+void GameUI::onShopBuyEvenet(cocos2d::EventCustom *sender)
+{
+    if (isTouchShopBuy) {
+        isTouchShopBuy = false;
+        m_maskLayerBg->setVisible(true);
+        m_countDonwImg->setVisible(true);
+        m_conut=3;
+        this->schedule(schedule_selector(GameUI::onResumeAn), 1.0f);
+
+    }
 }

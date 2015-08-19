@@ -294,6 +294,9 @@ int RoleManager::getRolePrice(std::string &roleId)
 void RoleManager::updateRoleLock(std::string roleId,bool _lock)
 {
      CCLOG(" isLock:%d",m_Roles[roleId].asValueMap()["RoleLock"].asBool());
+    if (m_Roles[roleId].asValueMap()["RoleLock"].asBool() == _lock) {
+        return;
+    }
     m_Roles[roleId].asValueMap()["RoleLock"] = Value(_lock);
     CCLOG(" replace isLock:%d",m_Roles[roleId].asValueMap()["RoleLock"].asBool());
     

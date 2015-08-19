@@ -40,6 +40,10 @@ private:
     void onHeartChange(cocos2d::EventCustom* sender);
     void onMaxDistanceChange(cocos2d::EventCustom* sender);
 
+    void goldActionEnd();
+    void heartActionEnd();
+    cocos2d::ui::ImageView* goldAni;
+    cocos2d::ui::ImageView* heartAni;
     cocos2d::Label* goldTv;
     cocos2d::Label* heartTv;
     cocos2d::Label* m_maxLevelTv;

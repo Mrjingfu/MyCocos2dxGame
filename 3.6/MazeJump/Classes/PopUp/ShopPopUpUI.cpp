@@ -81,12 +81,12 @@ bool ShopPopUpUI::init()
     productLayer->addChild(heartBuyBtn);
 
     
-    cocos2d::Label* heartNumLabel = Label::createWithBMFont(UtilityHelper::getLocalString("FONT_NUMBER"),"+15");
+    cocos2d::Label* heartNumLabel = Label::createWithBMFont(UtilityHelper::getLocalString("FONT_NUMBER"),"+10");
     heartNumLabel->setPosition(Vec2(size.width*0.4+goldBuyBtn->getContentSize().width*scale+75*scale, size.height*0.61+20*scale));
     heartNumLabel->setScale(scale*0.75);
     productLayer->addChild(heartNumLabel);
     
-    cocos2d::Label* heartGoldNumLabel = Label::createWithBMFont(UtilityHelper::getLocalString("FONT_NUMBER"),"-150");
+    cocos2d::Label* heartGoldNumLabel = Label::createWithBMFont(UtilityHelper::getLocalString("FONT_NUMBER"),"-500");
     heartGoldNumLabel->setPosition(Vec2(size.width*0.4+goldBuyBtn->getContentSize().width*scale+75*scale, size.height*0.61-17*scale));
     heartGoldNumLabel->setScale(scale*0.75);
     productLayer->addChild(heartGoldNumLabel);
@@ -132,13 +132,13 @@ bool ShopPopUpUI::init()
     coin1_Btn->setScale(scale*1.2);
     goldProductLayer->addChild(coin1_Btn);
     
-    cocos2d::Label* coin1_gold_NumLabel = Label::createWithBMFont(UtilityHelper::getLocalString("FONT_NUMBER"),"200");
+    cocos2d::Label* coin1_gold_NumLabel = Label::createWithBMFont(UtilityHelper::getLocalString("FONT_NUMBER"),"450");
     coin1_gold_NumLabel->setPosition(Vec2(size.width*0.4+18*scale, size.height*0.61+23*scale));
     coin1_gold_NumLabel->setScale(scale*0.7);
     goldProductLayer->addChild(coin1_gold_NumLabel);
     
 
-    cocos2d::Label* coin1_money_NumLabel = Label::createWithSystemFont("150", FONT_FXZS, 30);
+    cocos2d::Label* coin1_money_NumLabel = Label::createWithSystemFont("6", FONT_FXZS, 30);
     coin1_money_NumLabel->setPosition(Vec2(size.width*0.4+5*scale, size.height*0.61-18*scale));
     coin1_money_NumLabel->setScale(scale);
     goldProductLayer->addChild(coin1_money_NumLabel);
@@ -150,12 +150,12 @@ bool ShopPopUpUI::init()
     goldProductLayer->addChild(coin2_Btn);
     
     
-    cocos2d::Label* coin2_gold_NumLabel = Label::createWithBMFont(UtilityHelper::getLocalString("FONT_NUMBER"),"500");
+    cocos2d::Label* coin2_gold_NumLabel = Label::createWithBMFont(UtilityHelper::getLocalString("FONT_NUMBER"),"1500");
     coin2_gold_NumLabel->setPosition(Vec2(size.width*0.4+goldBuyBtn->getContentSize().width*scale+68*scale, size.height*0.61+20*scale));
     coin2_gold_NumLabel->setScale(scale*0.7);
     goldProductLayer->addChild(coin2_gold_NumLabel);
     
-    cocos2d::Label* coin2_money_NumLabel = Label::createWithSystemFont("150", FONT_FXZS, 30);
+    cocos2d::Label* coin2_money_NumLabel = Label::createWithSystemFont("18", FONT_FXZS, 30);
     coin2_money_NumLabel->setPosition(Vec2(size.width*0.4+goldBuyBtn->getContentSize().width*scale+55*scale, size.height*0.61-18*scale));
     coin2_money_NumLabel->setScale(scale);
     goldProductLayer->addChild(coin2_money_NumLabel);
@@ -165,12 +165,12 @@ bool ShopPopUpUI::init()
     coin3_Btn->setScale(scale*1.2);
     goldProductLayer->addChild(coin3_Btn);
     
-    cocos2d::Label* coin3_gold_NumLabel = Label::createWithBMFont(UtilityHelper::getLocalString("FONT_NUMBER"),"1000");
+    cocos2d::Label* coin3_gold_NumLabel = Label::createWithBMFont(UtilityHelper::getLocalString("FONT_NUMBER"),"2500");
     coin3_gold_NumLabel->setPosition(Vec2(size.width*0.4+20*scale, size.height*0.61-heartBuyBtn->getContentSize().width*scale-14*scale));
     coin3_gold_NumLabel->setScale(scale*0.7);
     goldProductLayer->addChild(coin3_gold_NumLabel);
     
-    cocos2d::Label* coin3_money_NumLabel = Label::createWithSystemFont("150", FONT_FXZS, 30);
+    cocos2d::Label* coin3_money_NumLabel = Label::createWithSystemFont("30", FONT_FXZS, 30);
     coin3_money_NumLabel->setPosition(Vec2(size.width*0.4+5*scale, size.height*0.61-heartBuyBtn->getContentSize().width*scale-46*scale));
     coin3_money_NumLabel->setScale(scale);
     goldProductLayer->addChild(coin3_money_NumLabel);
@@ -180,12 +180,12 @@ bool ShopPopUpUI::init()
     coin4_Btn->setScale(scale*1.2);
     goldProductLayer->addChild(coin4_Btn);
     
-    cocos2d::Label* coin4_gold_NumLabel = Label::createWithBMFont(UtilityHelper::getLocalString("FONT_NUMBER"),"5000");
+    cocos2d::Label* coin4_gold_NumLabel = Label::createWithBMFont(UtilityHelper::getLocalString("FONT_NUMBER"),"6000");
     coin4_gold_NumLabel->setPosition(Vec2(size.width*0.4+goldBuyBtn->getContentSize().width*scale+75*scale, size.height*0.61-heartBuyBtn->getContentSize().width*scale-12*scale));
     coin4_gold_NumLabel->setScale(scale*0.7);
     goldProductLayer->addChild(coin4_gold_NumLabel);
     
-    cocos2d::Label* coin4_money_NumLabel = Label::createWithSystemFont("150", FONT_FXZS, 30);
+    cocos2d::Label* coin4_money_NumLabel = Label::createWithSystemFont("68", FONT_FXZS, 30);
     coin4_money_NumLabel->setPosition(Vec2(size.width*0.4+goldBuyBtn->getContentSize().width*scale+55*scale, size.height*0.61-heartBuyBtn->getContentSize().width*scale-46*scale));
     coin4_money_NumLabel->setScale(scale);
     goldProductLayer->addChild(coin4_money_NumLabel);
@@ -196,12 +196,12 @@ bool ShopPopUpUI::init()
     coin5_Btn->setScale(scale*1.2);
     goldProductLayer->addChild(coin5_Btn);
     
-    cocos2d::Label* coin5_gold_NumLabel = Label::createWithBMFont(UtilityHelper::getLocalString("FONT_NUMBER"),"8000");
+    cocos2d::Label* coin5_gold_NumLabel = Label::createWithBMFont(UtilityHelper::getLocalString("FONT_NUMBER"),"12500");
     coin5_gold_NumLabel->setPosition(Vec2(size.width*0.4+26*scale, size.height*0.61-heartBuyBtn->getContentSize().width*2*scale-48*scale));
-    coin5_gold_NumLabel->setScale(scale*0.7);
+    coin5_gold_NumLabel->setScale(scale*0.65);
     goldProductLayer->addChild(coin5_gold_NumLabel);
     
-    cocos2d::Label* coin5_money_NumLabel = Label::createWithSystemFont("150", FONT_FXZS, 30);
+    cocos2d::Label* coin5_money_NumLabel = Label::createWithSystemFont("128", FONT_FXZS, 30);
     coin5_money_NumLabel->setPosition(Vec2(size.width*0.4+5*scale, size.height*0.61-heartBuyBtn->getContentSize().width*2*scale-83*scale));
     coin5_money_NumLabel->setScale(scale);
     goldProductLayer->addChild(coin5_money_NumLabel);
@@ -249,20 +249,18 @@ void ShopPopUpUI::setShopDisplay(ShopType type)
 }
 void ShopPopUpUI::onBuyGold(cocos2d::Ref *ref)
 {
-     UIManager::getInstance()->playSound();
+     UIManager::getInstance()->playBtnSound();
     m_isOnGold = true;
     setShopDisplay(SHOP_GOLD);
 }
 void ShopPopUpUI::onBuyHeart(cocos2d::Ref *ref)
 {
-    UIManager::getInstance()->playSound();
+    UIManager::getInstance()->playBtnSound();
     CCLOG("onBuyHeart");
     int goldNum = Value(localStorageGetItem(USER_GOLD_NUM)).asInt();
-    if (goldNum>=150) {
-        localStorageSetItem(USER_GOLD_NUM, Value(goldNum-150).asString());
-        localStorageSetItem(USER_HEART_NUM, Value(Value(localStorageGetItem(USER_HEART_NUM)).asInt()+15).asString());
-        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_START_HEART_CHANGE);
-        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_START_GOLD_CHANGE);
+    if (goldNum>=500) {
+        localStorageSetItem(USER_GOLD_NUM, Value(goldNum-500).asString());
+        localStorageSetItem(USER_HEART_NUM, Value(Value(localStorageGetItem(USER_HEART_NUM)).asInt()+10).asString());
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_HEART_CHANGE);
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_GOLD_CHANGE);
     }else
@@ -274,7 +272,7 @@ void ShopPopUpUI::onBuyHeart(cocos2d::Ref *ref)
 }
 void ShopPopUpUI::onRole(cocos2d::Ref *ref)
 {
-     UIManager::getInstance()->playSound();
+     UIManager::getInstance()->playBtnSound();
     UIManager::getInstance()->hidePopUp(false);
     UIManager::getInstance()->addPopUp(BasePopUpUI::POPUP_ROLE);
     UIManager::getInstance()->showPopUp(true,BasePopUpUI::POPUP_HORIZONTAL);
@@ -283,18 +281,18 @@ void ShopPopUpUI::onRole(cocos2d::Ref *ref)
 void ShopPopUpUI::onBuyRemoveAds(cocos2d::Ref *ref)
 {
     CCLOG("onBuyRemoveAds");
-     UIManager::getInstance()->playSound();
+     UIManager::getInstance()->playBtnSound();
 }
 
 void ShopPopUpUI::onRestore(cocos2d::Ref *ref)
 {
     CCLOG("onRestore");
-     UIManager::getInstance()->playSound();
+     UIManager::getInstance()->playBtnSound();
 }
 
 void ShopPopUpUI::onBackShop(cocos2d::Ref *ref)
 {
-     UIManager::getInstance()->playSound();
+     UIManager::getInstance()->playBtnSound();
     if (m_isOnGold) {
         setShopDisplay(ShopType::SHOP_NORMAL);
         m_isOnGold = false;
@@ -302,7 +300,6 @@ void ShopPopUpUI::onBackShop(cocos2d::Ref *ref)
     {
         if (UIManager::getInstance()->getGameId() == UIManager::UI_MAIN) {
             
-           
             BasePopUpUI* popup = UIManager::getInstance()->getPopUpUI(BasePopUpUI::POPUP_ROLE);
             if (popup) {
                 UIManager::getInstance()->hidePopUp(false);
@@ -316,39 +313,42 @@ void ShopPopUpUI::onBackShop(cocos2d::Ref *ref)
                 {
                      UIManager::getInstance()->hidePopUp();
                 }
+                Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_START_HEART_CHANGE);
+                Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_START_GOLD_CHANGE);
                 
             }
         }else
         {
             UIManager::getInstance()->hidePopUp(false);
+            Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_RUNNER_ADD_PRODUCT);
         }
         
     }
 }
 void ShopPopUpUI::onProduct(Ref* Ref,const std::string &productId)
 {
-     UIManager::getInstance()->playSound();
+     UIManager::getInstance()->playBtnSound();
     int num = 0;
     CCLOG("product:%s",productId.c_str());
     if (!strcmp(productId.c_str(), "buyCoin1"))
     {
-        num = 200;
+        num = 450;
     }
     else if (!strcmp(productId.c_str(), "buyCoin2"))
     {
-        num = 500;
+        num = 1500;
     }
     else if (!strcmp(productId.c_str(), "buyCoin3"))
     {
-        num = 1000;
+        num = 2500;
     }
     else if (!strcmp(productId.c_str(), "buyCoin4"))
     {
-        num = 2500;
+        num = 6000;
     }
     else if (!strcmp(productId.c_str(), "buyCoin5"))
     {
-        num = 10000;
+        num = 12500;
     }
     localStorageSetItem(USER_GOLD_NUM, Value(Value(localStorageGetItem(USER_GOLD_NUM)).asInt()+num).asString());
     Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_GOLD_CHANGE);

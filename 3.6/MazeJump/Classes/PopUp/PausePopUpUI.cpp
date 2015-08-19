@@ -75,7 +75,7 @@ bool PausePopUpUI::init()
 }
 void PausePopUpUI::onHome(cocos2d::Ref *ref)
 {
-     UIManager::getInstance()->playSound();
+     UIManager::getInstance()->playBtnSound();
     UIManager::getInstance()->hidePopUp(false);
     Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_RUNNER_PAUSE_RESUME);
 //    auto scene = MenuScene::createScene();
@@ -84,13 +84,13 @@ void PausePopUpUI::onHome(cocos2d::Ref *ref)
 }
 void PausePopUpUI::onShop(cocos2d::Ref *ref)
 {
-     UIManager::getInstance()->playSound();
+     UIManager::getInstance()->playBtnSound();
     UIManager::getInstance()->addPopUp(BasePopUpUI::POPUP_SHOP);
     UIManager::getInstance()->showPopUp(false);
 }
 void PausePopUpUI::onContinue(cocos2d::Ref *ref)
 {
-     UIManager::getInstance()->playSound();
+     UIManager::getInstance()->playBtnSound();
     UIManager::getInstance()->hidePopUp(false);
     Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_RUNNER_RECOVER_PAUSE);
 }

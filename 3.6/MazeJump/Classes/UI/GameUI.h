@@ -28,6 +28,7 @@ private:
     bool isRecover;
     bool isShwoHelp;
     bool isDead;
+    bool isTouchShopBuy;
     cocos2d::Layer* m_maskLayerBg;
     cocos2d::ui::ImageView* m_countDonwImg;
     cocos2d::ui::Button* pauseImg;
@@ -39,6 +40,8 @@ private:
     
     void onRecoverPause(cocos2d::EventCustom* sender);
     void onRunnerLose(cocos2d::EventCustom* sender);
+    void onShopBuyGold(Ref* ref);
+    void onShopBuyHeart(Ref* ref);
     void onDelayTimeRunnerLose();
     void onShowLosePopUpEnd();
     void onHelp(Ref* ref);
@@ -47,6 +50,8 @@ private:
     void onResumeAn(float dt);
     void setPause();
     void setResume();
+    
+    void onShopBuyEvenet(cocos2d::EventCustom* sender);
 };
 
 #endif /* defined(__MazeJump__GameUI__) */
