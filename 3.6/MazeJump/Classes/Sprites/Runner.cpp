@@ -13,10 +13,10 @@
 USING_NS_CC;
 using namespace experimental;
 
-Runner* Runner::create()
+Runner* Runner::create(const std::string& modelPath)
 {
     auto runner = new (std::nothrow) Runner();
-    if (runner && runner->initWithFile("question.c3b"))
+    if (runner && runner->initWithFile(modelPath))
     {
         runner->_contentSize = runner->getBoundingBox().size;
         runner->m_fRadius = runner->_contentSize.width*0.5f;

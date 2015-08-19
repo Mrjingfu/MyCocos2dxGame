@@ -12,12 +12,11 @@
 #include "GameScene.h"
 USING_NS_CC;
 
-Player* Player::create(PlayerType type, GroundLayer* ground)
+Player* Player::create(const std::string& modelPath, GroundLayer* ground)
 {
     auto player = new (std::nothrow) Player();
-    if (player && player->initWithFile("girl1.c3b"))
+    if (player && player->initWithFile(modelPath))
     {
-        player->setType(type);
         player->_contentSize = player->getBoundingBox().size;
         player->m_fRadius = player->_contentSize.width*0.5f;
         player->m_pGround = ground;
@@ -38,12 +37,7 @@ Player::Player()
 {
     m_curState  = PS_UNKNOWN;
     m_fRadius   = 2.5f;
-    m_Type      = PT_UNKNOWN;
     m_pGround   = nullptr;
-}
-void Player::setType(PlayerType type)
-{
-    m_Type = type;
 }
 void Player::setPlayerState(PlayerState state)
 {
@@ -203,40 +197,25 @@ void Player::onEnterCheckNextCell()
         GroundCell* pNextCell = m_pGround->getNextCell(m_nNextIndexX, m_nNextIndexY);
         if(pNextCell)
         {
-            switch (m_Type) {
-                case PT_STRENGTH:
-                    {
-                        if (!pNextCell->isWalkCell())
-                            setPlayerState(PS_JUMP_STAY);
-                        else
-                        {
-                            if(m_nNextIndexY == m_nIndexY)
-                            {
-                                if (m_nNextIndexX > m_nIndexX)
-                                    setPlayerState(PS_MOVE_RIGHT);
-                                else if(m_nNextIndexX < m_nIndexX)
-                                    setPlayerState(PS_MOVE_LEFT);
-                            }
-                            if(m_nNextIndexX == m_nIndexX)
-                            {
-                                if (m_nNextIndexY > m_nIndexY)
-                                    setPlayerState(PS_MOVE_UP);
-                                else if(m_nNextIndexY < m_nIndexY)
-                                    setPlayerState(PS_MOVE_DOWN);
-                            }
-                        }
-                    }
-                    break;
-                case PT_AGILITY:
-                    {
-                    }
-                    break;
-                case PT_FLEXIBLE:
-                    {
-                    }
-                    break;
-                default:
-                    break;
+
+            if (!pNextCell->isWalkCell())
+                setPlayerState(PS_JUMP_STAY);
+            else
+            {
+                if(m_nNextIndexY == m_nIndexY)
+                {
+                    if (m_nNextIndexX > m_nIndexX)
+                        setPlayerState(PS_MOVE_RIGHT);
+                    else if(m_nNextIndexX < m_nIndexX)
+                        setPlayerState(PS_MOVE_LEFT);
+                }
+                if(m_nNextIndexX == m_nIndexX)
+                {
+                    if (m_nNextIndexY > m_nIndexY)
+                        setPlayerState(PS_MOVE_UP);
+                    else if(m_nNextIndexY < m_nIndexY)
+                        setPlayerState(PS_MOVE_DOWN);
+                }
             }
         }
     }

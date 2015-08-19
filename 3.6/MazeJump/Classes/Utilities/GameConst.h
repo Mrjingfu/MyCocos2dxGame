@@ -43,6 +43,7 @@ static const int LAYER_DIALOG = 2;
 static const std::string EVENT_GAME_PAUSE = "GAME_PAUSE";
 static const std::string EVENT_GOLD_CHANGE = "GOLD_CHANGE";
 static const std::string EVENT_HEART_CHANGE = "HEART_CHANGE";
+static const std::string EVENT_RUNNER_ADD_PRODUCT = "RUNNER_ADD_PRODUCT";
 static const std::string EVENT_MAX_DISTANCE_CHANGE = "MAX_DISTANCE_CHANGE";
 static const std::string EVENT_RAINBOW_VALUE_CHANGE = "RAINBOW_VALUE_CHANGE";
 static const std::string EVENT_RUNNER_LOSE = "RUNNER_LOSE";
@@ -54,4 +55,5 @@ static const std::string EVENT_MAZEJUMP_LOSE = "MAZEJUMP_LOSE";
 static const std::string EVENT_MAZEJUMP_RECORD_END = "MAZEJUMP_RECORD_END";
 static const std::string EVENT_START_GOLD_CHANGE = "START_GOLD_CHANGE";
 static const std::string EVENT_START_HEART_CHANGE = "START_HEART_CHANGE";
+static const std::string EVENT_CHARACTER_MODEL_CHANGE = "CHARACTER_MODEL_CHANGE";
 #endif //_Scene_Const_h_

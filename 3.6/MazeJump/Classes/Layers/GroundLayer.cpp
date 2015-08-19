@@ -15,6 +15,7 @@
 #include "AlisaMethod.h"
 #include "GameConst.h"
 #include "GameController.h"
+#include "RoleManager.h"
 #include "storage/local-storage/LocalStorage.h"
 USING_NS_CC;
 using namespace experimental;
@@ -191,17 +192,8 @@ Vector<GroundCell*> GroundLayer::getNeighborCells(GroundCell* currentCell)
             GroundCell* neighborCell = m_GroundCellList.at(index);
             if(neighborCell && m_pPlayer)
             {
-                switch (m_pPlayer->getType()) {
-                    case Player::PT_STRENGTH:
-                    {
-                        if (neighborCell->isWalkCell()) {
-                            cells.pushBack(neighborCell);
-                        }
-                    }
-                    break;
-                        
-                    default:
-                        break;
+                if (neighborCell->isWalkCell()) {
+                    cells.pushBack(neighborCell);
                 }
             }
         }
@@ -214,17 +206,8 @@ Vector<GroundCell*> GroundLayer::getNeighborCells(GroundCell* currentCell)
             GroundCell* neighborCell = m_GroundCellList.at(index);
             if(neighborCell && m_pPlayer)
             {
-                switch (m_pPlayer->getType()) {
-                    case Player::PT_STRENGTH:
-                    {
-                        if (neighborCell->isWalkCell()) {
-                            cells.pushBack(neighborCell);
-                        }
-                    }
-                        break;
-                        
-                    default:
-                        break;
+                if (neighborCell->isWalkCell()) {
+                    cells.pushBack(neighborCell);
                 }
             }
         }
@@ -237,17 +220,9 @@ Vector<GroundCell*> GroundLayer::getNeighborCells(GroundCell* currentCell)
             GroundCell* neighborCell = m_GroundCellList.at(index);
             if(neighborCell && m_pPlayer)
             {
-                switch (m_pPlayer->getType()) {
-                    case Player::PT_STRENGTH:
-                    {
-                        if (neighborCell->isWalkCell()) {
-                            cells.pushBack(neighborCell);
-                        }
-                    }
-                        break;
-                        
-                    default:
-                        break;
+
+                if (neighborCell->isWalkCell()) {
+                    cells.pushBack(neighborCell);
                 }
             }
         }
@@ -260,17 +235,8 @@ Vector<GroundCell*> GroundLayer::getNeighborCells(GroundCell* currentCell)
             GroundCell* neighborCell = m_GroundCellList.at(index);
             if(neighborCell && m_pPlayer)
             {
-                switch (m_pPlayer->getType()) {
-                    case Player::PT_STRENGTH:
-                    {
-                        if (neighborCell->isWalkCell()) {
-                            cells.pushBack(neighborCell);
-                        }
-                    }
-                        break;
-                        
-                    default:
-                        break;
+                if (neighborCell->isWalkCell()) {
+                    cells.pushBack(neighborCell);
                 }
             }
         }
@@ -358,7 +324,8 @@ void GroundLayer::setCurrentCellTypeOK()
         
         if(m_pPlayer == nullptr)
         {
-            m_pPlayer = Player::create(Player::PT_STRENGTH, this);
+            std::string modelPath = RoleManager::getInstance()->getDefaultRoleModel();
+            m_pPlayer = Player::create(modelPath, this);
             if(m_pPlayer)
             {
                 m_pPlayer->setIndexX(m_pCurrentCell->getIndexX());

@@ -37,7 +37,9 @@ public:
 private:
     void switchToMainScene();
     void startGame();
+    void runnerSuperJump();
     void runnerJump();
+    void changeCharacter(cocos2d::EventCustom *sender);
 private:
     cocos2d::Camera*    m_pMainCamera;
     EffectSprite3D*     m_pSea;

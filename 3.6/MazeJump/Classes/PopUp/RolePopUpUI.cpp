@@ -51,10 +51,14 @@ bool RoleItem::init(std::string _roleId, int preice, std::string _roleImg, std::
     setContentSize(m_itemNormal->getContentSize()*scale);
     m_itemNormal->setPosition(Vec2(getContentSize().width*0.5,getContentSize().height*0.5));
     addChild(m_itemNormal);
+    setSelectColor(false);
     
-    if (strcmp(m_roleId.c_str(), localStorageGetItem(USER_DEFAULT_ROLE_ID).c_str())) {
+    if (!strcmp(m_roleId.c_str(), localStorageGetItem(USER_DEFAULT_ROLE_ID).c_str()) ) {
       
-        setSelectColor(false);
+        setSelectColor(true);
+    }
+    if (!m_isLock) {
+        setSelectColor(true);
     }
     
     
@@ -141,7 +145,7 @@ bool RolePopUpUI::init()
     
     
     ui::ListView* uiListView = cocos2d::ui::ListView::create();
-    uiListView->setAnchorPoint(Vec2(0.5,0.5));
+    uiListView->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
     uiListView->setContentSize(cocos2d::Size(m_popupBgLayer->getContentSize().width*scale-20*scale, m_popupBgLayer->getContentSize().height*scale));
     uiListView->setPosition(Vec2(m_popupBgLayer->getContentSize().width*0.5*scale+10*scale, size.height*0.7));
     uiListView->setDirection(ui::ScrollView::Direction::HORIZONTAL);
@@ -203,13 +207,15 @@ void RolePopUpUI::selectedItemEvent(cocos2d::Ref *sender, cocos2d::ui::ListView:
 {
     
     if (type == cocos2d::ui::ListView::EventType::ON_SELECTED_ITEM_END) {
-        UIManager::getInstance()->playBtnSound();
+
         
         CCLOG("m_isNowShowLockBtn:%d",m_isNowShowLockBtn);
         if (m_isNowShowLockBtn)
             return;
         if (m_isLockHideShow)
             return;
+        
+        UIManager::getInstance()->playBtnSound();
         cocos2d::ui::ListView* listView = static_cast<cocos2d::ui::ListView*>(sender);
         RoleItem* item = static_cast<RoleItem*>(listView->getItem(listView->getCurSelectedIndex()));
         
@@ -231,11 +237,14 @@ void RolePopUpUI::selectedItemEvent(cocos2d::Ref *sender, cocos2d::ui::ListView:
             if (m_isShowLockBtn) {
                 m_isLockHideShow = true;
                 hideLockButton(CC_CALLBACK_0(RolePopUpUI::onHideShowLockCall,this,m_currentNotLockRoleItem->getPrice()));
-            }else
+            }
+            else
             {
                 m_isNowShowLockBtn = true;
                 showLockButton(m_currentNotLockRoleItem->getPrice());
             }
+            localStorageSetItem(USER_DEFAULT_ROLE_ID, m_currentNotLockRoleItem->getRoleId());
+            Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_CHARACTER_MODEL_CHANGE);
             
         }else
         {
@@ -247,9 +256,11 @@ void RolePopUpUI::selectedItemEvent(cocos2d::Ref *sender, cocos2d::ui::ListView:
                 m_cureentSelectIteml->setSelectColor(true);
             }
             hideLockButton();
-           
-            
+            localStorageSetItem(USER_DEFAULT_ROLE_ID, m_cureentSelectIteml->getRoleId());
+            Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_CHARACTER_MODEL_CHANGE);
+
         }
+
     }
 }
 void RolePopUpUI::showLockButton(int price)
@@ -306,8 +317,10 @@ void RolePopUpUI::onHideShowLockCall(int price)
 }
 void RolePopUpUI::onBack(cocos2d::Ref *Ref)
 {
-    if (m_cureentSelectIteml) {
+    if (m_cureentSelectIteml ) {
+        
         localStorageSetItem(USER_DEFAULT_ROLE_ID, m_cureentSelectIteml->getRoleId());
+        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_CHARACTER_MODEL_CHANGE);
     }
     
     UIManager::getInstance()->playBtnSound();
