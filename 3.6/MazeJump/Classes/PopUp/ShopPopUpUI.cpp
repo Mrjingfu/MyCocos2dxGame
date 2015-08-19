@@ -10,6 +10,7 @@
 #include "GameConst.h"
 #include "MainScene.h"
 #include "UIManager.h"
+#include "StoreListener.h"
 #include "storage/local-storage/LocalStorage.h"
 USING_NS_CC;
 
@@ -27,8 +28,14 @@ ShopPopUpUI* ShopPopUpUI::create()
 
 ShopPopUpUI::ShopPopUpUI()
 {
-    m_shopType = SHOP_NORMAL;
-    m_isOnGold = false;
+    m_shopType          = SHOP_NORMAL;
+    m_isOnGold          = false;
+    adsBuyBtn           = nullptr;
+    productLayer        = nullptr;
+    goldProductLayer    = nullptr;
+    tipTv               = nullptr;
+    heartTv             = nullptr;
+    goldTv              = nullptr;
 }
 ShopPopUpUI::~ShopPopUpUI()
 {
@@ -41,6 +48,8 @@ void ShopPopUpUI::onEnter()
         UIManager::getInstance()->showInfo(true);
 
     }
+        Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_PURCHASE_GOLD_OK, std::bind(&ShopPopUpUI::onProuuctSucessEvent, this, std::placeholders::_1));
+            Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_PURCHASE_REMOVEADS_OK, std::bind(&ShopPopUpUI::onRemoveAdaSucessEvent, this, std::placeholders::_1));
     
 }
 void ShopPopUpUI::onExit()
@@ -50,6 +59,8 @@ void ShopPopUpUI::onExit()
         UIManager::getInstance()->showInfo(false);
        
     }
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_PURCHASE_GOLD_OK);
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_PURCHASE_REMOVEADS_OK);
     
 }
 bool ShopPopUpUI::init()
@@ -93,7 +104,6 @@ bool ShopPopUpUI::init()
     
     
     cocos2d::ui::Button* roleBtn = nullptr;
-    cocos2d::ui::Button* adsBuyBtn = nullptr;
     cocos2d::ui::Button* restoreBtn = nullptr;
     if (UIManager::getInstance()->getGameId()==UIManager::UI_MAIN) {
         roleBtn = cocos2d::ui::Button::create("btn_character_normal.png","btn_character_pressed.png");
@@ -136,9 +146,20 @@ bool ShopPopUpUI::init()
     coin1_gold_NumLabel->setPosition(Vec2(size.width*0.4+18*scale, size.height*0.61+23*scale));
     coin1_gold_NumLabel->setScale(scale*0.7);
     goldProductLayer->addChild(coin1_gold_NumLabel);
-    
 
-    cocos2d::Label* coin1_money_NumLabel = Label::createWithSystemFont("6", FONT_FXZS, 30);
+     std::string conin1 = "6";
+     std::string conin2 = "18";
+     std::string conin3 = "30";
+     std::string conin4 = "68";
+     std::string conin5 = "128";
+#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID )
+    conin1=StoreListener::getInstance()->getProducts().at(0).description;
+    conin2=StoreListener::getInstance()->getProducts().at(1).description;
+    conin3=StoreListener::getInstance()->getProducts().at(2).description;
+    conin4=StoreListener::getInstance()->getProducts().at(3).description;
+    conin5=StoreListener::getInstance()->getProducts().at(4).description;
+#endif
+    cocos2d::Label* coin1_money_NumLabel = Label::createWithSystemFont(conin1, FONT_FXZS, 30);
     coin1_money_NumLabel->setPosition(Vec2(size.width*0.4+5*scale, size.height*0.61-18*scale));
     coin1_money_NumLabel->setScale(scale);
     goldProductLayer->addChild(coin1_money_NumLabel);
@@ -155,7 +176,7 @@ bool ShopPopUpUI::init()
     coin2_gold_NumLabel->setScale(scale*0.7);
     goldProductLayer->addChild(coin2_gold_NumLabel);
     
-    cocos2d::Label* coin2_money_NumLabel = Label::createWithSystemFont("18", FONT_FXZS, 30);
+    cocos2d::Label* coin2_money_NumLabel = Label::createWithSystemFont(conin2, FONT_FXZS, 30);
     coin2_money_NumLabel->setPosition(Vec2(size.width*0.4+goldBuyBtn->getContentSize().width*scale+55*scale, size.height*0.61-18*scale));
     coin2_money_NumLabel->setScale(scale);
     goldProductLayer->addChild(coin2_money_NumLabel);
@@ -170,7 +191,7 @@ bool ShopPopUpUI::init()
     coin3_gold_NumLabel->setScale(scale*0.7);
     goldProductLayer->addChild(coin3_gold_NumLabel);
     
-    cocos2d::Label* coin3_money_NumLabel = Label::createWithSystemFont("30", FONT_FXZS, 30);
+    cocos2d::Label* coin3_money_NumLabel = Label::createWithSystemFont(conin3, FONT_FXZS, 30);
     coin3_money_NumLabel->setPosition(Vec2(size.width*0.4+5*scale, size.height*0.61-heartBuyBtn->getContentSize().width*scale-46*scale));
     coin3_money_NumLabel->setScale(scale);
     goldProductLayer->addChild(coin3_money_NumLabel);
@@ -185,7 +206,7 @@ bool ShopPopUpUI::init()
     coin4_gold_NumLabel->setScale(scale*0.7);
     goldProductLayer->addChild(coin4_gold_NumLabel);
     
-    cocos2d::Label* coin4_money_NumLabel = Label::createWithSystemFont("68", FONT_FXZS, 30);
+    cocos2d::Label* coin4_money_NumLabel = Label::createWithSystemFont(conin4, FONT_FXZS, 30);
     coin4_money_NumLabel->setPosition(Vec2(size.width*0.4+goldBuyBtn->getContentSize().width*scale+55*scale, size.height*0.61-heartBuyBtn->getContentSize().width*scale-46*scale));
     coin4_money_NumLabel->setScale(scale);
     goldProductLayer->addChild(coin4_money_NumLabel);
@@ -201,7 +222,7 @@ bool ShopPopUpUI::init()
     coin5_gold_NumLabel->setScale(scale*0.65);
     goldProductLayer->addChild(coin5_gold_NumLabel);
     
-    cocos2d::Label* coin5_money_NumLabel = Label::createWithSystemFont("128", FONT_FXZS, 30);
+    cocos2d::Label* coin5_money_NumLabel = Label::createWithSystemFont(conin5, FONT_FXZS, 30);
     coin5_money_NumLabel->setPosition(Vec2(size.width*0.4+5*scale, size.height*0.61-heartBuyBtn->getContentSize().width*2*scale-83*scale));
     coin5_money_NumLabel->setScale(scale);
     goldProductLayer->addChild(coin5_money_NumLabel);
@@ -221,11 +242,11 @@ bool ShopPopUpUI::init()
         roleBtn->addClickEventListener(CC_CALLBACK_1(ShopPopUpUI::onRole,this));
     }
     
-    coin1_Btn->addClickEventListener(CC_CALLBACK_1(ShopPopUpUI::onProduct, this,"buyCoin1"));
-    coin2_Btn->addClickEventListener(CC_CALLBACK_1(ShopPopUpUI::onProduct, this,"buyCoin2"));
-    coin3_Btn->addClickEventListener(CC_CALLBACK_1(ShopPopUpUI::onProduct, this,"buyCoin3"));
-    coin4_Btn->addClickEventListener(CC_CALLBACK_1(ShopPopUpUI::onProduct, this,"buyCoin4"));
-    coin5_Btn->addClickEventListener(CC_CALLBACK_1(ShopPopUpUI::onProduct, this,"buyCoin5"));
+    coin1_Btn->addClickEventListener(CC_CALLBACK_1(ShopPopUpUI::onProduct, this,"coin_package1"));
+    coin2_Btn->addClickEventListener(CC_CALLBACK_1(ShopPopUpUI::onProduct, this,"coin_package2"));
+    coin3_Btn->addClickEventListener(CC_CALLBACK_1(ShopPopUpUI::onProduct, this,"coin_package3"));
+    coin4_Btn->addClickEventListener(CC_CALLBACK_1(ShopPopUpUI::onProduct, this,"coin_package4"));
+    coin5_Btn->addClickEventListener(CC_CALLBACK_1(ShopPopUpUI::onProduct, this,"coin_package5"));
     
     backBtn->addClickEventListener(CC_CALLBACK_1(ShopPopUpUI::onBackShop, this));
     
@@ -282,12 +303,18 @@ void ShopPopUpUI::onBuyRemoveAds(cocos2d::Ref *ref)
 {
     CCLOG("onBuyRemoveAds");
      UIManager::getInstance()->playBtnSound();
+#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID )
+    StoreListener::getInstance()->purchase("remove_ads");
+#endif
 }
 
 void ShopPopUpUI::onRestore(cocos2d::Ref *ref)
 {
     CCLOG("onRestore");
-     UIManager::getInstance()->playBtnSound();
+    UIManager::getInstance()->playBtnSound();
+#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID )
+    StoreListener::getInstance()->restore();
+#endif
 }
 
 void ShopPopUpUI::onBackShop(cocos2d::Ref *ref)
@@ -328,6 +355,9 @@ void ShopPopUpUI::onBackShop(cocos2d::Ref *ref)
 void ShopPopUpUI::onProduct(Ref* Ref,const std::string &productId)
 {
      UIManager::getInstance()->playBtnSound();
+#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID )
+    StoreListener::getInstance()->purchase(productId);
+#else
     int num = 0;
     CCLOG("product:%s",productId.c_str());
     if (!strcmp(productId.c_str(), "buyCoin1"))
@@ -352,5 +382,18 @@ void ShopPopUpUI::onProduct(Ref* Ref,const std::string &productId)
     }
     localStorageSetItem(USER_GOLD_NUM, Value(Value(localStorageGetItem(USER_GOLD_NUM)).asInt()+num).asString());
     Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_GOLD_CHANGE);
+#endif
+
+}
+void ShopPopUpUI::onProuuctSucessEvent(cocos2d::EventCustom *sender)
+{
+    Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_GOLD_CHANGE);
+}
+void ShopPopUpUI::onRemoveAdaSucessEvent(cocos2d::EventCustom *sender)
+{
+    if (adsBuyBtn) {
+        adsBuyBtn->setBright(false);
+        adsBuyBtn->setBright(false);
+    }
 }
 

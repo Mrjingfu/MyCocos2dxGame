@@ -31,6 +31,8 @@ public:
     std::string valueMapToStr(cocos2d::ValueMap _valueMap);
     std::string getDefaultRoleModel();
     std::string getDefaultRoleSound();
+    std::string getSelectRoleModel();
+    std::string getSelectRoleSound();
 private:
     void updateRoleLock(const std::string& str,cocos2d::ValueMap _lvalueMap);
     cocos2d::ValueMap parseValueMap(const std::string& str);

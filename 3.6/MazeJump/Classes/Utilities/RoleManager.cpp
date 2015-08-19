@@ -306,7 +306,7 @@ std::string RoleManager::getDefaultRoleModel()
 {
     std::string ldefaultModel;
     std::string defaultRolelId = localStorageGetItem(USER_DEFAULT_ROLE_ID);
-    if (defaultRolelId.length()>0) {
+    if (!defaultRolelId.empty()) {
         ldefaultModel = getRoleModel(defaultRolelId);
     }
     return ldefaultModel;
@@ -315,9 +315,28 @@ std::string RoleManager::getDefaultRoleSound()
 {
     std::string ldefaultSound;
     std::string defaultRolelId = localStorageGetItem(USER_DEFAULT_ROLE_ID);
-    if (defaultRolelId.length()>0) {
+    if (!defaultRolelId.empty()) {
         ldefaultSound = getRoleSound(defaultRolelId);
     }
     return ldefaultSound;
 
+}
+std::string RoleManager::getSelectRoleModel()
+{
+    std::string ldefaultModel;
+    std::string defaultRolelId = localStorageGetItem(USER_SELECT_ROLE_ID);
+    if (!defaultRolelId.empty()) {
+        ldefaultModel = getRoleModel(defaultRolelId);
+    }
+    return ldefaultModel;
+}
+std::string RoleManager::getSelectRoleSound()
+{
+    std::string ldefaultSound;
+    std::string defaultRolelId = localStorageGetItem(USER_SELECT_ROLE_ID);
+    if (!defaultRolelId.empty()) {
+        ldefaultSound = getRoleSound(defaultRolelId);
+    }
+    return ldefaultSound;
+    
 }
