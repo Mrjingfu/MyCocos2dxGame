@@ -151,7 +151,7 @@ void UIManager::onEnterGronudGame()
     if (m_parent) {
             Layer* lLayer = GroundGameUI::create();
             m_parent->addChild(lLayer);
-            showInfo(true,true);
+            showInfo(true,false);
     }
 }
 BasePopUpUI* UIManager::getPopUpUI(BasePopUpUI::PopUp_UI popid)
@@ -325,7 +325,7 @@ void UIManager::destory()
     }
 
 }
-void UIManager::playSound()
+void UIManager::playBtnSound()
 {
-    cocos2d::experimental::AudioEngine::play2d("btnclick.wav", false, 5.0f);
+    cocos2d::experimental::AudioEngine::play2d("btnclick.wav", false, 3.0f);
 }

@@ -91,7 +91,7 @@ bool GroundWinPopUpUI::init()
 }
 void GroundWinPopUpUI::onBack(cocos2d::Ref *ref)
 {
-     UIManager::getInstance()->playSound();
+     UIManager::getInstance()->playBtnSound();
     UIManager::getInstance()->hidePopUp(true,CC_CALLBACK_0(GroundWinPopUpUI::onHidePopUpEnd, this));
 }
 void GroundWinPopUpUI::onHidePopUpEnd()

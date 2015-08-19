@@ -61,14 +61,14 @@ bool GroundGameUI::init()
   
     Label* goldRewardTv = Label::createWithBMFont(UtilityHelper::getLocalString("FONT_NUMBER"),Value(GameController::getInstance()->getCurrentGoldReward()).asString());
     goldRewardTv->setAnchorPoint(Vec2::ANCHOR_MIDDLE_LEFT);
-    goldRewardTv->setPosition(Vec2(size.width*0.5, size.height*0.16));
+    goldRewardTv->setPosition(Vec2(size.width*0.68, size.height*0.16));
     goldRewardTv->setScale(scale);
     goldRewardTv->setHorizontalAlignment(TextHAlignment::RIGHT);
    addChild(goldRewardTv);
     
     Label* heartRewardTv = Label::createWithBMFont(UtilityHelper::getLocalString("FONT_NUMBER"),Value(GameController::getInstance()->getCurrentHeartReward()).asString());
     heartRewardTv->setAnchorPoint(Vec2::ANCHOR_MIDDLE_LEFT);
-    heartRewardTv->setPosition(Vec2(size.width*0.5, size.height*0.07));
+    heartRewardTv->setPosition(Vec2(size.width*0.68, size.height*0.07));
     heartRewardTv->setScale(scale);
     heartRewardTv->setHorizontalAlignment(TextHAlignment::RIGHT);
    addChild(heartRewardTv);
@@ -86,7 +86,7 @@ bool GroundGameUI::init()
     helplistener->onTouchBegan =  [this](Touch * ,Event *)
     {
         if (isShwoHelp) {
-            UIManager::getInstance()->playSound();
+            UIManager::getInstance()->playBtnSound();
             isShwoHelp = false;
             helpLayer->setVisible(false);
             return true;
@@ -128,7 +128,7 @@ bool GroundGameUI::init()
 }
 void GroundGameUI::onHelp(Ref* ref)
 {
-     UIManager::getInstance()->playSound();
+     UIManager::getInstance()->playBtnSound();
     if (!isShwoHelp) {
         isShwoHelp = true;
          helpLayer->setVisible(true);

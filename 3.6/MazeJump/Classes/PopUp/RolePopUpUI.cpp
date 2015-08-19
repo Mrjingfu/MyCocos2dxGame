@@ -47,11 +47,18 @@ bool RoleItem::init(std::string _roleId, int preice, std::string _roleImg, std::
     m_roleSound = _roleSound;
     m_price = preice;
 
-    m_itemNormal = ui::Button::create(_roleImg);
+    m_itemNormal = cocos2d::ui::ImageView::create(_roleImg);
     setContentSize(m_itemNormal->getContentSize()*scale);
     m_itemNormal->setPosition(Vec2(getContentSize().width*0.5,getContentSize().height*0.5));
     addChild(m_itemNormal);
-    m_itemLockImg = ui::ImageView::create("character_mask.png");
+    
+    if (strcmp(m_roleId.c_str(), localStorageGetItem(USER_DEFAULT_ROLE_ID).c_str())) {
+      
+        setSelectColor(false);
+    }
+    
+    
+    m_itemLockImg = cocos2d::ui::ImageView::create("character_mask.png");
     m_itemLockImg->setPosition(Vec2(getContentSize().width*0.5,getContentSize().height*0.5));
     addChild(m_itemLockImg);
     m_itemLockImg->setVisible(!m_isLock);
@@ -59,6 +66,17 @@ bool RoleItem::init(std::string _roleId, int preice, std::string _roleImg, std::
 
     
     return true;
+}
+void RoleItem::setSelectColor(bool isSelect)
+{
+    if (isSelect)
+    {
+        m_itemNormal->setColor(Color3B(255, 255, 255));
+    }else
+    {
+        m_itemNormal->setColor(Color3B(159, 168, 187));
+    }
+    
 }
 void RoleItem::setLock(bool _isLock)
 {
@@ -88,6 +106,7 @@ RolePopUpUI::RolePopUpUI()
     m_isNowShowLockBtn = false;
     m_cureentSelectIteml = nullptr;
     m_currentNotLockRoleItem = nullptr;
+    m_isLockHideShow = false;
 }
 RolePopUpUI::~RolePopUpUI()
 {
@@ -150,6 +169,9 @@ bool RolePopUpUI::init()
         roleItem->setTouchEnabled(true);
         roleItem->setScale(scale);
         uiListView->pushBackCustomItem(roleItem);
+        if (!strcmp(keyStr.c_str(), localStorageGetItem(USER_DEFAULT_ROLE_ID).c_str())) {
+            m_cureentSelectIteml = roleItem;
+        }
         
     }
     
@@ -173,66 +195,96 @@ bool RolePopUpUI::init()
     
     
      backButton->addClickEventListener(CC_CALLBACK_1(RolePopUpUI::onBack, this));
-     m_lockButton->addClickEventListener(CC_CALLBACK_1(RolePopUpUI::onLock, this));
+     m_lockButton->addClickEventListener(CC_CALLBACK_1(RolePopUpUI::onUnLock, this));
     return true;
 }
 
 void RolePopUpUI::selectedItemEvent(cocos2d::Ref *sender, cocos2d::ui::ListView::EventType type)
 {
-    if (m_isNowShowLockBtn) {
-        return;
-    }
     
     if (type == cocos2d::ui::ListView::EventType::ON_SELECTED_ITEM_END) {
-        UIManager::getInstance()->playSound();
+        UIManager::getInstance()->playBtnSound();
+        
+        CCLOG("m_isNowShowLockBtn:%d",m_isNowShowLockBtn);
+        if (m_isNowShowLockBtn)
+            return;
+        if (m_isLockHideShow)
+            return;
         cocos2d::ui::ListView* listView = static_cast<cocos2d::ui::ListView*>(sender);
         RoleItem* item = static_cast<RoleItem*>(listView->getItem(listView->getCurSelectedIndex()));
+        
 
+        if (m_currentNotLockRoleItem) {
+            CCLOG("item:%s notLock:%s select:%s",item->getRoleId().c_str(),m_currentNotLockRoleItem->getRoleId().c_str(),m_cureentSelectIteml->getRoleId().c_str());
+        }else
+        {
+            CCLOG("item:%s notLock is null,select:%s",item->getRoleId().c_str(),m_cureentSelectIteml->getRoleId().c_str());
+        }
+        
+        if (m_currentNotLockRoleItem && item->getRoleId() == m_currentNotLockRoleItem->getRoleId())
+            return;
+        
         if (!item->getIsLock())
         {
-            if (m_currentNotLockRoleItem && item->getRoleId() == m_currentNotLockRoleItem->getRoleId() )
-                return;
              m_currentNotLockRoleItem = item;
-             m_isNowShowLockBtn = true;
+            
             if (m_isShowLockBtn) {
+                m_isLockHideShow = true;
                 hideLockButton(CC_CALLBACK_0(RolePopUpUI::onHideShowLockCall,this,m_currentNotLockRoleItem->getPrice()));
             }else
             {
+                m_isNowShowLockBtn = true;
                 showLockButton(m_currentNotLockRoleItem->getPrice());
             }
-        }else{
+            
+        }else
+        {
+            m_currentNotLockRoleItem = nullptr;
+            if (m_cureentSelectIteml && m_cureentSelectIteml->getRoleId() != item->getRoleId())
+            {
+                m_cureentSelectIteml->setSelectColor(false);
                 m_cureentSelectIteml = item;
-                hideLockButton();
+                m_cureentSelectIteml->setSelectColor(true);
+            }
+            hideLockButton();
+           
+            
         }
     }
 }
 void RolePopUpUI::showLockButton(int price)
 {
-    
+    stopActionByTag(SHOW_ACTION);
     if (m_lockTv) {
         m_lockTv->setString(Value(price).asString());
     }
     if (m_lockLayer) {
-        cocos2d::MoveTo* moveTo = cocos2d::MoveTo::create(0.3,Vec2::ZERO);
+        cocos2d::MoveTo* moveTo = cocos2d::MoveTo::create(0.2,Vec2::ZERO);
          CallFunc* callFunc1 = CallFunc::create(CC_CALLBACK_0(RolePopUpUI::onShowLockEnd,this));
-        m_lockLayer->runAction(Sequence::create(EaseSineOut::create(moveTo),callFunc1, NULL));
+        Sequence* action = Sequence::create(EaseSineOut::create(moveTo),callFunc1, NULL);
+        action->setTag(SHOW_ACTION);
+        m_lockLayer->runAction(action);
         
     }
     
 }
 void RolePopUpUI::hideLockButton(const std::function<void()> &endfunc)
 {
-
+    stopActionByTag(HIDE_ACTION);
     auto size = Director::getInstance()->getVisibleSize();
     if (m_lockLayer) {
-        cocos2d::MoveTo* moveTo = cocos2d::MoveTo::create(0.3,Vec2(size.width, 0));
+        cocos2d::MoveTo* moveTo = cocos2d::MoveTo::create(0.2,Vec2(size.width, 0));
         CallFunc* callFunc1 = CallFunc::create(CC_CALLBACK_0(RolePopUpUI::onHideLockEnd,this));
         if (endfunc) {
             CallFunc* callFunc2 = CallFunc::create(endfunc);
-            m_lockLayer->runAction(Sequence::create(EaseSineOut::create(moveTo),callFunc1,callFunc2,NULL));
+            Sequence* action = Sequence::create(EaseSineOut::create(moveTo),callFunc1,callFunc2,NULL);
+            action->setTag(HIDE_ACTION);
+            m_lockLayer->runAction(action);
         }else
         {
-           m_lockLayer->runAction(Sequence::create(moveTo,callFunc1, NULL));
+            Sequence* action = Sequence::create(moveTo,callFunc1, NULL);
+            action->setTag(HIDE_ACTION);
+            m_lockLayer->runAction(action);
         }
         
     }
@@ -245,6 +297,7 @@ void RolePopUpUI::onHideLockEnd()
 void RolePopUpUI::onShowLockEnd()
 {
     m_isNowShowLockBtn = false;
+    m_isLockHideShow =false;
     m_isShowLockBtn = true;
 }
 void RolePopUpUI::onHideShowLockCall(int price)
@@ -257,18 +310,22 @@ void RolePopUpUI::onBack(cocos2d::Ref *Ref)
         localStorageSetItem(USER_DEFAULT_ROLE_ID, m_cureentSelectIteml->getRoleId());
     }
     
-    UIManager::getInstance()->playSound();
+    UIManager::getInstance()->playBtnSound();
     UIManager::getInstance()->hidePopUp();
 }
-void RolePopUpUI::onLock(cocos2d::Ref *ref)
+void RolePopUpUI::onUnLock(cocos2d::Ref *ref)
 {
-     UIManager::getInstance()->playSound();
+     UIManager::getInstance()->playBtnSound();
     if (m_currentNotLockRoleItem) {
         
         int goldNum = Value(localStorageGetItem(USER_GOLD_NUM)).asInt();
         if (goldNum >= m_currentNotLockRoleItem->getPrice()) {
             localStorageSetItem(USER_GOLD_NUM, Value(Value(localStorageGetItem(USER_GOLD_NUM)).asInt()-m_currentNotLockRoleItem->getPrice()).asString());
             m_currentNotLockRoleItem->setLock(true);
+            m_currentNotLockRoleItem->setSelectColor(true);
+            if (m_cureentSelectIteml) {
+                m_cureentSelectIteml->setSelectColor(false);
+            }
             m_cureentSelectIteml = m_currentNotLockRoleItem;
             CCLOG("currentRoleId:%s isLock:%d",m_currentNotLockRoleItem->getRoleId().c_str(),m_currentNotLockRoleItem->getIsLock());
             RoleManager::getInstance()->updateRoleLock(m_currentNotLockRoleItem->getRoleId(), m_currentNotLockRoleItem->getIsLock());

@@ -249,13 +249,13 @@ void ShopPopUpUI::setShopDisplay(ShopType type)
 }
 void ShopPopUpUI::onBuyGold(cocos2d::Ref *ref)
 {
-     UIManager::getInstance()->playSound();
+     UIManager::getInstance()->playBtnSound();
     m_isOnGold = true;
     setShopDisplay(SHOP_GOLD);
 }
 void ShopPopUpUI::onBuyHeart(cocos2d::Ref *ref)
 {
-    UIManager::getInstance()->playSound();
+    UIManager::getInstance()->playBtnSound();
     CCLOG("onBuyHeart");
     int goldNum = Value(localStorageGetItem(USER_GOLD_NUM)).asInt();
     if (goldNum>=150) {
@@ -274,7 +274,7 @@ void ShopPopUpUI::onBuyHeart(cocos2d::Ref *ref)
 }
 void ShopPopUpUI::onRole(cocos2d::Ref *ref)
 {
-     UIManager::getInstance()->playSound();
+     UIManager::getInstance()->playBtnSound();
     UIManager::getInstance()->hidePopUp(false);
     UIManager::getInstance()->addPopUp(BasePopUpUI::POPUP_ROLE);
     UIManager::getInstance()->showPopUp(true,BasePopUpUI::POPUP_HORIZONTAL);
@@ -283,18 +283,18 @@ void ShopPopUpUI::onRole(cocos2d::Ref *ref)
 void ShopPopUpUI::onBuyRemoveAds(cocos2d::Ref *ref)
 {
     CCLOG("onBuyRemoveAds");
-     UIManager::getInstance()->playSound();
+     UIManager::getInstance()->playBtnSound();
 }
 
 void ShopPopUpUI::onRestore(cocos2d::Ref *ref)
 {
     CCLOG("onRestore");
-     UIManager::getInstance()->playSound();
+     UIManager::getInstance()->playBtnSound();
 }
 
 void ShopPopUpUI::onBackShop(cocos2d::Ref *ref)
 {
-     UIManager::getInstance()->playSound();
+     UIManager::getInstance()->playBtnSound();
     if (m_isOnGold) {
         setShopDisplay(ShopType::SHOP_NORMAL);
         m_isOnGold = false;
@@ -327,7 +327,7 @@ void ShopPopUpUI::onBackShop(cocos2d::Ref *ref)
 }
 void ShopPopUpUI::onProduct(Ref* Ref,const std::string &productId)
 {
-     UIManager::getInstance()->playSound();
+     UIManager::getInstance()->playBtnSound();
     int num = 0;
     CCLOG("product:%s",productId.c_str());
     if (!strcmp(productId.c_str(), "buyCoin1"))

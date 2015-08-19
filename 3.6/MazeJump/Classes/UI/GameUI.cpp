@@ -122,7 +122,7 @@ bool GameUI::init()
     helplistener->onTouchBegan =  [this](Touch * ,Event *)
     {
         if (isShwoHelp) {
-            UIManager::getInstance()->playSound();
+            UIManager::getInstance()->playBtnSound();
             isShwoHelp = false;
             helpLayer->setVisible(false);
             return true;
@@ -178,7 +178,7 @@ bool GameUI::init()
 }
 void GameUI::onHelp(cocos2d::Ref *ref)
 {
-     UIManager::getInstance()->playSound();
+     UIManager::getInstance()->playBtnSound();
     if (!isShwoHelp) {
         helpLayer->setVisible(true);
         isShwoHelp = true;
@@ -212,7 +212,7 @@ void GameUI::showPause()
     isRecover = true;
     UIManager::getInstance()->addPopUp(BasePopUpUI::POPUP_PAUSE);
     UIManager::getInstance()->showPopUp(true,BasePopUpUI::POPUP_HORIZONTAL,CC_CALLBACK_0(GameUI::setPause, this));
-    UIManager::getInstance()->playSound();
+    UIManager::getInstance()->playBtnSound();
 }
 
 void GameUI::setPause()
