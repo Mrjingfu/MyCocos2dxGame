@@ -267,17 +267,7 @@ void RoleManager::updateRoleLock(const std::string& str,cocos2d::ValueMap _lvalu
     rapidjson::Writer<rapidjson::StringBuffer> writer(buffer);
     doc.Accept(writer);
     localStorageSetItem(USER_ROLE_DATA, buffer.GetString());
-//    for(std::unordered_map<std::string, Value>::iterator it = _lvalueMap.begin(); it!=_lvalueMap.end();it++)
-//    {
-//        std::string RoleIdStr = it->first;
-//        ValueMap roleMap = it->second.asValueMap();
-//        for(std::unordered_map<std::string, Value>::iterator roteIt = _lvalueMap.begin(); roteIt!=_lvalueMap.end();roteIt++)
-//        {
-//            std::string keyStr = it->first;
-//            Value roleValue = it->second;
-//            
-//        }
-//    }
+
 }
 
 std::string RoleManager::getRoleModel(std::string &roleId)
@@ -308,4 +298,23 @@ void RoleManager::updateRoleLock(std::string roleId,bool _lock)
     CCLOG(" replace isLock:%d",m_Roles[roleId].asValueMap()["RoleLock"].asBool());
     
     updateRoleLock(localStorageGetItem(USER_ROLE_DATA),m_Roles);
+}
+std::string RoleManager::getDefaultRoleModel()
+{
+    std::string ldefaultModel;
+    std::string defaultRolelId = localStorageGetItem(USER_DEFAULT_ROLE_ID);
+    if (defaultRolelId.length()>0) {
+        ldefaultModel = getRoleModel(defaultRolelId);
+    }
+    return ldefaultModel;
+}
+std::string RoleManager::getDefaultRoleSound()
+{
+    std::string ldefaultSound;
+    std::string defaultRolelId = localStorageGetItem(USER_DEFAULT_ROLE_ID);
+    if (defaultRolelId.length()>0) {
+        ldefaultSound = getRoleSound(defaultRolelId);
+    }
+    return ldefaultSound;
+
 }

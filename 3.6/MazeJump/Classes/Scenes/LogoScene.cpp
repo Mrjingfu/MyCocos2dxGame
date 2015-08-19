@@ -14,6 +14,7 @@
 #include "LevelsManager.h"
 #include "PatternsManager.h"
 #include "SimpleAudioEngine.h"
+#include "RoleManager.h"
 USING_NS_CC;
 using namespace CocosDenshion;
 Scene* LogoScene::createScene()
@@ -76,7 +77,8 @@ void LogoScene::precache()
     
     if(!LevelsManager::getInstance()->init("levels.plist"))
         CCLOGERROR("no levels file!");
-    
+    if (!RoleManager::getInstance()->init())
+        CCLOGERROR("role init error!");
     if(m_pWhiteLayer)
     {
         DelayTime* delay = DelayTime::create(2.0f);

@@ -11,7 +11,6 @@
 #include "MainScene.h"
 #include "GameConst.h"
 #include "UIManager.h"
-#include "RoleManager.h"
 #include "storage/local-storage/LocalStorage.h"
 #include "AudioEngine.h"
 #include "NativeBridge.h"
@@ -186,8 +185,6 @@ void MenuScene::onEnter()
 {
     Layer::onEnter();
     scheduleUpdate();
-    RoleManager::getInstance()->init();
-    
     UIManager::getInstance()->init(this);
     UIManager::getInstance()->setGameUi(UIManager::UI_MAIN);
     AudioEngine::play2d("rainbow.wav", false, 0.5f);

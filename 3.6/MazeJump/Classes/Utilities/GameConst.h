@@ -14,6 +14,8 @@ static const std::string USER_GOLD_NUM = "UserGoldNum";
 
 static const std::string USER_ROLE_DATA  = "UserRoleData";
 
+static const std::string USER_DEFAULT_ROLE_ID = "UserDefaultRoleID";
+
 ///Font
 static std::string FONT_FXZS = "comic_sans_ms.ttf";
 
