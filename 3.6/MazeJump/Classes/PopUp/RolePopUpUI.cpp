@@ -10,6 +10,7 @@
 #include "GameConst.h"
 #include "MenuScene.h"
 #include "UIManager.h"
+#include "ShopPopUpUI.h"
 #include "RoleManager.h"
 #include "storage/local-storage/LocalStorage.h"
 USING_NS_CC;
@@ -276,6 +277,10 @@ void RolePopUpUI::onLock(cocos2d::Ref *ref)
         }else
         {
             UIManager::getInstance()->addPopUp(BasePopUpUI::POPUP_SHOP);
+            ShopPopUpUI* shopPopUp = static_cast<ShopPopUpUI*>(UIManager::getInstance()->getPopUpUI(BasePopUpUI::POPUP_SHOP));
+            if (shopPopUp) {
+                shopPopUp->setShopDisplay(ShopPopUpUI::SHOP_GOLD);
+            }
             UIManager::getInstance()->showPopUp(false);
         }
         

@@ -305,7 +305,7 @@ void ShopPopUpUI::onBackShop(cocos2d::Ref *ref)
            
             BasePopUpUI* popup = UIManager::getInstance()->getPopUpUI(BasePopUpUI::POPUP_ROLE);
             if (popup) {
-                 UIManager::getInstance()->hidePopUp(false);
+                UIManager::getInstance()->hidePopUp(false);
                 UIManager::getInstance()->showInfo(true);
             }else
             {
