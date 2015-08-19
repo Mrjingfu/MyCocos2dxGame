@@ -106,11 +106,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Utilities/RoleManager.cpp"
-            timestampString = "461475981.58254"
+            timestampString = "461646053.041659"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "311"
-            endingLineNumber = "311"
+            startingLineNumber = "306"
+            endingLineNumber = "306"
             landmarkName = "RoleManager::updateRoleLock(std::string roleId,bool _lock)"
             landmarkType = "5">
          </BreakpointContent>
@@ -122,11 +122,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Utilities/RoleManager.cpp"
-            timestampString = "461475981.58254"
+            timestampString = "461646053.041659"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "274"
-            endingLineNumber = "274"
+            startingLineNumber = "269"
+            endingLineNumber = "269"
             landmarkName = "RoleManager::updateRoleLock(const std::string&amp; str,cocos2d::ValueMap _lvalueMap)"
             landmarkType = "5">
          </BreakpointContent>
@@ -144,22 +144,6 @@
             startingLineNumber = "208"
             endingLineNumber = "208"
             landmarkName = "GameUI::onPauseEvent(cocos2d::EventCustom *sender)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../cocos2d/cocos/audio/AudioEngine.cpp"
-            timestampString = "461575503.508309"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "195"
-            endingLineNumber = "195"
-            landmarkName = "AudioEngine::pause(int audioID)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

@@ -134,7 +134,7 @@ bool RolePopUpUI::init()
     uiListView->setGravity(cocos2d::ui::ListView::Gravity::CENTER_VERTICAL);
     uiListView->addEventListener((ui::ListView::ccListViewCallback)CC_CALLBACK_2(RolePopUpUI::selectedItemEvent, this));
     m_dialogLayer->addChild(uiListView);
-    
+
     
     ValueMap roleMap = RoleManager::getInstance()->getRoleMap();
     for(std::unordered_map<std::string, Value>::iterator roteIt = roleMap.begin(); roteIt!=roleMap.end();roteIt++)
@@ -177,6 +177,7 @@ bool RolePopUpUI::init()
      m_lockButton->addClickEventListener(CC_CALLBACK_1(RolePopUpUI::onLock, this));
     return true;
 }
+
 void RolePopUpUI::selectedItemEvent(cocos2d::Ref *sender, cocos2d::ui::ListView::EventType type)
 {
     if (m_isNowShowLockBtn) {

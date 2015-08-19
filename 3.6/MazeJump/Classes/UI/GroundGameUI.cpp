@@ -73,7 +73,7 @@ bool GroundGameUI::init()
     heartRewardTv->setHorizontalAlignment(TextHAlignment::RIGHT);
    addChild(heartRewardTv);
 
-   cocos2d::ui::Button* helpBtn = cocos2d::ui::Button::create("question.png");
+   cocos2d::ui::Button* helpBtn = cocos2d::ui::Button::create("ui_question.png");
     helpBtn->setPosition(Vec2(size.width*0.93, size.height*0.03));
     helpBtn->setScale(scale);
     addChild(helpBtn);

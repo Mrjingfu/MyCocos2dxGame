@@ -191,9 +191,7 @@ void MenuScene::onEnter()
     UIManager::getInstance()->init(this);
     UIManager::getInstance()->setGameUi(UIManager::UI_MAIN);
     AudioEngine::play2d("rainbow.wav", false, 0.5f);
-#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS )
     NativeBridge::getInstance()->showRateAppView();
-#endif
 }
 void MenuScene::onExit()
 {

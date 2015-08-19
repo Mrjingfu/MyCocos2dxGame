@@ -3,42 +3,66 @@
      {
      "RoleId":"role_girl1",
      "RoleModel": "girl1.c3b",
-     "RoleLock": false,
+     "RoleLock": true,
      "RoleSound": "",
      "RoleImg": "role_girl1.png",
      "RolePrice": 600
      },
      {
      "RoleId":"role_girl2",
-     "RoleModel": "girl1.c3b",
-     "RoleLock": true,
-     "RoleSound": "",
-     "RoleImg": "role_girl1.png",
-     "RolePrice": 200
-     },
-     {
-     "RoleId":"role_girl3",
-     "RoleModel": "girl1.c3b",
-     "RoleLock": true,
-     "RoleSound": "",
-     "RoleImg": "role_girl1.png",
-     "RolePrice": 300
-     },
-     {
-     "RoleId":"role_girl4",
-     "RoleModel": "girl1.c3b",
+     "RoleModel": "girl2.c3b",
      "RoleLock": false,
      "RoleSound": "",
-     "RoleImg": "role_girl1.png",
-     "RolePrice": 400
+     "RoleImg": "role_girl2.png",
+     "RolePrice": 600
      },
      {
-     "RoleId":"role_girl5",
-     "RoleModel": "girl1.c3b",
+     "RoleId":"role_boy1",
+     "RoleModel": "boy1.c3b",
      "RoleLock": false,
      "RoleSound": "",
-     "RoleImg": "role_girl1.png",
-     "RolePrice": 500
+     "RoleImg": "role_boy1.png",
+     "RolePrice": 800
+     },
+     {
+     "RoleId":"role_boy2",
+     "RoleModel": "boy2.c3b",
+     "RoleLock": false,
+     "RoleSound": "",
+     "RoleImg": "role_boy2.png",
+     "RolePrice": 1000
+     },
+     {
+     "RoleId":"role_bear",
+     "RoleModel": "bear.c3b",
+     "RoleLock": false,
+     "RoleSound": "",
+     "RoleImg": "role_bear.png",
+     "RolePrice": 1000
+     },
+     {
+     "RoleId":"role_cube",
+     "RoleModel": "cube.c3b",
+     "RoleLock": false,
+     "RoleSound": "",
+     "RoleImg": "role_cube.png",
+     "RolePrice": 1200
+     },
+     {
+     "RoleId":"role_kulou",
+     "RoleModel": "kulou.c3b",
+     "RoleLock": false,
+     "RoleSound": "",
+     "RoleImg": "role_kulou.png",
+     "RolePrice": 1400
+     },
+     {
+     "RoleId":"role_question",
+     "RoleModel": "question.c3b",
+     "RoleLock": false,
+     "RoleSound": "",
+     "RoleImg": "role_question.png",
+     "RolePrice": 1600
      }
      
      ]
