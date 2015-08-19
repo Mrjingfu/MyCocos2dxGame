@@ -97,7 +97,7 @@ void NativeBridge::openItunesURL()
 {
 #if CC_TARGET_PLATFORM == CC_PLATFORM_IOS
     CCLOG("openItunesURL");
-    if[(mViewController != nil)
+    if(mViewController != nil)
        [mViewController openItunesURL];
 #endif
 }

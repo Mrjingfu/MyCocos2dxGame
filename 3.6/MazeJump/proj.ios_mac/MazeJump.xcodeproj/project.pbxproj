@@ -44,7 +44,6 @@
 		50EF62A317ECD613001EB2F8 /* Icon-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 50EF62A117ECD613001EB2F8 /* Icon-50.png */; };
 		521A8E6419F0C34300D177D7 /* Default-667h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 521A8E6219F0C34300D177D7 /* Default-667h@2x.png */; };
 		521A8E6519F0C34300D177D7 /* Default-736h@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 521A8E6319F0C34300D177D7 /* Default-736h@3x.png */; };
-		52B47A471A53D09C004E4C60 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B47A461A53D09B004E4C60 /* Security.framework */; };
 		55066CC41B4B7C29007FCF3F /* GameController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5535FC111B47B88D00197B27 /* GameController.cpp */; };
 		55066CCA1B4BAB2C007FCF3F /* EffectSprite3D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55066CC81B4BAB2C007FCF3F /* EffectSprite3D.cpp */; };
 		55066CCB1B4BAB33007FCF3F /* EffectSprite3D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55066CC81B4BAB2C007FCF3F /* EffectSprite3D.cpp */; };
@@ -106,6 +105,11 @@
 		551350B01B6274C500A99AD7 /* startpoint.c3b in Resources */ = {isa = PBXBuildFile; fileRef = 551350941B62749A00A99AD7 /* startpoint.c3b */; };
 		551350B51B62755A00A99AD7 /* AlisaMethod.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 551350B31B62755A00A99AD7 /* AlisaMethod.cpp */; };
 		551350B61B62756200A99AD7 /* AlisaMethod.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 551350B31B62755A00A99AD7 /* AlisaMethod.cpp */; };
+		551D7A841B8474A80030AA4A /* PluginIAP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 551D7A821B8474A80030AA4A /* PluginIAP.framework */; };
+		551D7A851B8474A80030AA4A /* sdkbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 551D7A831B8474A80030AA4A /* sdkbox.framework */; };
+		551D7A891B8475090030AA4A /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 551D7A881B8475090030AA4A /* Security.framework */; };
+		551D7A8F1B847A2B0030AA4A /* StoreListener.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 551D7A8D1B847A2B0030AA4A /* StoreListener.cpp */; };
+		551D7A911B847FF90030AA4A /* sdkbox_config.json in Resources */ = {isa = PBXBuildFile; fileRef = 551D7A901B847FF90030AA4A /* sdkbox_config.json */; };
 		5535FC131B47B88D00197B27 /* GameController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5535FC111B47B88D00197B27 /* GameController.cpp */; };
 		5542EEB61B3942FE00CD9496 /* MenuScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5542EEB41B3942FE00CD9496 /* MenuScene.cpp */; };
 		5542EEBC1B3943C600CD9496 /* GameScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5542EEBA1B3943C600CD9496 /* GameScene.cpp */; };
@@ -762,6 +766,13 @@
 		551350941B62749A00A99AD7 /* startpoint.c3b */ = {isa = PBXFileReference; lastKnownFileType = file; path = startpoint.c3b; sourceTree = "<group>"; };
 		551350B31B62755A00A99AD7 /* AlisaMethod.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AlisaMethod.cpp; sourceTree = "<group>"; };
 		551350B41B62755A00A99AD7 /* AlisaMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlisaMethod.h; sourceTree = "<group>"; };
+		551D7A821B8474A80030AA4A /* PluginIAP.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = PluginIAP.framework; sourceTree = "<group>"; };
+		551D7A831B8474A80030AA4A /* sdkbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = sdkbox.framework; sourceTree = "<group>"; };
+		551D7A881B8475090030AA4A /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.4.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
+		551D7A8D1B847A2B0030AA4A /* StoreListener.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StoreListener.cpp; sourceTree = "<group>"; };
+		551D7A8E1B847A2B0030AA4A /* StoreListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreListener.h; sourceTree = "<group>"; };
+		551D7A901B847FF90030AA4A /* sdkbox_config.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sdkbox_config.json; sourceTree = "<group>"; };
+		551D7A9E1B84AE780030AA4A /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		5535FC111B47B88D00197B27 /* GameController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameController.cpp; sourceTree = "<group>"; };
 		5535FC121B47B88D00197B27 /* GameController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameController.h; sourceTree = "<group>"; };
 		5542EEB41B3942FE00CD9496 /* MenuScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MenuScene.cpp; sourceTree = "<group>"; };
@@ -1092,12 +1103,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				52B47A471A53D09C004E4C60 /* Security.framework in Frameworks */,
+				551D7A891B8475090030AA4A /* Security.framework in Frameworks */,
 				554DD3A81B817B100069E4C5 /* StoreKit.framework in Frameworks */,
 				1AC6FB30180E99EB004C840B /* libcocos2d iOS.a in Frameworks */,
+				551D7A841B8474A80030AA4A /* PluginIAP.framework in Frameworks */,
 				D6B0611B1803AB670077942B /* CoreMotion.framework in Frameworks */,
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				554DD3A61B817B070069E4C5 /* GameKit.framework in Frameworks */,
+				551D7A851B8474A80030AA4A /* sdkbox.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */,
 				BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */,
@@ -1184,6 +1197,10 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				551D7A9E1B84AE780030AA4A /* StoreKit.framework */,
+				551D7A881B8475090030AA4A /* Security.framework */,
+				551D7A821B8474A80030AA4A /* PluginIAP.framework */,
+				551D7A831B8474A80030AA4A /* sdkbox.framework */,
 				554DD3A71B817B100069E4C5 /* StoreKit.framework */,
 				554DD3A51B817B070069E4C5 /* GameKit.framework */,
 				8262943D1AAF051F00CB7CF7 /* Security.framework */,
@@ -1210,6 +1227,7 @@
 		46880B7519C43A67006E1F66 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				551D7A901B847FF90030AA4A /* sdkbox_config.json */,
 				55CECC311B70F98C00434427 /* Particle3D */,
 				55F3B98A1B4522360090BE1A /* maps */,
 				5542EECD1B395E1300CD9496 /* fonts */,
@@ -1709,6 +1727,8 @@
 				5582158D1B5C7FA700173C79 /* LevelsManager.h */,
 				55F833FE1B81ED18001F1F6C /* NativeBridge.mm */,
 				55F833FF1B81ED18001F1F6C /* NativeBridge.h */,
+				551D7A8D1B847A2B0030AA4A /* StoreListener.cpp */,
+				551D7A8E1B847A2B0030AA4A /* StoreListener.h */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -1814,6 +1834,9 @@
 								enabled = 1;
 							};
 						};
+					};
+					5087E73D17EB910900C73F5D = {
+						DevelopmentTeam = 6NA476HDMX;
 					};
 				};
 			};
@@ -1970,6 +1993,7 @@
 				EC7C206F1B7F905100EECFBB /* roles.json in Resources */,
 				EC7162961B7DCBF50081833C /* btn_gold5_pressed.png in Resources */,
 				ECAD6CB11B81705E0033E0DF /* jumptip_mazejump_en.png in Resources */,
+				551D7A911B847FF90030AA4A /* sdkbox_config.json in Resources */,
 				556520D71B72F13C00B7447F /* sea.png in Resources */,
 				5579F7521B68EF85006861F1 /* goldbig.c3b in Resources */,
 				5587F3871B7B32AF00279D49 /* stencil.png in Resources */,
@@ -2439,6 +2463,7 @@
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				551350B51B62755A00A99AD7 /* AlisaMethod.cpp in Sources */,
 				55C8908E1B46B3C8009AF1DA /* Player.cpp in Sources */,
+				551D7A8F1B847A2B0030AA4A /* StoreListener.cpp in Sources */,
 				ECE0D6641B6F04A600B5E416 /* MainUI.cpp in Sources */,
 				5535FC131B47B88D00197B27 /* GameController.cpp in Sources */,
 				EC1969551B71A7BB002AECA7 /* GameInfoUI.cpp in Sources */,
@@ -2549,6 +2574,10 @@
 				CODE_SIGN_IDENTITY = "iOS Development: haibo wang (FT8YEJMWBH)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COMPRESS_PNG_FILES = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_INPUT_FILETYPE = sourcecode.cpp.objcpp;
@@ -2589,6 +2618,10 @@
 				CODE_SIGN_IDENTITY = "iOS Development: haibo wang (FT8YEJMWBH)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COMPRESS_PNG_FILES = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_INPUT_FILETYPE = sourcecode.cpp.objcpp;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -2626,8 +2659,13 @@
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -2662,8 +2700,13 @@
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = mac/Prefix.pch;

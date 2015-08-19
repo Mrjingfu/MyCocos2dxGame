@@ -35,8 +35,13 @@ static const int LAYER_MASK = 1;
 static const std::string LAYER_NAME_DIALOG = "UIDialogLayer";
 static const int LAYER_DIALOG = 2;
 
-
-
+///purchase
+static const std::string PURCHASE_ID1 = "coin_package1";
+static const std::string PURCHASE_ID2 = "coin_package2";
+static const std::string PURCHASE_ID3 = "coin_package3";
+static const std::string PURCHASE_ID4 = "coin_package4";
+static const std::string PURCHASE_ID5 = "coin_package5";
+static const std::string PURCHASE_ID6 = "remove_ads";
 
 
 ////Event
@@ -55,4 +60,6 @@ static const std::string EVENT_MAZEJUMP_RECORD_END = "MAZEJUMP_RECORD_END";
 static const std::string EVENT_START_GOLD_CHANGE = "START_GOLD_CHANGE";
 static const std::string EVENT_START_HEART_CHANGE = "START_HEART_CHANGE";
 static const std::string EVENT_CHARACTER_MODEL_CHANGE = "CHARACTER_MODEL_CHANGE";
+static const std::string EVENT_PURCHASE_GOLD_OK = "PURCHASE_GOLD_OK";
+static const std::string EVENT_PURCHASE_REMOVEADS_OK = "PURCHASE_REMOVEADS_OK";
 #endif //_Scene_Const_h_
