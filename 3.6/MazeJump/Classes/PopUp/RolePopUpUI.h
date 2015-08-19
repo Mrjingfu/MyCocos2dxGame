@@ -50,7 +50,7 @@ public:
     virtual void onEnter();
     virtual void onExit();
     void onBack(Ref* Ref);
-    void onLock(Ref* ref);
+    void onUnLock(Ref* ref);
     void selectedItemEvent(cocos2d::Ref* sender, cocos2d::ui::ListView::EventType type);
     static RolePopUpUI* create();
     void showLockButton(int price);

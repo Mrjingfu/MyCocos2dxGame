@@ -20,6 +20,7 @@
 #include "UtilityHelper.h"
 #include "AudioEngine.h"
 #include "GameCenterController.h"
+#include "RoleManager.h"
 USING_NS_CC;
 using namespace experimental;
 
@@ -105,7 +106,8 @@ bool RunController::init(Layer* pMainLayer)
     m_pTerrainLayer->setAnchorPoint(Vec2::ZERO);
     m_pMainLayer->addChild(m_pTerrainLayer);
     
-    m_pMainPlayer = Runner::create("girl1.c3b");
+    std::string modelPath = RoleManager::getInstance()->getDefaultRoleModel();
+    m_pMainPlayer = Runner::create(modelPath);
     if(!m_pMainPlayer)
         return false;
     m_pMainPlayer->setCameraMask((unsigned short)CameraFlag::USER1);

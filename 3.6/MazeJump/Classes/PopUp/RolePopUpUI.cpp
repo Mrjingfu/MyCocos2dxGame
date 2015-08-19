@@ -173,7 +173,7 @@ bool RolePopUpUI::init()
     
     
      backButton->addClickEventListener(CC_CALLBACK_1(RolePopUpUI::onBack, this));
-     m_lockButton->addClickEventListener(CC_CALLBACK_1(RolePopUpUI::onLock, this));
+     m_lockButton->addClickEventListener(CC_CALLBACK_1(RolePopUpUI::onUnLock, this));
     return true;
 }
 
@@ -192,17 +192,25 @@ void RolePopUpUI::selectedItemEvent(cocos2d::Ref *sender, cocos2d::ui::ListView:
         {
             if (m_currentNotLockRoleItem && item->getRoleId() == m_currentNotLockRoleItem->getRoleId() )
                 return;
-             m_currentNotLockRoleItem = item;
-             m_isNowShowLockBtn = true;
-            if (m_isShowLockBtn) {
+            m_currentNotLockRoleItem = item;
+            m_isNowShowLockBtn = true;
+            if (m_isShowLockBtn)
+            {
                 hideLockButton(CC_CALLBACK_0(RolePopUpUI::onHideShowLockCall,this,m_currentNotLockRoleItem->getPrice()));
-            }else
+            }
+            else
             {
                 showLockButton(m_currentNotLockRoleItem->getPrice());
             }
-        }else{
-                m_cureentSelectIteml = item;
-                hideLockButton();
+            localStorageSetItem(USER_DEFAULT_ROLE_ID, m_currentNotLockRoleItem->getRoleId());
+            Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_CHARACTER_MODEL_CHANGE);
+        }
+        else
+        {
+            m_cureentSelectIteml = item;
+            hideLockButton();
+            localStorageSetItem(USER_DEFAULT_ROLE_ID, m_cureentSelectIteml->getRoleId());
+            Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_CHARACTER_MODEL_CHANGE);
         }
     }
 }
@@ -255,12 +263,13 @@ void RolePopUpUI::onBack(cocos2d::Ref *Ref)
 {
     if (m_cureentSelectIteml) {
         localStorageSetItem(USER_DEFAULT_ROLE_ID, m_cureentSelectIteml->getRoleId());
+        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_CHARACTER_MODEL_CHANGE);
     }
     
     UIManager::getInstance()->playSound();
     UIManager::getInstance()->hidePopUp();
 }
-void RolePopUpUI::onLock(cocos2d::Ref *ref)
+void RolePopUpUI::onUnLock(cocos2d::Ref *ref)
 {
      UIManager::getInstance()->playSound();
     if (m_currentNotLockRoleItem) {

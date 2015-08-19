@@ -26,8 +26,6 @@ public:
     // implement the "static create()" method manually
     CREATE_FUNC(MenuScene);
     
-    bool changeCharacter(const std::string& modelPath);
-    
     void fadeOutScene();
     
     virtual void onEnter();
@@ -39,7 +37,9 @@ public:
 private:
     void switchToMainScene();
     void startGame();
+    void runnerSuperJump();
     void runnerJump();
+    void changeCharacter(cocos2d::EventCustom *sender);
 private:
     cocos2d::Camera*    m_pMainCamera;
     EffectSprite3D*     m_pSea;

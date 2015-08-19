@@ -13,7 +13,9 @@
 #include "UIManager.h"
 #include "storage/local-storage/LocalStorage.h"
 #include "AudioEngine.h"
+#include "RoleManager.h"
 #include "NativeBridge.h"
+#include "RoleManager.h"
 USING_NS_CC;
 using namespace experimental;
 
@@ -127,7 +129,8 @@ bool MenuScene::init()
     RepeatForever* repeat2 = RepeatForever::create(sequence2);
     m_pStandPlatform->runAction(repeat2);
     
-    m_pRunner = Runner::create("girl1.c3b");
+    std::string modelPath = RoleManager::getInstance()->getDefaultRoleModel();
+    m_pRunner = Runner::create(modelPath);
     if(!m_pRunner)
         return false;
     m_pRunner->setCameraMask((unsigned short)CameraFlag::USER1);
@@ -138,7 +141,6 @@ bool MenuScene::init()
     m_pRunner->setPositionZ(2);
     m_pRunner->setScale(0.1875f);
     m_pStandPlatform->addChild(m_pRunner);
-    
     
     auto size = Director::getInstance()->getVisibleSize();
     m_pMainCamera = Camera::createPerspective(60, size.width/size.height, 1, 5000);
@@ -185,6 +187,7 @@ void MenuScene::onEnter()
 {
     Layer::onEnter();
     scheduleUpdate();
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_CHARACTER_MODEL_CHANGE, std::bind(&MenuScene::changeCharacter, this, std::placeholders::_1));
     UIManager::getInstance()->init(this);
     UIManager::getInstance()->setGameUi(UIManager::UI_MAIN);
     AudioEngine::play2d("rainbow.wav", false, 0.5f);
@@ -192,6 +195,7 @@ void MenuScene::onEnter()
 }
 void MenuScene::onExit()
 {
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_CHARACTER_MODEL_CHANGE);
     unscheduleUpdate();
     UIManager::getInstance()->destory();
     Layer::onExit();
@@ -218,7 +222,7 @@ bool MenuScene::onTouchBegan(Touch *touch, Event *event)
         return false;
     if(!m_bStartGame)
     {
-        runnerJump();
+        runnerSuperJump();
         m_bStartGame = true;
     }
     return true;
@@ -228,10 +232,7 @@ void MenuScene::switchToMainScene()
     auto scene = MainScene::createScene();
     Director::getInstance()->replaceScene(scene);
 }
-bool MenuScene::changeCharacter(const std::string& modelPath)
-{
-    
-}
+
 void MenuScene::fadeOutScene()
 {
     if(m_pWhiteLayer)
@@ -256,7 +257,7 @@ void MenuScene::startGame()
     }
 
 }
-void MenuScene::runnerJump()
+void MenuScene::runnerSuperJump()
 {
     if(m_pRunner)
     {
@@ -281,4 +282,50 @@ void MenuScene::runnerJump()
         
         AudioEngine::play2d("superjump.wav", false, 0.3f);
     }
+}
+void MenuScene::runnerJump()
+{
+    if(m_pRunner)
+    {
+        EaseSineOut* scaleTo1 = EaseSineOut::create(ScaleTo::create(0.05f, 0.1125, 0.3f, 0.1875));
+        EaseSineIn* scaleTo2 = EaseSineIn::create(ScaleTo::create(0.05f, 0.1875, 0.1875,0.1875));
+        Sequence* sequenceScale = Sequence::create(scaleTo1, scaleTo2, NULL);
+        
+        DelayTime* delay = DelayTime::create(0.05f);
+        RotateTo* ratateTo = RotateTo::create(0.1f, Vec3(0,-90,0));
+        Sequence* sequenceRotate = Sequence::create(delay, ratateTo, NULL);
+        
+        EaseSineOut* moveUp = EaseSineOut::create(MoveTo::create(0.1f, Vec3(m_pRunner->getPositionX(), m_pRunner->getPositionY() + m_pRunner->getRadius()*2*m_pRunner->getScale(), m_pRunner->getPositionZ())));
+        EaseSineOut* moveDown = EaseSineOut::create(MoveTo::create(0.1f, Vec3(m_pRunner->getPositionX(), m_pRunner->getPositionY(), m_pRunner->getPositionZ())));
+        Sequence* sequenceJump = Sequence::create(delay, moveUp, moveDown, NULL);
+        Spawn* spawn = Spawn::create(sequenceScale, sequenceRotate, sequenceJump, NULL);
+        m_pRunner->runAction(spawn);
+        
+        AudioEngine::play2d("jump.wav", false, 0.3f);
+    }
+}
+void MenuScene::changeCharacter(EventCustom *sender)
+{
+    if(m_pRunner)
+    {
+        m_pRunner->removeFromParentAndCleanup(true);
+        m_pRunner = nullptr;
+    }
+    std::string modelPath = RoleManager::getInstance()->getDefaultRoleModel();
+    m_pRunner = Runner::create(modelPath);
+    if(!m_pRunner)
+    {
+        CCLOG("Change character model  %s failed", modelPath.c_str());
+        return;
+    }
+    m_pRunner->setCameraMask((unsigned short)CameraFlag::USER1);
+    m_pRunner->setOpacity(255);
+    m_pRunner->setRotation3D(Vec3(0,-90,0));
+    m_pRunner->setPositionX(1);
+    m_pRunner->setPositionY(4.6);
+    m_pRunner->setPositionZ(2);
+    m_pRunner->setScale(0.1875f);
+    m_pStandPlatform->addChild(m_pRunner);
+    
+    runnerJump();
 }

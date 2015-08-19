@@ -15,6 +15,7 @@
 #include "AlisaMethod.h"
 #include "GameConst.h"
 #include "GameController.h"
+#include "RoleManager.h"
 #include "storage/local-storage/LocalStorage.h"
 USING_NS_CC;
 using namespace experimental;
@@ -323,7 +324,8 @@ void GroundLayer::setCurrentCellTypeOK()
         
         if(m_pPlayer == nullptr)
         {
-            m_pPlayer = Player::create("girl1.c3b", this);
+            std::string modelPath = RoleManager::getInstance()->getDefaultRoleModel();
+            m_pPlayer = Player::create(modelPath, this);
             if(m_pPlayer)
             {
                 m_pPlayer->setIndexX(m_pCurrentCell->getIndexX());
