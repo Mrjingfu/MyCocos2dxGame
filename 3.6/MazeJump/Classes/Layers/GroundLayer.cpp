@@ -191,17 +191,8 @@ Vector<GroundCell*> GroundLayer::getNeighborCells(GroundCell* currentCell)
             GroundCell* neighborCell = m_GroundCellList.at(index);
             if(neighborCell && m_pPlayer)
             {
-                switch (m_pPlayer->getType()) {
-                    case Player::PT_STRENGTH:
-                    {
-                        if (neighborCell->isWalkCell()) {
-                            cells.pushBack(neighborCell);
-                        }
-                    }
-                    break;
-                        
-                    default:
-                        break;
+                if (neighborCell->isWalkCell()) {
+                    cells.pushBack(neighborCell);
                 }
             }
         }
@@ -214,17 +205,8 @@ Vector<GroundCell*> GroundLayer::getNeighborCells(GroundCell* currentCell)
             GroundCell* neighborCell = m_GroundCellList.at(index);
             if(neighborCell && m_pPlayer)
             {
-                switch (m_pPlayer->getType()) {
-                    case Player::PT_STRENGTH:
-                    {
-                        if (neighborCell->isWalkCell()) {
-                            cells.pushBack(neighborCell);
-                        }
-                    }
-                        break;
-                        
-                    default:
-                        break;
+                if (neighborCell->isWalkCell()) {
+                    cells.pushBack(neighborCell);
                 }
             }
         }
@@ -237,17 +219,9 @@ Vector<GroundCell*> GroundLayer::getNeighborCells(GroundCell* currentCell)
             GroundCell* neighborCell = m_GroundCellList.at(index);
             if(neighborCell && m_pPlayer)
             {
-                switch (m_pPlayer->getType()) {
-                    case Player::PT_STRENGTH:
-                    {
-                        if (neighborCell->isWalkCell()) {
-                            cells.pushBack(neighborCell);
-                        }
-                    }
-                        break;
-                        
-                    default:
-                        break;
+
+                if (neighborCell->isWalkCell()) {
+                    cells.pushBack(neighborCell);
                 }
             }
         }
@@ -260,17 +234,8 @@ Vector<GroundCell*> GroundLayer::getNeighborCells(GroundCell* currentCell)
             GroundCell* neighborCell = m_GroundCellList.at(index);
             if(neighborCell && m_pPlayer)
             {
-                switch (m_pPlayer->getType()) {
-                    case Player::PT_STRENGTH:
-                    {
-                        if (neighborCell->isWalkCell()) {
-                            cells.pushBack(neighborCell);
-                        }
-                    }
-                        break;
-                        
-                    default:
-                        break;
+                if (neighborCell->isWalkCell()) {
+                    cells.pushBack(neighborCell);
                 }
             }
         }
@@ -358,7 +323,7 @@ void GroundLayer::setCurrentCellTypeOK()
         
         if(m_pPlayer == nullptr)
         {
-            m_pPlayer = Player::create(Player::PT_STRENGTH, this);
+            m_pPlayer = Player::create("girl1.c3b", this);
             if(m_pPlayer)
             {
                 m_pPlayer->setIndexX(m_pCurrentCell->getIndexX());

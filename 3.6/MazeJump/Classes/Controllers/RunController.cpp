@@ -105,8 +105,7 @@ bool RunController::init(Layer* pMainLayer)
     m_pTerrainLayer->setAnchorPoint(Vec2::ZERO);
     m_pMainLayer->addChild(m_pTerrainLayer);
     
-    
-    m_pMainPlayer = Runner::create();
+    m_pMainPlayer = Runner::create("girl1.c3b");
     if(!m_pMainPlayer)
         return false;
     m_pMainPlayer->setCameraMask((unsigned short)CameraFlag::USER1);

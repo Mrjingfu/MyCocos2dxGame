@@ -36,7 +36,7 @@ protected:
     Runner();
     virtual ~Runner();
 public:
-    static Runner* create();
+    static Runner* create(const std::string& modelPath);
     
     virtual void update(float delta);
     

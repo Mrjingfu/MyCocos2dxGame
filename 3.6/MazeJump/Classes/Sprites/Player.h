@@ -15,14 +15,6 @@ class GroundCell;
 class Player : public EffectSprite3D
 {
 public:
-    typedef enum
-    {
-        PT_STRENGTH,
-        PT_AGILITY,
-        PT_FLEXIBLE,
-        PT_UNKNOWN
-    }
-    PlayerType;
     
     typedef enum {
         PS_IDLE = 0,
@@ -38,11 +30,9 @@ public:
 protected:
     Player();
 public:
-    static Player* create(PlayerType type, GroundLayer* ground);
+    static Player* create(const std::string& modelPath, GroundLayer* ground);
     
     float getRadius() const { return m_fRadius; }
-    PlayerType getType() const { return m_Type; }
-    void setType(PlayerType type);
     
     PlayerState getPlayerState() const { return m_curState; }
     void setPlayerState(PlayerState state);
@@ -81,7 +71,6 @@ private:
 protected:
     PlayerState     m_curState;
     float           m_fRadius;
-    PlayerType      m_Type;
     GroundLayer*    m_pGround;
     int             m_nIndexX;
     int             m_nIndexY;

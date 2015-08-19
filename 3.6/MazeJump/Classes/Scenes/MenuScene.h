@@ -26,6 +26,8 @@ public:
     // implement the "static create()" method manually
     CREATE_FUNC(MenuScene);
     
+    bool changeCharacter(const std::string& modelPath);
+    
     void fadeOutScene();
     
     virtual void onEnter();

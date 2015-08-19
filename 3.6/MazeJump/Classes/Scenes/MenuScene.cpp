@@ -128,7 +128,7 @@ bool MenuScene::init()
     RepeatForever* repeat2 = RepeatForever::create(sequence2);
     m_pStandPlatform->runAction(repeat2);
     
-    m_pRunner = Runner::create();
+    m_pRunner = Runner::create("girl1.c3b");
     if(!m_pRunner)
         return false;
     m_pRunner->setCameraMask((unsigned short)CameraFlag::USER1);
@@ -233,7 +233,10 @@ void MenuScene::switchToMainScene()
     auto scene = MainScene::createScene();
     Director::getInstance()->replaceScene(scene);
 }
-
+bool MenuScene::changeCharacter(const std::string& modelPath)
+{
+    
+}
 void MenuScene::fadeOutScene()
 {
     if(m_pWhiteLayer)
