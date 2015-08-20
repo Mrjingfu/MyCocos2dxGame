@@ -11,6 +11,7 @@
 #include "MenuScene.h"
 #include "UIManager.h"
 #include "RunController.h"
+#include "NativeBridge.h"
 #include "storage/local-storage/LocalStorage.h"
 USING_NS_CC;
 
@@ -36,6 +37,7 @@ void PausePopUpUI::onEnter()
 {
     BasePopUpUI::onEnter();
     init();
+    NativeBridge::getInstance()->playInterstitialAds();
 }
 void PausePopUpUI::onExit()
 {

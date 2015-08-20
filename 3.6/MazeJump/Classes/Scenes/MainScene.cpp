@@ -36,8 +36,9 @@ bool MainScene::init()
     // 1. super init first
     if ( !Layer::init() )
         return false;
-    
+#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID )
     SdkBoxManager::getInstance()->logScreen("MainScene");
+#endif
     return true;
 }
 void MainScene::onEnter()

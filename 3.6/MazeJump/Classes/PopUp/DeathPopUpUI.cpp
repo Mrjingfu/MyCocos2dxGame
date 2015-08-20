@@ -13,6 +13,7 @@
 #include "RunController.h"
 #include "UIManager.h"
 #include "SdkBoxManager.h"
+#include "NativeBridge.h"
 #include "storage/local-storage/LocalStorage.h"
 USING_NS_CC;
 
@@ -38,6 +39,7 @@ void DeathPopUpUI::onEnter()
 {
     BasePopUpUI::onEnter();
     init();
+    NativeBridge::getInstance()->playInterstitialAds();
 }
 void DeathPopUpUI::onExit()
 {
@@ -111,8 +113,9 @@ void DeathPopUpUI::onRevive(cocos2d::Ref *ref)
         localStorageSetItem(USER_HEART_NUM, Value(Value(localStorageGetItem(USER_HEART_NUM)).asInt()-1).asString());
         auto scene = MainScene::createScene();
         Director::getInstance()->replaceScene(scene);
-        
+#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID )
         SdkBoxManager::getInstance()->logEvent("Game Continue", "Revive", "Heart cost", 1);
+#endif
     }else
     {
         UIManager::getInstance()->addPopUp(BasePopUpUI::POPUP_SHOP);

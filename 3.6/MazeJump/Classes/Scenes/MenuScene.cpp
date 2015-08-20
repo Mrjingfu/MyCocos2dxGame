@@ -177,8 +177,9 @@ bool MenuScene::init()
         return false;
     touchListener->onTouchBegan = CC_CALLBACK_2(MenuScene::onTouchBegan, this);
     dispatcher->addEventListenerWithSceneGraphPriority(touchListener, this);
-    
+#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID )
     SdkBoxManager::getInstance()->logScreen("MenuScene");
+#endif
     return true;
 }
 

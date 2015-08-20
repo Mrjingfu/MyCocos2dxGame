@@ -11,6 +11,7 @@
 #include "MainScene.h"
 #include "UIManager.h"
 #include "SdkBoxManager.h"
+#include "NativeBridge.h"
 #include "storage/local-storage/LocalStorage.h"
 USING_NS_CC;
 
@@ -48,20 +49,21 @@ void ShopPopUpUI::onEnter()
         UIManager::getInstance()->showInfo(true);
 
     }
-        Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_PURCHASE_GOLD_OK, std::bind(&ShopPopUpUI::onProuuctSucessEvent, this, std::placeholders::_1));
-            Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_PURCHASE_REMOVEADS_OK, std::bind(&ShopPopUpUI::onRemoveAdaSucessEvent, this, std::placeholders::_1));
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_PURCHASE_GOLD_OK, std::bind(&ShopPopUpUI::onProuuctSucessEvent, this, std::placeholders::_1));
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_PURCHASE_REMOVEADS_OK, std::bind(&ShopPopUpUI::onRemoveAdaSucessEvent, this, std::placeholders::_1));
     
+    NativeBridge::getInstance()->showAdsView();
 }
 void ShopPopUpUI::onExit()
 {
-    BasePopUpUI::onExit();
+    NativeBridge::getInstance()->hideAdsView();
     if (UIManager::getInstance()->getGameId() == UIManager::UI_MAIN) {
         UIManager::getInstance()->showInfo(false);
        
     }
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_PURCHASE_GOLD_OK);
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_PURCHASE_REMOVEADS_OK);
-    
+    BasePopUpUI::onExit();
 }
 bool ShopPopUpUI::init()
 {
@@ -135,6 +137,15 @@ bool ShopPopUpUI::init()
         restoreBtn->setPosition(Vec2(size.width*0.4+adsBuyBtn->getContentSize().width*scale+50*scale, size.height*0.61-heartBuyBtn->getContentSize().width*scale-30*scale ));
         restoreBtn->setScale(scale*1.2);
         productLayer->addChild(restoreBtn);
+    }
+    
+    bool removeAds = Value(localStorageGetItem("RemoveAds")).asBool();
+    if(removeAds)
+    {
+        if (adsBuyBtn) {
+            adsBuyBtn->setBright(false);
+            adsBuyBtn->setTouchEnabled(false);
+        }
     }
 
     cocos2d::ui::Button* coin1_Btn = cocos2d::ui::Button::create("btn_gold1_normal.png","btn_gold1_pressed.png");
@@ -393,7 +404,7 @@ void ShopPopUpUI::onRemoveAdaSucessEvent(cocos2d::EventCustom *sender)
 {
     if (adsBuyBtn) {
         adsBuyBtn->setBright(false);
-        adsBuyBtn->setBright(false);
+        adsBuyBtn->setTouchEnabled(false);
     }
 }
 

@@ -11,6 +11,7 @@
 #include "MainScene.h"
 #include "UIManager.h"
 #include "GameController.h"
+#include "NativeBridge.h"
 #include "storage/local-storage/LocalStorage.h"
 USING_NS_CC;
 
@@ -37,9 +38,12 @@ void GroundWinPopUpUI::onEnter()
 {
     BasePopUpUI::onEnter();
     init();
+    
+    NativeBridge::getInstance()->showAdsView();
 }
 void GroundWinPopUpUI::onExit()
 {
+    NativeBridge::getInstance()->hideAdsView();
     BasePopUpUI::onExit();
 }
 bool GroundWinPopUpUI::init()

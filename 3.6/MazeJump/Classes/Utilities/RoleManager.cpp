@@ -259,8 +259,6 @@ void RoleManager::updateRoleLock(const std::string& str,cocos2d::ValueMap _lvalu
                     CCLOG("ROLEID:%s isLock:%d",roleValue["RoleId"].GetString(),_lvalueMap[roleValue["RoleId"].GetString()].asValueMap()["RoleLock"].asBool());
                     locakValue.SetBool(_lvalueMap[roleValue["RoleId"].GetString()].asValueMap()["RoleLock"].asBool());
                     CCLOG("locakValue:%d",roleValue["RoleLock"].GetBool());
-                    
-                    SdkBoxManager::getInstance()->logEvent("CharacterList", "unlock", roleValue["RoleId"].GetString(), roleValue["RoleLock"].GetBool());
                 }
             }
         }
@@ -304,6 +302,9 @@ void RoleManager::updateRoleLock(std::string roleId,bool _lock)
     CCLOG(" replace isLock:%d",m_Roles[roleId].asValueMap()["RoleLock"].asBool());
     
     updateRoleLock(localStorageGetItem(USER_ROLE_DATA),m_Roles);
+#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID )
+    SdkBoxManager::getInstance()->logEvent("CharacterList", "unlock", roleId, (int)(_lock));
+#endif
 }
 std::string RoleManager::getDefaultRoleModel()
 {

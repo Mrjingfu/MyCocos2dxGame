@@ -46,7 +46,9 @@ bool GameScene::init()
     {
         return false;
     }
+#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID )
     SdkBoxManager::getInstance()->logScreen("GameScene");
+#endif
     return true;
 }
 void GameScene::onEnter()

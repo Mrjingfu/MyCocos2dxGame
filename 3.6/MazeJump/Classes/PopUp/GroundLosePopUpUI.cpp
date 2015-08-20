@@ -13,6 +13,7 @@
 #include "ShopPopUpUI.h"
 #include "GameController.h"
 #include "SdkBoxManager.h"
+#include "NativeBridge.h"
 #include "storage/local-storage/LocalStorage.h"
 USING_NS_CC;
 
@@ -38,9 +39,12 @@ void GroundLosePopUpUI::onEnter()
 {
     BasePopUpUI::onEnter();
     init();
+    
+    NativeBridge::getInstance()->showAdsView();
 }
 void GroundLosePopUpUI::onExit()
 {
+    NativeBridge::getInstance()->hideAdsView();
     BasePopUpUI::onExit();
 }
 bool GroundLosePopUpUI::init()
@@ -82,8 +86,9 @@ void GroundLosePopUpUI::onHelpRecover(cocos2d::Ref *ref)
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_GOLD_CHANGE);
         UIManager::getInstance()->hidePopUp(false);
         GameController::getInstance()->createMap(true,GameController::getInstance()->getCurrentLevel());
-        
+    #if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID )
         SdkBoxManager::getInstance()->logEvent("MazeJump", "Game Result", "Help", 1);
+    #endif
 
     }else
     {

@@ -13,6 +13,7 @@
 #include "MenuScene.h"
 #include "SdkBoxManager.h"
 #include "storage/local-storage/LocalStorage.h"
+#include "NativeBridge.h"
 USING_NS_CC;
 
 StarPopUpUI* StarPopUpUI::create()
@@ -108,13 +109,15 @@ void StarPopUpUI::onEnter()
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_START_GOLD_CHANGE, std::bind(&StarPopUpUI::onGoldChange, this, std::placeholders::_1));
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_START_HEART_CHANGE, std::bind(&StarPopUpUI::onHeartChange, this, std::placeholders::_1));
     init();
+    
+    NativeBridge::getInstance()->showAdsView();
 }
 void StarPopUpUI::onExit()
 {
-    BasePopUpUI::onExit();
+    NativeBridge::getInstance()->hideAdsView();
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_START_GOLD_CHANGE);
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_START_HEART_CHANGE);
-
+    BasePopUpUI::onExit();
 }
 void StarPopUpUI::onGoldChange(cocos2d::EventCustom *sender)
 {
@@ -160,8 +163,9 @@ void StarPopUpUI::onResumeGame(cocos2d::Ref *ref)
     if (heartNum>=5) {
         isContinue = true;
         UIManager::getInstance()->hidePopUp(true,CC_CALLBACK_0(StarPopUpUI::onHidePop, this));
-        
+#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID )
         SdkBoxManager::getInstance()->logEvent("Game Continue", "Revive", "Heart cost", 5);
+#endif
     }else
     {
         CCLOG("Shop");

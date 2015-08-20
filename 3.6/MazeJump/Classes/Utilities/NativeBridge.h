@@ -23,14 +23,16 @@ public:
 #if CC_TARGET_PLATFORM == CC_PLATFORM_IOS
     void setRootViewController(RootViewController* viewController);
 #endif
-//    void showAdsView();
-//    void hideAdsView();
-//    void playInterstitialAds();
-//    void showIndicatorView();
-//    void hideIndicatorView();
+    
+    void initAdmob();
+    void showAdsView();
+    void hideAdsView();
+    void playInterstitialAds();
+    void showIndicatorView();
+    void hideIndicatorView();
+    
     void showRateAppView();
     void openItunesURL();
-//    void logWithUserData();
 private:
 #if CC_TARGET_PLATFORM == CC_PLATFORM_IOS
     RootViewController* mViewController;

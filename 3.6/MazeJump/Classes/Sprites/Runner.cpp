@@ -393,7 +393,9 @@ void Runner::onEnterMoveDrop()
     runAction(sequence);
     if(m_pFakeShadow)
         m_pFakeShadow->setVisible(false);
+#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID )
     SdkBoxManager::getInstance()->logEvent("Run Game", "Death", "Drop", 1);
+#endif
 }
 void Runner::onEnterDeath()
 {

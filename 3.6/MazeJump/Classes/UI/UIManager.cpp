@@ -205,16 +205,18 @@ BasePopUpUI* UIManager::createPopUp(BasePopUpUI::PopUp_UI popid)
         {
             popUp = GroundLosePopUpUI::create();
             popUp->setNotBlank(true);
-            
+        #if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID )
             SdkBoxManager::getInstance()->logEvent("MazeJump", "Game Result", "Lose", 0);
+        #endif
         }
             break;
         case BasePopUpUI::POPUP_GROUND_WIN:
         {
             popUp = GroundWinPopUpUI::create();
             popUp->setNotBlank(true);
-            
+        #if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID )
             SdkBoxManager::getInstance()->logEvent("MazeJump", "Game Result", "Win", 1);
+        #endif
         }
             break;
         case BasePopUpUI::POPUP_GROUND_RECOVER:

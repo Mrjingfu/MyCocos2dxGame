@@ -8,6 +8,7 @@
 
 #include "SdkBoxManager.h"
 #include "GameConst.h"
+#include "NativeBridge.h"
 #include "storage/local-storage/LocalStorage.h"
 USING_NS_CC;
 
@@ -43,10 +44,12 @@ void SdkBoxManager::registerIAPListener()
 void SdkBoxManager::purchase(const std::string& productName)
 {
     sdkbox::IAP::purchase(productName);
+    NativeBridge::getInstance()->showIndicatorView();
 }
 void SdkBoxManager::restore()
 {
     sdkbox::IAP::restore();
+    NativeBridge::getInstance()->showIndicatorView();
 }
 std::vector<sdkbox::Product> SdkBoxManager::getProducts() const
 {
@@ -54,6 +57,9 @@ std::vector<sdkbox::Product> SdkBoxManager::getProducts() const
 }
 void SdkBoxManager::onSuccess(const sdkbox::Product& p)
 {
+    CCLOG("Purchase Success: %s", p.id.c_str());
+    NativeBridge::getInstance()->hideIndicatorView();
+    
     int currentGold = Value(localStorageGetItem(USER_GOLD_NUM)).asInt();
     if (p.name == PURCHASE_ID1) {
         currentGold += Value(localStorageGetItem(PURCHASE_ID1)).asInt();
@@ -82,25 +88,28 @@ void SdkBoxManager::onSuccess(const sdkbox::Product& p)
     }
     else if (p.name == PURCHASE_ID6) {
         CCLOG("Remove Ads");
+        localStorageSetItem("RemoveAds", "true");
+        NativeBridge::getInstance()->hideAdsView();
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PURCHASE_REMOVEADS_OK);
     }
-    
-    CCLOG("Purchase Success: %s", p.id.c_str());
-    
 }
 void SdkBoxManager::onFailure(const sdkbox::Product& p, const std::string& msg)
 {
     CCLOG("Purchase Failed: %s", msg.c_str());
+    NativeBridge::getInstance()->hideIndicatorView();
 }
 void SdkBoxManager::onCanceled(const sdkbox::Product& p)
 {
     CCLOG("Purchase Canceled: %s", p.id.c_str());
+    NativeBridge::getInstance()->hideIndicatorView();
 }
 void SdkBoxManager::onRestored(const sdkbox::Product& p)
 {
     CCLOG("Purchase Restored: %s", p.name.c_str());
+    NativeBridge::getInstance()->hideIndicatorView();
     if (p.name == PURCHASE_ID6) {
         CCLOG("Remove Ads");
+        localStorageSetItem("RemoveAds", "true");
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PURCHASE_REMOVEADS_OK);
     }
 }
@@ -124,6 +133,7 @@ void SdkBoxManager::onProductRequestSuccess(const std::vector<sdkbox::Product>& 
 void SdkBoxManager::onProductRequestFailure(const std::string& msg)
 {
     CCLOG("Fail to request products!");
+    sdkbox::IAP::refresh();
 }
 
 #pragma mark GoogleAnalytics

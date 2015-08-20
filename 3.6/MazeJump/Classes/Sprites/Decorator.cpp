@@ -149,7 +149,9 @@ void Decorator::update(float delta)
                     {
                         runner->setState(Runner::RS_DEATH);
                         RunController::getInstance()->setGameState(RunController::RGS_GAMEOVER);
+                    #if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID )
                         SdkBoxManager::getInstance()->logEvent("Run Game", "Death", "Hit Bird", 1);
+                    #endif
                     }
                 }
             }
@@ -177,7 +179,9 @@ void Decorator::update(float delta)
                     {
                         runner->setState(Runner::RS_DEATH);
                         RunController::getInstance()->setGameState(RunController::RGS_GAMEOVER);
+                    #if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID )
                         SdkBoxManager::getInstance()->logEvent("Run Game", "Death", "Hit Plane", 1);
+                    #endif
                     }
                 }
             }

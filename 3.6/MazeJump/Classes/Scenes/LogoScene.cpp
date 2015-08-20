@@ -69,8 +69,9 @@ bool LogoScene::init()
     this->addChild(m_pWhiteLayer);
     EaseExponentialIn* fadeOut = EaseExponentialIn::create(FadeOut::create(1.0f));
     m_pWhiteLayer->runAction(fadeOut);
-    
+#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID )
     SdkBoxManager::getInstance()->logScreen("LogoScene");
+#endif
     return true;
 }
 void LogoScene::precache()

@@ -144,8 +144,9 @@ bool SkillButton::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event)
         m_pRootNode->runAction(EaseBackInOut::create(ScaleTo::create(0.5f, 0.7f)));
         m_pMaskSprite->runAction(EaseSineOut::create(FadeIn::create(0.5f)));
         RunController::getInstance()->showRainbow();
-        
+#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID )
         SdkBoxManager::getInstance()->logEvent("Run Game", "In Game", "Show Rainbow", 1);
+#endif
     }
     return true;
 }
