@@ -46,9 +46,8 @@ bool RoleItem::init(std::string _roleId, int preice, std::string _roleImg, std::
     m_roleModel = _roleImg;
     m_roleSound = _roleSound;
     m_price = preice;
-
     m_itemNormal = cocos2d::ui::ImageView::create(_roleImg);
-    setContentSize(m_itemNormal->getContentSize()*scale);
+    setContentSize(m_itemNormal->getContentSize());
     m_itemNormal->setPosition(Vec2(getContentSize().width*0.5,getContentSize().height*0.5));
     addChild(m_itemNormal);
     setSelectColor(false);
@@ -146,13 +145,14 @@ bool RolePopUpUI::init()
     
     ui::ListView* uiListView = cocos2d::ui::ListView::create();
     uiListView->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
-    uiListView->setContentSize(cocos2d::Size(m_popupBgLayer->getContentSize().width*scale-20*scale, m_popupBgLayer->getContentSize().height*scale));
+    uiListView->setContentSize(cocos2d::Size(m_popupBgLayer->getContentSize().width-20*scale, m_popupBgLayer->getContentSize().height));
     uiListView->setPosition(Vec2(m_popupBgLayer->getContentSize().width*0.5*scale+10*scale, size.height*0.7));
     uiListView->setDirection(ui::ScrollView::Direction::HORIZONTAL);
     uiListView->setTouchEnabled(true);
     uiListView->setBounceEnabled(true);
     uiListView->setBackGroundImageScale9Enabled(true);
-    uiListView->setItemsMargin(20*scale);
+    uiListView->setItemsMargin(0.5*scale);
+    uiListView->setScale(scale);
     uiListView->setGravity(cocos2d::ui::ListView::Gravity::CENTER_VERTICAL);
     uiListView->addEventListener((ui::ListView::ccListViewCallback)CC_CALLBACK_2(RolePopUpUI::selectedItemEvent, this));
     m_dialogLayer->addChild(uiListView);
@@ -171,7 +171,7 @@ bool RolePopUpUI::init()
         CCLOG("roleModel:%s,roleImg:%s,roleSound:%s,rolePrice:%d,roleLock:%d",roleModel.c_str(),roleImg.c_str(),roleSound.c_str(),rolePrice,roleLock);
         RoleItem* roleItem = RoleItem::create(keyStr, rolePrice, roleImg, roleModel, roleLock, roleSound);
         roleItem->setTouchEnabled(true);
-        roleItem->setScale(scale);
+//        roleItem->setScale(scale);
         uiListView->pushBackCustomItem(roleItem);
         if (!strcmp(keyStr.c_str(), localStorageGetItem(USER_DEFAULT_ROLE_ID).c_str())) {
             m_cureentSelectIteml = roleItem;
