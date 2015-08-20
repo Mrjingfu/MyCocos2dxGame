@@ -10,7 +10,7 @@
 #include "GameConst.h"
 #include "MainScene.h"
 #include "UIManager.h"
-#include "StoreListener.h"
+#include "SdkBoxManager.h"
 #include "storage/local-storage/LocalStorage.h"
 USING_NS_CC;
 
@@ -153,11 +153,11 @@ bool ShopPopUpUI::init()
      std::string conin4 = "68";
      std::string conin5 = "128";
 #if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID )
-    conin1=StoreListener::getInstance()->getProducts().at(0).price;
-    conin2=StoreListener::getInstance()->getProducts().at(1).price;
-    conin3=StoreListener::getInstance()->getProducts().at(2).price;
-    conin4=StoreListener::getInstance()->getProducts().at(3).price;
-    conin5=StoreListener::getInstance()->getProducts().at(4).price;
+    conin1=SdkBoxManager::getInstance()->getProducts().at(0).price;
+    conin2=SdkBoxManager::getInstance()->getProducts().at(1).price;
+    conin3=SdkBoxManager::getInstance()->getProducts().at(2).price;
+    conin4=SdkBoxManager::getInstance()->getProducts().at(3).price;
+    conin5=SdkBoxManager::getInstance()->getProducts().at(4).price;
 #endif
     cocos2d::Label* coin1_money_NumLabel = Label::createWithSystemFont(conin1, FONT_FXZS, 30);
     coin1_money_NumLabel->setPosition(Vec2(size.width*0.4+5*scale, size.height*0.61-18*scale));
@@ -242,11 +242,11 @@ bool ShopPopUpUI::init()
         roleBtn->addClickEventListener(CC_CALLBACK_1(ShopPopUpUI::onRole,this));
     }
     
-    coin1_Btn->addClickEventListener(CC_CALLBACK_1(ShopPopUpUI::onProduct, this,"coin_package1"));
-    coin2_Btn->addClickEventListener(CC_CALLBACK_1(ShopPopUpUI::onProduct, this,"coin_package2"));
-    coin3_Btn->addClickEventListener(CC_CALLBACK_1(ShopPopUpUI::onProduct, this,"coin_package3"));
-    coin4_Btn->addClickEventListener(CC_CALLBACK_1(ShopPopUpUI::onProduct, this,"coin_package4"));
-    coin5_Btn->addClickEventListener(CC_CALLBACK_1(ShopPopUpUI::onProduct, this,"coin_package5"));
+    coin1_Btn->addClickEventListener(CC_CALLBACK_1(ShopPopUpUI::onProduct, this,PURCHASE_ID1));
+    coin2_Btn->addClickEventListener(CC_CALLBACK_1(ShopPopUpUI::onProduct, this,PURCHASE_ID2));
+    coin3_Btn->addClickEventListener(CC_CALLBACK_1(ShopPopUpUI::onProduct, this,PURCHASE_ID3));
+    coin4_Btn->addClickEventListener(CC_CALLBACK_1(ShopPopUpUI::onProduct, this,PURCHASE_ID4));
+    coin5_Btn->addClickEventListener(CC_CALLBACK_1(ShopPopUpUI::onProduct, this,PURCHASE_ID5));
     
     backBtn->addClickEventListener(CC_CALLBACK_1(ShopPopUpUI::onBackShop, this));
     
@@ -304,7 +304,7 @@ void ShopPopUpUI::onBuyRemoveAds(cocos2d::Ref *ref)
     CCLOG("onBuyRemoveAds");
      UIManager::getInstance()->playBtnSound();
 #if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID )
-    StoreListener::getInstance()->purchase("remove_ads");
+    SdkBoxManager::getInstance()->purchase(PURCHASE_ID6);
 #endif
 }
 
@@ -313,7 +313,7 @@ void ShopPopUpUI::onRestore(cocos2d::Ref *ref)
     CCLOG("onRestore");
     UIManager::getInstance()->playBtnSound();
 #if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID )
-    StoreListener::getInstance()->restore();
+    SdkBoxManager::getInstance()->restore();
 #endif
 }
 
@@ -356,7 +356,7 @@ void ShopPopUpUI::onProduct(Ref* Ref,const std::string &productId)
 {
      UIManager::getInstance()->playBtnSound();
 #if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID )
-    StoreListener::getInstance()->purchase(productId);
+    SdkBoxManager::getInstance()->purchase(productId);
 #else
     int num = 0;
     CCLOG("product:%s",productId.c_str());
