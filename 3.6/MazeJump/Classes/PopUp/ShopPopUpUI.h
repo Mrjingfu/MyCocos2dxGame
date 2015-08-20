@@ -29,6 +29,9 @@ public:
     void onRole(Ref* ref);
     void onBackShop(Ref* ref);
     
+    
+    void onProuuctSucessEvent(cocos2d::EventCustom* sender);
+    void onRemoveAdaSucessEvent(cocos2d::EventCustom* sender);
     void onProduct(Ref* Ref,const std::string& productId);
     
     void setShopDisplay(ShopType type);
@@ -37,7 +40,7 @@ protected:
     virtual ~ShopPopUpUI();
     virtual bool init();
 private:
-
+    cocos2d::ui::Button* adsBuyBtn;
     cocos2d::Layer* productLayer;
     cocos2d::Layer* goldProductLayer;
     cocos2d::ui::Text* tipTv;

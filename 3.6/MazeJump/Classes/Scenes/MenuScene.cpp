@@ -310,7 +310,7 @@ void MenuScene::changeCharacter(EventCustom *sender)
         m_pRunner->removeFromParentAndCleanup(true);
         m_pRunner = nullptr;
     }
-    std::string modelPath = RoleManager::getInstance()->getDefaultRoleModel();
+    std::string modelPath = RoleManager::getInstance()->getSelectRoleModel();
     m_pRunner = Runner::create(modelPath);
     if(!m_pRunner)
     {

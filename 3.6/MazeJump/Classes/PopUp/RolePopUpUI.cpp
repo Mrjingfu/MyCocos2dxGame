@@ -243,7 +243,7 @@ void RolePopUpUI::selectedItemEvent(cocos2d::Ref *sender, cocos2d::ui::ListView:
                 m_isNowShowLockBtn = true;
                 showLockButton(m_currentNotLockRoleItem->getPrice());
             }
-            localStorageSetItem(USER_DEFAULT_ROLE_ID, m_currentNotLockRoleItem->getRoleId());
+            localStorageSetItem(USER_SELECT_ROLE_ID, m_currentNotLockRoleItem->getRoleId());
             Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_CHARACTER_MODEL_CHANGE);
             
         }else
@@ -256,7 +256,7 @@ void RolePopUpUI::selectedItemEvent(cocos2d::Ref *sender, cocos2d::ui::ListView:
                 m_cureentSelectIteml->setSelectColor(true);
             }
             hideLockButton();
-            localStorageSetItem(USER_DEFAULT_ROLE_ID, m_cureentSelectIteml->getRoleId());
+            localStorageSetItem(USER_SELECT_ROLE_ID, m_cureentSelectIteml->getRoleId());
             Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_CHARACTER_MODEL_CHANGE);
 
         }
@@ -320,6 +320,7 @@ void RolePopUpUI::onBack(cocos2d::Ref *Ref)
     if (m_cureentSelectIteml ) {
         
         localStorageSetItem(USER_DEFAULT_ROLE_ID, m_cureentSelectIteml->getRoleId());
+        localStorageSetItem(USER_SELECT_ROLE_ID, m_cureentSelectIteml->getRoleId());
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_CHARACTER_MODEL_CHANGE);
     }
     
