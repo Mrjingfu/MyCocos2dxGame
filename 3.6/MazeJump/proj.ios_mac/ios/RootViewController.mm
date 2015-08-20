@@ -142,17 +142,17 @@
 - (void) initAdmob {
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
         
-        CGPoint origin = CGPointMake(0,self.view.frame.size.height - kGADAdSizeBanner.size.height);
+        CGPoint origin = CGPointMake(0,self.view.frame.size.height - 50);
         // NOTE:
         // Add your publisher ID here and fill in the GADAdSize constant for the ad
         // you would like to request.
-        admobBannerView = [[GADBannerView alloc] initWithAdSize:kGADAdSizeBanner origin:origin];
+        admobBannerView = [[GADBannerView alloc] initWithAdSize:kGADAdSizeSmartBannerPortrait origin:origin];
     } else {
-        CGPoint origin = CGPointMake(0,self.view.frame.size.height - kGADAdSizeFullBanner.size.height);
+        CGPoint origin = CGPointMake(0,self.view.frame.size.height - 90);
         // NOTE:
         // Add your publisher ID here and fill in the GADAdSize constant for the ad
         // you would like to request.
-        admobBannerView = [[GADBannerView alloc] initWithAdSize:kGADAdSizeFullBanner origin:origin];
+        admobBannerView = [[GADBannerView alloc] initWithAdSize:kGADAdSizeSmartBannerPortrait origin:origin];
     }
     if(admobBannerView != nil)
     {
@@ -187,6 +187,7 @@
     }
 }
 - (void) requestAndLoadInterstitialAds {
+    NSLog(@"requestAndLoadInterstitialAds");
     admobInterstitial = [[GADInterstitial alloc] initWithAdUnitID:@"ca-app-pub-3628527903442392/1742207465"];
     if(admobInterstitial != nil)
     {
@@ -200,7 +201,10 @@
         if (admobInterstitial.isReady)
             [admobInterstitial presentFromRootViewController:self];
         else
+        {
             NSLog(@"The interstitial didn't finish loading or failed to load");
+            [self requestAndLoadInterstitialAds];
+        }
     }
 }
 
@@ -240,8 +244,7 @@
     [admobBannerView.superview bringSubviewToFront:admobBannerView];
 }
 
-- (void)adView:(GADBannerView *)view
-didFailToReceiveAdWithError:(GADRequestError *)error {
+- (void)adView:(GADBannerView *)view didFailToReceiveAdWithError:(GADRequestError *)error {
     NSLog(@"Failed to receive ad with error: %@", [error localizedFailureReason]);
 }
 #pragma mark GADInterstitialDelegate implementation
@@ -252,7 +255,6 @@ didFailToReceiveAdWithError:(GADRequestError *)error {
 
 - (void)interstitial:(GADInterstitial *)interstitial didFailToReceiveAdWithError:(GADRequestError *)error {
     NSLog(@"interstitialDidFailToReceiveAdWithError: %@", [error localizedDescription]);
-    [self requestAndLoadInterstitialAds];
 }
 
 - (void)interstitialDidDismissScreen:(GADInterstitial *)interstitial {

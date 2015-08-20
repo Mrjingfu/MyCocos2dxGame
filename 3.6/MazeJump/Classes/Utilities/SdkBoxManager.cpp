@@ -49,7 +49,7 @@ void SdkBoxManager::purchase(const std::string& productName)
 void SdkBoxManager::restore()
 {
     sdkbox::IAP::restore();
-    NativeBridge::getInstance()->showIndicatorView();
+    //NativeBridge::getInstance()->showIndicatorView();
 }
 std::vector<sdkbox::Product> SdkBoxManager::getProducts() const
 {

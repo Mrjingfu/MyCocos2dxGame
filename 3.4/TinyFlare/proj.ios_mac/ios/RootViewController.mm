@@ -200,7 +200,10 @@
         if (admobInterstitial.isReady)
             [admobInterstitial presentFromRootViewController:self];
         else
+        {
             NSLog(@"The interstitial didn't finish loading or failed to load");
+            [self requestAndLoadInterstitialAds];
+        }
     }
 }
 
@@ -242,7 +245,6 @@ didFailToReceiveAdWithError:(GADRequestError *)error {
 - (void)interstitial:(GADInterstitial *)interstitial
 didFailToReceiveAdWithError:(GADRequestError *)error {
     NSLog(@"interstitialDidFailToReceiveAdWithError: %@", [error localizedDescription]);
-    [self requestAndLoadInterstitialAds];
 }
 
 - (void)interstitialDidDismissScreen:(GADInterstitial *)interstitial {

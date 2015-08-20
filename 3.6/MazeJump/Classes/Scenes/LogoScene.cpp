@@ -15,7 +15,9 @@
 #include "PatternsManager.h"
 #include "SimpleAudioEngine.h"
 #include "RoleManager.h"
+#include "GameCenterController.h"
 #include "SdkBoxManager.h"
+#include "NativeBridge.h"
 USING_NS_CC;
 using namespace CocosDenshion;
 Scene* LogoScene::createScene()
@@ -46,7 +48,6 @@ bool LogoScene::init()
     {
         return false;
     }
-    
     auto size = Director::getInstance()->getVisibleSize();
     m_pLogoSprite = Sprite::create("logo.png");
     if(!m_pLogoSprite)
@@ -69,6 +70,9 @@ bool LogoScene::init()
     this->addChild(m_pWhiteLayer);
     EaseExponentialIn* fadeOut = EaseExponentialIn::create(FadeOut::create(1.0f));
     m_pWhiteLayer->runAction(fadeOut);
+    
+    NativeBridge::getInstance()->showIndicatorView();
+    
 #if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID )
     SdkBoxManager::getInstance()->logScreen("LogoScene");
 #endif
@@ -76,6 +80,15 @@ bool LogoScene::init()
 }
 void LogoScene::precache()
 {
+#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS )
+    GameCenterController::getInstance()->registerGameCenterController();
+#endif
+#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID )
+    SdkBoxManager::getInstance()->registerIAPListener();
+    SdkBoxManager::getInstance()->registerGoogleAnalytics();
+    NativeBridge::getInstance()->initAdmob();
+#endif
+    
     if(!PatternsManager::getInstance()->init("patterns.plist"))
         CCLOGERROR("no patterns file!");
     
@@ -83,14 +96,15 @@ void LogoScene::precache()
         CCLOGERROR("no levels file!");
     if (!RoleManager::getInstance()->init())
         CCLOGERROR("role init error!");
+
     if(m_pWhiteLayer)
     {
-        DelayTime* delay = DelayTime::create(2.0f);
         EaseExponentialOut* fadeIn = EaseExponentialOut::create(FadeIn::create(1.0f));
         CallFunc* callFunc = CallFunc::create(CC_CALLBACK_0(LogoScene::endcache, this));
-        Sequence* sequence = Sequence::create(delay, fadeIn, callFunc, NULL);
+        Sequence* sequence = Sequence::create(fadeIn, callFunc, NULL);
         m_pWhiteLayer->runAction(sequence);
     }
+    NativeBridge::getInstance()->hideIndicatorView();
 }
 void LogoScene::endcache()
 {
