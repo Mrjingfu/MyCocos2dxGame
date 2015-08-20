@@ -15,6 +15,7 @@
 #include "PatternsManager.h"
 #include "SimpleAudioEngine.h"
 #include "RoleManager.h"
+#include "SdkBoxManager.h"
 USING_NS_CC;
 using namespace CocosDenshion;
 Scene* LogoScene::createScene()
@@ -68,6 +69,8 @@ bool LogoScene::init()
     this->addChild(m_pWhiteLayer);
     EaseExponentialIn* fadeOut = EaseExponentialIn::create(FadeOut::create(1.0f));
     m_pWhiteLayer->runAction(fadeOut);
+    
+    SdkBoxManager::getInstance()->logScreen("LogoScene");
     return true;
 }
 void LogoScene::precache()

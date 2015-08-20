@@ -12,6 +12,7 @@
 #include "MenuScene.h"
 #include "RunController.h"
 #include "UIManager.h"
+#include "SdkBoxManager.h"
 #include "storage/local-storage/LocalStorage.h"
 USING_NS_CC;
 
@@ -110,6 +111,8 @@ void DeathPopUpUI::onRevive(cocos2d::Ref *ref)
         localStorageSetItem(USER_HEART_NUM, Value(Value(localStorageGetItem(USER_HEART_NUM)).asInt()-1).asString());
         auto scene = MainScene::createScene();
         Director::getInstance()->replaceScene(scene);
+        
+        SdkBoxManager::getInstance()->logEvent("Game Continue", "Revive", "Heart cost", 1);
     }else
     {
         UIManager::getInstance()->addPopUp(BasePopUpUI::POPUP_SHOP);

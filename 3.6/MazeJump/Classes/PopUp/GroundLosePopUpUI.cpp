@@ -12,6 +12,7 @@
 #include "MainScene.h"
 #include "ShopPopUpUI.h"
 #include "GameController.h"
+#include "SdkBoxManager.h"
 #include "storage/local-storage/LocalStorage.h"
 USING_NS_CC;
 
@@ -81,6 +82,8 @@ void GroundLosePopUpUI::onHelpRecover(cocos2d::Ref *ref)
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_GOLD_CHANGE);
         UIManager::getInstance()->hidePopUp(false);
         GameController::getInstance()->createMap(true,GameController::getInstance()->getCurrentLevel());
+        
+        SdkBoxManager::getInstance()->logEvent("MazeJump", "Game Result", "Help", 1);
 
     }else
     {

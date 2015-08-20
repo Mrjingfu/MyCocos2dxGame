@@ -46,6 +46,9 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.opengl.GLSurfaceView;
 
+import android.content.Intent;
+import com.sdkbox.plugin.SDKBox;
+
 public abstract class Cocos2dxActivity extends Activity implements Cocos2dxHelperListener {
     // ===========================================================
     // Constants
@@ -220,7 +223,8 @@ public abstract class Cocos2dxActivity extends Activity implements Cocos2dxHelpe
         CocosPlayClient.init(this, false);
 
         onLoadNativeLibraries();
-
+        SDKBox.init(this);
+        
         sContext = this;
         this.mHandler = new Cocos2dxHandler(this);
         
@@ -248,10 +252,23 @@ public abstract class Cocos2dxActivity extends Activity implements Cocos2dxHelpe
     // ===========================================================
     // Methods for/from SuperClass/Interfaces
     // ===========================================================
-
+    
+    @Override
+    protected void onStart() {
+        super.onStart();
+        SDKBox.onStart();
+    }
+    
+    @Override
+    protected void onStop() {
+        super.onStop();
+        SDKBox.onStop();
+    }
+    
     @Override
     protected void onResume() {
         super.onResume();
+        SDKBox.onResume();
 
         Cocos2dxHelper.onResume();
         this.mGLSurfaceView.onResume();
@@ -260,7 +277,8 @@ public abstract class Cocos2dxActivity extends Activity implements Cocos2dxHelpe
     @Override
     protected void onPause() {
         super.onPause();
-        
+        SDKBox.onPause();
+
         Cocos2dxHelper.onPause();
         this.mGLSurfaceView.onPause();
     }
@@ -268,6 +286,13 @@ public abstract class Cocos2dxActivity extends Activity implements Cocos2dxHelpe
     @Override
     protected void onDestroy() {
         super.onDestroy();
+    }
+
+    @Override
+    public void onBackPressed() {
+        if(!SDKBox.onBackPressed()) {
+            super.onBackPressed();
+        }
     }
 
     @Override
@@ -298,7 +323,9 @@ public abstract class Cocos2dxActivity extends Activity implements Cocos2dxHelpe
             listener.onActivityResult(requestCode, resultCode, data);
         }
 
-        super.onActivityResult(requestCode, resultCode, data);
+        if(!SDKBox.onActivityResult(requestCode, resultCode, data)) {
+            super.onActivityResult(requestCode, resultCode, data);
+        }
     }
 
 

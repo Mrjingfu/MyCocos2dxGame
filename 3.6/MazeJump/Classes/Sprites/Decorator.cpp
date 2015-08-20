@@ -10,6 +10,7 @@
 #include "OutlineEffect3D.h"
 #include "RunController.h"
 #include "AudioEngine.h"
+#include "SdkBoxManager.h"
 USING_NS_CC;
 using namespace experimental;
 Decorator* Decorator::create(DecoratorType type)
@@ -148,6 +149,7 @@ void Decorator::update(float delta)
                     {
                         runner->setState(Runner::RS_DEATH);
                         RunController::getInstance()->setGameState(RunController::RGS_GAMEOVER);
+                        SdkBoxManager::getInstance()->logEvent("Run Game", "Death", "Hit Bird", 1);
                     }
                 }
             }
@@ -175,6 +177,7 @@ void Decorator::update(float delta)
                     {
                         runner->setState(Runner::RS_DEATH);
                         RunController::getInstance()->setGameState(RunController::RGS_GAMEOVER);
+                        SdkBoxManager::getInstance()->logEvent("Run Game", "Death", "Hit Plane", 1);
                     }
                 }
             }

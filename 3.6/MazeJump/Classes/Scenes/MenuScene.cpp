@@ -16,6 +16,7 @@
 #include "RoleManager.h"
 #include "NativeBridge.h"
 #include "RoleManager.h"
+#include "SdkBoxManager.h"
 USING_NS_CC;
 using namespace experimental;
 
@@ -177,9 +178,7 @@ bool MenuScene::init()
     touchListener->onTouchBegan = CC_CALLBACK_2(MenuScene::onTouchBegan, this);
     dispatcher->addEventListenerWithSceneGraphPriority(touchListener, this);
     
-    
-
-    
+    SdkBoxManager::getInstance()->logScreen("MenuScene");
     return true;
 }
 

@@ -10,6 +10,7 @@
 #include "TerrainLayer.h"
 #include "RunController.h"
 #include "UIManager.h"
+#include "SdkBoxManager.h"
 USING_NS_CC;
 Scene* MainScene::createScene()
 {
@@ -35,6 +36,8 @@ bool MainScene::init()
     // 1. super init first
     if ( !Layer::init() )
         return false;
+    
+    SdkBoxManager::getInstance()->logScreen("MainScene");
     return true;
 }
 void MainScene::onEnter()

@@ -1,11 +1,10 @@
 {
     "android": {
+        "GoogleAnalytics": {
+            "trackingCode": "UA-61442727-4"
+        }, 
         "iap": {
             "items": {
-                "remove_ads": {
-                    "type": "non_consumable", 
-                    "id": "com.cocos2dx.non1"
-                }, 
                 "coin_package1": {
                     "id": "com.wanax.mazejump.gold1"
                 },
@@ -20,18 +19,21 @@
                 },
                 "coin_package5": {
                     "id": "com.wanax.mazejump.gold5"
+                },
+                "remove_ads": {
+                    "type": "non_consumable", 
+                    "id": "com.cocos2dx.non1"
                 }
-            },
+            }, 
             "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAq7eIGu7dRcBRBSC05cYvxjBMd7cqq9w6++1er+cqO2tyWPtWB4vuTkliq4k/Fkylx5UMfptdOYOW8ENgQyVucs/NyuOAGmve4j5JFhLPcLa6LjO2HUSY6zk04DRR9Zw7YPET4WAezZTz8jYMGhPG08HYltVj8cmSpSFWd1nI0pGOJoLQIMkIkXplgnPQRbMpuOu70vnQQBS1RFcoFT7OjaV8U0cfJzMoS1TMkGqaJKks2T+qOBNTtkXzge92EnvYIkhpCfN98dj6aQmETNp5yj5Fa+jcbAVF8dy5xymJwioL89XQKfKkGR+P6ESMoBEPfIZYIlMU8EUwmC+UKGLujQIDAQAB"
         }
     }, 
     "ios": {
+        "GoogleAnalytics": {
+            "trackingCode": "UA-61442727-3"
+        }, 
         "iap": {
             "items": {
-                "remove_ads": {
-                    "type": "non_consumable", 
-                    "id": "com.wanax.mazejump.removeads"
-                }, 
                 "coin_package1": {
                     "id": "com.wanax.mazejump.gold1"
                 },
@@ -46,6 +48,10 @@
                 },
                 "coin_package5": {
                     "id": "com.wanax.mazejump.gold5"
+                },
+                "remove_ads": {
+                    "type": "non_consumable", 
+                    "id": "com.wanax.mazejump.removeads"
                 }
             }
         }

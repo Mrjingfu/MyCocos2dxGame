@@ -11,6 +11,7 @@
 #include "MainScene.h"
 #include "UIManager.h"
 #include "MenuScene.h"
+#include "SdkBoxManager.h"
 #include "storage/local-storage/LocalStorage.h"
 USING_NS_CC;
 
@@ -159,6 +160,8 @@ void StarPopUpUI::onResumeGame(cocos2d::Ref *ref)
     if (heartNum>=5) {
         isContinue = true;
         UIManager::getInstance()->hidePopUp(true,CC_CALLBACK_0(StarPopUpUI::onHidePop, this));
+        
+        SdkBoxManager::getInstance()->logEvent("Game Continue", "Revive", "Heart cost", 5);
     }else
     {
         CCLOG("Shop");

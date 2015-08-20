@@ -13,6 +13,7 @@
 #include "StepManager.h"
 #include "AudioEngine.h"
 #include "GameConst.h"
+#include "SdkBoxManager.h"
 USING_NS_CC;
 using namespace experimental;
 
@@ -45,6 +46,7 @@ bool GameScene::init()
     {
         return false;
     }
+    SdkBoxManager::getInstance()->logScreen("GameScene");
     return true;
 }
 void GameScene::onEnter()

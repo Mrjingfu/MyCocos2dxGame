@@ -10,6 +10,7 @@
 #include "OutlineEffect3D.h"
 #include "RunController.h"
 #include "AudioEngine.h"
+#include "SdkBoxManager.h"
 USING_NS_CC;
 using namespace experimental;
 
@@ -392,6 +393,7 @@ void Runner::onEnterMoveDrop()
     runAction(sequence);
     if(m_pFakeShadow)
         m_pFakeShadow->setVisible(false);
+    SdkBoxManager::getInstance()->logEvent("Run Game", "Death", "Drop", 1);
 }
 void Runner::onEnterDeath()
 {

@@ -5,7 +5,7 @@
 #include "UIManager.h"
 #include "storage/local-storage/LocalStorage.h"
 #include "GameCenterController.h"
-#include "StoreListener.h"
+#include "SdkBoxManager.h"
 USING_NS_CC;
 using namespace experimental;
 AppDelegate::AppDelegate() {
@@ -75,7 +75,8 @@ bool AppDelegate::applicationDidFinishLaunching() {
     GameCenterController::getInstance()->registerGameCenterController();
 #endif
 #if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID )
-    StoreListener::getInstance()->registerStoreListener();
+    SdkBoxManager::getInstance()->registerIAPListener();
+    SdkBoxManager::getInstance()->registerGoogleAnalytics();
 #endif
     //director->setClearColor(Color4F(153.0f/255.0f, 204.0f/255.0f, 1.0f, 1.0f));
     //director->setClearColor(Color4F(0.8f, 0.8f, 0.8f, 1.0f));

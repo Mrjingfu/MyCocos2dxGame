@@ -22,6 +22,7 @@
 #include "GroundLosePopUpUI.h"
 #include "GroundWinPopUpUI.h"
 #include "AudioEngine.h"
+#include "SdkBoxManager.h"
 USING_NS_CC;
 
 UIManager* g_pPopManagerInstance = nullptr;
@@ -204,12 +205,16 @@ BasePopUpUI* UIManager::createPopUp(BasePopUpUI::PopUp_UI popid)
         {
             popUp = GroundLosePopUpUI::create();
             popUp->setNotBlank(true);
+            
+            SdkBoxManager::getInstance()->logEvent("MazeJump", "Game Result", "Lose", 0);
         }
             break;
         case BasePopUpUI::POPUP_GROUND_WIN:
         {
             popUp = GroundWinPopUpUI::create();
             popUp->setNotBlank(true);
+            
+            SdkBoxManager::getInstance()->logEvent("MazeJump", "Game Result", "Win", 1);
         }
             break;
         case BasePopUpUI::POPUP_GROUND_RECOVER:

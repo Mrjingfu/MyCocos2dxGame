@@ -11,6 +11,7 @@
 #include "json/stringbuffer.h"
 #include "json/writer.h"
 #include "storage/local-storage/LocalStorage.h"
+#include "SdkBoxManager.h"
 USING_NS_CC;
 
 RoleManager* g_pRoleManagerInstance = nullptr;
@@ -258,6 +259,8 @@ void RoleManager::updateRoleLock(const std::string& str,cocos2d::ValueMap _lvalu
                     CCLOG("ROLEID:%s isLock:%d",roleValue["RoleId"].GetString(),_lvalueMap[roleValue["RoleId"].GetString()].asValueMap()["RoleLock"].asBool());
                     locakValue.SetBool(_lvalueMap[roleValue["RoleId"].GetString()].asValueMap()["RoleLock"].asBool());
                     CCLOG("locakValue:%d",roleValue["RoleLock"].GetBool());
+                    
+                    SdkBoxManager::getInstance()->logEvent("CharacterList", "unlock", roleValue["RoleId"].GetString(), roleValue["RoleLock"].GetBool());
                 }
             }
         }
