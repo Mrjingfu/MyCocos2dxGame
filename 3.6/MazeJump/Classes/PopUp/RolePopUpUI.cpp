@@ -138,8 +138,9 @@ bool RolePopUpUI::init()
     float scale = size.width /640.0f;
     m_maskLayerBg->setVisible(false);
     m_popupBgLayer = ui::ImageView::create("panel_characterlist.png");
-    m_popupBgLayer->setPosition(Vec2(m_popupBgLayer->getContentSize().width*0.5*scale, size.height*0.7));
     m_popupBgLayer->setScale(scale);
+    m_popupBgLayer->setPosition(Vec2(m_popupBgLayer->getContentSize().width*0.5*scale, size.height*0.7));
+
     m_dialogLayer->addChild(m_popupBgLayer);
     
     
@@ -151,7 +152,7 @@ bool RolePopUpUI::init()
     uiListView->setTouchEnabled(true);
     uiListView->setBounceEnabled(true);
     uiListView->setBackGroundImageScale9Enabled(true);
-    uiListView->setItemsMargin(0.5*scale);
+    uiListView->setItemsMargin(5*scale);
     uiListView->setScale(scale);
     uiListView->setGravity(cocos2d::ui::ListView::Gravity::CENTER_VERTICAL);
     uiListView->addEventListener((ui::ListView::ccListViewCallback)CC_CALLBACK_2(RolePopUpUI::selectedItemEvent, this));
@@ -171,7 +172,6 @@ bool RolePopUpUI::init()
         CCLOG("roleModel:%s,roleImg:%s,roleSound:%s,rolePrice:%d,roleLock:%d",roleModel.c_str(),roleImg.c_str(),roleSound.c_str(),rolePrice,roleLock);
         RoleItem* roleItem = RoleItem::create(keyStr, rolePrice, roleImg, roleModel, roleLock, roleSound);
         roleItem->setTouchEnabled(true);
-//        roleItem->setScale(scale);
         uiListView->pushBackCustomItem(roleItem);
         if (!strcmp(keyStr.c_str(), localStorageGetItem(USER_DEFAULT_ROLE_ID).c_str())) {
             m_cureentSelectIteml = roleItem;
@@ -181,11 +181,12 @@ bool RolePopUpUI::init()
     
     ui::Button* backButton = cocos2d::ui::Button::create("btn_scrollback_normal.png","btn_scrollback_pressed.png");
     backButton->setScale(scale);
-    backButton->setPosition(Vec2(backButton->getContentSize().width*0.5*scale, size.height*0.557));
+    backButton->setPosition(Vec2(backButton->getContentSize().width*0.5*scale, size.height*0.55));
     m_dialogLayer->addChild(backButton);
     
-     m_lockLayer = Layer::create();
+    m_lockLayer = Layer::create();
     m_dialogLayer->addChild(m_lockLayer);
+    
     m_lockLayer->setPosition(Vec2(size.width, 0));
     cocos2d::ui::Button* m_lockButton = ui::Button::create(UtilityHelper::getLocalString("UI_ROLE_BTN_LOCK_NORMAL"),UtilityHelper::getLocalString("UI_ROLE_BTN_LOCK_PRESSED"));
     m_lockButton->setScale(scale);
@@ -193,7 +194,7 @@ bool RolePopUpUI::init()
     m_lockLayer->addChild(m_lockButton);
     
     m_lockTv = Label::createWithBMFont(UtilityHelper::getLocalString("FONT_NUMBER"),Value(Value(localStorageGetItem(USER_GOLD_NUM)).asInt()).asString());
-    m_lockTv->setPosition(Vec2(size.width-60*scale, size.height*0.557));
+    m_lockTv->setPosition(Vec2(size.width-60*scale, size.height*0.55));
     m_lockTv->setScale(scale);
     m_lockLayer->addChild(m_lockTv);
     
