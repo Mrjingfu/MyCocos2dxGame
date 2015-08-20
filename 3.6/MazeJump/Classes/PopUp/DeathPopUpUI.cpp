@@ -13,7 +13,6 @@
 #include "RunController.h"
 #include "UIManager.h"
 #include "SdkBoxManager.h"
-#include "NativeBridge.h"
 #include "storage/local-storage/LocalStorage.h"
 USING_NS_CC;
 
@@ -39,7 +38,6 @@ void DeathPopUpUI::onEnter()
 {
     BasePopUpUI::onEnter();
     init();
-    NativeBridge::getInstance()->playInterstitialAds();
 }
 void DeathPopUpUI::onExit()
 {

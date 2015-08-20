@@ -37,6 +37,7 @@ private:
     void onPauseEvent(cocos2d::EventCustom* sender);
     
     void showPause();
+    void showPopupEnd();
     
     void onRecoverPause(cocos2d::EventCustom* sender);
     void onRunnerLose(cocos2d::EventCustom* sender);

@@ -15,7 +15,9 @@
 #include "PatternsManager.h"
 #include "SimpleAudioEngine.h"
 #include "RoleManager.h"
+#include "GameCenterController.h"
 #include "SdkBoxManager.h"
+#include "NativeBridge.h"
 USING_NS_CC;
 using namespace CocosDenshion;
 Scene* LogoScene::createScene()
@@ -76,6 +78,15 @@ bool LogoScene::init()
 }
 void LogoScene::precache()
 {
+#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS )
+    GameCenterController::getInstance()->registerGameCenterController();
+#endif
+#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID )
+    SdkBoxManager::getInstance()->registerIAPListener();
+    SdkBoxManager::getInstance()->registerGoogleAnalytics();
+    NativeBridge::getInstance()->initAdmob();
+#endif
+    
     if(!PatternsManager::getInstance()->init("patterns.plist"))
         CCLOGERROR("no patterns file!");
     

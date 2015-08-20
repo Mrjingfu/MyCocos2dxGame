@@ -13,6 +13,7 @@
 #include "UtilityHelper.h"
 #include "ShopPopUpUI.h"
 #include "storage/local-storage/LocalStorage.h"
+#include "NativeBridge.h"
 USING_NS_CC;
 
 GameUI* GameUI::create()
@@ -219,10 +220,14 @@ void GameUI::showPause()
 {
     isRecover = true;
     UIManager::getInstance()->addPopUp(BasePopUpUI::POPUP_PAUSE);
-    UIManager::getInstance()->showPopUp(true,BasePopUpUI::POPUP_HORIZONTAL,CC_CALLBACK_0(GameUI::setPause, this));
+    UIManager::getInstance()->showPopUp(true,BasePopUpUI::POPUP_HORIZONTAL,CC_CALLBACK_0(GameUI::showPopupEnd, this));
     UIManager::getInstance()->playBtnSound();
 }
-
+void GameUI::showPopupEnd()
+{
+    setPause();
+    NativeBridge::getInstance()->playInterstitialAds();
+}
 void GameUI::setPause()
 {
     std::set<void*> _m_pBeforeTargetSets = Director::getInstance()->getScheduler()->pauseAllTargets();
@@ -258,7 +263,6 @@ void GameUI::onRecoverPause(cocos2d::EventCustom *sender)
 }
 void GameUI::onResumeAn(float dt)
 {
-    m_countDonwImg->loadTexture(StringUtils::format("ui_count_down_%d.png",--m_conut));
     CCLOG("count:%d",m_conut);
     if (m_conut<=0) {
 
@@ -268,8 +272,9 @@ void GameUI::onResumeAn(float dt)
             m_countDonwImg->loadTexture(StringUtils::format("ui_count_down_%d.png",3));
             isRecover = false;
             unschedule(schedule_selector(GameUI::onResumeAn));
-        
     }
+    else
+        m_countDonwImg->loadTexture(StringUtils::format("ui_count_down_%d.png",--m_conut));
 }
 void GameUI::onRunnerLose(cocos2d::EventCustom* sender)
 {
@@ -285,6 +290,7 @@ void GameUI::onDelayTimeRunnerLose()
 void GameUI::onShowLosePopUpEnd()
 {
     isDead = false;
+    NativeBridge::getInstance()->playInterstitialAds();
 }
 void GameUI::onShopBuyGold(cocos2d::Ref *ref)
 {
