@@ -6285,11 +6285,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Utilities/SdkBoxManager.cpp"
-            timestampString = "461756111.4085"
+            timestampString = "461831155.777603"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "151"
-            endingLineNumber = "151"
+            startingLineNumber = "161"
+            endingLineNumber = "161"
             landmarkName = "SdkBoxManager::logEvent(std::string eventCategory, std::string eventAction, std::string eventLabel, int value)"
             landmarkType = "5">
          </BreakpointContent>
@@ -6573,11 +6573,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Utilities/SdkBoxManager.cpp"
-            timestampString = "461764415.257084"
+            timestampString = "461830632.490187"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "103"
-            endingLineNumber = "103"
+            startingLineNumber = "111"
+            endingLineNumber = "111"
             landmarkName = "SdkBoxManager::onCanceled(const sdkbox::Product&amp; p)"
             landmarkType = "5">
          </BreakpointContent>
@@ -6589,11 +6589,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Utilities/SdkBoxManager.cpp"
-            timestampString = "461764422.288785"
+            timestampString = "461830632.490187"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "108"
-            endingLineNumber = "108"
+            startingLineNumber = "117"
+            endingLineNumber = "117"
             landmarkName = "SdkBoxManager::onRestored(const sdkbox::Product&amp; p)"
             landmarkType = "5">
          </BreakpointContent>
@@ -6707,6 +6707,22 @@
             startingLineNumber = "170"
             endingLineNumber = "170"
             landmarkName = "-createRequest"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/Utilities/RoleManager.cpp"
+            timestampString = "461831027.798292"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "310"
+            endingLineNumber = "310"
+            landmarkName = "RoleManager::updateRoleLock(std::string roleId,bool _lock)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

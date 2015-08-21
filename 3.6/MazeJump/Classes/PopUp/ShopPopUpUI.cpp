@@ -13,7 +13,9 @@
 #include "SdkBoxManager.h"
 #include "NativeBridge.h"
 #include "storage/local-storage/LocalStorage.h"
+#include "AudioEngine.h"
 USING_NS_CC;
+using namespace experimental;
 
 ShopPopUpUI* ShopPopUpUI::create()
 {
@@ -404,7 +406,6 @@ void ShopPopUpUI::onBuyHeart(cocos2d::Ref *ref)
     CCLOG("onBuyHeart");
     m_isOnHeart = true;
     setShopDisplay(SHOP_HEART);
-    
 
 }
 void ShopPopUpUI::onRole(cocos2d::Ref *ref)
