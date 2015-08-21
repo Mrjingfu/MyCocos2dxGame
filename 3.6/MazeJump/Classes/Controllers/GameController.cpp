@@ -178,7 +178,9 @@ void GameController::switchToMainScene()
 int GameController::getCurrentGoldReward()
 {
     
-    return m_difficultLevel*m_difficultLevel+1;
+    int a = m_currentLevel*m_currentLevel*0.5;
+    CCLOG("goldreward:%d",a - a%10 +m_currentLevel*4+10);
+    return a - a%10 +m_currentLevel*4+10;
 }
 int GameController::getCurrentHeartReward()
 {
