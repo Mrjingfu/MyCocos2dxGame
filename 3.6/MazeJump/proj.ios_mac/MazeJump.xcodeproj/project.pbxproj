@@ -619,6 +619,10 @@
 		EC96D7481B610BBD009C64F5 /* StepManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC96D7461B610BBD009C64F5 /* StepManager.cpp */; };
 		EC96D7491B612495009C64F5 /* StepManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC96D7461B610BBD009C64F5 /* StepManager.cpp */; };
 		ECA02B781B5F72F6007EFC0F /* sky2.png in Resources */ = {isa = PBXBuildFile; fileRef = ECA02B771B5F72F6007EFC0F /* sky2.png */; };
+		ECA3A19F1B86FAFC00A67A9D /* btn_buyHeart_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = ECA3A19D1B86FAFC00A67A9D /* btn_buyHeart_normal.png */; };
+		ECA3A1A01B86FAFC00A67A9D /* btn_buyHeart_pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = ECA3A19E1B86FAFC00A67A9D /* btn_buyHeart_pressed.png */; };
+		ECA3A1A11B86FB3100A67A9D /* btn_buyHeart_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = ECA3A19D1B86FAFC00A67A9D /* btn_buyHeart_normal.png */; };
+		ECA3A1A21B86FB3100A67A9D /* btn_buyHeart_pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = ECA3A19E1B86FAFC00A67A9D /* btn_buyHeart_pressed.png */; };
 		ECAD6CAC1B81705E0033E0DF /* gameinfotip_cn.png in Resources */ = {isa = PBXBuildFile; fileRef = ECAD6C9D1B81705E0033E0DF /* gameinfotip_cn.png */; };
 		ECAD6CAD1B81705E0033E0DF /* gameinfotip_en.png in Resources */ = {isa = PBXBuildFile; fileRef = ECAD6C9E1B81705E0033E0DF /* gameinfotip_en.png */; };
 		ECAD6CAE1B81705E0033E0DF /* helptip_cn.png in Resources */ = {isa = PBXBuildFile; fileRef = ECAD6C9F1B81705E0033E0DF /* helptip_cn.png */; };
@@ -1106,6 +1110,8 @@
 		EC96D7461B610BBD009C64F5 /* StepManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StepManager.cpp; sourceTree = "<group>"; };
 		EC96D7471B610BBD009C64F5 /* StepManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StepManager.h; sourceTree = "<group>"; };
 		ECA02B771B5F72F6007EFC0F /* sky2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sky2.png; sourceTree = "<group>"; };
+		ECA3A19D1B86FAFC00A67A9D /* btn_buyHeart_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_buyHeart_normal.png; sourceTree = "<group>"; };
+		ECA3A19E1B86FAFC00A67A9D /* btn_buyHeart_pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_buyHeart_pressed.png; sourceTree = "<group>"; };
 		ECAD6C9D1B81705E0033E0DF /* gameinfotip_cn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gameinfotip_cn.png; sourceTree = "<group>"; };
 		ECAD6C9E1B81705E0033E0DF /* gameinfotip_en.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gameinfotip_en.png; sourceTree = "<group>"; };
 		ECAD6C9F1B81705E0033E0DF /* helptip_cn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = helptip_cn.png; sourceTree = "<group>"; };
@@ -1552,6 +1558,8 @@
 		5542EED31B395E1300CD9496 /* textures */ = {
 			isa = PBXGroup;
 			children = (
+				ECA3A19D1B86FAFC00A67A9D /* btn_buyHeart_normal.png */,
+				ECA3A19E1B86FAFC00A67A9D /* btn_buyHeart_pressed.png */,
 				EC6D72D81B84179D00E9A82D /* role_bear.png */,
 				EC6D72D91B84179D00E9A82D /* role_boy1.png */,
 				EC6D72DA1B84179D00E9A82D /* role_boy2.png */,
@@ -2107,6 +2115,7 @@
 				EC828CAB1B7DF69300623B4B /* btn_plus_normal.png in Resources */,
 				EC96D7311B607B62009C64F5 /* 5x5-7.tmx in Resources */,
 				ECAD6CAC1B81705E0033E0DF /* gameinfotip_cn.png in Resources */,
+				ECA3A1A01B86FAFC00A67A9D /* btn_buyHeart_pressed.png in Resources */,
 				55A8F5B41B8355790051787A /* bear.c3b in Resources */,
 				55F3B98F1B4527F30090BE1A /* colorlist.png in Resources */,
 				558215841B5C6B6B00173C79 /* stoneflip.wav in Resources */,
@@ -2158,6 +2167,7 @@
 				50EF629617ECD46A001EB2F8 /* Icon-40.png in Resources */,
 				EC224CCD1B8331E6002EA1E8 /* ui_count_down_1.png in Resources */,
 				EC7162641B7D906D0081833C /* btn_home_pressed.png in Resources */,
+				ECA3A19F1B86FAFC00A67A9D /* btn_buyHeart_normal.png in Resources */,
 				EC19EEDE1B80269400BC2827 /* panel_challenge_helpok_cn.png in Resources */,
 				5510DE611B6B0E1A00C2FB15 /* 8x8x8.c3b in Resources */,
 				55EB5C371B6F597B005BD1A4 /* plane.wav in Resources */,
@@ -2265,6 +2275,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ECA3A1A11B86FB3100A67A9D /* btn_buyHeart_normal.png in Resources */,
+				ECA3A1A21B86FB3100A67A9D /* btn_buyHeart_pressed.png in Resources */,
 				EC6D72E61B84194D00E9A82D /* role_bear.png in Resources */,
 				EC6D72E71B84194D00E9A82D /* role_boy1.png in Resources */,
 				EC6D72E81B84194D00E9A82D /* role_boy2.png in Resources */,
@@ -2666,8 +2678,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				CODE_SIGN_IDENTITY = "iOS Development: haibo wang (FT8YEJMWBH)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iOS Development: haibo wang (FT8YEJMWBH)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: quanlan huang (L4MC53BS3Z)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: quanlan huang (L4MC53BS3Z)";
 				COMPRESS_PNG_FILES = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2700,7 +2712,7 @@
 					"$(_COCOS_LIB_IOS_BEGIN)",
 					"$(_COCOS_LIB_IOS_END)",
 				);
-				PROVISIONING_PROFILE = "5a861af2-7b02-40d7-b917-5427af5cd3e6";
+				PROVISIONING_PROFILE = "22b9a94d-953a-486e-a5b1-5b20c81c69a3";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "$(_COCOS_HEADER_IOS_BEGIN) $(_COCOS_HEADER_IOS_END)";
@@ -2712,8 +2724,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				CODE_SIGN_IDENTITY = "iOS Development: haibo wang (FT8YEJMWBH)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iOS Development: haibo wang (FT8YEJMWBH)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: quanlan huang (L4MC53BS3Z)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: quanlan huang (L4MC53BS3Z)";
 				COMPRESS_PNG_FILES = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2744,7 +2756,7 @@
 					"$(_COCOS_LIB_IOS_BEGIN)",
 					"$(_COCOS_LIB_IOS_END)",
 				);
-				PROVISIONING_PROFILE = "5a861af2-7b02-40d7-b917-5427af5cd3e6";
+				PROVISIONING_PROFILE = "22b9a94d-953a-486e-a5b1-5b20c81c69a3";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "$(_COCOS_HEADER_IOS_BEGIN) $(_COCOS_HEADER_IOS_END)";

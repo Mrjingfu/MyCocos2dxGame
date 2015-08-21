@@ -17,6 +17,7 @@ public:
     typedef enum {
         SHOP_GOLD = 0,
         SHOP_NORMAL,
+        SHOP_HEART
     } ShopType;
     virtual void onEnter() override;
     virtual void onExit() override;
@@ -33,7 +34,7 @@ public:
     void onProuuctSucessEvent(cocos2d::EventCustom* sender);
     void onRemoveAdaSucessEvent(cocos2d::EventCustom* sender);
     void onProduct(Ref* Ref,const std::string& productId);
-    
+    void onProductHeart(Ref* Ref,int addHeartNum,int reduceGoldNum);
     void setShopDisplay(ShopType type);
 protected:
     ShopPopUpUI();
@@ -43,11 +44,13 @@ private:
     cocos2d::ui::Button* adsBuyBtn;
     cocos2d::Layer* productLayer;
     cocos2d::Layer* goldProductLayer;
+    cocos2d::Layer* heartProductLayer;
     cocos2d::ui::Text* tipTv;
     cocos2d::ui::Text* heartTv;
     cocos2d::ui::Text* goldTv;
     ShopType m_shopType;
     bool m_isOnGold;
+    bool m_isOnHeart;
 };
 
 #endif /* defined(__MazeJump__ShopUI__) */

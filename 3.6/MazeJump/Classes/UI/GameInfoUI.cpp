@@ -45,10 +45,10 @@ bool GameInfoUI::init()
     auto size = Director::getInstance()->getVisibleSize();
     float scale = size.width /640.0f;
     
-    cocos2d::ui::ImageView* glodView = cocos2d::ui::ImageView::create("ui_gold.png");
-    glodView->setPosition(Vec2(70*scale, size.height*0.95));
-    glodView->setScale(scale);
-    addChild(glodView);
+    goldAni = cocos2d::ui::ImageView::create("ui_gold.png");
+    goldAni->setPosition(Vec2(70*scale, size.height*0.95));
+    goldAni->setScale(scale);
+    addChild(goldAni);
     
     goldTv = Label::createWithBMFont(UtilityHelper::getLocalString("FONT_NUMBER"),Value(Value(localStorageGetItem(USER_GOLD_NUM)).asInt()).asString(),TextHAlignment::RIGHT);
     goldTv->setAnchorPoint(Vec2::ANCHOR_MIDDLE_LEFT);
@@ -57,30 +57,16 @@ bool GameInfoUI::init()
     addChild(goldTv);
     
     
-    cocos2d::ui::ImageView* heartView = cocos2d::ui::ImageView::create("ui_heart.png");
-    heartView->setPosition(Vec2(70*scale, size.height*0.95-glodView->getContentSize().height*scale - 5*scale));
-    heartView->setScale(scale);
-    addChild(heartView);
+    heartAni = cocos2d::ui::ImageView::create("ui_heart.png");
+    heartAni->setPosition(Vec2(70*scale, size.height*0.95-goldAni->getContentSize().height*scale - 5*scale));
+    heartAni->setScale(scale);
+    addChild(heartAni);
     
     heartTv = Label::createWithBMFont(UtilityHelper::getLocalString("FONT_NUMBER"),Value(Value(localStorageGetItem(USER_HEART_NUM)).asInt()).asString(),TextHAlignment::RIGHT);
     heartTv->setAnchorPoint(Vec2::ANCHOR_MIDDLE_LEFT);
-    heartTv->setPosition(Vec2(size.width*0.15, size.height*0.95-glodView->getContentSize().height*scale - 3*scale));
+    heartTv->setPosition(Vec2(size.width*0.15, size.height*0.95-goldAni->getContentSize().height*scale - 3*scale));
     heartTv->setScale(scale);
     addChild(heartTv);
-    
-    
-    goldAni = cocos2d::ui::ImageView::create("ui_gold.png");
-    goldAni->setPosition(Vec2(70*scale, size.height*0.95));
-    goldAni->setScale(scale);
-    goldAni->setVisible(false);
-    addChild(goldAni);
-
-    heartAni = cocos2d::ui::ImageView::create("ui_heart.png");
-    heartAni->setPosition(Vec2(70*scale, size.height*0.95-glodView->getContentSize().height*scale - 5*scale));
-    heartAni->setScale(scale);
-    heartAni->setVisible(false);
-    addChild(heartAni);
-
     
     
     maxLayer = Layer::create();
@@ -174,41 +160,34 @@ void GameInfoUI::onhideEndPopup()
 }
 void GameInfoUI::onGoldChange(cocos2d::EventCustom* sender)
 {
+    auto size = Director::getInstance()->getVisibleSize();
+    float scale = size.width /640.0f;
+    
     if(goldTv)
         goldTv->setString(localStorageGetItem(USER_GOLD_NUM));
     if (goldAni) {
-        goldAni->setVisible(true);
-        JumpBy* jumpByAct = JumpBy::create(0.2, Vec2::ZERO, 50, 1);
-        CallFunc* fun = CallFunc::create(CC_CALLBACK_0(GameInfoUI::goldActionEnd,this));
-        goldAni->runAction(Sequence::create(jumpByAct,fun, NULL));
-    }
-    
-}
-void GameInfoUI::goldActionEnd()
-{
-    if (goldAni) {
-        goldAni->setVisible(false);
+        JumpBy* jumpByAct = JumpBy::create(0.2, Vec2::ZERO, 40*scale, 1);
+//        CallFunc* fun = CallFunc::create(CC_CALLBACK_0(GameInfoUI::goldActionEnd,this));
+        goldAni->runAction(Sequence::create(jumpByAct, NULL));
     }
     
 }
 
 void GameInfoUI::onHeartChange(cocos2d::EventCustom* sender)
 {
+    auto size = Director::getInstance()->getVisibleSize();
+    float scale = size.width /640.0f;
+    
     if (heartTv)
         heartTv->setString(localStorageGetItem(USER_HEART_NUM));
     if (heartAni) {
         heartAni->setVisible(true);
-        JumpBy* jumpByAct = JumpBy::create(0.2, Vec2::ZERO, 50, 1);
-        CallFunc* fun = CallFunc::create(CC_CALLBACK_0(GameInfoUI::goldActionEnd,this));
-        heartAni->runAction(Sequence::create(jumpByAct,fun, NULL));
+        JumpBy* jumpByAct = JumpBy::create(0.2, Vec2::ZERO, 40*scale, 1);
+//        CallFunc* fun = CallFunc::create(CC_CALLBACK_0(GameInfoUI::goldActionEnd,this));
+        heartAni->runAction(Sequence::create(jumpByAct, NULL));
     }
 }
-void GameInfoUI::heartActionEnd()
-{
-    if (heartAni) {
-        heartAni->setVisible(false);
-    }
-}
+
 
 
 

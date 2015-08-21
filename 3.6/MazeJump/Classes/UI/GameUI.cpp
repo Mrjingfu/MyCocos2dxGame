@@ -297,7 +297,6 @@ void GameUI::onDelayTimeRunnerLose()
 }
 void GameUI::onShowLosePopUpEnd()
 {
-    isDead = false;
     NativeBridge::getInstance()->playInterstitialAds();
 }
 void GameUI::onShopBuyGold(cocos2d::Ref *ref)
@@ -321,6 +320,10 @@ void GameUI::onShopBuyHeart(cocos2d::Ref *ref)
     isTouchShopBuy = true;
     UIManager::getInstance()->playBtnSound();
     UIManager::getInstance()->addPopUp(BasePopUpUI::POPUP_SHOP);
+    ShopPopUpUI* shopPopUi = static_cast<ShopPopUpUI*>(UIManager::getInstance()->getPopUpUI(BasePopUpUI::POPUP_SHOP));
+    if (shopPopUi) {
+        shopPopUi->setShopDisplay(ShopPopUpUI::SHOP_HEART);
+    }
     UIManager::getInstance()->showPopUp(true,BasePopUpUI::POPUP_HORIZONTAL,CC_CALLBACK_0(GameUI::setPause, this));
 }
 void GameUI::onShopBuyEvenet(cocos2d::EventCustom *sender)

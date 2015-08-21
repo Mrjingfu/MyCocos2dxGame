@@ -11,6 +11,7 @@
 #include "MainScene.h"
 #include "UIManager.h"
 #include "MenuScene.h"
+#include "ShopPopUpUI.h"
 #include "SdkBoxManager.h"
 #include "storage/local-storage/LocalStorage.h"
 #include "NativeBridge.h"
@@ -173,6 +174,10 @@ void StarPopUpUI::onResumeGame(cocos2d::Ref *ref)
     {
         CCLOG("Shop");
         UIManager::getInstance()->addPopUp(BasePopUpUI::POPUP_SHOP);
+        ShopPopUpUI* shopPopup = static_cast<ShopPopUpUI*>(UIManager::getInstance()->getPopUpUI(BasePopUpUI::POPUP_SHOP));
+        if (shopPopup) {
+            shopPopup->setShopDisplay(ShopPopUpUI::SHOP_HEART);
+        }
         UIManager::getInstance()->showPopUp(false);
     }
     

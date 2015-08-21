@@ -12,6 +12,7 @@
 #include "MenuScene.h"
 #include "RunController.h"
 #include "UIManager.h"
+#include "ShopPopUpUI.h"
 #include "SdkBoxManager.h"
 #include "storage/local-storage/LocalStorage.h"
 USING_NS_CC;
@@ -117,6 +118,10 @@ void DeathPopUpUI::onRevive(cocos2d::Ref *ref)
     }else
     {
         UIManager::getInstance()->addPopUp(BasePopUpUI::POPUP_SHOP);
+        ShopPopUpUI* shopPopup = static_cast<ShopPopUpUI*>(UIManager::getInstance()->getPopUpUI(BasePopUpUI::POPUP_SHOP));
+        if (shopPopup) {
+            shopPopup->setShopDisplay(ShopPopUpUI::SHOP_HEART);
+        }
         UIManager::getInstance()->showPopUp(false);
     }
     

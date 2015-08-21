@@ -152,8 +152,8 @@ bool GameController::createMap(bool _playing,int level)
     m_pMainLayer->addChild(m_pGroundLayer);
     
    
-    m_pMainCamera->setPosition3D(Vec3(0,-m_pGroundLayer->getGroundRadius()*2.5f*cosf(M_PI),m_pGroundLayer->getGroundRadius()*2.5f*sinf(M_PI/7)) + m_pGroundLayer->getOffset());
-    m_pMainCamera->lookAt(m_pGroundLayer->getPosition3D() + m_pGroundLayer->getOffset());
+    m_pMainCamera->setPosition3D(Vec3(0,-m_pGroundLayer->getGroundRadius()*2.5f*cosf(M_PI),m_pGroundLayer->getGroundRadius()*2.5f*sinf(M_PI/4)) + m_pGroundLayer->getOffset());
+    m_pMainCamera->lookAt(m_pGroundLayer->getPosition3D() + m_pGroundLayer->getOffset()+Vec3(0,0,15));
 
     m_pMainCamera->setCameraFlag(CameraFlag::USER1);
     m_pGroundLayer->setCamera(m_pMainCamera);
