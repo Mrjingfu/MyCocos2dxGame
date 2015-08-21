@@ -316,8 +316,14 @@ void UIManager::destory()
 {
     if (m_popUps.size() > 0) {
         for (int i =0; i< m_popUps.size(); i++) {
-            removePopUp(false,m_popUps.at(i));
+            BasePopUpUI* popup = m_popUps.at(i);
+            if(popup && popup->getReferenceCount() > 0)
+            {
+                popup->removeFromParentAndCleanup(true);
+                popup = nullptr;
+            }
         }
+        m_popUps.clear();
     }
     
     if (m_gameUiId == UI_GAME) {
