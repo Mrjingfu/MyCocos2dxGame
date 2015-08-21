@@ -168,7 +168,7 @@ void StarPopUpUI::onResumeGame(cocos2d::Ref *ref)
         isContinue = true;
         UIManager::getInstance()->hidePopUp(true,CC_CALLBACK_0(StarPopUpUI::onHidePop, this));
 #if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID )
-        SdkBoxManager::getInstance()->logEvent("Game Continue", "Revive", "Heart cost", 5);
+        SdkBoxManager::getInstance()->logEvent("Game Continue", "Continue", "Heart cost", 5);
 #endif
     }else
     {
