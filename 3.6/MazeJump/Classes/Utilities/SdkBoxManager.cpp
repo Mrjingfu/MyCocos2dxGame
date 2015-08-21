@@ -67,30 +67,45 @@ void SdkBoxManager::onSuccess(const sdkbox::Product& p)
         localStorageSetItem(USER_GOLD_NUM, Value(currentGold).asString());
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PURCHASE_GOLD_OK);
         AudioEngine::play2d("pickupgold.wav");
+#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID )
+        SdkBoxManager::getInstance()->logEvent("Purchase", "Purchase GOLD", PURCHASE_ID1, 1);
+#endif
     }
     else if (p.name == PURCHASE_ID2) {
         currentGold += Value(localStorageGetItem(PURCHASE_ID2)).asInt();
         localStorageSetItem(USER_GOLD_NUM, Value(currentGold).asString());
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PURCHASE_GOLD_OK);
         AudioEngine::play2d("pickupgold.wav");
+#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID )
+        SdkBoxManager::getInstance()->logEvent("Purchase", "Purchase GOLD", PURCHASE_ID2, 1);
+#endif
     }
     else if (p.name == PURCHASE_ID3) {
         currentGold += Value(localStorageGetItem(PURCHASE_ID3)).asInt();
         localStorageSetItem(USER_GOLD_NUM, Value(currentGold).asString());
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PURCHASE_GOLD_OK);
         AudioEngine::play2d("pickupgold.wav");
+#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID )
+        SdkBoxManager::getInstance()->logEvent("Purchase", "Purchase GOLD", PURCHASE_ID3, 1);
+#endif
     }
     else if (p.name == PURCHASE_ID4) {
         currentGold += Value(localStorageGetItem(PURCHASE_ID4)).asInt();
         localStorageSetItem(USER_GOLD_NUM, Value(currentGold).asString());
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PURCHASE_GOLD_OK);
         AudioEngine::play2d("pickupgold.wav");
+#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID )
+        SdkBoxManager::getInstance()->logEvent("Purchase", "Purchase GOLD", PURCHASE_ID4, 1);
+#endif
     }
     else if (p.name == PURCHASE_ID5) {
         currentGold += Value(localStorageGetItem(PURCHASE_ID5)).asInt();
         localStorageSetItem(USER_GOLD_NUM, Value(currentGold).asString());
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PURCHASE_GOLD_OK);
         AudioEngine::play2d("pickupgold.wav");
+#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID )
+        SdkBoxManager::getInstance()->logEvent("Purchase", "Purchase GOLD", PURCHASE_ID5, 1);
+#endif
     }
     else if (p.name == PURCHASE_ID6) {
         CCLOG("Remove Ads");
@@ -98,6 +113,9 @@ void SdkBoxManager::onSuccess(const sdkbox::Product& p)
         NativeBridge::getInstance()->hideAdsView();
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PURCHASE_REMOVEADS_OK);
         AudioEngine::play2d("mazejump_sucess.wav", false, 0.5f);
+#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID )
+        SdkBoxManager::getInstance()->logEvent("Purchase", "Purchase ADS", "Purchase", 1);
+#endif
     }
 }
 void SdkBoxManager::onFailure(const sdkbox::Product& p, const std::string& msg)
@@ -121,6 +139,10 @@ void SdkBoxManager::onRestored(const sdkbox::Product& p)
         localStorageSetItem("RemoveAds", "true");
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PURCHASE_REMOVEADS_OK);
         AudioEngine::play2d("mazejump_sucess.wav", false, 0.5f);
+        
+#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID )
+        SdkBoxManager::getInstance()->logEvent("Purchase", "Purchase ADS", "Restore", 1);
+#endif
     }
 }
 void SdkBoxManager::onProductRequestSuccess(const std::vector<sdkbox::Product>& products)
@@ -158,7 +180,10 @@ void SdkBoxManager::logScreen(std::string title)
 }
 void SdkBoxManager::logEvent(std::string eventCategory, std::string eventAction, std::string eventLabel, int value)
 {
-    sdkbox::PluginGoogleAnalytics::logEvent(eventCategory, eventAction, eventLabel, value);
+    std::string uuid = localStorageGetItem(USER_UUID);
+    std::string usereventCategory = uuid + ":";
+    
+    sdkbox::PluginGoogleAnalytics::logEvent(usereventCategory + eventCategory, eventAction, eventLabel, value);
 }
 void SdkBoxManager::logException(std::string exceptionDescription, bool isFatal)
 {

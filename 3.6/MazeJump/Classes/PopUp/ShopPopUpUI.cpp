@@ -516,6 +516,11 @@ void ShopPopUpUI::onProductHeart(cocos2d::Ref *Ref, int addHeartNum, int reduceG
         localStorageSetItem(USER_HEART_NUM, Value(Value(localStorageGetItem(USER_HEART_NUM)).asInt()+addHeartNum).asString());
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_HEART_CHANGE);
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_GOLD_CHANGE);
+        AudioEngine::play2d("pickupheart.wav");
+        
+#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID )
+        SdkBoxManager::getInstance()->logEvent("Purchase", "Purchase Heart", "Heart", addHeartNum);
+#endif
     }else
     {
         CCLOG("Shop");

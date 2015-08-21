@@ -18,6 +18,8 @@ static const std::string USER_DEFAULT_ROLE_ID = "UserDefaultRoleID";
 
 static const std::string USER_SELECT_ROLE_ID = "USER_SELECT_ROLE_ID";
 
+static const std::string USER_UUID = "USER_UUID";
+
 ///Font
 static std::string FONT_FXZS = "comic_sans_ms.ttf";
 

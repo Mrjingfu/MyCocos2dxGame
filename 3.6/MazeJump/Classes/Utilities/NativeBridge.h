@@ -22,6 +22,7 @@ public:
     virtual ~NativeBridge();
 #if CC_TARGET_PLATFORM == CC_PLATFORM_IOS
     void setRootViewController(RootViewController* viewController);
+    void openItunesURL();
 #endif
     
     void initAdmob();
@@ -32,7 +33,8 @@ public:
     void hideIndicatorView();
     
     void showRateAppView();
-    void openItunesURL();
+    
+    std::string generateUUID();
 private:
 #if CC_TARGET_PLATFORM == CC_PLATFORM_IOS
     RootViewController* mViewController;

@@ -4,6 +4,7 @@
 #include "GameConst.h"
 #include "UIManager.h"
 #include "storage/local-storage/LocalStorage.h"
+#include "NativeBridge.h"
 USING_NS_CC;
 using namespace experimental;
 AppDelegate::AppDelegate() {
@@ -59,8 +60,15 @@ bool AppDelegate::applicationDidFinishLaunching() {
     std::string path = FileUtils::getInstance()->getWritablePath() + "userdata.db";
     CCLOG("path:%s",path.c_str());
     localStorageInit(path);
+    std::string uuid = localStorageGetItem(USER_UUID);
+    if (uuid.empty()) {
+        uuid = NativeBridge::getInstance()->generateUUID();
+        CCASSERT(!uuid.empty(), "uuid generate must not be empty!");
+        localStorageSetItem(USER_UUID, uuid);
+    }
+
     std::string defualutRole = localStorageGetItem(USER_DEFAULT_ROLE_ID);
-    if (defualutRole.length()<=0) {
+    if (defualutRole.empty()) {
         localStorageSetItem(USER_DEFAULT_ROLE_ID, "role_girl1");
     }
     

@@ -47,4 +47,6 @@
 - (GADRequest *)createRequest;
 
 - (void) openItunesURL;
+
+- (NSString*) generateUUID;
 @end

@@ -31,6 +31,12 @@ void NativeBridge::setRootViewController(RootViewController* viewController)
 {
     mViewController = viewController;
 }
+void NativeBridge::openItunesURL()
+{
+    CCLOG("openItunesURL");
+    if(mViewController != nil)
+        [mViewController openItunesURL];
+}
 #endif
 void NativeBridge::initAdmob()
 {
@@ -112,11 +118,13 @@ void NativeBridge::showRateAppView()
     }
 #endif
 }
-void NativeBridge::openItunesURL()
+std::string NativeBridge::generateUUID()
 {
+    std::string ret;
 #if CC_TARGET_PLATFORM == CC_PLATFORM_IOS
-    CCLOG("openItunesURL");
+    CCLOG("generateUUID");
     if(mViewController != nil)
-       [mViewController openItunesURL];
+        ret = [[mViewController generateUUID] UTF8String];
 #endif
+    return ret;
 }

@@ -18,6 +18,8 @@
 #include "GameCenterController.h"
 #include "SdkBoxManager.h"
 #include "NativeBridge.h"
+#include "GameConst.h"
+#include "storage/local-storage/LocalStorage.h"
 USING_NS_CC;
 using namespace CocosDenshion;
 Scene* LogoScene::createScene()
@@ -87,6 +89,54 @@ void LogoScene::precache()
     SdkBoxManager::getInstance()->registerIAPListener();
     SdkBoxManager::getInstance()->registerGoogleAnalytics();
     NativeBridge::getInstance()->initAdmob();
+    
+    int gold = Value(localStorageGetItem(USER_GOLD_NUM)).asInt();
+    int heart = Value(localStorageGetItem(USER_HEART_NUM)).asInt();
+    int maxlevel = Value(localStorageGetItem(USER_MAX_LEVEL)).asInt();
+    
+    
+    if(gold >= 10000)
+        SdkBoxManager::getInstance()->logEvent("Game UserInfo", USER_GOLD_NUM, "more than 10000", gold);
+    else if(gold >= 3000)
+        SdkBoxManager::getInstance()->logEvent("Game UserInfo", USER_GOLD_NUM, "more than 3000", gold);
+    else if(gold >= 450)
+        SdkBoxManager::getInstance()->logEvent("Game UserInfo", USER_GOLD_NUM, "more than 450", gold);
+    
+    if(heart >= 100)
+        SdkBoxManager::getInstance()->logEvent("Game UserInfo", USER_HEART_NUM, "more than 100", heart);
+    else if(heart >= 50)
+        SdkBoxManager::getInstance()->logEvent("Game UserInfo", USER_HEART_NUM, "more than 50", heart);
+    else if(heart >= 10)
+        SdkBoxManager::getInstance()->logEvent("Game UserInfo", USER_HEART_NUM, "more than 10", heart);
+    
+    if(maxlevel >= 1000)
+        SdkBoxManager::getInstance()->logEvent("Game UserInfo", USER_MAX_LEVEL, "more than 1000", maxlevel);
+    else if(maxlevel >= 800)
+        SdkBoxManager::getInstance()->logEvent("Game UserInfo", USER_MAX_LEVEL, "more than 800", maxlevel);
+    else if(maxlevel >= 600)
+        SdkBoxManager::getInstance()->logEvent("Game UserInfo", USER_MAX_LEVEL, "more than 600", maxlevel);
+    else if(maxlevel >= 500)
+        SdkBoxManager::getInstance()->logEvent("Game UserInfo", USER_MAX_LEVEL, "more than 500", maxlevel);
+    else if(maxlevel >= 400)
+        SdkBoxManager::getInstance()->logEvent("Game UserInfo", USER_MAX_LEVEL, "more than 400", maxlevel);
+    else if(maxlevel >= 300)
+        SdkBoxManager::getInstance()->logEvent("Game UserInfo", USER_MAX_LEVEL, "more than 300", maxlevel);
+    else if(maxlevel >= 250)
+        SdkBoxManager::getInstance()->logEvent("Game UserInfo", USER_MAX_LEVEL, "more than 250", maxlevel);
+    else if(maxlevel >= 200)
+        SdkBoxManager::getInstance()->logEvent("Game UserInfo", USER_MAX_LEVEL, "more than 200", maxlevel);
+    else if(maxlevel >= 150)
+        SdkBoxManager::getInstance()->logEvent("Game UserInfo", USER_MAX_LEVEL, "more than 150", maxlevel);
+    else if(maxlevel >= 100)
+        SdkBoxManager::getInstance()->logEvent("Game UserInfo", USER_MAX_LEVEL, "more than 100", maxlevel);
+    else if(maxlevel >= 50)
+        SdkBoxManager::getInstance()->logEvent("Game UserInfo", USER_MAX_LEVEL, "more than 50", maxlevel);
+    else if(maxlevel >= 30)
+        SdkBoxManager::getInstance()->logEvent("Game UserInfo", USER_MAX_LEVEL, "more than 30", maxlevel);
+    else if(maxlevel >= 20)
+        SdkBoxManager::getInstance()->logEvent("Game UserInfo", USER_MAX_LEVEL, "more than 20", maxlevel);
+    else if(maxlevel >= 10)
+        SdkBoxManager::getInstance()->logEvent("Game UserInfo", USER_MAX_LEVEL, "more than 10", maxlevel);
 #endif
     
     if(!PatternsManager::getInstance()->init("patterns.plist"))

@@ -181,7 +181,7 @@ bool RolePopUpUI::init()
     }
     
 
-    ui::Button* backButton = cocos2d::ui::Button::create("btn_scrollback_normal.png","btn_scrollback_pressed.png");
+    cocos2d::ui::Button* backButton = cocos2d::ui::Button::create("btn_scrollback_normal.png","btn_scrollback_pressed.png");
     backButton->setAnchorPoint(Vec2::ANCHOR_MIDDLE_TOP);
     backButton->setScale(scale);
     backButton->setPosition(Vec2(backButton->getContentSize().width*0.5*scale, size.height*0.6));

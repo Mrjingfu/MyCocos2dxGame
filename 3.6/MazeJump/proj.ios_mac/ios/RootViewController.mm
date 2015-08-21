@@ -235,7 +235,9 @@
         NSLog(@"RateThisAppDialog :: Failed to open URL (this is normal in the iOS Simulator ...)");
     }
 }
-
+- (NSString*) generateUUID {
+    return [[NSUUID UUID] UUIDString];
+}
 #pragma mark GADBannerViewDelegate impl
 
 - (void)adViewDidReceiveAd:(GADBannerView *)adView {
