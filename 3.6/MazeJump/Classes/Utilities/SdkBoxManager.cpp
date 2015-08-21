@@ -10,7 +10,9 @@
 #include "GameConst.h"
 #include "NativeBridge.h"
 #include "storage/local-storage/LocalStorage.h"
+#include "AudioEngine.h"
 USING_NS_CC;
+using namespace experimental;
 
 SdkBoxManager* g_pSdkBoxManagerInstance = nullptr;
 SdkBoxManager* SdkBoxManager::getInstance()
@@ -59,49 +61,56 @@ void SdkBoxManager::onSuccess(const sdkbox::Product& p)
 {
     CCLOG("Purchase Success: %s", p.id.c_str());
     NativeBridge::getInstance()->hideIndicatorView();
-    
     int currentGold = Value(localStorageGetItem(USER_GOLD_NUM)).asInt();
     if (p.name == PURCHASE_ID1) {
         currentGold += Value(localStorageGetItem(PURCHASE_ID1)).asInt();
         localStorageSetItem(USER_GOLD_NUM, Value(currentGold).asString());
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PURCHASE_GOLD_OK);
+        AudioEngine::play2d("pickupgold.wav");
     }
     else if (p.name == PURCHASE_ID2) {
         currentGold += Value(localStorageGetItem(PURCHASE_ID2)).asInt();
         localStorageSetItem(USER_GOLD_NUM, Value(currentGold).asString());
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PURCHASE_GOLD_OK);
+        AudioEngine::play2d("pickupgold.wav");
     }
     else if (p.name == PURCHASE_ID3) {
         currentGold += Value(localStorageGetItem(PURCHASE_ID3)).asInt();
         localStorageSetItem(USER_GOLD_NUM, Value(currentGold).asString());
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PURCHASE_GOLD_OK);
+        AudioEngine::play2d("pickupgold.wav");
     }
     else if (p.name == PURCHASE_ID4) {
         currentGold += Value(localStorageGetItem(PURCHASE_ID4)).asInt();
         localStorageSetItem(USER_GOLD_NUM, Value(currentGold).asString());
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PURCHASE_GOLD_OK);
+        AudioEngine::play2d("pickupgold.wav");
     }
     else if (p.name == PURCHASE_ID5) {
         currentGold += Value(localStorageGetItem(PURCHASE_ID5)).asInt();
         localStorageSetItem(USER_GOLD_NUM, Value(currentGold).asString());
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PURCHASE_GOLD_OK);
+        AudioEngine::play2d("pickupgold.wav");
     }
     else if (p.name == PURCHASE_ID6) {
         CCLOG("Remove Ads");
         localStorageSetItem("RemoveAds", "true");
         NativeBridge::getInstance()->hideAdsView();
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PURCHASE_REMOVEADS_OK);
+        AudioEngine::play2d("mazejump_sucess.wav", false, 0.5f);
     }
 }
 void SdkBoxManager::onFailure(const sdkbox::Product& p, const std::string& msg)
 {
     CCLOG("Purchase Failed: %s", msg.c_str());
     NativeBridge::getInstance()->hideIndicatorView();
+    AudioEngine::play2d("mazejump_failed.wav",false, 0.5f);
 }
 void SdkBoxManager::onCanceled(const sdkbox::Product& p)
 {
     CCLOG("Purchase Canceled: %s", p.id.c_str());
     NativeBridge::getInstance()->hideIndicatorView();
+    AudioEngine::play2d("mazejump_failed.wav",false, 0.5f);
 }
 void SdkBoxManager::onRestored(const sdkbox::Product& p)
 {
@@ -111,6 +120,7 @@ void SdkBoxManager::onRestored(const sdkbox::Product& p)
         CCLOG("Remove Ads");
         localStorageSetItem("RemoveAds", "true");
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PURCHASE_REMOVEADS_OK);
+        AudioEngine::play2d("mazejump_sucess.wav", false, 0.5f);
     }
 }
 void SdkBoxManager::onProductRequestSuccess(const std::vector<sdkbox::Product>& products)

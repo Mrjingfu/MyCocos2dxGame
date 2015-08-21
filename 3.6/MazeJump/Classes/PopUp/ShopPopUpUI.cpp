@@ -13,7 +13,9 @@
 #include "SdkBoxManager.h"
 #include "NativeBridge.h"
 #include "storage/local-storage/LocalStorage.h"
+#include "AudioEngine.h"
 USING_NS_CC;
+using namespace experimental;
 
 ShopPopUpUI* ShopPopUpUI::create()
 {
@@ -295,6 +297,7 @@ void ShopPopUpUI::onBuyHeart(cocos2d::Ref *ref)
         localStorageSetItem(USER_HEART_NUM, Value(Value(localStorageGetItem(USER_HEART_NUM)).asInt()+10).asString());
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_HEART_CHANGE);
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_GOLD_CHANGE);
+        AudioEngine::play2d("pickupheart.wav");
     }else
     {
         CCLOG("Shop");

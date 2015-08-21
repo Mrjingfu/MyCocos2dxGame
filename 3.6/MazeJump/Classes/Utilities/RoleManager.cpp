@@ -12,7 +12,9 @@
 #include "json/writer.h"
 #include "storage/local-storage/LocalStorage.h"
 #include "SdkBoxManager.h"
+#include "AudioEngine.h"
 USING_NS_CC;
+using namespace experimental;
 
 RoleManager* g_pRoleManagerInstance = nullptr;
 RoleManager::RoleManager()
@@ -305,6 +307,7 @@ void RoleManager::updateRoleLock(std::string roleId,bool _lock)
 #if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID )
     SdkBoxManager::getInstance()->logEvent("CharacterList", "unlock", roleId, (int)(_lock));
 #endif
+    AudioEngine::play2d("mazejump_sucess.wav", false, 0.5f);
 }
 std::string RoleManager::getDefaultRoleModel()
 {

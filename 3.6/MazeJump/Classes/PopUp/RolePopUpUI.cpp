@@ -13,8 +13,9 @@
 #include "ShopPopUpUI.h"
 #include "RoleManager.h"
 #include "storage/local-storage/LocalStorage.h"
+#include "AudioEngine.h"
 USING_NS_CC;
-
+using namespace experimental;
 RoleItem::RoleItem()
 {
     m_isLock = false;
@@ -137,25 +138,25 @@ bool RolePopUpUI::init()
     auto size = Director::getInstance()->getVisibleSize();
     float scale = size.width /640.0f;
     m_maskLayerBg->setVisible(false);
-    m_popupBgLayer = ui::ImageView::create("panel_characterlist.png");
+    m_popupBgLayer = cocos2d::ui::ImageView::create("panel_characterlist.png");
     m_popupBgLayer->setScale(scale);
     m_popupBgLayer->setPosition(Vec2(m_popupBgLayer->getContentSize().width*0.5*scale, size.height*0.7));
 
     m_dialogLayer->addChild(m_popupBgLayer);
     
     
-    ui::ListView* uiListView = cocos2d::ui::ListView::create();
+    cocos2d::ui::ListView* uiListView = cocos2d::ui::ListView::create();
     uiListView->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
     uiListView->setContentSize(cocos2d::Size(m_popupBgLayer->getContentSize().width-20*scale, m_popupBgLayer->getContentSize().height));
     uiListView->setPosition(Vec2(m_popupBgLayer->getContentSize().width*0.5*scale+10*scale, size.height*0.7));
-    uiListView->setDirection(ui::ScrollView::Direction::HORIZONTAL);
+    uiListView->setDirection(cocos2d::ui::ScrollView::Direction::HORIZONTAL);
     uiListView->setTouchEnabled(true);
     uiListView->setBounceEnabled(true);
     uiListView->setBackGroundImageScale9Enabled(true);
     uiListView->setItemsMargin(5*scale);
     uiListView->setScale(scale);
     uiListView->setGravity(cocos2d::ui::ListView::Gravity::CENTER_VERTICAL);
-    uiListView->addEventListener((ui::ListView::ccListViewCallback)CC_CALLBACK_2(RolePopUpUI::selectedItemEvent, this));
+    uiListView->addEventListener((cocos2d::ui::ListView::ccListViewCallback)CC_CALLBACK_2(RolePopUpUI::selectedItemEvent, this));
     m_dialogLayer->addChild(uiListView);
 
     
@@ -179,7 +180,7 @@ bool RolePopUpUI::init()
         
     }
     
-    ui::Button* backButton = cocos2d::ui::Button::create("btn_scrollback_normal.png","btn_scrollback_pressed.png");
+    cocos2d::ui::Button* backButton = cocos2d::ui::Button::create("btn_scrollback_normal.png","btn_scrollback_pressed.png");
     backButton->setScale(scale);
     backButton->setPosition(Vec2(backButton->getContentSize().width*0.5*scale, size.height*0.55));
     m_dialogLayer->addChild(backButton);
@@ -188,7 +189,7 @@ bool RolePopUpUI::init()
     m_dialogLayer->addChild(m_lockLayer);
     
     m_lockLayer->setPosition(Vec2(size.width, 0));
-    cocos2d::ui::Button* m_lockButton = ui::Button::create(UtilityHelper::getLocalString("UI_ROLE_BTN_LOCK_NORMAL"),UtilityHelper::getLocalString("UI_ROLE_BTN_LOCK_PRESSED"));
+    cocos2d::ui::Button* m_lockButton = cocos2d::ui::Button::create(UtilityHelper::getLocalString("UI_ROLE_BTN_LOCK_NORMAL"),UtilityHelper::getLocalString("UI_ROLE_BTN_LOCK_PRESSED"));
     m_lockButton->setScale(scale);
     m_lockButton->setPosition(Vec2(size.width-m_lockButton->getContentSize().width*0.5*scale, size.height*0.557));
     m_lockLayer->addChild(m_lockButton);
