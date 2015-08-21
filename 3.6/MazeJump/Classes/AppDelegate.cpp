@@ -76,7 +76,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     director->setDisplayStats(true);
 #else
     // turn off display FPS
-    director->setDisplayStats(true);
+    director->setDisplayStats(false);
 #endif
 
     // set FPS. the default value is 1.0/60 if you don't call this
