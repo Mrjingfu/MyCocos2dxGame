@@ -115,6 +115,8 @@
 		5542EEBC1B3943C600CD9496 /* GameScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5542EEBA1B3943C600CD9496 /* GameScene.cpp */; };
 		5542EEC21B395D3600CD9496 /* MenuScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5542EEB41B3942FE00CD9496 /* MenuScene.cpp */; };
 		5542EEC41B395D3600CD9496 /* GameScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5542EEBA1B3943C600CD9496 /* GameScene.cpp */; };
+		55488E551B87514700F5C30D /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 55488E531B87514700F5C30D /* Icon.png */; };
+		55488E561B87514700F5C30D /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 55488E541B87514700F5C30D /* Icon@2x.png */; };
 		554DD3A61B817B070069E4C5 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 554DD3A51B817B070069E4C5 /* GameKit.framework */; };
 		554DD3A81B817B100069E4C5 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 554DD3A71B817B100069E4C5 /* StoreKit.framework */; };
 		554DD3B11B8181D70069E4C5 /* NCSGameCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 554DD3B01B8181D70069E4C5 /* NCSGameCenter.m */; };
@@ -801,6 +803,8 @@
 		5542EEB51B3942FE00CD9496 /* MenuScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuScene.h; sourceTree = "<group>"; };
 		5542EEBA1B3943C600CD9496 /* GameScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameScene.cpp; sourceTree = "<group>"; };
 		5542EEBB1B3943C600CD9496 /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameScene.h; sourceTree = "<group>"; };
+		55488E531B87514700F5C30D /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		55488E541B87514700F5C30D /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		554DD3A51B817B070069E4C5 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.4.sdk/System/Library/Frameworks/GameKit.framework; sourceTree = DEVELOPER_DIR; };
 		554DD3A71B817B100069E4C5 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.4.sdk/System/Library/Frameworks/StoreKit.framework; sourceTree = DEVELOPER_DIR; };
 		554DD3AF1B8181D70069E4C5 /* NCSGameCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NCSGameCenter.h; path = ios/NCSGameCenter.h; sourceTree = SOURCE_ROOT; };
@@ -1359,6 +1363,8 @@
 		5087E77117EB970100C73F5D /* Icons */ = {
 			isa = PBXGroup;
 			children = (
+				55488E531B87514700F5C30D /* Icon.png */,
+				55488E541B87514700F5C30D /* Icon@2x.png */,
 				521A8E6219F0C34300D177D7 /* Default-667h@2x.png */,
 				521A8E6319F0C34300D177D7 /* Default-736h@3x.png */,
 				5087E77217EB970100C73F5D /* Default-568h@2x.png */,
@@ -1999,6 +2005,7 @@
 				55CECC2F1B70F97900434427 /* 1x1x1.c3b in Resources */,
 				ECAD6CB51B81705E0033E0DF /* pausetip_en.png in Resources */,
 				EC937B681B632C71008CFE60 /* 6x6-2.tmx in Resources */,
+				55488E561B87514700F5C30D /* Icon@2x.png in Resources */,
 				EC6E125A1B6735E200CAC4B5 /* 6x6-9.tmx in Resources */,
 				5510DE621B6B0E1A00C2FB15 /* 8x8x8.png in Resources */,
 				55A8F5B51B8355790051787A /* bear.png in Resources */,
@@ -2035,6 +2042,7 @@
 				EC224CD81B833509002EA1E8 /* mazejump_sucess.wav in Resources */,
 				EC3F330C1B64F3D70072775F /* 5x5-10.tmx in Resources */,
 				EC828CB01B7DF69300623B4B /* btn_unlock_normal_en.png in Resources */,
+				55488E551B87514700F5C30D /* Icon.png in Resources */,
 				ECE0D6871B6F337D00B5E416 /* english.plist in Resources */,
 				55AEF25C1B6C5CA700460B84 /* bird.c3b in Resources */,
 				EC7C203F1B7ED01000EECFBB /* btn_revive_en.png in Resources */,
