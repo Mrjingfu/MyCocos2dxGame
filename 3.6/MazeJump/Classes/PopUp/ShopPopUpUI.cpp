@@ -250,13 +250,13 @@ bool ShopPopUpUI::init()
     heartProductLayer->addChild(heart1_Btn);
     
     
-    cocos2d::Label* heart1_NumLabel = Label::createWithBMFont(UtilityHelper::getLocalString("FONT_NUMBER"),"+10");
+    cocos2d::Label* heart1_NumLabel = Label::createWithBMFont(UtilityHelper::getLocalString("FONT_NUMBER"),"+1");
     heart1_NumLabel->setAnchorPoint(Vec2::ANCHOR_MIDDLE_LEFT);
     heart1_NumLabel->setPosition(Vec2(size.width*0.4+15*scale, size.height*0.61+20*scale));
     heart1_NumLabel->setScale(scale*0.6);
     heartProductLayer->addChild(heart1_NumLabel);
     
-    cocos2d::Label* heartGold1_NumLabel = Label::createWithBMFont(UtilityHelper::getLocalString("FONT_NUMBER"),"-500");
+    cocos2d::Label* heartGold1_NumLabel = Label::createWithBMFont(UtilityHelper::getLocalString("FONT_NUMBER"),"-100");
     heartGold1_NumLabel->setPosition(Vec2(size.width*0.4+25*scale, size.height*0.61-18*scale));
     heartGold1_NumLabel->setScale(scale*0.6);
     heart1_NumLabel->setAnchorPoint(Vec2::ANCHOR_MIDDLE_LEFT);
@@ -270,13 +270,13 @@ bool ShopPopUpUI::init()
     heartProductLayer->addChild(heart2_Btn);
     
     
-    cocos2d::Label* heart2_NumLabel = Label::createWithBMFont(UtilityHelper::getLocalString("FONT_NUMBER"),"+20");
+    cocos2d::Label* heart2_NumLabel = Label::createWithBMFont(UtilityHelper::getLocalString("FONT_NUMBER"),"+5");
     heart2_NumLabel->setAnchorPoint(Vec2::ANCHOR_MIDDLE_LEFT);
     heart2_NumLabel->setPosition(Vec2(size.width*0.4+goldBuyBtn->getContentSize().width*scale+60*scale, size.height*0.61+20*scale));
     heart2_NumLabel->setScale(scale*0.6);
     heartProductLayer->addChild(heart2_NumLabel);
     
-    cocos2d::Label* heartGold2_NumLabel = Label::createWithBMFont(UtilityHelper::getLocalString("FONT_NUMBER"),"-1000");
+    cocos2d::Label* heartGold2_NumLabel = Label::createWithBMFont(UtilityHelper::getLocalString("FONT_NUMBER"),"-480");
     heartGold2_NumLabel->setAnchorPoint(Vec2::ANCHOR_MIDDLE_LEFT);
     heartGold2_NumLabel->setPosition(Vec2(size.width*0.4+goldBuyBtn->getContentSize().width*scale+45*scale, size.height*0.61-18*scale));
     heartGold2_NumLabel->setScale(scale*0.6);
@@ -288,13 +288,13 @@ bool ShopPopUpUI::init()
     heart3_Btn->setScale(scale*1.2);
     heartProductLayer->addChild(heart3_Btn);
     
-    cocos2d::Label* heart3_NumLabel = Label::createWithBMFont(UtilityHelper::getLocalString("FONT_NUMBER"),"+30");
+    cocos2d::Label* heart3_NumLabel = Label::createWithBMFont(UtilityHelper::getLocalString("FONT_NUMBER"),"+10");
     heart3_NumLabel->setAnchorPoint(Vec2::ANCHOR_MIDDLE_LEFT);
     heart3_NumLabel->setPosition(Vec2(size.width*0.4+15*scale, size.height*0.61-heartBuyBtn->getContentSize().width*scale-5*scale));
     heart3_NumLabel->setScale(scale*0.6);
     heartProductLayer->addChild(heart3_NumLabel);
     
-    cocos2d::Label* heartGold3_NumLabel = Label::createWithBMFont(UtilityHelper::getLocalString("FONT_NUMBER"),"-3000");
+    cocos2d::Label* heartGold3_NumLabel = Label::createWithBMFont(UtilityHelper::getLocalString("FONT_NUMBER"),"-900");
     heartGold3_NumLabel->setAnchorPoint(Vec2::ANCHOR_MIDDLE_LEFT);
     heartGold3_NumLabel->setPosition(Vec2(size.width*0.4-6*scale, size.height*0.61-heartBuyBtn->getContentSize().width*scale-48*scale));
     heartGold3_NumLabel->setScale(scale*0.6);
@@ -308,13 +308,13 @@ bool ShopPopUpUI::init()
     heartProductLayer->addChild(heart4_Btn);
 
     
-    cocos2d::Label* heart4_NumLabel = Label::createWithBMFont(UtilityHelper::getLocalString("FONT_NUMBER"),"+40");
+    cocos2d::Label* heart4_NumLabel = Label::createWithBMFont(UtilityHelper::getLocalString("FONT_NUMBER"),"+25");
     heart4_NumLabel->setAnchorPoint(Vec2::ANCHOR_MIDDLE_LEFT);
     heart4_NumLabel->setPosition(Vec2(size.width*0.4+coin2_Btn->getContentSize().width*scale+62*scale, size.height*0.61-heartBuyBtn->getContentSize().width*scale-10*scale ));
     heart4_NumLabel->setScale(scale*0.6);
     heartProductLayer->addChild(heart4_NumLabel);
     
-    cocos2d::Label* heartGold4_NumLabel = Label::createWithBMFont(UtilityHelper::getLocalString("FONT_NUMBER"),"-4000");
+    cocos2d::Label* heartGold4_NumLabel = Label::createWithBMFont(UtilityHelper::getLocalString("FONT_NUMBER"),"-2200");
     heartGold4_NumLabel->setAnchorPoint(Vec2::ANCHOR_MIDDLE_LEFT);
     heartGold4_NumLabel->setPosition(Vec2(size.width*0.4+coin2_Btn->getContentSize().width*scale+45*scale, size.height*0.61-heartBuyBtn->getContentSize().width*scale-48*scale ));
     heartGold4_NumLabel->setScale(scale*0.6);
@@ -333,7 +333,7 @@ bool ShopPopUpUI::init()
     heart5_NumLabel->setScale(scale*0.6);
     heartProductLayer->addChild(heart5_NumLabel);
     
-    cocos2d::Label* heartGold5_NumLabel = Label::createWithBMFont(UtilityHelper::getLocalString("FONT_NUMBER"),"-5000");
+    cocos2d::Label* heartGold5_NumLabel = Label::createWithBMFont(UtilityHelper::getLocalString("FONT_NUMBER"),"-4500");
     heartGold5_NumLabel->setPosition(Vec2(size.width*0.4+20*scale, size.height*0.61-goldBuyBtn->getContentSize().width*2*scale-78*scale ));
     heartGold5_NumLabel->setScale(scale*0.6);
     heartProductLayer->addChild(heartGold5_NumLabel);
@@ -360,11 +360,11 @@ bool ShopPopUpUI::init()
     coin4_Btn->addClickEventListener(CC_CALLBACK_1(ShopPopUpUI::onProduct, this,PURCHASE_ID4));
     coin5_Btn->addClickEventListener(CC_CALLBACK_1(ShopPopUpUI::onProduct, this,PURCHASE_ID5));
     
-    heart1_Btn->addClickEventListener(CC_CALLBACK_1(ShopPopUpUI::onProductHeart, this,10,1000));
-    heart2_Btn->addClickEventListener(CC_CALLBACK_1(ShopPopUpUI::onProductHeart, this,20,2000));
-    heart3_Btn->addClickEventListener(CC_CALLBACK_1(ShopPopUpUI::onProductHeart, this,30,3000));
-    heart4_Btn->addClickEventListener(CC_CALLBACK_1(ShopPopUpUI::onProductHeart, this,40,4000));
-    heart5_Btn->addClickEventListener(CC_CALLBACK_1(ShopPopUpUI::onProductHeart, this,50,5000));
+    heart1_Btn->addClickEventListener(CC_CALLBACK_1(ShopPopUpUI::onProductHeart, this,1,100));
+    heart2_Btn->addClickEventListener(CC_CALLBACK_1(ShopPopUpUI::onProductHeart, this,5,480));
+    heart3_Btn->addClickEventListener(CC_CALLBACK_1(ShopPopUpUI::onProductHeart, this,10,900));
+    heart4_Btn->addClickEventListener(CC_CALLBACK_1(ShopPopUpUI::onProductHeart, this,25,2200));
+    heart5_Btn->addClickEventListener(CC_CALLBACK_1(ShopPopUpUI::onProductHeart, this,50,4500));
     
     
     backBtn->addClickEventListener(CC_CALLBACK_1(ShopPopUpUI::onBackShop, this));
