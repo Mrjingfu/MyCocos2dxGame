@@ -105,7 +105,7 @@ bool GroundGameUI::init()
     helpLayer->addChild(handleTipsImg);
     
     cocos2d::ui::ImageView* ruleTipsImg = cocos2d::ui::ImageView::create(UtilityHelper::getLocalString("UI_GROUND_RULE_TIPS"));
-    ruleTipsImg->setPosition(Vec2(size.width*0.5, size.height*0.65));
+    ruleTipsImg->setPosition(Vec2(size.width*0.5, size.height*0.63));
     ruleTipsImg->setScale(scale);
     helpLayer->addChild(ruleTipsImg);
 

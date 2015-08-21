@@ -85,7 +85,7 @@ bool GroundWinPopUpUI::init()
     
    cocos2d::ui::Button* reviveBtn = cocos2d::ui::Button::create(UtilityHelper::getLocalString("UI_GROUND_BTN_SUC_BACK"));
     reviveBtn->setScale(scale);
-    reviveBtn->setPosition(Vec2(size.width*0.5,size.height*0.4));
+    reviveBtn->setPosition(Vec2(size.width*0.5,size.height*0.38));
     m_dialogLayer->addChild(reviveBtn);
     
     reviveBtn->addClickEventListener(CC_CALLBACK_1(GroundWinPopUpUI::onBack, this));

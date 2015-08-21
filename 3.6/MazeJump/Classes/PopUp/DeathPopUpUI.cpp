@@ -71,7 +71,7 @@ bool DeathPopUpUI::init()
     
     ui::Button* reviveBtn = cocos2d::ui::Button::create(UtilityHelper::getLocalString("UI_DEATH_BTN_REVICE"));
     reviveBtn->setScale(scale);
-    reviveBtn->setPosition(Vec2(size.width*0.5,size.height*0.4));
+    reviveBtn->setPosition(Vec2(size.width*0.5,size.height*0.38));
     m_dialogLayer->addChild(reviveBtn);
     
     

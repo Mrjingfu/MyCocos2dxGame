@@ -47,18 +47,21 @@ bool StarPopUpUI::init()
     m_dialogLayer->addChild(m_popupBgLayer);
     
     cocos2d::ui::ImageView* glodView = cocos2d::ui::ImageView::create("ui_gold.png");
+    glodView->setAnchorPoint(Vec2::ANCHOR_MIDDLE_LEFT);
     glodView->setPosition(Vec2(size.width*0.3,size.height*0.6));
     glodView->setScale(scale);
     m_dialogLayer->addChild(glodView);
     
     cocos2d::ui::ImageView* heartView = cocos2d::ui::ImageView::create("ui_heart.png");
+    heartView->setAnchorPoint(Vec2::ANCHOR_MIDDLE_LEFT);
     heartView->setPosition(Vec2(size.width*0.3,size.height*0.54));
     heartView->setScale(scale);
     m_dialogLayer->addChild(heartView);
     
     
     cocos2d::ui::ImageView* distanceView = cocos2d::ui::ImageView::create(UtilityHelper::getLocalString("UI_GAME_BEST_TV"));
-    distanceView->setPosition(Vec2(size.width*0.39,size.height*0.48));
+    distanceView->setAnchorPoint(Vec2::ANCHOR_MIDDLE_LEFT);
+    distanceView->setPosition(Vec2(size.width*0.3,size.height*0.48));
     distanceView->setScale(scale);
     m_dialogLayer->addChild(distanceView);
    
@@ -86,14 +89,14 @@ bool StarPopUpUI::init()
 
     
     cocos2d::ui::Button* playBtn = cocos2d::ui::Button::create(UtilityHelper::getLocalString("UI_START_BTN_NEW"));
-    playBtn->setPosition(Vec2(size.width*0.38, size.height*0.4));
+    playBtn->setPosition(Vec2(size.width*0.38, size.height*0.38));
     
     playBtn->setScale(scale*1.2);
     playBtn->addClickEventListener(CC_CALLBACK_1(StarPopUpUI::onPlayGame, this));
     m_dialogLayer->addChild(playBtn);
 
     cocos2d::ui::Button* resumeBtn = cocos2d::ui::Button::create(UtilityHelper::getLocalString("UI_START_BTN_CONTINUE"));
-    resumeBtn->setPosition(Vec2(size.width*0.38+playBtn->getContentSize().width*scale+40*scale,size.height*0.4));
+    resumeBtn->setPosition(Vec2(size.width*0.38+playBtn->getContentSize().width*scale+40*scale,size.height*0.38));
     resumeBtn->setScale(scale*1.2);
     resumeBtn->addClickEventListener(CC_CALLBACK_1(StarPopUpUI::onResumeGame, this));
 

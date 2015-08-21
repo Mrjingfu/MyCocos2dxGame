@@ -40,19 +40,19 @@ bool RoleManager::init()
         //对比
         ValueMap userRoles = parseValueMap(userRoleStr);
         ValueMap fileRoles = parseValueMap(roleStr);
-        for(std::unordered_map<std::string, Value>::iterator it = userRoles.begin(); it!=userRoles.end();)
-        {
-            std::string userRoleIdStr = it->first;
-            ValueMap userRoleMap = it->second.asValueMap();
-            auto userFindRoleIt = fileRoles.find(userRoleIdStr);
-            if (userFindRoleIt==fileRoles.end()) {
-                userRoles.erase(it++);
-            }else
-            {
-                ++it;
-            }
-           
-        }
+//        for(std::unordered_map<std::string, Value>::iterator it = userRoles.begin(); it!=userRoles.end();)
+//        {
+//            std::string userRoleIdStr = it->first;
+//            ValueMap userRoleMap = it->second.asValueMap();
+//            auto userFindRoleIt = fileRoles.find(userRoleIdStr);
+//            if (userFindRoleIt==fileRoles.end()) {
+//                userRoles.erase(it++);
+//            }else
+//            {
+//                ++it;
+//            }
+//           
+//        }
         
         for(std::unordered_map<std::string, Value>::iterator it = fileRoles.begin(); it!=fileRoles.end();it++)
         {

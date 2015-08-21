@@ -12,6 +12,7 @@
 #include "UIManager.h"
 #include "UtilityHelper.h"
 #include "ShopPopUpUI.h"
+#include "PausePopUpUI.h"
 #include "storage/local-storage/LocalStorage.h"
 #include "NativeBridge.h"
 USING_NS_CC;
@@ -156,12 +157,12 @@ bool GameUI::init()
     helpLayer->addChild(pauseTipsImg);
     
     cocos2d::ui::ImageView* infoTipsImg = cocos2d::ui::ImageView::create(UtilityHelper::getLocalString("UI_GAMEINFO_TIPS"));
-    infoTipsImg->setPosition(Vec2(size.width*0.18, size.height*0.8));
+    infoTipsImg->setPosition(Vec2(size.width*0.2, size.height*0.78));
     infoTipsImg->setScale(scale);
     helpLayer->addChild(infoTipsImg);
     
     cocos2d::ui::ImageView* modeTipsImg = cocos2d::ui::ImageView::create(UtilityHelper::getLocalString("UI_GAME_MODE_TIPS"));
-    modeTipsImg->setPosition(Vec2(size.width*0.23, size.height*0.15));
+    modeTipsImg->setPosition(Vec2(size.width*0.29, size.height*0.15));
     modeTipsImg->setScale(scale);
     helpLayer->addChild(modeTipsImg);
     
@@ -213,7 +214,14 @@ void GameUI::onPause(cocos2d::Ref *ref)
 
 void GameUI::onPauseEvent(cocos2d::EventCustom *sender)
 {
-    showPause();
+    if (isDead)
+        return;
+    if(isTouchShopBuy)
+        return;
+    PausePopUpUI* pausePopUp = static_cast<PausePopUpUI*>(UIManager::getInstance()->getPopUpUI(BasePopUpUI::POPUP_PAUSE));
+    if (!pausePopUp) {
+       showPause();
+    }
 }
 
 void GameUI::showPause()
@@ -274,7 +282,7 @@ void GameUI::onResumeAn(float dt)
             unschedule(schedule_selector(GameUI::onResumeAn));
     }
     else
-        m_countDonwImg->loadTexture(StringUtils::format("ui_count_down_%d.png",--m_conut));
+        m_countDonwImg->loadTexture(StringUtils::format("ui_count_down_%d.png",m_conut--));
 }
 void GameUI::onRunnerLose(cocos2d::EventCustom* sender)
 {
@@ -294,6 +302,8 @@ void GameUI::onShowLosePopUpEnd()
 }
 void GameUI::onShopBuyGold(cocos2d::Ref *ref)
 {
+    if (isDead)
+        return;
     isTouchShopBuy = true;
     UIManager::getInstance()->playBtnSound();
     UIManager::getInstance()->addPopUp(BasePopUpUI::POPUP_SHOP);
@@ -306,6 +316,8 @@ void GameUI::onShopBuyGold(cocos2d::Ref *ref)
 }
 void GameUI::onShopBuyHeart(cocos2d::Ref *ref)
 {
+    if (isDead)
+        return;
     isTouchShopBuy = true;
     UIManager::getInstance()->playBtnSound();
     UIManager::getInstance()->addPopUp(BasePopUpUI::POPUP_SHOP);

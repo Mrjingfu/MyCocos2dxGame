@@ -180,8 +180,9 @@ bool RolePopUpUI::init()
     }
     
     ui::Button* backButton = cocos2d::ui::Button::create("btn_scrollback_normal.png","btn_scrollback_pressed.png");
+    backButton->setAnchorPoint(Vec2::ANCHOR_MIDDLE_TOP);
     backButton->setScale(scale);
-    backButton->setPosition(Vec2(backButton->getContentSize().width*0.5*scale, size.height*0.55));
+    backButton->setPosition(Vec2(backButton->getContentSize().width*0.5*scale, size.height*0.6));
     m_dialogLayer->addChild(backButton);
     
     m_lockLayer = Layer::create();
@@ -190,11 +191,13 @@ bool RolePopUpUI::init()
     m_lockLayer->setPosition(Vec2(size.width, 0));
     cocos2d::ui::Button* m_lockButton = ui::Button::create(UtilityHelper::getLocalString("UI_ROLE_BTN_LOCK_NORMAL"),UtilityHelper::getLocalString("UI_ROLE_BTN_LOCK_PRESSED"));
     m_lockButton->setScale(scale);
-    m_lockButton->setPosition(Vec2(size.width-m_lockButton->getContentSize().width*0.5*scale, size.height*0.557));
+    m_lockButton->setAnchorPoint(Vec2::ANCHOR_MIDDLE_TOP);
+    m_lockButton->setPosition(Vec2(size.width-m_lockButton->getContentSize().width*0.5*scale, size.height*0.6));
     m_lockLayer->addChild(m_lockButton);
     
     m_lockTv = Label::createWithBMFont(UtilityHelper::getLocalString("FONT_NUMBER"),Value(Value(localStorageGetItem(USER_GOLD_NUM)).asInt()).asString());
-    m_lockTv->setPosition(Vec2(size.width-60*scale, size.height*0.55));
+    m_lockTv->setAnchorPoint(Vec2::ANCHOR_MIDDLE_TOP);
+    m_lockTv->setPosition(Vec2(size.width-60*scale, size.height*0.575));
     m_lockTv->setScale(scale);
     m_lockLayer->addChild(m_lockTv);
     

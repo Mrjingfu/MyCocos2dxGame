@@ -178,7 +178,7 @@ void GameInfoUI::onGoldChange(cocos2d::EventCustom* sender)
         goldTv->setString(localStorageGetItem(USER_GOLD_NUM));
     if (goldAni) {
         goldAni->setVisible(true);
-        JumpBy* jumpByAct = JumpBy::create(0.2, Vec2::ZERO, 30, 1);
+        JumpBy* jumpByAct = JumpBy::create(0.2, Vec2::ZERO, 50, 1);
         CallFunc* fun = CallFunc::create(CC_CALLBACK_0(GameInfoUI::goldActionEnd,this));
         goldAni->runAction(Sequence::create(jumpByAct,fun, NULL));
     }
@@ -198,7 +198,7 @@ void GameInfoUI::onHeartChange(cocos2d::EventCustom* sender)
         heartTv->setString(localStorageGetItem(USER_HEART_NUM));
     if (heartAni) {
         heartAni->setVisible(true);
-        JumpBy* jumpByAct = JumpBy::create(0.2, Vec2::ZERO, 30, 1);
+        JumpBy* jumpByAct = JumpBy::create(0.2, Vec2::ZERO, 50, 1);
         CallFunc* fun = CallFunc::create(CC_CALLBACK_0(GameInfoUI::goldActionEnd,this));
         heartAni->runAction(Sequence::create(jumpByAct,fun, NULL));
     }

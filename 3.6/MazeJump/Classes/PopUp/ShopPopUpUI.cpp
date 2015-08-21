@@ -158,17 +158,22 @@ bool ShopPopUpUI::init()
     coin1_gold_NumLabel->setScale(scale*0.7);
     goldProductLayer->addChild(coin1_gold_NumLabel);
 
-     std::string conin1 = "6";
-     std::string conin2 = "18";
-     std::string conin3 = "30";
-     std::string conin4 = "68";
-     std::string conin5 = "128";
+    
+    
+     std::string conin1 ;
+     std::string conin2 ;
+     std::string conin3 ;
+     std::string conin4 ;
+     std::string conin5;
 #if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID )
-    conin1=SdkBoxManager::getInstance()->getProducts().at(0).price;
-    conin2=SdkBoxManager::getInstance()->getProducts().at(1).price;
-    conin3=SdkBoxManager::getInstance()->getProducts().at(2).price;
-    conin4=SdkBoxManager::getInstance()->getProducts().at(3).price;
-    conin5=SdkBoxManager::getInstance()->getProducts().at(4).price;
+    if (SdkBoxManager::getInstance()->getProducts().size()>=5) {
+        conin1=SdkBoxManager::getInstance()->getProducts().at(0).price;
+        conin2=SdkBoxManager::getInstance()->getProducts().at(1).price;
+        conin3=SdkBoxManager::getInstance()->getProducts().at(2).price;
+        conin4=SdkBoxManager::getInstance()->getProducts().at(3).price;
+        conin5=SdkBoxManager::getInstance()->getProducts().at(4).price;
+    }
+
 #endif
     cocos2d::Label* coin1_money_NumLabel = Label::createWithSystemFont(conin1, FONT_FXZS, 30);
     coin1_money_NumLabel->setPosition(Vec2(size.width*0.4+5*scale, size.height*0.61-18*scale));
@@ -234,7 +239,7 @@ bool ShopPopUpUI::init()
     goldProductLayer->addChild(coin5_gold_NumLabel);
     
     cocos2d::Label* coin5_money_NumLabel = Label::createWithSystemFont(conin5, FONT_FXZS, 30);
-    coin5_money_NumLabel->setPosition(Vec2(size.width*0.4+5*scale, size.height*0.61-heartBuyBtn->getContentSize().width*2*scale-83*scale));
+    coin5_money_NumLabel->setPosition(Vec2(size.width*0.4, size.height*0.61-heartBuyBtn->getContentSize().width*2*scale-83*scale));
     coin5_money_NumLabel->setScale(scale*0.8);
     goldProductLayer->addChild(coin5_money_NumLabel);
     
