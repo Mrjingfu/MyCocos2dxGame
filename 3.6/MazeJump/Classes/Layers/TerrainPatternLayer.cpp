@@ -390,7 +390,7 @@ void TerrainPatternLayer::generateDecorator(TerrainCell* cell, int patternIndex)
         {
             float percent1 = 0.005*patternIndex;
             float percent2 = 0.0001*patternIndex;
-            float percent3 = 0.001*patternIndex;
+            float percent3 = 0.005*patternIndex;
             float percent4 = 1.0 - percent1 - percent2 - percent3;
             AlisaMethod* am = AlisaMethod::create(percent1,percent2,percent3,percent4,-1.0, NULL);
             if(am)
@@ -441,7 +441,7 @@ void TerrainPatternLayer::generateDecorator(TerrainCell* cell, int patternIndex)
             float percent1 = 0.005*patternIndex;
             float percent2 = 0.0001*patternIndex;
             float percent3 = 0.0005*patternIndex;
-            float percent4 = 0.001*patternIndex;
+            float percent4 = 0.005*patternIndex;
             float percent5 = 1.0 - percent1 - percent2 - percent3 - percent4;
             AlisaMethod* am = AlisaMethod::create(percent1,percent2,percent3,percent4,percent5,-1.0, NULL);
             if(am)

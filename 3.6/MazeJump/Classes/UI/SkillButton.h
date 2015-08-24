@@ -22,7 +22,8 @@ public:
     virtual void onExit();
     
 private:
-    void onRainbowValueChange(cocos2d::EventCustom* sender);
+    void onRainbowColumnValueChange(cocos2d::EventCustom* sender);
+    void onRainbowRowValueChange(cocos2d::EventCustom* sender);
     bool onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event);
 private:
     cocos2d::Node*          m_pRootNode;

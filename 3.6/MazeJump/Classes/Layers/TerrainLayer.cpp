@@ -116,13 +116,20 @@ void TerrainLayer::setCurrentColumn( int column )
             return;
         if(m_nCurrentPatternNum%10 == 1)
             return;
-        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_RAINBOW_VALUE_CHANGE);
+        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_RAINBOW_COLUMN_VALUE_CHANGE);
     }
 }
 void TerrainLayer::setCurrentRow( int row )
 {
     if(m_nRow != row)
+    {
         m_nRow = row;
+        if(m_nCurrentPatternNum == 0)
+            return;
+        if(m_nCurrentPatternNum%10 == 1)
+            return;
+        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_RAINBOW_ROW_VALUE_CHANGE);
+    }
 }
 bool TerrainLayer::checkRunnerDrop()
 {
