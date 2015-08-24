@@ -12,12 +12,12 @@ LOCAL_MODULE := cocos2dcpp_shared
 LOCAL_MODULE_FILENAME := libcocos2dcpp
 
 # 遍历目录及子目录的函数
-
-
-
+define walk
+  $(wildcard $(1)) $(foreach e, $(wildcard $(1)/*), $(call walk, $(e)))
+endef
 
 # 遍历Classes目录
-ALLFILES := $(call walk, $(LOCAL_PATH)/../../Classes)
+ALLFILES = $(call walk, $(LOCAL_PATH)/../../Classes)
 
 FILE_LIST := hellocpp/main.cpp
 # 从所有文件中提取出所有.cpp文件

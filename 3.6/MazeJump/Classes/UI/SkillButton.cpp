@@ -51,7 +51,7 @@ bool SkillButton::init(const std::string& btnTex, const std::string& maskTex,  c
     if(!m_pRootNode)
         return false;
     addChild(m_pRootNode);
-    m_pBtnSprite = HueSprite::create(btnTex);
+    m_pBtnSprite = HueSprite::createWithSpriteFrameName(btnTex);
     if(!m_pBtnSprite)
         return false;
     //m_pBtnSprite->setHue(M_PI);
@@ -77,7 +77,7 @@ bool SkillButton::init(const std::string& btnTex, const std::string& maskTex,  c
     m_pProgressTimer->setPercentage(m_fCurrentRainbowValue);
     m_pRootNode->addChild(m_pProgressTimer);
     
-    m_pMaskSprite = Sprite::create(maskTex);
+    m_pMaskSprite = Sprite::createWithSpriteFrameName(maskTex);
     if(!m_pMaskSprite)
         return false;
     m_pMaskSprite->setAnchorPoint(Vec2(0,0));

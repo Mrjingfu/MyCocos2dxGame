@@ -70,13 +70,13 @@ bool GameUI::init()
     float scale = size.width /640.0f;
     
     
-    cocos2d::ui::Button* goldBuyBtn = cocos2d::ui::Button::create("btn_plus_normal.png","btn_plus_pressed.png");
+    cocos2d::ui::Button* goldBuyBtn = cocos2d::ui::Button::create("btn_plus_normal.png","btn_plus_pressed.png","",cocos2d::ui::TextureResType::PLIST);
     goldBuyBtn->setPosition(Vec2(25*scale, size.height*0.95));
     goldBuyBtn->setScale(scale);
     addChild(goldBuyBtn);
     
     
-    cocos2d::ui::Button* heartBuyBtn = cocos2d::ui::Button::create("btn_plus_normal.png","btn_plus_pressed.png");
+    cocos2d::ui::Button* heartBuyBtn = cocos2d::ui::Button::create("btn_plus_normal.png","btn_plus_pressed.png","",cocos2d::ui::TextureResType::PLIST);
     heartBuyBtn->setPosition(Vec2(25*scale, size.height*0.95-50*scale));
     heartBuyBtn->setScale(scale);
     addChild(heartBuyBtn);
@@ -86,7 +86,7 @@ bool GameUI::init()
     
     heartBuyBtn->addClickEventListener(CC_CALLBACK_1(GameUI::onShopBuyHeart, this));
     
-    pauseImg = cocos2d::ui::Button::create("btn_pause_normal.png","btn_pause_pressed.png");
+    pauseImg = cocos2d::ui::Button::create("btn_pause_normal.png","btn_pause_pressed.png","",cocos2d::ui::TextureResType::PLIST);
     pauseImg->setPosition(Vec2(size.width*0.9, size.height*0.93));
     pauseImg->setScale(scale);
     addChild(pauseImg);
@@ -99,7 +99,7 @@ bool GameUI::init()
     skillBtn->setScale(scale);
     addChild(skillBtn);
     
-    cocos2d::ui::Button* helpBtn = cocos2d::ui::Button::create("ui_question.png");
+    cocos2d::ui::Button* helpBtn = cocos2d::ui::Button::create("ui_question.png","","",cocos2d::ui::TextureResType::PLIST);
     helpBtn->setPosition(Vec2(size.width*0.93, size.height*0.03));
     helpBtn->setScale(scale);
     addChild(helpBtn);
@@ -115,7 +115,7 @@ bool GameUI::init()
     
     Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener,m_maskLayerBg);
     
-    m_countDonwImg = cocos2d::ui::ImageView::create(StringUtils::format("ui_count_down_%d.png",m_conut));
+    m_countDonwImg = cocos2d::ui::ImageView::create(StringUtils::format("ui_count_down_%d.png",m_conut),cocos2d::ui::TextureResType::PLIST);
     m_countDonwImg->setScale(scale);
     m_countDonwImg->setPosition(Vec2(size.width*0.5, size.height*0.5));
     m_countDonwImg->setVisible(false);
@@ -146,27 +146,27 @@ bool GameUI::init()
     
 
     
-    cocos2d::ui::ImageView* handleTipsImg = cocos2d::ui::ImageView::create(UtilityHelper::getLocalString("UI_GAME_HANDLE_TIPS"));
+    cocos2d::ui::ImageView* handleTipsImg = cocos2d::ui::ImageView::create(UtilityHelper::getLocalString("UI_GAME_HANDLE_TIPS"),cocos2d::ui::TextureResType::PLIST);
     handleTipsImg->setPosition(Vec2(size.width*0.5, size.height*0.5));
     handleTipsImg->setScale(scale);
     helpLayer->addChild(handleTipsImg);
     
-    cocos2d::ui::ImageView* pauseTipsImg = cocos2d::ui::ImageView::create(UtilityHelper::getLocalString("UI_GAME_PAUSE_TIPS"));
+    cocos2d::ui::ImageView* pauseTipsImg = cocos2d::ui::ImageView::create(UtilityHelper::getLocalString("UI_GAME_PAUSE_TIPS"),cocos2d::ui::TextureResType::PLIST);
     pauseTipsImg->setPosition(Vec2(size.width*0.8, size.height*0.8));
     pauseTipsImg->setScale(scale);
     helpLayer->addChild(pauseTipsImg);
     
-    cocos2d::ui::ImageView* infoTipsImg = cocos2d::ui::ImageView::create(UtilityHelper::getLocalString("UI_GAMEINFO_TIPS"));
+    cocos2d::ui::ImageView* infoTipsImg = cocos2d::ui::ImageView::create(UtilityHelper::getLocalString("UI_GAMEINFO_TIPS"),cocos2d::ui::TextureResType::PLIST);
     infoTipsImg->setPosition(Vec2(size.width*0.2, size.height*0.78));
     infoTipsImg->setScale(scale);
     helpLayer->addChild(infoTipsImg);
     
-    cocos2d::ui::ImageView* modeTipsImg = cocos2d::ui::ImageView::create(UtilityHelper::getLocalString("UI_GAME_MODE_TIPS"));
+    cocos2d::ui::ImageView* modeTipsImg = cocos2d::ui::ImageView::create(UtilityHelper::getLocalString("UI_GAME_MODE_TIPS"),cocos2d::ui::TextureResType::PLIST);
     modeTipsImg->setPosition(Vec2(size.width*0.29, size.height*0.15));
     modeTipsImg->setScale(scale);
     helpLayer->addChild(modeTipsImg);
     
-    cocos2d::ui::ImageView* helpTipsImg = cocos2d::ui::ImageView::create(UtilityHelper::getLocalString("UI_HELP_TIPS"));
+    cocos2d::ui::ImageView* helpTipsImg = cocos2d::ui::ImageView::create(UtilityHelper::getLocalString("UI_HELP_TIPS"),cocos2d::ui::TextureResType::PLIST);
     helpTipsImg->setPosition(Vec2(size.width*0.85, size.height*0.15));
     helpTipsImg->setScale(scale);
     helpLayer->addChild(helpTipsImg);
@@ -277,12 +277,12 @@ void GameUI::onResumeAn(float dt)
             setResume();
             m_maskLayerBg->setVisible(false);
             m_countDonwImg->setVisible(false);
-            m_countDonwImg->loadTexture(StringUtils::format("ui_count_down_%d.png",3));
+            m_countDonwImg->loadTexture(StringUtils::format("ui_count_down_%d.png",3),cocos2d::ui::TextureResType::PLIST);
             isRecover = false;
             unschedule(schedule_selector(GameUI::onResumeAn));
     }
     else
-        m_countDonwImg->loadTexture(StringUtils::format("ui_count_down_%d.png",m_conut--));
+        m_countDonwImg->loadTexture(StringUtils::format("ui_count_down_%d.png",m_conut--),cocos2d::ui::TextureResType::PLIST);
 }
 void GameUI::onRunnerLose(cocos2d::EventCustom* sender)
 {

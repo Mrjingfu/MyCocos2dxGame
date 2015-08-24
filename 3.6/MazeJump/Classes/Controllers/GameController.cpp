@@ -42,8 +42,7 @@ bool GameController::init(Layer* pMainLayer,int difficultLevel)
         return false;
     m_pMainLayer = pMainLayer;
     m_difficultLevel = difficultLevel;
-    UIManager::getInstance()->init(m_pMainLayer);
-    UIManager::getInstance()->setGameUi(UIManager::UI_GROUND_GAME);
+
     
     m_pWhiteLayer = LayerColor::create(Color4B::WHITE);
     if(!m_pWhiteLayer)
@@ -59,6 +58,10 @@ bool GameController::init(Layer* pMainLayer,int difficultLevel)
     m_pMainLayer->addChild(m_pMainCamera);
     
     m_currentLevel = randomLevel();
+    
+    UIManager::getInstance()->init(m_pMainLayer);
+    UIManager::getInstance()->setGameUi(UIManager::UI_GROUND_GAME);
+    
     CCLOG("LEVEL:%d",m_currentLevel);
     if (!createMap(false,m_currentLevel)) {
         return false;
@@ -178,7 +181,7 @@ void GameController::switchToMainScene()
 int GameController::getCurrentGoldReward()
 {
     
-    int a = m_currentLevel*m_currentLevel*0.5;
+    int a = m_currentLevel*m_currentLevel*0.3;
     CCLOG("goldreward:%d",a - a%10 +m_currentLevel*4+10);
     return a - a%10 +m_currentLevel*4+10;
 }

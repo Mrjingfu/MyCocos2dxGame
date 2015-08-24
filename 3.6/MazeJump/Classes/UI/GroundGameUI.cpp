@@ -54,26 +54,26 @@ bool GroundGameUI::init()
     float scale = size.width /640.f;
     
     
-    cocos2d::ui::ImageView* awardImg = cocos2d::ui::ImageView::create(UtilityHelper::getLocalString("UI_GROUND_AWARD_TV"));
+    cocos2d::ui::ImageView* awardImg = cocos2d::ui::ImageView::create(UtilityHelper::getLocalString("UI_GROUND_AWARD_TV"),cocos2d::ui::TextureResType::PLIST);
     awardImg->setScale(scale);
     awardImg->setPosition(Vec2(size.width*0.5, size.height*0.15));
     addChild(awardImg);
   
     Label* goldRewardTv = Label::createWithBMFont(UtilityHelper::getLocalString("FONT_NUMBER"),Value(GameController::getInstance()->getCurrentGoldReward()).asString());
     goldRewardTv->setAnchorPoint(Vec2::ANCHOR_MIDDLE_RIGHT);
-    goldRewardTv->setPosition(Vec2(size.width*0.68, size.height*0.16));
+    goldRewardTv->setPosition(Vec2(size.width*0.74, size.height*0.16));
     goldRewardTv->setScale(scale);
     goldRewardTv->setHorizontalAlignment(TextHAlignment::RIGHT);
    addChild(goldRewardTv);
     
     Label* heartRewardTv = Label::createWithBMFont(UtilityHelper::getLocalString("FONT_NUMBER"),Value(GameController::getInstance()->getCurrentHeartReward()).asString());
     heartRewardTv->setAnchorPoint(Vec2::ANCHOR_MIDDLE_RIGHT);
-    heartRewardTv->setPosition(Vec2(size.width*0.68, size.height*0.07));
+    heartRewardTv->setPosition(Vec2(size.width*0.74, size.height*0.065));
     heartRewardTv->setScale(scale);
     heartRewardTv->setHorizontalAlignment(TextHAlignment::RIGHT);
     addChild(heartRewardTv);
 
-    cocos2d::ui::Button* helpBtn = cocos2d::ui::Button::create("ui_question.png");
+    cocos2d::ui::Button* helpBtn = cocos2d::ui::Button::create("ui_question.png","","",cocos2d::ui::TextureResType::PLIST);
     helpBtn->setPosition(Vec2(size.width*0.93, size.height*0.03));
     helpBtn->setScale(scale);
     addChild(helpBtn);
@@ -99,12 +99,12 @@ bool GroundGameUI::init()
     _eventDispatcher->addEventListenerWithSceneGraphPriority(helplistener,helpLayer);
     
     
-    cocos2d::ui::ImageView* handleTipsImg = cocos2d::ui::ImageView::create(UtilityHelper::getLocalString("UI_GROUND_HANDLE_TIPS"));
+    cocos2d::ui::ImageView* handleTipsImg = cocos2d::ui::ImageView::create(UtilityHelper::getLocalString("UI_GROUND_HANDLE_TIPS"),cocos2d::ui::TextureResType::PLIST);
     handleTipsImg->setPosition(Vec2(size.width*0.5, size.height*0.26));
     handleTipsImg->setScale(scale);
     helpLayer->addChild(handleTipsImg);
     
-    cocos2d::ui::ImageView* ruleTipsImg = cocos2d::ui::ImageView::create(UtilityHelper::getLocalString("UI_GROUND_RULE_TIPS"));
+    cocos2d::ui::ImageView* ruleTipsImg = cocos2d::ui::ImageView::create(UtilityHelper::getLocalString("UI_GROUND_RULE_TIPS"),cocos2d::ui::TextureResType::PLIST);
     ruleTipsImg->setPosition(Vec2(size.width*0.5, size.height*0.625));
     ruleTipsImg->setScale(scale);
     helpLayer->addChild(ruleTipsImg);
@@ -160,6 +160,7 @@ void GroundGameUI::onMazeJumpLose(cocos2d::EventCustom *sender)
 void GroundGameUI::onGroundRecordEnd(cocos2d::EventCustom *sender)
 {
     CCLOG("onGroundRecordEnd");
+    cocos2d::experimental::AudioEngine::play2d("mazejump_sucess.wav", false, 0.5f);
     UIManager::getInstance()->addPopUp(BasePopUpUI::POPUP_GROUND_RECOVER);
     UIManager::getInstance()->showPopUp();
 }

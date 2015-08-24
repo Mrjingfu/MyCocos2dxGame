@@ -187,6 +187,7 @@ void MenuScene::onEnter()
 {
     Layer::onEnter();
     scheduleUpdate();
+    SpriteFrameCache::getInstance()->addSpriteFramesWithFile("main_ui.plist", "main_ui.png");
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_CHARACTER_MODEL_CHANGE, std::bind(&MenuScene::changeCharacter, this, std::placeholders::_1));
     UIManager::getInstance()->init(this);
     UIManager::getInstance()->setGameUi(UIManager::UI_MAIN);
@@ -195,6 +196,7 @@ void MenuScene::onEnter()
 }
 void MenuScene::onExit()
 {
+    SpriteFrameCache::getInstance()->removeSpriteFramesFromFile("main_ui.plist");
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_CHARACTER_MODEL_CHANGE);
     unscheduleUpdate();
     UIManager::getInstance()->destory();

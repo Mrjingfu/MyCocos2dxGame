@@ -10,6 +10,7 @@
 #include "GroundLayer.h"
 #include "OutlineEffect3D.h"
 #include "GameScene.h"
+#include "AudioEngine.h"
 USING_NS_CC;
 
 Player* Player::create(const std::string& modelPath, GroundLayer* ground)
@@ -241,6 +242,7 @@ void Player::onEnterCheckSpeicalArt()
                             if (currentType == checkGroudCell->getType() &&
                                 currentCell->getCarryProp() == checkGroudCell->getCarryProp())
                                 {
+                                    cocos2d::experimental::AudioEngine::play2d("fadeout.wav");
                                     
                                     auto jumpByPlayer = JumpBy::create(0.5, Vec2(0, 0), 5, 1);
                                     auto spawnPlayer = Spawn::create( MoveTo::create(0.3f, Vec3(this->getPositionX(), 2, this->getPositionZ())), Sequence::create(ScaleTo::create(0.5f, 0.1f),NULL), NULL);
@@ -438,6 +440,7 @@ void Player::jumpFinish()
 }
 void Player::carryStar(Node* node,GroundCell* cell)
 {
+    
     this->setPosition3D(cell->getPosition3D() + Vec3(0,4,0));
     auto jumpByPlayer = JumpBy::create(0.5, Vec2(0, 0), 5, 1);
     m_pGround->carryCell(m_nIndexX, m_nIndexY);
@@ -445,6 +448,7 @@ void Player::carryStar(Node* node,GroundCell* cell)
 }
 void Player::speicaArtFinish(Node* node,GroundCell* cell)
 {
+    cocos2d::experimental::AudioEngine::play2d("fadeout.wav");
     m_pGround->carryCell(cell->getIndexX(), cell->getIndexY());
     m_nIndexX = cell->getIndexX();
     m_nIndexY = cell->getIndexY();

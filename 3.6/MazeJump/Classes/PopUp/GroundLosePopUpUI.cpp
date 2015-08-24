@@ -53,19 +53,19 @@ bool GroundLosePopUpUI::init()
     auto size = Director::getInstance()->getVisibleSize();
     float scale = size.width /640.0f;
     
-    m_popupBgLayer = cocos2d::ui::ImageView::create(UtilityHelper::getLocalString("UI_GROUND_FAILED_PANEL"));
+    m_popupBgLayer = cocos2d::ui::ImageView::create(UtilityHelper::getLocalString("UI_GROUND_FAILED_PANEL"),cocos2d::ui::TextureResType::PLIST);
     m_popupBgLayer->setPosition(Vec2(size.width*0.5,size.height*0.5));
     m_popupBgLayer->setScale(scale);
 
     m_dialogLayer->addChild(m_popupBgLayer);
     
-    ui::Button* backtn = cocos2d::ui::Button::create(UtilityHelper::getLocalString("UI_GROUND_BTN_FAILED_BACK"));
+    ui::Button* backtn = cocos2d::ui::Button::create(UtilityHelper::getLocalString("UI_GROUND_BTN_FAILED_BACK"),"","",cocos2d::ui::TextureResType::PLIST);
     backtn->setScale(scale);
     backtn->setPosition(Vec2(size.width*0.5,size.height*0.55));
     m_dialogLayer->addChild(backtn);
 
     
-    ui::Button* reviveBtn = cocos2d::ui::Button::create(UtilityHelper::getLocalString("UI_GROUND_BTN_FAILED_HELP"));
+    ui::Button* reviveBtn = cocos2d::ui::Button::create(UtilityHelper::getLocalString("UI_GROUND_BTN_FAILED_HELP"),"","",cocos2d::ui::TextureResType::PLIST);
     reviveBtn->setScale(scale);
     reviveBtn->setPosition(Vec2(size.width*0.5,size.height*0.4));
     m_dialogLayer->addChild(reviveBtn);
@@ -80,9 +80,9 @@ void GroundLosePopUpUI::onHelpRecover(cocos2d::Ref *ref)
 {
      UIManager::getInstance()->playBtnSound();
     int goldNum = Value(localStorageGetItem(USER_GOLD_NUM)).asInt();
-    if (goldNum >= 80) {
+    if (goldNum >= 320) {
         
-        localStorageSetItem(USER_GOLD_NUM, Value(Value(localStorageGetItem(USER_GOLD_NUM)).asInt() - 80).asString());
+        localStorageSetItem(USER_GOLD_NUM, Value(Value(localStorageGetItem(USER_GOLD_NUM)).asInt() - 320).asString());
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_GOLD_CHANGE);
         UIManager::getInstance()->hidePopUp(false);
         GameController::getInstance()->createMap(true,GameController::getInstance()->getCurrentLevel());

@@ -7,6 +7,7 @@
 //
 
 #include <stdio.h>
+#include "NativeBridge.h"
 #include "jni/JniHelper.h"
 USING_NS_CC;
 static NativeBridge *s_NativeBridge = nullptr;
@@ -153,6 +154,7 @@ void NativeBridge::hideIndicatorView()
 std::string NativeBridge::generateUUID()
 {
     log("generateUUID");
+    JniMethodInfo t;
     if (JniHelper::getStaticMethodInfo(t, "org/cocos2dx/cpp/AppActivity", "generateUUID", "(Z)Ljava/lang/String;")) {
         
         t.env->CallStaticVoidMethod(t.classID, t.methodID, false);
@@ -163,7 +165,7 @@ std::string NativeBridge::generateUUID()
             
             t.env->ExceptionClear();
             
-            return;
+            return "";
         }
         t.env->DeleteLocalRef(t.classID);
     }

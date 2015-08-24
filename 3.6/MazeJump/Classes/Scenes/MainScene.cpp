@@ -46,7 +46,7 @@ void MainScene::onEnter()
     Layer::onEnter();
     
     scheduleUpdate();
-    
+    SpriteFrameCache::getInstance()->addSpriteFramesWithFile("game_ui.plist", "game_ui.png");
     if(RunController::getInstance()->isInMazeJump())
         RunController::getInstance()->reset();
     else
@@ -57,6 +57,7 @@ void MainScene::onEnter()
 }
 void MainScene::onExit()
 {
+    SpriteFrameCache::getInstance()->removeSpriteFramesFromFile("game_ui.plist");
     if(!RunController::getInstance()->isInMazeJump())
         RunController::getInstance()->destroy();
     unscheduleUpdate();

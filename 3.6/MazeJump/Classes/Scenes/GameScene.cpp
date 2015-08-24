@@ -55,6 +55,7 @@ void GameScene::onEnter()
 {
     Layer::onEnter();
     scheduleUpdate();
+    SpriteFrameCache::getInstance()->addSpriteFramesWithFile("ground_ui.plist", "ground_ui.png");
     m_nBgID = AudioEngine::play2d("loop.wav",true, 0.5);
     if(!GameController::getInstance()->init(this,m_nDifficultLevel))
         CCLOGERROR("GameController init failed!");
@@ -63,6 +64,7 @@ void GameScene::onEnter()
 }
 void GameScene::onExit()
 {
+    SpriteFrameCache::getInstance()->removeSpriteFramesFromFile("ground_ui.plist");
     AudioEngine::stop(m_nBgID);
     GameController::getInstance()->destroy();
     unscheduleUpdate();

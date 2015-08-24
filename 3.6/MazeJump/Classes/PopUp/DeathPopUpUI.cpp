@@ -49,28 +49,28 @@ bool DeathPopUpUI::init()
 
     auto size = Director::getInstance()->getVisibleSize();
     float scale = size.width /640.0f;
-    m_popupBgLayer = ui::ImageView::create(UtilityHelper::getLocalString("UI_DEATH_PANEL"));
+    m_popupBgLayer = ui::ImageView::create(UtilityHelper::getLocalString("UI_DEATH_PANEL"),cocos2d::ui::TextureResType::PLIST);
     m_popupBgLayer->setPosition(Vec2(size.width*0.5,size.height*0.5));
     m_popupBgLayer->setScale(scale);
     
     m_dialogLayer->addChild(m_popupBgLayer);
     
-    ui::Button* homeBtn = cocos2d::ui::Button::create("btn_home_normal.png","btn_home_pressed.png");
+    ui::Button* homeBtn = cocos2d::ui::Button::create("btn_home_normal.png","btn_home_pressed.png","",cocos2d::ui::TextureResType::PLIST);
     homeBtn->setScale(scale);
     homeBtn->setPosition(Vec2(size.width*0.33,size.height*0.53));
     m_dialogLayer->addChild(homeBtn);
     
-    ui::Button* shopBtn = cocos2d::ui::Button::create("btn_shop_normal.png","btn_shop_pressed.png");
+    ui::Button* shopBtn = cocos2d::ui::Button::create("btn_shop_normal.png","btn_shop_pressed.png","",cocos2d::ui::TextureResType::PLIST);
     shopBtn->setScale(scale);
     shopBtn->setPosition(Vec2(size.width*0.33+homeBtn->getContentSize().width*scale+35*scale,size.height*0.53));
     m_dialogLayer->addChild(shopBtn);
     
-    ui::Button* agiainBtn = cocos2d::ui::Button::create("btn_agiain_normal.png","btn_agiain_pressed.png");
+    ui::Button* agiainBtn = cocos2d::ui::Button::create("btn_agiain_normal.png","btn_agiain_pressed.png","",cocos2d::ui::TextureResType::PLIST);
     agiainBtn->setScale(scale);
     agiainBtn->setPosition(Vec2(size.width*0.33+shopBtn->getContentSize().width*2*scale+70*scale,size.height*0.53));
     m_dialogLayer->addChild(agiainBtn);
     
-    ui::Button* reviveBtn = cocos2d::ui::Button::create(UtilityHelper::getLocalString("UI_DEATH_BTN_REVICE"));
+    ui::Button* reviveBtn = cocos2d::ui::Button::create(UtilityHelper::getLocalString("UI_DEATH_BTN_REVICE"),"","",cocos2d::ui::TextureResType::PLIST);
     reviveBtn->setScale(scale);
     reviveBtn->setPosition(Vec2(size.width*0.5,size.height*0.38));
     m_dialogLayer->addChild(reviveBtn);
@@ -107,9 +107,9 @@ void DeathPopUpUI::onRevive(cocos2d::Ref *ref)
    
      UIManager::getInstance()->playBtnSound();
     int heartNum = Value(localStorageGetItem(USER_HEART_NUM)).asInt();
-    if (heartNum >=1) {
+    if (heartNum >=2) {
          UIManager::getInstance()->hidePopUp(false);
-        localStorageSetItem(USER_HEART_NUM, Value(Value(localStorageGetItem(USER_HEART_NUM)).asInt()-1).asString());
+        localStorageSetItem(USER_HEART_NUM, Value(Value(localStorageGetItem(USER_HEART_NUM)).asInt()-2).asString());
         auto scene = MainScene::createScene();
         Director::getInstance()->replaceScene(scene);
 #if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID )

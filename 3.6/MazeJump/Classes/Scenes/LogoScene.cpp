@@ -154,6 +154,7 @@ void LogoScene::precache()
         Sequence* sequence = Sequence::create(fadeIn, callFunc, NULL);
         m_pWhiteLayer->runAction(sequence);
     }
+    SpriteFrameCache::getInstance()->addSpriteFramesWithFile("common_ui.plist", "common_ui.png");
     NativeBridge::getInstance()->hideIndicatorView();
 }
 void LogoScene::endcache()

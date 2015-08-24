@@ -46,23 +46,23 @@ bool PausePopUpUI::init()
 
     auto size = Director::getInstance()->getVisibleSize();
     float scale = size.width /640.0f;
-    m_popupBgLayer = ui::ImageView::create(UtilityHelper::getLocalString("UI_PASUE_PANEL"));
+    m_popupBgLayer = ui::ImageView::create(UtilityHelper::getLocalString("UI_PASUE_PANEL"),cocos2d::ui::TextureResType::PLIST);
     m_popupBgLayer->setPosition(Vec2(size.width*0.5,size.height*0.5));
     m_popupBgLayer->setScale(scale);
     
     m_dialogLayer->addChild(m_popupBgLayer);
     
-    ui::Button* homeBtn = cocos2d::ui::Button::create("btn_home_normal.png","btn_home_pressed.png");
+    ui::Button* homeBtn = cocos2d::ui::Button::create("btn_home_normal.png","btn_home_pressed.png","",cocos2d::ui::TextureResType::PLIST);
     homeBtn->setScale(scale);
     homeBtn->setPosition(Vec2(size.width*0.35,size.height*0.48));
     m_dialogLayer->addChild(homeBtn);
     
-    ui::Button* shopBtn = cocos2d::ui::Button::create("btn_shop_normal.png","btn_shop_pressed.png");
+    ui::Button* shopBtn = cocos2d::ui::Button::create("btn_shop_normal.png","btn_shop_pressed.png","",cocos2d::ui::TextureResType::PLIST);
     shopBtn->setScale(scale);
     shopBtn->setPosition(Vec2(size.width*0.35+homeBtn->getContentSize().width*scale+35*scale,size.height*0.48));
     m_dialogLayer->addChild(shopBtn);
     
-    ui::Button* playnBtn = cocos2d::ui::Button::create("btn_play_normal.png","btn_play_pressed.png");
+    ui::Button* playnBtn = cocos2d::ui::Button::create("btn_play_normal.png","btn_play_pressed.png","",cocos2d::ui::TextureResType::PLIST);
     playnBtn->setScale(scale);
     playnBtn->setPosition(Vec2(size.width*0.35+shopBtn->getContentSize().width*2*scale+70*scale,size.height*0.48));
     m_dialogLayer->addChild(playnBtn);

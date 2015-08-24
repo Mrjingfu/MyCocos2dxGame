@@ -62,7 +62,7 @@ bool RoleItem::init(std::string _roleId, int preice, std::string _roleImg, std::
     }
     
     
-    m_itemLockImg = cocos2d::ui::ImageView::create("character_mask.png");
+    m_itemLockImg = cocos2d::ui::ImageView::create("character_mask.png",cocos2d::ui::TextureResType::PLIST);
     m_itemLockImg->setPosition(Vec2(getContentSize().width*0.5,getContentSize().height*0.5));
     addChild(m_itemLockImg);
     m_itemLockImg->setVisible(!m_isLock);
@@ -138,7 +138,7 @@ bool RolePopUpUI::init()
     auto size = Director::getInstance()->getVisibleSize();
     float scale = size.width /640.0f;
     m_maskLayerBg->setVisible(false);
-    m_popupBgLayer = cocos2d::ui::ImageView::create("panel_characterlist.png");
+    m_popupBgLayer = cocos2d::ui::ImageView::create("panel_characterlist.png",cocos2d::ui::TextureResType::PLIST);
     m_popupBgLayer->setScale(scale);
     m_popupBgLayer->setPosition(Vec2(m_popupBgLayer->getContentSize().width*0.5*scale, size.height*0.7));
 
@@ -181,7 +181,7 @@ bool RolePopUpUI::init()
     }
     
 
-    cocos2d::ui::Button* backButton = cocos2d::ui::Button::create("btn_scrollback_normal.png","btn_scrollback_pressed.png");
+    cocos2d::ui::Button* backButton = cocos2d::ui::Button::create("btn_scrollback_normal.png","btn_scrollback_pressed.png","",cocos2d::ui::TextureResType::PLIST);
     backButton->setAnchorPoint(Vec2::ANCHOR_MIDDLE_TOP);
     backButton->setScale(scale);
     backButton->setPosition(Vec2(backButton->getContentSize().width*0.5*scale, size.height*0.6));
@@ -191,7 +191,7 @@ bool RolePopUpUI::init()
     m_dialogLayer->addChild(m_lockLayer);
     
     m_lockLayer->setPosition(Vec2(size.width, 0));
-    cocos2d::ui::Button* m_lockButton = cocos2d::ui::Button::create(UtilityHelper::getLocalString("UI_ROLE_BTN_LOCK_NORMAL"),UtilityHelper::getLocalString("UI_ROLE_BTN_LOCK_PRESSED"));
+    cocos2d::ui::Button* m_lockButton = cocos2d::ui::Button::create(UtilityHelper::getLocalString("UI_ROLE_BTN_LOCK_NORMAL"),UtilityHelper::getLocalString("UI_ROLE_BTN_LOCK_PRESSED"),"",cocos2d::ui::TextureResType::PLIST);
     m_lockButton->setScale(scale);
     m_lockButton->setAnchorPoint(Vec2::ANCHOR_MIDDLE_TOP);
     m_lockButton->setPosition(Vec2(size.width-m_lockButton->getContentSize().width*0.5*scale, size.height*0.6));

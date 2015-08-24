@@ -60,13 +60,14 @@ bool AppDelegate::applicationDidFinishLaunching() {
     std::string path = FileUtils::getInstance()->getWritablePath() + "userdata.db";
     CCLOG("path:%s",path.c_str());
     localStorageInit(path);
+#if CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID 
     std::string uuid = localStorageGetItem(USER_UUID);
     if (uuid.empty()) {
         uuid = NativeBridge::getInstance()->generateUUID();
         CCASSERT(!uuid.empty(), "uuid generate must not be empty!");
         localStorageSetItem(USER_UUID, uuid);
     }
-
+#endif
     std::string defualutRole = localStorageGetItem(USER_DEFAULT_ROLE_ID);
     if (defualutRole.empty()) {
         localStorageSetItem(USER_DEFAULT_ROLE_ID, "role_girl1");

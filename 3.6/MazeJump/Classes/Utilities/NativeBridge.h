@@ -36,7 +36,7 @@ public:
     
     std::string generateUUID();
 private:
-#if CC_TARGET_PLATFORM == CC_PLATFORM_IOS
+#if CC_TARGET_PLATFORM == CC_PLATFORM_IOS 
     RootViewController* mViewController;
 #endif
 };
