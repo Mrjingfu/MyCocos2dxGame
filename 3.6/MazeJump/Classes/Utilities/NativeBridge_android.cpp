@@ -170,3 +170,6 @@ std::string NativeBridge::generateUUID()
         t.env->DeleteLocalRef(t.classID);
     }
 }
+void NativeBridge::initAdmob()
+{
+}

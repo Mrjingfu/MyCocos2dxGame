@@ -20,6 +20,8 @@ static const std::string USER_SELECT_ROLE_ID = "USER_SELECT_ROLE_ID";
 
 static const std::string USER_UUID = "USER_UUID";
 
+static const std::string USER_RAINBOW_VALUE = "rainbow_value";
+
 ///Font
 static std::string FONT_FXZS = "comic_sans_ms.ttf";
 
@@ -54,7 +56,8 @@ static const std::string EVENT_GOLD_CHANGE = "GOLD_CHANGE";
 static const std::string EVENT_HEART_CHANGE = "HEART_CHANGE";
 static const std::string EVENT_RUNNER_ADD_PRODUCT = "RUNNER_ADD_PRODUCT";
 static const std::string EVENT_MAX_DISTANCE_CHANGE = "MAX_DISTANCE_CHANGE";
-static const std::string EVENT_RAINBOW_VALUE_CHANGE = "RAINBOW_VALUE_CHANGE";
+static const std::string EVENT_RAINBOW_COLUMN_VALUE_CHANGE = "RAINBOW_COLUMN_VALUE_CHANGE";
+static const std::string EVENT_RAINBOW_ROW_VALUE_CHANGE = "RAINBOW_ROW_VALUE_CHANGE";
 static const std::string EVENT_RUNNER_LOSE = "RUNNER_LOSE";
 static const std::string EVENT_RUNNER_LOSE_CHANGE_VIEW = "RUNNER_LOSE_CHANGE_VIEW";
 static const std::string EVENT_RUNNER_RECOVER_PAUSE = "RUNNER_RECOVER_PAUSE";

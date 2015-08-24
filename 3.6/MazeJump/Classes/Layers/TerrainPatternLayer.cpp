@@ -270,16 +270,21 @@ void TerrainPatternLayer::checkCollisionDecorator()
                         {
                             Runner* runner = RunController::getInstance()->getMainPlayer();
                             Camera* mainCamera = RunController::getInstance()->getMainCamera();
-                            if(mainCamera && runner && !runner->isSpeedUp() && runner->getState() != Runner::RS_DEATH)
+                            if(mainCamera && runner && runner->getState() != Runner::RS_DEATH)
                             {
-                                AudioEngine::play2d("fadeout.wav");
-                                EaseSineOut* moveTo = EaseSineOut::create(MoveTo::create(300.0f, runner->getPosition3D()));
-                                DelayTime* delay = DelayTime::create(0.5);
-                                CallFunc* callback = CallFunc::create(CC_CALLBACK_0(RunController::switchToMazeJump, RunController::getInstance()));
-                                Sequence* sequence = Sequence::create(delay, callback, NULL);
-                                Spawn* spawn = Spawn::create(sequence, moveTo, NULL);
-                                mainCamera->runAction(spawn);
-                                runner->fadeOut();
+                                if(!runner->isSpeedUp())
+                                {
+                                    AudioEngine::play2d("fadeout.wav");
+                                    EaseSineOut* moveTo = EaseSineOut::create(MoveTo::create(300.0f, runner->getPosition3D()));
+                                    DelayTime* delay = DelayTime::create(0.5);
+                                    CallFunc* callback = CallFunc::create(CC_CALLBACK_0(RunController::switchToMazeJump, RunController::getInstance()));
+                                    Sequence* sequence = Sequence::create(delay, callback, NULL);
+                                    Spawn* spawn = Spawn::create(sequence, moveTo, NULL);
+                                    mainCamera->runAction(spawn);
+                                    runner->fadeOut();
+                                }
+                                else
+                                    decorator->setNeedToCollision(true);
                             }
                         }
                         break;
@@ -390,7 +395,7 @@ void TerrainPatternLayer::generateDecorator(TerrainCell* cell, int patternIndex)
         {
             float percent1 = 0.005*patternIndex;
             float percent2 = 0.0001*patternIndex;
-            float percent3 = 0.001*patternIndex;
+            float percent3 = 0.005*patternIndex;
             float percent4 = 1.0 - percent1 - percent2 - percent3;
             AlisaMethod* am = AlisaMethod::create(percent1,percent2,percent3,percent4,-1.0, NULL);
             if(am)
@@ -441,7 +446,7 @@ void TerrainPatternLayer::generateDecorator(TerrainCell* cell, int patternIndex)
             float percent1 = 0.005*patternIndex;
             float percent2 = 0.0001*patternIndex;
             float percent3 = 0.0005*patternIndex;
-            float percent4 = 0.001*patternIndex;
+            float percent4 = 0.005*patternIndex;
             float percent5 = 1.0 - percent1 - percent2 - percent3 - percent4;
             AlisaMethod* am = AlisaMethod::create(percent1,percent2,percent3,percent4,percent5,-1.0, NULL);
             if(am)

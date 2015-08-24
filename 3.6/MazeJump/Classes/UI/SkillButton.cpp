@@ -39,12 +39,13 @@ SkillButton::SkillButton()
     if(maxLevel == 0)
         m_fCurrentRainbowValue = 75.0f;
     else
-        m_fCurrentRainbowValue = 100.0f;
+        m_fCurrentRainbowValue = Value(localStorageGetItem(USER_RAINBOW_VALUE)).asFloat();
     m_bTouchEnable = false;
 }
 
-
-
+SkillButton::~SkillButton()
+{
+}
 bool SkillButton::init(const std::string& btnTex, const std::string& maskTex,  const std::string& colorTex)
 {
     m_pRootNode = Node::create();
@@ -96,23 +97,46 @@ bool SkillButton::init(const std::string& btnTex, const std::string& maskTex,  c
     
     return true;
 }
-
+void SkillButton::saveRainbowValue()
+{
+    localStorageSetItem(USER_RAINBOW_VALUE, Value(m_fCurrentRainbowValue).asString());
+}
 void SkillButton::onEnter()
 {
     Node::onEnter();
     
-    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_RAINBOW_VALUE_CHANGE, std::bind(&SkillButton::onRainbowValueChange, this, std::placeholders::_1));
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_RAINBOW_COLUMN_VALUE_CHANGE, std::bind(&SkillButton::onRainbowColumnValueChange, this, std::placeholders::_1));
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_RAINBOW_ROW_VALUE_CHANGE, std::bind(&SkillButton::onRainbowRowValueChange, this, std::placeholders::_1));
 }
 void SkillButton::onExit()
 {
-    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_RAINBOW_VALUE_CHANGE);
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_RAINBOW_COLUMN_VALUE_CHANGE);
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_RAINBOW_ROW_VALUE_CHANGE);
     Node::onExit();
 }
-void SkillButton::onRainbowValueChange(cocos2d::EventCustom* sender)
+void SkillButton::onRainbowColumnValueChange(cocos2d::EventCustom* sender)
 {
     if(sender && m_pProgressTimer)
     {
         m_fCurrentRainbowValue -=0.5f;
+        m_pProgressTimer->setPercentage(m_fCurrentRainbowValue);
+        if(m_fCurrentRainbowValue <= 75.0f)
+        {
+            if(!m_bTouchEnable)
+            {
+                m_bTouchEnable = true;
+                m_pRootNode->runAction(EaseBackInOut::create(ScaleTo::create(0.5f, 1.0f)));
+                m_pMaskSprite->runAction(EaseSineOut::create(FadeOut::create(0.5f)));
+                AudioEngine::play2d("rainbowmodeok.wav", false, 0.5f);
+            }
+        }
+    }
+}
+void SkillButton::onRainbowRowValueChange(cocos2d::EventCustom* sender)
+{
+    if(sender && m_pProgressTimer)
+    {
+        m_fCurrentRainbowValue -=0.2f;
         m_pProgressTimer->setPercentage(m_fCurrentRainbowValue);
         if(m_fCurrentRainbowValue <= 75.0f)
         {

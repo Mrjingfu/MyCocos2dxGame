@@ -25,12 +25,14 @@ public:
     void restore();
     std::vector<sdkbox::Product> getProducts() const;
     
+    virtual void onInitialized(bool ok) override;
     virtual void onSuccess(const sdkbox::Product& p) override;
     virtual void onFailure(const sdkbox::Product& p, const std::string& msg) override;
     virtual void onCanceled(const sdkbox::Product& p) override;
     virtual void onRestored(const sdkbox::Product& p) override;
     virtual void onProductRequestSuccess(const std::vector<sdkbox::Product>& products) override;
     virtual void onProductRequestFailure(const std::string& msg) override;
+    virtual void onRestoreComplete(bool ok, const std::string &msg) override;
     
 #pragma mark GoogleAnalytics
     void registerGoogleAnalytics();

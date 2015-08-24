@@ -45,17 +45,24 @@ void SdkBoxManager::registerIAPListener()
 }
 void SdkBoxManager::purchase(const std::string& productName)
 {
-    sdkbox::IAP::purchase(productName);
     NativeBridge::getInstance()->showIndicatorView();
+    sdkbox::IAP::purchase(productName);
 }
 void SdkBoxManager::restore()
 {
+    NativeBridge::getInstance()->showIndicatorView();
     sdkbox::IAP::restore();
-    //NativeBridge::getInstance()->showIndicatorView();
 }
 std::vector<sdkbox::Product> SdkBoxManager::getProducts() const
 {
     return _products;
+}
+void SdkBoxManager::onInitialized(bool ok)
+{
+    if(ok)
+        CCLOG("IAP initialized Success!");
+    else
+        CCLOG("IAP initialized Failed!");
 }
 void SdkBoxManager::onSuccess(const sdkbox::Product& p)
 {
@@ -121,6 +128,7 @@ void SdkBoxManager::onSuccess(const sdkbox::Product& p)
 void SdkBoxManager::onFailure(const sdkbox::Product& p, const std::string& msg)
 {
     CCLOG("Purchase Failed: %s", msg.c_str());
+    MessageBox(msg.c_str(), "");
     NativeBridge::getInstance()->hideIndicatorView();
     AudioEngine::play2d("mazejump_failed.wav",false, 0.5f);
 }
@@ -133,7 +141,6 @@ void SdkBoxManager::onCanceled(const sdkbox::Product& p)
 void SdkBoxManager::onRestored(const sdkbox::Product& p)
 {
     CCLOG("Purchase Restored: %s", p.name.c_str());
-    NativeBridge::getInstance()->hideIndicatorView();
     if (p.name == PURCHASE_ID6) {
         CCLOG("Remove Ads");
         localStorageSetItem("RemoveAds", "true");
@@ -164,10 +171,14 @@ void SdkBoxManager::onProductRequestSuccess(const std::vector<sdkbox::Product>& 
 }
 void SdkBoxManager::onProductRequestFailure(const std::string& msg)
 {
-    CCLOG("Fail to request products!");
+    CCLOG("Fail to request products! %s", msg.c_str());
     sdkbox::IAP::refresh();
 }
-
+void SdkBoxManager::onRestoreComplete(bool ok, const std::string &msg)
+{
+    CCLOG("onRestoreComplete  %s", msg.c_str());
+    NativeBridge::getInstance()->hideIndicatorView();
+}
 #pragma mark GoogleAnalytics
 void SdkBoxManager::registerGoogleAnalytics()
 {
