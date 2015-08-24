@@ -20,6 +20,8 @@ static const std::string USER_SELECT_ROLE_ID = "USER_SELECT_ROLE_ID";
 
 static const std::string USER_UUID = "USER_UUID";
 
+static const std::string USER_RAINBOW_VALUE = "rainbow_value";
+
 ///Font
 static std::string FONT_FXZS = "comic_sans_ms.ttf";
 

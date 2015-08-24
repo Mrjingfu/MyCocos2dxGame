@@ -66,10 +66,15 @@ bool AppDelegate::applicationDidFinishLaunching() {
         CCASSERT(!uuid.empty(), "uuid generate must not be empty!");
         localStorageSetItem(USER_UUID, uuid);
     }
-
+    
     std::string defualutRole = localStorageGetItem(USER_DEFAULT_ROLE_ID);
     if (defualutRole.empty()) {
         localStorageSetItem(USER_DEFAULT_ROLE_ID, "role_girl1");
+    }
+    
+    std::string rainbowValue = localStorageGetItem(USER_RAINBOW_VALUE);
+    if (rainbowValue.empty()) {
+        localStorageSetItem(USER_RAINBOW_VALUE, Value(100.0f).asString());
     }
     
 #if COCOS2D_DEBUG

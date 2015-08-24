@@ -101,6 +101,7 @@ void DeathPopUpUI::onAgiain(cocos2d::Ref *ref)
     localStorageSetItem(USER_LAST_LEVEL,"0");
     auto scene = MainScene::createScene();
     Director::getInstance()->replaceScene(scene);
+    localStorageSetItem(USER_RAINBOW_VALUE, Value(100.0f).asString());
 }
 void DeathPopUpUI::onRevive(cocos2d::Ref *ref)
 {

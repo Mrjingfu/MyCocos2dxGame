@@ -192,6 +192,8 @@ void MenuScene::onEnter()
     UIManager::getInstance()->setGameUi(UIManager::UI_MAIN);
     AudioEngine::play2d("rainbow.wav", false, 0.5f);
     NativeBridge::getInstance()->showRateAppView();
+    
+    localStorageSetItem(USER_RAINBOW_VALUE, Value(100.0f).asString());
 }
 void MenuScene::onExit()
 {

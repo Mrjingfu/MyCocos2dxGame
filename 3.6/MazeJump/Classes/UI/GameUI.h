@@ -10,7 +10,7 @@
 
 #include "cocos2d.h"
 #include "ui/CocosGUI.h"
-
+#include "SkillButton.h"
 class GameUI : public cocos2d::Layer
 {
 protected:
@@ -53,6 +53,8 @@ private:
     void setResume();
     
     void onShopBuyEvenet(cocos2d::EventCustom* sender);
+private:
+    SkillButton*        m_pSkillBtn;
 };
 
 #endif /* defined(__MazeJump__GameUI__) */

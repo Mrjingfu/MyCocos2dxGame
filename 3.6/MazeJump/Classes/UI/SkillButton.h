@@ -13,6 +13,7 @@
 class SkillButton : public cocos2d::Node
 {
     SkillButton();
+    virtual ~SkillButton();
 public:
     static SkillButton* create(const std::string& btnTex, const std::string& maskTex, const std::string& colorTex);
     
@@ -21,6 +22,8 @@ public:
     virtual void onEnter();
     virtual void onExit();
     
+    float getCurrentRainbowValue() const { return m_fCurrentRainbowValue; };
+    void saveRainbowValue();
 private:
     void onRainbowColumnValueChange(cocos2d::EventCustom* sender);
     void onRainbowRowValueChange(cocos2d::EventCustom* sender);

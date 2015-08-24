@@ -39,12 +39,13 @@ SkillButton::SkillButton()
     if(maxLevel == 0)
         m_fCurrentRainbowValue = 75.0f;
     else
-        m_fCurrentRainbowValue = 100.0f;
+        m_fCurrentRainbowValue = Value(localStorageGetItem(USER_RAINBOW_VALUE)).asFloat();
     m_bTouchEnable = false;
 }
 
-
-
+SkillButton::~SkillButton()
+{
+}
 bool SkillButton::init(const std::string& btnTex, const std::string& maskTex,  const std::string& colorTex)
 {
     m_pRootNode = Node::create();
@@ -96,7 +97,10 @@ bool SkillButton::init(const std::string& btnTex, const std::string& maskTex,  c
     
     return true;
 }
-
+void SkillButton::saveRainbowValue()
+{
+    localStorageSetItem(USER_RAINBOW_VALUE, Value(m_fCurrentRainbowValue).asString());
+}
 void SkillButton::onEnter()
 {
     Node::onEnter();

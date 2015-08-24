@@ -6,7 +6,6 @@
 //
 
 #include "GameUI.h"
-#include "SkillButton.h"
 #include "MainScene.h"
 #include "GameConst.h"
 #include "UIManager.h"
@@ -40,6 +39,7 @@ GameUI::GameUI()
     isShwoHelp= false;
     isDead = false;
     isTouchShopBuy = false;
+    m_pSkillBtn = nullptr;
 }
 GameUI::~GameUI()
 {
@@ -61,7 +61,7 @@ void GameUI::onExit()
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_RUNNER_LOSE);
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_RUNNER_RECOVER_PAUSE);
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_RUNNER_PAUSE_RESUME);
-   Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_GAME_PAUSE);
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_GAME_PAUSE);
 }
 
 bool GameUI::init()
@@ -93,11 +93,11 @@ bool GameUI::init()
     pauseImg->addClickEventListener(CC_CALLBACK_1(GameUI::onPause, this));
  
     
-    SkillButton* skillBtn = SkillButton::create("btn_skill_normal.png", "btn_skill_mask.png", "btn_skill_color.png");
-    if(!skillBtn)
+    m_pSkillBtn = SkillButton::create("btn_skill_normal.png", "btn_skill_mask.png", "btn_skill_color.png");
+    if(!m_pSkillBtn)
         return false;
-    skillBtn->setScale(scale);
-    addChild(skillBtn);
+    m_pSkillBtn->setScale(scale);
+    addChild(m_pSkillBtn);
     
     cocos2d::ui::Button* helpBtn = cocos2d::ui::Button::create("ui_question.png");
     helpBtn->setPosition(Vec2(size.width*0.93, size.height*0.03));
@@ -288,6 +288,8 @@ void GameUI::onRunnerLose(cocos2d::EventCustom* sender)
 {
     isDead = true;
     runAction(Sequence::createWithTwoActions(DelayTime::create(1.0), CCCallFunc::create(CC_CALLBACK_0(GameUI::onDelayTimeRunnerLose, this))));
+    if(m_pSkillBtn)
+        m_pSkillBtn->saveRainbowValue();
 }
 void GameUI::onDelayTimeRunnerLose()
 {
