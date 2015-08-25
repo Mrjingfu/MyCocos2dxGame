@@ -154,21 +154,17 @@ void NativeBridge::hideIndicatorView()
 std::string NativeBridge::generateUUID()
 {
     log("generateUUID");
-    JniMethodInfo t;
-    if (JniHelper::getStaticMethodInfo(t, "org/cocos2dx/cpp/AppActivity", "generateUUID", "(Z)Ljava/lang/String;")) {
-        
-        t.env->CallStaticVoidMethod(t.classID, t.methodID, false);
-        
-        if (t.env->ExceptionOccurred()) {
-            
-            t.env->ExceptionDescribe();
-            
-            t.env->ExceptionClear();
-            
-            return "";
-        }
-        t.env->DeleteLocalRef(t.classID);
+    std::string res = "";
+    JniMethodInfo _methodInfo;
+    if (!JniHelper::getStaticMethodInfo(_methodInfo, "org/cocos2dx/cpp/AppActivity", "generateUUID", "()Ljava/lang/String;")) {
+        log("generateUUID error");
+        return res;
     }
+    jstring jres = (jstring)_methodInfo.env->CallStaticObjectMethod(_methodInfo.classID,
+                                                                    _methodInfo.methodID);
+    res = JniHelper::jstring2string(jres);
+    log("generateUUID:%s",res.c_str());
+    return res;
 }
 void NativeBridge::initAdmob()
 {
