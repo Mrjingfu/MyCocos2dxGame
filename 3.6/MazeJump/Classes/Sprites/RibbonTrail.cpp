@@ -31,6 +31,7 @@ RibbonTrail::RibbonTrail()
 }
 RibbonTrail::~RibbonTrail()
 {
+    m_pTrail = nullptr;
 }
 bool RibbonTrail::initWithFile(const std::string &path, float width, float length )
 {

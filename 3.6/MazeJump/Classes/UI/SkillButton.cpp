@@ -127,7 +127,7 @@ void SkillButton::onRainbowColumnValueChange(cocos2d::EventCustom* sender)
                 m_bTouchEnable = true;
                 m_pRootNode->runAction(EaseBackInOut::create(ScaleTo::create(0.5f, 1.0f)));
                 m_pMaskSprite->runAction(EaseSineOut::create(FadeOut::create(0.5f)));
-                AudioEngine::play2d("rainbowmodeok.wav", false, 0.5f);
+                AudioEngine::play2d("rainbowmodeok.wav");
             }
         }
     }
@@ -145,7 +145,7 @@ void SkillButton::onRainbowRowValueChange(cocos2d::EventCustom* sender)
                 m_bTouchEnable = true;
                 m_pRootNode->runAction(EaseBackInOut::create(ScaleTo::create(0.5f, 1.0f)));
                 m_pMaskSprite->runAction(EaseSineOut::create(FadeOut::create(0.5f)));
-                AudioEngine::play2d("rainbowmodeok.wav", false, 0.5f);
+                AudioEngine::play2d("rainbowmodeok.wav");
             }
         }
     }

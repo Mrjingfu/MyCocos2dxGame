@@ -198,7 +198,6 @@ void RunController::destroy()
     if(m_pRainbow)
     {
         AudioEngine::stop(m_nSpeedupSoundID);
-        m_pRainbow->getTrail()->removeNode(m_pRainbow);
         m_bHasShowRainbow = false;
     }
     m_pMainLayer->removeAllChildren();
