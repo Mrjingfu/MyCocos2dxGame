@@ -105,22 +105,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../Classes/UI/GameUI.cpp"
-            timestampString = "461821661.313532"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "309"
-            endingLineNumber = "309"
-            landmarkName = "GameUI::onShopBuyGold(cocos2d::Ref *ref)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "../Classes/PopUp/RolePopUpUI.cpp"
             timestampString = "461767182.289271"
             startingColumnNumber = "9223372036854775807"
@@ -166,16 +150,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../cocos2d/cocos/2d/CCSpriteFrameCache.cpp"
-            timestampString = "462091597.801606"
+            filePath = "../cocos2d/cocos/ui/UIButton.cpp"
+            timestampString = "462164714.563164"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "210"
-            endingLineNumber = "210"
-            landmarkName = "SpriteFrameCache::addSpriteFramesWithFile(const std::string&amp; plist, Texture2D *texture)"
+            startingLineNumber = "199"
+            endingLineNumber = "199"
+            landmarkName = "Button::ignoreContentAdaptWithSize(bool ignore)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

@@ -122,7 +122,9 @@ void AppDelegate::applicationDidEnterBackground() {
 // this function will be called when the app is active again
 void AppDelegate::applicationWillEnterForeground() {
     Director::getInstance()->startAnimation();
-
+    if (UIManager::getInstance()->getGameId() == UIManager::UI_GROUND_GAME) {
+        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_MAZEJUMP_SHOW_ADA);
+    }
     // if you use SimpleAudioEngine, it must resume here
     AudioEngine::resumeAll();
 }

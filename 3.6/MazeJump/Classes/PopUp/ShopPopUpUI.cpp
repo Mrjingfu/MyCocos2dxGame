@@ -174,7 +174,7 @@ bool ShopPopUpUI::init()
 
     cocos2d::Label* coin1_money_NumLabel = Label::createWithSystemFont(conin1, FONT_FXZS, 30);
     coin1_money_NumLabel->setPosition(Vec2(size.width*0.4+5*scale, size.height*0.61-18*scale));
-    coin1_money_NumLabel->setScale(scale*0.8);
+    coin1_money_NumLabel->setScale(scale*0.72);
     goldProductLayer->addChild(coin1_money_NumLabel);
 
     
@@ -191,7 +191,7 @@ bool ShopPopUpUI::init()
     
     cocos2d::Label* coin2_money_NumLabel = Label::createWithSystemFont(conin2, FONT_FXZS, 30);
     coin2_money_NumLabel->setPosition(Vec2(size.width*0.4+goldBuyBtn->getContentSize().width*scale+55*scale, size.height*0.61-18*scale));
-    coin2_money_NumLabel->setScale(scale*0.8);
+    coin2_money_NumLabel->setScale(scale*0.72);
     goldProductLayer->addChild(coin2_money_NumLabel);
     
     cocos2d::ui::Button* coin3_Btn = cocos2d::ui::Button::create("btn_gold3_normal.png","btn_gold3_pressed.png","",cocos2d::ui::TextureResType::PLIST);
@@ -206,10 +206,10 @@ bool ShopPopUpUI::init()
     
     cocos2d::Label* coin3_money_NumLabel = Label::createWithSystemFont(conin3, FONT_FXZS, 30);
     coin3_money_NumLabel->setPosition(Vec2(size.width*0.4+5*scale, size.height*0.61-heartBuyBtn->getContentSize().width*scale-46*scale));
-    coin3_money_NumLabel->setScale(scale*0.8);
+    coin3_money_NumLabel->setScale(scale*0.72);
     goldProductLayer->addChild(coin3_money_NumLabel);
     
-    cocos2d::ui::Button* coin4_Btn = cocos2d::ui::Button::create("btn_gold4_normal.png","btn_gold4_pressed.png");
+    cocos2d::ui::Button* coin4_Btn = cocos2d::ui::Button::create("btn_gold4_normal.png","btn_gold4_pressed.png","",cocos2d::ui::TextureResType::PLIST);
     coin4_Btn->setPosition(Vec2(size.width*0.4+coin2_Btn->getContentSize().width*scale+50*scale, size.height*0.61-heartBuyBtn->getContentSize().width*scale-30*scale ));
     coin4_Btn->setScale(scale*1.2);
     goldProductLayer->addChild(coin4_Btn);
@@ -221,7 +221,7 @@ bool ShopPopUpUI::init()
     
     cocos2d::Label* coin4_money_NumLabel = Label::createWithSystemFont(conin4, FONT_FXZS, 30);
     coin4_money_NumLabel->setPosition(Vec2(size.width*0.4+goldBuyBtn->getContentSize().width*scale+55*scale, size.height*0.61-heartBuyBtn->getContentSize().width*scale-46*scale));
-    coin4_money_NumLabel->setScale(scale*0.8);
+    coin4_money_NumLabel->setScale(scale*0.72);
     goldProductLayer->addChild(coin4_money_NumLabel);
     
     
@@ -237,7 +237,7 @@ bool ShopPopUpUI::init()
     
     cocos2d::Label* coin5_money_NumLabel = Label::createWithSystemFont(conin5, FONT_FXZS, 30);
     coin5_money_NumLabel->setPosition(Vec2(size.width*0.4, size.height*0.61-heartBuyBtn->getContentSize().width*2*scale-83*scale));
-    coin5_money_NumLabel->setScale(scale*0.8);
+    coin5_money_NumLabel->setScale(scale*0.72);
     goldProductLayer->addChild(coin5_money_NumLabel);
     
     

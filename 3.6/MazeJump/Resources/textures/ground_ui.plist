@@ -7,11 +7,11 @@
             <key>btn_challenge_failed_back_cn.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1407,918},{220,72}}</string>
+                <string>{{1290,918},{220,72}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <true/>
+                <false/>
                 <key>sourceColorRect</key>
                 <string>{{0,0},{220,72}}</string>
                 <key>sourceSize</key>
@@ -20,11 +20,11 @@
             <key>btn_challenge_failed_back_en.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{994,1013},{220,72}}</string>
+                <string>{{1068,918},{220,72}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <true/>
+                <false/>
                 <key>sourceColorRect</key>
                 <string>{{0,0},{220,72}}</string>
                 <key>sourceSize</key>
@@ -111,28 +111,28 @@
             <key>challengeaward_cn.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,1019},{245,227}}</string>
+                <string>{{1996,2},{195,48}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{245,227}}</string>
+                <string>{{0,0},{195,48}}</string>
                 <key>sourceSize</key>
-                <string>{245,227}</string>
+                <string>{195,48}</string>
             </dict>
             <key>challengeaward_en.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1068,918},{337,223}}</string>
+                <string>{{1996,199},{337,41}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{337,223}}</string>
+                <string>{{0,0},{337,41}}</string>
                 <key>sourceSize</key>
-                <string>{337,223}</string>
+                <string>{337,41}</string>
             </dict>
             <key>jumptip_mazejump_cn.png</key>
             <dict>
@@ -274,7 +274,7 @@
             <key>size</key>
             <string>{2048,2048}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:466abc05823ada7576b4dcb44b81997f:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:0d5f34511a61265595e184b2af483eb4:1/1$</string>
             <key>textureFileName</key>
             <string>ground_ui.png</string>
         </dict>

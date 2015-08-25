@@ -14,6 +14,7 @@
 #include "PausePopUpUI.h"
 #include "storage/local-storage/LocalStorage.h"
 #include "NativeBridge.h"
+#include "RegionButton.h"
 USING_NS_CC;
 
 GameUI* GameUI::create()
@@ -70,13 +71,15 @@ bool GameUI::init()
     float scale = size.width /640.0f;
     
     
-    cocos2d::ui::Button* goldBuyBtn = cocos2d::ui::Button::create("btn_plus_normal.png","btn_plus_pressed.png","",cocos2d::ui::TextureResType::PLIST);
+    RegionButton* goldBuyBtn = RegionButton::create("btn_plus_normal.png","btn_plus_pressed.png","",cocos2d::ui::TextureResType::PLIST);
+    goldBuyBtn->setTouchRegionSize(cocos2d::Size(150*scale, goldBuyBtn->getContentSize().width*scale));
     goldBuyBtn->setPosition(Vec2(25*scale, size.height*0.95));
     goldBuyBtn->setScale(scale);
     addChild(goldBuyBtn);
     
     
-    cocos2d::ui::Button* heartBuyBtn = cocos2d::ui::Button::create("btn_plus_normal.png","btn_plus_pressed.png","",cocos2d::ui::TextureResType::PLIST);
+    RegionButton* heartBuyBtn = RegionButton::create("btn_plus_normal.png","btn_plus_pressed.png","",cocos2d::ui::TextureResType::PLIST);
+    heartBuyBtn->setTouchRegionSize(cocos2d::Size(150*scale, heartBuyBtn->getContentSize().width*scale));
     heartBuyBtn->setPosition(Vec2(25*scale, size.height*0.95-50*scale));
     heartBuyBtn->setScale(scale);
     addChild(heartBuyBtn);
@@ -99,7 +102,8 @@ bool GameUI::init()
     m_pSkillBtn->setScale(scale);
     addChild(m_pSkillBtn);
     
-    cocos2d::ui::Button* helpBtn = cocos2d::ui::Button::create("ui_question.png","","",cocos2d::ui::TextureResType::PLIST);
+    RegionButton* helpBtn = RegionButton::create("ui_question.png","","",cocos2d::ui::TextureResType::PLIST);
+    helpBtn->setTouchRegionSize(cocos2d::Size(130*scale, helpBtn->getContentSize().height*scale+15*scale));
     helpBtn->setPosition(Vec2(size.width*0.93, size.height*0.03));
     helpBtn->setScale(scale);
     addChild(helpBtn);

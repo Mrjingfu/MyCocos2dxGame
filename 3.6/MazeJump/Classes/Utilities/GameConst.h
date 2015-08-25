@@ -65,6 +65,7 @@ static const std::string EVENT_RUNNER_PAUSE_RESUME = "RUNNER_PAUSE_RESUME";
 static const std::string EVENT_MAZEJUMP_WIN = "MAZEJUMP_WIN";
 static const std::string EVENT_MAZEJUMP_LOSE = "MAZEJUMP_LOSE";
 static const std::string EVENT_MAZEJUMP_RECORD_END = "MAZEJUMP_RECORD_END";
+static const std::string EVENT_MAZEJUMP_SHOW_ADA = "MAZEJUMP_SHOW_ADA";
 static const std::string EVENT_START_GOLD_CHANGE = "START_GOLD_CHANGE";
 static const std::string EVENT_START_HEART_CHANGE = "START_HEART_CHANGE";
 static const std::string EVENT_CHARACTER_MODEL_CHANGE = "CHARACTER_MODEL_CHANGE";
