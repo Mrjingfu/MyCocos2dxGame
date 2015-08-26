@@ -171,7 +171,17 @@ void SdkBoxManager::onProductRequestSuccess(const std::vector<sdkbox::Product>& 
 }
 void SdkBoxManager::onProductRequestFailure(const std::string& msg)
 {
+   
     CCLOG("Fail to request products! %s", msg.c_str());
+#if  CC_TARGET_PLATFORM == CC_PLATFORM_IOS
+    sdkbox::IAP::refresh();
+#elif CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
+    Director::getInstance()->getScheduler()->schedule(CC_SCHEDULE_SELECTOR(SdkBoxManager::onProductAndroidRefresh), this, 5.0f, false);
+#endif
+}
+void SdkBoxManager::onProductAndroidRefresh(float dt)
+{
+    CCLOG("onProductAndroidRefresh:%f",dt);
     sdkbox::IAP::refresh();
 }
 void SdkBoxManager::onRestoreComplete(bool ok, const std::string &msg)
@@ -183,7 +193,7 @@ void SdkBoxManager::onRestoreComplete(bool ok, const std::string &msg)
 void SdkBoxManager::registerGoogleAnalytics()
 {
     sdkbox::PluginGoogleAnalytics::init();
-    sdkbox::PluginGoogleAnalytics::enableAdvertisingTracking(true);
+//    sdkbox::PluginGoogleAnalytics::enableAdvertisingTracking(true);
 }
 void SdkBoxManager::logScreen(std::string title)
 {
