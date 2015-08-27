@@ -24,7 +24,10 @@ public:
     void setRootViewController(RootViewController* viewController);
     void openItunesURL();
 #endif
-    
+
+#if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
+    void exitGame();
+#endif
     void initAdmob();
     void showAdsView();
     void hideAdsView();

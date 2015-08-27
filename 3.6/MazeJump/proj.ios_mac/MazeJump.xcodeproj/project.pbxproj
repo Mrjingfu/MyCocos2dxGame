@@ -422,6 +422,8 @@
 		EC96D73F1B60F47E009C64F5 /* 5x5-8.tmx in Resources */ = {isa = PBXBuildFile; fileRef = EC96D7331B608850009C64F5 /* 5x5-8.tmx */; };
 		EC96D7481B610BBD009C64F5 /* StepManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC96D7461B610BBD009C64F5 /* StepManager.cpp */; };
 		EC96D7491B612495009C64F5 /* StepManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC96D7461B610BBD009C64F5 /* StepManager.cpp */; };
+		EC9BAD7D1B8F07D200F49605 /* GroundGiveUpPopUpUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC9BAD7B1B8F07D200F49605 /* GroundGiveUpPopUpUI.cpp */; };
+		EC9BAD7E1B8F093200F49605 /* GroundGiveUpPopUpUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC9BAD7B1B8F07D200F49605 /* GroundGiveUpPopUpUI.cpp */; };
 		ECA02B781B5F72F6007EFC0F /* sky2.png in Resources */ = {isa = PBXBuildFile; fileRef = ECA02B771B5F72F6007EFC0F /* sky2.png */; };
 		ECA842741B8C1B190053232F /* RegionButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECA842721B8C1B190053232F /* RegionButton.cpp */; };
 		ECA842751B8C1D560053232F /* RegionButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECA842721B8C1B190053232F /* RegionButton.cpp */; };
@@ -814,6 +816,8 @@
 		EC96D7331B608850009C64F5 /* 5x5-8.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "5x5-8.tmx"; sourceTree = "<group>"; };
 		EC96D7461B610BBD009C64F5 /* StepManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StepManager.cpp; sourceTree = "<group>"; };
 		EC96D7471B610BBD009C64F5 /* StepManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StepManager.h; sourceTree = "<group>"; };
+		EC9BAD7B1B8F07D200F49605 /* GroundGiveUpPopUpUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GroundGiveUpPopUpUI.cpp; sourceTree = "<group>"; };
+		EC9BAD7C1B8F07D200F49605 /* GroundGiveUpPopUpUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroundGiveUpPopUpUI.h; sourceTree = "<group>"; };
 		ECA02B771B5F72F6007EFC0F /* sky2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sky2.png; sourceTree = "<group>"; };
 		ECA842721B8C1B190053232F /* RegionButton.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RegionButton.cpp; sourceTree = "<group>"; };
 		ECA842731B8C1B190053232F /* RegionButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegionButton.h; sourceTree = "<group>"; };
@@ -1443,6 +1447,8 @@
 		EC1D3ECF1B7C963100C9911D /* PopUp */ = {
 			isa = PBXGroup;
 			children = (
+				EC9BAD7B1B8F07D200F49605 /* GroundGiveUpPopUpUI.cpp */,
+				EC9BAD7C1B8F07D200F49605 /* GroundGiveUpPopUpUI.h */,
 				ECC2E48B1B8AF1EA00AF699B /* ShopPopUpUI.cpp */,
 				EC19EEE21B802AE600BC2827 /* GroundRecordPopUpUI.cpp */,
 				EC19EEE31B802AE600BC2827 /* GroundRecordPopUpUI.h */,
@@ -1954,6 +1960,7 @@
 				EC1D3EE01B7C963100C9911D /* BasePopUpUI.cpp in Sources */,
 				EC1D3E8B1B7C3A1200C9911D /* GroundGameUI.cpp in Sources */,
 				5587F3821B7B22FC00279D49 /* SkillButton.cpp in Sources */,
+				EC9BAD7D1B8F07D200F49605 /* GroundGiveUpPopUpUI.cpp in Sources */,
 				EC7C20631B7F298C00EECFBB /* RoleManager.cpp in Sources */,
 				5542EEB61B3942FE00CD9496 /* MenuScene.cpp in Sources */,
 				5592AE0C1B5F2A8C0062AF08 /* TerrainLayer.cpp in Sources */,
@@ -2007,6 +2014,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC9BAD7E1B8F093200F49605 /* GroundGiveUpPopUpUI.cpp in Sources */,
 				ECA842751B8C1D560053232F /* RegionButton.cpp in Sources */,
 				ECC2E48D1B8AF1F600AF699B /* ShopPopUpUI.cpp in Sources */,
 				EC1B24281B8209F000066566 /* GameCenterController.mm in Sources */,
@@ -2088,8 +2096,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				CODE_SIGN_IDENTITY = "iOS Development: haibo wang (FT8YEJMWBH)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iOS Development: haibo wang (FT8YEJMWBH)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: quanlan huang (L4MC53BS3Z)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: quanlan huang (L4MC53BS3Z)";
 				COMPRESS_PNG_FILES = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2122,7 +2130,7 @@
 					"$(_COCOS_LIB_IOS_BEGIN)",
 					"$(_COCOS_LIB_IOS_END)",
 				);
-				PROVISIONING_PROFILE = "74d5622f-88bd-4f34-aa11-6a06562d9fb3";
+				PROVISIONING_PROFILE = "22b9a94d-953a-486e-a5b1-5b20c81c69a3";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "$(_COCOS_HEADER_IOS_BEGIN) $(_COCOS_HEADER_IOS_END)";
@@ -2134,8 +2142,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				CODE_SIGN_IDENTITY = "iOS Distribution: haibo wang";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iOS Distribution: haibo wang";
+				CODE_SIGN_IDENTITY = "iPhone Developer: quanlan huang (L4MC53BS3Z)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: quanlan huang (L4MC53BS3Z)";
 				COMPRESS_PNG_FILES = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2166,7 +2174,7 @@
 					"$(_COCOS_LIB_IOS_BEGIN)",
 					"$(_COCOS_LIB_IOS_END)",
 				);
-				PROVISIONING_PROFILE = "a27b4719-b990-4ed3-a14c-59c226c3275b";
+				PROVISIONING_PROFILE = "22b9a94d-953a-486e-a5b1-5b20c81c69a3";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "$(_COCOS_HEADER_IOS_BEGIN) $(_COCOS_HEADER_IOS_END)";

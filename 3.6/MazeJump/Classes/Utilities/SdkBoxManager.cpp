@@ -193,7 +193,7 @@ void SdkBoxManager::onRestoreComplete(bool ok, const std::string &msg)
 void SdkBoxManager::registerGoogleAnalytics()
 {
     sdkbox::PluginGoogleAnalytics::init();
-//    sdkbox::PluginGoogleAnalytics::enableAdvertisingTracking(true);
+    sdkbox::PluginGoogleAnalytics::enableAdvertisingTracking(true);
 }
 void SdkBoxManager::logScreen(std::string title)
 {

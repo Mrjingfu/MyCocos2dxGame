@@ -14,6 +14,7 @@
 #include "NativeBridge.h"
 #include "ShopPopUpUI.h"
 #include "RegionButton.h"
+#include "GroundGiveUpPopUpUI.h"
 #include "storage/local-storage/LocalStorage.h"
 USING_NS_CC;
 
@@ -47,11 +48,12 @@ void GroundGameUI::onEnter()
 }
 void GroundGameUI::onExit()
 {
-    Layer::onExit();
+
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_MAZEJUMP_WIN);
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_MAZEJUMP_LOSE);
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_MAZEJUMP_RECORD_END);
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_MAZEJUMP_SHOW_ADA);
+    Layer::onExit();
 }
 void GroundGameUI::onShowAda(cocos2d::EventCustom *sender)
 {
@@ -85,6 +87,12 @@ bool GroundGameUI::init()
     goldBuyBtn->addClickEventListener(CC_CALLBACK_1(GroundGameUI::onShopBuyGold, this));
     
     heartBuyBtn->addClickEventListener(CC_CALLBACK_1(GroundGameUI::onShopBuyHeart, this));
+    
+    cocos2d::ui::Button* giveImg = cocos2d::ui::Button::create("btn_pause_normal.png","btn_pause_pressed.png","",cocos2d::ui::TextureResType::PLIST);
+    giveImg->setPosition(Vec2(size.width*0.9, size.height*0.93));
+    giveImg->setScale(scale);
+    addChild(giveImg);
+    giveImg->addClickEventListener(CC_CALLBACK_1(GroundGameUI::onGiveUp, this));
     
     
     cocos2d::ui::ImageView* awardImg = cocos2d::ui::ImageView::create(UtilityHelper::getLocalString("UI_GROUND_AWARD_TV"),cocos2d::ui::TextureResType::PLIST);
@@ -169,9 +177,16 @@ bool GroundGameUI::init()
     {
         helpLayer ->setVisible(false);
     }
-
+    auto listenerkeyPad = EventListenerKeyboard::create();
+    listenerkeyPad->onKeyReleased = CC_CALLBACK_2(GroundGameUI::onKeyPressed, this);
+    _eventDispatcher->addEventListenerWithSceneGraphPriority(listenerkeyPad, this);
     
     return true;
+}
+void GroundGameUI::onGiveUp(cocos2d::Ref *ref)
+{
+    UIManager::getInstance()->addPopUp(BasePopUpUI::POPUP_GIVE_UP);
+    UIManager::getInstance()->showPopUp();
 }
 void GroundGameUI::onShopBuyGold(cocos2d::Ref *ref)
 {
@@ -233,5 +248,17 @@ void GroundGameUI::onGroundRecordEnd(cocos2d::EventCustom *sender)
     cocos2d::experimental::AudioEngine::play2d("mazejump_sucess.wav", false, 0.5f);
     UIManager::getInstance()->addPopUp(BasePopUpUI::POPUP_GROUND_RECOVER);
     UIManager::getInstance()->showPopUp();
+}
+void GroundGameUI::onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event *event)
+{
+    if (keyCode == EventKeyboard::KeyCode::KEY_ESCAPE) {
+        CCLOG("GroundGameUI onKeyPressed");
+        GroundGiveUpPopUpUI* giveUpPopUpUi = static_cast<GroundGiveUpPopUpUI*>(UIManager::getInstance()->getPopUpUI(BasePopUpUI::POPUP_GIVE_UP));
+        if (!giveUpPopUpUi) {
+            UIManager::getInstance()->addPopUp(BasePopUpUI::POPUP_GIVE_UP);
+            UIManager::getInstance()->showPopUp();
+        }
+        
+    }
 }
 

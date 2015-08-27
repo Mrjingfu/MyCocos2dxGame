@@ -78,6 +78,12 @@
 	<string>jumptip_mazejump_cn.png</string>
 	<key>UI_GROUND_RULE_TIPS</key>
 	<string>rulestip_cn.png</string>
+	<key>UI_GROUND_GIVEUP_PANEL</key>
+	<string>panel_challengegiveup_cn.png</string>
+	<key>UI_GROUND_BTN_GIVEUP_OK</key>
+	<string>btn_giveup_ok_cn.png</string>
+	<key>UI_GROUND_BTN_GIVEUP_CANCEL</key>
+	<string>btn_giveup_cancel_cn.png</string>
 	<key>UI_GAMEINFO_TIPS</key>
 	<string>gameinfotip_cn.png</string>
 	<key>UI_HELP_TIPS</key>

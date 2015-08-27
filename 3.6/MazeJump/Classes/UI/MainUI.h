@@ -18,6 +18,7 @@ protected:
     virtual ~MainUI();
     bool init();
 public:
+    virtual void onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event) override;
     static MainUI* create();
     void onPlayGame(Ref* ref);
     void onShop(Ref* ref);
@@ -26,10 +27,12 @@ public:
     void onComment(Ref* ref);
     void showStarUi();
     void showShopUi();
+    
 private:
 
     cocos2d::ui::Button* soundBtn;
     int  m_nBgID;
+
 };
 
 #endif /* defined(__MazeJump__MainUI__) */

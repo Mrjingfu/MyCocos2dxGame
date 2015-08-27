@@ -21,19 +21,21 @@ public:
     virtual void onEnter() override;
     virtual void onExit() override;
     static GameUI* create();
-    
-     virtual bool onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event) override;
+
+    virtual bool onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event) override;
+    virtual void onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event) override;
 private:
     int m_conut;
     bool isRecover;
     bool isShwoHelp;
     bool isDead;
     bool isTouchShopBuy;
+    bool isTouchKeyBack;
     cocos2d::Layer* m_maskLayerBg;
     cocos2d::ui::ImageView* m_countDonwImg;
     cocos2d::ui::Button* pauseImg;
     cocos2d::LayerColor* helpLayer;
-
+    
     void onPauseEvent(cocos2d::EventCustom* sender);
     
     void showPause();

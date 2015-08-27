@@ -32,8 +32,11 @@ import java.util.Hashtable;
 
 import org.cocos2dx.lib.Cocos2dxActivity;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.os.Handler;
@@ -343,5 +346,33 @@ public class AppActivity extends Cocos2dxActivity {
 
 	public static void logWithUserData(Hashtable<String, String> data) {
 		final Hashtable<String, String> curData = data;
+	}
+	
+	public static void exitGame()
+	{
+		context.runOnUiThread(new Runnable() {
+			
+			@Override
+			public void run() {
+				AlertDialog.Builder builder = new AlertDialog.Builder(context);  
+                builder.setMessage("确定退出吗?");  
+                builder.setIcon(android.R.drawable.ic_dialog_info);  
+                builder.setPositiveButton("确定", new OnClickListener() {  
+                       
+                    @Override  
+                    public void onClick(DialogInterface dialog, int which) {
+                    	context.finish();
+                        System.exit(0);                       
+                    }  
+                });  
+                builder.setNegativeButton("取消", new OnClickListener() {  
+                       
+                    @Override  
+                    public void onClick(DialogInterface dialog, int which) {  
+                        dialog.dismiss();   
+                    }  
+                }).show();           
+			}
+		});
 	}
 }

@@ -128,12 +128,12 @@ void GameInfoUI::setCurrentLayerVisible(bool isVisible)
 }
  void GameInfoUI::onExit()
 {
-    Layer::onExit();
+    
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_RUNNER_LOSE_CHANGE_VIEW);
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_MAX_DISTANCE_CHANGE);
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_GOLD_CHANGE);
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_HEART_CHANGE);
-    
+    Layer::onExit();
 }
 
 void GameInfoUI::onRunnerLoseChangeView(cocos2d::EventCustom* sender)

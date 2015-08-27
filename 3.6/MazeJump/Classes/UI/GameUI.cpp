@@ -32,18 +32,25 @@ GameUI* GameUI::create()
 GameUI::GameUI()
 {
     m_conut = 3;
-    m_maskLayerBg = nullptr;
-    m_countDonwImg = nullptr;
-    pauseImg = nullptr;
-    helpLayer = nullptr;
-    isRecover = false;
-    isShwoHelp= false;
-    isDead = false;
-    isTouchShopBuy = false;
-    m_pSkillBtn = nullptr;
+    m_maskLayerBg       = nullptr;
+    m_countDonwImg      = nullptr;
+    pauseImg            = nullptr;
+    helpLayer           = nullptr;
+    m_pSkillBtn         = nullptr;
+    
+    isRecover           = false;
+    isShwoHelp          = false;
+    isDead              = false;
+    isTouchShopBuy      = false;
+    isTouchKeyBack      = false;
 }
 GameUI::~GameUI()
 {
+    isRecover           = false;
+    isShwoHelp          = false;
+    isDead              = false;
+    isTouchShopBuy      = false;
+    isTouchKeyBack      = false;
 }
 void GameUI::onEnter()
 {
@@ -58,11 +65,11 @@ void GameUI::onEnter()
 }
 void GameUI::onExit()
 {
-    Layer::onExit();
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_RUNNER_LOSE);
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_RUNNER_RECOVER_PAUSE);
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_RUNNER_PAUSE_RESUME);
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_GAME_PAUSE);
+    Layer::onExit();
 }
 
 bool GameUI::init()
@@ -186,7 +193,9 @@ bool GameUI::init()
     {
         helpLayer ->setVisible(false);
     }
-    
+    auto listenerkeyPad = EventListenerKeyboard::create();
+    listenerkeyPad->onKeyReleased = CC_CALLBACK_2(GameUI::onKeyPressed, this);
+    _eventDispatcher->addEventListenerWithSceneGraphPriority(listenerkeyPad, this);
 
     return true;
 }
@@ -267,9 +276,11 @@ void GameUI::onEventSetResume(cocos2d::EventCustom *sender)
 void GameUI::onRecoverPause(cocos2d::EventCustom *sender)
 {
     CCLOG("onRecoverPause");
-    m_maskLayerBg->setVisible(true);
-    m_countDonwImg->setVisible(true);
-    m_conut=3;
+    if (m_maskLayerBg)
+        m_maskLayerBg->setVisible(true);
+    if (m_countDonwImg)
+        m_countDonwImg->setVisible(true);
+    m_conut=2;
     this->schedule(schedule_selector(GameUI::onResumeAn), 1.0f);
     
 }
@@ -283,6 +294,8 @@ void GameUI::onResumeAn(float dt)
             m_countDonwImg->setVisible(false);
             m_countDonwImg->loadTexture(StringUtils::format("ui_count_down_%d.png",3),cocos2d::ui::TextureResType::PLIST);
             isRecover = false;
+            isTouchKeyBack = false;
+            isTouchShopBuy = false;
             unschedule(schedule_selector(GameUI::onResumeAn));
     }
     else
@@ -335,11 +348,22 @@ void GameUI::onShopBuyHeart(cocos2d::Ref *ref)
 void GameUI::onShopBuyEvenet(cocos2d::EventCustom *sender)
 {
     if (isTouchShopBuy) {
-        isTouchShopBuy = false;
-        m_maskLayerBg->setVisible(true);
-        m_countDonwImg->setVisible(true);
-        m_conut=3;
-        this->schedule(schedule_selector(GameUI::onResumeAn), 1.0f);
-
+        onRecoverPause(sender);
+    }
+}
+void GameUI::onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event *event)
+{
+    if (keyCode == EventKeyboard::KeyCode::KEY_ESCAPE) {
+        if (isTouchKeyBack)
+            return;
+        if (isDead)
+            return;
+        if(isTouchShopBuy)
+            return;
+        isTouchKeyBack = true;
+        PausePopUpUI* pausePopUp = static_cast<PausePopUpUI*>(UIManager::getInstance()->getPopUpUI(BasePopUpUI::POPUP_PAUSE));
+        if (!pausePopUp) {
+            showPause();
+        }
     }
 }

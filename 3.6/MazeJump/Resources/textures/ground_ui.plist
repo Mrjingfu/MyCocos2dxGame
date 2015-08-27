@@ -7,7 +7,7 @@
             <key>btn_challenge_failed_back_cn.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1290,918},{220,72}}</string>
+                <string>{{1744,1105},{220,72}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -20,7 +20,7 @@
             <key>btn_challenge_failed_back_en.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1068,918},{220,72}}</string>
+                <string>{{1522,1105},{220,72}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -33,7 +33,7 @@
             <key>btn_challenge_failed_help_cn.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{460,575},{220,77}}</string>
+                <string>{{460,1019},{220,77}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -46,7 +46,7 @@
             <key>btn_challenge_failed_help_en.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{460,353},{220,77}}</string>
+                <string>{{495,797},{220,77}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -59,7 +59,7 @@
             <key>btn_challenge_success_back_cn.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{994,791},{220,72}}</string>
+                <string>{{1966,1031},{220,72}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -72,7 +72,59 @@
             <key>btn_challenge_success_back_en.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{460,797},{220,72}}</string>
+                <string>{{1744,1031},{220,72}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{220,72}}</string>
+                <key>sourceSize</key>
+                <string>{220,72}</string>
+            </dict>
+            <key>btn_giveup_cancel_cn.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{495,575},{220,77}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{220,77}}</string>
+                <key>sourceSize</key>
+                <string>{220,77}</string>
+            </dict>
+            <key>btn_giveup_cancel_en.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{495,353},{220,77}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{220,77}}</string>
+                <key>sourceSize</key>
+                <string>{220,77}</string>
+            </dict>
+            <key>btn_giveup_ok_cn.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{1522,1031},{220,72}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{220,72}}</string>
+                <key>sourceSize</key>
+                <string>{220,72}</string>
+            </dict>
+            <key>btn_giveup_ok_en.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{460,1241},{220,72}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -137,7 +189,7 @@
             <key>jumptip_mazejump_cn.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{539,791},{453,342}}</string>
+                <string>{{1067,918},{453,342}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -163,11 +215,11 @@
             <key>panel_challenge_failed_cn.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1587,538},{456,491}}</string>
+                <string>{{574,791},{456,491}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
                 <string>{{0,0},{456,491}}</string>
                 <key>sourceSize</key>
@@ -176,7 +228,7 @@
             <key>panel_challenge_failed_en.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1094,460},{456,491}}</string>
+                <string>{{2,353},{456,491}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -189,7 +241,7 @@
             <key>panel_challenge_helpok_cn.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,686},{456,331}}</string>
+                <string>{{2,1144},{456,331}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -202,7 +254,7 @@
             <key>panel_challenge_helpok_en.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,353},{456,331}}</string>
+                <string>{{2,811},{456,331}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -215,6 +267,32 @@
             <key>panel_challenge_success_cn.png</key>
             <dict>
                 <key>frame</key>
+                <string>{{1587,538},{456,491}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{456,491}}</string>
+                <key>sourceSize</key>
+                <string>{456,491}</string>
+            </dict>
+            <key>panel_challenge_success_en.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{1094,460},{456,491}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{456,491}}</string>
+                <key>sourceSize</key>
+                <string>{456,491}</string>
+            </dict>
+            <key>panel_challengegiveup_cn.png</key>
+            <dict>
+                <key>frame</key>
                 <string>{{601,333},{456,491}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
@@ -225,7 +303,7 @@
                 <key>sourceSize</key>
                 <string>{456,491}</string>
             </dict>
-            <key>panel_challenge_success_en.png</key>
+            <key>panel_challengegiveup_en.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{1147,2},{456,491}}</string>
@@ -274,7 +352,7 @@
             <key>size</key>
             <string>{2048,2048}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:0d5f34511a61265595e184b2af483eb4:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:a22e522ec6d2d0719de0ac1404e62182:1/1$</string>
             <key>textureFileName</key>
             <string>ground_ui.png</string>
         </dict>
