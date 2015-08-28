@@ -168,6 +168,10 @@ void SdkBoxManager::onProductRequestSuccess(const std::vector<sdkbox::Product>& 
         CCLOG("IAP: Price Value: %f", _products[i].priceValue);
     }
 #endif
+   
+#if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
+     Director::getInstance()->getScheduler()->unschedule(CC_SCHEDULE_SELECTOR(SdkBoxManager::onProductAndroidRefresh), this);
+#endif
 }
 void SdkBoxManager::onProductRequestFailure(const std::string& msg)
 {
