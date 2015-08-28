@@ -8,6 +8,7 @@
 
 #include <stdio.h>
 #include "NativeBridge.h"
+#include "storage/local-storage/LocalStorage.h"
 #include "jni/JniHelper.h"
 USING_NS_CC;
 static NativeBridge *s_NativeBridge = nullptr;
@@ -168,6 +169,9 @@ std::string NativeBridge::generateUUID()
 }
 void NativeBridge::initAdmob()
 {
+    std::string remove = localStorageGetItem("RemoveAds");
+    if(remove.empty())
+        localStorageSetItem("RemoveAds", "false");
 }
 
 void NativeBridge::exitGame()

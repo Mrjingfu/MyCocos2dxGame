@@ -253,6 +253,11 @@ void GroundGameUI::onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d
 {
     if (keyCode == EventKeyboard::KeyCode::KEY_ESCAPE) {
         CCLOG("GroundGameUI onKeyPressed");
+        ShopPopUpUI* shopPopUi = static_cast<ShopPopUpUI*>(UIManager::getInstance()->getPopUpUI(BasePopUpUI::POPUP_SHOP));
+        if (shopPopUi) {
+            return;
+        }
+        
         GroundGiveUpPopUpUI* giveUpPopUpUi = static_cast<GroundGiveUpPopUpUI*>(UIManager::getInstance()->getPopUpUI(BasePopUpUI::POPUP_GIVE_UP));
         if (!giveUpPopUpUi) {
             UIManager::getInstance()->addPopUp(BasePopUpUI::POPUP_GIVE_UP);

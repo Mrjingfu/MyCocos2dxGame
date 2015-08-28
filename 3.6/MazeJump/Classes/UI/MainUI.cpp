@@ -13,6 +13,7 @@
 #include "UIManager.h"
 #include "AudioEngine.h"
 #include "UtilityHelper.h"
+#include "ShopPopUpUI.h"
 #include "storage/local-storage/LocalStorage.h"
 #include "GameCenterController.h"
 #include "AudioEngine.h"
@@ -131,6 +132,11 @@ void MainUI::onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Even
 {
     if (keyCode == EventKeyboard::KeyCode::KEY_ESCAPE) {
         CCLOG("MainUI onKeyPressed");
+        StarPopUpUI* startPopUi = static_cast<StarPopUpUI*>(UIManager::getInstance()->getPopUpUI(BasePopUpUI::POPUP_START));
+        ShopPopUpUI* shopPopUi = static_cast<ShopPopUpUI*>(UIManager::getInstance()->getPopUpUI(BasePopUpUI::POPUP_SHOP));
+        if (startPopUi || shopPopUi)
+            return;
+        
 #if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
         NativeBridge::getInstance()->exitGame();
 #endif
