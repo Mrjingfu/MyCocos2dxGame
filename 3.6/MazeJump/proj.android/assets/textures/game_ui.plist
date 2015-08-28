@@ -30,32 +30,6 @@
                 <key>sourceSize</key>
                 <string>{78,76}</string>
             </dict>
-            <key>btn_pause_normal.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{635,558},{63,61}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{63,61}}</string>
-                <key>sourceSize</key>
-                <string>{63,61}</string>
-            </dict>
-            <key>btn_pause_pressed.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{635,495},{63,61}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{63,61}}</string>
-                <key>sourceSize</key>
-                <string>{63,61}</string>
-            </dict>
             <key>btn_play_normal.png</key>
             <dict>
                 <key>frame</key>
@@ -339,7 +313,7 @@
             <key>size</key>
             <string>{2048,1024}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:ea164ecdeca463148fbd8c1e52ce8ae8:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:aabf2c2f5b9fc4a104eb90401008c2b7:1/1$</string>
             <key>textureFileName</key>
             <string>game_ui.png</string>
         </dict>

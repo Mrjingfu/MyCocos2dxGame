@@ -21,6 +21,7 @@ public:
     virtual void onEnter() override;
     virtual void onExit() override;
     static GroundGameUI* create();
+    virtual void onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event) override;
 private:
     bool isShwoHelp;
     cocos2d::LayerColor* helpLayer;
@@ -32,6 +33,7 @@ private:
     void onShowAdaDelayTime();
     void onShopBuyGold(Ref* ref);
     void onShopBuyHeart(Ref* ref);
+    void onGiveUp(Ref* ref);
 };
 
 #endif /* defined(__MazeJump__GameUI__) */

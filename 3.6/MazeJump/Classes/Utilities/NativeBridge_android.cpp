@@ -8,6 +8,7 @@
 
 #include <stdio.h>
 #include "NativeBridge.h"
+#include "storage/local-storage/LocalStorage.h"
 #include "jni/JniHelper.h"
 USING_NS_CC;
 static NativeBridge *s_NativeBridge = nullptr;
@@ -168,4 +169,29 @@ std::string NativeBridge::generateUUID()
 }
 void NativeBridge::initAdmob()
 {
+    std::string remove = localStorageGetItem("RemoveAds");
+    if(remove.empty())
+        localStorageSetItem("RemoveAds", "false");
+}
+
+void NativeBridge::exitGame()
+{
+    log("exitGame");
+    JniMethodInfo t;
+    
+    if (JniHelper::getStaticMethodInfo(t, "org/cocos2dx/cpp/AppActivity", "exitGame", "()V")) {
+        
+       t.env->CallStaticVoidMethod(t.classID, t.methodID);
+        
+        if (t.env->ExceptionOccurred()) {
+            
+            t.env->ExceptionDescribe();
+            
+            t.env->ExceptionClear();
+            
+            return;
+        }
+        t.env->DeleteLocalRef(t.classID);
+    }
+    
 }

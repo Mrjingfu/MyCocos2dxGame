@@ -13,6 +13,7 @@
 #include "UIManager.h"
 #include "AudioEngine.h"
 #include "UtilityHelper.h"
+#include "ShopPopUpUI.h"
 #include "storage/local-storage/LocalStorage.h"
 #include "GameCenterController.h"
 #include "AudioEngine.h"
@@ -35,6 +36,7 @@ MainUI* MainUI::create()
 MainUI::MainUI()
 {
     m_nBgID = AudioEngine::INVALID_AUDIO_ID;
+
 }
 MainUI::~MainUI()
 {
@@ -83,6 +85,9 @@ bool MainUI::init()
     shopBtn->addClickEventListener(CC_CALLBACK_1(MainUI::onShop, this));
     commonentBtn->addClickEventListener(CC_CALLBACK_1(MainUI::onComment, this));
 
+    auto listenerkeyPad = EventListenerKeyboard::create();
+    listenerkeyPad->onKeyReleased = CC_CALLBACK_2(MainUI::onKeyPressed, this);
+    _eventDispatcher->addEventListenerWithSceneGraphPriority(listenerkeyPad, this);
     return true;
 }
 
@@ -122,4 +127,18 @@ void MainUI::onComment(cocos2d::Ref *ref)
 #if CC_TARGET_PLATFORM == CC_PLATFORM_IOS
     NativeBridge::getInstance()->openItunesURL();
 #endif
+}
+void MainUI::onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event *event)
+{
+    if (keyCode == EventKeyboard::KeyCode::KEY_ESCAPE) {
+        CCLOG("MainUI onKeyPressed");
+        StarPopUpUI* startPopUi = static_cast<StarPopUpUI*>(UIManager::getInstance()->getPopUpUI(BasePopUpUI::POPUP_START));
+        ShopPopUpUI* shopPopUi = static_cast<ShopPopUpUI*>(UIManager::getInstance()->getPopUpUI(BasePopUpUI::POPUP_SHOP));
+        if (startPopUi || shopPopUi)
+            return;
+        
+#if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
+        NativeBridge::getInstance()->exitGame();
+#endif
+    }
 }

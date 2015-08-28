@@ -22,6 +22,7 @@
 #include "GroundLosePopUpUI.h"
 #include "GroundWinPopUpUI.h"
 #include "AudioEngine.h"
+#include "GroundGiveUpPopUpUI.h"
 #include "SdkBoxManager.h"
 USING_NS_CC;
 
@@ -224,6 +225,13 @@ BasePopUpUI* UIManager::createPopUp(BasePopUpUI::PopUp_UI popid)
             popUp = GroundRecordPopUpUI::create();
             popUp->setNotBlank(true);
         }
+            break;
+        case BasePopUpUI::POPUP_GIVE_UP:
+        {
+            popUp = GroundGiveUpPopUpUI::create();
+            popUp->setNotBlank(true);
+        }
+            break;
         default:
             break;
     }

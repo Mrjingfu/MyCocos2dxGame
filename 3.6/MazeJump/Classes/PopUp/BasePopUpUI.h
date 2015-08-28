@@ -29,9 +29,10 @@ public:
         POPUP_DEATH,
         POPUP_GROUND_WIN,
         POPUP_GROUND_LOSE,
-         POPUP_GROUND_RECOVER,
+        POPUP_GROUND_RECOVER,
         POPUP_PAUSE,
         POPUP_ROLE,
+        POPUP_GIVE_UP,
         POPUP_UNKOWN
     } PopUp_UI;
     

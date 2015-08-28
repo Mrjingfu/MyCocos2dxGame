@@ -33,7 +33,7 @@ public:
     virtual void onProductRequestSuccess(const std::vector<sdkbox::Product>& products) override;
     virtual void onProductRequestFailure(const std::string& msg) override;
     virtual void onRestoreComplete(bool ok, const std::string &msg) override;
-    
+    void onProductAndroidRefresh(float dt);
 #pragma mark GoogleAnalytics
     void registerGoogleAnalytics();
     void logScreen(std::string title);

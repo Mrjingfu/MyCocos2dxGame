@@ -126,11 +126,10 @@ void RolePopUpUI::onEnter()
 }
 void RolePopUpUI::onExit()
 {
-    BasePopUpUI::onExit();
     if (UIManager::getInstance()->getGameId() == UIManager::UI_MAIN) {
         UIManager::getInstance()->showInfo(false);
-        
     }
+    BasePopUpUI::onExit();
 }
 bool RolePopUpUI::init()
 {
