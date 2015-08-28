@@ -38,16 +38,16 @@ bool TestScene::init()
         return false;
     }
     cocos2d::Size size = Director::getInstance()->getWinSize();
-    Player* bob = ActorMgr::getInstance()->createPlayer(Player::PT_NILO);
-    if(bob)
+    Player* nilo = ActorMgr::getInstance()->createPlayer(Player::PT_NILO);
+    if(nilo)
     {
-        bob->setPosition(Vec2(size.width*0.5f, size.height*0.5f));
-        this->addChild(bob);
+        nilo->setPosition(Vec2(size.width*0.5f, size.height*0.5f));
+        this->addChild(nilo);
     }
     JoyStick* joystick = JoyStick::create();
     if(joystick)
     {
-        joystick->addJoystickListener(bob);
+        joystick->addJoystickListener(nilo);
         addChild(joystick);
     }
     return true;

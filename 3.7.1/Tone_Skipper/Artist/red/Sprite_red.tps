@@ -148,28 +148,28 @@
         </struct>
         <key>fileList</key>
         <array>
-            <filename>../../../../../../Downloads/15_8_27_9_40_15/red_back_fire_jump.png</filename>
-            <filename>../../../../../../Downloads/15_8_27_9_40_15/red_back_fire_run_01.png</filename>
-            <filename>../../../../../../Downloads/15_8_27_9_40_15/red_back_fire_run_02.png</filename>
-            <filename>../../../../../../Downloads/15_8_27_9_40_15/red_back_fire_superjump.png</filename>
-            <filename>../../../../../../Downloads/15_8_27_9_40_15/red_back_idle_01.png</filename>
-            <filename>../../../../../../Downloads/15_8_27_9_40_15/red_back_run_01.png</filename>
-            <filename>../../../../../../Downloads/15_8_27_9_40_15/red_back_run_02.png</filename>
-            <filename>../../../../../../Downloads/15_8_27_9_40_15/red_bullet.png</filename>
-            <filename>../../../../../../Downloads/15_8_27_9_40_15/red_gun.png</filename>
-            <filename>../../../../../../Downloads/15_8_27_9_40_15/red_idle_01.png</filename>
-            <filename>../../../../../../Downloads/15_8_27_9_40_15/red_idle_02.png</filename>
-            <filename>../../../../../../Downloads/15_8_27_9_40_15/red_jump.png</filename>
-            <filename>../../../../../../Downloads/15_8_27_9_40_15/red_run_01.png</filename>
-            <filename>../../../../../../Downloads/15_8_27_9_40_15/red_run_02.png</filename>
-            <filename>../../../../../../Downloads/15_8_27_9_40_15/red_squat.png</filename>
-            <filename>../../../../../../Downloads/15_8_27_9_40_15/red_superjump.png</filename>
-            <filename>../../../../../../Downloads/15_8_27_9_40_15/red_turn_back_01.png</filename>
-            <filename>../../../../../../Downloads/15_8_27_9_40_15/red_turn_back_02.png</filename>
-            <filename>../../../../../../Downloads/15_8_27_9_40_15/red_turn_back_03.png</filename>
-            <filename>../../../../../../Downloads/15_8_27_9_40_15/red_turn_back_05.png</filename>
-            <filename>../../../../../../Downloads/15_8_27_9_40_15/red_turn_back_06.png</filename>
-            <filename>../../../../../../Downloads/15_8_27_9_40_15/red_turn_back_07.png</filename>
+            <filename>red/red_back_fire_jump.png</filename>
+            <filename>red/red_back_fire_run_01.png</filename>
+            <filename>red/red_back_fire_run_02.png</filename>
+            <filename>red/red_back_fire_superjump.png</filename>
+            <filename>red/red_back_idle_01.png</filename>
+            <filename>red/red_back_run_01.png</filename>
+            <filename>red/red_back_run_02.png</filename>
+            <filename>red/red_bullet.png</filename>
+            <filename>red/red_gun.png</filename>
+            <filename>red/red_idle_01.png</filename>
+            <filename>red/red_idle_02.png</filename>
+            <filename>red/red_jump.png</filename>
+            <filename>red/red_run_01.png</filename>
+            <filename>red/red_run_02.png</filename>
+            <filename>red/red_squat.png</filename>
+            <filename>red/red_superjump.png</filename>
+            <filename>red/red_turn_back_01.png</filename>
+            <filename>red/red_turn_back_02.png</filename>
+            <filename>red/red_turn_back_03.png</filename>
+            <filename>red/red_turn_back_04.png</filename>
+            <filename>red/red_turn_back_05.png</filename>
+            <filename>red/red_turn_back_06.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

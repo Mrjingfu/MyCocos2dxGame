@@ -35,7 +35,7 @@ Player* ActorMgr::createPlayer(Player::PlayerType type)
                 if(player && player->loadModel() && player->loadAnimations())
                 {
                     player->setPlayerState(Player::PS_IDLE);
-                    player->setScale(2);
+                    player->setScale(4);
                     player->autorelease();
                 }
                 else

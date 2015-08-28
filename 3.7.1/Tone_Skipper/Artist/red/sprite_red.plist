@@ -251,7 +251,7 @@
                 <key>sourceSize</key>
                 <string>{32,32}</string>
             </dict>
-            <key>red_turn_back_05.png</key>
+            <key>red_turn_back_04.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{2,108},{18,18}}</string>
@@ -264,7 +264,7 @@
                 <key>sourceSize</key>
                 <string>{32,32}</string>
             </dict>
-            <key>red_turn_back_06.png</key>
+            <key>red_turn_back_05.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{2,88},{18,18}}</string>
@@ -277,7 +277,7 @@
                 <key>sourceSize</key>
                 <string>{32,32}</string>
             </dict>
-            <key>red_turn_back_07.png</key>
+            <key>red_turn_back_06.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{2,68},{18,18}}</string>
@@ -300,7 +300,7 @@
             <key>size</key>
             <string>{128,128}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:3c5148d6d2cbbb17afc8c406e844fc6f:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:f6e9c1817ac83b97d70d513c799c6761:1/1$</string>
             <key>textureFileName</key>
             <string>sprite_red.png</string>
         </dict>
