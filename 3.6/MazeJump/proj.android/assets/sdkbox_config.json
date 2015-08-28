@@ -22,7 +22,7 @@
                 },
                 "remove_ads": {
                     "type": "non_consumable", 
-                    "id": "com.cocos2dx.non1"
+                    "id": "com.wanax.mazejump.removeads"
                 }
             }, 
             "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAg6ljd2V7n3CHBOnuUo7xTCaeBKuzvS68UtnRm50Trim9MgTsmV7Uha6iSWt8avdO9eLr+UIhL2h8KpQfeGMoYzMM7et5gt5fA8wPktnRTv7YHVBIHwp8Nc75Wr846AMaFMElXm6nyF+EfjBWxTJtyIuTgcCYdyPYPizTD8dICRqeQHWKojvXF6ewQzG8Dq9mMfMyu7Z62/dJ24rD+Jl2198EcV580hjlAGlJMfZc8WfyQN3/pPwkmFPKTbwkqQf66JHq2h6XjPbwmfP9ulE+rZgkhatbJ7U6bbnBUXISCqXFkPmrUvoAd+85wvrdQ8A5YqPlCMVfePr5tVvtjK+J3QIDAQAB"
