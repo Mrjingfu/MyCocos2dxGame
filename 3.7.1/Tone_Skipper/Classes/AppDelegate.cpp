@@ -1,5 +1,5 @@
 #include "AppDelegate.h"
-#include "ToneSkipperScene.h"
+#include "TestScene.h"
 
 USING_NS_CC;
 
@@ -38,6 +38,11 @@ bool AppDelegate::applicationDidFinishLaunching() {
         director->setOpenGLView(glview);
     }
 
+    std::vector<std::string> searchPaths;
+    searchPaths.push_back("sprites");
+    searchPaths.push_back("maps");
+    FileUtils::getInstance()->setSearchPaths(searchPaths);
+    
     // turn on display FPS
     director->setDisplayStats(true);
 
@@ -47,7 +52,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     register_all_packages();
 
     // create a scene. it's an autorelease object
-    auto scene = ToneSkipperScene::createScene();
+    auto scene = TestScene::createScene();
 
     // run
     director->runWithScene(scene);

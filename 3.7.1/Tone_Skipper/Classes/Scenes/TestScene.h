@@ -1,19 +1,19 @@
 //
-//  ToneSkipperScene.h
+//  TestScene.h
 //  Tone_Skipper
 //
-//  Created by wang haibo on 15/8/24.
+//  Created by wang haibo on 15/8/26.
 //
 //
 
-#ifndef __Tone_Skipper__ToneSkipperScene__
-#define __Tone_Skipper__ToneSkipperScene__
+#ifndef __Tone_Skipper__TestScene__
+#define __Tone_Skipper__TestScene__
 
 #include "cocos2d.h"
 
-class ToneSkipperScene : public cocos2d::Layer
+class TestScene : public cocos2d::Layer
 {
-    ToneSkipperScene();
+    TestScene();
 public:
     // there's no 'id' in cpp, so we recommend returning the class instance pointer
     static cocos2d::Scene* createScene();
@@ -22,11 +22,11 @@ public:
     virtual bool init();
     
     // implement the "static create()" method manually
-    CREATE_FUNC(ToneSkipperScene);
+    CREATE_FUNC(TestScene);
     
     virtual void onEnter();
     virtual void onExit();
     virtual void update(float delta);
 };
 
-#endif /* defined(__Tone_Skipper__ToneSkipperScene__) */
+#endif /* defined(__Tone_Skipper__TestScene__) */
