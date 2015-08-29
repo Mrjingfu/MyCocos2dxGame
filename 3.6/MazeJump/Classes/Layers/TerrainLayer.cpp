@@ -61,9 +61,10 @@ void TerrainLayer::update(float delta)
         TerrainPatternLayer* layer = m_TerrainPatternList.at(i);
         if(layer)
         {
-            layer->update(delta);
             if(i == m_nCurrentPatternNum)
                 layer->checkCollisionDecorator();
+            layer->update(delta);
+
         }
     }
 }

@@ -40,6 +40,7 @@ private:
     void runnerSuperJump();
     void runnerJump();
     void changeCharacter(cocos2d::EventCustom *sender);
+    void rainbowDelay(float delta);
 private:
     cocos2d::Camera*    m_pMainCamera;
     EffectSprite3D*     m_pSea;

@@ -211,15 +211,21 @@ void MenuScene::update(float delta)
         m_fTime += delta;
         if(m_fTime <=2.0f)
         {
-            Vec3 pos = m_pRainbow->getPosition3D();
-            Vec3 target = m_pMainCamera->getPosition3D() + Vec3(0, -25, 0);
-            pos = pos + m_dirDist*delta*0.5f - Vec3(0, cosf(M_PI*(m_fTime-0.5f))*150*delta, 0);
-            m_pRainbow->setPosition3D(pos);
-            m_pRainbow->update(delta);
+
+            m_pRainbow->runAction(Sequence::createWithTwoActions(DelayTime::create(2.0f), CallFunc::create(CC_CALLBACK_0(MenuScene::rainbowDelay,this,delta))));
+
         }
     }
 }
 
+void MenuScene::rainbowDelay(float delta)
+{
+    Vec3 pos = m_pRainbow->getPosition3D();
+    Vec3 target = m_pMainCamera->getPosition3D() + Vec3(0, -25, 0);
+    pos = pos + m_dirDist*delta*0.5f - Vec3(0, cosf(M_PI*(m_fTime-0.5f))*150*delta, 0);
+    m_pRainbow->setPosition3D(pos);
+    m_pRainbow->update(delta);
+}
 bool MenuScene::onTouchBegan(Touch *touch, Event *event)
 {
     if(!touch)
