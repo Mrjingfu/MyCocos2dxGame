@@ -6,7 +6,7 @@ material BaseTexture
         pass
         {
             lighting off
-            scene_blend add
+            //scene_blend add
             depth_write off
             texture_unit
             {

@@ -31,6 +31,7 @@ protected:
 #endif
     bool                        m_bDirty;
     bool                        m_bSpriteSelfDraw;
+    std::string                 m_strProgramName;
 };
 
 #endif /* defined(__Geometry_Wars__BaseEffect3D__) */
