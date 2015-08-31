@@ -32,6 +32,7 @@ import java.util.Hashtable;
 
 import org.cocos2dx.lib.Cocos2dxActivity;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -55,6 +56,7 @@ import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdSize;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.InterstitialAd;
+import com.wanax.google.GoogleGameManager;
 public class AppActivity extends Cocos2dxActivity {
 	private static String MY_AD_BANNER_UNIT_ID = "ca-app-pub-3628527903442392/7420311060";
 	private static String MY_AD_INTERSTITIAL_UNIT_ID = "ca-app-pub-3628527903442392/8897044266";
@@ -71,8 +73,10 @@ public class AppActivity extends Cocos2dxActivity {
 		windowMgr = (WindowManager) context.getSystemService("window");
 
 		requestAndLoadInterstitialAds();
+		GoogleGameManager.getInstace().init(this);
 	}
 
+	
 	private static Handler handler = new Handler() {
 		public void handleMessage(Message msg) {
 			switch (msg.what) {
@@ -271,13 +275,21 @@ public class AppActivity extends Cocos2dxActivity {
 	@Override
 	protected void onStart() {
 		super.onStart();
+//		GoogleGameManager.getInstace().onStart();
 	}
 
 	@Override
 	protected void onStop() {
 		super.onStop();
+//		GoogleGameManager.getInstace().onStop();
 	}
 
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
+		GoogleGameManager.getInstace().onActivityResult(requestCode, resultCode, data);
+	}
+	
 	@Override
 	public void onDestroy() {
 		if (null != adView) {
@@ -386,5 +398,41 @@ public class AppActivity extends Cocos2dxActivity {
                 }).show();           
 			}
 		});
+	}
+	
+	public static void googleGameConnect()
+	{
+		Log.d("AppActivity", "googleGameConnect");
+		context.runOnUiThread(new Runnable() {
+			
+			@Override
+			public void run() {
+				GoogleGameManager.getInstace().connect();
+			}
+		});
+	}
+	
+	public static void openLeaderBoard()
+	{
+		context.runOnUiThread(new Runnable() {
+			
+			@Override
+			public void run() {
+				GoogleGameManager.getInstace().openLeaderBoard();
+			}
+		});
+		
+	}
+	
+	public static void reportScore(final int score)
+	{
+		context.runOnUiThread(new Runnable() {
+			
+			@Override
+			public void run() {
+				GoogleGameManager.getInstace().reportScore(score);
+			}
+		});
+		
 	}
 }

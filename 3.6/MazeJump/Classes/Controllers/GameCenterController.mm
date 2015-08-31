@@ -31,12 +31,14 @@ GameCenterController::GameCenterController()
 GameCenterController::~GameCenterController()
 {
 }
-#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS )
+
 void GameCenterController::registerGameCenterController()
 {
+ #if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS )
     [[NCSGameCenter sharedGameCenter] authenticateLocalUser];
-}
 #endif
+}
+
 
 void GameCenterController::openLeaderBoard()
 {

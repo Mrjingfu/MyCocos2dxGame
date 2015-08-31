@@ -7,6 +7,8 @@
 //
 
 #include "GameCenterController.h"
+#include <stdio.h>
+#include "jni/JniHelper.h"
 #if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS )
 #include "NCSGameCenter.h"
 #endif
@@ -31,19 +33,66 @@ GameCenterController::GameCenterController()
 GameCenterController::~GameCenterController()
 {
 }
-
+void GameCenterController::registerGameCenterController()
+{
+    log("registerGameCenterController");
+    JniMethodInfo t;
+    
+    if (JniHelper::getStaticMethodInfo(t, "org/cocos2dx/cpp/AppActivity", "googleGameConnect", "()V")) {
+        
+       t.env->CallStaticVoidMethod(t.classID, t.methodID);
+        
+        if (t.env->ExceptionOccurred()) {
+            
+            t.env->ExceptionDescribe();
+            
+            t.env->ExceptionClear();
+            
+            return;
+        }
+        t.env->DeleteLocalRef(t.classID);
+    }
+}
 
 void GameCenterController::openLeaderBoard()
 {
-//#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS )
-//    [[NCSGameCenter sharedGameCenter] showLeaderboard];
-//#endif
+    log("openLeaderBoard");
+    JniMethodInfo t;
+    
+    if (JniHelper::getStaticMethodInfo(t, "org/cocos2dx/cpp/AppActivity", "openLeaderBoard", "()V")) {
+        
+       t.env->CallStaticVoidMethod(t.classID, t.methodID);
+        
+        if (t.env->ExceptionOccurred()) {
+            
+            t.env->ExceptionDescribe();
+            
+            t.env->ExceptionClear();
+            
+            return;
+        }
+        t.env->DeleteLocalRef(t.classID);
+    }
 }
 void GameCenterController::reportScore(int score)
 {
-//#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS )
-//    [[NCSGameCenter sharedGameCenter] reportScore:score];
-//#endif
+log("reportScore");
+    JniMethodInfo t;
+    
+    if (JniHelper::getStaticMethodInfo(t, "org/cocos2dx/cpp/AppActivity", "reportScore", "(I)V")) {
+        
+        t.env->CallStaticVoidMethod(t.classID, t.methodID, score);
+        
+        if (t.env->ExceptionOccurred()) {
+            
+            t.env->ExceptionDescribe();
+            
+            t.env->ExceptionClear();
+            
+            return;
+        }
+        t.env->DeleteLocalRef(t.classID);
+    }
 }
 void GameCenterController::reportCachedScores()
 {

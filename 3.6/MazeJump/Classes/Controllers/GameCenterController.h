@@ -19,9 +19,7 @@ public:
 public:
     static GameCenterController* getInstance();
     
-#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS )
     void registerGameCenterController();
-#endif
     void openLeaderBoard();
     void reportScore(int score);
     void reportCachedScores();

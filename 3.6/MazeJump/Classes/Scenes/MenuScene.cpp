@@ -16,6 +16,7 @@
 #include "RoleManager.h"
 #include "NativeBridge.h"
 #include "RoleManager.h"
+#include "GameCenterController.h"
 #include "SdkBoxManager.h"
 USING_NS_CC;
 using namespace experimental;
@@ -48,7 +49,7 @@ MenuScene::MenuScene()
     m_pWhiteLayer           = nullptr;
     m_bStartGame            = false;
     m_fTime = 0;
-    m_fRainbowTime = 1.5f;
+    m_fRainbowTime = 2.0f;
 }
 // on "init" you need to initialize your instance
 bool MenuScene::init()
@@ -188,6 +189,9 @@ void MenuScene::onEnter()
 {
     Layer::onEnter();
     scheduleUpdate();
+#if ( CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID )
+    GameCenterController::getInstance()->registerGameCenterController();
+#endif
     SpriteFrameCache::getInstance()->addSpriteFramesWithFile("main_ui.plist", "main_ui.png");
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_CHARACTER_MODEL_CHANGE, std::bind(&MenuScene::changeCharacter, this, std::placeholders::_1));
     UIManager::getInstance()->init(this);
