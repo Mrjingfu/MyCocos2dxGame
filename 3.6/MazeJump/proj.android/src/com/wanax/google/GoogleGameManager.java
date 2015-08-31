@@ -147,8 +147,7 @@ public class GoogleGameManager {
 
 	public void reportScore(int score)
 	{
-		
-		if(score>=0 && mGoogleApiClient!=null)
+		if(isConnected() && score>=0 && mGoogleApiClient!=null)
 		{
 			Log.d(TAG, "reportScore: "+score);
 			Games.Leaderboards.submitScore(mGoogleApiClient, m_pContext.getString(R.string.leaderboard_best_results),
