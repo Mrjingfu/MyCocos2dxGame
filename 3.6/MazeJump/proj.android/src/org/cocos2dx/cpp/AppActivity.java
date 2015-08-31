@@ -259,6 +259,7 @@ public class AppActivity extends Cocos2dxActivity {
 			@Override
 			public void run() {
 				progressDialog = ProgressDialog.show(context, null, null);
+				progressDialog.setCanceledOnTouchOutside(true);
 			}
 		});
 	}

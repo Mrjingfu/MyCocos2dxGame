@@ -182,6 +182,11 @@ bool MenuScene::init()
 #if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID )
     SdkBoxManager::getInstance()->logScreen("MenuScene");
 #endif
+    
+#if ( CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID )
+    GameCenterController::getInstance()->registerGameCenterController();
+#endif
+    
     return true;
 }
 
@@ -189,9 +194,7 @@ void MenuScene::onEnter()
 {
     Layer::onEnter();
     scheduleUpdate();
-#if ( CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID )
-    GameCenterController::getInstance()->registerGameCenterController();
-#endif
+
     SpriteFrameCache::getInstance()->addSpriteFramesWithFile("main_ui.plist", "main_ui.png");
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_CHARACTER_MODEL_CHANGE, std::bind(&MenuScene::changeCharacter, this, std::placeholders::_1));
     UIManager::getInstance()->init(this);

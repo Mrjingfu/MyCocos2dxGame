@@ -149,9 +149,8 @@ void LogoScene::precache()
     Sprite3D::create("3x3x3.c3b");
     Sprite3D::create("8x8x8.c3b");
     Sprite3D::create("goldbig.c3b");
-    Sprite3D::create("gold.c3b");
     Sprite3D::create("heart.c3b");
-    Sprite3D::create("cloud.c3b");
+    Sprite3D::create("Cloud.c3b");
     Sprite3D::create("sidebar.c3b");
     Sprite3D::create("startpoint.c3b");
 //#endif
