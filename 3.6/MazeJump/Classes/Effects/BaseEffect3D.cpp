@@ -16,13 +16,13 @@ BaseEffect3D::BaseEffect3D()
     m_pBackgroundListener = EventListenerCustom::create(EVENT_RENDERER_RECREATED,
                                                       [this](EventCustom*)
                                                       {
-                                                          auto glprogram = cocos2d::GLProgramCache::getInstance()->getGLProgram(m_strProgramName);
-                                                          if(!glprogram)
+                                                          auto glProgram = cocos2d::GLProgramCache::getInstance()->getGLProgram(m_strProgramName);
+                                                          if(!glProgram)
                                                           {
                                                               glProgram = m_pGLprogramstate->getGLProgram();
                                                               glProgram->reset();
                                                               glProgram->initWithByteArrays(m_strVertSource.c_str(), m_strFragSource.c_str());
-                                                              cocos2d::GLProgramCache::getInstance()->addGLProgram(glprogram, m_strProgramName);
+                                                              cocos2d::GLProgramCache::getInstance()->addGLProgram(glProgram, m_strProgramName);
                                                           }
                                                           glProgram->link();
                                                           glProgram->updateUniforms();
