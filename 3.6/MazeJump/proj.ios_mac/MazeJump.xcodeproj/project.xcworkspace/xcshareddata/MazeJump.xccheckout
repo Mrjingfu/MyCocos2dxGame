@@ -22,11 +22,11 @@
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>55011AEBD444630C0E9DF47BD2E18FDBBDCC285D</key>
-		<string>../../../../../sqlcipher/</string>
+		<string>../../../../../sqlcipher</string>
 		<key>B21A601E1A9BC8D2FC57E848C52F99145476039E</key>
 		<string>../../../../..</string>
 		<key>D482924C5AFED88D3216BDD72C2302DD55AD6268</key>
-		<string>../../../../../openssl-xcode/</string>
+		<string>../../../../../openssl-xcode</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/lwwhb/MyCocos2dxGame.git</string>

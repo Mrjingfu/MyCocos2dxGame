@@ -53,6 +53,7 @@ private:
     cocos2d::LayerColor*        m_pWhiteLayer;
     bool                m_bStartGame;
     float               m_fTime;
+    float               m_fRainbowTime;
     cocos2d::Vec3       m_dirDist;
 };
 

@@ -126,6 +126,8 @@ void MainUI::onComment(cocos2d::Ref *ref)
     UIManager::getInstance()->playBtnSound();
 #if CC_TARGET_PLATFORM == CC_PLATFORM_IOS
     NativeBridge::getInstance()->openItunesURL();
+#elif CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
+    NativeBridge::getInstance()->openGooglePlay();
 #endif
 }
 void MainUI::onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event *event)

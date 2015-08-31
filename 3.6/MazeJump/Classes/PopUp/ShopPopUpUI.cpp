@@ -538,5 +538,7 @@ void ShopPopUpUI::onRemoveAdaSucessEvent(cocos2d::EventCustom *sender)
         adsBuyBtn->setBright(false);
         adsBuyBtn->setTouchEnabled(false);
     }
+    NativeBridge::getInstance()->hideAdsView();
+    
 }
 

@@ -37,6 +37,8 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.net.Uri;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.os.Handler;
@@ -306,8 +308,18 @@ public class AppActivity extends Cocos2dxActivity {
 			context.hideIndicatorView();
 	}
 
-	public static void showRateAppView() {
-
+	public static void showRateAppView() 
+	{
+		
+	}
+	
+	public static void openGooglePlay() {
+		final String appPackageName = context.getPackageName(); // getPackageName() from Context or Activity object
+        try {
+        	context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + appPackageName)));
+        } catch (android.content.ActivityNotFoundException anfe) {
+        	context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + appPackageName)));
+        }
 	}
 
 	public static String generateUUID() {

@@ -29,6 +29,11 @@ NativeBridge::~NativeBridge()
 }
 void NativeBridge::showAdsView()
 {
+
+    bool removeAds = Value(localStorageGetItem("RemoveAds")).asBool();
+    if (removeAds)
+        return;
+
     log("showAdsView");
     JniMethodInfo t;
     
@@ -71,6 +76,7 @@ void NativeBridge::hideAdsView()
 }
 void NativeBridge::showRateAppView()
 {
+
     log("showRateAppView");
     JniMethodInfo t;
     
@@ -92,6 +98,9 @@ void NativeBridge::showRateAppView()
 }
 void NativeBridge::playInterstitialAds()
 {
+    bool removeAds = Value(localStorageGetItem("RemoveAds")).asBool();
+    if (removeAds)
+        return;
     log("playInterstitialAds");
     JniMethodInfo t;
     
@@ -113,6 +122,7 @@ void NativeBridge::playInterstitialAds()
 }
 void NativeBridge::showIndicatorView()
 {
+
     log("showIndicatorView");
     JniMethodInfo t;
     
@@ -134,6 +144,7 @@ void NativeBridge::showIndicatorView()
 }
 void NativeBridge::hideIndicatorView()
 {
+
     log("hideIndicatorView");
     JniMethodInfo t;
     
@@ -180,6 +191,27 @@ void NativeBridge::exitGame()
     JniMethodInfo t;
     
     if (JniHelper::getStaticMethodInfo(t, "org/cocos2dx/cpp/AppActivity", "exitGame", "()V")) {
+        
+       t.env->CallStaticVoidMethod(t.classID, t.methodID);
+        
+        if (t.env->ExceptionOccurred()) {
+            
+            t.env->ExceptionDescribe();
+            
+            t.env->ExceptionClear();
+            
+            return;
+        }
+        t.env->DeleteLocalRef(t.classID);
+    }
+    
+}
+void NativeBridge::openGooglePlay()
+{
+    log("openGooglePlay");
+    JniMethodInfo t;
+    
+    if (JniHelper::getStaticMethodInfo(t, "org/cocos2dx/cpp/AppActivity", "openGooglePlay", "()V")) {
         
        t.env->CallStaticVoidMethod(t.classID, t.methodID);
         
