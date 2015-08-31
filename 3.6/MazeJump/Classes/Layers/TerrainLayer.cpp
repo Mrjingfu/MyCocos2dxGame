@@ -94,14 +94,23 @@ void TerrainLayer::setCurrentPatternNum( int num )
         }
         if(m_nCurrentPatternNum == 0)
         {
+//#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS )
             generatePattern(m_nCurrentPatternNum+1);
             generatePattern(m_nCurrentPatternNum+2);
             generatePattern(m_nCurrentPatternNum+3);
+//#else
+//            generatePattern(m_nCurrentPatternNum+1);
+//            generatePattern(m_nCurrentPatternNum+2);
+//#endif
             AudioEngine::play2d("stoneroll.wav",false, 0.2f);
         }
         else
         {
+//#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS )
             generatePattern(m_nCurrentPatternNum+3);
+//#else
+//            generatePattern(m_nCurrentPatternNum+2);
+//#endif
             AudioEngine::play2d("stoneroll.wav", false, 0.1f);
         }
         collapseCurrentPattern();

@@ -139,6 +139,23 @@ void LogoScene::precache()
         SdkBoxManager::getInstance()->logEvent("Game UserInfo", USER_MAX_LEVEL, "more than 10", maxlevel);
 #endif
     
+    ///catched sprite3d
+//#if ( CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID )
+    Sprite3D::create("fakeshadow.c3b");
+    Sprite3D::create("1x1.c3b");
+    Sprite3D::create("1x1x1.c3b");
+    Sprite3D::create("bird.c3b");
+    Sprite3D::create("plane.c3b");
+    Sprite3D::create("3x3x3.c3b");
+    Sprite3D::create("8x8x8.c3b");
+    Sprite3D::create("goldbig.c3b");
+    Sprite3D::create("gold.c3b");
+    Sprite3D::create("heart.c3b");
+    Sprite3D::create("cloud.c3b");
+    Sprite3D::create("sidebar.c3b");
+    Sprite3D::create("startpoint.c3b");
+//#endif
+    
     if(!PatternsManager::getInstance()->init("patterns.plist"))
         CCLOGERROR("no patterns file!");
     
