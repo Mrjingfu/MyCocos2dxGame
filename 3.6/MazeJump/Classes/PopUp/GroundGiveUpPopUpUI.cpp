@@ -61,13 +61,13 @@ bool GroundGiveUpPopUpUI::init()
     
     ui::Button* oKtn = cocos2d::ui::Button::create(UtilityHelper::getLocalString("UI_GROUND_BTN_GIVEUP_OK"),"","",cocos2d::ui::TextureResType::PLIST);
     oKtn->setScale(scale);
-    oKtn->setPosition(Vec2(size.width*0.5,size.height*0.55));
+    oKtn->setPosition(Vec2(size.width*0.5,size.height*0.53));
     m_dialogLayer->addChild(oKtn);
 
     
     ui::Button* cancelBtn = cocos2d::ui::Button::create(UtilityHelper::getLocalString("UI_GROUND_BTN_GIVEUP_CANCEL"),"","",cocos2d::ui::TextureResType::PLIST);
     cancelBtn->setScale(scale);
-    cancelBtn->setPosition(Vec2(size.width*0.5,size.height*0.4));
+    cancelBtn->setPosition(Vec2(size.width*0.5,size.height*0.43));
     m_dialogLayer->addChild(cancelBtn);
 
     
