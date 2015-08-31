@@ -13,6 +13,7 @@ USING_NS_CC;
 OutlineEffect3D::OutlineEffect3D()
 : m_fOutlineWidth(1.0f), m_OutlineColor(Vec3(1,1,1))
 {
+    m_strProgramName = "outline_program";
 }
 OutlineEffect3D::~OutlineEffect3D()
 {

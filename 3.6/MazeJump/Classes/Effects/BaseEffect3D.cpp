@@ -16,9 +16,14 @@ BaseEffect3D::BaseEffect3D()
     m_pBackgroundListener = EventListenerCustom::create(EVENT_RENDERER_RECREATED,
                                                       [this](EventCustom*)
                                                       {
-                                                          auto glProgram = m_pGLprogramstate->getGLProgram();
-                                                          glProgram->reset();
-                                                          glProgram->initWithByteArrays(m_strVertSource.c_str(), m_strFragSource.c_str());
+                                                          auto glprogram = cocos2d::GLProgramCache::getInstance()->getGLProgram(m_strProgramName);
+                                                          if(!glprogram)
+                                                          {
+                                                              glProgram = m_pGLprogramstate->getGLProgram();
+                                                              glProgram->reset();
+                                                              glProgram->initWithByteArrays(m_strVertSource.c_str(), m_strFragSource.c_str());
+                                                              cocos2d::GLProgramCache::getInstance()->addGLProgram(glprogram, m_strProgramName);
+                                                          }
                                                           glProgram->link();
                                                           glProgram->updateUniforms();
                                                       }
@@ -36,17 +41,24 @@ BaseEffect3D::~BaseEffect3D()
 }
 bool BaseEffect3D::initGLProgramState(const std::string& vertFilename, const std::string& fragFilename)
 {
-    auto fileUtiles = FileUtils::getInstance();
-    auto vertexFullPath = fileUtiles->fullPathForFilename(vertFilename);
-    auto fragmentFullPath = fileUtiles->fullPathForFilename(fragFilename);
-    auto vertSource = fileUtiles->getStringFromFile(vertexFullPath);
-    auto fragSource = fileUtiles->getStringFromFile(fragmentFullPath);
-    auto glprogram = GLProgram::createWithByteArrays(vertSource.c_str(), fragSource.c_str());
-    
+    CCASSERT(!m_strProgramName.empty(), "Program name must not empty!");
+
+    auto glprogram = cocos2d::GLProgramCache::getInstance()->getGLProgram(m_strProgramName);
+    if(!glprogram)
+    {
+        auto vertexFullPath = FileUtils::getInstance()->fullPathForFilename(vertFilename);
+        auto fragmentFullPath = FileUtils::getInstance()->fullPathForFilename(fragFilename);
+        auto vertSource = FileUtils::getInstance()->getStringFromFile(vertexFullPath);
+        auto fragSource = FileUtils::getInstance()->getStringFromFile(fragmentFullPath);
+        
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-    m_strVertSource = vertSource;
-    m_strFragSource = fragSource;
+        m_strVertSource = vertSource;
+        m_strFragSource = fragSource;
 #endif
+        
+        glprogram = cocos2d::GLProgram::createWithByteArrays(vertSource.c_str(), fragSource.c_str());
+        cocos2d::GLProgramCache::getInstance()->addGLProgram(glprogram, m_strProgramName);
+    }
     
     m_pGLprogramstate = GLProgramState::getOrCreateWithGLProgram(glprogram);
     m_pGLprogramstate->retain();
