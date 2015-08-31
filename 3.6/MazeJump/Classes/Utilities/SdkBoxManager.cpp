@@ -144,6 +144,7 @@ void SdkBoxManager::onRestored(const sdkbox::Product& p)
     if (p.name == PURCHASE_ID6) {
         CCLOG("Remove Ads");
         localStorageSetItem("RemoveAds", "true");
+        NativeBridge::getInstance()->hideAdsView();
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PURCHASE_REMOVEADS_OK);
         AudioEngine::play2d("mazejump_sucess.wav", false, 0.5f);
         

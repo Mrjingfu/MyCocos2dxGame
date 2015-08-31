@@ -149,8 +149,11 @@ bool RunController::init(Layer* pMainLayer)
 
     
     setGameState(RGS_FROZEN);
-    
-    m_nBgID = AudioEngine::play2d("mainbg.mp3",true, 0.5);
+    int rand = cocos2d::random(0, 1);
+    if(rand == 0)
+        m_nBgID = AudioEngine::play2d("mainbg.mp3",true, 0.5);
+    else if(rand == 1)
+        m_nBgID = AudioEngine::play2d("mainbg1.mp3",true, 0.5);
     return true;
 }
 void RunController::reset()
