@@ -1302,11 +1302,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Layers/TerrainLayer.cpp"
-            timestampString = "462680378.679166"
+            timestampString = "462698824.557164"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "144"
-            endingLineNumber = "144"
+            startingLineNumber = "134"
+            endingLineNumber = "134"
             landmarkName = "TerrainLayer::checkRunnerDrop()"
             landmarkType = "5">
          </BreakpointContent>
@@ -1446,11 +1446,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Layers/TerrainLayer.cpp"
-            timestampString = "462680378.679166"
+            timestampString = "462698824.557164"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "116"
-            endingLineNumber = "116"
+            startingLineNumber = "106"
+            endingLineNumber = "106"
             landmarkName = "TerrainLayer::setCurrentPatternNum( int num )"
             landmarkType = "5">
          </BreakpointContent>
@@ -1462,11 +1462,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Layers/TerrainLayer.cpp"
-            timestampString = "462680378.679166"
+            timestampString = "462698824.557164"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "120"
-            endingLineNumber = "120"
+            startingLineNumber = "110"
+            endingLineNumber = "110"
             landmarkName = "TerrainLayer::setCurrentColumn( int column )"
             landmarkType = "5">
          </BreakpointContent>
@@ -1654,11 +1654,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Layers/TerrainLayer.cpp"
-            timestampString = "462680378.679166"
+            timestampString = "462698824.557164"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "192"
-            endingLineNumber = "192"
+            startingLineNumber = "182"
+            endingLineNumber = "182"
             landmarkName = "TerrainLayer::onTouchEnded(Touch *touch, Event *event)"
             landmarkType = "5">
          </BreakpointContent>
@@ -1718,11 +1718,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Controllers/RunController.cpp"
-            timestampString = "462686134.591365"
+            timestampString = "462699501.352645"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "528"
-            endingLineNumber = "528"
+            startingLineNumber = "536"
+            endingLineNumber = "536"
             landmarkName = "RunController::getRandomColorByIndex(int index)"
             landmarkType = "5">
          </BreakpointContent>
@@ -1750,11 +1750,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Controllers/RunController.cpp"
-            timestampString = "462686134.591365"
+            timestampString = "462699501.352645"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "528"
-            endingLineNumber = "528"
+            startingLineNumber = "536"
+            endingLineNumber = "536"
             landmarkName = "RunController::getRandomColorByIndex(int index)"
             landmarkType = "5">
          </BreakpointContent>
@@ -1766,11 +1766,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Controllers/RunController.cpp"
-            timestampString = "462686134.591365"
+            timestampString = "462699501.352645"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "527"
-            endingLineNumber = "527"
+            startingLineNumber = "535"
+            endingLineNumber = "535"
             landmarkName = "RunController::getRandomColorByIndex(int index)"
             landmarkType = "5">
          </BreakpointContent>
@@ -1782,11 +1782,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Controllers/RunController.cpp"
-            timestampString = "462686134.591365"
+            timestampString = "462699501.352645"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "541"
-            endingLineNumber = "541"
+            startingLineNumber = "549"
+            endingLineNumber = "549"
             landmarkName = "RunController::getRandomColorByIndex(int index)"
             landmarkType = "5">
          </BreakpointContent>
@@ -1926,11 +1926,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Layers/TerrainLayer.cpp"
-            timestampString = "462680378.679166"
+            timestampString = "462698824.557164"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "347"
-            endingLineNumber = "347"
+            startingLineNumber = "337"
+            endingLineNumber = "337"
             landmarkName = "TerrainLayer::generatePattern(int count)"
             landmarkType = "5">
          </BreakpointContent>
@@ -1942,11 +1942,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Layers/TerrainLayer.cpp"
-            timestampString = "462680378.679166"
+            timestampString = "462698824.557164"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "345"
-            endingLineNumber = "345"
+            startingLineNumber = "335"
+            endingLineNumber = "335"
             landmarkName = "TerrainLayer::generatePattern(int count)"
             landmarkType = "5">
          </BreakpointContent>
@@ -1958,11 +1958,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Layers/TerrainLayer.cpp"
-            timestampString = "462680378.679166"
+            timestampString = "462698824.557164"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "342"
-            endingLineNumber = "342"
+            startingLineNumber = "332"
+            endingLineNumber = "332"
             landmarkName = "TerrainLayer::generatePattern(int count)"
             landmarkType = "5">
          </BreakpointContent>
@@ -2006,11 +2006,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Controllers/RunController.cpp"
-            timestampString = "462686134.591365"
+            timestampString = "462699501.352645"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "554"
-            endingLineNumber = "554"
+            startingLineNumber = "562"
+            endingLineNumber = "562"
             landmarkName = "RunController::getRandomColorByIndex(int index)"
             landmarkType = "5">
          </BreakpointContent>
@@ -2022,11 +2022,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Controllers/RunController.cpp"
-            timestampString = "462686134.591365"
+            timestampString = "462699501.352645"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "528"
-            endingLineNumber = "528"
+            startingLineNumber = "536"
+            endingLineNumber = "536"
             landmarkName = "RunController::getRandomColorByIndex(int index)"
             landmarkType = "5">
          </BreakpointContent>
@@ -2038,7 +2038,39 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Controllers/RunController.cpp"
-            timestampString = "462686134.591365"
+            timestampString = "462699501.352645"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "550"
+            endingLineNumber = "550"
+            landmarkName = "RunController::getRandomColorByIndex(int index)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/Controllers/RunController.cpp"
+            timestampString = "462699501.352645"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "537"
+            endingLineNumber = "537"
+            landmarkName = "RunController::getRandomColorByIndex(int index)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/Controllers/RunController.cpp"
+            timestampString = "462699501.352645"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "542"
@@ -2054,11 +2086,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Controllers/RunController.cpp"
-            timestampString = "462686134.591365"
+            timestampString = "462699501.352645"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "529"
-            endingLineNumber = "529"
+            startingLineNumber = "555"
+            endingLineNumber = "555"
             landmarkName = "RunController::getRandomColorByIndex(int index)"
             landmarkType = "5">
          </BreakpointContent>
@@ -2070,43 +2102,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Controllers/RunController.cpp"
-            timestampString = "462686134.591365"
+            timestampString = "462699501.352645"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "534"
-            endingLineNumber = "534"
-            landmarkName = "RunController::getRandomColorByIndex(int index)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../Classes/Controllers/RunController.cpp"
-            timestampString = "462686134.591365"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "547"
-            endingLineNumber = "547"
-            landmarkName = "RunController::getRandomColorByIndex(int index)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../Classes/Controllers/RunController.cpp"
-            timestampString = "462686134.591365"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "560"
-            endingLineNumber = "560"
+            startingLineNumber = "568"
+            endingLineNumber = "568"
             landmarkName = "RunController::getRandomColorByIndex(int index)"
             landmarkType = "5">
          </BreakpointContent>
@@ -2150,11 +2150,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Layers/TerrainLayer.cpp"
-            timestampString = "462680378.679166"
+            timestampString = "462698824.557164"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "128"
-            endingLineNumber = "128"
+            startingLineNumber = "118"
+            endingLineNumber = "118"
             landmarkName = "TerrainLayer::setCurrentColumn( int column )"
             landmarkType = "5">
          </BreakpointContent>
@@ -2260,11 +2260,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Layers/TerrainLayer.cpp"
-            timestampString = "462680378.679166"
+            timestampString = "462698824.557164"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "261"
-            endingLineNumber = "261"
+            startingLineNumber = "251"
+            endingLineNumber = "251"
             landmarkName = "TerrainLayer::generateStartPoint()"
             landmarkType = "5">
          </BreakpointContent>
@@ -2276,11 +2276,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Layers/TerrainLayer.cpp"
-            timestampString = "462680378.679166"
+            timestampString = "462698824.557164"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "271"
-            endingLineNumber = "271"
+            startingLineNumber = "261"
+            endingLineNumber = "261"
             landmarkName = "TerrainLayer::generatePattern(int count)"
             landmarkType = "5">
          </BreakpointContent>
@@ -2292,11 +2292,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Layers/TerrainLayer.cpp"
-            timestampString = "462680378.679166"
+            timestampString = "462698824.557164"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "294"
-            endingLineNumber = "294"
+            startingLineNumber = "284"
+            endingLineNumber = "284"
             landmarkName = "TerrainLayer::generatePattern(int count)"
             landmarkType = "5">
          </BreakpointContent>
@@ -2308,11 +2308,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Layers/TerrainLayer.cpp"
-            timestampString = "462680378.679166"
+            timestampString = "462698824.557164"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "273"
-            endingLineNumber = "273"
+            startingLineNumber = "263"
+            endingLineNumber = "263"
             landmarkName = "TerrainLayer::generatePattern(int count)"
             landmarkType = "5">
          </BreakpointContent>
@@ -2515,11 +2515,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Layers/TerrainLayer.cpp"
-            timestampString = "462680378.679166"
+            timestampString = "462698824.557164"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "229"
-            endingLineNumber = "229"
+            startingLineNumber = "219"
+            endingLineNumber = "219"
             landmarkName = "TerrainLayer::jumpRight()"
             landmarkType = "5">
          </BreakpointContent>
@@ -2531,11 +2531,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Layers/TerrainLayer.cpp"
-            timestampString = "462680378.679166"
+            timestampString = "462698824.557164"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "187"
-            endingLineNumber = "187"
+            startingLineNumber = "177"
+            endingLineNumber = "177"
             landmarkName = "TerrainLayer::onTouchEnded(Touch *touch, Event *event)"
             landmarkType = "5">
          </BreakpointContent>
@@ -2929,11 +2929,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Layers/TerrainLayer.cpp"
-            timestampString = "462680378.679166"
+            timestampString = "462698824.557164"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "348"
-            endingLineNumber = "348"
+            startingLineNumber = "338"
+            endingLineNumber = "338"
             landmarkName = "TerrainLayer::generatePattern(int count)"
             landmarkType = "5">
          </BreakpointContent>
@@ -3281,11 +3281,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Controllers/RunController.cpp"
-            timestampString = "462686134.591365"
+            timestampString = "462699501.352645"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "401"
-            endingLineNumber = "401"
+            startingLineNumber = "405"
+            endingLineNumber = "405"
             landmarkName = "RunController::addPlayerExplosion()"
             landmarkType = "5">
          </BreakpointContent>
@@ -5297,11 +5297,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Controllers/RunController.cpp"
-            timestampString = "462686134.591365"
+            timestampString = "462699501.352645"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "429"
-            endingLineNumber = "429"
+            startingLineNumber = "437"
+            endingLineNumber = "437"
             landmarkName = "RunController::showRainbow()"
             landmarkType = "5">
          </BreakpointContent>
@@ -5313,11 +5313,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Controllers/RunController.cpp"
-            timestampString = "462686134.591365"
+            timestampString = "462699501.352645"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "497"
-            endingLineNumber = "497"
+            startingLineNumber = "505"
+            endingLineNumber = "505"
             landmarkName = "RunController::getRandomColorByIndex(int index)"
             landmarkType = "5">
          </BreakpointContent>
@@ -5455,11 +5455,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Controllers/RunController.cpp"
-            timestampString = "462686134.591365"
+            timestampString = "462699501.352645"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "446"
-            endingLineNumber = "446"
+            startingLineNumber = "454"
+            endingLineNumber = "454"
             landmarkName = "RunController::showRainbow()"
             landmarkType = "5">
          </BreakpointContent>
@@ -5471,11 +5471,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Controllers/RunController.cpp"
-            timestampString = "462686134.591365"
+            timestampString = "462699501.352645"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "451"
-            endingLineNumber = "451"
+            startingLineNumber = "459"
+            endingLineNumber = "459"
             landmarkName = "RunController::showRainbow()"
             landmarkType = "5">
          </BreakpointContent>
@@ -5487,11 +5487,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Controllers/RunController.cpp"
-            timestampString = "462686134.591365"
+            timestampString = "462699501.352645"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "485"
-            endingLineNumber = "485"
+            startingLineNumber = "493"
+            endingLineNumber = "493"
             landmarkName = "RunController::checkRainbowIsShowOrHide()"
             landmarkType = "5">
          </BreakpointContent>
@@ -5503,11 +5503,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Controllers/RunController.cpp"
-            timestampString = "462686134.591365"
+            timestampString = "462699501.352645"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "442"
-            endingLineNumber = "442"
+            startingLineNumber = "450"
+            endingLineNumber = "450"
             landmarkName = "RunController::showRainbow()"
             landmarkType = "5">
          </BreakpointContent>
@@ -5519,11 +5519,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Controllers/RunController.cpp"
-            timestampString = "462686134.591365"
+            timestampString = "462699501.352645"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "502"
-            endingLineNumber = "502"
+            startingLineNumber = "510"
+            endingLineNumber = "510"
             landmarkName = "RunController::getRandomColorByIndex(int index)"
             landmarkType = "5">
          </BreakpointContent>
@@ -5535,11 +5535,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Controllers/RunController.cpp"
-            timestampString = "462686134.591365"
+            timestampString = "462699501.352645"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "506"
-            endingLineNumber = "506"
+            startingLineNumber = "514"
+            endingLineNumber = "514"
             landmarkName = "RunController::getRandomColorByIndex(int index)"
             landmarkType = "5">
          </BreakpointContent>

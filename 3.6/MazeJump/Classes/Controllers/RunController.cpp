@@ -395,7 +395,11 @@ void RunController::addPlayerExplosion()
 {
     if(m_pMainPlayer && m_pMainLayer)
     {
+#if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
+        auto explosion = PUParticleSystem3D::create("explosionSystem_android.pu");
+#else
         auto explosion = PUParticleSystem3D::create("explosionSystem.pu");
+#endif
         explosion->setCameraMask((unsigned short)CameraFlag::USER1);
         explosion->setPosition3D(m_pMainPlayer->getPosition3D());
         m_pMainLayer->addChild(explosion);
@@ -408,7 +412,11 @@ void RunController::addDecoratorExplosion(const cocos2d::Vec3& pos)
 {
     if(m_pMainPlayer && m_pMainLayer)
     {
+#if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
+        auto explosion = PUParticleSystem3D::create("explosionSystem_android.pu");
+#else
         auto explosion = PUParticleSystem3D::create("explosionSystem.pu");
+#endif
         explosion->setCameraMask((unsigned short)CameraFlag::USER1);
         explosion->setPosition3D(pos);
         m_pMainLayer->addChild(explosion);

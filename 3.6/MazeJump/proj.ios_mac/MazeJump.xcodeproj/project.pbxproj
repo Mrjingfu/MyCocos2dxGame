@@ -221,6 +221,8 @@
 		5592AE481B5FF4B50062AF08 /* patterns.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5592AE471B5FF4B50062AF08 /* patterns.plist */; };
 		5592AE491B5FF4BC0062AF08 /* PatternsManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5592AE441B5FF4AB0062AF08 /* PatternsManager.cpp */; };
 		5592AE4A1B5FF4C90062AF08 /* patterns.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5592AE471B5FF4B50062AF08 /* patterns.plist */; };
+		559D37031B942E6F00127633 /* explosionSystem_android.pu in Resources */ = {isa = PBXBuildFile; fileRef = 559D37021B942E6F00127633 /* explosionSystem_android.pu */; };
+		559D37041B942E6F00127633 /* explosionSystem_android.pu in Resources */ = {isa = PBXBuildFile; fileRef = 559D37021B942E6F00127633 /* explosionSystem_android.pu */; };
 		55A8F5A01B83134B0051787A /* rainbowmodeok.wav in Resources */ = {isa = PBXBuildFile; fileRef = 55A8F59F1B83134B0051787A /* rainbowmodeok.wav */; };
 		55A8F5A11B8313730051787A /* achievement.plist in Resources */ = {isa = PBXBuildFile; fileRef = 55F833F01B81C077001F1F6C /* achievement.plist */; };
 		55A8F5A21B8313730051787A /* rainbowmodeok.wav in Resources */ = {isa = PBXBuildFile; fileRef = 55A8F59F1B83134B0051787A /* rainbowmodeok.wav */; };
@@ -686,6 +688,7 @@
 		5592AE441B5FF4AB0062AF08 /* PatternsManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PatternsManager.cpp; sourceTree = "<group>"; };
 		5592AE451B5FF4AB0062AF08 /* PatternsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PatternsManager.h; sourceTree = "<group>"; };
 		5592AE471B5FF4B50062AF08 /* patterns.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = patterns.plist; sourceTree = "<group>"; };
+		559D37021B942E6F00127633 /* explosionSystem_android.pu */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = explosionSystem_android.pu; sourceTree = "<group>"; };
 		55A8F59F1B83134B0051787A /* rainbowmodeok.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = rainbowmodeok.wav; sourceTree = "<group>"; };
 		55A8F5A61B8355790051787A /* bear.c3b */ = {isa = PBXFileReference; lastKnownFileType = file; path = bear.c3b; sourceTree = "<group>"; };
 		55A8F5A71B8355790051787A /* bear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bear.png; sourceTree = "<group>"; };
@@ -1381,6 +1384,7 @@
 		55CECC311B70F98C00434427 /* Particle3D */ = {
 			isa = PBXGroup;
 			children = (
+				559D37021B942E6F00127633 /* explosionSystem_android.pu */,
 				55CECC321B70F98C00434427 /* explosionSystem.pu */,
 				55CECC331B70F98C00434427 /* particle3d.material */,
 			);
@@ -1663,6 +1667,7 @@
 				5510DE731B6B7C4D00C2FB15 /* platform4.c3b in Resources */,
 				55EEE8011B3BA48700B16AEE /* logo.png in Resources */,
 				55AEF25D1B6C5CA700460B84 /* bird.png in Resources */,
+				559D37031B942E6F00127633 /* explosionSystem_android.pu in Resources */,
 				5570740C1B78EE6C002A02C3 /* rainbowin.wav in Resources */,
 				5560D7171B7CAAA4004DDD67 /* comic_sans_ms.png in Resources */,
 				55066CDC1B4BCC6C007FCF3F /* 5x5-2.tmx in Resources */,
@@ -1840,6 +1845,7 @@
 				5587F3891B7B32CF00279D49 /* stencil.png in Resources */,
 				55C8A3971B79EEBF004E9218 /* girl1.c3b in Resources */,
 				55C8A3981B79EEBF004E9218 /* girl1.png in Resources */,
+				559D37041B942E6F00127633 /* explosionSystem_android.pu in Resources */,
 				5570741D1B78F4F9002A02C3 /* btnclick.wav in Resources */,
 				557074111B78EEBD002A02C3 /* mainbg.mp3 in Resources */,
 				557074121B78EEBD002A02C3 /* menubg.mp3 in Resources */,
