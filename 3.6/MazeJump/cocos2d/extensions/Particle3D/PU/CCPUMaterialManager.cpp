@@ -141,21 +141,21 @@ bool PUMaterialCache::loadMaterialsFromSearchPaths( const std::string &fileFolde
         }
         _findclose(handle);
 #elif (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID/* || CC_TARGET_PLATFORM == CC_PLATFORM_LINUX*/)
-    std::string::size_type pos = fileFolder.find("assets/");
-    std::string relativePath = fileFolder;
-    if (pos != std::string::npos) {
-        // "assets/" is at the beginning of the path and we don't want it
-        relativePath = fileFolder.substr(pos + strlen("assets/"));
-    }
-    AAssetDir *dir = AAssetManager_openDir(FileUtilsAndroid::getAssetManager(), relativePath.c_str());
-    const char *fileName = nullptr;
-    std::string seg("/");
-    while ((fileName = AAssetDir_getNextFileName(dir)) != nullptr)
-    {
-        std::string fullpath = fileFolder + seg + std::string(fileName);
+//    std::string::size_type pos = fileFolder.find("assets/");
+//    std::string relativePath = fileFolder;
+//    if (pos != std::string::npos) {
+//        // "assets/" is at the beginning of the path and we don't want it
+//        relativePath = fileFolder.substr(pos + strlen("assets/"));
+//    }
+//    AAssetDir *dir = AAssetManager_openDir(FileUtilsAndroid::getAssetManager(), relativePath.c_str());
+//    const char *fileName = nullptr;
+//    std::string seg("/");
+//    while ((fileName = AAssetDir_getNextFileName(dir)) != nullptr)
+//    {
+        std::string fullpath = fileFolder + "particle3d.material";
         loadMaterials(fullpath);
-    }
-    AAssetDir_close(dir);
+//    }
+//    AAssetDir_close(dir);
 
 #elif (CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_MAC)
     ftw(fileFolder.c_str(), iterPath, 500);

@@ -303,7 +303,7 @@ void RunController::switchToMenuScene()
 }
 bool RunController::initCloud()
 {
-    m_pCloud1 = Sprite3D::create("cloud.c3b");
+    m_pCloud1 = Sprite3D::create("Cloud.c3b");
     if(!m_pCloud1)
         return false;
     m_pCloud1->setCameraMask((unsigned short)CameraFlag::USER1);
@@ -316,7 +316,7 @@ bool RunController::initCloud()
     m_pCloud1->setForceDepthWrite(true);
     m_pMainLayer->addChild(m_pCloud1);
     
-    m_pCloud2 = Sprite3D::create("cloud.c3b");
+    m_pCloud2 = Sprite3D::create("Cloud.c3b");
     if(!m_pCloud2)
         return false;
     m_pCloud2->setCameraMask((unsigned short)CameraFlag::USER1);
@@ -331,7 +331,7 @@ bool RunController::initCloud()
     m_pCloud2->setForceDepthWrite(true);
     m_pMainLayer->addChild(m_pCloud2);
     
-    m_pCloud3 = Sprite3D::create("cloud.c3b");
+    m_pCloud3 = Sprite3D::create("Cloud.c3b");
     if(!m_pCloud2)
         return false;
     m_pCloud3->setCameraMask((unsigned short)CameraFlag::USER1);
@@ -395,11 +395,7 @@ void RunController::addPlayerExplosion()
 {
     if(m_pMainPlayer && m_pMainLayer)
     {
-#if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
-        auto explosion = PUParticleSystem3D::create("explosionSystem_android.pu");
-#else
         auto explosion = PUParticleSystem3D::create("explosionSystem.pu");
-#endif
         explosion->setCameraMask((unsigned short)CameraFlag::USER1);
         explosion->setPosition3D(m_pMainPlayer->getPosition3D());
         m_pMainLayer->addChild(explosion);
@@ -412,11 +408,7 @@ void RunController::addDecoratorExplosion(const cocos2d::Vec3& pos)
 {
     if(m_pMainPlayer && m_pMainLayer)
     {
-#if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
-        auto explosion = PUParticleSystem3D::create("explosionSystem_android.pu");
-#else
         auto explosion = PUParticleSystem3D::create("explosionSystem.pu");
-#endif
         explosion->setCameraMask((unsigned short)CameraFlag::USER1);
         explosion->setPosition3D(pos);
         m_pMainLayer->addChild(explosion);

@@ -12,32 +12,32 @@ USING_NS_CC;
 BaseEffect3D::BaseEffect3D()
 : m_pGLprogramstate(nullptr),m_bDirty(false),m_bSpriteSelfDraw(false)
 {
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-    m_pBackgroundListener = EventListenerCustom::create(EVENT_RENDERER_RECREATED,
-                                                      [this](EventCustom*)
-                                                      {
-                                                          auto glProgram = cocos2d::GLProgramCache::getInstance()->getGLProgram(m_strProgramName);
-                                                          if(!glProgram)
-                                                          {
-                                                              glProgram = m_pGLprogramstate->getGLProgram();
-                                                              glProgram->reset();
-                                                              glProgram->initWithByteArrays(m_strVertSource.c_str(), m_strFragSource.c_str());
-                                                              cocos2d::GLProgramCache::getInstance()->addGLProgram(glProgram, m_strProgramName);
-                                                          }
-                                                          glProgram->link();
-                                                          glProgram->updateUniforms();
-                                                      }
-                                                      );
-    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(m_pBackgroundListener, -1);
-#endif
+//#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+//    m_pBackgroundListener = EventListenerCustom::create(EVENT_RENDERER_RECREATED,
+//                                                      [this](EventCustom*)
+//                                                      {
+//                                                          auto glProgram = cocos2d::GLProgramCache::getInstance()->getGLProgram(m_strProgramName);
+//                                                          if(!glProgram)
+//                                                          {
+//                                                              glProgram = m_pGLprogramstate->getGLProgram();
+//                                                              glProgram->reset();
+//                                                              glProgram->initWithByteArrays(m_strVertSource.c_str(), m_strFragSource.c_str());
+//                                                              cocos2d::GLProgramCache::getInstance()->addGLProgram(glProgram, m_strProgramName);
+//                                                          }
+//                                                          glProgram->link();
+//                                                          glProgram->updateUniforms();
+//                                                      }
+//                                                      );
+//    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(m_pBackgroundListener, -1);
+//#endif
 }
 
 BaseEffect3D::~BaseEffect3D()
 {
     CC_SAFE_RELEASE_NULL(m_pGLprogramstate);
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-    Director::getInstance()->getEventDispatcher()->removeEventListener(m_pBackgroundListener);
-#endif
+//#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+//    Director::getInstance()->getEventDispatcher()->removeEventListener(m_pBackgroundListener);
+//#endif
 }
 bool BaseEffect3D::initGLProgramState(const std::string& vertFilename, const std::string& fragFilename)
 {
@@ -51,10 +51,10 @@ bool BaseEffect3D::initGLProgramState(const std::string& vertFilename, const std
         auto vertSource = FileUtils::getInstance()->getStringFromFile(vertexFullPath);
         auto fragSource = FileUtils::getInstance()->getStringFromFile(fragmentFullPath);
         
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-        m_strVertSource = vertSource;
-        m_strFragSource = fragSource;
-#endif
+//#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+//        m_strVertSource = vertSource;
+//        m_strFragSource = fragSource;
+//#endif
         
         glprogram = cocos2d::GLProgram::createWithByteArrays(vertSource.c_str(), fragSource.c_str());
         cocos2d::GLProgramCache::getInstance()->addGLProgram(glprogram, m_strProgramName);
