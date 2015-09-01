@@ -57,6 +57,7 @@ import com.google.android.gms.ads.AdSize;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.InterstitialAd;
 import com.wanax.google.GoogleGameManager;
+import com.wanax.mazejump.R;
 public class AppActivity extends Cocos2dxActivity {
 	private static String MY_AD_BANNER_UNIT_ID = "ca-app-pub-3628527903442392/7420311060";
 	private static String MY_AD_INTERSTITIAL_UNIT_ID = "ca-app-pub-3628527903442392/8897044266";
@@ -380,9 +381,9 @@ public class AppActivity extends Cocos2dxActivity {
 			@Override
 			public void run() {
 				AlertDialog.Builder builder = new AlertDialog.Builder(context);  
-                builder.setMessage("确定退出吗?");  
+                builder.setMessage(R.string.str_exit);  
                 builder.setIcon(android.R.drawable.ic_dialog_info);  
-                builder.setPositiveButton("确定", new OnClickListener() {  
+                builder.setPositiveButton(R.string.str_ok, new OnClickListener() {  
                        
                     @Override  
                     public void onClick(DialogInterface dialog, int which) {
@@ -390,7 +391,7 @@ public class AppActivity extends Cocos2dxActivity {
                         System.exit(0);                       
                     }  
                 });  
-                builder.setNegativeButton("取消", new OnClickListener() {  
+                builder.setNegativeButton(R.string.str_cancel, new OnClickListener() {  
                        
                     @Override  
                     public void onClick(DialogInterface dialog, int which) {  
