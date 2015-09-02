@@ -24,6 +24,10 @@
 3.4/DDDice/cocos2d
 3.4/TinyFlare/proj.android/obj
 3.4/TinyFlare/proj.android/bin
+3.4/TinyFlare/proj.android/gen
+3.4/TinyFlare/cocos2d/cocos/platform/android/java/obj
+3.4/TinyFlare/cocos2d/cocos/platform/android/java/gen
+3.4/TinyFlare/cocos2d/cocos/platform/android/java/bin
 3.6/MazeJump/bin/
 3.6/MazeJump/proj.android/bin
 3.6/MazeJump/proj.android/gen

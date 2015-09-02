@@ -37,8 +37,12 @@ import com.google.android.gms.ads.AdSize;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.InterstitialAd;
 import com.soomla.SoomlaConfig;
+import com.wanax.geometrywars.R;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -303,5 +307,32 @@ public class AppActivity extends Cocos2dxActivity {
 	public static void logWithUserData(Hashtable<String, String> data) {
 		final Hashtable<String, String> curData = data;
 		FlurryAgent.logEvent("USER_DATA", curData);
+	}
+	public static void exitGame()
+	{
+		context.runOnUiThread(new Runnable() {
+			
+			@Override
+			public void run() {
+				AlertDialog.Builder builder = new AlertDialog.Builder(context);  
+                builder.setMessage(R.string.str_exit);  
+                builder.setIcon(android.R.drawable.ic_dialog_info);  
+                builder.setPositiveButton(R.string.str_ok, new OnClickListener() {  
+                       
+                    @Override  
+                    public void onClick(DialogInterface dialog, int which) {
+                    	context.finish();
+                        System.exit(0);                       
+                    }  
+                });  
+                builder.setNegativeButton(R.string.str_cancel, new OnClickListener() {  
+                       
+                    @Override  
+                    public void onClick(DialogInterface dialog, int which) {  
+                        dialog.dismiss();   
+                    }  
+                }).show();           
+			}
+		});
 	}
 }

@@ -24,6 +24,9 @@ public:
 #if CC_TARGET_PLATFORM == CC_PLATFORM_IOS
     void setRootViewController(RootViewController* viewController);
 #endif
+#if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
+    void exitGame();
+#endif
     void showAdsView();
     void hideAdsView();
     void playInterstitialAds();

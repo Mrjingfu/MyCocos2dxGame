@@ -13,7 +13,13 @@
 
 #define STARDUST_ITEM_ID "stardust_currency"
 #define THOUSAND_STARDUST_ITEM_ID "thousand_stardust_currency"
+
+#if CC_TARGET_PLATFORM == CC_PLATFORM_IOS
 #define THOUSAND_STARDUST_PACK_PRODUCT_ID "com.wanax.geometrywars.stardustpack"
+#elif CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
+#define THOUSAND_STARDUST_PACK_PRODUCT_ID "com.wanax.geometrywars.stardust"
+#endif
+
 #define NO_ADS_ITEM_ID "no_ads"
 #define NO_ADS_PRODUCT_ID "com.wanax.geometrywars.removeads"
 
