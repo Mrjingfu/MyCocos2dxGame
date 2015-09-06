@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">几何太空战</string>
+    <string name="app_name">弹幕太空</string>
     <string name="str_exit">确定退出吗？</string>
     <string name="str_ok">确定</string>
     <string name="str_cancel">取消</string>
