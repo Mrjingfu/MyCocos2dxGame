@@ -14,6 +14,7 @@
 #include "UIManager.h"
 #include "ShopPopUpUI.h"
 #include "SdkBoxManager.h"
+#include "GameUI.h"
 #include "storage/local-storage/LocalStorage.h"
 USING_NS_CC;
 
@@ -84,6 +85,7 @@ bool DeathPopUpUI::init()
 }
 void DeathPopUpUI::onHome(cocos2d::Ref *ref)
 {
+    GameUI::setDeadCount(0);
      UIManager::getInstance()->playBtnSound();
     UIManager::getInstance()->hidePopUp(false);
     RunController::getInstance()->switchToMenu();

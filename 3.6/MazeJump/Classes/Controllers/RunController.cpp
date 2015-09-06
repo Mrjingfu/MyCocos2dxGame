@@ -181,6 +181,11 @@ void RunController::reset()
     }
     AudioEngine::resume(m_nBgID);
     AudioEngine::play2d("fadeout.wav");
+     Runner* runner = RunController::getMainPlayer();
+    if (runner && runner->getState() == Runner::RS_DEATH) {
+        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_RUNNER_LOSE);
+        GameCenterController::getInstance()->reportScore(Value(localStorageGetItem(USER_MAX_LEVEL)).asInt());
+    }
 }
 void RunController::update(float delta)
 {

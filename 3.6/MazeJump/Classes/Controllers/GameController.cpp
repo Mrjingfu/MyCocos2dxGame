@@ -57,8 +57,12 @@ bool GameController::init(Layer* pMainLayer,int difficultLevel)
         return false;
     m_pMainLayer->addChild(m_pMainCamera);
     
-    m_currentLevel = randomLevel();
+//    m_currentLevel = randomLevel();
     
+    m_currentLevel = m_difficultLevel-1;
+    if (m_currentLevel>24) {
+        m_currentLevel = 24;
+    }
     UIManager::getInstance()->init(m_pMainLayer);
     UIManager::getInstance()->setGameUi(UIManager::UI_GROUND_GAME);
     
