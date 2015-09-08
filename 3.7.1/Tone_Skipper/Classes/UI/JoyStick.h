@@ -51,6 +51,9 @@ public:
     void downBtnTouchEvent(cocos2d::Ref *ref, cocos2d::ui::Widget::TouchEventType touchType);
     void aBtnTouchEvent(cocos2d::Ref *ref, cocos2d::ui::Widget::TouchEventType touchType);
     void bBtnTouchEvent(cocos2d::Ref *ref, cocos2d::ui::Widget::TouchEventType touchType);
+    
+    void onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event *unused_event);
+    void onKeyReleased(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event *unused_event);
 private:
     cocos2d::ui::Button*       m_pLeftBtn;
     cocos2d::ui::Button*       m_pUpBtn;

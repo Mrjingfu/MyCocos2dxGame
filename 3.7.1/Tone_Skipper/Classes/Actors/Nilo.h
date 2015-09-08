@@ -12,13 +12,14 @@
 #include "Player.h"
 class Nilo : public Player
 {
-    friend class ActorMgr;
+    friend class ActorFactory;
 protected:
     Nilo();
     virtual ~Nilo();
     
     virtual bool loadModel();
     virtual bool loadAnimations();
+    virtual void onLand();
     
     virtual void onLeftBtnPressed() override;
     virtual void onLeftBtnReleased() override;

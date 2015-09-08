@@ -36,7 +36,7 @@ bool JoyStick::init()
 {
     if ( !Layer::init() )
         return false;
-    
+#if CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
     auto size = Director::getInstance()->getVisibleSize();
     float scale = size.height/320.0f;
     SpriteFrameCache::getInstance()->addSpriteFramesWithFile("joystick.plist");
@@ -91,6 +91,12 @@ bool JoyStick::init()
     
     setCascadeOpacityEnabled(true);
     setOpacity(200);
+#else
+    auto keyboardListener=EventListenerKeyboard::create();
+    keyboardListener->onKeyPressed=CC_CALLBACK_2(JoyStick::onKeyPressed,this);
+    keyboardListener->onKeyReleased=CC_CALLBACK_2(JoyStick::onKeyReleased,this);
+    _eventDispatcher->addEventListenerWithSceneGraphPriority(keyboardListener,this);
+#endif
     return true;
 }
 void JoyStick::addJoystickListener(JoystickListener* listener)
@@ -241,5 +247,65 @@ void JoyStick::bBtnTouchEvent(Ref *ref, ui::Widget::TouchEventType touchType)
             listener->onBBtnReleased();
         else if (touchType == ui::Widget::TouchEventType::CANCELED)
             listener->onBBtnReleased();
+    }
+}
+void JoyStick::onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event *unused_event)
+{
+    for (JoystickListener* listener : m_Listeners) {
+    
+        if(keyCode == EventKeyboard::KeyCode::KEY_W)
+        {
+            listener->onUpBtnPressed();
+        }
+        else if(keyCode == EventKeyboard::KeyCode::KEY_A)
+        {
+            listener->onLeftBtnPressed();
+        }
+        else if(keyCode == EventKeyboard::KeyCode::KEY_S)
+        {
+            listener->onDownBtnPressed();
+        }
+        else if(keyCode == EventKeyboard::KeyCode::KEY_D)
+        {
+            listener->onRightBtnPressed();
+        }
+        else if(keyCode == EventKeyboard::KeyCode::KEY_J)
+        {
+            listener->onABtnPressed();
+        }
+        else if(keyCode == EventKeyboard::KeyCode::KEY_K)
+        {
+            listener->onBBtnPressed();
+        }
+    }
+}
+void JoyStick::onKeyReleased(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event *unused_event)
+{
+    for (JoystickListener* listener : m_Listeners) {
+        
+        if(keyCode == EventKeyboard::KeyCode::KEY_W)
+        {
+            listener->onUpBtnReleased();
+        }
+        else if(keyCode == EventKeyboard::KeyCode::KEY_A)
+        {
+            listener->onLeftBtnReleased();
+        }
+        else if(keyCode == EventKeyboard::KeyCode::KEY_S)
+        {
+            listener->onDownBtnReleased();
+        }
+        else if(keyCode == EventKeyboard::KeyCode::KEY_D)
+        {
+            listener->onRightBtnReleased();
+        }
+        else if(keyCode == EventKeyboard::KeyCode::KEY_J)
+        {
+            listener->onABtnReleased();
+        }
+        else if(keyCode == EventKeyboard::KeyCode::KEY_K)
+        {
+            listener->onBBtnReleased();
+        }
     }
 }

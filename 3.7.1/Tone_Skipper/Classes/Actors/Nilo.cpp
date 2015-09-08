@@ -26,6 +26,7 @@ bool Nilo::loadModel()
         CCLOG("Bob : Load model failed!");
         ret = false;
     }
+    m_pSprite->setAnchorPoint(Vec2(0.5f,0));
     addChild(m_pSprite);
     return ret;
 }
@@ -323,7 +324,10 @@ bool Nilo::loadAnimations()
         CCLOG("Nilo : Load animations failed!");
     return ret;
 }
-
+void Nilo::onLand()
+{
+    setPlayerState(PS_IDLE);
+}
 void Nilo::onLeftBtnPressed()
 {
     if(!m_bAcceptInput)
@@ -344,7 +348,9 @@ void Nilo::onUpBtnPressed()
 {
     if(!m_bAcceptInput)
         return;
-    bool available = true;
+    if(getPlayerState() != PS_IDLE)
+        return;
+    bool available = false;
     if(available)
     {
         if(getPlayerDirection() == PD_BACK)
@@ -358,6 +364,8 @@ void Nilo::onUpBtnPressed()
 void Nilo::onUpBtnReleased()
 {
     if(!m_bAcceptInput)
+        return;
+    if(getPlayerState() != PS_IDLE)
         return;
     if(getPlayerDirection() == PD_BACK)
     {
@@ -415,6 +423,8 @@ void Nilo::onABtnReleased()
 void Nilo::onBBtnPressed()
 {
     if(!m_bAcceptInput)
+        return;
+    if(getPlayerState() == PS_SUPERJUMP)
         return;
     if(getPlayerState() == PS_JUMP)
         setPlayerState(PS_SUPERJUMP);
