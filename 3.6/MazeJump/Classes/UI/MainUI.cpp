@@ -90,13 +90,13 @@ bool MainUI::init()
     addChild(modeLayer);
     
     mazeBtn = cocos2d::ui::Button::create(UtilityHelper::getLocalString("UI_MENU_MAZE_BTN"),"","",cocos2d::ui::TextureResType::PLIST);
-    mazeBtn->setPosition(Vec2(size.width*0.63, size.height*0.5));
+    mazeBtn->setPosition(Vec2(size.width*0.63, size.height*0.38));
     mazeBtn->setScale(scale);
     mazeBtn->setCascadeOpacityEnabled(true);
     modeLayer->addChild(mazeBtn);
     
     rainbowBtn = cocos2d::ui::Button::create(UtilityHelper::getLocalString("UI_MENU_RAINBOW_BTN"),"","",cocos2d::ui::TextureResType::PLIST);
-    rainbowBtn->setPosition(Vec2(size.width*0.63, size.height*0.38));
+    rainbowBtn->setPosition(Vec2(size.width*0.63, size.height*0.38+mazeBtn->getContentSize().height*scale+20*scale));
     rainbowBtn->setScale(scale);
     rainbowBtn->setCascadeOpacityEnabled(true);
     modeLayer->addChild(rainbowBtn);
@@ -204,6 +204,7 @@ void MainUI::fadeinEnd()
 }
 void MainUI::onPlayRainbowGame(cocos2d::Ref *ref)
 {
+        UIManager::getInstance()->playBtnSound();
         int maxLevel = Value(localStorageGetItem(USER_MAX_LEVEL)).asInt();
         if (maxLevel > 0) {
             UIManager::getInstance()->addPopUp(BasePopUpUI::POPUP_START);
@@ -217,6 +218,7 @@ void MainUI::onPlayRainbowGame(cocos2d::Ref *ref)
 }
 void MainUI::onMazeGame(cocos2d::Ref *ref)
 {
+    UIManager::getInstance()->playBtnSound();
     int level = Value(localStorageGetItem(USER_LAST_LEVEL)).asInt()-1;
     if(level<=0)
         level = 0;
