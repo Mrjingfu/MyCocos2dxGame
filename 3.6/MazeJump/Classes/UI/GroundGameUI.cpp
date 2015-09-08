@@ -183,10 +183,18 @@ bool GroundGameUI::init()
     listenerkeyPad->onKeyReleased = CC_CALLBACK_2(GroundGameUI::onKeyPressed, this);
     _eventDispatcher->addEventListenerWithSceneGraphPriority(listenerkeyPad, this);
     
+    cocos2d::ui::ImageView* levelImg = cocos2d::ui::ImageView::create(UtilityHelper::getLocalString("UI_GROUND_LEVEL_IMG"),cocos2d::ui::TextureResType::PLIST);
+    levelImg->setAnchorPoint(Vec2::ANCHOR_MIDDLE_LEFT);
+    levelImg->setPosition(Vec2(size.width*0.38, size.height*0.93));
+    levelImg->setScale(scale);
+    addChild(levelImg);
+    
     currentLeve = Label::createWithBMFont( UtilityHelper::getLocalString("FONT_NUMBER"), Value(Value(localStorageGetItem(USER_MAZE_LEVEL)).asInt() +1).asString());
     currentLeve->setScale(scale);
-    currentLeve->setPosition(Vec2(size.width*0.5, size.height*0.95));
+    currentLeve->setPosition(Vec2(size.width*0.4+levelImg->getContentSize().width*scale+10*scale, size.height*0.93));
     addChild(currentLeve);
+    
+    
     if (GameController::getInstance()->getMazeMode() == GameController::MAZE) {
 //        goldBuyBtn->setVisible(false);
 //        heartBuyBtn->setVisible(false);
@@ -205,6 +213,7 @@ bool GroundGameUI::init()
 }
 void GroundGameUI::onGiveUp(cocos2d::Ref *ref)
 {
+    UIManager::getInstance()->playBtnSound();
     UIManager::getInstance()->addPopUp(BasePopUpUI::POPUP_GIVE_UP);
     UIManager::getInstance()->showPopUp();
 }

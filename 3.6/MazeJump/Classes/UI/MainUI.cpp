@@ -153,7 +153,6 @@ void MainUI::onEnter()
 {
     Layer::onEnter();
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_MAIN_SHOW_MODE_BTN, std::bind(&MainUI::onShowModeBtn, this, std::placeholders::_1));
-//    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_MENU_DISPLAY_MODE_BTN, std::bind(&MainUI::onDisplayModeBtn, this, std::placeholders::_1));
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_MENU_HIDE_MODE_BTN, std::bind(&MainUI::onHideModeBtn, this, std::placeholders::_1));
 }
 void MainUI::onExit()
@@ -168,7 +167,7 @@ void MainUI::onShowModeBtn(cocos2d::EventCustom *sender)
         return;
     }
     if (modeLayer) {
-        EaseSineOut* fadeIn = EaseSineOut::create(FadeIn::create(1.0f));
+        EaseExponentialOut* fadeIn = EaseExponentialOut::create(FadeIn::create(1.0f));
         modeLayer->runAction(Sequence::create(fadeIn,CallFunc::create(CC_CALLBACK_0(MainUI::fadeinEnd, this)), NULL));
     }
     
@@ -183,7 +182,7 @@ void MainUI::onHideModeBtn(cocos2d::EventCustom *sender)
         rainbowBtn->setTouchEnabled(false);
     }
     if (modeLayer) {
-        EaseSineOut* fadeOut = EaseSineOut::create(FadeOut::create(1.0f));
+        EaseExponentialOut* fadeOut = EaseExponentialOut::create(FadeOut::create(1.0f));
         modeLayer->runAction(Sequence::create(fadeOut,CallFunc::create(CC_CALLBACK_0(MainUI::fadeoutEnd, this)), NULL));
     }
 
