@@ -328,7 +328,7 @@ void RolePopUpUI::onBack(cocos2d::Ref *Ref)
         localStorageSetItem(USER_SELECT_ROLE_ID, m_cureentSelectIteml->getRoleId());
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_CHARACTER_MODEL_CHANGE);
     }
-    
+    Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_MAIN_SHOW_MODE_BTN);
     UIManager::getInstance()->playBtnSound();
     UIManager::getInstance()->hidePopUp();
 }

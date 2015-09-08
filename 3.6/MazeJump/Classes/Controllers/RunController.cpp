@@ -292,7 +292,7 @@ void RunController::switchToMenu()
 }
 void RunController::switchToGameScene()
 {
-    Scene* scene = GameScene::createScene(getDifficultLevel());
+    Scene* scene = GameScene::createScene(getDifficultLevel(),GameController::MAZE_MODE::NORAML);
     if(scene)
     {
         m_bInMazeJump = true;

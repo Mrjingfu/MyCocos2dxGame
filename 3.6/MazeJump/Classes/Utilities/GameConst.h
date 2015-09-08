@@ -22,6 +22,8 @@ static const std::string USER_UUID = "USER_UUID";
 
 static const std::string USER_RAINBOW_VALUE = "rainbow_value";
 
+static const std::string USER_MAZE_LEVEL = "UserMazeLevel";
+
 ///Font
 static std::string FONT_FXZS = "comic_sans_ms.ttf";
 
@@ -52,6 +54,8 @@ static const std::string PURCHASE_ID6 = "remove_ads";
 
 ////Event
 static const std::string EVENT_GAME_PAUSE = "GAME_PAUSE";
+static const std::string EVENT_MAZE_CHANAGE_LEVEL = "MAZE_CHANAGE_LEVEL";
+static const std::string EVENT_MAIN_SHOW_MODE_BTN = "MAIN_SHOW_MODE_BTN";
 static const std::string EVENT_GOLD_CHANGE = "GOLD_CHANGE";
 static const std::string EVENT_HEART_CHANGE = "HEART_CHANGE";
 static const std::string EVENT_RUNNER_ADD_PRODUCT = "RUNNER_ADD_PRODUCT";
@@ -71,4 +75,7 @@ static const std::string EVENT_START_HEART_CHANGE = "START_HEART_CHANGE";
 static const std::string EVENT_CHARACTER_MODEL_CHANGE = "CHARACTER_MODEL_CHANGE";
 static const std::string EVENT_PURCHASE_GOLD_OK = "PURCHASE_GOLD_OK";
 static const std::string EVENT_PURCHASE_REMOVEADS_OK = "PURCHASE_REMOVEADS_OK";
+
+//static const std::string EVENT_MENU_DISPLAY_MODE_BTN = "MENU_DISPLAY_MODE_BTN";
+static const std::string EVENT_MENU_HIDE_MODE_BTN = "MENU_HIDE_MODE_BTN";
 #endif //_Scene_Const_h_

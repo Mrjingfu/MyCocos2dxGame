@@ -84,5 +84,10 @@ void GroundGiveUpPopUpUI::onBack(cocos2d::Ref *ref)
 }
 void GroundGiveUpPopUpUI::onOK(cocos2d::Ref *ref)
 {
-    GameController::getInstance()->switchToRainbowRun();
+    if (GameController::getInstance()->getMazeMode() ==GameController::MAZE) {
+        GameController::getInstance()->switchToMenu();
+    }else if(GameController::getInstance()->getMazeMode() ==GameController::NORAML){
+        GameController::getInstance()->switchToRainbowRun();
+    }
+    
 }

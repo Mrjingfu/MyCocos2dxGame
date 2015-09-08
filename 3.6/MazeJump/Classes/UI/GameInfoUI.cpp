@@ -161,7 +161,7 @@ void GameInfoUI::onMaxDistanceChange(cocos2d::EventCustom *sender)
         int lastLevel = Value(localStorageGetItem(USER_LAST_LEVEL)).asInt();
         int maxLevel = Value(localStorageGetItem(USER_MAX_LEVEL)).asInt();
         if (lastLevel >= maxLevel) {
-            m_maxLevelTv->setString(localStorageGetItem(USER_MAX_LEVEL));
+            m_maxLevelTv->setString(Value(Value(localStorageGetItem(USER_MAX_LEVEL)).asInt()).asString());
         }
         
     }
