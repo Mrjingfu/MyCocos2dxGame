@@ -59,12 +59,15 @@ bool GameController::init(Layer* pMainLayer,int difficultLevel,MAZE_MODE mazeMod
         return false;
     m_pMainLayer->addChild(m_pMainCamera);
     
-    m_currentLevel = randomLevel();
+    
     if (m_mazeMode==MAZE) {
          m_currentLevel = m_difficultLevel;
         if (m_currentLevel>24) {
             m_currentLevel = 24;
         }
+    }else if (m_mazeMode==NORAML)
+    {
+        m_currentLevel = randomLevel();
     }
     
     UIManager::getInstance()->init(m_pMainLayer);

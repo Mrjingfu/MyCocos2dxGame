@@ -15,6 +15,7 @@
 #include "ShopPopUpUI.h"
 #include "SdkBoxManager.h"
 #include "GameUI.h"
+#include "NativeBridge.h"
 #include "storage/local-storage/LocalStorage.h"
 USING_NS_CC;
 
@@ -40,9 +41,11 @@ void DeathPopUpUI::onEnter()
 {
     BasePopUpUI::onEnter();
     init();
+    NativeBridge::getInstance()->showAdsView();
 }
 void DeathPopUpUI::onExit()
 {
+    NativeBridge::getInstance()->hideAdsView();
     BasePopUpUI::onExit();
 }
 bool DeathPopUpUI::init()
