@@ -46,7 +46,6 @@ MainUI::MainUI()
 }
 MainUI::~MainUI()
 {
-    AudioEngine::stop(m_nBgID);
 }
 
 bool MainUI::init()
@@ -61,15 +60,15 @@ bool MainUI::init()
     addChild(titleView);
     
     if(cocos2d::experimental::AudioEngine::isEnable())
-    {
         soundBtn = cocos2d::ui::Button::create("btn_sounds_on.png","","",cocos2d::ui::TextureResType::PLIST);
-        m_nBgID = AudioEngine::play2d("menubg.mp3", true, 0.5f);
-    }
     else
-    soundBtn = cocos2d::ui::Button::create("btn_sounds_off.png","","",cocos2d::ui::TextureResType::PLIST);
-    soundBtn->setScale(scale);
-    soundBtn->setPosition(Vec2(size.width*0.9, size.height*0.93));
-    addChild(soundBtn);
+        soundBtn = cocos2d::ui::Button::create("btn_sounds_off.png","","",cocos2d::ui::TextureResType::PLIST);
+    if(soundBtn)
+    {
+        soundBtn->setScale(scale);
+        soundBtn->setPosition(Vec2(size.width*0.9, size.height*0.93));
+        addChild(soundBtn);
+    }
     
     cocos2d::ui::Button* shopBtn = cocos2d::ui::Button::create("btn_shop_normal.png","btn_shop_pressed.png","",cocos2d::ui::TextureResType::PLIST);
     shopBtn->setScale(scale);
@@ -145,8 +144,9 @@ void MainUI::onSound(cocos2d::Ref *ref)
     {
         cocos2d::experimental::AudioEngine::setEnable(true);
         soundBtn->loadTextureNormal("btn_sounds_on.png",cocos2d::ui::TextureResType::PLIST);
-        if(m_nBgID == AudioEngine::INVALID_AUDIO_ID)
-            m_nBgID = AudioEngine::play2d("menubg.mp3", true, 0.5f);
+        MenuScene* menuScene = static_cast<MenuScene*>(UIManager::getInstance()->getParent());
+        if(menuScene)
+            menuScene->playBackgroundMusic();
     }
 }
 void MainUI::onEnter()
@@ -157,6 +157,7 @@ void MainUI::onEnter()
 }
 void MainUI::onExit()
 {
+    AudioEngine::stop(m_nBgID);
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_MAIN_SHOW_MODE_BTN);
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_MENU_HIDE_MODE_BTN);
     Layer::onExit();
@@ -212,18 +213,16 @@ void MainUI::onPlayRainbowGame(cocos2d::Ref *ref)
         }else
         {
             MenuScene* menuScene = static_cast<MenuScene*>(UIManager::getInstance()->getParent());
-            menuScene->fadeOutMainScene();
+            if(menuScene)
+                menuScene->fadeOutMainScene();
         }
 }
 void MainUI::onMazeGame(cocos2d::Ref *ref)
 {
     UIManager::getInstance()->playBtnSound();
-    int level = Value(localStorageGetItem(USER_LAST_LEVEL)).asInt()-1;
-    if(level<=0)
-        level = 0;
     MenuScene* menuScene = static_cast<MenuScene*>(UIManager::getInstance()->getParent());
-    CCLOG("lastlevel:%d",level);
-    menuScene->fadeOutGameScene();
+    if (menuScene)
+        menuScene->fadeOutGameScene();
 }
 
 void MainUI::onComment(cocos2d::Ref *ref)

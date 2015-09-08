@@ -120,9 +120,9 @@ void Player::setPlayerDirection(PLayerDirection direction)
     m_PlayerLastDirection = m_PlayerDirection;
     m_PlayerDirection = direction;
     if(m_PlayerDirection == PD_LEFT)
-        m_pSprite->setFlippedX(true);
+        setFlipX(true);
     else if(m_PlayerDirection == PD_RIGHT)
-        m_pSprite->setFlippedX(false);
+        setFlipX(false);
 }
 void Player::onEnterIdleState()
 {
@@ -155,8 +155,12 @@ void Player::onEnterRunState()
     Animate* action = nullptr;
     switch (m_PlayerDirection) {
         case PD_LEFT:
+            action = Animate::create(m_pRunAnimation);
+            setAccelX(-25);
+            break;
         case PD_RIGHT:
             action = Animate::create(m_pRunAnimation);
+            setAccelX(25);
             break;
         case PD_BACK:
             action = Animate::create(m_pBackFireRunAnimation);
@@ -164,11 +168,14 @@ void Player::onEnterRunState()
         default:
             break;
     }
+    setMaxSpeed(0.5f);
     m_pSprite->runAction(RepeatForever::create(action));
 }
 void Player::onExitRunState()
 {
-     m_pSprite->stopAllActions();
+    m_pSprite->stopAllActions();
+    setAccelX(0);
+    setMaxSpeed(0);
 }
 
 void Player::onEnterJumpState()
@@ -187,6 +194,7 @@ void Player::onEnterJumpState()
         default:
             break;
     }
+    m_Velocity.y = 3;
     m_pSprite->runAction(action);
 }
 void Player::onExitJumpState()
@@ -210,6 +218,7 @@ void Player::onEnterSuperJumpState()
         default:
             break;
     }
+    m_Velocity.y = 3;
     m_pSprite->runAction(action);
 }
 void Player::onExitSuperJumpState()

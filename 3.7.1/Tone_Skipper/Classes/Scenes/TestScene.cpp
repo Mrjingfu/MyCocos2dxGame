@@ -7,8 +7,8 @@
 //
 
 #include "TestScene.h"
-#include "ActorMgr.h"
 #include "JoyStick.h"
+#include "MapMgrs.h"
 USING_NS_CC;
 
 Scene* TestScene::createScene()
@@ -37,17 +37,18 @@ bool TestScene::init()
     {
         return false;
     }
+    
     cocos2d::Size size = Director::getInstance()->getWinSize();
-    Player* nilo = ActorMgr::getInstance()->createPlayer(Player::PT_NILO);
-    if(nilo)
-    {
-        nilo->setPosition(Vec2(size.width*0.5f, size.height*0.5f));
-        this->addChild(nilo);
-    }
+    
+    if(!MapMgrs::getInstance()->init(this))
+        return false;
+    if(!MapMgrs::getInstance()->loadMap("testmap.tmx"))
+        return false;
+    
     JoyStick* joystick = JoyStick::create();
     if(joystick)
     {
-        joystick->addJoystickListener(nilo);
+        joystick->addJoystickListener(MapMgrs::getInstance()->getNilo());
         addChild(joystick);
     }
     return true;
@@ -65,5 +66,5 @@ void TestScene::onExit()
 }
 void TestScene::update(float delta)
 {
-    
+    MapMgrs::getInstance()->update(delta);
 }

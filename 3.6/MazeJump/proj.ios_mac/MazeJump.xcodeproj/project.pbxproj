@@ -2102,8 +2102,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: quanlan huang (L4MC53BS3Z)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: quanlan huang (L4MC53BS3Z)";
+				CODE_SIGN_IDENTITY = "iOS Development: haibo wang (FT8YEJMWBH)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iOS Development: haibo wang (FT8YEJMWBH)";
 				COMPRESS_PNG_FILES = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2136,7 +2136,7 @@
 					"$(_COCOS_LIB_IOS_BEGIN)",
 					"$(_COCOS_LIB_IOS_END)",
 				);
-				PROVISIONING_PROFILE = "22b9a94d-953a-486e-a5b1-5b20c81c69a3";
+				PROVISIONING_PROFILE = "74d5622f-88bd-4f34-aa11-6a06562d9fb3";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "$(_COCOS_HEADER_IOS_BEGIN) $(_COCOS_HEADER_IOS_END)";
@@ -2148,8 +2148,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: quanlan huang (L4MC53BS3Z)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: quanlan huang (L4MC53BS3Z)";
+				CODE_SIGN_IDENTITY = "iOS Development: haibo wang (FT8YEJMWBH)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iOS Development: haibo wang (FT8YEJMWBH)";
 				COMPRESS_PNG_FILES = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2180,7 +2180,7 @@
 					"$(_COCOS_LIB_IOS_BEGIN)",
 					"$(_COCOS_LIB_IOS_END)",
 				);
-				PROVISIONING_PROFILE = "22b9a94d-953a-486e-a5b1-5b20c81c69a3";
+				PROVISIONING_PROFILE = "74d5622f-88bd-4f34-aa11-6a06562d9fb3";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "$(_COCOS_HEADER_IOS_BEGIN) $(_COCOS_HEADER_IOS_END)";

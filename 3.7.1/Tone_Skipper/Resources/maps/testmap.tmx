@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="left-up" width="40" height="20" tilewidth="16" tileheight="16" nextobjectid="10">
+ <tileset firstgid="1" name="scene_tiles" tilewidth="16" tileheight="16" tilecount="32">
+  <image source="scene_tiles.png" width="256" height="32"/>
+ </tileset>
+ <layer name="ground" width="40" height="20">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjIJRMApGwSigL2AHYkYKMK0BExBLU4ApAcSEjTCF7qMk7Cm1exSPYgCYqRK3
+  </data>
+ </layer>
+ <objectgroup name="colliders" visible="0">
+  <object id="3" name="ground1" type="1" x="0" y="256" width="240" height="64" visible="0"/>
+  <object id="5" name="ground2" type="1" x="240" y="240" width="144" height="80" visible="0"/>
+  <object id="7" name="ground3" type="1" x="384" y="208" width="256" height="112" visible="0"/>
+ </objectgroup>
+ <objectgroup name="starters" visible="0">
+  <object id="9" name="start_born" x="152" y="240" width="16" height="16" visible="0">
+   <properties>
+    <property name="flip_x" value="0"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>
