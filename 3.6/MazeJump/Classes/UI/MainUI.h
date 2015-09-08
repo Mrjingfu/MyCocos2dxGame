@@ -20,18 +20,29 @@ protected:
 public:
     virtual void onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event) override;
     static MainUI* create();
-    void onPlayGame(Ref* ref);
+    void onPlayRainbowGame(Ref* ref);
+    void onMazeGame(Ref* ref);
     void onShop(Ref* ref);
     void onSound(Ref* ref);
     void onRank(Ref* ref);
     void onComment(Ref* ref);
     void showStarUi();
     void showShopUi();
+    void onEnter() override;
+    void onExit() override;
     
 private:
+    void fadeinEnd();
+    void fadeoutEnd();
+    void onShowModeBtn(cocos2d::EventCustom* sender);
+    void onHideModeBtn(cocos2d::EventCustom* sender);
 
+    cocos2d::Layer* modeLayer;
+    cocos2d::ui::Button* mazeBtn;
+    cocos2d::ui::Button* rainbowBtn;
     cocos2d::ui::Button* soundBtn;
     int  m_nBgID;
+    bool isTouchRoleMenu;
 
 };
 

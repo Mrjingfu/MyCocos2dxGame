@@ -83,22 +83,57 @@ bool GroundWinPopUpUI::init()
     heartRewardTv->setHorizontalAlignment(TextHAlignment::RIGHT);
     m_dialogLayer->addChild(heartRewardTv);
     
+    cocos2d::ui::Button* nextBtn = cocos2d::ui::Button::create(UtilityHelper::getLocalString("UI_GROUND_SUC_NEXT_BTN"),"","",cocos2d::ui::TextureResType::PLIST);
+    nextBtn->setScale(scale);
+    nextBtn->setPosition(Vec2(size.width*0.5,size.height*0.55));
+    m_dialogLayer->addChild(nextBtn);
+    
+    
    cocos2d::ui::Button* reviveBtn = cocos2d::ui::Button::create(UtilityHelper::getLocalString("UI_GROUND_BTN_SUC_BACK"),"","",cocos2d::ui::TextureResType::PLIST);
     reviveBtn->setScale(scale);
     reviveBtn->setPosition(Vec2(size.width*0.5,size.height*0.38));
     m_dialogLayer->addChild(reviveBtn);
     
+    nextBtn->addClickEventListener(CC_CALLBACK_1(GroundWinPopUpUI::onNext, this));
     reviveBtn->addClickEventListener(CC_CALLBACK_1(GroundWinPopUpUI::onBack, this));
-    return true;
     
+    
+    if (GameController::getInstance()->getMazeMode() == GameController::MAZE) {
+        glodView->setVisible(false);
+        heartView->setVisible(false);
+        goldRewardTv->setVisible(false);
+        heartRewardTv->setVisible(false);
+        reviveBtn->setPosition(Vec2(size.width*0.5,size.height*0.45));
+    }else if (GameController::getInstance()->getMazeMode() == GameController::NORAML)
+    {
+        nextBtn->setVisible(false);
+    }
+    return true;
 
+    
+}
+void GroundWinPopUpUI::onNext(cocos2d::Ref *ref)
+{
+    UIManager::getInstance()->playBtnSound();
+    UIManager::getInstance()->hidePopUp(true,CC_CALLBACK_0(GroundWinPopUpUI::onHideNextPopUpEnd, this));
+
+}
+void GroundWinPopUpUI::onHideNextPopUpEnd()
+{
+    Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_MAZE_CHANAGE_LEVEL);
+    GameController::getInstance()->createMap(false, Value(localStorageGetItem(USER_MAZE_LEVEL)).asInt());
 }
 void GroundWinPopUpUI::onBack(cocos2d::Ref *ref)
 {
-     UIManager::getInstance()->playBtnSound();
-    UIManager::getInstance()->hidePopUp(true,CC_CALLBACK_0(GroundWinPopUpUI::onHidePopUpEnd, this));
+    UIManager::getInstance()->playBtnSound();
+    UIManager::getInstance()->hidePopUp(true,CC_CALLBACK_0(GroundWinPopUpUI::onHideBackPopUpEnd, this));
 }
-void GroundWinPopUpUI::onHidePopUpEnd()
+void GroundWinPopUpUI::onHideBackPopUpEnd()
 {
-    GameController::getInstance()->switchToRainbowRun();
+    if (GameController::getInstance()->getMazeMode() == GameController::MAZE) {
+        GameController::getInstance()->switchToMenu();
+    }else if (GameController::getInstance()->getMazeMode() == GameController::NORAML)
+    {
+        GameController::getInstance()->switchToRainbowRun();
+    }
 }

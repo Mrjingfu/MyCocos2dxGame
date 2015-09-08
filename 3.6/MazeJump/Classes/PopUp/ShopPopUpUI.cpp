@@ -411,6 +411,7 @@ void ShopPopUpUI::onBuyHeart(cocos2d::Ref *ref)
 void ShopPopUpUI::onRole(cocos2d::Ref *ref)
 {
      UIManager::getInstance()->playBtnSound();
+    Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_MENU_HIDE_MODE_BTN);
     UIManager::getInstance()->hidePopUp(false);
     UIManager::getInstance()->addPopUp(BasePopUpUI::POPUP_ROLE);
     UIManager::getInstance()->showPopUp(true,BasePopUpUI::POPUP_HORIZONTAL);

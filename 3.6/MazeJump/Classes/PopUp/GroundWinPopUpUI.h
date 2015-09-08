@@ -17,7 +17,9 @@ protected:
     virtual ~GroundWinPopUpUI();
     virtual bool init() ;
     void onBack(Ref* ref);
-    void onHidePopUpEnd();
+    void onNext(Ref* ref);
+    void onHideBackPopUpEnd();
+    void onHideNextPopUpEnd();
 public:
     virtual void onEnter() override;
     virtual void onExit() override;

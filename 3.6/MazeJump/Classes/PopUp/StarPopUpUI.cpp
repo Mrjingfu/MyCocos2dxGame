@@ -146,16 +146,17 @@ void StarPopUpUI::onPlayGame(cocos2d::Ref *ref)
 }
 void StarPopUpUI::onHidePop()
 {
+     Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_MENU_HIDE_MODE_BTN);
     MenuScene* menuScene = static_cast<MenuScene*>(UIManager::getInstance()->getParent());
     if (isContinue) {
         localStorageSetItem(USER_HEART_NUM, Value(Value(localStorageGetItem(USER_HEART_NUM)).asInt()-5).asString());
         localStorageSetItem(USER_LAST_LEVEL, localStorageGetItem(USER_MAX_LEVEL));
-        menuScene->fadeOutScene();
+        menuScene->fadeOutMainScene();
         isContinue = false;
     }else
     {
         localStorageSetItem(USER_LAST_LEVEL, Value(0).asString());
-        menuScene->fadeOutScene();
+        menuScene->fadeOutMainScene();
     }
 
 }

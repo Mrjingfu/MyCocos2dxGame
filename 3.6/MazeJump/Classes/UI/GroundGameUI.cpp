@@ -45,6 +45,7 @@ void GroundGameUI::onEnter()
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_MAZEJUMP_LOSE, std::bind(&GroundGameUI::onMazeJumpLose, this, std::placeholders::_1));
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_MAZEJUMP_RECORD_END, std::bind(&GroundGameUI::onGroundRecordEnd, this, std::placeholders::_1));
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_MAZEJUMP_SHOW_ADA, std::bind(&GroundGameUI::onShowAda, this, std::placeholders::_1));
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_MAZE_CHANAGE_LEVEL, std::bind(&GroundGameUI::onChangeMazeLevel, this, std::placeholders::_1));
 }
 void GroundGameUI::onExit()
 {
@@ -53,6 +54,7 @@ void GroundGameUI::onExit()
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_MAZEJUMP_LOSE);
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_MAZEJUMP_RECORD_END);
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_MAZEJUMP_SHOW_ADA);
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_MAZE_CHANAGE_LEVEL);
     Layer::onExit();
 }
 void GroundGameUI::onShowAda(cocos2d::EventCustom *sender)
@@ -181,6 +183,24 @@ bool GroundGameUI::init()
     listenerkeyPad->onKeyReleased = CC_CALLBACK_2(GroundGameUI::onKeyPressed, this);
     _eventDispatcher->addEventListenerWithSceneGraphPriority(listenerkeyPad, this);
     
+    currentLeve = Label::createWithBMFont( UtilityHelper::getLocalString("FONT_NUMBER"), Value(Value(localStorageGetItem(USER_MAZE_LEVEL)).asInt() +1).asString());
+    currentLeve->setScale(scale);
+    currentLeve->setPosition(Vec2(size.width*0.5, size.height*0.95));
+    addChild(currentLeve);
+    if (GameController::getInstance()->getMazeMode() == GameController::MAZE) {
+//        goldBuyBtn->setVisible(false);
+//        heartBuyBtn->setVisible(false);
+        awardImg->setVisible(false);
+        goldAni->setVisible(false);
+        heartAni->setVisible(false);
+        goldRewardTv->setVisible(false);
+        heartRewardTv->setVisible(false);
+    }else if (GameController::getInstance()->getMazeMode() == GameController::NORAML)
+    {
+        currentLeve->setVisible(false);
+    }
+    
+    
     return true;
 }
 void GroundGameUI::onGiveUp(cocos2d::Ref *ref)
@@ -220,25 +240,47 @@ void GroundGameUI::onHelp(Ref* ref)
     }
     
 }
+void GroundGameUI::onChangeMazeLevel(cocos2d::EventCustom *sender)
+{
+    if (currentLeve) {
+         currentLeve->setString(Value(Value(localStorageGetItem(USER_MAZE_LEVEL)).asInt() +1).asString());
+    }
+   
+}
 void GroundGameUI::onMazeJumpWin(cocos2d::EventCustom *sender)
 {
     CCLOG("onMazeJumpWin");
     cocos2d::experimental::AudioEngine::play2d("mazejump_sucess.wav", false, 0.5f);
-    int goldReward = GameController::getInstance()->getCurrentGoldReward();
-    int heartReward = GameController::getInstance()->getCurrentHeartReward();
-    CCLOG("goldreward:%d,heartReward%d",goldReward,heartReward);
-    localStorageSetItem(USER_GOLD_NUM, Value(Value(localStorageGetItem(USER_GOLD_NUM)).asInt()+goldReward).asString());
+    if (GameController::getInstance()->getMazeMode() == GameController::MAZE) {
+        
+        int level = Value(localStorageGetItem(USER_MAZE_LEVEL)).asInt()+1;
+        if (level >=24) {
+            level = 24;
+        }
+        localStorageSetItem(USER_MAZE_LEVEL, Value(level).asString());
+        UIManager::getInstance()->addPopUp(BasePopUpUI::POPUP_GROUND_WIN);
+        UIManager::getInstance()->showPopUp();
+        
+    }else if((GameController::getInstance()->getMazeMode() == GameController::NORAML))
+    {
+        int goldReward = GameController::getInstance()->getCurrentGoldReward();
+        int heartReward = GameController::getInstance()->getCurrentHeartReward();
+        CCLOG("goldreward:%d,heartReward%d",goldReward,heartReward);
+        localStorageSetItem(USER_GOLD_NUM, Value(Value(localStorageGetItem(USER_GOLD_NUM)).asInt()+goldReward).asString());
         localStorageSetItem(USER_HEART_NUM, Value(Value(localStorageGetItem(USER_HEART_NUM)).asInt()+ heartReward).asString());
-    Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_GOLD_CHANGE);
-    Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_HEART_CHANGE);
-    UIManager::getInstance()->addPopUp(BasePopUpUI::POPUP_GROUND_WIN);
-    UIManager::getInstance()->showPopUp();
+        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_GOLD_CHANGE);
+        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_HEART_CHANGE);
+        UIManager::getInstance()->addPopUp(BasePopUpUI::POPUP_GROUND_WIN);
+        UIManager::getInstance()->showPopUp();
+
+    }
     
 }
 void GroundGameUI::onMazeJumpLose(cocos2d::EventCustom *sender)
 {
     CCLOG("onMazeJumpLose");
     cocos2d::experimental::AudioEngine::play2d("mazejump_failed.wav", false, 0.6f);
+    NativeBridge::getInstance()->playInterstitialAds();
     UIManager::getInstance()->addPopUp(BasePopUpUI::POPUP_GROUND_LOSE);
     UIManager::getInstance()->showPopUp();
 }

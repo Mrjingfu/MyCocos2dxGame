@@ -13,6 +13,7 @@
 #include "MainScene.h"
 #include "UIManager.h"
 #include "GameConst.h"
+#include "MenuScene.h"
 USING_NS_CC;
 
 GameController* g_pGameControllerInstance = nullptr;
@@ -32,17 +33,18 @@ GameController::GameController()
     m_pWhiteLayer       = nullptr;
     m_currentLevel      = 0;
     m_difficultLevel    = 0 ;
+    m_mazeMode = NORAML;
 }
 GameController::~GameController()
 {
 }
-bool GameController::init(Layer* pMainLayer,int difficultLevel)
+bool GameController::init(Layer* pMainLayer,int difficultLevel,MAZE_MODE mazeMode)
 {
     if(pMainLayer == nullptr)
         return false;
     m_pMainLayer = pMainLayer;
     m_difficultLevel = difficultLevel;
-
+    m_mazeMode = mazeMode;
     
     m_pWhiteLayer = LayerColor::create(Color4B::WHITE);
     if(!m_pWhiteLayer)
@@ -58,10 +60,16 @@ bool GameController::init(Layer* pMainLayer,int difficultLevel)
     m_pMainLayer->addChild(m_pMainCamera);
     
     m_currentLevel = randomLevel();
+    if (m_mazeMode==MAZE) {
+         m_currentLevel = m_difficultLevel;
+        if (m_currentLevel>24) {
+            m_currentLevel = 24;
+        }
+    }
     
     UIManager::getInstance()->init(m_pMainLayer);
     UIManager::getInstance()->setGameUi(UIManager::UI_GROUND_GAME);
-    
+
     CCLOG("LEVEL:%d",m_currentLevel);
     if (!createMap(false,m_currentLevel)) {
         return false;
@@ -156,7 +164,13 @@ bool GameController::createMap(bool _playing,int level)
     
    
     m_pMainCamera->setPosition3D(Vec3(0,-m_pGroundLayer->getGroundRadius()*2.5f*cosf(M_PI),m_pGroundLayer->getGroundRadius()*2.5f*sinf(M_PI/4)) + m_pGroundLayer->getOffset());
-    m_pMainCamera->lookAt(m_pGroundLayer->getPosition3D() + m_pGroundLayer->getOffset()+Vec3(0,0,15));
+    if (m_mazeMode==MAZE) {
+         m_pMainCamera->lookAt(m_pGroundLayer->getPosition3D() + m_pGroundLayer->getOffset());
+    }else if (m_mazeMode == NORAML)
+    {
+         m_pMainCamera->lookAt(m_pGroundLayer->getPosition3D() + m_pGroundLayer->getOffset()+Vec3(0,0,15));
+    }
+   
 
     m_pMainCamera->setCameraFlag(CameraFlag::USER1);
     m_pGroundLayer->setCamera(m_pMainCamera);
@@ -177,6 +191,21 @@ void GameController::switchToRainbowRun()
 void GameController::switchToMainScene()
 {
     Director::getInstance()->popScene();
+}
+void GameController::switchToMenu()
+{
+    if(m_pWhiteLayer)
+    {
+        EaseExponentialOut* fadeIn = EaseExponentialOut::create(FadeIn::create(1.0f));
+        CallFunc* callFunc = CallFunc::create(CC_CALLBACK_0(GameController::switchToMenuScene, this));
+        Sequence* sequence = Sequence::create( fadeIn, callFunc, NULL);
+        m_pWhiteLayer->runAction(sequence);
+    }
+}
+void GameController::switchToMenuScene()
+{
+    auto menuScene = MenuScene::createScene();
+    Director::getInstance()->replaceScene(menuScene);
 }
 int GameController::getCurrentGoldReward()
 {

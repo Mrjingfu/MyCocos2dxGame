@@ -58,11 +58,22 @@ bool GroundLosePopUpUI::init()
     m_popupBgLayer->setScale(scale);
 
     m_dialogLayer->addChild(m_popupBgLayer);
+    ui::Button* backtn = nullptr;
+    if (GameController::getInstance()->getMazeMode() == GameController::MAZE) {
+        backtn = cocos2d::ui::Button::create(UtilityHelper::getLocalString("UI_GROUND_FAILED_RESTART_BTN"),"","",cocos2d::ui::TextureResType::PLIST);
+        backtn->setScale(scale);
+        backtn->setPosition(Vec2(size.width*0.5,size.height*0.55));
+        m_dialogLayer->addChild(backtn);
+    }else if (GameController::getInstance()->getMazeMode() == GameController::NORAML)
+    {
+        backtn = cocos2d::ui::Button::create(UtilityHelper::getLocalString("UI_GROUND_BTN_FAILED_BACK"),"","",cocos2d::ui::TextureResType::PLIST);
+        backtn->setScale(scale);
+        backtn->setPosition(Vec2(size.width*0.5,size.height*0.55));
+        m_dialogLayer->addChild(backtn);
+        
+    }
     
-    ui::Button* backtn = cocos2d::ui::Button::create(UtilityHelper::getLocalString("UI_GROUND_BTN_FAILED_BACK"),"","",cocos2d::ui::TextureResType::PLIST);
-    backtn->setScale(scale);
-    backtn->setPosition(Vec2(size.width*0.5,size.height*0.55));
-    m_dialogLayer->addChild(backtn);
+    
 
     
     ui::Button* reviveBtn = cocos2d::ui::Button::create(UtilityHelper::getLocalString("UI_GROUND_BTN_FAILED_HELP"),"","",cocos2d::ui::TextureResType::PLIST);
@@ -73,6 +84,9 @@ bool GroundLosePopUpUI::init()
     
     backtn->addClickEventListener(CC_CALLBACK_1(GroundLosePopUpUI::onBack, this));
     reviveBtn->addClickEventListener(CC_CALLBACK_1(GroundLosePopUpUI::onHelpRecover, this));
+    
+    
+    
     
     return true;
 }
@@ -108,5 +122,11 @@ void GroundLosePopUpUI::onBack(cocos2d::Ref *ref)
 }
 void GroundLosePopUpUI::onHidePopUpEnd()
 {
-    GameController::getInstance()->switchToRainbowRun();
+    if (GameController::getInstance()->getMazeMode() == GameController::MAZE) {
+        GameController::getInstance()->createMap(false, Value(localStorageGetItem(USER_MAZE_LEVEL)).asInt());
+    }else if (GameController::getInstance()->getMazeMode() == GameController::NORAML)
+    {
+         GameController::getInstance()->switchToRainbowRun();
+    }
+   
 }

@@ -24,7 +24,9 @@ public:
 
     virtual bool onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event) override;
     virtual void onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event) override;
+    static void setDeadCount(int count){m_DeadCount = count;}
 private:
+    static int m_DeadCount;
     int m_conut;
     bool isRecover;
     bool isShwoHelp;

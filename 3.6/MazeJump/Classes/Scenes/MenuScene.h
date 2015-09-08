@@ -26,8 +26,8 @@ public:
     // implement the "static create()" method manually
     CREATE_FUNC(MenuScene);
     
-    void fadeOutScene();
-    
+    void fadeOutMainScene();
+    void fadeOutGameScene();
     virtual void onEnter();
     virtual void onExit();
     virtual void update(float delta);
@@ -36,6 +36,7 @@ public:
     virtual bool onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event) override;
 private:
     void switchToMainScene();
+    void switchToGameScene();
     void startGame();
     void runnerSuperJump();
     void runnerJump();
@@ -55,6 +56,7 @@ private:
     float               m_fTime;
     float               m_fRainbowTime;
     cocos2d::Vec3       m_dirDist;
+    bool                m_isTouch;
 };
 
 #endif /* defined(__MazeJump__MenuScene__) */

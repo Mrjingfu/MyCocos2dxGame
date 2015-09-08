@@ -151,6 +151,26 @@ void NativeBridge::hideIndicatorView()
         t.env->DeleteLocalRef(t.classID);
     }
 }
+void NativeBridge::exitGame()
+{
+    log("exitGame");
+    JniMethodInfo t;
+    
+    if (JniHelper::getStaticMethodInfo(t, "org/cocos2dx/cpp/AppActivity", "exitGame", "()V")) {
+        
+       t.env->CallStaticVoidMethod(t.classID, t.methodID);
+        
+        if (t.env->ExceptionOccurred()) {
+            
+            t.env->ExceptionDescribe();
+            
+            t.env->ExceptionClear();
+            
+            return;
+        }
+        t.env->DeleteLocalRef(t.classID);
+    }
+}
 void NativeBridge::logWithUserData()
 {
     log("logWithUserData");

@@ -73,7 +73,7 @@ bool GameInfoUI::init()
     addChild(maxLayer);
     
     currentLayer = Layer::create();
-    currentLayer->setPosition(Vec2(0, 50*scale));
+//    currentLayer->setPosition(Vec2(0, 50*scale));
     addChild(currentLayer);
     
     cocos2d::ui::ImageView* bestImg = cocos2d::ui::ImageView::create(UtilityHelper::getLocalString("UI_GAME_BEST_TV"),cocos2d::ui::TextureResType::PLIST);
@@ -103,7 +103,7 @@ bool GameInfoUI::init()
     currentLayer->addChild(m_CurrentLevelTv);
     
 
-    maxLayer->setVisible(false);
+    maxLayer->setVisible(true);
     currentLayer->setVisible(true);
     
     return true;
@@ -114,11 +114,15 @@ void GameInfoUI::setCurrentLayerVisible(bool isVisible)
     if (currentLayer) {
         currentLayer->setVisible(isVisible);
     }
+    
+    if (maxLayer) {
+        maxLayer->setVisible(isVisible);
+    }
 }
  void GameInfoUI::onEnter()
 {
     Layer::onEnter();
-    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_RUNNER_LOSE_CHANGE_VIEW, std::bind(&GameInfoUI::onRunnerLoseChangeView, this, std::placeholders::_1));
+//    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_RUNNER_LOSE_CHANGE_VIEW, std::bind(&GameInfoUI::onRunnerLoseChangeView, this, std::placeholders::_1));
 
         Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_MAX_DISTANCE_CHANGE, std::bind(&GameInfoUI::onMaxDistanceChange, this, std::placeholders::_1));
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_GOLD_CHANGE, std::bind(&GameInfoUI::onGoldChange, this, std::placeholders::_1));
@@ -129,7 +133,7 @@ void GameInfoUI::setCurrentLayerVisible(bool isVisible)
  void GameInfoUI::onExit()
 {
     
-    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_RUNNER_LOSE_CHANGE_VIEW);
+  //  Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_RUNNER_LOSE_CHANGE_VIEW);
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_MAX_DISTANCE_CHANGE);
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_GOLD_CHANGE);
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_HEART_CHANGE);
@@ -151,6 +155,15 @@ void GameInfoUI::onMaxDistanceChange(cocos2d::EventCustom *sender)
 {
     if (m_CurrentLevelTv) {
         m_CurrentLevelTv->setString(localStorageGetItem(USER_LAST_LEVEL));
+        
+    }
+    if (m_maxLevelTv) {
+        int lastLevel = Value(localStorageGetItem(USER_LAST_LEVEL)).asInt();
+        int maxLevel = Value(localStorageGetItem(USER_MAX_LEVEL)).asInt();
+        if (lastLevel >= maxLevel) {
+            m_maxLevelTv->setString(Value(Value(localStorageGetItem(USER_MAX_LEVEL)).asInt()).asString());
+        }
+        
     }
 }
 

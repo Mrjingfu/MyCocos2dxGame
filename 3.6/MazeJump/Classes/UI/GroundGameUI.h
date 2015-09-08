@@ -25,11 +25,13 @@ public:
 private:
     bool isShwoHelp;
     cocos2d::LayerColor* helpLayer;
+    cocos2d::Label* currentLeve;
     void onHelp(Ref* ref);
     void onMazeJumpWin(cocos2d::EventCustom* sender);
     void onMazeJumpLose(cocos2d::EventCustom* sender);
     void onGroundRecordEnd(cocos2d::EventCustom* sender);
     void onShowAda(cocos2d::EventCustom* sender);
+    void onChangeMazeLevel(cocos2d::EventCustom* sender);
     void onShowAdaDelayTime();
     void onShopBuyGold(Ref* ref);
     void onShopBuyHeart(Ref* ref);

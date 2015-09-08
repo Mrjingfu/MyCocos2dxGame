@@ -9,6 +9,7 @@
 #include "MenuScene.h"
 #include "MainUI.h"
 #include "MainScene.h"
+#include "GameScene.h"
 #include "GameConst.h"
 #include "UIManager.h"
 #include "storage/local-storage/LocalStorage.h"
@@ -49,7 +50,8 @@ MenuScene::MenuScene()
     m_pWhiteLayer           = nullptr;
     m_bStartGame            = false;
     m_fTime = 0;
-    m_fRainbowTime = 2.0f;
+    m_fRainbowTime = 1.5f;
+    m_isTouch = false;
 }
 // on "init" you need to initialize your instance
 bool MenuScene::init()
@@ -161,17 +163,7 @@ bool MenuScene::init()
     DirectionLight* directionLight = DirectionLight::create(Vec3(-3, -4, -2), Color3B(158, 158, 158));
     m_pSea->addChild(directionLight);
     
-    m_pRainbow = RibbonTrail::create("ribbontrail.png", 70, 2000);
-    if(!m_pRainbow)
-        return false;
-    m_pRainbow->setPosition3D(Vec3(-1100, -35, -800));
-    m_pRainbow->setCameraMask((unsigned short)CameraFlag::USER1);
-    this->addChild(m_pRainbow);
-    m_pRainbow->getTrail()->addNode(m_pRainbow);
-    
-    Vec3 pos = m_pRainbow->getPosition3D();
-    Vec3 target = m_pMainCamera->getPosition3D() + Vec3(0, -25, 0);
-    m_dirDist = target - pos;
+
     
     auto dispatcher = Director::getInstance()->getEventDispatcher();
     auto touchListener = EventListenerTouchOneByOne::create();
@@ -214,12 +206,22 @@ void MenuScene::onExit()
 }
 void MenuScene::update(float delta)
 {
-    if(m_pRainbow && m_pMainCamera)
+    if( m_pMainCamera)
     {
-        
+
         if(m_fTime <=2.0f)
         {
-
+            if (!m_pRainbow) {
+                m_pRainbow = RibbonTrail::create("ribbontrail.png", 70, 2000);
+                m_pRainbow->setPosition3D(Vec3(-1100, -35, -800));
+                m_pRainbow->setCameraMask((unsigned short)CameraFlag::USER1);
+                this->addChild(m_pRainbow);
+                m_pRainbow->getTrail()->addNode(m_pRainbow);
+                
+                Vec3 pos = m_pRainbow->getPosition3D();
+                Vec3 target = m_pMainCamera->getPosition3D() + Vec3(0, -25, 0);
+                m_dirDist = target - pos;
+            }
             m_fRainbowTime-=delta;
             if (m_fRainbowTime<=0.0f) {
                 Vec3 pos = m_pRainbow->getPosition3D();
@@ -233,6 +235,10 @@ void MenuScene::update(float delta)
         }else
         {
             m_fTime += delta;
+            if (!m_isTouch) {
+                Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_MAIN_SHOW_MODE_BTN);
+                m_isTouch = true;
+            }
         }
     }
 }
@@ -247,6 +253,7 @@ void MenuScene::rainbowDelay(float delta)
 }
 bool MenuScene::onTouchBegan(Touch *touch, Event *event)
 {
+    m_isTouch = true;
     if(!touch)
         return false;
     if(!m_bStartGame)
@@ -262,7 +269,7 @@ void MenuScene::switchToMainScene()
     Director::getInstance()->replaceScene(scene);
 }
 
-void MenuScene::fadeOutScene()
+void MenuScene::fadeOutMainScene()
 {
     if(m_pWhiteLayer)
     {
@@ -272,19 +279,28 @@ void MenuScene::fadeOutScene()
         m_pWhiteLayer->runAction(sequence);
     }
 }
+void MenuScene::switchToGameScene()
+{
+    int level = Value(localStorageGetItem(USER_MAZE_LEVEL)).asInt();
+    auto scene = GameScene::createScene(level,GameController::MAZE_MODE::MAZE);
+    Director::getInstance()->replaceScene(scene);
+}
 
+void MenuScene::fadeOutGameScene()
+{
+    if(m_pWhiteLayer)
+    {
+        EaseExponentialOut* fadeIn = EaseExponentialOut::create(FadeIn::create(1.0f));
+        CallFunc* callFunc = CallFunc::create(CC_CALLBACK_0(MenuScene::switchToGameScene, this));
+        Sequence* sequence = Sequence::create( fadeIn, callFunc, NULL);
+        m_pWhiteLayer->runAction(sequence);
+    }
+}
 void MenuScene::startGame()
 {
-    int maxLevel = Value(localStorageGetItem(USER_MAX_LEVEL)).asInt();
-    if (maxLevel > 0) {
-        UIManager::getInstance()->addPopUp(BasePopUpUI::POPUP_START);
-        UIManager::getInstance()->showPopUp();
-        m_bStartGame=false;
-    }else
-    {
-        fadeOutScene();
-    }
 
+    Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_MAIN_SHOW_MODE_BTN);
+    m_bStartGame=false;
 }
 void MenuScene::runnerSuperJump()
 {

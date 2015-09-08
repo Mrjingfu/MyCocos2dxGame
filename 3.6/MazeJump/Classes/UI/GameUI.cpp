@@ -17,6 +17,7 @@
 #include "RegionButton.h"
 USING_NS_CC;
 
+int GameUI::m_DeadCount = 0;
 GameUI* GameUI::create()
 {
     GameUI *pRet = new(std::nothrow) GameUI();
@@ -304,19 +305,26 @@ void GameUI::onResumeAn(float dt)
 void GameUI::onRunnerLose(cocos2d::EventCustom* sender)
 {
     isDead = true;
+    ++m_DeadCount;
+    CCLOG("DeadCount:%d",m_DeadCount);
     runAction(Sequence::createWithTwoActions(DelayTime::create(1.0), CCCallFunc::create(CC_CALLBACK_0(GameUI::onDelayTimeRunnerLose, this))));
     if(m_pSkillBtn)
         m_pSkillBtn->saveRainbowValue();
 }
 void GameUI::onDelayTimeRunnerLose()
 {
-    Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_RUNNER_LOSE_CHANGE_VIEW);
+    //Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_RUNNER_LOSE_CHANGE_VIEW);
     UIManager::getInstance()->addPopUp(BasePopUpUI::POPUP_DEATH);
     UIManager::getInstance()->showPopUp(true,BasePopUpUI::POPUP_HORIZONTAL,CC_CALLBACK_0(GameUI::onShowLosePopUpEnd, this));
 }
 void GameUI::onShowLosePopUpEnd()
 {
-    NativeBridge::getInstance()->playInterstitialAds();
+    if (m_DeadCount>=5) {
+        CCLOG("show ads");
+        NativeBridge::getInstance()->playInterstitialAds();
+        m_DeadCount = 0 ;
+    }
+   
 }
 void GameUI::onShopBuyGold(cocos2d::Ref *ref)
 {

@@ -8,7 +8,6 @@
 
 #include "GameScene.h"
 #include "GroundLayer.h"
-#include "GameController.h"
 #include "LevelsManager.h"
 #include "StepManager.h"
 #include "AudioEngine.h"
@@ -17,9 +16,9 @@
 USING_NS_CC;
 using namespace experimental;
 
-Scene* GameScene::createScene(int difficultLevel)
+Scene* GameScene::createScene(int difficultLevel,GameController::MAZE_MODE mazeMode)
 {
-    GameScene *pRet = new(std::nothrow) GameScene(difficultLevel);
+    GameScene *pRet = new(std::nothrow) GameScene(difficultLevel,mazeMode);
     auto scene = Scene::create();
     if (pRet && pRet->init())
     {
@@ -34,7 +33,7 @@ Scene* GameScene::createScene(int difficultLevel)
         return NULL;
     }
 }
-GameScene::GameScene(int difficultLevel):m_nDifficultLevel(difficultLevel)
+GameScene::GameScene(int difficultLevel,GameController::MAZE_MODE mazeMode):m_nDifficultLevel(difficultLevel),m_mazeMode(mazeMode)
 {
 }
 // on "init" you need to initialize your instance
@@ -57,7 +56,7 @@ void GameScene::onEnter()
     scheduleUpdate();
     SpriteFrameCache::getInstance()->addSpriteFramesWithFile("ground_ui.plist", "ground_ui.png");
     m_nBgID = AudioEngine::play2d("loop.wav",true, 0.5);
-    if(!GameController::getInstance()->init(this,m_nDifficultLevel))
+    if(!GameController::getInstance()->init(this,m_nDifficultLevel,m_mazeMode))
         CCLOGERROR("GameController init failed!");
     
     

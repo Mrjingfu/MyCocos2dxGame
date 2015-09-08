@@ -69,5 +69,10 @@ void GroundRecordPopUpUI::onBack(cocos2d::Ref *ref)
 }
 void GroundRecordPopUpUI::onHidePopUpEnd()
 {
-    GameController::getInstance()->switchToRainbowRun();
+    if (GameController::getInstance()->getMazeMode() == GameController::MAZE) {
+        GameController::getInstance()->createMap(false, Value(localStorageGetItem(USER_MAZE_LEVEL)).asInt());
+    }else if (GameController::getInstance()->getMazeMode() == GameController::NORAML)
+    {
+        GameController::getInstance()->switchToRainbowRun();
+    }
 }

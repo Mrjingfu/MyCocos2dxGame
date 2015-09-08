@@ -13,6 +13,8 @@
 #include "UIManager.h"
 #include "AudioEngine.h"
 #include "UtilityHelper.h"
+#include "MenuScene.h"
+#include "GameScene.h"
 #include "ShopPopUpUI.h"
 #include "storage/local-storage/LocalStorage.h"
 #include "GameCenterController.h"
@@ -36,7 +38,11 @@ MainUI* MainUI::create()
 MainUI::MainUI()
 {
     m_nBgID = AudioEngine::INVALID_AUDIO_ID;
-
+    modeLayer = nullptr;
+    mazeBtn= nullptr;
+    rainbowBtn= nullptr;
+    soundBtn= nullptr;
+    isTouchRoleMenu = false;
 }
 MainUI::~MainUI()
 {
@@ -75,11 +81,33 @@ bool MainUI::init()
     rankBtn->setPosition(Vec2(size.width*0.9,size.height*0.27-shopBtn->getContentSize().height*scale-20*scale));
     addChild(rankBtn);
     
-   cocos2d::ui::Button* commonentBtn = cocos2d::ui::Button::create("btn_rate_normal.png","btn_rate_pressed.png","",cocos2d::ui::TextureResType::PLIST);
+    cocos2d::ui::Button* commonentBtn = cocos2d::ui::Button::create("btn_rate_normal.png","btn_rate_pressed.png","",cocos2d::ui::TextureResType::PLIST);
     commonentBtn->setScale(scale);
     commonentBtn->setPosition(Vec2(size.width*0.9,size.height*0.27-rankBtn->getContentSize().height*scale*2-40*scale));
     addChild(commonentBtn);
-
+    
+    modeLayer = Layer::create();
+    addChild(modeLayer);
+    
+    mazeBtn = cocos2d::ui::Button::create(UtilityHelper::getLocalString("UI_MENU_MAZE_BTN"),"","",cocos2d::ui::TextureResType::PLIST);
+    mazeBtn->setPosition(Vec2(size.width*0.63, size.height*0.38));
+    mazeBtn->setScale(scale);
+    mazeBtn->setCascadeOpacityEnabled(true);
+    modeLayer->addChild(mazeBtn);
+    
+    rainbowBtn = cocos2d::ui::Button::create(UtilityHelper::getLocalString("UI_MENU_RAINBOW_BTN"),"","",cocos2d::ui::TextureResType::PLIST);
+    rainbowBtn->setPosition(Vec2(size.width*0.63, size.height*0.38+mazeBtn->getContentSize().height*scale+20*scale));
+    rainbowBtn->setScale(scale);
+    rainbowBtn->setCascadeOpacityEnabled(true);
+    modeLayer->addChild(rainbowBtn);
+    
+    modeLayer->setCascadeOpacityEnabled(true);
+    modeLayer->setOpacity(0);
+    
+    mazeBtn->setTouchEnabled(false);
+    rainbowBtn->setTouchEnabled(false);
+    mazeBtn->addClickEventListener(CC_CALLBACK_1(MainUI::onMazeGame, this));
+    rainbowBtn->addClickEventListener(CC_CALLBACK_1(MainUI::onPlayRainbowGame, this));
     soundBtn->addClickEventListener(CC_CALLBACK_1(MainUI::onSound, this));
     rankBtn->addClickEventListener(CC_CALLBACK_1(MainUI::onRank, this));
     shopBtn->addClickEventListener(CC_CALLBACK_1(MainUI::onShop, this));
@@ -121,6 +149,84 @@ void MainUI::onSound(cocos2d::Ref *ref)
             m_nBgID = AudioEngine::play2d("menubg.mp3", true, 0.5f);
     }
 }
+void MainUI::onEnter()
+{
+    Layer::onEnter();
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_MAIN_SHOW_MODE_BTN, std::bind(&MainUI::onShowModeBtn, this, std::placeholders::_1));
+//    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_MENU_DISPLAY_MODE_BTN, std::bind(&MainUI::onDisplayModeBtn, this, std::placeholders::_1));
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_MENU_HIDE_MODE_BTN, std::bind(&MainUI::onHideModeBtn, this, std::placeholders::_1));
+}
+void MainUI::onExit()
+{
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_MAIN_SHOW_MODE_BTN);
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_MENU_HIDE_MODE_BTN);
+    Layer::onExit();
+}
+void MainUI::onShowModeBtn(cocos2d::EventCustom *sender)
+{
+    if (isTouchRoleMenu) {
+        return;
+    }
+    if (modeLayer) {
+        EaseSineOut* fadeIn = EaseSineOut::create(FadeIn::create(1.0f));
+        modeLayer->runAction(Sequence::create(fadeIn,CallFunc::create(CC_CALLBACK_0(MainUI::fadeinEnd, this)), NULL));
+    }
+    
+}
+void MainUI::onHideModeBtn(cocos2d::EventCustom *sender)
+{
+    isTouchRoleMenu = true;
+    if (mazeBtn) {
+        mazeBtn->setTouchEnabled(false);
+    }
+    if (rainbowBtn) {
+        rainbowBtn->setTouchEnabled(false);
+    }
+    if (modeLayer) {
+        EaseSineOut* fadeOut = EaseSineOut::create(FadeOut::create(1.0f));
+        modeLayer->runAction(Sequence::create(fadeOut,CallFunc::create(CC_CALLBACK_0(MainUI::fadeoutEnd, this)), NULL));
+    }
+
+}
+void MainUI::fadeoutEnd()
+{
+    
+    isTouchRoleMenu =false;
+}
+void MainUI::fadeinEnd()
+{
+    if (mazeBtn) {
+        mazeBtn->setTouchEnabled(true);
+    }
+    if (rainbowBtn) {
+        rainbowBtn->setTouchEnabled(true);
+    }
+}
+void MainUI::onPlayRainbowGame(cocos2d::Ref *ref)
+{
+        UIManager::getInstance()->playBtnSound();
+        int maxLevel = Value(localStorageGetItem(USER_MAX_LEVEL)).asInt();
+        if (maxLevel > 0) {
+            UIManager::getInstance()->addPopUp(BasePopUpUI::POPUP_START);
+            UIManager::getInstance()->showPopUp();
+            
+        }else
+        {
+            MenuScene* menuScene = static_cast<MenuScene*>(UIManager::getInstance()->getParent());
+            menuScene->fadeOutMainScene();
+        }
+}
+void MainUI::onMazeGame(cocos2d::Ref *ref)
+{
+    UIManager::getInstance()->playBtnSound();
+    int level = Value(localStorageGetItem(USER_LAST_LEVEL)).asInt()-1;
+    if(level<=0)
+        level = 0;
+    MenuScene* menuScene = static_cast<MenuScene*>(UIManager::getInstance()->getParent());
+    CCLOG("lastlevel:%d",level);
+    menuScene->fadeOutGameScene();
+}
+
 void MainUI::onComment(cocos2d::Ref *ref)
 {
     UIManager::getInstance()->playBtnSound();

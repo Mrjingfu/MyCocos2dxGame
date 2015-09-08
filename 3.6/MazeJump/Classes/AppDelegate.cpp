@@ -73,7 +73,6 @@ bool AppDelegate::applicationDidFinishLaunching() {
     if (defualutRole.empty()) {
         localStorageSetItem(USER_DEFAULT_ROLE_ID, "role_girl1");
     }
-    
     std::string rainbowValue = localStorageGetItem(USER_RAINBOW_VALUE);
     if (rainbowValue.empty()) {
         localStorageSetItem(USER_RAINBOW_VALUE, Value(100.0f).asString());
