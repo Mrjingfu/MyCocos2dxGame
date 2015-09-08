@@ -31,6 +31,7 @@ public:
     virtual void onEnter();
     virtual void onExit();
     virtual void update(float delta);
+    void playBackgroundMusic();
     
     // 处理输入
     virtual bool onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event) override;
@@ -57,6 +58,8 @@ private:
     float               m_fRainbowTime;
     cocos2d::Vec3       m_dirDist;
     bool                m_isTouch;
+    
+    int                 m_nBgID;
 };
 
 #endif /* defined(__MazeJump__MenuScene__) */
