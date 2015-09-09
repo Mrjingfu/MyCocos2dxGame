@@ -134,64 +134,33 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/Scenes/MenuScene.cpp"
+            timestampString = "463475526.801961"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "214"
+            endingLineNumber = "214"
+            landmarkName = "MenuScene::onExit()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/UI/MainUI.cpp"
-            timestampString = "463390087.961417"
+            timestampString = "463466924.453594"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "49"
-            endingLineNumber = "49"
-            landmarkName = "MainUI::~MainUI()"
+            startingLineNumber = "172"
+            endingLineNumber = "172"
+            landmarkName = "MainUI::onShowModeBtn(cocos2d::EventCustom *sender)"
             landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "MainUI::~MainUI()"
-                  moduleName = "MazeJump Mac"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/chuangli/Documents/WorkSpace/MyCocos2dxGame/3.6/MazeJump/Classes/UI/MainUI.cpp"
-                  timestampString = "463390272.534876"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "50"
-                  endingLineNumber = "50"
-                  offsetFromSymbolStart = "16">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "MainUI::~MainUI()"
-                  moduleName = "MazeJump Mac"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/chuangli/Documents/WorkSpace/MyCocos2dxGame/3.6/MazeJump/Classes/UI/MainUI.cpp"
-                  timestampString = "463390272.534989"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "50"
-                  endingLineNumber = "50"
-                  offsetFromSymbolStart = "21">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "MainUI::~MainUI()"
-                  moduleName = "MazeJump Mac"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/chuangli/Documents/WorkSpace/MyCocos2dxGame/3.6/MazeJump/Classes/UI/MainUI.cpp"
-                  timestampString = "463390272.535089"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "50"
-                  endingLineNumber = "50"
-                  offsetFromSymbolStart = "34">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -200,13 +169,45 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../Classes/UI/MainUI.cpp"
-            timestampString = "463390114.231245"
+            filePath = "../Classes/PopUp/DeathPopUpUI.cpp"
+            timestampString = "463467363.709627"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "65"
-            endingLineNumber = "65"
-            landmarkName = "MainUI::init()"
+            startingLineNumber = "116"
+            endingLineNumber = "116"
+            landmarkName = "DeathPopUpUI::onRevive(cocos2d::Ref *ref)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/UI/GameUI.cpp"
+            timestampString = "463475664.72733"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "261"
+            endingLineNumber = "261"
+            landmarkName = "GameUI::showPopupEnd()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/Controllers/GameController.cpp"
+            timestampString = "463476365.98867"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "107"
+            endingLineNumber = "107"
+            landmarkName = "GameController::randomLevel()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

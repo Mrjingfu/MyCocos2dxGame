@@ -73,6 +73,16 @@ bool AppDelegate::applicationDidFinishLaunching() {
     if (defualutRole.empty()) {
         localStorageSetItem(USER_DEFAULT_ROLE_ID, "role_girl1");
     }
+    
+    std::string heartNum = localStorageGetItem(USER_HEART_NUM);
+    std::string goldNum = localStorageGetItem(USER_GOLD_NUM);
+    if (heartNum.empty()) {
+        localStorageSetItem(USER_HEART_NUM, "4");
+    }
+    if (goldNum.empty()) {
+        localStorageSetItem(USER_GOLD_NUM, "250");
+    }
+    
     std::string rainbowValue = localStorageGetItem(USER_RAINBOW_VALUE);
     if (rainbowValue.empty()) {
         localStorageSetItem(USER_RAINBOW_VALUE, Value(100.0f).asString());

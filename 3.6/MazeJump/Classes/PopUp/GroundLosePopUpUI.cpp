@@ -94,12 +94,20 @@ void GroundLosePopUpUI::onHelpRecover(cocos2d::Ref *ref)
 {
      UIManager::getInstance()->playBtnSound();
     int goldNum = Value(localStorageGetItem(USER_GOLD_NUM)).asInt();
+    
     if (goldNum >= 320) {
         
         localStorageSetItem(USER_GOLD_NUM, Value(Value(localStorageGetItem(USER_GOLD_NUM)).asInt() - 320).asString());
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_GOLD_CHANGE);
         UIManager::getInstance()->hidePopUp(false);
-        GameController::getInstance()->createMap(true,GameController::getInstance()->getCurrentLevel());
+        
+        if (GameController::getInstance()->getMazeMode() == GameController::MAZE) {
+            GameController::getInstance()->createMap(true,Value(localStorageGetItem(USER_MAZE_LEVEL)).asInt());
+        }else if (GameController::getInstance()->getMazeMode() == GameController::NORAML)
+        {
+            GameController::getInstance()->createMap(true,GameController::getInstance()->getCurrentLevel());
+        }
+        
     #if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID )
         SdkBoxManager::getInstance()->logEvent("MazeJump", "Game Result", "Help", 1);
     #endif

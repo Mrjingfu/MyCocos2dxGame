@@ -32,7 +32,7 @@ public:
     void onExit() override;
     
 private:
-    void fadeinEnd();
+    void fadeinEnd(bool isEnable );
     void fadeoutEnd();
     void onShowModeBtn(cocos2d::EventCustom* sender);
     void onHideModeBtn(cocos2d::EventCustom* sender);
@@ -41,7 +41,6 @@ private:
     cocos2d::ui::Button* mazeBtn;
     cocos2d::ui::Button* rainbowBtn;
     cocos2d::ui::Button* soundBtn;
-    int  m_nBgID;
     bool isTouchRoleMenu;
 
 };

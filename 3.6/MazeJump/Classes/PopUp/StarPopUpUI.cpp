@@ -146,7 +146,7 @@ void StarPopUpUI::onPlayGame(cocos2d::Ref *ref)
 }
 void StarPopUpUI::onHidePop()
 {
-     Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_MENU_HIDE_MODE_BTN);
+    Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_MENU_HIDE_MODE_BTN);
     MenuScene* menuScene = static_cast<MenuScene*>(UIManager::getInstance()->getParent());
     if (isContinue) {
         localStorageSetItem(USER_HEART_NUM, Value(Value(localStorageGetItem(USER_HEART_NUM)).asInt()-5).asString());

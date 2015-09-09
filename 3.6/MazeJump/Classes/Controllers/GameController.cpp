@@ -131,6 +131,10 @@ void GameController::destroy()
 {
     m_pMainLayer->removeAllChildren();
     m_pMainLayer = nullptr;
+    m_pSkyBox           = nullptr;
+    m_pGroundLayer      = nullptr;
+    m_pMainCamera       = nullptr;
+    m_pWhiteLayer       = nullptr;
     UIManager::getInstance()->destory();
 }
 
@@ -207,8 +211,9 @@ void GameController::switchToMenu()
 }
 void GameController::switchToMenuScene()
 {
-    auto menuScene = MenuScene::createScene();
-    Director::getInstance()->replaceScene(menuScene);
+    Director::getInstance()->popScene();
+//    auto menuScene = MenuScene::createScene();
+//    Director::getInstance()->replaceScene(menuScene);
 }
 int GameController::getCurrentGoldReward()
 {

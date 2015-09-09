@@ -13,6 +13,7 @@
 #include "AudioEngine.h"
 #include "NativeBridge.h"
 #include "ShopPopUpUI.h"
+#include "LevelsManager.h"
 #include "RegionButton.h"
 #include "GroundGiveUpPopUpUI.h"
 #include "storage/local-storage/LocalStorage.h"
@@ -206,6 +207,7 @@ bool GroundGameUI::init()
     }else if (GameController::getInstance()->getMazeMode() == GameController::NORAML)
     {
         currentLeve->setVisible(false);
+        levelImg->setVisible(false);
     }
     
     
@@ -263,8 +265,9 @@ void GroundGameUI::onMazeJumpWin(cocos2d::EventCustom *sender)
     if (GameController::getInstance()->getMazeMode() == GameController::MAZE) {
         
         int level = Value(localStorageGetItem(USER_MAZE_LEVEL)).asInt()+1;
-        if (level >=24) {
-            level = 24;
+        int maxLevel = LevelsManager::getInstance()->getMaxLevels();
+        if (level >=maxLevel) {
+            level = maxLevel;
         }
         localStorageSetItem(USER_MAZE_LEVEL, Value(level).asString());
         UIManager::getInstance()->addPopUp(BasePopUpUI::POPUP_GROUND_WIN);

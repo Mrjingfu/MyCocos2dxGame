@@ -55,6 +55,7 @@ private:
     cocos2d::Layer* m_dialogLayer;
     GameInfoUI* m_gameInfoLayer;
     cocos2d::Layer* m_gameUi;
+    cocos2d::Layer* m_mainUi;
     Game_UI m_gameUiId;
     bool m_isCancel;
 };

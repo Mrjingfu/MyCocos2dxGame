@@ -32,7 +32,7 @@ public:
     virtual void onExit();
     virtual void update(float delta);
     void playBackgroundMusic();
-    
+    void setIsMaze(bool isMaze){m_isMaze = isMaze;};
     // 处理输入
     virtual bool onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event) override;
 private:
@@ -60,6 +60,7 @@ private:
     bool                m_isTouch;
     
     int                 m_nBgID;
+    bool                m_isMaze;
 };
 
 #endif /* defined(__MazeJump__MenuScene__) */
