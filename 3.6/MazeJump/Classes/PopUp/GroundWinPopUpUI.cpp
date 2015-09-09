@@ -12,6 +12,7 @@
 #include "UIManager.h"
 #include "GameController.h"
 #include "NativeBridge.h"
+#include "LevelsManager.h"
 #include "storage/local-storage/LocalStorage.h"
 USING_NS_CC;
 
@@ -98,12 +99,21 @@ bool GroundWinPopUpUI::init()
     reviveBtn->addClickEventListener(CC_CALLBACK_1(GroundWinPopUpUI::onBack, this));
     
     
+    
     if (GameController::getInstance()->getMazeMode() == GameController::MAZE) {
         glodView->setVisible(false);
         heartView->setVisible(false);
         goldRewardTv->setVisible(false);
         heartRewardTv->setVisible(false);
         reviveBtn->setPosition(Vec2(size.width*0.5,size.height*0.45));
+        int level = Value(localStorageGetItem(USER_MAZE_LEVEL)).asInt();
+        int maxLevel = LevelsManager::getInstance()->getMaxLevels();
+        if (level>=maxLevel) {
+            nextBtn->setVisible(false);
+            reviveBtn->setPosition(Vec2(size.width*0.5,size.height*0.5));
+        }
+        
+        
     }else if (GameController::getInstance()->getMazeMode() == GameController::NORAML)
     {
         nextBtn->setVisible(false);

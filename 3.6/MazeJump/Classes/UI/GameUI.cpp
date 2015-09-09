@@ -52,6 +52,11 @@ GameUI::~GameUI()
     isDead              = false;
     isTouchShopBuy      = false;
     isTouchKeyBack      = false;
+    m_maskLayerBg       = nullptr;
+    m_countDonwImg      = nullptr;
+    pauseImg            = nullptr;
+    helpLayer           = nullptr;
+    m_pSkillBtn         = nullptr;
 }
 void GameUI::onEnter()
 {

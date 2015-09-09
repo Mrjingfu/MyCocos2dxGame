@@ -734,7 +734,7 @@ void GroundLayer::generateDecorator(GroundCell* cell)
             float percent1 = 0.008*pattentIndex;
             float percent2 = 0.001*pattentIndex;
             float percent3 = 0.002*pattentIndex;
-            float percent4 = 1.0 - percent1 - percent2 - percent3  - percent4;
+            float percent4 = 1.0 - percent1 - percent2 - percent3;
             AlisaMethod* am = AlisaMethod::create(percent1,percent2,percent3,percent4,-1.0, NULL);
             if(am)
             {
