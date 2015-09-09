@@ -53,6 +53,7 @@ MenuScene::MenuScene()
     m_fRainbowTime = 1.5f;
     m_isTouch = false;
     m_nBgID = AudioEngine::INVALID_AUDIO_ID;
+    m_isMaze = false;
 }
 // on "init" you need to initialize your instance
 bool MenuScene::init()
@@ -187,7 +188,15 @@ void MenuScene::onEnter()
 {
     Layer::onEnter();
     scheduleUpdate();
-
+    
+    if (m_isMaze) {
+        if (m_pWhiteLayer) {
+            
+            m_pWhiteLayer->setOpacity(0);
+        }
+        AudioEngine::resume(m_nBgID);
+        m_isMaze = false;
+    }
     SpriteFrameCache::getInstance()->addSpriteFramesWithFile("main_ui.plist", "main_ui.png");
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_CHARACTER_MODEL_CHANGE, std::bind(&MenuScene::changeCharacter, this, std::placeholders::_1));
     UIManager::getInstance()->init(this);
@@ -199,11 +208,13 @@ void MenuScene::onEnter()
 }
 void MenuScene::onExit()
 {
-    AudioEngine::stop(m_nBgID);
+    AudioEngine::pause(m_nBgID);
+    if (!m_isMaze) {
+        UIManager::getInstance()->destory();
+    }
     SpriteFrameCache::getInstance()->removeSpriteFramesFromFile("main_ui.plist");
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_CHARACTER_MODEL_CHANGE);
     unscheduleUpdate();
-    UIManager::getInstance()->destory();
     Layer::onExit();
 }
 void MenuScene::playBackgroundMusic()
@@ -290,7 +301,8 @@ void MenuScene::switchToGameScene()
 {
     int level = Value(localStorageGetItem(USER_MAZE_LEVEL)).asInt();
     auto scene = GameScene::createScene(level,GameController::MAZE_MODE::MAZE);
-    Director::getInstance()->replaceScene(scene);
+//    Director::getInstance()->replaceScene(scene);
+    Director::getInstance()->pushScene(scene);
 }
 
 void MenuScene::fadeOutGameScene()

@@ -43,6 +43,7 @@ UIManager::UIManager()
     m_gameInfoLayer = nullptr;
     m_parent = nullptr;
     m_gameUi = nullptr;
+    m_mainUi = nullptr;
     m_isCancel = false;
     m_gameUiId = UI_UNKOWN;
 
@@ -114,7 +115,9 @@ void UIManager::setGameUi(Game_UI gameuiStaus)
 }
 void UIManager::onExitMenu()
 {
-    
+    if (m_mainUi) {
+        m_mainUi->setVisible(false);
+    }
 }
 void UIManager::onExitGame()
 {
@@ -128,12 +131,16 @@ void UIManager::onExitGroundGame()
     if (m_gameUi) {
         m_gameUi->setVisible(true);
     }
+    if (m_mainUi) {
+        m_mainUi->setVisible(true);
+    }
 }
 void UIManager::onEnterMenu()
 {
-    Layer* lLayer = MainUI::create();
-    if (m_parent) {
-        m_parent->addChild(lLayer);
+    
+    if (m_parent && !m_mainUi) {
+        m_mainUi = MainUI::create();
+        m_parent->addChild(m_mainUi);
     }
 }
 
@@ -141,9 +148,8 @@ void UIManager::onEnterGame()
 {
     if (m_parent && !m_gameUi) {
         
-            Layer* lLayer = GameUI::create();
-            m_parent->addChild(lLayer);
-            m_gameUi = lLayer;
+            m_gameUi = GameUI::create();
+            m_parent->addChild(m_gameUi);
     }
     showInfo(true,true);
 }
@@ -336,6 +342,9 @@ void UIManager::destory()
     
     if (m_gameUiId == UI_GAME) {
         m_gameUi = nullptr;
+    }
+    if (m_gameUiId == UI_MAIN) {
+        m_mainUi = nullptr;
     }
     
     if(m_parent)

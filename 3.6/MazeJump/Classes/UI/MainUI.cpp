@@ -37,7 +37,6 @@ MainUI* MainUI::create()
 
 MainUI::MainUI()
 {
-    m_nBgID = AudioEngine::INVALID_AUDIO_ID;
     modeLayer = nullptr;
     mazeBtn= nullptr;
     rainbowBtn= nullptr;
@@ -157,7 +156,6 @@ void MainUI::onEnter()
 }
 void MainUI::onExit()
 {
-    AudioEngine::stop(m_nBgID);
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_MAIN_SHOW_MODE_BTN);
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_MENU_HIDE_MODE_BTN);
     Layer::onExit();
@@ -219,10 +217,20 @@ void MainUI::onPlayRainbowGame(cocos2d::Ref *ref)
 }
 void MainUI::onMazeGame(cocos2d::Ref *ref)
 {
+    
     UIManager::getInstance()->playBtnSound();
     MenuScene* menuScene = static_cast<MenuScene*>(UIManager::getInstance()->getParent());
     if (menuScene)
+    {
+        menuScene->setIsMaze(true);
         menuScene->fadeOutGameScene();
+    }
+    if (mazeBtn) {
+        mazeBtn->setTouchEnabled(false);
+    }
+    if (rainbowBtn) {
+        rainbowBtn->setTouchEnabled(false);
+    }
 }
 
 void MainUI::onComment(cocos2d::Ref *ref)

@@ -137,61 +137,14 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../Classes/UI/MainUI.cpp"
-            timestampString = "463390087.961417"
+            filePath = "../Classes/Scenes/MenuScene.cpp"
+            timestampString = "463463774.579713"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "49"
-            endingLineNumber = "49"
-            landmarkName = "MainUI::~MainUI()"
+            startingLineNumber = "192"
+            endingLineNumber = "192"
+            landmarkName = "MenuScene::onEnter()"
             landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "MainUI::~MainUI()"
-                  moduleName = "MazeJump Mac"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/chuangli/Documents/WorkSpace/MyCocos2dxGame/3.6/MazeJump/Classes/UI/MainUI.cpp"
-                  timestampString = "463390272.534876"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "50"
-                  endingLineNumber = "50"
-                  offsetFromSymbolStart = "16">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "MainUI::~MainUI()"
-                  moduleName = "MazeJump Mac"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/chuangli/Documents/WorkSpace/MyCocos2dxGame/3.6/MazeJump/Classes/UI/MainUI.cpp"
-                  timestampString = "463390272.534989"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "50"
-                  endingLineNumber = "50"
-                  offsetFromSymbolStart = "21">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "MainUI::~MainUI()"
-                  moduleName = "MazeJump Mac"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/chuangli/Documents/WorkSpace/MyCocos2dxGame/3.6/MazeJump/Classes/UI/MainUI.cpp"
-                  timestampString = "463390272.535089"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "50"
-                  endingLineNumber = "50"
-                  offsetFromSymbolStart = "34">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -200,13 +153,45 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../Classes/UI/MainUI.cpp"
-            timestampString = "463390114.231245"
+            filePath = "../Classes/UI/UIManager.cpp"
+            timestampString = "463463796.280311"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "65"
-            endingLineNumber = "65"
-            landmarkName = "MainUI::init()"
+            startingLineNumber = "85"
+            endingLineNumber = "85"
+            landmarkName = "UIManager::setGameUi(Game_UI gameuiStaus)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/UI/UIManager.cpp"
+            timestampString = "463463933.153908"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "141"
+            endingLineNumber = "141"
+            landmarkName = "UIManager::onEnterMenu()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/Scenes/MenuScene.cpp"
+            timestampString = "463463984.357714"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "212"
+            endingLineNumber = "212"
+            landmarkName = "MenuScene::onExit()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

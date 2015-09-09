@@ -41,7 +41,6 @@ private:
     cocos2d::ui::Button* mazeBtn;
     cocos2d::ui::Button* rainbowBtn;
     cocos2d::ui::Button* soundBtn;
-    int  m_nBgID;
     bool isTouchRoleMenu;
 
 };
