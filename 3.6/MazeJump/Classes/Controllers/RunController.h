@@ -27,6 +27,7 @@ public:
     static RunController* getInstance();
     bool init(cocos2d::Layer* pMainLayer);
     void reset();
+    void revive();
     void update(float delta);
     void destroy();
     
@@ -58,6 +59,7 @@ public:
     void showRainbow();
     void hideRainbow();
     void checkRainbowIsShowOrHide();
+    void showReviveRainbow();
     
     cocos2d::Color3B getRandomColorByIndex(int index);
     cocos2d::Color3B getSameColor() const { return m_sameColor; };
