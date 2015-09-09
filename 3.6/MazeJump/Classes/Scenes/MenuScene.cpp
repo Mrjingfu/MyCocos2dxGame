@@ -181,6 +181,9 @@ bool MenuScene::init()
     GameCenterController::getInstance()->registerGameCenterController();
 #endif
     
+    AudioEngine::play2d("rainbow.wav", false, 0.5f);
+    playBackgroundMusic();
+    
     return true;
 }
 
@@ -201,16 +204,19 @@ void MenuScene::onEnter()
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_CHARACTER_MODEL_CHANGE, std::bind(&MenuScene::changeCharacter, this, std::placeholders::_1));
     UIManager::getInstance()->init(this);
     UIManager::getInstance()->setGameUi(UIManager::UI_MAIN);
-    AudioEngine::play2d("rainbow.wav", false, 0.5f);
-    playBackgroundMusic();
+
     NativeBridge::getInstance()->showRateAppView();
     localStorageSetItem(USER_RAINBOW_VALUE, Value(100.0f).asString());
 }
 void MenuScene::onExit()
 {
-    AudioEngine::pause(m_nBgID);
+    
     if (!m_isMaze) {
         UIManager::getInstance()->destory();
+        AudioEngine::stop(m_nBgID);
+    }else
+    {
+        AudioEngine::pause(m_nBgID);
     }
     SpriteFrameCache::getInstance()->removeSpriteFramesFromFile("main_ui.plist");
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_CHARACTER_MODEL_CHANGE);

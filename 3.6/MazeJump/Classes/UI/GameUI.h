@@ -57,6 +57,7 @@ private:
     void setResume();
     
     void onShopBuyEvenet(cocos2d::EventCustom* sender);
+    void onChangeLifeStatus(cocos2d::EventCustom* sender);
 private:
     SkillButton*        m_pSkillBtn;
 };

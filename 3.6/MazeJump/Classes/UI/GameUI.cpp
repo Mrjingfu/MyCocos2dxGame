@@ -62,7 +62,7 @@ void GameUI::onEnter()
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_RUNNER_LOSE, std::bind(&GameUI::onRunnerLose, this, std::placeholders::_1));
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_GAME_PAUSE, std::bind(&GameUI::onPauseEvent, this, std::placeholders::_1));
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_RUNNER_ADD_PRODUCT, std::bind(&GameUI::onShopBuyEvenet, this, std::placeholders::_1));
-    
+        Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_CHANGE_RAINBOW_CHANGE_LIFE_STATUS, std::bind(&GameUI::onChangeLifeStatus, this, std::placeholders::_1));
 }
 void GameUI::onExit()
 {
@@ -70,6 +70,7 @@ void GameUI::onExit()
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_RUNNER_RECOVER_PAUSE);
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_RUNNER_PAUSE_RESUME);
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_GAME_PAUSE);
+     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_GAME_PAUSE);
     Layer::onExit();
 }
 
@@ -236,6 +237,10 @@ void GameUI::onPauseEvent(cocos2d::EventCustom *sender)
     if (!pausePopUp) {
        showPause();
     }
+}
+void GameUI::onChangeLifeStatus(cocos2d::EventCustom *sender)
+{
+    isDead = false;
 }
 
 void GameUI::showPause()

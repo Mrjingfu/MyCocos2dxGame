@@ -75,7 +75,7 @@ static const std::string EVENT_START_HEART_CHANGE = "START_HEART_CHANGE";
 static const std::string EVENT_CHARACTER_MODEL_CHANGE = "CHARACTER_MODEL_CHANGE";
 static const std::string EVENT_PURCHASE_GOLD_OK = "PURCHASE_GOLD_OK";
 static const std::string EVENT_PURCHASE_REMOVEADS_OK = "PURCHASE_REMOVEADS_OK";
-
+static const std::string EVENT_CHANGE_RAINBOW_CHANGE_LIFE_STATUS = "CHANGE_RAINBOW_CHANGE_LIFE_STATUS";
 //static const std::string EVENT_MENU_DISPLAY_MODE_BTN = "MENU_DISPLAY_MODE_BTN";
 static const std::string EVENT_MENU_HIDE_MODE_BTN = "MENU_HIDE_MODE_BTN";
 #endif //_Scene_Const_h_
