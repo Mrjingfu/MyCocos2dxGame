@@ -169,7 +169,11 @@ void MainUI::onShowModeBtn(cocos2d::EventCustom *sender)
     }
     if (modeLayer) {
         EaseExponentialOut* fadeIn = EaseExponentialOut::create(FadeIn::create(1.0f));
-        modeLayer->runAction(Sequence::create(fadeIn,CallFunc::create(CC_CALLBACK_0(MainUI::fadeinEnd, this)), NULL));
+        DelayTime* delay = DelayTime::create(0.5f);
+        CallFunc* callback = CallFunc::create(CC_CALLBACK_0(MainUI::fadeinEnd, this));
+        Sequence* sequence = Sequence::create(delay,callback,nullptr);
+        Spawn* spawn = Spawn::create(fadeIn,sequence,nullptr);
+        modeLayer->runAction(spawn);
     }
     
 }
