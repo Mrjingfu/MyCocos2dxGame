@@ -8,13 +8,13 @@
    eJxjYBgFo2AUjIJRMApGwSigL2AHYkYKMK0BExBLU4ApAcSEjTCF7qMk7Cm1exSPYgCYqRK3
   </data>
  </layer>
- <objectgroup name="colliders" visible="0">
-  <object id="3" name="ground1" type="1" x="0" y="256" width="240" height="64" visible="0"/>
-  <object id="5" name="ground2" type="1" x="240" y="240" width="144" height="80" visible="0"/>
-  <object id="7" name="ground3" type="1" x="384" y="208" width="256" height="112" visible="0"/>
+ <objectgroup color="#60edfa" name="colliders">
+  <object id="3" name="ground1" type="1" x="0" y="256" width="240" height="64"/>
+  <object id="5" name="ground2" type="1" x="240" y="240" width="144" height="80"/>
+  <object id="7" name="ground3" type="1" x="384" y="208" width="256" height="112"/>
  </objectgroup>
- <objectgroup name="starters" visible="0">
-  <object id="9" name="start_born" x="152" y="240" width="16" height="16" visible="0">
+ <objectgroup name="starters">
+  <object id="9" name="start_born" x="128" y="240" width="16" height="16">
    <properties>
     <property name="flip_x" value="0"/>
    </properties>

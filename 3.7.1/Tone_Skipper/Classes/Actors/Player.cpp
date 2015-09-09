@@ -7,10 +7,14 @@
 //
 
 #include "Player.h"
+#include "MapMgrs.h"
 USING_NS_CC;
 
 Player::Player()
 {
+    m_fMaxXSpeed = 0.5f;
+    m_fMaxYSpeed = 2.5f;
+    
     m_pIdleAnimation        = nullptr;
     m_pRunAnimation         = nullptr;
     m_pJumpAnimation        = nullptr;
@@ -34,6 +38,59 @@ Player::Player()
 }
 Player::~Player()
 {
+}
+void Player::update(float delta)
+{
+    if(!m_pSprite)
+        return;
+    if(!m_bOnLand)
+        m_Velocity += Vec2(0, Gravity)*delta;
+    if(m_Velocity.y <= -m_fMaxYSpeed)
+        m_Velocity.y = -m_fMaxYSpeed;
+    
+    //if(m_Velocity.length() > 0)
+    {
+        Vec2 nextPos = getPosition() + m_Velocity;
+        cocos2d::Rect rect = m_pSprite->getBoundingBox();
+        rect.origin = nextPos;
+        Actor::RAYCAST_TYPE type = Actor::RT_COLLIDER;
+        int flag = MapMgrs::CF_NONE;
+        bool collision = MapMgrs::getInstance()->checkCollision(rect, flag, type);
+        if(collision)
+        {
+            if((flag & MapMgrs::CF_LAND) != 0)
+            {
+                if(m_bOnLand == false)
+                {
+                    m_bOnLand = true;
+                    this->onLand();
+                }
+                else
+                {
+                    if(m_Velocity.y < 0)
+                        m_Velocity.y = 0;
+                }
+            }
+            setPosition(getPosition() + m_Velocity);
+            
+            switch (type) {
+                case Actor::RT_COLLIDER:
+                    break;
+                    
+                default:
+                    break;
+            }
+        }
+        else
+        {
+            setPosition(nextPos);
+            if(m_bOnLand)
+                m_bOnLand = false;
+        }
+    }
+#if COCOS2D_DEBUG
+    showDebug(true);
+#endif
 }
 void Player::setPlayerState(PlayerState state)
 {
@@ -120,14 +177,23 @@ void Player::setPlayerDirection(PLayerDirection direction)
     m_PlayerLastDirection = m_PlayerDirection;
     m_PlayerDirection = direction;
     if(m_PlayerDirection == PD_LEFT)
+    {
         setFlipX(true);
+        if(getPlayerState() == PS_RUN)
+            m_Velocity.x = -m_fMaxXSpeed;
+    }
     else if(m_PlayerDirection == PD_RIGHT)
+    {
         setFlipX(false);
+        if(getPlayerState() == PS_RUN)
+            m_Velocity.x = m_fMaxXSpeed;
+    }
 }
 void Player::onEnterIdleState()
 {
     if(!m_pSprite)
         return;
+    m_Velocity.x = 0;
     Animate* action = nullptr;
     switch (m_PlayerDirection) {
         case PD_LEFT:
@@ -156,11 +222,11 @@ void Player::onEnterRunState()
     switch (m_PlayerDirection) {
         case PD_LEFT:
             action = Animate::create(m_pRunAnimation);
-            setAccelX(-25);
+            m_Velocity.x = -m_fMaxXSpeed;
             break;
         case PD_RIGHT:
             action = Animate::create(m_pRunAnimation);
-            setAccelX(25);
+            m_Velocity.x = m_fMaxXSpeed;
             break;
         case PD_BACK:
             action = Animate::create(m_pBackFireRunAnimation);
@@ -168,14 +234,11 @@ void Player::onEnterRunState()
         default:
             break;
     }
-    setMaxSpeed(0.5f);
     m_pSprite->runAction(RepeatForever::create(action));
 }
 void Player::onExitRunState()
 {
     m_pSprite->stopAllActions();
-    setAccelX(0);
-    setMaxSpeed(0);
 }
 
 void Player::onEnterJumpState()
@@ -230,6 +293,7 @@ void Player::onEnterShakeHead()
 {
     if(!m_pSprite)
         return;
+    m_Velocity.x = 0;
     Animate* action = Animate::create(m_pShakeHeadAnimation);
     CallFunc* callback = CallFunc::create(CC_CALLBACK_0(Player::setPlayerState, this, PS_IDLE));
     Sequence* sequence = Sequence::create(action, callback, NULL);
@@ -289,6 +353,7 @@ void Player::onEnterSquatState()
 {
     if(!m_pSprite)
         return;
+    m_Velocity.x = 0;
     Animate* action = Animate::create(m_pSquatAnimation);
     m_pSprite->runAction(RepeatForever::create(action));
 }

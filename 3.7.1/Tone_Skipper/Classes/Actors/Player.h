@@ -78,6 +78,8 @@ protected:
     virtual void onEquipedGun() {};
     virtual void onUnloadGun() {};
 public:
+    virtual void update(float delta) override;
+    
     PlayerType getPlayerType() const { return m_PlayerType; }
     PlayerState getPlayerState() const { return m_PlayerState; }
     void setPlayerState(PlayerState state);

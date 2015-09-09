@@ -32,6 +32,8 @@ public:
     bool checkCollision(const cocos2d::Rect& rect, int& flag, Actor::RAYCAST_TYPE& type);
     
     Player* getNilo() const { return m_pNilo; }
+    
+    void showDebug(bool debug);
 private:
     bool initPlayer();
 private:
@@ -45,6 +47,8 @@ private:
     cocos2d::TMXObjectGroup*                m_pTriggers;
     
     Player*                                 m_pNilo;
+    
+    cocos2d::DrawNode*                      m_pDebugDrawNode;
 };
 
 #endif /* defined(__Tone_Skipper__MapMgrs__) */
