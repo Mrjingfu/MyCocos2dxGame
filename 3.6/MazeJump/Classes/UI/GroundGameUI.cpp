@@ -206,6 +206,7 @@ bool GroundGameUI::init()
     }else if (GameController::getInstance()->getMazeMode() == GameController::NORAML)
     {
         currentLeve->setVisible(false);
+        levelImg->setVisible(false);
     }
     
     

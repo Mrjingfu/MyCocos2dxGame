@@ -319,7 +319,7 @@ void GameUI::onDelayTimeRunnerLose()
 }
 void GameUI::onShowLosePopUpEnd()
 {
-    if (m_DeadCount>=5) {
+    if (m_DeadCount>=3) {
         CCLOG("show ads");
         NativeBridge::getInstance()->playInterstitialAds();
         m_DeadCount = 0 ;

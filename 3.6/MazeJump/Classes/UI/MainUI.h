@@ -32,7 +32,7 @@ public:
     void onExit() override;
     
 private:
-    void fadeinEnd();
+    void fadeinEnd(bool isEnable );
     void fadeoutEnd();
     void onShowModeBtn(cocos2d::EventCustom* sender);
     void onHideModeBtn(cocos2d::EventCustom* sender);

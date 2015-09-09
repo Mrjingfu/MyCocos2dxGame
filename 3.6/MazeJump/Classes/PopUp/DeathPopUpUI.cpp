@@ -116,6 +116,7 @@ void DeathPopUpUI::onRevive(cocos2d::Ref *ref)
     if (heartNum >=2) {
          UIManager::getInstance()->hidePopUp(false);
         localStorageSetItem(USER_HEART_NUM, Value(Value(localStorageGetItem(USER_HEART_NUM)).asInt()-2).asString());
+        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_HEART_CHANGE);
         RunController::getInstance()->revive();
 #if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID )
         SdkBoxManager::getInstance()->logEvent("Game Continue", "Revive", "Heart cost", 1);
