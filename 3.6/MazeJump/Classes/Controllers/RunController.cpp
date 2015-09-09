@@ -187,6 +187,14 @@ void RunController::reset()
         GameCenterController::getInstance()->reportScore(Value(localStorageGetItem(USER_MAX_LEVEL)).asInt());
     }
 }
+void RunController::revive()
+{
+    if(!m_pMainPlayer)
+        return;
+    m_pMainPlayer->setSpeedUp(true);
+    m_pMainPlayer->fadeIn();
+    showReviveRainbow();
+}
 void RunController::update(float delta)
 {
     if(m_pTerrainLayer)
@@ -405,8 +413,7 @@ void RunController::addPlayerExplosion()
         explosion->setPosition3D(m_pMainPlayer->getPosition3D());
         m_pMainLayer->addChild(explosion);
         explosion->startParticleSystem();
-        m_pMainPlayer->removeFromParentAndCleanup(true);
-        m_pMainPlayer = nullptr;
+        m_pMainPlayer->setOpacity(0);
     }
 }
 void RunController::addDecoratorExplosion(const cocos2d::Vec3& pos)
@@ -498,6 +505,33 @@ void RunController::checkRainbowIsShowOrHide()
             m_bHasShowRainbow = false;
         }
     }
+}
+void RunController::showReviveRainbow()
+{
+    if(m_pMainLayer == nullptr || m_pMainPlayer == nullptr)
+        return;
+    m_pRainbow = RibbonTrail::create("ribbontrail.png", 42, 3000);
+    if(!m_pRainbow)
+        return;
+    m_pRainbow->setPosition3D(Vec3(0, 20, m_pMainPlayer->getPositionZ()-500));
+    m_pRainbow->setCameraMask((unsigned short)CameraFlag::USER1);
+    m_pMainLayer->addChild(m_pRainbow);
+    m_pRainbow->getTrail()->addNode(m_pRainbow);
+    
+    EaseSineOut* moveTo = EaseSineOut::create(MoveBy::create(10, Vec3(0,0,3600)));
+    m_pRainbow->runAction(moveTo);
+    
+    if(m_pTerrainAmbLight)
+    {
+        EaseSineIn* tinyIn = EaseSineIn::create(TintBy::create(1.0f, -150, -150, -150));
+        CallFunc* callFunc = CallFunc::create(CC_CALLBACK_0(Runner::setSpeedUp, m_pMainPlayer, true));
+        CallFunc* callFunc1 = CallFunc::create(CC_CALLBACK_0(RunController::pauseBgMusic, this));
+        Sequence* sequence = Sequence::create(tinyIn, callFunc, callFunc1,NULL);
+        m_pTerrainAmbLight->runAction(sequence);
+        
+        AudioEngine::play2d("rainbowin.wav", false, 2.0f);
+    }
+    m_bHasShowRainbow = true;
 }
 cocos2d::Color3B RunController::getRandomColorByIndex(int index)
 {
