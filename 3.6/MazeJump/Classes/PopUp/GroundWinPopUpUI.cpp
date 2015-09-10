@@ -131,7 +131,7 @@ void GroundWinPopUpUI::onNext(cocos2d::Ref *ref)
 void GroundWinPopUpUI::onHideNextPopUpEnd()
 {
     Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_MAZE_CHANAGE_LEVEL);
-    GameController::getInstance()->createMap(false, Value(localStorageGetItem(USER_MAZE_LEVEL)).asInt());
+    GameController::getInstance()->changeToMap(false, Value(localStorageGetItem(USER_MAZE_LEVEL)).asInt());
 }
 void GroundWinPopUpUI::onBack(cocos2d::Ref *ref)
 {

@@ -74,10 +74,7 @@ bool GameController::init(Layer* pMainLayer,int difficultLevel,MAZE_MODE mazeMod
     UIManager::getInstance()->setGameUi(UIManager::UI_GROUND_GAME);
 
     CCLOG("LEVEL:%d",m_currentLevel);
-    if (!createMap(false,m_currentLevel)) {
-        return false;
-    }
-    
+    createMap(false,m_currentLevel);
     ParticleSystemQuad* starfield= ParticleSystemQuad::create("starfield.plist");
     if(!starfield)
     {
@@ -138,7 +135,7 @@ void GameController::destroy()
     UIManager::getInstance()->destory();
 }
 
-bool GameController::createMap(bool _playing,int level)
+void GameController::createMap(bool _playing,int level)
 {
     if (m_pSkyBox) {
          m_pMainLayer->removeChild(m_pSkyBox);
@@ -155,7 +152,7 @@ bool GameController::createMap(bool _playing,int level)
     std::string skyTex = skyTexName + ".png";
     m_pSkyBox = Skybox::create(skyTex, skyTex, skyTex, skyTex, skyTex, skyTex);
     if(!m_pSkyBox)
-        return false;
+        return ;
     m_pSkyBox->setScale(1000);
     m_pSkyBox->setCameraMask((unsigned short)CameraFlag::USER1);
     m_pMainLayer->addChild(m_pSkyBox);
@@ -163,7 +160,7 @@ bool GameController::createMap(bool _playing,int level)
     
     m_pGroundLayer = GroundLayer::create(level,_playing);
     if(!m_pGroundLayer)
-        return false;
+        return ;
     m_pGroundLayer->setCameraMask((unsigned short)CameraFlag::USER1);
     ///focus
     m_pGroundLayer->setAnchorPoint(Vec2::ZERO);
@@ -183,7 +180,17 @@ bool GameController::createMap(bool _playing,int level)
     m_pGroundLayer->setCamera(m_pMainCamera);
     
     
-    return true;
+}
+void GameController::changeToMap(bool _playing, int level)
+{
+    if(m_pWhiteLayer)
+    {
+        EaseExponentialOut* fadeIn = EaseExponentialOut::create(FadeIn::create(1.0f));
+        EaseExponentialOut* fadeOut = EaseExponentialOut::create(FadeOut::create(1.0f));
+        CallFunc* callFunc = CallFunc::create(CC_CALLBACK_0(GameController::createMap, this,_playing,level));
+        Sequence* sequence = Sequence::create( fadeIn, callFunc, fadeOut,NULL);
+        m_pWhiteLayer->runAction(sequence);
+    }
 }
 void GameController::switchToRainbowRun()
 {

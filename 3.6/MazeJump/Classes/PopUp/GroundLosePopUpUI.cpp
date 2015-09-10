@@ -102,10 +102,10 @@ void GroundLosePopUpUI::onHelpRecover(cocos2d::Ref *ref)
         UIManager::getInstance()->hidePopUp(false);
         
         if (GameController::getInstance()->getMazeMode() == GameController::MAZE) {
-            GameController::getInstance()->createMap(true,Value(localStorageGetItem(USER_MAZE_LEVEL)).asInt());
+            GameController::getInstance()->changeToMap(true,Value(localStorageGetItem(USER_MAZE_LEVEL)).asInt());
         }else if (GameController::getInstance()->getMazeMode() == GameController::NORAML)
         {
-            GameController::getInstance()->createMap(true,GameController::getInstance()->getCurrentLevel());
+            GameController::getInstance()->changeToMap(true,GameController::getInstance()->getCurrentLevel());
         }
         
     #if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID )
@@ -131,7 +131,7 @@ void GroundLosePopUpUI::onBack(cocos2d::Ref *ref)
 void GroundLosePopUpUI::onHidePopUpEnd()
 {
     if (GameController::getInstance()->getMazeMode() == GameController::MAZE) {
-        GameController::getInstance()->createMap(false, Value(localStorageGetItem(USER_MAZE_LEVEL)).asInt());
+        GameController::getInstance()->changeToMap(false, Value(localStorageGetItem(USER_MAZE_LEVEL)).asInt());
     }else if (GameController::getInstance()->getMazeMode() == GameController::NORAML)
     {
          GameController::getInstance()->switchToRainbowRun();
