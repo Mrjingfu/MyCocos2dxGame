@@ -27,15 +27,16 @@ public:
     void update(float delta);
     void destroy();
     int randomLevel();
+    void changeToMap(bool _playing,int level);
     void switchToRainbowRun();
     void switchToMenu();
     int getCurrentLevel(){return m_currentLevel;}
     int getDifficultLevel(){return m_difficultLevel;}
     MAZE_MODE getMazeMode(){return m_mazeMode;}
-    bool createMap(bool _playing,int level);
     int  getCurrentGoldReward();
     int  getCurrentHeartReward();
 private:
+    void createMap(bool _playing,int level);
     void switchToMainScene();
     void switchToMenuScene();
 private:

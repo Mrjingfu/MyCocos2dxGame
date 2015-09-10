@@ -64,6 +64,8 @@
 	<string>btn_unlock_normal_cn.png</string>
 	<key>UI_ROLE_BTN_LOCK_PRESSED</key>
 	<string>btn_unlock_pressed_cn.png</string>
+	<key>UI_GROUND_LEVEL_IMG</key>
+	<string>level_cn.png</string>
 	<key>UI_GROUND_BTN_FAILED_BACK</key>
 	<string>btn_challenge_failed_back_cn.png</string>
 	<key>UI_GROUND_BTN_SUC_BACK</key>

@@ -292,9 +292,12 @@ void GroundGameUI::onMazeJumpLose(cocos2d::EventCustom *sender)
 {
     CCLOG("onMazeJumpLose");
     cocos2d::experimental::AudioEngine::play2d("mazejump_failed.wav", false, 0.6f);
-    NativeBridge::getInstance()->playInterstitialAds();
     UIManager::getInstance()->addPopUp(BasePopUpUI::POPUP_GROUND_LOSE);
-    UIManager::getInstance()->showPopUp();
+    UIManager::getInstance()->showPopUp(true,BasePopUpUI::POPUP_VERTICAL,CC_CALLBACK_0(GroundGameUI::onLosePopupEnd, this));
+}
+void GroundGameUI::onLosePopupEnd()
+{
+    NativeBridge::getInstance()->playInterstitialAds();
 }
 void GroundGameUI::onGroundRecordEnd(cocos2d::EventCustom *sender)
 {

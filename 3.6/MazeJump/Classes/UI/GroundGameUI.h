@@ -36,6 +36,7 @@ private:
     void onShopBuyGold(Ref* ref);
     void onShopBuyHeart(Ref* ref);
     void onGiveUp(Ref* ref);
+    void onLosePopupEnd();
 };
 
 #endif /* defined(__MazeJump__GameUI__) */
