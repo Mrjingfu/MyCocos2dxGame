@@ -31,6 +31,8 @@ MapMgrs::MapMgrs()
     m_pAvalidObjects = nullptr;
     m_pItemObjects = nullptr;
     m_pTriggers = nullptr;
+    
+    m_pDebugDrawNode = nullptr;
 }
 MapMgrs::~MapMgrs()
 {
@@ -64,6 +66,10 @@ bool MapMgrs::loadMap(const std::string& strFile)
     
     if(!initPlayer())
         return false;
+    
+#if COCOS2D_DEBUG
+    showDebug(true);
+#endif
     
     return true;
 }
@@ -118,6 +124,69 @@ bool MapMgrs::checkCollision(const Rect& rect, int& flag, Actor::RAYCAST_TYPE& t
     }
     return ret;
 }
+void MapMgrs::showDebug(bool debug)
+{
+    if(!m_pMainLayer)
+        return;
+    if(debug)
+    {
+        m_pDebugDrawNode = DrawNode::create();
+        m_pMainLayer->addChild(m_pDebugDrawNode);
+        m_pDebugDrawNode->clear();
+        
+        ///Starter
+        ValueVector starters = m_pStarters->getObjects();
+        for (Value value : starters) {
+            ValueMap valuemap = value.asValueMap();
+            if(valuemap.empty())
+                continue;
+            float x = valuemap.at("x").asFloat();
+            float y = valuemap.at("y").asFloat();
+            float width = valuemap.at("width").asFloat();
+            float height = valuemap.at("height").asFloat();
+            Rect starterRect = Rect(x, y, width, height);
+            
+            Vec2 vertices[4] = {
+                Vec2( starterRect.getMinX(), starterRect.getMinY() ),
+                Vec2( starterRect.getMaxX(), starterRect.getMinY() ),
+                Vec2( starterRect.getMaxX(), starterRect.getMaxY() ),
+                Vec2( starterRect.getMinX(), starterRect.getMaxY() ),
+            };
+            m_pDebugDrawNode->drawPoly(vertices, 4, true, Color4F::BLUE);
+        }
+        ///
+        ///Collider
+        ValueVector colliders = m_pColliders->getObjects();
+        for (Value value : colliders) {
+            ValueMap valuemap = value.asValueMap();
+            if(valuemap.empty())
+                continue;
+            float x = valuemap.at("x").asFloat();
+            float y = valuemap.at("y").asFloat();
+            float width = valuemap.at("width").asFloat();
+            float height = valuemap.at("height").asFloat();
+            Rect colliderRect = Rect(x, y, width, height);
+            
+            Vec2 vertices[4] = {
+                Vec2( colliderRect.getMinX(), colliderRect.getMinY() ),
+                Vec2( colliderRect.getMaxX(), colliderRect.getMinY() ),
+                Vec2( colliderRect.getMaxX(), colliderRect.getMaxY() ),
+                Vec2( colliderRect.getMinX(), colliderRect.getMaxY() ),
+            };
+            m_pDebugDrawNode->drawPoly(vertices, 4, true, Color4F::RED);
+        }
+        ////
+    }
+    else
+    {
+        if(m_pDebugDrawNode)
+        {
+            m_pDebugDrawNode->clear();
+            m_pDebugDrawNode->removeFromParentAndCleanup(true);
+            m_pDebugDrawNode = nullptr;
+        }
+    }
+}
 bool MapMgrs::initPlayer()
 {
     if(!m_pMainLayer || !m_pStarters)
@@ -129,10 +198,13 @@ bool MapMgrs::initPlayer()
     bool flip_x = start_born.at("flip_x").asBool();
     float x = start_born.at("x").asFloat();
     float y = start_born.at("y").asFloat();
+    float width = start_born.at("width").asFloat();
+    float height = start_born.at("height").asFloat();
+    Rect colliderRect = Rect(x, y, width, height);
     m_pNilo = ActorFactory::getInstance()->createPlayer(Player::PT_NILO);
     if(!m_pNilo)
         return false;
-    m_pNilo->setPosition(Vec2(x, y));
+    m_pNilo->setPosition(Vec2(colliderRect.getMidX(),y));
     m_pNilo->setFlipX(flip_x);
     m_pMainLayer->addChild(m_pNilo);
     return true;

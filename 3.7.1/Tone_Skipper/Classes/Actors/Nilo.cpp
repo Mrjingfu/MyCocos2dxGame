@@ -12,6 +12,10 @@ USING_NS_CC;
 Nilo::Nilo()
 {
     m_PlayerType = PT_NILO;
+    m_bLeftBtnPressed   = false;
+    m_bRightBtnPressed  = false;
+    m_bUpBtnPressed     = false;
+    m_bDownBtnPressed   = false;
 }
 Nilo::~Nilo()
 {
@@ -27,7 +31,11 @@ bool Nilo::loadModel()
         ret = false;
     }
     m_pSprite->setAnchorPoint(Vec2(0.5f,0));
+    m_pSprite->setContentSize(m_pSprite->getSpriteFrame()->getRect().size);
     addChild(m_pSprite);
+#if COCOS2D_DEBUG
+    showDebug(true);
+#endif
     return ret;
 }
 bool Nilo::loadAnimations()
@@ -326,12 +334,24 @@ bool Nilo::loadAnimations()
 }
 void Nilo::onLand()
 {
-    setPlayerState(PS_IDLE);
+    if(getPlayerDirection() != PD_BACK)
+    {
+        if(m_bLeftBtnPressed || m_bRightBtnPressed)
+            setPlayerState(PS_RUN);
+        else
+        {
+            if(!m_bDownBtnPressed)
+                setPlayerState(PS_IDLE);
+            else
+                setPlayerState(PS_SQUAT);
+        }
+    }
 }
 void Nilo::onLeftBtnPressed()
 {
     if(!m_bAcceptInput)
         return;
+    m_bLeftBtnPressed = true;
     if(getPlayerDirection() != PD_BACK)
         setPlayerDirection(PD_LEFT);
     setPlayerState(PS_RUN);
@@ -340,14 +360,25 @@ void Nilo::onLeftBtnReleased()
 {
     if(!m_bAcceptInput)
         return;
-    if(getPlayerDirection() != PD_BACK)
-        setPlayerDirection(PD_LEFT);
-    setPlayerState(PS_IDLE);
+    m_bLeftBtnPressed = false;
+    if(m_bOnLand)
+    {
+        if(!m_bRightBtnPressed)
+            setPlayerState(PS_IDLE);
+        else
+            setPlayerDirection(PD_RIGHT);
+    }
+    else
+    {
+        if(m_bRightBtnPressed)
+            setPlayerDirection(PD_RIGHT);
+    }
 }
 void Nilo::onUpBtnPressed()
 {
     if(!m_bAcceptInput)
         return;
+    m_bUpBtnPressed = true;
     if(getPlayerState() != PS_IDLE)
         return;
     bool available = false;
@@ -365,6 +396,7 @@ void Nilo::onUpBtnReleased()
 {
     if(!m_bAcceptInput)
         return;
+    m_bUpBtnPressed = false;
     if(getPlayerState() != PS_IDLE)
         return;
     if(getPlayerDirection() == PD_BACK)
@@ -379,6 +411,7 @@ void Nilo::onRightBtnPressed()
 {
     if(!m_bAcceptInput)
         return;
+    m_bRightBtnPressed = true;
     if(getPlayerDirection() != PD_BACK)
         setPlayerDirection(PD_RIGHT);
     setPlayerState(PS_RUN);
@@ -387,14 +420,27 @@ void Nilo::onRightBtnReleased()
 {
     if(!m_bAcceptInput)
         return;
-    if(getPlayerDirection() != PD_BACK)
-        setPlayerDirection(PD_RIGHT);
-    setPlayerState(PS_IDLE);
+    m_bRightBtnPressed = false;
+    if(m_bOnLand)
+    {
+        if(!m_bLeftBtnPressed)
+            setPlayerState(PS_IDLE);
+        else
+            setPlayerDirection(PD_LEFT);
+    }
+    else
+    {
+        if(m_bLeftBtnPressed)
+            setPlayerDirection(PD_LEFT);
+    }
 }
 
 void Nilo::onDownBtnPressed()
 {
     if(!m_bAcceptInput)
+        return;
+    m_bDownBtnPressed = true;
+    if(!m_bOnLand)
         return;
     if(getPlayerDirection() == PD_BACK)
         setPlayerState(PS_TURNFRONT);
@@ -405,8 +451,14 @@ void Nilo::onDownBtnReleased()
 {
     if(!m_bAcceptInput)
         return;
+    m_bDownBtnPressed = false;
     if(getPlayerState() == PS_SQUAT)
-        setPlayerState(PS_IDLE);
+    {
+        if(!m_bRightBtnPressed && !m_bLeftBtnPressed)
+            setPlayerState(PS_IDLE);
+        else
+            setPlayerState(PS_RUN);
+    }
 }
 
 void Nilo::onABtnPressed()
@@ -428,7 +480,7 @@ void Nilo::onBBtnPressed()
         return;
     if(getPlayerState() == PS_JUMP)
         setPlayerState(PS_SUPERJUMP);
-    else
+    else if(m_bOnLand)
         setPlayerState(PS_JUMP);
 }
 void Nilo::onBBtnReleased()

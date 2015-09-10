@@ -196,7 +196,12 @@ void HueSprite::setHue(float hue)
     _hue = hue;
     updateColorMatrix();
 }
-
+cocos2d::Rect HueSprite::getBoundingBox() const
+{
+    V3F_C4B_T2F_Quad quad = getQuad();
+    Rect rect(quad.bl.vertices.x, quad.bl.vertices.y, quad.br.vertices.x - quad.bl.vertices.x, quad.tl.vertices.y - quad.bl.vertices.y);
+    return RectApplyAffineTransform(rect, getNodeToParentAffineTransform());
+}
 //shader
 
 const GLchar * colorRotationShaderBody()

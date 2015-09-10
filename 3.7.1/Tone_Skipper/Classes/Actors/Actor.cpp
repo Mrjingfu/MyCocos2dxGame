@@ -7,74 +7,54 @@
 //
 
 #include "Actor.h"
-#include "MapMgrs.h"
 USING_NS_CC;
 
 Actor::Actor()
 {
     m_pSprite = nullptr;
     m_Velocity = Vec2::ZERO;
-    m_Accel = Vec2::ZERO;
     m_bOnLand = true;
-    m_fMaxSpeed = 0;
+    m_fMaxXSpeed = 0.5f;
+    m_fMaxYSpeed = 2.0f;
+    m_pDebugDrawNode = nullptr;
 }
 Actor::~Actor()
 {
-}
-void Actor::update(float delta)
-{
-    if(!m_pSprite)
-        return;
-    if(!m_bOnLand)
-        m_Accel = Vec2(m_Accel.x, Gravity);
-    m_Velocity += m_Accel*delta;
-    if(m_Velocity.x >= m_fMaxSpeed)
-        m_Velocity.x = m_fMaxSpeed;
-    else if(m_Velocity.x <= -m_fMaxSpeed)
-        m_Velocity.x = -m_fMaxSpeed;
-    if(m_Velocity.length() > 0)
-    {
-        Vec2 nextPos = getPosition() + m_Velocity;
-        cocos2d::Rect rect = m_pSprite->getBoundingBox();
-        rect.origin = nextPos;
-        Actor::RAYCAST_TYPE type = Actor::RT_COLLIDER;
-        int flag = MapMgrs::CF_NONE;
-        bool collision = MapMgrs::getInstance()->checkCollision(rect, flag, type);
-        if(collision)
-        {
-            if((flag & MapMgrs::CF_LAND) != 0)
-            {
-                if(m_bOnLand == false)
-                {
-                    m_bOnLand = true;
-                    this->onLand();
-                }
-                else
-                {
-                    if(m_Velocity.y < 0)
-                        m_Velocity.y = 0;
-                }
-            }
-            setPosition(getPosition() + m_Velocity);
-                
-            switch (type) {
-                case Actor::RT_COLLIDER:
-                    break;
-                    
-                default:
-                    break;
-            }
-        }
-        else
-        {
-            setPosition(nextPos);
-            if(m_bOnLand && m_Velocity.y > 0)
-                m_bOnLand = false;
-        }
-    }
 }
 void Actor::setFlipX(bool fliped)
 {
     if(m_pSprite)
         m_pSprite->setFlippedX(fliped);
+}
+void Actor::showDebug(bool debug)
+{
+    if(debug)
+    {
+        if(!m_pDebugDrawNode)
+        {
+            m_pDebugDrawNode = DrawNode::create();
+            addChild(m_pDebugDrawNode);
+        }
+        if(m_pSprite)
+        {
+            m_pDebugDrawNode->clear();
+            cocos2d::Rect rect = m_pSprite->getBoundingBox();
+            Vec2 vertices[4] = {
+                Vec2( rect.getMinX(), rect.getMinY() ),
+                Vec2( rect.getMaxX(), rect.getMinY() ),
+                Vec2( rect.getMaxX(), rect.getMaxY() ),
+                Vec2( rect.getMinX(), rect.getMaxY() ),
+            };
+            m_pDebugDrawNode->drawPoly(vertices, 4, true, Color4F::WHITE);
+        }
+    }
+    else
+    {
+        if(m_pDebugDrawNode)
+        {
+            m_pDebugDrawNode->clear();
+            m_pDebugDrawNode->removeFromParentAndCleanup(true);
+            m_pDebugDrawNode = nullptr;
+        }
+    }
 }
