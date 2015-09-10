@@ -31,7 +31,6 @@ bool Nilo::loadModel()
         ret = false;
     }
     m_pSprite->setAnchorPoint(Vec2(0.5f,0));
-    m_pSprite->setContentSize(m_pSprite->getSpriteFrame()->getRect().size);
     addChild(m_pSprite);
 #if COCOS2D_DEBUG
     showDebug(true);

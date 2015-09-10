@@ -48,49 +48,55 @@ void Player::update(float delta)
     if(m_Velocity.y <= -m_fMaxYSpeed)
         m_Velocity.y = -m_fMaxYSpeed;
     
-    //if(m_Velocity.length() > 0)
-    {
-        Vec2 nextPos = getPosition() + m_Velocity;
-        cocos2d::Rect rect = m_pSprite->getBoundingBox();
-        rect.origin = nextPos;
-        Actor::RAYCAST_TYPE type = Actor::RT_COLLIDER;
-        int flag = MapMgrs::CF_NONE;
-        bool collision = MapMgrs::getInstance()->checkCollision(rect, flag, type);
-        if(collision)
-        {
-            if((flag & MapMgrs::CF_LAND) != 0)
-            {
-                if(m_bOnLand == false)
-                {
-                    m_bOnLand = true;
-                    this->onLand();
-                }
-                else
-                {
-                    if(m_Velocity.y < 0)
-                        m_Velocity.y = 0;
-                }
-            }
-            setPosition(getPosition() + m_Velocity);
-            
-            switch (type) {
-                case Actor::RT_COLLIDER:
-                    break;
-                    
-                default:
-                    break;
-            }
-        }
-        else
-        {
-            setPosition(nextPos);
-            if(m_bOnLand)
-                m_bOnLand = false;
-        }
-    }
+    updatePosition();
+    
 #if COCOS2D_DEBUG
     showDebug(true);
 #endif
+}
+void Player::updatePosition()
+{
+    Vec2 nextPos = getPosition() + m_Velocity;
+    cocos2d::Rect rect = m_pSprite->getBoundingBox();
+    rect.origin += nextPos;
+    
+    Actor::RAYCAST_TYPE type = Actor::RT_UNKNOWN;
+    bool raycast = MapMgrs::getInstance()->checkRayCast(rect, m_Velocity, type);
+    if(raycast)
+    {
+        if(m_bOnLand == false)
+        {
+            m_bOnLand = true;
+            this->onLand();
+        }
+        else
+        {
+            if(m_Velocity.y < 0)
+                m_Velocity.y = 0;
+        }
+    }
+    else
+    {
+        if(m_bOnLand)
+            m_bOnLand = false;
+    }
+
+    int collisionFlag = MapMgrs::CF_NONE;
+    bool collision = MapMgrs::getInstance()->checkCollision(rect, m_Velocity, collisionFlag);
+    if(collision)
+    {
+        if((collisionFlag & MapMgrs::CF_RIGHT) != 0 )
+        {
+            if(m_Velocity.x > 0)
+                m_Velocity.x = 0;
+        }
+        else if((collisionFlag & MapMgrs::CF_LEFT) != 0 )
+        {
+            if(m_Velocity.x < 0)
+                m_Velocity.x = 0;
+        }
+    }
+    setPosition(getPosition() + m_Velocity);
 }
 void Player::setPlayerState(PlayerState state)
 {

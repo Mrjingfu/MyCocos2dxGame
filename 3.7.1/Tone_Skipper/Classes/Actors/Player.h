@@ -92,6 +92,8 @@ public:
     
     void equipGun() { m_bEquipedGun = true; }
     void unloadGun() { m_bEquipedGun = false; }
+private:
+    void updatePosition();
 protected:
     cocos2d::Animation*       m_pIdleAnimation;
     cocos2d::Animation*       m_pRunAnimation;

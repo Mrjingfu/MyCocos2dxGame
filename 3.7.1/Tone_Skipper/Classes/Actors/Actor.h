@@ -18,8 +18,9 @@ protected:
     virtual ~Actor();
 public:
     typedef enum{
-        RT_UNKNOWN,
-        RT_COLLIDER
+        RT_GROUND,
+        RT_RAYCASTER,
+        RT_UNKNOWN
     }
     RAYCAST_TYPE;
     static constexpr float Gravity = -10.0f;

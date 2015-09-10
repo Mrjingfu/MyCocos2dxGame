@@ -17,10 +17,8 @@ class MapMgrs : public cocos2d::Ref
 public:
     typedef enum {
         CF_NONE = 0,
-        CF_LAND = 1<<0,
-        CF_LEFT = 1<<1,
-        CF_RIGHT= 1<<2,
-        CF_TOP  = 1<<3
+        CF_LEFT = 1<<0,
+        CF_RIGHT= 1<<1,
     }
     CollisionFlag;
     static MapMgrs* getInstance();
@@ -29,7 +27,8 @@ public:
     void unloadMap();
     void update(float delta);
     
-    bool checkCollision(const cocos2d::Rect& rect, int& flag, Actor::RAYCAST_TYPE& type);
+    bool checkRayCast(const cocos2d::Rect& rect, cocos2d::Vec2& velocity, Actor::RAYCAST_TYPE& type);
+    bool checkCollision(const cocos2d::Rect& rect, cocos2d::Vec2& velocity, int& flag);
     
     Player* getNilo() const { return m_pNilo; }
     
@@ -40,11 +39,11 @@ private:
     cocos2d::Layer*                         m_pMainLayer;
     cocos2d::experimental::TMXTiledMap*     m_pCurrentTiledMap;
     cocos2d::TMXObjectGroup*                m_pStarters;
+    cocos2d::TMXObjectGroup*                m_pGround;
     cocos2d::TMXObjectGroup*                m_pColliders;
-    cocos2d::TMXObjectGroup*                m_pMonsters;
-    cocos2d::TMXObjectGroup*                m_pAvalidObjects;
-    cocos2d::TMXObjectGroup*                m_pItemObjects;
+    cocos2d::TMXObjectGroup*                m_pRayCasters;
     cocos2d::TMXObjectGroup*                m_pTriggers;
+    cocos2d::TMXObjectGroup*                m_pMonsters;
     
     Player*                                 m_pNilo;
     

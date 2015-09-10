@@ -24,14 +24,13 @@ MapMgrs::MapMgrs()
     m_pMainLayer = nullptr;
     m_pNilo = nullptr;
     
-    m_pCurrentTiledMap = nullptr;
-    m_pStarters = nullptr;
-    m_pColliders = nullptr;
-    m_pMonsters = nullptr;
-    m_pAvalidObjects = nullptr;
-    m_pItemObjects = nullptr;
-    m_pTriggers = nullptr;
-    
+    m_pCurrentTiledMap  = nullptr;
+    m_pStarters         = nullptr;
+    m_pGround           = nullptr;
+    m_pColliders        = nullptr;
+    m_pRayCasters       = nullptr;
+    m_pTriggers         = nullptr;
+    m_pMonsters         = nullptr;
     m_pDebugDrawNode = nullptr;
 }
 MapMgrs::~MapMgrs()
@@ -60,8 +59,24 @@ bool MapMgrs::loadMap(const std::string& strFile)
     if(!m_pStarters)
         return false;
     
+    m_pGround = m_pCurrentTiledMap->getObjectGroup("ground");
+    if(!m_pGround)
+        return false;
+    
     m_pColliders = m_pCurrentTiledMap->getObjectGroup("colliders");
     if(!m_pColliders)
+        return false;
+    
+    m_pRayCasters = m_pCurrentTiledMap->getObjectGroup("raycasters");
+    if(!m_pRayCasters)
+        return false;
+    
+    m_pTriggers = m_pCurrentTiledMap->getObjectGroup("triggers");
+    if(!m_pTriggers)
+        return false;
+    
+    m_pMonsters = m_pCurrentTiledMap->getObjectGroup("monsters");
+    if(!m_pMonsters)
         return false;
     
     if(!initPlayer())
@@ -82,18 +97,51 @@ void MapMgrs::unloadMap()
     }
     m_pCurrentTiledMap = nullptr;
     m_pStarters = nullptr;
+    m_pGround = nullptr;
     m_pColliders = nullptr;
-    m_pMonsters = nullptr;
-    m_pAvalidObjects = nullptr;
-    m_pItemObjects = nullptr;
+    m_pRayCasters = nullptr;
     m_pTriggers = nullptr;
+    m_pMonsters = nullptr;
 }
 void MapMgrs::update(float delta)
 {
     if(m_pNilo)
         m_pNilo->update(delta);
 }
-bool MapMgrs::checkCollision(const Rect& rect, int& flag, Actor::RAYCAST_TYPE& type)
+bool MapMgrs::checkRayCast(const Rect& rect, Vec2& velocity, Actor::RAYCAST_TYPE& type)
+{
+    bool ret = false;
+    ValueVector groundObjects = m_pGround->getObjects();
+    for (Value value : groundObjects) {
+        ValueMap valuemap = value.asValueMap();
+        if(valuemap.empty())
+            continue;
+        float x = valuemap.at("x").asFloat();
+        float y = valuemap.at("y").asFloat();
+        float width = valuemap.at("width").asFloat();
+        float height = valuemap.at("height").asFloat();
+        Rect groundRect = Rect(x, y, width, height);
+        if (groundRect.getMaxX() < rect.getMinX() || rect.getMaxX() < groundRect.getMinX() ||
+            groundRect.getMaxY() < rect.getMinY() || rect.getMaxY() < groundRect.getMinY()) {
+            ret = false;
+        }
+        else
+        {
+            if((groundRect.getMaxX() - rect.getMinX())>1 && (rect.getMaxX() - groundRect.getMinX()) >1)
+            {
+                if(groundRect.getMaxY() >= rect.getMinY() && velocity.y <= 0)
+                {
+                    velocity.y = (rect.getMinY() - groundRect.getMaxY())*0.5f;
+                    type = Actor::RT_GROUND;
+                    ret = true;
+                    break;
+                }
+            }
+        }
+    }
+    return ret;
+}
+bool MapMgrs::checkCollision(const Rect& rect, Vec2& velocity, int& flag)
 {
     bool ret = false;
     ValueVector colliders = m_pColliders->getObjects();
@@ -108,18 +156,20 @@ bool MapMgrs::checkCollision(const Rect& rect, int& flag, Actor::RAYCAST_TYPE& t
         Rect colliderRect = Rect(x, y, width, height);
         if (colliderRect.getMaxX() < rect.getMinX() || rect.getMaxX() < colliderRect.getMinX() ||
             colliderRect.getMaxY() < rect.getMinY() || rect.getMaxY() < colliderRect.getMinY()) {
-            ret = false;
+            continue;
         }
         else
         {
-            if(colliderRect.getMaxX() >= rect.getMinX()|| rect.getMaxX() >= colliderRect.getMinX())
+            
+            if(colliderRect.getMaxY() - rect.getMinY() > 2.0f)
             {
-                if(colliderRect.getMaxY() >= rect.getMinY() || rect.getMaxY() >= colliderRect.getMinY())
-                    flag |= CF_LAND;
+                if(rect.getMaxX() > colliderRect.getMinX() && velocity.x > 0)
+                    flag |= CF_RIGHT;
+                else if(colliderRect.getMaxX() > rect.getMinX() && velocity.x < 0)
+                    flag |= CF_LEFT;
+                ret = true;
+                break;
             }
-            type = (Actor::RAYCAST_TYPE)valuemap.at("type").asInt();
-            ret = true;
-            break;
         }
     }
     return ret;
@@ -152,8 +202,30 @@ void MapMgrs::showDebug(bool debug)
                 Vec2( starterRect.getMaxX(), starterRect.getMaxY() ),
                 Vec2( starterRect.getMinX(), starterRect.getMaxY() ),
             };
-            m_pDebugDrawNode->drawPoly(vertices, 4, true, Color4F::BLUE);
+            m_pDebugDrawNode->drawPoly(vertices, 4, true, Color4F::GREEN);
         }
+        ///
+        ///Ground
+        ValueVector groundObjects = m_pGround->getObjects();
+        for (Value value : groundObjects) {
+            ValueMap valuemap = value.asValueMap();
+            if(valuemap.empty())
+                continue;
+            float x = valuemap.at("x").asFloat();
+            float y = valuemap.at("y").asFloat();
+            float width = valuemap.at("width").asFloat();
+            float height = valuemap.at("height").asFloat();
+            Rect starterRect = Rect(x, y, width, height);
+            
+            Vec2 vertices[4] = {
+                Vec2( starterRect.getMinX(), starterRect.getMinY() ),
+                Vec2( starterRect.getMaxX(), starterRect.getMinY() ),
+                Vec2( starterRect.getMaxX(), starterRect.getMaxY() ),
+                Vec2( starterRect.getMinX(), starterRect.getMaxY() ),
+            };
+            m_pDebugDrawNode->drawPoly(vertices, 4, true, Color4F(0,1,1,1));
+        }
+
         ///
         ///Collider
         ValueVector colliders = m_pColliders->getObjects();
@@ -174,6 +246,49 @@ void MapMgrs::showDebug(bool debug)
                 Vec2( colliderRect.getMinX(), colliderRect.getMaxY() ),
             };
             m_pDebugDrawNode->drawPoly(vertices, 4, true, Color4F::RED);
+        }
+        ////
+        ////RayCaster
+        ValueVector raycasters = m_pRayCasters->getObjects();
+        for (Value value : raycasters) {
+            ValueMap valuemap = value.asValueMap();
+            if(valuemap.empty())
+                continue;
+            float x = valuemap.at("x").asFloat();
+            float y = valuemap.at("y").asFloat();
+            float width = valuemap.at("width").asFloat();
+            float height = valuemap.at("height").asFloat();
+            Rect colliderRect = Rect(x, y, width, height);
+            
+            Vec2 vertices[4] = {
+                Vec2( colliderRect.getMinX(), colliderRect.getMinY() ),
+                Vec2( colliderRect.getMaxX(), colliderRect.getMinY() ),
+                Vec2( colliderRect.getMaxX(), colliderRect.getMaxY() ),
+                Vec2( colliderRect.getMinX(), colliderRect.getMaxY() ),
+            };
+            m_pDebugDrawNode->drawPoly(vertices, 4, true, Color4F::BLUE);
+        }
+        ////
+        
+        ////trigger
+        ValueVector triggers = m_pTriggers->getObjects();
+        for (Value value : triggers) {
+            ValueMap valuemap = value.asValueMap();
+            if(valuemap.empty())
+                continue;
+            float x = valuemap.at("x").asFloat();
+            float y = valuemap.at("y").asFloat();
+            float width = valuemap.at("width").asFloat();
+            float height = valuemap.at("height").asFloat();
+            Rect colliderRect = Rect(x, y, width, height);
+            
+            Vec2 vertices[4] = {
+                Vec2( colliderRect.getMinX(), colliderRect.getMinY() ),
+                Vec2( colliderRect.getMaxX(), colliderRect.getMinY() ),
+                Vec2( colliderRect.getMaxX(), colliderRect.getMaxY() ),
+                Vec2( colliderRect.getMinX(), colliderRect.getMaxY() ),
+            };
+            m_pDebugDrawNode->drawPoly(vertices, 4, true, Color4F::YELLOW);
         }
         ////
     }
