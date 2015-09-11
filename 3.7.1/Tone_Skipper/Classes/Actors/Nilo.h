@@ -38,12 +38,6 @@ protected:
     
     virtual void onBBtnPressed() override;
     virtual void onBBtnReleased() override;
-    
-protected:
-    bool        m_bLeftBtnPressed;
-    bool        m_bRightBtnPressed;
-    bool        m_bUpBtnPressed;
-    bool        m_bDownBtnPressed;
 };
 
 #endif /* defined(__Tone_Skipper__Nilo__) */

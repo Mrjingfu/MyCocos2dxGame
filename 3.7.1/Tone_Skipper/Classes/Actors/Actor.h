@@ -23,6 +23,11 @@ public:
         RT_UNKNOWN
     }
     RAYCAST_TYPE;
+    typedef enum{
+        TT_TIPS,
+        TT_UNKNOWN
+    }
+    TRIGGER_TYPE;
     static constexpr float Gravity = -10.0f;
     virtual void update(float delta){};
     

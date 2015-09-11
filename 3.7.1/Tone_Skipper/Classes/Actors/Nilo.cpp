@@ -12,10 +12,6 @@ USING_NS_CC;
 Nilo::Nilo()
 {
     m_PlayerType = PT_NILO;
-    m_bLeftBtnPressed   = false;
-    m_bRightBtnPressed  = false;
-    m_bUpBtnPressed     = false;
-    m_bDownBtnPressed   = false;
 }
 Nilo::~Nilo()
 {

@@ -26,7 +26,6 @@ MapMgrs::MapMgrs()
     
     m_pCurrentTiledMap  = nullptr;
     m_pStarters         = nullptr;
-    m_pGround           = nullptr;
     m_pColliders        = nullptr;
     m_pRayCasters       = nullptr;
     m_pTriggers         = nullptr;
@@ -57,10 +56,6 @@ bool MapMgrs::loadMap(const std::string& strFile)
     
     m_pStarters = m_pCurrentTiledMap->getObjectGroup("starters");
     if(!m_pStarters)
-        return false;
-    
-    m_pGround = m_pCurrentTiledMap->getObjectGroup("ground");
-    if(!m_pGround)
         return false;
     
     m_pColliders = m_pCurrentTiledMap->getObjectGroup("colliders");
@@ -97,7 +92,6 @@ void MapMgrs::unloadMap()
     }
     m_pCurrentTiledMap = nullptr;
     m_pStarters = nullptr;
-    m_pGround = nullptr;
     m_pColliders = nullptr;
     m_pRayCasters = nullptr;
     m_pTriggers = nullptr;
@@ -108,11 +102,11 @@ void MapMgrs::update(float delta)
     if(m_pNilo)
         m_pNilo->update(delta);
 }
-bool MapMgrs::checkRayCast(const Rect& rect, Vec2& velocity, Actor::RAYCAST_TYPE& type)
+bool MapMgrs::checkRayCast(const Rect& rect, Vec2& velocity, Actor::RAYCAST_TYPE& type, bool ignoreAdjust)
 {
     bool ret = false;
-    ValueVector groundObjects = m_pGround->getObjects();
-    for (Value value : groundObjects) {
+    ValueVector colliders = m_pColliders->getObjects();
+    for (Value value : colliders) {
         ValueMap valuemap = value.asValueMap();
         if(valuemap.empty())
             continue;
@@ -120,22 +114,23 @@ bool MapMgrs::checkRayCast(const Rect& rect, Vec2& velocity, Actor::RAYCAST_TYPE
         float y = valuemap.at("y").asFloat();
         float width = valuemap.at("width").asFloat();
         float height = valuemap.at("height").asFloat();
-        Rect groundRect = Rect(x, y, width, height);
-        if (groundRect.getMaxX() < rect.getMinX() || rect.getMaxX() < groundRect.getMinX() ||
-            groundRect.getMaxY() < rect.getMinY() || rect.getMaxY() < groundRect.getMinY()) {
+        Rect colliderRect = Rect(x, y, width, height);
+        if (colliderRect.getMaxX() < rect.getMinX() || rect.getMaxX() < colliderRect.getMinX() ||
+            colliderRect.getMaxY() < rect.getMinY() || rect.getMaxY() < colliderRect.getMinY()) {
             ret = false;
         }
         else
         {
-            if((groundRect.getMaxX() - rect.getMinX())>1 && (rect.getMaxX() - groundRect.getMinX()) >1)
+            if(colliderRect.getMaxX() - rect.getMinX() >= 1 && rect.getMaxX() - colliderRect.getMinX() >= 1)
             {
-                if(groundRect.getMaxY() >= rect.getMinY() && velocity.y <= 0)
-                {
-                    velocity.y = (rect.getMinY() - groundRect.getMaxY())*0.5f;
-                    type = Actor::RT_GROUND;
-                    ret = true;
-                    break;
-                }
+            if(colliderRect.getMaxY() >= rect.getMinY() && colliderRect.getMaxY() < rect.getMaxY() && velocity.y <= 0)
+            {
+                if(!ignoreAdjust)
+                    velocity.y = velocity.y + colliderRect.getMaxY() - rect.getMinY();
+                type = Actor::RT_GROUND;
+                ret = true;
+                break;
+            }
             }
         }
     }
@@ -160,16 +155,47 @@ bool MapMgrs::checkCollision(const Rect& rect, Vec2& velocity, int& flag)
         }
         else
         {
-            
-            if(colliderRect.getMaxY() - rect.getMinY() > 2.0f)
+            if(colliderRect.getMaxY() > rect.getMinY())
             {
-                if(rect.getMaxX() > colliderRect.getMinX() && velocity.x > 0)
+                if(rect.getMaxX() >= colliderRect.getMinX() && rect.getMinX() < colliderRect.getMinX() && velocity.x >= 0)
+                {
+                    velocity.x = velocity.x + colliderRect.getMinX() - rect.getMaxX();
                     flag |= CF_RIGHT;
-                else if(colliderRect.getMaxX() > rect.getMinX() && velocity.x < 0)
+                }
+                else if(colliderRect.getMaxX() >= rect.getMinX() && colliderRect.getMaxX() < rect.getMaxX() && velocity.x <= 0)
+                {
+                    velocity.x = velocity.x + colliderRect.getMaxX() - rect.getMinX();
                     flag |= CF_LEFT;
+                }
                 ret = true;
                 break;
             }
+        }
+    }
+    return ret;
+}
+bool MapMgrs::checkTrigger(const cocos2d::Rect& rect, Actor::TRIGGER_TYPE& type)
+{
+    bool ret = false;
+    ValueVector triggers = m_pTriggers->getObjects();
+    for (Value value : triggers) {
+        ValueMap valuemap = value.asValueMap();
+        if(valuemap.empty())
+            continue;
+        float x = valuemap.at("x").asFloat();
+        float y = valuemap.at("y").asFloat();
+        float width = valuemap.at("width").asFloat();
+        float height = valuemap.at("height").asFloat();
+        Rect tiggerRect = Rect(x, y, width, height);
+        if (tiggerRect.getMaxX() < rect.getMinX() || rect.getMaxX() < tiggerRect.getMinX() ||
+            tiggerRect.getMaxY() < rect.getMinY() || rect.getMaxY() < tiggerRect.getMinY()) {
+            ret = false;
+        }
+        else
+        {
+            type = (Actor::TRIGGER_TYPE)(valuemap.at("type").asInt());
+            ret = true;
+            break;
         }
     }
     return ret;
@@ -204,28 +230,6 @@ void MapMgrs::showDebug(bool debug)
             };
             m_pDebugDrawNode->drawPoly(vertices, 4, true, Color4F::GREEN);
         }
-        ///
-        ///Ground
-        ValueVector groundObjects = m_pGround->getObjects();
-        for (Value value : groundObjects) {
-            ValueMap valuemap = value.asValueMap();
-            if(valuemap.empty())
-                continue;
-            float x = valuemap.at("x").asFloat();
-            float y = valuemap.at("y").asFloat();
-            float width = valuemap.at("width").asFloat();
-            float height = valuemap.at("height").asFloat();
-            Rect starterRect = Rect(x, y, width, height);
-            
-            Vec2 vertices[4] = {
-                Vec2( starterRect.getMinX(), starterRect.getMinY() ),
-                Vec2( starterRect.getMaxX(), starterRect.getMinY() ),
-                Vec2( starterRect.getMaxX(), starterRect.getMaxY() ),
-                Vec2( starterRect.getMinX(), starterRect.getMaxY() ),
-            };
-            m_pDebugDrawNode->drawPoly(vertices, 4, true, Color4F(0,1,1,1));
-        }
-
         ///
         ///Collider
         ValueVector colliders = m_pColliders->getObjects();

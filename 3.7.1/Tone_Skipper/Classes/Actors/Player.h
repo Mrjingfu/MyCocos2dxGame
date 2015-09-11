@@ -93,7 +93,8 @@ public:
     void equipGun() { m_bEquipedGun = true; }
     void unloadGun() { m_bEquipedGun = false; }
 private:
-    void updatePosition();
+    void updatePosition(float delta);
+    void checkTriggers();
 protected:
     cocos2d::Animation*       m_pIdleAnimation;
     cocos2d::Animation*       m_pRunAnimation;
@@ -115,6 +116,11 @@ protected:
     
     bool                        m_bAcceptInput;
     bool                        m_bEquipedGun;
+    
+    bool        m_bLeftBtnPressed;
+    bool        m_bRightBtnPressed;
+    bool        m_bUpBtnPressed;
+    bool        m_bDownBtnPressed;
 };
 
 #endif /* defined(__Tone_Skipper__Player__) */

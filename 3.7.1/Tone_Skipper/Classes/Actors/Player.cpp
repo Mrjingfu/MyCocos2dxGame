@@ -35,6 +35,11 @@ Player::Player()
     
     m_bAcceptInput = true;
     m_bEquipedGun = false;
+    
+    m_bLeftBtnPressed   = false;
+    m_bRightBtnPressed  = false;
+    m_bUpBtnPressed     = false;
+    m_bDownBtnPressed   = false;
 }
 Player::~Player()
 {
@@ -48,26 +53,30 @@ void Player::update(float delta)
     if(m_Velocity.y <= -m_fMaxYSpeed)
         m_Velocity.y = -m_fMaxYSpeed;
     
-    updatePosition();
+    updatePosition(delta);
+    
+    checkTriggers();
     
 #if COCOS2D_DEBUG
     showDebug(true);
 #endif
 }
-void Player::updatePosition()
+void Player::updatePosition(float delta)
 {
-    Vec2 nextPos = getPosition() + m_Velocity;
     cocos2d::Rect rect = m_pSprite->getBoundingBox();
-    rect.origin += nextPos;
+    Vec2 nextPosY = getPosition() + Vec2(0,m_Velocity.y);
+    rect.origin += nextPosY;
     
     Actor::RAYCAST_TYPE type = Actor::RT_UNKNOWN;
-    bool raycast = MapMgrs::getInstance()->checkRayCast(rect, m_Velocity, type);
+    bool raycast = MapMgrs::getInstance()->checkRayCast(rect, m_Velocity, type, m_bOnLand);
     if(raycast)
     {
         if(m_bOnLand == false)
         {
             m_bOnLand = true;
             this->onLand();
+            if(m_Velocity.y > m_fMaxYSpeed)
+                m_Velocity.y = m_fMaxYSpeed*delta;
         }
         else
         {
@@ -80,7 +89,12 @@ void Player::updatePosition()
         if(m_bOnLand)
             m_bOnLand = false;
     }
-
+  
+    setPosition(getPosition() + Vec2(0,m_Velocity.y));
+    rect = m_pSprite->getBoundingBox();
+    Vec2 nextPosX = getPosition() + Vec2(m_Velocity.x, 0);
+    rect.origin += nextPosX;
+    
     int collisionFlag = MapMgrs::CF_NONE;
     bool collision = MapMgrs::getInstance()->checkCollision(rect, m_Velocity, collisionFlag);
     if(collision)
@@ -89,14 +103,51 @@ void Player::updatePosition()
         {
             if(m_Velocity.x > 0)
                 m_Velocity.x = 0;
+            else if(m_Velocity.x < 0)
+            {
+                setPosition(getPosition() + Vec2(m_Velocity.x, 0));
+                m_Velocity.x = 0;
+            }
         }
         else if((collisionFlag & MapMgrs::CF_LEFT) != 0 )
         {
             if(m_Velocity.x < 0)
                 m_Velocity.x = 0;
+            else if(m_Velocity.x > 0)
+            {
+                setPosition(getPosition() + Vec2(m_Velocity.x, 0));
+                m_Velocity.x = 0;
+            }
         }
     }
-    setPosition(getPosition() + m_Velocity);
+    else
+    {
+        if(m_bRightBtnPressed)
+            m_Velocity.x = m_fMaxXSpeed;
+        else if(m_bLeftBtnPressed)
+            m_Velocity.x = -m_fMaxXSpeed;
+    }
+    setPosition(getPosition() + Vec2(m_Velocity.x, 0));
+}
+void Player::checkTriggers()
+{
+    cocos2d::Rect rect = m_pSprite->getBoundingBox();
+    rect.origin += getPosition();
+    Actor::TRIGGER_TYPE type = Actor::TT_UNKNOWN;
+    bool collision = MapMgrs::getInstance()->checkTrigger(rect, type);
+    if(collision)
+    {
+        switch (type) {
+            case Actor::TT_TIPS:
+                CCLOG("trigger: tips!");
+                break;
+            case Actor::TT_DOOR:
+                CCLOG("trigger: door!");
+                break;
+            default:
+                break;
+        }
+    }
 }
 void Player::setPlayerState(PlayerState state)
 {
@@ -263,7 +314,7 @@ void Player::onEnterJumpState()
         default:
             break;
     }
-    m_Velocity.y = 3;
+    m_Velocity.y = m_fMaxYSpeed;
     m_pSprite->runAction(action);
 }
 void Player::onExitJumpState()
@@ -287,7 +338,7 @@ void Player::onEnterSuperJumpState()
         default:
             break;
     }
-    m_Velocity.y = 3;
+    m_Velocity.y = m_fMaxYSpeed;
     m_pSprite->runAction(action);
 }
 void Player::onExitSuperJumpState()

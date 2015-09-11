@@ -199,7 +199,11 @@ void HueSprite::setHue(float hue)
 cocos2d::Rect HueSprite::getBoundingBox() const
 {
     V3F_C4B_T2F_Quad quad = getQuad();
-    Rect rect(quad.bl.vertices.x, quad.bl.vertices.y, quad.br.vertices.x - quad.bl.vertices.x, quad.tl.vertices.y - quad.bl.vertices.y);
+    float x = quad.bl.vertices.x;
+    float y = quad.bl.vertices.y;
+    float width = quad.br.vertices.x - quad.bl.vertices.x;
+    float heigth = quad.tl.vertices.y - quad.bl.vertices.y;
+    Rect rect(x + 0.25f*width, y, width*0.5f, heigth);
     return RectApplyAffineTransform(rect, getNodeToParentAffineTransform());
 }
 //shader
