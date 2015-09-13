@@ -141,9 +141,6 @@ void Player::checkTriggers()
             case Actor::TT_TIPS:
                 CCLOG("trigger: tips!");
                 break;
-            case Actor::TT_DOOR:
-                CCLOG("trigger: door!");
-                break;
             default:
                 break;
         }
