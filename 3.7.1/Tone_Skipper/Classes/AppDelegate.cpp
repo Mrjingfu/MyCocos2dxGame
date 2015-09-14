@@ -37,7 +37,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
         glview = GLViewImpl::create("Tone Skipper");
         director->setOpenGLView(glview);
     }
-    glview->setDesignResolutionSize(480.0f, 320.0f, ResolutionPolicy::FIXED_HEIGHT);
+    glview->setDesignResolutionSize(320.0f, 240.0f, ResolutionPolicy::FIXED_HEIGHT);
     
     std::vector<std::string> searchPaths;
     searchPaths.push_back("sprites");

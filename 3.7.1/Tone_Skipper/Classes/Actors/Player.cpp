@@ -122,9 +122,9 @@ void Player::updatePosition(float delta)
     }
     else
     {
-        if(m_bRightBtnPressed)
+        if(m_bRightBtnPressed && m_PlayerState != PS_SQUAT)
             m_Velocity.x = m_fMaxXSpeed;
-        else if(m_bLeftBtnPressed)
+        else if(m_bLeftBtnPressed && m_PlayerState != PS_SQUAT)
             m_Velocity.x = -m_fMaxXSpeed;
     }
     setPosition(getPosition() + Vec2(m_Velocity.x, 0));
@@ -140,9 +140,6 @@ void Player::checkTriggers()
         switch (type) {
             case Actor::TT_TIPS:
                 CCLOG("trigger: tips!");
-                break;
-            case Actor::TT_DOOR:
-                CCLOG("trigger: door!");
                 break;
             default:
                 break;

@@ -28,6 +28,7 @@ JoyStick::JoyStick()
     m_pDownBtn = nullptr;
     m_pABtn = nullptr;
     m_pBBtn = nullptr;
+    m_pCamera = nullptr;
 }
 JoyStick::~JoyStick()
 {
@@ -37,6 +38,13 @@ bool JoyStick::init()
     if ( !Layer::init() )
         return false;
 #if CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
+    
+    m_pCamera = Camera::create();
+    if(!m_pCamera)
+        return false;
+    m_pCamera->setCameraFlag(CameraFlag::USER2);
+    addChild(m_pCamera);
+    
     auto size = Director::getInstance()->getVisibleSize();
     float scale = size.height/320.0f;
     SpriteFrameCache::getInstance()->addSpriteFramesWithFile("joystick.plist");
@@ -47,6 +55,7 @@ bool JoyStick::init()
     m_pLeftBtn->setScale(scale);
     m_pLeftBtn->setPosition(Vec2(m_pLeftBtn->getContentSize().width*scale, m_pLeftBtn->getContentSize().height*2*scale));
     m_pLeftBtn->addTouchEventListener(CC_CALLBACK_2(JoyStick::leftBtnTouchEvent, this));
+    m_pLeftBtn->setCameraMask((unsigned short)CameraFlag::USER2);
     addChild(m_pLeftBtn);
     
     m_pUpBtn = ui::Button::create("up_normal.png", "up_clicked.png", "", ui::TextureResType::PLIST);
@@ -55,6 +64,7 @@ bool JoyStick::init()
     m_pUpBtn->setScale(scale);
     m_pUpBtn->setPosition(Vec2(m_pUpBtn->getContentSize().width*2*scale, m_pUpBtn->getContentSize().height*3*scale));
     m_pUpBtn->addTouchEventListener(CC_CALLBACK_2(JoyStick::upBtnTouchEvent, this));
+    m_pUpBtn->setCameraMask((unsigned short)CameraFlag::USER2);
     addChild(m_pUpBtn);
     
     m_pRightBtn = ui::Button::create("right_normal.png", "right_clicked.png", "", ui::TextureResType::PLIST);
@@ -63,6 +73,7 @@ bool JoyStick::init()
     m_pRightBtn->setScale(scale);
     m_pRightBtn->setPosition(Vec2(m_pRightBtn->getContentSize().width*3*scale, m_pRightBtn->getContentSize().height*2*scale));
     m_pRightBtn->addTouchEventListener(CC_CALLBACK_2(JoyStick::rightBtnTouchEvent, this));
+    m_pRightBtn->setCameraMask((unsigned short)CameraFlag::USER2);
     addChild(m_pRightBtn);
     
     m_pDownBtn = ui::Button::create("down_normal.png", "down_clicked.png", "", ui::TextureResType::PLIST);
@@ -71,6 +82,7 @@ bool JoyStick::init()
     m_pDownBtn->setScale(scale);
     m_pDownBtn->setPosition(Vec2(m_pDownBtn->getContentSize().width*2*scale, m_pDownBtn->getContentSize().height*scale));
     m_pDownBtn->addTouchEventListener(CC_CALLBACK_2(JoyStick::downBtnTouchEvent, this));
+    m_pDownBtn->setCameraMask((unsigned short)CameraFlag::USER2);
     addChild(m_pDownBtn);
     
     m_pABtn = ui::Button::create("a_normal.png", "a_clicked.png", "", ui::TextureResType::PLIST);
@@ -79,6 +91,7 @@ bool JoyStick::init()
     m_pABtn->setScale(scale);
     m_pABtn->setPosition(Vec2(size.width - m_pABtn->getContentSize().width*2.5*scale, m_pABtn->getContentSize().height*1.3*scale));
     m_pABtn->addTouchEventListener(CC_CALLBACK_2(JoyStick::aBtnTouchEvent, this));
+    m_pABtn->setCameraMask((unsigned short)CameraFlag::USER2);
     addChild(m_pABtn);
     
     m_pBBtn = ui::Button::create("b_normal.png", "b_clicked.png", "", ui::TextureResType::PLIST);
@@ -87,6 +100,7 @@ bool JoyStick::init()
     m_pBBtn->setScale(scale);
     m_pBBtn->setPosition(Vec2(size.width - m_pBBtn->getContentSize().width*1.3*scale , m_pBBtn->getContentSize().height*2.5*scale));
     m_pBBtn->addTouchEventListener(CC_CALLBACK_2(JoyStick::bBtnTouchEvent, this));
+    m_pBBtn->setCameraMask((unsigned short)CameraFlag::USER2);
     addChild(m_pBBtn);
     
     setCascadeOpacityEnabled(true);

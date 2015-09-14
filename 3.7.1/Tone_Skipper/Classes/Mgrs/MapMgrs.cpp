@@ -8,7 +8,6 @@
 
 #include "MapMgrs.h"
 USING_NS_CC;
-using namespace experimental;
 
 MapMgrs* g_pMapMgrsInstance = nullptr;
 
@@ -23,6 +22,7 @@ MapMgrs::MapMgrs()
 {
     m_pMainLayer = nullptr;
     m_pNilo = nullptr;
+    m_pMainCamera = nullptr;
     
     m_pCurrentTiledMap  = nullptr;
     m_pStarters         = nullptr;
@@ -40,18 +40,22 @@ bool MapMgrs::init(cocos2d::Layer* pMainLayer)
     if(pMainLayer == nullptr)
         return false;
     m_pMainLayer = pMainLayer;
+    
+    if(!initCamera())
+        return false;
     return true;
 }
 bool MapMgrs::loadMap(const std::string& strFile)
 {
     unloadMap();
     
-    m_pCurrentTiledMap = cocos2d::experimental::TMXTiledMap::create(strFile);
+    m_pCurrentTiledMap = cocos2d::TMXTiledMap::create(strFile);
     if(!m_pCurrentTiledMap)
         return false;
+    m_pCurrentTiledMap->setCameraMask((unsigned short)CameraFlag::USER1);
     m_pMainLayer->addChild(m_pCurrentTiledMap);
     
-    cocos2d::Size mapSize = m_pCurrentTiledMap->getContentSize();
+    cocos2d::Size mapSize = m_pCurrentTiledMap->getMapSize();
     CCLOG("ContentSize: %f, %f", mapSize.width,mapSize.height);
     
     m_pStarters = m_pCurrentTiledMap->getObjectGroup("starters");
@@ -99,10 +103,10 @@ void MapMgrs::unloadMap()
 }
 void MapMgrs::update(float delta)
 {
-    if(m_pNilo)
-        m_pNilo->update(delta);
+    updatePlayers(delta);
+    updateCamera(delta);
 }
-bool MapMgrs::checkRayCast(const Rect& rect, Vec2& velocity, Actor::RAYCAST_TYPE& type, bool ignoreAdjust)
+bool MapMgrs::checkRayCast(const cocos2d::Rect& rect, Vec2& velocity, Actor::RAYCAST_TYPE& type, bool ignoreAdjust)
 {
     bool ret = false;
     ValueVector colliders = m_pColliders->getObjects();
@@ -114,7 +118,7 @@ bool MapMgrs::checkRayCast(const Rect& rect, Vec2& velocity, Actor::RAYCAST_TYPE
         float y = valuemap.at("y").asFloat();
         float width = valuemap.at("width").asFloat();
         float height = valuemap.at("height").asFloat();
-        Rect colliderRect = Rect(x, y, width, height);
+        cocos2d::Rect colliderRect = cocos2d::Rect(x, y, width, height);
         if (colliderRect.getMaxX() < rect.getMinX() || rect.getMaxX() < colliderRect.getMinX() ||
             colliderRect.getMaxY() < rect.getMinY() || rect.getMaxY() < colliderRect.getMinY()) {
             ret = false;
@@ -136,7 +140,7 @@ bool MapMgrs::checkRayCast(const Rect& rect, Vec2& velocity, Actor::RAYCAST_TYPE
     }
     return ret;
 }
-bool MapMgrs::checkCollision(const Rect& rect, Vec2& velocity, int& flag)
+bool MapMgrs::checkCollision(const cocos2d::Rect& rect, Vec2& velocity, int& flag)
 {
     bool ret = false;
     ValueVector colliders = m_pColliders->getObjects();
@@ -148,7 +152,7 @@ bool MapMgrs::checkCollision(const Rect& rect, Vec2& velocity, int& flag)
         float y = valuemap.at("y").asFloat();
         float width = valuemap.at("width").asFloat();
         float height = valuemap.at("height").asFloat();
-        Rect colliderRect = Rect(x, y, width, height);
+        cocos2d::Rect colliderRect = cocos2d::Rect(x, y, width, height);
         if (colliderRect.getMaxX() < rect.getMinX() || rect.getMaxX() < colliderRect.getMinX() ||
             colliderRect.getMaxY() < rect.getMinY() || rect.getMaxY() < colliderRect.getMinY()) {
             continue;
@@ -186,7 +190,7 @@ bool MapMgrs::checkTrigger(const cocos2d::Rect& rect, Actor::TRIGGER_TYPE& type)
         float y = valuemap.at("y").asFloat();
         float width = valuemap.at("width").asFloat();
         float height = valuemap.at("height").asFloat();
-        Rect tiggerRect = Rect(x, y, width, height);
+        cocos2d::Rect tiggerRect = cocos2d::Rect(x, y, width, height);
         if (tiggerRect.getMaxX() < rect.getMinX() || rect.getMaxX() < tiggerRect.getMinX() ||
             tiggerRect.getMaxY() < rect.getMinY() || rect.getMaxY() < tiggerRect.getMinY()) {
             ret = false;
@@ -207,6 +211,7 @@ void MapMgrs::showDebug(bool debug)
     if(debug)
     {
         m_pDebugDrawNode = DrawNode::create();
+        m_pDebugDrawNode->setCameraMask((unsigned short)CameraFlag::USER1);
         m_pMainLayer->addChild(m_pDebugDrawNode);
         m_pDebugDrawNode->clear();
         
@@ -220,7 +225,7 @@ void MapMgrs::showDebug(bool debug)
             float y = valuemap.at("y").asFloat();
             float width = valuemap.at("width").asFloat();
             float height = valuemap.at("height").asFloat();
-            Rect starterRect = Rect(x, y, width, height);
+            cocos2d::Rect starterRect = cocos2d::Rect(x, y, width, height);
             
             Vec2 vertices[4] = {
                 Vec2( starterRect.getMinX(), starterRect.getMinY() ),
@@ -241,7 +246,7 @@ void MapMgrs::showDebug(bool debug)
             float y = valuemap.at("y").asFloat();
             float width = valuemap.at("width").asFloat();
             float height = valuemap.at("height").asFloat();
-            Rect colliderRect = Rect(x, y, width, height);
+            cocos2d::Rect colliderRect = cocos2d::Rect(x, y, width, height);
             
             Vec2 vertices[4] = {
                 Vec2( colliderRect.getMinX(), colliderRect.getMinY() ),
@@ -262,7 +267,7 @@ void MapMgrs::showDebug(bool debug)
             float y = valuemap.at("y").asFloat();
             float width = valuemap.at("width").asFloat();
             float height = valuemap.at("height").asFloat();
-            Rect colliderRect = Rect(x, y, width, height);
+            cocos2d::Rect colliderRect = cocos2d::Rect(x, y, width, height);
             
             Vec2 vertices[4] = {
                 Vec2( colliderRect.getMinX(), colliderRect.getMinY() ),
@@ -284,7 +289,7 @@ void MapMgrs::showDebug(bool debug)
             float y = valuemap.at("y").asFloat();
             float width = valuemap.at("width").asFloat();
             float height = valuemap.at("height").asFloat();
-            Rect colliderRect = Rect(x, y, width, height);
+            cocos2d::Rect colliderRect = cocos2d::Rect(x, y, width, height);
             
             Vec2 vertices[4] = {
                 Vec2( colliderRect.getMinX(), colliderRect.getMinY() ),
@@ -306,6 +311,17 @@ void MapMgrs::showDebug(bool debug)
         }
     }
 }
+bool MapMgrs::initCamera()
+{
+    if(!m_pMainLayer)
+        return false;
+    m_pMainCamera = Camera::create();
+    if(!m_pMainCamera)
+        return false;
+    m_pMainCamera->setCameraFlag(CameraFlag::USER1);
+    m_pMainLayer->addChild(m_pMainCamera);
+    return true;
+}
 bool MapMgrs::initPlayer()
 {
     if(!m_pMainLayer || !m_pStarters)
@@ -319,12 +335,39 @@ bool MapMgrs::initPlayer()
     float y = start_born.at("y").asFloat();
     float width = start_born.at("width").asFloat();
     float height = start_born.at("height").asFloat();
-    Rect colliderRect = Rect(x, y, width, height);
+    cocos2d::Rect colliderRect = cocos2d::Rect(x, y, width, height);
     m_pNilo = ActorFactory::getInstance()->createPlayer(Player::PT_NILO);
     if(!m_pNilo)
         return false;
+    m_pNilo->setCameraMask((unsigned short)CameraFlag::USER1);
     m_pNilo->setPosition(Vec2(colliderRect.getMidX(),y));
     m_pNilo->setFlipX(flip_x);
     m_pMainLayer->addChild(m_pNilo);
     return true;
+}
+void MapMgrs::updatePlayers(float delta)
+{
+    if(!m_pNilo)
+        return;
+    m_pNilo->update(delta);
+}
+void MapMgrs::updateCamera(float delta)
+{
+    if(!m_pCurrentTiledMap || !m_pMainCamera || !m_pNilo)
+        return;
+
+    cocos2d::Size winSize = Director::getInstance()->getVisibleSize();
+    cocos2d::Rect mapRect = m_pCurrentTiledMap->getBoundingBox();
+
+    Vec2 playerPos = m_pNilo->getPosition();
+    if(playerPos.x > mapRect.getMinX() + winSize.width*0.5f && playerPos.x < mapRect.getMaxX() - winSize.width*0.5f)
+    {
+        float dist = playerPos.x - m_pMainCamera->getPositionX();
+        if(fabs(dist)<=1)
+            m_pMainCamera->setPositionX(m_pMainCamera->getPositionX() + dist*delta*2);
+        else
+            m_pMainCamera->setPositionX(m_pMainCamera->getPositionX() + dist*delta*20);
+    }
+    if(playerPos.y > mapRect.getMinY() + winSize.height*0.5f && playerPos.y < mapRect.getMaxY() - winSize.width*0.5f)
+        m_pMainCamera->setPositionY(playerPos.y);
 }

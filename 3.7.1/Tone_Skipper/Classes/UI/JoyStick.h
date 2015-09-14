@@ -63,6 +63,8 @@ private:
     cocos2d::ui::Button*       m_pBBtn;
     
     std::vector<JoystickListener*>  m_Listeners;
+    
+    cocos2d::Camera*           m_pCamera;
 };
 
 #endif /* defined(__Tone_Skipper__JoyStick__) */

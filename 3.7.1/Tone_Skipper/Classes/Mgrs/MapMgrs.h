@@ -35,18 +35,23 @@ public:
     
     void showDebug(bool debug);
 private:
+    bool initCamera();
     bool initPlayer();
+    
+
+    void updatePlayers(float delta);
+    void updateCamera(float delta);
 private:
     cocos2d::Layer*                         m_pMainLayer;
-    cocos2d::experimental::TMXTiledMap*     m_pCurrentTiledMap;
+    cocos2d::TMXTiledMap*                   m_pCurrentTiledMap;
     cocos2d::TMXObjectGroup*                m_pStarters;
     cocos2d::TMXObjectGroup*                m_pColliders;
     cocos2d::TMXObjectGroup*                m_pRayCasters;
     cocos2d::TMXObjectGroup*                m_pTriggers;
     cocos2d::TMXObjectGroup*                m_pMonsters;
     
+    cocos2d::Camera*                        m_pMainCamera;
     Player*                                 m_pNilo;
-    
     cocos2d::DrawNode*                      m_pDebugDrawNode;
 };
 
