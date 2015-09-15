@@ -102,7 +102,7 @@ void MapMgrs::update(float delta)
     if(m_pNilo)
         m_pNilo->update(delta);
 }
-bool MapMgrs::checkRayCast(const Rect& rect, Vec2& velocity, Actor::RAYCAST_TYPE& type, bool ignoreAdjust)
+bool MapMgrs::checkRayCast(const cocos2d::Rect& rect, Vec2& velocity, Actor::RAYCAST_TYPE& type, bool ignoreAdjust)
 {
     bool ret = false;
     ValueVector colliders = m_pColliders->getObjects();
@@ -114,7 +114,7 @@ bool MapMgrs::checkRayCast(const Rect& rect, Vec2& velocity, Actor::RAYCAST_TYPE
         float y = valuemap.at("y").asFloat();
         float width = valuemap.at("width").asFloat();
         float height = valuemap.at("height").asFloat();
-        Rect colliderRect = Rect(x, y, width, height);
+        cocos2d::Rect colliderRect = cocos2d::Rect(x, y, width, height);
         if (colliderRect.getMaxX() < rect.getMinX() || rect.getMaxX() < colliderRect.getMinX() ||
             colliderRect.getMaxY() < rect.getMinY() || rect.getMaxY() < colliderRect.getMinY()) {
             ret = false;
@@ -136,7 +136,7 @@ bool MapMgrs::checkRayCast(const Rect& rect, Vec2& velocity, Actor::RAYCAST_TYPE
     }
     return ret;
 }
-bool MapMgrs::checkCollision(const Rect& rect, Vec2& velocity, int& flag)
+bool MapMgrs::checkCollision(const cocos2d::Rect& rect, Vec2& velocity, int& flag)
 {
     bool ret = false;
     ValueVector colliders = m_pColliders->getObjects();
@@ -148,7 +148,7 @@ bool MapMgrs::checkCollision(const Rect& rect, Vec2& velocity, int& flag)
         float y = valuemap.at("y").asFloat();
         float width = valuemap.at("width").asFloat();
         float height = valuemap.at("height").asFloat();
-        Rect colliderRect = Rect(x, y, width, height);
+        cocos2d::Rect colliderRect = cocos2d::Rect(x, y, width, height);
         if (colliderRect.getMaxX() < rect.getMinX() || rect.getMaxX() < colliderRect.getMinX() ||
             colliderRect.getMaxY() < rect.getMinY() || rect.getMaxY() < colliderRect.getMinY()) {
             continue;
@@ -186,7 +186,7 @@ bool MapMgrs::checkTrigger(const cocos2d::Rect& rect, Actor::TRIGGER_TYPE& type)
         float y = valuemap.at("y").asFloat();
         float width = valuemap.at("width").asFloat();
         float height = valuemap.at("height").asFloat();
-        Rect tiggerRect = Rect(x, y, width, height);
+        cocos2d::Rect tiggerRect = cocos2d::Rect(x, y, width, height);
         if (tiggerRect.getMaxX() < rect.getMinX() || rect.getMaxX() < tiggerRect.getMinX() ||
             tiggerRect.getMaxY() < rect.getMinY() || rect.getMaxY() < tiggerRect.getMinY()) {
             ret = false;
@@ -220,7 +220,7 @@ void MapMgrs::showDebug(bool debug)
             float y = valuemap.at("y").asFloat();
             float width = valuemap.at("width").asFloat();
             float height = valuemap.at("height").asFloat();
-            Rect starterRect = Rect(x, y, width, height);
+            cocos2d::Rect starterRect = cocos2d::Rect(x, y, width, height);
             
             Vec2 vertices[4] = {
                 Vec2( starterRect.getMinX(), starterRect.getMinY() ),
@@ -241,7 +241,7 @@ void MapMgrs::showDebug(bool debug)
             float y = valuemap.at("y").asFloat();
             float width = valuemap.at("width").asFloat();
             float height = valuemap.at("height").asFloat();
-            Rect colliderRect = Rect(x, y, width, height);
+            cocos2d::Rect colliderRect = cocos2d::Rect(x, y, width, height);
             
             Vec2 vertices[4] = {
                 Vec2( colliderRect.getMinX(), colliderRect.getMinY() ),
@@ -262,7 +262,7 @@ void MapMgrs::showDebug(bool debug)
             float y = valuemap.at("y").asFloat();
             float width = valuemap.at("width").asFloat();
             float height = valuemap.at("height").asFloat();
-            Rect colliderRect = Rect(x, y, width, height);
+            cocos2d::Rect colliderRect = cocos2d::Rect(x, y, width, height);
             
             Vec2 vertices[4] = {
                 Vec2( colliderRect.getMinX(), colliderRect.getMinY() ),
@@ -284,7 +284,7 @@ void MapMgrs::showDebug(bool debug)
             float y = valuemap.at("y").asFloat();
             float width = valuemap.at("width").asFloat();
             float height = valuemap.at("height").asFloat();
-            Rect colliderRect = Rect(x, y, width, height);
+            cocos2d::Rect colliderRect = cocos2d::Rect(x, y, width, height);
             
             Vec2 vertices[4] = {
                 Vec2( colliderRect.getMinX(), colliderRect.getMinY() ),
@@ -319,7 +319,7 @@ bool MapMgrs::initPlayer()
     float y = start_born.at("y").asFloat();
     float width = start_born.at("width").asFloat();
     float height = start_born.at("height").asFloat();
-    Rect colliderRect = Rect(x, y, width, height);
+    cocos2d::Rect colliderRect = cocos2d::Rect(x, y, width, height);
     m_pNilo = ActorFactory::getInstance()->createPlayer(Player::PT_NILO);
     if(!m_pNilo)
         return false;

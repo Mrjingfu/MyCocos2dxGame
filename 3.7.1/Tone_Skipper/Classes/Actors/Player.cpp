@@ -139,7 +139,7 @@ void Player::checkTriggers()
     {
         switch (type) {
             case Actor::TT_TIPS:
-                CCLOG("trigger: tips!");
+                //CCLOG("trigger: tips!");
                 break;
             default:
                 break;
@@ -148,6 +148,8 @@ void Player::checkTriggers()
 }
 void Player::setPlayerState(PlayerState state)
 {
+    CCLOG("state:%d",state);
+    CCLOG("m_PlayerState:%d",m_PlayerState);
     if (m_PlayerState == state)
         return;
     
