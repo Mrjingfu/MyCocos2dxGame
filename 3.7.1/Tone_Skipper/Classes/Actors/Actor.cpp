@@ -52,7 +52,7 @@ void Actor::showDebug(bool debug)
         if(m_pSprite)
         {
             m_pDebugDrawNode->clear();
-            cocos2d::Rect rect = m_pSprite->getBoundingBox();
+            cocos2d::Rect rect = getBoundingBox();
             Vec2 vertices[4] = {
                 Vec2( rect.getMinX(), rect.getMinY() ),
                 Vec2( rect.getMaxX(), rect.getMinY() ),

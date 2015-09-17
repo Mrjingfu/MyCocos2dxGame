@@ -45,7 +45,7 @@ public:
     bool checkTrigger(const cocos2d::Rect& rect, Actor::TRIGGER_TYPE& type);
     
     Player* getNilo() const { return m_pNilo; }
-    
+    Player* getPudge() const {return m_pPudge;}
     void showDebug(bool debug);
 private:
     bool initCamera();
@@ -71,6 +71,7 @@ private:
     
     cocos2d::Camera*                        m_pMainCamera;
     Player*                                 m_pNilo;
+    Player*                                 m_pPudge;
     cocos2d::DrawNode*                      m_pDebugDrawNode;
 };
 

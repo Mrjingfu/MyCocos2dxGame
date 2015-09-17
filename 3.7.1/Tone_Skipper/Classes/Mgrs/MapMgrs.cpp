@@ -404,6 +404,18 @@ bool MapMgrs::initPlayer()
     m_pNilo->setPosition(Vec2(colliderRect.getMidX(),y));
     m_pNilo->setFlipX(flip_x);
     m_pMainLayer->addChild(m_pNilo);
+    
+    
+    m_pPudge = ActorFactory::getInstance()->createPlayer(Player::PT_PUDGE);
+    if(!m_pPudge)
+        return false;
+    m_pPudge->setCameraMask((unsigned short)CameraFlag::USER1);
+    m_pPudge->setPosition(Vec2(m_pNilo->getPosition().x+15,m_pNilo->getPosition().y));
+    m_pPudge->setFlipX(flip_x);
+    m_pMainLayer->addChild(m_pPudge);
+    m_pPudge->setVisible(false);
+    
+    
     return true;
 }
 bool MapMgrs::initColorMask()
@@ -467,6 +479,10 @@ void MapMgrs::updatePlayers(float delta)
     if(!m_pNilo)
         return;
     m_pNilo->update(delta);
+    
+    if (!m_pPudge)
+        return;
+    m_pPudge->update(delta);
 }
 void MapMgrs::updateCamera(float delta)
 {

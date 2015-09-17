@@ -8,6 +8,7 @@
 
 #include "ActorFactory.h"
 #include "Nilo.h"
+#include "Pudge.h"
 USING_NS_CC;
 
 ActorFactory* g_pActorFactoryInstance = nullptr;
@@ -42,6 +43,15 @@ Player* ActorFactory::createPlayer(Player::PlayerType type)
         }
             break;
         case Player::PT_PUDGE:
+            player = new(std::nothrow) Pudge();
+            if(player && player->loadModel() && player->loadAnimations())
+            {
+                player->setPlayerState(Player::PS_IDLE);
+                player->autorelease();
+                player->setScale(0.6);
+            }
+            else
+                CC_SAFE_RELEASE_NULL(player);
             break;
         case Player::PT_LEA:
             

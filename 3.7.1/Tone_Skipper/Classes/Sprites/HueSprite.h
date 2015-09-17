@@ -26,8 +26,8 @@ public:
     float getHue();
     void setHue(float hue);
     
-    virtual cocos2d::Rect getBoundingBox() const;
-    
+    virtual cocos2d::Rect getBoundingNiloBox() const;
+    virtual cocos2d::Rect getBoundingPudgeBox() const;
 protected:
     float _hue;
     GLfloat _mat[3][3];
