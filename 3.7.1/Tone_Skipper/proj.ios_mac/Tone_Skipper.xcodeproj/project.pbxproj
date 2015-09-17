@@ -88,6 +88,14 @@
 		D44C620E132DFF430009C878 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620D132DFF430009C878 /* AVFoundation.framework */; };
 		D44C6210132DFF4E0009C878 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620F132DFF4E0009C878 /* AudioToolbox.framework */; };
 		D6B0611B1803AB670077942B /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6B0611A1803AB670077942B /* CoreMotion.framework */; };
+		EC414CFB1BA7F67F0029C69E /* AlisaMethod.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC414CF71BA7F67F0029C69E /* AlisaMethod.cpp */; };
+		EC414CFC1BA7F67F0029C69E /* UtilityHelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC414CF91BA7F67F0029C69E /* UtilityHelper.cpp */; };
+		EC414CFD1BA7F6BF0029C69E /* AlisaMethod.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC414CF71BA7F67F0029C69E /* AlisaMethod.cpp */; };
+		EC414CFE1BA7F6BF0029C69E /* UtilityHelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC414CF91BA7F67F0029C69E /* UtilityHelper.cpp */; };
+		EC414D011BA7F74E0029C69E /* NativeBridge.mm in Sources */ = {isa = PBXBuildFile; fileRef = EC414D001BA7F74E0029C69E /* NativeBridge.mm */; };
+		EC414D021BA7F7550029C69E /* NativeBridge.mm in Sources */ = {isa = PBXBuildFile; fileRef = EC414D001BA7F74E0029C69E /* NativeBridge.mm */; };
+		ECA7B2531BA7F9010021CE95 /* ChaosNumber.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECA7B2511BA7F9010021CE95 /* ChaosNumber.cpp */; };
+		ECA7B2541BA7F91F0021CE95 /* ChaosNumber.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECA7B2511BA7F9010021CE95 /* ChaosNumber.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -201,6 +209,14 @@
 		D44C620D132DFF430009C878 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		D44C620F132DFF4E0009C878 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		D6B0611A1803AB670077942B /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/CoreMotion.framework; sourceTree = DEVELOPER_DIR; };
+		EC414CF71BA7F67F0029C69E /* AlisaMethod.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AlisaMethod.cpp; sourceTree = "<group>"; };
+		EC414CF81BA7F67F0029C69E /* AlisaMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlisaMethod.h; sourceTree = "<group>"; };
+		EC414CF91BA7F67F0029C69E /* UtilityHelper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UtilityHelper.cpp; sourceTree = "<group>"; };
+		EC414CFA1BA7F67F0029C69E /* UtilityHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UtilityHelper.h; sourceTree = "<group>"; };
+		EC414CFF1BA7F74E0029C69E /* NativeBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NativeBridge.h; sourceTree = "<group>"; };
+		EC414D001BA7F74E0029C69E /* NativeBridge.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = NativeBridge.mm; sourceTree = "<group>"; };
+		ECA7B2511BA7F9010021CE95 /* ChaosNumber.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ChaosNumber.cpp; sourceTree = "<group>"; };
+		ECA7B2521BA7F9010021CE95 /* ChaosNumber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChaosNumber.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -329,6 +345,7 @@
 		46880B8319C43A87006E1F66 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				EC414CF61BA7F67F0029C69E /* Utilities */,
 				55E71D021B9D2869001BEFF7 /* Mgrs */,
 				554733061B8EA7C0008F096C /* UI */,
 				55883EC91B8D9BE5007F2FD3 /* Actors */,
@@ -469,6 +486,21 @@
 				55E71D051B9D2877001BEFF7 /* testmap.tmx */,
 			);
 			path = maps;
+			sourceTree = "<group>";
+		};
+		EC414CF61BA7F67F0029C69E /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				ECA7B2511BA7F9010021CE95 /* ChaosNumber.cpp */,
+				ECA7B2521BA7F9010021CE95 /* ChaosNumber.h */,
+				EC414CFF1BA7F74E0029C69E /* NativeBridge.h */,
+				EC414D001BA7F74E0029C69E /* NativeBridge.mm */,
+				EC414CF71BA7F67F0029C69E /* AlisaMethod.cpp */,
+				EC414CF81BA7F67F0029C69E /* AlisaMethod.h */,
+				EC414CF91BA7F67F0029C69E /* UtilityHelper.cpp */,
+				EC414CFA1BA7F67F0029C69E /* UtilityHelper.h */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -626,6 +658,9 @@
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				554733091B8EA7C9008F096C /* JoyStick.cpp in Sources */,
 				55883ED41B8D9EDE007F2FD3 /* Player.cpp in Sources */,
+				EC414D011BA7F74E0029C69E /* NativeBridge.mm in Sources */,
+				EC414CFB1BA7F67F0029C69E /* AlisaMethod.cpp in Sources */,
+				EC414CFC1BA7F67F0029C69E /* UtilityHelper.cpp in Sources */,
 				5547331D1B8F14AF008F096C /* Nilo.cpp in Sources */,
 				55E71D0C1B9D2890001BEFF7 /* MapMgrs.cpp in Sources */,
 				55883ECC1B8D9C92007F2FD3 /* Actor.cpp in Sources */,
@@ -633,6 +668,7 @@
 				55E71D1B1B9D4957001BEFF7 /* ActorFactory.cpp in Sources */,
 				554733101B8EA89E008F096C /* RegionButton.cpp in Sources */,
 				55883EB81B8D9215007F2FD3 /* TestScene.cpp in Sources */,
+				ECA7B2531BA7F9010021CE95 /* ChaosNumber.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
 				55883EB41B8D91D0007F2FD3 /* NormalScene.cpp in Sources */,
 			);
@@ -642,6 +678,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ECA7B2541BA7F91F0021CE95 /* ChaosNumber.cpp in Sources */,
+				EC414D021BA7F7550029C69E /* NativeBridge.mm in Sources */,
+				EC414CFD1BA7F6BF0029C69E /* AlisaMethod.cpp in Sources */,
+				EC414CFE1BA7F6BF0029C69E /* UtilityHelper.cpp in Sources */,
 				55883ED51B8D9EDE007F2FD3 /* Player.cpp in Sources */,
 				55883EB51B8D91D0007F2FD3 /* NormalScene.cpp in Sources */,
 				5547331E1B8F14AF008F096C /* Nilo.cpp in Sources */,
