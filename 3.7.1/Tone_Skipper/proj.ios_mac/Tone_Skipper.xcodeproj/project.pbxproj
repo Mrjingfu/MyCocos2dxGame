@@ -94,6 +94,13 @@
 		EC414CFE1BA7F6BF0029C69E /* UtilityHelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC414CF91BA7F67F0029C69E /* UtilityHelper.cpp */; };
 		EC414D011BA7F74E0029C69E /* NativeBridge.mm in Sources */ = {isa = PBXBuildFile; fileRef = EC414D001BA7F74E0029C69E /* NativeBridge.mm */; };
 		EC414D021BA7F7550029C69E /* NativeBridge.mm in Sources */ = {isa = PBXBuildFile; fileRef = EC414D001BA7F74E0029C69E /* NativeBridge.mm */; };
+		EC6466351BAA5421002D8E6B /* Pudge.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC6466331BAA5421002D8E6B /* Pudge.cpp */; };
+		EC64663E1BAA5D00002D8E6B /* sprite_dog.plist in Resources */ = {isa = PBXBuildFile; fileRef = EC64663C1BAA5D00002D8E6B /* sprite_dog.plist */; };
+		EC64663F1BAA5D00002D8E6B /* sprite_dog.png in Resources */ = {isa = PBXBuildFile; fileRef = EC64663D1BAA5D00002D8E6B /* sprite_dog.png */; };
+		EC6466401BAA5D0B002D8E6B /* sprite_dog.plist in Resources */ = {isa = PBXBuildFile; fileRef = EC64663C1BAA5D00002D8E6B /* sprite_dog.plist */; };
+		EC6466411BAA5D0B002D8E6B /* sprite_dog.png in Resources */ = {isa = PBXBuildFile; fileRef = EC64663D1BAA5D00002D8E6B /* sprite_dog.png */; };
+		EC6466421BAA62F8002D8E6B /* Pudge.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC6466331BAA5421002D8E6B /* Pudge.cpp */; };
+		EC6466481BAA9727002D8E6B /* Enemy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC6466461BAA9727002D8E6B /* Enemy.cpp */; };
 		ECA7B2531BA7F9010021CE95 /* ChaosNumber.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECA7B2511BA7F9010021CE95 /* ChaosNumber.cpp */; };
 		ECA7B2541BA7F91F0021CE95 /* ChaosNumber.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECA7B2511BA7F9010021CE95 /* ChaosNumber.cpp */; };
 /* End PBXBuildFile section */
@@ -215,6 +222,12 @@
 		EC414CFA1BA7F67F0029C69E /* UtilityHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UtilityHelper.h; sourceTree = "<group>"; };
 		EC414CFF1BA7F74E0029C69E /* NativeBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NativeBridge.h; sourceTree = "<group>"; };
 		EC414D001BA7F74E0029C69E /* NativeBridge.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = NativeBridge.mm; sourceTree = "<group>"; };
+		EC6466331BAA5421002D8E6B /* Pudge.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Pudge.cpp; sourceTree = "<group>"; };
+		EC6466341BAA5421002D8E6B /* Pudge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pudge.h; sourceTree = "<group>"; };
+		EC64663C1BAA5D00002D8E6B /* sprite_dog.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = sprite_dog.plist; sourceTree = "<group>"; };
+		EC64663D1BAA5D00002D8E6B /* sprite_dog.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sprite_dog.png; sourceTree = "<group>"; };
+		EC6466461BAA9727002D8E6B /* Enemy.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Enemy.cpp; sourceTree = "<group>"; };
+		EC6466471BAA9727002D8E6B /* Enemy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Enemy.h; sourceTree = "<group>"; };
 		ECA7B2511BA7F9010021CE95 /* ChaosNumber.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ChaosNumber.cpp; sourceTree = "<group>"; };
 		ECA7B2521BA7F9010021CE95 /* ChaosNumber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChaosNumber.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -449,6 +462,8 @@
 		55883EBA1B8D96E3007F2FD3 /* sprites */ = {
 			isa = PBXGroup;
 			children = (
+				EC64663C1BAA5D00002D8E6B /* sprite_dog.plist */,
+				EC64663D1BAA5D00002D8E6B /* sprite_dog.png */,
 				55883EBB1B8D96E3007F2FD3 /* sprite_red.plist */,
 				55883EBC1B8D96E3007F2FD3 /* sprite_red.png */,
 			);
@@ -458,6 +473,10 @@
 		55883EC91B8D9BE5007F2FD3 /* Actors */ = {
 			isa = PBXGroup;
 			children = (
+				EC6466461BAA9727002D8E6B /* Enemy.cpp */,
+				EC6466471BAA9727002D8E6B /* Enemy.h */,
+				EC6466331BAA5421002D8E6B /* Pudge.cpp */,
+				EC6466341BAA5421002D8E6B /* Pudge.h */,
 				55883ECA1B8D9C92007F2FD3 /* Actor.cpp */,
 				55883ECB1B8D9C92007F2FD3 /* Actor.h */,
 				55883ED21B8D9EDE007F2FD3 /* Player.cpp */,
@@ -604,6 +623,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC64663E1BAA5D00002D8E6B /* sprite_dog.plist in Resources */,
 				5087E78117EB970100C73F5D /* Icon-120.png in Resources */,
 				5087E78617EB970100C73F5D /* Icon-76.png in Resources */,
 				554733021B8EA7B2008F096C /* joystick.plist in Resources */,
@@ -612,6 +632,7 @@
 				5087E78317EB970100C73F5D /* Icon-152.png in Resources */,
 				554733041B8EA7B2008F096C /* joystick.png in Resources */,
 				5087E77D17EB970100C73F5D /* Default-568h@2x.png in Resources */,
+				EC64663F1BAA5D00002D8E6B /* sprite_dog.png in Resources */,
 				55E71D081B9D2877001BEFF7 /* testmap.tmx in Resources */,
 				55E71D061B9D2877001BEFF7 /* scene_tiles.png in Resources */,
 				5087E78517EB970100C73F5D /* Icon-72.png in Resources */,
@@ -636,6 +657,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC6466401BAA5D0B002D8E6B /* sprite_dog.plist in Resources */,
+				EC6466411BAA5D0B002D8E6B /* sprite_dog.png in Resources */,
 				554733051B8EA7B2008F096C /* joystick.png in Resources */,
 				554733031B8EA7B2008F096C /* joystick.plist in Resources */,
 				55E71D071B9D2877001BEFF7 /* scene_tiles.png in Resources */,
@@ -663,7 +686,9 @@
 				EC414CFC1BA7F67F0029C69E /* UtilityHelper.cpp in Sources */,
 				5547331D1B8F14AF008F096C /* Nilo.cpp in Sources */,
 				55E71D0C1B9D2890001BEFF7 /* MapMgrs.cpp in Sources */,
+				EC6466351BAA5421002D8E6B /* Pudge.cpp in Sources */,
 				55883ECC1B8D9C92007F2FD3 /* Actor.cpp in Sources */,
+				EC6466481BAA9727002D8E6B /* Enemy.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				55E71D1B1B9D4957001BEFF7 /* ActorFactory.cpp in Sources */,
 				554733101B8EA89E008F096C /* RegionButton.cpp in Sources */,
@@ -678,6 +703,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC6466421BAA62F8002D8E6B /* Pudge.cpp in Sources */,
 				ECA7B2541BA7F91F0021CE95 /* ChaosNumber.cpp in Sources */,
 				EC414D021BA7F7550029C69E /* NativeBridge.mm in Sources */,
 				EC414CFD1BA7F6BF0029C69E /* AlisaMethod.cpp in Sources */,

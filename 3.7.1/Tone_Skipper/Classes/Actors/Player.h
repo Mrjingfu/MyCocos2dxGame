@@ -77,6 +77,8 @@ protected:
     
     virtual void onEquipedGun() {};
     virtual void onUnloadGun() {};
+    
+    virtual cocos2d::Rect getBoundingBox() const override;
 public:
     virtual void update(float delta) override;
     
@@ -95,6 +97,7 @@ public:
 private:
     void updatePosition(float delta);
     void checkTriggers();
+   
 protected:
     cocos2d::Animation*       m_pIdleAnimation;
     cocos2d::Animation*       m_pRunAnimation;

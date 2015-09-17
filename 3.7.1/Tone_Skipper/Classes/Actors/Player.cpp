@@ -63,7 +63,7 @@ void Player::update(float delta)
 }
 void Player::updatePosition(float delta)
 {
-    cocos2d::Rect rect = m_pSprite->getBoundingBox();
+    cocos2d::Rect rect = getBoundingBox();
     Vec2 nextPosY = getPosition() + Vec2(0,m_Velocity.y);
     rect.origin += nextPosY;
     
@@ -91,7 +91,7 @@ void Player::updatePosition(float delta)
     }
   
     setPosition(getPosition() + Vec2(0,m_Velocity.y));
-    rect = m_pSprite->getBoundingBox();
+    rect = getBoundingBox();
     Vec2 nextPosX = getPosition() + Vec2(m_Velocity.x, 0);
     rect.origin += nextPosX;
     
@@ -131,7 +131,7 @@ void Player::updatePosition(float delta)
 }
 void Player::checkTriggers()
 {
-    cocos2d::Rect rect = m_pSprite->getBoundingBox();
+    cocos2d::Rect rect = getBoundingBox();
     rect.origin += getPosition();
     Actor::TRIGGER_TYPE type = Actor::TT_UNKNOWN;
     bool collision = MapMgrs::getInstance()->checkTrigger(rect, type);
@@ -424,4 +424,22 @@ void Player::onEnterDeathState()
 void Player::onExitDeathState()
 {
     enableAcceptInput();
+}
+cocos2d::Rect Player::getBoundingBox() const
+{
+    cocos2d::Rect spriteRect;
+    if (m_pSprite) {
+        switch (m_PlayerType) {
+            case PT_NILO:
+                spriteRect = m_pSprite->getBoundingNiloBox();
+                break;
+            case PT_PUDGE:
+                spriteRect = m_pSprite->getBoundingPudgeBox();
+                break;
+            default:
+                spriteRect = m_pSprite->getBoundingBox();
+                break;
+        }
+    }
+    return spriteRect;
 }
