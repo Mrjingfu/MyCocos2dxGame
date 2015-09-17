@@ -1,5 +1,5 @@
 #include "AppDelegate.h"
-#include "TestScene.h"
+#include "LogoScene.h"
 
 USING_NS_CC;
 
@@ -40,6 +40,8 @@ bool AppDelegate::applicationDidFinishLaunching() {
     glview->setDesignResolutionSize(320.0f, 240.0f, ResolutionPolicy::FIXED_HEIGHT);
     
     std::vector<std::string> searchPaths;
+    searchPaths.push_back("logo");
+    searchPaths.push_back("UI");
     searchPaths.push_back("sprites");
     searchPaths.push_back("maps");
     FileUtils::getInstance()->setSearchPaths(searchPaths);
@@ -58,7 +60,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     register_all_packages();
 
     // create a scene. it's an autorelease object
-    auto scene = TestScene::createScene();
+    auto scene = LogoScene::createScene();
 
     // run
     director->runWithScene(scene);

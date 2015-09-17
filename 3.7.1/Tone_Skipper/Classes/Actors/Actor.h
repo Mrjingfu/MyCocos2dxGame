@@ -31,6 +31,9 @@ public:
     static constexpr float Gravity = -10.0f;
     virtual void update(float delta){};
     
+    virtual float getHue();
+    virtual void setHue(float hue);
+    
     void setFlipX(bool fliped);
     void setMaxXSpeed(float speed) { m_fMaxXSpeed = speed;}
     void setMaxYSpeed(float speed) { m_fMaxYSpeed = speed;}

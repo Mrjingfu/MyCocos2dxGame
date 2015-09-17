@@ -119,13 +119,18 @@ void Player::updatePosition(float delta)
                 m_Velocity.x = 0;
             }
         }
+        if((collisionFlag & MapMgrs::CF_BOUND) != 0)
+            m_Velocity.x = 0;
     }
     else
     {
-        if(m_bRightBtnPressed)
-            m_Velocity.x = m_fMaxXSpeed;
-        else if(m_bLeftBtnPressed)
-            m_Velocity.x = -m_fMaxXSpeed;
+        if((collisionFlag & MapMgrs::CF_BOUND) == 0)
+        {
+            if(m_bRightBtnPressed && getPlayerState() != PS_SQUAT )
+                m_Velocity.x = m_fMaxXSpeed;
+            else if(m_bLeftBtnPressed && getPlayerState() != PS_SQUAT)
+                m_Velocity.x = -m_fMaxXSpeed;
+        }
     }
     setPosition(getPosition() + Vec2(m_Velocity.x, 0));
 }

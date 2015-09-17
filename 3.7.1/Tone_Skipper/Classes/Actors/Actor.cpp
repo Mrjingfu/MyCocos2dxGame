@@ -17,9 +17,23 @@ Actor::Actor()
     m_fMaxXSpeed = 0.5f;
     m_fMaxYSpeed = 2.0f;
     m_pDebugDrawNode = nullptr;
+    setCascadeOpacityEnabled(true);
+    setCascadeColorEnabled(true);
 }
 Actor::~Actor()
 {
+}
+float Actor::getHue()
+{
+    if(!m_pSprite)
+        return 0;
+    return m_pSprite->getHue();
+}
+void Actor::setHue(float hue)
+{
+    if(!m_pSprite)
+        return;
+    m_pSprite->setHue(hue);
 }
 void Actor::setFlipX(bool fliped)
 {

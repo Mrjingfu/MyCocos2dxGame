@@ -4966,7 +4966,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "209"
             endingLineNumber = "209"
-            landmarkName = "MenuScene::playBackgroundMusic()"
+            landmarkName = "MenuScene::onEnter()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -5014,7 +5014,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "206"
             endingLineNumber = "206"
-            landmarkName = "MenuScene::onExit()"
+            landmarkName = "MenuScene::onEnter()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

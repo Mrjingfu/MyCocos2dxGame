@@ -7,6 +7,7 @@
 //
 
 #include "MapMgrs.h"
+#include "UtilityHelper.h"
 USING_NS_CC;
 
 MapMgrs* g_pMapMgrsInstance = nullptr;
@@ -20,6 +21,8 @@ MapMgrs* MapMgrs::getInstance()
 }
 MapMgrs::MapMgrs()
 {
+    m_MaskColorType = MCT_NONE;
+    m_pBackgroundColorMaskLayer = nullptr;
     m_pMainLayer = nullptr;
     m_pNilo = nullptr;
     m_pMainCamera = nullptr;
@@ -41,6 +44,41 @@ bool MapMgrs::init(cocos2d::Layer* pMainLayer)
         return false;
     m_pMainLayer = pMainLayer;
     
+    Color3B maskColor = Color3B::BLACK;
+    switch (m_MaskColorType) {
+        case MCT_RED:
+            maskColor = UtilityHelper::randomRedColor();
+            break;
+        case MCT_ORANGE:
+            maskColor = UtilityHelper::randomOrangeColor();
+            break;
+        case MCT_YELLOW:
+            maskColor = UtilityHelper::randomYellowColor();
+            break;
+        case MCT_GREEN:
+            maskColor = UtilityHelper::randomGreenColor();
+            break;
+        case MCT_CYAN:
+            maskColor = UtilityHelper::randomCyanColor();
+            break;
+        case MCT_BLUE:
+            maskColor = UtilityHelper::randomBlueColor();
+            break;
+        case MCT_PURPLE:
+            maskColor = UtilityHelper::randomPurpleColor();
+            break;
+        case MCT_RANDOM:
+            maskColor = UtilityHelper::randomColor();
+            break;
+        default:
+            break;
+    }
+    m_pBackgroundColorMaskLayer = LayerColor::create(Color4B(maskColor.r, maskColor.g, maskColor.b, 50));
+    if(!m_pBackgroundColorMaskLayer)
+        return false;
+    m_pBackgroundColorMaskLayer->setBlendFunc(BlendFunc::ADDITIVE);
+    m_pMainLayer->addChild(m_pBackgroundColorMaskLayer);
+    
     if(!initCamera())
         return false;
     return true;
@@ -55,8 +93,13 @@ bool MapMgrs::loadMap(const std::string& strFile)
     m_pCurrentTiledMap->setCameraMask((unsigned short)CameraFlag::USER1);
     m_pMainLayer->addChild(m_pCurrentTiledMap);
     
+    m_MaskColorType = (MaskColorType)(m_pCurrentTiledMap->getProperty("maskcolor_typ").asInt());
+    
     cocos2d::Size mapSize = m_pCurrentTiledMap->getMapSize();
+    cocos2d::Size tileSize = m_pCurrentTiledMap->getTileSize();
+    
     CCLOG("ContentSize: %f, %f", mapSize.width,mapSize.height);
+    m_pMapRect = cocos2d::Rect(0,0,mapSize.width*tileSize.width,mapSize.height*tileSize.height);
     
     m_pStarters = m_pCurrentTiledMap->getObjectGroup("starters");
     if(!m_pStarters)
@@ -78,13 +121,14 @@ bool MapMgrs::loadMap(const std::string& strFile)
     if(!m_pMonsters)
         return false;
     
+    if(!initColorMask())
+        return false;
     if(!initPlayer())
         return false;
     
 #if COCOS2D_DEBUG
     showDebug(true);
 #endif
-    
     return true;
 }
 void MapMgrs::unloadMap()
@@ -143,6 +187,23 @@ bool MapMgrs::checkRayCast(const cocos2d::Rect& rect, Vec2& velocity, Actor::RAY
 bool MapMgrs::checkCollision(const cocos2d::Rect& rect, Vec2& velocity, int& flag)
 {
     bool ret = false;
+    if(!ret)
+    {
+        if(rect.getMaxX() >= m_pMapRect.getMaxX() && velocity.x >= 0)
+        {
+            velocity.x = velocity.x + m_pMapRect.getMaxX() - rect.getMaxX();
+            flag |= CF_BOUND;
+            ret = true;
+            return ret;
+        }
+        else if(m_pMapRect.getMinX() >= rect.getMinX() && velocity.x <= 0)
+        {
+            velocity.x = velocity.x + m_pMapRect.getMinX() - rect.getMinX();
+            flag |= CF_BOUND;
+            ret = true;
+            return ret;
+        }
+    }
     ValueVector colliders = m_pColliders->getObjects();
     for (Value value : colliders) {
         ValueMap valuemap = value.asValueMap();
@@ -343,6 +404,62 @@ bool MapMgrs::initPlayer()
     m_pNilo->setPosition(Vec2(colliderRect.getMidX(),y));
     m_pNilo->setFlipX(flip_x);
     m_pMainLayer->addChild(m_pNilo);
+    return true;
+}
+bool MapMgrs::initColorMask()
+{
+    if(!m_pMainLayer || !m_pCurrentTiledMap)
+        return false;
+    Color3B maskColor = Color3B::BLACK;
+    switch (m_MaskColorType) {
+        case MCT_RED:
+            maskColor = UtilityHelper::randomRedColor();
+            break;
+        case MCT_ORANGE:
+            maskColor = UtilityHelper::randomOrangeColor();
+            break;
+        case MCT_YELLOW:
+            maskColor = UtilityHelper::randomYellowColor();
+            break;
+        case MCT_GREEN:
+            maskColor = UtilityHelper::randomGreenColor();
+            break;
+        case MCT_CYAN:
+            maskColor = UtilityHelper::randomCyanColor();
+            break;
+        case MCT_BLUE:
+            maskColor = UtilityHelper::randomBlueColor();
+            break;
+        case MCT_PURPLE:
+            maskColor = UtilityHelper::randomPurpleColor();
+            break;
+        case MCT_RANDOM:
+            maskColor = UtilityHelper::randomColor();
+            break;
+        default:
+            break;
+    }
+    ValueVector colliders = m_pColliders->getObjects();
+    for (Value value : colliders) {
+        ValueMap valuemap = value.asValueMap();
+        if(valuemap.empty())
+            continue;
+        float x = valuemap.at("x").asFloat();
+        float y = valuemap.at("y").asFloat();
+        float width = valuemap.at("width").asFloat();
+        float height = valuemap.at("height").asFloat();
+        cocos2d::Rect colliderRect = cocos2d::Rect(x, y, width, height);
+        
+        m_pCurrentTiledMap->getProperty("maskcolor_type").asInt();
+        
+        cocos2d::LayerColor* colorMaskLayer  = LayerColor::create(Color4B(maskColor.r,maskColor.g,maskColor.b,50), width, height);
+        if(!colorMaskLayer)
+            return false;
+        colorMaskLayer->setPosition(Vec2(x,y));
+        colorMaskLayer->setCameraMask((unsigned short)CameraFlag::USER1);
+        colorMaskLayer->setBlendFunc(BlendFunc::ADDITIVE);
+        m_pMainLayer->addChild(colorMaskLayer);
+    }
     return true;
 }
 void MapMgrs::updatePlayers(float delta)

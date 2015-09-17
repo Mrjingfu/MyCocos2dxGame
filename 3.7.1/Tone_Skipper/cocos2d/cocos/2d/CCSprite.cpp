@@ -162,6 +162,15 @@ bool Sprite::initWithFile(const std::string& filename)
     Texture2D *texture = Director::getInstance()->getTextureCache()->addImage(filename);
     if (texture)
     {
+        ///lwwhb modify
+        Texture2D::TexParams tRepeatParams;
+        tRepeatParams.magFilter = GL_NEAREST;
+        tRepeatParams.minFilter = GL_NEAREST;
+        tRepeatParams.wrapS = GL_CLAMP_TO_EDGE;
+        tRepeatParams.wrapT = GL_CLAMP_TO_EDGE;
+        texture->setTexParameters(tRepeatParams);
+        ////
+        
         Rect rect = Rect::ZERO;
         rect.size = texture->getContentSize();
         return initWithTexture(texture, rect);

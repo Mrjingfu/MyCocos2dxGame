@@ -41,6 +41,7 @@ class JoyStick : public cocos2d::Layer
 public:
     static JoyStick* create();
     virtual bool init();
+    void setEnableJoyStick(bool enable);
     void addJoystickListener(JoystickListener* listener);
     void removeJoyStickListener(JoystickListener* listener);
     void removeAllJoyStickListener();
@@ -65,6 +66,7 @@ private:
     std::vector<JoystickListener*>  m_Listeners;
     
     cocos2d::Camera*           m_pCamera;
+    bool                       m_bEnable;
 };
 
 #endif /* defined(__Tone_Skipper__JoyStick__) */
