@@ -47,6 +47,12 @@
 		521A8E6419F0C34300D177D7 /* Default-667h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 521A8E6219F0C34300D177D7 /* Default-667h@2x.png */; };
 		521A8E6519F0C34300D177D7 /* Default-736h@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 521A8E6319F0C34300D177D7 /* Default-736h@3x.png */; };
 		52B47A471A53D09C004E4C60 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B47A461A53D09B004E4C60 /* Security.framework */; };
+		5535B89E1BABADEB00A2EEF9 /* GameScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5535B89C1BABADEB00A2EEF9 /* GameScene.cpp */; };
+		5535B89F1BABADEB00A2EEF9 /* GameScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5535B89C1BABADEB00A2EEF9 /* GameScene.cpp */; };
+		5535B8A21BABADFA00A2EEF9 /* MenuScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5535B8A01BABADFA00A2EEF9 /* MenuScene.cpp */; };
+		5535B8A31BABADFA00A2EEF9 /* MenuScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5535B8A01BABADFA00A2EEF9 /* MenuScene.cpp */; };
+		5535B8A51BAC0BD600A2EEF9 /* 1-1.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 5535B8A41BAC0BD600A2EEF9 /* 1-1.tmx */; };
+		5535B8A61BAC0BD600A2EEF9 /* 1-1.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 5535B8A41BAC0BD600A2EEF9 /* 1-1.tmx */; };
 		5546758E1BAADA4E00409405 /* a_0.png in Resources */ = {isa = PBXBuildFile; fileRef = 5546757C1BAADA4E00409405 /* a_0.png */; };
 		5546758F1BAADA4E00409405 /* a_0.png in Resources */ = {isa = PBXBuildFile; fileRef = 5546757C1BAADA4E00409405 /* a_0.png */; };
 		554675901BAADA4E00409405 /* a_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 5546757D1BAADA4E00409405 /* a_1.png */; };
@@ -97,8 +103,6 @@
 		5547331E1B8F14AF008F096C /* Nilo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5547331B1B8F14AF008F096C /* Nilo.cpp */; };
 		55883EAB1B8D7A35007F2FD3 /* HueSprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55883EA91B8D7A35007F2FD3 /* HueSprite.cpp */; };
 		55883EAC1B8D7A35007F2FD3 /* HueSprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55883EA91B8D7A35007F2FD3 /* HueSprite.cpp */; };
-		55883EB41B8D91D0007F2FD3 /* NormalScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55883EB21B8D91D0007F2FD3 /* NormalScene.cpp */; };
-		55883EB51B8D91D0007F2FD3 /* NormalScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55883EB21B8D91D0007F2FD3 /* NormalScene.cpp */; };
 		55883EB81B8D9215007F2FD3 /* TestScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55883EB61B8D9215007F2FD3 /* TestScene.cpp */; };
 		55883EB91B8D9215007F2FD3 /* TestScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55883EB61B8D9215007F2FD3 /* TestScene.cpp */; };
 		55883EBD1B8D96E3007F2FD3 /* sprite_red.plist in Resources */ = {isa = PBXBuildFile; fileRef = 55883EBB1B8D96E3007F2FD3 /* sprite_red.plist */; };
@@ -218,6 +222,11 @@
 		521A8E6219F0C34300D177D7 /* Default-667h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-667h@2x.png"; sourceTree = "<group>"; };
 		521A8E6319F0C34300D177D7 /* Default-736h@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-736h@3x.png"; sourceTree = "<group>"; };
 		52B47A461A53D09B004E4C60 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.1.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
+		5535B89C1BABADEB00A2EEF9 /* GameScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameScene.cpp; sourceTree = "<group>"; };
+		5535B89D1BABADEB00A2EEF9 /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameScene.h; sourceTree = "<group>"; };
+		5535B8A01BABADFA00A2EEF9 /* MenuScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MenuScene.cpp; sourceTree = "<group>"; };
+		5535B8A11BABADFA00A2EEF9 /* MenuScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuScene.h; sourceTree = "<group>"; };
+		5535B8A41BAC0BD600A2EEF9 /* 1-1.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "1-1.tmx"; sourceTree = "<group>"; };
 		5546757C1BAADA4E00409405 /* a_0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = a_0.png; sourceTree = "<group>"; };
 		5546757D1BAADA4E00409405 /* a_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = a_1.png; sourceTree = "<group>"; };
 		5546757E1BAADA4E00409405 /* e_0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = e_0.png; sourceTree = "<group>"; };
@@ -248,8 +257,6 @@
 		5547331C1B8F14AF008F096C /* Nilo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Nilo.h; sourceTree = "<group>"; };
 		55883EA91B8D7A35007F2FD3 /* HueSprite.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HueSprite.cpp; sourceTree = "<group>"; };
 		55883EAA1B8D7A35007F2FD3 /* HueSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HueSprite.h; sourceTree = "<group>"; };
-		55883EB21B8D91D0007F2FD3 /* NormalScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NormalScene.cpp; sourceTree = "<group>"; };
-		55883EB31B8D91D0007F2FD3 /* NormalScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NormalScene.h; sourceTree = "<group>"; };
 		55883EB61B8D9215007F2FD3 /* TestScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TestScene.cpp; sourceTree = "<group>"; };
 		55883EB71B8D9215007F2FD3 /* TestScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestScene.h; sourceTree = "<group>"; };
 		55883EBB1B8D96E3007F2FD3 /* sprite_red.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = sprite_red.plist; sourceTree = "<group>"; };
@@ -537,10 +544,12 @@
 			children = (
 				554675B21BAADA6400409405 /* LogoScene.cpp */,
 				554675B31BAADA6400409405 /* LogoScene.h */,
-				55883EB21B8D91D0007F2FD3 /* NormalScene.cpp */,
-				55883EB31B8D91D0007F2FD3 /* NormalScene.h */,
 				55883EB61B8D9215007F2FD3 /* TestScene.cpp */,
 				55883EB71B8D9215007F2FD3 /* TestScene.h */,
+				5535B89C1BABADEB00A2EEF9 /* GameScene.cpp */,
+				5535B89D1BABADEB00A2EEF9 /* GameScene.h */,
+				5535B8A01BABADFA00A2EEF9 /* MenuScene.cpp */,
+				5535B8A11BABADFA00A2EEF9 /* MenuScene.h */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -587,6 +596,7 @@
 		55E71D031B9D2877001BEFF7 /* maps */ = {
 			isa = PBXGroup;
 			children = (
+				5535B8A41BAC0BD600A2EEF9 /* 1-1.tmx */,
 				55E71D041B9D2877001BEFF7 /* scene_tiles.png */,
 				55E71D051B9D2877001BEFF7 /* testmap.tmx */,
 			);
@@ -726,6 +736,7 @@
 				554675AE1BAADA4E00409405 /* y_0.png in Resources */,
 				5087E77D17EB970100C73F5D /* Default-568h@2x.png in Resources */,
 				EC64663F1BAA5D00002D8E6B /* sprite_dog.png in Resources */,
+				5535B8A51BAC0BD600A2EEF9 /* 1-1.tmx in Resources */,
 				554675AA1BAADA4E00409405 /* t_0.png in Resources */,
 				55E71D081B9D2877001BEFF7 /* testmap.tmx in Resources */,
 				55E71D061B9D2877001BEFF7 /* scene_tiles.png in Resources */,
@@ -782,6 +793,7 @@
 				554675991BAADA4E00409405 /* f_1.png in Resources */,
 				554675911BAADA4E00409405 /* a_1.png in Resources */,
 				554675AD1BAADA4E00409405 /* t_1.png in Resources */,
+				5535B8A61BAC0BD600A2EEF9 /* 1-1.tmx in Resources */,
 				55883EBE1B8D96E3007F2FD3 /* sprite_red.plist in Resources */,
 				55883EC01B8D96E3007F2FD3 /* sprite_red.png in Resources */,
 				55E71D091B9D2877001BEFF7 /* testmap.tmx in Resources */,
@@ -802,6 +814,7 @@
 				55883EAB1B8D7A35007F2FD3 /* HueSprite.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				554733091B8EA7C9008F096C /* JoyStick.cpp in Sources */,
+				5535B89E1BABADEB00A2EEF9 /* GameScene.cpp in Sources */,
 				55883ED41B8D9EDE007F2FD3 /* Player.cpp in Sources */,
 				EC414D011BA7F74E0029C69E /* NativeBridge.mm in Sources */,
 				EC414CFB1BA7F67F0029C69E /* AlisaMethod.cpp in Sources */,
@@ -810,6 +823,7 @@
 				55E71D0C1B9D2890001BEFF7 /* MapMgrs.cpp in Sources */,
 				554675B41BAADA6400409405 /* LogoScene.cpp in Sources */,
 				EC6466351BAA5421002D8E6B /* Pudge.cpp in Sources */,
+				5535B8A21BABADFA00A2EEF9 /* MenuScene.cpp in Sources */,
 				55883ECC1B8D9C92007F2FD3 /* Actor.cpp in Sources */,
 				EC6466481BAA9727002D8E6B /* Enemy.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
@@ -818,7 +832,6 @@
 				55883EB81B8D9215007F2FD3 /* TestScene.cpp in Sources */,
 				ECA7B2531BA7F9010021CE95 /* ChaosNumber.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
-				55883EB41B8D91D0007F2FD3 /* NormalScene.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -832,17 +845,18 @@
 				EC414CFD1BA7F6BF0029C69E /* AlisaMethod.cpp in Sources */,
 				EC414CFE1BA7F6BF0029C69E /* UtilityHelper.cpp in Sources */,
 				55883ED51B8D9EDE007F2FD3 /* Player.cpp in Sources */,
-				55883EB51B8D91D0007F2FD3 /* NormalScene.cpp in Sources */,
 				554675B51BAADA6400409405 /* LogoScene.cpp in Sources */,
 				5547331E1B8F14AF008F096C /* Nilo.cpp in Sources */,
 				554733111B8EA89E008F096C /* RegionButton.cpp in Sources */,
 				55883EB91B8D9215007F2FD3 /* TestScene.cpp in Sources */,
+				5535B8A31BABADFA00A2EEF9 /* MenuScene.cpp in Sources */,
 				46880B8919C43A87006E1F66 /* AppDelegate.cpp in Sources */,
 				55883ECD1B8D9C92007F2FD3 /* Actor.cpp in Sources */,
 				55E71D0D1B9D2890001BEFF7 /* MapMgrs.cpp in Sources */,
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
 				55E71D1C1B9D4957001BEFF7 /* ActorFactory.cpp in Sources */,
 				55883EAC1B8D7A35007F2FD3 /* HueSprite.cpp in Sources */,
+				5535B89F1BABADEB00A2EEF9 /* GameScene.cpp in Sources */,
 				5547330A1B8EA7C9008F096C /* JoyStick.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

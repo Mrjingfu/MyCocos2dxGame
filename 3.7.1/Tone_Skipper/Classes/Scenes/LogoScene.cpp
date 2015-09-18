@@ -7,7 +7,7 @@
 //
 
 #include "LogoScene.h"
-#include "TestScene.h"
+#include "GameScene.h"
 USING_NS_CC;
 
 Scene* LogoScene::createScene()
@@ -76,6 +76,7 @@ bool LogoScene::init()
     m_pT0 = Sprite::create("t_0.png");
     if(!m_pT0)
         return false;
+    m_pT0->getTexture()->setAliasTexParameters();
     m_pT0->setPositionX(-m_pT0->getContentSize().width*5);
     m_pT0->setRotation3D(Vec3(0, 100.5, 0));
     m_pT0->setOpacity(0);
@@ -84,6 +85,7 @@ bool LogoScene::init()
     m_pI0 = Sprite::create("i_0.png");
     if(!m_pI0)
         return false;
+    m_pI0->getTexture()->setAliasTexParameters();
     m_pI0->setPositionX(-m_pI0->getContentSize().width*4.25f);
     m_pI0->setRotation3D(Vec3(0, 100, 0));
     m_pI0->setOpacity(0);
@@ -92,6 +94,7 @@ bool LogoScene::init()
     m_pN0 = Sprite::create("n_0.png");
     if(!m_pN0)
         return false;
+    m_pN0->getTexture()->setAliasTexParameters();
     m_pN0->setPositionX(-m_pN0->getContentSize().width*3.5f);
     m_pN0->setRotation3D(Vec3(0, 99, 0));
     m_pN0->setOpacity(0);
@@ -100,6 +103,7 @@ bool LogoScene::init()
     m_pY0 = Sprite::create("y_0.png");
     if(!m_pY0)
         return false;
+    m_pY0->getTexture()->setAliasTexParameters();
     m_pY0->setPositionX(-m_pY0->getContentSize().width*2.4f);
     m_pY0->setRotation3D(Vec3(0, 96, 0));
     m_pY0->setOpacity(0);
@@ -108,6 +112,7 @@ bool LogoScene::init()
     m_pF0 = Sprite::create("f_0.png");
     if(!m_pF0)
         return false;
+    m_pF0->getTexture()->setAliasTexParameters();
     m_pF0->setPositionX(-m_pF0->getContentSize().width*0.5f);
     m_pF0->setRotation3D(Vec3(0, 93, 0));
     m_pF0->setOpacity(0);
@@ -116,6 +121,7 @@ bool LogoScene::init()
     m_pL0 = Sprite::create("l_0.png");
     if(!m_pL0)
         return false;
+    m_pL0->getTexture()->setAliasTexParameters();
     m_pL0->setPositionX(m_pL0->getContentSize().width*0.35f);
     m_pL0->setRotation3D(Vec3(0, 90, 0));
     m_pL0->setOpacity(0);
@@ -124,6 +130,7 @@ bool LogoScene::init()
     m_pA0 = Sprite::create("a_0.png");
     if(!m_pA0)
         return false;
+    m_pA0->getTexture()->setAliasTexParameters();
     m_pA0->setPositionX(m_pA0->getContentSize().width*1.3f);
     m_pA0->setRotation3D(Vec3(0, 87, 0));
     m_pA0->setOpacity(0);
@@ -132,6 +139,7 @@ bool LogoScene::init()
     m_pR0 = Sprite::create("r_0.png");
     if(!m_pR0)
         return false;
+    m_pR0->getTexture()->setAliasTexParameters();
     m_pR0->setPositionX(m_pR0->getContentSize().width*2.3f);
     m_pR0->setRotation3D(Vec3(0, 84, 0));
     m_pR0->setOpacity(0);
@@ -140,6 +148,7 @@ bool LogoScene::init()
     m_pE0 = Sprite::create("e_0.png");
     if(!m_pE0)
         return false;
+    m_pE0->getTexture()->setAliasTexParameters();
     m_pE0->setPositionX(m_pE0->getContentSize().width*3.3f);
     m_pE0->setRotation3D(Vec3(0, 81, 0));
     m_pE0->setOpacity(0);
@@ -216,7 +225,7 @@ void LogoScene::precache()
 }
 void LogoScene::endcache()
 {
-    auto scene = TestScene::createScene();
+    auto scene = GameScene::createScene();
     Director::getInstance()->replaceScene(scene);
 }
 void LogoScene::createColorLogo()

@@ -46,6 +46,8 @@ Player::~Player()
 }
 void Player::update(float delta)
 {
+    if(!isVisible())
+        return;
     if(!m_pSprite)
         return;
     if(!m_bOnLand)
@@ -153,8 +155,6 @@ void Player::checkTriggers()
 }
 void Player::setPlayerState(PlayerState state)
 {
-    CCLOG("state:%d",state);
-    CCLOG("m_PlayerState:%d",m_PlayerState);
     if (m_PlayerState == state)
         return;
     

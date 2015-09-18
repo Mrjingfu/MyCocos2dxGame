@@ -19,7 +19,8 @@ public:
         CF_NONE     = 0,
         CF_LEFT     = 1<<0,
         CF_RIGHT    = 1<<1,
-        CF_BOUND    = 1<<2
+        CF_TOP      = 1<<2,
+        CF_BOUND    = 1<<3
     }
     CollisionFlag;
     typedef enum {
@@ -50,22 +51,32 @@ public:
 private:
     bool initCamera();
     bool initPlayer();
-    bool initColorMask();
+    bool initBackgroundMask();
+    bool initFrontgroundMask();
     
 
     void updatePlayers(float delta);
     void updateCamera(float delta);
+    
+    
+    void showTips(const cocos2d::Vec2& pos, const std::string& tips);
 private:
-    MaskColorType                           m_MaskColorType;
+    MaskColorType                           m_BackgroundMaskColorType;
     cocos2d::LayerColor*                    m_pBackgroundColorMaskLayer;
+    
+    MaskColorType                           m_FrontgroundMaskColorType;
+    cocos2d::Layer*                         m_pFrontgroundColorMaskLayer;
     
     cocos2d::Layer*                         m_pMainLayer;
     cocos2d::TMXTiledMap*                   m_pCurrentTiledMap;
+    
     cocos2d::TMXObjectGroup*                m_pStarters;
     cocos2d::TMXObjectGroup*                m_pColliders;
     cocos2d::TMXObjectGroup*                m_pRayCasters;
     cocos2d::TMXObjectGroup*                m_pTriggers;
+    cocos2d::TMXObjectGroup*                m_pItems;
     cocos2d::TMXObjectGroup*                m_pMonsters;
+    cocos2d::TMXObjectGroup*                m_pShadows;
     
     cocos2d::Rect                           m_pMapRect;
     
@@ -73,6 +84,9 @@ private:
     Player*                                 m_pNilo;
     Player*                                 m_pPudge;
     cocos2d::DrawNode*                      m_pDebugDrawNode;
+    
+    
+    std::string                             m_strBornPointName;
 };
 
 #endif /* defined(__Tone_Skipper__MapMgrs__) */
