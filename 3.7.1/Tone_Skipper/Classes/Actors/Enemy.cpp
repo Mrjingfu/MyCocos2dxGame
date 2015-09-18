@@ -42,8 +42,6 @@ void Enemy::update(float delta)
 }
 void Enemy::setEnemyState(Enemy state)
 {
-    CCLOG("state:%d",state);
-    CCLOG("m_PlayerState:%d",m_EnemyState);
     if (m_EnemyState == state )
         return;
     

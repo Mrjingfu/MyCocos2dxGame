@@ -27,7 +27,7 @@ public:
     static cocos2d::Color3B randomGreenColor();
     static cocos2d::Color3B randomCyanColor();
     static cocos2d::Color3B randomBlueColor();
-    static cocos2d::Color3B randompurpleColor();
+    static cocos2d::Color3B randomPurpleColor();
 };
 
 #endif /* defined(__Tone_Skipper__UtilityHelper__) */

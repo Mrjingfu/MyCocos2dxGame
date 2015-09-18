@@ -92,13 +92,8 @@ HueSprite* HueSprite::createWithSpriteFrameName(const std::string& spriteFrameNa
 
 bool HueSprite::initWithTexture(cocos2d::Texture2D *texture, const cocos2d::Rect &rect, bool rotated)
 {
-    Texture2D::TexParams tRepeatParams;
-    tRepeatParams.magFilter = GL_NEAREST;
-    tRepeatParams.minFilter = GL_NEAREST;
-    tRepeatParams.wrapS = GL_CLAMP_TO_EDGE;
-    tRepeatParams.wrapT = GL_CLAMP_TO_EDGE;
-    texture->setTexParameters(tRepeatParams);
-    
+    if(texture)
+        texture->setAliasTexParameters();
     bool ret = Sprite::initWithTexture(texture, rect, rotated);
     if(ret)
     {

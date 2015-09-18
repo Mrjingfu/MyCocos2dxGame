@@ -38,6 +38,6 @@ void TestPopUI::addEvents()
 }
 void TestPopUI::onCancel(cocos2d::Ref *sender, cocos2d::ui::Widget::TouchEventType type)
 {
-    CHECK_ACTION_WRAPPER(sender,type);
+    CHECK_ACTION(sender,type);
     closePopup();
 }

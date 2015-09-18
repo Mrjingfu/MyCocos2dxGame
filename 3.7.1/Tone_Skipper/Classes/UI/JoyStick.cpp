@@ -29,6 +29,7 @@ JoyStick::JoyStick()
     m_pABtn = nullptr;
     m_pBBtn = nullptr;
     m_pCamera = nullptr;
+    m_bEnable = false;
 }
 JoyStick::~JoyStick()
 {
@@ -113,6 +114,12 @@ bool JoyStick::init()
 #endif
     return true;
 }
+void JoyStick::setEnableJoyStick(bool enable)
+{
+    if (m_bEnable != enable) {
+        m_bEnable = enable;
+    }
+}
 void JoyStick::addJoystickListener(JoystickListener* listener)
 {
     if(listener == nullptr)
@@ -139,6 +146,8 @@ void JoyStick::removeAllJoyStickListener()
 
 void JoyStick::leftBtnTouchEvent(Ref *ref, ui::Widget::TouchEventType touchType)
 {
+    if(!m_bEnable)
+        return;
     for (JoystickListener* listener : m_Listeners) {
         if (touchType == ui::Widget::TouchEventType::BEGAN)
             listener->onLeftBtnPressed();
@@ -160,6 +169,8 @@ void JoyStick::leftBtnTouchEvent(Ref *ref, ui::Widget::TouchEventType touchType)
 }
 void JoyStick::upBtnTouchEvent(Ref *ref, ui::Widget::TouchEventType touchType)
 {
+    if(!m_bEnable)
+        return;
     for (JoystickListener* listener : m_Listeners) {
         if (touchType == ui::Widget::TouchEventType::BEGAN)
             listener->onUpBtnPressed();
@@ -181,6 +192,8 @@ void JoyStick::upBtnTouchEvent(Ref *ref, ui::Widget::TouchEventType touchType)
 }
 void JoyStick::rightBtnTouchEvent(Ref *ref, ui::Widget::TouchEventType touchType)
 {
+    if(!m_bEnable)
+        return;
     for (JoystickListener* listener : m_Listeners) {
         if (touchType == ui::Widget::TouchEventType::BEGAN)
             listener->onRightBtnPressed();
@@ -202,6 +215,8 @@ void JoyStick::rightBtnTouchEvent(Ref *ref, ui::Widget::TouchEventType touchType
 }
 void JoyStick::downBtnTouchEvent(Ref *ref, ui::Widget::TouchEventType touchType)
 {
+    if(!m_bEnable)
+        return;
     for (JoystickListener* listener : m_Listeners) {
         if (touchType == ui::Widget::TouchEventType::BEGAN)
             listener->onDownBtnPressed();
@@ -223,6 +238,8 @@ void JoyStick::downBtnTouchEvent(Ref *ref, ui::Widget::TouchEventType touchType)
 }
 void JoyStick::aBtnTouchEvent(Ref *ref, ui::Widget::TouchEventType touchType)
 {
+    if(!m_bEnable)
+        return;
     for (JoystickListener* listener : m_Listeners) {
         if (touchType == ui::Widget::TouchEventType::BEGAN)
             listener->onABtnPressed();
@@ -244,6 +261,8 @@ void JoyStick::aBtnTouchEvent(Ref *ref, ui::Widget::TouchEventType touchType)
 }
 void JoyStick::bBtnTouchEvent(Ref *ref, ui::Widget::TouchEventType touchType)
 {
+    if(!m_bEnable)
+        return;
     for (JoystickListener* listener : m_Listeners) {
         if (touchType == ui::Widget::TouchEventType::BEGAN)
             listener->onBBtnPressed();
@@ -265,6 +284,8 @@ void JoyStick::bBtnTouchEvent(Ref *ref, ui::Widget::TouchEventType touchType)
 }
 void JoyStick::onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event *unused_event)
 {
+    if(!m_bEnable)
+        return;
     for (JoystickListener* listener : m_Listeners) {
     
         if(keyCode == EventKeyboard::KeyCode::KEY_W)
@@ -295,6 +316,8 @@ void JoyStick::onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Ev
 }
 void JoyStick::onKeyReleased(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event *unused_event)
 {
+    if(!m_bEnable)
+        return;
     for (JoystickListener* listener : m_Listeners) {
         
         if(keyCode == EventKeyboard::KeyCode::KEY_W)

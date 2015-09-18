@@ -161,7 +161,7 @@ bool Sprite::initWithFile(const std::string& filename)
 
     Texture2D *texture = Director::getInstance()->getTextureCache()->addImage(filename);
     if (texture)
-    {
+    {        
         Rect rect = Rect::ZERO;
         rect.size = texture->getContentSize();
         return initWithTexture(texture, rect);

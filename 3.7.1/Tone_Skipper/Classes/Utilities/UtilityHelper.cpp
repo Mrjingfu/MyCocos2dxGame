@@ -198,7 +198,7 @@ Color3B UtilityHelper::randomBlueColor()
     int r = g - cocos2d::random(40, 50);
     return Color3B(r,g,b);
 }
-Color3B UtilityHelper::randompurpleColor()
+Color3B UtilityHelper::randomPurpleColor()
 {
     int r = cocos2d::random(209, 240);
     int g = r -cocos2d::random(40, 50);

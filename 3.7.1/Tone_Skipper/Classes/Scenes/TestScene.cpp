@@ -50,6 +50,7 @@ bool TestScene::init()
     if(joystick)
     {
         joystick->addJoystickListener(MapMgrs::getInstance()->getNilo());
+        joystick->setEnableJoyStick(true);
         addChild(joystick);
     }
     SpriteFrameCache::getInstance()->addSpriteFramesWithFile("joystick.plist");
