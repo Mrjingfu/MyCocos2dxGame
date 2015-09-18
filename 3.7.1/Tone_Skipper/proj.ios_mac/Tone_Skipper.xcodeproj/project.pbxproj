@@ -94,6 +94,16 @@
 		EC414CFE1BA7F6BF0029C69E /* UtilityHelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC414CF91BA7F67F0029C69E /* UtilityHelper.cpp */; };
 		EC414D011BA7F74E0029C69E /* NativeBridge.mm in Sources */ = {isa = PBXBuildFile; fileRef = EC414D001BA7F74E0029C69E /* NativeBridge.mm */; };
 		EC414D021BA7F7550029C69E /* NativeBridge.mm in Sources */ = {isa = PBXBuildFile; fileRef = EC414D001BA7F74E0029C69E /* NativeBridge.mm */; };
+		EC5FE2B81BABF554006F6107 /* CloseCallback.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC5FE2B11BABF554006F6107 /* CloseCallback.cpp */; };
+		EC5FE2B91BABF554006F6107 /* CloseCallback.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC5FE2B11BABF554006F6107 /* CloseCallback.cpp */; };
+		EC5FE2BA1BABF554006F6107 /* PopupUILayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC5FE2B41BABF554006F6107 /* PopupUILayer.cpp */; };
+		EC5FE2BB1BABF554006F6107 /* PopupUILayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC5FE2B41BABF554006F6107 /* PopupUILayer.cpp */; };
+		EC5FE2BC1BABF554006F6107 /* WrapperUILayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC5FE2B61BABF554006F6107 /* WrapperUILayer.cpp */; };
+		EC5FE2BD1BABF554006F6107 /* WrapperUILayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC5FE2B61BABF554006F6107 /* WrapperUILayer.cpp */; };
+		EC5FE2C81BAC1556006F6107 /* PopupUILayerManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC5FE2C61BAC1556006F6107 /* PopupUILayerManager.cpp */; };
+		EC5FE2C91BAC1556006F6107 /* PopupUILayerManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC5FE2C61BAC1556006F6107 /* PopupUILayerManager.cpp */; };
+		EC5FE2DF1BAC4924006F6107 /* TestPopUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC5FE2DD1BAC4924006F6107 /* TestPopUI.cpp */; };
+		EC5FE2E01BAC4924006F6107 /* TestPopUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC5FE2DD1BAC4924006F6107 /* TestPopUI.cpp */; };
 		EC6466351BAA5421002D8E6B /* Pudge.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC6466331BAA5421002D8E6B /* Pudge.cpp */; };
 		EC64663E1BAA5D00002D8E6B /* sprite_dog.plist in Resources */ = {isa = PBXBuildFile; fileRef = EC64663C1BAA5D00002D8E6B /* sprite_dog.plist */; };
 		EC64663F1BAA5D00002D8E6B /* sprite_dog.png in Resources */ = {isa = PBXBuildFile; fileRef = EC64663D1BAA5D00002D8E6B /* sprite_dog.png */; };
@@ -222,6 +232,18 @@
 		EC414CFA1BA7F67F0029C69E /* UtilityHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UtilityHelper.h; sourceTree = "<group>"; };
 		EC414CFF1BA7F74E0029C69E /* NativeBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NativeBridge.h; sourceTree = "<group>"; };
 		EC414D001BA7F74E0029C69E /* NativeBridge.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = NativeBridge.mm; sourceTree = "<group>"; };
+		EC5FE2B11BABF554006F6107 /* CloseCallback.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloseCallback.cpp; sourceTree = "<group>"; };
+		EC5FE2B21BABF554006F6107 /* CloseCallback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloseCallback.h; sourceTree = "<group>"; };
+		EC5FE2B31BABF554006F6107 /* PopupType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopupType.h; sourceTree = "<group>"; };
+		EC5FE2B41BABF554006F6107 /* PopupUILayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PopupUILayer.cpp; sourceTree = "<group>"; };
+		EC5FE2B51BABF554006F6107 /* PopupUILayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopupUILayer.h; sourceTree = "<group>"; };
+		EC5FE2B61BABF554006F6107 /* WrapperUILayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WrapperUILayer.cpp; sourceTree = "<group>"; };
+		EC5FE2B71BABF554006F6107 /* WrapperUILayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WrapperUILayer.h; sourceTree = "<group>"; };
+		EC5FE2C11BAC1360006F6107 /* GameConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameConfig.h; sourceTree = "<group>"; };
+		EC5FE2C61BAC1556006F6107 /* PopupUILayerManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PopupUILayerManager.cpp; sourceTree = "<group>"; };
+		EC5FE2C71BAC1556006F6107 /* PopupUILayerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopupUILayerManager.h; sourceTree = "<group>"; };
+		EC5FE2DD1BAC4924006F6107 /* TestPopUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TestPopUI.cpp; sourceTree = "<group>"; };
+		EC5FE2DE1BAC4924006F6107 /* TestPopUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestPopUI.h; sourceTree = "<group>"; };
 		EC6466331BAA5421002D8E6B /* Pudge.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Pudge.cpp; sourceTree = "<group>"; };
 		EC6466341BAA5421002D8E6B /* Pudge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pudge.h; sourceTree = "<group>"; };
 		EC64663C1BAA5D00002D8E6B /* sprite_dog.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = sprite_dog.plist; sourceTree = "<group>"; };
@@ -431,6 +453,17 @@
 		554733061B8EA7C0008F096C /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				EC5FE2DD1BAC4924006F6107 /* TestPopUI.cpp */,
+				EC5FE2DE1BAC4924006F6107 /* TestPopUI.h */,
+				EC5FE2C61BAC1556006F6107 /* PopupUILayerManager.cpp */,
+				EC5FE2C71BAC1556006F6107 /* PopupUILayerManager.h */,
+				EC5FE2B11BABF554006F6107 /* CloseCallback.cpp */,
+				EC5FE2B21BABF554006F6107 /* CloseCallback.h */,
+				EC5FE2B31BABF554006F6107 /* PopupType.h */,
+				EC5FE2B41BABF554006F6107 /* PopupUILayer.cpp */,
+				EC5FE2B51BABF554006F6107 /* PopupUILayer.h */,
+				EC5FE2B61BABF554006F6107 /* WrapperUILayer.cpp */,
+				EC5FE2B71BABF554006F6107 /* WrapperUILayer.h */,
 				5547330E1B8EA89E008F096C /* RegionButton.cpp */,
 				5547330F1B8EA89E008F096C /* RegionButton.h */,
 				554733071B8EA7C9008F096C /* JoyStick.cpp */,
@@ -518,6 +551,7 @@
 				EC414CF81BA7F67F0029C69E /* AlisaMethod.h */,
 				EC414CF91BA7F67F0029C69E /* UtilityHelper.cpp */,
 				EC414CFA1BA7F67F0029C69E /* UtilityHelper.h */,
+				EC5FE2C11BAC1360006F6107 /* GameConfig.h */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -678,6 +712,7 @@
 			files = (
 				46880B8819C43A87006E1F66 /* AppDelegate.cpp in Sources */,
 				55883EAB1B8D7A35007F2FD3 /* HueSprite.cpp in Sources */,
+				EC5FE2BA1BABF554006F6107 /* PopupUILayer.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				554733091B8EA7C9008F096C /* JoyStick.cpp in Sources */,
 				55883ED41B8D9EDE007F2FD3 /* Player.cpp in Sources */,
@@ -685,6 +720,7 @@
 				EC414CFB1BA7F67F0029C69E /* AlisaMethod.cpp in Sources */,
 				EC414CFC1BA7F67F0029C69E /* UtilityHelper.cpp in Sources */,
 				5547331D1B8F14AF008F096C /* Nilo.cpp in Sources */,
+				EC5FE2DF1BAC4924006F6107 /* TestPopUI.cpp in Sources */,
 				55E71D0C1B9D2890001BEFF7 /* MapMgrs.cpp in Sources */,
 				EC6466351BAA5421002D8E6B /* Pudge.cpp in Sources */,
 				55883ECC1B8D9C92007F2FD3 /* Actor.cpp in Sources */,
@@ -692,8 +728,11 @@
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				55E71D1B1B9D4957001BEFF7 /* ActorFactory.cpp in Sources */,
 				554733101B8EA89E008F096C /* RegionButton.cpp in Sources */,
+				EC5FE2BC1BABF554006F6107 /* WrapperUILayer.cpp in Sources */,
+				EC5FE2C81BAC1556006F6107 /* PopupUILayerManager.cpp in Sources */,
 				55883EB81B8D9215007F2FD3 /* TestScene.cpp in Sources */,
 				ECA7B2531BA7F9010021CE95 /* ChaosNumber.cpp in Sources */,
+				EC5FE2B81BABF554006F6107 /* CloseCallback.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
 				55883EB41B8D91D0007F2FD3 /* NormalScene.cpp in Sources */,
 			);
@@ -706,9 +745,13 @@
 				EC6466421BAA62F8002D8E6B /* Pudge.cpp in Sources */,
 				ECA7B2541BA7F91F0021CE95 /* ChaosNumber.cpp in Sources */,
 				EC414D021BA7F7550029C69E /* NativeBridge.mm in Sources */,
+				EC5FE2C91BAC1556006F6107 /* PopupUILayerManager.cpp in Sources */,
+				EC5FE2B91BABF554006F6107 /* CloseCallback.cpp in Sources */,
 				EC414CFD1BA7F6BF0029C69E /* AlisaMethod.cpp in Sources */,
 				EC414CFE1BA7F6BF0029C69E /* UtilityHelper.cpp in Sources */,
 				55883ED51B8D9EDE007F2FD3 /* Player.cpp in Sources */,
+				EC5FE2BD1BABF554006F6107 /* WrapperUILayer.cpp in Sources */,
+				EC5FE2E01BAC4924006F6107 /* TestPopUI.cpp in Sources */,
 				55883EB51B8D91D0007F2FD3 /* NormalScene.cpp in Sources */,
 				5547331E1B8F14AF008F096C /* Nilo.cpp in Sources */,
 				554733111B8EA89E008F096C /* RegionButton.cpp in Sources */,
@@ -717,6 +760,7 @@
 				55883ECD1B8D9C92007F2FD3 /* Actor.cpp in Sources */,
 				55E71D0D1B9D2890001BEFF7 /* MapMgrs.cpp in Sources */,
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
+				EC5FE2BB1BABF554006F6107 /* PopupUILayer.cpp in Sources */,
 				55E71D1C1B9D4957001BEFF7 /* ActorFactory.cpp in Sources */,
 				55883EAC1B8D7A35007F2FD3 /* HueSprite.cpp in Sources */,
 				5547330A1B8EA7C9008F096C /* JoyStick.cpp in Sources */,

@@ -85,7 +85,7 @@ bool Pudge::loadAnimations()
         m_pRunAnimation = Animation::createWithSpriteFrames(arrayOfAnimation);
         if(!m_pRunAnimation)
             ret = false;
-        m_pRunAnimation->setDelayPerUnit(0.3f / 4.0f);
+        m_pRunAnimation->setDelayPerUnit(0.3f / 7.0f);
         AnimationCache::getInstance()->addAnimation(m_pRunAnimation, "pudge_run");
     }
     ///jump
@@ -102,7 +102,7 @@ bool Pudge::loadAnimations()
         if(!m_pJumpAnimation)
             ret = false;
         
-        m_pJumpAnimation->setDelayPerUnit(0.2f / 1.0f);
+        m_pJumpAnimation->setDelayPerUnit(0.2f / 3.0f);
         AnimationCache::getInstance()->addAnimation(m_pJumpAnimation, "pugde_jump");
     }
     ///superjump

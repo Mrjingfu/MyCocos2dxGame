@@ -152,9 +152,7 @@
             <filename>dog/dog_call_02.png</filename>
             <filename>dog/dog_idle_01.png</filename>
             <filename>dog/dog_idle_02.png</filename>
-            <filename>dog/dog_jump_01.png</filename>
-            <filename>dog/dog_jump_02.png</filename>
-            <filename>dog/dog_run_00.png</filename>
+            <filename>dog/dog_jump.png</filename>
             <filename>dog/dog_run_01.png</filename>
             <filename>dog/dog_run_02.png</filename>
             <filename>dog/dog_run_03.png</filename>
@@ -162,7 +160,7 @@
             <filename>dog/dog_run_05.png</filename>
             <filename>dog/dog_run_06.png</filename>
             <filename>dog/dog_run_07.png</filename>
-            <filename>dog/dog_run_08.png</filename>
+            <filename>dog/dog_superjump.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>
