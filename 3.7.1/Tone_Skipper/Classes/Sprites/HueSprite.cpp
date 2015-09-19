@@ -205,7 +205,7 @@ cocos2d::Rect HueSprite::getBoundingPudgeBox() const
 {
     V3F_C4B_T2F_Quad quad = getQuad();
     
-       Rect rect(6.0f, 0.0f, _contentSize.width*0.65f, _contentSize.height*0.55f);
+    cocos2d::Rect rect(6.0f, 0.0f, _contentSize.width*0.65f, _contentSize.height*0.55f);
     return RectApplyAffineTransform(rect, getNodeToParentAffineTransform());
 }
 //shader

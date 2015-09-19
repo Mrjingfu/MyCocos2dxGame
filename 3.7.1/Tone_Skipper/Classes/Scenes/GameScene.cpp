@@ -9,6 +9,7 @@
 #include "GameScene.h"
 #include "JoyStick.h"
 #include "MapMgrs.h"
+#include "MainUi.h"
 #include "PopupUILayerManager.h"
 USING_NS_CC;
 
@@ -53,22 +54,9 @@ bool GameScene::init()
         joystick->setEnableJoyStick(true);
         addChild(joystick);
     }
-//test 
-    SpriteFrameCache::getInstance()->addSpriteFramesWithFile("joystick.plist");
-    ui::Button* testABtn = ui::Button::create("a_normal.png", "a_clicked.png", "", ui::TextureResType::PLIST);
-    if(!testABtn)
-        return false;
-    
     PopupUILayerManager::getInstance()->setParentLayer(this);
-    
-    
-    testABtn->setPosition(Vec2(size.width*0.3,size.height*0.8));
-    testABtn->addClickEventListener([this](Ref* ref)
-                                    {
-                                        PopupUILayerManager::getInstance()->openPopup(ePopupTest);
-                                    });
-    addChild(testABtn);
-//test
+    auto mainUi = MainUi::create();
+    addChild(mainUi);
     return true;
 }
 

@@ -70,7 +70,8 @@ PopupUILayer* PopupUILayerManager::openPopup(ePopupType type,int zorder /* = eZo
     
     if(popupLayer->getParent())
         return popupLayer;
-    
+    //有摄像机的情况需要设置对应的CameraMask
+//    popupLayer->setCameraMask((unsigned short)cocos2d::CameraFlag::USER3);
     popupLayer->setZOrder(zorder);
     m_pParentLayer->addChild(popupLayer);
     popupLayer->openPopup();
