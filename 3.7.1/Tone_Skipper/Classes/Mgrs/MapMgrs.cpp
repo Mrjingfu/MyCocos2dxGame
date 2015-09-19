@@ -38,6 +38,7 @@ MapMgrs::MapMgrs()
     m_pItems            = nullptr;
     m_pMonsters         = nullptr;
     m_pShadows          = nullptr;
+    m_pFrontgroundMaskObjects = nullptr;
     m_pDebugDrawNode = nullptr;
     
     m_strBornPointName  = "bornpoint1";
@@ -101,6 +102,10 @@ bool MapMgrs::loadMap(const std::string& strFile)
     
     m_pShadows = m_pCurrentTiledMap->getObjectGroup("shadows");
     if(!m_pShadows)
+        return false;
+    
+    m_pFrontgroundMaskObjects = m_pCurrentTiledMap->getObjectGroup("frontgroundmask");
+    if(!m_pFrontgroundMaskObjects)
         return false;
     
     if(!initFrontgroundMask())
@@ -266,6 +271,43 @@ bool MapMgrs::checkTrigger(const cocos2d::Rect& rect, Actor::TRIGGER_TYPE& type)
     }
     return ret;
 }
+bool MapMgrs::checkUsableItems(const cocos2d::Rect& rect, Actor::USABLE_ITEM_TYPE& type)
+{
+    bool ret = false;
+    ValueVector items = m_pItems->getObjects();
+    for (Value value : items) {
+        ValueMap valuemap = value.asValueMap();
+        if(valuemap.empty())
+            continue;
+        float x = valuemap.at("x").asFloat();
+        float y = valuemap.at("y").asFloat();
+        float width = valuemap.at("width").asFloat();
+        float height = valuemap.at("height").asFloat();
+        cocos2d::Rect itemRect = cocos2d::Rect(x, y, width, height);
+        if (itemRect.getMaxX() < rect.getMinX() || rect.getMaxX() < itemRect.getMinX() ||
+            itemRect.getMaxY() < rect.getMinY() || rect.getMaxY() < itemRect.getMinY()) {
+            ret = false;
+        }
+        else
+        {
+            if(rect.getMidX() <= itemRect.getMaxX() && rect.getMidX() >= itemRect.getMinX())
+            {
+                type = (Actor::USABLE_ITEM_TYPE)(valuemap.at("type").asInt());
+                switch (type) {
+                    case Actor::UIT_LADDER:
+                        break;
+                    case Actor::UIT_QUESTIONBOX:
+                        break;
+                    default:
+                        break;
+                }
+                ret = true;
+                break;
+            }
+        }
+    }
+    return ret;
+}
 void MapMgrs::showDebug(bool debug)
 {
     if(!m_pMainLayer)
@@ -362,6 +404,48 @@ void MapMgrs::showDebug(bool debug)
             m_pDebugDrawNode->drawPoly(vertices, 4, true, Color4F::YELLOW);
         }
         ////
+        ////items
+        ValueVector items = m_pItems->getObjects();
+        for (Value value : items) {
+            ValueMap valuemap = value.asValueMap();
+            if(valuemap.empty())
+                continue;
+            float x = valuemap.at("x").asFloat();
+            float y = valuemap.at("y").asFloat();
+            float width = valuemap.at("width").asFloat();
+            float height = valuemap.at("height").asFloat();
+            cocos2d::Rect colliderRect = cocos2d::Rect(x, y, width, height);
+            
+            Vec2 vertices[4] = {
+                Vec2( colliderRect.getMinX(), colliderRect.getMinY() ),
+                Vec2( colliderRect.getMaxX(), colliderRect.getMinY() ),
+                Vec2( colliderRect.getMaxX(), colliderRect.getMaxY() ),
+                Vec2( colliderRect.getMinX(), colliderRect.getMaxY() ),
+            };
+            m_pDebugDrawNode->drawPoly(vertices, 4, true, Color4F(149.0f/255.0f,0,243.0f/255.0f,1.0f));
+        }
+        ///
+        ///Monsters
+        ValueVector monsters = m_pMonsters->getObjects();
+        for (Value value : monsters) {
+            ValueMap valuemap = value.asValueMap();
+            if(valuemap.empty())
+                continue;
+            float x = valuemap.at("x").asFloat();
+            float y = valuemap.at("y").asFloat();
+            float width = valuemap.at("width").asFloat();
+            float height = valuemap.at("height").asFloat();
+            cocos2d::Rect colliderRect = cocos2d::Rect(x, y, width, height);
+            
+            Vec2 vertices[4] = {
+                Vec2( colliderRect.getMinX(), colliderRect.getMinY() ),
+                Vec2( colliderRect.getMaxX(), colliderRect.getMinY() ),
+                Vec2( colliderRect.getMaxX(), colliderRect.getMaxY() ),
+                Vec2( colliderRect.getMinX(), colliderRect.getMaxY() ),
+            };
+            m_pDebugDrawNode->drawPoly(vertices, 4, true, Color4F(250.0f/255.0f,134.0f/255.0f,26.0f/255.0f,1.0f));
+        }
+        ///
     }
     else
     {
@@ -453,7 +537,7 @@ bool MapMgrs::initBackgroundMask()
         default:
             break;
     }
-    m_pBackgroundColorMaskLayer = LayerColor::create(Color4B(maskColor.r, maskColor.g, maskColor.b, 50));
+    m_pBackgroundColorMaskLayer = LayerColor::create(Color4B(maskColor.r, maskColor.g, maskColor.b, 60));
     if(!m_pBackgroundColorMaskLayer)
         return false;
     m_pBackgroundColorMaskLayer->setBlendFunc(BlendFunc::ADDITIVE);
@@ -498,8 +582,8 @@ bool MapMgrs::initFrontgroundMask()
         default:
             break;
     }
-    ValueVector colliders = m_pColliders->getObjects();
-    for (Value value : colliders) {
+    ValueVector maskObjects = m_pFrontgroundMaskObjects->getObjects();
+    for (Value value : maskObjects) {
         ValueMap valuemap = value.asValueMap();
         if(valuemap.empty())
             continue;
@@ -509,7 +593,7 @@ bool MapMgrs::initFrontgroundMask()
         float height = valuemap.at("height").asFloat();
         cocos2d::Rect colliderRect = cocos2d::Rect(x, y, width, height);
         
-        cocos2d::LayerColor* colorMaskLayer  = LayerColor::create(Color4B(maskColor.r,maskColor.g,maskColor.b,50), width, height);
+        cocos2d::LayerColor* colorMaskLayer  = LayerColor::create(Color4B(maskColor.r,maskColor.g,maskColor.b,80), width, height);
         if(!colorMaskLayer)
             return false;
         colorMaskLayer->setPosition(Vec2(x,y));

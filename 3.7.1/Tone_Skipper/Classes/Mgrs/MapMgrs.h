@@ -44,6 +44,7 @@ public:
     bool checkRayCast(const cocos2d::Rect& rect, cocos2d::Vec2& velocity, Actor::RAYCAST_TYPE& type,bool ignoreAdjust);
     bool checkCollision(const cocos2d::Rect& rect, cocos2d::Vec2& velocity, int& flag);
     bool checkTrigger(const cocos2d::Rect& rect, Actor::TRIGGER_TYPE& type);
+    bool checkUsableItems(const cocos2d::Rect& rect, Actor::USABLE_ITEM_TYPE& type);
     
     Player* getNilo() const { return m_pNilo; }
     Player* getPudge() const {return m_pPudge;}
@@ -77,6 +78,7 @@ private:
     cocos2d::TMXObjectGroup*                m_pItems;
     cocos2d::TMXObjectGroup*                m_pMonsters;
     cocos2d::TMXObjectGroup*                m_pShadows;
+    cocos2d::TMXObjectGroup*                m_pFrontgroundMaskObjects;
     
     cocos2d::Rect                           m_pMapRect;
     
