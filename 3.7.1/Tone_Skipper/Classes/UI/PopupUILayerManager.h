@@ -11,8 +11,9 @@
 
 #include "cocos2d.h"
 #include "PopupUILayer.h"
-#include "GameConfig.h"
 #include "PopupType.h"
+#include "GameConfig.h"
+
 class PopupUILayerManager:public cocos2d::Ref
 {
 public:

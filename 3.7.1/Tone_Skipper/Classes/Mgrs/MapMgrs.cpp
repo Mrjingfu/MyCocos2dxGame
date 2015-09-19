@@ -8,6 +8,7 @@
 
 #include "MapMgrs.h"
 #include "UtilityHelper.h"
+#include "GameConfig.h"
 USING_NS_CC;
 
 MapMgrs* g_pMapMgrsInstance = nullptr;
@@ -685,5 +686,9 @@ void MapMgrs::updateCamera(float delta)
 }
 void MapMgrs::showTips(const cocos2d::Vec2& pos, const std::string& tips)
 {
-    CCLOG("pos : %f, %f; tips: %s", pos.x, pos.y, tips.c_str());
+    TipData tipData;
+    tipData.m_pPt = pos;
+    tipData.m_pDes = tips;
+//    CCLOG("pos : %f, %f; ", getNilo()->getPosition().x, getNilo()->getPosition().y);
+    cocos2d::Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_MAIN_TIPS,(void*)&tipData);
 }

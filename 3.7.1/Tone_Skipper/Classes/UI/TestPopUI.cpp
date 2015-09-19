@@ -9,10 +9,11 @@
 #include "TestPopUI.h"
 #include "GameConfig.h"
 #include "ui/CocosGUI.h"
-using namespace cocos2d::ui;
+USING_NS_CC;
+using namespace ui;
 TestPopUI::TestPopUI()
 {
-    m_pActionType = eNone;
+    m_pActionType = eCenterScale;
 }
 TestPopUI::~TestPopUI()
 {
@@ -25,16 +26,24 @@ bool TestPopUI::init()
 
 void TestPopUI::addEvents()
 {
-//    PopupUILayer::addEvents();
-    auto testColor = cocos2d::LayerColor::create(cocos2d::Color4B::BLUE, 100.0f*SCREEN_SCALE, 100.0f*SCREEN_SCALE);
-    testColor->setAnchorPoint(cocos2d::Vec2::ANCHOR_MIDDLE);
-    testColor->setPosition(WINDOW_CENTER);
-    auto testColseBtn = cocos2d::ui::Button::create("a_normal.png", "a_clicked.png", "", cocos2d::ui::TextureResType::PLIST);
+    cocos2d::ui::Layout* testLayout = cocos2d::ui::Layout::create();
+    testLayout->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
+    testLayout->setBackGroundImage("ui_frame_black.png");
+    testLayout->setBackGroundImageScale9Enabled(true);
+    testLayout->setContentSize(cocos2d::Size(200,200));
+    testLayout->setLayoutType(Layout::Type::RELATIVE);
+    testLayout->setScale(SCREEN_SCALE);
+    testLayout->setPosition(WINDOW_CENTER);
+    getRootPopupLayer()->addChild(testLayout);
+   
+    auto testColseBtn = cocos2d::ui::Button::create("ui_frame_black.png");
     testColseBtn->setScale(SCREEN_SCALE);
-    testColseBtn->setPosition(cocos2d::Vec2(testColor->getContentSize().width/2,testColor->getContentSize().height/2));
-    testColor->addChild(testColseBtn);
+    testLayout->addChild(testColseBtn);
     testColseBtn->addTouchEventListener(CC_CALLBACK_2(TestPopUI::onCancel,this));
-    m_pRootLayer->addChild(testColor);
+    
+    RelativeLayoutParameter* rp_RightCenter = RelativeLayoutParameter::create();
+    rp_RightCenter->setAlign(RelativeLayoutParameter::RelativeAlign::CENTER_IN_PARENT);
+    testColseBtn->setLayoutParameter(rp_RightCenter);
 }
 void TestPopUI::onCancel(cocos2d::Ref *sender, cocos2d::ui::Widget::TouchEventType type)
 {

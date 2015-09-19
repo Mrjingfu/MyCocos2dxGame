@@ -32,43 +32,41 @@ void Enemy::update(float delta)
     if(m_Velocity.y <= -m_fMaxYSpeed)
         m_Velocity.y = -m_fMaxYSpeed;
     
-    updatePosition(delta);
-    
-    checkTriggers();
+
     
 #if COCOS2D_DEBUG
     showDebug(true);
 #endif
 }
-void Enemy::setEnemyState(Enemy state)
+void Enemy::setEnemyState(EnemyState state)
 {
-    if (m_EnemyState == state )
-        return;
-    
-    ///处理上一个状态退出逻辑
-    switch (m_PlayerState) {
-        case PS_IDLE:
-            onExitIdleState();
-            break;
-        case PS_DEATH:
-            onExitDeathState();
-            break;
-        default:
-            break;
-    }
-    
-    m_PlayerState = state;
-    ///处理下一个状态进入逻辑
-    switch (m_PlayerState) {
-        case PS_IDLE:
-            onEnterIdleState();
-            break;
-        case PS_DEATH:
-            onEnterDeathState();
-            break;
-        default:
-            break;
-    }
+//    if (m_EnemyState == state )
+//        return;
+//    
+//    ///处理上一个状态退出逻辑
+//    switch (m_PlayerState) {
+//        case PS_IDLE:
+//            onExitIdleState();
+//            break;
+//        case PS_DEATH:
+//            onExitDeathState();
+//            break;
+//        default:
+//            break;
+//    }
+//    
+//    m_PlayerState = state;
+//    ///处理下一个状态进入逻辑
+//    switch (m_EnemyState) {
+//        case PS_IDLE:
+//            onEnterIdleState();
+//            break;
+//        case PS_DEATH:
+//            onEnterDeathState();
+//            break;
+//        default:
+//            break;
+//    }
 }
 void Enemy::setEnemyDirection(EnemyDirection direction)
 {
@@ -88,4 +86,10 @@ void Enemy::setEnemyDirection(EnemyDirection direction)
         if(getEnemyState() == ES_PATROL)
             m_Velocity.x = m_fMaxXSpeed;
     }
+}
+cocos2d::Rect Enemy::getBoundingBox() const
+{
+    cocos2d::Rect spriteRect;
+    
+    return m_pSprite->getBoundingBox();
 }

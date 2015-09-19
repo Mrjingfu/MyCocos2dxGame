@@ -17,7 +17,13 @@
 #define WND_CENTER_Y (SCREEN_HEIGHT/2)
 #define WINDOW_CENTER cocos2d::Vec2(WND_CENTER_X,WND_CENTER_Y)
 
+#define DEFAULT_FONT "ZpixEX2_EX.ttf"
 
+struct TipData
+{
+    cocos2d::Vec2 m_pPt;
+    std::string m_pDes;
+};
 
 enum eZOrder
 {
@@ -28,6 +34,7 @@ enum eZOrder
     eZOrderPopupLayer = 25   //PopupUI之上层
 };
 
-
+//EVENT
+static const std::string EVENT_MAIN_TIPS = "MAIN_TIPS";
 
 #endif

@@ -19,7 +19,10 @@ public:
     {
         eNone,
         eCenterScale,
-        eTopDown
+        eDownCenter,
+        eTopCenter,
+        eLeftCenter,
+        eRightCenter
     };
     
 public:
@@ -58,8 +61,20 @@ protected:
 private:
     void inActionCenterScale();
     void outActionCenterScale();
-    void inActionTopDown();
-    void outActionTopDown();
+    
+    void inActionDownCenter();
+    void outActionDownCenter();
+    
+    void inActionTopCenter();
+    void outActionTopCenter();
+
+    void inActionLeftCenter();
+    void outActionLeftCenter();
+    
+    void inActionRightCenter();
+    void outActionRightCenter();
+    
+
 protected:
     eActionType m_pActionType;
     cocos2d::LayerColor* m_pDarkLayer;
