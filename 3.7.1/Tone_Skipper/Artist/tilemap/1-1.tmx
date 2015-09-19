@@ -9,12 +9,12 @@
  </tileset>
  <layer name="background" width="80" height="60">
   <data encoding="base64" compression="zlib">
-   eJzt2W0LgjAYheFV9Pqh/f9/G4GSA9l8djafcPcFBz9ILo/WloUAAAAAAAAAAAAAAEDqWRH8fPt4G0J/KfrT0J+G/jT0p6E/Df1prP0hZe2PDlMj3n8nY+K0va4c615xvBZj9x43l4sxcdreVvp7VByvxdi9x83FKla8phXPsVuhPw39aehP0+McWs+fa2uDf9Gjv9bz53J+zl2b3FpsK4810573R+7a5NZiW3msmZT329IRvk890Z+G/uqV5vxY2D9nVKU5Pxb21/7+HQWfbQ39aehPM2p/ez+LPppzsP+HpcRTj3vlFfbtz+P5gde5EkLIMh/PuB5o
+   eJzt2W0LgjAYheFV9PrB/f9/G4GSgmxu55mPuPuCgx8kZ0dry0IAAAAAAAAAAAAAAGDpXRH8/foYCkJ/S/SnoT8N/WnoT0N/GvrT0J+mtL/B5zQPq8f+LoWJ4/a+cqxnxfEsxm49biq3wsRx+1jp71VxPIuxW4+bSqlY8RornmNboT8N/WnoT9PiPVjPn2trg6No0Z/1/Dmfn1PXJrUW28pjzbTn/ZG6Nqm12FYeayblfC2d4fvUE/1p6K9ebs6Pmf1TepWb82Nmf+3v317w2dbQn4b+NL32t/ez6LO5hvL/YJR4anGvfMK+/Xk8P/B6r4QQMs8XxsEefw==
   </data>
  </layer>
  <layer name="coverlayer" width="80" height="60">
   <data encoding="base64" compression="zlib">
-   eJzt0jEKACAMBMG0Nv7/uZZiqVcoOAPXhyVVAAAAAAAAALBqB2PSL6NfRr+Mfhn9Mvpl9Mtol9nt1++c+Sz/BwAAAAAAAAB/Gn5BBPs=
+   eJzt0KENACAQwMC37L8wkmCp5C7pAp0BAAAAAAAAgNt6iMO/xr/Gv8a/xr/Gv8a/xr/Gu8Y/AAAAAAAAAPjTBuMeBPY=
   </data>
  </layer>
  <objectgroup color="#fa0009" name="colliders">
@@ -94,7 +94,7 @@
   <object id="34" name="killer3" x="1008" y="544" width="16" height="16"/>
  </objectgroup>
  <objectgroup color="#1cd8fb" name="shadows">
-  <object id="35" name="shadowgreen" x="304" y="384" width="808" height="176"/>
+  <object id="35" name="shadowgreen" type="0" x="304" y="384" width="808" height="176"/>
  </objectgroup>
  <objectgroup color="#1b6cfd" name="raycasters"/>
  <objectgroup name="frontgroundmask">

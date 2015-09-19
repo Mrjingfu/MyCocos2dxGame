@@ -49,6 +49,9 @@ public:
     Player* getNilo() const { return m_pNilo; }
     Player* getPudge() const {return m_pPudge;}
     void showDebug(bool debug);
+    
+    void hideCoverLayer();
+    void showCoverLayer();
 private:
     bool initCamera();
     bool initPlayer();
@@ -70,6 +73,8 @@ private:
     
     cocos2d::Layer*                         m_pMainLayer;
     cocos2d::TMXTiledMap*                   m_pCurrentTiledMap;
+    cocos2d::TMXLayer*                      m_pCoverLayer;
+    bool                                    m_pCoverLayerVisable;
     
     cocos2d::TMXObjectGroup*                m_pStarters;
     cocos2d::TMXObjectGroup*                m_pColliders;

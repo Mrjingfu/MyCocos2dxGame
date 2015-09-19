@@ -156,13 +156,15 @@ void Player::checkTriggers()
     if(collision)
     {
         switch (type) {
-            case Actor::TT_TIPS:
-                //CCLOG("trigger: tips!");
+            case Actor::TT_ROOM:
+                 MapMgrs::getInstance()->hideCoverLayer();
                 break;
             default:
                 break;
         }
     }
+    else
+        MapMgrs::getInstance()->showCoverLayer();
 }
 void Player::checkOnLadder()
 {

@@ -344,7 +344,8 @@ void Nilo::onLand()
     }
     else
     {
-        setPlayerState(PS_TURNFRONT);
+        if(!m_bOnLadder)
+            setPlayerState(PS_TURNFRONT);
     }
 }
 void Nilo::onLeftBtnPressed()

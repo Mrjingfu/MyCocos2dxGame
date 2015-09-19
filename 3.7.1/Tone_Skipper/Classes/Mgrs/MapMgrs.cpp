@@ -31,6 +31,9 @@ MapMgrs::MapMgrs()
     m_pMainCamera = nullptr;
     
     m_pCurrentTiledMap  = nullptr;
+    m_pCoverLayer       = nullptr;
+    m_pCoverLayerVisable = true;
+    
     m_pStarters         = nullptr;
     m_pColliders        = nullptr;
     m_pRayCasters       = nullptr;
@@ -63,13 +66,16 @@ bool MapMgrs::loadMap(const std::string& strFile)
     m_pCurrentTiledMap = cocos2d::TMXTiledMap::create(strFile);
     if(!m_pCurrentTiledMap)
         return false;
-    m_pCurrentTiledMap->setCameraMask((unsigned short)CameraFlag::USER1);
-    m_pMainLayer->addChild(m_pCurrentTiledMap);
-    
-    
     
     if(!initBackgroundMask())
         return false;
+    
+    m_pCurrentTiledMap->setCameraMask((unsigned short)CameraFlag::USER1);
+    m_pCoverLayer = m_pCurrentTiledMap->getLayer("coverlayer");
+    if(m_pCoverLayer)
+        m_pCoverLayer->removeFromParent();
+    m_pMainLayer->addChild(m_pCurrentTiledMap);
+    
     cocos2d::Size mapSize = m_pCurrentTiledMap->getMapSize();
     cocos2d::Size tileSize = m_pCurrentTiledMap->getTileSize();
     
@@ -112,6 +118,13 @@ bool MapMgrs::loadMap(const std::string& strFile)
         return false;
     if(!initPlayer())
         return false;
+    
+    if(m_pCoverLayer)
+    {
+        m_pCoverLayer->setCameraMask((unsigned short)CameraFlag::USER1);
+        m_pCoverLayer->setCascadeOpacityEnabled(true);
+        m_pMainLayer->addChild(m_pCoverLayer);
+    }
     
 #if COCOS2D_DEBUG
     showDebug(true);
@@ -248,7 +261,7 @@ bool MapMgrs::checkTrigger(const cocos2d::Rect& rect, Actor::TRIGGER_TYPE& type)
         float width = valuemap.at("width").asFloat();
         float height = valuemap.at("height").asFloat();
         cocos2d::Rect tiggerRect = cocos2d::Rect(x, y, width, height);
-        if (tiggerRect.getMaxX() < rect.getMinX() || rect.getMaxX() < tiggerRect.getMinX() ||
+        if (tiggerRect.getMaxX() - rect.size.width < rect.getMinX() || rect.getMaxX() < tiggerRect.getMinX() + rect.size.width ||
             tiggerRect.getMaxY() < rect.getMinY() || rect.getMaxY() < tiggerRect.getMinY()) {
             ret = false;
         }
@@ -257,10 +270,10 @@ bool MapMgrs::checkTrigger(const cocos2d::Rect& rect, Actor::TRIGGER_TYPE& type)
             type = (Actor::TRIGGER_TYPE)(valuemap.at("type").asInt());
             switch (type) {
                 case Actor::TT_TIPS:
-                {
-                    std::string tips = valuemap.at("tips_id").asString();
-                    showTips(tiggerRect.origin + Vec2(0,tiggerRect.size.height), tips);
-                }
+                    {
+                        std::string tips = valuemap.at("tips_id").asString();
+                        showTips(tiggerRect.origin + Vec2(0,tiggerRect.size.height), tips);
+                    }
                     break;
                 default:
                     break;
@@ -454,6 +467,42 @@ void MapMgrs::showDebug(bool debug)
             m_pDebugDrawNode->clear();
             m_pDebugDrawNode->removeFromParentAndCleanup(true);
             m_pDebugDrawNode = nullptr;
+        }
+    }
+}
+void MapMgrs::hideCoverLayer()
+{
+    if(m_pCoverLayer && m_pCoverLayerVisable)
+    {
+        m_pCoverLayerVisable = false;
+        auto size = m_pCurrentTiledMap->getMapSize();
+        for (int i = 0; i < size.width; ++i) {
+            for (int j = 0; j < size.height; j++) {
+                Sprite* sprite = m_pCoverLayer->getTileAt(Vec2(i, j));
+                if(sprite)
+                {
+                    EaseSineOut* fadeout = EaseSineOut::create(FadeOut::create(0.5f));
+                    sprite->runAction(fadeout);
+                }
+            }
+        }
+    }
+}
+void MapMgrs::showCoverLayer()
+{
+    if(m_pCoverLayer && !m_pCoverLayerVisable)
+    {
+        m_pCoverLayerVisable = true;
+        auto size = m_pCurrentTiledMap->getMapSize();
+        for (int i = 0; i < size.width; ++i) {
+            for (int j = 0; j < size.height; j++) {
+                Sprite* sprite = m_pCoverLayer->getTileAt(Vec2(i, j));
+                if(sprite)
+                {
+                    EaseSineOut* fadeIn = EaseSineOut::create(FadeIn::create(0.5f));
+                    sprite->runAction(fadeIn);
+                }
+            }
         }
     }
 }

@@ -9,7 +9,7 @@
  </tileset>
  <layer name="background" width="80" height="60">
   <data encoding="base64" compression="zlib">
-   eJzt2dsOgjAQhOGq8XhB3/9tjYlGSEjLdrYsgf9LJlwQKQ5oK6YEAAAAAAAAAAAAAMDUsyH4+/QxGEJ/U/SnoT8N/WnoT0N/GvrT0J/G2t8Qc5qbZe1vD07G5O/2OnOse8PxPMbuPW4pF2Pyd3ub6e/RcDyPsXuPW4pVbniNl8ixvdCfhv409Kfp8R6858+5tcFW9OjPe/4cz8+la1Naiy0VsWZa8/4oXZvSWmypiDWTcr6e9vB9Gon+NPTXrjbn58r+X46qNufnyv7W379HwWdbQ38a+tMctb+1n0XvzTnZ/8NSEqnHvfJK6/YX8fwg6r0SQsg4bwZ6HnE=
+   eJzt2W0LgjAYheFV9PrB/f9/G4GSgmxu55mPuPuCgx8kZ0dry0IAAAAAAAAAAAAAAGDpXRH8/foYCkJ/S/SnoT8N/WnoT0N/GvrT0J+mtL/B5zQPq8f+LoWJ4/a+cqxnxfEsxm49biq3wsRx+1jp71VxPIuxW4+bSqlY8RornmNboT8N/WnoT9PiPVjPn2trg6No0Z/1/Dmfn1PXJrUW28pjzbTn/ZG6Nqm12FYeayblfC2d4fvUE/1p6K9ebs6Pmf1TepWb82Nmf+3v317w2dbQn4b+NL32t/ez6LO5hvL/YJR4anGvfMK+/Xk8P/B6r4QQMs8XxsEefw==
   </data>
  </layer>
  <layer name="coverlayer" width="80" height="60">
@@ -94,7 +94,7 @@
   <object id="34" name="killer3" x="1008" y="544" width="16" height="16"/>
  </objectgroup>
  <objectgroup color="#1cd8fb" name="shadows">
-  <object id="35" name="shadowgreen" x="304" y="384" width="808" height="176"/>
+  <object id="35" name="shadowgreen" type="0" x="304" y="384" width="808" height="176"/>
  </objectgroup>
  <objectgroup color="#1b6cfd" name="raycasters"/>
  <objectgroup name="frontgroundmask">
