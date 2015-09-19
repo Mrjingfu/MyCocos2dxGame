@@ -345,7 +345,16 @@ void Nilo::onLand()
     else
     {
         if(!m_bOnLadder)
-            setPlayerState(PS_TURNFRONT);
+        {
+//            cocos2d::Rect rect = getBoundingBox();
+//            rect.origin += getPosition();
+//            Actor::USABLE_ITEM_TYPE type = Actor::UIT_UNKNOWN;
+//            bool available = MapMgrs::getInstance()->checkUsableItems(rect, type);
+//            if(!(available && type == Actor::UIT_LADDER))
+                setPlayerState(PS_TURNFRONT);
+//            else
+//                m_bOnLadder = true;
+        }
     }
 }
 void Nilo::onLeftBtnPressed()
@@ -412,7 +421,12 @@ void Nilo::onUpBtnPressed()
         }
     }
     else
-        setPlayerState(PS_SHAKEHEAD);
+    {
+        if(m_PlayerDirection == PD_BACK && m_bOnLadder)
+            setPlayerState(PS_BACKFORWARDRUN);
+        else
+            setPlayerState(PS_SHAKEHEAD);
+    }
 }
 void Nilo::onUpBtnReleased()
 {
@@ -493,7 +507,10 @@ void Nilo::onDownBtnPressed()
         if(m_bOnLand)
         {
             if(getPlayerDirection() == PD_BACK)
+            {
                 setPlayerState(PS_TURNFRONT);
+                m_bOnLadder = false;
+            }
             else
                 setPlayerState(PS_SQUAT);
         }

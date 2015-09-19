@@ -81,10 +81,16 @@ void Player::updatePosition(float delta)
         if(m_bOnLand == false)
         {
             m_bOnLand = true;
-            m_bOnLadder = false;
+            if(m_Velocity.y < 1)
+                m_bOnLadder = false;
             this->onLand();
-            if(m_Velocity.y > m_fMaxYSpeed)
-                m_Velocity.y = m_fMaxYSpeed*delta;
+            if(!m_bOnLadder)
+            {
+                if(m_Velocity.y > m_fMaxYSpeed)
+                    m_Velocity.y = m_fMaxYSpeed*delta;
+            }
+            else
+                setPlayerState(PS_BACKFORWARDRUN);
         }
         else
         {
