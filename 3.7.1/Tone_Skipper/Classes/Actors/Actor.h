@@ -25,9 +25,18 @@ public:
     RAYCAST_TYPE;
     typedef enum{
         TT_TIPS,
+        TT_ROOM,
+        TT_DOOR,
+        TT_SECREAT,
         TT_UNKNOWN
     }
     TRIGGER_TYPE;
+    typedef enum{
+        UIT_LADDER,
+        UIT_QUESTIONBOX,
+        UIT_UNKNOWN
+    }
+    USABLE_ITEM_TYPE;
     static constexpr float Gravity = -10.0f;
     virtual void update(float delta){};
     
@@ -52,6 +61,7 @@ protected:
     float                       m_fMaxYSpeed;
     cocos2d::Vec2               m_Velocity;
     bool                        m_bOnLand;
+    bool                        m_bOnLadder;
     
     cocos2d::DrawNode*          m_pDebugDrawNode;
 };

@@ -97,6 +97,7 @@ public:
 private:
     void updatePosition(float delta);
     void checkTriggers();
+    void checkOnLadder();
    
 protected:
     cocos2d::Animation*       m_pIdleAnimation;

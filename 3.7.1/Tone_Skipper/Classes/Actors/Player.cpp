@@ -12,8 +12,8 @@ USING_NS_CC;
 
 Player::Player()
 {
-    m_fMaxXSpeed = 0.5f;
-    m_fMaxYSpeed = 2.5f;
+    m_fMaxXSpeed = 0.8f;
+    m_fMaxYSpeed = 2.7f;
     
     m_pIdleAnimation        = nullptr;
     m_pRunAnimation         = nullptr;
@@ -50,10 +50,15 @@ void Player::update(float delta)
         return;
     if(!m_pSprite)
         return;
-    if(!m_bOnLand)
-        m_Velocity += Vec2(0, Gravity)*delta;
-    if(m_Velocity.y <= -m_fMaxYSpeed)
-        m_Velocity.y = -m_fMaxYSpeed;
+    if(!m_bOnLadder)
+    {
+        if(!m_bOnLand)
+            m_Velocity += Vec2(0, Gravity)*delta;
+        if(m_Velocity.y <= -m_fMaxYSpeed)
+            m_Velocity.y = -m_fMaxYSpeed;
+    }
+    else
+        checkOnLadder();
     
     updatePosition(delta);
     
@@ -76,14 +81,18 @@ void Player::updatePosition(float delta)
         if(m_bOnLand == false)
         {
             m_bOnLand = true;
+            m_bOnLadder = false;
             this->onLand();
             if(m_Velocity.y > m_fMaxYSpeed)
                 m_Velocity.y = m_fMaxYSpeed*delta;
         }
         else
         {
-            if(m_Velocity.y < 0)
-                m_Velocity.y = 0;
+            if(!m_bOnLadder)
+            {
+                if(m_Velocity.y < 0)
+                    m_Velocity.y = 0;
+            }
         }
     }
     else
@@ -93,6 +102,8 @@ void Player::updatePosition(float delta)
     }
   
     setPosition(getPosition() + Vec2(0,m_Velocity.y));
+    if(m_bOnLadder)
+        return;
     rect = getBoundingBox();
     Vec2 nextPosX = getPosition() + Vec2(m_Velocity.x, 0);
     rect.origin += nextPosX;
@@ -145,11 +156,28 @@ void Player::checkTriggers()
     if(collision)
     {
         switch (type) {
-            case Actor::TT_TIPS:
-                //CCLOG("trigger: tips!");
+            case Actor::TT_ROOM:
+                 MapMgrs::getInstance()->hideCoverLayer();
                 break;
             default:
                 break;
+        }
+    }
+    else
+        MapMgrs::getInstance()->showCoverLayer();
+}
+void Player::checkOnLadder()
+{
+    cocos2d::Rect rect = getBoundingBox();
+    rect.origin += getPosition();
+    Actor::USABLE_ITEM_TYPE type = Actor::UIT_UNKNOWN;
+    bool available = MapMgrs::getInstance()->checkUsableItems(rect, type);
+    if(!available)
+    {
+        if(m_PlayerDirection == PD_BACK)
+        {
+            setPlayerState(PS_TURNFRONT);
+            m_bOnLadder = false;
         }
     }
 }
@@ -371,7 +399,11 @@ void Player::onEnterTurnBackState()
         return;
     Animate* action = Animate::create(m_pTurnBackAnimation);
     CallFunc* callback1 = CallFunc::create(CC_CALLBACK_0(Player::setPlayerDirection, this, PD_BACK));
-    CallFunc* callback2 = CallFunc::create(CC_CALLBACK_0(Player::setPlayerState, this, PS_IDLE));
+    CallFunc* callback2 = nullptr;
+    if(m_bUpBtnPressed || m_bDownBtnPressed)
+        callback2 = CallFunc::create(CC_CALLBACK_0(Player::setPlayerState, this, PS_BACKFORWARDRUN));
+    else
+        callback2 = CallFunc::create(CC_CALLBACK_0(Player::setPlayerState, this, PS_IDLE));
     Sequence* sequence = Sequence::create(action, callback1, callback2, NULL);
     m_pSprite->runAction(sequence);
 }
@@ -403,11 +435,31 @@ void Player::onEnterBackforwardRunState()
 {
     if(!m_pSprite)
         return;
-    Animate* action = Animate::create(m_pBackForwardRunAnimation);
-    m_pSprite->runAction(RepeatForever::create(action));
+    if(m_bOnLadder)
+    {
+        if(m_bUpBtnPressed)
+        {
+            m_Velocity.y = m_fMaxYSpeed*0.2f;
+            Animate* action = Animate::create(m_pBackForwardRunAnimation);
+            m_pSprite->runAction(RepeatForever::create(action));
+        }
+        else if(m_bDownBtnPressed)
+        {
+            m_Velocity.y = -m_fMaxYSpeed*0.2f;
+            Animate* action = Animate::create(m_pBackForwardRunAnimation);
+            m_pSprite->runAction(RepeatForever::create(action));
+        }
+        else
+        {
+            m_Velocity.y = 0;
+            setPlayerState(PS_IDLE);
+        }
+    }
 }
 void Player::onExitBackforwardRunState()
 {
+    if(m_bOnLadder)
+        m_Velocity.y = 0;
     m_pSprite->stopAllActions();
 }
 void Player::onEnterSquatState()

@@ -14,8 +14,9 @@ Actor::Actor()
     m_pSprite = nullptr;
     m_Velocity = Vec2::ZERO;
     m_bOnLand = true;
+    m_bOnLadder = false;
     m_fMaxXSpeed = 0.5f;
-    m_fMaxYSpeed = 2.0f;
+    m_fMaxYSpeed = 3.0f;
     m_pDebugDrawNode = nullptr;
     setCascadeOpacityEnabled(true);
     setCascadeColorEnabled(true);

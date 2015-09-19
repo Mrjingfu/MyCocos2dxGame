@@ -7,6 +7,7 @@
 //
 
 #include "Nilo.h"
+#include "MapMgrs.h"
 USING_NS_CC;
 
 Nilo::Nilo()
@@ -341,10 +342,17 @@ void Nilo::onLand()
                 setPlayerState(PS_SQUAT);
         }
     }
+    else
+    {
+        if(!m_bOnLadder)
+            setPlayerState(PS_TURNFRONT);
+    }
 }
 void Nilo::onLeftBtnPressed()
 {
     if(!m_bAcceptInput)
+        return;
+    if(m_bOnLadder || getPlayerState() == PS_TURNBACK || getPlayerState() == PS_TURNFRONT)
         return;
     m_bLeftBtnPressed = true;
     if(getPlayerDirection() != PD_BACK)
@@ -354,6 +362,8 @@ void Nilo::onLeftBtnPressed()
 void Nilo::onLeftBtnReleased()
 {
     if(!m_bAcceptInput)
+        return;
+    if(m_bOnLadder || getPlayerState() == PS_TURNBACK || getPlayerState() == PS_TURNFRONT)
         return;
     m_bLeftBtnPressed = false;
     if(m_bOnLand)
@@ -373,16 +383,33 @@ void Nilo::onUpBtnPressed()
 {
     if(!m_bAcceptInput)
         return;
-    m_bUpBtnPressed = true;
     if(getPlayerState() != PS_IDLE)
         return;
-    bool available = false;
+    m_bUpBtnPressed = true;
+    cocos2d::Rect rect = getBoundingBox();
+    rect.origin += getPosition() + Vec2(0, m_fMaxYSpeed);
+    Actor::USABLE_ITEM_TYPE type = Actor::UIT_UNKNOWN;
+    bool available = MapMgrs::getInstance()->checkUsableItems(rect, type);
     if(available)
     {
-        if(getPlayerDirection() == PD_BACK)
-            setPlayerState(PS_BACKFORWARDRUN);
-        else
-            setPlayerState(PS_TURNBACK);
+        switch (type) {
+            case Actor::UIT_LADDER:
+                {
+                    m_bOnLadder = true;
+                    if(m_PlayerDirection != PD_BACK)
+                        setPlayerState(PS_TURNBACK);
+                    else
+                        setPlayerState(PS_BACKFORWARDRUN);
+                }
+                break;
+            case Actor::UIT_QUESTIONBOX:
+                {
+                    
+                }
+                break;
+            default:
+                break;
+        }
     }
     else
         setPlayerState(PS_SHAKEHEAD);
@@ -392,19 +419,22 @@ void Nilo::onUpBtnReleased()
     if(!m_bAcceptInput)
         return;
     m_bUpBtnPressed = false;
-    if(getPlayerState() != PS_IDLE)
-        return;
-    if(getPlayerDirection() == PD_BACK)
-    {
-        if(getPlayerState() == PS_BACKFORWARDRUN)
-            setPlayerState(PS_IDLE);
-    }
     
+    if(m_bOnLadder)
+    {
+        if(getPlayerDirection() == PD_BACK)
+        {
+            if(getPlayerState() == PS_BACKFORWARDRUN)
+                setPlayerState(PS_IDLE);
+        }
+    }
 }
 
 void Nilo::onRightBtnPressed()
 {
     if(!m_bAcceptInput)
+        return;
+    if(m_bOnLadder || getPlayerState() == PS_TURNBACK || getPlayerState() == PS_TURNFRONT)
         return;
     m_bRightBtnPressed = true;
     if(getPlayerDirection() != PD_BACK)
@@ -414,6 +444,8 @@ void Nilo::onRightBtnPressed()
 void Nilo::onRightBtnReleased()
 {
     if(!m_bAcceptInput)
+        return;
+    if(m_bOnLadder || getPlayerState() == PS_TURNBACK || getPlayerState() == PS_TURNFRONT)
         return;
     m_bRightBtnPressed = false;
     if(m_bOnLand)
@@ -435,24 +467,60 @@ void Nilo::onDownBtnPressed()
     if(!m_bAcceptInput)
         return;
     m_bDownBtnPressed = true;
-    if(!m_bOnLand)
-        return;
-    if(getPlayerDirection() == PD_BACK)
-        setPlayerState(PS_TURNFRONT);
+
+    cocos2d::Rect rect = getBoundingBox();
+    rect.origin += getPosition() + Vec2(0, -rect.size.height-1);
+    Actor::USABLE_ITEM_TYPE type = Actor::UIT_UNKNOWN;
+    bool available = MapMgrs::getInstance()->checkUsableItems(rect, type);
+    if(available)
+    {
+        switch (type) {
+            case Actor::UIT_LADDER:
+            {
+                m_bOnLadder = true;
+                if(m_PlayerDirection != PD_BACK)
+                    setPlayerState(PS_TURNBACK);
+                else
+                    setPlayerState(PS_BACKFORWARDRUN);
+            }
+                break;
+            default:
+                break;
+        }
+    }
     else
-        setPlayerState(PS_SQUAT);
+    {
+        if(m_bOnLand)
+        {
+            if(getPlayerDirection() == PD_BACK)
+                setPlayerState(PS_TURNFRONT);
+            else
+                setPlayerState(PS_SQUAT);
+        }
+    }
 }
 void Nilo::onDownBtnReleased()
 {
     if(!m_bAcceptInput)
         return;
     m_bDownBtnPressed = false;
-    if(getPlayerState() == PS_SQUAT)
+    if(m_bOnLadder)
     {
-        if(!m_bRightBtnPressed && !m_bLeftBtnPressed)
-            setPlayerState(PS_IDLE);
-        else
-            setPlayerState(PS_RUN);
+        if(getPlayerDirection() == PD_BACK)
+        {
+            if(getPlayerState() == PS_BACKFORWARDRUN)
+                setPlayerState(PS_IDLE);
+        }
+    }
+    else
+    {
+        if(getPlayerState() == PS_SQUAT)
+        {
+            if(!m_bRightBtnPressed && !m_bLeftBtnPressed)
+                setPlayerState(PS_IDLE);
+            else
+                setPlayerState(PS_RUN);
+        }
     }
 }
 
@@ -460,16 +528,22 @@ void Nilo::onABtnPressed()
 {
     if(!m_bAcceptInput)
         return;
+    if(m_bOnLadder || getPlayerState() == PS_TURNBACK || getPlayerState() == PS_TURNFRONT)
+        return;
 }
 void Nilo::onABtnReleased()
 {
     if(!m_bAcceptInput)
+        return;
+    if(m_bOnLadder || getPlayerState() == PS_TURNBACK || getPlayerState() == PS_TURNFRONT)
         return;
 }
 
 void Nilo::onBBtnPressed()
 {
     if(!m_bAcceptInput)
+        return;
+    if(m_bOnLadder || getPlayerState() == PS_TURNBACK || getPlayerState() == PS_TURNFRONT)
         return;
     if(getPlayerState() == PS_SUPERJUMP)
         return;
@@ -481,5 +555,7 @@ void Nilo::onBBtnPressed()
 void Nilo::onBBtnReleased()
 {
     if(!m_bAcceptInput)
+        return;
+    if(m_bOnLadder || getPlayerState() == PS_TURNBACK || getPlayerState() == PS_TURNFRONT)
         return;
 }
