@@ -7,6 +7,7 @@
 //
 
 #include "PopupUILayerManager.h"
+#include "BagPopUpUi.h"
 #include "TestPopUI.h"
 
 PopupUILayerManager::PopupUILayerManager()
@@ -83,7 +84,8 @@ PopupUILayer* PopupUILayerManager::initPopUp(ePopupType type)
 {
     PopupUILayer* popupLayer = nullptr;
     switch (type) {
-        case ePopupTips:
+        case ePopupBag:
+            popupLayer = BagPopUpUi::create();
             break;
         case ePopupTest:
             popupLayer = TestPopUI::create();

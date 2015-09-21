@@ -143,8 +143,10 @@
 		EC1D8B171BAD646900F1F16E /* ui_frame_yellow.png in Resources */ = {isa = PBXBuildFile; fileRef = EC1D8B0F1BAD646900F1F16E /* ui_frame_yellow.png */; };
 		EC1D8B181BAD646900F1F16E /* ui_supposed.png in Resources */ = {isa = PBXBuildFile; fileRef = EC1D8B101BAD646900F1F16E /* ui_supposed.png */; };
 		EC1D8B191BAD646900F1F16E /* ui_supposed.png in Resources */ = {isa = PBXBuildFile; fileRef = EC1D8B101BAD646900F1F16E /* ui_supposed.png */; };
-		EC1D8B1A1BAD646900F1F16E /* ui-exclamation.png in Resources */ = {isa = PBXBuildFile; fileRef = EC1D8B111BAD646900F1F16E /* ui-exclamation.png */; };
-		EC1D8B1B1BAD646900F1F16E /* ui-exclamation.png in Resources */ = {isa = PBXBuildFile; fileRef = EC1D8B111BAD646900F1F16E /* ui-exclamation.png */; };
+		EC40C0CD1BAFD72A0093C8B9 /* BagPopUpUi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC40C0CB1BAFD72A0093C8B9 /* BagPopUpUi.cpp */; };
+		EC40C0CE1BAFD72A0093C8B9 /* BagPopUpUi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC40C0CB1BAFD72A0093C8B9 /* BagPopUpUi.cpp */; };
+		EC40C0DE1BAFFF1D0093C8B9 /* ui_exclamation.png in Resources */ = {isa = PBXBuildFile; fileRef = EC40C0DD1BAFFF1D0093C8B9 /* ui_exclamation.png */; };
+		EC40C0DF1BAFFF1D0093C8B9 /* ui_exclamation.png in Resources */ = {isa = PBXBuildFile; fileRef = EC40C0DD1BAFFF1D0093C8B9 /* ui_exclamation.png */; };
 		EC414CFB1BA7F67F0029C69E /* AlisaMethod.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC414CF71BA7F67F0029C69E /* AlisaMethod.cpp */; };
 		EC414CFC1BA7F67F0029C69E /* UtilityHelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC414CF91BA7F67F0029C69E /* UtilityHelper.cpp */; };
 		EC414CFD1BA7F6BF0029C69E /* AlisaMethod.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC414CF71BA7F67F0029C69E /* AlisaMethod.cpp */; };
@@ -314,7 +316,9 @@
 		EC1D8B0E1BAD646900F1F16E /* ui_frame_green_.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ui_frame_green_.png; sourceTree = "<group>"; };
 		EC1D8B0F1BAD646900F1F16E /* ui_frame_yellow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ui_frame_yellow.png; sourceTree = "<group>"; };
 		EC1D8B101BAD646900F1F16E /* ui_supposed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ui_supposed.png; sourceTree = "<group>"; };
-		EC1D8B111BAD646900F1F16E /* ui-exclamation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ui-exclamation.png"; sourceTree = "<group>"; };
+		EC40C0CB1BAFD72A0093C8B9 /* BagPopUpUi.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BagPopUpUi.cpp; sourceTree = "<group>"; };
+		EC40C0CC1BAFD72A0093C8B9 /* BagPopUpUi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BagPopUpUi.h; sourceTree = "<group>"; };
+		EC40C0DD1BAFFF1D0093C8B9 /* ui_exclamation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ui_exclamation.png; sourceTree = "<group>"; };
 		EC414CF71BA7F67F0029C69E /* AlisaMethod.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AlisaMethod.cpp; sourceTree = "<group>"; };
 		EC414CF81BA7F67F0029C69E /* AlisaMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlisaMethod.h; sourceTree = "<group>"; };
 		EC414CF91BA7F67F0029C69E /* UtilityHelper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UtilityHelper.cpp; sourceTree = "<group>"; };
@@ -558,11 +562,11 @@
 		554732FF1B8EA7B2008F096C /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				EC40C0DD1BAFFF1D0093C8B9 /* ui_exclamation.png */,
 				EC1D8B0D1BAD646900F1F16E /* ui_frame_black.png */,
 				EC1D8B0E1BAD646900F1F16E /* ui_frame_green_.png */,
 				EC1D8B0F1BAD646900F1F16E /* ui_frame_yellow.png */,
 				EC1D8B101BAD646900F1F16E /* ui_supposed.png */,
-				EC1D8B111BAD646900F1F16E /* ui-exclamation.png */,
 				554733001B8EA7B2008F096C /* joystick.plist */,
 				554733011B8EA7B2008F096C /* joystick.png */,
 			);
@@ -589,6 +593,8 @@
 				554733081B8EA7C9008F096C /* JoyStick.h */,
 				EC1D8AFA1BAD0FDA00F1F16E /* MainUi.cpp */,
 				EC1D8AFB1BAD0FDA00F1F16E /* MainUi.h */,
+				EC40C0CB1BAFD72A0093C8B9 /* BagPopUpUi.cpp */,
+				EC40C0CC1BAFD72A0093C8B9 /* BagPopUpUi.h */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -810,6 +816,7 @@
 				5087E77D17EB970100C73F5D /* Default-568h@2x.png in Resources */,
 				EC64663F1BAA5D00002D8E6B /* sprite_dog.png in Resources */,
 				5535B8A51BAC0BD600A2EEF9 /* 1-1.tmx in Resources */,
+				EC40C0DE1BAFFF1D0093C8B9 /* ui_exclamation.png in Resources */,
 				554675AA1BAADA4E00409405 /* t_0.png in Resources */,
 				55E71D081B9D2877001BEFF7 /* testmap.tmx in Resources */,
 				55E71D061B9D2877001BEFF7 /* scene_tiles.png in Resources */,
@@ -828,7 +835,6 @@
 				50EF62A217ECD613001EB2F8 /* Icon-29.png in Resources */,
 				EC1D8B161BAD646900F1F16E /* ui_frame_yellow.png in Resources */,
 				EC1D8B181BAD646900F1F16E /* ui_supposed.png in Resources */,
-				EC1D8B1A1BAD646900F1F16E /* ui-exclamation.png in Resources */,
 				554675941BAADA4E00409405 /* e_1.png in Resources */,
 				554675B01BAADA4E00409405 /* y_1.png in Resources */,
 				554675981BAADA4E00409405 /* f_1.png in Resources */,
@@ -857,9 +863,9 @@
 				554675A51BAADA4E00409405 /* n_1.png in Resources */,
 				554675A31BAADA4E00409405 /* n_0.png in Resources */,
 				554675A91BAADA4E00409405 /* r_1.png in Resources */,
-				EC1D8B1B1BAD646900F1F16E /* ui-exclamation.png in Resources */,
 				554675B11BAADA4E00409405 /* y_1.png in Resources */,
 				EC6466401BAA5D0B002D8E6B /* sprite_dog.plist in Resources */,
+				EC40C0DF1BAFFF1D0093C8B9 /* ui_exclamation.png in Resources */,
 				EC1D8B191BAD646900F1F16E /* ui_supposed.png in Resources */,
 				EC1D8B171BAD646900F1F16E /* ui_frame_yellow.png in Resources */,
 				EC6466411BAA5D0B002D8E6B /* sprite_dog.png in Resources */,
@@ -904,6 +910,7 @@
 				EC5FE2F71BAC5ECD006F6107 /* WrapperUILayer.cpp in Sources */,
 				EC414D011BA7F74E0029C69E /* NativeBridge.mm in Sources */,
 				EC414CFB1BA7F67F0029C69E /* AlisaMethod.cpp in Sources */,
+				EC40C0CD1BAFD72A0093C8B9 /* BagPopUpUi.cpp in Sources */,
 				EC414CFC1BA7F67F0029C69E /* UtilityHelper.cpp in Sources */,
 				5547331D1B8F14AF008F096C /* Nilo.cpp in Sources */,
 				EC5FE2F11BAC5ECD006F6107 /* PopupUILayer.cpp in Sources */,
@@ -950,6 +957,7 @@
 				55E71D1C1B9D4957001BEFF7 /* ActorFactory.cpp in Sources */,
 				EC5FE2F21BAC5ECD006F6107 /* PopupUILayer.cpp in Sources */,
 				EC1D8AFD1BAD0FDA00F1F16E /* MainUi.cpp in Sources */,
+				EC40C0CE1BAFD72A0093C8B9 /* BagPopUpUi.cpp in Sources */,
 				55883EAC1B8D7A35007F2FD3 /* HueSprite.cpp in Sources */,
 				EC5FE2FD1BAC5F5D006F6107 /* CloseCallback.cpp in Sources */,
 				5535B89F1BABADEB00A2EEF9 /* GameScene.cpp in Sources */,
