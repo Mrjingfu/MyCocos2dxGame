@@ -38,6 +38,8 @@ public:
     }
     USABLE_ITEM_TYPE;
     static constexpr float Gravity = -10.0f;
+    static constexpr float HueNoChangeMaxTime = 2.0f;
+    static constexpr float HueMaxDiff = 0.02f;
     virtual void update(float delta){};
     
     virtual float getHue();
@@ -63,7 +65,11 @@ protected:
     bool                        m_bOnLand;
     bool                        m_bOnLadder;
     
+    float                       m_fHueNoChangeTime;
+    
     cocos2d::DrawNode*          m_pDebugDrawNode;
+public:
+    static float                m_sfInitHue;
 };
 
 #endif /* defined(__Tone_Skipper__Actor__) */

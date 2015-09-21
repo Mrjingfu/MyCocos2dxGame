@@ -67,7 +67,7 @@
   </object>
   <object id="26" name="tips5" type="0" x="928" y="640" width="64" height="32">
    <properties>
-    <property name="tips_id" value="5"/>
+    <property name="tips_id" value="JACKAROO5"/>
    </properties>
   </object>
   <object id="27" name="secret1" type="3" x="48" y="464" width="96" height="96"/>
@@ -94,7 +94,11 @@
   <object id="34" name="killer3" x="1008" y="544" width="16" height="16"/>
  </objectgroup>
  <objectgroup color="#1cd8fb" name="shadows">
-  <object id="35" name="shadowgreen" type="0" x="304" y="384" width="808" height="176"/>
+  <object id="35" name="shadowgreen" type="0" x="304" y="384" width="808" height="176">
+   <properties>
+    <property name="hue_value" value="0.18"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup color="#1b6cfd" name="raycasters"/>
  <objectgroup name="frontgroundmask">

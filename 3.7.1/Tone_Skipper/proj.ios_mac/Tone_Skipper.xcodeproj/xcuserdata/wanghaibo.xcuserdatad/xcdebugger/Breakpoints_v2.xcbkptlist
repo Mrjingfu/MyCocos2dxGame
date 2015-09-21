@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Actors/Player.cpp"
-            timestampString = "464356384.634051"
+            timestampString = "464520374.141374"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "313"
-            endingLineNumber = "313"
+            startingLineNumber = "358"
+            endingLineNumber = "358"
             landmarkName = "Player::onEnterRunState()"
             landmarkType = "5">
          </BreakpointContent>
@@ -314,11 +314,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Actors/Player.cpp"
-            timestampString = "464356384.634051"
+            timestampString = "464520374.141374"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "302"
-            endingLineNumber = "302"
+            startingLineNumber = "347"
+            endingLineNumber = "347"
             landmarkName = "Player::onEnterIdleState()"
             landmarkType = "5">
          </BreakpointContent>
@@ -330,11 +330,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Actors/Player.cpp"
-            timestampString = "464356384.634051"
+            timestampString = "464520374.141374"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "306"
-            endingLineNumber = "306"
+            startingLineNumber = "351"
+            endingLineNumber = "351"
             landmarkName = "Player::onEnterIdleState()"
             landmarkType = "5">
          </BreakpointContent>
@@ -362,11 +362,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Actors/Player.cpp"
-            timestampString = "464356384.634051"
+            timestampString = "464520374.141374"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "333"
-            endingLineNumber = "333"
+            startingLineNumber = "378"
+            endingLineNumber = "378"
             landmarkName = "Player::onEnterRunState()"
             landmarkType = "5">
          </BreakpointContent>
@@ -378,11 +378,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Actors/Player.cpp"
-            timestampString = "464356384.634051"
+            timestampString = "464520374.141374"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "305"
-            endingLineNumber = "305"
+            startingLineNumber = "350"
+            endingLineNumber = "350"
             landmarkName = "Player::onEnterIdleState()"
             landmarkType = "5">
          </BreakpointContent>
@@ -442,11 +442,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Actors/Player.cpp"
-            timestampString = "464356384.634051"
+            timestampString = "464520374.141374"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "340"
-            endingLineNumber = "340"
+            startingLineNumber = "385"
+            endingLineNumber = "385"
             landmarkName = "Player::onEnterJumpState()"
             landmarkType = "5">
          </BreakpointContent>
@@ -458,11 +458,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Actors/Player.cpp"
-            timestampString = "464356384.634051"
+            timestampString = "464520374.141374"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "357"
-            endingLineNumber = "357"
+            startingLineNumber = "402"
+            endingLineNumber = "402"
             landmarkName = "Player::onEnterJumpState()"
             landmarkType = "5">
          </BreakpointContent>
@@ -490,11 +490,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Actors/Player.cpp"
-            timestampString = "464356384.634051"
+            timestampString = "464520374.141374"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "324"
-            endingLineNumber = "324"
+            startingLineNumber = "369"
+            endingLineNumber = "369"
             landmarkName = "Player::onEnterRunState()"
             landmarkType = "5">
          </BreakpointContent>
@@ -506,11 +506,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Actors/Player.cpp"
-            timestampString = "464356384.634051"
+            timestampString = "464520374.141374"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "320"
-            endingLineNumber = "320"
+            startingLineNumber = "365"
+            endingLineNumber = "365"
             landmarkName = "Player::onEnterRunState()"
             landmarkType = "5">
          </BreakpointContent>
@@ -522,11 +522,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Actors/Player.cpp"
-            timestampString = "464356384.634051"
+            timestampString = "464520374.141374"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "297"
-            endingLineNumber = "297"
+            startingLineNumber = "342"
+            endingLineNumber = "342"
             landmarkName = "Player::onEnterIdleState()"
             landmarkType = "5">
          </BreakpointContent>
@@ -538,11 +538,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Actors/Player.cpp"
-            timestampString = "464356384.634051"
+            timestampString = "464520374.141374"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "322"
-            endingLineNumber = "322"
+            startingLineNumber = "367"
+            endingLineNumber = "367"
             landmarkName = "Player::onEnterRunState()"
             landmarkType = "5">
          </BreakpointContent>
@@ -554,11 +554,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Mgrs/MapMgrs.cpp"
-            timestampString = "464349963.72183"
+            timestampString = "464512434.93091"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "163"
-            endingLineNumber = "163"
+            startingLineNumber = "168"
+            endingLineNumber = "168"
             landmarkName = "MapMgrs::checkRayCast(const cocos2d::Rect&amp; rect, Vec2&amp; velocity, Actor::RAYCAST_TYPE&amp; type, bool ignoreAdjust)"
             landmarkType = "5">
          </BreakpointContent>
@@ -586,11 +586,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Mgrs/MapMgrs.cpp"
-            timestampString = "464349963.72183"
+            timestampString = "464512434.93091"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "159"
-            endingLineNumber = "159"
+            startingLineNumber = "164"
+            endingLineNumber = "164"
             landmarkName = "MapMgrs::checkRayCast(const cocos2d::Rect&amp; rect, Vec2&amp; velocity, Actor::RAYCAST_TYPE&amp; type, bool ignoreAdjust)"
             landmarkType = "5">
          </BreakpointContent>
@@ -602,11 +602,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Mgrs/MapMgrs.cpp"
-            timestampString = "464349963.72183"
+            timestampString = "464512434.93091"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "160"
-            endingLineNumber = "160"
+            startingLineNumber = "165"
+            endingLineNumber = "165"
             landmarkName = "MapMgrs::checkRayCast(const cocos2d::Rect&amp; rect, Vec2&amp; velocity, Actor::RAYCAST_TYPE&amp; type, bool ignoreAdjust)"
             landmarkType = "5">
          </BreakpointContent>
@@ -618,11 +618,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Mgrs/MapMgrs.cpp"
-            timestampString = "464349963.72183"
+            timestampString = "464512434.93091"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "185"
-            endingLineNumber = "185"
+            startingLineNumber = "190"
+            endingLineNumber = "190"
             landmarkName = "MapMgrs::checkRayCast(const cocos2d::Rect&amp; rect, Vec2&amp; velocity, Actor::RAYCAST_TYPE&amp; type, bool ignoreAdjust)"
             landmarkType = "5">
          </BreakpointContent>
@@ -698,11 +698,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Mgrs/MapMgrs.cpp"
-            timestampString = "464349963.72183"
+            timestampString = "464512434.93091"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "168"
-            endingLineNumber = "168"
+            startingLineNumber = "173"
+            endingLineNumber = "173"
             landmarkName = "MapMgrs::checkRayCast(const cocos2d::Rect&amp; rect, Vec2&amp; velocity, Actor::RAYCAST_TYPE&amp; type, bool ignoreAdjust)"
             landmarkType = "5">
          </BreakpointContent>
@@ -714,11 +714,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Actors/Player.cpp"
-            timestampString = "464324123.549847"
+            timestampString = "464519741.899304"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "56"
-            endingLineNumber = "56"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
             landmarkName = "Player::update(float delta)"
             landmarkType = "5">
          </BreakpointContent>
@@ -730,11 +730,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Mgrs/MapMgrs.cpp"
-            timestampString = "464349963.72183"
+            timestampString = "464512434.93091"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "165"
-            endingLineNumber = "165"
+            startingLineNumber = "170"
+            endingLineNumber = "170"
             landmarkName = "MapMgrs::checkRayCast(const cocos2d::Rect&amp; rect, Vec2&amp; velocity, Actor::RAYCAST_TYPE&amp; type, bool ignoreAdjust)"
             landmarkType = "5">
          </BreakpointContent>
@@ -746,11 +746,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Mgrs/MapMgrs.cpp"
-            timestampString = "464349963.72183"
+            timestampString = "464519741.899304"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "532"
-            endingLineNumber = "532"
+            startingLineNumber = "570"
+            endingLineNumber = "570"
             landmarkName = "MapMgrs::initPlayer()"
             landmarkType = "5">
          </BreakpointContent>
@@ -762,11 +762,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Mgrs/MapMgrs.cpp"
-            timestampString = "464349963.72183"
+            timestampString = "464519741.899304"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "541"
-            endingLineNumber = "541"
+            startingLineNumber = "580"
+            endingLineNumber = "580"
             landmarkName = "MapMgrs::initPlayer()"
             landmarkType = "5">
          </BreakpointContent>
@@ -778,11 +778,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Actors/Actor.cpp"
-            timestampString = "464324123.549847"
+            timestampString = "464521039.582311"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "56"
-            endingLineNumber = "56"
+            startingLineNumber = "61"
+            endingLineNumber = "61"
             landmarkName = "Actor::showDebug(bool debug)"
             landmarkType = "5">
          </BreakpointContent>
@@ -842,11 +842,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Actors/Actor.cpp"
-            timestampString = "464324123.549847"
+            timestampString = "464521039.582311"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "57"
-            endingLineNumber = "57"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
             landmarkName = "Actor::showDebug(bool debug)"
             landmarkType = "5">
          </BreakpointContent>
@@ -986,11 +986,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Mgrs/MapMgrs.cpp"
-            timestampString = "464349963.72183"
+            timestampString = "464512434.93091"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "155"
-            endingLineNumber = "155"
+            startingLineNumber = "160"
+            endingLineNumber = "160"
             landmarkName = "MapMgrs::checkRayCast(const cocos2d::Rect&amp; rect, Vec2&amp; velocity, Actor::RAYCAST_TYPE&amp; type, bool ignoreAdjust)"
             landmarkType = "5">
          </BreakpointContent>
@@ -1018,11 +1018,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Mgrs/MapMgrs.cpp"
-            timestampString = "464349963.72183"
+            timestampString = "464512434.93091"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "175"
-            endingLineNumber = "175"
+            startingLineNumber = "180"
+            endingLineNumber = "180"
             landmarkName = "MapMgrs::checkRayCast(const cocos2d::Rect&amp; rect, Vec2&amp; velocity, Actor::RAYCAST_TYPE&amp; type, bool ignoreAdjust)"
             landmarkType = "5">
          </BreakpointContent>
@@ -1034,11 +1034,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Mgrs/MapMgrs.cpp"
-            timestampString = "464349963.72183"
+            timestampString = "464512434.93091"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "174"
-            endingLineNumber = "174"
+            startingLineNumber = "179"
+            endingLineNumber = "179"
             landmarkName = "MapMgrs::checkRayCast(const cocos2d::Rect&amp; rect, Vec2&amp; velocity, Actor::RAYCAST_TYPE&amp; type, bool ignoreAdjust)"
             landmarkType = "5">
          </BreakpointContent>
@@ -1050,7 +1050,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Mgrs/MapMgrs.cpp"
-            timestampString = "464349963.72183"
+            timestampString = "464512434.93091"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "85"
@@ -1066,11 +1066,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Actors/Player.cpp"
-            timestampString = "464356384.634051"
+            timestampString = "464520374.141374"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "102"
-            endingLineNumber = "102"
+            startingLineNumber = "108"
+            endingLineNumber = "108"
             landmarkName = "Player::updatePosition(float delta)"
             landmarkType = "5">
          </BreakpointContent>
@@ -1082,11 +1082,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Actors/Player.cpp"
-            timestampString = "464356384.634051"
+            timestampString = "464520374.141374"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "99"
-            endingLineNumber = "99"
+            startingLineNumber = "105"
+            endingLineNumber = "105"
             landmarkName = "Player::updatePosition(float delta)"
             landmarkType = "5">
          </BreakpointContent>
@@ -1098,11 +1098,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Mgrs/MapMgrs.cpp"
-            timestampString = "464349963.72183"
+            timestampString = "464512434.93091"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "235"
-            endingLineNumber = "235"
+            startingLineNumber = "240"
+            endingLineNumber = "240"
             landmarkName = "MapMgrs::checkCollision(const cocos2d::Rect&amp; rect, Vec2&amp; velocity, int&amp; flag)"
             landmarkType = "5">
          </BreakpointContent>
@@ -1114,39 +1114,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Mgrs/MapMgrs.cpp"
-            timestampString = "464349963.72183"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "227"
-            endingLineNumber = "227"
-            landmarkName = "MapMgrs::checkCollision(const cocos2d::Rect&amp; rect, Vec2&amp; velocity, int&amp; flag)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../Classes/Mgrs/MapMgrs.cpp"
-            timestampString = "464349963.72183"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "177"
-            endingLineNumber = "177"
-            landmarkName = "MapMgrs::checkRayCast(const cocos2d::Rect&amp; rect, Vec2&amp; velocity, Actor::RAYCAST_TYPE&amp; type, bool ignoreAdjust)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../Classes/Mgrs/MapMgrs.cpp"
-            timestampString = "464349963.72183"
+            timestampString = "464512434.93091"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "232"
@@ -1162,7 +1130,23 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Mgrs/MapMgrs.cpp"
-            timestampString = "464349963.72183"
+            timestampString = "464512434.93091"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "182"
+            endingLineNumber = "182"
+            landmarkName = "MapMgrs::checkRayCast(const cocos2d::Rect&amp; rect, Vec2&amp; velocity, Actor::RAYCAST_TYPE&amp; type, bool ignoreAdjust)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/Mgrs/MapMgrs.cpp"
+            timestampString = "464512434.93091"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "237"
@@ -1178,11 +1162,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Mgrs/MapMgrs.cpp"
-            timestampString = "464349963.72183"
+            timestampString = "464512434.93091"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "246"
-            endingLineNumber = "246"
+            startingLineNumber = "242"
+            endingLineNumber = "242"
             landmarkName = "MapMgrs::checkCollision(const cocos2d::Rect&amp; rect, Vec2&amp; velocity, int&amp; flag)"
             landmarkType = "5">
          </BreakpointContent>
@@ -1194,43 +1178,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Mgrs/MapMgrs.cpp"
-            timestampString = "464349963.72183"
+            timestampString = "464512434.93091"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "232"
-            endingLineNumber = "232"
-            landmarkName = "MapMgrs::checkCollision(const cocos2d::Rect&amp; rect, Vec2&amp; velocity, int&amp; flag)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../Classes/Actors/Player.cpp"
-            timestampString = "464330709.615786"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "81"
-            endingLineNumber = "81"
-            landmarkName = "Player::updatePosition(float delta)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../Classes/Mgrs/MapMgrs.cpp"
-            timestampString = "464349963.72183"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "230"
-            endingLineNumber = "230"
+            startingLineNumber = "251"
+            endingLineNumber = "251"
             landmarkName = "MapMgrs::checkCollision(const cocos2d::Rect&amp; rect, Vec2&amp; velocity, int&amp; flag)"
             landmarkType = "5">
          </BreakpointContent>
@@ -1242,11 +1194,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Mgrs/MapMgrs.cpp"
-            timestampString = "464349963.72183"
+            timestampString = "464512434.93091"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "223"
-            endingLineNumber = "223"
+            startingLineNumber = "237"
+            endingLineNumber = "237"
             landmarkName = "MapMgrs::checkCollision(const cocos2d::Rect&amp; rect, Vec2&amp; velocity, int&amp; flag)"
             landmarkType = "5">
          </BreakpointContent>
@@ -1258,11 +1210,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Actors/Player.cpp"
-            timestampString = "464330709.615786"
+            timestampString = "464520374.141374"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "74"
-            endingLineNumber = "74"
+            startingLineNumber = "87"
+            endingLineNumber = "87"
             landmarkName = "Player::updatePosition(float delta)"
             landmarkType = "5">
          </BreakpointContent>
@@ -1274,11 +1226,59 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Mgrs/MapMgrs.cpp"
-            timestampString = "464349963.72183"
+            timestampString = "464512434.93091"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "178"
-            endingLineNumber = "178"
+            startingLineNumber = "235"
+            endingLineNumber = "235"
+            landmarkName = "MapMgrs::checkCollision(const cocos2d::Rect&amp; rect, Vec2&amp; velocity, int&amp; flag)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/Mgrs/MapMgrs.cpp"
+            timestampString = "464512434.93091"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "228"
+            endingLineNumber = "228"
+            landmarkName = "MapMgrs::checkCollision(const cocos2d::Rect&amp; rect, Vec2&amp; velocity, int&amp; flag)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/Actors/Player.cpp"
+            timestampString = "464520374.141374"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "80"
+            endingLineNumber = "80"
+            landmarkName = "Player::updatePosition(float delta)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/Mgrs/MapMgrs.cpp"
+            timestampString = "464512434.93091"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "183"
+            endingLineNumber = "183"
             landmarkName = "MapMgrs::checkRayCast(const cocos2d::Rect&amp; rect, Vec2&amp; velocity, Actor::RAYCAST_TYPE&amp; type, bool ignoreAdjust)"
             landmarkType = "5">
          </BreakpointContent>
@@ -1290,11 +1290,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Actors/Player.cpp"
-            timestampString = "464356384.634051"
+            timestampString = "464520374.141374"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "123"
-            endingLineNumber = "123"
+            startingLineNumber = "129"
+            endingLineNumber = "129"
             landmarkName = "Player::updatePosition(float delta)"
             landmarkType = "5">
          </BreakpointContent>
@@ -1306,11 +1306,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Actors/Player.cpp"
-            timestampString = "464330709.615786"
+            timestampString = "464520374.141374"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "73"
-            endingLineNumber = "73"
+            startingLineNumber = "79"
+            endingLineNumber = "79"
             landmarkName = "Player::updatePosition(float delta)"
             landmarkType = "5">
          </BreakpointContent>
@@ -1322,11 +1322,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Actors/Player.cpp"
-            timestampString = "464356747.796211"
+            timestampString = "464520374.141374"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "91"
-            endingLineNumber = "91"
+            startingLineNumber = "97"
+            endingLineNumber = "97"
             landmarkName = "Player::updatePosition(float delta)"
             landmarkType = "5">
          </BreakpointContent>
@@ -1338,11 +1338,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Actors/Player.cpp"
-            timestampString = "464330709.615786"
+            timestampString = "464520374.141374"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "78"
-            endingLineNumber = "78"
+            startingLineNumber = "84"
+            endingLineNumber = "84"
             landmarkName = "Player::updatePosition(float delta)"
             landmarkType = "5">
          </BreakpointContent>
@@ -1354,11 +1354,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Actors/Player.cpp"
-            timestampString = "464356384.634051"
+            timestampString = "464520374.141374"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "134"
-            endingLineNumber = "134"
+            startingLineNumber = "140"
+            endingLineNumber = "140"
             landmarkName = "Player::updatePosition(float delta)"
             landmarkType = "5">
          </BreakpointContent>
@@ -1370,11 +1370,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Mgrs/MapMgrs.cpp"
-            timestampString = "464349963.72183"
+            timestampString = "464512434.93091"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "176"
-            endingLineNumber = "176"
+            startingLineNumber = "181"
+            endingLineNumber = "181"
             landmarkName = "MapMgrs::checkRayCast(const cocos2d::Rect&amp; rect, Vec2&amp; velocity, Actor::RAYCAST_TYPE&amp; type, bool ignoreAdjust)"
             landmarkType = "5">
          </BreakpointContent>
@@ -1386,11 +1386,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Mgrs/MapMgrs.cpp"
-            timestampString = "464349963.72183"
+            timestampString = "464512434.93091"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "280"
-            endingLineNumber = "280"
+            startingLineNumber = "285"
+            endingLineNumber = "285"
             landmarkName = "MapMgrs::checkTrigger(const cocos2d::Rect&amp; rect, Actor::TRIGGER_TYPE&amp; type)"
             landmarkType = "5">
          </BreakpointContent>
@@ -1402,11 +1402,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Actors/Player.cpp"
-            timestampString = "464356384.634051"
+            timestampString = "464520374.141374"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "164"
-            endingLineNumber = "164"
+            startingLineNumber = "170"
+            endingLineNumber = "170"
             landmarkName = "Player::checkTriggers()"
             landmarkType = "5">
          </BreakpointContent>
@@ -1418,11 +1418,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Actors/Player.cpp"
-            timestampString = "464356384.634051"
+            timestampString = "464520374.141374"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "161"
-            endingLineNumber = "161"
+            startingLineNumber = "167"
+            endingLineNumber = "167"
             landmarkName = "Player::checkTriggers()"
             landmarkType = "5">
          </BreakpointContent>
@@ -1434,11 +1434,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Mgrs/MapMgrs.cpp"
-            timestampString = "464349963.72183"
+            timestampString = "464512434.93091"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "259"
-            endingLineNumber = "259"
+            startingLineNumber = "264"
+            endingLineNumber = "264"
             landmarkName = "MapMgrs::checkTrigger(const cocos2d::Rect&amp; rect, Actor::TRIGGER_TYPE&amp; type)"
             landmarkType = "5">
          </BreakpointContent>
@@ -1450,11 +1450,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Mgrs/MapMgrs.cpp"
-            timestampString = "464349963.72183"
+            timestampString = "464519741.899304"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "658"
-            endingLineNumber = "658"
+            startingLineNumber = "733"
+            endingLineNumber = "733"
             landmarkName = "MapMgrs::updatePlayers(float delta)"
             landmarkType = "5">
          </BreakpointContent>
@@ -1562,11 +1562,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Mgrs/MapMgrs.cpp"
-            timestampString = "464349963.72183"
+            timestampString = "464519741.899304"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "660"
-            endingLineNumber = "660"
+            startingLineNumber = "735"
+            endingLineNumber = "735"
             landmarkName = "MapMgrs::updatePlayers(float delta)"
             landmarkType = "5">
          </BreakpointContent>
@@ -1706,11 +1706,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Actors/Player.cpp"
-            timestampString = "464356384.634051"
+            timestampString = "464520374.141374"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "149"
-            endingLineNumber = "149"
+            startingLineNumber = "155"
+            endingLineNumber = "155"
             landmarkName = "Player::updatePosition(float delta)"
             landmarkType = "5">
          </BreakpointContent>
@@ -1722,11 +1722,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Actors/Player.cpp"
-            timestampString = "464356384.634051"
+            timestampString = "464520374.141374"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "154"
-            endingLineNumber = "154"
+            startingLineNumber = "160"
+            endingLineNumber = "160"
             landmarkName = "Player::updatePosition(float delta)"
             landmarkType = "5">
          </BreakpointContent>
@@ -1738,11 +1738,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Actors/Player.cpp"
-            timestampString = "464356384.634051"
+            timestampString = "464520374.141374"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "475"
-            endingLineNumber = "475"
+            startingLineNumber = "520"
+            endingLineNumber = "520"
             landmarkName = "Player::onEnterSquatState()"
             landmarkType = "5">
          </BreakpointContent>
@@ -2010,11 +2010,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Mgrs/MapMgrs.cpp"
-            timestampString = "464349963.72183"
+            timestampString = "464512434.93091"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "77"
-            endingLineNumber = "77"
+            startingLineNumber = "78"
+            endingLineNumber = "78"
             landmarkName = "MapMgrs::loadMap(const std::string&amp; strFile)"
             landmarkType = "5">
          </BreakpointContent>
@@ -2058,7 +2058,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Mgrs/MapMgrs.cpp"
-            timestampString = "464349963.72183"
+            timestampString = "464512434.93091"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "78"
@@ -2074,11 +2074,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Mgrs/MapMgrs.cpp"
-            timestampString = "464349963.72183"
+            timestampString = "464519741.899304"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "547"
-            endingLineNumber = "547"
+            startingLineNumber = "586"
+            endingLineNumber = "586"
             landmarkName = "MapMgrs::initPlayer()"
             landmarkType = "5">
          </BreakpointContent>
@@ -2090,11 +2090,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Mgrs/MapMgrs.cpp"
-            timestampString = "464349963.72183"
+            timestampString = "464519741.899304"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "637"
-            endingLineNumber = "637"
+            startingLineNumber = "712"
+            endingLineNumber = "712"
             landmarkName = "MapMgrs::initFrontgroundMask()"
             landmarkType = "5">
          </BreakpointContent>
@@ -2106,7 +2106,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Mgrs/MapMgrs.cpp"
-            timestampString = "464349963.72183"
+            timestampString = "464512434.93091"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "83"
@@ -2122,11 +2122,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Mgrs/MapMgrs.cpp"
-            timestampString = "464349963.72183"
+            timestampString = "464512434.93091"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "245"
-            endingLineNumber = "245"
+            startingLineNumber = "250"
+            endingLineNumber = "250"
             landmarkName = "MapMgrs::checkCollision(const cocos2d::Rect&amp; rect, Vec2&amp; velocity, int&amp; flag)"
             landmarkType = "5">
          </BreakpointContent>
@@ -2138,11 +2138,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Mgrs/MapMgrs.cpp"
-            timestampString = "464349963.72183"
+            timestampString = "464512434.93091"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "192"
-            endingLineNumber = "192"
+            startingLineNumber = "197"
+            endingLineNumber = "197"
             landmarkName = "MapMgrs::checkCollision(const cocos2d::Rect&amp; rect, Vec2&amp; velocity, int&amp; flag)"
             landmarkType = "5">
          </BreakpointContent>
@@ -2154,11 +2154,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Mgrs/MapMgrs.cpp"
-            timestampString = "464349963.72183"
+            timestampString = "464512434.93091"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "199"
-            endingLineNumber = "199"
+            startingLineNumber = "204"
+            endingLineNumber = "204"
             landmarkName = "MapMgrs::checkCollision(const cocos2d::Rect&amp; rect, Vec2&amp; velocity, int&amp; flag)"
             landmarkType = "5">
          </BreakpointContent>
@@ -2170,11 +2170,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Mgrs/MapMgrs.cpp"
-            timestampString = "464349963.72183"
+            timestampString = "464512434.93091"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "213"
-            endingLineNumber = "213"
+            startingLineNumber = "218"
+            endingLineNumber = "218"
             landmarkName = "MapMgrs::checkCollision(const cocos2d::Rect&amp; rect, Vec2&amp; velocity, int&amp; flag)"
             landmarkType = "5">
          </BreakpointContent>
@@ -2186,11 +2186,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Mgrs/MapMgrs.cpp"
-            timestampString = "464349963.72183"
+            timestampString = "464512434.93091"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "202"
-            endingLineNumber = "202"
+            startingLineNumber = "207"
+            endingLineNumber = "207"
             landmarkName = "MapMgrs::checkCollision(const cocos2d::Rect&amp; rect, Vec2&amp; velocity, int&amp; flag)"
             landmarkType = "5">
          </BreakpointContent>
@@ -2218,11 +2218,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Mgrs/MapMgrs.cpp"
-            timestampString = "464349963.72183"
+            timestampString = "464512309.599876"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "66"
-            endingLineNumber = "66"
+            startingLineNumber = "67"
+            endingLineNumber = "67"
             landmarkName = "MapMgrs::loadMap(const std::string&amp; strFile)"
             landmarkType = "5">
          </BreakpointContent>
@@ -2234,11 +2234,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Mgrs/MapMgrs.cpp"
-            timestampString = "464349963.72183"
+            timestampString = "464519741.899304"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "685"
-            endingLineNumber = "685"
+            startingLineNumber = "760"
+            endingLineNumber = "760"
             landmarkName = "MapMgrs::updateCamera(float delta)"
             landmarkType = "5">
          </BreakpointContent>
@@ -2250,12 +2250,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Mgrs/MapMgrs.cpp"
-            timestampString = "464349963.72183"
+            timestampString = "464519741.899304"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "686"
-            endingLineNumber = "686"
-            landmarkName = "MapMgrs::showTips(const cocos2d::Vec2&amp; pos, const std::string&amp; tips)"
+            startingLineNumber = "761"
+            endingLineNumber = "761"
+            landmarkName = "MapMgrs::updateCamera(float delta)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2266,11 +2266,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Mgrs/MapMgrs.cpp"
-            timestampString = "464349963.72183"
+            timestampString = "464519741.899304"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "607"
-            endingLineNumber = "607"
+            startingLineNumber = "682"
+            endingLineNumber = "682"
             landmarkName = "MapMgrs::initFrontgroundMask()"
             landmarkType = "5">
          </BreakpointContent>
@@ -2282,11 +2282,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Mgrs/MapMgrs.cpp"
-            timestampString = "464349963.72183"
+            timestampString = "464519741.899304"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "530"
-            endingLineNumber = "530"
+            startingLineNumber = "568"
+            endingLineNumber = "568"
             landmarkName = "MapMgrs::initPlayer()"
             landmarkType = "5">
          </BreakpointContent>
@@ -2298,11 +2298,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Actors/Player.cpp"
-            timestampString = "464356384.634051"
+            timestampString = "464520374.141374"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "270"
-            endingLineNumber = "270"
+            startingLineNumber = "315"
+            endingLineNumber = "315"
             landmarkName = "Player::setPlayerDirection(PLayerDirection direction)"
             landmarkType = "5">
          </BreakpointContent>
@@ -2314,11 +2314,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Mgrs/MapMgrs.cpp"
-            timestampString = "464349963.72183"
+            timestampString = "464512434.93091"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "264"
-            endingLineNumber = "264"
+            startingLineNumber = "269"
+            endingLineNumber = "269"
             landmarkName = "MapMgrs::checkTrigger(const cocos2d::Rect&amp; rect, Actor::TRIGGER_TYPE&amp; type)"
             landmarkType = "5">
          </BreakpointContent>
@@ -2330,11 +2330,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Mgrs/MapMgrs.cpp"
-            timestampString = "464349963.72183"
+            timestampString = "464512434.93091"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "275"
-            endingLineNumber = "275"
+            startingLineNumber = "280"
+            endingLineNumber = "280"
             landmarkName = "MapMgrs::checkTrigger(const cocos2d::Rect&amp; rect, Actor::TRIGGER_TYPE&amp; type)"
             landmarkType = "5">
          </BreakpointContent>
@@ -2362,11 +2362,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Mgrs/MapMgrs.cpp"
-            timestampString = "464349963.72183"
+            timestampString = "464512434.93091"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "290"
-            endingLineNumber = "290"
+            startingLineNumber = "295"
+            endingLineNumber = "295"
             landmarkName = "MapMgrs::checkUsableItems(const cocos2d::Rect&amp; rect, Actor::USABLE_ITEM_TYPE&amp; type)"
             landmarkType = "5">
          </BreakpointContent>
@@ -2378,11 +2378,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Mgrs/MapMgrs.cpp"
-            timestampString = "464349963.72183"
+            timestampString = "464512434.93091"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "308"
-            endingLineNumber = "308"
+            startingLineNumber = "313"
+            endingLineNumber = "313"
             landmarkName = "MapMgrs::checkUsableItems(const cocos2d::Rect&amp; rect, Actor::USABLE_ITEM_TYPE&amp; type)"
             landmarkType = "5">
          </BreakpointContent>
@@ -2410,11 +2410,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Actors/Player.cpp"
-            timestampString = "464325760.453504"
+            timestampString = "464519741.899304"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "53"
-            endingLineNumber = "53"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
             landmarkName = "Player::update(float delta)"
             landmarkType = "5">
          </BreakpointContent>
@@ -2442,11 +2442,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Actors/Player.cpp"
-            timestampString = "464356384.634051"
+            timestampString = "464520374.141374"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "455"
-            endingLineNumber = "455"
+            startingLineNumber = "500"
+            endingLineNumber = "500"
             landmarkName = "Player::onEnterBackforwardRunState()"
             landmarkType = "5">
          </BreakpointContent>
@@ -2458,11 +2458,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Actors/Player.cpp"
-            timestampString = "464356384.634051"
+            timestampString = "464520374.141374"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "100"
-            endingLineNumber = "100"
+            startingLineNumber = "106"
+            endingLineNumber = "106"
             landmarkName = "Player::updatePosition(float delta)"
             landmarkType = "5">
          </BreakpointContent>
@@ -2474,11 +2474,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Actors/Player.cpp"
-            timestampString = "464356384.634051"
+            timestampString = "464520374.141374"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "110"
-            endingLineNumber = "110"
+            startingLineNumber = "116"
+            endingLineNumber = "116"
             landmarkName = "Player::updatePosition(float delta)"
             landmarkType = "5">
          </BreakpointContent>
@@ -2506,11 +2506,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Actors/Player.cpp"
-            timestampString = "464356384.634051"
+            timestampString = "464520374.141374"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "111"
-            endingLineNumber = "111"
+            startingLineNumber = "117"
+            endingLineNumber = "117"
             landmarkName = "Player::updatePosition(float delta)"
             landmarkType = "5">
          </BreakpointContent>
@@ -2538,11 +2538,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Actors/Player.cpp"
-            timestampString = "464356384.634051"
+            timestampString = "464520374.141374"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "186"
-            endingLineNumber = "186"
+            startingLineNumber = "192"
+            endingLineNumber = "192"
             landmarkName = "Player::checkOnLadder()"
             landmarkType = "5">
          </BreakpointContent>
@@ -2554,11 +2554,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Mgrs/MapMgrs.cpp"
-            timestampString = "464349963.72183"
+            timestampString = "464519741.899304"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "683"
-            endingLineNumber = "683"
+            startingLineNumber = "758"
+            endingLineNumber = "758"
             landmarkName = "MapMgrs::updateCamera(float delta)"
             landmarkType = "5">
          </BreakpointContent>
@@ -2570,11 +2570,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Mgrs/MapMgrs.cpp"
-            timestampString = "464349963.72183"
+            timestampString = "464519741.899304"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "681"
-            endingLineNumber = "681"
+            startingLineNumber = "756"
+            endingLineNumber = "756"
             landmarkName = "MapMgrs::updateCamera(float delta)"
             landmarkType = "5">
          </BreakpointContent>
@@ -2586,11 +2586,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Mgrs/MapMgrs.cpp"
-            timestampString = "464349963.72183"
+            timestampString = "464512434.93091"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "75"
-            endingLineNumber = "75"
+            startingLineNumber = "76"
+            endingLineNumber = "76"
             landmarkName = "MapMgrs::loadMap(const std::string&amp; strFile)"
             landmarkType = "5">
          </BreakpointContent>
@@ -2602,11 +2602,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Actors/Player.cpp"
-            timestampString = "464356384.634051"
+            timestampString = "464520374.141374"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "166"
-            endingLineNumber = "166"
+            startingLineNumber = "172"
+            endingLineNumber = "172"
             landmarkName = "Player::checkTriggers()"
             landmarkType = "5">
          </BreakpointContent>
@@ -2634,11 +2634,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Mgrs/MapMgrs.cpp"
-            timestampString = "464349963.72183"
+            timestampString = "464519741.899304"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "480"
-            endingLineNumber = "480"
+            startingLineNumber = "518"
+            endingLineNumber = "518"
             landmarkName = "MapMgrs::hideCoverLayer()"
             landmarkType = "5">
          </BreakpointContent>
@@ -2650,11 +2650,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Mgrs/MapMgrs.cpp"
-            timestampString = "464349963.72183"
+            timestampString = "464519741.899304"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "486"
-            endingLineNumber = "486"
+            startingLineNumber = "524"
+            endingLineNumber = "524"
             landmarkName = "MapMgrs::hideCoverLayer()"
             landmarkType = "5">
          </BreakpointContent>
@@ -2666,11 +2666,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Actors/Player.cpp"
-            timestampString = "464354118.522368"
+            timestampString = "464520374.141374"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "80"
-            endingLineNumber = "80"
+            startingLineNumber = "86"
+            endingLineNumber = "86"
             landmarkName = "Player::updatePosition(float delta)"
             landmarkType = "5">
          </BreakpointContent>
@@ -2730,11 +2730,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Actors/Player.cpp"
-            timestampString = "464356384.634051"
+            timestampString = "464520374.141374"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "235"
-            endingLineNumber = "235"
+            startingLineNumber = "280"
+            endingLineNumber = "280"
             landmarkName = "Player::setPlayerState(PlayerState state)"
             landmarkType = "5">
          </BreakpointContent>
@@ -2746,11 +2746,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Actors/Player.cpp"
-            timestampString = "464356384.634051"
+            timestampString = "464520374.141374"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "292"
-            endingLineNumber = "292"
+            startingLineNumber = "337"
+            endingLineNumber = "337"
             landmarkName = "Player::onEnterIdleState()"
             landmarkType = "5">
          </BreakpointContent>
@@ -2762,12 +2762,124 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Actors/Player.cpp"
-            timestampString = "464356384.634051"
+            timestampString = "464520374.141374"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "428"
-            endingLineNumber = "428"
+            startingLineNumber = "473"
+            endingLineNumber = "473"
             landmarkName = "Player::onEnterTurnFrontState()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/Mgrs/MapMgrs.cpp"
+            timestampString = "464519741.899304"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "607"
+            endingLineNumber = "607"
+            landmarkName = "MapMgrs::initShadows()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/Actors/Player.cpp"
+            timestampString = "464520374.141374"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "221"
+            endingLineNumber = "221"
+            landmarkName = "Player::fadeInShadow()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/Actors/Player.cpp"
+            timestampString = "464520374.141374"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "230"
+            endingLineNumber = "230"
+            landmarkName = "Player::fadeOutShadow()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/Actors/Player.cpp"
+            timestampString = "464520374.141374"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "199"
+            endingLineNumber = "199"
+            landmarkName = "Player::checkInShadow()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/Actors/Player.cpp"
+            timestampString = "464520432.822576"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
+            landmarkName = "Player::update(float delta)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/Actors/Player.cpp"
+            timestampString = "464520438.129724"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "204"
+            endingLineNumber = "204"
+            landmarkName = "Player::checkInShadow()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/Mgrs/MapMgrs.cpp"
+            timestampString = "464520473.435403"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "352"
+            endingLineNumber = "352"
+            landmarkName = "MapMgrs::checkInShadowRect(const cocos2d::Rect&amp; rect, float&amp; shadowHue)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

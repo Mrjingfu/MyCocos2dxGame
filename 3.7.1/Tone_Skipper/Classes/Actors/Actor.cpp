@@ -9,6 +9,7 @@
 #include "Actor.h"
 USING_NS_CC;
 
+float Actor::m_sfInitHue = 0;
 Actor::Actor()
 {
     m_pSprite = nullptr;
@@ -28,13 +29,17 @@ float Actor::getHue()
 {
     if(!m_pSprite)
         return 0;
-    return m_pSprite->getHue();
+    float hue = m_pSprite->getHue()/(2*M_PI);
+    return hue - (int)hue;
 }
 void Actor::setHue(float hue)
 {
     if(!m_pSprite)
         return;
-    m_pSprite->setHue(hue);
+    CCASSERT(hue >= 0 && hue<=1, "hue value must between 0 and 1!");
+    m_fHueNoChangeTime = 0;
+    m_sfInitHue = hue;
+    m_pSprite->setHue(2*M_PI*hue);
 }
 void Actor::setFlipX(bool fliped)
 {

@@ -89,6 +89,9 @@ public:
     void setPlayerDirection(PLayerDirection direction);
     PLayerDirection getPlayerLastDirection() const { return m_PlayerLastDirection;}
     
+    bool isInShadow() const { return m_bInShadow; }
+    void setInShadow(bool inShadow) { m_bInShadow = inShadow; }
+    
     void disableAcceptInput() { m_bAcceptInput = false; }
     void enableAcceptInput() { m_bAcceptInput = true; }
     
@@ -98,7 +101,10 @@ private:
     void updatePosition(float delta);
     void checkTriggers();
     void checkOnLadder();
+    void checkInShadow();
    
+    void fadeInShadow();
+    void fadeOutShadow();
 protected:
     cocos2d::Animation*       m_pIdleAnimation;
     cocos2d::Animation*       m_pRunAnimation;
@@ -120,6 +126,7 @@ protected:
     
     bool                        m_bAcceptInput;
     bool                        m_bEquipedGun;
+    bool                        m_bInShadow;
     
     bool        m_bLeftBtnPressed;
     bool        m_bRightBtnPressed;

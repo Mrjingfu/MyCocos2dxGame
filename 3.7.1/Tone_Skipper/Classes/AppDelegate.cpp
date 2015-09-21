@@ -40,10 +40,11 @@ bool AppDelegate::applicationDidFinishLaunching() {
     glview->setDesignResolutionSize(320.0f, 240.0f, ResolutionPolicy::FIXED_HEIGHT);
     
     std::vector<std::string> searchPaths;
-    searchPaths.push_back("logo");
-    searchPaths.push_back("UI");
+    searchPaths.push_back("textures");
     searchPaths.push_back("sprites");
     searchPaths.push_back("maps");
+    searchPaths.push_back("fonts");
+    searchPaths.push_back("UI");
     FileUtils::getInstance()->setSearchPaths(searchPaths);
     
 #if COCOS2D_DEBUG

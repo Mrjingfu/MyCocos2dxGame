@@ -35,6 +35,8 @@ Player::Player()
     
     m_bAcceptInput = true;
     m_bEquipedGun = false;
+    m_bInShadow   = false;
+    m_fHueNoChangeTime = 0;
     
     m_bLeftBtnPressed   = false;
     m_bRightBtnPressed  = false;
@@ -63,6 +65,10 @@ void Player::update(float delta)
     updatePosition(delta);
     
     checkTriggers();
+    
+    m_fHueNoChangeTime += delta;
+    if(m_fHueNoChangeTime >= HueNoChangeMaxTime)
+        checkInShadow();
     
 #if COCOS2D_DEBUG
     showDebug(true);
@@ -186,6 +192,45 @@ void Player::checkOnLadder()
             m_bOnLadder = false;
         }
     }
+}
+void Player::checkInShadow()
+{
+    cocos2d::Rect rect = getBoundingBox();
+    rect.origin += getPosition();
+    float shadowHue;
+    bool inShadowRect = MapMgrs::getInstance()->checkInShadowRect(rect, shadowHue);
+    if(inShadowRect)
+    {
+        float currentHue = getHue();
+        if(fabs(currentHue - shadowHue) <= HueMaxDiff)
+            fadeInShadow();
+        else
+            fadeOutShadow();
+    }
+    else
+    {
+        if(m_bInShadow)
+            fadeOutShadow();
+    }
+
+}
+void Player::fadeInShadow()
+{
+    if(m_bInShadow || !m_pSprite)
+        return;
+    EaseSineIn* fadeIn = EaseSineIn::create(FadeTo::create(0.5f, 128));
+    CallFunc* callback = CallFunc::create(CC_CALLBACK_0(Player::setInShadow, this, true));
+    Sequence* sequence = Sequence::create(fadeIn, callback, NULL);
+    m_pSprite->runAction(sequence);
+}
+void Player::fadeOutShadow()
+{
+    if(!m_bInShadow || !m_pSprite)
+        return;
+    EaseSineOut* fadeOut = EaseSineOut::create(FadeTo::create(0.5f, 255));
+    CallFunc* callback = CallFunc::create(CC_CALLBACK_0(Player::setInShadow, this, false));
+    Sequence* sequence = Sequence::create(fadeOut, callback, NULL);
+    m_pSprite->runAction(sequence);
 }
 void Player::setPlayerState(PlayerState state)
 {
