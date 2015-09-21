@@ -491,11 +491,14 @@ void Nilo::onDownBtnPressed()
         switch (type) {
             case Actor::UIT_LADDER:
             {
-                m_bOnLadder = true;
-                if(m_PlayerDirection != PD_BACK)
-                    setPlayerState(PS_TURNBACK);
-                else
-                    setPlayerState(PS_BACKFORWARDRUN);
+                if(m_bOnLand)
+                {
+                    m_bOnLadder = true;
+                    if(m_PlayerDirection != PD_BACK)
+                        setPlayerState(PS_TURNBACK);
+                    else
+                        setPlayerState(PS_BACKFORWARDRUN);
+                }
             }
                 break;
             default:
