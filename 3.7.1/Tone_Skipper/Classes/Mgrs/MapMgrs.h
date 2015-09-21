@@ -45,6 +45,7 @@ public:
     bool checkCollision(const cocos2d::Rect& rect, cocos2d::Vec2& velocity, int& flag);
     bool checkTrigger(const cocos2d::Rect& rect, Actor::TRIGGER_TYPE& type);
     bool checkUsableItems(const cocos2d::Rect& rect, Actor::USABLE_ITEM_TYPE& type);
+    bool checkInShadowRect(const cocos2d::Rect& rect, float& shadowHue);
     
     Player* getNilo() const { return m_pNilo; }
     Player* getPudge() const {return m_pPudge;}
@@ -55,6 +56,7 @@ public:
 private:
     bool initCamera();
     bool initPlayer();
+    bool initShadows();
     bool initBackgroundMask();
     bool initFrontgroundMask();
     
@@ -72,6 +74,7 @@ private:
     cocos2d::Layer*                         m_pFrontgroundColorMaskLayer;
     
     cocos2d::Layer*                         m_pMainLayer;
+    cocos2d::Layer*                         m_pShadowLayer;
     cocos2d::TMXTiledMap*                   m_pCurrentTiledMap;
     cocos2d::TMXLayer*                      m_pCoverLayer;
     bool                                    m_pCoverLayerVisable;
@@ -91,7 +94,6 @@ private:
     Player*                                 m_pNilo;
     Player*                                 m_pPudge;
     cocos2d::DrawNode*                      m_pDebugDrawNode;
-    
     
     std::string                             m_strBornPointName;
 };

@@ -28,6 +28,7 @@ MapMgrs::MapMgrs()
     m_FrontgroundMaskColorType = MCT_NONE;
     m_pFrontgroundColorMaskLayer = nullptr;
     m_pMainLayer = nullptr;
+    m_pShadowLayer = nullptr;
     m_pNilo = nullptr;
     m_pMainCamera = nullptr;
     
@@ -75,7 +76,6 @@ bool MapMgrs::loadMap(const std::string& strFile)
     m_pCoverLayer = m_pCurrentTiledMap->getLayer("coverlayer");
     if(m_pCoverLayer)
         m_pCoverLayer->removeFromParent();
-    m_pMainLayer->addChild(m_pCurrentTiledMap);
     
     cocos2d::Size mapSize = m_pCurrentTiledMap->getMapSize();
     cocos2d::Size tileSize = m_pCurrentTiledMap->getTileSize();
@@ -114,6 +114,11 @@ bool MapMgrs::loadMap(const std::string& strFile)
     m_pFrontgroundMaskObjects = m_pCurrentTiledMap->getObjectGroup("frontgroundmask");
     if(!m_pFrontgroundMaskObjects)
         return false;
+    
+    if(!initShadows())
+        return false;
+    
+    m_pMainLayer->addChild(m_pCurrentTiledMap);
     
     if(!initFrontgroundMask())
         return false;
@@ -315,6 +320,39 @@ bool MapMgrs::checkUsableItems(const cocos2d::Rect& rect, Actor::USABLE_ITEM_TYP
                     default:
                         break;
                 }
+                ret = true;
+                break;
+            }
+        }
+    }
+    return ret;
+}
+bool MapMgrs::checkInShadowRect(const cocos2d::Rect& rect, float& shadowHue)
+{
+    if(!m_pShadowLayer || !m_pShadows)
+        return false;
+    bool ret = false;
+    ValueVector shadows = m_pShadows->getObjects();
+    for (Value value : shadows) {
+        ValueMap valuemap = value.asValueMap();
+        if(valuemap.empty())
+            continue;
+        float x = valuemap.at("x").asFloat();
+        float y = valuemap.at("y").asFloat();
+        float width = valuemap.at("width").asFloat();
+        float height = valuemap.at("height").asFloat();
+        cocos2d::Rect shadowRect = cocos2d::Rect(x, y, width, height);
+        if (shadowRect.getMaxX() - rect.size.width < rect.getMinX() || rect.getMaxX() < shadowRect.getMinX() + rect.size.width ||
+            shadowRect.getMaxY() - rect.size.height < rect.getMinY() || rect.getMaxY() < shadowRect.getMinY() + rect.size.height) {
+            ret = false;
+        }
+        else
+        {
+            std::string name = valuemap.at("name").asString();
+            HueSprite* sprite = static_cast<HueSprite*>(m_pShadowLayer->getChildByName(name));
+            if(sprite)
+            {
+                shadowHue = sprite->getHue()/(2*M_PI);
                 ret = true;
                 break;
             }
@@ -538,6 +576,7 @@ bool MapMgrs::initPlayer()
     m_pNilo->setCameraMask((unsigned short)CameraFlag::USER1);
     m_pNilo->setPosition(Vec2(colliderRect.getMidX(),y));
     m_pNilo->setPlayerDirection(direction);
+    m_pNilo->setHue(0.18);
     m_pMainLayer->addChild(m_pNilo);
     
     
@@ -551,6 +590,42 @@ bool MapMgrs::initPlayer()
     m_pPudge->setVisible(false);
     
     
+    return true;
+}
+bool MapMgrs::initShadows()
+{
+    if(!m_pMainLayer || !m_pCurrentTiledMap)
+        return false;
+    m_pShadowLayer = Layer::create();
+    if(!m_pShadowLayer)
+        return false;
+    ValueVector shadows = m_pShadows->getObjects();
+    for (Value value : shadows) {
+        ValueMap valuemap = value.asValueMap();
+        if(valuemap.empty())
+            continue;
+        float x = valuemap.at("x").asFloat();
+        float y = valuemap.at("y").asFloat();
+        float width = valuemap.at("width").asFloat();
+        float height = valuemap.at("height").asFloat();
+        std::string name = valuemap.at("name").asString();
+        float hueValue = valuemap.at("hue_value").asFloat();
+        cocos2d::Rect shadowRect = cocos2d::Rect(x, y, width, height);
+        HueSprite* shadow = HueSprite::create("shadow.png");
+        if(!shadow)
+            return false;
+        shadow->setName(name);
+        shadow->setHue(2*M_PI*hueValue);
+        shadow->setPosition(Vec2(shadowRect.getMidX(), shadowRect.getMidY()));
+        Texture2D::TexParams texRepeat = {GL_NEAREST, GL_NEAREST, GL_REPEAT, GL_REPEAT};
+        shadow->getTexture()->setTexParameters(texRepeat);
+        shadow->setTextureRect(shadowRect, true, Size(32,32));
+        shadow->setOpacity(128);
+        m_pShadowLayer->addChild(shadow);
+    }
+    m_pShadowLayer->setCascadeOpacityEnabled(true);
+    m_pShadowLayer->setCameraMask((unsigned short)CameraFlag::USER1);
+    m_pMainLayer->addChild(m_pShadowLayer);
     return true;
 }
 bool MapMgrs::initBackgroundMask()
