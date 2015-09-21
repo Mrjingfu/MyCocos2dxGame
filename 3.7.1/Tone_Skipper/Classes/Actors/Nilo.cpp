@@ -491,7 +491,7 @@ void Nilo::onDownBtnPressed()
         switch (type) {
             case Actor::UIT_LADDER:
             {
-                if(m_bOnLand)
+                if(getPlayerState() != PS_JUMP && getPlayerState() != PS_SUPERJUMP)
                 {
                     m_bOnLadder = true;
                     if(m_PlayerDirection != PD_BACK)
