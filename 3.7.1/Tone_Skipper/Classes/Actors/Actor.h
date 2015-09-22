@@ -26,14 +26,14 @@ public:
     typedef enum{
         TT_TIPS,
         TT_ROOM,
-        TT_DOOR,
-        TT_SECREAT,
         TT_UNKNOWN
     }
     TRIGGER_TYPE;
     typedef enum{
         UIT_LADDER,
-        UIT_QUESTIONBOX,
+        UIT_QUESTION_MARK,
+        UIT_DOOR,
+        UIT_SECREAT,
         UIT_UNKNOWN
     }
     USABLE_ITEM_TYPE;

@@ -24,7 +24,7 @@ bool Nilo::loadModel()
     m_pSprite = HueSprite::createWithSpriteFrameName("red_idle_01.png");
     if(!m_pSprite)
     {
-        CCLOG("Bob : Load model failed!");
+        CCLOG("Nilo : Load model failed!");
         ret = false;
     }
     m_pSprite->setAnchorPoint(Vec2(0.5f,0));
@@ -345,16 +345,7 @@ void Nilo::onLand()
     else
     {
         if(!m_bOnLadder)
-        {
-//            cocos2d::Rect rect = getBoundingBox();
-//            rect.origin += getPosition();
-//            Actor::USABLE_ITEM_TYPE type = Actor::UIT_UNKNOWN;
-//            bool available = MapMgrs::getInstance()->checkUsableItems(rect, type);
-//            if(!(available && type == Actor::UIT_LADDER))
-                setPlayerState(PS_TURNFRONT);
-//            else
-//                m_bOnLadder = true;
-        }
+            setPlayerState(PS_TURNFRONT);
     }
 }
 void Nilo::onLeftBtnPressed()
@@ -397,12 +388,12 @@ void Nilo::onUpBtnPressed()
     m_bUpBtnPressed = true;
     cocos2d::Rect rect = getBoundingBox();
     rect.origin += getPosition() + Vec2(0, m_fMaxYSpeed);
-    Actor::USABLE_ITEM_TYPE type = Actor::UIT_UNKNOWN;
+    UsableItem::USABLE_ITEM_TYPE type = UsableItem::UIT_UNKNOWN;
     bool available = MapMgrs::getInstance()->checkUsableItems(rect, type);
     if(available)
     {
         switch (type) {
-            case Actor::UIT_LADDER:
+            case UsableItem::UIT_LADDER:
                 {
                     m_bOnLadder = true;
                     if(m_PlayerDirection != PD_BACK)
@@ -411,7 +402,7 @@ void Nilo::onUpBtnPressed()
                         setPlayerState(PS_BACKFORWARDRUN);
                 }
                 break;
-            case Actor::UIT_QUESTIONBOX:
+            case UsableItem::UIT_QUESTION_MARK:
                 {
                     
                 }
@@ -484,12 +475,12 @@ void Nilo::onDownBtnPressed()
 
     cocos2d::Rect rect = getBoundingBox();
     rect.origin += getPosition() + Vec2(0, -rect.size.height-1);
-    Actor::USABLE_ITEM_TYPE type = Actor::UIT_UNKNOWN;
+    UsableItem::USABLE_ITEM_TYPE type = UsableItem::UIT_UNKNOWN;
     bool available = MapMgrs::getInstance()->checkUsableItems(rect, type);
     if(available)
     {
         switch (type) {
-            case Actor::UIT_LADDER:
+            case UsableItem::UIT_LADDER:
             {
                 if(getPlayerState() != PS_JUMP && getPlayerState() != PS_SUPERJUMP)
                 {

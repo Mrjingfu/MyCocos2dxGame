@@ -9,6 +9,7 @@
 #include "MapMgrs.h"
 #include "UtilityHelper.h"
 #include "GameConfig.h"
+#include "QuestionMark.h"
 USING_NS_CC;
 
 MapMgrs* g_pMapMgrsInstance = nullptr;
@@ -32,6 +33,11 @@ MapMgrs::MapMgrs()
     m_pNilo = nullptr;
     m_pMainCamera = nullptr;
     
+    m_pSceneItemLayer   = nullptr;
+    m_pUsableItemLayer  = nullptr;
+    m_pMonsterLayer     = nullptr;
+    m_pPlayerLayer      = nullptr;
+    
     m_pCurrentTiledMap  = nullptr;
     m_pCoverLayer       = nullptr;
     m_pCoverLayerVisable = true;
@@ -40,7 +46,7 @@ MapMgrs::MapMgrs()
     m_pColliders        = nullptr;
     m_pRayCasters       = nullptr;
     m_pTriggers         = nullptr;
-    m_pItems            = nullptr;
+    m_pUsableItems      = nullptr;
     m_pMonsters         = nullptr;
     m_pShadows          = nullptr;
     m_pFrontgroundMaskObjects = nullptr;
@@ -99,8 +105,8 @@ bool MapMgrs::loadMap(const std::string& strFile)
     if(!m_pTriggers)
         return false;
     
-    m_pItems = m_pCurrentTiledMap->getObjectGroup("items");
-    if(!m_pItems)
+    m_pUsableItems = m_pCurrentTiledMap->getObjectGroup("usableitems");
+    if(!m_pUsableItems)
         return false;
     
     m_pMonsters = m_pCurrentTiledMap->getObjectGroup("monsters");
@@ -119,6 +125,11 @@ bool MapMgrs::loadMap(const std::string& strFile)
         return false;
     
     m_pMainLayer->addChild(m_pCurrentTiledMap);
+    
+    if(!initSceneItems())
+        return false;
+    if(!initUsableItems())
+        return false;
     
     if(!initFrontgroundMask())
         return false;
@@ -139,17 +150,68 @@ bool MapMgrs::loadMap(const std::string& strFile)
 }
 void MapMgrs::unloadMap()
 {
+    if(m_pDebugDrawNode)
+    {
+        m_pDebugDrawNode->removeAllChildrenWithCleanup(true);
+        m_pDebugDrawNode = nullptr;
+    }
+    if(m_pBackgroundColorMaskLayer)
+    {
+        m_pBackgroundColorMaskLayer->removeAllChildrenWithCleanup(true);
+        m_pBackgroundColorMaskLayer = nullptr;
+    }
+    if(m_pFrontgroundColorMaskLayer)
+    {
+        m_pFrontgroundColorMaskLayer->removeAllChildrenWithCleanup(true);
+        m_pFrontgroundColorMaskLayer = nullptr;
+    }
+    if(m_pShadowLayer)
+    {
+        m_pShadowLayer->removeAllChildrenWithCleanup(true);
+        m_pShadowLayer = nullptr;
+    }
     if(m_pCurrentTiledMap)
     {
         m_pCurrentTiledMap->removeFromParentAndCleanup(true);
         m_pCurrentTiledMap = nullptr;
     }
-    m_pCurrentTiledMap = nullptr;
-    m_pStarters = nullptr;
-    m_pColliders = nullptr;
-    m_pRayCasters = nullptr;
-    m_pTriggers = nullptr;
-    m_pMonsters = nullptr;
+    if(m_pSceneItemLayer)
+    {
+        m_pSceneItemLayer->removeAllChildrenWithCleanup(true);
+        m_pSceneItemLayer = nullptr;
+    }
+    if(m_pUsableItemLayer)
+    {
+        m_pUsableItemLayer->removeAllChildrenWithCleanup(true);
+        m_pUsableItemLayer = nullptr;
+    }
+    if(m_pMonsterLayer)
+    {
+        m_pMonsterLayer->removeAllChildrenWithCleanup(true);
+        m_pMonsterLayer = nullptr;
+    }
+    if(m_pPlayerLayer)
+    {
+        m_pPlayerLayer->removeAllChildrenWithCleanup(true);
+        m_pPlayerLayer = nullptr;
+    }
+    
+    if(m_pCoverLayer)
+    {
+        m_pCoverLayer->removeAllChildrenWithCleanup(true);
+        m_pCoverLayer = nullptr;
+    }
+    m_pNilo = nullptr;
+    m_pPudge = nullptr;
+
+    m_pStarters         = nullptr;
+    m_pColliders        = nullptr;
+    m_pRayCasters       = nullptr;
+    m_pTriggers         = nullptr;
+    m_pUsableItems      = nullptr;
+    m_pMonsters         = nullptr;
+    m_pShadows          = nullptr;
+    m_pFrontgroundMaskObjects = nullptr;
 }
 void MapMgrs::update(float delta)
 {
@@ -290,10 +352,10 @@ bool MapMgrs::checkTrigger(const cocos2d::Rect& rect, Actor::TRIGGER_TYPE& type)
     }
     return ret;
 }
-bool MapMgrs::checkUsableItems(const cocos2d::Rect& rect, Actor::USABLE_ITEM_TYPE& type)
+bool MapMgrs::checkUsableItems(const cocos2d::Rect& rect, UsableItem::USABLE_ITEM_TYPE& type)
 {
     bool ret = false;
-    ValueVector items = m_pItems->getObjects();
+    ValueVector items = m_pUsableItems->getObjects();
     for (Value value : items) {
         ValueMap valuemap = value.asValueMap();
         if(valuemap.empty())
@@ -311,11 +373,11 @@ bool MapMgrs::checkUsableItems(const cocos2d::Rect& rect, Actor::USABLE_ITEM_TYP
         {
             if(rect.getMidX() <= itemRect.getMaxX() && rect.getMidX() >= itemRect.getMinX())
             {
-                type = (Actor::USABLE_ITEM_TYPE)(valuemap.at("type").asInt());
+                type = (UsableItem::USABLE_ITEM_TYPE)(valuemap.at("type").asInt());
                 switch (type) {
-                    case Actor::UIT_LADDER:
+                    case UsableItem::UIT_LADDER:
                         break;
-                    case Actor::UIT_QUESTIONBOX:
+                    case UsableItem::UIT_QUESTION_MARK:
                         break;
                     default:
                         break;
@@ -456,8 +518,8 @@ void MapMgrs::showDebug(bool debug)
             m_pDebugDrawNode->drawPoly(vertices, 4, true, Color4F::YELLOW);
         }
         ////
-        ////items
-        ValueVector items = m_pItems->getObjects();
+        ////usableitems
+        ValueVector items = m_pUsableItems->getObjects();
         for (Value value : items) {
             ValueMap valuemap = value.asValueMap();
             if(valuemap.empty())
@@ -561,6 +623,10 @@ bool MapMgrs::initPlayer()
     if(!m_pMainLayer || !m_pStarters)
         return false;
     
+    m_pPlayerLayer = Layer::create();
+    if(!m_pPlayerLayer)
+        return false;
+    
     ValueMap start_born = m_pStarters->getObject(m_strBornPointName);
     if(start_born.empty())
         return false;
@@ -573,23 +639,21 @@ bool MapMgrs::initPlayer()
     m_pNilo = ActorFactory::getInstance()->createPlayer(Player::PT_NILO);
     if(!m_pNilo)
         return false;
-    m_pNilo->setCameraMask((unsigned short)CameraFlag::USER1);
     m_pNilo->setPosition(Vec2(colliderRect.getMidX(),y));
     m_pNilo->setPlayerDirection(direction);
-    m_pNilo->setHue(0.18);
-    m_pMainLayer->addChild(m_pNilo);
-    
+    //m_pNilo->setHue(0.18);
+    m_pPlayerLayer->addChild(m_pNilo);
     
     m_pPudge = ActorFactory::getInstance()->createPlayer(Player::PT_PUDGE);
     if(!m_pPudge)
         return false;
-    m_pPudge->setCameraMask((unsigned short)CameraFlag::USER1);
     m_pPudge->setPosition(Vec2(m_pNilo->getPosition().x+m_pCurrentTiledMap->getTileSize().width,m_pNilo->getPosition().y));
     m_pPudge->setPlayerDirection(direction);
-    m_pMainLayer->addChild(m_pPudge);
+    m_pPlayerLayer->addChild(m_pPudge);
     m_pPudge->setVisible(false);
     
-    
+    m_pPlayerLayer->setCameraMask((unsigned short)CameraFlag::USER1);
+    m_pMainLayer->addChild(m_pPlayerLayer);
     return true;
 }
 bool MapMgrs::initShadows()
@@ -727,6 +791,73 @@ bool MapMgrs::initFrontgroundMask()
     }
     m_pFrontgroundColorMaskLayer->setCameraMask((unsigned short)CameraFlag::USER1);
     m_pMainLayer->addChild(m_pFrontgroundColorMaskLayer);
+    return true;
+}
+bool MapMgrs::initUsableItems()
+{
+    if(!m_pMainLayer || !m_pCurrentTiledMap)
+        return false;
+    m_pUsableItemLayer = Layer::create();
+    if(!m_pUsableItemLayer)
+        return false;
+    ValueVector items = m_pUsableItems->getObjects();
+    for (Value value : items) {
+        ValueMap valuemap = value.asValueMap();
+        if(valuemap.empty())
+            continue;
+        float x = valuemap.at("x").asFloat();
+        float y = valuemap.at("y").asFloat();
+        float width = valuemap.at("width").asFloat();
+        float height = valuemap.at("height").asFloat();
+        cocos2d::Rect itemRect = cocos2d::Rect(x, y, width, height);
+        Actor::USABLE_ITEM_TYPE type = (Actor::USABLE_ITEM_TYPE)(valuemap.at("type").asInt());
+        if(type == Actor::UIT_QUESTION_MARK)
+        {
+            QuestionMark* usableItem = static_cast<QuestionMark*>(ActorFactory::getInstance()->createUsableItem(UsableItem::UIT_QUESTION_MARK));
+            if(!usableItem)
+                return false;
+            QuestionMark::QUESTION_MARK_TYPE qmType = (QuestionMark::QUESTION_MARK_TYPE)(valuemap.at("question_mark_type").asInt());
+            usableItem->setQuestionMarkType(qmType);
+            usableItem->setPosition(Vec2(itemRect.getMidX(),itemRect.getMidY()));
+            m_pUsableItemLayer->addChild(usableItem);
+        }
+    }
+
+    m_pUsableItemLayer->setCameraMask((unsigned short)CameraFlag::USER1);
+    m_pMainLayer->addChild(m_pUsableItemLayer);
+    return true;
+}
+bool MapMgrs::initSceneItems()
+{
+    if(!m_pMainLayer || !m_pCurrentTiledMap)
+        return false;
+    
+    m_pSceneItemLayer = Layer::create();
+    if(!m_pSceneItemLayer)
+        return false;
+    
+    ValueVector triggers = m_pTriggers->getObjects();
+    for (Value value : triggers) {
+        ValueMap valuemap = value.asValueMap();
+        if(valuemap.empty())
+            continue;
+        float x = valuemap.at("x").asFloat();
+        float y = valuemap.at("y").asFloat();
+        float width = valuemap.at("width").asFloat();
+        float height = valuemap.at("height").asFloat();
+        cocos2d::Rect tiggerRect = cocos2d::Rect(x, y, width, height);
+        Actor::TRIGGER_TYPE type = (Actor::TRIGGER_TYPE)(valuemap.at("type").asInt());
+        if(type == Actor::TT_TIPS)
+        {
+            SceneItem* sceneItem = ActorFactory::getInstance()->createSceneItem(SceneItem::SIT_EXCALMATION_MARK);
+            if(!sceneItem)
+                return false;
+            sceneItem->setPosition(Vec2(tiggerRect.getMidX(),tiggerRect.getMidY()));
+            m_pSceneItemLayer->addChild(sceneItem);
+        }
+    }
+    m_pSceneItemLayer->setCameraMask((unsigned short)CameraFlag::USER1);
+    m_pMainLayer->addChild(m_pSceneItemLayer);
     return true;
 }
 void MapMgrs::updatePlayers(float delta)

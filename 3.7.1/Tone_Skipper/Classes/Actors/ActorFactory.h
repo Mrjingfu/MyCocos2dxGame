@@ -10,6 +10,8 @@
 #define __Tone_Skipper__ActorFactory__
 
 #include "Player.h"
+#include "UsableItem.h"
+#include "SceneItem.h"
 class ActorFactory : public cocos2d::Ref
 {
     ActorFactory();
@@ -18,6 +20,8 @@ public:
     static ActorFactory* getInstance();
     
     Player* createPlayer(Player::PlayerType type);
+    UsableItem* createUsableItem(UsableItem::USABLE_ITEM_TYPE type);
+    SceneItem* createSceneItem(SceneItem::SCENE_ITEM_TYPE type);
 };
 
 #endif /* defined(__Tone_Skipper__ActorFactory__) */

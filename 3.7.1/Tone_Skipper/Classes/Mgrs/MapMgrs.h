@@ -44,7 +44,7 @@ public:
     bool checkRayCast(const cocos2d::Rect& rect, cocos2d::Vec2& velocity, Actor::RAYCAST_TYPE& type,bool ignoreAdjust);
     bool checkCollision(const cocos2d::Rect& rect, cocos2d::Vec2& velocity, int& flag);
     bool checkTrigger(const cocos2d::Rect& rect, Actor::TRIGGER_TYPE& type);
-    bool checkUsableItems(const cocos2d::Rect& rect, Actor::USABLE_ITEM_TYPE& type);
+    bool checkUsableItems(const cocos2d::Rect& rect, UsableItem::USABLE_ITEM_TYPE& type);
     bool checkInShadowRect(const cocos2d::Rect& rect, float& shadowHue);
     
     Player* getNilo() const { return m_pNilo; }
@@ -59,6 +59,8 @@ private:
     bool initShadows();
     bool initBackgroundMask();
     bool initFrontgroundMask();
+    bool initUsableItems();
+    bool initSceneItems();
     
 
     void updatePlayers(float delta);
@@ -76,6 +78,10 @@ private:
     cocos2d::Layer*                         m_pMainLayer;
     cocos2d::Layer*                         m_pShadowLayer;
     cocos2d::TMXTiledMap*                   m_pCurrentTiledMap;
+    cocos2d::Layer*                         m_pSceneItemLayer;
+    cocos2d::Layer*                         m_pUsableItemLayer;
+    cocos2d::Layer*                         m_pMonsterLayer;
+    cocos2d::Layer*                         m_pPlayerLayer;
     cocos2d::TMXLayer*                      m_pCoverLayer;
     bool                                    m_pCoverLayerVisable;
     
@@ -83,7 +89,7 @@ private:
     cocos2d::TMXObjectGroup*                m_pColliders;
     cocos2d::TMXObjectGroup*                m_pRayCasters;
     cocos2d::TMXObjectGroup*                m_pTriggers;
-    cocos2d::TMXObjectGroup*                m_pItems;
+    cocos2d::TMXObjectGroup*                m_pUsableItems;
     cocos2d::TMXObjectGroup*                m_pMonsters;
     cocos2d::TMXObjectGroup*                m_pShadows;
     cocos2d::TMXObjectGroup*                m_pFrontgroundMaskObjects;
