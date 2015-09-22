@@ -44,6 +44,8 @@ bool AppDelegate::applicationDidFinishLaunching() {
     searchPaths.push_back("sprites");
     searchPaths.push_back("maps");
     searchPaths.push_back("fonts");
+    searchPaths.push_back("lang");
+    searchPaths.push_back("particles");
     searchPaths.push_back("UI");
     FileUtils::getInstance()->setSearchPaths(searchPaths);
     

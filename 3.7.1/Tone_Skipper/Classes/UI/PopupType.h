@@ -13,7 +13,7 @@ enum ePopupType
 {
     ePopupInvalid = -1,
     ePopupTest,
-    ePopupTips,
+    ePopupBag,
     ePopupCount
 };
 

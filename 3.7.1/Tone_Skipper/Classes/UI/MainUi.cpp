@@ -41,7 +41,8 @@ void MainUi::addEvents()
     testABtn->setPosition(cocos2d::Vec2(SCREEN_WIDTH*0.3,SCREEN_HEIGHT*0.8));
     testABtn->addClickEventListener([this](Ref* ref)
                                     {
-                                        PopupUILayerManager::getInstance()->openPopup(ePopupTest);
+                                       PopupUILayer* pop =  PopupUILayerManager::getInstance()->openPopup(ePopupBag);
+                                        pop->setDarkLayerVisble(false);
                                     });
     testABtn->setScale(SCREEN_SCALE);
    
