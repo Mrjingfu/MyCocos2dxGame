@@ -134,7 +134,7 @@ void PopupUILayer::outAction()
 }
 void PopupUILayer::inActionCenterScale()
 {
-    cocos2d::Layer* root = getRootPopupLayer();
+    cocos2d::Layer* root = getRootLayer();
     
 
     if (root) {
@@ -151,7 +151,7 @@ void PopupUILayer::inActionCenterScale()
 }
 void PopupUILayer::outActionCenterScale()
 {
-   cocos2d::Layer* root = getRootPopupLayer();
+   cocos2d::Layer* root = getRootLayer();
     if (root) {
         ScaleTo* scale1 = ScaleTo::create(0.1f,1.1f * 1);
         EaseOut* scale2 = EaseOut::create(ScaleTo::create(0.4f,0.001f * 1),0.3f);
@@ -162,7 +162,7 @@ void PopupUILayer::outActionCenterScale()
 
 void PopupUILayer::inActionDownCenter()
 {
-    cocos2d::Layer* root = getRootPopupLayer();
+    cocos2d::Layer* root = getRootLayer();
     
     if (root)
     {
@@ -175,7 +175,7 @@ void PopupUILayer::inActionDownCenter()
 }
 void PopupUILayer::outActionDownCenter()
 {
-    cocos2d::Layer* root = getRootPopupLayer();
+    cocos2d::Layer* root = getRootLayer();
     if (root)
     {
         cocos2d::MoveTo* moveTo = cocos2d::MoveTo::create(0.5,Vec2(0,-SCREEN_HEIGHT));
@@ -187,7 +187,7 @@ void PopupUILayer::outActionDownCenter()
 
 void PopupUILayer::inActionTopCenter()
 {
-    cocos2d::Layer* root = getRootPopupLayer();
+    cocos2d::Layer* root = getRootLayer();
     if (root)
     {
         root->setPosition(Vec2(0, SCREEN_HEIGHT));
@@ -199,7 +199,7 @@ void PopupUILayer::inActionTopCenter()
 }
 void PopupUILayer::outActionTopCenter()
 {
-    cocos2d::Layer* root = getRootPopupLayer();
+    cocos2d::Layer* root = getRootLayer();
     if (root)
     {
         cocos2d::MoveTo* moveTo = cocos2d::MoveTo::create(0.5,Vec2(0,SCREEN_HEIGHT));
@@ -212,7 +212,7 @@ void PopupUILayer::outActionTopCenter()
 
 void PopupUILayer::inActionLeftCenter()
 {
-   cocos2d::Layer* root = getRootPopupLayer();
+   cocos2d::Layer* root = getRootLayer();
     if (root)
     {
         root->setPosition(Vec2(-SCREEN_WIDTH, 0));
@@ -225,7 +225,7 @@ void PopupUILayer::inActionLeftCenter()
 }
 void PopupUILayer::outActionLeftCenter()
 {
-  cocos2d::Layer* root = getRootPopupLayer();
+  cocos2d::Layer* root = getRootLayer();
     if (root)
     {
         cocos2d::MoveTo* moveTo = cocos2d::MoveTo::create(0.5,Vec2(-SCREEN_WIDTH,0));
@@ -237,7 +237,7 @@ void PopupUILayer::outActionLeftCenter()
 
 void PopupUILayer::inActionRightCenter()
 {
-  cocos2d::Layer* root = getRootPopupLayer();
+  cocos2d::Layer* root = getRootLayer();
     if (root)
     {
         root->setPosition(Vec2(SCREEN_WIDTH, 0));
@@ -250,7 +250,7 @@ void PopupUILayer::inActionRightCenter()
 }
 void PopupUILayer::outActionRightCenter()
 {
-  cocos2d::Layer* root = getRootPopupLayer();
+  cocos2d::Layer* root = getRootLayer();
     if (root)
     {
         cocos2d::MoveTo* moveTo = cocos2d::MoveTo::create(0.5,Vec2(SCREEN_WIDTH,0));

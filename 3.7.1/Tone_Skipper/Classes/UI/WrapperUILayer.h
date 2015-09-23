@@ -38,17 +38,15 @@ public:
     virtual void addEvents(){};
     bool isForbiddenAction(Ref* sender, cocos2d::ui::Widget::TouchEventType type);
     CREATE_FUNC(WrapperUILayer);
-    cocos2d::ui::Layout* getRootLayout(){return m_pRootLayout;};
-    cocos2d::Layer* getRootPopupLayer(){return m_pPopupLayer;}
-    
+    cocos2d::Layer* getRootLayer(){return m_pRootLayer;};
     
 public:
     //可能以后有UI布局文件会用到 m_pRootLayer由布局文件生成了 暂时不会用到
     virtual bool load(const char* gameUIFile){return true;};
     
-private:
-    cocos2d::ui::Layout*	m_pRootLayout;   //ui布局用到  手工编写代码时 用cocostudio则不用
-    cocos2d::Layer*	m_pPopupLayer;          //popuo用到
+protected:
+    cocos2d::Layer*	m_pRootLayer;   //ui布局用到  手工编写代码时 用cocostudio则不用
+
     Ref* m_actionRef;
     
     timeval m_actionTime;

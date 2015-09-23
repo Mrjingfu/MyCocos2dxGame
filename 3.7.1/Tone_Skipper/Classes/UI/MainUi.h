@@ -26,6 +26,7 @@ public:
     virtual void onExit();
     
     void onEventTips(cocos2d::EventCustom *sender);
+    void sliderPercentChanged(cocos2d::Ref* sender, cocos2d::ui::Slider::EventType type);
     CREATE_FUNC(MainUi);
 private:
     cocos2d::Label* tipsLabel;

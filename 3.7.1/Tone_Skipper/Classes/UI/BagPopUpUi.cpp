@@ -7,7 +7,7 @@
 //
 
 #include "BagPopUpUi.h"
-
+#include "CustomScrollView.h"
 USING_NS_CC;
 using namespace ui;
 BagPopUpUi::BagPopUpUi()
@@ -28,7 +28,7 @@ void BagPopUpUi::addEvents()
     testLayout->setLayoutType(Layout::Type::RELATIVE);
     testLayout->setScale(SCREEN_SCALE);
     testLayout->setPosition(WINDOW_CENTER);
-    getRootPopupLayer()->addChild(testLayout);
+    m_pRootLayer->addChild(testLayout);
     CCLOG("width:%f heigth:%f",testLayout->getContentSize().width,testLayout->getContentSize().height);
     
     Text* titleLabe = Text::create("道具", DEFAULT_FONT, 20);
@@ -40,21 +40,22 @@ void BagPopUpUi::addEvents()
     topCenter->setAlign(RelativeLayoutParameter::RelativeAlign::PARENT_TOP_CENTER_HORIZONTAL);
     titleLabe->setLayoutParameter(topCenter);
     
-    ui::ScrollView* scrollView = ui::ScrollView::create();
-    scrollView->setContentSize(testLayout->getContentSize());
-    scrollView->setPosition(Vec2(testLayout->getContentSize().width/2,testLayout->getContentSize().height/2));
+    CustomScrollView* scrollView = CustomScrollView::create();
+    scrollView->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
+    scrollView->jumpToTop();
+    scrollView->setContentSize(Size(32*5, 32*6));
+//    scrollView->setPosition(Vec2(testLayout->getContentSize().width/2,testLayout->getContentSize().height/2));
     scrollView->setTouchEnabled(true);
-    scrollView->setBounceEnabled(true);
-    scrollView->setInnerContainerSize(Size(100,150));
-    scrollView->setCameraMask((unsigned short)cocos2d::CameraFlag::DEFAULT);
+//    scrollView->setBounceEnabled(true);
+    scrollView->setInnerContainerSize(Size(32*5,32*6));
+    RelativeLayoutParameter* inTextBelow = RelativeLayoutParameter::create();
+    inTextBelow->setRelativeToWidgetName("title_rn");
+    inTextBelow->setAlign(RelativeLayoutParameter::RelativeAlign::LOCATION_BELOW_CENTER);
+    scrollView->setLayoutParameter(inTextBelow);
     
     Layout* scrollLayout = scrollView->getInnerContainer();
-    scrollLayout->setCameraMask((unsigned short)cocos2d::CameraFlag::DEFAULT);
     scrollLayout->setBackGroundColorType(Layout::BackGroundColorType::SOLID);
     scrollLayout->setBackGroundColor(Color3B::RED);;
-
-    addChild(scrollView,5);
-
     
     Button* closeBtn = Button::create("ui_supposed.png");
     closeBtn->addTouchEventListener(CC_CALLBACK_2(BagPopUpUi::onClose, this));
@@ -70,24 +71,14 @@ void BagPopUpUi::addEvents()
     cellBgLayer->setBackGroundColor(Color3B(128, 128, 128));;
     cellBgLayer->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
     cellBgLayer->setContentSize(Size(32*5, 32*6));
-//  cellBgLayer->setScale(SCREEN_SCALE);
-//  testLayout->addChild(cellBgLayer);
     cellBgLayer->setPosition(Vec2(100, 100));
-    cellBgLayer->setCameraMask((unsigned short)cocos2d::CameraFlag::DEFAULT);
     scrollView->addChild(cellBgLayer);
-
-//    RelativeLayoutParameter* centerParent = RelativeLayoutParameter::create();
-////    centerParent->setRelativeToWidgetName("title_rn");
-////    centerParent->setAlign(RelativeLayoutParameter::RelativeAlign::LOCATION_BELOW_CENTER);
-//    centerParent->setAlign(RelativeLayoutParameter::RelativeAlign::CENTER_IN_PARENT);
-//    cellBgLayer->setLayoutParameter(centerParent);
     
     for (int i =0; i<MAX_ROW; i++) {
         for (int j =0; j<MAX_COL; j++) {
             ImageView* cellBg = ImageView::create("ui_frame_yellow.png");
             cellBg->setScale(SCREEN_SCALE);
             cellBgLayer->addChild(cellBg);
-           cellBg->setCameraMask((unsigned short)cocos2d::CameraFlag::DEFAULT);
             cellBg->setPosition(CELL_PT(j, i));
         }
     }
@@ -107,7 +98,9 @@ void BagPopUpUi::addEvents()
         j = i%5;
     }
     
-
+    m_pRootLayer->addChild(scrollView,5);
+    scrollView->setCameraMask((unsigned short)cocos2d::CameraFlag::USER3);
+    
 }
 
 

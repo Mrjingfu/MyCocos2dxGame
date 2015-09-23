@@ -173,6 +173,16 @@
 		ECCB94621BB02F8B00855BA8 /* Enemy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC1D8AF31BACFC3800F1F16E /* Enemy.cpp */; };
 		ECCB94651BB02FB100855BA8 /* BagPopUpUi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECCB94631BB02FB100855BA8 /* BagPopUpUi.cpp */; };
 		ECCB94661BB02FBA00855BA8 /* BagPopUpUi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECCB94631BB02FB100855BA8 /* BagPopUpUi.cpp */; };
+		ECF24C901BB0F4DC00412DC9 /* RegionSlider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECF24C8E1BB0F4DC00412DC9 /* RegionSlider.cpp */; };
+		ECF24C911BB0F4DC00412DC9 /* RegionSlider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECF24C8E1BB0F4DC00412DC9 /* RegionSlider.cpp */; };
+		ECF24C981BB127B100412DC9 /* ui_slidertrack.png in Resources */ = {isa = PBXBuildFile; fileRef = ECF24C961BB127B100412DC9 /* ui_slidertrack.png */; };
+		ECF24C991BB127B100412DC9 /* ui_slidertrack.png in Resources */ = {isa = PBXBuildFile; fileRef = ECF24C961BB127B100412DC9 /* ui_slidertrack.png */; };
+		ECF24C9A1BB127B100412DC9 /* ui_sliderprogress.png in Resources */ = {isa = PBXBuildFile; fileRef = ECF24C971BB127B100412DC9 /* ui_sliderprogress.png */; };
+		ECF24C9B1BB127B100412DC9 /* ui_sliderprogress.png in Resources */ = {isa = PBXBuildFile; fileRef = ECF24C971BB127B100412DC9 /* ui_sliderprogress.png */; };
+		ECF24CA01BB142EA00412DC9 /* slider_bar_active_9patch.png in Resources */ = {isa = PBXBuildFile; fileRef = ECF24C9F1BB142EA00412DC9 /* slider_bar_active_9patch.png */; };
+		ECF24CA11BB142EA00412DC9 /* slider_bar_active_9patch.png in Resources */ = {isa = PBXBuildFile; fileRef = ECF24C9F1BB142EA00412DC9 /* slider_bar_active_9patch.png */; };
+		ECF24CA91BB169DC00412DC9 /* CustomScrollView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECF24CA71BB169DC00412DC9 /* CustomScrollView.cpp */; };
+		ECF24CAA1BB169DC00412DC9 /* CustomScrollView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECF24CA71BB169DC00412DC9 /* CustomScrollView.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -346,6 +356,13 @@
 		ECCB94601BB02F3400855BA8 /* ui_exclamation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ui_exclamation.png; sourceTree = "<group>"; };
 		ECCB94631BB02FB100855BA8 /* BagPopUpUi.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BagPopUpUi.cpp; sourceTree = "<group>"; };
 		ECCB94641BB02FB100855BA8 /* BagPopUpUi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BagPopUpUi.h; sourceTree = "<group>"; };
+		ECF24C8E1BB0F4DC00412DC9 /* RegionSlider.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RegionSlider.cpp; sourceTree = "<group>"; };
+		ECF24C8F1BB0F4DC00412DC9 /* RegionSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegionSlider.h; sourceTree = "<group>"; };
+		ECF24C961BB127B100412DC9 /* ui_slidertrack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ui_slidertrack.png; sourceTree = "<group>"; };
+		ECF24C971BB127B100412DC9 /* ui_sliderprogress.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ui_sliderprogress.png; sourceTree = "<group>"; };
+		ECF24C9F1BB142EA00412DC9 /* slider_bar_active_9patch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = slider_bar_active_9patch.png; sourceTree = "<group>"; };
+		ECF24CA71BB169DC00412DC9 /* CustomScrollView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CustomScrollView.cpp; sourceTree = "<group>"; };
+		ECF24CA81BB169DC00412DC9 /* CustomScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomScrollView.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -566,6 +583,9 @@
 		554732FF1B8EA7B2008F096C /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				ECF24C9F1BB142EA00412DC9 /* slider_bar_active_9patch.png */,
+				ECF24C961BB127B100412DC9 /* ui_slidertrack.png */,
+				ECF24C971BB127B100412DC9 /* ui_sliderprogress.png */,
 				ECCB94601BB02F3400855BA8 /* ui_exclamation.png */,
 				EC1D8B0D1BAD646900F1F16E /* ui_frame_black.png */,
 				EC1D8B0E1BAD646900F1F16E /* ui_frame_green_.png */,
@@ -599,6 +619,10 @@
 				554733081B8EA7C9008F096C /* JoyStick.h */,
 				EC1D8AFA1BAD0FDA00F1F16E /* MainUi.cpp */,
 				EC1D8AFB1BAD0FDA00F1F16E /* MainUi.h */,
+				ECF24C8E1BB0F4DC00412DC9 /* RegionSlider.cpp */,
+				ECF24C8F1BB0F4DC00412DC9 /* RegionSlider.h */,
+				ECF24CA71BB169DC00412DC9 /* CustomScrollView.cpp */,
+				ECF24CA81BB169DC00412DC9 /* CustomScrollView.h */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -802,6 +826,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				551C66C41BAFE3BF003CEE3D /* i_1.png in Resources */,
+				ECF24CA01BB142EA00412DC9 /* slider_bar_active_9patch.png in Resources */,
 				EC64663E1BAA5D00002D8E6B /* sprite_dog.plist in Resources */,
 				5087E78117EB970100C73F5D /* Icon-120.png in Resources */,
 				551C66BA1BAFE3BF003CEE3D /* e_0.png in Resources */,
@@ -816,6 +841,7 @@
 				5087E78317EB970100C73F5D /* Icon-152.png in Resources */,
 				554733041B8EA7B2008F096C /* joystick.png in Resources */,
 				5087E77D17EB970100C73F5D /* Default-568h@2x.png in Resources */,
+				ECF24C981BB127B100412DC9 /* ui_slidertrack.png in Resources */,
 				551C66BC1BAFE3BF003CEE3D /* e_1.png in Resources */,
 				551C66D81BAFE3BF003CEE3D /* y_1.png in Resources */,
 				EC64663F1BAA5D00002D8E6B /* sprite_dog.png in Resources */,
@@ -832,6 +858,7 @@
 				521A8E6519F0C34300D177D7 /* Default-736h@3x.png in Resources */,
 				551C66D41BAFE3BF003CEE3D /* t_1.png in Resources */,
 				551C66CE1BAFE3BF003CEE3D /* r_0.png in Resources */,
+				ECF24C9A1BB127B100412DC9 /* ui_sliderprogress.png in Resources */,
 				551C66C21BAFE3BF003CEE3D /* i_0.png in Resources */,
 				551C66D01BAFE3BF003CEE3D /* r_1.png in Resources */,
 				50EF62A317ECD613001EB2F8 /* Icon-50.png in Resources */,
@@ -863,6 +890,7 @@
 			files = (
 				EC1D8B131BAD646900F1F16E /* ui_frame_black.png in Resources */,
 				551C66B91BAFE3BF003CEE3D /* a_1.png in Resources */,
+				ECF24C9B1BB127B100412DC9 /* ui_sliderprogress.png in Resources */,
 				551C66C91BAFE3BF003CEE3D /* l_1.png in Resources */,
 				EC6466401BAA5D0B002D8E6B /* sprite_dog.plist in Resources */,
 				EC1D8B191BAD646900F1F16E /* ui_supposed.png in Resources */,
@@ -878,12 +906,14 @@
 				551C66C51BAFE3BF003CEE3D /* i_1.png in Resources */,
 				551C66D11BAFE3BF003CEE3D /* r_1.png in Resources */,
 				EC1D8B0C1BAD4D7900F1F16E /* ZpixEX2_EX.ttf in Resources */,
+				ECF24C991BB127B100412DC9 /* ui_slidertrack.png in Resources */,
 				503AE0F817EB97AB00D1A890 /* Icon.icns in Resources */,
 				551C66C11BAFE3BF003CEE3D /* f_1.png in Resources */,
 				551C66B71BAFE3BF003CEE3D /* a_0.png in Resources */,
 				551C66BB1BAFE3BF003CEE3D /* e_0.png in Resources */,
 				551C66D51BAFE3BF003CEE3D /* t_1.png in Resources */,
 				5535B8A61BAC0BD600A2EEF9 /* 1-1.tmx in Resources */,
+				ECF24CA11BB142EA00412DC9 /* slider_bar_active_9patch.png in Resources */,
 				551C66C31BAFE3BF003CEE3D /* i_0.png in Resources */,
 				551C66D71BAFE3BF003CEE3D /* y_0.png in Resources */,
 				55883EBE1B8D96E3007F2FD3 /* sprite_red.plist in Resources */,
@@ -909,12 +939,14 @@
 				46880B8819C43A87006E1F66 /* AppDelegate.cpp in Sources */,
 				55883EAB1B8D7A35007F2FD3 /* HueSprite.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
+				ECF24CA91BB169DC00412DC9 /* CustomScrollView.cpp in Sources */,
 				554733091B8EA7C9008F096C /* JoyStick.cpp in Sources */,
 				5535B89E1BABADEB00A2EEF9 /* GameScene.cpp in Sources */,
 				55883ED41B8D9EDE007F2FD3 /* Player.cpp in Sources */,
 				EC5FE2F71BAC5ECD006F6107 /* WrapperUILayer.cpp in Sources */,
 				EC414D011BA7F74E0029C69E /* NativeBridge.mm in Sources */,
 				EC414CFB1BA7F67F0029C69E /* AlisaMethod.cpp in Sources */,
+				ECF24C901BB0F4DC00412DC9 /* RegionSlider.cpp in Sources */,
 				ECCB94651BB02FB100855BA8 /* BagPopUpUi.cpp in Sources */,
 				EC414CFC1BA7F67F0029C69E /* UtilityHelper.cpp in Sources */,
 				5547331D1B8F14AF008F096C /* Nilo.cpp in Sources */,
@@ -941,7 +973,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ECF24C911BB0F4DC00412DC9 /* RegionSlider.cpp in Sources */,
 				ECCB94661BB02FBA00855BA8 /* BagPopUpUi.cpp in Sources */,
+				ECF24CAA1BB169DC00412DC9 /* CustomScrollView.cpp in Sources */,
 				ECCB94621BB02F8B00855BA8 /* Enemy.cpp in Sources */,
 				EC6466421BAA62F8002D8E6B /* Pudge.cpp in Sources */,
 				ECA7B2541BA7F91F0021CE95 /* ChaosNumber.cpp in Sources */,

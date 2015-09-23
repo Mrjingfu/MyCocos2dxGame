@@ -34,7 +34,7 @@ void TestPopUI::addEvents()
     testLayout->setLayoutType(Layout::Type::RELATIVE);
     testLayout->setScale(SCREEN_SCALE);
     testLayout->setPosition(WINDOW_CENTER);
-    getRootPopupLayer()->addChild(testLayout);
+    m_pRootLayer->addChild(testLayout);
    
     auto testColseBtn = cocos2d::ui::Button::create("ui_frame_black.png");
     testColseBtn->setScale(SCREEN_SCALE);
