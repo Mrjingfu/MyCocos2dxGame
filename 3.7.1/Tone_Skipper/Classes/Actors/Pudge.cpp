@@ -22,7 +22,7 @@ bool Pudge::loadModel()
     m_pSprite = HueSprite::createWithSpriteFrameName("dog_idle_01.png");
     if(!m_pSprite)
     {
-        CCLOG("dog : Load model failed!");
+        CCLOG("Pudge : Load model failed!");
         ret = false;
     }
     CCLOG("width:%f,height:%f",getBoundingBox().size.width,getBoundingBox().size.height);

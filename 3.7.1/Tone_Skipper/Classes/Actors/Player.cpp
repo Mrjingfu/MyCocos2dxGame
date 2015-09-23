@@ -182,7 +182,7 @@ void Player::checkOnLadder()
 {
     cocos2d::Rect rect = getBoundingBox();
     rect.origin += getPosition();
-    Actor::USABLE_ITEM_TYPE type = Actor::UIT_UNKNOWN;
+    UsableItem::USABLE_ITEM_TYPE type = UsableItem::UIT_UNKNOWN;
     bool available = MapMgrs::getInstance()->checkUsableItems(rect, type);
     if(!available)
     {
