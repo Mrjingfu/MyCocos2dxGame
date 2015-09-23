@@ -57,13 +57,29 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../cocos2d/cocos/base/CCDirector.cpp"
-            timestampString = "464607966.060285"
+            filePath = "../Classes/UI/BagPopUpUi.cpp"
+            timestampString = "464687073.701916"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "222"
-            endingLineNumber = "222"
-            landmarkName = "Director::setDefaultValues(void)"
+            startingLineNumber = "142"
+            endingLineNumber = "142"
+            landmarkName = "BagPopUpUi::initBackground()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/Mgrs/MapMgrs.cpp"
+            timestampString = "464692999.875383"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "578"
+            endingLineNumber = "578"
+            landmarkName = "MapMgrs::hideCoverLayer()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

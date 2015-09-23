@@ -41,7 +41,7 @@ void MainUi::addEvents()
     testABtn->addClickEventListener([this](Ref* ref)
                                     {
                                        PopupUILayer* pop =  PopupUILayerManager::getInstance()->openPopup(ePopupBag);
-                                        pop->setDarkLayerVisble(false);
+//                                        pop->setDarkLayerVisble(false);
                                     });
     testABtn->setPosition(Vec2(SCREEN_WIDTH*0.1, SCREEN_HEIGHT*0.9));
     testABtn->setScale(SCREEN_SCALE);
@@ -63,7 +63,7 @@ void MainUi::addEvents()
     regionSlider->loadSlidBallTexturePressed("ui_frame_black.png");
     regionSlider->loadProgressBarTexture("slider_bar_active_9patch.png");
     regionSlider->setScale9Enabled(true);
-    regionSlider->setContentSize(cocos2d::Size(150,24));
+    regionSlider->setContentSize(cocos2d::Size(80,16));
     regionSlider->setRotation(-90);
     regionSlider->addEventListener(CC_CALLBACK_2(MainUi::sliderPercentChanged, this));
     regionSlider->setPosition(Vec2(SCREEN_WIDTH*0.8, SCREEN_HEIGHT*0.65));
@@ -91,8 +91,12 @@ void MainUi::sliderPercentChanged(cocos2d::Ref *sender, cocos2d::ui::Slider::Eve
         RegionSlider* slider = dynamic_cast<RegionSlider*>(sender);
         if (slider) {
             int percent = slider->getPercent();
-            CCLOG("percent:%f",percent/100.0f);
-            MapMgrs::getInstance()->getNilo()->setHue(percent/100.0f);
+            float hue = percent/100.0f;
+            if (MapMgrs::getInstance()->getNilo()->getHue() !=hue) {
+                CCLOG("hue:%f",hue);
+                MapMgrs::getInstance()->getNilo()->setHue(hue);
+            }
+            
         }
         
        
