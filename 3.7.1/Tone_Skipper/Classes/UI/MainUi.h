@@ -26,10 +26,22 @@ public:
     virtual void onExit();
     
     void onEventTips(cocos2d::EventCustom *sender);
+    void update(float dt);
     void sliderPercentChanged(cocos2d::Ref* sender, cocos2d::ui::Slider::EventType type);
     CREATE_FUNC(MainUi);
 private:
-    cocos2d::Label* tipsLabel;
+    cocos2d::Label* m_pTipsLabel;
+    cocos2d::ui::ImageView* m_pHeart[4];
+    cocos2d::ui::LoadingBar* m_pEnergyBar;
+    cocos2d::Label* m_pTimeLabel;
+    cocos2d::Label* m_pScoreLabel;
+    cocos2d::Label* m_pBombLabel;
+    cocos2d::Label* m_pDiamondLabel;
+    cocos2d::Label* m_pBulletLabel;
+    cocos2d::Label* m_pKeyCopperLabel;
+    cocos2d::Label* m_pKeyGoldLabel;
+    cocos2d::Label* m_pKeySilverLabel;
+    float m_pTime;
 };
 
 #endif /* defined(__Tone_Skipper__MainUi__) */

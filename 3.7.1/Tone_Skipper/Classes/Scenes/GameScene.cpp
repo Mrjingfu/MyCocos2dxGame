@@ -55,8 +55,8 @@ bool GameScene::init()
         addChild(joystick);
     }
     PopupUILayerManager::getInstance()->setParentLayer(this);
-    auto mainUi = MainUi::create();
-    addChild(mainUi);
+    m_pMainUi = MainUi::create();
+    addChild(m_pMainUi);
     return true;
 }
 
@@ -73,4 +73,5 @@ void GameScene::onExit()
 void GameScene::update(float delta)
 {
     MapMgrs::getInstance()->update(delta);
+    m_pMainUi->update(delta);
 }
