@@ -18,6 +18,8 @@ public:
     static void screenshot(const std::string& fileName,const std::function<void(const std::string&)>& callback);
     static bool checkCircleIntersectWithSegment(const cocos2d::Vec2& center, float radius, const cocos2d::Vec2& start, const cocos2d::Vec2& end);
     static void getCameraToViewportRay(cocos2d::Camera* camera, const cocos2d::Vec2& screenPoint, cocos2d::Ray* outRay);
+    static void getHexDigest(const unsigned char* md5, int len, std::string& hexStr);
+    
     
     static cocos2d::Color3B randomColor(int minSum = 650, int minDelta = 10);
     

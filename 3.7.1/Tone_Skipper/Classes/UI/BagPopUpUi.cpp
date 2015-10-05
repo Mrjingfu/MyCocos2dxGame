@@ -51,10 +51,10 @@ void BagPopUpUi::addEvents()
     m_pCustomScrollView->setScale(SCREEN_SCALE);
     m_pCustomScrollView->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
     m_pCustomScrollView->jumpToTop();
-    m_pCustomScrollView->setContentSize(Size(m_pCellSize*m_pCol, m_pCellSize*5));
+    m_pCustomScrollView->setContentSize(cocos2d::Size(m_pCellSize*m_pCol, m_pCellSize*5));
     m_pCustomScrollView->setPosition(Vec2(SCREEN_WIDTH*0.5, SCREEN_HEIGHT*0.5));
     m_pCustomScrollView->setTouchEnabled(true);
-    m_pCustomScrollView->setInnerContainerSize(Size(m_pCellSize*m_pCol,m_pCellSize*m_pRow));
+    m_pCustomScrollView->setInnerContainerSize(cocos2d::Size(m_pCellSize*m_pCol,m_pCellSize*m_pRow));
     m_pCustomScrollView->setSwallowTouches(false);
     m_pCustomScrollView->addEventListener(CC_CALLBACK_2(BagPopUpUi::onScrollEvent, this));
     
@@ -112,7 +112,7 @@ bool BagPopUpUi::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *unused_even
     for (int i=0; i<testImgs.size(); i++) {
         ImageView* img = testImgs.at(i);
         Vec2 imgPt = img->getPosition();
-        Rect rect = Rect(imgPt.x-(m_pCellSize*SCREEN_SCALE)/2, imgPt.y-(m_pCellSize*SCREEN_SCALE)/2, m_pCellSize*SCREEN_SCALE, m_pCellSize*SCREEN_SCALE);
+         cocos2d::Rect rect =  cocos2d::Rect(imgPt.x-(m_pCellSize*SCREEN_SCALE)/2, imgPt.y-(m_pCellSize*SCREEN_SCALE)/2, m_pCellSize*SCREEN_SCALE, m_pCellSize*SCREEN_SCALE);
         if (rect.containsPoint(toSpt)) {
             CCLOG("npo inde:%d ",i);
         }
@@ -179,7 +179,7 @@ void BagPopUpUi::updateItemRow(int row)
 {
     m_pRow = m_pRow+row;
     if (m_pCustomScrollView) {
-        m_pCustomScrollView->setInnerContainerSize(Size(m_pCellSize*m_pCol,m_pCellSize*m_pRow));
+        m_pCustomScrollView->setInnerContainerSize( cocos2d::Size(m_pCellSize*m_pCol,m_pCellSize*m_pRow));
         for (ImageView* img:testImgs) {
             img->removeFromParentAndCleanup(true);
         }

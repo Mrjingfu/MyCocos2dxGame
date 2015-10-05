@@ -29,6 +29,21 @@ std::string UtilityHelper::getLocalString(const char* key)
     
     return ret.asString();
 }
+void UtilityHelper::getHexDigest(const unsigned char* md5, int len, std::string& hexStr)
+{
+    char* hex = new char[len*2+1];
+    hex[len*2] =  '\0';
+    
+    int i;
+    static const char HEX_CHARS[]="0123456789abcdef";
+    for (i=0;i<len;i++)
+    {
+        hex[i+i] = HEX_CHARS[md5[i] >> 4];
+        hex[i+i+1] = HEX_CHARS[md5[i] & 0x0f];
+    }
+    hexStr = std::string(hex, 2*len);
+    CC_SAFE_DELETE_ARRAY(hex);
+}
 
 void UtilityHelper::screenshot(const std::string& fileName,const std::function<void(const std::string&)>& callback)
 {

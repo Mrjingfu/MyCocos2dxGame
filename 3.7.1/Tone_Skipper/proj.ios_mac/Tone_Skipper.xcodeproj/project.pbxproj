@@ -10,7 +10,6 @@
 		1AC6FB21180E996B004C840B /* libcocos2d Mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AC6FAF9180E9839004C840B /* libcocos2d Mac.a */; };
 		1AC6FB30180E99EB004C840B /* libcocos2d iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AC6FB07180E9839004C840B /* libcocos2d iOS.a */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
-		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
 		46880B8819C43A87006E1F66 /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46880B8419C43A87006E1F66 /* AppDelegate.cpp */; };
 		46880B8919C43A87006E1F66 /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46880B8419C43A87006E1F66 /* AppDelegate.cpp */; };
@@ -46,7 +45,6 @@
 		50EF62A317ECD613001EB2F8 /* Icon-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 50EF62A117ECD613001EB2F8 /* Icon-50.png */; };
 		521A8E6419F0C34300D177D7 /* Default-667h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 521A8E6219F0C34300D177D7 /* Default-667h@2x.png */; };
 		521A8E6519F0C34300D177D7 /* Default-736h@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 521A8E6319F0C34300D177D7 /* Default-736h@3x.png */; };
-		52B47A471A53D09C004E4C60 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B47A461A53D09B004E4C60 /* Security.framework */; };
 		551C66A21BAFE35F003CEE3D /* shadow.png in Resources */ = {isa = PBXBuildFile; fileRef = 551C66A11BAFE35F003CEE3D /* shadow.png */; };
 		551C66A31BAFE35F003CEE3D /* shadow.png in Resources */ = {isa = PBXBuildFile; fileRef = 551C66A11BAFE35F003CEE3D /* shadow.png */; };
 		551C66B61BAFE3BF003CEE3D /* a_0.png in Resources */ = {isa = PBXBuildFile; fileRef = 551C66A41BAFE3BF003CEE3D /* a_0.png */; };
@@ -175,14 +173,11 @@
 		55E71D0D1B9D2890001BEFF7 /* MapMgrs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55E71D0A1B9D2890001BEFF7 /* MapMgrs.cpp */; };
 		55E71D1B1B9D4957001BEFF7 /* ActorFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55E71D191B9D4957001BEFF7 /* ActorFactory.cpp */; };
 		55E71D1C1B9D4957001BEFF7 /* ActorFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55E71D191B9D4957001BEFF7 /* ActorFactory.cpp */; };
-		8262943E1AAF051F00CB7CF7 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8262943D1AAF051F00CB7CF7 /* Security.framework */; };
-		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
 		BF1712471292920000B8313A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB412928DE900B8313A /* libz.dylib */; };
 		BF1C47F01293687400B63C5D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF1C47EA1293683800B63C5D /* QuartzCore.framework */; };
 		D44C620C132DFF330009C878 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620B132DFF330009C878 /* OpenAL.framework */; };
 		D44C620E132DFF430009C878 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620D132DFF430009C878 /* AVFoundation.framework */; };
 		D44C6210132DFF4E0009C878 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620F132DFF4E0009C878 /* AudioToolbox.framework */; };
-		D6B0611B1803AB670077942B /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6B0611A1803AB670077942B /* CoreMotion.framework */; };
 		EC1D8AF51BACFC3800F1F16E /* Enemy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC1D8AF31BACFC3800F1F16E /* Enemy.cpp */; };
 		EC1D8AFC1BAD0FDA00F1F16E /* MainUi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC1D8AFA1BAD0FDA00F1F16E /* MainUi.cpp */; };
 		EC1D8AFD1BAD0FDA00F1F16E /* MainUi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC1D8AFA1BAD0FDA00F1F16E /* MainUi.cpp */; };
@@ -218,6 +213,22 @@
 		EC6466401BAA5D0B002D8E6B /* sprite_dog.plist in Resources */ = {isa = PBXBuildFile; fileRef = EC64663C1BAA5D00002D8E6B /* sprite_dog.plist */; };
 		EC6466411BAA5D0B002D8E6B /* sprite_dog.png in Resources */ = {isa = PBXBuildFile; fileRef = EC64663D1BAA5D00002D8E6B /* sprite_dog.png */; };
 		EC6466421BAA62F8002D8E6B /* Pudge.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC6466331BAA5421002D8E6B /* Pudge.cpp */; };
+		EC92D1C61BC21527004BEBB6 /* UserRecord.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC92D1C41BC21527004BEBB6 /* UserRecord.cpp */; };
+		EC92D1C71BC21527004BEBB6 /* UserRecord.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC92D1C41BC21527004BEBB6 /* UserRecord.cpp */; };
+		EC92D1CC1BC2229F004BEBB6 /* MemoryStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC92D1C81BC2229F004BEBB6 /* MemoryStream.cpp */; };
+		EC92D1CD1BC2229F004BEBB6 /* MemoryStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC92D1C81BC2229F004BEBB6 /* MemoryStream.cpp */; };
+		EC92D1CE1BC2229F004BEBB6 /* Stream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC92D1CA1BC2229F004BEBB6 /* Stream.cpp */; };
+		EC92D1CF1BC2229F004BEBB6 /* Stream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC92D1CA1BC2229F004BEBB6 /* Stream.cpp */; };
+		EC92D1D61BC22713004BEBB6 /* FileStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC92D1D41BC22713004BEBB6 /* FileStream.cpp */; };
+		EC92D1D71BC22713004BEBB6 /* FileStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC92D1D41BC22713004BEBB6 /* FileStream.cpp */; };
+		EC92D1DA1BC2480A004BEBB6 /* ArchiveManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC92D1D81BC2480A004BEBB6 /* ArchiveManager.cpp */; };
+		EC92D1DB1BC2480A004BEBB6 /* ArchiveManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC92D1D81BC2480A004BEBB6 /* ArchiveManager.cpp */; };
+		EC92D1F71BC264ED004BEBB6 /* ChaosNumber.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC92D1F51BC264ED004BEBB6 /* ChaosNumber.cpp */; };
+		EC92D1F81BC264ED004BEBB6 /* ChaosNumber.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC92D1F51BC264ED004BEBB6 /* ChaosNumber.cpp */; };
+		EC92D1FC1BC28437004BEBB6 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC92D1FB1BC28437004BEBB6 /* Security.framework */; };
+		EC92D1FE1BC28450004BEBB6 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC92D1FD1BC28450004BEBB6 /* CoreMotion.framework */; };
+		EC92D2001BC28462004BEBB6 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC92D1FF1BC28462004BEBB6 /* OpenGLES.framework */; };
+		EC92D2021BC28478004BEBB6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC92D2011BC28478004BEBB6 /* UIKit.framework */; };
 		EC9F8AD51BB3A71100A63A09 /* ui_bomb.png in Resources */ = {isa = PBXBuildFile; fileRef = EC9F8ACA1BB3A71100A63A09 /* ui_bomb.png */; };
 		EC9F8AD61BB3A71100A63A09 /* ui_bomb.png in Resources */ = {isa = PBXBuildFile; fileRef = EC9F8ACA1BB3A71100A63A09 /* ui_bomb.png */; };
 		EC9F8AD71BB3A71100A63A09 /* ui_color.png in Resources */ = {isa = PBXBuildFile; fileRef = EC9F8ACB1BB3A71100A63A09 /* ui_color.png */; };
@@ -250,8 +261,6 @@
 		EC9F8AFC1BB3E16700A63A09 /* ui_active_green.png in Resources */ = {isa = PBXBuildFile; fileRef = EC9F8AF81BB3E16700A63A09 /* ui_active_green.png */; };
 		EC9F8AFF1BB3F0C400A63A09 /* ui_bullet.png in Resources */ = {isa = PBXBuildFile; fileRef = EC9F8AFE1BB3F0C400A63A09 /* ui_bullet.png */; };
 		EC9F8B001BB3F0C400A63A09 /* ui_bullet.png in Resources */ = {isa = PBXBuildFile; fileRef = EC9F8AFE1BB3F0C400A63A09 /* ui_bullet.png */; };
-		ECA7B2531BA7F9010021CE95 /* ChaosNumber.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECA7B2511BA7F9010021CE95 /* ChaosNumber.cpp */; };
-		ECA7B2541BA7F91F0021CE95 /* ChaosNumber.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECA7B2511BA7F9010021CE95 /* ChaosNumber.cpp */; };
 		ECCB94621BB02F8B00855BA8 /* Enemy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC1D8AF31BACFC3800F1F16E /* Enemy.cpp */; };
 		ECCB94651BB02FB100855BA8 /* BagPopUpUi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECCB94631BB02FB100855BA8 /* BagPopUpUi.cpp */; };
 		ECCB94661BB02FBA00855BA8 /* BagPopUpUi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECCB94631BB02FB100855BA8 /* BagPopUpUi.cpp */; };
@@ -293,7 +302,6 @@
 		1ACB3243164770DE00914215 /* libcurl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcurl.a; path = ../../cocos2dx/platform/third_party/ios/libraries/libcurl.a; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D6058910D05DD3D006BFB54 /* Tone_Skipper iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tone_Skipper iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		288765A40DF7441C002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		46880B8419C43A87006E1F66 /* AppDelegate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AppDelegate.cpp; sourceTree = "<group>"; };
 		46880B8519C43A87006E1F66 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -331,7 +339,6 @@
 		50EF62A117ECD613001EB2F8 /* Icon-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-50.png"; sourceTree = "<group>"; };
 		521A8E6219F0C34300D177D7 /* Default-667h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-667h@2x.png"; sourceTree = "<group>"; };
 		521A8E6319F0C34300D177D7 /* Default-736h@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-736h@3x.png"; sourceTree = "<group>"; };
-		52B47A461A53D09B004E4C60 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.1.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
 		551C66A11BAFE35F003CEE3D /* shadow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shadow.png; sourceTree = "<group>"; };
 		551C66A41BAFE3BF003CEE3D /* a_0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = a_0.png; sourceTree = "<group>"; };
 		551C66A51BAFE3BF003CEE3D /* a_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = a_1.png; sourceTree = "<group>"; };
@@ -427,14 +434,11 @@
 		55E71D0B1B9D2890001BEFF7 /* MapMgrs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapMgrs.h; sourceTree = "<group>"; };
 		55E71D191B9D4957001BEFF7 /* ActorFactory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ActorFactory.cpp; sourceTree = "<group>"; };
 		55E71D1A1B9D4957001BEFF7 /* ActorFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActorFactory.h; sourceTree = "<group>"; };
-		8262943D1AAF051F00CB7CF7 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB412928DE900B8313A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		BF1C47EA1293683800B63C5D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		D44C620B132DFF330009C878 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
 		D44C620D132DFF430009C878 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		D44C620F132DFF4E0009C878 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
-		D6B0611A1803AB670077942B /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/CoreMotion.framework; sourceTree = DEVELOPER_DIR; };
 		EC1D8AF31BACFC3800F1F16E /* Enemy.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Enemy.cpp; sourceTree = "<group>"; };
 		EC1D8AF41BACFC3800F1F16E /* Enemy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Enemy.h; sourceTree = "<group>"; };
 		EC1D8AFA1BAD0FDA00F1F16E /* MainUi.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MainUi.cpp; sourceTree = "<group>"; };
@@ -468,6 +472,22 @@
 		EC6466341BAA5421002D8E6B /* Pudge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pudge.h; sourceTree = "<group>"; };
 		EC64663C1BAA5D00002D8E6B /* sprite_dog.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = sprite_dog.plist; sourceTree = "<group>"; };
 		EC64663D1BAA5D00002D8E6B /* sprite_dog.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sprite_dog.png; sourceTree = "<group>"; };
+		EC92D1C41BC21527004BEBB6 /* UserRecord.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UserRecord.cpp; sourceTree = "<group>"; };
+		EC92D1C51BC21527004BEBB6 /* UserRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserRecord.h; sourceTree = "<group>"; };
+		EC92D1C81BC2229F004BEBB6 /* MemoryStream.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MemoryStream.cpp; sourceTree = "<group>"; };
+		EC92D1C91BC2229F004BEBB6 /* MemoryStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MemoryStream.h; sourceTree = "<group>"; };
+		EC92D1CA1BC2229F004BEBB6 /* Stream.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Stream.cpp; sourceTree = "<group>"; };
+		EC92D1CB1BC2229F004BEBB6 /* Stream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Stream.h; sourceTree = "<group>"; };
+		EC92D1D41BC22713004BEBB6 /* FileStream.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FileStream.cpp; sourceTree = "<group>"; };
+		EC92D1D51BC22713004BEBB6 /* FileStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileStream.h; sourceTree = "<group>"; };
+		EC92D1D81BC2480A004BEBB6 /* ArchiveManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ArchiveManager.cpp; sourceTree = "<group>"; };
+		EC92D1D91BC2480A004BEBB6 /* ArchiveManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArchiveManager.h; sourceTree = "<group>"; };
+		EC92D1F51BC264ED004BEBB6 /* ChaosNumber.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ChaosNumber.cpp; sourceTree = "<group>"; };
+		EC92D1F61BC264ED004BEBB6 /* ChaosNumber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChaosNumber.h; sourceTree = "<group>"; };
+		EC92D1FB1BC28437004BEBB6 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.4.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
+		EC92D1FD1BC28450004BEBB6 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.4.sdk/System/Library/Frameworks/CoreMotion.framework; sourceTree = DEVELOPER_DIR; };
+		EC92D1FF1BC28462004BEBB6 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.4.sdk/System/Library/Frameworks/OpenGLES.framework; sourceTree = DEVELOPER_DIR; };
+		EC92D2011BC28478004BEBB6 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.4.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		EC9F8ACA1BB3A71100A63A09 /* ui_bomb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ui_bomb.png; sourceTree = "<group>"; };
 		EC9F8ACB1BB3A71100A63A09 /* ui_color.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ui_color.png; sourceTree = "<group>"; };
 		EC9F8ACC1BB3A71100A63A09 /* ui_diamond.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ui_diamond.png; sourceTree = "<group>"; };
@@ -484,8 +504,6 @@
 		EC9F8AF71BB3E16700A63A09 /* ui_active_gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ui_active_gray.png; sourceTree = "<group>"; };
 		EC9F8AF81BB3E16700A63A09 /* ui_active_green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ui_active_green.png; sourceTree = "<group>"; };
 		EC9F8AFE1BB3F0C400A63A09 /* ui_bullet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ui_bullet.png; sourceTree = "<group>"; };
-		ECA7B2511BA7F9010021CE95 /* ChaosNumber.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ChaosNumber.cpp; sourceTree = "<group>"; };
-		ECA7B2521BA7F9010021CE95 /* ChaosNumber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChaosNumber.h; sourceTree = "<group>"; };
 		ECCB94631BB02FB100855BA8 /* BagPopUpUi.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BagPopUpUi.cpp; sourceTree = "<group>"; };
 		ECCB94641BB02FB100855BA8 /* BagPopUpUi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BagPopUpUi.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -495,13 +513,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				52B47A471A53D09C004E4C60 /* Security.framework in Frameworks */,
+				EC92D2021BC28478004BEBB6 /* UIKit.framework in Frameworks */,
+				EC92D2001BC28462004BEBB6 /* OpenGLES.framework in Frameworks */,
+				EC92D1FE1BC28450004BEBB6 /* CoreMotion.framework in Frameworks */,
+				EC92D1FC1BC28437004BEBB6 /* Security.framework in Frameworks */,
 				1AC6FB30180E99EB004C840B /* libcocos2d iOS.a in Frameworks */,
-				D6B0611B1803AB670077942B /* CoreMotion.framework in Frameworks */,
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
-				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */,
-				BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */,
 				BF1712471292920000B8313A /* libz.dylib in Frameworks */,
 				BF1C47F01293687400B63C5D /* QuartzCore.framework in Frameworks */,
 				D44C620C132DFF330009C878 /* OpenAL.framework in Frameworks */,
@@ -516,7 +534,6 @@
 			files = (
 				1AC6FB21180E996B004C840B /* libcocos2d Mac.a in Frameworks */,
 				5087E76717EB910900C73F5D /* libz.dylib in Frameworks */,
-				8262943E1AAF051F00CB7CF7 /* Security.framework in Frameworks */,
 				503AE11B17EB9C5A00D1A890 /* IOKit.framework in Frameworks */,
 				5087E78B17EB975400C73F5D /* OpenGL.framework in Frameworks */,
 				5087E78917EB974C00C73F5D /* AppKit.framework in Frameworks */,
@@ -581,9 +598,10 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				8262943D1AAF051F00CB7CF7 /* Security.framework */,
-				52B47A461A53D09B004E4C60 /* Security.framework */,
-				D6B0611A1803AB670077942B /* CoreMotion.framework */,
+				EC92D2011BC28478004BEBB6 /* UIKit.framework */,
+				EC92D1FF1BC28462004BEBB6 /* OpenGLES.framework */,
+				EC92D1FD1BC28450004BEBB6 /* CoreMotion.framework */,
+				EC92D1FB1BC28437004BEBB6 /* Security.framework */,
 				503AE11A17EB9C5A00D1A890 /* IOKit.framework */,
 				503AE11117EB99EE00D1A890 /* libcurl.dylib */,
 				5087E78A17EB975400C73F5D /* OpenGL.framework */,
@@ -595,9 +613,7 @@
 				288765A40DF7441C002DB57D /* CoreGraphics.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
 				D44C620B132DFF330009C878 /* OpenAL.framework */,
-				BF170DB012928DE900B8313A /* OpenGLES.framework */,
 				BF1C47EA1293683800B63C5D /* QuartzCore.framework */,
-				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -905,15 +921,25 @@
 		EC414CF61BA7F67F0029C69E /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				EC92D1F51BC264ED004BEBB6 /* ChaosNumber.cpp */,
+				EC92D1F61BC264ED004BEBB6 /* ChaosNumber.h */,
+				EC92D1D41BC22713004BEBB6 /* FileStream.cpp */,
+				EC92D1D51BC22713004BEBB6 /* FileStream.h */,
+				EC92D1C81BC2229F004BEBB6 /* MemoryStream.cpp */,
+				EC92D1C91BC2229F004BEBB6 /* MemoryStream.h */,
+				EC92D1CA1BC2229F004BEBB6 /* Stream.cpp */,
+				EC92D1CB1BC2229F004BEBB6 /* Stream.h */,
 				EC5FE2F91BAC5ED7006F6107 /* GameConfig.h */,
-				ECA7B2511BA7F9010021CE95 /* ChaosNumber.cpp */,
-				ECA7B2521BA7F9010021CE95 /* ChaosNumber.h */,
 				EC414CFF1BA7F74E0029C69E /* NativeBridge.h */,
 				EC414D001BA7F74E0029C69E /* NativeBridge.mm */,
 				EC414CF71BA7F67F0029C69E /* AlisaMethod.cpp */,
 				EC414CF81BA7F67F0029C69E /* AlisaMethod.h */,
 				EC414CF91BA7F67F0029C69E /* UtilityHelper.cpp */,
 				EC414CFA1BA7F67F0029C69E /* UtilityHelper.h */,
+				EC92D1C41BC21527004BEBB6 /* UserRecord.cpp */,
+				EC92D1C51BC21527004BEBB6 /* UserRecord.h */,
+				EC92D1D81BC2480A004BEBB6 /* ArchiveManager.cpp */,
+				EC92D1D91BC2480A004BEBB6 /* ArchiveManager.h */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -1201,6 +1227,7 @@
 				554733091B8EA7C9008F096C /* JoyStick.cpp in Sources */,
 				5535B89E1BABADEB00A2EEF9 /* GameScene.cpp in Sources */,
 				55883ED41B8D9EDE007F2FD3 /* Player.cpp in Sources */,
+				EC92D1DA1BC2480A004BEBB6 /* ArchiveManager.cpp in Sources */,
 				EC5FE2F71BAC5ECD006F6107 /* WrapperUILayer.cpp in Sources */,
 				EC414D011BA7F74E0029C69E /* NativeBridge.mm in Sources */,
 				EC414CFB1BA7F67F0029C69E /* AlisaMethod.cpp in Sources */,
@@ -1213,7 +1240,9 @@
 				EC1D8AFC1BAD0FDA00F1F16E /* MainUi.cpp in Sources */,
 				554675B41BAADA6400409405 /* LogoScene.cpp in Sources */,
 				EC6466351BAA5421002D8E6B /* Pudge.cpp in Sources */,
+				EC92D1F71BC264ED004BEBB6 /* ChaosNumber.cpp in Sources */,
 				5535B8A21BABADFA00A2EEF9 /* MenuScene.cpp in Sources */,
+				EC92D1C61BC21527004BEBB6 /* UserRecord.cpp in Sources */,
 				55883ECC1B8D9C92007F2FD3 /* Actor.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				55DAD9291BB16B5D00149C80 /* UsableItem.cpp in Sources */,
@@ -1226,7 +1255,9 @@
 				55DAD9271BB16B5D00149C80 /* SceneItem.cpp in Sources */,
 				554733101B8EA89E008F096C /* RegionButton.cpp in Sources */,
 				55883EB81B8D9215007F2FD3 /* TestScene.cpp in Sources */,
-				ECA7B2531BA7F9010021CE95 /* ChaosNumber.cpp in Sources */,
+				EC92D1CE1BC2229F004BEBB6 /* Stream.cpp in Sources */,
+				EC92D1CC1BC2229F004BEBB6 /* MemoryStream.cpp in Sources */,
+				EC92D1D61BC22713004BEBB6 /* FileStream.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1238,20 +1269,23 @@
 				ECCB94661BB02FBA00855BA8 /* BagPopUpUi.cpp in Sources */,
 				ECCB94621BB02F8B00855BA8 /* Enemy.cpp in Sources */,
 				EC6466421BAA62F8002D8E6B /* Pudge.cpp in Sources */,
-				ECA7B2541BA7F91F0021CE95 /* ChaosNumber.cpp in Sources */,
+				EC92D1CD1BC2229F004BEBB6 /* MemoryStream.cpp in Sources */,
 				EC414D021BA7F7550029C69E /* NativeBridge.mm in Sources */,
 				EC5FE2F41BAC5ECD006F6107 /* PopupUILayerManager.cpp in Sources */,
 				EC414CFD1BA7F6BF0029C69E /* AlisaMethod.cpp in Sources */,
 				EC38775E1BB228A800EBEB3F /* RegionSlider.cpp in Sources */,
 				EC414CFE1BA7F6BF0029C69E /* UtilityHelper.cpp in Sources */,
+				EC92D1D71BC22713004BEBB6 /* FileStream.cpp in Sources */,
 				55883ED51B8D9EDE007F2FD3 /* Player.cpp in Sources */,
 				55DAD9261BB16B5D00149C80 /* QuestionMark.cpp in Sources */,
+				EC92D1C71BC21527004BEBB6 /* UserRecord.cpp in Sources */,
 				EC38775C1BB228A800EBEB3F /* CustomScrollView.cpp in Sources */,
 				554675B51BAADA6400409405 /* LogoScene.cpp in Sources */,
 				5547331E1B8F14AF008F096C /* Nilo.cpp in Sources */,
 				EC5FE2F61BAC5ECD006F6107 /* TestPopUI.cpp in Sources */,
 				554733111B8EA89E008F096C /* RegionButton.cpp in Sources */,
 				55883EB91B8D9215007F2FD3 /* TestScene.cpp in Sources */,
+				EC92D1F81BC264ED004BEBB6 /* ChaosNumber.cpp in Sources */,
 				5535B8A31BABADFA00A2EEF9 /* MenuScene.cpp in Sources */,
 				46880B8919C43A87006E1F66 /* AppDelegate.cpp in Sources */,
 				55DAD9281BB16B5D00149C80 /* SceneItem.cpp in Sources */,
@@ -1260,9 +1294,11 @@
 				55DAD92A1BB16B5D00149C80 /* UsableItem.cpp in Sources */,
 				55E71D0D1B9D2890001BEFF7 /* MapMgrs.cpp in Sources */,
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
+				EC92D1CF1BC2229F004BEBB6 /* Stream.cpp in Sources */,
 				EC5FE2F81BAC5ECD006F6107 /* WrapperUILayer.cpp in Sources */,
 				55E71D1C1B9D4957001BEFF7 /* ActorFactory.cpp in Sources */,
 				EC5FE2F21BAC5ECD006F6107 /* PopupUILayer.cpp in Sources */,
+				EC92D1DB1BC2480A004BEBB6 /* ArchiveManager.cpp in Sources */,
 				EC1D8AFD1BAD0FDA00F1F16E /* MainUi.cpp in Sources */,
 				55883EAC1B8D7A35007F2FD3 /* HueSprite.cpp in Sources */,
 				EC5FE2FD1BAC5F5D006F6107 /* CloseCallback.cpp in Sources */,

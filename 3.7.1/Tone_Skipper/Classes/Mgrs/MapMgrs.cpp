@@ -683,7 +683,7 @@ bool MapMgrs::initShadows()
         shadow->setPosition(Vec2(shadowRect.getMidX(), shadowRect.getMidY()));
         Texture2D::TexParams texRepeat = {GL_NEAREST, GL_NEAREST, GL_REPEAT, GL_REPEAT};
         shadow->getTexture()->setTexParameters(texRepeat);
-        shadow->setTextureRect(shadowRect, true, Size(32,32));
+        shadow->setTextureRect(shadowRect, true,  cocos2d::Size(32,32));
         shadow->setOpacity(128);
         m_pShadowLayer->addChild(shadow);
     }

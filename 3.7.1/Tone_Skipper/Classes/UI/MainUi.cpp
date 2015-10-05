@@ -10,6 +10,7 @@
 #include "PopupUILayerManager.h"
 #include "RegionSlider.h"
 #include "MapMgrs.h"
+#include "ArchiveManager.h"
 USING_NS_CC;
 using namespace ui;
 MainUi::MainUi()
@@ -57,7 +58,7 @@ void MainUi::addEvents()
     
     RegionSlider* regionSlider = RegionSlider::create();
     regionSlider->setAnchorPoint(Vec2::ANCHOR_MIDDLE_BOTTOM);
-    regionSlider->setCapInsets(Rect(0, 0, 0, 0));
+    regionSlider->setCapInsets( cocos2d::Rect(0, 0, 0, 0));
     regionSlider->setScale(SCREEN_SCALE);
     regionSlider->loadBarTexture("ui_frame_black.png");
     regionSlider->loadSlidBallTextureNormal("ui_frame_black.png");
@@ -201,13 +202,18 @@ void MainUi::addEvents()
     m_pKeySilverLabel->setPosition(Vec2(SCREEN_WIDTH* 0.84+keySilverImg->getContentSize().width*SCREEN_SCALE*0.3+5*SCREEN_SCALE, SCREEN_HEIGHT*0.95));
     m_pRootLayer->addChild(m_pKeySilverLabel);
     
-    
+    CCLOG("eCTBomb:%d",ArchiveManager::getInstance()->getChaosValue(eCTBomb));
+    ArchiveManager::getInstance()->setChaosValue(eCTBomb, CChaosNumber(16));
+    ArchiveManager::getInstance()->saveData();
     
 }
 void MainUi::update(float dt)
 {
     m_pTime+=dt;
-    m_pTimeLabel->setString(StringUtils::format("时间: %02d : %02d",(int)m_pTime/60,(int)m_pTime%60));
+    if (m_pTimeLabel) {
+        m_pTimeLabel->setString(StringUtils::format("时间: %02d : %02d",(int)m_pTime/60,(int)m_pTime%60));
+    }
+
 }
 void MainUi::onEventTips(cocos2d::EventCustom *sender)
 {
