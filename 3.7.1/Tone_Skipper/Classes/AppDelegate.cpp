@@ -1,6 +1,6 @@
 #include "AppDelegate.h"
 #include "LogoScene.h"
-
+#include "ArchiveManager.h"
 USING_NS_CC;
 
 AppDelegate::AppDelegate() {
@@ -48,7 +48,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     searchPaths.push_back("particles");
     searchPaths.push_back("UI");
     FileUtils::getInstance()->setSearchPaths(searchPaths);
-    
+    ArchiveManager::getInstance()->init(0);
 #if COCOS2D_DEBUG
     // turn on display FPS
     director->setDisplayStats(true);

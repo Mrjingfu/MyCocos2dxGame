@@ -11,6 +11,7 @@
 
 #include "cocos2d.h"
 
+class MainUi;
 class GameScene : public cocos2d::Layer
 {
     GameScene();
@@ -27,6 +28,8 @@ public:
     virtual void onEnter();
     virtual void onExit();
     virtual void update(float delta);
+private:
+    MainUi* m_pMainUi;
 };
 
 #endif /* defined(__Tone_Skipper__GameScene__) */

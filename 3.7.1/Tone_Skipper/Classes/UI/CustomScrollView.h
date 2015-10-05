@@ -17,5 +17,6 @@ public:
     static CustomScrollView* create();
     virtual ~CustomScrollView();
     virtual void setCameraMask(unsigned short mask, bool applyChildren = true) override;
+
 };
 #endif /* defined(__Tone_Skipper__BagScrollView__) */

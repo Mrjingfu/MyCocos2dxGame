@@ -6,8 +6,8 @@
 //
 //
 
-#ifndef Tone_Skipper_GameConfig_h
-#define Tone_Skipper_GameConfig_h
+#ifndef __Tone_Skipper_GameConfig_h__
+#define __Tone_Skipper_GameConfig_h__
 #include "cocos2d.h"
 
 #define SCREEN_HEIGHT        (cocos2d::Director::getInstance()->getVisibleSize().height)
@@ -19,10 +19,36 @@
 
 #define DEFAULT_FONT "ZpixEX2_EX.ttf"
 
+#define sRecordMD5          "sM"
+#define sHavePlayedGame		"HavePlayedGame"
+#define sArchiveName        "GameArchive"
+#define MAX_DIAMOD 100
+
 struct TipData
 {
     cocos2d::Vec2 m_pPt;
     std::string m_pDes;
+};
+//存储数据的版本号
+enum eUserRecordVersion
+{
+    eUserRecordVersion0 = 0,
+    eUserRecordVersionCount
+};
+enum eChaoType
+{
+    eCTDiamond = 0,
+    eCTBomb,
+    eCTBullet,
+    eCTKeyCopper,
+    eCTKeyGold,
+    eCTKeySilver,
+    eCTMax
+    
+};
+enum eStartupType{
+    eStartupNormal,
+    eStartupFirstInstall
 };
 
 enum eZOrder
@@ -34,7 +60,8 @@ enum eZOrder
     eZOrderPopupLayer = 25   //PopupUI之上层
 };
 
+
 //EVENT
 static const std::string EVENT_MAIN_TIPS = "MAIN_TIPS";
 
-#endif
+#endif//__Tone_Skipper_GameConfig_h__

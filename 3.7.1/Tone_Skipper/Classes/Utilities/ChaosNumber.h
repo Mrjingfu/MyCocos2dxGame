@@ -1,58 +1,56 @@
-//
-//  ChaosNumber.h
-//
+﻿/********************************************************************
+	created:	2013/09/09
+	filename: 	ChaosNumber.h
+	author:		XiaoFeng on 12-3-29, modified by reedhong 
+	
+	purpose:	
+*********************************************************************/
 
-#ifndef __Tone_Skipper___ChaosNumber_h
-#define __Tone_Skipper___ChaosNumber_h
+#ifndef __FishingJoy3__ApparkTest_ChaosNumber_h
+#define __FishingJoy3__ApparkTest_ChaosNumber_h
 
-#include <stdlib.h>
-template <typename Type_>
-static inline void SafeFreePtr(Type_ *ptr)
+enum valueType
 {
-    if(ptr)
-    {
-        free(ptr);
-        ptr = nullptr;
-    }
-}
-typedef enum _valueType
-{
-    valueNone = 0,
-    valueLong,
-    valueFloat
-}valueType;
+	valueNone = 0,
+	valueLong,
+	valueFloat
+};
 
-class ChaosNumber
+class CChaosNumber
 {
 public:
-    ChaosNumber();
-    ~ChaosNumber();
-    ChaosNumber(long lValue);
-    ChaosNumber(float fValue);
-    ChaosNumber(int nValue);
-    ChaosNumber(ChaosNumber& another);
-        
+    CChaosNumber();
+    ~CChaosNumber();
+    CChaosNumber(const long lValue);
+    CChaosNumber(const float fValue);
+    CChaosNumber(const int nValue);
+    CChaosNumber(const CChaosNumber& another);
+
 public:
-    float GetFloatValue();
-    long  GetLongValue();
+    float GetFloatValue() const ;
+    long  GetLongValue() const ;
     void  SetFloatValue(float value);
     void  SetLongValue(long value);
-    valueType GetValueType();
-        
+    valueType GetValueType() const;
+
 public:
-    // 重载操作符
+    // 重载操作符 
     operator long();
     operator float();
     operator int();
-        
+
     // +, -, *, /, ++, --, ==, >=, <=, >, <
-    ChaosNumber& operator=(ChaosNumber& another);
-    ChaosNumber& operator=(long lValue);
-    ChaosNumber& operator=(int nValue);
-    ChaosNumber& operator=(float fValue);
+    CChaosNumber& operator=(CChaosNumber& another);
+    CChaosNumber& operator=(long lValue);
+    CChaosNumber& operator=(int nValue);
+    CChaosNumber& operator=(float fValue);
     long operator+(long lValue);
     int operator+(int nValue);
     float operator+(float fValue);
+
+	//成就那边频繁需要+=，故重写 [17/11/2014/CYN]
+	CChaosNumber& operator+=(int lValue);
+
     long operator-(long lValue);
     int operator-(int nValue);
     float operator-(float fValue);
@@ -62,34 +60,34 @@ public:
     long operator/(long lValue);
     int operator/(int nValue);
     float operator/(float fValue);
-    ChaosNumber& operator++();
-    ChaosNumber& operator--();
-    bool operator==(ChaosNumber& another);
+    CChaosNumber& operator++();
+    CChaosNumber& operator--();
+    bool operator==(CChaosNumber& another);
     bool operator==(long lValue);
     bool operator==(int nValue);
     bool operator==(float fValue);
-    bool operator>=(ChaosNumber& another);
+    bool operator>=(CChaosNumber& another);
     bool operator>=(long lValue);
     bool operator>=(int nValue);
     bool operator>=(float fValue);
-    bool operator<=(ChaosNumber& another);
+    bool operator<=(CChaosNumber& another);
     bool operator<=(long lValue);
     bool operator<=(int nValue);
     bool operator<=(float fValue);
-    bool operator>(ChaosNumber& another);
+    bool operator>(CChaosNumber& another);
     bool operator>(long lValue);
     bool operator>(int nValue);
     bool operator>(float fValue);
-    bool operator<(ChaosNumber& another);
+    bool operator<(CChaosNumber& another);
     bool operator<(long lValue);
     bool operator<(int nValue);
     bool operator<(float fValue);
-        
-private:
+
+public:
     void  GenerateOrder();
     void  PutValueToMatrix(void * pValue);
-    void  GetValueFromMatric(void * pBuffer);
-        
+    void  GetValueFromMatric(void * pBuffer) const; 
+
 private:
     char *  m_pMatrix;
     char    m_BytePos[4][2];

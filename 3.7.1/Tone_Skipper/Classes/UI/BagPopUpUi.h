@@ -13,10 +13,7 @@
 #include "PopupUILayer.h"
 
 
-#define CELL_PT(COL,ROW) (cocos2d::Vec2(ROW*CELL_SIZE+CELL_SIZE/2,COL*CELL_SIZE+CELL_SIZE/2))
-#define MAX_COL 6
-#define MAX_ROW 5
-#define CELL_SIZE 32
+class CustomScrollView;
 class BagPopUpUi:public PopupUILayer
 {
 public:
@@ -24,9 +21,22 @@ public:
     virtual ~BagPopUpUi();
     CREATE_FUNC(BagPopUpUi);
     void addEvents() override;
+    void updateItemRow(int row);
     void onClose(Ref *pSender, cocos2d::ui::Widget::TouchEventType type);
+    virtual bool onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *unused_event);
+    virtual void onTouchEnded(cocos2d::Touch *touch, cocos2d::Event *unused_event);
 private:
-    cocos2d::Vector<cocos2d::ui::ImageView*> m_pItemBgs;
+    void onScrollEvent(Ref*, cocos2d::ui::ScrollView::EventType);
+    cocos2d::Vec2 getItemVec(int col,int row);
+    CustomScrollView* m_pCustomScrollView;
+    cocos2d::Vector<cocos2d::ui::ImageView*> testImgs;
+    cocos2d::Vec2 m_pTouch;
+    void initItems();
+    void initBackground();
+    int m_pCol;
+    int m_pRow;
+    int m_pCellSize;
+    bool m_pIsScrolling;
     
 };
 
