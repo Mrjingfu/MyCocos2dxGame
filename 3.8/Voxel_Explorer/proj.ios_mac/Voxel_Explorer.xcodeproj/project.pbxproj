@@ -22,8 +22,6 @@
 		46880B8219C43A67006E1F66 /* HelloWorld.png in Resources */ = {isa = PBXBuildFile; fileRef = 46880B7A19C43A67006E1F66 /* HelloWorld.png */; };
 		46880B8819C43A87006E1F66 /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46880B8419C43A87006E1F66 /* AppDelegate.cpp */; };
 		46880B8919C43A87006E1F66 /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46880B8419C43A87006E1F66 /* AppDelegate.cpp */; };
-		46880B8A19C43A87006E1F66 /* HelloWorldScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46880B8619C43A87006E1F66 /* HelloWorldScene.cpp */; };
-		46880B8B19C43A87006E1F66 /* HelloWorldScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46880B8619C43A87006E1F66 /* HelloWorldScene.cpp */; };
 		503AE0F817EB97AB00D1A890 /* Icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 503AE0F617EB97AB00D1A890 /* Icon.icns */; };
 		503AE10017EB989F00D1A890 /* AppController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 503AE0FB17EB989F00D1A890 /* AppController.mm */; };
 		503AE10117EB989F00D1A890 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 503AE0FC17EB989F00D1A890 /* main.m */; };
@@ -59,12 +57,12 @@
 		521A8EA919F11F5000D177D7 /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = 521A8EA819F11F5000D177D7 /* fonts */; };
 		521A8EAA19F11F5000D177D7 /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = 521A8EA819F11F5000D177D7 /* fonts */; };
 		52B47A471A53D09C004E4C60 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B47A461A53D09B004E4C60 /* Security.framework */; };
+		555133E11BC4B64F002E6F6A /* Door.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 555133E01BC4B64F002E6F6A /* Door.cpp */; };
+		555133E21BC4B64F002E6F6A /* Door.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 555133E01BC4B64F002E6F6A /* Door.cpp */; };
 		557516471BB3986600DF447B /* BaseLevel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 557516451BB3986600DF447B /* BaseLevel.cpp */; };
 		557516481BB3986600DF447B /* BaseLevel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 557516451BB3986600DF447B /* BaseLevel.cpp */; };
 		5575164B1BB3989D00DF447B /* Area.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 557516491BB3989D00DF447B /* Area.cpp */; };
 		5575164C1BB3989D00DF447B /* Area.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 557516491BB3989D00DF447B /* Area.cpp */; };
-		557516531BB39ED300DF447B /* Door.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 557516511BB39ED300DF447B /* Door.cpp */; };
-		557516541BB39ED300DF447B /* Door.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 557516511BB39ED300DF447B /* Door.cpp */; };
 		557516571BB3AE4800DF447B /* StandardLevel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 557516551BB3AE4800DF447B /* StandardLevel.cpp */; };
 		557516581BB3AE4800DF447B /* StandardLevel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 557516551BB3AE4800DF447B /* StandardLevel.cpp */; };
 		5575165C1BB3D0A800DF447B /* Graph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5575165A1BB3D0A800DF447B /* Graph.cpp */; };
@@ -131,8 +129,6 @@
 		46880B7A19C43A67006E1F66 /* HelloWorld.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HelloWorld.png; sourceTree = "<group>"; };
 		46880B8419C43A87006E1F66 /* AppDelegate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AppDelegate.cpp; sourceTree = "<group>"; };
 		46880B8519C43A87006E1F66 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		46880B8619C43A87006E1F66 /* HelloWorldScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HelloWorldScene.cpp; sourceTree = "<group>"; };
-		46880B8719C43A87006E1F66 /* HelloWorldScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelloWorldScene.h; sourceTree = "<group>"; };
 		503AE0F617EB97AB00D1A890 /* Icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Icon.icns; sourceTree = "<group>"; };
 		503AE0F717EB97AB00D1A890 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		503AE0FA17EB989F00D1A890 /* AppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppController.h; path = ios/AppController.h; sourceTree = SOURCE_ROOT; };
@@ -169,11 +165,11 @@
 		521A8E6319F0C34300D177D7 /* Default-736h@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-736h@3x.png"; sourceTree = "<group>"; };
 		521A8EA819F11F5000D177D7 /* fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = fonts; sourceTree = "<group>"; };
 		52B47A461A53D09B004E4C60 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.1.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
+		555133E01BC4B64F002E6F6A /* Door.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Door.cpp; sourceTree = "<group>"; };
 		557516451BB3986600DF447B /* BaseLevel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BaseLevel.cpp; sourceTree = "<group>"; };
 		557516461BB3986600DF447B /* BaseLevel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseLevel.h; sourceTree = "<group>"; };
 		557516491BB3989D00DF447B /* Area.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Area.cpp; sourceTree = "<group>"; };
 		5575164A1BB3989D00DF447B /* Area.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Area.h; sourceTree = "<group>"; };
-		557516511BB39ED300DF447B /* Door.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Door.cpp; sourceTree = "<group>"; };
 		557516521BB39ED300DF447B /* Door.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Door.h; sourceTree = "<group>"; };
 		557516551BB3AE4800DF447B /* StandardLevel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StandardLevel.cpp; sourceTree = "<group>"; };
 		557516561BB3AE4800DF447B /* StandardLevel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StandardLevel.h; sourceTree = "<group>"; };
@@ -329,12 +325,11 @@
 		46880B8319C43A87006E1F66 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				555133FC1BC4C1A6002E6F6A /* Sprites3D */,
 				557516681BB3FA4800DF447B /* Scenes */,
 				557516441BB3984900DF447B /* Levels */,
 				46880B8419C43A87006E1F66 /* AppDelegate.cpp */,
 				46880B8519C43A87006E1F66 /* AppDelegate.h */,
-				46880B8619C43A87006E1F66 /* HelloWorldScene.cpp */,
-				46880B8719C43A87006E1F66 /* HelloWorldScene.h */,
 				5575165E1BB3F8BE00DF447B /* VoxelExplorer.cpp */,
 				5575165F1BB3F8BE00DF447B /* VoxelExplorer.h */,
 			);
@@ -389,14 +384,21 @@
 			path = ios;
 			sourceTree = SOURCE_ROOT;
 		};
+		555133FC1BC4C1A6002E6F6A /* Sprites3D */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Sprites3D;
+			sourceTree = "<group>";
+		};
 		557516441BB3984900DF447B /* Levels */ = {
 			isa = PBXGroup;
 			children = (
+				555133E01BC4B64F002E6F6A /* Door.cpp */,
 				557516451BB3986600DF447B /* BaseLevel.cpp */,
 				557516461BB3986600DF447B /* BaseLevel.h */,
 				557516491BB3989D00DF447B /* Area.cpp */,
 				5575164A1BB3989D00DF447B /* Area.h */,
-				557516511BB39ED300DF447B /* Door.cpp */,
 				557516521BB39ED300DF447B /* Door.h */,
 				557516551BB3AE4800DF447B /* StandardLevel.cpp */,
 				557516561BB3AE4800DF447B /* StandardLevel.h */,
@@ -563,12 +565,11 @@
 				557516571BB3AE4800DF447B /* StandardLevel.cpp in Sources */,
 				46880B8819C43A87006E1F66 /* AppDelegate.cpp in Sources */,
 				557516601BB3F8BE00DF447B /* VoxelExplorer.cpp in Sources */,
-				46880B8A19C43A87006E1F66 /* HelloWorldScene.cpp in Sources */,
 				5575165C1BB3D0A800DF447B /* Graph.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
-				557516531BB39ED300DF447B /* Door.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
+				555133E11BC4B64F002E6F6A /* Door.cpp in Sources */,
 				5575166B1BB3FA5800DF447B /* GameScene.cpp in Sources */,
 				557516471BB3986600DF447B /* BaseLevel.cpp in Sources */,
 			);
@@ -586,9 +587,8 @@
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
 				557516701BB3FE7D00DF447B /* TombLevel.cpp in Sources */,
 				5575165D1BB3D0A800DF447B /* Graph.cpp in Sources */,
-				557516541BB39ED300DF447B /* Door.cpp in Sources */,
-				46880B8B19C43A87006E1F66 /* HelloWorldScene.cpp in Sources */,
 				5575164C1BB3989D00DF447B /* Area.cpp in Sources */,
+				555133E21BC4B64F002E6F6A /* Door.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -616,6 +616,7 @@
 				COMPRESS_PNG_FILES = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_INPUT_FILETYPE = sourcecode.cpp.objcpp;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = ios/Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -651,6 +652,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COMPRESS_PNG_FILES = NO;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_INPUT_FILETYPE = sourcecode.cpp.objcpp;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = ios/Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -687,6 +689,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_INPUT_FILETYPE = sourcecode.cpp.objcpp;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = mac/Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -719,6 +722,7 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_INPUT_FILETYPE = sourcecode.cpp.objcpp;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = mac/Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = (

@@ -258,13 +258,15 @@ void StandardLevel::generateTerrain()
         if(area)
         {
             if(area->getAreaType() != Area::AT_UNKNOWN)
+            {
                 placeDoors(area);
+                generateTerrainTiles();
+            }
             else
             {
-//                if (feeling == Feeling.CHASM && Random.Int( 2 ) == 0) {
-//                    Painter.fill( this, r, Terrain.WALL );
-//                }
-                generateWalls(area);
+                if (m_BoundaryType == LBT_CHASM && cocos2d::random(0, 1) == 0) {
+                    generateWalls(area);
+                }
             }
         }
     }
@@ -372,6 +374,9 @@ void StandardLevel::showDebug(bool show)
 //            }
 //        }
     }
+}
+void StandardLevel::generateTerrainTiles()
+{
 }
 void StandardLevel::placeDoors(Area* area)
 {

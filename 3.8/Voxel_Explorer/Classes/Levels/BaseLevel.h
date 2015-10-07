@@ -21,6 +21,13 @@ public:
     }
     LEVEL_TYPE;
     
+    typedef enum{
+        LBT_NONE = 0,
+        LBT_CHASM,          ///鸿沟
+        LBT_MAX
+    }
+    LEVEL_BOUNDARY_TYPE;
+    
     static const int WIDTH = 48;
     static const int HEIGHT = 32;
     static const int LENGTH = WIDTH*HEIGHT;
@@ -38,6 +45,7 @@ protected:
     virtual void showDebug(bool show) = 0;
 protected:
     LEVEL_TYPE           m_Type;
+    LEVEL_BOUNDARY_TYPE  m_BoundaryType;
     
     cocos2d::DrawNode*   m_pDebugDrawNode;
 };

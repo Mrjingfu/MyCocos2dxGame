@@ -31,6 +31,7 @@ protected:
     
 private:
     void placeDoors(Area* area);
+    void generateTerrainTiles();
     void generateWalls(Area* area);
     void generateDoors(Area* area);
     bool mergeStandardArea(Area* area, Area* other);

@@ -12,6 +12,7 @@ USING_NS_CC;
 BaseLevel::BaseLevel()
 {
     m_Type = LT_STANDARD;
+    m_BoundaryType = LBT_NONE;
     m_pDebugDrawNode = nullptr;
 }
 void BaseLevel::create()
