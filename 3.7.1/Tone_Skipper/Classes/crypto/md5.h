@@ -38,8 +38,17 @@ typedef struct {
 	MD5_u32plus block[16];
 } MD5_CTX;
 
+#if CC_TARGET_PLATFORM == CC_PLATFORM_MAC
 extern void MD5_Init_ex(MD5_CTX *ctx);
 extern void MD5_Update_ex(MD5_CTX *ctx, void *data, unsigned long size);
 extern void MD5_Final_ex(unsigned char *result, MD5_CTX *ctx);
+#else
+extern "C"
+{
+void MD5_Init_ex(MD5_CTX *ctx);
+void MD5_Update_ex(MD5_CTX *ctx, void *data, unsigned long size);
+void MD5_Final_ex(unsigned char *result, MD5_CTX *ctx);
+}
+#endif
 
 #endif

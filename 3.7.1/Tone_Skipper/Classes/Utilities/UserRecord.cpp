@@ -9,14 +9,14 @@
 #include "UserRecord.h"
 #include "cocos2d.h"
 #include "MemoryStream.h"
-//#include "CCCrypto.h"
+#include "CCCrypto.h"
 #include "UtilityHelper.h"
 #include "GameConfig.h"
 #include "NativeBridge.h"
 #include "FileStream.h"
 UserRecord::UserRecord()
 {
-    init();
+//    init();
 }
 UserRecord::~UserRecord()
 {
@@ -66,16 +66,16 @@ void UserRecord::load(int archiveCount)
     memcpy(m_buf, content, size);
     CC_SAFE_DELETE_ARRAY(content);
     //3.校验MD5
-//    cocos2d::extension::CCCrypto::md5((void *)m_buf, size, m_md5);
-//    std::string hex;
-//    UtilityHelper::getHexDigest(m_md5, MD5_LEN, hex);
-//    
-//    std::string fileMD5 = cocos2d::UserDefault::getInstance()->getStringForKey(sRecordMD5);
-//    if (fileMD5.compare(hex)!=0) {
-//        CCLOG("init record,md5 error %s",path.c_str());
-//        init(mArchiveCount);
-//        return;
-//    }
+    CCCrypto::md5((void *)m_buf, size, m_md5);
+    std::string hex;
+    UtilityHelper::getHexDigest(m_md5, MD5_LEN, hex);
+    
+    std::string fileMD5 = cocos2d::UserDefault::getInstance()->getStringForKey(sRecordMD5);
+    if (fileMD5.compare(hex)!=0) {
+        CCLOG("init record,md5 error %s",path.c_str());
+        init();
+        return;
+    }
     
     MemoryStream stream(m_buf, MAX_RECORD_LEN, false);
     
@@ -116,13 +116,13 @@ void UserRecord::save()
     size_t writeCount = stream.tell();
     stream.close();
     
-//    cocos2d::extension::CCCrypto::md5((void*)m_buf, writeCount, m_md5);
-//    std::string hex;
-//    UtilityHelper::getHexDigest(m_md5, MD5_LEN, hex);
-//    CCLOG("save md5 to userdefault: md5=%s, begin", hex.c_str());
-//    cocos2d::UserDefault::getInstance()->setStringForKey(sRecordMD5, hex);
-//    cocos2d::UserDefault::getInstance()->flush();
-//    CCLOG("save md5 to userdefault: md5=%s, end", hex.c_str());
+    CCCrypto::md5((void*)m_buf, writeCount, m_md5);
+    std::string hex;
+    UtilityHelper::getHexDigest(m_md5, MD5_LEN, hex);
+    CCLOG("save md5 to userdefault: md5=%s, begin", hex.c_str());
+    cocos2d::UserDefault::getInstance()->setStringForKey(sRecordMD5, hex);
+    cocos2d::UserDefault::getInstance()->flush();
+    CCLOG("save md5 to userdefault: md5=%s, end", hex.c_str());
     //存文件
     std::string path = cocos2d::FileUtils::getInstance()->getWritablePath()+cocos2d::StringUtils::format("%s%d",sArchiveName,mArchiveCount);
     FileStream fs(path.c_str(),"wb");
