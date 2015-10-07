@@ -320,7 +320,7 @@ void PhysicsWorld::collisionSeparateCallback(PhysicsContact& contact)
         return;
     }
     
-    contact.setEventCode(PhysicsContact::EventCode::SEPERATE);
+    contact.setEventCode(PhysicsContact::EventCode::SEPARATE);
     contact.setWorld(this);
     _scene->getEventDispatcher()->dispatchEvent(&contact);
 }
@@ -879,10 +879,10 @@ PhysicsWorld::PhysicsWorld()
 , _updateTime(0.0f)
 , _substeps(1)
 , _cpSpace(nullptr)
+, _updateBodyTransform(false)
 , _scene(nullptr)
 , _autoStep(true)
 , _debugDraw(nullptr)
-, _updateBodyTransform(false)
 , _debugDrawMask(DEBUGDRAW_NONE)
 {
     
@@ -936,9 +936,12 @@ void PhysicsDebugDraw::drawShape(PhysicsShape& shape)
         {
             case CP_CIRCLE_SHAPE:
             {
+                
                 float radius = PhysicsHelper::cpfloat2float(cpCircleShapeGetRadius(subShape));
-                Vec2 centre = PhysicsHelper::cpv2point(cpBodyGetPos(cpShapeGetBody(subShape)))
-                + PhysicsHelper::cpv2point(cpCircleShapeGetOffset(subShape));
+                Vec2 centre = PhysicsHelper::cpv2point(cpBodyGetPos(cpShapeGetBody(subShape)));
+                Vec2 offset = PhysicsHelper::cpv2point(cpCircleShapeGetOffset(subShape));
+                Vec2 rotation(PhysicsHelper::cpv2point(cpBodyGetRot(cpShapeGetBody(subShape))));
+		              centre += offset.rotate(rotation);
                 
                 static const int CIRCLE_SEG_NUM = 12;
                 Vec2 seg[CIRCLE_SEG_NUM] = {};

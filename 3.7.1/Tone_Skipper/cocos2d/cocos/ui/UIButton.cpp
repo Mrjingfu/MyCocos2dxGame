@@ -29,6 +29,7 @@ THE SOFTWARE.
 #include "2d/CCActionInterval.h"
 #include "platform/CCFileUtils.h"
 #include "ui/UIHelper.h"
+#include <algorithm>
 
 NS_CC_BEGIN
 
@@ -243,6 +244,9 @@ void Button::loadTextureNormal(const std::string& normal,TextureResType texType)
 void Button::setupNormalTexture()
 {
     _normalTextureSize = _buttonNormalRenderer->getContentSize();
+    // force update _customSize, fixed issue:
+    // https://github.com/cocos2d/cocos2d-x/issues/12249
+    _customSize = _normalTextureSize;
 
     this->updateChildrenDisplayedRGBA();
 
@@ -590,7 +594,7 @@ Size Button::getVirtualRendererSize() const
         return this->getNormalSize();
     }
 
-    if(nullptr != _titleRenderer)
+    if (nullptr != _titleRenderer)
     {
         Size titleSize = _titleRenderer->getContentSize();
         if (!_normalTextureLoaded && _titleRenderer->getString().size() > 0)
@@ -737,6 +741,24 @@ void Button::setPressedActionEnabled(bool enabled)
     _pressedActionEnabled = enabled;
 }
 
+void Button::setTitleAlignment(TextHAlignment hAlignment)
+{
+    if (nullptr == _titleRenderer)
+    {
+        this->createTitleRenderer();
+    }
+    _titleRenderer->setAlignment(hAlignment);
+}
+
+void Button::setTitleAlignment(TextHAlignment hAlignment, TextVAlignment vAlignment)
+{
+    if (nullptr == _titleRenderer)
+    {
+        this->createTitleRenderer();
+    }
+    _titleRenderer->setAlignment(hAlignment, vAlignment);
+}
+
 void Button::setTitleText(const std::string& text)
 {
     if (text == getTitleText())
@@ -748,6 +770,7 @@ void Button::setTitleText(const std::string& text)
         this->createTitleRenderer();
     }
     _titleRenderer->setString(text);
+    this->setTitleFontSize(_fontSize);
     updateContentSize();
 }
 
@@ -780,22 +803,27 @@ Color3B Button::getTitleColor() const
 
 void Button::setTitleFontSize(float size)
 {
-    if(nullptr == _titleRenderer)
+    if (nullptr == _titleRenderer)
     {
         this->createTitleRenderer();
     }
+
+    _fontSize = size;
     if (_type == FontType::SYSTEM)
     {
-        _titleRenderer->setSystemFontSize(size);
+        _titleRenderer->setSystemFontSize(_fontSize);
     }
-    else
+    else if (_type == FontType::TTF)
     {
         TTFConfig config = _titleRenderer->getTTFConfig();
-        config.fontSize = size;
+        config.fontSize = _fontSize;
         _titleRenderer->setTTFConfig(config);
     }
-    updateContentSize();
-    _fontSize = size;
+    //we can't change font size of BMFont.
+    if(FontType::BMFONT != _type)
+    {
+        updateContentSize();
+    }
 }
 
 float Button::getTitleFontSize() const
@@ -821,11 +849,21 @@ void Button::setTitleFontName(const std::string& fontName)
     }
     if(FileUtils::getInstance()->isFileExist(fontName))
     {
-        TTFConfig config = _titleRenderer->getTTFConfig();
-        config.fontFilePath = fontName;
-        config.fontSize = _fontSize;
-        _titleRenderer->setTTFConfig(config);
-        _type = FontType::TTF;
+        std::string lowerCasedFontName = fontName;
+        std::transform(lowerCasedFontName.begin(), lowerCasedFontName.end(), lowerCasedFontName.begin(), ::tolower);
+        if (lowerCasedFontName.find(".fnt") != std::string::npos)
+        {
+            _titleRenderer->setBMFontFilePath(fontName);
+            _type = FontType::BMFONT;
+        }
+        else
+        {
+            TTFConfig config = _titleRenderer->getTTFConfig();
+            config.fontFilePath = fontName;
+            config.fontSize = _fontSize;
+            _titleRenderer->setTTFConfig(config);
+            _type = FontType::TTF;
+        }
     }
     else
     {
@@ -849,13 +887,17 @@ const std::string Button::getTitleFontName() const
 {
     if (nullptr != _titleRenderer)
     {
-        if(this->_type == FontType::SYSTEM)
+        if (this->_type == FontType::SYSTEM)
         {
             return _titleRenderer->getSystemFontName();
         }
-        else
+        else if (this->_type == FontType::TTF)
         {
             return  _titleRenderer->getTTFConfig().fontFilePath;
+        }
+        else
+        {
+            return _titleRenderer->getBMFontFilePath();
         }
     }
     else

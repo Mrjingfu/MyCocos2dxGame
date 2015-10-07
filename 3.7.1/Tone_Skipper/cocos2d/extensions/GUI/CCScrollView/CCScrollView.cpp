@@ -388,13 +388,20 @@ void ScrollView::relocateContainer(bool animated)
 
 Vec2 ScrollView::maxContainerOffset()
 {
-    return Vec2(0.0f, 0.0f);
+    Point anchorPoint = _container->isIgnoreAnchorPointForPosition()?Point::ZERO:_container->getAnchorPoint();
+    float contW       = _container->getContentSize().width * _container->getScaleX();
+    float contH       = _container->getContentSize().height * _container->getScaleY();
+    
+    return Vec2(anchorPoint.x * contW, anchorPoint.y * contH);
 }
 
 Vec2 ScrollView::minContainerOffset()
 {
-    return Vec2(_viewSize.width - _container->getContentSize().width*_container->getScaleX(), 
-               _viewSize.height - _container->getContentSize().height*_container->getScaleY());
+    Point anchorPoint = _container->isIgnoreAnchorPointForPosition()?Point::ZERO:_container->getAnchorPoint();
+    float contW       = _container->getContentSize().width * _container->getScaleX();
+    float contH       = _container->getContentSize().height * _container->getScaleY();
+    
+    return Vec2(_viewSize.width - (1 - anchorPoint.x) * contW, _viewSize.height - (1 - anchorPoint.y) * contH);
 }
 
 void ScrollView::deaccelerateScrolling(float dt)
@@ -429,8 +436,8 @@ void ScrollView::deaccelerateScrolling(float dt)
     
     if ((fabsf(_scrollDistance.x) <= SCROLL_DEACCEL_DIST &&
          fabsf(_scrollDistance.y) <= SCROLL_DEACCEL_DIST) ||
-        newY >= maxInset.y || newY <= minInset.y ||
-        newX >= maxInset.x || newX <= minInset.x)
+        ((_direction == Direction::BOTH || _direction == Direction::VERTICAL) && (newY >= maxInset.y || newY <= minInset.y)) ||
+        ((_direction == Direction::BOTH || _direction == Direction::HORIZONTAL) && (newX >= maxInset.x || newX <= minInset.x)))
     {
         this->unschedule(CC_SCHEDULE_SELECTOR(ScrollView::deaccelerateScrolling));
         this->relocateContainer(true);
@@ -580,7 +587,7 @@ void ScrollView::onAfterDraw()
 void ScrollView::visit(Renderer *renderer, const Mat4 &parentTransform, uint32_t parentFlags)
 {
     // quick return if not visible
-    if (!isVisible() || !isVisitableByVisitingCamera())
+    if (!isVisible())
     {
         return;
     }

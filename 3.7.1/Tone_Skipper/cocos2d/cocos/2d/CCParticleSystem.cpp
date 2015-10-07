@@ -164,7 +164,7 @@ bool ParticleSystem::initWithFile(const std::string& plistFile)
 {
     bool ret = false;
     _plistFile = FileUtils::getInstance()->fullPathForFilename(plistFile);
-    ValueMap dict = FileUtils::getInstance()->getValueMapFromFile(_plistFile.c_str());
+    ValueMap dict = FileUtils::getInstance()->getValueMapFromFile(_plistFile);
 
     CCASSERT( !dict.empty(), "Particles: file not found");
     
@@ -367,7 +367,7 @@ bool ParticleSystem::initWithDictionary(ValueMap& dictionary, const std::string&
                 
                 Texture2D *tex = nullptr;
                 
-                if (textureName.length() > 0)
+                if (!textureName.empty())
                 {
                     // set not pop-up message box when load image failed
                     bool notify = FileUtils::getInstance()->isPopupNotify();
@@ -384,7 +384,7 @@ bool ParticleSystem::initWithDictionary(ValueMap& dictionary, const std::string&
                 else if( dictionary.find("textureImageData") != dictionary.end() )
                 {                        
                     std::string textureData = dictionary.at("textureImageData").asString();
-                    CCASSERT(!textureData.empty(), "");
+                    CCASSERT(!textureData.empty(), "textureData can't be empty!");
                     
                     auto dataLen = textureData.size();
                     if (dataLen != 0)
@@ -404,7 +404,7 @@ bool ParticleSystem::initWithDictionary(ValueMap& dictionary, const std::string&
                         CCASSERT(isOK, "CCParticleSystem: error init image with Data");
                         CC_BREAK_IF(!isOK);
                         
-                        setTexture(Director::getInstance()->getTextureCache()->addImage(image, textureName.c_str()));
+                        setTexture(Director::getInstance()->getTextureCache()->addImage(image, _plistFile + textureName));
 
                         image->release();
                     }
@@ -626,6 +626,14 @@ void ParticleSystem::onEnter()
 
 void ParticleSystem::onExit()
 {
+#if CC_ENABLE_SCRIPT_BINDING
+    if (_scriptType == kScriptTypeJavascript)
+    {
+        if (ScriptEngineManager::sendNodeEventToJSExtended(this, kNodeOnExit))
+            return;
+    }
+#endif
+    
     this->unscheduleUpdate();
     Node::onExit();
 }

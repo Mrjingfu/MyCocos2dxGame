@@ -16,7 +16,7 @@
 #include "FileStream.h"
 UserRecord::UserRecord()
 {
-//    init();
+    init();
 }
 UserRecord::~UserRecord()
 {

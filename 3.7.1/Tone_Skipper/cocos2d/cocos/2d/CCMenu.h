@@ -63,8 +63,8 @@ public:
      */
     static Menu* create();
     
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_WP8) || (CC_TARGET_PLATFORM == CC_PLATFORM_WINRT)
-    // WP8 in VS2012 does not support nullptr in variable args lists and variadic templates are also not supported.
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_WINRT)
+    // VS2013 does not support nullptr in variable args lists and variadic templates are also not supported.
     typedef MenuItem* M;
     static Menu* create(M m1, std::nullptr_t listEnd) { return variadicCreate(m1, NULL); }
     static Menu* create(M m1, M m2, std::nullptr_t listEnd) { return variadicCreate(m1, m2, NULL); }
@@ -179,7 +179,7 @@ CC_CONSTRUCTOR_ACCESS:
     /**
      * @js ctor
      */
-    Menu() : _selectedItem(nullptr) {}
+    Menu() : _selectedItem(nullptr), _selectedWithCamera(nullptr) {}
     virtual ~Menu();
 
     /** initializes an empty Menu */
@@ -195,10 +195,10 @@ protected:
     /** whether or not the menu will receive events */
     bool _enabled;
 
-    MenuItem* getItemForTouch(Touch * touch);
+    virtual MenuItem* getItemForTouch(Touch * touch, const Camera *camera);
     State _state;
     MenuItem *_selectedItem;
-
+    const Camera *_selectedWithCamera;
 private:
     CC_DISALLOW_COPY_AND_ASSIGN(Menu);
 };

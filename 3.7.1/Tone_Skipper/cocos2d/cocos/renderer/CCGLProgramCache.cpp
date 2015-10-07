@@ -31,10 +31,9 @@ THE SOFTWARE.
 #include "renderer/ccShaders.h"
 #include "base/ccMacros.h"
 #include "base/CCConfiguration.h"
-
-#if CC_TARGET_PLATFORM == CC_PLATFORM_WP8  || defined(WP8_SHADER_COMPILER)
-#include "ui/shaders/UIShaders.h"
-#endif
+#include "base/CCEventListenerCustom.h"
+#include "base/CCDirector.h"
+#include "base/CCEventDispatcher.h"
 
 NS_CC_BEGIN
 
@@ -66,9 +65,7 @@ enum {
     kShaderType_3DParticleColor,
     kShaderType_3DSkyBox,
     kShaderType_3DTerrain,
-#if CC_TARGET_PLATFORM == CC_PLATFORM_WP8 || defined(WP8_SHADER_COMPILER)
-    kShaderType_PositionColor_noMVP_GrayScale,
-#endif
+    kShaderType_CameraClear,
     kShaderType_MAX,
 };
 
@@ -121,6 +118,13 @@ GLProgramCache::~GLProgramCache()
 bool GLProgramCache::init()
 {
     loadDefaultGLPrograms();
+    
+    auto listener = EventListenerCustom::create(Configuration::CONFIG_FILE_LOADED, [this](EventCustom* event){
+        reloadDefaultGLProgramsRelativeToLights();
+    });
+    
+    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(listener, -1);
+    
     return true;
 }
 
@@ -199,7 +203,6 @@ void GLProgramCache::loadDefaultGLPrograms()
     loadDefaultGLProgram(p, kShaderType_PositionLengthTexureColor);
     _programs.insert( std::make_pair(GLProgram::SHADER_NAME_POSITION_LENGTH_TEXTURE_COLOR, p) );
 
-#if CC_TARGET_PLATFORM != CC_PLATFORM_WP8
     p = new (std::nothrow) GLProgram();
     loadDefaultGLProgram(p, kShaderType_LabelDistanceFieldNormal);
     _programs.insert( std::make_pair(GLProgram::SHADER_NAME_LABEL_DISTANCEFIELD_NORMAL, p) );
@@ -207,7 +210,6 @@ void GLProgramCache::loadDefaultGLPrograms()
     p = new (std::nothrow) GLProgram();
     loadDefaultGLProgram(p, kShaderType_LabelDistanceFieldGlow);
     _programs.insert( std::make_pair(GLProgram::SHADER_NAME_LABEL_DISTANCEFIELD_GLOW, p) );
-#endif
 
     p = new (std::nothrow) GLProgram();
     loadDefaultGLProgram(p, kShaderType_UIGrayScale);
@@ -260,6 +262,10 @@ void GLProgramCache::loadDefaultGLPrograms()
     p = new GLProgram();
     loadDefaultGLProgram(p, kShaderType_3DTerrain);
     _programs.insert(std::make_pair(GLProgram::SHADER_3D_TERRAIN, p));
+    
+    p = new GLProgram();
+    loadDefaultGLProgram(p, kShaderType_CameraClear);
+    _programs.insert(std::make_pair(GLProgram::SHADER_CAMERA_CLEAR, p));
 }
 
 void GLProgramCache::reloadDefaultGLPrograms()
@@ -338,7 +344,6 @@ void GLProgramCache::reloadDefaultGLPrograms()
     p->reset();
     loadDefaultGLProgram(p, kShaderType_PositionLengthTexureColor);
 
-#if CC_TARGET_PLATFORM != CC_PLATFORM_WP8
     p = getGLProgram(GLProgram::SHADER_NAME_LABEL_DISTANCEFIELD_NORMAL);
     p->reset();
     loadDefaultGLProgram(p, kShaderType_LabelDistanceFieldNormal);
@@ -346,7 +351,6 @@ void GLProgramCache::reloadDefaultGLPrograms()
     p = getGLProgram(GLProgram::SHADER_NAME_LABEL_DISTANCEFIELD_GLOW);
     p->reset();
     loadDefaultGLProgram(p, kShaderType_LabelDistanceFieldGlow);
-#endif
 
     p = getGLProgram(GLProgram::SHADER_NAME_LABEL_NORMAL);
     p->reset();
@@ -395,6 +399,25 @@ void GLProgramCache::reloadDefaultGLPrograms()
     p = getGLProgram(GLProgram::SHADER_3D_TERRAIN);
     p->reset();
     loadDefaultGLProgram(p, kShaderType_3DTerrain);
+    
+    p = getGLProgram(GLProgram::SHADER_CAMERA_CLEAR);
+    p->reset();
+    loadDefaultGLProgram(p, kShaderType_CameraClear);
+}
+
+void GLProgramCache::reloadDefaultGLProgramsRelativeToLights()
+{
+    GLProgram *p = getGLProgram(GLProgram::SHADER_3D_POSITION_NORMAL);
+    p->reset();
+    loadDefaultGLProgram(p, kShaderType_3DPositionNormal);
+    
+    p = getGLProgram(GLProgram::SHADER_3D_POSITION_NORMAL_TEXTURE);
+    p->reset();
+    loadDefaultGLProgram(p, kShaderType_3DPositionNormalTex);
+    
+    p = getGLProgram(GLProgram::SHADER_3D_SKINPOSITION_NORMAL_TEXTURE);
+    p->reset();
+    loadDefaultGLProgram(p, kShaderType_3DSkinPositionNormalTex);
 }
 
 void GLProgramCache::loadDefaultGLProgram(GLProgram *p, int type)
@@ -437,14 +460,12 @@ void GLProgramCache::loadDefaultGLProgram(GLProgram *p, int type)
         case kShaderType_PositionLengthTexureColor:
             p->initWithByteArrays(ccPositionColorLengthTexture_vert, ccPositionColorLengthTexture_frag);
             break;
-#if CC_TARGET_PLATFORM != CC_PLATFORM_WP8
         case kShaderType_LabelDistanceFieldNormal:
             p->initWithByteArrays(ccLabel_vert, ccLabelDistanceFieldNormal_frag);
             break;
         case kShaderType_LabelDistanceFieldGlow:
             p->initWithByteArrays(ccLabel_vert, ccLabelDistanceFieldGlow_frag);
             break;
-#endif
         case kShaderType_UIGrayScale:
             p->initWithByteArrays(ccPositionTextureColor_noMVP_vert,
                                   ccPositionTexture_GrayScale_frag);
@@ -496,11 +517,9 @@ void GLProgramCache::loadDefaultGLProgram(GLProgram *p, int type)
         case kShaderType_3DTerrain:
             p->initWithByteArrays(cc3D_Terrain_vert, cc3D_Terrain_frag);
             break;
-#if CC_TARGET_PLATFORM == CC_PLATFORM_WP8 || defined(WP8_SHADER_COMPILER)
-        case kShaderType_PositionColor_noMVP_GrayScale:
-            p->initWithByteArrays(ccPositionTextureColor_noMVP_vert, ccUIGrayScale_frag);
+        case kShaderType_CameraClear:
+            p->initWithByteArrays(ccCameraClearVert, ccCameraClearFrag);
             break;
-#endif
         default:
             CCLOG("cocos2d: %s:%d, error shader type", __FUNCTION__, __LINE__);
             return;

@@ -1,11 +1,11 @@
 
 #include "CCCrypto.h"
 #include "xor.h"
-extern "C" {
+//extern "C" {
 #include "libb64.h"
 #include "md5.h"
 #include "sha1.h"
-}
+//}
 
 #if CC_LUA_ENGINE_ENABLED > 0
 #include "CCLuaEngine.h"

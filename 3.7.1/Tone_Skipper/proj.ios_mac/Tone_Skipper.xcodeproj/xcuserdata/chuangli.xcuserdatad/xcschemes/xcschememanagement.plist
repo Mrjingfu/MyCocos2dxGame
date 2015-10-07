@@ -4,12 +4,12 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Tone_Skipper Mac.xcscheme</key>
+		<key>Tone_Skipper-desktop.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>1</integer>
 		</dict>
-		<key>Tone_Skipper iOS.xcscheme</key>
+		<key>Tone_Skipper-mobile.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>

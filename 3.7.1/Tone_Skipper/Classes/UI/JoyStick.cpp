@@ -156,7 +156,7 @@ void JoyStick::leftBtnTouchEvent(Ref *ref, ui::Widget::TouchEventType touchType)
             if(m_pLeftBtn)
             {
                 Vec2 pos = m_pLeftBtn->getTouchMovePosition();
-                bool hit = m_pLeftBtn->hitTest(pos);
+                bool hit = m_pLeftBtn->hitTest(pos,Camera::getVisitingCamera(),nullptr);
                 if(!hit)
                     listener->onLeftBtnReleased();
             }
@@ -179,7 +179,7 @@ void JoyStick::upBtnTouchEvent(Ref *ref, ui::Widget::TouchEventType touchType)
             if(m_pUpBtn)
             {
                 Vec2 pos = m_pUpBtn->getTouchMovePosition();
-                bool hit = m_pUpBtn->hitTest(pos);
+                bool hit = m_pUpBtn->hitTest(pos,Camera::getVisitingCamera(),nullptr);
                 if(!hit)
                     listener->onUpBtnReleased();
             }
@@ -202,7 +202,7 @@ void JoyStick::rightBtnTouchEvent(Ref *ref, ui::Widget::TouchEventType touchType
             if(m_pRightBtn)
             {
                 Vec2 pos = m_pRightBtn->getTouchMovePosition();
-                bool hit = m_pRightBtn->hitTest(pos);
+                bool hit = m_pRightBtn->hitTest(pos,Camera::getVisitingCamera(),nullptr);
                 if(!hit)
                     listener->onRightBtnReleased();
             }
@@ -225,7 +225,7 @@ void JoyStick::downBtnTouchEvent(Ref *ref, ui::Widget::TouchEventType touchType)
             if(m_pDownBtn)
             {
                 Vec2 pos = m_pDownBtn->getTouchMovePosition();
-                bool hit = m_pDownBtn->hitTest(pos);
+                bool hit = m_pDownBtn->hitTest(pos,Camera::getVisitingCamera(),nullptr);
                 if(!hit)
                     listener->onDownBtnReleased();
             }
@@ -248,7 +248,7 @@ void JoyStick::aBtnTouchEvent(Ref *ref, ui::Widget::TouchEventType touchType)
             if(m_pABtn)
             {
                 Vec2 pos = m_pABtn->getTouchMovePosition();
-                bool hit = m_pABtn->hitTest(pos);
+                bool hit = m_pABtn->hitTest(pos,Camera::getVisitingCamera(),nullptr);
                 if(!hit)
                     listener->onABtnReleased();
             }
@@ -271,7 +271,7 @@ void JoyStick::bBtnTouchEvent(Ref *ref, ui::Widget::TouchEventType touchType)
             if(m_pBBtn)
             {
                 Vec2 pos = m_pBBtn->getTouchMovePosition();
-                bool hit = m_pBBtn->hitTest(pos);
+                bool hit = m_pBBtn->hitTest(pos,Camera::getVisitingCamera(),nullptr);
                 if(!hit)
                     listener->onBBtnReleased();
             }

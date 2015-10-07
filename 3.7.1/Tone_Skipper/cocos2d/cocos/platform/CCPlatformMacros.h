@@ -85,7 +85,7 @@ CC_DEPRECATED_ATTRIBUTE static __TYPE__* node() \
  * 
  * @since v0.99.5
  */
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID) || (CC_TARGET_PLATFORM == CC_PLATFORM_WP8) || (CC_TARGET_PLATFORM == CC_PLATFORM_WINRT) 
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID) || (CC_TARGET_PLATFORM == CC_PLATFORM_WINRT) 
     #define CC_ENABLE_CACHE_TEXTURE_DATA       1
 #else
     #define CC_ENABLE_CACHE_TEXTURE_DATA       0
@@ -108,7 +108,7 @@ CC_DEPRECATED_ATTRIBUTE static __TYPE__* node() \
     #define NS_CC_BEGIN                     namespace cocos2d {
     #define NS_CC_END                       }
     #define USING_NS_CC                     using namespace cocos2d
-	#define NS_CC                           ::cocos2d
+    #define NS_CC                           ::cocos2d
 #else
     #define NS_CC_BEGIN 
     #define NS_CC_END 
@@ -258,7 +258,7 @@ public: virtual void set##funName(varType var)   \
  * This should be used in the private: declarations for a class
  */
 #if defined(__GNUC__) && ((__GNUC__ >= 5) || ((__GNUG__ == 4) && (__GNUC_MINOR__ >= 4))) \
-	|| (defined(__clang__) && (__clang_major__ >= 3)) || (_MSC_VER >= 1800)
+    || (defined(__clang__) && (__clang_major__ >= 3)) || (_MSC_VER >= 1800)
 #define CC_DISALLOW_COPY_AND_ASSIGN(TypeName) \
     TypeName(const TypeName &) = delete; \
     TypeName &operator =(const TypeName &) = delete;

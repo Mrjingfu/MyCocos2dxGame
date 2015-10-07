@@ -41,6 +41,13 @@ class EventCustom;
 #if CC_USE_PHYSICS
 class PhysicsWorld;
 #endif
+#if CC_USE_3D_PHYSICS && CC_ENABLE_BULLET_INTEGRATION
+class Physics3DWorld;
+#endif
+#if CC_USE_NAVMESH
+class NavMesh;
+#endif
+
 /**
  * @addtogroup _2d
  * @{
@@ -81,13 +88,13 @@ public:
     
     /** Get all cameras.
      * 
-     * @return The vector of all cameras.
+     * @return The vector of all cameras, ordered by camera depth.
      * @js NA
      */
-    const std::vector<Camera*>& getCameras() const { return _cameras; }
+    const std::vector<Camera*>& getCameras();
 
     /** Get the default camera.
-	 * @js NA
+     * @js NA
      * @return The default camera of scene.
      */
     Camera* getDefaultCamera() const { return _defaultCamera; }
@@ -136,15 +143,31 @@ protected:
 private:
     CC_DISALLOW_COPY_AND_ASSIGN(Scene);
     
-#if CC_USE_PHYSICS
+#if (CC_USE_PHYSICS || (CC_USE_3D_PHYSICS && CC_ENABLE_BULLET_INTEGRATION))
 public:
     virtual void addChild(Node* child, int zOrder, int tag) override;
     virtual void addChild(Node* child, int zOrder, const std::string &name) override;
+    
+#if CC_USE_PHYSICS
     /** Get the physics world of the scene.
      * @return The physics world of the scene.
      * @js NA
      */
     inline PhysicsWorld* getPhysicsWorld() { return _physicsWorld; }
+#endif
+    
+#if CC_USE_3D_PHYSICS && CC_ENABLE_BULLET_INTEGRATION
+    /** Get the 3d physics world of the scene.
+     * @return The 3d physics world of the scene.
+     * @js NA
+     */
+    inline Physics3DWorld* getPhysics3DWorld() { return _physics3DWorld; }
+    
+    /** 
+     * Set Physics3D debug draw camera.
+     */
+    void setPhysics3DDebugCamera(Camera* camera);
+#endif
     
     /** Create a scene with physics.
      * @return An autoreleased Scene object with physics.
@@ -158,8 +181,36 @@ CC_CONSTRUCTOR_ACCESS:
 protected:
     void addChildToPhysicsWorld(Node* child);
 
+#if CC_USE_PHYSICS
     PhysicsWorld* _physicsWorld;
-#endif // CC_USE_PHYSICS
+#endif
+    
+#if CC_USE_3D_PHYSICS && CC_ENABLE_BULLET_INTEGRATION
+    Physics3DWorld*            _physics3DWorld;
+    Camera*                    _physics3dDebugCamera; //
+#endif
+#endif // (CC_USE_PHYSICS || CC_USE_3D_PHYSICS)
+    
+#if CC_USE_NAVMESH
+public:
+    /** set navigation mesh */
+    void setNavMesh(NavMesh* navMesh);
+    /** get navigation mesh */
+    NavMesh* getNavMesh() const { return _navMesh; }
+    /**
+    * Set NavMesh debug draw camera.
+    */
+    void setNavMeshDebugCamera(Camera *camera);
+
+protected:
+    NavMesh*       _navMesh;
+    Camera *       _navMeshDebugCamera;
+#endif
+    
+#if (CC_USE_PHYSICS || (CC_USE_3D_PHYSICS && CC_ENABLE_BULLET_INTEGRATION) || CC_USE_NAVMESH)
+public:
+    void stepPhysicsAndNavigation(float deltaTime);
+#endif
 };
 
 // end of _2d group

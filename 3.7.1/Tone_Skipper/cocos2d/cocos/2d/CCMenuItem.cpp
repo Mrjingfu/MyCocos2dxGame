@@ -90,11 +90,6 @@ MenuItem::~MenuItem()
 {
 }
 
-void MenuItem::onExit()
-{
-    Node::onExit();
-}
-
 void MenuItem::selected()
 {
     _selected = true;
@@ -820,7 +815,7 @@ MenuItemToggle * MenuItemToggle::createWithTarget(Ref* target, SEL_MenuHandler s
     return ret;
 }
 
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_WP8) || (CC_TARGET_PLATFORM == CC_PLATFORM_WINRT)
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_WINRT)
 MenuItemToggle * MenuItemToggle::createWithCallbackVA(const ccMenuCallback &callback, MenuItem* item, ...)
 {
     va_list args;

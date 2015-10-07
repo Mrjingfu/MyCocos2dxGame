@@ -30,7 +30,7 @@ THE SOFTWARE.
 #include "CCPlatformMacros.h"
 
 /**
- * @addtogroup core
+ * @addtogroup storage
  * @{
  */
 
@@ -46,10 +46,13 @@ void CC_DLL localStorageFree();
 void CC_DLL localStorageSetItem( const std::string& key, const std::string& value);
 
 /** Gets an item from the JS. */
-std::string CC_DLL localStorageGetItem( const std::string& key );
+bool CC_DLL localStorageGetItem( const std::string& key, std::string *outItem );
 
 /** Removes an item from the JS. */
 void CC_DLL localStorageRemoveItem( const std::string& key );
+
+/** Removes all items from the JS. */
+void CC_DLL localStorageClear();
 
 // end group
 /// @}

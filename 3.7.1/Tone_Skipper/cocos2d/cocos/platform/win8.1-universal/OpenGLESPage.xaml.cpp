@@ -19,6 +19,7 @@
 #include "App.xaml.h"
 #include "OpenGLESPage.xaml.h"
 
+using namespace CocosAppWinRT;
 using namespace cocos2d;
 using namespace Platform;
 using namespace Concurrency;
@@ -36,7 +37,7 @@ using namespace Windows::UI::Xaml::Input;
 using namespace Windows::UI::Xaml::Media;
 using namespace Windows::UI::Xaml::Navigation;
 
-#if (WINAPI_FAMILY == WINAPI_FAMILY_PHONE_APP)
+#if (WINAPI_FAMILY == WINAPI_FAMILY_PHONE_APP) || _MSC_VER >= 1900
 using namespace Windows::Phone::UI::Input;
 #endif
 
@@ -51,10 +52,11 @@ OpenGLESPage::OpenGLESPage(OpenGLES* openGLES) :
     mRenderSurface(EGL_NO_SURFACE),
     mCustomRenderSurfaceSize(0,0),
     mUseCustomRenderSurfaceSize(false),
-    m_coreInput(nullptr),
-    m_dpi(0.0f),
-    m_deviceLost(false),
-    m_orientation(DisplayOrientations::Landscape)
+    mCoreInput(nullptr),
+    mDpi(0.0f),
+    mDeviceLost(false),
+    mVisible(false),
+    mOrientation(DisplayOrientations::Landscape)
 {
     InitializeComponent();
 
@@ -62,6 +64,12 @@ OpenGLESPage::OpenGLESPage(OpenGLES* openGLES) :
 
     window->VisibilityChanged +=
         ref new Windows::Foundation::TypedEventHandler<Windows::UI::Core::CoreWindow^, Windows::UI::Core::VisibilityChangedEventArgs^>(this, &OpenGLESPage::OnVisibilityChanged);
+
+	window->KeyDown += ref new TypedEventHandler<CoreWindow^, KeyEventArgs^>(this, &OpenGLESPage::OnKeyPressed);
+
+	window->KeyUp += ref new TypedEventHandler<CoreWindow^, KeyEventArgs^>(this, &OpenGLESPage::OnKeyReleased);
+
+	window->CharacterReceived += ref new TypedEventHandler<CoreWindow^, CharacterReceivedEventArgs^>(this, &OpenGLESPage::OnCharacterReceived);
 
     swapChainPanel->SizeChanged +=
         ref new Windows::UI::Xaml::SizeChangedEventHandler(this, &OpenGLESPage::OnSwapChainPanelSizeChanged);
@@ -71,13 +79,24 @@ OpenGLESPage::OpenGLESPage(OpenGLES* openGLES) :
     currentDisplayInformation->OrientationChanged +=
         ref new TypedEventHandler<DisplayInformation^, Object^>(this, &OpenGLESPage::OnOrientationChanged);
 
-    m_orientation = currentDisplayInformation->CurrentOrientation;
+    mOrientation = currentDisplayInformation->CurrentOrientation;
 
     this->Loaded +=
         ref new Windows::UI::Xaml::RoutedEventHandler(this, &OpenGLESPage::OnPageLoaded);
 
     mSwapChainPanelSize = { swapChainPanel->RenderSize.Width, swapChainPanel->RenderSize.Height };
 
+#if _MSC_VER >= 1900
+    if (Windows::Foundation::Metadata::ApiInformation::IsTypePresent("Windows.UI.ViewManagement.StatusBar"))
+    {
+        Windows::UI::ViewManagement::StatusBar::GetForCurrentView()->HideAsync();
+    }
+
+    if (Windows::Foundation::Metadata::ApiInformation::IsTypePresent("Windows.Phone.UI.Input.HardwareButtons"))
+    {
+        HardwareButtons::BackPressed += ref new EventHandler<BackPressedEventArgs^>(this, &OpenGLESPage::OnBackButtonPressed);
+	}
+#else
 #if (WINAPI_FAMILY == WINAPI_FAMILY_PHONE_APP)
     Windows::UI::ViewManagement::StatusBar::GetForCurrentView()->HideAsync();
     HardwareButtons::BackPressed += ref new EventHandler<BackPressedEventArgs^>(this, &OpenGLESPage::OnBackButtonPressed);
@@ -88,29 +107,29 @@ OpenGLESPage::OpenGLESPage(OpenGLES* openGLES) :
     pointerVisualizationSettings->IsContactFeedbackEnabled = false;
     pointerVisualizationSettings->IsBarrelButtonFeedbackEnabled = false;
 #endif
+#endif
 
     // Register our SwapChainPanel to get independent input pointer events
     auto workItemHandler = ref new WorkItemHandler([this](IAsyncAction ^)
     {
         // The CoreIndependentInputSource will raise pointer events for the specified device types on whichever thread it's created on.
-        m_coreInput = swapChainPanel->CreateCoreIndependentInputSource(
+        mCoreInput = swapChainPanel->CreateCoreIndependentInputSource(
             Windows::UI::Core::CoreInputDeviceTypes::Mouse |
             Windows::UI::Core::CoreInputDeviceTypes::Touch |
             Windows::UI::Core::CoreInputDeviceTypes::Pen
             );
 
         // Register for pointer events, which will be raised on the background thread.
-        m_coreInput->PointerPressed += ref new TypedEventHandler<Object^, PointerEventArgs^>(this, &OpenGLESPage::OnPointerPressed);
-        m_coreInput->PointerMoved += ref new TypedEventHandler<Object^, PointerEventArgs^>(this, &OpenGLESPage::OnPointerMoved);
-        m_coreInput->PointerReleased += ref new TypedEventHandler<Object^, PointerEventArgs^>(this, &OpenGLESPage::OnPointerReleased);
+        mCoreInput->PointerPressed += ref new TypedEventHandler<Object^, PointerEventArgs^>(this, &OpenGLESPage::OnPointerPressed);
+        mCoreInput->PointerMoved += ref new TypedEventHandler<Object^, PointerEventArgs^>(this, &OpenGLESPage::OnPointerMoved);
+        mCoreInput->PointerReleased += ref new TypedEventHandler<Object^, PointerEventArgs^>(this, &OpenGLESPage::OnPointerReleased);
 
-        // Begin processing input messages as they're delivered.
-        m_coreInput->Dispatcher->ProcessEvents(CoreProcessEventsOption::ProcessUntilQuit);
+		// Begin processing input messages as they're delivered.
+        mCoreInput->Dispatcher->ProcessEvents(CoreProcessEventsOption::ProcessUntilQuit);
     });
 
     // Run task on a dedicated high priority background thread.
-    m_inputLoopWorker = ThreadPool::RunAsync(workItemHandler, WorkItemPriority::High, WorkItemOptions::TimeSliced);
-
+    mInputLoopWorker = ThreadPool::RunAsync(workItemHandler, WorkItemPriority::High, WorkItemOptions::TimeSliced);
 }
 
 OpenGLESPage::~OpenGLESPage()
@@ -124,51 +143,98 @@ void OpenGLESPage::OnPageLoaded(Platform::Object^ sender, Windows::UI::Xaml::Rou
     // The SwapChainPanel has been created and arranged in the page layout, so EGL can be initialized.
     CreateRenderSurface();
     StartRenderLoop();
+    mVisible = true;
 }
 
 void OpenGLESPage::OnPointerPressed(Object^ sender, PointerEventArgs^ e)
 {
-    if (m_renderer)
+    if (mRenderer)
     {
-        m_renderer->QueuePointerEvent(PointerEventType::PointerPressed, e);
+        mRenderer->QueuePointerEvent(PointerEventType::PointerPressed, e);
     }
 }
 
 void OpenGLESPage::OnPointerMoved(Object^ sender, PointerEventArgs^ e)
 {
-    if (m_renderer)
+    if (mRenderer)
     {
-        m_renderer->QueuePointerEvent(PointerEventType::PointerMoved, e);
+        mRenderer->QueuePointerEvent(PointerEventType::PointerMoved, e);
     }
 }
 
 void OpenGLESPage::OnPointerReleased(Object^ sender, PointerEventArgs^ e)
 {
-    if (m_renderer)
+    if (mRenderer)
     {
-        m_renderer->QueuePointerEvent(PointerEventType::PointerReleased, e);
+        mRenderer->QueuePointerEvent(PointerEventType::PointerReleased, e);
     }
 }
+
+void OpenGLESPage::OnKeyPressed(CoreWindow^ sender, KeyEventArgs^ e)
+{
+	if (!e->KeyStatus.WasKeyDown)
+	{
+		//log("OpenGLESPage::OnKeyPressed %d", e->VirtualKey);
+		if (mRenderer)
+		{
+			mRenderer->QueueKeyboardEvent(WinRTKeyboardEventType::KeyPressed, e);
+		}
+	}
+}
+
+void OpenGLESPage::OnCharacterReceived(CoreWindow^ sender, CharacterReceivedEventArgs^ e)
+{
+#if 0
+	if (!e->KeyStatus.WasKeyDown)
+	{
+		log("OpenGLESPage::OnCharacterReceived %d", e->KeyCode);
+	}
+#endif
+}
+
+void OpenGLESPage::OnKeyReleased(CoreWindow^ sender, KeyEventArgs^ e)
+{
+	//log("OpenGLESPage::OnKeyReleased %d", e->VirtualKey);
+	if (mRenderer)
+	{
+		mRenderer->QueueKeyboardEvent(WinRTKeyboardEventType::KeyReleased, e);
+	}
+}
+
 
 void OpenGLESPage::OnOrientationChanged(DisplayInformation^ sender, Object^ args)
 {
     critical_section::scoped_lock lock(mSwapChainPanelSizeCriticalSection);
-   m_orientation = sender->CurrentOrientation;
+    mOrientation = sender->CurrentOrientation;
+}
+
+void OpenGLESPage::SetVisibility(bool isVisible)
+{
+    if (isVisible && mRenderSurface != EGL_NO_SURFACE)
+    {
+        std::unique_lock<std::mutex> locker(mSleepMutex);
+        mVisible = true;
+        mSleepCondition.notify_one();
+    }
+    else
+    {
+        mVisible = false;
+    }
 }
 
 void OpenGLESPage::OnVisibilityChanged(Windows::UI::Core::CoreWindow^ sender, Windows::UI::Core::VisibilityChangedEventArgs^ args)
 {
     if (args->Visible && mRenderSurface != EGL_NO_SURFACE)
     {
-        StartRenderLoop();
+        SetVisibility(true);
     }
     else
     {
-        StopRenderLoop();
+        SetVisibility(false);
     }
 }
 
-#if (WINAPI_FAMILY == WINAPI_FAMILY_PHONE_APP)
+#if (WINAPI_FAMILY == WINAPI_FAMILY_PHONE_APP) || _MSC_VER >= 1900
 /*
     We set args->Handled = true to prevent the app from quitting when the back button is pressed.
     This is because this back button event happens on the XAML UI thread and not the cocos2d-x UI thread.
@@ -181,14 +247,13 @@ void OpenGLESPage::OnVisibilityChanged(Windows::UI::Core::CoreWindow^ sender, Wi
 */
 void OpenGLESPage::OnBackButtonPressed(Object^ sender, BackPressedEventArgs^ args)
 {
-    if (m_renderer)
+    if (mRenderer)
     {
-        m_renderer->QueueBackButtonEvent();
+        mRenderer->QueueBackButtonEvent();
         args->Handled = true;
     }
 }
 #endif
-
 
 void OpenGLESPage::OnSwapChainPanelSizeChanged(Object^ sender, Windows::UI::Xaml::SizeChangedEventArgs^ e)
 {
@@ -217,7 +282,7 @@ void OpenGLESPage::GetSwapChainPanelSize(GLsizei* width, GLsizei* height)
 
 void OpenGLESPage::CreateRenderSurface()
 {
-    if (mOpenGLES)
+    if (mOpenGLES && mRenderSurface == EGL_NO_SURFACE)
     {
         //
         // A Custom render surface size can be specified by uncommenting the following lines.
@@ -242,19 +307,13 @@ void OpenGLESPage::DestroyRenderSurface()
 
 void OpenGLESPage::RecoverFromLostDevice()
 {
-    // Stop the render loop, reset OpenGLES, recreate the render surface
-    // and start the render loop again to recover from a lost device.
-
-    StopRenderLoop();
-
-    {
-        critical_section::scoped_lock lock(mRenderSurfaceCriticalSection);
-        DestroyRenderSurface();
-        mOpenGLES->Reset();
-        CreateRenderSurface();
-    }
-
-    StartRenderLoop();
+    critical_section::scoped_lock lock(mRenderSurfaceCriticalSection);
+    DestroyRenderSurface();
+    mOpenGLES->Reset();
+    CreateRenderSurface();
+    std::unique_lock<std::mutex> locker(mSleepMutex);
+    mDeviceLost = false;
+    mSleepCondition.notify_one();
 }
 
 void OpenGLESPage::TerminateApp()
@@ -267,7 +326,6 @@ void OpenGLESPage::TerminateApp()
             mOpenGLES->DestroySurface(mRenderSurface);
             mOpenGLES->Cleanup();
         }
-
     }
     Windows::UI::Xaml::Application::Current->Exit();
 }
@@ -281,45 +339,60 @@ void OpenGLESPage::StartRenderLoop()
     }
 
     DisplayInformation^ currentDisplayInformation = DisplayInformation::GetForCurrentView();
-    m_dpi = currentDisplayInformation->LogicalDpi;
+    mDpi = currentDisplayInformation->LogicalDpi;
 
     auto dispatcher = Windows::UI::Xaml::Window::Current->CoreWindow->Dispatcher;
 
     // Create a task for rendering that will be run on a background thread.
     auto workItemHandler = ref new Windows::System::Threading::WorkItemHandler([this, dispatcher](Windows::Foundation::IAsyncAction ^ action)
     {
-        critical_section::scoped_lock lock(mRenderSurfaceCriticalSection);
-
         mOpenGLES->MakeCurrent(mRenderSurface);
 
         GLsizei panelWidth = 0;
         GLsizei panelHeight = 0;
         GetSwapChainPanelSize(&panelWidth, &panelHeight);
 
-        if (m_renderer.get() == nullptr)
+        if (mRenderer.get() == nullptr)
         {
-            m_renderer = std::make_shared<Cocos2dRenderer>(panelWidth, panelHeight, m_dpi, m_orientation, dispatcher, swapChainPanel);
+            mRenderer = std::make_shared<Cocos2dRenderer>(panelWidth, panelHeight, mDpi, mOrientation, dispatcher, swapChainPanel);
         }
 
-        if (m_deviceLost)
-        {
-            m_deviceLost = false;
-            m_renderer->DeviceLost();
-        }
-        else
-        {
-            m_renderer->Resume();
-        }
+        mRenderer->Resume();
 
-
-        while (action->Status == Windows::Foundation::AsyncStatus::Started && !m_deviceLost)
+        while (action->Status == Windows::Foundation::AsyncStatus::Started)
         {
-            GetSwapChainPanelSize(&panelWidth, &panelHeight);
-            m_renderer.get()->Draw(panelWidth, panelHeight, m_dpi, m_orientation);
-
-            // run on main UI thread
-            if (m_renderer->AppShouldExit())
+            if (!mVisible)
             {
+                mRenderer->Pause();
+            }
+
+            // wait until app is visible again or thread is cancelled
+            while (!mVisible)
+            {
+                std::unique_lock<std::mutex> lock(mSleepMutex);
+                mSleepCondition.wait(lock);
+
+                if (action->Status != Windows::Foundation::AsyncStatus::Started)
+                {
+                    return; // thread was cancelled. Exit thread
+                }
+
+                if (mVisible)
+                {
+                    mRenderer->Resume();
+                }
+                else // spurious wake up
+                {
+                    continue;
+                }
+            }
+
+            GetSwapChainPanelSize(&panelWidth, &panelHeight);
+            mRenderer.get()->Draw(panelWidth, panelHeight, mDpi, mOrientation);
+
+            if (mRenderer->AppShouldExit())
+            {
+                // run on main UI thread
                 swapChainPanel->Dispatcher->RunAsync(Windows::UI::Core::CoreDispatcherPriority::Normal, ref new DispatchedHandler([this]()
                 {
                     TerminateApp();
@@ -327,17 +400,19 @@ void OpenGLESPage::StartRenderLoop()
 
                 return;
             }
-            else if (mOpenGLES->SwapBuffers(mRenderSurface) != GL_TRUE)
+
+            EGLBoolean result = GL_FALSE;
             {
-                // The call to eglSwapBuffers might not be successful (i.e. due to Device Lost)
+                critical_section::scoped_lock lock(mRenderSurfaceCriticalSection);
+                result = mOpenGLES->SwapBuffers(mRenderSurface);
+            }
+
+            if (result != GL_TRUE)
+            {
+                // The call to eglSwapBuffers was not be successful (i.e. due to Device Lost)
                 // If the call fails, then we must reinitialize EGL and the GL resources.
-
-                m_deviceLost = true;
-
-                if (m_renderer)
-                {
-                    m_renderer->Pause();
-                }
+                mRenderer->Pause();
+                mDeviceLost = true;
 
                 // XAML objects like the SwapChainPanel must only be manipulated on the UI thread.
                 swapChainPanel->Dispatcher->RunAsync(Windows::UI::Core::CoreDispatcherPriority::High, ref new Windows::UI::Core::DispatchedHandler([=]()
@@ -345,13 +420,29 @@ void OpenGLESPage::StartRenderLoop()
                     RecoverFromLostDevice();
                 }, CallbackContext::Any));
 
-                return;
-            }
-        }
+                // wait until OpenGL is reset or thread is cancelled
+                while (mDeviceLost)
+                {
+                    std::unique_lock<std::mutex> lock(mSleepMutex);
+                    mSleepCondition.wait(lock);
 
-        if (m_renderer)
-        {
-            m_renderer->Pause();
+                    if (action->Status != Windows::Foundation::AsyncStatus::Started)
+                    {
+                        return; // thread was cancelled. Exit thread
+                    }
+
+                    if (!mDeviceLost)
+                    {
+                        mOpenGLES->MakeCurrent(mRenderSurface);
+                        // restart cocos2d-x 
+                        mRenderer->DeviceLost();
+                    }
+                    else // spurious wake up
+                    {
+                        continue;
+                    }
+                }
+            }
         }
     });
 
@@ -364,6 +455,8 @@ void OpenGLESPage::StopRenderLoop()
     if (mRenderLoopWorker)
     {
         mRenderLoopWorker->Cancel();
+        std::unique_lock<std::mutex> locker(mSleepMutex);
+        mSleepCondition.notify_one();
         mRenderLoopWorker = nullptr;
     }
 }

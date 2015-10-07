@@ -195,36 +195,32 @@ public:
     /**Called by director, please do not called outside.*/
     void waitForQuit();
 
+    /**
+     * Get the file path of the texture
+     *
+     * @param texture A Texture2D object pointer.
+     *
+     * @return The full path of the file.
+     */
+    const std::string getTextureFilePath(Texture2D* texture)const;
+
 private:
     void addImageAsyncCallBack(float dt);
     void loadImage();
-
+    void parseNinePatchImage(Image* image, Texture2D* texture, const std::string& path);
 public:
-    struct AsyncStruct
-    {
-    public:
-        AsyncStruct(const std::string& fn, std::function<void(Texture2D*)> f) : filename(fn), callback(f) {}
-
-        std::string filename;
-        std::function<void(Texture2D*)> callback;
-    };
-
 protected:
-    typedef struct _ImageInfo
-    {
-        AsyncStruct *asyncStruct;
-        Image        *image;
-    } ImageInfo;
+    struct AsyncStruct;
     
     std::thread* _loadingThread;
 
-    std::queue<AsyncStruct*>* _asyncStructQueue;
-    std::deque<ImageInfo*>* _imageInfoQueue;
+    std::deque<AsyncStruct*> _asyncStructQueue;
+    std::deque<AsyncStruct*> _requestQueue;
+    std::deque<AsyncStruct*> _responseQueue;
 
-    std::mutex _asyncStructQueueMutex;
-    std::mutex _imageInfoMutex;
-
-    std::mutex _sleepMutex;
+    std::mutex _requestMutex;
+    std::mutex _responseMutex;
+    
     std::condition_variable _sleepCondition;
 
     bool _needQuit;

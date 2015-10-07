@@ -34,14 +34,17 @@ RegionButton* RegionButton::create(const std::string &normalImage,
     CC_SAFE_DELETE(btn);
     return nullptr;
 }
-bool RegionButton::hitTest(const cocos2d::Vec2 &pt)
+bool RegionButton::hitTest(const cocos2d::Vec2 &pt, const cocos2d::Camera* camera, cocos2d::Vec3 *p) const
 {
-    Vec2 nsp = convertToNodeSpace(pt);
-    cocos2d::Rect bb;
-    bb.size = _contentSize + m_touchSize;
-    if (bb.containsPoint(nsp))
-    {
-        return true;
-    }
-    return false;
+//    Vec2 nsp = convertToNodeSpace(pt);
+//    cocos2d::Rect bb;
+//    bb.size = _contentSize + m_touchSize;
+//    if (bb.containsPoint(nsp))
+//    {
+//        return true;
+//    }
+//    return false;
+    cocos2d::Rect rect;
+    rect.size = getContentSize()+ m_touchSize;
+    return isScreenPointInRect(pt, camera, getWorldToNodeTransform(), rect, p);
 }

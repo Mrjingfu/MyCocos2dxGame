@@ -55,7 +55,9 @@ typedef struct CC_DLL PhysicsContactData
 }PhysicsContactData;
 
 /**
- * @addtogroup core
+ * @addtogroup physics
+ * @{
+ * @addtogroup physics_2d
  * @{
  */
 
@@ -74,7 +76,7 @@ public:
         BEGIN,
         PRESOLVE,
         POSTSOLVE,
-        SEPERATE
+        SEPARATE
     };
     
     /** Get contact shape A. */
@@ -98,7 +100,7 @@ public:
     /**
      * @brief Set data to contact. 
      
-     * You must manage the memory yourself, Generally you can set data at contact begin, and distory it at contact seperate.
+     * You must manage the memory yourself, Generally you can set data at contact begin, and distory it at contact separate.
      *
      * @lua NA
      */
@@ -235,9 +237,9 @@ public:
     std::function<void(PhysicsContact& contact, const PhysicsContactPostSolve& solve)> onContactPostSolve;
     /**
      * @brief It will called at two shapes separated, and only call it once.
-     * onContactBegin and onContactSeperate will called in pairs.
+     * onContactBegin and onContactSeparate will called in pairs.
      */
-    std::function<void(PhysicsContact& contact)> onContactSeperate;
+    std::function<void(PhysicsContact& contact)> onContactSeparate;
     
 protected:
     bool init();
@@ -307,6 +309,7 @@ protected:
     virtual ~EventListenerPhysicsContactWithGroup();
 };
 
+/** @} */
 /** @} */
 
 NS_CC_END
