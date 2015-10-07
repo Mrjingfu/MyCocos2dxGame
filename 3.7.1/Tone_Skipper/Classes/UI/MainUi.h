@@ -28,6 +28,7 @@ public:
     void onEventTips(cocos2d::EventCustom *sender);
     void update(float dt);
     void sliderPercentChanged(cocos2d::Ref* sender, cocos2d::ui::Slider::EventType type);
+    void onBag(cocos2d::Ref *pSender, cocos2d::ui::Widget::TouchEventType type);
     CREATE_FUNC(MainUi);
 private:
     cocos2d::Label* m_pTipsLabel;

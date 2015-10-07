@@ -82,6 +82,8 @@ void MainUi::addEvents()
     niloImg->setPosition(Vec2(SCREEN_WIDTH* 0.05, SCREEN_HEIGHT*0.955));
     niloImg->setScale(SCREEN_SCALE);
     m_pRootLayer->addChild(niloImg);
+    niloImg->setTouchEnabled(true);
+    niloImg->addTouchEventListener(CC_CALLBACK_2(MainUi::onBag, this));
     
     ImageView* framePudgeImg = ImageView::create("ui_frame_yellow.png");
     framePudgeImg->setScale9Enabled(true);
@@ -202,6 +204,7 @@ void MainUi::addEvents()
     m_pKeySilverLabel->setPosition(Vec2(SCREEN_WIDTH* 0.84+keySilverImg->getContentSize().width*SCREEN_SCALE*0.3+5*SCREEN_SCALE, SCREEN_HEIGHT*0.95));
     m_pRootLayer->addChild(m_pKeySilverLabel);
     
+    
     CCLOG("eCTBomb:%d",ArchiveManager::getInstance()->getChaosValue(eCTBomb));
     ArchiveManager::getInstance()->setChaosValue(eCTBomb, CChaosNumber(16));
     ArchiveManager::getInstance()->saveData();
@@ -228,6 +231,11 @@ void MainUi::onEventTips(cocos2d::EventCustom *sender)
         m_pTipsLabel->runAction(cocos2d::Sequence::createWithTwoActions(cocos2d::DelayTime::create(1.5f), fun1));
     }
     
+}
+void MainUi::onBag(cocos2d::Ref *pSender, cocos2d::ui::Widget::TouchEventType type)
+{
+    CHECK_ACTION(pSender,type);
+    PopupUILayerManager::getInstance()->openPopup(ePopupBag);
 }
 void MainUi::sliderPercentChanged(cocos2d::Ref *sender, cocos2d::ui::Slider::EventType type)
 {

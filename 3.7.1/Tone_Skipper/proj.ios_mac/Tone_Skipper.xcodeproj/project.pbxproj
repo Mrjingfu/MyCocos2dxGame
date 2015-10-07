@@ -103,8 +103,6 @@
 		EC59B2971BC4F06000146943 /* BagPopUpUi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC59B23C1BC4F06000146943 /* BagPopUpUi.cpp */; settings = {ASSET_TAGS = (); }; };
 		EC59B2981BC4F06000146943 /* CloseCallback.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC59B23E1BC4F06000146943 /* CloseCallback.cpp */; settings = {ASSET_TAGS = (); }; };
 		EC59B2991BC4F06000146943 /* CloseCallback.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC59B23E1BC4F06000146943 /* CloseCallback.cpp */; settings = {ASSET_TAGS = (); }; };
-		EC59B29A1BC4F06000146943 /* CustomScrollView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC59B2401BC4F06000146943 /* CustomScrollView.cpp */; settings = {ASSET_TAGS = (); }; };
-		EC59B29B1BC4F06000146943 /* CustomScrollView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC59B2401BC4F06000146943 /* CustomScrollView.cpp */; settings = {ASSET_TAGS = (); }; };
 		EC59B29C1BC4F06000146943 /* JoyStick.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC59B2421BC4F06000146943 /* JoyStick.cpp */; settings = {ASSET_TAGS = (); }; };
 		EC59B29D1BC4F06000146943 /* JoyStick.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC59B2421BC4F06000146943 /* JoyStick.cpp */; settings = {ASSET_TAGS = (); }; };
 		EC59B29E1BC4F06000146943 /* MainUi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC59B2441BC4F06000146943 /* MainUi.cpp */; settings = {ASSET_TAGS = (); }; };
@@ -438,8 +436,6 @@
 		EC59B23D1BC4F06000146943 /* BagPopUpUi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BagPopUpUi.h; sourceTree = "<group>"; };
 		EC59B23E1BC4F06000146943 /* CloseCallback.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloseCallback.cpp; sourceTree = "<group>"; };
 		EC59B23F1BC4F06000146943 /* CloseCallback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloseCallback.h; sourceTree = "<group>"; };
-		EC59B2401BC4F06000146943 /* CustomScrollView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CustomScrollView.cpp; sourceTree = "<group>"; };
-		EC59B2411BC4F06000146943 /* CustomScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomScrollView.h; sourceTree = "<group>"; };
 		EC59B2421BC4F06000146943 /* JoyStick.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = JoyStick.cpp; sourceTree = "<group>"; };
 		EC59B2431BC4F06000146943 /* JoyStick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JoyStick.h; sourceTree = "<group>"; };
 		EC59B2441BC4F06000146943 /* MainUi.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MainUi.cpp; sourceTree = "<group>"; };
@@ -845,8 +841,6 @@
 				EC59B23D1BC4F06000146943 /* BagPopUpUi.h */,
 				EC59B23E1BC4F06000146943 /* CloseCallback.cpp */,
 				EC59B23F1BC4F06000146943 /* CloseCallback.h */,
-				EC59B2401BC4F06000146943 /* CustomScrollView.cpp */,
-				EC59B2411BC4F06000146943 /* CustomScrollView.h */,
 				EC59B2421BC4F06000146943 /* JoyStick.cpp */,
 				EC59B2431BC4F06000146943 /* JoyStick.h */,
 				EC59B2441BC4F06000146943 /* MainUi.cpp */,
@@ -1368,7 +1362,6 @@
 				EC59B2801BC4F06000146943 /* libb64.c in Sources */,
 				EC59B2AC1BC4F06000146943 /* AlisaMethod.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
-				EC59B29A1BC4F06000146943 /* CustomScrollView.cpp in Sources */,
 				EC59B2AE1BC4F06000146943 /* ArchiveManager.cpp in Sources */,
 				EC59B2821BC4F06000146943 /* md5.c in Sources */,
 				EC59B2BE1BC4F06000146943 /* UtilityHelper.cpp in Sources */,
@@ -1418,7 +1411,6 @@
 				EC59B2911BC4F06000146943 /* MenuScene.cpp in Sources */,
 				EC59B2691BC4F06000146943 /* Actor.cpp in Sources */,
 				EC59B2791BC4F06000146943 /* SceneItem.cpp in Sources */,
-				EC59B29B1BC4F06000146943 /* CustomScrollView.cpp in Sources */,
 				EC59B27D1BC4F06000146943 /* AppDelegate.cpp in Sources */,
 				EC59B28B1BC4F06000146943 /* MapMgrs.cpp in Sources */,
 				EC59B26F1BC4F06000146943 /* ExcalmationMark.cpp in Sources */,

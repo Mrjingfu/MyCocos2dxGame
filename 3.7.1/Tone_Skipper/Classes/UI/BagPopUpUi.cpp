@@ -12,7 +12,7 @@ USING_NS_CC;
 using namespace ui;
 BagPopUpUi::BagPopUpUi()
 {
-    m_pActionType = eCenterScale;
+    m_pActionType = eNone;
     m_pCustomScrollView = nullptr;
     m_pIsScrolling = false;
     m_pRow =5;
@@ -47,7 +47,7 @@ void BagPopUpUi::addEvents()
     topCenter->setAlign(RelativeLayoutParameter::RelativeAlign::PARENT_TOP_CENTER_HORIZONTAL);
     titleLabe->setLayoutParameter(topCenter);
     
-    m_pCustomScrollView = CustomScrollView::create();
+    m_pCustomScrollView = cocos2d::ui::ScrollView::create();
     m_pCustomScrollView->setScale(SCREEN_SCALE);
     m_pCustomScrollView->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
     m_pCustomScrollView->jumpToTop();

@@ -28,7 +28,7 @@ public:
 private:
     void onScrollEvent(Ref*, cocos2d::ui::ScrollView::EventType);
     cocos2d::Vec2 getItemVec(int col,int row);
-    CustomScrollView* m_pCustomScrollView;
+    cocos2d::ui::ScrollView* m_pCustomScrollView;
     cocos2d::Vector<cocos2d::ui::ImageView*> testImgs;
     cocos2d::Vec2 m_pTouch;
     void initItems();
