@@ -4961,7 +4961,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Scenes/MenuScene.cpp"
-            timestampString = "463392138.532626"
+            timestampString = "465907341.650908"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "209"
@@ -4993,7 +4993,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Scenes/MenuScene.cpp"
-            timestampString = "463392138.532626"
+            timestampString = "465907341.650908"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "172"
@@ -5009,7 +5009,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Scenes/MenuScene.cpp"
-            timestampString = "463392651.5916"
+            timestampString = "465907341.650908"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "206"
@@ -6301,7 +6301,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Scenes/MenuScene.cpp"
-            timestampString = "463392138.532626"
+            timestampString = "465907341.650908"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "182"
@@ -6525,7 +6525,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Scenes/LogoScene.cpp"
-            timestampString = "461843682.823982"
+            timestampString = "465906714.970384"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "84"
@@ -6541,7 +6541,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Scenes/LogoScene.cpp"
-            timestampString = "461843682.823982"
+            timestampString = "465906714.970384"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "86"
@@ -6557,7 +6557,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Scenes/LogoScene.cpp"
-            timestampString = "462707173.75647"
+            timestampString = "465906714.970384"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "168"
@@ -6749,7 +6749,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Scenes/LogoScene.cpp"
-            timestampString = "462076208.044145"
+            timestampString = "465906714.970384"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "89"
@@ -6957,7 +6957,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Scenes/MenuScene.cpp"
-            timestampString = "463392138.532626"
+            timestampString = "465907341.650908"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "173"
@@ -6973,7 +6973,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Scenes/MenuScene.cpp"
-            timestampString = "463392651.5916"
+            timestampString = "465907341.650908"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "197"
@@ -7330,6 +7330,150 @@
             startingLineNumber = "204"
             endingLineNumber = "204"
             landmarkName = "RunController::update(float delta)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../cocos2d/cocos/3d/CCSprite3D.cpp"
+            timestampString = "465903056.661247"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "600"
+            endingLineNumber = "600"
+            landmarkName = "Sprite3D::setTexture(const std::string&amp; texFile)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../cocos2d/cocos/3d/CCSprite3D.cpp"
+            timestampString = "465903057.895144"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "606"
+            endingLineNumber = "606"
+            landmarkName = "Sprite3D::setTexture(Texture2D* texture)"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "cocos2d::Sprite3D::setTexture(cocos2d::Texture2D*)"
+                  moduleName = "MazeJump iOS"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/wanghaibo/Desktop/MyCocos2dxGame/3.6/MazeJump/cocos2d/cocos/3d/CCSprite3D.cpp"
+                  timestampString = "465903259.268917"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "606"
+                  endingLineNumber = "606"
+                  offsetFromSymbolStart = "24">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "cocos2d::Sprite3D::setTexture(cocos2d::Texture2D*)"
+                  moduleName = "MazeJump iOS"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/wanghaibo/Desktop/MyCocos2dxGame/3.6/MazeJump/cocos2d/cocos/3d/CCSprite3D.cpp"
+                  timestampString = "465903259.269165"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "606"
+                  endingLineNumber = "606"
+                  offsetFromSymbolStart = "148">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../cocos2d/cocos/3d/CCSprite3D.cpp"
+            timestampString = "465903156.952782"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "758"
+            endingLineNumber = "758"
+            landmarkName = "Sprite3D::draw(Renderer *renderer, const Mat4 &amp;transform, uint32_t flags)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../cocos2d/cocos/3d/CCBundle3D.cpp"
+            timestampString = "465903363.850175"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "848"
+            endingLineNumber = "848"
+            landmarkName = "Bundle3D::loadMaterials(MaterialDatas&amp; materialdatas)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../cocos2d/cocos/3d/CCBundle3D.cpp"
+            timestampString = "465903449.281489"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "896"
+            endingLineNumber = "896"
+            landmarkName = "Bundle3D::loadMaterialsBinary(MaterialDatas&amp; materialdatas)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../cocos2d/cocos/3d/CCSprite3D.cpp"
+            timestampString = "465903620.411898"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "335"
+            endingLineNumber = "335"
+            landmarkName = "Sprite3D::initFrom(const NodeDatas&amp; nodeDatas, const MeshDatas&amp; meshdatas, const MaterialDatas&amp; materialdatas)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../cocos2d/cocos/3d/CCMesh.cpp"
+            timestampString = "465903809.709575"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "183"
+            endingLineNumber = "183"
+            landmarkName = "Mesh::setTexture(Texture2D* tex)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

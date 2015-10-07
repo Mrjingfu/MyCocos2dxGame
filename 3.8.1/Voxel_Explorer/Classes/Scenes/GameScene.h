@@ -19,6 +19,9 @@ public:
     virtual bool init();
     
     CREATE_FUNC(GameScene);
+    
+private:
+    cocos2d::Sprite3D*      m_pTest;
 };
 
 #endif /* defined(__Voxel_Explorer__GameScene__) */

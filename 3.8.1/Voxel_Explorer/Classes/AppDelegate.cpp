@@ -47,6 +47,10 @@ bool AppDelegate::applicationDidFinishLaunching() {
         director->setOpenGLView(glview);
     }
 
+    std::vector<std::string> searchPaths;
+    searchPaths.push_back("models");
+    FileUtils::getInstance()->setSearchPaths(searchPaths);
+    
 #if COCOS2D_DEBUG
     // turn on display FPS
     director->setDisplayStats(true);

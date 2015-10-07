@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>SchemeUserState</key>
+	<dict>
+		<key>build all tests Mac.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>4</integer>
+		</dict>
+		<key>build all tests iOS.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>10</integer>
+		</dict>
+		<key>cpp-empty-test Mac.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>6</integer>
+		</dict>
+		<key>cpp-empty-test iOS.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>12</integer>
+		</dict>
+		<key>cpp-tests Mac.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>5</integer>
+		</dict>
+		<key>cpp-tests iOS.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>11</integer>
+		</dict>
+		<key>game-controller-test IOS.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>15</integer>
+		</dict>
+		<key>js-tests Mac.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>9</integer>
+		</dict>
+		<key>js-tests iOS.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>17</integer>
+		</dict>
+		<key>lua-empty-test Mac.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>8</integer>
+		</dict>
+		<key>lua-empty-test iOS.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>14</integer>
+		</dict>
+		<key>lua-game-controller-test iOS.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>16</integer>
+		</dict>
+		<key>lua-tests Mac.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>7</integer>
+		</dict>
+		<key>lua-tests iOS.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>13</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>15CBA015196EE56C005877BB</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>1856634B1B4155D3009EF2AE</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>185663961B4155DD009EF2AE</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>1A0EE1C618CDF6DA004CD58F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>1A0EE2B818CDF733004CD58F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>1A0EE31818CDF775004CD58F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>1A0EE41918CDF799004CD58F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>1ABCA28518CD91510087CE3A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>1ABCA2CC18CD93580087CE3A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>1D6058900D05DD3D006BFB54</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>3E6176FF1960FAED00DE83F5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A035ACBB1782469700987F6C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A07A517B1783A1CC0073F6A7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A07A517F1783A1D20073F6A7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+	</dict>
+</dict>
+</plist>
