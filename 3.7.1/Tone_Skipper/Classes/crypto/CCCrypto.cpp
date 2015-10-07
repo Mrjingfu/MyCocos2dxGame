@@ -16,7 +16,7 @@ extern "C" {
 }
 #endif
 
-NS_CC_EXT_BEGIN
+
 
 int CCCrypto::encodeBase64(const void* input,
                            int inputLength,
@@ -186,4 +186,4 @@ char* CCCrypto::bin2hex(unsigned char* bin, int binLength)
 
 #endif
 
-NS_CC_EXT_END
+

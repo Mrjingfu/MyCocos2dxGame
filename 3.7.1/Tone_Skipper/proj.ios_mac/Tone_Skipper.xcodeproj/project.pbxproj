@@ -178,6 +178,18 @@
 		D44C620C132DFF330009C878 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620B132DFF330009C878 /* OpenAL.framework */; };
 		D44C620E132DFF430009C878 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620D132DFF430009C878 /* AVFoundation.framework */; };
 		D44C6210132DFF4E0009C878 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620F132DFF4E0009C878 /* AudioToolbox.framework */; };
+		EC1ABA0C1BC4B4F100B390E4 /* CCCrypto.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC1ABA001BC4B4F100B390E4 /* CCCrypto.cpp */; };
+		EC1ABA0D1BC4B4F100B390E4 /* CCCrypto.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC1ABA001BC4B4F100B390E4 /* CCCrypto.cpp */; };
+		EC1ABA0E1BC4B4F100B390E4 /* libb64.c in Sources */ = {isa = PBXBuildFile; fileRef = EC1ABA021BC4B4F100B390E4 /* libb64.c */; };
+		EC1ABA0F1BC4B4F100B390E4 /* libb64.c in Sources */ = {isa = PBXBuildFile; fileRef = EC1ABA021BC4B4F100B390E4 /* libb64.c */; };
+		EC1ABA101BC4B4F100B390E4 /* md5.c in Sources */ = {isa = PBXBuildFile; fileRef = EC1ABA041BC4B4F100B390E4 /* md5.c */; };
+		EC1ABA111BC4B4F100B390E4 /* md5.c in Sources */ = {isa = PBXBuildFile; fileRef = EC1ABA041BC4B4F100B390E4 /* md5.c */; };
+		EC1ABA121BC4B4F100B390E4 /* sha1.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC1ABA061BC4B4F100B390E4 /* sha1.cpp */; };
+		EC1ABA131BC4B4F100B390E4 /* sha1.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC1ABA061BC4B4F100B390E4 /* sha1.cpp */; };
+		EC1ABA141BC4B4F100B390E4 /* xor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC1ABA081BC4B4F100B390E4 /* xor.cpp */; };
+		EC1ABA151BC4B4F100B390E4 /* xor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC1ABA081BC4B4F100B390E4 /* xor.cpp */; };
+		EC1ABA161BC4B4F100B390E4 /* XXTEA.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC1ABA0A1BC4B4F100B390E4 /* XXTEA.cpp */; };
+		EC1ABA171BC4B4F100B390E4 /* XXTEA.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC1ABA0A1BC4B4F100B390E4 /* XXTEA.cpp */; };
 		EC1D8AF51BACFC3800F1F16E /* Enemy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC1D8AF31BACFC3800F1F16E /* Enemy.cpp */; };
 		EC1D8AFC1BAD0FDA00F1F16E /* MainUi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC1D8AFA1BAD0FDA00F1F16E /* MainUi.cpp */; };
 		EC1D8AFD1BAD0FDA00F1F16E /* MainUi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC1D8AFA1BAD0FDA00F1F16E /* MainUi.cpp */; };
@@ -439,6 +451,18 @@
 		D44C620B132DFF330009C878 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
 		D44C620D132DFF430009C878 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		D44C620F132DFF4E0009C878 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		EC1ABA001BC4B4F100B390E4 /* CCCrypto.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCCrypto.cpp; sourceTree = "<group>"; };
+		EC1ABA011BC4B4F100B390E4 /* CCCrypto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCCrypto.h; sourceTree = "<group>"; };
+		EC1ABA021BC4B4F100B390E4 /* libb64.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = libb64.c; sourceTree = "<group>"; };
+		EC1ABA031BC4B4F100B390E4 /* libb64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = libb64.h; sourceTree = "<group>"; };
+		EC1ABA041BC4B4F100B390E4 /* md5.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = md5.c; sourceTree = "<group>"; };
+		EC1ABA051BC4B4F100B390E4 /* md5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = md5.h; sourceTree = "<group>"; };
+		EC1ABA061BC4B4F100B390E4 /* sha1.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = sha1.cpp; sourceTree = "<group>"; };
+		EC1ABA071BC4B4F100B390E4 /* sha1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sha1.h; sourceTree = "<group>"; };
+		EC1ABA081BC4B4F100B390E4 /* xor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = xor.cpp; sourceTree = "<group>"; };
+		EC1ABA091BC4B4F100B390E4 /* xor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xor.h; sourceTree = "<group>"; };
+		EC1ABA0A1BC4B4F100B390E4 /* XXTEA.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = XXTEA.cpp; sourceTree = "<group>"; };
+		EC1ABA0B1BC4B4F100B390E4 /* XXTEA.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXTEA.h; sourceTree = "<group>"; };
 		EC1D8AF31BACFC3800F1F16E /* Enemy.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Enemy.cpp; sourceTree = "<group>"; };
 		EC1D8AF41BACFC3800F1F16E /* Enemy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Enemy.h; sourceTree = "<group>"; };
 		EC1D8AFA1BAD0FDA00F1F16E /* MainUi.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MainUi.cpp; sourceTree = "<group>"; };
@@ -636,6 +660,7 @@
 		46880B8319C43A87006E1F66 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				EC1AB9FF1BC4B4F100B390E4 /* crypto */,
 				EC414CF61BA7F67F0029C69E /* Utilities */,
 				55E71D021B9D2869001BEFF7 /* Mgrs */,
 				554733061B8EA7C0008F096C /* UI */,
@@ -908,6 +933,25 @@
 				55E71D041B9D2877001BEFF7 /* scene_tiles.png */,
 			);
 			path = maps;
+			sourceTree = "<group>";
+		};
+		EC1AB9FF1BC4B4F100B390E4 /* crypto */ = {
+			isa = PBXGroup;
+			children = (
+				EC1ABA001BC4B4F100B390E4 /* CCCrypto.cpp */,
+				EC1ABA011BC4B4F100B390E4 /* CCCrypto.h */,
+				EC1ABA021BC4B4F100B390E4 /* libb64.c */,
+				EC1ABA031BC4B4F100B390E4 /* libb64.h */,
+				EC1ABA041BC4B4F100B390E4 /* md5.c */,
+				EC1ABA051BC4B4F100B390E4 /* md5.h */,
+				EC1ABA061BC4B4F100B390E4 /* sha1.cpp */,
+				EC1ABA071BC4B4F100B390E4 /* sha1.h */,
+				EC1ABA081BC4B4F100B390E4 /* xor.cpp */,
+				EC1ABA091BC4B4F100B390E4 /* xor.h */,
+				EC1ABA0A1BC4B4F100B390E4 /* XXTEA.cpp */,
+				EC1ABA0B1BC4B4F100B390E4 /* XXTEA.h */,
+			);
+			path = crypto;
 			sourceTree = "<group>";
 		};
 		EC1D8B061BAD43CB00F1F16E /* fonts */ = {
@@ -1219,10 +1263,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC1ABA161BC4B4F100B390E4 /* XXTEA.cpp in Sources */,
 				EC38775D1BB228A800EBEB3F /* RegionSlider.cpp in Sources */,
 				EC5FE2F51BAC5ECD006F6107 /* TestPopUI.cpp in Sources */,
 				46880B8819C43A87006E1F66 /* AppDelegate.cpp in Sources */,
 				55883EAB1B8D7A35007F2FD3 /* HueSprite.cpp in Sources */,
+				EC1ABA0E1BC4B4F100B390E4 /* libb64.c in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				554733091B8EA7C9008F096C /* JoyStick.cpp in Sources */,
 				5535B89E1BABADEB00A2EEF9 /* GameScene.cpp in Sources */,
@@ -1242,6 +1288,7 @@
 				EC6466351BAA5421002D8E6B /* Pudge.cpp in Sources */,
 				EC92D1F71BC264ED004BEBB6 /* ChaosNumber.cpp in Sources */,
 				5535B8A21BABADFA00A2EEF9 /* MenuScene.cpp in Sources */,
+				EC1ABA141BC4B4F100B390E4 /* xor.cpp in Sources */,
 				EC92D1C61BC21527004BEBB6 /* UserRecord.cpp in Sources */,
 				55883ECC1B8D9C92007F2FD3 /* Actor.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
@@ -1253,11 +1300,14 @@
 				55DAD9231BB16B5D00149C80 /* ExcalmationMark.cpp in Sources */,
 				55E71D1B1B9D4957001BEFF7 /* ActorFactory.cpp in Sources */,
 				55DAD9271BB16B5D00149C80 /* SceneItem.cpp in Sources */,
+				EC1ABA101BC4B4F100B390E4 /* md5.c in Sources */,
 				554733101B8EA89E008F096C /* RegionButton.cpp in Sources */,
 				55883EB81B8D9215007F2FD3 /* TestScene.cpp in Sources */,
 				EC92D1CE1BC2229F004BEBB6 /* Stream.cpp in Sources */,
+				EC1ABA0C1BC4B4F100B390E4 /* CCCrypto.cpp in Sources */,
 				EC92D1CC1BC2229F004BEBB6 /* MemoryStream.cpp in Sources */,
 				EC92D1D61BC22713004BEBB6 /* FileStream.cpp in Sources */,
+				EC1ABA121BC4B4F100B390E4 /* sha1.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1266,16 +1316,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC1ABA151BC4B4F100B390E4 /* xor.cpp in Sources */,
 				ECCB94661BB02FBA00855BA8 /* BagPopUpUi.cpp in Sources */,
 				ECCB94621BB02F8B00855BA8 /* Enemy.cpp in Sources */,
 				EC6466421BAA62F8002D8E6B /* Pudge.cpp in Sources */,
 				EC92D1CD1BC2229F004BEBB6 /* MemoryStream.cpp in Sources */,
 				EC414D021BA7F7550029C69E /* NativeBridge.mm in Sources */,
+				EC1ABA0D1BC4B4F100B390E4 /* CCCrypto.cpp in Sources */,
 				EC5FE2F41BAC5ECD006F6107 /* PopupUILayerManager.cpp in Sources */,
 				EC414CFD1BA7F6BF0029C69E /* AlisaMethod.cpp in Sources */,
 				EC38775E1BB228A800EBEB3F /* RegionSlider.cpp in Sources */,
 				EC414CFE1BA7F6BF0029C69E /* UtilityHelper.cpp in Sources */,
 				EC92D1D71BC22713004BEBB6 /* FileStream.cpp in Sources */,
+				EC1ABA171BC4B4F100B390E4 /* XXTEA.cpp in Sources */,
 				55883ED51B8D9EDE007F2FD3 /* Player.cpp in Sources */,
 				55DAD9261BB16B5D00149C80 /* QuestionMark.cpp in Sources */,
 				EC92D1C71BC21527004BEBB6 /* UserRecord.cpp in Sources */,
@@ -1285,6 +1338,7 @@
 				EC5FE2F61BAC5ECD006F6107 /* TestPopUI.cpp in Sources */,
 				554733111B8EA89E008F096C /* RegionButton.cpp in Sources */,
 				55883EB91B8D9215007F2FD3 /* TestScene.cpp in Sources */,
+				EC1ABA0F1BC4B4F100B390E4 /* libb64.c in Sources */,
 				EC92D1F81BC264ED004BEBB6 /* ChaosNumber.cpp in Sources */,
 				5535B8A31BABADFA00A2EEF9 /* MenuScene.cpp in Sources */,
 				46880B8919C43A87006E1F66 /* AppDelegate.cpp in Sources */,
@@ -1302,8 +1356,10 @@
 				EC1D8AFD1BAD0FDA00F1F16E /* MainUi.cpp in Sources */,
 				55883EAC1B8D7A35007F2FD3 /* HueSprite.cpp in Sources */,
 				EC5FE2FD1BAC5F5D006F6107 /* CloseCallback.cpp in Sources */,
+				EC1ABA131BC4B4F100B390E4 /* sha1.cpp in Sources */,
 				5535B89F1BABADEB00A2EEF9 /* GameScene.cpp in Sources */,
 				5547330A1B8EA7C9008F096C /* JoyStick.cpp in Sources */,
+				EC1ABA111BC4B4F100B390E4 /* md5.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
