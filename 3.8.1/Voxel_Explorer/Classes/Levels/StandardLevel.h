@@ -31,10 +31,11 @@ protected:
     
 private:
     void placeDoors(Area* area);
-    void generateTerrainTiles();
+    void generateTerrainTiles(Area* area);
     void generateWalls(Area* area);
     void generateDoors(Area* area);
     bool mergeStandardArea(Area* area, Area* other);
+    void generateSpawnPoint();
 protected:
     std::vector<PathGraphNode*>    m_Areas;
     Area*               m_AreaEntrance;

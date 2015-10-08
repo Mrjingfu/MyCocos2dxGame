@@ -28,14 +28,16 @@ public:
     }
     LEVEL_BOUNDARY_TYPE;
     
-    static const int WIDTH = 48;
-    static const int HEIGHT = 32;
+    static const int WIDTH = 32;
+    static const int HEIGHT = 48;
     static const int LENGTH = WIDTH*HEIGHT;
     
     void create();
     
     LEVEL_TYPE getLevelType() const;
     void setLevelType(LEVEL_TYPE type);
+    
+    cocos2d::Vec2 getSpawnPoint() const { return  m_spawnPoint; }
 protected:
     virtual bool build() = 0;
     virtual void decorate() = 0;
@@ -46,6 +48,8 @@ protected:
 protected:
     LEVEL_TYPE           m_Type;
     LEVEL_BOUNDARY_TYPE  m_BoundaryType;
+    
+    cocos2d::Vec2        m_spawnPoint;
     
     cocos2d::DrawNode*   m_pDebugDrawNode;
 };

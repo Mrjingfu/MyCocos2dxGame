@@ -35,10 +35,60 @@ bool GameScene::init()
         return false;
     }
     
-    cocos2d::Size visibleSize = Director::getInstance()->getVisibleSize();
-    Vec2 origin = Director::getInstance()->getVisibleOrigin();
-    
     if(!VoxelExplorer::getInstance()->init(this))
         return false;
     return true;
+}
+bool GameScene::onTouchBegan(Touch *touch, Event *event)
+{
+    if(!touch)
+        return false;
+    m_TouchBegin = touch->getLocationInView();
+    return true;
+}
+void GameScene::onTouchMoved(cocos2d::Touch *touch, cocos2d::Event *event)
+{
+    if(!touch)
+        return;
+    m_TouchEnd = touch->getLocationInView();
+    float distanceX = fabsf(m_TouchEnd.x - m_TouchBegin.x);
+    float distanceY = fabsf(m_TouchEnd.y - m_TouchBegin.y);
+//    if(distanceX>20 && distanceX >= distanceY)
+//    {
+//        if(m_TouchEnd.x < m_TouchBegin.x)
+//            jumpLeft();
+//        else if(m_TouchEnd.x > m_TouchBegin.x)
+//            jumpRight();
+//    }
+//    else
+//    {
+//        if(distanceY>20 && m_TouchEnd.y < m_TouchBegin.y)
+//            jumpSuper();
+//        else
+//            jumpForward();
+//    }
+
+}
+
+void GameScene::onTouchEnded(Touch *touch, Event *event)
+{
+    if(!touch)
+        return;
+    m_TouchEnd = touch->getLocationInView();
+//    float distanceX = fabsf(m_TouchEnd.x - m_TouchBegin.x);
+//    float distanceY = fabsf(m_TouchEnd.y - m_TouchBegin.y);
+//    if(distanceX>20 && distanceX >= distanceY)
+//    {
+//        if(m_TouchEnd.x < m_TouchBegin.x)
+//            jumpLeft();
+//        else if(m_TouchEnd.x > m_TouchBegin.x)
+//            jumpRight();
+//    }
+//    else
+//    {
+//        if(distanceY>20 && m_TouchEnd.y < m_TouchBegin.y)
+//            jumpSuper();
+//        else
+//            jumpForward();
+//    }
 }

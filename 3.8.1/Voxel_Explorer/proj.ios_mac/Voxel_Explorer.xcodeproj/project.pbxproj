@@ -73,8 +73,14 @@
 		555B0D241BC51A2C0055FB6D /* GameScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 555B0D101BC51A2C0055FB6D /* GameScene.cpp */; settings = {ASSET_TAGS = (); }; };
 		555B0D251BC51A2C0055FB6D /* VoxelExplorer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 555B0D131BC51A2C0055FB6D /* VoxelExplorer.cpp */; settings = {ASSET_TAGS = (); }; };
 		555B0D261BC51A2C0055FB6D /* VoxelExplorer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 555B0D131BC51A2C0055FB6D /* VoxelExplorer.cpp */; settings = {ASSET_TAGS = (); }; };
+		559B217F1BC65D330047D998 /* textures in Resources */ = {isa = PBXBuildFile; fileRef = 559B217E1BC65D330047D998 /* textures */; settings = {ASSET_TAGS = (); }; };
+		559B21801BC65D330047D998 /* textures in Resources */ = {isa = PBXBuildFile; fileRef = 559B217E1BC65D330047D998 /* textures */; settings = {ASSET_TAGS = (); }; };
+		559B21871BC663CE0047D998 /* TerrainTile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 559B21851BC663CE0047D998 /* TerrainTile.cpp */; settings = {ASSET_TAGS = (); }; };
+		559B21881BC663CE0047D998 /* TerrainTile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 559B21851BC663CE0047D998 /* TerrainTile.cpp */; settings = {ASSET_TAGS = (); }; };
 		55D6D67F1BC527D000081221 /* models in Resources */ = {isa = PBXBuildFile; fileRef = 55D6D67E1BC527D000081221 /* models */; settings = {ASSET_TAGS = (); }; };
 		55D6D6801BC527D000081221 /* models in Resources */ = {isa = PBXBuildFile; fileRef = 55D6D67E1BC527D000081221 /* models */; settings = {ASSET_TAGS = (); }; };
+		55EC957B1BC6737B0008D1D7 /* TestPlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55EC95791BC6737B0008D1D7 /* TestPlayer.cpp */; settings = {ASSET_TAGS = (); }; };
+		55EC957C1BC6737B0008D1D7 /* TestPlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55EC95791BC6737B0008D1D7 /* TestPlayer.cpp */; settings = {ASSET_TAGS = (); }; };
 		8262943E1AAF051F00CB7CF7 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8262943D1AAF051F00CB7CF7 /* Security.framework */; };
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
 		BF1712471292920000B8313A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB412928DE900B8313A /* libz.dylib */; };
@@ -169,7 +175,12 @@
 		555B0D111BC51A2C0055FB6D /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameScene.h; sourceTree = "<group>"; };
 		555B0D131BC51A2C0055FB6D /* VoxelExplorer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VoxelExplorer.cpp; sourceTree = "<group>"; };
 		555B0D141BC51A2C0055FB6D /* VoxelExplorer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VoxelExplorer.h; sourceTree = "<group>"; };
+		559B217E1BC65D330047D998 /* textures */ = {isa = PBXFileReference; lastKnownFileType = folder; path = textures; sourceTree = "<group>"; };
+		559B21851BC663CE0047D998 /* TerrainTile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TerrainTile.cpp; sourceTree = "<group>"; };
+		559B21861BC663CE0047D998 /* TerrainTile.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TerrainTile.hpp; sourceTree = "<group>"; };
 		55D6D67E1BC527D000081221 /* models */ = {isa = PBXFileReference; lastKnownFileType = folder; path = models; sourceTree = "<group>"; };
+		55EC95791BC6737B0008D1D7 /* TestPlayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TestPlayer.cpp; sourceTree = "<group>"; };
+		55EC957A1BC6737B0008D1D7 /* TestPlayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TestPlayer.hpp; sourceTree = "<group>"; };
 		8262943D1AAF051F00CB7CF7 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB412928DE900B8313A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
@@ -301,6 +312,7 @@
 		46880B7519C43A67006E1F66 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				559B217E1BC65D330047D998 /* textures */,
 				55D6D67E1BC527D000081221 /* models */,
 				521A8EA819F11F5000D177D7 /* fonts */,
 				3EACC98E19EE6D4300EB3C5E /* res */,
@@ -362,11 +374,12 @@
 		555B0CFF1BC51A2C0055FB6D /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				55EC95761BC673690008D1D7 /* Sprites3D */,
+				559B21841BC663CE0047D998 /* Sprites2D */,
 				555B0D001BC51A2C0055FB6D /* AppDelegate.cpp */,
 				555B0D011BC51A2C0055FB6D /* AppDelegate.h */,
 				555B0D021BC51A2C0055FB6D /* Levels */,
 				555B0D0F1BC51A2C0055FB6D /* Scenes */,
-				555B0D121BC51A2C0055FB6D /* Sprites3D */,
 				555B0D131BC51A2C0055FB6D /* VoxelExplorer.cpp */,
 				555B0D141BC51A2C0055FB6D /* VoxelExplorer.h */,
 			);
@@ -402,9 +415,20 @@
 			path = Scenes;
 			sourceTree = "<group>";
 		};
-		555B0D121BC51A2C0055FB6D /* Sprites3D */ = {
+		559B21841BC663CE0047D998 /* Sprites2D */ = {
 			isa = PBXGroup;
 			children = (
+				559B21851BC663CE0047D998 /* TerrainTile.cpp */,
+				559B21861BC663CE0047D998 /* TerrainTile.hpp */,
+			);
+			path = Sprites2D;
+			sourceTree = "<group>";
+		};
+		55EC95761BC673690008D1D7 /* Sprites3D */ = {
+			isa = PBXGroup;
+			children = (
+				55EC95791BC6737B0008D1D7 /* TestPlayer.cpp */,
+				55EC957A1BC6737B0008D1D7 /* TestPlayer.hpp */,
 			);
 			path = Sprites3D;
 			sourceTree = "<group>";
@@ -526,6 +550,7 @@
 				50EF629817ECD46A001EB2F8 /* Icon-80.png in Resources */,
 				5087E78417EB970100C73F5D /* Icon-57.png in Resources */,
 				5087E77E17EB970100C73F5D /* Default.png in Resources */,
+				559B217F1BC65D330047D998 /* textures in Resources */,
 				521A8E6419F0C34300D177D7 /* Default-667h@2x.png in Resources */,
 				46880B7B19C43A67006E1F66 /* CloseNormal.png in Resources */,
 				50EF629717ECD46A001EB2F8 /* Icon-58.png in Resources */,
@@ -540,6 +565,7 @@
 				55D6D6801BC527D000081221 /* models in Resources */,
 				503AE0F817EB97AB00D1A890 /* Icon.icns in Resources */,
 				3EACC99019EE6D4300EB3C5E /* res in Resources */,
+				559B21801BC65D330047D998 /* textures in Resources */,
 				521A8EAA19F11F5000D177D7 /* fonts in Resources */,
 				46880B7C19C43A67006E1F66 /* CloseNormal.png in Resources */,
 				46880B7E19C43A67006E1F66 /* CloseSelected.png in Resources */,
@@ -555,6 +581,7 @@
 			files = (
 				555B0D151BC51A2C0055FB6D /* AppDelegate.cpp in Sources */,
 				555B0D1F1BC51A2C0055FB6D /* StandardLevel.cpp in Sources */,
+				55EC957B1BC6737B0008D1D7 /* TestPlayer.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
@@ -562,6 +589,7 @@
 				555B0D1D1BC51A2C0055FB6D /* Graph.cpp in Sources */,
 				555B0D171BC51A2C0055FB6D /* Area.cpp in Sources */,
 				555B0D1B1BC51A2C0055FB6D /* Door.cpp in Sources */,
+				559B21871BC663CE0047D998 /* TerrainTile.cpp in Sources */,
 				555B0D231BC51A2C0055FB6D /* GameScene.cpp in Sources */,
 				555B0D211BC51A2C0055FB6D /* TombLevel.cpp in Sources */,
 				555B0D191BC51A2C0055FB6D /* BaseLevel.cpp in Sources */,
@@ -576,12 +604,14 @@
 				555B0D261BC51A2C0055FB6D /* VoxelExplorer.cpp in Sources */,
 				555B0D181BC51A2C0055FB6D /* Area.cpp in Sources */,
 				555B0D201BC51A2C0055FB6D /* StandardLevel.cpp in Sources */,
+				55EC957C1BC6737B0008D1D7 /* TestPlayer.cpp in Sources */,
 				555B0D1A1BC51A2C0055FB6D /* BaseLevel.cpp in Sources */,
 				555B0D161BC51A2C0055FB6D /* AppDelegate.cpp in Sources */,
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
 				555B0D1E1BC51A2C0055FB6D /* Graph.cpp in Sources */,
 				555B0D241BC51A2C0055FB6D /* GameScene.cpp in Sources */,
 				555B0D1C1BC51A2C0055FB6D /* Door.cpp in Sources */,
+				559B21881BC663CE0047D998 /* TerrainTile.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
