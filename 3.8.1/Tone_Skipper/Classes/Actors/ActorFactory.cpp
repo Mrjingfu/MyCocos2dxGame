@@ -11,6 +11,7 @@
 #include "Pudge.h"
 #include "QuestionMark.h"
 #include "ExcalmationMark.h"
+#include "PatrolEnemy.h"
 USING_NS_CC;
 
 ActorFactory* g_pActorFactoryInstance = nullptr;
@@ -109,4 +110,24 @@ SceneItem* ActorFactory::createSceneItem(SceneItem::SCENE_ITEM_TYPE type)
             break;
     }
     return item;
+}
+Enemy* ActorFactory::createEnemy(Enemy::EnemyType type)
+{
+    Enemy* enemy = nullptr;
+    switch (type) {
+        case Enemy::ET_NORMAL_SKULL:
+            enemy = new(std::nothrow) PatrolEnemy();
+            if (enemy && enemy->loadModel() && enemy->loadAnimations())
+            {
+                enemy->autorelease();
+                enemy->setScale(0.6);
+                enemy->setEnemyState(Enemy::EnemyStateType::ES_PATROL);
+                
+            }else
+                CC_SAFE_RELEASE_NULL(enemy);
+            break;
+        default:
+            break;
+    }
+    return enemy;
 }

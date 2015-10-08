@@ -12,6 +12,7 @@
 #include "Player.h"
 #include "UsableItem.h"
 #include "SceneItem.h"
+#include "Enemy.h"
 class ActorFactory : public cocos2d::Ref
 {
     ActorFactory();
@@ -22,6 +23,7 @@ public:
     Player* createPlayer(Player::PlayerType type);
     UsableItem* createUsableItem(UsableItem::USABLE_ITEM_TYPE type);
     SceneItem* createSceneItem(SceneItem::SCENE_ITEM_TYPE type);
+    Enemy* createEnemy(Enemy::EnemyType type);
 };
 
 #endif /* defined(__Tone_Skipper__ActorFactory__) */

@@ -10,6 +10,7 @@
 #define __Tone_Skipper__MapMgrs__
 
 #include "ActorFactory.h"
+class Enemy;
 class MapMgrs : public cocos2d::Ref
 {
     MapMgrs();
@@ -61,11 +62,11 @@ private:
     bool initFrontgroundMask();
     bool initUsableItems();
     bool initSceneItems();
-    
+    bool initMosters();
 
     void updatePlayers(float delta);
     void updateCamera(float delta);
-    
+    void updateMonster(float delta);
     
     void showTips(const cocos2d::Vec2& pos, const std::string& tips);
 private:
@@ -100,7 +101,7 @@ private:
     Player*                                 m_pNilo;
     Player*                                 m_pPudge;
     cocos2d::DrawNode*                      m_pDebugDrawNode;
-    
+    cocos2d::Vector<Enemy*>                 m_pMonsterList;
     std::string                             m_strBornPointName;
 };
 

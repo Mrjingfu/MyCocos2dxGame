@@ -50,7 +50,7 @@ public:
     void setMaxYSpeed(float speed) { m_fMaxYSpeed = speed;}
     
     cocos2d::Vec2 getVelocity() const { return m_Velocity; }
-    
+    void setVelocity(cocos2d::Vec2 velocity){m_Velocity = velocity;}
     virtual bool loadModel() = 0;
     virtual bool loadAnimations() = 0;
     virtual void onLand() = 0;

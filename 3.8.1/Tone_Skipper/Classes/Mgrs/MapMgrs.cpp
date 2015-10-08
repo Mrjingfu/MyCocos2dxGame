@@ -136,6 +136,9 @@ bool MapMgrs::loadMap(const std::string& strFile)
     if(!initPlayer())
         return false;
     
+    if (!initMosters())
+        return false;
+    
     if(m_pCoverLayer)
     {
         m_pCoverLayer->setCameraMask((unsigned short)CameraFlag::USER1);
@@ -201,6 +204,17 @@ void MapMgrs::unloadMap()
         m_pCoverLayer->removeAllChildrenWithCleanup(true);
         m_pCoverLayer = nullptr;
     }
+    
+    for (int i=0; i<m_pMonsterList.size(); i++) {
+        Enemy* enemy = m_pMonsterList.at(i);
+        if (enemy) {
+            m_pMonsterList.eraseObject(enemy);
+            if (enemy->getReferenceCount() > 0)
+                enemy->removeAllChildrenWithCleanup(true);
+            enemy = nullptr;
+        }
+    }
+    
     m_pNilo = nullptr;
     m_pPudge = nullptr;
 
@@ -217,6 +231,7 @@ void MapMgrs::update(float delta)
 {
     updatePlayers(delta);
     updateCamera(delta);
+    updateMonster(delta);
 }
 bool MapMgrs::checkRayCast(const cocos2d::Rect& rect, Vec2& velocity, Actor::RAYCAST_TYPE& type, bool ignoreAdjust)
 {
@@ -859,6 +874,44 @@ bool MapMgrs::initSceneItems()
     m_pSceneItemLayer->setCameraMask((unsigned short)CameraFlag::USER1);
     m_pMainLayer->addChild(m_pSceneItemLayer);
     return true;
+}
+bool MapMgrs::initMosters()
+{
+    if(!m_pMainLayer || !m_pCurrentTiledMap)
+        return false;
+    m_pMonsterLayer = Layer::create();
+    if (!m_pMonsterLayer)
+        return false;
+    ValueVector mosters = m_pMonsters->getObjects();
+    for (Value value : mosters) {
+        ValueMap valuemap = value.asValueMap();
+        if(valuemap.empty())
+            continue;
+        float x = valuemap.at("x").asFloat();
+        float y = valuemap.at("y").asFloat();
+        float width = valuemap.at("width").asFloat();
+        float height = valuemap.at("height").asFloat();
+        cocos2d::Rect mosterRect = cocos2d::Rect(x, y, width, height);
+        Enemy::EnemyType type = (Enemy::EnemyType)(valuemap.at("type").asInt());
+        Enemy* normalEnemy = ActorFactory::getInstance()->createEnemy(type);
+        if (!normalEnemy)
+            return false;
+        normalEnemy->setPosition(Vec2(mosterRect.getMidX(), y));
+        m_pMonsterLayer->addChild(normalEnemy);
+        m_pMonsterList.pushBack(normalEnemy);
+    }
+    m_pMonsterLayer->setCameraMask((unsigned short)CameraFlag::USER1);
+    m_pMainLayer->addChild(m_pMonsterLayer);
+    return true;
+}
+void MapMgrs::updateMonster(float delta)
+{
+    for (int i =0; i<m_pMonsterList.size(); i++) {
+        Enemy* enemy = m_pMonsterList.at(i);
+        if (enemy) {
+            enemy->update(delta);
+        }
+    }
 }
 void MapMgrs::updatePlayers(float delta)
 {

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="left-up" width="80" height="60" tilewidth="16" tileheight="16" nextobjectid="69">
+<map version="1.0" orientation="orthogonal" renderorder="left-up" width="80" height="60" tilewidth="16" tileheight="16" nextobjectid="77">
  <properties>
   <property name="background_colortype" value="6"/>
   <property name="frontground_colortype" value="7"/>
  </properties>
- <tileset firstgid="1" name="scene_tiles" tilewidth="16" tileheight="16" tilecount="15">
+ <tileset firstgid="1" name="scene_tiles" tilewidth="16" tileheight="16">
   <image source="scene_tiles.png" width="240" height="16"/>
  </tileset>
  <layer name="background" width="80" height="60">
@@ -96,10 +96,11 @@
   <object id="27" name="secret1" type="3" x="48" y="464" width="96" height="96"/>
  </objectgroup>
  <objectgroup color="#fa861a" name="monsters">
-  <object id="31" name="shooter1" x="592" y="640" width="16" height="16"/>
-  <object id="32" name="killer1" x="960" y="544" width="16" height="16"/>
-  <object id="33" name="killer2" x="912" y="544" width="16" height="16"/>
-  <object id="34" name="killer3" x="1008" y="544" width="16" height="16"/>
+  <object id="31" name="shooter1" type="0" x="592" y="640" width="16" height="16"/>
+  <object id="32" name="killer1" type="0" x="960" y="544" width="16" height="16"/>
+  <object id="33" name="killer2" type="0" x="912" y="544" width="16" height="16"/>
+  <object id="34" name="killer3" type="0" x="1008" y="544" width="16" height="16"/>
+  <object id="72" name="killer4" x="528" y="864" width="16" height="16"/>
  </objectgroup>
  <objectgroup color="#1cd8fb" name="shadows">
   <object id="35" name="shadowgreen" type="0" x="512" y="480" width="600" height="80">

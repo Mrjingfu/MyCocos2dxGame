@@ -24,6 +24,13 @@
 #define sArchiveName        "GameArchive"
 #define MAX_DIAMOD 100
 
+#define SINGLE_FUNC(__TYPE__) \
+static __TYPE__* getInstance() \
+{ \
+static __TYPE__ pRet;  \
+return &pRet; \
+}
+
 struct TipData
 {
     cocos2d::Vec2 m_pPt;
