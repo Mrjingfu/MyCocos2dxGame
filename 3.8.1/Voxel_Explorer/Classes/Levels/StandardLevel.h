@@ -27,7 +27,7 @@ protected:
     
     virtual void generateTerrain();
     
-    virtual void showDebug(bool show);
+    virtual void showMap(bool show);
     
 private:
     void placeDoors(Area* area);

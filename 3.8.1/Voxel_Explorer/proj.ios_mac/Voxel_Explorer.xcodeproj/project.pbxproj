@@ -75,12 +75,12 @@
 		555B0D261BC51A2C0055FB6D /* VoxelExplorer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 555B0D131BC51A2C0055FB6D /* VoxelExplorer.cpp */; settings = {ASSET_TAGS = (); }; };
 		559B217F1BC65D330047D998 /* textures in Resources */ = {isa = PBXBuildFile; fileRef = 559B217E1BC65D330047D998 /* textures */; settings = {ASSET_TAGS = (); }; };
 		559B21801BC65D330047D998 /* textures in Resources */ = {isa = PBXBuildFile; fileRef = 559B217E1BC65D330047D998 /* textures */; settings = {ASSET_TAGS = (); }; };
-		559B21871BC663CE0047D998 /* TerrainTile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 559B21851BC663CE0047D998 /* TerrainTile.cpp */; settings = {ASSET_TAGS = (); }; };
-		559B21881BC663CE0047D998 /* TerrainTile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 559B21851BC663CE0047D998 /* TerrainTile.cpp */; settings = {ASSET_TAGS = (); }; };
 		55D6D67F1BC527D000081221 /* models in Resources */ = {isa = PBXBuildFile; fileRef = 55D6D67E1BC527D000081221 /* models */; settings = {ASSET_TAGS = (); }; };
 		55D6D6801BC527D000081221 /* models in Resources */ = {isa = PBXBuildFile; fileRef = 55D6D67E1BC527D000081221 /* models */; settings = {ASSET_TAGS = (); }; };
-		55EC957B1BC6737B0008D1D7 /* TestPlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55EC95791BC6737B0008D1D7 /* TestPlayer.cpp */; settings = {ASSET_TAGS = (); }; };
-		55EC957C1BC6737B0008D1D7 /* TestPlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55EC95791BC6737B0008D1D7 /* TestPlayer.cpp */; settings = {ASSET_TAGS = (); }; };
+		55EC95851BC6AA7B0008D1D7 /* TerrainTile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55EC95831BC6AA7B0008D1D7 /* TerrainTile.cpp */; settings = {ASSET_TAGS = (); }; };
+		55EC95861BC6ABBA0008D1D7 /* TerrainTile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55EC95831BC6AA7B0008D1D7 /* TerrainTile.cpp */; };
+		55ECFB441BC79852007270CD /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55ECFB421BC79852007270CD /* Player.cpp */; settings = {ASSET_TAGS = (); }; };
+		55ECFB451BC79852007270CD /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55ECFB421BC79852007270CD /* Player.cpp */; settings = {ASSET_TAGS = (); }; };
 		8262943E1AAF051F00CB7CF7 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8262943D1AAF051F00CB7CF7 /* Security.framework */; };
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
 		BF1712471292920000B8313A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB412928DE900B8313A /* libz.dylib */; };
@@ -176,11 +176,11 @@
 		555B0D131BC51A2C0055FB6D /* VoxelExplorer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VoxelExplorer.cpp; sourceTree = "<group>"; };
 		555B0D141BC51A2C0055FB6D /* VoxelExplorer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VoxelExplorer.h; sourceTree = "<group>"; };
 		559B217E1BC65D330047D998 /* textures */ = {isa = PBXFileReference; lastKnownFileType = folder; path = textures; sourceTree = "<group>"; };
-		559B21851BC663CE0047D998 /* TerrainTile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TerrainTile.cpp; sourceTree = "<group>"; };
-		559B21861BC663CE0047D998 /* TerrainTile.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TerrainTile.hpp; sourceTree = "<group>"; };
 		55D6D67E1BC527D000081221 /* models */ = {isa = PBXFileReference; lastKnownFileType = folder; path = models; sourceTree = "<group>"; };
-		55EC95791BC6737B0008D1D7 /* TestPlayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TestPlayer.cpp; sourceTree = "<group>"; };
-		55EC957A1BC6737B0008D1D7 /* TestPlayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TestPlayer.hpp; sourceTree = "<group>"; };
+		55EC95831BC6AA7B0008D1D7 /* TerrainTile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TerrainTile.cpp; sourceTree = "<group>"; };
+		55EC95841BC6AA7B0008D1D7 /* TerrainTile.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TerrainTile.hpp; sourceTree = "<group>"; };
+		55ECFB421BC79852007270CD /* Player.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Player.cpp; sourceTree = "<group>"; };
+		55ECFB431BC79852007270CD /* Player.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Player.hpp; sourceTree = "<group>"; };
 		8262943D1AAF051F00CB7CF7 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB412928DE900B8313A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
@@ -418,8 +418,6 @@
 		559B21841BC663CE0047D998 /* Sprites2D */ = {
 			isa = PBXGroup;
 			children = (
-				559B21851BC663CE0047D998 /* TerrainTile.cpp */,
-				559B21861BC663CE0047D998 /* TerrainTile.hpp */,
 			);
 			path = Sprites2D;
 			sourceTree = "<group>";
@@ -427,8 +425,10 @@
 		55EC95761BC673690008D1D7 /* Sprites3D */ = {
 			isa = PBXGroup;
 			children = (
-				55EC95791BC6737B0008D1D7 /* TestPlayer.cpp */,
-				55EC957A1BC6737B0008D1D7 /* TestPlayer.hpp */,
+				55EC95831BC6AA7B0008D1D7 /* TerrainTile.cpp */,
+				55EC95841BC6AA7B0008D1D7 /* TerrainTile.hpp */,
+				55ECFB421BC79852007270CD /* Player.cpp */,
+				55ECFB431BC79852007270CD /* Player.hpp */,
 			);
 			path = Sprites3D;
 			sourceTree = "<group>";
@@ -581,7 +581,6 @@
 			files = (
 				555B0D151BC51A2C0055FB6D /* AppDelegate.cpp in Sources */,
 				555B0D1F1BC51A2C0055FB6D /* StandardLevel.cpp in Sources */,
-				55EC957B1BC6737B0008D1D7 /* TestPlayer.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
@@ -589,10 +588,11 @@
 				555B0D1D1BC51A2C0055FB6D /* Graph.cpp in Sources */,
 				555B0D171BC51A2C0055FB6D /* Area.cpp in Sources */,
 				555B0D1B1BC51A2C0055FB6D /* Door.cpp in Sources */,
-				559B21871BC663CE0047D998 /* TerrainTile.cpp in Sources */,
 				555B0D231BC51A2C0055FB6D /* GameScene.cpp in Sources */,
 				555B0D211BC51A2C0055FB6D /* TombLevel.cpp in Sources */,
 				555B0D191BC51A2C0055FB6D /* BaseLevel.cpp in Sources */,
+				55EC95851BC6AA7B0008D1D7 /* TerrainTile.cpp in Sources */,
+				55ECFB441BC79852007270CD /* Player.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -600,18 +600,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55EC95861BC6ABBA0008D1D7 /* TerrainTile.cpp in Sources */,
 				555B0D221BC51A2C0055FB6D /* TombLevel.cpp in Sources */,
 				555B0D261BC51A2C0055FB6D /* VoxelExplorer.cpp in Sources */,
 				555B0D181BC51A2C0055FB6D /* Area.cpp in Sources */,
 				555B0D201BC51A2C0055FB6D /* StandardLevel.cpp in Sources */,
-				55EC957C1BC6737B0008D1D7 /* TestPlayer.cpp in Sources */,
 				555B0D1A1BC51A2C0055FB6D /* BaseLevel.cpp in Sources */,
 				555B0D161BC51A2C0055FB6D /* AppDelegate.cpp in Sources */,
+				55ECFB451BC79852007270CD /* Player.cpp in Sources */,
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
 				555B0D1E1BC51A2C0055FB6D /* Graph.cpp in Sources */,
 				555B0D241BC51A2C0055FB6D /* GameScene.cpp in Sources */,
 				555B0D1C1BC51A2C0055FB6D /* Door.cpp in Sources */,
-				559B21881BC663CE0047D998 /* TerrainTile.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

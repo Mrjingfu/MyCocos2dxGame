@@ -11,7 +11,7 @@
 
 #include "cocos2d.h"
 #include "BaseLevel.h"
-#include "TestPlayer.hpp"
+#include "Player.hpp"
 class VoxelExplorer : public cocos2d::Ref
 {
     VoxelExplorer();
@@ -22,9 +22,8 @@ public:
     void update(float delta);
     void destroy();
     
-    bool createLayers();
-    bool createLevel();
-    bool createPlayer();
+    bool checkMovable();
+    void cameraTrackPlayer();
     
     cocos2d::Layer* getMainLayer() const { return m_pMainLayer; }
     cocos2d::Layer* get3DLayer() const { return m_p3DLayer; }
@@ -35,6 +34,14 @@ public:
     cocos2d::Layer* getUILayer() const { return m_pUILayer; }
     
     cocos2d::Camera* getMainCamera() const { return m_pMainCamera; }
+    cocos2d::Camera* getScreenCamera() const { return m_pScreenCamera; }
+    
+    Player* getPlayer() const { return m_pPlayer; }
+private:
+    bool createLayers();
+    bool createLevel();
+    bool createCameras();
+    bool createPlayer();
 private:
     int             m_nDepth;
     BaseLevel*      m_pCurrentLevel;
@@ -48,8 +55,9 @@ private:
     cocos2d::Layer*                         m_pUILayer;
     
     cocos2d::Camera*                        m_pMainCamera;
+    cocos2d::Camera*                        m_pScreenCamera;
     
-    TestPlayer*                             m_pTestPlayer;
+    Player*                                 m_pPlayer;
 };
 
 #endif /* defined(__Voxel_Explorer__VoxelExplorer__) */

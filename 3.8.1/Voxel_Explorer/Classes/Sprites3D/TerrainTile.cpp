@@ -20,8 +20,9 @@ TerrainTile* TerrainTile::create(TileType type)
         default:
             break;
     }
-    if (tile && tile->initWithFile(texName))
+    if (tile && tile->initWithFile("16x16x16.c3b"))
     {
+        tile->setTexture(texName);
         tile->setCameraMask((unsigned int)CameraFlag::USER1);
         tile->autorelease();
         return tile;

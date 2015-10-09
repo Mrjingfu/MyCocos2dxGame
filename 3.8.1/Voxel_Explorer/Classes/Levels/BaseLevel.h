@@ -44,7 +44,7 @@ protected:
     virtual void createMobs() = 0;
     virtual void createItems() = 0;
 
-    virtual void showDebug(bool show) = 0;
+    virtual void showMap(bool show) = 0;
 protected:
     LEVEL_TYPE           m_Type;
     LEVEL_BOUNDARY_TYPE  m_BoundaryType;

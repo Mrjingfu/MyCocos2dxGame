@@ -34,7 +34,7 @@ VoxelExplorer::VoxelExplorer()
     
     m_pMainCamera = nullptr;
     
-    m_pTestPlayer = nullptr;
+    m_pPlayer = nullptr;
 }
 VoxelExplorer::~VoxelExplorer()
 {
@@ -52,13 +52,16 @@ bool VoxelExplorer::init(Layer* pMainLayer)
         CCLOG("Create layers failed!");
         return false;
     }
-    
+    if(!createCameras())
+    {
+        CCLOG("Create cameras failed!");
+        return false;
+    }
     if(!createLevel())
     {
         CCLOG("Create level failed!");
         return false;
     }
-    
     if(!createPlayer())
     {
         CCLOG("Create Player failed!");
@@ -71,6 +74,21 @@ void VoxelExplorer::update(float delta)
 }
 void VoxelExplorer::destroy()
 {
+}
+bool VoxelExplorer::checkMovable()
+{
+    return true;
+}
+void VoxelExplorer::cameraTrackPlayer()
+{
+    if(m_pPlayer && m_pMainCamera)
+    {
+        cocos2d::Size size = m_pPlayer->getContentSize();
+        Vec3 camPos = Vec3(m_pPlayer->getPositionX(),size.height*0.5,m_pPlayer->getPositionZ()) + Vec3(0, 5*TerrainTile::CONTENT_SCALE, 3*TerrainTile::CONTENT_SCALE );
+        Vec3 targetLookAt = m_pPlayer->getPosition3D() + Vec3(0,0.5f*TerrainTile::CONTENT_SCALE,0);
+        EaseSineOut* moveTo = EaseSineOut::create(MoveTo::create(0.4f, camPos));
+        m_pMainCamera->runAction(moveTo);
+    }
 }
 bool VoxelExplorer::createLayers()
 {
@@ -123,38 +141,37 @@ bool VoxelExplorer::createLevel()
     m_pCurrentLevel->create();
     return true;
 }
-bool VoxelExplorer::createPlayer()
+bool VoxelExplorer::createCameras()
 {
-    if(!m_pCurrentLevel || !m_p3DLayer)
-        return false;
-    m_pTestPlayer = TestPlayer::create("girl1.c3b");
-    if(!m_pTestPlayer)
-        return false;
-    m_pTestPlayer->setPosition3D(Vec3(m_pCurrentLevel->getSpawnPoint().x, m_pCurrentLevel->getSpawnPoint().y, 0));
-    m_p3DLayer->addChild(m_pTestPlayer);
-                                 
     m_pMainCamera = Camera::create();
     if(!m_pMainCamera)
         return false;
     m_pMainCamera->setCameraFlag(CameraFlag::USER1);
     m_p3DLayer->addChild(m_pMainCamera);
     
-    m_pMainCamera->setPosition3D(Vec3(m_pCurrentLevel->getSpawnPoint().x, m_pCurrentLevel->getSpawnPoint().y, 0) + Vec3(0, -10*cosf(M_PI/3)*TerrainTile::CONTENT_SCALE, TerrainTile::CONTENT_SCALE*10*sinf(M_PI/3)));
-    m_pMainCamera->lookAt(m_pTestPlayer->getPosition3D());
+    m_pScreenCamera = Camera::create();
+    if(!m_pScreenCamera)
+        return false;
+    m_pScreenCamera->setCameraFlag(CameraFlag::USER2);
+    m_p2DLayer->addChild(m_pScreenCamera);
+    return true;
+}
+bool VoxelExplorer::createPlayer()
+{
+    if(!m_pCurrentLevel || !m_p3DLayer)
+        return false;
+    m_pPlayer = Player::create("girl1.c3b");
+    if(!m_pPlayer)
+        return false;
+    cocos2d::Size size = m_pPlayer->getContentSize();
+    m_pPlayer->setPosition3D(Vec3(m_pCurrentLevel->getSpawnPoint().x, size.height*0.5, -m_pCurrentLevel->getSpawnPoint().y));
+    m_pPlayer->setScale(0.5f);
+    m_p3DLayer->addChild(m_pPlayer);
+    m_p3DLayer->setRotation3D(Vec3(0,90,0));
     
-    //    auto size = Director::getInstance()->getWinSize();
-    //    float zeye = Director::getInstance()->getZEye();
-    //    m_pMainCamera = Camera::createPerspective(60, (GLfloat)size.width / size.height, 10, zeye + size.height);
-    //    if(!m_pMainCamera)
-    //        return false;
-    //
-    //    Vec3 eye = m_pGameLayer->getPlayer()->getPosition3D() + m_CamOffset;
-    //    Vec3 center = m_pGameLayer->getPlayer()->getPosition3D();
-    //
-    //    m_pMainCamera->setPosition3D(eye);
-    //    m_pMainCamera->lookAt(center, Vec3::UNIT_Y);
-    //
-    //    m_pMainCamera->setCameraFlag(CameraFlag::USER1);
-    //    pMainLayer->addChild(m_pMainCamera);
+    m_pMainCamera->setPosition3D(Vec3(m_pCurrentLevel->getSpawnPoint().x, size.height*0.5, -m_pCurrentLevel->getSpawnPoint().y) + Vec3(0, 5*TerrainTile::CONTENT_SCALE, 3*TerrainTile::CONTENT_SCALE ));
+    m_pMainCamera->lookAt(m_pPlayer->getPosition3D() + Vec3(0,0.5f*TerrainTile::CONTENT_SCALE,0));
+    
+    m_pPlayer->setState(Player::PS_IDLE);
     return true;
 }

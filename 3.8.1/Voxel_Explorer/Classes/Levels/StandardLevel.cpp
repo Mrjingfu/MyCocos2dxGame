@@ -109,7 +109,7 @@ bool StandardLevel::build()
     
     generateSpawnPoint(); ///生成出生点
 #if COCOS2D_DEBUG
-    showDebug(true);
+    showMap(true);
 #endif
     return true;
 }
@@ -279,7 +279,7 @@ void StandardLevel::generateTerrain()
     }
 }
 
-void StandardLevel::showDebug(bool show)
+void StandardLevel::showMap(bool show)
 {
     if(!show)
         return;
@@ -299,8 +299,9 @@ void StandardLevel::showDebug(bool show)
         m_pDebugDrawNode = DrawNode::create();
         VoxelExplorer::getInstance()->getMainLayer()->addChild(m_pDebugDrawNode);
         m_pDebugDrawNode->clear();
-        m_pDebugDrawNode->setGlobalZOrder(100);
+        m_pDebugDrawNode->setCameraMask((unsigned int)CameraFlag::USER2);
         m_pDebugDrawNode->setScale(4);
+        m_pDebugDrawNode->setPosition(160,240);
         
         ///绘制地面
         for (PathGraphNode* node : m_Areas) {
@@ -386,14 +387,14 @@ void StandardLevel::generateTerrainTiles(Area* area)
     {
         cocos2d::Rect rect = area->getRect();
         Area::AREA_TYPE type = area->getAreaType();
-        TerrainTile* tile = TerrainTile::create(TerrainTile::TT_STANDARD);
-        if(!tile)
-            return;
-        tile->setPosition(rect.getMidX()*TerrainTile::CONTENT_SCALE, rect.getMidY()*TerrainTile::CONTENT_SCALE);
-        Texture2D::TexParams texRepeat = {GL_NEAREST, GL_NEAREST, GL_REPEAT, GL_REPEAT};
-        tile->getTexture()->setTexParameters(texRepeat);
-        tile->setTextureRect(cocos2d::Rect(0,0,rect.size.width*TerrainTile::CONTENT_SCALE,rect.size.height*TerrainTile::CONTENT_SCALE), true, Size(16,16));
-        VoxelExplorer::getInstance()->getTerrainTilesLayer()->addChild(tile);
+        for(int i = 0; i<rect.size.width; i++)
+            for (int j = 0; j<rect.size.height; j++) {
+                TerrainTile* tile = TerrainTile::create(TerrainTile::TT_STANDARD);
+                if(!tile)
+                    return;
+                tile->setPosition3D(Vec3((rect.origin.x + i)*TerrainTile::CONTENT_SCALE, -TerrainTile::CONTENT_SCALE, -(rect.origin.y + j)*TerrainTile::CONTENT_SCALE));
+                VoxelExplorer::getInstance()->getTerrainTilesLayer()->addChild(tile);
+            }
     }
 }
 void StandardLevel::placeDoors(Area* area)

@@ -10,7 +10,7 @@
 #define TerrainTile_hpp
 
 #include "cocos2d.h"
-class TerrainTile : public cocos2d::Sprite
+class TerrainTile : public cocos2d::Sprite3D
 {
 public:
     typedef enum
@@ -30,5 +30,6 @@ public:
 protected:
     TileType        m_Type;
 };
+
 
 #endif /* TerrainTile_hpp */

@@ -25,6 +25,13 @@ protected:
     virtual void onTouchMoved(cocos2d::Touch *touch, cocos2d::Event *event) override;
     virtual void onTouchEnded(cocos2d::Touch *touch, cocos2d::Event *event) override;
 private:
+    void prepareToJump();
+    void rotateToForward();
+    void rotateToBack();
+    void rotateToLeft();
+    void rotateToRight();
+    void excuteToJump();
+private:
     cocos2d::Vec2   m_TouchBegin;
     cocos2d::Vec2   m_TouchEnd;
 };
