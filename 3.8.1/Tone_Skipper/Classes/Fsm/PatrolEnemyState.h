@@ -11,15 +11,16 @@
 
 #include "EnemyState.h"
 
-class WalkState:public EnemyState {
-    WalkState();
+class PatrolEnemyState:public EnemyState {
+    PatrolEnemyState();
 public:
-    SINGLE_FUNC(WalkState);
-    virtual ~WalkState();
+    SINGLE_FUNC(PatrolEnemyState);
+    virtual ~PatrolEnemyState();
     virtual void onEnter(Enemy *);
     virtual void update(Enemy *,float delta)  ;
     virtual void onExit(Enemy*);
-
+private:
+    void updateNormalSkull(Enemy *,float delta);
 };
 
 #endif /* WalkState_hpp */

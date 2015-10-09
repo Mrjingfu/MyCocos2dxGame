@@ -10,7 +10,7 @@
 #define __Tone_Skipper__MapMgrs__
 
 #include "ActorFactory.h"
-class Enemy;
+
 class MapMgrs : public cocos2d::Ref
 {
     MapMgrs();
@@ -54,6 +54,15 @@ public:
     
     void hideCoverLayer();
     void showCoverLayer();
+    
+    Bullet* createBullet(Bullet::BulletType btype,Bullet::ActorBulletType atype,cocos2d::Vec2 pt,cocos2d::Vec2 direction);
+    
+    void eraseBullet(Bullet* bullet);
+    void eraseBullet(int i);
+    
+    void eraseEnemy(Enemy* enemy);
+    void eraseEnemy(int i);
+    
 private:
     bool initCamera();
     bool initPlayer();
@@ -67,6 +76,7 @@ private:
     void updatePlayers(float delta);
     void updateCamera(float delta);
     void updateMonster(float delta);
+    void updateBullet(float delta);
     
     void showTips(const cocos2d::Vec2& pos, const std::string& tips);
 private:
@@ -83,6 +93,7 @@ private:
     cocos2d::Layer*                         m_pUsableItemLayer;
     cocos2d::Layer*                         m_pMonsterLayer;
     cocos2d::Layer*                         m_pPlayerLayer;
+    cocos2d::Layer*                         m_pBulletLayer;
     cocos2d::TMXLayer*                      m_pCoverLayer;
     bool                                    m_pCoverLayerVisable;
     
@@ -102,6 +113,7 @@ private:
     Player*                                 m_pPudge;
     cocos2d::DrawNode*                      m_pDebugDrawNode;
     cocos2d::Vector<Enemy*>                 m_pMonsterList;
+    cocos2d::Vector<Bullet*>                m_pBulletList;
     std::string                             m_strBornPointName;
 };
 

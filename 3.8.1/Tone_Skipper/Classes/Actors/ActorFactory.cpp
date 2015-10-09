@@ -12,6 +12,7 @@
 #include "QuestionMark.h"
 #include "ExcalmationMark.h"
 #include "PatrolEnemy.h"
+#include "AttackEnemy.h"
 USING_NS_CC;
 
 ActorFactory* g_pActorFactoryInstance = nullptr;
@@ -115,7 +116,7 @@ Enemy* ActorFactory::createEnemy(Enemy::EnemyType type)
 {
     Enemy* enemy = nullptr;
     switch (type) {
-        case Enemy::ET_NORMAL_SKULL:
+        case Enemy::ET_PATROL:
             enemy = new(std::nothrow) PatrolEnemy();
             if (enemy && enemy->loadModel() && enemy->loadAnimations())
             {
@@ -126,8 +127,37 @@ Enemy* ActorFactory::createEnemy(Enemy::EnemyType type)
             }else
                 CC_SAFE_RELEASE_NULL(enemy);
             break;
+        case Enemy::ET_ATTACK:
+            enemy = new(std::nothrow) AttackEnemy();
+            if (enemy && enemy->loadModel() && enemy->loadAnimations())
+            {
+                enemy->autorelease();
+                enemy->setScale(0.6);
+                enemy->setEnemyState(Enemy::EnemyStateType::ES_IDLE);
+                
+            }else
+                CC_SAFE_RELEASE_NULL(enemy);
+            break;
+
         default:
             break;
     }
     return enemy;
+}
+Bullet* ActorFactory::createBullet(Bullet::BulletType btype,Bullet::ActorBulletType atype)
+{
+    Bullet* bullet = nullptr;
+    switch (btype) {
+        case Bullet::BT_SIMPLE:
+            bullet = new(std::nothrow) Bullet();
+            if (bullet&& bullet->loadModel() && bullet->loadAnimations()) {
+                bullet->setActorBulletType(atype);
+                bullet->autorelease();
+            }else
+                CC_SAFE_RELEASE_NULL(bullet);
+            break;
+        default:
+            break;
+    }
+    return bullet;
 }

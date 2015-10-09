@@ -6,24 +6,24 @@
 //
 //
 
-#include "PatrolEnemy.h"
+#include "AttackEnemy.h"
 #include "EnemyState.h"
 USING_NS_CC;
-PatrolEnemy::PatrolEnemy()
+AttackEnemy::AttackEnemy()
 {
     m_EnemyType = ET_PATROL;
 }
-PatrolEnemy::~PatrolEnemy()
+AttackEnemy::~AttackEnemy()
 {
     
 }
 
 
-bool PatrolEnemy::loadModel()
+bool AttackEnemy::loadModel()
 {
     bool ret = true;
-    cocos2d::SpriteFrameCache::getInstance()->addSpriteFramesWithFile("basic_zombie.plist");
-    m_pSprite = HueSprite::createWithSpriteFrameName("basic_zombie_idle1.png");
+    cocos2d::SpriteFrameCache::getInstance()->addSpriteFramesWithFile("shooter.plist");
+    m_pSprite = HueSprite::createWithSpriteFrameName("shooter_idle1.png");
     if(!m_pSprite)
     {
         CCLOG("Nilo : Load model failed!");
@@ -37,7 +37,7 @@ bool PatrolEnemy::loadModel()
     return ret;
     return true;
 }
-bool PatrolEnemy::loadAnimations()
+bool AttackEnemy::loadAnimations()
 {
     bool ret = true;
     ///superjump
@@ -45,7 +45,7 @@ bool PatrolEnemy::loadAnimations()
     if(!m_pIdleAnimation)
     {
         Vector<SpriteFrame*> arrayOfAnimation;
-        SpriteFrame* frame = SpriteFrameCache::getInstance()->getSpriteFrameByName("basic_zombie_idle1.png");
+        SpriteFrame* frame = SpriteFrameCache::getInstance()->getSpriteFrameByName("shooter_idle1.png");
         if(!frame)
             ret = false;
         arrayOfAnimation.pushBack(frame);
@@ -66,7 +66,7 @@ bool PatrolEnemy::loadAnimations()
         cocos2d::Vector<cocos2d::SpriteFrame*> arrayOfAnimation;
         
         for (int i =1; i<7; i++) {
-            cocos2d::SpriteFrame* frame = cocos2d::SpriteFrameCache::getInstance()->getSpriteFrameByName(cocos2d::StringUtils::format("basic_zombie_walk%d.png",i));
+            cocos2d::SpriteFrame* frame = cocos2d::SpriteFrameCache::getInstance()->getSpriteFrameByName(cocos2d::StringUtils::format("shooter_walk%d.png",i));
             if(!frame)
                 ret = false;
             arrayOfAnimation.pushBack(frame);
@@ -75,46 +75,45 @@ bool PatrolEnemy::loadAnimations()
         m_pPatrolAnimation = cocos2d::Animation::createWithSpriteFrames(arrayOfAnimation);
         if(!m_pPatrolAnimation)
             ret = false;
-        m_pPatrolAnimation->setDelayPerUnit(0.3f / 5.0f);
+        m_pPatrolAnimation->setDelayPerUnit(0.3f / 2.0f);
         cocos2d::AnimationCache::getInstance()->addAnimation(m_pPatrolAnimation, "skull_walk");
     }
+    
+    m_pAttackAnimation = cocos2d::AnimationCache::getInstance()->getAnimation("skull_attack");
+    if(!m_pAttackAnimation)
+    {
+        cocos2d::Vector<cocos2d::SpriteFrame*> arrayOfAnimation;
+        
+        for (int i =1; i<4; i++) {
+            cocos2d::SpriteFrame* frame = cocos2d::SpriteFrameCache::getInstance()->getSpriteFrameByName(cocos2d::StringUtils::format("shooter_shoot%d.png",i));
+            if(!frame)
+                ret = false;
+            arrayOfAnimation.pushBack(frame);
+        }
+        
+        m_pAttackAnimation = cocos2d::Animation::createWithSpriteFrames(arrayOfAnimation);
+        if(!m_pAttackAnimation)
+            ret = false;
+        m_pAttackAnimation->setDelayPerUnit(0.3f / 1.0f);
+        cocos2d::AnimationCache::getInstance()->addAnimation(m_pAttackAnimation, "skull_attack");
+    }
+    
     return true;
 }
 
-void PatrolEnemy::onLand()
+void AttackEnemy::onLand()
 {
 
 
 }
-void PatrolEnemy::onAir()
+void AttackEnemy::onAir()
 {
-    turnRound();
 }
-void PatrolEnemy::onCollision()
+void AttackEnemy::onCollision()
 {
-    turnRound();
 }
 
-void PatrolEnemy::turnRound()
+void AttackEnemy::turnRound()
 {
-    switch (getEnemyDirection()) {
-        case Enemy::ED_LEFT:
-        {
-            if(m_pEnemyState->getEnemyStateType() == ES_PATROL)
-                m_Velocity.x = m_fMaxXSpeed;
-            setEnemyDirection(ED_RIGHT);
-        }
-            break;
-        case Enemy::ED_RIGHT:
-        {
-            if(m_pEnemyState->getEnemyStateType() == ES_PATROL)
-                m_Velocity.x = -m_fMaxXSpeed;
-            setEnemyDirection(ED_LEFT);
-        }
-            break;
-        case Enemy::ED_BACK:
-            break;
-        default:
-            break;
-    }
+    
 }

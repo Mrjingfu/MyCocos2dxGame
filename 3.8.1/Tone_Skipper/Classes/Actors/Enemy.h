@@ -15,7 +15,8 @@ class Enemy : public Actor
 {
 public:
     typedef enum {
-        ET_NORMAL_SKULL = 0,
+        ET_PATROL = 0, //巡逻
+        ET_ATTACK,     //攻击
         ET_UNKNOWN
     } EnemyType;
     
@@ -24,7 +25,6 @@ public:
         ES_PATROL, //巡逻
         ES_PURSUE, //追击
         ES_ATTACK, //攻击
-        ES_FIGHT_JUDGE,//战斗判定
         ES_DEATH,//死亡
         ES_UNKNOWN
     } EnemyStateType;
@@ -40,6 +40,7 @@ protected:
     virtual ~Enemy();
     
     virtual void onCollision(){};
+    virtual void onAir(){};
 public:
     virtual void update(float delta) override;
     
@@ -52,7 +53,10 @@ public:
     float getMaxYSpeed(){return m_fMaxYSpeed;}
     
     cocos2d::Animation* getIdleAnimation() const {return m_pIdleAnimation;}
-    cocos2d::Animation* getWalkAnimation() const {return m_pWalkAnimation;}
+    cocos2d::Animation* getPatrolAnimation() const {return m_pPatrolAnimation;}
+    cocos2d::Animation* getAttackAnimation() const {return m_pAttackAnimation;}
+    cocos2d::Animation* getDeathAnimation() const {return m_pDeathAnimation;}
+
     
     HueSprite* getEnemySprite(){return m_pSprite;};
     EnemyState* getEnemyState() const { return m_pEnemyState; }
@@ -63,16 +67,19 @@ private:
     void updatePosition(float delta);
     EnemyState* createState(EnemyStateType stateType);
 protected:
-    cocos2d::Animation*       m_pIdleAnimation;
-    cocos2d::Animation*       m_pWalkAnimation;
-    EnemyState*                 m_pEnemyState;
     
-    EnemyType                  m_EnemyType;
-    EnemyDirection             m_EnemyDirection;
-    EnemyDirection             m_EnemyLastDirection;
-    float                      m_MovMaxDistance;
-    float                      m_AttachRange;
-    float                      m_HatredRange;
+    cocos2d::Animation*         m_pIdleAnimation;
+    cocos2d::Animation*         m_pPatrolAnimation;
+    cocos2d::Animation*         m_pAttackAnimation;
+    cocos2d::Animation*         m_pDeathAnimation;
+    
+    EnemyState*                 m_pEnemyState;
+    EnemyType                   m_EnemyType;
+    EnemyDirection              m_EnemyDirection;
+    EnemyDirection              m_EnemyLastDirection;
+    float                       m_MovMaxDistance;
+    float                       m_AttachRange;
+    float                       m_HatredRange;
 };
 
 #endif /* defined(__Tone_Skipper__Enemy__) */

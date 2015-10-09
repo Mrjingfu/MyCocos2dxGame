@@ -1,0 +1,37 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "B21A601E1A9BC8D2FC57E848C52F99145476039E",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "55011AEBD444630C0E9DF47BD2E18FDBBDCC285D" : 0,
+    "B21A601E1A9BC8D2FC57E848C52F99145476039E" : 0,
+    "D482924C5AFED88D3216BDD72C2302DD55AD6268" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "319F1D6E-3314-4AF1-A721-FFCDF4293B02",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "55011AEBD444630C0E9DF47BD2E18FDBBDCC285D" : "MyCocos2dxGamesqlcipher",
+    "B21A601E1A9BC8D2FC57E848C52F99145476039E" : "MyCocos2dxGame",
+    "D482924C5AFED88D3216BDD72C2302DD55AD6268" : "MyCocos2dxGameopenssl-xcode"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "MazeJump",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "3.6\/MazeJump\/proj.ios_mac\/MazeJump.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/sqlcipher\/sqlcipher.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "55011AEBD444630C0E9DF47BD2E18FDBBDCC285D"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:lwwhb\/MyCocos2dxGame.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "B21A601E1A9BC8D2FC57E848C52F99145476039E"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/sqlcipher\/openssl-xcode.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "D482924C5AFED88D3216BDD72C2302DD55AD6268"
+    }
+  ]
+}

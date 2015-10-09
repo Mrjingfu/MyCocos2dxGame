@@ -28,6 +28,7 @@ public:
     
     virtual cocos2d::Rect getBoundingNiloBox() const;
     virtual cocos2d::Rect getBoundingPudgeBox() const;
+    virtual cocos2d::Rect getBoundingEnemyBox() const;
 protected:
     float _hue;
     GLfloat _mat[3][3];

@@ -37,6 +37,7 @@ MapMgrs::MapMgrs()
     m_pUsableItemLayer  = nullptr;
     m_pMonsterLayer     = nullptr;
     m_pPlayerLayer      = nullptr;
+    m_pBulletLayer      = nullptr;
     
     m_pCurrentTiledMap  = nullptr;
     m_pCoverLayer       = nullptr;
@@ -139,6 +140,13 @@ bool MapMgrs::loadMap(const std::string& strFile)
     if (!initMosters())
         return false;
     
+    if (!m_pBulletLayer)
+        m_pBulletLayer = Layer::create();
+    if (!m_pBulletLayer)
+        return false;
+    m_pBulletLayer->setCameraMask((unsigned short)CameraFlag::USER1);
+    m_pMainLayer->addChild(m_pBulletLayer);
+    
     if(m_pCoverLayer)
     {
         m_pCoverLayer->setCameraMask((unsigned short)CameraFlag::USER1);
@@ -204,16 +212,26 @@ void MapMgrs::unloadMap()
         m_pCoverLayer->removeAllChildrenWithCleanup(true);
         m_pCoverLayer = nullptr;
     }
+    if (m_pBulletLayer) {
+        m_pBulletLayer->removeAllChildrenWithCleanup(true);
+        m_pBulletLayer = nullptr;
+    }
     
     for (int i=0; i<m_pMonsterList.size(); i++) {
         Enemy* enemy = m_pMonsterList.at(i);
-        if (enemy) {
-            m_pMonsterList.eraseObject(enemy);
-            if (enemy->getReferenceCount() > 0)
-                enemy->removeAllChildrenWithCleanup(true);
-            enemy = nullptr;
-        }
+        if (enemy)
+            eraseEnemy(enemy);
+        
     }
+    m_pMonsterList.clear();
+    
+    for (int i =0; i<m_pBulletList.size(); i++) {
+        Bullet* bullet = m_pBulletList.at(i);
+        if (bullet)
+            eraseBullet(bullet);
+        
+    }
+    m_pBulletList.clear();
     
     m_pNilo = nullptr;
     m_pPudge = nullptr;
@@ -230,8 +248,9 @@ void MapMgrs::unloadMap()
 void MapMgrs::update(float delta)
 {
     updatePlayers(delta);
-    updateCamera(delta);
     updateMonster(delta);
+    updateBullet(delta);
+    updateCamera(delta);
 }
 bool MapMgrs::checkRayCast(const cocos2d::Rect& rect, Vec2& velocity, Actor::RAYCAST_TYPE& type, bool ignoreAdjust)
 {
@@ -879,7 +898,8 @@ bool MapMgrs::initMosters()
 {
     if(!m_pMainLayer || !m_pCurrentTiledMap)
         return false;
-    m_pMonsterLayer = Layer::create();
+    if (!m_pMonsterLayer)
+        m_pMonsterLayer = Layer::create();
     if (!m_pMonsterLayer)
         return false;
     ValueVector mosters = m_pMonsters->getObjects();
@@ -893,9 +913,9 @@ bool MapMgrs::initMosters()
         float height = valuemap.at("height").asFloat();
         cocos2d::Rect mosterRect = cocos2d::Rect(x, y, width, height);
         Enemy::EnemyType type = (Enemy::EnemyType)(valuemap.at("type").asInt());
-        Enemy* normalEnemy = ActorFactory::getInstance()->createEnemy(type);
+        Enemy* normalEnemy  = ActorFactory::getInstance()->createEnemy(type);;
         if (!normalEnemy)
-            return false;
+            continue;
         normalEnemy->setPosition(Vec2(mosterRect.getMidX(), y));
         m_pMonsterLayer->addChild(normalEnemy);
         m_pMonsterList.pushBack(normalEnemy);
@@ -912,6 +932,28 @@ void MapMgrs::updateMonster(float delta)
             enemy->update(delta);
         }
     }
+}
+void MapMgrs::updateBullet(float delta)
+{
+    for (int i = 0; i<m_pBulletList.size(); i++) {
+        Bullet* bullet = m_pBulletList.at(i);
+        if (bullet)
+        {
+            bullet->update(delta);
+            
+//            Vec3 min = Vec3(-16.0f, -16.0f, -0.5f) + bullet->getPosition3D();
+//            Vec3 max = Vec3(16.0f, 16.0f, 0.5f) + bullet->getPosition3D();
+//            AABB aabb = AABB(min, max);
+//            bool isVisible = m_pMainCamera->isVisibleInFrustum(&aabb);
+//            if(!isVisible)
+//            {
+//                eraseBullet(bullet);
+//                continue;
+//            }
+        }
+        
+    }
+    
 }
 void MapMgrs::updatePlayers(float delta)
 {
@@ -950,4 +992,50 @@ void MapMgrs::showTips(const cocos2d::Vec2& pos, const std::string& tips)
     tipData.m_pDes = tips;
 //    CCLOG("pos : %f, %f; ", getNilo()->getPosition().x, getNilo()->getPosition().y);
     cocos2d::Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_MAIN_TIPS,(void*)&tipData);
+}
+Bullet* MapMgrs::createBullet(Bullet::BulletType btype, Bullet::ActorBulletType atype,cocos2d::Vec2 pt,cocos2d::Vec2 direction)
+{
+    
+    Bullet* bullet = ActorFactory::getInstance()->createBullet(btype, atype);
+    if (!bullet)
+        return nullptr;
+    
+    bullet->setPosition(pt);
+    bullet->setDirection(direction);
+    m_pBulletList.pushBack(bullet);
+    m_pBulletLayer->addChild(bullet);
+    
+    bullet->setCameraMask((unsigned short)CameraFlag::USER1);
+    return bullet;
+}
+void MapMgrs::eraseBullet(Bullet* bullet)
+{
+    if(!bullet)
+        return;
+    m_pBulletList.eraseObject(bullet);
+    bullet->removeFromParentAndCleanup(true);
+    bullet = nullptr;
+}
+void MapMgrs::eraseBullet(int i)
+{
+    auto bullet = m_pBulletList.at(i);
+    m_pBulletList.erase(i);
+    bullet->removeFromParentAndCleanup(true);
+    bullet = nullptr;
+}
+
+void MapMgrs::eraseEnemy(Enemy* enemy)
+{
+    if(!enemy)
+        return;
+    m_pMonsterList.eraseObject(enemy);
+    enemy->removeFromParentAndCleanup(true);
+    enemy = nullptr;
+}
+void MapMgrs::eraseEnemy(int i)
+{
+    auto enemy = m_pMonsterList.at(i);
+    m_pMonsterList.erase(i);
+    enemy->removeFromParentAndCleanup(true);
+    enemy = nullptr;
 }
