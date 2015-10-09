@@ -524,8 +524,10 @@ void Sprite3D::createNode(NodeData* nodedata, Node* root, const MaterialDatas& m
                                 if(tex)
                                 {
                                     Texture2D::TexParams texParams;
-                                    texParams.minFilter = GL_LINEAR;
-                                    texParams.magFilter = GL_LINEAR;
+                                    ////lwwhb modify
+                                    texParams.minFilter = GL_NEAREST;
+                                    texParams.magFilter = GL_NEAREST;
+                                    ////
                                     texParams.wrapS = textureData->wrapS;
                                     texParams.wrapT = textureData->wrapT;
                                     tex->setTexParameters(texParams);

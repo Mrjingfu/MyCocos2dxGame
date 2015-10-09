@@ -16,7 +16,7 @@ class GroundGameUI : public cocos2d::Layer
 protected:
     GroundGameUI();
     virtual ~GroundGameUI();
-    bool init();
+    bool init() override;
 public:
     virtual void onEnter() override;
     virtual void onExit() override;
