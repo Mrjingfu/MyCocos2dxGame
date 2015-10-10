@@ -20,6 +20,7 @@ AttackEnemyState::~AttackEnemyState()
 }
 void AttackEnemyState::onEnter(Enemy *enemy)
 {
+    CCLOG("AttackEnemyState::onEnter");
     if(!enemy->getEnemySprite())
         return;
 
@@ -34,7 +35,7 @@ void AttackEnemyState::onEnter(Enemy *enemy)
         default:
             break;
     }
-    
+    CCLOG("action time:%f",action->getAnimation()->getDuration());
     enemy->getEnemySprite()->runAction(RepeatForever::create(action));
 
 }
@@ -43,15 +44,25 @@ void AttackEnemyState::update(Enemy *enemy, float delta)
     m_pDelayTime+=delta;
     Vec2 pt = enemy->getPosition();
     cocos2d::Rect box = enemy->getBoundingBox();
-    pt+= Vec2(box.getMaxX(), box.size.height*0.3);
-    if (m_pDelayTime>=1.0f) {
-        MapMgrs::getInstance()->createBullet(Bullet::BT_SIMPLE, Bullet::ActorBulletType::ABT_ENEMY, pt, Vec2::UNIT_X);
+
+    Vec2 rightpt = Vec2(box.getMaxX(), box.size.height*0.3) + pt;
+    Vec2 leftpt = Vec2(box.getMinX(), box.size.height*0.3)+ pt;
+    
+    if (m_pDelayTime>=enemy->getAttackAnimation()->getDuration()*0.5) {
+        if (enemy->getEnemyDirection() == Enemy::ED_LEFT) {
+            
+            MapMgrs::getInstance()->createBullet(Bullet::BT_SIMPLE, Bullet::ActorBulletType::ABT_ENEMY, leftpt, Vec2(-1, 0),1.5f);
+        }else if(enemy->getEnemyDirection() == Enemy::ED_RIGHT){
+            
+            MapMgrs::getInstance()->createBullet(Bullet::BT_SIMPLE, Bullet::ActorBulletType::ABT_ENEMY, rightpt, Vec2::UNIT_X,1.5f);
+        }
         enemy->setEnemyState(Enemy::EnemyStateType::ES_IDLE);
     }
 }
 void AttackEnemyState::onExit(Enemy *enemy)
 {
+    CCLOG("AttackEnemyState::onExit");
     m_pDelayTime = 0.0f;
     if (enemy)
-        enemy->stopAllActions();
+        enemy->getEnemySprite()->stopAllActions();
 }

@@ -12,6 +12,7 @@
 #include "QuestionMark.h"
 #include "ExcalmationMark.h"
 #include "PatrolEnemy.h"
+#include "AttackPatrolEnemy.h"
 #include "AttackEnemy.h"
 USING_NS_CC;
 
@@ -117,17 +118,20 @@ Enemy* ActorFactory::createEnemy(Enemy::EnemyType type)
     Enemy* enemy = nullptr;
     switch (type) {
         case Enemy::ET_PATROL:
-            enemy = new(std::nothrow) PatrolEnemy();
-            if (enemy && enemy->loadModel() && enemy->loadAnimations())
             {
-                enemy->autorelease();
-                enemy->setScale(0.6);
-                enemy->setEnemyState(Enemy::EnemyStateType::ES_PATROL);
-                
-            }else
-                CC_SAFE_RELEASE_NULL(enemy);
+                enemy = new(std::nothrow) PatrolEnemy();
+                if (enemy && enemy->loadModel() && enemy->loadAnimations())
+                {
+                    enemy->autorelease();
+                    enemy->setScale(0.6);
+                    enemy->setEnemyState(Enemy::EnemyStateType::ES_PATROL);
+                    
+                }else
+                    CC_SAFE_RELEASE_NULL(enemy);
+            }
             break;
         case Enemy::ET_ATTACK:
+        {
             enemy = new(std::nothrow) AttackEnemy();
             if (enemy && enemy->loadModel() && enemy->loadAnimations())
             {
@@ -137,14 +141,27 @@ Enemy* ActorFactory::createEnemy(Enemy::EnemyType type)
                 
             }else
                 CC_SAFE_RELEASE_NULL(enemy);
+        }
             break;
-
+        case Enemy::ET_ATTACK_PATROL:
+            {
+                enemy = new(std::nothrow) AttackPatrolEnemy();
+                if (enemy && enemy->loadModel() && enemy->loadAnimations())
+                {
+                    enemy->autorelease();
+                    enemy->setScale(0.6);
+                    enemy->setEnemyState(Enemy::EnemyStateType::ES_PATROL);
+                    
+                }else
+                    CC_SAFE_RELEASE_NULL(enemy);
+            }
+            break;
         default:
             break;
     }
     return enemy;
 }
-Bullet* ActorFactory::createBullet(Bullet::BulletType btype,Bullet::ActorBulletType atype)
+Bullet* ActorFactory::createBullet(Bullet::BulletType btype,Bullet::ActorBulletType atype,float speed)
 {
     Bullet* bullet = nullptr;
     switch (btype) {
@@ -153,6 +170,7 @@ Bullet* ActorFactory::createBullet(Bullet::BulletType btype,Bullet::ActorBulletT
             if (bullet&& bullet->loadModel() && bullet->loadAnimations()) {
                 bullet->setActorBulletType(atype);
                 bullet->autorelease();
+                bullet->setMaxXSpeed(speed);
             }else
                 CC_SAFE_RELEASE_NULL(bullet);
             break;

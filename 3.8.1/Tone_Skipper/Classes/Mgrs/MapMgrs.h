@@ -48,6 +48,8 @@ public:
     bool checkUsableItems(const cocos2d::Rect& rect, UsableItem::USABLE_ITEM_TYPE& type);
     bool checkInShadowRect(const cocos2d::Rect& rect, float& shadowHue);
     
+    
+    
     Player* getNilo() const { return m_pNilo; }
     Player* getPudge() const {return m_pPudge;}
     void showDebug(bool debug);
@@ -55,7 +57,7 @@ public:
     void hideCoverLayer();
     void showCoverLayer();
     
-    Bullet* createBullet(Bullet::BulletType btype,Bullet::ActorBulletType atype,cocos2d::Vec2 pt,cocos2d::Vec2 direction);
+    Bullet* createBullet(Bullet::BulletType btype,Bullet::ActorBulletType atype,cocos2d::Vec2 pt,cocos2d::Vec2 direction,float speed);
     
     void eraseBullet(Bullet* bullet);
     void eraseBullet(int i);

@@ -6,20 +6,20 @@
 //
 //
 
-#include "AttackEnemy.h"
+#include "AttackPatrolEnemy.h"
 #include "EnemyState.h"
 USING_NS_CC;
-AttackEnemy::AttackEnemy()
+AttackPatrolEnemy::AttackPatrolEnemy()
 {
-    m_EnemyType = ET_ATTACK;
+    m_EnemyType = ET_ATTACK_PATROL;
 }
-AttackEnemy::~AttackEnemy()
+AttackPatrolEnemy::~AttackPatrolEnemy()
 {
     
 }
 
 
-bool AttackEnemy::loadModel()
+bool AttackPatrolEnemy::loadModel()
 {
     bool ret = true;
     cocos2d::SpriteFrameCache::getInstance()->addSpriteFramesWithFile("shooter.plist");
@@ -37,11 +37,11 @@ bool AttackEnemy::loadModel()
     return ret;
     return true;
 }
-bool AttackEnemy::loadAnimations()
+bool AttackPatrolEnemy::loadAnimations()
 {
     bool ret = true;
     ///superjump
-    m_pIdleAnimation = cocos2d::AnimationCache::getInstance()->getAnimation("atckEnemy_idle");
+    m_pIdleAnimation = cocos2d::AnimationCache::getInstance()->getAnimation("shooter_patrol_idle");
     if(!m_pIdleAnimation)
     {
         Vector<SpriteFrame*> arrayOfAnimation;
@@ -55,12 +55,12 @@ bool AttackEnemy::loadAnimations()
             ret = false;
         
         m_pIdleAnimation->setDelayPerUnit(0.2f / 1.0f);
-        AnimationCache::getInstance()->addAnimation(m_pIdleAnimation, "atckEnemy_idle");
+        AnimationCache::getInstance()->addAnimation(m_pIdleAnimation, "shooter_patrol_idle");
     }
     
     
  
-    m_pPatrolAnimation = cocos2d::AnimationCache::getInstance()->getAnimation("atckEnemy_walk");
+    m_pPatrolAnimation = cocos2d::AnimationCache::getInstance()->getAnimation("shooter_patrol_walk");
     if(!m_pPatrolAnimation)
     {
         cocos2d::Vector<cocos2d::SpriteFrame*> arrayOfAnimation;
@@ -76,10 +76,10 @@ bool AttackEnemy::loadAnimations()
         if(!m_pPatrolAnimation)
             ret = false;
         m_pPatrolAnimation->setDelayPerUnit(0.3f / 2.0f);
-        cocos2d::AnimationCache::getInstance()->addAnimation(m_pPatrolAnimation, "atckEnemy_walk");
+        cocos2d::AnimationCache::getInstance()->addAnimation(m_pPatrolAnimation, "shooter_patrol_walk");
     }
     
-    m_pAttackAnimation = cocos2d::AnimationCache::getInstance()->getAnimation("atckEnemy_attack");
+    m_pAttackAnimation = cocos2d::AnimationCache::getInstance()->getAnimation("shooter_patrol_attack");
     if(!m_pAttackAnimation)
     {
         cocos2d::Vector<cocos2d::SpriteFrame*> arrayOfAnimation;
@@ -95,20 +95,8 @@ bool AttackEnemy::loadAnimations()
         if(!m_pAttackAnimation)
             ret = false;
         m_pAttackAnimation->setDelayPerUnit(0.3f / 5.0f);
-        cocos2d::AnimationCache::getInstance()->addAnimation(m_pAttackAnimation, "atckEnemy_attack");
+        cocos2d::AnimationCache::getInstance()->addAnimation(m_pAttackAnimation, "shooter_patrol_attack");
     }
     
     return true;
-}
-void AttackEnemy::onLand()
-{
-    
-}
-void AttackEnemy::onCollision()
-{
-    
-}
-void AttackEnemy::onAir()
-{
-    
 }

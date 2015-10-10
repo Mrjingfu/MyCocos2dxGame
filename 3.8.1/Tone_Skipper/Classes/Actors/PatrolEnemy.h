@@ -15,7 +15,7 @@ class PatrolEnemy:public Enemy
 {
 public:
     PatrolEnemy();
-    ~PatrolEnemy();
+    virtual ~PatrolEnemy();
 public:
 
     virtual bool loadModel() override;

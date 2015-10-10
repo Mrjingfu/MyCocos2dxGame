@@ -36,7 +36,7 @@ public:
     
     void setActorBulletType(ActorBulletType type){m_pActorBulletType = type;}
     ActorBulletType getActorBulletType() const{return m_pActorBulletType;}
-    
+     virtual cocos2d::Rect getBoundingBox() const override;
 private:
     BulletType          m_pBulletType;
     ActorBulletType     m_pActorBulletType;

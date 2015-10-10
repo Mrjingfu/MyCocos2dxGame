@@ -35,7 +35,6 @@ bool PatrolEnemy::loadModel()
     showDebug(true);
 #endif
     return ret;
-    return true;
 }
 bool PatrolEnemy::loadAnimations()
 {
@@ -75,7 +74,7 @@ bool PatrolEnemy::loadAnimations()
         m_pPatrolAnimation = cocos2d::Animation::createWithSpriteFrames(arrayOfAnimation);
         if(!m_pPatrolAnimation)
             ret = false;
-        m_pPatrolAnimation->setDelayPerUnit(0.3f / 5.0f);
+        m_pPatrolAnimation->setDelayPerUnit(0.3f / 2.0f);
         cocos2d::AnimationCache::getInstance()->addAnimation(m_pPatrolAnimation, "skull_walk");
     }
     return true;

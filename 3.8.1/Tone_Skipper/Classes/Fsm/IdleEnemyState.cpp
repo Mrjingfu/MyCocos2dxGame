@@ -19,6 +19,7 @@ IdleEnemyState::~IdleEnemyState()
 }
 void IdleEnemyState::onEnter(Enemy *enemy)
 {
+    CCLOG("IdleEnemyState::onEnter");
     if(!enemy->getEnemySprite())
         return;
 
@@ -40,16 +41,39 @@ void IdleEnemyState::onEnter(Enemy *enemy)
 }
 void IdleEnemyState::update(Enemy *enemy, float delta)
 {
-    m_pDelayTime+=delta;
-    if (m_pDelayTime>2.0f) {
-        CCLOG("m_pDelayTime:%f",m_pDelayTime);
-        enemy->setEnemyState(Enemy::EnemyStateType::ES_ATTACK);
+    switch (enemy->getEnemyType()) {
+        case Enemy::ET_ATTACK_PATROL:
+            updateAttackPatrol(enemy, delta);
+            break;
+        case Enemy::ET_ATTACK:
+            updateAttack(enemy, delta);
+        default:
+            break;
     }
     
 }
+void IdleEnemyState::updateAttack(Enemy *enemy, float delta)
+{
+    m_pDelayTime+=delta;
+    if (m_pDelayTime>1.0f) {
+        CCLOG("m_pDelayTime:%f",m_pDelayTime);
+        enemy->setEnemyState(Enemy::EnemyStateType::ES_ATTACK);
+        m_pDelayTime = 0.0f;
+    }
+}
+void IdleEnemyState::updateAttackPatrol(Enemy *enemy,float delta)
+{
+    m_pDelayTime+=delta;
+    if (m_pDelayTime>1.0f) {
+        CCLOG("m_pDelayTime:%f",m_pDelayTime);
+        enemy->setEnemyState(Enemy::EnemyStateType::ES_PATROL);
+        m_pDelayTime = 0.0f;
+    }
+}
 void IdleEnemyState::onExit(Enemy *enemy)
 {
+    CCLOG("IdleEnemyState::onExit");
     if (enemy)
-        enemy->stopAllActions();
+        enemy->getEnemySprite()->stopAllActions();
     m_pDelayTime = 0.0f;
 }

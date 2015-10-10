@@ -20,7 +20,11 @@ public:
     virtual void update(Enemy *,float delta)  ;
     virtual void onExit(Enemy*);
 private:
-    void updateNormalSkull(Enemy *,float delta);
+    void updatePatrol(Enemy *,float delta);
+    void updateAttackPatrol(Enemy *,float delta);
+private:
+    float m_pDelayTime;
+     cocos2d::Vec2 m_Initpt;
 };
 
 #endif /* WalkState_hpp */

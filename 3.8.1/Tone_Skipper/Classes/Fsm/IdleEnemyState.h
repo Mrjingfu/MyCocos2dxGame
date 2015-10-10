@@ -21,7 +21,10 @@ public:
     virtual void update(Enemy *,float delta)  ;
     virtual void onExit(Enemy*);
 private:
+    void updateAttackPatrol(Enemy *,float delta);
+    void updateAttack(Enemy *,float delta);
     float m_pDelayTime;
+   
 };
 
 #endif /* IdleEnemyState_hpp */

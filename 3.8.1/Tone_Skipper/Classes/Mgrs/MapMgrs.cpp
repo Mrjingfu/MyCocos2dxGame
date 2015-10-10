@@ -456,6 +456,7 @@ bool MapMgrs::checkInShadowRect(const cocos2d::Rect& rect, float& shadowHue)
     }
     return ret;
 }
+
 void MapMgrs::showDebug(bool debug)
 {
     if(!m_pMainLayer)
@@ -941,15 +942,23 @@ void MapMgrs::updateBullet(float delta)
         {
             bullet->update(delta);
             
-//            Vec3 min = Vec3(-16.0f, -16.0f, -0.5f) + bullet->getPosition3D();
-//            Vec3 max = Vec3(16.0f, 16.0f, 0.5f) + bullet->getPosition3D();
-//            AABB aabb = AABB(min, max);
-//            bool isVisible = m_pMainCamera->isVisibleInFrustum(&aabb);
-//            if(!isVisible)
-//            {
-//                eraseBullet(bullet);
-//                continue;
-//            }
+            cocos2d::Rect rect = bullet->getBoundingBox();
+            Vec3 min = Vec3(-rect.size.width, -rect.size.height, -0.5f) + bullet->getPosition3D();
+            Vec3 max = Vec3(rect.size.width, rect.size.height, 0.5f) + bullet->getPosition3D();
+            AABB aabb = AABB(min, max);
+            bool isVisible = m_pMainCamera->isVisibleInFrustum(&aabb);
+            if(!isVisible)
+            {
+                CCLOG("m_pBulletList:%ld",m_pBulletList.size());
+                eraseBullet(bullet);
+                continue;
+            }
+            Vec2 velocity =bullet->getVelocity();
+            rect = bullet->getBoundingBox();
+            rect.origin +=bullet->getPosition();
+            
+            
+
         }
         
     }
@@ -993,10 +1002,10 @@ void MapMgrs::showTips(const cocos2d::Vec2& pos, const std::string& tips)
 //    CCLOG("pos : %f, %f; ", getNilo()->getPosition().x, getNilo()->getPosition().y);
     cocos2d::Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_MAIN_TIPS,(void*)&tipData);
 }
-Bullet* MapMgrs::createBullet(Bullet::BulletType btype, Bullet::ActorBulletType atype,cocos2d::Vec2 pt,cocos2d::Vec2 direction)
+Bullet* MapMgrs::createBullet(Bullet::BulletType btype, Bullet::ActorBulletType atype,cocos2d::Vec2 pt,cocos2d::Vec2 direction,float speed)
 {
     
-    Bullet* bullet = ActorFactory::getInstance()->createBullet(btype, atype);
+    Bullet* bullet = ActorFactory::getInstance()->createBullet(btype, atype,speed);
     if (!bullet)
         return nullptr;
     

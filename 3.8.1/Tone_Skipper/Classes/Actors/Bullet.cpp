@@ -22,7 +22,9 @@ void Bullet::update(float delta)
     cocos2d::Vec2 pos = getPosition();
     cocos2d::Vec2 newPos = pos + m_Velocity;
     setPosition(newPos);
-
+//#if COCOS2D_DEBUG
+//    showDebug(true);
+//#endif
 }
 
 bool Bullet::loadModel()
@@ -44,4 +46,8 @@ bool Bullet::loadAnimations()
 void Bullet::onLand()
 {
     
+}
+ cocos2d::Rect  Bullet::getBoundingBox() const
+{
+    return m_pSprite->getBoundingBox();
 }

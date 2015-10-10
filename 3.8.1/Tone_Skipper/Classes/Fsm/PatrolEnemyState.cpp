@@ -12,6 +12,7 @@ USING_NS_CC;
 PatrolEnemyState::PatrolEnemyState()
 {
     m_pEnemyStateType = Enemy::EnemyStateType::ES_PATROL;
+    m_pDelayTime = 0.0f;
 }
 PatrolEnemyState::~PatrolEnemyState()
 {
@@ -40,7 +41,7 @@ void PatrolEnemyState::onEnter(Enemy * enemy)
         default:
             break;
     }
-    
+    m_Initpt = enemy->getPosition();
     enemy->getEnemySprite()->runAction(RepeatForever::create(action));
 }
 void PatrolEnemyState::update(Enemy *enemy, float delta)
@@ -48,19 +49,30 @@ void PatrolEnemyState::update(Enemy *enemy, float delta)
     
     switch (enemy->getEnemyType()) {
         case Enemy::EnemyType::ET_PATROL:
-            updateNormalSkull(enemy,delta);
+            updatePatrol(enemy,delta);
             break;
-        
+        case Enemy::EnemyType::ET_ATTACK_PATROL:
+            updateAttackPatrol(enemy,delta);
+            break;
         default:
             break;
     }
    
 }
-void PatrolEnemyState::updateNormalSkull(Enemy *enemy, float delta)
+void PatrolEnemyState::updatePatrol(Enemy *enemy, float delta)
 {
     Vec2 velocity = enemy->getVelocity();
     Vec2 position = enemy->getPosition();
     enemy->setPosition(position + Vec2(velocity.x, 0));
+}
+void PatrolEnemyState::updateAttackPatrol(Enemy *enemy, float delta)
+{
+    Vec2 velocity = enemy->getVelocity();
+    Vec2 position = enemy->getPosition();
+    enemy->setPosition(position + Vec2(velocity.x, 0));
+    if (m_Initpt.distanceSquared(enemy->getPosition()) > 1600) {
+        enemy->setEnemyState(Enemy::EnemyStateType::ES_ATTACK);
+    }
 }
 void PatrolEnemyState::onExit(Enemy *enemy)
 {
