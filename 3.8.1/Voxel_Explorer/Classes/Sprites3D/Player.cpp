@@ -90,7 +90,7 @@ void Player::rotateToLeft()
 {
     if(getActionByTag(1))
         return;
-    EaseSineIn* rotateTo = EaseSineIn::create(RotateTo::create(0.2f, Vec3(0,90,0)));
+    EaseSineIn* rotateTo = EaseSineIn::create(RotateTo::create(0.2f, Vec3(0,-90,0)));
     rotateTo->setTag(1);
     this->runAction(rotateTo);
     
@@ -100,7 +100,7 @@ void Player::rotateToRight()
 {
     if(getActionByTag(2))
         return;
-    EaseSineIn* rotateTo = EaseSineIn::create(RotateTo::create(0.2f, Vec3(0,-90,0)));
+    EaseSineIn* rotateTo = EaseSineIn::create(RotateTo::create(0.2f, Vec3(0,90,0)));
     rotateTo->setTag(2);
     this->runAction(rotateTo);
     m_dir = PD_RIGHT;
@@ -109,7 +109,7 @@ void Player::rotateToForward()
 {
     if(getActionByTag(3))
         return;
-    EaseSineIn* rotateTo = EaseSineIn::create(RotateTo::create(0.2f, Vec3(0,0,0)));
+    EaseSineIn* rotateTo = EaseSineIn::create(RotateTo::create(0.2f, Vec3(0,180,0)));
     rotateTo->setTag(3);
     this->runAction(rotateTo);
     m_dir = PD_FORWARD;
@@ -119,7 +119,7 @@ void Player::rotateToBack()
 {
     if(getActionByTag(4))
         return;
-    EaseSineIn* rotateTo = EaseSineIn::create(RotateTo::create(0.2f, Vec3(0,-180,0)));
+    EaseSineIn* rotateTo = EaseSineIn::create(RotateTo::create(0.2f, Vec3(0,0,0)));
     rotateTo->setTag(4);
     this->runAction(rotateTo);
     m_dir = PD_BACK;
@@ -129,12 +129,12 @@ void Player::onEnterIdle()
 }
 void Player::onEnterPrepareToJump()
 {
-    EaseSineOut* scaleTo = EaseSineOut::create(ScaleTo::create(0.2f, 0.5f, 0.4f, 0.5f));
+    EaseSineOut* scaleTo = EaseSineOut::create(ScaleTo::create(0.2f, 1.0f, 0.8f, 1.0f));
     this->runAction(scaleTo);
 }
 void Player::onEnterJumpLocal()
 {
-    ScaleTo* scaleTo = ScaleTo::create(0.1f, 0.5f, 0.5f, 0.5f);
+    ScaleTo* scaleTo = ScaleTo::create(0.1f, 1.0f, 1.0f, 1.0f);
     EaseSineOut* moveUp = EaseSineOut::create(MoveTo::create(0.1f, Vec3(getPositionX(), getPositionY() + TerrainTile::CONTENT_SCALE*0.5f, getPositionZ())));
     EaseSineOut* moveDown = EaseSineOut::create(MoveTo::create(0.1f, Vec3(getPositionX(), getPositionY(), getPositionZ())));
     Sequence* sequenceJump = Sequence::create(moveUp, moveDown, NULL);
@@ -148,21 +148,21 @@ void Player::onEnterJumpMove()
     Vec3 dir = Vec3::ZERO;
     switch (m_dir) {
         case PD_FORWARD:
-            dir = Vec3(0, 0, -TerrainTile::CONTENT_SCALE*0.5f);
+            dir = Vec3(0, 0, -TerrainTile::CONTENT_SCALE);
             break;
         case PD_BACK:
-            dir = Vec3(0, 0, TerrainTile::CONTENT_SCALE*0.5f);
+            dir = Vec3(0, 0, TerrainTile::CONTENT_SCALE);
             break;
         case PD_LEFT:
-            dir = Vec3(-TerrainTile::CONTENT_SCALE*0.5f, 0, 0);
+            dir = Vec3(-TerrainTile::CONTENT_SCALE, 0, 0);
             break;
         case PD_RIGHT:
-            dir = Vec3(TerrainTile::CONTENT_SCALE*0.5f, 0, 0);
+            dir = Vec3(TerrainTile::CONTENT_SCALE, 0, 0);
             break;
         default:
             break;
     }
-    ScaleTo* scaleTo = ScaleTo::create(0.1f, 0.5f, 0.5f, 0.5f);
+    ScaleTo* scaleTo = ScaleTo::create(0.1f, 1.0f, 1.0f, 1.0f);
     EaseSineOut* moveUp = EaseSineOut::create(MoveTo::create(0.1f, Vec3(getPositionX(), getPositionY() + TerrainTile::CONTENT_SCALE*0.5f, getPositionZ()) + dir));
     EaseSineOut* moveDown = EaseSineOut::create(MoveTo::create(0.1f, Vec3(getPositionX(), getPositionY(), getPositionZ()) + dir));
     Sequence* sequenceJump = Sequence::create(moveUp, moveDown, NULL);

@@ -16,6 +16,7 @@ class Door : public cocos2d::Ref
 public:
     typedef enum{
         DT_EMPTY,
+        DT_PASSAGE,
         DT_TUNNEL,
         DT_STANDARD,
         DT_UNLOCKED,

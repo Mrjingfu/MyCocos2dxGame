@@ -10,5 +10,5 @@
 USING_NS_CC;
 TombLevel::TombLevel()
 {
-    m_BoundaryType = LBT_CHASM;
+    m_FeelingType = LFT_CHASM;
 }

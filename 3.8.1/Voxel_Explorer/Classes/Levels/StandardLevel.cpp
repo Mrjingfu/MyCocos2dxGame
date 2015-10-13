@@ -101,31 +101,59 @@ bool StandardLevel::build()
 //        specials.remove( Room.Type.WEAK_FLOOR );
 //    }
     assignAreasType();
-    generateTerrain();  ///生成地表
-//    paintWater();
-//    paintGrass();
-//    
-//    placeTraps();
+    generate();
     
-    generateSpawnPoint(); ///生成出生点
 #if COCOS2D_DEBUG
     showMap(true);
 #endif
     return true;
 }
-void StandardLevel::decorate()
+bool StandardLevel::createRenderObjs()
 {
+    if(!VoxelExplorer::getInstance()->getTerrainTilesLayer())
+        return false;
+    for (int i = 0; i<m_nHeight; i++) {
+        for (int j = 0; j<m_nWidth; j++) {
+            int index = i*m_nWidth+j;
+            TileInfo info = m_Map[index];
+            if(info.m_Type == TerrainTile::TT_CHASM)
+                continue;
+            TerrainTile* tile = TerrainTile::create(info.m_Type);
+            if(!tile)
+                return false;
+            tile->setPosition3D(Vec3(j*TerrainTile::CONTENT_SCALE, -TerrainTile::CONTENT_SCALE, -i*TerrainTile::CONTENT_SCALE));
+            VoxelExplorer::getInstance()->getTerrainTilesLayer()->addChild(tile);
+            
+            switch (info.m_Type) {
+                case TerrainTile::TT_WALL:
+                    {
+                        tile->setPosition3D(Vec3(j*TerrainTile::CONTENT_SCALE, -TerrainTile::CONTENT_SCALE*0.5f, -i*TerrainTile::CONTENT_SCALE));
+                    }
+                    break;
+                default:
+                    break;
+            }
+
+        }
+    }
+    return true;
 }
-void StandardLevel::createMobs()
+bool StandardLevel::decorate()
 {
+    return true;
 }
-void StandardLevel::createItems()
+bool StandardLevel::createMobs()
 {
+    return true;
+}
+bool StandardLevel::createItems()
+{
+    return true;
 }
 
 bool StandardLevel::initAreas()
 {
-    splitArea( cocos2d::Rect( 0, 0, WIDTH - 1, HEIGHT - 1 ) );
+    splitArea( cocos2d::Rect( 0, 0, m_nWidth - 1, m_nHeight - 1 ) );
     
     if (m_Areas.size() < 8) {
         return false;
@@ -198,7 +226,7 @@ void StandardLevel::assignAreasType()
             {
                 if(m_SpecailAreas.size() > 0 && area->getRect().size.width > 3 && area->getRect().size.height > 3 && cocos2d::random(0, specialRooms*specialRooms + 1) == 0)
                 {
-                    area->setAreaType(Area::AT_SPECIAL_SECRET);
+                    area->setAreaType(Area::AT_SHOP);
                     specialRooms++;
                 }
                 else if(cocos2d::random(0, 1) == 0)
@@ -222,7 +250,7 @@ void StandardLevel::assignAreasType()
             }
         }
     }
-    ///生成隧道
+    ///生成通道
     int count = 0;
     for (PathGraphNode* node : m_Areas) {
         Area* area = static_cast<Area*>(node);
@@ -243,17 +271,24 @@ void StandardLevel::assignAreasType()
         }
     }
     
-    ///保证隧道至少4条
+    ///保证标准区域至少4个
     while (count < 4) {
         int rand = cocos2d::random(0, (int)(m_Areas.size())-1);
         Area* area = static_cast<Area*>(m_Areas[rand]);
-        if (area != nullptr) {
-            area->setAreaType(Area::AT_TUNNEL);
+        if (area != nullptr && area->getAreaType() == Area::AT_TUNNEL) {
+            area->setAreaType(Area::AT_STANDARD);
             count++;
         }
     }
+    
+//    ///替换隧道为通道
+//    for (PathGraphNode* node : m_Areas) {
+//        Area* area = static_cast<Area*>(node);
+//        if(area && area->getAreaType() == Area::AT_TUNNEL)
+//            area->setAreaType(Area::AT_PASSAGE);
+//    }
 }
-void StandardLevel::generateTerrain()
+void StandardLevel::generate()
 {
     for (PathGraphNode* node : m_Areas) {
         Area* area = static_cast<Area*>(node);
@@ -262,13 +297,11 @@ void StandardLevel::generateTerrain()
             if(area->getAreaType() != Area::AT_UNKNOWN)
             {
                 placeDoors(area);
-                generateTerrainTiles(area);
+                area->generate(this);
             }
             else
             {
-                if (m_BoundaryType == LBT_CHASM && cocos2d::random(0, 1) == 0) {
-                    generateWalls(area);
-                }
+                ///不绘制，以后有需要可以对UNKNOWN类型进行填充
             }
         }
     }
@@ -277,6 +310,8 @@ void StandardLevel::generateTerrain()
         if(area)
             generateDoors(area);
     }
+    placeTraps();           ///放置陷阱
+    generateSpawnPoint();   ///生成出生点
 }
 
 void StandardLevel::showMap(bool show)
@@ -287,114 +322,67 @@ void StandardLevel::showMap(bool show)
         return;
     if(!show)
     {
-        if(m_pDebugDrawNode)
+        if(m_pMapDrawNode)
         {
-            m_pDebugDrawNode->clear();
-            m_pDebugDrawNode->removeFromParentAndCleanup(true);
-            m_pDebugDrawNode = nullptr;
+            m_pMapDrawNode->clear();
+            m_pMapDrawNode->removeFromParentAndCleanup(true);
+            m_pMapDrawNode = nullptr;
         }
     }
     else
     {
-        m_pDebugDrawNode = DrawNode::create();
-        VoxelExplorer::getInstance()->getMainLayer()->addChild(m_pDebugDrawNode);
-        m_pDebugDrawNode->clear();
-        m_pDebugDrawNode->setCameraMask((unsigned int)CameraFlag::USER2);
-        m_pDebugDrawNode->setScale(4);
-        m_pDebugDrawNode->setPosition(160,240);
+        if(!m_pMapDrawNode)
+        {
+            m_pMapDrawNode = DrawNode::create();
+            VoxelExplorer::getInstance()->getMainLayer()->addChild(m_pMapDrawNode);
+            m_pMapDrawNode->setCameraMask((unsigned int)CameraFlag::USER2);
+            m_pMapDrawNode->setScale(10);
+        }
+        m_pMapDrawNode->clear();
         
-        ///绘制地面
-        for (PathGraphNode* node : m_Areas) {
-            Area* area = static_cast<Area*>(node);
-            if(area)
-            {
-                cocos2d::Rect rect = area->getRect();
-                
+        for (int i = 0; i<m_nHeight; i++) {
+            for (int j = 0; j<m_nWidth; j++) {
+                int index = i*m_nWidth+j;
+                TileInfo info = m_Map[index];
+                cocos2d::Rect rect(j,i,1,1);
                 Vec2 vertices[4] = {
                     Vec2( rect.getMinX(), rect.getMinY() ),
                     Vec2( rect.getMaxX(), rect.getMinY() ),
                     Vec2( rect.getMaxX(), rect.getMaxY() ),
                     Vec2( rect.getMinX(), rect.getMaxY() ),
                 };
-                switch (area->getAreaType()) {
-                    case Area::AT_UNKNOWN:
-                    case Area::AT_MAX:
+                
+                switch (info.m_Type) {
+                    case TerrainTile::TT_STANDARD:
+                        if(info.m_AreaType == Area::AT_SHOP)
+                            m_pMapDrawNode->drawPolygon(vertices, 4, Color4F::MAGENTA, 0, Color4F(0,0,0,0));
+                        else
+                            m_pMapDrawNode->drawPolygon(vertices, 4, Color4F::WHITE, 0, Color4F(0,0,0,0));
                         break;
-                    case Area::AT_STANDARD:
-                    case Area::AT_ENTRANCE:
-                    case Area::AT_EXIT:
-                        m_pDebugDrawNode->drawPolygon(vertices, 4, Color4F::GRAY, 0.05f, Color4F::RED);
+                    case TerrainTile::TT_WALL:
+                        m_pMapDrawNode->drawPolygon(vertices, 4, Color4F::GRAY, 0, Color4F(0,0,0,0));
                         break;
-                    case Area::AT_PASSAGE:
-                    case Area::AT_TUNNEL:
-                        m_pDebugDrawNode->drawPolygon(vertices, 4, Color4F::GREEN, 0.05f, Color4F::RED);
+                    case TerrainTile::TT_ENTRANCE:
+                        m_pMapDrawNode->drawPolygon(vertices, 4, Color4F::YELLOW, 0, Color4F(0,0,0,0));
                         break;
-                    case Area::AT_SPECIAL_SECRET:
-                        m_pDebugDrawNode->drawPolygon(vertices, 4, Color4F::MAGENTA, 0.05f, Color4F::RED);
+                    case TerrainTile::TT_EXIT:
+                        m_pMapDrawNode->drawPolygon(vertices, 4, Color4F::GREEN, 0, Color4F(0,0,0,0));
                         break;
-                    default:
-                        m_pDebugDrawNode->drawPoly(vertices, 4, true, Color4F::RED);
+                    case TerrainTile::TT_TUNNEL:
+                        m_pMapDrawNode->drawPolygon(vertices, 4, Color4F::ORANGE, 0, Color4F(0,0,0,0));
                         break;
-                }
-            }
-        }
-        
-        ///绘制关键点
-        for (PathGraphNode* node : m_Areas) {
-            Area* area = static_cast<Area*>(node);
-            if(area)
-            {
-                switch (area->getAreaType()) {
-                    case Area::AT_ENTRANCE:
-                        m_pDebugDrawNode->drawDot(area->getPos(), 1.0f, Color4F::YELLOW);
+                    case TerrainTile::TT_DOOR:
+                        m_pMapDrawNode->drawPolygon(vertices, 4, Color4F::BLUE, 0, Color4F(0,0,0,0));
                         break;
-                    case Area::AT_EXIT:
-                        m_pDebugDrawNode->drawDot(area->getPos(), 1.0f, Color4F::GREEN);
+                    case TerrainTile::TT_LOCKED_DOOR:
+                        m_pMapDrawNode->drawPolygon(vertices, 4, Color4F::RED, 0, Color4F(0,0,0,0));
                         break;
                     default:
                         break;
                 }
                 
-                Door* door = area->getEntrance();
-                if(door)
-                    m_pDebugDrawNode->drawDot(door->getPos(), 0.5f, Color4F::BLUE);
             }
         }
-        
-//        ///绘制路径
-//        for (PathGraphNode* node : m_Areas) {
-//            Area* area = static_cast<Area*>(node);
-//            if(area)
-//            {
-//                cocos2d::Rect rect = area->getRect();
-//                
-//                Vec2 vertices[4] = {
-//                    Vec2( rect.getMinX(), rect.getMinY() ),
-//                    Vec2( rect.getMaxX(), rect.getMinY() ),
-//                    Vec2( rect.getMaxX(), rect.getMaxY() ),
-//                    Vec2( rect.getMinX(), rect.getMaxY() ),
-//                };
-//                m_pDebugDrawNode->drawPolygon(vertices, 4, Color4F(1,0,0,node->getWeight()*30), 0.05f, Color4F::RED);
-//            }
-//        }
-    }
-}
-void StandardLevel::generateTerrainTiles(Area* area)
-{
-    if(!area)
-        return;
-    if(VoxelExplorer::getInstance()->getTerrainTilesLayer())
-    {
-        cocos2d::Rect rect = area->getRect();
-        Area::AREA_TYPE type = area->getAreaType();
-        for(int i = 0; i<rect.size.width; i++)
-            for (int j = 0; j<rect.size.height; j++) {
-                TerrainTile* tile = TerrainTile::create(TerrainTile::TT_STANDARD);
-                if(!tile)
-                    return;
-                tile->setPosition3D(Vec3((rect.origin.x + i)*TerrainTile::CONTENT_SCALE, -TerrainTile::CONTENT_SCALE, -(rect.origin.y + j)*TerrainTile::CONTENT_SCALE));
-                VoxelExplorer::getInstance()->getTerrainTilesLayer()->addChild(tile);
-            }
     }
 }
 void StandardLevel::placeDoors(Area* area)
@@ -423,31 +411,46 @@ void StandardLevel::placeDoors(Area* area)
         }
     }
 }
-void StandardLevel::generateWalls(Area* area)
-{}
 void StandardLevel::generateDoors(Area* area)
 {
     if(!area)
         return;
     for (auto iter = area->getConnectedAreas().begin(); iter != area->getConnectedAreas().end(); iter++) {
         Area* areaOri = iter->first;
-        if(mergeStandardArea(area, areaOri))
+        if(mergeSmallIntersectArea(area, areaOri))
             continue;
         Door* door = iter->second;
-        if(areaOri)
+        if(door)
         {
-            int doorIndex = door->getPos().x + door->getPos().y * WIDTH;
+            int doorIndex = door->getPos().x + door->getPos().y * m_nWidth;
             switch (door->getDoorType()) {
                 case Door::DT_EMPTY:
+                case Door::DT_PASSAGE:
+                    m_Map[doorIndex].m_Type = TerrainTile::TT_STANDARD;
                     break;
-                    
+                case Door::DT_TUNNEL:
+                    m_Map[doorIndex].m_Type = TerrainTile::TT_TUNNEL;
+                    break;
+                case Door::DT_STANDARD:
+                    m_Map[doorIndex].m_Type = TerrainTile::TT_DOOR;
+                    break;
+                case Door::DT_UNLOCKED:
+                    m_Map[doorIndex].m_Type = TerrainTile::TT_DOOR;
+                    break;
+                case Door::DT_HIDDEN:
+                    m_Map[doorIndex].m_Type = TerrainTile::TT_SECRET_DOOR;
+                    break;
+                case Door::DT_BARRICADE:
+                case Door::DT_LOCKED:
+                    m_Map[doorIndex].m_Type = TerrainTile::TT_LOCKED_DOOR;
+                    break;
                 default:
                     break;
             }
         }
     }
 }
-bool StandardLevel::mergeStandardArea(Area* area, Area* other)
+bool StandardLevel::mergeSmallIntersectArea(Area* area, Area* other)
 {
     if(!area || !other)
         return false;
@@ -469,12 +472,12 @@ bool StandardLevel::mergeStandardArea(Area* area, Area* other)
             return false;
         }
         
-//        rect.top += 1;
-//        w.bottom -= 0;
-//        
-//        w.right++;
-//        
-//        Painter.fill( this, w.left, w.top, 1, w.height(), Terrain.EMPTY );
+        rect.origin.x += 0;
+        rect.origin.y += 1;
+        rect.size.width += 1;
+        rect.size.height -=1;
+       
+        generateTerrainTiles( rect.origin.x, rect.origin.y, 1, rect.size.height, TerrainTile::TT_STANDARD, area->getAreaType() );
         
     } else {
         
@@ -490,18 +493,56 @@ bool StandardLevel::mergeStandardArea(Area* area, Area* other)
             return false;
         }
         
-//        w.left += 1;
-//        w.right -= 0;
-//        
-//        w.bottom++;
-//        
-//        Painter.fill( this, w.left, w.top, w.width(), 1, Terrain.EMPTY );
+        rect.origin.x += 1;
+        rect.origin.y += 0;
+        rect.size.width -= 1;
+        rect.size.height +=1;
+        
+        generateTerrainTiles( rect.origin.x, rect.origin.y, rect.size.width, 1, TerrainTile::TT_STANDARD, area->getAreaType());
     }
     
     return true;
 }
+void StandardLevel::placeTraps()  ///放置陷阱
+{
+    int nTraps = 10;
+    if (VoxelExplorer::getInstance()->getDepth() > 1)
+        nTraps = m_Areas.size() + VoxelExplorer::getInstance()->getDepth();
+    
+    for (int i = 0; i<nTraps; i++) {
+        int pos = cocos2d::random(0, (int)m_Map.size());
+        if(m_Map[pos].m_Type == TerrainTile::TT_STANDARD)
+        {
+            int randType = cocos2d::random(0, 5);
+            switch (randType) {
+                case 0:
+                    m_Map[pos].m_Type = TerrainTile::TT_HIDE_TOXIC_TRAP;
+                    break;
+                case 1:
+                    m_Map[pos].m_Type = TerrainTile::TT_HIDE_FIRE_TRAP;
+                    break;
+                case 2:
+                    m_Map[pos].m_Type = TerrainTile::TT_HIDE_PARALYTIC_TRAP;
+                    break;
+                case 3:
+                    m_Map[pos].m_Type = TerrainTile::TT_HIDE_GRIPPING_TRAP;
+                    break;
+                case 4:
+                    m_Map[pos].m_Type = TerrainTile::TT_HIDE_SUMMONING_TRAP;
+                    break;
+                case 5:
+                    m_Map[pos].m_Type = TerrainTile::TT_HIDE_WEAK_TRAP;
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+}
 void StandardLevel::generateSpawnPoint()
 {
-    if(m_AreaEntrance)
-        m_spawnPoint = Vec2(m_AreaEntrance->getRect().getMidX()*TerrainTile::CONTENT_SCALE,(m_AreaEntrance->getRect().getMidY())*TerrainTile::CONTENT_SCALE);
+    for (int i = 0; i<m_Map.size()-1; i++) {
+        if(m_Map[i].m_Type == TerrainTile::TT_ENTRANCE)
+            m_spawnPoint = Vec2((m_Map[i].m_nX+1)*TerrainTile::CONTENT_SCALE,(m_Map[i].m_nY)*TerrainTile::CONTENT_SCALE);
+    }
 }

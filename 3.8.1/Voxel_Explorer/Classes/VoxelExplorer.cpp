@@ -84,7 +84,7 @@ void VoxelExplorer::cameraTrackPlayer()
     if(m_pPlayer && m_pMainCamera)
     {
         cocos2d::Size size = m_pPlayer->getContentSize();
-        Vec3 camPos = Vec3(m_pPlayer->getPositionX(),size.height*0.5,m_pPlayer->getPositionZ()) + Vec3(0, 5*TerrainTile::CONTENT_SCALE, 3*TerrainTile::CONTENT_SCALE );
+        Vec3 camPos = m_pPlayer->getPosition3D() + Vec3(0, 5*TerrainTile::CONTENT_SCALE, 4*TerrainTile::CONTENT_SCALE );
         Vec3 targetLookAt = m_pPlayer->getPosition3D() + Vec3(0,0.5f*TerrainTile::CONTENT_SCALE,0);
         EaseSineOut* moveTo = EaseSineOut::create(MoveTo::create(0.4f, camPos));
         m_pMainCamera->runAction(moveTo);
@@ -160,16 +160,15 @@ bool VoxelExplorer::createPlayer()
 {
     if(!m_pCurrentLevel || !m_p3DLayer)
         return false;
-    m_pPlayer = Player::create("girl1.c3b");
+    m_pPlayer = Player::create("chr_sword.c3b");
     if(!m_pPlayer)
         return false;
     cocos2d::Size size = m_pPlayer->getContentSize();
-    m_pPlayer->setPosition3D(Vec3(m_pCurrentLevel->getSpawnPoint().x, size.height*0.5, -m_pCurrentLevel->getSpawnPoint().y));
-    m_pPlayer->setScale(0.5f);
+    m_pPlayer->setPosition3D(Vec3(m_pCurrentLevel->getSpawnPoint().x, -0.5f*TerrainTile::CONTENT_SCALE, -m_pCurrentLevel->getSpawnPoint().y));
+    m_pPlayer->setRotation3D(Vec3(0,90,0));
     m_p3DLayer->addChild(m_pPlayer);
-    m_p3DLayer->setRotation3D(Vec3(0,90,0));
     
-    m_pMainCamera->setPosition3D(Vec3(m_pCurrentLevel->getSpawnPoint().x, size.height*0.5, -m_pCurrentLevel->getSpawnPoint().y) + Vec3(0, 5*TerrainTile::CONTENT_SCALE, 3*TerrainTile::CONTENT_SCALE ));
+    m_pMainCamera->setPosition3D(m_pPlayer->getPosition3D() + Vec3(0, 5*TerrainTile::CONTENT_SCALE, 4*TerrainTile::CONTENT_SCALE ));
     m_pMainCamera->lookAt(m_pPlayer->getPosition3D() + Vec3(0,0.5f*TerrainTile::CONTENT_SCALE,0));
     
     m_pPlayer->setState(Player::PS_IDLE);

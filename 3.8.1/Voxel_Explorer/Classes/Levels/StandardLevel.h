@@ -17,24 +17,23 @@ protected:
     StandardLevel();
     
     virtual bool build();
-    virtual void decorate();
-    virtual void createMobs();
-    virtual void createItems();
+    virtual bool createRenderObjs();
+    virtual bool decorate();
+    virtual bool createMobs();
+    virtual bool createItems();
     
     virtual bool initAreas();
     virtual void splitArea(const cocos2d::Rect& rect);
     virtual void assignAreasType();
     
-    virtual void generateTerrain();
+    virtual void generate();
     
     virtual void showMap(bool show);
-    
 private:
     void placeDoors(Area* area);
-    void generateTerrainTiles(Area* area);
-    void generateWalls(Area* area);
     void generateDoors(Area* area);
-    bool mergeStandardArea(Area* area, Area* other);
+    bool mergeSmallIntersectArea(Area* area, Area* other);
+    void placeTraps();  ///放置陷阱
     void generateSpawnPoint();
 protected:
     std::vector<PathGraphNode*>    m_Areas;
