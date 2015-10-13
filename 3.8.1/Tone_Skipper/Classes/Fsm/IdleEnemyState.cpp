@@ -55,7 +55,7 @@ void IdleEnemyState::update(Enemy *enemy, float delta)
 void IdleEnemyState::updateAttack(Enemy *enemy, float delta)
 {
     m_pDelayTime+=delta;
-    if (m_pDelayTime>1.0f) {
+    if (m_pDelayTime>1.5f) {
         CCLOG("m_pDelayTime:%f",m_pDelayTime);
         enemy->setEnemyState(Enemy::EnemyStateType::ES_ATTACK);
         m_pDelayTime = 0.0f;

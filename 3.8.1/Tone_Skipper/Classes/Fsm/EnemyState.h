@@ -19,7 +19,7 @@ public:
     virtual void onEnter(Enemy *) = 0;
     virtual void update(Enemy *,float delta) = 0 ;
     virtual void onExit(Enemy*) = 0;
-    virtual Enemy::EnemyStateType getEnemyStateType() {return m_pEnemyStateType;};
+    virtual Enemy::EnemyStateType getEnemyStateType() const {return m_pEnemyStateType;};
     
 protected:
     Enemy::EnemyStateType m_pEnemyStateType;

@@ -14,6 +14,7 @@
 #include "PatrolEnemy.h"
 #include "AttackPatrolEnemy.h"
 #include "AttackEnemy.h"
+#include "PursueEnemy.h"
 USING_NS_CC;
 
 ActorFactory* g_pActorFactoryInstance = nullptr;
@@ -123,7 +124,7 @@ Enemy* ActorFactory::createEnemy(Enemy::EnemyType type)
                 if (enemy && enemy->loadModel() && enemy->loadAnimations())
                 {
                     enemy->autorelease();
-                    enemy->setScale(0.6);
+                    enemy->setScale(0.5);
                     enemy->setEnemyState(Enemy::EnemyStateType::ES_PATROL);
                     
                 }else
@@ -136,7 +137,7 @@ Enemy* ActorFactory::createEnemy(Enemy::EnemyType type)
             if (enemy && enemy->loadModel() && enemy->loadAnimations())
             {
                 enemy->autorelease();
-                enemy->setScale(0.6);
+                enemy->setScale(0.5);
                 enemy->setEnemyState(Enemy::EnemyStateType::ES_IDLE);
                 
             }else
@@ -149,12 +150,25 @@ Enemy* ActorFactory::createEnemy(Enemy::EnemyType type)
                 if (enemy && enemy->loadModel() && enemy->loadAnimations())
                 {
                     enemy->autorelease();
-                    enemy->setScale(0.6);
+                    enemy->setScale(0.5);
                     enemy->setEnemyState(Enemy::EnemyStateType::ES_PATROL);
                     
                 }else
                     CC_SAFE_RELEASE_NULL(enemy);
             }
+            break;
+        case Enemy::ET_PURSUE:
+        {
+            enemy = new(std::nothrow) PursueEnemy();
+            if (enemy && enemy->loadModel() && enemy->loadAnimations())
+            {
+                enemy->autorelease();
+                enemy->setScale(0.5);
+                enemy->setEnemyState(Enemy::EnemyStateType::ES_PATROL);
+                
+            }else
+                CC_SAFE_RELEASE_NULL(enemy);
+        }
             break;
         default:
             break;

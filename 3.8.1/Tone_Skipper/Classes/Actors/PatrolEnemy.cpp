@@ -96,7 +96,7 @@ void PatrolEnemy::onCollision()
 
 void PatrolEnemy::turnRound()
 {
-    switch (getEnemyDirection()) {
+    switch (m_EnemyDirection) {
         case Enemy::ED_LEFT:
         {
             if(m_pEnemyState->getEnemyStateType() == ES_PATROL)

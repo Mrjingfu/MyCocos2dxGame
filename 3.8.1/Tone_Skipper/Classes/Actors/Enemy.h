@@ -15,9 +15,10 @@ class Enemy : public Actor
 {
 public:
     typedef enum {
-        ET_PATROL = 0, //巡逻
-        ET_ATTACK ,
-        ET_ATTACK_PATROL,     //攻击巡逻
+        ET_PATROL = 0,          //巡逻
+        ET_ATTACK ,             //固定位置攻击
+        ET_ATTACK_PATROL,       //攻击巡逻
+        ET_PURSUE,              //追击
         ET_UNKNOWN
     } EnemyType;
     

@@ -18,7 +18,7 @@ DeathEnemyState::~DeathEnemyState()
 }
 void DeathEnemyState::onEnter(Enemy *enemy)
 {
-    
+
 }
 void DeathEnemyState::update(Enemy *enemy, float delta)
 {

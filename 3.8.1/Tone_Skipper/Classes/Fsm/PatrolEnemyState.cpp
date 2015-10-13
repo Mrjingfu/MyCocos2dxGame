@@ -7,7 +7,7 @@
 //
 
 #include "PatrolEnemyState.h"
-
+#include "MapMgrs.h"
 USING_NS_CC;
 PatrolEnemyState::PatrolEnemyState()
 {
@@ -54,6 +54,8 @@ void PatrolEnemyState::update(Enemy *enemy, float delta)
         case Enemy::EnemyType::ET_ATTACK_PATROL:
             updateAttackPatrol(enemy,delta);
             break;
+        case Enemy::EnemyType::ET_PURSUE:
+            updatePursue(enemy, delta);
         default:
             break;
     }
@@ -70,9 +72,36 @@ void PatrolEnemyState::updateAttackPatrol(Enemy *enemy, float delta)
     Vec2 velocity = enemy->getVelocity();
     Vec2 position = enemy->getPosition();
     enemy->setPosition(position + Vec2(velocity.x, 0));
-    if (m_Initpt.distanceSquared(enemy->getPosition()) > 1600) {
+    if (m_Initpt.distanceSquared(enemy->getPosition()) > 60*60) {
         enemy->setEnemyState(Enemy::EnemyStateType::ES_ATTACK);
     }
+}
+void PatrolEnemyState::updatePursue(Enemy *enemy, float delta)
+{
+    Vec2 velocity = enemy->getVelocity();
+    Vec2 enemyPt = enemy->getPosition();
+    Vec2 ninoPt = MapMgrs::getInstance()->getNilo()->getPosition();
+    enemy->setPosition(enemyPt + Vec2(velocity.x, 0));
+    
+    if (fabsf(enemyPt.x - ninoPt.x)<60) {
+        
+        Vec2 dir = ninoPt-enemyPt;
+        dir.normalize();
+        CCLOG("dir:%f",dir.x);
+        if (dir.x > 0) {
+            if (enemy->getEnemyDirection() ==Enemy::EnemyDirection::ED_LEFT ) {
+                enemy->setEnemyDirection(Enemy::EnemyDirection::ED_RIGHT);
+            }
+        }else{
+            if (enemy->getEnemyDirection() ==Enemy::EnemyDirection::ED_RIGHT ) {
+                enemy->setEnemyDirection(Enemy::EnemyDirection::ED_LEFT);
+            }
+            
+        }
+        enemy->setEnemyState(Enemy::EnemyStateType::ES_PURSUE);
+    }
+    
+    
 }
 void PatrolEnemyState::onExit(Enemy *enemy)
 {

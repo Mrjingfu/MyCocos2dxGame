@@ -22,6 +22,7 @@ public:
 private:
     void updatePatrol(Enemy *,float delta);
     void updateAttackPatrol(Enemy *,float delta);
+    void updatePursue(Enemy* enemy,float delta);
 private:
     float m_pDelayTime;
      cocos2d::Vec2 m_Initpt;

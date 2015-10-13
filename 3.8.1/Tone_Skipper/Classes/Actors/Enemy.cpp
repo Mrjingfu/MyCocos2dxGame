@@ -11,12 +11,13 @@
 #include "IdleEnemyState.h"
 #include "AttackEnemyState.h"
 #include "DeathEnemyState.h"
+#include "PursueEnemyState.h"
 USING_NS_CC;
 
 Enemy::Enemy()
 {
-    m_fMaxXSpeed = 0.5f;
-    m_fMaxYSpeed = 2.5f;
+    m_fMaxXSpeed = 0.4f;
+    m_fMaxYSpeed = 2.7f;
     
     m_EnemyType = ET_UNKNOWN;
     m_EnemyDirection = ED_RIGHT;
@@ -93,6 +94,7 @@ void Enemy::updatePosition(float delta)
     
     int collisionFlag = MapMgrs::CF_NONE;
     bool collision = MapMgrs::getInstance()->checkCollision(rect, m_Velocity, collisionFlag);
+    
     if(collision)
     {
         if((collisionFlag & MapMgrs::CF_RIGHT) != 0 )
@@ -125,6 +127,20 @@ void Enemy::updatePosition(float delta)
            
             this->onCollision();
         }
+    }else{
+        if((collisionFlag & MapMgrs::CF_BOUND) == 0)
+        {
+            if(m_pEnemyState->getEnemyStateType() == EnemyStateType::ES_PURSUE )
+            {
+                if (m_EnemyDirection == ED_LEFT)
+                {
+                    m_Velocity.x = -m_fMaxXSpeed;
+                }else if (m_EnemyDirection == ED_RIGHT)
+                {
+                    m_Velocity.x = m_fMaxXSpeed;
+                }
+            }
+        }
     }
     
 }
@@ -155,6 +171,9 @@ EnemyState* Enemy::createState(EnemyStateType stateType)
             break;
         case ES_ATTACK:
             enemyState = AttackEnemyState::getInstance();
+            break;
+        case ES_PURSUE:
+            enemyState = PursueEnemyState::getInstance();
             break;
         case ES_DEATH:
             enemyState = DeathEnemyState::getInstance();

@@ -53,6 +53,10 @@
 		D44C620E132DFF430009C878 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620D132DFF430009C878 /* AVFoundation.framework */; };
 		D44C6210132DFF4E0009C878 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620F132DFF4E0009C878 /* AudioToolbox.framework */; };
 		D6B0611B1803AB670077942B /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6B0611A1803AB670077942B /* CoreMotion.framework */; };
+		EC20ABB21BCB600400B9974F /* PursueEnemy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC20ABB01BCB600400B9974F /* PursueEnemy.cpp */; settings = {ASSET_TAGS = (); }; };
+		EC20ABB31BCB600400B9974F /* PursueEnemy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC20ABB01BCB600400B9974F /* PursueEnemy.cpp */; settings = {ASSET_TAGS = (); }; };
+		EC20ABB91BCB8CA800B9974F /* PursueEnemyState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC20ABB71BCB8CA800B9974F /* PursueEnemyState.cpp */; settings = {ASSET_TAGS = (); }; };
+		EC20ABBA1BCB8CA800B9974F /* PursueEnemyState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC20ABB71BCB8CA800B9974F /* PursueEnemyState.cpp */; settings = {ASSET_TAGS = (); }; };
 		EC2161EB1BC778CF00116D65 /* AttackEnemyState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC2161E91BC778CF00116D65 /* AttackEnemyState.cpp */; settings = {ASSET_TAGS = (); }; };
 		EC2161EC1BC778CF00116D65 /* AttackEnemyState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC2161E91BC778CF00116D65 /* AttackEnemyState.cpp */; settings = {ASSET_TAGS = (); }; };
 		EC2161EF1BC799A300116D65 /* Bullet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC2161ED1BC799A300116D65 /* Bullet.cpp */; settings = {ASSET_TAGS = (); }; };
@@ -410,6 +414,10 @@
 		D44C620D132DFF430009C878 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		D44C620F132DFF4E0009C878 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		D6B0611A1803AB670077942B /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/CoreMotion.framework; sourceTree = DEVELOPER_DIR; };
+		EC20ABB01BCB600400B9974F /* PursueEnemy.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PursueEnemy.cpp; sourceTree = "<group>"; };
+		EC20ABB11BCB600400B9974F /* PursueEnemy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PursueEnemy.h; sourceTree = "<group>"; };
+		EC20ABB71BCB8CA800B9974F /* PursueEnemyState.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PursueEnemyState.cpp; sourceTree = "<group>"; };
+		EC20ABB81BCB8CA800B9974F /* PursueEnemyState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PursueEnemyState.h; sourceTree = "<group>"; };
 		EC2161E91BC778CF00116D65 /* AttackEnemyState.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AttackEnemyState.cpp; sourceTree = "<group>"; };
 		EC2161EA1BC778CF00116D65 /* AttackEnemyState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttackEnemyState.h; sourceTree = "<group>"; };
 		EC2161ED1BC799A300116D65 /* Bullet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Bullet.cpp; sourceTree = "<group>"; };
@@ -813,6 +821,8 @@
 				EC2161F51BC7BFAF00116D65 /* DeathEnemyState.h */,
 				EC2161F81BC7C0BA00116D65 /* IdleEnemyState.cpp */,
 				EC2161F91BC7C0BA00116D65 /* IdleEnemyState.h */,
+				EC20ABB71BCB8CA800B9974F /* PursueEnemyState.cpp */,
+				EC20ABB81BCB8CA800B9974F /* PursueEnemyState.h */,
 			);
 			path = Fsm;
 			sourceTree = "<group>";
@@ -820,6 +830,8 @@
 		EC59B2081BC4F06000146943 /* Actors */ = {
 			isa = PBXGroup;
 			children = (
+				EC20ABB01BCB600400B9974F /* PursueEnemy.cpp */,
+				EC20ABB11BCB600400B9974F /* PursueEnemy.h */,
 				ECAEC6601BC90FA600795F94 /* AttackEnemy.cpp */,
 				ECAEC6611BC90FA600795F94 /* AttackEnemy.h */,
 				EC2162061BC7DB7200116D65 /* PatrolEnemy.cpp */,
@@ -1424,11 +1436,13 @@
 				EC59B2861BC4F06000146943 /* xor.cpp in Sources */,
 				EC59B2941BC4F06000146943 /* HueSprite.cpp in Sources */,
 				EC59B2921BC4F06000146943 /* TestScene.cpp in Sources */,
+				EC20ABB21BCB600400B9974F /* PursueEnemy.cpp in Sources */,
 				EC59B26A1BC4F06000146943 /* ActorFactory.cpp in Sources */,
 				EC59B28A1BC4F06000146943 /* MapMgrs.cpp in Sources */,
 				EC2161EF1BC799A300116D65 /* Bullet.cpp in Sources */,
 				EC59B28C1BC4F06000146943 /* GameScene.cpp in Sources */,
 				EC4391611BC66E06006C4BB9 /* PatrolEnemyState.cpp in Sources */,
+				EC20ABB91BCB8CA800B9974F /* PursueEnemyState.cpp in Sources */,
 				EC59B29E1BC4F06000146943 /* MainUi.cpp in Sources */,
 				EC59B27C1BC4F06000146943 /* AppDelegate.cpp in Sources */,
 				EC59B2B41BC4F06000146943 /* MemoryStream.cpp in Sources */,
@@ -1476,8 +1490,10 @@
 				EC59B26D1BC4F06000146943 /* Enemy.cpp in Sources */,
 				EC59B29D1BC4F06000146943 /* JoyStick.cpp in Sources */,
 				EC59B2AF1BC4F06000146943 /* ArchiveManager.cpp in Sources */,
+				EC20ABB31BCB600400B9974F /* PursueEnemy.cpp in Sources */,
 				EC59B2731BC4F06000146943 /* Player.cpp in Sources */,
 				EC2161F01BC799A300116D65 /* Bullet.cpp in Sources */,
+				EC20ABBA1BCB8CA800B9974F /* PursueEnemyState.cpp in Sources */,
 				EC59B2771BC4F06000146943 /* QuestionMark.cpp in Sources */,
 				EC59B2871BC4F06000146943 /* xor.cpp in Sources */,
 				EC59B2A71BC4F06000146943 /* RegionSlider.cpp in Sources */,

@@ -23,7 +23,7 @@ public:
     virtual void onLand() override;
     virtual void onCollision() override;
     virtual void onAir() override;
-private:
+protected:
     void turnRound();
 };
 
