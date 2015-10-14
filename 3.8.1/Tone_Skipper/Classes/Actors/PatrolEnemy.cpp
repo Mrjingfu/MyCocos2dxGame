@@ -7,10 +7,11 @@
 //
 
 #include "PatrolEnemy.h"
+#include "EnemyState.h"
 USING_NS_CC;
 PatrolEnemy::PatrolEnemy()
 {
-    m_EnemyType = ET_NORMAL_SKULL;
+    m_EnemyType = ET_PATROL;
 }
 PatrolEnemy::~PatrolEnemy()
 {
@@ -34,7 +35,6 @@ bool PatrolEnemy::loadModel()
     showDebug(true);
 #endif
     return ret;
-    return true;
 }
 bool PatrolEnemy::loadAnimations()
 {
@@ -58,9 +58,9 @@ bool PatrolEnemy::loadAnimations()
     }
     
     
-    ///run
-    m_pWalkAnimation = cocos2d::AnimationCache::getInstance()->getAnimation("skull_walk");
-    if(!m_pWalkAnimation)
+ 
+    m_pPatrolAnimation = cocos2d::AnimationCache::getInstance()->getAnimation("skull_walk");
+    if(!m_pPatrolAnimation)
     {
         cocos2d::Vector<cocos2d::SpriteFrame*> arrayOfAnimation;
         
@@ -71,39 +71,45 @@ bool PatrolEnemy::loadAnimations()
             arrayOfAnimation.pushBack(frame);
         }
         
-        m_pWalkAnimation = cocos2d::Animation::createWithSpriteFrames(arrayOfAnimation);
-        if(!m_pWalkAnimation)
+        m_pPatrolAnimation = cocos2d::Animation::createWithSpriteFrames(arrayOfAnimation);
+        if(!m_pPatrolAnimation)
             ret = false;
-        m_pWalkAnimation->setDelayPerUnit(0.3f / 5.0f);
-        cocos2d::AnimationCache::getInstance()->addAnimation(m_pWalkAnimation, "skull_walk");
+        m_pPatrolAnimation->setDelayPerUnit(0.3f / 2.0f);
+        cocos2d::AnimationCache::getInstance()->addAnimation(m_pPatrolAnimation, "skull_walk");
     }
     return true;
 }
 
 void PatrolEnemy::onLand()
 {
-    switch (getEnemyDirection()) {
-        case Enemy::ED_LEFT:
-            setEnemyDirection(ED_RIGHT);
-            break;
-        case Enemy::ED_RIGHT:
-           setEnemyDirection(ED_LEFT);
-            break;
-        case Enemy::ED_BACK:
-            break;
-        default:
-            break;
-    }
 
+
+}
+void PatrolEnemy::onAir()
+{
+    turnRound();
 }
 void PatrolEnemy::onCollision()
 {
-    switch (getEnemyDirection()) {
+    turnRound();
+}
+
+void PatrolEnemy::turnRound()
+{
+    switch (m_EnemyDirection) {
         case Enemy::ED_LEFT:
+        {
+            if(m_pEnemyState->getEnemyStateType() == ES_PATROL)
+                m_Velocity.x = m_fMaxXSpeed;
             setEnemyDirection(ED_RIGHT);
+        }
             break;
         case Enemy::ED_RIGHT:
+        {
+            if(m_pEnemyState->getEnemyStateType() == ES_PATROL)
+                m_Velocity.x = -m_fMaxXSpeed;
             setEnemyDirection(ED_LEFT);
+        }
             break;
         case Enemy::ED_BACK:
             break;

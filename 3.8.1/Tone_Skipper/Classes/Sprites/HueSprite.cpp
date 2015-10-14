@@ -208,6 +208,16 @@ cocos2d::Rect HueSprite::getBoundingPudgeBox() const
     cocos2d::Rect rect(6.0f, 0.0f, _contentSize.width*0.65f, _contentSize.height*0.55f);
     return RectApplyAffineTransform(rect, getNodeToParentAffineTransform());
 }
+cocos2d::Rect HueSprite::getBoundingEnemyBox() const
+{
+    V3F_C4B_T2F_Quad quad = getQuad();
+    float x = quad.bl.vertices.x;
+    float y = quad.bl.vertices.y;
+    float width = quad.br.vertices.x - quad.bl.vertices.x;
+    float heigth = quad.tl.vertices.y - quad.bl.vertices.y;
+    cocos2d::Rect rect(x , y, width, heigth);
+    return RectApplyAffineTransform(rect, getNodeToParentAffineTransform());
+}
 //shader
 
 const GLchar * colorRotationShaderBody()

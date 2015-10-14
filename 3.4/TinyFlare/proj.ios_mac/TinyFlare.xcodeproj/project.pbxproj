@@ -1410,6 +1410,7 @@
 				CODE_SIGN_IDENTITY = "iOS Development: haibo wang (FT8YEJMWBH)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iOS Development: haibo wang (FT8YEJMWBH)";
 				COMPRESS_PNG_FILES = NO;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/ios/GoogleMobileAdsSdkiOS-7.2.2",
@@ -1461,6 +1462,7 @@
 				CODE_SIGN_IDENTITY = "iOS Distribution: haibo wang";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iOS Distribution: haibo wang";
 				COMPRESS_PNG_FILES = NO;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/ios/GoogleMobileAdsSdkiOS-7.2.2",

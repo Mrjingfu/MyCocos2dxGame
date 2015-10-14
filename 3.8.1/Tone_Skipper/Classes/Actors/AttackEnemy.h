@@ -6,16 +6,16 @@
 //
 //
 
-#ifndef PatrolEnemy_h
-#define PatrolEnemy_h
+#ifndef AttackEnemy_h
+#define AttackEnemy_h
 
 #include "Enemy.h"
 
-class PatrolEnemy:public Enemy
+class AttackEnemy:public Enemy
 {
 public:
-    PatrolEnemy();
-    virtual ~PatrolEnemy();
+    AttackEnemy();
+    ~AttackEnemy();
 public:
 
     virtual bool loadModel() override;
@@ -23,8 +23,8 @@ public:
     virtual void onLand() override;
     virtual void onCollision() override;
     virtual void onAir() override;
-protected:
-    void turnRound();
+
+
 };
 
-#endif /* PatrolEnemy_h */
+#endif /* AttackEnemy_h */

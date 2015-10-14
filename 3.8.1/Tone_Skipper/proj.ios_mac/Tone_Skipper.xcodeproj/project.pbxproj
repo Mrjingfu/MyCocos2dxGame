@@ -53,14 +53,32 @@
 		D44C620E132DFF430009C878 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620D132DFF430009C878 /* AVFoundation.framework */; };
 		D44C6210132DFF4E0009C878 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620F132DFF4E0009C878 /* AudioToolbox.framework */; };
 		D6B0611B1803AB670077942B /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6B0611A1803AB670077942B /* CoreMotion.framework */; };
-		EC4390F01BC61E04006C4BB9 /* PatrolEnemy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC4390EE1BC61E04006C4BB9 /* PatrolEnemy.cpp */; settings = {ASSET_TAGS = (); }; };
-		EC4390F11BC61E04006C4BB9 /* PatrolEnemy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC4390EE1BC61E04006C4BB9 /* PatrolEnemy.cpp */; settings = {ASSET_TAGS = (); }; };
+		EC20ABB21BCB600400B9974F /* PursueEnemy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC20ABB01BCB600400B9974F /* PursueEnemy.cpp */; settings = {ASSET_TAGS = (); }; };
+		EC20ABB31BCB600400B9974F /* PursueEnemy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC20ABB01BCB600400B9974F /* PursueEnemy.cpp */; settings = {ASSET_TAGS = (); }; };
+		EC20ABB91BCB8CA800B9974F /* PursueEnemyState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC20ABB71BCB8CA800B9974F /* PursueEnemyState.cpp */; settings = {ASSET_TAGS = (); }; };
+		EC20ABBA1BCB8CA800B9974F /* PursueEnemyState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC20ABB71BCB8CA800B9974F /* PursueEnemyState.cpp */; settings = {ASSET_TAGS = (); }; };
+		EC2161EB1BC778CF00116D65 /* AttackEnemyState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC2161E91BC778CF00116D65 /* AttackEnemyState.cpp */; settings = {ASSET_TAGS = (); }; };
+		EC2161EC1BC778CF00116D65 /* AttackEnemyState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC2161E91BC778CF00116D65 /* AttackEnemyState.cpp */; settings = {ASSET_TAGS = (); }; };
+		EC2161EF1BC799A300116D65 /* Bullet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC2161ED1BC799A300116D65 /* Bullet.cpp */; settings = {ASSET_TAGS = (); }; };
+		EC2161F01BC799A300116D65 /* Bullet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC2161ED1BC799A300116D65 /* Bullet.cpp */; settings = {ASSET_TAGS = (); }; };
+		EC2161F61BC7BFAF00116D65 /* DeathEnemyState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC2161F41BC7BFAF00116D65 /* DeathEnemyState.cpp */; settings = {ASSET_TAGS = (); }; };
+		EC2161F71BC7BFAF00116D65 /* DeathEnemyState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC2161F41BC7BFAF00116D65 /* DeathEnemyState.cpp */; settings = {ASSET_TAGS = (); }; };
+		EC2161FA1BC7C0BA00116D65 /* IdleEnemyState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC2161F81BC7C0BA00116D65 /* IdleEnemyState.cpp */; settings = {ASSET_TAGS = (); }; };
+		EC2161FB1BC7C0BA00116D65 /* IdleEnemyState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC2161F81BC7C0BA00116D65 /* IdleEnemyState.cpp */; settings = {ASSET_TAGS = (); }; };
+		EC2162041BC7DB6300116D65 /* AttackPatrolEnemy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC2162021BC7DB6300116D65 /* AttackPatrolEnemy.cpp */; settings = {ASSET_TAGS = (); }; };
+		EC2162051BC7DB6300116D65 /* AttackPatrolEnemy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC2162021BC7DB6300116D65 /* AttackPatrolEnemy.cpp */; settings = {ASSET_TAGS = (); }; };
+		EC2162081BC7DB7200116D65 /* PatrolEnemy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC2162061BC7DB7200116D65 /* PatrolEnemy.cpp */; settings = {ASSET_TAGS = (); }; };
+		EC2162091BC7DB7200116D65 /* PatrolEnemy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC2162061BC7DB7200116D65 /* PatrolEnemy.cpp */; settings = {ASSET_TAGS = (); }; };
+		EC21620F1BC7E0D900116D65 /* shooter.plist in Resources */ = {isa = PBXBuildFile; fileRef = EC21620D1BC7E0D900116D65 /* shooter.plist */; settings = {ASSET_TAGS = (); }; };
+		EC2162101BC7E0D900116D65 /* shooter.plist in Resources */ = {isa = PBXBuildFile; fileRef = EC21620D1BC7E0D900116D65 /* shooter.plist */; settings = {ASSET_TAGS = (); }; };
+		EC2162111BC7E0D900116D65 /* shooter.png in Resources */ = {isa = PBXBuildFile; fileRef = EC21620E1BC7E0D900116D65 /* shooter.png */; settings = {ASSET_TAGS = (); }; };
+		EC2162121BC7E0D900116D65 /* shooter.png in Resources */ = {isa = PBXBuildFile; fileRef = EC21620E1BC7E0D900116D65 /* shooter.png */; settings = {ASSET_TAGS = (); }; };
 		EC4390F81BC64330006C4BB9 /* basic_zombie.plist in Resources */ = {isa = PBXBuildFile; fileRef = EC4390F61BC64330006C4BB9 /* basic_zombie.plist */; settings = {ASSET_TAGS = (); }; };
 		EC4390F91BC64330006C4BB9 /* basic_zombie.plist in Resources */ = {isa = PBXBuildFile; fileRef = EC4390F61BC64330006C4BB9 /* basic_zombie.plist */; settings = {ASSET_TAGS = (); }; };
 		EC4390FA1BC64330006C4BB9 /* basic_zombie.png in Resources */ = {isa = PBXBuildFile; fileRef = EC4390F71BC64330006C4BB9 /* basic_zombie.png */; settings = {ASSET_TAGS = (); }; };
 		EC4390FB1BC64330006C4BB9 /* basic_zombie.png in Resources */ = {isa = PBXBuildFile; fileRef = EC4390F71BC64330006C4BB9 /* basic_zombie.png */; settings = {ASSET_TAGS = (); }; };
-		EC4391611BC66E06006C4BB9 /* WalkState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC43915F1BC66E06006C4BB9 /* WalkState.cpp */; settings = {ASSET_TAGS = (); }; };
-		EC4391621BC66E06006C4BB9 /* WalkState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC43915F1BC66E06006C4BB9 /* WalkState.cpp */; settings = {ASSET_TAGS = (); }; };
+		EC4391611BC66E06006C4BB9 /* PatrolEnemyState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC43915F1BC66E06006C4BB9 /* PatrolEnemyState.cpp */; settings = {ASSET_TAGS = (); }; };
+		EC4391621BC66E06006C4BB9 /* PatrolEnemyState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC43915F1BC66E06006C4BB9 /* PatrolEnemyState.cpp */; settings = {ASSET_TAGS = (); }; };
 		EC59B2681BC4F06000146943 /* Actor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC59B2091BC4F06000146943 /* Actor.cpp */; settings = {ASSET_TAGS = (); }; };
 		EC59B2691BC4F06000146943 /* Actor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC59B2091BC4F06000146943 /* Actor.cpp */; settings = {ASSET_TAGS = (); }; };
 		EC59B26A1BC4F06000146943 /* ActorFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC59B20B1BC4F06000146943 /* ActorFactory.cpp */; settings = {ASSET_TAGS = (); }; };
@@ -309,6 +327,8 @@
 		EC59B3BC1BC4F07C00146943 /* ui_red.png in Resources */ = {isa = PBXBuildFile; fileRef = EC59B3191BC4F07C00146943 /* ui_red.png */; settings = {ASSET_TAGS = (); }; };
 		EC59B3BD1BC4F07C00146943 /* ui_shoes.png in Resources */ = {isa = PBXBuildFile; fileRef = EC59B31A1BC4F07C00146943 /* ui_shoes.png */; settings = {ASSET_TAGS = (); }; };
 		EC59B3BE1BC4F07C00146943 /* ui_shoes.png in Resources */ = {isa = PBXBuildFile; fileRef = EC59B31A1BC4F07C00146943 /* ui_shoes.png */; settings = {ASSET_TAGS = (); }; };
+		ECAEC6621BC90FA600795F94 /* AttackEnemy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECAEC6601BC90FA600795F94 /* AttackEnemy.cpp */; settings = {ASSET_TAGS = (); }; };
+		ECAEC6631BC90FA600795F94 /* AttackEnemy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECAEC6601BC90FA600795F94 /* AttackEnemy.cpp */; settings = {ASSET_TAGS = (); }; };
 		ED545A7C1B68A1F400C3958E /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ED545A7B1B68A1F400C3958E /* libiconv.dylib */; };
 		ED545A7E1B68A1FA00C3958E /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ED545A7D1B68A1FA00C3958E /* libiconv.dylib */; };
 /* End PBXBuildFile section */
@@ -394,13 +414,29 @@
 		D44C620D132DFF430009C878 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		D44C620F132DFF4E0009C878 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		D6B0611A1803AB670077942B /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/CoreMotion.framework; sourceTree = DEVELOPER_DIR; };
-		EC4390EE1BC61E04006C4BB9 /* PatrolEnemy.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PatrolEnemy.cpp; sourceTree = "<group>"; };
-		EC4390EF1BC61E04006C4BB9 /* PatrolEnemy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PatrolEnemy.h; sourceTree = "<group>"; };
+		EC20ABB01BCB600400B9974F /* PursueEnemy.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PursueEnemy.cpp; sourceTree = "<group>"; };
+		EC20ABB11BCB600400B9974F /* PursueEnemy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PursueEnemy.h; sourceTree = "<group>"; };
+		EC20ABB71BCB8CA800B9974F /* PursueEnemyState.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PursueEnemyState.cpp; sourceTree = "<group>"; };
+		EC20ABB81BCB8CA800B9974F /* PursueEnemyState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PursueEnemyState.h; sourceTree = "<group>"; };
+		EC2161E91BC778CF00116D65 /* AttackEnemyState.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AttackEnemyState.cpp; sourceTree = "<group>"; };
+		EC2161EA1BC778CF00116D65 /* AttackEnemyState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttackEnemyState.h; sourceTree = "<group>"; };
+		EC2161ED1BC799A300116D65 /* Bullet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Bullet.cpp; sourceTree = "<group>"; };
+		EC2161EE1BC799A300116D65 /* Bullet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bullet.h; sourceTree = "<group>"; };
+		EC2161F41BC7BFAF00116D65 /* DeathEnemyState.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DeathEnemyState.cpp; sourceTree = "<group>"; };
+		EC2161F51BC7BFAF00116D65 /* DeathEnemyState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeathEnemyState.h; sourceTree = "<group>"; };
+		EC2161F81BC7C0BA00116D65 /* IdleEnemyState.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IdleEnemyState.cpp; sourceTree = "<group>"; };
+		EC2161F91BC7C0BA00116D65 /* IdleEnemyState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IdleEnemyState.h; sourceTree = "<group>"; };
+		EC2162021BC7DB6300116D65 /* AttackPatrolEnemy.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AttackPatrolEnemy.cpp; sourceTree = "<group>"; };
+		EC2162031BC7DB6300116D65 /* AttackPatrolEnemy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttackPatrolEnemy.h; sourceTree = "<group>"; };
+		EC2162061BC7DB7200116D65 /* PatrolEnemy.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PatrolEnemy.cpp; sourceTree = "<group>"; };
+		EC2162071BC7DB7200116D65 /* PatrolEnemy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PatrolEnemy.h; sourceTree = "<group>"; };
+		EC21620D1BC7E0D900116D65 /* shooter.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = shooter.plist; sourceTree = "<group>"; };
+		EC21620E1BC7E0D900116D65 /* shooter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shooter.png; sourceTree = "<group>"; };
 		EC4390F61BC64330006C4BB9 /* basic_zombie.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = basic_zombie.plist; sourceTree = "<group>"; };
 		EC4390F71BC64330006C4BB9 /* basic_zombie.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = basic_zombie.png; sourceTree = "<group>"; };
 		EC4391071BC652C6006C4BB9 /* EnemyState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnemyState.h; sourceTree = "<group>"; };
-		EC43915F1BC66E06006C4BB9 /* WalkState.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WalkState.cpp; sourceTree = "<group>"; };
-		EC4391601BC66E06006C4BB9 /* WalkState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WalkState.h; sourceTree = "<group>"; };
+		EC43915F1BC66E06006C4BB9 /* PatrolEnemyState.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PatrolEnemyState.cpp; sourceTree = "<group>"; };
+		EC4391601BC66E06006C4BB9 /* PatrolEnemyState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PatrolEnemyState.h; sourceTree = "<group>"; };
 		EC59B2091BC4F06000146943 /* Actor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Actor.cpp; sourceTree = "<group>"; };
 		EC59B20A1BC4F06000146943 /* Actor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Actor.h; sourceTree = "<group>"; };
 		EC59B20B1BC4F06000146943 /* ActorFactory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ActorFactory.cpp; sourceTree = "<group>"; };
@@ -569,6 +605,8 @@
 		EC59B3181BC4F07C00146943 /* ui_key_silver.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ui_key_silver.png; sourceTree = "<group>"; };
 		EC59B3191BC4F07C00146943 /* ui_red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ui_red.png; sourceTree = "<group>"; };
 		EC59B31A1BC4F07C00146943 /* ui_shoes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ui_shoes.png; sourceTree = "<group>"; };
+		ECAEC6601BC90FA600795F94 /* AttackEnemy.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AttackEnemy.cpp; sourceTree = "<group>"; };
+		ECAEC6611BC90FA600795F94 /* AttackEnemy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttackEnemy.h; sourceTree = "<group>"; };
 		ED545A7B1B68A1F400C3958E /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.4.sdk/usr/lib/libiconv.dylib; sourceTree = DEVELOPER_DIR; };
 		ED545A7D1B68A1FA00C3958E /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -775,8 +813,16 @@
 			isa = PBXGroup;
 			children = (
 				EC4391071BC652C6006C4BB9 /* EnemyState.h */,
-				EC43915F1BC66E06006C4BB9 /* WalkState.cpp */,
-				EC4391601BC66E06006C4BB9 /* WalkState.h */,
+				EC43915F1BC66E06006C4BB9 /* PatrolEnemyState.cpp */,
+				EC4391601BC66E06006C4BB9 /* PatrolEnemyState.h */,
+				EC2161E91BC778CF00116D65 /* AttackEnemyState.cpp */,
+				EC2161EA1BC778CF00116D65 /* AttackEnemyState.h */,
+				EC2161F41BC7BFAF00116D65 /* DeathEnemyState.cpp */,
+				EC2161F51BC7BFAF00116D65 /* DeathEnemyState.h */,
+				EC2161F81BC7C0BA00116D65 /* IdleEnemyState.cpp */,
+				EC2161F91BC7C0BA00116D65 /* IdleEnemyState.h */,
+				EC20ABB71BCB8CA800B9974F /* PursueEnemyState.cpp */,
+				EC20ABB81BCB8CA800B9974F /* PursueEnemyState.h */,
 			);
 			path = Fsm;
 			sourceTree = "<group>";
@@ -784,6 +830,14 @@
 		EC59B2081BC4F06000146943 /* Actors */ = {
 			isa = PBXGroup;
 			children = (
+				EC20ABB01BCB600400B9974F /* PursueEnemy.cpp */,
+				EC20ABB11BCB600400B9974F /* PursueEnemy.h */,
+				ECAEC6601BC90FA600795F94 /* AttackEnemy.cpp */,
+				ECAEC6611BC90FA600795F94 /* AttackEnemy.h */,
+				EC2162061BC7DB7200116D65 /* PatrolEnemy.cpp */,
+				EC2162071BC7DB7200116D65 /* PatrolEnemy.h */,
+				EC2162021BC7DB6300116D65 /* AttackPatrolEnemy.cpp */,
+				EC2162031BC7DB6300116D65 /* AttackPatrolEnemy.h */,
 				EC59B2091BC4F06000146943 /* Actor.cpp */,
 				EC59B20A1BC4F06000146943 /* Actor.h */,
 				EC59B20B1BC4F06000146943 /* ActorFactory.cpp */,
@@ -804,8 +858,8 @@
 				EC59B21A1BC4F06000146943 /* SceneItem.h */,
 				EC59B21B1BC4F06000146943 /* UsableItem.cpp */,
 				EC59B21C1BC4F06000146943 /* UsableItem.h */,
-				EC4390EE1BC61E04006C4BB9 /* PatrolEnemy.cpp */,
-				EC4390EF1BC61E04006C4BB9 /* PatrolEnemy.h */,
+				EC2161ED1BC799A300116D65 /* Bullet.cpp */,
+				EC2161EE1BC799A300116D65 /* Bullet.h */,
 			);
 			path = Actors;
 			sourceTree = "<group>";
@@ -966,6 +1020,8 @@
 		EC59B2CB1BC4F07C00146943 /* sprites */ = {
 			isa = PBXGroup;
 			children = (
+				EC21620D1BC7E0D900116D65 /* shooter.plist */,
+				EC21620E1BC7E0D900116D65 /* shooter.png */,
 				EC4390F61BC64330006C4BB9 /* basic_zombie.plist */,
 				EC4390F71BC64330006C4BB9 /* basic_zombie.png */,
 				EC59B2CC1BC4F07C00146943 /* sprite_dog.plist */,
@@ -1249,12 +1305,14 @@
 				EC59B3B51BC4F07C00146943 /* ui_key_copper.png in Resources */,
 				EC59B3731BC4F07C00146943 /* key_gold..png in Resources */,
 				EC59B3671BC4F07C00146943 /* glasses.png in Resources */,
+				EC21620F1BC7E0D900116D65 /* shooter.plist in Resources */,
 				EC59B3551BC4F07C00146943 /* diamond.png in Resources */,
 				EC59B3611BC4F07C00146943 /* frame_black.png in Resources */,
 				EC59B3651BC4F07C00146943 /* frame_yellow.png in Resources */,
 				5087E78417EB970100C73F5D /* Icon-57.png in Resources */,
 				5087E77E17EB970100C73F5D /* Default.png in Resources */,
 				EC59B3A71BC4F07C00146943 /* ui_frame_black.png in Resources */,
+				EC2162111BC7E0D900116D65 /* shooter.png in Resources */,
 				521A8E6419F0C34300D177D7 /* Default-667h@2x.png in Resources */,
 				50EF629717ECD46A001EB2F8 /* Icon-58.png in Resources */,
 				EC59B3571BC4F07C00146943 /* e_0.png in Resources */,
@@ -1341,6 +1399,7 @@
 				EC59B3AE1BC4F07C00146943 /* ui_glasses.png in Resources */,
 				EC59B33E1BC4F07C00146943 /* blue_jacket.png in Resources */,
 				EC59B3841BC4F07C00146943 /* r_1.png in Resources */,
+				EC2162121BC7E0D900116D65 /* shooter.png in Resources */,
 				EC59B33A1BC4F07C00146943 /* blister_04.png in Resources */,
 				EC59B3901BC4F07C00146943 /* y_0.png in Resources */,
 				EC59B3BE1BC4F07C00146943 /* ui_shoes.png in Resources */,
@@ -1348,6 +1407,7 @@
 				EC59B3541BC4F07C00146943 /* color.png in Resources */,
 				EC59B3A21BC4F07C00146943 /* ui_diamond.png in Resources */,
 				EC4390FB1BC64330006C4BB9 /* basic_zombie.png in Resources */,
+				EC2162101BC7E0D900116D65 /* shooter.plist in Resources */,
 				EC59B3441BC4F07C00146943 /* bomb_03.png in Resources */,
 				EC59B32A1BC4F07C00146943 /* sprite_red.plist in Resources */,
 				EC59B3701BC4F07C00146943 /* i_1.png in Resources */,
@@ -1368,7 +1428,7 @@
 				EC59B2901BC4F06000146943 /* MenuScene.cpp in Sources */,
 				EC59B2A81BC4F06000146943 /* TestPopUI.cpp in Sources */,
 				EC59B2761BC4F06000146943 /* QuestionMark.cpp in Sources */,
-				EC4390F01BC61E04006C4BB9 /* PatrolEnemy.cpp in Sources */,
+				ECAEC6621BC90FA600795F94 /* AttackEnemy.cpp in Sources */,
 				EC59B2841BC4F06000146943 /* sha1.cpp in Sources */,
 				EC59B2B01BC4F06000146943 /* ChaosNumber.cpp in Sources */,
 				EC59B26C1BC4F06000146943 /* Enemy.cpp in Sources */,
@@ -1376,10 +1436,13 @@
 				EC59B2861BC4F06000146943 /* xor.cpp in Sources */,
 				EC59B2941BC4F06000146943 /* HueSprite.cpp in Sources */,
 				EC59B2921BC4F06000146943 /* TestScene.cpp in Sources */,
+				EC20ABB21BCB600400B9974F /* PursueEnemy.cpp in Sources */,
 				EC59B26A1BC4F06000146943 /* ActorFactory.cpp in Sources */,
 				EC59B28A1BC4F06000146943 /* MapMgrs.cpp in Sources */,
+				EC2161EF1BC799A300116D65 /* Bullet.cpp in Sources */,
 				EC59B28C1BC4F06000146943 /* GameScene.cpp in Sources */,
-				EC4391611BC66E06006C4BB9 /* WalkState.cpp in Sources */,
+				EC4391611BC66E06006C4BB9 /* PatrolEnemyState.cpp in Sources */,
+				EC20ABB91BCB8CA800B9974F /* PursueEnemyState.cpp in Sources */,
 				EC59B29E1BC4F06000146943 /* MainUi.cpp in Sources */,
 				EC59B27C1BC4F06000146943 /* AppDelegate.cpp in Sources */,
 				EC59B2B41BC4F06000146943 /* MemoryStream.cpp in Sources */,
@@ -1387,6 +1450,7 @@
 				EC59B2721BC4F06000146943 /* Player.cpp in Sources */,
 				EC59B2A01BC4F06000146943 /* PopupUILayer.cpp in Sources */,
 				EC59B2961BC4F06000146943 /* BagPopUpUi.cpp in Sources */,
+				EC2161EB1BC778CF00116D65 /* AttackEnemyState.cpp in Sources */,
 				EC59B26E1BC4F06000146943 /* ExcalmationMark.cpp in Sources */,
 				EC59B28E1BC4F06000146943 /* LogoScene.cpp in Sources */,
 				EC59B2701BC4F06000146943 /* Nilo.cpp in Sources */,
@@ -1395,15 +1459,19 @@
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				EC59B2741BC4F06000146943 /* Pudge.cpp in Sources */,
+				EC2161F61BC7BFAF00116D65 /* DeathEnemyState.cpp in Sources */,
 				EC59B2801BC4F06000146943 /* libb64.c in Sources */,
+				EC2162081BC7DB7200116D65 /* PatrolEnemy.cpp in Sources */,
 				EC59B2AC1BC4F06000146943 /* AlisaMethod.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
 				EC59B2AE1BC4F06000146943 /* ArchiveManager.cpp in Sources */,
+				EC2161FA1BC7C0BA00116D65 /* IdleEnemyState.cpp in Sources */,
 				EC59B2821BC4F06000146943 /* md5.c in Sources */,
 				EC59B2BE1BC4F06000146943 /* UtilityHelper.cpp in Sources */,
 				EC59B2981BC4F06000146943 /* CloseCallback.cpp in Sources */,
 				EC59B2681BC4F06000146943 /* Actor.cpp in Sources */,
 				EC59B2A21BC4F06000146943 /* PopupUILayerManager.cpp in Sources */,
+				EC2162041BC7DB6300116D65 /* AttackPatrolEnemy.cpp in Sources */,
 				EC59B2781BC4F06000146943 /* SceneItem.cpp in Sources */,
 				EC59B29C1BC4F06000146943 /* JoyStick.cpp in Sources */,
 				EC59B2B21BC4F06000146943 /* FileStream.cpp in Sources */,
@@ -1422,7 +1490,10 @@
 				EC59B26D1BC4F06000146943 /* Enemy.cpp in Sources */,
 				EC59B29D1BC4F06000146943 /* JoyStick.cpp in Sources */,
 				EC59B2AF1BC4F06000146943 /* ArchiveManager.cpp in Sources */,
+				EC20ABB31BCB600400B9974F /* PursueEnemy.cpp in Sources */,
 				EC59B2731BC4F06000146943 /* Player.cpp in Sources */,
+				EC2161F01BC799A300116D65 /* Bullet.cpp in Sources */,
+				EC20ABBA1BCB8CA800B9974F /* PursueEnemyState.cpp in Sources */,
 				EC59B2771BC4F06000146943 /* QuestionMark.cpp in Sources */,
 				EC59B2871BC4F06000146943 /* xor.cpp in Sources */,
 				EC59B2A71BC4F06000146943 /* RegionSlider.cpp in Sources */,
@@ -1431,14 +1502,15 @@
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
 				EC59B2811BC4F06000146943 /* libb64.c in Sources */,
 				EC59B26B1BC4F06000146943 /* ActorFactory.cpp in Sources */,
-				EC4391621BC66E06006C4BB9 /* WalkState.cpp in Sources */,
+				EC4391621BC66E06006C4BB9 /* PatrolEnemyState.cpp in Sources */,
 				EC59B2B51BC4F06000146943 /* MemoryStream.cpp in Sources */,
 				EC59B2951BC4F06000146943 /* HueSprite.cpp in Sources */,
 				EC59B2851BC4F06000146943 /* sha1.cpp in Sources */,
+				EC2161EC1BC778CF00116D65 /* AttackEnemyState.cpp in Sources */,
 				EC59B2831BC4F06000146943 /* md5.c in Sources */,
 				EC59B2BF1BC4F06000146943 /* UtilityHelper.cpp in Sources */,
-				EC4390F11BC61E04006C4BB9 /* PatrolEnemy.cpp in Sources */,
 				EC59B2931BC4F06000146943 /* TestScene.cpp in Sources */,
+				EC2161F71BC7BFAF00116D65 /* DeathEnemyState.cpp in Sources */,
 				EC59B27F1BC4F06000146943 /* CCCrypto.cpp in Sources */,
 				EC59B28F1BC4F06000146943 /* LogoScene.cpp in Sources */,
 				EC59B2971BC4F06000146943 /* BagPopUpUi.cpp in Sources */,
@@ -1450,6 +1522,7 @@
 				EC59B2691BC4F06000146943 /* Actor.cpp in Sources */,
 				EC59B2791BC4F06000146943 /* SceneItem.cpp in Sources */,
 				EC59B27D1BC4F06000146943 /* AppDelegate.cpp in Sources */,
+				ECAEC6631BC90FA600795F94 /* AttackEnemy.cpp in Sources */,
 				EC59B28B1BC4F06000146943 /* MapMgrs.cpp in Sources */,
 				EC59B26F1BC4F06000146943 /* ExcalmationMark.cpp in Sources */,
 				EC59B2751BC4F06000146943 /* Pudge.cpp in Sources */,
@@ -1457,10 +1530,13 @@
 				EC59B2BD1BC4F06000146943 /* UserRecord.cpp in Sources */,
 				EC59B2891BC4F06000146943 /* XXTEA.cpp in Sources */,
 				EC59B27B1BC4F06000146943 /* UsableItem.cpp in Sources */,
+				EC2162051BC7DB6300116D65 /* AttackPatrolEnemy.cpp in Sources */,
 				EC59B2A91BC4F06000146943 /* TestPopUI.cpp in Sources */,
 				EC59B2AD1BC4F06000146943 /* AlisaMethod.cpp in Sources */,
 				EC59B2B31BC4F06000146943 /* FileStream.cpp in Sources */,
 				EC59B2B11BC4F06000146943 /* ChaosNumber.cpp in Sources */,
+				EC2162091BC7DB7200116D65 /* PatrolEnemy.cpp in Sources */,
+				EC2161FB1BC7C0BA00116D65 /* IdleEnemyState.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1484,8 +1560,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: quanlan huang (L4MC53BS3Z)";
 				COMPRESS_PNG_FILES = NO;
+				ENABLE_BITCODE = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_INPUT_FILETYPE = sourcecode.cpp.objcpp;
@@ -1510,6 +1587,7 @@
 					"$(_COCOS_LIB_IOS_BEGIN)",
 					"$(_COCOS_LIB_IOS_END)",
 				);
+				PROVISIONING_PROFILE = "22b9a94d-953a-486e-a5b1-5b20c81c69a3";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "$(_COCOS_HEADER_IOS_BEGIN) $(_COCOS_HEADER_IOS_END)";
@@ -1521,8 +1599,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: quanlan huang (L4MC53BS3Z)";
 				COMPRESS_PNG_FILES = NO;
+				ENABLE_BITCODE = NO;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_INPUT_FILETYPE = sourcecode.cpp.objcpp;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1545,6 +1624,7 @@
 					"$(_COCOS_LIB_IOS_BEGIN)",
 					"$(_COCOS_LIB_IOS_END)",
 				);
+				PROVISIONING_PROFILE = "22b9a94d-953a-486e-a5b1-5b20c81c69a3";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "$(_COCOS_HEADER_IOS_BEGIN) $(_COCOS_HEADER_IOS_END)";
