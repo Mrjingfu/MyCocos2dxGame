@@ -1,5 +1,5 @@
 #include "AppDelegate.h"
-#include "GameScene.h"
+#include "LogoScene.h"
 
 USING_NS_CC;
 
@@ -50,6 +50,8 @@ bool AppDelegate::applicationDidFinishLaunching() {
     std::vector<std::string> searchPaths;
     searchPaths.push_back("models");
     searchPaths.push_back("textures");
+    searchPaths.push_back("ui");
+    searchPaths.push_back("maps");
     FileUtils::getInstance()->setSearchPaths(searchPaths);
     
 #if COCOS2D_DEBUG
@@ -85,7 +87,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     register_all_packages();
 
     // create a scene. it's an autorelease object
-    auto scene = GameScene::createScene();
+    auto scene = LogoScene::createScene();
 
     // run
     director->runWithScene(scene);

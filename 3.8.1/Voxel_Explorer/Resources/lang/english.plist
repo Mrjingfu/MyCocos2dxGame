@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>GAME_NAME</key>
+	<string>Rainbow&apos;s End</string>
+	<key>PRESS_BEGIN</key>
+	<string>PRESS HERE TO BEGIN!</string>
+	<key>PRESS_CONTINUE</key>
+	<string>PRESS HERE TO CONTINUE!</string>
+	<key>NO_ADS</key>
+	<string>Remove Ads</string>
+	<key>NO_ADS_DESC</key>
+	<string>No More Ads!</string>
+	<key>RATE_TITLE</key>
+	<string>Rate Rainbow&apos;s End</string>
+	<key>RATE_MESSAGE</key>
+	<string>thanks for your supports!</string>
+	<key>RATE_NOW</key>
+	<string>Very good, support you!</string>
+	<key>RATE_NEVER</key>
+	<string>Too bad, refused!</string>
+	<key>RATE_LATER</key>
+	<string>Play more a while, rate later!</string>
+	<key>NET_ERROR</key>
+	<string>Please check the network for connections!</string>
+	<key>RESTORE_OK</key>
+	<string>Restore purchases successed!</string>
+	<key>RESTORE_FAILED</key>
+	<string>Restore purchases failed!</string>
+	<key>FONT_NUMBER</key>
+	<string>comic_sans_ms.fnt</string>
+	<key>UI_TITLE_TEX</key>
+	<string>ui_title.png</string>
+	<key>UI_MENU_RAINBOW_BTN</key>
+	<string>btn_rainbow_mode_en.png</string>
+	<key>UI_MENU_MAZE_BTN</key>
+	<string>btn_maze_mode_en.png</string>
+	<key>UI_START_BTN_NEW</key>
+	<string>btn_start_new_en.png</string>
+	<key>UI_START_BTN_CONTINUE</key>
+	<string>btn_start_continue_en.png</string>
+	<key>UI_START_PANEL</key>
+	<string>panel_startgame_en.png</string>
+	<key>UI_START_DISTANCE</key>
+	<string>ui_disttext_en.png</string>
+	<key>UI_PASUE_PANEL</key>
+	<string>panel_pause_en.png</string>
+	<key>UI_SHOP_PANEL</key>
+	<string>panel_shop_en.png</string>
+	<key>UI_GAME_BEST_TV</key>
+	<string>best_en.png</string>
+	<key>UI_GAME_CURRENT_TV</key>
+	<string>current_en.png</string>
+	<key>UI_GAME_HANDLE_TIPS</key>
+	<string>jumptip_runner_en.png</string>
+	<key>UI_GAME_MODE_TIPS</key>
+	<string>rainbowmodetip_en.png</string>
+	<key>UI_GAME_PAUSE_TIPS</key>
+	<string>pausetip_en.png</string>
+	<key>UI_DEATH_PANEL</key>
+	<string>panel_gameover_en.png</string>
+	<key>UI_DEATH_BTN_REVICE</key>
+	<string>btn_revive_en.png</string>
+	<key>UI_ROLE_BTN_LOCK_NORMAL</key>
+	<string>btn_unlock_normal_en.png</string>
+	<key>UI_ROLE_BTN_LOCK_PRESSED</key>
+	<string>btn_unlock_pressed_en.png</string>
+	<key>UI_GROUND_LEVEL_IMG</key>
+	<string>level_en.png</string>
+	<key>UI_GROUND_BTN_FAILED_BACK</key>
+	<string>btn_challenge_failed_back_en.png</string>
+	<key>UI_GROUND_BTN_SUC_BACK</key>
+	<string>btn_challenge_success_back_en.png</string>
+	<key>UI_GROUND_BTN_FAILED_HELP</key>
+	<string>btn_challenge_failed_help_en.png</string>
+	<key>UI_GROUND_AWARD_TV</key>
+	<string>challengeaward_en.png</string>
+	<key>UI_GROUND_FAILED_PANEL</key>
+	<string>panel_challenge_failed_en.png</string>
+	<key>UI_GROUND_FAILED_RESTART_BTN</key>
+	<string>btn_challenge_restart_en.png</string>
+	<key>UI_GROUND_HELP_PANEL</key>
+	<string>panel_challenge_helpok_en.png</string>
+	<key>UI_GROUND_SUC_PANEL</key>
+	<string>panel_challenge_success_en.png</string>
+	<key>UI_GROUND_SUC_NEXT_BTN</key>
+	<string>btn_challenge_next_en.png</string>
+	<key>UI_GROUND_HANDLE_TIPS</key>
+	<string>jumptip_mazejump_en.png</string>
+	<key>UI_GROUND_RULE_TIPS</key>
+	<string>rulestip_en.png</string>
+	<key>UI_GROUND_GIVEUP_PANEL</key>
+	<string>panel_challengegiveup_en.png</string>
+	<key>UI_GROUND_BTN_GIVEUP_OK</key>
+	<string>btn_giveup_ok_en.png</string>
+	<key>UI_GROUND_BTN_GIVEUP_CANCEL</key>
+	<string>btn_giveup_cancel_en.png</string>
+	<key>UI_GAMEINFO_TIPS</key>
+	<string>gameinfotip_en.png</string>
+	<key>UI_HELP_TIPS</key>
+	<string>helptip_en.png</string>
+</dict>
+</plist>
