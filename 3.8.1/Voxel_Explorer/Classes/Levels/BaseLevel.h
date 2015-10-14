@@ -11,18 +11,26 @@
 
 #include "cocos2d.h"
 #include "Area.h"
+#include "Actor.hpp"
 struct TileInfo
 {
-    TerrainTile::TileType m_Type;
-    Area::AREA_TYPE     m_AreaType;
+    typedef enum {
+        INITIALISED = 0,
+        PASSABLE = 1<<0,
+    } FLAG;
+    TerrainTile::TileType   m_Type;
+    Area::AREA_TYPE         m_AreaType;
+    
     bool    m_bVisited;
     bool    m_bMapped;
+    int     m_Flag;
     int     m_nX;
     int     m_nY;
     TileInfo()
     {
         m_Type = TerrainTile::TT_CHASM;
         m_AreaType = Area::AT_UNKNOWN;
+        m_Flag = INITIALISED;
         m_bVisited = false;
         m_bMapped = false;
         m_nX = -1;
@@ -60,7 +68,9 @@ public:
     cocos2d::Vec2 getSpawnPoint() const { return  m_spawnPoint; }
     
     void generateTerrainTiles(int x, int y , int width, int height, TerrainTile::TileType tileType, Area::AREA_TYPE areaType);
+    void setTerrainTile(int x, int y, TerrainTile::TileType tileType, Area::AREA_TYPE areaType);
     
+    bool checkMovable(Actor* actor);
 protected:
     virtual bool build() = 0;
     virtual bool createRenderObjs() = 0;
@@ -69,6 +79,9 @@ protected:
     virtual bool createItems() = 0;
 
     virtual void showMap(bool show) = 0;
+    
+private:
+    int assignTerrainTileFlag(TerrainTile::TileType type);
 protected:
     LEVEL_TYPE           m_Type;
     LEVEL_FEELING_TYPE   m_FeelingType;

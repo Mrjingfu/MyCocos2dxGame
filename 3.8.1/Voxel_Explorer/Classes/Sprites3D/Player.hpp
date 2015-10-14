@@ -9,8 +9,8 @@
 #ifndef Player_hpp
 #define Player_hpp
 
-#include "cocos2d.h"
-class Player : public cocos2d::Sprite3D
+#include "Actor.hpp"
+class Player : public Actor
 {
 public:
     typedef enum {
@@ -22,13 +22,6 @@ public:
         PS_DEATH,
         PS_UNKNOWN
     } PlayerState;
-    typedef enum {
-        PD_FORWARD = 0,
-        PD_LEFT,
-        PD_RIGHT,
-        PD_BACK,
-        RD_UNKNOWN
-    } PlayerDir;
 protected:
     Player();
     virtual ~Player();
@@ -38,10 +31,10 @@ public:
     PlayerState getState() const { return m_curState; }
     void setState(PlayerState state);
     
-    void rotateToLeft();
-    void rotateToRight();
-    void rotateToForward();
-    void rotateToBack();
+    virtual void rotateToLeft();
+    virtual void rotateToRight();
+    virtual void rotateToForward();
+    virtual void rotateToBack();
 private:
     void onEnterIdle();
     void onEnterPrepareToJump();
@@ -60,7 +53,6 @@ private:
     void onLand();
 private:
     PlayerState     m_curState;
-    PlayerDir       m_dir;
 };
 
 #endif /* Player_hpp */

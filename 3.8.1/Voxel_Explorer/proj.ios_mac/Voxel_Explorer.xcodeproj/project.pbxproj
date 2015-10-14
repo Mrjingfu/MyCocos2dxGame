@@ -65,6 +65,8 @@
 		5537C5101BCCA54D00F4200E /* ItemArmor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5537C50D1BCCA54D00F4200E /* ItemArmor.cpp */; settings = {ASSET_TAGS = (); }; };
 		5537C5131BCCA5BA00F4200E /* ItemOrnament.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5537C5111BCCA5BA00F4200E /* ItemOrnament.cpp */; settings = {ASSET_TAGS = (); }; };
 		5537C5141BCCA5BA00F4200E /* ItemOrnament.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5537C5111BCCA5BA00F4200E /* ItemOrnament.cpp */; settings = {ASSET_TAGS = (); }; };
+		553BC5011BCDF457003D907A /* Actor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 553BC4FF1BCDF457003D907A /* Actor.cpp */; settings = {ASSET_TAGS = (); }; };
+		553BC5021BCDF457003D907A /* Actor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 553BC4FF1BCDF457003D907A /* Actor.cpp */; settings = {ASSET_TAGS = (); }; };
 		555B0D151BC51A2C0055FB6D /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 555B0D001BC51A2C0055FB6D /* AppDelegate.cpp */; settings = {ASSET_TAGS = (); }; };
 		555B0D161BC51A2C0055FB6D /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 555B0D001BC51A2C0055FB6D /* AppDelegate.cpp */; settings = {ASSET_TAGS = (); }; };
 		555B0D171BC51A2C0055FB6D /* Area.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 555B0D031BC51A2C0055FB6D /* Area.cpp */; settings = {ASSET_TAGS = (); }; };
@@ -177,6 +179,8 @@
 		5537C50E1BCCA54D00F4200E /* ItemArmor.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ItemArmor.hpp; sourceTree = "<group>"; };
 		5537C5111BCCA5BA00F4200E /* ItemOrnament.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ItemOrnament.cpp; sourceTree = "<group>"; };
 		5537C5121BCCA5BA00F4200E /* ItemOrnament.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ItemOrnament.hpp; sourceTree = "<group>"; };
+		553BC4FF1BCDF457003D907A /* Actor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Actor.cpp; sourceTree = "<group>"; };
+		553BC5001BCDF457003D907A /* Actor.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Actor.hpp; sourceTree = "<group>"; };
 		555B0D001BC51A2C0055FB6D /* AppDelegate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AppDelegate.cpp; sourceTree = "<group>"; };
 		555B0D011BC51A2C0055FB6D /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		555B0D031BC51A2C0055FB6D /* Area.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Area.cpp; sourceTree = "<group>"; };
@@ -445,6 +449,8 @@
 		55EC95761BC673690008D1D7 /* Sprites3D */ = {
 			isa = PBXGroup;
 			children = (
+				553BC4FF1BCDF457003D907A /* Actor.cpp */,
+				553BC5001BCDF457003D907A /* Actor.hpp */,
 				5537C5011BCCA51500F4200E /* ItemWeapon.cpp */,
 				5537C5021BCCA51500F4200E /* ItemWeapon.hpp */,
 				5537C5031BCCA51500F4200E /* LockedDoor.cpp */,
@@ -628,6 +634,7 @@
 				555B0D191BC51A2C0055FB6D /* BaseLevel.cpp in Sources */,
 				55EC95851BC6AA7B0008D1D7 /* TerrainTile.cpp in Sources */,
 				55ECFB441BC79852007270CD /* Player.cpp in Sources */,
+				553BC5011BCDF457003D907A /* Actor.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -644,6 +651,7 @@
 				555B0D201BC51A2C0055FB6D /* StandardLevel.cpp in Sources */,
 				555B0D1A1BC51A2C0055FB6D /* BaseLevel.cpp in Sources */,
 				555B0D161BC51A2C0055FB6D /* AppDelegate.cpp in Sources */,
+				553BC5021BCDF457003D907A /* Actor.cpp in Sources */,
 				55ECFB451BC79852007270CD /* Player.cpp in Sources */,
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
 				5537C5141BCCA5BA00F4200E /* ItemOrnament.cpp in Sources */,
@@ -818,7 +826,7 @@
 					"$(SRCROOT)/../cocos2d/external",
 					"$(SRCROOT)/../cocos2d/external/chipmunk/include/chipmunk",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
@@ -847,7 +855,7 @@
 					"$(SRCROOT)/../cocos2d/external",
 					"$(SRCROOT)/../cocos2d/external/chipmunk/include/chipmunk",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;

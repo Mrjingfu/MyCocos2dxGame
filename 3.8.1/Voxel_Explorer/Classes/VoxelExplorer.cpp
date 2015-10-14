@@ -77,7 +77,9 @@ void VoxelExplorer::destroy()
 }
 bool VoxelExplorer::checkMovable()
 {
-    return true;
+    if(!m_pCurrentLevel || !m_pPlayer)
+        return false;
+    return m_pCurrentLevel->checkMovable(m_pPlayer);
 }
 void VoxelExplorer::cameraTrackPlayer()
 {

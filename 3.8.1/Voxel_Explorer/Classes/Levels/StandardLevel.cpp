@@ -104,7 +104,7 @@ bool StandardLevel::build()
     generate();
     
 #if COCOS2D_DEBUG
-    showMap(true);
+    showMap(false);
 #endif
     return true;
 }
@@ -422,27 +422,26 @@ void StandardLevel::generateDoors(Area* area)
         Door* door = iter->second;
         if(door)
         {
-            int doorIndex = door->getPos().x + door->getPos().y * m_nWidth;
             switch (door->getDoorType()) {
                 case Door::DT_EMPTY:
                 case Door::DT_PASSAGE:
-                    m_Map[doorIndex].m_Type = TerrainTile::TT_STANDARD;
+                    setTerrainTile(door->getPos().x, door->getPos().y, TerrainTile::TT_STANDARD, area->getAreaType());
                     break;
                 case Door::DT_TUNNEL:
-                    m_Map[doorIndex].m_Type = TerrainTile::TT_TUNNEL;
+                    setTerrainTile(door->getPos().x, door->getPos().y, TerrainTile::TT_TUNNEL, area->getAreaType());
                     break;
                 case Door::DT_STANDARD:
-                    m_Map[doorIndex].m_Type = TerrainTile::TT_DOOR;
+                    setTerrainTile(door->getPos().x, door->getPos().y, TerrainTile::TT_DOOR, area->getAreaType());
                     break;
                 case Door::DT_UNLOCKED:
-                    m_Map[doorIndex].m_Type = TerrainTile::TT_DOOR;
+                    setTerrainTile(door->getPos().x, door->getPos().y, TerrainTile::TT_DOOR, area->getAreaType());
                     break;
                 case Door::DT_HIDDEN:
-                    m_Map[doorIndex].m_Type = TerrainTile::TT_SECRET_DOOR;
+                    setTerrainTile(door->getPos().x, door->getPos().y, TerrainTile::TT_SECRET_DOOR, area->getAreaType());
                     break;
                 case Door::DT_BARRICADE:
                 case Door::DT_LOCKED:
-                    m_Map[doorIndex].m_Type = TerrainTile::TT_LOCKED_DOOR;
+                    setTerrainTile(door->getPos().x, door->getPos().y, TerrainTile::TT_LOCKED_DOOR, area->getAreaType());
                     break;
                 default:
                     break;

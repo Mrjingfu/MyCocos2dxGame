@@ -27,7 +27,6 @@ Player* Player::create(const std::string& modelPath)
 Player::Player()
 {
     m_curState  = PS_UNKNOWN;
-    m_dir       = PD_FORWARD;
 }
 Player::~Player()
 {
@@ -93,8 +92,7 @@ void Player::rotateToLeft()
     EaseSineIn* rotateTo = EaseSineIn::create(RotateTo::create(0.2f, Vec3(0,-90,0)));
     rotateTo->setTag(1);
     this->runAction(rotateTo);
-    
-    m_dir = PD_LEFT;
+    Actor::rotateToLeft();
 }
 void Player::rotateToRight()
 {
@@ -103,7 +101,7 @@ void Player::rotateToRight()
     EaseSineIn* rotateTo = EaseSineIn::create(RotateTo::create(0.2f, Vec3(0,90,0)));
     rotateTo->setTag(2);
     this->runAction(rotateTo);
-    m_dir = PD_RIGHT;
+    Actor::rotateToRight();
 }
 void Player::rotateToForward()
 {
@@ -112,8 +110,7 @@ void Player::rotateToForward()
     EaseSineIn* rotateTo = EaseSineIn::create(RotateTo::create(0.2f, Vec3(0,180,0)));
     rotateTo->setTag(3);
     this->runAction(rotateTo);
-    m_dir = PD_FORWARD;
-
+    Actor::rotateToForward();
 }
 void Player::rotateToBack()
 {
@@ -122,7 +119,7 @@ void Player::rotateToBack()
     EaseSineIn* rotateTo = EaseSineIn::create(RotateTo::create(0.2f, Vec3(0,0,0)));
     rotateTo->setTag(4);
     this->runAction(rotateTo);
-    m_dir = PD_BACK;
+    Actor::rotateToBack();
 }
 void Player::onEnterIdle()
 {
@@ -147,16 +144,16 @@ void Player::onEnterJumpMove()
 {
     Vec3 dir = Vec3::ZERO;
     switch (m_dir) {
-        case PD_FORWARD:
+        case AD_FORWARD:
             dir = Vec3(0, 0, -TerrainTile::CONTENT_SCALE);
             break;
-        case PD_BACK:
+        case AD_BACK:
             dir = Vec3(0, 0, TerrainTile::CONTENT_SCALE);
             break;
-        case PD_LEFT:
+        case AD_LEFT:
             dir = Vec3(-TerrainTile::CONTENT_SCALE, 0, 0);
             break;
-        case PD_RIGHT:
+        case AD_RIGHT:
             dir = Vec3(TerrainTile::CONTENT_SCALE, 0, 0);
             break;
         default:

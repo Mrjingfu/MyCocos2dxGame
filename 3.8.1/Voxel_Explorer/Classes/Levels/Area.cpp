@@ -353,10 +353,7 @@ void Area::setTerrainTile(BaseLevel* level, int x, int y, TerrainTile::TileType 
 {
     if(!level)
         return;
-    int index = x + y * level->getWidth();
-    level->m_Map[index].m_Type = type;
-    level->m_Map[index].m_nX = x;
-    level->m_Map[index].m_nY = y;
+    level->setTerrainTile(x, y, type, m_Type);
 }
 void Area::setRandomTerrainTile(BaseLevel* level, int m, TerrainTile::TileType type)
 {
