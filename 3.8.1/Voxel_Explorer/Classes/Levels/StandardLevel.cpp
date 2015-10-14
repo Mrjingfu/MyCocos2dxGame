@@ -10,6 +10,7 @@
 #include "Graph.h"
 #include "VoxelExplorer.h"
 #include "TerrainTile.hpp"
+#include "StandardDoor.hpp"
 USING_NS_CC;
 
 StandardLevel::StandardLevel()
@@ -129,6 +130,22 @@ bool StandardLevel::createRenderObjs()
                     {
                         tile->setPosition3D(Vec3(j*TerrainTile::CONTENT_SCALE, -TerrainTile::CONTENT_SCALE*0.5f, -i*TerrainTile::CONTENT_SCALE));
                     }
+                    break;
+                case TerrainTile::TT_DOOR:
+                    {
+                        StandardDoor* door = StandardDoor::create();
+                        if(!door)
+                            return false;
+                        door->setPosition3D(Vec3(j*TerrainTile::CONTENT_SCALE, -TerrainTile::CONTENT_SCALE, -i*TerrainTile::CONTENT_SCALE));
+                        door->setActorDir(info.m_Dir);
+                        VoxelExplorer::getInstance()->getTerrainTilesLayer()->addChild(door);
+                    }
+                    break;
+                case TerrainTile::TT_OPENED_DOOR:
+                    break;
+                case TerrainTile::TT_LOCKED_DOOR:
+                    break;
+                case TerrainTile::TT_SECRET_DOOR:
                     break;
                 default:
                     break;
@@ -422,26 +439,38 @@ void StandardLevel::generateDoors(Area* area)
         Door* door = iter->second;
         if(door)
         {
+            Actor::ActorDir dir = Actor::AD_UNKNOWN;
+            if(door->getPos().x == area->getRect().getMinX())
+                dir = Actor::AD_LEFT;
+            else if(door->getPos().x == area->getRect().getMaxX())
+                dir = Actor::AD_RIGHT;
+            else
+            {
+                if(door->getPos().y == area->getRect().getMinY())
+                    dir = Actor::AD_BACK;
+                else if(door->getPos().y == area->getRect().getMaxY())
+                    dir = Actor::AD_FORWARD;
+            }
             switch (door->getDoorType()) {
                 case Door::DT_EMPTY:
                 case Door::DT_PASSAGE:
-                    setTerrainTile(door->getPos().x, door->getPos().y, TerrainTile::TT_STANDARD, area->getAreaType());
+                    setTerrainTile(door->getPos().x, door->getPos().y, TerrainTile::TT_STANDARD, area->getAreaType(),dir);
                     break;
                 case Door::DT_TUNNEL:
-                    setTerrainTile(door->getPos().x, door->getPos().y, TerrainTile::TT_TUNNEL, area->getAreaType());
+                    setTerrainTile(door->getPos().x, door->getPos().y, TerrainTile::TT_TUNNEL, area->getAreaType(),dir);
                     break;
                 case Door::DT_STANDARD:
-                    setTerrainTile(door->getPos().x, door->getPos().y, TerrainTile::TT_DOOR, area->getAreaType());
+                    setTerrainTile(door->getPos().x, door->getPos().y, TerrainTile::TT_DOOR, area->getAreaType(),dir);
                     break;
                 case Door::DT_UNLOCKED:
-                    setTerrainTile(door->getPos().x, door->getPos().y, TerrainTile::TT_DOOR, area->getAreaType());
+                    setTerrainTile(door->getPos().x, door->getPos().y, TerrainTile::TT_DOOR, area->getAreaType(),dir);
                     break;
                 case Door::DT_HIDDEN:
-                    setTerrainTile(door->getPos().x, door->getPos().y, TerrainTile::TT_SECRET_DOOR, area->getAreaType());
+                    setTerrainTile(door->getPos().x, door->getPos().y, TerrainTile::TT_SECRET_DOOR, area->getAreaType(), dir);
                     break;
                 case Door::DT_BARRICADE:
                 case Door::DT_LOCKED:
-                    setTerrainTile(door->getPos().x, door->getPos().y, TerrainTile::TT_LOCKED_DOOR, area->getAreaType());
+                    setTerrainTile(door->getPos().x, door->getPos().y, TerrainTile::TT_LOCKED_DOOR, area->getAreaType(), dir);
                     break;
                 default:
                     break;
