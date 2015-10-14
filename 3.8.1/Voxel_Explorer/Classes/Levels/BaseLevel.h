@@ -18,14 +18,22 @@ struct TileInfo
         INITIALISED = 0,
         PASSABLE = 1<<0,
     } FLAG;
+    typedef enum {
+        FORWARD = 0,
+        LEFT,
+        RIGHT,
+        BACK,
+        UNKNOWN
+    } Direction;
     TerrainTile::TileType   m_Type;
     Area::AREA_TYPE         m_AreaType;
     
-    bool    m_bVisited;
-    bool    m_bMapped;
-    int     m_Flag;
-    int     m_nX;
-    int     m_nY;
+    bool        m_bVisited;
+    bool        m_bMapped;
+    int         m_Flag;
+    int         m_nX;
+    int         m_nY;
+    Actor::ActorDir   m_Dir;
     TileInfo()
     {
         m_Type = TerrainTile::TT_CHASM;
@@ -35,6 +43,7 @@ struct TileInfo
         m_bMapped = false;
         m_nX = -1;
         m_nY = -1;
+        m_Dir = Actor::AD_UNKNOWN;
     }
 };
 class BaseLevel : public cocos2d::Ref
@@ -67,8 +76,8 @@ public:
     
     cocos2d::Vec2 getSpawnPoint() const { return  m_spawnPoint; }
     
-    void generateTerrainTiles(int x, int y , int width, int height, TerrainTile::TileType tileType, Area::AREA_TYPE areaType);
-    void setTerrainTile(int x, int y, TerrainTile::TileType tileType, Area::AREA_TYPE areaType);
+    void generateTerrainTiles(int x, int y , int width, int height, TerrainTile::TileType tileType, Area::AREA_TYPE areaType, Actor::ActorDir dir = Actor::AD_UNKNOWN);
+    void setTerrainTile(int x, int y, TerrainTile::TileType tileType, Area::AREA_TYPE areaType , Actor::ActorDir dir = Actor::AD_UNKNOWN);
     
     bool checkMovable(Actor* actor);
 protected:

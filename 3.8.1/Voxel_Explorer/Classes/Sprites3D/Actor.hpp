@@ -23,7 +23,6 @@ public:
 protected:
     Actor();
     ~Actor();
-    
     virtual void rotateToLeft() { m_dir = AD_LEFT; };
     virtual void rotateToRight() { m_dir = AD_RIGHT; };
     virtual void rotateToForward() { m_dir = AD_FORWARD; };
@@ -32,6 +31,7 @@ public:
     cocos2d::Vec2 getPosInMap();
     
     ActorDir getActorDir() const { return m_dir; }
+    void setActorDir( ActorDir dir );
 protected:
     ActorDir       m_dir;
 };

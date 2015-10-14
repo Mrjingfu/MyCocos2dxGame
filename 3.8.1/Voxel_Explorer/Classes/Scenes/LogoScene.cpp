@@ -43,10 +43,10 @@ bool LogoScene::init()
     m_pLogoSprite = Sprite::create("logo.png");
     if(!m_pLogoSprite)
         return false;
-    float scale = size.width / 960.0f;
-    m_pLogoSprite->setPosition(size.width*0.5f, size.height*0.5f);
+//    float scale = size.width / 480.0f;
+    m_pLogoSprite->setPosition(size.width*0.5f , size.height*0.5f);
     m_pLogoSprite->setOpacity(0);
-    m_pLogoSprite->setScale(scale);
+//    m_pLogoSprite->setScale(scale);
     addChild(m_pLogoSprite);
     
     EaseSineOut* easeOut = EaseSineOut::create(FadeIn::create(1.0f));

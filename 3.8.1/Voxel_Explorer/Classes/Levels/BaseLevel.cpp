@@ -37,7 +37,7 @@ void BaseLevel::setLevelType(BaseLevel::LEVEL_TYPE type)
 {
     m_Type = type;
 }
-void BaseLevel::generateTerrainTiles(int x, int y , int width, int height, TerrainTile::TileType tileType, Area::AREA_TYPE areaType)
+void BaseLevel::generateTerrainTiles(int x, int y , int width, int height, TerrainTile::TileType tileType, Area::AREA_TYPE areaType, Actor::ActorDir dir)
 {
     int pos = y * m_nWidth + x;
     for (int i = y; i < y + height; i++, pos += m_nWidth) {
@@ -47,10 +47,11 @@ void BaseLevel::generateTerrainTiles(int x, int y , int width, int height, Terra
             m_Map[j].m_Flag = assignTerrainTileFlag(tileType);
             m_Map[j].m_nX = x;
             m_Map[j].m_nY = y;
+            m_Map[j].m_Dir = dir;
         }
     }
 }
-void BaseLevel::setTerrainTile(int x, int y, TerrainTile::TileType tileType, Area::AREA_TYPE areaType)
+void BaseLevel::setTerrainTile(int x, int y, TerrainTile::TileType tileType, Area::AREA_TYPE areaType, Actor::ActorDir dir)
 {
     int index = x + y * m_nWidth;
     m_Map[index].m_Type = tileType;
@@ -58,6 +59,7 @@ void BaseLevel::setTerrainTile(int x, int y, TerrainTile::TileType tileType, Are
     m_Map[index].m_Flag = assignTerrainTileFlag(tileType);
     m_Map[index].m_nX = x;
     m_Map[index].m_nY = y;
+    m_Map[index].m_Dir = dir;
 }
 bool BaseLevel::checkMovable(Actor* actor)
 {
