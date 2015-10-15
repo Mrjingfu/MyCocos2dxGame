@@ -10,6 +10,7 @@
 #include "TombLevel.h"
 #include "TerrainTile.hpp"
 #include "BaseDoor.hpp"
+#include "LevelResourceManager.h"
 USING_NS_CC;
 
 VoxelExplorer* g_pVoxelExplorerInstance = nullptr;
@@ -49,6 +50,11 @@ bool VoxelExplorer::init(Layer* pMainLayer)
     if(pMainLayer == nullptr)
         return false;
     m_pMainLayer = pMainLayer;
+    
+    if (!LevelResourceManager::getInstance()->initLevelRes(Value(m_nDepth).asString())) {
+        CCLOG("load level resource failed!");
+        return false;
+    }
     
     if(!createLayers())
     {
@@ -191,7 +197,7 @@ bool VoxelExplorer::createLights()
     if(!directionLight)
         return false;
     directionLight->setLightFlag(LightFlag::LIGHT1);
-    m_p3DLayer->addChild(directionLight);
+    //m_p3DLayer->addChild(directionLight);
 
     return true;
 }

@@ -35,6 +35,7 @@ bool StandardDoor::createFakeDoor()
     if(!m_pFakeDoor)
         return false;
     m_pFakeDoor->setCameraMask((unsigned int)CameraFlag::USER1);
+    m_pFakeDoor->setLightMask((unsigned int)LightFlag::LIGHT0);
     m_pFakeDoor->setPosition3D(Vec3(getPositionX(), -TerrainTile::CONTENT_SCALE, getPositionZ()));
     this->getParent()->addChild(m_pFakeDoor);
     return true;

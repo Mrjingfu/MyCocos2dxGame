@@ -18,6 +18,7 @@ Player* Player::create(const std::string& modelPath)
     {
         player->_contentSize = player->getBoundingBox().size;
         player->setCameraMask((unsigned int)CameraFlag::USER1);
+        player->setLightMask(((unsigned int)LightFlag::LIGHT0)|(unsigned int)LightFlag::LIGHT1);
         player->autorelease();
         return player;
     }
@@ -218,6 +219,7 @@ bool Player::createPlayerLight()
     m_pPlayerLight = PointLight::create(getPosition3D()+Vec3(0,TerrainTile::CONTENT_SCALE*2,0), Color3B::WHITE, TerrainTile::CONTENT_SCALE*5);
     if(!m_pPlayerLight)
         return false;
+    m_pPlayerLight->setLightFlag(LightFlag::LIGHT0);
     VoxelExplorer::getInstance()->get3DLayer()->addChild(m_pPlayerLight);
     return true;
 }

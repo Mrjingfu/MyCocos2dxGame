@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>model</key>
+	<dict>
+		<key>model_player</key>
+		<string>chr_sword.c3b</string>
+		<key>model_terrain</key>
+		<string>16x16x16.c3b</string>
+	</dict>
+	<key>1</key>
+	<dict>
+		<key>TT_STANDARD</key>
+		<string>tile_standard_1.png</string>
+		<key>TT_WALL</key>
+		<string>tile_wall_1.png</string>
+		<key>TT_ENTRANCE</key>
+		<string>tile_entrance_1.png</string>
+		<key>TT_EXIT</key>
+		<string>tile_exit_1.png</string>
+		<key>TT_TUNNEL</key>
+		<string>tile_tunnel_1.png</string>
+		<key>TT_DOOR</key>
+		<string>tile_standard_1.png</string>
+		<key>TT_OPENED_DOOR</key>
+		<string>tile_standard_1.png</string>
+		<key>TT_LOCKED_DOOR</key>
+		<string>tile_standard_1.png</string>
+		<key>TT_SECRET_DOOR</key>
+		<string>tile_standard_1.png</string>
+		<key>TT_TOXIC_TRAP</key>
+		<string>tile_toxic_trap.png</string>
+		<key>TT_HIDE_TOXIC_TRAP</key>
+		<string>tile_toxic_trap.png</string>
+		<key>TT_FIRE_TRAP</key>
+		<string>tile_fire_trap.png</string>
+		<key>TT_HIDE_FIRE_TRAP</key>
+		<string>tile_fire_trap.png</string>
+		<key>TT_PARALYTIC_TRAP</key>
+		<string>tile_paralytic_trap.png</string>
+		<key>TT_HIDE_PARALYTIC_TRAP</key>
+		<string>tile_paralytic_trap.png</string>
+		<key>TT_GRIPPING_TRAP</key>
+		<string>tile_gripping_trap.png</string>
+		<key>TT_HIDE_GRIPPING_TRAP</key>
+		<string>tile_gripping_trap.png</string>
+		<key>TT_SUMMONING_TRAP</key>
+		<string>tile_summoning_trap.png</string>
+		<key>TT_HIDE_SUMMONING_TRAP</key>
+		<string>tile_summoning_trap.png</string>
+		<key>TT_WEAK_TRAP</key>
+		<string>tile_weak_trap.png</string>
+		<key>TT_HIDE_WEAK_TRAP</key>
+		<string>tile_weak_trap.png</string>
+	</dict>
+</dict>
+</plist>
