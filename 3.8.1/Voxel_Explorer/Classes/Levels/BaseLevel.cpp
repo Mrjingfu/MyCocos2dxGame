@@ -15,9 +15,8 @@ BaseLevel::BaseLevel()
     m_FeelingType = LFT_NONE;
     m_pMapDrawNode = nullptr;
     m_pDebugDrawNode = nullptr;
-    cocos2d::Size size = Director::getInstance()->getVisibleSize();
-    m_nWidth = size.width/10;
-    m_nHeight = size.height/10;
+    m_nWidth = 32;
+    m_nHeight = 48;
 }
 void BaseLevel::create()
 {

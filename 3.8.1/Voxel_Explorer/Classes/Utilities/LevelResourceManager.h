@@ -21,8 +21,7 @@ public:
     void clearLevelRes(const std::string& type);
     std::string getModelRes(std::string& type);
     std::string getTerrainTileRes(std::string& type);
-    int getMaxLevelType(){return m_LevelRes.size()-1;}
-
+    
 private:
     cocos2d::ValueMap    m_models;
     cocos2d::ValueMap    m_tileds;

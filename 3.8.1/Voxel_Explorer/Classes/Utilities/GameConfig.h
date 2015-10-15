@@ -12,9 +12,11 @@
 
 #define SCREEN_HEIGHT        (cocos2d::Director::getInstance()->getVisibleSize().height)
 #define SCREEN_WIDTH         (cocos2d::Director::getInstance()->getVisibleSize().width)
-#define SCREEN_SCALE         (SCREEN_HEIGHT/320.0f)
-#define WND_CENTER_X (SCREEN_WIDTH/2)
-#define WND_CENTER_Y (SCREEN_HEIGHT/2)
+#define SCREEN_SCALE         (SCREEN_WIDTH/480.f)
+#define ORIGIN_X      (Director::getInstance()->getVisibleOrigin().x)
+#define ORIGIN_Y      (Director::getInstance()->getVisibleOrigin().y)
+#define WND_CENTER_X (SCREEN_WIDTH/2+ORIGIN_X)
+#define WND_CENTER_Y (SCREEN_HEIGHT/2+ORIGIN_Y)
 #define WINDOW_CENTER cocos2d::Vec2(WND_CENTER_X,WND_CENTER_Y)
 
 #define DEFAULT_FONT "ZpixEX2_EX.ttf"

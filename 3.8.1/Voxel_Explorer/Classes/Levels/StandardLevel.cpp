@@ -11,6 +11,7 @@
 #include "VoxelExplorer.h"
 #include "TerrainTile.hpp"
 #include "StandardDoor.hpp"
+
 USING_NS_CC;
 
 StandardLevel::StandardLevel()
@@ -353,7 +354,8 @@ void StandardLevel::showMap(bool show)
             m_pMapDrawNode = DrawNode::create();
             VoxelExplorer::getInstance()->getMainLayer()->addChild(m_pMapDrawNode);
             m_pMapDrawNode->setCameraMask((unsigned int)CameraFlag::USER2);
-            m_pMapDrawNode->setScale(10);
+            auto winSize = Director::getInstance()->getVisibleSize();
+            m_pMapDrawNode->setScale(winSize.width/48);
         }
         m_pMapDrawNode->clear();
         
