@@ -8,6 +8,7 @@
 
 #include "Actor.hpp"
 #include "TerrainTile.hpp"
+#include "VoxelExplorer.h"
 USING_NS_CC;
 Actor::Actor()
 {
@@ -39,4 +40,9 @@ void Actor::setActorDir( ActorDir dir )
         default:
             break;
     }
+}
+void Actor::updateTerrainTileFlag(int flag)
+{
+    if(VoxelExplorer::getInstance()->getCurrentLevel())
+        VoxelExplorer::getInstance()->getCurrentLevel()->setTerrainTileFlag(getPosInMap().x, getPosInMap().y, flag);
 }

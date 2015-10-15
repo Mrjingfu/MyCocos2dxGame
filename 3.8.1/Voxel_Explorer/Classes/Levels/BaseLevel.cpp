@@ -7,6 +7,7 @@
 //
 
 #include "BaseLevel.h"
+#include "VoxelExplorer.h"
 USING_NS_CC;
 
 BaseLevel::BaseLevel()
@@ -60,6 +61,11 @@ void BaseLevel::setTerrainTile(int x, int y, TerrainTile::TileType tileType, Are
     m_Map[index].m_nY = y;
     m_Map[index].m_Dir = dir;
 }
+void BaseLevel::setTerrainTileFlag(int x, int y, int flag )
+{
+    int index = x + y * m_nWidth;
+    m_Map[index].m_Flag = flag;
+}
 bool BaseLevel::checkMovable(Actor* actor)
 {
     if(!actor)
@@ -75,6 +81,12 @@ bool BaseLevel::checkMovable(Actor* actor)
         pos += Vec2(0, -1);
     int index = pos.x + pos.y*m_nWidth;
     TileInfo info = m_Map[index];
+    if((info.m_Flag & TileInfo::LOS_BLOCKING) != 0)
+    {
+        if( info.m_Type == TerrainTile::TT_DOOR || info.m_Type == TerrainTile::TT_LOCKED_DOOR || info.m_Type == TerrainTile::TT_SECRET_DOOR )
+            VoxelExplorer::getInstance()->handlDoor(pos);
+        return false;
+    }
     if((info.m_Flag & TileInfo::PASSABLE) != 0)
         return true;
     return false;
@@ -84,14 +96,18 @@ int BaseLevel::assignTerrainTileFlag(TerrainTile::TileType type)
     int flag = TileInfo::INITIALISED;
     switch (type) {
         case TerrainTile::TT_STANDARD:
-            flag |= TileInfo::PASSABLE;
+            flag = TileInfo::PASSABLE;
             break;
         case TerrainTile::TT_TUNNEL:
-            flag |= TileInfo::PASSABLE;
+            flag = TileInfo::PASSABLE;
             break;
-        case TerrainTile::TT_DOOR:          ////临时
+        case TerrainTile::TT_DOOR:
+        case TerrainTile::TT_LOCKED_DOOR:
+        case TerrainTile::TT_SECRET_DOOR:
+            flag = TileInfo::PASSABLE | TileInfo::LOS_BLOCKING;
+            break;
         case TerrainTile::TT_OPENED_DOOR:
-            flag |= TileInfo::PASSABLE;
+            flag = TileInfo::PASSABLE;
             break;
         default:
             break;

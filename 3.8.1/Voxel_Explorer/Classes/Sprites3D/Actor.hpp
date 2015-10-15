@@ -31,7 +31,9 @@ public:
     cocos2d::Vec2 getPosInMap();
     
     ActorDir getActorDir() const { return m_dir; }
-    void setActorDir( ActorDir dir );
+    virtual void setActorDir( ActorDir dir );
+    
+    void updateTerrainTileFlag(int flag);
 protected:
     ActorDir       m_dir;
 };

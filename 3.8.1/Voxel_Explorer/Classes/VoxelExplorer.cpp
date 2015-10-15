@@ -9,6 +9,7 @@
 #include "VoxelExplorer.h"
 #include "TombLevel.h"
 #include "TerrainTile.hpp"
+#include "BaseDoor.hpp"
 #include "LevelResourceManager.h"
 USING_NS_CC;
 
@@ -28,7 +29,9 @@ VoxelExplorer::VoxelExplorer()
     m_pMainLayer = nullptr;
     m_p3DLayer  = nullptr;
     m_pTerrainTilesLayer = nullptr;
-    m_pTerrainDecoratorsLayer = nullptr;
+    m_pTerrainDoorsLayer = nullptr;
+    m_pItemsLayer        = nullptr;
+    m_pMonstersLayer     = nullptr;
     m_p2DLayer = nullptr;
     m_pHUDLayer = nullptr;
     m_pUILayer = nullptr;
@@ -56,6 +59,11 @@ bool VoxelExplorer::init(Layer* pMainLayer)
     if(!createLayers())
     {
         CCLOG("Create layers failed!");
+        return false;
+    }
+    if(!createLights())
+    {
+        CCLOG("Create lights failed!");
         return false;
     }
     if(!createCameras())
@@ -98,6 +106,36 @@ void VoxelExplorer::cameraTrackPlayer()
         m_pMainCamera->runAction(moveTo);
     }
 }
+void VoxelExplorer::handlDoor(const cocos2d::Vec2& mapPos)
+{
+    if(m_pTerrainDoorsLayer && m_pPlayer)
+    {
+        for (const auto& child : m_pTerrainDoorsLayer->getChildren())
+        {
+            BaseDoor* door = static_cast<BaseDoor*>(child);
+            if(door && door->getPosInMap() == mapPos)
+            {
+                if(door->getDoorState() == BaseDoor::DS_HIDE)
+                {
+                    door->setDoorState(BaseDoor::DS_CLOSED);
+                    return;
+                }
+                else if(door->getDoorState() == BaseDoor::DS_CLOSED)
+                {
+                    door->setDoorState(BaseDoor::DS_OPENED);
+                    return;
+                }
+                else if(door->getDoorState() == BaseDoor::DS_LOCKED)
+                {
+                    ////检查角色钥匙如果有责开启
+                    door->setDoorState(BaseDoor::DS_CLOSED);
+                    return;
+                }
+            }
+        }
+
+    }
+}
 bool VoxelExplorer::createLayers()
 {
     m_p3DLayer = Layer::create();
@@ -112,11 +150,23 @@ bool VoxelExplorer::createLayers()
     m_pTerrainTilesLayer->setCameraMask((unsigned int)CameraFlag::USER1);
     m_p3DLayer->addChild(m_pTerrainTilesLayer);
     
-    m_pTerrainDecoratorsLayer = Layer::create();
-    if(!m_pTerrainDecoratorsLayer)
+    m_pTerrainDoorsLayer = Layer::create();
+    if(!m_pTerrainDoorsLayer)
         return false;
-    m_pTerrainDecoratorsLayer->setCameraMask((unsigned int)CameraFlag::USER1);
-    m_p3DLayer->addChild(m_pTerrainDecoratorsLayer);
+    m_pTerrainDoorsLayer->setCameraMask((unsigned int)CameraFlag::USER1);
+    m_p3DLayer->addChild(m_pTerrainDoorsLayer);
+    
+    m_pItemsLayer = Layer::create();
+    if(!m_pItemsLayer)
+        return false;
+    m_pItemsLayer->setCameraMask((unsigned int)CameraFlag::USER1);
+    m_p3DLayer->addChild(m_pItemsLayer);
+    
+    m_pMonstersLayer = Layer::create();
+    if(!m_pMonstersLayer)
+        return false;
+    m_pMonstersLayer->setCameraMask((unsigned int)CameraFlag::USER1);
+    m_p3DLayer->addChild(m_pMonstersLayer);
     
     m_p2DLayer = Layer::create();
     if(!m_p2DLayer)
@@ -132,6 +182,23 @@ bool VoxelExplorer::createLayers()
     if (!m_pUILayer)
         return false;
     m_p2DLayer->addChild(m_pUILayer);
+    return true;
+}
+bool VoxelExplorer::createLights()
+{
+    if(!m_p3DLayer)
+        return false;
+    AmbientLight* ambLight = AmbientLight::create(Color3B(50, 50, 50));
+    if(!ambLight)
+        return false;
+    ambLight->setLightFlag(LightFlag::LIGHT1);
+    m_p3DLayer->addChild(ambLight);
+    DirectionLight* directionLight = DirectionLight::create(Vec3(-2, -4, -3), Color3B(50, 50, 50));
+    if(!directionLight)
+        return false;
+    directionLight->setLightFlag(LightFlag::LIGHT1);
+    //m_p3DLayer->addChild(directionLight);
+
     return true;
 }
 bool VoxelExplorer::createLevel()
@@ -178,7 +245,6 @@ bool VoxelExplorer::createPlayer()
     
     m_pMainCamera->setPosition3D(m_pPlayer->getPosition3D() + Vec3(0, 5*TerrainTile::CONTENT_SCALE, 4*TerrainTile::CONTENT_SCALE ));
     m_pMainCamera->lookAt(m_pPlayer->getPosition3D() + Vec3(0,0.5f*TerrainTile::CONTENT_SCALE,0));
-    
     m_pPlayer->setState(Player::PS_IDLE);
     return true;
 }

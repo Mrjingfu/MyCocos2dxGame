@@ -15,8 +15,8 @@ class StandardDoor : public BaseDoor
     StandardDoor();
     ~StandardDoor();
 public:
-    static StandardDoor* create();
+    static StandardDoor* create(bool show);
     
-    virtual bool createFakeDoor(TerrainTile::TileType type);
+    virtual bool createFakeDoor();
 };
 #endif /* StandardDoor_hpp */
