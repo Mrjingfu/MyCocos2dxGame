@@ -14,7 +14,7 @@ USING_NS_CC;
 Player* Player::create(const std::string& modelPath)
 {
     auto player = new (std::nothrow) Player();
-    if (player && player->initWithFile(modelPath))
+    if (player && player->initWithFile(modelPath) && player->createPlayerLight())
     {
         player->_contentSize = player->getBoundingBox().size;
         player->setCameraMask((unsigned int)CameraFlag::USER1);
@@ -30,6 +30,21 @@ Player::Player()
 }
 Player::~Player()
 {
+}
+void Player::onEnter()
+{
+    Actor::onEnter();
+    scheduleUpdate();
+}
+void Player::onExit()
+{
+    unscheduleUpdate();
+    Actor::onExit();
+}
+void Player::update(float delta)
+{
+    if(m_pPlayerLight)
+        m_pPlayerLight->setPosition3D(Vec3(getPositionX(),TerrainTile::CONTENT_SCALE*2,getPositionZ()));
 }
 void Player::setState(PlayerState state)
 {
@@ -197,4 +212,12 @@ void Player::onLand()
 {
     setState(PS_IDLE);
     VoxelExplorer::getInstance()->cameraTrackPlayer();
+}
+bool Player::createPlayerLight()
+{
+    m_pPlayerLight = PointLight::create(getPosition3D()+Vec3(0,TerrainTile::CONTENT_SCALE*2,0), Color3B::WHITE, TerrainTile::CONTENT_SCALE*5);
+    if(!m_pPlayerLight)
+        return false;
+    VoxelExplorer::getInstance()->get3DLayer()->addChild(m_pPlayerLight);
+    return true;
 }

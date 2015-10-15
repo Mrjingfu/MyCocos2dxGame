@@ -133,19 +133,55 @@ bool StandardLevel::createRenderObjs()
                     break;
                 case TerrainTile::TT_DOOR:
                     {
-                        StandardDoor* door = StandardDoor::create();
+                        StandardDoor* door = StandardDoor::create(false);
                         if(!door)
                             return false;
-                        door->setPosition3D(Vec3(j*TerrainTile::CONTENT_SCALE, -TerrainTile::CONTENT_SCALE, -i*TerrainTile::CONTENT_SCALE));
+                        door->setPosition3D(Vec3(j*TerrainTile::CONTENT_SCALE, -TerrainTile::CONTENT_SCALE*0.5f, -i*TerrainTile::CONTENT_SCALE));
+                        VoxelExplorer::getInstance()->getTerrainDoorsLayer()->addChild(door);
+                        if(!door->createFakeDoor())
+                            return false;
                         door->setActorDir(info.m_Dir);
-                        VoxelExplorer::getInstance()->getTerrainTilesLayer()->addChild(door);
+                        door->setDoorState(BaseDoor::DS_CLOSED);
                     }
                     break;
                 case TerrainTile::TT_OPENED_DOOR:
+                    {
+                        StandardDoor* door = StandardDoor::create(false);
+                        if(!door)
+                            return false;
+                        door->setPosition3D(Vec3(j*TerrainTile::CONTENT_SCALE, -TerrainTile::CONTENT_SCALE*0.5f, -i*TerrainTile::CONTENT_SCALE));
+                        VoxelExplorer::getInstance()->getTerrainDoorsLayer()->addChild(door);
+                        if(!door->createFakeDoor())
+                            return false;
+                        door->setActorDir(info.m_Dir);
+                        door->setDoorState(BaseDoor::DS_OPENED);
+                    }
                     break;
                 case TerrainTile::TT_LOCKED_DOOR:
+                    {
+                        StandardDoor* door = StandardDoor::create(false);
+                        if(!door)
+                            return false;
+                        door->setPosition3D(Vec3(j*TerrainTile::CONTENT_SCALE, -TerrainTile::CONTENT_SCALE*0.5f, -i*TerrainTile::CONTENT_SCALE));
+                        VoxelExplorer::getInstance()->getTerrainDoorsLayer()->addChild(door);
+                        if(!door->createFakeDoor())
+                            return false;
+                        door->setActorDir(info.m_Dir);
+                        door->setDoorState(BaseDoor::DS_LOCKED);
+                    }
                     break;
                 case TerrainTile::TT_SECRET_DOOR:
+                    {
+                        StandardDoor* door = StandardDoor::create(true);
+                        if(!door)
+                            return false;
+                        door->setPosition3D(Vec3(j*TerrainTile::CONTENT_SCALE, -TerrainTile::CONTENT_SCALE*0.5f, -i*TerrainTile::CONTENT_SCALE));
+                        VoxelExplorer::getInstance()->getTerrainDoorsLayer()->addChild(door);
+                        if(!door->createFakeDoor())
+                            return false;
+                        door->setActorDir(info.m_Dir);
+                        door->setDoorState(BaseDoor::DS_HIDE);
+                    }
                     break;
                 default:
                     break;

@@ -16,7 +16,8 @@ struct TileInfo
 {
     typedef enum {
         INITIALISED = 0,
-        PASSABLE = 1<<0,
+        PASSABLE        = 1<<0,
+        LOS_BLOCKING    = 2<<0,
     } FLAG;
     typedef enum {
         FORWARD = 0,
@@ -78,6 +79,7 @@ public:
     
     void generateTerrainTiles(int x, int y , int width, int height, TerrainTile::TileType tileType, Area::AREA_TYPE areaType, Actor::ActorDir dir = Actor::AD_UNKNOWN);
     void setTerrainTile(int x, int y, TerrainTile::TileType tileType, Area::AREA_TYPE areaType , Actor::ActorDir dir = Actor::AD_UNKNOWN);
+    void setTerrainTileFlag(int x, int y, int flag );
     
     bool checkMovable(Actor* actor);
 protected:

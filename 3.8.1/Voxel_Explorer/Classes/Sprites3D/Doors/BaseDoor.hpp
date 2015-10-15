@@ -15,6 +15,7 @@ class BaseDoor : public Actor
 {
 public:
     typedef enum{
+        DS_UNKNOWN,
         DS_CLOSED,
         DS_OPENED,
         DS_LOCKED,
@@ -25,7 +26,7 @@ protected:
     BaseDoor();
     ~BaseDoor();
     
-    virtual bool createFakeDoor(TerrainTile::TileType type) = 0;
+    virtual bool createFakeDoor() = 0;
     
     virtual void onEnterClosed();
     virtual void onExitClosed();
@@ -41,8 +42,11 @@ protected:
 public:
     DoorState getDoorState() const;
     void setDoorState(DoorState state);
+    
+    virtual void setActorDir( ActorDir dir ) override;
 protected:
     DoorState   m_DoorState;
+    DoorState   m_DoorLastState;
     cocos2d::Sprite3D*      m_pFakeDoor;
 };
 

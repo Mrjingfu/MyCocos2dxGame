@@ -25,6 +25,9 @@ public:
 protected:
     Player();
     virtual ~Player();
+    virtual void onEnter();
+    virtual void onExit();
+    virtual void update(float delta);
 public:
     static Player* create(const std::string& modelPath);
     
@@ -51,8 +54,11 @@ private:
     void onExitDeath();
     
     void onLand();
+    
+    bool createPlayerLight();
 private:
-    PlayerState     m_curState;
+    PlayerState                 m_curState;
+    cocos2d::PointLight*        m_pPlayerLight;
 };
 
 #endif /* Player_hpp */

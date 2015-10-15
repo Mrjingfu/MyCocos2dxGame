@@ -67,6 +67,7 @@ TerrainTile* TerrainTile::create(TileType type)
             tex->setAliasTexParameters();
         tile->setTexture(tex);
         tile->setCameraMask((unsigned int)CameraFlag::USER1);
+        tile->setLightMask((unsigned int)LightFlag::LIGHT0);
         tile->autorelease();
         return tile;
     }
