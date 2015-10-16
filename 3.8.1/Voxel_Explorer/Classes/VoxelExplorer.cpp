@@ -193,11 +193,11 @@ bool VoxelExplorer::createLights()
         return false;
     ambLight->setLightFlag(LightFlag::LIGHT1);
     m_p3DLayer->addChild(ambLight);
-    DirectionLight* directionLight = DirectionLight::create(Vec3(-2, -4, -3), Color3B(50, 50, 50));
+    DirectionLight* directionLight = DirectionLight::create(Vec3(-2, -4, -3), Color3B(50, 0, 50));
     if(!directionLight)
         return false;
     directionLight->setLightFlag(LightFlag::LIGHT1);
-    //m_p3DLayer->addChild(directionLight);
+    m_p3DLayer->addChild(directionLight);
 
     return true;
 }
