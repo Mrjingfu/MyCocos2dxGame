@@ -8,6 +8,7 @@
 
 #include "GameScene.h"
 #include "VoxelExplorer.h"
+#include "MainUiLayer.h"
 USING_NS_CC;
 
 Scene* GameScene::createScene()
@@ -37,6 +38,10 @@ bool GameScene::init()
     
     if(!VoxelExplorer::getInstance()->init(this))
         return false;
+    
+    auto mainUi = MainUiLayer::create();
+    mainUi->load("Scene.csb");
+    VoxelExplorer::getInstance()->get2DLayer()->addChild(mainUi);
     
     auto dispatcher = Director::getInstance()->getEventDispatcher();
     auto touchListener = EventListenerTouchOneByOne::create();

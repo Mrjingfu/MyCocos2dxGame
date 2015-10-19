@@ -58,7 +58,7 @@ void PopupUILayer::enableDarkLayer(bool bEnable)
         {
             m_pDarkLayer = LayerColor::create(Color4B(0,0,0,150), SCREEN_WIDTH*2, SCREEN_HEIGHT*2);
             //有摄像机的情况需要设置对应的CameraMask
-            m_pDarkLayer->setCameraMask((unsigned short)CameraFlag::USER3);
+            m_pDarkLayer->setCameraMask((unsigned short)CameraFlag::USER2);
             this->addChild(m_pDarkLayer);
             this->setSwallowsTouches(true);
             m_pDarkLayer->setPosition(Vec2(-100,-100));
