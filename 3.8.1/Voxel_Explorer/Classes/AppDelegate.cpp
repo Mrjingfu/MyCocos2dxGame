@@ -52,6 +52,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     searchPaths.push_back("textures");
     searchPaths.push_back("ui");
     searchPaths.push_back("maps");
+    searchPaths.push_back("scene");
     FileUtils::getInstance()->setSearchPaths(searchPaths);
     
 #if COCOS2D_DEBUG

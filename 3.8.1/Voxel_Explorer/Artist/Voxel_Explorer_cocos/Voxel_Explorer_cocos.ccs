@@ -1,0 +1,23 @@
+<Solution>
+  <PropertyGroup Name="Voxel_Explorer_cocos" Version="2.3.2.3" Type="CocosStudio" />
+  <SolutionFolder>
+    <Group ctype="ResourceGroup">
+      <RootFolder Name=".">
+        <Image Name="HelloWorld.png" />
+        <Folder Name="scene">
+          <Project Name="Scene.csd" Type="Scene" />
+        </Folder>
+        <Folder Name="ui">
+          <PlistImageFolder Image="Plist.png" PListFile="Plist.plist" Name=".Plist_PList.Dir">
+            <PlistImageFile Name="btn_1.png" Key="btn_1.png" />
+            <PlistImageFile Name="btn_2.png" Key="btn_2.png" />
+            <PlistImageFile Name="btn_3.png" Key="btn_3.png" />
+            <PlistImageFile Name="btn_4.png" Key="btn_4.png" />
+            <PlistImageFile Name="button_rewardbtn_bg.png" Key="button_rewardbtn_bg.png" />
+            <PlistImageFile Name="button_rewardbtn_icon_search.png" Key="button_rewardbtn_icon_search.png" />
+          </PlistImageFolder>
+        </Folder>
+      </RootFolder>
+    </Group>
+  </SolutionFolder>
+</Solution>

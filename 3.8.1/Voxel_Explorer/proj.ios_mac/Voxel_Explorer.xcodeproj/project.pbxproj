@@ -95,6 +95,8 @@
 		D44C620E132DFF430009C878 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620D132DFF430009C878 /* AVFoundation.framework */; };
 		D44C6210132DFF4E0009C878 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620F132DFF4E0009C878 /* AudioToolbox.framework */; };
 		D6B0611B1803AB670077942B /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6B0611A1803AB670077942B /* CoreMotion.framework */; };
+		EC059F7F1BD4DCCE00F63254 /* scene in Resources */ = {isa = PBXBuildFile; fileRef = EC059F7E1BD4DCCE00F63254 /* scene */; settings = {ASSET_TAGS = (); }; };
+		EC059F801BD4DCCE00F63254 /* scene in Resources */ = {isa = PBXBuildFile; fileRef = EC059F7E1BD4DCCE00F63254 /* scene */; settings = {ASSET_TAGS = (); }; };
 		EC6715F31BCE7EE500C81CFC /* AlisaMethod.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC6715C41BCE7EE500C81CFC /* AlisaMethod.cpp */; settings = {ASSET_TAGS = (); }; };
 		EC6715F41BCE7EE500C81CFC /* AlisaMethod.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC6715C41BCE7EE500C81CFC /* AlisaMethod.cpp */; settings = {ASSET_TAGS = (); }; };
 		EC6715F51BCE7EE500C81CFC /* ChaosNumber.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC6715C61BCE7EE500C81CFC /* ChaosNumber.cpp */; settings = {ASSET_TAGS = (); }; };
@@ -256,6 +258,7 @@
 		D44C620D132DFF430009C878 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		D44C620F132DFF4E0009C878 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		D6B0611A1803AB670077942B /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/CoreMotion.framework; sourceTree = DEVELOPER_DIR; };
+		EC059F7E1BD4DCCE00F63254 /* scene */ = {isa = PBXFileReference; lastKnownFileType = folder; path = scene; sourceTree = "<group>"; };
 		EC6715C41BCE7EE500C81CFC /* AlisaMethod.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AlisaMethod.cpp; sourceTree = "<group>"; };
 		EC6715C51BCE7EE500C81CFC /* AlisaMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlisaMethod.h; sourceTree = "<group>"; };
 		EC6715C61BCE7EE500C81CFC /* ChaosNumber.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ChaosNumber.cpp; sourceTree = "<group>"; };
@@ -430,6 +433,7 @@
 		46880B7519C43A67006E1F66 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				EC059F7E1BD4DCCE00F63254 /* scene */,
 				EC6716561BCE7F5F00C81CFC /* lang */,
 				EC6716571BCE7F5F00C81CFC /* maps */,
 				EC6716581BCE7F5F00C81CFC /* ui */,
@@ -756,6 +760,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5087E78117EB970100C73F5D /* Icon-120.png in Resources */,
+				EC059F7F1BD4DCCE00F63254 /* scene in Resources */,
 				5087E78617EB970100C73F5D /* Icon-76.png in Resources */,
 				55D6D67F1BC527D000081221 /* models in Resources */,
 				5087E77F17EB970100C73F5D /* Default@2x.png in Resources */,
@@ -787,6 +792,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC059F801BD4DCCE00F63254 /* scene in Resources */,
 				EC67165E1BCE7F5F00C81CFC /* ui in Resources */,
 				EC67165A1BCE7F5F00C81CFC /* lang in Resources */,
 				55D6D6801BC527D000081221 /* models in Resources */,
@@ -906,7 +912,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: quanlan huang (L4MC53BS3Z)";
 				COMPRESS_PNG_FILES = NO;
 				ENABLE_BITCODE = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -933,7 +939,7 @@
 					"$(_COCOS_LIB_IOS_BEGIN)",
 					"$(_COCOS_LIB_IOS_END)",
 				);
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "22b9a94d-953a-486e-a5b1-5b20c81c69a3";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "$(_COCOS_HEADER_IOS_BEGIN) $(_COCOS_HEADER_IOS_END)";
@@ -945,7 +951,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: quanlan huang (L4MC53BS3Z)";
 				COMPRESS_PNG_FILES = NO;
 				ENABLE_BITCODE = NO;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
@@ -970,7 +976,7 @@
 					"$(_COCOS_LIB_IOS_BEGIN)",
 					"$(_COCOS_LIB_IOS_END)",
 				);
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "22b9a94d-953a-486e-a5b1-5b20c81c69a3";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "$(_COCOS_HEADER_IOS_BEGIN) $(_COCOS_HEADER_IOS_END)";

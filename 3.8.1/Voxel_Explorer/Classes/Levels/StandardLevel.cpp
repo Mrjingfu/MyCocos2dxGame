@@ -391,7 +391,8 @@ void StandardLevel::showMap(bool show)
             VoxelExplorer::getInstance()->getMainLayer()->addChild(m_pMapDrawNode);
             m_pMapDrawNode->setCameraMask((unsigned int)CameraFlag::USER2);
             auto winSize = Director::getInstance()->getVisibleSize();
-            m_pMapDrawNode->setScale(winSize.width/48);
+            m_pMapDrawNode->setScaleX(winSize.width/32);
+             m_pMapDrawNode->setScaleY(winSize.height/48);
         }
         m_pMapDrawNode->clear();
         
