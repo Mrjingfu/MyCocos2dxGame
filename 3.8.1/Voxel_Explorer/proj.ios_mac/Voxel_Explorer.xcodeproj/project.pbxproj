@@ -103,14 +103,6 @@
 		EC6716041BCE7EE500C81CFC /* NativeBridge.mm in Sources */ = {isa = PBXBuildFile; fileRef = EC6715D61BCE7EE500C81CFC /* NativeBridge.mm */; settings = {ASSET_TAGS = (); }; };
 		EC67160D1BCE7EE500C81CFC /* UtilityHelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC6715DF1BCE7EE500C81CFC /* UtilityHelper.cpp */; settings = {ASSET_TAGS = (); }; };
 		EC67160E1BCE7EE500C81CFC /* UtilityHelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC6715DF1BCE7EE500C81CFC /* UtilityHelper.cpp */; settings = {ASSET_TAGS = (); }; };
-		EC67160F1BCE7EE500C81CFC /* CloseCallback.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC6715E21BCE7EE500C81CFC /* CloseCallback.cpp */; settings = {ASSET_TAGS = (); }; };
-		EC6716101BCE7EE500C81CFC /* CloseCallback.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC6715E21BCE7EE500C81CFC /* CloseCallback.cpp */; settings = {ASSET_TAGS = (); }; };
-		EC6716111BCE7EE500C81CFC /* PopupUILayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC6715E51BCE7EE500C81CFC /* PopupUILayer.cpp */; settings = {ASSET_TAGS = (); }; };
-		EC6716121BCE7EE500C81CFC /* PopupUILayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC6715E51BCE7EE500C81CFC /* PopupUILayer.cpp */; settings = {ASSET_TAGS = (); }; };
-		EC6716131BCE7EE500C81CFC /* PopupUILayerManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC6715E71BCE7EE500C81CFC /* PopupUILayerManager.cpp */; settings = {ASSET_TAGS = (); }; };
-		EC6716141BCE7EE500C81CFC /* PopupUILayerManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC6715E71BCE7EE500C81CFC /* PopupUILayerManager.cpp */; settings = {ASSET_TAGS = (); }; };
-		EC6716151BCE7EE500C81CFC /* WrapperUILayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC6715E91BCE7EE500C81CFC /* WrapperUILayer.cpp */; settings = {ASSET_TAGS = (); }; };
-		EC6716161BCE7EE500C81CFC /* WrapperUILayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC6715E91BCE7EE500C81CFC /* WrapperUILayer.cpp */; settings = {ASSET_TAGS = (); }; };
 		EC6716171BCE7EE500C81CFC /* ArchiveManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC6715EC1BCE7EE500C81CFC /* ArchiveManager.cpp */; settings = {ASSET_TAGS = (); }; };
 		EC6716181BCE7EE500C81CFC /* ArchiveManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC6715EC1BCE7EE500C81CFC /* ArchiveManager.cpp */; settings = {ASSET_TAGS = (); }; };
 		EC6716191BCE7EE500C81CFC /* LevelResourceManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC6715EF1BCE7EE500C81CFC /* LevelResourceManager.cpp */; settings = {ASSET_TAGS = (); }; };
@@ -145,6 +137,16 @@
 		EC67165E1BCE7F5F00C81CFC /* ui in Resources */ = {isa = PBXBuildFile; fileRef = EC6716581BCE7F5F00C81CFC /* ui */; settings = {ASSET_TAGS = (); }; };
 		EC7F92D31BCF9ED200B26C6C /* HueSprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC7F92D11BCF9ED200B26C6C /* HueSprite.cpp */; settings = {ASSET_TAGS = (); }; };
 		EC7F92D41BCF9ED200B26C6C /* HueSprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC7F92D11BCF9ED200B26C6C /* HueSprite.cpp */; settings = {ASSET_TAGS = (); }; };
+		ECD10D6C1BD0967B007DD888 /* CloseCallback.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECD10D631BD0967B007DD888 /* CloseCallback.cpp */; settings = {ASSET_TAGS = (); }; };
+		ECD10D6D1BD0967B007DD888 /* CloseCallback.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECD10D631BD0967B007DD888 /* CloseCallback.cpp */; settings = {ASSET_TAGS = (); }; };
+		ECD10D6E1BD0967B007DD888 /* PopupUILayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECD10D661BD0967B007DD888 /* PopupUILayer.cpp */; settings = {ASSET_TAGS = (); }; };
+		ECD10D6F1BD0967B007DD888 /* PopupUILayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECD10D661BD0967B007DD888 /* PopupUILayer.cpp */; settings = {ASSET_TAGS = (); }; };
+		ECD10D701BD0967B007DD888 /* PopupUILayerManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECD10D681BD0967B007DD888 /* PopupUILayerManager.cpp */; settings = {ASSET_TAGS = (); }; };
+		ECD10D711BD0967B007DD888 /* PopupUILayerManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECD10D681BD0967B007DD888 /* PopupUILayerManager.cpp */; settings = {ASSET_TAGS = (); }; };
+		ECD10D721BD0967B007DD888 /* WrapperUILayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECD10D6A1BD0967B007DD888 /* WrapperUILayer.cpp */; settings = {ASSET_TAGS = (); }; };
+		ECD10D731BD0967B007DD888 /* WrapperUILayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECD10D6A1BD0967B007DD888 /* WrapperUILayer.cpp */; settings = {ASSET_TAGS = (); }; };
+		ECD10D771BD0D4F7007DD888 /* MainUiLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECD10D751BD0D4F7007DD888 /* MainUiLayer.cpp */; settings = {ASSET_TAGS = (); }; };
+		ECD10D781BD0D4F7007DD888 /* MainUiLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECD10D751BD0D4F7007DD888 /* MainUiLayer.cpp */; settings = {ASSET_TAGS = (); }; };
 		ED545A7C1B68A1F400C3958E /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ED545A7B1B68A1F400C3958E /* libiconv.dylib */; };
 		ED545A7E1B68A1FA00C3958E /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ED545A7D1B68A1FA00C3958E /* libiconv.dylib */; };
 /* End PBXBuildFile section */
@@ -262,15 +264,6 @@
 		EC6715D61BCE7EE500C81CFC /* NativeBridge.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = NativeBridge.mm; sourceTree = "<group>"; };
 		EC6715DF1BCE7EE500C81CFC /* UtilityHelper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UtilityHelper.cpp; sourceTree = "<group>"; };
 		EC6715E01BCE7EE500C81CFC /* UtilityHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UtilityHelper.h; sourceTree = "<group>"; };
-		EC6715E21BCE7EE500C81CFC /* CloseCallback.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloseCallback.cpp; sourceTree = "<group>"; };
-		EC6715E31BCE7EE500C81CFC /* CloseCallback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloseCallback.h; sourceTree = "<group>"; };
-		EC6715E41BCE7EE500C81CFC /* PopupType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopupType.h; sourceTree = "<group>"; };
-		EC6715E51BCE7EE500C81CFC /* PopupUILayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PopupUILayer.cpp; sourceTree = "<group>"; };
-		EC6715E61BCE7EE500C81CFC /* PopupUILayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopupUILayer.h; sourceTree = "<group>"; };
-		EC6715E71BCE7EE500C81CFC /* PopupUILayerManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PopupUILayerManager.cpp; sourceTree = "<group>"; };
-		EC6715E81BCE7EE500C81CFC /* PopupUILayerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopupUILayerManager.h; sourceTree = "<group>"; };
-		EC6715E91BCE7EE500C81CFC /* WrapperUILayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WrapperUILayer.cpp; sourceTree = "<group>"; };
-		EC6715EA1BCE7EE500C81CFC /* WrapperUILayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WrapperUILayer.h; sourceTree = "<group>"; };
 		EC6715EC1BCE7EE500C81CFC /* ArchiveManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ArchiveManager.cpp; sourceTree = "<group>"; };
 		EC6715ED1BCE7EE500C81CFC /* ArchiveManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArchiveManager.h; sourceTree = "<group>"; };
 		EC6715EE1BCE7EE500C81CFC /* GameConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameConfig.h; sourceTree = "<group>"; };
@@ -303,6 +296,17 @@
 		EC6716581BCE7F5F00C81CFC /* ui */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ui; sourceTree = "<group>"; };
 		EC7F92D11BCF9ED200B26C6C /* HueSprite.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HueSprite.cpp; sourceTree = "<group>"; };
 		EC7F92D21BCF9ED200B26C6C /* HueSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HueSprite.h; sourceTree = "<group>"; };
+		ECD10D631BD0967B007DD888 /* CloseCallback.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloseCallback.cpp; sourceTree = "<group>"; };
+		ECD10D641BD0967B007DD888 /* CloseCallback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloseCallback.h; sourceTree = "<group>"; };
+		ECD10D651BD0967B007DD888 /* PopupType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopupType.h; sourceTree = "<group>"; };
+		ECD10D661BD0967B007DD888 /* PopupUILayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PopupUILayer.cpp; sourceTree = "<group>"; };
+		ECD10D671BD0967B007DD888 /* PopupUILayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopupUILayer.h; sourceTree = "<group>"; };
+		ECD10D681BD0967B007DD888 /* PopupUILayerManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PopupUILayerManager.cpp; sourceTree = "<group>"; };
+		ECD10D691BD0967B007DD888 /* PopupUILayerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopupUILayerManager.h; sourceTree = "<group>"; };
+		ECD10D6A1BD0967B007DD888 /* WrapperUILayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WrapperUILayer.cpp; sourceTree = "<group>"; };
+		ECD10D6B1BD0967B007DD888 /* WrapperUILayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WrapperUILayer.h; sourceTree = "<group>"; };
+		ECD10D751BD0D4F7007DD888 /* MainUiLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MainUiLayer.cpp; sourceTree = "<group>"; };
+		ECD10D761BD0D4F7007DD888 /* MainUiLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainUiLayer.h; sourceTree = "<group>"; };
 		ED545A7B1B68A1F400C3958E /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.4.sdk/usr/lib/libiconv.dylib; sourceTree = DEVELOPER_DIR; };
 		ED545A7D1B68A1FA00C3958E /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -499,8 +503,8 @@
 		555B0CFF1BC51A2C0055FB6D /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				ECD10D621BD0967B007DD888 /* UI */,
 				EC6715C31BCE7EE500C81CFC /* ThirdParty */,
-				EC6715E11BCE7EE500C81CFC /* ui */,
 				EC6715EB1BCE7EE500C81CFC /* Utilities */,
 				55EC95761BC673690008D1D7 /* Sprites3D */,
 				559B21841BC663CE0047D998 /* Sprites2D */,
@@ -591,22 +595,6 @@
 			path = ThirdParty;
 			sourceTree = "<group>";
 		};
-		EC6715E11BCE7EE500C81CFC /* ui */ = {
-			isa = PBXGroup;
-			children = (
-				EC6715E21BCE7EE500C81CFC /* CloseCallback.cpp */,
-				EC6715E31BCE7EE500C81CFC /* CloseCallback.h */,
-				EC6715E41BCE7EE500C81CFC /* PopupType.h */,
-				EC6715E51BCE7EE500C81CFC /* PopupUILayer.cpp */,
-				EC6715E61BCE7EE500C81CFC /* PopupUILayer.h */,
-				EC6715E71BCE7EE500C81CFC /* PopupUILayerManager.cpp */,
-				EC6715E81BCE7EE500C81CFC /* PopupUILayerManager.h */,
-				EC6715E91BCE7EE500C81CFC /* WrapperUILayer.cpp */,
-				EC6715EA1BCE7EE500C81CFC /* WrapperUILayer.h */,
-			);
-			path = ui;
-			sourceTree = "<group>";
-		};
 		EC6715EB1BCE7EE500C81CFC /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
@@ -651,6 +639,24 @@
 				EC6716301BCE7F0300C81CFC /* Stream.h */,
 			);
 			path = stream;
+			sourceTree = "<group>";
+		};
+		ECD10D621BD0967B007DD888 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				ECD10D631BD0967B007DD888 /* CloseCallback.cpp */,
+				ECD10D641BD0967B007DD888 /* CloseCallback.h */,
+				ECD10D651BD0967B007DD888 /* PopupType.h */,
+				ECD10D661BD0967B007DD888 /* PopupUILayer.cpp */,
+				ECD10D671BD0967B007DD888 /* PopupUILayer.h */,
+				ECD10D681BD0967B007DD888 /* PopupUILayerManager.cpp */,
+				ECD10D691BD0967B007DD888 /* PopupUILayerManager.h */,
+				ECD10D6A1BD0967B007DD888 /* WrapperUILayer.cpp */,
+				ECD10D6B1BD0967B007DD888 /* WrapperUILayer.h */,
+				ECD10D751BD0D4F7007DD888 /* MainUiLayer.cpp */,
+				ECD10D761BD0D4F7007DD888 /* MainUiLayer.h */,
+			);
+			path = UI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -800,6 +806,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				553BC5091BCE499B003D907A /* BaseDoor.cpp in Sources */,
+				ECD10D721BD0967B007DD888 /* WrapperUILayer.cpp in Sources */,
 				EC6715F51BCE7EE500C81CFC /* ChaosNumber.cpp in Sources */,
 				EC6716371BCE7F0300C81CFC /* sha1.cpp in Sources */,
 				EC6716331BCE7F0300C81CFC /* libb64.c in Sources */,
@@ -807,7 +814,6 @@
 				555B0D151BC51A2C0055FB6D /* AppDelegate.cpp in Sources */,
 				EC6716411BCE7F0300C81CFC /* Stream.cpp in Sources */,
 				555B0D1F1BC51A2C0055FB6D /* StandardLevel.cpp in Sources */,
-				EC6716151BCE7EE500C81CFC /* WrapperUILayer.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
@@ -815,8 +821,9 @@
 				555B0D251BC51A2C0055FB6D /* VoxelExplorer.cpp in Sources */,
 				EC6716311BCE7F0300C81CFC /* CCCrypto.cpp in Sources */,
 				EC67163F1BCE7F0300C81CFC /* MemoryStream.cpp in Sources */,
-				EC6716111BCE7EE500C81CFC /* PopupUILayer.cpp in Sources */,
+				ECD10D771BD0D4F7007DD888 /* MainUiLayer.cpp in Sources */,
 				555B0D1D1BC51A2C0055FB6D /* Graph.cpp in Sources */,
+				ECD10D6E1BD0967B007DD888 /* PopupUILayer.cpp in Sources */,
 				555B0D171BC51A2C0055FB6D /* Area.cpp in Sources */,
 				555B0D1B1BC51A2C0055FB6D /* Door.cpp in Sources */,
 				EC67163B1BCE7F0300C81CFC /* XXTEA.cpp in Sources */,
@@ -831,14 +838,14 @@
 				EC6716451BCE7F2C00C81CFC /* LogoScene.cpp in Sources */,
 				EC6716191BCE7EE500C81CFC /* LevelResourceManager.cpp in Sources */,
 				555B0D211BC51A2C0055FB6D /* TombLevel.cpp in Sources */,
-				EC6716131BCE7EE500C81CFC /* PopupUILayerManager.cpp in Sources */,
 				5537C50F1BCCA54D00F4200E /* ItemArmor.cpp in Sources */,
 				555B0D191BC51A2C0055FB6D /* BaseLevel.cpp in Sources */,
 				EC6716171BCE7EE500C81CFC /* ArchiveManager.cpp in Sources */,
 				55EC95851BC6AA7B0008D1D7 /* TerrainTile.cpp in Sources */,
 				EC7F92D31BCF9ED200B26C6C /* HueSprite.cpp in Sources */,
 				55ECFB441BC79852007270CD /* Player.cpp in Sources */,
-				EC67160F1BCE7EE500C81CFC /* CloseCallback.cpp in Sources */,
+				ECD10D701BD0967B007DD888 /* PopupUILayerManager.cpp in Sources */,
+				ECD10D6C1BD0967B007DD888 /* CloseCallback.cpp in Sources */,
 				EC67163D1BCE7F0300C81CFC /* FileStream.cpp in Sources */,
 				553BC5011BCDF457003D907A /* Actor.cpp in Sources */,
 			);
@@ -854,17 +861,17 @@
 				55EC95861BC6ABBA0008D1D7 /* TerrainTile.cpp in Sources */,
 				EC67161A1BCE7EE500C81CFC /* LevelResourceManager.cpp in Sources */,
 				5537C5081BCCA51500F4200E /* ItemWeapon.cpp in Sources */,
-				EC6716101BCE7EE500C81CFC /* CloseCallback.cpp in Sources */,
 				EC6716461BCE7F2C00C81CFC /* LogoScene.cpp in Sources */,
+				ECD10D731BD0967B007DD888 /* WrapperUILayer.cpp in Sources */,
 				EC6716181BCE7EE500C81CFC /* ArchiveManager.cpp in Sources */,
 				555B0D221BC51A2C0055FB6D /* TombLevel.cpp in Sources */,
 				553BC50A1BCE499B003D907A /* BaseDoor.cpp in Sources */,
 				EC67163E1BCE7F0300C81CFC /* FileStream.cpp in Sources */,
 				555B0D261BC51A2C0055FB6D /* VoxelExplorer.cpp in Sources */,
-				EC6716121BCE7EE500C81CFC /* PopupUILayer.cpp in Sources */,
 				555B0D181BC51A2C0055FB6D /* Area.cpp in Sources */,
 				EC7F92D41BCF9ED200B26C6C /* HueSprite.cpp in Sources */,
 				EC6715F61BCE7EE500C81CFC /* ChaosNumber.cpp in Sources */,
+				ECD10D781BD0D4F7007DD888 /* MainUiLayer.cpp in Sources */,
 				EC6716421BCE7F0300C81CFC /* Stream.cpp in Sources */,
 				555B0D201BC51A2C0055FB6D /* StandardLevel.cpp in Sources */,
 				555B0D1A1BC51A2C0055FB6D /* BaseLevel.cpp in Sources */,
@@ -872,12 +879,12 @@
 				555B0D161BC51A2C0055FB6D /* AppDelegate.cpp in Sources */,
 				EC6715F41BCE7EE500C81CFC /* AlisaMethod.cpp in Sources */,
 				553BC5021BCDF457003D907A /* Actor.cpp in Sources */,
-				EC6716161BCE7EE500C81CFC /* WrapperUILayer.cpp in Sources */,
 				55ECFB451BC79852007270CD /* Player.cpp in Sources */,
 				EC6716041BCE7EE500C81CFC /* NativeBridge.mm in Sources */,
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
 				EC67161C1BCE7EE500C81CFC /* UserRecord.cpp in Sources */,
 				EC67160E1BCE7EE500C81CFC /* UtilityHelper.cpp in Sources */,
+				ECD10D711BD0967B007DD888 /* PopupUILayerManager.cpp in Sources */,
 				EC6716401BCE7F0300C81CFC /* MemoryStream.cpp in Sources */,
 				EC6716381BCE7F0300C81CFC /* sha1.cpp in Sources */,
 				5537C5141BCCA5BA00F4200E /* ItemOrnament.cpp in Sources */,
@@ -885,8 +892,9 @@
 				555B0D241BC51A2C0055FB6D /* GameScene.cpp in Sources */,
 				EC6716341BCE7F0300C81CFC /* libb64.c in Sources */,
 				5537C5101BCCA54D00F4200E /* ItemArmor.cpp in Sources */,
-				EC6716141BCE7EE500C81CFC /* PopupUILayerManager.cpp in Sources */,
+				ECD10D6F1BD0967B007DD888 /* PopupUILayer.cpp in Sources */,
 				555B0D1C1BC51A2C0055FB6D /* Door.cpp in Sources */,
+				ECD10D6D1BD0967B007DD888 /* CloseCallback.cpp in Sources */,
 				EC67163A1BCE7F0300C81CFC /* xor.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

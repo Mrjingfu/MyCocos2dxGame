@@ -12,7 +12,7 @@
 #include "GameConfig.h"
 #include "ui/CocosGUI.h"
 #include "CloseCallback.h"
-
+#include "editor-support/cocostudio/CocoStudio.h"
 
 #define CHECK_ACTION_WRAPPER(sender, type) \
 do{ \
@@ -36,17 +36,19 @@ public:
     //刷新UI
     virtual void refreshUIView(){};
     virtual void addEvents(){};
+    virtual bool initUi(){return true;};
     bool isForbiddenAction(Ref* sender, cocos2d::ui::Widget::TouchEventType type);
     CREATE_FUNC(WrapperUILayer);
     cocos2d::Layer* getRootLayer(){return m_pRootLayer;};
     
 public:
     //可能以后有UI布局文件会用到 m_pRootLayer由布局文件生成了 暂时不会用到
-    virtual bool load(const char* gameUIFile){return true;};
+    virtual bool load(const std::string gameUIFile);
     
 protected:
     cocos2d::Layer*	m_pRootLayer;   //ui布局用到  手工编写代码时 用cocostudio则不用
-
+    
+    cocos2d::Node*	m_pRootNode;//cocostudio布局用到
     Ref* m_actionRef;
     
     timeval m_actionTime;

@@ -43,10 +43,18 @@ bool WrapperUILayer::init()
     
     //暂时放在这
     addEvents();
+    if(!initUi())
+        return false;
     //setCameraMask 只能使node的当前所有子节点的cameraMask设置为mask 之后新添加的子节点则不会受影响 所以在初始化UI之后设置
     m_pRootLayer->setCameraMask((unsigned short)cocos2d::CameraFlag::USER3);
     return true;
     
+}
+bool WrapperUILayer::load(const std::string gameUIFile)
+{
+    bool ret =true;
+    m_pRootNode = cocos2d::CSLoader::createNode(gameUIFile);
+    return ret;
 }
 bool WrapperUILayer::isForbiddenAction(cocos2d::Ref *sender, cocos2d::ui::Widget::TouchEventType type)
 {
