@@ -106,7 +106,7 @@ bool StandardLevel::build()
     generate();
     
 #if COCOS2D_DEBUG
-    showMap(false);
+    showMap(true);
 #endif
     return true;
 }
@@ -431,6 +431,20 @@ void StandardLevel::showMap(bool show)
                         break;
                     case TerrainTile::TT_LOCKED_DOOR:
                         m_pMapDrawNode->drawPolygon(vertices, 4, Color4F::RED, 0, Color4F(0,0,0,0));
+                        break;
+                    case TerrainTile::TT_HIDE_TOXIC_TRAP:
+                    case TerrainTile::TT_HIDE_FIRE_TRAP:
+                    case TerrainTile::TT_HIDE_PARALYTIC_TRAP:
+                    case TerrainTile::TT_HIDE_GRIPPING_TRAP:
+                    case TerrainTile::TT_HIDE_SUMMONING_TRAP:
+                    case TerrainTile::TT_HIDE_WEAK_TRAP:
+                    case TerrainTile::TT_TOXIC_TRAP:
+                    case TerrainTile::TT_FIRE_TRAP:
+                    case TerrainTile::TT_PARALYTIC_TRAP:
+                    case TerrainTile::TT_GRIPPING_TRAP:
+                    case TerrainTile::TT_SUMMONING_TRAP:
+                    case TerrainTile::TT_WEAK_TRAP:
+                        m_pMapDrawNode->drawPolygon(vertices, 4, Color4F::WHITE, 0, Color4F(0,0,0,0));
                         break;
                     default:
                         break;
