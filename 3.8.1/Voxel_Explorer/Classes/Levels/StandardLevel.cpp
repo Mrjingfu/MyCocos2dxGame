@@ -106,7 +106,7 @@ bool StandardLevel::build()
     generate();
     
 #if COCOS2D_DEBUG
-    showMap(true);
+    showMap(false);
 #endif
     return true;
 }
@@ -391,8 +391,7 @@ void StandardLevel::showMap(bool show)
             VoxelExplorer::getInstance()->getMainLayer()->addChild(m_pMapDrawNode);
             m_pMapDrawNode->setCameraMask((unsigned int)CameraFlag::USER2);
             auto winSize = Director::getInstance()->getVisibleSize();
-            m_pMapDrawNode->setScaleX(winSize.width/32);
-             m_pMapDrawNode->setScaleY(winSize.height/48);
+            m_pMapDrawNode->setScale(winSize.width/32);
         }
         m_pMapDrawNode->clear();
         

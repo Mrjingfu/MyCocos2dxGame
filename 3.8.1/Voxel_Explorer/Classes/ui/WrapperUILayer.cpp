@@ -41,11 +41,11 @@ bool WrapperUILayer::init()
     this->addChild(m_pRootLayer,1);
     ::gettimeofday(&m_actionTime, nullptr);
     
-    
+    //
     if(!initUi())
         return false;
     //setCameraMask 只能使node的当前所有子节点的cameraMask设置为mask 之后新添加的子节点则不会受影响 所以在初始化UI之后设置
-    m_pRootLayer->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
+//    m_pRootLayer->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
     return true;
     
 }
@@ -62,11 +62,12 @@ bool WrapperUILayer::load(const std::string gameUIFile)
     
     m_pRootNode->setContentSize(cocos2d::Director::getInstance()->getVisibleSize());
     cocos2d::ui::Helper::doLayout(m_pRootNode);
-    m_pRootNode->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
+//    m_pRootNode->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
     m_pRootNode->setPosition(m_pRootNode->getPosition()+cocos2d::Director::getInstance()->getVisibleOrigin());
     this->addChild(m_pRootNode,1);
     
-    addEvents();
+    if(!addEvents())
+        ret = false;
     
     return ret;
 }

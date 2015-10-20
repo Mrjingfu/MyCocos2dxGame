@@ -31,7 +31,6 @@ public:
 public:
     virtual bool init();
     CREATE_FUNC(PopupUILayer);
-    virtual void addEvents(){};
     virtual void onEnter();
     virtual void onExit();
     virtual void openPopup();

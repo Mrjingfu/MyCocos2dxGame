@@ -7,7 +7,7 @@
 //
 
 #include "LogoScene.h"
-#include "GameScene.h"
+#include "MenuScene.h"
 #include "GameConfig.h"
 #include "LevelResourceManager.h"
 USING_NS_CC;
@@ -223,6 +223,16 @@ void LogoScene::precache()
         CCLOGERROR("LevelRes.plist load error");
     }
     
+    SpriteFrameCache::getInstance()->addSpriteFramesWithFile("ui_sprite.plist");
+    
+    ValueMap plist = FileUtils::getInstance()->getValueMapFromFile("ui_sprite.plist").at("frames").asValueMap();
+    
+    for(std::unordered_map<std::string, Value>::iterator it = plist.begin(); it!=plist.end();it++)
+    {
+        CCLOG("key:%s",it->first.c_str());
+        SpriteFrameCache::getInstance()->getSpriteFrameByName(it->first.c_str())->getTexture()->setAliasTexParameters();
+    }
+    
     if(m_NodeRoot2)
     {
         DelayTime* delay = DelayTime::create(1.0f);
@@ -234,7 +244,7 @@ void LogoScene::precache()
 }
 void LogoScene::endcache()
 {
-    auto scene = GameScene::createScene();
+    auto scene = MenuScene::createScene();
     Director::getInstance()->replaceScene(scene);
 }
 void LogoScene::createColorLogo()

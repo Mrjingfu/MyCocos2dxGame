@@ -133,6 +133,10 @@
 		D44C620E132DFF430009C878 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620D132DFF430009C878 /* AVFoundation.framework */; };
 		D44C6210132DFF4E0009C878 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620F132DFF4E0009C878 /* AudioToolbox.framework */; };
 		D6B0611B1803AB670077942B /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6B0611A1803AB670077942B /* CoreMotion.framework */; };
+		EC00DD481BD62741009BC378 /* MenuScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC00DD461BD62741009BC378 /* MenuScene.cpp */; settings = {ASSET_TAGS = (); }; };
+		EC00DD491BD62741009BC378 /* MenuScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC00DD461BD62741009BC378 /* MenuScene.cpp */; settings = {ASSET_TAGS = (); }; };
+		EC00DD4E1BD628D0009BC378 /* MenuUILayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC00DD4C1BD628D0009BC378 /* MenuUILayer.cpp */; settings = {ASSET_TAGS = (); }; };
+		EC00DD4F1BD628D0009BC378 /* MenuUILayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC00DD4C1BD628D0009BC378 /* MenuUILayer.cpp */; settings = {ASSET_TAGS = (); }; };
 		EC059F7F1BD4DCCE00F63254 /* scene in Resources */ = {isa = PBXBuildFile; fileRef = EC059F7E1BD4DCCE00F63254 /* scene */; settings = {ASSET_TAGS = (); }; };
 		EC059F801BD4DCCE00F63254 /* scene in Resources */ = {isa = PBXBuildFile; fileRef = EC059F7E1BD4DCCE00F63254 /* scene */; settings = {ASSET_TAGS = (); }; };
 		EC6716451BCE7F2C00C81CFC /* LogoScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC6716431BCE7F2C00C81CFC /* LogoScene.cpp */; settings = {ASSET_TAGS = (); }; };
@@ -153,8 +157,8 @@
 		ECD10D711BD0967B007DD888 /* PopupUILayerManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECD10D681BD0967B007DD888 /* PopupUILayerManager.cpp */; settings = {ASSET_TAGS = (); }; };
 		ECD10D721BD0967B007DD888 /* WrapperUILayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECD10D6A1BD0967B007DD888 /* WrapperUILayer.cpp */; settings = {ASSET_TAGS = (); }; };
 		ECD10D731BD0967B007DD888 /* WrapperUILayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECD10D6A1BD0967B007DD888 /* WrapperUILayer.cpp */; settings = {ASSET_TAGS = (); }; };
-		ECD10D771BD0D4F7007DD888 /* MainUiLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECD10D751BD0D4F7007DD888 /* MainUiLayer.cpp */; settings = {ASSET_TAGS = (); }; };
-		ECD10D781BD0D4F7007DD888 /* MainUiLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECD10D751BD0D4F7007DD888 /* MainUiLayer.cpp */; settings = {ASSET_TAGS = (); }; };
+		ECD10D771BD0D4F7007DD888 /* GameUILayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECD10D751BD0D4F7007DD888 /* GameUILayer.cpp */; settings = {ASSET_TAGS = (); }; };
+		ECD10D781BD0D4F7007DD888 /* GameUILayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECD10D751BD0D4F7007DD888 /* GameUILayer.cpp */; settings = {ASSET_TAGS = (); }; };
 		ED545A7C1B68A1F400C3958E /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ED545A7B1B68A1F400C3958E /* libiconv.dylib */; };
 		ED545A7E1B68A1FA00C3958E /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ED545A7D1B68A1FA00C3958E /* libiconv.dylib */; };
 /* End PBXBuildFile section */
@@ -302,6 +306,10 @@
 		D44C620D132DFF430009C878 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		D44C620F132DFF4E0009C878 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		D6B0611A1803AB670077942B /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/CoreMotion.framework; sourceTree = DEVELOPER_DIR; };
+		EC00DD461BD62741009BC378 /* MenuScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MenuScene.cpp; sourceTree = "<group>"; };
+		EC00DD471BD62741009BC378 /* MenuScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuScene.h; sourceTree = "<group>"; };
+		EC00DD4C1BD628D0009BC378 /* MenuUILayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MenuUILayer.cpp; sourceTree = "<group>"; };
+		EC00DD4D1BD628D0009BC378 /* MenuUILayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuUILayer.h; sourceTree = "<group>"; };
 		EC059F7E1BD4DCCE00F63254 /* scene */ = {isa = PBXFileReference; lastKnownFileType = folder; path = scene; sourceTree = "<group>"; };
 		EC6715EE1BCE7EE500C81CFC /* GameConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameConfig.h; sourceTree = "<group>"; };
 		EC6716431BCE7F2C00C81CFC /* LogoScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LogoScene.cpp; sourceTree = "<group>"; };
@@ -320,8 +328,8 @@
 		ECD10D691BD0967B007DD888 /* PopupUILayerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopupUILayerManager.h; sourceTree = "<group>"; };
 		ECD10D6A1BD0967B007DD888 /* WrapperUILayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WrapperUILayer.cpp; sourceTree = "<group>"; };
 		ECD10D6B1BD0967B007DD888 /* WrapperUILayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WrapperUILayer.h; sourceTree = "<group>"; };
-		ECD10D751BD0D4F7007DD888 /* MainUiLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MainUiLayer.cpp; sourceTree = "<group>"; };
-		ECD10D761BD0D4F7007DD888 /* MainUiLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainUiLayer.h; sourceTree = "<group>"; };
+		ECD10D751BD0D4F7007DD888 /* GameUILayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameUILayer.cpp; sourceTree = "<group>"; };
+		ECD10D761BD0D4F7007DD888 /* GameUILayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameUILayer.h; sourceTree = "<group>"; };
 		ED545A7B1B68A1F400C3958E /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.4.sdk/usr/lib/libiconv.dylib; sourceTree = DEVELOPER_DIR; };
 		ED545A7D1B68A1FA00C3958E /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -626,6 +634,8 @@
 		555B0D0F1BC51A2C0055FB6D /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				EC00DD461BD62741009BC378 /* MenuScene.cpp */,
+				EC00DD471BD62741009BC378 /* MenuScene.h */,
 				EC6716431BCE7F2C00C81CFC /* LogoScene.cpp */,
 				EC6716441BCE7F2C00C81CFC /* LogoScene.h */,
 				555B0D101BC51A2C0055FB6D /* GameScene.cpp */,
@@ -691,8 +701,10 @@
 				ECD10D691BD0967B007DD888 /* PopupUILayerManager.h */,
 				ECD10D6A1BD0967B007DD888 /* WrapperUILayer.cpp */,
 				ECD10D6B1BD0967B007DD888 /* WrapperUILayer.h */,
-				ECD10D751BD0D4F7007DD888 /* MainUiLayer.cpp */,
-				ECD10D761BD0D4F7007DD888 /* MainUiLayer.h */,
+				ECD10D751BD0D4F7007DD888 /* GameUILayer.cpp */,
+				ECD10D761BD0D4F7007DD888 /* GameUILayer.h */,
+				EC00DD4C1BD628D0009BC378 /* MenuUILayer.cpp */,
+				EC00DD4D1BD628D0009BC378 /* MenuUILayer.h */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -845,6 +857,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC00DD4E1BD628D0009BC378 /* MenuUILayer.cpp in Sources */,
 				551E93EA1BD512D3009F788F /* xor.cpp in Sources */,
 				553BC5091BCE499B003D907A /* BaseDoor.cpp in Sources */,
 				ECD10D721BD0967B007DD888 /* WrapperUILayer.cpp in Sources */,
@@ -862,7 +875,7 @@
 				551E93EC1BD512D3009F788F /* XXTEA.cpp in Sources */,
 				555B0D251BC51A2C0055FB6D /* VoxelExplorer.cpp in Sources */,
 				551E93CB1BD51291009F788F /* PlayerProperty.cpp in Sources */,
-				ECD10D771BD0D4F7007DD888 /* MainUiLayer.cpp in Sources */,
+				ECD10D771BD0D4F7007DD888 /* GameUILayer.cpp in Sources */,
 				551E93C71BD51291009F788F /* MonsterProperty.cpp in Sources */,
 				555B0D1D1BC51A2C0055FB6D /* Graph.cpp in Sources */,
 				551E93B11BD51282009F788F /* UtilityHelper.cpp in Sources */,
@@ -871,6 +884,7 @@
 				551E93F21BD512D3009F788F /* Stream.cpp in Sources */,
 				555B0D1B1BC51A2C0055FB6D /* Door.cpp in Sources */,
 				551E93E41BD512D3009F788F /* libb64.c in Sources */,
+				EC00DD481BD62741009BC378 /* MenuScene.cpp in Sources */,
 				551E93C11BD51291009F788F /* ArchiveManager.cpp in Sources */,
 				553BC50D1BCE5191003D907A /* StandardDoor.cpp in Sources */,
 				555B0D231BC51A2C0055FB6D /* GameScene.cpp in Sources */,
@@ -905,8 +919,10 @@
 				551E93E31BD512D3009F788F /* CCCrypto.cpp in Sources */,
 				EC6716461BCE7F2C00C81CFC /* LogoScene.cpp in Sources */,
 				551E93E51BD512D3009F788F /* libb64.c in Sources */,
+				EC00DD491BD62741009BC378 /* MenuScene.cpp in Sources */,
 				ECD10D731BD0967B007DD888 /* WrapperUILayer.cpp in Sources */,
 				551E93AC1BD51282009F788F /* ChaosNumber.cpp in Sources */,
+				EC00DD4F1BD628D0009BC378 /* MenuUILayer.cpp in Sources */,
 				555B0D221BC51A2C0055FB6D /* TombLevel.cpp in Sources */,
 				553BC50A1BCE499B003D907A /* BaseDoor.cpp in Sources */,
 				555B0D261BC51A2C0055FB6D /* VoxelExplorer.cpp in Sources */,
@@ -914,7 +930,7 @@
 				555B0D181BC51A2C0055FB6D /* Area.cpp in Sources */,
 				EC7F92D41BCF9ED200B26C6C /* HueSprite.cpp in Sources */,
 				551E93EF1BD512D3009F788F /* FileStream.cpp in Sources */,
-				ECD10D781BD0D4F7007DD888 /* MainUiLayer.cpp in Sources */,
+				ECD10D781BD0D4F7007DD888 /* GameUILayer.cpp in Sources */,
 				555B0D201BC51A2C0055FB6D /* StandardLevel.cpp in Sources */,
 				551E93AA1BD51282009F788F /* AlisaMethod.cpp in Sources */,
 				555B0D1A1BC51A2C0055FB6D /* BaseLevel.cpp in Sources */,

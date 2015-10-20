@@ -84,10 +84,11 @@ bool AppDelegate::applicationDidFinishLaunching() {
 //    {        
 //        director->setContentScaleFactor(MIN(smallResolutionSize.height/designResolutionSize.height, smallResolutionSize.width/designResolutionSize.width));
 //    }
-    if (frameSize.height > smallResolutionSize.height)
-    {
-        director->setContentScaleFactor(MIN(mediumResolutionSize.height/designResolutionSize.height, mediumResolutionSize.width/designResolutionSize.width));
-    }
+//    if (frameSize.height > smallResolutionSize.height)
+//    {
+//        director->setContentScaleFactor(MIN(mediumResolutionSize.height/designResolutionSize.height, mediumResolutionSize.width/designResolutionSize.width));
+//    }
+//    director->setContentScaleFactor(frameSize.width/designResolutionSize.height);
     register_all_packages();
 
     // create a scene. it's an autorelease object
