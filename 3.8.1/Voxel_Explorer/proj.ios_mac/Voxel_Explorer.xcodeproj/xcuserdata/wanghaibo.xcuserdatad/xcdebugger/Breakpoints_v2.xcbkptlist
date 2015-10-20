@@ -202,12 +202,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Scenes/GameScene.cpp"
-            timestampString = "466067499.307744"
+            timestampString = "467003479.334837"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "55"
-            endingLineNumber = "55"
-            landmarkName = "GameScene::onTouchBegan(Touch *touch, Event *event)"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
+            landmarkName = "GameScene::init()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -234,12 +234,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Scenes/GameScene.cpp"
-            timestampString = "466075756.25788"
+            timestampString = "467003479.334837"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "112"
-            endingLineNumber = "112"
-            landmarkName = "GameScene::rotateToBack()"
+            startingLineNumber = "115"
+            endingLineNumber = "115"
+            landmarkName = "GameScene::rotateToForward()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1568,6 +1568,22 @@
             startingLineNumber = "524"
             endingLineNumber = "524"
             landmarkName = "Mesh::setLightUniforms(Pass* pass, Scene* scene, const Vec4&amp; color, unsigned int lightmask)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/Scenes/GameScene.cpp"
+            timestampString = "467003500.54976"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
+            landmarkName = "GameScene::init()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
