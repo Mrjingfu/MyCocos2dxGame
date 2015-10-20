@@ -65,8 +65,6 @@
 		551E93C61BD51291009F788F /* UserRecord.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 551E93B81BD51291009F788F /* UserRecord.cpp */; settings = {ASSET_TAGS = (); }; };
 		551E93C71BD51291009F788F /* MonsterProperty.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 551E93BB1BD51291009F788F /* MonsterProperty.cpp */; settings = {ASSET_TAGS = (); }; };
 		551E93C81BD51291009F788F /* MonsterProperty.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 551E93BB1BD51291009F788F /* MonsterProperty.cpp */; settings = {ASSET_TAGS = (); }; };
-		551E93C91BD51291009F788F /* PlayerBagProperty.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 551E93BD1BD51291009F788F /* PlayerBagProperty.cpp */; settings = {ASSET_TAGS = (); }; };
-		551E93CA1BD51291009F788F /* PlayerBagProperty.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 551E93BD1BD51291009F788F /* PlayerBagProperty.cpp */; settings = {ASSET_TAGS = (); }; };
 		551E93CB1BD51291009F788F /* PlayerProperty.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 551E93BF1BD51291009F788F /* PlayerProperty.cpp */; settings = {ASSET_TAGS = (); }; };
 		551E93CC1BD51291009F788F /* PlayerProperty.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 551E93BF1BD51291009F788F /* PlayerProperty.cpp */; settings = {ASSET_TAGS = (); }; };
 		551E93E21BD512D3009F788F /* CCCrypto.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 551E93CF1BD512D3009F788F /* CCCrypto.cpp */; settings = {ASSET_TAGS = (); }; };
@@ -87,18 +85,18 @@
 		551E93F11BD512D3009F788F /* MemoryStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 551E93DE1BD512D3009F788F /* MemoryStream.cpp */; settings = {ASSET_TAGS = (); }; };
 		551E93F21BD512D3009F788F /* Stream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 551E93E01BD512D3009F788F /* Stream.cpp */; settings = {ASSET_TAGS = (); }; };
 		551E93F31BD512D3009F788F /* Stream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 551E93E01BD512D3009F788F /* Stream.cpp */; settings = {ASSET_TAGS = (); }; };
-		5537C5071BCCA51500F4200E /* ItemWeapon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5537C5011BCCA51500F4200E /* ItemWeapon.cpp */; settings = {ASSET_TAGS = (); }; };
-		5537C5081BCCA51500F4200E /* ItemWeapon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5537C5011BCCA51500F4200E /* ItemWeapon.cpp */; settings = {ASSET_TAGS = (); }; };
-		5537C50F1BCCA54D00F4200E /* ItemArmor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5537C50D1BCCA54D00F4200E /* ItemArmor.cpp */; settings = {ASSET_TAGS = (); }; };
-		5537C5101BCCA54D00F4200E /* ItemArmor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5537C50D1BCCA54D00F4200E /* ItemArmor.cpp */; settings = {ASSET_TAGS = (); }; };
-		5537C5131BCCA5BA00F4200E /* ItemOrnament.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5537C5111BCCA5BA00F4200E /* ItemOrnament.cpp */; settings = {ASSET_TAGS = (); }; };
-		5537C5141BCCA5BA00F4200E /* ItemOrnament.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5537C5111BCCA5BA00F4200E /* ItemOrnament.cpp */; settings = {ASSET_TAGS = (); }; };
 		553BC5011BCDF457003D907A /* Actor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 553BC4FF1BCDF457003D907A /* Actor.cpp */; settings = {ASSET_TAGS = (); }; };
 		553BC5021BCDF457003D907A /* Actor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 553BC4FF1BCDF457003D907A /* Actor.cpp */; settings = {ASSET_TAGS = (); }; };
 		553BC5091BCE499B003D907A /* BaseDoor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 553BC5071BCE499B003D907A /* BaseDoor.cpp */; settings = {ASSET_TAGS = (); }; };
 		553BC50A1BCE499B003D907A /* BaseDoor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 553BC5071BCE499B003D907A /* BaseDoor.cpp */; settings = {ASSET_TAGS = (); }; };
 		553BC50D1BCE5191003D907A /* StandardDoor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 553BC50B1BCE5191003D907A /* StandardDoor.cpp */; settings = {ASSET_TAGS = (); }; };
 		553BC50E1BCE5191003D907A /* StandardDoor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 553BC50B1BCE5191003D907A /* StandardDoor.cpp */; settings = {ASSET_TAGS = (); }; };
+		55407D571BD5E2BC0000C41C /* GameFormula.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55407D551BD5E2BC0000C41C /* GameFormula.cpp */; settings = {ASSET_TAGS = (); }; };
+		55407D581BD5E2BC0000C41C /* GameFormula.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55407D551BD5E2BC0000C41C /* GameFormula.cpp */; settings = {ASSET_TAGS = (); }; };
+		55407D641BD64F450000C41C /* ItemProperty.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55407D621BD64F440000C41C /* ItemProperty.cpp */; settings = {ASSET_TAGS = (); }; };
+		55407D651BD64F450000C41C /* ItemProperty.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55407D621BD64F440000C41C /* ItemProperty.cpp */; settings = {ASSET_TAGS = (); }; };
+		55407D741BD656870000C41C /* PickableItem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55407D721BD656870000C41C /* PickableItem.cpp */; settings = {ASSET_TAGS = (); }; };
+		55407D751BD656870000C41C /* PickableItem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55407D721BD656870000C41C /* PickableItem.cpp */; settings = {ASSET_TAGS = (); }; };
 		555B0D151BC51A2C0055FB6D /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 555B0D001BC51A2C0055FB6D /* AppDelegate.cpp */; settings = {ASSET_TAGS = (); }; };
 		555B0D161BC51A2C0055FB6D /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 555B0D001BC51A2C0055FB6D /* AppDelegate.cpp */; settings = {ASSET_TAGS = (); }; };
 		555B0D171BC51A2C0055FB6D /* Area.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 555B0D031BC51A2C0055FB6D /* Area.cpp */; settings = {ASSET_TAGS = (); }; };
@@ -236,8 +234,6 @@
 		551E93B91BD51291009F788F /* UserRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserRecord.h; sourceTree = "<group>"; };
 		551E93BB1BD51291009F788F /* MonsterProperty.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MonsterProperty.cpp; sourceTree = "<group>"; };
 		551E93BC1BD51291009F788F /* MonsterProperty.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = MonsterProperty.hpp; sourceTree = "<group>"; };
-		551E93BD1BD51291009F788F /* PlayerBagProperty.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PlayerBagProperty.cpp; sourceTree = "<group>"; };
-		551E93BE1BD51291009F788F /* PlayerBagProperty.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PlayerBagProperty.hpp; sourceTree = "<group>"; };
 		551E93BF1BD51291009F788F /* PlayerProperty.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PlayerProperty.cpp; sourceTree = "<group>"; };
 		551E93C01BD51291009F788F /* PlayerProperty.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PlayerProperty.hpp; sourceTree = "<group>"; };
 		551E93CF1BD512D3009F788F /* CCCrypto.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCCrypto.cpp; sourceTree = "<group>"; };
@@ -258,18 +254,19 @@
 		551E93DF1BD512D3009F788F /* MemoryStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MemoryStream.h; sourceTree = "<group>"; };
 		551E93E01BD512D3009F788F /* Stream.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Stream.cpp; sourceTree = "<group>"; };
 		551E93E11BD512D3009F788F /* Stream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Stream.h; sourceTree = "<group>"; };
-		5537C5011BCCA51500F4200E /* ItemWeapon.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ItemWeapon.cpp; sourceTree = "<group>"; };
-		5537C5021BCCA51500F4200E /* ItemWeapon.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ItemWeapon.hpp; sourceTree = "<group>"; };
-		5537C50D1BCCA54D00F4200E /* ItemArmor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ItemArmor.cpp; sourceTree = "<group>"; };
-		5537C50E1BCCA54D00F4200E /* ItemArmor.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ItemArmor.hpp; sourceTree = "<group>"; };
-		5537C5111BCCA5BA00F4200E /* ItemOrnament.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ItemOrnament.cpp; sourceTree = "<group>"; };
-		5537C5121BCCA5BA00F4200E /* ItemOrnament.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ItemOrnament.hpp; sourceTree = "<group>"; };
 		553BC4FF1BCDF457003D907A /* Actor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Actor.cpp; sourceTree = "<group>"; };
 		553BC5001BCDF457003D907A /* Actor.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Actor.hpp; sourceTree = "<group>"; };
 		553BC5071BCE499B003D907A /* BaseDoor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BaseDoor.cpp; sourceTree = "<group>"; };
 		553BC5081BCE499B003D907A /* BaseDoor.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BaseDoor.hpp; sourceTree = "<group>"; };
 		553BC50B1BCE5191003D907A /* StandardDoor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StandardDoor.cpp; sourceTree = "<group>"; };
 		553BC50C1BCE5191003D907A /* StandardDoor.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = StandardDoor.hpp; sourceTree = "<group>"; };
+		55407D551BD5E2BC0000C41C /* GameFormula.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameFormula.cpp; sourceTree = "<group>"; };
+		55407D561BD5E2BC0000C41C /* GameFormula.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GameFormula.hpp; sourceTree = "<group>"; };
+		55407D5F1BD633590000C41C /* EventConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventConst.h; sourceTree = "<group>"; };
+		55407D621BD64F440000C41C /* ItemProperty.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ItemProperty.cpp; sourceTree = "<group>"; };
+		55407D631BD64F450000C41C /* ItemProperty.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ItemProperty.hpp; sourceTree = "<group>"; };
+		55407D721BD656870000C41C /* PickableItem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PickableItem.cpp; sourceTree = "<group>"; };
+		55407D761BD657440000C41C /* PickableItem.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PickableItem.hpp; sourceTree = "<group>"; };
 		555B0D001BC51A2C0055FB6D /* AppDelegate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AppDelegate.cpp; sourceTree = "<group>"; };
 		555B0D011BC51A2C0055FB6D /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		555B0D031BC51A2C0055FB6D /* Area.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Area.cpp; sourceTree = "<group>"; };
@@ -514,6 +511,8 @@
 				551E93B71BD51291009F788F /* LevelResourceManager.h */,
 				551E93B81BD51291009F788F /* UserRecord.cpp */,
 				551E93B91BD51291009F788F /* UserRecord.h */,
+				55407D551BD5E2BC0000C41C /* GameFormula.cpp */,
+				55407D561BD5E2BC0000C41C /* GameFormula.hpp */,
 			);
 			path = Mgrs;
 			sourceTree = "<group>";
@@ -523,10 +522,10 @@
 			children = (
 				551E93BB1BD51291009F788F /* MonsterProperty.cpp */,
 				551E93BC1BD51291009F788F /* MonsterProperty.hpp */,
-				551E93BD1BD51291009F788F /* PlayerBagProperty.cpp */,
-				551E93BE1BD51291009F788F /* PlayerBagProperty.hpp */,
 				551E93BF1BD51291009F788F /* PlayerProperty.cpp */,
 				551E93C01BD51291009F788F /* PlayerProperty.hpp */,
+				55407D621BD64F440000C41C /* ItemProperty.cpp */,
+				55407D631BD64F450000C41C /* ItemProperty.hpp */,
 			);
 			path = Properties;
 			sourceTree = "<group>";
@@ -649,16 +648,12 @@
 				553BC5061BCE4981003D907A /* Doors */,
 				553BC4FF1BCDF457003D907A /* Actor.cpp */,
 				553BC5001BCDF457003D907A /* Actor.hpp */,
-				5537C5011BCCA51500F4200E /* ItemWeapon.cpp */,
-				5537C5021BCCA51500F4200E /* ItemWeapon.hpp */,
 				55EC95831BC6AA7B0008D1D7 /* TerrainTile.cpp */,
 				55EC95841BC6AA7B0008D1D7 /* TerrainTile.hpp */,
 				55ECFB421BC79852007270CD /* Player.cpp */,
 				55ECFB431BC79852007270CD /* Player.hpp */,
-				5537C50D1BCCA54D00F4200E /* ItemArmor.cpp */,
-				5537C50E1BCCA54D00F4200E /* ItemArmor.hpp */,
-				5537C5111BCCA5BA00F4200E /* ItemOrnament.cpp */,
-				5537C5121BCCA5BA00F4200E /* ItemOrnament.hpp */,
+				55407D761BD657440000C41C /* PickableItem.hpp */,
+				55407D721BD656870000C41C /* PickableItem.cpp */,
 			);
 			path = Sprites3D;
 			sourceTree = "<group>";
@@ -675,6 +670,7 @@
 				551E93A71BD51282009F788F /* UtilityHelper.cpp */,
 				551E93A81BD51282009F788F /* UtilityHelper.h */,
 				EC6715EE1BCE7EE500C81CFC /* GameConfig.h */,
+				55407D5F1BD633590000C41C /* EventConst.h */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -845,6 +841,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55407D641BD64F450000C41C /* ItemProperty.cpp in Sources */,
 				551E93EA1BD512D3009F788F /* xor.cpp in Sources */,
 				553BC5091BCE499B003D907A /* BaseDoor.cpp in Sources */,
 				ECD10D721BD0967B007DD888 /* WrapperUILayer.cpp in Sources */,
@@ -874,12 +871,11 @@
 				551E93C11BD51291009F788F /* ArchiveManager.cpp in Sources */,
 				553BC50D1BCE5191003D907A /* StandardDoor.cpp in Sources */,
 				555B0D231BC51A2C0055FB6D /* GameScene.cpp in Sources */,
-				5537C5071BCCA51500F4200E /* ItemWeapon.cpp in Sources */,
-				5537C5131BCCA5BA00F4200E /* ItemOrnament.cpp in Sources */,
+				55407D571BD5E2BC0000C41C /* GameFormula.cpp in Sources */,
 				EC6716451BCE7F2C00C81CFC /* LogoScene.cpp in Sources */,
 				555B0D211BC51A2C0055FB6D /* TombLevel.cpp in Sources */,
 				551E93A91BD51282009F788F /* AlisaMethod.cpp in Sources */,
-				5537C50F1BCCA54D00F4200E /* ItemArmor.cpp in Sources */,
+				55407D741BD656870000C41C /* PickableItem.cpp in Sources */,
 				555B0D191BC51A2C0055FB6D /* BaseLevel.cpp in Sources */,
 				55EC95851BC6AA7B0008D1D7 /* TerrainTile.cpp in Sources */,
 				EC7F92D31BCF9ED200B26C6C /* HueSprite.cpp in Sources */,
@@ -888,7 +884,6 @@
 				ECD10D6C1BD0967B007DD888 /* CloseCallback.cpp in Sources */,
 				551E93C51BD51291009F788F /* UserRecord.cpp in Sources */,
 				551E93E81BD512D3009F788F /* sha1.cpp in Sources */,
-				551E93C91BD51291009F788F /* PlayerBagProperty.cpp in Sources */,
 				553BC5011BCDF457003D907A /* Actor.cpp in Sources */,
 				551E93E61BD512D3009F788F /* md5.c in Sources */,
 			);
@@ -901,7 +896,6 @@
 				551E93C81BD51291009F788F /* MonsterProperty.cpp in Sources */,
 				553BC50E1BCE5191003D907A /* StandardDoor.cpp in Sources */,
 				55EC95861BC6ABBA0008D1D7 /* TerrainTile.cpp in Sources */,
-				5537C5081BCCA51500F4200E /* ItemWeapon.cpp in Sources */,
 				551E93E31BD512D3009F788F /* CCCrypto.cpp in Sources */,
 				EC6716461BCE7F2C00C81CFC /* LogoScene.cpp in Sources */,
 				551E93E51BD512D3009F788F /* libb64.c in Sources */,
@@ -909,10 +903,12 @@
 				551E93AC1BD51282009F788F /* ChaosNumber.cpp in Sources */,
 				555B0D221BC51A2C0055FB6D /* TombLevel.cpp in Sources */,
 				553BC50A1BCE499B003D907A /* BaseDoor.cpp in Sources */,
+				55407D581BD5E2BC0000C41C /* GameFormula.cpp in Sources */,
 				555B0D261BC51A2C0055FB6D /* VoxelExplorer.cpp in Sources */,
 				551E93EB1BD512D3009F788F /* xor.cpp in Sources */,
 				555B0D181BC51A2C0055FB6D /* Area.cpp in Sources */,
 				EC7F92D41BCF9ED200B26C6C /* HueSprite.cpp in Sources */,
+				55407D751BD656870000C41C /* PickableItem.cpp in Sources */,
 				551E93EF1BD512D3009F788F /* FileStream.cpp in Sources */,
 				ECD10D781BD0D4F7007DD888 /* MainUiLayer.cpp in Sources */,
 				555B0D201BC51A2C0055FB6D /* StandardLevel.cpp in Sources */,
@@ -925,14 +921,12 @@
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
 				ECD10D711BD0967B007DD888 /* PopupUILayerManager.cpp in Sources */,
 				551E93F31BD512D3009F788F /* Stream.cpp in Sources */,
-				551E93CA1BD51291009F788F /* PlayerBagProperty.cpp in Sources */,
 				551E93C41BD51291009F788F /* LevelResourceManager.cpp in Sources */,
-				5537C5141BCCA5BA00F4200E /* ItemOrnament.cpp in Sources */,
 				555B0D1E1BC51A2C0055FB6D /* Graph.cpp in Sources */,
+				55407D651BD64F450000C41C /* ItemProperty.cpp in Sources */,
 				551E93B21BD51282009F788F /* UtilityHelper.cpp in Sources */,
 				555B0D241BC51A2C0055FB6D /* GameScene.cpp in Sources */,
 				551E93CC1BD51291009F788F /* PlayerProperty.cpp in Sources */,
-				5537C5101BCCA54D00F4200E /* ItemArmor.cpp in Sources */,
 				551E93ED1BD512D3009F788F /* XXTEA.cpp in Sources */,
 				551E93E71BD512D3009F788F /* md5.c in Sources */,
 				ECD10D6F1BD0967B007DD888 /* PopupUILayer.cpp in Sources */,
