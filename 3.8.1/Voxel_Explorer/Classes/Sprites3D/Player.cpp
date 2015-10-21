@@ -9,6 +9,7 @@
 #include "Player.hpp"
 #include "TerrainTile.hpp"
 #include "VoxelExplorer.h"
+#include "PlayerProperty.hpp"
 USING_NS_CC;
 
 Player* Player::create(const std::string& modelPath)
@@ -44,6 +45,7 @@ void Player::onExit()
 }
 void Player::update(float delta)
 {
+    PlayerProperty::getInstance()->update(delta);
     if(m_pPlayerLight)
         m_pPlayerLight->setPosition3D(Vec3(getPositionX(),TerrainTile::CONTENT_SCALE*2,getPositionZ()));
 }
@@ -216,7 +218,7 @@ void Player::onLand()
 }
 bool Player::createPlayerLight()
 {
-    m_pPlayerLight = PointLight::create(getPosition3D()+Vec3(0,TerrainTile::CONTENT_SCALE*2,0), Color3B::WHITE, TerrainTile::CONTENT_SCALE*5);
+    m_pPlayerLight = PointLight::create(getPosition3D()+Vec3(0,TerrainTile::CONTENT_SCALE*2,0), Color3B::WHITE, TerrainTile::CONTENT_SCALE*PlayerProperty::getInstance()->getLightDistance().GetLongValue());
     if(!m_pPlayerLight)
         return false;
     m_pPlayerLight->setLightFlag(LightFlag::LIGHT0);

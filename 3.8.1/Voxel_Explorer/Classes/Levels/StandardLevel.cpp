@@ -11,7 +11,7 @@
 #include "VoxelExplorer.h"
 #include "TerrainTile.hpp"
 #include "StandardDoor.hpp"
-
+#include "GameFormula.hpp"
 USING_NS_CC;
 
 StandardLevel::StandardLevel()
@@ -19,6 +19,7 @@ StandardLevel::StandardLevel()
     m_Type = LT_STANDARD;
     m_nMinAreaSize  = 7;
     m_nMaxAreaSize  = 9;
+    m_nStandardAreaCount = 0;
 }
 bool StandardLevel::build()
 {
@@ -198,10 +199,59 @@ bool StandardLevel::decorate()
 }
 bool StandardLevel::createMobs()
 {
+    int monsterNum = GameFormula::getLevelMonsterCount(m_nStandardAreaCount);
+    for (int i=0; i < monsterNum; i++) {
+//        Mob mob = Bestiary.mob( Dungeon.depth );
+//        do {
+//            mob.pos = randomRespawnCell();
+//        } while (mob.pos == -1);
+//        mobs.add( mob );
+//        Actor.occupyCell( mob );
+    }
     return true;
 }
 bool StandardLevel::createItems()
 {
+//    int nItems = 3;
+//    while (cocos2d::rand_0_1() < 0.4f) {
+//        nItems++;
+//    }
+//    
+//    for (int i=0; i < nItems; i++) {
+//        Heap.Type type = null;
+//        switch (Random.Int( 20 )) {
+//            case 0:
+//                type = Heap.Type.SKELETON;
+//                break;
+//            case 1:
+//            case 2:
+//            case 3:
+//            case 4:
+//                type = Heap.Type.CHEST;
+//                break;
+//            case 5:
+//                type = Dungeon.depth > 1 ? Heap.Type.MIMIC : Heap.Type.CHEST;
+//                break;
+//            default:
+//                type = Heap.Type.HEAP;
+//        }
+//        drop( Generator.random(), randomDropCell() ).type = type;
+//    }
+//    
+//    for (Item item : itemsToSpawn) {
+//        int cell = randomDropCell();
+//        if (item instanceof ScrollOfUpgrade) {
+//            while (map[cell] == Terrain.FIRE_TRAP || map[cell] == Terrain.SECRET_FIRE_TRAP) {
+//                cell = randomDropCell();
+//            }
+//        }
+//        drop( item, cell ).type = Heap.Type.HEAP;
+//    }
+//    
+//    Item item = Bones.get();
+//    if (item != null) {
+//        drop( item, randomDropCell() ).type = Heap.Type.SKELETON;
+//    }
     return true;
 }
 
@@ -305,7 +355,8 @@ void StandardLevel::assignAreasType()
         }
     }
     ///生成通道
-    int count = 0;
+    int rand = cocos2d::random(0, 2);
+    m_nStandardAreaCount = 0;
     for (PathGraphNode* node : m_Areas) {
         Area* area = static_cast<Area*>(node);
         if(area)
@@ -313,12 +364,26 @@ void StandardLevel::assignAreasType()
             if (area->getAreaType() == Area::AT_UNKNOWN) {
                 int connections = area->getConnectedAreas().size();
                 if ( connections == 0) {
-                    
+                    CCASSERT(connections == 0, "Error: connections == 0");
                 } else if (cocos2d::random(0, connections * connections-1) == 0) {
                     area->setAreaType(Area::AT_STANDARD);
-                    count++;
+                    m_nStandardAreaCount++;
                 } else {
-                    area->setAreaType(Area::AT_TUNNEL);
+                    switch (rand) {
+                        case 0:
+                            area->setAreaType(Area::AT_TUNNEL);
+                            break;
+                        case 1:
+                            area->setAreaType(Area::AT_STANDARD);
+                            m_nStandardAreaCount++;
+                            break;
+                        case 2:
+                            area->setAreaType(Area::AT_PASSAGE);
+                            break;
+                        default:
+                            break;
+                    }
+                    
                 }
             }
 
@@ -326,12 +391,12 @@ void StandardLevel::assignAreasType()
     }
     
     ///保证标准区域至少4个
-    while (count < 4) {
+    while (m_nStandardAreaCount < 4) {
         int rand = cocos2d::random(0, (int)(m_Areas.size())-1);
         Area* area = static_cast<Area*>(m_Areas[rand]);
         if (area != nullptr && area->getAreaType() == Area::AT_TUNNEL) {
             area->setAreaType(Area::AT_STANDARD);
-            count++;
+            m_nStandardAreaCount++;
         }
     }
     

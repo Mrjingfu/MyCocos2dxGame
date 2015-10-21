@@ -66,6 +66,25 @@ void BaseLevel::setTerrainTileFlag(int x, int y, int flag )
     int index = x + y * m_nWidth;
     m_Map[index].m_Flag = flag;
 }
+void BaseLevel::wrapTerrainTiles(int x, int y , int width, int height, TerrainTile::TileType type, TerrainTile::TileType withType)
+{
+    int pos = y * m_nWidth + x;
+    for (int i = y; i < y + height; i++, pos += m_nWidth) {
+        for (int j = pos; j<(pos + width); j++) {
+            if(m_Map[j].m_Type == type)
+            {
+                for (int n : getNeighbours8()) {
+                    int cell = j + n;
+                    if(m_Map[cell].m_Type == TerrainTile::TT_CHASM)
+                    {
+                        m_Map[cell].m_Type = withType;
+                        m_Map[j].m_Flag = assignTerrainTileFlag(withType);
+                    }
+                }
+            }
+        }
+    }
+}
 bool BaseLevel::checkMovable(Actor* actor)
 {
     if(!actor)

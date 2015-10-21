@@ -71,6 +71,7 @@ private:
     void generateTerrainTiles(BaseLevel* level, int m, TerrainTile::TileType type);
     void generateTerrainTiles(BaseLevel* level, cocos2d::Rect rect, TerrainTile::TileType type);
     
+    void wrapTerrainTiles(BaseLevel* level, TerrainTile::TileType type, TerrainTile::TileType withType);
     void setTerrainTile(BaseLevel* level, int x, int y, TerrainTile::TileType type);
     void setRandomTerrainTile(BaseLevel* level, int m, TerrainTile::TileType type);
     

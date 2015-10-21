@@ -48,6 +48,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     }
 
     std::vector<std::string> searchPaths;
+    searchPaths.push_back("lang");
     searchPaths.push_back("models");
     searchPaths.push_back("textures");
     searchPaths.push_back("ui");

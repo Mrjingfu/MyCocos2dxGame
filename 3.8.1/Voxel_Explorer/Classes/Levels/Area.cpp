@@ -299,10 +299,22 @@ void Area::generatePassageArea(BaseLevel* level)
     Vec2  xy= p2xy( m_Rect, p );
     setTerrainTile( level, xy.x, xy.y, TerrainTile::TT_STANDARD );
     
+    int x = m_Rect.origin.x;
+    int y = m_Rect.origin.y;
+    int w = m_Rect.size.width+1;
+    int h = m_Rect.size.height+1;
+    int pos = y * level->getWidth() + x;
+    for (int i = y; i < y + h; i++, pos += level->getWidth()) {
+        for (int j = pos; j<(pos + w); j++) {
+            
+        }
+    }
+    wrapTerrainTiles(level, TerrainTile::TT_STANDARD, TerrainTile::TT_WALL);
+    
     for (auto iter = m_ConnectedAreas.begin(); iter != m_ConnectedAreas.end(); iter++) {
         Door* door = iter->second;
         if(door)
-            door->setDoorType(Door::DT_TUNNEL);
+            door->setDoorType(Door::DT_PASSAGE);
     }
 }
 void Area::generateShopArea(BaseLevel* level)
@@ -348,7 +360,17 @@ void Area::generateTerrainTiles(BaseLevel* level, cocos2d::Rect rect, TerrainTil
     
     level->generateTerrainTiles(x, y, w, h, type, m_Type);
 }
-
+void Area::wrapTerrainTiles(BaseLevel* level, TerrainTile::TileType type, TerrainTile::TileType withType)
+{
+    if(!level)
+        return;
+    int x = m_Rect.origin.x;
+    int y = m_Rect.origin.y;
+    int w = m_Rect.size.width+1;
+    int h = m_Rect.size.height+1;
+    
+    level->wrapTerrainTiles(x, y, w, h, type, withType);
+}
 void Area::setTerrainTile(BaseLevel* level, int x, int y, TerrainTile::TileType type)
 {
     if(!level)

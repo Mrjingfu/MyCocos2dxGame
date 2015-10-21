@@ -13,6 +13,8 @@
 class GameFormula
 {
 public:
+    static int getLevelMonsterCount(int standardAreaNum);
+    
     static int getNextLevelExp(int currentLevel);
     static int getKillNormalMonsterExp(int currentLevel, int monsterLevel);
     static int getKillEliteMonsterExp(int currentLevel, int monsterLevel);

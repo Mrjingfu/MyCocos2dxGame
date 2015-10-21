@@ -11,6 +11,7 @@
 #include "TerrainTile.hpp"
 #include "BaseDoor.hpp"
 #include "LevelResourceManager.h"
+#include "RandomDungeon.hpp"
 USING_NS_CC;
 
 VoxelExplorer* g_pVoxelExplorerInstance = nullptr;
@@ -55,7 +56,11 @@ bool VoxelExplorer::init(Layer* pMainLayer)
         CCLOG("load level resource failed!");
         return false;
     }
-    
+    if(!RandomDungeon::getInstance()->build())
+    {
+        CCLOG("RandomDungeon build failed!");
+        return false;
+    }
     if(!createLayers())
     {
         CCLOG("Create layers failed!");
@@ -203,11 +208,29 @@ bool VoxelExplorer::createLights()
 }
 bool VoxelExplorer::createLevel()
 {
-    switch (m_nDepth) {
-        case 1:
+    DungeonNode* node = RandomDungeon::getInstance()->getCurrentDungeonNode();
+    if(!node)
+        return false;
+    switch (node->m_Type) {
+        case DT_SEWER:
+        case DT_PRISON:
+        case DT_TEMPLE:
+        case DT_PIT:
+        case DT_CAVE:
+        case DT_TOMB:
+            
+        case DT_DWARF_CASTLE:
+        case DT_MAGA_TOWER:
+        case DT_ORC_FORTRESS:
+        case DT_ELF_FOREST:
+        case DT_TROLL_TEMPLE:
+            
+        case DT_BEHOLDER_CASTLE:
+        case DT_WARP_SPACE:
+        case DT_DRAGON_LAIR:
+        case DT_LICH_TOMB:
             m_pCurrentLevel = new(std::nothrow) TombLevel();
             break;
-            
         default:
             break;
     }
