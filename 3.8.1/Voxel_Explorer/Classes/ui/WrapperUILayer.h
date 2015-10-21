@@ -35,8 +35,8 @@ public:
     virtual void update(float dt){};
     //刷新UI
     virtual void refreshUIView(){};
-    virtual void addEvents(){};
-    virtual bool initUi(){return true;};
+    virtual bool addEvents(){return true;};          //cocostudio布局用到
+    virtual bool initUi(){return true;}; //手工编写ui布局用到
     bool isForbiddenAction(Ref* sender, cocos2d::ui::Widget::TouchEventType type);
     CREATE_FUNC(WrapperUILayer);
     cocos2d::Layer* getRootLayer(){return m_pRootLayer;};
@@ -47,8 +47,7 @@ public:
     virtual bool load(const std::string gameUIFile);
     
 protected:
-    cocos2d::Layer*	m_pRootLayer;   //ui布局用到  手工编写UI用到
-    
+    cocos2d::Layer*	m_pRootLayer;   //手工编写ui布局用到
     cocos2d::Node*	m_pRootNode;//cocostudio布局用到
     Ref* m_actionRef;
     

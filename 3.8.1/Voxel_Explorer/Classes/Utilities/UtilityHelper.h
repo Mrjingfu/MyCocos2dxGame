@@ -19,8 +19,8 @@ public:
     static bool checkCircleIntersectWithSegment(const cocos2d::Vec2& center, float radius, const cocos2d::Vec2& start, const cocos2d::Vec2& end);
     static void getCameraToViewportRay(cocos2d::Camera* camera, const cocos2d::Vec2& screenPoint, cocos2d::Ray* outRay);
     static void getHexDigest(const unsigned char* md5, int len, std::string& hexStr);
-    
-    
+    static cocos2d::Node* seekNodeByTag(cocos2d::Node* root, int tag);
+    static cocos2d::Node* seekNodeByName(cocos2d::Node* root, const std::string& name);
     static cocos2d::Color3B randomColor(int minSum = 650, int minDelta = 10);
     
     static cocos2d::Color3B randomRedColor();

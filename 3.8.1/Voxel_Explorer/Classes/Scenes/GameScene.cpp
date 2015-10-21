@@ -8,7 +8,7 @@
 
 #include "GameScene.h"
 #include "VoxelExplorer.h"
-#include "MainUiLayer.h"
+#include "GameUILayer.h"
 USING_NS_CC;
 
 Scene* GameScene::createScene()
@@ -39,8 +39,9 @@ bool GameScene::init()
     if(!VoxelExplorer::getInstance()->init(this))
         return false;
     
-    auto mainUi = MainUiLayer::create();
+    auto mainUi = GameUILayer::create();
     mainUi->load("Scene.csb");
+    mainUi->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
     VoxelExplorer::getInstance()->get2DLayer()->addChild(mainUi);
     
     auto dispatcher = Director::getInstance()->getEventDispatcher();

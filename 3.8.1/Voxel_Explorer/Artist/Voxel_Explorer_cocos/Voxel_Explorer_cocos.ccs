@@ -3,9 +3,9 @@
   <SolutionFolder>
     <Group ctype="ResourceGroup">
       <RootFolder Name=".">
-        <Image Name="HelloWorld.png" />
         <Folder Name="scene">
           <Project Name="Scene.csd" Type="Scene" />
+          <Project Name="menuscene.csd" Type="Scene" />
         </Folder>
         <Folder Name="ui">
           <PlistImageFolder Image="Plist.png" PListFile="Plist.plist" Name=".Plist_PList.Dir">
@@ -16,6 +16,18 @@
             <PlistImageFile Name="button_rewardbtn_bg.png" Key="button_rewardbtn_bg.png" />
             <PlistImageFile Name="button_rewardbtn_icon_search.png" Key="button_rewardbtn_icon_search.png" />
           </PlistImageFolder>
+          <PlistImageFolder Image="ui_sprite.png" PListFile="ui_sprite.plist" Name=".ui_sprite_PList.Dir">
+            <PlistImageFile Name="btn_achieve.png" Key="btn_achieve.png" />
+            <PlistImageFile Name="btn_rank.png" Key="btn_rank.png" />
+            <PlistImageFile Name="btn_rate.png" Key="btn_rate.png" />
+            <PlistImageFile Name="btn_setting.png" Key="btn_setting.png" />
+            <PlistImageFile Name="ui_frame_1.png" Key="ui_frame_1.png" />
+            <PlistImageFile Name="ui_frame_2.png" Key="ui_frame_2.png" />
+            <PlistImageFile Name="ui_frame_3.png" Key="ui_frame_3.png" />
+          </PlistImageFolder>
+        </Folder>
+        <Folder Name="fonts">
+          <TTF Name="04B_03.TTF" />
         </Folder>
       </RootFolder>
     </Group>
