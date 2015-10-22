@@ -59,6 +59,9 @@ public:
     cocos2d::Rect getIntersectRect(Area* other);
     
     std::unordered_map<Area*, Door*>& getConnectedAreas() { return m_ConnectedAreas; }
+    
+    int getRandomTile(BaseLevel* level);
+    int getRandomTile(BaseLevel* level, int m);
 private:
     void generateStandardArea(BaseLevel* level);
     void generateEntranceArea(BaseLevel* level);

@@ -87,6 +87,22 @@
 		551E93F11BD512D3009F788F /* MemoryStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 551E93DE1BD512D3009F788F /* MemoryStream.cpp */; settings = {ASSET_TAGS = (); }; };
 		551E93F21BD512D3009F788F /* Stream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 551E93E01BD512D3009F788F /* Stream.cpp */; settings = {ASSET_TAGS = (); }; };
 		551E93F31BD512D3009F788F /* Stream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 551E93E01BD512D3009F788F /* Stream.cpp */; settings = {ASSET_TAGS = (); }; };
+		55338ACF1BD8781E00EA316F /* BaseMonster.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55338ACD1BD8781E00EA316F /* BaseMonster.cpp */; settings = {ASSET_TAGS = (); }; };
+		55338AD01BD8781E00EA316F /* BaseMonster.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55338ACD1BD8781E00EA316F /* BaseMonster.cpp */; settings = {ASSET_TAGS = (); }; };
+		55338AD51BD878BF00EA316F /* StandardMonster.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55338AD31BD878BF00EA316F /* StandardMonster.cpp */; settings = {ASSET_TAGS = (); }; };
+		55338AD61BD878BF00EA316F /* StandardMonster.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55338AD31BD878BF00EA316F /* StandardMonster.cpp */; settings = {ASSET_TAGS = (); }; };
+		55338ADA1BD8920F00EA316F /* SlimeKing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55338AD81BD8920F00EA316F /* SlimeKing.cpp */; settings = {ASSET_TAGS = (); }; };
+		55338ADB1BD8921000EA316F /* SlimeKing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55338AD81BD8920F00EA316F /* SlimeKing.cpp */; settings = {ASSET_TAGS = (); }; };
+		55338ADE1BD8925100EA316F /* Warden.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55338ADC1BD8925100EA316F /* Warden.cpp */; settings = {ASSET_TAGS = (); }; };
+		55338ADF1BD8925100EA316F /* Warden.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55338ADC1BD8925100EA316F /* Warden.cpp */; settings = {ASSET_TAGS = (); }; };
+		55338AE21BD8926A00EA316F /* SkeletonKing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55338AE01BD8926A00EA316F /* SkeletonKing.cpp */; settings = {ASSET_TAGS = (); }; };
+		55338AE31BD8926A00EA316F /* SkeletonKing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55338AE01BD8926A00EA316F /* SkeletonKing.cpp */; settings = {ASSET_TAGS = (); }; };
+		55338AE61BD8928E00EA316F /* Giant.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55338AE41BD8928E00EA316F /* Giant.cpp */; settings = {ASSET_TAGS = (); }; };
+		55338AE71BD8928E00EA316F /* Giant.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55338AE41BD8928E00EA316F /* Giant.cpp */; settings = {ASSET_TAGS = (); }; };
+		55338AEA1BD892C200EA316F /* Archbishop.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55338AE81BD892C200EA316F /* Archbishop.cpp */; settings = {ASSET_TAGS = (); }; };
+		55338AEB1BD892C200EA316F /* Archbishop.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55338AE81BD892C200EA316F /* Archbishop.cpp */; settings = {ASSET_TAGS = (); }; };
+		55338AEE1BD892FC00EA316F /* ShadowDragon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55338AEC1BD892FC00EA316F /* ShadowDragon.cpp */; settings = {ASSET_TAGS = (); }; };
+		55338AEF1BD892FC00EA316F /* ShadowDragon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55338AEC1BD892FC00EA316F /* ShadowDragon.cpp */; settings = {ASSET_TAGS = (); }; };
 		553BC5011BCDF457003D907A /* Actor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 553BC4FF1BCDF457003D907A /* Actor.cpp */; settings = {ASSET_TAGS = (); }; };
 		553BC5021BCDF457003D907A /* Actor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 553BC4FF1BCDF457003D907A /* Actor.cpp */; settings = {ASSET_TAGS = (); }; };
 		553BC5091BCE499B003D907A /* BaseDoor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 553BC5071BCE499B003D907A /* BaseDoor.cpp */; settings = {ASSET_TAGS = (); }; };
@@ -262,6 +278,22 @@
 		551E93DF1BD512D3009F788F /* MemoryStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MemoryStream.h; sourceTree = "<group>"; };
 		551E93E01BD512D3009F788F /* Stream.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Stream.cpp; sourceTree = "<group>"; };
 		551E93E11BD512D3009F788F /* Stream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Stream.h; sourceTree = "<group>"; };
+		55338ACD1BD8781E00EA316F /* BaseMonster.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BaseMonster.cpp; sourceTree = "<group>"; };
+		55338ACE1BD8781E00EA316F /* BaseMonster.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BaseMonster.hpp; sourceTree = "<group>"; };
+		55338AD31BD878BF00EA316F /* StandardMonster.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StandardMonster.cpp; sourceTree = "<group>"; };
+		55338AD41BD878BF00EA316F /* StandardMonster.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = StandardMonster.hpp; sourceTree = "<group>"; };
+		55338AD81BD8920F00EA316F /* SlimeKing.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SlimeKing.cpp; sourceTree = "<group>"; };
+		55338AD91BD8920F00EA316F /* SlimeKing.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SlimeKing.hpp; sourceTree = "<group>"; };
+		55338ADC1BD8925100EA316F /* Warden.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Warden.cpp; sourceTree = "<group>"; };
+		55338ADD1BD8925100EA316F /* Warden.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Warden.hpp; sourceTree = "<group>"; };
+		55338AE01BD8926A00EA316F /* SkeletonKing.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SkeletonKing.cpp; sourceTree = "<group>"; };
+		55338AE11BD8926A00EA316F /* SkeletonKing.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SkeletonKing.hpp; sourceTree = "<group>"; };
+		55338AE41BD8928E00EA316F /* Giant.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Giant.cpp; sourceTree = "<group>"; };
+		55338AE51BD8928E00EA316F /* Giant.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Giant.hpp; sourceTree = "<group>"; };
+		55338AE81BD892C200EA316F /* Archbishop.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Archbishop.cpp; sourceTree = "<group>"; };
+		55338AE91BD892C200EA316F /* Archbishop.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Archbishop.hpp; sourceTree = "<group>"; };
+		55338AEC1BD892FC00EA316F /* ShadowDragon.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ShadowDragon.cpp; sourceTree = "<group>"; };
+		55338AED1BD892FC00EA316F /* ShadowDragon.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ShadowDragon.hpp; sourceTree = "<group>"; };
 		553BC4FF1BCDF457003D907A /* Actor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Actor.cpp; sourceTree = "<group>"; };
 		553BC5001BCDF457003D907A /* Actor.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Actor.hpp; sourceTree = "<group>"; };
 		553BC5071BCE499B003D907A /* BaseDoor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BaseDoor.cpp; sourceTree = "<group>"; };
@@ -585,6 +617,25 @@
 			path = stream;
 			sourceTree = "<group>";
 		};
+		55338AD71BD891C000EA316F /* Boss */ = {
+			isa = PBXGroup;
+			children = (
+				55338AD81BD8920F00EA316F /* SlimeKing.cpp */,
+				55338AD91BD8920F00EA316F /* SlimeKing.hpp */,
+				55338ADC1BD8925100EA316F /* Warden.cpp */,
+				55338ADD1BD8925100EA316F /* Warden.hpp */,
+				55338AE01BD8926A00EA316F /* SkeletonKing.cpp */,
+				55338AE11BD8926A00EA316F /* SkeletonKing.hpp */,
+				55338AE41BD8928E00EA316F /* Giant.cpp */,
+				55338AE51BD8928E00EA316F /* Giant.hpp */,
+				55338AE81BD892C200EA316F /* Archbishop.cpp */,
+				55338AE91BD892C200EA316F /* Archbishop.hpp */,
+				55338AEC1BD892FC00EA316F /* ShadowDragon.cpp */,
+				55338AED1BD892FC00EA316F /* ShadowDragon.hpp */,
+			);
+			path = Boss;
+			sourceTree = "<group>";
+		};
 		553BC5061BCE4981003D907A /* Doors */ = {
 			isa = PBXGroup;
 			children = (
@@ -599,6 +650,10 @@
 		55407D781BD66E860000C41C /* Monsters */ = {
 			isa = PBXGroup;
 			children = (
+				55338ACD1BD8781E00EA316F /* BaseMonster.cpp */,
+				55338ACE1BD8781E00EA316F /* BaseMonster.hpp */,
+				55338AD31BD878BF00EA316F /* StandardMonster.cpp */,
+				55338AD41BD878BF00EA316F /* StandardMonster.hpp */,
 			);
 			path = Monsters;
 			sourceTree = "<group>";
@@ -668,6 +723,7 @@
 		55EC95761BC673690008D1D7 /* Sprites3D */ = {
 			isa = PBXGroup;
 			children = (
+				55338AD71BD891C000EA316F /* Boss */,
 				55407D781BD66E860000C41C /* Monsters */,
 				553BC5061BCE4981003D907A /* Doors */,
 				553BC4FF1BCDF457003D907A /* Actor.cpp */,
@@ -872,6 +928,7 @@
 				553BC5091BCE499B003D907A /* BaseDoor.cpp in Sources */,
 				ECD10D721BD0967B007DD888 /* WrapperUILayer.cpp in Sources */,
 				551E93AF1BD51282009F788F /* NativeBridge.mm in Sources */,
+				55338AEA1BD892C200EA316F /* Archbishop.cpp in Sources */,
 				555B0D151BC51A2C0055FB6D /* AppDelegate.cpp in Sources */,
 				555B0D1F1BC51A2C0055FB6D /* StandardLevel.cpp in Sources */,
 				551E93E21BD512D3009F788F /* CCCrypto.cpp in Sources */,
@@ -886,20 +943,26 @@
 				551E93EC1BD512D3009F788F /* XXTEA.cpp in Sources */,
 				555B0D251BC51A2C0055FB6D /* VoxelExplorer.cpp in Sources */,
 				551E93CB1BD51291009F788F /* PlayerProperty.cpp in Sources */,
+				55338AD51BD878BF00EA316F /* StandardMonster.cpp in Sources */,
 				EC00DD591BD66586009BC378 /* GameUILayer.cpp in Sources */,
 				551E93C71BD51291009F788F /* MonsterProperty.cpp in Sources */,
+				55338AE21BD8926A00EA316F /* SkeletonKing.cpp in Sources */,
 				555B0D1D1BC51A2C0055FB6D /* Graph.cpp in Sources */,
 				551E93B11BD51282009F788F /* UtilityHelper.cpp in Sources */,
+				55338ADE1BD8925100EA316F /* Warden.cpp in Sources */,
 				ECD10D6E1BD0967B007DD888 /* PopupUILayer.cpp in Sources */,
 				555B0D171BC51A2C0055FB6D /* Area.cpp in Sources */,
 				551E93F21BD512D3009F788F /* Stream.cpp in Sources */,
 				EC00DD5F1BD665A6009BC378 /* MenuScene.cpp in Sources */,
+				55338ACF1BD8781E00EA316F /* BaseMonster.cpp in Sources */,
 				555B0D1B1BC51A2C0055FB6D /* Door.cpp in Sources */,
 				551E93E41BD512D3009F788F /* libb64.c in Sources */,
+				55338AEE1BD892FC00EA316F /* ShadowDragon.cpp in Sources */,
 				551E93C11BD51291009F788F /* ArchiveManager.cpp in Sources */,
 				553BC50D1BCE5191003D907A /* StandardDoor.cpp in Sources */,
 				555B0D231BC51A2C0055FB6D /* GameScene.cpp in Sources */,
 				55407D571BD5E2BC0000C41C /* GameFormula.cpp in Sources */,
+				55338ADA1BD8920F00EA316F /* SlimeKing.cpp in Sources */,
 				EC6716451BCE7F2C00C81CFC /* LogoScene.cpp in Sources */,
 				555B0D211BC51A2C0055FB6D /* TombLevel.cpp in Sources */,
 				551E93A91BD51282009F788F /* AlisaMethod.cpp in Sources */,
@@ -915,6 +978,7 @@
 				551E93E81BD512D3009F788F /* sha1.cpp in Sources */,
 				553BC5011BCDF457003D907A /* Actor.cpp in Sources */,
 				551E93E61BD512D3009F788F /* md5.c in Sources */,
+				55338AE61BD8928E00EA316F /* Giant.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -928,10 +992,14 @@
 				551E93E31BD512D3009F788F /* CCCrypto.cpp in Sources */,
 				EC00DD5C1BD66586009BC378 /* MenuUILayer.cpp in Sources */,
 				EC6716461BCE7F2C00C81CFC /* LogoScene.cpp in Sources */,
+				55338ADF1BD8925100EA316F /* Warden.cpp in Sources */,
 				551E93E51BD512D3009F788F /* libb64.c in Sources */,
 				EC00DD601BD665A6009BC378 /* MenuScene.cpp in Sources */,
 				ECD10D731BD0967B007DD888 /* WrapperUILayer.cpp in Sources */,
+				55338AE31BD8926A00EA316F /* SkeletonKing.cpp in Sources */,
+				55338ADB1BD8921000EA316F /* SlimeKing.cpp in Sources */,
 				551651C61BD73102004ED7F6 /* RandomDungeon.cpp in Sources */,
+				55338AD01BD8781E00EA316F /* BaseMonster.cpp in Sources */,
 				551E93AC1BD51282009F788F /* ChaosNumber.cpp in Sources */,
 				EC00DD5A1BD66586009BC378 /* GameUILayer.cpp in Sources */,
 				555B0D221BC51A2C0055FB6D /* TombLevel.cpp in Sources */,
@@ -944,6 +1012,7 @@
 				55407D751BD656870000C41C /* PickableItem.cpp in Sources */,
 				551E93EF1BD512D3009F788F /* FileStream.cpp in Sources */,
 				555B0D201BC51A2C0055FB6D /* StandardLevel.cpp in Sources */,
+				55338AEB1BD892C200EA316F /* Archbishop.cpp in Sources */,
 				551E93AA1BD51282009F788F /* AlisaMethod.cpp in Sources */,
 				555B0D1A1BC51A2C0055FB6D /* BaseLevel.cpp in Sources */,
 				555B0D161BC51A2C0055FB6D /* AppDelegate.cpp in Sources */,
@@ -963,9 +1032,12 @@
 				551E93E71BD512D3009F788F /* md5.c in Sources */,
 				ECD10D6F1BD0967B007DD888 /* PopupUILayer.cpp in Sources */,
 				555B0D1C1BC51A2C0055FB6D /* Door.cpp in Sources */,
+				55338AEF1BD892FC00EA316F /* ShadowDragon.cpp in Sources */,
+				55338AE71BD8928E00EA316F /* Giant.cpp in Sources */,
 				ECD10D6D1BD0967B007DD888 /* CloseCallback.cpp in Sources */,
 				551E93B01BD51282009F788F /* NativeBridge.mm in Sources */,
 				551E93E91BD512D3009F788F /* sha1.cpp in Sources */,
+				55338AD61BD878BF00EA316F /* StandardMonster.cpp in Sources */,
 				551E93F11BD512D3009F788F /* MemoryStream.cpp in Sources */,
 				551E93C61BD51291009F788F /* UserRecord.cpp in Sources */,
 			);

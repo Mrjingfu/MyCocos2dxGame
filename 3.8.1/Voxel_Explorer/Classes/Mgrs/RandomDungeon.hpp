@@ -10,7 +10,7 @@
 #define RandomDungeon_hpp
 
 #include "cocos2d.h"
-
+#include "ChaosNumber.h"
 typedef enum{
     DT_UNKNOWN = 0,        ////未知
     
@@ -50,9 +50,9 @@ public:
         m_pRightNode    = nullptr;      ////右节点
     }
     std::string     m_strDungeonName;       ////地城名称
-    int             m_nCurrentDepth;        ////当前深度
-    int             m_nNodeDepth;           ////节点深度
-    int             m_nTotalNum;            ////地城层数
+    CChaosNumber    m_nCurrentDepth;        ////当前深度
+    CChaosNumber    m_nNodeDepth;           ////节点深度
+    CChaosNumber    m_nTotalNum;            ////地城层数
     DUNGEON_TYPE    m_Type;                 ////类型
     
     DungeonNode*    m_pParentNode;  ////父节点
@@ -76,7 +76,10 @@ public:
     void selectDungeonNode(bool left);
     
     DungeonNode* getCurrentDungeonNode() const { return m_pCurrentNode; }
-    int getDifficultClass() const { return m_nDifficultClass; }
+    CChaosNumber getDifficultClass() const { return m_nDifficultClass; }
+    
+    void load();
+    void save();
 private:
     DUNGEON_TYPE generateDungeonNodeType();
     bool generateNextDungeonNode();
@@ -87,7 +90,7 @@ private:
     std::vector<DUNGEON_TYPE>   m_UnSelected;           ///还没有选择的。
     int                         m_nCurrentSelectGroup;  ///当前选择的组
     
-    int                         m_nDifficultClass;      ////难度等级
+    CChaosNumber                m_nDifficultClass;      ////难度等级
 };
 
 #endif /* RandomDungeon_hpp */

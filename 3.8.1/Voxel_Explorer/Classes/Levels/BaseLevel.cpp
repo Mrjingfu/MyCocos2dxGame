@@ -21,10 +21,12 @@ BaseLevel::BaseLevel()
 }
 void BaseLevel::create()
 {
-    m_nLenght = m_nWidth*m_nHeight;
-    m_Map.resize(m_nLenght);
-    if(!build())
-        CCLOG("Level build failed!");
+    do
+    {
+        m_nLenght = m_nWidth*m_nHeight;
+        m_Map.resize(m_nLenght);
+    }
+    while (!build());
     if(!createRenderObjs())
         CCLOG("Create RenderObj failed!");
 }
@@ -37,6 +39,7 @@ void BaseLevel::setLevelType(BaseLevel::LEVEL_TYPE type)
 {
     m_Type = type;
 }
+
 void BaseLevel::generateTerrainTiles(int x, int y , int width, int height, TerrainTile::TileType tileType, Area::AREA_TYPE areaType, Actor::ActorDir dir)
 {
     int pos = y * m_nWidth + x;
@@ -78,7 +81,7 @@ void BaseLevel::wrapTerrainTiles(int x, int y , int width, int height, TerrainTi
                     if(m_Map[cell].m_Type == TerrainTile::TT_CHASM)
                     {
                         m_Map[cell].m_Type = withType;
-                        m_Map[j].m_Flag = assignTerrainTileFlag(withType);
+                        m_Map[cell].m_Flag = assignTerrainTileFlag(withType);
                     }
                 }
             }
@@ -115,8 +118,6 @@ int BaseLevel::assignTerrainTileFlag(TerrainTile::TileType type)
     int flag = TileInfo::INITIALISED;
     switch (type) {
         case TerrainTile::TT_STANDARD:
-            flag = TileInfo::PASSABLE;
-            break;
         case TerrainTile::TT_TUNNEL:
             flag = TileInfo::PASSABLE;
             break;
@@ -132,4 +133,11 @@ int BaseLevel::assignTerrainTileFlag(TerrainTile::TileType type)
             break;
     }
     return flag;
+}
+
+void BaseLevel::load()
+{
+}
+void BaseLevel::save()
+{
 }

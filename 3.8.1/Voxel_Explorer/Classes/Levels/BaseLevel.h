@@ -86,11 +86,14 @@ public:
     void setTerrainTileFlag(int x, int y, int flag );
     void wrapTerrainTiles(int x, int y , int width, int height, TerrainTile::TileType type, TerrainTile::TileType withType);
     bool checkMovable(Actor* actor);
+    
+    void load();
+    void save();
 protected:
     virtual bool build() = 0;
     virtual bool createRenderObjs() = 0;
     virtual bool decorate() = 0;
-    virtual bool createMobs() = 0;
+    virtual bool createMonsters() = 0;
     virtual bool createItems() = 0;
 
     virtual void showMap(bool show) = 0;

@@ -63,3 +63,14 @@ int GameFormula::getKillBossExp(int currentLevel, int bossLevel)
 {
     return (bossLevel-1)*20+100;
 }
+
+void GameFormula::exchangeMoney(CChaosNumber srcCopper, CChaosNumber& gold, CChaosNumber& silver, CChaosNumber& copper)
+{
+    gold = srcCopper/10000;
+    silver = (srcCopper.GetLongValue()%10000)/100;
+    copper = srcCopper.GetLongValue()%100;
+}
+CChaosNumber GameFormula::exchangeMoney(CChaosNumber srcGold, CChaosNumber srcSilver, CChaosNumber srcCopper)
+{
+    return srcGold*100*100 + srcSilver*100 + srcCopper*1;
+}

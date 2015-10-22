@@ -197,7 +197,7 @@ bool StandardLevel::decorate()
 {
     return true;
 }
-bool StandardLevel::createMobs()
+bool StandardLevel::createMonsters()
 {
     int monsterNum = GameFormula::getLevelMonsterCount(m_nStandardAreaCount);
     for (int i=0; i < monsterNum; i++) {
@@ -689,5 +689,25 @@ void StandardLevel::generateSpawnPoint()
     for (int i = 0; i<m_Map.size()-1; i++) {
         if(m_Map[i].m_Type == TerrainTile::TT_ENTRANCE)
             m_spawnPoint = Vec2((m_Map[i].m_nX+1)*TerrainTile::CONTENT_SCALE,(m_Map[i].m_nY)*TerrainTile::CONTENT_SCALE);
+    }
+}
+int StandardLevel::randomRespawnCell()
+{
+    int count = 0;
+    int tileIndex = -1;
+    
+    while (true) {
+        if (++count > 10) {
+            return -1;
+        }
+        int rand = cocos2d::random(0, (int)(m_Areas.size())-1);
+        Area* area = static_cast<Area*>(m_Areas[rand]);
+        if (area == nullptr || area->getAreaType() != Area::AT_STANDARD)
+            continue;
+        
+        tileIndex = area->getRandomTile(this);
+        if ((m_Map[tileIndex].m_Flag & TileInfo::PASSABLE) != 0 ) {
+            return tileIndex;
+        }
     }
 }

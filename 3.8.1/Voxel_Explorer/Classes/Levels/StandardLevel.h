@@ -19,7 +19,7 @@ protected:
     virtual bool build();
     virtual bool createRenderObjs();
     virtual bool decorate();
-    virtual bool createMobs();
+    virtual bool createMonsters();
     virtual bool createItems();
     
     virtual bool initAreas();
@@ -35,6 +35,7 @@ private:
     bool mergeSmallIntersectArea(Area* area, Area* other);
     void placeTraps();  ///放置陷阱
     void generateSpawnPoint();
+    int randomRespawnCell();
 protected:
     std::vector<PathGraphNode*>    m_Areas;
     Area*               m_AreaEntrance;

@@ -31,7 +31,8 @@ PlayerProperty::PlayerProperty()
     m_nMaxMP                = 30;               ///最大魔法值
     m_nCurrentHP            = 30;               ///当前生命值
     m_nCurrentMP            = 30;               ///当前魔法值
-    m_nAddedAttack          = 0;                ///额外攻击增加值
+    m_nAddedMinAttack       = 0;                ///额外最小攻击增加值
+    m_nAddedMaxAttack       = 0;                ///额外最大攻击增加值
     m_nAttackDiceNum        = 1;                ///攻击骰子数
     m_nAttackDiceFaceNum    = 4;                ///攻击骰子面数
     m_nArmorClass           = 4;                ///防御等级
@@ -59,28 +60,38 @@ void PlayerProperty::update(float delta)
 }
 CChaosNumber PlayerProperty::getMinAttack()
 {
-    return m_nAttackDiceNum.GetLongValue() + m_nAddedAttack.GetLongValue();
+    return m_nAttackDiceNum + m_nAddedMinAttack.GetLongValue();
 }
 CChaosNumber PlayerProperty::getMaxAttack()
 {
-    return m_nAttackDiceNum.GetLongValue()*m_nAttackDiceFaceNum.GetLongValue() + m_nAddedAttack.GetLongValue();
+    return m_nAttackDiceNum*m_nAttackDiceFaceNum.GetLongValue() + m_nAddedMaxAttack.GetLongValue();
 }
 CChaosNumber PlayerProperty::getDefense()
 {
     return -m_nArmorClass.GetLongValue() + m_nBaseArmorClass.GetLongValue();
 }
-void PlayerProperty::cost(CChaosNumber gold, CChaosNumber silver, CChaosNumber copper)
+void PlayerProperty::addMoney(CChaosNumber gold, CChaosNumber silver, CChaosNumber copper)
 {
-    CChaosNumber cost = gold*100*100 + silver*100 + copper*1;
-    CChaosNumber own = m_nGold*100*100 + m_nSilver*100 + m_nCopper*1;
+    if(silver<0 || silver>99 || copper<0 || copper>99 )
+    {
+        CCLOG("Money add error!");
+        return;
+    }
+    m_nGold = m_nGold + gold.GetLongValue();
+    m_nSilver = m_nSilver + silver.GetLongValue();
+    m_nCopper = m_nCopper + copper.GetLongValue();
+    m_bDirty = true;
+}
+void PlayerProperty::costMoney(CChaosNumber gold, CChaosNumber silver, CChaosNumber copper)
+{
+    CChaosNumber cost = GameFormula::exchangeMoney(gold,silver,copper);
+    CChaosNumber own = GameFormula::exchangeMoney(m_nGold,m_nSilver,m_nCopper);
     if(own < cost)
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_MONEY_NOT_ENOUGH);
     else
     {
         CChaosNumber left = own.GetLongValue() - cost.GetLongValue();
-        m_nGold = left/10000;
-        m_nSilver = (left.GetLongValue()%10000)/100;
-        m_nCopper = left.GetLongValue()%100;
+        GameFormula::exchangeMoney(left, m_nGold, m_nSilver, m_nCopper);
     }
     m_bDirty = true;
 }
@@ -142,32 +153,12 @@ void PlayerProperty::EquipOrnaments(CChaosNumber id)
     m_bDirty = true;
     Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_EQUIPED_ORNAMENTS);
 }
-
-void PlayerProperty::setGold(CChaosNumber gold)
+void PlayerProperty::load()
 {
-    CCASSERT(gold >=0 && gold <=99, "");
-    m_nGold = gold;
-    m_bDirty = true;
 }
-void PlayerProperty::setSilver(CChaosNumber silver)
+void PlayerProperty::save()
 {
-    CCASSERT(silver >=0 && silver <=99, "");
-    m_nSilver = silver;
-    m_bDirty = true;
 }
-void PlayerProperty::setCopper(CChaosNumber copper)
-{
-    CCASSERT(copper >=0 && copper <=99, "");
-    m_nCopper = copper;
-    m_bDirty = true;
-}
-void PlayerProperty::setLevel(CChaosNumber level)
-{
-    CCASSERT(level >=0 && level <=99, "");
-    m_nLevel = level;
-    m_bDirty = true;
-}
-
 void PlayerProperty::levelUp()
 {
     m_nLevel = m_nLevel + 1;

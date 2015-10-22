@@ -42,18 +42,18 @@ public:
     CChaosNumber getEquipedArmorID() const { return m_nEquipedArmorID; }
     CChaosNumber getEquipedOrnamentsID() const { return m_nEquipedOrnamentsID; }
     
-    void cost(CChaosNumber gold, CChaosNumber silver, CChaosNumber copper);
+    void addMoney(CChaosNumber gold, CChaosNumber silver, CChaosNumber copper);
+    void costMoney(CChaosNumber gold, CChaosNumber silver, CChaosNumber copper);
     void setExp(CChaosNumber exp);
     void setCurrentHP(CChaosNumber hp);
     void setCurrentMP(CChaosNumber mp);
     void EquipWeapon(CChaosNumber id);
     void EquipArmor(CChaosNumber id);
     void EquipOrnaments(CChaosNumber id);
+    
+    void load();
+    void save();
 private:
-    void setGold(CChaosNumber gold);
-    void setSilver(CChaosNumber silver);
-    void setCopper(CChaosNumber copper);
-    void setLevel(CChaosNumber level);
     void levelUp();
 private:
     CChaosNumber    m_nGold;                ///金币
@@ -66,7 +66,8 @@ private:
     CChaosNumber    m_nMaxMP;               ///最大魔法值
     CChaosNumber    m_nCurrentHP;           ///当前生命值
     CChaosNumber    m_nCurrentMP;           ///当前魔法值
-    CChaosNumber    m_nAddedAttack;         ///额外攻击增加值
+    CChaosNumber    m_nAddedMinAttack;      ///额外最小攻击增加值
+    CChaosNumber    m_nAddedMaxAttack;      ///额外最大攻击增加值
     CChaosNumber    m_nAttackDiceNum;       ///攻击骰子数
     CChaosNumber    m_nAttackDiceFaceNum;   ///攻击骰子面数
     CChaosNumber    m_nArmorClass;          ///防御等级

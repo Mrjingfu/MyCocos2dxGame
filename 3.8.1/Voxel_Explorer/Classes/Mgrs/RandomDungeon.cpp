@@ -133,55 +133,9 @@ DUNGEON_TYPE RandomDungeon::generateDungeonNodeType()
     {
         if(m_UnSelected.empty())
         {
-            m_UnSelected = SELECT_GROUP2;
-            m_nCurrentSelectGroup = 2;
-            return ret;
-        }
-        else
-        {
-            int rand = cocos2d::random(0, (int)m_UnSelected.size()-1);
-            ret = m_UnSelected[rand];
-            m_UnSelected.erase(m_UnSelected.begin() + rand);
-        }
-    }
-    if(m_nCurrentSelectGroup == 2)
-    {
-        if(m_UnSelected.empty())
-        {
-            m_UnSelected = SELECT_GROUP3;
-            m_nCurrentSelectGroup = 3;
-            return ret;
-        }
-        else
-        {
-            int rand = cocos2d::random(0, (int)m_UnSelected.size()-1);
-            ret = m_UnSelected[rand];
-            m_UnSelected.erase(m_UnSelected.begin() + rand);
-        }
-    }
-    if(m_nCurrentSelectGroup == 3)
-    {
-        if(m_UnSelected.empty())
-        {
-            m_UnSelected = SELECT_ALL;
-            m_nCurrentSelectGroup = 4;
-            m_nDifficultClass++;
-            return ret;
-        }
-        else
-        {
-            int rand = cocos2d::random(0, (int)m_UnSelected.size()-1);
-            ret = m_UnSelected[rand];
-            m_UnSelected.erase(m_UnSelected.begin() + rand);
-        }
-    }
-    if(m_nCurrentSelectGroup == 4)
-    {
-        if(m_UnSelected.empty())
-        {
-            m_UnSelected = SELECT_ALL;
-            m_nCurrentSelectGroup = 4;
-            m_nDifficultClass++;
+            m_UnSelected = SELECT_GROUP1;
+            m_nCurrentSelectGroup = 1;
+            m_nDifficultClass = m_nDifficultClass +1;
             return generateDungeonNodeType();
         }
         else
@@ -191,6 +145,69 @@ DUNGEON_TYPE RandomDungeon::generateDungeonNodeType()
             m_UnSelected.erase(m_UnSelected.begin() + rand);
         }
     }
+    ///此版本只做6关，后续先注释掉
+//    if(m_nCurrentSelectGroup == 1)
+//    {
+//        if(m_UnSelected.empty())
+//        {
+//            m_UnSelected = SELECT_GROUP2;
+//            m_nCurrentSelectGroup = 2;
+//            return ret;
+//        }
+//        else
+//        {
+//            int rand = cocos2d::random(0, (int)m_UnSelected.size()-1);
+//            ret = m_UnSelected[rand];
+//            m_UnSelected.erase(m_UnSelected.begin() + rand);
+//        }
+//    }
+//    if(m_nCurrentSelectGroup == 2)
+//    {
+//        if(m_UnSelected.empty())
+//        {
+//            m_UnSelected = SELECT_GROUP3;
+//            m_nCurrentSelectGroup = 3;
+//            return ret;
+//        }
+//        else
+//        {
+//            int rand = cocos2d::random(0, (int)m_UnSelected.size()-1);
+//            ret = m_UnSelected[rand];
+//            m_UnSelected.erase(m_UnSelected.begin() + rand);
+//        }
+//    }
+//    if(m_nCurrentSelectGroup == 3)
+//    {
+//        if(m_UnSelected.empty())
+//        {
+//            m_UnSelected = SELECT_ALL;
+//            m_nCurrentSelectGroup = 4;
+//            m_nDifficultClass = m_nDifficultClass +1;
+//            return ret;
+//        }
+//        else
+//        {
+//            int rand = cocos2d::random(0, (int)m_UnSelected.size()-1);
+//            ret = m_UnSelected[rand];
+//            m_UnSelected.erase(m_UnSelected.begin() + rand);
+//        }
+//    }
+//    if(m_nCurrentSelectGroup == 4)
+//    {
+//        if(m_UnSelected.empty())
+//        {
+//            m_UnSelected = SELECT_ALL;
+//            m_nCurrentSelectGroup = 4;
+//            m_nDifficultClass = m_nDifficultClass +1;
+//            return generateDungeonNodeType();
+//        }
+//        else
+//        {
+//            int rand = cocos2d::random(0, (int)m_UnSelected.size()-1);
+//            ret = m_UnSelected[rand];
+//            m_UnSelected.erase(m_UnSelected.begin() + rand);
+//        }
+//    }
     return ret;
 }
 void RandomDungeon::assignedDungeonNode(DungeonNode* node)
@@ -291,5 +308,10 @@ void RandomDungeon::assignedDungeonNode(DungeonNode* node)
         default:
             break;
     }
-
+}
+void RandomDungeon::load()
+{
+}
+void RandomDungeon::save()
+{
 }

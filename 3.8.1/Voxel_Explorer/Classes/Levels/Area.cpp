@@ -129,6 +129,23 @@ cocos2d::Rect Area::getIntersectRect(Area* other)
     rect.size.height = maxY - minY;
     return rect;
 }
+
+int Area::getRandomTile(BaseLevel* level)
+{
+    return getRandomTile(0);
+}
+int Area::getRandomTile(BaseLevel* level, int m)
+{
+    int left = m_Rect.getMinX() + 1 + m;
+    int right = m_Rect.getMaxX() - m - 1;
+    int bottom = m_Rect.getMinY() + 1 + m;
+    int top = m_Rect.getMaxY() - m - 1;
+    int x = cocos2d::random(MIN(left, right), MIN(left, right));
+    int y = cocos2d::random(MIN(bottom, top), MIN(bottom, top));
+    
+    return x + y * level->getWidth();
+}
+
 void Area::generateStandardArea(BaseLevel* level)
 {
     generateTerrainTiles(level, TerrainTile::TT_WALL);
@@ -263,7 +280,6 @@ void Area::generateTunnelArea(BaseLevel* level)
 }
 void Area::generatePassageArea(BaseLevel* level)
 {
-    //generateTerrainTiles(level, TerrainTile::TT_WALL);
     int pasWidth = m_Rect.size.width - 2;
     int pasHeight = m_Rect.size.height - 2;
     std::vector<int> joints;
@@ -383,9 +399,9 @@ void Area::setRandomTerrainTile(BaseLevel* level, int m, TerrainTile::TileType t
         return;
     
     int left = m_Rect.getMinX() + 1 + m;
-    int right = m_Rect.getMaxX() - m;
+    int right = m_Rect.getMaxX() - m -1;
     int bottom = m_Rect.getMinY() + 1 + m;
-    int top = m_Rect.getMaxY() - m;
+    int top = m_Rect.getMaxY() - m -1;
     int x = cocos2d::random(MIN(left, right), MIN(left, right));
     int y = cocos2d::random(MIN(bottom, top), MIN(bottom, top));
     setTerrainTile(level, x, y, type);
