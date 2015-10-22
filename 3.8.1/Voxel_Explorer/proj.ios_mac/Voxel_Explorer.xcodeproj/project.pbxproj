@@ -49,6 +49,8 @@
 		521A8EA919F11F5000D177D7 /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = 521A8EA819F11F5000D177D7 /* fonts */; };
 		521A8EAA19F11F5000D177D7 /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = 521A8EA819F11F5000D177D7 /* fonts */; };
 		52B47A471A53D09C004E4C60 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B47A461A53D09B004E4C60 /* Security.framework */; };
+		551651C51BD73102004ED7F6 /* RandomDungeon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 551651C31BD73102004ED7F6 /* RandomDungeon.cpp */; settings = {ASSET_TAGS = (); }; };
+		551651C61BD73102004ED7F6 /* RandomDungeon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 551651C31BD73102004ED7F6 /* RandomDungeon.cpp */; settings = {ASSET_TAGS = (); }; };
 		551E93A91BD51282009F788F /* AlisaMethod.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 551E93A01BD51282009F788F /* AlisaMethod.cpp */; settings = {ASSET_TAGS = (); }; };
 		551E93AA1BD51282009F788F /* AlisaMethod.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 551E93A01BD51282009F788F /* AlisaMethod.cpp */; settings = {ASSET_TAGS = (); }; };
 		551E93AB1BD51282009F788F /* ChaosNumber.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 551E93A21BD51282009F788F /* ChaosNumber.cpp */; settings = {ASSET_TAGS = (); }; };
@@ -224,6 +226,8 @@
 		521A8E6319F0C34300D177D7 /* Default-736h@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-736h@3x.png"; sourceTree = "<group>"; };
 		521A8EA819F11F5000D177D7 /* fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = fonts; sourceTree = "<group>"; };
 		52B47A461A53D09B004E4C60 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.1.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
+		551651C31BD73102004ED7F6 /* RandomDungeon.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RandomDungeon.cpp; sourceTree = "<group>"; };
+		551651C41BD73102004ED7F6 /* RandomDungeon.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = RandomDungeon.hpp; sourceTree = "<group>"; };
 		551E93A01BD51282009F788F /* AlisaMethod.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AlisaMethod.cpp; sourceTree = "<group>"; };
 		551E93A11BD51282009F788F /* AlisaMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlisaMethod.h; sourceTree = "<group>"; };
 		551E93A21BD51282009F788F /* ChaosNumber.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ChaosNumber.cpp; sourceTree = "<group>"; };
@@ -525,6 +529,8 @@
 				551E93B91BD51291009F788F /* UserRecord.h */,
 				55407D551BD5E2BC0000C41C /* GameFormula.cpp */,
 				55407D561BD5E2BC0000C41C /* GameFormula.hpp */,
+				551651C31BD73102004ED7F6 /* RandomDungeon.cpp */,
+				551651C41BD73102004ED7F6 /* RandomDungeon.hpp */,
 			);
 			path = Mgrs;
 			sourceTree = "<group>";
@@ -594,6 +600,13 @@
 			path = Doors;
 			sourceTree = "<group>";
 		};
+		55407D781BD66E860000C41C /* Monsters */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Monsters;
+			sourceTree = "<group>";
+		};
 		555B0CFF1BC51A2C0055FB6D /* Classes */ = {
 			isa = PBXGroup;
 			children = (
@@ -659,6 +672,7 @@
 		55EC95761BC673690008D1D7 /* Sprites3D */ = {
 			isa = PBXGroup;
 			children = (
+				55407D781BD66E860000C41C /* Monsters */,
 				553BC5061BCE4981003D907A /* Doors */,
 				553BC4FF1BCDF457003D907A /* Actor.cpp */,
 				553BC5001BCDF457003D907A /* Actor.hpp */,
@@ -899,6 +913,7 @@
 				55407D741BD656870000C41C /* PickableItem.cpp in Sources */,
 				555B0D191BC51A2C0055FB6D /* BaseLevel.cpp in Sources */,
 				55EC95851BC6AA7B0008D1D7 /* TerrainTile.cpp in Sources */,
+				551651C51BD73102004ED7F6 /* RandomDungeon.cpp in Sources */,
 				EC7F92D31BCF9ED200B26C6C /* HueSprite.cpp in Sources */,
 				55ECFB441BC79852007270CD /* Player.cpp in Sources */,
 				ECD10D701BD0967B007DD888 /* PopupUILayerManager.cpp in Sources */,
@@ -923,6 +938,7 @@
 				551E93E51BD512D3009F788F /* libb64.c in Sources */,
 				EC00DD601BD665A6009BC378 /* MenuScene.cpp in Sources */,
 				ECD10D731BD0967B007DD888 /* WrapperUILayer.cpp in Sources */,
+				551651C61BD73102004ED7F6 /* RandomDungeon.cpp in Sources */,
 				551E93AC1BD51282009F788F /* ChaosNumber.cpp in Sources */,
 				EC00DD5A1BD66586009BC378 /* GameUILayer.cpp in Sources */,
 				555B0D221BC51A2C0055FB6D /* TombLevel.cpp in Sources */,

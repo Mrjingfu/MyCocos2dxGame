@@ -44,6 +44,8 @@ protected:
     
     int                 m_nMinAreaSize;
     int                 m_nMaxAreaSize;
+    
+    int                 m_nStandardAreaCount;
 };
 
 #endif /* defined(__Voxel_Explorer__StandardLevel__) */

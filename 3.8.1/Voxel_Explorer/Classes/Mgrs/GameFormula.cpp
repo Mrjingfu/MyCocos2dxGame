@@ -7,7 +7,11 @@
 //
 
 #include "GameFormula.hpp"
-
+USING_NS_CC;
+int GameFormula::getLevelMonsterCount(int standardAreaNum)
+{
+    return 2 + standardAreaNum*2 + cocos2d::random(0, 5);
+}
 
 int GameFormula::getNextLevelExp(int currentLevel)
 {

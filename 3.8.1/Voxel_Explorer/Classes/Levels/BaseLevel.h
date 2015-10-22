@@ -75,12 +75,16 @@ public:
     int getHeight() const { return m_nHeight; }
     int getLength() const { return m_nLenght; }
     
+    std::vector<int> getNeighbours4() { return {-m_nWidth, +1, +m_nWidth, -1}; }
+    std::vector<int> getNeighbours8() { return {+1, -1, +m_nWidth, -m_nWidth, +1+m_nWidth, +1-m_nWidth, -1+m_nWidth, -1-m_nWidth}; }
+    std::vector<int> getNeighbours9() { return {0, +1, -1, +m_nWidth, -m_nWidth, +1+m_nWidth, +1-m_nWidth, -1+m_nWidth, -1-m_nWidth}; }
+    
     cocos2d::Vec2 getSpawnPoint() const { return  m_spawnPoint; }
     
     void generateTerrainTiles(int x, int y , int width, int height, TerrainTile::TileType tileType, Area::AREA_TYPE areaType, Actor::ActorDir dir = Actor::AD_UNKNOWN);
     void setTerrainTile(int x, int y, TerrainTile::TileType tileType, Area::AREA_TYPE areaType , Actor::ActorDir dir = Actor::AD_UNKNOWN);
     void setTerrainTileFlag(int x, int y, int flag );
-    
+    void wrapTerrainTiles(int x, int y , int width, int height, TerrainTile::TileType type, TerrainTile::TileType withType);
     bool checkMovable(Actor* actor);
 protected:
     virtual bool build() = 0;
