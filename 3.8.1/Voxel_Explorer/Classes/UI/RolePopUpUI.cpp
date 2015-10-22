@@ -29,7 +29,7 @@ bool RolePopUpUI::initUi()
     charNode->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
     CCLOG("X:%f,Y:%f",charNode->getPositionX(),charNode->getPositionY());
     CCLOG("ORIGIN_X:%f,ORIGIN_Y:%f",ORIGIN_X,ORIGIN_Y);
-    charNode->setPosition(Vec2(WND_CENTER_X, SCREEN_HEIGHT*0.7));
+    charNode->setPosition(Vec2(WND_CENTER_X, SCREEN_HEIGHT*0.7+ORIGIN_Y));
     m_pRootLayer->addChild(charNode);
         
     gridView = TGridView::create();
@@ -62,7 +62,7 @@ bool RolePopUpUI::initUi()
     Button* changeBagBtn = Button::create("btn_1.png","","",TextureResType::PLIST);
     changeBagBtn->setScale9Enabled(true);
     changeBagBtn->setContentSize(cocos2d::Size(60,35));
-    changeBagBtn->setPosition(Vec2(SCREEN_WIDTH*0.6+ORIGIN_X, SCREEN_HEIGHT*0.35-gridView->getContentSize().height/2-changeBagBtn->getContentSize().height/2));
+    changeBagBtn->setPosition(Vec2(SCREEN_WIDTH*0.6+ORIGIN_X, SCREEN_HEIGHT*0.35-gridView->getContentSize().height/2-changeBagBtn->getContentSize().height/2-ORIGIN_Y/2));
     changeBagBtn->addTouchEventListener(CC_CALLBACK_2(RolePopUpUI::onTouchChnageBag, this));
     changeBagBtn->setTitleText("changeBag");
     changeBagBtn->setTitleFontName(DEFAULT_FONT);
