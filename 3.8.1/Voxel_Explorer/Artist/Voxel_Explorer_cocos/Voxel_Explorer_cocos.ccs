@@ -3,13 +3,7 @@
   <SolutionFolder>
     <Group ctype="ResourceGroup">
       <RootFolder Name=".">
-        <Folder Name="scene">
-          <Project Name="gameScene.csd" Type="Scene" />
-          <Project Name="menuscene.csd" Type="Scene" />
-          <Project Name="characterLayer.csd" Type="Layer" />
-          <Project Name="backpackLayer.csd" Type="Layer" />
-          <Project Name="packageLayer.csd" Type="Layer" />
-        </Folder>
+        <Folder Name="scene" />
         <Folder Name="ui">
           <PlistImageFolder Image="Plist.png" PListFile="Plist.plist" Name=".Plist_PList.Dir">
             <PlistImageFile Name="btn_1.png" Key="btn_1.png" />
@@ -52,6 +46,11 @@
             <PlistImageFile Name="W_Sword015.png" Key="W_Sword015.png" />
             <PlistImageFile Name="W_Sword016.png" Key="W_Sword016.png" />
           </PlistImageFolder>
+          <Project Name="backpackLayer.csd" Type="Layer" />
+          <Project Name="characterLayer.csd" Type="Layer" />
+          <Project Name="gameScene.csd" Type="Scene" />
+          <Project Name="menuscene.csd" Type="Scene" />
+          <Project Name="packageLayer.csd" Type="Layer" />
         </Folder>
         <Folder Name="fonts">
           <TTF Name="04B_03.TTF" />

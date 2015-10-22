@@ -11,6 +11,7 @@
 #include "GameConfig.h"
 #include "GameScene.h"
 #include "PopupUILayerManager.h"
+
 USING_NS_CC;
 MenuUILayer::MenuUILayer()
 {
@@ -57,12 +58,14 @@ void MenuUILayer::onTouchSetting(cocos2d::Ref *ref, cocos2d::ui::Widget::TouchEv
 {
     CHECK_ACTION_WRAPPER(ref,type);
     CCLOG("onTouchSetting");
-    PopupUILayerManager::getInstance()->openPopup(ePopupBag);
+    
 }
 void MenuUILayer::onTouchRank(cocos2d::Ref *ref, cocos2d::ui::Widget::TouchEventType type)
 {
     CHECK_ACTION_WRAPPER(ref,type);
     CCLOG("onTouchRank");
+    
+    
 }
 void MenuUILayer::onTouchStart(cocos2d::Ref *ref, cocos2d::ui::Widget::TouchEventType type)
 {
@@ -73,6 +76,7 @@ void MenuUILayer::onTouchStart(cocos2d::Ref *ref, cocos2d::ui::Widget::TouchEven
     Director::getInstance()->replaceScene(scene);
     
 }
+
 void MenuUILayer::onTouchRate(cocos2d::Ref *ref, cocos2d::ui::Widget::TouchEventType type)
 {
     CHECK_ACTION_WRAPPER(ref,type);

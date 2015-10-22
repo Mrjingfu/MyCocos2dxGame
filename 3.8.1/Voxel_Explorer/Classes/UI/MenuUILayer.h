@@ -10,6 +10,7 @@
 #define MenuUILayer_h
 
 #include "WrapperUILayer.h"
+#include "TGridView.h"
 class MenuUILayer:public WrapperUILayer {
     
 public:
@@ -24,6 +25,8 @@ protected:
     void onTouchRank(Ref*,cocos2d::ui::Widget::TouchEventType);
     void onTouchRate(Ref*,cocos2d::ui::Widget::TouchEventType);
     void onTouchAchieve(Ref*,cocos2d::ui::Widget::TouchEventType);
+    
+    
 };
 
 #endif /* MenuUILayer_h */

@@ -19,6 +19,9 @@ public:
 public:
     CREATE_FUNC(GameUILayer);
     virtual bool addEvents();
+protected:
+    void onTouchRole(Ref*,cocos2d::ui::Widget::TouchEventType);
+
 };
 
 #endif /* GameUILayer_h */
