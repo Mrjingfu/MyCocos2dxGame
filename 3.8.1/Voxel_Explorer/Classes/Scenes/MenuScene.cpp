@@ -7,6 +7,7 @@
 
 #include "MenuScene.h"
 #include "MenuUILayer.h"
+
 USING_NS_CC;
 
 Scene* MenuScene::createScene()
@@ -35,6 +36,11 @@ bool MenuScene::init()
     {
         return false;
     }
+    
+    cocos2d::Camera* uiCamera = cocos2d::Camera::create();
+    uiCamera->setCameraFlag(cocos2d::CameraFlag::USER2);
+    this->addChild(uiCamera);
+    
     MenuUILayer* menuUiLayer = MenuUILayer::create();
     menuUiLayer->load("menuscene.csb");
     addChild(menuUiLayer);

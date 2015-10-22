@@ -54,9 +54,9 @@
         <key>maxTextureSize</key>
         <QSize>
             <key>width</key>
-            <int>128</int>
+            <int>256</int>
             <key>height</key>
-            <int>64</int>
+            <int>256</int>
         </QSize>
         <key>fixedTextureSize</key>
         <QSize>
@@ -155,6 +155,10 @@
             <filename>../ui/ui_frame_1.png</filename>
             <filename>../ui/ui_frame_2.png</filename>
             <filename>../ui/ui_frame_3.png</filename>
+            <filename>../ui/ui_frame_4.png</filename>
+            <filename>../ui/ui_frame_5.png</filename>
+            <filename>../ui/ui_frame_6.png</filename>
+            <filename>../ui/chr_sword.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

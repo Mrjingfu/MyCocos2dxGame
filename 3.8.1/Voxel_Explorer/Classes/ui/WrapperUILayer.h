@@ -44,7 +44,7 @@ public:
     
 public:
     //可能以后有UI布局文件会用到 m_pRootLayer由布局文件生成了 暂时不会用到
-    virtual bool load(const std::string gameUIFile);
+    virtual bool load(const std::string gameUIFile,bool isSceneUi = true);
     
 protected:
     cocos2d::Layer*	m_pRootLayer;   //手工编写ui布局用到

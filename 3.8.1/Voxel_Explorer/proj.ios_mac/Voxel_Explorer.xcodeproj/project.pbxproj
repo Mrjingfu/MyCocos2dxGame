@@ -155,8 +155,6 @@
 		EC00DD5C1BD66586009BC378 /* MenuUILayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC00DD571BD66586009BC378 /* MenuUILayer.cpp */; settings = {ASSET_TAGS = (); }; };
 		EC00DD5F1BD665A6009BC378 /* MenuScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC00DD5D1BD665A6009BC378 /* MenuScene.cpp */; settings = {ASSET_TAGS = (); }; };
 		EC00DD601BD665A6009BC378 /* MenuScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC00DD5D1BD665A6009BC378 /* MenuScene.cpp */; settings = {ASSET_TAGS = (); }; };
-		EC059F7F1BD4DCCE00F63254 /* scene in Resources */ = {isa = PBXBuildFile; fileRef = EC059F7E1BD4DCCE00F63254 /* scene */; settings = {ASSET_TAGS = (); }; };
-		EC059F801BD4DCCE00F63254 /* scene in Resources */ = {isa = PBXBuildFile; fileRef = EC059F7E1BD4DCCE00F63254 /* scene */; settings = {ASSET_TAGS = (); }; };
 		EC6716451BCE7F2C00C81CFC /* LogoScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC6716431BCE7F2C00C81CFC /* LogoScene.cpp */; settings = {ASSET_TAGS = (); }; };
 		EC6716461BCE7F2C00C81CFC /* LogoScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC6716431BCE7F2C00C81CFC /* LogoScene.cpp */; settings = {ASSET_TAGS = (); }; };
 		EC6716591BCE7F5F00C81CFC /* lang in Resources */ = {isa = PBXBuildFile; fileRef = EC6716561BCE7F5F00C81CFC /* lang */; settings = {ASSET_TAGS = (); }; };
@@ -175,6 +173,10 @@
 		ECD10D711BD0967B007DD888 /* PopupUILayerManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECD10D681BD0967B007DD888 /* PopupUILayerManager.cpp */; settings = {ASSET_TAGS = (); }; };
 		ECD10D721BD0967B007DD888 /* WrapperUILayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECD10D6A1BD0967B007DD888 /* WrapperUILayer.cpp */; settings = {ASSET_TAGS = (); }; };
 		ECD10D731BD0967B007DD888 /* WrapperUILayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECD10D6A1BD0967B007DD888 /* WrapperUILayer.cpp */; settings = {ASSET_TAGS = (); }; };
+		ECE1B9471BD8AC820035B4D9 /* TGridView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECE1B9451BD8AC820035B4D9 /* TGridView.cpp */; settings = {ASSET_TAGS = (); }; };
+		ECE1B9481BD8AC820035B4D9 /* TGridView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECE1B9451BD8AC820035B4D9 /* TGridView.cpp */; settings = {ASSET_TAGS = (); }; };
+		ECE1B9581BD8E6660035B4D9 /* RolePopUpUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECE1B9561BD8E6660035B4D9 /* RolePopUpUI.cpp */; settings = {ASSET_TAGS = (); }; };
+		ECE1B9591BD8E6660035B4D9 /* RolePopUpUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECE1B9561BD8E6660035B4D9 /* RolePopUpUI.cpp */; settings = {ASSET_TAGS = (); }; };
 		ED545A7C1B68A1F400C3958E /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ED545A7B1B68A1F400C3958E /* libiconv.dylib */; };
 		ED545A7E1B68A1FA00C3958E /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ED545A7D1B68A1FA00C3958E /* libiconv.dylib */; };
 /* End PBXBuildFile section */
@@ -345,7 +347,6 @@
 		EC00DD581BD66586009BC378 /* MenuUILayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuUILayer.h; sourceTree = "<group>"; };
 		EC00DD5D1BD665A6009BC378 /* MenuScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MenuScene.cpp; sourceTree = "<group>"; };
 		EC00DD5E1BD665A6009BC378 /* MenuScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuScene.h; sourceTree = "<group>"; };
-		EC059F7E1BD4DCCE00F63254 /* scene */ = {isa = PBXFileReference; lastKnownFileType = folder; path = scene; sourceTree = "<group>"; };
 		EC6715EE1BCE7EE500C81CFC /* GameConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameConfig.h; sourceTree = "<group>"; };
 		EC6716431BCE7F2C00C81CFC /* LogoScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LogoScene.cpp; sourceTree = "<group>"; };
 		EC6716441BCE7F2C00C81CFC /* LogoScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogoScene.h; sourceTree = "<group>"; };
@@ -363,6 +364,10 @@
 		ECD10D691BD0967B007DD888 /* PopupUILayerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopupUILayerManager.h; sourceTree = "<group>"; };
 		ECD10D6A1BD0967B007DD888 /* WrapperUILayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WrapperUILayer.cpp; sourceTree = "<group>"; };
 		ECD10D6B1BD0967B007DD888 /* WrapperUILayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WrapperUILayer.h; sourceTree = "<group>"; };
+		ECE1B9451BD8AC820035B4D9 /* TGridView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TGridView.cpp; sourceTree = "<group>"; };
+		ECE1B9461BD8AC820035B4D9 /* TGridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TGridView.h; sourceTree = "<group>"; };
+		ECE1B9561BD8E6660035B4D9 /* RolePopUpUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RolePopUpUI.cpp; sourceTree = "<group>"; };
+		ECE1B9571BD8E6660035B4D9 /* RolePopUpUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RolePopUpUI.h; sourceTree = "<group>"; };
 		ED545A7B1B68A1F400C3958E /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.4.sdk/usr/lib/libiconv.dylib; sourceTree = DEVELOPER_DIR; };
 		ED545A7D1B68A1FA00C3958E /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -486,7 +491,6 @@
 		46880B7519C43A67006E1F66 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				EC059F7E1BD4DCCE00F63254 /* scene */,
 				EC6716561BCE7F5F00C81CFC /* lang */,
 				EC6716571BCE7F5F00C81CFC /* maps */,
 				EC6716581BCE7F5F00C81CFC /* ui */,
@@ -758,6 +762,10 @@
 		ECD10D621BD0967B007DD888 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				ECE1B9561BD8E6660035B4D9 /* RolePopUpUI.cpp */,
+				ECE1B9571BD8E6660035B4D9 /* RolePopUpUI.h */,
+				ECE1B9451BD8AC820035B4D9 /* TGridView.cpp */,
+				ECE1B9461BD8AC820035B4D9 /* TGridView.h */,
 				EC00DD551BD66586009BC378 /* GameUILayer.cpp */,
 				EC00DD561BD66586009BC378 /* GameUILayer.h */,
 				EC00DD571BD66586009BC378 /* MenuUILayer.cpp */,
@@ -872,7 +880,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				5087E78117EB970100C73F5D /* Icon-120.png in Resources */,
-				EC059F7F1BD4DCCE00F63254 /* scene in Resources */,
 				5087E78617EB970100C73F5D /* Icon-76.png in Resources */,
 				55D6D67F1BC527D000081221 /* models in Resources */,
 				5087E77F17EB970100C73F5D /* Default@2x.png in Resources */,
@@ -904,7 +911,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EC059F801BD4DCCE00F63254 /* scene in Resources */,
 				EC67165E1BCE7F5F00C81CFC /* ui in Resources */,
 				EC67165A1BCE7F5F00C81CFC /* lang in Resources */,
 				55D6D6801BC527D000081221 /* models in Resources */,
@@ -951,6 +957,7 @@
 				551E93B11BD51282009F788F /* UtilityHelper.cpp in Sources */,
 				55338ADE1BD8925100EA316F /* Warden.cpp in Sources */,
 				ECD10D6E1BD0967B007DD888 /* PopupUILayer.cpp in Sources */,
+				ECE1B9581BD8E6660035B4D9 /* RolePopUpUI.cpp in Sources */,
 				555B0D171BC51A2C0055FB6D /* Area.cpp in Sources */,
 				551E93F21BD512D3009F788F /* Stream.cpp in Sources */,
 				EC00DD5F1BD665A6009BC378 /* MenuScene.cpp in Sources */,
@@ -959,6 +966,7 @@
 				551E93E41BD512D3009F788F /* libb64.c in Sources */,
 				55338AEE1BD892FC00EA316F /* ShadowDragon.cpp in Sources */,
 				551E93C11BD51291009F788F /* ArchiveManager.cpp in Sources */,
+				ECE1B9471BD8AC820035B4D9 /* TGridView.cpp in Sources */,
 				553BC50D1BCE5191003D907A /* StandardDoor.cpp in Sources */,
 				555B0D231BC51A2C0055FB6D /* GameScene.cpp in Sources */,
 				55407D571BD5E2BC0000C41C /* GameFormula.cpp in Sources */,
@@ -1023,10 +1031,12 @@
 				ECD10D711BD0967B007DD888 /* PopupUILayerManager.cpp in Sources */,
 				551E93F31BD512D3009F788F /* Stream.cpp in Sources */,
 				551E93C41BD51291009F788F /* LevelResourceManager.cpp in Sources */,
+				ECE1B9591BD8E6660035B4D9 /* RolePopUpUI.cpp in Sources */,
 				555B0D1E1BC51A2C0055FB6D /* Graph.cpp in Sources */,
 				55407D651BD64F450000C41C /* ItemProperty.cpp in Sources */,
 				551E93B21BD51282009F788F /* UtilityHelper.cpp in Sources */,
 				555B0D241BC51A2C0055FB6D /* GameScene.cpp in Sources */,
+				ECE1B9481BD8AC820035B4D9 /* TGridView.cpp in Sources */,
 				551E93CC1BD51291009F788F /* PlayerProperty.cpp in Sources */,
 				551E93ED1BD512D3009F788F /* XXTEA.cpp in Sources */,
 				551E93E71BD512D3009F788F /* md5.c in Sources */,
@@ -1050,7 +1060,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				CODE_SIGN_IDENTITY = "iOS Development: haibo wang (FT8YEJMWBH)";
+				CODE_SIGN_IDENTITY = "";
 				COMPRESS_PNG_FILES = NO;
 				ENABLE_BITCODE = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -1077,7 +1087,7 @@
 					"$(_COCOS_LIB_IOS_BEGIN)",
 					"$(_COCOS_LIB_IOS_END)",
 				);
-				PROVISIONING_PROFILE = "89b7b2ae-9099-4d82-adc9-a3120525612f";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "$(_COCOS_HEADER_IOS_BEGIN) $(_COCOS_HEADER_IOS_END)";
@@ -1089,7 +1099,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				CODE_SIGN_IDENTITY = "iOS Development: haibo wang (FT8YEJMWBH)";
+				CODE_SIGN_IDENTITY = "";
 				COMPRESS_PNG_FILES = NO;
 				ENABLE_BITCODE = NO;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
@@ -1114,7 +1124,7 @@
 					"$(_COCOS_LIB_IOS_BEGIN)",
 					"$(_COCOS_LIB_IOS_END)",
 				);
-				PROVISIONING_PROFILE = "89b7b2ae-9099-4d82-adc9-a3120525612f";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "$(_COCOS_HEADER_IOS_BEGIN) $(_COCOS_HEADER_IOS_END)";
