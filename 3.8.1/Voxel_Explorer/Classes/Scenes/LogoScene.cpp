@@ -222,17 +222,15 @@ void LogoScene::precache()
     if (!LevelResourceManager::getInstance()->init("LevelRes.plist")) {
         CCLOGERROR("LevelRes.plist load error");
     }
+    Texture2D * uiSpriteTx = Director::getInstance()->getTextureCache()->addImage("ui_sprite.png");
+    if (uiSpriteTx)
+        uiSpriteTx->setAliasTexParameters();
+    Texture2D * plistTx = Director::getInstance()->getTextureCache()->addImage("Plist.png");
+    if (plistTx)
+        plistTx->setAliasTexParameters();
     
-    SpriteFrameCache::getInstance()->addSpriteFramesWithFile("ui_sprite.plist");
-    
-    ValueMap plist = FileUtils::getInstance()->getValueMapFromFile("ui_sprite.plist").at("frames").asValueMap();
-    
-    for(std::unordered_map<std::string, Value>::iterator it = plist.begin(); it!=plist.end();it++)
-    {
-        CCLOG("key:%s",it->first.c_str());
-        SpriteFrameCache::getInstance()->getSpriteFrameByName(it->first.c_str())->getTexture()->setAliasTexParameters();
-    }
-    
+    SpriteFrameCache::getInstance()->addSpriteFramesWithFile("ui/ui_sprite.plist");
+    SpriteFrameCache::getInstance()->addSpriteFramesWithFile("ui/Plist.plist");
     if(m_NodeRoot2)
     {
         DelayTime* delay = DelayTime::create(1.0f);

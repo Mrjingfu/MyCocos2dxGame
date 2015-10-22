@@ -147,6 +147,8 @@
 		EC67165C1BCE7F5F00C81CFC /* maps in Resources */ = {isa = PBXBuildFile; fileRef = EC6716571BCE7F5F00C81CFC /* maps */; settings = {ASSET_TAGS = (); }; };
 		EC67165D1BCE7F5F00C81CFC /* ui in Resources */ = {isa = PBXBuildFile; fileRef = EC6716581BCE7F5F00C81CFC /* ui */; settings = {ASSET_TAGS = (); }; };
 		EC67165E1BCE7F5F00C81CFC /* ui in Resources */ = {isa = PBXBuildFile; fileRef = EC6716581BCE7F5F00C81CFC /* ui */; settings = {ASSET_TAGS = (); }; };
+		EC766EC01BD7CBC5006318FD /* BagPopUpUi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC766EBE1BD7CBC5006318FD /* BagPopUpUi.cpp */; settings = {ASSET_TAGS = (); }; };
+		EC766EC11BD7CBC5006318FD /* BagPopUpUi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC766EBE1BD7CBC5006318FD /* BagPopUpUi.cpp */; settings = {ASSET_TAGS = (); }; };
 		EC7F92D31BCF9ED200B26C6C /* HueSprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC7F92D11BCF9ED200B26C6C /* HueSprite.cpp */; settings = {ASSET_TAGS = (); }; };
 		EC7F92D41BCF9ED200B26C6C /* HueSprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC7F92D11BCF9ED200B26C6C /* HueSprite.cpp */; settings = {ASSET_TAGS = (); }; };
 		ECD10D6C1BD0967B007DD888 /* CloseCallback.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECD10D631BD0967B007DD888 /* CloseCallback.cpp */; settings = {ASSET_TAGS = (); }; };
@@ -316,6 +318,8 @@
 		EC6716561BCE7F5F00C81CFC /* lang */ = {isa = PBXFileReference; lastKnownFileType = folder; path = lang; sourceTree = "<group>"; };
 		EC6716571BCE7F5F00C81CFC /* maps */ = {isa = PBXFileReference; lastKnownFileType = folder; path = maps; sourceTree = "<group>"; };
 		EC6716581BCE7F5F00C81CFC /* ui */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ui; sourceTree = "<group>"; };
+		EC766EBE1BD7CBC5006318FD /* BagPopUpUi.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BagPopUpUi.cpp; sourceTree = "<group>"; };
+		EC766EBF1BD7CBC5006318FD /* BagPopUpUi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BagPopUpUi.h; sourceTree = "<group>"; };
 		EC7F92D11BCF9ED200B26C6C /* HueSprite.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HueSprite.cpp; sourceTree = "<group>"; };
 		EC7F92D21BCF9ED200B26C6C /* HueSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HueSprite.h; sourceTree = "<group>"; };
 		ECD10D631BD0967B007DD888 /* CloseCallback.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloseCallback.cpp; sourceTree = "<group>"; };
@@ -688,6 +692,8 @@
 		ECD10D621BD0967B007DD888 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				EC766EBE1BD7CBC5006318FD /* BagPopUpUi.cpp */,
+				EC766EBF1BD7CBC5006318FD /* BagPopUpUi.h */,
 				EC00DD551BD66586009BC378 /* GameUILayer.cpp */,
 				EC00DD561BD66586009BC378 /* GameUILayer.h */,
 				EC00DD571BD66586009BC378 /* MenuUILayer.cpp */,
@@ -880,6 +886,7 @@
 				555B0D171BC51A2C0055FB6D /* Area.cpp in Sources */,
 				551E93F21BD512D3009F788F /* Stream.cpp in Sources */,
 				EC00DD5F1BD665A6009BC378 /* MenuScene.cpp in Sources */,
+				EC766EC01BD7CBC5006318FD /* BagPopUpUi.cpp in Sources */,
 				555B0D1B1BC51A2C0055FB6D /* Door.cpp in Sources */,
 				551E93E41BD512D3009F788F /* libb64.c in Sources */,
 				551E93C11BD51291009F788F /* ArchiveManager.cpp in Sources */,
@@ -932,6 +939,7 @@
 				555B0D1A1BC51A2C0055FB6D /* BaseLevel.cpp in Sources */,
 				555B0D161BC51A2C0055FB6D /* AppDelegate.cpp in Sources */,
 				553BC5021BCDF457003D907A /* Actor.cpp in Sources */,
+				EC766EC11BD7CBC5006318FD /* BagPopUpUi.cpp in Sources */,
 				551E93C21BD51291009F788F /* ArchiveManager.cpp in Sources */,
 				55ECFB451BC79852007270CD /* Player.cpp in Sources */,
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
@@ -962,7 +970,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				CODE_SIGN_IDENTITY = "iOS Development: haibo wang (FT8YEJMWBH)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: quanlan huang (L4MC53BS3Z)";
 				COMPRESS_PNG_FILES = NO;
 				ENABLE_BITCODE = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -989,7 +997,7 @@
 					"$(_COCOS_LIB_IOS_BEGIN)",
 					"$(_COCOS_LIB_IOS_END)",
 				);
-				PROVISIONING_PROFILE = "89b7b2ae-9099-4d82-adc9-a3120525612f";
+				PROVISIONING_PROFILE = "22b9a94d-953a-486e-a5b1-5b20c81c69a3";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "$(_COCOS_HEADER_IOS_BEGIN) $(_COCOS_HEADER_IOS_END)";
@@ -1001,7 +1009,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				CODE_SIGN_IDENTITY = "iOS Development: haibo wang (FT8YEJMWBH)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: quanlan huang (L4MC53BS3Z)";
 				COMPRESS_PNG_FILES = NO;
 				ENABLE_BITCODE = NO;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
@@ -1026,7 +1034,7 @@
 					"$(_COCOS_LIB_IOS_BEGIN)",
 					"$(_COCOS_LIB_IOS_END)",
 				);
-				PROVISIONING_PROFILE = "89b7b2ae-9099-4d82-adc9-a3120525612f";
+				PROVISIONING_PROFILE = "22b9a94d-953a-486e-a5b1-5b20c81c69a3";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "$(_COCOS_HEADER_IOS_BEGIN) $(_COCOS_HEADER_IOS_END)";

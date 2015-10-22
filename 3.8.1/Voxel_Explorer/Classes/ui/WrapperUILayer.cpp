@@ -49,7 +49,7 @@ bool WrapperUILayer::init()
     return true;
     
 }
-bool WrapperUILayer::load(const std::string gameUIFile)
+bool WrapperUILayer::load(const std::string gameUIFile,bool isSceneUi)
 {
     bool ret =true;
     m_pRootNode = cocos2d::CSLoader::createNode(gameUIFile);
@@ -60,7 +60,10 @@ bool WrapperUILayer::load(const std::string gameUIFile)
         ret = true;
     }
     
-    m_pRootNode->setContentSize(cocos2d::Director::getInstance()->getVisibleSize());
+    if (isSceneUi) {
+        m_pRootNode->setContentSize(cocos2d::Director::getInstance()->getVisibleSize());
+    }
+    
     cocos2d::ui::Helper::doLayout(m_pRootNode);
 //    m_pRootNode->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
     m_pRootNode->setPosition(m_pRootNode->getPosition()+cocos2d::Director::getInstance()->getVisibleOrigin());

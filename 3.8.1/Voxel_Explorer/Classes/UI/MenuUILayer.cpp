@@ -10,6 +10,7 @@
 #include "UtilityHelper.h"
 #include "GameConfig.h"
 #include "GameScene.h"
+#include "PopupUILayerManager.h"
 USING_NS_CC;
 MenuUILayer::MenuUILayer()
 {
@@ -21,6 +22,8 @@ MenuUILayer::~MenuUILayer()
 }
 bool MenuUILayer::addEvents()
 {
+    PopupUILayerManager::getInstance()->setParentLayer(this);
+    
     cocos2d::ui::Button* btn_achieve = dynamic_cast<cocos2d::ui::Button*>(UtilityHelper::seekNodeByName(m_pRootNode,"btn_achieve"));
     if (!btn_achieve)
         return false;
@@ -54,6 +57,7 @@ void MenuUILayer::onTouchSetting(cocos2d::Ref *ref, cocos2d::ui::Widget::TouchEv
 {
     CHECK_ACTION_WRAPPER(ref,type);
     CCLOG("onTouchSetting");
+    PopupUILayerManager::getInstance()->openPopup(ePopupBag);
 }
 void MenuUILayer::onTouchRank(cocos2d::Ref *ref, cocos2d::ui::Widget::TouchEventType type)
 {
