@@ -17,10 +17,8 @@ protected:
     StandardLevel();
     
     virtual bool build();
-    virtual bool createRenderObjs();
+    virtual bool createTerrain();
     virtual bool decorate();
-    virtual bool createMonsters();
-    virtual bool createItems();
     
     virtual bool initAreas();
     virtual void splitArea(const cocos2d::Rect& rect);
@@ -29,7 +27,7 @@ protected:
     virtual void generate();
     
     virtual void showMap(bool show);
-private:
+protected:
     void placeDoors(Area* area);
     void generateDoors(Area* area);
     bool mergeSmallIntersectArea(Area* area, Area* other);

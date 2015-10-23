@@ -27,6 +27,7 @@ PlayerProperty::PlayerProperty()
     m_nLevel                = 1;                ///等级
     m_nExp                  = 0;                ///经验
     m_nLightDistance        = 5;                ///光照范围
+    m_nSearchDistance       = 1;                ///侦查范围
     m_nMaxHP                = 30;               ///最大生命值
     m_nMaxMP                = 30;               ///最大魔法值
     m_nCurrentHP            = 30;               ///当前生命值

@@ -13,7 +13,6 @@ USING_NS_CC;
 BaseLevel::BaseLevel()
 {
     m_Type = LT_STANDARD;
-    m_FeelingType = LFT_NONE;
     m_pMapDrawNode = nullptr;
     m_pDebugDrawNode = nullptr;
     m_nWidth = 32;
@@ -27,8 +26,12 @@ void BaseLevel::create()
         m_Map.resize(m_nLenght);
     }
     while (!build());
-    if(!createRenderObjs())
-        CCLOGERROR("Create RenderObj failed!");
+    if(!createTerrain())
+        CCLOGERROR("Create Terrain failed!");
+    if(!createMonsters())
+        CCLOGERROR("Create Monsters failed!");
+    if(!createItems())
+        CCLOGERROR("Create Items failed!");
 }
 
 BaseLevel::LEVEL_TYPE BaseLevel::getLevelType() const
@@ -110,7 +113,12 @@ bool BaseLevel::checkMovable(Actor* actor)
         return false;
     }
     if((info.m_Flag & TileInfo::PASSABLE) != 0)
+    {
+        if(info.m_Type >= TerrainTile::TT_TOXIC_TRAP && info.m_Type <= TerrainTile::TT_HIDE_WEAK_TRAP)
+        {
+        }
         return true;
+    }
     return false;
 }
 int BaseLevel::assignTerrainTileFlag(TerrainTile::TileType type)

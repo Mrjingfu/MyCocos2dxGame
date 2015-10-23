@@ -12,7 +12,7 @@ USING_NS_CC;
 StandardMonster* StandardMonster::create(BaseMonster::MonsterType type)
 {
     auto monster = new (std::nothrow) StandardMonster();
-    if (monster && monster->initWithFile("16x16x16.c3b"))
+    if (monster && monster->initWithFile("chr_sword.c3b"))
     {
         monster->m_Type = type;
         monster->setCameraMask((unsigned int)CameraFlag::USER1);

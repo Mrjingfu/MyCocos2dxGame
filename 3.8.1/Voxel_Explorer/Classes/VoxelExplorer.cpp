@@ -7,7 +7,7 @@
 //
 
 #include "VoxelExplorer.h"
-#include "TombLevel.h"
+#include "SewerLevel.hpp"
 #include "TerrainTile.hpp"
 #include "BaseDoor.hpp"
 #include "LevelResourceManager.h"
@@ -24,7 +24,6 @@ VoxelExplorer* VoxelExplorer::getInstance()
 }
 VoxelExplorer::VoxelExplorer()
 {
-    m_nDepth = 1;
     m_pCurrentLevel = nullptr;
     
     m_pMainLayer = nullptr;
@@ -111,6 +110,9 @@ void VoxelExplorer::cameraTrackPlayer()
         m_pMainCamera->runAction(moveTo);
     }
 }
+void VoxelExplorer::searchAndCheck()    ///侦查
+{
+}
 void VoxelExplorer::handlDoor(const cocos2d::Vec2& mapPos)
 {
     if(m_pTerrainDoorsLayer && m_pPlayer)
@@ -140,6 +142,9 @@ void VoxelExplorer::handlDoor(const cocos2d::Vec2& mapPos)
         }
 
     }
+}
+void VoxelExplorer::handlTriggerTrap(const cocos2d::Vec2& mapPos)     ///处罚机关
+{
 }
 bool VoxelExplorer::createLayers()
 {
@@ -229,7 +234,7 @@ bool VoxelExplorer::createLevel()
         case DT_WARP_SPACE:
         case DT_DRAGON_LAIR:
         case DT_LICH_TOMB:
-            m_pCurrentLevel = new(std::nothrow) TombLevel();
+            m_pCurrentLevel = new(std::nothrow) SewerLevel();
             break;
         default:
             break;
