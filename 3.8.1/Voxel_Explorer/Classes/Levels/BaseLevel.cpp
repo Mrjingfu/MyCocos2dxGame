@@ -28,7 +28,7 @@ void BaseLevel::create()
     }
     while (!build());
     if(!createRenderObjs())
-        CCLOG("Create RenderObj failed!");
+        CCLOGERROR("Create RenderObj failed!");
 }
 
 BaseLevel::LEVEL_TYPE BaseLevel::getLevelType() const

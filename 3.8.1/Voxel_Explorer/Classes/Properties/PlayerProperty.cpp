@@ -74,7 +74,7 @@ void PlayerProperty::addMoney(CChaosNumber gold, CChaosNumber silver, CChaosNumb
 {
     if(silver<0 || silver>99 || copper<0 || copper>99 )
     {
-        CCLOG("Money add error!");
+        CCLOGERROR("Money add error!");
         return;
     }
     m_nGold = m_nGold + gold.GetLongValue();

@@ -10,6 +10,7 @@
 #define TerrainTile_hpp
 
 #include "cocos2d.h"
+extern const char* TERRAIN_TILES_NAME[];
 class TerrainTile : public cocos2d::Sprite3D
 {
 public:

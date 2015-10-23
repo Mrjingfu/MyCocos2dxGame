@@ -9,11 +9,16 @@
 #include "BaseDoor.hpp"
 #include "BaseLevel.h"
 USING_NS_CC;
+const char* DOOR_MODEL_NAMES[] = {
+    "DMN_STANDARD",
+    "DMN_MAX"
+};
 BaseDoor::BaseDoor()
 {
     m_DoorState = DS_UNKNOWN;
     m_DoorLastState = DS_UNKNOWN;
     m_pFakeDoor = 0;
+    m_OpenType = DOT_STANDARD;
 }
 BaseDoor::~BaseDoor()
 {

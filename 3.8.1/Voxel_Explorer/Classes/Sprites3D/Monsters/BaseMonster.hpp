@@ -11,6 +11,7 @@
 
 #include "Actor.hpp"
 #include "TerrainTile.hpp"
+extern const char* MONSTER_MODEL_NAMES[];
 class BaseMonster : public Actor
 {
 public:
@@ -33,21 +34,21 @@ public:
         MT_MOB,             ///暴徒
         MT_PRISON_END,
         
-        MT_TEMPLE_BEGIN,
+        MT_FANE_BEGIN,
         MT_BELIEVER,        ///信徒
         MT_GATEKEEPER,      ///看门人
         MT_APOLOGIST,       ///辩护者
         MT_ADJUDICATOR,     ///审判者
         MT_PRIEST,          ///牧师
-        MT_TEMPLE_END,
+        MT_FANE_END,
         
-        MT_PIT_BEGIN,
+        MT_MINES_BEGIN,
         MT_DEATHMINER,      ///死亡矿工
         MT_KOBOLD,          ///狗头人
         MT_OOZE,            ///软泥怪
         MT_SHADOW,          ///阴影怪
         MT_ANKHEG,          ///掘地虫
-        MT_PIT_END,
+        MT_MINES_END,
 
         MT_CAVE_BEGIN,
         MT_WOLF,            ///狼

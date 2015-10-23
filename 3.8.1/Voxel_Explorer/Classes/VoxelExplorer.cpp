@@ -51,39 +51,38 @@ bool VoxelExplorer::init(Layer* pMainLayer)
     if(pMainLayer == nullptr)
         return false;
     m_pMainLayer = pMainLayer;
-    
-    if (!LevelResourceManager::getInstance()->initLevelRes(Value(m_nDepth).asString())) {
-        CCLOG("load level resource failed!");
-        return false;
-    }
     if(!RandomDungeon::getInstance()->build())
     {
-        CCLOG("RandomDungeon build failed!");
+        CCLOGERROR("RandomDungeon build failed!");
+        return false;
+    }
+    if (!LevelResourceManager::getInstance()->initLevelRes()) {
+        CCLOGERROR("load level resource failed!");
         return false;
     }
     if(!createLayers())
     {
-        CCLOG("Create layers failed!");
+        CCLOGERROR("Create layers failed!");
         return false;
     }
     if(!createLights())
     {
-        CCLOG("Create lights failed!");
+        CCLOGERROR("Create lights failed!");
         return false;
     }
     if(!createCameras())
     {
-        CCLOG("Create cameras failed!");
+        CCLOGERROR("Create cameras failed!");
         return false;
     }
     if(!createLevel())
     {
-        CCLOG("Create level failed!");
+        CCLOGERROR("Create level failed!");
         return false;
     }
     if(!createPlayer())
     {
-        CCLOG("Create Player failed!");
+        CCLOGERROR("Create Player failed!");
         return false;
     }
     return true;
@@ -93,6 +92,7 @@ void VoxelExplorer::update(float delta)
 }
 void VoxelExplorer::destroy()
 {
+    LevelResourceManager::getInstance()->clearLevelRes();
 }
 bool VoxelExplorer::checkMovable()
 {
@@ -214,8 +214,8 @@ bool VoxelExplorer::createLevel()
     switch (node->m_Type) {
         case DT_SEWER:
         case DT_PRISON:
-        case DT_TEMPLE:
-        case DT_PIT:
+        case DT_FANE:
+        case DT_MINES:
         case DT_CAVE:
         case DT_TOMB:
             

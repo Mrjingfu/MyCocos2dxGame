@@ -49,10 +49,10 @@ bool AppDelegate::applicationDidFinishLaunching() {
 
     std::vector<std::string> searchPaths;
     searchPaths.push_back("lang");
+    searchPaths.push_back("data");
     searchPaths.push_back("models");
     searchPaths.push_back("textures");
     searchPaths.push_back("ui");
-    searchPaths.push_back("maps");
     searchPaths.push_back("fonts");
     FileUtils::getInstance()->setSearchPaths(searchPaths);
     

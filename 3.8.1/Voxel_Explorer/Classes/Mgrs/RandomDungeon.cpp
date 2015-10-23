@@ -11,11 +11,11 @@
 #include "GameScene.h"
 USING_NS_CC;
 
-DUNGEON_TYPE DT_SelectGroup1[] = { DT_SEWER, DT_PRISON, DT_TEMPLE, DT_PIT, DT_CAVE, DT_TOMB };
+DUNGEON_TYPE DT_SelectGroup1[] = { DT_SEWER, DT_PRISON, DT_FANE, DT_MINES, DT_CAVE, DT_TOMB };
 DUNGEON_TYPE DT_SelectGroup2[] = { DT_DWARF_CASTLE, DT_MAGA_TOWER, DT_ORC_FORTRESS, DT_ELF_FOREST,DT_TROLL_TEMPLE };
 DUNGEON_TYPE DT_SelectGroup3[] = { DT_BEHOLDER_CASTLE, DT_WARP_SPACE, DT_DRAGON_LAIR, DT_LICH_TOMB };
 
-DUNGEON_TYPE DT_SelectAll[] = { DT_SEWER, DT_PRISON, DT_TEMPLE, DT_PIT, DT_CAVE, DT_TOMB, DT_DWARF_CASTLE, DT_MAGA_TOWER, DT_ORC_FORTRESS, DT_ELF_FOREST,DT_TROLL_TEMPLE, DT_BEHOLDER_CASTLE, DT_WARP_SPACE, DT_DRAGON_LAIR, DT_LICH_TOMB };
+DUNGEON_TYPE DT_SelectAll[] = { DT_SEWER, DT_PRISON, DT_FANE, DT_MINES, DT_CAVE, DT_TOMB, DT_DWARF_CASTLE, DT_MAGA_TOWER, DT_ORC_FORTRESS, DT_ELF_FOREST,DT_TROLL_TEMPLE, DT_BEHOLDER_CASTLE, DT_WARP_SPACE, DT_DRAGON_LAIR, DT_LICH_TOMB };
 
 
 std::vector<DUNGEON_TYPE> RandomDungeon::SELECT_GROUP1(DT_SelectGroup1, DT_SelectGroup1+ sizeof(DT_SelectGroup1)/sizeof(DUNGEON_TYPE));
@@ -23,6 +23,29 @@ std::vector<DUNGEON_TYPE> RandomDungeon::SELECT_GROUP2(DT_SelectGroup2, DT_Selec
 std::vector<DUNGEON_TYPE> RandomDungeon::SELECT_GROUP3(DT_SelectGroup3, DT_SelectGroup3+ sizeof(DT_SelectGroup3)/sizeof(DUNGEON_TYPE));
 std::vector<DUNGEON_TYPE> RandomDungeon::SELECT_ALL(DT_SelectAll, DT_SelectAll+ sizeof(DT_SelectAll)/sizeof(DUNGEON_TYPE));
 
+const char* DUNGEON_NAMES[] = {
+    "DN_UNKNOWN",
+    
+    "DN_SEWER",
+    "DN_PRISON",
+    "DN_FANE",
+    "DN_MINES",
+    "DN_CAVE",
+    "DN_TOMB",
+    
+    "DN_DWARF_CASTLE",
+    "DN_MAGA_TOWER",
+    "DN_ORC_FORTRESS",
+    "DN_ELF_FOREST",
+    "DN_TROLL_TEMPLE",
+    
+    "DN_BEHOLDER_CASTLE",
+    "DN_WARP_SPACE",
+    "DN_DRAGON_LAIR",
+    "DN_LICH_TOMB",
+    
+    "DN_MAX"
+};
 
 RandomDungeon* g_pRandomDungeonInstance = nullptr;
 RandomDungeon* RandomDungeon::getInstance()
@@ -214,100 +237,13 @@ void RandomDungeon::assignedDungeonNode(DungeonNode* node)
 {
     if(!node)
         return;
-    switch (node->m_Type) {
-        case DT_SEWER:
-            {
-                node->m_strDungeonName = UtilityHelper::getLocalString("DT_SEWER");
-                node->m_nTotalNum = cocos2d::random(4, 6);
-            }
-            break;
-        case DT_PRISON:
-            {
-                node->m_strDungeonName = UtilityHelper::getLocalString("DT_PRISON");
-                node->m_nTotalNum = cocos2d::random(4, 6);
-            }
-            break;
-        case DT_TEMPLE:
-            {
-                node->m_strDungeonName = UtilityHelper::getLocalString("DT_TEMPLE");
-                node->m_nTotalNum = cocos2d::random(5, 8);
-            }
-            break;
-        case DT_PIT:
-            {
-                node->m_strDungeonName = UtilityHelper::getLocalString("DT_PIT");
-                node->m_nTotalNum = cocos2d::random(5, 8);
-            }
-            break;
-        case DT_CAVE:
-            {
-                node->m_strDungeonName = UtilityHelper::getLocalString("DT_CAVE");
-                node->m_nTotalNum = cocos2d::random(6, 10);
-            }
-            break;
-        case DT_TOMB:
-            {
-                node->m_strDungeonName = UtilityHelper::getLocalString("DT_TOMB");
-                node->m_nTotalNum = cocos2d::random(6, 10);
-            }
-            break;
-        case DT_DWARF_CASTLE:
-            {
-                node->m_strDungeonName = UtilityHelper::getLocalString("DT_DWARF_CASTLE");
-                node->m_nTotalNum = cocos2d::random(6, 10);
-            }
-            break;
-        case DT_MAGA_TOWER:
-            {
-                node->m_strDungeonName = UtilityHelper::getLocalString("DT_MAGA_TOWER");
-                node->m_nTotalNum = cocos2d::random(6, 10);
-            }
-            break;
-        case DT_ORC_FORTRESS:
-            {
-                node->m_strDungeonName = UtilityHelper::getLocalString("DT_ORC_FORTRESS");
-                node->m_nTotalNum = cocos2d::random(8, 12);
-            }
-            break;
-        case DT_ELF_FOREST:
-            {
-                node->m_strDungeonName = UtilityHelper::getLocalString("DT_ELF_FOREST");
-                node->m_nTotalNum = cocos2d::random(8, 12);
-            }
-            break;
-        case DT_TROLL_TEMPLE:
-            {
-                node->m_strDungeonName = UtilityHelper::getLocalString("DT_TROLL_TEMPLE");
-                node->m_nTotalNum = cocos2d::random(8, 12);
-            }
-            break;
-        case DT_BEHOLDER_CASTLE:
-            {
-                node->m_strDungeonName = UtilityHelper::getLocalString("DT_BEHOLDER_CASTLE");
-                node->m_nTotalNum = cocos2d::random(10, 15);
-            }
-            break;
-        case DT_WARP_SPACE:
-            {
-                node->m_strDungeonName = UtilityHelper::getLocalString("DT_WARP_SPACE");
-                node->m_nTotalNum = cocos2d::random(10, 15);
-            }
-            break;
-        case DT_DRAGON_LAIR:
-            {
-                node->m_strDungeonName = UtilityHelper::getLocalString("DT_DRAGON_LAIR");
-                node->m_nTotalNum = cocos2d::random(10, 15);
-            }
-            break;
-        case DT_LICH_TOMB:
-            {
-                node->m_strDungeonName = UtilityHelper::getLocalString("DT_LICH_TOMB");
-                node->m_nTotalNum = cocos2d::random(10, 15);
-            }
-            break;
-        default:
-            break;
-    }
+    node->m_strDungeonName = UtilityHelper::getLocalString(DUNGEON_NAMES[node->m_Type]);
+    if (node->m_Type < DT_DWARF_CASTLE)
+        node->m_nTotalNum = cocos2d::random(5, 8);
+    else if(node->m_Type > DT_TROLL_TEMPLE)
+        node->m_nTotalNum = cocos2d::random(10, 15);
+    else
+        node->m_nTotalNum = cocos2d::random(8, 12);
 }
 void RandomDungeon::load()
 {

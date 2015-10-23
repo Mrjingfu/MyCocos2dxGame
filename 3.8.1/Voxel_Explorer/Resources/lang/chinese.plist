@@ -4,35 +4,95 @@
 <dict>
 	<key>GAME_NAME</key>
 	<string>体素地牢</string>
-	<key>DT_SEWER</key>
+	<key>DN_SEWER</key>
 	<string>下水道</string>
-	<key>DT_PRISON</key>
+	<key>DN_PRISON</key>
 	<string>监狱</string>
-	<key>DT_TEMPLE</key>
-	<string>破庙</string>
-	<key>DT_PIT</key>
+	<key>DN_FANE</key>
+	<string>神殿</string>
+	<key>DN_MINES</key>
 	<string>矿坑</string>
-	<key>DT_CAVE</key>
+	<key>DN_CAVE</key>
 	<string>洞穴</string>
-	<key>DT_TOMB</key>
+	<key>DN_TOMB</key>
 	<string>古墓</string>
-	<key>DT_DWARF_CASTLE</key>
+	<key>DN_DWARF_CASTLE</key>
 	<string>矮人城堡</string>
-	<key>DT_MAGA_TOWER</key>
+	<key>DN_MAGA_TOWER</key>
 	<string>法师之塔</string>
-	<key>DT_ORC_FORTRESS</key>
+	<key>DN_ORC_FORTRESS</key>
 	<string>兽人堡垒</string>
-	<key>DT_ELF_FOREST</key>
+	<key>DN_ELF_FOREST</key>
 	<string>精灵之森</string>
-	<key>DT_TROLL_TEMPLE</key>
+	<key>DN_TROLL_TEMPLE</key>
 	<string>巨魔神庙</string>
-	<key>DT_BEHOLDER_CASTLE</key>
+	<key>DN_BEHOLDER_CASTLE</key>
 	<string>眼魔城堡</string>
-	<key>DT_WARP_SPACE</key>
+	<key>DN_WARP_SPACE</key>
 	<string>异度空间</string>
-	<key>DT_DRAGON_LAIR</key>
+	<key>DN_DRAGON_LAIR</key>
 	<string>龙穴</string>
-	<key>DT_LICH_TOMB</key>
+	<key>DN_LICH_TOMB</key>
 	<string>巫妖墓室</string>
+	<key>MMN_RAT</key>
+	<string>老鼠</string>
+	<key>MMN_BAT</key>
+	<string>蝙蝠</string>
+	<key>MMN_SNAKE</key>
+	<string>蛇</string>
+	<key>MMN_SPIDER</key>
+	<string>蜘蛛</string>
+	<key>MMN_SLIME</key>
+	<string>史莱姆</string>
+	<key>MMN_ALLIP</key>
+	<string>怨魂</string>
+	<key>MMN_PRISONER</key>
+	<string>囚犯</string>
+	<key>MMN_PRISONGUARD</key>
+	<string>监狱守卫</string>
+	<key>MMN_TORTURE</key>
+	<string>拷问者</string>
+	<key>MMN_MOB</key>
+	<string>暴徒</string>
+	<key>MMN_BELIEVER</key>
+	<string>信徒</string>
+	<key>MMN_GATEKEEPER</key>
+	<string>看门人</string>
+	<key>MMN_APOLOGIST</key>
+	<string>辩护者</string>
+	<key>MMN_ADJUDICATOR</key>
+	<string>审判者</string>
+	<key>MMN_PRIEST</key>
+	<string>祭祀</string>
+	<key>MMN_DEATHMINER</key>
+	<string>死亡矿工</string>
+	<key>MMN_KOBOLD</key>
+	<string>狗头人</string>
+	<key>MMN_OOZE</key>
+	<string>软泥怪</string>
+	<key>MMN_SHADOW</key>
+	<string>阴影怪</string>
+	<key>MMN_ANKHEG</key>
+	<string>掘地虫</string>
+	<key>MMN_WOLF</key>
+	<string>狼</string>
+	<key>MMN_BEAR</key>
+	<string>熊</string>
+	<key>MMN_GOBLIN</key>
+	<string>地精</string>
+	<key>MMN_DINOSAUR</key>
+	<string>恐龙</string>
+	<key>MMN_GNOLL</key>
+	<string>豺狼人</string>
+	<key>MMN_SKELETON</key>
+	<string>骷髅</string>
+	<key>MMN_ZOMBIE</key>
+	<string>僵尸</string>
+	<key>MMN_GARGOYLE</key>
+	<string>石像鬼</string>
+	<key>MMN_GHOST</key>
+	<string>幽灵</string>
+	<key>MMN_GHOUL</key>
+	<string>食尸鬼</string>
 </dict>
 </plist>

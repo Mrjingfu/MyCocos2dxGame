@@ -6,6 +6,7 @@
 //
 
 #include "LevelResourceManager.h"
+#include "RandomDungeon.hpp"
 USING_NS_CC;
 
 LevelResourceManager* g_pLevelResourceManagerInstance = nullptr;
@@ -22,49 +23,59 @@ LevelResourceManager* LevelResourceManager::getInstance()
     
     return g_pLevelResourceManagerInstance;
 }
-bool LevelResourceManager::init(const std::string& file)
+bool LevelResourceManager::init()
 {
-    m_LevelRes = FileUtils::getInstance()->getValueMapFromFile(file);
-    return !m_LevelRes.empty();
+    m_TerrainTilesResMap = FileUtils::getInstance()->getValueMapFromFile("TerrainTilesRes.plist");
+    if(m_TerrainTilesResMap.empty())
+        return false;
+    m_DoorsResMap = FileUtils::getInstance()->getValueMapFromFile("DoorsRes.plist");
+    if(m_DoorsResMap.empty())
+        return false;
+    m_MonstersResMap = FileUtils::getInstance()->getValueMapFromFile("MonstersRes.plist");
+    if(m_MonstersResMap.empty())
+        return false;
+//    m_ItemsResMap = FileUtils::getInstance()->getValueMapFromFile("ItemsRes.plist");
+//    if(m_ItemsResMap.empty())
+//        return false;
+    return true;
 }
-bool LevelResourceManager::initLevelRes(const std::string &type)
+bool LevelResourceManager::initLevelRes()
 {
-    bool ret = true;
-   
-    m_tileds = m_LevelRes.at(type).asValueMap();
+    if(!RandomDungeon::getInstance()->getCurrentDungeonNode())
+        return false;
+    std::string dungeonName = DUNGEON_NAMES[RandomDungeon::getInstance()->getCurrentDungeonNode()->m_Type];
+    if(dungeonName.empty())
+        return false;
+    m_TerrainTilesLevelRes = m_TerrainTilesResMap.at(dungeonName).asValueMap();
+    if(m_TerrainTilesLevelRes.empty())
+        return false;
     
-    ret = !m_tileds.empty();
-    
-    m_models = m_LevelRes.at("model").asValueMap();
-    
-    ret = !m_LevelRes.empty();
-    
-    return ret;
+    m_DoorsLevelRes = m_DoorsResMap.at(dungeonName).asValueMap();
+    if(m_DoorsLevelRes.empty())
+        return false;
+    return true;
     
 }
-void LevelResourceManager::clearLevelRes(const std::string& type)
+void LevelResourceManager::clearLevelRes()
 {
-    if (!m_tileds.empty()) {
-        m_tileds.clear();
-    }
-    
-    if (!m_models.empty()) {
-        m_models.clear();
-    }
+    m_TerrainTilesLevelRes.clear();
+    m_DoorsLevelRes.clear();
 }
-std::string LevelResourceManager::getModelRes(std::string &type)
+std::string LevelResourceManager::getTerrainTileRes(const std::string& tileTypeName)
 {
-    if (!m_models.empty()) {
-        return m_models.at(type).asString();
-    }
-    return Value().asString();
+    return m_TerrainTilesLevelRes.at(tileTypeName).asString();
 }
-std::string LevelResourceManager::getTerrainTileRes(std::string &type)
+std::string LevelResourceManager::getDoorRes(const std::string& doorTypeName)
 {
-    if (!m_tileds.empty()) {
-        return m_tileds.at(type).asString();
-    }
-    return Value().asString();
+    return m_DoorsLevelRes.at(doorTypeName).asString();
+}
+std::string LevelResourceManager::getMonsterRes(const std::string& monsterTypeName)
+{
+    return m_MonstersResMap.at(monsterTypeName).asString();
+}
+std::string LevelResourceManager::getItemRes(const std::string& itemTypeName)
+{
+    return m_ItemsResMap.at(itemTypeName).asString();
 }
 
 
