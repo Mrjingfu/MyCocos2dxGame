@@ -15,7 +15,7 @@
             <PrePosition X="0.5000" Y="0.0756" />
             <PreSize X="0.0812" Y="0.0521" />
             <TextColor A="255" R="65" G="65" B="70" />
-            <NormalFileData Type="PlistSubImage" Path="btn_achieve.png" Plist="ui/ui_sprite.plist" />
+            <NormalFileData Type="PlistSubImage" Path="btn_achieve.png" Plist="ui_sprite.plist" />
             <OutlineColor A="255" R="255" G="0" B="0" />
             <ShadowColor A="255" R="110" G="110" B="110" />
           </AbstractNodeData>
@@ -28,7 +28,7 @@
             <PrePosition X="0.2865" Y="0.0756" />
             <PreSize X="0.0812" Y="0.0521" />
             <TextColor A="255" R="65" G="65" B="70" />
-            <NormalFileData Type="PlistSubImage" Path="btn_rank.png" Plist="ui/ui_sprite.plist" />
+            <NormalFileData Type="PlistSubImage" Path="btn_rank.png" Plist="ui_sprite.plist" />
             <OutlineColor A="255" R="255" G="0" B="0" />
             <ShadowColor A="255" R="110" G="110" B="110" />
           </AbstractNodeData>
@@ -41,7 +41,7 @@
             <PrePosition X="0.7045" Y="0.0745" />
             <PreSize X="0.0812" Y="0.0542" />
             <TextColor A="255" R="65" G="65" B="70" />
-            <NormalFileData Type="PlistSubImage" Path="btn_rate.png" Plist="ui/ui_sprite.plist" />
+            <NormalFileData Type="PlistSubImage" Path="btn_rate.png" Plist="ui_sprite.plist" />
             <OutlineColor A="255" R="255" G="0" B="0" />
             <ShadowColor A="255" R="110" G="110" B="110" />
           </AbstractNodeData>
@@ -54,7 +54,7 @@
             <PrePosition X="0.8717" Y="0.9305" />
             <PreSize X="0.0812" Y="0.0542" />
             <TextColor A="255" R="65" G="65" B="70" />
-            <NormalFileData Type="PlistSubImage" Path="btn_setting.png" Plist="ui/ui_sprite.plist" />
+            <NormalFileData Type="PlistSubImage" Path="btn_setting.png" Plist="ui_sprite.plist" />
             <OutlineColor A="255" R="255" G="0" B="0" />
             <ShadowColor A="255" R="110" G="110" B="110" />
           </AbstractNodeData>
@@ -68,7 +68,7 @@
             <PreSize X="0.4000" Y="0.0800" />
             <FontResource Type="Normal" Path="fonts/04B_03.TTF" Plist="" />
             <TextColor A="255" R="255" G="255" B="255" />
-            <NormalFileData Type="PlistSubImage" Path="ui_frame_3.png" Plist="ui/ui_sprite.plist" />
+            <NormalFileData Type="PlistSubImage" Path="ui_frame_3.png" Plist="ui_sprite.plist" />
             <OutlineColor A="255" R="255" G="0" B="0" />
             <ShadowColor A="255" R="110" G="110" B="110" />
           </AbstractNodeData>

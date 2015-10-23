@@ -3,58 +3,48 @@
   <SolutionFolder>
     <Group ctype="ResourceGroup">
       <RootFolder Name=".">
-        <Folder Name="scene" />
-        <Folder Name="ui">
-          <PlistImageFolder Image="Plist.png" PListFile="Plist.plist" Name=".Plist_PList.Dir">
-            <PlistImageFile Name="btn_1.png" Key="btn_1.png" />
-            <PlistImageFile Name="btn_2.png" Key="btn_2.png" />
-            <PlistImageFile Name="btn_3.png" Key="btn_3.png" />
-            <PlistImageFile Name="btn_4.png" Key="btn_4.png" />
-            <PlistImageFile Name="button_rewardbtn_bg.png" Key="button_rewardbtn_bg.png" />
-            <PlistImageFile Name="button_rewardbtn_icon_search.png" Key="button_rewardbtn_icon_search.png" />
-          </PlistImageFolder>
-          <PlistImageFolder Image="ui_sprite.png" PListFile="ui_sprite.plist" Name=".ui_sprite_PList.Dir">
-            <PlistImageFile Name="btn_achieve.png" Key="btn_achieve.png" />
-            <PlistImageFile Name="btn_rank.png" Key="btn_rank.png" />
-            <PlistImageFile Name="btn_rate.png" Key="btn_rate.png" />
-            <PlistImageFile Name="btn_setting.png" Key="btn_setting.png" />
-            <PlistImageFile Name="ui_frame_1.png" Key="ui_frame_1.png" />
-            <PlistImageFile Name="ui_frame_2.png" Key="ui_frame_2.png" />
-            <PlistImageFile Name="ui_frame_3.png" Key="ui_frame_3.png" />
-            <PlistImageFile Name="ui_frame_4.png" Key="ui_frame_4.png" />
-            <PlistImageFile Name="ui_frame_5.png" Key="ui_frame_5.png" />
-            <PlistImageFile Name="ui_frame_6.png" Key="ui_frame_6.png" />
-            <PlistImageFile Name="chr_sword.png" Key="chr_sword.png" />
-          </PlistImageFolder>
-          <PlistImageFolder Image="ui_prop.png" PListFile="ui_prop.plist" Name=".ui_prop_PList.Dir">
-            <PlistImageFile Name="A_Shoes01.png" Key="A_Shoes01.png" />
-            <PlistImageFile Name="A_Shoes02.png" Key="A_Shoes02.png" />
-            <PlistImageFile Name="A_Shoes03.png" Key="A_Shoes03.png" />
-            <PlistImageFile Name="A_Shoes04.png" Key="A_Shoes04.png" />
-            <PlistImageFile Name="A_Shoes05.png" Key="A_Shoes05.png" />
-            <PlistImageFile Name="E_Gold01.png" Key="E_Gold01.png" />
-            <PlistImageFile Name="E_Gold02.png" Key="E_Gold02.png" />
-            <PlistImageFile Name="E_Metal01.png" Key="E_Metal01.png" />
-            <PlistImageFile Name="E_Metal02.png" Key="E_Metal02.png" />
-            <PlistImageFile Name="E_Metal04.png" Key="E_Metal04.png" />
-            <PlistImageFile Name="P_Blue01.png" Key="P_Blue01.png" />
-            <PlistImageFile Name="P_Green01.png" Key="P_Green01.png" />
-            <PlistImageFile Name="P_Red01.png" Key="P_Red01.png" />
-            <PlistImageFile Name="W_Gold_Sword.png" Key="W_Gold_Sword.png" />
-            <PlistImageFile Name="W_Sword001.png" Key="W_Sword001.png" />
-            <PlistImageFile Name="W_Sword004.png" Key="W_Sword004.png" />
-            <PlistImageFile Name="W_Sword015.png" Key="W_Sword015.png" />
-            <PlistImageFile Name="W_Sword016.png" Key="W_Sword016.png" />
-          </PlistImageFolder>
-          <Project Name="backpackLayer.csd" Type="Layer" />
-          <Project Name="characterLayer.csd" Type="Layer" />
-          <Project Name="gameScene.csd" Type="Scene" />
-          <Project Name="menuscene.csd" Type="Scene" />
-          <Project Name="packageLayer.csd" Type="Layer" />
-        </Folder>
         <Folder Name="fonts">
           <TTF Name="04B_03.TTF" />
         </Folder>
+        <PlistImageFolder Image="ui_prop.png" PListFile="ui_prop.plist" Name=".ui_prop_PList.Dir">
+          <PlistImageFile Name="A_Shoes01.png" Key="A_Shoes01.png" />
+          <PlistImageFile Name="A_Shoes02.png" Key="A_Shoes02.png" />
+          <PlistImageFile Name="A_Shoes03.png" Key="A_Shoes03.png" />
+          <PlistImageFile Name="A_Shoes04.png" Key="A_Shoes04.png" />
+          <PlistImageFile Name="A_Shoes05.png" Key="A_Shoes05.png" />
+          <PlistImageFile Name="E_Gold01.png" Key="E_Gold01.png" />
+          <PlistImageFile Name="E_Gold02.png" Key="E_Gold02.png" />
+          <PlistImageFile Name="E_Metal01.png" Key="E_Metal01.png" />
+          <PlistImageFile Name="E_Metal02.png" Key="E_Metal02.png" />
+          <PlistImageFile Name="E_Metal04.png" Key="E_Metal04.png" />
+          <PlistImageFile Name="P_Blue01.png" Key="P_Blue01.png" />
+          <PlistImageFile Name="P_Green01.png" Key="P_Green01.png" />
+          <PlistImageFile Name="P_Red01.png" Key="P_Red01.png" />
+          <PlistImageFile Name="W_Gold_Sword.png" Key="W_Gold_Sword.png" />
+          <PlistImageFile Name="W_Sword001.png" Key="W_Sword001.png" />
+          <PlistImageFile Name="W_Sword004.png" Key="W_Sword004.png" />
+          <PlistImageFile Name="W_Sword015.png" Key="W_Sword015.png" />
+          <PlistImageFile Name="W_Sword016.png" Key="W_Sword016.png" />
+        </PlistImageFolder>
+        <PlistImageFolder Image="ui_sprite.png" PListFile="ui_sprite.plist" Name=".ui_sprite_PList.Dir">
+          <PlistImageFile Name="btn_achieve.png" Key="btn_achieve.png" />
+          <PlistImageFile Name="btn_rank.png" Key="btn_rank.png" />
+          <PlistImageFile Name="btn_rate.png" Key="btn_rate.png" />
+          <PlistImageFile Name="btn_setting.png" Key="btn_setting.png" />
+          <PlistImageFile Name="ui_frame_1.png" Key="ui_frame_1.png" />
+          <PlistImageFile Name="ui_frame_2.png" Key="ui_frame_2.png" />
+          <PlistImageFile Name="ui_frame_3.png" Key="ui_frame_3.png" />
+          <PlistImageFile Name="ui_frame_4.png" Key="ui_frame_4.png" />
+          <PlistImageFile Name="ui_frame_5.png" Key="ui_frame_5.png" />
+          <PlistImageFile Name="ui_frame_6.png" Key="ui_frame_6.png" />
+          <PlistImageFile Name="chr_sword.png" Key="chr_sword.png" />
+          <PlistImageFile Name="button_rewardbtn_bg.png" Key="button_rewardbtn_bg.png" />
+          <PlistImageFile Name="button_rewardbtn_icon_search.png" Key="button_rewardbtn_icon_search.png" />
+        </PlistImageFolder>
+        <Project Name="backpackLayer.csd" Type="Layer" />
+        <Project Name="characterLayer.csd" Type="Layer" />
+        <Project Name="gameScene.csd" Type="Scene" />
+        <Project Name="menuscene.csd" Type="Scene" />
       </RootFolder>
     </Group>
   </SolutionFolder>

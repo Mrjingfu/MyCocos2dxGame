@@ -74,9 +74,9 @@ public:
     void setGravity(Gravity gravity);
     
     void setItemsMargin(cocos2d::Size margin);
-    
+    void setFrameMargin(cocos2d::Size margin);
     cocos2d::Size getItemsMargin()const;
-    
+    cocos2d::Size getFrameMargin()const;
     //override methods
     virtual void forceDoLayout()override;
     virtual void doLayout() override;
@@ -125,7 +125,7 @@ protected:
     
     Gravity _gravity;
     cocos2d::Size _itemMarginSize;
-
+    cocos2d::Size _frameMarginSize;
     ssize_t _curSelectedIndex;
     bool _refreshViewDirty;
   

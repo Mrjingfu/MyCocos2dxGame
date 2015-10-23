@@ -225,12 +225,14 @@ void LogoScene::precache()
     Texture2D * uiSpriteTx = Director::getInstance()->getTextureCache()->addImage("ui_sprite.png");
     if (uiSpriteTx)
         uiSpriteTx->setAliasTexParameters();
-    Texture2D * plistTx = Director::getInstance()->getTextureCache()->addImage("Plist.png");
-    if (plistTx)
-        plistTx->setAliasTexParameters();
     
-    SpriteFrameCache::getInstance()->addSpriteFramesWithFile("ui/ui_sprite.plist");
-    SpriteFrameCache::getInstance()->addSpriteFramesWithFile("ui/Plist.plist");
+    Texture2D * propTx = Director::getInstance()->getTextureCache()->addImage("ui_prop.png");
+    if (propTx)
+        propTx->setAliasTexParameters();
+    
+    SpriteFrameCache::getInstance()->addSpriteFramesWithFile("ui_sprite.plist");
+    SpriteFrameCache::getInstance()->addSpriteFramesWithFile("ui_prop.plist");
+    
     if(m_NodeRoot2)
     {
         DelayTime* delay = DelayTime::create(1.0f);

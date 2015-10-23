@@ -56,7 +56,7 @@
             <key>width</key>
             <int>256</int>
             <key>height</key>
-            <int>256</int>
+            <int>128</int>
         </QSize>
         <key>fixedTextureSize</key>
         <QSize>
@@ -152,13 +152,15 @@
             <filename>../ui/btn_rank.png</filename>
             <filename>../ui/btn_rate.png</filename>
             <filename>../ui/btn_setting.png</filename>
+            <filename>../ui/button_rewardbtn_bg.png</filename>
+            <filename>../ui/button_rewardbtn_icon_search.png</filename>
+            <filename>../ui/chr_sword.png</filename>
             <filename>../ui/ui_frame_1.png</filename>
             <filename>../ui/ui_frame_2.png</filename>
             <filename>../ui/ui_frame_3.png</filename>
             <filename>../ui/ui_frame_4.png</filename>
             <filename>../ui/ui_frame_5.png</filename>
             <filename>../ui/ui_frame_6.png</filename>
-            <filename>../ui/chr_sword.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

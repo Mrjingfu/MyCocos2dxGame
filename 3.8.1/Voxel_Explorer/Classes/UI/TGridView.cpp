@@ -13,6 +13,7 @@ TGridView::TGridView():
 _model(nullptr),
 _gravity(Gravity::CENTER_VERTICAL),
 _itemMarginSize(cocos2d::Size::ZERO),
+_frameMarginSize(cocos2d::Size::ZERO),
 _curSelectedIndex(-1),
 _refreshViewDirty(true),
 m_pX(-1),
@@ -110,7 +111,7 @@ void TGridView::remedyLayoutParameter(Widget *item)
     if (itemIndex ==0) {
         reLayoutParameter->setAlign(RelativeLayoutParameter::RelativeAlign::PARENT_TOP_LEFT);
         reLayoutParameter->setRelativeName(currenName );
-        reLayoutParameter->setMargin(Margin(_itemMarginSize.width,_itemMarginSize.height,0.0f, 0.0f));
+        reLayoutParameter->setMargin(Margin(_frameMarginSize.width,_frameMarginSize.height,_itemMarginSize.width, 0.0f));
     }else{
         
         if (x==0) {
@@ -125,7 +126,7 @@ void TGridView::remedyLayoutParameter(Widget *item)
             reLayoutParameter->setRelativeToWidgetName(preName);
             reLayoutParameter->setRelativeName(currenName );
             reLayoutParameter->setAlign(RelativeLayoutParameter::RelativeAlign::LOCATION_RIGHT_OF_CENTER);
-            reLayoutParameter->setMargin(Margin(_itemMarginSize.width,_itemMarginSize.height,0.0f, 0.0f));
+            reLayoutParameter->setMargin(Margin(_itemMarginSize.width,0,0, 0.0f));
 
         }
         
@@ -302,6 +303,20 @@ void TGridView::setItemsMargin(cocos2d::Size margin)
 cocos2d::Size TGridView::getItemsMargin()const
 {
     return _itemMarginSize;
+}
+void TGridView::setFrameMargin(cocos2d::Size margin)
+{
+    if (_frameMarginSize.width == margin.width && margin.height ==_frameMarginSize.height)
+    {
+        return;
+    }
+    _frameMarginSize = margin;
+    _refreshViewDirty = true;
+}
+
+cocos2d::Size TGridView::getFrameMargin()const
+{
+    return _frameMarginSize;
 }
 
 void TGridView::setDirection(Direction dir)

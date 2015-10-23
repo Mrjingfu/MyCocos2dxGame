@@ -31,13 +31,11 @@
     <Item Key="TabsParamsKey">
       <Value ctype="TabsInfo">
         <OpenedDocuments>
-          <FilePathData Path="ui/gameScene.csd" />
-          <FilePathData Path="ui/menuscene.csd" />
-          <FilePathData Path="ui/characterLayer.csd" />
-          <FilePathData Path="ui/backpackLayer.csd" />
-          <FilePathData Path="ui/packageLayer.csd" />
+          <FilePathData Path="gameScene.csd" />
+          <FilePathData Path="menuscene.csd" />
+          <FilePathData Path="characterLayer.csd" />
         </OpenedDocuments>
-        <ActiveDocument Path="ui/gameScene.csd" />
+        <ActiveDocument Path="characterLayer.csd" />
       </Value>
     </Item>
   </Properties>
