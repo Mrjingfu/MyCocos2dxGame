@@ -26,6 +26,7 @@ public:
     CChaosNumber getLevel() const { return m_nLevel; }
     CChaosNumber getExp() const { return m_nExp; }
     CChaosNumber getLightDistance() const { return m_nLightDistance; }
+    CChaosNumber getSearchDistance() const { return m_nSearchDistance; }
     CChaosNumber getMaxHp() const { return m_nMaxHP; }
     CChaosNumber getMaxMp() const { return m_nMaxMP; }
     CChaosNumber getCurrentHp() const { return m_nCurrentHP; }
@@ -62,6 +63,7 @@ private:
     CChaosNumber    m_nLevel;               ///等级
     CChaosNumber    m_nExp;                 ///经验
     CChaosNumber    m_nLightDistance;       ///光照范围
+    CChaosNumber    m_nSearchDistance;      ///侦查范围
     CChaosNumber    m_nMaxHP;               ///最大生命值
     CChaosNumber    m_nMaxMP;               ///最大魔法值
     CChaosNumber    m_nCurrentHP;           ///当前生命值

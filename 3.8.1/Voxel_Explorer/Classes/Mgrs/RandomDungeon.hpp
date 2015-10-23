@@ -16,8 +16,8 @@ typedef enum{
     
     DT_SEWER,              ////下水道
     DT_PRISON,             ////监狱
-    DT_TEMPLE,             ////破庙
-    DT_PIT,                ////矿坑
+    DT_FANE,               ////神殿
+    DT_MINES,              ////矿坑
     DT_CAVE,               ////洞穴
     DT_TOMB,               ////古墓
     
@@ -34,6 +34,7 @@ typedef enum{
     DT_MAX
 }
 DUNGEON_TYPE;
+extern const char* DUNGEON_NAMES[];
 class DungeonNode : public cocos2d::Ref
 {
 public:

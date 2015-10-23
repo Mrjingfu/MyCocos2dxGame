@@ -11,7 +11,7 @@
 #include "VoxelExplorer.h"
 #include "TerrainTile.hpp"
 #include "StandardDoor.hpp"
-#include "GameFormula.hpp"
+#include "RandomDungeon.hpp"
 USING_NS_CC;
 
 StandardLevel::StandardLevel()
@@ -45,7 +45,7 @@ bool StandardLevel::build()
         
         distance = m_AreaEntrance->getDistance();
         
-        if (retry++ > 20) {
+        if (retry++ > 10) {
             return false;
         }
     }
@@ -111,7 +111,7 @@ bool StandardLevel::build()
 #endif
     return true;
 }
-bool StandardLevel::createRenderObjs()
+bool StandardLevel::createTerrain()
 {
     if(!VoxelExplorer::getInstance()->getTerrainTilesLayer())
         return false;
@@ -195,63 +195,6 @@ bool StandardLevel::createRenderObjs()
 }
 bool StandardLevel::decorate()
 {
-    return true;
-}
-bool StandardLevel::createMonsters()
-{
-    int monsterNum = GameFormula::getLevelMonsterCount(m_nStandardAreaCount);
-    for (int i=0; i < monsterNum; i++) {
-//        Mob mob = Bestiary.mob( Dungeon.depth );
-//        do {
-//            mob.pos = randomRespawnCell();
-//        } while (mob.pos == -1);
-//        mobs.add( mob );
-//        Actor.occupyCell( mob );
-    }
-    return true;
-}
-bool StandardLevel::createItems()
-{
-//    int nItems = 3;
-//    while (cocos2d::rand_0_1() < 0.4f) {
-//        nItems++;
-//    }
-//    
-//    for (int i=0; i < nItems; i++) {
-//        Heap.Type type = null;
-//        switch (Random.Int( 20 )) {
-//            case 0:
-//                type = Heap.Type.SKELETON;
-//                break;
-//            case 1:
-//            case 2:
-//            case 3:
-//            case 4:
-//                type = Heap.Type.CHEST;
-//                break;
-//            case 5:
-//                type = Dungeon.depth > 1 ? Heap.Type.MIMIC : Heap.Type.CHEST;
-//                break;
-//            default:
-//                type = Heap.Type.HEAP;
-//        }
-//        drop( Generator.random(), randomDropCell() ).type = type;
-//    }
-//    
-//    for (Item item : itemsToSpawn) {
-//        int cell = randomDropCell();
-//        if (item instanceof ScrollOfUpgrade) {
-//            while (map[cell] == Terrain.FIRE_TRAP || map[cell] == Terrain.SECRET_FIRE_TRAP) {
-//                cell = randomDropCell();
-//            }
-//        }
-//        drop( item, cell ).type = Heap.Type.HEAP;
-//    }
-//    
-//    Item item = Bones.get();
-//    if (item != null) {
-//        drop( item, randomDropCell() ).type = Heap.Type.SKELETON;
-//    }
     return true;
 }
 
@@ -650,12 +593,29 @@ bool StandardLevel::mergeSmallIntersectArea(Area* area, Area* other)
 }
 void StandardLevel::placeTraps()  ///放置陷阱
 {
-    int nTraps = 10;
-    if (VoxelExplorer::getInstance()->getDepth() > 1)
-        nTraps = m_Areas.size() + VoxelExplorer::getInstance()->getDepth();
+    if(!RandomDungeon::getInstance()->getCurrentDungeonNode())
+        return;
+    int nTraps = 0;
+
+    if(RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nNodeDepth > 1)
+    {
+        nTraps = m_Areas.size() + RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nNodeDepth.GetLongValue() + RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nCurrentDepth.GetLongValue();
+    }
+    else
+    {
+        if(RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nCurrentDepth > 1)
+        {
+            nTraps = m_Areas.size() + RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nCurrentDepth.GetLongValue();
+        }
+    }
     
     for (int i = 0; i<nTraps; i++) {
         int pos = cocos2d::random(0, (int)m_Map.size());
+        if(m_Map[pos].m_AreaType == Area::AT_ENTRANCE || m_Map[pos].m_AreaType == Area::AT_EXIT)
+        {
+            i--;
+            continue;
+        }
         if(m_Map[pos].m_Type == TerrainTile::TT_STANDARD)
         {
             int randType = cocos2d::random(0, 5);

@@ -56,11 +56,11 @@ void UtilityHelper::screenshot(const std::string& fileName,const std::function<v
         } else if(!extension.compare(".jpg")) {
             format = Image::Format::JPG;
         } else{
-            CCLOG("cocos2d: the image can only be saved as JPG or PNG format");
+            CCLOGWARN("cocos2d: the image can only be saved as JPG or PNG format");
             return;
         }
     } else {
-        CCLOG("cocos2d: the image can only be saved as JPG or PNG format");
+        CCLOGWARN("cocos2d: the image can only be saved as JPG or PNG format");
         return ;
     }
     //获取屏幕尺寸，初始化一个空的渲染纹理对象

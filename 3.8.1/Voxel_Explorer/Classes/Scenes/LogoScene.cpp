@@ -219,8 +219,8 @@ void LogoScene::update(float delta)
 void LogoScene::precache()
 {
     
-    if (!LevelResourceManager::getInstance()->init("LevelRes.plist")) {
-        CCLOGERROR("LevelRes.plist load error");
+    if (!LevelResourceManager::getInstance()->init()) {
+        CCLOGERROR("LevelResourceManager initialize failed!");
     }
     Texture2D * uiSpriteTx = Director::getInstance()->getTextureCache()->addImage("ui_sprite.png");
     if (uiSpriteTx)

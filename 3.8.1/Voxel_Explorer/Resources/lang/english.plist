@@ -4,35 +4,95 @@
 <dict>
 	<key>GAME_NAME</key>
 	<string>Voxel Dungeon</string>
-	<key>DT_SEWER</key>
+	<key>DN_SEWER</key>
 	<string>Sewer</string>
-	<key>DT_PRISON</key>
+	<key>DN_PRISON</key>
 	<string>Prison</string>
-	<key>DT_TEMPLE</key>
-	<string>Temple</string>
-	<key>DT_PIT</key>
+	<key>DN_FANE</key>
+	<string>Fane</string>
+	<key>DN_MINES</key>
 	<string>Pit</string>
-	<key>DT_CAVE</key>
+	<key>DN_CAVE</key>
 	<string>Cave</string>
-	<key>DT_TOMB</key>
+	<key>DN_TOMB</key>
 	<string>Tomb</string>
-	<key>DT_DWARF_CASTLE</key>
+	<key>DN_DWARF_CASTLE</key>
 	<string>Dwaft Castle</string>
-	<key>DT_MAGA_TOWER</key>
+	<key>DN_MAGA_TOWER</key>
 	<string>Maga Tower</string>
-	<key>DT_ORC_FORTRESS</key>
+	<key>DN_ORC_FORTRESS</key>
 	<string>Orc Fortress</string>
-	<key>DT_ELF_FOREST</key>
+	<key>DN_ELF_FOREST</key>
 	<string>Elf Forest</string>
-	<key>DT_TROLL_TEMPLE</key>
+	<key>DN_TROLL_TEMPLE</key>
 	<string>Troll Temple</string>
-	<key>DT_BEHOLDER_CASTLE</key>
+	<key>DN_BEHOLDER_CASTLE</key>
 	<string>Beholder Castle</string>
-	<key>DT_WARP_SPACE</key>
+	<key>DN_WARP_SPACE</key>
 	<string>Wrap Space</string>
-	<key>DT_DRAGON_LAIR</key>
+	<key>DN_DRAGON_LAIR</key>
 	<string>Dragon Lair</string>
-	<key>DT_LICH_TOMB</key>
+	<key>DN_LICH_TOMB</key>
 	<string>Lich Tomb</string>
+	<key>MMN_RAT</key>
+	<string>Rat</string>
+	<key>MMN_BAT</key>
+	<string>Bat</string>
+	<key>MMN_SNAKE</key>
+	<string>Snake</string>
+	<key>MMN_SPIDER</key>
+	<string>Spider</string>
+	<key>MMN_SLIME</key>
+	<string>Slime</string>
+	<key>MMN_ALLIP</key>
+	<string>Allip</string>
+	<key>MMN_PRISONER</key>
+	<string>Prisoner</string>
+	<key>MMN_PRISONGUARD</key>
+	<string>Prison Guard</string>
+	<key>MMN_TORTURE</key>
+	<string>Torture</string>
+	<key>MMN_MOB</key>
+	<string>Mob</string>
+	<key>MMN_BELIEVER</key>
+	<string>Believer</string>
+	<key>MMN_GATEKEEPER</key>
+	<string>Gate Keeper</string>
+	<key>MMN_APOLOGIST</key>
+	<string>Apologist</string>
+	<key>MMN_ADJUDICATOR</key>
+	<string>Adjudicator</string>
+	<key>MMN_PRIEST</key>
+	<string>Priest</string>
+	<key>MMN_DEATHMINER</key>
+	<string>Death Miner</string>
+	<key>MMN_KOBOLD</key>
+	<string>Kobold</string>
+	<key>MMN_OOZE</key>
+	<string>Ooze</string>
+	<key>MMN_SHADOW</key>
+	<string>Shadow</string>
+	<key>MMN_ANKHEG</key>
+	<string>Ankheg</string>
+	<key>MMN_WOLF</key>
+	<string>Wolf</string>
+	<key>MMN_BEAR</key>
+	<string>Bear</string>
+	<key>MMN_GOBLIN</key>
+	<string>Goblin</string>
+	<key>MMN_DINOSAUR</key>
+	<string>Dinosaur</string>
+	<key>MMN_GNOLL</key>
+	<string>Gnoll</string>
+	<key>MMN_SKELETON</key>
+	<string>Skeleton</string>
+	<key>MMN_ZOMBIE</key>
+	<string>Zombie</string>
+	<key>MMN_GARGOYLE</key>
+	<string>Gargoyle</string>
+	<key>MMN_GHOST</key>
+	<string>Ghost</string>
+	<key>MMN_GHOUL</key>
+	<string>Ghoul</string>
 </dict>
 </plist>

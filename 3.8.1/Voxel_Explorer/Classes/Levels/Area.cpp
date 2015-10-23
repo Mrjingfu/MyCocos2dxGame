@@ -132,14 +132,14 @@ cocos2d::Rect Area::getIntersectRect(Area* other)
 
 int Area::getRandomTile(BaseLevel* level)
 {
-    return getRandomTile(0);
+    return getRandomTile(level, 0);
 }
 int Area::getRandomTile(BaseLevel* level, int m)
 {
     int left = m_Rect.getMinX() + 1 + m;
-    int right = m_Rect.getMaxX() - m - 1;
+    int right = m_Rect.getMaxX() - m;
     int bottom = m_Rect.getMinY() + 1 + m;
-    int top = m_Rect.getMaxY() - m - 1;
+    int top = m_Rect.getMaxY() - m;
     int x = cocos2d::random(MIN(left, right), MIN(left, right));
     int y = cocos2d::random(MIN(bottom, top), MIN(bottom, top));
     
@@ -399,9 +399,9 @@ void Area::setRandomTerrainTile(BaseLevel* level, int m, TerrainTile::TileType t
         return;
     
     int left = m_Rect.getMinX() + 1 + m;
-    int right = m_Rect.getMaxX() - m -1;
+    int right = m_Rect.getMaxX() - m;
     int bottom = m_Rect.getMinY() + 1 + m;
-    int top = m_Rect.getMaxY() - m -1;
+    int top = m_Rect.getMaxY() - m;
     int x = cocos2d::random(MIN(left, right), MIN(left, right));
     int y = cocos2d::random(MIN(bottom, top), MIN(bottom, top));
     setTerrainTile(level, x, y, type);

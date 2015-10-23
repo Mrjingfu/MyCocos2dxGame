@@ -7,7 +7,7 @@
 //
 
 #include "VoxelExplorer.h"
-#include "TombLevel.h"
+#include "SewerLevel.hpp"
 #include "TerrainTile.hpp"
 #include "BaseDoor.hpp"
 #include "LevelResourceManager.h"
@@ -24,7 +24,6 @@ VoxelExplorer* VoxelExplorer::getInstance()
 }
 VoxelExplorer::VoxelExplorer()
 {
-    m_nDepth = 1;
     m_pCurrentLevel = nullptr;
     
     m_pMainLayer = nullptr;
@@ -51,39 +50,38 @@ bool VoxelExplorer::init(Layer* pMainLayer)
     if(pMainLayer == nullptr)
         return false;
     m_pMainLayer = pMainLayer;
-    
-    if (!LevelResourceManager::getInstance()->initLevelRes(Value(m_nDepth).asString())) {
-        CCLOG("load level resource failed!");
-        return false;
-    }
     if(!RandomDungeon::getInstance()->build())
     {
-        CCLOG("RandomDungeon build failed!");
+        CCLOGERROR("RandomDungeon build failed!");
+        return false;
+    }
+    if (!LevelResourceManager::getInstance()->initLevelRes()) {
+        CCLOGERROR("load level resource failed!");
         return false;
     }
     if(!createLayers())
     {
-        CCLOG("Create layers failed!");
+        CCLOGERROR("Create layers failed!");
         return false;
     }
     if(!createLights())
     {
-        CCLOG("Create lights failed!");
+        CCLOGERROR("Create lights failed!");
         return false;
     }
     if(!createCameras())
     {
-        CCLOG("Create cameras failed!");
+        CCLOGERROR("Create cameras failed!");
         return false;
     }
     if(!createLevel())
     {
-        CCLOG("Create level failed!");
+        CCLOGERROR("Create level failed!");
         return false;
     }
     if(!createPlayer())
     {
-        CCLOG("Create Player failed!");
+        CCLOGERROR("Create Player failed!");
         return false;
     }
     return true;
@@ -93,6 +91,7 @@ void VoxelExplorer::update(float delta)
 }
 void VoxelExplorer::destroy()
 {
+    LevelResourceManager::getInstance()->clearLevelRes();
 }
 bool VoxelExplorer::checkMovable()
 {
@@ -110,6 +109,9 @@ void VoxelExplorer::cameraTrackPlayer()
         EaseSineOut* moveTo = EaseSineOut::create(MoveTo::create(0.4f, camPos));
         m_pMainCamera->runAction(moveTo);
     }
+}
+void VoxelExplorer::searchAndCheck()    ///侦查
+{
 }
 void VoxelExplorer::handlDoor(const cocos2d::Vec2& mapPos)
 {
@@ -140,6 +142,9 @@ void VoxelExplorer::handlDoor(const cocos2d::Vec2& mapPos)
         }
 
     }
+}
+void VoxelExplorer::handlTriggerTrap(const cocos2d::Vec2& mapPos)     ///处罚机关
+{
 }
 bool VoxelExplorer::createLayers()
 {
@@ -214,8 +219,8 @@ bool VoxelExplorer::createLevel()
     switch (node->m_Type) {
         case DT_SEWER:
         case DT_PRISON:
-        case DT_TEMPLE:
-        case DT_PIT:
+        case DT_FANE:
+        case DT_MINES:
         case DT_CAVE:
         case DT_TOMB:
             
@@ -229,7 +234,7 @@ bool VoxelExplorer::createLevel()
         case DT_WARP_SPACE:
         case DT_DRAGON_LAIR:
         case DT_LICH_TOMB:
-            m_pCurrentLevel = new(std::nothrow) TombLevel();
+            m_pCurrentLevel = new(std::nothrow) SewerLevel();
             break;
         default:
             break;

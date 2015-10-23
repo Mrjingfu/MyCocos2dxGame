@@ -16,16 +16,21 @@ class LevelResourceManager : public cocos2d::Ref
     ~LevelResourceManager();
 public:
     static LevelResourceManager* getInstance();
-    bool init(const std::string& file);
-    bool initLevelRes(const std::string& type);
-    void clearLevelRes(const std::string& type);
-    std::string getModelRes(std::string& type);
-    std::string getTerrainTileRes(std::string& type);
-    
+    bool init();
+    bool initLevelRes();
+    void clearLevelRes();
+    std::string getTerrainTileRes(const std::string& tileTypeName);
+    std::string getDoorRes(const std::string& doorTypeName);
+    std::string getMonsterRes(const std::string& monsterTypeName);
+    std::string getItemRes(const std::string& itemTypeName);
 private:
-    cocos2d::ValueMap    m_models;
-    cocos2d::ValueMap    m_tileds;
-    cocos2d::ValueMap    m_LevelRes;
+    cocos2d::ValueMap    m_TerrainTilesResMap;
+    cocos2d::ValueMap    m_DoorsResMap;
+    cocos2d::ValueMap    m_MonstersResMap;
+    cocos2d::ValueMap    m_ItemsResMap;
+    
+    cocos2d::ValueMap    m_TerrainTilesLevelRes;
+    cocos2d::ValueMap    m_DoorsLevelRes;
 };
 
 

@@ -11,6 +11,12 @@
 
 #include "Actor.hpp"
 #include "TerrainTile.hpp"
+
+typedef enum{
+    DOT_STANDARD,
+    DOT_MAX
+} DoorOpenType;
+extern const char* DOOR_MODEL_NAMES[];
 class BaseDoor : public Actor
 {
 public:
@@ -48,6 +54,7 @@ protected:
     DoorState   m_DoorState;
     DoorState   m_DoorLastState;
     cocos2d::Sprite3D*      m_pFakeDoor;
+    DoorOpenType            m_OpenType;
 };
 
 #endif /* BaseDoor_hpp */

@@ -59,13 +59,6 @@ public:
     }
     LEVEL_TYPE;
     
-    typedef enum{
-        LFT_NONE = 0,
-        LFT_CHASM,          ///鸿沟
-        LFT_MAX
-    }
-    LEVEL_FEELING_TYPE;
-    
     void create();
     
     LEVEL_TYPE getLevelType() const;
@@ -91,7 +84,7 @@ public:
     void save();
 protected:
     virtual bool build() = 0;
-    virtual bool createRenderObjs() = 0;
+    virtual bool createTerrain() = 0;
     virtual bool decorate() = 0;
     virtual bool createMonsters() = 0;
     virtual bool createItems() = 0;
@@ -102,7 +95,6 @@ private:
     int assignTerrainTileFlag(TerrainTile::TileType type);
 protected:
     LEVEL_TYPE           m_Type;
-    LEVEL_FEELING_TYPE   m_FeelingType;
     std::vector<TileInfo> m_Map;
     
     cocos2d::Vec2        m_spawnPoint;
