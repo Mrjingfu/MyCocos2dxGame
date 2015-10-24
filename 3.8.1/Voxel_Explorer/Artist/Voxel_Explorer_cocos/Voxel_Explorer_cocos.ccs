@@ -40,6 +40,16 @@
           <PlistImageFile Name="chr_sword.png" Key="chr_sword.png" />
           <PlistImageFile Name="button_rewardbtn_bg.png" Key="button_rewardbtn_bg.png" />
           <PlistImageFile Name="button_rewardbtn_icon_search.png" Key="button_rewardbtn_icon_search.png" />
+          <PlistImageFile Name="icon_artifact.png" Key="icon_artifact.png" />
+          <PlistImageFile Name="progress_blood_bg.png" Key="progress_blood_bg.png" />
+          <PlistImageFile Name="progress_blood_style.png" Key="progress_blood_style.png" />
+          <PlistImageFile Name="progress_margic_bg.png" Key="progress_margic_bg.png" />
+          <PlistImageFile Name="progress_margic_style.png" Key="progress_margic_style.png" />
+          <PlistImageFile Name="ui_blood_icon.png" Key="ui_blood_icon.png" />
+          <PlistImageFile Name="ui_margic_icon.png" Key="ui_margic_icon.png" />
+          <PlistImageFile Name="progress_exp_bg.png" Key="progress_exp_bg.png" />
+          <PlistImageFile Name="progress_exp_style.png" Key="progress_exp_style.png" />
+          <PlistImageFile Name="ui_buffer_1.png" Key="ui_buffer_1.png" />
         </PlistImageFolder>
         <Project Name="backpackLayer.csd" Type="Layer" />
         <Project Name="characterLayer.csd" Type="Layer" />

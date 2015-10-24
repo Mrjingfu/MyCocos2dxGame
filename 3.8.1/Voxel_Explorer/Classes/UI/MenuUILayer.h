@@ -20,11 +20,11 @@ public:
     CREATE_FUNC(MenuUILayer);
     virtual bool addEvents();
 protected:
-    void onTouchStart(Ref*,cocos2d::ui::Widget::TouchEventType);
-    void onTouchSetting(Ref*,cocos2d::ui::Widget::TouchEventType);
-    void onTouchRank(Ref*,cocos2d::ui::Widget::TouchEventType);
-    void onTouchRate(Ref*,cocos2d::ui::Widget::TouchEventType);
-    void onTouchAchieve(Ref*,cocos2d::ui::Widget::TouchEventType);
+    void onClickStart(Ref* ref);
+    void onClickSetting(Ref*);
+    void onClickRank(Ref*);
+    void onClickRate(Ref*);
+    void onClickAchieve(Ref*);
     
     
 };

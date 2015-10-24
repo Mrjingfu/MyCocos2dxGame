@@ -20,8 +20,8 @@ public:
     virtual ~RolePopUpUI();
     virtual bool initUi();
 private:
-    void onTouchColse(Ref*,cocos2d::ui::Widget::TouchEventType);
-    void onTouchChnageBag(Ref*,cocos2d::ui::Widget::TouchEventType);
+    void onClickColse(Ref* ref);
+    void onClickChnageBag(Ref*);
     void selectItemEvent(Ref *pSender, TGridView::EventType type);
     void updateItems();
 private:

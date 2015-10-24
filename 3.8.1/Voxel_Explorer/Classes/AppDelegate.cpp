@@ -66,9 +66,16 @@ bool AppDelegate::applicationDidFinishLaunching() {
 
     // set FPS. the default value is 1.0/60 if you don't call this
     director->setAnimationInterval(1.0 / 60);
-
+    
+    
+    CCLOG("visible width:%f height:%f",director->getVisibleSize().width,director->getVisibleSize().height);
+    CCLOG("Frame width:%f height:%f",glview->getFrameSize().width,glview->getFrameSize().height);
+    CCLOG("origin x:%f y:%f",director->getVisibleOrigin().x,director->getVisibleOrigin().y);
+    float iScalage = designResolutionSize.width / glview->getFrameSize().width ;
+    float ihight = iScalage * glview->getFrameSize().height;
+    CCLOG(" [%0.2f][%0.2f]" , iScalage ,ihight);
     // Set the design resolution
-    glview->setDesignResolutionSize(designResolutionSize.width, designResolutionSize.height, ResolutionPolicy::NO_BORDER);
+    glview->setDesignResolutionSize(designResolutionSize.width, ihight, ResolutionPolicy::SHOW_ALL);
     cocos2d::Size frameSize = glview->getFrameSize();
 //    // if the frame's height is larger than the height of medium size.
 //    if (frameSize.height > mediumResolutionSize.height)
@@ -90,6 +97,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
 //        director->setContentScaleFactor(MIN(mediumResolutionSize.height/designResolutionSize.height, mediumResolutionSize.width/designResolutionSize.width));
 //    }
 //    director->setContentScaleFactor(frameSize.width/designResolutionSize.height);
+
     register_all_packages();
 
     // create a scene. it's an autorelease object

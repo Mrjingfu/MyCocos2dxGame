@@ -19,6 +19,9 @@ public:
     virtual bool init() override;
     
     CREATE_FUNC(GameScene);
+    
+    virtual void onEnter() override;
+    virtual void onExit() override;
 protected:
     // 处理输入
     virtual bool onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event) override;

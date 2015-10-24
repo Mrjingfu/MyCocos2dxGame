@@ -14,15 +14,8 @@
 #include "CloseCallback.h"
 #include "editor-support/cocostudio/CocoStudio.h"
 
-#define CHECK_ACTION_WRAPPER(sender, type) \
-do{ \
-CHECK_ACTION(sender, type); \
-if (type != cocos2d::ui::Widget::TouchEventType::ENDED) \
-{ \
-return; \
-} \
-}while(0)
-#define CHECK_ACTION(sender, type) do{  if(isForbiddenAction(sender,type))  return ;}while(0)
+
+#define CHECK_ACTION(sender) do{  if(isForbiddenAction(sender))  return ;}while(0)
 class WrapperUILayer :public cocos2d::Layer,public CloseCallback{
     
 public:
@@ -37,7 +30,7 @@ public:
     virtual void refreshUIView(){};
     virtual bool addEvents(){return true;};          //cocostudio布局用到
     virtual bool initUi(){return true;}; //手工编写ui布局用到
-    bool isForbiddenAction(Ref* sender, cocos2d::ui::Widget::TouchEventType type);
+    bool isForbiddenAction(Ref* sender);
     CREATE_FUNC(WrapperUILayer);
     cocos2d::Layer* getRootLayer(){return m_pRootLayer;};
     cocos2d::Node* getRootNode() {return m_pRootNode;}

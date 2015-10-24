@@ -13,7 +13,7 @@
 USING_NS_CC;
 RolePopUpUI::RolePopUpUI()
 {
-    m_pActionType  = eNone;
+    m_pActionType  = eRightCenter;
     gridView = nullptr;
 }
 RolePopUpUI::~RolePopUpUI()
@@ -26,43 +26,41 @@ bool RolePopUpUI::initUi()
     Node* charNode = cocos2d::CSLoader::createNode("characterLayer.csb");
     if (!charNode)
         return  false;
-
     charNode->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
-    CCLOG("X:%f,Y:%f",charNode->getPositionX(),charNode->getPositionY());
-    CCLOG("ORIGIN_X:%f,ORIGIN_Y:%f",ORIGIN_X,ORIGIN_Y);
-    charNode->setPosition(Vec2(WND_CENTER_X, SCREEN_HEIGHT*0.6+ORIGIN_Y));
+    charNode->setPosition(WINDOW_CENTER);
     m_pRootLayer->addChild(charNode);
+    Layout* equipFrame = dynamic_cast<ui::Layout*>(UtilityHelper::seekNodeByName(charNode, "equip_frame"));
+    if (!equipFrame)
+        return false;
+    Layout* gridFrame = dynamic_cast<ui::Layout*>(UtilityHelper::seekNodeByName(charNode, "grid_frame"));
+    if (!gridFrame)
+        return false;
+    
     
     
     m_pWeaponUi = ItemUI::create();
-    m_pWeaponUi->setPosition(Vec2(charNode->getContentSize().width*0.15+ORIGIN_X, charNode->getContentSize().height*0.4+ORIGIN_Y));
-    charNode->addChild(m_pWeaponUi);
+    m_pWeaponUi->setPosition(Vec2(equipFrame->getContentSize().width*0.2, equipFrame->getContentSize().height*0.5));
+    equipFrame->addChild(m_pWeaponUi);
     
     m_pArmorUi = ItemUI::create();
-    m_pArmorUi->setPosition(Vec2(charNode->getContentSize().width*0.15+ORIGIN_X+m_pWeaponUi->getContentSize().width+10, charNode->getContentSize().height*0.4+ORIGIN_Y));
-    charNode->addChild(m_pArmorUi);
+    m_pArmorUi->setPosition(Vec2(charNode->getContentSize().width*0.2+m_pWeaponUi->getContentSize().width+10, equipFrame->getContentSize().height*0.5));
+    equipFrame->addChild(m_pArmorUi);
     
     m_pOrnament = ItemUI::create();
-    m_pOrnament->setPosition(Vec2(charNode->getContentSize().width*0.15+ORIGIN_X+m_pWeaponUi->getContentSize().width*2+20, charNode->getContentSize().height*0.4+ORIGIN_Y));
-    charNode->addChild(m_pOrnament);
+    m_pOrnament->setPosition(Vec2(charNode->getContentSize().width*0.2+m_pWeaponUi->getContentSize().width*2+20, equipFrame->getContentSize().height*0.5));
+    equipFrame->addChild(m_pOrnament);
     
-    cocos2d::ui::ImageView* gridImage = ui::ImageView::create("ui_frame_3.png",TextureResType::PLIST);
-    gridImage->setScale9Enabled(true);
-    gridImage->setPosition(Vec2(WND_CENTER_X, SCREEN_HEIGHT*0.35));
-    gridImage->setContentSize(cocos2d::Size(charNode->getContentSize().width,140));
-    m_pRootLayer->addChild(gridImage);
-
     
     gridView = TGridView::create();
     gridView->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
-    gridView->setContentSize(cocos2d::Size(charNode->getContentSize().width-10,132));
+    gridView->setContentSize(cocos2d::Size(gridFrame->getContentSize().width-10,132));
     gridView->setCol(5);
-    gridView->setPosition(gridImage->getContentSize()*0.5);
+    gridView->setPosition(gridFrame->getContentSize()*0.5);
     gridView->setScrollBarEnabled(false);
     gridView->setItemsMargin(cocos2d::Size(1,3.5));
     gridView->setFrameMargin(cocos2d::Size(4,4));
     gridView->addEventListener(CC_CALLBACK_2(RolePopUpUI::selectItemEvent, this));
-    gridImage->addChild(gridView);
+    gridFrame->addChild(gridView);
 
     for (int j =0; j<5*3; j++) {
 
@@ -73,21 +71,23 @@ bool RolePopUpUI::initUi()
     Button* closeBtn = Button::create("ui_frame_2.png","","",TextureResType::PLIST);
     closeBtn->setScale9Enabled(true);
     closeBtn->setContentSize(cocos2d::Size(30,30));
-    closeBtn->setPosition(Vec2(SCREEN_WIDTH*0.9+ORIGIN_X, SCREEN_HEIGHT*0.93+ORIGIN_Y));
-    closeBtn->addTouchEventListener(CC_CALLBACK_2(RolePopUpUI::onTouchColse, this));
+    closeBtn->setPosition(Vec2(SCREEN_WIDTH*0.9, SCREEN_HEIGHT*0.93));
+    closeBtn->addClickEventListener(CC_CALLBACK_1(RolePopUpUI::onClickColse, this));
     m_pRootLayer->addChild(closeBtn);
     
     Button* changeBagBtn = Button::create("ui_frame_2.png","","",TextureResType::PLIST);
     changeBagBtn->setScale9Enabled(true);
     changeBagBtn->setContentSize(cocos2d::Size(60,35));
-    changeBagBtn->setPosition(Vec2(SCREEN_WIDTH*0.6+ORIGIN_X, SCREEN_HEIGHT*0.35-gridImage->getContentSize().height/2-changeBagBtn->getContentSize().height/2-ORIGIN_Y/2));
-    changeBagBtn->addTouchEventListener(CC_CALLBACK_2(RolePopUpUI::onTouchChnageBag, this));
+    changeBagBtn->setPosition(Vec2(charNode->getPositionX(), charNode->getPositionY()- charNode->getContentSize().height/2-changeBagBtn->getContentSize().height/2));
+    changeBagBtn->addClickEventListener(CC_CALLBACK_1(RolePopUpUI::onClickChnageBag, this));
     changeBagBtn->setTitleText("changeBag");
     changeBagBtn->setTitleFontName(DEFAULT_FONT);
     changeBagBtn->setTitleFontSize(10);
     m_pRootLayer->addChild(changeBagBtn);
     
-    
+    registerCloseCallback([](){
+        CCLOG("SDSDSDSD");
+    });
     for (int i =0 ; i<15; i++) {
         ItemUI* ss = static_cast<ItemUI*>(gridView->getItem(i));
         ss->addItem("W_Sword001.png");
@@ -97,9 +97,9 @@ bool RolePopUpUI::initUi()
    
     return true;
 }
-void RolePopUpUI::onTouchChnageBag(Ref* ref,cocos2d::ui::Widget::TouchEventType type)
+void RolePopUpUI::onClickChnageBag(Ref* ref)
 {
-    CHECK_ACTION_WRAPPER(ref,type);
+    CHECK_ACTION(ref);
     for (int j =0; j<5*3; j++) {
         
         ItemUI* itemui = ItemUI::create();
@@ -108,9 +108,9 @@ void RolePopUpUI::onTouchChnageBag(Ref* ref,cocos2d::ui::Widget::TouchEventType 
     }
     MessageBox("更新背包成功", "提示");
 }
-void RolePopUpUI::onTouchColse(Ref* ref,cocos2d::ui::Widget::TouchEventType type)
+void RolePopUpUI::onClickColse(Ref* ref)
 {
-     CHECK_ACTION_WRAPPER(ref,type);
+    CHECK_ACTION(ref);
      closePopup();
 }
 

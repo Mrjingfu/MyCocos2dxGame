@@ -23,7 +23,7 @@ MenuUILayer::~MenuUILayer()
 }
 bool MenuUILayer::addEvents()
 {
-    PopupUILayerManager::getInstance()->setParentLayer(this);
+    
     
     cocos2d::ui::Button* btn_achieve = dynamic_cast<cocos2d::ui::Button*>(UtilityHelper::seekNodeByName(m_pRootNode,"btn_achieve"));
     if (!btn_achieve)
@@ -41,45 +41,42 @@ bool MenuUILayer::addEvents()
     if (!btn_start)
         return false;
 
-    btn_achieve->addTouchEventListener(CC_CALLBACK_2(MenuUILayer::onTouchAchieve, this));
-    btn_setting->addTouchEventListener(CC_CALLBACK_2(MenuUILayer::onTouchSetting, this));
-    btn_rank->addTouchEventListener(CC_CALLBACK_2(MenuUILayer::onTouchRank, this));
-    btn_start->addTouchEventListener(CC_CALLBACK_2(MenuUILayer::onTouchStart, this));
-    btn_rate->addTouchEventListener(CC_CALLBACK_2(MenuUILayer::onTouchRate, this));
+    btn_achieve->addClickEventListener(CC_CALLBACK_1(MenuUILayer::onClickAchieve, this));
+    btn_setting->addClickEventListener(CC_CALLBACK_1(MenuUILayer::onClickSetting, this));
+    btn_rank->addClickEventListener(CC_CALLBACK_1(MenuUILayer::onClickRank, this));
+    btn_start->addClickEventListener(CC_CALLBACK_1(MenuUILayer::onClickStart, this));
+    btn_rate->addClickEventListener(CC_CALLBACK_1(MenuUILayer::onClickRate, this));
     return true;
 }
 
-void MenuUILayer::onTouchAchieve(cocos2d::Ref *ref, cocos2d::ui::Widget::TouchEventType type)
+void MenuUILayer::onClickAchieve(cocos2d::Ref *ref)
 {
-    CHECK_ACTION_WRAPPER(ref,type);
+    CHECK_ACTION(ref);
     CCLOG("onTouchAchieve");
 }
-void MenuUILayer::onTouchSetting(cocos2d::Ref *ref, cocos2d::ui::Widget::TouchEventType type)
+void MenuUILayer::onClickSetting(cocos2d::Ref *ref)
 {
-    CHECK_ACTION_WRAPPER(ref,type);
+    CHECK_ACTION(ref);
     CCLOG("onTouchSetting");
     
 }
-void MenuUILayer::onTouchRank(cocos2d::Ref *ref, cocos2d::ui::Widget::TouchEventType type)
+void MenuUILayer::onClickRank(cocos2d::Ref *ref)
 {
-    CHECK_ACTION_WRAPPER(ref,type);
+    
+    CHECK_ACTION(ref);
     CCLOG("onTouchRank");
-    
-    
 }
-void MenuUILayer::onTouchStart(cocos2d::Ref *ref, cocos2d::ui::Widget::TouchEventType type)
+void MenuUILayer::onClickStart(cocos2d::Ref *ref)
 {
-    CHECK_ACTION_WRAPPER(ref,type);
-
+    CHECK_ACTION(ref);
     CCLOG("onTouchStart");
     auto scene = GameScene::createScene();
     Director::getInstance()->replaceScene(scene);
     
 }
 
-void MenuUILayer::onTouchRate(cocos2d::Ref *ref, cocos2d::ui::Widget::TouchEventType type)
+void MenuUILayer::onClickRate(cocos2d::Ref *ref)
 {
-    CHECK_ACTION_WRAPPER(ref,type);
+    CHECK_ACTION(ref);
     CCLOG("onTouchRate");
-    
 }

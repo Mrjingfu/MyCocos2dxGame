@@ -161,6 +161,16 @@
             <filename>../ui/ui_frame_4.png</filename>
             <filename>../ui/ui_frame_5.png</filename>
             <filename>../ui/ui_frame_6.png</filename>
+            <filename>../ui/icon_artifact.png</filename>
+            <filename>../ui/progress_blood_bg.png</filename>
+            <filename>../ui/progress_blood_style.png</filename>
+            <filename>../ui/progress_margic_bg.png</filename>
+            <filename>../ui/progress_margic_style.png</filename>
+            <filename>../ui/ui_blood_icon.png</filename>
+            <filename>../ui/ui_margic_icon.png</filename>
+            <filename>../ui/progress_exp_bg.png</filename>
+            <filename>../ui/progress_exp_style.png</filename>
+            <filename>../ui/ui_buffer_1.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>
