@@ -31,12 +31,14 @@ bool WrapperUILayer::init()
     if (!Layer::init()) {
         return false;
     }
-    m_actionRef = nullptr;
     
-    
-    m_pRootLayer = cocos2d::Layer::create();
-    this->addChild(m_pRootLayer,1);
     ::gettimeofday(&m_actionTime, nullptr);
+    
+    m_actionRef = nullptr;
+    m_pRootLayer = cocos2d::Layer::create();
+    m_pRootLayer->setContentSize(cocos2d::Director::getInstance()->getVisibleSize());
+    this->addChild(m_pRootLayer,1);
+    
     
     //
     if(!initUi())
@@ -62,8 +64,9 @@ bool WrapperUILayer::load(const std::string gameUIFile,bool isSceneUi)
     }
     
     cocos2d::ui::Helper::doLayout(m_pRootNode);
+
+//  m_pRootNode->setPosition(m_pRootNode->getPosition()+cocos2d::Director::getInstance()->getVisibleOrigin());
     
-    m_pRootNode->setPosition(m_pRootNode->getPosition()+cocos2d::Director::getInstance()->getVisibleOrigin());
     this->addChild(m_pRootNode,1);
     m_pRootNode->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
     if(!addEvents())
@@ -71,7 +74,7 @@ bool WrapperUILayer::load(const std::string gameUIFile,bool isSceneUi)
     
     return ret;
 }
-bool WrapperUILayer::isForbiddenAction(cocos2d::Ref *sender, cocos2d::ui::Widget::TouchEventType type)
+bool WrapperUILayer::isForbiddenAction(cocos2d::Ref *sender)
 {
     struct timeval now;
     ::gettimeofday(&now, NULL);
@@ -81,7 +84,7 @@ bool WrapperUILayer::isForbiddenAction(cocos2d::Ref *sender, cocos2d::ui::Widget
     if( m_actionRef != sender && used < UI_ACTION_INTERVAL){
         CCLOG("SSSSSS");
         return true;
-    }else if(m_actionRef == sender && used < UI_ACTION_INTERVAL && cocos2d::ui::Widget::TouchEventType::BEGAN == type){
+    }else if(m_actionRef == sender && used < UI_ACTION_INTERVAL){
          CCLOG("EEEEE");
         return true;
     }else{

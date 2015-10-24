@@ -26,6 +26,16 @@ Scene* GameScene::createScene()
     // return the scene
     return scene;
 }
+void GameScene::onEnter()
+{
+    Layer::onEnter();
+    PopupUILayerManager::getInstance()->setParentLayer(this);
+}
+void GameScene::onExit()
+{
+    PopupUILayerManager::getInstance()->onExitScene();
+    Layer::onExit();
+}
 
 // on "init" you need to initialize your instance
 bool GameScene::init()
@@ -39,11 +49,12 @@ bool GameScene::init()
     
     if(!VoxelExplorer::getInstance()->init(this))
         return false;
-    
+   
     auto mainUi = GameUILayer::create();
     mainUi->load("gameScene.csb");
+    mainUi->setSwallowsTouches(false);
     mainUi->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
-    PopupUILayerManager::getInstance()->setParentLayer(VoxelExplorer::getInstance()->get2DLayer());
+    
     VoxelExplorer::getInstance()->get2DLayer()->addChild(mainUi);
     
     auto dispatcher = Director::getInstance()->getEventDispatcher();
@@ -53,7 +64,7 @@ bool GameScene::init()
     touchListener->onTouchBegan = CC_CALLBACK_2(GameScene::onTouchBegan, this);
     touchListener->onTouchMoved = CC_CALLBACK_2(GameScene::onTouchMoved, this);
     touchListener->onTouchEnded = CC_CALLBACK_2(GameScene::onTouchEnded, this);
-    dispatcher->addEventListenerWithSceneGraphPriority(touchListener, this);
+    dispatcher->addEventListenerWithSceneGraphPriority(touchListener, VoxelExplorer::getInstance()->get3DLayer());
     return true;
 }
 bool GameScene::onTouchBegan(Touch *touch, Event *event)

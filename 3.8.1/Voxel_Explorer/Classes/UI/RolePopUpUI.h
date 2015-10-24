@@ -11,6 +11,7 @@
 
 #include "PopupUILayer.h"
 #include "TGridView.h"
+class ItemUI;
 class  RolePopUpUI:public PopupUILayer {
     RolePopUpUI();
 
@@ -19,11 +20,16 @@ public:
     virtual ~RolePopUpUI();
     virtual bool initUi();
 private:
-    void onTouchColse(Ref*,cocos2d::ui::Widget::TouchEventType);
-    void onTouchChnageBag(Ref*,cocos2d::ui::Widget::TouchEventType);
+    void onClickColse(Ref* ref);
+    void onClickChnageBag(Ref*);
     void selectItemEvent(Ref *pSender, TGridView::EventType type);
+    void updateItems();
 private:
-    TGridView* gridView;
+   TGridView* gridView;
+   ValueVector m_pItemUis;
+   ItemUI* m_pWeaponUi;
+   ItemUI* m_pArmorUi;
+   ItemUI* m_pOrnament;
 };
 
 #endif /* RolePopUpUI_hpp */

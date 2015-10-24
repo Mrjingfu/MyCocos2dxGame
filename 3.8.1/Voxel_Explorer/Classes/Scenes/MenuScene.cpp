@@ -7,7 +7,7 @@
 
 #include "MenuScene.h"
 #include "MenuUILayer.h"
-
+#include "PopupUILayerManager.h"
 USING_NS_CC;
 
 Scene* MenuScene::createScene()
@@ -46,4 +46,14 @@ bool MenuScene::init()
     addChild(menuUiLayer);
     
     return true;
+}
+void MenuScene::onEnter()
+{
+    Layer::onEnter();
+    PopupUILayerManager::getInstance()->setParentLayer(this);
+}
+void MenuScene::onExit()
+{
+    PopupUILayerManager::getInstance()->onExitScene();
+    Layer::onExit();
 }

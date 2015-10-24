@@ -21,6 +21,9 @@ public:
     
     // implement the "static create()" method manually
     CREATE_FUNC(MenuScene);
+    
+    virtual void onEnter() override;
+    virtual void onExit() override;
 };
 
 #endif /* defined(__Voxel_Explorer__MenuScene__) */
