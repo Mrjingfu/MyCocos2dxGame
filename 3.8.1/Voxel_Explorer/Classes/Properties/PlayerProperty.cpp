@@ -9,8 +9,18 @@
 #include "PlayerProperty.hpp"
 #include "GameFormula.hpp"
 #include "EventConst.h"
+#include "KeyProperty.hpp"
+#include "WeaponProperty.hpp"
+#include "ArmorProperty.hpp"
+#include "MagicOrnamentProperty.hpp"
+#include "ScrollProperty.hpp"
+#include "PotionsProperty.hpp"
+#include "MaterialProperty.hpp"
+#include "QuestItemProperty.hpp"
+#include "SundriesProperty.hpp"
 USING_NS_CC;
 
+unsigned int PlayerProperty::m_snItemInstanceIDCounter = 0;
 PlayerProperty* g_pPlayerPropertyInstance = nullptr;
 PlayerProperty* PlayerProperty::getInstance()
 {
@@ -41,10 +51,15 @@ PlayerProperty::PlayerProperty()
     m_fBlockRate            = 0.01f;            ///格挡率
     m_fCriticalStrikeRate   = 0.01f;            ///暴击率
     m_fDodgeRate            = 0.02f;            ///闪避率
+    m_fMagicItemFindRate    = 0.2f;             ///魔法物品获得率
     
     m_nEquipedWeaponID      = -1;               ///装备了武器ID
     m_nEquipedArmorID       = -1;               ///装备了护甲ID
     m_nEquipedOrnamentsID   = -1;               ///装备了饰品ID
+    
+    m_nBagMaxSpace          = 15;               ///背包最大容量
+    m_nBagExtendTimes       = 0;                ///背包扩容次数
+    m_nBagExtendMaxTimes    = 4;                ///背包最大扩容次数
     
     m_bDirty = false;
 }
@@ -138,9 +153,14 @@ void PlayerProperty::setCurrentMP(CChaosNumber mp)
 }
 void PlayerProperty::EquipWeapon(CChaosNumber id)
 {
-    m_nEquipedWeaponID = id;
-    m_bDirty = true;
-    Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_EQUIPED_WEAPON);
+    WeaponProperty* weaponProperty = static_cast<WeaponProperty*>(getItemFromBag(id));
+    if(weaponProperty)
+    {
+        ///处理属性
+        m_nEquipedWeaponID = id;
+        m_bDirty = true;
+        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_EQUIPED_WEAPON);
+    }
 }
 void PlayerProperty::EquipArmor(CChaosNumber id)
 {
@@ -153,6 +173,48 @@ void PlayerProperty::EquipOrnaments(CChaosNumber id)
     m_nEquipedOrnamentsID = id;
     m_bDirty = true;
     Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_EQUIPED_ORNAMENTS);
+}
+void PlayerProperty::addItemToBag(PickableItem::PickableItemType type)
+{
+    if(m_Bag.size() >= m_nBagMaxSpace.GetLongValue())
+    {
+        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_BAG_NO_SPACE);
+        return;
+    }
+    PickableItemProperty* itemProperty = nullptr;
+    if(type > PickableItem::PIT_KEY_BEGIN && type < PickableItem::PIT_KEY_END)
+        itemProperty = new (std::nothrow) KeyProperty(m_snItemInstanceIDCounter++,type);
+    else if (type > PickableItem::PIT_DAGGER_BEGIN && type < PickableItem::PIT_DAGGER_END)
+        itemProperty = new (std::nothrow) WeaponProperty(m_snItemInstanceIDCounter++,type, true);
+    if(itemProperty)
+    {
+        itemProperty->adjustByDC();
+        m_Bag.push_back(itemProperty);
+    }
+}
+void PlayerProperty::removeItemFromBag(CChaosNumber id)
+{
+    std::vector<PickableItemProperty*>::iterator iter;
+    for (iter = m_Bag.begin(); iter != m_Bag.end(); iter++) {
+        if((*iter) != nullptr && (*iter)->getInstanceID() == id.GetLongValue())
+        {
+            m_Bag.erase(iter);
+            return;
+        }
+    }
+}
+void PlayerProperty::extendBagSpace()
+{
+    if(m_nBagExtendTimes >= m_nBagExtendMaxTimes)
+    {
+        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_BAG_EXTEND_HAS_REACH_MAXTIMES);
+    }
+    else
+    {
+        m_nBagExtendTimes = m_nBagExtendTimes + 1;
+        m_nBagMaxSpace = m_nBagExtendTimes*15;
+        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_BAG_EXTEND_OK);
+    }
 }
 void PlayerProperty::load()
 {
@@ -169,4 +231,13 @@ void PlayerProperty::levelUp()
     m_nCurrentMP = m_nMaxMP;
     m_bDirty = true;
     Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_LEVEL_UP);
+}
+PickableItemProperty* PlayerProperty::getItemFromBag(CChaosNumber id)
+{
+    std::vector<PickableItemProperty*>::iterator iter;
+    for (iter = m_Bag.begin(); iter != m_Bag.end(); iter++) {
+        if((*iter) != nullptr && (*iter)->getInstanceID() == id.GetLongValue())
+            return (*iter);
+    }
+    return nullptr;
 }

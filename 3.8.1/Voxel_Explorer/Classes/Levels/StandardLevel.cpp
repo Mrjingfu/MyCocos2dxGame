@@ -200,6 +200,7 @@ bool StandardLevel::decorate()
 
 bool StandardLevel::initAreas()
 {
+    m_Areas.clear();
     splitArea( cocos2d::Rect( 0, 0, m_nWidth - 1, m_nHeight - 1 ) );
     
     if (m_Areas.size() < 8) {

@@ -54,7 +54,7 @@ void MonsterProperty::setCurrentHP(CChaosNumber hp)
     else
         m_nCurrentHP = hp;
 }
-void MonsterProperty::addjustByDC(bool elite)
+void MonsterProperty::adjustByDC(bool elite)
 {
     if(RandomDungeon::getInstance()->getCurrentDungeonNode() == nullptr)
         return;

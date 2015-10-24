@@ -11,6 +11,8 @@
 
 #include "cocos2d.h"
 #include "ChaosNumber.h"
+#include "PickableItem.hpp"
+#include "PickableItemProperty.hpp"
 class PlayerProperty : public cocos2d::Ref
 {
     PlayerProperty();
@@ -39,9 +41,15 @@ public:
     CChaosNumber getBlockRate() const { return m_fBlockRate; }
     CChaosNumber getCriticalStrikeRate() const { return m_fCriticalStrikeRate; }
     CChaosNumber getDodgeRate() const { return m_fDodgeRate; }
+    CChaosNumber getMagicItemFindRate() const { return m_fMagicItemFindRate; }
+    
     CChaosNumber getEquipedWeaponID() const { return m_nEquipedWeaponID; }
     CChaosNumber getEquipedArmorID() const { return m_nEquipedArmorID; }
     CChaosNumber getEquipedOrnamentsID() const { return m_nEquipedOrnamentsID; }
+    
+    CChaosNumber getBagMaxSpace() const { return m_nBagMaxSpace; }
+    CChaosNumber getBagExtendTimes() const { return m_nBagExtendTimes; }
+    CChaosNumber getBagExtendMaxTimes() const { return m_nBagExtendMaxTimes; }
     
     void addMoney(CChaosNumber gold, CChaosNumber silver, CChaosNumber copper);
     void costMoney(CChaosNumber gold, CChaosNumber silver, CChaosNumber copper);
@@ -52,10 +60,16 @@ public:
     void EquipArmor(CChaosNumber id);
     void EquipOrnaments(CChaosNumber id);
     
+    void addItemToBag(PickableItem::PickableItemType type);
+    void removeItemFromBag(CChaosNumber id);
+    void extendBagSpace();
+    const std::vector<PickableItemProperty*>& getPlayerBag() const { return m_Bag; }
+    
     void load();
     void save();
 private:
     void levelUp();
+    PickableItemProperty* getItemFromBag(CChaosNumber id);
 private:
     CChaosNumber    m_nGold;                ///金币
     CChaosNumber    m_nSilver;              ///银币
@@ -77,12 +91,20 @@ private:
     CChaosNumber    m_fBlockRate;           ///格挡率
     CChaosNumber    m_fCriticalStrikeRate;  ///暴击率
     CChaosNumber    m_fDodgeRate;           ///闪避率
+    CChaosNumber    m_fMagicItemFindRate;   ///魔法取得率
     
     CChaosNumber            m_nEquipedWeaponID;       ///装备了武器ID
     CChaosNumber            m_nEquipedArmorID;        ///装备了护甲ID
     CChaosNumber            m_nEquipedOrnamentsID;    ///装备了饰品ID
     
+    std::vector<PickableItemProperty*>  m_Bag;
+    CChaosNumber                        m_nBagMaxSpace;         ///背包最大容量
+    CChaosNumber                        m_nBagExtendTimes;      ///背包扩容次数
+    CChaosNumber                        m_nBagExtendMaxTimes;   ///背包最大扩容次数
+    
     bool                    m_bDirty;                 ///数据是否修改了
+    
+    static unsigned int     m_snItemInstanceIDCounter;
 };
 
 #endif /* PlayerProperty_hpp */

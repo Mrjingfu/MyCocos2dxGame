@@ -32,8 +32,9 @@ public:
     cocos2d::Layer* get3DLayer() const { return m_p3DLayer; }
     cocos2d::Layer* getTerrainTilesLayer() const { return m_pTerrainTilesLayer; }
     cocos2d::Layer* getTerrainDoorsLayer() const { return m_pTerrainDoorsLayer; }
-    cocos2d::Layer* getItemsLayer() const { return m_pItemsLayer; }
+    cocos2d::Layer* getUseableItemsLayer() const { return m_pUseableItemsLayer; }
     cocos2d::Layer* getMonstersLayer() const { return m_pMonstersLayer; }
+    cocos2d::Layer* getPickableItemsLayer() const { return m_pPickableItemsLayer; }
     cocos2d::Layer* get2DLayer() const { return m_p2DLayer; }
     cocos2d::Layer* getHUDLayer() const { return m_pHUDLayer; }
     cocos2d::Layer* getUILayer() const { return m_pUILayer; }
@@ -56,8 +57,9 @@ private:
     cocos2d::Layer*                         m_p3DLayer;
     cocos2d::Layer*                         m_pTerrainTilesLayer;
     cocos2d::Layer*                         m_pTerrainDoorsLayer;
-    cocos2d::Layer*                         m_pItemsLayer;
+    cocos2d::Layer*                         m_pUseableItemsLayer;
     cocos2d::Layer*                         m_pMonstersLayer;
+    cocos2d::Layer*                         m_pPickableItemsLayer;
     cocos2d::Layer*                         m_p2DLayer;
     cocos2d::Layer*                         m_pHUDLayer;
     cocos2d::Layer*                         m_pUILayer;

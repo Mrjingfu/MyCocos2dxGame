@@ -94,5 +94,43 @@
 	<string>幽灵</string>
 	<key>MMN_GHOUL</key>
 	<string>食尸鬼</string>
+	<key>PIN_KEY_COPPER</key>
+	<string>铜钥匙</string>
+	<key>PIN_KEY_SILVER</key>
+	<string>银钥匙</string>
+	<key>PIN_KEY_GOLD</key>
+	<string>金钥匙</string>
+	<key>PIN_KEY_BOSS</key>
+	<string>%s的钥匙</string>
+	<key>PIN_KEY_ROOM</key>
+	<string>%s的钥匙</string>
+	<key>PIN_DAGGER_DAGGER</key>
+	<string>匕首</string>
+	<key>PIN_DAGGER_HALFSWORD</key>
+	<string>短剑</string>
+	<key>PIN_DAGGER_KNIFE</key>
+	<string>小刀</string>
+	<key>PIN_DAGGER_COLDSTEELDAGGER</key>
+	<string>冷钢匕首</string>
+	<key>PIN_DAGGER_RIPPERCUTTER</key>
+	<string>开膛刀</string>
+	<key>PIN_DAGGER_BLUELIGHTDAGGER</key>
+	<string>蓝光匕首</string>
+	<key>PIN_DAGGER_RUBYDAGGER</key>
+	<string>红宝石匕首</string>
+	<key>PIN_DAGGER_PRO_DAGGER</key>
+	<string>烛光</string>
+	<key>PIN_DAGGER_PRO_HALFSWORD</key>
+	<string>星耀</string>
+	<key>PIN_DAGGER_PRO_KNIFE</key>
+	<string>黄金杀手</string>
+	<key>PIN_DAGGER_PRO_COLDSTEELDAGGER</key>
+	<string>影子袭击者</string>
+	<key>PIN_DAGGER_PRO_RIPPERCUTTER</key>
+	<string>六刃</string>
+	<key>PIN_DAGGER_PRO_BLUELIGHTDAGGER</key>
+	<string>凝云</string>
+	<key>PIN_DAGGER_PRO_RUBYDAGGER</key>
+	<string>火舌</string>
 </dict>
 </plist>

@@ -34,9 +34,9 @@ bool LevelResourceManager::init()
     m_MonstersResMap = FileUtils::getInstance()->getValueMapFromFile("MonstersRes.plist");
     if(m_MonstersResMap.empty())
         return false;
-//    m_ItemsResMap = FileUtils::getInstance()->getValueMapFromFile("ItemsRes.plist");
-//    if(m_ItemsResMap.empty())
-//        return false;
+    m_ItemsResMap = FileUtils::getInstance()->getValueMapFromFile("ItemsRes.plist");
+    if(m_ItemsResMap.empty())
+        return false;
     return true;
 }
 bool LevelResourceManager::initLevelRes()
@@ -73,9 +73,13 @@ std::string LevelResourceManager::getMonsterRes(const std::string& monsterTypeNa
 {
     return m_MonstersResMap.at(monsterTypeName).asString();
 }
-std::string LevelResourceManager::getItemRes(const std::string& itemTypeName)
+std::string LevelResourceManager::getItemIconRes(const std::string& itemTypeName)
 {
-    return m_ItemsResMap.at(itemTypeName).asString();
+     return m_ItemsResMap.at(itemTypeName).asString() + ".png";
+}
+std::string LevelResourceManager::getItemModelRes(const std::string& itemTypeName)
+{
+    return m_ItemsResMap.at(itemTypeName).asString() + ".c3b";
 }
 
 

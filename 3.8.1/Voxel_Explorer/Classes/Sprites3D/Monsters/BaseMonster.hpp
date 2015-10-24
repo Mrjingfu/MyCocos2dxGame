@@ -11,7 +11,7 @@
 
 #include "Actor.hpp"
 #include "TerrainTile.hpp"
-extern const char* MONSTER_MODEL_NAMES[];
+extern const std::string MONSTER_MODEL_NAMES[];
 class BaseMonster : public Actor
 {
 public:

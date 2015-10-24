@@ -8,7 +8,7 @@
 
 #include "BaseMonster.hpp"
 USING_NS_CC;
-const char* MONSTER_MODEL_NAMES[] = {
+const std::string MONSTER_MODEL_NAMES[] = {
     "MMN_UNKNOWN",
     
     //SEWER_BEGIN

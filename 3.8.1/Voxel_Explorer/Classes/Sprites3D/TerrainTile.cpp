@@ -9,7 +9,7 @@
 #include "TerrainTile.hpp"
 #include "LevelResourceManager.h"
 USING_NS_CC;
-const char* TERRAIN_TILES_NAME[] = {
+const std::string TERRAIN_TILES_NAME[] = {
     "TTN_CHASM",
     "TTN_STANDARD",
     "TTN_WALL",

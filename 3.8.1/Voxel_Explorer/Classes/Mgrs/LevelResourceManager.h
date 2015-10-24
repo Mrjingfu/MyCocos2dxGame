@@ -22,7 +22,8 @@ public:
     std::string getTerrainTileRes(const std::string& tileTypeName);
     std::string getDoorRes(const std::string& doorTypeName);
     std::string getMonsterRes(const std::string& monsterTypeName);
-    std::string getItemRes(const std::string& itemTypeName);
+    std::string getItemIconRes(const std::string& itemTypeName);
+    std::string getItemModelRes(const std::string& itemTypeName);
 private:
     cocos2d::ValueMap    m_TerrainTilesResMap;
     cocos2d::ValueMap    m_DoorsResMap;

@@ -1,5 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-<dict/>
+<dict>
+	<key>PIN_KEY_COPPER</key>
+	<string>I_Key01</string>
+	<key>PIN_KEY_SILVER</key>
+	<string>I_Key02</string>
+	<key>PIN_KEY_GOLD</key>
+	<string>I_Key03</string>
+	<key>PIN_KEY_BOSS</key>
+	<string>I_Key03</string>
+	<key>PIN_KEY_ROOM</key>
+	<string>I_Key04</string>
+	<key>PIN_DAGGER_DAGGER</key>
+	<string>W_Dagger001</string>
+	<key>PIN_DAGGER_HALFSWORD</key>
+	<string>W_Dagger002</string>
+	<key>PIN_DAGGER_KNIFE</key>
+	<string>W_Dagger003</string>
+	<key>PIN_DAGGER_COLDSTEELDAGGER</key>
+	<string>W_Dagger004</string>
+	<key>PIN_DAGGER_RIPPERCUTTER</key>
+	<string>W_Dagger005</string>
+	<key>PIN_DAGGER_BLUELIGHTDAGGER</key>
+	<string>W_Dagger006</string>
+	<key>PIN_DAGGER_RUBYDAGGER</key>
+	<string>W_Dagger007</string>
+	<key>PIN_DAGGER_PRO_DAGGER</key>
+	<string>W_Dagger020</string>
+	<key>PIN_DAGGER_PRO_HALFSWORD</key>
+	<string>W_Dagger015</string>
+	<key>PIN_DAGGER_PRO_KNIFE</key>
+	<string>W_Gold_Dagger</string>
+	<key>PIN_DAGGER_PRO_COLDSTEELDAGGER</key>
+	<string>W_Dagger021</string>
+	<key>PIN_DAGGER_PRO_RIPPERCUTTER</key>
+	<string>W_Dagger018</string>
+	<key>PIN_DAGGER_PRO_BLUELIGHTDAGGER</key>
+	<string>W_Dagger017</string>
+	<key>PIN_DAGGER_PRO_RUBYDAGGER</key>
+	<string>W_Dagger016</string>
+</dict>
 </plist>

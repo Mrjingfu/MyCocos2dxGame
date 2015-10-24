@@ -94,5 +94,43 @@
 	<string>Ghost</string>
 	<key>MMN_GHOUL</key>
 	<string>Ghoul</string>
+	<key>PIN_KEY_COPPER</key>
+	<string>Copper Key</string>
+	<key>PIN_KEY_SILVER</key>
+	<string>Silver Key</string>
+	<key>PIN_KEY_GOLD</key>
+	<string>Gold Key</string>
+	<key>PIN_KEY_BOSS</key>
+	<string>The %s&apos;s key</string>
+	<key>PIN_KEY_ROOM</key>
+	<string>The key of %s</string>
+	<key>PIN_DAGGER_DAGGER</key>
+	<string>Dagger</string>
+	<key>PIN_DAGGER_HALFSWORD</key>
+	<string>Half sword</string>
+	<key>PIN_DAGGER_KNIFE</key>
+	<string>Knife</string>
+	<key>PIN_DAGGER_COLDSTEELDAGGER</key>
+	<string>Cold steel dagger</string>
+	<key>PIN_DAGGER_RIPPERCUTTER</key>
+	<string>Ripper cutter</string>
+	<key>PIN_DAGGER_BLUELIGHTDAGGER</key>
+	<string>Blue light dagger</string>
+	<key>PIN_DAGGER_RUBYDAGGER</key>
+	<string>Ruby dagger</string>
+	<key>PIN_DAGGER_PRO_DAGGER</key>
+	<string>Candlelight</string>
+	<key>PIN_DAGGER_PRO_HALFSWORD</key>
+	<string>Stars Shine</string>
+	<key>PIN_DAGGER_PRO_KNIFE</key>
+	<string>Gold Killer</string>
+	<key>PIN_DAGGER_PRO_COLDSTEELDAGGER</key>
+	<string>Shadow Attacker</string>
+	<key>PIN_DAGGER_PRO_RIPPERCUTTER</key>
+	<string>Six Blade</string>
+	<key>PIN_DAGGER_PRO_BLUELIGHTDAGGER</key>
+	<string>Frozen Cloud</string>
+	<key>PIN_DAGGER_PRO_RUBYDAGGER</key>
+	<string>Flame</string>
 </dict>
 </plist>

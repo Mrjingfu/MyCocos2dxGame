@@ -132,7 +132,7 @@ cocos2d::Rect Area::getIntersectRect(Area* other)
 
 int Area::getRandomTile(BaseLevel* level)
 {
-    return getRandomTile(level, 0);
+    return getRandomTile(level, 1);
 }
 int Area::getRandomTile(BaseLevel* level, int m)
 {

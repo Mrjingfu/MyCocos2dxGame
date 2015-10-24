@@ -9,7 +9,7 @@
 #include "UtilityHelper.h"
 USING_NS_CC;
 
-std::string UtilityHelper::getLocalString(const char* key)
+std::string UtilityHelper::getLocalString(const std::string& key)
 {
     ValueMap dict;
     LanguageType lt= CCApplication::getInstance()->getCurrentLanguage();

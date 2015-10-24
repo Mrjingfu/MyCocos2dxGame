@@ -30,8 +30,9 @@ VoxelExplorer::VoxelExplorer()
     m_p3DLayer  = nullptr;
     m_pTerrainTilesLayer = nullptr;
     m_pTerrainDoorsLayer = nullptr;
-    m_pItemsLayer        = nullptr;
+    m_pUseableItemsLayer = nullptr;
     m_pMonstersLayer     = nullptr;
+    m_pPickableItemsLayer= nullptr;
     m_p2DLayer = nullptr;
     m_pHUDLayer = nullptr;
     m_pUILayer = nullptr;
@@ -166,17 +167,23 @@ bool VoxelExplorer::createLayers()
     m_pTerrainDoorsLayer->setCameraMask((unsigned int)CameraFlag::USER1);
     m_p3DLayer->addChild(m_pTerrainDoorsLayer);
     
-    m_pItemsLayer = Layer::create();
-    if(!m_pItemsLayer)
+    m_pUseableItemsLayer = Layer::create();
+    if(!m_pUseableItemsLayer)
         return false;
-    m_pItemsLayer->setCameraMask((unsigned int)CameraFlag::USER1);
-    m_p3DLayer->addChild(m_pItemsLayer);
+    m_pUseableItemsLayer->setCameraMask((unsigned int)CameraFlag::USER1);
+    m_p3DLayer->addChild(m_pUseableItemsLayer);
     
     m_pMonstersLayer = Layer::create();
     if(!m_pMonstersLayer)
         return false;
     m_pMonstersLayer->setCameraMask((unsigned int)CameraFlag::USER1);
     m_p3DLayer->addChild(m_pMonstersLayer);
+    
+    m_pPickableItemsLayer = Layer::create();
+    if(!m_pPickableItemsLayer)
+        return false;
+    m_pPickableItemsLayer->setCameraMask((unsigned int)CameraFlag::USER1);
+    m_p3DLayer->addChild(m_pPickableItemsLayer);
     
     m_p2DLayer = Layer::create();
     if(!m_p2DLayer)

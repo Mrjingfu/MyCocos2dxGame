@@ -109,16 +109,12 @@
 		553BC50E1BCE5191003D907A /* StandardDoor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 553BC50B1BCE5191003D907A /* StandardDoor.cpp */; settings = {ASSET_TAGS = (); }; };
 		55407D571BD5E2BC0000C41C /* GameFormula.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55407D551BD5E2BC0000C41C /* GameFormula.cpp */; settings = {ASSET_TAGS = (); }; };
 		55407D581BD5E2BC0000C41C /* GameFormula.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55407D551BD5E2BC0000C41C /* GameFormula.cpp */; settings = {ASSET_TAGS = (); }; };
-		55407D641BD64F450000C41C /* ItemProperty.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55407D621BD64F440000C41C /* ItemProperty.cpp */; settings = {ASSET_TAGS = (); }; };
-		55407D651BD64F450000C41C /* ItemProperty.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55407D621BD64F440000C41C /* ItemProperty.cpp */; settings = {ASSET_TAGS = (); }; };
 		554F00E71BD9CDF600F4DF8E /* data in Resources */ = {isa = PBXBuildFile; fileRef = 554F00E61BD9CDF600F4DF8E /* data */; settings = {ASSET_TAGS = (); }; };
 		554F00E81BD9CDF600F4DF8E /* data in Resources */ = {isa = PBXBuildFile; fileRef = 554F00E61BD9CDF600F4DF8E /* data */; settings = {ASSET_TAGS = (); }; };
 		554F00EE1BDA210000F4DF8E /* BaseBoss.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 554F00EC1BDA210000F4DF8E /* BaseBoss.cpp */; settings = {ASSET_TAGS = (); }; };
 		554F00EF1BDA210000F4DF8E /* BaseBoss.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 554F00EC1BDA210000F4DF8E /* BaseBoss.cpp */; settings = {ASSET_TAGS = (); }; };
 		554F00F61BDA219E00F4DF8E /* PickableItem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 554F00F41BDA219E00F4DF8E /* PickableItem.cpp */; settings = {ASSET_TAGS = (); }; };
 		554F00F71BDA219E00F4DF8E /* PickableItem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 554F00F41BDA219E00F4DF8E /* PickableItem.cpp */; settings = {ASSET_TAGS = (); }; };
-		554F00FA1BDA21B100F4DF8E /* BaseItem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 554F00F81BDA21B100F4DF8E /* BaseItem.cpp */; settings = {ASSET_TAGS = (); }; };
-		554F00FB1BDA21B100F4DF8E /* BaseItem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 554F00F81BDA21B100F4DF8E /* BaseItem.cpp */; settings = {ASSET_TAGS = (); }; };
 		554F01051BDA3A3100F4DF8E /* SewerLevel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 554F01031BDA3A3100F4DF8E /* SewerLevel.cpp */; settings = {ASSET_TAGS = (); }; };
 		554F01061BDA3A3100F4DF8E /* SewerLevel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 554F01031BDA3A3100F4DF8E /* SewerLevel.cpp */; settings = {ASSET_TAGS = (); }; };
 		555B0D151BC51A2C0055FB6D /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 555B0D001BC51A2C0055FB6D /* AppDelegate.cpp */; settings = {ASSET_TAGS = (); }; };
@@ -145,6 +141,28 @@
 		55EC95861BC6ABBA0008D1D7 /* TerrainTile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55EC95831BC6AA7B0008D1D7 /* TerrainTile.cpp */; };
 		55ECFB441BC79852007270CD /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55ECFB421BC79852007270CD /* Player.cpp */; settings = {ASSET_TAGS = (); }; };
 		55ECFB451BC79852007270CD /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55ECFB421BC79852007270CD /* Player.cpp */; settings = {ASSET_TAGS = (); }; };
+		55F81CA11BDB208D002EC075 /* UseableItem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55F81C9F1BDB208D002EC075 /* UseableItem.cpp */; settings = {ASSET_TAGS = (); }; };
+		55F81CA21BDB208D002EC075 /* UseableItem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55F81C9F1BDB208D002EC075 /* UseableItem.cpp */; settings = {ASSET_TAGS = (); }; };
+		55F81CAC1BDB69FB002EC075 /* PickableItemProperty.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55F81CAA1BDB69FB002EC075 /* PickableItemProperty.cpp */; settings = {ASSET_TAGS = (); }; };
+		55F81CAD1BDB69FB002EC075 /* PickableItemProperty.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55F81CAA1BDB69FB002EC075 /* PickableItemProperty.cpp */; settings = {ASSET_TAGS = (); }; };
+		55F81CB01BDB74EF002EC075 /* KeyProperty.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55F81CAE1BDB74EF002EC075 /* KeyProperty.cpp */; settings = {ASSET_TAGS = (); }; };
+		55F81CB11BDB74EF002EC075 /* KeyProperty.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55F81CAE1BDB74EF002EC075 /* KeyProperty.cpp */; settings = {ASSET_TAGS = (); }; };
+		55F81CB41BDB845A002EC075 /* WeaponProperty.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55F81CB21BDB845A002EC075 /* WeaponProperty.cpp */; settings = {ASSET_TAGS = (); }; };
+		55F81CB51BDB845A002EC075 /* WeaponProperty.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55F81CB21BDB845A002EC075 /* WeaponProperty.cpp */; settings = {ASSET_TAGS = (); }; };
+		55F81CB81BDB8B81002EC075 /* ArmorProperty.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55F81CB61BDB8B81002EC075 /* ArmorProperty.cpp */; settings = {ASSET_TAGS = (); }; };
+		55F81CB91BDB8B81002EC075 /* ArmorProperty.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55F81CB61BDB8B81002EC075 /* ArmorProperty.cpp */; settings = {ASSET_TAGS = (); }; };
+		55F81CBC1BDB923A002EC075 /* MagicOrnamentProperty.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55F81CBA1BDB923A002EC075 /* MagicOrnamentProperty.cpp */; settings = {ASSET_TAGS = (); }; };
+		55F81CBD1BDB923A002EC075 /* MagicOrnamentProperty.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55F81CBA1BDB923A002EC075 /* MagicOrnamentProperty.cpp */; settings = {ASSET_TAGS = (); }; };
+		55F81CC01BDB9257002EC075 /* ScrollProperty.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55F81CBE1BDB9257002EC075 /* ScrollProperty.cpp */; settings = {ASSET_TAGS = (); }; };
+		55F81CC11BDB9257002EC075 /* ScrollProperty.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55F81CBE1BDB9257002EC075 /* ScrollProperty.cpp */; settings = {ASSET_TAGS = (); }; };
+		55F81CC81BDB928F002EC075 /* MaterialProperty.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55F81CC61BDB928F002EC075 /* MaterialProperty.cpp */; settings = {ASSET_TAGS = (); }; };
+		55F81CC91BDB928F002EC075 /* MaterialProperty.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55F81CC61BDB928F002EC075 /* MaterialProperty.cpp */; settings = {ASSET_TAGS = (); }; };
+		55F81CCC1BDB92AC002EC075 /* QuestItemProperty.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55F81CCA1BDB92AC002EC075 /* QuestItemProperty.cpp */; settings = {ASSET_TAGS = (); }; };
+		55F81CCD1BDB92AC002EC075 /* QuestItemProperty.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55F81CCA1BDB92AC002EC075 /* QuestItemProperty.cpp */; settings = {ASSET_TAGS = (); }; };
+		55F81CD01BDB92CC002EC075 /* PotionsProperty.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55F81CCE1BDB92CC002EC075 /* PotionsProperty.cpp */; settings = {ASSET_TAGS = (); }; };
+		55F81CD11BDB92CC002EC075 /* PotionsProperty.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55F81CCE1BDB92CC002EC075 /* PotionsProperty.cpp */; settings = {ASSET_TAGS = (); }; };
+		55F81CD41BDB92ED002EC075 /* SundriesProperty.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55F81CD21BDB92ED002EC075 /* SundriesProperty.cpp */; settings = {ASSET_TAGS = (); }; };
+		55F81CD51BDB92ED002EC075 /* SundriesProperty.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55F81CD21BDB92ED002EC075 /* SundriesProperty.cpp */; settings = {ASSET_TAGS = (); }; };
 		8262943E1AAF051F00CB7CF7 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8262943D1AAF051F00CB7CF7 /* Security.framework */; };
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
 		BF1712471292920000B8313A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB412928DE900B8313A /* libz.dylib */; };
@@ -306,15 +324,11 @@
 		55407D551BD5E2BC0000C41C /* GameFormula.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameFormula.cpp; sourceTree = "<group>"; };
 		55407D561BD5E2BC0000C41C /* GameFormula.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GameFormula.hpp; sourceTree = "<group>"; };
 		55407D5F1BD633590000C41C /* EventConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventConst.h; sourceTree = "<group>"; };
-		55407D621BD64F440000C41C /* ItemProperty.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ItemProperty.cpp; sourceTree = "<group>"; };
-		55407D631BD64F450000C41C /* ItemProperty.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ItemProperty.hpp; sourceTree = "<group>"; };
 		554F00E61BD9CDF600F4DF8E /* data */ = {isa = PBXFileReference; lastKnownFileType = folder; path = data; sourceTree = "<group>"; };
 		554F00EC1BDA210000F4DF8E /* BaseBoss.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BaseBoss.cpp; sourceTree = "<group>"; };
 		554F00ED1BDA210000F4DF8E /* BaseBoss.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BaseBoss.hpp; sourceTree = "<group>"; };
 		554F00F41BDA219E00F4DF8E /* PickableItem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PickableItem.cpp; sourceTree = "<group>"; };
 		554F00F51BDA219E00F4DF8E /* PickableItem.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PickableItem.hpp; sourceTree = "<group>"; };
-		554F00F81BDA21B100F4DF8E /* BaseItem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BaseItem.cpp; sourceTree = "<group>"; };
-		554F00F91BDA21B100F4DF8E /* BaseItem.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BaseItem.hpp; sourceTree = "<group>"; };
 		554F01031BDA3A3100F4DF8E /* SewerLevel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SewerLevel.cpp; sourceTree = "<group>"; };
 		554F01041BDA3A3100F4DF8E /* SewerLevel.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SewerLevel.hpp; sourceTree = "<group>"; };
 		555B0D001BC51A2C0055FB6D /* AppDelegate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AppDelegate.cpp; sourceTree = "<group>"; };
@@ -339,6 +353,28 @@
 		55EC95841BC6AA7B0008D1D7 /* TerrainTile.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TerrainTile.hpp; sourceTree = "<group>"; };
 		55ECFB421BC79852007270CD /* Player.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Player.cpp; sourceTree = "<group>"; };
 		55ECFB431BC79852007270CD /* Player.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Player.hpp; sourceTree = "<group>"; };
+		55F81C9F1BDB208D002EC075 /* UseableItem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UseableItem.cpp; sourceTree = "<group>"; };
+		55F81CA01BDB208D002EC075 /* UseableItem.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = UseableItem.hpp; sourceTree = "<group>"; };
+		55F81CAA1BDB69FB002EC075 /* PickableItemProperty.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PickableItemProperty.cpp; sourceTree = "<group>"; };
+		55F81CAB1BDB69FB002EC075 /* PickableItemProperty.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PickableItemProperty.hpp; sourceTree = "<group>"; };
+		55F81CAE1BDB74EF002EC075 /* KeyProperty.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KeyProperty.cpp; sourceTree = "<group>"; };
+		55F81CAF1BDB74EF002EC075 /* KeyProperty.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = KeyProperty.hpp; sourceTree = "<group>"; };
+		55F81CB21BDB845A002EC075 /* WeaponProperty.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WeaponProperty.cpp; sourceTree = "<group>"; };
+		55F81CB31BDB845A002EC075 /* WeaponProperty.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = WeaponProperty.hpp; sourceTree = "<group>"; };
+		55F81CB61BDB8B81002EC075 /* ArmorProperty.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ArmorProperty.cpp; sourceTree = "<group>"; };
+		55F81CB71BDB8B81002EC075 /* ArmorProperty.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ArmorProperty.hpp; sourceTree = "<group>"; };
+		55F81CBA1BDB923A002EC075 /* MagicOrnamentProperty.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MagicOrnamentProperty.cpp; sourceTree = "<group>"; };
+		55F81CBB1BDB923A002EC075 /* MagicOrnamentProperty.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = MagicOrnamentProperty.hpp; sourceTree = "<group>"; };
+		55F81CBE1BDB9257002EC075 /* ScrollProperty.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ScrollProperty.cpp; sourceTree = "<group>"; };
+		55F81CBF1BDB9257002EC075 /* ScrollProperty.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ScrollProperty.hpp; sourceTree = "<group>"; };
+		55F81CC61BDB928F002EC075 /* MaterialProperty.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MaterialProperty.cpp; sourceTree = "<group>"; };
+		55F81CC71BDB928F002EC075 /* MaterialProperty.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = MaterialProperty.hpp; sourceTree = "<group>"; };
+		55F81CCA1BDB92AC002EC075 /* QuestItemProperty.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = QuestItemProperty.cpp; sourceTree = "<group>"; };
+		55F81CCB1BDB92AC002EC075 /* QuestItemProperty.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = QuestItemProperty.hpp; sourceTree = "<group>"; };
+		55F81CCE1BDB92CC002EC075 /* PotionsProperty.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PotionsProperty.cpp; sourceTree = "<group>"; };
+		55F81CCF1BDB92CC002EC075 /* PotionsProperty.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PotionsProperty.hpp; sourceTree = "<group>"; };
+		55F81CD21BDB92ED002EC075 /* SundriesProperty.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SundriesProperty.cpp; sourceTree = "<group>"; };
+		55F81CD31BDB92ED002EC075 /* SundriesProperty.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SundriesProperty.hpp; sourceTree = "<group>"; };
 		8262943D1AAF051F00CB7CF7 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB412928DE900B8313A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
@@ -574,12 +610,11 @@
 		551E93BA1BD51291009F788F /* Properties */ = {
 			isa = PBXGroup;
 			children = (
+				55F81CA91BDB69FB002EC075 /* PickableItemProperties */,
 				551E93BB1BD51291009F788F /* MonsterProperty.cpp */,
 				551E93BC1BD51291009F788F /* MonsterProperty.hpp */,
 				551E93BF1BD51291009F788F /* PlayerProperty.cpp */,
 				551E93C01BD51291009F788F /* PlayerProperty.hpp */,
-				55407D621BD64F440000C41C /* ItemProperty.cpp */,
-				55407D631BD64F450000C41C /* ItemProperty.hpp */,
 			);
 			path = Properties;
 			sourceTree = "<group>";
@@ -673,8 +708,8 @@
 			children = (
 				554F00F41BDA219E00F4DF8E /* PickableItem.cpp */,
 				554F00F51BDA219E00F4DF8E /* PickableItem.hpp */,
-				554F00F81BDA21B100F4DF8E /* BaseItem.cpp */,
-				554F00F91BDA21B100F4DF8E /* BaseItem.hpp */,
+				55F81C9F1BDB208D002EC075 /* UseableItem.cpp */,
+				55F81CA01BDB208D002EC075 /* UseableItem.hpp */,
 			);
 			path = Items;
 			sourceTree = "<group>";
@@ -756,6 +791,33 @@
 				55ECFB431BC79852007270CD /* Player.hpp */,
 			);
 			path = Sprites3D;
+			sourceTree = "<group>";
+		};
+		55F81CA91BDB69FB002EC075 /* PickableItemProperties */ = {
+			isa = PBXGroup;
+			children = (
+				55F81CAA1BDB69FB002EC075 /* PickableItemProperty.cpp */,
+				55F81CAB1BDB69FB002EC075 /* PickableItemProperty.hpp */,
+				55F81CAE1BDB74EF002EC075 /* KeyProperty.cpp */,
+				55F81CAF1BDB74EF002EC075 /* KeyProperty.hpp */,
+				55F81CB21BDB845A002EC075 /* WeaponProperty.cpp */,
+				55F81CB31BDB845A002EC075 /* WeaponProperty.hpp */,
+				55F81CB61BDB8B81002EC075 /* ArmorProperty.cpp */,
+				55F81CB71BDB8B81002EC075 /* ArmorProperty.hpp */,
+				55F81CBA1BDB923A002EC075 /* MagicOrnamentProperty.cpp */,
+				55F81CBB1BDB923A002EC075 /* MagicOrnamentProperty.hpp */,
+				55F81CBE1BDB9257002EC075 /* ScrollProperty.cpp */,
+				55F81CBF1BDB9257002EC075 /* ScrollProperty.hpp */,
+				55F81CC61BDB928F002EC075 /* MaterialProperty.cpp */,
+				55F81CC71BDB928F002EC075 /* MaterialProperty.hpp */,
+				55F81CCA1BDB92AC002EC075 /* QuestItemProperty.cpp */,
+				55F81CCB1BDB92AC002EC075 /* QuestItemProperty.hpp */,
+				55F81CCE1BDB92CC002EC075 /* PotionsProperty.cpp */,
+				55F81CCF1BDB92CC002EC075 /* PotionsProperty.hpp */,
+				55F81CD21BDB92ED002EC075 /* SundriesProperty.cpp */,
+				55F81CD31BDB92ED002EC075 /* SundriesProperty.hpp */,
+			);
+			path = PickableItemProperties;
 			sourceTree = "<group>";
 		};
 		EC6715EB1BCE7EE500C81CFC /* Utilities */ = {
@@ -943,9 +1005,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				55407D641BD64F450000C41C /* ItemProperty.cpp in Sources */,
 				551E93EA1BD512D3009F788F /* xor.cpp in Sources */,
 				553BC5091BCE499B003D907A /* BaseDoor.cpp in Sources */,
+				55F81CA11BDB208D002EC075 /* UseableItem.cpp in Sources */,
 				ECD10D721BD0967B007DD888 /* WrapperUILayer.cpp in Sources */,
 				551E93AF1BD51282009F788F /* NativeBridge.mm in Sources */,
 				55338AEA1BD892C200EA316F /* Archbishop.cpp in Sources */,
@@ -955,12 +1017,16 @@
 				551E93AB1BD51282009F788F /* ChaosNumber.cpp in Sources */,
 				551E93F01BD512D3009F788F /* MemoryStream.cpp in Sources */,
 				EC00DD5B1BD66586009BC378 /* MenuUILayer.cpp in Sources */,
+				55F81CAC1BDB69FB002EC075 /* PickableItemProperty.cpp in Sources */,
 				551E93C31BD51291009F788F /* LevelResourceManager.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				551E93EE1BD512D3009F788F /* FileStream.cpp in Sources */,
+				55F81CB81BDB8B81002EC075 /* ArmorProperty.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
 				551E93EC1BD512D3009F788F /* XXTEA.cpp in Sources */,
+				55F81CC01BDB9257002EC075 /* ScrollProperty.cpp in Sources */,
+				55F81CBC1BDB923A002EC075 /* MagicOrnamentProperty.cpp in Sources */,
 				555B0D251BC51A2C0055FB6D /* VoxelExplorer.cpp in Sources */,
 				551E93CB1BD51291009F788F /* PlayerProperty.cpp in Sources */,
 				55338AD51BD878BF00EA316F /* StandardMonster.cpp in Sources */,
@@ -972,9 +1038,13 @@
 				55338ADE1BD8925100EA316F /* Warden.cpp in Sources */,
 				ECD10D6E1BD0967B007DD888 /* PopupUILayer.cpp in Sources */,
 				554F00F61BDA219E00F4DF8E /* PickableItem.cpp in Sources */,
+				55F81CD01BDB92CC002EC075 /* PotionsProperty.cpp in Sources */,
 				ECE1B9581BD8E6660035B4D9 /* RolePopUpUI.cpp in Sources */,
 				555B0D171BC51A2C0055FB6D /* Area.cpp in Sources */,
+				55F81CD41BDB92ED002EC075 /* SundriesProperty.cpp in Sources */,
 				551E93F21BD512D3009F788F /* Stream.cpp in Sources */,
+				55F81CB01BDB74EF002EC075 /* KeyProperty.cpp in Sources */,
+				55F81CB41BDB845A002EC075 /* WeaponProperty.cpp in Sources */,
 				EC00DD5F1BD665A6009BC378 /* MenuScene.cpp in Sources */,
 				554F01051BDA3A3100F4DF8E /* SewerLevel.cpp in Sources */,
 				55338ACF1BD8781E00EA316F /* BaseMonster.cpp in Sources */,
@@ -983,7 +1053,6 @@
 				55338AEE1BD892FC00EA316F /* ShadowDragon.cpp in Sources */,
 				551E93C11BD51291009F788F /* ArchiveManager.cpp in Sources */,
 				ECE1B9471BD8AC820035B4D9 /* TGridView.cpp in Sources */,
-				554F00FA1BDA21B100F4DF8E /* BaseItem.cpp in Sources */,
 				553BC50D1BCE5191003D907A /* StandardDoor.cpp in Sources */,
 				555B0D231BC51A2C0055FB6D /* GameScene.cpp in Sources */,
 				554F00EE1BDA210000F4DF8E /* BaseBoss.cpp in Sources */,
@@ -996,6 +1065,8 @@
 				551651C51BD73102004ED7F6 /* RandomDungeon.cpp in Sources */,
 				EC7F92D31BCF9ED200B26C6C /* HueSprite.cpp in Sources */,
 				55ECFB441BC79852007270CD /* Player.cpp in Sources */,
+				55F81CC81BDB928F002EC075 /* MaterialProperty.cpp in Sources */,
+				55F81CCC1BDB92AC002EC075 /* QuestItemProperty.cpp in Sources */,
 				ECD10D701BD0967B007DD888 /* PopupUILayerManager.cpp in Sources */,
 				ECD10D6C1BD0967B007DD888 /* CloseCallback.cpp in Sources */,
 				551E93C51BD51291009F788F /* UserRecord.cpp in Sources */,
@@ -1013,6 +1084,7 @@
 				551E93C81BD51291009F788F /* MonsterProperty.cpp in Sources */,
 				553BC50E1BCE5191003D907A /* StandardDoor.cpp in Sources */,
 				55EC95861BC6ABBA0008D1D7 /* TerrainTile.cpp in Sources */,
+				55F81CC11BDB9257002EC075 /* ScrollProperty.cpp in Sources */,
 				551E93E31BD512D3009F788F /* CCCrypto.cpp in Sources */,
 				EC00DD5C1BD66586009BC378 /* MenuUILayer.cpp in Sources */,
 				EC6716461BCE7F2C00C81CFC /* LogoScene.cpp in Sources */,
@@ -1020,16 +1092,20 @@
 				551E93E51BD512D3009F788F /* libb64.c in Sources */,
 				EC00DD601BD665A6009BC378 /* MenuScene.cpp in Sources */,
 				ECD10D731BD0967B007DD888 /* WrapperUILayer.cpp in Sources */,
+				55F81CB51BDB845A002EC075 /* WeaponProperty.cpp in Sources */,
 				55338AE31BD8926A00EA316F /* SkeletonKing.cpp in Sources */,
 				55338ADB1BD8921000EA316F /* SlimeKing.cpp in Sources */,
 				551651C61BD73102004ED7F6 /* RandomDungeon.cpp in Sources */,
 				55338AD01BD8781E00EA316F /* BaseMonster.cpp in Sources */,
 				551E93AC1BD51282009F788F /* ChaosNumber.cpp in Sources */,
 				EC00DD5A1BD66586009BC378 /* GameUILayer.cpp in Sources */,
+				55F81CCD1BDB92AC002EC075 /* QuestItemProperty.cpp in Sources */,
 				553BC50A1BCE499B003D907A /* BaseDoor.cpp in Sources */,
 				55407D581BD5E2BC0000C41C /* GameFormula.cpp in Sources */,
 				555B0D261BC51A2C0055FB6D /* VoxelExplorer.cpp in Sources */,
 				551E93EB1BD512D3009F788F /* xor.cpp in Sources */,
+				55F81CC91BDB928F002EC075 /* MaterialProperty.cpp in Sources */,
+				55F81CD51BDB92ED002EC075 /* SundriesProperty.cpp in Sources */,
 				555B0D181BC51A2C0055FB6D /* Area.cpp in Sources */,
 				EC7F92D41BCF9ED200B26C6C /* HueSprite.cpp in Sources */,
 				551E93EF1BD512D3009F788F /* FileStream.cpp in Sources */,
@@ -1038,31 +1114,35 @@
 				551E93AA1BD51282009F788F /* AlisaMethod.cpp in Sources */,
 				555B0D1A1BC51A2C0055FB6D /* BaseLevel.cpp in Sources */,
 				555B0D161BC51A2C0055FB6D /* AppDelegate.cpp in Sources */,
+				55F81CAD1BDB69FB002EC075 /* PickableItemProperty.cpp in Sources */,
 				553BC5021BCDF457003D907A /* Actor.cpp in Sources */,
 				551E93C21BD51291009F788F /* ArchiveManager.cpp in Sources */,
 				554F00F71BDA219E00F4DF8E /* PickableItem.cpp in Sources */,
+				55F81CB11BDB74EF002EC075 /* KeyProperty.cpp in Sources */,
 				55ECFB451BC79852007270CD /* Player.cpp in Sources */,
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
 				ECD10D711BD0967B007DD888 /* PopupUILayerManager.cpp in Sources */,
 				551E93F31BD512D3009F788F /* Stream.cpp in Sources */,
 				551E93C41BD51291009F788F /* LevelResourceManager.cpp in Sources */,
-				554F00FB1BDA21B100F4DF8E /* BaseItem.cpp in Sources */,
 				ECE1B9591BD8E6660035B4D9 /* RolePopUpUI.cpp in Sources */,
 				555B0D1E1BC51A2C0055FB6D /* Graph.cpp in Sources */,
 				554F01061BDA3A3100F4DF8E /* SewerLevel.cpp in Sources */,
-				55407D651BD64F450000C41C /* ItemProperty.cpp in Sources */,
 				554F00EF1BDA210000F4DF8E /* BaseBoss.cpp in Sources */,
 				551E93B21BD51282009F788F /* UtilityHelper.cpp in Sources */,
+				55F81CD11BDB92CC002EC075 /* PotionsProperty.cpp in Sources */,
 				555B0D241BC51A2C0055FB6D /* GameScene.cpp in Sources */,
 				ECE1B9481BD8AC820035B4D9 /* TGridView.cpp in Sources */,
 				551E93CC1BD51291009F788F /* PlayerProperty.cpp in Sources */,
 				551E93ED1BD512D3009F788F /* XXTEA.cpp in Sources */,
 				551E93E71BD512D3009F788F /* md5.c in Sources */,
 				ECD10D6F1BD0967B007DD888 /* PopupUILayer.cpp in Sources */,
+				55F81CA21BDB208D002EC075 /* UseableItem.cpp in Sources */,
 				555B0D1C1BC51A2C0055FB6D /* Door.cpp in Sources */,
 				55338AEF1BD892FC00EA316F /* ShadowDragon.cpp in Sources */,
 				55338AE71BD8928E00EA316F /* Giant.cpp in Sources */,
+				55F81CB91BDB8B81002EC075 /* ArmorProperty.cpp in Sources */,
 				ECD10D6D1BD0967B007DD888 /* CloseCallback.cpp in Sources */,
+				55F81CBD1BDB923A002EC075 /* MagicOrnamentProperty.cpp in Sources */,
 				551E93B01BD51282009F788F /* NativeBridge.mm in Sources */,
 				551E93E91BD512D3009F788F /* sha1.cpp in Sources */,
 				55338AD61BD878BF00EA316F /* StandardMonster.cpp in Sources */,
