@@ -11,6 +11,7 @@
 #include "EventConst.h"
 #include "KeyProperty.hpp"
 #include "WeaponProperty.hpp"
+#include "SecondWeaponProperty.hpp"
 #include "ArmorProperty.hpp"
 #include "MagicOrnamentProperty.hpp"
 #include "ScrollProperty.hpp"
@@ -42,18 +43,20 @@ PlayerProperty::PlayerProperty()
     m_nMaxMP                = 30;               ///最大魔法值
     m_nCurrentHP            = 30;               ///当前生命值
     m_nCurrentMP            = 30;               ///当前魔法值
-    m_nAddedMinAttack       = 0;                ///额外最小攻击增加值
-    m_nAddedMaxAttack       = 0;                ///额外最大攻击增加值
-    m_nAttackDiceNum        = 1;                ///攻击骰子数
-    m_nAttackDiceFaceNum    = 4;                ///攻击骰子面数
+    m_nAddedMinAttack       = 1;                ///额外最小攻击增加值
+    m_nAddedMaxAttack       = 4;                ///额外最大攻击增加值
+    m_nAttackDiceNum        = 0;                ///攻击骰子数
+    m_nAttackDiceFaceNum    = 0;                ///攻击骰子面数
     m_nArmorClass           = 4;                ///防御等级
     m_nBaseArmorClass       = 4;                ///基础防御等级
     m_fBlockRate            = 0.01f;            ///格挡率
     m_fCriticalStrikeRate   = 0.01f;            ///暴击率
     m_fDodgeRate            = 0.02f;            ///闪避率
-    m_fMagicItemFindRate    = 0.2f;             ///魔法物品获得率
+    m_fBasicMagicItemFindRate = 0.2f;           ///基本魔法取得率
+    m_fMagicItemFindRate    = 0.0f;             ///魔法物品获得率
     
     m_nEquipedWeaponID      = -1;               ///装备了武器ID
+    m_nEquipedSecondWeaponID= -1;               ///装备了副手武器ID
     m_nEquipedArmorID       = -1;               ///装备了护甲ID
     m_nEquipedOrnamentsID   = -1;               ///装备了饰品ID
     
@@ -70,8 +73,8 @@ void PlayerProperty::update(float delta)
 {
     if(m_bDirty)
     {
-        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_PROPERTY_DIRTY);
         m_bDirty = false;
+        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_PROPERTY_DIRTY);
     }
 }
 CChaosNumber PlayerProperty::getMinAttack()
@@ -151,28 +154,249 @@ void PlayerProperty::setCurrentMP(CChaosNumber mp)
     
     m_bDirty = true;
 }
-void PlayerProperty::EquipWeapon(CChaosNumber id)
+bool PlayerProperty::EquipWeapon(CChaosNumber id)
 {
     WeaponProperty* weaponProperty = static_cast<WeaponProperty*>(getItemFromBag(id));
     if(weaponProperty)
     {
-        ///处理属性
+        ///检查是否可装备
+        if(weaponProperty->hasEquiped() || weaponProperty->getLevel() > m_nLevel)
+            return false;
+        ///卸载旧武器
+        WeaponProperty* oldWeaponProperty = static_cast<WeaponProperty*>(getItemFromBag(m_nEquipedWeaponID));
+        if(oldWeaponProperty)
+        {
+            ///检测旧装备是否可卸载
+            if(!oldWeaponProperty->hasEquiped() || oldWeaponProperty->isCursed())
+                return false;
+            m_nLightDistance = m_nLightDistance - oldWeaponProperty->getAddedLightDistance().GetLongValue();
+            m_nLightDistance = MAX(m_nLightDistance.GetLongValue(), 3);
+            m_nSearchDistance = m_nSearchDistance - oldWeaponProperty->getAddedSearchDistance().GetLongValue();
+            m_nSearchDistance = MAX(m_nSearchDistance.GetLongValue(), 1);
+            m_nMaxHP = m_nMaxHP - oldWeaponProperty->getAddedMaxHp().GetLongValue();
+            m_nMaxHP = MAX(m_nMaxHP.GetLongValue(), 30);
+            m_nMaxMP = m_nMaxMP - oldWeaponProperty->getAddedMaxMp().GetLongValue();
+            m_nMaxMP = MAX(m_nMaxMP.GetLongValue(), 30);
+            m_nCurrentHP = MIN(m_nCurrentHP, m_nMaxHP);
+            m_nCurrentMP = MIN(m_nCurrentMP, m_nMaxMP);
+            m_nAddedMinAttack = m_nAddedMinAttack - oldWeaponProperty->getAddedMinAttack().GetLongValue();
+            m_nAddedMinAttack = MAX(0, m_nAddedMinAttack.GetLongValue());
+            m_nAddedMaxAttack = m_nAddedMaxAttack - oldWeaponProperty->getAddedMaxAttack().GetLongValue();
+            m_nAddedMaxAttack = MAX(0, m_nAddedMaxAttack.GetLongValue());
+            m_nAttackDiceNum = 0;
+            m_nAttackDiceFaceNum = 0;
+            m_fCriticalStrikeRate = m_fCriticalStrikeRate - oldWeaponProperty->getAddedCriticalStrikeRate().GetFloatValue();
+            m_fCriticalStrikeRate = MAX(0, m_fCriticalStrikeRate.GetFloatValue());
+            m_fMagicItemFindRate = m_fMagicItemFindRate -(m_fBasicMagicItemFindRate + m_fBasicMagicItemFindRate*weaponProperty->getAddedMagicItemFindRate().GetFloatValue());
+            m_fMagicItemFindRate = MAX(0, m_fBasicMagicItemFindRate.GetFloatValue());
+        }
         m_nEquipedWeaponID = id;
+        
+        ///装备新武器
+        m_nLightDistance = m_nLightDistance + weaponProperty->getAddedLightDistance().GetLongValue();
+        m_nSearchDistance = m_nSearchDistance + weaponProperty->getAddedSearchDistance().GetLongValue();
+        m_nMaxHP = m_nMaxHP + weaponProperty->getAddedMaxHp().GetLongValue();
+        m_nMaxMP = m_nMaxMP + weaponProperty->getAddedMaxMp().GetLongValue();
+        m_nCurrentHP = MIN(m_nCurrentHP, m_nMaxHP);
+        m_nCurrentMP = MIN(m_nCurrentMP, m_nMaxMP);
+        m_nAddedMinAttack = m_nAddedMinAttack + weaponProperty->getAddedMinAttack().GetLongValue();
+        m_nAddedMaxAttack = m_nAddedMaxAttack + weaponProperty->getAddedMaxAttack().GetLongValue();
+        m_nAttackDiceNum = weaponProperty->getAttackDiceNum().GetLongValue();
+        m_nAttackDiceFaceNum = weaponProperty->getAttackDiceFaceNum().GetLongValue();
+        m_fCriticalStrikeRate = m_fCriticalStrikeRate + weaponProperty->getAddedCriticalStrikeRate().GetFloatValue();
+        m_fMagicItemFindRate = m_fMagicItemFindRate + (m_fBasicMagicItemFindRate + m_fBasicMagicItemFindRate*weaponProperty->getAddedMagicItemFindRate().GetFloatValue());
+        
         m_bDirty = true;
-        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_EQUIPED_WEAPON);
+        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_EQUIPED_WEAPON, &m_nEquipedWeaponID);
     }
+    return true;
 }
-void PlayerProperty::EquipArmor(CChaosNumber id)
+bool PlayerProperty::EquipSecondWeapon(CChaosNumber id)
 {
-    m_nEquipedArmorID = id;
-    m_bDirty = true;
-    Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_EQUIPED_ARMOR);
+    SecondWeaponProperty* secondWeaponProperty = static_cast<SecondWeaponProperty*>(getItemFromBag(id));
+    if(secondWeaponProperty)
+    {
+        ///检查是否可装备
+        if(secondWeaponProperty->hasEquiped() || secondWeaponProperty->getLevel() > m_nLevel)
+            return false;
+        ///卸载旧武器
+        SecondWeaponProperty* oldSecondWeaponProperty = static_cast<SecondWeaponProperty*>(getItemFromBag(m_nEquipedSecondWeaponID));
+        if(oldSecondWeaponProperty)
+        {
+            ///检测旧装备是否可卸载
+            if(!oldSecondWeaponProperty->hasEquiped() || oldSecondWeaponProperty->isCursed())
+                return false;
+            m_nLightDistance = m_nLightDistance - oldSecondWeaponProperty->getAddedLightDistance().GetLongValue();
+            m_nLightDistance = MAX(m_nLightDistance.GetLongValue(), 3);
+            m_nSearchDistance = m_nSearchDistance - oldSecondWeaponProperty->getAddedSearchDistance().GetLongValue();
+            m_nSearchDistance = MAX(m_nSearchDistance.GetLongValue(), 1);
+            m_nMaxHP = m_nMaxHP - oldSecondWeaponProperty->getAddedMaxHp().GetLongValue();
+            m_nMaxHP = MAX(m_nMaxHP.GetLongValue(), 30);
+            m_nMaxMP = m_nMaxMP - oldSecondWeaponProperty->getAddedMaxMp().GetLongValue();
+            m_nMaxMP = MAX(m_nMaxMP.GetLongValue(), 30);
+            m_nCurrentHP = MIN(m_nCurrentHP, m_nMaxHP);
+            m_nCurrentMP = MIN(m_nCurrentMP, m_nMaxMP);
+            m_nAddedMinAttack = m_nAddedMinAttack - oldSecondWeaponProperty->getAddedMinAttack().GetLongValue();
+            m_nAddedMinAttack = MAX(0, m_nAddedMinAttack.GetLongValue());
+            m_nAddedMaxAttack = m_nAddedMaxAttack - oldSecondWeaponProperty->getAddedMaxAttack().GetLongValue();
+            m_nAddedMaxAttack = MAX(0, m_nAddedMaxAttack.GetLongValue());
+            
+            m_nArmorClass = m_nArmorClass - oldSecondWeaponProperty->getAddedArmorClass().GetLongValue();
+            m_nArmorClass = MIN(m_nBaseArmorClass.GetLongValue(), m_nArmorClass.GetLongValue());
+            
+            m_fBlockRate = m_fBlockRate - oldSecondWeaponProperty->getAddedBlockRate().GetFloatValue();
+            m_fBlockRate = MAX(0, m_fBlockRate.GetFloatValue());
+            m_fCriticalStrikeRate = m_fCriticalStrikeRate - oldSecondWeaponProperty->getAddedCriticalStrikeRate().GetFloatValue();
+            m_fCriticalStrikeRate = MAX(0, m_fCriticalStrikeRate.GetFloatValue());
+            m_fDodgeRate = m_fDodgeRate - oldSecondWeaponProperty->getAddedDodgeRate().GetFloatValue();
+            m_fDodgeRate = MAX(0, m_fDodgeRate.GetFloatValue());
+            m_fMagicItemFindRate = m_fMagicItemFindRate -(m_fBasicMagicItemFindRate + m_fBasicMagicItemFindRate*oldSecondWeaponProperty->getAddedMagicItemFindRate().GetFloatValue());
+            m_fMagicItemFindRate = MAX(0, m_fBasicMagicItemFindRate.GetFloatValue());
+        }
+        m_nEquipedSecondWeaponID = id;
+        
+        ///装备新武器
+        m_nLightDistance = m_nLightDistance + secondWeaponProperty->getAddedLightDistance().GetLongValue();
+        m_nSearchDistance = m_nSearchDistance + secondWeaponProperty->getAddedSearchDistance().GetLongValue();
+        m_nMaxHP = m_nMaxHP + secondWeaponProperty->getAddedMaxHp().GetLongValue();
+        m_nMaxMP = m_nMaxMP + secondWeaponProperty->getAddedMaxMp().GetLongValue();
+        m_nAddedMinAttack = m_nAddedMinAttack + secondWeaponProperty->getAddedMinAttack().GetLongValue();
+        m_nAddedMaxAttack = m_nAddedMaxAttack + secondWeaponProperty->getAddedMaxAttack().GetLongValue();
+
+        m_nArmorClass = m_nArmorClass + secondWeaponProperty->getAddedArmorClass().GetLongValue();
+        
+        m_fBlockRate = m_fBlockRate + secondWeaponProperty->getAddedBlockRate().GetFloatValue();
+        m_fCriticalStrikeRate = m_fCriticalStrikeRate + secondWeaponProperty->getAddedCriticalStrikeRate().GetFloatValue();
+        m_fDodgeRate = m_fDodgeRate + secondWeaponProperty->getAddedDodgeRate().GetFloatValue();
+        
+        m_fMagicItemFindRate = m_fMagicItemFindRate + (m_fBasicMagicItemFindRate + m_fBasicMagicItemFindRate*secondWeaponProperty->getAddedMagicItemFindRate().GetFloatValue());
+
+        
+        m_bDirty = true;
+        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_EQUIPED_WEAPON, &m_nEquipedWeaponID);
+    }
+    return true;
 }
-void PlayerProperty::EquipOrnaments(CChaosNumber id)
+bool PlayerProperty::EquipArmor(CChaosNumber id)
 {
-    m_nEquipedOrnamentsID = id;
-    m_bDirty = true;
-    Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_EQUIPED_ORNAMENTS);
+    ArmorProperty* armorProperty = static_cast<ArmorProperty*>(getItemFromBag(id));
+    if(armorProperty)
+    {
+        ///检查是否可装备
+        if(armorProperty->hasEquiped() || armorProperty->getLevel() > m_nLevel)
+            return false;
+        ///卸载旧护具
+        ArmorProperty* oldArmorProperty = static_cast<ArmorProperty*>(getItemFromBag(m_nEquipedArmorID));
+        if(oldArmorProperty)
+        {
+            ///检测旧装备是否可卸载
+            if(!armorProperty->hasEquiped() || oldArmorProperty->isCursed())
+                return false;
+            m_nLightDistance = m_nLightDistance - oldArmorProperty->getAddedLightDistance().GetLongValue();
+            m_nLightDistance = MAX(m_nLightDistance.GetLongValue(), 3);
+            m_nSearchDistance = m_nSearchDistance - oldArmorProperty->getAddedSearchDistance().GetLongValue();
+            m_nSearchDistance = MAX(m_nSearchDistance.GetLongValue(), 1);
+            m_nMaxHP = m_nMaxHP - oldArmorProperty->getAddedMaxHp().GetLongValue();
+            m_nMaxHP = MAX(m_nMaxHP.GetLongValue(), 30);
+            m_nMaxMP = m_nMaxMP - oldArmorProperty->getAddedMaxMp().GetLongValue();
+            m_nMaxMP = MAX(m_nMaxMP.GetLongValue(), 30);
+            m_nCurrentHP = MIN(m_nCurrentHP, m_nMaxHP);
+            m_nCurrentMP = MIN(m_nCurrentMP, m_nMaxMP);
+            
+            m_nArmorClass = m_nArmorClass - oldArmorProperty->getAddedArmorClass().GetLongValue();
+            m_nArmorClass = MIN(m_nBaseArmorClass.GetLongValue(), m_nArmorClass.GetLongValue());
+            
+            m_fDodgeRate = m_fDodgeRate - oldArmorProperty->getAddedDodgeRate().GetFloatValue();
+            m_fDodgeRate = MIN(0, m_fDodgeRate.GetFloatValue());
+            
+            m_fMagicItemFindRate = m_fMagicItemFindRate -(m_fBasicMagicItemFindRate + m_fBasicMagicItemFindRate*oldArmorProperty->getAddedMagicItemFindRate().GetFloatValue());
+            m_fMagicItemFindRate = MAX(0, m_fBasicMagicItemFindRate.GetFloatValue());
+        }
+        
+        m_nEquipedArmorID = id;
+        
+        ///装备新护具
+        m_nLightDistance = m_nLightDistance + armorProperty->getAddedLightDistance().GetLongValue();
+        m_nSearchDistance = m_nSearchDistance + armorProperty->getAddedSearchDistance().GetLongValue();
+        m_nMaxHP = m_nMaxHP + armorProperty->getAddedMaxHp().GetLongValue();
+        m_nMaxMP = m_nMaxMP + armorProperty->getAddedMaxMp().GetLongValue();
+        m_nCurrentHP = MIN(m_nCurrentHP, m_nMaxHP);
+        m_nCurrentMP = MIN(m_nCurrentMP, m_nMaxMP);
+
+        m_nArmorClass = m_nArmorClass + armorProperty->getAddedDodgeRate().GetFloatValue();
+        m_fDodgeRate = m_fDodgeRate + armorProperty->getAddedDodgeRate().GetFloatValue();
+        
+        m_fMagicItemFindRate = m_fMagicItemFindRate + (m_fBasicMagicItemFindRate + m_fBasicMagicItemFindRate*armorProperty->getAddedMagicItemFindRate().GetFloatValue());
+
+        m_bDirty = true;
+        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_EQUIPED_ARMOR, &m_nEquipedArmorID);
+    }
+    return true;
+}
+bool PlayerProperty::EquipOrnaments(CChaosNumber id)
+{
+    MagicOrnamentProperty* magicOrnamentProperty = static_cast<MagicOrnamentProperty*>(getItemFromBag(id));
+    if(magicOrnamentProperty)
+    {
+        ///检查是否可装备
+        if(magicOrnamentProperty->hasEquiped() || magicOrnamentProperty->getLevel() > m_nLevel)
+            return false;
+        ///卸载旧饰品
+        SecondWeaponProperty* oldMagicOrnamentProperty = static_cast<SecondWeaponProperty*>(getItemFromBag(m_nEquipedSecondWeaponID));
+        if(oldMagicOrnamentProperty)
+        {
+            ///检测旧装备是否可卸载
+            if(!oldMagicOrnamentProperty->hasEquiped() || oldMagicOrnamentProperty->isCursed())
+                return false;
+            m_nLightDistance = m_nLightDistance - oldMagicOrnamentProperty->getAddedLightDistance().GetLongValue();
+            m_nLightDistance = MAX(m_nLightDistance.GetLongValue(), 3);
+            m_nSearchDistance = m_nSearchDistance - oldMagicOrnamentProperty->getAddedSearchDistance().GetLongValue();
+            m_nSearchDistance = MAX(m_nSearchDistance.GetLongValue(), 1);
+            m_nMaxHP = m_nMaxHP - oldMagicOrnamentProperty->getAddedMaxHp().GetLongValue();
+            m_nMaxHP = MAX(m_nMaxHP.GetLongValue(), 30);
+            m_nMaxMP = m_nMaxMP - oldMagicOrnamentProperty->getAddedMaxMp().GetLongValue();
+            m_nMaxMP = MAX(m_nMaxMP.GetLongValue(), 30);
+            m_nCurrentHP = MIN(m_nCurrentHP, m_nMaxHP);
+            m_nCurrentMP = MIN(m_nCurrentMP, m_nMaxMP);
+            m_nAddedMinAttack = m_nAddedMinAttack - oldMagicOrnamentProperty->getAddedMinAttack().GetLongValue();
+            m_nAddedMinAttack = MAX(0, m_nAddedMinAttack.GetLongValue());
+            m_nAddedMaxAttack = m_nAddedMaxAttack - oldMagicOrnamentProperty->getAddedMaxAttack().GetLongValue();
+            m_nAddedMaxAttack = MAX(0, m_nAddedMaxAttack.GetLongValue());
+            
+            m_nArmorClass = m_nArmorClass - oldMagicOrnamentProperty->getAddedArmorClass().GetLongValue();
+            m_nArmorClass = MIN(m_nBaseArmorClass.GetLongValue(), m_nArmorClass.GetLongValue());
+            
+            m_fBlockRate = m_fBlockRate - oldMagicOrnamentProperty->getAddedBlockRate().GetFloatValue();
+            m_fBlockRate = MAX(0, m_fBlockRate.GetFloatValue());
+            m_fCriticalStrikeRate = m_fCriticalStrikeRate - oldMagicOrnamentProperty->getAddedCriticalStrikeRate().GetFloatValue();
+            m_fCriticalStrikeRate = MAX(0, m_fCriticalStrikeRate.GetFloatValue());
+            m_fDodgeRate = m_fDodgeRate - oldMagicOrnamentProperty->getAddedDodgeRate().GetFloatValue();
+            m_fDodgeRate = MAX(0, m_fDodgeRate.GetFloatValue());
+            m_fMagicItemFindRate = m_fMagicItemFindRate -(m_fBasicMagicItemFindRate + m_fBasicMagicItemFindRate*oldMagicOrnamentProperty->getAddedMagicItemFindRate().GetFloatValue());
+            m_fMagicItemFindRate = MAX(0, m_fBasicMagicItemFindRate.GetFloatValue());
+        }
+        m_nEquipedOrnamentsID = id;
+        
+        ///装备新饰品
+        m_nLightDistance = m_nLightDistance + oldMagicOrnamentProperty->getAddedLightDistance().GetLongValue();
+        m_nSearchDistance = m_nSearchDistance + oldMagicOrnamentProperty->getAddedSearchDistance().GetLongValue();
+        m_nMaxHP = m_nMaxHP + oldMagicOrnamentProperty->getAddedMaxHp().GetLongValue();
+        m_nMaxMP = m_nMaxMP + oldMagicOrnamentProperty->getAddedMaxMp().GetLongValue();
+        m_nAddedMinAttack = m_nAddedMinAttack + oldMagicOrnamentProperty->getAddedMinAttack().GetLongValue();
+        m_nAddedMaxAttack = m_nAddedMaxAttack + oldMagicOrnamentProperty->getAddedMaxAttack().GetLongValue();
+        
+        m_nArmorClass = m_nArmorClass + oldMagicOrnamentProperty->getAddedArmorClass().GetLongValue();
+        
+        m_fBlockRate = m_fBlockRate + oldMagicOrnamentProperty->getAddedBlockRate().GetFloatValue();
+        m_fCriticalStrikeRate = m_fCriticalStrikeRate + oldMagicOrnamentProperty->getAddedCriticalStrikeRate().GetFloatValue();
+        m_fDodgeRate = m_fDodgeRate + oldMagicOrnamentProperty->getAddedDodgeRate().GetFloatValue();
+        
+        m_fMagicItemFindRate = m_fMagicItemFindRate + (m_fBasicMagicItemFindRate + m_fBasicMagicItemFindRate*oldMagicOrnamentProperty->getAddedMagicItemFindRate().GetFloatValue());
+        
+        m_bDirty = true;
+        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_EQUIPED_ORNAMENTS, &m_nEquipedOrnamentsID);
+    }
+    return true;
 }
 void PlayerProperty::addItemToBag(PickableItem::PickableItemType type)
 {
@@ -184,8 +408,12 @@ void PlayerProperty::addItemToBag(PickableItem::PickableItemType type)
     PickableItemProperty* itemProperty = nullptr;
     if(type > PickableItem::PIT_KEY_BEGIN && type < PickableItem::PIT_KEY_END)
         itemProperty = new (std::nothrow) KeyProperty(m_snItemInstanceIDCounter++,type);
-    else if (type > PickableItem::PIT_DAGGER_BEGIN && type < PickableItem::PIT_DAGGER_END)
+    else if (type > PickableItem::PIT_DAGGER_BEGIN && type < PickableItem::PIT_MACE_PRO_END)
         itemProperty = new (std::nothrow) WeaponProperty(m_snItemInstanceIDCounter++,type, true);
+    else if (type > PickableItem::PIT_BOW_BEGIN && type < PickableItem::PIT_SHIELD_PRO_END)
+        itemProperty = new (std::nothrow) SecondWeaponProperty(m_snItemInstanceIDCounter++,type,true);
+    else if(type > PickableItem::PIT_CLOTH_BEGIN && type < PickableItem::PIT_CLOTH_PRO_END)
+        itemProperty = new (std::nothrow) ArmorProperty(m_snItemInstanceIDCounter++,type, true);
     if(itemProperty)
     {
         itemProperty->adjustByDC();

@@ -19,6 +19,7 @@ public:
     typedef enum{
         PIPT_KEY = 0,               ///钥匙
         PIPT_WEAPON,                ///武器
+        PIPT_SECOND_WEAPON,         ///副手武器
         PIPT_ARMOR,                 ///护甲
         PIPT_MAGIC_ORNAMENT,        ///饰品
         PIPT_SCROLL,                ///卷轴
@@ -43,6 +44,7 @@ public:
     bool isEquipable() const { return m_bEquipable; }
     bool isCombinable() const { return m_bCombinable; }
     bool isDiscardable() const { return m_bDiscardable; }
+    bool isCursed() const { return m_bCursed; }
 protected:
     PickableItemProperty(unsigned int instanceID, PickableItem::PickableItemType type);
 
@@ -63,6 +65,7 @@ protected:
     bool                            m_bEquipable;           ///是否可被装备
     bool                            m_bCombinable;          ///是否可组合的
     bool                            m_bDiscardable;         ///是否可被丢弃的
+    bool                            m_bCursed;              ///被诅咒的(被诅咒的装备不能卸载下)
 };
 
 #endif /* PickableItemProperty_hpp */

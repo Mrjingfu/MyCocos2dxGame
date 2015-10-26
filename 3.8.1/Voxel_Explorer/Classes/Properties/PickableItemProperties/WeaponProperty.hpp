@@ -20,10 +20,10 @@ public:
     bool hasEquiped() const { return m_bHasEquiped; }
     void setEquiped(bool equiped) { m_bHasEquiped = equiped; }
     
-    CChaosNumber getLightDistance() const { return m_nLightDistance; }
-    CChaosNumber getSearchDistance() const { return m_nSearchDistance; }
-    CChaosNumber getMaxHp() const { return m_nMaxHP; }
-    CChaosNumber getMaxMp() const { return m_nMaxMP; }
+    CChaosNumber getAddedLightDistance() const { return m_nAddedLightDistance; }
+    CChaosNumber getAddedSearchDistance() const { return m_nAddedSearchDistance; }
+    CChaosNumber getAddedMaxHp() const { return m_nAddedMaxHP; }
+    CChaosNumber getAddedMaxMp() const { return m_nAddedMaxMP; }
     
     CChaosNumber getMinAttack();
     CChaosNumber getMaxAttack();
@@ -34,21 +34,25 @@ public:
     CChaosNumber getAttackDiceNum() const { return m_nAttackDiceNum; }
     CChaosNumber getAttackDiceFaceNum() const { return m_nAttackDiceFaceNum; }
     
-    CChaosNumber getCriticalStrikeRate() const { return m_fCriticalStrikeRate; }
+    CChaosNumber getAddedCriticalStrikeRate() const { return m_fAddedCriticalStrikeRate; }
+    
+    CChaosNumber getAddedMagicItemFindRate() const { return m_fAddedMagicItemFindRate; }
 private:
     bool            m_bHasEquiped;
     
-    CChaosNumber    m_nLightDistance;       ///光照范围
-    CChaosNumber    m_nSearchDistance;      ///侦查范围
-    CChaosNumber    m_nMaxHP;               ///最大生命值
-    CChaosNumber    m_nMaxMP;               ///最大魔法值
+    CChaosNumber    m_nAddedLightDistance;       ///光照范围
+    CChaosNumber    m_nAddedSearchDistance;      ///侦查范围
+    CChaosNumber    m_nAddedMaxHP;               ///最大生命值
+    CChaosNumber    m_nAddedMaxMP;               ///最大魔法值
 
     CChaosNumber    m_nAddedMinAttack;      ///额外最小攻击增加值
     CChaosNumber    m_nAddedMaxAttack;      ///额外最大攻击增加值
     CChaosNumber    m_nAttackDiceNum;       ///攻击骰子数
     CChaosNumber    m_nAttackDiceFaceNum;   ///攻击骰子面数
 
-    CChaosNumber    m_fCriticalStrikeRate;  ///暴击率
+    CChaosNumber    m_fAddedCriticalStrikeRate;  ///暴击率
+    
+    CChaosNumber    m_fAddedMagicItemFindRate;  ///附加取魔率
 };
 
 #endif /* WeaponProperty_hpp */

@@ -56,9 +56,10 @@ public:
     void setExp(CChaosNumber exp);
     void setCurrentHP(CChaosNumber hp);
     void setCurrentMP(CChaosNumber mp);
-    void EquipWeapon(CChaosNumber id);
-    void EquipArmor(CChaosNumber id);
-    void EquipOrnaments(CChaosNumber id);
+    bool EquipWeapon(CChaosNumber id);
+    bool EquipSecondWeapon(CChaosNumber id);
+    bool EquipArmor(CChaosNumber id);
+    bool EquipOrnaments(CChaosNumber id);
     
     void addItemToBag(PickableItem::PickableItemType type);
     void removeItemFromBag(CChaosNumber id);
@@ -91,9 +92,11 @@ private:
     CChaosNumber    m_fBlockRate;           ///格挡率
     CChaosNumber    m_fCriticalStrikeRate;  ///暴击率
     CChaosNumber    m_fDodgeRate;           ///闪避率
+    CChaosNumber    m_fBasicMagicItemFindRate;   ///基本魔法取得率
     CChaosNumber    m_fMagicItemFindRate;   ///魔法取得率
     
     CChaosNumber            m_nEquipedWeaponID;       ///装备了武器ID
+    CChaosNumber            m_nEquipedSecondWeaponID; ///装备了副手武器ID
     CChaosNumber            m_nEquipedArmorID;        ///装备了护甲ID
     CChaosNumber            m_nEquipedOrnamentsID;    ///装备了饰品ID
     

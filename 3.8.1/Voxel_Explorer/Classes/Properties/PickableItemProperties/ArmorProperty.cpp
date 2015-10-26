@@ -29,7 +29,7 @@ void ArmorProperty::handleIdentify()
     if(m_bIdentified)
         return;
 }
-CChaosNumber ArmorProperty::getDefense()
+CChaosNumber ArmorProperty::getAddedDefense()
 {
-    return -m_nArmorClass.GetLongValue();
+    return -m_nAddedArmorClass.GetLongValue();
 }

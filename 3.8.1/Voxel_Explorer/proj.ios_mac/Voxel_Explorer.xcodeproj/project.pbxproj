@@ -47,6 +47,8 @@
 		521A8EA919F11F5000D177D7 /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = 521A8EA819F11F5000D177D7 /* fonts */; };
 		521A8EAA19F11F5000D177D7 /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = 521A8EA819F11F5000D177D7 /* fonts */; };
 		52B47A471A53D09C004E4C60 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B47A461A53D09B004E4C60 /* Security.framework */; };
+		550C32EC1BDDE8740015124E /* SecondWeaponProperty.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 550C32EA1BDDE8740015124E /* SecondWeaponProperty.cpp */; settings = {ASSET_TAGS = (); }; };
+		550C32ED1BDDE8740015124E /* SecondWeaponProperty.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 550C32EA1BDDE8740015124E /* SecondWeaponProperty.cpp */; settings = {ASSET_TAGS = (); }; };
 		551651C51BD73102004ED7F6 /* RandomDungeon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 551651C31BD73102004ED7F6 /* RandomDungeon.cpp */; settings = {ASSET_TAGS = (); }; };
 		551651C61BD73102004ED7F6 /* RandomDungeon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 551651C31BD73102004ED7F6 /* RandomDungeon.cpp */; settings = {ASSET_TAGS = (); }; };
 		551E93A91BD51282009F788F /* AlisaMethod.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 551E93A01BD51282009F788F /* AlisaMethod.cpp */; settings = {ASSET_TAGS = (); }; };
@@ -263,6 +265,8 @@
 		521A8E6319F0C34300D177D7 /* Default-736h@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-736h@3x.png"; sourceTree = "<group>"; };
 		521A8EA819F11F5000D177D7 /* fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = fonts; sourceTree = "<group>"; };
 		52B47A461A53D09B004E4C60 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.1.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
+		550C32EA1BDDE8740015124E /* SecondWeaponProperty.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SecondWeaponProperty.cpp; sourceTree = "<group>"; };
+		550C32EB1BDDE8740015124E /* SecondWeaponProperty.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SecondWeaponProperty.hpp; sourceTree = "<group>"; };
 		551651C31BD73102004ED7F6 /* RandomDungeon.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RandomDungeon.cpp; sourceTree = "<group>"; };
 		551651C41BD73102004ED7F6 /* RandomDungeon.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = RandomDungeon.hpp; sourceTree = "<group>"; };
 		551E93A01BD51282009F788F /* AlisaMethod.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AlisaMethod.cpp; sourceTree = "<group>"; };
@@ -820,6 +824,8 @@
 				55F81CCF1BDB92CC002EC075 /* PotionsProperty.hpp */,
 				55F81CD21BDB92ED002EC075 /* SundriesProperty.cpp */,
 				55F81CD31BDB92ED002EC075 /* SundriesProperty.hpp */,
+				550C32EA1BDDE8740015124E /* SecondWeaponProperty.cpp */,
+				550C32EB1BDDE8740015124E /* SecondWeaponProperty.hpp */,
 			);
 			path = PickableItemProperties;
 			sourceTree = "<group>";
@@ -1057,6 +1063,7 @@
 				55338ACF1BD8781E00EA316F /* BaseMonster.cpp in Sources */,
 				555B0D1B1BC51A2C0055FB6D /* Door.cpp in Sources */,
 				551E93E41BD512D3009F788F /* libb64.c in Sources */,
+				550C32EC1BDDE8740015124E /* SecondWeaponProperty.cpp in Sources */,
 				55338AEE1BD892FC00EA316F /* ShadowDragon.cpp in Sources */,
 				551E93C11BD51291009F788F /* ArchiveManager.cpp in Sources */,
 				ECE1B9471BD8AC820035B4D9 /* TGridView.cpp in Sources */,
@@ -1150,6 +1157,7 @@
 				55338AE71BD8928E00EA316F /* Giant.cpp in Sources */,
 				55F81CB91BDB8B81002EC075 /* ArmorProperty.cpp in Sources */,
 				ECD10D6D1BD0967B007DD888 /* CloseCallback.cpp in Sources */,
+				550C32ED1BDDE8740015124E /* SecondWeaponProperty.cpp in Sources */,
 				55F81CBD1BDB923A002EC075 /* MagicOrnamentProperty.cpp in Sources */,
 				551E93B01BD51282009F788F /* NativeBridge.mm in Sources */,
 				551E93E91BD512D3009F788F /* sha1.cpp in Sources */,

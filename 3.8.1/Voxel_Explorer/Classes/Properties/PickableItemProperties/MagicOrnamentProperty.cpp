@@ -21,3 +21,16 @@ MagicOrnamentProperty::MagicOrnamentProperty(unsigned int instanceID, PickableIt
     
     m_bHasEquiped = false;
 }
+void MagicOrnamentProperty::adjustByDC()
+{
+    
+}
+void MagicOrnamentProperty::handleIdentify()
+{
+    if(m_bIdentified)
+        return;
+}
+CChaosNumber MagicOrnamentProperty::getAddedDefense()
+{
+    return -m_nAddedArmorClass.GetLongValue();
+}

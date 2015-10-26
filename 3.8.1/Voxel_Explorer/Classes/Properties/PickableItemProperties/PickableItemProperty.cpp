@@ -26,5 +26,6 @@ PickableItemProperty::PickableItemProperty(unsigned int instanceID, PickableItem
     m_bEquipable = true;
     m_bCombinable = false;
     m_bDiscardable = true;
+    m_bCursed = false;
 }
 
