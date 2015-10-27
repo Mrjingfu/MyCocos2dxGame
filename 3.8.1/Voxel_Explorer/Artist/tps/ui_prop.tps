@@ -147,26 +147,7 @@
             <false/>
         </struct>
         <key>fileList</key>
-        <array>
-            <filename>../ui/prop/P_Blue01.png</filename>
-            <filename>../ui/prop/P_Green01.png</filename>
-            <filename>../ui/prop/P_Red01.png</filename>
-            <filename>../ui/prop/W_Gold_Sword.png</filename>
-            <filename>../ui/prop/W_Sword001.png</filename>
-            <filename>../ui/prop/W_Sword004.png</filename>
-            <filename>../ui/prop/W_Sword015.png</filename>
-            <filename>../ui/prop/W_Sword016.png</filename>
-            <filename>../ui/prop/A_Shoes01.png</filename>
-            <filename>../ui/prop/A_Shoes02.png</filename>
-            <filename>../ui/prop/A_Shoes03.png</filename>
-            <filename>../ui/prop/A_Shoes04.png</filename>
-            <filename>../ui/prop/A_Shoes05.png</filename>
-            <filename>../ui/prop/E_Gold01.png</filename>
-            <filename>../ui/prop/E_Gold02.png</filename>
-            <filename>../ui/prop/E_Metal01.png</filename>
-            <filename>../ui/prop/E_Metal02.png</filename>
-            <filename>../ui/prop/E_Metal04.png</filename>
-        </array>
+        <array/>
         <key>ignoreFileList</key>
         <array/>
         <key>replaceList</key>

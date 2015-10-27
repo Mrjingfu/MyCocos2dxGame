@@ -75,7 +75,7 @@ private:
     
 
 protected:
-    eActionType m_pActionType;
+    eActionType m_cActionType;
     cocos2d::LayerColor* m_pDarkLayer;
     ePopupType m_pPopupType;
 };

@@ -226,13 +226,8 @@ void LogoScene::precache()
     if (uiSpriteTx)
         uiSpriteTx->setAliasTexParameters();
     
-    Texture2D * propTx = Director::getInstance()->getTextureCache()->addImage("ui_prop.png");
-    if (propTx)
-        propTx->setAliasTexParameters();
-    
     SpriteFrameCache::getInstance()->addSpriteFramesWithFile("ui_sprite.plist");
-    SpriteFrameCache::getInstance()->addSpriteFramesWithFile("ui_prop.plist");
-    
+       
     if(m_NodeRoot2)
     {
         DelayTime* delay = DelayTime::create(1.0f);

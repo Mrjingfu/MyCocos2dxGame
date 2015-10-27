@@ -55,7 +55,7 @@ void ItemUI::addItem(std::string itemName)
     }
    
     _isHaveItem = true;
-    m_pItemProp = itemName;
+    m_sItemProp = itemName;
 }
 
 void ItemUI::removeItem()

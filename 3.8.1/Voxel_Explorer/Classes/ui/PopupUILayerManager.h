@@ -29,9 +29,9 @@ public:
     bool isOpenPopup(ePopupType type,PopupUILayer* &pLayer);
     PopupUILayer* getCurrentPopUpLayer();
     PopupUILayer* getPopUpLayerByType(ePopupType type);
-    ePopupType getCurrentPopUpType(){return m_pCurrentPopUpType;};
+    ePopupType getCurrentPopUpType(){return m_cCurrentPopUpType;};
     void resetPopupType(ePopupType type);
-    const std::list<ePopupType>& getCurrentPopupTypeList(){ return m_pTypeList; }
+    const std::list<ePopupType>& getCurrentPopupTypeList(){ return m_lTypeList; }
 private:
     PopupUILayerManager();
     PopupUILayer* initPopUp(ePopupType type);
@@ -39,8 +39,8 @@ private:
     PopupUILayer* m_pPopupContainer[ePopupCount];
     cocos2d::Layer* m_pParentLayer;
     
-    ePopupType m_pCurrentPopUpType,m_pLastPopUpType;
-    std::list<ePopupType> m_pTypeList;
+    ePopupType m_cCurrentPopUpType,m_pLastPopUpType;
+    std::list<ePopupType> m_lTypeList;
     
 };
 
