@@ -56,7 +56,7 @@
             <key>width</key>
             <int>256</int>
             <key>height</key>
-            <int>128</int>
+            <int>256</int>
         </QSize>
         <key>fixedTextureSize</key>
         <QSize>
@@ -152,7 +152,6 @@
             <filename>../ui/btn_rank.png</filename>
             <filename>../ui/btn_rate.png</filename>
             <filename>../ui/btn_setting.png</filename>
-            <filename>../ui/button_rewardbtn_bg.png</filename>
             <filename>../ui/button_rewardbtn_icon_search.png</filename>
             <filename>../ui/chr_sword.png</filename>
             <filename>../ui/ui_frame_1.png</filename>
@@ -161,16 +160,19 @@
             <filename>../ui/ui_frame_4.png</filename>
             <filename>../ui/ui_frame_5.png</filename>
             <filename>../ui/ui_frame_6.png</filename>
-            <filename>../ui/icon_artifact.png</filename>
             <filename>../ui/progress_blood_bg.png</filename>
             <filename>../ui/progress_blood_style.png</filename>
             <filename>../ui/progress_margic_bg.png</filename>
             <filename>../ui/progress_margic_style.png</filename>
-            <filename>../ui/ui_blood_icon.png</filename>
-            <filename>../ui/ui_margic_icon.png</filename>
             <filename>../ui/progress_exp_bg.png</filename>
             <filename>../ui/progress_exp_style.png</filename>
             <filename>../ui/ui_buffer_1.png</filename>
+            <filename>../ui/ui_gold.png</filename>
+            <filename>../ui/ui_copper.png</filename>
+            <filename>../../../../../../游戏/Voxel_Explorer/ssss/progress_exp_bg.png</filename>
+            <filename>../ui/ui_frame_7.png</filename>
+            <filename>../ui/ui_frame_8.png</filename>
+            <filename>../ui/ui_map_icon.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

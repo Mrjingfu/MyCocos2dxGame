@@ -16,9 +16,9 @@ PopupUILayerManager::PopupUILayerManager()
     for (int i=0; i<ePopupCount; i++) {
         m_pPopupContainer[i] = nullptr;
     }
-    m_pCurrentPopUpType = ePopupInvalid;
+    m_cCurrentPopUpType = ePopupInvalid;
     m_pLastPopUpType = ePopupInvalid;
-    m_pTypeList.clear();
+    m_lTypeList.clear();
 }
 PopupUILayerManager::~PopupUILayerManager()
 {
@@ -32,10 +32,10 @@ PopupUILayerManager* PopupUILayerManager::getInstance()
 
 PopupUILayer* PopupUILayerManager::getCurrentPopUpLayer()
 {
-    if (m_pCurrentPopUpType == ePopupInvalid)
+    if (m_cCurrentPopUpType == ePopupInvalid)
         return nullptr;
     else
-        return m_pPopupContainer[m_pCurrentPopUpType];
+        return m_pPopupContainer[m_cCurrentPopUpType];
 }
 PopupUILayer* PopupUILayerManager::getPopUpLayerByType(ePopupType type)
 {
@@ -47,26 +47,26 @@ PopupUILayer* PopupUILayerManager::getPopUpLayerByType(ePopupType type)
 
 void PopupUILayerManager::onExitScene()
 {
-    m_pCurrentPopUpType = ePopupInvalid;
+    m_cCurrentPopUpType = ePopupInvalid;
     m_pLastPopUpType = ePopupInvalid;
-    m_pTypeList.clear();
+    m_lTypeList.clear();
 }
 
 PopupUILayer* PopupUILayerManager::openPopup(ePopupType type,int zorder /* = eZorderPopupUILayer */)
 {
-    m_pLastPopUpType = m_pCurrentPopUpType;
-    if(m_pCurrentPopUpType!= ePopupInvalid)
+    m_pLastPopUpType = m_cCurrentPopUpType;
+    if(m_cCurrentPopUpType!= ePopupInvalid)
     {
-        m_pTypeList.push_front(m_pCurrentPopUpType);
-        m_pCurrentPopUpType = type;
+        m_lTypeList.push_front(m_cCurrentPopUpType);
+        m_cCurrentPopUpType = type;
     }else
     {
-        m_pCurrentPopUpType = type;
+        m_cCurrentPopUpType = type;
     }
-    m_pPopupContainer[m_pCurrentPopUpType] = initPopUp(m_pCurrentPopUpType);
+    m_pPopupContainer[m_cCurrentPopUpType] = initPopUp(m_cCurrentPopUpType);
     
-    PopupUILayer* popupLayer = m_pPopupContainer[m_pCurrentPopUpType];
-    popupLayer->setPopupType(m_pCurrentPopUpType);
+    PopupUILayer* popupLayer = m_pPopupContainer[m_cCurrentPopUpType];
+    popupLayer->setPopupType(m_cCurrentPopUpType);
     
     if(popupLayer->getParent())
         return popupLayer;
@@ -84,7 +84,7 @@ PopupUILayer* PopupUILayerManager::initPopUp(ePopupType type)
     PopupUILayer* popupLayer = nullptr;
     switch (type) {
         case ePopupRole:
-            popupLayer = RolePopUpUI::create();
+            popupLayer = RolePopupUI::create();
             break;
         case ePopupTest:
 //            popupLayer = TestPopUI::create();
@@ -95,8 +95,8 @@ PopupUILayer* PopupUILayerManager::initPopUp(ePopupType type)
 }
 void PopupUILayerManager::closeCurrentPopup()
 {
-    if (nullptr !=m_pPopupContainer[m_pCurrentPopUpType] && m_pPopupContainer[m_pCurrentPopUpType]->getParent()) {
-        m_pPopupContainer[m_pCurrentPopUpType]->closePopup();
+    if (nullptr !=m_pPopupContainer[m_cCurrentPopUpType] && m_pPopupContainer[m_cCurrentPopUpType]->getParent()) {
+        m_pPopupContainer[m_cCurrentPopUpType]->closePopup();
     }
 }
 void PopupUILayerManager::setParentLayer(cocos2d::Layer *parent)
@@ -105,35 +105,35 @@ void PopupUILayerManager::setParentLayer(cocos2d::Layer *parent)
 }
 void PopupUILayerManager::resetPopupType(ePopupType type)
 {
-    if (!m_pTypeList.empty())
+    if (!m_lTypeList.empty())
     {
-        if (type == m_pCurrentPopUpType)
+        if (type == m_cCurrentPopUpType)
         {
-            m_pCurrentPopUpType = m_pTypeList.front();
-            m_pTypeList.pop_front();
+            m_cCurrentPopUpType = m_lTypeList.front();
+            m_lTypeList.pop_front();
         }else
         {
             std::list<ePopupType> typeList;
             typeList.clear();
-            for (auto iter = m_pTypeList.begin(); iter != m_pTypeList.end(); iter++) {
+            for (auto iter = m_lTypeList.begin(); iter != m_lTypeList.end(); iter++) {
                 ePopupType tmp = *iter;
                 if (type != tmp) {
                     typeList.push_back(tmp);
                 }
             }
-            m_pTypeList.clear();
+            m_lTypeList.clear();
             for (auto iter = typeList.begin(); iter!=typeList.end(); iter++) {
-                m_pTypeList.push_back(*iter);
+                m_lTypeList.push_back(*iter);
             }
         }
     }else
     {
-        m_pCurrentPopUpType = ePopupInvalid;
+        m_cCurrentPopUpType = ePopupInvalid;
     }
 }
 bool PopupUILayerManager::isOpenPopup(ePopupType type, PopupUILayer *&pLayer)
 {
-    for (auto iter = m_pTypeList.begin(); iter!=m_pTypeList.end(); iter++)
+    for (auto iter = m_lTypeList.begin(); iter!=m_lTypeList.end(); iter++)
     {
         if (type == *iter)
         {
@@ -141,7 +141,7 @@ bool PopupUILayerManager::isOpenPopup(ePopupType type, PopupUILayer *&pLayer)
             return  true;
         }
     }
-    if (type==m_pCurrentPopUpType) {
+    if (type==m_cCurrentPopUpType) {
         pLayer = m_pPopupContainer[type];
         return true;
     }

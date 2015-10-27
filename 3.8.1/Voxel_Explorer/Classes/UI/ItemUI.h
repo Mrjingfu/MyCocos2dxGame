@@ -23,13 +23,13 @@ public:
     bool isEquipEnable(){return _isEquip;}
     void addItem(std::string itemName);
 
-    std::string getItem(){return m_pItemProp;}
+    std::string getItem(){return m_sItemProp;}
     void removeItem();
 protected:
     bool _isHaveItem;
     bool _isEquip;
     cocos2d::ui::ImageView* m_pItemImage;
-    std::string m_pItemProp;
+    std::string m_sItemProp;
 };
 
 #endif /* ItemUI_hpp */

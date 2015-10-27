@@ -13,7 +13,7 @@ USING_NS_CC;
 PopupUILayer::PopupUILayer()
 {
     m_pPopupType = ePopupInvalid;
-    m_pActionType = eNone;
+    m_cActionType = eNone;
     m_pDarkLayer = nullptr;
     
     
@@ -85,7 +85,7 @@ void PopupUILayer::closePopup()
 }
 void PopupUILayer::inAction()
 {
-    switch (m_pActionType) {
+    switch (m_cActionType) {
         case eNone:
             break;
         case eCenterScale:
@@ -109,7 +109,7 @@ void PopupUILayer::inAction()
 }
 void PopupUILayer::outAction()
 {
-    switch (m_pActionType) {
+    switch (m_cActionType) {
         case eNone:
             removeSelfCallFunc();
             break;

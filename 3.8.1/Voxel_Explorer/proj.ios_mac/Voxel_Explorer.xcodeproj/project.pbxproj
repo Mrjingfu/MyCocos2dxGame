@@ -179,6 +179,14 @@
 		EC00DD5C1BD66586009BC378 /* MenuUILayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC00DD571BD66586009BC378 /* MenuUILayer.cpp */; settings = {ASSET_TAGS = (); }; };
 		EC00DD5F1BD665A6009BC378 /* MenuScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC00DD5D1BD665A6009BC378 /* MenuScene.cpp */; settings = {ASSET_TAGS = (); }; };
 		EC00DD601BD665A6009BC378 /* MenuScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC00DD5D1BD665A6009BC378 /* MenuScene.cpp */; settings = {ASSET_TAGS = (); }; };
+		EC5DA6B41BDDFAE400B0FF96 /* PauseUILayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC5DA6B21BDDFAE400B0FF96 /* PauseUILayer.cpp */; settings = {ASSET_TAGS = (); }; };
+		EC5DA6B51BDDFAE400B0FF96 /* PauseUILayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC5DA6B21BDDFAE400B0FF96 /* PauseUILayer.cpp */; settings = {ASSET_TAGS = (); }; };
+		EC5DA6B81BDDFCCB00B0FF96 /* ItemPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC5DA6B61BDDFCCB00B0FF96 /* ItemPopupUI.cpp */; settings = {ASSET_TAGS = (); }; };
+		EC5DA6B91BDDFCCB00B0FF96 /* ItemPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC5DA6B61BDDFCCB00B0FF96 /* ItemPopupUI.cpp */; settings = {ASSET_TAGS = (); }; };
+		EC5DA6BC1BDDFE1400B0FF96 /* DeadPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC5DA6BA1BDDFE1400B0FF96 /* DeadPopupUI.cpp */; settings = {ASSET_TAGS = (); }; };
+		EC5DA6BD1BDDFE1400B0FF96 /* DeadPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC5DA6BA1BDDFE1400B0FF96 /* DeadPopupUI.cpp */; settings = {ASSET_TAGS = (); }; };
+		EC5DA6C01BDDFE9F00B0FF96 /* ShopPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC5DA6BE1BDDFE9F00B0FF96 /* ShopPopupUI.cpp */; settings = {ASSET_TAGS = (); }; };
+		EC5DA6C11BDDFE9F00B0FF96 /* ShopPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC5DA6BE1BDDFE9F00B0FF96 /* ShopPopupUI.cpp */; settings = {ASSET_TAGS = (); }; };
 		EC6716451BCE7F2C00C81CFC /* LogoScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC6716431BCE7F2C00C81CFC /* LogoScene.cpp */; settings = {ASSET_TAGS = (); }; };
 		EC6716461BCE7F2C00C81CFC /* LogoScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC6716431BCE7F2C00C81CFC /* LogoScene.cpp */; settings = {ASSET_TAGS = (); }; };
 		EC6716591BCE7F5F00C81CFC /* lang in Resources */ = {isa = PBXBuildFile; fileRef = EC6716561BCE7F5F00C81CFC /* lang */; settings = {ASSET_TAGS = (); }; };
@@ -199,8 +207,8 @@
 		ECD10D731BD0967B007DD888 /* WrapperUILayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECD10D6A1BD0967B007DD888 /* WrapperUILayer.cpp */; settings = {ASSET_TAGS = (); }; };
 		ECE1B9471BD8AC820035B4D9 /* TGridView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECE1B9451BD8AC820035B4D9 /* TGridView.cpp */; settings = {ASSET_TAGS = (); }; };
 		ECE1B9481BD8AC820035B4D9 /* TGridView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECE1B9451BD8AC820035B4D9 /* TGridView.cpp */; settings = {ASSET_TAGS = (); }; };
-		ECE1B9581BD8E6660035B4D9 /* RolePopUpUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECE1B9561BD8E6660035B4D9 /* RolePopUpUI.cpp */; settings = {ASSET_TAGS = (); }; };
-		ECE1B9591BD8E6660035B4D9 /* RolePopUpUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECE1B9561BD8E6660035B4D9 /* RolePopUpUI.cpp */; settings = {ASSET_TAGS = (); }; };
+		ECE1B9581BD8E6660035B4D9 /* RolePopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECE1B9561BD8E6660035B4D9 /* RolePopupUI.cpp */; settings = {ASSET_TAGS = (); }; };
+		ECE1B9591BD8E6660035B4D9 /* RolePopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECE1B9561BD8E6660035B4D9 /* RolePopupUI.cpp */; settings = {ASSET_TAGS = (); }; };
 		ED545A7C1B68A1F400C3958E /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ED545A7B1B68A1F400C3958E /* libiconv.dylib */; };
 		ED545A7E1B68A1FA00C3958E /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ED545A7D1B68A1FA00C3958E /* libiconv.dylib */; };
 /* End PBXBuildFile section */
@@ -395,6 +403,14 @@
 		EC00DD581BD66586009BC378 /* MenuUILayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuUILayer.h; sourceTree = "<group>"; };
 		EC00DD5D1BD665A6009BC378 /* MenuScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MenuScene.cpp; sourceTree = "<group>"; };
 		EC00DD5E1BD665A6009BC378 /* MenuScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuScene.h; sourceTree = "<group>"; };
+		EC5DA6B21BDDFAE400B0FF96 /* PauseUILayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PauseUILayer.cpp; sourceTree = "<group>"; };
+		EC5DA6B31BDDFAE400B0FF96 /* PauseUILayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PauseUILayer.h; sourceTree = "<group>"; };
+		EC5DA6B61BDDFCCB00B0FF96 /* ItemPopupUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ItemPopupUI.cpp; sourceTree = "<group>"; };
+		EC5DA6B71BDDFCCB00B0FF96 /* ItemPopupUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemPopupUI.h; sourceTree = "<group>"; };
+		EC5DA6BA1BDDFE1400B0FF96 /* DeadPopupUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DeadPopupUI.cpp; sourceTree = "<group>"; };
+		EC5DA6BB1BDDFE1400B0FF96 /* DeadPopupUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeadPopupUI.h; sourceTree = "<group>"; };
+		EC5DA6BE1BDDFE9F00B0FF96 /* ShopPopupUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ShopPopupUI.cpp; sourceTree = "<group>"; };
+		EC5DA6BF1BDDFE9F00B0FF96 /* ShopPopupUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopPopupUI.h; sourceTree = "<group>"; };
 		EC6715EE1BCE7EE500C81CFC /* GameConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameConfig.h; sourceTree = "<group>"; };
 		EC6716431BCE7F2C00C81CFC /* LogoScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LogoScene.cpp; sourceTree = "<group>"; };
 		EC6716441BCE7F2C00C81CFC /* LogoScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogoScene.h; sourceTree = "<group>"; };
@@ -415,8 +431,8 @@
 		ECD10D6B1BD0967B007DD888 /* WrapperUILayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WrapperUILayer.h; sourceTree = "<group>"; };
 		ECE1B9451BD8AC820035B4D9 /* TGridView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TGridView.cpp; sourceTree = "<group>"; };
 		ECE1B9461BD8AC820035B4D9 /* TGridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TGridView.h; sourceTree = "<group>"; };
-		ECE1B9561BD8E6660035B4D9 /* RolePopUpUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RolePopUpUI.cpp; sourceTree = "<group>"; };
-		ECE1B9571BD8E6660035B4D9 /* RolePopUpUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RolePopUpUI.h; sourceTree = "<group>"; };
+		ECE1B9561BD8E6660035B4D9 /* RolePopupUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RolePopupUI.cpp; sourceTree = "<group>"; };
+		ECE1B9571BD8E6660035B4D9 /* RolePopupUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RolePopupUI.h; sourceTree = "<group>"; };
 		ED545A7B1B68A1F400C3958E /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.4.sdk/usr/lib/libiconv.dylib; sourceTree = DEVELOPER_DIR; };
 		ED545A7D1B68A1FA00C3958E /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -852,8 +868,8 @@
 			children = (
 				ECA229091BD9DE1D008E03BB /* ItemUI.cpp */,
 				ECA2290A1BD9DE1D008E03BB /* ItemUI.h */,
-				ECE1B9561BD8E6660035B4D9 /* RolePopUpUI.cpp */,
-				ECE1B9571BD8E6660035B4D9 /* RolePopUpUI.h */,
+				ECE1B9561BD8E6660035B4D9 /* RolePopupUI.cpp */,
+				ECE1B9571BD8E6660035B4D9 /* RolePopupUI.h */,
 				ECE1B9451BD8AC820035B4D9 /* TGridView.cpp */,
 				ECE1B9461BD8AC820035B4D9 /* TGridView.h */,
 				EC00DD551BD66586009BC378 /* GameUILayer.cpp */,
@@ -869,6 +885,14 @@
 				ECD10D691BD0967B007DD888 /* PopupUILayerManager.h */,
 				ECD10D6A1BD0967B007DD888 /* WrapperUILayer.cpp */,
 				ECD10D6B1BD0967B007DD888 /* WrapperUILayer.h */,
+				EC5DA6B21BDDFAE400B0FF96 /* PauseUILayer.cpp */,
+				EC5DA6B31BDDFAE400B0FF96 /* PauseUILayer.h */,
+				EC5DA6B61BDDFCCB00B0FF96 /* ItemPopupUI.cpp */,
+				EC5DA6B71BDDFCCB00B0FF96 /* ItemPopupUI.h */,
+				EC5DA6BA1BDDFE1400B0FF96 /* DeadPopupUI.cpp */,
+				EC5DA6BB1BDDFE1400B0FF96 /* DeadPopupUI.h */,
+				EC5DA6BE1BDDFE9F00B0FF96 /* ShopPopupUI.cpp */,
+				EC5DA6BF1BDDFE9F00B0FF96 /* ShopPopupUI.h */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -1034,6 +1058,8 @@
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				551E93EE1BD512D3009F788F /* FileStream.cpp in Sources */,
 				55F81CB81BDB8B81002EC075 /* ArmorProperty.cpp in Sources */,
+				EC5DA6B81BDDFCCB00B0FF96 /* ItemPopupUI.cpp in Sources */,
+				EC5DA6BC1BDDFE1400B0FF96 /* DeadPopupUI.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
 				551E93EC1BD512D3009F788F /* XXTEA.cpp in Sources */,
@@ -1052,7 +1078,8 @@
 				ECD10D6E1BD0967B007DD888 /* PopupUILayer.cpp in Sources */,
 				554F00F61BDA219E00F4DF8E /* PickableItem.cpp in Sources */,
 				55F81CD01BDB92CC002EC075 /* PotionsProperty.cpp in Sources */,
-				ECE1B9581BD8E6660035B4D9 /* RolePopUpUI.cpp in Sources */,
+				ECE1B9581BD8E6660035B4D9 /* RolePopupUI.cpp in Sources */,
+				EC5DA6C01BDDFE9F00B0FF96 /* ShopPopupUI.cpp in Sources */,
 				555B0D171BC51A2C0055FB6D /* Area.cpp in Sources */,
 				55F81CD41BDB92ED002EC075 /* SundriesProperty.cpp in Sources */,
 				551E93F21BD512D3009F788F /* Stream.cpp in Sources */,
@@ -1085,6 +1112,7 @@
 				ECD10D6C1BD0967B007DD888 /* CloseCallback.cpp in Sources */,
 				551E93C51BD51291009F788F /* UserRecord.cpp in Sources */,
 				551E93E81BD512D3009F788F /* sha1.cpp in Sources */,
+				EC5DA6B41BDDFAE400B0FF96 /* PauseUILayer.cpp in Sources */,
 				553BC5011BCDF457003D907A /* Actor.cpp in Sources */,
 				551E93E61BD512D3009F788F /* md5.c in Sources */,
 				55338AE61BD8928E00EA316F /* Giant.cpp in Sources */,
@@ -1110,6 +1138,7 @@
 				55338AE31BD8926A00EA316F /* SkeletonKing.cpp in Sources */,
 				55338ADB1BD8921000EA316F /* SlimeKing.cpp in Sources */,
 				551651C61BD73102004ED7F6 /* RandomDungeon.cpp in Sources */,
+				EC5DA6B91BDDFCCB00B0FF96 /* ItemPopupUI.cpp in Sources */,
 				55338AD01BD8781E00EA316F /* BaseMonster.cpp in Sources */,
 				551E93AC1BD51282009F788F /* ChaosNumber.cpp in Sources */,
 				EC00DD5A1BD66586009BC378 /* GameUILayer.cpp in Sources */,
@@ -1138,7 +1167,7 @@
 				ECD10D711BD0967B007DD888 /* PopupUILayerManager.cpp in Sources */,
 				551E93F31BD512D3009F788F /* Stream.cpp in Sources */,
 				551E93C41BD51291009F788F /* LevelResourceManager.cpp in Sources */,
-				ECE1B9591BD8E6660035B4D9 /* RolePopUpUI.cpp in Sources */,
+				ECE1B9591BD8E6660035B4D9 /* RolePopupUI.cpp in Sources */,
 				555B0D1E1BC51A2C0055FB6D /* Graph.cpp in Sources */,
 				554F01061BDA3A3100F4DF8E /* SewerLevel.cpp in Sources */,
 				554F00EF1BDA210000F4DF8E /* BaseBoss.cpp in Sources */,
@@ -1146,8 +1175,11 @@
 				55F81CD11BDB92CC002EC075 /* PotionsProperty.cpp in Sources */,
 				555B0D241BC51A2C0055FB6D /* GameScene.cpp in Sources */,
 				ECE1B9481BD8AC820035B4D9 /* TGridView.cpp in Sources */,
+				EC5DA6C11BDDFE9F00B0FF96 /* ShopPopupUI.cpp in Sources */,
 				551E93CC1BD51291009F788F /* PlayerProperty.cpp in Sources */,
+				EC5DA6B51BDDFAE400B0FF96 /* PauseUILayer.cpp in Sources */,
 				551E93ED1BD512D3009F788F /* XXTEA.cpp in Sources */,
+				EC5DA6BD1BDDFE1400B0FF96 /* DeadPopupUI.cpp in Sources */,
 				551E93E71BD512D3009F788F /* md5.c in Sources */,
 				ECD10D6F1BD0967B007DD888 /* PopupUILayer.cpp in Sources */,
 				55F81CA21BDB208D002EC075 /* UseableItem.cpp in Sources */,
