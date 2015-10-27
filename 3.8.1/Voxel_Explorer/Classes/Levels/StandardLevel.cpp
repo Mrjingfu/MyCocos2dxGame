@@ -665,7 +665,7 @@ int StandardLevel::randomRespawnCell()
         Area* area = static_cast<Area*>(m_Areas[rand]);
         if (area == nullptr || area->getAreaType() != Area::AT_STANDARD)
             continue;
-        
+        CCASSERT(area->getAreaType() != Area::AT_ENTRANCE, "fuck");
         tileIndex = area->getRandomTile(this);
         if ((m_Map[tileIndex].m_Flag & TileInfo::PASSABLE) != 0 ) {
             return tileIndex;

@@ -21,26 +21,29 @@ public:
     bool hasEquiped() const { return m_bHasEquiped; }
     void setEquiped(bool equiped) { m_bHasEquiped = equiped; }
     
-    CChaosNumber getLightDistance() const { return m_nLightDistance; }
-    CChaosNumber getSearchDistance() const { return m_nSearchDistance; }
-    CChaosNumber getMaxHp() const { return m_nMaxHP; }
-    CChaosNumber getMaxMp() const { return m_nMaxMP; }
+    CChaosNumber getAddedLightDistance() const { return m_nAddedLightDistance; }
+    CChaosNumber getAddedSearchDistance() const { return m_nAddedSearchDistance; }
+    CChaosNumber getAddedMaxHp() const { return m_nAddedMaxHP; }
+    CChaosNumber getAddedMaxMp() const { return m_nAddedMaxMP; }
     
-    CChaosNumber getDefense();
+    CChaosNumber getAddedDefense();
     
-    CChaosNumber getArmorClass() const { return m_nArmorClass; }
-    CChaosNumber getDodgeRate() const { return m_fDodgeRate; }
+    CChaosNumber getAddedArmorClass() const { return m_nAddedArmorClass; }
+    CChaosNumber getAddedDodgeRate() const { return m_fAddedDodgeRate; }
+    
+    CChaosNumber getAddedMagicItemFindRate() const { return m_fAddedMagicItemFindRate; }
 private:
     bool            m_bHasEquiped;
     
-    CChaosNumber    m_nLightDistance;       ///光照范围
-    CChaosNumber    m_nSearchDistance;      ///侦查范围
-    CChaosNumber    m_nMaxHP;               ///最大生命值
-    CChaosNumber    m_nMaxMP;               ///最大魔法值
+    CChaosNumber    m_nAddedLightDistance;       ///光照范围
+    CChaosNumber    m_nAddedSearchDistance;      ///侦查范围
+    CChaosNumber    m_nAddedMaxHP;               ///最大生命值
+    CChaosNumber    m_nAddedMaxMP;               ///最大魔法值
     
-    CChaosNumber    m_nArmorClass;          ///防御等级
-    CChaosNumber    m_fDodgeRate;           ///闪避率
+    CChaosNumber    m_nAddedArmorClass;          ///防御等级
+    CChaosNumber    m_fAddedDodgeRate;           ///闪避率
 
+    CChaosNumber    m_fAddedMagicItemFindRate;  ///附加取魔率
 };
 
 #endif /* ArmorProperty_hpp */
