@@ -40,7 +40,7 @@ public:
         PIT_DAGGER_PRO_COLDSTEELDAGGER,  ///影子袭击者 Shadow Attacker
         PIT_DAGGER_PRO_RIPPERCUTTER,     ///六刃 Six Blade
         PIT_DAGGER_PRO_BLUELIGHTDAGGER,  ///凝云 Frozen Cloud
-        PIT_DAGGER_PRO_RUBYDAGGER,       ///火舌 Flame
+        PIT_DAGGER_PRO_RUBYDAGGER,       ///火舌 Fireflow
         PIT_DAGGER_PRO_END,
         
         PIT_AXE_BEGIN = 30,
@@ -49,7 +49,7 @@ public:
         PIT_AXE_STONEAXE,           ///石斧
         PIT_AXE_BROADAX,            ///大斧
         PIT_AXE_TOMAHAWK,           ///战斧
-        PIT_AXE_AXE,                ///巨斧
+        PIN_AXE_HUGEAXE,            ///巨斧
         PIT_AXE_DOUBLEBITAX,        ///双刃斧 double-bit ax
         PIT_AXE_END,
         
@@ -59,8 +59,8 @@ public:
         PIT_AXE_PRO_STONEAXE,           ///回旋加速器 Cyclotron
         PIT_AXE_PRO_BROADAX,            ///熔岩 Molten lava
         PIT_AXE_PRO_TOMAHAWK,           ///狂战士 Berserker
-        PIT_AXE_PRO_AXE,                ///骷髅撕裂者 Skull Splitter
-        PIT_AXE_PRO_DOUBLEBITAX,        ///破脑 Brainhew
+        PIT_AXE_PRO_HUGEAXE,            ///骷髅撕裂者 Skull Splitter
+        PIT_AXE_PRO_DOUBLEBITAX,        ///脑袋 Brainhew
         PIT_AXE_PRO_END,
         
         PIT_SWORD_BEGIN = 50,
@@ -150,7 +150,7 @@ public:
         PIT_SHIELD_EAGLESHIELD,                ///鹰盾
         PIT_SHIELD_OSTEOSCUTE,                 ///骨盾
         PIT_SHIELD_GOLDENSHIELD,               ///黄金盾
-        PIT_SHIELD_TOWERSHIEL,                 ///塔盾
+        PIT_SHIELD_TOWERSHIELD,                ///塔盾
         PIT_SHIELD_END,
         
         PIT_SHIELD_PRO_BEGIN = 140,
@@ -160,7 +160,7 @@ public:
         PIT_SHIELD_PRO_EAGLESHIELD,                ///绿魔 Green Goblin
         PIT_SHIELD_PRO_OSTEOSCUTE,                 ///骷髅王的身躯 Skeleton King's body
         PIT_SHIELD_PRO_GOLDENSHIELD,               ///美杜莎的镜子Medusa mirror
-        PIT_SHIELD_PRO_TOWERSHIEL,                 ///叹息之墙 Wall of sighs
+        PIT_SHIELD_PRO_TOWERSHIELD,                ///叹息之墙 Wall of sighs
         PIT_SHIELD_PRO_END,
         
         PIT_CLOTH_BEGIN = 150,
@@ -180,7 +180,7 @@ public:
         PIT_CLOTH_PRO_LEATHERARMOR,             ///生命牢笼 Life cage
         PIT_CLOTH_PRO_CHAINSHOES,               ///云之足径 Foot diameter of cloud
         PIT_CLOTH_PRO_HELEMT,                   ///骑士容貌 Knight looks
-        PIT_CLOTH_PRO_STEELARMOR,               ///圣光铠 Light armor
+        PIT_CLOTH_PRO_STEELARMOR,               ///寡妇对抗者 No widow
         PIT_CLOTH_PRO_END,
         
         PIT_UNKNOWN

@@ -37,7 +37,7 @@ const std::string PICKABLE_ITEM_NAMES[] = {
     "PIN_DAGGER_PRO_COLDSTEELDAGGER",  ///影子袭击者 Shadow Attacker
     "PIN_DAGGER_PRO_RIPPERCUTTER",     ///六刃 Six Blade
     "PIN_DAGGER_PRO_BLUELIGHTDAGGER",  ///凝云 Frozen Cloud
-    "PIN_DAGGER_PRO_RUBYDAGGER",       ///火舌 Flame
+    "PIN_DAGGER_PRO_RUBYDAGGER",       ///火舌 Fireflow
     "PIN_DAGGER_PRO_END",
     
     "PIN_AXE_BEGIN",
@@ -46,7 +46,7 @@ const std::string PICKABLE_ITEM_NAMES[] = {
     "PIN_AXE_STONEAXE",           ///石斧
     "PIN_AXE_BROADAX",            ///大斧
     "PIN_AXE_TOMAHAWK",           ///战斧
-    "PIN_AXE_AXE",                ///巨斧
+    "PIN_AXE_HUGEAXE",            ///巨斧
     "PIN_AXE_DOUBLEBITAX",        ///双刃斧 double-bit ax
     "PIN_AXE_END",
     
@@ -56,8 +56,8 @@ const std::string PICKABLE_ITEM_NAMES[] = {
     "PIN_AXE_PRO_STONEAXE",           ///回旋加速器 Cyclotron
     "PIN_AXE_PRO_BROADAX",            ///熔岩 Molten lava
     "PIN_AXE_PRO_TOMAHAWK",           ///狂战士 Berserker
-    "PIN_AXE_PRO_AXE",                ///骷髅撕裂者 Skull Splitter
-    "PIN_AXE_PRO_DOUBLEBITAX",        ///破脑 Brainhew
+    "PIN_AXE_PRO_HUGEAXE",            ///骷髅撕裂者 Skull Splitter
+    "PIN_AXE_PRO_DOUBLEBITAX",        ///脑袋 Brainhew
     "PIN_AXE_PRO_END",
     
     "PIN_SWORD_BEGIN",
@@ -147,7 +147,7 @@ const std::string PICKABLE_ITEM_NAMES[] = {
     "PIN_SHIELD_EAGLESHIELD",                ///鹰盾
     "PIN_SHIELD_OSTEOSCUTE",                 ///骨盾
     "PIN_SHIELD_GOLDENSHIELD",               ///黄金盾
-    "PIN_SHIELD_TOWERSHIEL",                 ///塔盾
+    "PIN_SHIELD_TOWERSHIELD",                 ///塔盾
     "PIN_SHIELD_END",
     
     "PIN_SHIELD_PRO_BEGIN",
@@ -156,8 +156,8 @@ const std::string PICKABLE_ITEM_NAMES[] = {
     "PIN_SHIELD_PRO_STEELSHIELD",                ///守夜人 The night watchman
     "PIN_SHIELD_PRO_EAGLESHIELD",                ///绿魔 Green Goblin
     "PIN_SHIELD_PRO_OSTEOSCUTE",                 ///骷髅王的身躯 Skeleton King's body
-    "PIN_SHIELD_PRO_GOLDENSHIELD",               ///美杜莎的镜子Medusa mirror
-    "PIN_SHIELD_PRO_TOWERSHIEL",                 ///叹息之墙 Wall of sighs
+    "PIN_SHIELD_PRO_GOLDENSHIELD",               ///美杜莎的镜子 Medusa's mirror
+    "PIN_SHIELD_PRO_TOWERSHIELD",                ///叹息之墙 Wall of sighs
     "PIN_SHIELD_PRO_END",
     
     "PIN_CLOTH_BEGIN",
@@ -177,7 +177,7 @@ const std::string PICKABLE_ITEM_NAMES[] = {
     "PIN_CLOTH_PRO_LEATHERARMOR",             ///生命牢笼 Life cage
     "PIN_CLOTH_PRO_CHAINSHOES",               ///云之足径 Foot diameter of cloud
     "PIN_CLOTH_PRO_HELEMT",                   ///骑士容貌 Knight looks
-    "PIN_CLOTH_PRO_STEELARMOR",               ///圣光铠 Light armor
+    "PIN_CLOTH_PRO_STEELARMOR",               ///寡妇对抗者 No widow
     "PIN_CLOTH_PRO_END",
 
     
@@ -190,6 +190,7 @@ PickableItem* PickableItem::create(PickableItemType type)
     auto item = new (std::nothrow) PickableItem();
     if (item && item->initWithFile(model))
     {
+        item->setTexture("item_color.png");
         item->m_Type = type;
         item->setCameraMask((unsigned int)CameraFlag::USER1);
         item->setLightMask((unsigned int)LightFlag::LIGHT0);
