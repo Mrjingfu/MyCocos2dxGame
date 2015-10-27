@@ -406,13 +406,13 @@ void PlayerProperty::addItemToBag(PickableItem::PickableItemType type)
         return;
     }
     PickableItemProperty* itemProperty = nullptr;
-    if(type > PickableItem::PIT_KEY_BEGIN && type < PickableItem::PIT_KEY_END)
+    if(type > PickableItem::PIT_KEY_COPPER && type < PickableItem::PIT_KEY_ROOM)
         itemProperty = new (std::nothrow) KeyProperty(m_snItemInstanceIDCounter++,type);
-    else if (type > PickableItem::PIT_DAGGER_BEGIN && type < PickableItem::PIT_MACE_PRO_END)
+    else if (type > PickableItem::PIT_DAGGER_DAGGER && type < PickableItem::PIT_MACE_PRO_SLEDGEHAMMER)
         itemProperty = new (std::nothrow) WeaponProperty(m_snItemInstanceIDCounter++,type, true);
-    else if (type > PickableItem::PIT_BOW_BEGIN && type < PickableItem::PIT_SHIELD_PRO_END)
+    else if (type > PickableItem::PIT_BOW_SHORTBOW && type < PickableItem::PIT_SHIELD_PRO_TOWERSHIELD)
         itemProperty = new (std::nothrow) SecondWeaponProperty(m_snItemInstanceIDCounter++,type,true);
-    else if(type > PickableItem::PIT_CLOTH_BEGIN && type < PickableItem::PIT_CLOTH_PRO_END)
+    else if(type > PickableItem::PIT_CLOTH_SHOES && type < PickableItem::PIT_CLOTH_PRO_STEELARMOR)
         itemProperty = new (std::nothrow) ArmorProperty(m_snItemInstanceIDCounter++,type, true);
     if(itemProperty)
     {

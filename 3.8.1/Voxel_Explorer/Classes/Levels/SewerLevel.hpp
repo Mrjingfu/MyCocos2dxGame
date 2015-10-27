@@ -16,7 +16,7 @@ public:
     SewerLevel();
     
     virtual bool createMonsters();
-    virtual bool createItems();
+    virtual bool createUseableItems();
 };
 
 #endif /* SewerLevel_hpp */

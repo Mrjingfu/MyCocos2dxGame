@@ -667,6 +667,8 @@ int StandardLevel::randomRespawnCell()
             continue;
         CCASSERT(area->getAreaType() != Area::AT_ENTRANCE, "fuck");
         tileIndex = area->getRandomTile(this);
+        if((m_Map[tileIndex].m_Flag & TileInfo::LOS_BLOCKING) != 0)
+            continue;
         if ((m_Map[tileIndex].m_Flag & TileInfo::PASSABLE) != 0 ) {
             return tileIndex;
         }

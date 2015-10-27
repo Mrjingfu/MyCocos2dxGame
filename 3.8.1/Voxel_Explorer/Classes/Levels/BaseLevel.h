@@ -87,7 +87,7 @@ protected:
     virtual bool createTerrain() = 0;
     virtual bool decorate() = 0;
     virtual bool createMonsters() = 0;
-    virtual bool createItems() = 0;
+    virtual bool createUseableItems() = 0;
 
     virtual void showMap(bool show) = 0;
     

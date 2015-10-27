@@ -9,8 +9,8 @@
 #ifndef UseableItem_hpp
 #define UseableItem_hpp
 
-#include "cocos2d.h"
-class UseableItem : public cocos2d::Sprite3D
+#include "Actor.hpp"
+class UseableItem : public Actor
 {
 public:
     

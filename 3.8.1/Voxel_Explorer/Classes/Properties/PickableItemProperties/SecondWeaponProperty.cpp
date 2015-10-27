@@ -22,11 +22,11 @@ SecondWeaponProperty::SecondWeaponProperty(unsigned int instanceID, PickableItem
     
     m_bHasEquiped = false;
     
-    if(type > PickableItem::PIT_BOW_BEGIN && type < PickableItem::PIT_BOW_END)
+    if(type > PickableItem::PIT_BOW_SHORTBOW && type < PickableItem::PIT_BOW_PRO_GOLDENBOW)
         m_SWPType = SWPT_BOW;
-    else if(type > PickableItem::PIT_STAFF_BEGIN && type < PickableItem::PIT_STAFF_END)
+    else if(type > PickableItem::PIT_STAFF_OAKSTAFF && type < PickableItem::PIT_STAFF_PRO_MONKSTAFF)
         m_SWPType = SWPT_STAFF;
-    else if(type > PickableItem::PIT_SHIELD_BEGIN && type < PickableItem::PIT_SHIELD_END)
+    else if(type > PickableItem::PIT_SHIELD_WOODENSHIELD && type < PickableItem::PIT_SHIELD_PRO_TOWERSHIELD)
         m_SWPType = SWPT_SHIELD;
     else
         m_SWPType = SWPT_UNKNOWN;
