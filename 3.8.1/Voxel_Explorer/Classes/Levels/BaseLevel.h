@@ -84,6 +84,8 @@ public:
     
     void load();
     void save();
+    
+    virtual void showMap(bool show) = 0;
 protected:
     virtual bool build() = 0;
     virtual bool createTerrain() = 0;
@@ -91,7 +93,7 @@ protected:
     virtual bool createMonsters() = 0;
     virtual bool createUseableItems() = 0;
 
-    virtual void showMap(bool show) = 0;
+    
     
     virtual int calculateLevelMonsterCount() = 0;
 private:

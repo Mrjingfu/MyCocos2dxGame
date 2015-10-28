@@ -173,6 +173,12 @@
             <filename>../ui/ui_frame_7.png</filename>
             <filename>../ui/ui_frame_8.png</filename>
             <filename>../ui/ui_map_icon.png</filename>
+            <filename>../ui/btn_close.png</filename>
+            <filename>../ui/ui_shop_icon.png</filename>
+            <filename>../ui/ui_equip_label.png</filename>
+            <filename>../ui/ui_btn_back_1.png</filename>
+            <filename>../ui/ui_btn_back_2.png</filename>
+            <filename>../ui/ui_msg_icon.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

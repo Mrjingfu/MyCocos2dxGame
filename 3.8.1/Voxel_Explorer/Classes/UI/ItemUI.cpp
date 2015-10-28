@@ -12,6 +12,7 @@ USING_NS_CC;
 ItemUI::ItemUI():_isHaveItem(false)
 {
     m_pItemImage = nullptr;
+    m_pEquipmark = nullptr;
 }
 
 ItemUI::~ItemUI()
@@ -67,6 +68,15 @@ void ItemUI::removeItem()
 }
 void ItemUI::setEquipEnable(bool enable)
 {
-    _isEquip = enable;
-    setBackGroundImageColor(Color3B::GREEN);
+        _isEquip = enable;
+    if (!m_pEquipmark) {
+        m_pEquipmark = ui::ImageView::create("ui_equip_label.png",TextureResType::PLIST);
+        m_pEquipmark->setScale(0.5);
+        m_pEquipmark->setPosition(Vec2(getContentSize().width*0.2, getContentSize().height*0.8));
+        m_pEquipmark->setVisible(false);
+        addChild(m_pEquipmark);
+    }
+
+    m_pEquipmark->setVisible(_isEquip);
+
 }

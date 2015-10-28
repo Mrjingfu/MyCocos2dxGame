@@ -400,8 +400,8 @@ void StandardLevel::generate()
 
 void StandardLevel::showMap(bool show)
 {
-    if(!show)
-        return;
+//    if(!show)
+//        return;
     if (VoxelExplorer::getInstance()->getMainLayer() == nullptr)
         return;
     if(!show)
@@ -421,7 +421,9 @@ void StandardLevel::showMap(bool show)
             VoxelExplorer::getInstance()->getMainLayer()->addChild(m_pMapDrawNode);
             m_pMapDrawNode->setCameraMask((unsigned int)CameraFlag::USER2);
             auto winSize = Director::getInstance()->getVisibleSize();
-            m_pMapDrawNode->setScale(winSize.width/32);
+            m_pMapDrawNode->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
+            m_pMapDrawNode->setPosition(Vec2(winSize.width*0.15, winSize.height*0.15));
+            m_pMapDrawNode->setScale(winSize.width/48);
         }
         m_pMapDrawNode->clear();
         

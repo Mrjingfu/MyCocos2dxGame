@@ -31,6 +31,12 @@
           <PlistImageFile Name="ui_frame_7.png" Key="ui_frame_7.png" />
           <PlistImageFile Name="ui_frame_8.png" Key="ui_frame_8.png" />
           <PlistImageFile Name="ui_map_icon.png" Key="ui_map_icon.png" />
+          <PlistImageFile Name="btn_close.png" Key="btn_close.png" />
+          <PlistImageFile Name="ui_shop_icon.png" Key="ui_shop_icon.png" />
+          <PlistImageFile Name="ui_equip_label.png" Key="ui_equip_label.png" />
+          <PlistImageFile Name="ui_btn_back_1.png" Key="ui_btn_back_1.png" />
+          <PlistImageFile Name="ui_btn_back_2.png" Key="ui_btn_back_2.png" />
+          <PlistImageFile Name="ui_msg_icon.png" Key="ui_msg_icon.png" />
         </PlistImageFolder>
         <Project Name="characterLayer.csd" Type="Layer" />
         <Project Name="gameScene.csd" Type="Scene" />
