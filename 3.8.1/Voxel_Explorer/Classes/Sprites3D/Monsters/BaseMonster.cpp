@@ -7,6 +7,7 @@
 //
 
 #include "BaseMonster.hpp"
+#include "BaseLevel.h"
 USING_NS_CC;
 const std::string MONSTER_MODEL_NAMES[] = {
     "MMN_UNKNOWN",
@@ -65,7 +66,105 @@ BaseMonster::BaseMonster()
 {
     m_Type = MT_UNKNOWN;
     m_State = MS_UNKNOWN;
+    m_LastState = MS_UNKNOWN;
 }
 BaseMonster::~BaseMonster()
+{
+}
+void BaseMonster::setState(MonsterState state)
+{
+    if(m_State == state)
+        return;
+    switch (m_State) {
+        case MS_IDLE:
+            onExitIdle();
+            break;
+        case MS_TRACK:
+            onExitTrack();
+            break;
+        case MS_ATTACK:
+            onExitAttack();
+            break;
+        case MS_ESCAPE:
+            onExitEscape();
+            break;
+        case MS_DEATH:
+            onExitDeath();
+            break;
+        default:
+            break;
+    }
+    
+    m_LastState = m_State;
+    m_State = state;
+    
+    switch (m_State) {
+        case MS_IDLE:
+            onEnterIdle();
+            break;
+        case MS_TRACK:
+            onEnterTrack();
+            break;
+        case MS_ATTACK:
+            onEnterAttack();
+            break;
+        case MS_ESCAPE:
+            onEnterEscape();
+            break;
+        case MS_DEATH:
+            onEnterDeath();
+            break;
+        default:
+            break;
+    }
+
+}
+void BaseMonster::onEnter()
+{
+    Actor::onEnter();
+    scheduleUpdate();
+}
+void BaseMonster::onExit()
+{
+    unscheduleUpdate();
+    Actor::onExit();
+}
+void BaseMonster::update(float delta)
+{
+}
+void BaseMonster::onEnterIdle()
+{
+    int flag = TileInfo::PASSABLE | TileInfo::LOS_BLOCKING;
+    updateTerrainTileFlag(flag);
+}
+void BaseMonster::onExitIdle()
+{
+}
+
+void BaseMonster::onEnterTrack()
+{
+}
+void BaseMonster::onExitTrack()
+{
+}
+
+void BaseMonster::onEnterEscape()
+{
+}
+void BaseMonster::onExitEscape()
+{
+}
+
+void BaseMonster::onEnterAttack()
+{
+}
+void BaseMonster::onExitAttack()
+{
+}
+
+void BaseMonster::onEnterDeath()
+{
+}
+void BaseMonster::onExitDeath()
 {
 }

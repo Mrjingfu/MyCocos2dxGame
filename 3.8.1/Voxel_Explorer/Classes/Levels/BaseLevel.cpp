@@ -30,8 +30,8 @@ void BaseLevel::create()
         CCLOGERROR("Create Terrain failed!");
     if(!createMonsters())
         CCLOGERROR("Create Monsters failed!");
-    if(!createItems())
-        CCLOGERROR("Create Items failed!");
+    if(!createUseableItems())
+        CCLOGERROR("Create Useable Items failed!");
 }
 
 BaseLevel::LEVEL_TYPE BaseLevel::getLevelType() const

@@ -131,6 +131,202 @@
 	<key>PIN_DAGGER_PRO_BLUELIGHTDAGGER</key>
 	<string>Frozen Cloud</string>
 	<key>PIN_DAGGER_PRO_RUBYDAGGER</key>
-	<string>Flame</string>
+	<string>Fireflow</string>
+	<key>PIN_AXE_HATCHET</key>
+	<string>Hatchet</string>
+	<key>PIN_AXE_ADZE</key>
+	<string>Adze</string>
+	<key>PIN_AXE_STONEAXE</key>
+	<string>Stone Axe</string>
+	<key>PIN_AXE_BROADAX</key>
+	<string>Broadax</string>
+	<key>PIN_AXE_TOMAHAWK</key>
+	<string>Tomahawk</string>
+	<key>PIN_AXE_HUGEAXE</key>
+	<string>Huge Axe</string>
+	<key>PIN_AXE_DOUBLEBITAX</key>
+	<string>Double-bit Ax</string>
+	<key>PIN_AXE_PRO_HATCHET</key>
+	<string>Dark Iron</string>
+	<key>PIN_AXE_PRO_ADZE</key>
+	<string>Half Moon</string>
+	<key>PIN_AXE_PRO_STONEAXE</key>
+	<string>Cyclotron</string>
+	<key>PIN_AXE_PRO_BROADAX</key>
+	<string>Molten lava</string>
+	<key>PIN_AXE_PRO_TOMAHAWK</key>
+	<string>Berserker</string>
+	<key>PIN_AXE_PRO_HUGEAXE</key>
+	<string>Skull Splitter</string>
+	<key>PIN_AXE_PRO_DOUBLEBITAX</key>
+	<string>Brainhew</string>
+	<key>PIN_SWORD_SWORD</key>
+	<string>Sword</string>
+	<key>PIN_SWORD_STEELSWORD</key>
+	<string>Steel Sword</string>
+	<key>PIN_SWORD_SABRE</key>
+	<string>Sabre</string>
+	<key>PIN_SWORD_HUGESWORD</key>
+	<string>Huge Sword</string>
+	<key>PIN_SWORD_TRIANGLESWORD</key>
+	<string>Triangle Sword</string>
+	<key>PIN_SWORD_JAGGEDSWORD</key>
+	<string>Jagged Sword</string>
+	<key>PIN_SWORD_CRYSTALSWORD</key>
+	<string>Crystal Sword</string>
+	<key>PIN_SWORD_PRO_SWORD</key>
+	<string>Red Lotus</string>
+	<key>PIN_SWORD_PRO_STEELSWORD</key>
+	<string>Flash</string>
+	<key>PIN_SWORD_PRO_SABRE</key>
+	<string>Wind Strike</string>
+	<key>PIN_SWORD_PRO_HUGESWORD</key>
+	<string>Solar Flame</string>
+	<key>PIN_SWORD_PRO_TRIANGLESWORD</key>
+	<string>Bloodletters</string>
+	<key>PIN_SWORD_PRO_JAGGEDSWORD</key>
+	<string>Sawtooth</string>
+	<key>PIN_SWORD_PRO_CRYSTALSWORD</key>
+	<string>No God</string>
+	<key>PIN_MACE_ROLLINGPIN</key>
+	<string>Rolling Pin</string>
+	<key>PIN_MACE_MALLET</key>
+	<string>Mallet</string>
+	<key>PIN_MACE_MACE</key>
+	<string>Mace</string>
+	<key>PIN_MACE_HAMMER</key>
+	<string>Hammer</string>
+	<key>PIN_MACE_WOLFFANGSMACE</key>
+	<string>Wolf&apos;s Fangs Mace</string>
+	<key>PIN_MACE_BONEHAMMER</key>
+	<string>Bone Hammer</string>
+	<key>PIN_MACE_SLEDGEHAMMER</key>
+	<string>Sledge Hammer</string>
+	<key>PIN_MACE_PRO_ROLLINGPIN</key>
+	<string>Dinosaur bone</string>
+	<key>PIN_MACE_PRO_MALLET</key>
+	<string>The hammer of ogre</string>
+	<key>PIN_MACE_PRO_MACE</key>
+	<string>Ruby Mace</string>
+	<key>PIN_MACE_PRO_HAMMER</key>
+	<string>Golden glory</string>
+	<key>PIN_MACE_PRO_WOLFFANGSMACE</key>
+	<string>Mace of the gods</string>
+	<key>PIN_MACE_PRO_BONEHAMMER</key>
+	<string>Sapphire Mace</string>
+	<key>PIN_MACE_PRO_SLEDGEHAMMER</key>
+	<string>Azrael Power</string>
+	<key>PIN_BOW_SHORTBOW</key>
+	<string>Short Bow</string>
+	<key>PIN_BOW_LONGBOW</key>
+	<string>Long Bow</string>
+	<key>PIN_BOW_HORNBOW</key>
+	<string>Horn Bow</string>
+	<key>PIN_BOW_REFLEXBOW</key>
+	<string>Reflex Bow</string>
+	<key>PIN_BOW_EAGLEBOW</key>
+	<string>Eagle Bow</string>
+	<key>PIN_BOW_LAMINATEDBOW</key>
+	<string>Laminated Bow</string>
+	<key>PIN_BOW_GOLDENBOW</key>
+	<string>Golden Bow</string>
+	<key>PIN_BOW_PRO_SHORTBOW</key>
+	<string>Scorpion tail</string>
+	<key>PIN_BOW_PRO_LONGBOW</key>
+	<string>Hexfire</string>
+	<key>PIN_BOW_PRO_HORNBOW</key>
+	<string>Life Terminator</string>
+	<key>PIN_BOW_PRO_REFLEXBOW</key>
+	<string>Shadow Impact</string>
+	<key>PIN_BOW_PRO_EAGLEBOW</key>
+	<string>Hawkeye</string>
+	<key>PIN_BOW_PRO_LAMINATEDBOW</key>
+	<string>Green Hat</string>
+	<key>PIN_BOW_PRO_GOLDENBOW</key>
+	<string>Starsfall</string>
+	<key>PIN_STAFF_OAKSTAFF</key>
+	<string>Oak Staff</string>
+	<key>PIN_STAFF_FIRSTAFF</key>
+	<string>Fir Staff</string>
+	<key>PIN_STAFF_ASHESSTAFF</key>
+	<string>Ashes Staff</string>
+	<key>PIN_STAFF_DEMONSTAFF</key>
+	<string>Demon Staff</string>
+	<key>PIN_STAFF_CITRONSTAFF</key>
+	<string>Citron Staff</string>
+	<key>PIN_STAFF_CLOUDSTAFF</key>
+	<string>Cloud Staff</string>
+	<key>PIN_STAFF_MONKSTAFF</key>
+	<string>Monk Staff</string>
+	<key>PIN_STAFF_PRO_OAKSTAFF</key>
+	<string>Emerald</string>
+	<key>PIN_STAFF_PRO_FIRSTAFF</key>
+	<string>Venus</string>
+	<key>PIN_STAFF_PRO_ASHESSTAFF</key>
+	<string>Cerebus&apos; Bite</string>
+	<key>PIN_STAFF_PRO_DEMONSTAFF</key>
+	<string>Exorcist</string>
+	<key>PIN_STAFF_PRO_CITRONSTAFF</key>
+	<string>The Prius Spear</string>
+	<key>PIN_STAFF_PRO_CLOUDSTAFF</key>
+	<string>Blood courage</string>
+	<key>PIN_STAFF_PRO_MONKSTAFF</key>
+	<string>Archangel</string>
+	<key>PIN_SHIELD_WOODENSHIELD</key>
+	<string>Wooden Shield</string>
+	<key>PIN_SHIELD_TRIANGLESHIELD</key>
+	<string>Triangles Shield</string>
+	<key>PIN_SHIELD_STEELSHIELD</key>
+	<string>Steel Shield</string>
+	<key>PIN_SHIELD_EAGLESHIELD</key>
+	<string>Eagle Shield</string>
+	<key>PIN_SHIELD_OSTEOSCUTE</key>
+	<string>Osteoscute</string>
+	<key>PIN_SHIELD_GOLDENSHIELD</key>
+	<string>Golden Shield</string>
+	<key>PIN_SHIELD_TOWERSHIELD</key>
+	<string>Tower Shield</string>
+	<key>PIN_SHIELD_PRO_WOODENSHIELD</key>
+	<string>Dark defender</string>
+	<key>PIN_SHIELD_PRO_TRIANGLESHIELD</key>
+	<string>Grimace</string>
+	<key>PIN_SHIELD_PRO_STEELSHIELD</key>
+	<string>The night watchman</string>
+	<key>PIN_SHIELD_PRO_EAGLESHIELD</key>
+	<string>Green Goblin</string>
+	<key>PIN_SHIELD_PRO_OSTEOSCUTE</key>
+	<string>Skeleton King&apos;s body</string>
+	<key>PIN_SHIELD_PRO_GOLDENSHIELD</key>
+	<string>Medusa&apos;s mirror</string>
+	<key>PIN_SHIELD_PRO_TOWERSHIELD</key>
+	<string>Wall of sighs</string>
+	<key>PIN_CLOTH_SHOES</key>
+	<string>Shoes</string>
+	<key>PIN_CLOTH_MAGA_CAP</key>
+	<string>Maga Cap</string>
+	<key>PIN_CLOTH_CLOTH</key>
+	<string>Cloth</string>
+	<key>PIN_CLOTH_LEATHERARMOR</key>
+	<string>Leather Armor</string>
+	<key>PIN_CLOTH_CHAINSHOES</key>
+	<string>Chain Shoes</string>
+	<key>PIN_CLOTH_HELEMT</key>
+	<string>Helemt</string>
+	<key>PIN_CLOTH_STEELARMOR</key>
+	<string>Steel Armor</string>
+	<key>PIN_CLOTH_PRO_SHOES</key>
+	<string>Boots of travel</string>
+	<key>PIN_CLOTH_PRO_MAGA_CAP</key>
+	<string>Grand Master&apos;s hat</string>
+	<key>PIN_CLOTH_PRO_CLOTH</key>
+	<string>Silver moonlight</string>
+	<key>PIN_CLOTH_PRO_LEATHERARMOR</key>
+	<string>Life Cage</string>
+	<key>PIN_CLOTH_PRO_CHAINSHOES</key>
+	<string>Foot diameter of cloud</string>
+	<key>PIN_CLOTH_PRO_HELEMT</key>
+	<string>Knight looks</string>
+	<key>PIN_CLOTH_PRO_STEELARMOR</key>
+	<string>No widow</string>
 </dict>
 </plist>

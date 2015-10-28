@@ -70,14 +70,42 @@ public:
     } MonsterType;
     typedef enum{
         MS_UNKNOWN,
+        MS_IDLE,
+        MS_TRACK,
+        MS_ESCAPE,
+        MS_ATTACK,
+        MS_DEATH,
         MS_MAX
     } MonsterState;
+public:
+    MonsterState getState() const { return m_State; }
+    void setState(MonsterState state);
 protected:
     BaseMonster();
     ~BaseMonster();
+    
+    virtual void onEnter();
+    virtual void onExit();
+    virtual void update(float delta);
+    
+    virtual void onEnterIdle();
+    virtual void onExitIdle();
+    
+    virtual void onEnterTrack();
+    virtual void onExitTrack();
+    
+    virtual void onEnterEscape();
+    virtual void onExitEscape();
+    
+    virtual void onEnterAttack();
+    virtual void onExitAttack();
+    
+    virtual void onEnterDeath();
+    virtual void onExitDeath();
 protected:
     MonsterType         m_Type;
     MonsterState        m_State;
+    MonsterState        m_LastState;
 };
 
 #endif /* BaseMonster_hpp */
