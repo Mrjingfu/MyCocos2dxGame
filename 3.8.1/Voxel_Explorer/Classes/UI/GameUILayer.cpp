@@ -12,30 +12,35 @@
 #include "PopupUILayerManager.h"
 #include "PlayerProperty.hpp"
 #include "GameFormula.hpp"
+#include "VoxelExplorer.h"
 USING_NS_CC;
 GameUILayer::GameUILayer()
 {
-    m_pRoleBtn      = nullptr;
-    m_pRoleHpBar    = nullptr;
-    m_pRoleCurHp    = nullptr;
-    m_pRoleMaxHp    = nullptr;
-    m_pRoleMpBar    = nullptr;
-    m_pRoleCurMp    = nullptr;
-    m_pRoleMaxMp    = nullptr;
-    m_pRoleExpBar   = nullptr;
-    m_pRoleLevel    = nullptr;
+    m_pRoleBtn          = nullptr;
+    m_pRoleHpBar        = nullptr;
+    m_pRoleCurHp        = nullptr;
+    m_pRoleMaxHp        = nullptr;
+    m_pRoleMpBar        = nullptr;
+    m_pRoleCurMp        = nullptr;
+    m_pRoleMaxMp        = nullptr;
+    m_pRoleExpBar       = nullptr;
+    m_pRoleLevel        = nullptr;
+    m_pMonsterLayout    = nullptr;
+    m_pMonsterCurHp     = nullptr;
+    m_pMonsterMaxHp     = nullptr;
+    m_pMonsterLevel     = nullptr;
+    m_pMonsterName      = nullptr;
+    
+    m_pGameMapBtn       = nullptr;
+    m_pGameMsgBtn       = nullptr;
+    m_pGameSearchBtn    = nullptr;
     
     for (int i = 1 ; i<9; i++) {
         m_pRoleBuffers[i] = nullptr;
         m_pMonsterBuffers[i] = nullptr;
     }
     
-    
-    m_pMonsterLayout =nullptr;
-    m_pMonsterCurHp  = nullptr;;
-    m_pMonsterMaxHp  = nullptr;;
-    m_pMonsterLevel  = nullptr;;
-    m_pMonsterName   = nullptr;
+    _isOpenSmailMap = false;
     
 }
 GameUILayer::~GameUILayer()
@@ -135,12 +140,57 @@ bool GameUILayer::addEvents()
         m_pMonsterBuffers[i]->setVisible(false);
     }
 
+    
+    m_pGameMsgBtn = dynamic_cast<ui::ImageView*>(UtilityHelper::seekNodeByName(m_pRootNode, "game_btn_msg"));
+    if (!m_pGameMsgBtn)
+        return false;
+    m_pGameMsgBtn->setTouchEnabled(true);
+    m_pGameMsgBtn->addClickEventListener(CC_CALLBACK_1(GameUILayer::onClickMsg, this));
+
+    m_pGameMapBtn = dynamic_cast<ui::ImageView*>(UtilityHelper::seekNodeByName(m_pRootNode, "game_btn_map"));
+    if (!m_pGameMapBtn)
+        return false;
+    m_pGameMapBtn->setTouchEnabled(true);
+    m_pGameMapBtn->addClickEventListener(CC_CALLBACK_1(GameUILayer::onClickMap, this));
+    
+    m_pGameSearchBtn = dynamic_cast<ui::ImageView*>(UtilityHelper::seekNodeByName(m_pRootNode, "game_btn_search"));
+    if (!m_pGameSearchBtn)
+        return false;
+    m_pGameSearchBtn->setTouchEnabled(true);
+    m_pGameSearchBtn->addClickEventListener(CC_CALLBACK_1(GameUILayer::onClickSearch, this));
+    
+    
     return true;
 }
 void GameUILayer::onClickRole(Ref* ref)
 {
     CHECK_ACTION(ref);
+    CCLOG("onClickRole");
     PopupUILayerManager::getInstance()->openPopup(ePopupRole);
+}
+void GameUILayer::onClickMap(cocos2d::Ref *ref)
+{
+    CHECK_ACTION(ref);
+    CCLOG("onClickMap");
+    if (_isOpenSmailMap) {
+        VoxelExplorer::getInstance()->getCurrentLevel()->showMap(false);
+        _isOpenSmailMap = false;
+    }else{
+        VoxelExplorer::getInstance()->getCurrentLevel()->showMap(true);
+         _isOpenSmailMap = true;
+    }
+    
+    
+}
+void GameUILayer::onClickMsg(cocos2d::Ref *ref)
+{
+    CHECK_ACTION(ref);
+    CCLOG("onClickMsg");
+}
+void GameUILayer::onClickSearch(cocos2d::Ref *ref)
+{
+    CHECK_ACTION(ref);
+    CCLOG("onClickSearch");
 }
 void GameUILayer::onEventLevelUp(cocos2d::EventCustom *sender)
 {

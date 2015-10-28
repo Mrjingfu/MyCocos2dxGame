@@ -82,6 +82,8 @@ public:
     
     void load();
     void save();
+    
+    virtual void showMap(bool show) = 0;
 protected:
     virtual bool build() = 0;
     virtual bool createTerrain() = 0;
@@ -89,7 +91,7 @@ protected:
     virtual bool createMonsters() = 0;
     virtual bool createItems() = 0;
 
-    virtual void showMap(bool show) = 0;
+    
     
 private:
     int assignTerrainTileFlag(TerrainTile::TileType type);

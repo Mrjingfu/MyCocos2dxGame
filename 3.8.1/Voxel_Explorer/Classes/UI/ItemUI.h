@@ -29,6 +29,7 @@ protected:
     bool _isHaveItem;
     bool _isEquip;
     cocos2d::ui::ImageView* m_pItemImage;
+    cocos2d::ui::ImageView* m_pEquipmark;
     std::string m_sItemProp;
 };
 

@@ -21,6 +21,9 @@ public:
     virtual bool addEvents();
 protected:
     void onClickRole(Ref* ref);
+    void onClickMap(Ref* ref);
+    void onClickSearch(Ref* ref);
+    void onClickMsg(Ref* ref);
     void onEvenetMeetMonster(cocos2d::EventCustom *sender);
     void onEventLevelUp(cocos2d::EventCustom *sender); 
     void onEventDead(cocos2d::EventCustom *sender);
@@ -43,6 +46,12 @@ private:
     cocos2d::ui::Text*       m_pMonsterLevel;
     cocos2d::ui::Text*       m_pMonsterName;
     cocos2d::ui::ImageView*  m_pMonsterBuffers[8];
+    
+    cocos2d::ui::ImageView*  m_pGameMsgBtn;
+    cocos2d::ui::ImageView*  m_pGameMapBtn;
+    cocos2d::ui::ImageView*  m_pGameSearchBtn;
+private:
+    bool _isOpenSmailMap;
 };
 
 #endif /* GameUILayer_h */

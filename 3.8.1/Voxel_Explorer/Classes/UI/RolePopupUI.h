@@ -31,11 +31,14 @@ private:
     void onEventEquipOrnament(cocos2d::EventCustom *sender);
     void onEventExtendBag(cocos2d::EventCustom *sender);
 private:
-   TGridView* gridView;
-   cocos2d::ui::ImageView* m_pSelectFram;
+   TGridView* m_pGridView;
+   cocos2d::ui::Button* m_pBtnClose;
+   cocos2d::ui::Button* m_pBtnChangeBag;
    ItemUI* m_pWeaponUi;
    ItemUI* m_pArmorUi;
-   ItemUI* m_pOrnament;
+   ItemUI* m_pOrnamentUi;
+   ItemUI* m_pOtherUi;
+   cocos2d::ui::ImageView* m_pShopBtn;
 };
 
 #endif /* RolePopUpUI_hpp */

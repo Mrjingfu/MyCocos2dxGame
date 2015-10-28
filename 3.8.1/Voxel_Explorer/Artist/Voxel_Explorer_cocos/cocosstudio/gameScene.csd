@@ -112,13 +112,13 @@
                 <PreSize X="0.3846" Y="0.6250" />
                 <FileData Type="PlistSubImage" Path="ui_frame_1.png" Plist="ui_sprite.plist" />
               </AbstractNodeData>
-              <AbstractNodeData Name="progress_monster_blood_bg" ActionTag="-1953810361" Tag="53" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="4.9840" RightMargin="55.0160" TopMargin="35.5428" BottomMargin="33.4572" Scale9Enable="True" LeftEage="5" RightEage="5" TopEage="5" BottomEage="5" Scale9OriginX="5" Scale9OriginY="5" Scale9Width="6" Scale9Height="1" ctype="ImageViewObjectData">
+              <AbstractNodeData Name="progress_monster_blood_bg" ActionTag="-1953810361" Tag="53" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="4.9880" RightMargin="55.0120" TopMargin="35.5400" BottomMargin="33.4600" Scale9Enable="True" LeftEage="5" RightEage="5" TopEage="5" BottomEage="5" Scale9OriginX="5" Scale9OriginY="5" Scale9Width="6" Scale9Height="1" ctype="ImageViewObjectData">
                 <Size X="70.0000" Y="11.0000" />
                 <Children>
                   <AbstractNodeData Name="progress_monster_blood" ActionTag="-1171441373" Tag="54" RotationSkewX="180.0000" RotationSkewY="180.0000" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="69.0061" RightMargin="-67.0061" TopMargin="1.0000" BottomMargin="1.0000" ProgressInfo="69" ctype="LoadingBarObjectData">
                     <Size X="68.0000" Y="9.0000" />
                     <AnchorPoint ScaleY="0.5000" />
-                    <Position X="69.0061" Y="5.5000" />
+                    <Position X="69.0060" Y="5.5000" />
                     <Scale ScaleX="1.0000" ScaleY="1.0000" />
                     <CColor A="255" R="255" G="255" B="255" />
                     <PrePosition X="0.9858" Y="0.5000" />
@@ -128,7 +128,7 @@
                   <AbstractNodeData Name="progress_monster_blood_maxnum" ActionTag="-91454309" Tag="55" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="40.5000" RightMargin="-30.5000" TopMargin="-12.4999" BottomMargin="-12.5001" FontSize="36" LabelText="100" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
                     <Size X="60.0000" Y="36.0000" />
                     <AnchorPoint ScaleY="0.5000" />
-                    <Position X="40.5000" Y="5.4999" />
+                    <Position X="40.5020" Y="5.5000" />
                     <Scale ScaleX="0.2000" ScaleY="0.2000" />
                     <CColor A="255" R="255" G="255" B="255" />
                     <PrePosition X="0.5786" Y="0.5000" />
@@ -152,7 +152,7 @@
                   <AbstractNodeData Name="progress_monster_blood_underline" ActionTag="388727268" Tag="50" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="24.5642" RightMargin="18.4358" TopMargin="-12.4809" BottomMargin="-12.5191" FontSize="36" LabelText="/" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
                     <Size X="27.0000" Y="36.0000" />
                     <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-                    <Position X="38.0642" Y="5.4809" />
+                    <Position X="38.0660" Y="5.4813" />
                     <Scale ScaleX="0.2000" ScaleY="0.2000" />
                     <CColor A="255" R="255" G="255" B="255" />
                     <PrePosition X="0.5438" Y="0.4983" />
@@ -163,7 +163,7 @@
                   </AbstractNodeData>
                 </Children>
                 <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-                <Position X="39.9840" Y="38.9572" />
+                <Position X="39.9880" Y="38.9600" />
                 <Scale ScaleX="1.0000" ScaleY="1.0000" />
                 <CColor A="255" R="255" G="255" B="255" />
                 <PrePosition X="0.3076" Y="0.4870" />
@@ -173,7 +173,7 @@
               <AbstractNodeData Name="monster_name" ActionTag="-518891854" Tag="61" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="-6.6492" RightMargin="40.6492" TopMargin="4.4526" BottomMargin="39.5474" FontSize="36" LabelText="name" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
                 <Size X="96.0000" Y="36.0000" />
                 <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-                <Position X="41.3508" Y="57.5474" />
+                <Position X="41.3530" Y="57.5440" />
                 <Scale ScaleX="0.3000" ScaleY="0.3000" />
                 <CColor A="255" R="255" G="255" B="255" />
                 <PrePosition X="0.3181" Y="0.7193" />
@@ -185,7 +185,7 @@
               <AbstractNodeData Name="monster_lv_text" ActionTag="-426991323" Tag="59" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="75.3940" RightMargin="13.6060" TopMargin="-10.0000" BottomMargin="54.0000" FontSize="36" LabelText="LV" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
                 <Size X="41.0000" Y="36.0000" />
                 <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-                <Position X="95.8940" Y="72.0000" />
+                <Position X="95.8880" Y="72.0000" />
                 <Scale ScaleX="0.3000" ScaleY="0.3000" />
                 <CColor A="255" R="144" G="238" B="144" />
                 <PrePosition X="0.7376" Y="0.9000" />
@@ -197,7 +197,7 @@
               <AbstractNodeData Name="monster_lv_num" ActionTag="1405423191" Tag="60" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="103.8370" RightMargin="-33.8370" TopMargin="-10.0000" BottomMargin="54.0000" FontSize="36" LabelText="???" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
                 <Size X="69.0000" Y="36.0000" />
                 <AnchorPoint ScaleY="0.5000" />
-                <Position X="103.8370" Y="72.0000" />
+                <Position X="103.8310" Y="72.0000" />
                 <Scale ScaleX="0.3000" ScaleY="0.3000" />
                 <CColor A="255" R="255" G="255" B="255" />
                 <PrePosition X="0.7987" Y="0.9000" />
@@ -330,7 +330,7 @@
                   <AbstractNodeData Name="progress_role_blood" ActionTag="-2002528251" Tag="14" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="1.0470" RightMargin="0.9530" TopMargin="1.0000" BottomMargin="1.0000" ProgressInfo="61" ctype="LoadingBarObjectData">
                     <Size X="68.0000" Y="9.0000" />
                     <AnchorPoint ScaleY="0.5000" />
-                    <Position X="1.0470" Y="5.5000" />
+                    <Position X="1.0500" Y="5.5000" />
                     <Scale ScaleX="1.0000" ScaleY="1.0000" />
                     <CColor A="255" R="255" G="255" B="255" />
                     <PrePosition X="0.0150" Y="0.5000" />
@@ -388,7 +388,7 @@
                   <AbstractNodeData Name="progress_role_margic" ActionTag="1588755434" Tag="23" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="0.8469" RightMargin="1.1531" TopMargin="0.9494" BottomMargin="1.0506" ProgressInfo="61" ctype="LoadingBarObjectData">
                     <Size X="68.0000" Y="9.0000" />
                     <AnchorPoint ScaleY="0.5000" />
-                    <Position X="0.8469" Y="5.5506" />
+                    <Position X="0.8470" Y="5.5506" />
                     <Scale ScaleX="1.0000" ScaleY="1.0000" />
                     <CColor A="255" R="255" G="255" B="255" />
                     <PrePosition X="0.0121" Y="0.5046" />
@@ -455,7 +455,7 @@
               <AbstractNodeData Name="role_lv_num" ActionTag="1922821858" Tag="58" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="23.2420" RightMargin="46.7580" TopMargin="-10.0001" BottomMargin="54.0001" FontSize="36" LabelText="123" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
                 <Size X="60.0000" Y="36.0000" />
                 <AnchorPoint ScaleY="0.5000" />
-                <Position X="23.2420" Y="72.0001" />
+                <Position X="23.2440" Y="72.0000" />
                 <Scale ScaleX="0.3000" ScaleY="0.3000" />
                 <CColor A="255" R="255" G="255" B="255" />
                 <PrePosition X="0.1788" Y="0.9000" />
@@ -501,33 +501,33 @@
           <AbstractNodeData Name="game_toolbar_bg" ActionTag="-1103413974" Tag="43" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" TopMargin="439.4720" BottomMargin="0.5280" Scale9Enable="True" LeftEage="5" RightEage="5" TopEage="5" BottomEage="5" Scale9OriginX="5" Scale9OriginY="5" Scale9Width="4" Scale9Height="4" ctype="ImageViewObjectData">
             <Size X="320.0000" Y="40.0000" />
             <Children>
-              <AbstractNodeData Name="Image_1" ActionTag="-975191104" Tag="46" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" RightMargin="275.0000" TopMargin="-0.5200" BottomMargin="0.5200" Scale9Enable="True" LeftEage="5" RightEage="5" TopEage="5" BottomEage="5" Scale9OriginX="5" Scale9OriginY="5" Scale9Width="6" Scale9Height="6" ctype="ImageViewObjectData">
+              <AbstractNodeData Name="game_btn_msg" ActionTag="-975191104" Tag="46" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" RightMargin="275.0000" Scale9Enable="True" LeftEage="5" RightEage="5" TopEage="5" BottomEage="5" Scale9OriginX="5" Scale9OriginY="5" Scale9Width="6" Scale9Height="6" ctype="ImageViewObjectData">
                 <Size X="45.0000" Y="40.0000" />
                 <Children>
-                  <AbstractNodeData Name="button_rewardbtn_icon_search_1" ActionTag="-986382678" Tag="47" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="-15.5000" RightMargin="-15.5000" TopMargin="-18.0000" BottomMargin="-18.0000" ctype="SpriteObjectData">
-                    <Size X="9.0000" Y="10.0000" />
+                  <AbstractNodeData Name="game_btn_msg_icon" ActionTag="-986382678" Tag="47" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="-15.5000" RightMargin="-15.5000" TopMargin="-18.0000" BottomMargin="-18.0000" ctype="SpriteObjectData">
+                    <Size X="20.0000" Y="20.0000" />
                     <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
                     <Position X="22.5000" Y="20.0000" />
                     <Scale ScaleX="1.0000" ScaleY="1.0000" />
                     <CColor A="255" R="255" G="255" B="255" />
                     <PrePosition X="0.5000" Y="0.5000" />
                     <PreSize X="0.0000" Y="0.0000" />
-                    <FileData Type="PlistSubImage" Path="ui_map_icon.png" Plist="ui_sprite.plist" />
+                    <FileData Type="PlistSubImage" Path="ui_msg_icon.png" Plist="ui_sprite.plist" />
                     <BlendFunc Src="770" Dst="771" />
                   </AbstractNodeData>
                 </Children>
                 <AnchorPoint ScaleY="0.5000" />
-                <Position Y="20.5200" />
+                <Position Y="20.0000" />
                 <Scale ScaleX="1.0000" ScaleY="1.0000" />
                 <CColor A="255" R="255" G="255" B="255" />
-                <PrePosition Y="0.5130" />
+                <PrePosition Y="0.5000" />
                 <PreSize X="0.1406" Y="1.0000" />
                 <FileData Type="PlistSubImage" Path="ui_frame_8.png" Plist="ui_sprite.plist" />
               </AbstractNodeData>
-              <AbstractNodeData Name="Image_1_0" ActionTag="1944506389" Tag="48" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="275.0000" Scale9Enable="True" LeftEage="5" RightEage="5" TopEage="5" BottomEage="5" Scale9OriginX="5" Scale9OriginY="5" Scale9Width="6" Scale9Height="6" ctype="ImageViewObjectData">
+              <AbstractNodeData Name="game_btn_search" ActionTag="1944506389" Tag="48" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="275.0000" Scale9Enable="True" LeftEage="5" RightEage="5" TopEage="5" BottomEage="5" Scale9OriginX="5" Scale9OriginY="5" Scale9Width="6" Scale9Height="6" ctype="ImageViewObjectData">
                 <Size X="45.0000" Y="40.0000" />
                 <Children>
-                  <AbstractNodeData Name="button_rewardbtn_icon_search_1" ActionTag="9808381" Tag="49" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="-15.5000" RightMargin="-15.5000" TopMargin="-18.0000" BottomMargin="-18.0000" ctype="SpriteObjectData">
+                  <AbstractNodeData Name="game_btn_search_icon" ActionTag="9808381" Tag="49" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="-15.5000" RightMargin="-15.5000" TopMargin="-18.0000" BottomMargin="-18.0000" ctype="SpriteObjectData">
                     <Size X="40.0000" Y="56.0000" />
                     <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
                     <Position X="22.5000" Y="20.0000" />
@@ -547,13 +547,36 @@
                 <PreSize X="0.1406" Y="1.0000" />
                 <FileData Type="PlistSubImage" Path="ui_frame_8.png" Plist="ui_sprite.plist" />
               </AbstractNodeData>
+              <AbstractNodeData Name="game_btn_map" ActionTag="1762313799" Tag="53" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="43.8828" RightMargin="231.1172" TopMargin="0.0000" BottomMargin="0.0000" Scale9Enable="True" LeftEage="5" RightEage="5" TopEage="5" BottomEage="5" Scale9OriginX="5" Scale9OriginY="5" Scale9Width="6" Scale9Height="6" ctype="ImageViewObjectData">
+                <Size X="45.0000" Y="40.0000" />
+                <Children>
+                  <AbstractNodeData Name="game_btn_map_icon" ActionTag="1575088828" Tag="54" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="-15.5000" RightMargin="-15.5000" TopMargin="-18.0000" BottomMargin="-18.0000" ctype="SpriteObjectData">
+                    <Size X="9.0000" Y="10.0000" />
+                    <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+                    <Position X="22.5000" Y="20.0000" />
+                    <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                    <CColor A="255" R="255" G="255" B="255" />
+                    <PrePosition X="0.5000" Y="0.5000" />
+                    <PreSize X="0.0000" Y="0.0000" />
+                    <FileData Type="PlistSubImage" Path="ui_map_icon.png" Plist="ui_sprite.plist" />
+                    <BlendFunc Src="770" Dst="771" />
+                  </AbstractNodeData>
+                </Children>
+                <AnchorPoint ScaleY="0.5000" />
+                <Position X="43.8828" Y="20.0000" />
+                <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                <CColor A="255" R="255" G="255" B="255" />
+                <PrePosition X="0.1371" Y="0.5000" />
+                <PreSize X="0.1406" Y="1.0000" />
+                <FileData Type="PlistSubImage" Path="ui_frame_8.png" Plist="ui_sprite.plist" />
+              </AbstractNodeData>
               <AbstractNodeData Name="progress_role_exp_bg" ActionTag="589028796" Tag="51" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" TopMargin="-4.0000" BottomMargin="40.0000" Scale9Enable="True" LeftEage="5" RightEage="5" TopEage="3" BottomEage="3" Scale9OriginX="5" Scale9OriginY="3" Scale9Width="6" Scale9Height="5" ctype="ImageViewObjectData">
                 <Size X="320.0000" Y="4.0000" />
                 <Children>
                   <AbstractNodeData Name="progress_role_exp" ActionTag="1692509096" Tag="54" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="2.0000" RightMargin="2.0000" TopMargin="1.0000" BottomMargin="1.0000" ProgressInfo="0" ctype="LoadingBarObjectData">
                     <Size X="316.0000" Y="2.0000" />
                     <AnchorPoint ScaleY="0.5000" />
-                    <Position X="2.0000" Y="2.0000" />
+                    <Position X="2.0160" Y="2.0000" />
                     <Scale ScaleX="1.0000" ScaleY="1.0000" />
                     <CColor A="255" R="255" G="255" B="255" />
                     <PrePosition X="0.0063" Y="0.5000" />
