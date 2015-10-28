@@ -12,6 +12,7 @@
 #include "TerrainTile.hpp"
 #include "StandardDoor.hpp"
 #include "RandomDungeon.hpp"
+#include "AlisaMethod.h"
 USING_NS_CC;
 
 StandardLevel::StandardLevel()
@@ -20,6 +21,11 @@ StandardLevel::StandardLevel()
     m_nMinAreaSize  = 7;
     m_nMaxAreaSize  = 9;
     m_nStandardAreaCount = 0;
+    m_nSpecialAreaCount = 0;
+    m_nTunnelAreaCount = 0;
+    m_nPassageAreaCount = 0;
+    
+    m_Style = LS_UNKNOWN;
 }
 bool StandardLevel::build()
 {
@@ -264,7 +270,7 @@ void StandardLevel::splitArea(const cocos2d::Rect& rect)
 }
 void StandardLevel::assignAreasType()
 {
-    int specialRooms = 0;
+    m_nSpecialAreaCount = 0;
     
     for (PathGraphNode* node : m_Areas) {
         Area* area = static_cast<Area*>(node);
@@ -272,10 +278,10 @@ void StandardLevel::assignAreasType()
         {
             if(area->getAreaType() == Area::AT_UNKNOWN && area->getConnectedAreas().size() == 1)
             {
-                if(m_SpecailAreas.size() > 0 && area->getRect().size.width > 3 && area->getRect().size.height > 3 && cocos2d::random(0, specialRooms*specialRooms + 1) == 0)
+                if(m_SpecailAreas.size() > 0 && area->getRect().size.width > 3 && area->getRect().size.height > 3 && cocos2d::random(0, m_nSpecialAreaCount*m_nSpecialAreaCount + 1) == 0)
                 {
                     area->setAreaType(Area::AT_SHOP);
-                    specialRooms++;
+                    m_nSpecialAreaCount++;
                 }
                 else if(cocos2d::random(0, 1) == 0)
                 {
@@ -299,8 +305,18 @@ void StandardLevel::assignAreasType()
         }
     }
     ///生成通道
-    int rand = cocos2d::random(0, 2);
+    m_Style = cocos2d::random(LS_STANDARD, LS_PASSAGE);
+    
+    float percentStandard = 0.6f;
+    float percentTunnel = 0.1f;
+    float percentPassage = 1.0 - percentStandard - percentTunnel;
+    AlisaMethod* am = AlisaMethod::create(percentStandard,percentPassage,percentTunnel,-1.0, NULL);
+    if(am)
+        m_Style = (LevelStyle)am->getRandomIndex();
+    
     m_nStandardAreaCount = 0;
+    m_nTunnelAreaCount = 0;
+    m_nPassageAreaCount = 0;
     for (PathGraphNode* node : m_Areas) {
         Area* area = static_cast<Area*>(node);
         if(area)
@@ -313,16 +329,18 @@ void StandardLevel::assignAreasType()
                     area->setAreaType(Area::AT_STANDARD);
                     m_nStandardAreaCount++;
                 } else {
-                    switch (rand) {
-                        case 0:
+                    switch (m_Style) {
+                        case LS_TUNNEL:
                             area->setAreaType(Area::AT_TUNNEL);
+                            m_nTunnelAreaCount++;
                             break;
-                        case 1:
+                        case LS_STANDARD:
                             area->setAreaType(Area::AT_STANDARD);
                             m_nStandardAreaCount++;
                             break;
-                        case 2:
+                        case LS_PASSAGE:
                             area->setAreaType(Area::AT_PASSAGE);
+                            m_nPassageAreaCount++;
                             break;
                         default:
                             break;
@@ -338,18 +356,21 @@ void StandardLevel::assignAreasType()
     while (m_nStandardAreaCount < 4) {
         int rand = cocos2d::random(0, (int)(m_Areas.size())-1);
         Area* area = static_cast<Area*>(m_Areas[rand]);
-        if (area != nullptr && area->getAreaType() == Area::AT_TUNNEL) {
-            area->setAreaType(Area::AT_STANDARD);
-            m_nStandardAreaCount++;
+        if (area != nullptr) {
+            if(area->getAreaType() == Area::AT_TUNNEL)
+            {
+                area->setAreaType(Area::AT_STANDARD);
+                m_nTunnelAreaCount--;
+                m_nStandardAreaCount++;
+            }
+            else if(area->getAreaType() == Area::AT_PASSAGE)
+            {
+                area->setAreaType(Area::AT_STANDARD);
+                m_nPassageAreaCount--;
+                m_nStandardAreaCount++;
+            }
         }
     }
-    
-//    ///替换隧道为通道
-//    for (PathGraphNode* node : m_Areas) {
-//        Area* area = static_cast<Area*>(node);
-//        if(area && area->getAreaType() == Area::AT_TUNNEL)
-//            area->setAreaType(Area::AT_PASSAGE);
-//    }
 }
 void StandardLevel::generate()
 {
@@ -652,7 +673,7 @@ void StandardLevel::generateSpawnPoint()
             m_spawnPoint = Vec2((m_Map[i].m_nX+1)*TerrainTile::CONTENT_SCALE,(m_Map[i].m_nY)*TerrainTile::CONTENT_SCALE);
     }
 }
-int StandardLevel::randomRespawnCell()
+int StandardLevel::randomMonsterRespawnCell()
 {
     int count = 0;
     int tileIndex = -1;
@@ -663,9 +684,19 @@ int StandardLevel::randomRespawnCell()
         }
         int rand = cocos2d::random(0, (int)(m_Areas.size())-1);
         Area* area = static_cast<Area*>(m_Areas[rand]);
-        if (area == nullptr || area->getAreaType() != Area::AT_STANDARD)
+        if (area == nullptr)
             continue;
-        CCASSERT(area->getAreaType() != Area::AT_ENTRANCE, "fuck");
+        if(m_Style == LS_PASSAGE)
+        {
+            if(area->getAreaType() != Area::AT_STANDARD)
+                if(area->getAreaType() != Area::AT_PASSAGE)
+                    continue;
+        }
+        else
+        {
+            if(area->getAreaType() != Area::AT_STANDARD)
+                continue;
+        }
         tileIndex = area->getRandomTile(this);
         if((m_Map[tileIndex].m_Flag & TileInfo::LOS_BLOCKING) != 0)
             continue;
@@ -674,3 +705,26 @@ int StandardLevel::randomRespawnCell()
         }
     }
 }
+int StandardLevel::randomPickableRespawnCell()
+{
+    int count = 0;
+    int tileIndex = -1;
+    
+    while (true) {
+        if (++count > 10) {
+            return -1;
+        }
+        int rand = cocos2d::random(0, (int)(m_Areas.size())-1);
+        Area* area = static_cast<Area*>(m_Areas[rand]);
+        if (area == nullptr)
+            continue;
+        if(area->getAreaType() != Area::AT_STANDARD)
+            continue;
+
+        tileIndex = area->getRandomTile(this);
+        if((m_Map[tileIndex].m_Flag & TileInfo::LOS_BLOCKING) != 0)
+            continue;
+        if ((m_Map[tileIndex].m_Flag & TileInfo::PASSABLE) != 0 && (m_Map[tileIndex].m_Flag & TileInfo::PICKABLE) == 0) {
+            return tileIndex;
+        }
+    }}

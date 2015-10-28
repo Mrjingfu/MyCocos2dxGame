@@ -14,11 +14,6 @@ static const CChaosNumber gsMaxCriticalStrikeRate = 0.3f;
 static const CChaosNumber gsMaxDodgeRate = 0.2f;
 static const CChaosNumber gsMaxMagicItemFindRate = 0.65f;
 
-int GameFormula::getLevelMonsterCount(int standardAreaNum)
-{
-    return 2 + standardAreaNum*2 + cocos2d::random(0, 5);
-}
-
 int GameFormula::getNextLevelExp(int currentLevel)
 {
     int exp = floor((pow((currentLevel-1), 3)+60)/5*((currentLevel-1)*2+60)+60);

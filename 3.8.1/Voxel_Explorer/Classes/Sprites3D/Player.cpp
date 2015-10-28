@@ -215,6 +215,7 @@ void Player::onLand()
 {
     setState(PS_IDLE);
     VoxelExplorer::getInstance()->cameraTrackPlayer();
+    VoxelExplorer::getInstance()->checkPickItem();
 }
 bool Player::createPlayerLight()
 {

@@ -24,9 +24,11 @@ public:
     
     bool checkMovable();
     void cameraTrackPlayer();
+    void checkPickItem();
     void searchAndCheck();      ///侦查
     void handlDoor(const cocos2d::Vec2& mapPos);            ///开门
-    void handlTriggerTrap(const cocos2d::Vec2& mapPos);     ///处罚机关
+    void handlTriggerTrap(const cocos2d::Vec2& mapPos);     ///触发机关
+    void handlPickItem(const cocos2d::Vec2& mapPos);        ///拾取道具
     
     cocos2d::Layer* getMainLayer() const { return m_pMainLayer; }
     cocos2d::Layer* get3DLayer() const { return m_p3DLayer; }

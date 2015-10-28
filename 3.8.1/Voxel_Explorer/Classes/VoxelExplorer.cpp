@@ -12,6 +12,8 @@
 #include "BaseDoor.hpp"
 #include "LevelResourceManager.h"
 #include "RandomDungeon.hpp"
+#include "PickableItem.hpp"
+#include "PlayerProperty.hpp"
 USING_NS_CC;
 
 VoxelExplorer* g_pVoxelExplorerInstance = nullptr;
@@ -111,6 +113,14 @@ void VoxelExplorer::cameraTrackPlayer()
         m_pMainCamera->runAction(moveTo);
     }
 }
+void VoxelExplorer::checkPickItem()
+{
+    if(!m_pCurrentLevel || !m_pPlayer)
+        return;
+    int flag = m_pCurrentLevel->getTerrainTileFlag(m_pPlayer->getPosInMap().x, m_pPlayer->getPosInMap().y);
+    if(flag & TileInfo::PICKABLE)
+        handlPickItem(m_pPlayer->getPosInMap());
+}
 void VoxelExplorer::searchAndCheck()    ///侦查
 {
 }
@@ -144,8 +154,29 @@ void VoxelExplorer::handlDoor(const cocos2d::Vec2& mapPos)
 
     }
 }
-void VoxelExplorer::handlTriggerTrap(const cocos2d::Vec2& mapPos)     ///处罚机关
+void VoxelExplorer::handlTriggerTrap(const cocos2d::Vec2& mapPos)     ///触发机关
 {
+}
+void VoxelExplorer::handlPickItem(const cocos2d::Vec2& mapPos)        ///拾取道具
+{
+    if(m_pPickableItemsLayer && m_pPlayer)
+    {
+        for (const auto& child : m_pPickableItemsLayer->getChildren())
+        {
+            PickableItem* item = static_cast<PickableItem*>(child);
+            if(item && item->getPosInMap() == mapPos)
+            {
+                if(item->getState() == PickableItem::PIS_IDLE)
+                {
+                    if(PlayerProperty::getInstance()->addItemToBag(item->getPickableItemType()))
+                    {
+                        item->setState(PickableItem::PIS_FADEOUT);
+                        return;
+                    }
+                }
+            }
+        }
+    }
 }
 bool VoxelExplorer::createLayers()
 {

@@ -47,12 +47,12 @@ void BaseLevel::generateTerrainTiles(int x, int y , int width, int height, Terra
 {
     int pos = y * m_nWidth + x;
     for (int i = y; i < y + height; i++, pos += m_nWidth) {
-        for (int j = pos; j<(pos + width); j++) {
+        for (int j = pos, k = x; j<(pos + width); j++, k++) {
             m_Map[j].m_Type = tileType;
             m_Map[j].m_AreaType = areaType;
             m_Map[j].m_Flag = assignTerrainTileFlag(tileType);
-            m_Map[j].m_nX = x;
-            m_Map[j].m_nY = y;
+            m_Map[j].m_nX = k;
+            m_Map[j].m_nY = i;
             m_Map[j].m_Dir = dir;
         }
     }
@@ -66,6 +66,11 @@ void BaseLevel::setTerrainTile(int x, int y, TerrainTile::TileType tileType, Are
     m_Map[index].m_nX = x;
     m_Map[index].m_nY = y;
     m_Map[index].m_Dir = dir;
+}
+int BaseLevel::getTerrainTileFlag(int x, int y)
+{
+    int index = x + y * m_nWidth;
+    return m_Map[index].m_Flag;
 }
 void BaseLevel::setTerrainTileFlag(int x, int y, int flag )
 {
@@ -106,6 +111,11 @@ bool BaseLevel::checkMovable(Actor* actor)
         pos += Vec2(0, -1);
     int index = pos.x + pos.y*m_nWidth;
     TileInfo info = m_Map[index];
+    if((info.m_Flag & TileInfo::INITIALISED) != 0)
+    {
+        ///发送跳崖事件
+        return false;
+    }
     if((info.m_Flag & TileInfo::LOS_BLOCKING) != 0)
     {
         if( info.m_Type == TerrainTile::TT_DOOR || info.m_Type == TerrainTile::TT_LOCKED_DOOR || info.m_Type == TerrainTile::TT_SECRET_DOOR )

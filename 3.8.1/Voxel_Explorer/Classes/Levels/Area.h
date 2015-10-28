@@ -45,9 +45,6 @@ public:
     
     void generate(BaseLevel* level);
     
-    bool checkInside(int p);
-    cocos2d::Vec2 getPos();
-    
     AREA_TYPE getAreaType() const;
     void setAreaType(AREA_TYPE type);
     
@@ -55,6 +52,8 @@ public:
     void setRect(const cocos2d::Rect& rect);
     
     cocos2d::Vec2 getCenter();
+    
+    bool checkInside(int p, BaseLevel* level);
     
     cocos2d::Rect getIntersectRect(Area* other);
     

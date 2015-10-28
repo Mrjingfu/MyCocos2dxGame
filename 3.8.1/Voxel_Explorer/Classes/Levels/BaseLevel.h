@@ -15,9 +15,10 @@
 struct TileInfo
 {
     typedef enum {
-        INITIALISED = 0,
-        PASSABLE        = 1<<0,
-        LOS_BLOCKING    = 2<<0,
+        INITIALISED     = 1<<0,
+        PASSABLE        = 1<<1,
+        LOS_BLOCKING    = 1<<2,
+        PICKABLE        = 1<<3,
     } FLAG;
     typedef enum {
         FORWARD = 0,
@@ -76,6 +77,7 @@ public:
     
     void generateTerrainTiles(int x, int y , int width, int height, TerrainTile::TileType tileType, Area::AREA_TYPE areaType, Actor::ActorDir dir = Actor::AD_UNKNOWN);
     void setTerrainTile(int x, int y, TerrainTile::TileType tileType, Area::AREA_TYPE areaType , Actor::ActorDir dir = Actor::AD_UNKNOWN);
+    int getTerrainTileFlag(int x, int y);
     void setTerrainTileFlag(int x, int y, int flag );
     void wrapTerrainTiles(int x, int y , int width, int height, TerrainTile::TileType type, TerrainTile::TileType withType);
     bool checkMovable(Actor* actor);
@@ -91,6 +93,7 @@ protected:
 
     virtual void showMap(bool show) = 0;
     
+    virtual int calculateLevelMonsterCount() = 0;
 private:
     int assignTerrainTileFlag(TerrainTile::TileType type);
 protected:

@@ -61,8 +61,8 @@ public:
     bool EquipArmor(CChaosNumber id);
     bool EquipOrnaments(CChaosNumber id);
     
-    void addItemToBag(PickableItem::PickableItemType type);
-    void removeItemFromBag(CChaosNumber id);
+    bool addItemToBag(PickableItem::PickableItemType type);
+    bool removeItemFromBag(CChaosNumber id);
     void extendBagSpace();
     const std::vector<PickableItemProperty*>& getPlayerBag() const { return m_Bag; }
     

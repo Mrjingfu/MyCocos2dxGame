@@ -3,19 +3,13 @@
 	"id": "", 
 	"meshes": [
 		{
-			"attributes": [{
-					"size":   3, 
+			"attributes": [{"size":   3, 
 					"type": "GL_FLOAT", 
-					"attribute": "VERTEX_ATTRIB_POSITION"
-				}, {
-					"size":   3, 
+					"attribute": "VERTEX_ATTRIB_POSITION"}, {"size":   3, 
 					"type": "GL_FLOAT", 
-					"attribute": "VERTEX_ATTRIB_NORMAL"
-				}, {
-					"size":   2, 
+					"attribute": "VERTEX_ATTRIB_NORMAL"}, {"size":   2, 
 					"type": "GL_FLOAT", 
-					"attribute": "VERTEX_ATTRIB_TEX_COORD"
-				}], 
+					"attribute": "VERTEX_ATTRIB_TEX_COORD"}], 
 			"vertices": [
 				-15.500000,  0.000000, -0.500000, -1.000000, -0.000000, -0.000000,  0.865234,  1.500000, 
 				-15.500000,  0.000000,  0.500000, -1.000000,  0.000000, -0.000000,  0.865234,  1.500000, 
@@ -2101,41 +2095,31 @@
 		}
 	], 
 	"materials": [
-		{
-			"id": "palette", 
+		{"id": "palette", 
 			"ambient": [ 0.000000,  0.000000,  0.000000], 
 			"diffuse": [ 1.000000,  1.000000,  1.000000], 
 			"emissive": [ 0.000000,  0.000000,  0.000000], 
 			"opacity":  0.000000, 
 			"textures": [
-				{
-					"id": "W_Bow08.png", 
-					"filename": "W_Bow08.png", 
+				{"id": "item_color.png", 
+					"filename": "item_color.png", 
 					"type": "DIFFUSE", 
 					"wrapModeU": "REPEAT", 
-					"wrapModeV": "REPEAT"
-				}
-			]
-		}
+					"wrapModeV": "REPEAT"}
+			]}
 	], 
 	"nodes": [
-		{
-			"id": "Cinema4D_编辑器", 
+		{"id": "Cinema4D_编辑器", 
 			"skeleton": false, 
-			"transform": [-0.666754, -0.332984, -0.666754,  0.000000, -0.235455,  0.942932, -0.235455,  0.000000,  0.707107,  0.000000, -0.707107,  0.000000,  37.904018,  33.929676,  37.904018,  1.000000]
-		}, 
-		{
-			"id": "Default", 
+			"transform": [-0.666754, -0.332984, -0.666754,  0.000000, -0.235455,  0.942932, -0.235455,  0.000000,  0.707107,  0.000000, -0.707107,  0.000000,  37.904018,  33.929676,  37.904018,  1.000000]}, 
+		{"id": "Default", 
 			"skeleton": false, 
 			"transform": [ 1.000000,  0.000000,  0.000000,  0.000000,  0.000000,  1.000000,  0.000000,  0.000000,  0.000000,  0.000000,  1.000000,  0.000000,  0.000000,  0.000000,  0.000000,  1.000000], 
 			"parts": [
-				{
-					"meshpartid": "shape1_part1", 
+				{"meshpartid": "shape1_part1", 
 					"materialid": "palette", 
-					"uvMapping": [[]]
-				}
-			]
-		}
+					"uvMapping": [[]]}
+			]}
 	], 
 	"animations": []
 }

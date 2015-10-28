@@ -17,6 +17,8 @@ public:
     
     virtual bool createMonsters();
     virtual bool createUseableItems();
+protected:
+    int calculateLevelMonsterCount();
 };
 
 #endif /* SewerLevel_hpp */

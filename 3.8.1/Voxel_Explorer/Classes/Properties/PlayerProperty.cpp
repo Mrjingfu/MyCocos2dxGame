@@ -398,12 +398,12 @@ bool PlayerProperty::EquipOrnaments(CChaosNumber id)
     }
     return true;
 }
-void PlayerProperty::addItemToBag(PickableItem::PickableItemType type)
+bool PlayerProperty::addItemToBag(PickableItem::PickableItemType type)
 {
     if(m_Bag.size() >= m_nBagMaxSpace.GetLongValue())
     {
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_BAG_NO_SPACE);
-        return;
+        return false;
     }
     PickableItemProperty* itemProperty = nullptr;
     if(type > PickableItem::PIT_KEY_COPPER && type < PickableItem::PIT_KEY_ROOM)
@@ -418,18 +418,21 @@ void PlayerProperty::addItemToBag(PickableItem::PickableItemType type)
     {
         itemProperty->adjustByDC();
         m_Bag.push_back(itemProperty);
+        return true;
     }
+    return false;
 }
-void PlayerProperty::removeItemFromBag(CChaosNumber id)
+bool PlayerProperty::removeItemFromBag(CChaosNumber id)
 {
     std::vector<PickableItemProperty*>::iterator iter;
     for (iter = m_Bag.begin(); iter != m_Bag.end(); iter++) {
         if((*iter) != nullptr && (*iter)->getInstanceID() == id.GetLongValue())
         {
             m_Bag.erase(iter);
-            return;
+            return true;
         }
     }
+    return false;
 }
 void PlayerProperty::extendBagSpace()
 {

@@ -88,10 +88,10 @@ void Area::generate(BaseLevel* level)
             break;
     }
 }
-cocos2d::Vec2 Area::getPos()
-{
-    return Vec2(m_Rect.getMidX(), m_Rect.getMidY());
-}
+//cocos2d::Vec2 Area::getPos()
+//{
+//    return Vec2(m_Rect.getMidX(), m_Rect.getMidY());
+//}
 
 Area::AREA_TYPE Area::getAreaType() const
 {
@@ -115,6 +115,12 @@ Vec2 Area::getCenter()
 {
     return Vec2( (int)(m_Rect.getMinX() + m_Rect.getMaxX())/2 + (((int)(m_Rect.getMaxX()-m_Rect.getMinX()) & 1) == 1 ? cocos2d::random(0, 1) : 0), (int)(m_Rect.getMinY() + m_Rect.getMaxY())/2 + (((int)(m_Rect.getMaxY()-m_Rect.getMinY()) & 1) == 1 ? cocos2d::random(0, 1) : 0));
 }
+bool Area::checkInside(int p, BaseLevel* level)
+{
+    int x = p % level->getWidth();
+    int y = p / level->getWidth();
+    return x > m_Rect.getMinX() && y > m_Rect.getMinY() && x < m_Rect.getMaxX() && y < m_Rect.getMaxY();
+}
 cocos2d::Rect Area::getIntersectRect(Area* other)
 {
     CCASSERT(other != nullptr, "Other area must not be null!");
@@ -136,12 +142,12 @@ int Area::getRandomTile(BaseLevel* level)
 }
 int Area::getRandomTile(BaseLevel* level, int m)
 {
-    int left = m_Rect.getMinX() + 1 + m;
+    int left = m_Rect.getMinX() + m;
     int right = m_Rect.getMaxX() - m;
-    int bottom = m_Rect.getMinY() + 1 + m;
+    int bottom = m_Rect.getMinY() + m;
     int top = m_Rect.getMaxY() - m;
-    int x = cocos2d::random(MIN(left, right), MIN(left, right));
-    int y = cocos2d::random(MIN(bottom, top), MIN(bottom, top));
+    int x = cocos2d::random(MIN(left, right), MAX(left, right));
+    int y = cocos2d::random(MIN(bottom, top), MAX(bottom, top));
     
     return x + y * level->getWidth();
 }
@@ -398,12 +404,12 @@ void Area::setRandomTerrainTile(BaseLevel* level, int m, TerrainTile::TileType t
     if(!level)
         return;
     
-    int left = m_Rect.getMinX() + 1 + m;
+    int left = m_Rect.getMinX() + m;
     int right = m_Rect.getMaxX() - m;
-    int bottom = m_Rect.getMinY() + 1 + m;
+    int bottom = m_Rect.getMinY() + m;
     int top = m_Rect.getMaxY() - m;
-    int x = cocos2d::random(MIN(left, right), MIN(left, right));
-    int y = cocos2d::random(MIN(bottom, top), MIN(bottom, top));
+    int x = cocos2d::random(MIN(left, right), MAX(left, right));
+    int y = cocos2d::random(MIN(bottom, top), MAX(bottom, top));
     setTerrainTile(level, x, y, type);
 }
 int Area::xy2p(const cocos2d::Rect& rect, const cocos2d::Vec2& pos)

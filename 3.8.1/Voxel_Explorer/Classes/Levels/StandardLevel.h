@@ -11,6 +11,15 @@
 
 #include "BaseLevel.h"
 #include "Area.h"
+
+typedef enum
+{
+    LS_STANDARD = 0,
+    LS_TUNNEL,
+    LS_PASSAGE,
+    LS_UNKNOWN
+} LevelStyle;
+
 class StandardLevel : public BaseLevel
 {
 protected:
@@ -33,7 +42,8 @@ protected:
     bool mergeSmallIntersectArea(Area* area, Area* other);
     void placeTraps();  ///放置陷阱
     void generateSpawnPoint();
-    int randomRespawnCell();
+    int randomMonsterRespawnCell();
+    int randomPickableRespawnCell();
 protected:
     std::vector<PathGraphNode*>    m_Areas;
     Area*               m_AreaEntrance;
@@ -45,6 +55,11 @@ protected:
     int                 m_nMaxAreaSize;
     
     int                 m_nStandardAreaCount;
+    int                 m_nSpecialAreaCount;
+    int                 m_nTunnelAreaCount;
+    int                 m_nPassageAreaCount;
+    
+    LevelStyle          m_Style;
 };
 
 #endif /* defined(__Voxel_Explorer__StandardLevel__) */

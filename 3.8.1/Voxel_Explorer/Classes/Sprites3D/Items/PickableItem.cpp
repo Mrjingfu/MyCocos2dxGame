@@ -8,7 +8,7 @@
 
 #include "PickableItem.hpp"
 #include "LevelResourceManager.h"
-#include "TerrainTile.hpp"
+#include "BaseLevel.h"
 USING_NS_CC;
 const std::string PICKABLE_ITEM_NAMES[] = {
     
@@ -198,6 +198,7 @@ PickableItem* PickableItem::create(PickableItemType type)
         item->setCameraMask((unsigned int)CameraFlag::USER1);
         item->setLightMask((unsigned int)LightFlag::LIGHT0);
         item->setOpacity(0);
+        item->setCascadeOpacityEnabled(true);
         item->setScale(0.25f, 0.25f);
         item->autorelease();
         return item;
@@ -244,6 +245,9 @@ void PickableItem::setState(PickableItemState state)
 
 void PickableItem::onEnterIdle()
 {
+    int flag = TileInfo::PASSABLE | TileInfo::PICKABLE;
+    updateTerrainTileFlag(flag);
+    
     EaseSineOut* fadeIn = EaseSineOut::create(FadeIn::create(1.0f));
     RotateBy* rotateBy = RotateBy::create(1.0f, Vec3(0, 180, 0));
     Spawn* spawn = Spawn::create(fadeIn, rotateBy, nullptr);
@@ -257,7 +261,7 @@ void PickableItem::onExitIdle()
 }
 void PickableItem::onEnterFadeOut()
 {
-    EaseSineOut* moveTo = EaseSineOut::create(MoveTo::create(0.5f, Vec3(getPositionX(), 2*TerrainTile::CONTENT_SCALE, getPositionZ())));
+    EaseSineOut* moveTo = EaseSineOut::create(MoveTo::create(0.25f, Vec3(getPositionX(),TerrainTile::CONTENT_SCALE*0.5f, getPositionZ())));
     EaseSineOut* fadeOut = EaseSineOut::create(FadeOut::create(1.0f));
     CallFunc* callback = CallFunc::create(CC_CALLBACK_0(PickableItem::destroySelf, this));
     Sequence* sequence = Sequence::create(moveTo, fadeOut, callback, nullptr);
@@ -278,5 +282,7 @@ void PickableItem::beginRotate()
 }
 void PickableItem::destroySelf()
 {
+    int flag = TileInfo::PASSABLE;
+    updateTerrainTileFlag(flag);
     this->removeFromParentAndCleanup(true);
 }
