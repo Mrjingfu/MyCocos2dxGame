@@ -22,7 +22,7 @@ public:
     } ActorDir;
 protected:
     Actor();
-    ~Actor();
+    virtual ~Actor();
     virtual void rotateToLeft() { m_dir = AD_LEFT; };
     virtual void rotateToRight() { m_dir = AD_RIGHT; };
     virtual void rotateToForward() { m_dir = AD_FORWARD; };
@@ -33,7 +33,9 @@ public:
     ActorDir getActorDir() const { return m_dir; }
     virtual void setActorDir( ActorDir dir );
     
-    void updateTerrainTileFlag(int flag);
+    virtual void updateTerrainTileFlag(int flag);
+    
+    virtual void setVisited(bool visited);
 protected:
     ActorDir       m_dir;
 };

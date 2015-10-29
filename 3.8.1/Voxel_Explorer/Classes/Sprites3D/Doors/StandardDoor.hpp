@@ -13,7 +13,7 @@
 class StandardDoor : public BaseDoor
 {
     StandardDoor();
-    ~StandardDoor();
+    virtual ~StandardDoor();
 public:
     static StandardDoor* create(bool show);
     

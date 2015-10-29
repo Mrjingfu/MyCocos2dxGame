@@ -29,7 +29,9 @@ Door::Door()
 {
     m_Type = DT_EMPTY;
 }
-
+Door::~Door()
+{
+}
 bool Door::init()
 {
     return true;

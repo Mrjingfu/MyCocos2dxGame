@@ -17,6 +17,7 @@ class BaseLevel;
 class Area : public cocos2d::Ref, public PathGraphNode
 {
     Area();
+    virtual ~Area();
 public:
     typedef enum{
         AT_UNKNOWN = 0,
@@ -54,6 +55,7 @@ public:
     cocos2d::Vec2 getCenter();
     
     bool checkInside(int p, BaseLevel* level);
+    bool checkInside(const cocos2d::Vec2& pos);
     
     cocos2d::Rect getIntersectRect(Area* other);
     
@@ -61,6 +63,8 @@ public:
     
     int getRandomTile(BaseLevel* level);
     int getRandomTile(BaseLevel* level, int m);
+    
+    void updateAreaFogOfWar(BaseLevel* level, bool visited);
 private:
     void generateStandardArea(BaseLevel* level);
     void generateEntranceArea(BaseLevel* level);

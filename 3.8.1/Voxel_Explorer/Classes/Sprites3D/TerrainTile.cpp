@@ -65,3 +65,16 @@ TerrainTile::TerrainTile()
 TerrainTile::~TerrainTile()
 {
 }
+void TerrainTile::setVisited(bool visited)
+{
+    unsigned int lightmask = getLightMask();
+    if (visited)
+        lightmask = lightmask | (unsigned int)LightFlag::LIGHT1;
+    else
+        lightmask = lightmask &~ (unsigned int)LightFlag::LIGHT1;
+    setLightMask(lightmask);
+}
+cocos2d::Vec2 TerrainTile::getPosInMap()
+{
+    return Vec2( (int)(getPositionX()/TerrainTile::CONTENT_SCALE), int(-getPositionZ() /TerrainTile::CONTENT_SCALE));
+}

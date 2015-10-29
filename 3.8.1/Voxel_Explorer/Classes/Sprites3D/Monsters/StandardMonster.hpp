@@ -13,7 +13,7 @@
 class StandardMonster : public BaseMonster
 {
     StandardMonster();
-    ~StandardMonster();
+    virtual ~StandardMonster();
 public:
     static StandardMonster* create(BaseMonster::MonsterType type);
 private:

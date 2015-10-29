@@ -25,6 +25,8 @@ public:
     bool checkMovable();
     void cameraTrackPlayer();
     void checkPickItem();
+    void checkUpdateFogOfWar();
+    void updateFogOfWar(const cocos2d::Rect& areaRect, bool visited);
     void searchAndCheck();      ///侦查
     void handlDoor(const cocos2d::Vec2& mapPos);            ///开门
     void handlTriggerTrap(const cocos2d::Vec2& mapPos);     ///触发机关

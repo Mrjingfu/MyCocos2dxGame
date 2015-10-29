@@ -30,7 +30,7 @@ public:
     } DoorState;
 protected:
     BaseDoor();
-    ~BaseDoor();
+    virtual ~BaseDoor();
     
     virtual bool createFakeDoor() = 0;
     
@@ -50,6 +50,8 @@ public:
     void setDoorState(DoorState state);
     
     virtual void setActorDir( ActorDir dir ) override;
+    
+    virtual void setVisited(bool visited) override;
 protected:
     DoorState   m_DoorState;
     DoorState   m_DoorLastState;

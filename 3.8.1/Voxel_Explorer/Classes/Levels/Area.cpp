@@ -31,6 +31,9 @@ Area::Area()
     m_Type = AT_UNKNOWN;
     m_nWeight = 1;
 }
+Area::~Area()
+{
+}
 bool Area::init()
 {
     return true;
@@ -119,7 +122,11 @@ bool Area::checkInside(int p, BaseLevel* level)
 {
     int x = p % level->getWidth();
     int y = p / level->getWidth();
-    return x > m_Rect.getMinX() && y > m_Rect.getMinY() && x < m_Rect.getMaxX() && y < m_Rect.getMaxY();
+    return checkInside(Vec2(x, y));
+}
+bool Area::checkInside(const cocos2d::Vec2& pos)
+{
+    return pos.x >= m_Rect.getMinX() && pos.y >= m_Rect.getMinY() && pos.x <= m_Rect.getMaxX() && pos.y <= m_Rect.getMaxY();
 }
 cocos2d::Rect Area::getIntersectRect(Area* other)
 {
@@ -151,7 +158,17 @@ int Area::getRandomTile(BaseLevel* level, int m)
     
     return x + y * level->getWidth();
 }
-
+void Area::updateAreaFogOfWar(BaseLevel* level, bool visited)
+{
+    if(!level)
+        return;
+    int x = m_Rect.origin.x;
+    int y = m_Rect.origin.y;
+    int w = m_Rect.size.width+1;
+    int h = m_Rect.size.height+1;
+    
+    level->updateTerrainTileFogOfWar(x, y, w, h, visited);
+}
 void Area::generateStandardArea(BaseLevel* level)
 {
     generateTerrainTiles(level, TerrainTile::TT_WALL);

@@ -13,6 +13,7 @@
 class Door : public cocos2d::Ref
 {
     Door();
+    virtual ~Door();
 public:
     typedef enum{
         DT_EMPTY,

@@ -31,7 +31,6 @@ struct TileInfo
     Area::AREA_TYPE         m_AreaType;
     
     bool        m_bVisited;
-    bool        m_bMapped;
     int         m_Flag;
     int         m_nX;
     int         m_nY;
@@ -42,7 +41,6 @@ struct TileInfo
         m_AreaType = Area::AT_UNKNOWN;
         m_Flag = INITIALISED;
         m_bVisited = false;
-        m_bMapped = false;
         m_nX = -1;
         m_nY = -1;
         m_Dir = Actor::AD_UNKNOWN;
@@ -80,12 +78,17 @@ public:
     int getTerrainTileFlag(int x, int y);
     void setTerrainTileFlag(int x, int y, int flag );
     void wrapTerrainTiles(int x, int y , int width, int height, TerrainTile::TileType type, TerrainTile::TileType withType);
+    
+    void updateTerrainTileFogOfWar(int x, int y , int width, int height, bool visited);
+    
     bool checkMovable(Actor* actor);
     
     void load();
     void save();
     
+public:
     virtual void showMap(bool show) = 0;
+    virtual void updateAreaFogOfWarByPos(const cocos2d::Vec2& pos) = 0;
 protected:
     virtual bool build() = 0;
     virtual bool createTerrain() = 0;
@@ -93,8 +96,6 @@ protected:
     virtual bool createMonsters() = 0;
     virtual bool createUseableItems() = 0;
 
-    
-    
     virtual int calculateLevelMonsterCount() = 0;
 private:
     int assignTerrainTileFlag(TerrainTile::TileType type);

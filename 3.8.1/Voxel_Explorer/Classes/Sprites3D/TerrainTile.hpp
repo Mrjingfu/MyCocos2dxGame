@@ -49,6 +49,10 @@ public:
     
     TileType getType() const { return m_Type; }
     void setType(TileType type) { m_Type = type; }
+    
+    void setVisited(bool visited);
+    
+    cocos2d::Vec2 getPosInMap();
 protected:
     TileType        m_Type;
 };

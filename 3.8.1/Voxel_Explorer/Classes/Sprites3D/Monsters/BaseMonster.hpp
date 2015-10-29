@@ -82,7 +82,7 @@ public:
     void setState(MonsterState state);
 protected:
     BaseMonster();
-    ~BaseMonster();
+    virtual ~BaseMonster();
     
     virtual void onEnter();
     virtual void onExit();
