@@ -208,3 +208,14 @@ void BaseDoor::onExitHide()
     EaseSineOut* fadeOut = EaseSineOut::create(FadeOut::create(0.5f));
     this->runAction(fadeOut);
 }
+void BaseDoor::setVisited(bool visited)
+{
+    unsigned int lightmask = getLightMask();
+    if (visited)
+        lightmask = lightmask | (unsigned int)LightFlag::LIGHT1;
+    else
+        lightmask = lightmask &~ (unsigned int)LightFlag::LIGHT1;
+    setLightMask(lightmask);
+    if(m_pFakeDoor)
+        m_pFakeDoor->setLightMask(lightmask);
+}

@@ -135,6 +135,8 @@
 		555B0D241BC51A2C0055FB6D /* GameScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 555B0D101BC51A2C0055FB6D /* GameScene.cpp */; };
 		555B0D251BC51A2C0055FB6D /* VoxelExplorer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 555B0D131BC51A2C0055FB6D /* VoxelExplorer.cpp */; };
 		555B0D261BC51A2C0055FB6D /* VoxelExplorer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 555B0D131BC51A2C0055FB6D /* VoxelExplorer.cpp */; };
+		5569713C1BE20CCE00CC2736 /* Layer3D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5569713A1BE20CCE00CC2736 /* Layer3D.cpp */; };
+		5569713D1BE20CCE00CC2736 /* Layer3D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5569713A1BE20CCE00CC2736 /* Layer3D.cpp */; };
 		559B217F1BC65D330047D998 /* textures in Resources */ = {isa = PBXBuildFile; fileRef = 559B217E1BC65D330047D998 /* textures */; };
 		559B21801BC65D330047D998 /* textures in Resources */ = {isa = PBXBuildFile; fileRef = 559B217E1BC65D330047D998 /* textures */; };
 		55D6D67F1BC527D000081221 /* models in Resources */ = {isa = PBXBuildFile; fileRef = 55D6D67E1BC527D000081221 /* models */; };
@@ -361,6 +363,8 @@
 		555B0D111BC51A2C0055FB6D /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameScene.h; sourceTree = "<group>"; };
 		555B0D131BC51A2C0055FB6D /* VoxelExplorer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VoxelExplorer.cpp; sourceTree = "<group>"; };
 		555B0D141BC51A2C0055FB6D /* VoxelExplorer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VoxelExplorer.h; sourceTree = "<group>"; };
+		5569713A1BE20CCE00CC2736 /* Layer3D.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Layer3D.cpp; sourceTree = "<group>"; };
+		5569713B1BE20CCE00CC2736 /* Layer3D.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Layer3D.hpp; sourceTree = "<group>"; };
 		559B217E1BC65D330047D998 /* textures */ = {isa = PBXFileReference; lastKnownFileType = folder; path = textures; sourceTree = "<group>"; };
 		55D6D67E1BC527D000081221 /* models */ = {isa = PBXFileReference; lastKnownFileType = folder; path = models; sourceTree = "<group>"; };
 		55EC95831BC6AA7B0008D1D7 /* TerrainTile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TerrainTile.cpp; sourceTree = "<group>"; };
@@ -787,6 +791,8 @@
 				EC6716441BCE7F2C00C81CFC /* LogoScene.h */,
 				555B0D101BC51A2C0055FB6D /* GameScene.cpp */,
 				555B0D111BC51A2C0055FB6D /* GameScene.h */,
+				5569713A1BE20CCE00CC2736 /* Layer3D.cpp */,
+				5569713B1BE20CCE00CC2736 /* Layer3D.hpp */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -1065,6 +1071,7 @@
 				551E93EC1BD512D3009F788F /* XXTEA.cpp in Sources */,
 				55F81CC01BDB9257002EC075 /* ScrollProperty.cpp in Sources */,
 				55F81CBC1BDB923A002EC075 /* MagicOrnamentProperty.cpp in Sources */,
+				5569713C1BE20CCE00CC2736 /* Layer3D.cpp in Sources */,
 				555B0D251BC51A2C0055FB6D /* VoxelExplorer.cpp in Sources */,
 				551E93CB1BD51291009F788F /* PlayerProperty.cpp in Sources */,
 				55338AD51BD878BF00EA316F /* StandardMonster.cpp in Sources */,
@@ -1145,6 +1152,7 @@
 				55F81CCD1BDB92AC002EC075 /* QuestItemProperty.cpp in Sources */,
 				553BC50A1BCE499B003D907A /* BaseDoor.cpp in Sources */,
 				55407D581BD5E2BC0000C41C /* GameFormula.cpp in Sources */,
+				5569713D1BE20CCE00CC2736 /* Layer3D.cpp in Sources */,
 				555B0D261BC51A2C0055FB6D /* VoxelExplorer.cpp in Sources */,
 				551E93EB1BD512D3009F788F /* xor.cpp in Sources */,
 				55F81CC91BDB928F002EC075 /* MaterialProperty.cpp in Sources */,

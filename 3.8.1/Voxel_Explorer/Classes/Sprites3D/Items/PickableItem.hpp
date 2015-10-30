@@ -199,7 +199,7 @@ public:
     void setState(PickableItemState state);
 private:
     PickableItem();
-    ~PickableItem();
+    virtual ~PickableItem();
     
     void onEnterIdle();
     void onExitIdle();

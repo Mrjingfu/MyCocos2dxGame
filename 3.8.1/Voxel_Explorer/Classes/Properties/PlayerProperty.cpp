@@ -37,7 +37,7 @@ PlayerProperty::PlayerProperty()
     m_nCopper               = 0;                ///铜币
     m_nLevel                = 1;                ///等级
     m_nExp                  = 0;                ///经验
-    m_nLightDistance        = 5;                ///光照范围
+    m_nLightDistance        = 6;                ///光照范围
     m_nSearchDistance       = 1;                ///侦查范围
     m_nMaxHP                = 30;               ///最大生命值
     m_nMaxMP                = 30;               ///最大魔法值
@@ -170,7 +170,7 @@ bool PlayerProperty::EquipWeapon(CChaosNumber id)
             if(!oldWeaponProperty->hasEquiped() || oldWeaponProperty->isCursed())
                 return false;
             m_nLightDistance = m_nLightDistance - oldWeaponProperty->getAddedLightDistance().GetLongValue();
-            m_nLightDistance = MAX(m_nLightDistance.GetLongValue(), 3);
+            m_nLightDistance = MAX(m_nLightDistance.GetLongValue(), 6);
             m_nSearchDistance = m_nSearchDistance - oldWeaponProperty->getAddedSearchDistance().GetLongValue();
             m_nSearchDistance = MAX(m_nSearchDistance.GetLongValue(), 1);
             m_nMaxHP = m_nMaxHP - oldWeaponProperty->getAddedMaxHp().GetLongValue();
@@ -227,7 +227,7 @@ bool PlayerProperty::EquipSecondWeapon(CChaosNumber id)
             if(!oldSecondWeaponProperty->hasEquiped() || oldSecondWeaponProperty->isCursed())
                 return false;
             m_nLightDistance = m_nLightDistance - oldSecondWeaponProperty->getAddedLightDistance().GetLongValue();
-            m_nLightDistance = MAX(m_nLightDistance.GetLongValue(), 3);
+            m_nLightDistance = MAX(m_nLightDistance.GetLongValue(), 6);
             m_nSearchDistance = m_nSearchDistance - oldSecondWeaponProperty->getAddedSearchDistance().GetLongValue();
             m_nSearchDistance = MAX(m_nSearchDistance.GetLongValue(), 1);
             m_nMaxHP = m_nMaxHP - oldSecondWeaponProperty->getAddedMaxHp().GetLongValue();
@@ -293,7 +293,7 @@ bool PlayerProperty::EquipArmor(CChaosNumber id)
             if(!armorProperty->hasEquiped() || oldArmorProperty->isCursed())
                 return false;
             m_nLightDistance = m_nLightDistance - oldArmorProperty->getAddedLightDistance().GetLongValue();
-            m_nLightDistance = MAX(m_nLightDistance.GetLongValue(), 3);
+            m_nLightDistance = MAX(m_nLightDistance.GetLongValue(), 6);
             m_nSearchDistance = m_nSearchDistance - oldArmorProperty->getAddedSearchDistance().GetLongValue();
             m_nSearchDistance = MAX(m_nSearchDistance.GetLongValue(), 1);
             m_nMaxHP = m_nMaxHP - oldArmorProperty->getAddedMaxHp().GetLongValue();
@@ -349,7 +349,7 @@ bool PlayerProperty::EquipOrnaments(CChaosNumber id)
             if(!oldMagicOrnamentProperty->hasEquiped() || oldMagicOrnamentProperty->isCursed())
                 return false;
             m_nLightDistance = m_nLightDistance - oldMagicOrnamentProperty->getAddedLightDistance().GetLongValue();
-            m_nLightDistance = MAX(m_nLightDistance.GetLongValue(), 3);
+            m_nLightDistance = MAX(m_nLightDistance.GetLongValue(), 6);
             m_nSearchDistance = m_nSearchDistance - oldMagicOrnamentProperty->getAddedSearchDistance().GetLongValue();
             m_nSearchDistance = MAX(m_nSearchDistance.GetLongValue(), 1);
             m_nMaxHP = m_nMaxHP - oldMagicOrnamentProperty->getAddedMaxHp().GetLongValue();
@@ -406,13 +406,13 @@ bool PlayerProperty::addItemToBag(PickableItem::PickableItemType type)
         return false;
     }
     PickableItemProperty* itemProperty = nullptr;
-    if(type > PickableItem::PIT_KEY_COPPER && type < PickableItem::PIT_KEY_ROOM)
+    if(type >= PickableItem::PIT_KEY_COPPER && type <= PickableItem::PIT_KEY_ROOM)
         itemProperty = new (std::nothrow) KeyProperty(m_snItemInstanceIDCounter++,type);
-    else if (type > PickableItem::PIT_DAGGER_DAGGER && type < PickableItem::PIT_MACE_PRO_SLEDGEHAMMER)
+    else if (type >= PickableItem::PIT_DAGGER_DAGGER && type <= PickableItem::PIT_MACE_PRO_SLEDGEHAMMER)
         itemProperty = new (std::nothrow) WeaponProperty(m_snItemInstanceIDCounter++,type, true);
-    else if (type > PickableItem::PIT_BOW_SHORTBOW && type < PickableItem::PIT_SHIELD_PRO_TOWERSHIELD)
+    else if (type >= PickableItem::PIT_BOW_SHORTBOW && type <=PickableItem::PIT_SHIELD_PRO_TOWERSHIELD)
         itemProperty = new (std::nothrow) SecondWeaponProperty(m_snItemInstanceIDCounter++,type,true);
-    else if(type > PickableItem::PIT_CLOTH_SHOES && type < PickableItem::PIT_CLOTH_PRO_STEELARMOR)
+    else if(type >= PickableItem::PIT_CLOTH_SHOES && type <= PickableItem::PIT_CLOTH_PRO_STEELARMOR)
         itemProperty = new (std::nothrow) ArmorProperty(m_snItemInstanceIDCounter++,type, true);
     if(itemProperty)
     {

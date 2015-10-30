@@ -46,3 +46,13 @@ void Actor::updateTerrainTileFlag(int flag)
     if(VoxelExplorer::getInstance()->getCurrentLevel())
         VoxelExplorer::getInstance()->getCurrentLevel()->setTerrainTileFlag(getPosInMap().x, getPosInMap().y, flag);
 }
+void Actor::setVisited(bool visited)
+{
+    setVisible(visited);
+    unsigned int lightmask = getLightMask();
+    if (visited)
+        lightmask = lightmask | (unsigned int)LightFlag::LIGHT1;
+    else
+        lightmask = lightmask &~ (unsigned int)LightFlag::LIGHT1;
+    setLightMask(lightmask);
+}

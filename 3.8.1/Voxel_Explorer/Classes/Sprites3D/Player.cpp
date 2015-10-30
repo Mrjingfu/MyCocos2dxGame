@@ -216,10 +216,13 @@ void Player::onLand()
     setState(PS_IDLE);
     VoxelExplorer::getInstance()->cameraTrackPlayer();
     VoxelExplorer::getInstance()->checkPickItem();
+    VoxelExplorer::getInstance()->checkUpdateFogOfWar();
+    
+    CCLOG("player x = %d   y = %d", (int)getPosInMap().x, (int)getPosInMap().y);
 }
 bool Player::createPlayerLight()
 {
-    m_pPlayerLight = PointLight::create(getPosition3D()+Vec3(0,TerrainTile::CONTENT_SCALE*2,0), Color3B::WHITE, TerrainTile::CONTENT_SCALE*PlayerProperty::getInstance()->getLightDistance().GetLongValue());
+    m_pPlayerLight = PointLight::create(getPosition3D()+Vec3(0,TerrainTile::CONTENT_SCALE*0.5f,0), Color3B::WHITE, 0.5f*TerrainTile::CONTENT_SCALE*PlayerProperty::getInstance()->getLightDistance().GetLongValue());
     if(!m_pPlayerLight)
         return false;
     m_pPlayerLight->setLightFlag(LightFlag::LIGHT0);

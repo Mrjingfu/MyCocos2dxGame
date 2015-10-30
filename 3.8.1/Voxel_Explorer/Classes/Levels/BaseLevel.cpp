@@ -96,6 +96,15 @@ void BaseLevel::wrapTerrainTiles(int x, int y , int width, int height, TerrainTi
         }
     }
 }
+void BaseLevel::updateTerrainTileFogOfWar(int x, int y , int width, int height, bool visited)
+{
+    int pos = y * m_nWidth + x;
+    for (int i = y; i < y + height; i++, pos += m_nWidth) {
+        for (int j = pos, k = x; j<(pos + width); j++, k++) {
+            m_Map[j].m_bVisited = visited;
+        }
+    }
+}
 bool BaseLevel::checkMovable(Actor* actor)
 {
     if(!actor)

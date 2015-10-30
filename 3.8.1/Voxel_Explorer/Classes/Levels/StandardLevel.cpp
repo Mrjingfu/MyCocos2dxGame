@@ -131,6 +131,7 @@ bool StandardLevel::createTerrain()
             if(!tile)
                 return false;
             tile->setPosition3D(Vec3(j*TerrainTile::CONTENT_SCALE, -TerrainTile::CONTENT_SCALE, -i*TerrainTile::CONTENT_SCALE));
+            tile->setVisited(info.m_bVisited);
             VoxelExplorer::getInstance()->getTerrainTilesLayer()->addChild(tile);
             
             switch (info.m_Type) {
@@ -148,6 +149,7 @@ bool StandardLevel::createTerrain()
                         VoxelExplorer::getInstance()->getTerrainDoorsLayer()->addChild(door);
                         if(!door->createFakeDoor())
                             return false;
+                        door->setVisited(info.m_bVisited);
                         door->setActorDir(info.m_Dir);
                         door->setDoorState(BaseDoor::DS_CLOSED);
                     }
@@ -161,6 +163,7 @@ bool StandardLevel::createTerrain()
                         VoxelExplorer::getInstance()->getTerrainDoorsLayer()->addChild(door);
                         if(!door->createFakeDoor())
                             return false;
+                        door->setVisited(info.m_bVisited);
                         door->setActorDir(info.m_Dir);
                         door->setDoorState(BaseDoor::DS_OPENED);
                     }
@@ -174,6 +177,7 @@ bool StandardLevel::createTerrain()
                         VoxelExplorer::getInstance()->getTerrainDoorsLayer()->addChild(door);
                         if(!door->createFakeDoor())
                             return false;
+                        door->setVisited(info.m_bVisited);
                         door->setActorDir(info.m_Dir);
                         door->setDoorState(BaseDoor::DS_LOCKED);
                     }
@@ -187,6 +191,7 @@ bool StandardLevel::createTerrain()
                         VoxelExplorer::getInstance()->getTerrainDoorsLayer()->addChild(door);
                         if(!door->createFakeDoor())
                             return false;
+                        door->setVisited(info.m_bVisited);
                         door->setActorDir(info.m_Dir);
                         door->setDoorState(BaseDoor::DS_HIDE);
                     }
@@ -247,6 +252,7 @@ void StandardLevel::splitArea(const cocos2d::Rect& rect)
         if(area)
         {
             area->setRect(rect);
+            area->retain();
             m_Areas.push_back(area);
         }
     }
@@ -371,6 +377,10 @@ void StandardLevel::assignAreasType()
             }
         }
     }
+    
+    ////设置开始区域为探索区域
+    m_AreaEntrance->updateAreaFogOfWar(this, true);
+
 }
 void StandardLevel::generate()
 {
@@ -486,6 +496,63 @@ void StandardLevel::showMap(bool show)
         }
     }
 }
+void StandardLevel::updateAreaFogOfWarByPos(const cocos2d::Vec2& pos)
+{
+    for (PathGraphNode* node : m_Areas) {
+        Area* area = static_cast<Area*>(node);
+        if(area && area->checkInside(pos))
+        {
+            ///更新地图tile
+            for (auto iter = area->getConnectedAreas().begin(); iter != area->getConnectedAreas().end(); iter++) {
+                Area* areaOri = iter->first;
+                Door* door = iter->second;
+                if(areaOri)
+                {
+                    if(area->getAreaType() == Area::AT_TUNNEL )
+                    {
+                        if( areaOri->getAreaType() == Area::AT_TUNNEL)
+                        {
+                            areaOri->updateAreaFogOfWar(this, true);
+                            ///更新场景、怪物和物品状态
+                            VoxelExplorer::getInstance()->updateFogOfWar(areaOri->getRect(), true);
+                        }
+                    }
+                    else
+                    {
+                        if(mergeSmallIntersectArea(area, areaOri))
+                        {
+                            areaOri->updateAreaFogOfWar(this, true);
+                            VoxelExplorer::getInstance()->updateFogOfWar(areaOri->getRect(), true);
+                        }
+                    }
+                    if(door && door->getPos() == pos)
+                    {
+                        area->updateAreaFogOfWar(this, true);
+                        areaOri->updateAreaFogOfWar(this, true);
+                        ///更新场景、怪物和物品状态
+                        VoxelExplorer::getInstance()->updateFogOfWar(areaOri->getRect(), true);
+                        VoxelExplorer::getInstance()->updateFogOfWar(area->getRect(), true);
+                        
+                        for (auto iter2 = areaOri->getConnectedAreas().begin(); iter2 != areaOri->getConnectedAreas().end(); iter2++) {
+                            Area* areaOriOri = iter2->first;
+                            if(areaOriOri)
+                            {
+                                if(mergeSmallIntersectArea(areaOri, areaOriOri))
+                                {
+                                    areaOri->updateAreaFogOfWar(this, true);
+                                    areaOriOri->updateAreaFogOfWar(this, true);
+                                    VoxelExplorer::getInstance()->updateFogOfWar(areaOriOri->getRect(), true);
+                                }
+                            }
+                        }
+                        return;
+                    }
+                }
+            }
+        }
+    }
+    
+}
 void StandardLevel::placeDoors(Area* area)
 {
     if(!area)
@@ -505,6 +572,7 @@ void StandardLevel::placeDoors(Area* area)
                         door->setPos(Vec2(rect.getMinX(),cocos2d::random((int)rect.getMinY()+1,(int)rect.getMaxY()-1)));
                     else
                         door->setPos(Vec2(cocos2d::random((int)rect.getMinX()+1, (int)rect.getMaxX()-1),rect.getMinY()));
+                    door->retain();
                     area->getConnectedAreas()[areaOri] = door;
                     areaOri->getConnectedAreas()[area] = door;
                 }
@@ -562,7 +630,7 @@ void StandardLevel::generateDoors(Area* area)
         }
     }
 }
-bool StandardLevel::mergeSmallIntersectArea(Area* area, Area* other)
+bool StandardLevel::mergeSmallIntersectArea(Area* area, Area* other, bool generate)
 {
     if(!area || !other)
         return false;
@@ -584,12 +652,15 @@ bool StandardLevel::mergeSmallIntersectArea(Area* area, Area* other)
             return false;
         }
         
-        rect.origin.x += 0;
-        rect.origin.y += 1;
-        rect.size.width += 1;
-        rect.size.height -=1;
+        if(generate)
+        {
+            rect.origin.x += 0;
+            rect.origin.y += 1;
+            rect.size.width += 1;
+            rect.size.height -=1;
        
-        generateTerrainTiles( rect.origin.x, rect.origin.y, 1, rect.size.height, TerrainTile::TT_STANDARD, area->getAreaType() );
+            generateTerrainTiles( rect.origin.x, rect.origin.y, 1, rect.size.height, TerrainTile::TT_STANDARD, area->getAreaType() );
+        }
         
     } else {
         
@@ -605,12 +676,15 @@ bool StandardLevel::mergeSmallIntersectArea(Area* area, Area* other)
             return false;
         }
         
-        rect.origin.x += 1;
-        rect.origin.y += 0;
-        rect.size.width -= 1;
-        rect.size.height +=1;
+        if(generate)
+        {
+            rect.origin.x += 1;
+            rect.origin.y += 0;
+            rect.size.width -= 1;
+            rect.size.height +=1;
         
-        generateTerrainTiles( rect.origin.x, rect.origin.y, rect.size.width, 1, TerrainTile::TT_STANDARD, area->getAreaType());
+            generateTerrainTiles( rect.origin.x, rect.origin.y, rect.size.width, 1, TerrainTile::TT_STANDARD, area->getAreaType());
+        }
     }
     
     return true;

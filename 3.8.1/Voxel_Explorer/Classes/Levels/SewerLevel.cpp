@@ -32,6 +32,7 @@ bool SewerLevel::createMonsters()
         } while (tileIndex == -1);
         
         monster->setPosition3D(Vec3(m_Map[tileIndex].m_nX*TerrainTile::CONTENT_SCALE, -0.5f*TerrainTile::CONTENT_SCALE, -m_Map[tileIndex].m_nY*TerrainTile::CONTENT_SCALE));
+        monster->setVisited(m_Map[tileIndex].m_bVisited);
         monster->updateTerrainTileFlag(TileInfo::PASSABLE | TileInfo::LOS_BLOCKING);
         VoxelExplorer::getInstance()->getMonstersLayer()->addChild(monster);
         monster->setState(BaseMonster::MS_IDLE);
@@ -59,6 +60,7 @@ bool SewerLevel::createUseableItems()
         } while (tileIndex == -1);
         
         item->setPosition3D(Vec3(m_Map[tileIndex].m_nX*TerrainTile::CONTENT_SCALE, -0.5f*TerrainTile::CONTENT_SCALE, -m_Map[tileIndex].m_nY*TerrainTile::CONTENT_SCALE));
+        item->setVisited(m_Map[tileIndex].m_bVisited);
         item->updateTerrainTileFlag(TileInfo::PASSABLE | TileInfo::PICKABLE);
         VoxelExplorer::getInstance()->getPickableItemsLayer()->addChild(item);
         item->setState(PickableItem::PIS_IDLE);

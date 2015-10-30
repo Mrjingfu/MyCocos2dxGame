@@ -13,7 +13,9 @@
 #include "LevelResourceManager.h"
 #include "RandomDungeon.hpp"
 #include "PickableItem.hpp"
+#include "UseableItem.hpp"
 #include "PlayerProperty.hpp"
+#include "Layer3D.hpp"
 USING_NS_CC;
 
 VoxelExplorer* g_pVoxelExplorerInstance = nullptr;
@@ -121,6 +123,64 @@ void VoxelExplorer::checkPickItem()
     if(flag & TileInfo::PICKABLE)
         handlPickItem(m_pPlayer->getPosInMap());
 }
+void VoxelExplorer::checkUpdateFogOfWar()
+{
+    if(!m_pCurrentLevel || !m_pPlayer)
+        return;
+    m_pCurrentLevel->updateAreaFogOfWarByPos(m_pPlayer->getPosInMap());
+}
+void VoxelExplorer::updateFogOfWar(const cocos2d::Rect& areaRect, bool visited)
+{
+    if(m_pTerrainTilesLayer)
+    {
+        for (const auto& child : m_pTerrainTilesLayer->getChildren())
+        {
+            TerrainTile* tile = dynamic_cast<TerrainTile*>(child);
+            if(tile && areaRect.containsPoint(tile->getPosInMap()))
+                tile->setVisited(visited);
+        }
+    }
+    
+    if(m_pTerrainDoorsLayer)
+    {
+        for (const auto& child : m_pTerrainDoorsLayer->getChildren())
+        {
+            Actor* door = dynamic_cast<Actor*>(child);
+            if(door && areaRect.containsPoint(door->getPosInMap()))
+                door->setVisited(visited);
+        }
+    }
+    
+    if(m_pUseableItemsLayer)
+    {
+        for (const auto& child : m_pUseableItemsLayer->getChildren())
+        {
+            Actor* item = dynamic_cast<Actor*>(child);
+            if(item && areaRect.containsPoint(item->getPosInMap()))
+                item->setVisited(visited);
+        }
+    }
+    
+    if(m_pMonstersLayer)
+    {
+        for (const auto& child : m_pMonstersLayer->getChildren())
+        {
+            Actor* monster = dynamic_cast<Actor*>(child);
+            if(monster && areaRect.containsPoint(monster->getPosInMap()))
+                monster->setVisited(visited);
+        }
+    }
+    
+    if(m_pPickableItemsLayer)
+    {
+        for (const auto& child : m_pPickableItemsLayer->getChildren())
+        {
+            Actor* item = static_cast<Actor*>(child);
+            if(item && areaRect.containsPoint(item->getPosInMap()))
+                item->setVisited(visited);
+        }
+    }
+}
 void VoxelExplorer::searchAndCheck()    ///侦查
 {
 }
@@ -141,6 +201,8 @@ void VoxelExplorer::handlDoor(const cocos2d::Vec2& mapPos)
                 else if(door->getDoorState() == BaseDoor::DS_CLOSED)
                 {
                     door->setDoorState(BaseDoor::DS_OPENED);
+                    if(m_pCurrentLevel)
+                        m_pCurrentLevel->updateAreaFogOfWarByPos(door->getPosInMap());
                     return;
                 }
                 else if(door->getDoorState() == BaseDoor::DS_LOCKED)
@@ -180,7 +242,7 @@ void VoxelExplorer::handlPickItem(const cocos2d::Vec2& mapPos)        ///拾取�
 }
 bool VoxelExplorer::createLayers()
 {
-    m_p3DLayer = Layer::create();
+    m_p3DLayer = Layer3D::create();
     if(!m_p3DLayer)
         return false;
     m_p3DLayer->setCameraMask((unsigned int)CameraFlag::USER1);
@@ -241,7 +303,8 @@ bool VoxelExplorer::createLights()
         return false;
     ambLight->setLightFlag(LightFlag::LIGHT1);
     m_p3DLayer->addChild(ambLight);
-    DirectionLight* directionLight = DirectionLight::create(Vec3(-2, -4, -3), Color3B(50, 0, 50));
+    
+    DirectionLight* directionLight = DirectionLight::create(Vec3(-2, -4, -3), Color3B(50, 50, 50));
     if(!directionLight)
         return false;
     directionLight->setLightFlag(LightFlag::LIGHT1);
