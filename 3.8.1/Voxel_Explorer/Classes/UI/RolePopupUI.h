@@ -26,6 +26,7 @@ private:
     void onClickChnageBag(Ref*);
     void selectItemEvent(Ref *pSender, TGridView::EventType type);
     void updateItems();
+    void onEventUpdateData(cocos2d::EventCustom *sender);
     void onEventEquipWeapon(cocos2d::EventCustom *sender);
     void onEventEquipArmor(cocos2d::EventCustom *sender);
     void onEventEquipOrnament(cocos2d::EventCustom *sender);
@@ -37,7 +38,7 @@ private:
    ItemUI* m_pWeaponUi;
    ItemUI* m_pArmorUi;
    ItemUI* m_pOrnamentUi;
-   ItemUI* m_pOtherUi;
+   ItemUI* m_pSecondWeaponUi;
    cocos2d::ui::ImageView* m_pShopBtn;
 };
 

@@ -22,6 +22,19 @@ SecondWeaponProperty::SecondWeaponProperty(unsigned int instanceID, PickableItem
     
     m_bHasEquiped = false;
     
+    m_nAddedLightDistance           =0;
+     m_nAddedSearchDistance         =0;
+    m_nAddedMaxHP                   =0;
+    m_nAddedMaxMP                   =0;
+    m_nAddedMinAttack               =0;
+    m_nAddedMaxAttack               =0;
+    m_nAddedArmorClass              =0;
+    m_fAddedBlockRate               =0;
+    m_fAddedCriticalStrikeRate      =0;
+    m_fAddedDodgeRate               =0;
+    m_fAddedMagicItemFindRate        =0;
+    
+    
     if(type > PickableItem::PIT_BOW_SHORTBOW && type < PickableItem::PIT_BOW_PRO_GOLDENBOW)
         m_SWPType = SWPT_BOW;
     else if(type > PickableItem::PIT_STAFF_OAKSTAFF && type < PickableItem::PIT_STAFF_PRO_MONKSTAFF)

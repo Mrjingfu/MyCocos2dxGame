@@ -10,7 +10,7 @@
 #define ItemUI_hpp
 
 #include "ui/CocosGUI.h"
-
+#include "ChaosNumber.h"
 class ItemUI:public cocos2d::ui::Layout {
     
     ItemUI();
@@ -21,16 +21,17 @@ public:
     bool isHaveItem()const{return _isHaveItem;}
     void setEquipEnable(bool enable);
     bool isEquipEnable(){return _isEquip;}
-    void addItem(std::string itemName);
-
-    std::string getItem(){return m_sItemProp;}
+    void addItem(int _itemId,std::string itemIcon);
+    void addItem(int _itemId,std::string itemIcon,int itemNum);
+    int  getItemId(){return m_nItemId;}
     void removeItem();
 protected:
     bool _isHaveItem;
     bool _isEquip;
     cocos2d::ui::ImageView* m_pItemImage;
     cocos2d::ui::ImageView* m_pEquipmark;
-    std::string m_sItemProp;
+    cocos2d::ui::Text*      m_pItemCount;
+    int m_nItemId;
 };
 
 #endif /* ItemUI_hpp */

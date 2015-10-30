@@ -463,9 +463,9 @@ void PlayerProperty::levelUp()
     m_bDirty = true;
     Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_LEVEL_UP);
 }
-PickableItemProperty* PlayerProperty::getItemFromBag(CChaosNumber id)
+PickableItemProperty* PlayerProperty::getItemFromBag(CChaosNumber id) const
 {
-    std::vector<PickableItemProperty*>::iterator iter;
+    std::vector<PickableItemProperty*>::const_iterator iter;
     for (iter = m_Bag.begin(); iter != m_Bag.end(); iter++) {
         if((*iter) != nullptr && (*iter)->getInstanceID() == id.GetLongValue())
             return (*iter);

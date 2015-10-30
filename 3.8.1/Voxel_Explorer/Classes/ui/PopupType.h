@@ -14,6 +14,7 @@ enum ePopupType
     ePopupInvalid = -1,
     ePopupTest,
     ePopupRole,
+    ePopupItem,
     ePopupCount
 };
 

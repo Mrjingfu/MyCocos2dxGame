@@ -12,7 +12,8 @@
 
 WrapperUILayer::WrapperUILayer()
 {
-    
+    m_pRootLayer = nullptr;
+    m_pRootNode  = nullptr;
 }
 WrapperUILayer::~WrapperUILayer()
 {
@@ -61,6 +62,9 @@ bool WrapperUILayer::load(const std::string gameUIFile,bool isSceneUi)
     
     if (isSceneUi) {
         m_pRootNode->setContentSize(cocos2d::Director::getInstance()->getVisibleSize());
+    }else{
+        m_pRootNode->setAnchorPoint(cocos2d::Vec2::ANCHOR_MIDDLE);
+        m_pRootNode->setPosition(cocos2d::Director::getInstance()->getVisibleSize()*0.5);
     }
     
     cocos2d::ui::Helper::doLayout(m_pRootNode);

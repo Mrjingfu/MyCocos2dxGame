@@ -41,7 +41,7 @@
         <Project Name="characterLayer.csd" Type="Layer" />
         <Project Name="gameScene.csd" Type="Scene" />
         <Project Name="menuscene.csd" Type="Scene" />
-        <Project Name="tipsLayer.csd" Type="Layer" />
+        <Project Name="itemPopupLayer.csd" Type="Layer" />
       </RootFolder>
     </Group>
   </SolutionFolder>

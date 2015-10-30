@@ -46,6 +46,7 @@ public:
     CChaosNumber getEquipedWeaponID() const { return m_nEquipedWeaponID; }
     CChaosNumber getEquipedArmorID() const { return m_nEquipedArmorID; }
     CChaosNumber getEquipedOrnamentsID() const { return m_nEquipedOrnamentsID; }
+    CChaosNumber getEquipedSecondWeaponID() const{return m_nEquipedSecondWeaponID;}
     
     CChaosNumber getBagMaxSpace() const { return m_nBagMaxSpace; }
     CChaosNumber getBagExtendTimes() const { return m_nBagExtendTimes; }
@@ -65,12 +66,12 @@ public:
     bool removeItemFromBag(CChaosNumber id);
     void extendBagSpace();
     const std::vector<PickableItemProperty*>& getPlayerBag() const { return m_Bag; }
-    
+    PickableItemProperty* getItemFromBag(CChaosNumber id) const;
     void load();
     void save();
 private:
     void levelUp();
-    PickableItemProperty* getItemFromBag(CChaosNumber id);
+    
 private:
     CChaosNumber    m_nGold;                ///金币
     CChaosNumber    m_nSilver;              ///银币

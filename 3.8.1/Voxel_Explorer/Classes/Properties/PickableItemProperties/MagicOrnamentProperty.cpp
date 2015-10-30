@@ -20,6 +20,18 @@ MagicOrnamentProperty::MagicOrnamentProperty(unsigned int instanceID, PickableIt
     m_bDiscardable = true;
     
     m_bHasEquiped = false;
+    
+    m_nAddedLightDistance       =0;
+    m_nAddedSearchDistance      =0;
+    m_nAddedMaxHP               =0;
+    m_nAddedMaxMP               =0;
+    m_nAddedMinAttack           =0;
+    m_nAddedMaxAttack           =0;
+    m_nAddedArmorClass          =0;
+    m_fAddedBlockRate           =0;
+    m_fAddedCriticalStrikeRate  =0;
+    m_fAddedDodgeRate           =0;
+    m_fAddedMagicItemFindRate   =0;
 }
 void MagicOrnamentProperty::adjustByDC()
 {

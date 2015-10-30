@@ -22,4 +22,7 @@ static const std::string EVENT_PLAYER_BAG_NO_SPACE = "PLAYER_BAG_NO_SPACE";
 static const std::string EVENT_PLAYER_BAG_EXTEND_OK = "PLAYER_BAG_EXTEND_OK";
 static const std::string EVENT_PLAYER_BAG_EXTEND_HAS_REACH_MAXTIMES = "PLAYER_BAG_EXTEND_HAS_REACH_MAXTIMES";
 
+//UI_EVENT
+static const std::string EVENT_UI_UPDATE_ROLE_DATA = "EVENT_UI_UPDATE_ROLE_DATA"; //更新人物属性对话框数据
+
 #endif /* EventConst_h */
