@@ -145,9 +145,9 @@ void RolePopupUI::updateItems()
             // 更新装备UI
             int weaponId = int(PlayerProperty::getInstance()->getEquipedWeaponID());
             int armorId = int(PlayerProperty::getInstance()->getEquipedArmorID());
-            int OrnamentId = int(PlayerProperty::getInstance()->getEquipedArmorID());
+            int OrnamentId = int(PlayerProperty::getInstance()->getEquipedOrnamentsID());
             int secondWeaponId = int(PlayerProperty::getInstance()->getEquipedSecondWeaponID());
-            CCLOG("weaponId:%d itemid:%d",weaponId,itemProp->getInstanceID());
+            CCLOG("weaponId:%d armorId:%d OrnamentId:%d secondWeaponId:%d itemid:%d",weaponId,armorId,OrnamentId,secondWeaponId,itemProp->getInstanceID());
             if ( m_pWeaponUi && itemProp->getInstanceID() == weaponId) {
                 itemUi->setEquipEnable(true);
                 m_pWeaponUi->addItem(itemProp->getInstanceID(), itemProp->getIconRes());
@@ -169,14 +169,18 @@ void RolePopupUI::updateItems()
             {
                 PickableItemProperty::PickableItemPropertyType itemtype =itemProp->getPickableItemPropertyType() ;
                 if ( itemtype == PickableItemProperty::PIPT_KEY) {
+                    
                     CCLOG("合并 PIPT_KEY");
+                    
                 }else if (itemtype == PickableItemProperty::PIPT_MATERIAL){
+                    
                     CCLOG("合并 PIPT_MATERIAL");
+                    
                 }else if(itemtype == PickableItemProperty::PIPT_POTIONS)
                 {
                     CCLOG("合并 PIPT_POTIONS");
                 }
-                
+                itemUi->addItem(itemProp->getInstanceID(), itemProp->getIconRes());
             }else
                 itemUi->addItem(itemProp->getInstanceID(), itemProp->getIconRes());
         }
@@ -190,12 +194,12 @@ void RolePopupUI::selectItemEvent(cocos2d::Ref *pSender, TGridView::EventType ty
         TGridView* gridView = static_cast<TGridView*>(pSender);
         ItemUI* currentItem = static_cast<ItemUI*>(gridView->getItem(gridView->getCurSelectedIndex()));
         if (currentItem && currentItem->isHaveItem()) {
-//           PlayerProperty::getInstance()->removeItemFromBag(CChaosNumber(currentItem->getItemId()));
             ItemPopupUI* itemPopupui = static_cast<ItemPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupType::ePopupItem));
             if (itemPopupui) {
                 itemPopupui->updateItemPopup(currentItem->getItemId());
+                CCLOG("select itemid = %d", currentItem->getItemId());
             }
-            CCLOG("select child end index = %ld", gridView->getCurSelectedIndex());
+            
         }
         
     }

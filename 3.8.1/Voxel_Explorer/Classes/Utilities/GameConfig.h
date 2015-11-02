@@ -19,7 +19,6 @@
 #define WND_CENTER_Y (SCREEN_HEIGHT/2+ORIGIN_Y)
 #define WINDOW_CENTER cocos2d::Vec2(WND_CENTER_X,WND_CENTER_Y)
 
-#define DEFAULT_FONT "04B_03.TTF"
 
 #define sRecordMD5          "sM"
 #define sHavePlayedGame		"HavePlayedGame"

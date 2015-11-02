@@ -6,52 +6,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../Classes/UI/BagLayer.h"
-            timestampString = "467185208.28987"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "55"
-            endingLineNumber = "55">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../Classes/UI/BagPopUpUi.cpp"
-            timestampString = "467194098.0705"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "50"
-            endingLineNumber = "50"
-            landmarkName = "BagPopUpUi::initUi()"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../Classes/Levels/BaseLevel.cpp"
-            timestampString = "467375261.512441"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "25"
-            endingLineNumber = "25"
-            landmarkName = "BaseLevel::create()"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -71,13 +25,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../Classes/UI/RolePopupUI.cpp"
-            timestampString = "467818875.415922"
+            filePath = "../cocos2d/cocos/editor-support/cocostudio/WidgetReader/NodeReader/NodeReader.cpp"
+            timestampString = "467874673.945762"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "205"
-            endingLineNumber = "205"
-            landmarkName = "RolePopupUI::onEventUpdateData(cocos2d::EventCustom *sender)"
+            startingLineNumber = "90"
+            endingLineNumber = "90"
+            landmarkName = "NodeReader::createOptionsWithFlatBuffers(const tinyxml2::XMLElement *objectData, flatbuffers::FlatBufferBuilder *builder)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -87,29 +41,29 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../Classes/UI/RolePopupUI.cpp"
-            timestampString = "467818644.545428"
+            filePath = "../cocos2d/cocos/editor-support/cocostudio/WidgetReader/WidgetReader.cpp"
+            timestampString = "467874690.794966"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "146"
-            endingLineNumber = "146"
-            landmarkName = "RolePopupUI::updateItems()"
+            startingLineNumber = "402"
+            endingLineNumber = "402"
+            landmarkName = "WidgetReader::createOptionsWithFlatBuffers(const tinyxml2::XMLElement *objectData, flatbuffers::FlatBufferBuilder *builder)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../Classes/UI/ItemPopupUI.cpp"
-            timestampString = "467818688.662073"
+            filePath = "../cocos2d/cocos/editor-support/cocostudio/WidgetReader/NodeReader/NodeReader.cpp"
+            timestampString = "467883629.409173"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "100"
-            endingLineNumber = "100"
-            landmarkName = "ItemPopupUI::onClickEquip(cocos2d::Ref *ref)"
+            startingLineNumber = "461"
+            endingLineNumber = "461"
+            landmarkName = "NodeReader::setPropsWithFlatBuffers(cocos2d::Node *node, const flatbuffers::Table* nodeOptions)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

@@ -44,7 +44,7 @@ bool ItemUI::init()
     setBackGroundImage("ui_frame_5.png",TextureResType::PLIST);
     
     
-    m_pItemImage = ui::ImageView::create("A_Armor04",TextureResType::LOCAL);
+    m_pItemImage = ui::ImageView::create("A_Armor04.png",TextureResType::LOCAL);
     m_pItemImage->setPosition(Vec2(getContentSize().width*0.5, getContentSize().width*0.45));
     m_pItemImage->setScale(0.8);
     m_pItemImage->setVisible(false);
