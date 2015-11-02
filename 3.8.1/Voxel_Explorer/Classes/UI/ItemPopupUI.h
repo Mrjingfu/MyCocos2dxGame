@@ -20,19 +20,30 @@ public:
     void updateItemPopup(int itemId);
     virtual ~ItemPopupUI();
 private:
-    void onClickDrop(Ref* ref);
-    void onClickThrow(Ref* ref);
+    void onClickDiscard(Ref* ref);
+    void onClickUser(Ref* ref);
     void onClickEquip(Ref* ref);
     void notifyRolePopup();
+    void equipFrame();
+    void itemFrame();
+    void displayFrame();
 private:
     
     cocos2d::ui::ImageView* m_pItemIcon;
     cocos2d::ui::Text*   m_pItemName;
     cocos2d::ui::Text*   m_pItemlv;
     cocos2d::ui::Text*   m_pItemDesc;
-    cocos2d::ui::Button* m_pBtnDrop;
-    cocos2d::ui::Button* m_pBtnThrow;
+    cocos2d::ui::Text*   m_pItemCount;
+    
+    cocos2d::ui::Button* m_pBtnDiscard;
+    cocos2d::ui::Button* m_pBtnUse;
     cocos2d::ui::Button* m_pBtnEquip;
+    
+    cocos2d::ui::Layout* m_pBtnItemFrame;
+    cocos2d::ui::Layout* m_pPropFrame;
+    cocos2d::ui::Layout* m_pDescItemFrame;
+    
+    cocos2d::ui::ImageView* m_pBackGround;
     int m_nItemId;
 };
 

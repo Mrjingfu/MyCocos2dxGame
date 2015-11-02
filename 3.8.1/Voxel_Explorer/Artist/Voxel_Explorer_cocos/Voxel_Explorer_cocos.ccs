@@ -5,6 +5,7 @@
       <RootFolder Name=".">
         <Folder Name="fonts">
           <TTF Name="04B_03.TTF" />
+          <TTF Name="fangz.TTF" />
         </Folder>
         <PlistImageFolder Image="ui_sprite.png" PListFile="ui_sprite.plist" Name=".ui_sprite_PList.Dir">
           <PlistImageFile Name="btn_achieve.png" Key="btn_achieve.png" />
