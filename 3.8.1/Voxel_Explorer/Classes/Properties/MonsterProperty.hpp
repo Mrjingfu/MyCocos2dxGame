@@ -34,7 +34,7 @@ public:
     
     void setCurrentHP(CChaosNumber hp);
     
-    void adjustByDC(bool elite);
+    void adjustByDC();
 private:
     CChaosNumber    m_nLevel;                    ///等级
     CChaosNumber    m_nValueCopper;              ///价值铜币

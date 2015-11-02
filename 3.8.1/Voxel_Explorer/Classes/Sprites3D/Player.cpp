@@ -19,7 +19,7 @@ Player* Player::create(const std::string& modelPath)
     {
         player->_contentSize = player->getBoundingBox().size;
         player->setCameraMask((unsigned int)CameraFlag::USER1);
-        player->setLightMask(((unsigned int)LightFlag::LIGHT0)|(unsigned int)LightFlag::LIGHT1);
+        player->setLightMask(((unsigned int)LightFlag::LIGHT0)|(unsigned int)LightFlag::LIGHT1|(unsigned int)LightFlag::LIGHT2);
         player->autorelease();
         return player;
     }
@@ -68,6 +68,9 @@ void Player::setState(PlayerState state)
         case PlayerState::PS_JUMPMOVE:
             onExitJumpMove();
             break;
+        case PlayerState::PS_ATTACK:
+            onExitAttack();
+            break;
         case PlayerState::PS_DROP:
             onExitDrop();
             break;
@@ -92,6 +95,9 @@ void Player::setState(PlayerState state)
             break;
         case PlayerState::PS_JUMPMOVE:
             onEnterJumpMove();
+            break;
+        case PlayerState::PS_ATTACK:
+            onEnterAttack();
             break;
         case PlayerState::PS_DROP:
             onEnterDrop();
@@ -141,6 +147,8 @@ void Player::rotateToBack()
 }
 void Player::onEnterIdle()
 {
+    EaseSineOut* scaleTo = EaseSineOut::create(ScaleTo::create(0.1f, 1.0f, 1.0f, 1.0f));
+    this->runAction(scaleTo);
 }
 void Player::onEnterPrepareToJump()
 {
@@ -151,7 +159,7 @@ void Player::onEnterJumpLocal()
 {
     ScaleTo* scaleTo = ScaleTo::create(0.1f, 1.0f, 1.0f, 1.0f);
     EaseSineOut* moveUp = EaseSineOut::create(MoveTo::create(0.1f, Vec3(getPositionX(), getPositionY() + TerrainTile::CONTENT_SCALE*0.5f, getPositionZ())));
-    EaseSineOut* moveDown = EaseSineOut::create(MoveTo::create(0.1f, Vec3(getPositionX(), getPositionY(), getPositionZ())));
+    EaseSineOut* moveDown = EaseSineOut::create(MoveTo::create(0.1f, getPosition3D()));
     Sequence* sequenceJump = Sequence::create(moveUp, moveDown, NULL);
     Spawn* spawn = Spawn::create(scaleTo, sequenceJump, NULL);
     CallFunc* callback = CallFunc::create(CC_CALLBACK_0(Player::onLand,this));
@@ -186,6 +194,37 @@ void Player::onEnterJumpMove()
     Sequence* sequence = Sequence::create(spawn, callback, NULL);
     this->runAction(sequence);
 }
+void Player::onEnterAttack()
+{
+    Vec3 dir = Vec3::ZERO;
+    switch (m_dir) {
+        case AD_FORWARD:
+            dir = Vec3(0, 0, -TerrainTile::CONTENT_SCALE);
+            break;
+        case AD_BACK:
+            dir = Vec3(0, 0, TerrainTile::CONTENT_SCALE);
+            break;
+        case AD_LEFT:
+            dir = Vec3(-TerrainTile::CONTENT_SCALE, 0, 0);
+            break;
+        case AD_RIGHT:
+            dir = Vec3(TerrainTile::CONTENT_SCALE, 0, 0);
+            break;
+        default:
+            break;
+    }
+    ScaleTo* scaleTo = ScaleTo::create(0.1f, 1.0f, 1.0f, 1.0f);
+    EaseSineOut* moveUp = EaseSineOut::create(MoveTo::create(0.1f, Vec3(getPositionX(), getPositionY() + TerrainTile::CONTENT_SCALE*0.25f, getPositionZ()) + dir*0.5f));
+    Vec3 monsterPos = getPosition3D() + dir;
+    Vec2 posInMap = Vec2((int)(monsterPos.x/TerrainTile::CONTENT_SCALE), (int)(-monsterPos.z /TerrainTile::CONTENT_SCALE));
+    CallFunc* callback = CallFunc::create(CC_CALLBACK_0(VoxelExplorer::handleMonsterHurt,VoxelExplorer::getInstance(),posInMap));
+    EaseSineOut* moveDown = EaseSineOut::create(MoveTo::create(0.1f, getPosition3D()));
+    Sequence* sequenceJump = Sequence::create(moveUp, callback, moveDown, NULL);
+    Spawn* spawn = Spawn::create(scaleTo, sequenceJump, NULL);
+    CallFunc* callback2 = CallFunc::create(CC_CALLBACK_0(Player::onLand,this));
+    Sequence* sequence = Sequence::create(spawn, callback2, NULL);
+    this->runAction(sequence);
+}
 void Player::onEnterDrop()
 {
 }
@@ -203,6 +242,9 @@ void Player::onExitJumpLocal()
 {
 }
 void Player::onExitJumpMove()
+{
+}
+void Player::onExitAttack()
 {
 }
 void Player::onExitDrop()
@@ -227,5 +269,11 @@ bool Player::createPlayerLight()
         return false;
     m_pPlayerLight->setLightFlag(LightFlag::LIGHT0);
     VoxelExplorer::getInstance()->get3DLayer()->addChild(m_pPlayerLight);
+    
+    AmbientLight* ambLight = AmbientLight::create(Color3B(80, 80, 80));
+    if(!ambLight)
+        return false;
+    ambLight->setLightFlag(LightFlag::LIGHT2);
+    VoxelExplorer::getInstance()->get3DLayer()->addChild(ambLight);
     return true;
 }

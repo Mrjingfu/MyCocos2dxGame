@@ -3,15 +3,15 @@
 <plist version="1.0">
 <dict>
 	<key>MMN_RAT</key>
-	<string>16x16x16.c3b</string>
+	<string>rat.c3b</string>
 	<key>MMN_BAT</key>
-	<string>16x16x16.c3b</string>
+	<string>bat.c3b</string>
 	<key>MMN_SNAKE</key>
-	<string>16x16x16.c3b</string>
+	<string>snake.c3b</string>
 	<key>MMN_SPIDER</key>
-	<string>16x16x16.c3b</string>
+	<string>spider.c3b</string>
 	<key>MMN_SLIME</key>
-	<string>16x16x16.c3b</string>
+	<string>slime.c3b</string>
 	<key>MMN_ALLIP</key>
 	<string>16x16x16.c3b</string>
 	<key>MMN_PRISONER</key>

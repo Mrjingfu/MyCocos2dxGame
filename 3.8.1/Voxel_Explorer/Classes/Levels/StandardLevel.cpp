@@ -314,7 +314,7 @@ void StandardLevel::assignAreasType()
     m_Style = cocos2d::random(LS_STANDARD, LS_PASSAGE);
     
     float percentStandard = 0.6f;
-    float percentTunnel = 0.1f;
+    float percentTunnel = 0.05f;
     float percentPassage = 1.0 - percentStandard - percentTunnel;
     AlisaMethod* am = AlisaMethod::create(percentStandard,percentPassage,percentTunnel,-1.0, NULL);
     if(am)
@@ -774,7 +774,7 @@ int StandardLevel::randomMonsterRespawnCell()
                 continue;
         }
         tileIndex = area->getRandomTile(this);
-        if((m_Map[tileIndex].m_Flag & TileInfo::LOS_BLOCKING) != 0)
+        if((m_Map[tileIndex].m_Flag & TileInfo::USEABLE) != 0 || (m_Map[tileIndex].m_Flag & TileInfo::ATTACKABLE) != 0)
             continue;
         if ((m_Map[tileIndex].m_Flag & TileInfo::PASSABLE) != 0 ) {
             return tileIndex;
@@ -798,7 +798,7 @@ int StandardLevel::randomPickableRespawnCell()
             continue;
 
         tileIndex = area->getRandomTile(this);
-        if((m_Map[tileIndex].m_Flag & TileInfo::LOS_BLOCKING) != 0)
+        if((m_Map[tileIndex].m_Flag & TileInfo::USEABLE) != 0 || (m_Map[tileIndex].m_Flag & TileInfo::ATTACKABLE) != 0)
             continue;
         if ((m_Map[tileIndex].m_Flag & TileInfo::PASSABLE) != 0 && (m_Map[tileIndex].m_Flag & TileInfo::PICKABLE) == 0) {
             return tileIndex;

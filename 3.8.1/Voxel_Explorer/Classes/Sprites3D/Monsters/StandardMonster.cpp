@@ -7,16 +7,40 @@
 //
 
 #include "StandardMonster.hpp"
+#include "LevelResourceManager.h"
 USING_NS_CC;
 
 StandardMonster* StandardMonster::create(BaseMonster::MonsterType type)
 {
+    std::string model = LevelResourceManager::getInstance()->getMonsterRes(MONSTER_MODEL_NAMES[type]);
     auto monster = new (std::nothrow) StandardMonster();
-    if (monster && monster->initWithFile("chr_sword.c3b"))
+    if (monster && monster->initWithFile(model))
     {
         monster->m_Type = type;
         monster->setCameraMask((unsigned int)CameraFlag::USER1);
         monster->setLightMask((unsigned int)LightFlag::LIGHT0);
+        monster->setActorDir(cocos2d::random(AD_FORWARD, AD_BACK));
+        
+        switch (monster->m_Type) {
+            case MT_RAT:
+                monster->setScale(0.8f);
+                monster->m_bJumpMove = true;
+                break;
+            case MT_BAT:
+                monster->setScale(0.8f);
+                monster->m_bJumpMove = false;
+                break;
+            case MT_SNAKE:
+                monster->m_bJumpMove = false;
+                break;
+            case MT_SPIDER:
+            case MT_SLIME:
+                monster->setScale(0.5f);
+                monster->m_bJumpMove = true;
+                break;
+            default:
+                break;
+        }
         monster->autorelease();
         return monster;
     }

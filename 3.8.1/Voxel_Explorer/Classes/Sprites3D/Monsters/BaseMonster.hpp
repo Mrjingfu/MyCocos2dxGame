@@ -11,6 +11,7 @@
 
 #include "Actor.hpp"
 #include "TerrainTile.hpp"
+#include "MonsterProperty.hpp"
 extern const std::string MONSTER_MODEL_NAMES[];
 class BaseMonster : public Actor
 {
@@ -80,6 +81,9 @@ public:
 public:
     MonsterState getState() const { return m_State; }
     void setState(MonsterState state);
+    
+    MonsterProperty* getMonsterProperty() const { return m_pMonsterProperty; }
+    void attackedByPlayer();
 protected:
     BaseMonster();
     virtual ~BaseMonster();
@@ -106,6 +110,9 @@ protected:
     MonsterType         m_Type;
     MonsterState        m_State;
     MonsterState        m_LastState;
+    
+    MonsterProperty*    m_pMonsterProperty;
+    bool                m_bJumpMove;        ///是否为跳跃移动，否则则是蠕动移动
 };
 
 #endif /* BaseMonster_hpp */

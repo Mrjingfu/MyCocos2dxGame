@@ -447,6 +447,10 @@ void PlayerProperty::extendBagSpace()
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_BAG_EXTEND_OK);
     }
 }
+CChaosNumber PlayerProperty::getRandomAttack()
+{
+    return cocos2d::random(m_nAttackDiceNum.GetLongValue(), m_nAttackDiceNum*m_nAttackDiceFaceNum.GetLongValue());
+}
 void PlayerProperty::load()
 {
 }

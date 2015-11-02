@@ -126,9 +126,15 @@ void Layer3D::excuteToJump()
     Player* player = VoxelExplorer::getInstance()->getPlayer();
     if(player && (player->getState() == Player::PS_PREPARE_TO_JUMP))
     {
-        if(VoxelExplorer::getInstance()->checkMovable())
+        TileInfo info;
+        if(VoxelExplorer::getInstance()->checkMovable(info))
             player->setState(Player::PS_JUMPMOVE);
         else
-            player->setState(Player::PS_JUMPLOCAL);
+        {
+            if((info.m_Flag & TileInfo::ATTACKABLE) != 0)
+                player->setState(Player::PS_ATTACK);
+            else
+                player->setState(Player::PS_JUMPLOCAL);
+        }
     }
 }

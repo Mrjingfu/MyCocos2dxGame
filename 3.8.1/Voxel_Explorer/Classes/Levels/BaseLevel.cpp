@@ -105,7 +105,7 @@ void BaseLevel::updateTerrainTileFogOfWar(int x, int y , int width, int height, 
         }
     }
 }
-bool BaseLevel::checkMovable(Actor* actor)
+bool BaseLevel::checkMovable(Actor* actor, TileInfo& info)
 {
     if(!actor)
         return false;
@@ -119,16 +119,20 @@ bool BaseLevel::checkMovable(Actor* actor)
     else if(actor->getActorDir() == Actor::AD_BACK)
         pos += Vec2(0, -1);
     int index = pos.x + pos.y*m_nWidth;
-    TileInfo info = m_Map[index];
+    info = m_Map[index];
     if((info.m_Flag & TileInfo::INITIALISED) != 0)
     {
         ///发送跳崖事件
         return false;
     }
-    if((info.m_Flag & TileInfo::LOS_BLOCKING) != 0)
+    if((info.m_Flag & TileInfo::ATTACKABLE) != 0)
+    {
+        return false;
+    }
+    if((info.m_Flag & TileInfo::USEABLE) != 0)
     {
         if( info.m_Type == TerrainTile::TT_DOOR || info.m_Type == TerrainTile::TT_LOCKED_DOOR || info.m_Type == TerrainTile::TT_SECRET_DOOR )
-            VoxelExplorer::getInstance()->handlDoor(pos);
+            VoxelExplorer::getInstance()->handleDoor(pos);
         return false;
     }
     if((info.m_Flag & TileInfo::PASSABLE) != 0)
@@ -151,7 +155,7 @@ int BaseLevel::assignTerrainTileFlag(TerrainTile::TileType type)
         case TerrainTile::TT_DOOR:
         case TerrainTile::TT_LOCKED_DOOR:
         case TerrainTile::TT_SECRET_DOOR:
-            flag = TileInfo::PASSABLE | TileInfo::LOS_BLOCKING;
+            flag = TileInfo::PASSABLE | TileInfo::USEABLE;
             break;
         case TerrainTile::TT_OPENED_DOOR:
             flag = TileInfo::PASSABLE;

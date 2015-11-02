@@ -16,8 +16,6 @@ class StandardMonster : public BaseMonster
     virtual ~StandardMonster();
 public:
     static StandardMonster* create(BaseMonster::MonsterType type);
-private:
-    static std::string getModelResByType(MonsterType type);
 };
 
 #endif /* StandardMonster_hpp */

@@ -18,6 +18,7 @@ public:
         PS_PREPARE_TO_JUMP,
         PS_JUMPLOCAL,
         PS_JUMPMOVE,
+        PS_ATTACK,
         PS_DROP,
         PS_DEATH,
         PS_UNKNOWN
@@ -43,6 +44,7 @@ private:
     void onEnterPrepareToJump();
     void onEnterJumpLocal();
     void onEnterJumpMove();
+    void onEnterAttack();
     void onEnterDrop();
     void onEnterDeath();
     
@@ -50,6 +52,7 @@ private:
     void onExitPrepareToJump();
     void onExitJumpLocal();
     void onExitJumpMove();
+    void onExitAttack();
     void onExitDrop();
     void onExitDeath();
     
