@@ -12,7 +12,7 @@ USING_NS_CC;
 std::string UtilityHelper::getLocalString(const std::string& key)
 {
     ValueMap dict;
-    LanguageType lt= CCApplication::getInstance()->getCurrentLanguage();
+    LanguageType lt= Application::getInstance()->getCurrentLanguage();
     switch (lt) {
         case LanguageType::CHINESE:
             dict = FileUtils::getInstance()->getValueMapFromFile("chinese.plist");

@@ -9,6 +9,7 @@
 #include "PopupUILayerManager.h"
 #include "RolePopUpUI.h"
 #include "ItemPopupUI.h"
+#include "EquipItemPopupUI.h"
 
 PopupUILayerManager::PopupUILayerManager()
 {
@@ -90,8 +91,8 @@ PopupUILayer* PopupUILayerManager::initPopUp(ePopupType type)
         case ePopupItem:
             popupLayer = ItemPopupUI::create();
             break;
-        case ePopupTest:
-//            popupLayer = TestPopUI::create();
+        case ePopupEquipItem:
+            popupLayer = EquipItemPopupUI::create();
         default:
             break;
     }

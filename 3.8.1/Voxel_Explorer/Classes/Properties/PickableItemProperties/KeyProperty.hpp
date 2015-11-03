@@ -17,6 +17,7 @@ public:
 
     virtual void adjustByDC();
     virtual void handleIdentify();
+    CChaosNumber getCount() const {return m_nCount;}
 private:
     CChaosNumber            m_nCount;
 };

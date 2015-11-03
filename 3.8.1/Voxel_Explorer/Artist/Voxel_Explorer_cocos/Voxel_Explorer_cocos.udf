@@ -33,10 +33,11 @@
         <OpenedDocuments>
           <FilePathData Path="gameScene.csd" />
           <FilePathData Path="menuscene.csd" />
-          <FilePathData Path="itemPopupLayer.csd" />
           <FilePathData Path="characterLayer.csd" />
+          <FilePathData Path="equipitemPopupLayer.csd" />
+          <FilePathData Path="itemPopupLayer.csd" />
         </OpenedDocuments>
-        <ActiveDocument Path="itemPopupLayer.csd" />
+        <ActiveDocument Path="equipitemPopupLayer.csd" />
       </Value>
     </Item>
   </Properties>

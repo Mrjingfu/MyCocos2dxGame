@@ -330,5 +330,27 @@
 	<string>骑士的容貌</string>
 	<key>PIN_CLOTH_PRO_STEELARMOR</key>
 	<string>寡妇对抗者</string>
+	<key>PROP_SHOW_HP</key>
+	<string>生命值：%d</string>
+	<key>ROLE_SHOW_HP</key>
+	<string>生命值：%d/%d</string>
+	<key>ROLE_SHOW_EXP</key>
+	<string>经验值：%d/%d</string>
+	<key>PROP_SHOW_MP</key>
+	<string>魔法值：%d</string>
+	<key>ROLE_SHOW_MP</key>
+	<string>魔法值：%d/%d</string>
+	<key>PROP_SHOW_LIGHT_DIS</key>
+	<string>光照范围：%d</string>
+	<key>PROP_SHOW_SEARCH_DIS</key>
+	<string>侦查范围：%d</string>
+	<key>PROP_SHOW_MARGIC_FIND</key>
+	<string>取魔率：%d</string>
+	<key>PROP_SHOW_CRITICAL_STRIKE</key>
+	<string>暴击率：%d</string>
+	<key>PROP_SHOW_BLOCK</key>
+	<string>格挡率：%d</string>
+	<key>PROP_SHOW_DODGE</key>
+	<string>闪避率：%d</string>
 </dict>
 </plist>

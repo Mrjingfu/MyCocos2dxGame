@@ -60,7 +60,7 @@ bool ItemUI::init()
 
     m_pItemCount = ui::Text::create("", UtilityHelper::getLocalString("FONT_NAME"), 36);
     m_pItemCount->setScale(0.25);
-    m_pItemCount->setAnchorPoint(Vec2::ANCHOR_MIDDLE_LEFT);
+    m_pItemCount->setAnchorPoint(Vec2::ANCHOR_BOTTOM_RIGHT);
     m_pItemCount->setPosition(Vec2(getContentSize().width*0.62, getContentSize().height*0.8));
     addChild(m_pItemCount,3);
     m_pItemCount->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
