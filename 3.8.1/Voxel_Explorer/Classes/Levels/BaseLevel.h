@@ -15,10 +15,12 @@
 struct TileInfo
 {
     typedef enum {
-        INITIALISED     = 1<<0,
-        PASSABLE        = 1<<1,
-        LOS_BLOCKING    = 1<<2,
-        PICKABLE        = 1<<3,
+        INITIALISED     = 1<<0,     ///初始化状态
+        PASSABLE        = 1<<1,     ///可通过状态
+        USEABLE         = 1<<2,     ///可使用状态
+        ATTACKABLE      = 1<<3,     ///可攻击状态
+        PICKABLE        = 1<<4,     ///可拾取状态
+        
     } FLAG;
     typedef enum {
         FORWARD = 0,
@@ -80,8 +82,7 @@ public:
     void wrapTerrainTiles(int x, int y , int width, int height, TerrainTile::TileType type, TerrainTile::TileType withType);
     
     void updateTerrainTileFogOfWar(int x, int y , int width, int height, bool visited);
-    
-    bool checkMovable(Actor* actor);
+    bool checkMovable(Actor* actor, TileInfo& info);
     
     void load();
     void save();

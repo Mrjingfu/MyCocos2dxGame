@@ -12,6 +12,7 @@
 #include "cocos2d.h"
 #include "BaseLevel.h"
 #include "Player.hpp"
+#include "MonsterProperty.hpp"
 class VoxelExplorer : public cocos2d::Ref
 {
     VoxelExplorer();
@@ -22,15 +23,17 @@ public:
     void update(float delta);
     void destroy();
     
-    bool checkMovable();
+    bool checkMovable(TileInfo& info);
     void cameraTrackPlayer();
     void checkPickItem();
     void checkUpdateFogOfWar();
     void updateFogOfWar(const cocos2d::Rect& areaRect, bool visited);
     void searchAndCheck();      ///侦查
-    void handlDoor(const cocos2d::Vec2& mapPos);            ///开门
-    void handlTriggerTrap(const cocos2d::Vec2& mapPos);     ///触发机关
-    void handlPickItem(const cocos2d::Vec2& mapPos);        ///拾取道具
+    void handleDoor(const cocos2d::Vec2& mapPos);            ///开门
+    void handleTriggerTrap(const cocos2d::Vec2& mapPos);     ///触发机关
+    void handlePickItem(const cocos2d::Vec2& mapPos);        ///拾取道具
+    void handleMonsterHurt(const cocos2d::Vec2& mapPos);     ///处理攻击怪物
+    void handlePlayerHurt(const cocos2d::Vec2& mapPos, MonsterProperty* monsterProperty);      ///处理攻击玩家
     
     cocos2d::Layer* getMainLayer() const { return m_pMainLayer; }
     cocos2d::Layer* get3DLayer() const { return m_p3DLayer; }

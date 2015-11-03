@@ -98,7 +98,7 @@ void BaseDoor::onEnterClosed()
     if(!m_pFakeDoor)
         return;
     if (m_dir == AD_FORWARD || m_dir == AD_BACK) {
-        int flag = TileInfo::PASSABLE | TileInfo::LOS_BLOCKING;
+        int flag = TileInfo::PASSABLE | TileInfo::USEABLE;
         if(m_DoorLastState == BaseDoor::DS_UNKNOWN || m_DoorLastState == BaseDoor::DS_LOCKED)
         {
             m_pFakeDoor->setVisible(true);
@@ -115,7 +115,7 @@ void BaseDoor::onEnterClosed()
     }
     else if(m_dir == AD_LEFT || m_dir == AD_RIGHT)
     {
-        int flag = TileInfo::PASSABLE | TileInfo::LOS_BLOCKING;
+        int flag = TileInfo::PASSABLE | TileInfo::USEABLE;
         if(m_DoorLastState == BaseDoor::DS_UNKNOWN || m_DoorLastState == BaseDoor::DS_LOCKED)
         {
             m_pFakeDoor->setVisible(true);
@@ -165,7 +165,7 @@ void BaseDoor::onEnterOpened()
         }
         else
         {
-            EaseSineOut* moveTo = EaseSineOut::create(MoveTo::create(0.5f, Vec3(m_pFakeDoor->getPositionX(),m_pFakeDoor->getPositionY(), m_pFakeDoor->getPositionZ()-TerrainTile::CONTENT_SCALE)));
+            EaseSineOut* moveTo = EaseSineOut::create(MoveTo::create(0.5f, Vec3(m_pFakeDoor->getPositionX(),m_pFakeDoor->getPositionY(), m_pFakeDoor->getPositionZ()+TerrainTile::CONTENT_SCALE)));
             CallFunc* callback1 = CallFunc::create(CC_CALLBACK_0(BaseDoor::setVisible,m_pFakeDoor, false));
             CallFunc* callback2 = CallFunc::create(CC_CALLBACK_0(BaseDoor::updateTerrainTileFlag,this, flag));
             Sequence* sequence = Sequence::create(moveTo, callback1, callback2, NULL);

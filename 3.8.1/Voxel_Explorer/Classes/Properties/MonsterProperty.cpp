@@ -8,6 +8,7 @@
 
 #include "MonsterProperty.hpp"
 #include "RandomDungeon.hpp"
+#include "AlisaMethod.h"
 USING_NS_CC;
 
 MonsterProperty::MonsterProperty()
@@ -47,6 +48,8 @@ CChaosNumber MonsterProperty::getDefense()
 }
 void MonsterProperty::setCurrentHP(CChaosNumber hp)
 {
+    if(m_nCurrentHP == hp)
+        return;
     if(hp >= m_nMaxHP)
         m_nCurrentHP = m_nMaxHP;
     else if(hp <= 0)
@@ -54,19 +57,25 @@ void MonsterProperty::setCurrentHP(CChaosNumber hp)
     else
         m_nCurrentHP = hp;
 }
-void MonsterProperty::adjustByDC(bool elite)
+void MonsterProperty::adjustByDC()
 {
     if(RandomDungeon::getInstance()->getCurrentDungeonNode() == nullptr)
         return;
+    float percentElite = 0.005f;
+    float percentStandard = 1.0 - percentElite;
+    AlisaMethod* amElite = AlisaMethod::create(percentStandard,percentElite,-1.0, NULL);
+    if(amElite)
+        m_bIsElite = (amElite->getRandomIndex() == 1);
+    
     CChaosNumber dc = RandomDungeon::getInstance()->getDifficultClass();
     CChaosNumber nodeDepth = RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nNodeDepth;
     CChaosNumber currentDepth = RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nCurrentDepth;
     m_nLevel = m_nLevel.GetLongValue() + (dc-1)*30 + (nodeDepth-1)*5 + cocos2d::random(0, (int)currentDepth.GetLongValue());
-    if(elite)
+    if(m_bIsElite)
         m_nLevel = m_nLevel + 5;
     
     m_nValueCopper = cocos2d::random((int)m_nLevel*10, (int)m_nLevel*15);
-    if(elite)
+    if(m_bIsElite)
         m_nValueCopper = m_nValueCopper*5;
     
     m_nMaxHP = m_nMaxHP + m_nLevel.GetLongValue()*m_nMaxHP.GetLongValue();
@@ -80,9 +89,9 @@ void MonsterProperty::adjustByDC(bool elite)
     
     m_nArmorClass = m_nArmorClass - (dc-1)*m_nBaseArmorClass.GetLongValue() - (nodeDepth-1);
     
-    m_fBlockRate = MIN(m_fBlockRate*(nodeDepth-1)*0.5f + m_fBlockRate*(dc-1)*5, 0.2f);
-    m_fCriticalStrikeRate = MIN(m_fCriticalStrikeRate*(nodeDepth-1)*0.5f + m_fCriticalStrikeRate*(dc-1)*5, 0.3f);
-    m_fDodgeRate = MIN(m_fDodgeRate*(nodeDepth-1)*0.5f + m_fDodgeRate*(dc-1)*5, 0.2f);
+    m_fBlockRate = MIN(m_fBlockRate + m_fBlockRate*(nodeDepth-1)*0.5f + m_fBlockRate*(dc-1)*5, 0.2f);
+    m_fCriticalStrikeRate = MIN(m_fCriticalStrikeRate + m_fCriticalStrikeRate*(nodeDepth-1)*0.5f + m_fCriticalStrikeRate*(dc-1)*5, 0.3f);
+    m_fDodgeRate = MIN(m_fDodgeRate + m_fDodgeRate*(nodeDepth-1)*0.5f + m_fDodgeRate*(dc-1)*5, 0.2f);
     
     float rand = cocos2d::rand_0_1();
     if(rand < 0.1f)
@@ -91,4 +100,7 @@ void MonsterProperty::adjustByDC(bool elite)
         m_nDropItemNum = 2;
     else
         m_nDropItemNum = 0;
+    
+    if(m_bIsElite)
+        m_nDropItemNum = 4;
 }

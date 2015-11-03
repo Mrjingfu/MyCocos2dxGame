@@ -16,6 +16,8 @@
 #include "UseableItem.hpp"
 #include "PlayerProperty.hpp"
 #include "Layer3D.hpp"
+#include "BaseBoss.hpp"
+#include "BaseMonster.hpp"
 USING_NS_CC;
 
 VoxelExplorer* g_pVoxelExplorerInstance = nullptr;
@@ -98,11 +100,11 @@ void VoxelExplorer::destroy()
 {
     LevelResourceManager::getInstance()->clearLevelRes();
 }
-bool VoxelExplorer::checkMovable()
+bool VoxelExplorer::checkMovable(TileInfo& info)
 {
     if(!m_pCurrentLevel || !m_pPlayer)
         return false;
-    return m_pCurrentLevel->checkMovable(m_pPlayer);
+    return m_pCurrentLevel->checkMovable(m_pPlayer, info);
 }
 void VoxelExplorer::cameraTrackPlayer()
 {
@@ -121,7 +123,7 @@ void VoxelExplorer::checkPickItem()
         return;
     int flag = m_pCurrentLevel->getTerrainTileFlag(m_pPlayer->getPosInMap().x, m_pPlayer->getPosInMap().y);
     if(flag & TileInfo::PICKABLE)
-        handlPickItem(m_pPlayer->getPosInMap());
+        handlePickItem(m_pPlayer->getPosInMap());
 }
 void VoxelExplorer::checkUpdateFogOfWar()
 {
@@ -175,7 +177,7 @@ void VoxelExplorer::updateFogOfWar(const cocos2d::Rect& areaRect, bool visited)
     {
         for (const auto& child : m_pPickableItemsLayer->getChildren())
         {
-            Actor* item = static_cast<Actor*>(child);
+            Actor* item = dynamic_cast<Actor*>(child);
             if(item && areaRect.containsPoint(item->getPosInMap()))
                 item->setVisited(visited);
         }
@@ -184,13 +186,13 @@ void VoxelExplorer::updateFogOfWar(const cocos2d::Rect& areaRect, bool visited)
 void VoxelExplorer::searchAndCheck()    ///侦查
 {
 }
-void VoxelExplorer::handlDoor(const cocos2d::Vec2& mapPos)
+void VoxelExplorer::handleDoor(const cocos2d::Vec2& mapPos)
 {
     if(m_pTerrainDoorsLayer && m_pPlayer)
     {
         for (const auto& child : m_pTerrainDoorsLayer->getChildren())
         {
-            BaseDoor* door = static_cast<BaseDoor*>(child);
+            BaseDoor* door = dynamic_cast<BaseDoor*>(child);
             if(door && door->getPosInMap() == mapPos)
             {
                 if(door->getDoorState() == BaseDoor::DS_HIDE)
@@ -216,16 +218,16 @@ void VoxelExplorer::handlDoor(const cocos2d::Vec2& mapPos)
 
     }
 }
-void VoxelExplorer::handlTriggerTrap(const cocos2d::Vec2& mapPos)     ///触发机关
+void VoxelExplorer::handleTriggerTrap(const cocos2d::Vec2& mapPos)     ///触发机关
 {
 }
-void VoxelExplorer::handlPickItem(const cocos2d::Vec2& mapPos)        ///拾取道具
+void VoxelExplorer::handlePickItem(const cocos2d::Vec2& mapPos)        ///拾取道具
 {
     if(m_pPickableItemsLayer && m_pPlayer)
     {
         for (const auto& child : m_pPickableItemsLayer->getChildren())
         {
-            PickableItem* item = static_cast<PickableItem*>(child);
+            PickableItem* item = dynamic_cast<PickableItem*>(child);
             if(item && item->getPosInMap() == mapPos)
             {
                 if(item->getState() == PickableItem::PIS_IDLE)
@@ -239,6 +241,41 @@ void VoxelExplorer::handlPickItem(const cocos2d::Vec2& mapPos)        ///拾取�
             }
         }
     }
+}
+void VoxelExplorer::handleMonsterHurt(const cocos2d::Vec2& mapPos)
+{
+    if(m_pMonstersLayer && m_pPlayer)
+    {
+        for (const auto& child : m_pMonstersLayer->getChildren())
+        {
+            BaseMonster* monster = dynamic_cast<BaseMonster*>(child);
+            if(monster && monster->getPosInMap() == mapPos)
+            {
+                if(monster->getState() != BaseMonster::MS_DEATH)
+                {
+                    monster->attackedByPlayer();
+                    return;
+                }
+            }
+            else
+            {
+                BaseBoss* boss = dynamic_cast<BaseBoss*>(child);
+                if(boss && boss->getPosInMap() == mapPos)
+                {
+                    if(boss->getState() != BaseBoss::BS_DEATH)
+                    {
+                        boss->attackedByPlayer();
+                        return;
+                    }
+                }
+            }
+        }
+    }
+}
+void VoxelExplorer::handlePlayerHurt(const cocos2d::Vec2& mapPos, MonsterProperty* monsterProperty)
+{
+    if(!m_pPlayer || m_pPlayer->getPosInMap() != mapPos)
+        return;
 }
 bool VoxelExplorer::createLayers()
 {

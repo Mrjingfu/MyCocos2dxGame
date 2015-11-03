@@ -33,7 +33,7 @@ bool SewerLevel::createMonsters()
         
         monster->setPosition3D(Vec3(m_Map[tileIndex].m_nX*TerrainTile::CONTENT_SCALE, -0.5f*TerrainTile::CONTENT_SCALE, -m_Map[tileIndex].m_nY*TerrainTile::CONTENT_SCALE));
         monster->setVisited(m_Map[tileIndex].m_bVisited);
-        monster->updateTerrainTileFlag(TileInfo::PASSABLE | TileInfo::LOS_BLOCKING);
+        monster->updateTerrainTileFlag(TileInfo::PASSABLE | TileInfo::ATTACKABLE);
         VoxelExplorer::getInstance()->getMonstersLayer()->addChild(monster);
         monster->setState(BaseMonster::MS_IDLE);
     }
