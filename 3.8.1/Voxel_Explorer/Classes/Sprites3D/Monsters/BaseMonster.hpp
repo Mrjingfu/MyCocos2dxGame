@@ -12,6 +12,7 @@
 #include "Actor.hpp"
 #include "TerrainTile.hpp"
 #include "MonsterProperty.hpp"
+#include "EventConst.h"
 extern const std::string MONSTER_MODEL_NAMES[];
 class BaseMonster : public Actor
 {
@@ -115,6 +116,8 @@ protected:
     
     MonsterProperty*    m_pMonsterProperty;
     bool                m_bJumpMove;        ///是否为跳跃移动，否则则是蠕动移动
+    
+    HurtData*           m_pHurtData;
 };
 
 #endif /* BaseMonster_hpp */
