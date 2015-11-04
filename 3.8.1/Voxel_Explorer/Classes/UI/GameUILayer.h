@@ -35,6 +35,10 @@ private:
 private:
     bool _isOpenSmailMap;
     cocos2d::ui::ListView*   m_pListMsgs;
+    
+    cocos2d::Label*          m_pRoleLabel;
+    cocos2d::Label*          m_pMonsterLabel;
+    
     cocos2d::ui::ImageView*  m_pRoleBtn;
     cocos2d::ui::LoadingBar* m_pRoleHpBar;
     cocos2d::ui::Text*       m_pRoleCurHp;

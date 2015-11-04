@@ -45,6 +45,9 @@ GameUILayer::GameUILayer()
         m_pMonsterBuffers[i] = nullptr;
     }
     
+    m_pListMsgs = nullptr;
+    m_pMonsterLabel = nullptr;
+    m_pRoleLabel = nullptr;
     _isOpenSmailMap = false;
     
 }
@@ -52,45 +55,7 @@ GameUILayer::~GameUILayer()
 {
     
 }
-void GameUILayer::onEventUpdateRoleProp(cocos2d::EventCustom *sender)
-{
-    CCLOG("onEventUpdateProp");
-    updateRoleUi();
-}
 
-void GameUILayer::onEventDead(cocos2d::EventCustom *sender)
-{
-    
-}
-void GameUILayer::onEvenetUpdateMonsterProp(cocos2d::EventCustom *sender)
-{
-//    BaseMonster* monster = static_cast<BaseMonster*>(sender->getUserData());
-//    Vec2 pt = VoxelExplorer::getInstance()->getMainCamera()->project(monster->getPosition3D());
-//    cocos2d::Label* note = cocos2d::Label::createWithSystemFont("",UtilityHelper::getLocalString("FONT_NAME"),36);
-//    note->setString("monster");
-//    note->setScale(0.4);
-//    note->setTextColor(Color4B::BLUE);
-//    note->setPosition(pt);
-//    note->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
-//    m_pRootLayer->addChild(note);
-//    CCLOG("pt x:%f y%f",pt.x,pt.y);
-}
-
-void GameUILayer::onEnter()
-{
-    WrapperUILayer::onEnter();
-    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_PLAYER_PROPERTY_DIRTY, CC_CALLBACK_1(GameUILayer::onEventUpdateRoleProp,this));
-    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_PLAYER_DEATH, CC_CALLBACK_1(GameUILayer::onEventDead,this));
-    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_MONSTER_PROPERTY_DIRTY, CC_CALLBACK_1(GameUILayer::onEvenetUpdateMonsterProp,this));
-    
-}
-void GameUILayer::onExit()
-{
-    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_PLAYER_PROPERTY_DIRTY);
-    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_PLAYER_DEATH);
-    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_MONSTER_PROPERTY_DIRTY);
-    WrapperUILayer::onExit();
-}
 bool GameUILayer::addEvents()
 {
       
@@ -204,10 +169,63 @@ bool GameUILayer::addEvents()
     m_pRoleExpBar->setScale9Enabled(true);
     m_pRoleMpBar->setScale9Enabled(true);
     
+    m_pMonsterLabel = cocos2d::Label::createWithSystemFont("",UtilityHelper::getLocalString("FONT_NAME"),36);
+    m_pMonsterLabel->setString("monster");
+    m_pMonsterLabel->setScale(0.3);
+    m_pMonsterLabel->setTextColor(Color4B::RED);
+    m_pMonsterLabel->setVisible(false);
+    m_pRootLayer->addChild(m_pMonsterLabel);
+    
+    m_pRoleLabel = cocos2d::Label::createWithSystemFont("",UtilityHelper::getLocalString("FONT_NAME"),36);
+    m_pRoleLabel->setString("Role");
+    m_pRoleLabel->setScale(0.3);
+    m_pRoleLabel->setTextColor(Color4B::RED);
+    m_pRoleLabel->setVisible(false);
+    m_pRootLayer->addChild(m_pRoleLabel);
+    
     updateRoleUi();
     updateMonsterUi();
     
     return true;
+}
+void GameUILayer::onEventUpdateRoleProp(cocos2d::EventCustom *sender)
+{
+    CCLOG("onEventUpdateProp");
+    updateRoleUi();
+}
+
+void GameUILayer::onEventDead(cocos2d::EventCustom *sender)
+{
+    
+}
+void GameUILayer::onEvenetUpdateMonsterProp(cocos2d::EventCustom *sender)
+{
+    BaseMonster* monster = static_cast<BaseMonster*>(sender->getUserData());
+    Vec2 pt = VoxelExplorer::getInstance()->getMainCamera()->projectGL(monster->getPosition3D());
+    m_pMonsterLabel->setVisible(true);
+    m_pMonsterLabel->setString(StringUtils::format("%d",int(-monster->getMonsterProperty()->getCurrentHP().GetLongValue())));
+    m_pMonsterLabel->setPosition(Vec2(pt.x, pt.y+TerrainTile::CONTENT_SCALE*2.5));
+    FadeIn* fadein = FadeIn::create(1.0f);
+//    ScaleBy* scaleBy = ScaleBy::create(1.0f,0.8f);
+    FadeOut* fadeout = FadeOut::create(0.0f);
+    m_pMonsterLabel->runAction(Sequence::create(fadein,fadeout,nil));
+    CCLOG("pt x:%f y%f",pt.x,pt.y);
+}
+
+void GameUILayer::onEnter()
+{
+    WrapperUILayer::onEnter();
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_PLAYER_PROPERTY_DIRTY, CC_CALLBACK_1(GameUILayer::onEventUpdateRoleProp,this));
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_PLAYER_DEATH, CC_CALLBACK_1(GameUILayer::onEventDead,this));
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_MONSTER_PROPERTY_DIRTY, CC_CALLBACK_1(GameUILayer::onEvenetUpdateMonsterProp,this));
+    
+}
+void GameUILayer::onExit()
+{
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_PLAYER_PROPERTY_DIRTY);
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_PLAYER_DEATH);
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_MONSTER_PROPERTY_DIRTY);
+    WrapperUILayer::onExit();
 }
 void GameUILayer::updateRoleUi()
 {
