@@ -87,6 +87,7 @@ void BaseMonster::attackedByPlayer()
 {
     if(m_pMonsterProperty && m_pHurtData)
     {
+        m_pHurtData->reset();
         float percentDodgeRate = m_pMonsterProperty->getDodgeRate().GetFloatValue();
         float percentHit = 1.0 - percentDodgeRate;
         AlisaMethod* amDodgeRate = AlisaMethod::create(percentDodgeRate,percentHit,-1.0, NULL);

@@ -22,6 +22,13 @@ struct HurtData
         m_bBlocked = false;
         m_nDamage = false;
     }
+    void reset()
+    {
+        m_bDodge = false;
+        m_bCriticalStrike = false;
+        m_bBlocked = false;
+        m_nDamage = false;
+    }
 };
 
 //EVENT
