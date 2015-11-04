@@ -10,7 +10,6 @@
 #include "BaseLevel.h"
 #include "AlisaMethod.h"
 #include "PlayerProperty.hpp"
-#include "EventConst.h"
 #include "VoxelExplorer.h"
 USING_NS_CC;
 const std::string MONSTER_MODEL_NAMES[] = {
@@ -73,18 +72,22 @@ BaseMonster::BaseMonster()
     m_LastState = MS_UNKNOWN;
     m_bJumpMove = true;
     
+    m_pHurtData = new (std::nothrow) HurtData();
+    
     m_pMonsterProperty = new (std::nothrow) MonsterProperty();
     if(m_pMonsterProperty)
         m_pMonsterProperty->adjustByDC();
 }
 BaseMonster::~BaseMonster()
 {
+    CC_SAFE_DELETE(m_pHurtData);
     CC_SAFE_DELETE(m_pMonsterProperty);
 }
 void BaseMonster::attackedByPlayer()
 {
-    if(m_pMonsterProperty)
+    if(m_pMonsterProperty && m_pHurtData)
     {
+        m_pHurtData->reset();
         float percentDodgeRate = m_pMonsterProperty->getDodgeRate().GetFloatValue();
         float percentHit = 1.0 - percentDodgeRate;
         AlisaMethod* amDodgeRate = AlisaMethod::create(percentDodgeRate,percentHit,-1.0, NULL);
@@ -92,7 +95,8 @@ void BaseMonster::attackedByPlayer()
         {
             if(amDodgeRate->getRandomIndex() == 0)
             {
-                Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_MONSTER_DODGE, this);
+                m_pHurtData->m_bDodge = true;
+                Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_MONSTER_HURT, m_pHurtData);
                 return;
             }
         }
@@ -105,7 +109,7 @@ void BaseMonster::attackedByPlayer()
             if(amCriticalStrikeRate->getRandomIndex() == 0)
             {
                 attack = attack*2.0f;
-                Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_CRITICALSTRIKE, this);
+                m_pHurtData->m_bCriticalStrike = true;
             }
         }
         
@@ -121,14 +125,14 @@ void BaseMonster::attackedByPlayer()
             if(amBlockRate->getRandomIndex() == 0)
             {
                 attack = attack*0.5f;
-                Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_MONSTER_BLOCKED, this);
+                m_pHurtData->m_bBlocked = true;
             }
         }
         
         int currentHp = m_pMonsterProperty->getCurrentHP().GetLongValue();
         currentHp = MAX(currentHp - attack , 0);
         CCLOG("Monster: CurrentHp = %d, playerAttack = %d", currentHp, attack);
-        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_MONSTER_HURT, & attack);
+        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_MONSTER_HURT, m_pHurtData);
         if(currentHp == 0)
         {
             setState(MS_DEATH);
