@@ -150,8 +150,6 @@ bool EquipItemPopupUI::addEvents()
     m_pBtnEquip->addClickEventListener(CC_CALLBACK_1(EquipItemPopupUI::onClickEquip, this));
 
   
-    
-    registerCloseCallback(CC_CALLBACK_0(EquipItemPopupUI::notifyRolePopup, this));
     return true;
 }
 
@@ -307,9 +305,4 @@ void EquipItemPopupUI::onClickEquip(cocos2d::Ref *ref)
     }else{
         //装备失败 或者提前给出提示
     }
-}
-
-void EquipItemPopupUI::notifyRolePopup()
-{
-    Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_UI_UPDATE_ROLE_DATA);
 }

@@ -23,7 +23,6 @@ public:
 private:
     void onClickDiscard(Ref* ref);
     void onClickEquip(Ref* ref);
-    void notifyRolePopup();
     void displayFrame();
     void itemProperty();
 private:

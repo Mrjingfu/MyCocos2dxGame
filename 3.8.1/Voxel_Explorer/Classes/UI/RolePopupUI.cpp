@@ -45,12 +45,13 @@ RolePopupUI::~RolePopupUI()
 }
 void RolePopupUI::onEnter()
 {
-    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_UI_UPDATE_ROLE_DATA, CC_CALLBACK_1(RolePopupUI::onEventUpdateData, this));
+
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_PLAYER_PROPERTY_DIRTY, CC_CALLBACK_1(RolePopupUI::onEventUpdateData,this));
+
     PopupUILayer::onEnter();
 }
 void RolePopupUI::onExit()
 {
-    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_UI_UPDATE_ROLE_DATA);
     PopupUILayer::onExit();
 }
 bool RolePopupUI::initUi()

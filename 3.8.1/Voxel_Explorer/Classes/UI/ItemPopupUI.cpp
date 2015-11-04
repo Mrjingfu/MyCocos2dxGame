@@ -100,6 +100,7 @@ bool ItemPopupUI::addEvents()
     
     m_pItemCount->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
     m_pItemCount->setVisible(false);
+    
     m_pItemName->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
     m_pItemlv->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
     m_pItemDesc->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
@@ -109,9 +110,7 @@ bool ItemPopupUI::addEvents()
     
     m_pBtnDiscard->addClickEventListener(CC_CALLBACK_1(ItemPopupUI::onClickDiscard, this));
     m_pBtnUse->addClickEventListener(CC_CALLBACK_1(ItemPopupUI::onClickUser, this));
-  
-    
-    registerCloseCallback(CC_CALLBACK_0(ItemPopupUI::notifyRolePopup, this));
+
     return true;
 }
 
@@ -160,8 +159,4 @@ void ItemPopupUI::onClickUser(cocos2d::Ref *ref)
 {
     CHECK_ACTION(ref);
     CCLOG("onClickUser");
-}
-void ItemPopupUI::notifyRolePopup()
-{
-    Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_UI_UPDATE_ROLE_DATA);
 }

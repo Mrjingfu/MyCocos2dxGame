@@ -18,17 +18,23 @@ public:
     virtual ~GameUILayer();
 public:
     CREATE_FUNC(GameUILayer);
-    virtual bool addEvents();
-protected:
+    virtual bool addEvents() override;
+    void onEnter() override;
+    void onExit()override;
+private:
     void onClickRole(Ref* ref);
     void onClickMap(Ref* ref);
     void onClickSearch(Ref* ref);
     void onClickMsg(Ref* ref);
-    void onEvenetMeetMonster(cocos2d::EventCustom *sender);
+    void onEvenetUpdateMonsterProp(cocos2d::EventCustom *sender);
     void onEventLevelUp(cocos2d::EventCustom *sender); 
     void onEventDead(cocos2d::EventCustom *sender);
-    void onEventUpdateProp(cocos2d::EventCustom *sender);
+    void onEventUpdateRoleProp(cocos2d::EventCustom *sender);
+    void updateRoleUi();
+    void updateMonsterUi();
 private:
+    bool _isOpenSmailMap;
+    cocos2d::ui::ListView*   m_pListMsgs;
     cocos2d::ui::ImageView*  m_pRoleBtn;
     cocos2d::ui::LoadingBar* m_pRoleHpBar;
     cocos2d::ui::Text*       m_pRoleCurHp;
@@ -50,8 +56,7 @@ private:
     cocos2d::ui::ImageView*  m_pGameMsgBtn;
     cocos2d::ui::ImageView*  m_pGameMapBtn;
     cocos2d::ui::ImageView*  m_pGameSearchBtn;
-private:
-    bool _isOpenSmailMap;
+   
 };
 
 #endif /* GameUILayer_h */

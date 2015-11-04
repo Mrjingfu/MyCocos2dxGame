@@ -24,7 +24,6 @@ private:
     void onClickDiscard(Ref* ref);
     void onClickUser(Ref* ref);
 
-    void notifyRolePopup();
 
 private:
     
@@ -36,16 +35,14 @@ private:
     cocos2d::ui::Text*   m_pItemType;
     cocos2d::ui::Text*   m_pItemValueNum;
 
-    
     cocos2d::ui::Button* m_pBtnDiscard;
     cocos2d::ui::Button* m_pBtnUse;
 
-    
     cocos2d::ui::Layout* m_pBtnItemFrame;
     cocos2d::ui::Layout* m_pPropFrame;
     cocos2d::ui::Layout* m_pDescItemFrame;
     
-    
+
     cocos2d::ui::ImageView* m_pBackGround;
     int m_nItemId;
 };
