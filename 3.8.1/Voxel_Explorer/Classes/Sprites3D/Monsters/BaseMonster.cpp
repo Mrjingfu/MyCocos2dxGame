@@ -11,6 +11,7 @@
 #include "AlisaMethod.h"
 #include "PlayerProperty.hpp"
 #include "EventConst.h"
+#include "VoxelExplorer.h"
 USING_NS_CC;
 const std::string MONSTER_MODEL_NAMES[] = {
     "MMN_UNKNOWN",
@@ -109,6 +110,7 @@ void BaseMonster::attackedByPlayer()
         }
         
         int defense = m_pMonsterProperty->getDefense().GetLongValue();
+        
         attack = MAX(attack + defense, 0);
         
         float percentBlockRate = m_pMonsterProperty->getBlockRate().GetFloatValue();
@@ -124,9 +126,14 @@ void BaseMonster::attackedByPlayer()
         }
         
         int currentHp = m_pMonsterProperty->getCurrentHP().GetLongValue();
-        currentHp = MAX(attack - currentHp, 0);
+        currentHp = MAX(currentHp - attack , 0);
+        CCLOG("Monster: CurrentHp = %d, playerAttack = %d", currentHp, attack);
+        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_MONSTER_HURT, & attack);
         if(currentHp == 0)
+        {
             setState(MS_DEATH);
+            Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_MONSTER_DEATH, this);
+        }
         else
             m_pMonsterProperty->setCurrentHP(currentHp);
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_MONSTER_PROPERTY_DIRTY, this);
@@ -225,6 +232,7 @@ void BaseMonster::onExitAttack()
 
 void BaseMonster::onEnterDeath()
 {
+    VoxelExplorer::getInstance()->addExplosion(getPosition3D());
 }
 void BaseMonster::onExitDeath()
 {

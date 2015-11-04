@@ -54,6 +54,9 @@ bool AppDelegate::applicationDidFinishLaunching() {
     searchPaths.push_back("textures");
     searchPaths.push_back("ui");
     searchPaths.push_back("fonts");
+    searchPaths.push_back("particle3d/materials");
+    searchPaths.push_back("particle3d/scripts");
+    searchPaths.push_back("particle3d/textures");
     FileUtils::getInstance()->setSearchPaths(searchPaths);
     
 #if COCOS2D_DEBUG

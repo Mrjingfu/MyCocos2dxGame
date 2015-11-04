@@ -493,9 +493,15 @@ void PUParticle3DModelRender::render( Renderer* renderer, const Mat4 &transform,
         mat.m[14] = particle->position.z;
         if (_spriteList[index]->getCameraMask() != particleSystem->getCameraMask())
             _spriteList[index]->setCameraMask(particleSystem->getCameraMask());
+        ///modify debug for camera move, the sprite3d doesn't display lwwhb
+        _spriteList[index]->setNodeToParentTransform(mat);
+        ///
         _spriteList[index]->setColor(Color3B(particle->color.x * 255, particle->color.y * 255, particle->color.z * 255));
         _spriteList[index]->setOpacity(particle->color.w * 255);
-        _spriteList[index]->visit(renderer, mat, Node::FLAGS_DIRTY_MASK);
+        ///modify debug for camera move, the sprite3d doesn't display lwwhb
+        //_spriteList[index]->visit(renderer, mat, Node::FLAGS_DIRTY_MASK);
+        _spriteList[index]->draw(renderer, mat, 0);
+        ////
         ++index;
     }
 }

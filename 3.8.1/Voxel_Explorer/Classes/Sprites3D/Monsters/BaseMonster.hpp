@@ -84,6 +84,8 @@ public:
     
     MonsterProperty* getMonsterProperty() const { return m_pMonsterProperty; }
     void attackedByPlayer();
+    
+    MonsterType getMonsterType() const { return m_Type; }
 protected:
     BaseMonster();
     virtual ~BaseMonster();

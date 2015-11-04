@@ -71,7 +71,7 @@ int SewerLevel::calculateLevelMonsterCount()
 {
     int ret = m_nStandardAreaCount;
     if(m_Style == LS_STANDARD)
-        ret = (int)(m_nStandardAreaCount*0.6f) + cocos2d::random(2, 5);
+        ret = (int)(m_nStandardAreaCount*0.8f) + cocos2d::random(2, 5);
     else if (m_Style == LS_TUNNEL)
         ret = m_nStandardAreaCount + cocos2d::random(0, m_nStandardAreaCount);
     else if(m_Style == LS_PASSAGE)

@@ -18,6 +18,8 @@
 #include "Layer3D.hpp"
 #include "BaseBoss.hpp"
 #include "BaseMonster.hpp"
+#include "Particle3D/CCParticleSystem3D.h"
+#include "Particle3D/PU/CCPUParticleSystem3D.h"
 USING_NS_CC;
 
 VoxelExplorer* g_pVoxelExplorerInstance = nullptr;
@@ -186,6 +188,18 @@ void VoxelExplorer::updateFogOfWar(const cocos2d::Rect& areaRect, bool visited)
 void VoxelExplorer::searchAndCheck()    ///侦查
 {
 }
+void VoxelExplorer::addExplosion(const cocos2d::Vec3& pos)
+{
+    if(m_p3DLayer)
+    {
+        auto explosion = PUParticleSystem3D::create("explosionSystem.pu");
+        explosion->setCameraMask((unsigned short)CameraFlag::USER1);
+        explosion->setPosition3D(pos);
+        m_p3DLayer->addChild(explosion);
+        explosion->startParticleSystem();
+    }
+}
+
 void VoxelExplorer::handleDoor(const cocos2d::Vec2& mapPos)
 {
     if(m_pTerrainDoorsLayer && m_pPlayer)

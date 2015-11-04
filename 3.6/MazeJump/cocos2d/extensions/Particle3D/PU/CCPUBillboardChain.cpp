@@ -671,8 +671,9 @@ void PUBillboardChain::init( const std::string &texFile )
     _meshCommand->setCullFace(GL_BACK);
     _meshCommand->setCullFaceEnabled(true);
 }
-
+///lwwhb modify
 void PUBillboardChain::render( Renderer* renderer, const Mat4 &transform, const cocos2d::BlendFunc& blendFunc )
+///
 {
     auto camera = Camera::getVisitingCamera();
     auto cameraMat = camera->getNodeToWorldTransform();

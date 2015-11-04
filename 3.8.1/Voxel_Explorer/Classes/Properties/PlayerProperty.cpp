@@ -468,7 +468,7 @@ void PlayerProperty::extendBagSpace()
 }
 CChaosNumber PlayerProperty::getRandomAttack()
 {
-    return cocos2d::random(m_nAttackDiceNum.GetLongValue(), m_nAttackDiceNum*m_nAttackDiceFaceNum.GetLongValue());
+    return cocos2d::random(getMinAttack().GetLongValue(), getMaxAttack().GetLongValue());
 }
 void PlayerProperty::load()
 {

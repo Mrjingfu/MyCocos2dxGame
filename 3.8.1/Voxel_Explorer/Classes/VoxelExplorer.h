@@ -29,6 +29,9 @@ public:
     void checkUpdateFogOfWar();
     void updateFogOfWar(const cocos2d::Rect& areaRect, bool visited);
     void searchAndCheck();      ///侦查
+    
+    void addExplosion(const cocos2d::Vec3& pos);
+    
     void handleDoor(const cocos2d::Vec2& mapPos);            ///开门
     void handleTriggerTrap(const cocos2d::Vec2& mapPos);     ///触发机关
     void handlePickItem(const cocos2d::Vec2& mapPos);        ///拾取道具
