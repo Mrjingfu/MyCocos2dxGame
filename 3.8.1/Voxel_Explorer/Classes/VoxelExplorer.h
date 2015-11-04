@@ -12,7 +12,7 @@
 #include "cocos2d.h"
 #include "BaseLevel.h"
 #include "Player.hpp"
-#include "MonsterProperty.hpp"
+#include "BaseMonster.hpp"
 class VoxelExplorer : public cocos2d::Ref
 {
     VoxelExplorer();
@@ -27,6 +27,9 @@ public:
     void cameraTrackPlayer();
     void checkPickItem();
     void checkUpdateFogOfWar();
+    bool checkMonsterAlert(BaseMonster* monster);
+    bool checkMonsterCanAttack(BaseMonster* monster);
+    void attackedByMonster(BaseMonster* monster);
     void updateFogOfWar(const cocos2d::Rect& areaRect, bool visited);
     void searchAndCheck();      ///侦查
     

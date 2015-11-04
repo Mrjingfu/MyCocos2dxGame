@@ -74,6 +74,9 @@ BaseMonster::BaseMonster()
     
     m_pHurtData = new (std::nothrow) HurtData();
     
+    m_nFOV = 5;
+    m_nAttackRange = 1;
+    
     m_pMonsterProperty = new (std::nothrow) MonsterProperty();
     if(m_pMonsterProperty)
         m_pMonsterProperty->adjustByDC();
@@ -148,17 +151,26 @@ void BaseMonster::setState(MonsterState state)
     if(m_State == state)
         return;
     switch (m_State) {
-        case MS_IDLE:
-            onExitIdle();
+        case MS_SLEEPING:
+            onExitSleeping();
             break;
-        case MS_TRACK:
-            onExitTrack();
+        case MS_WANDERING:
+            onExitWandering();
+            break;
+        case MS_TRACKING:
+            onExitTracking();
+            break;
+        case MS_FLEEING:
+            onExitFleeing();
+            break;
+        case MS_PASSIVE:
+            onExitPassive();
+            break;
+        case MS_CONFUSING:
+            onExitConfusing();
             break;
         case MS_ATTACK:
             onExitAttack();
-            break;
-        case MS_ESCAPE:
-            onExitEscape();
             break;
         case MS_DEATH:
             onExitDeath();
@@ -171,17 +183,26 @@ void BaseMonster::setState(MonsterState state)
     m_State = state;
     
     switch (m_State) {
-        case MS_IDLE:
-            onEnterIdle();
+        case MS_SLEEPING:
+            onEnterSleeping();
             break;
-        case MS_TRACK:
-            onEnterTrack();
+        case MS_WANDERING:
+            onEnterWandering();
+            break;
+        case MS_TRACKING:
+            onEnterTracking();
+            break;
+        case MS_FLEEING:
+            onEnterFleeing();
+            break;
+        case MS_PASSIVE:
+            onEnterPassive();
+            break;
+        case MS_CONFUSING:
+            onEnterConfusing();
             break;
         case MS_ATTACK:
             onEnterAttack();
-            break;
-        case MS_ESCAPE:
-            onEnterEscape();
             break;
         case MS_DEATH:
             onEnterDeath();
@@ -195,6 +216,8 @@ void BaseMonster::onEnter()
 {
     Actor::onEnter();
     scheduleUpdate();
+    int flag = TileInfo::PASSABLE | TileInfo::ATTACKABLE;
+    updateTerrainTileFlag(flag);
 }
 void BaseMonster::onExit()
 {
@@ -203,30 +226,75 @@ void BaseMonster::onExit()
 }
 void BaseMonster::update(float delta)
 {
+    switch (m_State) {
+        case MS_SLEEPING:
+            {
+                if(VoxelExplorer::getInstance()->checkMonsterAlert(this))
+                    setState(MS_TRACKING);
+            }
+            break;
+        case MS_TRACKING:
+            {
+                if(VoxelExplorer::getInstance()->checkMonsterAlert(this))
+                    setState(MS_CONFUSING);
+                else
+                {
+                    if(VoxelExplorer::getInstance()->checkMonsterCanAttack(this))
+                    {
+                    }
+                    else
+                    {
+                    }
+                }
+            }
+            break;
+        default:
+            break;
+    }
 }
-void BaseMonster::onEnterIdle()
+
+void BaseMonster::onEnterSleeping()
 {
-    int flag = TileInfo::PASSABLE | TileInfo::ATTACKABLE;
-    updateTerrainTileFlag(flag);
 }
-void BaseMonster::onExitIdle()
+void BaseMonster::onExitSleeping()
 {
 }
 
-void BaseMonster::onEnterTrack()
+void BaseMonster::onEnterWandering()
 {
 }
-void BaseMonster::onExitTrack()
-{
-}
-
-void BaseMonster::onEnterEscape()
-{
-}
-void BaseMonster::onExitEscape()
+void BaseMonster::onExitWandering()
 {
 }
 
+void BaseMonster::onEnterTracking()
+{
+    Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_MONSTER_ALERT, this);
+}
+void BaseMonster::onExitTracking()
+{
+}
+
+void BaseMonster::onEnterFleeing()
+{
+}
+void BaseMonster::onExitFleeing()
+{
+}
+
+void BaseMonster::onEnterPassive()
+{
+}
+void BaseMonster::onExitPassive()
+{
+}
+void BaseMonster::onEnterConfusing()
+{
+    Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_MONSTER_CONFUSING, this);
+}
+void BaseMonster::onExitConfusing()
+{
+}
 void BaseMonster::onEnterAttack()
 {
 }

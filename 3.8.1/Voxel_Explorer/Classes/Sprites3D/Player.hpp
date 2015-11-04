@@ -35,6 +35,9 @@ public:
     PlayerState getState() const { return m_curState; }
     void setState(PlayerState state);
     
+    bool isStealth() const { return m_bStealth; }
+    void setStealTh(bool stealth);
+    
     virtual void rotateToLeft();
     virtual void rotateToRight();
     virtual void rotateToForward();
@@ -62,6 +65,8 @@ private:
 private:
     PlayerState                 m_curState;
     cocos2d::PointLight*        m_pPlayerLight;
+    
+    bool                        m_bStealth;     ///是否隐身
 };
 
 #endif /* Player_hpp */
