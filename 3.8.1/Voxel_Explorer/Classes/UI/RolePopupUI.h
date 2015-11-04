@@ -39,6 +39,17 @@ private:
    ItemUI* m_pArmorUi;
    ItemUI* m_pOrnamentUi;
    ItemUI* m_pSecondWeaponUi;
+    
+    cocos2d::ui::Text*  m_pRoleHp;
+    cocos2d::ui::Text*  m_pRoleMp;
+    cocos2d::ui::Text*  m_pRoleExp;
+    cocos2d::ui::Text*  m_pRoleLightDis;
+    cocos2d::ui::Text*  m_pRoleSearchDis;
+    cocos2d::ui::Text*  m_pRoleMargicFind;
+    cocos2d::ui::Text*  m_pRoleCriticalStrike;
+    cocos2d::ui::Text*  m_pRoleBlock;
+    cocos2d::ui::Text*  m_pRoleDodge;
+    
    cocos2d::ui::ImageView* m_pShopBtn;
 };
 

@@ -33,7 +33,4 @@ static const std::string EVENT_MONSTER_BLOCKED = "MONSTER_BLOCKED";
 static const std::string EVENT_MONSTER_CRITICALSTRIKE = "MONSTER_CRITICALSTRIKE";
 static const std::string EVENT_MONSTER_HURT = "MONSTER_HURT";
 
-//UI_EVENT
-static const std::string EVENT_UI_UPDATE_ROLE_DATA = "EVENT_UI_UPDATE_ROLE_DATA"; //更新人物属性对话框数据
-
 #endif /* EventConst_h */

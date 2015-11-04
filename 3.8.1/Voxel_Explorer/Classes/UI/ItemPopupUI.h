@@ -10,6 +10,7 @@
 #define ItemPopupUI_hpp
 #include "PopupUILayer.h"
 
+
 class ItemPopupUI : public PopupUILayer{
     
     ItemPopupUI();
@@ -22,11 +23,8 @@ public:
 private:
     void onClickDiscard(Ref* ref);
     void onClickUser(Ref* ref);
-    void onClickEquip(Ref* ref);
-    void notifyRolePopup();
-    void equipFrame();
-    void itemFrame();
-    void displayFrame();
+
+
 private:
     
     cocos2d::ui::ImageView* m_pItemIcon;
@@ -34,15 +32,17 @@ private:
     cocos2d::ui::Text*   m_pItemlv;
     cocos2d::ui::Text*   m_pItemDesc;
     cocos2d::ui::Text*   m_pItemCount;
-    
+    cocos2d::ui::Text*   m_pItemType;
+    cocos2d::ui::Text*   m_pItemValueNum;
+
     cocos2d::ui::Button* m_pBtnDiscard;
     cocos2d::ui::Button* m_pBtnUse;
-    cocos2d::ui::Button* m_pBtnEquip;
-    
+
     cocos2d::ui::Layout* m_pBtnItemFrame;
     cocos2d::ui::Layout* m_pPropFrame;
     cocos2d::ui::Layout* m_pDescItemFrame;
     
+
     cocos2d::ui::ImageView* m_pBackGround;
     int m_nItemId;
 };

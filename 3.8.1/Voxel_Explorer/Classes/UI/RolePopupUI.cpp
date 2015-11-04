@@ -12,12 +12,32 @@
 #include "PlayerProperty.hpp"
 #include "PopupUILayerManager.h"
 #include "ItemPopupUI.h"
+#include "EquipItemPopupUI.h"
 #include "EventConst.h"
+#include "GameFormula.hpp"
+#include "KeyProperty.hpp"
 USING_NS_CC;
 RolePopupUI::RolePopupUI()
 {
-    m_cActionType  = eNone;
-    m_pGridView = nullptr;
+    m_cActionType           = eNone;
+    m_pGridView             = nullptr;
+    m_pBtnClose             = nullptr;
+    m_pBtnChangeBag         = nullptr;
+    m_pWeaponUi             = nullptr;
+    m_pArmorUi              = nullptr;
+    m_pOrnamentUi           = nullptr;
+    m_pSecondWeaponUi       = nullptr;
+    m_pRoleHp               = nullptr;
+    m_pRoleMp               = nullptr;
+    m_pRoleExp              = nullptr;
+    m_pRoleLightDis         = nullptr;
+    m_pRoleSearchDis        = nullptr;
+    m_pRoleMargicFind       = nullptr;
+    m_pRoleCriticalStrike   = nullptr;
+    m_pRoleBlock            = nullptr;
+    m_pRoleDodge            = nullptr;
+    m_pShopBtn              = nullptr;
+    
 }
 RolePopupUI::~RolePopupUI()
 {
@@ -25,12 +45,13 @@ RolePopupUI::~RolePopupUI()
 }
 void RolePopupUI::onEnter()
 {
-    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_UI_UPDATE_ROLE_DATA, CC_CALLBACK_1(RolePopupUI::onEventUpdateData, this));
+
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_PLAYER_PROPERTY_DIRTY, CC_CALLBACK_1(RolePopupUI::onEventUpdateData,this));
+
     PopupUILayer::onEnter();
 }
 void RolePopupUI::onExit()
 {
-    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_UI_UPDATE_ROLE_DATA);
     PopupUILayer::onExit();
 }
 bool RolePopupUI::initUi()
@@ -48,11 +69,48 @@ bool RolePopupUI::initUi()
     Layout* gridFrame = dynamic_cast<ui::Layout*>(UtilityHelper::seekNodeByName(charNode, "grid_frame"));
     if (!gridFrame)
         return false;
-
-    
     m_pBtnChangeBag = dynamic_cast<ui::Button*>(UtilityHelper::seekNodeByName(charNode, "prop_btn_change_bag"));
     if (!m_pBtnChangeBag)
         return false;
+    
+    m_pRoleHp = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(charNode, "role_prop_hp"));
+    if (!m_pRoleHp)
+        return false;
+    m_pRoleMp = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(charNode, "role_prop_mp"));
+    if (!m_pRoleMp)
+        return false;
+    m_pRoleExp = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(charNode, "role_prop_exp"));
+    if (!m_pRoleExp)
+        return false;
+    m_pRoleLightDis = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(charNode, "role_prop_light"));
+    if (!m_pRoleLightDis)
+        return false;
+    m_pRoleSearchDis = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(charNode, "role_prop_search"));
+    if (!m_pRoleSearchDis)
+        return false;
+    m_pRoleMargicFind = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(charNode, "role_prop_magic"));
+    if (!m_pRoleMargicFind)
+        return false;
+    m_pRoleCriticalStrike = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(charNode, "role_prop_critical_strike"));
+    if (!m_pRoleCriticalStrike)
+        return false;
+    m_pRoleBlock = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(charNode, "role_prop_block"));
+    if (!m_pRoleBlock)
+        return false;
+    m_pRoleDodge = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(charNode, "role_prop_dodge"));
+    if (!m_pRoleDodge)
+        return false;
+    
+    m_pRoleHp->setString(StringUtils::format(UtilityHelper::getLocalString("ROLE_SHOW_HP").c_str(),int(PlayerProperty::getInstance()->getCurrentHp()),int(PlayerProperty::getInstance()->getMaxHp())));
+    m_pRoleMp->setString(StringUtils::format(UtilityHelper::getLocalString("ROLE_SHOW_MP").c_str(),int(PlayerProperty::getInstance()->getCurrentMp()),int(PlayerProperty::getInstance()->getMaxMp())));
+    m_pRoleExp->setString(StringUtils::format(UtilityHelper::getLocalString("ROLE_SHOW_EXP").c_str(),int(PlayerProperty::getInstance()->getExp()),int(GameFormula::getNextLevelExp(PlayerProperty::getInstance()->getLevel()))));
+    m_pRoleLightDis->setString(StringUtils::format(UtilityHelper::getLocalString("PROP_SHOW_LIGHT_DIS").c_str(),int(PlayerProperty::getInstance()->getLightDistance())));
+    m_pRoleSearchDis->setString(StringUtils::format(UtilityHelper::getLocalString("PROP_SHOW_SEARCH_DIS").c_str(),int(PlayerProperty::getInstance()->getSearchDistance())));
+    m_pRoleCriticalStrike ->setString(StringUtils::format(UtilityHelper::getLocalString("PROP_SHOW_CRITICAL_STRIKE").c_str(),int(PlayerProperty::getInstance()->getCriticalStrikeRate())));
+    m_pRoleMargicFind->setString(StringUtils::format(UtilityHelper::getLocalString("PROP_SHOW_MARGIC_FIND").c_str(),int(PlayerProperty::getInstance()->getMagicItemFindRate())));
+    m_pRoleBlock->setString(StringUtils::format(UtilityHelper::getLocalString("PROP_SHOW_BLOCK").c_str(),int(PlayerProperty::getInstance()->getBlockRate())));
+    m_pRoleDodge->setString(StringUtils::format(UtilityHelper::getLocalString("PROP_SHOW_DODGE").c_str(),int(PlayerProperty::getInstance()->getDodgeRate())));
+
     m_pBtnChangeBag->addClickEventListener(CC_CALLBACK_1(RolePopupUI::onClickChnageBag, this));
     
     
@@ -168,10 +226,11 @@ void RolePopupUI::updateItems()
             if(itemProp->isStackable())
             {
                 PickableItemProperty::PickableItemPropertyType itemtype =itemProp->getPickableItemPropertyType() ;
+                int count = 0;
                 if ( itemtype == PickableItemProperty::PIPT_KEY) {
-                    
                     CCLOG("合并 PIPT_KEY");
-                    
+                    KeyProperty* stackProp = static_cast<KeyProperty*>(itemProp);
+                    count = stackProp->getCount();
                 }else if (itemtype == PickableItemProperty::PIPT_MATERIAL){
                     
                     CCLOG("合并 PIPT_MATERIAL");
@@ -180,7 +239,7 @@ void RolePopupUI::updateItems()
                 {
                     CCLOG("合并 PIPT_POTIONS");
                 }
-                itemUi->addItem(itemProp->getInstanceID(), itemProp->getIconRes());
+                itemUi->addItem(itemProp->getInstanceID(), itemProp->getIconRes(),count);
             }else
                 itemUi->addItem(itemProp->getInstanceID(), itemProp->getIconRes());
         }
@@ -194,11 +253,23 @@ void RolePopupUI::selectItemEvent(cocos2d::Ref *pSender, TGridView::EventType ty
         TGridView* gridView = static_cast<TGridView*>(pSender);
         ItemUI* currentItem = static_cast<ItemUI*>(gridView->getItem(gridView->getCurSelectedIndex()));
         if (currentItem && currentItem->isHaveItem()) {
-            ItemPopupUI* itemPopupui = static_cast<ItemPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupType::ePopupItem));
-            if (itemPopupui) {
-                itemPopupui->updateItemPopup(currentItem->getItemId());
-                CCLOG("select itemid = %d", currentItem->getItemId());
+            PickableItemProperty* itemprop = PlayerProperty::getInstance()->getItemFromBag(CChaosNumber(currentItem->getItemId()));
+            PickableItemProperty::PickableItemPropertyType type = itemprop->getPickableItemPropertyType();
+            if (type ==PickableItemProperty::PIPT_WEAPON ||type ==PickableItemProperty::PIPT_SECOND_WEAPON||
+                type ==PickableItemProperty::PIPT_ARMOR ||type ==PickableItemProperty::PIPT_MAGIC_ORNAMENT ) {
+                EquipItemPopupUI* popupui = static_cast<EquipItemPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupType::ePopupEquipItem));
+                if (popupui) {
+                    popupui->updateItemPopup(currentItem->getItemId());
+                }
+            }else
+            {
+                ItemPopupUI* popupui = static_cast<ItemPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupType::ePopupItem));
+                if (popupui) {
+                    popupui->updateItemPopup(currentItem->getItemId());
+                }
             }
+           
+             CCLOG("select itemid = %d", currentItem->getItemId());
             
         }
         
