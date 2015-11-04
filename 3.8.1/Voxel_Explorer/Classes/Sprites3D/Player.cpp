@@ -260,6 +260,8 @@ void Player::onLand()
     VoxelExplorer::getInstance()->checkPickItem();
     VoxelExplorer::getInstance()->checkUpdateFogOfWar();
     
+    VoxelExplorer::getInstance()->addExplosion(getPosition3D());
+    
     CCLOG("player x = %d   y = %d", (int)getPosInMap().x, (int)getPosInMap().y);
 }
 bool Player::createPlayerLight()

@@ -219,7 +219,10 @@ bool Sprite3D::loadFromCache(const std::string& path)
         for (ssize_t i = 0; i < _meshes.size(); i++) {
             // cloning is needed in order to have one state per sprite
             auto glstate = spritedata->glProgramStates.at(i);
-            _meshes.at(i)->setGLProgramState(glstate->clone());
+            //_meshes.at(i)->setGLProgramState(glstate->clone());
+            ////lwwhb modify why?
+            _meshes.at(i)->setGLProgramState(glstate);
+            ///
         }
         return true;
     }

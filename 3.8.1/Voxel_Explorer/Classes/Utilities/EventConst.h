@@ -24,11 +24,14 @@ static const std::string EVENT_PLAYER_BAG_EXTEND_HAS_REACH_MAXTIMES = "PLAYER_BA
 static const std::string EVENT_PLAYER_DODGE = "PLAYER_DODGE";
 static const std::string EVENT_PLAYER_BLOCKED = "PLAYER_BLOCKED";
 static const std::string EVENT_PLAYER_CRITICALSTRIKE = "PLAYER_CRITICALSTRIKE";
+static const std::string EVENT_PLAYER_HURT = "PLAYER_HURT";
 
 static const std::string EVENT_MONSTER_PROPERTY_DIRTY = "MONSTER_PROPERTY_DIRTY";
+static const std::string EVENT_MONSTER_DEATH = "MONSTER_DEATH";
 static const std::string EVENT_MONSTER_DODGE = "MONSTER_DODGE";
 static const std::string EVENT_MONSTER_BLOCKED = "MONSTER_BLOCKED";
 static const std::string EVENT_MONSTER_CRITICALSTRIKE = "MONSTER_CRITICALSTRIKE";
+static const std::string EVENT_MONSTER_HURT = "MONSTER_HURT";
 
 //UI_EVENT
 static const std::string EVENT_UI_UPDATE_ROLE_DATA = "EVENT_UI_UPDATE_ROLE_DATA"; //更新人物属性对话框数据
