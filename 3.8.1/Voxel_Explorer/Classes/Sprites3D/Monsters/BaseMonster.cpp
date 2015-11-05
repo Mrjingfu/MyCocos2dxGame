@@ -76,6 +76,8 @@ BaseMonster::BaseMonster()
     
     m_nFOV = 5;
     m_nAttackRange = 1;
+    m_fConfusingTimer = 3.0f;
+    m_fFirstTrackingTimer = 1.0f;
     
     m_pMonsterProperty = new (std::nothrow) MonsterProperty();
     if(m_pMonsterProperty)
@@ -169,6 +171,9 @@ void BaseMonster::setState(MonsterState state)
         case MS_CONFUSING:
             onExitConfusing();
             break;
+        case MS_MOVING:
+            onExitMoving();
+            break;
         case MS_ATTACK:
             onExitAttack();
             break;
@@ -200,6 +205,9 @@ void BaseMonster::setState(MonsterState state)
             break;
         case MS_CONFUSING:
             onEnterConfusing();
+            break;
+        case MS_MOVING:
+            onEnterMoving();
             break;
         case MS_ATTACK:
             onEnterAttack();
@@ -235,16 +243,30 @@ void BaseMonster::update(float delta)
             break;
         case MS_TRACKING:
             {
-                if(VoxelExplorer::getInstance()->checkMonsterAlert(this))
-                    setState(MS_CONFUSING);
-                else
+                m_fFirstTrackingTimer -= delta;
+                if(m_fFirstTrackingTimer < 0)
                 {
-                    if(VoxelExplorer::getInstance()->checkMonsterCanAttack(this))
-                    {
-                    }
+                    if(!VoxelExplorer::getInstance()->checkMonsterAlert(this))
+                        setState(MS_CONFUSING);
                     else
                     {
+                        if(VoxelExplorer::getInstance()->checkMonsterCanAttack(this))
+                            setState(MS_ATTACK);
+                        else
+                            setState(MS_MOVING);
                     }
+                }
+            }
+            break;
+        case MS_CONFUSING:
+            {
+                if(VoxelExplorer::getInstance()->checkMonsterAlert(this))
+                    setState(MS_TRACKING);
+                else
+                {
+                    m_fConfusingTimer -= delta;
+                    if(m_fConfusingTimer < 0)
+                        setState(MS_WANDERING);
                 }
             }
             break;
@@ -269,10 +291,19 @@ void BaseMonster::onExitWandering()
 
 void BaseMonster::onEnterTracking()
 {
-    Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_MONSTER_ALERT, this);
+    if(m_LastState == MS_SLEEPING || m_LastState == MS_CONFUSING)
+        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_MONSTER_ALERT, this);
+    if(m_LastState == MS_SLEEPING)
+    {
+        unsigned int lightmask = getLightMask();
+        lightmask = lightmask | (unsigned int)LightFlag::LIGHT2;
+        setLightMask(lightmask);
+        m_fFirstTrackingTimer = 1.0f;
+    }
 }
 void BaseMonster::onExitTracking()
 {
+    m_fFirstTrackingTimer = 0;
 }
 
 void BaseMonster::onEnterFleeing()
@@ -294,9 +325,28 @@ void BaseMonster::onEnterConfusing()
 }
 void BaseMonster::onExitConfusing()
 {
+    m_fConfusingTimer = 3.0f;
+}
+void BaseMonster::onEnterMoving()
+{
+    if(m_LastState == MS_TRACKING)
+    {
+        Vec2 next;
+        if(VoxelExplorer::getInstance()->trackToPlayer(this, next))
+        {
+            CCLOG("monster posx = %f, posy = %f", getPosInMap().x, getPosInMap().y);
+            CCLOG("monster track posx = %f, posy = %f", next.x, next.y);
+        }
+        else
+            setState(MS_TRACKING);
+    }
+}
+void BaseMonster::onExitMoving()
+{
 }
 void BaseMonster::onEnterAttack()
 {
+    VoxelExplorer::getInstance()->attackedByMonster(this);
 }
 void BaseMonster::onExitAttack()
 {

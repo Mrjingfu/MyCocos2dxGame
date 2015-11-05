@@ -78,6 +78,7 @@ public:
         MS_FLEEING,         ///逃跑
         MS_PASSIVE,         ///被动
         MS_CONFUSING,       ///迷惑
+        MS_MOVING,          ///移动
         MS_ATTACK,
         MS_DEATH,
         MS_MAX
@@ -121,6 +122,9 @@ protected:
     virtual void onEnterConfusing();
     virtual void onExitConfusing();
     
+    virtual void onEnterMoving();
+    virtual void onExitMoving();
+    
     virtual void onEnterAttack();
     virtual void onExitAttack();
     
@@ -138,6 +142,8 @@ protected:
     
     int                 m_nFOV;             ///怪物视野
     int                 m_nAttackRange;     ///攻击范围
+    float               m_fConfusingTimer;  ///迷惑时间计时器
+    float               m_fFirstTrackingTimer;  ///由睡眠状态进入追踪状态的反应时间
 };
 
 #endif /* BaseMonster_hpp */

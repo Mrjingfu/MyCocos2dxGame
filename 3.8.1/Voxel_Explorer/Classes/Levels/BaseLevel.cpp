@@ -8,6 +8,7 @@
 
 #include "BaseLevel.h"
 #include "VoxelExplorer.h"
+#include "Pathfinder.hpp"
 USING_NS_CC;
 
 BaseLevel::BaseLevel()
@@ -32,6 +33,9 @@ void BaseLevel::create()
         CCLOGERROR("Create Monsters failed!");
     if(!createUseableItems())
         CCLOGERROR("Create Useable Items failed!");
+    
+    if(!Pathfinder::getInstance()->init(m_nWidth, m_nHeight))
+        CCLOGERROR("Pathfinder initialize failed!");
 }
 
 BaseLevel::LEVEL_TYPE BaseLevel::getLevelType() const
@@ -42,7 +46,32 @@ void BaseLevel::setLevelType(BaseLevel::LEVEL_TYPE type)
 {
     m_Type = type;
 }
+bool BaseLevel::isAdjacent(const cocos2d::Vec2& a, const cocos2d::Vec2& b)
+{
+    int indexA = a.x + a.y*m_nWidth;
+    int indexB = a.x + a.y*m_nWidth;
+    return isAdjacent(indexA, indexB);
+}
+int BaseLevel::getDistance(const cocos2d::Vec2& a, const cocos2d::Vec2& b)
+{
+    int indexA = a.x + a.y*m_nWidth;
+    int indexB = a.x + a.y*m_nWidth;
+    return getDistance(indexA, indexB);
+}
 
+bool BaseLevel::isAdjacent(int a, int b)
+{
+    int diff = std::abs( a - b );
+    return diff == 1 || diff == getWidth() || diff == getWidth() + 1 || diff == getWidth() - 1;
+}
+int BaseLevel::getDistance(int a, int b)
+{
+    int ax = a % getWidth();
+    int ay = a / getWidth();
+    int bx = b % getWidth();
+    int by = b / getWidth();
+    return MAX( std::abs( ax - bx ), std::abs( ay - by ) );
+}
 void BaseLevel::generateTerrainTiles(int x, int y , int width, int height, TerrainTile::TileType tileType, Area::AREA_TYPE areaType, Actor::ActorDir dir)
 {
     int pos = y * m_nWidth + x;
@@ -125,6 +154,11 @@ bool BaseLevel::checkMovable(Actor* actor, TileInfo& info)
         ///发送跳崖事件
         return false;
     }
+    if((info.m_Flag & TileInfo::STOPPABLE) != 0)
+    {
+        //碰墙
+        return false;
+    }
     if((info.m_Flag & TileInfo::ATTACKABLE) != 0)
     {
         return false;
@@ -152,6 +186,9 @@ int BaseLevel::assignTerrainTileFlag(TerrainTile::TileType type)
         case TerrainTile::TT_TUNNEL:
             flag = TileInfo::PASSABLE;
             break;
+        case TerrainTile::TT_WALL:
+            flag = TileInfo::STOPPABLE;
+            break;
         case TerrainTile::TT_DOOR:
         case TerrainTile::TT_LOCKED_DOOR:
         case TerrainTile::TT_SECRET_DOOR:
@@ -164,6 +201,18 @@ int BaseLevel::assignTerrainTileFlag(TerrainTile::TileType type)
             break;
     }
     return flag;
+}
+
+bool BaseLevel::getNextPathStep(const cocos2d::Vec2& from, const cocos2d::Vec2& to, cocos2d::Vec2& nextPos)
+{
+    int f = from.x + from.y * m_nWidth;
+    int t = to.x + to.y * m_nWidth;
+    int next = Pathfinder::getInstance()->getStep(f, t, m_Map);
+    if(next == -1)
+        return false;
+    nextPos.x = next % m_nWidth;
+    nextPos.y = next / m_nWidth;
+    return true;
 }
 
 void BaseLevel::load()

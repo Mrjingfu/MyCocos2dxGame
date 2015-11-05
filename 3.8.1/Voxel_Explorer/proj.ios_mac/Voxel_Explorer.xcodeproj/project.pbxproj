@@ -147,6 +147,8 @@
 		55EC95861BC6ABBA0008D1D7 /* TerrainTile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55EC95831BC6AA7B0008D1D7 /* TerrainTile.cpp */; };
 		55ECFB441BC79852007270CD /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55ECFB421BC79852007270CD /* Player.cpp */; };
 		55ECFB451BC79852007270CD /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55ECFB421BC79852007270CD /* Player.cpp */; };
+		55F4650E1BEAF76A00E1CC79 /* Pathfinder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55F4650C1BEAF76A00E1CC79 /* Pathfinder.cpp */; };
+		55F4650F1BEAF76A00E1CC79 /* Pathfinder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55F4650C1BEAF76A00E1CC79 /* Pathfinder.cpp */; };
 		55F81CA11BDB208D002EC075 /* UseableItem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55F81C9F1BDB208D002EC075 /* UseableItem.cpp */; };
 		55F81CA21BDB208D002EC075 /* UseableItem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55F81C9F1BDB208D002EC075 /* UseableItem.cpp */; };
 		55F81CAC1BDB69FB002EC075 /* PickableItemProperty.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55F81CAA1BDB69FB002EC075 /* PickableItemProperty.cpp */; };
@@ -378,6 +380,8 @@
 		55EC95841BC6AA7B0008D1D7 /* TerrainTile.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TerrainTile.hpp; sourceTree = "<group>"; };
 		55ECFB421BC79852007270CD /* Player.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Player.cpp; sourceTree = "<group>"; };
 		55ECFB431BC79852007270CD /* Player.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Player.hpp; sourceTree = "<group>"; };
+		55F4650C1BEAF76A00E1CC79 /* Pathfinder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Pathfinder.cpp; sourceTree = "<group>"; };
+		55F4650D1BEAF76A00E1CC79 /* Pathfinder.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Pathfinder.hpp; sourceTree = "<group>"; };
 		55F81C9F1BDB208D002EC075 /* UseableItem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UseableItem.cpp; sourceTree = "<group>"; };
 		55F81CA01BDB208D002EC075 /* UseableItem.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = UseableItem.hpp; sourceTree = "<group>"; };
 		55F81CAA1BDB69FB002EC075 /* PickableItemProperty.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PickableItemProperty.cpp; sourceTree = "<group>"; };
@@ -790,6 +794,8 @@
 				555B0D0A1BC51A2C0055FB6D /* Graph.h */,
 				555B0D0B1BC51A2C0055FB6D /* StandardLevel.cpp */,
 				555B0D0C1BC51A2C0055FB6D /* StandardLevel.h */,
+				55F4650C1BEAF76A00E1CC79 /* Pathfinder.cpp */,
+				55F4650D1BEAF76A00E1CC79 /* Pathfinder.hpp */,
 			);
 			path = Levels;
 			sourceTree = "<group>";
@@ -1103,6 +1109,7 @@
 				551E93B11BD51282009F788F /* UtilityHelper.cpp in Sources */,
 				55338ADE1BD8925100EA316F /* Warden.cpp in Sources */,
 				ECD10D6E1BD0967B007DD888 /* PopupUILayer.cpp in Sources */,
+				55F4650E1BEAF76A00E1CC79 /* Pathfinder.cpp in Sources */,
 				554F00F61BDA219E00F4DF8E /* PickableItem.cpp in Sources */,
 				55F81CD01BDB92CC002EC075 /* PotionsProperty.cpp in Sources */,
 				ECE1B9581BD8E6660035B4D9 /* RolePopupUI.cpp in Sources */,
@@ -1213,6 +1220,7 @@
 				ECD10D6F1BD0967B007DD888 /* PopupUILayer.cpp in Sources */,
 				55F81CA21BDB208D002EC075 /* UseableItem.cpp in Sources */,
 				ECA2290C1BD9DE1D008E03BB /* ItemUI.cpp in Sources */,
+				55F4650F1BEAF76A00E1CC79 /* Pathfinder.cpp in Sources */,
 				555B0D1C1BC51A2C0055FB6D /* Door.cpp in Sources */,
 				55338AEF1BD892FC00EA316F /* ShadowDragon.cpp in Sources */,
 				55338AE71BD8928E00EA316F /* Giant.cpp in Sources */,
