@@ -29,6 +29,8 @@ Player* Player::create(const std::string& modelPath)
 Player::Player()
 {
     m_curState  = PS_UNKNOWN;
+    m_pPlayerLight = nullptr;
+    m_bStealth = false;
 }
 Player::~Player()
 {
@@ -107,6 +109,23 @@ void Player::setState(PlayerState state)
             break;
         default:
             break;
+    }
+}
+void Player::setStealTh(bool stealth)
+{
+    if(m_bStealth != stealth)
+    {
+        m_bStealth = stealth;
+        if(m_bStealth)
+        {
+            EaseSineOut* fadeTo = EaseSineOut::create(FadeTo::create(1.0f, 127));
+            this->runAction(fadeTo);
+        }
+        else
+        {
+            EaseSineOut* fadeTo = EaseSineOut::create(FadeTo::create(1.0f, 255));
+            this->runAction(fadeTo);
+        }
     }
 }
 void Player::rotateToLeft()

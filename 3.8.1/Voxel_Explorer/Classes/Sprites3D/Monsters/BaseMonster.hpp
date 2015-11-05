@@ -72,9 +72,12 @@ public:
     } MonsterType;
     typedef enum{
         MS_UNKNOWN,
-        MS_IDLE,
-        MS_TRACK,
-        MS_ESCAPE,
+        MS_SLEEPING,        ///沉睡
+        MS_WANDERING,       ///徘徊
+        MS_TRACKING,        ///追踪
+        MS_FLEEING,         ///逃跑
+        MS_PASSIVE,         ///被动
+        MS_CONFUSING,       ///迷惑
         MS_ATTACK,
         MS_DEATH,
         MS_MAX
@@ -87,6 +90,11 @@ public:
     void attackedByPlayer();
     
     MonsterType getMonsterType() const { return m_Type; }
+    
+    int getMonsterFOV() const { return m_nFOV; }
+    void setMonsterFOV(int fov) { m_nFOV = fov; }
+    
+    int getAttackRange() const { return m_nAttackRange; }
 protected:
     BaseMonster();
     virtual ~BaseMonster();
@@ -95,14 +103,23 @@ protected:
     virtual void onExit();
     virtual void update(float delta);
     
-    virtual void onEnterIdle();
-    virtual void onExitIdle();
+    virtual void onEnterSleeping();
+    virtual void onExitSleeping();
     
-    virtual void onEnterTrack();
-    virtual void onExitTrack();
+    virtual void onEnterWandering();
+    virtual void onExitWandering();
     
-    virtual void onEnterEscape();
-    virtual void onExitEscape();
+    virtual void onEnterTracking();
+    virtual void onExitTracking();
+    
+    virtual void onEnterFleeing();
+    virtual void onExitFleeing();
+    
+    virtual void onEnterPassive();
+    virtual void onExitPassive();
+    
+    virtual void onEnterConfusing();
+    virtual void onExitConfusing();
     
     virtual void onEnterAttack();
     virtual void onExitAttack();
@@ -118,6 +135,9 @@ protected:
     bool                m_bJumpMove;        ///是否为跳跃移动，否则则是蠕动移动
     
     HurtData*           m_pHurtData;
+    
+    int                 m_nFOV;             ///怪物视野
+    int                 m_nAttackRange;     ///攻击范围
 };
 
 #endif /* BaseMonster_hpp */

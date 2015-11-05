@@ -133,6 +133,35 @@ void VoxelExplorer::checkUpdateFogOfWar()
         return;
     m_pCurrentLevel->updateAreaFogOfWarByPos(m_pPlayer->getPosInMap());
 }
+bool VoxelExplorer::checkMonsterAlert(BaseMonster* monster)
+{
+    if(monster == nullptr || !(monster->isVisible()))
+        return false;
+    if(m_pPlayer == nullptr || m_pPlayer->getState() == Player::PS_DEATH || m_pPlayer->isStealth())
+        return false;
+    Vec2 playerPosInMap = m_pPlayer->getPosInMap();
+    Vec2 monsterPosInMap = monster->getPosInMap();
+    if(std::abs(playerPosInMap.x - monsterPosInMap.x) > monster->getMonsterFOV() && std::abs(playerPosInMap.y - monsterPosInMap.y) > monster->getMonsterFOV())
+        return false;
+    return true;
+}
+bool VoxelExplorer::checkMonsterCanAttack(BaseMonster* monster)
+{
+    if(monster == nullptr || !(monster->isVisible()))
+        return false;
+    if(m_pPlayer == nullptr || m_pPlayer->getState() == Player::PS_DEATH || m_pPlayer->isStealth())
+        return false;
+    Vec2 playerPosInMap = m_pPlayer->getPosInMap();
+    Vec2 monsterPosInMap = monster->getPosInMap();
+    if(std::abs(playerPosInMap.x - monsterPosInMap.x) > monster->getAttackRange() && std::abs(playerPosInMap.y - monsterPosInMap.y) > monster->getAttackRange())
+        return false;
+    return true;
+}
+void VoxelExplorer::attackedByMonster(BaseMonster* monster)
+{
+    if(m_pPlayer == nullptr || m_pPlayer->getState() == Player::PS_DEATH)
+        return;
+}
 void VoxelExplorer::updateFogOfWar(const cocos2d::Rect& areaRect, bool visited)
 {
     if(m_pTerrainTilesLayer)

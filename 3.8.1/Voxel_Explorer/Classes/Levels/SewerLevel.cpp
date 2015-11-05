@@ -35,7 +35,7 @@ bool SewerLevel::createMonsters()
         monster->setVisited(m_Map[tileIndex].m_bVisited);
         monster->updateTerrainTileFlag(TileInfo::PASSABLE | TileInfo::ATTACKABLE);
         VoxelExplorer::getInstance()->getMonstersLayer()->addChild(monster);
-        monster->setState(BaseMonster::MS_IDLE);
+        monster->setState(BaseMonster::MS_SLEEPING);
     }
     return true;
 }

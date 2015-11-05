@@ -52,5 +52,7 @@ static const std::string EVENT_PLAYER_HURT = "PLAYER_HURT";
 static const std::string EVENT_MONSTER_PROPERTY_DIRTY = "MONSTER_PROPERTY_DIRTY";
 static const std::string EVENT_MONSTER_DEATH = "MONSTER_DEATH";
 static const std::string EVENT_MONSTER_HURT = "MONSTER_HURT";
+static const std::string EVENT_MONSTER_ALERT = "MONSTER_ALERT";
+static const std::string EVENT_MONSTER_CONFUSING = "MONSTER_CONFUSING";
 
 #endif /* EventConst_h */
