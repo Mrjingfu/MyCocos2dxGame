@@ -15,19 +15,22 @@ struct HurtData
     bool m_bCriticalStrike;
     bool m_bBlocked;
     int m_nDamage;
+    cocos2d::Vec3 m_vPos;
     HurtData()
     {
         m_bDodge = false;
         m_bCriticalStrike = false;
         m_bBlocked = false;
-        m_nDamage = false;
+        m_nDamage = 0;
+        m_vPos = cocos2d::Vec3::ZERO;
     }
     void reset()
     {
         m_bDodge = false;
         m_bCriticalStrike = false;
         m_bBlocked = false;
-        m_nDamage = false;
+        m_nDamage = 0;
+        m_vPos = cocos2d::Vec3::ZERO;
     }
 };
 

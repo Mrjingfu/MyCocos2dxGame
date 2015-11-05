@@ -11,16 +11,25 @@ USING_NS_CC;
 
 std::string UtilityHelper::getLocalString(const std::string& key)
 {
+    return  getLocalStringForPlist(key, "chinese.plist", "english.plist");
+}
+
+std::string UtilityHelper::getLocalStringForUi(const std::string& key)
+{
+    return  getLocalStringForPlist(key, "ui_chinese.plist", "ui_english.plist");
+}
+std::string UtilityHelper::getLocalStringForPlist(const std::string &key, const std::string cn_plist,const std::string en_plist)
+{
     ValueMap dict;
     LanguageType lt= Application::getInstance()->getCurrentLanguage();
     switch (lt) {
         case LanguageType::CHINESE:
-            dict = FileUtils::getInstance()->getValueMapFromFile("chinese.plist");
+            dict = FileUtils::getInstance()->getValueMapFromFile(cn_plist);
             CCASSERT(!dict.empty(), "cannot create dictionary");
             break;
             
         default:
-            dict = FileUtils::getInstance()->getValueMapFromFile("english.plist");
+            dict = FileUtils::getInstance()->getValueMapFromFile(en_plist);
             CCASSERT(!dict.empty(), "cannot create dictionary");
             break;
     }

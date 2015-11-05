@@ -30,11 +30,14 @@ GameUILayer::GameUILayer()
     m_pRoleMaxMp        = nullptr;
     m_pRoleExpBar       = nullptr;
     m_pRoleLevel        = nullptr;
+    
     m_pMonsterLayout    = nullptr;
     m_pMonsterCurHp     = nullptr;
     m_pMonsterMaxHp     = nullptr;
     m_pMonsterLevel     = nullptr;
     m_pMonsterName      = nullptr;
+    m_pMonsterHpBar     = nullptr;
+    m_pMonsterBtn       = nullptr;
     
     m_pGameMapBtn       = nullptr;
     m_pGameMsgBtn       = nullptr;
@@ -45,6 +48,7 @@ GameUILayer::GameUILayer()
         m_pMonsterBuffers[i] = nullptr;
     }
     
+    m_pListMsgs = nullptr;
     _isOpenSmailMap = false;
     
 }
@@ -52,45 +56,7 @@ GameUILayer::~GameUILayer()
 {
     
 }
-void GameUILayer::onEventUpdateRoleProp(cocos2d::EventCustom *sender)
-{
-    CCLOG("onEventUpdateProp");
-    updateRoleUi();
-}
 
-void GameUILayer::onEventDead(cocos2d::EventCustom *sender)
-{
-    
-}
-void GameUILayer::onEvenetUpdateMonsterProp(cocos2d::EventCustom *sender)
-{
-//    BaseMonster* monster = static_cast<BaseMonster*>(sender->getUserData());
-//    Vec2 pt = VoxelExplorer::getInstance()->getMainCamera()->project(monster->getPosition3D());
-//    cocos2d::Label* note = cocos2d::Label::createWithSystemFont("",UtilityHelper::getLocalString("FONT_NAME"),36);
-//    note->setString("monster");
-//    note->setScale(0.4);
-//    note->setTextColor(Color4B::BLUE);
-//    note->setPosition(pt);
-//    note->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
-//    m_pRootLayer->addChild(note);
-//    CCLOG("pt x:%f y%f",pt.x,pt.y);
-}
-
-void GameUILayer::onEnter()
-{
-    WrapperUILayer::onEnter();
-    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_PLAYER_PROPERTY_DIRTY, CC_CALLBACK_1(GameUILayer::onEventUpdateRoleProp,this));
-    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_PLAYER_DEATH, CC_CALLBACK_1(GameUILayer::onEventDead,this));
-    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_MONSTER_PROPERTY_DIRTY, CC_CALLBACK_1(GameUILayer::onEvenetUpdateMonsterProp,this));
-    
-}
-void GameUILayer::onExit()
-{
-    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_PLAYER_PROPERTY_DIRTY);
-    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_PLAYER_DEATH);
-    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_MONSTER_PROPERTY_DIRTY);
-    WrapperUILayer::onExit();
-}
 bool GameUILayer::addEvents()
 {
       
@@ -148,11 +114,24 @@ bool GameUILayer::addEvents()
     if (!m_pMonsterCurHp)
         return false;
     
+    m_pMonsterHpBar = dynamic_cast<ui::LoadingBar*>(UtilityHelper::seekNodeByName(m_pRootNode, "progress_monster_blood"));
+    if (!m_pMonsterHpBar)
+        return false;
+    
+    m_pMonsterBtn = dynamic_cast<ui::ImageView*>(UtilityHelper::seekNodeByName(m_pRootNode, "btn_monster"));
+    if (!m_pMonsterBtn)
+        return false;
+    m_pMonsterIcon = dynamic_cast<Sprite*>(UtilityHelper::seekNodeByName(m_pRootNode, "monster_icon"));
+    if (!m_pMonsterIcon)
+        return false;
     
     m_pMonsterMaxHp = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "progress_monster_blood_maxnum"));
     if(!m_pMonsterMaxHp)
         return false;
    
+    m_pMonsterName = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "monster_name"));
+    if(!m_pMonsterName)
+        return false;
     
     m_pMonsterLevel = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "monster_lv_num"));
     if (!m_pMonsterLevel)
@@ -176,6 +155,7 @@ bool GameUILayer::addEvents()
     m_pGameSearchBtn = dynamic_cast<ui::ImageView*>(UtilityHelper::seekNodeByName(m_pRootNode, "game_btn_search"));
     if (!m_pGameSearchBtn)
         return false;
+    
     ui::ImageView* toolBarImg = dynamic_cast<ui::ImageView*>(UtilityHelper::seekNodeByName(m_pRootNode, "game_toolbar_bg"));
     if (!toolBarImg)
         return false;
@@ -203,11 +183,113 @@ bool GameUILayer::addEvents()
     m_pRoleHpBar->setScale9Enabled(true);
     m_pRoleExpBar->setScale9Enabled(true);
     m_pRoleMpBar->setScale9Enabled(true);
+
+    
+    m_pMonsterLayout->setVisible(false);
+    m_pMonsterHpBar->setPercent(100);
+    m_pMonsterName->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
     
     updateRoleUi();
-    updateMonsterUi();
+    
     
     return true;
+}
+
+void GameUILayer::onEventRoleLevelUp(cocos2d::EventCustom *sender)
+{
+    
+}
+
+void GameUILayer::onEventUpdateRoleProp(cocos2d::EventCustom *sender)
+{
+    CCLOG("onEventUpdateProp");
+    updateRoleUi();
+}
+
+void GameUILayer::onEventRoleDead(cocos2d::EventCustom *sender)
+{
+    
+}
+void GameUILayer::onEvenetRoleHud(cocos2d::EventCustom *sender)
+{
+    
+}
+void GameUILayer::onEvenetMonsterDead(cocos2d::EventCustom *sender)
+{
+    CCLOG("onEvenetMonsterDead");
+    BaseMonster* monster = static_cast<BaseMonster*>(sender->getUserData());
+    if (monster->getState() == BaseMonster::MonsterState::MS_DEATH) {
+        m_pMonsterLayout->setVisible(false);
+        m_pMonsterHpBar->setPercent(100);
+    }
+
+}
+
+void GameUILayer::onEventMonsterHud(cocos2d::EventCustom *sender)
+{
+    HurtData* hurData = static_cast<HurtData*>(sender->getUserData());
+     Vec2 pt = VoxelExplorer::getInstance()->getMainCamera()->projectGL(hurData->m_vPos);
+    if (hurData->m_bDodge) {
+       
+        PopupUILayerManager::getInstance()->showStatus(TIP_DODGE, Vec2(pt.x, pt.y+TerrainTile::CONTENT_SCALE*2.5), StringUtils::format(UtilityHelper::getLocalStringForUi("STATUS_TEXT_DODGE").c_str(),hurData->m_nDamage));
+        CCLOG("monster 闪避");
+    }else {
+        if((hurData->m_bBlocked && hurData->m_bCriticalStrike) || hurData->m_bBlocked)
+        {
+            PopupUILayerManager::getInstance()->showStatus(TIP_BOLOCK, Vec2(pt.x, pt.y+TerrainTile::CONTENT_SCALE*2.5), StringUtils::format(UtilityHelper::getLocalStringForUi("STATUS_TEXT_BOLOCK").c_str(),hurData->m_nDamage));
+            CCLOG("monster 格挡");
+        }else if (hurData->m_bCriticalStrike)
+        {
+            PopupUILayerManager::getInstance()->showStatus(TIP_CRITICAL_STRIKE, Vec2(pt.x, pt.y+TerrainTile::CONTENT_SCALE*2.5),StringUtils::format(UtilityHelper::getLocalStringForUi("STATUS_TEXT_CRITICAL_STRIKE").c_str(),hurData->m_nDamage));
+             CCLOG("monster 暴击");
+        }else{
+            PopupUILayerManager::getInstance()->showStatus(TIP_NEGATIVE, Vec2(pt.x, pt.y+TerrainTile::CONTENT_SCALE*2.5), Value(hurData->m_nDamage).asString());
+            CCLOG("pt x:%f y%f",pt.x,pt.y);
+        }
+
+    }
+    
+
+}
+void GameUILayer::onEventUpdateMonsterProp(cocos2d::EventCustom *sender)
+{
+    BaseMonster* monster = static_cast<BaseMonster*>(sender->getUserData());
+    if (monster->getState() != BaseMonster::MonsterState::MS_DEATH) {
+        m_pMonsterLayout->setVisible(true);
+        float hpPer =monster->getMonsterProperty()->getCurrentHP().GetFloatValue()/PlayerProperty::getInstance()->getMaxHp().GetFloatValue() *100.0f;
+        m_pMonsterHpBar->setPercent(hpPer);
+        m_pMonsterCurHp->setString(StringUtils::format("%d",int(monster->getMonsterProperty()->getCurrentHP())));
+        m_pMonsterMaxHp->setString(StringUtils::format("%d",int(monster->getMonsterProperty()->getMaxHP())));
+        m_pMonsterLevel->setString(StringUtils::format("%d",int(monster->getMonsterProperty()->getLevel())));
+        m_pMonsterName->setString(monster->getName());
+    }
+}
+
+void GameUILayer::onEnter()
+{
+    WrapperUILayer::onEnter();
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_PLAYER_PROPERTY_DIRTY, CC_CALLBACK_1(GameUILayer::onEventUpdateRoleProp,this));
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_PLAYER_LEVEL_UP, CC_CALLBACK_1(GameUILayer::onEventRoleLevelUp,this));
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_PLAYER_DEATH, CC_CALLBACK_1(GameUILayer::onEventRoleDead,this));
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_PLAYER_HURT, CC_CALLBACK_1(GameUILayer::onEvenetRoleHud,this));
+    
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_MONSTER_HURT, CC_CALLBACK_1(GameUILayer::onEventMonsterHud,this));
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_MONSTER_PROPERTY_DIRTY, CC_CALLBACK_1(GameUILayer::onEventUpdateMonsterProp,this));
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_MONSTER_DEATH, CC_CALLBACK_1(GameUILayer::onEvenetMonsterDead,this));
+    
+}
+void GameUILayer::onExit()
+{
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_PLAYER_PROPERTY_DIRTY);
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_PLAYER_LEVEL_UP);
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_PLAYER_DEATH);
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_PLAYER_HURT);
+    
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_MONSTER_HURT);
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_MONSTER_PROPERTY_DIRTY);
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_MONSTER_DEATH);
+
+    WrapperUILayer::onExit();
 }
 void GameUILayer::updateRoleUi()
 {
@@ -226,14 +308,6 @@ void GameUILayer::updateRoleUi()
 
 }
 
-void GameUILayer::updateMonsterUi()
-{
-    m_pMonsterLayout->setVisible(false);
-    m_pMonsterCurHp->setString("");
-    m_pMonsterMaxHp->setString("");
-    m_pMonsterLevel->setString(Value(int(PlayerProperty::getInstance()->getLevel())).asString());
-
-}
 
 void GameUILayer::onClickRole(Ref* ref)
 {
@@ -269,8 +343,9 @@ void GameUILayer::onClickSearch(cocos2d::Ref *ref)
 {
     CHECK_ACTION(ref);
     CCLOG("onClickSearch");
-}
-void GameUILayer::onEventLevelUp(cocos2d::EventCustom *sender)
-{
-    
+    if (m_pMonsterLayout->isVisible()) {
+        m_pMonsterLayout->setVisible(false);
+    }else{
+        m_pMonsterLayout->setVisible(true);
+    }
 }

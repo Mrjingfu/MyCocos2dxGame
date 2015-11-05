@@ -10,6 +10,7 @@
 #include "RolePopUpUI.h"
 #include "ItemPopupUI.h"
 #include "EquipItemPopupUI.h"
+#include "UtilityHelper.h"
 
 PopupUILayerManager::PopupUILayerManager()
 {
@@ -152,5 +153,48 @@ bool PopupUILayerManager::isOpenPopup(ePopupType type, PopupUILayer *&pLayer)
     }
     return false;
 }
+void PopupUILayerManager::showStatus(TipTypes tipType, cocos2d::Vec2 pos, std::string text)
+{
+    Label* m_pLabel = cocos2d::Label::createWithSystemFont(text,UtilityHelper::getLocalString("FONT_NAME"),36);
+    m_pLabel->setScale(0.4);
+    m_pLabel->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
+    m_pParentLayer->addChild(m_pLabel);
+    m_pLabel->setPosition(pos);
+    switch (tipType) {
+        case TIP_DEFAULT:
+            m_pLabel->setTextColor(cocos2d::Color4B(cocos2d::Color3B(255,255,255)));
+            break;
+        case TIP_POSITIVE:
+            m_pLabel->setTextColor(cocos2d::Color4B(cocos2d::Color3B(0,255,0)));
+            break;
+        case TIP_NEGATIVE:
+        case TIP_DODGE:
+        case TIP_BOLOCK:
+        case TIP_CRITICAL_STRIKE:
+            m_pLabel->setTextColor(cocos2d::Color4B(cocos2d::Color3B(255,0,0)));
+            break;
+        case TIP_WARNING:
+            m_pLabel->setTextColor(cocos2d::Color4B(cocos2d::Color3B(255,136,0)));
+            break;
+        case TIP_NEUTRAL:
+            m_pLabel->setTextColor(cocos2d::Color4B(cocos2d::Color3B(255,255,0)));
+            break;
+        default:
+            break;
+    }
+    if (tipType != TIP_CRITICAL_STRIKE ) {
+        cocos2d::ScaleTo* ScaleTo1 = cocos2d::ScaleTo::create(0.8, 0.8);
+        cocos2d::MoveBy* moveBy = cocos2d::MoveBy::create(0.8, cocos2d::Vec2(0,30.0f));
+        cocos2d::FadeOut* fadeOut = cocos2d::FadeOut::create(0.2);
+        cocos2d::CallFunc* delFunc = cocos2d::CallFunc::create(CC_CALLBACK_0(RemoveSelf::create, this));
+        m_pLabel->runAction(cocos2d::Sequence::create(cocos2d::Spawn::createWithTwoActions(moveBy, ScaleTo1),fadeOut,delFunc, nil));
+    }else
+    {
+        cocos2d::MoveBy* moveBy = cocos2d::MoveBy::create(0.8, cocos2d::Vec2(0,30.0f));
+        cocos2d::FadeOut* fadeOut = cocos2d::FadeOut::create(0.2);
+        cocos2d::CallFunc* delFunc = cocos2d::CallFunc::create(CC_CALLBACK_0(RemoveSelf::create, this));
+        m_pLabel->runAction(cocos2d::Sequence::create(moveBy,fadeOut,delFunc, nil));
+    }
 
+}
 

@@ -22,6 +22,7 @@ public:
     static PopupUILayerManager* getInstance();
     
     PopupUILayer* openPopup(ePopupType type,int zorder= eZOrderPopupUILayer);
+    void showStatus(TipTypes tipType ,cocos2d::Vec2 pos,std::string text);
     void closeCurrentPopup();
     void onExitScene();
     void setParentLayer(cocos2d::Layer* parent);

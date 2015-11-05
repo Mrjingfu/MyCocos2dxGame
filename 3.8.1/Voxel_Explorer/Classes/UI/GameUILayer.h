@@ -10,7 +10,7 @@
 #define GameUILayer_h
 
 #include "WrapperUILayer.h"
-
+class HudTipUi;
 class GameUILayer:public WrapperUILayer {
     
 public:
@@ -26,15 +26,25 @@ private:
     void onClickMap(Ref* ref);
     void onClickSearch(Ref* ref);
     void onClickMsg(Ref* ref);
-    void onEvenetUpdateMonsterProp(cocos2d::EventCustom *sender);
-    void onEventLevelUp(cocos2d::EventCustom *sender); 
-    void onEventDead(cocos2d::EventCustom *sender);
+
     void onEventUpdateRoleProp(cocos2d::EventCustom *sender);
+    void onEventRoleLevelUp(cocos2d::EventCustom *sender);
+    void onEventRoleDead(cocos2d::EventCustom *sender);
+    void onEvenetRoleHud(cocos2d::EventCustom *sender);
+    
+    
+    void onEventUpdateMonsterProp(cocos2d::EventCustom *sender);
+    void onEventMonsterHud(cocos2d::EventCustom *sender);
+    void onEvenetMonsterDead(cocos2d::EventCustom *sender);
+
+    
     void updateRoleUi();
     void updateMonsterUi();
 private:
     bool _isOpenSmailMap;
     cocos2d::ui::ListView*   m_pListMsgs;
+
+    
     cocos2d::ui::ImageView*  m_pRoleBtn;
     cocos2d::ui::LoadingBar* m_pRoleHpBar;
     cocos2d::ui::Text*       m_pRoleCurHp;
@@ -51,6 +61,10 @@ private:
     cocos2d::ui::Text*       m_pMonsterMaxHp;
     cocos2d::ui::Text*       m_pMonsterLevel;
     cocos2d::ui::Text*       m_pMonsterName;
+    cocos2d::ui::LoadingBar* m_pMonsterHpBar;
+    cocos2d::ui::ImageView*  m_pMonsterBtn;
+    cocos2d::Sprite*  m_pMonsterIcon;
+    
     cocos2d::ui::ImageView*  m_pMonsterBuffers[8];
     
     cocos2d::ui::ImageView*  m_pGameMsgBtn;

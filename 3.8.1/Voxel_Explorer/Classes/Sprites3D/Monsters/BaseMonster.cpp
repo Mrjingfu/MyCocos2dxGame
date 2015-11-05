@@ -93,6 +93,7 @@ void BaseMonster::attackedByPlayer()
     if(m_pMonsterProperty && m_pHurtData)
     {
         m_pHurtData->reset();
+        m_pHurtData->m_vPos = this->getPosition3D();
         float percentDodgeRate = m_pMonsterProperty->getDodgeRate().GetFloatValue();
         float percentHit = 1.0 - percentDodgeRate;
         AlisaMethod* amDodgeRate = AlisaMethod::create(percentDodgeRate,percentHit,-1.0, NULL);
@@ -137,6 +138,7 @@ void BaseMonster::attackedByPlayer()
         int currentHp = m_pMonsterProperty->getCurrentHP().GetLongValue();
         currentHp = MAX(currentHp - attack , 0);
         CCLOG("Monster: CurrentHp = %d, playerAttack = %d", currentHp, attack);
+        m_pHurtData->m_nDamage = -attack;
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_MONSTER_HURT, m_pHurtData);
         if(currentHp == 0)
         {
@@ -144,8 +146,11 @@ void BaseMonster::attackedByPlayer()
             Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_MONSTER_DEATH, this);
         }
         else
+        {
             m_pMonsterProperty->setCurrentHP(currentHp);
-        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_MONSTER_PROPERTY_DIRTY, this);
+            Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_MONSTER_PROPERTY_DIRTY, this);
+        }
+
     }
 }
 void BaseMonster::setState(MonsterState state)

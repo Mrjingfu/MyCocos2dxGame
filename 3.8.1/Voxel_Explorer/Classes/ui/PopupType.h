@@ -18,5 +18,14 @@ enum ePopupType
     ePopupItem,
     ePopupCount
 };
-
+typedef enum {
+    TIP_DEFAULT,
+    TIP_POSITIVE,
+    TIP_NEGATIVE,
+    TIP_WARNING,
+    TIP_NEUTRAL,
+    TIP_DODGE,
+    TIP_BOLOCK,
+    TIP_CRITICAL_STRIKE
+}TipTypes;
 #endif

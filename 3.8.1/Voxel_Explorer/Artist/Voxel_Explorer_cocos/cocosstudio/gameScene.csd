@@ -115,7 +115,7 @@
               <AbstractNodeData Name="progress_monster_blood_bg" ActionTag="-1953810361" Tag="53" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="4.9880" RightMargin="55.0120" TopMargin="35.5400" BottomMargin="33.4600" Scale9Enable="True" LeftEage="5" RightEage="5" TopEage="5" BottomEage="5" Scale9OriginX="5" Scale9OriginY="5" Scale9Width="6" Scale9Height="1" ctype="ImageViewObjectData">
                 <Size X="70.0000" Y="11.0000" />
                 <Children>
-                  <AbstractNodeData Name="progress_monster_blood" ActionTag="-1171441373" Tag="54" RotationSkewX="180.0000" RotationSkewY="180.0000" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="69.0061" RightMargin="-67.0061" TopMargin="1.0000" BottomMargin="1.0000" ProgressInfo="69" ctype="LoadingBarObjectData">
+                  <AbstractNodeData Name="progress_monster_blood" ActionTag="-1171441373" Tag="54" RotationSkewX="180.0000" RotationSkewY="180.0000" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="69.0061" RightMargin="-67.0061" TopMargin="1.0000" BottomMargin="1.0000" ProgressInfo="100" ctype="LoadingBarObjectData">
                     <Size X="68.0000" Y="9.0000" />
                     <AnchorPoint ScaleY="0.5000" />
                     <Position X="69.0060" Y="5.5000" />
