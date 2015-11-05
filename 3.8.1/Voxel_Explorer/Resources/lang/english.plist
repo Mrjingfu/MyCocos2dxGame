@@ -330,27 +330,5 @@
 	<string>Knight looks</string>
 	<key>PIN_CLOTH_PRO_STEELARMOR</key>
 	<string>No widow</string>
-	<key>PROP_SHOW_HP</key>
-	<string>HP:%d</string>
-	<key>ROLE_SHOW_HP</key>
-	<string>HP：%d/%d</string>
-	<key>ROLE_SHOW_EXP</key>
-	<string>EXP：%d/%d</string>
-	<key>PROP_SHOW_MP</key>
-	<string>MP:%d</string>
-	<key>ROLE_SHOW_MP</key>
-	<string>MP：%d/%d</string>
-	<key>PROP_SHOW_LIGHT_DIS</key>
-	<string>Light Dis:%d</string>
-	<key>PROP_SHOW_SEARCH_DIS</key>
-	<string>Search Dis:%d</string>
-	<key>PROP_SHOW_MARGIC_FIND</key>
-	<string>Margic:%d</string>
-	<key>PROP_SHOW_CRITICAL_STRIKE</key>
-	<string>Critical strike:%d</string>
-	<key>PROP_SHOW_BLOCK</key>
-	<string>bolck:%d</string>
-	<key>PROP_SHOW_DODGE</key>
-	<string>dodge:%d</string>
 </dict>
 </plist>

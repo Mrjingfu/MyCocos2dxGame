@@ -159,12 +159,12 @@ void EquipItemPopupUI::itemProperty()
     if (itemprop->getPickableItemPropertyType() == PickableItemProperty::PIPT_WEAPON)
     {
         WeaponProperty* itemproperty = static_cast<WeaponProperty*>(itemprop);
-        m_pItemHp->setString(StringUtils::format(UtilityHelper::getLocalString("PROP_SHOW_HP").c_str(),int(itemproperty->getAddedMaxHp())));
-        m_pItemMp->setString(StringUtils::format(UtilityHelper::getLocalString("PROP_SHOW_MP").c_str(),int(itemproperty->getAddedMaxMp())));
-        m_pItemLightDis->setString(StringUtils::format(UtilityHelper::getLocalString("PROP_SHOW_LIGHT_DIS").c_str(),int(itemproperty->getAddedLightDistance())));
-        m_pItemSearchDis->setString(StringUtils::format(UtilityHelper::getLocalString("PROP_SHOW_SEARCH_DIS").c_str(),int(itemproperty->getAddedSearchDistance())));
-        m_pItemCriticalStrike ->setString(StringUtils::format(UtilityHelper::getLocalString("PROP_SHOW_CRITICAL_STRIKE").c_str(),int(itemproperty->getAddedCriticalStrikeRate())));
-        m_pItemMargicFind->setString(StringUtils::format(UtilityHelper::getLocalString("PROP_SHOW_MARGIC_FIND").c_str(),int(itemproperty->getAddedMagicItemFindRate())));
+        m_pItemHp->setString(StringUtils::format(UtilityHelper::getLocalStringForUi("PROP_SHOW_HP").c_str(),int(itemproperty->getAddedMaxHp())));
+        m_pItemMp->setString(StringUtils::format(UtilityHelper::getLocalStringForUi("PROP_SHOW_MP").c_str(),int(itemproperty->getAddedMaxMp())));
+        m_pItemLightDis->setString(StringUtils::format(UtilityHelper::getLocalStringForUi("PROP_SHOW_LIGHT_DIS").c_str(),int(itemproperty->getAddedLightDistance())));
+        m_pItemSearchDis->setString(StringUtils::format(UtilityHelper::getLocalStringForUi("PROP_SHOW_SEARCH_DIS").c_str(),int(itemproperty->getAddedSearchDistance())));
+        m_pItemCriticalStrike ->setString(StringUtils::format(UtilityHelper::getLocalStringForUi("PROP_SHOW_CRITICAL_STRIKE").c_str(),int(itemproperty->getAddedCriticalStrikeRate())));
+        m_pItemMargicFind->setString(StringUtils::format(UtilityHelper::getLocalStringForUi("PROP_SHOW_MARGIC_FIND").c_str(),int(itemproperty->getAddedMagicItemFindRate())));
         
         m_pItemBlock->setVisible(false);
         m_pItemDodge->setVisible(false);
@@ -172,12 +172,12 @@ void EquipItemPopupUI::itemProperty()
     }else if (itemprop->getPickableItemPropertyType() == PickableItemProperty::PIPT_ARMOR)
     {
         ArmorProperty* itemproperty = static_cast<ArmorProperty*>(itemprop);
-        m_pItemHp->setString(StringUtils::format(UtilityHelper::getLocalString("PROP_SHOW_HP").c_str(),int(itemproperty->getAddedMaxHp())));
-        m_pItemMp->setString(StringUtils::format(UtilityHelper::getLocalString("PROP_SHOW_MP").c_str(),int(itemproperty->getAddedMaxMp())));
-        m_pItemLightDis->setString(StringUtils::format(UtilityHelper::getLocalString("PROP_SHOW_LIGHT_DIS").c_str(),int(itemproperty->getAddedLightDistance())));
-        m_pItemSearchDis->setString(StringUtils::format(UtilityHelper::getLocalString("PROP_SHOW_SEARCH_DIS").c_str(),int(itemproperty->getAddedSearchDistance())));
-        m_pItemMargicFind->setString(StringUtils::format(UtilityHelper::getLocalString("PROP_SHOW_MARGIC_FIND").c_str(),int(itemproperty->getAddedMagicItemFindRate())));
-        m_pItemDodge->setString(StringUtils::format(UtilityHelper::getLocalString("PROP_SHOW_DODGE").c_str(),int(itemproperty->getAddedDodgeRate())));
+        m_pItemHp->setString(StringUtils::format(UtilityHelper::getLocalStringForUi("PROP_SHOW_HP").c_str(),int(itemproperty->getAddedMaxHp())));
+        m_pItemMp->setString(StringUtils::format(UtilityHelper::getLocalStringForUi("PROP_SHOW_MP").c_str(),int(itemproperty->getAddedMaxMp())));
+        m_pItemLightDis->setString(StringUtils::format(UtilityHelper::getLocalStringForUi("PROP_SHOW_LIGHT_DIS").c_str(),int(itemproperty->getAddedLightDistance())));
+        m_pItemSearchDis->setString(StringUtils::format(UtilityHelper::getLocalStringForUi("PROP_SHOW_SEARCH_DIS").c_str(),int(itemproperty->getAddedSearchDistance())));
+        m_pItemMargicFind->setString(StringUtils::format(UtilityHelper::getLocalStringForUi("PROP_SHOW_MARGIC_FIND").c_str(),int(itemproperty->getAddedMagicItemFindRate())));
+        m_pItemDodge->setString(StringUtils::format(UtilityHelper::getLocalStringForUi("PROP_SHOW_DODGE").c_str(),int(itemproperty->getAddedDodgeRate())));
         m_pItemDodge->setPosition(m_pItemCriticalStrike->getPosition());
         
         m_pItemCriticalStrike->setVisible(false);
@@ -186,27 +186,27 @@ void EquipItemPopupUI::itemProperty()
     }else if (itemprop->getPickableItemPropertyType() == PickableItemProperty::PIPT_MAGIC_ORNAMENT)
     {
         MagicOrnamentProperty* itemproperty = static_cast<MagicOrnamentProperty*>(itemprop);
-        m_pItemHp->setString(StringUtils::format(UtilityHelper::getLocalString("PROP_SHOW_HP").c_str(),int(itemproperty->getAddedMaxHp())));
-        m_pItemMp->setString(StringUtils::format(UtilityHelper::getLocalString("PROP_SHOW_MP").c_str(),int(itemproperty->getAddedMaxMp())));
-        m_pItemLightDis->setString(StringUtils::format(UtilityHelper::getLocalString("PROP_SHOW_LIGHT_DIS").c_str(),int(itemproperty->getAddedLightDistance())));
-        m_pItemSearchDis->setString(StringUtils::format(UtilityHelper::getLocalString("PROP_SHOW_SEARCH_DIS").c_str(),int(itemproperty->getAddedSearchDistance())));
-        m_pItemCriticalStrike ->setString(StringUtils::format(UtilityHelper::getLocalString("PROP_SHOW_CRITICAL_STRIKE").c_str(),int(itemproperty->getAddedCriticalStrikeRate())));
-        m_pItemMargicFind->setString(StringUtils::format(UtilityHelper::getLocalString("PROP_SHOW_MARGIC_FIND").c_str(),int(itemproperty->getAddedMagicItemFindRate())));
-        m_pItemBlock->setString(StringUtils::format(UtilityHelper::getLocalString("PROP_SHOW_BLOCK").c_str(),int(itemproperty->getAddedBlockRate())));
-        m_pItemDodge->setString(StringUtils::format(UtilityHelper::getLocalString("PROP_SHOW_DODGE").c_str(),int(itemproperty->getAddedDodgeRate())));
+        m_pItemHp->setString(StringUtils::format(UtilityHelper::getLocalStringForUi("PROP_SHOW_HP").c_str(),int(itemproperty->getAddedMaxHp())));
+        m_pItemMp->setString(StringUtils::format(UtilityHelper::getLocalStringForUi("PROP_SHOW_MP").c_str(),int(itemproperty->getAddedMaxMp())));
+        m_pItemLightDis->setString(StringUtils::format(UtilityHelper::getLocalStringForUi("PROP_SHOW_LIGHT_DIS").c_str(),int(itemproperty->getAddedLightDistance())));
+        m_pItemSearchDis->setString(StringUtils::format(UtilityHelper::getLocalStringForUi("PROP_SHOW_SEARCH_DIS").c_str(),int(itemproperty->getAddedSearchDistance())));
+        m_pItemCriticalStrike ->setString(StringUtils::format(UtilityHelper::getLocalStringForUi("PROP_SHOW_CRITICAL_STRIKE").c_str(),int(itemproperty->getAddedCriticalStrikeRate())));
+        m_pItemMargicFind->setString(StringUtils::format(UtilityHelper::getLocalStringForUi("PROP_SHOW_MARGIC_FIND").c_str(),int(itemproperty->getAddedMagicItemFindRate())));
+        m_pItemBlock->setString(StringUtils::format(UtilityHelper::getLocalStringForUi("PROP_SHOW_BLOCK").c_str(),int(itemproperty->getAddedBlockRate())));
+        m_pItemDodge->setString(StringUtils::format(UtilityHelper::getLocalStringForUi("PROP_SHOW_DODGE").c_str(),int(itemproperty->getAddedDodgeRate())));
         
         
     }else if (itemprop->getPickableItemPropertyType() == PickableItemProperty::PIPT_SECOND_WEAPON)
     {
         SecondWeaponProperty* itemproperty = static_cast<SecondWeaponProperty*>(itemprop);
-        m_pItemHp->setString(StringUtils::format(UtilityHelper::getLocalString("PROP_SHOW_HP").c_str(),int(itemproperty->getAddedMaxHp())));
-        m_pItemMp->setString(StringUtils::format(UtilityHelper::getLocalString("PROP_SHOW_MP").c_str(),int(itemproperty->getAddedMaxMp())));
-        m_pItemLightDis->setString(StringUtils::format(UtilityHelper::getLocalString("PROP_SHOW_LIGHT_DIS").c_str(),int(itemproperty->getAddedLightDistance())));
-        m_pItemSearchDis->setString(StringUtils::format(UtilityHelper::getLocalString("PROP_SHOW_SEARCH_DIS").c_str(),int(itemproperty->getAddedSearchDistance())));
-        m_pItemCriticalStrike ->setString(StringUtils::format(UtilityHelper::getLocalString("PROP_SHOW_CRITICAL_STRIKE").c_str(),int(itemproperty->getAddedCriticalStrikeRate())));
-        m_pItemMargicFind->setString(StringUtils::format(UtilityHelper::getLocalString("PROP_SHOW_MARGIC_FIND").c_str(),int(itemproperty->getAddedMagicItemFindRate())));
-        m_pItemBlock->setString(StringUtils::format(UtilityHelper::getLocalString("PROP_SHOW_BLOCK").c_str(),int(itemproperty->getAddedBlockRate())));
-        m_pItemDodge->setString(StringUtils::format(UtilityHelper::getLocalString("PROP_SHOW_DODGE").c_str(),int(itemproperty->getAddedDodgeRate())));
+        m_pItemHp->setString(StringUtils::format(UtilityHelper::getLocalStringForUi("PROP_SHOW_HP").c_str(),int(itemproperty->getAddedMaxHp())));
+        m_pItemMp->setString(StringUtils::format(UtilityHelper::getLocalStringForUi("PROP_SHOW_MP").c_str(),int(itemproperty->getAddedMaxMp())));
+        m_pItemLightDis->setString(StringUtils::format(UtilityHelper::getLocalStringForUi("PROP_SHOW_LIGHT_DIS").c_str(),int(itemproperty->getAddedLightDistance())));
+        m_pItemSearchDis->setString(StringUtils::format(UtilityHelper::getLocalStringForUi("PROP_SHOW_SEARCH_DIS").c_str(),int(itemproperty->getAddedSearchDistance())));
+        m_pItemCriticalStrike ->setString(StringUtils::format(UtilityHelper::getLocalStringForUi("PROP_SHOW_CRITICAL_STRIKE").c_str(),int(itemproperty->getAddedCriticalStrikeRate())));
+        m_pItemMargicFind->setString(StringUtils::format(UtilityHelper::getLocalStringForUi("PROP_SHOW_MARGIC_FIND").c_str(),int(itemproperty->getAddedMagicItemFindRate())));
+        m_pItemBlock->setString(StringUtils::format(UtilityHelper::getLocalStringForUi("PROP_SHOW_BLOCK").c_str(),int(itemproperty->getAddedBlockRate())));
+        m_pItemDodge->setString(StringUtils::format(UtilityHelper::getLocalStringForUi("PROP_SHOW_DODGE").c_str(),int(itemproperty->getAddedDodgeRate())));
     }
 }
 

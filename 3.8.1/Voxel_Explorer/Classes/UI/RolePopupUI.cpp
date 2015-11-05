@@ -101,15 +101,15 @@ bool RolePopupUI::initUi()
     if (!m_pRoleDodge)
         return false;
     
-    m_pRoleHp->setString(StringUtils::format(UtilityHelper::getLocalString("ROLE_SHOW_HP").c_str(),int(PlayerProperty::getInstance()->getCurrentHp()),int(PlayerProperty::getInstance()->getMaxHp())));
-    m_pRoleMp->setString(StringUtils::format(UtilityHelper::getLocalString("ROLE_SHOW_MP").c_str(),int(PlayerProperty::getInstance()->getCurrentMp()),int(PlayerProperty::getInstance()->getMaxMp())));
-    m_pRoleExp->setString(StringUtils::format(UtilityHelper::getLocalString("ROLE_SHOW_EXP").c_str(),int(PlayerProperty::getInstance()->getExp()),int(GameFormula::getNextLevelExp(PlayerProperty::getInstance()->getLevel()))));
-    m_pRoleLightDis->setString(StringUtils::format(UtilityHelper::getLocalString("PROP_SHOW_LIGHT_DIS").c_str(),int(PlayerProperty::getInstance()->getLightDistance())));
-    m_pRoleSearchDis->setString(StringUtils::format(UtilityHelper::getLocalString("PROP_SHOW_SEARCH_DIS").c_str(),int(PlayerProperty::getInstance()->getSearchDistance())));
-    m_pRoleCriticalStrike ->setString(StringUtils::format(UtilityHelper::getLocalString("PROP_SHOW_CRITICAL_STRIKE").c_str(),int(PlayerProperty::getInstance()->getCriticalStrikeRate())));
-    m_pRoleMargicFind->setString(StringUtils::format(UtilityHelper::getLocalString("PROP_SHOW_MARGIC_FIND").c_str(),int(PlayerProperty::getInstance()->getMagicItemFindRate())));
-    m_pRoleBlock->setString(StringUtils::format(UtilityHelper::getLocalString("PROP_SHOW_BLOCK").c_str(),int(PlayerProperty::getInstance()->getBlockRate())));
-    m_pRoleDodge->setString(StringUtils::format(UtilityHelper::getLocalString("PROP_SHOW_DODGE").c_str(),int(PlayerProperty::getInstance()->getDodgeRate())));
+    m_pRoleHp->setString(StringUtils::format(UtilityHelper::getLocalStringForUi("ROLE_SHOW_HP").c_str(),int(PlayerProperty::getInstance()->getCurrentHp()),int(PlayerProperty::getInstance()->getMaxHp())));
+    m_pRoleMp->setString(StringUtils::format(UtilityHelper::getLocalStringForUi("ROLE_SHOW_MP").c_str(),int(PlayerProperty::getInstance()->getCurrentMp()),int(PlayerProperty::getInstance()->getMaxMp())));
+    m_pRoleExp->setString(StringUtils::format(UtilityHelper::getLocalStringForUi("ROLE_SHOW_EXP").c_str(),int(PlayerProperty::getInstance()->getExp()),int(GameFormula::getNextLevelExp(PlayerProperty::getInstance()->getLevel()))));
+    m_pRoleLightDis->setString(StringUtils::format(UtilityHelper::getLocalStringForUi("PROP_SHOW_LIGHT_DIS").c_str(),int(PlayerProperty::getInstance()->getLightDistance())));
+    m_pRoleSearchDis->setString(StringUtils::format(UtilityHelper::getLocalStringForUi("PROP_SHOW_SEARCH_DIS").c_str(),int(PlayerProperty::getInstance()->getSearchDistance())));
+    m_pRoleCriticalStrike ->setString(StringUtils::format(UtilityHelper::getLocalStringForUi("PROP_SHOW_CRITICAL_STRIKE").c_str(),int(PlayerProperty::getInstance()->getCriticalStrikeRate())));
+    m_pRoleMargicFind->setString(StringUtils::format(UtilityHelper::getLocalStringForUi("PROP_SHOW_MARGIC_FIND").c_str(),int(PlayerProperty::getInstance()->getMagicItemFindRate())));
+    m_pRoleBlock->setString(StringUtils::format(UtilityHelper::getLocalStringForUi("PROP_SHOW_BLOCK").c_str(),int(PlayerProperty::getInstance()->getBlockRate())));
+    m_pRoleDodge->setString(StringUtils::format(UtilityHelper::getLocalStringForUi("PROP_SHOW_DODGE").c_str(),int(PlayerProperty::getInstance()->getDodgeRate())));
 
     m_pBtnChangeBag->addClickEventListener(CC_CALLBACK_1(RolePopupUI::onClickChnageBag, this));
     
