@@ -153,14 +153,31 @@ bool VoxelExplorer::checkMonsterCanAttack(BaseMonster* monster)
         return false;
     Vec2 playerPosInMap = m_pPlayer->getPosInMap();
     Vec2 monsterPosInMap = monster->getPosInMap();
-    if(std::abs(playerPosInMap.x - monsterPosInMap.x) > monster->getAttackRange() && std::abs(playerPosInMap.y - monsterPosInMap.y) > monster->getAttackRange())
-        return false;
-    return true;
+    CCASSERT(playerPosInMap != monsterPosInMap, "");
+    if(playerPosInMap.x == monsterPosInMap.x && std::abs(playerPosInMap.y - monsterPosInMap.y) <= monster->getAttackRange())
+        return true;
+    else if(playerPosInMap.y == monsterPosInMap.y && std::abs(playerPosInMap.x - monsterPosInMap.x) <= monster->getAttackRange())
+        return true;
+    return false;
 }
 void VoxelExplorer::attackedByMonster(BaseMonster* monster)
 {
     if(m_pPlayer == nullptr || m_pPlayer->getState() == Player::PS_DEATH)
         return;
+}
+bool VoxelExplorer::trackToPlayer(BaseMonster* monster, cocos2d::Vec2& nextPos)
+{
+    if(monster == nullptr || m_pPlayer == nullptr || m_pCurrentLevel == nullptr || !(monster->isVisible()))
+       return false;
+    Vec2 playerPosInMap = m_pPlayer->getPosInMap();
+    Vec2 monsterPosInMap = monster->getPosInMap();
+    return m_pCurrentLevel->getNextPathStep(monsterPosInMap, playerPosInMap, nextPos);
+}
+bool VoxelExplorer::fleeFromPlayer(BaseMonster* monster, cocos2d::Vec2& nextPos)
+{
+    if(monster == nullptr || m_pPlayer == nullptr || !(monster->isVisible()))
+        return false;
+    return true;
 }
 void VoxelExplorer::updateFogOfWar(const cocos2d::Rect& areaRect, bool visited)
 {

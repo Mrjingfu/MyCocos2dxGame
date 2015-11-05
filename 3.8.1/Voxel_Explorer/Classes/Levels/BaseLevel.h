@@ -15,11 +15,12 @@
 struct TileInfo
 {
     typedef enum {
-        INITIALISED     = 1<<0,     ///初始化状态
-        PASSABLE        = 1<<1,     ///可通过状态
-        USEABLE         = 1<<2,     ///可使用状态
-        ATTACKABLE      = 1<<3,     ///可攻击状态
-        PICKABLE        = 1<<4,     ///可拾取状态
+        INITIALISED     = 1<<0,     ///初始化状态,阻挡
+        STOPPABLE       = 1<<1,     ///阻挡的
+        PASSABLE        = 1<<2,     ///可通过状态
+        USEABLE         = 1<<3,     ///可使用状态
+        ATTACKABLE      = 1<<4,     ///可攻击状态
+        PICKABLE        = 1<<5,     ///可拾取状态
         
     } FLAG;
     typedef enum {
@@ -47,6 +48,20 @@ struct TileInfo
         m_nY = -1;
         m_Dir = Actor::AD_UNKNOWN;
     }
+    bool isPassable() const
+    {
+        if((m_Flag & TileInfo::INITIALISED) != 0)
+            return false;
+        if((m_Flag & TileInfo::STOPPABLE) != 0)
+            return false;
+        if((m_Flag & TileInfo::ATTACKABLE) != 0)
+            return false;
+        if((m_Flag & TileInfo::USEABLE) != 0)
+            return false;
+        if((m_Flag & TileInfo::PASSABLE) != 0)
+            return true;
+        return false;
+    }
 };
 class BaseLevel : public cocos2d::Ref
 {
@@ -73,6 +88,12 @@ public:
     std::vector<int> getNeighbours8() { return {+1, -1, +m_nWidth, -m_nWidth, +1+m_nWidth, +1-m_nWidth, -1+m_nWidth, -1-m_nWidth}; }
     std::vector<int> getNeighbours9() { return {0, +1, -1, +m_nWidth, -m_nWidth, +1+m_nWidth, +1-m_nWidth, -1+m_nWidth, -1-m_nWidth}; }
     
+    bool isAdjacent(const cocos2d::Vec2& a, const cocos2d::Vec2& b);
+    int getDistance(const cocos2d::Vec2& a, const cocos2d::Vec2& b);
+    
+    bool isAdjacent(int a, int b);
+    int getDistance(int a, int b);
+    
     cocos2d::Vec2 getSpawnPoint() const { return  m_spawnPoint; }
     
     void generateTerrainTiles(int x, int y , int width, int height, TerrainTile::TileType tileType, Area::AREA_TYPE areaType, Actor::ActorDir dir = Actor::AD_UNKNOWN);
@@ -83,6 +104,8 @@ public:
     
     void updateTerrainTileFogOfWar(int x, int y , int width, int height, bool visited);
     bool checkMovable(Actor* actor, TileInfo& info);
+    
+    bool getNextPathStep(const cocos2d::Vec2& from, const cocos2d::Vec2& to, cocos2d::Vec2& nextPos);
     
     void load();
     void save();
