@@ -73,13 +73,61 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../Classes/UI/GameUILayer.cpp"
-            timestampString = "468323128.922581"
+            filePath = "../Classes/Utilities/UtilityHelper.cpp"
+            timestampString = "468425904.746946"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "346"
-            endingLineNumber = "346"
-            landmarkName = "GameUILayer::onClickSearch(cocos2d::Ref *ref)"
+            startingLineNumber = "74"
+            endingLineNumber = "74"
+            landmarkName = "UtilityHelper::getLineStr(std::string &amp;str, int length)"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "UtilityHelper::getLineStr(std::__1::basic_string&lt;char, std::__1::char_traits&lt;char&gt;, std::__1::allocator&lt;char&gt; &gt;&amp;, int)"
+                  moduleName = "Voxel_Explorer-desktop"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chuangli/Documents/WorkSpace/MyCocos2dxGame/3.8.1/Voxel_Explorer/Classes/Utilities/UtilityHelper.cpp"
+                  timestampString = "468426043.83507"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "74"
+                  endingLineNumber = "74"
+                  offsetFromSymbolStart = "7389">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "UtilityHelper::getLineStr(std::__1::basic_string&lt;char, std::__1::char_traits&lt;char&gt;, std::__1::allocator&lt;char&gt; &gt;&amp;, int)"
+                  moduleName = "Voxel_Explorer-desktop"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chuangli/Documents/WorkSpace/MyCocos2dxGame/3.8.1/Voxel_Explorer/Classes/Utilities/UtilityHelper.cpp"
+                  timestampString = "468426043.835655"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "74"
+                  endingLineNumber = "74"
+                  offsetFromSymbolStart = "8187">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/Utilities/UtilityHelper.cpp"
+            timestampString = "468425954.500851"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
+            landmarkName = "UtilityHelper::getLineStr(std::string &amp;str, int length)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -89,13 +137,29 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../Classes/UI/PopupUILayerManager.cpp"
-            timestampString = "468328538.446188"
+            filePath = "../Classes/Utilities/UtilityHelper.cpp"
+            timestampString = "468426086.219927"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "185"
-            endingLineNumber = "185"
-            landmarkName = "PopupUILayerManager::showStatus(TipTypes tipType, cocos2d::Vec2 pos, std::string text)"
+            startingLineNumber = "86"
+            endingLineNumber = "86"
+            landmarkName = "UtilityHelper::getLineStr(std::string &amp;str, int length)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/Utilities/UtilityHelper.cpp"
+            timestampString = "468426108.95239"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "93"
+            endingLineNumber = "93"
+            landmarkName = "UtilityHelper::getLineStr(std::string &amp;str, int length)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

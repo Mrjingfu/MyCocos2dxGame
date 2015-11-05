@@ -104,6 +104,9 @@ void TGridView::remedyLayoutParameter(Widget *item)
     }
 //    RelativeLayoutParameter* reLayoutParameter = RelativeLayoutParameter::create();
     ssize_t itemIndex = getIndex(item);
+    if (itemIndex==-1) {
+        return;
+    }
     std::string currenName = StringUtils::format("item_%d",(int)itemIndex);
     std::string preName = StringUtils::format("item_%d",(int)itemIndex-1);
     int x = itemIndex%m_pX;

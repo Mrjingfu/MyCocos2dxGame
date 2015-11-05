@@ -50,6 +50,7 @@ GameUILayer::GameUILayer()
     
     m_pListMsgs = nullptr;
     _isOpenSmailMap = false;
+    m_pMsgFrame = nullptr;
     
 }
 GameUILayer::~GameUILayer()
@@ -156,21 +157,21 @@ bool GameUILayer::addEvents()
     if (!m_pGameSearchBtn)
         return false;
     
-    ui::ImageView* toolBarImg = dynamic_cast<ui::ImageView*>(UtilityHelper::seekNodeByName(m_pRootNode, "game_toolbar_bg"));
-    if (!toolBarImg)
+    m_pMsgFrame = dynamic_cast<ui::ImageView*>(UtilityHelper::seekNodeByName(m_pRootNode, "game_msg_frame"));
+    if (!m_pMsgFrame)
         return false;
-    
+   
     m_pListMsgs = ui::ListView::create();
     m_pListMsgs->setBackGroundImageScale9Enabled(true);
     m_pListMsgs->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
-    m_pListMsgs->setTouchEnabled(true);
-    m_pListMsgs->setItemsMargin(5);
+    m_pListMsgs->setScrollBarEnabled(false);
     m_pListMsgs->setDirection(ui::ScrollView::Direction::VERTICAL);
-    m_pListMsgs->setBackGroundImage("ui_frame_5.png",cocos2d::ui::TextureResType::PLIST);
-    m_pListMsgs->setContentSize(cocos2d::Size(SCREEN_WIDTH,SCREEN_HEIGHT*0.3));
-    m_pListMsgs->setPosition(Vec2(WND_CENTER_X,toolBarImg->getPosition().y+toolBarImg->getContentSize().height));
-    m_pRootLayer->addChild(m_pListMsgs);
-    m_pListMsgs->setVisible(false);
+//    m_pListMsgs->setBackGroundColorType(cocos2d::ui::Layout::BackGroundColorType::SOLID);
+//    m_pListMsgs->setBackGroundColor(Color3B::WHITE);
+    m_pListMsgs->setContentSize(cocos2d::Size(m_pMsgFrame->getContentSize().width*0.95,m_pMsgFrame->getContentSize().height*0.9));
+    m_pListMsgs->setPosition(m_pMsgFrame->getContentSize()*0.5);
+    m_pMsgFrame->addChild(m_pListMsgs);
+    m_pMsgFrame->setVisible(false);
     
     m_pGameMapBtn->setTouchEnabled(true);
     m_pGameMapBtn->addClickEventListener(CC_CALLBACK_1(GameUILayer::onClickMap, this));
@@ -331,21 +332,25 @@ void GameUILayer::onClickMsg(cocos2d::Ref *ref)
 {
     CHECK_ACTION(ref);
     CCLOG("onClickMsg");
-    if (m_pListMsgs->isVisible())
+    if (m_pMsgFrame->isVisible())
     {
-        m_pListMsgs->setVisible(false);
+         m_pMsgFrame->setVisible(false);
     }else
     {
-        m_pListMsgs->setVisible(true);
+        m_pMsgFrame->setVisible(true);
+        m_pListMsgs->scrollToBottom(0.5,false);
     }
 }
 void GameUILayer::onClickSearch(cocos2d::Ref *ref)
 {
     CHECK_ACTION(ref);
     CCLOG("onClickSearch");
-    if (m_pMonsterLayout->isVisible()) {
-        m_pMonsterLayout->setVisible(false);
-    }else{
-        m_pMonsterLayout->setVisible(true);
+    NoteUi* noteui = NoteUi::create();
+    noteui->setMsg(UtilityHelper::getLocalStringForUi("STATUS_TEXT_DODGE"),UtilityHelper::randomColor());
+    m_pListMsgs->pushBackCustomItem(noteui);
+    CCLOG("m_pListMsgs innerSize height:%f contentSize:%f",m_pListMsgs->getInnerContainerSize().height,m_pListMsgs->getContentSize().height);
+    if ( m_pListMsgs->getItems().size()*noteui->getContentSize().height > m_pListMsgs->getContentSize().height) {
+         m_pListMsgs->scrollToBottom(0.5,false);
     }
+   
 }
