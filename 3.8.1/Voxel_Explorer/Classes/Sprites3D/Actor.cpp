@@ -41,16 +41,54 @@ void Actor::setActorDir( ActorDir dir )
             break;
     }
 }
-void Actor::updateTerrainTileFlag(int flag)
+void Actor::addTerrainTileFlag(int flag)
 {
     if(VoxelExplorer::getInstance()->getCurrentLevel())
-        VoxelExplorer::getInstance()->getCurrentLevel()->setTerrainTileFlag(getPosInMap().x, getPosInMap().y, flag);
+    {
+        int oriFlag = VoxelExplorer::getInstance()->getCurrentLevel()->getTerrainTileFlag(getPosInMap().x, getPosInMap().y);
+        oriFlag |= flag;
+        VoxelExplorer::getInstance()->getCurrentLevel()->setTerrainTileFlag(getPosInMap().x, getPosInMap().y, oriFlag);
+    }
 }
-void Actor::updateTerrainTileFlagByPos(int flag, const cocos2d::Vec2& pos)
+void Actor::addTerrainTileFlagByPos(int flag, const cocos2d::Vec2& pos)
 {
     if(VoxelExplorer::getInstance()->getCurrentLevel())
-        VoxelExplorer::getInstance()->getCurrentLevel()->setTerrainTileFlag(pos.x, pos.y, flag);
+    {
+        int oriFlag = VoxelExplorer::getInstance()->getCurrentLevel()->getTerrainTileFlag(pos.x, pos.y);
+        oriFlag |= flag;
+        VoxelExplorer::getInstance()->getCurrentLevel()->setTerrainTileFlag(pos.x, pos.y, oriFlag);
+    }
 }
+
+void Actor::removeTerrainTileFlag(int flag)
+{
+    if(VoxelExplorer::getInstance()->getCurrentLevel())
+    {
+        int oriFlag = VoxelExplorer::getInstance()->getCurrentLevel()->getTerrainTileFlag(getPosInMap().x, getPosInMap().y);
+        oriFlag = oriFlag&~flag;
+        VoxelExplorer::getInstance()->getCurrentLevel()->setTerrainTileFlag(getPosInMap().x, getPosInMap().y, oriFlag);
+    }
+
+}
+void Actor::removeTerrainTileFlagByPos(int flag, const cocos2d::Vec2& pos)
+{
+    if(VoxelExplorer::getInstance()->getCurrentLevel())
+    {
+        int oriFlag = VoxelExplorer::getInstance()->getCurrentLevel()->getTerrainTileFlag(pos.x, pos.y);
+        oriFlag = oriFlag&~flag;
+        VoxelExplorer::getInstance()->getCurrentLevel()->setTerrainTileFlag(pos.x, pos.y, oriFlag);
+    }
+}
+//void Actor::updateTerrainTileFlag(int flag)
+//{
+//    if(VoxelExplorer::getInstance()->getCurrentLevel())
+//        VoxelExplorer::getInstance()->getCurrentLevel()->setTerrainTileFlag(getPosInMap().x, getPosInMap().y, flag);
+//}
+//void Actor::updateTerrainTileFlagByPos(int flag, const cocos2d::Vec2& pos)
+//{
+//    if(VoxelExplorer::getInstance()->getCurrentLevel())
+//        VoxelExplorer::getInstance()->getCurrentLevel()->setTerrainTileFlag(pos.x, pos.y, flag);
+//}
 void Actor::setVisited(bool visited)
 {
     setVisible(visited);

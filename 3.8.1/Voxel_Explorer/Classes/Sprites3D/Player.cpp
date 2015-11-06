@@ -39,8 +39,7 @@ void Player::onEnter()
 {
     Actor::onEnter();
     scheduleUpdate();
-    int flag = TileInfo::PASSABLE | TileInfo::ATTACKABLE;
-    updateTerrainTileFlag(flag);
+    addTerrainTileFlag(TileInfo::ATTACKABLE);
 }
 void Player::onExit()
 {
@@ -208,8 +207,8 @@ void Player::onEnterJumpMove()
     }
     Vec3 playerNextPos = getPosition3D() + dir;
     Vec2 nextPosInMap = Vec2((int)(playerNextPos.x/TerrainTile::CONTENT_SCALE), (int)(-playerNextPos.z /TerrainTile::CONTENT_SCALE));
-    this->updateTerrainTileFlag(TileInfo::PASSABLE);
-    this->updateTerrainTileFlagByPos(TileInfo::PASSABLE | TileInfo::ATTACKABLE, nextPosInMap);
+    removeTerrainTileFlag(TileInfo::ATTACKABLE);
+    addTerrainTileFlagByPos(TileInfo::ATTACKABLE, nextPosInMap);
     ScaleTo* scaleTo = ScaleTo::create(0.1f, 1.0f, 1.0f, 1.0f);
     EaseSineOut* moveUp = EaseSineOut::create(MoveTo::create(0.1f, Vec3(getPositionX(), getPositionY() + TerrainTile::CONTENT_SCALE*0.5f, getPositionZ()) + dir));
     EaseSineOut* moveDown = EaseSineOut::create(MoveTo::create(0.1f, Vec3(getPositionX(), getPositionY(), getPositionZ()) + dir));

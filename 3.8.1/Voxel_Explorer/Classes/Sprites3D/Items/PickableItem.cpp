@@ -245,8 +245,7 @@ void PickableItem::setState(PickableItemState state)
 
 void PickableItem::onEnterIdle()
 {
-    int flag = TileInfo::PASSABLE | TileInfo::PICKABLE;
-    updateTerrainTileFlag(flag);
+    addTerrainTileFlag(TileInfo::PICKABLE);
     
     EaseSineOut* fadeIn = EaseSineOut::create(FadeIn::create(1.0f));
     RotateBy* rotateBy = RotateBy::create(1.0f, Vec3(0, 180, 0));
@@ -282,7 +281,6 @@ void PickableItem::beginRotate()
 }
 void PickableItem::destroySelf()
 {
-    int flag = TileInfo::PASSABLE;
-    updateTerrainTileFlag(flag);
+    removeTerrainTileFlag(TileInfo::PICKABLE);
     this->removeFromParentAndCleanup(true);
 }

@@ -522,6 +522,7 @@ void StandardLevel::updateAreaFogOfWarByPos(const cocos2d::Vec2& pos)
                         if(mergeSmallIntersectArea(area, areaOri))
                         {
                             areaOri->updateAreaFogOfWar(this, true);
+                            ///更新场景、怪物和物品状态
                             VoxelExplorer::getInstance()->updateFogOfWar(areaOri->getRect(), true);
                         }
                     }
@@ -541,6 +542,7 @@ void StandardLevel::updateAreaFogOfWarByPos(const cocos2d::Vec2& pos)
                                 {
                                     areaOri->updateAreaFogOfWar(this, true);
                                     areaOriOri->updateAreaFogOfWar(this, true);
+                                    ///更新场景、怪物和物品状态
                                     VoxelExplorer::getInstance()->updateFogOfWar(areaOriOri->getRect(), true);
                                 }
                             }

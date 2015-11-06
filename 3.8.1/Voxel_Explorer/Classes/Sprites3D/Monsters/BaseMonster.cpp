@@ -232,8 +232,7 @@ void BaseMonster::onEnter()
 {
     Actor::onEnter();
     scheduleUpdate();
-    int flag = TileInfo::PASSABLE | TileInfo::ATTACKABLE;
-    updateTerrainTileFlag(flag);
+    addTerrainTileFlag(TileInfo::ATTACKABLE);
 }
 void BaseMonster::onExit()
 {
@@ -360,8 +359,8 @@ void BaseMonster::onEnterMoving()
                 else
                     setActorDir(AD_BACK);
             }
-            this->updateTerrainTileFlag(TileInfo::PASSABLE);
-            this->updateTerrainTileFlagByPos(TileInfo::PASSABLE | TileInfo::ATTACKABLE, next);
+            this->removeTerrainTileFlag(TileInfo::ATTACKABLE);
+            this->addTerrainTileFlagByPos(TileInfo::ATTACKABLE, next);
             Vec3 oriScale = Vec3(getScaleX(), getScaleY(), getScaleZ());
             if(m_bJumpMove)
             {
@@ -461,7 +460,7 @@ void BaseMonster::onExitAttack()
 void BaseMonster::onEnterDeath()
 {
     this->stopAllActions();
-    updateTerrainTileFlag(TileInfo::PASSABLE);
+    removeTerrainTileFlag(TileInfo::ATTACKABLE);
     this->setVisible(false);
     VoxelExplorer::getInstance()->addExplosion(getPosition3D());
     

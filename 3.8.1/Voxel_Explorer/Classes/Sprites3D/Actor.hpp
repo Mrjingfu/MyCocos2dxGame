@@ -33,8 +33,14 @@ public:
     ActorDir getActorDir() const { return m_dir; }
     virtual void setActorDir( ActorDir dir );
     
-    virtual void updateTerrainTileFlag(int flag);
-    virtual void updateTerrainTileFlagByPos(int flag, const cocos2d::Vec2& pos);
+    virtual void addTerrainTileFlag(int flag);
+    virtual void addTerrainTileFlagByPos(int flag, const cocos2d::Vec2& pos);
+    
+    virtual void removeTerrainTileFlag(int flag);
+    virtual void removeTerrainTileFlagByPos(int flag, const cocos2d::Vec2& pos);
+    
+//    virtual void updateTerrainTileFlag(int flag);
+//    virtual void updateTerrainTileFlagByPos(int flag, const cocos2d::Vec2& pos);
     
     virtual void setVisited(bool visited);
 protected:

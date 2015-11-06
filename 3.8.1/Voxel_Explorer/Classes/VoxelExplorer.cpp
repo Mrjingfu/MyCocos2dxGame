@@ -209,8 +209,8 @@ void VoxelExplorer::updateFogOfWar(const cocos2d::Rect& areaRect, bool visited)
     {
         for (const auto& child : m_pMonstersLayer->getChildren())
         {
-            Actor* monster = dynamic_cast<Actor*>(child);
-            if(monster && areaRect.containsPoint(monster->getPosInMap()))
+            BaseMonster* monster = dynamic_cast<BaseMonster*>(child);
+            if(monster && areaRect.containsPoint(monster->getPosInMap()) && monster->getState() != BaseMonster::MS_DEATH)
                 monster->setVisited(visited);
         }
     }
@@ -464,7 +464,7 @@ bool VoxelExplorer::createPlayer()
     cocos2d::Size size = m_pPlayer->getContentSize();
     m_pPlayer->setPosition3D(Vec3(m_pCurrentLevel->getSpawnPoint().x, -0.5f*TerrainTile::CONTENT_SCALE, -m_pCurrentLevel->getSpawnPoint().y));
     m_pPlayer->setRotation3D(Vec3(0,90,0));
-    m_pPlayer->updateTerrainTileFlag(TileInfo::PASSABLE | TileInfo::ATTACKABLE);
+    m_pPlayer->addTerrainTileFlag(TileInfo::ATTACKABLE);
     m_p3DLayer->addChild(m_pPlayer);
     
     m_pMainCamera->setPosition3D(m_pPlayer->getPosition3D() + Vec3(0, 5*TerrainTile::CONTENT_SCALE, 4*TerrainTile::CONTENT_SCALE ));
