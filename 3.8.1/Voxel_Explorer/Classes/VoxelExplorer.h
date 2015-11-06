@@ -29,7 +29,6 @@ public:
     void checkUpdateFogOfWar();
     bool checkMonsterAlert(BaseMonster* monster);
     bool checkMonsterCanAttack(BaseMonster* monster);
-    void attackedByMonster(BaseMonster* monster);
     bool trackToPlayer(BaseMonster* monster, cocos2d::Vec2& nextPos);
     bool fleeFromPlayer(BaseMonster* monster, cocos2d::Vec2& nextPos);
     void updateFogOfWar(const cocos2d::Rect& areaRect, bool visited);

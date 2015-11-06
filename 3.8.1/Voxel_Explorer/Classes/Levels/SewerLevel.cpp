@@ -23,7 +23,7 @@ bool SewerLevel::createMonsters()
     int monsterNum = calculateLevelMonsterCount();
     for (int i=0; i < monsterNum; i++) {
         BaseMonster::MonsterType type = (BaseMonster::MonsterType)cocos2d::random((int)BaseMonster::MT_RAT, (int)BaseMonster::MT_SLIME);
-        StandardMonster* monster = StandardMonster::create(type);
+        StandardMonster* monster = StandardMonster::create(BaseMonster::MT_SLIME);
         if(!monster)
             return false;
         int tileIndex = -1;

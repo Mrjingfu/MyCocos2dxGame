@@ -141,7 +141,7 @@ bool VoxelExplorer::checkMonsterAlert(BaseMonster* monster)
         return false;
     Vec2 playerPosInMap = m_pPlayer->getPosInMap();
     Vec2 monsterPosInMap = monster->getPosInMap();
-    if(std::abs(playerPosInMap.x - monsterPosInMap.x) > monster->getMonsterFOV() && std::abs(playerPosInMap.y - monsterPosInMap.y) > monster->getMonsterFOV())
+    if(std::abs(playerPosInMap.x - monsterPosInMap.x) > monster->getMonsterFOV() || std::abs(playerPosInMap.y - monsterPosInMap.y) > monster->getMonsterFOV())
         return false;
     return true;
 }
@@ -153,17 +153,11 @@ bool VoxelExplorer::checkMonsterCanAttack(BaseMonster* monster)
         return false;
     Vec2 playerPosInMap = m_pPlayer->getPosInMap();
     Vec2 monsterPosInMap = monster->getPosInMap();
-    CCASSERT(playerPosInMap != monsterPosInMap, "");
     if(playerPosInMap.x == monsterPosInMap.x && std::abs(playerPosInMap.y - monsterPosInMap.y) <= monster->getAttackRange())
         return true;
     else if(playerPosInMap.y == monsterPosInMap.y && std::abs(playerPosInMap.x - monsterPosInMap.x) <= monster->getAttackRange())
         return true;
     return false;
-}
-void VoxelExplorer::attackedByMonster(BaseMonster* monster)
-{
-    if(m_pPlayer == nullptr || m_pPlayer->getState() == Player::PS_DEATH)
-        return;
 }
 bool VoxelExplorer::trackToPlayer(BaseMonster* monster, cocos2d::Vec2& nextPos)
 {
@@ -334,8 +328,11 @@ void VoxelExplorer::handleMonsterHurt(const cocos2d::Vec2& mapPos)
 }
 void VoxelExplorer::handlePlayerHurt(const cocos2d::Vec2& mapPos, MonsterProperty* monsterProperty)
 {
-    if(!m_pPlayer || m_pPlayer->getPosInMap() != mapPos)
+    if(!m_pPlayer || !monsterProperty ||m_pPlayer->getState() == Player::PS_DEATH)
         return;
+    
+    if(m_pPlayer->getPosInMap() != mapPos)
+    {}
 }
 bool VoxelExplorer::createLayers()
 {
@@ -467,6 +464,7 @@ bool VoxelExplorer::createPlayer()
     cocos2d::Size size = m_pPlayer->getContentSize();
     m_pPlayer->setPosition3D(Vec3(m_pCurrentLevel->getSpawnPoint().x, -0.5f*TerrainTile::CONTENT_SCALE, -m_pCurrentLevel->getSpawnPoint().y));
     m_pPlayer->setRotation3D(Vec3(0,90,0));
+    m_pPlayer->updateTerrainTileFlag(TileInfo::PASSABLE | TileInfo::ATTACKABLE);
     m_p3DLayer->addChild(m_pPlayer);
     
     m_pMainCamera->setPosition3D(m_pPlayer->getPosition3D() + Vec3(0, 5*TerrainTile::CONTENT_SCALE, 4*TerrainTile::CONTENT_SCALE ));

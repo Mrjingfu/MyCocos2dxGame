@@ -130,6 +130,10 @@ protected:
     
     virtual void onEnterDeath();
     virtual void onExitDeath();
+    
+    virtual void setActorDir( ActorDir dir );
+private:
+    void onLand();
 protected:
     MonsterType         m_Type;
     MonsterState        m_State;

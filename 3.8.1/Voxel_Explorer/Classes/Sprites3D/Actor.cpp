@@ -46,6 +46,11 @@ void Actor::updateTerrainTileFlag(int flag)
     if(VoxelExplorer::getInstance()->getCurrentLevel())
         VoxelExplorer::getInstance()->getCurrentLevel()->setTerrainTileFlag(getPosInMap().x, getPosInMap().y, flag);
 }
+void Actor::updateTerrainTileFlagByPos(int flag, const cocos2d::Vec2& pos)
+{
+    if(VoxelExplorer::getInstance()->getCurrentLevel())
+        VoxelExplorer::getInstance()->getCurrentLevel()->setTerrainTileFlag(pos.x, pos.y, flag);
+}
 void Actor::setVisited(bool visited)
 {
     setVisible(visited);
