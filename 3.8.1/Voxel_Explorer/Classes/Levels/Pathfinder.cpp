@@ -35,9 +35,10 @@ bool Pathfinder::init(int width, int height)
         m_Distance.resize(m_nSize);
         m_Goals.resize(m_nSize);
         m_Queue.resize(m_nSize);
-        
-        m_Dir = {-1, +1, -width, +width, -width-1, -width+1, +width-1, +width+1};
-        
+        ///允许斜跳
+        //m_Dir = {-1, +1, -width, +width, -width-1, -width+1, +width-1, +width+1};
+        ///不允许斜跳
+        m_Dir = {-1, +1, -width, +width};
         return true;
     }
     return false;

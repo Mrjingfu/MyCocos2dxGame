@@ -34,6 +34,7 @@ public:
     virtual void setActorDir( ActorDir dir );
     
     virtual void updateTerrainTileFlag(int flag);
+    virtual void updateTerrainTileFlagByPos(int flag, const cocos2d::Vec2& pos);
     
     virtual void setVisited(bool visited);
 protected:

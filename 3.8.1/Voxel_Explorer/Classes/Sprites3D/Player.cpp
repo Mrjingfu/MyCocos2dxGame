@@ -39,6 +39,8 @@ void Player::onEnter()
 {
     Actor::onEnter();
     scheduleUpdate();
+    int flag = TileInfo::PASSABLE | TileInfo::ATTACKABLE;
+    updateTerrainTileFlag(flag);
 }
 void Player::onExit()
 {
@@ -111,7 +113,7 @@ void Player::setState(PlayerState state)
             break;
     }
 }
-void Player::setStealTh(bool stealth)
+void Player::setStealth(bool stealth)
 {
     if(m_bStealth != stealth)
     {
@@ -204,6 +206,10 @@ void Player::onEnterJumpMove()
         default:
             break;
     }
+    Vec3 playerNextPos = getPosition3D() + dir;
+    Vec2 nextPosInMap = Vec2((int)(playerNextPos.x/TerrainTile::CONTENT_SCALE), (int)(-playerNextPos.z /TerrainTile::CONTENT_SCALE));
+    this->updateTerrainTileFlag(TileInfo::PASSABLE);
+    this->updateTerrainTileFlagByPos(TileInfo::PASSABLE | TileInfo::ATTACKABLE, nextPosInMap);
     ScaleTo* scaleTo = ScaleTo::create(0.1f, 1.0f, 1.0f, 1.0f);
     EaseSineOut* moveUp = EaseSineOut::create(MoveTo::create(0.1f, Vec3(getPositionX(), getPositionY() + TerrainTile::CONTENT_SCALE*0.5f, getPositionZ()) + dir));
     EaseSineOut* moveDown = EaseSineOut::create(MoveTo::create(0.1f, Vec3(getPositionX(), getPositionY(), getPositionZ()) + dir));
@@ -278,8 +284,6 @@ void Player::onLand()
     VoxelExplorer::getInstance()->cameraTrackPlayer();
     VoxelExplorer::getInstance()->checkPickItem();
     VoxelExplorer::getInstance()->checkUpdateFogOfWar();
-    
-    VoxelExplorer::getInstance()->addExplosion(getPosition3D());
     
     CCLOG("player x = %d   y = %d", (int)getPosInMap().x, (int)getPosInMap().y);
 }

@@ -74,10 +74,10 @@ BaseMonster::BaseMonster()
     
     m_pHurtData = new (std::nothrow) HurtData();
     
-    m_nFOV = 5;
+    m_nFOV = 4;
     m_nAttackRange = 1;
     m_fConfusingTimer = 3.0f;
-    m_fFirstTrackingTimer = 1.0f;
+    m_fFirstTrackingTimer = cocos2d::random(1.0f, 1.5f);
     
     m_pMonsterProperty = new (std::nothrow) MonsterProperty();
     if(m_pMonsterProperty)
@@ -157,6 +157,9 @@ void BaseMonster::setState(MonsterState state)
 {
     if(m_State == state)
         return;
+    if(m_State == MS_DEATH && state != MS_SLEEPING)
+        return;
+        
     switch (m_State) {
         case MS_SLEEPING:
             onExitSleeping();
@@ -303,7 +306,7 @@ void BaseMonster::onEnterTracking()
         unsigned int lightmask = getLightMask();
         lightmask = lightmask | (unsigned int)LightFlag::LIGHT2;
         setLightMask(lightmask);
-        m_fFirstTrackingTimer = 1.0f;
+        m_fFirstTrackingTimer = cocos2d::random(1.0f, 1.5f);
     }
 }
 void BaseMonster::onExitTracking()
@@ -341,6 +344,49 @@ void BaseMonster::onEnterMoving()
         {
             CCLOG("monster posx = %f, posy = %f", getPosInMap().x, getPosInMap().y);
             CCLOG("monster track posx = %f, posy = %f", next.x, next.y);
+            
+            Vec2 vd = next - getPosInMap();
+            if(std::abs(vd.x) > std::abs(vd.y))
+            {
+                if(next.x > getPosInMap().x)
+                    setActorDir(AD_RIGHT);
+                else
+                    setActorDir(AD_LEFT);
+            }
+            else
+            {
+                if(next.y > getPosInMap().y)
+                    setActorDir(AD_FORWARD);
+                else
+                    setActorDir(AD_BACK);
+            }
+            this->updateTerrainTileFlag(TileInfo::PASSABLE);
+            this->updateTerrainTileFlagByPos(TileInfo::PASSABLE | TileInfo::ATTACKABLE, next);
+            Vec3 oriScale = Vec3(getScaleX(), getScaleY(), getScaleZ());
+            if(m_bJumpMove)
+            {
+                ScaleTo* scaleTo1 = ScaleTo::create(0.1f, oriScale.x, oriScale.y*0.8f, oriScale.z);
+                ScaleTo* scaleTo2 = ScaleTo::create(0.1f, oriScale.x, oriScale.y, oriScale.z);
+                EaseSineOut* moveUp = EaseSineOut::create(MoveTo::create(0.1f, Vec3((next.x + getPosInMap().x)*TerrainTile::CONTENT_SCALE*0.5f, getPositionY() + TerrainTile::CONTENT_SCALE*0.5f, -(next.y + getPosInMap().y)*TerrainTile::CONTENT_SCALE*0.5f)));
+                EaseSineOut* moveDown = EaseSineOut::create(MoveTo::create(0.1f, Vec3(next.x*TerrainTile::CONTENT_SCALE, getPositionY(), -next.y*TerrainTile::CONTENT_SCALE)));
+                Sequence* sequenceJump = Sequence::create(moveUp, moveDown, NULL);
+                Spawn* spawn = Spawn::create(scaleTo2, sequenceJump, NULL);
+                DelayTime* delay = DelayTime::create(0.3f);
+                CallFunc* callback = CallFunc::create(CC_CALLBACK_0(BaseMonster::onLand,this));
+                Sequence* sequence = Sequence::create(scaleTo1, spawn, delay, callback, NULL);
+                this->runAction(sequence);
+            }
+            else
+            {
+                ScaleTo* scaleTo1 = ScaleTo::create(0.25f, oriScale.x, oriScale.y, oriScale.z*0.8f);
+                ScaleTo* scaleTo2 = ScaleTo::create(0.25f, oriScale.x, oriScale.y, oriScale.z);
+                EaseBackIn* move = EaseBackIn::create(MoveTo::create(0.5f, Vec3(next.x*TerrainTile::CONTENT_SCALE, getPositionY(), -next.y*TerrainTile::CONTENT_SCALE)));
+                Sequence* sequenceScale = Sequence::create(scaleTo1, scaleTo2, NULL);
+                Spawn* spawn = Spawn::create(move, sequenceScale, NULL);
+                CallFunc* callback = CallFunc::create(CC_CALLBACK_0(BaseMonster::onLand,this));
+                Sequence* sequence = Sequence::create(spawn, callback, NULL);
+                this->runAction(sequence);
+            }
         }
         else
             setState(MS_TRACKING);
@@ -351,7 +397,62 @@ void BaseMonster::onExitMoving()
 }
 void BaseMonster::onEnterAttack()
 {
-    VoxelExplorer::getInstance()->attackedByMonster(this);
+    Vec3 dir = Vec3::ZERO;
+    Vec2 playerPos = VoxelExplorer::getInstance()->getPlayer()->getPosInMap();
+    Vec2 vd = playerPos - getPosInMap();
+    if(std::abs(vd.x) > std::abs(vd.y))
+    {
+        if(playerPos.x > getPosInMap().x)
+        {
+            dir = Vec3(TerrainTile::CONTENT_SCALE, 0, 0);
+            setActorDir(AD_RIGHT);
+        }
+        else
+        {
+            dir = Vec3(-TerrainTile::CONTENT_SCALE, 0, 0);
+            setActorDir(AD_LEFT);
+        }
+    }
+    else
+    {
+        if(playerPos.y > getPosInMap().y)
+        {
+            dir = Vec3(0, 0, -TerrainTile::CONTENT_SCALE);
+            setActorDir(AD_FORWARD);
+        }
+        else
+        {
+            dir = Vec3(0, 0, TerrainTile::CONTENT_SCALE);
+            setActorDir(AD_BACK);
+        }
+    }
+
+    if(m_bJumpMove)
+    {
+        EaseSineOut* moveUp = EaseSineOut::create(MoveTo::create(0.1f, Vec3(getPositionX(), getPositionY() + TerrainTile::CONTENT_SCALE*0.25f, getPositionZ()) + dir*0.4f));
+        CallFunc* callback = CallFunc::create(CC_CALLBACK_0(VoxelExplorer::handlePlayerHurt,VoxelExplorer::getInstance(),playerPos, m_pMonsterProperty));
+        EaseSineOut* moveDown = EaseSineOut::create(MoveTo::create(0.1f, getPosition3D()));
+        Sequence* sequenceJump = Sequence::create(moveUp, callback, moveDown, NULL);
+        CallFunc* callback2 = CallFunc::create(CC_CALLBACK_0(BaseMonster::setState,this, MS_TRACKING));
+        DelayTime* delay = DelayTime::create(0.7f);
+        Sequence* sequence = Sequence::create(sequenceJump, delay, callback2, NULL);
+        this->runAction(sequence);
+    }
+    else
+    {
+        Vec3 oriScale = Vec3(getScaleX(), getScaleY(), getScaleZ());
+        ScaleTo* scaleTo1 = ScaleTo::create(0.5f, oriScale.x, oriScale.y, oriScale.z*0.8f);
+        ScaleTo* scaleTo2 = ScaleTo::create(0.5f, oriScale.x, oriScale.y, oriScale.z);
+        CallFunc* callback = CallFunc::create(CC_CALLBACK_0(VoxelExplorer::handlePlayerHurt,VoxelExplorer::getInstance(),playerPos, m_pMonsterProperty));
+        EaseBackIn* moveTo1 = EaseBackIn::create(MoveTo::create(0.5f, getPosition3D() + dir*0.4f));
+        EaseBackIn* moveTo2 = EaseBackIn::create(MoveTo::create(0.5f, getPosition3D()));
+        Sequence* sequenceScale = Sequence::create(scaleTo1, scaleTo2, NULL);
+        Sequence* sequenceMove = Sequence::create(moveTo1, callback, moveTo2, NULL);
+        Spawn* spawn = Spawn::create(sequenceMove, sequenceScale, NULL);
+        CallFunc* callback2 = CallFunc::create(CC_CALLBACK_0(BaseMonster::setState,this,MS_TRACKING));
+        Sequence* sequence = Sequence::create(spawn, callback2, NULL);
+        this->runAction(sequence);
+    }
 }
 void BaseMonster::onExitAttack()
 {
@@ -359,8 +460,41 @@ void BaseMonster::onExitAttack()
 
 void BaseMonster::onEnterDeath()
 {
+    this->stopAllActions();
+    updateTerrainTileFlag(TileInfo::PASSABLE);
+    this->setVisible(false);
     VoxelExplorer::getInstance()->addExplosion(getPosition3D());
+    
 }
 void BaseMonster::onExitDeath()
 {
+}
+void BaseMonster::setActorDir( ActorDir dir )
+{
+    if(m_dir == dir)
+        return;
+    m_dir = dir;
+    EaseSineOut* rotateTo = nullptr;
+    switch (m_dir) {
+        case AD_FORWARD:
+            rotateTo = EaseSineOut::create(RotateTo::create(0.2f, Vec3(0,180,0)));
+            break;
+        case AD_LEFT:
+            rotateTo = EaseSineOut::create(RotateTo::create(0.2f, Vec3(0,-90,0)));
+            break;
+        case AD_RIGHT:
+            rotateTo = EaseSineOut::create(RotateTo::create(0.2f, Vec3(0,90,0)));
+            break;
+        case AD_BACK:
+            rotateTo = EaseSineOut::create(RotateTo::create(0.2f, Vec3(0,0,0)));
+            break;
+        default:
+            break;
+    }
+    this->runAction(rotateTo);
+}
+void BaseMonster::onLand()
+{
+    CCLOG("monster onland pos = %f,%f", getPosInMap().x, getPosInMap().y);
+    setState(MS_TRACKING);
 }

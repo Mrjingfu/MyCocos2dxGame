@@ -36,7 +36,7 @@ public:
     void setState(PlayerState state);
     
     bool isStealth() const { return m_bStealth; }
-    void setStealTh(bool stealth);
+    void setStealth(bool stealth);
     
     virtual void rotateToLeft();
     virtual void rotateToRight();

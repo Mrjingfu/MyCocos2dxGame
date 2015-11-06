@@ -28,9 +28,11 @@ StandardMonster* StandardMonster::create(BaseMonster::MonsterType type)
                 break;
             case MT_BAT:
                 monster->setScale(0.8f);
+                monster->setPositionY(TerrainTile::CONTENT_SCALE*0.25f);
                 monster->m_bJumpMove = false;
                 break;
             case MT_SNAKE:
+                monster->setScale(0.8f);
                 monster->m_bJumpMove = false;
                 break;
             case MT_SPIDER:

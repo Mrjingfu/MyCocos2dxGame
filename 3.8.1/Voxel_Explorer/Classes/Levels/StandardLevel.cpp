@@ -316,7 +316,7 @@ void StandardLevel::assignAreasType()
     float percentStandard = 0.6f;
     float percentTunnel = 0.05f;
     float percentPassage = 1.0 - percentStandard - percentTunnel;
-    AlisaMethod* am = AlisaMethod::create(percentStandard,percentPassage,percentTunnel,-1.0, NULL);
+    AlisaMethod* am = AlisaMethod::create(percentStandard,percentTunnel,percentPassage,-1.0, NULL);
     if(am)
         m_Style = (LevelStyle)am->getRandomIndex();
     
@@ -336,13 +336,13 @@ void StandardLevel::assignAreasType()
                     m_nStandardAreaCount++;
                 } else {
                     switch (m_Style) {
-                        case LS_TUNNEL:
-                            area->setAreaType(Area::AT_TUNNEL);
-                            m_nTunnelAreaCount++;
-                            break;
                         case LS_STANDARD:
                             area->setAreaType(Area::AT_STANDARD);
                             m_nStandardAreaCount++;
+                            break;
+                        case LS_TUNNEL:
+                            area->setAreaType(Area::AT_TUNNEL);
+                            m_nTunnelAreaCount++;
                             break;
                         case LS_PASSAGE:
                             area->setAreaType(Area::AT_PASSAGE);
