@@ -30,6 +30,7 @@ GameUILayer::GameUILayer()
     m_pRoleMaxMp        = nullptr;
     m_pRoleExpBar       = nullptr;
     m_pRoleLevel        = nullptr;
+    m_pRoleName         = nullptr;
     
     m_pMonsterLayout    = nullptr;
     m_pMonsterCurHp     = nullptr;
@@ -38,10 +39,16 @@ GameUILayer::GameUILayer()
     m_pMonsterName      = nullptr;
     m_pMonsterHpBar     = nullptr;
     m_pMonsterBtn       = nullptr;
+    m_pMonsterMpBar     = nullptr;
+    m_pMonsterCurMp     = nullptr;
+    m_pMonsterMaxMp     = nullptr;
     
     m_pGameMapBtn       = nullptr;
     m_pGameMsgBtn       = nullptr;
     m_pGameSearchBtn    = nullptr;
+    m_pGameGoldNum      = nullptr;
+    m_pGameSilverNum    = nullptr;
+    m_pGameCopperNum    = nullptr;
     
     for (int i = 1 ; i<9; i++) {
         m_pRoleBuffers[i] = nullptr;
@@ -60,10 +67,15 @@ GameUILayer::~GameUILayer()
 
 bool GameUILayer::addEvents()
 {
-      
+    //角色
     m_pRoleBtn = dynamic_cast<ui::ImageView*>(UtilityHelper::seekNodeByName(m_pRootNode, "btn_role"));
     if (!m_pRoleBtn)
         return false;
+    
+    m_pRoleName =dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "role_name"));
+    if (!m_pRoleName)
+        return false;
+
      m_pRoleHpBar = dynamic_cast<ui::LoadingBar*>(UtilityHelper::seekNodeByName(m_pRootNode, "progress_role_blood"));
     if (!m_pRoleHpBar)
         return false;
@@ -88,11 +100,9 @@ bool GameUILayer::addEvents()
     if(!m_pRoleMaxMp)
         return false;
 
-    
     m_pRoleExpBar = dynamic_cast<ui::LoadingBar*>(UtilityHelper::seekNodeByName(m_pRootNode, "progress_role_exp"));
     if(!m_pRoleExpBar)
         return false;
-
     
     m_pRoleLevel = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "role_lv_num"));
     if (!m_pRoleLevel)
@@ -106,7 +116,7 @@ bool GameUILayer::addEvents()
         m_pRoleBuffers[i]->setVisible(false);
     }
     
-    
+    //怪物
     m_pMonsterLayout =  dynamic_cast<ui::Layout*>(UtilityHelper::seekNodeByName(m_pRootNode, "Panel_monster"));
     if (!m_pMonsterLayout)
         return false;
@@ -138,6 +148,17 @@ bool GameUILayer::addEvents()
     if (!m_pMonsterLevel)
         return false;
    
+    m_pMonsterMpBar = dynamic_cast<ui::LoadingBar*>(UtilityHelper::seekNodeByName(m_pRootNode, "progress_monster_margic"));
+    if (!m_pMonsterMpBar)
+        return false;
+    
+    m_pMonsterCurMp = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "progress_monster_margic_num"));
+    if (!m_pMonsterCurMp)
+        return false;
+    
+    m_pMonsterMaxMp = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "progress_monster_margic_maxnum"));
+    if (!m_pMonsterMaxMp)
+        return false;
     
     for (int i=1 ; i<9; i++)
     {
@@ -147,6 +168,7 @@ bool GameUILayer::addEvents()
         m_pMonsterBuffers[i]->setVisible(false);
     }
 
+    //游戏
     m_pGameMsgBtn = dynamic_cast<ui::ImageView*>(UtilityHelper::seekNodeByName(m_pRootNode, "game_btn_msg"));
     if (!m_pGameMsgBtn)
         return false;
@@ -155,6 +177,16 @@ bool GameUILayer::addEvents()
         return false;
     m_pGameSearchBtn = dynamic_cast<ui::ImageView*>(UtilityHelper::seekNodeByName(m_pRootNode, "game_btn_search"));
     if (!m_pGameSearchBtn)
+        return false;
+    
+    m_pGameGoldNum   = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "game_gold_num"));
+    if (!m_pGameGoldNum)
+        return false;
+    m_pGameSilverNum    = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "game_silver_num"));
+    if (!m_pGameSilverNum)
+        return false;
+    m_pGameCopperNum    = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "game_copper_num"));
+    if (!m_pGameCopperNum)
         return false;
     
     m_pMsgFrame = dynamic_cast<ui::ImageView*>(UtilityHelper::seekNodeByName(m_pRootNode, "game_msg_frame"));
@@ -171,6 +203,9 @@ bool GameUILayer::addEvents()
     m_pListMsgs->setContentSize(cocos2d::Size(m_pMsgFrame->getContentSize().width*0.95,m_pMsgFrame->getContentSize().height*0.9));
     m_pListMsgs->setPosition(m_pMsgFrame->getContentSize()*0.5);
     m_pMsgFrame->addChild(m_pListMsgs);
+    NoteUi* noteui = NoteUi::create();
+    noteui->setMsg(UtilityHelper::getLocalStringForUi("GAME_NOT_MESSAGE"));
+    m_pListMsgs->pushBackCustomItem(noteui);
     m_pMsgFrame->setVisible(false);
     
     m_pGameMapBtn->setTouchEnabled(true);
@@ -229,22 +264,26 @@ void GameUILayer::onEvenetMonsterDead(cocos2d::EventCustom *sender)
 void GameUILayer::onEventMonsterHud(cocos2d::EventCustom *sender)
 {
     HurtData* hurData = static_cast<HurtData*>(sender->getUserData());
-     Vec2 pt = VoxelExplorer::getInstance()->getMainCamera()->projectGL(hurData->m_vPos);
+    Vec2 pt = VoxelExplorer::getInstance()->getMainCamera()->projectGL(hurData->m_vPos);
+    pt = Vec2(pt.x, pt.y+TerrainTile::CONTENT_SCALE*2.5);
+
+//    PopupUILayerManager::getInstance()->showPromptSign(TIP_QUESTION, pt);
+
     if (hurData->m_bDodge) {
        
-        PopupUILayerManager::getInstance()->showStatus(TIP_DODGE, Vec2(pt.x, pt.y+TerrainTile::CONTENT_SCALE*2.5), StringUtils::format(UtilityHelper::getLocalStringForUi("STATUS_TEXT_DODGE").c_str(),hurData->m_nDamage));
+        PopupUILayerManager::getInstance()->showStatus(TIP_DODGE,  StringUtils::format(UtilityHelper::getLocalStringForUi("STATUS_TEXT_DODGE").c_str(),hurData->m_nDamage),pt);
         CCLOG("monster 闪避");
     }else {
         if((hurData->m_bBlocked && hurData->m_bCriticalStrike) || hurData->m_bBlocked)
         {
-            PopupUILayerManager::getInstance()->showStatus(TIP_BOLOCK, Vec2(pt.x, pt.y+TerrainTile::CONTENT_SCALE*2.5), StringUtils::format(UtilityHelper::getLocalStringForUi("STATUS_TEXT_BOLOCK").c_str(),hurData->m_nDamage));
+            PopupUILayerManager::getInstance()->showStatus(TIP_BOLOCK, StringUtils::format(UtilityHelper::getLocalStringForUi("STATUS_TEXT_BOLOCK").c_str(),hurData->m_nDamage),pt);
             CCLOG("monster 格挡");
         }else if (hurData->m_bCriticalStrike)
         {
-            PopupUILayerManager::getInstance()->showStatus(TIP_CRITICAL_STRIKE, Vec2(pt.x, pt.y+TerrainTile::CONTENT_SCALE*2.5),StringUtils::format(UtilityHelper::getLocalStringForUi("STATUS_TEXT_CRITICAL_STRIKE").c_str(),hurData->m_nDamage));
+            PopupUILayerManager::getInstance()->showStatus(TIP_CRITICAL_STRIKE, StringUtils::format(UtilityHelper::getLocalStringForUi("STATUS_TEXT_CRITICAL_STRIKE").c_str(),hurData->m_nDamage),pt);
              CCLOG("monster 暴击");
         }else{
-            PopupUILayerManager::getInstance()->showStatus(TIP_NEGATIVE, Vec2(pt.x, pt.y+TerrainTile::CONTENT_SCALE*2.5), Value(hurData->m_nDamage).asString());
+            PopupUILayerManager::getInstance()->showStatus(TIP_NEGATIVE, Value(hurData->m_nDamage).asString(),pt);
             CCLOG("pt x:%f y%f",pt.x,pt.y);
         }
 
@@ -262,10 +301,19 @@ void GameUILayer::onEventUpdateMonsterProp(cocos2d::EventCustom *sender)
         m_pMonsterCurHp->setString(StringUtils::format("%d",int(monster->getMonsterProperty()->getCurrentHP())));
         m_pMonsterMaxHp->setString(StringUtils::format("%d",int(monster->getMonsterProperty()->getMaxHP())));
         m_pMonsterLevel->setString(StringUtils::format("%d",int(monster->getMonsterProperty()->getLevel())));
-        m_pMonsterName->setString(monster->getName());
+        m_pMonsterName->setString(UtilityHelper::getLocalString(MONSTER_MODEL_NAMES[monster->getMonsterType()]));
     }
 }
-
+void GameUILayer::onEvenetMsg(cocos2d::EventCustom *sender)
+{
+    NoteUi* noteui = NoteUi::create();
+    noteui->setMsg(UtilityHelper::getLocalStringForUi("STATUS_TEXT_DODGE"),UtilityHelper::randomColor());
+    m_pListMsgs->pushBackCustomItem(noteui);
+    CCLOG("m_pListMsgs innerSize height:%f contentSize:%f",m_pListMsgs->getInnerContainerSize().height,m_pListMsgs->getContentSize().height);
+    if ( m_pListMsgs->getItems().size()*noteui->getContentSize().height > m_pListMsgs->getContentSize().height) {
+        m_pListMsgs->scrollToBottom(0.5,false);
+    }
+}
 void GameUILayer::onEnter()
 {
     WrapperUILayer::onEnter();
@@ -298,6 +346,7 @@ void GameUILayer::updateRoleUi()
     m_pRoleHpBar->setPercent(hpPer);
     float mpPer =PlayerProperty::getInstance()->getCurrentMp().GetFloatValue()/PlayerProperty::getInstance()->getMaxMp().GetFloatValue() *100.0f;
     m_pRoleMpBar->setPercent(mpPer);
+//    m_pRoleName->setString("")角色名
     m_pRoleCurHp->setString(Value(int(PlayerProperty::getInstance()->getCurrentHp())).asString());
     m_pRoleMaxHp->setString(Value(int(PlayerProperty::getInstance()->getMaxHp())).asString());
     m_pRoleCurMp->setString(Value(int(PlayerProperty::getInstance()->getCurrentHp())).asString());
@@ -345,12 +394,14 @@ void GameUILayer::onClickSearch(cocos2d::Ref *ref)
 {
     CHECK_ACTION(ref);
     CCLOG("onClickSearch");
-    NoteUi* noteui = NoteUi::create();
-    noteui->setMsg(UtilityHelper::getLocalStringForUi("STATUS_TEXT_DODGE"),UtilityHelper::randomColor());
-    m_pListMsgs->pushBackCustomItem(noteui);
-    CCLOG("m_pListMsgs innerSize height:%f contentSize:%f",m_pListMsgs->getInnerContainerSize().height,m_pListMsgs->getContentSize().height);
-    if ( m_pListMsgs->getItems().size()*noteui->getContentSize().height > m_pListMsgs->getContentSize().height) {
-         m_pListMsgs->scrollToBottom(0.5,false);
-    }
+    PopupUILayerManager::getInstance()->showStatusImport(TIP_DEFAULT, "升级了！ 调调调");
+    
+//    NoteUi* noteui = NoteUi::create();
+//    noteui->setMsg(UtilityHelper::getLocalStringForUi("STATUS_TEXT_DODGE"),UtilityHelper::randomColor());
+//    m_pListMsgs->pushBackCustomItem(noteui);
+//    CCLOG("m_pListMsgs innerSize height:%f contentSize:%f",m_pListMsgs->getInnerContainerSize().height,m_pListMsgs->getContentSize().height);
+//    if ( m_pListMsgs->getItems().size()*noteui->getContentSize().height > m_pListMsgs->getContentSize().height) {
+//         m_pListMsgs->scrollToBottom(0.5,false);
+//    }
    
 }

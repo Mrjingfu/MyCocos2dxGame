@@ -26,6 +26,7 @@ typedef enum {
     TIP_NEUTRAL,
     TIP_DODGE,
     TIP_BOLOCK,
-    TIP_CRITICAL_STRIKE
+    TIP_CRITICAL_STRIKE,
+    TIP_QUESTION
 }TipTypes;
 #endif

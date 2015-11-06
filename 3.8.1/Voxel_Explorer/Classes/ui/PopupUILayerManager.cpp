@@ -153,47 +153,85 @@ bool PopupUILayerManager::isOpenPopup(ePopupType type, PopupUILayer *&pLayer)
     }
     return false;
 }
-void PopupUILayerManager::showStatus(TipTypes tipType, cocos2d::Vec2 pos, std::string text)
+void PopupUILayerManager::showPromptSign(TipTypes tipType, cocos2d::Vec2 pos)
 {
-    Label* m_pLabel = cocos2d::Label::createWithSystemFont(text,UtilityHelper::getLocalString("FONT_NAME"),36);
-    m_pLabel->setScale(0.4);
-    m_pLabel->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
-    m_pParentLayer->addChild(m_pLabel);
-    m_pLabel->setPosition(pos);
+    std::string tipFile;
+    switch (tipType) {
+        case TIP_QUESTION:
+            tipFile ="ui_msg_icon.png";
+            break;
+        default:
+            break;
+    }
+    cocos2d::ui::ImageView* m_pPromptImg = cocos2d::ui::ImageView::create(tipFile,TextureResType::PLIST);
+    m_pPromptImg->setCameraMask((unsigned int)CameraFlag::USER2);
+    m_pParentLayer->addChild(m_pPromptImg);
+    m_pPromptImg->setPosition(pos);
+    cocos2d::ScaleTo* scaleToStart = cocos2d::ScaleTo::create(0.3, 1.2);
+    cocos2d::ScaleTo* scaleToEnd = cocos2d::ScaleTo::create(0.3, 0.8);
+
+    m_pPromptImg->runAction(cocos2d::Sequence::create(scaleToStart,scaleToEnd,RemoveSelf::create(), nil));
+}
+cocos2d::Color3B PopupUILayerManager::getTipsColor(TipTypes tipType)
+{
     switch (tipType) {
         case TIP_DEFAULT:
-            m_pLabel->setTextColor(cocos2d::Color4B(cocos2d::Color3B(255,255,255)));
+            return cocos2d::Color3B(255,255,255);
             break;
         case TIP_POSITIVE:
-            m_pLabel->setTextColor(cocos2d::Color4B(cocos2d::Color3B(0,255,0)));
+            return cocos2d::Color3B(0,255,0);
             break;
         case TIP_NEGATIVE:
         case TIP_DODGE:
         case TIP_BOLOCK:
         case TIP_CRITICAL_STRIKE:
-            m_pLabel->setTextColor(cocos2d::Color4B(cocos2d::Color3B(255,0,0)));
+            return cocos2d::Color3B(255,0,0);
             break;
         case TIP_WARNING:
-            m_pLabel->setTextColor(cocos2d::Color4B(cocos2d::Color3B(255,136,0)));
+            return cocos2d::Color3B(255,136,0);
             break;
         case TIP_NEUTRAL:
-            m_pLabel->setTextColor(cocos2d::Color4B(cocos2d::Color3B(255,255,0)));
+            return cocos2d::Color3B(255,255,0);
             break;
         default:
             break;
     }
+    return cocos2d::Color3B(255,255,255);
+}
+void PopupUILayerManager::showStatusImport(TipTypes tipType, std::string text)
+{
+    Label* m_pLabel = cocos2d::Label::createWithTTF(text,UtilityHelper::getLocalString("FONT_NAME"),36);
+//    m_pLabel->setScale(0.6);
+    m_pLabel->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
+    m_pParentLayer->addChild(m_pLabel);
+    m_pLabel->setPosition(Vec2(WND_CENTER_X,SCREEN_HEIGHT*0.65));
+    m_pLabel->setTextColor(cocos2d::Color4B(getTipsColor(tipType)));
+    m_pLabel->enableOutline(cocos2d::Color4B::BLUE,1);
+    cocos2d::MoveTo*  moveTo = cocos2d::MoveTo::create(0.5,Vec2(WND_CENTER_X,SCREEN_HEIGHT*0.7));
+    cocos2d::DelayTime* delay = cocos2d::DelayTime::create(0.8);
+    m_pLabel->runAction(cocos2d::Sequence::create(moveTo,delay,RemoveSelf::create(), nil));
+
+    
+}
+void PopupUILayerManager::showStatus(TipTypes tipType,  std::string text,cocos2d::Vec2 pos)
+{
+    Label* m_pLabel = cocos2d::Label::createWithTTF(text,UtilityHelper::getLocalString("FONT_NAME"),36);
+    m_pLabel->setScale(0.4);
+    m_pLabel->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
+    m_pParentLayer->addChild(m_pLabel);
+    m_pLabel->setPosition(pos);
+    m_pLabel->setTextColor(cocos2d::Color4B(getTipsColor(tipType)));
     if (tipType != TIP_CRITICAL_STRIKE ) {
-        cocos2d::ScaleTo* ScaleTo1 = cocos2d::ScaleTo::create(0.8, 0.8);
-        cocos2d::MoveBy* moveBy = cocos2d::MoveBy::create(0.8, cocos2d::Vec2(0,30.0f));
+        cocos2d::ScaleTo* ScaleTo1 = cocos2d::ScaleTo::create(0.3, 0.8);
+        cocos2d::MoveBy* moveBy = cocos2d::MoveBy::create(0.3, cocos2d::Vec2(0,30.0f));
         cocos2d::FadeOut* fadeOut = cocos2d::FadeOut::create(0.2);
-        cocos2d::CallFunc* delFunc = cocos2d::CallFunc::create(CC_CALLBACK_0(RemoveSelf::create, this));
-        m_pLabel->runAction(cocos2d::Sequence::create(cocos2d::Spawn::createWithTwoActions(moveBy, ScaleTo1),fadeOut,delFunc, nil));
+
+        m_pLabel->runAction(cocos2d::Sequence::create(cocos2d::Spawn::createWithTwoActions(moveBy, ScaleTo1),fadeOut,RemoveSelf::create(), nil));
     }else
     {
-        cocos2d::MoveBy* moveBy = cocos2d::MoveBy::create(0.8, cocos2d::Vec2(0,30.0f));
+        cocos2d::MoveBy* moveBy = cocos2d::MoveBy::create(0.5, cocos2d::Vec2(0,30.0f));
         cocos2d::FadeOut* fadeOut = cocos2d::FadeOut::create(0.2);
-        cocos2d::CallFunc* delFunc = cocos2d::CallFunc::create(CC_CALLBACK_0(RemoveSelf::create, this));
-        m_pLabel->runAction(cocos2d::Sequence::create(moveBy,fadeOut,delFunc, nil));
+        m_pLabel->runAction(cocos2d::Sequence::create(moveBy,fadeOut,RemoveSelf::create(), nil));
     }
 
 }

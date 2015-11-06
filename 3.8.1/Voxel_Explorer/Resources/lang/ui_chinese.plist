@@ -30,5 +30,7 @@
 	<string>格挡  %d</string>
 	<key>STATUS_TEXT_CRITICAL_STRIKE</key>
 	<string>暴击  %d</string>
+	<key>GAME_NOT_MESSAGE</key>
+	<string>无消息</string>
 </dict>
 </plist>
