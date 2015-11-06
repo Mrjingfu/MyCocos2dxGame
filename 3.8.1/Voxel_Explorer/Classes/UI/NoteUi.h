@@ -18,7 +18,7 @@ public:
     CREATE_FUNC(NoteUi);
     bool init() override;
     virtual ~NoteUi();
-    void setMsg(std::string msg);
+    void setMsg(std::string msg,cocos2d::Color3B fontColor = cocos2d::Color3B::WHITE);
 private:
     cocos2d::Label* m_pLabel;
 };

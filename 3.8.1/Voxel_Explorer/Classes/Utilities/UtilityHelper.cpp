@@ -38,6 +38,86 @@ std::string UtilityHelper::getLocalStringForPlist(const std::string &key, const 
     
     return ret.asString();
 }
+int UtilityHelper::getLineStr(std::string &str, int length)
+{
+    if (str.empty() ||length<=0) {
+        return 0;
+    }
+    if (str.length() < length) {
+        return 0;
+    }
+
+    std::string resultStr;
+    std::vector<std::string > str_vec;
+    std::vector<std::string > tempVec;
+ 
+    for (int i=0; i<str.length(); ) {
+        int count = getCharUtf8Count(str.at(i));
+        tempVec.push_back(str.substr(i,count));
+        i+=count;
+//        if (~(str.at(i) >> 8) == 0)
+//        {
+//            tempVec.push_back(str.substr(i,3));
+//            i+=3;
+//        }else
+//        {
+//            tempVec.push_back(str.substr(i,1));
+//            i+=1;
+//        }
+    }
+    if (tempVec.size() <=length) {
+        std::string tempStr;
+        for (int i=0; i<tempVec.size(); i++) {
+            tempStr.append(tempVec[i]);
+        }
+        str_vec.push_back(tempStr);
+    }else{
+        int tempCount = tempVec.size()/length;
+        for (int i =0; i< tempCount; i++)
+        {
+            std::string tempStr;
+            for(int j=i*length;j<length*(i+1);j++)
+            {
+                tempStr.append(tempVec[j]);
+            }
+             str_vec.push_back(tempStr);
+        }
+         std::string tempStr;
+        for (int i =length*tempCount; i< tempVec.size(); i++)
+        {
+            tempStr.append(tempVec[i]);
+        }
+        str_vec.push_back(tempStr);
+    }
+   
+    for (unsigned int i = 0;i<str_vec.size();++i)
+    {
+        resultStr.append(str_vec.at(i)).append("\n");
+    }
+        resultStr.pop_back();
+    str = resultStr;
+    return str_vec.size()-1;
+}
+int UtilityHelper::getCharUtf8Count(char ch)
+{
+    int resultsize = 1;
+    if (ch >= 0x00 && ch <= 0x7f)//说明最高位为'0'，这意味着utf8编码只有1个字节！
+    {
+        
+        resultsize = 1;
+    }
+    else if ((ch & 0xe0)== 0xc0)//只保留最高三位，看最高三位是不是110，如果是则意味着utf8编码有2个字节！
+    {
+        
+        resultsize = 2;
+    }
+    else if ((ch & (0xf0))== 0xe0)//只保留最高四位，看最高三位是不是1110，如果是则意味着utf8编码有3个字节！
+    {
+        
+        resultsize = 3;
+    }
+    return resultsize;
+}
 void UtilityHelper::getHexDigest(const unsigned char* md5, int len, std::string& hexStr)
 {
     char* hex = new char[len*2+1];

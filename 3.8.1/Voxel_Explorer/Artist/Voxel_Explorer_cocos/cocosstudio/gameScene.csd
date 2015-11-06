@@ -592,6 +592,16 @@
                 <PreSize X="1.0000" Y="0.1000" />
                 <FileData Type="PlistSubImage" Path="progress_exp_bg.png" Plist="ui_sprite.plist" />
               </AbstractNodeData>
+              <AbstractNodeData Name="game_msg_frame" ActionTag="586710686" Tag="55" IconVisible="False" PercentWidthEnable="True" PercentWidthEnabled="True" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" TopMargin="-79.8000" BottomMargin="44.8000" Scale9Enable="True" LeftEage="10" RightEage="10" TopEage="10" BottomEage="10" Scale9OriginX="10" Scale9OriginY="10" Scale9Width="12" Scale9Height="12" ctype="ImageViewObjectData">
+                <Size X="320.0000" Y="75.0000" />
+                <AnchorPoint />
+                <Position Y="44.8000" />
+                <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                <CColor A="255" R="255" G="255" B="255" />
+                <PrePosition Y="1.1200" />
+                <PreSize X="1.0000" Y="1.8750" />
+                <FileData Type="PlistSubImage" Path="ui_frame_5.png" Plist="ui_sprite.plist" />
+              </AbstractNodeData>
             </Children>
             <AnchorPoint ScaleX="0.5000" />
             <Position X="160.0000" />

@@ -11,6 +11,7 @@
 
 #include "WrapperUILayer.h"
 class HudTipUi;
+class TGridView;
 class GameUILayer:public WrapperUILayer {
     
 public:
@@ -43,7 +44,7 @@ private:
 private:
     bool _isOpenSmailMap;
     cocos2d::ui::ListView*   m_pListMsgs;
-
+    cocos2d::ui::ImageView*  m_pMsgFrame;
     
     cocos2d::ui::ImageView*  m_pRoleBtn;
     cocos2d::ui::LoadingBar* m_pRoleHpBar;
