@@ -22,7 +22,9 @@ public:
     static PopupUILayerManager* getInstance();
     
     PopupUILayer* openPopup(ePopupType type,int zorder= eZOrderPopupUILayer);
-    void showStatus(TipTypes tipType ,cocos2d::Vec2 pos,std::string text);
+    void showStatusImport(TipTypes tipType ,std::string text);
+    void showStatus(TipTypes tipType ,std::string text,cocos2d::Vec2 pos);
+    void showPromptSign(TipTypes tipType,cocos2d::Vec2 pos);
     void closeCurrentPopup();
     void onExitScene();
     void setParentLayer(cocos2d::Layer* parent);
@@ -33,8 +35,10 @@ public:
     ePopupType getCurrentPopUpType(){return m_cCurrentPopUpType;};
     void resetPopupType(ePopupType type);
     const std::list<ePopupType>& getCurrentPopupTypeList(){ return m_lTypeList; }
+    cocos2d::Color3B getTipsColor(TipTypes tipType);
 private:
     PopupUILayerManager();
+    
     PopupUILayer* initPopUp(ePopupType type);
 private:
     PopupUILayer* m_pPopupContainer[ePopupCount];

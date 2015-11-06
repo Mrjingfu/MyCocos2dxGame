@@ -30,5 +30,7 @@
 	<string>bolock %d</string>
 	<key>STATUS_TEXT_CRITICAL_STRIKE</key>
 	<string>cirtical strike %d</string>
+	<key>GAME_NOT_MESSAGE</key>
+	<string>no message</string>
 </dict>
 </plist>

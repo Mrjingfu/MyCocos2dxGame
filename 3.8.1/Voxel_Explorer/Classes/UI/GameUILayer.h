@@ -38,6 +38,8 @@ private:
     void onEventMonsterHud(cocos2d::EventCustom *sender);
     void onEvenetMonsterDead(cocos2d::EventCustom *sender);
 
+    void onEvenetMsg(cocos2d::EventCustom *sender);
+    
     
     void updateRoleUi();
     void updateMonsterUi();
@@ -55,22 +57,30 @@ private:
     cocos2d::ui::Text*       m_pRoleMaxMp;
     cocos2d::ui::LoadingBar* m_pRoleExpBar;
     cocos2d::ui::Text*       m_pRoleLevel;
+    cocos2d::ui::Text*       m_pRoleName;
     cocos2d::ui::ImageView*  m_pRoleBuffers[8];
     
     cocos2d::ui::Layout*     m_pMonsterLayout;
+    cocos2d::ui::ImageView*  m_pMonsterBtn;
+    cocos2d::ui::LoadingBar* m_pMonsterHpBar;
     cocos2d::ui::Text*       m_pMonsterCurHp;
     cocos2d::ui::Text*       m_pMonsterMaxHp;
+    cocos2d::ui::LoadingBar* m_pMonsterMpBar;
+    cocos2d::ui::Text*       m_pMonsterCurMp;
+    cocos2d::ui::Text*       m_pMonsterMaxMp;
     cocos2d::ui::Text*       m_pMonsterLevel;
     cocos2d::ui::Text*       m_pMonsterName;
-    cocos2d::ui::LoadingBar* m_pMonsterHpBar;
-    cocos2d::ui::ImageView*  m_pMonsterBtn;
-    cocos2d::Sprite*  m_pMonsterIcon;
+    cocos2d::Sprite*         m_pMonsterIcon;
     
     cocos2d::ui::ImageView*  m_pMonsterBuffers[8];
     
     cocos2d::ui::ImageView*  m_pGameMsgBtn;
     cocos2d::ui::ImageView*  m_pGameMapBtn;
     cocos2d::ui::ImageView*  m_pGameSearchBtn;
+    
+    cocos2d::ui::Text*       m_pGameGoldNum;
+    cocos2d::ui::Text*       m_pGameSilverNum;
+    cocos2d::ui::Text*       m_pGameCopperNum;
    
 };
 

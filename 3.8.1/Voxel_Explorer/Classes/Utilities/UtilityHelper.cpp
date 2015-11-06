@@ -51,7 +51,9 @@ int UtilityHelper::getLineStr(std::string &str, int length)
     std::vector<std::string > str_vec;
     std::vector<std::string > tempVec;
  
+    //1.将字符串中英文切割存放到列表
     for (int i=0; i<str.length(); ) {
+        //判断当前字符有几个字节
         int count = getCharUtf8Count(str.at(i));
         tempVec.push_back(str.substr(i,count));
         i+=count;

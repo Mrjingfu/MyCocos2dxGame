@@ -42,7 +42,8 @@ bool MenuScene::init()
     this->addChild(uiCamera);
     
     MenuUILayer* menuUiLayer = MenuUILayer::create();
-    menuUiLayer->load("menuscene.csb");
+    if(!menuUiLayer->load("menuscene.csb"))
+        return false;
     addChild(menuUiLayer);
     
     return true;

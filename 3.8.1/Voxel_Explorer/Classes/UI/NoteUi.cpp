@@ -31,7 +31,7 @@ bool NoteUi::init()
     setContentSize(cocos2d::Size(Director::getInstance()->getVisibleSize().width,20));
 
     setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
-    m_pLabel = cocos2d::Label::createWithSystemFont("",UtilityHelper::getLocalString("FONT_NAME"),36);
+    m_pLabel = cocos2d::Label::createWithTTF("",UtilityHelper::getLocalString("FONT_NAME"),36);
     m_pLabel->setScale(0.4);
     m_pLabel->setAnchorPoint(Vec2::ANCHOR_TOP_LEFT);
     m_pLabel->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
