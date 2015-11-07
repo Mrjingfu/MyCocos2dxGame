@@ -216,17 +216,13 @@ bool GameUILayer::addEvents()
     m_pGameMsgBtn->addClickEventListener(CC_CALLBACK_1(GameUILayer::onClickMsg, this));
     m_pRoleBtn->setTouchEnabled(true);
     m_pRoleBtn->addClickEventListener(CC_CALLBACK_1(GameUILayer::onClickRole, this));
-    m_pRoleHpBar->setScale9Enabled(true);
-    m_pRoleExpBar->setScale9Enabled(true);
-    m_pRoleMpBar->setScale9Enabled(true);
 
-    
+
     m_pMonsterLayout->setVisible(false);
     m_pMonsterHpBar->setPercent(100);
     m_pMonsterName->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
     
-    updateRoleUi();
-    
+    updateRoleUi(); 
     
     return true;
 }
@@ -244,11 +240,36 @@ void GameUILayer::onEventUpdateRoleProp(cocos2d::EventCustom *sender)
 
 void GameUILayer::onEventRoleDead(cocos2d::EventCustom *sender)
 {
-    
+    updateRoleUi();
 }
 void GameUILayer::onEvenetRoleHud(cocos2d::EventCustom *sender)
 {
-    CCLOG("role hud");
+    HurtData* hurData = static_cast<HurtData*>(sender->getUserData());
+    Vec2 pt = VoxelExplorer::getInstance()->getMainCamera()->projectGL(hurData->m_vPos);
+    pt = Vec2(pt.x, pt.y+TerrainTile::CONTENT_SCALE*2.5);
+    CCLOG("onEvenetRoleHud");
+    //    PopupUILayerManager::getInstance()->showPromptSign(TIP_QUESTION, pt);
+    
+    if (hurData->m_bDodge) {
+        
+        PopupUILayerManager::getInstance()->showStatus(TIP_DODGE,  StringUtils::format(UtilityHelper::getLocalStringForUi("STATUS_TEXT_DODGE").c_str(),hurData->m_nDamage),pt);
+        CCLOG("monster 闪避");
+    }else {
+        if((hurData->m_bBlocked && hurData->m_bCriticalStrike) || hurData->m_bBlocked)
+        {
+            PopupUILayerManager::getInstance()->showStatus(TIP_BOLOCK, StringUtils::format(UtilityHelper::getLocalStringForUi("STATUS_TEXT_BOLOCK").c_str(),hurData->m_nDamage),pt);
+            CCLOG("monster 格挡");
+        }else if (hurData->m_bCriticalStrike)
+        {
+            PopupUILayerManager::getInstance()->showStatus(TIP_CRITICAL_STRIKE, StringUtils::format(UtilityHelper::getLocalStringForUi("STATUS_TEXT_CRITICAL_STRIKE").c_str(),hurData->m_nDamage),pt);
+            CCLOG("monster 暴击");
+        }else{
+            PopupUILayerManager::getInstance()->showStatus(TIP_NEGATIVE, Value(hurData->m_nDamage).asString(),pt);
+            CCLOG("pt x:%f y%f",pt.x,pt.y);
+        }
+        
+    }
+    
 }
 void GameUILayer::onEvenetMonsterDead(cocos2d::EventCustom *sender)
 {
@@ -271,20 +292,21 @@ void GameUILayer::onEventMonsterHud(cocos2d::EventCustom *sender)
 
     if (hurData->m_bDodge) {
        
-        PopupUILayerManager::getInstance()->showStatus(TIP_MONSTER_DODGE,  StringUtils::format(UtilityHelper::getLocalStringForUi("STATUS_TEXT_DODGE").c_str(),hurData->m_nDamage),pt);
+        PopupUILayerManager::getInstance()->showStatus(TIP_DODGE,  StringUtils::format(UtilityHelper::getLocalStringForUi("STATUS_TEXT_DODGE").c_str(),hurData->m_nDamage),pt);
         CCLOG("monster 闪避");
     }else {
         if((hurData->m_bBlocked && hurData->m_bCriticalStrike) || hurData->m_bBlocked)
         {
-            PopupUILayerManager::getInstance()->showStatus(TIP_MONSTER_BOLOCK, StringUtils::format(UtilityHelper::getLocalStringForUi("STATUS_TEXT_BOLOCK").c_str(),hurData->m_nDamage),pt);
+            PopupUILayerManager::getInstance()->showStatus(TIP_BOLOCK, StringUtils::format(UtilityHelper::getLocalStringForUi("STATUS_TEXT_BOLOCK").c_str(),hurData->m_nDamage),pt);
             CCLOG("monster 格挡");
         }else if (hurData->m_bCriticalStrike)
         {
-            PopupUILayerManager::getInstance()->showStatus(TIP_MONSTER_CRITICAL_STRIKE, StringUtils::format(UtilityHelper::getLocalStringForUi("STATUS_TEXT_CRITICAL_STRIKE").c_str(),hurData->m_nDamage),pt);
+            PopupUILayerManager::getInstance()->showStatus(TIP_CRITICAL_STRIKE, StringUtils::format(UtilityHelper::getLocalStringForUi("STATUS_TEXT_CRITICAL_STRIKE").c_str(),hurData->m_nDamage),pt);
              CCLOG("monster 暴击");
         }else{
-            PopupUILayerManager::getInstance()->showStatus(TIP_NEGATIVE, Value(hurData->m_nDamage).asString(),pt);
+            PopupUILayerManager::getInstance()->showStatus(TIP_NEUTRAL, Value(hurData->m_nDamage).asString(),pt);
             CCLOG("pt x:%f y%f",pt.x,pt.y);
+
         }
 
     }
@@ -333,11 +355,9 @@ void GameUILayer::onExit()
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_PLAYER_LEVEL_UP);
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_PLAYER_DEATH);
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_PLAYER_HURT);
-    
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_MONSTER_HURT);
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_MONSTER_PROPERTY_DIRTY);
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_MONSTER_DEATH);
-
     WrapperUILayer::onExit();
 }
 
@@ -345,9 +365,11 @@ void GameUILayer::onExit()
 void GameUILayer::updateRoleUi()
 {
     float hpPer =PlayerProperty::getInstance()->getCurrentHP().GetFloatValue()/PlayerProperty::getInstance()->getMaxHP().GetFloatValue() *100.0f;
-    m_pRoleHpBar->setPercent(hpPer);
+
     float mpPer =PlayerProperty::getInstance()->getCurrentMP().GetFloatValue()/PlayerProperty::getInstance()->getMaxMP().GetFloatValue() *100.0f;
+    CCLOG("hpPer:%f mpPer:%f",hpPer,mpPer);
     m_pRoleMpBar->setPercent(mpPer);
+    m_pRoleHpBar->setPercent(hpPer);
 //    m_pRoleName->setString("")角色名
     m_pRoleCurHp->setString(Value(int(PlayerProperty::getInstance()->getCurrentHP())).asString());
     m_pRoleMaxHp->setString(Value(int(PlayerProperty::getInstance()->getMaxHP())).asString());
@@ -396,8 +418,9 @@ void GameUILayer::onClickSearch(cocos2d::Ref *ref)
 {
     CHECK_ACTION(ref);
     CCLOG("onClickSearch");
-    PopupUILayerManager::getInstance()->showStatusImport(TIP_DEFAULT, "升级了！ 调调调");
+
     
+    PopupUILayerManager::getInstance()->showStatusImport(TIP_DEFAULT, "升级了！ 调调调");
 //    NoteUi* noteui = NoteUi::create();
 //    noteui->setMsg(UtilityHelper::getLocalStringForUi("STATUS_TEXT_DODGE"),UtilityHelper::randomColor());
 //    m_pListMsgs->pushBackCustomItem(noteui);

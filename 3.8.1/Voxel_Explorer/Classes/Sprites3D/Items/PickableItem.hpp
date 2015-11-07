@@ -183,6 +183,12 @@ public:
         PIT_CLOTH_PRO_STEELARMOR,               ///寡妇对抗者 No widow
         //PIT_CLOTH_PRO_END
         
+        //PIT_COIN_BEGIN
+        PIT_COIN_GOLD,                          //金币
+        PIT_COIN_SILVER,                        //银币
+        PIT_COIN_BRONZE,                        //铜币
+        //PIT_COIN_END
+        
         PIT_UNKNOWN
     } PickableItemType;
     

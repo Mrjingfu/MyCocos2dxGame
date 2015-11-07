@@ -73,8 +73,10 @@ private:
     void inActionRightCenter();
     void outActionRightCenter();
     
+    
 
 protected:
+    bool m_nIsPause;
     eActionType m_cActionType;
     cocos2d::LayerColor* m_pDarkLayer;
     ePopupType m_pPopupType;

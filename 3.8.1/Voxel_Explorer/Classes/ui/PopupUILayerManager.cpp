@@ -186,22 +186,13 @@ cocos2d::Color3B PopupUILayerManager::getTipsColor(TipTypes tipType)
             return cocos2d::Color3B(255,136,0);  //橘色
         case TIP_NEUTRAL:
             return cocos2d::Color3B(255,255,0);  //黄色
-        case TIP_ROLE_DEFAULT:
-            return cocos2d::Color3B(255,0,0);
-        case TIP_ROLE_DODGE:
+        case TIP_DODGE:
             return cocos2d::Color3B(255,255,0);
-        case TIP_ROLE_BOLOCK:
+        case TIP_BOLOCK:
             return cocos2d::Color3B(224,97,197); //粉色
-        case TIP_ROLE_CRITICAL_STRIKE:
-            return cocos2d::Color3B(255,255,0);
-        case TIP_MONSTER_DEFAULT:
-            return  cocos2d::Color3B(225, 188, 0);
-        case TIP_MONSTER_DODGE:
-            return cocos2d::Color3B(255,255,0);
-        case TIP_MONSTER_BOLOCK:
-            return cocos2d::Color3B(224,97,197);
-        case TIP_MONSTER_CRITICAL_STRIKE:
-            return cocos2d::Color3B(57, 61, 219);
+        case TIP_CRITICAL_STRIKE:
+            return cocos2d::Color3B(0, 128, 255);
+
         default:
             break;
     }
@@ -230,9 +221,9 @@ void PopupUILayerManager::showStatus(TipTypes tipType,  std::string text,cocos2d
     m_pParentLayer->addChild(m_pLabel);
     m_pLabel->setPosition(pos);
     m_pLabel->setTextColor(cocos2d::Color4B(getTipsColor(tipType)));
-    if (tipType == TIP_ROLE_CRITICAL_STRIKE || tipType == TIP_MONSTER_CRITICAL_STRIKE) {
-        cocos2d::ScaleTo* ScaleTo1 = cocos2d::ScaleTo::create(0.4, 0.8);
-        cocos2d::MoveBy* moveBy = cocos2d::MoveBy::create(0.4, Vec2(0, 20.0f));
+    if (tipType == TIP_CRITICAL_STRIKE || tipType == TIP_CRITICAL_STRIKE) {
+        cocos2d::ScaleTo* ScaleTo1 = cocos2d::ScaleTo::create(0.3, 0.8);
+        cocos2d::MoveBy* moveBy = cocos2d::MoveBy::create(0.3, Vec2(0, 20.0f));
         cocos2d::FadeOut* fadeOut = cocos2d::FadeOut::create(0.2);
         m_pLabel->runAction(cocos2d::Sequence::create(cocos2d::Spawn::createWithTwoActions(moveBy, ScaleTo1),fadeOut,RemoveSelf::create(), nil));
     }

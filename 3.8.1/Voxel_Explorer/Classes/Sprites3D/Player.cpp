@@ -232,6 +232,7 @@ void Player::attackByMonster(MonsterProperty* monsterProperty, bool miss)
     if(currentHp == 0)
     {
         setState(PS_DEATH);
+        PlayerProperty::getInstance()->setCurrentHP(currentHp);
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_DEATH, this);
     }
     else

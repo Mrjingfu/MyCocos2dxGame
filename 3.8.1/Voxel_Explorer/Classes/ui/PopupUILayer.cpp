@@ -15,7 +15,7 @@ PopupUILayer::PopupUILayer()
     m_pPopupType = ePopupInvalid;
     m_cActionType = eNone;
     m_pDarkLayer = nullptr;
-    
+    m_nIsPause = true;
     
 }
 PopupUILayer::~PopupUILayer()
@@ -77,6 +77,10 @@ void PopupUILayer::openPopup()
     //可以添加暂停监听
     enableDarkLayer(true);
     inAction();
+    if (m_nIsPause) {
+        schedulerPause();
+    }
+    
 }
 void PopupUILayer::closePopup()
 {
@@ -276,6 +280,9 @@ void PopupUILayer::removeSelfCallFunc()
     PopupUILayerManager::getInstance()->resetPopupType(m_pPopupType);
     
     //暂停事件恢复
+    if (m_nIsPause) {
+        schedulerResume();
+    }
     
     this->removeFromParent();
 }
