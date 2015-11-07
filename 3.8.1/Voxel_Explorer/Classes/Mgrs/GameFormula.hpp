@@ -13,7 +13,7 @@
 class GameFormula
 {
 public:
-    static int getGeneratePickItemCount(bool isElite, bool isBoss);
+    static bool generatePickItem(bool isElite, bool isBoss);
     static int getNextLevelExp(int currentLevel);
     static int getKillNormalMonsterExp(int currentLevel, int monsterLevel);
     static int getKillEliteMonsterExp(int currentLevel, int monsterLevel);

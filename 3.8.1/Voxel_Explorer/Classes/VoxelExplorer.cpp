@@ -18,6 +18,7 @@
 #include "Layer3D.hpp"
 #include "BaseBoss.hpp"
 #include "BaseMonster.hpp"
+#include "GameFormula.hpp"
 #include "Particle3D/CCParticleSystem3D.h"
 #include "Particle3D/PU/CCPUParticleSystem3D.h"
 USING_NS_CC;
@@ -239,36 +240,27 @@ void VoxelExplorer::addExplosion(const cocos2d::Vec3& pos)
         explosion->startParticleSystem();
     }
 }
-void VoxelExplorer::generatePickItems(const cocos2d::Vec2& pos, int num, int copper)
+void VoxelExplorer::generatePickItem(const cocos2d::Vec2& pos, bool generateItem, int copper)
 {
     if(m_pPickableItemsLayer && m_pCurrentLevel)
     {
-        ////创建金币
-        if(num >= 1)
+        if(copper > 0)
         {
-            int flag = m_pCurrentLevel->getTerrainTileFlag(pos.x, pos.y);
-            if(flag == TileInfo::PASSABLE)
-            {
-//                PickableItemType 
-//                if(copper)
-//                PickableItem* item = PickableItem::create(type);
-//                if(!item)
-//                    return false;
-//            
-//                item->setPosition3D(Vec3(pos.x*TerrainTile::CONTENT_SCALE, -0.5f*TerrainTile::CONTENT_SCALE, -pos.y*TerrainTile::CONTENT_SCALE));
-//                item->setVisited(true);
-//                item->addTerrainTileFlag(TileInfo::PICKABLE);
-//                m_pPickableItemsLayer->addChild(item);
-//                item->setState(PickableItem::PIS_IDLE);
-            }
-            else
-                CCLOG("Generate coin by pos = %f, %f  failed!", pos.x, pos.y);
+            CChaosNumber copperNum, silverNum, goldNum;
+            GameFormula::exchangeMoney(copper, goldNum, silverNum, copperNum);
+            PlayerProperty::getInstance()->addMoney(goldNum, silverNum, copperNum);
+            ///声音
         }
-        num = num - 1;
-        if(num >= 1)
+        if(generateItem)
         {
-            if(!m_pCurrentLevel->generatePickableItemsByPos(pos, num))
-                CCLOG("Generate pickable item by pos = %f, %f  failed!", pos.x, pos.y);
+            PickableItem* item = PickableItem::create(PickableItem::PIT_BOW_SHORTBOW);
+            if(item)
+            {
+                item->setPosition3D(Vec3(pos.x*TerrainTile::CONTENT_SCALE, -0.5f*TerrainTile::CONTENT_SCALE, -pos.y*TerrainTile::CONTENT_SCALE));
+                item->setVisited(true);
+                VoxelExplorer::getInstance()->getPickableItemsLayer()->addChild(item);
+                item->setState(PickableItem::PIS_BEGIN_GENERATE);
+            }
         }
     }
 }
@@ -321,7 +313,6 @@ void VoxelExplorer::handlePickItem(const cocos2d::Vec2& mapPos)        ///拾取
                     if(PlayerProperty::getInstance()->addItemToBag(item->getPickableItemType()))
                     {
                         item->setState(PickableItem::PIS_FADEOUT);
-                        return;
                     }
                 }
             }

@@ -179,12 +179,6 @@ const std::string PICKABLE_ITEM_NAMES[] = {
     "PIN_CLOTH_PRO_HELEMT",                   ///骑士容貌 Knight looks
     "PIN_CLOTH_PRO_STEELARMOR",               ///寡妇对抗者 No widow
     //PIN_CLOTH_PRO_END
-
-    //PIT_COIN_BEGIN
-    "PIN_COIN_GOLD",                          //金币
-    "PIN_COIN_SILVER",                        //银币
-    "PIN_COIN_BRONZE",                        //铜币
-    //PIT_COIN_END
     
     "PIN_UNKNOWN"
 };
@@ -231,6 +225,9 @@ void PickableItem::setState(PickableItemState state)
         case PickableItem::PIS_FADEOUT:
             onExitFadeOut();
             break;
+        case PickableItem::PIS_BEGIN_GENERATE:
+            onExitBeginGenerate();
+            break;
         default:
             break;
     }
@@ -242,6 +239,9 @@ void PickableItem::setState(PickableItemState state)
             break;
         case PickableItem::PIS_FADEOUT:
             onEnterFadeOut();
+            break;
+        case PickableItem::PIS_BEGIN_GENERATE:
+            onEnterBeginGenerate();
             break;
         default:
             break;
@@ -265,6 +265,7 @@ void PickableItem::onExitIdle()
 }
 void PickableItem::onEnterFadeOut()
 {
+    removeTerrainTileFlag(TileInfo::PICKABLE);
     EaseSineOut* moveTo = EaseSineOut::create(MoveTo::create(0.25f, Vec3(getPositionX(),TerrainTile::CONTENT_SCALE*0.5f, getPositionZ())));
     EaseSineOut* fadeOut = EaseSineOut::create(FadeOut::create(1.0f));
     CallFunc* callback = CallFunc::create(CC_CALLBACK_0(PickableItem::destroySelf, this));
@@ -277,6 +278,22 @@ void PickableItem::onExitFadeOut()
 {
     this->stopAllActions();
 }
+void PickableItem::onEnterBeginGenerate()
+{
+    EaseSineOut* moveTo1 = EaseSineOut::create(MoveTo::create(0.25f, Vec3(getPositionX(),TerrainTile::CONTENT_SCALE*0.5f, getPositionZ())));
+    EaseSineOut* moveTo2 = EaseSineOut::create(MoveTo::create(0.25f, Vec3(getPositionX(),-0.5f*TerrainTile::CONTENT_SCALE, getPositionZ())));
+    
+    EaseSineIn* fadeIn = EaseSineIn::create(FadeIn::create(1.5f));
+    DelayTime* delay = DelayTime::create(1.0f);
+    CallFunc* callback = CallFunc::create(CC_CALLBACK_0(PickableItem::setState, this, PIS_IDLE));
+    Sequence* sequence = Sequence::create(delay, moveTo1, moveTo2, callback, nullptr);
+    RotateBy* rotateBy = RotateBy::create(1.0f, Vec3(0, 180, 0));
+    Spawn* spawn = Spawn::create(fadeIn, sequence, rotateBy, nullptr);
+    this->runAction(spawn);
+}
+void PickableItem::onExitBeginGenerate()
+{
+}
 void PickableItem::beginRotate()
 {
     this->stopAllActions();
@@ -286,6 +303,5 @@ void PickableItem::beginRotate()
 }
 void PickableItem::destroySelf()
 {
-    removeTerrainTileFlag(TileInfo::PICKABLE);
     this->removeFromParentAndCleanup(true);
 }

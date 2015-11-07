@@ -15,22 +15,20 @@ static const CChaosNumber gsMaxCriticalStrikeRate = 0.3f;
 static const CChaosNumber gsMaxDodgeRate = 0.2f;
 static const CChaosNumber gsMaxMagicItemFindRate = 0.65f;
 
-int GameFormula::getGeneratePickItemCount(bool isElite, bool isBoss)
+bool GameFormula::generatePickItem(bool isElite, bool isBoss)
 {
     if(isElite)
-        return 4;
+        return true;
     else if(isBoss)
-        return 9;
+        return true;
     else
     {
-        int num = 1;
-        float percentOne = 0.8f;
-        float percentTwo = 0.02f;
-        float percentZero = 1.0 - percentOne - percentTwo;
-        AlisaMethod* am = AlisaMethod::create(percentZero,percentOne,percentTwo,-1.0, NULL);
-        if(am)
-            num += am->getRandomIndex();
-        return num;
+        float percentOne = 0.1f;
+        float percentZero = 1.0 - percentOne;
+        AlisaMethod* am = AlisaMethod::create(percentOne, percentZero, -1.0, NULL);
+        if(!am)
+            return false;
+        return am->getRandomIndex() == 0;
     }
 }
 int GameFormula::getNextLevelExp(int currentLevel)

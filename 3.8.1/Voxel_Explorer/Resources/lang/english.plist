@@ -330,11 +330,5 @@
 	<string>Knight looks</string>
 	<key>PIN_CLOTH_PRO_STEELARMOR</key>
 	<string>No widow</string>
-	<key>PIN_COIN_GOLD</key>
-	<string>Gold coin</string>
-	<key>PIN_COIN_SILVER</key>
-	<string>Silver coin</string>
-	<key>PIN_COIN_BRONZE</key>
-	<string>Bronze coin</string>
 </dict>
 </plist>
