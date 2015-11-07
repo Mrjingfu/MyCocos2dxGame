@@ -296,7 +296,7 @@ void GameUILayer::onEventUpdateMonsterProp(cocos2d::EventCustom *sender)
     BaseMonster* monster = static_cast<BaseMonster*>(sender->getUserData());
     if (monster->getState() != BaseMonster::MonsterState::MS_DEATH) {
         m_pMonsterLayout->setVisible(true);
-        float hpPer =monster->getMonsterProperty()->getCurrentHP().GetFloatValue()/PlayerProperty::getInstance()->getMaxHp().GetFloatValue() *100.0f;
+        float hpPer =monster->getMonsterProperty()->getCurrentHP().GetFloatValue()/PlayerProperty::getInstance()->getMaxHP().GetFloatValue() *100.0f;
         m_pMonsterHpBar->setPercent(hpPer);
         m_pMonsterCurHp->setString(StringUtils::format("%d",int(monster->getMonsterProperty()->getCurrentHP())));
         m_pMonsterMaxHp->setString(StringUtils::format("%d",int(monster->getMonsterProperty()->getMaxHP())));
@@ -344,15 +344,15 @@ void GameUILayer::onExit()
 
 void GameUILayer::updateRoleUi()
 {
-    float hpPer =PlayerProperty::getInstance()->getCurrentHp().GetFloatValue()/PlayerProperty::getInstance()->getMaxHp().GetFloatValue() *100.0f;
+    float hpPer =PlayerProperty::getInstance()->getCurrentHP().GetFloatValue()/PlayerProperty::getInstance()->getMaxHP().GetFloatValue() *100.0f;
     m_pRoleHpBar->setPercent(hpPer);
-    float mpPer =PlayerProperty::getInstance()->getCurrentMp().GetFloatValue()/PlayerProperty::getInstance()->getMaxMp().GetFloatValue() *100.0f;
+    float mpPer =PlayerProperty::getInstance()->getCurrentMP().GetFloatValue()/PlayerProperty::getInstance()->getMaxMP().GetFloatValue() *100.0f;
     m_pRoleMpBar->setPercent(mpPer);
 //    m_pRoleName->setString("")角色名
-    m_pRoleCurHp->setString(Value(int(PlayerProperty::getInstance()->getCurrentHp())).asString());
-    m_pRoleMaxHp->setString(Value(int(PlayerProperty::getInstance()->getMaxHp())).asString());
-    m_pRoleCurMp->setString(Value(int(PlayerProperty::getInstance()->getCurrentHp())).asString());
-    m_pRoleMaxMp->setString(Value(int(PlayerProperty::getInstance()->getMaxHp())).asString());
+    m_pRoleCurHp->setString(Value(int(PlayerProperty::getInstance()->getCurrentHP())).asString());
+    m_pRoleMaxHp->setString(Value(int(PlayerProperty::getInstance()->getMaxHP())).asString());
+    m_pRoleCurMp->setString(Value(int(PlayerProperty::getInstance()->getCurrentMP())).asString());
+    m_pRoleMaxMp->setString(Value(int(PlayerProperty::getInstance()->getMaxMP())).asString());
     float ExpPer =PlayerProperty::getInstance()->getExp().GetLongValue()/GameFormula::getNextLevelExp(PlayerProperty::getInstance()->getLevel()) *100.0f;
     CCLOG("EXPPER:%f",ExpPer);
     m_pRoleExpBar->setPercent(ExpPer);

@@ -10,6 +10,7 @@
 #include "TerrainTile.hpp"
 #include "VoxelExplorer.h"
 #include "PlayerProperty.hpp"
+#include "AlisaMethod.h"
 USING_NS_CC;
 
 Player* Player::create(const std::string& modelPath)
@@ -31,9 +32,12 @@ Player::Player()
     m_curState  = PS_UNKNOWN;
     m_pPlayerLight = nullptr;
     m_bStealth = false;
+    
+    m_pHurtData = new (std::nothrow) HurtData();
 }
 Player::~Player()
 {
+    CC_SAFE_DELETE(m_pHurtData);
 }
 void Player::onEnter()
 {
@@ -165,6 +169,78 @@ void Player::rotateToBack()
     this->runAction(rotateTo);
     Actor::rotateToBack();
 }
+void Player::attackByMonster(MonsterProperty* monsterProperty, bool miss)
+{
+    if(!monsterProperty || !m_pHurtData)
+        return;
+    
+    m_pHurtData->reset();
+    m_pHurtData->m_vPos = this->getPosition3D();
+    if(miss)
+    {
+        m_pHurtData->m_bDodge = true;
+        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_HURT, m_pHurtData);
+        return;
+    }
+    
+    float percentDodgeRate = PlayerProperty::getInstance()->getDodgeRate().GetFloatValue();
+    float percentHit = 1.0 - percentDodgeRate;
+    AlisaMethod* amDodgeRate = AlisaMethod::create(percentDodgeRate,percentHit,-1.0, NULL);
+    if(amDodgeRate)
+    {
+        if(amDodgeRate->getRandomIndex() == 0)
+        {
+            m_pHurtData->m_bDodge = true;
+            Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_HURT, m_pHurtData);
+            return;
+        }
+    }
+    int attack = monsterProperty->getRandomAttack().GetLongValue();
+    float percentCriticalStrikeRate = monsterProperty->getCriticalStrikeRate().GetFloatValue();
+    float percentNormal = 1.0 - percentCriticalStrikeRate;
+    AlisaMethod* amCriticalStrikeRate = AlisaMethod::create(percentCriticalStrikeRate,percentNormal,-1.0, NULL);
+    if(amCriticalStrikeRate)
+    {
+        if(amCriticalStrikeRate->getRandomIndex() == 0)
+        {
+            attack = attack*2.0f;
+            m_pHurtData->m_bCriticalStrike = true;
+        }
+    }
+    
+    int defense = PlayerProperty::getInstance()->getDefense().GetLongValue();
+    
+    attack = MAX(attack + defense, 0);
+    
+    float percentBlockRate = PlayerProperty::getInstance()->getBlockRate().GetFloatValue();
+    float percentNull = 1.0 - percentBlockRate;
+    AlisaMethod* amBlockRate = AlisaMethod::create(percentBlockRate,percentNull,-1.0, NULL);
+    if(amBlockRate)
+    {
+        if(amBlockRate->getRandomIndex() == 0)
+        {
+            attack = attack*0.5f;
+            m_pHurtData->m_bBlocked = true;
+        }
+    }
+    
+    int currentHp = PlayerProperty::getInstance()->getCurrentHP().GetLongValue();
+    currentHp = MAX(currentHp - attack , 0);
+    CCLOG("Player: CurrentHp = %d, monsterAttack = %d", currentHp, attack);
+    m_pHurtData->m_nDamage = -attack;
+    Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_HURT, m_pHurtData);
+    if(currentHp == 0)
+    {
+        setState(PS_DEATH);
+        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_DEATH, this);
+    }
+    else
+    {
+        PlayerProperty::getInstance()->setCurrentHP(currentHp);
+        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_PROPERTY_DIRTY, this);
+    }
+
+}
 void Player::onEnterIdle()
 {
     EaseSineOut* scaleTo = EaseSineOut::create(ScaleTo::create(0.1f, 1.0f, 1.0f, 1.0f));
@@ -238,7 +314,7 @@ void Player::onEnterAttack()
             break;
     }
     ScaleTo* scaleTo = ScaleTo::create(0.1f, 1.0f, 1.0f, 1.0f);
-    EaseSineOut* moveUp = EaseSineOut::create(MoveTo::create(0.1f, Vec3(getPositionX(), getPositionY() + TerrainTile::CONTENT_SCALE*0.25f, getPositionZ()) + dir*0.5f));
+    EaseSineOut* moveUp = EaseSineOut::create(MoveTo::create(0.1f, Vec3(getPositionX(), getPositionY() + TerrainTile::CONTENT_SCALE*0.25f, getPositionZ()) + dir*0.4f));
     Vec3 monsterPos = getPosition3D() + dir;
     Vec2 posInMap = Vec2((int)(monsterPos.x/TerrainTile::CONTENT_SCALE), (int)(-monsterPos.z /TerrainTile::CONTENT_SCALE));
     CallFunc* callback = CallFunc::create(CC_CALLBACK_0(VoxelExplorer::handleMonsterHurt,VoxelExplorer::getInstance(),posInMap));
@@ -254,6 +330,10 @@ void Player::onEnterDrop()
 }
 void Player::onEnterDeath()
 {
+    this->stopAllActions();
+    removeTerrainTileFlag(TileInfo::ATTACKABLE);
+    this->setVisible(false);
+    VoxelExplorer::getInstance()->addExplosion(getPosition3D());
 }
 
 void Player::onExitIdle()

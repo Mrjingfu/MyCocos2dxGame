@@ -307,7 +307,7 @@ void VoxelExplorer::handleMonsterHurt(const cocos2d::Vec2& mapPos)
             {
                 if(monster->getState() != BaseMonster::MS_DEATH)
                 {
-                    monster->attackedByPlayer();
+                    monster->attackedByPlayer(false);
                     return;
                 }
             }
@@ -332,7 +332,9 @@ void VoxelExplorer::handlePlayerHurt(const cocos2d::Vec2& mapPos, MonsterPropert
         return;
     
     if(m_pPlayer->getPosInMap() != mapPos)
-    {}
+        return m_pPlayer->attackByMonster(monsterProperty, true);
+    
+    return m_pPlayer->attackByMonster(monsterProperty, false);
 }
 bool VoxelExplorer::createLayers()
 {

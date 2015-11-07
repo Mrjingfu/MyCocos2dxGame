@@ -29,10 +29,10 @@ public:
     CChaosNumber getExp() const { return m_nExp; }
     CChaosNumber getLightDistance() const { return m_nLightDistance; }
     CChaosNumber getSearchDistance() const { return m_nSearchDistance; }
-    CChaosNumber getMaxHp() const { return m_nMaxHP; }
-    CChaosNumber getMaxMp() const { return m_nMaxMP; }
-    CChaosNumber getCurrentHp() const { return m_nCurrentHP; }
-    CChaosNumber getCurrentMp() const { return m_nCurrentMP; }
+    CChaosNumber getMaxHP() const { return m_nMaxHP; }
+    CChaosNumber getMaxMP() const { return m_nMaxMP; }
+    CChaosNumber getCurrentHP() const { return m_nCurrentHP; }
+    CChaosNumber getCurrentMP() const { return m_nCurrentMP; }
 
     CChaosNumber getMinAttack();
     CChaosNumber getMaxAttack();
