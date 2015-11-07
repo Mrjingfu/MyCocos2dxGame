@@ -88,69 +88,76 @@ BaseMonster::~BaseMonster()
     CC_SAFE_DELETE(m_pHurtData);
     CC_SAFE_DELETE(m_pMonsterProperty);
 }
-void BaseMonster::attackedByPlayer()
+void BaseMonster::attackedByPlayer(bool miss)
 {
-    if(m_pMonsterProperty && m_pHurtData)
+    if(!m_pMonsterProperty || !m_pHurtData)
+        return;
+    
+    m_pHurtData->reset();
+    m_pHurtData->m_vPos = this->getPosition3D();
+    
+    if(miss)
     {
-        m_pHurtData->reset();
-        m_pHurtData->m_vPos = this->getPosition3D();
-        float percentDodgeRate = m_pMonsterProperty->getDodgeRate().GetFloatValue();
-        float percentHit = 1.0 - percentDodgeRate;
-        AlisaMethod* amDodgeRate = AlisaMethod::create(percentDodgeRate,percentHit,-1.0, NULL);
-        if(amDodgeRate)
-        {
-            if(amDodgeRate->getRandomIndex() == 0)
-            {
-                m_pHurtData->m_bDodge = true;
-                Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_MONSTER_HURT, m_pHurtData);
-                return;
-            }
-        }
-        int attack = PlayerProperty::getInstance()->getRandomAttack().GetLongValue();
-        float percentCriticalStrikeRate = PlayerProperty::getInstance()->getCriticalStrikeRate().GetFloatValue();
-        float percentNormal = 1.0 - percentCriticalStrikeRate;
-        AlisaMethod* amCriticalStrikeRate = AlisaMethod::create(percentCriticalStrikeRate,percentNormal,-1.0, NULL);
-        if(amCriticalStrikeRate)
-        {
-            if(amCriticalStrikeRate->getRandomIndex() == 0)
-            {
-                attack = attack*2.0f;
-                m_pHurtData->m_bCriticalStrike = true;
-            }
-        }
-        
-        int defense = m_pMonsterProperty->getDefense().GetLongValue();
-        
-        attack = MAX(attack + defense, 0);
-        
-        float percentBlockRate = m_pMonsterProperty->getBlockRate().GetFloatValue();
-        float percentNull = 1.0 - percentBlockRate;
-        AlisaMethod* amBlockRate = AlisaMethod::create(percentBlockRate,percentNull,-1.0, NULL);
-        if(amBlockRate)
-        {
-            if(amBlockRate->getRandomIndex() == 0)
-            {
-                attack = attack*0.5f;
-                m_pHurtData->m_bBlocked = true;
-            }
-        }
-        
-        int currentHp = m_pMonsterProperty->getCurrentHP().GetLongValue();
-        currentHp = MAX(currentHp - attack , 0);
-        CCLOG("Monster: CurrentHp = %d, playerAttack = %d", currentHp, attack);
-        m_pHurtData->m_nDamage = -attack;
+        m_pHurtData->m_bDodge = true;
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_MONSTER_HURT, m_pHurtData);
-        if(currentHp == 0)
+        return;
+    }
+    
+    float percentDodgeRate = m_pMonsterProperty->getDodgeRate().GetFloatValue();
+    float percentHit = 1.0 - percentDodgeRate;
+    AlisaMethod* amDodgeRate = AlisaMethod::create(percentDodgeRate,percentHit,-1.0, NULL);
+    if(amDodgeRate)
+    {
+        if(amDodgeRate->getRandomIndex() == 0)
         {
-            setState(MS_DEATH);
-            Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_MONSTER_DEATH, this);
+            m_pHurtData->m_bDodge = true;
+            Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_MONSTER_HURT, m_pHurtData);
+            return;
         }
-        else
+    }
+    int attack = PlayerProperty::getInstance()->getRandomAttack().GetLongValue();
+    float percentCriticalStrikeRate = PlayerProperty::getInstance()->getCriticalStrikeRate().GetFloatValue();
+    float percentNormal = 1.0 - percentCriticalStrikeRate;
+    AlisaMethod* amCriticalStrikeRate = AlisaMethod::create(percentCriticalStrikeRate,percentNormal,-1.0, NULL);
+    if(amCriticalStrikeRate)
+    {
+        if(amCriticalStrikeRate->getRandomIndex() == 0)
         {
-            m_pMonsterProperty->setCurrentHP(currentHp);
-            Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_MONSTER_PROPERTY_DIRTY, this);
+            attack = attack*2.0f;
+            m_pHurtData->m_bCriticalStrike = true;
         }
-
+    }
+        
+    int defense = m_pMonsterProperty->getDefense().GetLongValue();
+        
+    attack = MAX(attack + defense, 0);
+        
+    float percentBlockRate = m_pMonsterProperty->getBlockRate().GetFloatValue();
+    float percentNull = 1.0 - percentBlockRate;
+    AlisaMethod* amBlockRate = AlisaMethod::create(percentBlockRate,percentNull,-1.0, NULL);
+    if(amBlockRate)
+    {
+        if(amBlockRate->getRandomIndex() == 0)
+        {
+            attack = attack*0.5f;
+            m_pHurtData->m_bBlocked = true;
+        }
+    }
+        
+    int currentHp = m_pMonsterProperty->getCurrentHP().GetLongValue();
+    currentHp = MAX(currentHp - attack , 0);
+    CCLOG("Monster: CurrentHp = %d, playerAttack = %d", currentHp, attack);
+    m_pHurtData->m_nDamage = -attack;
+    Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_MONSTER_HURT, m_pHurtData);
+    if(currentHp == 0)
+    {
+        setState(MS_DEATH);
+        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_MONSTER_DEATH, this);
+    }
+    else
+    {
+        m_pMonsterProperty->setCurrentHP(currentHp);
+        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_MONSTER_PROPERTY_DIRTY, this);
     }
 }
 void BaseMonster::setState(MonsterState state)

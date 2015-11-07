@@ -88,7 +88,7 @@ public:
     void setState(MonsterState state);
     
     MonsterProperty* getMonsterProperty() const { return m_pMonsterProperty; }
-    void attackedByPlayer();
+    void attackedByPlayer(bool miss);
     
     MonsterType getMonsterType() const { return m_Type; }
     

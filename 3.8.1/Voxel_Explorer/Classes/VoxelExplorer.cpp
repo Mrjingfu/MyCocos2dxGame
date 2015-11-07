@@ -307,7 +307,7 @@ void VoxelExplorer::handleMonsterHurt(const cocos2d::Vec2& mapPos)
             {
                 if(monster->getState() != BaseMonster::MS_DEATH)
                 {
-                    monster->attackedByPlayer();
+                    monster->attackedByPlayer(false);
                     return;
                 }
             }
