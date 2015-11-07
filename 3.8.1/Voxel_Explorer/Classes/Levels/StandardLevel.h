@@ -28,7 +28,7 @@ protected:
     virtual bool build();
     virtual bool createTerrain();
     virtual bool decorate();
-    
+
     virtual bool initAreas();
     virtual void splitArea(const cocos2d::Rect& rect);
     virtual void assignAreasType();
@@ -38,6 +38,7 @@ protected:
     virtual void showMap(bool show);
     
     virtual void updateAreaFogOfWarByPos(const cocos2d::Vec2& pos);
+    virtual bool generatePickableItemsByPos(const cocos2d::Vec2& pos, int num);
 protected:
     void placeDoors(Area* area);
     void generateDoors(Area* area);

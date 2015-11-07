@@ -239,7 +239,39 @@ void VoxelExplorer::addExplosion(const cocos2d::Vec3& pos)
         explosion->startParticleSystem();
     }
 }
-
+void VoxelExplorer::generatePickItems(const cocos2d::Vec2& pos, int num, int copper)
+{
+    if(m_pPickableItemsLayer && m_pCurrentLevel)
+    {
+        ////创建金币
+        if(num >= 1)
+        {
+            int flag = m_pCurrentLevel->getTerrainTileFlag(pos.x, pos.y);
+            if(flag == TileInfo::PASSABLE)
+            {
+//                PickableItemType 
+//                if(copper)
+//                PickableItem* item = PickableItem::create(type);
+//                if(!item)
+//                    return false;
+//            
+//                item->setPosition3D(Vec3(pos.x*TerrainTile::CONTENT_SCALE, -0.5f*TerrainTile::CONTENT_SCALE, -pos.y*TerrainTile::CONTENT_SCALE));
+//                item->setVisited(true);
+//                item->addTerrainTileFlag(TileInfo::PICKABLE);
+//                m_pPickableItemsLayer->addChild(item);
+//                item->setState(PickableItem::PIS_IDLE);
+            }
+            else
+                CCLOG("Generate coin by pos = %f, %f  failed!", pos.x, pos.y);
+        }
+        num = num - 1;
+        if(num >= 1)
+        {
+            if(!m_pCurrentLevel->generatePickableItemsByPos(pos, num))
+                CCLOG("Generate pickable item by pos = %f, %f  failed!", pos.x, pos.y);
+        }
+    }
+}
 void VoxelExplorer::handleDoor(const cocos2d::Vec2& mapPos)
 {
     if(m_pTerrainDoorsLayer && m_pPlayer)

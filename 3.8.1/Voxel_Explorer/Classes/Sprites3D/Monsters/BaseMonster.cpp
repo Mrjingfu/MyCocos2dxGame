@@ -11,6 +11,7 @@
 #include "AlisaMethod.h"
 #include "PlayerProperty.hpp"
 #include "VoxelExplorer.h"
+#include "GameFormula.hpp"
 USING_NS_CC;
 const std::string MONSTER_MODEL_NAMES[] = {
     "MMN_UNKNOWN",
@@ -470,7 +471,8 @@ void BaseMonster::onEnterDeath()
     removeTerrainTileFlag(TileInfo::ATTACKABLE);
     this->setVisible(false);
     VoxelExplorer::getInstance()->addExplosion(getPosition3D());
-    
+    int num = GameFormula::getGeneratePickItemCount(m_pMonsterProperty->isElite(), false);
+    VoxelExplorer::getInstance()->generatePickItems(getPosInMap(), num, m_pMonsterProperty->getValueCopper().GetLongValue());
 }
 void BaseMonster::onExitDeath()
 {

@@ -113,6 +113,7 @@ public:
 public:
     virtual void showMap(bool show) = 0;
     virtual void updateAreaFogOfWarByPos(const cocos2d::Vec2& pos) = 0;
+    virtual bool generatePickableItemsByPos(const cocos2d::Vec2& pos, int num) = 0;
 protected:
     virtual bool build() = 0;
     virtual bool createTerrain() = 0;

@@ -35,6 +35,7 @@ public:
     void searchAndCheck();      ///侦查
     
     void addExplosion(const cocos2d::Vec3& pos);
+    void generatePickItems(const cocos2d::Vec2& pos, int num, int copper);
     
     void handleDoor(const cocos2d::Vec2& mapPos);            ///开门
     void handleTriggerTrap(const cocos2d::Vec2& mapPos);     ///触发机关

@@ -13,6 +13,7 @@
 #include "StandardDoor.hpp"
 #include "RandomDungeon.hpp"
 #include "AlisaMethod.h"
+#include "PickableItem.hpp"
 USING_NS_CC;
 
 StandardLevel::StandardLevel()
@@ -208,7 +209,6 @@ bool StandardLevel::decorate()
 {
     return true;
 }
-
 bool StandardLevel::initAreas()
 {
     m_Areas.clear();
@@ -554,6 +554,25 @@ void StandardLevel::updateAreaFogOfWarByPos(const cocos2d::Vec2& pos)
         }
     }
     
+}
+bool StandardLevel::generatePickableItemsByPos(const cocos2d::Vec2& pos, int num)
+{
+
+    
+//    PickableItem* item = PickableItem::create(type);
+//    if(!item)
+//        return false;
+//    int tileIndex = -1;
+//    do {
+//        tileIndex = randomPickableRespawnCell();
+//    } while (tileIndex == -1);
+//    
+//    item->setPosition3D(Vec3(m_Map[tileIndex].m_nX*TerrainTile::CONTENT_SCALE, -0.5f*TerrainTile::CONTENT_SCALE, -m_Map[tileIndex].m_nY*TerrainTile::CONTENT_SCALE));
+//    item->setVisited(m_Map[tileIndex].m_bVisited);
+//    item->addTerrainTileFlag(TileInfo::PICKABLE);
+//    VoxelExplorer::getInstance()->getPickableItemsLayer()->addChild(item);
+//    item->setState(PickableItem::PIS_IDLE);
+    return true;
 }
 void StandardLevel::placeDoors(Area* area)
 {
