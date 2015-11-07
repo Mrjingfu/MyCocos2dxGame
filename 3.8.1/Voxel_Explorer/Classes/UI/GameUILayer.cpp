@@ -248,7 +248,7 @@ void GameUILayer::onEventRoleDead(cocos2d::EventCustom *sender)
 }
 void GameUILayer::onEvenetRoleHud(cocos2d::EventCustom *sender)
 {
-    
+    CCLOG("role hud");
 }
 void GameUILayer::onEvenetMonsterDead(cocos2d::EventCustom *sender)
 {
@@ -266,21 +266,21 @@ void GameUILayer::onEventMonsterHud(cocos2d::EventCustom *sender)
     HurtData* hurData = static_cast<HurtData*>(sender->getUserData());
     Vec2 pt = VoxelExplorer::getInstance()->getMainCamera()->projectGL(hurData->m_vPos);
     pt = Vec2(pt.x, pt.y+TerrainTile::CONTENT_SCALE*2.5);
-
+    CCLOG("onEventMonsterHud");
 //    PopupUILayerManager::getInstance()->showPromptSign(TIP_QUESTION, pt);
 
     if (hurData->m_bDodge) {
        
-        PopupUILayerManager::getInstance()->showStatus(TIP_DODGE,  StringUtils::format(UtilityHelper::getLocalStringForUi("STATUS_TEXT_DODGE").c_str(),hurData->m_nDamage),pt);
+        PopupUILayerManager::getInstance()->showStatus(TIP_MONSTER_DODGE,  StringUtils::format(UtilityHelper::getLocalStringForUi("STATUS_TEXT_DODGE").c_str(),hurData->m_nDamage),pt);
         CCLOG("monster 闪避");
     }else {
         if((hurData->m_bBlocked && hurData->m_bCriticalStrike) || hurData->m_bBlocked)
         {
-            PopupUILayerManager::getInstance()->showStatus(TIP_BOLOCK, StringUtils::format(UtilityHelper::getLocalStringForUi("STATUS_TEXT_BOLOCK").c_str(),hurData->m_nDamage),pt);
+            PopupUILayerManager::getInstance()->showStatus(TIP_MONSTER_BOLOCK, StringUtils::format(UtilityHelper::getLocalStringForUi("STATUS_TEXT_BOLOCK").c_str(),hurData->m_nDamage),pt);
             CCLOG("monster 格挡");
         }else if (hurData->m_bCriticalStrike)
         {
-            PopupUILayerManager::getInstance()->showStatus(TIP_CRITICAL_STRIKE, StringUtils::format(UtilityHelper::getLocalStringForUi("STATUS_TEXT_CRITICAL_STRIKE").c_str(),hurData->m_nDamage),pt);
+            PopupUILayerManager::getInstance()->showStatus(TIP_MONSTER_CRITICAL_STRIKE, StringUtils::format(UtilityHelper::getLocalStringForUi("STATUS_TEXT_CRITICAL_STRIKE").c_str(),hurData->m_nDamage),pt);
              CCLOG("monster 暴击");
         }else{
             PopupUILayerManager::getInstance()->showStatus(TIP_NEGATIVE, Value(hurData->m_nDamage).asString(),pt);
@@ -340,6 +340,8 @@ void GameUILayer::onExit()
 
     WrapperUILayer::onExit();
 }
+
+
 void GameUILayer::updateRoleUi()
 {
     float hpPer =PlayerProperty::getInstance()->getCurrentHp().GetFloatValue()/PlayerProperty::getInstance()->getMaxHp().GetFloatValue() *100.0f;
