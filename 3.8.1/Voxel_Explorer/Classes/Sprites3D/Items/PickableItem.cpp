@@ -180,6 +180,11 @@ const std::string PICKABLE_ITEM_NAMES[] = {
     "PIN_CLOTH_PRO_STEELARMOR",               ///寡妇对抗者 No widow
     //PIN_CLOTH_PRO_END
 
+    //PIT_COIN_BEGIN
+    "PIN_COIN_GOLD",                          //金币
+    "PIN_COIN_SILVER",                        //银币
+    "PIN_COIN_BRONZE",                        //铜币
+    //PIT_COIN_END
     
     "PIN_UNKNOWN"
 };

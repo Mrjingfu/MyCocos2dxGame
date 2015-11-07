@@ -78,6 +78,24 @@ bool WrapperUILayer::load(const std::string gameUIFile,bool isSceneUi)
     
     return ret;
 }
+void WrapperUILayer::schedulerPause()
+{
+    std::set<void*> _m_pBeforeTargetSets = cocos2d::Director::getInstance()->getScheduler()->pauseAllTargets();
+    
+    for(std::set<void*>::iterator it=_m_pBeforeTargetSets.begin();it!=_m_pBeforeTargetSets.end();it++)
+    {
+        cocos2d::Director::getInstance()->getScheduler()->pauseTarget(*it);
+    }
+}
+void WrapperUILayer::schedulerResume()
+{
+    std::set<void*> _m_pBeforeTargetSets = cocos2d::Director::getInstance()->getScheduler()->pauseAllTargets();
+    
+    for(std::set<void*>::iterator it=_m_pBeforeTargetSets.begin();it!=_m_pBeforeTargetSets.end();it++)
+    {
+        cocos2d::Director::getInstance()->getScheduler()->resumeTarget(*it);
+    }
+}
 bool WrapperUILayer::isForbiddenAction(cocos2d::Ref *sender)
 {
     struct timeval now;

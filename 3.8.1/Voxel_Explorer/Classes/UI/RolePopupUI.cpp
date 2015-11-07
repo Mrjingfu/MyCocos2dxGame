@@ -46,12 +46,14 @@ RolePopupUI::~RolePopupUI()
 void RolePopupUI::onEnter()
 {
 
-    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_PLAYER_PROPERTY_DIRTY, CC_CALLBACK_1(RolePopupUI::onEventUpdateData,this));
+    EventListenerCustom *listener = EventListenerCustom::create(EVENT_PLAYER_PROPERTY_DIRTY, CC_CALLBACK_1(RolePopupUI::onEventUpdateData,this));
+    Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener,this);
 
     PopupUILayer::onEnter();
 }
 void RolePopupUI::onExit()
 {
+    Director::getInstance()->getEventDispatcher()->removeEventListenersForTarget(this);
     PopupUILayer::onExit();
 }
 bool RolePopupUI::initUi()

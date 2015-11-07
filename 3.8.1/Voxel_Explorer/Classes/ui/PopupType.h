@@ -24,9 +24,11 @@ typedef enum {
     TIP_NEGATIVE,
     TIP_WARNING,
     TIP_NEUTRAL,
+    TIP_QUESTION,
+    
     TIP_DODGE,
     TIP_BOLOCK,
     TIP_CRITICAL_STRIKE,
-    TIP_QUESTION
+
 }TipTypes;
 #endif
