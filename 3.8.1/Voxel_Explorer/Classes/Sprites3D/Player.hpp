@@ -10,6 +10,8 @@
 #define Player_hpp
 
 #include "Actor.hpp"
+#include "EventConst.h"
+#include "MonsterProperty.hpp"
 class Player : public Actor
 {
 public:
@@ -42,6 +44,8 @@ public:
     virtual void rotateToRight();
     virtual void rotateToForward();
     virtual void rotateToBack();
+    
+    void attackByMonster(MonsterProperty* monsterProperty, bool miss);
 private:
     void onEnterIdle();
     void onEnterPrepareToJump();
@@ -67,6 +71,8 @@ private:
     cocos2d::PointLight*        m_pPlayerLight;
     
     bool                        m_bStealth;     ///是否隐身
+    
+    HurtData*                   m_pHurtData;
 };
 
 #endif /* Player_hpp */

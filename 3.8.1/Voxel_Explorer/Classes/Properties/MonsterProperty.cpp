@@ -104,3 +104,7 @@ void MonsterProperty::adjustByDC()
     if(m_bIsElite)
         m_nDropItemNum = 4;
 }
+CChaosNumber MonsterProperty::getRandomAttack()
+{
+    return cocos2d::random(getMinAttack().GetLongValue(), getMaxAttack().GetLongValue());
+}
