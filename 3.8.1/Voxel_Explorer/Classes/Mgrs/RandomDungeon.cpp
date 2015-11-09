@@ -57,14 +57,15 @@ RandomDungeon* RandomDungeon::getInstance()
 }
 RandomDungeon::RandomDungeon()
 {
-    CC_SAFE_DELETE(m_pCurrentNode->m_pLeftNode);
-    CC_SAFE_DELETE(m_pCurrentNode->m_pRightNode);
-    CC_SAFE_DELETE(m_pCurrentNode);
+    m_pCurrentNode = nullptr;
     m_nCurrentSelectGroup = 0;
     m_nDifficultClass = 1;
 }
 RandomDungeon::~RandomDungeon()
 {
+    CC_SAFE_DELETE(m_pCurrentNode->m_pLeftNode);
+    CC_SAFE_DELETE(m_pCurrentNode->m_pRightNode);
+    CC_SAFE_DELETE(m_pCurrentNode);
 }
 
 bool RandomDungeon::build()
