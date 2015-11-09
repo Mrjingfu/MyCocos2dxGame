@@ -63,6 +63,9 @@ RandomDungeon::RandomDungeon()
 }
 RandomDungeon::~RandomDungeon()
 {
+    CC_SAFE_DELETE(m_pCurrentNode->m_pLeftNode);
+    CC_SAFE_DELETE(m_pCurrentNode->m_pRightNode);
+    CC_SAFE_DELETE(m_pCurrentNode);
 }
 
 bool RandomDungeon::build()
@@ -75,6 +78,7 @@ bool RandomDungeon::build()
         m_pCurrentNode = new (std::nothrow) DungeonNode();
         if(!m_pCurrentNode)
             return false;
+        m_pCurrentNode->retain();
         m_pCurrentNode->m_Type = type;
         m_pCurrentNode->m_nNodeDepth = 1;
         assignedDungeonNode(m_pCurrentNode);
@@ -126,6 +130,7 @@ bool RandomDungeon::generateNextDungeonNode()
         m_pCurrentNode->m_pLeftNode = new (std::nothrow) DungeonNode();
         if(!m_pCurrentNode->m_pLeftNode)
             return false;
+        m_pCurrentNode->m_pLeftNode->retain();
         m_pCurrentNode->m_pLeftNode->m_Type = type;
         m_pCurrentNode->m_pLeftNode->m_nNodeDepth = m_pCurrentNode->m_nNodeDepth + 1;
         assignedDungeonNode(m_pCurrentNode->m_pLeftNode);
@@ -137,6 +142,7 @@ bool RandomDungeon::generateNextDungeonNode()
         m_pCurrentNode->m_pRightNode = new (std::nothrow) DungeonNode();
         if(!m_pCurrentNode->m_pRightNode)
             return false;
+        m_pCurrentNode->m_pRightNode->retain();
         m_pCurrentNode->m_pRightNode->m_Type = type;
         m_pCurrentNode->m_pRightNode->m_nNodeDepth = m_pCurrentNode->m_nNodeDepth + 1;
         assignedDungeonNode(m_pCurrentNode->m_pRightNode);

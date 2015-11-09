@@ -473,7 +473,7 @@ void BaseMonster::onEnterDeath()
     this->setVisible(false);
     VoxelExplorer::getInstance()->addExplosion(getPosition3D());
     bool generateItem = GameFormula::generatePickItem(m_pMonsterProperty->isElite(), false);
-    VoxelExplorer::getInstance()->generatePickItem(getPosInMap(), true, m_pMonsterProperty->getValueCopper().GetLongValue());
+    VoxelExplorer::getInstance()->generatePickItem(getPosInMap(), generateItem, m_pMonsterProperty->getValueCopper().GetLongValue());
 }
 void BaseMonster::onExitDeath()
 {
