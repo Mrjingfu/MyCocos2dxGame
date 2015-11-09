@@ -8,8 +8,21 @@
 
 #include "MagicOrnamentProperty.hpp"
 USING_NS_CC;
-
-MagicOrnamentProperty::MagicOrnamentProperty(unsigned int instanceID, PickableItem::PickableItemType type, bool identified)
+static std::vector<ADDED_EFFECT> sOrnamentAddedEffects =
+{
+    AE_LIGHT_DISTANCE,
+    AE_SEARCH_DISTANCE,
+    AE_MAX_HP,
+    AE_MAX_MP,
+    AE_MIN_ATTACK,
+    AE_MAX_ATTACK,
+    AE_ARMOR_CLASS,
+    AE_BLOCK_RATE,
+    AE_CRITICALSTRICK_RATE,
+    AE_DODGE_RATE,
+    AE_MAGICITEM_FIND_RATE,
+};
+MagicOrnamentProperty::MagicOrnamentProperty(unsigned int instanceID, PickableItem::PickableItemType type, CChaosNumber level, bool identified)
     :PickableItemProperty(instanceID, type)
 {
     m_PropertyType = PIPT_MAGIC_ORNAMENT;
@@ -19,6 +32,7 @@ MagicOrnamentProperty::MagicOrnamentProperty(unsigned int instanceID, PickableIt
     m_bCombinable = false;
     m_bDiscardable = true;
     
+    m_nLevel = level;
     m_bHasEquiped = false;
     
     m_nAddedLightDistance       =0;
@@ -33,7 +47,7 @@ MagicOrnamentProperty::MagicOrnamentProperty(unsigned int instanceID, PickableIt
     m_fAddedDodgeRate           =0;
     m_fAddedMagicItemFindRate   =0;
 }
-void MagicOrnamentProperty::adjustByDC()
+void MagicOrnamentProperty::adjustByLevel()
 {
     
 }

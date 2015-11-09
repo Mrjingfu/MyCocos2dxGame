@@ -18,7 +18,6 @@ KeyProperty::KeyProperty(unsigned int instanceID, PickableItem::PickableItemType
     m_bEquipable = false;
     m_bCombinable = true;
     m_bDiscardable = true;
-    m_nCount = 1;
     
     if(m_ItemType == PickableItem::PIT_KEY_COPPER)
         m_nValueCopper = 10;
@@ -39,10 +38,8 @@ KeyProperty::KeyProperty(unsigned int instanceID, PickableItem::PickableItemType
     }
 }
 
-void KeyProperty::adjustByDC()
+void KeyProperty::adjustByLevel()
 {
-    m_nLevel = 1;
-    ++m_nCount;
     m_nValueCopper = m_nValueCopper*m_nCount.GetLongValue();
 }
 void KeyProperty::handleIdentify()

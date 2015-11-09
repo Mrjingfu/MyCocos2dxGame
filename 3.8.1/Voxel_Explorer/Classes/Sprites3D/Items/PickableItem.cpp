@@ -9,6 +9,7 @@
 #include "PickableItem.hpp"
 #include "LevelResourceManager.h"
 #include "BaseLevel.h"
+#include "AlisaMethod.h"
 USING_NS_CC;
 const std::string PICKABLE_ITEM_NAMES[] = {
     
@@ -183,7 +184,7 @@ const std::string PICKABLE_ITEM_NAMES[] = {
     "PIN_UNKNOWN"
 };
 
-PickableItem* PickableItem::create(PickableItemType type)
+PickableItem* PickableItem::create(PickableItemType type, CChaosNumber level)
 {
     std::string model = LevelResourceManager::getInstance()->getItemModelRes(PICKABLE_ITEM_NAMES[type]);
     auto item = new (std::nothrow) PickableItem();
@@ -194,6 +195,8 @@ PickableItem* PickableItem::create(PickableItemType type)
             tex->setAliasTexParameters();
         item->setTexture(tex);
         item->m_Type = type;
+        if(item->m_Type >= PIT_DAGGER_DAGGER && item->m_Type <= PIT_CLOTH_PRO_STEELARMOR)
+            item->m_nLevel = level;
         item->setCameraMask((unsigned int)CameraFlag::USER1);
         item->setLightMask((unsigned int)LightFlag::LIGHT0);
         item->setOpacity(0);
@@ -209,6 +212,7 @@ PickableItem::PickableItem()
 {
     m_State = PIS_UNKNOWN;
     m_Type = PIT_UNKNOWN;
+    m_nLevel = 1;
 }
 PickableItem::~PickableItem()
 {
@@ -304,4 +308,379 @@ void PickableItem::beginRotate()
 void PickableItem::destroySelf()
 {
     this->removeFromParentAndCleanup(true);
+}
+
+PickableItem::PickableItemType PickableItem::generatePickItemByMonsterLevel(int monsterLevel)
+{
+    PickableItem::PickableItemType ret = PIT_UNKNOWN;
+    float percentKey = 0.05f;
+    float percentUnStackableItem = 1.0 - percentKey;
+    AlisaMethod* am = AlisaMethod::create(percentKey, percentUnStackableItem, -1.0, NULL);
+    if(am)
+    {
+        if(am->getRandomIndex() == 0)
+            ret = generateKeyItemType();
+        else if(am->getRandomIndex() == 1)
+        {
+            if(monsterLevel <= 5)
+                ret = generate1_5UnStackableItemType();
+            else if(monsterLevel <= 10)
+            {
+                float percentStandard1 = 0.4f;
+                float percentStandard2 = 1.0 - percentStandard1;
+                AlisaMethod* am = AlisaMethod::create(percentStandard1, percentStandard2, -1.0, NULL);
+                if(am)
+                {
+                    if(am->getRandomIndex() == 0)
+                        ret = generate1_5UnStackableItemType();
+                    else if(am->getRandomIndex() == 1)
+                        ret = generate6_10UnStackableItemType();
+                }
+            }
+            else if(monsterLevel <= 15)
+            {
+                float percentPro = 0.02f;
+                float percentStandard1 = 0.15f;
+                float percentStandard2 = 0.3f;
+                float percentStandard3 = 1.0 - percentPro - percentStandard1 - percentStandard2;
+                AlisaMethod* am = AlisaMethod::create(percentPro, percentStandard1, percentStandard2, percentStandard3, -1.0, NULL);
+                if(am)
+                {
+                    if(am->getRandomIndex() == 0)
+                        ret = generate11_15UnStackableItemProType();
+                    else if(am->getRandomIndex() == 1)
+                        ret = generate1_5UnStackableItemType();
+                    else if(am->getRandomIndex() == 2)
+                        ret = generate6_10UnStackableItemType();
+                    else if(am->getRandomIndex() == 3)
+                        ret = generate11_15UnStackableItemType();
+                }
+
+            }
+            else if(monsterLevel <= 20)
+            {
+                float percentPro1 = 0.01f;
+                float percentPro2 = 0.01f;
+                float percentStandard1 = 0.15f;
+                float percentStandard2 = 0.3f;
+                float percentStandard3 = 1.0 - percentPro1 - percentPro2 - percentStandard1 - percentStandard2;
+                AlisaMethod* am = AlisaMethod::create(percentPro1, percentPro2, percentStandard1, percentStandard2, percentStandard3, -1.0, NULL);
+                if(am)
+                {
+                    if(am->getRandomIndex() == 0)
+                        ret = generate11_15UnStackableItemProType();
+                    else if(am->getRandomIndex() == 1)
+                        ret = generate16_20UnStackableItemProType();
+                    else if(am->getRandomIndex() == 2)
+                        ret = generate6_10UnStackableItemType();
+                    else if(am->getRandomIndex() == 3)
+                        ret = generate11_15UnStackableItemType();
+                    else if(am->getRandomIndex() == 4)
+                        ret = generate16_20UnStackableItemType();
+                }
+            }
+            else if(monsterLevel <= 25)
+            {
+                float percentPro1 = 0.01f;
+                float percentPro2 = 0.01f;
+                float percentStandard1 = 0.15f;
+                float percentStandard2 = 0.3f;
+                float percentStandard3 = 1.0 - percentPro1 - percentPro2 - percentStandard1 - percentStandard2;
+                AlisaMethod* am = AlisaMethod::create(percentPro1, percentPro2, percentStandard1, percentStandard2, percentStandard3, -1.0, NULL);
+                if(am)
+                {
+                    if(am->getRandomIndex() == 0)
+                        ret = generate16_20UnStackableItemProType();
+                    else if(am->getRandomIndex() == 1)
+                        ret = generate21_25UnStackableItemProType();
+                    else if(am->getRandomIndex() == 2)
+                        ret = generate11_15UnStackableItemType();
+                    else if(am->getRandomIndex() == 3)
+                        ret = generate16_20UnStackableItemType();
+                    else if(am->getRandomIndex() == 4)
+                        ret = generate21_25UnStackableItemType();
+                }
+            }
+            else if(monsterLevel <= 30)
+            {
+                float percentPro1 = 0.01f;
+                float percentPro2 = 0.01f;
+                float percentStandard1 = 0.15f;
+                float percentStandard2 = 0.3f;
+                float percentStandard3 = 1.0 - percentPro1 - percentPro2 - percentStandard1 - percentStandard2;
+                AlisaMethod* am = AlisaMethod::create(percentPro1, percentPro2, percentStandard1, percentStandard2, percentStandard3, -1.0, NULL);
+                if(am)
+                {
+                    if(am->getRandomIndex() == 0)
+                        ret = generate21_25UnStackableItemProType();
+                    else if(am->getRandomIndex() == 1)
+                        ret = generate26_30UnStackableItemProType();
+                    else if(am->getRandomIndex() == 2)
+                        ret = generate16_20UnStackableItemType();
+                    else if(am->getRandomIndex() == 3)
+                        ret = generate21_25UnStackableItemType();
+                    else if(am->getRandomIndex() == 4)
+                        ret = generate26_30UnStackableItemType();
+                }
+            }
+            else if(monsterLevel <= 35)
+            {
+                float percentPro1 = 0.01f;
+                float percentPro2 = 0.01f;
+                float percentStandard1 = 0.15f;
+                float percentStandard2 = 0.3f;
+                float percentStandard3 = 1.0 - percentPro1 - percentPro2 - percentStandard1 - percentStandard2;
+                AlisaMethod* am = AlisaMethod::create(percentPro1, percentPro2, percentStandard1, percentStandard2, percentStandard3, -1.0, NULL);
+                if(am)
+                {
+                    if(am->getRandomIndex() == 0)
+                        ret = generate26_30UnStackableItemProType();
+                    else if(am->getRandomIndex() == 1)
+                        ret = generate31_35UnStackableItemProType();
+                    else if(am->getRandomIndex() == 2)
+                        ret = generate21_25UnStackableItemType();
+                    else if(am->getRandomIndex() == 3)
+                        ret = generate26_30UnStackableItemType();
+                    else if(am->getRandomIndex() == 4)
+                        ret = generate31_35UnStackableItemType();
+                }
+            }
+            else
+            {
+                float percentPro1 = 0.01f;
+                float percentPro2 = 0.01f;
+                float percentPro3 = 0.01f;
+                float percentStandard1 = 0.2f;
+                float percentStandard2 = 1.0 - percentPro1 - percentPro2 - percentPro3 -percentStandard1;
+                AlisaMethod* am = AlisaMethod::create(percentPro1, percentPro2, percentPro3,percentStandard1, percentStandard2, -1.0, NULL);
+                if(am)
+                {
+                    if(am->getRandomIndex() == 0)
+                        ret = generate31_35UnStackableItemProType();
+                    else if(am->getRandomIndex() == 1)
+                        ret = generate36_40UnStackableItemProType();
+                    else if(am->getRandomIndex() == 2)
+                        ret = generate41_45UnStackableItemProType();
+                    else if(am->getRandomIndex() == 3)
+                        ret = generate26_30UnStackableItemType();
+                    else if(am->getRandomIndex() == 4)
+                        ret = generate31_35UnStackableItemType();
+                }
+            }
+        }
+    }
+    return ret;
+}
+
+PickableItem::PickableItemType PickableItem::generateKeyItemType()
+{
+    float percent1 = 0.2f;
+    float percent2 = 0.3f;
+    float percent3 = 1.0 - percent1 - percent2;
+    AlisaMethod* am = AlisaMethod::create(percent1, percent2, percent3, -1.0, NULL);
+    if(am)
+    {
+        if(am->getRandomIndex() == 0)
+            return PIT_KEY_GOLD;
+        else if(am->getRandomIndex() == 1)
+            return PIT_KEY_SILVER;
+    }
+    return PIT_KEY_COPPER;
+}
+
+PickableItem::PickableItemType PickableItem::generate1_5UnStackableItemType()
+{
+    std::vector<PickableItem::PickableItemType> types {
+        PIT_DAGGER_DAGGER,
+        PIT_AXE_HATCHET,
+        PIT_SWORD_SWORD,
+        PIT_MACE_ROLLINGPIN,
+        PIT_BOW_SHORTBOW,
+        PIT_STAFF_OAKSTAFF,
+        PIT_SHIELD_WOODENSHIELD,
+        PIT_CLOTH_SHOES
+    };
+    return types[cocos2d::random(0, (int)(types.size()-1))];
+}
+PickableItem::PickableItemType PickableItem::generate6_10UnStackableItemType()
+{
+    std::vector<PickableItem::PickableItemType> types {
+        PIT_DAGGER_HALFSWORD,
+        PIT_AXE_ADZE,
+        PIT_SWORD_STEELSWORD,
+        PIT_MACE_MALLET,
+        PIT_BOW_LONGBOW,
+        PIT_STAFF_FIRSTAFF,
+        PIT_SHIELD_TRIANGLESHIELD,
+        PIT_CLOTH_MAGA_CAP
+    };
+    return types[cocos2d::random(0, (int)(types.size()-1))];
+}
+PickableItem::PickableItemType PickableItem::generate11_15UnStackableItemType()
+{
+    std::vector<PickableItem::PickableItemType> types {
+        PIT_DAGGER_KNIFE,
+        PIT_AXE_STONEAXE,
+        PIT_SWORD_SABRE,
+        PIT_MACE_MACE,
+        PIT_BOW_HORNBOW,
+        PIT_STAFF_ASHESSTAFF,
+        PIT_SHIELD_STEELSHIELD,
+        PIT_CLOTH_CLOTH
+    };
+    return types[cocos2d::random(0, (int)(types.size()-1))];
+}
+PickableItem::PickableItemType PickableItem::generate16_20UnStackableItemType()
+{
+    std::vector<PickableItem::PickableItemType> types {
+        PIT_DAGGER_COLDSTEELDAGGER,
+        PIT_AXE_BROADAX,
+        PIT_SWORD_HUGESWORD,
+        PIT_MACE_HAMMER,
+        PIT_BOW_REFLEXBOW,
+        PIT_STAFF_DEMONSTAFF,
+        PIT_SHIELD_EAGLESHIELD,
+        PIT_CLOTH_LEATHERARMOR
+    };
+    return types[cocos2d::random(0, (int)(types.size()-1))];
+}
+PickableItem::PickableItemType PickableItem::generate21_25UnStackableItemType()
+{
+    std::vector<PickableItem::PickableItemType> types {
+        PIT_DAGGER_RIPPERCUTTER,
+        PIT_AXE_TOMAHAWK,
+        PIT_SWORD_TRIANGLESWORD,
+        PIT_MACE_WOLFFANGSMACE,
+        PIT_BOW_EAGLEBOW,
+        PIT_STAFF_CITRONSTAFF,
+        PIT_SHIELD_OSTEOSCUTE,
+        PIT_CLOTH_CHAINSHOES,
+    };
+    return types[cocos2d::random(0, (int)(types.size()-1))];
+}
+PickableItem::PickableItemType PickableItem::generate26_30UnStackableItemType()
+{
+    std::vector<PickableItem::PickableItemType> types {
+        PIT_DAGGER_BLUELIGHTDAGGER,
+        PIT_AXE_HUGEAXE,
+        PIT_SWORD_JAGGEDSWORD,
+        PIT_MACE_BONEHAMMER,
+        PIT_BOW_LAMINATEDBOW,
+        PIT_STAFF_CLOUDSTAFF,
+        PIT_SHIELD_GOLDENSHIELD,
+        PIT_CLOTH_HELEMT
+    };
+    return types[cocos2d::random(0, (int)(types.size()-1))];
+}
+PickableItem::PickableItemType PickableItem::generate31_35UnStackableItemType()
+{
+    std::vector<PickableItem::PickableItemType> types {
+        PIT_DAGGER_RUBYDAGGER,
+        PIT_AXE_DOUBLEBITAX,
+        PIT_SWORD_CRYSTALSWORD,
+        PIT_MACE_SLEDGEHAMMER,
+        PIT_BOW_GOLDENBOW,
+        PIT_STAFF_MONKSTAFF,
+        PIT_SHIELD_TOWERSHIELD,
+        PIT_CLOTH_STEELARMOR,
+    };
+    return types[cocos2d::random(0, (int)(types.size()-1))];
+}
+PickableItem::PickableItemType PickableItem::generate11_15UnStackableItemProType()
+{
+    std::vector<PickableItem::PickableItemType> types {
+        PIT_DAGGER_PRO_DAGGER,
+        PIT_AXE_PRO_HATCHET,
+        PIT_SWORD_PRO_SWORD,
+        PIT_MACE_PRO_ROLLINGPIN,
+        PIT_BOW_PRO_SHORTBOW,
+        PIT_STAFF_PRO_OAKSTAFF,
+        PIT_SHIELD_PRO_WOODENSHIELD,
+        PIT_CLOTH_PRO_SHOES
+    };
+    return types[cocos2d::random(0, (int)(types.size()-1))];
+}
+PickableItem::PickableItemType PickableItem::generate16_20UnStackableItemProType()
+{
+    std::vector<PickableItem::PickableItemType> types {
+        PIT_DAGGER_PRO_HALFSWORD,
+        PIT_AXE_PRO_ADZE,
+        PIT_SWORD_PRO_STEELSWORD,
+        PIT_MACE_PRO_MALLET,
+        PIT_BOW_PRO_LONGBOW,
+        PIT_STAFF_PRO_FIRSTAFF,
+        PIT_SHIELD_PRO_TRIANGLESHIELD,
+        PIT_CLOTH_PRO_MAGA_CAP
+    };
+    return types[cocos2d::random(0, (int)(types.size()-1))];
+}
+PickableItem::PickableItemType PickableItem::generate21_25UnStackableItemProType()
+{
+    std::vector<PickableItem::PickableItemType> types {
+        PIT_DAGGER_PRO_KNIFE,
+        PIT_AXE_PRO_STONEAXE,
+        PIT_SWORD_PRO_SABRE,
+        PIT_MACE_PRO_MACE,
+        PIT_BOW_PRO_HORNBOW,
+        PIT_STAFF_PRO_ASHESSTAFF,
+        PIT_SHIELD_PRO_STEELSHIELD,
+        PIT_CLOTH_PRO_CLOTH
+    };
+    return types[cocos2d::random(0, (int)(types.size()-1))];
+}
+PickableItem::PickableItemType PickableItem::generate26_30UnStackableItemProType()
+{
+    std::vector<PickableItem::PickableItemType> types {
+        PIT_DAGGER_PRO_COLDSTEELDAGGER,
+        PIT_AXE_PRO_BROADAX,
+        PIT_SWORD_PRO_HUGESWORD,
+        PIT_MACE_PRO_HAMMER,
+        PIT_BOW_PRO_REFLEXBOW,
+        PIT_STAFF_PRO_DEMONSTAFF,
+        PIT_SHIELD_PRO_EAGLESHIELD,
+        PIT_CLOTH_PRO_LEATHERARMOR
+    };
+    return types[cocos2d::random(0, (int)(types.size()-1))];
+}
+PickableItem::PickableItemType PickableItem::generate31_35UnStackableItemProType()
+{
+    std::vector<PickableItem::PickableItemType> types {
+        PIT_DAGGER_PRO_RIPPERCUTTER,
+        PIT_AXE_PRO_TOMAHAWK,
+        PIT_SWORD_PRO_TRIANGLESWORD,
+        PIT_MACE_PRO_WOLFFANGSMACE,
+        PIT_BOW_PRO_EAGLEBOW,
+        PIT_STAFF_PRO_CITRONSTAFF,
+        PIT_SHIELD_PRO_OSTEOSCUTE,
+        PIT_CLOTH_PRO_CHAINSHOES,
+    };
+    return types[cocos2d::random(0, (int)(types.size()-1))];
+}
+PickableItem::PickableItemType PickableItem::generate36_40UnStackableItemProType()
+{
+    std::vector<PickableItem::PickableItemType> types {
+        PIT_DAGGER_PRO_BLUELIGHTDAGGER,
+        PIT_AXE_PRO_HUGEAXE,
+        PIT_SWORD_PRO_JAGGEDSWORD,
+        PIT_MACE_PRO_BONEHAMMER,
+        PIT_BOW_PRO_LAMINATEDBOW,
+        PIT_STAFF_PRO_CLOUDSTAFF,
+        PIT_SHIELD_PRO_GOLDENSHIELD,
+        PIT_CLOTH_PRO_HELEMT
+    };
+    return types[cocos2d::random(0, (int)(types.size()-1))];
+}
+PickableItem::PickableItemType PickableItem::generate41_45UnStackableItemProType()
+{
+    std::vector<PickableItem::PickableItemType> types {
+        PIT_DAGGER_PRO_RUBYDAGGER,
+        PIT_AXE_PRO_DOUBLEBITAX,
+        PIT_SWORD_PRO_CRYSTALSWORD,
+        PIT_MACE_PRO_SLEDGEHAMMER,
+        PIT_BOW_PRO_GOLDENBOW,
+        PIT_STAFF_PRO_MONKSTAFF,
+        PIT_SHIELD_PRO_TOWERSHIELD,
+        PIT_CLOTH_PRO_STEELARMOR,
+    };
+    return types[cocos2d::random(0, (int)(types.size()-1))];
 }

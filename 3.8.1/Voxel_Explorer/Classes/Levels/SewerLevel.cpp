@@ -23,7 +23,7 @@ bool SewerLevel::createMonsters()
     int monsterNum = calculateLevelMonsterCount();
     for (int i=0; i < monsterNum; i++) {
         BaseMonster::MonsterType type = (BaseMonster::MonsterType)cocos2d::random((int)BaseMonster::MT_RAT, (int)BaseMonster::MT_SLIME);
-        StandardMonster* monster = StandardMonster::create(BaseMonster::MT_SLIME);
+        StandardMonster* monster = StandardMonster::create(type);
         if(!monster)
             return false;
         int tileIndex = -1;
@@ -41,6 +41,19 @@ bool SewerLevel::createMonsters()
 }
 bool SewerLevel::createUseableItems()
 {
+    return true;
+}
+bool SewerLevel::createPickableItems()
+{
+    ///创建房间钥匙
+//    PickableItem* item = PickableItem::create(type);
+//    if(item)
+//    {
+//        item->setPosition3D(Vec3(pos.x*TerrainTile::CONTENT_SCALE, -0.5f*TerrainTile::CONTENT_SCALE, -pos.y*TerrainTile::CONTENT_SCALE));
+//        item->setVisited(true);
+//        VoxelExplorer::getInstance()->getPickableItemsLayer()->addChild(item);
+//        item->setState(PickableItem::PIS_BEGIN_GENERATE);
+//    }
     return true;
 }
 int SewerLevel::calculateLevelMonsterCount()

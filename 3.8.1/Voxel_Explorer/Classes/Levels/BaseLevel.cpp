@@ -33,6 +33,8 @@ void BaseLevel::create()
         CCLOGERROR("Create Monsters failed!");
     if(!createUseableItems())
         CCLOGERROR("Create Useable Items failed!");
+    if(!createPickableItems())
+        CCLOGERROR("Create Pickable Items failed!");
     
     if(!Pathfinder::getInstance()->init(m_nWidth, m_nHeight))
         CCLOGERROR("Pathfinder initialize failed!");

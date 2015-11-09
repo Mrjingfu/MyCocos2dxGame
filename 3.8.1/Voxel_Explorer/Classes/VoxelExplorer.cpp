@@ -240,7 +240,7 @@ void VoxelExplorer::addExplosion(const cocos2d::Vec3& pos)
         explosion->startParticleSystem();
     }
 }
-void VoxelExplorer::generatePickItem(const cocos2d::Vec2& pos, bool generateItem, int copper)
+void VoxelExplorer::generatePickItem(const cocos2d::Vec2& pos, bool generateItem, int copper, int monsterLevel)
 {
     if(m_pPickableItemsLayer && m_pCurrentLevel)
     {
@@ -253,7 +253,10 @@ void VoxelExplorer::generatePickItem(const cocos2d::Vec2& pos, bool generateItem
         }
         if(generateItem)
         {
-            PickableItem* item = PickableItem::create(PickableItem::PIT_BOW_SHORTBOW);
+            PickableItem::PickableItemType type = PickableItem::generatePickItemByMonsterLevel(monsterLevel);
+            if(type == PickableItem::PIT_UNKNOWN)
+                return;
+            PickableItem* item = PickableItem::create(type, monsterLevel);
             if(item)
             {
                 item->setPosition3D(Vec3(pos.x*TerrainTile::CONTENT_SCALE, -0.5f*TerrainTile::CONTENT_SCALE, -pos.y*TerrainTile::CONTENT_SCALE));
@@ -310,7 +313,7 @@ void VoxelExplorer::handlePickItem(const cocos2d::Vec2& mapPos)        ///拾取
             {
                 if(item->getState() == PickableItem::PIS_IDLE)
                 {
-                    if(PlayerProperty::getInstance()->addItemToBag(item->getPickableItemType()))
+                    if(PlayerProperty::getInstance()->addItemToBag(item->getPickableItemType(), item->getLevel()))
                     {
                         item->setState(PickableItem::PIS_FADEOUT);
                     }

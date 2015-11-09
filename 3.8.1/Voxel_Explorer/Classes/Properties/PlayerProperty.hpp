@@ -57,12 +57,14 @@ public:
     void setExp(CChaosNumber exp);
     void setCurrentHP(CChaosNumber hp);
     void setCurrentMP(CChaosNumber mp);
-    bool EquipWeapon(CChaosNumber id);
-    bool EquipSecondWeapon(CChaosNumber id);
-    bool EquipArmor(CChaosNumber id);
-    bool EquipOrnaments(CChaosNumber id);
+    bool equipWeapon(CChaosNumber id);
+    bool equipSecondWeapon(CChaosNumber id);
+    bool equipArmor(CChaosNumber id);
+    bool equipOrnaments(CChaosNumber id);
+    bool indentifyItem(CChaosNumber id);
     
-    bool addItemToBag(PickableItem::PickableItemType type);
+    bool addItemToBag(PickableItem::PickableItemType type, CChaosNumber level);
+    bool removeStackableItemFromBag(CChaosNumber id, CChaosNumber count);
     bool removeItemFromBag(CChaosNumber id);
     void extendBagSpace();
     const std::vector<PickableItemProperty*>& getPlayerBag() const { return m_Bag; }
@@ -95,8 +97,9 @@ private:
     CChaosNumber    m_fBlockRate;           ///格挡率
     CChaosNumber    m_fCriticalStrikeRate;  ///暴击率
     CChaosNumber    m_fDodgeRate;           ///闪避率
-    CChaosNumber    m_fBasicMagicItemFindRate;   ///基本魔法取得率
-    CChaosNumber    m_fMagicItemFindRate;   ///魔法取得率
+    CChaosNumber    m_fBasicMagicItemFindRate;   ///基本魔法物品获得率
+    CChaosNumber    m_fMagicItemFindRate;   ///魔法物品获得率
+    CChaosNumber    m_fMaxMagicItemFindRate;   ///最大魔法物品获得率
     
     CChaosNumber            m_nEquipedWeaponID;       ///装备了武器ID
     CChaosNumber            m_nEquipedSecondWeaponID; ///装备了副手武器ID

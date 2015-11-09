@@ -12,6 +12,27 @@
 #include "cocos2d.h"
 #include "ChaosNumber.h"
 #include "PickableItem.hpp"
+typedef enum{
+    AE_LIGHT_DISTANCE = 0,
+    AE_SEARCH_DISTANCE,
+    AE_MAX_HP,
+    AE_MAX_MP,
+    AE_MIN_ATTACK,
+    AE_MAX_ATTACK,
+    AE_DICE_NUM,
+    AE_DICE_FACE_NUM,
+    AE_ARMOR_CLASS,
+    AE_BLOCK_RATE,
+    AE_CRITICALSTRICK_RATE,
+    AE_DODGE_RATE,
+    AE_MAGICITEM_FIND_RATE
+}ADDED_EFFECT;
+class IStackable
+{
+public:
+    virtual void increaseCount() = 0;
+    virtual void decreaseCount() = 0;
+};
 class PickableItemProperty : public cocos2d::Ref
 {
     friend class PlayerProperty;
@@ -45,11 +66,13 @@ public:
     bool isCombinable() const { return m_bCombinable; }
     bool isDiscardable() const { return m_bDiscardable; }
     bool isCursed() const { return m_bCursed; }
+    CChaosNumber getCount() const { return m_nCount; }
+    void setCount(CChaosNumber count) { m_nCount = count; }
 protected:
     PickableItemProperty(unsigned int instanceID, PickableItem::PickableItemType type);
 
 public:
-    virtual void adjustByDC() = 0;
+    virtual void adjustByLevel() = 0;
     virtual void handleIdentify() = 0;
 protected:
     unsigned int                    m_nInstanceID;
@@ -58,6 +81,7 @@ protected:
     CChaosNumber                    m_nLevel;               ///等级
     CChaosNumber                    m_nValueCopper;         ///价值
     std::string                     m_strName;              ///名称
+    std::string                     m_strBeforeIndentifyDesc;   ///未辨识前的描述
     std::string                     m_strDesc;              ///描述
     std::string                     m_strIconRes;           ///icon资源
     bool                            m_bIdentified;          ///是否辨识过
@@ -66,6 +90,8 @@ protected:
     bool                            m_bCombinable;          ///是否可组合的
     bool                            m_bDiscardable;         ///是否可被丢弃的
     bool                            m_bCursed;              ///被诅咒的(被诅咒的装备不能卸载下)
+    
+    CChaosNumber                    m_nCount;               ///个数
 };
 
 #endif /* PickableItemProperty_hpp */

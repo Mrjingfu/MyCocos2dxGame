@@ -16,9 +16,10 @@ PickableItemProperty::PickableItemProperty(unsigned int instanceID, PickableItem
     m_nInstanceID = instanceID;
     m_PropertyType = PIPT_UNKNOWN;
     m_ItemType = type;
-    m_nLevel = 0;
+    m_nLevel = 1;
     m_nValueCopper = 0;
     m_strName = UtilityHelper::getLocalString(PICKABLE_ITEM_NAMES[type]);
+    m_strBeforeIndentifyDesc = UtilityHelper::getLocalString(PICKABLE_ITEM_NAMES[type] + "_BIDESC");
     m_strDesc = UtilityHelper::getLocalString(PICKABLE_ITEM_NAMES[type] + "_DESC");
     m_strIconRes = LevelResourceManager::getInstance()->getItemIconRes(PICKABLE_ITEM_NAMES[type]);
     m_bIdentified = true;
@@ -27,5 +28,6 @@ PickableItemProperty::PickableItemProperty(unsigned int instanceID, PickableItem
     m_bCombinable = false;
     m_bDiscardable = true;
     m_bCursed = false;
+    m_nCount = 1;
 }
 

@@ -19,8 +19,8 @@ public:
         SWPT_SHIELD,                ///盾牌
         SWPT_UNKNOWN
     }SecondWeaponPropertyType;
-    SecondWeaponProperty(unsigned int instanceID, PickableItem::PickableItemType type, bool identified);
-    virtual void adjustByDC();
+    SecondWeaponProperty(unsigned int instanceID, PickableItem::PickableItemType type, CChaosNumber level, bool identified);
+    virtual void adjustByLevel();
     virtual void handleIdentify();
     
     bool hasEquiped() const { return m_bHasEquiped; }

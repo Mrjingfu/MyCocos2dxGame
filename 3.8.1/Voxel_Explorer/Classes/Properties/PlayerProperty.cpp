@@ -52,8 +52,9 @@ PlayerProperty::PlayerProperty()
     m_fBlockRate            = 0.01f;            ///格挡率
     m_fCriticalStrikeRate   = 0.01f;            ///暴击率
     m_fDodgeRate            = 0.02f;            ///闪避率
-    m_fBasicMagicItemFindRate = 0.2f;           ///基本魔法取得率
+    m_fBasicMagicItemFindRate = 0.2f;           ///基本魔法物品获得率
     m_fMagicItemFindRate    = 0.0f;             ///魔法物品获得率
+    m_fMaxMagicItemFindRate = 0.8f;             ///最大魔法物品获得率
     
     m_nEquipedWeaponID      = -1;               ///装备了武器ID
     m_nEquipedSecondWeaponID= -1;               ///装备了副手武器ID
@@ -154,7 +155,7 @@ void PlayerProperty::setCurrentMP(CChaosNumber mp)
     
     m_bDirty = true;
 }
-bool PlayerProperty::EquipWeapon(CChaosNumber id)
+bool PlayerProperty::equipWeapon(CChaosNumber id)
 {
     WeaponProperty* weaponProperty = static_cast<WeaponProperty*>(getItemFromBag(id));
     if(weaponProperty)
@@ -206,13 +207,14 @@ bool PlayerProperty::EquipWeapon(CChaosNumber id)
         m_nAttackDiceFaceNum = weaponProperty->getAttackDiceFaceNum().GetLongValue();
         m_fCriticalStrikeRate = m_fCriticalStrikeRate + weaponProperty->getAddedCriticalStrikeRate().GetFloatValue();
         m_fMagicItemFindRate = m_fMagicItemFindRate + (m_fBasicMagicItemFindRate + m_fBasicMagicItemFindRate*weaponProperty->getAddedMagicItemFindRate().GetFloatValue());
+        m_fMagicItemFindRate = MIN(m_fMagicItemFindRate, m_fMaxMagicItemFindRate);
         weaponProperty->setEquiped(true);
         m_bDirty = true;
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_EQUIPED_WEAPON, &m_nEquipedWeaponID);
     }
     return true;
 }
-bool PlayerProperty::EquipSecondWeapon(CChaosNumber id)
+bool PlayerProperty::equipSecondWeapon(CChaosNumber id)
 {
     SecondWeaponProperty* secondWeaponProperty = static_cast<SecondWeaponProperty*>(getItemFromBag(id));
     if(secondWeaponProperty)
@@ -272,6 +274,7 @@ bool PlayerProperty::EquipSecondWeapon(CChaosNumber id)
         m_fDodgeRate = m_fDodgeRate + secondWeaponProperty->getAddedDodgeRate().GetFloatValue();
         
         m_fMagicItemFindRate = m_fMagicItemFindRate + (m_fBasicMagicItemFindRate + m_fBasicMagicItemFindRate*secondWeaponProperty->getAddedMagicItemFindRate().GetFloatValue());
+        m_fMagicItemFindRate = MIN(m_fMagicItemFindRate, m_fMaxMagicItemFindRate);
         secondWeaponProperty->setEquiped(true);
         
         m_bDirty = true;
@@ -279,7 +282,7 @@ bool PlayerProperty::EquipSecondWeapon(CChaosNumber id)
     }
     return true;
 }
-bool PlayerProperty::EquipArmor(CChaosNumber id)
+bool PlayerProperty::equipArmor(CChaosNumber id)
 {
     ArmorProperty* armorProperty = static_cast<ArmorProperty*>(getItemFromBag(id));
     if(armorProperty)
@@ -330,13 +333,14 @@ bool PlayerProperty::EquipArmor(CChaosNumber id)
         m_fDodgeRate = m_fDodgeRate + armorProperty->getAddedDodgeRate().GetFloatValue();
         
         m_fMagicItemFindRate = m_fMagicItemFindRate + (m_fBasicMagicItemFindRate + m_fBasicMagicItemFindRate*armorProperty->getAddedMagicItemFindRate().GetFloatValue());
+        m_fMagicItemFindRate = MIN(m_fMagicItemFindRate, m_fMaxMagicItemFindRate);
         armorProperty->setEquiped(true);
         m_bDirty = true;
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_EQUIPED_ARMOR, &m_nEquipedArmorID);
     }
     return true;
 }
-bool PlayerProperty::EquipOrnaments(CChaosNumber id)
+bool PlayerProperty::equipOrnaments(CChaosNumber id)
 {
     MagicOrnamentProperty* magicOrnamentProperty = static_cast<MagicOrnamentProperty*>(getItemFromBag(id));
     if(magicOrnamentProperty)
@@ -396,47 +400,82 @@ bool PlayerProperty::EquipOrnaments(CChaosNumber id)
         m_fDodgeRate = m_fDodgeRate + magicOrnamentProperty->getAddedDodgeRate().GetFloatValue();
         
         m_fMagicItemFindRate = m_fMagicItemFindRate + (m_fBasicMagicItemFindRate + m_fBasicMagicItemFindRate*magicOrnamentProperty->getAddedMagicItemFindRate().GetFloatValue());
+        m_fMagicItemFindRate = MIN(m_fMagicItemFindRate, m_fMaxMagicItemFindRate);
         magicOrnamentProperty->setEquiped(true);
         m_bDirty = true;
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_EQUIPED_ORNAMENTS, &m_nEquipedOrnamentsID);
     }
     return true;
 }
-bool PlayerProperty::addItemToBag(PickableItem::PickableItemType type)
+bool PlayerProperty::indentifyItem(CChaosNumber id)
+{
+    PickableItemProperty* pickableItemProperty = static_cast<PickableItemProperty*>(getItemFromBag(id));
+    if(pickableItemProperty && !pickableItemProperty->isIdentified())
+    {
+        ////检查辨识卷轴数量
+        ////辨识卷轴减少
+        pickableItemProperty->handleIdentify();
+        return true;
+    }
+    return false;
+}
+bool PlayerProperty::addItemToBag(PickableItem::PickableItemType type, CChaosNumber level)
 {
     if(m_Bag.size() >= m_nBagMaxSpace.GetLongValue())
     {
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_BAG_NO_SPACE);
         return false;
     }
-    PickableItemProperty* itemProperty = nullptr;
-    std::vector<PickableItemProperty*>::iterator iter;
-    for (iter = m_Bag.begin(); iter != m_Bag.end(); iter++) {
-        if ((*iter)!=nullptr && (*iter)->getPickableItemType() == type) {
-            itemProperty = (*iter);
-            break;
+    for (PickableItemProperty* item : m_Bag) {
+        if(item)
+        {
+            if(item->isStackable() && item->getPickableItemType() == type)
+            {
+                IStackable* itemProperty = dynamic_cast<IStackable*>(item);
+                if (itemProperty)
+                    itemProperty->increaseCount();
+                if(item->isIdentified())
+                    item->adjustByLevel();
+                return true;
+            }
         }
     }
-    if (itemProperty&& itemProperty->isStackable())
+    PickableItemProperty* itemProperty = nullptr;
+    if(type >= PickableItem::PIT_KEY_COPPER && type <= PickableItem::PIT_KEY_ROOM)
+        itemProperty = new (std::nothrow) KeyProperty(m_snItemInstanceIDCounter++,type);
+    else if (type >= PickableItem::PIT_DAGGER_DAGGER && type <= PickableItem::PIT_MACE_PRO_SLEDGEHAMMER)
+        itemProperty = new (std::nothrow) WeaponProperty(m_snItemInstanceIDCounter++,type, level, !GameFormula::generateMagicItem(m_fMagicItemFindRate.GetFloatValue()));
+    else if (type >= PickableItem::PIT_BOW_SHORTBOW && type <=PickableItem::PIT_SHIELD_PRO_TOWERSHIELD)
+        itemProperty = new (std::nothrow) SecondWeaponProperty(m_snItemInstanceIDCounter++,type, level, !GameFormula::generateMagicItem(m_fMagicItemFindRate.GetFloatValue()));
+    else if(type >= PickableItem::PIT_CLOTH_SHOES && type <= PickableItem::PIT_CLOTH_PRO_STEELARMOR)
+        itemProperty = new (std::nothrow) ArmorProperty(m_snItemInstanceIDCounter++,type, level, !GameFormula::generateMagicItem(m_fMagicItemFindRate.GetFloatValue()));
+    if(itemProperty)
     {
-        
-        itemProperty->adjustByDC();
+        if(itemProperty->isIdentified())
+            itemProperty->adjustByLevel();
+        m_Bag.push_back(itemProperty);
         return true;
-    }else
-    {
-        if(type >= PickableItem::PIT_KEY_COPPER && type <= PickableItem::PIT_KEY_ROOM)
-            itemProperty = new (std::nothrow) KeyProperty(m_snItemInstanceIDCounter++,type);
-        else if (type >= PickableItem::PIT_DAGGER_DAGGER && type <= PickableItem::PIT_MACE_PRO_SLEDGEHAMMER)
-            itemProperty = new (std::nothrow) WeaponProperty(m_snItemInstanceIDCounter++,type, true);
-        else if (type >= PickableItem::PIT_BOW_SHORTBOW && type <=PickableItem::PIT_SHIELD_PRO_TOWERSHIELD)
-            itemProperty = new (std::nothrow) SecondWeaponProperty(m_snItemInstanceIDCounter++,type,true);
-        else if(type >= PickableItem::PIT_CLOTH_SHOES && type <= PickableItem::PIT_CLOTH_PRO_STEELARMOR)
-            itemProperty = new (std::nothrow) ArmorProperty(m_snItemInstanceIDCounter++,type, true);
-        if(itemProperty)
+    }
+    return false;
+}
+bool PlayerProperty::removeStackableItemFromBag(CChaosNumber id, CChaosNumber count)
+{
+    std::vector<PickableItemProperty*>::iterator iter;
+    for (iter = m_Bag.begin(); iter != m_Bag.end(); iter++) {
+        if((*iter) != nullptr && (*iter)->getInstanceID() == id.GetLongValue())
         {
-//            itemProperty->adjustByDC();
-            m_Bag.push_back(itemProperty);
-            return true;
+            if((*iter)->getCount() == count)
+            {
+                m_Bag.erase(iter);
+                return true;
+            }
+            else if((*iter)->getCount() > count)
+            {
+                (*iter)->setCount((*iter)->getCount().GetLongValue() - count.GetLongValue());
+                return true;
+            }
+            else
+                return false;
         }
     }
     return false;

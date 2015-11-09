@@ -17,6 +17,7 @@ public:
     
     virtual bool createMonsters();
     virtual bool createUseableItems();
+    virtual bool createPickableItems();
 protected:
     int calculateLevelMonsterCount();
 };
