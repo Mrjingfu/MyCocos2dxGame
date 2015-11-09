@@ -330,11 +330,5 @@
 	<string>骑士的容貌</string>
 	<key>PIN_CLOTH_PRO_STEELARMOR</key>
 	<string>寡妇对抗者</string>
-	<key>PIN_COIN_GOLD</key>
-	<string>金币</string>
-	<key>PIN_COIN_SILVER</key>
-	<string>银币</string>
-	<key>PIN_COIN_BRONZE</key>
-	<string>铜币</string>
 </dict>
 </plist>

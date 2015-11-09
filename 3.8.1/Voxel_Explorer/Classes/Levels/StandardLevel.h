@@ -28,7 +28,7 @@ protected:
     virtual bool build();
     virtual bool createTerrain();
     virtual bool decorate();
-    
+
     virtual bool initAreas();
     virtual void splitArea(const cocos2d::Rect& rect);
     virtual void assignAreasType();

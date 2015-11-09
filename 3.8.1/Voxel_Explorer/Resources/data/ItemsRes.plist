@@ -236,11 +236,5 @@
 	<string>C_Elm04</string>
 	<key>PIN_CLOTH_PRO_STEELARMOR</key>
 	<string>A_Armour03</string>
-	<key>PIN_COIN_GOLD</key>
-	<string>I_GoldCoin</string>
-	<key>PIN_COIN_SILVER</key>
-	<string>I_SilverCoin</string>
-	<key>PIN_COIN_BRONZE</key>
-	<string>I_BronzeCoin</string>
 </dict>
 </plist>

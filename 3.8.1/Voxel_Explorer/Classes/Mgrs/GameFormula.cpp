@@ -7,6 +7,7 @@
 //
 
 #include "GameFormula.hpp"
+#include "AlisaMethod.h"
 USING_NS_CC;
 
 static const CChaosNumber gsMaxBlockRate = 0.2f;
@@ -14,6 +15,22 @@ static const CChaosNumber gsMaxCriticalStrikeRate = 0.3f;
 static const CChaosNumber gsMaxDodgeRate = 0.2f;
 static const CChaosNumber gsMaxMagicItemFindRate = 0.65f;
 
+bool GameFormula::generatePickItem(bool isElite, bool isBoss)
+{
+    if(isElite)
+        return true;
+    else if(isBoss)
+        return true;
+    else
+    {
+        float percentOne = 0.1f;
+        float percentZero = 1.0 - percentOne;
+        AlisaMethod* am = AlisaMethod::create(percentOne, percentZero, -1.0, NULL);
+        if(!am)
+            return false;
+        return am->getRandomIndex() == 0;
+    }
+}
 int GameFormula::getNextLevelExp(int currentLevel)
 {
     int exp = floor((pow((currentLevel-1), 3)+60)/5*((currentLevel-1)*2+60)+60);

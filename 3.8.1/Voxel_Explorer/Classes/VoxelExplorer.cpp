@@ -18,6 +18,7 @@
 #include "Layer3D.hpp"
 #include "BaseBoss.hpp"
 #include "BaseMonster.hpp"
+#include "GameFormula.hpp"
 #include "Particle3D/CCParticleSystem3D.h"
 #include "Particle3D/PU/CCPUParticleSystem3D.h"
 USING_NS_CC;
@@ -239,7 +240,30 @@ void VoxelExplorer::addExplosion(const cocos2d::Vec3& pos)
         explosion->startParticleSystem();
     }
 }
-
+void VoxelExplorer::generatePickItem(const cocos2d::Vec2& pos, bool generateItem, int copper)
+{
+    if(m_pPickableItemsLayer && m_pCurrentLevel)
+    {
+        if(copper > 0)
+        {
+            CChaosNumber copperNum, silverNum, goldNum;
+            GameFormula::exchangeMoney(copper, goldNum, silverNum, copperNum);
+            PlayerProperty::getInstance()->addMoney(goldNum, silverNum, copperNum);
+            ///声音
+        }
+        if(generateItem)
+        {
+            PickableItem* item = PickableItem::create(PickableItem::PIT_BOW_SHORTBOW);
+            if(item)
+            {
+                item->setPosition3D(Vec3(pos.x*TerrainTile::CONTENT_SCALE, -0.5f*TerrainTile::CONTENT_SCALE, -pos.y*TerrainTile::CONTENT_SCALE));
+                item->setVisited(true);
+                VoxelExplorer::getInstance()->getPickableItemsLayer()->addChild(item);
+                item->setState(PickableItem::PIS_BEGIN_GENERATE);
+            }
+        }
+    }
+}
 void VoxelExplorer::handleDoor(const cocos2d::Vec2& mapPos)
 {
     if(m_pTerrainDoorsLayer && m_pPlayer)
@@ -289,7 +313,6 @@ void VoxelExplorer::handlePickItem(const cocos2d::Vec2& mapPos)        ///拾取
                     if(PlayerProperty::getInstance()->addItemToBag(item->getPickableItemType()))
                     {
                         item->setState(PickableItem::PIS_FADEOUT);
-                        return;
                     }
                 }
             }

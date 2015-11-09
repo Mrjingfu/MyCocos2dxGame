@@ -13,6 +13,7 @@
 #include "StandardDoor.hpp"
 #include "RandomDungeon.hpp"
 #include "AlisaMethod.h"
+#include "PickableItem.hpp"
 USING_NS_CC;
 
 StandardLevel::StandardLevel()
@@ -208,7 +209,6 @@ bool StandardLevel::decorate()
 {
     return true;
 }
-
 bool StandardLevel::initAreas()
 {
     m_Areas.clear();
@@ -776,7 +776,7 @@ int StandardLevel::randomMonsterRespawnCell()
                 continue;
         }
         tileIndex = area->getRandomTile(this);
-        if((m_Map[tileIndex].m_Flag & TileInfo::USEABLE) != 0 || (m_Map[tileIndex].m_Flag & TileInfo::ATTACKABLE) != 0)
+        if((m_Map[tileIndex].m_Flag & TileInfo::USEABLE) != 0 || (m_Map[tileIndex].m_Flag & TileInfo::ATTACKABLE) != 0 || (m_Map[tileIndex].m_Flag & TileInfo::STOPPABLE) != 0)
             continue;
         if ((m_Map[tileIndex].m_Flag & TileInfo::PASSABLE) != 0 ) {
             return tileIndex;
@@ -800,9 +800,9 @@ int StandardLevel::randomPickableRespawnCell()
             continue;
 
         tileIndex = area->getRandomTile(this);
-        if((m_Map[tileIndex].m_Flag & TileInfo::USEABLE) != 0 || (m_Map[tileIndex].m_Flag & TileInfo::ATTACKABLE) != 0)
+        if((m_Map[tileIndex].m_Flag & TileInfo::USEABLE) != 0 || (m_Map[tileIndex].m_Flag & TileInfo::ATTACKABLE) != 0 || (m_Map[tileIndex].m_Flag & TileInfo::STOPPABLE) != 0)
             continue;
-        if ((m_Map[tileIndex].m_Flag & TileInfo::PASSABLE) != 0 && (m_Map[tileIndex].m_Flag & TileInfo::PICKABLE) == 0) {
+        if ((m_Map[tileIndex].m_Flag & TileInfo::PASSABLE) != 0 || (m_Map[tileIndex].m_Flag & TileInfo::PICKABLE) == 0) {
             return tileIndex;
         }
     }}

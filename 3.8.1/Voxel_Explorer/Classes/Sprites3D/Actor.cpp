@@ -19,7 +19,7 @@ Actor::~Actor()
 }
 Vec2 Actor::getPosInMap()
 {
-    return Vec2( (int)(getPositionX()/TerrainTile::CONTENT_SCALE), int(-getPositionZ() /TerrainTile::CONTENT_SCALE));
+    return Vec2( (int)(getPositionX()/TerrainTile::CONTENT_SCALE+0.5f), int(-getPositionZ() /TerrainTile::CONTENT_SCALE+0.5f));
 }
 void Actor::setActorDir( ActorDir dir )
 {

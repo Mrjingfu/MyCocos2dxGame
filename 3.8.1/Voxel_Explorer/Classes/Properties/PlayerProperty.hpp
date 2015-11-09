@@ -68,7 +68,6 @@ public:
     const std::vector<PickableItemProperty*>& getPlayerBag() const { return m_Bag; }
     PickableItemProperty* getItemFromBag(CChaosNumber id) const;
     
-    
     CChaosNumber getRandomAttack();
     void load();
     void save();

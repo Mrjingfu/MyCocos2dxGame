@@ -11,6 +11,7 @@
 #include "AlisaMethod.h"
 #include "PlayerProperty.hpp"
 #include "VoxelExplorer.h"
+#include "GameFormula.hpp"
 USING_NS_CC;
 const std::string MONSTER_MODEL_NAMES[] = {
     "MMN_UNKNOWN",
@@ -405,6 +406,7 @@ void BaseMonster::onEnterAttack()
 {
     Vec3 dir = Vec3::ZERO;
     Vec2 playerPos = VoxelExplorer::getInstance()->getPlayer()->getPosInMap();
+    CCLOG("attack pos %f, %f", playerPos.x, playerPos.y);
     Vec2 vd = playerPos - getPosInMap();
     if(std::abs(vd.x) > std::abs(vd.y))
     {
@@ -435,7 +437,7 @@ void BaseMonster::onEnterAttack()
 
     if(m_bJumpMove)
     {
-        EaseSineOut* moveUp = EaseSineOut::create(MoveTo::create(0.1f, Vec3(getPositionX(), getPositionY() + TerrainTile::CONTENT_SCALE*0.25f, getPositionZ()) + dir*0.4f));
+        EaseSineOut* moveUp = EaseSineOut::create(MoveTo::create(0.1f, Vec3(getPositionX(), getPositionY() + TerrainTile::CONTENT_SCALE*0.25f, getPositionZ()) + dir*0.5f));
         CallFunc* callback = CallFunc::create(CC_CALLBACK_0(VoxelExplorer::handlePlayerHurt,VoxelExplorer::getInstance(),playerPos, m_pMonsterProperty));
         EaseSineOut* moveDown = EaseSineOut::create(MoveTo::create(0.1f, getPosition3D()));
         Sequence* sequenceJump = Sequence::create(moveUp, callback, moveDown, NULL);
@@ -450,7 +452,7 @@ void BaseMonster::onEnterAttack()
         ScaleTo* scaleTo1 = ScaleTo::create(0.5f, oriScale.x, oriScale.y, oriScale.z*0.8f);
         ScaleTo* scaleTo2 = ScaleTo::create(0.5f, oriScale.x, oriScale.y, oriScale.z);
         CallFunc* callback = CallFunc::create(CC_CALLBACK_0(VoxelExplorer::handlePlayerHurt,VoxelExplorer::getInstance(),playerPos, m_pMonsterProperty));
-        EaseBackIn* moveTo1 = EaseBackIn::create(MoveTo::create(0.5f, getPosition3D() + dir*0.4f));
+        EaseBackIn* moveTo1 = EaseBackIn::create(MoveTo::create(0.5f, getPosition3D() + dir*0.5f));
         EaseBackIn* moveTo2 = EaseBackIn::create(MoveTo::create(0.5f, getPosition3D()));
         Sequence* sequenceScale = Sequence::create(scaleTo1, scaleTo2, NULL);
         Sequence* sequenceMove = Sequence::create(moveTo1, callback, moveTo2, NULL);
@@ -470,7 +472,8 @@ void BaseMonster::onEnterDeath()
     removeTerrainTileFlag(TileInfo::ATTACKABLE);
     this->setVisible(false);
     VoxelExplorer::getInstance()->addExplosion(getPosition3D());
-    
+    bool generateItem = GameFormula::generatePickItem(m_pMonsterProperty->isElite(), false);
+    VoxelExplorer::getInstance()->generatePickItem(getPosInMap(), true, m_pMonsterProperty->getValueCopper().GetLongValue());
 }
 void BaseMonster::onExitDeath()
 {

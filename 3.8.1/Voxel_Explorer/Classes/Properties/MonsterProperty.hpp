@@ -37,6 +37,8 @@ public:
     void adjustByDC();
     
     CChaosNumber getRandomAttack();
+    
+    bool isElite() const { return m_bIsElite; }
 private:
     CChaosNumber    m_nLevel;                    ///等级
     CChaosNumber    m_nValueCopper;              ///价值铜币
