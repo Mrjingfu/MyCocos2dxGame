@@ -222,8 +222,8 @@ void PopupUILayerManager::showStatus(TipTypes tipType,  std::string text,cocos2d
     m_pLabel->setPosition(pos);
     m_pLabel->setTextColor(cocos2d::Color4B(getTipsColor(tipType)));
     if (tipType == TIP_CRITICAL_STRIKE || tipType == TIP_CRITICAL_STRIKE) {
-        cocos2d::ScaleTo* ScaleTo1 = cocos2d::ScaleTo::create(0.3, 0.8);
-        cocos2d::MoveBy* moveBy = cocos2d::MoveBy::create(0.3, Vec2(0, 20.0f));
+        cocos2d::ScaleTo* ScaleTo1 = cocos2d::ScaleTo::create(0.5, 0.8);
+        cocos2d::MoveBy* moveBy = cocos2d::MoveBy::create(0.5, Vec2(0, 20.0f));
         cocos2d::FadeOut* fadeOut = cocos2d::FadeOut::create(0.2);
         m_pLabel->runAction(cocos2d::Sequence::create(cocos2d::Spawn::createWithTwoActions(moveBy, ScaleTo1),fadeOut,RemoveSelf::create(), nil));
     }

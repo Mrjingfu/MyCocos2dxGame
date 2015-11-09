@@ -180,6 +180,7 @@
             <filename>../textures_no_stroke/I_BronzeCoin.png</filename>
             <filename>../textures_no_stroke/I_GoldCoin.png</filename>
             <filename>../textures_no_stroke/I_SilverCoin.png</filename>
+            <filename>../ui/ui_floor_icon.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

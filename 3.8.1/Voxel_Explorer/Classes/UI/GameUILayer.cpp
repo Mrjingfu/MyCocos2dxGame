@@ -16,6 +16,7 @@
 #include "EventConst.h"
 #include "ui/CocosGUI.h"
 #include "NoteUi.h"
+#include "RandomDungeon.hpp"
 #include "StandardMonster.hpp"
 
 USING_NS_CC;
@@ -49,7 +50,8 @@ GameUILayer::GameUILayer()
     m_pGameGoldNum      = nullptr;
     m_pGameSilverNum    = nullptr;
     m_pGameCopperNum    = nullptr;
-    
+    m_pGameLevelInfoName    = nullptr;
+    m_pGameLevelInfoFloor   = nullptr;
     for (int i = 1 ; i<9; i++) {
         m_pRoleBuffers[i] = nullptr;
         m_pMonsterBuffers[i] = nullptr;
@@ -189,6 +191,13 @@ bool GameUILayer::addEvents()
     if (!m_pGameCopperNum)
         return false;
     
+    m_pGameLevelInfoName    = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "game_level_info_name"));
+    if (!m_pGameLevelInfoName)
+        return false;
+    m_pGameLevelInfoFloor   = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "game_level_info_floor"));
+    if (!m_pGameLevelInfoFloor)
+        return false;
+    
     m_pMsgFrame = dynamic_cast<ui::ImageView*>(UtilityHelper::seekNodeByName(m_pRootNode, "game_msg_frame"));
     if (!m_pMsgFrame)
         return false;
@@ -198,8 +207,6 @@ bool GameUILayer::addEvents()
     m_pListMsgs->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
     m_pListMsgs->setScrollBarEnabled(false);
     m_pListMsgs->setDirection(ui::ScrollView::Direction::VERTICAL);
-//    m_pListMsgs->setBackGroundColorType(cocos2d::ui::Layout::BackGroundColorType::SOLID);
-//    m_pListMsgs->setBackGroundColor(Color3B::WHITE);
     m_pListMsgs->setContentSize(cocos2d::Size(m_pMsgFrame->getContentSize().width*0.95,m_pMsgFrame->getContentSize().height*0.9));
     m_pListMsgs->setPosition(m_pMsgFrame->getContentSize()*0.5);
     m_pMsgFrame->addChild(m_pListMsgs);
@@ -217,7 +224,8 @@ bool GameUILayer::addEvents()
     m_pRoleBtn->setTouchEnabled(true);
     m_pRoleBtn->addClickEventListener(CC_CALLBACK_1(GameUILayer::onClickRole, this));
 
-
+//    m_pGameLevelInfo->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
+    m_pRoleName->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
     m_pMonsterLayout->setVisible(false);
     m_pMonsterHpBar->setPercent(100);
     m_pMonsterName->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
@@ -324,7 +332,12 @@ void GameUILayer::onEventUpdateMonsterProp(cocos2d::EventCustom *sender)
         m_pMonsterCurHp->setString(StringUtils::format("%d",int(monster->getMonsterProperty()->getCurrentHP())));
         m_pMonsterMaxHp->setString(StringUtils::format("%d",int(monster->getMonsterProperty()->getMaxHP())));
         m_pMonsterLevel->setString(StringUtils::format("%d",int(monster->getMonsterProperty()->getLevel())));
-        m_pMonsterName->setString(UtilityHelper::getLocalString(MONSTER_MODEL_NAMES[monster->getMonsterType()]));
+        std::string monsterName =UtilityHelper::getLocalString(MONSTER_MODEL_NAMES[monster->getMonsterType()]);
+        if (monster->getMonsterProperty()->isElite()) {
+            m_pMonsterName->setColor(PopupUILayerManager::getInstance()->getTipsColor(TIP_POSITIVE));
+            monsterName = StringUtils::format(UtilityHelper::getLocalStringForUi("MONSTER_ELITE_NAME").c_str(),monsterName.c_str());
+        }else
+        m_pMonsterName->setString(monsterName);
     }
 }
 void GameUILayer::onEvenetMsg(cocos2d::EventCustom *sender)
@@ -363,6 +376,8 @@ void GameUILayer::onExit()
 }
 void GameUILayer::updateGameInfo()
 {
+//    m_pGameLevelInfoName->setString(RandomDungeon::getInstance()->getCurrentDungeonNode()->m_strDungeonName.c_str());
+//    m_pGameLevelInfoFloor->setString(Value(int(RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nTotalNum)).asString());
     m_pGameGoldNum->setString(StringUtils::format("%d",int(PlayerProperty::getInstance()->getGold())));
     m_pGameSilverNum->setString(StringUtils::format("%d",int(PlayerProperty::getInstance()->getSilver())));
     m_pGameCopperNum->setString(StringUtils::format("%d",int(PlayerProperty::getInstance()->getCopper())));

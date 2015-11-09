@@ -82,6 +82,8 @@ private:
     cocos2d::ui::Text*       m_pGameGoldNum;
     cocos2d::ui::Text*       m_pGameSilverNum;
     cocos2d::ui::Text*       m_pGameCopperNum;
+    cocos2d::ui::Text*       m_pGameLevelInfoName;
+     cocos2d::ui::Text*      m_pGameLevelInfoFloor;
    
 };
 

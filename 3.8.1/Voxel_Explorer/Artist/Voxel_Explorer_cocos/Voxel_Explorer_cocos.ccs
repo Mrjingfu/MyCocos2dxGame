@@ -39,6 +39,7 @@
           <PlistImageFile Name="I_BronzeCoin.png" Key="I_BronzeCoin.png" />
           <PlistImageFile Name="I_GoldCoin.png" Key="I_GoldCoin.png" />
           <PlistImageFile Name="I_SilverCoin.png" Key="I_SilverCoin.png" />
+          <PlistImageFile Name="ui_floor_icon.png" Key="ui_floor_icon.png" />
         </PlistImageFolder>
         <Project Name="characterLayer.csd" Type="Layer" />
         <Project Name="gameScene.csd" Type="Scene" />

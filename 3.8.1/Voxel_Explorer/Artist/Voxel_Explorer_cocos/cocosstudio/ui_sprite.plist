@@ -264,10 +264,23 @@
                 <key>sourceSize</key>
                 <string>{12,20}</string>
             </dict>
+            <key>ui_floor_icon.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{2,203},{18,18}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{18,18}}</string>
+                <key>sourceSize</key>
+                <string>{18,18}</string>
+            </dict>
             <key>ui_frame_1.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{34,227},{16,16}}</string>
+                <string>{{105,208},{16,16}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -280,7 +293,7 @@
             <key>ui_frame_2.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{18,239},{14,14}}</string>
+                <string>{{38,209},{14,14}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -293,7 +306,7 @@
             <key>ui_frame_3.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,239},{14,14}}</string>
+                <string>{{38,226},{14,14}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -306,7 +319,7 @@
             <key>ui_frame_4.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{20,209},{16,16}}</string>
+                <string>{{87,208},{16,16}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -332,7 +345,7 @@
             <key>ui_frame_6.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{38,209},{13,13}}</string>
+                <string>{{2,241},{13,13}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -345,7 +358,7 @@
             <key>ui_frame_7.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,221},{16,16}}</string>
+                <string>{{20,223},{16,16}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -358,7 +371,7 @@
             <key>ui_frame_8.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,203},{16,16}}</string>
+                <string>{{2,223},{16,16}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -417,7 +430,7 @@
             <key>size</key>
             <string>{128,256}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:5c24d0da08b61dc163ad50dbde0082ab:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:04d173bafde94c7cd7e6421632faa12e:1/1$</string>
             <key>textureFileName</key>
             <string>ui_sprite.png</string>
         </dict>
