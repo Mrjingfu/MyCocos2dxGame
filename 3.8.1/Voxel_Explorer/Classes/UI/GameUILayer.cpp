@@ -223,7 +223,7 @@ bool GameUILayer::addEvents()
     m_pMonsterName->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
     
     updateRoleUi(); 
-    
+    updateGameInfo();
     return true;
 }
 
@@ -236,6 +236,7 @@ void GameUILayer::onEventUpdateRoleProp(cocos2d::EventCustom *sender)
 {
     CCLOG("onEventUpdateProp");
     updateRoleUi();
+    updateGameInfo();
 }
 
 void GameUILayer::onEventRoleDead(cocos2d::EventCustom *sender)
@@ -304,7 +305,7 @@ void GameUILayer::onEventMonsterHud(cocos2d::EventCustom *sender)
             PopupUILayerManager::getInstance()->showStatus(TIP_CRITICAL_STRIKE, StringUtils::format(UtilityHelper::getLocalStringForUi("STATUS_TEXT_CRITICAL_STRIKE").c_str(),hurData->m_nDamage),pt);
              CCLOG("monster 暴击");
         }else{
-            PopupUILayerManager::getInstance()->showStatus(TIP_NEUTRAL, Value(hurData->m_nDamage).asString(),pt);
+            PopupUILayerManager::getInstance()->showStatus(TIP_WARNING, Value(hurData->m_nDamage).asString(),pt);
             CCLOG("pt x:%f y%f",pt.x,pt.y);
 
         }
@@ -360,7 +361,12 @@ void GameUILayer::onExit()
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_MONSTER_DEATH);
     WrapperUILayer::onExit();
 }
-
+void GameUILayer::updateGameInfo()
+{
+    m_pGameGoldNum->setString(StringUtils::format("%d",int(PlayerProperty::getInstance()->getGold())));
+    m_pGameSilverNum->setString(StringUtils::format("%d",int(PlayerProperty::getInstance()->getSilver())));
+    m_pGameCopperNum->setString(StringUtils::format("%d",int(PlayerProperty::getInstance()->getCopper())));
+}
 
 void GameUILayer::updateRoleUi()
 {
@@ -379,7 +385,7 @@ void GameUILayer::updateRoleUi()
     CCLOG("EXPPER:%f",ExpPer);
     m_pRoleExpBar->setPercent(ExpPer);
     m_pRoleLevel->setString(Value(int(PlayerProperty::getInstance()->getLevel())).asString());
-
+    
 }
 
 

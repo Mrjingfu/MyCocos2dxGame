@@ -187,11 +187,11 @@ cocos2d::Color3B PopupUILayerManager::getTipsColor(TipTypes tipType)
         case TIP_NEUTRAL:
             return cocos2d::Color3B(255,255,0);  //黄色
         case TIP_DODGE:
-            return cocos2d::Color3B(255,255,0);
+            return cocos2d::Color3B(0,255,0);    //闪避绿色
         case TIP_BOLOCK:
-            return cocos2d::Color3B(224,97,197); //粉色
+            return cocos2d::Color3B(255,135,255); //格挡粉色
         case TIP_CRITICAL_STRIKE:
-            return cocos2d::Color3B(0, 128, 255);
+            return cocos2d::Color3B(30,144,255);   //暴击蓝色
 
         default:
             break;

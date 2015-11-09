@@ -167,8 +167,6 @@
             <filename>../ui/progress_exp_bg.png</filename>
             <filename>../ui/progress_exp_style.png</filename>
             <filename>../ui/ui_buffer_1.png</filename>
-            <filename>../ui/ui_gold.png</filename>
-            <filename>../ui/ui_copper.png</filename>
             <filename>../../../../../../游戏/Voxel_Explorer/ssss/progress_exp_bg.png</filename>
             <filename>../ui/ui_frame_7.png</filename>
             <filename>../ui/ui_frame_8.png</filename>
@@ -179,6 +177,9 @@
             <filename>../ui/ui_btn_back_1.png</filename>
             <filename>../ui/ui_btn_back_2.png</filename>
             <filename>../ui/ui_msg_icon.png</filename>
+            <filename>../textures_no_stroke/I_BronzeCoin.png</filename>
+            <filename>../textures_no_stroke/I_GoldCoin.png</filename>
+            <filename>../textures_no_stroke/I_SilverCoin.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

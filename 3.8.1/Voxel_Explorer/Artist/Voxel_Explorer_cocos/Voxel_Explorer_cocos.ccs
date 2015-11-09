@@ -27,8 +27,6 @@
           <PlistImageFile Name="progress_exp_bg.png" Key="progress_exp_bg.png" />
           <PlistImageFile Name="progress_exp_style.png" Key="progress_exp_style.png" />
           <PlistImageFile Name="ui_buffer_1.png" Key="ui_buffer_1.png" />
-          <PlistImageFile Name="ui_copper.png" Key="ui_copper.png" />
-          <PlistImageFile Name="ui_gold.png" Key="ui_gold.png" />
           <PlistImageFile Name="ui_frame_7.png" Key="ui_frame_7.png" />
           <PlistImageFile Name="ui_frame_8.png" Key="ui_frame_8.png" />
           <PlistImageFile Name="ui_map_icon.png" Key="ui_map_icon.png" />
@@ -38,6 +36,9 @@
           <PlistImageFile Name="ui_btn_back_1.png" Key="ui_btn_back_1.png" />
           <PlistImageFile Name="ui_btn_back_2.png" Key="ui_btn_back_2.png" />
           <PlistImageFile Name="ui_msg_icon.png" Key="ui_msg_icon.png" />
+          <PlistImageFile Name="I_BronzeCoin.png" Key="I_BronzeCoin.png" />
+          <PlistImageFile Name="I_GoldCoin.png" Key="I_GoldCoin.png" />
+          <PlistImageFile Name="I_SilverCoin.png" Key="I_SilverCoin.png" />
         </PlistImageFolder>
         <Project Name="characterLayer.csd" Type="Layer" />
         <Project Name="gameScene.csd" Type="Scene" />
