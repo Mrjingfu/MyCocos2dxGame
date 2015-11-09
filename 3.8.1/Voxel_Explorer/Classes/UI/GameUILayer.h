@@ -43,6 +43,7 @@ private:
     
     void updateRoleUi();
     void updateMonsterUi();
+    void updateGameInfo();
 private:
     bool _isOpenSmailMap;
     cocos2d::ui::ListView*   m_pListMsgs;

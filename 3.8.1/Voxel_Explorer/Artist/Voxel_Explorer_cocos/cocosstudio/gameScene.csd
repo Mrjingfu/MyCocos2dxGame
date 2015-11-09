@@ -122,16 +122,16 @@
           <AbstractNodeData Name="game_info_bar_bg" ActionTag="-168930537" Tag="80" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" BottomMargin="460.0000" TouchEnable="True" BackColorAlpha="102" ColorAngle="90.0000" ctype="PanelObjectData">
             <Size X="320.0000" Y="20.0000" />
             <Children>
-              <AbstractNodeData Name="game_gold" ActionTag="881247480" Tag="41" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="10.9280" RightMargin="297.0720" TopMargin="4.0000" BottomMargin="4.0000" Scale9Enable="True" LeftEage="3" RightEage="3" TopEage="3" BottomEage="3" Scale9OriginX="3" Scale9OriginY="3" Scale9Width="1" Scale9Height="1" ctype="ImageViewObjectData">
-                <Size X="12.0000" Y="12.0000" />
+              <AbstractNodeData Name="game_gold" ActionTag="881247480" Tag="41" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="2.4280" RightMargin="300.5720" TopMargin="1.5000" BottomMargin="1.5000" Scale9Enable="True" LeftEage="3" RightEage="3" TopEage="3" BottomEage="3" Scale9OriginX="3" Scale9OriginY="3" Scale9Width="28" Scale9Height="28" ctype="ImageViewObjectData">
+                <Size X="17.0000" Y="17.0000" />
                 <Children>
-                  <AbstractNodeData Name="game_gold_num" ActionTag="-166393141" Tag="42" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="12.0000" RightMargin="-92.0000" TopMargin="-12.0000" BottomMargin="-12.0000" FontSize="36" LabelText="99999" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
+                  <AbstractNodeData Name="game_gold_num" ActionTag="-166393141" Tag="42" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="14.4500" RightMargin="-112.4500" TopMargin="-7.9518" BottomMargin="-11.0482" FontSize="36" LabelText="99999" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
                     <Size X="115.0000" Y="36.0000" />
                     <AnchorPoint ScaleY="0.5000" />
-                    <Position X="12.0000" Y="6.0000" />
+                    <Position X="14.4500" Y="6.9518" />
                     <Scale ScaleX="0.3000" ScaleY="0.3000" />
                     <CColor A="255" R="255" G="255" B="255" />
-                    <PrePosition X="1.0000" Y="0.5000" />
+                    <PrePosition X="0.8500" Y="0.4089" />
                     <PreSize X="0.4308" Y="0.4500" />
                     <FontResource Type="Normal" Path="fonts/04B_03.TTF" Plist="" />
                     <OutlineColor A="255" R="255" G="0" B="0" />
@@ -139,23 +139,23 @@
                   </AbstractNodeData>
                 </Children>
                 <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-                <Position X="16.9280" Y="10.0000" />
+                <Position X="10.9280" Y="10.0000" />
                 <Scale ScaleX="1.0000" ScaleY="1.0000" />
                 <CColor A="255" R="255" G="255" B="255" />
-                <PrePosition X="0.0529" Y="0.5000" />
-                <PreSize X="0.0375" Y="0.6000" />
-                <FileData Type="PlistSubImage" Path="ui_gold.png" Plist="ui_sprite.plist" />
+                <PrePosition X="0.0342" Y="0.5000" />
+                <PreSize X="0.0531" Y="0.8500" />
+                <FileData Type="PlistSubImage" Path="I_GoldCoin.png" Plist="ui_sprite.plist" />
               </AbstractNodeData>
-              <AbstractNodeData Name="game_silver" ActionTag="-1643267266" Tag="86" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="67.8880" RightMargin="240.1120" TopMargin="4.0000" BottomMargin="4.0000" Scale9Enable="True" LeftEage="3" RightEage="3" TopEage="3" BottomEage="3" Scale9OriginX="3" Scale9OriginY="3" Scale9Width="1" Scale9Height="1" ctype="ImageViewObjectData">
-                <Size X="12.0000" Y="12.0000" />
+              <AbstractNodeData Name="game_silver" ActionTag="-1643267266" Tag="86" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="50.3880" RightMargin="252.6120" TopMargin="1.5000" BottomMargin="1.5000" Scale9Enable="True" LeftEage="3" RightEage="3" TopEage="3" BottomEage="3" Scale9OriginX="3" Scale9OriginY="3" Scale9Width="28" Scale9Height="28" ctype="ImageViewObjectData">
+                <Size X="17.0000" Y="17.0000" />
                 <Children>
-                  <AbstractNodeData Name="game_silver_num" ActionTag="-1417685620" Tag="87" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="12.0000" RightMargin="-92.0000" TopMargin="-12.0000" BottomMargin="-12.0000" FontSize="36" LabelText="99" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
-                    <Size X="46.0000" Y="36.0000" />
+                  <AbstractNodeData Name="game_silver_num" ActionTag="-1417685620" Tag="87" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="14.4500" RightMargin="-112.4500" TopMargin="-8.3389" BottomMargin="-10.6611" FontSize="36" LabelText="99999" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
+                    <Size X="115.0000" Y="36.0000" />
                     <AnchorPoint ScaleY="0.5000" />
-                    <Position X="12.0000" Y="6.0000" />
+                    <Position X="14.4500" Y="7.3389" />
                     <Scale ScaleX="0.3000" ScaleY="0.3000" />
                     <CColor A="255" R="255" G="255" B="255" />
-                    <PrePosition X="1.0000" Y="0.5000" />
+                    <PrePosition X="0.8500" Y="0.4317" />
                     <PreSize X="0.4308" Y="0.4500" />
                     <FontResource Type="Normal" Path="fonts/04B_03.TTF" Plist="" />
                     <OutlineColor A="255" R="255" G="0" B="0" />
@@ -163,23 +163,23 @@
                   </AbstractNodeData>
                 </Children>
                 <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-                <Position X="73.8880" Y="10.0000" />
+                <Position X="58.8880" Y="10.0000" />
                 <Scale ScaleX="1.0000" ScaleY="1.0000" />
                 <CColor A="255" R="255" G="255" B="255" />
-                <PrePosition X="0.2309" Y="0.5000" />
-                <PreSize X="0.0375" Y="0.6000" />
-                <FileData Type="PlistSubImage" Path="ui_gold.png" Plist="ui_sprite.plist" />
+                <PrePosition X="0.1840" Y="0.5000" />
+                <PreSize X="0.0531" Y="0.8500" />
+                <FileData Type="PlistSubImage" Path="I_SilverCoin.png" Plist="ui_sprite.plist" />
               </AbstractNodeData>
-              <AbstractNodeData Name="game_copper" ActionTag="-1892230684" Tag="89" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="104.9920" RightMargin="203.0080" TopMargin="4.0000" BottomMargin="4.0000" Scale9Enable="True" LeftEage="3" RightEage="3" TopEage="3" BottomEage="3" Scale9OriginX="3" Scale9OriginY="3" Scale9Width="1" Scale9Height="1" ctype="ImageViewObjectData">
-                <Size X="12.0000" Y="12.0000" />
+              <AbstractNodeData Name="game_copper" ActionTag="-1892230684" Tag="89" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="99.9921" RightMargin="203.0079" TopMargin="1.5000" BottomMargin="1.5000" Scale9Enable="True" LeftEage="3" RightEage="3" TopEage="3" BottomEage="3" Scale9OriginX="3" Scale9OriginY="3" Scale9Width="28" Scale9Height="28" ctype="ImageViewObjectData">
+                <Size X="17.0000" Y="17.0000" />
                 <Children>
-                  <AbstractNodeData Name="game_copper_num" ActionTag="-1841006523" Tag="88" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="12.0000" RightMargin="-46.0000" TopMargin="-12.0000" BottomMargin="-12.0000" FontSize="36" LabelText="99" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
+                  <AbstractNodeData Name="game_copper_num" ActionTag="-1841006523" Tag="88" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="14.4500" RightMargin="-43.4500" TopMargin="-7.7260" BottomMargin="-11.2740" FontSize="36" LabelText="99" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
                     <Size X="46.0000" Y="36.0000" />
                     <AnchorPoint ScaleY="0.5000" />
-                    <Position X="12.0000" Y="6.0000" />
+                    <Position X="14.4500" Y="6.7260" />
                     <Scale ScaleX="0.3000" ScaleY="0.3000" />
                     <CColor A="255" R="255" G="255" B="255" />
-                    <PrePosition X="1.0000" Y="0.5000" />
+                    <PrePosition X="0.8500" Y="0.3956" />
                     <PreSize X="0.4308" Y="0.4500" />
                     <FontResource Type="Normal" Path="fonts/04B_03.TTF" Plist="" />
                     <OutlineColor A="255" R="255" G="0" B="0" />
@@ -187,12 +187,12 @@
                   </AbstractNodeData>
                 </Children>
                 <AnchorPoint ScaleY="0.5000" />
-                <Position X="104.9920" Y="10.0000" />
+                <Position X="99.9921" Y="10.0000" />
                 <Scale ScaleX="1.0000" ScaleY="1.0000" />
                 <CColor A="255" R="255" G="255" B="255" />
-                <PrePosition X="0.3281" Y="0.5000" />
-                <PreSize X="0.0375" Y="0.6000" />
-                <FileData Type="PlistSubImage" Path="ui_gold.png" Plist="ui_sprite.plist" />
+                <PrePosition X="0.3125" Y="0.5000" />
+                <PreSize X="0.0531" Y="0.8500" />
+                <FileData Type="PlistSubImage" Path="I_BronzeCoin.png" Plist="ui_sprite.plist" />
               </AbstractNodeData>
               <AbstractNodeData Name="Panel_role" ActionTag="-288696628" Tag="90" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" RightMargin="190.0000" TopMargin="20.0000" BottomMargin="-70.0000" TouchEnable="True" BackColorAlpha="102" ColorAngle="90.0000" ctype="PanelObjectData">
                 <Size X="130.0000" Y="70.0000" />
