@@ -284,19 +284,19 @@ void EquipItemPopupUI::onClickEquip(cocos2d::Ref *ref)
     bool isEquipSucess = false;
     if (itemprop->getPickableItemPropertyType() == PickableItemProperty::PIPT_WEAPON) {
         
-        isEquipSucess = PlayerProperty::getInstance()->EquipWeapon(CChaosNumber(m_nItemId));
+        isEquipSucess = PlayerProperty::getInstance()->equipWeapon(CChaosNumber(m_nItemId));
         
     }else if (itemprop->getPickableItemPropertyType() == PickableItemProperty::PIPT_ARMOR){
         
-        isEquipSucess = PlayerProperty::getInstance()->EquipArmor(CChaosNumber(m_nItemId));
+        isEquipSucess = PlayerProperty::getInstance()->equipArmor(CChaosNumber(m_nItemId));
         
     }else if (itemprop->getPickableItemPropertyType() == PickableItemProperty::PIPT_MAGIC_ORNAMENT)
     {
-        isEquipSucess = PlayerProperty::getInstance()->EquipOrnaments(CChaosNumber(m_nItemId));
+        isEquipSucess = PlayerProperty::getInstance()->equipOrnaments(CChaosNumber(m_nItemId));
         
     }else if (itemprop->getPickableItemPropertyType() == PickableItemProperty::PIPT_SECOND_WEAPON)
     {
-        isEquipSucess = PlayerProperty::getInstance()->EquipSecondWeapon(CChaosNumber(m_nItemId));
+        isEquipSucess = PlayerProperty::getInstance()->equipSecondWeapon(CChaosNumber(m_nItemId));
     }
     if (isEquipSucess) {
         closePopup();

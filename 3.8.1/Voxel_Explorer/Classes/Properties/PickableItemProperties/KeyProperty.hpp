@@ -10,16 +10,16 @@
 #define KeyProperty_hpp
 
 #include "PickableItemProperty.hpp"
-class KeyProperty : public PickableItemProperty
+class KeyProperty : public PickableItemProperty, public IStackable
 {
 public:
     KeyProperty(unsigned int instanceID, PickableItem::PickableItemType type);
 
-    virtual void adjustByDC();
+    virtual void adjustByLevel();
     virtual void handleIdentify();
-    CChaosNumber getCount() const {return m_nCount;}
-private:
-    CChaosNumber            m_nCount;
+    
+    virtual void increaseCount() { ++m_nCount; }
+    virtual void decreaseCount() { --m_nCount; }
 };
 
 #endif /* KeyProperty_hpp */

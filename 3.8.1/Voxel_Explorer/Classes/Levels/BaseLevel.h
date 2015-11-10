@@ -119,6 +119,7 @@ protected:
     virtual bool decorate() = 0;
     virtual bool createMonsters() = 0;
     virtual bool createUseableItems() = 0;
+    virtual bool createPickableItems() = 0;
 
     virtual int calculateLevelMonsterCount() = 0;
 private:

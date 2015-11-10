@@ -13,6 +13,7 @@
 class GameFormula
 {
 public:
+    static bool generateMagicItem(float magicFindRate);
     static bool generatePickItem(bool isElite, bool isBoss);
     static int getNextLevelExp(int currentLevel);
     static int getKillNormalMonsterExp(int currentLevel, int monsterLevel);

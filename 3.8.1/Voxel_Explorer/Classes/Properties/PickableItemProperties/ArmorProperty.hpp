@@ -13,9 +13,9 @@
 class ArmorProperty : public PickableItemProperty
 {
 public:
-    ArmorProperty(unsigned int instanceID, PickableItem::PickableItemType type, bool identified);
+    ArmorProperty(unsigned int instanceID, PickableItem::PickableItemType type, CChaosNumber level, bool identified);
     
-    virtual void adjustByDC();
+    virtual void adjustByLevel();
     virtual void handleIdentify();
     
     bool hasEquiped() const { return m_bHasEquiped; }

@@ -8,7 +8,17 @@
 
 #include "ArmorProperty.hpp"
 USING_NS_CC;
-ArmorProperty::ArmorProperty(unsigned int instanceID, PickableItem::PickableItemType type, bool identified)
+static std::vector<ADDED_EFFECT> sArmorAddedEffects =
+{
+    AE_LIGHT_DISTANCE,
+    AE_SEARCH_DISTANCE,
+    AE_MAX_HP,
+    AE_MAX_MP,
+    AE_ARMOR_CLASS,
+    AE_DODGE_RATE,
+    AE_MAGICITEM_FIND_RATE,
+};
+ArmorProperty::ArmorProperty(unsigned int instanceID, PickableItem::PickableItemType type, CChaosNumber level, bool identified)
     :PickableItemProperty(instanceID, type)
 {
     m_PropertyType = PIPT_ARMOR;
@@ -18,6 +28,7 @@ ArmorProperty::ArmorProperty(unsigned int instanceID, PickableItem::PickableItem
     m_bCombinable = false;
     m_bDiscardable = true;
     
+    m_nLevel = level;
     m_bHasEquiped = false;
     
     m_nAddedLightDistance       =0;
@@ -29,7 +40,7 @@ ArmorProperty::ArmorProperty(unsigned int instanceID, PickableItem::PickableItem
     m_fAddedMagicItemFindRate   =0;
 }
 
-void ArmorProperty::adjustByDC()
+void ArmorProperty::adjustByLevel()
 {
 }
 void ArmorProperty::handleIdentify()

@@ -10,6 +10,7 @@
 #define PickableItem_hpp
 
 #include "Actor.hpp"
+#include "ChaosNumber.h"
 extern const std::string PICKABLE_ITEM_NAMES[];
 class PickableItem : public Actor
 {
@@ -49,7 +50,7 @@ public:
         PIT_AXE_STONEAXE,           ///石斧
         PIT_AXE_BROADAX,            ///大斧
         PIT_AXE_TOMAHAWK,           ///战斧
-        PIN_AXE_HUGEAXE,            ///巨斧
+        PIT_AXE_HUGEAXE,            ///巨斧
         PIT_AXE_DOUBLEBITAX,        ///双刃斧 double-bit ax
         //PIT_AXE_END
         
@@ -193,11 +194,15 @@ public:
         PIS_BEGIN_GENERATE,
         PIS_
     } PickableItemState;
-    static PickableItem* create(PickableItemType type);
+    static PickableItem* create(PickableItemType type, CChaosNumber level);
     
     PickableItemType getPickableItemType() const { return m_Type; }
     PickableItemState getState() const { return m_State; }
     void setState(PickableItemState state);
+    
+    CChaosNumber getLevel() const { return m_nLevel; }
+    
+    static PickableItem::PickableItemType generatePickItemByMonsterLevel(int monsterLevel);
 private:
     PickableItem();
     virtual ~PickableItem();
@@ -213,9 +218,28 @@ private:
     
     void beginRotate();
     void destroySelf();
+    
+    static PickableItem::PickableItemType generateKeyItemType();
+    
+    static PickableItem::PickableItemType generate1_5UnStackableItemType();
+    static PickableItem::PickableItemType generate6_10UnStackableItemType();
+    static PickableItem::PickableItemType generate11_15UnStackableItemType();
+    static PickableItem::PickableItemType generate16_20UnStackableItemType();
+    static PickableItem::PickableItemType generate21_25UnStackableItemType();
+    static PickableItem::PickableItemType generate26_30UnStackableItemType();
+    static PickableItem::PickableItemType generate31_35UnStackableItemType();
+    
+    static PickableItem::PickableItemType generate11_15UnStackableItemProType();
+    static PickableItem::PickableItemType generate16_20UnStackableItemProType();
+    static PickableItem::PickableItemType generate21_25UnStackableItemProType();
+    static PickableItem::PickableItemType generate26_30UnStackableItemProType();
+    static PickableItem::PickableItemType generate31_35UnStackableItemProType();
+    static PickableItem::PickableItemType generate36_40UnStackableItemProType();
+    static PickableItem::PickableItemType generate41_45UnStackableItemProType();
 private:
     PickableItemState   m_State;
     PickableItemType    m_Type;
+    CChaosNumber        m_nLevel;
 };
 
 #endif /* PickableItem_hpp */

@@ -13,8 +13,8 @@
 class WeaponProperty : public PickableItemProperty
 {
 public:
-    WeaponProperty(unsigned int instanceID, PickableItem::PickableItemType type, bool identified);
-    virtual void adjustByDC();
+    WeaponProperty(unsigned int instanceID, PickableItem::PickableItemType type, CChaosNumber level, bool identified);
+    virtual void adjustByLevel();
     virtual void handleIdentify();
     
     bool hasEquiped() const { return m_bHasEquiped; }
