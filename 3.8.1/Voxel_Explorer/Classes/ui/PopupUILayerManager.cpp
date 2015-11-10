@@ -215,7 +215,7 @@ void PopupUILayerManager::showStatusImport(TipTypes tipType, std::string text)
 }
 void PopupUILayerManager::showStatus(TipTypes tipType,  std::string text,cocos2d::Vec2 pos)
 {
-    Label* m_pLabel = cocos2d::Label::createWithSystemFont(text,UtilityHelper::getLocalString("FONT_NAME"),36);
+    Label* m_pLabel = cocos2d::Label::createWithTTF(text,UtilityHelper::getLocalString("FONT_NAME"),36);
     m_pLabel->setScale(0.4);
     m_pLabel->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
     m_pParentLayer->addChild(m_pLabel);

@@ -22,6 +22,7 @@ public:
     virtual bool addEvents() override;
     void onEnter() override;
     void onExit()override;
+
 private:
     void onClickRole(Ref* ref);
     void onClickMap(Ref* ref);
@@ -37,15 +38,19 @@ private:
     void onEventUpdateMonsterProp(cocos2d::EventCustom *sender);
     void onEventMonsterHud(cocos2d::EventCustom *sender);
     void onEvenetMonsterDead(cocos2d::EventCustom *sender);
-
-    void onEvenetMsg(cocos2d::EventCustom *sender);
-    
-    
+    //更新角色信息
     void updateRoleUi();
+    //更新怪物信息
     void updateMonsterUi();
+    //更新游戏信息
     void updateGameInfo();
+    //初始化消息框
+    void initMessageFrame();
+    //添加游戏文本信息
+    void sendMessage(std::string msg,cocos2d::Color3B msgColor = cocos2d::Color3B::WHITE);
+    void setMsgItem(std::string msg,cocos2d::Color3B msgColor = cocos2d::Color3B::WHITE);
 private:
-    bool _isOpenSmailMap;
+    bool _isOpenSmailMap;                       //是否打开小地图
     cocos2d::ui::ListView*   m_pListMsgs;
     cocos2d::ui::ImageView*  m_pMsgFrame;
     
@@ -79,11 +84,11 @@ private:
     cocos2d::ui::ImageView*  m_pGameMapBtn;
     cocos2d::ui::ImageView*  m_pGameSearchBtn;
     
-    cocos2d::ui::Text*       m_pGameGoldNum;
-    cocos2d::ui::Text*       m_pGameSilverNum;
-    cocos2d::ui::Text*       m_pGameCopperNum;
-    cocos2d::ui::Text*       m_pGameLevelInfoName;
-     cocos2d::ui::Text*      m_pGameLevelInfoFloor;
+    cocos2d::ui::Text*       m_pGameGoldNum;            // 金币
+    cocos2d::ui::Text*       m_pGameSilverNum;          // 银币
+    cocos2d::ui::Text*       m_pGameCopperNum;          // 铜币
+    cocos2d::ui::Text*       m_pGameLevelInfoName;      // 关卡名
+     cocos2d::ui::Text*      m_pGameLevelInfoFloor;     // 关卡层数
    
 };
 

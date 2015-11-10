@@ -102,6 +102,17 @@ bool RolePopupUI::initUi()
     m_pRoleDodge = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(charNode, "role_prop_dodge"));
     if (!m_pRoleDodge)
         return false;
+    m_pRoleHp->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
+    m_pRoleMp->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
+    m_pRoleExp->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
+    m_pRoleLightDis->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
+    m_pRoleSearchDis->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
+    m_pRoleCriticalStrike->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
+    m_pRoleMargicFind->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
+    m_pRoleBlock->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
+    m_pRoleDodge->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
+ 
+    
     
     m_pRoleHp->setString(StringUtils::format(UtilityHelper::getLocalStringForUi("ROLE_SHOW_HP").c_str(),int(PlayerProperty::getInstance()->getCurrentHP()),int(PlayerProperty::getInstance()->getMaxHP())));
     m_pRoleMp->setString(StringUtils::format(UtilityHelper::getLocalStringForUi("ROLE_SHOW_MP").c_str(),int(PlayerProperty::getInstance()->getCurrentMP()),int(PlayerProperty::getInstance()->getMaxMP())));
@@ -176,10 +187,10 @@ void RolePopupUI::onClickChnageBag(Ref* ref)
     for (int j =0; j<5*3; j++) {
         
         ItemUI* itemui = ItemUI::create();
-        itemui->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
         m_pGridView->pushBackCustomItem(itemui);
     }
-    MessageBox("更新背包成功", "提示");
+    m_pGridView->resume();
+    m_pGridView->scrollToBottom(0.8,false);
 }
 void RolePopupUI::onClickColse(Ref* ref)
 {

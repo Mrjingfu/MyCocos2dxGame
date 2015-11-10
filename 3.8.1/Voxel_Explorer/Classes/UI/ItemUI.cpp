@@ -43,7 +43,7 @@ bool ItemUI::init()
     setBackGroundImageScale9Enabled(true);
     setBackGroundImage("ui_frame_5.png",TextureResType::PLIST);
     
-    
+    setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
     m_pItemImage = ui::ImageView::create("A_Armor04.png",TextureResType::LOCAL);
     m_pItemImage->setPosition(Vec2(getContentSize().width*0.5, getContentSize().width*0.45));
     m_pItemImage->setScale(0.8);

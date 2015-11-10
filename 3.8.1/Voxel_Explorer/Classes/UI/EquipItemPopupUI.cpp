@@ -213,9 +213,7 @@ void EquipItemPopupUI::itemProperty()
 void EquipItemPopupUI::displayFrame()
 {
     m_pBtnItemFrame->setVisible(false);
-    CCLOG("old m_pRootNode width%f height:%f",m_pRootNode->getContentSize().width,m_pRootNode->getContentSize().height);
     m_pRootNode->setContentSize(cocos2d::Size(m_pRootNode->getContentSize().width,m_pRootNode->getContentSize().height-m_pBtnItemFrame->getContentSize().height));
-    CCLOG("new m_pRootNode width%f height:%f",m_pRootNode->getContentSize().width,m_pRootNode->getContentSize().height);
     m_pBackGround->setContentSize(m_pRootNode->getContentSize());
     m_pBackGround->setPosition(m_pBackGround->getContentSize()*0.5);
     m_pPropFrame->setPosition(Vec2(0, m_pRootNode->getContentSize().height));

@@ -5,13 +5,13 @@
 	<key>PROP_SHOW_HP</key>
 	<string>HP:%d</string>
 	<key>ROLE_SHOW_HP</key>
-	<string>HP：%d/%d</string>
+	<string>HP:%d/%d</string>
 	<key>ROLE_SHOW_EXP</key>
-	<string>EXP：%d/%d</string>
+	<string>EXP:%d/%d</string>
 	<key>PROP_SHOW_MP</key>
 	<string>MP:%d</string>
 	<key>ROLE_SHOW_MP</key>
-	<string>MP：%d/%d</string>
+	<string>MP:%d/%d</string>
 	<key>PROP_SHOW_LIGHT_DIS</key>
 	<string>Light Dis:%d</string>
 	<key>PROP_SHOW_SEARCH_DIS</key>
@@ -27,10 +27,34 @@
 	<key>STATUS_TEXT_DODGE</key>
 	<string>dogde</string>
 	<key>STATUS_TEXT_BOLOCK</key>
-	<string>bolock %d</string>
+	<string>Bolock %d</string>
 	<key>STATUS_TEXT_CRITICAL_STRIKE</key>
-	<string>cirtical strike %d</string>
-	<key>GAME_NOT_MESSAGE</key>
+	<string>Cirtical Strike %d</string>
+	<key>STATUS_TEXT_EXP</key>
+	<string>+Exp %d</string>
+	<key>GAME_MESSAGE_NOT</key>
 	<string>no message</string>
+	<key>GAME_MESSAGE_MONSTER_ATTACK</key>
+	<string>%s hit you</string>
+	<key>GAME_MESSAGE_MONSTER_DODGE</key>
+	<string>%s闪避了你的进攻</string>
+	<key>GAME_MESSAGE_MONSTER_BOLOCK</key>
+	<string>%s产生了一个格挡</string>
+	<key>GAME_MESSAGE_MONSTER_CRITICAL_STRIKE</key>
+	<string>%s产生了一个暴击</string>
+	<key>GAME_MESSAGE_MONSTER_DEAD</key>
+	<string>You defeated %s</string>
+	<key>GAME_MESSAGE_ROLE_ATTACK</key>
+	<string>You hit %s</string>
+	<key>GAME_MESSAGE_ROLE_DODGE</key>
+	<string>you dodged %s&apos;s attack</string>
+	<key>GAME_MESSAGE_ROLE_BOLOCK</key>
+	<string>你产生了一个格挡</string>
+	<key>GAME_MESSAGE_ROLE_CRITICAL_STRIKE</key>
+	<string>你产生了一个暴击</string>
+	<key>GAME_MESSAGE_ROLE_DEAD</key>
+	<string>%s杀死了你...</string>
+	<key>GAME_MESSAGE_ROLE_ADD_EXP</key>
+	<string>You now have %s</string>
 </dict>
 </plist>

@@ -18,7 +18,7 @@
 #include "NoteUi.h"
 #include "RandomDungeon.hpp"
 #include "StandardMonster.hpp"
-
+#include "MessageManager.h"
 USING_NS_CC;
 GameUILayer::GameUILayer()
 {
@@ -210,9 +210,6 @@ bool GameUILayer::addEvents()
     m_pListMsgs->setContentSize(cocos2d::Size(m_pMsgFrame->getContentSize().width*0.95,m_pMsgFrame->getContentSize().height*0.9));
     m_pListMsgs->setPosition(m_pMsgFrame->getContentSize()*0.5);
     m_pMsgFrame->addChild(m_pListMsgs);
-    NoteUi* noteui = NoteUi::create();
-    noteui->setMsg(UtilityHelper::getLocalStringForUi("GAME_NOT_MESSAGE"));
-    m_pListMsgs->pushBackCustomItem(noteui);
     m_pMsgFrame->setVisible(false);
     
     m_pGameMapBtn->setTouchEnabled(true);
@@ -224,7 +221,7 @@ bool GameUILayer::addEvents()
     m_pRoleBtn->setTouchEnabled(true);
     m_pRoleBtn->addClickEventListener(CC_CALLBACK_1(GameUILayer::onClickRole, this));
 
-//    m_pGameLevelInfo->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
+    m_pGameLevelInfoName->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
     m_pRoleName->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
     m_pMonsterLayout->setVisible(false);
     m_pMonsterHpBar->setPercent(100);
@@ -232,12 +229,13 @@ bool GameUILayer::addEvents()
     
     updateRoleUi(); 
     updateGameInfo();
+    initMessageFrame();
     return true;
 }
 
 void GameUILayer::onEventRoleLevelUp(cocos2d::EventCustom *sender)
 {
-    
+    CCLOG("onEventRoleLevelUp");
 }
 
 void GameUILayer::onEventUpdateRoleProp(cocos2d::EventCustom *sender)
@@ -249,14 +247,15 @@ void GameUILayer::onEventUpdateRoleProp(cocos2d::EventCustom *sender)
 
 void GameUILayer::onEventRoleDead(cocos2d::EventCustom *sender)
 {
+    CCLOG("onEventRoleDead");
     updateRoleUi();
 }
 void GameUILayer::onEvenetRoleHud(cocos2d::EventCustom *sender)
 {
+       CCLOG("onEvenetRoleHud");
     HurtData* hurData = static_cast<HurtData*>(sender->getUserData());
     Vec2 pt = VoxelExplorer::getInstance()->getMainCamera()->projectGL(hurData->m_vPos);
     pt = Vec2(pt.x, pt.y+TerrainTile::CONTENT_SCALE*2.5);
-    CCLOG("onEvenetRoleHud");
     //    PopupUILayerManager::getInstance()->showPromptSign(TIP_QUESTION, pt);
     
     if (hurData->m_bDodge) {
@@ -284,19 +283,31 @@ void GameUILayer::onEvenetMonsterDead(cocos2d::EventCustom *sender)
 {
     CCLOG("onEvenetMonsterDead");
     BaseMonster* monster = static_cast<BaseMonster*>(sender->getUserData());
+    if (!monster)
+        return;
+    Vec2 pt = VoxelExplorer::getInstance()->getMainCamera()->projectGL(monster->getPosition3D());
+    pt = Vec2(pt.x, pt.y+TerrainTile::CONTENT_SCALE*2.5);
     if (monster->getState() == BaseMonster::MonsterState::MS_DEATH) {
         m_pMonsterLayout->setVisible(false);
         m_pMonsterHpBar->setPercent(100);
+        int roleLevel = PlayerProperty::getInstance()->getLevel();
+        int monsterLevel = monster->getMonsterProperty()->getLevel();
+        int exp = GameFormula::getKillNormalMonsterExp(roleLevel, monsterLevel);
+        if (monster->getMonsterProperty()->isElite()) {
+            exp = GameFormula::getKillEliteMonsterExp(roleLevel, monsterLevel);
+        }
+        PopupUILayerManager::getInstance()->showStatus(TIP_POSITIVE, StringUtils::format(UtilityHelper::getLocalStringForUi("STATUS_TEXT_EXP").c_str(),exp),pt);
+
     }
 
 }
 
 void GameUILayer::onEventMonsterHud(cocos2d::EventCustom *sender)
 {
+        CCLOG("onEventMonsterHud");
     HurtData* hurData = static_cast<HurtData*>(sender->getUserData());
     Vec2 pt = VoxelExplorer::getInstance()->getMainCamera()->projectGL(hurData->m_vPos);
     pt = Vec2(pt.x, pt.y+TerrainTile::CONTENT_SCALE*2.5);
-    CCLOG("onEventMonsterHud");
 //    PopupUILayerManager::getInstance()->showPromptSign(TIP_QUESTION, pt);
 
     if (hurData->m_bDodge) {
@@ -315,15 +326,14 @@ void GameUILayer::onEventMonsterHud(cocos2d::EventCustom *sender)
         }else{
             PopupUILayerManager::getInstance()->showStatus(TIP_WARNING, Value(hurData->m_nDamage).asString(),pt);
             CCLOG("pt x:%f y%f",pt.x,pt.y);
-
+            sendMessage("asdfasfd",UtilityHelper::randomColor());
         }
-
     }
     
-
 }
 void GameUILayer::onEventUpdateMonsterProp(cocos2d::EventCustom *sender)
 {
+    CCLOG("onEventUpdateMonsterProp");
     BaseMonster* monster = static_cast<BaseMonster*>(sender->getUserData());
     if (monster->getState() != BaseMonster::MonsterState::MS_DEATH) {
         m_pMonsterLayout->setVisible(true);
@@ -340,16 +350,7 @@ void GameUILayer::onEventUpdateMonsterProp(cocos2d::EventCustom *sender)
         m_pMonsterName->setString(monsterName);
     }
 }
-void GameUILayer::onEvenetMsg(cocos2d::EventCustom *sender)
-{
-    NoteUi* noteui = NoteUi::create();
-    noteui->setMsg(UtilityHelper::getLocalStringForUi("STATUS_TEXT_DODGE"),UtilityHelper::randomColor());
-    m_pListMsgs->pushBackCustomItem(noteui);
-    CCLOG("m_pListMsgs innerSize height:%f contentSize:%f",m_pListMsgs->getInnerContainerSize().height,m_pListMsgs->getContentSize().height);
-    if ( m_pListMsgs->getItems().size()*noteui->getContentSize().height > m_pListMsgs->getContentSize().height) {
-        m_pListMsgs->scrollToBottom(0.5,false);
-    }
-}
+
 void GameUILayer::onEnter()
 {
     WrapperUILayer::onEnter();
@@ -374,10 +375,49 @@ void GameUILayer::onExit()
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_MONSTER_DEATH);
     WrapperUILayer::onExit();
 }
+void GameUILayer::sendMessage(std::string msg,Color3B msgColor)
+{
+    if (MessageManager::getInstance()->isExceedMsgMax()) {
+        m_pListMsgs->removeItem(0);
+        MessageManager::getInstance()->removeMsg(0);
+    }
+    MessageManager::getInstance()->setMsg(msg, msgColor);
+    setMsgItem(msg,msgColor);
+
+}
+void GameUILayer::setMsgItem(std::string msg,cocos2d::Color3B msgColor )
+{
+    NoteUi* noteui = NoteUi::create();
+    noteui->setMsg(msg,msgColor);
+    m_pListMsgs->pushBackCustomItem( noteui);
+    if ( m_pListMsgs->getItems().size()*noteui->getContentSize().height > m_pListMsgs->getContentSize().height) {
+//        m_pListMsgs->scrollToBottom(0.5,false);
+        m_pListMsgs->jumpToBottom();
+    }
+}
+void GameUILayer::initMessageFrame()
+{
+    Vector<MsgData*> msgList = MessageManager::getInstance()->getMsgList();
+    if (msgList.empty())
+    {
+        sendMessage(UtilityHelper::getLocalStringForUi("GAME_MESSAGE_NOT"));
+        return;
+    }
+    for(Vector<MsgData*>::iterator iter = msgList.begin();iter!=msgList.end();iter++)
+    {
+        MsgData* msgData = (*iter);
+        setMsgItem(msgData->getMsg(),msgData->getMsgColor());
+    }
+}
 void GameUILayer::updateGameInfo()
 {
-//    m_pGameLevelInfoName->setString(RandomDungeon::getInstance()->getCurrentDungeonNode()->m_strDungeonName.c_str());
-//    m_pGameLevelInfoFloor->setString(Value(int(RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nTotalNum)).asString());
+    m_pGameLevelInfoName->setString(RandomDungeon::getInstance()->getCurrentDungeonNode()->m_strDungeonName.c_str());
+    m_pGameLevelInfoFloor->setString(Value(int(RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nTotalNum)).asString());
+    CCLOG(" gold: %s",StringUtils::format("%d",int(PlayerProperty::getInstance()->getGold())).c_str());
+    CCLOG(" silver: %s",StringUtils::format("%d",int(PlayerProperty::getInstance()->getGold())).c_str());
+    CCLOG(" copper: %s",StringUtils::format("%d",int(PlayerProperty::getInstance()->getGold())).c_str());
+    
+    
     m_pGameGoldNum->setString(StringUtils::format("%d",int(PlayerProperty::getInstance()->getGold())));
     m_pGameSilverNum->setString(StringUtils::format("%d",int(PlayerProperty::getInstance()->getSilver())));
     m_pGameCopperNum->setString(StringUtils::format("%d",int(PlayerProperty::getInstance()->getCopper())));
@@ -440,7 +480,6 @@ void GameUILayer::onClickSearch(cocos2d::Ref *ref)
     CHECK_ACTION(ref);
     CCLOG("onClickSearch");
 
-    
     PopupUILayerManager::getInstance()->showStatusImport(TIP_DEFAULT, "升级了！ 调调调");
 //    NoteUi* noteui = NoteUi::create();
 //    noteui->setMsg(UtilityHelper::getLocalStringForUi("STATUS_TEXT_DODGE"),UtilityHelper::randomColor());
