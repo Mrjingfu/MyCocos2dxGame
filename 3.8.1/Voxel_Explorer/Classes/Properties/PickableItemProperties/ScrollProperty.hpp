@@ -10,10 +10,16 @@
 #define ScrollProperty_hpp
 
 #include "PickableItemProperty.hpp"
-class ScrollProperty : public PickableItemProperty
+class ScrollProperty : public PickableItemProperty, public IStackable
 {
 public:
-    ScrollProperty(unsigned int instanceID, PickableItem::PickableItemType type, bool identified);
+    ScrollProperty(unsigned int instanceID, PickableItem::PickableItemType type);
+    
+    virtual void adjustByLevel();
+    virtual void handleIdentify();
+    
+    virtual void increaseCount() { ++m_nCount; }
+    virtual void decreaseCount() { --m_nCount; }
 };
 
 #endif /* ScrollProperty_hpp */

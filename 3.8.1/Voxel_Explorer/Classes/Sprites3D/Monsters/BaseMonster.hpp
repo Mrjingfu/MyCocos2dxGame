@@ -134,6 +134,8 @@ protected:
     virtual void setActorDir( ActorDir dir );
 private:
     void onLand();
+    void moveToNext(const cocos2d::Vec2& next);
+    void doAttack();
 protected:
     MonsterType         m_Type;
     MonsterState        m_State;

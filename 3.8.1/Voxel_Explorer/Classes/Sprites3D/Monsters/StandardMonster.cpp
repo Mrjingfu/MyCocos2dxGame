@@ -43,6 +43,8 @@ StandardMonster* StandardMonster::create(BaseMonster::MonsterType type)
             default:
                 break;
         }
+        if(monster->m_pMonsterProperty && monster->m_pMonsterProperty->isElite())
+            monster->setScale(monster->getScale() + 0.1f);
         monster->autorelease();
         return monster;
     }

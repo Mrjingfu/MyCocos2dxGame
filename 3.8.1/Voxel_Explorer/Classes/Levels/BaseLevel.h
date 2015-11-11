@@ -106,6 +106,7 @@ public:
     bool checkMovable(Actor* actor, TileInfo& info);
     
     bool getNextPathStep(const cocos2d::Vec2& from, const cocos2d::Vec2& to, cocos2d::Vec2& nextPos);
+    cocos2d::Vec2 getRandomPassableTile();
     
     void load();
     void save();

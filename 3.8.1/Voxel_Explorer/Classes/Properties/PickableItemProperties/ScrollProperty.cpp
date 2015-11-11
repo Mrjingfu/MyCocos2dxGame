@@ -9,13 +9,20 @@
 #include "ScrollProperty.hpp"
 
 USING_NS_CC;
-ScrollProperty::ScrollProperty(unsigned int instanceID, PickableItem::PickableItemType type, bool identified)
+ScrollProperty::ScrollProperty(unsigned int instanceID, PickableItem::PickableItemType type)
     :PickableItemProperty(instanceID, type)
 {
     m_PropertyType = PIPT_SCROLL;
-    m_bIdentified = identified;
+    m_bIdentified = true;
     m_bStackable = true;
     m_bEquipable = false;
     m_bCombinable = false;
     m_bDiscardable = true;
+}
+
+void ScrollProperty::adjustByLevel()
+{
+}
+void ScrollProperty::handleIdentify()
+{
 }
