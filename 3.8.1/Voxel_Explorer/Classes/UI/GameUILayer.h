@@ -22,13 +22,18 @@ public:
     virtual bool addEvents() override;
     void onEnter() override;
     void onExit()override;
-
+protected:
+    virtual bool onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event) override;
+    virtual void onTouchMoved(cocos2d::Touch *touch, cocos2d::Event *event) override;
+    virtual void onTouchEnded(cocos2d::Touch *touch, cocos2d::Event *event) override;
 private:
     void onClickRole(Ref* ref);
     void onClickMap(Ref* ref);
     void onClickSearch(Ref* ref);
     void onClickMsg(Ref* ref);
+    void onClickSearchTipsFrame(Ref* ref);
 
+    
     void onEventUpdateRoleProp(cocos2d::EventCustom *sender);
     void onEventRoleLevelUp(cocos2d::EventCustom *sender);
     void onEventRoleDead(cocos2d::EventCustom *sender);
@@ -38,6 +43,10 @@ private:
     void onEventUpdateMonsterProp(cocos2d::EventCustom *sender);
     void onEventMonsterHud(cocos2d::EventCustom *sender);
     void onEvenetMonsterDead(cocos2d::EventCustom *sender);
+    
+    void checkSearchMapInfo(const cocos2d::Ray ray);
+    
+    bool registerTouchEvent();
     //更新角色信息
     void updateRoleUi();
     //更新怪物信息
@@ -51,6 +60,7 @@ private:
     void setMsgItem(std::string msg,cocos2d::Color3B msgColor = cocos2d::Color3B::WHITE);
 private:
     bool _isOpenSmailMap;                       //是否打开小地图
+    bool _isSearch;
     cocos2d::ui::ListView*   m_pListMsgs;
     cocos2d::ui::ImageView*  m_pMsgFrame;
     
@@ -88,7 +98,10 @@ private:
     cocos2d::ui::Text*       m_pGameSilverNum;          // 银币
     cocos2d::ui::Text*       m_pGameCopperNum;          // 铜币
     cocos2d::ui::Text*       m_pGameLevelInfoName;      // 关卡名
-     cocos2d::ui::Text*      m_pGameLevelInfoFloor;     // 关卡层数
+    cocos2d::ui::Text*      m_pGameLevelInfoFloor;     // 关卡层数
+    cocos2d::ui::Layout*    m_pGameSearchTipsFrame;
+    cocos2d::ui::Button*    m_pGameSearchFrameCloseBtn;
+    cocos2d::ui::Text*      m_pGameSearchFrameDesc;
    
 };
 

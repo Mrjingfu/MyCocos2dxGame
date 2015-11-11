@@ -40,12 +40,15 @@
           <PlistImageFile Name="I_GoldCoin.png" Key="I_GoldCoin.png" />
           <PlistImageFile Name="I_SilverCoin.png" Key="I_SilverCoin.png" />
           <PlistImageFile Name="ui_floor_icon.png" Key="ui_floor_icon.png" />
+          <PlistImageFile Name="I_Map.png" Key="I_Map.png" />
+          <PlistImageFile Name="btn_serach_close.png" Key="btn_serach_close.png" />
         </PlistImageFolder>
         <Project Name="characterLayer.csd" Type="Layer" />
         <Project Name="gameScene.csd" Type="Scene" />
         <Project Name="menuscene.csd" Type="Scene" />
         <Project Name="equipitemPopupLayer.csd" Type="Layer" />
         <Project Name="itemPopupLayer.csd" Type="Layer" />
+        <Project Name="infoPopupLayer.csd" Type="Layer" />
       </RootFolder>
     </Group>
   </SolutionFolder>

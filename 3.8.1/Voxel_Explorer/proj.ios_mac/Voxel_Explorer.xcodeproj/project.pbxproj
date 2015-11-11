@@ -207,6 +207,8 @@
 		ECD10D711BD0967B007DD888 /* PopupUILayerManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECD10D681BD0967B007DD888 /* PopupUILayerManager.cpp */; };
 		ECD10D721BD0967B007DD888 /* WrapperUILayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECD10D6A1BD0967B007DD888 /* WrapperUILayer.cpp */; };
 		ECD10D731BD0967B007DD888 /* WrapperUILayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECD10D6A1BD0967B007DD888 /* WrapperUILayer.cpp */; };
+		ECD64A711BF1CD71008E04D7 /* InfoPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECD64A6F1BF1CD71008E04D7 /* InfoPopupUI.cpp */; };
+		ECD64A721BF1CD71008E04D7 /* InfoPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECD64A6F1BF1CD71008E04D7 /* InfoPopupUI.cpp */; };
 		ECE1B9471BD8AC820035B4D9 /* TGridView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECE1B9451BD8AC820035B4D9 /* TGridView.cpp */; };
 		ECE1B9481BD8AC820035B4D9 /* TGridView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECE1B9451BD8AC820035B4D9 /* TGridView.cpp */; };
 		ECE1B9581BD8E6660035B4D9 /* RolePopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECE1B9561BD8E6660035B4D9 /* RolePopupUI.cpp */; };
@@ -442,6 +444,8 @@
 		ECD10D691BD0967B007DD888 /* PopupUILayerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopupUILayerManager.h; sourceTree = "<group>"; };
 		ECD10D6A1BD0967B007DD888 /* WrapperUILayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WrapperUILayer.cpp; sourceTree = "<group>"; };
 		ECD10D6B1BD0967B007DD888 /* WrapperUILayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WrapperUILayer.h; sourceTree = "<group>"; };
+		ECD64A6F1BF1CD71008E04D7 /* InfoPopupUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = InfoPopupUI.cpp; sourceTree = "<group>"; };
+		ECD64A701BF1CD71008E04D7 /* InfoPopupUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoPopupUI.h; sourceTree = "<group>"; };
 		ECE1B9451BD8AC820035B4D9 /* TGridView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TGridView.cpp; sourceTree = "<group>"; };
 		ECE1B9461BD8AC820035B4D9 /* TGridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TGridView.h; sourceTree = "<group>"; };
 		ECE1B9561BD8E6660035B4D9 /* RolePopupUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RolePopupUI.cpp; sourceTree = "<group>"; };
@@ -896,6 +900,8 @@
 		ECD10D621BD0967B007DD888 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				ECD64A6F1BF1CD71008E04D7 /* InfoPopupUI.cpp */,
+				ECD64A701BF1CD71008E04D7 /* InfoPopupUI.h */,
 				ECECACC31BE7353700B14FFC /* ItemPopupUI.cpp */,
 				ECECACC41BE7353700B14FFC /* ItemPopupUI.h */,
 				ECECACC51BE7353700B14FFC /* DeadPopupUI.cpp */,
@@ -1135,6 +1141,7 @@
 				ECE1B9471BD8AC820035B4D9 /* TGridView.cpp in Sources */,
 				553BC50D1BCE5191003D907A /* StandardDoor.cpp in Sources */,
 				555B0D231BC51A2C0055FB6D /* GameScene.cpp in Sources */,
+				ECD64A711BF1CD71008E04D7 /* InfoPopupUI.cpp in Sources */,
 				554F00EE1BDA210000F4DF8E /* BaseBoss.cpp in Sources */,
 				55407D571BD5E2BC0000C41C /* GameFormula.cpp in Sources */,
 				55338ADA1BD8920F00EA316F /* SlimeKing.cpp in Sources */,
@@ -1200,6 +1207,7 @@
 				555B0D1A1BC51A2C0055FB6D /* BaseLevel.cpp in Sources */,
 				EC6264961BF0807F004E0F55 /* MessageManager.cpp in Sources */,
 				555B0D161BC51A2C0055FB6D /* AppDelegate.cpp in Sources */,
+				ECD64A721BF1CD71008E04D7 /* InfoPopupUI.cpp in Sources */,
 				55F81CAD1BDB69FB002EC075 /* PickableItemProperty.cpp in Sources */,
 				553BC5021BCDF457003D907A /* Actor.cpp in Sources */,
 				551E93C21BD51291009F788F /* ArchiveManager.cpp in Sources */,

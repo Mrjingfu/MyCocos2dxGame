@@ -11,6 +11,7 @@
 #include "ItemPopupUI.h"
 #include "EquipItemPopupUI.h"
 #include "UtilityHelper.h"
+#include "InfoPopupUI.h"
 
 PopupUILayerManager::PopupUILayerManager()
 {
@@ -94,6 +95,10 @@ PopupUILayer* PopupUILayerManager::initPopUp(ePopupType type)
             break;
         case ePopupEquipItem:
             popupLayer = EquipItemPopupUI::create();
+            break;
+        case ePopupInfo:
+            popupLayer = InfoPopupUI::create();
+            break;
         default:
             break;
     }
@@ -176,22 +181,22 @@ cocos2d::Color3B PopupUILayerManager::getTipsColor(TipTypes tipType)
 {
     switch (tipType) {
         case TIP_DEFAULT:
-            return cocos2d::Color3B(255,255,255); //白色
+            return cocos2d::Color3B(255,255,255);  //白色
         case TIP_POSITIVE:
-            return cocos2d::Color3B(0,255,0);    //绿色
+            return cocos2d::Color3B(0,255,0);     //绿色
         case TIP_NEGATIVE:
-            return cocos2d::Color3B(255,0,0);    //红色
+            return cocos2d::Color3B(255,0,0);     //红色
         case TIP_QUESTION:
         case TIP_WARNING:
-            return cocos2d::Color3B(255,136,0);  //橘色
+            return cocos2d::Color3B(255,136,0);   //橘色
         case TIP_NEUTRAL:
-            return cocos2d::Color3B(255,255,0);  //黄色
+            return cocos2d::Color3B(255,255,0);   //黄色
         case TIP_DODGE:
-            return cocos2d::Color3B(0,255,0);    //闪避绿色
+            return cocos2d::Color3B(0,255,0);     //闪避
         case TIP_BOLOCK:
-            return cocos2d::Color3B(255,135,255); //格挡粉色
+            return cocos2d::Color3B(255,135,255); //格挡
         case TIP_CRITICAL_STRIKE:
-            return cocos2d::Color3B(30,144,255);   //暴击蓝色
+            return cocos2d::Color3B(255,255,0);   //暴击
 
         default:
             break;
@@ -221,11 +226,12 @@ void PopupUILayerManager::showStatus(TipTypes tipType,  std::string text,cocos2d
     m_pParentLayer->addChild(m_pLabel);
     m_pLabel->setPosition(pos);
     m_pLabel->setTextColor(cocos2d::Color4B(getTipsColor(tipType)));
-    if (tipType == TIP_CRITICAL_STRIKE || tipType == TIP_CRITICAL_STRIKE) {
-        cocos2d::ScaleTo* ScaleTo1 = cocos2d::ScaleTo::create(0.5, 0.8);
-        cocos2d::MoveBy* moveBy = cocos2d::MoveBy::create(0.5, Vec2(0, 20.0f));
+    if (tipType == TIP_CRITICAL_STRIKE) {
+        cocos2d::ScaleTo* ScaleTo1 = cocos2d::ScaleTo::create(0.3, 0.8);
+        cocos2d::MoveBy* moveBy = cocos2d::MoveBy::create(0.3, Vec2(0, 30.0f));
+        cocos2d::DelayTime* delay = cocos2d::DelayTime::create(0.2);
         cocos2d::FadeOut* fadeOut = cocos2d::FadeOut::create(0.2);
-        m_pLabel->runAction(cocos2d::Sequence::create(cocos2d::Spawn::createWithTwoActions(moveBy, ScaleTo1),fadeOut,RemoveSelf::create(), nil));
+        m_pLabel->runAction(cocos2d::Sequence::create(cocos2d::Spawn::createWithTwoActions(moveBy, ScaleTo1),delay,fadeOut,RemoveSelf::create(), nil));
     }
     else
     {

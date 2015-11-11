@@ -181,6 +181,8 @@
             <filename>../textures_no_stroke/I_GoldCoin.png</filename>
             <filename>../textures_no_stroke/I_SilverCoin.png</filename>
             <filename>../ui/ui_floor_icon.png</filename>
+            <filename>../ui/I_Map.png</filename>
+            <filename>../ui/btn_serach_close.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>
