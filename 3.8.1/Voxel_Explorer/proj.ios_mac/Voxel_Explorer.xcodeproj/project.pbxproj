@@ -218,8 +218,8 @@
 		ECECACCC1BE7353700B14FFC /* ItemPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECECACC31BE7353700B14FFC /* ItemPopupUI.cpp */; };
 		ECECACCD1BE7353700B14FFC /* DeadPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECECACC51BE7353700B14FFC /* DeadPopupUI.cpp */; };
 		ECECACCE1BE7353700B14FFC /* DeadPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECECACC51BE7353700B14FFC /* DeadPopupUI.cpp */; };
-		ECECACCF1BE7353700B14FFC /* PauseUILayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECECACC71BE7353700B14FFC /* PauseUILayer.cpp */; };
-		ECECACD01BE7353700B14FFC /* PauseUILayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECECACC71BE7353700B14FFC /* PauseUILayer.cpp */; };
+		ECECACCF1BE7353700B14FFC /* PausePopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECECACC71BE7353700B14FFC /* PausePopupUI.cpp */; };
+		ECECACD01BE7353700B14FFC /* PausePopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECECACC71BE7353700B14FFC /* PausePopupUI.cpp */; };
 		ECECACD11BE7353700B14FFC /* ShopPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECECACC91BE7353700B14FFC /* ShopPopupUI.cpp */; };
 		ECECACD21BE7353700B14FFC /* ShopPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECECACC91BE7353700B14FFC /* ShopPopupUI.cpp */; };
 		ECECACD31BE73C5100B14FFC /* EquipItemPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECECACC01BE7351600B14FFC /* EquipItemPopupUI.cpp */; };
@@ -456,8 +456,8 @@
 		ECECACC41BE7353700B14FFC /* ItemPopupUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemPopupUI.h; sourceTree = "<group>"; };
 		ECECACC51BE7353700B14FFC /* DeadPopupUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DeadPopupUI.cpp; sourceTree = "<group>"; };
 		ECECACC61BE7353700B14FFC /* DeadPopupUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeadPopupUI.h; sourceTree = "<group>"; };
-		ECECACC71BE7353700B14FFC /* PauseUILayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PauseUILayer.cpp; sourceTree = "<group>"; };
-		ECECACC81BE7353700B14FFC /* PauseUILayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PauseUILayer.h; sourceTree = "<group>"; };
+		ECECACC71BE7353700B14FFC /* PausePopupUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PausePopupUI.cpp; sourceTree = "<group>"; };
+		ECECACC81BE7353700B14FFC /* PausePopupUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PausePopupUI.h; sourceTree = "<group>"; };
 		ECECACC91BE7353700B14FFC /* ShopPopupUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ShopPopupUI.cpp; sourceTree = "<group>"; };
 		ECECACCA1BE7353700B14FFC /* ShopPopupUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopPopupUI.h; sourceTree = "<group>"; };
 		ED545A7B1B68A1F400C3958E /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.4.sdk/usr/lib/libiconv.dylib; sourceTree = DEVELOPER_DIR; };
@@ -906,8 +906,8 @@
 				ECECACC41BE7353700B14FFC /* ItemPopupUI.h */,
 				ECECACC51BE7353700B14FFC /* DeadPopupUI.cpp */,
 				ECECACC61BE7353700B14FFC /* DeadPopupUI.h */,
-				ECECACC71BE7353700B14FFC /* PauseUILayer.cpp */,
-				ECECACC81BE7353700B14FFC /* PauseUILayer.h */,
+				ECECACC71BE7353700B14FFC /* PausePopupUI.cpp */,
+				ECECACC81BE7353700B14FFC /* PausePopupUI.h */,
 				ECECACC91BE7353700B14FFC /* ShopPopupUI.cpp */,
 				ECECACCA1BE7353700B14FFC /* ShopPopupUI.h */,
 				ECECACC01BE7351600B14FFC /* EquipItemPopupUI.cpp */,
@@ -1158,7 +1158,7 @@
 				ECD10D701BD0967B007DD888 /* PopupUILayerManager.cpp in Sources */,
 				ECD10D6C1BD0967B007DD888 /* CloseCallback.cpp in Sources */,
 				551E93C51BD51291009F788F /* UserRecord.cpp in Sources */,
-				ECECACCF1BE7353700B14FFC /* PauseUILayer.cpp in Sources */,
+				ECECACCF1BE7353700B14FFC /* PausePopupUI.cpp in Sources */,
 				551E93E81BD512D3009F788F /* sha1.cpp in Sources */,
 				553BC5011BCDF457003D907A /* Actor.cpp in Sources */,
 				551E93E61BD512D3009F788F /* md5.c in Sources */,
@@ -1221,7 +1221,7 @@
 				ECD10D711BD0967B007DD888 /* PopupUILayerManager.cpp in Sources */,
 				551E93F31BD512D3009F788F /* Stream.cpp in Sources */,
 				551E93C41BD51291009F788F /* LevelResourceManager.cpp in Sources */,
-				ECECACD01BE7353700B14FFC /* PauseUILayer.cpp in Sources */,
+				ECECACD01BE7353700B14FFC /* PausePopupUI.cpp in Sources */,
 				ECE1B9591BD8E6660035B4D9 /* RolePopupUI.cpp in Sources */,
 				555B0D1E1BC51A2C0055FB6D /* Graph.cpp in Sources */,
 				554F01061BDA3A3100F4DF8E /* SewerLevel.cpp in Sources */,

@@ -42,6 +42,12 @@
           <PlistImageFile Name="ui_floor_icon.png" Key="ui_floor_icon.png" />
           <PlistImageFile Name="I_Map.png" Key="I_Map.png" />
           <PlistImageFile Name="btn_serach_close.png" Key="btn_serach_close.png" />
+          <PlistImageFile Name="icon_resource_intermediate_tool.png" Key="icon_resource_intermediate_tool.png" />
+          <PlistImageFile Name="button_rewardbtn_bg.png" Key="button_rewardbtn_bg.png" />
+          <PlistImageFile Name="icon_artifact.png" Key="icon_artifact.png" />
+          <PlistImageFile Name="ui_lock_icon.png" Key="ui_lock_icon.png" />
+          <PlistImageFile Name="ui_pause_icon.png" Key="ui_pause_icon.png" />
+          <PlistImageFile Name="ui_dist_icon.png" Key="ui_dist_icon.png" />
         </PlistImageFolder>
         <Project Name="characterLayer.csd" Type="Layer" />
         <Project Name="gameScene.csd" Type="Scene" />
@@ -49,6 +55,8 @@
         <Project Name="equipitemPopupLayer.csd" Type="Layer" />
         <Project Name="itemPopupLayer.csd" Type="Layer" />
         <Project Name="infoPopupLayer.csd" Type="Layer" />
+        <Project Name="equipitemPopupLayer_0.csd" Type="Layer" />
+        <Project Name="pausePopupLayer.csd" Type="Layer" />
       </RootFolder>
     </Group>
   </SolutionFolder>

@@ -183,6 +183,12 @@
             <filename>../ui/ui_floor_icon.png</filename>
             <filename>../ui/I_Map.png</filename>
             <filename>../ui/btn_serach_close.png</filename>
+            <filename>../ui/icon_resource_intermediate_tool.png</filename>
+            <filename>../ui/button_rewardbtn_bg.png</filename>
+            <filename>../ui/icon_artifact.png</filename>
+            <filename>../ui/ui_lock_icon.png</filename>
+            <filename>../ui/ui_pause_icon.png</filename>
+            <filename>../ui/ui_dist_icon.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

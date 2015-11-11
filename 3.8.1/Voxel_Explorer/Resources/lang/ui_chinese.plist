@@ -32,8 +32,10 @@
 	<string>暴击 %d</string>
 	<key>STATUS_TEXT_EXP</key>
 	<string>+经验 %d</string>
+	<key>GAME_SERACH_EXPLAIN</key>
+	<string>请选择一个方块</string>
 	<key>GAME_MESSAGE_NOT</key>
-	<string>无消息</string>
+	<string>欢迎来到像素的%s第%d层</string>
 	<key>GAME_MESSAGE_MONSTER_ATTACK</key>
 	<string>%s击中了你</string>
 	<key>GAME_MESSAGE_MONSTER_DODGE</key>

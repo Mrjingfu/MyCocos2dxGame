@@ -32,8 +32,10 @@
 	<string>Cirtical Strike %d</string>
 	<key>STATUS_TEXT_EXP</key>
 	<string>+Exp %d</string>
+	<key>GAME_SERACH_EXPLAIN</key>
+	<string>Select a cell to examine</string>
 	<key>GAME_MESSAGE_NOT</key>
-	<string>no message</string>
+	<string>Welcome to the %s level %d of Voxel</string>
 	<key>GAME_MESSAGE_MONSTER_ATTACK</key>
 	<string>%s hit you</string>
 	<key>GAME_MESSAGE_MONSTER_DODGE</key>
