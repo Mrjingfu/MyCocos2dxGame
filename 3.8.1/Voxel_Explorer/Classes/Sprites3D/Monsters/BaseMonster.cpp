@@ -153,6 +153,12 @@ void BaseMonster::attackedByPlayer(bool miss)
     if(currentHp == 0)
     {
         setState(MS_DEATH);
+        CChaosNumber addexp = 0;
+        if(m_pMonsterProperty->isElite())
+            addexp = GameFormula::getKillEliteMonsterExp(PlayerProperty::getInstance()->getLevel(), m_pMonsterProperty->getLevel());
+        else
+            addexp = GameFormula::getKillNormalMonsterExp(PlayerProperty::getInstance()->getLevel(), m_pMonsterProperty->getLevel());
+        PlayerProperty::getInstance()->setExp(PlayerProperty::getInstance()->getExp() + addexp.GetLongValue());
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_MONSTER_DEATH, this);
     }
     else
@@ -406,7 +412,8 @@ void BaseMonster::onEnterAttack()
 {
     Vec3 dir = Vec3::ZERO;
     Vec2 playerPos = VoxelExplorer::getInstance()->getPlayer()->getPosInMap();
-    CCLOG("attack pos %f, %f", playerPos.x, playerPos.y);
+    CCLOG("monster===== pos %f, %f", getPosInMap().x, getPosInMap().y);
+    CCLOG("attack===== pos %f, %f", playerPos.x, playerPos.y);
     Vec2 vd = playerPos - getPosInMap();
     if(std::abs(vd.x) > std::abs(vd.y))
     {

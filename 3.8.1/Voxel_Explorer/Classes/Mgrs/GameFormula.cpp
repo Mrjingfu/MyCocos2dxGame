@@ -16,6 +16,8 @@ static const CChaosNumber gsMaxDodgeRate = 0.2f;
 static const CChaosNumber gsMaxMagicItemFindRate = 0.65f;
 bool GameFormula::generateMagicItem(float magicFindRate)
 {
+    if(magicFindRate <= 0)
+        return false;
     float percentNoMagic = 1.0 - magicFindRate;
     AlisaMethod* am = AlisaMethod::create(magicFindRate, percentNoMagic, -1.0, NULL);
     if(!am)
