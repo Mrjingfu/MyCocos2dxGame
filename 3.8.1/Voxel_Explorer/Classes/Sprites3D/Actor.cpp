@@ -12,7 +12,7 @@
 USING_NS_CC;
 Actor::Actor()
 {
-    m_dir       = AD_RIGHT;
+    m_dir       = AD_UNKNOWN;
 }
 Actor::~Actor()
 {

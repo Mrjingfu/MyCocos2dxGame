@@ -53,7 +53,7 @@ PlayerProperty::PlayerProperty()
     m_fCriticalStrikeRate   = 0.01f;            ///暴击率
     m_fDodgeRate            = 0.02f;            ///闪避率
     m_fBasicMagicItemFindRate = 0.2f;           ///基本魔法物品获得率
-    m_fMagicItemFindRate    = 0.0f;             ///魔法物品获得率
+    m_fMagicItemFindRate    = m_fBasicMagicItemFindRate;             ///魔法物品获得率
     m_fMaxMagicItemFindRate = 0.8f;             ///最大魔法物品获得率
     
     m_nEquipedWeaponID      = -1;               ///装备了武器ID
@@ -188,7 +188,7 @@ bool PlayerProperty::equipWeapon(CChaosNumber id)
             m_nAttackDiceFaceNum = 0;
             m_fCriticalStrikeRate = m_fCriticalStrikeRate - oldWeaponProperty->getAddedCriticalStrikeRate().GetFloatValue();
             m_fCriticalStrikeRate = MAX(0, m_fCriticalStrikeRate.GetFloatValue());
-            m_fMagicItemFindRate = m_fMagicItemFindRate -(m_fBasicMagicItemFindRate + m_fBasicMagicItemFindRate*weaponProperty->getAddedMagicItemFindRate().GetFloatValue());
+            m_fMagicItemFindRate = m_fMagicItemFindRate - m_fBasicMagicItemFindRate*weaponProperty->getAddedMagicItemFindRate().GetFloatValue();
             m_fMagicItemFindRate = MAX(0, m_fBasicMagicItemFindRate.GetFloatValue());
             oldWeaponProperty->setEquiped(false);
         }
@@ -206,7 +206,7 @@ bool PlayerProperty::equipWeapon(CChaosNumber id)
         m_nAttackDiceNum = weaponProperty->getAttackDiceNum().GetLongValue();
         m_nAttackDiceFaceNum = weaponProperty->getAttackDiceFaceNum().GetLongValue();
         m_fCriticalStrikeRate = m_fCriticalStrikeRate + weaponProperty->getAddedCriticalStrikeRate().GetFloatValue();
-        m_fMagicItemFindRate = m_fMagicItemFindRate + (m_fBasicMagicItemFindRate + m_fBasicMagicItemFindRate*weaponProperty->getAddedMagicItemFindRate().GetFloatValue());
+        m_fMagicItemFindRate = m_fMagicItemFindRate + m_fBasicMagicItemFindRate*weaponProperty->getAddedMagicItemFindRate().GetFloatValue();
         m_fMagicItemFindRate = MIN(m_fMagicItemFindRate, m_fMaxMagicItemFindRate);
         weaponProperty->setEquiped(true);
         m_bDirty = true;
@@ -253,7 +253,7 @@ bool PlayerProperty::equipSecondWeapon(CChaosNumber id)
             m_fCriticalStrikeRate = MAX(0, m_fCriticalStrikeRate.GetFloatValue());
             m_fDodgeRate = m_fDodgeRate - oldSecondWeaponProperty->getAddedDodgeRate().GetFloatValue();
             m_fDodgeRate = MAX(0, m_fDodgeRate.GetFloatValue());
-            m_fMagicItemFindRate = m_fMagicItemFindRate -(m_fBasicMagicItemFindRate + m_fBasicMagicItemFindRate*oldSecondWeaponProperty->getAddedMagicItemFindRate().GetFloatValue());
+            m_fMagicItemFindRate = m_fMagicItemFindRate - m_fBasicMagicItemFindRate*oldSecondWeaponProperty->getAddedMagicItemFindRate().GetFloatValue();
             m_fMagicItemFindRate = MAX(0, m_fBasicMagicItemFindRate.GetFloatValue());
             oldSecondWeaponProperty->setEquiped(false);
         }
@@ -273,7 +273,7 @@ bool PlayerProperty::equipSecondWeapon(CChaosNumber id)
         m_fCriticalStrikeRate = m_fCriticalStrikeRate + secondWeaponProperty->getAddedCriticalStrikeRate().GetFloatValue();
         m_fDodgeRate = m_fDodgeRate + secondWeaponProperty->getAddedDodgeRate().GetFloatValue();
         
-        m_fMagicItemFindRate = m_fMagicItemFindRate + (m_fBasicMagicItemFindRate + m_fBasicMagicItemFindRate*secondWeaponProperty->getAddedMagicItemFindRate().GetFloatValue());
+        m_fMagicItemFindRate = m_fMagicItemFindRate + m_fBasicMagicItemFindRate*secondWeaponProperty->getAddedMagicItemFindRate().GetFloatValue();
         m_fMagicItemFindRate = MIN(m_fMagicItemFindRate, m_fMaxMagicItemFindRate);
         secondWeaponProperty->setEquiped(true);
         
@@ -314,7 +314,7 @@ bool PlayerProperty::equipArmor(CChaosNumber id)
             m_fDodgeRate = m_fDodgeRate - oldArmorProperty->getAddedDodgeRate().GetFloatValue();
             m_fDodgeRate = MIN(0, m_fDodgeRate.GetFloatValue());
             
-            m_fMagicItemFindRate = m_fMagicItemFindRate -(m_fBasicMagicItemFindRate + m_fBasicMagicItemFindRate*oldArmorProperty->getAddedMagicItemFindRate().GetFloatValue());
+            m_fMagicItemFindRate = m_fMagicItemFindRate - m_fBasicMagicItemFindRate*oldArmorProperty->getAddedMagicItemFindRate().GetFloatValue();
             m_fMagicItemFindRate = MAX(0, m_fBasicMagicItemFindRate.GetFloatValue());
             oldArmorProperty->setEquiped(false);
         }
@@ -332,7 +332,7 @@ bool PlayerProperty::equipArmor(CChaosNumber id)
         m_nArmorClass = m_nArmorClass + armorProperty->getAddedDodgeRate().GetFloatValue();
         m_fDodgeRate = m_fDodgeRate + armorProperty->getAddedDodgeRate().GetFloatValue();
         
-        m_fMagicItemFindRate = m_fMagicItemFindRate + (m_fBasicMagicItemFindRate + m_fBasicMagicItemFindRate*armorProperty->getAddedMagicItemFindRate().GetFloatValue());
+        m_fMagicItemFindRate = m_fMagicItemFindRate + m_fBasicMagicItemFindRate*armorProperty->getAddedMagicItemFindRate().GetFloatValue();
         m_fMagicItemFindRate = MIN(m_fMagicItemFindRate, m_fMaxMagicItemFindRate);
         armorProperty->setEquiped(true);
         m_bDirty = true;
@@ -379,7 +379,7 @@ bool PlayerProperty::equipOrnaments(CChaosNumber id)
             m_fCriticalStrikeRate = MAX(0, m_fCriticalStrikeRate.GetFloatValue());
             m_fDodgeRate = m_fDodgeRate - oldMagicOrnamentProperty->getAddedDodgeRate().GetFloatValue();
             m_fDodgeRate = MAX(0, m_fDodgeRate.GetFloatValue());
-            m_fMagicItemFindRate = m_fMagicItemFindRate -(m_fBasicMagicItemFindRate + m_fBasicMagicItemFindRate*oldMagicOrnamentProperty->getAddedMagicItemFindRate().GetFloatValue());
+            m_fMagicItemFindRate = m_fMagicItemFindRate - m_fBasicMagicItemFindRate*oldMagicOrnamentProperty->getAddedMagicItemFindRate().GetFloatValue();
             m_fMagicItemFindRate = MAX(0, m_fBasicMagicItemFindRate.GetFloatValue());
             magicOrnamentProperty->setEquiped(false);
         }
@@ -399,7 +399,7 @@ bool PlayerProperty::equipOrnaments(CChaosNumber id)
         m_fCriticalStrikeRate = m_fCriticalStrikeRate + magicOrnamentProperty->getAddedCriticalStrikeRate().GetFloatValue();
         m_fDodgeRate = m_fDodgeRate + magicOrnamentProperty->getAddedDodgeRate().GetFloatValue();
         
-        m_fMagicItemFindRate = m_fMagicItemFindRate + (m_fBasicMagicItemFindRate + m_fBasicMagicItemFindRate*magicOrnamentProperty->getAddedMagicItemFindRate().GetFloatValue());
+        m_fMagicItemFindRate = m_fMagicItemFindRate + m_fBasicMagicItemFindRate*magicOrnamentProperty->getAddedMagicItemFindRate().GetFloatValue();
         m_fMagicItemFindRate = MIN(m_fMagicItemFindRate, m_fMaxMagicItemFindRate);
         magicOrnamentProperty->setEquiped(true);
         m_bDirty = true;

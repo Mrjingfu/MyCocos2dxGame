@@ -330,5 +330,65 @@
 	<string>Knight looks</string>
 	<key>PIN_CLOTH_PRO_STEELARMOR</key>
 	<string>No widow</string>
+	<key>PIN_ORNAMENT_RING</key>
+	<string>Silver Ring</string>
+	<key>PIN_ORNAMENT_MEDAL</key>
+	<string>Medal</string>
+	<key>PIN_ORNAMENT_SHELLNECKLACE</key>
+	<string>Shell Necklace</string>
+	<key>PIN_ORNAMENT_PENDANT</key>
+	<string>Pendant</string>
+	<key>PIN_ORNAMENT_NECKLACE</key>
+	<string>Aquamarine Necklace</string>
+	<key>PIN_ORNAMENT_SUPERMEDAL</key>
+	<string>Superior Medal</string>
+	<key>PIN_ORNAMENT_JEWELS</key>
+	<string>Jewels Necklace</string>
+	<key>PIN_ORNAMENT_PRO_RING</key>
+	<string>Emerald Ring</string>
+	<key>PIN_ORNAMENT_PRO_MEDAL</key>
+	<string>Golden Courage</string>
+	<key>PIN_ORNAMENT_PRO_SHELLNECKLACE</key>
+	<string>William Medal</string>
+	<key>PIN_ORNAMENT_PRO_PENDANT</key>
+	<string>Blood of Onyxia</string>
+	<key>PIN_ORNAMENT_PRO_NECKLACE</key>
+	<string>Sacred Relic</string>
+	<key>PIN_ORNAMENT_PRO_SUPERMEDAL</key>
+	<string>Hyperstone</string>
+	<key>PIN_ORNAMENT_PRO_JEWELS</key>
+	<string>Heart of Ocean</string>
+	<key>PIN_SCROLL_INDENTIFY</key>
+	<string>Scroll of Identify</string>
+	<key>PIN_SCROLL_TELEPORT</key>
+	<string>Scroll of Random Teleport</string>
+	<key>PIN_SCROLL_SPEED</key>
+	<string>Scroll of Speed</string>
+	<key>PIN_SCROLL_STEALTH</key>
+	<string>Scroll of Stealth</string>
+	<key>PIN_SCROLL_DESTINY</key>
+	<string>Scroll of Destiny</string>
+	<key>PIN_POTION_MINORHEALTH</key>
+	<string>Minor Health Potion</string>
+	<key>PIN_POTION_LESSERHEALTH</key>
+	<string>Lesser Health Potion</string>
+	<key>PIN_POTION_HEALTH</key>
+	<string>Health Potion</string>
+	<key>PIN_POTION_MINORMANA</key>
+	<string>Minor Mana Potion</string>
+	<key>PIN_POTION_LESSERMANA</key>
+	<string>Lesser Mana Potion</string>
+	<key>PIN_POTION_MANA</key>
+	<string>Mana Potion</string>
+	<key>PIN_POTION_MINORRECOVERY</key>
+	<string>Minor Recovery Potion</string>
+	<key>PIN_POTION_LESSERRECOVERY</key>
+	<string>Lesser Recovery Potion</string>
+	<key>PIN_POTION_RECOVERY</key>
+	<string>Recovery Potion</string>
+	<key>PIN_POTION_DETOXIFICATION</key>
+	<string>Detoxification Potion</string>
+	<key>PIN_POTION_SPECIFIC</key>
+	<string>Specific Potion</string>
 </dict>
 </plist>

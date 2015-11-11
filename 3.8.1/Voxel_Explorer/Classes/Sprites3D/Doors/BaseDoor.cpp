@@ -73,6 +73,8 @@ void BaseDoor::setDoorState(BaseDoor::DoorState state)
 }
 void BaseDoor::setActorDir( ActorDir dir )
 {
+    if(m_dir == dir)
+        return;
     m_dir = dir;
     if(!m_pFakeDoor)
         return;

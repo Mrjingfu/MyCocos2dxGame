@@ -569,7 +569,7 @@ void GameUILayer::initMessageFrame()
 void GameUILayer::updateGameInfo()
 {
     m_pGameLevelInfoName->setString(RandomDungeon::getInstance()->getCurrentDungeonNode()->m_strDungeonName.c_str());
-    m_pGameLevelInfoFloor->setString(Value(int(RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nTotalNum)).asString());
+    m_pGameLevelInfoFloor->setString(Value(int(RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nCurrentDepth)).asString());
     CCLOG(" gold: %s",StringUtils::format("%d",int(PlayerProperty::getInstance()->getGold())).c_str());
     CCLOG(" silver: %s",StringUtils::format("%d",int(PlayerProperty::getInstance()->getGold())).c_str());
     CCLOG(" copper: %s",StringUtils::format("%d",int(PlayerProperty::getInstance()->getGold())).c_str());

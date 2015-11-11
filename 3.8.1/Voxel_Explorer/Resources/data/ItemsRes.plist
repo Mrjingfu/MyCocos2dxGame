@@ -236,5 +236,65 @@
 	<string>C_Elm04</string>
 	<key>PIN_CLOTH_PRO_STEELARMOR</key>
 	<string>A_Armour03</string>
+	<key>PIN_ORNAMENT_RING</key>
+	<string>Ac_Ring01</string>
+	<key>PIN_ORNAMENT_MEDAL</key>
+	<string>Ac_Medal03</string>
+	<key>PIN_ORNAMENT_SHELLNECKLACE</key>
+	<string>Ac_Necklace06</string>
+	<key>PIN_ORNAMENT_PENDANT</key>
+	<string>Ac_Necklace07</string>
+	<key>PIN_ORNAMENT_NECKLACE</key>
+	<string>Ac_Necklace03</string>
+	<key>PIN_ORNAMENT_SUPERMEDAL</key>
+	<string>Ac_Medal02</string>
+	<key>PIN_ORNAMENT_JEWELS</key>
+	<string>Ac_Necklace01</string>
+	<key>PIN_ORNAMENT_PRO_RING</key>
+	<string>Ac_Ring02</string>
+	<key>PIN_ORNAMENT_PRO_MEDAL</key>
+	<string>Ac_Medal01</string>
+	<key>PIN_ORNAMENT_PRO_SHELLNECKLACE</key>
+	<string>Ac_Necklace04</string>
+	<key>PIN_ORNAMENT_PRO_PENDANT</key>
+	<string>Ac_Necklace05</string>
+	<key>PIN_ORNAMENT_PRO_NECKLACE</key>
+	<string>Ac_Necklace08</string>
+	<key>PIN_ORNAMENT_PRO_SUPERMEDAL</key>
+	<string>Ac_Medal04</string>
+	<key>PIN_ORNAMENT_PRO_JEWELS</key>
+	<string>Ac_Necklace02</string>
+	<key>PIN_SCROLL_INDENTIFY</key>
+	<string>I_Scroll02</string>
+	<key>PIN_SCROLL_TELEPORT</key>
+	<string>I_Scroll01</string>
+	<key>PIN_SCROLL_SPEED</key>
+	<string>I_Scroll04</string>
+	<key>PIN_SCROLL_STEALTH</key>
+	<string>I_Scroll03</string>
+	<key>PIN_SCROLL_DESTINY</key>
+	<string>I_Scroll05</string>
+	<key>PIN_POTION_MINORHEALTH</key>
+	<string>P_Red02</string>
+	<key>PIN_POTION_LESSERHEALTH</key>
+	<string>P_Red03</string>
+	<key>PIN_POTION_HEALTH</key>
+	<string>P_Red01</string>
+	<key>PIN_POTION_MINORMANA</key>
+	<string>P_Blue02</string>
+	<key>PIN_POTION_LESSERMANA</key>
+	<string>P_Blue03</string>
+	<key>PIN_POTION_MANA</key>
+	<string>P_Blue01</string>
+	<key>PIN_POTION_MINORRECOVERY</key>
+	<string>P_Pink02</string>
+	<key>PIN_POTION_LESSERRECOVERY</key>
+	<string>P_Pink03</string>
+	<key>PIN_POTION_RECOVERY</key>
+	<string>P_Pink01</string>
+	<key>PIN_POTION_DETOXIFICATION</key>
+	<string>P_Green04</string>
+	<key>PIN_POTION_SPECIFIC</key>
+	<string>P_Yellow04</string>
 </dict>
 </plist>

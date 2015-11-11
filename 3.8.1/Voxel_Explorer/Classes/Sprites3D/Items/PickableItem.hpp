@@ -184,6 +184,48 @@ public:
         PIT_CLOTH_PRO_STEELARMOR,               ///寡妇对抗者 No widow
         //PIT_CLOTH_PRO_END
         
+        //PIT_ORNAMENT_BEGIN
+        PIT_ORNAMENT_RING,                  ///银戒指
+        PIT_ORNAMENT_MEDAL,                 ///勋章
+        PIT_ORNAMENT_SHELLNECKLACE,         ///贝壳项链
+        PIT_ORNAMENT_PENDANT,               ///吊坠
+        PIT_ORNAMENT_NECKLACE,              ///项链
+        PIT_ORNAMENT_SUPERMEDAL,            ///高级勋章
+        PIT_ORNAMENT_JEWELS,                ///宝石项链
+        //PIT_ORNAMENT_END
+        
+        //PIT_ORNAMENT_PRO_BEGIN
+        PIT_ORNAMENT_PRO_RING,                  ///翠玉指环 Emerald ring
+        PIT_ORNAMENT_PRO_MEDAL,                 ///金色勇气 Golden courage
+        PIT_ORNAMENT_PRO_SHELLNECKLACE,         ///威廉勋章 William Medal
+        PIT_ORNAMENT_PRO_PENDANT,               ///奥妮克希亚之血 Blood of Onyxia
+        PIT_ORNAMENT_PRO_NECKLACE,              ///圣者遗物  Sacred Relic
+        PIT_ORNAMENT_PRO_SUPERMEDAL,            ///振奋宝石 Hyperstone
+        PIT_ORNAMENT_PRO_JEWELS,                ///海洋之心 Heart of Ocean
+        //PIT_ORNAMENT_END
+        
+        //PIT_SCROLL_BEGIN
+        PIT_SCROLL_INDENTIFY,                    ////辨识卷轴 Scroll of Identify
+        PIT_SCROLL_TELEPORT,                     ////传送卷轴 Scroll of Random Teleport
+        PIT_SCROLL_SPEED,                        ////速度卷轴 Scroll of Speed
+        PIT_SCROLL_STEALTH,                      ////隐身卷轴 Scroll of Stealth
+        PIT_SCROLL_DESTINY,                      ////命运卷轴 Scroll of Destiny
+        //PIT_SCROLL_END
+        
+        ///PIT_POTION_BEGIN
+        PIT_POTION_MINORHEALTH,                  ///小治疗药水 Minor Health Potion
+        PIT_POTION_LESSERHEALTH,                 ///轻微治疗药水 Lesser Health Potion
+        PIT_POTION_HEALTH,                       ///治疗药水 Health Potion
+        PIT_POTION_MINORMANA,                    ///小魔法药水 Minor Mana Potion
+        PIT_POTION_LESSERMANA,                   ///轻微魔法药水 Lesser Mana Potion
+        PIT_POTION_MANA,                         ///魔法药水 Mana Potion
+        PIT_POTION_MINORRECOVERY,                ///小恢复药水 Minor Recovery Potion
+        PIT_POTION_LESSERRECOVERY,               ///轻微恢复药水 Lesser Recovery Potion
+        PIT_POTION_RECOVERY,                     ///恢复药水 Recovery Potion
+        PIT_POTION_DETOXIFICATION,               ///解毒药水 Detoxification Potion
+        PIT_POTION_SPECIFIC,                     ///特效药水 Specific Potion
+        ///PIT_POTION_END
+        
         PIT_UNKNOWN
     } PickableItemType;
     
@@ -220,6 +262,10 @@ private:
     void destroySelf();
     
     static PickableItem::PickableItemType generateKeyItemType();
+    static PickableItem::PickableItemType generateScrollType();
+    static PickableItem::PickableItemType generate1_15PotionType();
+    static PickableItem::PickableItemType generate16_30PotionType();
+    static PickableItem::PickableItemType generate31_45PotionType();
     
     static PickableItem::PickableItemType generate1_5UnStackableItemType();
     static PickableItem::PickableItemType generate6_10UnStackableItemType();

@@ -330,5 +330,65 @@
 	<string>骑士的容貌</string>
 	<key>PIN_CLOTH_PRO_STEELARMOR</key>
 	<string>寡妇对抗者</string>
+	<key>PIN_ORNAMENT_RING</key>
+	<string>银戒指</string>
+	<key>PIN_ORNAMENT_MEDAL</key>
+	<string>勋章</string>
+	<key>PIN_ORNAMENT_SHELLNECKLACE</key>
+	<string>贝壳项链</string>
+	<key>PIN_ORNAMENT_PENDANT</key>
+	<string>吊坠项链</string>
+	<key>PIN_ORNAMENT_NECKLACE</key>
+	<string>海蓝项链</string>
+	<key>PIN_ORNAMENT_SUPERMEDAL</key>
+	<string>高级勋章</string>
+	<key>PIN_ORNAMENT_JEWELS</key>
+	<string>珠宝吊饰</string>
+	<key>PIN_ORNAMENT_PRO_RING</key>
+	<string>翠玉指环</string>
+	<key>PIN_ORNAMENT_PRO_MEDAL</key>
+	<string>金色勇气</string>
+	<key>PIN_ORNAMENT_PRO_SHELLNECKLACE</key>
+	<string>威廉勋章</string>
+	<key>PIN_ORNAMENT_PRO_PENDANT</key>
+	<string>奥妮克希亚之血</string>
+	<key>PIN_ORNAMENT_PRO_NECKLACE</key>
+	<string>圣者遗物</string>
+	<key>PIN_ORNAMENT_PRO_SUPERMEDAL</key>
+	<string>振奋宝石</string>
+	<key>PIN_ORNAMENT_PRO_JEWELS</key>
+	<string>海洋之心</string>
+	<key>PIN_SCROLL_INDENTIFY</key>
+	<string>辨识卷轴</string>
+	<key>PIN_SCROLL_TELEPORT</key>
+	<string>传送卷轴</string>
+	<key>PIN_SCROLL_SPEED</key>
+	<string>速度卷轴</string>
+	<key>PIN_SCROLL_STEALTH</key>
+	<string>隐身卷轴</string>
+	<key>PIN_SCROLL_DESTINY</key>
+	<string>命运卷轴</string>
+	<key>PIN_POTION_MINORHEALTH</key>
+	<string>小治疗药水</string>
+	<key>PIN_POTION_LESSERHEALTH</key>
+	<string>轻微治疗药水</string>
+	<key>PIN_POTION_HEALTH</key>
+	<string>治疗药水</string>
+	<key>PIN_POTION_MINORMANA</key>
+	<string>小魔法药水</string>
+	<key>PIN_POTION_LESSERMANA</key>
+	<string>轻微魔法药水</string>
+	<key>PIN_POTION_MANA</key>
+	<string>魔法药水</string>
+	<key>PIN_POTION_MINORRECOVERY</key>
+	<string>小恢复药水</string>
+	<key>PIN_POTION_LESSERRECOVERY</key>
+	<string>轻微恢复药水</string>
+	<key>PIN_POTION_RECOVERY</key>
+	<string>恢复药水</string>
+	<key>PIN_POTION_DETOXIFICATION</key>
+	<string>解毒药水</string>
+	<key>PIN_POTION_SPECIFIC</key>
+	<string>特效药水</string>
 </dict>
 </plist>

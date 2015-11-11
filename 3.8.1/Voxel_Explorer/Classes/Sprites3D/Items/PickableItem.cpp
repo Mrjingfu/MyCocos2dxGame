@@ -181,6 +181,48 @@ const std::string PICKABLE_ITEM_NAMES[] = {
     "PIN_CLOTH_PRO_STEELARMOR",               ///寡妇对抗者 No widow
     //PIN_CLOTH_PRO_END
     
+    //PIN_ORNAMENT_BEGIN
+    "PIN_ORNAMENT_RING",                  ///银戒指
+    "PIN_ORNAMENT_MEDAL",                 ///勋章
+    "PIN_ORNAMENT_SHELLNECKLACE",         ///贝壳项链
+    "PIN_ORNAMENT_PENDANT",               ///吊坠
+    "PIN_ORNAMENT_NECKLACE",              ///项链
+    "PIN_ORNAMENT_SUPERMEDAL",            ///高级勋章
+    "PIN_ORNAMENT_JEWELS",                ///宝石项链
+    //PIN_ORNAMENT_END
+    
+    //PIN_ORNAMENT_PRO_BEGIN
+    "PIN_ORNAMENT_PRO_RING",                  ///翠玉指环 Emerald ring
+    "PIN_ORNAMENT_PRO_MEDAL",                 ///金色勇气 Golden courage
+    "PIN_ORNAMENT_PRO_SHELLNECKLACE",         ///威廉勋章 William Medal
+    "PIN_ORNAMENT_PRO_PENDANT",               ///奥妮克希亚之血 Blood of Onyxia
+    "PIN_ORNAMENT_PRO_NECKLACE",              ///圣者遗物  Sacred Relic
+    "PIN_ORNAMENT_PRO_SUPERMEDAL",            ///振奋宝石 Hyperstone
+    "PIN_ORNAMENT_PRO_JEWELS",                ///海洋之心 Heart of Ocean
+    //PIN_ORNAMENT_END
+    
+    //PIN_SCROLL_BEGIN
+    "PIN_SCROLL_INDENTIFY",                    ////辨识卷轴 Scroll of Identify
+    "PIN_SCROLL_TELEPORT",                     ////传送卷轴 Scroll of Random Teleport
+    "PIN_SCROLL_SPEED",                        ////速度卷轴 Scroll of Speed
+    "PIN_SCROLL_STEALTH",                      ////隐身卷轴 Scroll of Stealth
+    "PIN_SCROLL_DESTINY",                      ////命运卷轴 Scroll of Destiny
+    //PIN_SCROLL_END
+    
+    ///PIN_POTION_BEGIN
+    "PIN_POTION_MINORHEALTH",                  ///小治疗药水 Minor Health Potion
+    "PIN_POTION_LESSERHEALTH",                 ///轻微治疗药水 Lesser Health Potion
+    "PIN_POTION_HEALTH",                       ///治疗药水 Health Potion
+    "PIN_POTION_MINORMANA",                    ///小魔法药水 Minor Mana Potion
+    "PIN_POTION_LESSERMANA",                   ///轻微魔法药水 Lesser Mana Potion
+    "PIN_POTION_MANA",                         ///魔法药水 Mana Potion
+    "PIN_POTION_MINORRECOVERY",                ///小恢复药水 Minor Recovery Potion
+    "PIN_POTION_LESSERRECOVERY",               ///轻微恢复药水 Lesser Recovery Potion
+    "PIN_POTION_RECOVERY",                     ///恢复药水 Recovery Potion
+    "PIN_POTION_DETOXIFICATION",               ///解毒药水 Detoxification Potion
+    "PIN_POTION_SPECIFIC",                     ///特效药水 Specific Potion
+    ///PIN_POTION_END
+    
     "PIN_UNKNOWN"
 };
 
@@ -195,7 +237,7 @@ PickableItem* PickableItem::create(PickableItemType type, CChaosNumber level)
             tex->setAliasTexParameters();
         item->setTexture(tex);
         item->m_Type = type;
-        if(item->m_Type >= PIT_DAGGER_DAGGER && item->m_Type <= PIT_CLOTH_PRO_STEELARMOR)
+        if(item->m_Type >= PIT_DAGGER_DAGGER && item->m_Type <= PIT_ORNAMENT_PRO_JEWELS)
             item->m_nLevel = level;
         item->setCameraMask((unsigned int)CameraFlag::USER1);
         item->setLightMask((unsigned int)LightFlag::LIGHT0);
@@ -314,8 +356,10 @@ PickableItem::PickableItemType PickableItem::generatePickItemByMonsterLevel(int 
 {
     PickableItem::PickableItemType ret = PIT_UNKNOWN;
     float percentKey = 0.05f;
-    float percentUnStackableItem = 1.0 - percentKey;
-    AlisaMethod* am = AlisaMethod::create(percentKey, percentUnStackableItem, -1.0, NULL);
+    float percentUnStackableItem = 0.3f;
+    float percentScroll = 0.2f;
+    float percentPotion = 1.0 - percentKey - percentUnStackableItem - percentScroll;
+    AlisaMethod* am = AlisaMethod::create(percentKey, percentUnStackableItem, percentScroll, percentPotion, -1.0, NULL);
     if(am)
     {
         if(am->getRandomIndex() == 0)
@@ -468,6 +512,19 @@ PickableItem::PickableItemType PickableItem::generatePickItemByMonsterLevel(int 
                 }
             }
         }
+        else if(am->getRandomIndex() == 2)
+        {
+            ret = generateScrollType();
+        }
+        else if(am->getRandomIndex() == 3)
+        {
+            if(monsterLevel <= 15)
+                ret = generate1_15PotionType();
+            else if(monsterLevel <= 30)
+                ret = generate16_30PotionType();
+            else
+                ret = generate31_45PotionType();
+        }
     }
     return ret;
 }
@@ -487,7 +544,108 @@ PickableItem::PickableItemType PickableItem::generateKeyItemType()
     }
     return PIT_KEY_COPPER;
 }
-
+PickableItem::PickableItemType PickableItem::generateScrollType()
+{
+    float percent1 = 0.4f;
+    float percent2 = 0.2f;
+    float percent3 = 0.1f;
+    float percent4 = 0.1f;
+    float percent5 = 1.0 - percent1 - percent2 - percent3 - percent4;
+    AlisaMethod* am = AlisaMethod::create(percent1, percent2, percent3, percent4, percent5, -1.0, NULL);
+    if(am)
+    {
+        if(am->getRandomIndex() == 0)
+            return PIT_SCROLL_INDENTIFY;
+        else if(am->getRandomIndex() == 1)
+            return PIT_SCROLL_TELEPORT;
+        else if(am->getRandomIndex() == 2)
+            return PIT_SCROLL_SPEED;
+        else if(am->getRandomIndex() == 3)
+            return PIT_SCROLL_STEALTH;
+    }
+    return PIT_SCROLL_DESTINY;
+}
+PickableItem::PickableItemType PickableItem::generate1_15PotionType()
+{
+    float percent1 = 0.35f;
+    float percent2 = 0.35f;
+    float percent3 = 0.1f;
+    float percent4 = 0.1f;
+    float percent5 = 1.0 - percent1 - percent2 - percent3 - percent4;
+    AlisaMethod* am = AlisaMethod::create(percent1, percent2, percent3, percent4, percent5, -1.0, NULL);
+    if(am)
+    {
+        if(am->getRandomIndex() == 0)
+            return PIT_POTION_MINORHEALTH;
+        else if(am->getRandomIndex() == 1)
+            return PIT_POTION_MINORMANA;
+        else if(am->getRandomIndex() == 2)
+            return PIT_POTION_MINORRECOVERY;
+        else if(am->getRandomIndex() == 3)
+            return PIT_POTION_DETOXIFICATION;
+    }
+    return PIT_POTION_SPECIFIC;
+}
+PickableItem::PickableItemType PickableItem::generate16_30PotionType()
+{
+    float percent1 = 0.1f;
+    float percent2 = 0.1f;
+    float percent3 = 0.05f;
+    float percent4 = 0.1f;
+    float percent5 = 0.1f;
+    float percent6 = 0.25f;
+    float percent7 = 0.25f;
+    float percent8 = 1.0 - percent1 - percent2 - percent3 - percent4 - percent5 - percent6 - percent7;
+    AlisaMethod* am = AlisaMethod::create(percent1, percent2, percent3, percent4, percent5, percent6, percent7, percent8, -1.0, NULL);
+    if(am)
+    {
+        if(am->getRandomIndex() == 0)
+            return PIT_POTION_MINORHEALTH;
+        else if(am->getRandomIndex() == 1)
+            return PIT_POTION_MINORMANA;
+        else if(am->getRandomIndex() == 2)
+            return PIT_POTION_MINORRECOVERY;
+        else if(am->getRandomIndex() == 3)
+            return PIT_POTION_DETOXIFICATION;
+        else if(am->getRandomIndex() == 4)
+            return PIT_POTION_SPECIFIC;
+        else if(am->getRandomIndex() == 5)
+            return PIT_POTION_LESSERHEALTH;
+        else if(am->getRandomIndex() == 6)
+            return PIT_POTION_LESSERMANA;
+    }
+    return PIT_POTION_LESSERRECOVERY;
+}
+PickableItem::PickableItemType PickableItem::generate31_45PotionType()
+{
+    float percent1 = 0.1f;
+    float percent2 = 0.1f;
+    float percent3 = 0.05f;
+    float percent4 = 0.1f;
+    float percent5 = 0.1f;
+    float percent6 = 0.25f;
+    float percent7 = 0.25f;
+    float percent8 = 1.0 - percent1 - percent2 - percent3 - percent4 - percent5 - percent6 - percent7;
+    AlisaMethod* am = AlisaMethod::create(percent1, percent2, percent3, percent4, percent5, percent6, percent7, percent8, -1.0, NULL);
+    if(am)
+    {
+        if(am->getRandomIndex() == 0)
+            return PIT_POTION_LESSERHEALTH;
+        else if(am->getRandomIndex() == 1)
+            return PIT_POTION_LESSERMANA;
+        else if(am->getRandomIndex() == 2)
+            return PIT_POTION_LESSERRECOVERY;
+        else if(am->getRandomIndex() == 3)
+            return PIT_POTION_DETOXIFICATION;
+        else if(am->getRandomIndex() == 4)
+            return PIT_POTION_SPECIFIC;
+        else if(am->getRandomIndex() == 5)
+            return PIT_POTION_HEALTH;
+        else if(am->getRandomIndex() == 6)
+            return PIT_POTION_MANA;
+    }
+    return PIT_POTION_RECOVERY;
+}
 PickableItem::PickableItemType PickableItem::generate1_5UnStackableItemType()
 {
     std::vector<PickableItem::PickableItemType> types {
@@ -498,7 +656,8 @@ PickableItem::PickableItemType PickableItem::generate1_5UnStackableItemType()
         PIT_BOW_SHORTBOW,
         PIT_STAFF_OAKSTAFF,
         PIT_SHIELD_WOODENSHIELD,
-        PIT_CLOTH_SHOES
+        PIT_CLOTH_SHOES,
+        PIT_ORNAMENT_RING
     };
     return types[cocos2d::random(0, (int)(types.size()-1))];
 }
@@ -512,7 +671,8 @@ PickableItem::PickableItemType PickableItem::generate6_10UnStackableItemType()
         PIT_BOW_LONGBOW,
         PIT_STAFF_FIRSTAFF,
         PIT_SHIELD_TRIANGLESHIELD,
-        PIT_CLOTH_MAGA_CAP
+        PIT_CLOTH_MAGA_CAP,
+        PIT_ORNAMENT_MEDAL
     };
     return types[cocos2d::random(0, (int)(types.size()-1))];
 }
@@ -526,7 +686,8 @@ PickableItem::PickableItemType PickableItem::generate11_15UnStackableItemType()
         PIT_BOW_HORNBOW,
         PIT_STAFF_ASHESSTAFF,
         PIT_SHIELD_STEELSHIELD,
-        PIT_CLOTH_CLOTH
+        PIT_CLOTH_CLOTH,
+        PIT_ORNAMENT_SHELLNECKLACE
     };
     return types[cocos2d::random(0, (int)(types.size()-1))];
 }
@@ -540,7 +701,8 @@ PickableItem::PickableItemType PickableItem::generate16_20UnStackableItemType()
         PIT_BOW_REFLEXBOW,
         PIT_STAFF_DEMONSTAFF,
         PIT_SHIELD_EAGLESHIELD,
-        PIT_CLOTH_LEATHERARMOR
+        PIT_CLOTH_LEATHERARMOR,
+        PIT_ORNAMENT_PENDANT
     };
     return types[cocos2d::random(0, (int)(types.size()-1))];
 }
@@ -555,6 +717,7 @@ PickableItem::PickableItemType PickableItem::generate21_25UnStackableItemType()
         PIT_STAFF_CITRONSTAFF,
         PIT_SHIELD_OSTEOSCUTE,
         PIT_CLOTH_CHAINSHOES,
+        PIT_ORNAMENT_NECKLACE
     };
     return types[cocos2d::random(0, (int)(types.size()-1))];
 }
@@ -568,7 +731,8 @@ PickableItem::PickableItemType PickableItem::generate26_30UnStackableItemType()
         PIT_BOW_LAMINATEDBOW,
         PIT_STAFF_CLOUDSTAFF,
         PIT_SHIELD_GOLDENSHIELD,
-        PIT_CLOTH_HELEMT
+        PIT_CLOTH_HELEMT,
+        PIT_ORNAMENT_SUPERMEDAL
     };
     return types[cocos2d::random(0, (int)(types.size()-1))];
 }
@@ -583,6 +747,7 @@ PickableItem::PickableItemType PickableItem::generate31_35UnStackableItemType()
         PIT_STAFF_MONKSTAFF,
         PIT_SHIELD_TOWERSHIELD,
         PIT_CLOTH_STEELARMOR,
+        PIT_ORNAMENT_JEWELS
     };
     return types[cocos2d::random(0, (int)(types.size()-1))];
 }
@@ -596,7 +761,8 @@ PickableItem::PickableItemType PickableItem::generate11_15UnStackableItemProType
         PIT_BOW_PRO_SHORTBOW,
         PIT_STAFF_PRO_OAKSTAFF,
         PIT_SHIELD_PRO_WOODENSHIELD,
-        PIT_CLOTH_PRO_SHOES
+        PIT_CLOTH_PRO_SHOES,
+        PIT_ORNAMENT_PRO_RING
     };
     return types[cocos2d::random(0, (int)(types.size()-1))];
 }
@@ -610,7 +776,8 @@ PickableItem::PickableItemType PickableItem::generate16_20UnStackableItemProType
         PIT_BOW_PRO_LONGBOW,
         PIT_STAFF_PRO_FIRSTAFF,
         PIT_SHIELD_PRO_TRIANGLESHIELD,
-        PIT_CLOTH_PRO_MAGA_CAP
+        PIT_CLOTH_PRO_MAGA_CAP,
+        PIT_ORNAMENT_PRO_MEDAL
     };
     return types[cocos2d::random(0, (int)(types.size()-1))];
 }
@@ -624,7 +791,8 @@ PickableItem::PickableItemType PickableItem::generate21_25UnStackableItemProType
         PIT_BOW_PRO_HORNBOW,
         PIT_STAFF_PRO_ASHESSTAFF,
         PIT_SHIELD_PRO_STEELSHIELD,
-        PIT_CLOTH_PRO_CLOTH
+        PIT_CLOTH_PRO_CLOTH,
+        PIT_ORNAMENT_PRO_SHELLNECKLACE
     };
     return types[cocos2d::random(0, (int)(types.size()-1))];
 }
@@ -638,7 +806,8 @@ PickableItem::PickableItemType PickableItem::generate26_30UnStackableItemProType
         PIT_BOW_PRO_REFLEXBOW,
         PIT_STAFF_PRO_DEMONSTAFF,
         PIT_SHIELD_PRO_EAGLESHIELD,
-        PIT_CLOTH_PRO_LEATHERARMOR
+        PIT_CLOTH_PRO_LEATHERARMOR,
+        PIT_ORNAMENT_PRO_PENDANT
     };
     return types[cocos2d::random(0, (int)(types.size()-1))];
 }
@@ -653,6 +822,7 @@ PickableItem::PickableItemType PickableItem::generate31_35UnStackableItemProType
         PIT_STAFF_PRO_CITRONSTAFF,
         PIT_SHIELD_PRO_OSTEOSCUTE,
         PIT_CLOTH_PRO_CHAINSHOES,
+        PIT_ORNAMENT_PRO_NECKLACE
     };
     return types[cocos2d::random(0, (int)(types.size()-1))];
 }
@@ -666,7 +836,8 @@ PickableItem::PickableItemType PickableItem::generate36_40UnStackableItemProType
         PIT_BOW_PRO_LAMINATEDBOW,
         PIT_STAFF_PRO_CLOUDSTAFF,
         PIT_SHIELD_PRO_GOLDENSHIELD,
-        PIT_CLOTH_PRO_HELEMT
+        PIT_CLOTH_PRO_HELEMT,
+        PIT_ORNAMENT_PRO_SUPERMEDAL
     };
     return types[cocos2d::random(0, (int)(types.size()-1))];
 }
@@ -681,6 +852,7 @@ PickableItem::PickableItemType PickableItem::generate41_45UnStackableItemProType
         PIT_STAFF_PRO_MONKSTAFF,
         PIT_SHIELD_PRO_TOWERSHIELD,
         PIT_CLOTH_PRO_STEELARMOR,
+        PIT_ORNAMENT_PRO_JEWELS
     };
     return types[cocos2d::random(0, (int)(types.size()-1))];
 }
