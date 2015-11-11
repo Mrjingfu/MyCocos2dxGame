@@ -51,7 +51,6 @@ bool EquipItemPopupUI::init()
     if (PopupUILayer::init())
     {
         this->load("equipitemPopupLayer.csb",false);
-        enableDarkLayer(false);
         return true;
     }
     return false;

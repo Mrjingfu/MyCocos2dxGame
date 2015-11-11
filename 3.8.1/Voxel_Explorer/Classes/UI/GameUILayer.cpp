@@ -19,6 +19,8 @@
 #include "RandomDungeon.hpp"
 #include "StandardMonster.hpp"
 #include "MessageManager.h"
+#include "InfoPopupUI.h"
+#include "BaseDoor.hpp"
 USING_NS_CC;
 GameUILayer::GameUILayer()
 {
@@ -59,7 +61,11 @@ GameUILayer::GameUILayer()
     
     m_pListMsgs = nullptr;
     _isOpenSmailMap = false;
+    _isSearch = false;
     m_pMsgFrame = nullptr;
+    m_pGameSearchTipsFrame  = nullptr;
+    m_pGameSearchFrameCloseBtn = nullptr;
+    m_pGameSearchFrameDesc  = nullptr;
     
 }
 GameUILayer::~GameUILayer()
@@ -201,7 +207,22 @@ bool GameUILayer::addEvents()
     m_pMsgFrame = dynamic_cast<ui::ImageView*>(UtilityHelper::seekNodeByName(m_pRootNode, "game_msg_frame"));
     if (!m_pMsgFrame)
         return false;
+    
+    m_pGameSearchTipsFrame = dynamic_cast<ui::Layout*>(UtilityHelper::seekNodeByName(m_pRootNode, "game_seach_dialog"));
+    if (!m_pGameSearchTipsFrame)
+        return false;
+    m_pGameSearchFrameDesc = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "game_seach_tips_desc"));
+    if (!m_pGameSearchFrameDesc)
+        return false;
+    m_pGameSearchFrameCloseBtn= dynamic_cast<ui::Button*>(UtilityHelper::seekNodeByName(m_pRootNode, "game_seach_btn_close"));
+    if (!m_pGameSearchFrameCloseBtn)
+        return false;
+    
    
+    if (!registerTouchEvent()) {
+        return false;
+    }
+    
     m_pListMsgs = ui::ListView::create();
     m_pListMsgs->setBackGroundImageScale9Enabled(true);
     m_pListMsgs->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
@@ -227,12 +248,123 @@ bool GameUILayer::addEvents()
     m_pMonsterHpBar->setPercent(100);
     m_pMonsterName->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
     
+    m_pGameSearchTipsFrame->setVisible(false);
+    m_pGameSearchFrameDesc->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
+    m_pGameSearchFrameCloseBtn->addClickEventListener(CC_CALLBACK_1(GameUILayer::onClickSearchTipsFrame, this));
+    
     updateRoleUi(); 
     updateGameInfo();
     initMessageFrame();
     return true;
 }
+bool GameUILayer::registerTouchEvent()
+{
+    auto dispatcher = Director::getInstance()->getEventDispatcher();
+    auto touchListener = EventListenerTouchOneByOne::create();
+    if(touchListener == nullptr)
+        return false;
+    touchListener->setSwallowTouches(true);
+    touchListener->onTouchBegan = CC_CALLBACK_2(GameUILayer::onTouchBegan, this);
+    touchListener->onTouchMoved = CC_CALLBACK_2(GameUILayer::onTouchMoved, this);
+    touchListener->onTouchEnded = CC_CALLBACK_2(GameUILayer::onTouchEnded, this);
+    dispatcher->addEventListenerWithSceneGraphPriority(touchListener, this);
+    
+    return true;
+}
+bool GameUILayer::onTouchBegan(Touch *touch, Event *event)
+{
 
+    return _isSearch;
+}
+void GameUILayer::onTouchMoved(cocos2d::Touch *touch, cocos2d::Event *event)
+{
+    return;
+}
+void GameUILayer::onTouchEnded(cocos2d::Touch *touch, cocos2d::Event *event)
+{
+    Ray ray;
+    Vec2 pt = touch->getLocationInView();
+    UtilityHelper::getCameraToViewportRay(VoxelExplorer::getInstance()->getMainCamera(), pt, &ray);
+    Vec3 playerpt = VoxelExplorer::getInstance()->getPlayer()->getPosition3D();
+    checkSearchMapInfo(ray);
+    CCLOG("PT X:%f y:%f z:%f",ray._origin.x,ray._origin.y,ray._origin.z);
+    CCLOG("playerpt X:%f y:%f z:%f",playerpt.x,playerpt.y,playerpt.z);
+
+    return;
+}
+void GameUILayer::checkSearchMapInfo(const cocos2d::Ray ray)
+{
+    std::string infostr;
+    std::string infoKey;
+    bool isCheck = false;
+    
+    if (ray.intersects(VoxelExplorer::getInstance()->getPlayer()->getAABB())) {
+        isCheck = true;
+    }
+    
+    Layer* terrainTiles = VoxelExplorer::getInstance()->getTerrainTilesLayer();
+    for (auto child : terrainTiles->getChildren())
+    {
+        TerrainTile* tile = dynamic_cast<TerrainTile*>(child);
+        if (tile&& ray.intersects(tile->getAABB())) {
+            CCLOG("TerrainTile");
+            isCheck = true;
+            break;
+        }
+    }
+    
+    Layer* doorLayer = VoxelExplorer::getInstance()->getTerrainDoorsLayer();
+    for (auto child : doorLayer->getChildren())
+    {
+        BaseDoor* door = dynamic_cast<BaseDoor*>(child);
+        if (door&& ray.intersects(door->getAABB())) {
+            CCLOG("BaseDoor");
+            isCheck = true;
+             break;
+        }
+    }
+    
+    Layer* userableItem = VoxelExplorer::getInstance()->getUseableItemsLayer();
+    for (auto child : userableItem->getChildren())
+    {
+       Actor* item = dynamic_cast<Actor*>(child);
+        if (item&& ray.intersects(item->getAABB())) {
+            CCLOG("userable Actor");
+            isCheck = true;
+             break;
+        }
+    }
+    Layer* monsterLayer = VoxelExplorer::getInstance()->getMonstersLayer();
+    for (auto child : monsterLayer->getChildren())
+    {
+        BaseMonster* monster = dynamic_cast<BaseMonster*>(child);
+        if (monster&& ray.intersects(monster->getAABB())) {
+            CCLOG("BaseMonster");
+            isCheck = true;
+             break;
+        }
+    }
+    
+    Layer* pickableItem = VoxelExplorer::getInstance()->getPickableItemsLayer();
+    for (auto child : pickableItem->getChildren())
+    {
+         Actor* item = dynamic_cast<Actor*>(child);
+        if (item&& ray.intersects(item->getAABB())) {
+            CCLOG("pickable Actor");
+            isCheck = true;
+             break;
+        }
+    }
+    
+    
+    if (isCheck) {
+        InfoPopupUI* infoUi = static_cast<InfoPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupInfo));
+        onClickSearchTipsFrame(nullptr);
+        infoUi->setDarkLayerVisble(false);
+
+    }
+
+}
 void GameUILayer::onEventRoleLevelUp(cocos2d::EventCustom *sender)
 {
     CCLOG("onEventRoleLevelUp");
@@ -324,7 +456,7 @@ void GameUILayer::onEventMonsterHud(cocos2d::EventCustom *sender)
             PopupUILayerManager::getInstance()->showStatus(TIP_CRITICAL_STRIKE, StringUtils::format(UtilityHelper::getLocalStringForUi("STATUS_TEXT_CRITICAL_STRIKE").c_str(),hurData->m_nDamage),pt);
              CCLOG("monster 暴击");
         }else{
-            PopupUILayerManager::getInstance()->showStatus(TIP_WARNING, Value(hurData->m_nDamage).asString(),pt);
+            PopupUILayerManager::getInstance()->showStatus(TIP_NEUTRAL, Value(hurData->m_nDamage).asString(),pt);
             CCLOG("pt x:%f y%f",pt.x,pt.y);
             sendMessage("asdfasfd",UtilityHelper::randomColor());
         }
@@ -449,11 +581,13 @@ void GameUILayer::onClickRole(Ref* ref)
     CHECK_ACTION(ref);
     CCLOG("onClickRole");
     PopupUILayerManager::getInstance()->openPopup(ePopupRole);
+    onClickSearchTipsFrame(nullptr);
 }
 void GameUILayer::onClickMap(cocos2d::Ref *ref)
 {
     CHECK_ACTION(ref);
     CCLOG("onClickMap");
+    
     if (_isOpenSmailMap) {
         VoxelExplorer::getInstance()->getCurrentLevel()->showMap(false);
         _isOpenSmailMap = false;
@@ -461,11 +595,31 @@ void GameUILayer::onClickMap(cocos2d::Ref *ref)
         VoxelExplorer::getInstance()->getCurrentLevel()->showMap(true);
          _isOpenSmailMap = true;
     }
+     onClickSearchTipsFrame(nullptr);
 }
+void GameUILayer::onClickSearchTipsFrame(cocos2d::Ref *ref)
+{
+//     CHECK_ACTION(ref);
+     CCLOG("onClickSearchTipsFrame");
+    if (m_pGameSearchTipsFrame&& _isSearch) {
+        m_pGameSearchTipsFrame->setVisible(false);
+        if (m_pMsgFrame->isVisible())
+        {
+            m_pGameSearchTipsFrame->setPosition(Vec2(m_pGameSearchTipsFrame->getPositionX(), m_pGameSearchTipsFrame->getPositionY()-m_pMsgFrame->getContentSize().height));
+        }
+    }
+    _isSearch = false;
+    
+}
+
 void GameUILayer::onClickMsg(cocos2d::Ref *ref)
 {
     CHECK_ACTION(ref);
     CCLOG("onClickMsg");
+    if (_isOpenSmailMap) {
+        return;
+    }
+     onClickSearchTipsFrame(nullptr);
     if (m_pMsgFrame->isVisible())
     {
          m_pMsgFrame->setVisible(false);
@@ -474,13 +628,32 @@ void GameUILayer::onClickMsg(cocos2d::Ref *ref)
         m_pMsgFrame->setVisible(true);
         m_pListMsgs->scrollToBottom(0.5,false);
     }
+   
 }
 void GameUILayer::onClickSearch(cocos2d::Ref *ref)
 {
     CHECK_ACTION(ref);
     CCLOG("onClickSearch");
-
-    PopupUILayerManager::getInstance()->showStatusImport(TIP_DEFAULT, "升级了！ 调调调");
+    
+    if (_isSearch || _isOpenSmailMap)
+        return;
+    _isSearch = true;
+    if (m_pGameSearchTipsFrame ) {
+        if (m_pMsgFrame->isVisible()) {
+            m_pGameSearchTipsFrame->setPosition(Vec2(m_pGameSearchTipsFrame->getPositionX(), m_pGameSearchTipsFrame->getPositionY()+m_pMsgFrame->getContentSize().height));
+        }
+        m_pGameSearchTipsFrame->setVisible(true);
+    }
+    
+//    PopupUILayer* popup =nullptr;
+//    InfoPopupUI *infoPopup = nullptr;
+//    if(!PopupUILayerManager::getInstance()->isOpenPopup(ePopupInfo, popup)){
+//        
+//        infoPopup = static_cast<InfoPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupInfo));
+//        infoPopup->setDarkLayerVisble(false);
+//        _isSearch = true;
+//    }
+//    PopupUILayerManager::getInstance()->showStatusImport(TIP_DEFAULT, "升级了！ 调调调");
 //    NoteUi* noteui = NoteUi::create();
 //    noteui->setMsg(UtilityHelper::getLocalStringForUi("STATUS_TEXT_DODGE"),UtilityHelper::randomColor());
 //    m_pListMsgs->pushBackCustomItem(noteui);
