@@ -96,6 +96,26 @@
 	<string>Ghost</string>
 	<key>MMN_GHOUL</key>
 	<string>Ghoul</string>
+	<key>PIPN_KEY</key>
+	<string>Key</string>
+	<key>PIPN_WEAPON</key>
+	<string>Weapon</string>
+	<key>PIPN_SECOND_WEAPON</key>
+	<string>Off-hand Weapon</string>
+	<key>PIPN_ARMOR</key>
+	<string>Armor</string>
+	<key>PIPN_MAGIC_ORNAMENT</key>
+	<string>Ornament</string>
+	<key>PIPN_SCROLL</key>
+	<string>Scroll</string>
+	<key>PIPN_POTIONS</key>
+	<string>Potion</string>
+	<key>PIPN_MATERIAL</key>
+	<string>Material</string>
+	<key>PIPN_QUEST</key>
+	<string>Quest Item</string>
+	<key>PIPN_SUNDRIES</key>
+	<string>Sundries</string>
 	<key>PIN_KEY_COPPER</key>
 	<string>Copper Key</string>
 	<key>PIN_KEY_SILVER</key>

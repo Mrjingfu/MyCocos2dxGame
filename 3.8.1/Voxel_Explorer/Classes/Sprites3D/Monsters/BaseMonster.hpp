@@ -150,6 +150,7 @@ protected:
     int                 m_nAttackRange;     ///攻击范围
     float               m_fConfusingTimer;  ///迷惑时间计时器
     float               m_fFirstTrackingTimer;  ///由睡眠状态进入追踪状态的反应时间
+    float               m_fWanderingDelayTimer; ////巡逻时每次移动前的延迟
 };
 
 #endif /* BaseMonster_hpp */

@@ -8,6 +8,8 @@
 
 #include "SecondWeaponProperty.hpp"
 #include "PickableItem.hpp"
+#include "UtilityHelper.h"
+#include "AlisaMethod.h"
 USING_NS_CC;
 static std::vector<ADDED_EFFECT> sBowAddedEffects =
 {
@@ -36,7 +38,6 @@ static std::vector<ADDED_EFFECT> sShieldAddedEffects =
     AE_SEARCH_DISTANCE,
     AE_MAX_HP,
     AE_MAX_MP,
-    AE_ARMOR_CLASS,
     AE_BLOCK_RATE,
     AE_MAGICITEM_FIND_RATE,
 };
@@ -65,6 +66,8 @@ SecondWeaponProperty::SecondWeaponProperty(unsigned int instanceID, PickableItem
     m_fAddedDodgeRate               =0;
     m_fAddedMagicItemFindRate       =0;
     
+    m_strBeforeIndentifyDesc = UtilityHelper::getLocalString(PICKABLE_ITEM_NAMES[type] + "_BIDESC");
+    m_strPropertyTypeName = UtilityHelper::getLocalString(PICKABLE_ITEM_PROPERTY_TYPE_NAMES[m_PropertyType]);
     
     if(type > PickableItem::PIT_BOW_SHORTBOW && type < PickableItem::PIT_BOW_PRO_GOLDENBOW)
         m_SWPType = SWPT_BOW;
@@ -74,17 +77,250 @@ SecondWeaponProperty::SecondWeaponProperty(unsigned int instanceID, PickableItem
         m_SWPType = SWPT_SHIELD;
     else
         m_SWPType = SWPT_UNKNOWN;
+    
+    if((type >= PickableItem::PIT_BOW_PRO_SHORTBOW && type <= PickableItem::PIT_BOW_PRO_GOLDENBOW) ||
+       (type >= PickableItem::PIT_STAFF_PRO_OAKSTAFF && type <= PickableItem::PIT_STAFF_PRO_MONKSTAFF) ||
+       (type >= PickableItem::PIT_SHIELD_PRO_WOODENSHIELD && type <= PickableItem::PIT_SHIELD_PRO_TOWERSHIELD))
+        m_bIdentified = false;
+    else
+        m_bIdentified = identified;
 }
 
 
 void SecondWeaponProperty::adjustByLevel()
 {
-    
+    if(m_nLevel <= 15)
+    {
+        if(std::find(m_AddedEffectList.begin(), m_AddedEffectList.end(), AE_LIGHT_DISTANCE) != m_AddedEffectList.end())
+            m_nAddedLightDistance = 1;
+        if(std::find(m_AddedEffectList.begin(), m_AddedEffectList.end(), AE_LIGHT_DISTANCE) != m_AddedEffectList.end())
+            m_nAddedSearchDistance = 1;
+        if(std::find(m_AddedEffectList.begin(), m_AddedEffectList.end(), AE_MAX_HP) != m_AddedEffectList.end())
+        {
+            if (m_nLevel <= 5)
+                m_nAddedMaxHP = cocos2d::random(5, 20);
+            else if(m_nLevel <= 10)
+                m_nAddedMaxHP = cocos2d::random(15, 50);
+            else
+                m_nAddedMaxHP = cocos2d::random(40, 100);
+        }
+        if(std::find(m_AddedEffectList.begin(), m_AddedEffectList.end(), AE_MAX_MP) != m_AddedEffectList.end())
+        {
+            if (m_nLevel <= 5)
+                m_nAddedMaxMP = cocos2d::random(5, 20);
+            else if(m_nLevel <= 10)
+                m_nAddedMaxMP = cocos2d::random(15, 50);
+            else
+                m_nAddedMaxMP = cocos2d::random(40, 100);
+        }
+        if(std::find(m_AddedEffectList.begin(), m_AddedEffectList.end(), AE_MIN_ATTACK) != m_AddedEffectList.end())
+        {
+            if (m_nLevel <= 5)
+                m_nAddedMinAttack = cocos2d::random(1, 3);
+            else if(m_nLevel <= 10)
+                m_nAddedMinAttack = cocos2d::random(3, 9);
+            else
+                m_nAddedMinAttack = cocos2d::random(10, 15);
+        }
+        if(std::find(m_AddedEffectList.begin(), m_AddedEffectList.end(), AE_MAX_ATTACK) != m_AddedEffectList.end())
+        {
+            if (m_nLevel <= 5)
+                m_nAddedMaxAttack = cocos2d::random(2, 6);
+            else if(m_nLevel <= 10)
+                m_nAddedMaxAttack = cocos2d::random(6, 18);
+            else
+                m_nAddedMaxAttack = cocos2d::random(20, 30);
+        }
+        
+        if(std::find(m_AddedEffectList.begin(), m_AddedEffectList.end(), AE_BLOCK_RATE) != m_AddedEffectList.end())
+            m_fAddedBlockRate = cocos2d::random(0.01f, 0.02f);
+        
+        if(std::find(m_AddedEffectList.begin(), m_AddedEffectList.end(), AE_CRITICALSTRICK_RATE) != m_AddedEffectList.end())
+            m_fAddedCriticalStrikeRate = cocos2d::random(0.02f, 0.04f);
+        
+        if(std::find(m_AddedEffectList.begin(), m_AddedEffectList.end(), AE_DODGE_RATE) != m_AddedEffectList.end())
+            m_fAddedDodgeRate = cocos2d::random(0.01f, 0.02f);
+        
+        if(std::find(m_AddedEffectList.begin(), m_AddedEffectList.end(), AE_MAGICITEM_FIND_RATE) != m_AddedEffectList.end())
+            m_fAddedMagicItemFindRate = cocos2d::random(0.05f, 0.2f);
+        
+        if(m_SWPType == SWPT_SHIELD)
+        {
+            if (m_nLevel <= 5)
+                m_nAddedArmorClass = cocos2d::random(-2, -1);
+            else if(m_nLevel <= 10)
+                m_nAddedArmorClass = cocos2d::random(-8, -4);
+            else
+                m_nAddedArmorClass = cocos2d::random(-12, -8);
+        }
+    }
+    else if(m_nLevel <= 30)
+    {
+        if(std::find(m_AddedEffectList.begin(), m_AddedEffectList.end(), AE_LIGHT_DISTANCE) != m_AddedEffectList.end())
+            m_nAddedLightDistance = cocos2d::random(1, 2);
+        if(std::find(m_AddedEffectList.begin(), m_AddedEffectList.end(), AE_LIGHT_DISTANCE) != m_AddedEffectList.end())
+            m_nAddedSearchDistance = cocos2d::random(1, 2);
+        if(std::find(m_AddedEffectList.begin(), m_AddedEffectList.end(), AE_MAX_HP) != m_AddedEffectList.end())
+        {
+            if (m_nLevel <= 20)
+                m_nAddedMaxHP = cocos2d::random(80, 150);
+            else if(m_nLevel <= 25)
+                m_nAddedMaxHP = cocos2d::random(120, 200);
+            else
+                m_nAddedMaxHP = cocos2d::random(180, 300);
+        }
+        if(std::find(m_AddedEffectList.begin(), m_AddedEffectList.end(), AE_MAX_MP) != m_AddedEffectList.end())
+        {
+            if (m_nLevel <= 20)
+                m_nAddedMaxMP = cocos2d::random(80, 150);
+            else if(m_nLevel <= 25)
+                m_nAddedMaxMP = cocos2d::random(120, 200);
+            else
+                m_nAddedMaxMP = cocos2d::random(180, 300);
+        }
+        if(std::find(m_AddedEffectList.begin(), m_AddedEffectList.end(), AE_MIN_ATTACK) != m_AddedEffectList.end())
+        {
+            if (m_nLevel <= 20)
+                m_nAddedMinAttack = cocos2d::random(16, 20);
+            else if(m_nLevel <= 25)
+                m_nAddedMinAttack = cocos2d::random(21, 30);
+            else
+                m_nAddedMinAttack = cocos2d::random(31, 45);
+        }
+        if(std::find(m_AddedEffectList.begin(), m_AddedEffectList.end(), AE_MAX_ATTACK) != m_AddedEffectList.end())
+        {
+            if (m_nLevel <= 20)
+                m_nAddedMaxAttack = cocos2d::random(30, 40);
+            else if(m_nLevel <= 25)
+                m_nAddedMaxAttack = cocos2d::random(40, 60);
+            else
+                m_nAddedMaxAttack = cocos2d::random(60, 90);
+        }
+        
+        if(std::find(m_AddedEffectList.begin(), m_AddedEffectList.end(), AE_BLOCK_RATE) != m_AddedEffectList.end())
+            m_fAddedBlockRate = cocos2d::random(0.01f, 0.03f);
+        
+        if(std::find(m_AddedEffectList.begin(), m_AddedEffectList.end(), AE_CRITICALSTRICK_RATE) != m_AddedEffectList.end())
+            m_fAddedCriticalStrikeRate = cocos2d::random(0.02f, 0.06f);
+        
+        if(std::find(m_AddedEffectList.begin(), m_AddedEffectList.end(), AE_DODGE_RATE) != m_AddedEffectList.end())
+            m_fAddedDodgeRate = cocos2d::random(0.01f, 0.03f);
+        
+        if(std::find(m_AddedEffectList.begin(), m_AddedEffectList.end(), AE_MAGICITEM_FIND_RATE) != m_AddedEffectList.end())
+            m_fAddedMagicItemFindRate = cocos2d::random(0.1f, 0.3f);
+        
+        if(m_SWPType == SWPT_SHIELD)
+        {
+            if (m_nLevel <= 20)
+                m_nAddedArmorClass = cocos2d::random(-16, -12);
+            else if(m_nLevel <= 25)
+                m_nAddedArmorClass = cocos2d::random(-20, -16);
+            else
+                m_nAddedArmorClass = cocos2d::random(-24, -20);
+        }
+    }
+    else
+    {
+        if(std::find(m_AddedEffectList.begin(), m_AddedEffectList.end(), AE_LIGHT_DISTANCE) != m_AddedEffectList.end())
+            m_nAddedLightDistance = cocos2d::random(1, 3);
+        if(std::find(m_AddedEffectList.begin(), m_AddedEffectList.end(), AE_LIGHT_DISTANCE) != m_AddedEffectList.end())
+            m_nAddedSearchDistance = cocos2d::random(1, 3);
+        
+        if(std::find(m_AddedEffectList.begin(), m_AddedEffectList.end(), AE_MAX_HP) != m_AddedEffectList.end())
+            m_nAddedMaxHP = cocos2d::random(300, 550);
+        
+        if(std::find(m_AddedEffectList.begin(), m_AddedEffectList.end(), AE_MAX_MP) != m_AddedEffectList.end())
+            m_nAddedMaxMP = cocos2d::random(300, 550);
+        
+        if(std::find(m_AddedEffectList.begin(), m_AddedEffectList.end(), AE_MIN_ATTACK) != m_AddedEffectList.end())
+            m_nAddedMinAttack = cocos2d::random(45, 60);
+        
+        if(std::find(m_AddedEffectList.begin(), m_AddedEffectList.end(), AE_MAX_ATTACK) != m_AddedEffectList.end())
+            m_nAddedMaxAttack = cocos2d::random(100, 150);
+        
+        if(std::find(m_AddedEffectList.begin(), m_AddedEffectList.end(), AE_BLOCK_RATE) != m_AddedEffectList.end())
+            m_fAddedBlockRate = cocos2d::random(0.02f, 0.05f);
+        
+        if(std::find(m_AddedEffectList.begin(), m_AddedEffectList.end(), AE_CRITICALSTRICK_RATE) != m_AddedEffectList.end())
+            m_fAddedCriticalStrikeRate = cocos2d::random(0.04f, 0.1f);
+        
+        if(std::find(m_AddedEffectList.begin(), m_AddedEffectList.end(), AE_DODGE_RATE) != m_AddedEffectList.end())
+            m_fAddedDodgeRate = cocos2d::random(0.02f, 0.05f);
+        
+        if(std::find(m_AddedEffectList.begin(), m_AddedEffectList.end(), AE_MAGICITEM_FIND_RATE) != m_AddedEffectList.end())
+            m_fAddedMagicItemFindRate = cocos2d::random(0.15f, 0.45f);
+        
+        if(m_SWPType == SWPT_SHIELD)
+        {
+            if (m_nLevel <= 35)
+                m_nAddedArmorClass = cocos2d::random(-30, -24);
+            else if(m_nLevel <= 40)
+                m_nAddedArmorClass = cocos2d::random(-40, -30);
+            else
+                m_nAddedArmorClass = cocos2d::random(-50, -40);
+        }
+    }
 }
 void SecondWeaponProperty::handleIdentify()
 {
     if(m_bIdentified)
         return;
+    m_bIdentified = true;
+    m_nLevel = m_nLevel + cocos2d::random(-2, 2);
+    m_nLevel = MAX(1, m_nLevel.GetLongValue());
+    
+    CChaosNumber addedEffectCount = 0;
+    
+    if((m_ItemType >= PickableItem::PIT_BOW_PRO_SHORTBOW && m_ItemType <= PickableItem::PIT_BOW_PRO_GOLDENBOW) ||
+       (m_ItemType >= PickableItem::PIT_STAFF_PRO_OAKSTAFF && m_ItemType <= PickableItem::PIT_STAFF_PRO_MONKSTAFF) ||
+       (m_ItemType >= PickableItem::PIT_SHIELD_PRO_WOODENSHIELD && m_ItemType <= PickableItem::PIT_SHIELD_PRO_TOWERSHIELD))
+        addedEffectCount = cocos2d::random(5, 6);
+    else
+    {
+        float percent1 = 0.75f;
+        float percent2 = 1.0 - percent1;
+        AlisaMethod* am = AlisaMethod::create(percent1, percent2, -1.0, NULL);
+        if(am)
+        {
+            if(am->getRandomIndex() == 0)
+                addedEffectCount = cocos2d::random(1, 2);
+            else
+                addedEffectCount = cocos2d::random(3, 4);
+        }
+    }
+    
+    if(m_ItemType >= PickableItem::PIT_BOW_SHORTBOW && m_ItemType <= PickableItem::PIT_BOW_PRO_GOLDENBOW)
+    {
+        int index = cocos2d::random(0, int(sBowAddedEffects.size()-1));
+        while (m_AddedEffectList.size() < addedEffectCount.GetLongValue()) {
+            if(std::find(m_AddedEffectList.begin(), m_AddedEffectList.end(), sBowAddedEffects[index]) != m_AddedEffectList.end())
+                continue;
+            else
+                m_AddedEffectList.push_back(sBowAddedEffects[index]);
+        }
+    }
+    else if(m_ItemType >= PickableItem::PIT_STAFF_OAKSTAFF && m_ItemType <= PickableItem::PIT_STAFF_PRO_MONKSTAFF)
+    {
+        int index = cocos2d::random(0, int(sStaffAddedEffects.size()-1));
+        while (m_AddedEffectList.size() < addedEffectCount.GetLongValue()) {
+            if(std::find(m_AddedEffectList.begin(), m_AddedEffectList.end(), sStaffAddedEffects[index]) != m_AddedEffectList.end())
+                continue;
+            else
+                m_AddedEffectList.push_back(sStaffAddedEffects[index]);
+        }
+    }
+    else if(m_ItemType >= PickableItem::PIT_SHIELD_WOODENSHIELD && m_ItemType <= PickableItem::PIT_SHIELD_PRO_TOWERSHIELD)
+    {
+        int index = cocos2d::random(0, int(sShieldAddedEffects.size()-1));
+        while (m_AddedEffectList.size() < addedEffectCount.GetLongValue()) {
+            if(std::find(m_AddedEffectList.begin(), m_AddedEffectList.end(), sShieldAddedEffects[index]) != m_AddedEffectList.end())
+                continue;
+            else
+                m_AddedEffectList.push_back(sShieldAddedEffects[index]);
+        }
+
+    }
+    adjustByLevel();
 }
 CChaosNumber SecondWeaponProperty::getAddedDefense()
 {

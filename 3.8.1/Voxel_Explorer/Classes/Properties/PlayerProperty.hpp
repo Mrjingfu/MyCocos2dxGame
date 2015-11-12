@@ -20,6 +20,8 @@ class PlayerProperty : public cocos2d::Ref
 public:
     static PlayerProperty* getInstance();
 
+    bool initNewPlayer();   ///新角色初始化
+    
     void update(float delta);
     
     CChaosNumber getGold() const { return m_nGold; }
@@ -62,6 +64,9 @@ public:
     bool equipArmor(CChaosNumber id);
     bool equipOrnaments(CChaosNumber id);
     bool indentifyItem(CChaosNumber id);
+    bool usePotion(CChaosNumber id);
+    bool useScroll(CChaosNumber id);
+    bool useKey(PickableItem::PickableItemType type);
     
     bool addItemToBag(PickableItem::PickableItemType type, CChaosNumber level);
     bool removeStackableItemFromBag(CChaosNumber id, CChaosNumber count);

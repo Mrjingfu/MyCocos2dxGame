@@ -7,6 +7,7 @@
 //
 
 #include "KeyProperty.hpp"
+#include "UtilityHelper.h"
 USING_NS_CC;
 
 KeyProperty::KeyProperty(unsigned int instanceID, PickableItem::PickableItemType type)
@@ -18,6 +19,8 @@ KeyProperty::KeyProperty(unsigned int instanceID, PickableItem::PickableItemType
     m_bEquipable = false;
     m_bCombinable = true;
     m_bDiscardable = true;
+    
+    m_strPropertyTypeName = UtilityHelper::getLocalString(PICKABLE_ITEM_PROPERTY_TYPE_NAMES[m_PropertyType]);
     
     if(m_ItemType == PickableItem::PIT_KEY_COPPER)
         m_nValueCopper = 10;

@@ -13,12 +13,21 @@
 class WeaponProperty : public PickableItemProperty
 {
 public:
+    typedef enum{
+        WPT_DAGGER = 0,            ///匕首
+        WPT_AXE,                   ///斧子
+        WPT_SWORD,                 ///剑
+        WPT_MACE,                  ///锤子
+        WPT_UNKNOWN
+    }WeaponPropertyType;
     WeaponProperty(unsigned int instanceID, PickableItem::PickableItemType type, CChaosNumber level, bool identified);
     virtual void adjustByLevel();
     virtual void handleIdentify();
     
     bool hasEquiped() const { return m_bHasEquiped; }
     void setEquiped(bool equiped) { m_bHasEquiped = equiped; }
+    
+    WeaponPropertyType getWeaponPropertyType() const { return m_WPType; }
     
     CChaosNumber getAddedLightDistance() const { return m_nAddedLightDistance; }
     CChaosNumber getAddedSearchDistance() const { return m_nAddedSearchDistance; }
@@ -53,6 +62,8 @@ private:
     CChaosNumber    m_fAddedCriticalStrikeRate;  ///暴击率
     
     CChaosNumber    m_fAddedMagicItemFindRate;  ///附加取魔率
+    
+    WeaponPropertyType  m_WPType;               ///武器类型
 };
 
 #endif /* WeaponProperty_hpp */
