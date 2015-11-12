@@ -391,6 +391,9 @@ bool GameUILayer::checkSearchMapInfo(const cocos2d::Ray ray,std::string& infoIco
 void GameUILayer::onEventRoleLevelUp(cocos2d::EventCustom *sender)
 {
     CCLOG("onEventRoleLevelUp");
+    updateRoleUi();
+    PopupUILayerManager::getInstance()->showStatusImport(TIP_DEFAULT, UtilityHelper::getLocalStringForUi("GAME_MESSAGE_LEVEL_UP"));
+    sendMessage(UtilityHelper::getLocalStringForUi("GAME_MESSAGE_LEVEL_UP"),PopupUILayerManager::getInstance()->getTipsColor(TIP_NEUTRAL));
 }
 
 void GameUILayer::onEventUpdateRoleProp(cocos2d::EventCustom *sender)
@@ -452,8 +455,8 @@ void GameUILayer::onEvenetMonsterDead(cocos2d::EventCustom *sender)
             exp = GameFormula::getKillEliteMonsterExp(roleLevel, monsterLevel);
         }
         PopupUILayerManager::getInstance()->showStatus(TIP_POSITIVE, StringUtils::format(UtilityHelper::getLocalStringForUi("STATUS_TEXT_EXP").c_str(),exp),pt);
-
     }
+ 
 
 }
 
@@ -481,7 +484,6 @@ void GameUILayer::onEventMonsterHud(cocos2d::EventCustom *sender)
         }else{
             PopupUILayerManager::getInstance()->showStatus(TIP_NEUTRAL, Value(hurData->m_nDamage).asString(),pt);
             CCLOG("pt x:%f y%f",pt.x,pt.y);
-            sendMessage("asdfasfd",UtilityHelper::randomColor());
         }
     }
     
@@ -501,8 +503,10 @@ void GameUILayer::onEventUpdateMonsterProp(cocos2d::EventCustom *sender)
         if (monster->getMonsterProperty()->isElite()) {
             m_pMonsterName->setColor(PopupUILayerManager::getInstance()->getTipsColor(TIP_POSITIVE));
             monsterName = StringUtils::format(UtilityHelper::getLocalStringForUi("MONSTER_ELITE_NAME").c_str(),monsterName.c_str());
-        }else
-        m_pMonsterName->setString(monsterName);
+        }else{
+            m_pMonsterName->setColor(PopupUILayerManager::getInstance()->getTipsColor(TIP_DEFAULT));
+        }
+         m_pMonsterName->setString(monsterName);
     }
 }
 
@@ -593,8 +597,11 @@ void GameUILayer::updateRoleUi()
     m_pRoleMaxHp->setString(Value(int(PlayerProperty::getInstance()->getMaxHP())).asString());
     m_pRoleCurMp->setString(Value(int(PlayerProperty::getInstance()->getCurrentMP())).asString());
     m_pRoleMaxMp->setString(Value(int(PlayerProperty::getInstance()->getMaxMP())).asString());
-    float ExpPer =PlayerProperty::getInstance()->getExp().GetLongValue()/GameFormula::getNextLevelExp(PlayerProperty::getInstance()->getLevel()) *100.0f;
-    CCLOG("EXPPER:%f",ExpPer);
+    float playerExp = float(PlayerProperty::getInstance()->getExp());
+    float nextLevelExp = GameFormula::getNextLevelExp(PlayerProperty::getInstance()->getLevel());
+    float ExpPer = playerExp/nextLevelExp *100.0f;
+    
+    CCLOG("player Exp:%f,nexExp:%f,EXPPER:%f",playerExp,nextLevelExp,ExpPer);
     m_pRoleExpBar->setPercent(ExpPer);
     m_pRoleLevel->setString(Value(int(PlayerProperty::getInstance()->getLevel())).asString());
     
@@ -678,7 +685,6 @@ void GameUILayer::onClickSearch(cocos2d::Ref *ref)
     CHECK_ACTION(ref);
     CCLOG("onClickSearch");
 
-    PopupUILayerManager::getInstance()->showStatusImport(TIP_DEFAULT, "升级了！ 调调调");
 //    NoteUi* noteui = NoteUi::create();
 //    noteui->setMsg(UtilityHelper::getLocalStringForUi("STATUS_TEXT_DODGE"),UtilityHelper::randomColor());
 //    m_pListMsgs->pushBackCustomItem(noteui);

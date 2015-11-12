@@ -58,5 +58,9 @@
 	<string>%s杀死了你...</string>
 	<key>GAME_MESSAGE_ROLE_ADD_EXP</key>
 	<string>You now have %s</string>
+	<key>GAME_MESSAGE_LEVEL_UP</key>
+	<string>Level up!!!</string>
+	<key>MONSTER_ELITE_NAME</key>
+	<string>Elite %s</string>
 </dict>
 </plist>

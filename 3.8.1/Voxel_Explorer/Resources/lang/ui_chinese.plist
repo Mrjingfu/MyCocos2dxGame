@@ -58,5 +58,9 @@
 	<string>%s杀死了你...</string>
 	<key>GAME_MESSAGE_ROLE_OBTAIN_ITEM</key>
 	<string>你获得了%s</string>
+	<key>GAME_MESSAGE_LEVEL_UP</key>
+	<string>你升级了！！！</string>
+	<key>MONSTER_ELITE_NAME</key>
+	<string>精英%s</string>
 </dict>
 </plist>
