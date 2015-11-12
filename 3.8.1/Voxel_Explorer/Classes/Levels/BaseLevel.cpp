@@ -216,7 +216,14 @@ bool BaseLevel::getNextPathStep(const cocos2d::Vec2& from, const cocos2d::Vec2& 
     nextPos.y = next / m_nWidth;
     return true;
 }
-
+cocos2d::Vec2 BaseLevel::getRandomPassableTile()
+{
+    int cell = -1;
+    do {
+        cell = cocos2d::random(0, (int)(m_Map.size()-1));
+    } while (!m_Map[cell].isPassable());
+    return Vec2(cell % m_nWidth, cell / m_nWidth);
+}
 void BaseLevel::load()
 {
 }

@@ -170,9 +170,17 @@ bool VoxelExplorer::trackToPlayer(BaseMonster* monster, cocos2d::Vec2& nextPos)
 }
 bool VoxelExplorer::fleeFromPlayer(BaseMonster* monster, cocos2d::Vec2& nextPos)
 {
-    if(monster == nullptr || m_pPlayer == nullptr || !(monster->isVisible()))
+    if(monster == nullptr || m_pPlayer == nullptr || m_pCurrentLevel == nullptr || !(monster->isVisible()))
         return false;
     return true;
+}
+bool VoxelExplorer::wanderingAround(BaseMonster* monster, cocos2d::Vec2& nextPos)
+{
+    if(monster == nullptr  || m_pCurrentLevel == nullptr || !(monster->isVisible()))
+        return false;
+    Vec2 monsterPosInMap = monster->getPosInMap();
+    Vec2 randomPos = m_pCurrentLevel->getRandomPassableTile();
+    return m_pCurrentLevel->getNextPathStep(monsterPosInMap, randomPos, nextPos);
 }
 void VoxelExplorer::updateFogOfWar(const cocos2d::Rect& areaRect, bool visited)
 {

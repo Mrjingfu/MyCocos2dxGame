@@ -31,6 +31,7 @@ public:
     bool checkMonsterCanAttack(BaseMonster* monster);
     bool trackToPlayer(BaseMonster* monster, cocos2d::Vec2& nextPos);
     bool fleeFromPlayer(BaseMonster* monster, cocos2d::Vec2& nextPos);
+    bool wanderingAround(BaseMonster* monster, cocos2d::Vec2& nextPos);
     void updateFogOfWar(const cocos2d::Rect& areaRect, bool visited);
     void searchAndCheck();      ///侦查
     

@@ -449,6 +449,10 @@ bool PlayerProperty::addItemToBag(PickableItem::PickableItemType type, CChaosNum
         itemProperty = new (std::nothrow) SecondWeaponProperty(m_snItemInstanceIDCounter++,type, level, !GameFormula::generateMagicItem(m_fMagicItemFindRate.GetFloatValue()));
     else if(type >= PickableItem::PIT_CLOTH_SHOES && type <= PickableItem::PIT_CLOTH_PRO_STEELARMOR)
         itemProperty = new (std::nothrow) ArmorProperty(m_snItemInstanceIDCounter++,type, level, !GameFormula::generateMagicItem(m_fMagicItemFindRate.GetFloatValue()));
+    else if(type >= PickableItem::PIT_SCROLL_INDENTIFY && type <= PickableItem::PIT_SCROLL_DESTINY)
+        itemProperty = new (std::nothrow) ScrollProperty(m_snItemInstanceIDCounter++,type);
+    else if(type >= PickableItem::PIT_POTION_MINORHEALTH && type <= PickableItem::PIT_POTION_SPECIFIC)
+        itemProperty = new (std::nothrow) PotionsProperty(m_snItemInstanceIDCounter++,type);
     if(itemProperty)
     {
         if(itemProperty->isIdentified())
