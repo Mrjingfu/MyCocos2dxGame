@@ -57,6 +57,7 @@
         <Project Name="infoPopupLayer.csd" Type="Layer" />
         <Project Name="equipitemPopupLayer_0.csd" Type="Layer" />
         <Project Name="pausePopupLayer.csd" Type="Layer" />
+        <Project Name="achievementPopupLayer.csd" Type="Layer" />
       </RootFolder>
     </Group>
   </SolutionFolder>

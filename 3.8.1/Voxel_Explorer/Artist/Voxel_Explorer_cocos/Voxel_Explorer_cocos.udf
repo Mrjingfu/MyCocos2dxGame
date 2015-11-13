@@ -37,8 +37,10 @@
           <FilePathData Path="gameScene.csd" />
           <FilePathData Path="equipitemPopupLayer_0.csd" />
           <FilePathData Path="pausePopupLayer.csd" />
+          <FilePathData Path="achievementPopupLayer.csd" />
+          <FilePathData Path="equipitemPopupLayer.csd" />
         </OpenedDocuments>
-        <ActiveDocument Path="pausePopupLayer.csd" />
+        <ActiveDocument Path="achievementPopupLayer.csd" />
       </Value>
     </Item>
   </Properties>

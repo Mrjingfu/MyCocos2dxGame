@@ -63,6 +63,11 @@ enum eZOrder
     eZOrderPopupUILayer = 20, //PopupUI层
     eZOrderPopupLayer = 25   //PopupUI之上层
 };
+enum eAchievementDetailType
+{
+    eAchiDetailType_Firstkill =0,
+    eAchiDetailTypeCount
+};
 
 
 //EVENT
