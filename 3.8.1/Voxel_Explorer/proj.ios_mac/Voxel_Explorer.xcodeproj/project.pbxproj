@@ -187,6 +187,12 @@
 		EC00DD601BD665A6009BC378 /* MenuScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC00DD5D1BD665A6009BC378 /* MenuScene.cpp */; };
 		EC5A65211BE8BF6C006A0D2B /* NoteUi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC5A651F1BE8BF6C006A0D2B /* NoteUi.cpp */; };
 		EC5A65221BE8BF6C006A0D2B /* NoteUi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC5A651F1BE8BF6C006A0D2B /* NoteUi.cpp */; };
+		EC602AAC1BF46A2D00484D42 /* AchievementManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC602AAA1BF46A2D00484D42 /* AchievementManager.cpp */; };
+		EC602AAD1BF46A2D00484D42 /* AchievementManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC602AAA1BF46A2D00484D42 /* AchievementManager.cpp */; };
+		EC602AB21BF47A4900484D42 /* AchieveProperty.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC602AB01BF47A4900484D42 /* AchieveProperty.cpp */; };
+		EC602AB31BF47A4900484D42 /* AchieveProperty.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC602AB01BF47A4900484D42 /* AchieveProperty.cpp */; };
+		EC602AB61BF47CAC00484D42 /* StatisticsManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC602AB41BF47CAC00484D42 /* StatisticsManager.cpp */; };
+		EC602AB71BF47CAC00484D42 /* StatisticsManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC602AB41BF47CAC00484D42 /* StatisticsManager.cpp */; };
 		EC6264951BF0807F004E0F55 /* MessageManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC6264931BF0807F004E0F55 /* MessageManager.cpp */; };
 		EC6264961BF0807F004E0F55 /* MessageManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC6264931BF0807F004E0F55 /* MessageManager.cpp */; };
 		EC6716451BCE7F2C00C81CFC /* LogoScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC6716431BCE7F2C00C81CFC /* LogoScene.cpp */; };
@@ -424,6 +430,12 @@
 		EC00DD5E1BD665A6009BC378 /* MenuScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuScene.h; sourceTree = "<group>"; };
 		EC5A651F1BE8BF6C006A0D2B /* NoteUi.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NoteUi.cpp; sourceTree = "<group>"; };
 		EC5A65201BE8BF6C006A0D2B /* NoteUi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteUi.h; sourceTree = "<group>"; };
+		EC602AAA1BF46A2D00484D42 /* AchievementManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AchievementManager.cpp; sourceTree = "<group>"; };
+		EC602AAB1BF46A2D00484D42 /* AchievementManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AchievementManager.h; sourceTree = "<group>"; };
+		EC602AB01BF47A4900484D42 /* AchieveProperty.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AchieveProperty.cpp; sourceTree = "<group>"; };
+		EC602AB11BF47A4900484D42 /* AchieveProperty.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = AchieveProperty.hpp; sourceTree = "<group>"; };
+		EC602AB41BF47CAC00484D42 /* StatisticsManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StatisticsManager.cpp; sourceTree = "<group>"; };
+		EC602AB51BF47CAC00484D42 /* StatisticsManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = StatisticsManager.hpp; sourceTree = "<group>"; };
 		EC6264931BF0807F004E0F55 /* MessageManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MessageManager.cpp; sourceTree = "<group>"; };
 		EC6264941BF0807F004E0F55 /* MessageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageManager.h; sourceTree = "<group>"; };
 		EC6715EE1BCE7EE500C81CFC /* GameConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameConfig.h; sourceTree = "<group>"; };
@@ -657,6 +669,10 @@
 				551651C41BD73102004ED7F6 /* RandomDungeon.hpp */,
 				EC6264931BF0807F004E0F55 /* MessageManager.cpp */,
 				EC6264941BF0807F004E0F55 /* MessageManager.h */,
+				EC602AAA1BF46A2D00484D42 /* AchievementManager.cpp */,
+				EC602AAB1BF46A2D00484D42 /* AchievementManager.h */,
+				EC602AB41BF47CAC00484D42 /* StatisticsManager.cpp */,
+				EC602AB51BF47CAC00484D42 /* StatisticsManager.hpp */,
 			);
 			path = Mgrs;
 			sourceTree = "<group>";
@@ -669,6 +685,8 @@
 				551E93BC1BD51291009F788F /* MonsterProperty.hpp */,
 				551E93BF1BD51291009F788F /* PlayerProperty.cpp */,
 				551E93C01BD51291009F788F /* PlayerProperty.hpp */,
+				EC602AB01BF47A4900484D42 /* AchieveProperty.cpp */,
+				EC602AB11BF47A4900484D42 /* AchieveProperty.hpp */,
 			);
 			path = Properties;
 			sourceTree = "<group>";
@@ -1083,6 +1101,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC602AB61BF47CAC00484D42 /* StatisticsManager.cpp in Sources */,
 				551E93EA1BD512D3009F788F /* xor.cpp in Sources */,
 				553BC5091BCE499B003D907A /* BaseDoor.cpp in Sources */,
 				55F81CA11BDB208D002EC075 /* UseableItem.cpp in Sources */,
@@ -1101,7 +1120,9 @@
 				EC5A65211BE8BF6C006A0D2B /* NoteUi.cpp in Sources */,
 				551E93C31BD51291009F788F /* LevelResourceManager.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
+				EC602AB21BF47A4900484D42 /* AchieveProperty.cpp in Sources */,
 				551E93EE1BD512D3009F788F /* FileStream.cpp in Sources */,
+				EC602AAC1BF46A2D00484D42 /* AchievementManager.cpp in Sources */,
 				55F81CB81BDB8B81002EC075 /* ArmorProperty.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
@@ -1186,6 +1207,7 @@
 				55F81CB51BDB845A002EC075 /* WeaponProperty.cpp in Sources */,
 				55338AE31BD8926A00EA316F /* SkeletonKing.cpp in Sources */,
 				55338ADB1BD8921000EA316F /* SlimeKing.cpp in Sources */,
+				EC602AB31BF47A4900484D42 /* AchieveProperty.cpp in Sources */,
 				551651C61BD73102004ED7F6 /* RandomDungeon.cpp in Sources */,
 				55338AD01BD8781E00EA316F /* BaseMonster.cpp in Sources */,
 				551E93AC1BD51282009F788F /* ChaosNumber.cpp in Sources */,
@@ -1228,6 +1250,7 @@
 				554F00EF1BDA210000F4DF8E /* BaseBoss.cpp in Sources */,
 				551E93B21BD51282009F788F /* UtilityHelper.cpp in Sources */,
 				55F81CD11BDB92CC002EC075 /* PotionsProperty.cpp in Sources */,
+				EC602AB71BF47CAC00484D42 /* StatisticsManager.cpp in Sources */,
 				555B0D241BC51A2C0055FB6D /* GameScene.cpp in Sources */,
 				ECE1B9481BD8AC820035B4D9 /* TGridView.cpp in Sources */,
 				551E93CC1BD51291009F788F /* PlayerProperty.cpp in Sources */,
@@ -1246,6 +1269,7 @@
 				55F81CBD1BDB923A002EC075 /* MagicOrnamentProperty.cpp in Sources */,
 				551E93B01BD51282009F788F /* NativeBridge.mm in Sources */,
 				551E93E91BD512D3009F788F /* sha1.cpp in Sources */,
+				EC602AAD1BF46A2D00484D42 /* AchievementManager.cpp in Sources */,
 				ECECACCC1BE7353700B14FFC /* ItemPopupUI.cpp in Sources */,
 				55338AD61BD878BF00EA316F /* StandardMonster.cpp in Sources */,
 				551E93F11BD512D3009F788F /* MemoryStream.cpp in Sources */,
