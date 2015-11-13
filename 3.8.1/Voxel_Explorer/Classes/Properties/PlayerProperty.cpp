@@ -39,10 +39,10 @@ PlayerProperty::PlayerProperty()
     m_nExp                  = 0;                ///经验
     m_nLightDistance        = 6;                ///光照范围
     m_nSearchDistance       = 1;                ///侦查范围
-    m_nMaxHP                = 30;               ///最大生命值
-    m_nMaxMP                = 30;               ///最大魔法值
-    m_nCurrentHP            = 30;               ///当前生命值
-    m_nCurrentMP            = 30;               ///当前魔法值
+    m_nMaxHP                = 60;               ///最大生命值
+    m_nMaxMP                = 60;               ///最大魔法值
+    m_nCurrentHP            = 60;               ///当前生命值
+    m_nCurrentMP            = 60;               ///当前魔法值
     m_nAddedMinAttack       = 1;                ///额外最小攻击增加值
     m_nAddedMaxAttack       = 4;                ///额外最大攻击增加值
     m_nAttackDiceNum        = 0;                ///攻击骰子数
@@ -69,6 +69,21 @@ PlayerProperty::PlayerProperty()
 }
 PlayerProperty::~PlayerProperty()
 {
+}
+bool PlayerProperty::initNewPlayer()   ///新角色初始化
+{
+    bool ret = addItemToBag(PickableItem::PIT_DAGGER_DAGGER, 1);
+    ret = equipWeapon(0);
+    ret = addItemToBag(PickableItem::PIT_POTION_MINORHEALTH, 1);
+    ret = addItemToBag(PickableItem::PIT_POTION_MINORHEALTH, 1);
+    ret = addItemToBag(PickableItem::PIT_POTION_MINORHEALTH, 1);
+    ret = addItemToBag(PickableItem::PIT_POTION_MINORMANA, 1);
+    ret = addItemToBag(PickableItem::PIT_POTION_MINORMANA, 1);
+    ret = addItemToBag(PickableItem::PIT_POTION_MINORMANA, 1);
+    ret = addItemToBag(PickableItem::PIT_SCROLL_INDENTIFY, 1);
+    ret = addItemToBag(PickableItem::PIT_SCROLL_INDENTIFY, 1);
+    ret = addItemToBag(PickableItem::PIT_SCROLL_INDENTIFY, 1);
+    return ret;
 }
 void PlayerProperty::update(float delta)
 {
@@ -412,13 +427,34 @@ bool PlayerProperty::indentifyItem(CChaosNumber id)
     PickableItemProperty* pickableItemProperty = static_cast<PickableItemProperty*>(getItemFromBag(id));
     if(pickableItemProperty && !pickableItemProperty->isIdentified())
     {
-        ////检查辨识卷轴数量
-        ////辨识卷轴减少
         pickableItemProperty->handleIdentify();
         return true;
     }
     return false;
 }
+bool PlayerProperty::usePotion(CChaosNumber id)
+{
+    PotionsProperty* potionsProperty = static_cast<PotionsProperty*>(getItemFromBag(id));
+    if(potionsProperty && potionsProperty->getCount() >= 1)
+    {
+        return true;
+    }
+    return false;
+}
+bool PlayerProperty::useScroll(CChaosNumber id)
+{
+    ScrollProperty* scrollProperty = static_cast<ScrollProperty*>(getItemFromBag(id));
+    if(scrollProperty && scrollProperty->getCount() >= 1)
+    {
+        return true;
+    }
+    return false;
+}
+bool PlayerProperty::useKey(PickableItem::PickableItemType type)
+{
+    return false;
+}
+
 bool PlayerProperty::addItemToBag(PickableItem::PickableItemType type, CChaosNumber level)
 {
     if(m_Bag.size() >= m_nBagMaxSpace.GetLongValue())

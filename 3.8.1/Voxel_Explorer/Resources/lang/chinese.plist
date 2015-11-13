@@ -96,6 +96,26 @@
 	<string>幽灵</string>
 	<key>MMN_GHOUL</key>
 	<string>食尸鬼</string>
+	<key>PIPN_KEY</key>
+	<string>钥匙</string>
+	<key>PIPN_WEAPON</key>
+	<string>武器</string>
+	<key>PIPN_SECOND_WEAPON</key>
+	<string>副武器</string>
+	<key>PIPN_ARMOR</key>
+	<string>护具</string>
+	<key>PIPN_MAGIC_ORNAMENT</key>
+	<string>饰品</string>
+	<key>PIPN_SCROLL</key>
+	<string>卷轴</string>
+	<key>PIPN_POTIONS</key>
+	<string>药水</string>
+	<key>PIPN_MATERIAL</key>
+	<string>合成素材</string>
+	<key>PIPN_QUEST</key>
+	<string>任务物品</string>
+	<key>PIPN_SUNDRIES</key>
+	<string>杂项</string>
 	<key>PIN_KEY_COPPER</key>
 	<string>铜钥匙</string>
 	<key>PIN_KEY_SILVER</key>

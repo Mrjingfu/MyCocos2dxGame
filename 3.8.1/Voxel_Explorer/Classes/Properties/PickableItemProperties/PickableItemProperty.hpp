@@ -19,20 +19,40 @@ typedef enum{
     AE_MAX_MP,
     AE_MIN_ATTACK,
     AE_MAX_ATTACK,
-    AE_DICE_NUM,
-    AE_DICE_FACE_NUM,
-    AE_ARMOR_CLASS,
     AE_BLOCK_RATE,
     AE_CRITICALSTRICK_RATE,
     AE_DODGE_RATE,
     AE_MAGICITEM_FIND_RATE
 }ADDED_EFFECT;
+
+typedef enum{
+    PIQ_GENERAL = 0,        ///普通       0特效
+    PIQ_RARE,               ///稀有       1-2特效
+    PIQ_EPIC,               ///史诗       3-4特效
+    PIQ_LEGEND              ///传说       5-6特效
+}PICKABLEITEM_QUALITY;
+
 class IStackable
 {
 public:
     virtual void increaseCount() = 0;
     virtual void decreaseCount() = 0;
 };
+
+const std::string PICKABLE_ITEM_PROPERTY_TYPE_NAMES[] = {
+    
+    "PIPN_KEY",                   ///钥匙
+    "PIPN_WEAPON",                ///武器
+    "PIPN_SECOND_WEAPON",         ///副手武器
+    "PIPN_ARMOR",                 ///护甲
+    "PIPN_MAGIC_ORNAMENT",        ///饰品
+    "PIPN_SCROLL",                ///卷轴
+    "PIPN_POTIONS",               ///药水
+    "PIPN_MATERIAL",              ///宝石
+    "PIPN_QUEST",                 ///任务物品
+    "PIPN_SUNDRIES"               ///杂物
+};
+
 class PickableItemProperty : public cocos2d::Ref
 {
     friend class PlayerProperty;
@@ -68,6 +88,9 @@ public:
     bool isCursed() const { return m_bCursed; }
     CChaosNumber getCount() const { return m_nCount; }
     void setCount(CChaosNumber count) { m_nCount = count; }
+    
+    PICKABLEITEM_QUALITY getQuality() const { return m_Quality; }
+    const std::vector<ADDED_EFFECT>& getAddedEffectList() const { return m_AddedEffectList; }
 protected:
     PickableItemProperty(unsigned int instanceID, PickableItem::PickableItemType type);
 
@@ -83,6 +106,7 @@ protected:
     std::string                     m_strName;              ///名称
     std::string                     m_strBeforeIndentifyDesc;   ///未辨识前的描述
     std::string                     m_strDesc;              ///描述
+    std::string                     m_strPropertyTypeName;  ///类型描述
     std::string                     m_strIconRes;           ///icon资源
     bool                            m_bIdentified;          ///是否辨识过
     bool                            m_bStackable;           ///是否可以合并
@@ -92,6 +116,9 @@ protected:
     bool                            m_bCursed;              ///被诅咒的(被诅咒的装备不能卸载下)
     
     CChaosNumber                    m_nCount;               ///个数
+    
+    std::vector<ADDED_EFFECT>       m_AddedEffectList;      ///附加属性类型列表
+    PICKABLEITEM_QUALITY            m_Quality;              ///物品品质
 };
 
 #endif /* PickableItemProperty_hpp */

@@ -7,7 +7,7 @@
 //
 
 #include "PotionsProperty.hpp"
-
+#include "UtilityHelper.h"
 USING_NS_CC;
 PotionsProperty::PotionsProperty(unsigned int instanceID, PickableItem::PickableItemType type)
     :PickableItemProperty(instanceID, type)
@@ -18,6 +18,8 @@ PotionsProperty::PotionsProperty(unsigned int instanceID, PickableItem::Pickable
     m_bEquipable = false;
     m_bCombinable = true;
     m_bDiscardable = true;
+    
+    m_strPropertyTypeName = UtilityHelper::getLocalString(PICKABLE_ITEM_PROPERTY_TYPE_NAMES[m_PropertyType]);
 }
 
 void PotionsProperty::adjustByLevel()

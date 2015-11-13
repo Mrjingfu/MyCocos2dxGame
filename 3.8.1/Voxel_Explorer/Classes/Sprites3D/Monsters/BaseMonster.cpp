@@ -79,6 +79,7 @@ BaseMonster::BaseMonster()
     m_nAttackRange = 1;
     m_fConfusingTimer = 3.0f;
     m_fFirstTrackingTimer = cocos2d::random(1.0f, 1.5f);
+    m_fWanderingDelayTimer = cocos2d::random(0.5f, 0.8f); ////巡逻时每次移动前的延迟
     
     m_pMonsterProperty = new (std::nothrow) MonsterProperty();
     if(m_pMonsterProperty)
@@ -295,7 +296,9 @@ void BaseMonster::update(float delta)
             break;
         case MS_WANDERING:
             {
-                setState(MS_MOVING);
+                m_fWanderingDelayTimer -= delta;
+                if(m_fWanderingDelayTimer < 0)
+                    setState(MS_MOVING);
             }
             break;
 
@@ -321,9 +324,11 @@ void BaseMonster::onExitSleeping()
 
 void BaseMonster::onEnterWandering()
 {
+    m_fWanderingDelayTimer = cocos2d::random(0.5f, 0.8f);
 }
 void BaseMonster::onExitWandering()
 {
+    m_fWanderingDelayTimer = 0;
 }
 
 void BaseMonster::onEnterTracking()

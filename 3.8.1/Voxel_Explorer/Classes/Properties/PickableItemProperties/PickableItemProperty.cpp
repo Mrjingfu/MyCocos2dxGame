@@ -10,7 +10,6 @@
 #include "UtilityHelper.h"
 #include "LevelResourceManager.h"
 USING_NS_CC;
-
 PickableItemProperty::PickableItemProperty(unsigned int instanceID, PickableItem::PickableItemType type)
 {
     m_nInstanceID = instanceID;
@@ -19,7 +18,6 @@ PickableItemProperty::PickableItemProperty(unsigned int instanceID, PickableItem
     m_nLevel = 1;
     m_nValueCopper = 0;
     m_strName = UtilityHelper::getLocalString(PICKABLE_ITEM_NAMES[type]);
-    m_strBeforeIndentifyDesc = UtilityHelper::getLocalString(PICKABLE_ITEM_NAMES[type] + "_BIDESC");
     m_strDesc = UtilityHelper::getLocalString(PICKABLE_ITEM_NAMES[type] + "_DESC");
     m_strIconRes = LevelResourceManager::getInstance()->getItemIconRes(PICKABLE_ITEM_NAMES[type]);
     m_bIdentified = true;
@@ -29,5 +27,9 @@ PickableItemProperty::PickableItemProperty(unsigned int instanceID, PickableItem
     m_bDiscardable = true;
     m_bCursed = false;
     m_nCount = 1;
+    
+    m_Quality = PIQ_GENERAL;
+    
+    m_AddedEffectList.clear();
 }
 

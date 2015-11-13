@@ -7,6 +7,7 @@
 //
 
 #include "SundriesProperty.hpp"
+#include "UtilityHelper.h"
 USING_NS_CC;
 SundriesProperty::SundriesProperty(unsigned int instanceID, PickableItem::PickableItemType type)
     :PickableItemProperty(instanceID, type)
@@ -16,4 +17,6 @@ SundriesProperty::SundriesProperty(unsigned int instanceID, PickableItem::Pickab
     m_bEquipable = false;
     m_bCombinable = false;
     m_bDiscardable = true;
+    
+    m_strPropertyTypeName = UtilityHelper::getLocalString(PICKABLE_ITEM_PROPERTY_TYPE_NAMES[m_PropertyType]);
 }

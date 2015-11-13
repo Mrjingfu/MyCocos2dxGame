@@ -494,6 +494,10 @@ bool VoxelExplorer::createPlayer()
 {
     if(!m_pCurrentLevel || !m_p3DLayer)
         return false;
+    ///lwwhb 临时
+    if (!PlayerProperty::getInstance()->initNewPlayer())
+        return false;
+    ///
     m_pPlayer = Player::create("chr_sword.c3b");
     if(!m_pPlayer)
         return false;
