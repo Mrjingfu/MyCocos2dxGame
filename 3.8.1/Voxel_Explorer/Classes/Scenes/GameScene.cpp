@@ -33,6 +33,7 @@ void GameScene::onEnter()
 }
 void GameScene::onExit()
 {
+    VoxelExplorer::getInstance()->destroy();
     PopupUILayerManager::getInstance()->onExitScene();
     Layer::onExit();
 }

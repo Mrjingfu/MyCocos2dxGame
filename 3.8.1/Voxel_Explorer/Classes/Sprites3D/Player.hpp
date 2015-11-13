@@ -12,6 +12,7 @@
 #include "Actor.hpp"
 #include "EventConst.h"
 #include "MonsterProperty.hpp"
+#include "PlayerProperty.hpp"
 class Player : public Actor
 {
 public:
@@ -36,6 +37,9 @@ public:
     
     PlayerState getState() const { return m_curState; }
     void setState(PlayerState state);
+    
+    void addPlayerBuffer(PlayerBuffer buff);
+    void removePlayerBuffer(PlayerBuffer buff);
     
     bool isStealth() const { return m_bStealth; }
     void setStealth(bool stealth);
@@ -64,6 +68,7 @@ private:
     void onExitDeath();
     
     void onLand();
+    void updatePlayerBuffer(float delta);
     
     bool createPlayerLight();
 private:
@@ -71,6 +76,15 @@ private:
     cocos2d::PointLight*        m_pPlayerLight;
     
     bool                        m_bStealth;     ///是否隐身
+    
+    CChaosNumber                m_fSpeedupTime; ///加速时间
+    CChaosNumber                m_fStealthTime; ///隐身时间
+    CChaosNumber                m_fStrongerTime; ///强化时间
+    
+    CChaosNumber                m_fFrozenTime;  ///冰冻时间
+    CChaosNumber                m_fParalyticTime;   ///麻痹时间
+    CChaosNumber                m_fFireTime;    ///着火时间
+
     
     HurtData*                   m_pHurtData;
 };

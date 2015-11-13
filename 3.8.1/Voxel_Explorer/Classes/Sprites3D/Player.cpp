@@ -33,6 +33,14 @@ Player::Player()
     m_pPlayerLight = nullptr;
     m_bStealth = false;
     
+    m_fSpeedupTime  = 20.0f; ///加速时间
+    m_fStealthTime  = 20.0f; ///隐身时间
+    m_fStrongerTime = 20.0f; ///强化时间
+    
+    m_fFrozenTime   = 20.0f;  ///冰冻时间
+    m_fParalyticTime    = 8.0f;   ///麻痹时间
+    m_fFireTime     = 10.0f;  ///着火时间
+    
     m_pHurtData = new (std::nothrow) HurtData();
 }
 Player::~Player()
@@ -52,9 +60,130 @@ void Player::onExit()
 }
 void Player::update(float delta)
 {
+    if(m_curState != PS_DEATH)
+        updatePlayerBuffer(delta);
     PlayerProperty::getInstance()->update(delta);
     if(m_pPlayerLight)
         m_pPlayerLight->setPosition3D(Vec3(getPositionX(),TerrainTile::CONTENT_SCALE*2,getPositionZ()));
+}
+void Player::addPlayerBuffer(PlayerBuffer buff)
+{
+    int bufferFlag = PlayerProperty::getInstance()->getPlayerBuffer();
+    if(buff == PB_SPEEDUP)
+    {
+        if((bufferFlag & PB_SPEEDUP) != 0)
+            m_fSpeedupTime = 20.0f;
+        else
+        {
+            ///增加拖尾或粒子
+        }
+        PlayerProperty::getInstance()->addPlayerBuffer(buff);
+    }
+    else if(buff == PB_STEALTH)
+    {
+        if((bufferFlag & PB_STEALTH) != 0)
+            m_fStealthTime = 20.0f;
+        else
+        {
+            ///渐变
+            EaseSineOut* fadeTo = EaseSineOut::create(FadeTo::create(1.0f, 127));
+            this->runAction(fadeTo);
+        }
+        PlayerProperty::getInstance()->addPlayerBuffer(buff);
+    }
+    else if(buff == PB_STRONGER)
+    {
+        if((bufferFlag & PB_STRONGER) != 0)
+            m_fStrongerTime = 20.0f;
+        else
+        {
+            ///增大
+            EaseSineOut* fadeTo = EaseSineOut::create(ScaleTo::create(1.0f, 1.5f));
+            this->runAction(fadeTo);
+        }
+        PlayerProperty::getInstance()->addPlayerBuffer(buff);
+    }
+    else if(buff == PB_POISONING)
+    {
+        if((bufferFlag & PB_POISONING) == 0)
+        {
+            auto tex = Director::getInstance()->getTextureCache()->addImage("chr_sword_green.png");
+            if(tex)
+                tex->setAliasTexParameters();
+            setTexture(tex);
+            PlayerProperty::getInstance()->addPlayerBuffer(buff);
+        }
+    }
+    else if(buff == PB_FROZEN)
+    {
+        if((bufferFlag & PB_FROZEN) == 0)
+        {
+            auto tex = Director::getInstance()->getTextureCache()->addImage("chr_sword_blue.png");
+            if(tex)
+                tex->setAliasTexParameters();
+            setTexture(tex);
+            PlayerProperty::getInstance()->addPlayerBuffer(buff);
+        }
+    }
+    else if(buff == PB_PARALYTIC)
+    {
+        if((bufferFlag & PB_PARALYTIC) == 0)
+        {
+            auto tex = Director::getInstance()->getTextureCache()->addImage("chr_sword_gray.png");
+            if(tex)
+                tex->setAliasTexParameters();
+            setTexture(tex);
+            PlayerProperty::getInstance()->addPlayerBuffer(buff);
+        }
+    }
+    else if(buff == PB_WEAK)
+    {
+        if((bufferFlag & PB_WEAK) == 0)
+        {
+            auto tex = Director::getInstance()->getTextureCache()->addImage("chr_sword_yellow.png");
+            if(tex)
+                tex->setAliasTexParameters();
+            setTexture(tex);
+            PlayerProperty::getInstance()->addPlayerBuffer(buff);
+        }
+    }
+    else if(buff == PB_FIRE)
+    {
+        if((bufferFlag & PB_FIRE) == 0)
+        {
+            auto tex = Director::getInstance()->getTextureCache()->addImage("chr_sword_red.png");
+            if(tex)
+                tex->setAliasTexParameters();
+            setTexture(tex);
+            PlayerProperty::getInstance()->addPlayerBuffer(buff);
+        }
+    }
+}
+void Player::removePlayerBuffer(PlayerBuffer buff)
+{
+    int bufferFlag = PlayerProperty::getInstance()->getPlayerBuffer();
+    if(buff == PB_POISONING)
+    {
+        if((bufferFlag & PB_POISONING) == 0)
+        {
+            auto tex = Director::getInstance()->getTextureCache()->addImage("chr_sword.png");
+            if(tex)
+                tex->setAliasTexParameters();
+            setTexture(tex);
+        }
+    }
+    else if(buff == PB_WEAK)
+    {
+        if((bufferFlag & PB_WEAK) == 0)
+        {
+            auto tex = Director::getInstance()->getTextureCache()->addImage("chr_sword.png");
+            if(tex)
+                tex->setAliasTexParameters();
+            setTexture(tex);
+            
+        }
+    }
+    PlayerProperty::getInstance()->removeItemFromBag(buff);
 }
 void Player::setState(PlayerState state)
 {
@@ -261,7 +390,14 @@ void Player::onEnterJumpLocal()
     Spawn* spawn = Spawn::create(scaleTo, sequenceJump, NULL);
     CallFunc* callback = CallFunc::create(CC_CALLBACK_0(Player::onLand,this));
     Sequence* sequence = Sequence::create(spawn, callback, NULL);
-    this->runAction(sequence);
+    
+    int bufferFlag = PlayerProperty::getInstance()->getPlayerBuffer();
+    if((bufferFlag & PlayerBuffer::PB_SPEEDUP) != 0)
+        this->runAction(Speed::create(sequence, 2.0f));
+    else if((bufferFlag & PlayerBuffer::PB_FROZEN) != 0)
+        this->runAction(Speed::create(sequence, 0.5f));
+    else
+        this->runAction(sequence);
 }
 void Player::onEnterJumpMove()
 {
@@ -293,7 +429,14 @@ void Player::onEnterJumpMove()
     Spawn* spawn = Spawn::create(scaleTo, sequenceJump, NULL);
     CallFunc* callback = CallFunc::create(CC_CALLBACK_0(Player::onLand,this));
     Sequence* sequence = Sequence::create(spawn, callback, NULL);
-    this->runAction(sequence);
+    
+    int bufferFlag = PlayerProperty::getInstance()->getPlayerBuffer();
+    if((bufferFlag & PlayerBuffer::PB_SPEEDUP) != 0)
+        this->runAction(Speed::create(sequence, 2.0f));
+    else if((bufferFlag & PlayerBuffer::PB_FROZEN) != 0)
+        this->runAction(Speed::create(sequence, 0.5f));
+    else
+        this->runAction(sequence);
 }
 void Player::onEnterAttack()
 {
@@ -324,7 +467,14 @@ void Player::onEnterAttack()
     Spawn* spawn = Spawn::create(scaleTo, sequenceJump, NULL);
     CallFunc* callback2 = CallFunc::create(CC_CALLBACK_0(Player::onLand,this));
     Sequence* sequence = Sequence::create(spawn, callback2, NULL);
-    this->runAction(sequence);
+    
+    int bufferFlag = PlayerProperty::getInstance()->getPlayerBuffer();
+    if((bufferFlag & PlayerBuffer::PB_SPEEDUP) != 0)
+        this->runAction(Speed::create(sequence, 2.0f));
+    else if((bufferFlag & PlayerBuffer::PB_FROZEN) != 0)
+        this->runAction(Speed::create(sequence, 0.5f));
+    else
+        this->runAction(sequence);
 }
 void Player::onEnterDrop()
 {
@@ -366,6 +516,74 @@ void Player::onLand()
     VoxelExplorer::getInstance()->checkUpdateFogOfWar();
     
     CCLOG("player x = %d   y = %d", (int)getPosInMap().x, (int)getPosInMap().y);
+}
+void Player::updatePlayerBuffer(float delta)
+{
+    int bufferFlag = PlayerProperty::getInstance()->getPlayerBuffer();
+    if((bufferFlag & PB_SPEEDUP) != 0)
+    {
+        m_fSpeedupTime = m_fSpeedupTime - delta;
+        if(m_fSpeedupTime <= 0)
+            removePlayerBuffer(PB_SPEEDUP);
+    }
+    else if((bufferFlag & PB_STEALTH) != 0)
+    {
+        m_fStealthTime = m_fStealthTime - delta;
+        if(m_fStealthTime <= 0)
+        {
+            ///渐变
+            EaseSineOut* fadeTo = EaseSineOut::create(FadeTo::create(1.0f, 255));
+            this->runAction(fadeTo);
+            removePlayerBuffer(PB_STEALTH);
+        }
+    }
+    else if((bufferFlag & PB_STRONGER) != 0)
+    {
+        m_fStrongerTime = m_fStrongerTime - delta;
+        if(m_fStrongerTime <= 0)
+        {
+            ///缩小
+            EaseSineOut* fadeTo = EaseSineOut::create(ScaleTo::create(1.0f, 1.0f));
+            this->runAction(fadeTo);
+            removePlayerBuffer(PB_STRONGER);
+        }
+    }
+    else if((bufferFlag & PB_FROZEN) != 0)
+    {
+        m_fFrozenTime = m_fFrozenTime - delta;
+        if(m_fFrozenTime <= 0)
+        {
+            auto tex = Director::getInstance()->getTextureCache()->addImage("chr_sword.png");
+            if(tex)
+                tex->setAliasTexParameters();
+            setTexture(tex);
+            removePlayerBuffer(PB_FROZEN);
+        }
+    }
+    else if((bufferFlag & PB_PARALYTIC) != 0)
+    {
+        m_fParalyticTime = m_fParalyticTime - delta;
+        if(m_fParalyticTime <= 0)
+        {
+            auto tex = Director::getInstance()->getTextureCache()->addImage("chr_sword.png");
+            if(tex)
+                tex->setAliasTexParameters();
+            setTexture(tex);
+            removePlayerBuffer(PB_PARALYTIC);
+        }
+    }
+    else if((bufferFlag & PB_FIRE) != 0)
+    {
+        m_fFireTime = m_fFireTime - delta;
+        if(m_fFireTime <= 0)
+        {
+            auto tex = Director::getInstance()->getTextureCache()->addImage("chr_sword.png");
+            if(tex)
+                tex->setAliasTexParameters();
+            setTexture(tex);
+            removePlayerBuffer(PB_FIRE);
+        }
+    }
 }
 bool Player::createPlayerLight()
 {

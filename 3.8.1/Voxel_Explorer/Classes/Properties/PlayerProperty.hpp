@@ -13,10 +13,25 @@
 #include "ChaosNumber.h"
 #include "PickableItem.hpp"
 #include "PickableItemProperty.hpp"
+
+typedef enum {
+    PB_NONE = 0,                    ///无状态
+    PB_SPEEDUP = 1<<0,                ///加速
+    PB_STEALTH = 1<<1,              ///隐身
+    PB_STRONGER = 1<<2,             ///强壮
+    
+    PB_POISONING = 1<<3,            ///中毒
+    PB_FROZEN = 1<<4,               ///冰冻
+    PB_PARALYTIC = 1<<5,            ///麻痹
+    PB_WEAK = 1<<6,                 ///虚弱
+    PB_FIRE = 1<<7,                 ///着火
+    PB_MAX
+} PlayerBuffer;
+
 class PlayerProperty : public cocos2d::Ref
 {
     PlayerProperty();
-    ~PlayerProperty();
+    virtual ~PlayerProperty();
 public:
     static PlayerProperty* getInstance();
 
@@ -54,6 +69,11 @@ public:
     CChaosNumber getBagExtendTimes() const { return m_nBagExtendTimes; }
     CChaosNumber getBagExtendMaxTimes() const { return m_nBagExtendMaxTimes; }
     
+    int getPlayerBuffer() const { return m_BufferFlag; }
+    
+    void addPlayerBuffer(PlayerBuffer buff);
+    void removePlayerBuffer(PlayerBuffer buff);
+    
     void addMoney(CChaosNumber gold, CChaosNumber silver, CChaosNumber copper);
     void costMoney(CChaosNumber gold, CChaosNumber silver, CChaosNumber copper);
     void setExp(CChaosNumber exp);
@@ -69,7 +89,7 @@ public:
     bool useKey(PickableItem::PickableItemType type);
     
     bool addItemToBag(PickableItem::PickableItemType type, CChaosNumber level);
-    bool removeStackableItemFromBag(CChaosNumber id, CChaosNumber count);
+    bool removeStackableItemFromBag(PickableItem::PickableItemType type, CChaosNumber count);
     bool removeItemFromBag(CChaosNumber id);
     void extendBagSpace();
     const std::vector<PickableItemProperty*>& getPlayerBag() const { return m_Bag; }
@@ -115,6 +135,8 @@ private:
     CChaosNumber                        m_nBagMaxSpace;         ///背包最大容量
     CChaosNumber                        m_nBagExtendTimes;      ///背包扩容次数
     CChaosNumber                        m_nBagExtendMaxTimes;   ///背包最大扩容次数
+    
+    int                                 m_BufferFlag;           ///状态标记
     
     bool                    m_bDirty;                 ///数据是否修改了
     

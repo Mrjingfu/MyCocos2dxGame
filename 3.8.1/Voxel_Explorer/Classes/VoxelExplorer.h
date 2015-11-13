@@ -20,7 +20,6 @@ class VoxelExplorer : public cocos2d::Ref
 public:
     static VoxelExplorer* getInstance();
     bool init(cocos2d::Layer* pMainLayer);
-    void update(float delta);
     void destroy();
     
     bool checkMovable(TileInfo& info);
@@ -43,6 +42,8 @@ public:
     void handlePickItem(const cocos2d::Vec2& mapPos);        ///拾取道具
     void handleMonsterHurt(const cocos2d::Vec2& mapPos);     ///处理攻击怪物
     void handlePlayerHurt(const cocos2d::Vec2& mapPos, MonsterProperty* monsterProperty);      ///处理攻击玩家
+    void handlePlayerUseScroll(PickableItem::PickableItemType type);
+    void handlePlayerUsePotion(PickableItem::PickableItemType type);
     
     cocos2d::Layer* getMainLayer() const { return m_pMainLayer; }
     cocos2d::Layer* get3DLayer() const { return m_p3DLayer; }

@@ -60,6 +60,7 @@ bool VoxelExplorer::init(Layer* pMainLayer)
     if(pMainLayer == nullptr)
         return false;
     m_pMainLayer = pMainLayer;
+    ///lwwhb 临时，之后需要加载。
     if(!RandomDungeon::getInstance()->build())
     {
         CCLOGERROR("RandomDungeon build failed!");
@@ -96,9 +97,7 @@ bool VoxelExplorer::init(Layer* pMainLayer)
     }
     return true;
 }
-void VoxelExplorer::update(float delta)
-{
-}
+
 void VoxelExplorer::destroy()
 {
     LevelResourceManager::getInstance()->clearLevelRes();
@@ -369,6 +368,32 @@ void VoxelExplorer::handlePlayerHurt(const cocos2d::Vec2& mapPos, MonsterPropert
         return m_pPlayer->attackByMonster(monsterProperty, true);
     
     return m_pPlayer->attackByMonster(monsterProperty, false);
+}
+void VoxelExplorer::handlePlayerUseScroll(PickableItem::PickableItemType type)
+{
+    if(!m_pPlayer)
+        return;
+    switch (type) {
+        case PickableItem::PickableItemType::PIT_SCROLL_TELEPORT:
+            {
+            }
+            break;
+        case PickableItem::PickableItemType::PIT_SCROLL_SPEED:
+            m_pPlayer->addPlayerBuffer(PB_SPEEDUP);
+            break;
+        case PickableItem::PickableItemType::PIT_SCROLL_STEALTH:
+            m_pPlayer->addPlayerBuffer(PB_STEALTH);
+            break;
+        case PickableItem::PickableItemType::PIT_SCROLL_DESTINY:
+            {
+            }
+            break;
+        default:
+            break;
+    }
+}
+void VoxelExplorer::handlePlayerUsePotion(PickableItem::PickableItemType type)
+{
 }
 bool VoxelExplorer::createLayers()
 {
