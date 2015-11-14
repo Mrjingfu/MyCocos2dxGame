@@ -19,6 +19,7 @@
 #include "MaterialProperty.hpp"
 #include "QuestItemProperty.hpp"
 #include "SundriesProperty.hpp"
+#include "VoxelExplorer.h"
 USING_NS_CC;
 
 unsigned int PlayerProperty::m_snItemInstanceIDCounter = 0;
@@ -65,10 +66,18 @@ PlayerProperty::PlayerProperty()
     m_nBagExtendTimes       = 0;                ///背包扩容次数
     m_nBagExtendMaxTimes    = 4;                ///背包最大扩容次数
     
+    m_BufferFlag            = PB_NONE;          ///默认状态
+    
     m_bDirty = false;
 }
 PlayerProperty::~PlayerProperty()
 {
+    std::vector<PickableItemProperty*>::iterator iter;
+    for (iter = m_Bag.begin(); iter != m_Bag.end(); iter++) {
+        m_Bag.erase(iter);
+        CC_SAFE_DELETE((*iter));
+    }
+    m_Bag.clear();
 }
 bool PlayerProperty::initNewPlayer()   ///新角色初始化
 {
@@ -92,6 +101,16 @@ void PlayerProperty::update(float delta)
         m_bDirty = false;
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_PROPERTY_DIRTY);
     }
+}
+void PlayerProperty::addPlayerBuffer(PlayerBuffer buff)
+{
+    m_BufferFlag = m_BufferFlag | buff;
+    m_bDirty = true;
+}
+void PlayerProperty::removePlayerBuffer(PlayerBuffer buff)
+{
+    m_BufferFlag = m_BufferFlag &~ buff;
+    m_bDirty = true;
 }
 CChaosNumber PlayerProperty::getMinAttack()
 {
@@ -437,6 +456,49 @@ bool PlayerProperty::usePotion(CChaosNumber id)
     PotionsProperty* potionsProperty = static_cast<PotionsProperty*>(getItemFromBag(id));
     if(potionsProperty && potionsProperty->getCount() >= 1)
     {
+//        PIT_POTION_MINORHEALTH,                  ///小治疗药水 Minor Health Potion
+//        PIT_POTION_LESSERHEALTH,                 ///轻微治疗药水 Lesser Health Potion
+//        PIT_POTION_HEALTH,                       ///治疗药水 Health Potion
+//        PIT_POTION_MINORMANA,                    ///小魔法药水 Minor Mana Potion
+//        PIT_POTION_LESSERMANA,                   ///轻微魔法药水 Lesser Mana Potion
+//        PIT_POTION_MANA,                         ///魔法药水 Mana Potion
+//        PIT_POTION_MINORRECOVERY,                ///小恢复药水 Minor Recovery Potion
+//        PIT_POTION_LESSERRECOVERY,               ///轻微恢复药水 Lesser Recovery Potion
+//        PIT_POTION_RECOVERY,                     ///恢复药水 Recovery Potion
+//        PIT_POTION_DETOXIFICATION,               ///解毒药水 Detoxification Potion
+//        PIT_POTION_SPECIFIC,                     ///特效药水 Specific Potion
+        potionsProperty->decreaseCount();
+        switch (potionsProperty->getPickableItemType()) {
+            case PickableItem::PIT_POTION_MINORHEALTH:
+            case PickableItem::PIT_POTION_LESSERHEALTH:
+            case PickableItem::PIT_POTION_HEALTH:
+                setCurrentHP(getCurrentHP() + potionsProperty->getValue().GetLongValue());
+                break;
+            case PickableItem::PIT_POTION_MINORMANA:
+            case PickableItem::PIT_POTION_LESSERMANA:
+            case PickableItem::PIT_POTION_MANA:
+                setCurrentMP(getCurrentMP() + potionsProperty->getValue().GetLongValue());
+                break;
+            case PickableItem::PIT_POTION_MINORRECOVERY:
+            case PickableItem::PIT_POTION_LESSERRECOVERY:
+            case PickableItem::PIT_POTION_RECOVERY:
+                {
+                    setCurrentHP(getCurrentHP() + potionsProperty->getValue().GetLongValue());
+                    setCurrentMP(getCurrentMP() + potionsProperty->getValue().GetLongValue());
+                }
+                break;
+            case PickableItem::PIT_POTION_DETOXIFICATION:
+            case PickableItem::PIT_POTION_SPECIFIC:
+                {
+                    VoxelExplorer::getInstance()->handlePlayerUsePotion(potionsProperty->getPickableItemType());
+                }
+                break;
+            default:
+                break;
+        }
+        if(potionsProperty->getCount() <= 0)
+            removeItemFromBag(id);
+        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_USE_POTION, potionsProperty);
         return true;
     }
     return false;
@@ -446,6 +508,24 @@ bool PlayerProperty::useScroll(CChaosNumber id)
     ScrollProperty* scrollProperty = static_cast<ScrollProperty*>(getItemFromBag(id));
     if(scrollProperty && scrollProperty->getCount() >= 1)
     {
+//        PIT_SCROLL_INDENTIFY,                    ////辨识卷轴 Scroll of Identify
+//        PIT_SCROLL_TELEPORT,                     ////传送卷轴 Scroll of Random Teleport
+//        PIT_SCROLL_SPEED,                        ////速度卷轴 Scroll of Speed
+//        PIT_SCROLL_STEALTH,                      ////隐身卷轴 Scroll of Stealth
+//        PIT_SCROLL_DESTINY,                      ////命运卷轴 Scroll of Destiny
+        
+        if(scrollProperty->getPickableItemType() == PickableItem::PIT_SCROLL_INDENTIFY)
+        {
+            Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_USE_SCROLL, scrollProperty);
+        }
+        else
+        {
+            scrollProperty->decreaseCount();
+            if(scrollProperty->getCount() <= 0)
+                removeItemFromBag(id);
+            VoxelExplorer::getInstance()->handlePlayerUseScroll(scrollProperty->getPickableItemType());
+            Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_USE_SCROLL, scrollProperty);
+        }
         return true;
     }
     return false;
@@ -498,15 +578,18 @@ bool PlayerProperty::addItemToBag(PickableItem::PickableItemType type, CChaosNum
     }
     return false;
 }
-bool PlayerProperty::removeStackableItemFromBag(CChaosNumber id, CChaosNumber count)
+bool PlayerProperty::removeStackableItemFromBag(PickableItem::PickableItemType type, CChaosNumber count)
 {
     std::vector<PickableItemProperty*>::iterator iter;
     for (iter = m_Bag.begin(); iter != m_Bag.end(); iter++) {
-        if((*iter) != nullptr && (*iter)->getInstanceID() == id.GetLongValue())
+        if((*iter) != nullptr && (*iter)->getPickableItemType() == type)
         {
+            if(!(*iter)->isStackable())
+                continue;
             if((*iter)->getCount() == count)
             {
                 m_Bag.erase(iter);
+                CC_SAFE_DELETE((*iter));
                 return true;
             }
             else if((*iter)->getCount() > count)
@@ -527,6 +610,7 @@ bool PlayerProperty::removeItemFromBag(CChaosNumber id)
         if((*iter) != nullptr && (*iter)->getInstanceID() == id.GetLongValue())
         {
             m_Bag.erase(iter);
+            CC_SAFE_DELETE((*iter));
             return true;
         }
     }

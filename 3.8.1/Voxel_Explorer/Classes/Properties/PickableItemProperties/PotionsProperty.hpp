@@ -8,7 +8,7 @@
 
 #ifndef PotionsProperty_hpp
 #define PotionsProperty_hpp
-
+#include "ChaosNumber.h"
 #include "PickableItemProperty.hpp"
 class PotionsProperty : public PickableItemProperty, public IStackable
 {
@@ -20,6 +20,10 @@ public:
     
     virtual void increaseCount() { ++m_nCount; }
     virtual void decreaseCount() { --m_nCount; }
+    
+    CChaosNumber getValue() const { return m_nValue; }
+private:
+    CChaosNumber    m_nValue;
 };
 
 #endif /* PotionsProperty_hpp */
