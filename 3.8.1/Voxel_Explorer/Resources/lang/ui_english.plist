@@ -62,5 +62,53 @@
 	<string>Level up!!!</string>
 	<key>MONSTER_ELITE_NAME</key>
 	<string>Elite %s</string>
+	<key>EQUIP_PROP_ATTACK</key>
+	<string>Attack：%d-%d</string>
+	<key>EQUIP_PROP_DEFENSE</key>
+	<string>Defense：%d</string>
+	<key>EQUIP_PROP_MIN_HURT</key>
+	<string>+%d MIN HURT</string>
+	<key>EQUIP_PROP_MAX_HURT</key>
+	<string>+%d MIN HURT</string>
+	<key>EQUIP_PROP_HP</key>
+	<string>+%d HP</string>
+	<key>EQUIP_PROP_MP</key>
+	<string>+%d MP</string>
+	<key>EQUIP_PROP_BLOCK</key>
+	<string>+%d% Block Rate</string>
+	<key>EQUIP_PROP_CRITICAL_STRIKE</key>
+	<string>+%d% Critical Strike Rate</string>
+	<key>EQUIP_PROP_DODGE</key>
+	<string>+%d% Dodge Rate</string>
+	<key>EQUIP_PROP_MAGIC</key>
+	<string>+%d% Magic Find Rate</string>
+	<key>EQUIP_PROP_SEQRCH</key>
+	<string>+%d Search Scope</string>
+	<key>EQUIP_PROP_LIGHT</key>
+	<string>+%d Light Scope</string>
+	<key>ITEM_NOT_IDENTIFY</key>
+	<string>Not Identify</string>
+	<key>ITEM_ALREDY_EQUIP</key>
+	<string>Equip</string>
+	<key>ITEM_PROP_TYPE_KEY</key>
+	<string>KEY</string>
+	<key>ITEM_PROP_TYPE_WEAPON</key>
+	<string>WEAPON</string>
+	<key>ITEM_PROP_TYPE_SECOND_WEAPON</key>
+	<string>SECOND_WEAPON</string>
+	<key>ITEM_PROP_TYPE_ARMOR</key>
+	<string>ARMOR</string>
+	<key>ITEM_PROP_TYPE_MAGIC_ORNAMENT</key>
+	<string>ORNAMENT</string>
+	<key>ITEM_PROP_TYPE_SCROLL</key>
+	<string>SCROLL</string>
+	<key>ITEM_PROP_TYPE_POTIONS</key>
+	<string>POTIONS</string>
+	<key>ITEM_PROP_TYPE_MATERIAL</key>
+	<string>MATERIAL</string>
+	<key>ITEM_PROP_TYPE_QUEST</key>
+	<string>QUEST</string>
+	<key>ITEM_PROP_TYPE_SUNDRIES</key>
+	<string>SUNDRIES</string>
 </dict>
 </plist>

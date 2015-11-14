@@ -12,7 +12,6 @@
 #include "PlayerProperty.hpp"
 #include "PopupUILayerManager.h"
 #include "ItemPopupUI.h"
-#include "EquipItemPopupUI.h"
 #include "EventConst.h"
 #include "GameFormula.hpp"
 #include "KeyProperty.hpp"
@@ -266,22 +265,11 @@ void RolePopupUI::selectItemEvent(cocos2d::Ref *pSender, TGridView::EventType ty
         TGridView* gridView = static_cast<TGridView*>(pSender);
         ItemUI* currentItem = static_cast<ItemUI*>(gridView->getItem(gridView->getCurSelectedIndex()));
         if (currentItem && currentItem->isHaveItem()) {
-            PickableItemProperty* itemprop = PlayerProperty::getInstance()->getItemFromBag(CChaosNumber(currentItem->getItemId()));
-            PickableItemProperty::PickableItemPropertyType type = itemprop->getPickableItemPropertyType();
-            if (type ==PickableItemProperty::PIPT_WEAPON ||type ==PickableItemProperty::PIPT_SECOND_WEAPON||
-                type ==PickableItemProperty::PIPT_ARMOR ||type ==PickableItemProperty::PIPT_MAGIC_ORNAMENT ) {
-                EquipItemPopupUI* popupui = static_cast<EquipItemPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupType::ePopupEquipItem));
-                if (popupui) {
-                    popupui->updateItemPopup(currentItem->getItemId());
-                }
-            }else
-            {
+            
                 ItemPopupUI* popupui = static_cast<ItemPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupType::ePopupItem));
                 if (popupui) {
                     popupui->updateItemPopup(currentItem->getItemId());
                 }
-            }
-           
              CCLOG("select itemid = %d", currentItem->getItemId());
             
         }

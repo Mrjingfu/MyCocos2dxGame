@@ -62,5 +62,53 @@
 	<string>你升级了！！！</string>
 	<key>MONSTER_ELITE_NAME</key>
 	<string>精英%s</string>
+	<key>EQUIP_PROP_ATTACK</key>
+	<string>攻击力：%d-%d</string>
+	<key>EQUIP_PROP_DEFENSE</key>
+	<string>防御力：%d</string>
+	<key>EQUIP_PROP_MIN_HURT</key>
+	<string>+%d最小伤害</string>
+	<key>EQUIP_PROP_MAX_HURT</key>
+	<string>+%d最大伤害</string>
+	<key>EQUIP_PROP_HP</key>
+	<string>+%d生命值</string>
+	<key>EQUIP_PROP_MP</key>
+	<string>+%d魔法值</string>
+	<key>EQUIP_PROP_BLOCK</key>
+	<string>+%d%格挡率</string>
+	<key>EQUIP_PROP_CRITICAL_STRIKE</key>
+	<string>+%d%暴击率</string>
+	<key>EQUIP_PROP_DODGE</key>
+	<string>+%d%闪避率</string>
+	<key>EQUIP_PROP_MAGIC</key>
+	<string>+%d%取魔率</string>
+	<key>EQUIP_PROP_SEQRCH</key>
+	<string>+%d搜索范围</string>
+	<key>EQUIP_PROP_LIGHT</key>
+	<string>+%d光照范围</string>
+	<key>ITEM_NOT_IDENTIFY</key>
+	<string>未鉴定</string>
+	<key>ITEM_ALREDY_EQUIP</key>
+	<string>已装备</string>
+	<key>ITEM_PROP_TYPE_KEY</key>
+	<string>钥匙</string>
+	<key>ITEM_PROP_TYPE_WEAPON</key>
+	<string>武器</string>
+	<key>ITEM_PROP_TYPE_SECOND_WEAPON</key>
+	<string>副手武器</string>
+	<key>ITEM_PROP_TYPE_ARMOR</key>
+	<string>护甲</string>
+	<key>ITEM_PROP_TYPE_MAGIC_ORNAMENT</key>
+	<string>饰品</string>
+	<key>ITEM_PROP_TYPE_SCROLL</key>
+	<string>卷轴</string>
+	<key>ITEM_PROP_TYPE_POTIONS</key>
+	<string>药水</string>
+	<key>ITEM_PROP_TYPE_MATERIAL</key>
+	<string>宝石</string>
+	<key>ITEM_PROP_TYPE_QUEST</key>
+	<string>任务物品</string>
+	<key>ITEM_PROP_TYPE_SUNDRIES</key>
+	<string>杂物</string>
 </dict>
 </plist>

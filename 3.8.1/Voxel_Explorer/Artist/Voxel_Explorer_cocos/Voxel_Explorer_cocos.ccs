@@ -52,12 +52,10 @@
         <Project Name="characterLayer.csd" Type="Layer" />
         <Project Name="gameScene.csd" Type="Scene" />
         <Project Name="menuscene.csd" Type="Scene" />
-        <Project Name="equipitemPopupLayer.csd" Type="Layer" />
-        <Project Name="itemPopupLayer.csd" Type="Layer" />
         <Project Name="infoPopupLayer.csd" Type="Layer" />
-        <Project Name="equipitemPopupLayer_0.csd" Type="Layer" />
         <Project Name="pausePopupLayer.csd" Type="Layer" />
         <Project Name="achievementPopupLayer.csd" Type="Layer" />
+        <Project Name="itemPopupLayer.csd" Type="Layer" />
       </RootFolder>
     </Group>
   </SolutionFolder>

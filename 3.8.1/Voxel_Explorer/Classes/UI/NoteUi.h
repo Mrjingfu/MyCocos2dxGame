@@ -19,6 +19,8 @@ public:
     bool init() override;
     virtual ~NoteUi();
     void setMsg(std::string msg,cocos2d::Color3B fontColor = cocos2d::Color3B::WHITE);
+    void setItemText(std::string msg,cocos2d::Color3B fontColor = cocos2d::Color3B::WHITE);
+    void setFontScale(float scale);
 private:
     cocos2d::Label* m_pLabel;
 };

@@ -9,7 +9,6 @@
 #include "PopupUILayerManager.h"
 #include "RolePopUpUI.h"
 #include "ItemPopupUI.h"
-#include "EquipItemPopupUI.h"
 #include "UtilityHelper.h"
 #include "InfoPopupUI.h"
 
@@ -92,9 +91,6 @@ PopupUILayer* PopupUILayerManager::initPopUp(ePopupType type)
             break;
         case ePopupItem:
             popupLayer = ItemPopupUI::create();
-            break;
-        case ePopupEquipItem:
-            popupLayer = EquipItemPopupUI::create();
             break;
         case ePopupInfo:
             popupLayer = InfoPopupUI::create();
@@ -197,7 +193,8 @@ cocos2d::Color3B PopupUILayerManager::getTipsColor(TipTypes tipType)
             return cocos2d::Color3B(255,135,255); //格挡
         case TIP_CRITICAL_STRIKE:
             return cocos2d::Color3B(255,255,0);   //暴击
-
+        case TIP_EFFECT:
+            return cocos2d::Color3B(107, 216, 176);
         default:
             break;
     }

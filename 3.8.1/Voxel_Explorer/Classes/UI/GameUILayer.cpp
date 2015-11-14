@@ -560,7 +560,7 @@ void GameUILayer::initMessageFrame()
     if (msgList.empty())
     {
         std::string rungenName =RandomDungeon::getInstance()->getCurrentDungeonNode()->m_strDungeonName.c_str();
-        int flood =  int(RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nTotalNum);
+        int flood =  int(RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nCurrentDepth);
         sendMessage(StringUtils::format(UtilityHelper::getLocalStringForUi("GAME_MESSAGE_NOT").c_str(),rungenName.c_str(),flood));
         return;
     }
