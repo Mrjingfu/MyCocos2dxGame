@@ -22,6 +22,7 @@ public:
     virtual bool addEvents() override;
     void onEnter() override;
     void onExit()override;
+   
 protected:
     virtual bool onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event) override;
     virtual void onTouchMoved(cocos2d::Touch *touch, cocos2d::Event *event) override;
@@ -46,6 +47,9 @@ private:
     void onEventUpdateMonsterProp(cocos2d::EventCustom *sender);
     void onEventMonsterHud(cocos2d::EventCustom *sender);
     void onEvenetMonsterDead(cocos2d::EventCustom *sender);
+    
+    void onEvenetUserPotion(cocos2d::EventCustom *sender);
+    void onEvenetUserScroll(cocos2d::EventCustom *sender);
     
     bool checkSearchMapInfo(const cocos2d::Ray ray,std::string& infoIcon,std::string& infoDesc);
     

@@ -28,7 +28,7 @@ public:
     void closeCurrentPopup();
     void onExitScene();
     void setParentLayer(cocos2d::Layer* parent);
-    
+    void closeAllPopup();
     bool isOpenPopup(ePopupType type,PopupUILayer* &pLayer);
     PopupUILayer* getCurrentPopUpLayer();
     PopupUILayer* getPopUpLayerByType(ePopupType type);

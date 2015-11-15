@@ -100,6 +100,17 @@ PopupUILayer* PopupUILayerManager::initPopUp(ePopupType type)
     }
     return popupLayer;
 }
+
+void PopupUILayerManager::closeAllPopup()
+{
+    for (int i= 0 ;i<ePopupCount;i++)
+    {
+        PopupUILayer* popup =  m_pPopupContainer[i];
+        if (popup) {
+            popup->closePopup();
+        }
+    }
+}
 void PopupUILayerManager::closeCurrentPopup()
 {
     if (nullptr !=m_pPopupContainer[m_cCurrentPopUpType] && m_pPopupContainer[m_cCurrentPopUpType]->getParent()) {

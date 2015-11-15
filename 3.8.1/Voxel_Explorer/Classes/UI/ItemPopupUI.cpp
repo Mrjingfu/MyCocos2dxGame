@@ -582,7 +582,7 @@ void ItemPopupUI::updateItemPopup(int itemId)
         m_pItemGoldNum->setString(StringUtils::format("%d",int(copperNum)));
     }
     
-    ArmorProperty::PickableItemPropertyType itemtype =itemprop->getPickableItemPropertyType();
+    PickableItemProperty::PickableItemPropertyType itemtype =itemprop->getPickableItemPropertyType();
     std::string str;
     if (itemtype == ArmorProperty::PIPT_KEY) {
         str = UtilityHelper::getLocalStringForUi("ITEM_PROP_TYPE_KEY");
@@ -628,6 +628,12 @@ void ItemPopupUI::updateItemPopup(int itemId)
                 m_pBtnDiscard->setVisible(false);
                 m_pBtnEquip->setVisible(false);
             }
+        }else
+        {
+            m_pItemEquipDist->setString(UtilityHelper::getLocalStringForUi("ITEM_NOT_EQUIP"));
+            m_pItemEquipDist->setColor(PopupUILayerManager::getInstance()->getTipsColor(TIP_WARNING));
+            m_pBtnDiscard->setPosition(cocos2d::Vec2(m_pRootNode->getContentSize().width*0.5,0));
+            m_pBtnEquip->setVisible(false);
         }
         
         if (itemprop->isIdentified()) {
@@ -657,7 +663,24 @@ void ItemPopupUI::onClickUser(cocos2d::Ref *ref)
 {
     CHECK_ACTION(ref);
     CCLOG("onClickUser");
-    
+    PickableItemProperty* itemprop = PlayerProperty::getInstance()->getItemFromBag(CChaosNumber(m_nItemId));
+    PickableItemProperty::PickableItemPropertyType itemtype =itemprop->getPickableItemPropertyType();
+     bool isItemUse = false;
+    if (itemtype == PickableItemProperty::PIPT_POTIONS)
+    {
+        isItemUse = PlayerProperty::getInstance()->usePotion(CChaosNumber(m_nItemId));
+    }else if (itemtype == PickableItemProperty::PIPT_SCROLL)
+    {
+        isItemUse = PlayerProperty::getInstance()->useScroll(CChaosNumber(m_nItemId));
+    }else if (itemtype == PickableItemProperty::PIPT_KEY)
+    {
+//         PlayerProperty::getInstance()->useKey(itemprop->getPickableItemType());
+    }
+    if (isItemUse) {
+        PopupUILayerManager::getInstance()->closeAllPopup();
+    }else{
+        CCLOG("使用道具失败");
+    }
     
 }
 void ItemPopupUI::onClickEquip(cocos2d::Ref *ref)
@@ -686,5 +709,6 @@ void ItemPopupUI::onClickEquip(cocos2d::Ref *ref)
         closePopup();
     }else{
         //装备失败 或者提前给出提示
+        CCLOG("装备失败 ");
     }
 }

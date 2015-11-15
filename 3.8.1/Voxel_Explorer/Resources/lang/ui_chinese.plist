@@ -90,6 +90,8 @@
 	<string>未鉴定</string>
 	<key>ITEM_ALREDY_EQUIP</key>
 	<string>已装备</string>
+	<key>ITEM_NOT_EQUIP</key>
+	<string>不可装备</string>
 	<key>ITEM_PROP_TYPE_KEY</key>
 	<string>钥匙</string>
 	<key>ITEM_PROP_TYPE_WEAPON</key>

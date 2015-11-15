@@ -90,6 +90,8 @@
 	<string>Not Identify</string>
 	<key>ITEM_ALREDY_EQUIP</key>
 	<string>Equip</string>
+	<key>ITEM_NOT_EQUIP</key>
+	<string>Not Equip</string>
 	<key>ITEM_PROP_TYPE_KEY</key>
 	<string>KEY</string>
 	<key>ITEM_PROP_TYPE_WEAPON</key>

@@ -21,6 +21,9 @@
 #include "MessageManager.h"
 #include "InfoPopupUI.h"
 #include "BaseDoor.hpp"
+#include "PotionsProperty.hpp"
+#include "ScrollProperty.hpp"
+#include "RolePopupUI.h"
 USING_NS_CC;
 GameUILayer::GameUILayer()
 {
@@ -69,7 +72,7 @@ GameUILayer::GameUILayer()
     m_pGameBagBtn = nullptr;;
     m_pGameDistBtn = nullptr;;
     m_pGamePauseBtn = nullptr;;
-    
+
 }
 GameUILayer::~GameUILayer()
 {
@@ -388,6 +391,29 @@ bool GameUILayer::checkSearchMapInfo(const cocos2d::Ray ray,std::string& infoIco
     return false;
 
 }
+void GameUILayer::onEvenetUserPotion(cocos2d::EventCustom *sender)
+{
+    CCLOG("onEvenetUserPotion");
+    Vec2 pt = VoxelExplorer::getInstance()->getMainCamera()->projectGL(VoxelExplorer::getInstance()->getPlayer()->getPosition3D());
+    pt = Vec2(pt.x, pt.y+TerrainTile::CONTENT_SCALE*2.5);
+    PotionsProperty* potionsProperty = static_cast<PotionsProperty*>(sender->getUserData());
+    PopupUILayerManager::getInstance()->showStatus(TIP_NEUTRAL, Value(int(potionsProperty->getValue())).asString(),pt);
+}
+void GameUILayer::onEvenetUserScroll(cocos2d::EventCustom *sender)
+{
+    CCLOG("onEvenetUserScroll");
+    ScrollProperty* scrollProperty = static_cast<ScrollProperty*>(sender->getUserData());
+    if (scrollProperty->getPickableItemType() == PickableItem::PIT_SCROLL_INDENTIFY)
+    {
+        RolePopupUI* rolePopup = static_cast<RolePopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupRole));
+        if (rolePopup)
+            rolePopup->setStateIdentify(true);
+    }else
+    {
+        
+    }
+}
+
 void GameUILayer::onEventRoleLevelUp(cocos2d::EventCustom *sender)
 {
     CCLOG("onEventRoleLevelUp");
@@ -522,6 +548,10 @@ void GameUILayer::onEnter()
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_MONSTER_PROPERTY_DIRTY, CC_CALLBACK_1(GameUILayer::onEventUpdateMonsterProp,this));
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_MONSTER_DEATH, CC_CALLBACK_1(GameUILayer::onEvenetMonsterDead,this));
     
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_PLAYER_USE_POTION, CC_CALLBACK_1(GameUILayer::onEvenetUserPotion,this));
+
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_PLAYER_USE_SCROLL, CC_CALLBACK_1(GameUILayer::onEvenetUserScroll,this));
+    
 }
 void GameUILayer::onExit()
 {
@@ -532,6 +562,8 @@ void GameUILayer::onExit()
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_MONSTER_HURT);
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_MONSTER_PROPERTY_DIRTY);
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_MONSTER_DEATH);
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_PLAYER_USE_POTION);
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_PLAYER_USE_SCROLL);
     WrapperUILayer::onExit();
 }
 void GameUILayer::sendMessage(std::string msg,Color3B msgColor)
