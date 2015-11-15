@@ -118,297 +118,843 @@
 	<string>杂项</string>
 	<key>PIN_KEY_COPPER</key>
 	<string>铜钥匙</string>
+	<key>PIN_KEY_COPPER_DESC</key>
+	<string>用来打开铜质宝箱。</string>
 	<key>PIN_KEY_SILVER</key>
 	<string>银钥匙</string>
+	<key>PIN_KEY_SILVER_DESC</key>
+	<string>用来打开银质宝箱。</string>
 	<key>PIN_KEY_GOLD</key>
 	<string>金钥匙</string>
+	<key>PIN_KEY_GOLD_DESC</key>
+	<string>用来打开金质宝箱。</string>
 	<key>PIN_KEY_BOSS</key>
 	<string>%s的钥匙</string>
+	<key>PIN_KEY_BOSS_DESC</key>
+	<string>用来打开%s的房间</string>
 	<key>PIN_KEY_ROOM</key>
 	<string>%s的钥匙</string>
+	<key>PIN_KEY_ROOM_DESC</key>
+	<string>用来打开%s的房间</string>
 	<key>PIN_DAGGER_DAGGER</key>
 	<string>匕首</string>
+	<key>PIN_DAGGER_DAGGER_DESC</key>
+	<string>一把很普通的匕首</string>
+	<key>PIN_DAGGER_DAGGER_BIDESC</key>
+	<string>脏脏的，兴许磨磨还能用。</string>
 	<key>PIN_DAGGER_HALFSWORD</key>
 	<string>短剑</string>
+	<key>PIN_DAGGER_HALFSWORD_DESC</key>
+	<string>精致短剑，值得在上边刻上你的名字。</string>
+	<key>PIN_DAGGER_HALFSWORD_BIDESC</key>
+	<string>一般的铁匠铺都可以买到，冒险者标配。</string>
 	<key>PIN_DAGGER_KNIFE</key>
 	<string>小刀</string>
+	<key>PIN_DAGGER_KNIFE_DESC</key>
+	<string>人不可貌相，刀不可乍看，喂，别离脸那么近～</string>
+	<key>PIN_DAGGER_KNIFE_BIDESC</key>
+	<string>乍看上去是把不起眼的把小刀。</string>
 	<key>PIN_DAGGER_COLDSTEELDAGGER</key>
 	<string>冷钢匕首</string>
+	<key>PIN_DAGGER_COLDSTEELDAGGER_DESC</key>
+	<string>冷钢匕首算不上神兵利刃，但也价格不菲。</string>
+	<key>PIN_DAGGER_COLDSTEELDAGGER_BIDESC</key>
+	<string>钢口不错，长短正好。</string>
 	<key>PIN_DAGGER_RIPPERCUTTER</key>
 	<string>开膛刀</string>
+	<key>PIN_DAGGER_RIPPERCUTTER_DESC</key>
+	<string>当敌人看到它的刀锋时候，它就想喝血了...</string>
+	<key>PIN_DAGGER_RIPPERCUTTER_BIDESC</key>
+	<string>好像在哪见过这把刀。</string>
 	<key>PIN_DAGGER_BLUELIGHTDAGGER</key>
 	<string>蓝光匕首</string>
+	<key>PIN_DAGGER_BLUELIGHTDAGGER_DESC</key>
+	<string>这是由潜龙大陆楚国的炼器宗师黑先生使用蓝炎水打造的。</string>
+	<key>PIN_DAGGER_BLUELIGHTDAGGER_BIDESC</key>
+	<string>刀刃上闪着隐隐的蓝光。</string>
 	<key>PIN_DAGGER_RUBYDAGGER</key>
 	<string>红宝石匕首</string>
+	<key>PIN_DAGGER_RUBYDAGGER_DESC</key>
+	<string>装饰品有时候也可以是杀人利器。</string>
+	<key>PIN_DAGGER_RUBYDAGGER_BIDESC</key>
+	<string>镶宝石的匕首一般都是装饰品。</string>
 	<key>PIN_DAGGER_PRO_DAGGER</key>
 	<string>烛光</string>
+	<key>PIN_DAGGER_PRO_DAGGER_DESC</key>
+	<string>真的能发光唉，微微的黄光～</string>
+	<key>PIN_DAGGER_PRO_DAGGER_BIDESC</key>
+	<string>好像是一颗蜡烛。</string>
 	<key>PIN_DAGGER_PRO_HALFSWORD</key>
 	<string>星耀</string>
+	<key>PIN_DAGGER_PRO_HALFSWORD_DESC</key>
+	<string>星星的眼泪，若星汉天空下滋润的陨铁锻造而成。</string>
+	<key>PIN_DAGGER_PRO_HALFSWORD_BIDESC</key>
+	<string>星星般闪耀</string>
 	<key>PIN_DAGGER_PRO_KNIFE</key>
 	<string>黄金杀手</string>
+	<key>PIN_DAGGER_PRO_KNIFE_DESC</key>
+	<string>它会让人呕吐，扎敌人的胃～</string>
+	<key>PIN_DAGGER_PRO_KNIFE_BIDESC</key>
+	<string>屎黄色的匕首，问问你的手上有味么。</string>
 	<key>PIN_DAGGER_PRO_COLDSTEELDAGGER</key>
 	<string>影子袭击者</string>
+	<key>PIN_DAGGER_PRO_COLDSTEELDAGGER_DESC</key>
+	<string>盗贼林登之刃</string>
+	<key>PIN_DAGGER_PRO_COLDSTEELDAGGER_BIDESC</key>
+	<string>上边印着盗贼工会的标志</string>
 	<key>PIN_DAGGER_PRO_RIPPERCUTTER</key>
 	<string>六刃</string>
+	<key>PIN_DAGGER_PRO_RIPPERCUTTER_DESC</key>
+	<string>非常特别的武器，不知道何人打造，何人使用过。</string>
+	<key>PIN_DAGGER_PRO_RIPPERCUTTER_BIDESC</key>
+	<string>它有六个尖儿，一扎六个眼儿。</string>
 	<key>PIN_DAGGER_PRO_BLUELIGHTDAGGER</key>
 	<string>凝云</string>
+	<key>PIN_DAGGER_PRO_BLUELIGHTDAGGER_DESC</key>
+	<string>出鞘之时，周围的空气都被冻结了，它和霜之哀伤一样寒冷，但它不控制人性，放心使用。</string>
+	<key>PIN_DAGGER_PRO_BLUELIGHTDAGGER_BIDESC</key>
+	<string>摸上去有些冰手。</string>
 	<key>PIN_DAGGER_PRO_RUBYDAGGER</key>
 	<string>火舌</string>
+	<key>PIN_DAGGER_PRO_RUBYDAGGER_DESC</key>
+	<string>石中焱炽铁精炼而成，挥舞起来犹如龙熄火舌一般，世间罕见。</string>
+	<key>PIN_DAGGER_PRO_RUBYDAGGER_BIDESC</key>
+	<string>摸上去有些烫手。</string>
 	<key>PIN_AXE_HATCHET</key>
 	<string>小斧</string>
+	<key>PIN_AXE_HATCHET_DESC</key>
+	<string>你想做樵夫吗？</string>
+	<key>PIN_AXE_HATCHET_BIDESC</key>
+	<string>有些生锈。</string>
 	<key>PIN_AXE_ADZE</key>
 	<string>手斧</string>
+	<key>PIN_AXE_ADZE_DESC</key>
+	<string>拿着它会让敌人胆寒。</string>
+	<key>PIN_AXE_ADZE_BIDESC</key>
+	<string>狂战士标配</string>
 	<key>PIN_AXE_STONEAXE</key>
 	<string>石斧</string>
+	<key>PIN_AXE_STONEAXE_DESC</key>
+	<string>野蛮原始人，粉碎一些。</string>
+	<key>PIN_AXE_STONEAXE_BIDESC</key>
+	<string>木棍，藤条和石头，你也可以做一把。</string>
 	<key>PIN_AXE_BROADAX</key>
 	<string>大斧</string>
+	<key>PIN_AXE_BROADAX_DESC</key>
+	<string></string>
+	<key>PIN_AXE_BROADAX_BIDESC</key>
+	<string></string>
 	<key>PIN_AXE_TOMAHAWK</key>
 	<string>战斧</string>
+	<key>PIN_AXE_TOMAHAWK_DESC</key>
+	<string></string>
+	<key>PIN_AXE_TOMAHAWK_BIDESC</key>
+	<string></string>
 	<key>PIN_AXE_HUGEAXE</key>
 	<string>巨斧</string>
+	<key>PIN_AXE_HUGEAXE_DESC</key>
+	<string></string>
+	<key>PIN_AXE_HUGEAXE_BIDESC</key>
+	<string></string>
 	<key>PIN_AXE_DOUBLEBITAX</key>
 	<string>双刃斧</string>
+	<key>PIN_AXE_DOUBLEBITAX_DESC</key>
+	<string></string>
+	<key>PIN_AXE_DOUBLEBITAX_BIDESC</key>
+	<string></string>
 	<key>PIN_AXE_PRO_HATCHET</key>
 	<string>黑铁</string>
+	<key>PIN_AXE_PRO_HATCHET_DESC</key>
+	<string></string>
+	<key>PIN_AXE_PRO_HATCHET_BIDESC</key>
+	<string></string>
 	<key>PIN_AXE_PRO_ADZE</key>
 	<string>半月</string>
+	<key>PIN_AXE_PRO_ADZE_DESC</key>
+	<string></string>
+	<key>PIN_AXE_PRO_ADZE_BIDESC</key>
+	<string></string>
 	<key>PIN_AXE_PRO_STONEAXE</key>
 	<string>回旋加速器</string>
+	<key>PIN_AXE_PRO_STONEAXE_DESC</key>
+	<string></string>
+	<key>PIN_AXE_PRO_STONEAXE_BIDESC</key>
+	<string></string>
 	<key>PIN_AXE_PRO_BROADAX</key>
 	<string>熔岩</string>
+	<key>PIN_AXE_PRO_BROADAX_DESC</key>
+	<string></string>
+	<key>PIN_AXE_PRO_BROADAX_BIDESC</key>
+	<string></string>
 	<key>PIN_AXE_PRO_TOMAHAWK</key>
 	<string>狂战士</string>
+	<key>PIN_AXE_PRO_TOMAHAWK_DESC</key>
+	<string></string>
+	<key>PIN_AXE_PRO_TOMAHAWK_BIDESC</key>
+	<string></string>
 	<key>PIN_AXE_PRO_HUGEAXE</key>
 	<string>骷髅撕裂者</string>
+	<key>PIN_AXE_PRO_HUGEAXE_DESC</key>
+	<string></string>
+	<key>PIN_AXE_PRO_HUGEAXE_BIDESC</key>
+	<string></string>
 	<key>PIN_AXE_PRO_DOUBLEBITAX</key>
 	<string>脑袋</string>
+	<key>PIN_AXE_PRO_DOUBLEBITAX_DESC</key>
+	<string></string>
+	<key>PIN_AXE_PRO_DOUBLEBITAX_BIDESC</key>
+	<string></string>
 	<key>PIN_SWORD_SWORD</key>
 	<string>铁剑</string>
+	<key>PIN_SWORD_SWORD_DESC</key>
+	<string></string>
+	<key>PIN_SWORD_SWORD_BIDESC</key>
+	<string></string>
 	<key>PIN_SWORD_STEELSWORD</key>
 	<string>长钢剑</string>
+	<key>PIN_SWORD_STEELSWORD_DESC</key>
+	<string></string>
+	<key>PIN_SWORD_STEELSWORD_BIDESC</key>
+	<string></string>
 	<key>PIN_SWORD_SABRE</key>
 	<string>军刀</string>
+	<key>PIN_SWORD_SABRE_DESC</key>
+	<string></string>
+	<key>PIN_SWORD_SABRE_BIDESC</key>
+	<string></string>
 	<key>PIN_SWORD_HUGESWORD</key>
 	<string>巨剑</string>
+	<key>PIN_SWORD_HUGESWORD_DESC</key>
+	<string></string>
+	<key>PIN_SWORD_HUGESWORD_BIDESC</key>
+	<string></string>
 	<key>PIN_SWORD_TRIANGLESWORD</key>
 	<string>三角剑</string>
+	<key>PIN_SWORD_TRIANGLESWORD_DESC</key>
+	<string></string>
+	<key>PIN_SWORD_TRIANGLESWORD_BIDESC</key>
+	<string></string>
 	<key>PIN_SWORD_JAGGEDSWORD</key>
 	<string>锯齿剑</string>
+	<key>PIN_SWORD_JAGGEDSWORD_DESC</key>
+	<string></string>
+	<key>PIN_SWORD_JAGGEDSWORD_BIDESC</key>
+	<string></string>
 	<key>PIN_SWORD_CRYSTALSWORD</key>
 	<string>水晶剑</string>
+	<key>PIN_SWORD_CRYSTALSWORD_DESC</key>
+	<string></string>
+	<key>PIN_SWORD_CRYSTALSWORD_BIDESC</key>
+	<string></string>
 	<key>PIN_SWORD_PRO_SWORD</key>
 	<string>红莲</string>
+	<key>PIN_SWORD_PRO_SWORD_DESC</key>
+	<string></string>
+	<key>PIN_SWORD_PRO_SWORD_BIDESC</key>
+	<string></string>
 	<key>PIN_SWORD_PRO_STEELSWORD</key>
 	<string>一闪</string>
+	<key>PIN_SWORD_PRO_STEELSWORD_DESC</key>
+	<string></string>
+	<key>PIN_SWORD_PRO_STEELSWORD_BIDESC</key>
+	<string></string>
 	<key>PIN_SWORD_PRO_SABRE</key>
 	<string>劈风者</string>
+	<key>PIN_SWORD_PRO_SABRE_DESC</key>
+	<string></string>
+	<key>PIN_SWORD_PRO_SABRE_BIDESC</key>
+	<string></string>
 	<key>PIN_SWORD_PRO_HUGESWORD</key>
 	<string>阳炎</string>
+	<key>PIN_SWORD_PRO_HUGESWORD_DESC</key>
+	<string></string>
+	<key>PIN_SWORD_PRO_HUGESWORD_BIDESC</key>
+	<string></string>
 	<key>PIN_SWORD_PRO_TRIANGLESWORD</key>
 	<string>血之使者</string>
+	<key>PIN_SWORD_PRO_TRIANGLESWORD_DESC</key>
+	<string></string>
+	<key>PIN_SWORD_PRO_TRIANGLESWORD_BIDESC</key>
+	<string></string>
 	<key>PIN_SWORD_PRO_JAGGEDSWORD</key>
 	<string>钢牙</string>
+	<key>PIN_SWORD_PRO_JAGGEDSWORD_DESC</key>
+	<string></string>
+	<key>PIN_SWORD_PRO_JAGGEDSWORD_BIDESC</key>
+	<string></string>
 	<key>PIN_SWORD_PRO_CRYSTALSWORD</key>
 	<string>诛神</string>
+	<key>PIN_SWORD_PRO_CRYSTALSWORD_DESC</key>
+	<string></string>
+	<key>PIN_SWORD_PRO_CRYSTALSWORD_BIDESC</key>
+	<string></string>
 	<key>PIN_MACE_ROLLINGPIN</key>
 	<string>擀面杖</string>
+	<key>PIN_MACE_ROLLINGPIN_DESC</key>
+	<string></string>
+	<key>PIN_MACE_ROLLINGPIN_BIDESC</key>
+	<string></string>
 	<key>PIN_MACE_MALLET</key>
 	<string>木棒</string>
+	<key>PIN_MACE_MALLET_DESC</key>
+	<string></string>
+	<key>PIN_MACE_MALLET_BIDESC</key>
+	<string></string>
 	<key>PIN_MACE_MACE</key>
 	<string>权杖</string>
+	<key>PIN_MACE_MACE_DESC</key>
+	<string></string>
+	<key>PIN_MACE_MACE_BIDESC</key>
+	<string></string>
 	<key>PIN_MACE_HAMMER</key>
 	<string>钉头锤</string>
+	<key>PIN_MACE_HAMMER_DESC</key>
+	<string></string>
+	<key>PIN_MACE_HAMMER_BIDESC</key>
+	<string></string>
 	<key>PIN_MACE_WOLFFANGSMACE</key>
 	<string>狼牙棒</string>
+	<key>PIN_MACE_WOLFFANGSMACE_DESC</key>
+	<string></string>
+	<key>PIN_MACE_WOLFFANGSMACE_BIDESC</key>
+	<string></string>
 	<key>PIN_MACE_BONEHAMMER</key>
 	<string>骨棒</string>
+	<key>PIN_MACE_BONEHAMMER_DESC</key>
+	<string></string>
+	<key>PIN_MACE_BONEHAMMER_BIDESC</key>
+	<string></string>
 	<key>PIN_MACE_SLEDGEHAMMER</key>
 	<string>碎骨锤</string>
+	<key>PIN_MACE_SLEDGEHAMMER_DESC</key>
+	<string></string>
+	<key>PIN_MACE_SLEDGEHAMMER_BIDESC</key>
+	<string></string>
 	<key>PIN_MACE_PRO_ROLLINGPIN</key>
 	<string>恐龙大骨</string>
+	<key>PIN_MACE_PRO_ROLLINGPIN_DESC</key>
+	<string></string>
+	<key>PIN_MACE_PRO_ROLLINGPIN_BIDESC</key>
+	<string></string>
 	<key>PIN_MACE_PRO_MALLET</key>
 	<string>食人魔之锤</string>
+	<key>PIN_MACE_PRO_MALLET_DESC</key>
+	<string></string>
+	<key>PIN_MACE_PRO_MALLET_BIDESC</key>
+	<string></string>
 	<key>PIN_MACE_PRO_MACE</key>
 	<string>红宝石权杖</string>
+	<key>PIN_MACE_PRO_MACE_DESC</key>
+	<string></string>
+	<key>PIN_MACE_PRO_MACE_BIDESC</key>
+	<string></string>
 	<key>PIN_MACE_PRO_HAMMER</key>
 	<string>金色勇气</string>
+	<key>PIN_MACE_PRO_HAMMER_DESC</key>
+	<string></string>
+	<key>PIN_MACE_PRO_HAMMER_BIDESC</key>
+	<string></string>
 	<key>PIN_MACE_PRO_WOLFFANGSMACE</key>
 	<string>众神之锤</string>
+	<key>PIN_MACE_PRO_WOLFFANGSMACE_DESC</key>
+	<string></string>
+	<key>PIN_MACE_PRO_WOLFFANGSMACE_BIDESC</key>
+	<string></string>
 	<key>PIN_MACE_PRO_BONEHAMMER</key>
 	<string>蓝宝石权杖</string>
+	<key>PIN_MACE_PRO_BONEHAMMER_DESC</key>
+	<string></string>
+	<key>PIN_MACE_PRO_BONEHAMMER_BIDESC</key>
+	<string></string>
 	<key>PIN_MACE_PRO_SLEDGEHAMMER</key>
 	<string>死神之力</string>
+	<key>PIN_MACE_PRO_SLEDGEHAMMER_DESC</key>
+	<string></string>
+	<key>PIN_MACE_PRO_SLEDGEHAMMER_BIDESC</key>
+	<string></string>
 	<key>PIN_BOW_SHORTBOW</key>
 	<string>短弓</string>
+	<key>PIN_BOW_SHORTBOW_DESC</key>
+	<string></string>
+	<key>PIN_BOW_SHORTBOW_BIDESC</key>
+	<string></string>
 	<key>PIN_BOW_LONGBOW</key>
 	<string>长弓</string>
+	<key>PIN_BOW_LONGBOW_DESC</key>
+	<string></string>
+	<key>PIN_BOW_LONGBOW_BIDESC</key>
+	<string></string>
 	<key>PIN_BOW_HORNBOW</key>
 	<string>角弓</string>
+	<key>PIN_BOW_HORNBOW_DESC</key>
+	<string></string>
+	<key>PIN_BOW_HORNBOW_BIDESC</key>
+	<string></string>
 	<key>PIN_BOW_REFLEXBOW</key>
 	<string>反曲弓</string>
+	<key>PIN_BOW_REFLEXBOW_DESC</key>
+	<string></string>
+	<key>PIN_BOW_REFLEXBOW_BIDESC</key>
+	<string></string>
 	<key>PIN_BOW_EAGLEBOW</key>
 	<string>鹰弓</string>
+	<key>PIN_BOW_EAGLEBOW_DESC</key>
+	<string></string>
+	<key>PIN_BOW_EAGLEBOW_BIDESC</key>
+	<string></string>
 	<key>PIN_BOW_LAMINATEDBOW</key>
 	<string>复合弓</string>
+	<key>PIN_BOW_LAMINATEDBOW_DESC</key>
+	<string></string>
+	<key>PIN_BOW_LAMINATEDBOW_BIDESC</key>
+	<string></string>
 	<key>PIN_BOW_GOLDENBOW</key>
 	<string>金弓</string>
+	<key>PIN_BOW_GOLDENBOW_DESC</key>
+	<string></string>
+	<key>PIN_BOW_GOLDENBOW_BIDESC</key>
+	<string></string>
 	<key>PIN_BOW_PRO_SHORTBOW</key>
 	<string>蝎尾</string>
+	<key>PIN_BOW_PRO_SHORTBOW_DESC</key>
+	<string></string>
+	<key>PIN_BOW_PRO_SHORTBOW_BIDESC</key>
+	<string></string>
 	<key>PIN_BOW_PRO_LONGBOW</key>
 	<string>六面火</string>
+	<key>PIN_BOW_PRO_LONGBOW_DESC</key>
+	<string></string>
+	<key>PIN_BOW_PRO_LONGBOW_BIDESC</key>
+	<string></string>
 	<key>PIN_BOW_PRO_HORNBOW</key>
 	<string>要你命三千</string>
+	<key>PIN_BOW_PRO_HORNBOW_DESC</key>
+	<string></string>
+	<key>PIN_BOW_PRO_HORNBOW_BIDESC</key>
+	<string></string>
 	<key>PIN_BOW_PRO_REFLEXBOW</key>
 	<string>影袭</string>
+	<key>PIN_BOW_PRO_REFLEXBOW_DESC</key>
+	<string></string>
+	<key>PIN_BOW_PRO_REFLEXBOW_BIDESC</key>
+	<string></string>
 	<key>PIN_BOW_PRO_EAGLEBOW</key>
 	<string>鹰眼</string>
+	<key>PIN_BOW_PRO_EAGLEBOW_DESC</key>
+	<string></string>
+	<key>PIN_BOW_PRO_EAGLEBOW_BIDESC</key>
+	<string></string>
 	<key>PIN_BOW_PRO_LAMINATEDBOW</key>
 	<string>绿帽</string>
+	<key>PIN_BOW_PRO_LAMINATEDBOW_DESC</key>
+	<string></string>
+	<key>PIN_BOW_PRO_LAMINATEDBOW_BIDESC</key>
+	<string></string>
 	<key>PIN_BOW_PRO_GOLDENBOW</key>
 	<string>群星陨落</string>
+	<key>PIN_BOW_PRO_GOLDENBOW_DESC</key>
+	<string></string>
+	<key>PIN_BOW_PRO_GOLDENBOW_BIDESC</key>
+	<string></string>
 	<key>PIN_STAFF_OAKSTAFF</key>
 	<string>橡木法杖</string>
+	<key>PIN_STAFF_OAKSTAFF_DESC</key>
+	<string></string>
+	<key>PIN_STAFF_OAKSTAFF_BIDESC</key>
+	<string></string>
 	<key>PIN_STAFF_FIRSTAFF</key>
 	<string>冷杉法杖</string>
+	<key>PIN_STAFF_FIRSTAFF_DESC</key>
+	<string></string>
+	<key>PIN_STAFF_FIRSTAFF_BIDESC</key>
+	<string></string>
 	<key>PIN_STAFF_ASHESSTAFF</key>
 	<string>灰烬法杖</string>
+	<key>PIN_STAFF_ASHESSTAFF_DESC</key>
+	<string></string>
+	<key>PIN_STAFF_ASHESSTAFF_BIDESC</key>
+	<string></string>
 	<key>PIN_STAFF_DEMONSTAFF</key>
 	<string>恶魔法杖</string>
+	<key>PIN_STAFF_DEMONSTAFF_DESC</key>
+	<string></string>
+	<key>PIN_STAFF_DEMONSTAFF_BIDESC</key>
+	<string></string>
 	<key>PIN_STAFF_CITRONSTAFF</key>
 	<string>枸木法杖</string>
+	<key>PIN_STAFF_CITRONSTAFF_DESC</key>
+	<string></string>
+	<key>PIN_STAFF_CITRONSTAFF_BIDESC</key>
+	<string></string>
 	<key>PIN_STAFF_CLOUDSTAFF</key>
 	<string>云之法杖</string>
+	<key>PIN_STAFF_CLOUDSTAFF_DESC</key>
+	<string></string>
+	<key>PIN_STAFF_CLOUDSTAFF_BIDESC</key>
+	<string></string>
 	<key>PIN_STAFF_MONKSTAFF</key>
 	<string>武僧法杖</string>
+	<key>PIN_STAFF_MONKSTAFF_DESC</key>
+	<string></string>
+	<key>PIN_STAFF_MONKSTAFF_BIDESC</key>
+	<string></string>
 	<key>PIN_STAFF_PRO_OAKSTAFF</key>
 	<string>绿玉</string>
+	<key>PIN_STAFF_PRO_OAKSTAFF_DESC</key>
+	<string></string>
+	<key>PIN_STAFF_PRO_OAKSTAFF_BIDESC</key>
+	<string></string>
 	<key>PIN_STAFF_PRO_FIRSTAFF</key>
 	<string>启明星</string>
+	<key>PIN_STAFF_PRO_FIRSTAFF_DESC</key>
+	<string></string>
+	<key>PIN_STAFF_PRO_FIRSTAFF_BIDESC</key>
+	<string></string>
 	<key>PIN_STAFF_PRO_ASHESSTAFF</key>
 	<string>地狱之吻</string>
+	<key>PIN_STAFF_PRO_ASHESSTAFF_DESC</key>
+	<string></string>
+	<key>PIN_STAFF_PRO_ASHESSTAFF_BIDESC</key>
+	<string></string>
 	<key>PIN_STAFF_PRO_DEMONSTAFF</key>
 	<string>招魂者</string>
+	<key>PIN_STAFF_PRO_DEMONSTAFF_DESC</key>
+	<string></string>
+	<key>PIN_STAFF_PRO_DEMONSTAFF_BIDESC</key>
+	<string></string>
 	<key>PIN_STAFF_PRO_CITRONSTAFF</key>
 	<string>英普瑞斯之矛</string>
+	<key>PIN_STAFF_PRO_CITRONSTAFF_DESC</key>
+	<string></string>
+	<key>PIN_STAFF_PRO_CITRONSTAFF_BIDESC</key>
+	<string></string>
 	<key>PIN_STAFF_PRO_CLOUDSTAFF</key>
 	<string>鲜血勇气</string>
+	<key>PIN_STAFF_PRO_CLOUDSTAFF_DESC</key>
+	<string></string>
+	<key>PIN_STAFF_PRO_CLOUDSTAFF_BIDESC</key>
+	<string></string>
 	<key>PIN_STAFF_PRO_MONKSTAFF</key>
 	<string>大天使</string>
+	<key>PIN_STAFF_PRO_MONKSTAFF_DESC</key>
+	<string></string>
+	<key>PIN_STAFF_PRO_MONKSTAFF_BIDESC</key>
+	<string></string>
 	<key>PIN_SHIELD_WOODENSHIELD</key>
 	<string>圆木盾</string>
+	<key>PIN_SHIELD_WOODENSHIELD_DESC</key>
+	<string></string>
+	<key>PIN_SHIELD_WOODENSHIELD_BIDESC</key>
+	<string></string>
 	<key>PIN_SHIELD_TRIANGLESHIELD</key>
 	<string>三角盾</string>
+	<key>PIN_SHIELD_TRIANGLESHIELD_DESC</key>
+	<string></string>
+	<key>PIN_SHIELD_TRIANGLESHIELD_BIDESC</key>
+	<string></string>
 	<key>PIN_SHIELD_STEELSHIELD</key>
 	<string>精钢盾</string>
+	<key>PIN_SHIELD_STEELSHIELD_DESC</key>
+	<string></string>
+	<key>PIN_SHIELD_STEELSHIELD_BIDESC</key>
+	<string></string>
 	<key>PIN_SHIELD_EAGLESHIELD</key>
 	<string>鹰盾</string>
+	<key>PIN_SHIELD_EAGLESHIELD_DESC</key>
+	<string></string>
+	<key>PIN_SHIELD_EAGLESHIELD_BIDESC</key>
+	<string></string>
 	<key>PIN_SHIELD_OSTEOSCUTE</key>
 	<string>骨盾</string>
+	<key>PIN_SHIELD_OSTEOSCUTE_DESC</key>
+	<string></string>
+	<key>PIN_SHIELD_OSTEOSCUTE_BIDESC</key>
+	<string></string>
 	<key>PIN_SHIELD_GOLDENSHIELD</key>
 	<string>金盾</string>
+	<key>PIN_SHIELD_GOLDENSHIELD_DESC</key>
+	<string></string>
+	<key>PIN_SHIELD_GOLDENSHIELD_BIDESC</key>
+	<string></string>
 	<key>PIN_SHIELD_TOWERSHIELD</key>
 	<string>塔盾</string>
+	<key>PIN_SHIELD_TOWERSHIELD_DESC</key>
+	<string></string>
+	<key>PIN_SHIELD_TOWERSHIELD_BIDESC</key>
+	<string></string>
 	<key>PIN_SHIELD_PRO_WOODENSHIELD</key>
 	<string>黑暗防御者</string>
+	<key>PIN_SHIELD_PRO_WOODENSHIELD_DESC</key>
+	<string></string>
+	<key>PIN_SHIELD_PRO_WOODENSHIELD_BIDESC</key>
+	<string></string>
 	<key>PIN_SHIELD_PRO_TRIANGLESHIELD</key>
 	<string>鬼脸</string>
+	<key>PIN_SHIELD_PRO_TRIANGLESHIELD_DESC</key>
+	<string></string>
+	<key>PIN_SHIELD_PRO_TRIANGLESHIELD_BIDESC</key>
+	<string></string>
 	<key>PIN_SHIELD_PRO_STEELSHIELD</key>
 	<string>守夜人</string>
+	<key>PIN_SHIELD_PRO_STEELSHIELD_DESC</key>
+	<string></string>
+	<key>PIN_SHIELD_PRO_STEELSHIELD_BIDESC</key>
+	<string></string>
 	<key>PIN_SHIELD_PRO_EAGLESHIELD</key>
 	<string>绿魔</string>
+	<key>PIN_SHIELD_PRO_EAGLESHIELD_DESC</key>
+	<string></string>
+	<key>PIN_SHIELD_PRO_EAGLESHIELD_BIDESC</key>
+	<string></string>
 	<key>PIN_SHIELD_PRO_OSTEOSCUTE</key>
 	<string>骷髅王的身躯</string>
+	<key>PIN_SHIELD_PRO_OSTEOSCUTE_DESC</key>
+	<string></string>
+	<key>PIN_SHIELD_PRO_OSTEOSCUTE_BIDESC</key>
+	<string></string>
 	<key>PIN_SHIELD_PRO_GOLDENSHIELD</key>
 	<string>美杜莎的镜子</string>
+	<key>PIN_SHIELD_PRO_GOLDENSHIELD_DESC</key>
+	<string></string>
+	<key>PIN_SHIELD_PRO_GOLDENSHIELD_BIDESC</key>
+	<string></string>
 	<key>PIN_SHIELD_PRO_TOWERSHIELD</key>
 	<string>叹息墙壁</string>
+	<key>PIN_SHIELD_PRO_TOWERSHIELD_DESC</key>
+	<string></string>
+	<key>PIN_SHIELD_PRO_TOWERSHIELD_BIDESC</key>
+	<string></string>
 	<key>PIN_CLOTH_SHOES</key>
 	<string>皮靴</string>
+	<key>PIN_CLOTH_SHOES_DESC</key>
+	<string></string>
+	<key>PIN_CLOTH_SHOES_BIDESC</key>
+	<string></string>
 	<key>PIN_CLOTH_MAGA_CAP</key>
 	<string>法师帽</string>
+	<key>PIN_CLOTH_MAGA_CAP_DESC</key>
+	<string></string>
+	<key>PIN_CLOTH_MAGA_CAP_BIDESC</key>
+	<string></string>
 	<key>PIN_CLOTH_CLOTH</key>
 	<string>布甲</string>
+	<key>PIN_CLOTH_CLOTH_DESC</key>
+	<string></string>
+	<key>PIN_CLOTH_CLOTH_BIDESC</key>
+	<string></string>
 	<key>PIN_CLOTH_LEATHERARMOR</key>
 	<string>皮甲</string>
+	<key>PIN_CLOTH_LEATHERARMOR_DESC</key>
+	<string></string>
+	<key>PIN_CLOTH_LEATHERARMOR_BIDESC</key>
+	<string></string>
 	<key>PIN_CLOTH_CHAINSHOES</key>
 	<string>链子靴</string>
+	<key>PIN_CLOTH_CHAINSHOES_DESC</key>
+	<string></string>
+	<key>PIN_CLOTH_CHAINSHOES_BIDESC</key>
+	<string></string>
 	<key>PIN_CLOTH_HELEMT</key>
 	<string>头盔</string>
+	<key>PIN_CLOTH_HELEMT_DESC</key>
+	<string></string>
+	<key>PIN_CLOTH_HELEMT_BIDESC</key>
+	<string></string>
 	<key>PIN_CLOTH_STEELARMOR</key>
 	<string>全钢铠甲</string>
+	<key>PIN_CLOTH_STEELARMOR_DESC</key>
+	<string></string>
+	<key>PIN_CLOTH_STEELARMOR_BIDESC</key>
+	<string></string>
 	<key>PIN_CLOTH_PRO_SHOES</key>
 	<string>旅人之靴</string>
+	<key>PIN_CLOTH_PRO_SHOES_DESC</key>
+	<string></string>
+	<key>PIN_CLOTH_PRO_SHOES_BIDESC</key>
+	<string></string>
 	<key>PIN_CLOTH_PRO_MAGA_CAP</key>
 	<string>大法师之帽</string>
+	<key>PIN_CLOTH_PRO_MAGA_CAP_DESC</key>
+	<string></string>
+	<key>PIN_CLOTH_PRO_MAGA_CAP_BIDESC</key>
+	<string></string>
 	<key>PIN_CLOTH_PRO_CLOTH</key>
 	<string>银色月光</string>
+	<key>PIN_CLOTH_PRO_CLOTH_DESC</key>
+	<string></string>
+	<key>PIN_CLOTH_PRO_CLOTH_BIDESC</key>
+	<string></string>
 	<key>PIN_CLOTH_PRO_LEATHERARMOR</key>
 	<string>生命牢笼</string>
+	<key>PIN_CLOTH_PRO_LEATHERARMOR_DESC</key>
+	<string></string>
+	<key>PIN_CLOTH_PRO_LEATHERARMOR_BIDESC</key>
+	<string></string>
 	<key>PIN_CLOTH_PRO_CHAINSHOES</key>
 	<string>云之足径</string>
+	<key>PIN_CLOTH_PRO_CHAINSHOES_DESC</key>
+	<string></string>
+	<key>PIN_CLOTH_PRO_CHAINSHOES_BIDESC</key>
+	<string></string>
 	<key>PIN_CLOTH_PRO_HELEMT</key>
 	<string>骑士的容貌</string>
+	<key>PIN_CLOTH_PRO_HELEMT_DESC</key>
+	<string></string>
+	<key>PIN_CLOTH_PRO_HELEMT_BIDESC</key>
+	<string></string>
 	<key>PIN_CLOTH_PRO_STEELARMOR</key>
 	<string>寡妇对抗者</string>
+	<key>PIN_CLOTH_PRO_STEELARMOR_DESC</key>
+	<string></string>
+	<key>PIN_CLOTH_PRO_STEELARMOR_BIDESC</key>
+	<string></string>
 	<key>PIN_ORNAMENT_RING</key>
 	<string>银戒指</string>
+	<key>PIN_ORNAMENT_RING_DESC</key>
+	<string></string>
+	<key>PIN_ORNAMENT_RING_BIDESC</key>
+	<string></string>
 	<key>PIN_ORNAMENT_MEDAL</key>
 	<string>勋章</string>
+	<key>PIN_ORNAMENT_MEDAL_DESC</key>
+	<string></string>
+	<key>PIN_ORNAMENT_MEDAL_BIDESC</key>
+	<string></string>
 	<key>PIN_ORNAMENT_SHELLNECKLACE</key>
 	<string>贝壳项链</string>
+	<key>PIN_ORNAMENT_SHELLNECKLACE_DESC</key>
+	<string></string>
+	<key>PIN_ORNAMENT_SHELLNECKLACE_BIDESC</key>
+	<string></string>
 	<key>PIN_ORNAMENT_PENDANT</key>
 	<string>吊坠项链</string>
+	<key>PIN_ORNAMENT_PENDANT_DESC</key>
+	<string></string>
+	<key>PIN_ORNAMENT_PENDANT_BIDESC</key>
+	<string></string>
 	<key>PIN_ORNAMENT_NECKLACE</key>
 	<string>海蓝项链</string>
+	<key>PIN_ORNAMENT_NECKLACE_DESC</key>
+	<string></string>
+	<key>PIN_ORNAMENT_NECKLACE_BIDESC</key>
+	<string></string>
 	<key>PIN_ORNAMENT_SUPERMEDAL</key>
 	<string>高级勋章</string>
+	<key>PIN_ORNAMENT_SUPERMEDAL_DESC</key>
+	<string></string>
+	<key>PIN_ORNAMENT_SUPERMEDAL_BIDESC</key>
+	<string></string>
 	<key>PIN_ORNAMENT_JEWELS</key>
 	<string>珠宝吊饰</string>
+	<key>PIN_ORNAMENT_JEWELS_DESC</key>
+	<string></string>
+	<key>PIN_ORNAMENT_JEWELS_BIDESC</key>
+	<string></string>
 	<key>PIN_ORNAMENT_PRO_RING</key>
 	<string>翠玉指环</string>
+	<key>PIN_ORNAMENT_PRO_RING_DESC</key>
+	<string></string>
+	<key>PIN_ORNAMENT_PRO_RING_BIDESC</key>
+	<string></string>
 	<key>PIN_ORNAMENT_PRO_MEDAL</key>
 	<string>金色勇气</string>
+	<key>PIN_ORNAMENT_PRO_MEDAL_DESC</key>
+	<string></string>
+	<key>PIN_ORNAMENT_PRO_MEDAL_BIDESC</key>
+	<string></string>
 	<key>PIN_ORNAMENT_PRO_SHELLNECKLACE</key>
 	<string>威廉勋章</string>
+	<key>PIN_ORNAMENT_PRO_SHELLNECKLACE_DESC</key>
+	<string></string>
+	<key>PIN_ORNAMENT_PRO_SHELLNECKLACE_BIDESC</key>
+	<string></string>
 	<key>PIN_ORNAMENT_PRO_PENDANT</key>
 	<string>奥妮克希亚之血</string>
+	<key>PIN_ORNAMENT_PRO_PENDANT_DESC</key>
+	<string></string>
+	<key>PIN_ORNAMENT_PRO_PENDANT_BIDESC</key>
+	<string></string>
 	<key>PIN_ORNAMENT_PRO_NECKLACE</key>
 	<string>圣者遗物</string>
+	<key>PIN_ORNAMENT_PRO_NECKLACE_DESC</key>
+	<string></string>
+	<key>PIN_ORNAMENT_PRO_NECKLACE_BIDESC</key>
+	<string></string>
 	<key>PIN_ORNAMENT_PRO_SUPERMEDAL</key>
 	<string>振奋宝石</string>
+	<key>PIN_ORNAMENT_PRO_SUPERMEDAL_DESC</key>
+	<string></string>
+	<key>PIN_ORNAMENT_PRO_SUPERMEDAL_BIDESC</key>
+	<string></string>
 	<key>PIN_ORNAMENT_PRO_JEWELS</key>
-	<string>海洋之心</string>
+	<string>流星泪</string>
+	<key>PIN_ORNAMENT_PRO_JEWELS_DESC</key>
+	<string></string>
+	<key>PIN_ORNAMENT_PRO_JEWELS_BIDESC</key>
+	<string></string>
 	<key>PIN_SCROLL_INDENTIFY</key>
 	<string>辨识卷轴</string>
+	<key>PIN_SCROLL_INDENTIFY_DESC</key>
+	<string>辨识物品用的卷轴。</string>
 	<key>PIN_SCROLL_TELEPORT</key>
 	<string>传送卷轴</string>
+	<key>PIN_SCROLL_TELEPORT_DESC</key>
+	<string>使用后随机传送到本层其他位置。</string>
 	<key>PIN_SCROLL_SPEED</key>
 	<string>速度卷轴</string>
+	<key>PIN_SCROLL_SPEED_DESC</key>
+	<string>使用后角色攻击速度和移动速度%50 ，持续20秒。</string>
 	<key>PIN_SCROLL_STEALTH</key>
 	<string>隐身卷轴</string>
+	<key>PIN_SCROLL_STEALTH_DESC</key>
+	<string>使用后角色进入隐身状态，持续20秒。</string>
 	<key>PIN_SCROLL_DESTINY</key>
 	<string>命运卷轴</string>
+	<key>PIN_SCROLL_DESTINY_DESC</key>
+	<string>不知道会发生什么，谨慎使用。</string>
 	<key>PIN_POTION_MINORHEALTH</key>
 	<string>小治疗药水</string>
+	<key>PIN_POTION_MINORHEALTH_DESC</key>
+	<string>恢复角色50点生命值。</string>
 	<key>PIN_POTION_LESSERHEALTH</key>
 	<string>轻微治疗药水</string>
+	<key>PIN_POTION_LESSERHEALTH_DESC</key>
+	<string>恢复角色150点生命值。</string>
 	<key>PIN_POTION_HEALTH</key>
 	<string>治疗药水</string>
+	<key>PIN_POTION_HEALTH_DESC</key>
+	<string>恢复角色250点生命值。</string>
 	<key>PIN_POTION_MINORMANA</key>
 	<string>小魔法药水</string>
+	<key>PIN_POTION_MINORMANA_DESC</key>
+	<string>恢复角色50点魔法值。</string>
 	<key>PIN_POTION_LESSERMANA</key>
 	<string>轻微魔法药水</string>
+	<key>PIN_POTION_LESSERMANA_DESC</key>
+	<string>恢复角色150点魔法值。</string>
 	<key>PIN_POTION_MANA</key>
 	<string>魔法药水</string>
+	<key>PIN_POTION_MANA_DESC</key>
+	<string>恢复角色250点魔法值。</string>
 	<key>PIN_POTION_MINORRECOVERY</key>
 	<string>小恢复药水</string>
+	<key>PIN_POTION_MINORRECOVERY_DESC</key>
+	<string>恢复角色%25的生命值和魔法值。</string>
 	<key>PIN_POTION_LESSERRECOVERY</key>
 	<string>轻微恢复药水</string>
+	<key>PIN_POTION_LESSERRECOVERY_DESC</key>
+	<string>恢复角色%50的生命值和魔法值。</string>
 	<key>PIN_POTION_RECOVERY</key>
 	<string>恢复药水</string>
+	<key>PIN_POTION_RECOVERY_DESC</key>
+	<string>恢复角色%75的生命值和魔法值。</string>
 	<key>PIN_POTION_DETOXIFICATION</key>
 	<string>解毒药水</string>
+	<key>PIN_POTION_DETOXIFICATION_DESC</key>
+	<string>解除角色中毒状态。</string>
 	<key>PIN_POTION_SPECIFIC</key>
 	<string>特效药水</string>
+	<key>PIN_POTION_SPECIFIC_DESC</key>
+	<string>解除角色冰冻、着火和麻痹状态。</string>
 </dict>
 </plist>
