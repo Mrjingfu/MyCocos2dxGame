@@ -6,6 +6,50 @@
 	<string>Voxel Dungeon</string>
 	<key>FONT_NAME</key>
 	<string>04B_03.TTF</string>
+    <key>TTN_CHASM</key>
+    <string>黑漆漆的看不太清！</string>
+    <key>TTN_STANDARD</key>
+    <string>很普通的地板。</string>
+    <key>TTN_WALL</key>
+    <string>很普通的墙壁。</string>
+    <key>TTN_ENTRANCE</key>
+    <string>上一层入口。</string>
+    <key>TTN_EXIT</key>
+    <string>下一层入口。</string>
+    <key>TTN_TUNNEL</key>
+    <string>普通的通道地板！</string>
+    <key>TTN_DOOR</key>
+    <string>一扇门，要打开看看么？</string>
+    <key>TTN_OPENED_DOOR</key>
+    <string>很普通的地板。</string>
+    <key>TTN_LOCKED_DOOR</key>
+    <string>上锁的门。</string>
+    <key>TTN_SECRET_DOOR</key>
+    <string>这个墙壁看上去有些奇怪！</string>
+    <key>TTN_TOXIC_TRAP</key>
+    <string>有毒的陷阱！</string>
+    <key>TTN_HIDE_TOXIC_TRAP</key>
+    <string>这块地板看上去有些奇怪！</string>
+    <key>TTN_FIRE_TRAP</key>
+    <string>火焰陷阱！</string>
+    <key>TTN_HIDE_FIRE_TRAP</key>
+    <string>这块地板看上去有些奇怪！</string>
+    <key>TTN_PARALYTIC_TRAP</key>
+    <string>麻痹陷阱！</string>
+    <key>TTN_HIDE_PARALYTIC_TRAP</key>
+    <string>这块地板看上去有些奇怪！</string>
+    <key>TTN_GRIPPING_TRAP</key>
+    <string>夹子陷阱！</string>
+    <key>TTN_HIDE_GRIPPING_TRAP</key>
+    <string>这块地板看上去有些奇怪！</string>
+    <key>TTN_SUMMONING_TRAP</key>
+    <string>召唤陷阱！</string>
+    <key>TTN_HIDE_SUMMONING_TRAP</key>
+    <string>这块地板看上去有些奇怪！</string>
+    <key>TTN_WEAK_TRAP</key>
+    <string>虚弱陷阱！</string>
+    <key>TTN_HIDE_WEAK_TRAP</key>
+    <string>这块地板看上去有些奇怪！</string>
 	<key>DN_SEWER</key>
 	<string>Sewer</string>
 	<key>DN_PRISON</key>

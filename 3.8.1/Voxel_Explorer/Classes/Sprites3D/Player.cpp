@@ -41,6 +41,8 @@ Player::Player()
     m_fParalyticTime    = 8.0f;   ///麻痹时间
     m_fFireTime     = 10.0f;  ///着火时间
     
+    m_fSecondTimer = 1.0f;
+    
     m_pHurtData = new (std::nothrow) HurtData();
 }
 Player::~Player()
@@ -118,6 +120,7 @@ void Player::addPlayerBuffer(PlayerBuffer buff)
     {
         if((bufferFlag & PB_FROZEN) == 0)
         {
+            m_fFrozenTime = 20.0f;
             auto tex = Director::getInstance()->getTextureCache()->addImage("chr_sword_blue.png");
             if(tex)
                 tex->setAliasTexParameters();
@@ -129,6 +132,7 @@ void Player::addPlayerBuffer(PlayerBuffer buff)
     {
         if((bufferFlag & PB_PARALYTIC) == 0)
         {
+            m_fParalyticTime = 8.0f;
             auto tex = Director::getInstance()->getTextureCache()->addImage("chr_sword_gray.png");
             if(tex)
                 tex->setAliasTexParameters();
@@ -151,6 +155,7 @@ void Player::addPlayerBuffer(PlayerBuffer buff)
     {
         if((bufferFlag & PB_FIRE) == 0)
         {
+            m_fFireTime = 10.0f;
             auto tex = Director::getInstance()->getTextureCache()->addImage("chr_sword_red.png");
             if(tex)
                 tex->setAliasTexParameters();
@@ -166,7 +171,16 @@ void Player::removePlayerBuffer(PlayerBuffer buff)
     {
         if((bufferFlag & PB_POISONING) == 0)
         {
-            auto tex = Director::getInstance()->getTextureCache()->addImage("chr_sword.png");
+            std::string texName = "chr_sword.png";
+            if((bufferFlag & PB_WEAK) != 0)
+                texName = "chr_sword_yellow.png";
+            else if((bufferFlag & PB_PARALYTIC) != 0)
+                texName = "chr_sword_gray.png";
+            else if((bufferFlag & PB_FIRE) != 0)
+                texName = "chr_sword_red.png";
+            else if((bufferFlag & PB_FROZEN) != 0)
+                texName = "chr_sword_blue.png";
+            auto tex = Director::getInstance()->getTextureCache()->addImage(texName);
             if(tex)
                 tex->setAliasTexParameters();
             setTexture(tex);
@@ -176,14 +190,23 @@ void Player::removePlayerBuffer(PlayerBuffer buff)
     {
         if((bufferFlag & PB_WEAK) == 0)
         {
-            auto tex = Director::getInstance()->getTextureCache()->addImage("chr_sword.png");
+            std::string texName = "chr_sword.png";
+            if((bufferFlag & PB_POISONING) != 0)
+                texName = "chr_sword_green.png";
+            else if((bufferFlag & PB_PARALYTIC) != 0)
+                texName = "chr_sword_gray.png";
+            else if((bufferFlag & PB_FIRE) != 0)
+                texName = "chr_sword_red.png";
+            else if((bufferFlag & PB_FROZEN) != 0)
+                texName = "chr_sword_blue.png";
+            auto tex = Director::getInstance()->getTextureCache()->addImage(texName);
             if(tex)
                 tex->setAliasTexParameters();
             setTexture(tex);
             
         }
     }
-    PlayerProperty::getInstance()->removeItemFromBag(buff);
+    PlayerProperty::getInstance()->removePlayerBuffer(buff);
 }
 void Player::setState(PlayerState state)
 {
@@ -261,6 +284,10 @@ void Player::setStealth(bool stealth)
             this->runAction(fadeTo);
         }
     }
+}
+bool Player::isParalytic()
+{
+    return (PlayerProperty::getInstance()->getPlayerBuffer() & PB_PARALYTIC) != 0;
 }
 void Player::rotateToLeft()
 {
@@ -371,6 +398,33 @@ void Player::attackByMonster(MonsterProperty* monsterProperty, bool miss)
     }
 
 }
+void Player::hurtByGrippingTrap()
+{
+    if(!m_pHurtData)
+        return;
+    
+    m_pHurtData->reset();
+    m_pHurtData->m_vPos = this->getPosition3D();
+    
+    int attack = PlayerProperty::getInstance()->getMaxHP() * cocos2d::random(0.2f, 0.5f);
+    int currentHp = PlayerProperty::getInstance()->getCurrentHP().GetLongValue();
+    currentHp = MAX(currentHp - attack , 0);
+    CCLOG("Player: CurrentHp = %d, GrippingTrap Attack = %d", currentHp, attack);
+    
+    m_pHurtData->m_nDamage = -attack;
+    Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_HURT, m_pHurtData);
+    if(currentHp == 0)
+    {
+        setState(PS_DEATH);
+        PlayerProperty::getInstance()->setCurrentHP(currentHp);
+        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_DEATH, this);
+    }
+    else
+    {
+        PlayerProperty::getInstance()->setCurrentHP(currentHp);
+        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_PROPERTY_DIRTY, this);
+    }
+}
 void Player::onEnterIdle()
 {
     EaseSineOut* scaleTo = EaseSineOut::create(ScaleTo::create(0.1f, 1.0f, 1.0f, 1.0f));
@@ -388,7 +442,7 @@ void Player::onEnterJumpLocal()
     EaseSineOut* moveDown = EaseSineOut::create(MoveTo::create(0.1f, getPosition3D()));
     Sequence* sequenceJump = Sequence::create(moveUp, moveDown, NULL);
     Spawn* spawn = Spawn::create(scaleTo, sequenceJump, NULL);
-    CallFunc* callback = CallFunc::create(CC_CALLBACK_0(Player::onLand,this));
+    CallFunc* callback = CallFunc::create(CC_CALLBACK_0(Player::onLand,this,true));
     Sequence* sequence = Sequence::create(spawn, callback, NULL);
     
     int bufferFlag = PlayerProperty::getInstance()->getPlayerBuffer();
@@ -427,7 +481,7 @@ void Player::onEnterJumpMove()
     EaseSineOut* moveDown = EaseSineOut::create(MoveTo::create(0.1f, Vec3(getPositionX(), getPositionY(), getPositionZ()) + dir));
     Sequence* sequenceJump = Sequence::create(moveUp, moveDown, NULL);
     Spawn* spawn = Spawn::create(scaleTo, sequenceJump, NULL);
-    CallFunc* callback = CallFunc::create(CC_CALLBACK_0(Player::onLand,this));
+    CallFunc* callback = CallFunc::create(CC_CALLBACK_0(Player::onLand,this,true));
     Sequence* sequence = Sequence::create(spawn, callback, NULL);
     
     int bufferFlag = PlayerProperty::getInstance()->getPlayerBuffer();
@@ -465,7 +519,7 @@ void Player::onEnterAttack()
     EaseSineOut* moveDown = EaseSineOut::create(MoveTo::create(0.1f, getPosition3D()));
     Sequence* sequenceJump = Sequence::create(moveUp, callback, moveDown, NULL);
     Spawn* spawn = Spawn::create(scaleTo, sequenceJump, NULL);
-    CallFunc* callback2 = CallFunc::create(CC_CALLBACK_0(Player::onLand,this));
+    CallFunc* callback2 = CallFunc::create(CC_CALLBACK_0(Player::onLand,this,false));
     Sequence* sequence = Sequence::create(spawn, callback2, NULL);
     
     int bufferFlag = PlayerProperty::getInstance()->getPlayerBuffer();
@@ -481,6 +535,11 @@ void Player::onEnterDrop()
 }
 void Player::onEnterDeath()
 {
+    auto tex = Director::getInstance()->getTextureCache()->addImage("chr_sword.png");
+    if(tex)
+        tex->setAliasTexParameters();
+    setTexture(tex);
+    PlayerProperty::getInstance()->resetPlayerBuffer();
     this->stopAllActions();
     removeTerrainTileFlag(TileInfo::ATTACKABLE);
     this->setVisible(false);
@@ -508,12 +567,14 @@ void Player::onExitDrop()
 void Player::onExitDeath()
 {
 }
-void Player::onLand()
+void Player::onLand(bool triggerTrap)
 {
     setState(PS_IDLE);
     VoxelExplorer::getInstance()->cameraTrackPlayer();
     VoxelExplorer::getInstance()->checkPickItem();
     VoxelExplorer::getInstance()->checkUpdateFogOfWar();
+    if(triggerTrap)
+        VoxelExplorer::getInstance()->checkTriggerTrap();
     
     CCLOG("player x = %d   y = %d", (int)getPosInMap().x, (int)getPosInMap().y);
 }
@@ -526,7 +587,7 @@ void Player::updatePlayerBuffer(float delta)
         if(m_fSpeedupTime <= 0)
             removePlayerBuffer(PB_SPEEDUP);
     }
-    else if((bufferFlag & PB_STEALTH) != 0)
+    if((bufferFlag & PB_STEALTH) != 0)
     {
         m_fStealthTime = m_fStealthTime - delta;
         if(m_fStealthTime <= 0)
@@ -537,7 +598,7 @@ void Player::updatePlayerBuffer(float delta)
             removePlayerBuffer(PB_STEALTH);
         }
     }
-    else if((bufferFlag & PB_STRONGER) != 0)
+    if((bufferFlag & PB_STRONGER) != 0)
     {
         m_fStrongerTime = m_fStrongerTime - delta;
         if(m_fStrongerTime <= 0)
@@ -548,40 +609,120 @@ void Player::updatePlayerBuffer(float delta)
             removePlayerBuffer(PB_STRONGER);
         }
     }
-    else if((bufferFlag & PB_FROZEN) != 0)
+    if((bufferFlag & PB_FROZEN) != 0)
     {
         m_fFrozenTime = m_fFrozenTime - delta;
         if(m_fFrozenTime <= 0)
         {
-            auto tex = Director::getInstance()->getTextureCache()->addImage("chr_sword.png");
+            std::string texName = "chr_sword.png";
+            if((bufferFlag & PB_POISONING) != 0)
+                texName = "chr_sword_green.png";
+            else if((bufferFlag & PB_WEAK) != 0)
+                texName = "chr_sword_yellow.png";
+            else if((bufferFlag & PB_PARALYTIC) != 0)
+                texName = "chr_sword_gray.png";
+            else if((bufferFlag & PB_FIRE) != 0)
+                texName = "chr_sword_red.png";
+            auto tex = Director::getInstance()->getTextureCache()->addImage(texName);
             if(tex)
                 tex->setAliasTexParameters();
             setTexture(tex);
             removePlayerBuffer(PB_FROZEN);
         }
     }
-    else if((bufferFlag & PB_PARALYTIC) != 0)
+    if((bufferFlag & PB_PARALYTIC) != 0)
     {
         m_fParalyticTime = m_fParalyticTime - delta;
         if(m_fParalyticTime <= 0)
         {
-            auto tex = Director::getInstance()->getTextureCache()->addImage("chr_sword.png");
+            std::string texName = "chr_sword.png";
+            if((bufferFlag & PB_POISONING) != 0)
+                texName = "chr_sword_green.png";
+            else if((bufferFlag & PB_WEAK) != 0)
+                texName = "chr_sword_yellow.png";
+            else if((bufferFlag & PB_FIRE) != 0)
+                texName = "chr_sword_red.png";
+            else if((bufferFlag & PB_FROZEN) != 0)
+                texName = "chr_sword_blue.png";
+            auto tex = Director::getInstance()->getTextureCache()->addImage(texName);
             if(tex)
                 tex->setAliasTexParameters();
             setTexture(tex);
             removePlayerBuffer(PB_PARALYTIC);
         }
     }
-    else if((bufferFlag & PB_FIRE) != 0)
+    if((bufferFlag & PB_FIRE) != 0)
     {
         m_fFireTime = m_fFireTime - delta;
         if(m_fFireTime <= 0)
         {
-            auto tex = Director::getInstance()->getTextureCache()->addImage("chr_sword.png");
+            std::string texName = "chr_sword.png";
+            if((bufferFlag & PB_POISONING) != 0)
+                texName = "chr_sword_green.png";
+            else if((bufferFlag & PB_WEAK) != 0)
+                texName = "chr_sword_yellow.png";
+            else if((bufferFlag & PB_PARALYTIC) != 0)
+                texName = "chr_sword_gray.png";
+            else if((bufferFlag & PB_FROZEN) != 0)
+                texName = "chr_sword_blue.png";
+            auto tex = Director::getInstance()->getTextureCache()->addImage(texName);
             if(tex)
                 tex->setAliasTexParameters();
             setTexture(tex);
             removePlayerBuffer(PB_FIRE);
+        }
+        else
+        {
+            m_fSecondTimer = m_fSecondTimer - delta;
+            if(m_fSecondTimer <=0)
+            {
+                m_pHurtData->reset();
+                m_pHurtData->m_vPos = this->getPosition3D();
+                
+                int deltaHp = PlayerProperty::getInstance()->getMaxHP() * 0.05f;
+                int currentHp = PlayerProperty::getInstance()->getCurrentHP().GetLongValue();
+                currentHp = MAX(currentHp - deltaHp , 0);
+                m_pHurtData->m_nDamage = - deltaHp;
+                Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_HURT, m_pHurtData);
+                if(currentHp == 0)
+                {
+                    setState(PS_DEATH);
+                    PlayerProperty::getInstance()->setCurrentHP(currentHp);
+                    Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_DEATH, this);
+                }
+                else
+                {
+                    PlayerProperty::getInstance()->setCurrentHP(currentHp);
+                    Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_PROPERTY_DIRTY, this);
+                }
+                m_fSecondTimer = 1.0f;
+            }
+        }
+    }
+    if((bufferFlag & PB_POISONING) != 0)
+    {
+        m_fSecondTimer = m_fSecondTimer - delta;
+        if(m_fSecondTimer <=0)
+        {
+            m_pHurtData->reset();
+            m_pHurtData->m_vPos = this->getPosition3D();
+            
+            int currentHp = PlayerProperty::getInstance()->getCurrentHP().GetLongValue();
+            currentHp = MAX(currentHp - 5 , 0);
+            m_pHurtData->m_nDamage = - 5;
+            Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_HURT, m_pHurtData);
+            if(currentHp == 0)
+            {
+                setState(PS_DEATH);
+                PlayerProperty::getInstance()->setCurrentHP(currentHp);
+                Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_DEATH, this);
+            }
+            else
+            {
+                PlayerProperty::getInstance()->setCurrentHP(currentHp);
+                Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_PROPERTY_DIRTY, this);
+            }
+            m_fSecondTimer = 1.0f;
         }
     }
 }

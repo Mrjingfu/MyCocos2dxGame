@@ -17,7 +17,7 @@ const std::string TERRAIN_TILES_NAME[] = {
     "TTN_EXIT",
     "TTN_TUNNEL",
     "TTN_DOOR",
-    "TTN_OPENED_DOOR"
+    "TTN_OPENED_DOOR",
     "TTN_LOCKED_DOOR",
     "TTN_SECRET_DOOR",
     

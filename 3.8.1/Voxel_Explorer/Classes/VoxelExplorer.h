@@ -26,6 +26,7 @@ public:
     void cameraTrackPlayer();
     void checkPickItem();
     void checkUpdateFogOfWar();
+    void checkTriggerTrap();
     bool checkMonsterAlert(BaseMonster* monster);
     bool checkMonsterCanAttack(BaseMonster* monster);
     bool trackToPlayer(BaseMonster* monster, cocos2d::Vec2& nextPos);
@@ -38,7 +39,7 @@ public:
     void generatePickItem(const cocos2d::Vec2& pos, bool generateItem, int copper, int monsterLevel);
     
     void handleDoor(const cocos2d::Vec2& mapPos);            ///开门
-    void handleTriggerTrap(const cocos2d::Vec2& mapPos);     ///触发机关
+    void handleTriggerTrap(const cocos2d::Vec2& mapPos, TerrainTile::TileType trapType);     ///触发机关
     void handlePickItem(const cocos2d::Vec2& mapPos);        ///拾取道具
     void handleMonsterHurt(const cocos2d::Vec2& mapPos);     ///处理攻击怪物
     void handlePlayerHurt(const cocos2d::Vec2& mapPos, MonsterProperty* monsterProperty);      ///处理攻击玩家

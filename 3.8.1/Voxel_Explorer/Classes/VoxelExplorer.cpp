@@ -133,6 +133,12 @@ void VoxelExplorer::checkUpdateFogOfWar()
         return;
     m_pCurrentLevel->updateAreaFogOfWarByPos(m_pPlayer->getPosInMap());
 }
+void VoxelExplorer::checkTriggerTrap()
+{
+    if(!m_pCurrentLevel || !m_pPlayer)
+        return;
+    m_pCurrentLevel->updateTrapTileByPos(m_pPlayer->getPosInMap());
+}
 bool VoxelExplorer::checkMonsterAlert(BaseMonster* monster)
 {
     if(monster == nullptr || !(monster->isVisible()))
@@ -183,6 +189,8 @@ bool VoxelExplorer::wanderingAround(BaseMonster* monster, cocos2d::Vec2& nextPos
 }
 void VoxelExplorer::updateFogOfWar(const cocos2d::Rect& areaRect, bool visited)
 {
+    if(visited && m_pCurrentLevel && m_pCurrentLevel->hasShowMap())
+        m_pCurrentLevel->showMap(true);
     if(m_pTerrainTilesLayer)
     {
         for (const auto& child : m_pTerrainTilesLayer->getChildren())
@@ -306,8 +314,62 @@ void VoxelExplorer::handleDoor(const cocos2d::Vec2& mapPos)
 
     }
 }
-void VoxelExplorer::handleTriggerTrap(const cocos2d::Vec2& mapPos)     ///触发机关
+void VoxelExplorer::handleTriggerTrap(const cocos2d::Vec2& mapPos, TerrainTile::TileType trapType)     ///触发机关
 {
+    if(m_pPlayer && m_pMonstersLayer && m_pCurrentLevel)
+    {
+        if(trapType == TerrainTile::TT_TOXIC_TRAP)
+        {
+            Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_TRIGGER_TOXIC_TRAP);
+            m_pPlayer->addPlayerBuffer(PB_POISONING);
+        }
+        else if(trapType == TerrainTile::TT_FIRE_TRAP)
+        {
+            Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_TRIGGER_FIRE_TRAP);
+            m_pPlayer->addPlayerBuffer(PB_FIRE);
+        }
+        else if(trapType == TerrainTile::TT_PARALYTIC_TRAP)
+        {
+            Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_TRIGGER_PARALYTIC_TRAP);
+            m_pPlayer->addPlayerBuffer(PB_PARALYTIC);
+        }
+        else if(trapType == TerrainTile::TT_GRIPPING_TRAP)
+        {
+            Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_TRIGGER_GRIPPING_TRAP);
+            m_pPlayer->hurtByGrippingTrap();
+        }
+        else if(trapType == TerrainTile::TT_SUMMONING_TRAP)
+        {
+            Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_TRIGGER_SUMMONING_TRAP);
+            if(!m_pCurrentLevel->createSummoningMonsters(mapPos))
+                CCLOG("Handle trigger summoning trap failed!");
+        }
+        else if(trapType == TerrainTile::TT_WEAK_TRAP)
+        {
+            Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_TRIGGER_WEAK_TRAP);
+            m_pPlayer->addPlayerBuffer(PB_WEAK);
+        }
+        
+        if(m_pTerrainTilesLayer)
+        {
+            for (const auto& child : m_pTerrainTilesLayer->getChildren())
+            {
+                TerrainTile* tile = dynamic_cast<TerrainTile*>(child);
+                if(tile && (mapPos == tile->getPosInMap()))
+                {
+                    std::string texName = LevelResourceManager::getInstance()->getTerrainTileRes(TERRAIN_TILES_NAME[trapType]);
+                    if(!texName.empty())
+                    {
+                        auto tex = Director::getInstance()->getTextureCache()->addImage(texName);
+                        if(tex)
+                            tex->setAliasTexParameters();
+                        tile->setTexture(tex);
+                    }
+
+                }
+            }
+        }
+    }
 }
 void VoxelExplorer::handlePickItem(const cocos2d::Vec2& mapPos)        ///拾取道具
 {
@@ -336,7 +398,7 @@ void VoxelExplorer::handleMonsterHurt(const cocos2d::Vec2& mapPos)
         for (const auto& child : m_pMonstersLayer->getChildren())
         {
             BaseMonster* monster = dynamic_cast<BaseMonster*>(child);
-            if(monster && monster->getPosInMap() == mapPos)
+            if(monster && (monster->getPosInMap() == mapPos || monster->getPosInMap().distance(mapPos) <= 1))
             {
                 if(monster->getState() != BaseMonster::MS_DEATH)
                 {

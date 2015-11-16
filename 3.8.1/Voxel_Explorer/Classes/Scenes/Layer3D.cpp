@@ -94,37 +94,37 @@ void Layer3D::onTouchEnded(Touch *touch, Event *event)
 void Layer3D::prepareToJump()
 {
     Player* player = VoxelExplorer::getInstance()->getPlayer();
-    if(player && player->getState() == Player::PS_IDLE)
+    if(player && !player->isParalytic() && player->getState() == Player::PS_IDLE)
         player->setState(Player::PS_PREPARE_TO_JUMP);
 }
 void Layer3D::rotateToForward()
 {
     Player* player = VoxelExplorer::getInstance()->getPlayer();
-    if(player && player->getState() == Player::PS_PREPARE_TO_JUMP)
+    if(player && !player->isParalytic() && player->getState() == Player::PS_PREPARE_TO_JUMP)
         player->rotateToForward();
 }
 void Layer3D::rotateToBack()
 {
     Player* player = VoxelExplorer::getInstance()->getPlayer();
-    if(player && player->getState() == Player::PS_PREPARE_TO_JUMP)
+    if(player && !player->isParalytic() && player->getState() == Player::PS_PREPARE_TO_JUMP)
         player->rotateToBack();
 }
 void Layer3D::rotateToLeft()
 {
     Player* player = VoxelExplorer::getInstance()->getPlayer();
-    if(player && player->getState() == Player::PS_PREPARE_TO_JUMP)
+    if(player && !player->isParalytic() && player->getState() == Player::PS_PREPARE_TO_JUMP)
         player->rotateToLeft();
 }
 void Layer3D::rotateToRight()
 {
     Player* player = VoxelExplorer::getInstance()->getPlayer();
-    if(player && player->getState() == Player::PS_PREPARE_TO_JUMP)
+    if(player && !player->isParalytic() && player->getState() == Player::PS_PREPARE_TO_JUMP)
         player->rotateToRight();
 }
 void Layer3D::excuteToJump()
 {
     Player* player = VoxelExplorer::getInstance()->getPlayer();
-    if(player && (player->getState() == Player::PS_PREPARE_TO_JUMP))
+    if(player && !player->isParalytic() && (player->getState() == Player::PS_PREPARE_TO_JUMP))
     {
         TileInfo info;
         if(VoxelExplorer::getInstance()->checkMovable(info))
