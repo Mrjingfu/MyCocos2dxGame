@@ -311,7 +311,7 @@ void StandardLevel::assignAreasType()
         }
     }
     ///生成通道
-    m_Style = cocos2d::random(LS_STANDARD, LS_PASSAGE);
+    //m_Style = cocos2d::random(LS_STANDARD, LS_PASSAGE);
     
     float percentStandard = 0.6f;
     float percentTunnel = 0.05f;

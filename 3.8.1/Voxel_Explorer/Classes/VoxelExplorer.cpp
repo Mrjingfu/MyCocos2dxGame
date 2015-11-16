@@ -243,6 +243,25 @@ void VoxelExplorer::updateFogOfWar(const cocos2d::Rect& areaRect, bool visited)
 }
 void VoxelExplorer::searchAndCheck()    ///侦查
 {
+    if(m_pPlayer && m_pTerrainTilesLayer)
+    {
+        Vec2 playerPosInMap = m_pPlayer->getPosInMap();
+        int searchDistance = PlayerProperty::getInstance()->getSearchDistance();
+        for (const auto& child : m_pTerrainTilesLayer->getChildren())
+        {
+            TerrainTile* tile = dynamic_cast<TerrainTile*>(child);
+            if(tile)
+            {
+                if(playerPosInMap.distance(tile->getPosInMap()) <= searchDistance*1.5f)
+                {
+                    EaseSineOut* colorTo1 = EaseSineOut::create(TintTo::create(0.35f, Color3B(255,150,255)));
+                    EaseSineOut* colorTo2 = EaseSineOut::create(TintTo::create(0.35f, Color3B::WHITE));
+                    Sequence* sequence = Sequence::create(colorTo1, colorTo2, nullptr);
+                    tile->runAction(sequence);
+                }
+            }
+        }
+    }
 }
 void VoxelExplorer::addExplosion(const cocos2d::Vec3& pos)
 {
@@ -446,6 +465,9 @@ void VoxelExplorer::handlePlayerUseScroll(PickableItem::PickableItemType type)
         case PickableItem::PickableItemType::PIT_SCROLL_STEALTH:
             m_pPlayer->addPlayerBuffer(PB_STEALTH);
             break;
+        case PickableItem::PickableItemType::PIT_SCROLL_STRONGER:
+            m_pPlayer->addPlayerBuffer(PB_STRONGER);
+            break;
         case PickableItem::PickableItemType::PIT_SCROLL_DESTINY:
             {
             }
@@ -456,6 +478,34 @@ void VoxelExplorer::handlePlayerUseScroll(PickableItem::PickableItemType type)
 }
 void VoxelExplorer::handlePlayerUsePotion(PickableItem::PickableItemType type)
 {
+    if(!m_pPlayer)
+        return;
+    switch (type) {
+        case PickableItem::PickableItemType::PIT_POTION_DETOXIFICATION:
+            m_pPlayer->removePlayerBuffer(PB_POISONING);
+            break;
+        case PickableItem::PickableItemType::PIT_POTION_SPECIFIC:
+            {
+                m_pPlayer->removePlayerBuffer(PB_FROZEN);
+                m_pPlayer->removePlayerBuffer(PB_PARALYTIC);
+                m_pPlayer->removePlayerBuffer(PB_FIRE);
+            }
+            break;
+        case PickableItem::PickableItemType::PIT_POTION_HEALING:
+            m_pPlayer->removePlayerBuffer(PB_WEAK);
+            break;
+        case PickableItem::PickableItemType::PIT_POTION_UNIVERSAL:
+            {
+                m_pPlayer->removePlayerBuffer(PB_POISONING);
+                m_pPlayer->removePlayerBuffer(PB_FROZEN);
+                m_pPlayer->removePlayerBuffer(PB_PARALYTIC);
+                m_pPlayer->removePlayerBuffer(PB_FIRE);
+                m_pPlayer->removePlayerBuffer(PB_WEAK);
+            }
+            break;
+        default:
+            break;
+    }
 }
 bool VoxelExplorer::createLayers()
 {

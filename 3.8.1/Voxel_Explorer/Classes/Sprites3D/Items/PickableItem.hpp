@@ -209,6 +209,7 @@ public:
         PIT_SCROLL_TELEPORT,                     ////传送卷轴 Scroll of Random Teleport
         PIT_SCROLL_SPEED,                        ////速度卷轴 Scroll of Speed
         PIT_SCROLL_STEALTH,                      ////隐身卷轴 Scroll of Stealth
+        PIT_SCROLL_STRONGER,                     ////强壮卷轴 Scroll of Stronger
         PIT_SCROLL_DESTINY,                      ////命运卷轴 Scroll of Destiny
         //PIT_SCROLL_END
         
@@ -224,6 +225,8 @@ public:
         PIT_POTION_RECOVERY,                     ///恢复药水 Recovery Potion
         PIT_POTION_DETOXIFICATION,               ///解毒药水 Detoxification Potion
         PIT_POTION_SPECIFIC,                     ///特效药水 Specific Potion
+        PIT_POTION_HEALING,                      ///治愈药水 Healing Potion
+        PIT_POTION_UNIVERSAL,                    ///万能药水 Universal Potion
         ///PIT_POTION_END
         
         PIT_UNKNOWN

@@ -952,6 +952,10 @@
 	<string>隐身卷轴</string>
 	<key>PIN_SCROLL_STEALTH_DESC</key>
 	<string>使用后角色进入隐身状态，持续20秒。</string>
+	<key>PIT_SCROLL_STRONGER</key>
+	<string>强壮卷轴</string>
+	<key>PIT_SCROLL_STRONGER_DESC</key>
+	<string>使用后角色属性增强，持续20秒。</string>
 	<key>PIN_SCROLL_DESTINY</key>
 	<string>命运卷轴</string>
 	<key>PIN_SCROLL_DESTINY_DESC</key>
@@ -1000,5 +1004,13 @@
 	<string>特效药水</string>
 	<key>PIN_POTION_SPECIFIC_DESC</key>
 	<string>解除角色冰冻、着火和麻痹状态。</string>
+	<key>PIN_POTION_HEALING</key>
+	<string>治愈药水</string>
+	<key>PIN_POTION_HEALING_DESC</key>
+	<string>解除角色疾病状态</string>
+	<key>PIN_POTION_UNIVERSAL</key>
+	<string>万能药水</string>
+	<key>PIN_POTION_UNIVERSAL_DESC</key>
+	<string>解除角色所有负面状态</string>
 </dict>
 </plist>

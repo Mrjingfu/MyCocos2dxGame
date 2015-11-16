@@ -121,6 +121,17 @@ void PlayerProperty::addPlayerBuffer(PlayerBuffer buff)
         m_nBaseArmorClass = m_nBaseArmorClass + m_nLevel.GetLongValue();
         
     }
+    else if(buff == PB_STRONGER)
+    {
+        m_nMaxHP = m_nMaxHP + m_nLevel*8 + 30;
+        m_nMaxMP = m_nMaxMP + m_nLevel*8 + 30;
+        m_nCurrentHP = m_nCurrentHP + m_nLevel*8 + 30;
+        m_nCurrentMP = m_nCurrentMP + m_nLevel*8 + 30;
+        m_nCurrentHP = MIN(m_nCurrentHP, m_nMaxHP);
+        m_nCurrentMP = MIN(m_nCurrentMP, m_nMaxMP);
+        
+        m_nBaseArmorClass = m_nBaseArmorClass - m_nLevel.GetLongValue();
+    }
     m_BufferFlag = m_BufferFlag | buff;
     m_bDirty = true;
 }
@@ -134,6 +145,15 @@ void PlayerProperty::removePlayerBuffer(PlayerBuffer buff)
         m_nCurrentMP = MIN(m_nCurrentMP, m_nMaxMP);
         
         m_nBaseArmorClass = m_nBaseArmorClass - m_nLevel.GetLongValue();
+    }
+    else if(buff == PB_STRONGER)
+    {
+        m_nMaxHP = m_nMaxHP - m_nLevel*8 - 30;
+        m_nMaxMP = m_nMaxMP - m_nLevel*8 - 30;
+        m_nCurrentHP = MIN(m_nCurrentHP, m_nMaxHP);
+        m_nCurrentMP = MIN(m_nCurrentMP, m_nMaxMP);
+        
+        m_nBaseArmorClass = m_nBaseArmorClass + m_nLevel.GetLongValue();
     }
     m_BufferFlag = m_BufferFlag &~ buff;
     m_bDirty = true;
@@ -536,6 +556,8 @@ bool PlayerProperty::usePotion(CChaosNumber id)
                 break;
             case PickableItem::PIT_POTION_DETOXIFICATION:
             case PickableItem::PIT_POTION_SPECIFIC:
+            case PickableItem::PIT_POTION_HEALING:
+            case PickableItem::PIT_POTION_UNIVERSAL:
                 {
                     VoxelExplorer::getInstance()->handlePlayerUsePotion(potionsProperty->getPickableItemType());
                 }

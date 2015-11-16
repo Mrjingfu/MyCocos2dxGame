@@ -78,8 +78,8 @@ void Player::addPlayerBuffer(PlayerBuffer buff)
         else
         {
             ///增加拖尾或粒子
+            PlayerProperty::getInstance()->addPlayerBuffer(buff);
         }
-        PlayerProperty::getInstance()->addPlayerBuffer(buff);
     }
     else if(buff == PB_STEALTH)
     {
@@ -90,8 +90,9 @@ void Player::addPlayerBuffer(PlayerBuffer buff)
             ///渐变
             EaseSineOut* fadeTo = EaseSineOut::create(FadeTo::create(1.0f, 127));
             this->runAction(fadeTo);
+            PlayerProperty::getInstance()->addPlayerBuffer(buff);
         }
-        PlayerProperty::getInstance()->addPlayerBuffer(buff);
+       
     }
     else if(buff == PB_STRONGER)
     {
@@ -102,8 +103,8 @@ void Player::addPlayerBuffer(PlayerBuffer buff)
             ///增大
             EaseSineOut* fadeTo = EaseSineOut::create(ScaleTo::create(1.0f, 1.5f));
             this->runAction(fadeTo);
+            PlayerProperty::getInstance()->addPlayerBuffer(buff);
         }
-        PlayerProperty::getInstance()->addPlayerBuffer(buff);
     }
     else if(buff == PB_POISONING)
     {
@@ -512,7 +513,7 @@ void Player::onEnterAttack()
             break;
     }
     ScaleTo* scaleTo = ScaleTo::create(0.1f, 1.0f, 1.0f, 1.0f);
-    EaseSineOut* moveUp = EaseSineOut::create(MoveTo::create(0.1f, Vec3(getPositionX(), getPositionY() + TerrainTile::CONTENT_SCALE*0.25f, getPositionZ()) + dir*0.5f));
+    EaseSineOut* moveUp = EaseSineOut::create(MoveTo::create(0.1f, Vec3(getPositionX(), getPositionY() + TerrainTile::CONTENT_SCALE*0.25f, getPositionZ()) + dir*0.4f));
     Vec3 monsterPos = getPosition3D() + dir;
     Vec2 posInMap = Vec2((int)(monsterPos.x/TerrainTile::CONTENT_SCALE), (int)(-monsterPos.z /TerrainTile::CONTENT_SCALE));
     CallFunc* callback = CallFunc::create(CC_CALLBACK_0(VoxelExplorer::handleMonsterHurt,VoxelExplorer::getInstance(),posInMap));
