@@ -13,16 +13,16 @@
 #include "ChaosNumber.h"
 #include "PickableItem.hpp"
 typedef enum{
-    AE_LIGHT_DISTANCE = 0,
-    AE_SEARCH_DISTANCE,
+    AE_MIN_ATTACK = 0,
+    AE_MAX_ATTACK,
     AE_MAX_HP,
     AE_MAX_MP,
-    AE_MIN_ATTACK,
-    AE_MAX_ATTACK,
     AE_BLOCK_RATE,
     AE_CRITICALSTRICK_RATE,
     AE_DODGE_RATE,
-    AE_MAGICITEM_FIND_RATE
+    AE_MAGICITEM_FIND_RATE,
+    AE_SEARCH_DISTANCE,
+    AE_LIGHT_DISTANCE,
 }ADDED_EFFECT;
 
 typedef enum{

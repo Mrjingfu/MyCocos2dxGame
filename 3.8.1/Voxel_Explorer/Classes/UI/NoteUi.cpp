@@ -25,9 +25,9 @@ bool NoteUi::init()
         return false;
     setAnchorPoint(Vec2::ANCHOR_MIDDLE);
     setTouchEnabled(true);
-    setBackGroundImageScale9Enabled(true);
+//    setBackGroundImageScale9Enabled(true);
 //    setBackGroundColorType(BackGroundColorType::SOLID);
-//    setBackGroundColor(Color3B::BLUE);
+//    setBackGroundColor(Color3B::RED);
     setContentSize(cocos2d::Size(Director::getInstance()->getVisibleSize().width,20));
 
     setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
@@ -39,6 +39,8 @@ bool NoteUi::init()
     
     return true;
 }
+
+
 void NoteUi::setMsg(std::string msg,cocos2d::Color3B fontColor /*= cocos2d::Color3B::WHITE*/)
 {
     if (m_pLabel)
@@ -57,5 +59,29 @@ void NoteUi::setMsg(std::string msg,cocos2d::Color3B fontColor /*= cocos2d::Colo
         m_pLabel->setColor(fontColor);
         m_pLabel->setPosition(Vec2(0,getContentSize().height));
     }
-    
+}
+void NoteUi::setItemText(std::string msg,cocos2d::Color3B fontColor /*= cocos2d::Color3B::WHITE*/)
+{
+    if (m_pLabel)
+    {
+        int charCount = 0;
+        if(cocos2d::Application::getInstance()->getCurrentLanguage() ==cocos2d::LanguageType::CHINESE)
+        {
+            charCount =15;
+        }else{
+            charCount = 40;
+        }
+        int count = UtilityHelper::getLineStr(msg, charCount);
+        setContentSize(cocos2d::Size(getContentSize().width,getContentSize().height*(count+1)));
+        m_pLabel->setString(msg);
+        CCLOG("m_pLabel:%d msg:%lu",m_pLabel->getStringLength(),msg.length());
+        m_pLabel->setColor(fontColor);
+        m_pLabel->setPosition(Vec2(3,getContentSize().height));
+    }
+}
+void NoteUi::setFontScale(float scale)
+{
+    if (m_pLabel) {
+        m_pLabel->setScale(scale);
+    }
 }

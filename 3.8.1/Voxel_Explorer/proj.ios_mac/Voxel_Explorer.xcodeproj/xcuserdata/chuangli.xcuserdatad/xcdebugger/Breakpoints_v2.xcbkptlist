@@ -6,16 +6,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../Classes/UI/NoteUi.cpp"
-            timestampString = "468919125.572273"
+            filePath = "../Classes/UI/ItemPopupUI.cpp"
+            timestampString = "469189972.68142"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "23"
-            endingLineNumber = "23"
-            landmarkName = "NoteUi::init()"
+            startingLineNumber = "690"
+            endingLineNumber = "690"
+            landmarkName = "ItemPopupUI::onClickEquip(cocos2d::Ref *ref)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

@@ -43,6 +43,8 @@ bool ItemUI::init()
     setBackGroundImageScale9Enabled(true);
     setBackGroundImage("ui_frame_5.png",TextureResType::PLIST);
     
+    setBrightStyle(BrightStyle::NORMAL);
+    setBright(false);
     setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
     m_pItemImage = ui::ImageView::create("A_Armor04.png",TextureResType::LOCAL);
     m_pItemImage->setPosition(Vec2(getContentSize().width*0.5, getContentSize().width*0.45));
@@ -61,7 +63,7 @@ bool ItemUI::init()
     m_pItemCount = ui::Text::create("", UtilityHelper::getLocalString("FONT_NAME"), 36);
     m_pItemCount->setScale(0.25);
     m_pItemCount->setAnchorPoint(Vec2::ANCHOR_BOTTOM_RIGHT);
-    m_pItemCount->setPosition(Vec2(getContentSize().width*0.62, getContentSize().height*0.8));
+    m_pItemCount->setPosition(Vec2(getContentSize().width*0.65, getContentSize().height*0.75));
     addChild(m_pItemCount,3);
     
     m_pItemCount->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);

@@ -12,7 +12,6 @@
 #include "PlayerProperty.hpp"
 #include "PopupUILayerManager.h"
 #include "ItemPopupUI.h"
-#include "EquipItemPopupUI.h"
 #include "EventConst.h"
 #include "GameFormula.hpp"
 #include "KeyProperty.hpp"
@@ -37,7 +36,7 @@ RolePopupUI::RolePopupUI()
     m_pRoleBlock            = nullptr;
     m_pRoleDodge            = nullptr;
     m_pShopBtn              = nullptr;
-    
+    _isOpenIdentify = false;
 }
 RolePopupUI::~RolePopupUI()
 {
@@ -238,20 +237,7 @@ void RolePopupUI::updateItems()
             //查看是否可以合并
             if(itemProp->isStackable())
             {
-                PickableItemProperty::PickableItemPropertyType itemtype =itemProp->getPickableItemPropertyType() ;
-                int count = 0;
-                if ( itemtype == PickableItemProperty::PIPT_KEY) {
-                    CCLOG("合并 PIPT_KEY");
-                    KeyProperty* stackProp = static_cast<KeyProperty*>(itemProp);
-                    count = stackProp->getCount();
-                }else if (itemtype == PickableItemProperty::PIPT_MATERIAL){
-                    
-                    CCLOG("合并 PIPT_MATERIAL");
-                    
-                }else if(itemtype == PickableItemProperty::PIPT_POTIONS)
-                {
-                    CCLOG("合并 PIPT_POTIONS");
-                }
+                int count = itemProp->getCount();
                 itemUi->addItem(itemProp->getInstanceID(), itemProp->getIconRes(),count);
             }else
                 itemUi->addItem(itemProp->getInstanceID(), itemProp->getIconRes());
@@ -265,27 +251,27 @@ void RolePopupUI::selectItemEvent(cocos2d::Ref *pSender, TGridView::EventType ty
     if (type==TGridView::EventType::ON_SELECTED_ITEM_END) {
         TGridView* gridView = static_cast<TGridView*>(pSender);
         ItemUI* currentItem = static_cast<ItemUI*>(gridView->getItem(gridView->getCurSelectedIndex()));
+        bool isSuccess = false;
         if (currentItem && currentItem->isHaveItem()) {
-            PickableItemProperty* itemprop = PlayerProperty::getInstance()->getItemFromBag(CChaosNumber(currentItem->getItemId()));
-            PickableItemProperty::PickableItemPropertyType type = itemprop->getPickableItemPropertyType();
-            if (type ==PickableItemProperty::PIPT_WEAPON ||type ==PickableItemProperty::PIPT_SECOND_WEAPON||
-                type ==PickableItemProperty::PIPT_ARMOR ||type ==PickableItemProperty::PIPT_MAGIC_ORNAMENT ) {
-                EquipItemPopupUI* popupui = static_cast<EquipItemPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupType::ePopupEquipItem));
-                if (popupui) {
-                    popupui->updateItemPopup(currentItem->getItemId());
-                }
-            }else
-            {
+            if (_isOpenIdentify) {
+                isSuccess =PlayerProperty::getInstance()->indentifyItem(currentItem->getItemId());
+            }else{
+                
+                isSuccess = true;
+            }
+            if (isSuccess) {
                 ItemPopupUI* popupui = static_cast<ItemPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupType::ePopupItem));
                 if (popupui) {
                     popupui->updateItemPopup(currentItem->getItemId());
+                    CCLOG("select itemid = %d", currentItem->getItemId());
+                    
                 }
+            }else{
+                CCLOG("鉴定失败");
             }
-           
-             CCLOG("select itemid = %d", currentItem->getItemId());
+            
             
         }
-        
     }
 }
 void RolePopupUI::onEventUpdateData(cocos2d::EventCustom *sender)

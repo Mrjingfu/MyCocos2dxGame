@@ -219,16 +219,14 @@
 		ECE1B9481BD8AC820035B4D9 /* TGridView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECE1B9451BD8AC820035B4D9 /* TGridView.cpp */; };
 		ECE1B9581BD8E6660035B4D9 /* RolePopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECE1B9561BD8E6660035B4D9 /* RolePopupUI.cpp */; };
 		ECE1B9591BD8E6660035B4D9 /* RolePopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECE1B9561BD8E6660035B4D9 /* RolePopupUI.cpp */; };
-		ECECACC21BE7351600B14FFC /* EquipItemPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECECACC01BE7351600B14FFC /* EquipItemPopupUI.cpp */; };
-		ECECACCB1BE7353700B14FFC /* ItemPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECECACC31BE7353700B14FFC /* ItemPopupUI.cpp */; };
-		ECECACCC1BE7353700B14FFC /* ItemPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECECACC31BE7353700B14FFC /* ItemPopupUI.cpp */; };
+		ECECACC21BE7351600B14FFC /* ItemPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECECACC01BE7351600B14FFC /* ItemPopupUI.cpp */; };
 		ECECACCD1BE7353700B14FFC /* DeadPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECECACC51BE7353700B14FFC /* DeadPopupUI.cpp */; };
 		ECECACCE1BE7353700B14FFC /* DeadPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECECACC51BE7353700B14FFC /* DeadPopupUI.cpp */; };
 		ECECACCF1BE7353700B14FFC /* PausePopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECECACC71BE7353700B14FFC /* PausePopupUI.cpp */; };
 		ECECACD01BE7353700B14FFC /* PausePopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECECACC71BE7353700B14FFC /* PausePopupUI.cpp */; };
 		ECECACD11BE7353700B14FFC /* ShopPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECECACC91BE7353700B14FFC /* ShopPopupUI.cpp */; };
 		ECECACD21BE7353700B14FFC /* ShopPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECECACC91BE7353700B14FFC /* ShopPopupUI.cpp */; };
-		ECECACD31BE73C5100B14FFC /* EquipItemPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECECACC01BE7351600B14FFC /* EquipItemPopupUI.cpp */; };
+		ECECACD31BE73C5100B14FFC /* ItemPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECECACC01BE7351600B14FFC /* ItemPopupUI.cpp */; };
 		ED545A7C1B68A1F400C3958E /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ED545A7B1B68A1F400C3958E /* libiconv.dylib */; };
 		ED545A7E1B68A1FA00C3958E /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ED545A7D1B68A1FA00C3958E /* libiconv.dylib */; };
 /* End PBXBuildFile section */
@@ -462,10 +460,8 @@
 		ECE1B9461BD8AC820035B4D9 /* TGridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TGridView.h; sourceTree = "<group>"; };
 		ECE1B9561BD8E6660035B4D9 /* RolePopupUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RolePopupUI.cpp; sourceTree = "<group>"; };
 		ECE1B9571BD8E6660035B4D9 /* RolePopupUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RolePopupUI.h; sourceTree = "<group>"; };
-		ECECACC01BE7351600B14FFC /* EquipItemPopupUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EquipItemPopupUI.cpp; sourceTree = "<group>"; };
-		ECECACC11BE7351600B14FFC /* EquipItemPopupUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EquipItemPopupUI.h; sourceTree = "<group>"; };
-		ECECACC31BE7353700B14FFC /* ItemPopupUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ItemPopupUI.cpp; sourceTree = "<group>"; };
-		ECECACC41BE7353700B14FFC /* ItemPopupUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemPopupUI.h; sourceTree = "<group>"; };
+		ECECACC01BE7351600B14FFC /* ItemPopupUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ItemPopupUI.cpp; sourceTree = "<group>"; };
+		ECECACC11BE7351600B14FFC /* ItemPopupUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemPopupUI.h; sourceTree = "<group>"; };
 		ECECACC51BE7353700B14FFC /* DeadPopupUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DeadPopupUI.cpp; sourceTree = "<group>"; };
 		ECECACC61BE7353700B14FFC /* DeadPopupUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeadPopupUI.h; sourceTree = "<group>"; };
 		ECECACC71BE7353700B14FFC /* PausePopupUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PausePopupUI.cpp; sourceTree = "<group>"; };
@@ -920,16 +916,14 @@
 			children = (
 				ECD64A6F1BF1CD71008E04D7 /* InfoPopupUI.cpp */,
 				ECD64A701BF1CD71008E04D7 /* InfoPopupUI.h */,
-				ECECACC31BE7353700B14FFC /* ItemPopupUI.cpp */,
-				ECECACC41BE7353700B14FFC /* ItemPopupUI.h */,
 				ECECACC51BE7353700B14FFC /* DeadPopupUI.cpp */,
 				ECECACC61BE7353700B14FFC /* DeadPopupUI.h */,
 				ECECACC71BE7353700B14FFC /* PausePopupUI.cpp */,
 				ECECACC81BE7353700B14FFC /* PausePopupUI.h */,
 				ECECACC91BE7353700B14FFC /* ShopPopupUI.cpp */,
 				ECECACCA1BE7353700B14FFC /* ShopPopupUI.h */,
-				ECECACC01BE7351600B14FFC /* EquipItemPopupUI.cpp */,
-				ECECACC11BE7351600B14FFC /* EquipItemPopupUI.h */,
+				ECECACC01BE7351600B14FFC /* ItemPopupUI.cpp */,
+				ECECACC11BE7351600B14FFC /* ItemPopupUI.h */,
 				ECA229091BD9DE1D008E03BB /* ItemUI.cpp */,
 				ECA2290A1BD9DE1D008E03BB /* ItemUI.h */,
 				ECE1B9561BD8E6660035B4D9 /* RolePopupUI.cpp */,
@@ -1108,14 +1102,13 @@
 				ECD10D721BD0967B007DD888 /* WrapperUILayer.cpp in Sources */,
 				551E93AF1BD51282009F788F /* NativeBridge.mm in Sources */,
 				55338AEA1BD892C200EA316F /* Archbishop.cpp in Sources */,
-				ECECACC21BE7351600B14FFC /* EquipItemPopupUI.cpp in Sources */,
+				ECECACC21BE7351600B14FFC /* ItemPopupUI.cpp in Sources */,
 				555B0D151BC51A2C0055FB6D /* AppDelegate.cpp in Sources */,
 				555B0D1F1BC51A2C0055FB6D /* StandardLevel.cpp in Sources */,
 				551E93E21BD512D3009F788F /* CCCrypto.cpp in Sources */,
 				551E93AB1BD51282009F788F /* ChaosNumber.cpp in Sources */,
 				551E93F01BD512D3009F788F /* MemoryStream.cpp in Sources */,
 				EC00DD5B1BD66586009BC378 /* MenuUILayer.cpp in Sources */,
-				ECECACCB1BE7353700B14FFC /* ItemPopupUI.cpp in Sources */,
 				55F81CAC1BDB69FB002EC075 /* PickableItemProperty.cpp in Sources */,
 				EC5A65211BE8BF6C006A0D2B /* NoteUi.cpp in Sources */,
 				551E93C31BD51291009F788F /* LevelResourceManager.cpp in Sources */,
@@ -1192,7 +1185,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ECECACD31BE73C5100B14FFC /* EquipItemPopupUI.cpp in Sources */,
+				ECECACD31BE73C5100B14FFC /* ItemPopupUI.cpp in Sources */,
 				551E93C81BD51291009F788F /* MonsterProperty.cpp in Sources */,
 				553BC50E1BCE5191003D907A /* StandardDoor.cpp in Sources */,
 				55EC95861BC6ABBA0008D1D7 /* TerrainTile.cpp in Sources */,
@@ -1270,7 +1263,6 @@
 				551E93B01BD51282009F788F /* NativeBridge.mm in Sources */,
 				551E93E91BD512D3009F788F /* sha1.cpp in Sources */,
 				EC602AAD1BF46A2D00484D42 /* AchievementManager.cpp in Sources */,
-				ECECACCC1BE7353700B14FFC /* ItemPopupUI.cpp in Sources */,
 				55338AD61BD878BF00EA316F /* StandardMonster.cpp in Sources */,
 				551E93F11BD512D3009F788F /* MemoryStream.cpp in Sources */,
 				551E93C61BD51291009F788F /* UserRecord.cpp in Sources */,
