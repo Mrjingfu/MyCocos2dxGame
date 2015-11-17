@@ -32,7 +32,7 @@ bool GameFormula::generatePickItem(bool isElite, bool isBoss)
         return true;
     else
     {
-        float percentOne = 0.3f;
+        float percentOne = 0.5f;
         float percentZero = 1.0 - percentOne;
         AlisaMethod* am = AlisaMethod::create(percentOne, percentZero, -1.0, NULL);
         if(!am)
