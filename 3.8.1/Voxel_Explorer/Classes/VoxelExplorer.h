@@ -40,6 +40,9 @@ public:
     
     void handleDoor(const cocos2d::Vec2& mapPos);            ///开门
     void handleTriggerTrap(const cocos2d::Vec2& mapPos, TerrainTile::TileType trapType);     ///触发机关
+    void handleShowSecretDoor(const cocos2d::Vec2& mapPos);
+    void handleShowHiddenTrap(const cocos2d::Vec2& mapPos, TerrainTile::TileType trapType); ///显示隐藏机关
+    void handleShowSearchEffect(const cocos2d::Vec2& mapPos);
     void handlePickItem(const cocos2d::Vec2& mapPos);        ///拾取道具
     void handleMonsterHurt(const cocos2d::Vec2& mapPos);     ///处理攻击怪物
     void handlePlayerHurt(const cocos2d::Vec2& mapPos, MonsterProperty* monsterProperty);      ///处理攻击玩家

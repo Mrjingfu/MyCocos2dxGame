@@ -282,6 +282,7 @@ bool PlayerProperty::equipWeapon(CChaosNumber id)
         ///装备新武器
         m_nLightDistance = m_nLightDistance + weaponProperty->getAddedLightDistance().GetLongValue();
         m_nSearchDistance = m_nSearchDistance + weaponProperty->getAddedSearchDistance().GetLongValue();
+        m_nSearchDistance = MIN(m_nSearchDistance.GetLongValue(), 5);
         m_nMaxHP = m_nMaxHP + weaponProperty->getAddedMaxHp().GetLongValue();
         m_nMaxMP = m_nMaxMP + weaponProperty->getAddedMaxMp().GetLongValue();
         m_nCurrentHP = MIN(m_nCurrentHP, m_nMaxHP);
@@ -347,6 +348,7 @@ bool PlayerProperty::equipSecondWeapon(CChaosNumber id)
         ///装备新武器
         m_nLightDistance = m_nLightDistance + secondWeaponProperty->getAddedLightDistance().GetLongValue();
         m_nSearchDistance = m_nSearchDistance + secondWeaponProperty->getAddedSearchDistance().GetLongValue();
+        m_nSearchDistance = MIN(m_nSearchDistance.GetLongValue(), 5);
         m_nMaxHP = m_nMaxHP + secondWeaponProperty->getAddedMaxHp().GetLongValue();
         m_nMaxMP = m_nMaxMP + secondWeaponProperty->getAddedMaxMp().GetLongValue();
         m_nAddedMinAttack = m_nAddedMinAttack + secondWeaponProperty->getAddedMinAttack().GetLongValue();
@@ -409,6 +411,7 @@ bool PlayerProperty::equipArmor(CChaosNumber id)
         ///装备新护具
         m_nLightDistance = m_nLightDistance + armorProperty->getAddedLightDistance().GetLongValue();
         m_nSearchDistance = m_nSearchDistance + armorProperty->getAddedSearchDistance().GetLongValue();
+        m_nSearchDistance = MIN(m_nSearchDistance.GetLongValue(), 5);
         m_nMaxHP = m_nMaxHP + armorProperty->getAddedMaxHp().GetLongValue();
         m_nMaxMP = m_nMaxMP + armorProperty->getAddedMaxMp().GetLongValue();
         m_nCurrentHP = MIN(m_nCurrentHP, m_nMaxHP);
@@ -473,6 +476,7 @@ bool PlayerProperty::equipOrnaments(CChaosNumber id)
         ///装备新饰品
         m_nLightDistance = m_nLightDistance + magicOrnamentProperty->getAddedLightDistance().GetLongValue();
         m_nSearchDistance = m_nSearchDistance + magicOrnamentProperty->getAddedSearchDistance().GetLongValue();
+        m_nSearchDistance = MIN(m_nSearchDistance.GetLongValue(), 5);
         m_nMaxHP = m_nMaxHP + magicOrnamentProperty->getAddedMaxHp().GetLongValue();
         m_nMaxMP = m_nMaxMP + magicOrnamentProperty->getAddedMaxMp().GetLongValue();
         m_nAddedMinAttack = m_nAddedMinAttack + magicOrnamentProperty->getAddedMinAttack().GetLongValue();

@@ -243,24 +243,11 @@ void VoxelExplorer::updateFogOfWar(const cocos2d::Rect& areaRect, bool visited)
 }
 void VoxelExplorer::searchAndCheck()    ///侦查
 {
-    if(m_pPlayer && m_pTerrainTilesLayer)
+    if(m_pPlayer && m_pCurrentLevel)
     {
         Vec2 playerPosInMap = m_pPlayer->getPosInMap();
         int searchDistance = PlayerProperty::getInstance()->getSearchDistance();
-        for (const auto& child : m_pTerrainTilesLayer->getChildren())
-        {
-            TerrainTile* tile = dynamic_cast<TerrainTile*>(child);
-            if(tile)
-            {
-                if(playerPosInMap.distance(tile->getPosInMap()) <= searchDistance*1.5f)
-                {
-                    EaseSineOut* colorTo1 = EaseSineOut::create(TintTo::create(0.35f, Color3B(255,150,255)));
-                    EaseSineOut* colorTo2 = EaseSineOut::create(TintTo::create(0.35f, Color3B::WHITE));
-                    Sequence* sequence = Sequence::create(colorTo1, colorTo2, nullptr);
-                    tile->runAction(sequence);
-                }
-            }
-        }
+        m_pCurrentLevel->searchAndCheck(playerPosInMap.x, playerPosInMap.y, searchDistance);
     }
 }
 void VoxelExplorer::addExplosion(const cocos2d::Vec3& pos)
@@ -385,6 +372,93 @@ void VoxelExplorer::handleTriggerTrap(const cocos2d::Vec2& mapPos, TerrainTile::
                         tile->setTexture(tex);
                     }
 
+                }
+            }
+        }
+    }
+}
+void VoxelExplorer::handleShowSecretDoor(const cocos2d::Vec2& mapPos)
+{
+    if(m_pPlayer && m_pTerrainDoorsLayer)
+    {
+        for (const auto& child : m_pTerrainDoorsLayer->getChildren())
+        {
+            BaseDoor* door = dynamic_cast<BaseDoor*>(child);
+            if(door && door->getPosInMap() == mapPos)
+            {
+                if(door->getDoorState() == BaseDoor::DS_HIDE)
+                {
+                    door->setDoorState(BaseDoor::DS_CLOSED);
+                    Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_FOUND_HIDDEN_DOOR);
+                }
+            }
+        }
+    }
+}
+void VoxelExplorer::handleShowHiddenTrap(const cocos2d::Vec2& mapPos, TerrainTile::TileType trapType) ///显示隐藏机关
+{
+    if(m_pPlayer)
+    {
+        if(trapType == TerrainTile::TT_TOXIC_TRAP)
+        {
+            Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_FOUND_HIDDEN_TOXIC_TRAP);
+        }
+        else if(trapType == TerrainTile::TT_FIRE_TRAP)
+        {
+            Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_FOUND_HIDDEN_FIRE_TRAP);
+        }
+        else if(trapType == TerrainTile::TT_PARALYTIC_TRAP)
+        {
+            Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_FOUND_HIDDEN_PARALYTIC_TRAP);
+        }
+        else if(trapType == TerrainTile::TT_GRIPPING_TRAP)
+        {
+            Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_FOUND_HIDDEN_GRIPPING_TRAP);
+        }
+        else if(trapType == TerrainTile::TT_SUMMONING_TRAP)
+        {
+            Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_FOUND_HIDDEN_SUMMONING_TRAP);
+        }
+        else if(trapType == TerrainTile::TT_WEAK_TRAP)
+        {
+            Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_FOUND_HIDDEN_WEAK_TRAP);
+        }
+        if(m_pTerrainTilesLayer)
+        {
+            for (const auto& child : m_pTerrainTilesLayer->getChildren())
+            {
+                TerrainTile* tile = dynamic_cast<TerrainTile*>(child);
+                if(tile && (mapPos == tile->getPosInMap()))
+                {
+                    std::string texName = LevelResourceManager::getInstance()->getTerrainTileRes(TERRAIN_TILES_NAME[trapType]);
+                    if(!texName.empty())
+                    {
+                        auto tex = Director::getInstance()->getTextureCache()->addImage(texName);
+                        if(tex)
+                            tex->setAliasTexParameters();
+                            tile->setTexture(tex);
+                            }
+                    
+                }
+            }
+        }
+    }
+}
+void VoxelExplorer::handleShowSearchEffect(const cocos2d::Vec2& mapPos)
+{
+    if(m_pPlayer && m_pTerrainTilesLayer)
+    {
+        for (const auto& child : m_pTerrainTilesLayer->getChildren())
+        {
+            TerrainTile* tile = dynamic_cast<TerrainTile*>(child);
+            if(tile)
+            {
+                if(tile->getPosInMap() == mapPos)
+                {
+                    EaseSineOut* colorTo1 = EaseSineOut::create(TintTo::create(0.35f, Color3B(255,150,255)));
+                    EaseSineOut* colorTo2 = EaseSineOut::create(TintTo::create(0.35f, Color3B::WHITE));
+                    Sequence* sequence = Sequence::create(colorTo1, colorTo2, nullptr);
+                    tile->runAction(sequence);
                 }
             }
         }

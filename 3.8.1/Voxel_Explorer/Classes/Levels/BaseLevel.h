@@ -85,8 +85,12 @@ public:
     int getLength() const { return m_nLenght; }
     
     std::vector<int> getNeighbours4() { return {-m_nWidth, +1, +m_nWidth, -1}; }
+    std::vector<int> getNeighbours5() { return {0, -m_nWidth, +1, +m_nWidth, -1}; }
     std::vector<int> getNeighbours8() { return {+1, -1, +m_nWidth, -m_nWidth, +1+m_nWidth, +1-m_nWidth, -1+m_nWidth, -1-m_nWidth}; }
     std::vector<int> getNeighbours9() { return {0, +1, -1, +m_nWidth, -m_nWidth, +1+m_nWidth, +1-m_nWidth, -1+m_nWidth, -1-m_nWidth}; }
+    std::vector<int> getNeighbours13() { return {0, +1, -1, +m_nWidth, -m_nWidth, +1+m_nWidth, +1-m_nWidth, -1+m_nWidth, -1-m_nWidth, +2, -2, +m_nWidth*2, -m_nWidth*2}; }
+    std::vector<int> getNeighbours21() { return {0, +1, -1, +m_nWidth, -m_nWidth, +1+m_nWidth, +1-m_nWidth, -1+m_nWidth, -1-m_nWidth, +2, -2, +m_nWidth*2, -m_nWidth*2, +1+m_nWidth*2,-1+m_nWidth*2, +1-m_nWidth*2,-1-m_nWidth*2, -2+m_nWidth, +2+m_nWidth, +2-m_nWidth, -2-m_nWidth}; }
+    std::vector<int> getNeighbours25() { return {0, +1, -1, +m_nWidth, -m_nWidth, +1+m_nWidth, +1-m_nWidth, -1+m_nWidth, -1-m_nWidth, +2, -2, +m_nWidth*2, -m_nWidth*2, +1+m_nWidth*2,-1+m_nWidth*2, +1-m_nWidth*2,-1-m_nWidth*2, -2+m_nWidth, +2+m_nWidth, +2-m_nWidth, -2-m_nWidth, +2+m_nWidth*2, +2-m_nWidth*2, -2+m_nWidth*2, -2-m_nWidth*2}; }
     
     bool isAdjacent(const cocos2d::Vec2& a, const cocos2d::Vec2& b);
     int getDistance(const cocos2d::Vec2& a, const cocos2d::Vec2& b);
@@ -112,6 +116,8 @@ public:
     
     bool getNextPathStep(const cocos2d::Vec2& from, const cocos2d::Vec2& to, cocos2d::Vec2& nextPos);
     cocos2d::Vec2 getRandomPassableTile();
+    
+    void searchAndCheck(int x, int y, int searchDistance);
     
     bool hasShowMap() const { return m_bShowMap; }
     void load();

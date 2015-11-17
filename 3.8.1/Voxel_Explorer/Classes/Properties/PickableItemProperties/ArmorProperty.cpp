@@ -93,7 +93,7 @@ void ArmorProperty::adjustByLevel()
         if(std::find(m_AddedEffectList.begin(), m_AddedEffectList.end(), AE_LIGHT_DISTANCE) != m_AddedEffectList.end())
             m_nAddedLightDistance = cocos2d::random(1, 2);
         if(std::find(m_AddedEffectList.begin(), m_AddedEffectList.end(), AE_LIGHT_DISTANCE) != m_AddedEffectList.end())
-            m_nAddedSearchDistance = cocos2d::random(1, 2);
+            m_nAddedSearchDistance = 1;
         if(std::find(m_AddedEffectList.begin(), m_AddedEffectList.end(), AE_MAX_HP) != m_AddedEffectList.end())
         {
             if (m_nLevel <= 20)
@@ -128,9 +128,9 @@ void ArmorProperty::adjustByLevel()
     else
     {
         if(std::find(m_AddedEffectList.begin(), m_AddedEffectList.end(), AE_LIGHT_DISTANCE) != m_AddedEffectList.end())
-            m_nAddedLightDistance = cocos2d::random(1, 3);
+            m_nAddedLightDistance = cocos2d::random(1, 2);
         if(std::find(m_AddedEffectList.begin(), m_AddedEffectList.end(), AE_LIGHT_DISTANCE) != m_AddedEffectList.end())
-            m_nAddedSearchDistance = cocos2d::random(1, 3);
+            m_nAddedSearchDistance = 1;
         
         if(std::find(m_AddedEffectList.begin(), m_AddedEffectList.end(), AE_MAX_HP) != m_AddedEffectList.end())
             m_nAddedMaxHP = cocos2d::random(300, 550);
