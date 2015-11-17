@@ -127,10 +127,12 @@ void PopupUILayerManager::resetPopupType(ePopupType type)
     {
         if (type == m_cCurrentPopUpType)
         {
+            //关闭的是m_currentPopUpType
             m_cCurrentPopUpType = m_lTypeList.front();
             m_lTypeList.pop_front();
         }else
         {
+            //关闭的不是m_currentPopUpType而是list里的，此时m_currentPopUpType不变
             std::list<ePopupType> typeList;
             typeList.clear();
             for (auto iter = m_lTypeList.begin(); iter != m_lTypeList.end(); iter++) {
@@ -206,6 +208,8 @@ cocos2d::Color3B PopupUILayerManager::getTipsColor(TipTypes tipType)
             return cocos2d::Color3B(255,255,0);   //暴击
         case TIP_EFFECT:
             return cocos2d::Color3B(107, 216, 176);
+        case TIP_BLUE:
+            return cocos2d::Color3B(0, 127, 224);
         default:
             break;
     }

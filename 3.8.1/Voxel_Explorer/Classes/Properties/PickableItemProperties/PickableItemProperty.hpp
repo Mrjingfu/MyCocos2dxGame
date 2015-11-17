@@ -78,6 +78,7 @@ public:
     CChaosNumber getValueCopper() const { return m_nValueCopper; }
     std::string getName() const { return m_strName; }
     std::string getDesc() const { return m_strDesc; }
+    std::string getBeforeIndentifyDesc() const {return m_strBeforeIndentifyDesc;}
     std::string getIconRes() const { return m_strIconRes; }
     bool isIdentified() const { return m_bIdentified; }
     void setIdentified(bool identified) { m_bIdentified = identified; }

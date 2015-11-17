@@ -112,5 +112,9 @@
 	<string>任务物品</string>
 	<key>ITEM_PROP_TYPE_SUNDRIES</key>
 	<string>杂物</string>
+	<key>USE_POTION_ TREAT</key>
+	<string>+%d HP</string>
+	<key>USE_POTION_ MAGIC</key>
+	<string>+%d MP</string>
 </dict>
 </plist>

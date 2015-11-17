@@ -110,6 +110,10 @@
 	<string>MATERIAL</string>
 	<key>ITEM_PROP_TYPE_QUEST</key>
 	<string>QUEST</string>
+	<key>USE_POTION_ TREAT</key>
+	<string>+%d HP</string>
+	<key>USE_POTION_ MAGIC</key>
+	<string>+%d MP</string>
 	<key>ITEM_PROP_TYPE_SUNDRIES</key>
 	<string>SUNDRIES</string>
 </dict>

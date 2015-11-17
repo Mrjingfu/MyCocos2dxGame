@@ -247,8 +247,8 @@ void MagicOrnamentProperty::handleIdentify()
                 addedEffectCount = cocos2d::random(3, 4);
         }
     }
-    int index = cocos2d::random(0, int(sOrnamentAddedEffects.size()-1));
     while (m_AddedEffectList.size() < addedEffectCount.GetLongValue()) {
+        int index = cocos2d::random(0, int(sOrnamentAddedEffects.size()-1));
         if(std::find(m_AddedEffectList.begin(), m_AddedEffectList.end(), sOrnamentAddedEffects[index]) != m_AddedEffectList.end())
             continue;
         else

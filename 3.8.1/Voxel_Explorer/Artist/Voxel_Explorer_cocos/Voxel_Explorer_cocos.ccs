@@ -48,6 +48,11 @@
           <PlistImageFile Name="ui_lock_icon.png" Key="ui_lock_icon.png" />
           <PlistImageFile Name="ui_pause_icon.png" Key="ui_pause_icon.png" />
           <PlistImageFile Name="ui_dist_icon.png" Key="ui_dist_icon.png" />
+          <PlistImageFile Name="ui_armor_icon.png" Key="ui_armor_icon.png" />
+          <PlistImageFile Name="ui_identify_icon.png" Key="ui_identify_icon.png" />
+          <PlistImageFile Name="ui_ornament_icon.png" Key="ui_ornament_icon.png" />
+          <PlistImageFile Name="ui_secondweapon_icon.png" Key="ui_secondweapon_icon.png" />
+          <PlistImageFile Name="ui_weapon_icon.png" Key="ui_weapon_icon.png" />
         </PlistImageFolder>
         <Project Name="characterLayer.csd" Type="Layer" />
         <Project Name="gameScene.csd" Type="Scene" />

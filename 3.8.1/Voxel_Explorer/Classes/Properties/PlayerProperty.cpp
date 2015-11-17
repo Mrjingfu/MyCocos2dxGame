@@ -443,6 +443,22 @@ bool PlayerProperty::equipOrnaments(CChaosNumber id)
 }
 bool PlayerProperty::indentifyItem(CChaosNumber id)
 {
+    bool hasIndentifyScroll = false;
+    std::vector<PickableItemProperty*>::const_iterator iter;
+    for (iter = m_Bag.begin(); iter != m_Bag.end(); iter++) {
+        if((*iter) != nullptr)
+        {
+            ScrollProperty* scrollProperty = dynamic_cast<ScrollProperty*>(*iter);
+            if(scrollProperty && (scrollProperty->getPickableItemType() == PickableItem::PIT_SCROLL_INDENTIFY) && (scrollProperty->getCount() >= 1))
+            {
+                scrollProperty->decreaseCount();
+                hasIndentifyScroll = true;
+                break;
+            }
+        }
+    }
+    if(!hasIndentifyScroll)
+        return false;
     PickableItemProperty* pickableItemProperty = static_cast<PickableItemProperty*>(getItemFromBag(id));
     if(pickableItemProperty && !pickableItemProperty->isIdentified())
     {
