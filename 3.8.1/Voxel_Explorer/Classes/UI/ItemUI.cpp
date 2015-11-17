@@ -48,7 +48,7 @@ bool ItemUI::init()
     setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
     m_pItemImage = ui::ImageView::create("A_Armor04.png",TextureResType::LOCAL);
     m_pItemImage->setPosition(Vec2(getContentSize().width*0.5, getContentSize().width*0.45));
-    m_pItemImage->setScale(0.8);
+    m_pItemImage->setScale(0.9);
     m_pItemImage->setVisible(false);
     m_pItemImage->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
     addChild(m_pItemImage,2);
@@ -63,21 +63,28 @@ bool ItemUI::init()
     m_pItemCount = ui::Text::create("", UtilityHelper::getLocalString("FONT_NAME"), 36);
     m_pItemCount->setScale(0.25);
     m_pItemCount->setAnchorPoint(Vec2::ANCHOR_BOTTOM_RIGHT);
-    m_pItemCount->setPosition(Vec2(getContentSize().width*0.65, getContentSize().height*0.75));
+    m_pItemCount->setPosition(Vec2(getContentSize().width*0.85, getContentSize().height*0.75));
     addChild(m_pItemCount,3);
     
     m_pItemCount->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
     m_pItemCount->setVisible(false);
     
     
+    m_pIndentifymark = ui::ImageView::create("ui_identify_icon.png",TextureResType::PLIST);
+    m_pIndentifymark->setScale9Enabled(true);
+    m_pIndentifymark->setContentSize(getContentSize());
+    m_pIndentifymark->setPosition(Vec2(getContentSize().width*0.5, getContentSize().width*0.5));
+    m_pIndentifymark->setVisible(false);
+    m_pIndentifymark->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
+    addChild(m_pIndentifymark,4);
     
     return true;
 }
-void ItemUI::addItem(int _itemId,std::string itemIcon)
+void ItemUI::addItem(int _itemId,std::string itemIcon,PICKABLEITEM_QUALITY Quality)
 {
-    addItem(_itemId, itemIcon, 0);
+    addItem(_itemId, itemIcon,Quality,0);
 }
-void ItemUI::addItem(int _itemId, std::string itemIcon, int itemNum)
+void ItemUI::addItem(int _itemId, std::string itemIcon, PICKABLEITEM_QUALITY Quality, int itemNum)
 {
     if (m_pItemImage) {
         m_pItemImage->setVisible(true);
@@ -85,16 +92,31 @@ void ItemUI::addItem(int _itemId, std::string itemIcon, int itemNum)
         m_pItemImage->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
         
     }
-
+    
     std::string num = StringUtils::format("X%d",itemNum);
     if (m_pItemCount && itemNum >1) {
         m_pItemCount->setString(num);
         m_pItemCount->setVisible(true);
     }
     
+    switch (Quality) {
+        case PIQ_GENERAL:
+            setBackGroundImageColor(Color3B::WHITE);
+            break;
+        case PIQ_RARE:
+            setBackGroundImageColor(Color3B::BLUE);
+            break;
+        case PIQ_EPIC:
+            setBackGroundImageColor(Color3B(255,0,255));
+            break;
+        case PIQ_LEGEND:
+            setBackGroundImageColor(Color3B(250,128,10));
+            break;
+    }
     _isHaveItem = true;
     m_nItemId = _itemId;
 }
+
 
 void ItemUI::removeItem()
 {
@@ -107,12 +129,22 @@ void ItemUI::removeItem()
     if (m_pEquipmark) {
         m_pEquipmark->setVisible(false);
     }
+    if (m_pIndentifymark) {
+        m_pIndentifymark->setVisible(false);
+    }
     _isHaveItem = false;
     _isEquip = false;
+    
 }
 void ItemUI::setEquipEnable(bool enable)
 {
     _isEquip = enable;
     if (m_pEquipmark)
          m_pEquipmark->setVisible(_isEquip);
+}
+void ItemUI::setIndentify()
+{
+    if (m_pIndentifymark) {
+        m_pIndentifymark->setVisible(true);
+    }
 }

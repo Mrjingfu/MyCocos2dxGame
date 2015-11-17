@@ -189,6 +189,11 @@
             <filename>../ui/ui_lock_icon.png</filename>
             <filename>../ui/ui_pause_icon.png</filename>
             <filename>../ui/ui_dist_icon.png</filename>
+            <filename>../ui/ui_armor_icon.png</filename>
+            <filename>../ui/ui_identify_icon.png</filename>
+            <filename>../ui/ui_ornament_icon.png</filename>
+            <filename>../ui/ui_secondweapon_icon.png</filename>
+            <filename>../ui/ui_weapon_icon.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

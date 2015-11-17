@@ -45,14 +45,14 @@ RolePopupUI::~RolePopupUI()
 void RolePopupUI::onEnter()
 {
 
-    EventListenerCustom *listener = EventListenerCustom::create(EVENT_PLAYER_PROPERTY_DIRTY, CC_CALLBACK_1(RolePopupUI::onEventUpdateData,this));
-    Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener,this);
+//    EventListenerCustom *listener = EventListenerCustom::create(EVENT_PLAYER_PROPERTY_DIRTY, CC_CALLBACK_1(RolePopupUI::onEventUpdateData,this));
+//    Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener,this);
 
     PopupUILayer::onEnter();
 }
 void RolePopupUI::onExit()
 {
-    Director::getInstance()->getEventDispatcher()->removeEventListenersForTarget(this);
+//    Director::getInstance()->getEventDispatcher()->removeEventListenersForTarget(this);
     PopupUILayer::onExit();
 }
 bool RolePopupUI::initUi()
@@ -127,19 +127,23 @@ bool RolePopupUI::initUi()
     
     
     m_pWeaponUi = ItemUI::create();
+    m_pWeaponUi->setBackGroundImage("ui_weapon_icon.png",TextureResType::PLIST);
     m_pWeaponUi->setPosition(Vec2(m_pWeaponUi->getContentSize().width*0.5+8, equipFrame->getContentSize().height*0.5));
     equipFrame->addChild(m_pWeaponUi);
     
     
     m_pSecondWeaponUi = ItemUI::create();
+    m_pSecondWeaponUi->setBackGroundImage("ui_secondweapon_icon.png",TextureResType::PLIST);
     m_pSecondWeaponUi->setPosition(Vec2(m_pWeaponUi->getContentSize().width*0.5+8+m_pWeaponUi->getContentSize().width*1+2, equipFrame->getContentSize().height*0.5));
     equipFrame->addChild(m_pSecondWeaponUi);
 
     m_pArmorUi = ItemUI::create();
+    m_pArmorUi->setBackGroundImage("ui_armor_icon.png",TextureResType::PLIST);
     m_pArmorUi->setPosition(Vec2(m_pWeaponUi->getContentSize().width*0.5+8+m_pWeaponUi->getContentSize().width*2+4, equipFrame->getContentSize().height*0.5));
     equipFrame->addChild(m_pArmorUi);
     
     m_pOrnamentUi = ItemUI::create();
+    m_pOrnamentUi->setBackGroundImage("ui_ornament_icon.png",TextureResType::PLIST);
     m_pOrnamentUi->setPosition(Vec2(m_pWeaponUi->getContentSize().width*0.5+8+m_pWeaponUi->getContentSize().width*3+6, equipFrame->getContentSize().height*0.5));
     equipFrame->addChild(m_pOrnamentUi);
 
@@ -194,7 +198,14 @@ void RolePopupUI::onClickChnageBag(Ref* ref)
 void RolePopupUI::onClickColse(Ref* ref)
 {
     CHECK_ACTION(ref);
-     closePopup();
+    if (_isOpenIdentify) {
+        _isOpenIdentify = false;
+        updateItems();
+    }else
+    {
+        closePopup();
+    }
+    
 }
 
 void RolePopupUI::updateItems()
@@ -220,27 +231,31 @@ void RolePopupUI::updateItems()
             CCLOG("weaponId:%d armorId:%d OrnamentId:%d secondWeaponId:%d itemid:%d",weaponId,armorId,OrnamentId,secondWeaponId,itemProp->getInstanceID());
             if ( m_pWeaponUi && itemProp->getInstanceID() == weaponId) {
                 itemUi->setEquipEnable(true);
-                m_pWeaponUi->addItem(itemProp->getInstanceID(), itemProp->getIconRes());
+                m_pWeaponUi->addItem(itemProp->getInstanceID(), itemProp->getIconRes(),PIQ_GENERAL);
             }
             if (m_pArmorUi &&  itemProp->getInstanceID() == armorId) {
                 itemUi->setEquipEnable(true);
-                m_pArmorUi->addItem(itemProp->getInstanceID(), itemProp->getIconRes());
+                m_pArmorUi->addItem(itemProp->getInstanceID(), itemProp->getIconRes(),PIQ_GENERAL);
             }
             if (m_pOrnamentUi &&  itemProp->getInstanceID() == OrnamentId) {
                 itemUi->setEquipEnable(true);
-                m_pOrnamentUi->addItem(itemProp->getInstanceID(), itemProp->getIconRes());
+                m_pOrnamentUi->addItem(itemProp->getInstanceID(), itemProp->getIconRes(),PIQ_GENERAL);
             }
             if (m_pSecondWeaponUi &&  itemProp->getInstanceID() == secondWeaponId) {
                 itemUi->setEquipEnable(true);
-                m_pSecondWeaponUi->addItem(itemProp->getInstanceID(), itemProp->getIconRes());
+                m_pSecondWeaponUi->addItem(itemProp->getInstanceID(), itemProp->getIconRes(),PIQ_GENERAL);
             }
             //查看是否可以合并
             if(itemProp->isStackable())
             {
                 int count = itemProp->getCount();
-                itemUi->addItem(itemProp->getInstanceID(), itemProp->getIconRes(),count);
+                itemUi->addItem(itemProp->getInstanceID(), itemProp->getIconRes(),itemProp->getQuality(),count);
             }else
-                itemUi->addItem(itemProp->getInstanceID(), itemProp->getIconRes());
+                itemUi->addItem(itemProp->getInstanceID(), itemProp->getIconRes(),itemProp->getQuality());
+            //如果使用鉴定卷轴 更新itemUi
+            if (_isOpenIdentify && !itemProp->isIdentified()) {
+                itemUi->setIndentify();
+            }
         }
 
     }
@@ -251,25 +266,38 @@ void RolePopupUI::selectItemEvent(cocos2d::Ref *pSender, TGridView::EventType ty
     if (type==TGridView::EventType::ON_SELECTED_ITEM_END) {
         TGridView* gridView = static_cast<TGridView*>(pSender);
         ItemUI* currentItem = static_cast<ItemUI*>(gridView->getItem(gridView->getCurSelectedIndex()));
-        bool isSuccess = false;
+        PickableItemProperty* itemProp = PlayerProperty::getInstance()->getItemFromBag(CChaosNumber(gridView->getCurSelectedIndex()));
         if (currentItem && currentItem->isHaveItem()) {
-            if (_isOpenIdentify) {
-                isSuccess =PlayerProperty::getInstance()->indentifyItem(currentItem->getItemId());
-            }else{
-                
-                isSuccess = true;
-            }
-            if (isSuccess) {
+            //使用鉴定卷轴 只能点击未鉴定的物品
+            if (_isOpenIdentify ) {
+                if (!itemProp->isIdentified()) {
+                    CCLOG("select itemid:%d",currentItem->getItemId());
+                    bool isSuccess = PlayerProperty::getInstance()->indentifyItem(CChaosNumber(currentItem->getItemId()));
+                    _isOpenIdentify =false;
+                    if (isSuccess) {
+                        CCLOG("鉴定成功");
+                        ItemPopupUI* popupui = static_cast<ItemPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupType::ePopupItem));
+                        if (popupui) {
+                            popupui->registerCloseCallback(CC_CALLBACK_0(RolePopupUI::updateItems, this));
+                            popupui->updateItemPopup(currentItem->getItemId());
+                            CCLOG("select itemid = %d", currentItem->getItemId());
+                        }
+                    }else{
+                        CCLOG("鉴定失败");
+                        
+                    }
+                }
+               
+            }else
+            {
+                //未使用鉴定卷轴 正常打开
                 ItemPopupUI* popupui = static_cast<ItemPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupType::ePopupItem));
                 if (popupui) {
+                    popupui->registerCloseCallback(CC_CALLBACK_0(RolePopupUI::updateItems, this));
                     popupui->updateItemPopup(currentItem->getItemId());
                     CCLOG("select itemid = %d", currentItem->getItemId());
-                    
                 }
-            }else{
-                CCLOG("鉴定失败");
             }
-            
             
         }
     }

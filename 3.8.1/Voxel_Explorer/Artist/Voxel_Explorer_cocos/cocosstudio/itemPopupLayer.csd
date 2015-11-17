@@ -80,13 +80,13 @@
                     <OutlineColor A="255" R="255" G="0" B="0" />
                     <ShadowColor A="255" R="110" G="110" B="110" />
                   </AbstractNodeData>
-                  <AbstractNodeData Name="item_prop_not_idn" ActionTag="1415611447" Tag="65" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="87.6721" RightMargin="-55.6721" TopMargin="31.3717" BottomMargin="-30.3717" FontSize="36" LabelText="未鉴定" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
-                    <Size X="108.0000" Y="43.0000" />
+                  <AbstractNodeData Name="item_prop_not_idn" ActionTag="1415611447" Tag="65" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="59.1687" RightMargin="-47.1687" TopMargin="2.8726" BottomMargin="-1.8726" FontSize="36" LabelText="[未鉴定]" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
+                    <Size X="128.0000" Y="43.0000" />
                     <AnchorPoint ScaleY="1.0000" />
-                    <Position X="87.6680" Y="12.6280" />
+                    <Position X="59.1640" Y="41.1268" />
                     <Scale ScaleX="0.2000" ScaleY="0.2000" />
-                    <CColor A="255" R="144" G="238" B="144" />
-                    <PrePosition X="0.6262" Y="0.2870" />
+                    <CColor A="255" R="255" G="0" B="0" />
+                    <PrePosition X="0.4226" Y="0.9347" />
                     <PreSize X="0.5714" Y="2.0455" />
                     <FontResource Type="Normal" Path="fonts/fangz.TTF" Plist="" />
                     <OutlineColor A="255" R="255" G="0" B="0" />
@@ -104,7 +104,7 @@
                 <EndColor A="255" R="255" G="255" B="255" />
                 <ColorVector ScaleY="1.0000" />
               </AbstractNodeData>
-              <AbstractNodeData Name="item_attr_layer" ActionTag="-1294983277" Tag="95" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="0.0001" RightMargin="-0.0001" TopMargin="44.0000" BottomMargin="-40.0000" TouchEnable="True" BackColorAlpha="102" ColorAngle="90.0000" ctype="PanelObjectData">
+              <AbstractNodeData Name="item_attr_layer" ActionTag="-1294983277" Tag="95" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" TopMargin="44.0000" BottomMargin="-40.0000" TouchEnable="True" BackColorAlpha="102" ColorAngle="90.0000" ctype="PanelObjectData">
                 <Size X="140.0000" Y="40.0000" />
                 <AnchorPoint ScaleX="0.5000" ScaleY="1.0000" />
                 <Position X="70.0000" />

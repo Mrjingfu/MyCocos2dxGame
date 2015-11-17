@@ -209,7 +209,7 @@ bool ItemPopupUI::addEvents()
     m_pItemMinHurt->setFontScale(0.25);
     m_pItemMaxHurt->setFontScale(0.25);
 
-    
+
     m_pAttrFrame->setLayoutType(ui::Layout::Type::VERTICAL);
     m_pItemDesc->setContentSize(cocos2d::Size(m_pAttrFrame->getContentSize().width,20));
     m_pItemBasicAtk->setContentSize(cocos2d::Size(m_pAttrFrame->getContentSize().width,20));
@@ -228,13 +228,13 @@ bool ItemPopupUI::addEvents()
     m_pItemName->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
     m_pItemlv->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
     m_pItemType->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
-    
+    m_pItemlv->setVisible(false);
     m_pItemEquipDist->setVisible(false);
     m_pItemNotIden->setVisible(false);
     m_pItemEquipDist->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
     m_pItemNotIden->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
     m_pItemNotIden->setString(UtilityHelper::getLocalStringForUi("ITEM_NOT_IDENTIFY"));
-    m_pItemEquipDist->setString(UtilityHelper::getLocalStringForUi("ITEM_ALREDY_EQUIP"));
+    
     
     m_pItemGoldIcon->setVisible(false);
     m_pItemSilverIcon->setVisible(false);
@@ -249,8 +249,14 @@ bool ItemPopupUI::addEvents()
 
 void ItemPopupUI::itemFrame()
 {
-    std::string str = "传说由来自天魔星的魔矿打造，会逐渐控制主人的心智，使之入魔。";
+    PickableItemProperty* itemprop = PlayerProperty::getInstance()->getItemFromBag(CChaosNumber(m_nItemId));
+    std::string str = itemprop->getDesc();
+    ui::LinearLayoutParameter* linerParmter = ui::LinearLayoutParameter::create();
+    linerParmter->setGravity(cocos2d::ui::LinearLayoutParameter::LinearGravity::CENTER_VERTICAL);
+    linerParmter->setMargin(ui::Margin(0,15,0,0));
+    
     m_pItemDesc->setItemText(str);
+    m_pItemDesc->setLayoutParameter(linerParmter);
     m_pAttrFrame->addChild(m_pItemDesc);
 }
 
@@ -258,6 +264,12 @@ void ItemPopupUI::IdentifyEquiipFrame()
 {
     PickableItemProperty* itemprop = PlayerProperty::getInstance()->getItemFromBag(CChaosNumber(m_nItemId));
     std::string str = "传说由来自天魔星的魔矿打造，会逐渐控制主人的心智，使之入魔。";
+    if (itemprop->isIdentified()) {
+        str = itemprop->getDesc();
+    }else
+    {
+        str= itemprop->getBeforeIndentifyDesc();
+    }
     
     std::vector<ADDED_EFFECT> effectList = itemprop->getAddedEffectList();
 //     std::vector<ADDED_EFFECT> effectList ={
@@ -289,7 +301,7 @@ void ItemPopupUI::IdentifyEquiipFrame()
         m_pItemBasicAtk->setItemText(StringUtils::format(UtilityHelper::getLocalStringForUi("EQUIP_PROP_ATTACK").c_str(),int(itemproperty->getMinAttack()),int(itemproperty->getMaxAttack())));
         m_pItemBasicAtk->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
         m_pAttrFrame->addChild(m_pItemBasicAtk);
-        
+
         ui::LinearLayoutParameter* linerParmter = ui::LinearLayoutParameter::create();
         linerParmter->setGravity(cocos2d::ui::LinearLayoutParameter::LinearGravity::CENTER_VERTICAL);
         linerParmter->setMargin(ui::Margin(0,-5,0,0));
@@ -402,7 +414,7 @@ void ItemPopupUI::IdentifyEquiipFrame()
     }else if (itemprop->getPickableItemPropertyType() == PickableItemProperty::PIPT_MAGIC_ORNAMENT)
     {
         MagicOrnamentProperty* itemproperty = static_cast<MagicOrnamentProperty*>(itemprop);
-        
+
         ui::LinearLayoutParameter* linerParmter = ui::LinearLayoutParameter::create();
         linerParmter->setGravity(cocos2d::ui::LinearLayoutParameter::LinearGravity::CENTER_VERTICAL);
         linerParmter->setMargin(ui::Margin(0,-5,0,0));
@@ -412,7 +424,8 @@ void ItemPopupUI::IdentifyEquiipFrame()
             if(effect ==AE_LIGHT_DISTANCE)
             {
                 m_pItemLightDis->setItemText(StringUtils::format(UtilityHelper::getLocalStringForUi("EQUIP_PROP_LIGHT").c_str(),int(itemproperty->getAddedLightDistance())),effectColor);
-                m_pItemLightDis->setLayoutParameter(linerParmter);
+                if (i!=0)
+                    m_pItemLightDis->setLayoutParameter(linerParmter);
                 m_pItemLightDis->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
                 m_pAttrFrame->addChild(m_pItemLightDis);
             }else if(effect ==AE_MAX_HP)
@@ -425,48 +438,56 @@ void ItemPopupUI::IdentifyEquiipFrame()
             }else if(effect ==AE_MAX_MP)
             {
                 m_pItemMp->setItemText(StringUtils::format(UtilityHelper::getLocalStringForUi("EQUIP_PROP_MP").c_str(),int(itemproperty->getAddedMaxMp())),effectColor);
-                m_pItemMp->setLayoutParameter(linerParmter);
+                if (i!=0)
+                    m_pItemMp->setLayoutParameter(linerParmter);
                 m_pItemMp->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
                 m_pAttrFrame->addChild(m_pItemMp);
             }else if(effect ==AE_MIN_ATTACK)
             {
                 m_pItemMinHurt->setItemText(StringUtils::format(UtilityHelper::getLocalStringForUi("EQUIP_PROP_MIN_HURT").c_str(),int(itemproperty->getAddedMinAttack())),effectColor);
-                m_pItemMinHurt->setLayoutParameter(linerParmter);
+                if (i!=0)
+                    m_pItemMinHurt->setLayoutParameter(linerParmter);
                 m_pItemMinHurt->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
                 m_pAttrFrame->addChild(m_pItemMinHurt);
             }else if(effect ==AE_MAX_ATTACK)
             {
                 m_pItemMaxHurt->setItemText(StringUtils::format(UtilityHelper::getLocalStringForUi("EQUIP_PROP_MAX_HURT").c_str(),int(itemproperty->getAddedMaxAttack())),effectColor);
-                m_pItemMaxHurt->setLayoutParameter(linerParmter);
+                if (i!=0)
+                    m_pItemMaxHurt->setLayoutParameter(linerParmter);
                 m_pItemMaxHurt->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
                 m_pAttrFrame->addChild(m_pItemMaxHurt);
             }else if(effect ==AE_MAGICITEM_FIND_RATE){
                 m_pItemMargicFind->setItemText(StringUtils::format(UtilityHelper::getLocalStringForUi("EQUIP_PROP_MAGIC").c_str(),int(itemproperty->getAddedMagicItemFindRate())),effectColor);
-                m_pItemMargicFind->setLayoutParameter(linerParmter);
+                if (i!=0)
+                    m_pItemMargicFind->setLayoutParameter(linerParmter);
                 m_pItemMargicFind->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
                 m_pAttrFrame->addChild(m_pItemMargicFind);
             }else if (effect ==AE_SEARCH_DISTANCE)
             {
                 m_pItemSearchDis->setItemText(StringUtils::format(UtilityHelper::getLocalStringForUi("EQUIP_PROP_SEQRCH").c_str(),int(itemproperty->getAddedSearchDistance())),effectColor);
-                m_pItemSearchDis->setLayoutParameter(linerParmter);
+                if (i!=0)
+                    m_pItemSearchDis->setLayoutParameter(linerParmter);
                 m_pItemSearchDis->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
                 m_pAttrFrame->addChild(m_pItemSearchDis);
             }else if (effect == AE_DODGE_RATE)
             {
                 m_pItemDodge->setItemText(StringUtils::format(UtilityHelper::getLocalStringForUi("EQUIP_PROP_DODGE").c_str(),int(itemproperty->getAddedMagicItemFindRate())),effectColor);
-                m_pItemDodge->setLayoutParameter(linerParmter);
+                if (i!=0)
+                    m_pItemDodge->setLayoutParameter(linerParmter);
                 m_pItemDodge->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
                 m_pAttrFrame->addChild(m_pItemDodge);
             }else if (effect == AE_BLOCK_RATE)
             {
                 m_pItemBlock->setItemText(StringUtils::format(UtilityHelper::getLocalStringForUi("EQUIP_PROP_BLOCK").c_str(),int(itemproperty->getAddedMagicItemFindRate())),effectColor);
-                m_pItemBlock->setLayoutParameter(linerParmter);
+                if (i!=0)
+                    m_pItemBlock->setLayoutParameter(linerParmter);
                 m_pItemBlock->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
                 m_pAttrFrame->addChild(m_pItemBlock);
             }else if (effect == AE_CRITICALSTRICK_RATE)
             {
                 m_pItemCriticalStrike->setItemText(StringUtils::format(UtilityHelper::getLocalStringForUi("EQUIP_PROP_CRITICAL_STRIKE").c_str(),int(itemproperty->getAddedMagicItemFindRate())),effectColor);
-                m_pItemCriticalStrike->setLayoutParameter(linerParmter);
+                if (i!=0)
+                    m_pItemCriticalStrike->setLayoutParameter(linerParmter);
                 m_pItemCriticalStrike->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
                 m_pAttrFrame->addChild(m_pItemCriticalStrike);
             }
@@ -489,61 +510,71 @@ void ItemPopupUI::IdentifyEquiipFrame()
             if(effect ==AE_LIGHT_DISTANCE)
             {
                 m_pItemLightDis->setItemText(StringUtils::format(UtilityHelper::getLocalStringForUi("EQUIP_PROP_LIGHT").c_str(),int(itemproperty->getAddedLightDistance())),effectColor);
-                m_pItemLightDis->setLayoutParameter(linerParmter);
+                if (i!=0)
+                    m_pItemLightDis->setLayoutParameter(linerParmter);
                 m_pItemLightDis->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
                 m_pAttrFrame->addChild(m_pItemLightDis);
             }else if(effect ==AE_MAX_HP)
             {
                 m_pItemHp->setItemText(StringUtils::format(UtilityHelper::getLocalStringForUi("EQUIP_PROP_HP").c_str(),int(itemproperty->getAddedMaxHp())),effectColor);
-                m_pItemHp->setLayoutParameter(linerParmter);
+                if (i!=0)
+                    m_pItemHp->setLayoutParameter(linerParmter);
                 m_pItemHp->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
                 m_pAttrFrame->addChild(m_pItemHp);
                 
             }else if(effect ==AE_MAX_MP)
             {
                 m_pItemMp->setItemText(StringUtils::format(UtilityHelper::getLocalStringForUi("EQUIP_PROP_MP").c_str(),int(itemproperty->getAddedMaxMp())),effectColor);
-                m_pItemMp->setLayoutParameter(linerParmter);
+                if (i!=0)
+                    m_pItemMp->setLayoutParameter(linerParmter);
                 m_pItemMp->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
                 m_pAttrFrame->addChild(m_pItemMp);
             }else if(effect ==AE_MIN_ATTACK)
             {
                 m_pItemMinHurt->setItemText(StringUtils::format(UtilityHelper::getLocalStringForUi("EQUIP_PROP_MIN_HURT").c_str(),int(itemproperty->getAddedMinAttack())),effectColor);
-                m_pItemMinHurt->setLayoutParameter(linerParmter);
+                if (i!=0)
+                    m_pItemMinHurt->setLayoutParameter(linerParmter);
                 m_pItemMinHurt->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
                 m_pAttrFrame->addChild(m_pItemMinHurt);
             }else if(effect ==AE_MAX_ATTACK)
             {
                 m_pItemMaxHurt->setItemText(StringUtils::format(UtilityHelper::getLocalStringForUi("EQUIP_PROP_MAX_HURT").c_str(),int(itemproperty->getAddedMaxAttack())),effectColor);
-                m_pItemMaxHurt->setLayoutParameter(linerParmter);
+                if (i!=0)
+                    m_pItemMaxHurt->setLayoutParameter(linerParmter);
                 m_pItemMaxHurt->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
                 m_pAttrFrame->addChild(m_pItemMaxHurt);
             }else if(effect ==AE_MAGICITEM_FIND_RATE){
                 m_pItemMargicFind->setItemText(StringUtils::format(UtilityHelper::getLocalStringForUi("EQUIP_PROP_MAGIC").c_str(),int(itemproperty->getAddedMagicItemFindRate())),effectColor);
-                m_pItemMargicFind->setLayoutParameter(linerParmter);
+                if (i!=0)
+                    m_pItemMargicFind->setLayoutParameter(linerParmter);
                 m_pItemMargicFind->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
                 m_pAttrFrame->addChild(m_pItemMargicFind);
             }else if (effect ==AE_SEARCH_DISTANCE)
             {
                 m_pItemSearchDis->setItemText(StringUtils::format(UtilityHelper::getLocalStringForUi("EQUIP_PROP_SEQRCH").c_str(),int(itemproperty->getAddedSearchDistance())),effectColor);
-                m_pItemSearchDis->setLayoutParameter(linerParmter);
+                if (i!=0)
+                    m_pItemSearchDis->setLayoutParameter(linerParmter);
                 m_pItemSearchDis->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
                 m_pAttrFrame->addChild(m_pItemSearchDis);
             }else if (effect == AE_DODGE_RATE)
             {
                 m_pItemDodge->setItemText(StringUtils::format(UtilityHelper::getLocalStringForUi("EQUIP_PROP_DODGE").c_str(),int(itemproperty->getAddedMagicItemFindRate())),effectColor);
-                m_pItemDodge->setLayoutParameter(linerParmter);
+                if (i!=0)
+                    m_pItemDodge->setLayoutParameter(linerParmter);
                 m_pItemDodge->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
                 m_pAttrFrame->addChild(m_pItemDodge);
             }else if (effect == AE_BLOCK_RATE)
             {
                 m_pItemBlock->setItemText(StringUtils::format(UtilityHelper::getLocalStringForUi("EQUIP_PROP_BLOCK").c_str(),int(itemproperty->getAddedMagicItemFindRate())),effectColor);
-                m_pItemBlock->setLayoutParameter(linerParmter);
+                if (i!=0)
+                    m_pItemBlock->setLayoutParameter(linerParmter);
                 m_pItemBlock->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
                 m_pAttrFrame->addChild(m_pItemBlock);
             }else if (effect == AE_CRITICALSTRICK_RATE)
             {
                 m_pItemCriticalStrike->setItemText(StringUtils::format(UtilityHelper::getLocalStringForUi("EQUIP_PROP_CRITICAL_STRIKE").c_str(),int(itemproperty->getAddedMagicItemFindRate())),effectColor);
-                m_pItemCriticalStrike->setLayoutParameter(linerParmter);
+                if (i!=0)
+                    m_pItemCriticalStrike->setLayoutParameter(linerParmter);
                 m_pItemCriticalStrike->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
                 m_pAttrFrame->addChild(m_pItemCriticalStrike);
             }
@@ -563,7 +594,7 @@ void ItemPopupUI::updateItemPopup(int itemId)
     PickableItemProperty* itemprop = PlayerProperty::getInstance()->getItemFromBag(CChaosNumber(m_nItemId));
     m_pItemIcon->loadTexture(itemprop->getIconRes());
     m_pItemName->setString(itemprop->getName());
-    m_pItemlv->setString(StringUtils::format("LV.%ld",itemprop->getLevel().GetLongValue()));
+    
     CChaosNumber goldNum = 0;
     CChaosNumber silverNum = 0;
     CChaosNumber copperNum = 0;
@@ -618,6 +649,8 @@ void ItemPopupUI::updateItemPopup(int itemId)
         itemtype ==PickableItemProperty::PIPT_ARMOR ||itemtype ==PickableItemProperty::PIPT_MAGIC_ORNAMENT ) {
         
         m_pBtnEquip->addClickEventListener(CC_CALLBACK_1(ItemPopupUI::onClickEquip, this));
+        m_pItemlv->setVisible(true);
+        m_pItemlv->setString(StringUtils::format("LV.%ld",itemprop->getLevel().GetLongValue()));
         
         if (itemprop->isEquipable() ) {
             if (PlayerProperty::getInstance()->getEquipedWeaponID() == m_nItemId ||
@@ -625,6 +658,7 @@ void ItemPopupUI::updateItemPopup(int itemId)
                 PlayerProperty::getInstance()->getEquipedOrnamentsID() == m_nItemId||
                 PlayerProperty::getInstance()->getEquipedSecondWeaponID() == m_nItemId){
                 m_pItemEquipDist->setVisible(true);
+                m_pItemEquipDist->setString(UtilityHelper::getLocalStringForUi("ITEM_ALREDY_EQUIP"));
                 m_pBtnDiscard->setVisible(false);
                 m_pBtnEquip->setVisible(false);
             }
@@ -637,16 +671,16 @@ void ItemPopupUI::updateItemPopup(int itemId)
         }
         
         if (itemprop->isIdentified()) {
-            m_pItemNotIden->setVisible(true);
+            m_pItemNotIden->setVisible(false);
         }else
         {
-            m_pItemNotIden->setVisible(false);
+            m_pItemNotIden->setVisible(true);
             
         }
         IdentifyEquiipFrame();
     }else{
          m_pBtnEquip->addClickEventListener(CC_CALLBACK_1(ItemPopupUI::onClickUser, this));
-        itemFrame();
+         itemFrame();
     }
     
     m_pItemIcon->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
@@ -674,14 +708,13 @@ void ItemPopupUI::onClickUser(cocos2d::Ref *ref)
         isItemUse = PlayerProperty::getInstance()->useScroll(CChaosNumber(m_nItemId));
     }else if (itemtype == PickableItemProperty::PIPT_KEY)
     {
-//         PlayerProperty::getInstance()->useKey(itemprop->getPickableItemType());
+         PlayerProperty::getInstance()->useKey(itemprop->getPickableItemType());
     }
-    if (isItemUse) {
-        PopupUILayerManager::getInstance()->closeAllPopup();
-    }else{
+    if (!isItemUse) {
+      
         CCLOG("使用道具失败");
     }
-    
+
 }
 void ItemPopupUI::onClickEquip(cocos2d::Ref *ref)
 {

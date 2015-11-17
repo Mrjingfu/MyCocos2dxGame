@@ -291,8 +291,8 @@ void SecondWeaponProperty::handleIdentify()
     
     if(m_ItemType >= PickableItem::PIT_BOW_SHORTBOW && m_ItemType <= PickableItem::PIT_BOW_PRO_GOLDENBOW)
     {
-        int index = cocos2d::random(0, int(sBowAddedEffects.size()-1));
         while (m_AddedEffectList.size() < addedEffectCount.GetLongValue()) {
+            int index = cocos2d::random(0, int(sBowAddedEffects.size()-1));
             if(std::find(m_AddedEffectList.begin(), m_AddedEffectList.end(), sBowAddedEffects[index]) != m_AddedEffectList.end())
                 continue;
             else
@@ -301,8 +301,8 @@ void SecondWeaponProperty::handleIdentify()
     }
     else if(m_ItemType >= PickableItem::PIT_STAFF_OAKSTAFF && m_ItemType <= PickableItem::PIT_STAFF_PRO_MONKSTAFF)
     {
-        int index = cocos2d::random(0, int(sStaffAddedEffects.size()-1));
         while (m_AddedEffectList.size() < addedEffectCount.GetLongValue()) {
+            int index = cocos2d::random(0, int(sStaffAddedEffects.size()-1));
             if(std::find(m_AddedEffectList.begin(), m_AddedEffectList.end(), sStaffAddedEffects[index]) != m_AddedEffectList.end())
                 continue;
             else
@@ -311,8 +311,8 @@ void SecondWeaponProperty::handleIdentify()
     }
     else if(m_ItemType >= PickableItem::PIT_SHIELD_WOODENSHIELD && m_ItemType <= PickableItem::PIT_SHIELD_PRO_TOWERSHIELD)
     {
-        int index = cocos2d::random(0, int(sShieldAddedEffects.size()-1));
         while (m_AddedEffectList.size() < addedEffectCount.GetLongValue()) {
+            int index = cocos2d::random(0, int(sShieldAddedEffects.size()-1));
             if(std::find(m_AddedEffectList.begin(), m_AddedEffectList.end(), sShieldAddedEffects[index]) != m_AddedEffectList.end())
                 continue;
             else

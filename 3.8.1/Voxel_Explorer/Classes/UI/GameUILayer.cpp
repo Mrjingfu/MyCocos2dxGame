@@ -394,23 +394,81 @@ bool GameUILayer::checkSearchMapInfo(const cocos2d::Ray ray,std::string& infoIco
 void GameUILayer::onEvenetUserPotion(cocos2d::EventCustom *sender)
 {
     CCLOG("onEvenetUserPotion");
+    PopupUILayerManager::getInstance()->closeCurrentPopup();
+    
+    //窗口都未关闭,回调后来判断是否关闭
     Vec2 pt = VoxelExplorer::getInstance()->getMainCamera()->projectGL(VoxelExplorer::getInstance()->getPlayer()->getPosition3D());
     pt = Vec2(pt.x, pt.y+TerrainTile::CONTENT_SCALE*2.5);
     PotionsProperty* potionsProperty = static_cast<PotionsProperty*>(sender->getUserData());
-    PopupUILayerManager::getInstance()->showStatus(TIP_NEUTRAL, Value(int(potionsProperty->getValue())).asString(),pt);
+    PickableItem::PickableItemType itemType = potionsProperty->getPickableItemType();
+    switch (itemType) {
+        case PickableItem::PIT_POTION_MINORHEALTH:
+        case PickableItem::PIT_POTION_LESSERHEALTH:
+        case PickableItem::PIT_POTION_HEALTH:
+            CCLOG("使用治疗药水");
+            PopupUILayerManager::getInstance()->showStatus(TIP_POSITIVE, StringUtils::format(UtilityHelper::getLocalStringForUi("USE_POTION_ TREAT").c_str(),int(potionsProperty->getValue())),pt);
+             PopupUILayerManager::getInstance()->closeCurrentPopup();
+            //治疗药水
+            break;
+        case PickableItem::PIT_POTION_MINORMANA:
+        case PickableItem::PIT_POTION_LESSERMANA:
+        case PickableItem::PIT_POTION_MANA:
+            CCLOG("使用魔法药水");
+            //魔法药水
+            PopupUILayerManager::getInstance()->showStatus(TIP_BLUE, StringUtils::format(UtilityHelper::getLocalStringForUi("USE_POTION_ MAGIC").c_str(),int(potionsProperty->getValue())),pt);
+             PopupUILayerManager::getInstance()->closeCurrentPopup();
+            break;
+        case PickableItem::PIT_POTION_MINORRECOVERY:
+        case PickableItem::PIT_POTION_LESSERRECOVERY:
+        case PickableItem::PIT_POTION_RECOVERY:
+            //恢复药水
+            CCLOG("恢复药水");
+            break;
+        case PickableItem::PIT_POTION_DETOXIFICATION:
+        case PickableItem::PIT_POTION_SPECIFIC:
+            //解毒药水
+            CCLOG("解毒药水");
+            break;
+        default:
+            break;
+    }
+
 }
 void GameUILayer::onEvenetUserScroll(cocos2d::EventCustom *sender)
 {
+    PopupUILayerManager::getInstance()->closeCurrentPopup();
+    //窗口都未关闭,回调后来判断是否关闭
     CCLOG("onEvenetUserScroll");
     ScrollProperty* scrollProperty = static_cast<ScrollProperty*>(sender->getUserData());
+    
     if (scrollProperty->getPickableItemType() == PickableItem::PIT_SCROLL_INDENTIFY)
     {
-        RolePopupUI* rolePopup = static_cast<RolePopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupRole));
-        if (rolePopup)
+         //鉴定卷轴
+        PopupUILayer* popup = nullptr;
+        RolePopupUI* rolePopup = nullptr;
+        if(PopupUILayerManager::getInstance()->isOpenPopup(ePopupRole, popup)){
+            rolePopup = static_cast<RolePopupUI*>(popup);
+        }else{
+            rolePopup = static_cast<RolePopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupRole));
+        }
+        if (rolePopup) {
             rolePopup->setStateIdentify(true);
-    }else
-    {
+        }
         
+    }else if(scrollProperty->getPickableItemType() == PickableItem::PIT_SCROLL_TELEPORT)
+    {
+        //传送卷轴
+    }else if(scrollProperty->getPickableItemType() == PickableItem::PIT_SCROLL_SPEED)
+    {
+        //速度卷轴
+
+    }else if(scrollProperty->getPickableItemType() == PickableItem::PIT_SCROLL_STEALTH)
+    {
+        //隐身卷轴
+//        
+    }else if(scrollProperty->getPickableItemType() == PickableItem::PIT_SCROLL_DESTINY)
+    {
+       //命运卷轴
     }
 }
 
@@ -520,7 +578,7 @@ void GameUILayer::onEventUpdateMonsterProp(cocos2d::EventCustom *sender)
     BaseMonster* monster = static_cast<BaseMonster*>(sender->getUserData());
     if (monster->getState() != BaseMonster::MonsterState::MS_DEATH) {
         m_pMonsterLayout->setVisible(true);
-        float hpPer =monster->getMonsterProperty()->getCurrentHP().GetFloatValue()/PlayerProperty::getInstance()->getMaxHP().GetFloatValue() *100.0f;
+        float hpPer =monster->getMonsterProperty()->getCurrentHP().GetFloatValue()/monster->getMonsterProperty()->getMaxHP().GetFloatValue() *100.0f;
         m_pMonsterHpBar->setPercent(hpPer);
         m_pMonsterCurHp->setString(StringUtils::format("%d",int(monster->getMonsterProperty()->getCurrentHP())));
         m_pMonsterMaxHp->setString(StringUtils::format("%d",int(monster->getMonsterProperty()->getMaxHP())));

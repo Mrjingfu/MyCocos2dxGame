@@ -21,7 +21,7 @@ public:
     virtual bool initUi() override;
     void onEnter() override;
     void onExit()override;
-     void setStateIdentify(bool state){_isOpenIdentify = state;}
+     void setStateIdentify(bool state){ _isOpenIdentify = state;}
 private:
     void onClickColse(Ref* ref);
     void onClickChnageBag(Ref*);
@@ -32,8 +32,9 @@ private:
     void onEventEquipArmor(cocos2d::EventCustom *sender);
     void onEventEquipOrnament(cocos2d::EventCustom *sender);
     void onEventExtendBag(cocos2d::EventCustom *sender);
+    
 private:
-    bool _isOpenIdentify;
+   bool _isOpenIdentify;
    TGridView* m_pGridView;
    cocos2d::ui::Button* m_pBtnClose;
    cocos2d::ui::Button* m_pBtnChangeBag;
