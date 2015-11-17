@@ -87,6 +87,8 @@
 		551E93F11BD512D3009F788F /* MemoryStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 551E93DE1BD512D3009F788F /* MemoryStream.cpp */; };
 		551E93F21BD512D3009F788F /* Stream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 551E93E01BD512D3009F788F /* Stream.cpp */; };
 		551E93F31BD512D3009F788F /* Stream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 551E93E01BD512D3009F788F /* Stream.cpp */; };
+		5529701B1BFB34ED00DBF75B /* Npc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 552970191BFB34ED00DBF75B /* Npc.cpp */; };
+		5529701C1BFB34ED00DBF75B /* Npc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 552970191BFB34ED00DBF75B /* Npc.cpp */; };
 		55338ACF1BD8781E00EA316F /* BaseMonster.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55338ACD1BD8781E00EA316F /* BaseMonster.cpp */; };
 		55338AD01BD8781E00EA316F /* BaseMonster.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55338ACD1BD8781E00EA316F /* BaseMonster.cpp */; };
 		55338AD51BD878BF00EA316F /* StandardMonster.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55338AD31BD878BF00EA316F /* StandardMonster.cpp */; };
@@ -331,6 +333,8 @@
 		551E93DF1BD512D3009F788F /* MemoryStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MemoryStream.h; sourceTree = "<group>"; };
 		551E93E01BD512D3009F788F /* Stream.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Stream.cpp; sourceTree = "<group>"; };
 		551E93E11BD512D3009F788F /* Stream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Stream.h; sourceTree = "<group>"; };
+		552970191BFB34ED00DBF75B /* Npc.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Npc.cpp; sourceTree = "<group>"; };
+		5529701A1BFB34ED00DBF75B /* Npc.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Npc.hpp; sourceTree = "<group>"; };
 		55338ACD1BD8781E00EA316F /* BaseMonster.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BaseMonster.cpp; sourceTree = "<group>"; };
 		55338ACE1BD8781E00EA316F /* BaseMonster.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BaseMonster.hpp; sourceTree = "<group>"; };
 		55338AD31BD878BF00EA316F /* StandardMonster.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StandardMonster.cpp; sourceTree = "<group>"; };
@@ -728,6 +732,15 @@
 			path = stream;
 			sourceTree = "<group>";
 		};
+		552970121BFB345E00DBF75B /* NPC */ = {
+			isa = PBXGroup;
+			children = (
+				552970191BFB34ED00DBF75B /* Npc.cpp */,
+				5529701A1BFB34ED00DBF75B /* Npc.hpp */,
+			);
+			path = NPC;
+			sourceTree = "<group>";
+		};
 		55338AD71BD891C000EA316F /* Boss */ = {
 			isa = PBXGroup;
 			children = (
@@ -851,6 +864,7 @@
 		55EC95761BC673690008D1D7 /* Sprites3D */ = {
 			isa = PBXGroup;
 			children = (
+				552970121BFB345E00DBF75B /* NPC */,
 				554F00F31BDA219E00F4DF8E /* Items */,
 				55338AD71BD891C000EA316F /* Boss */,
 				55407D781BD66E860000C41C /* Monsters */,
@@ -1104,6 +1118,7 @@
 				55338AEA1BD892C200EA316F /* Archbishop.cpp in Sources */,
 				ECECACC21BE7351600B14FFC /* ItemPopupUI.cpp in Sources */,
 				555B0D151BC51A2C0055FB6D /* AppDelegate.cpp in Sources */,
+				5529701B1BFB34ED00DBF75B /* Npc.cpp in Sources */,
 				555B0D1F1BC51A2C0055FB6D /* StandardLevel.cpp in Sources */,
 				551E93E21BD512D3009F788F /* CCCrypto.cpp in Sources */,
 				551E93AB1BD51282009F788F /* ChaosNumber.cpp in Sources */,
@@ -1190,6 +1205,7 @@
 				553BC50E1BCE5191003D907A /* StandardDoor.cpp in Sources */,
 				55EC95861BC6ABBA0008D1D7 /* TerrainTile.cpp in Sources */,
 				55F81CC11BDB9257002EC075 /* ScrollProperty.cpp in Sources */,
+				5529701C1BFB34ED00DBF75B /* Npc.cpp in Sources */,
 				551E93E31BD512D3009F788F /* CCCrypto.cpp in Sources */,
 				EC00DD5C1BD66586009BC378 /* MenuUILayer.cpp in Sources */,
 				EC6716461BCE7F2C00C81CFC /* LogoScene.cpp in Sources */,

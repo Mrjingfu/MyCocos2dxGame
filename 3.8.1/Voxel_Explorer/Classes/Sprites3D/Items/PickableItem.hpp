@@ -237,7 +237,7 @@ public:
         PIS_IDLE,
         PIS_FADEOUT,
         PIS_BEGIN_GENERATE,
-        PIS_
+        PIS_MAX,
     } PickableItemState;
     static PickableItem* create(PickableItemType type, CChaosNumber level);
     

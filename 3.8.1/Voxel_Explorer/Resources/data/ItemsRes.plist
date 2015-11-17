@@ -302,5 +302,17 @@
 	<string>P_Orange04</string>
 	<key>PIN_POTION_UNIVERSAL</key>
 	<string>P_Medicine09</string>
+	<key>UIN_CHEST_COPPER</key>
+	<string>copperchest</string>
+	<key>UIN_CHEST_SILVER</key>
+	<string>silverchest</string>
+	<key>UIN_CHEST_GOLD</key>
+	<string>goldchest</string>
+	<key>UIN_JAR_1</key>
+	<string>jar</string>
+	<key>UIN_JAR_2</key>
+	<string>jar2</string>
+	<key>UIN_JAR_3</key>
+	<string>jar3</string>
 </dict>
 </plist>
