@@ -96,24 +96,31 @@ public:
     
     cocos2d::Vec2 getSpawnPoint() const { return  m_spawnPoint; }
     
+    std::string getTerrainTileInfoDesc(int x, int y);
     void generateTerrainTiles(int x, int y , int width, int height, TerrainTile::TileType tileType, Area::AREA_TYPE areaType, Actor::ActorDir dir = Actor::AD_UNKNOWN);
     void setTerrainTile(int x, int y, TerrainTile::TileType tileType, Area::AREA_TYPE areaType , Actor::ActorDir dir = Actor::AD_UNKNOWN);
+    
+    bool isTerrainTilePassable(int index);
+    
     int getTerrainTileFlag(int x, int y);
     void setTerrainTileFlag(int x, int y, int flag );
     void wrapTerrainTiles(int x, int y , int width, int height, TerrainTile::TileType type, TerrainTile::TileType withType);
     
     void updateTerrainTileFogOfWar(int x, int y , int width, int height, bool visited);
+    void updateTrapTileByPos(const cocos2d::Vec2& pos);
     bool checkMovable(Actor* actor, TileInfo& info);
     
     bool getNextPathStep(const cocos2d::Vec2& from, const cocos2d::Vec2& to, cocos2d::Vec2& nextPos);
     cocos2d::Vec2 getRandomPassableTile();
     
+    bool hasShowMap() const { return m_bShowMap; }
     void load();
     void save();
     
 public:
     virtual void showMap(bool show) = 0;
     virtual void updateAreaFogOfWarByPos(const cocos2d::Vec2& pos) = 0;
+    virtual bool createSummoningMonsters(const cocos2d::Vec2& pos) = 0;
 protected:
     virtual bool build() = 0;
     virtual bool createTerrain() = 0;
@@ -126,6 +133,7 @@ protected:
 private:
     int assignTerrainTileFlag(TerrainTile::TileType type);
 protected:
+    bool                m_bShowMap;
     LEVEL_TYPE           m_Type;
     std::vector<TileInfo> m_Map;
     

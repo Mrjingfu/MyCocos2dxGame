@@ -9,10 +9,13 @@
 #include "BaseLevel.h"
 #include "VoxelExplorer.h"
 #include "Pathfinder.hpp"
+#include "AlisaMethod.h"
+#include "UtilityHelper.h"
 USING_NS_CC;
 
 BaseLevel::BaseLevel()
 {
+    m_bShowMap = false;
     m_Type = LT_STANDARD;
     m_pMapDrawNode = nullptr;
     m_pDebugDrawNode = nullptr;
@@ -74,6 +77,19 @@ int BaseLevel::getDistance(int a, int b)
     int by = b / getWidth();
     return MAX( std::abs( ax - bx ), std::abs( ay - by ) );
 }
+std::string BaseLevel::getTerrainTileInfoDesc(int x, int y)
+{
+    int index = x + y * m_nWidth;
+    if (m_Map[index].m_Type == TerrainTile::TT_STANDARD) {
+        ///lwwhb 处理随机
+        return UtilityHelper::getLocalString(TERRAIN_TILES_NAME[m_Map[index].m_Type]);
+    }
+    else if(m_Map[index].m_Type == TerrainTile::TT_WALL) {
+        ///lwwhb 处理随机
+        return UtilityHelper::getLocalString(TERRAIN_TILES_NAME[m_Map[index].m_Type]);
+    }
+    return UtilityHelper::getLocalString(TERRAIN_TILES_NAME[m_Map[index].m_Type]);
+}
 void BaseLevel::generateTerrainTiles(int x, int y , int width, int height, TerrainTile::TileType tileType, Area::AREA_TYPE areaType, Actor::ActorDir dir)
 {
     int pos = y * m_nWidth + x;
@@ -98,6 +114,11 @@ void BaseLevel::setTerrainTile(int x, int y, TerrainTile::TileType tileType, Are
     m_Map[index].m_nY = y;
     m_Map[index].m_Dir = dir;
 }
+bool BaseLevel::isTerrainTilePassable(int index)
+{
+    return m_Map[index].isPassable();
+}
+
 int BaseLevel::getTerrainTileFlag(int x, int y)
 {
     int index = x + y * m_nWidth;
@@ -134,6 +155,29 @@ void BaseLevel::updateTerrainTileFogOfWar(int x, int y , int width, int height, 
         for (int j = pos, k = x; j<(pos + width); j++, k++) {
             m_Map[j].m_bVisited = visited;
         }
+    }
+}
+void BaseLevel::updateTrapTileByPos(const cocos2d::Vec2& pos)
+{
+    int index = pos.x + pos.y * m_nWidth;
+    if(m_Map[index].m_Type == TerrainTile::TT_HIDE_TOXIC_TRAP
+       || m_Map[index].m_Type == TerrainTile::TT_HIDE_FIRE_TRAP
+       || m_Map[index].m_Type == TerrainTile::TT_HIDE_PARALYTIC_TRAP
+       || m_Map[index].m_Type == TerrainTile::TT_HIDE_GRIPPING_TRAP
+       || m_Map[index].m_Type == TerrainTile::TT_HIDE_SUMMONING_TRAP
+       || m_Map[index].m_Type == TerrainTile::TT_HIDE_WEAK_TRAP)
+    {
+        m_Map[index].m_Type = (TerrainTile::TileType)(m_Map[index].m_Type - 1);
+        VoxelExplorer::getInstance()->handleTriggerTrap(pos, m_Map[index].m_Type);
+    }
+    else if(m_Map[index].m_Type == TerrainTile::TT_TOXIC_TRAP
+            || m_Map[index].m_Type == TerrainTile::TT_FIRE_TRAP
+            || m_Map[index].m_Type == TerrainTile::TT_PARALYTIC_TRAP
+            || m_Map[index].m_Type == TerrainTile::TT_GRIPPING_TRAP
+            || m_Map[index].m_Type == TerrainTile::TT_SUMMONING_TRAP
+            || m_Map[index].m_Type == TerrainTile::TT_WEAK_TRAP)
+    {
+        VoxelExplorer::getInstance()->handleTriggerTrap(pos, m_Map[index].m_Type);
     }
 }
 bool BaseLevel::checkMovable(Actor* actor, TileInfo& info)
@@ -173,9 +217,6 @@ bool BaseLevel::checkMovable(Actor* actor, TileInfo& info)
     }
     if((info.m_Flag & TileInfo::PASSABLE) != 0)
     {
-        if(info.m_Type >= TerrainTile::TT_TOXIC_TRAP && info.m_Type <= TerrainTile::TT_HIDE_WEAK_TRAP)
-        {
-        }
         return true;
     }
     return false;

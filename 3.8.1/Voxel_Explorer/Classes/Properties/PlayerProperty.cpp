@@ -81,7 +81,14 @@ PlayerProperty::~PlayerProperty()
 }
 bool PlayerProperty::initNewPlayer()   ///新角色初始化
 {
-    bool ret = addItemToBag(PickableItem::PIT_DAGGER_DAGGER, 1);
+    bool ret = false;
+    WeaponProperty* weaponProperty = new (std::nothrow) WeaponProperty(m_snItemInstanceIDCounter++,PickableItem::PIT_DAGGER_DAGGER, 1, true);
+    if(!weaponProperty)
+        return ret;
+    if(weaponProperty->isIdentified())
+        weaponProperty->adjustByLevel();
+    m_Bag.push_back(weaponProperty);
+    
     ret = equipWeapon(0);
     ret = addItemToBag(PickableItem::PIT_POTION_MINORHEALTH, 1);
     ret = addItemToBag(PickableItem::PIT_POTION_MINORHEALTH, 1);
@@ -104,12 +111,56 @@ void PlayerProperty::update(float delta)
 }
 void PlayerProperty::addPlayerBuffer(PlayerBuffer buff)
 {
+    if(buff == PB_WEAK)
+    {
+        m_nMaxHP = m_nMaxHP - m_nLevel*8 - 30;
+        m_nMaxMP = m_nMaxMP - m_nLevel*8 - 30;
+        m_nCurrentHP = MIN(m_nCurrentHP, m_nMaxHP);
+        m_nCurrentMP = MIN(m_nCurrentMP, m_nMaxMP);
+        
+        m_nBaseArmorClass = m_nBaseArmorClass + m_nLevel.GetLongValue();
+        
+    }
+    else if(buff == PB_STRONGER)
+    {
+        m_nMaxHP = m_nMaxHP + m_nLevel*8 + 30;
+        m_nMaxMP = m_nMaxMP + m_nLevel*8 + 30;
+        m_nCurrentHP = m_nCurrentHP + m_nLevel*8 + 30;
+        m_nCurrentMP = m_nCurrentMP + m_nLevel*8 + 30;
+        m_nCurrentHP = MIN(m_nCurrentHP, m_nMaxHP);
+        m_nCurrentMP = MIN(m_nCurrentMP, m_nMaxMP);
+        
+        m_nBaseArmorClass = m_nBaseArmorClass - m_nLevel.GetLongValue();
+    }
     m_BufferFlag = m_BufferFlag | buff;
     m_bDirty = true;
 }
 void PlayerProperty::removePlayerBuffer(PlayerBuffer buff)
 {
+    if(buff == PB_WEAK)
+    {
+        m_nMaxHP = m_nMaxHP + m_nLevel*8 + 30;
+        m_nMaxMP = m_nMaxMP + m_nLevel*8 + 30;
+        m_nCurrentHP = MIN(m_nCurrentHP, m_nMaxHP);
+        m_nCurrentMP = MIN(m_nCurrentMP, m_nMaxMP);
+        
+        m_nBaseArmorClass = m_nBaseArmorClass - m_nLevel.GetLongValue();
+    }
+    else if(buff == PB_STRONGER)
+    {
+        m_nMaxHP = m_nMaxHP - m_nLevel*8 - 30;
+        m_nMaxMP = m_nMaxMP - m_nLevel*8 - 30;
+        m_nCurrentHP = MIN(m_nCurrentHP, m_nMaxHP);
+        m_nCurrentMP = MIN(m_nCurrentMP, m_nMaxMP);
+        
+        m_nBaseArmorClass = m_nBaseArmorClass + m_nLevel.GetLongValue();
+    }
     m_BufferFlag = m_BufferFlag &~ buff;
+    m_bDirty = true;
+}
+void PlayerProperty::resetPlayerBuffer()
+{
+    m_BufferFlag = PB_NONE;
     m_bDirty = true;
 }
 CChaosNumber PlayerProperty::getMinAttack()
@@ -505,6 +556,8 @@ bool PlayerProperty::usePotion(CChaosNumber id)
                 break;
             case PickableItem::PIT_POTION_DETOXIFICATION:
             case PickableItem::PIT_POTION_SPECIFIC:
+            case PickableItem::PIT_POTION_HEALING:
+            case PickableItem::PIT_POTION_UNIVERSAL:
                 {
                     VoxelExplorer::getInstance()->handlePlayerUsePotion(potionsProperty->getPickableItemType());
                 }

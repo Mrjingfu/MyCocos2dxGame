@@ -57,4 +57,11 @@ static const std::string EVENT_MONSTER_HURT = "MONSTER_HURT";
 static const std::string EVENT_MONSTER_ALERT = "MONSTER_ALERT";
 static const std::string EVENT_MONSTER_CONFUSING = "MONSTER_CONFUSING";
 
+static const std::string EVENT_TRIGGER_TOXIC_TRAP = "TRIGGER_TOXIC_TRAP";
+static const std::string EVENT_TRIGGER_FIRE_TRAP = "TRIGGER_FIRE_TRAP";
+static const std::string EVENT_TRIGGER_PARALYTIC_TRAP = "TRIGGER_PARALYTIC_TRAP";
+static const std::string EVENT_TRIGGER_GRIPPING_TRAP = "TRIGGER_GRIPPING_TRAP";
+static const std::string EVENT_TRIGGER_SUMMONING_TRAP = "TRIGGER_SUMMONING_TRAP";
+static const std::string EVENT_TRIGGER_WEAK_TRAP = "TRIGGER_WEAK_TRAP";
+
 #endif /* EventConst_h */

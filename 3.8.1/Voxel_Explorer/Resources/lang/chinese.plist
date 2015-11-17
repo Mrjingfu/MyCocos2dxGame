@@ -6,6 +6,50 @@
 	<string>体素地牢</string>
 	<key>FONT_NAME</key>
 	<string>fangz.TTF</string>
+	<key>TTN_CHASM</key>
+	<string>黑漆漆的看不太清！</string>
+	<key>TTN_STANDARD</key>
+	<string>很普通的地板。</string>
+	<key>TTN_WALL</key>
+	<string>很普通的墙壁。</string>
+	<key>TTN_ENTRANCE</key>
+	<string>上一层入口。</string>
+	<key>TTN_EXIT</key>
+	<string>下一层入口。</string>
+	<key>TTN_TUNNEL</key>
+	<string>普通的通道地板！</string>
+	<key>TTN_DOOR</key>
+	<string>一扇门，要打开看看么？</string>
+	<key>TTN_OPENED_DOOR</key>
+	<string>很普通的地板。</string>
+	<key>TTN_LOCKED_DOOR</key>
+	<string>上锁的门。</string>
+	<key>TTN_SECRET_DOOR</key>
+	<string>这个墙壁看上去有些奇怪！</string>
+	<key>TTN_TOXIC_TRAP</key>
+	<string>有毒的陷阱！</string>
+	<key>TTN_HIDE_TOXIC_TRAP</key>
+	<string>这块地板看上去有些奇怪！</string>
+	<key>TTN_FIRE_TRAP</key>
+	<string>火焰陷阱！</string>
+	<key>TTN_HIDE_FIRE_TRAP</key>
+	<string>这块地板看上去有些奇怪！</string>
+	<key>TTN_PARALYTIC_TRAP</key>
+	<string>麻痹陷阱！</string>
+	<key>TTN_HIDE_PARALYTIC_TRAP</key>
+	<string>这块地板看上去有些奇怪！</string>
+	<key>TTN_GRIPPING_TRAP</key>
+	<string>夹子陷阱！</string>
+	<key>TTN_HIDE_GRIPPING_TRAP</key>
+	<string>这块地板看上去有些奇怪！</string>
+	<key>TTN_SUMMONING_TRAP</key>
+	<string>召唤陷阱！</string>
+	<key>TTN_HIDE_SUMMONING_TRAP</key>
+	<string>这块地板看上去有些奇怪！</string>
+	<key>TTN_WEAK_TRAP</key>
+	<string>虚弱陷阱！</string>
+	<key>TTN_HIDE_WEAK_TRAP</key>
+	<string>这块地板看上去有些奇怪！</string>
 	<key>DN_SEWER</key>
 	<string>下水道</string>
 	<key>DN_PRISON</key>
@@ -908,6 +952,10 @@
 	<string>隐身卷轴</string>
 	<key>PIN_SCROLL_STEALTH_DESC</key>
 	<string>使用后角色进入隐身状态，持续20秒。</string>
+	<key>PIT_SCROLL_STRONGER</key>
+	<string>强壮卷轴</string>
+	<key>PIT_SCROLL_STRONGER_DESC</key>
+	<string>使用后角色属性增强，持续20秒。</string>
 	<key>PIN_SCROLL_DESTINY</key>
 	<string>命运卷轴</string>
 	<key>PIN_SCROLL_DESTINY_DESC</key>
@@ -956,5 +1004,13 @@
 	<string>特效药水</string>
 	<key>PIN_POTION_SPECIFIC_DESC</key>
 	<string>解除角色冰冻、着火和麻痹状态。</string>
+	<key>PIN_POTION_HEALING</key>
+	<string>治愈药水</string>
+	<key>PIN_POTION_HEALING_DESC</key>
+	<string>解除角色疾病状态</string>
+	<key>PIN_POTION_UNIVERSAL</key>
+	<string>万能药水</string>
+	<key>PIN_POTION_UNIVERSAL_DESC</key>
+	<string>解除角色所有负面状态</string>
 </dict>
 </plist>

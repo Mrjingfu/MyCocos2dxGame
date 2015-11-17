@@ -311,7 +311,7 @@ void StandardLevel::assignAreasType()
         }
     }
     ///生成通道
-    m_Style = cocos2d::random(LS_STANDARD, LS_PASSAGE);
+    //m_Style = cocos2d::random(LS_STANDARD, LS_PASSAGE);
     
     float percentStandard = 0.6f;
     float percentTunnel = 0.05f;
@@ -410,10 +410,11 @@ void StandardLevel::generate()
 
 void StandardLevel::showMap(bool show)
 {
-//    if(!show)
-//        return;
     if (VoxelExplorer::getInstance()->getMainLayer() == nullptr)
         return;
+    
+    m_bShowMap = show;
+    
     if(!show)
     {
         if(m_pMapDrawNode)
@@ -441,6 +442,8 @@ void StandardLevel::showMap(bool show)
             for (int j = 0; j<m_nWidth; j++) {
                 int index = i*m_nWidth+j;
                 TileInfo info = m_Map[index];
+                if(!info.m_bVisited)
+                    continue;
                 cocos2d::Rect rect(j,i,1,1);
                 Vec2 vertices[4] = {
                     Vec2( rect.getMinX(), rect.getMinY() ),
@@ -480,13 +483,25 @@ void StandardLevel::showMap(bool show)
                     case TerrainTile::TT_HIDE_GRIPPING_TRAP:
                     case TerrainTile::TT_HIDE_SUMMONING_TRAP:
                     case TerrainTile::TT_HIDE_WEAK_TRAP:
-                    case TerrainTile::TT_TOXIC_TRAP:
-                    case TerrainTile::TT_FIRE_TRAP:
-                    case TerrainTile::TT_PARALYTIC_TRAP:
-                    case TerrainTile::TT_GRIPPING_TRAP:
-                    case TerrainTile::TT_SUMMONING_TRAP:
-                    case TerrainTile::TT_WEAK_TRAP:
                         m_pMapDrawNode->drawPolygon(vertices, 4, Color4F::WHITE, 0, Color4F(0,0,0,0));
+                        break;
+                    case TerrainTile::TT_TOXIC_TRAP:
+                        m_pMapDrawNode->drawPolygon(vertices, 4, Color4F(27.0f/255.0f, 186.0f/255.0f, 52.0f/255.0f, 1.0f), 0, Color4F(0,0,0,0));
+                        break;
+                    case TerrainTile::TT_FIRE_TRAP:
+                        m_pMapDrawNode->drawPolygon(vertices, 4, Color4F(1.0f, 131.0f/255.0f, 41.0f/255.0f, 1.0f), 0, Color4F(0,0,0,0));
+                        break;
+                    case TerrainTile::TT_PARALYTIC_TRAP:
+                        m_pMapDrawNode->drawPolygon(vertices, 4, Color4F(100.0f/255.0f, 201.0f/255.0f, 250.0f/255.0f, 1.0f), 0, Color4F(0,0,0,0));
+                        break;
+                    case TerrainTile::TT_GRIPPING_TRAP:
+                        m_pMapDrawNode->drawPolygon(vertices, 4, Color4F(174.0f/255.0f, 230.0f/255.0f, 1.0f, 1.0f), 0, Color4F(0,0,0,0));
+                        break;
+                    case TerrainTile::TT_SUMMONING_TRAP:
+                        m_pMapDrawNode->drawPolygon(vertices, 4, Color4F(178.0f/255.0f, 84.0f/255.0f, 242.0f/255.0f, 1.0f), 0, Color4F(0,0,0,0));
+                        break;
+                    case TerrainTile::TT_WEAK_TRAP:
+                        m_pMapDrawNode->drawPolygon(vertices, 4, Color4F(234.0f/255.0f, 196.0f/255.0f, 96.0f/255.0f, 1.0f), 0, Color4F(0,0,0,0));
                         break;
                     default:
                         break;
@@ -699,19 +714,21 @@ void StandardLevel::placeTraps()  ///放置陷阱
 
     if(RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nNodeDepth > 1)
     {
-        nTraps = m_Areas.size() + RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nNodeDepth.GetLongValue() + RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nCurrentDepth.GetLongValue();
+        nTraps = m_Areas.size()*0.4f + RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nNodeDepth.GetLongValue() + RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nCurrentDepth.GetLongValue();
     }
     else
     {
-        if(RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nCurrentDepth > 1)
+        if(RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nCurrentDepth >= 1)
         {
-            nTraps = m_Areas.size() + RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nCurrentDepth.GetLongValue();
+            nTraps = m_Areas.size()*0.2f + RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nCurrentDepth.GetLongValue();
         }
     }
     
     for (int i = 0; i<nTraps; i++) {
         int pos = cocos2d::random(0, (int)m_Map.size());
-        if(m_Map[pos].m_AreaType == Area::AT_ENTRANCE || m_Map[pos].m_AreaType == Area::AT_EXIT)
+        if(m_Map[pos].m_AreaType == Area::AT_ENTRANCE
+           || m_Map[pos].m_AreaType == Area::AT_EXIT
+           || m_Map[pos].m_AreaType == Area::AT_SHOP)
         {
             i--;
             continue;

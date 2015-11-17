@@ -538,7 +538,7 @@ void BaseMonster::doAttack()
     
     if(m_bJumpMove)
     {
-        EaseSineOut* moveUp = EaseSineOut::create(MoveTo::create(0.1f, Vec3(getPositionX(), getPositionY() + TerrainTile::CONTENT_SCALE*0.25f, getPositionZ()) + dir*0.5f));
+        EaseSineOut* moveUp = EaseSineOut::create(MoveTo::create(0.1f, Vec3(getPositionX(), getPositionY() + TerrainTile::CONTENT_SCALE*0.25f, getPositionZ()) + dir*0.4f));
         CallFunc* callback = CallFunc::create(CC_CALLBACK_0(VoxelExplorer::handlePlayerHurt,VoxelExplorer::getInstance(),playerPos, m_pMonsterProperty));
         EaseSineOut* moveDown = EaseSineOut::create(MoveTo::create(0.1f, getPosition3D()));
         Sequence* sequenceJump = Sequence::create(moveUp, callback, moveDown, NULL);

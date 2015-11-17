@@ -73,6 +73,7 @@ public:
     
     void addPlayerBuffer(PlayerBuffer buff);
     void removePlayerBuffer(PlayerBuffer buff);
+    void resetPlayerBuffer();
     
     void addMoney(CChaosNumber gold, CChaosNumber silver, CChaosNumber copper);
     void costMoney(CChaosNumber gold, CChaosNumber silver, CChaosNumber copper);

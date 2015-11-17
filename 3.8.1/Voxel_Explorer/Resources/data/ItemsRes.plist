@@ -272,6 +272,8 @@
 	<string>I_Scroll04</string>
 	<key>PIN_SCROLL_STEALTH</key>
 	<string>I_Scroll03</string>
+	<key>PIT_SCROLL_STRONGER</key>
+	<string>I_Scroll06</string>
 	<key>PIN_SCROLL_DESTINY</key>
 	<string>I_Scroll05</string>
 	<key>PIN_POTION_MINORHEALTH</key>
@@ -296,5 +298,9 @@
 	<string>P_Green04</string>
 	<key>PIN_POTION_SPECIFIC</key>
 	<string>P_Yellow04</string>
+	<key>PIN_POTION_HEALING</key>
+	<string>P_Orange04</string>
+	<key>PIN_POTION_UNIVERSAL</key>
+	<string>P_Medicine09</string>
 </dict>
 </plist>

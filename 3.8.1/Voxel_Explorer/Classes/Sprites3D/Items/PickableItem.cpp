@@ -206,6 +206,7 @@ const std::string PICKABLE_ITEM_NAMES[] = {
     "PIN_SCROLL_TELEPORT",                     ////传送卷轴 Scroll of Random Teleport
     "PIN_SCROLL_SPEED",                        ////速度卷轴 Scroll of Speed
     "PIN_SCROLL_STEALTH",                      ////隐身卷轴 Scroll of Stealth
+    "PIN_SCROLL_STRONGER",                     ////强壮卷轴 Scroll of Stronger
     "PIN_SCROLL_DESTINY",                      ////命运卷轴 Scroll of Destiny
     //PIN_SCROLL_END
     
@@ -221,6 +222,8 @@ const std::string PICKABLE_ITEM_NAMES[] = {
     "PIN_POTION_RECOVERY",                     ///恢复药水 Recovery Potion
     "PIN_POTION_DETOXIFICATION",               ///解毒药水 Detoxification Potion
     "PIN_POTION_SPECIFIC",                     ///特效药水 Specific Potion
+    "PIN_POTION_HEALING",                      ///治愈药水 Healing Potion
+    "PIN_POTION_UNIVERSAL",                    ///万能药水 Universal Potion
     ///PIN_POTION_END
     
     "PIN_UNKNOWN"
@@ -547,11 +550,12 @@ PickableItem::PickableItemType PickableItem::generateKeyItemType()
 PickableItem::PickableItemType PickableItem::generateScrollType()
 {
     float percent1 = 0.4f;
-    float percent2 = 0.2f;
+    float percent2 = 0.15f;
     float percent3 = 0.1f;
     float percent4 = 0.1f;
-    float percent5 = 1.0 - percent1 - percent2 - percent3 - percent4;
-    AlisaMethod* am = AlisaMethod::create(percent1, percent2, percent3, percent4, percent5, -1.0, NULL);
+    float percent5 = 0.1f;
+    float percent6 = 1.0 - percent1 - percent2 - percent3 - percent4 - percent5;
+    AlisaMethod* am = AlisaMethod::create(percent1, percent2, percent3, percent4, percent5, percent6, -1.0, NULL);
     if(am)
     {
         if(am->getRandomIndex() == 0)
@@ -562,6 +566,8 @@ PickableItem::PickableItemType PickableItem::generateScrollType()
             return PIT_SCROLL_SPEED;
         else if(am->getRandomIndex() == 3)
             return PIT_SCROLL_STEALTH;
+        else if(am->getRandomIndex() == 4)
+            return PIT_SCROLL_STRONGER;
     }
     return PIT_SCROLL_DESTINY;
 }
@@ -570,9 +576,11 @@ PickableItem::PickableItemType PickableItem::generate1_15PotionType()
     float percent1 = 0.35f;
     float percent2 = 0.35f;
     float percent3 = 0.1f;
-    float percent4 = 0.1f;
-    float percent5 = 1.0 - percent1 - percent2 - percent3 - percent4;
-    AlisaMethod* am = AlisaMethod::create(percent1, percent2, percent3, percent4, percent5, -1.0, NULL);
+    float percent4 = 0.05f;
+    float percent5 = 0.05f;
+    float percent6 = 0.05f;
+    float percent7 = 1.0 - percent1 - percent2 - percent3 - percent4 - percent5 - percent6;
+    AlisaMethod* am = AlisaMethod::create(percent1, percent2, percent3, percent4, percent5, percent6, percent7, -1.0, NULL);
     if(am)
     {
         if(am->getRandomIndex() == 0)
@@ -583,20 +591,26 @@ PickableItem::PickableItemType PickableItem::generate1_15PotionType()
             return PIT_POTION_MINORRECOVERY;
         else if(am->getRandomIndex() == 3)
             return PIT_POTION_DETOXIFICATION;
+        else if(am->getRandomIndex() == 4)
+            return PIT_POTION_SPECIFIC;
+        else if(am->getRandomIndex() == 5)
+            return PIT_POTION_HEALING;
     }
-    return PIT_POTION_SPECIFIC;
+    return PIT_POTION_UNIVERSAL;
 }
 PickableItem::PickableItemType PickableItem::generate16_30PotionType()
 {
     float percent1 = 0.1f;
     float percent2 = 0.1f;
-    float percent3 = 0.05f;
-    float percent4 = 0.1f;
-    float percent5 = 0.1f;
-    float percent6 = 0.25f;
-    float percent7 = 0.25f;
-    float percent8 = 1.0 - percent1 - percent2 - percent3 - percent4 - percent5 - percent6 - percent7;
-    AlisaMethod* am = AlisaMethod::create(percent1, percent2, percent3, percent4, percent5, percent6, percent7, percent8, -1.0, NULL);
+    float percent3 = 0.1f;
+    float percent4 = 0.2f;
+    float percent5 = 0.2f;
+    float percent6 = 0.1f;
+    float percent7 = 0.05f;
+    float percent8 = 0.05f;
+    float percent9 = 0.05f;
+    float percent10 = 1.0 - percent1 - percent2 - percent3 - percent4 - percent5 - percent6 - percent7 - percent8 - percent9;
+    AlisaMethod* am = AlisaMethod::create(percent1, percent2, percent3, percent4, percent5, percent6, percent7, percent8, percent9, percent10, -1.0, NULL);
     if(am)
     {
         if(am->getRandomIndex() == 0)
@@ -606,45 +620,55 @@ PickableItem::PickableItemType PickableItem::generate16_30PotionType()
         else if(am->getRandomIndex() == 2)
             return PIT_POTION_MINORRECOVERY;
         else if(am->getRandomIndex() == 3)
-            return PIT_POTION_DETOXIFICATION;
+            return PIT_POTION_LESSERHEALTH;
         else if(am->getRandomIndex() == 4)
-            return PIT_POTION_SPECIFIC;
+            return PIT_POTION_LESSERMANA;
         else if(am->getRandomIndex() == 5)
             return PIT_POTION_LESSERHEALTH;
         else if(am->getRandomIndex() == 6)
-            return PIT_POTION_LESSERMANA;
+            return PIT_POTION_DETOXIFICATION;
+        else if(am->getRandomIndex() == 7)
+            return PIT_POTION_SPECIFIC;
+        else if(am->getRandomIndex() == 8)
+            return PIT_POTION_HEALING;
     }
-    return PIT_POTION_LESSERRECOVERY;
+    return PIT_POTION_UNIVERSAL;
 }
 PickableItem::PickableItemType PickableItem::generate31_45PotionType()
 {
     float percent1 = 0.1f;
     float percent2 = 0.1f;
-    float percent3 = 0.05f;
-    float percent4 = 0.1f;
-    float percent5 = 0.1f;
-    float percent6 = 0.25f;
-    float percent7 = 0.25f;
-    float percent8 = 1.0 - percent1 - percent2 - percent3 - percent4 - percent5 - percent6 - percent7;
-    AlisaMethod* am = AlisaMethod::create(percent1, percent2, percent3, percent4, percent5, percent6, percent7, percent8, -1.0, NULL);
+    float percent3 = 0.1f;
+    float percent4 = 0.2f;
+    float percent5 = 0.2f;
+    float percent6 = 0.1f;
+    float percent7 = 0.05f;
+    float percent8 = 0.05f;
+    float percent9 = 0.05f;
+    float percent10 = 1.0 - percent1 - percent2 - percent3 - percent4 - percent5 - percent6 - percent7 - percent8 - percent9;
+    AlisaMethod* am = AlisaMethod::create(percent1, percent2, percent3, percent4, percent5, percent6, percent7, percent8, percent9, percent10, -1.0, NULL);
     if(am)
     {
         if(am->getRandomIndex() == 0)
-            return PIT_POTION_LESSERHEALTH;
+            return PIT_POTION_MINORHEALTH;
         else if(am->getRandomIndex() == 1)
-            return PIT_POTION_LESSERMANA;
+            return PIT_POTION_MINORMANA;
         else if(am->getRandomIndex() == 2)
-            return PIT_POTION_LESSERRECOVERY;
+            return PIT_POTION_MINORRECOVERY;
         else if(am->getRandomIndex() == 3)
-            return PIT_POTION_DETOXIFICATION;
+            return PIT_POTION_LESSERHEALTH;
         else if(am->getRandomIndex() == 4)
-            return PIT_POTION_SPECIFIC;
+            return PIT_POTION_LESSERMANA;
         else if(am->getRandomIndex() == 5)
-            return PIT_POTION_HEALTH;
+            return PIT_POTION_LESSERHEALTH;
         else if(am->getRandomIndex() == 6)
-            return PIT_POTION_MANA;
+            return PIT_POTION_DETOXIFICATION;
+        else if(am->getRandomIndex() == 7)
+            return PIT_POTION_SPECIFIC;
+        else if(am->getRandomIndex() == 8)
+            return PIT_POTION_HEALING;
     }
-    return PIT_POTION_RECOVERY;
+    return PIT_POTION_UNIVERSAL;
 }
 PickableItem::PickableItemType PickableItem::generate1_5UnStackableItemType()
 {

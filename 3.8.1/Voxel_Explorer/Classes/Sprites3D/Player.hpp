@@ -44,12 +44,15 @@ public:
     bool isStealth() const { return m_bStealth; }
     void setStealth(bool stealth);
     
+    bool isParalytic();
+    
     virtual void rotateToLeft();
     virtual void rotateToRight();
     virtual void rotateToForward();
     virtual void rotateToBack();
     
     void attackByMonster(MonsterProperty* monsterProperty, bool miss);
+    void hurtByGrippingTrap();
 private:
     void onEnterIdle();
     void onEnterPrepareToJump();
@@ -67,7 +70,7 @@ private:
     void onExitDrop();
     void onExitDeath();
     
-    void onLand();
+    void onLand(bool triggerTrap);
     void updatePlayerBuffer(float delta);
     
     bool createPlayerLight();
@@ -84,6 +87,8 @@ private:
     CChaosNumber                m_fFrozenTime;  ///冰冻时间
     CChaosNumber                m_fParalyticTime;   ///麻痹时间
     CChaosNumber                m_fFireTime;    ///着火时间
+    
+    float                       m_fSecondTimer;
 
     
     HurtData*                   m_pHurtData;
