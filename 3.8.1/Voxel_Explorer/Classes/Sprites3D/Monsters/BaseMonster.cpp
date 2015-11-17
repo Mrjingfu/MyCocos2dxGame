@@ -553,7 +553,7 @@ void BaseMonster::doAttack()
         ScaleTo* scaleTo1 = ScaleTo::create(0.5f, oriScale.x, oriScale.y, oriScale.z*0.8f);
         ScaleTo* scaleTo2 = ScaleTo::create(0.5f, oriScale.x, oriScale.y, oriScale.z);
         CallFunc* callback = CallFunc::create(CC_CALLBACK_0(VoxelExplorer::handlePlayerHurt,VoxelExplorer::getInstance(),playerPos, m_pMonsterProperty));
-        EaseBackIn* moveTo1 = EaseBackIn::create(MoveTo::create(0.5f, getPosition3D() + dir*0.5f));
+        EaseBackIn* moveTo1 = EaseBackIn::create(MoveTo::create(0.5f, getPosition3D() + dir*0.4f));
         EaseBackIn* moveTo2 = EaseBackIn::create(MoveTo::create(0.5f, getPosition3D()));
         Sequence* sequenceScale = Sequence::create(scaleTo1, scaleTo2, NULL);
         Sequence* sequenceMove = Sequence::create(moveTo1, callback, moveTo2, NULL);
