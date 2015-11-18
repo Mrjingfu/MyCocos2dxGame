@@ -27,6 +27,7 @@
 USING_NS_CC;
 GameUILayer::GameUILayer()
 {
+    m_pRoleLayout       = nullptr;
     m_pRoleBtn          = nullptr;
     m_pRoleHpBar        = nullptr;
     m_pRoleCurHp        = nullptr;
@@ -37,6 +38,7 @@ GameUILayer::GameUILayer()
     m_pRoleExpBar       = nullptr;
     m_pRoleLevel        = nullptr;
     m_pRoleName         = nullptr;
+    m_pRoleBufferList   = nullptr;
     
     m_pMonsterLayout    = nullptr;
     m_pMonsterCurHp     = nullptr;
@@ -57,11 +59,6 @@ GameUILayer::GameUILayer()
     m_pGameCopperNum    = nullptr;
     m_pGameLevelInfoName    = nullptr;
     m_pGameLevelInfoFloor   = nullptr;
-    for (int i = 1 ; i<9; i++) {
-        m_pRoleBuffers[i] = nullptr;
-        m_pMonsterBuffers[i] = nullptr;
-    }
-    
     m_pListMsgs = nullptr;
     _isOpenSmailMap = false;
     _isDist = false;
@@ -122,13 +119,9 @@ bool GameUILayer::addEvents()
     if (!m_pRoleLevel)
         return false;
     
-    for (int i=1 ; i<9; i++)
-    {
-        m_pRoleBuffers[i] =  dynamic_cast<ui::ImageView*>(UtilityHelper::seekNodeByName(m_pRootNode, StringUtils::format("role_buffer_%d",i)));
-        if(!m_pRoleBuffers[i])
-            return false;
-        m_pRoleBuffers[i]->setVisible(false);
-    }
+    m_pRoleLayout = dynamic_cast<ui::Layout*>(UtilityHelper::seekNodeByName(m_pRootNode, "Panel_role"));
+    if (!m_pRoleLayout)
+        return false;
     
     //怪物
     m_pMonsterLayout =  dynamic_cast<ui::Layout*>(UtilityHelper::seekNodeByName(m_pRootNode, "Panel_monster"));
@@ -173,15 +166,6 @@ bool GameUILayer::addEvents()
     m_pMonsterMaxMp = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "progress_monster_margic_maxnum"));
     if (!m_pMonsterMaxMp)
         return false;
-    
-    for (int i=1 ; i<9; i++)
-    {
-        m_pMonsterBuffers[i] =  dynamic_cast<ui::ImageView*>(UtilityHelper::seekNodeByName(m_pRootNode, StringUtils::format("monster_buffer_%d",i)));
-        if(!m_pMonsterBuffers[i])
-            return false;
-        m_pMonsterBuffers[i]->setVisible(false);
-    }
-
     //游戏
     m_pGameMsgBtn = dynamic_cast<ui::ImageView*>(UtilityHelper::seekNodeByName(m_pRootNode, "game_btn_msg"));
     if (!m_pGameMsgBtn)
@@ -289,6 +273,27 @@ bool GameUILayer::addEvents()
     m_pGameDistFrameDesc->setString(UtilityHelper::getLocalStringForUi("GAME_SERACH_EXPLAIN"));
     m_pGameDistFrameCloseBtn->addClickEventListener(CC_CALLBACK_1(GameUILayer::onClickDistTipsFrame, this));
     
+    m_pRoleBufferList = TGridView::create();
+//    m_pRoleBufferList->setBackGroundColorType(cocos2d::ui::Layout::BackGroundColorType::SOLID);
+//    m_pRoleBufferList->setBackGroundColor(Color3B::YELLOW);
+    m_pRoleBufferList->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
+    m_pRoleBufferList->setContentSize(m_pRoleMpBar->getContentSize());
+    m_pRoleBufferList->setCol(8);
+    m_pRoleBufferList->setPosition(cocos2d::Vec2(m_pRoleName->getPositionX(),m_pRoleName->getPositionY()-m_pRoleMpBar->getContentSize().height*4.5));
+    m_pRoleBufferList->setScrollBarEnabled(false);
+    m_pRoleBufferList->setItemsMargin(cocos2d::Size(1.5,2));
+    m_pRoleBufferList->setFrameMargin(cocos2d::Size(1,1));
+    m_pRoleBufferList->setClippingEnabled(false);
+    m_pRoleLayout->addChild(m_pRoleBufferList);
+    
+    
+    for(int i =0;i<8;i++)
+    {
+        ui::ImageView* buffim = ui::ImageView::create("ui_buffer_paralytic.png",TextureResType::PLIST);
+        buffim->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
+        m_pRoleBufferList->pushBackCustomItem(buffim);
+    }
+    
     updateRoleUi(); 
     updateGameInfo();
     initMessageFrame();
@@ -325,7 +330,7 @@ void GameUILayer::onTouchEnded(cocos2d::Touch *touch, cocos2d::Event *event)
     Vec3 playerpt = VoxelExplorer::getInstance()->getPlayer()->getPosition3D();
     std::string infostr;
     std::string infoKey;
-    if(checkSearchMapInfo(ray,infostr,infoKey))
+    if(checkDistMapInfo(ray,infostr,infoKey))
     {
         InfoPopupUI* infoUi = static_cast<InfoPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupInfo));
         onClickDistTipsFrame(nullptr);
@@ -336,7 +341,7 @@ void GameUILayer::onTouchEnded(cocos2d::Touch *touch, cocos2d::Event *event)
 
     return;
 }
-bool GameUILayer::checkSearchMapInfo(const cocos2d::Ray ray,std::string& infoIcon,std::string& infoDesc)
+bool GameUILayer::checkDistMapInfo(const cocos2d::Ray ray,std::string& infoIcon,std::string& infoDesc)
 {
     
     if (ray.intersects(VoxelExplorer::getInstance()->getPlayer()->getAABB())) {
@@ -391,9 +396,114 @@ bool GameUILayer::checkSearchMapInfo(const cocos2d::Ray ray,std::string& infoIco
     return false;
 
 }
-void GameUILayer::onEvenetUserPotion(cocos2d::EventCustom *sender)
+void GameUILayer::updateRoleBuff()
+{
+    if (!m_pRoleBufferList->getItems().empty()) {
+        m_pRoleBufferList->removeAllChildren();
+    }
+
+    int flag = PlayerProperty::getInstance()->getPlayerBuffer();
+    if ((flag&PB_SPEEDUP) == PB_SPEEDUP) {
+        ui::ImageView* buffim = ui::ImageView::create("ui_buffer_speedup.png",TextureResType::PLIST);
+        buffim->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
+        m_pRoleBufferList->pushBackCustomItem(buffim);
+    }
+    if ((flag&PB_STEALTH) == PB_STEALTH)
+    {
+        ui::ImageView* buffim = ui::ImageView::create("ui_buffer_stealth.png",TextureResType::PLIST);
+         buffim->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
+        m_pRoleBufferList->pushBackCustomItem(buffim);
+    }
+    if ((flag&PB_STRONGER) == PB_STRONGER)
+    {
+        ui::ImageView* buffim = ui::ImageView::create("ui_buffer_stronger.png",TextureResType::PLIST);
+         buffim->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
+        m_pRoleBufferList->pushBackCustomItem(buffim);
+    }
+    if ((flag&PB_POISONING) == PB_POISONING)
+    {
+        ui::ImageView* buffim = ui::ImageView::create("ui_buffer_poisoning.png",TextureResType::PLIST);
+         buffim->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
+        m_pRoleBufferList->pushBackCustomItem(buffim);
+    }
+    if ((flag&PB_FROZEN) == PB_FROZEN)
+    {
+        ui::ImageView* buffim = ui::ImageView::create("ui_buffer_frozen.png",TextureResType::PLIST);
+         buffim->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
+        m_pRoleBufferList->pushBackCustomItem(buffim);
+    }
+    if ((flag&PB_PARALYTIC) == PB_PARALYTIC)
+    {
+        ui::ImageView* buffim = ui::ImageView::create("ui_buffer_paralytic.png",TextureResType::PLIST);
+         buffim->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
+        m_pRoleBufferList->pushBackCustomItem(buffim);
+    }
+    if ((flag&PB_WEAK) == PB_WEAK)
+    {
+        ui::ImageView* buffim = ui::ImageView::create("ui_buffer_weak.png",TextureResType::PLIST);
+         buffim->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
+        m_pRoleBufferList->pushBackCustomItem(buffim);
+    }
+    if ((flag&PB_FIRE) == PB_FIRE)
+    {
+        ui::ImageView* buffim = ui::ImageView::create("ui_buffer_fire.png",TextureResType::PLIST);
+         buffim->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
+        m_pRoleBufferList->pushBackCustomItem(buffim);
+    }
+
+}
+void GameUILayer::onEventTriggerToxic(cocos2d::EventCustom *sender) //中毒机关
+{
+    CCLOG("onEventTriggerToxic");
+    std::string msg = UtilityHelper::getLocalStringForUi("TRIGGER_MESSAGE_TOXIC_TRAP");
+    PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
+    sendMessage(msg);
+    
+}
+void GameUILayer::onEventTriggerFire(cocos2d::EventCustom *sender) //火机关
+{
+    CCLOG("onEventTriggerFire");
+    std::string msg = UtilityHelper::getLocalStringForUi("TRIGGER_MESSAGE_FIRE_TRAP");
+    PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
+    sendMessage(msg);
+    
+}
+void GameUILayer::onEventTriggerParalyic(cocos2d::EventCustom *sender)//麻痹机关
+{
+    CCLOG("onEventTriggerParalyic");
+    std::string msg = UtilityHelper::getLocalStringForUi("TRIGGER_MESSAGE_PARALYTIC_TRAP");
+    PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
+    sendMessage(msg);
+    
+}
+void GameUILayer::onEventTriggerGripping(cocos2d::EventCustom *sender)//夹子机关
+{
+    CCLOG("onEventTriggerGripping");
+    std::string msg = UtilityHelper::getLocalStringForUi("TRIGGER_MESSAGE_GRIPPING_TRAP");
+    PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
+    sendMessage(msg);
+    
+}
+void GameUILayer::onEventTriggerSummoning(cocos2d::EventCustom *sender)//召唤机关
+{
+    CCLOG("onEventTriggerSummoning");
+    std::string msg = UtilityHelper::getLocalStringForUi("TRIGGER_MESSAGE_SUMMONING_TRAP");
+    PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
+    sendMessage(msg);
+    
+}
+void GameUILayer::onEventTriggerWeak(cocos2d::EventCustom *sender) //虚弱机关
+{
+    CCLOG("onEventTriggerWeak");
+    std::string msg = UtilityHelper::getLocalStringForUi("TRIGGER_MESSAGE_WEAK_TRAP");
+    PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
+    sendMessage(msg);
+   
+}
+void GameUILayer::onEventUserPotion(cocos2d::EventCustom *sender)
 {
     CCLOG("onEvenetUserPotion");
+    //关闭ItemPopup窗口
     PopupUILayerManager::getInstance()->closeCurrentPopup();
     
     //窗口都未关闭,回调后来判断是否关闭
@@ -405,36 +515,40 @@ void GameUILayer::onEvenetUserPotion(cocos2d::EventCustom *sender)
         case PickableItem::PIT_POTION_MINORHEALTH:
         case PickableItem::PIT_POTION_LESSERHEALTH:
         case PickableItem::PIT_POTION_HEALTH:
-            CCLOG("使用治疗药水");
+            CCLOG("使用治疗药水 恢复HP");
             PopupUILayerManager::getInstance()->showStatus(TIP_POSITIVE, StringUtils::format(UtilityHelper::getLocalStringForUi("USE_POTION_ TREAT").c_str(),int(potionsProperty->getValue())),pt);
-             PopupUILayerManager::getInstance()->closeCurrentPopup();
-            //治疗药水
             break;
         case PickableItem::PIT_POTION_MINORMANA:
         case PickableItem::PIT_POTION_LESSERMANA:
         case PickableItem::PIT_POTION_MANA:
-            CCLOG("使用魔法药水");
-            //魔法药水
+            CCLOG("使用魔法药水 恢复MP");
             PopupUILayerManager::getInstance()->showStatus(TIP_BLUE, StringUtils::format(UtilityHelper::getLocalStringForUi("USE_POTION_ MAGIC").c_str(),int(potionsProperty->getValue())),pt);
-             PopupUILayerManager::getInstance()->closeCurrentPopup();
             break;
         case PickableItem::PIT_POTION_MINORRECOVERY:
         case PickableItem::PIT_POTION_LESSERRECOVERY:
         case PickableItem::PIT_POTION_RECOVERY:
-            //恢复药水
-            CCLOG("恢复药水");
+            CCLOG("恢复药水 恢复HP+MP");
             break;
         case PickableItem::PIT_POTION_DETOXIFICATION:
+            CCLOG("解除中毒");
+            break;
         case PickableItem::PIT_POTION_SPECIFIC:
-            //解毒药水
-            CCLOG("解毒药水");
+            CCLOG("解除冰冻、麻痹、火");
+            break;
+        case PickableItem::PIT_POTION_HEALING:
+            CCLOG("解除虚弱");
+            break;
+        case PickableItem::PIT_POTION_UNIVERSAL:
+            CCLOG("万能药水,解除中毒，冰冻，麻痹，虚弱，着火");
             break;
         default:
             break;
     }
+    //关闭角色对话框
+    PopupUILayerManager::getInstance()->closeCurrentPopup();
 
 }
-void GameUILayer::onEvenetUserScroll(cocos2d::EventCustom *sender)
+void GameUILayer::onEventUserScroll(cocos2d::EventCustom *sender)
 {
     PopupUILayerManager::getInstance()->closeCurrentPopup();
     //窗口都未关闭,回调后来判断是否关闭
@@ -443,7 +557,7 @@ void GameUILayer::onEvenetUserScroll(cocos2d::EventCustom *sender)
     
     if (scrollProperty->getPickableItemType() == PickableItem::PIT_SCROLL_INDENTIFY)
     {
-         //鉴定卷轴
+        CCLOG("鉴定卷轴");
         PopupUILayer* popup = nullptr;
         RolePopupUI* rolePopup = nullptr;
         if(PopupUILayerManager::getInstance()->isOpenPopup(ePopupRole, popup)){
@@ -457,18 +571,17 @@ void GameUILayer::onEvenetUserScroll(cocos2d::EventCustom *sender)
         
     }else if(scrollProperty->getPickableItemType() == PickableItem::PIT_SCROLL_TELEPORT)
     {
-        //传送卷轴
+        CCLOG("传送卷轴");
     }else if(scrollProperty->getPickableItemType() == PickableItem::PIT_SCROLL_SPEED)
     {
-        //速度卷轴
-
+        CCLOG("速度卷轴");
+        
     }else if(scrollProperty->getPickableItemType() == PickableItem::PIT_SCROLL_STEALTH)
     {
-        //隐身卷轴
-//        
+        CCLOG("隐身卷轴");
     }else if(scrollProperty->getPickableItemType() == PickableItem::PIT_SCROLL_DESTINY)
     {
-       //命运卷轴
+        CCLOG("命运卷轴");
     }
 }
 
@@ -484,6 +597,7 @@ void GameUILayer::onEventUpdateRoleProp(cocos2d::EventCustom *sender)
 {
     CCLOG("onEventUpdateProp");
     updateRoleUi();
+    updateRoleBuff();
     updateGameInfo();
 }
 
@@ -492,7 +606,7 @@ void GameUILayer::onEventRoleDead(cocos2d::EventCustom *sender)
     CCLOG("onEventRoleDead");
     updateRoleUi();
 }
-void GameUILayer::onEvenetRoleHud(cocos2d::EventCustom *sender)
+void GameUILayer::onEventRoleHud(cocos2d::EventCustom *sender)
 {
        CCLOG("onEvenetRoleHud");
     HurtData* hurData = static_cast<HurtData*>(sender->getUserData());
@@ -600,16 +714,22 @@ void GameUILayer::onEnter()
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_PLAYER_PROPERTY_DIRTY, CC_CALLBACK_1(GameUILayer::onEventUpdateRoleProp,this));
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_PLAYER_LEVEL_UP, CC_CALLBACK_1(GameUILayer::onEventRoleLevelUp,this));
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_PLAYER_DEATH, CC_CALLBACK_1(GameUILayer::onEventRoleDead,this));
-    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_PLAYER_HURT, CC_CALLBACK_1(GameUILayer::onEvenetRoleHud,this));
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_PLAYER_HURT, CC_CALLBACK_1(GameUILayer::onEventRoleHud,this));
+
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_PLAYER_USE_POTION, CC_CALLBACK_1(GameUILayer::onEventUserPotion,this));
+    
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_PLAYER_USE_SCROLL, CC_CALLBACK_1(GameUILayer::onEventUserScroll,this));
     
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_MONSTER_HURT, CC_CALLBACK_1(GameUILayer::onEventMonsterHud,this));
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_MONSTER_PROPERTY_DIRTY, CC_CALLBACK_1(GameUILayer::onEventUpdateMonsterProp,this));
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_MONSTER_DEATH, CC_CALLBACK_1(GameUILayer::onEvenetMonsterDead,this));
-    
-    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_PLAYER_USE_POTION, CC_CALLBACK_1(GameUILayer::onEvenetUserPotion,this));
 
-    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_PLAYER_USE_SCROLL, CC_CALLBACK_1(GameUILayer::onEvenetUserScroll,this));
-    
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_TRIGGER_TOXIC_TRAP, CC_CALLBACK_1(GameUILayer::onEventTriggerToxic,this));
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_TRIGGER_FIRE_TRAP, CC_CALLBACK_1(GameUILayer::onEventTriggerFire,this));
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_TRIGGER_PARALYTIC_TRAP, CC_CALLBACK_1(GameUILayer::onEventTriggerParalyic,this));
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_TRIGGER_GRIPPING_TRAP, CC_CALLBACK_1(GameUILayer::onEventTriggerGripping,this));
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_TRIGGER_SUMMONING_TRAP, CC_CALLBACK_1(GameUILayer::onEventTriggerSummoning,this));
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_TRIGGER_WEAK_TRAP, CC_CALLBACK_1(GameUILayer::onEventTriggerWeak,this)) ;
 }
 void GameUILayer::onExit()
 {
@@ -617,11 +737,19 @@ void GameUILayer::onExit()
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_PLAYER_LEVEL_UP);
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_PLAYER_DEATH);
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_PLAYER_HURT);
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_PLAYER_USE_POTION);
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_PLAYER_USE_SCROLL);
+    
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_MONSTER_HURT);
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_MONSTER_PROPERTY_DIRTY);
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_MONSTER_DEATH);
-    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_PLAYER_USE_POTION);
-    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_PLAYER_USE_SCROLL);
+    
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_TRIGGER_TOXIC_TRAP);
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_TRIGGER_FIRE_TRAP);
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_TRIGGER_PARALYTIC_TRAP);
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_TRIGGER_GRIPPING_TRAP);
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_TRIGGER_SUMMONING_TRAP);
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_TRIGGER_WEAK_TRAP);
     WrapperUILayer::onExit();
 }
 void GameUILayer::sendMessage(std::string msg,Color3B msgColor)
@@ -754,7 +882,7 @@ void GameUILayer::onClickMsg(cocos2d::Ref *ref)
 }
 void GameUILayer::onClickDist(cocos2d::Ref *ref)
 {
-    
+     CCLOG("onClickDist");
     if (_isDist || _isOpenSmailMap)
         return;
     _isDist = true;
@@ -774,15 +902,8 @@ void GameUILayer::onClickSearch(cocos2d::Ref *ref)
 {
     CHECK_ACTION(ref);
     CCLOG("onClickSearch");
-    
+    if (_isDist || _isOpenSmailMap)
+        return;
     VoxelExplorer::getInstance()->searchAndCheck();
 
-//    NoteUi* noteui = NoteUi::create();
-//    noteui->setMsg(UtilityHelper::getLocalStringForUi("STATUS_TEXT_DODGE"),UtilityHelper::randomColor());
-//    m_pListMsgs->pushBackCustomItem(noteui);
-//    CCLOG("m_pListMsgs innerSize height:%f contentSize:%f",m_pListMsgs->getInnerContainerSize().height,m_pListMsgs->getContentSize().height);
-//    if ( m_pListMsgs->getItems().size()*noteui->getContentSize().height > m_pListMsgs->getContentSize().height) {
-//         m_pListMsgs->scrollToBottom(0.5,false);
-//    }
-   
 }

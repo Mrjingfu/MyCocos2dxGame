@@ -38,21 +38,30 @@ private:
     void onClickDistTipsFrame(Ref* ref);
 
     
-    void onEventUpdateRoleProp(cocos2d::EventCustom *sender);
-    void onEventRoleLevelUp(cocos2d::EventCustom *sender);
-    void onEventRoleDead(cocos2d::EventCustom *sender);
-    void onEvenetRoleHud(cocos2d::EventCustom *sender);
+    void onEventUpdateRoleProp(cocos2d::EventCustom *sender);   //更新角色信息
+    void onEventRoleLevelUp(cocos2d::EventCustom *sender);      //角色升级
+    void onEventRoleDead(cocos2d::EventCustom *sender);         //角色死亡
+    void onEventRoleHud(cocos2d::EventCustom *sender);         //更新角色hud伤害
     
     
-    void onEventUpdateMonsterProp(cocos2d::EventCustom *sender);
-    void onEventMonsterHud(cocos2d::EventCustom *sender);
-    void onEvenetMonsterDead(cocos2d::EventCustom *sender);
+    void onEventUpdateMonsterProp(cocos2d::EventCustom *sender); //更新怪物信息
+    void onEventMonsterHud(cocos2d::EventCustom *sender);        //更新怪物hud伤害
+    void onEvenetMonsterDead(cocos2d::EventCustom *sender);      //怪物死亡
     
-    void onEvenetUserPotion(cocos2d::EventCustom *sender);
-    void onEvenetUserScroll(cocos2d::EventCustom *sender);
+    void onEventUserPotion(cocos2d::EventCustom *sender);//使用药水物品
+    void onEventUserScroll(cocos2d::EventCustom *sender);//使用卷轴物品
     
-    bool checkSearchMapInfo(const cocos2d::Ray ray,std::string& infoIcon,std::string& infoDesc);
+    void onEventTriggerToxic(cocos2d::EventCustom *sender); //中毒机关
+    void onEventTriggerFire(cocos2d::EventCustom *sender); //火机关
+    void onEventTriggerParalyic(cocos2d::EventCustom *sender);//麻痹机关
+    void onEventTriggerGripping(cocos2d::EventCustom *sender);//夹子机关
+    void onEventTriggerSummoning(cocos2d::EventCustom *sender);//召唤机关
+    void onEventTriggerWeak(cocos2d::EventCustom *sender);  //虚弱机关
     
+    void updateRoleBuff();
+    //检测点中位置在地图的信息
+    bool checkDistMapInfo(const cocos2d::Ray ray,std::string& infoIcon,std::string& infoDesc);
+    //注册触摸事件
     bool registerTouchEvent();
     //更新角色信息
     void updateRoleUi();
@@ -67,10 +76,12 @@ private:
     void setMsgItem(std::string msg,cocos2d::Color3B msgColor = cocos2d::Color3B::WHITE);
 private:
     bool _isOpenSmailMap;                       //是否打开小地图
-    bool _isDist;
+    bool _isDist;                               //是否点击地图查看信息
     cocos2d::ui::ListView*   m_pListMsgs;
     cocos2d::ui::ImageView*  m_pMsgFrame;
+    TGridView*               m_pRoleBufferList;
     
+    cocos2d::ui::Layout*     m_pRoleLayout;
     cocos2d::ui::ImageView*  m_pRoleBtn;
     cocos2d::ui::LoadingBar* m_pRoleHpBar;
     cocos2d::ui::Text*       m_pRoleCurHp;
@@ -81,7 +92,7 @@ private:
     cocos2d::ui::LoadingBar* m_pRoleExpBar;
     cocos2d::ui::Text*       m_pRoleLevel;
     cocos2d::ui::Text*       m_pRoleName;
-    cocos2d::ui::ImageView*  m_pRoleBuffers[8];
+
     
     cocos2d::ui::Layout*     m_pMonsterLayout;
     cocos2d::ui::ImageView*  m_pMonsterBtn;
@@ -94,8 +105,7 @@ private:
     cocos2d::ui::Text*       m_pMonsterLevel;
     cocos2d::ui::Text*       m_pMonsterName;
     cocos2d::Sprite*         m_pMonsterIcon;
-    
-    cocos2d::ui::ImageView*  m_pMonsterBuffers[8];
+
     
     cocos2d::ui::ImageView*  m_pGameMsgBtn;
     cocos2d::ui::ImageView*  m_pGameMapBtn;
@@ -108,10 +118,10 @@ private:
     cocos2d::ui::Text*       m_pGameSilverNum;          // 银币
     cocos2d::ui::Text*       m_pGameCopperNum;          // 铜币
     cocos2d::ui::Text*       m_pGameLevelInfoName;      // 关卡名
-    cocos2d::ui::Text*      m_pGameLevelInfoFloor;     // 关卡层数
-    cocos2d::ui::Layout*    m_pGameDistTipsFrame;
-    cocos2d::ui::Button*    m_pGameDistFrameCloseBtn;
-    cocos2d::ui::Text*      m_pGameDistFrameDesc;
+    cocos2d::ui::Text*       m_pGameLevelInfoFloor;     // 关卡层数
+    cocos2d::ui::Layout*     m_pGameDistTipsFrame;
+    cocos2d::ui::Button*     m_pGameDistFrameCloseBtn;
+    cocos2d::ui::Text*       m_pGameDistFrameDesc;
    
 };
 

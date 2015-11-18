@@ -166,7 +166,6 @@
             <filename>../ui/progress_margic_style.png</filename>
             <filename>../ui/progress_exp_bg.png</filename>
             <filename>../ui/progress_exp_style.png</filename>
-            <filename>../ui/ui_buffer_1.png</filename>
             <filename>../../../../../../游戏/Voxel_Explorer/ssss/progress_exp_bg.png</filename>
             <filename>../ui/ui_frame_7.png</filename>
             <filename>../ui/ui_frame_8.png</filename>
@@ -194,6 +193,14 @@
             <filename>../ui/ui_ornament_icon.png</filename>
             <filename>../ui/ui_secondweapon_icon.png</filename>
             <filename>../ui/ui_weapon_icon.png</filename>
+            <filename>../ui/ui_buffer_fire.png</filename>
+            <filename>../ui/ui_buffer_frozen.png</filename>
+            <filename>../ui/ui_buffer_paralytic.png</filename>
+            <filename>../ui/ui_buffer_poisoning.png</filename>
+            <filename>../ui/ui_buffer_speedup.png</filename>
+            <filename>../ui/ui_buffer_stealth.png</filename>
+            <filename>../ui/ui_buffer_stronger.png</filename>
+            <filename>../ui/ui_buffer_weak.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>
