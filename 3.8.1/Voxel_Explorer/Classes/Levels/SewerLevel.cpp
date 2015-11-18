@@ -41,6 +41,10 @@ bool SewerLevel::createMonsters()
 }
 bool SewerLevel::createUseableItems()
 {
+    ///创建宝箱
+    
+    ///创建罐子
+    
     return true;
 }
 bool SewerLevel::createPickableItems()

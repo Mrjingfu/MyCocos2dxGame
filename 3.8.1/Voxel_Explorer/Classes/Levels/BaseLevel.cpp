@@ -265,6 +265,39 @@ cocos2d::Vec2 BaseLevel::getRandomPassableTile()
     } while (!m_Map[cell].isPassable());
     return Vec2(cell % m_nWidth, cell / m_nWidth);
 }
+void BaseLevel::searchAndCheck(int x, int y, int searchDistance)
+{
+    std::vector<int> neighbours;
+    if(searchDistance == 1)
+        neighbours = getNeighbours5();
+    else if(searchDistance == 2)
+        neighbours = getNeighbours9();
+    else if(searchDistance == 3)
+        neighbours = getNeighbours13();
+    else if(searchDistance == 4)
+        neighbours = getNeighbours21();
+    else
+        neighbours = getNeighbours25();
+    int pos = y * m_nWidth + x;
+    for (int i = 0; i < neighbours.size(); ++i) {
+        int j = pos + neighbours[i];
+        if(m_Map[j].m_Type == TerrainTile::TT_HIDE_TOXIC_TRAP
+            || m_Map[j].m_Type == TerrainTile::TT_HIDE_FIRE_TRAP
+            || m_Map[j].m_Type == TerrainTile::TT_HIDE_PARALYTIC_TRAP
+            || m_Map[j].m_Type == TerrainTile::TT_HIDE_GRIPPING_TRAP
+            || m_Map[j].m_Type == TerrainTile::TT_HIDE_SUMMONING_TRAP
+            || m_Map[j].m_Type == TerrainTile::TT_HIDE_WEAK_TRAP)
+        {
+            m_Map[j].m_Type = (TerrainTile::TileType)(m_Map[j].m_Type - 1);
+            VoxelExplorer::getInstance()->handleShowHiddenTrap(Vec2(m_Map[j].m_nX, m_Map[j].m_nY), m_Map[j].m_Type);
+        }
+        else if(m_Map[j].m_Type == TerrainTile::TT_SECRET_DOOR)
+        {
+            VoxelExplorer::getInstance()->handleShowSecretDoor(Vec2(m_Map[j].m_nX, m_Map[j].m_nY));
+        }
+        VoxelExplorer::getInstance()->handleShowSearchEffect(Vec2(m_Map[j].m_nX, m_Map[j].m_nY));
+    }
+}
 void BaseLevel::load()
 {
 }

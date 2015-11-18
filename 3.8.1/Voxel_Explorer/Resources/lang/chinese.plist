@@ -1012,5 +1012,17 @@
 	<string>万能药水</string>
 	<key>PIN_POTION_UNIVERSAL_DESC</key>
 	<string>解除角色所有负面状态</string>
+	<key>UIN_CHEST_COPPER</key>
+	<string>铜质宝箱</string>
+	<key>UIN_CHEST_SILVER</key>
+	<string>银质宝箱</string>
+	<key>UIN_CHEST_GOLD</key>
+	<string>金质宝箱</string>
+	<key>UIN_JAR_1</key>
+	<string>罐子</string>
+	<key>UIN_JAR_2</key>
+	<string>罐子</string>
+	<key>UIN_JAR_3</key>
+	<string>罐子</string>
 </dict>
 </plist>
