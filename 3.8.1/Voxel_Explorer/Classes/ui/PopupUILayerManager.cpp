@@ -217,14 +217,22 @@ cocos2d::Color3B PopupUILayerManager::getTipsColor(TipTypes tipType)
 }
 void PopupUILayerManager::showStatusImport(TipTypes tipType, std::string text)
 {
+//    int charCount = 0;
+//    if(cocos2d::Application::getInstance()->getCurrentLanguage() ==cocos2d::LanguageType::CHINESE)
+//    {
+//        charCount =10;
+//    }else{
+//        charCount = 40;
+//    }
+//    UtilityHelper::getLineStr(text, charCount);
     Label* m_pLabel = cocos2d::Label::createWithTTF(text,UtilityHelper::getLocalString("FONT_NAME"),36);
-//    m_pLabel->setScale(0.6);
+    m_pLabel->setScale(0.8);
     m_pLabel->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
     m_pParentLayer->addChild(m_pLabel);
     m_pLabel->setPosition(Vec2(WND_CENTER_X,SCREEN_HEIGHT*0.65));
     m_pLabel->setTextColor(cocos2d::Color4B(getTipsColor(tipType)));
-    m_pLabel->enableOutline(cocos2d::Color4B::BLUE,1);
-    cocos2d::MoveTo*  moveTo = cocos2d::MoveTo::create(0.5,Vec2(WND_CENTER_X,SCREEN_HEIGHT*0.7));
+//    m_pLabel->enableOutline(cocos2d::Color4B::BLUE,1);
+    cocos2d::MoveTo*  moveTo = cocos2d::MoveTo::create(0.5,Vec2(WND_CENTER_X,SCREEN_HEIGHT*0.73));
     cocos2d::DelayTime* delay = cocos2d::DelayTime::create(1.0f);
     cocos2d::FadeOut* fadeOut = cocos2d::FadeOut::create(0.2);
     m_pLabel->runAction(cocos2d::Sequence::create(moveTo,delay,fadeOut,RemoveSelf::create(), nil));

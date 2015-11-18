@@ -316,7 +316,98 @@
                 <key>sourceSize</key>
                 <string>{25,25}</string>
             </dict>
-            <key>ui_buffer_1.png</key>
+            <key>ui_buffer_fire.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{186,163},{7,7}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{7,7}}</string>
+                <key>sourceSize</key>
+                <string>{7,7}</string>
+            </dict>
+            <key>ui_buffer_frozen.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{213,154},{7,7}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{7,7}}</string>
+                <key>sourceSize</key>
+                <string>{7,7}</string>
+            </dict>
+            <key>ui_buffer_paralytic.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{204,154},{7,7}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{7,7}}</string>
+                <key>sourceSize</key>
+                <string>{7,7}</string>
+            </dict>
+            <key>ui_buffer_poisoning.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{195,154},{7,7}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{7,7}}</string>
+                <key>sourceSize</key>
+                <string>{7,7}</string>
+            </dict>
+            <key>ui_buffer_speedup.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{186,154},{7,7}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{7,7}}</string>
+                <key>sourceSize</key>
+                <string>{7,7}</string>
+            </dict>
+            <key>ui_buffer_stealth.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{246,159},{7,7}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{7,7}}</string>
+                <key>sourceSize</key>
+                <string>{7,7}</string>
+            </dict>
+            <key>ui_buffer_stronger.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{237,159},{7,7}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{7,7}}</string>
+                <key>sourceSize</key>
+                <string>{7,7}</string>
+            </dict>
+            <key>ui_buffer_weak.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{148,161},{7,7}}</string>
@@ -599,7 +690,7 @@
             <key>size</key>
             <string>{256,256}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:be8880d70d39ec81f0b35942afa7848e:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:2aba71928d8ead59652be903923a4be6:1/1$</string>
             <key>textureFileName</key>
             <string>ui_sprite.png</string>
         </dict>

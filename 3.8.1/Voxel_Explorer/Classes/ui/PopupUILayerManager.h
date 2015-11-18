@@ -22,8 +22,11 @@ public:
     static PopupUILayerManager* getInstance();
     
     PopupUILayer* openPopup(ePopupType type,int zorder= eZOrderPopupUILayer);
+    //显示重要提示
     void showStatusImport(TipTypes tipType ,std::string text);
+    //显示普通提示
     void showStatus(TipTypes tipType ,std::string text,cocos2d::Vec2 pos);
+    //图片提示
     void showPromptSign(TipTypes tipType,cocos2d::Vec2 pos);
     void closeCurrentPopup();
     void onExitScene();
