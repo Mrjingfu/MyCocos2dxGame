@@ -10,6 +10,7 @@
 #include "LevelResourceManager.h"
 #include "BaseLevel.h"
 #include "AlisaMethod.h"
+#include "VoxelExplorer.h"
 USING_NS_CC;
 const std::string USEABLE_ITEM_NAMES[] = {
     
@@ -34,6 +35,14 @@ UseableItem* UseableItem::create(UseableItemType type)
     if (item && item->initWithFile(model))
     {
         item->m_Type = type;
+        if(item->m_Type >= UIT_CHEST_COPPER || item->m_Type >= UIT_CHEST_GOLD)
+            item->setScale(0.6f);
+        else if(item->m_Type == UIT_JAR_1)
+            item->setScale(0.3f);
+        else if(item->m_Type == UIT_JAR_2)
+            item->setScale(0.5f);
+        else if(item->m_Type == UIT_JAR_3)
+            item->setScale(0.4f);
         item->setCameraMask((unsigned int)CameraFlag::USER1);
         item->setLightMask((unsigned int)LightFlag::LIGHT0);
         item->setCascadeOpacityEnabled(true);
@@ -112,16 +121,27 @@ void UseableItem::onExitIdle()
 
 void UseableItem::onEnterFadeOut()
 {
-    removeTerrainTileFlag(TileInfo::USEABLE);
-    EaseSineOut* fadeOut = EaseSineOut::create(FadeOut::create(1.0f));
-    CallFunc* callback = CallFunc::create(CC_CALLBACK_0(UseableItem::destroySelf, this));
-    Sequence* sequence = Sequence::create(fadeOut, callback, nullptr);
-    this->runAction(sequence);
+    if(m_Type <= UIT_CHEST_GOLD)
+    {
+        EaseSineOut* fadeOut = EaseSineOut::create(FadeOut::create(0.5f));
+        CallFunc* callback = CallFunc::create(CC_CALLBACK_0(UseableItem::destroySelf, this));
+        Sequence* sequence = Sequence::create(fadeOut, callback, nullptr);
+        this->runAction(sequence);
+    }
+    else
+    {
+        VoxelExplorer::getInstance()->addExplosion(getPosition3D());
+        CallFunc* callback = CallFunc::create(CC_CALLBACK_0(UseableItem::destroySelf, this));
+        Sequence* sequence = Sequence::create(callback, nullptr);
+        this->runAction(sequence);
+    }
 }
 void UseableItem::onExitFadeOut()
 {
 }
 void UseableItem::destroySelf()
 {
+    removeTerrainTileFlag(TileInfo::USEABLE);
+    VoxelExplorer::getInstance()->generatePickItemByUseableItem(getPosInMap(), m_Type);
     this->removeFromParentAndCleanup(true);
 }

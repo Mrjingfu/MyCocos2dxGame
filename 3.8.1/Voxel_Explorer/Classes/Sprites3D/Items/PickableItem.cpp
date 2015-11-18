@@ -531,7 +531,240 @@ PickableItem::PickableItemType PickableItem::generatePickItemByMonsterLevel(int 
     }
     return ret;
 }
-
+PickableItem::PickableItemType PickableItem::generatePickItemByUseableLevel(int level, UseableItem::UseableItemType type)
+{
+    PickableItem::PickableItemType ret = PIT_UNKNOWN;
+    if(level <= 5)
+        ret = generate1_5UnStackableItemType();
+    else if(level <= 10)
+    {
+        float percentStandard1 = 0.4f;
+        float percentStandard2 = 1.0 - percentStandard1;
+        AlisaMethod* am = AlisaMethod::create(percentStandard1, percentStandard2, -1.0, NULL);
+        if(am)
+        {
+            if(am->getRandomIndex() == 0)
+                ret = generate1_5UnStackableItemType();
+            else if(am->getRandomIndex() == 1)
+                ret = generate6_10UnStackableItemType();
+        }
+    }
+    else if(level <= 15)
+    {
+        float percentPro = 0.02f;
+        if(type == UseableItem::UIT_CHEST_COPPER)
+            percentPro += 0.02f;
+        else if(type == UseableItem::UIT_CHEST_SILVER)
+            percentPro += 0.04f;
+        else if(type == UseableItem::UIT_CHEST_GOLD)
+            percentPro += 0.06f;
+        float percentStandard1 = 0.15f;
+        float percentStandard2 = 0.3f;
+        float percentStandard3 = 1.0 - percentPro - percentStandard1 - percentStandard2;
+        AlisaMethod* am = AlisaMethod::create(percentPro, percentStandard1, percentStandard2, percentStandard3, -1.0, NULL);
+        if(am)
+        {
+            if(am->getRandomIndex() == 0)
+                ret = generate11_15UnStackableItemProType();
+            else if(am->getRandomIndex() == 1)
+                ret = generate1_5UnStackableItemType();
+            else if(am->getRandomIndex() == 2)
+                ret = generate6_10UnStackableItemType();
+            else if(am->getRandomIndex() == 3)
+                ret = generate11_15UnStackableItemType();
+        }
+        
+    }
+    else if(level <= 20)
+    {
+        float percentPro1 = 0.01f;
+        float percentPro2 = 0.01f;
+        if(type == UseableItem::UIT_CHEST_COPPER)
+        {
+            percentPro1 += 0.01f;
+            percentPro2 += 0.01f;
+        }
+        else if(type == UseableItem::UIT_CHEST_SILVER)
+        {
+            percentPro1 += 0.02f;
+            percentPro2 += 0.02f;
+        }
+        else if(type == UseableItem::UIT_CHEST_GOLD)
+        {
+            percentPro1 += 0.03f;
+            percentPro2 += 0.03f;
+        }
+        float percentStandard1 = 0.15f;
+        float percentStandard2 = 0.3f;
+        float percentStandard3 = 1.0 - percentPro1 - percentPro2 - percentStandard1 - percentStandard2;
+        AlisaMethod* am = AlisaMethod::create(percentPro1, percentPro2, percentStandard1, percentStandard2, percentStandard3, -1.0, NULL);
+        if(am)
+        {
+            if(am->getRandomIndex() == 0)
+                ret = generate11_15UnStackableItemProType();
+            else if(am->getRandomIndex() == 1)
+                ret = generate16_20UnStackableItemProType();
+            else if(am->getRandomIndex() == 2)
+                ret = generate6_10UnStackableItemType();
+            else if(am->getRandomIndex() == 3)
+                ret = generate11_15UnStackableItemType();
+            else if(am->getRandomIndex() == 4)
+                ret = generate16_20UnStackableItemType();
+        }
+    }
+    else if(level <= 25)
+    {
+        float percentPro1 = 0.01f;
+        float percentPro2 = 0.01f;
+        if(type == UseableItem::UIT_CHEST_COPPER)
+        {
+            percentPro1 += 0.01f;
+            percentPro2 += 0.01f;
+        }
+        else if(type == UseableItem::UIT_CHEST_SILVER)
+        {
+            percentPro1 += 0.02f;
+            percentPro2 += 0.02f;
+        }
+        else if(type == UseableItem::UIT_CHEST_GOLD)
+        {
+            percentPro1 += 0.03f;
+            percentPro2 += 0.03f;
+        }
+        float percentStandard1 = 0.15f;
+        float percentStandard2 = 0.3f;
+        float percentStandard3 = 1.0 - percentPro1 - percentPro2 - percentStandard1 - percentStandard2;
+        AlisaMethod* am = AlisaMethod::create(percentPro1, percentPro2, percentStandard1, percentStandard2, percentStandard3, -1.0, NULL);
+        if(am)
+        {
+            if(am->getRandomIndex() == 0)
+                ret = generate16_20UnStackableItemProType();
+            else if(am->getRandomIndex() == 1)
+                ret = generate21_25UnStackableItemProType();
+            else if(am->getRandomIndex() == 2)
+                ret = generate11_15UnStackableItemType();
+            else if(am->getRandomIndex() == 3)
+                ret = generate16_20UnStackableItemType();
+            else if(am->getRandomIndex() == 4)
+                ret = generate21_25UnStackableItemType();
+        }
+    }
+    else if(level <= 30)
+    {
+        float percentPro1 = 0.01f;
+        float percentPro2 = 0.01f;
+        if(type == UseableItem::UIT_CHEST_COPPER)
+        {
+            percentPro1 += 0.01f;
+            percentPro2 += 0.01f;
+        }
+        else if(type == UseableItem::UIT_CHEST_SILVER)
+        {
+            percentPro1 += 0.02f;
+            percentPro2 += 0.02f;
+        }
+        else if(type == UseableItem::UIT_CHEST_GOLD)
+        {
+            percentPro1 += 0.03f;
+            percentPro2 += 0.03f;
+        }
+        float percentStandard1 = 0.15f;
+        float percentStandard2 = 0.3f;
+        float percentStandard3 = 1.0 - percentPro1 - percentPro2 - percentStandard1 - percentStandard2;
+        AlisaMethod* am = AlisaMethod::create(percentPro1, percentPro2, percentStandard1, percentStandard2, percentStandard3, -1.0, NULL);
+        if(am)
+        {
+            if(am->getRandomIndex() == 0)
+                ret = generate21_25UnStackableItemProType();
+            else if(am->getRandomIndex() == 1)
+                ret = generate26_30UnStackableItemProType();
+            else if(am->getRandomIndex() == 2)
+                ret = generate16_20UnStackableItemType();
+            else if(am->getRandomIndex() == 3)
+                ret = generate21_25UnStackableItemType();
+            else if(am->getRandomIndex() == 4)
+                ret = generate26_30UnStackableItemType();
+        }
+    }
+    else if(level <= 35)
+    {
+        float percentPro1 = 0.01f;
+        float percentPro2 = 0.01f;
+        if(type == UseableItem::UIT_CHEST_COPPER)
+        {
+            percentPro1 += 0.01f;
+            percentPro2 += 0.01f;
+        }
+        else if(type == UseableItem::UIT_CHEST_SILVER)
+        {
+            percentPro1 += 0.02f;
+            percentPro2 += 0.02f;
+        }
+        else if(type == UseableItem::UIT_CHEST_GOLD)
+        {
+            percentPro1 += 0.03f;
+            percentPro2 += 0.03f;
+        }
+        float percentStandard1 = 0.15f;
+        float percentStandard2 = 0.3f;
+        float percentStandard3 = 1.0 - percentPro1 - percentPro2 - percentStandard1 - percentStandard2;
+        AlisaMethod* am = AlisaMethod::create(percentPro1, percentPro2, percentStandard1, percentStandard2, percentStandard3, -1.0, NULL);
+        if(am)
+        {
+            if(am->getRandomIndex() == 0)
+                ret = generate26_30UnStackableItemProType();
+            else if(am->getRandomIndex() == 1)
+                ret = generate31_35UnStackableItemProType();
+            else if(am->getRandomIndex() == 2)
+                ret = generate21_25UnStackableItemType();
+            else if(am->getRandomIndex() == 3)
+                ret = generate26_30UnStackableItemType();
+            else if(am->getRandomIndex() == 4)
+                ret = generate31_35UnStackableItemType();
+        }
+    }
+    else
+    {
+        float percentPro1 = 0.01f;
+        float percentPro2 = 0.01f;
+        float percentPro3 = 0.01f;
+        if(type == UseableItem::UIT_CHEST_COPPER)
+        {
+            percentPro1 += 0.01f;
+            percentPro2 += 0.01f;
+            percentPro3 += 0.01f;
+        }
+        else if(type == UseableItem::UIT_CHEST_SILVER)
+        {
+            percentPro1 += 0.02f;
+            percentPro2 += 0.02f;
+            percentPro3 += 0.02f;
+        }
+        else if(type == UseableItem::UIT_CHEST_GOLD)
+        {
+            percentPro1 += 0.03f;
+            percentPro2 += 0.03f;
+            percentPro3 += 0.03f;
+        }
+        float percentStandard1 = 0.2f;
+        float percentStandard2 = 1.0 - percentPro1 - percentPro2 - percentPro3 -percentStandard1;
+        AlisaMethod* am = AlisaMethod::create(percentPro1, percentPro2, percentPro3,percentStandard1, percentStandard2, -1.0, NULL);
+        if(am)
+        {
+            if(am->getRandomIndex() == 0)
+                ret = generate31_35UnStackableItemProType();
+            else if(am->getRandomIndex() == 1)
+                ret = generate36_40UnStackableItemProType();
+            else if(am->getRandomIndex() == 2)
+                ret = generate41_45UnStackableItemProType();
+            else if(am->getRandomIndex() == 3)
+                ret = generate26_30UnStackableItemType();
+            else if(am->getRandomIndex() == 4)
+                ret = generate31_35UnStackableItemType();
+        }
+    }
+    return ret;
+}
 PickableItem::PickableItemType PickableItem::generateKeyItemType()
 {
     float percent1 = 0.2f;

@@ -21,6 +21,7 @@
 #include "GameFormula.hpp"
 #include "Particle3D/CCParticleSystem3D.h"
 #include "Particle3D/PU/CCPUParticleSystem3D.h"
+#include "AlisaMethod.h"
 USING_NS_CC;
 
 VoxelExplorer* g_pVoxelExplorerInstance = nullptr;
@@ -288,6 +289,59 @@ void VoxelExplorer::generatePickItem(const cocos2d::Vec2& pos, bool generateItem
         }
     }
 }
+void VoxelExplorer::generatePickItemByUseableItem(const cocos2d::Vec2& pos, UseableItem::UseableItemType type)
+{
+    CChaosNumber dc = RandomDungeon::getInstance()->getDifficultClass();
+    CChaosNumber nodeDepth = RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nNodeDepth;
+    CChaosNumber currentDepth = RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nCurrentDepth;
+    CChaosNumber level = (dc-1)*30 + (nodeDepth-1)*5 + cocos2d::random(0, (int)currentDepth.GetLongValue()) + 1;
+    
+    if(type <= UseableItem::UIT_CHEST_GOLD)
+    {
+        if(type == UseableItem::UIT_CHEST_GOLD)
+            PlayerProperty::getInstance()->addMoney(1, 0, 0);
+        else if(type == UseableItem::UIT_CHEST_SILVER)
+            PlayerProperty::getInstance()->addMoney(0, 25, 0);
+        else
+            PlayerProperty::getInstance()->addMoney(0, 0, 50);
+        
+        PickableItem::PickableItemType pitType = PickableItem::generatePickItemByUseableLevel(level, type);
+        if(pitType == PickableItem::PIT_UNKNOWN)
+            return;
+        PickableItem* item = PickableItem::create(pitType, level);
+        if(item)
+        {
+            item->setPosition3D(Vec3(pos.x*TerrainTile::CONTENT_SCALE, -0.5f*TerrainTile::CONTENT_SCALE, -pos.y*TerrainTile::CONTENT_SCALE));
+            item->setVisited(true);
+            VoxelExplorer::getInstance()->getPickableItemsLayer()->addChild(item);
+            item->setState(PickableItem::PIS_BEGIN_GENERATE);
+        }
+    }
+    else
+    {
+        PlayerProperty::getInstance()->addMoney(0, 0, cocos2d::random(5, 30));
+        float percent1 = 0.5f;
+        float percent2 = 1.0 - percent1;
+        AlisaMethod* am = AlisaMethod::create(percent1, percent2, -1.0, NULL);
+        if(am)
+        {
+            if(am->getRandomIndex() == 0)
+            {
+                PickableItem::PickableItemType pitType = PickableItem::generatePickItemByUseableLevel(level, type);
+                if(pitType == PickableItem::PIT_UNKNOWN)
+                    return;
+                PickableItem* item = PickableItem::create(pitType, level);
+                if(item)
+                {
+                    item->setPosition3D(Vec3(pos.x*TerrainTile::CONTENT_SCALE, -0.5f*TerrainTile::CONTENT_SCALE, -pos.y*TerrainTile::CONTENT_SCALE));
+                    item->setVisited(true);
+                    VoxelExplorer::getInstance()->getPickableItemsLayer()->addChild(item);
+                    item->setState(PickableItem::PIS_BEGIN_GENERATE);
+                }
+            }
+        }
+    }
+}
 void VoxelExplorer::handleDoor(const cocos2d::Vec2& mapPos)
 {
     if(m_pTerrainDoorsLayer && m_pPlayer)
@@ -318,6 +372,23 @@ void VoxelExplorer::handleDoor(const cocos2d::Vec2& mapPos)
             }
         }
 
+    }
+}
+void VoxelExplorer::handleUseUseableItem(const cocos2d::Vec2& mapPos)
+{
+    if(!m_pPlayer)
+        return;
+    if(m_pUseableItemsLayer)
+    {
+        for (const auto& child : m_pUseableItemsLayer->getChildren())
+        {
+            UseableItem* useableItem = dynamic_cast<UseableItem*>(child);
+            if(useableItem && useableItem->getPosInMap() == mapPos)
+            {
+                useableItem->setState(UseableItem::UIS_FADEOUT);
+                return;
+            }
+        }
     }
 }
 void VoxelExplorer::handleTriggerTrap(const cocos2d::Vec2& mapPos, TerrainTile::TileType trapType)     ///触发机关

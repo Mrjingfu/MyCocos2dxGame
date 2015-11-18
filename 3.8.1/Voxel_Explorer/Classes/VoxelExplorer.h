@@ -13,6 +13,7 @@
 #include "BaseLevel.h"
 #include "Player.hpp"
 #include "BaseMonster.hpp"
+#include "UseableItem.hpp"
 class VoxelExplorer : public cocos2d::Ref
 {
     VoxelExplorer();
@@ -37,8 +38,10 @@ public:
     
     void addExplosion(const cocos2d::Vec3& pos);
     void generatePickItem(const cocos2d::Vec2& pos, bool generateItem, int copper, int monsterLevel);
+    void generatePickItemByUseableItem(const cocos2d::Vec2& pos, UseableItem::UseableItemType type);
     
     void handleDoor(const cocos2d::Vec2& mapPos);            ///开门
+    void handleUseUseableItem(const cocos2d::Vec2& mapPos);
     void handleTriggerTrap(const cocos2d::Vec2& mapPos, TerrainTile::TileType trapType);     ///触发机关
     void handleShowSecretDoor(const cocos2d::Vec2& mapPos);
     void handleShowHiddenTrap(const cocos2d::Vec2& mapPos, TerrainTile::TileType trapType); ///显示隐藏机关

@@ -136,6 +136,7 @@ protected:
     virtual bool createPickableItems() = 0;
 
     virtual int calculateLevelMonsterCount() = 0;
+    virtual int calculateLevelUseableItemCount(const cocos2d::Size& areaSize) = 0;
 private:
     int assignTerrainTileFlag(TerrainTile::TileType type);
 protected:
