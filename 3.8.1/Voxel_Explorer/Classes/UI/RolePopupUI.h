@@ -25,6 +25,10 @@ public:
 private:
     void onClickColse(Ref* ref);
     void onClickChnageBag(Ref*);
+    void onClickSortAll(Ref*,Widget::TouchEventType);
+    void onClickSortEquip(Ref*,Widget::TouchEventType);
+    void onClickSortPotion(Ref*,Widget::TouchEventType);
+    
     void selectItemEvent(Ref *pSender, TGridView::EventType type);
     void updateItems();
     void onEventUpdateData(cocos2d::EventCustom *sender);
@@ -37,7 +41,10 @@ private:
    bool _isOpenIdentify;
    TGridView* m_pGridView;
    cocos2d::ui::Button* m_pBtnClose;
+   cocos2d::ui::Button* m_pBtnAllBag;
    cocos2d::ui::Button* m_pBtnChangeBag;
+   cocos2d::ui::Button* m_pBtnWeaponBag;
+   cocos2d::ui::Button* m_pBtnPotionBag;
    ItemUI* m_pWeaponUi;
    ItemUI* m_pArmorUi;
    ItemUI* m_pOrnamentUi;

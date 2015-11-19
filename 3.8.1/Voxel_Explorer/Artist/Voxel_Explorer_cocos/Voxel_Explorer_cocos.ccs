@@ -26,7 +26,6 @@
           <PlistImageFile Name="progress_margic_style.png" Key="progress_margic_style.png" />
           <PlistImageFile Name="progress_exp_bg.png" Key="progress_exp_bg.png" />
           <PlistImageFile Name="progress_exp_style.png" Key="progress_exp_style.png" />
-          <PlistImageFile Name="ui_buffer_1.png" Key="ui_buffer_1.png" />
           <PlistImageFile Name="ui_frame_7.png" Key="ui_frame_7.png" />
           <PlistImageFile Name="ui_frame_8.png" Key="ui_frame_8.png" />
           <PlistImageFile Name="ui_map_icon.png" Key="ui_map_icon.png" />
@@ -53,14 +52,30 @@
           <PlistImageFile Name="ui_ornament_icon.png" Key="ui_ornament_icon.png" />
           <PlistImageFile Name="ui_secondweapon_icon.png" Key="ui_secondweapon_icon.png" />
           <PlistImageFile Name="ui_weapon_icon.png" Key="ui_weapon_icon.png" />
+          <PlistImageFile Name="ui_buffer_fire.png" Key="ui_buffer_fire.png" />
+          <PlistImageFile Name="ui_buffer_frozen.png" Key="ui_buffer_frozen.png" />
+          <PlistImageFile Name="ui_buffer_paralytic.png" Key="ui_buffer_paralytic.png" />
+          <PlistImageFile Name="ui_buffer_poisoning.png" Key="ui_buffer_poisoning.png" />
+          <PlistImageFile Name="ui_buffer_speedup.png" Key="ui_buffer_speedup.png" />
+          <PlistImageFile Name="ui_buffer_stealth.png" Key="ui_buffer_stealth.png" />
+          <PlistImageFile Name="ui_buffer_stronger.png" Key="ui_buffer_stronger.png" />
+          <PlistImageFile Name="ui_buffer_weak.png" Key="ui_buffer_weak.png" />
+          <PlistImageFile Name="ui_frame_9.png" Key="ui_frame_9.png" />
+          <PlistImageFile Name="ui_frame_10.png" Key="ui_frame_10.png" />
+          <PlistImageFile Name="btn_bag_poition_normal.png" Key="btn_bag_poition_normal.png" />
+          <PlistImageFile Name="btn_bag_poition_press.png" Key="btn_bag_poition_press.png" />
+          <PlistImageFile Name="btn_bag_wepon_normal.png" Key="btn_bag_wepon_normal.png" />
+          <PlistImageFile Name="btn_bag_wepon_press.png" Key="btn_bag_wepon_press.png" />
+          <PlistImageFile Name="btn_bag_all_normal.png" Key="btn_bag_all_normal.png" />
+          <PlistImageFile Name="btn_bag_all_press.png" Key="btn_bag_all_press.png" />
         </PlistImageFolder>
-        <Project Name="characterLayer.csd" Type="Layer" />
         <Project Name="gameScene.csd" Type="Scene" />
         <Project Name="menuscene.csd" Type="Scene" />
         <Project Name="infoPopupLayer.csd" Type="Layer" />
         <Project Name="pausePopupLayer.csd" Type="Layer" />
         <Project Name="achievementPopupLayer.csd" Type="Layer" />
         <Project Name="itemPopupLayer.csd" Type="Layer" />
+        <Project Name="characterLayer.csd" Type="Layer" />
       </RootFolder>
     </Group>
   </SolutionFolder>

@@ -285,16 +285,7 @@ bool GameUILayer::addEvents()
     m_pRoleBufferList->setFrameMargin(cocos2d::Size(1,1));
     m_pRoleBufferList->setClippingEnabled(false);
     m_pRoleLayout->addChild(m_pRoleBufferList);
-    
-    
-    for(int i =0;i<8;i++)
-    {
-        ui::ImageView* buffim = ui::ImageView::create("ui_buffer_paralytic.png",TextureResType::PLIST);
-        buffim->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
-        m_pRoleBufferList->pushBackCustomItem(buffim);
-    }
-    
-    updateRoleUi(); 
+    updateRoleUi();
     updateGameInfo();
     initMessageFrame();
     return true;
@@ -324,21 +315,23 @@ void GameUILayer::onTouchMoved(cocos2d::Touch *touch, cocos2d::Event *event)
 }
 void GameUILayer::onTouchEnded(cocos2d::Touch *touch, cocos2d::Event *event)
 {
-    Ray ray;
-    Vec2 pt = touch->getLocationInView();
-    UtilityHelper::getCameraToViewportRay(VoxelExplorer::getInstance()->getMainCamera(), pt, &ray);
-    Vec3 playerpt = VoxelExplorer::getInstance()->getPlayer()->getPosition3D();
-    std::string infostr;
-    std::string infoKey;
-    if(checkDistMapInfo(ray,infostr,infoKey))
+    if(_isDist)
     {
-        InfoPopupUI* infoUi = static_cast<InfoPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupInfo));
-        onClickDistTipsFrame(nullptr);
-        infoUi->setDarkLayerVisble(false);
+        Ray ray;
+        Vec2 pt = touch->getLocationInView();
+        UtilityHelper::getCameraToViewportRay(VoxelExplorer::getInstance()->getMainCamera(), pt, &ray);
+        Vec3 playerpt = VoxelExplorer::getInstance()->getPlayer()->getPosition3D();
+        std::string infostr;
+        std::string infoKey;
+        if(checkDistMapInfo(ray,infostr,infoKey))
+        {
+            InfoPopupUI* infoUi = static_cast<InfoPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupInfo));
+            onClickDistTipsFrame(nullptr);
+            infoUi->setDarkLayerVisble(false);
+        }
+        CCLOG("PT X:%f y:%f z:%f",ray._origin.x,ray._origin.y,ray._origin.z);
+        
     }
-    CCLOG("PT X:%f y:%f z:%f",ray._origin.x,ray._origin.y,ray._origin.z);
-    
-
     return;
 }
 bool GameUILayer::checkDistMapInfo(const cocos2d::Ray ray,std::string& infoIcon,std::string& infoDesc)
@@ -550,6 +543,7 @@ void GameUILayer::onEventUserPotion(cocos2d::EventCustom *sender)
 }
 void GameUILayer::onEventUserScroll(cocos2d::EventCustom *sender)
 {
+    //关闭ItemPopup窗口
     PopupUILayerManager::getInstance()->closeCurrentPopup();
     //窗口都未关闭,回调后来判断是否关闭
     CCLOG("onEvenetUserScroll");
@@ -568,7 +562,7 @@ void GameUILayer::onEventUserScroll(cocos2d::EventCustom *sender)
         if (rolePopup) {
             rolePopup->setStateIdentify(true);
         }
-        
+        return;
     }else if(scrollProperty->getPickableItemType() == PickableItem::PIT_SCROLL_TELEPORT)
     {
         CCLOG("传送卷轴");
@@ -583,6 +577,8 @@ void GameUILayer::onEventUserScroll(cocos2d::EventCustom *sender)
     {
         CCLOG("命运卷轴");
     }
+    //关闭角色对话框
+    PopupUILayerManager::getInstance()->closeCurrentPopup();
 }
 
 void GameUILayer::onEventRoleLevelUp(cocos2d::EventCustom *sender)
@@ -612,9 +608,7 @@ void GameUILayer::onEventRoleHud(cocos2d::EventCustom *sender)
     HurtData* hurData = static_cast<HurtData*>(sender->getUserData());
     Vec2 pt = VoxelExplorer::getInstance()->getMainCamera()->projectGL(hurData->m_vPos);
     pt = Vec2(pt.x, pt.y+TerrainTile::CONTENT_SCALE*2.5);
-    //    PopupUILayerManager::getInstance()->showPromptSign(TIP_QUESTION, pt);
-    
-    if (hurData->m_bDodge) {
+     if (hurData->m_bDodge) {
         
         PopupUILayerManager::getInstance()->showStatus(TIP_DODGE,  StringUtils::format(UtilityHelper::getLocalStringForUi("STATUS_TEXT_DODGE").c_str(),hurData->m_nDamage),pt);
         CCLOG("monster 闪避");
@@ -810,12 +804,12 @@ void GameUILayer::updateRoleUi()
     CCLOG("hpPer:%f mpPer:%f",hpPer,mpPer);
     m_pRoleMpBar->setPercent(mpPer);
     m_pRoleHpBar->setPercent(hpPer);
-//    m_pRoleName->setString("")角色名
+    m_pRoleName->setString("");//角色名
     m_pRoleCurHp->setString(Value(int(PlayerProperty::getInstance()->getCurrentHP())).asString());
     m_pRoleMaxHp->setString(Value(int(PlayerProperty::getInstance()->getMaxHP())).asString());
     m_pRoleCurMp->setString(Value(int(PlayerProperty::getInstance()->getCurrentMP())).asString());
     m_pRoleMaxMp->setString(Value(int(PlayerProperty::getInstance()->getMaxMP())).asString());
-    float playerExp = float(PlayerProperty::getInstance()->getExp());
+    float playerExp = PlayerProperty::getInstance()->getExp().GetFloatValue();
     float nextLevelExp = GameFormula::getNextLevelExp(PlayerProperty::getInstance()->getLevel());
     float ExpPer = playerExp/nextLevelExp *100.0f;
     

@@ -201,6 +201,14 @@
             <filename>../ui/ui_buffer_stealth.png</filename>
             <filename>../ui/ui_buffer_stronger.png</filename>
             <filename>../ui/ui_buffer_weak.png</filename>
+            <filename>../ui/ui_frame_9.png</filename>
+            <filename>../ui/ui_frame_10.png</filename>
+            <filename>../ui/btn_bag_poition_normal.png</filename>
+            <filename>../ui/btn_bag_poition_press.png</filename>
+            <filename>../ui/btn_bag_wepon_normal.png</filename>
+            <filename>../ui/btn_bag_wepon_press.png</filename>
+            <filename>../ui/btn_bag_all_normal.png</filename>
+            <filename>../ui/btn_bag_all_press.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

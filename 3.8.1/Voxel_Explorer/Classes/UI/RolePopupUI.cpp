@@ -22,6 +22,9 @@ RolePopupUI::RolePopupUI()
     m_pGridView             = nullptr;
     m_pBtnClose             = nullptr;
     m_pBtnChangeBag         = nullptr;
+    m_pBtnWeaponBag         = nullptr;
+    m_pBtnPotionBag         = nullptr;
+    m_pBtnAllBag         = nullptr;
     m_pWeaponUi             = nullptr;
     m_pArmorUi              = nullptr;
     m_pOrnamentUi           = nullptr;
@@ -73,7 +76,15 @@ bool RolePopupUI::initUi()
     m_pBtnChangeBag = dynamic_cast<ui::Button*>(UtilityHelper::seekNodeByName(charNode, "prop_btn_change_bag"));
     if (!m_pBtnChangeBag)
         return false;
-    
+    m_pBtnWeaponBag= dynamic_cast<ui::Button*>(UtilityHelper::seekNodeByName(charNode, "prop_btn_bag_wepon"));
+    if (!m_pBtnWeaponBag)
+        return false;
+    m_pBtnPotionBag = dynamic_cast<ui::Button*>(UtilityHelper::seekNodeByName(charNode, "prop_btn_bag_poition"));
+    if (!m_pBtnPotionBag)
+        return false;
+    m_pBtnAllBag= dynamic_cast<ui::Button*>(UtilityHelper::seekNodeByName(charNode, "prop_btn_bag_all"));
+    if (!m_pBtnAllBag)
+        return false;
     m_pRoleHp = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(charNode, "role_prop_hp"));
     if (!m_pRoleHp)
         return false;
@@ -124,7 +135,9 @@ bool RolePopupUI::initUi()
     m_pRoleDodge->setString(StringUtils::format(UtilityHelper::getLocalStringForUi("PROP_SHOW_DODGE").c_str(),int(PlayerProperty::getInstance()->getDodgeRate())));
 
     m_pBtnChangeBag->addClickEventListener(CC_CALLBACK_1(RolePopupUI::onClickChnageBag, this));
-    
+    m_pBtnWeaponBag->addTouchEventListener(CC_CALLBACK_2(RolePopupUI::onClickSortEquip, this));
+    m_pBtnPotionBag->addTouchEventListener(CC_CALLBACK_2(RolePopupUI::onClickSortPotion, this));
+    m_pBtnAllBag->addTouchEventListener(CC_CALLBACK_2(RolePopupUI::onClickSortAll, this));
     
     m_pWeaponUi = ItemUI::create();
     m_pWeaponUi->setBackGroundImage("ui_weapon_icon.png",TextureResType::PLIST);
@@ -162,7 +175,7 @@ bool RolePopupUI::initUi()
     m_pGridView->setPosition(gridFrame->getContentSize()*0.5);
     m_pGridView->setScrollBarEnabled(false);
     m_pGridView->setItemsMargin(cocos2d::Size(1,3.5));
-    m_pGridView->setFrameMargin(cocos2d::Size(3,4));
+    m_pGridView->setFrameMargin(cocos2d::Size(7,4));
     m_pGridView->addEventListener(CC_CALLBACK_2(RolePopupUI::selectItemEvent, this));
     gridFrame->addChild(m_pGridView);
 
@@ -218,16 +231,151 @@ void RolePopupUI::updateItems()
             itemUi->removeItem();
         }
     }
-    CCLOG("bagSize:%d",(int)PlayerProperty::getInstance()->getPlayerBag().size());
-    for (int i =0; i<PlayerProperty::getInstance()->getPlayerBag().size(); i++) {
-        PickableItemProperty* itemProp =PlayerProperty::getInstance()->getPlayerBag()[i];
+    int weaponId = int(PlayerProperty::getInstance()->getEquipedWeaponID());
+    int armorId = int(PlayerProperty::getInstance()->getEquipedArmorID());
+    int OrnamentId = int(PlayerProperty::getInstance()->getEquipedOrnamentsID());
+    int secondWeaponId = int(PlayerProperty::getInstance()->getEquipedSecondWeaponID());
+    int weaponIndex = -1;
+    int armorIndex = -1;
+    int OrnamentIndex = -1;
+    int secondWeaponIndex = -1;
+    std::vector<PickableItemProperty*> items;
+    if (!m_pBtnAllBag->isEnabled())
+    {
+         std::vector<PickableItemProperty*> bagItems = PlayerProperty::getInstance()->getPlayerBag();
+        for (int i =0 ; i<bagItems.size(); i++)
+        {
+            PickableItemProperty* itemProp =bagItems[i];
+            if (!itemProp) {
+                continue;
+            }
+            items.push_back(itemProp);
+            if (weaponId ==  itemProp->getInstanceID()) {
+                weaponIndex= i;
+            }
+            if (armorId ==  itemProp->getInstanceID()) {
+                armorIndex = i;
+            }
+            if (OrnamentId ==  itemProp->getInstanceID()) {
+                OrnamentIndex = i;
+            }
+            if (secondWeaponId ==  itemProp->getInstanceID()) {
+                secondWeaponIndex = i;
+            }
+        }
+        
+    }else
+    {
+        std::vector<PickableItemProperty*> bagItems = PlayerProperty::getInstance()->getPlayerBag();
+        std::vector<PickableItemProperty*> equipItems;
+        std::vector<PickableItemProperty*> otherItems;
+        for (int i =0 ; i<bagItems.size(); i++) {
+            PickableItemProperty* itemProp =bagItems[i];
+            if (!itemProp) {
+                continue;
+            }
+            PickableItemProperty::PickableItemPropertyType itemtype =itemProp->getPickableItemPropertyType();
+            if (itemtype ==PickableItemProperty::PIPT_WEAPON ||itemtype ==PickableItemProperty::PIPT_SECOND_WEAPON||
+                itemtype ==PickableItemProperty::PIPT_ARMOR ||itemtype ==PickableItemProperty::PIPT_MAGIC_ORNAMENT )
+            {
+                equipItems.push_back(itemProp);
+            }else
+            {
+                otherItems.push_back(itemProp);
+            }
+        }
+         if (!m_pBtnWeaponBag->isEnabled())
+        {
+            items = equipItems;
+            for (int i =0; i<items.size(); i++) {
+                PickableItemProperty* itemProp =bagItems[i];
+                if (!itemProp) {
+                    continue;
+                }
+                if (weaponId ==  itemProp->getInstanceID()) {
+                    weaponIndex= i;
+                }
+                if (armorId ==  itemProp->getInstanceID()) {
+                    armorIndex = i;
+                }
+                if (OrnamentId ==  itemProp->getInstanceID()) {
+                    OrnamentIndex = i;
+                }
+                if (secondWeaponId ==  itemProp->getInstanceID()) {
+                    secondWeaponIndex = i;
+                }
+            }
+        }else if (!m_pBtnPotionBag->isEnabled())
+        {
+             items = otherItems;
+        }
+        equipItems.clear();
+        otherItems.clear();
+    }
+    //武器 0 护甲 1 饰品 2  副手武器 2 装备位置
+    if (!m_pBtnAllBag->isEnabled() || !m_pBtnWeaponBag->isEnabled()) {
+        //武器不在首位
+        if (weaponIndex>0)
+        {
+            std::swap( items[0], items[weaponIndex] );
+            weaponIndex = 0;
+        }
+        //护甲不在首位且武器不存在 放在首位
+        if (armorIndex>0 && weaponIndex<0){
+            std::swap( items[0], items[armorIndex] );
+            armorIndex = 0;
+        }else if (armorIndex >1 && weaponIndex==0) {
+            //护甲不在第2位且武器存在 放在第2位
+            std::swap( items[1], items[armorIndex] );
+            armorIndex = 1;
+        }
+        //饰品不在在首位且护甲不存在 武器不存在
+        if (OrnamentIndex>0 && weaponIndex<0 && armorIndex<0)
+        {
+            std::swap( items[0], items[OrnamentIndex] );
+            OrnamentIndex =0 ;
+        }else if (OrnamentIndex>2 && weaponIndex==0 && armorIndex==1)
+        {
+            std::swap( items[2], items[OrnamentIndex] );
+            OrnamentIndex = 2;
+            
+        }else if (OrnamentIndex>1 && weaponIndex==0 && armorIndex<0)
+        {
+            std::swap( items[1], items[OrnamentIndex] );
+            OrnamentIndex = 1;
+        }
+        
+        if (secondWeaponIndex>0 && weaponIndex<0 && armorIndex<0 && OrnamentIndex<0)
+        {
+            std::swap( items[0], items[secondWeaponIndex] );
+            secondWeaponIndex =0 ;
+        }else if (secondWeaponIndex>1 && weaponIndex==0 && armorIndex<0 && OrnamentIndex<0)
+        {
+            std::swap( items[1], items[secondWeaponIndex] );
+            secondWeaponIndex = 1;
+        }else if (secondWeaponIndex>2 && weaponIndex==0 && armorIndex==1 && OrnamentIndex<0)
+        {
+            std::swap( items[2], items[secondWeaponIndex] );
+            secondWeaponIndex = 2;
+            
+        }else if (secondWeaponIndex>3 && weaponIndex==0 && armorIndex==1 && OrnamentIndex==2)
+        {
+            std::swap( items[3], items[secondWeaponIndex] );
+            secondWeaponIndex = 3;
+        }
+        
+        
+        
+    }
+    
+    CCLOG("bagSize:%d",(int)items.size());
+    for (int i =0; i<items.size(); i++)
+    {
+        PickableItemProperty* itemProp =items[i];
          ItemUI* itemUi = static_cast<ItemUI*>( m_pGridView->getItem(i));
         if (itemProp && itemUi) {
             // 更新装备UI
-            int weaponId = int(PlayerProperty::getInstance()->getEquipedWeaponID());
-            int armorId = int(PlayerProperty::getInstance()->getEquipedArmorID());
-            int OrnamentId = int(PlayerProperty::getInstance()->getEquipedOrnamentsID());
-            int secondWeaponId = int(PlayerProperty::getInstance()->getEquipedSecondWeaponID());
+            
             CCLOG("weaponId:%d armorId:%d OrnamentId:%d secondWeaponId:%d itemid:%d",weaponId,armorId,OrnamentId,secondWeaponId,itemProp->getInstanceID());
             if ( m_pWeaponUi && itemProp->getInstanceID() == weaponId) {
                 itemUi->setEquipEnable(true);
@@ -259,6 +407,7 @@ void RolePopupUI::updateItems()
         }
 
     }
+    items.clear();
 }
 void RolePopupUI::selectItemEvent(cocos2d::Ref *pSender, TGridView::EventType type)
 {
@@ -306,3 +455,33 @@ void RolePopupUI::onEventUpdateData(cocos2d::EventCustom *sender)
 {
     updateItems();
 }
+void RolePopupUI::onClickSortAll(cocos2d::Ref * ref, Widget::TouchEventType type)
+{
+    if (type == Widget::TouchEventType::BEGAN) {
+            m_pBtnAllBag->setEnabled(false);
+            m_pBtnPotionBag->setEnabled(true);
+            m_pBtnWeaponBag->setEnabled(true);
+    }
+    updateItems();
+}
+void RolePopupUI::onClickSortEquip(cocos2d::Ref * ref, Widget::TouchEventType type)
+{
+    if (type == Widget::TouchEventType::BEGAN) {
+            m_pBtnAllBag->setEnabled(true);
+            m_pBtnPotionBag->setEnabled(true);
+            m_pBtnWeaponBag->setEnabled(false);
+    }
+    updateItems();
+}
+void RolePopupUI::onClickSortPotion(cocos2d::Ref * ref, Widget::TouchEventType type)
+{
+    if (type == Widget::TouchEventType::BEGAN) {
+            m_pBtnAllBag->setEnabled(true);
+            m_pBtnPotionBag->setEnabled(false);
+            m_pBtnWeaponBag->setEnabled(true);
+        
+    }
+    updateItems();
+}
+
+    
