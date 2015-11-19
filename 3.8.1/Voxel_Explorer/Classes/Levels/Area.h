@@ -64,6 +64,9 @@ public:
     int getRandomTile(BaseLevel* level);
     int getRandomTile(BaseLevel* level, int m);
     
+    std::vector<int> getTilesOnEdge(BaseLevel* level, int m);
+    std::vector<int> getTilesOnCorner(BaseLevel* level);
+    
     void updateAreaFogOfWar(BaseLevel* level, bool visited);
 private:
     void generateStandardArea(BaseLevel* level);

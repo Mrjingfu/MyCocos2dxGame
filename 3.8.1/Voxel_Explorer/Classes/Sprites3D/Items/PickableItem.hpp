@@ -11,6 +11,7 @@
 
 #include "Actor.hpp"
 #include "ChaosNumber.h"
+#include "UseableItem.hpp"
 extern const std::string PICKABLE_ITEM_NAMES[];
 class PickableItem : public Actor
 {
@@ -248,6 +249,7 @@ public:
     CChaosNumber getLevel() const { return m_nLevel; }
     
     static PickableItem::PickableItemType generatePickItemByMonsterLevel(int monsterLevel);
+    static PickableItem::PickableItemType generatePickItemByUseableLevel(int level, UseableItem::UseableItemType type);
 private:
     PickableItem();
     virtual ~PickableItem();

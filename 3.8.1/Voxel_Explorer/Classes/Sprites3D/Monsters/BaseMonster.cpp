@@ -405,7 +405,7 @@ void BaseMonster::onEnterDeath()
     removeTerrainTileFlag(TileInfo::ATTACKABLE);
     this->setVisible(false);
     VoxelExplorer::getInstance()->addExplosion(getPosition3D());
-    bool generateItem = GameFormula::generatePickItem(m_pMonsterProperty->isElite(), false);
+    bool generateItem = GameFormula::generatePickItemByMonster(m_pMonsterProperty->isElite(), false);
     VoxelExplorer::getInstance()->generatePickItem(getPosInMap(), generateItem, m_pMonsterProperty->getValueCopper().GetLongValue(), m_pMonsterProperty->getLevel().GetLongValue());
 }
 void BaseMonster::onExitDeath()

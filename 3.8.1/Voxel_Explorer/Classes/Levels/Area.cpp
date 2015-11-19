@@ -158,6 +158,51 @@ int Area::getRandomTile(BaseLevel* level, int m)
     
     return x + y * level->getWidth();
 }
+std::vector<int> Area::getTilesOnEdge(BaseLevel* level, int m)
+{
+    int leftOuter = m_Rect.getMinX() + 1;
+    int rightOuter = m_Rect.getMaxX() - 1;
+    int bottomOuter = m_Rect.getMinY() + 1;
+    int topOuter = m_Rect.getMaxY() - 1;
+    
+    int leftInner = m_Rect.getMinX() + m + 1;
+    int rightInner = m_Rect.getMaxX() - m - 1;
+    int bottomInner = m_Rect.getMinY() + m + 1;
+    int topInner = m_Rect.getMaxY() - m - 1;
+    cocos2d::Rect rectOuter = cocos2d::Rect(MIN(leftOuter, rightOuter), MAX(bottomOuter, topOuter), std::abs(rightOuter - leftOuter), std::abs(topOuter - bottomOuter));
+    
+    cocos2d::Rect rectInner = cocos2d::Rect(MIN(leftInner, rightInner), MAX(bottomInner, topInner), std::abs(rightInner - leftInner), std::abs(topInner - bottomInner));
+    
+    std::vector<int> ret;
+    for (int j = MIN(bottomOuter, topOuter); j <= MAX(bottomOuter, topOuter); ++j)
+        for (int i = MIN(leftOuter, rightOuter); i <= MAX(leftOuter, rightOuter); ++i)
+    {
+        if(rectInner.containsPoint(Vec2(i, j)))
+            continue;
+        int index = i + j*level->getWidth();
+        ret.push_back(index);
+    }
+    return ret;
+}
+std::vector<int> Area::getTilesOnCorner(BaseLevel* level)
+{
+    int left = m_Rect.getMinX() + 1;
+    int right = m_Rect.getMaxX() - 1;
+    int bottom = m_Rect.getMinY() + 1;
+    int top = m_Rect.getMaxY() - 1;
+    
+    std::vector<int> ret;
+    int leftTop = left + top * level->getWidth();
+    ret.push_back(leftTop);
+    int rightTop = right + top * level->getWidth();
+    ret.push_back(rightTop);
+    int leftBottom = left + bottom * level->getWidth();
+    ret.push_back(leftBottom);
+    int rightBottom = right + bottom * level->getWidth();
+    ret.push_back(rightBottom);
+    
+    return ret;
+}
 void Area::updateAreaFogOfWar(BaseLevel* level, bool visited)
 {
     if(!level)

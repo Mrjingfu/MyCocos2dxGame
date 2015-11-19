@@ -32,10 +32,10 @@ void BaseLevel::create()
     while (!build());
     if(!createTerrain())
         CCLOGERROR("Create Terrain failed!");
-    if(!createMonsters())
-        CCLOGERROR("Create Monsters failed!");
     if(!createUseableItems())
         CCLOGERROR("Create Useable Items failed!");
+    if(!createMonsters())
+        CCLOGERROR("Create Monsters failed!");
     if(!createPickableItems())
         CCLOGERROR("Create Pickable Items failed!");
     
@@ -213,6 +213,8 @@ bool BaseLevel::checkMovable(Actor* actor, TileInfo& info)
     {
         if( info.m_Type == TerrainTile::TT_DOOR || info.m_Type == TerrainTile::TT_LOCKED_DOOR || info.m_Type == TerrainTile::TT_SECRET_DOOR )
             VoxelExplorer::getInstance()->handleDoor(pos);
+        else
+            VoxelExplorer::getInstance()->handleUseUseableItem(pos);
         return false;
     }
     if((info.m_Flag & TileInfo::PASSABLE) != 0)

@@ -10,11 +10,13 @@
 #define GameFormula_hpp
 
 #include "ChaosNumber.h"
+#include "UseableItem.hpp"
 class GameFormula
 {
 public:
     static bool generateMagicItem(float magicFindRate);
-    static bool generatePickItem(bool isElite, bool isBoss);
+    static bool generatePickItemByMonster(bool isElite, bool isBoss);
+    static UseableItem::UseableItemType generateUseItemType();
     static int getNextLevelExp(int currentLevel);
     static int getKillNormalMonsterExp(int currentLevel, int monsterLevel);
     static int getKillEliteMonsterExp(int currentLevel, int monsterLevel);

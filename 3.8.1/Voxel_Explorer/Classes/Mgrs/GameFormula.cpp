@@ -24,7 +24,7 @@ bool GameFormula::generateMagicItem(float magicFindRate)
         return false;
     return am->getRandomIndex() == 0;
 }
-bool GameFormula::generatePickItem(bool isElite, bool isBoss)
+bool GameFormula::generatePickItemByMonster(bool isElite, bool isBoss)
 {
     if(isElite)
         return true;
@@ -39,6 +39,27 @@ bool GameFormula::generatePickItem(bool isElite, bool isBoss)
             return false;
         return am->getRandomIndex() == 0;
     }
+}
+UseableItem::UseableItemType GameFormula::generateUseItemType()
+{
+    UseableItem::UseableItemType ret = UseableItem::UIT_UNKNOWN;
+    float percent1 = 0.7f;
+    float percent2 = 0.2f;
+    float percent3 = 0.08f;
+    float percent4 = 1.0 - percent1 - percent2 - percent3;
+    AlisaMethod* am = AlisaMethod::create(percent1,percent2,percent3,percent4,-1.0, NULL);
+    if(am)
+    {
+        if(am->getRandomIndex() == 1)
+            ret = UseableItem::UIT_CHEST_COPPER;
+        else if(am->getRandomIndex() == 2)
+            ret = UseableItem::UIT_CHEST_SILVER;
+        else if(am->getRandomIndex() == 3)
+            ret = UseableItem::UIT_CHEST_GOLD;
+        else
+            ret = cocos2d::random(UseableItem::UIT_JAR_1, UseableItem::UIT_JAR_3);
+    }
+    return ret;
 }
 int GameFormula::getNextLevelExp(int currentLevel)
 {
