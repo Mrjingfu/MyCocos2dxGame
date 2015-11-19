@@ -1014,15 +1014,59 @@
 	<string></string>
 	<key>UIN_CHEST_COPPER</key>
 	<string>Copper chest</string>
+	<key>UIN_CHEST_COPPER_DESC</key>
+	<string></string>
 	<key>UIN_CHEST_SILVER</key>
 	<string>Silver chest</string>
+	<key>UIN_CHEST_SILVER_DESC</key>
+	<string></string>
 	<key>UIN_CHEST_GOLD</key>
 	<string>Gold chest</string>
+	<key>UIN_CHEST_GOLD_DESC</key>
+	<string></string>
 	<key>UIN_JAR_1</key>
 	<string>Jar</string>
+	<key>UIN_JAR_1_DESC</key>
+	<string></string>
 	<key>UIN_JAR_2</key>
 	<string>Jar</string>
+	<key>UIN_JAR_2_DESC</key>
+	<string></string>
 	<key>UIN_JAR_3</key>
 	<string>Jar</string>
+	<key>UIN_JAR_3_DESC</key>
+	<string></string>
+	<key>NPCN_CHILD</key>
+	<string>爱丽</string>
+	<key>NPCN_CHILD_DESC</key>
+	<string>哎呦，别摸我，痒～</string>
+	<key>NPCN_SHOPGIRL</key>
+	<string>售货员</string>
+	<key>NPCN_SHOPGIRL_DESC</key>
+	<string></string>
+	<key>NPCN_OLDLADY</key>
+	<string>老婆婆</string>
+	<key>NPCN_OLDLADY_DESC</key>
+	<string></string>
+	<key>NPCN_KNIGHT</key>
+	<string>小骑士</string>
+	<key>NPCN_KNIGHT_DESC</key>
+	<string></string>
+	<key>NPCN_WEIRDO</key>
+	<string>怪蜀黍</string>
+	<key>NPCN_WEIRDO_DESC</key>
+	<string></string>
+	<key>NPCN_OLDMAN</key>
+	<string>老爷爷</string>
+	<key>NPCN_OLDMAN_DESC</key>
+	<string></string>
+	<key>NPCN_LITTLEWITCH</key>
+	<string>小魔女</string>
+	<key>NPCN_LITTLEWITCH_DESC</key>
+	<string></string>
+	<key>NPCN_NURSE</key>
+	<string>小护士</string>
+	<key>NPCN_NURSE_DESC</key>
+	<string></string>
 </dict>
 </plist>

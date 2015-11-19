@@ -14,6 +14,7 @@
 #include "RandomDungeon.hpp"
 #include "AlisaMethod.h"
 #include "PickableItem.hpp"
+#include "GameFormula.hpp"
 USING_NS_CC;
 
 StandardLevel::StandardLevel()
@@ -205,8 +206,30 @@ bool StandardLevel::createTerrain()
     }
     return true;
 }
-bool StandardLevel::decorate()
+bool StandardLevel::decorateAreas()
 {
+    for (PathGraphNode* node : m_Areas) {
+        Area* area = static_cast<Area*>(node);
+        if(area)
+        {
+            if(area->getAreaType() == Area::AT_STANDARD)
+            {
+                if(!createUseableItems(area))
+                {
+                    CCLOGERROR("Create Useable Items failed!");
+                    return false;
+                }
+            }
+            else if(area->getAreaType() >= Area::AT_STANDARD)
+            {
+                if(!createNPCs(area))
+                {
+                    CCLOGERROR("Create NPCs failed!");
+                    return false;
+                }
+            }
+        }
+    }
     return true;
 }
 bool StandardLevel::initAreas()
@@ -286,7 +309,7 @@ void StandardLevel::assignAreasType()
             {
                 if(m_SpecailAreas.size() > 0 && area->getRect().size.width > 3 && area->getRect().size.height > 3 && cocos2d::random(0, m_nSpecialAreaCount*m_nSpecialAreaCount + 1) == 0)
                 {
-                    area->setAreaType(Area::AT_SHOP);
+                    area->setAreaType(Area::AT_SPECIAL_SHOP);
                     m_nSpecialAreaCount++;
                 }
                 else if(cocos2d::random(0, 1) == 0)
@@ -407,7 +430,85 @@ void StandardLevel::generate()
     placeTraps();           ///放置陷阱
     generateSpawnPoint();   ///生成出生点
 }
-
+bool StandardLevel::createUseableItems(Area* area)
+{
+    if(!area)
+        return false;
+    if(area->getAreaType() == Area::AT_STANDARD)
+    {
+        std::vector<int> edgeIndexList = area->getTilesOnEdge(this, 1);
+        int itemCount = calculateLevelUseableItemCount(area->getRect().size);
+        int retryCount = 10;
+        for (int i = 0; i < itemCount; ++i) {
+            int index = cocos2d::random(0, (int)(edgeIndexList.size()-1));
+            int tileIndex = edgeIndexList[index];
+            if((m_Map[tileIndex].m_Type != TerrainTile::TT_STANDARD) || (m_Map[tileIndex].isPassable() == false))
+            {
+                i--;
+                continue;
+            }
+            std::vector<int> neighbours8 = this->getNeighbours8();
+            bool neighbourHasDoor = false;
+            int count = 0;
+            for (int j = 0; j<neighbours8.size(); ++j) {
+                if(m_Map[neighbours8[j] + tileIndex].m_Type >= TerrainTile::TT_ENTRANCE && m_Map[neighbours8[j] + tileIndex].m_Type <= TerrainTile::TT_SECRET_DOOR)
+                    neighbourHasDoor = true;
+                else if(m_Map[neighbours8[j] + tileIndex].m_Type == TerrainTile::TT_STANDARD || (m_Map[neighbours8[j] + tileIndex].m_Type >= TerrainTile::TT_TOXIC_TRAP && m_Map[neighbours8[j] + tileIndex].m_Type <= TerrainTile::TT_HIDE_WEAK_TRAP))
+                    count++;
+            }
+            if(neighbourHasDoor)
+            {
+                i--;
+                continue;
+            }
+            if(count == 8)
+            {
+                retryCount--;
+                if(retryCount > 0)
+                    i--;
+                continue;
+            }
+            UseableItem* item = UseableItem::create(GameFormula::generateUseItemType());
+            if(!item)
+                return false;
+            item->setPosition3D(Vec3(m_Map[tileIndex].m_nX*TerrainTile::CONTENT_SCALE, -0.5f*TerrainTile::CONTENT_SCALE, -m_Map[tileIndex].m_nY*TerrainTile::CONTENT_SCALE));
+            if(m_Map[tileIndex].m_nY == area->getRect().getMinY() + 1)
+                item->setActorDir(Actor::AD_FORWARD);
+            else if(m_Map[tileIndex].m_nY == area->getRect().getMaxY() - 1)
+                item->setActorDir(Actor::AD_BACK);
+            else if(m_Map[tileIndex].m_nX == area->getRect().getMaxX() - 1)
+                item->setActorDir(Actor::AD_LEFT);
+            else if(m_Map[tileIndex].m_nX == area->getRect().getMinX() + 1)
+                item->setActorDir(Actor::AD_RIGHT);
+            item->setVisited(m_Map[tileIndex].m_bVisited);
+            item->addTerrainTileFlag(TileInfo::USEABLE);
+            VoxelExplorer::getInstance()->getUseableItemsLayer()->addChild(item);
+            item->setState(UseableItem::UIS_IDLE);
+            edgeIndexList.erase(edgeIndexList.begin() + index);
+            CCLOG("Useable item pos = %d %d", (int)(item->getPosInMap().x), (int)(item->getPosInMap().y));
+        }
+    }
+    return true;
+}
+bool StandardLevel::createNPCs(Area* area)
+{
+    if(!area)
+        return false;
+    return true;
+}
+bool StandardLevel::createPickableItems()
+{
+    ///创建房间钥匙
+    //    PickableItem* item = PickableItem::create(type);
+    //    if(item)
+    //    {
+    //        item->setPosition3D(Vec3(pos.x*TerrainTile::CONTENT_SCALE, -0.5f*TerrainTile::CONTENT_SCALE, -pos.y*TerrainTile::CONTENT_SCALE));
+    //        item->setVisited(true);
+    //        VoxelExplorer::getInstance()->getPickableItemsLayer()->addChild(item);
+    //        item->setState(PickableItem::PIS_BEGIN_GENERATE);
+    //    }
+    return true;
+}
 void StandardLevel::showMap(bool show)
 {
     if (VoxelExplorer::getInstance()->getMainLayer() == nullptr)
@@ -454,7 +555,7 @@ void StandardLevel::showMap(bool show)
                 
                 switch (info.m_Type) {
                     case TerrainTile::TT_STANDARD:
-                        if(info.m_AreaType == Area::AT_SHOP)
+                        if(info.m_AreaType >= Area::AT_SPECIAL_SHOP)
                             m_pMapDrawNode->drawPolygon(vertices, 4, Color4F::MAGENTA, 0, Color4F(0,0,0,0));
                         else
                             m_pMapDrawNode->drawPolygon(vertices, 4, Color4F::WHITE, 0, Color4F(0,0,0,0));
@@ -728,7 +829,7 @@ void StandardLevel::placeTraps()  ///放置陷阱
         int pos = cocos2d::random(0, (int)m_Map.size());
         if(m_Map[pos].m_AreaType == Area::AT_ENTRANCE
            || m_Map[pos].m_AreaType == Area::AT_EXIT
-           || m_Map[pos].m_AreaType == Area::AT_SHOP)
+           || m_Map[pos].m_AreaType >= Area::AT_SPECIAL_SHOP)
         {
             i--;
             continue;

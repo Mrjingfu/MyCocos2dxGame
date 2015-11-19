@@ -266,11 +266,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Levels/StandardLevel.cpp"
-            timestampString = "469369727.765773"
+            timestampString = "469622410.835076"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "393"
-            endingLineNumber = "393"
+            startingLineNumber = "416"
+            endingLineNumber = "416"
             landmarkName = "StandardLevel::generate()"
             landmarkType = "5">
          </BreakpointContent>
@@ -282,11 +282,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Levels/StandardLevel.cpp"
-            timestampString = "469369727.765773"
+            timestampString = "469622410.835076"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "390"
-            endingLineNumber = "390"
+            startingLineNumber = "413"
+            endingLineNumber = "413"
             landmarkName = "StandardLevel::generate()"
             landmarkType = "5">
          </BreakpointContent>
@@ -298,11 +298,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Levels/StandardLevel.cpp"
-            timestampString = "469369727.765773"
+            timestampString = "469622410.835076"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "603"
-            endingLineNumber = "603"
+            startingLineNumber = "704"
+            endingLineNumber = "704"
             landmarkName = "StandardLevel::generateDoors(Area* area)"
             landmarkType = "5">
          </BreakpointContent>
@@ -314,11 +314,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Levels/StandardLevel.cpp"
-            timestampString = "469369727.765773"
+            timestampString = "469622410.835076"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "621"
-            endingLineNumber = "621"
+            startingLineNumber = "722"
+            endingLineNumber = "722"
             landmarkName = "StandardLevel::generateDoors(Area* area)"
             landmarkType = "5">
          </BreakpointContent>
@@ -330,11 +330,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Levels/StandardLevel.cpp"
-            timestampString = "469369727.765773"
+            timestampString = "469622410.835076"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "674"
-            endingLineNumber = "674"
+            startingLineNumber = "775"
+            endingLineNumber = "775"
             landmarkName = "StandardLevel::mergeSmallIntersectArea(Area* area, Area* other, bool generate)"
             landmarkType = "5">
          </BreakpointContent>
@@ -346,11 +346,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Levels/StandardLevel.cpp"
-            timestampString = "469369727.765773"
+            timestampString = "469622410.835076"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "698"
-            endingLineNumber = "698"
+            startingLineNumber = "799"
+            endingLineNumber = "799"
             landmarkName = "StandardLevel::mergeSmallIntersectArea(Area* area, Area* other, bool generate)"
             landmarkType = "5">
          </BreakpointContent>
@@ -362,11 +362,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Levels/StandardLevel.cpp"
-            timestampString = "469369727.765773"
+            timestampString = "469622410.835076"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "366"
-            endingLineNumber = "366"
+            startingLineNumber = "389"
+            endingLineNumber = "389"
             landmarkName = "StandardLevel::assignAreasType()"
             landmarkType = "5">
          </BreakpointContent>
@@ -378,11 +378,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Levels/StandardLevel.cpp"
-            timestampString = "467817631.868998"
+            timestampString = "469622410.835076"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "337"
-            endingLineNumber = "337"
+            startingLineNumber = "360"
+            endingLineNumber = "360"
             landmarkName = "StandardLevel::assignAreasType()"
             landmarkType = "5">
          </BreakpointContent>
@@ -394,11 +394,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Levels/StandardLevel.cpp"
-            timestampString = "469369727.765773"
+            timestampString = "469622410.835076"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "465"
-            endingLineNumber = "465"
+            startingLineNumber = "566"
+            endingLineNumber = "566"
             landmarkName = "StandardLevel::showMap(bool show)"
             landmarkType = "5">
          </BreakpointContent>
@@ -490,11 +490,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Levels/StandardLevel.cpp"
-            timestampString = "469369727.765773"
+            timestampString = "469622410.835076"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "765"
-            endingLineNumber = "765"
+            startingLineNumber = "866"
+            endingLineNumber = "866"
             landmarkName = "StandardLevel::generateSpawnPoint()"
             landmarkType = "5">
          </BreakpointContent>
@@ -506,11 +506,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Levels/StandardLevel.cpp"
-            timestampString = "469369727.765773"
+            timestampString = "469622410.835076"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "733"
-            endingLineNumber = "733"
+            startingLineNumber = "834"
+            endingLineNumber = "834"
             landmarkName = "StandardLevel::placeTraps()"
             landmarkType = "5">
          </BreakpointContent>
@@ -522,11 +522,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Levels/StandardLevel.cpp"
-            timestampString = "469369727.765773"
+            timestampString = "469622410.835076"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "708"
-            endingLineNumber = "708"
+            startingLineNumber = "809"
+            endingLineNumber = "809"
             landmarkName = "StandardLevel::mergeSmallIntersectArea(Area* area, Area* other, bool generate)"
             landmarkType = "5">
          </BreakpointContent>
@@ -538,11 +538,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Levels/StandardLevel.cpp"
-            timestampString = "469369727.765773"
+            timestampString = "469622410.835076"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "711"
-            endingLineNumber = "711"
+            startingLineNumber = "812"
+            endingLineNumber = "812"
             landmarkName = "StandardLevel::placeTraps()"
             landmarkType = "5">
          </BreakpointContent>
@@ -554,11 +554,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Levels/StandardLevel.cpp"
-            timestampString = "469369727.765773"
+            timestampString = "469622410.835076"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "735"
-            endingLineNumber = "735"
+            startingLineNumber = "836"
+            endingLineNumber = "836"
             landmarkName = "StandardLevel::placeTraps()"
             landmarkType = "5">
          </BreakpointContent>
@@ -570,11 +570,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Levels/StandardLevel.cpp"
-            timestampString = "469369727.765773"
+            timestampString = "469622410.835076"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "736"
-            endingLineNumber = "736"
+            startingLineNumber = "837"
+            endingLineNumber = "837"
             landmarkName = "StandardLevel::placeTraps()"
             landmarkType = "5">
          </BreakpointContent>
@@ -586,11 +586,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Levels/BaseLevel.cpp"
-            timestampString = "469531553.712193"
+            timestampString = "469622410.835076"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "222"
-            endingLineNumber = "222"
+            startingLineNumber = "221"
+            endingLineNumber = "221"
             landmarkName = "BaseLevel::checkMovable(Actor* actor, TileInfo&amp; info)"
             landmarkType = "5">
          </BreakpointContent>
@@ -602,11 +602,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Levels/BaseLevel.cpp"
-            timestampString = "469348418.758764"
+            timestampString = "469622410.835076"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "188"
-            endingLineNumber = "188"
+            startingLineNumber = "187"
+            endingLineNumber = "187"
             landmarkName = "BaseLevel::checkMovable(Actor* actor, TileInfo&amp; info)"
             landmarkType = "5">
          </BreakpointContent>
@@ -618,11 +618,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Levels/BaseLevel.cpp"
-            timestampString = "469348418.758764"
+            timestampString = "469622410.835076"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "190"
-            endingLineNumber = "190"
+            startingLineNumber = "189"
+            endingLineNumber = "189"
             landmarkName = "BaseLevel::checkMovable(Actor* actor, TileInfo&amp; info)"
             landmarkType = "5">
          </BreakpointContent>
@@ -634,11 +634,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Levels/BaseLevel.cpp"
-            timestampString = "469348418.758764"
+            timestampString = "469622410.835076"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "192"
-            endingLineNumber = "192"
+            startingLineNumber = "191"
+            endingLineNumber = "191"
             landmarkName = "BaseLevel::checkMovable(Actor* actor, TileInfo&amp; info)"
             landmarkType = "5">
          </BreakpointContent>
@@ -650,11 +650,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Levels/BaseLevel.cpp"
-            timestampString = "469348418.758764"
+            timestampString = "469622410.835076"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "194"
-            endingLineNumber = "194"
+            startingLineNumber = "193"
+            endingLineNumber = "193"
             landmarkName = "BaseLevel::checkMovable(Actor* actor, TileInfo&amp; info)"
             landmarkType = "5">
          </BreakpointContent>
@@ -666,11 +666,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Levels/BaseLevel.cpp"
-            timestampString = "469348418.758764"
+            timestampString = "469622410.835076"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "196"
-            endingLineNumber = "196"
+            startingLineNumber = "195"
+            endingLineNumber = "195"
             landmarkName = "BaseLevel::checkMovable(Actor* actor, TileInfo&amp; info)"
             landmarkType = "5">
          </BreakpointContent>
@@ -682,11 +682,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Levels/BaseLevel.cpp"
-            timestampString = "469531553.712193"
+            timestampString = "469622410.835076"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "231"
-            endingLineNumber = "231"
+            startingLineNumber = "230"
+            endingLineNumber = "230"
             landmarkName = "BaseLevel::assignTerrainTileFlag(TerrainTile::TileType type)"
             landmarkType = "5">
          </BreakpointContent>
@@ -698,11 +698,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Levels/BaseLevel.cpp"
-            timestampString = "469531553.712193"
+            timestampString = "469622410.835076"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "247"
-            endingLineNumber = "247"
+            startingLineNumber = "246"
+            endingLineNumber = "246"
             landmarkName = "BaseLevel::assignTerrainTileFlag(TerrainTile::TileType type)"
             landmarkType = "5">
          </BreakpointContent>
@@ -762,11 +762,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Levels/StandardLevel.cpp"
-            timestampString = "469369727.765773"
+            timestampString = "469622410.835076"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "614"
-            endingLineNumber = "614"
+            startingLineNumber = "715"
+            endingLineNumber = "715"
             landmarkName = "StandardLevel::generateDoors(Area* area)"
             landmarkType = "5">
          </BreakpointContent>
@@ -778,11 +778,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Levels/StandardLevel.cpp"
-            timestampString = "469369727.765773"
+            timestampString = "469622410.835076"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "616"
-            endingLineNumber = "616"
+            startingLineNumber = "717"
+            endingLineNumber = "717"
             landmarkName = "StandardLevel::generateDoors(Area* area)"
             landmarkType = "5">
          </BreakpointContent>
@@ -794,11 +794,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Levels/StandardLevel.cpp"
-            timestampString = "469369727.765773"
+            timestampString = "469622410.835076"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "610"
-            endingLineNumber = "610"
+            startingLineNumber = "711"
+            endingLineNumber = "711"
             landmarkName = "StandardLevel::generateDoors(Area* area)"
             landmarkType = "5">
          </BreakpointContent>
@@ -810,11 +810,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Levels/StandardLevel.cpp"
-            timestampString = "469369727.765773"
+            timestampString = "469622410.835076"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "608"
-            endingLineNumber = "608"
+            startingLineNumber = "709"
+            endingLineNumber = "709"
             landmarkName = "StandardLevel::generateDoors(Area* area)"
             landmarkType = "5">
          </BreakpointContent>
@@ -826,11 +826,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Levels/StandardLevel.cpp"
-            timestampString = "468574470.35073"
+            timestampString = "469622410.835076"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "187"
-            endingLineNumber = "187"
+            startingLineNumber = "188"
+            endingLineNumber = "188"
             landmarkName = "StandardLevel::createTerrain()"
             landmarkType = "5">
          </BreakpointContent>
@@ -874,11 +874,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Levels/BaseLevel.cpp"
-            timestampString = "469531553.712193"
+            timestampString = "469622410.835076"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "216"
-            endingLineNumber = "216"
+            startingLineNumber = "215"
+            endingLineNumber = "215"
             landmarkName = "BaseLevel::checkMovable(Actor* actor, TileInfo&amp; info)"
             landmarkType = "5">
          </BreakpointContent>
@@ -1050,11 +1050,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Levels/BaseLevel.cpp"
-            timestampString = "469348418.758764"
+            timestampString = "469622410.835076"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "130"
-            endingLineNumber = "130"
+            startingLineNumber = "129"
+            endingLineNumber = "129"
             landmarkName = "BaseLevel::setTerrainTileFlag(int x, int y, int flag )"
             landmarkType = "5">
          </BreakpointContent>
@@ -1416,11 +1416,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Levels/StandardLevel.cpp"
-            timestampString = "469369802.017071"
+            timestampString = "469622410.835076"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "313"
-            endingLineNumber = "313"
+            startingLineNumber = "336"
+            endingLineNumber = "336"
             landmarkName = "StandardLevel::assignAreasType()"
             landmarkType = "5">
          </BreakpointContent>
@@ -1432,11 +1432,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Levels/BaseLevel.cpp"
-            timestampString = "469348418.758764"
+            timestampString = "469622410.835076"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "143"
-            endingLineNumber = "143"
+            startingLineNumber = "142"
+            endingLineNumber = "142"
             landmarkName = "BaseLevel::wrapTerrainTiles(int x, int y , int width, int height, TerrainTile::TileType type, TerrainTile::TileType withType)"
             landmarkType = "5">
          </BreakpointContent>
@@ -1448,11 +1448,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Levels/BaseLevel.cpp"
-            timestampString = "469348418.758764"
+            timestampString = "469622410.835076"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "112"
-            endingLineNumber = "112"
+            startingLineNumber = "111"
+            endingLineNumber = "111"
             landmarkName = "BaseLevel::setTerrainTile(int x, int y, TerrainTile::TileType tileType, Area::AREA_TYPE areaType, Actor::ActorDir dir)"
             landmarkType = "5">
          </BreakpointContent>
@@ -1512,11 +1512,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Levels/BaseLevel.cpp"
-            timestampString = "469348418.758764"
+            timestampString = "469622410.835076"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "212"
-            endingLineNumber = "212"
+            startingLineNumber = "211"
+            endingLineNumber = "211"
             landmarkName = "BaseLevel::checkMovable(Actor* actor, TileInfo&amp; info)"
             landmarkType = "5">
          </BreakpointContent>
@@ -1592,11 +1592,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Levels/StandardLevel.cpp"
-            timestampString = "469369727.765773"
+            timestampString = "469622410.835076"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "771"
-            endingLineNumber = "771"
+            startingLineNumber = "872"
+            endingLineNumber = "872"
             landmarkName = "StandardLevel::randomMonsterRespawnCell()"
             landmarkType = "5">
          </BreakpointContent>
@@ -1608,11 +1608,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Levels/StandardLevel.cpp"
-            timestampString = "469369727.765773"
+            timestampString = "469622410.835076"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "793"
-            endingLineNumber = "793"
+            startingLineNumber = "894"
+            endingLineNumber = "894"
             landmarkName = "StandardLevel::randomMonsterRespawnCell()"
             landmarkType = "5">
          </BreakpointContent>
@@ -1640,11 +1640,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Levels/StandardLevel.cpp"
-            timestampString = "468574470.35073"
+            timestampString = "469622410.835076"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "42"
-            endingLineNumber = "42"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
             landmarkName = "StandardLevel::build()"
             landmarkType = "5">
          </BreakpointContent>
@@ -1656,11 +1656,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Levels/StandardLevel.cpp"
-            timestampString = "468574470.35073"
+            timestampString = "469622410.835076"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "47"
-            endingLineNumber = "47"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
             landmarkName = "StandardLevel::build()"
             landmarkType = "5">
          </BreakpointContent>
@@ -1672,11 +1672,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Levels/StandardLevel.cpp"
-            timestampString = "468574470.35073"
+            timestampString = "469622410.835076"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "59"
-            endingLineNumber = "59"
+            startingLineNumber = "60"
+            endingLineNumber = "60"
             landmarkName = "StandardLevel::build()"
             landmarkType = "5">
          </BreakpointContent>
@@ -1688,23 +1688,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Levels/StandardLevel.cpp"
-            timestampString = "468574470.35073"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "54"
-            endingLineNumber = "54"
-            landmarkName = "StandardLevel::build()"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../Classes/Levels/StandardLevel.cpp"
-            timestampString = "468574470.35073"
+            timestampString = "469622410.835076"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "55"
@@ -1720,11 +1704,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Levels/StandardLevel.cpp"
-            timestampString = "468574470.35073"
+            timestampString = "469622410.835076"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "61"
-            endingLineNumber = "61"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
             landmarkName = "StandardLevel::build()"
             landmarkType = "5">
          </BreakpointContent>
@@ -1736,11 +1720,27 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Levels/StandardLevel.cpp"
-            timestampString = "468574470.35073"
+            timestampString = "469622410.835076"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "56"
-            endingLineNumber = "56"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
+            landmarkName = "StandardLevel::build()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/Levels/StandardLevel.cpp"
+            timestampString = "469622410.835076"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
             landmarkName = "StandardLevel::build()"
             landmarkType = "5">
          </BreakpointContent>
@@ -1848,11 +1848,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Levels/StandardLevel.cpp"
-            timestampString = "469369727.765773"
+            timestampString = "469622410.835076"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "794"
-            endingLineNumber = "794"
+            startingLineNumber = "895"
+            endingLineNumber = "895"
             landmarkName = "StandardLevel::randomMonsterRespawnCell()"
             landmarkType = "5">
          </BreakpointContent>
@@ -1912,11 +1912,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Levels/StandardLevel.cpp"
-            timestampString = "469369727.765773"
+            timestampString = "469622410.835076"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "781"
-            endingLineNumber = "781"
+            startingLineNumber = "882"
+            endingLineNumber = "882"
             landmarkName = "StandardLevel::randomMonsterRespawnCell()"
             landmarkType = "5">
          </BreakpointContent>
@@ -1944,11 +1944,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Levels/StandardLevel.cpp"
-            timestampString = "469369727.765773"
+            timestampString = "469622410.835076"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "796"
-            endingLineNumber = "796"
+            startingLineNumber = "897"
+            endingLineNumber = "897"
             landmarkName = "StandardLevel::randomMonsterRespawnCell()"
             landmarkType = "5">
          </BreakpointContent>
@@ -1960,11 +1960,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Levels/BaseLevel.cpp"
-            timestampString = "469348418.758764"
+            timestampString = "469622410.835076"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "129"
-            endingLineNumber = "129"
+            startingLineNumber = "128"
+            endingLineNumber = "128"
             landmarkName = "BaseLevel::setTerrainTileFlag(int x, int y, int flag )"
             landmarkType = "5">
          </BreakpointContent>
@@ -2008,11 +2008,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Levels/BaseLevel.cpp"
-            timestampString = "469348418.758764"
+            timestampString = "469622410.835076"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "109"
-            endingLineNumber = "109"
+            startingLineNumber = "108"
+            endingLineNumber = "108"
             landmarkName = "BaseLevel::setTerrainTile(int x, int y, TerrainTile::TileType tileType, Area::AREA_TYPE areaType, Actor::ActorDir dir)"
             landmarkType = "5">
          </BreakpointContent>
@@ -2024,11 +2024,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Levels/BaseLevel.cpp"
-            timestampString = "469348418.758764"
+            timestampString = "469622410.835076"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "98"
-            endingLineNumber = "98"
+            startingLineNumber = "97"
+            endingLineNumber = "97"
             landmarkName = "BaseLevel::generateTerrainTiles(int x, int y , int width, int height, TerrainTile::TileType tileType, Area::AREA_TYPE areaType, Actor::ActorDir dir)"
             landmarkType = "5">
          </BreakpointContent>
@@ -2136,11 +2136,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Levels/StandardLevel.cpp"
-            timestampString = "468574470.35073"
+            timestampString = "469622410.835076"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "135"
-            endingLineNumber = "135"
+            startingLineNumber = "136"
+            endingLineNumber = "136"
             landmarkName = "StandardLevel::createTerrain()"
             landmarkType = "5">
          </BreakpointContent>
@@ -2152,11 +2152,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Levels/StandardLevel.cpp"
-            timestampString = "469369727.765773"
+            timestampString = "469622410.835076"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "549"
-            endingLineNumber = "549"
+            startingLineNumber = "650"
+            endingLineNumber = "650"
             landmarkName = "StandardLevel::updateAreaFogOfWarByPos(const cocos2d::Vec2&amp; pos)"
             landmarkType = "5">
          </BreakpointContent>
@@ -2168,11 +2168,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Levels/StandardLevel.cpp"
-            timestampString = "469369727.765773"
+            timestampString = "469622410.835076"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "521"
-            endingLineNumber = "521"
+            startingLineNumber = "622"
+            endingLineNumber = "622"
             landmarkName = "StandardLevel::updateAreaFogOfWarByPos(const cocos2d::Vec2&amp; pos)"
             landmarkType = "5">
          </BreakpointContent>
@@ -2248,11 +2248,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Levels/StandardLevel.cpp"
-            timestampString = "469369727.765773"
+            timestampString = "469622410.835076"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "679"
-            endingLineNumber = "679"
+            startingLineNumber = "780"
+            endingLineNumber = "780"
             landmarkName = "StandardLevel::mergeSmallIntersectArea(Area* area, Area* other, bool generate)"
             landmarkType = "5">
          </BreakpointContent>
@@ -2264,11 +2264,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Levels/StandardLevel.cpp"
-            timestampString = "469369727.765773"
+            timestampString = "469622410.835076"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "703"
-            endingLineNumber = "703"
+            startingLineNumber = "804"
+            endingLineNumber = "804"
             landmarkName = "StandardLevel::mergeSmallIntersectArea(Area* area, Area* other, bool generate)"
             landmarkType = "5">
          </BreakpointContent>
@@ -2824,11 +2824,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Levels/BaseLevel.cpp"
-            timestampString = "469348418.758764"
+            timestampString = "469622410.835076"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "206"
-            endingLineNumber = "206"
+            startingLineNumber = "205"
+            endingLineNumber = "205"
             landmarkName = "BaseLevel::checkMovable(Actor* actor, TileInfo&amp; info)"
             landmarkType = "5">
          </BreakpointContent>
@@ -2840,11 +2840,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Levels/BaseLevel.cpp"
-            timestampString = "469348418.758764"
+            timestampString = "469622410.835076"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "201"
-            endingLineNumber = "201"
+            startingLineNumber = "200"
+            endingLineNumber = "200"
             landmarkName = "BaseLevel::checkMovable(Actor* actor, TileInfo&amp; info)"
             landmarkType = "5">
          </BreakpointContent>
@@ -3896,11 +3896,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Levels/StandardLevel.cpp"
-            timestampString = "469369727.765773"
+            timestampString = "469622410.835076"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "456"
-            endingLineNumber = "456"
+            startingLineNumber = "557"
+            endingLineNumber = "557"
             landmarkName = "StandardLevel::showMap(bool show)"
             landmarkType = "5">
          </BreakpointContent>
@@ -3960,11 +3960,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Levels/BaseLevel.cpp"
-            timestampString = "469352810.888471"
+            timestampString = "469622410.835076"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "170"
-            endingLineNumber = "170"
+            startingLineNumber = "169"
+            endingLineNumber = "169"
             landmarkName = "BaseLevel::updateTrapTileByPos(const cocos2d::Vec2&amp; pos)"
             landmarkType = "5">
          </BreakpointContent>
@@ -3976,11 +3976,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Levels/BaseLevel.cpp"
-            timestampString = "469352812.635921"
+            timestampString = "469622410.835076"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "180"
-            endingLineNumber = "180"
+            startingLineNumber = "179"
+            endingLineNumber = "179"
             landmarkName = "BaseLevel::updateTrapTileByPos(const cocos2d::Vec2&amp; pos)"
             landmarkType = "5">
          </BreakpointContent>
@@ -4024,11 +4024,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Levels/StandardLevel.cpp"
-            timestampString = "469369852.70031"
+            timestampString = "469622410.835076"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "323"
-            endingLineNumber = "323"
+            startingLineNumber = "346"
+            endingLineNumber = "346"
             landmarkName = "StandardLevel::assignAreasType()"
             landmarkType = "5">
          </BreakpointContent>
@@ -4056,11 +4056,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Levels/BaseLevel.cpp"
-            timestampString = "469531553.712193"
+            timestampString = "469622410.835076"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "284"
-            endingLineNumber = "284"
+            startingLineNumber = "283"
+            endingLineNumber = "283"
             landmarkName = "BaseLevel::searchAndCheck(int x, int y, int searchDistance)"
             landmarkType = "5">
          </BreakpointContent>
@@ -4072,11 +4072,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Levels/BaseLevel.cpp"
-            timestampString = "469531553.712193"
+            timestampString = "469622410.835076"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "272"
-            endingLineNumber = "272"
+            startingLineNumber = "271"
+            endingLineNumber = "271"
             landmarkName = "BaseLevel::searchAndCheck(int x, int y, int searchDistance)"
             landmarkType = "5">
          </BreakpointContent>
@@ -4104,11 +4104,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Levels/SewerLevel.cpp"
-            timestampString = "469543776.628635"
+            timestampString = "469622410.835076"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "165"
-            endingLineNumber = "165"
+            startingLineNumber = "87"
+            endingLineNumber = "87"
             landmarkName = "SewerLevel::calculateLevelUseableItemCount(const cocos2d::Size&amp; areaSize)"
             landmarkType = "5">
          </BreakpointContent>
@@ -4120,11 +4120,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Levels/BaseLevel.cpp"
-            timestampString = "469529686.34329"
+            timestampString = "469622410.835076"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "95"
-            endingLineNumber = "95"
+            startingLineNumber = "94"
+            endingLineNumber = "94"
             landmarkName = "BaseLevel::generateTerrainTiles(int x, int y , int width, int height, TerrainTile::TileType tileType, Area::AREA_TYPE areaType, Actor::ActorDir dir)"
             landmarkType = "5">
          </BreakpointContent>
@@ -4135,44 +4135,12 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../Classes/Levels/SewerLevel.cpp"
-            timestampString = "469543776.628635"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "88"
-            endingLineNumber = "88"
-            landmarkName = "SewerLevel::createUseableItems()"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../Classes/Levels/SewerLevel.cpp"
-            timestampString = "469543776.628635"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "89"
-            endingLineNumber = "89"
-            landmarkName = "SewerLevel::createUseableItems()"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "../Classes/Levels/BaseLevel.cpp"
-            timestampString = "469531553.712193"
+            timestampString = "469622410.835076"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "218"
-            endingLineNumber = "218"
+            startingLineNumber = "217"
+            endingLineNumber = "217"
             landmarkName = "BaseLevel::checkMovable(Actor* actor, TileInfo&amp; info)"
             landmarkType = "5">
          </BreakpointContent>
@@ -4184,59 +4152,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Levels/SewerLevel.cpp"
-            timestampString = "469543776.628635"
+            timestampString = "469622410.835076"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "102"
-            endingLineNumber = "102"
-            landmarkName = "SewerLevel::createUseableItems()"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../Classes/Levels/SewerLevel.cpp"
-            timestampString = "469543776.628635"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "76"
-            endingLineNumber = "76"
-            landmarkName = "SewerLevel::createUseableItems()"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../Classes/Levels/SewerLevel.cpp"
-            timestampString = "469543776.628635"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "61"
-            endingLineNumber = "61"
-            landmarkName = "SewerLevel::createUseableItems()"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../Classes/Levels/SewerLevel.cpp"
-            timestampString = "469543776.628635"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "161"
-            endingLineNumber = "161"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
             landmarkName = "SewerLevel::calculateLevelUseableItemCount(const cocos2d::Size&amp; areaSize)"
             landmarkType = "5">
          </BreakpointContent>
@@ -4248,11 +4168,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Levels/SewerLevel.cpp"
-            timestampString = "469543776.628635"
+            timestampString = "469622410.835076"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "163"
-            endingLineNumber = "163"
+            startingLineNumber = "85"
+            endingLineNumber = "85"
             landmarkName = "SewerLevel::calculateLevelUseableItemCount(const cocos2d::Size&amp; areaSize)"
             landmarkType = "5">
          </BreakpointContent>
@@ -4264,11 +4184,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Levels/SewerLevel.cpp"
-            timestampString = "469543776.628635"
+            timestampString = "469622410.835076"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "166"
-            endingLineNumber = "166"
+            startingLineNumber = "88"
+            endingLineNumber = "88"
             landmarkName = "SewerLevel::calculateLevelUseableItemCount(const cocos2d::Size&amp; areaSize)"
             landmarkType = "5">
          </BreakpointContent>
@@ -4280,11 +4200,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Levels/SewerLevel.cpp"
-            timestampString = "469543776.628635"
+            timestampString = "469622410.835076"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "156"
-            endingLineNumber = "156"
+            startingLineNumber = "78"
+            endingLineNumber = "78"
             landmarkName = "SewerLevel::calculateLevelUseableItemCount(const cocos2d::Size&amp; areaSize)"
             landmarkType = "5">
          </BreakpointContent>
@@ -4296,11 +4216,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Levels/SewerLevel.cpp"
-            timestampString = "469543776.628635"
+            timestampString = "469622410.835076"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "159"
-            endingLineNumber = "159"
+            startingLineNumber = "81"
+            endingLineNumber = "81"
             landmarkName = "SewerLevel::calculateLevelUseableItemCount(const cocos2d::Size&amp; areaSize)"
             landmarkType = "5">
          </BreakpointContent>
@@ -4334,38 +4254,6 @@
             startingLineNumber = "185"
             endingLineNumber = "185"
             landmarkName = "Area::getTilesOnEdge(BaseLevel* level, int m)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../Classes/Levels/SewerLevel.cpp"
-            timestampString = "469543776.628635"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "57"
-            endingLineNumber = "57"
-            landmarkName = "SewerLevel::createUseableItems()"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../Classes/Levels/SewerLevel.cpp"
-            timestampString = "469543776.628635"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "83"
-            endingLineNumber = "83"
-            landmarkName = "SewerLevel::createUseableItems()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

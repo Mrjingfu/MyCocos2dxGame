@@ -84,7 +84,7 @@ void Area::generate(BaseLevel* level)
         case AT_TUNNEL:
             generateTunnelArea(level);
             break;
-        case AT_SHOP:
+        case AT_SPECIAL_SHOP:
             generateShopArea(level);
             break;
         default:

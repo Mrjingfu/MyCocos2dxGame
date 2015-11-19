@@ -16,8 +16,6 @@ public:
     SewerLevel();
     
     virtual bool createMonsters();
-    virtual bool createUseableItems();
-    virtual bool createPickableItems();
     virtual bool createSummoningMonsters(const cocos2d::Vec2& mapPos);
 protected:
     int calculateLevelMonsterCount();
