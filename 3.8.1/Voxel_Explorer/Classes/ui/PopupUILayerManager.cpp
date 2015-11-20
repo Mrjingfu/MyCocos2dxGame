@@ -95,6 +95,9 @@ PopupUILayer* PopupUILayerManager::initPopUp(ePopupType type)
         case ePopupInfo:
             popupLayer = InfoPopupUI::create();
             break;
+        case ePopupEquipItem:
+            popupLayer = ItemPopupUI::create();
+            break;
         default:
             break;
     }

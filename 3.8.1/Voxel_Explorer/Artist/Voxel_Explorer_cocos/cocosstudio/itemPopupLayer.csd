@@ -1,15 +1,15 @@
 <GameProjectFile>
-  <PropertyGroup Type="Layer" Name="itemPopupLayer" ID="c18c6459-7d3a-4512-87ac-fd7b19a4275a" Version="2.3.2.3" />
+  <PropertyGroup Type="Layer" Name="itemPopupLayer_0" ID="5e0673ed-5b7d-4214-a72f-09cd2c0b0c23" Version="2.3.2.3" />
   <Content ctype="GameProjectContent">
     <Content>
       <Animation Duration="0" Speed="1.0000" />
       <ObjectData Name="Layer" Tag="84" ctype="GameLayerObjectData">
-        <Size X="140.0000" Y="100.0000" />
+        <Size X="140.0000" Y="130.0000" />
         <Children>
           <AbstractNodeData Name="item_background" ActionTag="-981883369" Tag="89" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" Scale9Enable="True" LeftEage="5" RightEage="5" TopEage="5" BottomEage="5" Scale9OriginX="5" Scale9OriginY="5" Scale9Width="6" Scale9Height="6" ctype="ImageViewObjectData">
-            <Size X="140.0000" Y="100.0000" />
+            <Size X="140.0000" Y="130.0000" />
             <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-            <Position X="70.0000" Y="50.0000" />
+            <Position X="70.0000" Y="65.0000" />
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
             <CColor A="255" R="255" G="255" B="255" />
             <PrePosition X="0.5000" Y="0.5000" />
@@ -119,7 +119,7 @@
               </AbstractNodeData>
             </Children>
             <AnchorPoint ScaleY="1.0000" />
-            <Position Y="100.0000" />
+            <Position Y="130.0000" />
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
             <CColor A="255" R="255" G="255" B="255" />
             <PrePosition Y="1.0000" />
@@ -129,7 +129,7 @@
             <EndColor A="255" R="255" G="255" B="255" />
             <ColorVector ScaleY="1.0000" />
           </AbstractNodeData>
-          <AbstractNodeData Name="item_money_frame" ActionTag="40848595" Tag="179" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" TopMargin="84.9300" BottomMargin="5.0700" TouchEnable="True" BackColorAlpha="102" ColorAngle="90.0000" ctype="PanelObjectData">
+          <AbstractNodeData Name="item_money_frame" ActionTag="40848595" Tag="179" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" TopMargin="88.9090" BottomMargin="31.0910" TouchEnable="True" BackColorAlpha="102" ColorAngle="90.0000" ctype="PanelObjectData">
             <Size X="140.0000" Y="10.0000" />
             <Children>
               <AbstractNodeData Name="item_copper_icon" ActionTag="-515983784" Tag="177" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="TopEdge" LeftMargin="97.7580" RightMargin="8.2420" TopMargin="-12.0000" BottomMargin="-12.0000" Scale9Enable="True" LeftEage="3" RightEage="3" TopEage="3" BottomEage="3" Scale9OriginX="3" Scale9OriginY="3" Scale9Width="28" Scale9Height="28" ctype="ImageViewObjectData">
@@ -218,23 +218,23 @@
               </AbstractNodeData>
             </Children>
             <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-            <Position X="70.0000" Y="10.0700" />
+            <Position X="70.0000" Y="36.0910" />
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
             <CColor A="255" R="255" G="255" B="255" />
-            <PrePosition X="0.5000" Y="0.1007" />
+            <PrePosition X="0.5000" Y="0.2776" />
             <PreSize X="1.0000" Y="0.1000" />
             <SingleColor A="255" R="150" G="200" B="255" />
             <FirstColor A="255" R="150" G="200" B="255" />
             <EndColor A="255" R="255" G="255" B="255" />
             <ColorVector ScaleY="1.0000" />
           </AbstractNodeData>
-          <AbstractNodeData Name="item_btn_discard" ActionTag="-87055022" Tag="78" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="9.5630" RightMargin="80.4370" TopMargin="200.0000" BottomMargin="-25.0000" TouchEnable="True" FontSize="11" ButtonText="Discard" Scale9Enable="True" LeftEage="4" RightEage="4" TopEage="4" BottomEage="4" Scale9OriginX="4" Scale9OriginY="4" Scale9Width="5" Scale9Height="5" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="ButtonObjectData">
+          <AbstractNodeData Name="item_btn_discard" ActionTag="-87055022" Tag="78" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="12.5660" RightMargin="77.4340" TopMargin="101.0000" BottomMargin="4.0000" TouchEnable="True" FontSize="11" ButtonText="Discard" Scale9Enable="True" LeftEage="4" RightEage="4" TopEage="4" BottomEage="4" Scale9OriginX="4" Scale9OriginY="4" Scale9Width="5" Scale9Height="5" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="ButtonObjectData">
             <Size X="50.0000" Y="25.0000" />
-            <AnchorPoint ScaleX="0.5000" ScaleY="1.0000" />
-            <Position X="34.5660" />
+            <AnchorPoint ScaleX="0.5000" />
+            <Position X="37.5660" Y="4.0000" />
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
             <CColor A="255" R="255" G="255" B="255" />
-            <PrePosition X="0.2469" />
+            <PrePosition X="0.2683" Y="0.0308" />
             <PreSize X="0.3571" Y="0.5303" />
             <FontResource Type="Normal" Path="fonts/04B_03.TTF" Plist="" />
             <TextColor A="255" R="30" G="144" B="255" />
@@ -242,13 +242,13 @@
             <OutlineColor A="255" R="255" G="0" B="0" />
             <ShadowColor A="255" R="110" G="110" B="110" />
           </AbstractNodeData>
-          <AbstractNodeData Name="item_btn_equip" ActionTag="-499182676" Tag="80" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="75.2007" RightMargin="14.7993" TopMargin="198.9500" BottomMargin="-23.9500" TouchEnable="True" FontSize="11" ButtonText="equip" Scale9Enable="True" LeftEage="4" RightEage="4" TopEage="4" BottomEage="4" Scale9OriginX="4" Scale9OriginY="4" Scale9Width="5" Scale9Height="5" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="ButtonObjectData">
+          <AbstractNodeData Name="item_btn_equip" ActionTag="-499182676" Tag="80" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="78.1981" RightMargin="11.8019" TopMargin="101.0000" BottomMargin="4.0000" TouchEnable="True" FontSize="11" ButtonText="equip" Scale9Enable="True" LeftEage="4" RightEage="4" TopEage="4" BottomEage="4" Scale9OriginX="4" Scale9OriginY="4" Scale9Width="5" Scale9Height="5" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="ButtonObjectData">
             <Size X="50.0000" Y="25.0000" />
-            <AnchorPoint ScaleX="0.5000" ScaleY="1.0000" />
-            <Position X="100.1980" Y="0.5200" />
+            <AnchorPoint ScaleX="0.5000" />
+            <Position X="103.1981" Y="4.0000" />
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
             <CColor A="255" R="255" G="255" B="255" />
-            <PrePosition X="0.7157" Y="0.0052" />
+            <PrePosition X="0.7371" Y="0.0308" />
             <PreSize X="0.3571" Y="0.5303" />
             <FontResource Type="Normal" Path="fonts/04B_03.TTF" Plist="" />
             <TextColor A="255" R="30" G="144" B="255" />

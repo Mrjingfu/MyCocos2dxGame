@@ -32,11 +32,10 @@
       <Value ctype="TabsInfo">
         <OpenedDocuments>
           <FilePathData Path="itemPopupLayer.csd" />
-          <FilePathData Path="gameScene.csd" />
-          <FilePathData Path="achievementPopupLayer.csd" />
           <FilePathData Path="characterLayer.csd" />
+          <FilePathData Path="gameScene.csd" />
         </OpenedDocuments>
-        <ActiveDocument Path="characterLayer.csd" />
+        <ActiveDocument Path="gameScene.csd" />
       </Value>
     </Item>
   </Properties>

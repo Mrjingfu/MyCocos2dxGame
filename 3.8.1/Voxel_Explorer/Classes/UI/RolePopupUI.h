@@ -21,8 +21,10 @@ public:
     virtual bool initUi() override;
     void onEnter() override;
     void onExit()override;
-     void setStateIdentify(bool state){ _isOpenIdentify = state;}
+    void updateItems();
+    void setStateIdentify(bool state){ _isOpenIdentify = state;}
 private:
+    
     void onClickColse(Ref* ref);
     void onClickChnageBag(Ref*);
     void onClickSortAll(Ref*,Widget::TouchEventType);
@@ -30,7 +32,7 @@ private:
     void onClickSortPotion(Ref*,Widget::TouchEventType);
     
     void selectItemEvent(Ref *pSender, TGridView::EventType type);
-    void updateItems();
+ 
     void onEventUpdateData(cocos2d::EventCustom *sender);
     void onEventEquipWeapon(cocos2d::EventCustom *sender);
     void onEventEquipArmor(cocos2d::EventCustom *sender);

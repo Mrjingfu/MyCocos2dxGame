@@ -22,12 +22,14 @@ public:
     void updateItemPopup(int itemId);
     virtual ~ItemPopupUI();
 private:
+    virtual void closePopup();
     void onClickDiscard(Ref* ref);
     void onClickEquip(Ref* ref);
     void onClickUser(Ref* ref);
     void IdentifyEquiipFrame();
     void itemFrame();
-    
+    //不可装备对话框 isEquip 是否显示装备按钮
+    void noEquipFrame(bool isEquip);
     
 private:
     

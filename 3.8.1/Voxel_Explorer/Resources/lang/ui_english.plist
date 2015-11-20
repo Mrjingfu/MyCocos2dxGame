@@ -110,12 +110,14 @@
 	<string>MATERIAL</string>
 	<key>ITEM_PROP_TYPE_QUEST</key>
 	<string>QUEST</string>
+	<key>ITEM_PROP_TYPE_SUNDRIES</key>
+	<string>SUNDRIES</string>
+	<key>ITEM_MONEY_DESC</key>
+	<string>Selling price:</string>
 	<key>USE_POTION_ TREAT</key>
 	<string>+%d HP</string>
 	<key>USE_POTION_ MAGIC</key>
 	<string>+%d MP</string>
-	<key>ITEM_PROP_TYPE_SUNDRIES</key>
-	<string>SUNDRIES</string>
 	<key>TRIGGER_MESSAGE_TOXIC_TRAP</key>
 	<string>你中毒了！</string>
 	<key>TRIGGER_MESSAGE_FIRE_TRAP</key>

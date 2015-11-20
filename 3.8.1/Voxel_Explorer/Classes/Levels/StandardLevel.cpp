@@ -725,7 +725,7 @@ void StandardLevel::placeTraps()  ///放置陷阱
     }
     
     for (int i = 0; i<nTraps; i++) {
-        int pos = cocos2d::random(0, (int)m_Map.size());
+        int pos = cocos2d::random(0, (int)m_Map.size()-1);
         if(m_Map[pos].m_AreaType == Area::AT_ENTRANCE
            || m_Map[pos].m_AreaType == Area::AT_EXIT
            || m_Map[pos].m_AreaType == Area::AT_SHOP)

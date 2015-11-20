@@ -253,7 +253,7 @@ bool GameUILayer::addEvents()
     m_pRoleMaxHp->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
     m_pRoleCurMp->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
     m_pRoleMaxMp->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
-    m_pRoleLevel->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
+//    m_pRoleLevel->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
     
     m_pGameLevelInfoName->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
     m_pGameLevelInfoFloor->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
@@ -266,7 +266,7 @@ bool GameUILayer::addEvents()
     m_pMonsterName->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
     m_pMonsterCurHp->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
     m_pMonsterMaxHp->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
-    m_pMonsterLevel->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
+//    m_pMonsterLevel->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
     
     m_pGameDistTipsFrame->setVisible(false);
     m_pGameDistFrameDesc->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
@@ -561,6 +561,7 @@ void GameUILayer::onEventUserScroll(cocos2d::EventCustom *sender)
         }
         if (rolePopup) {
             rolePopup->setStateIdentify(true);
+            rolePopup->updateItems();
         }
         return;
     }else if(scrollProperty->getPickableItemType() == PickableItem::PIT_SCROLL_TELEPORT)

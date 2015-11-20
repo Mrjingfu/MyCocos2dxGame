@@ -134,6 +134,13 @@ bool ItemPopupUI::addEvents()
     if (!m_pItemCopperNum)
         return false;
     
+    ui::Text* m_pItemMoneyDesc = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "item_money_desc"));
+    if (!m_pItemMoneyDesc)
+        return false;
+    m_pItemMoneyDesc->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
+    m_pItemMoneyDesc->setString(UtilityHelper::getLocalStringForUi("ITEM_MONEY_DESC"));
+    
+    
     m_pItemEquipDist = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "item_equip_dist"));
     if (!m_pItemEquipDist)
         return false;
@@ -246,7 +253,29 @@ bool ItemPopupUI::addEvents()
   
     return true;
 }
-
+void ItemPopupUI::noEquipFrame(bool isEquip)
+{
+    if(isEquip)
+    {
+//      m_pBtnDiscard->setPosition(cocos2d::Vec2(m_pRootNode->getContentSize().width*0.5,0));
+//      m_pBtnEquip->setVisible(false);
+        m_pBtnEquip->setBright(true);
+        m_pBtnEquip->setTouchEnabled(false);
+        
+    }else
+    {
+        m_pBtnEquip->setVisible(false);
+        m_pBtnDiscard->setVisible(false);
+        
+        m_pRootNode->setContentSize(cocos2d::Size(m_pRootNode->getContentSize().width,m_pRootNode->getContentSize().height-m_pBtnDiscard->getContentSize().height));
+        m_pBackGround->setContentSize(m_pRootNode->getContentSize());
+        m_pBackGround->setPosition(m_pRootNode->getContentSize()*0.5);
+        m_pItemPropFrame->setPosition(Vec2(m_pItemPropFrame->getPositionX(), m_pRootNode->getContentSize().height));
+        
+        m_pMoneyFrame->setAnchorPoint(cocos2d::Vec2::ANCHOR_MIDDLE_BOTTOM);
+        m_pMoneyFrame->setPosition(cocos2d::Vec2(m_pMoneyFrame->getPositionX(),5));
+    }
+}
 void ItemPopupUI::itemFrame()
 {
     PickableItemProperty* itemprop = PlayerProperty::getInstance()->getItemFromBag(CChaosNumber(m_nItemId));
@@ -659,15 +688,14 @@ void ItemPopupUI::updateItemPopup(int itemId)
                 PlayerProperty::getInstance()->getEquipedSecondWeaponID() == m_nItemId){
                 m_pItemEquipDist->setVisible(true);
                 m_pItemEquipDist->setString(UtilityHelper::getLocalStringForUi("ITEM_ALREDY_EQUIP"));
-                m_pBtnDiscard->setVisible(false);
-                m_pBtnEquip->setVisible(false);
+                
+                noEquipFrame(false);
             }
         }else
         {
             m_pItemEquipDist->setString(UtilityHelper::getLocalStringForUi("ITEM_NOT_EQUIP"));
             m_pItemEquipDist->setColor(PopupUILayerManager::getInstance()->getTipsColor(TIP_WARNING));
-            m_pBtnDiscard->setPosition(cocos2d::Vec2(m_pRootNode->getContentSize().width*0.5,0));
-            m_pBtnEquip->setVisible(false);
+             noEquipFrame(true);
         }
         
         if (itemprop->isIdentified()) {
@@ -744,4 +772,23 @@ void ItemPopupUI::onClickEquip(cocos2d::Ref *ref)
         //装备失败 或者提前给出提示
         CCLOG("装备失败 ");
     }
+}
+
+void ItemPopupUI::closePopup()
+{
+    
+    if(m_pPopupType == ePopupItem)
+    {
+        PopupUILayer* pLayer = nullptr;
+        if (PopupUILayerManager::getInstance()->isOpenPopup(ePopupEquipItem,pLayer)) {
+            ItemPopupUI* itemPopupUi = static_cast<ItemPopupUI*>(pLayer);
+            if (itemPopupUi) {
+                itemPopupUi->closePopup();
+            }
+        }
+        
+    }
+    outAction();
+   
+    
 }

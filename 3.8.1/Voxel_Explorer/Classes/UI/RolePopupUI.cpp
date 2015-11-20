@@ -240,79 +240,61 @@ void RolePopupUI::updateItems()
     int OrnamentIndex = -1;
     int secondWeaponIndex = -1;
     std::vector<PickableItemProperty*> items;
-    if (!m_pBtnAllBag->isEnabled())
+    
+    std::vector<PickableItemProperty*> equipItems;
+    std::vector<PickableItemProperty*> otherItems;
+    std::vector<PickableItemProperty*> bagItems = PlayerProperty::getInstance()->getPlayerBag();
+    for (int i =0 ; i<bagItems.size(); i++)
     {
-         std::vector<PickableItemProperty*> bagItems = PlayerProperty::getInstance()->getPlayerBag();
-        for (int i =0 ; i<bagItems.size(); i++)
-        {
-            PickableItemProperty* itemProp =bagItems[i];
-            if (!itemProp) {
-                continue;
-            }
-            items.push_back(itemProp);
-            if (weaponId ==  itemProp->getInstanceID()) {
-                weaponIndex= i;
-            }
-            if (armorId ==  itemProp->getInstanceID()) {
-                armorIndex = i;
-            }
-            if (OrnamentId ==  itemProp->getInstanceID()) {
-                OrnamentIndex = i;
-            }
-            if (secondWeaponId ==  itemProp->getInstanceID()) {
-                secondWeaponIndex = i;
-            }
+        PickableItemProperty* itemProp =bagItems[i];
+        if (!itemProp) {
+            continue;
         }
-        
-    }else
-    {
-        std::vector<PickableItemProperty*> bagItems = PlayerProperty::getInstance()->getPlayerBag();
-        std::vector<PickableItemProperty*> equipItems;
-        std::vector<PickableItemProperty*> otherItems;
-        for (int i =0 ; i<bagItems.size(); i++) {
-            PickableItemProperty* itemProp =bagItems[i];
-            if (!itemProp) {
-                continue;
-            }
-            PickableItemProperty::PickableItemPropertyType itemtype =itemProp->getPickableItemPropertyType();
-            if (itemtype ==PickableItemProperty::PIPT_WEAPON ||itemtype ==PickableItemProperty::PIPT_SECOND_WEAPON||
-                itemtype ==PickableItemProperty::PIPT_ARMOR ||itemtype ==PickableItemProperty::PIPT_MAGIC_ORNAMENT )
-            {
-                equipItems.push_back(itemProp);
-            }else
-            {
-                otherItems.push_back(itemProp);
-            }
-        }
-         if (!m_pBtnWeaponBag->isEnabled())
+        items.push_back(itemProp);
+        PickableItemProperty::PickableItemPropertyType itemtype =itemProp->getPickableItemPropertyType();
+        if (itemtype ==PickableItemProperty::PIPT_WEAPON ||itemtype ==PickableItemProperty::PIPT_SECOND_WEAPON||
+            itemtype ==PickableItemProperty::PIPT_ARMOR ||itemtype ==PickableItemProperty::PIPT_MAGIC_ORNAMENT )
         {
-            items = equipItems;
-            for (int i =0; i<items.size(); i++) {
-                PickableItemProperty* itemProp =bagItems[i];
-                if (!itemProp) {
-                    continue;
-                }
-                if (weaponId ==  itemProp->getInstanceID()) {
-                    weaponIndex= i;
-                }
-                if (armorId ==  itemProp->getInstanceID()) {
-                    armorIndex = i;
-                }
-                if (OrnamentId ==  itemProp->getInstanceID()) {
-                    OrnamentIndex = i;
-                }
-                if (secondWeaponId ==  itemProp->getInstanceID()) {
-                    secondWeaponIndex = i;
-                }
-            }
-        }else if (!m_pBtnPotionBag->isEnabled())
+            equipItems.push_back(itemProp);
+        }else
         {
-             items = otherItems;
+            otherItems.push_back(itemProp);
         }
-        equipItems.clear();
-        otherItems.clear();
     }
-    //武器 0 护甲 1 饰品 2  副手武器 2 装备位置
+
+    if (!m_pBtnWeaponBag->isEnabled())
+    {
+        items.clear();
+        items = equipItems;
+
+    }else if (!m_pBtnPotionBag->isEnabled())
+    {
+        items.clear();
+        items = otherItems;
+    }
+    equipItems.clear();
+    otherItems.clear();
+    
+    for (int i =0; i<items.size(); i++) {
+        PickableItemProperty* itemProp =items[i];
+        if (!itemProp) {
+            continue;
+        }
+        if (weaponId ==  itemProp->getInstanceID()) {
+            weaponIndex= i;
+        }
+        if (armorId ==  itemProp->getInstanceID()) {
+            armorIndex = i;
+        }
+        if (OrnamentId ==  itemProp->getInstanceID()) {
+            OrnamentIndex = i;
+        }
+        if (secondWeaponId ==  itemProp->getInstanceID()) {
+            secondWeaponIndex = i;
+        }
+    }
+    
+    //武器 0  副手武器 1 护甲 2 饰品 3   装备位置
     if (!m_pBtnAllBag->isEnabled() || !m_pBtnWeaponBag->isEnabled()) {
         //武器不在首位
         if (weaponIndex>0)
@@ -321,48 +303,49 @@ void RolePopupUI::updateItems()
             weaponIndex = 0;
         }
         //护甲不在首位且武器不存在 放在首位
-        if (armorIndex>0 && weaponIndex<0){
-            std::swap( items[0], items[armorIndex] );
-            armorIndex = 0;
-        }else if (armorIndex >1 && weaponIndex==0) {
+        if (secondWeaponIndex>0 && weaponIndex<0){
+            std::swap( items[0], items[secondWeaponIndex] );
+            secondWeaponIndex = 0;
+        }else if (secondWeaponIndex >1 && weaponIndex==0) {
             //护甲不在第2位且武器存在 放在第2位
-            std::swap( items[1], items[armorIndex] );
-            armorIndex = 1;
+            std::swap( items[1], items[secondWeaponIndex] );
+            secondWeaponIndex = 1;
         }
         //饰品不在在首位且护甲不存在 武器不存在
-        if (OrnamentIndex>0 && weaponIndex<0 && armorIndex<0)
+        if (armorIndex>0 && weaponIndex<0 && secondWeaponIndex<0)
+        {
+            std::swap( items[0], items[armorIndex] );
+            armorIndex =0 ;
+        }else if (armorIndex>1 && weaponIndex==0 && secondWeaponIndex<0)
+        {
+            std::swap( items[1], items[armorIndex] );
+            armorIndex = 1;
+        }else if (armorIndex>2 && weaponIndex==0 && secondWeaponIndex==1)
+        {
+            std::swap( items[2], items[armorIndex] );
+            armorIndex = 2;
+            
+        }
+        
+        if (OrnamentIndex>0 && weaponIndex<0 && secondWeaponIndex<0 && armorIndex<0)
         {
             std::swap( items[0], items[OrnamentIndex] );
             OrnamentIndex =0 ;
-        }else if (OrnamentIndex>2 && weaponIndex==0 && armorIndex==1)
+        }else if (OrnamentIndex>1 && weaponIndex==0 && secondWeaponIndex<0 && armorIndex<0)
+        {
+            std::swap( items[1], items[OrnamentIndex] );
+            OrnamentIndex = 1;
+        }else if (OrnamentIndex>2 && weaponIndex==0 && secondWeaponIndex==1 && armorIndex<0)
         {
             std::swap( items[2], items[OrnamentIndex] );
             OrnamentIndex = 2;
             
-        }else if (OrnamentIndex>1 && weaponIndex==0 && armorIndex<0)
+        }else if (OrnamentIndex>3 && weaponIndex==0 && secondWeaponIndex==1 && armorIndex==2)
         {
-            std::swap( items[1], items[OrnamentIndex] );
-            OrnamentIndex = 1;
+            std::swap( items[3], items[OrnamentIndex] );
+            OrnamentIndex = 3;
         }
         
-        if (secondWeaponIndex>0 && weaponIndex<0 && armorIndex<0 && OrnamentIndex<0)
-        {
-            std::swap( items[0], items[secondWeaponIndex] );
-            secondWeaponIndex =0 ;
-        }else if (secondWeaponIndex>1 && weaponIndex==0 && armorIndex<0 && OrnamentIndex<0)
-        {
-            std::swap( items[1], items[secondWeaponIndex] );
-            secondWeaponIndex = 1;
-        }else if (secondWeaponIndex>2 && weaponIndex==0 && armorIndex==1 && OrnamentIndex<0)
-        {
-            std::swap( items[2], items[secondWeaponIndex] );
-            secondWeaponIndex = 2;
-            
-        }else if (secondWeaponIndex>3 && weaponIndex==0 && armorIndex==1 && OrnamentIndex==2)
-        {
-            std::swap( items[3], items[secondWeaponIndex] );
-            secondWeaponIndex = 3;
-        }
         
         
         
@@ -415,36 +398,96 @@ void RolePopupUI::selectItemEvent(cocos2d::Ref *pSender, TGridView::EventType ty
     if (type==TGridView::EventType::ON_SELECTED_ITEM_END) {
         TGridView* gridView = static_cast<TGridView*>(pSender);
         ItemUI* currentItem = static_cast<ItemUI*>(gridView->getItem(gridView->getCurSelectedIndex()));
-        PickableItemProperty* itemProp = PlayerProperty::getInstance()->getItemFromBag(CChaosNumber(gridView->getCurSelectedIndex()));
-        if (currentItem && currentItem->isHaveItem()) {
+        if (currentItem  && currentItem->isHaveItem()) {
+            int currentItemId = currentItem->getItemId();
+            CCLOG("select itemid = %d", currentItem->getItemId());
+            PickableItemProperty* itemProp = PlayerProperty::getInstance()->getItemFromBag(CChaosNumber(currentItemId));
+            if (!itemProp)
+            {
+                CCLOG("itemProp is empty");
+                return;
+            }
+            
+            //判断点击的武器 是否已经有装备过
+            int weaponId = int(PlayerProperty::getInstance()->getEquipedWeaponID());
+            int armorId = int(PlayerProperty::getInstance()->getEquipedArmorID());
+            int OrnamentId = int(PlayerProperty::getInstance()->getEquipedOrnamentsID());
+            int secondWeaponId = int(PlayerProperty::getInstance()->getEquipedSecondWeaponID());
+            int equipId = -1;
+            ItemPopupUI* Equippopupui = nullptr;
+            if (itemProp->getPickableItemPropertyType() == PickableItemProperty::PIPT_WEAPON && currentItemId !=weaponId )
+            {
+                equipId = weaponId;
+            }else if (itemProp->getPickableItemPropertyType() == PickableItemProperty::PIPT_ARMOR && currentItemId !=armorId )
+            {
+                equipId = armorId;
+            }else if (itemProp->getPickableItemPropertyType() == PickableItemProperty::PIPT_MAGIC_ORNAMENT && currentItemId !=OrnamentId )
+            {
+                equipId = OrnamentId;
+            }else if (itemProp->getPickableItemPropertyType() == PickableItemProperty::PIPT_SECOND_WEAPON && currentItemId !=secondWeaponId )
+            {
+                equipId = secondWeaponId;
+            }
+            //如果有装备过 打开装备过的武器
+            if (equipId!=-1) {
+                
+                Equippopupui = static_cast<ItemPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupType::ePopupEquipItem));
+                if (Equippopupui) {
+                    Equippopupui->updateItemPopup(equipId);
+                    CCLOG("Equippopupui Y:%f",Equippopupui->getRootNode()->getPositionY());
+                    Equippopupui->getRootNode()->setPosition(cocos2d::Vec2(Equippopupui->getRootNode()->getPositionX(),SCREEN_HEIGHT*0.7));
+//                    Equippopupui->getRootNode()->setPosition(cocos2d::Vec2(SCREEN_WIDTH*0.27,Equippopupui->getRootNode()->getPositionY()));
+                    
+                    CCLOG("select itemid = %d", currentItemId);
+                }
+            }
+            
             //使用鉴定卷轴 只能点击未鉴定的物品
             if (_isOpenIdentify ) {
                 if (!itemProp->isIdentified()) {
-                    CCLOG("select itemid:%d",currentItem->getItemId());
-                    bool isSuccess = PlayerProperty::getInstance()->indentifyItem(CChaosNumber(currentItem->getItemId()));
+                    CCLOG("select itemid:%d",currentItemId);
+                    bool isSuccess = PlayerProperty::getInstance()->indentifyItem(CChaosNumber(currentItemId));
                     _isOpenIdentify =false;
                     if (isSuccess) {
                         CCLOG("鉴定成功");
                         ItemPopupUI* popupui = static_cast<ItemPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupType::ePopupItem));
                         if (popupui) {
                             popupui->registerCloseCallback(CC_CALLBACK_0(RolePopupUI::updateItems, this));
-                            popupui->updateItemPopup(currentItem->getItemId());
-                            CCLOG("select itemid = %d", currentItem->getItemId());
+                            popupui->updateItemPopup(currentItemId);
+                            if (equipId !=-1) {
+                                popupui->setDarkLayerVisble(false);
+                                CCLOG("Equippopupui Y:%f",Equippopupui->getRootNode()->getPositionY());
+                               popupui->getRootNode()->setPosition(cocos2d::Vec2(popupui->getRootNode()->getPositionX(),Equippopupui->getRootNode()->getPositionY()-Equippopupui->getRootNode()->getContentSize().height*0.5 - popupui->getRootNode()->getContentSize().height*0.5));
+                            }
+                            CCLOG("select itemid = %d", currentItemId);
                         }
                     }else{
                         CCLOG("鉴定失败");
-                        
+                        PopupUILayerManager::getInstance()->closeCurrentPopup();
+                        //弹出鉴定失败窗口
                     }
                 }
                
             }else
             {
+
                 //未使用鉴定卷轴 正常打开
                 ItemPopupUI* popupui = static_cast<ItemPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupType::ePopupItem));
                 if (popupui) {
                     popupui->registerCloseCallback(CC_CALLBACK_0(RolePopupUI::updateItems, this));
-                    popupui->updateItemPopup(currentItem->getItemId());
-                    CCLOG("select itemid = %d", currentItem->getItemId());
+                    popupui->updateItemPopup(currentItemId);
+                    
+                    if (equipId !=-1) {
+                        popupui->setDarkLayerVisble(false);
+                       
+                        if (Equippopupui) {
+                            
+//                            popupui->getRootNode()->setPosition(cocos2d::Vec2(Equippopupui->getRootNode()->getPositionX()+Equippopupui->getRootNode()->getContentSize().width,Equippopupui->getRootNode()->getPositionY()));
+                            popupui->getRootNode()->setPosition(cocos2d::Vec2(popupui->getRootNode()->getPositionX(),Equippopupui->getRootNode()->getPositionY()-Equippopupui->getRootNode()->getContentSize().height*0.5 - popupui->getRootNode()->getContentSize().height*0.5));
+                        }
+                        
+                    }
+                    CCLOG("select itemid = %d", currentItemId);
                 }
             }
             
@@ -483,5 +526,6 @@ void RolePopupUI::onClickSortPotion(cocos2d::Ref * ref, Widget::TouchEventType t
     }
     updateItems();
 }
+
 
     
