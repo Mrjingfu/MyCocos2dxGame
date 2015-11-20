@@ -29,6 +29,8 @@ public:
     } NPC_TYPE;
     static Npc* create(NPC_TYPE type);
     
+    virtual std::string getDesc();
+    
     NPC_TYPE getNPCType() const { return m_Type; }
 private:
     NPC_TYPE    m_Type;

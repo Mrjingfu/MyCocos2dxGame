@@ -8,6 +8,9 @@
 
 #include "TerrainTile.hpp"
 #include "LevelResourceManager.h"
+#include "RandomDungeon.hpp"
+#include "UtilityHelper.h"
+#include "VoxelExplorer.h"
 USING_NS_CC;
 const std::string TERRAIN_TILES_NAME[] = {
     "TTN_CHASM",
@@ -15,6 +18,8 @@ const std::string TERRAIN_TILES_NAME[] = {
     "TTN_WALL",
     "TTN_ENTRANCE",
     "TTN_EXIT",
+    "TTN_STANDARD_PORTAL", ///标准传送门
+    "TTN_SMALL_PORTAL",    ///小传送门
     "TTN_TUNNEL",
     "TTN_DOOR",
     "TTN_OPENED_DOOR",
@@ -43,6 +48,8 @@ TerrainTile* TerrainTile::create(TileType type)
     if (tile && tile->initWithFile("16x16x16.c3b"))
     {
         std::string texName = LevelResourceManager::getInstance()->getTerrainTileRes(TERRAIN_TILES_NAME[type]);
+        if((type == TerrainTile::TT_ENTRANCE) && (RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nCurrentDepth == 1))
+            texName = LevelResourceManager::getInstance()->getTerrainTileRes(TERRAIN_TILES_NAME[TerrainTile::TT_STANDARD]);
         if(!texName.empty())
         {
             auto tex = Director::getInstance()->getTextureCache()->addImage(texName);
@@ -65,8 +72,14 @@ TerrainTile::TerrainTile()
 TerrainTile::~TerrainTile()
 {
 }
+
+std::string TerrainTile::getDesc()
+{
+    return VoxelExplorer::getInstance()->getCurrentLevel()->getTerrainTileInfoDesc(getPosInMap().x, getPosInMap().y);
+}
 void TerrainTile::setVisited(bool visited)
 {
+    setVisible(visited);
     unsigned int lightmask = getLightMask();
     if (visited)
         lightmask = lightmask | (unsigned int)LightFlag::LIGHT1;

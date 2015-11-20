@@ -49,6 +49,11 @@ Player::~Player()
 {
     CC_SAFE_DELETE(m_pHurtData);
 }
+std::string Player::getDesc()
+{
+    return "";
+}
+
 void Player::onEnter()
 {
     Actor::onEnter();
@@ -545,6 +550,7 @@ void Player::onEnterDeath()
     removeTerrainTileFlag(TileInfo::ATTACKABLE);
     this->setVisible(false);
     VoxelExplorer::getInstance()->addExplosion(getPosition3D());
+    VoxelExplorer::getInstance()->updateMiniMap();
 }
 
 void Player::onExitIdle()
@@ -576,7 +582,7 @@ void Player::onLand(bool triggerTrap)
     VoxelExplorer::getInstance()->checkUpdateFogOfWar();
     if(triggerTrap)
         VoxelExplorer::getInstance()->checkTriggerTrap();
-    
+    VoxelExplorer::getInstance()->updateMiniMap();
     CCLOG("player x = %d   y = %d", (int)getPosInMap().x, (int)getPosInMap().y);
 }
 void Player::updatePlayerBuffer(float delta)

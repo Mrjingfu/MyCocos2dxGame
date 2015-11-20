@@ -27,10 +27,19 @@ public:
         AT_PASSAGE,      ///通道
         AT_TUNNEL,       ///隧道
         
-        AT_SPECIAL_SHOP,         ///商店
-        AT_SPECIAL_SECRET,      ///秘密地点
-        AT_SPECIAL_WEAKFLOOR,   ///坏地板
-        AT_SPECIAL_PIT,     ///坑
+        AT_SPECIAL_EQUIPMENT_SHOP,          ///装备商店
+        AT_SPECIAL_MAGIC_SHOP,              ///魔法商店
+        AT_SPECIAL_AID_STATION,             ///救护站
+        AT_SPECIAL_ALCHEMIST_ROOM,          ///炼金术师房间
+        AT_SPECIAL_WITCH_ROOM,              ///魔女的房间
+        AT_SPECIAL_THEIF_ROOM,              ///盗贼的房间
+        AT_SPECIAL_SAGE_ROOM,               ///智者房间
+        AT_SPECIAL_MISSION_ROOM,            ///任务房间
+        AT_SPECIAL_TREASURE_ROOM,           ///宝藏房间
+        AT_SPECIAL_DECORATION_ROOM,         ///装饰品屋子
+        AT_SPECIAL_WEAKFLOOR_ROOM,          ///地板缺失房间
+        AT_SPECIAL_TRANSPOT_ROOM,           ///传送房间
+        
         AT_MAX
     }
     AREA_TYPE;

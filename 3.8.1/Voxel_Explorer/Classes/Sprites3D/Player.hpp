@@ -35,6 +35,8 @@ protected:
 public:
     static Player* create(const std::string& modelPath);
     
+    virtual std::string getDesc();
+    
     PlayerState getState() const { return m_curState; }
     void setState(PlayerState state);
     

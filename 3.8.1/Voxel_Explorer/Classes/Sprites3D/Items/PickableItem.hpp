@@ -242,6 +242,8 @@ public:
     } PickableItemState;
     static PickableItem* create(PickableItemType type, CChaosNumber level);
     
+    virtual std::string getDesc();
+    
     PickableItemType getPickableItemType() const { return m_Type; }
     PickableItemState getState() const { return m_State; }
     void setState(PickableItemState state);

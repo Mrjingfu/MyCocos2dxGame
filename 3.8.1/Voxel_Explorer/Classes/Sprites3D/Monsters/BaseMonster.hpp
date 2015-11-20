@@ -84,6 +84,8 @@ public:
         MS_MAX
     } MonsterState;
 public:
+    virtual std::string getDesc();
+    
     MonsterState getState() const { return m_State; }
     void setState(MonsterState state);
     

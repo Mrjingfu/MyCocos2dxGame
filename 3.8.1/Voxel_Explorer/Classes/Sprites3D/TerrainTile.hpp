@@ -9,9 +9,9 @@
 #ifndef TerrainTile_hpp
 #define TerrainTile_hpp
 
-#include "cocos2d.h"
+#include "EffectSprite3D.h"
 extern const std::string TERRAIN_TILES_NAME[];
-class TerrainTile : public cocos2d::Sprite3D
+class TerrainTile : public EffectSprite3D
 {
 public:
     typedef enum
@@ -21,6 +21,8 @@ public:
         TT_WALL,            ///墙
         TT_ENTRANCE,        ///入口
         TT_EXIT,            ///出口
+        TT_STANDARD_PORTAL, ///标准传送门
+        TT_SMALL_PORTAL,    ///小传送门
         TT_TUNNEL,          ///通道
         TT_DOOR,            ///门
         TT_OPENED_DOOR,     ///开了的门
@@ -46,6 +48,8 @@ public:
     static TerrainTile* create(TileType type);
     TerrainTile();
     virtual ~TerrainTile();
+    
+    virtual std::string getDesc();
     
     TileType getType() const { return m_Type; }
     void setType(TileType type) { m_Type = type; }

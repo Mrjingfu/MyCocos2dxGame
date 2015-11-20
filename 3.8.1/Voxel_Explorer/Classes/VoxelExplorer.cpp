@@ -22,6 +22,7 @@
 #include "Particle3D/CCParticleSystem3D.h"
 #include "Particle3D/PU/CCPUParticleSystem3D.h"
 #include "AlisaMethod.h"
+#include "BasePortal.hpp"
 USING_NS_CC;
 
 VoxelExplorer* g_pVoxelExplorerInstance = nullptr;
@@ -39,6 +40,7 @@ VoxelExplorer::VoxelExplorer()
     m_pMainLayer = nullptr;
     m_p3DLayer  = nullptr;
     m_pTerrainTilesLayer = nullptr;
+    m_pTerrainPortalsLayer = nullptr;
     m_pTerrainDoorsLayer = nullptr;
     m_pUseableItemsLayer = nullptr;
     m_pMonstersLayer     = nullptr;
@@ -190,8 +192,6 @@ bool VoxelExplorer::wanderingAround(BaseMonster* monster, cocos2d::Vec2& nextPos
 }
 void VoxelExplorer::updateFogOfWar(const cocos2d::Rect& areaRect, bool visited)
 {
-    if(visited && m_pCurrentLevel && m_pCurrentLevel->hasShowMap())
-        m_pCurrentLevel->showMap(true);
     if(m_pTerrainTilesLayer)
     {
         for (const auto& child : m_pTerrainTilesLayer->getChildren())
@@ -201,7 +201,15 @@ void VoxelExplorer::updateFogOfWar(const cocos2d::Rect& areaRect, bool visited)
                 tile->setVisited(visited);
         }
     }
-    
+    if(m_pTerrainPortalsLayer)
+    {
+        for (const auto& child : m_pTerrainPortalsLayer->getChildren())
+        {
+            BasePortal* portal = dynamic_cast<BasePortal*>(child);
+            if(portal && areaRect.containsPoint(portal->getPosInMap()))
+                portal->setVisited(visited);
+        }
+    }
     if(m_pTerrainDoorsLayer)
     {
         for (const auto& child : m_pTerrainDoorsLayer->getChildren())
@@ -241,6 +249,11 @@ void VoxelExplorer::updateFogOfWar(const cocos2d::Rect& areaRect, bool visited)
                 item->setVisited(visited);
         }
     }
+}
+void VoxelExplorer::updateMiniMap()
+{
+    if(m_pCurrentLevel && m_pCurrentLevel->hasShowMap())
+        m_pCurrentLevel->showMap(true);
 }
 void VoxelExplorer::searchAndCheck()    ///侦查
 {
@@ -652,6 +665,28 @@ void VoxelExplorer::handlePlayerUsePotion(PickableItem::PickableItemType type)
             break;
     }
 }
+void VoxelExplorer::handlePlayerUseStandardPortal()
+{
+}
+void VoxelExplorer::handlePlayerUseSmallPortal()
+{
+}
+void VoxelExplorer::handleUpstairs()
+{
+    if(RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nCurrentDepth > 1)
+    {
+    }
+    else
+    {
+    }
+}
+void VoxelExplorer::handleDownstairs()
+{
+    if(RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nCurrentDepth < RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nTotalNum)
+    {
+    }
+}
+
 bool VoxelExplorer::createLayers()
 {
     m_p3DLayer = Layer3D::create();
@@ -665,6 +700,12 @@ bool VoxelExplorer::createLayers()
         return false;
     m_pTerrainTilesLayer->setCameraMask((unsigned int)CameraFlag::USER1);
     m_p3DLayer->addChild(m_pTerrainTilesLayer);
+    
+    m_pTerrainPortalsLayer = Layer::create();
+    if(!m_pTerrainPortalsLayer)
+        return false;
+    m_pTerrainPortalsLayer->setCameraMask((unsigned int)CameraFlag::USER1);
+    m_p3DLayer->addChild(m_pTerrainPortalsLayer);
     
     m_pTerrainDoorsLayer = Layer::create();
     if(!m_pTerrainDoorsLayer)

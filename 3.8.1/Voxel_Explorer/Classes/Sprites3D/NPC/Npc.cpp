@@ -8,6 +8,7 @@
 
 #include "Npc.hpp"
 #include "LevelResourceManager.h"
+#include "UtilityHelper.h"
 USING_NS_CC;
 const std::string NPC_NAMES[] = {
     "NPCN_CHILD",           ///小孩
@@ -42,4 +43,8 @@ Npc::Npc()
 }
 Npc::~Npc()
 {
+}
+std::string Npc::getDesc()
+{
+    return UtilityHelper::getLocalString(NPC_NAMES[m_Type] + "_DESC");
 }

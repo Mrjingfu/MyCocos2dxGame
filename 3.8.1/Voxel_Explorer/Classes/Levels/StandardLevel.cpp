@@ -15,6 +15,9 @@
 #include "AlisaMethod.h"
 #include "PickableItem.hpp"
 #include "GameFormula.hpp"
+#include "BaseMonster.hpp"
+#include "StandardPortal.hpp"
+#include "SmallPortal.hpp"
 USING_NS_CC;
 
 StandardLevel::StandardLevel()
@@ -140,6 +143,39 @@ bool StandardLevel::createTerrain()
                 case TerrainTile::TT_WALL:
                     {
                         tile->setPosition3D(Vec3(j*TerrainTile::CONTENT_SCALE, -TerrainTile::CONTENT_SCALE*0.5f, -i*TerrainTile::CONTENT_SCALE));
+                    }
+                    break;
+                case TerrainTile::TT_ENTRANCE:
+                    {
+                        if((RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nCurrentDepth == 1))
+                        {
+                            StandardPortal* portal = StandardPortal::create(false);
+                            if(!portal)
+                                return false;
+                            portal->setPosition3D(Vec3(j*TerrainTile::CONTENT_SCALE, 0, -i*TerrainTile::CONTENT_SCALE));
+                            VoxelExplorer::getInstance()->getTerrainPortalsLayer()->addChild(portal);
+                            portal->setVisited(info.m_bVisited);
+                        }
+                    }
+                    break;
+                case TerrainTile::TT_STANDARD_PORTAL:
+                    {
+                        StandardPortal* portal = StandardPortal::create(true);
+                        if(!portal)
+                            return false;
+                        portal->setPosition3D(Vec3(j*TerrainTile::CONTENT_SCALE, 0, -i*TerrainTile::CONTENT_SCALE));
+                        VoxelExplorer::getInstance()->getTerrainPortalsLayer()->addChild(portal);
+                        portal->setVisited(info.m_bVisited);
+                    }
+                    break;
+                case TerrainTile::TT_SMALL_PORTAL:
+                    {
+                        SmallPortal* portal = SmallPortal::create(true);
+                        if(!portal)
+                            return false;
+                        portal->setPosition3D(Vec3(j*TerrainTile::CONTENT_SCALE, 0, -i*TerrainTile::CONTENT_SCALE));
+                        VoxelExplorer::getInstance()->getTerrainPortalsLayer()->addChild(portal);
+                        portal->setVisited(info.m_bVisited);
                     }
                     break;
                 case TerrainTile::TT_DOOR:
@@ -309,7 +345,7 @@ void StandardLevel::assignAreasType()
             {
                 if(m_SpecailAreas.size() > 0 && area->getRect().size.width > 3 && area->getRect().size.height > 3 && cocos2d::random(0, m_nSpecialAreaCount*m_nSpecialAreaCount + 1) == 0)
                 {
-                    area->setAreaType(Area::AT_SPECIAL_SHOP);
+                    area->setAreaType(Area::AT_SPECIAL_EQUIPMENT_SHOP);
                     m_nSpecialAreaCount++;
                 }
                 else if(cocos2d::random(0, 1) == 0)
@@ -319,7 +355,7 @@ void StandardLevel::assignAreasType()
                         Area* areaNeigbour = static_cast<Area*>(n);
                         if(areaNeigbour)
                         {
-                            if(areaNeigbour->getAreaType() != Area::AT_SPECIAL_PIT && (areaNeigbour->getConnectedAreas().find(areaNeigbour) == areaNeigbour->getConnectedAreas().end()) && (std::find(Area::SPECIALS.begin(), Area::SPECIALS.end(), areaNeigbour->getAreaType()) != Area::SPECIALS.end()))
+                            if(/*areaNeigbour->getAreaType() != Area::AT_SPECIAL_PIT && */(areaNeigbour->getConnectedAreas().find(areaNeigbour) == areaNeigbour->getConnectedAreas().end()) && (std::find(Area::SPECIALS.begin(), Area::SPECIALS.end(), areaNeigbour->getAreaType()) != Area::SPECIALS.end()))
                             {
                                 neigbours.push_back(areaNeigbour);
                             }
@@ -538,7 +574,6 @@ void StandardLevel::showMap(bool show)
             m_pMapDrawNode->setScale(winSize.width/48);
         }
         m_pMapDrawNode->clear();
-        
         for (int i = 0; i<m_nHeight; i++) {
             for (int j = 0; j<m_nWidth; j++) {
                 int index = i*m_nWidth+j;
@@ -555,7 +590,7 @@ void StandardLevel::showMap(bool show)
                 
                 switch (info.m_Type) {
                     case TerrainTile::TT_STANDARD:
-                        if(info.m_AreaType >= Area::AT_SPECIAL_SHOP)
+                        if(info.m_AreaType >= Area::AT_SPECIAL_EQUIPMENT_SHOP)
                             m_pMapDrawNode->drawPolygon(vertices, 4, Color4F::MAGENTA, 0, Color4F(0,0,0,0));
                         else
                             m_pMapDrawNode->drawPolygon(vertices, 4, Color4F::WHITE, 0, Color4F(0,0,0,0));
@@ -607,8 +642,38 @@ void StandardLevel::showMap(bool show)
                     default:
                         break;
                 }
-                
             }
+        }
+        if(VoxelExplorer::getInstance()->getUseableItemsLayer())
+        {
+            for (const auto& child : VoxelExplorer::getInstance()->getUseableItemsLayer()->getChildren())
+            {
+                UseableItem* useableItem = dynamic_cast<UseableItem*>(child);
+                if(useableItem && useableItem->isVisible())
+                    m_pMapDrawNode->drawDot(useableItem->getPosInMap()+Vec2(0.5f, 0.5f), 0.5f, Color4F(0, 1.0f, 1.0f, 1.0f));
+            }
+        }
+        if (VoxelExplorer::getInstance()->getPickableItemsLayer())
+        {
+            for (const auto& child : VoxelExplorer::getInstance()->getPickableItemsLayer()->getChildren())
+            {
+                PickableItem* pickableItem = dynamic_cast<PickableItem*>(child);
+                if(pickableItem && pickableItem->isVisible())
+                    m_pMapDrawNode->drawDot(pickableItem->getPosInMap()+Vec2(0.5f, 0.5f), 0.5f, Color4F(1.0f, 0.5f, 0.0f, 1.0f));
+            }
+        }
+        if (VoxelExplorer::getInstance()->getMonstersLayer())
+        {
+            for (const auto& child : VoxelExplorer::getInstance()->getMonstersLayer()->getChildren())
+            {
+                BaseMonster* monster = dynamic_cast<BaseMonster*>(child);
+                if(monster && monster->isVisible())
+                    m_pMapDrawNode->drawDot(monster->getPosInMap()+Vec2(0.5f, 0.5f), 0.5f, Color4F(0.0f, 0.5f, 1.0f, 1.0f));
+            }
+        }
+        if(VoxelExplorer::getInstance()->getPlayer() && VoxelExplorer::getInstance()->getPlayer()->isVisible())
+        {
+            m_pMapDrawNode->drawDot(VoxelExplorer::getInstance()->getPlayer()->getPosInMap()+Vec2(0.5f, 0.5f), 0.5f, Color4F::RED);
         }
     }
 }
@@ -829,7 +894,7 @@ void StandardLevel::placeTraps()  ///放置陷阱
         int pos = cocos2d::random(0, (int)m_Map.size()-1);
         if(m_Map[pos].m_AreaType == Area::AT_ENTRANCE
            || m_Map[pos].m_AreaType == Area::AT_EXIT
-           || m_Map[pos].m_AreaType >= Area::AT_SPECIAL_SHOP)
+           || m_Map[pos].m_AreaType >= Area::AT_SPECIAL_EQUIPMENT_SHOP)
         {
             i--;
             continue;

@@ -38,6 +38,8 @@ public:
     } UseableItemState;
     static UseableItem* create(UseableItemType type);
     
+    virtual std::string getDesc() override;
+    
     UseableItemType getPickableItemType() const { return m_Type; }
     UseableItemState getState() const { return m_State; }
     void setState(UseableItemState state);

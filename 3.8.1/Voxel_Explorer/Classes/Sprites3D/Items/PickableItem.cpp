@@ -10,6 +10,7 @@
 #include "LevelResourceManager.h"
 #include "BaseLevel.h"
 #include "AlisaMethod.h"
+#include "UtilityHelper.h"
 USING_NS_CC;
 const std::string PICKABLE_ITEM_NAMES[] = {
     
@@ -261,6 +262,10 @@ PickableItem::PickableItem()
 }
 PickableItem::~PickableItem()
 {
+}
+std::string PickableItem::getDesc()
+{
+    return UtilityHelper::getLocalString("PICKITEM_DESC");
 }
 void PickableItem::setState(PickableItemState state)
 {

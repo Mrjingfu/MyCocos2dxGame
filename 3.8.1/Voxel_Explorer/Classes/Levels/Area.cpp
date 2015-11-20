@@ -10,7 +10,7 @@
 #include "BaseLevel.h"
 USING_NS_CC;
 
-Area::AREA_TYPE AT_SpecialTypes[] = { Area::AREA_TYPE::AT_SPECIAL_SECRET, Area::AREA_TYPE::AT_SPECIAL_WEAKFLOOR };
+Area::AREA_TYPE AT_SpecialTypes[] = { Area::AREA_TYPE::AT_SPECIAL_EQUIPMENT_SHOP, Area::AREA_TYPE::AT_SPECIAL_TRANSPOT_ROOM };
 std::vector<Area::AREA_TYPE> Area::SPECIALS(AT_SpecialTypes, AT_SpecialTypes+ sizeof(AT_SpecialTypes)/sizeof(Area::AREA_TYPE));
 Area* Area::create()
 {
@@ -84,7 +84,7 @@ void Area::generate(BaseLevel* level)
         case AT_TUNNEL:
             generateTunnelArea(level);
             break;
-        case AT_SPECIAL_SHOP:
+        case AT_SPECIAL_EQUIPMENT_SHOP:
             generateShopArea(level);
             break;
         default:

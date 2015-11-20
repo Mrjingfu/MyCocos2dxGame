@@ -47,6 +47,20 @@
 		521A8EA919F11F5000D177D7 /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = 521A8EA819F11F5000D177D7 /* fonts */; };
 		521A8EAA19F11F5000D177D7 /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = 521A8EA819F11F5000D177D7 /* fonts */; };
 		52B47A471A53D09C004E4C60 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B47A461A53D09B004E4C60 /* Security.framework */; };
+		550545171BFEEF7E006B4500 /* EffectSprite3D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 550545151BFEEF7E006B4500 /* EffectSprite3D.cpp */; };
+		550545181BFEEF7E006B4500 /* EffectSprite3D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 550545151BFEEF7E006B4500 /* EffectSprite3D.cpp */; };
+		550545211BFEF00C006B4500 /* BaseEffect3D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5505451D1BFEF00C006B4500 /* BaseEffect3D.cpp */; };
+		550545221BFEF00C006B4500 /* BaseEffect3D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5505451D1BFEF00C006B4500 /* BaseEffect3D.cpp */; };
+		550545231BFEF00C006B4500 /* OutlineEffect3D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5505451F1BFEF00C006B4500 /* OutlineEffect3D.cpp */; };
+		550545241BFEF00C006B4500 /* OutlineEffect3D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5505451F1BFEF00C006B4500 /* OutlineEffect3D.cpp */; };
+		5505452E1BFF1092006B4500 /* StandardPortal.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5505452C1BFF1092006B4500 /* StandardPortal.cpp */; };
+		5505452F1BFF1092006B4500 /* StandardPortal.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5505452C1BFF1092006B4500 /* StandardPortal.cpp */; };
+		550545321BFF2081006B4500 /* BasePortal.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 550545301BFF2081006B4500 /* BasePortal.cpp */; };
+		550545331BFF2081006B4500 /* BasePortal.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 550545301BFF2081006B4500 /* BasePortal.cpp */; };
+		550545361BFF2166006B4500 /* shaders in Resources */ = {isa = PBXBuildFile; fileRef = 550545351BFF2166006B4500 /* shaders */; };
+		550545371BFF2166006B4500 /* shaders in Resources */ = {isa = PBXBuildFile; fileRef = 550545351BFF2166006B4500 /* shaders */; };
+		5505453C1BFF3893006B4500 /* SmallPortal.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5505453A1BFF3893006B4500 /* SmallPortal.cpp */; };
+		5505453D1BFF3893006B4500 /* SmallPortal.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5505453A1BFF3893006B4500 /* SmallPortal.cpp */; };
 		550C32EC1BDDE8740015124E /* SecondWeaponProperty.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 550C32EA1BDDE8740015124E /* SecondWeaponProperty.cpp */; };
 		550C32ED1BDDE8740015124E /* SecondWeaponProperty.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 550C32EA1BDDE8740015124E /* SecondWeaponProperty.cpp */; };
 		551651C51BD73102004ED7F6 /* RandomDungeon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 551651C31BD73102004ED7F6 /* RandomDungeon.cpp */; };
@@ -293,6 +307,19 @@
 		521A8E6319F0C34300D177D7 /* Default-736h@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-736h@3x.png"; sourceTree = "<group>"; };
 		521A8EA819F11F5000D177D7 /* fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = fonts; sourceTree = "<group>"; };
 		52B47A461A53D09B004E4C60 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.1.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
+		550545151BFEEF7E006B4500 /* EffectSprite3D.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EffectSprite3D.cpp; sourceTree = "<group>"; };
+		550545161BFEEF7E006B4500 /* EffectSprite3D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EffectSprite3D.h; sourceTree = "<group>"; };
+		5505451D1BFEF00C006B4500 /* BaseEffect3D.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BaseEffect3D.cpp; sourceTree = "<group>"; };
+		5505451E1BFEF00C006B4500 /* BaseEffect3D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseEffect3D.h; sourceTree = "<group>"; };
+		5505451F1BFEF00C006B4500 /* OutlineEffect3D.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OutlineEffect3D.cpp; sourceTree = "<group>"; };
+		550545201BFEF00C006B4500 /* OutlineEffect3D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OutlineEffect3D.h; sourceTree = "<group>"; };
+		5505452C1BFF1092006B4500 /* StandardPortal.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StandardPortal.cpp; sourceTree = "<group>"; };
+		5505452D1BFF1092006B4500 /* StandardPortal.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = StandardPortal.hpp; sourceTree = "<group>"; };
+		550545301BFF2081006B4500 /* BasePortal.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BasePortal.cpp; sourceTree = "<group>"; };
+		550545311BFF2081006B4500 /* BasePortal.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BasePortal.hpp; sourceTree = "<group>"; };
+		550545351BFF2166006B4500 /* shaders */ = {isa = PBXFileReference; lastKnownFileType = folder; path = shaders; sourceTree = "<group>"; };
+		5505453A1BFF3893006B4500 /* SmallPortal.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SmallPortal.cpp; sourceTree = "<group>"; };
+		5505453B1BFF3893006B4500 /* SmallPortal.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SmallPortal.hpp; sourceTree = "<group>"; };
 		550C32EA1BDDE8740015124E /* SecondWeaponProperty.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SecondWeaponProperty.cpp; sourceTree = "<group>"; };
 		550C32EB1BDDE8740015124E /* SecondWeaponProperty.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SecondWeaponProperty.hpp; sourceTree = "<group>"; };
 		551651C31BD73102004ED7F6 /* RandomDungeon.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RandomDungeon.cpp; sourceTree = "<group>"; };
@@ -595,6 +622,7 @@
 		46880B7519C43A67006E1F66 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				550545351BFF2166006B4500 /* shaders */,
 				5558A12A1BE8BD780084A399 /* particle3d */,
 				554F00E61BD9CDF600F4DF8E /* data */,
 				EC6716561BCE7F5F00C81CFC /* lang */,
@@ -653,6 +681,30 @@
 			name = Icons;
 			path = ios;
 			sourceTree = SOURCE_ROOT;
+		};
+		5505450F1BFEEF40006B4500 /* Portals */ = {
+			isa = PBXGroup;
+			children = (
+				550545301BFF2081006B4500 /* BasePortal.cpp */,
+				550545311BFF2081006B4500 /* BasePortal.hpp */,
+				5505452C1BFF1092006B4500 /* StandardPortal.cpp */,
+				5505452D1BFF1092006B4500 /* StandardPortal.hpp */,
+				5505453A1BFF3893006B4500 /* SmallPortal.cpp */,
+				5505453B1BFF3893006B4500 /* SmallPortal.hpp */,
+			);
+			path = Portals;
+			sourceTree = "<group>";
+		};
+		5505451C1BFEF00C006B4500 /* Effects */ = {
+			isa = PBXGroup;
+			children = (
+				5505451D1BFEF00C006B4500 /* BaseEffect3D.cpp */,
+				5505451E1BFEF00C006B4500 /* BaseEffect3D.h */,
+				5505451F1BFEF00C006B4500 /* OutlineEffect3D.cpp */,
+				550545201BFEF00C006B4500 /* OutlineEffect3D.h */,
+			);
+			path = Effects;
+			sourceTree = "<group>";
 		};
 		551E93B31BD51291009F788F /* Mgrs */ = {
 			isa = PBXGroup;
@@ -798,6 +850,7 @@
 		555B0CFF1BC51A2C0055FB6D /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				5505451C1BFEF00C006B4500 /* Effects */,
 				551E93CD1BD512D3009F788F /* ThirdLibs */,
 				551E93B31BD51291009F788F /* Mgrs */,
 				551E93BA1BD51291009F788F /* Properties */,
@@ -864,6 +917,9 @@
 		55EC95761BC673690008D1D7 /* Sprites3D */ = {
 			isa = PBXGroup;
 			children = (
+				550545151BFEEF7E006B4500 /* EffectSprite3D.cpp */,
+				550545161BFEEF7E006B4500 /* EffectSprite3D.h */,
+				5505450F1BFEEF40006B4500 /* Portals */,
 				552970121BFB345E00DBF75B /* NPC */,
 				554F00F31BDA219E00F4DF8E /* Items */,
 				55338AD71BD891C000EA316F /* Boss */,
@@ -1082,6 +1138,7 @@
 				5087E77E17EB970100C73F5D /* Default.png in Resources */,
 				559B217F1BC65D330047D998 /* textures in Resources */,
 				521A8E6419F0C34300D177D7 /* Default-667h@2x.png in Resources */,
+				550545361BFF2166006B4500 /* shaders in Resources */,
 				554F00E71BD9CDF600F4DF8E /* data in Resources */,
 				50EF629717ECD46A001EB2F8 /* Icon-58.png in Resources */,
 			);
@@ -1097,6 +1154,7 @@
 				55D6D6801BC527D000081221 /* models in Resources */,
 				503AE0F817EB97AB00D1A890 /* Icon.icns in Resources */,
 				5558A12C1BE8BD780084A399 /* particle3d in Resources */,
+				550545371BFF2166006B4500 /* shaders in Resources */,
 				559B21801BC65D330047D998 /* textures in Resources */,
 				521A8EAA19F11F5000D177D7 /* fonts in Resources */,
 			);
@@ -1110,9 +1168,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				EC602AB61BF47CAC00484D42 /* StatisticsManager.cpp in Sources */,
+				550545321BFF2081006B4500 /* BasePortal.cpp in Sources */,
 				551E93EA1BD512D3009F788F /* xor.cpp in Sources */,
 				553BC5091BCE499B003D907A /* BaseDoor.cpp in Sources */,
 				55F81CA11BDB208D002EC075 /* UseableItem.cpp in Sources */,
+				5505453C1BFF3893006B4500 /* SmallPortal.cpp in Sources */,
 				ECD10D721BD0967B007DD888 /* WrapperUILayer.cpp in Sources */,
 				551E93AF1BD51282009F788F /* NativeBridge.mm in Sources */,
 				55338AEA1BD892C200EA316F /* Archbishop.cpp in Sources */,
@@ -1123,6 +1183,7 @@
 				551E93E21BD512D3009F788F /* CCCrypto.cpp in Sources */,
 				551E93AB1BD51282009F788F /* ChaosNumber.cpp in Sources */,
 				551E93F01BD512D3009F788F /* MemoryStream.cpp in Sources */,
+				5505452E1BFF1092006B4500 /* StandardPortal.cpp in Sources */,
 				EC00DD5B1BD66586009BC378 /* MenuUILayer.cpp in Sources */,
 				55F81CAC1BDB69FB002EC075 /* PickableItemProperty.cpp in Sources */,
 				EC5A65211BE8BF6C006A0D2B /* NoteUi.cpp in Sources */,
@@ -1164,12 +1225,14 @@
 				55338ACF1BD8781E00EA316F /* BaseMonster.cpp in Sources */,
 				555B0D1B1BC51A2C0055FB6D /* Door.cpp in Sources */,
 				551E93E41BD512D3009F788F /* libb64.c in Sources */,
+				550545171BFEEF7E006B4500 /* EffectSprite3D.cpp in Sources */,
 				550C32EC1BDDE8740015124E /* SecondWeaponProperty.cpp in Sources */,
 				55338AEE1BD892FC00EA316F /* ShadowDragon.cpp in Sources */,
 				551E93C11BD51291009F788F /* ArchiveManager.cpp in Sources */,
 				ECE1B9471BD8AC820035B4D9 /* TGridView.cpp in Sources */,
 				553BC50D1BCE5191003D907A /* StandardDoor.cpp in Sources */,
 				555B0D231BC51A2C0055FB6D /* GameScene.cpp in Sources */,
+				550545211BFEF00C006B4500 /* BaseEffect3D.cpp in Sources */,
 				ECD64A711BF1CD71008E04D7 /* InfoPopupUI.cpp in Sources */,
 				554F00EE1BDA210000F4DF8E /* BaseBoss.cpp in Sources */,
 				55407D571BD5E2BC0000C41C /* GameFormula.cpp in Sources */,
@@ -1178,6 +1241,7 @@
 				551E93A91BD51282009F788F /* AlisaMethod.cpp in Sources */,
 				555B0D191BC51A2C0055FB6D /* BaseLevel.cpp in Sources */,
 				55EC95851BC6AA7B0008D1D7 /* TerrainTile.cpp in Sources */,
+				550545231BFEF00C006B4500 /* OutlineEffect3D.cpp in Sources */,
 				551651C51BD73102004ED7F6 /* RandomDungeon.cpp in Sources */,
 				EC7F92D31BCF9ED200B26C6C /* HueSprite.cpp in Sources */,
 				EC6264951BF0807F004E0F55 /* MessageManager.cpp in Sources */,
@@ -1202,6 +1266,7 @@
 			files = (
 				ECECACD31BE73C5100B14FFC /* ItemPopupUI.cpp in Sources */,
 				551E93C81BD51291009F788F /* MonsterProperty.cpp in Sources */,
+				550545331BFF2081006B4500 /* BasePortal.cpp in Sources */,
 				553BC50E1BCE5191003D907A /* StandardDoor.cpp in Sources */,
 				55EC95861BC6ABBA0008D1D7 /* TerrainTile.cpp in Sources */,
 				55F81CC11BDB9257002EC075 /* ScrollProperty.cpp in Sources */,
@@ -1210,6 +1275,7 @@
 				EC00DD5C1BD66586009BC378 /* MenuUILayer.cpp in Sources */,
 				EC6716461BCE7F2C00C81CFC /* LogoScene.cpp in Sources */,
 				55338ADF1BD8925100EA316F /* Warden.cpp in Sources */,
+				5505453D1BFF3893006B4500 /* SmallPortal.cpp in Sources */,
 				551E93E51BD512D3009F788F /* libb64.c in Sources */,
 				EC00DD601BD665A6009BC378 /* MenuScene.cpp in Sources */,
 				ECD10D731BD0967B007DD888 /* WrapperUILayer.cpp in Sources */,
@@ -1224,6 +1290,7 @@
 				55F81CCD1BDB92AC002EC075 /* QuestItemProperty.cpp in Sources */,
 				553BC50A1BCE499B003D907A /* BaseDoor.cpp in Sources */,
 				55407D581BD5E2BC0000C41C /* GameFormula.cpp in Sources */,
+				550545221BFEF00C006B4500 /* BaseEffect3D.cpp in Sources */,
 				5569713D1BE20CCE00CC2736 /* Layer3D.cpp in Sources */,
 				555B0D261BC51A2C0055FB6D /* VoxelExplorer.cpp in Sources */,
 				551E93EB1BD512D3009F788F /* xor.cpp in Sources */,
@@ -1256,10 +1323,13 @@
 				ECE1B9591BD8E6660035B4D9 /* RolePopupUI.cpp in Sources */,
 				555B0D1E1BC51A2C0055FB6D /* Graph.cpp in Sources */,
 				554F01061BDA3A3100F4DF8E /* SewerLevel.cpp in Sources */,
+				550545241BFEF00C006B4500 /* OutlineEffect3D.cpp in Sources */,
 				554F00EF1BDA210000F4DF8E /* BaseBoss.cpp in Sources */,
 				551E93B21BD51282009F788F /* UtilityHelper.cpp in Sources */,
 				55F81CD11BDB92CC002EC075 /* PotionsProperty.cpp in Sources */,
 				EC602AB71BF47CAC00484D42 /* StatisticsManager.cpp in Sources */,
+				550545181BFEEF7E006B4500 /* EffectSprite3D.cpp in Sources */,
+				5505452F1BFF1092006B4500 /* StandardPortal.cpp in Sources */,
 				555B0D241BC51A2C0055FB6D /* GameScene.cpp in Sources */,
 				ECE1B9481BD8AC820035B4D9 /* TGridView.cpp in Sources */,
 				551E93CC1BD51291009F788F /* PlayerProperty.cpp in Sources */,

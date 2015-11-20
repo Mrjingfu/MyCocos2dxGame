@@ -11,6 +11,8 @@
 #include "Pathfinder.hpp"
 #include "AlisaMethod.h"
 #include "UtilityHelper.h"
+#include "RandomDungeon.hpp"
+#include "BasePortal.hpp"
 USING_NS_CC;
 
 BaseLevel::BaseLevel()
@@ -86,6 +88,13 @@ std::string BaseLevel::getTerrainTileInfoDesc(int x, int y)
     else if(m_Map[index].m_Type == TerrainTile::TT_WALL) {
         ///lwwhb 处理随机
         return UtilityHelper::getLocalString(TERRAIN_TILES_NAME[m_Map[index].m_Type]);
+    }
+    else if(m_Map[index].m_Type == TerrainTile::TT_ENTRANCE)
+    {
+        if((RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nCurrentDepth == 1))
+        {
+            return UtilityHelper::getLocalString(PORTAL_NAMES[BasePortal::PT_STANDARD] + "_LOCK");
+        }
     }
     return UtilityHelper::getLocalString(TERRAIN_TILES_NAME[m_Map[index].m_Type]);
 }
@@ -201,6 +210,26 @@ bool BaseLevel::checkMovable(Actor* actor, TileInfo& info)
     }
     if((info.m_Flag & TileInfo::STOPPABLE) != 0)
     {
+        if(info.m_Type == TerrainTile::TT_ENTRANCE)
+        {
+            VoxelExplorer::getInstance()->handleUpstairs();
+            return false;
+        }
+        else if(info.m_Type == TerrainTile::TT_EXIT)
+        {
+            VoxelExplorer::getInstance()->handleDownstairs();
+            return false;
+        }
+        else if(info.m_Type == TerrainTile::TT_STANDARD_PORTAL)
+        {
+            VoxelExplorer::getInstance()->handlePlayerUseStandardPortal();
+            return false;
+        }
+        else if(info.m_Type == TerrainTile::TT_SMALL_PORTAL)
+        {
+            VoxelExplorer::getInstance()->handlePlayerUseSmallPortal();
+            return false;
+        }
         //碰墙
         return false;
     }
@@ -231,6 +260,10 @@ int BaseLevel::assignTerrainTileFlag(TerrainTile::TileType type)
             flag = TileInfo::PASSABLE;
             break;
         case TerrainTile::TT_WALL:
+        case TerrainTile::TT_ENTRANCE:
+        case TerrainTile::TT_EXIT:
+        case TerrainTile::TT_STANDARD_PORTAL:
+        case TerrainTile::TT_SMALL_PORTAL:
             flag = TileInfo::STOPPABLE;
             break;
         case TerrainTile::TT_DOOR:

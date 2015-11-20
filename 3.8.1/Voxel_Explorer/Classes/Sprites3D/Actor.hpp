@@ -9,8 +9,8 @@
 #ifndef Actor_hpp
 #define Actor_hpp
 
-#include "cocos2d.h"
-class Actor : public cocos2d::Sprite3D
+#include "EffectSprite3D.h"
+class Actor : public EffectSprite3D
 {
 public:
     typedef enum {
@@ -39,10 +39,9 @@ public:
     virtual void removeTerrainTileFlag(int flag);
     virtual void removeTerrainTileFlagByPos(int flag, const cocos2d::Vec2& pos);
     
-//    virtual void updateTerrainTileFlag(int flag);
-//    virtual void updateTerrainTileFlagByPos(int flag, const cocos2d::Vec2& pos);
-    
     virtual void setVisited(bool visited);
+    
+    virtual std::string getDesc() = 0;
 protected:
     ActorDir       m_dir;
 };

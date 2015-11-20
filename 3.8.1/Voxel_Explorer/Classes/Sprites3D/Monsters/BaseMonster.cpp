@@ -12,6 +12,7 @@
 #include "PlayerProperty.hpp"
 #include "VoxelExplorer.h"
 #include "GameFormula.hpp"
+#include "UtilityHelper.h"
 USING_NS_CC;
 const std::string MONSTER_MODEL_NAMES[] = {
     "MMN_UNKNOWN",
@@ -89,6 +90,15 @@ BaseMonster::~BaseMonster()
 {
     CC_SAFE_DELETE(m_pHurtData);
     CC_SAFE_DELETE(m_pMonsterProperty);
+}
+std::string BaseMonster::getDesc()
+{
+    CC_ASSERT(m_pMonsterProperty != nullptr);
+    if(m_pMonsterProperty->isElite())
+    {
+        return UtilityHelper::getLocalString(MONSTER_MODEL_NAMES[m_Type]) + UtilityHelper::getLocalString("MONSTER_ELITE");
+    }
+    return UtilityHelper::getLocalString(MONSTER_MODEL_NAMES[m_Type]);
 }
 void BaseMonster::attackedByPlayer(bool miss)
 {
@@ -453,6 +463,8 @@ void BaseMonster::onLand()
     }
     else
         setState(MS_TRACKING);
+    if(isVisible())
+        VoxelExplorer::getInstance()->updateMiniMap();
 }
 void BaseMonster::moveToNext(const cocos2d::Vec2& next)
 {
