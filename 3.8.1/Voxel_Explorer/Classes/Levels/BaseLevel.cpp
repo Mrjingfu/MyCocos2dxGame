@@ -32,8 +32,8 @@ void BaseLevel::create()
     while (!build());
     if(!createTerrain())
         CCLOGERROR("Create Terrain failed!");
-    if(!createUseableItems())
-        CCLOGERROR("Create Useable Items failed!");
+    if(!decorateAreas())
+        CCLOGERROR("Decorate Arears failed!");
     if(!createMonsters())
         CCLOGERROR("Create Monsters failed!");
     if(!createPickableItems())
@@ -42,7 +42,6 @@ void BaseLevel::create()
     if(!Pathfinder::getInstance()->init(m_nWidth, m_nHeight))
         CCLOGERROR("Pathfinder initialize failed!");
 }
-
 BaseLevel::LEVEL_TYPE BaseLevel::getLevelType() const
 {
     return m_Type;

@@ -27,13 +27,17 @@ protected:
     
     virtual bool build();
     virtual bool createTerrain();
-    virtual bool decorate();
+    virtual bool decorateAreas();
 
     virtual bool initAreas();
     virtual void splitArea(const cocos2d::Rect& rect);
     virtual void assignAreasType();
     
     virtual void generate();
+    
+    virtual bool createUseableItems(Area* area);
+    virtual bool createNPCs(Area* area);
+    virtual bool createPickableItems();
     
     virtual void showMap(bool show);
     

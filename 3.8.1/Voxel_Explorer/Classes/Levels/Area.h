@@ -26,8 +26,8 @@ public:
         AT_EXIT,
         AT_PASSAGE,      ///通道
         AT_TUNNEL,       ///隧道
-        AT_SHOP,         ///商店
         
+        AT_SPECIAL_SHOP,         ///商店
         AT_SPECIAL_SECRET,      ///秘密地点
         AT_SPECIAL_WEAKFLOOR,   ///坏地板
         AT_SPECIAL_PIT,     ///坑
