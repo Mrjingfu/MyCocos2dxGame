@@ -58,7 +58,6 @@ GameUILayer::GameUILayer()
     m_pGameSilverNum    = nullptr;
     m_pGameCopperNum    = nullptr;
     m_pGameLevelInfoName    = nullptr;
-    m_pGameLevelInfoFloor   = nullptr;
     m_pListMsgs = nullptr;
     _isOpenSmailMap = false;
     _isDist = false;
@@ -139,7 +138,7 @@ bool GameUILayer::addEvents()
     m_pMonsterBtn = dynamic_cast<ui::ImageView*>(UtilityHelper::seekNodeByName(m_pRootNode, "btn_monster"));
     if (!m_pMonsterBtn)
         return false;
-    m_pMonsterIcon = dynamic_cast<Sprite*>(UtilityHelper::seekNodeByName(m_pRootNode, "monster_icon"));
+    m_pMonsterIcon = dynamic_cast<ui::ImageView*>(UtilityHelper::seekNodeByName(m_pRootNode, "monster_icon"));
     if (!m_pMonsterIcon)
         return false;
     
@@ -199,15 +198,11 @@ bool GameUILayer::addEvents()
     m_pGameLevelInfoName    = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "game_level_info_name"));
     if (!m_pGameLevelInfoName)
         return false;
-    m_pGameLevelInfoFloor   = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "game_level_info_floor"));
-    if (!m_pGameLevelInfoFloor)
-        return false;
-    
     m_pMsgFrame = dynamic_cast<ui::ImageView*>(UtilityHelper::seekNodeByName(m_pRootNode, "game_msg_frame"));
     if (!m_pMsgFrame)
         return false;
     
-    m_pGameDistTipsFrame = dynamic_cast<ui::Layout*>(UtilityHelper::seekNodeByName(m_pRootNode, "game_dist_dialog"));
+    m_pGameDistTipsFrame = dynamic_cast<ui::ImageView*>(UtilityHelper::seekNodeByName(m_pRootNode, "game_dist_dialog"));
     if (!m_pGameDistTipsFrame)
         return false;
     m_pGameDistFrameDesc = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "game_dist_tips_desc"));
@@ -256,7 +251,6 @@ bool GameUILayer::addEvents()
 //    m_pRoleLevel->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
     
     m_pGameLevelInfoName->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
-    m_pGameLevelInfoFloor->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
     m_pGameGoldNum->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
     m_pGameSilverNum->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
     m_pGameCopperNum->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
@@ -690,7 +684,7 @@ void GameUILayer::onEventUpdateMonsterProp(cocos2d::EventCustom *sender)
         float hpPer =monster->getMonsterProperty()->getCurrentHP().GetFloatValue()/monster->getMonsterProperty()->getMaxHP().GetFloatValue() *100.0f;
         m_pMonsterHpBar->setPercent(hpPer);
         m_pMonsterCurHp->setString(StringUtils::format("%d",int(monster->getMonsterProperty()->getCurrentHP())));
-        m_pMonsterMaxHp->setString(StringUtils::format("%d",int(monster->getMonsterProperty()->getMaxHP())));
+        m_pMonsterMaxHp->setString(StringUtils::format("/%d",int(monster->getMonsterProperty()->getMaxHP())));
         m_pMonsterLevel->setString(StringUtils::format("%d",int(monster->getMonsterProperty()->getLevel())));
         std::string monsterName =UtilityHelper::getLocalString(MONSTER_MODEL_NAMES[monster->getMonsterType()]);
         if (monster->getMonsterProperty()->isElite()) {
@@ -785,8 +779,8 @@ void GameUILayer::initMessageFrame()
 }
 void GameUILayer::updateGameInfo()
 {
-    m_pGameLevelInfoName->setString(RandomDungeon::getInstance()->getCurrentDungeonNode()->m_strDungeonName.c_str());
-    m_pGameLevelInfoFloor->setString(Value(int(RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nCurrentDepth)).asString());
+    
+    m_pGameLevelInfoName->setString(StringUtils::format("%s %d",RandomDungeon::getInstance()->getCurrentDungeonNode()->m_strDungeonName.c_str(),int(RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nCurrentDepth)));
     CCLOG(" gold: %s",StringUtils::format("%d",int(PlayerProperty::getInstance()->getGold())).c_str());
     CCLOG(" silver: %s",StringUtils::format("%d",int(PlayerProperty::getInstance()->getGold())).c_str());
     CCLOG(" copper: %s",StringUtils::format("%d",int(PlayerProperty::getInstance()->getGold())).c_str());
@@ -807,9 +801,9 @@ void GameUILayer::updateRoleUi()
     m_pRoleHpBar->setPercent(hpPer);
     m_pRoleName->setString("");//角色名
     m_pRoleCurHp->setString(Value(int(PlayerProperty::getInstance()->getCurrentHP())).asString());
-    m_pRoleMaxHp->setString(Value(int(PlayerProperty::getInstance()->getMaxHP())).asString());
+    m_pRoleMaxHp->setString(StringUtils::format("/%d",int(PlayerProperty::getInstance()->getMaxHP())));
     m_pRoleCurMp->setString(Value(int(PlayerProperty::getInstance()->getCurrentMP())).asString());
-    m_pRoleMaxMp->setString(Value(int(PlayerProperty::getInstance()->getMaxMP())).asString());
+    m_pRoleMaxMp->setString(StringUtils::format("/%d",int(PlayerProperty::getInstance()->getMaxMP())));
     float playerExp = PlayerProperty::getInstance()->getExp().GetFloatValue();
     float nextLevelExp = GameFormula::getNextLevelExp(PlayerProperty::getInstance()->getLevel());
     float ExpPer = playerExp/nextLevelExp *100.0f;
