@@ -22,7 +22,7 @@
         <key>dataFormat</key>
         <string>cocos2d</string>
         <key>textureFileName</key>
-        <filename>../../Resources/ui/ui_sprite.png</filename>
+        <filename>../Voxel_Explorer_cocos/cocosstudio/ui_sprite.png</filename>
         <key>flipPVR</key>
         <false/>
         <key>ditherType</key>
@@ -54,9 +54,9 @@
         <key>maxTextureSize</key>
         <QSize>
             <key>width</key>
-            <int>256</int>
+            <int>2048</int>
             <key>height</key>
-            <int>256</int>
+            <int>2048</int>
         </QSize>
         <key>fixedTextureSize</key>
         <QSize>
@@ -99,7 +99,7 @@
             <key>packageName</key>
             <string>Texture</string>
             <key>javaFileName</key>
-            <filename>../../Resources/ui/ui_sprite.java</filename>
+            <filename>../Voxel_Explorer_cocos/cocosstudio/ui_sprite.java</filename>
             <key>wrap</key>
             <struct type="AndEngineWrap">
                 <key>s</key>
@@ -111,7 +111,7 @@
             <enum type="AndEngine::MagFilter">MagLinear</enum>
         </struct>
         <key>dataFileName</key>
-        <filename>../../Resources/ui/ui_sprite.plist</filename>
+        <filename>../Voxel_Explorer_cocos/cocosstudio/ui_sprite.plist</filename>
         <key>multiPack</key>
         <false/>
         <key>mainExtension</key>
@@ -148,67 +148,63 @@
         </struct>
         <key>fileList</key>
         <array>
-            <filename>../ui/btn_achieve.png</filename>
-            <filename>../ui/btn_rank.png</filename>
-            <filename>../ui/btn_rate.png</filename>
-            <filename>../ui/btn_setting.png</filename>
-            <filename>../ui/button_rewardbtn_icon_search.png</filename>
-            <filename>../ui/chr_sword.png</filename>
-            <filename>../ui/ui_frame_1.png</filename>
-            <filename>../ui/ui_frame_2.png</filename>
-            <filename>../ui/ui_frame_3.png</filename>
-            <filename>../ui/ui_frame_4.png</filename>
-            <filename>../ui/ui_frame_5.png</filename>
-            <filename>../ui/ui_frame_6.png</filename>
-            <filename>../ui/progress_blood_bg.png</filename>
-            <filename>../ui/progress_blood_style.png</filename>
-            <filename>../ui/progress_margic_bg.png</filename>
-            <filename>../ui/progress_margic_style.png</filename>
-            <filename>../ui/progress_exp_bg.png</filename>
-            <filename>../ui/progress_exp_style.png</filename>
-            <filename>../../../../../../游戏/Voxel_Explorer/ssss/progress_exp_bg.png</filename>
-            <filename>../ui/ui_frame_7.png</filename>
-            <filename>../ui/ui_frame_8.png</filename>
-            <filename>../ui/ui_map_icon.png</filename>
-            <filename>../ui/btn_close.png</filename>
-            <filename>../ui/ui_shop_icon.png</filename>
-            <filename>../ui/ui_equip_label.png</filename>
-            <filename>../ui/ui_btn_back_1.png</filename>
-            <filename>../ui/ui_btn_back_2.png</filename>
-            <filename>../ui/ui_msg_icon.png</filename>
-            <filename>../textures_no_stroke/I_BronzeCoin.png</filename>
-            <filename>../textures_no_stroke/I_GoldCoin.png</filename>
-            <filename>../textures_no_stroke/I_SilverCoin.png</filename>
-            <filename>../ui/ui_floor_icon.png</filename>
-            <filename>../ui/I_Map.png</filename>
-            <filename>../ui/btn_serach_close.png</filename>
-            <filename>../ui/icon_resource_intermediate_tool.png</filename>
-            <filename>../ui/button_rewardbtn_bg.png</filename>
-            <filename>../ui/icon_artifact.png</filename>
-            <filename>../ui/ui_lock_icon.png</filename>
-            <filename>../ui/ui_pause_icon.png</filename>
-            <filename>../ui/ui_dist_icon.png</filename>
-            <filename>../ui/ui_armor_icon.png</filename>
-            <filename>../ui/ui_identify_icon.png</filename>
-            <filename>../ui/ui_ornament_icon.png</filename>
-            <filename>../ui/ui_secondweapon_icon.png</filename>
-            <filename>../ui/ui_weapon_icon.png</filename>
-            <filename>../ui/ui_buffer_fire.png</filename>
-            <filename>../ui/ui_buffer_frozen.png</filename>
-            <filename>../ui/ui_buffer_paralytic.png</filename>
-            <filename>../ui/ui_buffer_poisoning.png</filename>
-            <filename>../ui/ui_buffer_speedup.png</filename>
-            <filename>../ui/ui_buffer_stealth.png</filename>
-            <filename>../ui/ui_buffer_stronger.png</filename>
-            <filename>../ui/ui_buffer_weak.png</filename>
-            <filename>../ui/ui_frame_9.png</filename>
-            <filename>../ui/ui_frame_10.png</filename>
-            <filename>../ui/btn_bag_poition_normal.png</filename>
-            <filename>../ui/btn_bag_poition_press.png</filename>
-            <filename>../ui/btn_bag_wepon_normal.png</filename>
-            <filename>../ui/btn_bag_wepon_press.png</filename>
-            <filename>../ui/btn_bag_all_normal.png</filename>
-            <filename>../ui/btn_bag_all_press.png</filename>
+            <filename>../ui/ui_sprite/btn_achieve.png</filename>
+            <filename>../ui/ui_sprite/btn_bag_all_normal.png</filename>
+            <filename>../ui/ui_sprite/btn_bag_all_press.png</filename>
+            <filename>../ui/ui_sprite/btn_bag_poition_normal.png</filename>
+            <filename>../ui/ui_sprite/btn_bag_poition_press.png</filename>
+            <filename>../ui/ui_sprite/btn_bag_wepon_normal.png</filename>
+            <filename>../ui/ui_sprite/btn_bag_wepon_press.png</filename>
+            <filename>../ui/ui_sprite/btn_close.png</filename>
+            <filename>../ui/ui_sprite/btn_rank.png</filename>
+            <filename>../ui/ui_sprite/btn_rate.png</filename>
+            <filename>../ui/ui_sprite/btn_serach_close.png</filename>
+            <filename>../ui/ui_sprite/btn_setting.png</filename>
+            <filename>../ui/ui_sprite/button_rewardbtn_bg.png</filename>
+            <filename>../ui/ui_sprite/button_rewardbtn_icon_search.png</filename>
+            <filename>../ui/ui_sprite/I_Map.png</filename>
+            <filename>../ui/ui_sprite/icon_artifact.png</filename>
+            <filename>../ui/ui_sprite/icon_resource_intermediate_tool.png</filename>
+            <filename>../ui/ui_sprite/progress_blood_bg.png</filename>
+            <filename>../ui/ui_sprite/progress_blood_style.png</filename>
+            <filename>../ui/ui_sprite/progress_exp_bg.png</filename>
+            <filename>../ui/ui_sprite/progress_exp_style.png</filename>
+            <filename>../ui/ui_sprite/progress_margic_bg.png</filename>
+            <filename>../ui/ui_sprite/progress_margic_style.png</filename>
+            <filename>../ui/ui_sprite/ui_armor_icon.png</filename>
+            <filename>../ui/ui_sprite/ui_btn_back_1.png</filename>
+            <filename>../ui/ui_sprite/ui_btn_back_2.png</filename>
+            <filename>../ui/ui_sprite/ui_buffer_fire.png</filename>
+            <filename>../ui/ui_sprite/ui_buffer_frozen.png</filename>
+            <filename>../ui/ui_sprite/ui_buffer_paralytic.png</filename>
+            <filename>../ui/ui_sprite/ui_buffer_poisoning.png</filename>
+            <filename>../ui/ui_sprite/ui_buffer_speedup.png</filename>
+            <filename>../ui/ui_sprite/ui_buffer_stealth.png</filename>
+            <filename>../ui/ui_sprite/ui_buffer_stronger.png</filename>
+            <filename>../ui/ui_sprite/ui_buffer_weak.png</filename>
+            <filename>../ui/ui_sprite/ui_dist_icon.png</filename>
+            <filename>../ui/ui_sprite/ui_equip_label.png</filename>
+            <filename>../ui/ui_sprite/ui_floor_icon.png</filename>
+            <filename>../ui/ui_sprite/ui_frame_1.png</filename>
+            <filename>../ui/ui_sprite/ui_frame_2.png</filename>
+            <filename>../ui/ui_sprite/ui_frame_3.png</filename>
+            <filename>../ui/ui_sprite/ui_frame_4.png</filename>
+            <filename>../ui/ui_sprite/ui_frame_5.png</filename>
+            <filename>../ui/ui_sprite/ui_frame_6.png</filename>
+            <filename>../ui/ui_sprite/ui_frame_7.png</filename>
+            <filename>../ui/ui_sprite/ui_frame_8.png</filename>
+            <filename>../ui/ui_sprite/ui_identify_icon.png</filename>
+            <filename>../ui/ui_sprite/ui_lock_icon.png</filename>
+            <filename>../ui/ui_sprite/ui_map_icon.png</filename>
+            <filename>../ui/ui_sprite/ui_msg_icon.png</filename>
+            <filename>../ui/ui_sprite/ui_ornament_icon.png</filename>
+            <filename>../ui/ui_sprite/ui_pause_icon.png</filename>
+            <filename>../ui/ui_sprite/ui_secondweapon_icon.png</filename>
+            <filename>../ui/ui_sprite/ui_shop_icon.png</filename>
+            <filename>../ui/ui_sprite/ui_weapon_icon.png</filename>
+            <filename>../ui/ui_sprite/I_BronzeCoin.png</filename>
+            <filename>../ui/ui_sprite/I_GoldCoin.png</filename>
+            <filename>../ui/ui_sprite/I_SilverCoin.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

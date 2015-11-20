@@ -104,7 +104,7 @@ private:
     cocos2d::ui::Text*       m_pMonsterMaxMp;
     cocos2d::ui::Text*       m_pMonsterLevel;
     cocos2d::ui::Text*       m_pMonsterName;
-    cocos2d::Sprite*         m_pMonsterIcon;
+    cocos2d::ui::ImageView*  m_pMonsterIcon;
 
     
     cocos2d::ui::ImageView*  m_pGameMsgBtn;
@@ -118,8 +118,7 @@ private:
     cocos2d::ui::Text*       m_pGameSilverNum;          // 银币
     cocos2d::ui::Text*       m_pGameCopperNum;          // 铜币
     cocos2d::ui::Text*       m_pGameLevelInfoName;      // 关卡名
-    cocos2d::ui::Text*       m_pGameLevelInfoFloor;     // 关卡层数
-    cocos2d::ui::Layout*     m_pGameDistTipsFrame;
+    cocos2d::ui::ImageView*     m_pGameDistTipsFrame;
     cocos2d::ui::Button*     m_pGameDistFrameCloseBtn;
     cocos2d::ui::Text*       m_pGameDistFrameDesc;
    

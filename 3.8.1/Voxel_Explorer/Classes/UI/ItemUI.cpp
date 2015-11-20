@@ -46,7 +46,7 @@ bool ItemUI::init()
     setBrightStyle(BrightStyle::NORMAL);
     setBright(false);
     setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
-    m_pItemImage = ui::ImageView::create("A_Armor04.png",TextureResType::LOCAL);
+    m_pItemImage = ui::ImageView::create("A_Armor04.png",TextureResType::PLIST);
     m_pItemImage->setPosition(Vec2(getContentSize().width*0.5, getContentSize().width*0.45));
     m_pItemImage->setScale(0.9);
     m_pItemImage->setVisible(false);
@@ -88,7 +88,7 @@ void ItemUI::addItem(int _itemId, std::string itemIcon, PICKABLEITEM_QUALITY Qua
 {
     if (m_pItemImage) {
         m_pItemImage->setVisible(true);
-        m_pItemImage->loadTexture(itemIcon,TextureResType::LOCAL);
+        m_pItemImage->loadTexture(itemIcon,TextureResType::PLIST);
         m_pItemImage->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
         
     }

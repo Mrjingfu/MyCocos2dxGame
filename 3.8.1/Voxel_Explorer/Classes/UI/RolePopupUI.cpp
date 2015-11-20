@@ -70,7 +70,7 @@ bool RolePopupUI::initUi()
     Layout* equipFrame = dynamic_cast<ui::Layout*>(UtilityHelper::seekNodeByName(charNode, "equip_frame"));
     if (!equipFrame)
         return false;
-    Layout* gridFrame = dynamic_cast<ui::Layout*>(UtilityHelper::seekNodeByName(charNode, "grid_frame"));
+    ui::ImageView* gridFrame = dynamic_cast<ui::ImageView*>(UtilityHelper::seekNodeByName(charNode, "grid_frame"));
     if (!gridFrame)
         return false;
     m_pBtnChangeBag = dynamic_cast<ui::Button*>(UtilityHelper::seekNodeByName(charNode, "prop_btn_change_bag"));
@@ -356,7 +356,7 @@ void RolePopupUI::updateItems()
     {
         PickableItemProperty* itemProp =items[i];
          ItemUI* itemUi = static_cast<ItemUI*>( m_pGridView->getItem(i));
-        if (itemProp && itemUi) {
+        if (itemProp && itemUi && itemProp) {
             // 更新装备UI
             
             CCLOG("weaponId:%d armorId:%d OrnamentId:%d secondWeaponId:%d itemid:%d",weaponId,armorId,OrnamentId,secondWeaponId,itemProp->getInstanceID());
@@ -390,7 +390,7 @@ void RolePopupUI::updateItems()
         }
 
     }
-    items.clear();
+   
 }
 void RolePopupUI::selectItemEvent(cocos2d::Ref *pSender, TGridView::EventType type)
 {
@@ -398,6 +398,7 @@ void RolePopupUI::selectItemEvent(cocos2d::Ref *pSender, TGridView::EventType ty
     if (type==TGridView::EventType::ON_SELECTED_ITEM_END) {
         TGridView* gridView = static_cast<TGridView*>(pSender);
         ItemUI* currentItem = static_cast<ItemUI*>(gridView->getItem(gridView->getCurSelectedIndex()));
+        CCLOG("itemui x:%f y:%f",currentItem->getPositionX(),currentItem->getPositionY());
         if (currentItem  && currentItem->isHaveItem()) {
             int currentItemId = currentItem->getItemId();
             CCLOG("select itemid = %d", currentItem->getItemId());

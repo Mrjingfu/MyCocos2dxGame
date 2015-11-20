@@ -18,7 +18,6 @@
           <PlistImageFile Name="ui_frame_4.png" Key="ui_frame_4.png" />
           <PlistImageFile Name="ui_frame_5.png" Key="ui_frame_5.png" />
           <PlistImageFile Name="ui_frame_6.png" Key="ui_frame_6.png" />
-          <PlistImageFile Name="chr_sword.png" Key="chr_sword.png" />
           <PlistImageFile Name="button_rewardbtn_icon_search.png" Key="button_rewardbtn_icon_search.png" />
           <PlistImageFile Name="progress_blood_bg.png" Key="progress_blood_bg.png" />
           <PlistImageFile Name="progress_blood_style.png" Key="progress_blood_style.png" />
@@ -35,9 +34,6 @@
           <PlistImageFile Name="ui_btn_back_1.png" Key="ui_btn_back_1.png" />
           <PlistImageFile Name="ui_btn_back_2.png" Key="ui_btn_back_2.png" />
           <PlistImageFile Name="ui_msg_icon.png" Key="ui_msg_icon.png" />
-          <PlistImageFile Name="I_BronzeCoin.png" Key="I_BronzeCoin.png" />
-          <PlistImageFile Name="I_GoldCoin.png" Key="I_GoldCoin.png" />
-          <PlistImageFile Name="I_SilverCoin.png" Key="I_SilverCoin.png" />
           <PlistImageFile Name="ui_floor_icon.png" Key="ui_floor_icon.png" />
           <PlistImageFile Name="I_Map.png" Key="I_Map.png" />
           <PlistImageFile Name="btn_serach_close.png" Key="btn_serach_close.png" />
@@ -60,14 +56,15 @@
           <PlistImageFile Name="ui_buffer_stealth.png" Key="ui_buffer_stealth.png" />
           <PlistImageFile Name="ui_buffer_stronger.png" Key="ui_buffer_stronger.png" />
           <PlistImageFile Name="ui_buffer_weak.png" Key="ui_buffer_weak.png" />
-          <PlistImageFile Name="ui_frame_9.png" Key="ui_frame_9.png" />
-          <PlistImageFile Name="ui_frame_10.png" Key="ui_frame_10.png" />
           <PlistImageFile Name="btn_bag_poition_normal.png" Key="btn_bag_poition_normal.png" />
           <PlistImageFile Name="btn_bag_poition_press.png" Key="btn_bag_poition_press.png" />
           <PlistImageFile Name="btn_bag_wepon_normal.png" Key="btn_bag_wepon_normal.png" />
           <PlistImageFile Name="btn_bag_wepon_press.png" Key="btn_bag_wepon_press.png" />
           <PlistImageFile Name="btn_bag_all_normal.png" Key="btn_bag_all_normal.png" />
           <PlistImageFile Name="btn_bag_all_press.png" Key="btn_bag_all_press.png" />
+          <PlistImageFile Name="I_BronzeCoin.png" Key="I_BronzeCoin.png" />
+          <PlistImageFile Name="I_GoldCoin.png" Key="I_GoldCoin.png" />
+          <PlistImageFile Name="I_SilverCoin.png" Key="I_SilverCoin.png" />
         </PlistImageFolder>
         <Project Name="gameScene.csd" Type="Scene" />
         <Project Name="menuscene.csd" Type="Scene" />
@@ -76,6 +73,22 @@
         <Project Name="achievementPopupLayer.csd" Type="Layer" />
         <Project Name="characterLayer.csd" Type="Layer" />
         <Project Name="itemPopupLayer.csd" Type="Layer" />
+        <PlistImageFolder Image="ui_characters.png" PListFile="ui_characters.plist" Name=".ui_characters_PList.Dir">
+          <PlistImageFile Name="bat.png" Key="bat.png" />
+          <PlistImageFile Name="chr_child.png" Key="chr_child.png" />
+          <PlistImageFile Name="chr_gumi.png" Key="chr_gumi.png" />
+          <PlistImageFile Name="chr_jp.png" Key="chr_jp.png" />
+          <PlistImageFile Name="chr_knight.png" Key="chr_knight.png" />
+          <PlistImageFile Name="chr_man.png" Key="chr_man.png" />
+          <PlistImageFile Name="chr_nurse.png" Key="chr_nurse.png" />
+          <PlistImageFile Name="chr_old.png" Key="chr_old.png" />
+          <PlistImageFile Name="chr_rain.png" Key="chr_rain.png" />
+          <PlistImageFile Name="chr_sword.png" Key="chr_sword.png" />
+          <PlistImageFile Name="rat.png" Key="rat.png" />
+          <PlistImageFile Name="slime.png" Key="slime.png" />
+          <PlistImageFile Name="snake.png" Key="snake.png" />
+          <PlistImageFile Name="spider.png" Key="spider.png" />
+        </PlistImageFolder>
       </RootFolder>
     </Group>
   </SolutionFolder>

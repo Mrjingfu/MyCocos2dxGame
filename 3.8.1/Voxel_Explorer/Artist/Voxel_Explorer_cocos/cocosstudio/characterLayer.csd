@@ -139,15 +139,15 @@
           <AbstractNodeData Name="role_frame" ActionTag="1765038179" Tag="136" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="16.1250" RightMargin="163.8750" TopMargin="30.1780" BottomMargin="239.8220" TouchEnable="True" BackColorAlpha="102" ComboBoxIndex="1" ColorAngle="90.0000" ctype="PanelObjectData">
             <Size X="70.0000" Y="70.0000" />
             <Children>
-              <AbstractNodeData Name="role_icon" ActionTag="-1057933375" Tag="135" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="6.0000" RightMargin="6.0000" TopMargin="-19.0000" BottomMargin="-19.0000" Scale9Width="102" Scale9Height="140" ctype="ImageViewObjectData">
-                <Size X="188.0000" Y="238.0000" />
+              <AbstractNodeData Name="role_icon" ActionTag="-1057933375" Tag="135" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="-16.0000" RightMargin="-16.0000" TopMargin="-35.0000" BottomMargin="-35.0000" Scale9Width="102" Scale9Height="140" ctype="ImageViewObjectData">
+                <Size X="102.0000" Y="140.0000" />
                 <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
                 <Position X="35.0000" Y="35.0000" />
-                <Scale ScaleX="0.2500" ScaleY="0.2500" />
+                <Scale ScaleX="0.5000" ScaleY="0.5000" />
                 <CColor A="255" R="255" G="255" B="255" />
                 <PrePosition X="0.5000" Y="0.5000" />
-                <PreSize X="0.8545" Y="1.3222" />
-                <FileData Type="PlistSubImage" Path="chr_sword.png" Plist="ui_sprite.plist" />
+                <PreSize X="1.4571" Y="2.0000" />
+                <FileData Type="PlistSubImage" Path="chr_sword.png" Plist="ui_characters.plist" />
               </AbstractNodeData>
             </Children>
             <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
@@ -161,7 +161,7 @@
             <EndColor A="255" R="255" G="255" B="255" />
             <ColorVector ScaleY="1.0000" />
           </AbstractNodeData>
-          <AbstractNodeData Name="grid_frame" ActionTag="1168626271" Tag="11" IconVisible="False" PercentWidthEnable="True" PercentWidthEnabled="True" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" TopMargin="185.0000" TouchEnable="True" BackColorAlpha="102" ComboBoxIndex="1" ColorAngle="90.0000" Scale9Enable="True" LeftEage="5" RightEage="5" TopEage="5" BottomEage="5" ctype="PanelObjectData">
+          <AbstractNodeData Name="grid_frame" ActionTag="-2032497246" Tag="187" IconVisible="False" PercentWidthEnable="True" PercentWidthEnabled="True" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" TopMargin="185.0000" Scale9Enable="True" LeftEage="5" RightEage="5" TopEage="5" BottomEage="5" Scale9OriginX="5" Scale9OriginY="5" Scale9Width="4" Scale9Height="4" ctype="ImageViewObjectData">
             <Size X="250.0000" Y="155.0000" />
             <AnchorPoint ScaleX="0.5000" />
             <Position X="125.0000" />
@@ -170,10 +170,6 @@
             <PrePosition X="0.5000" />
             <PreSize X="1.0000" Y="0.4559" />
             <FileData Type="PlistSubImage" Path="ui_frame_3.png" Plist="ui_sprite.plist" />
-            <SingleColor A="255" R="150" G="200" B="255" />
-            <FirstColor A="255" R="150" G="200" B="255" />
-            <EndColor A="255" R="255" G="255" B="255" />
-            <ColorVector ScaleY="1.0000" />
           </AbstractNodeData>
           <AbstractNodeData Name="equip_frame" ActionTag="1711411220" Tag="12" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="2.0000" RightMargin="2.0000" TopMargin="127.7460" BottomMargin="162.2540" TouchEnable="True" BackColorAlpha="102" ColorAngle="90.0000" ctype="PanelObjectData">
             <Size X="246.0000" Y="50.0000" />
@@ -236,17 +232,17 @@
             <OutlineColor A="255" R="255" G="0" B="0" />
             <ShadowColor A="255" R="110" G="110" B="110" />
           </AbstractNodeData>
-          <AbstractNodeData Name="prop_btn_change_bag" ActionTag="-1171269908" Tag="64" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="192.0000" RightMargin="8.0000" TopMargin="338.0000" BottomMargin="-23.0000" TouchEnable="True" FontSize="9" ButtonText="change" Scale9Enable="True" LeftEage="5" RightEage="5" TopEage="5" BottomEage="5" Scale9OriginX="5" Scale9OriginY="5" Scale9Width="6" Scale9Height="6" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="ButtonObjectData">
-            <Size X="50.0000" Y="25.0000" />
+          <AbstractNodeData Name="prop_btn_change_bag" ActionTag="-1171269908" Tag="64" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="192.0000" RightMargin="22.0000" TopMargin="337.9940" BottomMargin="-17.9940" TouchEnable="True" FontSize="9" ButtonText="change" Scale9Enable="True" LeftEage="4" RightEage="4" TopEage="4" BottomEage="4" Scale9OriginX="4" Scale9OriginY="4" Scale9Width="5" Scale9Height="5" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="ButtonObjectData">
+            <Size X="36.0000" Y="20.0000" />
             <AnchorPoint ScaleY="1.0000" />
             <Position X="192.0000" Y="2.0060" />
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
             <CColor A="255" R="255" G="255" B="255" />
             <PrePosition X="0.7680" Y="0.0059" />
-            <PreSize X="0.2000" Y="0.0735" />
+            <PreSize X="0.1440" Y="0.0588" />
             <FontResource Type="Normal" Path="fonts/04B_03.TTF" Plist="" />
             <TextColor A="255" R="30" G="144" B="255" />
-            <NormalFileData Type="PlistSubImage" Path="ui_frame_10.png" Plist="ui_sprite.plist" />
+            <NormalFileData Type="PlistSubImage" Path="ui_frame_6.png" Plist="ui_sprite.plist" />
             <OutlineColor A="255" R="255" G="0" B="0" />
             <ShadowColor A="255" R="110" G="110" B="110" />
           </AbstractNodeData>
