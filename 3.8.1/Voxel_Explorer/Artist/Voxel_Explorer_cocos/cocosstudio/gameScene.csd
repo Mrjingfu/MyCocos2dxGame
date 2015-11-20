@@ -300,15 +300,15 @@
                   <AbstractNodeData Name="btn_role" ActionTag="-1758786136" Tag="152" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" RightMargin="80.0000" TopMargin="0.9980" BottomMargin="19.0020" Scale9Enable="True" LeftEage="5" RightEage="5" TopEage="5" BottomEage="5" Scale9OriginX="5" Scale9OriginY="5" Scale9Width="6" Scale9Height="6" ctype="ImageViewObjectData">
                     <Size X="50.0000" Y="50.0000" />
                     <Children>
-                      <AbstractNodeData Name="role_icon" ActionTag="-1382797926" Tag="165" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="-25.0000" RightMargin="-27.0000" TopMargin="-45.0000" BottomMargin="-45.0000" Scale9Width="102" Scale9Height="140" ctype="ImageViewObjectData">
+                      <AbstractNodeData Name="role_icon" ActionTag="-1382797926" Tag="165" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="-26.0000" RightMargin="-26.0000" TopMargin="-45.0000" BottomMargin="-45.0000" Scale9Width="102" Scale9Height="140" ctype="ImageViewObjectData">
                         <Size X="102.0000" Y="140.0000" />
                         <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-                        <Position X="26.0000" Y="25.0000" />
-                        <Scale ScaleX="0.3000" ScaleY="0.3000" />
+                        <Position X="25.0000" Y="25.0000" />
+                        <Scale ScaleX="0.3500" ScaleY="0.3500" />
                         <CColor A="255" R="255" G="255" B="255" />
-                        <PrePosition X="0.5200" Y="0.5000" />
+                        <PrePosition X="0.5000" Y="0.5000" />
                         <PreSize X="2.0400" Y="2.8000" />
-                        <FileData Type="PlistSubImage" Path="chr_sword.png" Plist="ui_sprite.plist" />
+                        <FileData Type="PlistSubImage" Path="chr_sword.png" Plist="ui_characters.plist" />
                       </AbstractNodeData>
                     </Children>
                     <AnchorPoint ScaleY="0.5000" />
@@ -335,7 +335,7 @@
                       <AbstractNodeData Name="progress_role_blood_maxnum" ActionTag="1380879054" Tag="33" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="35.6000" RightMargin="-52.6000" TopMargin="-12.5000" BottomMargin="-12.5000" FontSize="36" LabelText="/100" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
                         <Size X="87.0000" Y="36.0000" />
                         <AnchorPoint ScaleY="0.5000" />
-                        <Position X="35.6000" Y="5.5000" />
+                        <Position X="35.6020" Y="5.5000" />
                         <Scale ScaleX="0.2000" ScaleY="0.2000" />
                         <CColor A="255" R="255" G="255" B="255" />
                         <PrePosition X="0.5086" Y="0.5000" />
@@ -381,7 +381,7 @@
                       <AbstractNodeData Name="progress_role_margic_maxnum" ActionTag="-600282028" Tag="35" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="35.6000" RightMargin="-52.6000" TopMargin="-12.5000" BottomMargin="-12.5000" FontSize="36" LabelText="/100" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
                         <Size X="87.0000" Y="36.0000" />
                         <AnchorPoint ScaleY="0.5000" />
-                        <Position X="35.6000" Y="5.5000" />
+                        <Position X="35.6020" Y="5.5000" />
                         <Scale ScaleX="0.2000" ScaleY="0.2000" />
                         <CColor A="255" R="255" G="255" B="255" />
                         <PrePosition X="0.5086" Y="0.5000" />
@@ -465,15 +465,15 @@
                   <AbstractNodeData Name="btn_monster" ActionTag="-546381949" Tag="43" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="79.5450" RightMargin="0.4550" TopMargin="0.9210" BottomMargin="19.0790" Scale9Enable="True" LeftEage="5" RightEage="5" TopEage="5" BottomEage="5" Scale9OriginX="5" Scale9OriginY="5" Scale9Width="6" Scale9Height="6" ctype="ImageViewObjectData">
                     <Size X="50.0000" Y="50.0000" />
                     <Children>
-                      <AbstractNodeData Name="monster_icon" ActionTag="182389062" Tag="166" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="-25.0000" RightMargin="-27.0000" TopMargin="-45.0000" BottomMargin="-45.0000" Scale9Width="102" Scale9Height="140" ctype="ImageViewObjectData">
-                        <Size X="102.0000" Y="140.0000" />
+                      <AbstractNodeData Name="monster_icon" ActionTag="182389062" Tag="166" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="-39.0000" RightMargin="-39.0000" TopMargin="-7.0000" BottomMargin="-7.0000" Scale9Width="128" Scale9Height="64" ctype="ImageViewObjectData">
+                        <Size X="128.0000" Y="64.0000" />
                         <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-                        <Position X="26.0000" Y="25.0000" />
-                        <Scale ScaleX="0.3000" ScaleY="0.3000" />
+                        <Position X="25.0000" Y="25.0000" />
+                        <Scale ScaleX="0.3500" ScaleY="0.3500" />
                         <CColor A="255" R="255" G="255" B="255" />
-                        <PrePosition X="0.5200" Y="0.5000" />
-                        <PreSize X="2.0400" Y="2.8000" />
-                        <FileData Type="PlistSubImage" Path="chr_sword.png" Plist="ui_sprite.plist" />
+                        <PrePosition X="0.5000" Y="0.5000" />
+                        <PreSize X="2.5600" Y="1.2800" />
+                        <FileData Type="PlistSubImage" Path="spider.png" Plist="ui_characters.plist" />
                       </AbstractNodeData>
                     </Children>
                     <AnchorPoint ScaleX="1.0000" ScaleY="0.5000" />
@@ -500,7 +500,7 @@
                       <AbstractNodeData Name="progress_monster_blood_maxnum" ActionTag="-91454309" Tag="55" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="36.5020" RightMargin="-53.5020" TopMargin="-12.5000" BottomMargin="-12.5000" FontSize="36" LabelText="/100" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
                         <Size X="87.0000" Y="36.0000" />
                         <AnchorPoint ScaleY="0.5000" />
-                        <Position X="36.5020" Y="5.5000" />
+                        <Position X="36.5050" Y="5.5000" />
                         <Scale ScaleX="0.2000" ScaleY="0.2000" />
                         <CColor A="255" R="255" G="255" B="255" />
                         <PrePosition X="0.5215" Y="0.5000" />
@@ -546,7 +546,7 @@
                       <AbstractNodeData Name="progress_monster_margic_maxnum" ActionTag="528662342" Tag="83" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="35.6001" RightMargin="-38.6001" TopMargin="-12.5000" BottomMargin="-12.5000" FontSize="36" LabelText="/??" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
                         <Size X="73.0000" Y="36.0000" />
                         <AnchorPoint ScaleY="0.5000" />
-                        <Position X="35.6001" Y="5.5000" />
+                        <Position X="35.6020" Y="5.5000" />
                         <Scale ScaleX="0.2000" ScaleY="0.2000" />
                         <CColor A="255" R="255" G="255" B="255" />
                         <PrePosition X="0.5086" Y="0.5000" />
@@ -630,7 +630,7 @@
                   <AbstractNodeData Name="game_level_info_name" ActionTag="112439560" Tag="92" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="-106.9995" RightMargin="18.9995" TopMargin="-9.5012" BottomMargin="-15.4988" FontSize="36" LabelText="洞窟 6" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
                     <Size X="106.0000" Y="43.0000" />
                     <AnchorPoint ScaleX="1.0000" ScaleY="0.5000" />
-                    <Position X="-0.9995" Y="6.0012" />
+                    <Position X="-0.9990" Y="6.0012" />
                     <Scale ScaleX="0.3000" ScaleY="0.3000" />
                     <CColor A="255" R="255" G="255" B="255" />
                     <PrePosition X="-0.0555" Y="0.3334" />

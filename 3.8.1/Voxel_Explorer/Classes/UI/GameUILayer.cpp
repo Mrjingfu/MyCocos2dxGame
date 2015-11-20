@@ -693,6 +693,7 @@ void GameUILayer::onEventUpdateMonsterProp(cocos2d::EventCustom *sender)
         }else{
             m_pMonsterName->setColor(PopupUILayerManager::getInstance()->getTipsColor(TIP_DEFAULT));
         }
+        
          m_pMonsterName->setString(monsterName);
     }
 }

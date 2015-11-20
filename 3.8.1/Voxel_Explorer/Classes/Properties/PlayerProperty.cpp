@@ -74,8 +74,9 @@ PlayerProperty::~PlayerProperty()
 {
     std::vector<PickableItemProperty*>::iterator iter;
     for (iter = m_Bag.begin(); iter != m_Bag.end(); iter++) {
+        PickableItemProperty* property = static_cast<PickableItemProperty*>(*iter);
+        CC_SAFE_DELETE(property);
         m_Bag.erase(iter);
-        CC_SAFE_DELETE((*iter));
     }
     m_Bag.clear();
 }
@@ -663,8 +664,9 @@ bool PlayerProperty::removeStackableItemFromBag(PickableItem::PickableItemType t
                 continue;
             if((*iter)->getCount() == count)
             {
+                PickableItemProperty* property = static_cast<PickableItemProperty*>(*iter);
+                CC_SAFE_DELETE(property);
                 m_Bag.erase(iter);
-                CC_SAFE_DELETE((*iter));
                 return true;
             }
             else if((*iter)->getCount() > count)
@@ -684,8 +686,9 @@ bool PlayerProperty::removeItemFromBag(CChaosNumber id)
     for (iter = m_Bag.begin(); iter != m_Bag.end(); iter++) {
         if((*iter) != nullptr && (*iter)->getInstanceID() == id.GetLongValue())
         {
+            PickableItemProperty* property = static_cast<PickableItemProperty*>(*iter);
+            CC_SAFE_DELETE(property);
             m_Bag.erase(iter);
-            CC_SAFE_DELETE((*iter));
             return true;
         }
     }

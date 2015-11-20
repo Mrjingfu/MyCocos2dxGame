@@ -22,7 +22,7 @@
         <key>dataFormat</key>
         <string>cocos2d</string>
         <key>textureFileName</key>
-        <filename>../../Resources/ui/ui_prop.png</filename>
+        <filename>../../Resources/ui/ui_characters.png</filename>
         <key>flipPVR</key>
         <false/>
         <key>ditherType</key>
@@ -54,9 +54,9 @@
         <key>maxTextureSize</key>
         <QSize>
             <key>width</key>
-            <int>128</int>
+            <int>512</int>
             <key>height</key>
-            <int>256</int>
+            <int>512</int>
         </QSize>
         <key>fixedTextureSize</key>
         <QSize>
@@ -99,7 +99,7 @@
             <key>packageName</key>
             <string>Texture</string>
             <key>javaFileName</key>
-            <filename>../../Resources/ui/ui_prop.java</filename>
+            <filename>../../Resources/ui/ui_characters.java</filename>
             <key>wrap</key>
             <struct type="AndEngineWrap">
                 <key>s</key>
@@ -111,7 +111,7 @@
             <enum type="AndEngine::MagFilter">MagLinear</enum>
         </struct>
         <key>dataFileName</key>
-        <filename>../../Resources/ui/ui_prop.plist</filename>
+        <filename>../../Resources/ui/ui_characters.plist</filename>
         <key>multiPack</key>
         <false/>
         <key>mainExtension</key>
@@ -147,7 +147,22 @@
             <false/>
         </struct>
         <key>fileList</key>
-        <array/>
+        <array>
+            <filename>../ui/ui_character/bat.png</filename>
+            <filename>../ui/ui_character/chr_child.png</filename>
+            <filename>../ui/ui_character/chr_gumi.png</filename>
+            <filename>../ui/ui_character/chr_jp.png</filename>
+            <filename>../ui/ui_character/chr_knight.png</filename>
+            <filename>../ui/ui_character/chr_man.png</filename>
+            <filename>../ui/ui_character/chr_nurse.png</filename>
+            <filename>../ui/ui_character/chr_old.png</filename>
+            <filename>../ui/ui_character/chr_rain.png</filename>
+            <filename>../ui/ui_character/chr_sword.png</filename>
+            <filename>../ui/ui_character/rat.png</filename>
+            <filename>../ui/ui_character/slime.png</filename>
+            <filename>../ui/ui_character/snake.png</filename>
+            <filename>../ui/ui_character/spider.png</filename>
+        </array>
         <key>ignoreFileList</key>
         <array/>
         <key>replaceList</key>
