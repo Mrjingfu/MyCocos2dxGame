@@ -25,6 +25,7 @@ public:
     void setItemEquipMark(cocos2d::Vec2 pt);
     void removeItems();
     int  getItemId  (int index)const;
+    void setLayerContentSize(const cocos2d::Size &contentSize);
 protected:
     cocos2d::ui::Layout* m_pItemImgLayer;
     cocos2d::ui::Layout* m_pEquipMarkLayer;

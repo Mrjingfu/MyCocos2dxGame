@@ -190,15 +190,18 @@ bool RolePopupUI::initUi()
     m_pGridView->setContentSize(cocos2d::Size(m_pGridFrame->getContentSize().width-10,m_pGridFrame->getContentSize().height-7));
     m_pGridView->setCol(5);
     m_pGridView->setPosition(m_pGridFrame->getContentSize()*0.5);
-    m_pGridView->setScrollBarEnabled(false);
+//    m_pGridView->setScrollBarEnabled(false);
+    m_pGridView->setScrollBarWidth(5);
+    m_pGridView->setScrollBarColor(Color3B::WHITE);
+    m_pGridView->setScrollBarPositionFromCornerForVertical(cocos2d::Vec2(0,0));
     m_pGridView->setItemsMargin(cocos2d::Size(1,3.5));
     m_pGridView->setFrameMargin(cocos2d::Size(7,4));
     m_pGridView->addEventListener(CC_CALLBACK_2(RolePopupUI::selectItemEvent, this));
     m_pGridFrame->addChild(m_pGridView);
 
     m_BagLayer = BagLayerUI::create(m_pGridView->getContentSize());
-    m_BagLayer->setPosition(m_pGridView->getPosition());
-    m_pGridFrame->addChild(m_BagLayer);
+    m_BagLayer->setPosition(m_pGridView->getContentSize()*0.5);
+    m_pGridView->addChildLayer(m_BagLayer,40);
     
     m_pBtnClose = ui::Button::create("ui_btn_back_1.png","","",TextureResType::PLIST);
     m_pBtnClose->setScale9Enabled(true);
@@ -223,6 +226,8 @@ bool RolePopupUI::initUi()
 }
 void RolePopupUI::onClickChnageBag(Ref* ref)
 {
+    PlayerProperty::getInstance()->extendBagSpace();
+    
     CHECK_ACTION(ref);
     for (int j =0; j<5*3; j++) {
         ImageView* itemui = ImageView::create();
@@ -230,9 +235,14 @@ void RolePopupUI::onClickChnageBag(Ref* ref)
         itemui->setScale9Enabled(true);
         itemui->setContentSize(cocos2d::Size(45,45));
         itemui->loadTexture("ui_frame_5.png",TextureResType::PLIST);
+        itemui->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
         m_pGridView->pushBackCustomItem(itemui);
     }
+    m_pGridView->forceDoLayout();
+    m_BagLayer->setLayerContentSize(m_pGridView->getInnerContainerSize());
+    m_BagLayer->setPosition(m_pGridView->getInnerContainerSize()*0.5);
     m_pGridView->resume();
+    updateItems();
     m_pGridView->scrollToBottom(0.8,false);
 }
 void RolePopupUI::onClickColse(Ref* ref)
@@ -245,7 +255,6 @@ void RolePopupUI::onClickColse(Ref* ref)
     {
         closePopup();
     }
-    
 }
 
 void RolePopupUI::updateItems()

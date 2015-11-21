@@ -328,6 +328,7 @@ void GameUILayer::onTouchEnded(cocos2d::Touch *touch, cocos2d::Event *event)
         {
             onClickDistTipsFrame(nullptr);
             infoUi->setDarkLayerVisble(false);
+            infoUi->setInfoData(iconRes, desc);
         }
         CCLOG("Pick Desc : %s, Icon Res: %s", desc.c_str(), iconRes.c_str());
     }
@@ -643,7 +644,7 @@ void GameUILayer::onEventUpdateMonsterProp(cocos2d::EventCustom *sender)
         }else{
             m_pMonsterName->setColor(PopupUILayerManager::getInstance()->getTipsColor(TIP_DEFAULT));
         }
-        m_pMonsterIcon->loadTexture(LevelResourceManager::LevelResourceManager::getInstance()->getMonsterIconRes(MONSTER_MODEL_NAMES[monster->getMonsterType()]),TextureResType::PLIST);
+        m_pMonsterIcon->loadTexture(monster->getIconRes(),TextureResType::PLIST);
         m_pMonsterIcon->setScale(0.35);
         m_pMonsterIcon->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
          m_pMonsterName->setString(monsterName);
@@ -711,6 +712,7 @@ void GameUILayer::setMsgItem(std::string msg,cocos2d::Color3B msgColor )
     m_pListMsgs->pushBackCustomItem( noteui);
     if ( m_pListMsgs->getItems().size()*noteui->getContentSize().height > m_pListMsgs->getContentSize().height) {
 //        m_pListMsgs->scrollToBottom(0.5,false);
+        m_pListMsgs->forceDoLayout();
         m_pListMsgs->jumpToBottom();
     }
 }
@@ -818,6 +820,7 @@ void GameUILayer::onClickMsg(cocos2d::Ref *ref)
     }else
     {
         m_pMsgFrame->setVisible(true);
+        m_pListMsgs->forceDoLayout();
         m_pListMsgs->scrollToBottom(0.5,false);
     }
    

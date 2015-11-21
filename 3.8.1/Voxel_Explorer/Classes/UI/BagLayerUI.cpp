@@ -66,6 +66,24 @@ BagLayerUI* BagLayerUI::create(cocos2d::Size size)
     CC_SAFE_DELETE(itemUi);
     return nullptr;
 }
+void BagLayerUI::setLayerContentSize(const cocos2d::Size &contentSize)
+{
+    setContentSize(contentSize);
+    
+    if (m_pItemImgLayer) {
+         m_pItemImgLayer->setContentSize(contentSize);
+        m_pItemImgLayer->setPosition(getContentSize()*0.5);
+    }
+    if (m_pItemCountLayer) {
+        m_pItemCountLayer->setContentSize(contentSize);
+        m_pItemCountLayer->setPosition(getContentSize()*0.5);
+    }
+    
+    if (m_pEquipMarkLayer) {
+        m_pEquipMarkLayer->setContentSize(contentSize);
+        m_pEquipMarkLayer->setPosition(getContentSize()*0.5);
+    }
+}
 void BagLayerUI::addItem(int index,int itemId,cocos2d::Vec2 pt,std::string itemIcon)
 {
     m_items.insert(std::pair<int, int>(index,itemId));
