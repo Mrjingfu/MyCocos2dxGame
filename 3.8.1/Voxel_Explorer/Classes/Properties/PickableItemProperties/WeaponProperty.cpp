@@ -47,13 +47,13 @@ WeaponProperty::WeaponProperty(unsigned int instanceID, PickableItem::PickableIt
     m_strBeforeIndentifyDesc = UtilityHelper::getLocalString(PICKABLE_ITEM_NAMES[type] + "_BIDESC");
     m_strPropertyTypeName = UtilityHelper::getLocalString(PICKABLE_ITEM_PROPERTY_TYPE_NAMES[m_PropertyType]);
     
-    if(type > PickableItem::PIT_DAGGER_DAGGER && type < PickableItem::PIT_DAGGER_PRO_RUBYDAGGER)
+    if(type >= PickableItem::PIT_DAGGER_DAGGER && type <= PickableItem::PIT_DAGGER_PRO_RUBYDAGGER)
         m_WPType = WPT_DAGGER;
-    else if(type > PickableItem::PIT_AXE_HATCHET && type < PickableItem::PIT_AXE_PRO_DOUBLEBITAX)
+    else if(type >= PickableItem::PIT_AXE_HATCHET && type <= PickableItem::PIT_AXE_PRO_DOUBLEBITAX)
         m_WPType = WPT_AXE;
-    else if(type > PickableItem::PIT_SWORD_SWORD && type < PickableItem::PIT_SWORD_PRO_CRYSTALSWORD)
+    else if(type >= PickableItem::PIT_SWORD_SWORD && type <= PickableItem::PIT_SWORD_PRO_CRYSTALSWORD)
         m_WPType = WPT_SWORD;
-    else if(type > PickableItem::PIT_MACE_ROLLINGPIN && type < PickableItem::PIT_MACE_PRO_SLEDGEHAMMER)
+    else if(type >= PickableItem::PIT_MACE_ROLLINGPIN && type <= PickableItem::PIT_MACE_PRO_SLEDGEHAMMER)
         m_WPType = WPT_MACE;
     else
         m_WPType = WPT_UNKNOWN;
@@ -402,6 +402,7 @@ void WeaponProperty::adjustByLevel()
             }
         }
     }
+    m_nValueCopper = 50 * (int)(m_AddedEffectList.size()) + m_nLevel*5;
 }
 void WeaponProperty::handleIdentify()
 {

@@ -25,6 +25,7 @@
 #include "BasePortal.hpp"
 #include "Npc.hpp"
 #include "UtilityHelper.h"
+#include "GameScene.h"
 USING_NS_CC;
 
 VoxelExplorer* g_pVoxelExplorerInstance = nullptr;
@@ -785,15 +786,26 @@ void VoxelExplorer::handleUpstairs()
 {
     if(RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nCurrentDepth > 1)
     {
+        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_GO_DOWNSTAIRS);
     }
     else
     {
+        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_GO_UPSTAIRS_FORBIDDEN);
     }
 }
 void VoxelExplorer::handleDownstairs()
 {
     if(RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nCurrentDepth < RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nTotalNum)
     {
+        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_GO_DOWNSTAIRS);
+        RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nCurrentDepth += 1;
+        auto scene = GameScene::createScene();
+        Director::getInstance()->replaceScene(scene);
+    }
+    else
+    {
+        ///加载boss房间
+        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_GO_BOSSROOM);
     }
 }
 

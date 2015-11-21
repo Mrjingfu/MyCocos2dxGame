@@ -260,6 +260,8 @@ void SecondWeaponProperty::adjustByLevel()
                 m_nAddedArmorClass = cocos2d::random(-50, -40);
         }
     }
+    
+    m_nValueCopper = 50 * (int)(m_AddedEffectList.size()) + m_nLevel*5;
 }
 void SecondWeaponProperty::handleIdentify()
 {
