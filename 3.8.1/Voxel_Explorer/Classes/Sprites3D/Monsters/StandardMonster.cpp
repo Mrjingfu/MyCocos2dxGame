@@ -12,7 +12,7 @@ USING_NS_CC;
 
 StandardMonster* StandardMonster::create(BaseMonster::MonsterType type)
 {
-    std::string model = LevelResourceManager::getInstance()->getMonsterRes(MONSTER_MODEL_NAMES[type]);
+    std::string model = LevelResourceManager::getInstance()->getMonsterModelRes(MONSTER_MODEL_NAMES[type]);
     auto monster = new (std::nothrow) StandardMonster();
     if (monster && monster->initWithFile(model))
     {

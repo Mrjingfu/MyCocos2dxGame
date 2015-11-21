@@ -570,9 +570,9 @@ bool PlayerProperty::usePotion(CChaosNumber id)
             default:
                 break;
         }
+        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_USE_POTION, potionsProperty);
         if(potionsProperty->getCount() <= 0)
             removeItemFromBag(id);
-        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_USE_POTION, potionsProperty);
         return true;
     }
     return false;

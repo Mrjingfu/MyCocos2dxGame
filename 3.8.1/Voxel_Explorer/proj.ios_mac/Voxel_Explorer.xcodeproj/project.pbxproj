@@ -187,6 +187,8 @@
 		EC00DD5C1BD66586009BC378 /* MenuUILayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC00DD571BD66586009BC378 /* MenuUILayer.cpp */; };
 		EC00DD5F1BD665A6009BC378 /* MenuScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC00DD5D1BD665A6009BC378 /* MenuScene.cpp */; };
 		EC00DD601BD665A6009BC378 /* MenuScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC00DD5D1BD665A6009BC378 /* MenuScene.cpp */; };
+		EC0F15991BFF3FAC000C11DD /* BagLayerUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC0F15971BFF3FAC000C11DD /* BagLayerUI.cpp */; };
+		EC0F159A1BFF3FAC000C11DD /* BagLayerUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC0F15971BFF3FAC000C11DD /* BagLayerUI.cpp */; };
 		EC5A65211BE8BF6C006A0D2B /* NoteUi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC5A651F1BE8BF6C006A0D2B /* NoteUi.cpp */; };
 		EC5A65221BE8BF6C006A0D2B /* NoteUi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC5A651F1BE8BF6C006A0D2B /* NoteUi.cpp */; };
 		EC602AAC1BF46A2D00484D42 /* AchievementManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC602AAA1BF46A2D00484D42 /* AchievementManager.cpp */; };
@@ -205,8 +207,6 @@
 		EC67165E1BCE7F5F00C81CFC /* ui in Resources */ = {isa = PBXBuildFile; fileRef = EC6716581BCE7F5F00C81CFC /* ui */; };
 		EC7F92D31BCF9ED200B26C6C /* HueSprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC7F92D11BCF9ED200B26C6C /* HueSprite.cpp */; };
 		EC7F92D41BCF9ED200B26C6C /* HueSprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC7F92D11BCF9ED200B26C6C /* HueSprite.cpp */; };
-		ECA2290B1BD9DE1D008E03BB /* ItemUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECA229091BD9DE1D008E03BB /* ItemUI.cpp */; };
-		ECA2290C1BD9DE1D008E03BB /* ItemUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECA229091BD9DE1D008E03BB /* ItemUI.cpp */; };
 		ECD10D6C1BD0967B007DD888 /* CloseCallback.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECD10D631BD0967B007DD888 /* CloseCallback.cpp */; };
 		ECD10D6D1BD0967B007DD888 /* CloseCallback.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECD10D631BD0967B007DD888 /* CloseCallback.cpp */; };
 		ECD10D6E1BD0967B007DD888 /* PopupUILayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECD10D661BD0967B007DD888 /* PopupUILayer.cpp */; };
@@ -430,6 +430,8 @@
 		EC00DD581BD66586009BC378 /* MenuUILayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuUILayer.h; sourceTree = "<group>"; };
 		EC00DD5D1BD665A6009BC378 /* MenuScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MenuScene.cpp; sourceTree = "<group>"; };
 		EC00DD5E1BD665A6009BC378 /* MenuScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuScene.h; sourceTree = "<group>"; };
+		EC0F15971BFF3FAC000C11DD /* BagLayerUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BagLayerUI.cpp; sourceTree = "<group>"; };
+		EC0F15981BFF3FAC000C11DD /* BagLayerUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BagLayerUI.h; sourceTree = "<group>"; };
 		EC5A651F1BE8BF6C006A0D2B /* NoteUi.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NoteUi.cpp; sourceTree = "<group>"; };
 		EC5A65201BE8BF6C006A0D2B /* NoteUi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteUi.h; sourceTree = "<group>"; };
 		EC602AAA1BF46A2D00484D42 /* AchievementManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AchievementManager.cpp; sourceTree = "<group>"; };
@@ -447,8 +449,6 @@
 		EC6716581BCE7F5F00C81CFC /* ui */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ui; sourceTree = "<group>"; };
 		EC7F92D11BCF9ED200B26C6C /* HueSprite.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HueSprite.cpp; sourceTree = "<group>"; };
 		EC7F92D21BCF9ED200B26C6C /* HueSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HueSprite.h; sourceTree = "<group>"; };
-		ECA229091BD9DE1D008E03BB /* ItemUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ItemUI.cpp; sourceTree = "<group>"; };
-		ECA2290A1BD9DE1D008E03BB /* ItemUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemUI.h; sourceTree = "<group>"; };
 		ECD10D631BD0967B007DD888 /* CloseCallback.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloseCallback.cpp; sourceTree = "<group>"; };
 		ECD10D641BD0967B007DD888 /* CloseCallback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloseCallback.h; sourceTree = "<group>"; };
 		ECD10D651BD0967B007DD888 /* PopupType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopupType.h; sourceTree = "<group>"; };
@@ -928,6 +928,8 @@
 		ECD10D621BD0967B007DD888 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				EC0F15971BFF3FAC000C11DD /* BagLayerUI.cpp */,
+				EC0F15981BFF3FAC000C11DD /* BagLayerUI.h */,
 				ECD64A6F1BF1CD71008E04D7 /* InfoPopupUI.cpp */,
 				ECD64A701BF1CD71008E04D7 /* InfoPopupUI.h */,
 				ECECACC51BE7353700B14FFC /* DeadPopupUI.cpp */,
@@ -938,8 +940,6 @@
 				ECECACCA1BE7353700B14FFC /* ShopPopupUI.h */,
 				ECECACC01BE7351600B14FFC /* ItemPopupUI.cpp */,
 				ECECACC11BE7351600B14FFC /* ItemPopupUI.h */,
-				ECA229091BD9DE1D008E03BB /* ItemUI.cpp */,
-				ECA2290A1BD9DE1D008E03BB /* ItemUI.h */,
 				ECE1B9561BD8E6660035B4D9 /* RolePopupUI.cpp */,
 				ECE1B9571BD8E6660035B4D9 /* RolePopupUI.h */,
 				ECE1B9451BD8AC820035B4D9 /* TGridView.cpp */,
@@ -1143,7 +1143,6 @@
 				55338AD51BD878BF00EA316F /* StandardMonster.cpp in Sources */,
 				EC00DD591BD66586009BC378 /* GameUILayer.cpp in Sources */,
 				551E93C71BD51291009F788F /* MonsterProperty.cpp in Sources */,
-				ECA2290B1BD9DE1D008E03BB /* ItemUI.cpp in Sources */,
 				ECECACD11BE7353700B14FFC /* ShopPopupUI.cpp in Sources */,
 				55338AE21BD8926A00EA316F /* SkeletonKing.cpp in Sources */,
 				555B0D1D1BC51A2C0055FB6D /* Graph.cpp in Sources */,
@@ -1185,6 +1184,7 @@
 				55F81CC81BDB928F002EC075 /* MaterialProperty.cpp in Sources */,
 				55F81CCC1BDB92AC002EC075 /* QuestItemProperty.cpp in Sources */,
 				ECD10D701BD0967B007DD888 /* PopupUILayerManager.cpp in Sources */,
+				EC0F15991BFF3FAC000C11DD /* BagLayerUI.cpp in Sources */,
 				ECD10D6C1BD0967B007DD888 /* CloseCallback.cpp in Sources */,
 				551E93C51BD51291009F788F /* UserRecord.cpp in Sources */,
 				ECECACCF1BE7353700B14FFC /* PausePopupUI.cpp in Sources */,
@@ -1264,10 +1264,10 @@
 				ECE1B9481BD8AC820035B4D9 /* TGridView.cpp in Sources */,
 				551E93CC1BD51291009F788F /* PlayerProperty.cpp in Sources */,
 				551E93ED1BD512D3009F788F /* XXTEA.cpp in Sources */,
+				EC0F159A1BFF3FAC000C11DD /* BagLayerUI.cpp in Sources */,
 				551E93E71BD512D3009F788F /* md5.c in Sources */,
 				ECD10D6F1BD0967B007DD888 /* PopupUILayer.cpp in Sources */,
 				55F81CA21BDB208D002EC075 /* UseableItem.cpp in Sources */,
-				ECA2290C1BD9DE1D008E03BB /* ItemUI.cpp in Sources */,
 				55F4650F1BEAF76A00E1CC79 /* Pathfinder.cpp in Sources */,
 				555B0D1C1BC51A2C0055FB6D /* Door.cpp in Sources */,
 				55338AEF1BD892FC00EA316F /* ShadowDragon.cpp in Sources */,

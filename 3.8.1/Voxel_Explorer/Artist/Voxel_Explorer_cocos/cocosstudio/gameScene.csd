@@ -464,18 +464,6 @@
                 <Children>
                   <AbstractNodeData Name="btn_monster" ActionTag="-546381949" Tag="43" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="79.5450" RightMargin="0.4550" TopMargin="0.9210" BottomMargin="19.0790" Scale9Enable="True" LeftEage="5" RightEage="5" TopEage="5" BottomEage="5" Scale9OriginX="5" Scale9OriginY="5" Scale9Width="6" Scale9Height="6" ctype="ImageViewObjectData">
                     <Size X="50.0000" Y="50.0000" />
-                    <Children>
-                      <AbstractNodeData Name="monster_icon" ActionTag="182389062" Tag="166" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="-39.0000" RightMargin="-39.0000" TopMargin="-7.0000" BottomMargin="-7.0000" Scale9Width="128" Scale9Height="64" ctype="ImageViewObjectData">
-                        <Size X="128.0000" Y="64.0000" />
-                        <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-                        <Position X="25.0000" Y="25.0000" />
-                        <Scale ScaleX="0.3500" ScaleY="0.3500" />
-                        <CColor A="255" R="255" G="255" B="255" />
-                        <PrePosition X="0.5000" Y="0.5000" />
-                        <PreSize X="2.5600" Y="1.2800" />
-                        <FileData Type="PlistSubImage" Path="spider.png" Plist="ui_characters.plist" />
-                      </AbstractNodeData>
-                    </Children>
                     <AnchorPoint ScaleX="1.0000" ScaleY="0.5000" />
                     <Position X="129.5450" Y="44.0790" />
                     <Scale ScaleX="1.0000" ScaleY="1.0000" />
