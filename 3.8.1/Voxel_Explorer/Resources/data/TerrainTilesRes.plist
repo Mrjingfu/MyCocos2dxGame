@@ -60,51 +60,51 @@
 		<key>TTN_CHASM</key>
 		<string></string>
 		<key>TTN_STANDARD</key>
-		<string>tile_standard_1.png</string>
+		<string>tile_standard_2.png</string>
 		<key>TTN_WALL</key>
-		<string>tile_wall_1.png</string>
+		<string>tile_wall_2.png</string>
 		<key>TTN_ENTRANCE</key>
-		<string>tile_entrance_1.png</string>
+		<string>tile_entrance_2.png</string>
 		<key>TTN_EXIT</key>
-		<string>tile_exit_1.png</string>
+		<string>tile_exit_2.png</string>
 		<key>TTN_STANDARD_PORTAL</key>
-		<string>tile_standard_1.png</string>
+		<string>tile_standard_2.png</string>
 		<key>TTN_SMALL_PORTAL</key>
-		<string>tile_standard_1.png</string>
+		<string>tile_standard_2.png</string>
 		<key>TTN_TUNNEL</key>
-		<string>tile_tunnel_1.png</string>
+		<string>tile_tunnel_2.png</string>
 		<key>TTN_DOOR</key>
-		<string>tile_standard_1.png</string>
+		<string>tile_standard_2.png</string>
 		<key>TTN_OPENED_DOOR</key>
-		<string>tile_standard_1.png</string>
+		<string>tile_standard_2.png</string>
 		<key>TTN_LOCKED_DOOR</key>
-		<string>tile_standard_1.png</string>
+		<string>tile_standard_2.png</string>
 		<key>TTN_SECRET_DOOR</key>
-		<string>tile_standard_1.png</string>
+		<string>tile_standard_2.png</string>
 		<key>TTN_TOXIC_TRAP</key>
-		<string>tile_toxic_trap_1.png</string>
+		<string>tile_toxic_trap_2.png</string>
 		<key>TTN_HIDE_TOXIC_TRAP</key>
-		<string>tile_standard_1.png</string>
+		<string>tile_standard_2.png</string>
 		<key>TTN_FIRE_TRAP</key>
-		<string>tile_fire_trap_1.png</string>
+		<string>tile_fire_trap_2.png</string>
 		<key>TTN_HIDE_FIRE_TRAP</key>
-		<string>tile_standard_1.png</string>
+		<string>tile_standard_2.png</string>
 		<key>TTN_PARALYTIC_TRAP</key>
-		<string>tile_paralytic_trap_1.png</string>
+		<string>tile_paralytic_trap_2.png</string>
 		<key>TTN_HIDE_PARALYTIC_TRAP</key>
-		<string>tile_standard_1.png</string>
+		<string>tile_standard_2.png</string>
 		<key>TTN_GRIPPING_TRAP</key>
-		<string>tile_gripping_trap_1.png</string>
+		<string>tile_gripping_trap_2.png</string>
 		<key>TTN_HIDE_GRIPPING_TRAP</key>
-		<string>tile_standard_1.png</string>
+		<string>tile_standard_2.png</string>
 		<key>TTN_SUMMONING_TRAP</key>
-		<string>tile_summoning_trap_1.png</string>
+		<string>tile_summoning_trap_2.png</string>
 		<key>TTN_HIDE_SUMMONING_TRAP</key>
-		<string>tile_standard_1.png</string>
+		<string>tile_standard_2.png</string>
 		<key>TTN_WEAK_TRAP</key>
-		<string>tile_weak_trap_1.png</string>
+		<string>tile_weak_trap_2.png</string>
 		<key>TTN_HIDE_WEAK_TRAP</key>
-		<string>tile_standard_1.png</string>
+		<string>tile_standard_2.png</string>
 		<key>TTN_MAX</key>
 		<string></string>
 	</dict>
@@ -113,51 +113,51 @@
 		<key>TTN_CHASM</key>
 		<string></string>
 		<key>TTN_STANDARD</key>
-		<string>tile_standard_1.png</string>
+		<string>tile_standard_3.png</string>
 		<key>TTN_WALL</key>
-		<string>tile_wall_1.png</string>
+		<string>tile_wall_3.png</string>
 		<key>TTN_ENTRANCE</key>
-		<string>tile_entrance_1.png</string>
+		<string>tile_entrance_3.png</string>
 		<key>TTN_EXIT</key>
-		<string>tile_exit_1.png</string>
+		<string>tile_exit_3.png</string>
 		<key>TTN_STANDARD_PORTAL</key>
-		<string>tile_standard_1.png</string>
+		<string>tile_standard_3.png</string>
 		<key>TTN_SMALL_PORTAL</key>
-		<string>tile_standard_1.png</string>
+		<string>tile_standard_3.png</string>
 		<key>TTN_TUNNEL</key>
-		<string>tile_tunnel_1.png</string>
+		<string>tile_tunnel_3.png</string>
 		<key>TTN_DOOR</key>
-		<string>tile_standard_1.png</string>
+		<string>tile_standard_3.png</string>
 		<key>TTN_OPENED_DOOR</key>
-		<string>tile_standard_1.png</string>
+		<string>tile_standard_3.png</string>
 		<key>TTN_LOCKED_DOOR</key>
-		<string>tile_standard_1.png</string>
+		<string>tile_standard_3.png</string>
 		<key>TTN_SECRET_DOOR</key>
-		<string>tile_standard_1.png</string>
+		<string>tile_standard_3.png</string>
 		<key>TTN_TOXIC_TRAP</key>
-		<string>tile_toxic_trap_1.png</string>
+		<string>tile_toxic_trap_3.png</string>
 		<key>TTN_HIDE_TOXIC_TRAP</key>
-		<string>tile_standard_1.png</string>
+		<string>tile_standard_3.png</string>
 		<key>TTN_FIRE_TRAP</key>
-		<string>tile_fire_trap_1.png</string>
+		<string>tile_fire_trap_3.png</string>
 		<key>TTN_HIDE_FIRE_TRAP</key>
-		<string>tile_standard_1.png</string>
+		<string>tile_standard_3.png</string>
 		<key>TTN_PARALYTIC_TRAP</key>
-		<string>tile_paralytic_trap_1.png</string>
+		<string>tile_paralytic_trap_3.png</string>
 		<key>TTN_HIDE_PARALYTIC_TRAP</key>
-		<string>tile_standard_1.png</string>
+		<string>tile_standard_3.png</string>
 		<key>TTN_GRIPPING_TRAP</key>
-		<string>tile_gripping_trap_1.png</string>
+		<string>tile_gripping_trap_3.png</string>
 		<key>TTN_HIDE_GRIPPING_TRAP</key>
-		<string>tile_standard_1.png</string>
+		<string>tile_standard_3.png</string>
 		<key>TTN_SUMMONING_TRAP</key>
-		<string>tile_summoning_trap_1.png</string>
+		<string>tile_summoning_trap_3png</string>
 		<key>TTN_HIDE_SUMMONING_TRAP</key>
-		<string>tile_standard_1.png</string>
+		<string>tile_standard_3.png</string>
 		<key>TTN_WEAK_TRAP</key>
-		<string>tile_weak_trap_1.png</string>
+		<string>tile_weak_trap_3.png</string>
 		<key>TTN_HIDE_WEAK_TRAP</key>
-		<string>tile_standard_1.png</string>
+		<string>tile_standard_3.png</string>
 		<key>TTN_MAX</key>
 		<string></string>
 	</dict>
@@ -166,51 +166,51 @@
 		<key>TTN_CHASM</key>
 		<string></string>
 		<key>TTN_STANDARD</key>
-		<string>tile_standard_1.png</string>
+		<string>tile_standard_4.png</string>
 		<key>TTN_WALL</key>
-		<string>tile_wall_1.png</string>
+		<string>tile_wall_4.png</string>
 		<key>TTN_ENTRANCE</key>
-		<string>tile_entrance_1.png</string>
+		<string>tile_entrance_4.png</string>
 		<key>TTN_EXIT</key>
-		<string>tile_exit_1.png</string>
+		<string>tile_exit_4.png</string>
 		<key>TTN_STANDARD_PORTAL</key>
-		<string>tile_standard_1.png</string>
+		<string>tile_standard_4.png</string>
 		<key>TTN_SMALL_PORTAL</key>
-		<string>tile_standard_1.png</string>
+		<string>tile_standard_4.png</string>
 		<key>TTN_TUNNEL</key>
-		<string>tile_tunnel_1.png</string>
+		<string>tile_tunnel_4.png</string>
 		<key>TTN_DOOR</key>
-		<string>tile_standard_1.png</string>
+		<string>tile_standard_4.png</string>
 		<key>TTN_OPENED_DOOR</key>
-		<string>tile_standard_1.png</string>
+		<string>tile_standard_4.png</string>
 		<key>TTN_LOCKED_DOOR</key>
-		<string>tile_standard_1.png</string>
+		<string>tile_standard_4.png</string>
 		<key>TTN_SECRET_DOOR</key>
-		<string>tile_standard_1.png</string>
+		<string>tile_standard_4.png</string>
 		<key>TTN_TOXIC_TRAP</key>
-		<string>tile_toxic_trap_1.png</string>
+		<string>tile_toxic_trap_4.png</string>
 		<key>TTN_HIDE_TOXIC_TRAP</key>
-		<string>tile_standard_1.png</string>
+		<string>tile_standard_4.png</string>
 		<key>TTN_FIRE_TRAP</key>
-		<string>tile_fire_trap_1.png</string>
+		<string>tile_fire_trap_4.png</string>
 		<key>TTN_HIDE_FIRE_TRAP</key>
-		<string>tile_standard_1.png</string>
+		<string>tile_standard_4.png</string>
 		<key>TTN_PARALYTIC_TRAP</key>
-		<string>tile_paralytic_trap_1.png</string>
+		<string>tile_paralytic_trap_4.png</string>
 		<key>TTN_HIDE_PARALYTIC_TRAP</key>
-		<string>tile_standard_1.png</string>
+		<string>tile_standard_4.png</string>
 		<key>TTN_GRIPPING_TRAP</key>
-		<string>tile_gripping_trap_1.png</string>
+		<string>tile_gripping_trap_4.png</string>
 		<key>TTN_HIDE_GRIPPING_TRAP</key>
-		<string>tile_standard_1.png</string>
+		<string>tile_standard_4.png</string>
 		<key>TTN_SUMMONING_TRAP</key>
-		<string>tile_summoning_trap_1.png</string>
+		<string>tile_summoning_trap_4.png</string>
 		<key>TTN_HIDE_SUMMONING_TRAP</key>
-		<string>tile_standard_1.png</string>
+		<string>tile_standard_4.png</string>
 		<key>TTN_WEAK_TRAP</key>
-		<string>tile_weak_trap_1.png</string>
+		<string>tile_weak_trap_4.png</string>
 		<key>TTN_HIDE_WEAK_TRAP</key>
-		<string>tile_standard_1.png</string>
+		<string>tile_standard_4.png</string>
 		<key>TTN_MAX</key>
 		<string></string>
 	</dict>
@@ -219,51 +219,51 @@
 		<key>TTN_CHASM</key>
 		<string></string>
 		<key>TTN_STANDARD</key>
-		<string>tile_standard_1.png</string>
+		<string>tile_standard_4.png</string>
 		<key>TTN_WALL</key>
-		<string>tile_wall_1.png</string>
+		<string>tile_wall_4.png</string>
 		<key>TTN_ENTRANCE</key>
-		<string>tile_entrance_1.png</string>
+		<string>tile_entrance_4.png</string>
 		<key>TTN_EXIT</key>
-		<string>tile_exit_1.png</string>
+		<string>tile_exit_4.png</string>
 		<key>TTN_STANDARD_PORTAL</key>
-		<string>tile_standard_1.png</string>
+		<string>tile_standard_4.png</string>
 		<key>TTN_SMALL_PORTAL</key>
-		<string>tile_standard_1.png</string>
+		<string>tile_standard_4.png</string>
 		<key>TTN_TUNNEL</key>
-		<string>tile_tunnel_1.png</string>
+		<string>tile_tunnel_4.png</string>
 		<key>TTN_DOOR</key>
-		<string>tile_standard_1.png</string>
+		<string>tile_standard_4.png</string>
 		<key>TTN_OPENED_DOOR</key>
-		<string>tile_standard_1.png</string>
+		<string>tile_standard_4.png</string>
 		<key>TTN_LOCKED_DOOR</key>
-		<string>tile_standard_1.png</string>
+		<string>tile_standard_4.png</string>
 		<key>TTN_SECRET_DOOR</key>
-		<string>tile_standard_1.png</string>
+		<string>tile_standard_4.png</string>
 		<key>TTN_TOXIC_TRAP</key>
-		<string>tile_toxic_trap_1.png</string>
+		<string>tile_toxic_trap_4.png</string>
 		<key>TTN_HIDE_TOXIC_TRAP</key>
-		<string>tile_standard_1.png</string>
+		<string>tile_standard_4.png</string>
 		<key>TTN_FIRE_TRAP</key>
-		<string>tile_fire_trap_1.png</string>
+		<string>tile_fire_trap_4.png</string>
 		<key>TTN_HIDE_FIRE_TRAP</key>
-		<string>tile_standard_1.png</string>
+		<string>tile_standard_4.png</string>
 		<key>TTN_PARALYTIC_TRAP</key>
-		<string>tile_paralytic_trap_1.png</string>
+		<string>tile_paralytic_trap_4.png</string>
 		<key>TTN_HIDE_PARALYTIC_TRAP</key>
-		<string>tile_standard_1.png</string>
+		<string>tile_standard_4.png</string>
 		<key>TTN_GRIPPING_TRAP</key>
-		<string>tile_gripping_trap_1.png</string>
+		<string>tile_gripping_trap_4.png</string>
 		<key>TTN_HIDE_GRIPPING_TRAP</key>
-		<string>tile_standard_1.png</string>
+		<string>tile_standard_4.png</string>
 		<key>TTN_SUMMONING_TRAP</key>
-		<string>tile_summoning_trap_1.png</string>
+		<string>tile_summoning_trap_4.png</string>
 		<key>TTN_HIDE_SUMMONING_TRAP</key>
-		<string>tile_standard_1.png</string>
+		<string>tile_standard_4.png</string>
 		<key>TTN_WEAK_TRAP</key>
-		<string>tile_weak_trap_1.png</string>
+		<string>tile_weak_trap_4.png</string>
 		<key>TTN_HIDE_WEAK_TRAP</key>
-		<string>tile_standard_1.png</string>
+		<string>tile_standard_4.png</string>
 		<key>TTN_MAX</key>
 		<string></string>
 	</dict>
@@ -272,51 +272,51 @@
 		<key>TTN_CHASM</key>
 		<string></string>
 		<key>TTN_STANDARD</key>
-		<string>tile_standard_1.png</string>
+		<string>tile_standard_5.png</string>
 		<key>TTN_WALL</key>
-		<string>tile_wall_1.png</string>
+		<string>tile_wall_5.png</string>
 		<key>TTN_ENTRANCE</key>
-		<string>tile_entrance_1.png</string>
+		<string>tile_entrance_5.png</string>
 		<key>TTN_EXIT</key>
-		<string>tile_exit_1.png</string>
+		<string>tile_exit_5.png</string>
 		<key>TTN_STANDARD_PORTAL</key>
-		<string>tile_standard_1.png</string>
+		<string>tile_standard_5.png</string>
 		<key>TTN_SMALL_PORTAL</key>
-		<string>tile_standard_1.png</string>
+		<string>tile_standard_5.png</string>
 		<key>TTN_TUNNEL</key>
-		<string>tile_tunnel_1.png</string>
+		<string>tile_tunnel_5.png</string>
 		<key>TTN_DOOR</key>
-		<string>tile_standard_1.png</string>
+		<string>tile_standard_5.png</string>
 		<key>TTN_OPENED_DOOR</key>
-		<string>tile_standard_1.png</string>
+		<string>tile_standard_5.png</string>
 		<key>TTN_LOCKED_DOOR</key>
-		<string>tile_standard_1.png</string>
+		<string>tile_standard_5.png</string>
 		<key>TTN_SECRET_DOOR</key>
-		<string>tile_standard_1.png</string>
+		<string>tile_standard_5.png</string>
 		<key>TTN_TOXIC_TRAP</key>
-		<string>tile_toxic_trap_1.png</string>
+		<string>tile_toxic_trap_5.png</string>
 		<key>TTN_HIDE_TOXIC_TRAP</key>
-		<string>tile_standard_1.png</string>
+		<string>tile_standard_5.png</string>
 		<key>TTN_FIRE_TRAP</key>
-		<string>tile_fire_trap_1.png</string>
+		<string>tile_fire_trap_5.png</string>
 		<key>TTN_HIDE_FIRE_TRAP</key>
-		<string>tile_standard_1.png</string>
+		<string>tile_standard_5.png</string>
 		<key>TTN_PARALYTIC_TRAP</key>
-		<string>tile_paralytic_trap_1.png</string>
+		<string>tile_paralytic_trap_5.png</string>
 		<key>TTN_HIDE_PARALYTIC_TRAP</key>
-		<string>tile_standard_1.png</string>
+		<string>tile_standard_5.png</string>
 		<key>TTN_GRIPPING_TRAP</key>
-		<string>tile_gripping_trap_1.png</string>
+		<string>tile_gripping_trap_5.png</string>
 		<key>TTN_HIDE_GRIPPING_TRAP</key>
-		<string>tile_standard_1.png</string>
+		<string>tile_standard_5.png</string>
 		<key>TTN_SUMMONING_TRAP</key>
-		<string>tile_summoning_trap_1.png</string>
+		<string>tile_summoning_trap_5.png</string>
 		<key>TTN_HIDE_SUMMONING_TRAP</key>
-		<string>tile_standard_1.png</string>
+		<string>tile_standard_5.png</string>
 		<key>TTN_WEAK_TRAP</key>
-		<string>tile_weak_trap_1.png</string>
+		<string>tile_weak_trap_5.png</string>
 		<key>TTN_HIDE_WEAK_TRAP</key>
-		<string>tile_standard_1.png</string>
+		<string>tile_standard_5.png</string>
 		<key>TTN_MAX</key>
 		<string></string>
 	</dict>

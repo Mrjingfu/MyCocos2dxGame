@@ -217,7 +217,8 @@ void BaseDoor::setVisited(bool visited)
     setLightMask(lightmask);
     if(m_pFakeDoor)
     {
-        m_pFakeDoor->setVisible(visited);
+        if(m_DoorState != DS_OPENED)
+            m_pFakeDoor->setVisible(visited);
         m_pFakeDoor->setLightMask(lightmask);
     }
 }
