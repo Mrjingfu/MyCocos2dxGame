@@ -11,6 +11,7 @@
 #include "BaseLevel.h"
 #include "AlisaMethod.h"
 #include "VoxelExplorer.h"
+#include "UtilityHelper.h"
 USING_NS_CC;
 const std::string USEABLE_ITEM_NAMES[] = {
     
@@ -59,6 +60,10 @@ UseableItem::UseableItem()
 }
 UseableItem::~UseableItem()
 {
+}
+std::string UseableItem::getDesc()
+{
+    return UtilityHelper::getLocalString(USEABLE_ITEM_NAMES[m_Type] + "_DESC");
 }
 void UseableItem::setState(UseableItemState state)
 {

@@ -52,6 +52,8 @@ public:
     virtual void setActorDir( ActorDir dir ) override;
     
     virtual void setVisited(bool visited) override;
+    
+    virtual std::string getDesc() override;
 protected:
     DoorState   m_DoorState;
     DoorState   m_DoorLastState;

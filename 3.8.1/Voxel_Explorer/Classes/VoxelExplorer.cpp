@@ -22,6 +22,9 @@
 #include "Particle3D/CCParticleSystem3D.h"
 #include "Particle3D/PU/CCPUParticleSystem3D.h"
 #include "AlisaMethod.h"
+#include "BasePortal.hpp"
+#include "Npc.hpp"
+#include "UtilityHelper.h"
 USING_NS_CC;
 
 VoxelExplorer* g_pVoxelExplorerInstance = nullptr;
@@ -39,8 +42,10 @@ VoxelExplorer::VoxelExplorer()
     m_pMainLayer = nullptr;
     m_p3DLayer  = nullptr;
     m_pTerrainTilesLayer = nullptr;
+    m_pTerrainPortalsLayer = nullptr;
     m_pTerrainDoorsLayer = nullptr;
     m_pUseableItemsLayer = nullptr;
+    m_pNPCsLayer         = nullptr;
     m_pMonstersLayer     = nullptr;
     m_pPickableItemsLayer= nullptr;
     m_p2DLayer = nullptr;
@@ -102,6 +107,103 @@ bool VoxelExplorer::init(Layer* pMainLayer)
 void VoxelExplorer::destroy()
 {
     LevelResourceManager::getInstance()->clearLevelRes();
+}
+std::string VoxelExplorer::getScreenPickDesc(const cocos2d::Vec2& screenPos, std::string& strIcon)
+{
+    if(m_pMainCamera && m_p3DLayer)
+    {
+        cocos2d::Ray ray;
+        UtilityHelper::getCameraToViewportRay(m_pMainCamera, m_p3DLayer->convertToNodeSpace(screenPos), &ray);
+        
+        if(m_pPlayer)
+        {
+            if (ray.intersects(m_pPlayer->getAABB())) {
+                strIcon = m_pPlayer->getIconRes();
+                return m_pPlayer->getDesc();
+            }
+        }
+        
+        
+        if(m_pPickableItemsLayer)
+        {
+            for (auto child : m_pPickableItemsLayer->getChildren())
+            {
+                PickableItem* item = dynamic_cast<PickableItem*>(child);
+                if (item && ray.intersects(item->getAABB())) {
+                    return item->getDesc();
+                }
+            }
+        }
+        
+        if(m_pMonstersLayer)
+        {
+            for (auto child : m_pMonstersLayer->getChildren())
+            {
+                BaseMonster* monster = dynamic_cast<BaseMonster*>(child);
+                if (monster && ray.intersects(monster->getAABB())) {
+                    strIcon = monster->getIconRes();
+                    return monster->getDesc();
+                }
+            }
+        }
+        if(m_pNPCsLayer)
+        {
+            for (auto child : m_pNPCsLayer->getChildren())
+            {
+                Npc* npc = dynamic_cast<Npc*>(child);
+                if (npc && ray.intersects(npc->getAABB())) {
+                    strIcon = npc->getIconRes();
+                    return npc->getDesc();
+                }
+            }
+        }
+        
+        if(m_pUseableItemsLayer)
+        {
+            for (auto child : m_pUseableItemsLayer->getChildren())
+            {
+                UseableItem* item = dynamic_cast<UseableItem*>(child);
+                if (item && ray.intersects(item->getAABB())) {
+                    return item->getDesc();
+                }
+            }
+        }
+        
+        if(m_pTerrainPortalsLayer)
+        {
+            for (auto child : m_pTerrainPortalsLayer->getChildren())
+            {
+                BasePortal* portal = dynamic_cast<BasePortal*>(child);
+                if (portal && ray.intersects(portal->getAABB())) {
+                    return portal->getDesc();
+                }
+            }
+        }
+        
+        if(m_pTerrainDoorsLayer)
+        {
+            for (auto child : m_pTerrainDoorsLayer->getChildren())
+            {
+                BaseDoor* door = dynamic_cast<BaseDoor*>(child);
+                if (door && ray.intersects(door->getAABB())) {
+                    return door->getDesc();
+                }
+            }
+        }
+        
+        if(m_pTerrainTilesLayer)
+        {
+            for (auto child : m_pTerrainTilesLayer->getChildren())
+            {
+                TerrainTile* tile = dynamic_cast<TerrainTile*>(child);
+                if (tile && ray.intersects(tile->getAABB())) {
+                    return tile->getDesc();
+                }
+            }
+        }
+
+    }
+    return UtilityHelper::getLocalString(TERRAIN_TILES_NAME[TerrainTile::TT_CHASM]);
 }
 bool VoxelExplorer::checkMovable(TileInfo& info)
 {
@@ -190,8 +292,6 @@ bool VoxelExplorer::wanderingAround(BaseMonster* monster, cocos2d::Vec2& nextPos
 }
 void VoxelExplorer::updateFogOfWar(const cocos2d::Rect& areaRect, bool visited)
 {
-    if(visited && m_pCurrentLevel && m_pCurrentLevel->hasShowMap())
-        m_pCurrentLevel->showMap(true);
     if(m_pTerrainTilesLayer)
     {
         for (const auto& child : m_pTerrainTilesLayer->getChildren())
@@ -201,7 +301,15 @@ void VoxelExplorer::updateFogOfWar(const cocos2d::Rect& areaRect, bool visited)
                 tile->setVisited(visited);
         }
     }
-    
+    if(m_pTerrainPortalsLayer)
+    {
+        for (const auto& child : m_pTerrainPortalsLayer->getChildren())
+        {
+            BasePortal* portal = dynamic_cast<BasePortal*>(child);
+            if(portal && areaRect.containsPoint(portal->getPosInMap()))
+                portal->setVisited(visited);
+        }
+    }
     if(m_pTerrainDoorsLayer)
     {
         for (const auto& child : m_pTerrainDoorsLayer->getChildren())
@@ -219,6 +327,16 @@ void VoxelExplorer::updateFogOfWar(const cocos2d::Rect& areaRect, bool visited)
             Actor* item = dynamic_cast<Actor*>(child);
             if(item && areaRect.containsPoint(item->getPosInMap()))
                 item->setVisited(visited);
+        }
+    }
+    
+    if(m_pNPCsLayer)
+    {
+        for (const auto& child : m_pNPCsLayer->getChildren())
+        {
+            Npc* npc = dynamic_cast<Npc*>(child);
+            if(npc && areaRect.containsPoint(npc->getPosInMap()))
+                npc->setVisited(visited);
         }
     }
     
@@ -241,6 +359,11 @@ void VoxelExplorer::updateFogOfWar(const cocos2d::Rect& areaRect, bool visited)
                 item->setVisited(visited);
         }
     }
+}
+void VoxelExplorer::updateMiniMap()
+{
+    if(m_pCurrentLevel && m_pCurrentLevel->hasShowMap())
+        m_pCurrentLevel->showMap(true);
 }
 void VoxelExplorer::searchAndCheck()    ///侦查
 {
@@ -652,6 +775,28 @@ void VoxelExplorer::handlePlayerUsePotion(PickableItem::PickableItemType type)
             break;
     }
 }
+void VoxelExplorer::handlePlayerUseStandardPortal()
+{
+}
+void VoxelExplorer::handlePlayerUseSmallPortal()
+{
+}
+void VoxelExplorer::handleUpstairs()
+{
+    if(RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nCurrentDepth > 1)
+    {
+    }
+    else
+    {
+    }
+}
+void VoxelExplorer::handleDownstairs()
+{
+    if(RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nCurrentDepth < RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nTotalNum)
+    {
+    }
+}
+
 bool VoxelExplorer::createLayers()
 {
     m_p3DLayer = Layer3D::create();
@@ -666,6 +811,12 @@ bool VoxelExplorer::createLayers()
     m_pTerrainTilesLayer->setCameraMask((unsigned int)CameraFlag::USER1);
     m_p3DLayer->addChild(m_pTerrainTilesLayer);
     
+    m_pTerrainPortalsLayer = Layer::create();
+    if(!m_pTerrainPortalsLayer)
+        return false;
+    m_pTerrainPortalsLayer->setCameraMask((unsigned int)CameraFlag::USER1);
+    m_p3DLayer->addChild(m_pTerrainPortalsLayer);
+    
     m_pTerrainDoorsLayer = Layer::create();
     if(!m_pTerrainDoorsLayer)
         return false;
@@ -677,6 +828,12 @@ bool VoxelExplorer::createLayers()
         return false;
     m_pUseableItemsLayer->setCameraMask((unsigned int)CameraFlag::USER1);
     m_p3DLayer->addChild(m_pUseableItemsLayer);
+    
+    m_pNPCsLayer = Layer::create();
+    if(!m_pNPCsLayer)
+        return false;
+    m_pNPCsLayer->setCameraMask((unsigned int)CameraFlag::USER1);
+    m_p3DLayer->addChild(m_pNPCsLayer);
     
     m_pMonstersLayer = Layer::create();
     if(!m_pMonstersLayer)

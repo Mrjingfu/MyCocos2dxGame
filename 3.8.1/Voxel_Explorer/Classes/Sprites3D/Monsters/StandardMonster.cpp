@@ -8,6 +8,7 @@
 
 #include "StandardMonster.hpp"
 #include "LevelResourceManager.h"
+#include "OutlineEffect3D.h"
 USING_NS_CC;
 
 StandardMonster* StandardMonster::create(BaseMonster::MonsterType type)
@@ -44,7 +45,14 @@ StandardMonster* StandardMonster::create(BaseMonster::MonsterType type)
                 break;
         }
         if(monster->m_pMonsterProperty && monster->m_pMonsterProperty->isElite())
+        {
             monster->setScale(monster->getScale() + 0.2f);
+            
+            OutlineEffect3D* outline = OutlineEffect3D::create();
+            outline->setOutlineColor(Vec3(1.0f, 1.0f, 1.0f));
+            outline->setOutlineWidth(0.03f);
+            monster->addEffect(outline, 1);
+        }
         monster->autorelease();
         return monster;
     }

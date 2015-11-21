@@ -23,6 +23,7 @@ public:
     bool init(cocos2d::Layer* pMainLayer);
     void destroy();
     
+    std::string getScreenPickDesc(const cocos2d::Vec2& screenPos, std::string& strIcon);
     bool checkMovable(TileInfo& info);
     void cameraTrackPlayer();
     void checkPickItem();
@@ -34,6 +35,7 @@ public:
     bool fleeFromPlayer(BaseMonster* monster, cocos2d::Vec2& nextPos);
     bool wanderingAround(BaseMonster* monster, cocos2d::Vec2& nextPos);
     void updateFogOfWar(const cocos2d::Rect& areaRect, bool visited);
+    void updateMiniMap();
     void searchAndCheck();      ///侦查
     
     void addExplosion(const cocos2d::Vec3& pos);
@@ -52,11 +54,18 @@ public:
     void handlePlayerUseScroll(PickableItem::PickableItemType type);
     void handlePlayerUsePotion(PickableItem::PickableItemType type);
     
+    void handlePlayerUseStandardPortal();
+    void handlePlayerUseSmallPortal();
+    void handleUpstairs();
+    void handleDownstairs();
+    
     cocos2d::Layer* getMainLayer() const { return m_pMainLayer; }
     cocos2d::Layer* get3DLayer() const { return m_p3DLayer; }
     cocos2d::Layer* getTerrainTilesLayer() const { return m_pTerrainTilesLayer; }
+    cocos2d::Layer* getTerrainPortalsLayer() const { return m_pTerrainPortalsLayer; }
     cocos2d::Layer* getTerrainDoorsLayer() const { return m_pTerrainDoorsLayer; }
     cocos2d::Layer* getUseableItemsLayer() const { return m_pUseableItemsLayer; }
+    cocos2d::Layer* getNPCsLayer() const { return m_pNPCsLayer; }
     cocos2d::Layer* getMonstersLayer() const { return m_pMonstersLayer; }
     cocos2d::Layer* getPickableItemsLayer() const { return m_pPickableItemsLayer; }
     cocos2d::Layer* get2DLayer() const { return m_p2DLayer; }
@@ -80,8 +89,10 @@ private:
     cocos2d::Layer*                         m_pMainLayer;
     cocos2d::Layer*                         m_p3DLayer;
     cocos2d::Layer*                         m_pTerrainTilesLayer;
+    cocos2d::Layer*                         m_pTerrainPortalsLayer;
     cocos2d::Layer*                         m_pTerrainDoorsLayer;
     cocos2d::Layer*                         m_pUseableItemsLayer;
+    cocos2d::Layer*                         m_pNPCsLayer;
     cocos2d::Layer*                         m_pMonstersLayer;
     cocos2d::Layer*                         m_pPickableItemsLayer;
     cocos2d::Layer*                         m_p2DLayer;

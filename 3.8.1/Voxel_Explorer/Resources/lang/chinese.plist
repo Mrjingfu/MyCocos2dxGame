@@ -80,6 +80,8 @@
 	<string>龙穴</string>
 	<key>DN_LICH_TOMB</key>
 	<string>巫妖墓室</string>
+	<key>MONSTER_ELITE</key>
+	<string>(精英)</string>
 	<key>MMN_RAT</key>
 	<string>老鼠</string>
 	<key>MMN_BAT</key>
@@ -140,6 +142,8 @@
 	<string>幽灵</string>
 	<key>MMN_GHOUL</key>
 	<string>食尸鬼</string>
+	<key>PICKITEM_DESC</key>
+	<string>你捡起来仔细看看呗。</string>
 	<key>PIPN_KEY</key>
 	<string>钥匙</string>
 	<key>PIPN_WEAPON</key>
@@ -939,7 +943,7 @@
 	<key>PIN_SCROLL_INDENTIFY</key>
 	<string>辨识卷轴</string>
 	<key>PIN_SCROLL_INDENTIFY_DESC</key>
-	<string>辨识物品用的卷轴。</string>
+	<string>使用用来辨识魔法物品。</string>
 	<key>PIN_SCROLL_TELEPORT</key>
 	<string>传送卷轴</string>
 	<key>PIN_SCROLL_TELEPORT_DESC</key>
@@ -1068,5 +1072,15 @@
 	<string>小护士</string>
 	<key>NPCN_NURSE_DESC</key>
 	<string></string>
+	<key>PTN_STANDARD</key>
+	<string>地城传送阵</string>
+	<key>PTN_STANDARD_DESC</key>
+	<string>地城传送阵，可以在不同地城间传送</string>
+	<key>PTN_STANDARD_LOCK</key>
+	<string>地城传送阵，不过刚把你传过来，已经没能量，不能用了。</string>
+	<key>PTN_SMALL</key>
+	<string>小传送阵</string>
+	<key>PTN_SMALL_DESC</key>
+	<string>小传送阵，可以在本层地牢间传送。</string>
 </dict>
 </plist>

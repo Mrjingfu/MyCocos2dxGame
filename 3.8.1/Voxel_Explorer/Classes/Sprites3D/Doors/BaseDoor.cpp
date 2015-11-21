@@ -8,6 +8,7 @@
 
 #include "BaseDoor.hpp"
 #include "BaseLevel.h"
+#include "VoxelExplorer.h"
 USING_NS_CC;
 const char* DOOR_MODEL_NAMES[] = {
     "DMN_STANDARD",
@@ -215,5 +216,12 @@ void BaseDoor::setVisited(bool visited)
         lightmask = lightmask &~ (unsigned int)LightFlag::LIGHT1;
     setLightMask(lightmask);
     if(m_pFakeDoor)
+    {
+        m_pFakeDoor->setVisible(visited);
         m_pFakeDoor->setLightMask(lightmask);
+    }
+}
+std::string BaseDoor::getDesc()
+{
+    return VoxelExplorer::getInstance()->getCurrentLevel()->getTerrainTileInfoDesc(getPosInMap().x, getPosInMap().y);
 }
