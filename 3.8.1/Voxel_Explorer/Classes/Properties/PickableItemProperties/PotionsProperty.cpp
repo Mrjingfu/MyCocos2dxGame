@@ -24,28 +24,77 @@ PotionsProperty::PotionsProperty(unsigned int instanceID, PickableItem::Pickable
     switch (type) {
         case PickableItem::PIT_POTION_MINORHEALTH:
         case PickableItem::PIT_POTION_MINORMANA:
+            {
+                m_nValue = 50;
+                m_nValueCopper = 40;
+            }
+            break;
         case PickableItem::PIT_POTION_MINORRECOVERY:
-            m_nValue = 50;
+            {
+                m_nValue = 0.25f;
+                m_nValueCopper = 300;
+            }
             break;
         case PickableItem::PIT_POTION_LESSERHEALTH:
         case PickableItem::PIT_POTION_LESSERMANA:
+            {
+                m_nValue = 150;
+                m_nValueCopper = 200;
+            }
+            break;
         case PickableItem::PIT_POTION_LESSERRECOVERY:
-            m_nValue = 150;
+            {
+                m_nValue = 0.5f;
+                m_nValueCopper = 1800;
+            }
             break;
         case PickableItem::PIT_POTION_HEALTH:
         case PickableItem::PIT_POTION_MANA:
-        case PickableItem::PIT_POTION_RECOVERY:
-            m_nValue = 250;
+            {
+                m_nValue = 250;
+                m_nValueCopper = 350;
+            }
             break;
+        case PickableItem::PIT_POTION_RECOVERY:
+            {
+                m_nValue = 0.75f;
+                m_nValueCopper = 3000;
+            }
+            break;
+        case PickableItem::PIT_POTION_DETOXIFICATION:
+            {
+                m_nValue = 0;
+                m_nValueCopper = 200;
+            }
+            break;
+        case PickableItem::PIT_POTION_SPECIFIC:
+            {
+                m_nValue = 0;
+                m_nValueCopper = 200;
+            }
+            break;
+        case PickableItem::PIT_POTION_HEALING:
+            {
+                m_nValue = 0;
+                m_nValueCopper = 200;
+            }
+            break;
+        case PickableItem::PIT_POTION_UNIVERSAL:
+            {
+                m_nValue = 0;
+                m_nValueCopper = 1000;
+            }
         default:
-            m_nValue = 0;
             break;
     }
 }
 
 void PotionsProperty::adjustByLevel()
 {
+    m_nValueCopper = m_nValueCopper*m_nCount.GetLongValue();
 }
 void PotionsProperty::handleIdentify()
 {
+    if(m_bIdentified)
+        return;
 }

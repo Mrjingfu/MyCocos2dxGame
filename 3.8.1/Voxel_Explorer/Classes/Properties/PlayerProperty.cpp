@@ -555,8 +555,8 @@ bool PlayerProperty::usePotion(CChaosNumber id)
             case PickableItem::PIT_POTION_LESSERRECOVERY:
             case PickableItem::PIT_POTION_RECOVERY:
                 {
-                    setCurrentHP(getCurrentHP() + potionsProperty->getValue().GetLongValue());
-                    setCurrentMP(getCurrentMP() + potionsProperty->getValue().GetLongValue());
+                    setCurrentHP(getCurrentHP() + getMaxHP()*potionsProperty->getValue().GetFloatValue());
+                    setCurrentMP(getCurrentMP() + getMaxMP()*potionsProperty->getValue().GetFloatValue());
                 }
                 break;
             case PickableItem::PIT_POTION_DETOXIFICATION:

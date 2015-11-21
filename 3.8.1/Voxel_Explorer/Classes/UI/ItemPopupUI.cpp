@@ -621,25 +621,34 @@ void ItemPopupUI::updateItemPopup(int itemId)
     CCLOG("m_nItemId:%d",m_nItemId);
     
     PickableItemProperty* itemprop = PlayerProperty::getInstance()->getItemFromBag(CChaosNumber(m_nItemId));
-    m_pItemIcon->loadTexture(itemprop->getIconRes());
+    m_pItemIcon->loadTexture(itemprop->getIconRes(),cocos2d::ui::Widget::TextureResType::PLIST);
     m_pItemName->setString(itemprop->getName());
+    
+    
     
     CChaosNumber goldNum = 0;
     CChaosNumber silverNum = 0;
     CChaosNumber copperNum = 0;
     GameFormula::exchangeMoney(itemprop->getValueCopper(), goldNum, silverNum, copperNum);
+    CCLOG("=======%d=====, %d, %d, %d", (int)(itemprop->getValueCopper().GetLongValue()), (int)(goldNum.GetLongValue()), (int)(silverNum.GetLongValue()), (int)(copperNum.GetLongValue()));
     
     if (goldNum > 0) {
         m_pItemGoldIcon->setVisible(true);
         m_pItemGoldNum->setString(StringUtils::format("%d",int(goldNum)));
-    }
-    if (silverNum > 0) {
         m_pItemSilverIcon->setVisible(true);
-        m_pItemGoldNum->setString(StringUtils::format("%d",int(silverNum)));
-    }
-    if (copperNum > 0) {
+        m_pItemSilverNum->setString(StringUtils::format("%d",int(silverNum)));
         m_pItemCopperIcon->setVisible(true);
-        m_pItemGoldNum->setString(StringUtils::format("%d",int(copperNum)));
+        m_pItemCopperNum->setString(StringUtils::format("%d",int(copperNum)));
+    }
+    else if (silverNum > 0) {
+        m_pItemSilverIcon->setVisible(true);
+        m_pItemSilverNum->setString(StringUtils::format("%d",int(silverNum)));
+        m_pItemCopperIcon->setVisible(true);
+        m_pItemCopperNum->setString(StringUtils::format("%d",int(copperNum)));
+    }
+    else if (copperNum > 0) {
+        m_pItemCopperIcon->setVisible(true);
+        m_pItemCopperNum->setString(StringUtils::format("%d",int(copperNum)));
     }
     
     PickableItemProperty::PickableItemPropertyType itemtype =itemprop->getPickableItemPropertyType();

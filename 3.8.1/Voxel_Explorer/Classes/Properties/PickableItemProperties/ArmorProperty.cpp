@@ -151,6 +151,8 @@ void ArmorProperty::adjustByLevel()
         else
             m_nAddedArmorClass = cocos2d::random(-50, -40);
     }
+    
+    m_nValueCopper = 60 * (int)(m_AddedEffectList.size()) + m_nLevel*5;
 }
 void ArmorProperty::handleIdentify()
 {
