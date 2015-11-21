@@ -41,6 +41,8 @@ private:
     void onEventExtendBag(cocos2d::EventCustom *sender);
     //设置已经装备道具位置
     void setEquipItem(cocos2d::Vec2 pt,std::string icon);
+    void updateRoleProp();
+    void updateBagProp();
     
 private:
    bool _isOpenIdentify;
@@ -60,6 +62,8 @@ private:
     cocos2d::ui::Text*  m_pRoleHp;
     cocos2d::ui::Text*  m_pRoleMp;
     cocos2d::ui::Text*  m_pRoleExp;
+    cocos2d::ui::Text*  m_pRoleAttack;
+    cocos2d::ui::Text*  m_pRoleDefense;
     cocos2d::ui::Text*  m_pRoleLightDis;
     cocos2d::ui::Text*  m_pRoleSearchDis;
     cocos2d::ui::Text*  m_pRoleMargicFind;

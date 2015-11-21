@@ -32,6 +32,8 @@ RolePopupUI::RolePopupUI()
     m_pRoleHp               = nullptr;
     m_pRoleMp               = nullptr;
     m_pRoleExp              = nullptr;
+    m_pRoleAttack           = nullptr;
+    m_pRoleDefense            = nullptr;
     m_pRoleLightDis         = nullptr;
     m_pRoleSearchDis        = nullptr;
     m_pRoleMargicFind       = nullptr;
@@ -93,6 +95,14 @@ bool RolePopupUI::initUi()
     m_pRoleMp = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(charNode, "role_prop_mp"));
     if (!m_pRoleMp)
         return false;
+    m_pRoleAttack = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(charNode, "role_prop_attack"));
+    if (!m_pRoleAttack)
+        return false;
+    
+    m_pRoleDefense = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(charNode, "role_prop_armor"));
+    if (!m_pRoleDefense)
+        return false;
+    
     m_pRoleExp = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(charNode, "role_prop_exp"));
     if (!m_pRoleExp)
         return false;
@@ -123,18 +133,12 @@ bool RolePopupUI::initUi()
     m_pRoleMargicFind->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
     m_pRoleBlock->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
     m_pRoleDodge->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
- 
+    m_pRoleAttack->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
+    m_pRoleDefense->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
     
     
-    m_pRoleHp->setString(StringUtils::format(UtilityHelper::getLocalStringForUi("ROLE_SHOW_HP").c_str(),int(PlayerProperty::getInstance()->getCurrentHP()),int(PlayerProperty::getInstance()->getMaxHP())));
-    m_pRoleMp->setString(StringUtils::format(UtilityHelper::getLocalStringForUi("ROLE_SHOW_MP").c_str(),int(PlayerProperty::getInstance()->getCurrentMP()),int(PlayerProperty::getInstance()->getMaxMP())));
-    m_pRoleExp->setString(StringUtils::format(UtilityHelper::getLocalStringForUi("ROLE_SHOW_EXP").c_str(),int(PlayerProperty::getInstance()->getExp()),int(GameFormula::getNextLevelExp(PlayerProperty::getInstance()->getLevel()))));
-    m_pRoleLightDis->setString(StringUtils::format(UtilityHelper::getLocalStringForUi("PROP_SHOW_LIGHT_DIS").c_str(),int(PlayerProperty::getInstance()->getLightDistance())));
-    m_pRoleSearchDis->setString(StringUtils::format(UtilityHelper::getLocalStringForUi("PROP_SHOW_SEARCH_DIS").c_str(),int(PlayerProperty::getInstance()->getSearchDistance())));
-    m_pRoleCriticalStrike ->setString(StringUtils::format(UtilityHelper::getLocalStringForUi("PROP_SHOW_CRITICAL_STRIKE").c_str(),int(PlayerProperty::getInstance()->getCriticalStrikeRate())));
-    m_pRoleMargicFind->setString(StringUtils::format(UtilityHelper::getLocalStringForUi("PROP_SHOW_MARGIC_FIND").c_str(),int(PlayerProperty::getInstance()->getMagicItemFindRate())));
-    m_pRoleBlock->setString(StringUtils::format(UtilityHelper::getLocalStringForUi("PROP_SHOW_BLOCK").c_str(),int(PlayerProperty::getInstance()->getBlockRate())));
-    m_pRoleDodge->setString(StringUtils::format(UtilityHelper::getLocalStringForUi("PROP_SHOW_DODGE").c_str(),int(PlayerProperty::getInstance()->getDodgeRate())));
+   
+    
 
     m_pBtnChangeBag->addClickEventListener(CC_CALLBACK_1(RolePopupUI::onClickChnageBag, this));
     m_pBtnWeaponBag->addTouchEventListener(CC_CALLBACK_2(RolePopupUI::onClickSortEquip, this));
@@ -256,8 +260,23 @@ void RolePopupUI::onClickColse(Ref* ref)
         closePopup();
     }
 }
-
-void RolePopupUI::updateItems()
+void RolePopupUI::updateRoleProp()
+{
+    m_pRoleHp->setString(StringUtils::format(UtilityHelper::getLocalStringForUi("ROLE_SHOW_HP").c_str(),int(PlayerProperty::getInstance()->getCurrentHP()),int(PlayerProperty::getInstance()->getMaxHP())));
+    m_pRoleMp->setString(StringUtils::format(UtilityHelper::getLocalStringForUi("ROLE_SHOW_MP").c_str(),int(PlayerProperty::getInstance()->getCurrentMP()),int(PlayerProperty::getInstance()->getMaxMP())));
+    m_pRoleExp->setString(StringUtils::format(UtilityHelper::getLocalStringForUi("ROLE_SHOW_EXP").c_str(),int(PlayerProperty::getInstance()->getExp()),int(GameFormula::getNextLevelExp(PlayerProperty::getInstance()->getLevel()))));
+    m_pRoleLightDis->setString(StringUtils::format(UtilityHelper::getLocalStringForUi("PROP_SHOW_LIGHT_DIS").c_str(),int(PlayerProperty::getInstance()->getLightDistance())));
+    m_pRoleSearchDis->setString(StringUtils::format(UtilityHelper::getLocalStringForUi("PROP_SHOW_SEARCH_DIS").c_str(),int(PlayerProperty::getInstance()->getSearchDistance())));
+    m_pRoleCriticalStrike ->setString(StringUtils::format(UtilityHelper::getLocalStringForUi("PROP_SHOW_CRITICAL_STRIKE").c_str(),int(PlayerProperty::getInstance()->getCriticalStrikeRate())));
+    m_pRoleMargicFind->setString(StringUtils::format(UtilityHelper::getLocalStringForUi("PROP_SHOW_MARGIC_FIND").c_str(),int(PlayerProperty::getInstance()->getMagicItemFindRate())));
+    m_pRoleBlock->setString(StringUtils::format(UtilityHelper::getLocalStringForUi("PROP_SHOW_BLOCK").c_str(),int(PlayerProperty::getInstance()->getBlockRate())));
+    m_pRoleDodge->setString(StringUtils::format(UtilityHelper::getLocalStringForUi("PROP_SHOW_DODGE").c_str(),int(PlayerProperty::getInstance()->getDodgeRate())));
+    CCLOG("role minAttack:%d,maxAttack:%d",int(PlayerProperty::getInstance()->getMinAttack()),int(PlayerProperty::getInstance()->getMaxAttack()));
+    m_pRoleAttack->setString(StringUtils::format(UtilityHelper::getLocalStringForUi("PROP_SHOW_ATTACK").c_str(),int(PlayerProperty::getInstance()->getMinAttack()),int(PlayerProperty::getInstance()->getMaxAttack())));
+    m_pRoleDefense->setString(StringUtils::format(UtilityHelper::getLocalStringForUi("PROP_SHOW_DEFENSE").c_str(),int(PlayerProperty::getInstance()->getDefense())));
+    
+}
+void RolePopupUI::updateBagProp()
 {
     //清除背包信息
     if (m_BagLayer)
@@ -305,12 +324,12 @@ void RolePopupUI::updateItems()
             otherItems.push_back(itemProp);
         }
     }
-
+    
     if (!m_pBtnWeaponBag->isEnabled())
     {
         items.clear();
         items = equipItems;
-
+        
     }else if (!m_pBtnPotionBag->isEnabled())
     {
         items.clear();
@@ -338,7 +357,7 @@ void RolePopupUI::updateItems()
         }
     }
     
-   
+    
     if (!m_pBtnAllBag->isEnabled() || !m_pBtnWeaponBag->isEnabled()) {
         //武器不在首位
         if (weaponIndex>0)
@@ -391,7 +410,7 @@ void RolePopupUI::updateItems()
         }
         
     }
-  
+    
     //放置道具
     CCLOG("bagSize:%d",(int)items.size());
     for (int i =0; i<items.size(); i++)
@@ -434,7 +453,7 @@ void RolePopupUI::updateItems()
             }
             if (m_pArmorUi &&  itemProp->getInstanceID() == armorId) {
                 m_BagLayer->setItemEquipMark(itemUi->getPosition());
-               setEquipItem(m_pArmorUi->getPosition(),itemProp->getIconRes());
+                setEquipItem(m_pArmorUi->getPosition(),itemProp->getIconRes());
             }
             if (m_pOrnamentUi &&  itemProp->getInstanceID() == OrnamentId) {
                 m_BagLayer->setItemEquipMark(itemUi->getPosition());
@@ -447,14 +466,19 @@ void RolePopupUI::updateItems()
             
             //如果使用鉴定卷轴 更新itemUi
             if (_isOpenIdentify && !itemProp->isIdentified()) {
-//                itemUi->setIndentify();
+                //                itemUi->setIndentify();
             }
             
             
         }
-
+        
     }
-   
+    
+}
+void RolePopupUI::updateItems()
+{
+    updateBagProp();
+    updateRoleProp();
 }
 void RolePopupUI::selectItemEvent(cocos2d::Ref *pSender, TGridView::EventType type)
 {

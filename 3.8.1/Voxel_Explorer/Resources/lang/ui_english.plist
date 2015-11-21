@@ -21,9 +21,13 @@
 	<key>PROP_SHOW_CRITICAL_STRIKE</key>
 	<string>Critical strike:%d</string>
 	<key>PROP_SHOW_BLOCK</key>
-	<string>bolck:%d</string>
+	<string>Bolck:%d</string>
 	<key>PROP_SHOW_DODGE</key>
-	<string>dodge:%d</string>
+	<string>Dodge:%d</string>
+	<key>PROP_SHOW_ATTACK</key>
+	<string>Attack:%d-%d</string>
+	<key>PROP_SHOW_DEFENSE</key>
+	<string>Defense:%d</string>
 	<key>STATUS_TEXT_DODGE</key>
 	<string>dogde</string>
 	<key>STATUS_TEXT_BOLOCK</key>

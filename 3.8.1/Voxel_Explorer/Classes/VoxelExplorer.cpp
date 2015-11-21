@@ -107,7 +107,7 @@ bool VoxelExplorer::init(Layer* pMainLayer)
 
 void VoxelExplorer::destroy()
 {
-    LevelResourceManager::getInstance()->clearLevelRes();
+//    LevelResourceManager::getInstance()->clearLevelRes();
 }
 std::string VoxelExplorer::getScreenPickDesc(const cocos2d::Vec2& screenPos, std::string& strIcon)
 {

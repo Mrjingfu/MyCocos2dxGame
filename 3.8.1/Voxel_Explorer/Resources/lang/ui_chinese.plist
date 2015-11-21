@@ -24,6 +24,10 @@
 	<string>格挡率：%d</string>
 	<key>PROP_SHOW_DODGE</key>
 	<string>闪避率：%d</string>
+	<key>PROP_SHOW_ATTACK</key>
+	<string>攻击力：%d-%d</string>
+	<key>PROP_SHOW_DEFENSE</key>
+	<string>防御力：%d</string>
 	<key>STATUS_TEXT_DODGE</key>
 	<string>闪避</string>
 	<key>STATUS_TEXT_BOLOCK</key>

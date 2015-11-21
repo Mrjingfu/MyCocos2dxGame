@@ -16,112 +16,136 @@
             <PreSize X="1.0000" Y="0.5294" />
             <FileData Type="PlistSubImage" Path="ui_frame_1.png" Plist="ui_sprite.plist" />
           </AbstractNodeData>
-          <AbstractNodeData Name="prop_frame" ActionTag="197963668" Tag="624" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="95.1500" RightMargin="4.8500" TopMargin="18.5340" BottomMargin="222.4660" Scale9Enable="True" LeftEage="4" RightEage="4" TopEage="4" BottomEage="4" Scale9OriginX="4" Scale9OriginY="4" Scale9Width="6" Scale9Height="6" ctype="ImageViewObjectData">
-            <Size X="150.0000" Y="99.0000" />
+          <AbstractNodeData Name="prop_frame" ActionTag="197963668" Tag="624" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="95.1500" RightMargin="4.8500" TopMargin="6.0340" BottomMargin="213.9660" Scale9Enable="True" LeftEage="4" RightEage="4" TopEage="4" BottomEage="4" Scale9OriginX="4" Scale9OriginY="4" Scale9Width="6" Scale9Height="6" ctype="ImageViewObjectData">
+            <Size X="150.0000" Y="120.0000" />
             <Children>
-              <AbstractNodeData Name="role_prop_hp" ActionTag="-719189399" Tag="242" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="10.4158" RightMargin="13.5842" TopMargin="-9.3931" BottomMargin="72.3931" FontSize="36" LabelText="生命值:" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
+              <AbstractNodeData Name="role_prop_hp" ActionTag="-719189399" Tag="242" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="10.2693" RightMargin="20.7307" TopMargin="-12.2081" BottomMargin="89.2081" FontSize="36" LabelText="生命值:" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
                 <Size X="119.0000" Y="43.0000" />
                 <AnchorPoint ScaleY="0.5000" />
-                <Position X="10.4100" Y="90.3969" />
+                <Position X="10.2693" Y="110.7081" />
                 <Scale ScaleX="0.2500" ScaleY="0.2500" />
                 <CColor A="255" R="144" G="238" B="144" />
-                <PrePosition X="0.0694" Y="0.9131" />
+                <PrePosition X="0.0685" Y="0.9226" />
                 <PreSize X="2.5000" Y="0.8000" />
                 <FontResource Type="Normal" Path="fonts/fangz.TTF" Plist="" />
                 <OutlineColor A="255" R="255" G="0" B="0" />
                 <ShadowColor A="255" R="110" G="110" B="110" />
               </AbstractNodeData>
-              <AbstractNodeData Name="role_prop_mp" ActionTag="-397874865" Tag="232" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="10.4158" RightMargin="13.5842" TopMargin="1.6457" BottomMargin="61.3543" FontSize="36" LabelText="魔法值:" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
+              <AbstractNodeData Name="role_prop_mp" ActionTag="-397874865" Tag="232" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="10.2693" RightMargin="20.7307" TopMargin="-1.9012" BottomMargin="78.9012" FontSize="36" LabelText="魔法值:" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
                 <Size X="119.0000" Y="43.0000" />
                 <AnchorPoint ScaleY="0.5000" />
-                <Position X="10.4100" Y="79.3584" />
+                <Position X="10.2693" Y="100.4012" />
                 <Scale ScaleX="0.2500" ScaleY="0.2500" />
                 <CColor A="255" R="144" G="238" B="144" />
-                <PrePosition X="0.0694" Y="0.8016" />
+                <PrePosition X="0.0685" Y="0.8367" />
                 <PreSize X="2.5000" Y="0.8000" />
                 <FontResource Type="Normal" Path="fonts/fangz.TTF" Plist="" />
                 <OutlineColor A="255" R="255" G="0" B="0" />
                 <ShadowColor A="255" R="110" G="110" B="110" />
               </AbstractNodeData>
-              <AbstractNodeData Name="role_prop_exp" ActionTag="-749600954" Tag="233" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="10.4158" RightMargin="13.5842" TopMargin="12.1361" BottomMargin="50.8639" FontSize="36" LabelText="经验值:" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
+              <AbstractNodeData Name="role_prop_attack" ActionTag="948584165" Tag="44" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="10.2693" RightMargin="20.7307" TopMargin="7.4055" BottomMargin="69.5945" FontSize="36" LabelText="攻击力:" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
                 <Size X="119.0000" Y="43.0000" />
                 <AnchorPoint ScaleY="0.5000" />
-                <Position X="10.4100" Y="68.8644" />
+                <Position X="10.2693" Y="91.0945" />
                 <Scale ScaleX="0.2500" ScaleY="0.2500" />
                 <CColor A="255" R="144" G="238" B="144" />
-                <PrePosition X="0.0694" Y="0.6956" />
+                <PrePosition X="0.0685" Y="0.7591" />
                 <PreSize X="2.5000" Y="0.8000" />
                 <FontResource Type="Normal" Path="fonts/fangz.TTF" Plist="" />
                 <OutlineColor A="255" R="255" G="0" B="0" />
                 <ShadowColor A="255" R="110" G="110" B="110" />
               </AbstractNodeData>
-              <AbstractNodeData Name="role_prop_light" ActionTag="-1862591173" Tag="234" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="10.4158" RightMargin="-22.4158" TopMargin="63.8064" BottomMargin="-0.8064" FontSize="36" LabelText="光照范围:" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
+              <AbstractNodeData Name="role_prop_armor" ActionTag="1754769656" Tag="45" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="10.2693" RightMargin="20.7307" TopMargin="16.7124" BottomMargin="60.2876" FontSize="36" LabelText="防御力:" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
+                <Size X="119.0000" Y="43.0000" />
+                <AnchorPoint ScaleY="0.5000" />
+                <Position X="10.2693" Y="81.7876" />
+                <Scale ScaleX="0.2500" ScaleY="0.2500" />
+                <CColor A="255" R="144" G="238" B="144" />
+                <PrePosition X="0.0685" Y="0.6816" />
+                <PreSize X="2.5000" Y="0.8000" />
+                <FontResource Type="Normal" Path="fonts/fangz.TTF" Plist="" />
+                <OutlineColor A="255" R="255" G="0" B="0" />
+                <ShadowColor A="255" R="110" G="110" B="110" />
+              </AbstractNodeData>
+              <AbstractNodeData Name="role_prop_exp" ActionTag="-749600954" Tag="233" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="10.2693" RightMargin="20.7307" TopMargin="28.0192" BottomMargin="48.9808" FontSize="36" LabelText="经验值:" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
+                <Size X="119.0000" Y="43.0000" />
+                <AnchorPoint ScaleY="0.5000" />
+                <Position X="10.2693" Y="70.4808" />
+                <Scale ScaleX="0.2500" ScaleY="0.2500" />
+                <CColor A="255" R="144" G="238" B="144" />
+                <PrePosition X="0.0685" Y="0.5873" />
+                <PreSize X="2.5000" Y="0.8000" />
+                <FontResource Type="Normal" Path="fonts/fangz.TTF" Plist="" />
+                <OutlineColor A="255" R="255" G="0" B="0" />
+                <ShadowColor A="255" R="110" G="110" B="110" />
+              </AbstractNodeData>
+              <AbstractNodeData Name="role_prop_light" ActionTag="-1862591173" Tag="234" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="10.2693" RightMargin="-15.2693" TopMargin="77.5532" BottomMargin="-0.5532" FontSize="36" LabelText="光照范围:" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
                 <Size X="155.0000" Y="43.0000" />
                 <AnchorPoint ScaleY="0.5000" />
-                <Position X="10.4100" Y="17.1963" />
+                <Position X="10.2693" Y="20.9468" />
                 <Scale ScaleX="0.2500" ScaleY="0.2500" />
                 <CColor A="255" R="144" G="238" B="144" />
-                <PrePosition X="0.0694" Y="0.1737" />
+                <PrePosition X="0.0685" Y="0.1746" />
                 <PreSize X="2.5000" Y="0.8000" />
                 <FontResource Type="Normal" Path="fonts/fangz.TTF" Plist="" />
                 <OutlineColor A="255" R="255" G="0" B="0" />
                 <ShadowColor A="255" R="110" G="110" B="110" />
               </AbstractNodeData>
-              <AbstractNodeData Name="role_prop_search" ActionTag="-1423595216" Tag="235" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="10.4158" RightMargin="-22.4158" TopMargin="73.8757" BottomMargin="-10.8757" FontSize="36" LabelText="侦查范围:" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
+              <AbstractNodeData Name="role_prop_search" ActionTag="-1423595216" Tag="235" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="10.2693" RightMargin="-15.2693" TopMargin="86.8600" BottomMargin="-9.8600" FontSize="36" LabelText="侦查范围:" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
                 <Size X="155.0000" Y="43.0000" />
                 <AnchorPoint ScaleY="0.5000" />
-                <Position X="10.4100" Y="7.1280" />
+                <Position X="10.2693" Y="11.6400" />
                 <Scale ScaleX="0.2500" ScaleY="0.2500" />
                 <CColor A="255" R="144" G="238" B="144" />
-                <PrePosition X="0.0694" Y="0.0720" />
+                <PrePosition X="0.0685" Y="0.0970" />
                 <PreSize X="2.5000" Y="0.8000" />
                 <FontResource Type="Normal" Path="fonts/fangz.TTF" Plist="" />
                 <OutlineColor A="255" R="255" G="0" B="0" />
                 <ShadowColor A="255" R="110" G="110" B="110" />
               </AbstractNodeData>
-              <AbstractNodeData Name="role_prop_magic" ActionTag="-340967985" Tag="236" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="10.4158" RightMargin="13.5842" TopMargin="21.8896" BottomMargin="41.1104" FontSize="36" LabelText="取魔率:" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
+              <AbstractNodeData Name="role_prop_magic" ActionTag="-340967985" Tag="236" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="10.2693" RightMargin="20.7307" TopMargin="38.3260" BottomMargin="38.6740" FontSize="36" LabelText="取魔率:" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
                 <Size X="119.0000" Y="43.0000" />
                 <AnchorPoint ScaleY="0.5000" />
-                <Position X="10.4100" Y="59.1129" />
+                <Position X="10.2693" Y="60.1740" />
                 <Scale ScaleX="0.2500" ScaleY="0.2500" />
                 <CColor A="255" R="144" G="238" B="144" />
-                <PrePosition X="0.0694" Y="0.5971" />
+                <PrePosition X="0.0685" Y="0.5015" />
                 <PreSize X="2.5000" Y="0.8000" />
                 <FontResource Type="Normal" Path="fonts/fangz.TTF" Plist="" />
                 <OutlineColor A="255" R="255" G="0" B="0" />
                 <ShadowColor A="255" R="110" G="110" B="110" />
               </AbstractNodeData>
-              <AbstractNodeData Name="role_prop_critical_strike" ActionTag="1963056559" Tag="237" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="10.4158" RightMargin="13.5842" TopMargin="32.7272" BottomMargin="30.2728" FontSize="36" LabelText="暴击率:" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
+              <AbstractNodeData Name="role_prop_critical_strike" ActionTag="1963056559" Tag="237" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="10.2693" RightMargin="20.7307" TopMargin="48.6328" BottomMargin="28.3672" FontSize="36" LabelText="暴击率:" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
                 <Size X="119.0000" Y="43.0000" />
                 <AnchorPoint ScaleY="0.5000" />
-                <Position X="10.4100" Y="48.2724" />
+                <Position X="10.2693" Y="49.8672" />
                 <Scale ScaleX="0.2500" ScaleY="0.2500" />
                 <CColor A="255" R="144" G="238" B="144" />
-                <PrePosition X="0.0694" Y="0.4876" />
+                <PrePosition X="0.0685" Y="0.4156" />
                 <PreSize X="2.5000" Y="0.8000" />
                 <FontResource Type="Normal" Path="fonts/fangz.TTF" Plist="" />
                 <OutlineColor A="255" R="255" G="0" B="0" />
                 <ShadowColor A="255" R="110" G="110" B="110" />
               </AbstractNodeData>
-              <AbstractNodeData Name="role_prop_dodge" ActionTag="1605481097" Tag="238" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="10.4158" RightMargin="13.5842" TopMargin="43.4026" BottomMargin="19.5974" FontSize="36" LabelText="闪避率:" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
+              <AbstractNodeData Name="role_prop_dodge" ActionTag="1605481097" Tag="238" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="10.2693" RightMargin="20.7307" TopMargin="58.9396" BottomMargin="18.0604" FontSize="36" LabelText="闪避率:" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
                 <Size X="119.0000" Y="43.0000" />
                 <AnchorPoint ScaleY="0.5000" />
-                <Position X="10.4100" Y="37.6002" />
+                <Position X="10.2693" Y="39.5604" />
                 <Scale ScaleX="0.2500" ScaleY="0.2500" />
                 <CColor A="255" R="144" G="238" B="144" />
-                <PrePosition X="0.0694" Y="0.3798" />
+                <PrePosition X="0.0685" Y="0.3297" />
                 <PreSize X="2.5000" Y="0.8000" />
                 <FontResource Type="Normal" Path="fonts/fangz.TTF" Plist="" />
                 <OutlineColor A="255" R="255" G="0" B="0" />
                 <ShadowColor A="255" R="110" G="110" B="110" />
               </AbstractNodeData>
-              <AbstractNodeData Name="role_prop_block" ActionTag="-970098441" Tag="239" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="10.4158" RightMargin="13.5842" TopMargin="53.3755" BottomMargin="9.6245" FontSize="36" LabelText="格挡率:" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
+              <AbstractNodeData Name="role_prop_block" ActionTag="-970098441" Tag="239" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="10.2693" RightMargin="20.7307" TopMargin="68.2464" BottomMargin="8.7536" FontSize="36" LabelText="格挡率:" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
                 <Size X="119.0000" Y="43.0000" />
                 <AnchorPoint ScaleY="0.5000" />
-                <Position X="10.4100" Y="27.6210" />
+                <Position X="10.2693" Y="30.2536" />
                 <Scale ScaleX="0.2500" ScaleY="0.2500" />
                 <CColor A="255" R="144" G="238" B="144" />
-                <PrePosition X="0.0694" Y="0.2790" />
+                <PrePosition X="0.0685" Y="0.2521" />
                 <PreSize X="1.2857" Y="0.5294" />
                 <FontResource Type="Normal" Path="fonts/fangz.TTF" Plist="" />
                 <OutlineColor A="255" R="255" G="0" B="0" />
@@ -129,11 +153,11 @@
               </AbstractNodeData>
             </Children>
             <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-            <Position X="170.1500" Y="271.9660" />
+            <Position X="170.1500" Y="273.9660" />
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
             <CColor A="255" R="255" G="255" B="255" />
-            <PrePosition X="0.6806" Y="0.7999" />
-            <PreSize X="0.6000" Y="0.2912" />
+            <PrePosition X="0.6806" Y="0.8058" />
+            <PreSize X="0.6000" Y="0.3529" />
             <FileData Type="PlistSubImage" Path="ui_frame_2.png" Plist="ui_sprite.plist" />
           </AbstractNodeData>
           <AbstractNodeData Name="role_frame" ActionTag="1765038179" Tag="136" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="16.1250" RightMargin="163.8750" TopMargin="30.1780" BottomMargin="239.8220" TouchEnable="True" BackColorAlpha="102" ComboBoxIndex="1" ColorAngle="90.0000" ctype="PanelObjectData">
@@ -171,7 +195,7 @@
             <PreSize X="1.0000" Y="0.4559" />
             <FileData Type="PlistSubImage" Path="ui_frame_3.png" Plist="ui_sprite.plist" />
           </AbstractNodeData>
-          <AbstractNodeData Name="equip_frame" ActionTag="1711411220" Tag="12" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="2.0000" RightMargin="2.0000" TopMargin="127.7460" BottomMargin="162.2540" TouchEnable="True" BackColorAlpha="102" ColorAngle="90.0000" ctype="PanelObjectData">
+          <AbstractNodeData Name="equip_frame" ActionTag="1711411220" Tag="12" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="2.0000" RightMargin="2.0000" TopMargin="127.7460" BottomMargin="162.2540" TouchEnable="True" BackColorAlpha="102" ComboBoxIndex="1" ColorAngle="90.0000" ctype="PanelObjectData">
             <Size X="246.0000" Y="50.0000" />
             <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
             <Position X="125.0000" Y="187.2380" />

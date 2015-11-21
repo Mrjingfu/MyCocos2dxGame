@@ -41,6 +41,8 @@ bool LevelResourceManager::init()
 }
 bool LevelResourceManager::initLevelRes()
 {
+    m_TerrainTilesLevelRes.clear();
+    m_DoorsLevelRes.clear();
     if(!RandomDungeon::getInstance()->getCurrentDungeonNode())
         return false;
     std::string dungeonName = DUNGEON_NAMES[RandomDungeon::getInstance()->getCurrentDungeonNode()->m_Type];
@@ -56,11 +58,7 @@ bool LevelResourceManager::initLevelRes()
     return true;
     
 }
-void LevelResourceManager::clearLevelRes()
-{
-    m_TerrainTilesLevelRes.clear();
-    m_DoorsLevelRes.clear();
-}
+
 std::string LevelResourceManager::getTerrainTileRes(const std::string& tileTypeName)
 {
     return m_TerrainTilesLevelRes.at(tileTypeName).asString();

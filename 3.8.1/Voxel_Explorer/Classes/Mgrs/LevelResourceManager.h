@@ -18,7 +18,6 @@ public:
     static LevelResourceManager* getInstance();
     bool init();
     bool initLevelRes();
-    void clearLevelRes();
     std::string getTerrainTileRes(const std::string& tileTypeName);
     std::string getDoorRes(const std::string& doorTypeName);
     std::string getMonsterModelRes(const std::string& monsterTypeName);

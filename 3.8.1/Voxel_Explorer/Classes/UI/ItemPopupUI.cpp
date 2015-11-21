@@ -282,7 +282,7 @@ void ItemPopupUI::itemFrame()
     std::string str = itemprop->getDesc();
     ui::LinearLayoutParameter* linerParmter = ui::LinearLayoutParameter::create();
     linerParmter->setGravity(cocos2d::ui::LinearLayoutParameter::LinearGravity::CENTER_VERTICAL);
-    linerParmter->setMargin(ui::Margin(0,15,0,0));
+    linerParmter->setMargin(ui::Margin(5,15,0,0));
     
     m_pItemDesc->setItemText(str);
     m_pItemDesc->setLayoutParameter(linerParmter);
