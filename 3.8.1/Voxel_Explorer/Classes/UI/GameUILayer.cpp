@@ -309,79 +309,21 @@ void GameUILayer::onTouchMoved(cocos2d::Touch *touch, cocos2d::Event *event)
 }
 void GameUILayer::onTouchEnded(cocos2d::Touch *touch, cocos2d::Event *event)
 {
+    if(!touch)
+        return;
     if(_isDist)
     {
-        Ray ray;
-        Vec2 pt = touch->getLocationInView();
-        UtilityHelper::getCameraToViewportRay(VoxelExplorer::getInstance()->getMainCamera(), pt, &ray);
-        Vec3 playerpt = VoxelExplorer::getInstance()->getPlayer()->getPosition3D();
-        std::string infostr;
-        std::string infoKey;
-        if(checkDistMapInfo(ray,infostr,infoKey))
+        std::string iconRes;
+        std::string desc = VoxelExplorer::getInstance()->getScreenPickDesc(touch->getLocation(), iconRes);
+        InfoPopupUI* infoUi = static_cast<InfoPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupInfo));
+        if(infoUi)
         {
-            InfoPopupUI* infoUi = static_cast<InfoPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupInfo));
             onClickDistTipsFrame(nullptr);
             infoUi->setDarkLayerVisble(false);
         }
-        CCLOG("PT X:%f y:%f z:%f",ray._origin.x,ray._origin.y,ray._origin.z);
-        
+        CCLOG("Pick Desc : %s, Icon Res: %s", desc.c_str(), iconRes.c_str());
     }
     return;
-}
-bool GameUILayer::checkDistMapInfo(const cocos2d::Ray ray,std::string& infoIcon,std::string& infoDesc)
-{
-    
-    if (ray.intersects(VoxelExplorer::getInstance()->getPlayer()->getAABB())) {
-        CCLOG("playerpt X:%f y:%f z:%f",VoxelExplorer::getInstance()->getPlayer()->getPosition3D().x,VoxelExplorer::getInstance()->getPlayer()->getPosition3D().y,VoxelExplorer::getInstance()->getPlayer()->getPosition3D().z);
-        return true;
-    }
-    
-    Layer* pickableLayer = VoxelExplorer::getInstance()->getPickableItemsLayer();
-    for (auto child : pickableLayer->getChildren())
-    {
-         PickableItem* item = dynamic_cast<PickableItem*>(child);
-        if (item&& ray.intersects(item->getAABB())) {
-            CCLOG("pickable Actor");
-            CCLOG("PT X:%f y:%f z:%f",item->getPosition3D().x,item->getPosition3D().y,item->getPosition3D().z);
-            return true;
-        }
-    }
-    
-    Layer* monsterLayer = VoxelExplorer::getInstance()->getMonstersLayer();
-    for (auto child : monsterLayer->getChildren())
-    {
-        BaseMonster* monster = dynamic_cast<BaseMonster*>(child);
-        if (monster&& ray.intersects(monster->getAABB())) {
-            CCLOG("PT X:%f y:%f z:%f",monster->getPosition3D().x,monster->getPosition3D().y,monster->getPosition3D().z);
-            CCLOG("BaseMonster");
-            return true;
-        }
-    }
-    
-    Layer* doorLayer = VoxelExplorer::getInstance()->getTerrainDoorsLayer();
-    for (auto child : doorLayer->getChildren())
-    {
-        BaseDoor* door = dynamic_cast<BaseDoor*>(child);
-        if (door&& ray.intersects(door->getAABB())) {
-            CCLOG("PT X:%f y:%f z:%f",door->getPosition3D().x,door->getPosition3D().y,door->getPosition3D().z);
-            CCLOG("BaseDoor");
-            return true;
-        }
-    }
-
-    
-    Layer* terrainTiles = VoxelExplorer::getInstance()->getTerrainTilesLayer();
-    for (auto child : terrainTiles->getChildren())
-    {
-        TerrainTile* tile = dynamic_cast<TerrainTile*>(child);
-        if (tile&& ray.intersects(tile->getAABB())) {
-            CCLOG("TerrainTile");
-            CCLOG("PT X:%f y:%f z:%f",tile->getPosition3D().x,tile->getPosition3D().y,tile->getPosition3D().z);
-            return true;
-        }
-    }
-    return false;
-
 }
 void GameUILayer::updateRoleBuff()
 {

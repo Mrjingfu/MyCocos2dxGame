@@ -44,6 +44,10 @@ Npc::Npc()
 Npc::~Npc()
 {
 }
+std::string Npc::getIconRes()
+{
+    return LevelResourceManager::getInstance()->getItemIconRes(NPC_NAMES[m_Type]);
+}
 std::string Npc::getDesc()
 {
     return UtilityHelper::getLocalString(NPC_NAMES[m_Type] + "_DESC");

@@ -59,8 +59,6 @@ private:
     void onEventTriggerWeak(cocos2d::EventCustom *sender);  //虚弱机关
     
     void updateRoleBuff();
-    //检测点中位置在地图的信息
-    bool checkDistMapInfo(const cocos2d::Ray ray,std::string& infoIcon,std::string& infoDesc);
     //注册触摸事件
     bool registerTouchEvent();
     //更新角色信息

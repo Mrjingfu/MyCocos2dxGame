@@ -91,6 +91,10 @@ BaseMonster::~BaseMonster()
     CC_SAFE_DELETE(m_pHurtData);
     CC_SAFE_DELETE(m_pMonsterProperty);
 }
+std::string BaseMonster::getIconRes()
+{
+    return "实现";
+}
 std::string BaseMonster::getDesc()
 {
     CC_ASSERT(m_pMonsterProperty != nullptr);

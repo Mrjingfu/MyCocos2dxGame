@@ -49,9 +49,13 @@ Player::~Player()
 {
     CC_SAFE_DELETE(m_pHurtData);
 }
+std::string Player::getIconRes()
+{
+    return "chr_sword.png";
+}
 std::string Player::getDesc()
 {
-    return "";
+    return "Main Player";
 }
 
 void Player::onEnter()
