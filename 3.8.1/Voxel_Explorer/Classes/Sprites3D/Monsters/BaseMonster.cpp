@@ -13,6 +13,7 @@
 #include "VoxelExplorer.h"
 #include "GameFormula.hpp"
 #include "UtilityHelper.h"
+#include "LevelResourceManager.h"
 USING_NS_CC;
 const std::string MONSTER_MODEL_NAMES[] = {
     "MMN_UNKNOWN",
@@ -93,7 +94,7 @@ BaseMonster::~BaseMonster()
 }
 std::string BaseMonster::getIconRes()
 {
-    return "实现";
+    return LevelResourceManager::getInstance()->getMonsterIconRes(MONSTER_MODEL_NAMES[m_Type]);
 }
 std::string BaseMonster::getDesc()
 {

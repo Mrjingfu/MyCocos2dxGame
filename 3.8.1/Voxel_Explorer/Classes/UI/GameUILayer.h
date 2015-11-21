@@ -58,6 +58,8 @@ private:
     void onEventTriggerSummoning(cocos2d::EventCustom *sender);//召唤机关
     void onEventTriggerWeak(cocos2d::EventCustom *sender);  //虚弱机关
     
+    
+    
     void updateRoleBuff();
     //注册触摸事件
     bool registerTouchEvent();

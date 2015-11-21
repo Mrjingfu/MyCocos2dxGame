@@ -19,11 +19,11 @@ public:
     virtual ~InfoPopupUI();
     bool initUi() override;
     bool addEvents() override;
-    void setInfoData(std::string infoRes,std::string infoDesKey);
+    void setInfoData(const std::string& infoRes, std::string& infoDesc);
 
 private:
     cocos2d::ui::ImageView* m_pInfoIcon;
-    cocos2d::ui::Text*      m_pInfoDesc;
+    cocos2d::Label*      m_pInfoDesc;
 };
 
 #endif /* InfoPopupUI_hpp */

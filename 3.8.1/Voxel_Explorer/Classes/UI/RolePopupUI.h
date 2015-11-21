@@ -11,7 +11,8 @@
 
 #include "PopupUILayer.h"
 #include "TGridView.h"
-class ItemUI;
+
+class BagLayerUI;
 class  RolePopupUI:public PopupUILayer {
     RolePopupUI();
 
@@ -38,19 +39,23 @@ private:
     void onEventEquipArmor(cocos2d::EventCustom *sender);
     void onEventEquipOrnament(cocos2d::EventCustom *sender);
     void onEventExtendBag(cocos2d::EventCustom *sender);
+    //设置已经装备道具位置
+    void setEquipItem(cocos2d::Vec2 pt,std::string icon);
     
 private:
    bool _isOpenIdentify;
    TGridView* m_pGridView;
+   cocos2d::ui::ImageView* m_pGridFrame;
+    cocos2d::ui::Layout* m_pEquipFrame;
    cocos2d::ui::Button* m_pBtnClose;
    cocos2d::ui::Button* m_pBtnAllBag;
    cocos2d::ui::Button* m_pBtnChangeBag;
    cocos2d::ui::Button* m_pBtnWeaponBag;
    cocos2d::ui::Button* m_pBtnPotionBag;
-   ItemUI* m_pWeaponUi;
-   ItemUI* m_pArmorUi;
-   ItemUI* m_pOrnamentUi;
-   ItemUI* m_pSecondWeaponUi;
+   cocos2d::ui::ImageView* m_pWeaponUi;
+   cocos2d::ui::ImageView* m_pArmorUi;
+   cocos2d::ui::ImageView* m_pOrnamentUi;
+   cocos2d::ui::ImageView* m_pSecondWeaponUi;
     
     cocos2d::ui::Text*  m_pRoleHp;
     cocos2d::ui::Text*  m_pRoleMp;
@@ -63,6 +68,8 @@ private:
     cocos2d::ui::Text*  m_pRoleDodge;
     
    cocos2d::ui::ImageView* m_pShopBtn;
+    
+    BagLayerUI* m_BagLayer;
 };
 
 #endif /* RolePopUpUI_hpp */

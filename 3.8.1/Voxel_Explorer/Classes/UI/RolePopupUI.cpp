@@ -7,7 +7,6 @@
 //
 
 #include "RolePopupUI.h"
-#include "ItemUI.h"
 #include "UtilityHelper.h"
 #include "PlayerProperty.hpp"
 #include "PopupUILayerManager.h"
@@ -15,6 +14,7 @@
 #include "EventConst.h"
 #include "GameFormula.hpp"
 #include "KeyProperty.hpp"
+#include "BagLayerUI.h"
 USING_NS_CC;
 RolePopupUI::RolePopupUI()
 {
@@ -39,6 +39,8 @@ RolePopupUI::RolePopupUI()
     m_pRoleBlock            = nullptr;
     m_pRoleDodge            = nullptr;
     m_pShopBtn              = nullptr;
+    m_BagLayer              = nullptr;
+    m_pGridFrame            = nullptr;
     _isOpenIdentify = false;
 }
 RolePopupUI::~RolePopupUI()
@@ -70,8 +72,8 @@ bool RolePopupUI::initUi()
     Layout* equipFrame = dynamic_cast<ui::Layout*>(UtilityHelper::seekNodeByName(charNode, "equip_frame"));
     if (!equipFrame)
         return false;
-    ui::ImageView* gridFrame = dynamic_cast<ui::ImageView*>(UtilityHelper::seekNodeByName(charNode, "grid_frame"));
-    if (!gridFrame)
+     m_pGridFrame = dynamic_cast<ui::ImageView*>(UtilityHelper::seekNodeByName(charNode, "grid_frame"));
+    if (!m_pGridFrame)
         return false;
     m_pBtnChangeBag = dynamic_cast<ui::Button*>(UtilityHelper::seekNodeByName(charNode, "prop_btn_change_bag"));
     if (!m_pBtnChangeBag)
@@ -139,24 +141,32 @@ bool RolePopupUI::initUi()
     m_pBtnPotionBag->addTouchEventListener(CC_CALLBACK_2(RolePopupUI::onClickSortPotion, this));
     m_pBtnAllBag->addTouchEventListener(CC_CALLBACK_2(RolePopupUI::onClickSortAll, this));
     
-    m_pWeaponUi = ItemUI::create();
-    m_pWeaponUi->setBackGroundImage("ui_weapon_icon.png",TextureResType::PLIST);
+    m_pWeaponUi = cocos2d::ui::ImageView::create();
+    m_pWeaponUi->setScale9Enabled(true);
+    m_pWeaponUi->setContentSize(cocos2d::Size(45,45));
+    m_pWeaponUi->loadTexture("ui_weapon_icon.png",TextureResType::PLIST);
     m_pWeaponUi->setPosition(Vec2(m_pWeaponUi->getContentSize().width*0.5+8, equipFrame->getContentSize().height*0.5));
     equipFrame->addChild(m_pWeaponUi);
     
     
-    m_pSecondWeaponUi = ItemUI::create();
-    m_pSecondWeaponUi->setBackGroundImage("ui_secondweapon_icon.png",TextureResType::PLIST);
+    m_pSecondWeaponUi = cocos2d::ui::ImageView::create();
+    m_pSecondWeaponUi->setScale9Enabled(true);
+    m_pSecondWeaponUi->setContentSize(cocos2d::Size(45,45));
+    m_pSecondWeaponUi->loadTexture("ui_secondweapon_icon.png",TextureResType::PLIST);
     m_pSecondWeaponUi->setPosition(Vec2(m_pWeaponUi->getContentSize().width*0.5+8+m_pWeaponUi->getContentSize().width*1+2, equipFrame->getContentSize().height*0.5));
     equipFrame->addChild(m_pSecondWeaponUi);
 
-    m_pArmorUi = ItemUI::create();
-    m_pArmorUi->setBackGroundImage("ui_armor_icon.png",TextureResType::PLIST);
+    m_pArmorUi = cocos2d::ui::ImageView::create();
+    m_pArmorUi->setScale9Enabled(true);
+    m_pArmorUi->setContentSize(cocos2d::Size(45,45));
+    m_pArmorUi->loadTexture("ui_armor_icon.png",TextureResType::PLIST);
     m_pArmorUi->setPosition(Vec2(m_pWeaponUi->getContentSize().width*0.5+8+m_pWeaponUi->getContentSize().width*2+4, equipFrame->getContentSize().height*0.5));
     equipFrame->addChild(m_pArmorUi);
     
-    m_pOrnamentUi = ItemUI::create();
-    m_pOrnamentUi->setBackGroundImage("ui_ornament_icon.png",TextureResType::PLIST);
+    m_pOrnamentUi = cocos2d::ui::ImageView::create();
+    m_pOrnamentUi->setScale9Enabled(true);
+    m_pOrnamentUi->setContentSize(cocos2d::Size(45,45));
+    m_pOrnamentUi->loadTexture("ui_ornament_icon.png",TextureResType::PLIST);
     m_pOrnamentUi->setPosition(Vec2(m_pWeaponUi->getContentSize().width*0.5+8+m_pWeaponUi->getContentSize().width*3+6, equipFrame->getContentSize().height*0.5));
     equipFrame->addChild(m_pOrnamentUi);
 
@@ -168,18 +178,30 @@ bool RolePopupUI::initUi()
     m_pShopBtn->setPosition(Vec2(8+m_pWeaponUi->getContentSize().width*4+8, equipFrame->getContentSize().height*0.5));
     equipFrame->addChild(m_pShopBtn);
     
+    
+    m_pEquipFrame = Layout::create();
+    m_pEquipFrame->setAnchorPoint(cocos2d::Vec2::ANCHOR_MIDDLE);
+    m_pEquipFrame->setContentSize(equipFrame->getContentSize());
+    m_pEquipFrame->setPosition(equipFrame->getContentSize()*0.5);
+    equipFrame->addChild(m_pEquipFrame);
+    
     m_pGridView = TGridView::create();
     m_pGridView->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
-    m_pGridView->setContentSize(cocos2d::Size(gridFrame->getContentSize().width-10,gridFrame->getContentSize().height-7));
+    m_pGridView->setContentSize(cocos2d::Size(m_pGridFrame->getContentSize().width-10,m_pGridFrame->getContentSize().height-7));
     m_pGridView->setCol(5);
-    m_pGridView->setPosition(gridFrame->getContentSize()*0.5);
-    m_pGridView->setScrollBarEnabled(false);
+    m_pGridView->setPosition(m_pGridFrame->getContentSize()*0.5);
+//    m_pGridView->setScrollBarEnabled(false);
+    m_pGridView->setScrollBarWidth(5);
+    m_pGridView->setScrollBarColor(Color3B::WHITE);
+    m_pGridView->setScrollBarPositionFromCornerForVertical(cocos2d::Vec2(0,0));
     m_pGridView->setItemsMargin(cocos2d::Size(1,3.5));
     m_pGridView->setFrameMargin(cocos2d::Size(7,4));
     m_pGridView->addEventListener(CC_CALLBACK_2(RolePopupUI::selectItemEvent, this));
-    gridFrame->addChild(m_pGridView);
+    m_pGridFrame->addChild(m_pGridView);
 
-    
+    m_BagLayer = BagLayerUI::create(m_pGridView->getContentSize());
+    m_BagLayer->setPosition(m_pGridView->getContentSize()*0.5);
+    m_pGridView->addChildLayer(m_BagLayer,40);
     
     m_pBtnClose = ui::Button::create("ui_btn_back_1.png","","",TextureResType::PLIST);
     m_pBtnClose->setScale9Enabled(true);
@@ -189,9 +211,14 @@ bool RolePopupUI::initUi()
     
     for (int j =0; j<int(PlayerProperty::getInstance()->getBagMaxSpace()); j++) {
 
-        ItemUI* itemui = ItemUI::create();
-        m_pGridView->addChild(itemui);
+        ImageView* itemui = ImageView::create();
+        itemui->setTouchEnabled(true);
+        itemui->setScale9Enabled(true);
+        itemui->setContentSize(cocos2d::Size(45,45));
+        itemui->loadTexture("ui_frame_5.png",TextureResType::PLIST);
+        m_pGridView->pushBackCustomItem(itemui);
     }
+    m_pGridView->forceDoLayout();
     
     updateItems();
     
@@ -199,13 +226,23 @@ bool RolePopupUI::initUi()
 }
 void RolePopupUI::onClickChnageBag(Ref* ref)
 {
+    PlayerProperty::getInstance()->extendBagSpace();
+    
     CHECK_ACTION(ref);
     for (int j =0; j<5*3; j++) {
-        
-        ItemUI* itemui = ItemUI::create();
+        ImageView* itemui = ImageView::create();
+        itemui->setTouchEnabled(true);
+        itemui->setScale9Enabled(true);
+        itemui->setContentSize(cocos2d::Size(45,45));
+        itemui->loadTexture("ui_frame_5.png",TextureResType::PLIST);
+        itemui->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
         m_pGridView->pushBackCustomItem(itemui);
     }
+    m_pGridView->forceDoLayout();
+    m_BagLayer->setLayerContentSize(m_pGridView->getInnerContainerSize());
+    m_BagLayer->setPosition(m_pGridView->getInnerContainerSize()*0.5);
     m_pGridView->resume();
+    updateItems();
     m_pGridView->scrollToBottom(0.8,false);
 }
 void RolePopupUI::onClickColse(Ref* ref)
@@ -218,19 +255,26 @@ void RolePopupUI::onClickColse(Ref* ref)
     {
         closePopup();
     }
-    
 }
 
 void RolePopupUI::updateItems()
 {
-
-    for(int i=0; i<int(PlayerProperty::getInstance()->getBagMaxSpace()); i++)
+    //清除背包信息
+    if (m_BagLayer)
+        m_BagLayer->removeItems();
+    //清除装备栏信息
+    if (m_pEquipFrame)
+        m_pEquipFrame->removeAllChildren();
+    //重置边框颜色
+    for(int i=0; i<m_pGridView->getItems().size(); i++)
     {
-        ItemUI* itemUi = static_cast<ItemUI*>( m_pGridView->getItem(i));
-        if (itemUi) {
-            itemUi->removeItem();
+        ImageView* itemImg = static_cast<ImageView*>(m_pGridView->getItem(i));
+        if (itemImg) {
+            itemImg->setColor(Color3B::WHITE);
         }
     }
+    //对道具进行排序， 武器 0  副手武器 1 护甲 2 饰品 3   装备位置
+    //
     int weaponId = int(PlayerProperty::getInstance()->getEquipedWeaponID());
     int armorId = int(PlayerProperty::getInstance()->getEquipedArmorID());
     int OrnamentId = int(PlayerProperty::getInstance()->getEquipedOrnamentsID());
@@ -294,7 +338,7 @@ void RolePopupUI::updateItems()
         }
     }
     
-    //武器 0  副手武器 1 护甲 2 饰品 3   装备位置
+   
     if (!m_pBtnAllBag->isEnabled() || !m_pBtnWeaponBag->isEnabled()) {
         //武器不在首位
         if (weaponIndex>0)
@@ -346,47 +390,67 @@ void RolePopupUI::updateItems()
             OrnamentIndex = 3;
         }
         
-        
-        
-        
     }
-    
+  
+    //放置道具
     CCLOG("bagSize:%d",(int)items.size());
     for (int i =0; i<items.size(); i++)
     {
         PickableItemProperty* itemProp =items[i];
-         ItemUI* itemUi = static_cast<ItemUI*>( m_pGridView->getItem(i));
+        ui::ImageView* itemUi = static_cast<ui::ImageView*>( m_pGridView->getItem(i));
+        
         if (itemProp && itemUi && itemProp) {
             // 更新装备UI
             
             CCLOG("weaponId:%d armorId:%d OrnamentId:%d secondWeaponId:%d itemid:%d",weaponId,armorId,OrnamentId,secondWeaponId,itemProp->getInstanceID());
-            if ( m_pWeaponUi && itemProp->getInstanceID() == weaponId) {
-                itemUi->setEquipEnable(true);
-                m_pWeaponUi->addItem(itemProp->getInstanceID(), itemProp->getIconRes(),PIQ_GENERAL);
+            m_BagLayer->addItem(i, itemProp->getInstanceID(), itemUi->getPosition(), itemProp->getIconRes());
+            
+            //设置品质
+            switch (itemProp->getQuality()) {
+                case PIQ_GENERAL:
+                    itemUi->setColor(Color3B::WHITE);
+                    break;
+                case PIQ_RARE:
+                    itemUi->setColor(Color3B::BLUE);
+                    break;
+                case PIQ_EPIC:
+                    itemUi->setColor(Color3B(255,0,255));
+                    break;
+                case PIQ_LEGEND:
+                    itemUi->setColor(Color3B(250,128,10));
+                    break;
             }
-            if (m_pArmorUi &&  itemProp->getInstanceID() == armorId) {
-                itemUi->setEquipEnable(true);
-                m_pArmorUi->addItem(itemProp->getInstanceID(), itemProp->getIconRes(),PIQ_GENERAL);
-            }
-            if (m_pOrnamentUi &&  itemProp->getInstanceID() == OrnamentId) {
-                itemUi->setEquipEnable(true);
-                m_pOrnamentUi->addItem(itemProp->getInstanceID(), itemProp->getIconRes(),PIQ_GENERAL);
-            }
-            if (m_pSecondWeaponUi &&  itemProp->getInstanceID() == secondWeaponId) {
-                itemUi->setEquipEnable(true);
-                m_pSecondWeaponUi->addItem(itemProp->getInstanceID(), itemProp->getIconRes(),PIQ_GENERAL);
-            }
+            
             //查看是否可以合并
             if(itemProp->isStackable())
             {
                 int count = itemProp->getCount();
-                itemUi->addItem(itemProp->getInstanceID(), itemProp->getIconRes(),itemProp->getQuality(),count);
-            }else
-                itemUi->addItem(itemProp->getInstanceID(), itemProp->getIconRes(),itemProp->getQuality());
+                m_BagLayer->setItemCount(itemUi->getPosition(), count);
+            }
+            
+            if ( m_pWeaponUi && itemProp->getInstanceID() == weaponId) {
+                m_BagLayer->setItemEquipMark(itemUi->getPosition());
+                setEquipItem(m_pWeaponUi->getPosition(),itemProp->getIconRes());
+            }
+            if (m_pArmorUi &&  itemProp->getInstanceID() == armorId) {
+                m_BagLayer->setItemEquipMark(itemUi->getPosition());
+               setEquipItem(m_pArmorUi->getPosition(),itemProp->getIconRes());
+            }
+            if (m_pOrnamentUi &&  itemProp->getInstanceID() == OrnamentId) {
+                m_BagLayer->setItemEquipMark(itemUi->getPosition());
+                setEquipItem(m_pOrnamentUi->getPosition(),itemProp->getIconRes());
+            }
+            if (m_pSecondWeaponUi &&  itemProp->getInstanceID() == secondWeaponId) {
+                m_BagLayer->setItemEquipMark(itemUi->getPosition());
+                setEquipItem(m_pSecondWeaponUi->getPosition(),itemProp->getIconRes());
+            }
+            
             //如果使用鉴定卷轴 更新itemUi
             if (_isOpenIdentify && !itemProp->isIdentified()) {
-                itemUi->setIndentify();
+//                itemUi->setIndentify();
             }
+            
+            
         }
 
     }
@@ -397,11 +461,10 @@ void RolePopupUI::selectItemEvent(cocos2d::Ref *pSender, TGridView::EventType ty
     
     if (type==TGridView::EventType::ON_SELECTED_ITEM_END) {
         TGridView* gridView = static_cast<TGridView*>(pSender);
-        ItemUI* currentItem = static_cast<ItemUI*>(gridView->getItem(gridView->getCurSelectedIndex()));
-        CCLOG("itemui x:%f y:%f",currentItem->getPositionX(),currentItem->getPositionY());
-        if (currentItem  && currentItem->isHaveItem()) {
-            int currentItemId = currentItem->getItemId();
-            CCLOG("select itemid = %d", currentItem->getItemId());
+        int currentItemId = m_BagLayer->getItemId(gridView->getCurSelectedIndex());
+        if (currentItemId!=-1 ) {
+            
+            CCLOG("select itemid = %d", currentItemId);
             PickableItemProperty* itemProp = PlayerProperty::getInstance()->getItemFromBag(CChaosNumber(currentItemId));
             if (!itemProp)
             {
@@ -528,5 +591,15 @@ void RolePopupUI::onClickSortPotion(cocos2d::Ref * ref, Widget::TouchEventType t
     updateItems();
 }
 
+void RolePopupUI::setEquipItem(cocos2d::Vec2 pt, std::string itemIcon)
+{
+    if (m_pEquipFrame) {
+        ui::ImageView* img = ui::ImageView::create(itemIcon,ui::TextureResType::PLIST);
+        img->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
+        img->setPosition(pt);
+        img->setScale(0.9);
+        img->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
+        m_pEquipFrame->addChild(img);
+    }
+}
 
-    

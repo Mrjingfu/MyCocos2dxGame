@@ -21,7 +21,8 @@ public:
     void clearLevelRes();
     std::string getTerrainTileRes(const std::string& tileTypeName);
     std::string getDoorRes(const std::string& doorTypeName);
-    std::string getMonsterRes(const std::string& monsterTypeName);
+    std::string getMonsterModelRes(const std::string& monsterTypeName);
+    std::string getMonsterIconRes(const std::string& monsterTypeName);
     std::string getItemIconRes(const std::string& itemTypeName);
     std::string getItemModelRes(const std::string& itemTypeName);
 private:

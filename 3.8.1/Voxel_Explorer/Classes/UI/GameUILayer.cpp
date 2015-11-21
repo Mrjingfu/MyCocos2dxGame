@@ -24,6 +24,7 @@
 #include "PotionsProperty.hpp"
 #include "ScrollProperty.hpp"
 #include "RolePopupUI.h"
+#include "LevelResourceManager.h"
 USING_NS_CC;
 GameUILayer::GameUILayer()
 {
@@ -138,9 +139,16 @@ bool GameUILayer::addEvents()
     m_pMonsterBtn = dynamic_cast<ui::ImageView*>(UtilityHelper::seekNodeByName(m_pRootNode, "btn_monster"));
     if (!m_pMonsterBtn)
         return false;
-    m_pMonsterIcon = dynamic_cast<ui::ImageView*>(UtilityHelper::seekNodeByName(m_pRootNode, "monster_icon"));
+    
+    ui::ImageView* monsgerIconFrame =  dynamic_cast<ui::ImageView*>(UtilityHelper::seekNodeByName(m_pRootNode, "btn_monster"));
     if (!m_pMonsterIcon)
         return false;
+
+    
+    m_pMonsterIcon = ImageView::create();
+    m_pMonsterIcon->setPosition(monsgerIconFrame->getContentSize()*0.5);
+    monsgerIconFrame->addChild(m_pMonsterIcon);
+    
     
     m_pMonsterMaxHp = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "progress_monster_blood_maxnum"));
     if(!m_pMonsterMaxHp)
@@ -320,6 +328,7 @@ void GameUILayer::onTouchEnded(cocos2d::Touch *touch, cocos2d::Event *event)
         {
             onClickDistTipsFrame(nullptr);
             infoUi->setDarkLayerVisble(false);
+            infoUi->setInfoData(iconRes, desc);
         }
         CCLOG("Pick Desc : %s, Icon Res: %s", desc.c_str(), iconRes.c_str());
     }
@@ -635,7 +644,9 @@ void GameUILayer::onEventUpdateMonsterProp(cocos2d::EventCustom *sender)
         }else{
             m_pMonsterName->setColor(PopupUILayerManager::getInstance()->getTipsColor(TIP_DEFAULT));
         }
-        
+        m_pMonsterIcon->loadTexture(monster->getIconRes(),TextureResType::PLIST);
+        m_pMonsterIcon->setScale(0.35);
+        m_pMonsterIcon->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
          m_pMonsterName->setString(monsterName);
     }
 }
@@ -701,6 +712,7 @@ void GameUILayer::setMsgItem(std::string msg,cocos2d::Color3B msgColor )
     m_pListMsgs->pushBackCustomItem( noteui);
     if ( m_pListMsgs->getItems().size()*noteui->getContentSize().height > m_pListMsgs->getContentSize().height) {
 //        m_pListMsgs->scrollToBottom(0.5,false);
+        m_pListMsgs->forceDoLayout();
         m_pListMsgs->jumpToBottom();
     }
 }
@@ -808,6 +820,7 @@ void GameUILayer::onClickMsg(cocos2d::Ref *ref)
     }else
     {
         m_pMsgFrame->setVisible(true);
+        m_pListMsgs->forceDoLayout();
         m_pListMsgs->scrollToBottom(0.5,false);
     }
    

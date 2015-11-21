@@ -69,9 +69,13 @@ std::string LevelResourceManager::getDoorRes(const std::string& doorTypeName)
 {
     return m_DoorsLevelRes.at(doorTypeName).asString();
 }
-std::string LevelResourceManager::getMonsterRes(const std::string& monsterTypeName)
+std::string LevelResourceManager::getMonsterModelRes(const std::string& monsterTypeName)
 {
-    return m_MonstersResMap.at(monsterTypeName).asString();
+    return m_MonstersResMap.at(monsterTypeName).asString()+".c3b";
+}
+std::string LevelResourceManager::getMonsterIconRes(const std::string& monsterTypeName)
+{
+    return m_MonstersResMap.at(monsterTypeName).asString() +".png";
 }
 std::string LevelResourceManager::getItemIconRes(const std::string& itemTypeName)
 {

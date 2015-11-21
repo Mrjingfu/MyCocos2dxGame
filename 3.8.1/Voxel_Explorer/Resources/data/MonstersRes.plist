@@ -3,64 +3,64 @@
 <plist version="1.0">
 <dict>
 	<key>MMN_RAT</key>
-	<string>rat.c3b</string>
+	<string>rat</string>
 	<key>MMN_BAT</key>
-	<string>bat.c3b</string>
+	<string>bat</string>
 	<key>MMN_SNAKE</key>
-	<string>snake.c3b</string>
+	<string>snake</string>
 	<key>MMN_SPIDER</key>
-	<string>spider.c3b</string>
+	<string>spider</string>
 	<key>MMN_SLIME</key>
-	<string>slime.c3b</string>
+	<string>slime</string>
 	<key>MMN_ALLIP</key>
-	<string>16x16x16.c3b</string>
+	<string>16x16x16</string>
 	<key>MMN_PRISONER</key>
-	<string>16x16x16.c3b</string>
+	<string>16x16x16</string>
 	<key>MMN_PRISONGUARD</key>
-	<string>16x16x16.c3b</string>
+	<string>16x16x16</string>
 	<key>MMN_TORTURE</key>
-	<string>16x16x16.c3b</string>
+	<string>16x16x16</string>
 	<key>MMN_MOB</key>
-	<string>16x16x16.c3b</string>
+	<string>16x16x16</string>
 	<key>MMN_BELIEVER</key>
-	<string>16x16x16.c3b</string>
+	<string>16x16x16</string>
 	<key>MMN_GATEKEEPER</key>
-	<string>16x16x16.c3b</string>
+	<string>16x16x16</string>
 	<key>MMN_APOLOGIST</key>
-	<string>16x16x16.c3b</string>
+	<string>16x16x16</string>
 	<key>MMN_ADJUDICATOR</key>
-	<string>16x16x16.c3b</string>
+	<string>16x16x16</string>
 	<key>MMN_PRIEST</key>
-	<string>16x16x16.c3b</string>
+	<string>16x16x16</string>
 	<key>MMN_DEATHMINER</key>
-	<string>16x16x16.c3b</string>
+	<string>16x16x16</string>
 	<key>MMN_KOBOLD</key>
-	<string>16x16x16.c3b</string>
+	<string>16x16x16</string>
 	<key>MMN_OOZE</key>
-	<string>16x16x16.c3b</string>
+	<string>16x16x16</string>
 	<key>MMN_SHADOW</key>
-	<string>16x16x16.c3b</string>
+	<string>16x16x16</string>
 	<key>MMN_ANKHEG</key>
-	<string>16x16x16.c3b</string>
+	<string>16x16x16</string>
 	<key>MMN_WOLF</key>
-	<string>16x16x16.c3b</string>
+	<string>16x16x16</string>
 	<key>MMN_BEAR</key>
-	<string>16x16x16.c3b</string>
+	<string>16x16x16</string>
 	<key>MMN_GOBLIN</key>
-	<string>16x16x16.c3b</string>
+	<string>16x16x16</string>
 	<key>MMN_DINOSAUR</key>
-	<string>16x16x16.c3b</string>
+	<string>16x16x16</string>
 	<key>MMN_GNOLL</key>
-	<string>16x16x16.c3b</string>
+	<string>16x16x16</string>
 	<key>MMN_SKELETON</key>
-	<string>16x16x16.c3b</string>
+	<string>16x16x16</string>
 	<key>MMN_ZOMBIE</key>
-	<string>16x16x16.c3b</string>
+	<string>16x16x16</string>
 	<key>MMN_GARGOYLE</key>
-	<string>16x16x16.c3b</string>
+	<string>16x16x16</string>
 	<key>MMN_GHOST</key>
-	<string>16x16x16.c3b</string>
+	<string>16x16x16</string>
 	<key>MMN_GHOUL</key>
-	<string>16x16x16.c3b</string>
+	<string>16x16x16</string>
 </dict>
 </plist>

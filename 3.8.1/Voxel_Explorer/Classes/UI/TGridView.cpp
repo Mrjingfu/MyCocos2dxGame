@@ -173,7 +173,14 @@ void TGridView::addChild(cocos2d::Node *child, int zOrder)
 {
     TGridView::addChild(child, zOrder, child->getName());
 }
- 
+void TGridView::addChildLayer(cocos2d::Node *child)
+{
+    ScrollView::addChild(child, child->getLocalZOrder(), child->getName());
+}
+void TGridView::addChildLayer(cocos2d::Node *child,int zOrder)
+{
+    ScrollView::addChild(child, zOrder, child->getName());
+}
 void TGridView::addChild(Node* child, int zOrder, const std::string &name)
 {
   
