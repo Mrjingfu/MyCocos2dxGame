@@ -8,6 +8,11 @@
 
 #include "VoxelExplorer.h"
 #include "SewerLevel.hpp"
+#include "PrisonLevel.hpp"
+#include "FaneLevel.hpp"
+#include "MineLevel.hpp"
+#include "CaveLevel.hpp"
+#include "TombLevel.hpp"
 #include "TerrainTile.hpp"
 #include "BaseDoor.hpp"
 #include "LevelResourceManager.h"
@@ -900,12 +905,23 @@ bool VoxelExplorer::createLevel()
         return false;
     switch (node->m_Type) {
         case DT_SEWER:
+            m_pCurrentLevel = new(std::nothrow) SewerLevel();
+            break;
         case DT_PRISON:
+            m_pCurrentLevel = new(std::nothrow) PrisonLevel();
+            break;
         case DT_FANE:
+            m_pCurrentLevel = new(std::nothrow) FaneLevel();
+            break;
         case DT_MINES:
+            m_pCurrentLevel = new(std::nothrow) MineLevel();
+            break;
         case DT_CAVE:
+            m_pCurrentLevel = new(std::nothrow) CaveLevel();
+            break;
         case DT_TOMB:
-            
+            m_pCurrentLevel = new(std::nothrow) TombLevel();
+            break;
         case DT_DWARF_CASTLE:
         case DT_MAGA_TOWER:
         case DT_ORC_FORTRESS:
@@ -916,7 +932,6 @@ bool VoxelExplorer::createLevel()
         case DT_WARP_SPACE:
         case DT_DRAGON_LAIR:
         case DT_LICH_TOMB:
-            m_pCurrentLevel = new(std::nothrow) SewerLevel();
             break;
         default:
             break;

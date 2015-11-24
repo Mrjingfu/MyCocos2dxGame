@@ -50,6 +50,8 @@ protected:
     void generateSpawnPoint();
     int randomMonsterRespawnCell();
     int randomPickableRespawnCell();
+    int calculateLevelMonsterCount();
+    int calculateLevelUseableItemCount(const cocos2d::Size& areaSize);
 protected:
     std::vector<PathGraphNode*>    m_Areas;
     Area*               m_AreaEntrance;

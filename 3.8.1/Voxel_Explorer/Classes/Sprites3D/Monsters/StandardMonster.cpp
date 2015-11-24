@@ -25,7 +25,6 @@ StandardMonster* StandardMonster::create(BaseMonster::MonsterType type)
         switch (monster->m_Type) {
             case MT_RAT:
                 monster->setScale(0.8f);
-                monster->m_bJumpMove = true;
                 break;
             case MT_BAT:
                 monster->setScale(0.8f);
@@ -39,7 +38,59 @@ StandardMonster* StandardMonster::create(BaseMonster::MonsterType type)
             case MT_SPIDER:
             case MT_SLIME:
                 monster->setScale(0.5f);
-                monster->m_bJumpMove = true;
+                break;
+                
+            case MT_ALLIP:
+                monster->setOpacity(100);
+                break;
+            case MT_PRISONER:
+            case MT_PRISONGUARD:
+            case MT_TORTURE:
+            case MT_MOB:
+                break;
+                
+            case MT_GATEKEEPER:
+                break;
+            case MT_BELIEVER:
+            case MT_APOLOGIST:
+            case MT_ADJUDICATOR:
+            case MT_PRIEST:
+                monster->setScale(0.8f);
+                break;
+                
+            case MT_DEATHMINER:
+            case MT_KOBOLD:
+                break;
+            case MT_OOZE:
+            case MT_SHADOW:
+            case MT_ANKHEG:
+                monster->setScale(0.8f);
+                monster->m_bJumpMove = false;
+                break;
+                
+            case MT_WOLF:
+            case MT_BEAR:
+            case MT_GNOLL:
+                monster->setScale(0.8f);
+                break;
+            case MT_GOBLIN:
+                monster->setScale(0.5f);
+                break;
+            case MT_DINOSAUR:
+                monster->setScale(0.9f);
+                break;
+                
+            case MT_SKELETON:
+            case MT_ZOMBIE:
+            case MT_GHOUL:
+                monster->setScale(0.8f);
+                break;
+            case MT_GARGOYLE:
+                monster->setPositionY(TerrainTile::CONTENT_SCALE*0.25f);
+                monster->m_bJumpMove = false;
+                break;
+            case MT_GHOST:
+                monster->m_bJumpMove = false;
                 break;
             default:
                 break;

@@ -1,36 +1,30 @@
 //
-//  SewerLevel.cpp
+//  CaveLevel.cpp
 //  Voxel_Explorer
 //
-//  Created by wang haibo on 15/10/23.
+//  Created by wang haibo on 15/11/24.
 //
 //
 
-#include "SewerLevel.hpp"
-#include "GameFormula.hpp"
-#include "RandomDungeon.hpp"
-#include "StandardMonster.hpp"
-#include "PickableItem.hpp"
+#include "CaveLevel.hpp"
 #include "VoxelExplorer.h"
-#include "UseableItem.hpp"
-#include "AlisaMethod.h"
+#include "StandardMonster.hpp"
 USING_NS_CC;
-
-SewerLevel::SewerLevel()
+CaveLevel::CaveLevel()
 {
 }
 
-bool SewerLevel::createMonsters()
+bool CaveLevel::createMonsters()
 {
     int monsterNum = calculateLevelMonsterCount();
     for (int i=0; i < monsterNum; i++) {
-        BaseMonster::MonsterType type = (BaseMonster::MonsterType)cocos2d::random((int)BaseMonster::MT_RAT, (int)BaseMonster::MT_SLIME);
+        BaseMonster::MonsterType type = (BaseMonster::MonsterType)cocos2d::random((int)BaseMonster::MT_WOLF, (int)BaseMonster::MT_GNOLL);
         StandardMonster* monster = StandardMonster::create(type);
         if(!monster)
             return false;
         int tileIndex = -1;
         do {
-             tileIndex = randomMonsterRespawnCell();
+            tileIndex = randomMonsterRespawnCell();
         } while (tileIndex == -1);
         
         monster->setPosition3D(Vec3(m_Map[tileIndex].m_nX*TerrainTile::CONTENT_SCALE, -0.5f*TerrainTile::CONTENT_SCALE, -m_Map[tileIndex].m_nY*TerrainTile::CONTENT_SCALE));
@@ -41,14 +35,14 @@ bool SewerLevel::createMonsters()
     }
     return true;
 }
-bool SewerLevel::createSummoningMonsters(const cocos2d::Vec2& mapPos)
+bool CaveLevel::createSummoningMonsters(const cocos2d::Vec2& mapPos)
 {
     std::vector<int> neighbours4 = getNeighbours4();
     for (int i = 0; i < neighbours4.size(); i++) {
         int index = mapPos.x + mapPos.y * m_nWidth + neighbours4[i];
         if(isTerrainTilePassable(index))
         {
-            BaseMonster::MonsterType type = (BaseMonster::MonsterType)cocos2d::random((int)BaseMonster::MT_RAT, (int)BaseMonster::MT_SLIME);
+            BaseMonster::MonsterType type = (BaseMonster::MonsterType)cocos2d::random((int)BaseMonster::MT_WOLF, (int)BaseMonster::MT_GNOLL);
             StandardMonster* monster = StandardMonster::create(type);
             if(!monster)
                 return false;

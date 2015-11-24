@@ -141,7 +141,7 @@ bool GameUILayer::addEvents()
         return false;
     
     ui::ImageView* monsgerIconFrame =  dynamic_cast<ui::ImageView*>(UtilityHelper::seekNodeByName(m_pRootNode, "btn_monster"));
-    if (!m_pMonsterIcon)
+    if (!monsgerIconFrame)
         return false;
 
     
