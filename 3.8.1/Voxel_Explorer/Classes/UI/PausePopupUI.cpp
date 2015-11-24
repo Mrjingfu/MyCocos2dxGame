@@ -7,3 +7,20 @@
 //
 
 #include "PausePopupUI.h"
+PausePopupUI::PausePopupUI()
+{
+    
+}
+PausePopupUI::~PausePopupUI()
+{
+    
+}
+bool PausePopupUI::initUi()
+{
+    return load("",false);
+}
+bool PausePopupUI::addEvents()
+{
+    return true;
+
+}

@@ -12,7 +12,8 @@
 #include "PopupUILayer.h"
 #include "TGridView.h"
 
-class BagLayerUI;
+class BagManngerLayerUI;
+class BagLayer;
 class  RolePopupUI:public PopupUILayer {
     RolePopupUI();
 
@@ -22,12 +23,13 @@ public:
     virtual bool initUi() override;
     void onEnter() override;
     void onExit()override;
-    void updateItems();//更新背包角色信息
-    void setStateIdentify(bool state){ _isOpenIdentify = state;}
+    void updateItems(bool _isOpenIdentify = false);//更新背包角色信息
+    
 private:
     
     void onClickColse(Ref* ref);
     void onClickChnageBag(Ref*);
+    void onClickShop(Ref*);
     void onClickSortAll(Ref*,Widget::TouchEventType);
     void onClickSortEquip(Ref*,Widget::TouchEventType);
     void onClickSortPotion(Ref*,Widget::TouchEventType);
@@ -44,13 +46,13 @@ private:
     //设置已经装备道具位置
     void setEquipItem(cocos2d::Vec2 pt,std::string icon);
     void updateRoleProp();//更新角色信息
-    void updateBagProp();//更新背包信息
+    void updateEquipProp();//更新装备属性
     
+    void useIndetifyUpdate();
 private:
-   bool _isOpenIdentify;   //是否打开辨识卷轴
-   TGridView* m_pGridView;
+    BagLayer*      m_pBagLayer;
    cocos2d::ui::ImageView* m_pGridFrame;
-    cocos2d::ui::Layout* m_pEquipFrame;
+   cocos2d::ui::Layout* m_pEquipFrame;
    cocos2d::ui::Button* m_pBtnClose;
    cocos2d::ui::Button* m_pBtnAllBag;
    cocos2d::ui::Button* m_pBtnChangeBag;
@@ -74,8 +76,7 @@ private:
     cocos2d::ui::Text*  m_pRoleDodge;
     
    cocos2d::ui::ImageView* m_pShopBtn;
-    
-    BagLayerUI* m_BagLayer;
+  
 };
 
 #endif /* RolePopUpUI_hpp */

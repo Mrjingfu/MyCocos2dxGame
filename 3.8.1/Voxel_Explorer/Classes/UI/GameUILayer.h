@@ -20,6 +20,7 @@ public:
     virtual ~GameUILayer();
 public:
     CREATE_FUNC(GameUILayer);
+    virtual bool init() override;
     virtual bool addEvents() override;
     void onEnter() override;
     void onExit()override;
@@ -92,6 +93,10 @@ private:
     //添加游戏文本信息
     void sendMessage(std::string msg,cocos2d::Color3B msgColor = cocos2d::Color3B::WHITE);
     void setMsgItem(std::string msg,cocos2d::Color3B msgColor = cocos2d::Color3B::WHITE);
+private:
+    bool initRoleUI();
+    bool initMonsterUI();
+    bool initGameUI();
 private:
     bool _isOpenSmailMap;                       //是否打开小地图
     bool _isDist;                               //是否点击地图查看信息

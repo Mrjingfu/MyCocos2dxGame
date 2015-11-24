@@ -66,8 +66,8 @@ bool ItemPopupUI::init()
 {
     if (PopupUILayer::init())
     {
-        this->load("itemPopupLayer.csb",false);
-        return true;
+         return this->load("itemPopupLayer.csb",false);
+       
     }
     return false;
 }

@@ -52,10 +52,8 @@ bool GameScene::init()
         return false;
    
     auto gameui = GameUILayer::create();
-   
-    if (!gameui->load("gameScene.csb"))
+    if (!gameui)
         return false;
-    
     gameui->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
     
     VoxelExplorer::getInstance()->get2DLayer()->addChild(gameui);

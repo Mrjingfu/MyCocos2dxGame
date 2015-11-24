@@ -117,7 +117,7 @@
 	<key>ITEM_PROP_TYPE_SUNDRIES</key>
 	<string>杂物</string>
 	<key>ITEM_MONEY_DESC</key>
-	<string>出售价格：</string>
+	<string>出售：</string>
 	<key>USE_POTION_ TREAT</key>
 	<string>+%d HP</string>
 	<key>USE_POTION_ MAGIC</key>

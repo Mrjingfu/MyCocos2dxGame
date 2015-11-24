@@ -17,6 +17,8 @@ class PausePopupUI: public PopupUILayer{
 public:
     CREATE_FUNC(PausePopupUI);
     virtual ~PausePopupUI();
+    virtual bool initUi() override;
+    virtual bool addEvents() override;
 };
 
 #endif /* PausePopupUI_hpp */

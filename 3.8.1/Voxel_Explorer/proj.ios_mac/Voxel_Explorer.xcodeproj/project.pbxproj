@@ -201,8 +201,8 @@
 		EC00DD5C1BD66586009BC378 /* MenuUILayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC00DD571BD66586009BC378 /* MenuUILayer.cpp */; };
 		EC00DD5F1BD665A6009BC378 /* MenuScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC00DD5D1BD665A6009BC378 /* MenuScene.cpp */; };
 		EC00DD601BD665A6009BC378 /* MenuScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC00DD5D1BD665A6009BC378 /* MenuScene.cpp */; };
-		EC0F15991BFF3FAC000C11DD /* BagLayerUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC0F15971BFF3FAC000C11DD /* BagLayerUI.cpp */; };
-		EC0F159A1BFF3FAC000C11DD /* BagLayerUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC0F15971BFF3FAC000C11DD /* BagLayerUI.cpp */; };
+		EC0F15991BFF3FAC000C11DD /* BagManngerLayerUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC0F15971BFF3FAC000C11DD /* BagManngerLayerUI.cpp */; };
+		EC0F159A1BFF3FAC000C11DD /* BagManngerLayerUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC0F15971BFF3FAC000C11DD /* BagManngerLayerUI.cpp */; };
 		EC5A65211BE8BF6C006A0D2B /* NoteUi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC5A651F1BE8BF6C006A0D2B /* NoteUi.cpp */; };
 		EC5A65221BE8BF6C006A0D2B /* NoteUi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC5A651F1BE8BF6C006A0D2B /* NoteUi.cpp */; };
 		EC602AAC1BF46A2D00484D42 /* AchievementManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC602AAA1BF46A2D00484D42 /* AchievementManager.cpp */; };
@@ -219,6 +219,8 @@
 		EC67165A1BCE7F5F00C81CFC /* lang in Resources */ = {isa = PBXBuildFile; fileRef = EC6716561BCE7F5F00C81CFC /* lang */; };
 		EC67165D1BCE7F5F00C81CFC /* ui in Resources */ = {isa = PBXBuildFile; fileRef = EC6716581BCE7F5F00C81CFC /* ui */; };
 		EC67165E1BCE7F5F00C81CFC /* ui in Resources */ = {isa = PBXBuildFile; fileRef = EC6716581BCE7F5F00C81CFC /* ui */; };
+		EC6E41301C03FDB900C77C23 /* BagLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC6E412E1C03FDB900C77C23 /* BagLayer.cpp */; };
+		EC6E41311C03FDB900C77C23 /* BagLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC6E412E1C03FDB900C77C23 /* BagLayer.cpp */; };
 		EC7F92D31BCF9ED200B26C6C /* HueSprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC7F92D11BCF9ED200B26C6C /* HueSprite.cpp */; };
 		EC7F92D41BCF9ED200B26C6C /* HueSprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC7F92D11BCF9ED200B26C6C /* HueSprite.cpp */; };
 		ECD10D6C1BD0967B007DD888 /* CloseCallback.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECD10D631BD0967B007DD888 /* CloseCallback.cpp */; };
@@ -457,8 +459,8 @@
 		EC00DD581BD66586009BC378 /* MenuUILayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuUILayer.h; sourceTree = "<group>"; };
 		EC00DD5D1BD665A6009BC378 /* MenuScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MenuScene.cpp; sourceTree = "<group>"; };
 		EC00DD5E1BD665A6009BC378 /* MenuScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuScene.h; sourceTree = "<group>"; };
-		EC0F15971BFF3FAC000C11DD /* BagLayerUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BagLayerUI.cpp; sourceTree = "<group>"; };
-		EC0F15981BFF3FAC000C11DD /* BagLayerUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BagLayerUI.h; sourceTree = "<group>"; };
+		EC0F15971BFF3FAC000C11DD /* BagManngerLayerUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BagManngerLayerUI.cpp; sourceTree = "<group>"; };
+		EC0F15981BFF3FAC000C11DD /* BagManngerLayerUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BagManngerLayerUI.h; sourceTree = "<group>"; };
 		EC5A651F1BE8BF6C006A0D2B /* NoteUi.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NoteUi.cpp; sourceTree = "<group>"; };
 		EC5A65201BE8BF6C006A0D2B /* NoteUi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteUi.h; sourceTree = "<group>"; };
 		EC602AAA1BF46A2D00484D42 /* AchievementManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AchievementManager.cpp; sourceTree = "<group>"; };
@@ -474,6 +476,8 @@
 		EC6716441BCE7F2C00C81CFC /* LogoScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogoScene.h; sourceTree = "<group>"; };
 		EC6716561BCE7F5F00C81CFC /* lang */ = {isa = PBXFileReference; lastKnownFileType = folder; path = lang; sourceTree = "<group>"; };
 		EC6716581BCE7F5F00C81CFC /* ui */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ui; sourceTree = "<group>"; };
+		EC6E412E1C03FDB900C77C23 /* BagLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BagLayer.cpp; sourceTree = "<group>"; };
+		EC6E412F1C03FDB900C77C23 /* BagLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BagLayer.h; sourceTree = "<group>"; };
 		EC7F92D11BCF9ED200B26C6C /* HueSprite.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HueSprite.cpp; sourceTree = "<group>"; };
 		EC7F92D21BCF9ED200B26C6C /* HueSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HueSprite.h; sourceTree = "<group>"; };
 		ECD10D631BD0967B007DD888 /* CloseCallback.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloseCallback.cpp; sourceTree = "<group>"; };
@@ -984,8 +988,10 @@
 		ECD10D621BD0967B007DD888 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				EC0F15971BFF3FAC000C11DD /* BagLayerUI.cpp */,
-				EC0F15981BFF3FAC000C11DD /* BagLayerUI.h */,
+				EC0F15971BFF3FAC000C11DD /* BagManngerLayerUI.cpp */,
+				EC0F15981BFF3FAC000C11DD /* BagManngerLayerUI.h */,
+				EC6E412E1C03FDB900C77C23 /* BagLayer.cpp */,
+				EC6E412F1C03FDB900C77C23 /* BagLayer.h */,
 				ECD64A6F1BF1CD71008E04D7 /* InfoPopupUI.cpp */,
 				ECD64A701BF1CD71008E04D7 /* InfoPopupUI.h */,
 				ECECACC51BE7353700B14FFC /* DeadPopupUI.cpp */,
@@ -1239,6 +1245,7 @@
 				EC6716451BCE7F2C00C81CFC /* LogoScene.cpp in Sources */,
 				551E93A91BD51282009F788F /* AlisaMethod.cpp in Sources */,
 				555B0D191BC51A2C0055FB6D /* BaseLevel.cpp in Sources */,
+				EC6E41301C03FDB900C77C23 /* BagLayer.cpp in Sources */,
 				55EC95851BC6AA7B0008D1D7 /* TerrainTile.cpp in Sources */,
 				550545231BFEF00C006B4500 /* OutlineEffect3D.cpp in Sources */,
 				551651C51BD73102004ED7F6 /* RandomDungeon.cpp in Sources */,
@@ -1248,7 +1255,7 @@
 				55F81CC81BDB928F002EC075 /* MaterialProperty.cpp in Sources */,
 				55F81CCC1BDB92AC002EC075 /* QuestItemProperty.cpp in Sources */,
 				ECD10D701BD0967B007DD888 /* PopupUILayerManager.cpp in Sources */,
-				EC0F15991BFF3FAC000C11DD /* BagLayerUI.cpp in Sources */,
+				EC0F15991BFF3FAC000C11DD /* BagManngerLayerUI.cpp in Sources */,
 				ECD10D6C1BD0967B007DD888 /* CloseCallback.cpp in Sources */,
 				551E93C51BD51291009F788F /* UserRecord.cpp in Sources */,
 				ECECACCF1BE7353700B14FFC /* PausePopupUI.cpp in Sources */,
@@ -1330,11 +1337,12 @@
 				EC602AB71BF47CAC00484D42 /* StatisticsManager.cpp in Sources */,
 				550545181BFEEF7E006B4500 /* EffectSprite3D.cpp in Sources */,
 				5505452F1BFF1092006B4500 /* StandardPortal.cpp in Sources */,
+				EC6E41311C03FDB900C77C23 /* BagLayer.cpp in Sources */,
 				555B0D241BC51A2C0055FB6D /* GameScene.cpp in Sources */,
 				ECE1B9481BD8AC820035B4D9 /* TGridView.cpp in Sources */,
 				551E93CC1BD51291009F788F /* PlayerProperty.cpp in Sources */,
 				551E93ED1BD512D3009F788F /* XXTEA.cpp in Sources */,
-				EC0F159A1BFF3FAC000C11DD /* BagLayerUI.cpp in Sources */,
+				EC0F159A1BFF3FAC000C11DD /* BagManngerLayerUI.cpp in Sources */,
 				551E93E71BD512D3009F788F /* md5.c in Sources */,
 				ECD10D6F1BD0967B007DD888 /* PopupUILayer.cpp in Sources */,
 				55F81CA21BDB208D002EC075 /* UseableItem.cpp in Sources */,

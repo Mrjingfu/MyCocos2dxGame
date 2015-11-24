@@ -6,21 +6,21 @@
 //
 //
 
-#include "BagLayerUI.h"
+#include "BagManngerLayerUI.h"
 #include "UtilityHelper.h"
 USING_NS_CC;
-BagLayerUI::BagLayerUI()
+BagManngerLayerUI::BagManngerLayerUI()
 {
     m_pItemImgLayer = nullptr;
     m_pEquipMarkLayer = nullptr;
     m_pItemCountLayer = nullptr;
 }
 
-BagLayerUI::~BagLayerUI()
+BagManngerLayerUI::~BagManngerLayerUI()
 {
     
 }
-bool BagLayerUI::init(cocos2d::Size size)
+bool BagManngerLayerUI::init(cocos2d::Size size)
 {
     if (!Layout::init())
         return false;
@@ -63,9 +63,9 @@ bool BagLayerUI::init(cocos2d::Size size)
     
     return true;
 }
-BagLayerUI* BagLayerUI::create(cocos2d::Size size)
+BagManngerLayerUI* BagManngerLayerUI::create(cocos2d::Size size)
 {
-    BagLayerUI* itemUi = new (std::nothrow) BagLayerUI();
+    BagManngerLayerUI* itemUi = new (std::nothrow) BagManngerLayerUI();
     if (itemUi && itemUi->init(size))
     {
         itemUi->autorelease();
@@ -74,7 +74,7 @@ BagLayerUI* BagLayerUI::create(cocos2d::Size size)
     CC_SAFE_DELETE(itemUi);
     return nullptr;
 }
-void BagLayerUI::setLayerContentSize(const cocos2d::Size &contentSize)
+void BagManngerLayerUI::setLayerContentSize(const cocos2d::Size &contentSize)
 {
     setContentSize(contentSize);
     
@@ -98,7 +98,7 @@ void BagLayerUI::setLayerContentSize(const cocos2d::Size &contentSize)
     }
     
 }
-void BagLayerUI::addItem(int index,int itemId,cocos2d::Vec2 pt,std::string itemIcon)
+void BagManngerLayerUI::addItem(int index,int itemId,cocos2d::Vec2 pt,std::string itemIcon)
 {
     m_items.insert(std::pair<int, int>(index,itemId));
     if (m_pItemImgLayer) {
@@ -111,7 +111,7 @@ void BagLayerUI::addItem(int index,int itemId,cocos2d::Vec2 pt,std::string itemI
     }
 }
 
-void BagLayerUI::setItemCount(cocos2d::Vec2 pt,int count)
+void BagManngerLayerUI::setItemCount(cocos2d::Vec2 pt,int count)
 {
     if (m_pItemCountLayer) {
         Label* itemCount = Label::createWithTTF(StringUtils::format("X%d",count), UtilityHelper::getLocalString("FONT_NAME"), 36);
@@ -122,7 +122,7 @@ void BagLayerUI::setItemCount(cocos2d::Vec2 pt,int count)
         m_pItemCountLayer->addChild(itemCount);
     }
  }
-void BagLayerUI::setItemEquipMark(cocos2d::Vec2 pt)
+void BagManngerLayerUI::setItemEquipMark(cocos2d::Vec2 pt)
 {
     if (m_pEquipMarkLayer) {
         ui::ImageView* img = ui::ImageView::create("ui_equip_label.png",ui::TextureResType::PLIST);
@@ -133,7 +133,7 @@ void BagLayerUI::setItemEquipMark(cocos2d::Vec2 pt)
         m_pEquipMarkLayer->addChild(img);
     }
 }
-void BagLayerUI::setItemInIentify(cocos2d::Vec2 pt)
+void BagManngerLayerUI::setItemInIentify(cocos2d::Vec2 pt)
 {
     if (m_pIteminIentifyLayer) {
         ui::ImageView* img = ui::ImageView::create("ui_indentify_icon.png",ui::TextureResType::PLIST);
@@ -144,7 +144,7 @@ void BagLayerUI::setItemInIentify(cocos2d::Vec2 pt)
         m_pIteminIentifyLayer->addChild(img);
     }
 }
-void BagLayerUI::removeItems()
+void BagManngerLayerUI::removeItems()
 {
     if (m_pItemImgLayer) {
         m_pItemImgLayer->removeAllChildren();
@@ -163,7 +163,7 @@ void BagLayerUI::removeItems()
     }
     m_items.clear();
 }
-int BagLayerUI::getItemId(int index) const
+int BagManngerLayerUI::getItemId(int index) const
 {
     auto iter = m_items.find(index);
     if (iter != m_items.end())

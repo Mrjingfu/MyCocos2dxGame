@@ -521,6 +521,7 @@ bool PlayerProperty::indentifyItem(CChaosNumber id)
         pickableItemProperty->handleIdentify();
         return true;
     }
+    m_bDirty = true;
     return false;
 }
 bool PlayerProperty::usePotion(CChaosNumber id)
@@ -667,11 +668,13 @@ bool PlayerProperty::removeStackableItemFromBag(PickableItem::PickableItemType t
                 PickableItemProperty* property = static_cast<PickableItemProperty*>(*iter);
                 CC_SAFE_DELETE(property);
                 m_Bag.erase(iter);
+                m_bDirty = true;
                 return true;
             }
             else if((*iter)->getCount() > count)
             {
                 (*iter)->setCount((*iter)->getCount().GetLongValue() - count.GetLongValue());
+                 m_bDirty = true;
                 return true;
             }
             else
@@ -689,6 +692,7 @@ bool PlayerProperty::removeItemFromBag(CChaosNumber id)
             PickableItemProperty* property = static_cast<PickableItemProperty*>(*iter);
             CC_SAFE_DELETE(property);
             m_Bag.erase(iter);
+            m_bDirty = true;
             return true;
         }
     }

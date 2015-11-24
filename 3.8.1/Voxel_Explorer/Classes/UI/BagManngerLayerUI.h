@@ -6,18 +6,18 @@
 //
 //
 
-#ifndef BagLayerUI_hpp
-#define BagLayerUI_hpp
+#ifndef BagManngerLayerUI_hpp
+#define BagManngerLayerUI_hpp
 
 #include "ui/CocosGUI.h"
 #include "ChaosNumber.h"
 #include "PickableItemProperty.hpp"
-class BagLayerUI:public cocos2d::ui::Layout {
+class BagManngerLayerUI:public cocos2d::ui::Layout {
     
-    BagLayerUI();
+    BagManngerLayerUI();
 public:
-    virtual ~BagLayerUI();
-    static BagLayerUI* create(cocos2d::Size size);
+    virtual ~BagManngerLayerUI();
+    static BagManngerLayerUI* create(cocos2d::Size size);
     bool init(cocos2d::Size size);
     void addItem(int index,int itemId,cocos2d::Vec2 pt,std::string itemIcon);
     void setItemQulity(cocos2d::Vec2 pt,PICKABLEITEM_QUALITY Quality);
@@ -35,4 +35,4 @@ protected:
     std::map<int,int> m_items;
 };
 
-#endif /* BagLyaerUI_hpp */
+#endif /* BagManngerLayerUI_hpp */

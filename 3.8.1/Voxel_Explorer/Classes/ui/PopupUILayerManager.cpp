@@ -11,7 +11,8 @@
 #include "ItemPopupUI.h"
 #include "UtilityHelper.h"
 #include "InfoPopupUI.h"
-
+#include "ShopPopupUI.h"
+#include "PausePopupUI.h"
 PopupUILayerManager::PopupUILayerManager()
 {
     m_pParentLayer = nullptr;
@@ -97,6 +98,12 @@ PopupUILayer* PopupUILayerManager::initPopUp(ePopupType type)
             break;
         case ePopupEquipItem:
             popupLayer = ItemPopupUI::create();
+            break;
+        case ePopupShop:
+            popupLayer = ShopPopupUI::create();
+            break;
+        case ePopupPause:
+            popupLayer = PausePopupUI::create();
             break;
         default:
             break;

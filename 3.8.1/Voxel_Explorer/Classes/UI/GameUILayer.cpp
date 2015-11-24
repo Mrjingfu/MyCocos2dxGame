@@ -75,10 +75,18 @@ GameUILayer::~GameUILayer()
 {
     
 }
-
-bool GameUILayer::addEvents()
+bool GameUILayer::init()
 {
-    //角色
+    if (!WrapperUILayer::init())
+        return false;
+
+    if (!load("gameScene.csb"))
+        return false;
+    
+    return true;
+}
+bool GameUILayer::initRoleUI()
+{
     m_pRoleBtn = dynamic_cast<ui::ImageView*>(UtilityHelper::seekNodeByName(m_pRootNode, "btn_role"));
     if (!m_pRoleBtn)
         return false;
@@ -86,31 +94,31 @@ bool GameUILayer::addEvents()
     m_pRoleName =dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "role_name"));
     if (!m_pRoleName)
         return false;
-
-     m_pRoleHpBar = dynamic_cast<ui::LoadingBar*>(UtilityHelper::seekNodeByName(m_pRootNode, "progress_role_blood"));
+    
+    m_pRoleHpBar = dynamic_cast<ui::LoadingBar*>(UtilityHelper::seekNodeByName(m_pRootNode, "progress_role_blood"));
     if (!m_pRoleHpBar)
         return false;
     m_pRoleMpBar = dynamic_cast<ui::LoadingBar*>(UtilityHelper::seekNodeByName(m_pRootNode, "progress_role_margic"));
     if (!m_pRoleMpBar)
         return false;
-
+    
     m_pRoleCurHp = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "progress_role_blood_num"));
     if (!m_pRoleCurHp)
         return false;
-
+    
     m_pRoleMaxHp = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "progress_role_blood_maxnum"));
     if(!m_pRoleMaxHp)
         return false;
-
+    
     m_pRoleCurMp = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "progress_role_margic_num"));
     if (!m_pRoleCurMp)
         return false;
-
+    
     
     m_pRoleMaxMp = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "progress_role_margic_maxnum"));
     if(!m_pRoleMaxMp)
         return false;
-
+    
     m_pRoleExpBar = dynamic_cast<ui::LoadingBar*>(UtilityHelper::seekNodeByName(m_pRootNode, "progress_role_exp"));
     if(!m_pRoleExpBar)
         return false;
@@ -122,12 +130,14 @@ bool GameUILayer::addEvents()
     m_pRoleLayout = dynamic_cast<ui::Layout*>(UtilityHelper::seekNodeByName(m_pRootNode, "Panel_role"));
     if (!m_pRoleLayout)
         return false;
-    
-    //怪物
+    return true;
+}
+bool GameUILayer::initMonsterUI()
+{
     m_pMonsterLayout =  dynamic_cast<ui::Layout*>(UtilityHelper::seekNodeByName(m_pRootNode, "Panel_monster"));
     if (!m_pMonsterLayout)
         return false;
-
+    
     m_pMonsterCurHp = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "progress_monster_blood_num"));
     if (!m_pMonsterCurHp)
         return false;
@@ -141,9 +151,9 @@ bool GameUILayer::addEvents()
         return false;
     
     ui::ImageView* monsgerIconFrame =  dynamic_cast<ui::ImageView*>(UtilityHelper::seekNodeByName(m_pRootNode, "btn_monster"));
-    if (!m_pMonsterIcon)
+    if (!monsgerIconFrame)
         return false;
-
+    
     
     m_pMonsterIcon = ImageView::create();
     m_pMonsterIcon->setPosition(monsgerIconFrame->getContentSize()*0.5);
@@ -153,7 +163,7 @@ bool GameUILayer::addEvents()
     m_pMonsterMaxHp = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "progress_monster_blood_maxnum"));
     if(!m_pMonsterMaxHp)
         return false;
-   
+    
     m_pMonsterName = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "monster_name"));
     if(!m_pMonsterName)
         return false;
@@ -161,7 +171,7 @@ bool GameUILayer::addEvents()
     m_pMonsterLevel = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "monster_lv_num"));
     if (!m_pMonsterLevel)
         return false;
-   
+    
     m_pMonsterMpBar = dynamic_cast<ui::LoadingBar*>(UtilityHelper::seekNodeByName(m_pRootNode, "progress_monster_margic"));
     if (!m_pMonsterMpBar)
         return false;
@@ -173,7 +183,10 @@ bool GameUILayer::addEvents()
     m_pMonsterMaxMp = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "progress_monster_margic_maxnum"));
     if (!m_pMonsterMaxMp)
         return false;
-    //游戏
+    return true;
+}
+bool GameUILayer::initGameUI()
+{
     m_pGameMsgBtn = dynamic_cast<ui::ImageView*>(UtilityHelper::seekNodeByName(m_pRootNode, "game_btn_msg"));
     if (!m_pGameMsgBtn)
         return false;
@@ -220,10 +233,19 @@ bool GameUILayer::addEvents()
     if (!m_pGameDistFrameCloseBtn)
         return false;
     
-   
-    if (!registerTouchEvent()) {
+    return true;
+}
+bool GameUILayer::addEvents()
+{
+    if (!initRoleUI())
         return false;
-    }
+    if (!initMonsterUI())
+        return false;
+    if (!initGameUI())
+        return false;
+        
+    if (!registerTouchEvent())
+        return false;
     
     m_pListMsgs = ui::ListView::create();
     m_pListMsgs->setBackGroundImageScale9Enabled(true);
@@ -287,11 +309,14 @@ bool GameUILayer::addEvents()
     m_pRoleBufferList->setFrameMargin(cocos2d::Size(1,1));
     m_pRoleBufferList->setClippingEnabled(false);
     m_pRoleLayout->addChild(m_pRoleBufferList);
+    
+    
     updateRoleUi();
     updateGameInfo();
     initMessageFrame();
     return true;
 }
+
 bool GameUILayer::registerTouchEvent()
 {
     auto dispatcher = Director::getInstance()->getEventDispatcher();
@@ -559,8 +584,7 @@ void GameUILayer::onEventUserScroll(cocos2d::EventCustom *sender)
             rolePopup = static_cast<RolePopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupRole));
         }
         if (rolePopup) {
-            rolePopup->setStateIdentify(true);
-            rolePopup->updateItems();
+            rolePopup->updateItems(true);
         }
         return;
     }else if(scrollProperty->getPickableItemType() == PickableItem::PIT_SCROLL_TELEPORT)
@@ -690,10 +714,9 @@ void GameUILayer::onEventMonsterAlert(cocos2d::EventCustom *sender)
     BaseMonster* monster = static_cast<BaseMonster*>(sender->getUserData());
     Vec2 pt = VoxelExplorer::getInstance()->getMainCamera()->projectGL(monster->getPosition3D());
     pt = Vec2(pt.x, pt.y+TerrainTile::CONTENT_SCALE*2.5);
+    PopupUILayerManager::getInstance()->showPromptSign(TIP_QUESTION, pt);
 
-//    PopupUILayerManager::getInstance()->showPromptSign(TIP_QUESTION, pt);
-
-    updateMonsterUi(monster);
+//    updateMonsterUi(monster);
 }
 void GameUILayer::onEventMonsterConfusing(cocos2d::EventCustom *sender)
 {

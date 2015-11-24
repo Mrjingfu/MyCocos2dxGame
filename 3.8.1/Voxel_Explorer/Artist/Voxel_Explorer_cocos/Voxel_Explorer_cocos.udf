@@ -33,8 +33,10 @@
         <OpenedDocuments>
           <FilePathData Path="pausePopupLayer.csd" />
           <FilePathData Path="gameScene.csd" />
+          <FilePathData Path="characterLayer.csd" />
+          <FilePathData Path="shopPopupLayer.csd" />
         </OpenedDocuments>
-        <ActiveDocument Path="gameScene.csd" />
+        <ActiveDocument Path="shopPopupLayer.csd" />
       </Value>
     </Item>
   </Properties>
