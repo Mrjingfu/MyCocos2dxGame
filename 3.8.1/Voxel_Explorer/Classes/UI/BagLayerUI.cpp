@@ -53,6 +53,14 @@ bool BagLayerUI::init(cocos2d::Size size)
 //    m_pItemCountLayer->setBackGroundColor(Color3B::ORANGE);
     addChild(m_pItemCountLayer);
     
+    m_pIteminIentifyLayer = Layout::create();
+    m_pIteminIentifyLayer->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
+    m_pIteminIentifyLayer->setContentSize(size);
+    m_pIteminIentifyLayer->setPosition(getContentSize()*0.5);
+//        m_pItemCountLayer->setBackGroundColorType(cocos2d::ui::Layout::BackGroundColorType::SOLID);
+//        m_pItemCountLayer->setBackGroundColor(Color3B::ORANGE);
+    addChild(m_pIteminIentifyLayer);
+    
     return true;
 }
 BagLayerUI* BagLayerUI::create(cocos2d::Size size)
@@ -83,6 +91,12 @@ void BagLayerUI::setLayerContentSize(const cocos2d::Size &contentSize)
         m_pEquipMarkLayer->setContentSize(contentSize);
         m_pEquipMarkLayer->setPosition(getContentSize()*0.5);
     }
+    if (m_pIteminIentifyLayer) {
+        m_pIteminIentifyLayer->setContentSize(contentSize);
+        m_pIteminIentifyLayer->setPosition(getContentSize()*0.5);
+
+    }
+    
 }
 void BagLayerUI::addItem(int index,int itemId,cocos2d::Vec2 pt,std::string itemIcon)
 {
@@ -119,6 +133,17 @@ void BagLayerUI::setItemEquipMark(cocos2d::Vec2 pt)
         m_pEquipMarkLayer->addChild(img);
     }
 }
+void BagLayerUI::setItemInIentify(cocos2d::Vec2 pt)
+{
+    if (m_pIteminIentifyLayer) {
+        ui::ImageView* img = ui::ImageView::create("ui_indentify_icon.png",ui::TextureResType::PLIST);
+        img->setScale9Enabled(true);
+        img->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
+        img->setPosition(pt);
+        img->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
+        m_pIteminIentifyLayer->addChild(img);
+    }
+}
 void BagLayerUI::removeItems()
 {
     if (m_pItemImgLayer) {
@@ -131,6 +156,10 @@ void BagLayerUI::removeItems()
     
     if (m_pItemCountLayer) {
         m_pItemCountLayer->removeAllChildren();
+    }
+    
+    if (m_pIteminIentifyLayer) {
+        m_pIteminIentifyLayer->removeAllChildren();
     }
     m_items.clear();
 }

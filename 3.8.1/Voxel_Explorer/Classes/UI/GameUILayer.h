@@ -12,6 +12,7 @@
 #include "WrapperUILayer.h"
 class HudTipUi;
 class TGridView;
+class BaseMonster;
 class GameUILayer:public WrapperUILayer {
     
 public:
@@ -38,15 +39,18 @@ private:
     void onClickDistTipsFrame(Ref* ref);
 
     
-    void onEventUpdateRoleProp(cocos2d::EventCustom *sender);   //更新角色信息
+    void onEventRoleUpdateProp(cocos2d::EventCustom *sender);   //更新角色信息
     void onEventRoleLevelUp(cocos2d::EventCustom *sender);      //角色升级
     void onEventRoleDead(cocos2d::EventCustom *sender);         //角色死亡
     void onEventRoleHud(cocos2d::EventCustom *sender);         //更新角色hud伤害
     
     
-    void onEventUpdateMonsterProp(cocos2d::EventCustom *sender); //更新怪物信息
+    void onEventMonsterUpdateProp(cocos2d::EventCustom *sender); //更新怪物信息
     void onEventMonsterHud(cocos2d::EventCustom *sender);        //更新怪物hud伤害
-    void onEvenetMonsterDead(cocos2d::EventCustom *sender);      //怪物死亡
+    void onEventMonsterDead(cocos2d::EventCustom *sender);      //怪物死亡
+    void onEventMonsterAlert(cocos2d::EventCustom *sender);
+    void onEventMonsterConfusing(cocos2d::EventCustom *sender);
+    
     
     void onEventUserPotion(cocos2d::EventCustom *sender);//使用药水物品
     void onEventUserScroll(cocos2d::EventCustom *sender);//使用卷轴物品
@@ -58,7 +62,21 @@ private:
     void onEventTriggerSummoning(cocos2d::EventCustom *sender);//召唤机关
     void onEventTriggerWeak(cocos2d::EventCustom *sender);  //虚弱机关
     
-    
+
+    void onEventFoundHidderDoor(cocos2d::EventCustom *sender); //发现隐藏门
+    void onEventFoundHidderTrapToxic(cocos2d::EventCustom *sender);//发现隐藏中毒机关
+    void onEventFoundHidderTrapFire(cocos2d::EventCustom *sender);//发现隐藏火机关
+    void onEventFoundHidderTrapParalyic(cocos2d::EventCustom *sender);//发现隐藏麻痹机关
+    void onEventFoundHidderTrapGripping(cocos2d::EventCustom *sender);//发现隐藏夹子机关
+    void onEventFoundHidderTrapSummoning(cocos2d::EventCustom *sender);//发现隐藏召唤机关
+    void onEventFoundHidderTrapWeak(cocos2d::EventCustom *sender);//发现隐藏虚弱机关
+    void onEventFoundHidderMsg(cocos2d::EventCustom *sender);
+    void onEventFoundHidderItem(cocos2d::EventCustom *sender);
+
+    void onEventGoUpStairs(cocos2d::EventCustom *sender);
+    void onEventGoUpStairsForbidden(cocos2d::EventCustom *sender);
+    void onEventGoDownStairs(cocos2d::EventCustom *sender);
+    void onEventGoBossRoom(cocos2d::EventCustom *sender);
     
     void updateRoleBuff();
     //注册触摸事件
@@ -66,7 +84,7 @@ private:
     //更新角色信息
     void updateRoleUi();
     //更新怪物信息
-    void updateMonsterUi();
+    void updateMonsterUi(BaseMonster* monster);
     //更新游戏信息
     void updateGameInfo();
     //初始化消息框

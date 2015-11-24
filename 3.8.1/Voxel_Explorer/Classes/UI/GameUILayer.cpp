@@ -390,6 +390,60 @@ void GameUILayer::updateRoleBuff()
     }
 
 }
+void GameUILayer::onEventFoundHidderDoor(cocos2d::EventCustom *sender) //发现隐藏门
+{
+    CCLOG("onEventFoundHidderDoor");
+}
+void GameUILayer::onEventFoundHidderTrapToxic(cocos2d::EventCustom *sender)//发现隐藏中毒机关
+{
+    CCLOG("onEventFoundHidderTrapToxic");
+}
+void GameUILayer::onEventFoundHidderTrapFire(cocos2d::EventCustom *sender)//发现隐藏火机关
+{
+    CCLOG("onEventFoundHidderTrapFire");
+}
+void GameUILayer::onEventFoundHidderTrapParalyic(cocos2d::EventCustom *sender)//发现隐藏麻痹机关
+{
+    CCLOG("onEventFoundHidderTrapParalyic");
+}
+void GameUILayer::onEventFoundHidderTrapGripping(cocos2d::EventCustom *sender)//发现隐藏夹子机关
+{
+     CCLOG("onEventFoundHidderTrapGripping");
+}
+void GameUILayer::onEventFoundHidderTrapSummoning(cocos2d::EventCustom *sender)//发现隐藏召唤机关
+{
+     CCLOG("onEventFoundHidderTrapSummoning");
+}
+void GameUILayer::onEventFoundHidderTrapWeak(cocos2d::EventCustom *sender)//发现隐藏虚弱机关
+{
+    CCLOG("onEventFoundHidderTrapWeak");
+}
+void GameUILayer::onEventFoundHidderMsg(cocos2d::EventCustom *sender)
+{
+    CCLOG("onEventFoundHidderMsg");
+}
+void GameUILayer::onEventFoundHidderItem(cocos2d::EventCustom *sender)
+{
+    CCLOG("onEventFoundHidderItem");
+}
+
+void GameUILayer::onEventGoUpStairs(cocos2d::EventCustom *sender)
+{
+     CCLOG("onEventGoUpStairs");
+}
+void GameUILayer::onEventGoUpStairsForbidden(cocos2d::EventCustom *sender)
+{
+     CCLOG("onEventGoUpStairsForbidden");
+}
+void GameUILayer::onEventGoDownStairs(cocos2d::EventCustom *sender)
+{
+    CCLOG("onEventGoDownStairs");
+}
+void GameUILayer::onEventGoBossRoom(cocos2d::EventCustom *sender)
+{
+    CCLOG("onEventGoBossRoom");
+}
+
 void GameUILayer::onEventTriggerToxic(cocos2d::EventCustom *sender) //中毒机关
 {
     CCLOG("onEventTriggerToxic");
@@ -535,7 +589,7 @@ void GameUILayer::onEventRoleLevelUp(cocos2d::EventCustom *sender)
     sendMessage(UtilityHelper::getLocalStringForUi("GAME_MESSAGE_LEVEL_UP"),PopupUILayerManager::getInstance()->getTipsColor(TIP_NEUTRAL));
 }
 
-void GameUILayer::onEventUpdateRoleProp(cocos2d::EventCustom *sender)
+void GameUILayer::onEventRoleUpdateProp(cocos2d::EventCustom *sender)
 {
     CCLOG("onEventUpdateProp");
     updateRoleUi();
@@ -575,7 +629,7 @@ void GameUILayer::onEventRoleHud(cocos2d::EventCustom *sender)
     }
     
 }
-void GameUILayer::onEvenetMonsterDead(cocos2d::EventCustom *sender)
+void GameUILayer::onEventMonsterDead(cocos2d::EventCustom *sender)
 {
     CCLOG("onEvenetMonsterDead");
     BaseMonster* monster = static_cast<BaseMonster*>(sender->getUserData());
@@ -604,8 +658,6 @@ void GameUILayer::onEventMonsterHud(cocos2d::EventCustom *sender)
     HurtData* hurData = static_cast<HurtData*>(sender->getUserData());
     Vec2 pt = VoxelExplorer::getInstance()->getMainCamera()->projectGL(hurData->m_vPos);
     pt = Vec2(pt.x, pt.y+TerrainTile::CONTENT_SCALE*2.5);
-//    PopupUILayerManager::getInstance()->showPromptSign(TIP_QUESTION, pt);
-
     if (hurData->m_bDodge) {
        
         PopupUILayerManager::getInstance()->showStatus(TIP_DODGE,  StringUtils::format(UtilityHelper::getLocalStringForUi("STATUS_TEXT_DODGE").c_str(),hurData->m_nDamage),pt);
@@ -626,35 +678,34 @@ void GameUILayer::onEventMonsterHud(cocos2d::EventCustom *sender)
     }
     
 }
-void GameUILayer::onEventUpdateMonsterProp(cocos2d::EventCustom *sender)
+void GameUILayer::onEventMonsterUpdateProp(cocos2d::EventCustom *sender)
 {
     CCLOG("onEventUpdateMonsterProp");
     BaseMonster* monster = static_cast<BaseMonster*>(sender->getUserData());
-    if (monster->getState() != BaseMonster::MonsterState::MS_DEATH) {
-        m_pMonsterLayout->setVisible(true);
-        float hpPer =monster->getMonsterProperty()->getCurrentHP().GetFloatValue()/monster->getMonsterProperty()->getMaxHP().GetFloatValue() *100.0f;
-        m_pMonsterHpBar->setPercent(hpPer);
-        m_pMonsterCurHp->setString(StringUtils::format("%d",int(monster->getMonsterProperty()->getCurrentHP())));
-        m_pMonsterMaxHp->setString(StringUtils::format("/%d",int(monster->getMonsterProperty()->getMaxHP())));
-        m_pMonsterLevel->setString(StringUtils::format("%d",int(monster->getMonsterProperty()->getLevel())));
-        std::string monsterName =UtilityHelper::getLocalString(MONSTER_MODEL_NAMES[monster->getMonsterType()]);
-        if (monster->getMonsterProperty()->isElite()) {
-            m_pMonsterName->setColor(PopupUILayerManager::getInstance()->getTipsColor(TIP_POSITIVE));
-            monsterName = StringUtils::format(UtilityHelper::getLocalStringForUi("MONSTER_ELITE_NAME").c_str(),monsterName.c_str());
-        }else{
-            m_pMonsterName->setColor(PopupUILayerManager::getInstance()->getTipsColor(TIP_DEFAULT));
-        }
-        m_pMonsterIcon->loadTexture(monster->getIconRes(),TextureResType::PLIST);
-        m_pMonsterIcon->setScale(0.35);
-        m_pMonsterIcon->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
-         m_pMonsterName->setString(monsterName);
-    }
+    updateMonsterUi(monster);
+}
+void GameUILayer::onEventMonsterAlert(cocos2d::EventCustom *sender)
+{
+    CCLOG("onEventMonsterAlert");
+    BaseMonster* monster = static_cast<BaseMonster*>(sender->getUserData());
+    Vec2 pt = VoxelExplorer::getInstance()->getMainCamera()->projectGL(monster->getPosition3D());
+    pt = Vec2(pt.x, pt.y+TerrainTile::CONTENT_SCALE*2.5);
+
+//    PopupUILayerManager::getInstance()->showPromptSign(TIP_QUESTION, pt);
+
+    updateMonsterUi(monster);
+}
+void GameUILayer::onEventMonsterConfusing(cocos2d::EventCustom *sender)
+{
+    CCLOG("onEventMonsterConfusing");
+    BaseMonster* monster = static_cast<BaseMonster*>(sender->getUserData());
+    m_pMonsterLayout->setVisible(false);
 }
 
 void GameUILayer::onEnter()
 {
     WrapperUILayer::onEnter();
-    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_PLAYER_PROPERTY_DIRTY, CC_CALLBACK_1(GameUILayer::onEventUpdateRoleProp,this));
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_PLAYER_PROPERTY_DIRTY, CC_CALLBACK_1(GameUILayer::onEventRoleUpdateProp,this));
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_PLAYER_LEVEL_UP, CC_CALLBACK_1(GameUILayer::onEventRoleLevelUp,this));
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_PLAYER_DEATH, CC_CALLBACK_1(GameUILayer::onEventRoleDead,this));
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_PLAYER_HURT, CC_CALLBACK_1(GameUILayer::onEventRoleHud,this));
@@ -664,8 +715,11 @@ void GameUILayer::onEnter()
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_PLAYER_USE_SCROLL, CC_CALLBACK_1(GameUILayer::onEventUserScroll,this));
     
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_MONSTER_HURT, CC_CALLBACK_1(GameUILayer::onEventMonsterHud,this));
-    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_MONSTER_PROPERTY_DIRTY, CC_CALLBACK_1(GameUILayer::onEventUpdateMonsterProp,this));
-    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_MONSTER_DEATH, CC_CALLBACK_1(GameUILayer::onEvenetMonsterDead,this));
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_MONSTER_PROPERTY_DIRTY, CC_CALLBACK_1(GameUILayer::onEventMonsterUpdateProp,this));
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_MONSTER_DEATH, CC_CALLBACK_1(::GameUILayer::onEventMonsterDead,this));
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_MONSTER_ALERT, CC_CALLBACK_1(::GameUILayer::onEventMonsterAlert,this));
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_MONSTER_CONFUSING, CC_CALLBACK_1(::GameUILayer::onEventMonsterConfusing,this));
+    
 
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_TRIGGER_TOXIC_TRAP, CC_CALLBACK_1(GameUILayer::onEventTriggerToxic,this));
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_TRIGGER_FIRE_TRAP, CC_CALLBACK_1(GameUILayer::onEventTriggerFire,this));
@@ -673,6 +727,22 @@ void GameUILayer::onEnter()
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_TRIGGER_GRIPPING_TRAP, CC_CALLBACK_1(GameUILayer::onEventTriggerGripping,this));
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_TRIGGER_SUMMONING_TRAP, CC_CALLBACK_1(GameUILayer::onEventTriggerSummoning,this));
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_TRIGGER_WEAK_TRAP, CC_CALLBACK_1(GameUILayer::onEventTriggerWeak,this)) ;
+    
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_FOUND_HIDDEN_DOOR, CC_CALLBACK_1(GameUILayer::onEventFoundHidderDoor,this));
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_FOUND_HIDDEN_TOXIC_TRAP, CC_CALLBACK_1(GameUILayer::onEventFoundHidderTrapToxic,this));
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_FOUND_HIDDEN_FIRE_TRAP, CC_CALLBACK_1(GameUILayer::onEventFoundHidderTrapFire,this));
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_FOUND_HIDDEN_PARALYTIC_TRAP, CC_CALLBACK_1(GameUILayer::onEventFoundHidderTrapParalyic,this));
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_FOUND_HIDDEN_GRIPPING_TRAP, CC_CALLBACK_1(GameUILayer::onEventFoundHidderTrapGripping,this));
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_FOUND_HIDDEN_SUMMONING_TRAP, CC_CALLBACK_1(GameUILayer::onEventFoundHidderTrapSummoning,this)) ;
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_FOUND_HIDDEN_WEAK_TRAP, CC_CALLBACK_1(GameUILayer::onEventFoundHidderTrapWeak,this)) ;
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_FOUND_HIDDEN_MSG, CC_CALLBACK_1(GameUILayer::onEventFoundHidderMsg,this)) ;
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_FOUND_HIDDEN_ITEM, CC_CALLBACK_1(GameUILayer::onEventFoundHidderItem,this)) ;
+    
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_GO_UPSTAIRS, CC_CALLBACK_1(GameUILayer::onEventGoUpStairs,this)) ;
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_GO_UPSTAIRS_FORBIDDEN, CC_CALLBACK_1(GameUILayer::onEventGoUpStairsForbidden,this)) ;
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_GO_DOWNSTAIRS, CC_CALLBACK_1(GameUILayer::onEventGoDownStairs,this)) ;
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_GO_BOSSROOM, CC_CALLBACK_1(GameUILayer::onEventGoBossRoom,this));
+    
 }
 void GameUILayer::onExit()
 {
@@ -686,6 +756,8 @@ void GameUILayer::onExit()
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_MONSTER_HURT);
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_MONSTER_PROPERTY_DIRTY);
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_MONSTER_DEATH);
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_MONSTER_ALERT);
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_MONSTER_CONFUSING);
     
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_TRIGGER_TOXIC_TRAP);
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_TRIGGER_FIRE_TRAP);
@@ -693,6 +765,22 @@ void GameUILayer::onExit()
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_TRIGGER_GRIPPING_TRAP);
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_TRIGGER_SUMMONING_TRAP);
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_TRIGGER_WEAK_TRAP);
+    
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_FOUND_HIDDEN_DOOR);
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_FOUND_HIDDEN_TOXIC_TRAP);
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_FOUND_HIDDEN_FIRE_TRAP);
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_FOUND_HIDDEN_PARALYTIC_TRAP);
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_FOUND_HIDDEN_GRIPPING_TRAP);
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_FOUND_HIDDEN_SUMMONING_TRAP);
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_FOUND_HIDDEN_WEAK_TRAP);
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_FOUND_HIDDEN_MSG);
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_FOUND_HIDDEN_ITEM);
+    
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_GO_UPSTAIRS);
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_GO_UPSTAIRS_FORBIDDEN);
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_GO_DOWNSTAIRS);
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_GO_BOSSROOM);
+    
     WrapperUILayer::onExit();
 }
 void GameUILayer::sendMessage(std::string msg,Color3B msgColor)
@@ -768,7 +856,31 @@ void GameUILayer::updateRoleUi()
     m_pRoleLevel->setString(Value(int(PlayerProperty::getInstance()->getLevel())).asString());
     
 }
-
+void GameUILayer::updateMonsterUi(BaseMonster* monster)
+{
+    if (!monster)
+        return;
+    if (monster->getState() != BaseMonster::MonsterState::MS_DEATH)
+    {
+        m_pMonsterLayout->setVisible(true);
+        float hpPer =monster->getMonsterProperty()->getCurrentHP().GetFloatValue()/monster->getMonsterProperty()->getMaxHP().GetFloatValue() *100.0f;
+        m_pMonsterHpBar->setPercent(hpPer);
+        m_pMonsterCurHp->setString(StringUtils::format("%d",int(monster->getMonsterProperty()->getCurrentHP())));
+        m_pMonsterMaxHp->setString(StringUtils::format("/%d",int(monster->getMonsterProperty()->getMaxHP())));
+        m_pMonsterLevel->setString(StringUtils::format("%d",int(monster->getMonsterProperty()->getLevel())));
+        std::string monsterName =UtilityHelper::getLocalString(MONSTER_MODEL_NAMES[monster->getMonsterType()]);
+        if (monster->getMonsterProperty()->isElite()) {
+            m_pMonsterName->setColor(PopupUILayerManager::getInstance()->getTipsColor(TIP_POSITIVE));
+            monsterName = StringUtils::format(UtilityHelper::getLocalStringForUi("MONSTER_ELITE_NAME").c_str(),monsterName.c_str());
+        }else{
+            m_pMonsterName->setColor(PopupUILayerManager::getInstance()->getTipsColor(TIP_DEFAULT));
+        }
+        m_pMonsterIcon->loadTexture(monster->getIconRes(),TextureResType::PLIST);
+        m_pMonsterIcon->setScale(0.35);
+        m_pMonsterIcon->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
+        m_pMonsterName->setString(monsterName);
+}
+}
 
 void GameUILayer::onClickRole(Ref* ref)
 {

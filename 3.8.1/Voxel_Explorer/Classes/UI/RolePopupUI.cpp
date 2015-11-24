@@ -54,12 +54,15 @@ void RolePopupUI::onEnter()
 
 //    EventListenerCustom *listener = EventListenerCustom::create(EVENT_PLAYER_PROPERTY_DIRTY, CC_CALLBACK_1(RolePopupUI::onEventUpdateData,this));
 //    Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener,this);
-
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_PLAYER_BAG_EXTEND_OK, CC_CALLBACK_1(RolePopupUI::onEventBagExtend, this));
+        Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_PLAYER_BAG_EXTEND_HAS_REACH_MAXTIMES, CC_CALLBACK_1(RolePopupUI::onEventBagExtendHasReachMaxtimes, this));
     PopupUILayer::onEnter();
 }
 void RolePopupUI::onExit()
 {
 //    Director::getInstance()->getEventDispatcher()->removeEventListenersForTarget(this);
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_PLAYER_BAG_EXTEND_OK);
+     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_PLAYER_BAG_EXTEND_HAS_REACH_MAXTIMES);
     PopupUILayer::onExit();
 }
 bool RolePopupUI::initUi()
@@ -230,24 +233,8 @@ bool RolePopupUI::initUi()
 }
 void RolePopupUI::onClickChnageBag(Ref* ref)
 {
-    PlayerProperty::getInstance()->extendBagSpace();
-    
     CHECK_ACTION(ref);
-    for (int j =0; j<5*3; j++) {
-        ImageView* itemui = ImageView::create();
-        itemui->setTouchEnabled(true);
-        itemui->setScale9Enabled(true);
-        itemui->setContentSize(cocos2d::Size(45,45));
-        itemui->loadTexture("ui_frame_5.png",TextureResType::PLIST);
-        itemui->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
-        m_pGridView->pushBackCustomItem(itemui);
-    }
-    m_pGridView->forceDoLayout();
-    m_BagLayer->setLayerContentSize(m_pGridView->getInnerContainerSize());
-    m_BagLayer->setPosition(m_pGridView->getInnerContainerSize()*0.5);
-    m_pGridView->resume();
-    updateItems();
-    m_pGridView->scrollToBottom(0.8,false);
+    PlayerProperty::getInstance()->extendBagSpace();
 }
 void RolePopupUI::onClickColse(Ref* ref)
 {
@@ -466,7 +453,7 @@ void RolePopupUI::updateBagProp()
             
             //如果使用鉴定卷轴 更新itemUi
             if (_isOpenIdentify && !itemProp->isIdentified()) {
-                //                itemUi->setIndentify();
+                m_BagLayer->setItemInIentify(itemUi->getPosition());
             }
             
             
@@ -529,62 +516,66 @@ void RolePopupUI::selectItemEvent(cocos2d::Ref *pSender, TGridView::EventType ty
                     CCLOG("select itemid = %d", currentItemId);
                 }
             }
+   
             
             //使用鉴定卷轴 只能点击未鉴定的物品
-            if (_isOpenIdentify ) {
-                if (!itemProp->isIdentified()) {
-                    CCLOG("select itemid:%d",currentItemId);
-                    bool isSuccess = PlayerProperty::getInstance()->indentifyItem(CChaosNumber(currentItemId));
-                    _isOpenIdentify =false;
-                    if (isSuccess) {
-                        CCLOG("鉴定成功");
-                        ItemPopupUI* popupui = static_cast<ItemPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupType::ePopupItem));
-                        if (popupui) {
-                            popupui->registerCloseCallback(CC_CALLBACK_0(RolePopupUI::updateItems, this));
-                            popupui->updateItemPopup(currentItemId);
-                            if (equipId !=-1) {
-                                popupui->setDarkLayerVisble(false);
-                                CCLOG("Equippopupui Y:%f",Equippopupui->getRootNode()->getPositionY());
-                               popupui->getRootNode()->setPosition(cocos2d::Vec2(popupui->getRootNode()->getPositionX(),Equippopupui->getRootNode()->getPositionY()-Equippopupui->getRootNode()->getContentSize().height*0.5 - popupui->getRootNode()->getContentSize().height*0.5));
-                            }
-                            CCLOG("select itemid = %d", currentItemId);
-                        }
-                    }else{
-                        CCLOG("鉴定失败");
-                        PopupUILayerManager::getInstance()->closeCurrentPopup();
-                        //弹出鉴定失败窗口
-                    }
-                }
-               
-            }else
+            bool isSucces = false;
+            if (_isOpenIdentify )
             {
-
-                //未使用鉴定卷轴 正常打开
-                ItemPopupUI* popupui = static_cast<ItemPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupType::ePopupItem));
-                if (popupui) {
-                    popupui->registerCloseCallback(CC_CALLBACK_0(RolePopupUI::updateItems, this));
-                    popupui->updateItemPopup(currentItemId);
-                    
-                    if (equipId !=-1) {
-                        popupui->setDarkLayerVisble(false);
-                       
-                        if (Equippopupui) {
-                            
-//                            popupui->getRootNode()->setPosition(cocos2d::Vec2(Equippopupui->getRootNode()->getPositionX()+Equippopupui->getRootNode()->getContentSize().width,Equippopupui->getRootNode()->getPositionY()));
-                            popupui->getRootNode()->setPosition(cocos2d::Vec2(popupui->getRootNode()->getPositionX(),Equippopupui->getRootNode()->getPositionY()-Equippopupui->getRootNode()->getContentSize().height*0.5 - popupui->getRootNode()->getContentSize().height*0.5));
-                        }
-                        
-                    }
-                    CCLOG("select itemid = %d", currentItemId);
-                }
+                //                if (!itemProp->isIdentified())
+                //                {
+                CCLOG("select itemid:%d",currentItemId);
+                isSucces = PlayerProperty::getInstance()->indentifyItem(CChaosNumber(currentItemId));
+                _isOpenIdentify =false;
+                //                 }
             }
             
+            ItemPopupUI* popupui = static_cast<ItemPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupType::ePopupItem));
+            if (popupui)
+            {
+                popupui->registerCloseCallback(CC_CALLBACK_0(RolePopupUI::updateItems, this));
+                popupui->updateItemPopup(currentItemId);
+                
+                if (equipId !=-1 && Equippopupui) {
+                    popupui->setDarkLayerVisble(false);
+                    
+                    //                            popupui->getRootNode()->setPosition(cocos2d::Vec2(Equippopupui->getRootNode()->getPositionX()+Equippopupui->getRootNode()->getContentSize().width,Equippopupui->getRootNode()->getPositionY()));
+                    popupui->getRootNode()->setPosition(cocos2d::Vec2(popupui->getRootNode()->getPositionX(),Equippopupui->getRootNode()->getPositionY()-Equippopupui->getRootNode()->getContentSize().height*0.5 -2- popupui->getRootNode()->getContentSize().height*0.5));
+                    
+                }
+                CCLOG("select itemid = %d", currentItemId);
+                
+            }
         }
     }
 }
 void RolePopupUI::onEventUpdateData(cocos2d::EventCustom *sender)
 {
     updateItems();
+}
+void RolePopupUI::onEventBagExtend(cocos2d::EventCustom *sender)
+{
+    CCLOG("onEventBagExtend");
+    for (int j =0; j<15; j++) {
+        ImageView* itemui = ImageView::create();
+        itemui->setTouchEnabled(true);
+        itemui->setScale9Enabled(true);
+        itemui->setContentSize(cocos2d::Size(45,45));
+        itemui->loadTexture("ui_frame_5.png",TextureResType::PLIST);
+        itemui->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
+        m_pGridView->pushBackCustomItem(itemui);
+    }
+    m_pGridView->forceDoLayout();
+    m_BagLayer->setLayerContentSize(m_pGridView->getInnerContainerSize());
+    m_BagLayer->setPosition(m_pGridView->getInnerContainerSize()*0.5);
+    m_pGridView->resume();
+    updateItems();
+    m_pGridView->scrollToBottom(0.8,false);
+}
+void RolePopupUI::onEventBagExtendHasReachMaxtimes(cocos2d::EventCustom *sender)
+{
+    //扩展次数到达上线,给出提示
+    CCLOG("onEventBagExtendHasReachMaxtimes");
 }
 void RolePopupUI::onClickSortAll(cocos2d::Ref * ref, Widget::TouchEventType type)
 {

@@ -23,6 +23,7 @@ public:
     void setItemQulity(cocos2d::Vec2 pt,PICKABLEITEM_QUALITY Quality);
     void setItemCount(cocos2d::Vec2 pt,int count);
     void setItemEquipMark(cocos2d::Vec2 pt);
+    void setItemInIentify(cocos2d::Vec2 pt);
     void removeItems();
     int  getItemId  (int index)const;
     void setLayerContentSize(const cocos2d::Size &contentSize);
@@ -30,6 +31,7 @@ protected:
     cocos2d::ui::Layout* m_pItemImgLayer;
     cocos2d::ui::Layout* m_pEquipMarkLayer;
     cocos2d::ui::Layout* m_pItemCountLayer;
+    cocos2d::ui::Layout* m_pIteminIentifyLayer;
     std::map<int,int> m_items;
 };
 

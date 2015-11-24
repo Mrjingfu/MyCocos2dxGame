@@ -726,7 +726,15 @@ void ItemPopupUI::onClickDiscard(cocos2d::Ref *ref)
 {
     CHECK_ACTION(ref);
     CCLOG("onClickDiscard");
-    if(PlayerProperty::getInstance()->removeItemFromBag(CChaosNumber(m_nItemId)))
+    PickableItemProperty* itemprop = PlayerProperty::getInstance()->getItemFromBag(CChaosNumber(m_nItemId));
+    bool isSuccess = false;
+    if (itemprop->isStackable()) {
+        isSuccess = PlayerProperty::getInstance()->removeStackableItemFromBag(itemprop->getPickableItemType(), 1);
+    }else{
+        isSuccess = PlayerProperty::getInstance()->removeItemFromBag(CChaosNumber(m_nItemId));
+    }
+    
+    if(isSuccess)
         closePopup();
     
 }
@@ -758,24 +766,24 @@ void ItemPopupUI::onClickEquip(cocos2d::Ref *ref)
     CHECK_ACTION(ref);
 
     PickableItemProperty* itemprop = PlayerProperty::getInstance()->getItemFromBag(CChaosNumber(m_nItemId));
-    bool isEquipSucess = false;
+    bool isEquipSuccess = false;
     if (itemprop->getPickableItemPropertyType() == PickableItemProperty::PIPT_WEAPON) {
         
-        isEquipSucess = PlayerProperty::getInstance()->equipWeapon(CChaosNumber(m_nItemId));
+        isEquipSuccess = PlayerProperty::getInstance()->equipWeapon(CChaosNumber(m_nItemId));
         
     }else if (itemprop->getPickableItemPropertyType() == PickableItemProperty::PIPT_ARMOR){
         
-        isEquipSucess = PlayerProperty::getInstance()->equipArmor(CChaosNumber(m_nItemId));
+        isEquipSuccess = PlayerProperty::getInstance()->equipArmor(CChaosNumber(m_nItemId));
         
     }else if (itemprop->getPickableItemPropertyType() == PickableItemProperty::PIPT_MAGIC_ORNAMENT)
     {
-        isEquipSucess = PlayerProperty::getInstance()->equipOrnaments(CChaosNumber(m_nItemId));
+        isEquipSuccess = PlayerProperty::getInstance()->equipOrnaments(CChaosNumber(m_nItemId));
         
     }else if (itemprop->getPickableItemPropertyType() == PickableItemProperty::PIPT_SECOND_WEAPON)
     {
-        isEquipSucess = PlayerProperty::getInstance()->equipSecondWeapon(CChaosNumber(m_nItemId));
+        isEquipSuccess = PlayerProperty::getInstance()->equipSecondWeapon(CChaosNumber(m_nItemId));
     }
-    if (isEquipSucess) {
+    if (isEquipSuccess) {
         closePopup();
     }else{
         //装备失败 或者提前给出提示

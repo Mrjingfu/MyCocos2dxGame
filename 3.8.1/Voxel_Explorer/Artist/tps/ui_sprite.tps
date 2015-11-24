@@ -193,7 +193,6 @@
             <filename>../ui/ui_sprite/ui_frame_6.png</filename>
             <filename>../ui/ui_sprite/ui_frame_7.png</filename>
             <filename>../ui/ui_sprite/ui_frame_8.png</filename>
-            <filename>../ui/ui_sprite/ui_identify_icon.png</filename>
             <filename>../ui/ui_sprite/ui_lock_icon.png</filename>
             <filename>../ui/ui_sprite/ui_map_icon.png</filename>
             <filename>../ui/ui_sprite/ui_msg_icon.png</filename>
@@ -205,6 +204,7 @@
             <filename>../ui/ui_sprite/I_BronzeCoin.png</filename>
             <filename>../ui/ui_sprite/I_GoldCoin.png</filename>
             <filename>../ui/ui_sprite/I_SilverCoin.png</filename>
+            <filename>../ui/ui_sprite/ui_indentify_icon.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

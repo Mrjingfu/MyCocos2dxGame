@@ -9,22 +9,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../Classes/UI/ItemPopupUI.cpp"
-            timestampString = "469618822.914631"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "769"
-            endingLineNumber = "769"
-            landmarkName = "ItemPopupUI::onClickEquip(cocos2d::Ref *ref)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "../cocos2d/cocos/ui/UIWidget.cpp"
             timestampString = "469716981.1593"
             startingColumnNumber = "9223372036854775807"
@@ -73,13 +57,29 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../Classes/Properties/PlayerProperty.cpp"
-            timestampString = "469795251.410037"
+            filePath = "../Classes/Sprites3D/Player.cpp"
+            timestampString = "469958469.612248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "699"
-            endingLineNumber = "699"
-            landmarkName = "PlayerProperty::extendBagSpace()"
+            startingLineNumber = "184"
+            endingLineNumber = "184"
+            landmarkName = "Player::removePlayerBuffer(PlayerBuffer buff)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/UI/BagLayerUI.cpp"
+            timestampString = "469960312.11726"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "139"
+            endingLineNumber = "139"
+            landmarkName = "BagLayerUI::setItemInIentify(cocos2d::Vec2 pt)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

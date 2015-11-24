@@ -22,7 +22,7 @@ public:
     virtual bool initUi() override;
     void onEnter() override;
     void onExit()override;
-    void updateItems();
+    void updateItems();//更新背包角色信息
     void setStateIdentify(bool state){ _isOpenIdentify = state;}
 private:
     
@@ -38,14 +38,16 @@ private:
     void onEventEquipWeapon(cocos2d::EventCustom *sender);
     void onEventEquipArmor(cocos2d::EventCustom *sender);
     void onEventEquipOrnament(cocos2d::EventCustom *sender);
-    void onEventExtendBag(cocos2d::EventCustom *sender);
+    void onEventBagExtend(cocos2d::EventCustom *sender);  //背包扩展成功
+    void onEventBagExtendHasReachMaxtimes(cocos2d::EventCustom *sender);//背包扩展达到上限
+    
     //设置已经装备道具位置
     void setEquipItem(cocos2d::Vec2 pt,std::string icon);
-    void updateRoleProp();
-    void updateBagProp();
+    void updateRoleProp();//更新角色信息
+    void updateBagProp();//更新背包信息
     
 private:
-   bool _isOpenIdentify;
+   bool _isOpenIdentify;   //是否打开辨识卷轴
    TGridView* m_pGridView;
    cocos2d::ui::ImageView* m_pGridFrame;
     cocos2d::ui::Layout* m_pEquipFrame;
