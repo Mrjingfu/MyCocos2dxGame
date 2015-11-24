@@ -55,7 +55,7 @@ StandardMonster* StandardMonster::create(BaseMonster::MonsterType type)
             case MT_APOLOGIST:
             case MT_ADJUDICATOR:
             case MT_PRIEST:
-                monster->setScale(0.8f);
+                monster->setScale(0.9f);
                 break;
                 
             case MT_DEATHMINER:
