@@ -221,6 +221,8 @@
 		EC67165E1BCE7F5F00C81CFC /* ui in Resources */ = {isa = PBXBuildFile; fileRef = EC6716581BCE7F5F00C81CFC /* ui */; };
 		EC6E41301C03FDB900C77C23 /* BagLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC6E412E1C03FDB900C77C23 /* BagLayer.cpp */; };
 		EC6E41311C03FDB900C77C23 /* BagLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC6E412E1C03FDB900C77C23 /* BagLayer.cpp */; };
+		EC6E41361C048A5100C77C23 /* PromptLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC6E41341C048A5100C77C23 /* PromptLayer.cpp */; };
+		EC6E41371C048A5100C77C23 /* PromptLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC6E41341C048A5100C77C23 /* PromptLayer.cpp */; };
 		EC7F92D31BCF9ED200B26C6C /* HueSprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC7F92D11BCF9ED200B26C6C /* HueSprite.cpp */; };
 		EC7F92D41BCF9ED200B26C6C /* HueSprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC7F92D11BCF9ED200B26C6C /* HueSprite.cpp */; };
 		ECD10D6C1BD0967B007DD888 /* CloseCallback.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECD10D631BD0967B007DD888 /* CloseCallback.cpp */; };
@@ -478,6 +480,8 @@
 		EC6716581BCE7F5F00C81CFC /* ui */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ui; sourceTree = "<group>"; };
 		EC6E412E1C03FDB900C77C23 /* BagLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BagLayer.cpp; sourceTree = "<group>"; };
 		EC6E412F1C03FDB900C77C23 /* BagLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BagLayer.h; sourceTree = "<group>"; };
+		EC6E41341C048A5100C77C23 /* PromptLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PromptLayer.cpp; sourceTree = "<group>"; };
+		EC6E41351C048A5100C77C23 /* PromptLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PromptLayer.hpp; sourceTree = "<group>"; };
 		EC7F92D11BCF9ED200B26C6C /* HueSprite.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HueSprite.cpp; sourceTree = "<group>"; };
 		EC7F92D21BCF9ED200B26C6C /* HueSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HueSprite.h; sourceTree = "<group>"; };
 		ECD10D631BD0967B007DD888 /* CloseCallback.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloseCallback.cpp; sourceTree = "<group>"; };
@@ -1021,6 +1025,8 @@
 				ECD10D6B1BD0967B007DD888 /* WrapperUILayer.h */,
 				EC5A651F1BE8BF6C006A0D2B /* NoteUi.cpp */,
 				EC5A65201BE8BF6C006A0D2B /* NoteUi.h */,
+				EC6E41341C048A5100C77C23 /* PromptLayer.cpp */,
+				EC6E41351C048A5100C77C23 /* PromptLayer.hpp */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -1220,6 +1226,7 @@
 				554F00F61BDA219E00F4DF8E /* PickableItem.cpp in Sources */,
 				55F81CD01BDB92CC002EC075 /* PotionsProperty.cpp in Sources */,
 				ECE1B9581BD8E6660035B4D9 /* RolePopupUI.cpp in Sources */,
+				EC6E41361C048A5100C77C23 /* PromptLayer.cpp in Sources */,
 				555B0D171BC51A2C0055FB6D /* Area.cpp in Sources */,
 				55F81CD41BDB92ED002EC075 /* SundriesProperty.cpp in Sources */,
 				551E93F21BD512D3009F788F /* Stream.cpp in Sources */,
@@ -1350,6 +1357,7 @@
 				555B0D1C1BC51A2C0055FB6D /* Door.cpp in Sources */,
 				55338AEF1BD892FC00EA316F /* ShadowDragon.cpp in Sources */,
 				55338AE71BD8928E00EA316F /* Giant.cpp in Sources */,
+				EC6E41371C048A5100C77C23 /* PromptLayer.cpp in Sources */,
 				55F81CB91BDB8B81002EC075 /* ArmorProperty.cpp in Sources */,
 				ECD10D6D1BD0967B007DD888 /* CloseCallback.cpp in Sources */,
 				550C32ED1BDDE8740015124E /* SecondWeaponProperty.cpp in Sources */,

@@ -54,6 +54,9 @@ public:
     void setDarkLayerVisble(bool visble);
     void setPopupType(ePopupType type){m_pPopupType = type;};
     ePopupType getPopupType(){return m_pPopupType;};
+    
+    void setBlankClose(bool isClose){m_nIsBlankClose = isClose;};
+    
 
 protected:
     void enableDarkLayer(bool bEnable);
@@ -80,6 +83,7 @@ protected:
     eActionType m_cActionType;
     cocos2d::LayerColor* m_pDarkLayer;
     ePopupType m_pPopupType;
+    bool m_nIsBlankClose;
 };
 
 #endif /* defined(__Tone_Skipper__PopupUILayer__) */

@@ -363,7 +363,10 @@ void RolePopupUI::onClickShop(cocos2d::Ref *ref)
     CHECK_ACTION(ref);
     PopupUILayerManager::getInstance()->closeCurrentPopup();
     
-    PopupUILayerManager::getInstance()->openPopup(ePopupShop);
+    PopupUILayer* shopPopup = PopupUILayerManager::getInstance()->openPopup(ePopupShop);
+    if (shopPopup) {
+        shopPopup->setDarkLayerVisble(false);
+    }
 }
 void RolePopupUI::useIndetifyUpdate()
 {

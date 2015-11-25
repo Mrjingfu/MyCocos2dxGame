@@ -25,6 +25,7 @@
 #include "ScrollProperty.hpp"
 #include "RolePopupUI.h"
 #include "LevelResourceManager.h"
+#include "PromptLayer.hpp"
 USING_NS_CC;
 GameUILayer::GameUILayer()
 {
@@ -625,7 +626,17 @@ void GameUILayer::onEventRoleDead(cocos2d::EventCustom *sender)
 {
     CCLOG("onEventRoleDead");
     updateRoleUi();
-}
+    CallFunc* func = CallFunc::create([]{
+        PopupUILayer* pausePopup = PopupUILayerManager::getInstance()->openPopup(ePopupPause);
+        if (pausePopup) {
+            pausePopup->setDarkLayerVisble(false);
+            pausePopup->setBlankClose(false);
+            //        VoxelExplorer::getInstance()->get3DLayer()->resume();
+        }
+
+    });
+    this->runAction(Sequence::createWithTwoActions(DelayTime::create(3.0F),func ));
+   }
 void GameUILayer::onEventRoleHud(cocos2d::EventCustom *sender)
 {
        CCLOG("onEvenetRoleHud");
@@ -712,11 +723,12 @@ void GameUILayer::onEventMonsterAlert(cocos2d::EventCustom *sender)
 {
     CCLOG("onEventMonsterAlert");
     BaseMonster* monster = static_cast<BaseMonster*>(sender->getUserData());
-    Vec2 pt = VoxelExplorer::getInstance()->getMainCamera()->projectGL(monster->getPosition3D());
-    pt = Vec2(pt.x, pt.y+TerrainTile::CONTENT_SCALE*2.5);
-    PopupUILayerManager::getInstance()->showPromptSign(TIP_QUESTION, pt);
+    PromptLayer* promptLayer = PromptLayer::create(PromptLayer::PT_AWAKE);
+    if (monster) {
+        promptLayer->setDisplayPt(monster->getPosition3D());
+    }
+    m_pRootLayer->addChild(promptLayer);
 
-//    updateMonsterUi(monster);
 }
 void GameUILayer::onEventMonsterConfusing(cocos2d::EventCustom *sender)
 {
@@ -977,6 +989,7 @@ void GameUILayer::onClickPause(cocos2d::Ref *ref)
 {
     CHECK_ACTION(ref);
     CCLOG("onClickPause");
+    PopupUILayerManager::getInstance()->openPopup(ePopupPause);
 }
 void GameUILayer::onClickSearch(cocos2d::Ref *ref)
 {

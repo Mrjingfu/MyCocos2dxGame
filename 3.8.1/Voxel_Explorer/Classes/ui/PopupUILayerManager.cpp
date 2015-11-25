@@ -177,25 +177,7 @@ bool PopupUILayerManager::isOpenPopup(ePopupType type, PopupUILayer *&pLayer)
     }
     return false;
 }
-void PopupUILayerManager::showPromptSign(TipTypes tipType, cocos2d::Vec2 pos)
-{
-    std::string tipFile;
-    switch (tipType) {
-        case TIP_QUESTION:
-            tipFile ="ui_msg_icon.png";
-            break;
-        default:
-            break;
-    }
-    cocos2d::ui::ImageView* m_pPromptImg = cocos2d::ui::ImageView::create(tipFile,TextureResType::PLIST);
-    m_pPromptImg->setCameraMask((unsigned int)CameraFlag::USER2);
-    m_pParentLayer->addChild(m_pPromptImg);
-    m_pPromptImg->setPosition(pos);
-    cocos2d::ScaleTo* scaleToStart = cocos2d::ScaleTo::create(0.3, 1.2);
-    cocos2d::ScaleTo* scaleToEnd = cocos2d::ScaleTo::create(0.3, 0.8);
 
-    m_pPromptImg->runAction(cocos2d::Sequence::create(scaleToStart,scaleToEnd,RemoveSelf::create(), nil));
-}
 cocos2d::Color3B PopupUILayerManager::getTipsColor(TipTypes tipType)
 {
     switch (tipType) {

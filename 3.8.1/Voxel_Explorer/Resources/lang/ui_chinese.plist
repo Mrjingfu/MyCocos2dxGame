@@ -134,5 +134,11 @@
 	<string>啊！召唤陷阱，小心！</string>
 	<key>TRIGGER_MESSAGE_WEAK_TRAP</key>
 	<string>你生病了, 能力降低了！</string>
+	<key>PAUSE_BTN_MAIN_MENU</key>
+	<string>btn_mainmenu_ch.png</string>
+	<key>PAUSE_BTN_SETTING</key>
+	<string>btn_setting_ch.png</string>
+	<key>PAUSE_BTN_EXIT_GAME</key>
+	<string>btn_exit_ch.png</string>
 </dict>
 </plist>

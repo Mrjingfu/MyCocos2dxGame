@@ -26,8 +26,6 @@ public:
     void showStatusImport(TipTypes tipType ,std::string text);
     //显示普通提示
     void showStatus(TipTypes tipType ,std::string text,cocos2d::Vec2 pos);
-    //图片提示
-    void showPromptSign(TipTypes tipType,cocos2d::Vec2 pos);
     void closeCurrentPopup();
     void onExitScene();
     void setParentLayer(cocos2d::Layer* parent);

@@ -65,6 +65,12 @@
           <PlistImageFile Name="I_GoldCoin.png" Key="I_GoldCoin.png" />
           <PlistImageFile Name="I_SilverCoin.png" Key="I_SilverCoin.png" />
           <PlistImageFile Name="ui_indentify_icon.png" Key="ui_indentify_icon.png" />
+          <PlistImageFile Name="btn_exit_ch.png" Key="btn_exit_ch.png" />
+          <PlistImageFile Name="btn_exit_en.png" Key="btn_exit_en.png" />
+          <PlistImageFile Name="btn_mainmenu_ch.png" Key="btn_mainmenu_ch.png" />
+          <PlistImageFile Name="btn_mainmenu_en.png" Key="btn_mainmenu_en.png" />
+          <PlistImageFile Name="btn_setting_ch.png" Key="btn_setting_ch.png" />
+          <PlistImageFile Name="btn_setting_en.png" Key="btn_setting_en.png" />
         </PlistImageFolder>
         <Project Name="gameScene.csd" Type="Scene" />
         <Project Name="menuscene.csd" Type="Scene" />

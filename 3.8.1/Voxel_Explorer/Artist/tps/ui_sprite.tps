@@ -205,6 +205,12 @@
             <filename>../ui/ui_sprite/I_GoldCoin.png</filename>
             <filename>../ui/ui_sprite/I_SilverCoin.png</filename>
             <filename>../ui/ui_sprite/ui_indentify_icon.png</filename>
+            <filename>../ui/ui_sprite/btn_exit_ch.png</filename>
+            <filename>../ui/ui_sprite/btn_exit_en.png</filename>
+            <filename>../ui/ui_sprite/btn_mainmenu_ch.png</filename>
+            <filename>../ui/ui_sprite/btn_mainmenu_en.png</filename>
+            <filename>../ui/ui_sprite/btn_setting_ch.png</filename>
+            <filename>../ui/ui_sprite/btn_setting_en.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>
