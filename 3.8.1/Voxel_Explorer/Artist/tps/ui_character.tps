@@ -54,7 +54,7 @@
         <key>maxTextureSize</key>
         <QSize>
             <key>width</key>
-            <int>512</int>
+            <int>1024</int>
             <key>height</key>
             <int>512</int>
         </QSize>
@@ -162,6 +162,31 @@
             <filename>../ui/ui_character/slime.png</filename>
             <filename>../ui/ui_character/snake.png</filename>
             <filename>../ui/ui_character/spider.png</filename>
+            <filename>../ui/ui_character/adjudicator.png</filename>
+            <filename>../ui/ui_character/allip.png</filename>
+            <filename>../ui/ui_character/ankheg.png</filename>
+            <filename>../ui/ui_character/apologist.png</filename>
+            <filename>../ui/ui_character/bear.png</filename>
+            <filename>../ui/ui_character/believer.png</filename>
+            <filename>../ui/ui_character/deathminer.png</filename>
+            <filename>../ui/ui_character/dinosaur.png</filename>
+            <filename>../ui/ui_character/gargoyle.png</filename>
+            <filename>../ui/ui_character/gatekeeper.png</filename>
+            <filename>../ui/ui_character/ghost.png</filename>
+            <filename>../ui/ui_character/ghoul.png</filename>
+            <filename>../ui/ui_character/gnoll.png</filename>
+            <filename>../ui/ui_character/goblin.png</filename>
+            <filename>../ui/ui_character/kobold.png</filename>
+            <filename>../ui/ui_character/mob.png</filename>
+            <filename>../ui/ui_character/ooze.png</filename>
+            <filename>../ui/ui_character/priest.png</filename>
+            <filename>../ui/ui_character/prisoner.png</filename>
+            <filename>../ui/ui_character/prisonerguard.png</filename>
+            <filename>../ui/ui_character/shadow.png</filename>
+            <filename>../ui/ui_character/skeleton.png</filename>
+            <filename>../ui/ui_character/torture.png</filename>
+            <filename>../ui/ui_character/wolf.png</filename>
+            <filename>../ui/ui_character/zombie.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>
