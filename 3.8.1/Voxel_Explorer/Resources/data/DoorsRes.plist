@@ -10,7 +10,7 @@
 	<key>DN_PRISON</key>
 	<dict>
 		<key>DMN_STANDARD</key>
-		<string>door.c3b</string>
+		<string>door3.c3b</string>
 	</dict>
 	<key>DN_FANE</key>
 	<dict>
@@ -20,17 +20,17 @@
 	<key>DN_MINES</key>
 	<dict>
 		<key>DMN_STANDARD</key>
-		<string>door.c3b</string>
+		<string>door4.c3b</string>
 	</dict>
 	<key>DN_CAVE</key>
 	<dict>
 		<key>DMN_STANDARD</key>
-		<string>door.c3b</string>
+		<string>door6.c3b</string>
 	</dict>
 	<key>DN_TOMB</key>
 	<dict>
 		<key>DMN_STANDARD</key>
-		<string>door.c3b</string>
+		<string>door5.c3b</string>
 	</dict>
 	<key>DN_DWARF_CASTLE</key>
 	<dict>

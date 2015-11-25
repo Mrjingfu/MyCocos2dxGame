@@ -13,54 +13,54 @@
 	<key>MMN_SLIME</key>
 	<string>slime</string>
 	<key>MMN_ALLIP</key>
-	<string>16x16x16</string>
+	<string>allip</string>
 	<key>MMN_PRISONER</key>
-	<string>16x16x16</string>
+	<string>prisoner</string>
 	<key>MMN_PRISONGUARD</key>
-	<string>16x16x16</string>
+	<string>prisonguard</string>
 	<key>MMN_TORTURE</key>
-	<string>16x16x16</string>
+	<string>torture</string>
 	<key>MMN_MOB</key>
-	<string>16x16x16</string>
+	<string>mob</string>
 	<key>MMN_BELIEVER</key>
-	<string>16x16x16</string>
+	<string>beliver</string>
 	<key>MMN_GATEKEEPER</key>
-	<string>16x16x16</string>
+	<string>gatekeeper</string>
 	<key>MMN_APOLOGIST</key>
-	<string>16x16x16</string>
+	<string>apologist</string>
 	<key>MMN_ADJUDICATOR</key>
-	<string>16x16x16</string>
+	<string>adjudicator</string>
 	<key>MMN_PRIEST</key>
-	<string>16x16x16</string>
+	<string>priest</string>
 	<key>MMN_DEATHMINER</key>
-	<string>16x16x16</string>
+	<string>deathminer</string>
 	<key>MMN_KOBOLD</key>
-	<string>16x16x16</string>
+	<string>kobold</string>
 	<key>MMN_OOZE</key>
-	<string>16x16x16</string>
+	<string>ooze</string>
 	<key>MMN_SHADOW</key>
-	<string>16x16x16</string>
+	<string>shadow</string>
 	<key>MMN_ANKHEG</key>
-	<string>16x16x16</string>
+	<string>ankheg</string>
 	<key>MMN_WOLF</key>
-	<string>16x16x16</string>
+	<string>wolf</string>
 	<key>MMN_BEAR</key>
-	<string>16x16x16</string>
+	<string>bear</string>
 	<key>MMN_GOBLIN</key>
-	<string>16x16x16</string>
+	<string>goblin</string>
 	<key>MMN_DINOSAUR</key>
-	<string>16x16x16</string>
+	<string>dinosaur</string>
 	<key>MMN_GNOLL</key>
-	<string>16x16x16</string>
+	<string>gnoll</string>
 	<key>MMN_SKELETON</key>
-	<string>16x16x16</string>
+	<string>skeleton</string>
 	<key>MMN_ZOMBIE</key>
-	<string>16x16x16</string>
+	<string>zombie</string>
 	<key>MMN_GARGOYLE</key>
-	<string>16x16x16</string>
+	<string>gargoyle</string>
 	<key>MMN_GHOST</key>
-	<string>16x16x16</string>
+	<string>ghost</string>
 	<key>MMN_GHOUL</key>
-	<string>16x16x16</string>
+	<string>ghoul</string>
 </dict>
 </plist>

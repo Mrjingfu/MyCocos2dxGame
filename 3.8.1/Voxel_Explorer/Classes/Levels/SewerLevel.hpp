@@ -17,9 +17,6 @@ public:
     
     virtual bool createMonsters();
     virtual bool createSummoningMonsters(const cocos2d::Vec2& mapPos);
-protected:
-    int calculateLevelMonsterCount();
-    int calculateLevelUseableItemCount(const cocos2d::Size& areaSize);
 };
 
 #endif /* SewerLevel_hpp */

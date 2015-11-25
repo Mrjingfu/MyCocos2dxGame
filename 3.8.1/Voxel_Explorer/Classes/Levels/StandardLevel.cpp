@@ -487,7 +487,7 @@ bool StandardLevel::createUseableItems(Area* area)
             bool neighbourHasDoor = false;
             int count = 0;
             for (int j = 0; j<neighbours8.size(); ++j) {
-                if(m_Map[neighbours8[j] + tileIndex].m_Type >= TerrainTile::TT_ENTRANCE && m_Map[neighbours8[j] + tileIndex].m_Type <= TerrainTile::TT_SECRET_DOOR)
+                if((m_Map[neighbours8[j] + tileIndex].m_Type >= TerrainTile::TT_ENTRANCE && m_Map[neighbours8[j] + tileIndex].m_Type <= TerrainTile::TT_SECRET_DOOR) || (m_Map[neighbours8[j] + tileIndex].m_AreaType == Area::AT_PASSAGE || m_Map[neighbours8[j] + tileIndex].m_AreaType == Area::AT_TUNNEL))
                     neighbourHasDoor = true;
                 else if(m_Map[neighbours8[j] + tileIndex].m_Type == TerrainTile::TT_STANDARD || (m_Map[neighbours8[j] + tileIndex].m_Type >= TerrainTile::TT_TOXIC_TRAP && m_Map[neighbours8[j] + tileIndex].m_Type <= TerrainTile::TT_HIDE_WEAK_TRAP))
                     count++;
@@ -886,7 +886,7 @@ void StandardLevel::placeTraps()  ///放置陷阱
     {
         if(RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nCurrentDepth >= 1)
         {
-            nTraps = m_Areas.size()*0.2f + RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nCurrentDepth.GetLongValue();
+            nTraps = m_Areas.size()*0.4f + RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nCurrentDepth.GetLongValue();
         }
     }
     
@@ -988,4 +988,31 @@ int StandardLevel::randomPickableRespawnCell()
         if ((m_Map[tileIndex].m_Flag & TileInfo::PASSABLE) != 0 || (m_Map[tileIndex].m_Flag & TileInfo::PICKABLE) == 0) {
             return tileIndex;
         }
-    }}
+    }
+}
+int StandardLevel::calculateLevelMonsterCount()
+{
+    int ret = m_nStandardAreaCount;
+    if(m_Style == LS_STANDARD)
+        ret = (int)(m_nStandardAreaCount*0.8f) + cocos2d::random(2, 5);
+    else if (m_Style == LS_TUNNEL)
+        ret = m_nStandardAreaCount + cocos2d::random(0, m_nStandardAreaCount);
+    else if(m_Style == LS_PASSAGE)
+        ret = (int)(m_nStandardAreaCount*0.5f) + m_nPassageAreaCount + cocos2d::random(2, 5);
+    return ret;
+}
+int StandardLevel::calculateLevelUseableItemCount(const cocos2d::Size& areaSize)
+{
+    if(areaSize.width-1 < 4 || areaSize.height-1 < 4)
+        return 0;
+    int length = (areaSize.width-1) * (areaSize.height-1);
+    if(length <= 15)
+        return 0;
+    else if(length < 25)
+        return cocos2d::random(1, 2);
+    else if(length < 36)
+        return cocos2d::random(1, 3);
+    else if(length < 49)
+        return cocos2d::random(2, 4);
+    return cocos2d::random(3, 5);
+}
