@@ -12,11 +12,18 @@
 #include "Actor.hpp"
 extern const std::string PORTAL_NAMES[];
 class OutlineEffect3D;
+class FakeShadow;
 class BasePortal : public Actor
 {
 protected:
     BasePortal();
     virtual ~BasePortal();
+    
+    virtual void onEnter();
+    virtual void onExit();
+    virtual void update(float delta);
+    
+    bool createFakeShadow();
 public:
     typedef enum
     {
@@ -38,6 +45,8 @@ protected:
     PortalType      m_Type;
     EffectSprite3D* m_pCenterSprite;
     bool            m_bIsCanUse;
+    
+    FakeShadow*                 m_pFakeShadow;
 };
 
 #endif /* BasePortal_hpp */

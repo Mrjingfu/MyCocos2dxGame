@@ -39,6 +39,8 @@ protected:
     virtual bool createNPCs(Area* area);
     virtual bool createPickableItems();
     
+    virtual void generateSpawnPoint();
+    
     virtual void showMap(bool show);
     
     virtual void updateAreaFogOfWarByPos(const cocos2d::Vec2& pos);
@@ -47,7 +49,6 @@ protected:
     void generateDoors(Area* area);
     bool mergeSmallIntersectArea(Area* area, Area* other, bool generate = true);
     void placeTraps();  ///放置陷阱
-    void generateSpawnPoint();
     int randomMonsterRespawnCell();
     int randomPickableRespawnCell();
     int calculateLevelMonsterCount();

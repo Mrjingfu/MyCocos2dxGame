@@ -13,7 +13,7 @@ USING_NS_CC;
 StandardPortal* StandardPortal::create(bool canUse)
 {
     auto portal = new (std::nothrow) StandardPortal();
-    if (portal && portal->initWithFile("8x8x8.c3b"))
+    if (portal && portal->initWithFile("8x8x8.c3b") && portal->createFakeShadow())
     {
         portal->m_bIsCanUse = canUse;
         portal->setRotation3D(Vec3(0,45,55));

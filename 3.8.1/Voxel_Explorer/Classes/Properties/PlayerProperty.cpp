@@ -230,7 +230,7 @@ void PlayerProperty::setCurrentHP(CChaosNumber hp)
 void PlayerProperty::setCurrentMP(CChaosNumber mp)
 {
     if(mp >= m_nMaxMP)
-        m_nMaxMP = mp;
+        m_nCurrentMP = m_nMaxMP;
     else if(mp <= 0)
     {
         m_nCurrentMP = 0;

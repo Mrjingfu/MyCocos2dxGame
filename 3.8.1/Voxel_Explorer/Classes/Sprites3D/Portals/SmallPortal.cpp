@@ -13,7 +13,7 @@ USING_NS_CC;
 SmallPortal* SmallPortal::create(bool canUse)
 {
     auto portal = new (std::nothrow) SmallPortal();
-    if (portal && portal->initWithFile("8x8x8.c3b"))
+    if (portal && portal->initWithFile("8x8x8.c3b") && portal->createFakeShadow())
     {
         portal->m_bIsCanUse = canUse;
         portal->setScale(0.6f);
