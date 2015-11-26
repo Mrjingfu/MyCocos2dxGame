@@ -96,6 +96,7 @@
           <PlistImageFile Name="spider.png" Key="spider.png" />
         </PlistImageFolder>
         <Project Name="shopPopupLayer.csd" Type="Layer" />
+        <Project Name="itemSplitLayer.csd" Type="Layer" />
       </RootFolder>
     </Group>
   </SolutionFolder>

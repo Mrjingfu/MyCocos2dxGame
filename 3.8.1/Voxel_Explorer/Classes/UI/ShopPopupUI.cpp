@@ -9,15 +9,18 @@
 #include "ShopPopupUI.h"
 #include "BagLayer.h"
 #include "UtilityHelper.h"
+#include "PickableItemProperty.hpp"
+#include "PlayerProperty.hpp"
+#include "BagMangerLayerUI.h"
 ShopPopupUI::ShopPopupUI()
 {
-    m_cActionType   = eNone;
-    m_pBagLayer     = nullptr;
-    m_pBtnAllBag    = nullptr;
-    m_pBtnWeaponBag = nullptr;
-    m_pBtnPotionBag = nullptr;
-    
-    m_pShopGridView = nullptr;
+    m_cActionType       = eNone;
+    m_pBagLayer         = nullptr;
+    m_pBtnAllBag        = nullptr;
+    m_pBtnWeaponBag     = nullptr;
+    m_pBtnPotionBag     = nullptr;
+    m_pShopMangerLayer    = nullptr;
+    m_pShopGridView     = nullptr;
 }
 ShopPopupUI::~ShopPopupUI()
 {
@@ -79,6 +82,11 @@ bool ShopPopupUI::addEvents()
     }
     m_pShopGridView->forceDoLayout();
     
+    m_pShopMangerLayer = BagMangerLayerUI::create(m_pShopGridView->getInnerContainerSize());
+    m_pShopMangerLayer->setPosition(m_pShopGridView->getContentSize()*0.5);
+    m_pShopMangerLayer->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
+    m_pShopGridView->addChildLayer(m_pShopMangerLayer,60);
+    
     m_pBagLayer = BagLayer::create(m_girdFrame->getContentSize());
     m_pBagLayer->setPosition(m_girdFrame->getContentSize()*0.5);
     m_girdFrame->addChild(m_pBagLayer);
@@ -86,6 +94,8 @@ bool ShopPopupUI::addEvents()
     m_pBtnWeaponBag->addTouchEventListener(CC_CALLBACK_2(ShopPopupUI::onClickSortEquip, this));
     m_pBtnPotionBag->addTouchEventListener(CC_CALLBACK_2(ShopPopupUI::onClickSortPotion, this));
     m_pBtnAllBag->addTouchEventListener(CC_CALLBACK_2(ShopPopupUI::onClickSortAll, this));
+    
+    m_pBagLayer->setShopSellStatus(true);
     
     updateItems();
     
@@ -106,6 +116,44 @@ void ShopPopupUI::updateItems()
         }
         m_pBagLayer->updateBagProp(false, sortType);
     }
+    updateShopSellItems();
+}
+void ShopPopupUI::updateShopSellItems()
+{
+    if (!m_pBagLayer || !m_pShopGridView)
+        return;
+    std::vector<int> m_vSellItems = m_pBagLayer->getSellItems();
+    if (m_vSellItems.empty())
+        return;
+    if (m_pShopMangerLayer) {
+        m_pShopMangerLayer->removeItems();
+    }
+    
+    std::vector<PickableItemProperty*> bagItems = PlayerProperty::getInstance()->getPlayerBag();
+        for (int j=0;j<m_vSellItems.size();j++)
+        {
+            ui::ImageView* itemUi = static_cast<ui::ImageView*>( m_pShopGridView->getItem(j));
+            for (int i =0 ; i<bagItems.size(); i++)
+            {
+                PickableItemProperty* itemProp =bagItems[i];
+                
+                if (!itemProp) {
+                    continue;
+                }
+                
+                if (itemUi && itemProp->getInstanceID() == m_vSellItems[j])
+                {
+                    m_pShopMangerLayer->addItem(j, itemProp->getInstanceID(), itemUi->getPosition(), itemProp->getIconRes());
+                    if (itemProp->isStackable()) {
+                        m_pShopMangerLayer->setItemCount(itemProp->getInstanceID(), itemUi->getPosition(), itemProp->getCount());
+                    }
+                    break;
+                }
+            }
+            if (j==13) {
+                break;
+            }
+        }
 }
 void ShopPopupUI::onClickSortAll(cocos2d::Ref * ref, cocos2d::ui::Widget::TouchEventType type)
 {
@@ -145,5 +193,8 @@ void ShopPopupUI::selectItemEvent(cocos2d::Ref *pSender, TGridView::EventType ty
 {
     if (type==TGridView::EventType::ON_SELECTED_ITEM_END) {
         TGridView* gridView = static_cast<TGridView*>(pSender);
+        if (gridView) {
+            
+        }
     }
 }

@@ -6,21 +6,21 @@
 //
 //
 
-#include "BagManngerLayerUI.h"
+#include "BagMangerLayerUI.h"
 #include "UtilityHelper.h"
 USING_NS_CC;
-BagManngerLayerUI::BagManngerLayerUI()
+BagMangerLayerUI::BagMangerLayerUI()
 {
     m_pItemImgLayer = nullptr;
     m_pEquipMarkLayer = nullptr;
     m_pItemCountLayer = nullptr;
 }
 
-BagManngerLayerUI::~BagManngerLayerUI()
+BagMangerLayerUI::~BagMangerLayerUI()
 {
     
 }
-bool BagManngerLayerUI::init(cocos2d::Size size)
+bool BagMangerLayerUI::init(cocos2d::Size size)
 {
     if (!Layout::init())
         return false;
@@ -63,9 +63,9 @@ bool BagManngerLayerUI::init(cocos2d::Size size)
     
     return true;
 }
-BagManngerLayerUI* BagManngerLayerUI::create(cocos2d::Size size)
+BagMangerLayerUI* BagMangerLayerUI::create(cocos2d::Size size)
 {
-    BagManngerLayerUI* itemUi = new (std::nothrow) BagManngerLayerUI();
+    BagMangerLayerUI* itemUi = new (std::nothrow) BagMangerLayerUI();
     if (itemUi && itemUi->init(size))
     {
         itemUi->autorelease();
@@ -74,7 +74,7 @@ BagManngerLayerUI* BagManngerLayerUI::create(cocos2d::Size size)
     CC_SAFE_DELETE(itemUi);
     return nullptr;
 }
-void BagManngerLayerUI::setLayerContentSize(const cocos2d::Size &contentSize)
+void BagMangerLayerUI::setLayerContentSize(const cocos2d::Size &contentSize)
 {
     setContentSize(contentSize);
     
@@ -98,7 +98,7 @@ void BagManngerLayerUI::setLayerContentSize(const cocos2d::Size &contentSize)
     }
     
 }
-void BagManngerLayerUI::addItem(int index,int itemId,cocos2d::Vec2 pt,std::string itemIcon)
+void BagMangerLayerUI::addItem(int index,int itemId,cocos2d::Vec2 pt,std::string itemIcon)
 {
     m_items.insert(std::pair<int, int>(index,itemId));
     if (m_pItemImgLayer) {
@@ -107,44 +107,48 @@ void BagManngerLayerUI::addItem(int index,int itemId,cocos2d::Vec2 pt,std::strin
         img->setPosition(pt);
         img->setScale(0.9);
         img->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
+        img->setTag(itemId);
         m_pItemImgLayer->addChild(img);
     }
 }
 
-void BagManngerLayerUI::setItemCount(cocos2d::Vec2 pt,int count)
+void BagMangerLayerUI::setItemCount(int itemId,cocos2d::Vec2 pt,int count)
 {
     if (m_pItemCountLayer) {
         Label* itemCount = Label::createWithTTF(StringUtils::format("X%d",count), UtilityHelper::getLocalString("FONT_NAME"), 36);
         itemCount->setPosition(pt+cocos2d::Vec2(16,-20));
         itemCount->setAnchorPoint(Vec2::ANCHOR_BOTTOM_RIGHT);
         itemCount->setScale(0.23);
+        itemCount->setTag(itemId);
         itemCount->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
         m_pItemCountLayer->addChild(itemCount);
     }
  }
-void BagManngerLayerUI::setItemEquipMark(cocos2d::Vec2 pt)
+void BagMangerLayerUI::setItemEquipMark(int itemId,cocos2d::Vec2 pt)
 {
     if (m_pEquipMarkLayer) {
         ui::ImageView* img = ui::ImageView::create("ui_equip_label.png",ui::TextureResType::PLIST);
         img->setScale(0.5);
         img->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
         img->setPosition(pt+cocos2d::Vec2(-13,13));
+        img->setTag(itemId);
         img->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
         m_pEquipMarkLayer->addChild(img);
     }
 }
-void BagManngerLayerUI::setItemInIentify(cocos2d::Vec2 pt)
+void BagMangerLayerUI::setItemInIentify(int itemId,cocos2d::Vec2 pt)
 {
     if (m_pIteminIentifyLayer) {
         ui::ImageView* img = ui::ImageView::create("ui_indentify_icon.png",ui::TextureResType::PLIST);
         img->setScale9Enabled(true);
         img->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
         img->setPosition(pt);
+        img->setTag(itemId);
         img->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
         m_pIteminIentifyLayer->addChild(img);
     }
 }
-void BagManngerLayerUI::removeItems()
+void BagMangerLayerUI::removeItems()
 {
     if (m_pItemImgLayer) {
         m_pItemImgLayer->removeAllChildren();
@@ -163,7 +167,34 @@ void BagManngerLayerUI::removeItems()
     }
     m_items.clear();
 }
-int BagManngerLayerUI::getItemId(int index) const
+void BagMangerLayerUI::removeItem(int index)
+{
+    auto iter = m_items.find(index);
+    int itemId = -1;
+    if (iter != m_items.end())
+    {
+        itemId = iter->second;
+        m_items.erase(iter);
+    }
+    if (itemId==-1)
+        return;
+    if (m_pItemImgLayer) {
+        m_pItemImgLayer->removeChildByTag(itemId);
+    }
+    if (m_pEquipMarkLayer) {
+        m_pEquipMarkLayer->removeChildByTag(itemId);
+    }
+    
+    if (m_pItemCountLayer) {
+        m_pItemCountLayer->removeChildByTag(itemId);
+    }
+    
+    if (m_pIteminIentifyLayer) {
+        m_pIteminIentifyLayer->removeChildByTag(itemId);
+    }
+    
+}
+int BagMangerLayerUI::getItemId(int index) const
 {
     auto iter = m_items.find(index);
     if (iter != m_items.end())

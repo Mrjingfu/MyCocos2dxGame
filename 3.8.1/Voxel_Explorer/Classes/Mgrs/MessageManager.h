@@ -10,7 +10,7 @@
 #define MessageManager_hpp
 
 #define MESSAGE_MAX 50
-#include "NoteUi.h"
+
 class MsgData:public cocos2d::Ref{
     MsgData(){};
 public:

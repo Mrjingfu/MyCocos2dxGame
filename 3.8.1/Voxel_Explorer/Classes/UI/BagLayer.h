@@ -11,7 +11,7 @@
 #include "ui/CocosGUI.h"
 #include "TGridView.h"
 class PickableItemProperty;
-class BagManngerLayerUI;
+class BagMangerLayerUI;
 
 class BagLayer:public cocos2d::ui::Layout
 {
@@ -29,12 +29,21 @@ public:
     void selectItemEvent(Ref *pSender, TGridView::EventType type);
     void extendBag();
     bool isIdentIfy(){return _isOpenIdentify;}
+    void setShopSellStatus(bool status){m_bIsShopSell = status;}
+    const std::vector<int>& getSellItems() const{return m_vSellItems;}
+    void clearSellItems(){m_vSellItems.clear();}
 private:
+    void showItemInfo(int itemId);
+    void shopSellOpe(int index);
     std::vector<PickableItemProperty*> getItems(eSortBagType sortType);
 private:
+    std::vector<int> m_vSellItems;
+    
     bool _isOpenIdentify;
+    bool m_bIsShopSell;
     TGridView* m_pGridView;
-    BagManngerLayerUI* m_BagMsgLayer;
+    eSortBagType m_eBagSortType;
+    BagMangerLayerUI* m_BagMsgLayer;
 };
 
 #endif /* BagLayer_hpp */

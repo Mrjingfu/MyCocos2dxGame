@@ -49,7 +49,7 @@ void PromptLayer::update(float delta)
     tempTime+=delta;
     if (m_vDisplayPt !=cocos2d::Vec3::ZERO) {
          cocos2d::Vec2 pt = VoxelExplorer::getInstance()->getMainCamera()->projectGL(m_vDisplayPt);
-        pt =  cocos2d::Vec2(pt.x, pt.y+TerrainTile::CONTENT_SCALE*2.5);
+        pt =  cocos2d::Vec2(pt.x, pt.y+TerrainTile::CONTENT_SCALE*3.5);
         setPosition(pt);
         if (tempTime >=0.015) {
             cocos2d::ScaleTo* scaleToStart = cocos2d::ScaleTo::create(0.3, 1.2);

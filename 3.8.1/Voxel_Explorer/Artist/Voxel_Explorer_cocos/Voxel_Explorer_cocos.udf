@@ -35,8 +35,10 @@
           <FilePathData Path="gameScene.csd" />
           <FilePathData Path="characterLayer.csd" />
           <FilePathData Path="shopPopupLayer.csd" />
+          <FilePathData Path="itemSplitLayer.csd" />
+          <FilePathData Path="infoPopupLayer.csd" />
         </OpenedDocuments>
-        <ActiveDocument Path="pausePopupLayer.csd" />
+        <ActiveDocument Path="itemSplitLayer.csd" />
       </Value>
     </Item>
   </Properties>

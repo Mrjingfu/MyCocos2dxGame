@@ -7,16 +7,19 @@
 //
 
 #include "BagLayer.h"
-#include "BagManngerLayerUI.h"
+#include "BagMangerLayerUI.h"
 #include "PlayerProperty.hpp"
 #include "PickableItemProperty.hpp"
 #include "ItemPopupUI.h"
 #include "PopupUILayerManager.h"
+#include "ShopPopupUI.h"
 BagLayer::BagLayer()
 {
     _isOpenIdentify = false;
+    m_bIsShopSell = false;
     m_pGridView = nullptr;
     m_BagMsgLayer = nullptr;
+    m_eBagSortType = SBT_ALL;
 }
 BagLayer::~BagLayer()
 {
@@ -55,7 +58,7 @@ bool BagLayer::init(cocos2d::Size size)
     m_pGridView->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
     addChild(m_pGridView);
 
-    m_BagMsgLayer = BagManngerLayerUI::create(m_pGridView->getContentSize());
+    m_BagMsgLayer = BagMangerLayerUI::create(m_pGridView->getContentSize());
     m_BagMsgLayer->setPosition(m_pGridView->getContentSize()*0.5);
     m_BagMsgLayer->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
     m_pGridView->addChildLayer(m_BagMsgLayer,60);
@@ -77,6 +80,7 @@ bool BagLayer::init(cocos2d::Size size)
 void BagLayer::updateBagProp(bool isOpenIdentify,eSortBagType sortType)
 {
     _isOpenIdentify = isOpenIdentify;
+    m_eBagSortType = sortType;
     m_BagMsgLayer->setLayerContentSize(cocos2d::Size(m_pGridView->getInnerContainerSize()));
     m_BagMsgLayer->setPosition(m_pGridView->getInnerContainerSize()*0.5);
     //清除背包信息
@@ -129,29 +133,29 @@ void BagLayer::updateBagProp(bool isOpenIdentify,eSortBagType sortType)
             if(itemProp->isStackable())
             {
                 int count = itemProp->getCount();
-                m_BagMsgLayer->setItemCount(itemUi->getPosition(), count);
+                m_BagMsgLayer->setItemCount(itemProp->getInstanceID(),itemUi->getPosition(), count);
             }
             if (itemProp->getInstanceID() == weaponId) {
-                m_BagMsgLayer->setItemEquipMark(itemUi->getPosition());
+                m_BagMsgLayer->setItemEquipMark(itemProp->getInstanceID(),itemUi->getPosition());
                 
             }
             if ( itemProp->getInstanceID() == armorId) {
-                m_BagMsgLayer->setItemEquipMark(itemUi->getPosition());
+                m_BagMsgLayer->setItemEquipMark(itemProp->getInstanceID(),itemUi->getPosition());
                 
             }
             if (itemProp->getInstanceID() == OrnamentId) {
-                m_BagMsgLayer->setItemEquipMark(itemUi->getPosition());
+                m_BagMsgLayer->setItemEquipMark(itemProp->getInstanceID(),itemUi->getPosition());
                 
             }
             if (itemProp->getInstanceID() == secondWeaponId) {
-                m_BagMsgLayer->setItemEquipMark(itemUi->getPosition());
+                m_BagMsgLayer->setItemEquipMark(itemProp->getInstanceID(),itemUi->getPosition());
                 
             }
 
             
             //如果使用鉴定卷轴 更新itemUi
             if (isOpenIdentify && !itemProp->isIdentified()) {
-                m_BagMsgLayer->setItemInIentify(itemUi->getPosition());
+                m_BagMsgLayer->setItemInIentify(itemProp->getInstanceID(),itemUi->getPosition());
             }
             
             
@@ -183,6 +187,22 @@ std::vector<PickableItemProperty*> BagLayer::getItems(eSortBagType sortType)
         if (!itemProp) {
             continue;
         }
+        
+       //如果是在商店贩卖界面 过滤掉需要贩卖的道具
+        if (m_bIsShopSell) {
+            bool isExistId = false;
+             for (auto sellIter = m_vSellItems.begin(); sellIter!=m_vSellItems.end(); sellIter++)
+             {
+                 if (itemProp->getInstanceID() == (*sellIter)) {
+                     isExistId = true;
+                     break;
+                 }
+             }
+            if (isExistId) {
+                continue;
+            }
+        }
+        
         items.push_back(itemProp);
         PickableItemProperty::PickableItemPropertyType itemtype =itemProp->getPickableItemPropertyType();
         if (itemtype ==PickableItemProperty::PIPT_WEAPON ||itemtype ==PickableItemProperty::PIPT_SECOND_WEAPON||
@@ -279,7 +299,6 @@ std::vector<PickableItemProperty*> BagLayer::getItems(eSortBagType sortType)
             OrnamentIndex = 3;
         }
     }
-    
     return items;
 }
 void BagLayer::extendBag()
@@ -305,79 +324,113 @@ void BagLayer::selectItemEvent(cocos2d::Ref *pSender, TGridView::EventType type)
     if (type==TGridView::EventType::ON_SELECTED_ITEM_END) {
         TGridView* gridView = static_cast<TGridView*>(pSender);
         int currentItemId = m_BagMsgLayer->getItemId(gridView->getCurSelectedIndex());
-        if (currentItemId!=-1 ) {
+        if (m_bIsShopSell) {
+            shopSellOpe(gridView->getCurSelectedIndex());
+        }else{
+            showItemInfo(currentItemId);
+        }
+    }
+}
+void BagLayer::shopSellOpe(int index)
+{
+    int currentItemId = m_BagMsgLayer->getItemId(index);
+    if (currentItemId==-1)
+        return;
+    int weaponId = int(PlayerProperty::getInstance()->getEquipedWeaponID());
+    int armorId = int(PlayerProperty::getInstance()->getEquipedArmorID());
+    int OrnamentId = int(PlayerProperty::getInstance()->getEquipedOrnamentsID());
+    int secondWeaponId = int(PlayerProperty::getInstance()->getEquipedSecondWeaponID());
+    
+    if (weaponId==currentItemId || armorId==currentItemId || OrnamentId ==currentItemId || secondWeaponId==currentItemId)
+        return;
+    m_BagMsgLayer->removeItem(index);
+    m_vSellItems.push_back(currentItemId);
+    updateBagProp();
+    
+    ShopPopupUI* shopPopupUi = nullptr;
+    PopupUILayer* popupUi = nullptr;
+    if(PopupUILayerManager::getInstance()->isOpenPopup(ePopupShop, popupUi))
+    {
+        shopPopupUi = static_cast<ShopPopupUI*>(popupUi);
+        if (shopPopupUi) {
+            shopPopupUi->updateItems();
+        }
+    }
+
+}
+void BagLayer::showItemInfo(int currentItemId)
+{
+    if (currentItemId==-1)
+        return;
+    CCLOG("select itemid = %d", currentItemId);
+    PickableItemProperty* itemProp = PlayerProperty::getInstance()->getItemFromBag(CChaosNumber(currentItemId));
+    if (!itemProp)
+    {
+        CCLOG("itemProp is empty");
+        return;
+    }
+    
+    //判断点击的武器 是否已经有装备过
+    int weaponId = int(PlayerProperty::getInstance()->getEquipedWeaponID());
+    int armorId = int(PlayerProperty::getInstance()->getEquipedArmorID());
+    int OrnamentId = int(PlayerProperty::getInstance()->getEquipedOrnamentsID());
+    int secondWeaponId = int(PlayerProperty::getInstance()->getEquipedSecondWeaponID());
+    int equipId = -1;
+    ItemPopupUI* Equippopupui = nullptr;
+    if (itemProp->getPickableItemPropertyType() == PickableItemProperty::PIPT_WEAPON && currentItemId !=weaponId )
+    {
+        equipId = weaponId;
+    }else if (itemProp->getPickableItemPropertyType() == PickableItemProperty::PIPT_ARMOR && currentItemId !=armorId )
+    {
+        equipId = armorId;
+    }else if (itemProp->getPickableItemPropertyType() == PickableItemProperty::PIPT_MAGIC_ORNAMENT && currentItemId !=OrnamentId )
+    {
+        equipId = OrnamentId;
+    }else if (itemProp->getPickableItemPropertyType() == PickableItemProperty::PIPT_SECOND_WEAPON && currentItemId !=secondWeaponId )
+    {
+        equipId = secondWeaponId;
+    }
+    //如果有装备过 打开装备过的武器
+    if (equipId!=-1) {
+        
+        Equippopupui = static_cast<ItemPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupType::ePopupEquipItem));
+        if (Equippopupui) {
+            Equippopupui->updateItemPopup(equipId);
+            CCLOG("Equippopupui Y:%f",Equippopupui->getRootNode()->getPositionY());
+            Equippopupui->getRootNode()->setPosition(cocos2d::Vec2(Equippopupui->getRootNode()->getPositionX(),SCREEN_HEIGHT*0.7));
+            //                    Equippopupui->getRootNode()->setPosition(cocos2d::Vec2(SCREEN_WIDTH*0.27,Equippopupui->getRootNode()->getPositionY()));
             
             CCLOG("select itemid = %d", currentItemId);
-            PickableItemProperty* itemProp = PlayerProperty::getInstance()->getItemFromBag(CChaosNumber(currentItemId));
-            if (!itemProp)
-            {
-                CCLOG("itemProp is empty");
-                return;
-            }
-            
-            //判断点击的武器 是否已经有装备过
-            int weaponId = int(PlayerProperty::getInstance()->getEquipedWeaponID());
-            int armorId = int(PlayerProperty::getInstance()->getEquipedArmorID());
-            int OrnamentId = int(PlayerProperty::getInstance()->getEquipedOrnamentsID());
-            int secondWeaponId = int(PlayerProperty::getInstance()->getEquipedSecondWeaponID());
-            int equipId = -1;
-            ItemPopupUI* Equippopupui = nullptr;
-            if (itemProp->getPickableItemPropertyType() == PickableItemProperty::PIPT_WEAPON && currentItemId !=weaponId )
-            {
-                equipId = weaponId;
-            }else if (itemProp->getPickableItemPropertyType() == PickableItemProperty::PIPT_ARMOR && currentItemId !=armorId )
-            {
-                equipId = armorId;
-            }else if (itemProp->getPickableItemPropertyType() == PickableItemProperty::PIPT_MAGIC_ORNAMENT && currentItemId !=OrnamentId )
-            {
-                equipId = OrnamentId;
-            }else if (itemProp->getPickableItemPropertyType() == PickableItemProperty::PIPT_SECOND_WEAPON && currentItemId !=secondWeaponId )
-            {
-                equipId = secondWeaponId;
-            }
-            //如果有装备过 打开装备过的武器
-            if (equipId!=-1) {
-                
-                Equippopupui = static_cast<ItemPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupType::ePopupEquipItem));
-                if (Equippopupui) {
-                    Equippopupui->updateItemPopup(equipId);
-                    CCLOG("Equippopupui Y:%f",Equippopupui->getRootNode()->getPositionY());
-                    Equippopupui->getRootNode()->setPosition(cocos2d::Vec2(Equippopupui->getRootNode()->getPositionX(),SCREEN_HEIGHT*0.7));
-                    //                    Equippopupui->getRootNode()->setPosition(cocos2d::Vec2(SCREEN_WIDTH*0.27,Equippopupui->getRootNode()->getPositionY()));
-                    
-                    CCLOG("select itemid = %d", currentItemId);
-                }
-            }
-            
-            
-            //使用鉴定卷轴 只能点击未鉴定的物品
-            bool isSucces = false;
-            if (_isOpenIdentify )
-            {
-                //                if (!itemProp->isIdentified())
-                //                {
-                CCLOG("select itemid:%d",currentItemId);
-                isSucces = PlayerProperty::getInstance()->indentifyItem(CChaosNumber(currentItemId));
-                _isOpenIdentify =false;
-                //                 }
-            }
-            
-            ItemPopupUI* popupui = static_cast<ItemPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupType::ePopupItem));
-            if (popupui)
-            {
-               
-                popupui->updateItemPopup(currentItemId);
-                
-                if (equipId !=-1 && Equippopupui) {
-                    popupui->setDarkLayerVisble(false);
-                    
-                    //                            popupui->getRootNode()->setPosition(cocos2d::Vec2(Equippopupui->getRootNode()->getPositionX()+Equippopupui->getRootNode()->getContentSize().width,Equippopupui->getRootNode()->getPositionY()));
-                    popupui->getRootNode()->setPosition(cocos2d::Vec2(popupui->getRootNode()->getPositionX(),Equippopupui->getRootNode()->getPositionY()-Equippopupui->getRootNode()->getContentSize().height*0.5 -2- popupui->getRootNode()->getContentSize().height*0.5));
-                    
-                }
-                CCLOG("select itemid = %d", currentItemId);
-                
-            }
         }
+    }
+    
+    
+    //使用鉴定卷轴 只能点击未鉴定的物品
+    bool isSucces = false;
+    if (_isOpenIdentify )
+    {
+        //                if (!itemProp->isIdentified())
+        //                {
+        CCLOG("select itemid:%d",currentItemId);
+        isSucces = PlayerProperty::getInstance()->indentifyItem(CChaosNumber(currentItemId));
+        _isOpenIdentify =false;
+        //                 }
+    }
+    
+    ItemPopupUI* popupui = static_cast<ItemPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupType::ePopupItem));
+    if (popupui)
+    {
+        
+        popupui->updateItemPopup(currentItemId);
+        
+        if (equipId !=-1 && Equippopupui) {
+            popupui->setDarkLayerVisble(false);
+            
+            //                            popupui->getRootNode()->setPosition(cocos2d::Vec2(Equippopupui->getRootNode()->getPositionX()+Equippopupui->getRootNode()->getContentSize().width,Equippopupui->getRootNode()->getPositionY()));
+            popupui->getRootNode()->setPosition(cocos2d::Vec2(popupui->getRootNode()->getPositionX(),Equippopupui->getRootNode()->getPositionY()-Equippopupui->getRootNode()->getContentSize().height*0.5 -2- popupui->getRootNode()->getContentSize().height*0.5));
+            
+        }
+        CCLOG("select itemid = %d", currentItemId);
+        
     }
 }

@@ -211,8 +211,8 @@
 		EC00DD5C1BD66586009BC378 /* MenuUILayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC00DD571BD66586009BC378 /* MenuUILayer.cpp */; };
 		EC00DD5F1BD665A6009BC378 /* MenuScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC00DD5D1BD665A6009BC378 /* MenuScene.cpp */; };
 		EC00DD601BD665A6009BC378 /* MenuScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC00DD5D1BD665A6009BC378 /* MenuScene.cpp */; };
-		EC0F15991BFF3FAC000C11DD /* BagManngerLayerUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC0F15971BFF3FAC000C11DD /* BagManngerLayerUI.cpp */; };
-		EC0F159A1BFF3FAC000C11DD /* BagManngerLayerUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC0F15971BFF3FAC000C11DD /* BagManngerLayerUI.cpp */; };
+		EC0F15991BFF3FAC000C11DD /* BagMangerLayerUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC0F15971BFF3FAC000C11DD /* BagMangerLayerUI.cpp */; };
+		EC0F159A1BFF3FAC000C11DD /* BagMangerLayerUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC0F15971BFF3FAC000C11DD /* BagMangerLayerUI.cpp */; };
 		EC5A65211BE8BF6C006A0D2B /* NoteUi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC5A651F1BE8BF6C006A0D2B /* NoteUi.cpp */; };
 		EC5A65221BE8BF6C006A0D2B /* NoteUi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC5A651F1BE8BF6C006A0D2B /* NoteUi.cpp */; };
 		EC602AAC1BF46A2D00484D42 /* AchievementManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC602AAA1BF46A2D00484D42 /* AchievementManager.cpp */; };
@@ -481,8 +481,8 @@
 		EC00DD581BD66586009BC378 /* MenuUILayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuUILayer.h; sourceTree = "<group>"; };
 		EC00DD5D1BD665A6009BC378 /* MenuScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MenuScene.cpp; sourceTree = "<group>"; };
 		EC00DD5E1BD665A6009BC378 /* MenuScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuScene.h; sourceTree = "<group>"; };
-		EC0F15971BFF3FAC000C11DD /* BagManngerLayerUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BagManngerLayerUI.cpp; sourceTree = "<group>"; };
-		EC0F15981BFF3FAC000C11DD /* BagManngerLayerUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BagManngerLayerUI.h; sourceTree = "<group>"; };
+		EC0F15971BFF3FAC000C11DD /* BagMangerLayerUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BagMangerLayerUI.cpp; sourceTree = "<group>"; };
+		EC0F15981BFF3FAC000C11DD /* BagMangerLayerUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BagMangerLayerUI.h; sourceTree = "<group>"; };
 		EC5A651F1BE8BF6C006A0D2B /* NoteUi.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NoteUi.cpp; sourceTree = "<group>"; };
 		EC5A65201BE8BF6C006A0D2B /* NoteUi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteUi.h; sourceTree = "<group>"; };
 		EC602AAA1BF46A2D00484D42 /* AchievementManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AchievementManager.cpp; sourceTree = "<group>"; };
@@ -1022,8 +1022,8 @@
 		ECD10D621BD0967B007DD888 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				EC0F15971BFF3FAC000C11DD /* BagManngerLayerUI.cpp */,
-				EC0F15981BFF3FAC000C11DD /* BagManngerLayerUI.h */,
+				EC0F15971BFF3FAC000C11DD /* BagMangerLayerUI.cpp */,
+				EC0F15981BFF3FAC000C11DD /* BagMangerLayerUI.h */,
 				EC6E412E1C03FDB900C77C23 /* BagLayer.cpp */,
 				EC6E412F1C03FDB900C77C23 /* BagLayer.h */,
 				ECD64A6F1BF1CD71008E04D7 /* InfoPopupUI.cpp */,
@@ -1297,7 +1297,7 @@
 				55F116D41C04450200A6C191 /* FaneLevel.cpp in Sources */,
 				55F81CCC1BDB92AC002EC075 /* QuestItemProperty.cpp in Sources */,
 				ECD10D701BD0967B007DD888 /* PopupUILayerManager.cpp in Sources */,
-				EC0F15991BFF3FAC000C11DD /* BagManngerLayerUI.cpp in Sources */,
+				EC0F15991BFF3FAC000C11DD /* BagMangerLayerUI.cpp in Sources */,
 				ECD10D6C1BD0967B007DD888 /* CloseCallback.cpp in Sources */,
 				551E93C51BD51291009F788F /* UserRecord.cpp in Sources */,
 				ECECACCF1BE7353700B14FFC /* PausePopupUI.cpp in Sources */,
@@ -1388,7 +1388,7 @@
 				55F116D51C04450200A6C191 /* FaneLevel.cpp in Sources */,
 				551E93CC1BD51291009F788F /* PlayerProperty.cpp in Sources */,
 				551E93ED1BD512D3009F788F /* XXTEA.cpp in Sources */,
-				EC0F159A1BFF3FAC000C11DD /* BagManngerLayerUI.cpp in Sources */,
+				EC0F159A1BFF3FAC000C11DD /* BagMangerLayerUI.cpp in Sources */,
 				551E93E71BD512D3009F788F /* md5.c in Sources */,
 				ECD10D6F1BD0967B007DD888 /* PopupUILayer.cpp in Sources */,
 				55F81CA21BDB208D002EC075 /* UseableItem.cpp in Sources */,

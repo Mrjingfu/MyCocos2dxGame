@@ -14,7 +14,6 @@
 #include "EventConst.h"
 #include "GameFormula.hpp"
 #include "KeyProperty.hpp"
-#include "BagManngerLayerUI.h"
 #include "BagLayer.h"
 USING_NS_CC;
 RolePopupUI::RolePopupUI()

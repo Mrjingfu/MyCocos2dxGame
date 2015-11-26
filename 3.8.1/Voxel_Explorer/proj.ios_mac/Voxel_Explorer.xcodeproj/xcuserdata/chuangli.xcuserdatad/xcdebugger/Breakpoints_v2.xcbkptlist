@@ -90,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/UI/RolePopupUI.cpp"
-            timestampString = "470047188.675469"
+            timestampString = "470132303.231103"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "373"
-            endingLineNumber = "373"
+            startingLineNumber = "372"
+            endingLineNumber = "372"
             landmarkName = "RolePopupUI::useIndetifyUpdate()"
             landmarkType = "5">
          </BreakpointContent>
@@ -106,28 +106,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/UI/RolePopupUI.cpp"
-            timestampString = "470042850.318308"
+            timestampString = "470132303.231103"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "268"
-            endingLineNumber = "268"
+            startingLineNumber = "267"
+            endingLineNumber = "267"
             landmarkName = "RolePopupUI::onEventUpdateData(cocos2d::EventCustom *sender)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../Classes/UI/ShopPopupUI.cpp"
-            timestampString = "470043287.824887"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "37"
-            endingLineNumber = "37"
-            landmarkName = "ShopPopupUI::addEvents()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -198,49 +182,17 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../Classes/UI/PromptLayer.cpp"
-            timestampString = "470063545.916804"
+            filePath = "../Classes/UI/BagManngerLayerUI.cpp"
+            timestampString = "470126129.579833"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "55"
-            endingLineNumber = "55"
-            landmarkName = "PromptLayer::update(float delta)"
+            startingLineNumber = "172"
+            endingLineNumber = "172"
+            landmarkName = "BagManngerLayerUI::removeItem(int index)"
             landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "PromptLayer::update(float)"
-                  moduleName = "Voxel_Explorer-desktop"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/chuangli/Documents/WorkSpace/MyCocos2dxGame/3.8.1/Voxel_Explorer/Classes/UI/PromptLayer.cpp"
-                  timestampString = "470060715.882213"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "53"
-                  endingLineNumber = "53"
-                  offsetFromSymbolStart = "459">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__cxx_global_array_dtor"
-                  moduleName = "Voxel_Explorer-desktop"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/chuangli/Documents/WorkSpace/MyCocos2dxGame/3.8.1/Voxel_Explorer/Classes/UI/PromptLayer.cpp"
-                  timestampString = "470060715.882623"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "53"
-                  endingLineNumber = "53"
-                  offsetFromSymbolStart = "29">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
