@@ -10,7 +10,7 @@
 #include "BaseLevel.h"
 USING_NS_CC;
 
-Area::AREA_TYPE AT_SpecialTypes[] = { Area::AREA_TYPE::AT_SPECIAL_EQUIPMENT_SHOP, Area::AREA_TYPE::AT_SPECIAL_TRANSPOT_ROOM };
+Area::AREA_TYPE AT_SpecialTypes[] = { Area::AREA_TYPE::AT_SPECIAL_EQUIPMENT_SHOP, Area::AREA_TYPE::AT_SPECIAL_MAGIC_SHOP, Area::AREA_TYPE::AT_SPECIAL_AID_STATION, Area::AREA_TYPE::AT_SPECIAL_ALCHEMIST_ROOM, Area::AREA_TYPE::AT_SPECIAL_WITCH_ROOM, Area::AREA_TYPE::AT_SPECIAL_THEIF_ROOM, Area::AREA_TYPE::AT_SPECIAL_SAGE_ROOM, Area::AREA_TYPE::AT_SPECIAL_MISSION_ROOM, Area::AREA_TYPE::AT_SPECIAL_TREASURE_ROOM, Area::AREA_TYPE::AT_SPECIAL_DECORATION_ROOM, Area::AREA_TYPE::AT_SPECIAL_TRANSPOT_ROOM };
 std::vector<Area::AREA_TYPE> Area::SPECIALS(AT_SpecialTypes, AT_SpecialTypes+ sizeof(AT_SpecialTypes)/sizeof(Area::AREA_TYPE));
 Area* Area::create()
 {
@@ -85,16 +85,22 @@ void Area::generate(BaseLevel* level)
             generateTunnelArea(level);
             break;
         case AT_SPECIAL_EQUIPMENT_SHOP:
-            generateShopArea(level);
+        case AT_SPECIAL_MAGIC_SHOP:
+        case AT_SPECIAL_AID_STATION:
+        case AT_SPECIAL_ALCHEMIST_ROOM:
+        case AT_SPECIAL_WITCH_ROOM:
+        case AT_SPECIAL_THEIF_ROOM:
+        case AT_SPECIAL_SAGE_ROOM:
+        case AT_SPECIAL_MISSION_ROOM:
+        case AT_SPECIAL_TREASURE_ROOM:
+        case AT_SPECIAL_DECORATION_ROOM:
+        case AT_SPECIAL_TRANSPOT_ROOM:
+            generateSpecialArea(level);
             break;
         default:
             break;
     }
 }
-//cocos2d::Vec2 Area::getPos()
-//{
-//    return Vec2(m_Rect.getMidX(), m_Rect.getMidY());
-//}
 
 Area::AREA_TYPE Area::getAreaType() const
 {
@@ -401,7 +407,7 @@ void Area::generatePassageArea(BaseLevel* level)
             door->setDoorType(Door::DT_PASSAGE);
     }
 }
-void Area::generateShopArea(BaseLevel* level)
+void Area::generateSpecialArea(BaseLevel* level)
 {
     generateTerrainTiles(level, TerrainTile::TT_WALL);
     generateTerrainTiles(level, 1, TerrainTile::TT_STANDARD);

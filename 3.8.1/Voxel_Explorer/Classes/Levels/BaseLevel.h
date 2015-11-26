@@ -132,7 +132,7 @@ protected:
     virtual bool createTerrain() = 0;
     virtual bool decorateAreas() = 0;
     virtual bool createUseableItems(Area* area) = 0;
-    virtual bool createNPCs(Area* area) = 0;
+    virtual bool decorateSpecialArea(Area* area) = 0;
     virtual bool createMonsters() = 0;
     virtual bool createPickableItems() = 0;
 

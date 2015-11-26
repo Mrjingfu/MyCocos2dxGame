@@ -37,7 +37,6 @@ public:
         AT_SPECIAL_MISSION_ROOM,            ///任务房间
         AT_SPECIAL_TREASURE_ROOM,           ///宝藏房间
         AT_SPECIAL_DECORATION_ROOM,         ///装饰品屋子
-        AT_SPECIAL_WEAKFLOOR_ROOM,          ///地板缺失房间
         AT_SPECIAL_TRANSPOT_ROOM,           ///传送房间
         
         AT_MAX
@@ -83,7 +82,7 @@ private:
     void generateExitArea(BaseLevel* level);
     void generateTunnelArea(BaseLevel* level);
     void generatePassageArea(BaseLevel* level);
-    void generateShopArea(BaseLevel* level);
+    void generateSpecialArea(BaseLevel* level);
     
     void generateTerrainTiles(BaseLevel* level, TerrainTile::TileType type);
     void generateTerrainTiles(BaseLevel* level, int m, TerrainTile::TileType type);

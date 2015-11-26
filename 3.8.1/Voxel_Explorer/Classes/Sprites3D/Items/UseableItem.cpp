@@ -128,10 +128,49 @@ void UseableItem::onEnterFadeOut()
 {
     if(m_Type <= UIT_CHEST_GOLD)
     {
-        EaseSineOut* fadeOut = EaseSineOut::create(FadeOut::create(0.5f));
-        CallFunc* callback = CallFunc::create(CC_CALLBACK_0(UseableItem::destroySelf, this));
-        Sequence* sequence = Sequence::create(fadeOut, callback, nullptr);
-        this->runAction(sequence);
+        if(m_Type == UIT_CHEST_COPPER)
+        {
+            if(PlayerProperty::getInstance()->useKey(PickableItem::PIT_KEY_COPPER))
+            {
+                EaseSineOut* fadeOut = EaseSineOut::create(FadeOut::create(0.5f));
+                CallFunc* callback = CallFunc::create(CC_CALLBACK_0(UseableItem::destroySelf, this));
+                Sequence* sequence = Sequence::create(fadeOut, callback, nullptr);
+                this->runAction(sequence);
+            }
+            else
+                Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_NO_COPPER_KEY);
+        }
+        else if(m_Type == UIT_CHEST_SILVER)
+        {
+            if(PlayerProperty::getInstance()->useKey(PickableItem::PIT_KEY_SILVER))
+            {
+                EaseSineOut* fadeOut = EaseSineOut::create(FadeOut::create(0.5f));
+                CallFunc* callback = CallFunc::create(CC_CALLBACK_0(UseableItem::destroySelf, this));
+                Sequence* sequence = Sequence::create(fadeOut, callback, nullptr);
+                this->runAction(sequence);
+            }
+            else
+                Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_NO_SILVER_KEY);
+        }
+        else if(m_Type == UIT_CHEST_GOLD)
+        {
+            if(PlayerProperty::getInstance()->useKey(PickableItem::PIT_KEY_GOLD))
+            {
+                EaseSineOut* fadeOut = EaseSineOut::create(FadeOut::create(0.5f));
+                CallFunc* callback = CallFunc::create(CC_CALLBACK_0(UseableItem::destroySelf, this));
+                Sequence* sequence = Sequence::create(fadeOut, callback, nullptr);
+                this->runAction(sequence);
+            }
+            else
+                Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_NO_GOLD_KEY);
+        }
+        else
+        {
+            EaseSineOut* fadeOut = EaseSineOut::create(FadeOut::create(0.5f));
+            CallFunc* callback = CallFunc::create(CC_CALLBACK_0(UseableItem::destroySelf, this));
+            Sequence* sequence = Sequence::create(fadeOut, callback, nullptr);
+            this->runAction(sequence);
+        }
     }
     else
     {
