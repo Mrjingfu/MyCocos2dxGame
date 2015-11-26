@@ -19,7 +19,7 @@ public:
     CREATE_FUNC(ItemPopupUI);
     virtual bool init();
     virtual bool addEvents();
-    void updateItemPopup(int itemId);
+    void updateItemPopup(int itemId,bool isBuy = false);
     virtual ~ItemPopupUI();
 private:
     virtual void closePopup();

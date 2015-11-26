@@ -13,13 +13,29 @@
 #include "ItemPopupUI.h"
 #include "PopupUILayerManager.h"
 #include "ShopPopupUI.h"
+#include "ItemSplitPopupUI.h"
+
+SellItem* SellItem::create(int itemId,int count /*=1*/)
+{
+    SellItem* sellItem = new (std::nothrow) SellItem();
+    if (sellItem )
+    {
+        sellItem->m_nItemId = itemId;
+        sellItem->m_nItemCount = count;
+        sellItem->autorelease();
+        return sellItem;
+    }
+    CC_SAFE_DELETE(sellItem);
+    return nullptr;
+}
+
 BagLayer::BagLayer()
 {
     _isOpenIdentify = false;
     m_bIsShopSell = false;
     m_pGridView = nullptr;
     m_BagMsgLayer = nullptr;
-    m_eBagSortType = SBT_ALL;
+    
 }
 BagLayer::~BagLayer()
 {
@@ -80,7 +96,7 @@ bool BagLayer::init(cocos2d::Size size)
 void BagLayer::updateBagProp(bool isOpenIdentify,eSortBagType sortType)
 {
     _isOpenIdentify = isOpenIdentify;
-    m_eBagSortType = sortType;
+   
     m_BagMsgLayer->setLayerContentSize(cocos2d::Size(m_pGridView->getInnerContainerSize()));
     m_BagMsgLayer->setPosition(m_pGridView->getInnerContainerSize()*0.5);
     //清除背包信息
@@ -133,7 +149,25 @@ void BagLayer::updateBagProp(bool isOpenIdentify,eSortBagType sortType)
             if(itemProp->isStackable())
             {
                 int count = itemProp->getCount();
-                m_BagMsgLayer->setItemCount(itemProp->getInstanceID(),itemUi->getPosition(), count);
+                if (m_bIsShopSell)
+                {
+                    //背包剩余商品个数等于总个数-过滤掉的商品个数
+                    for (auto sellIter = m_vSellItems.begin(); sellIter!=m_vSellItems.end(); sellIter++)
+                    {
+                        if (itemProp->getInstanceID() == (*sellIter)->getItemId()) {
+                            count = count -(*sellIter)->getItemCount();
+                            break;
+                        }
+                    }
+                    if (count>1) {
+                        m_BagMsgLayer->setItemCount(itemProp->getInstanceID(),itemUi->getPosition(), count);
+                    }
+                }else
+                {
+                    
+                    m_BagMsgLayer->setItemCount(itemProp->getInstanceID(),itemUi->getPosition(), count);
+                }
+                
             }
             if (itemProp->getInstanceID() == weaponId) {
                 m_BagMsgLayer->setItemEquipMark(itemProp->getInstanceID(),itemUi->getPosition());
@@ -193,10 +227,18 @@ std::vector<PickableItemProperty*> BagLayer::getItems(eSortBagType sortType)
             bool isExistId = false;
              for (auto sellIter = m_vSellItems.begin(); sellIter!=m_vSellItems.end(); sellIter++)
              {
-                 if (itemProp->getInstanceID() == (*sellIter)) {
+                 //过滤掉不可合并的
+                 if (itemProp->getInstanceID() == (*sellIter)->getItemId() && !itemProp->isStackable()) {
                      isExistId = true;
                      break;
                  }
+                 //过滤掉商品个数到达上限的
+                 if (itemProp->getInstanceID() == (*sellIter)->getItemId()
+                     && itemProp->isStackable() && (*sellIter)->getItemCount()==int(itemProp->getCount())) {
+                     isExistId = true;
+                     break;
+                 }
+                 
              }
             if (isExistId) {
                 continue;
@@ -343,10 +385,50 @@ void BagLayer::shopSellOpe(int index)
     
     if (weaponId==currentItemId || armorId==currentItemId || OrnamentId ==currentItemId || secondWeaponId==currentItemId)
         return;
-    m_BagMsgLayer->removeItem(index);
-    m_vSellItems.push_back(currentItemId);
-    updateBagProp();
+    PickableItemProperty* itemProp = PlayerProperty::getInstance()->getItemFromBag(CChaosNumber(currentItemId));
+    if (!itemProp)
+        return;
+    SellItem* sellItem = nullptr;
     
+    for (auto iter = m_vSellItems.begin();iter!=m_vSellItems.end();iter++) {
+        if (currentItemId == (*iter)->getItemId()) {
+            sellItem = (*iter);
+            break;
+        }
+    }
+   
+        int count = itemProp->getCount();
+        if (sellItem) {
+            count =itemProp->getCount() - sellItem->getItemCount();
+        }
+        if (count==1) {
+            updateItemSplit(&count,sellItem,currentItemId);
+        }else{
+            
+            ItemSplitPopupUI* splitPopup = static_cast<ItemSplitPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupItemSplit));
+            if (splitPopup) {
+                splitPopup->updateItemSplit(currentItemId,count);
+                splitPopup->registerCloseCallbackD(CC_CALLBACK_1(BagLayer::updateItemSplit, this,sellItem,currentItemId));
+            }
+            
+        }
+    
+    
+}
+void BagLayer::updateItemSplit(void * count ,SellItem* sellItem,int ItemId)
+{
+   
+    if (sellItem) {
+        sellItem->setItemCount(*(int*)count);
+    }else
+    {
+        SellItem* sellItem  = SellItem::create(ItemId,*(int*)count);
+        m_vSellItems.pushBack(sellItem);
+    }
+    updateShopItems();
+}
+void BagLayer::updateShopItems()
+{
     ShopPopupUI* shopPopupUi = nullptr;
     PopupUILayer* popupUi = nullptr;
     if(PopupUILayerManager::getInstance()->isOpenPopup(ePopupShop, popupUi))
@@ -356,7 +438,21 @@ void BagLayer::shopSellOpe(int index)
             shopPopupUi->updateItems();
         }
     }
-
+}
+void BagLayer::removeItemForSell(int itemId)
+{
+    SellItem* sellitem = nullptr;
+    
+    for (auto iter = m_vSellItems.begin(); iter!=m_vSellItems.end(); iter++)
+    {
+        if (itemId == (*iter)->getItemId()) {
+            sellitem = (*iter);
+        }
+    }
+    if (sellitem) {
+        m_vSellItems.eraseObject(sellitem);
+    }
+    
 }
 void BagLayer::showItemInfo(int currentItemId)
 {

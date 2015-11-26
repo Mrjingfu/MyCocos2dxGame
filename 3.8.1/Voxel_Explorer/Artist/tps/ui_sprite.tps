@@ -54,9 +54,9 @@
         <key>maxTextureSize</key>
         <QSize>
             <key>width</key>
-            <int>2048</int>
+            <int>256</int>
             <key>height</key>
-            <int>2048</int>
+            <int>256</int>
         </QSize>
         <key>fixedTextureSize</key>
         <QSize>
@@ -193,8 +193,6 @@
             <filename>../ui/ui_sprite/ui_frame_6.png</filename>
             <filename>../ui/ui_sprite/ui_frame_7.png</filename>
             <filename>../ui/ui_sprite/ui_frame_8.png</filename>
-            <filename>../ui/ui_sprite/ui_lock_icon.png</filename>
-            <filename>../ui/ui_sprite/ui_map_icon.png</filename>
             <filename>../ui/ui_sprite/ui_msg_icon.png</filename>
             <filename>../ui/ui_sprite/ui_ornament_icon.png</filename>
             <filename>../ui/ui_sprite/ui_pause_icon.png</filename>
@@ -211,6 +209,14 @@
             <filename>../ui/ui_sprite/btn_mainmenu_en.png</filename>
             <filename>../ui/ui_sprite/btn_setting_ch.png</filename>
             <filename>../ui/ui_sprite/btn_setting_en.png</filename>
+            <filename>../ui/ui_sprite/btn_fram_buy_normal_ch.png</filename>
+            <filename>../ui/ui_sprite/btn_fram_buy_normal_en.png</filename>
+            <filename>../ui/ui_sprite/btn_fram_buy_press_ch.png</filename>
+            <filename>../ui/ui_sprite/btn_fram_buy_press_en.png</filename>
+            <filename>../ui/ui_sprite/btn_fram_sell_normal_ch.png</filename>
+            <filename>../ui/ui_sprite/btn_fram_sell_normal_en.png</filename>
+            <filename>../ui/ui_sprite/btn_fram_sell_press_ch.png</filename>
+            <filename>../ui/ui_sprite/btn_fram_sell_press_en.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

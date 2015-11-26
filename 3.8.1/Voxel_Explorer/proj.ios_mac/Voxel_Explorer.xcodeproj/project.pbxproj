@@ -237,6 +237,10 @@
 		EC6E41311C03FDB900C77C23 /* BagLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC6E412E1C03FDB900C77C23 /* BagLayer.cpp */; };
 		EC6E41361C048A5100C77C23 /* PromptLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC6E41341C048A5100C77C23 /* PromptLayer.cpp */; };
 		EC6E41371C048A5100C77C23 /* PromptLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC6E41341C048A5100C77C23 /* PromptLayer.cpp */; };
+		EC7216291C069A740021DAD7 /* ItemSplitPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC7216271C069A740021DAD7 /* ItemSplitPopupUI.cpp */; };
+		EC72162A1C069A740021DAD7 /* ItemSplitPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC7216271C069A740021DAD7 /* ItemSplitPopupUI.cpp */; };
+		EC7216321C07069F0021DAD7 /* BagShopLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC7216301C07069F0021DAD7 /* BagShopLayer.cpp */; };
+		EC7216331C07069F0021DAD7 /* BagShopLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC7216301C07069F0021DAD7 /* BagShopLayer.cpp */; };
 		EC7F92D31BCF9ED200B26C6C /* HueSprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC7F92D11BCF9ED200B26C6C /* HueSprite.cpp */; };
 		EC7F92D41BCF9ED200B26C6C /* HueSprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC7F92D11BCF9ED200B26C6C /* HueSprite.cpp */; };
 		ECD10D6C1BD0967B007DD888 /* CloseCallback.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECD10D631BD0967B007DD888 /* CloseCallback.cpp */; };
@@ -510,6 +514,10 @@
 		EC6E412F1C03FDB900C77C23 /* BagLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BagLayer.h; sourceTree = "<group>"; };
 		EC6E41341C048A5100C77C23 /* PromptLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PromptLayer.cpp; sourceTree = "<group>"; };
 		EC6E41351C048A5100C77C23 /* PromptLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PromptLayer.hpp; sourceTree = "<group>"; };
+		EC7216271C069A740021DAD7 /* ItemSplitPopupUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ItemSplitPopupUI.cpp; sourceTree = "<group>"; };
+		EC7216281C069A740021DAD7 /* ItemSplitPopupUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemSplitPopupUI.h; sourceTree = "<group>"; };
+		EC7216301C07069F0021DAD7 /* BagShopLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BagShopLayer.cpp; sourceTree = "<group>"; };
+		EC7216311C07069F0021DAD7 /* BagShopLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BagShopLayer.hpp; sourceTree = "<group>"; };
 		EC7F92D11BCF9ED200B26C6C /* HueSprite.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HueSprite.cpp; sourceTree = "<group>"; };
 		EC7F92D21BCF9ED200B26C6C /* HueSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HueSprite.h; sourceTree = "<group>"; };
 		ECD10D631BD0967B007DD888 /* CloseCallback.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloseCallback.cpp; sourceTree = "<group>"; };
@@ -1036,6 +1044,8 @@
 			children = (
 				EC0F15971BFF3FAC000C11DD /* BagMangerLayerUI.cpp */,
 				EC0F15981BFF3FAC000C11DD /* BagMangerLayerUI.h */,
+				EC7216271C069A740021DAD7 /* ItemSplitPopupUI.cpp */,
+				EC7216281C069A740021DAD7 /* ItemSplitPopupUI.h */,
 				EC6E412E1C03FDB900C77C23 /* BagLayer.cpp */,
 				EC6E412F1C03FDB900C77C23 /* BagLayer.h */,
 				ECD64A6F1BF1CD71008E04D7 /* InfoPopupUI.cpp */,
@@ -1046,6 +1056,8 @@
 				ECECACC81BE7353700B14FFC /* PausePopupUI.h */,
 				ECECACC91BE7353700B14FFC /* ShopPopupUI.cpp */,
 				ECECACCA1BE7353700B14FFC /* ShopPopupUI.h */,
+				EC7216301C07069F0021DAD7 /* BagShopLayer.cpp */,
+				EC7216311C07069F0021DAD7 /* BagShopLayer.hpp */,
 				ECECACC01BE7351600B14FFC /* ItemPopupUI.cpp */,
 				ECECACC11BE7351600B14FFC /* ItemPopupUI.h */,
 				ECE1B9561BD8E6660035B4D9 /* RolePopupUI.cpp */,
@@ -1241,6 +1253,7 @@
 				5505452E1BFF1092006B4500 /* StandardPortal.cpp in Sources */,
 				EC00DD5B1BD66586009BC378 /* MenuUILayer.cpp in Sources */,
 				55F81CAC1BDB69FB002EC075 /* PickableItemProperty.cpp in Sources */,
+				EC7216321C07069F0021DAD7 /* BagShopLayer.cpp in Sources */,
 				EC5A65211BE8BF6C006A0D2B /* NoteUi.cpp in Sources */,
 				551E93C31BD51291009F788F /* LevelResourceManager.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
@@ -1315,6 +1328,7 @@
 				ECD10D6C1BD0967B007DD888 /* CloseCallback.cpp in Sources */,
 				551E93C51BD51291009F788F /* UserRecord.cpp in Sources */,
 				ECECACCF1BE7353700B14FFC /* PausePopupUI.cpp in Sources */,
+				EC7216291C069A740021DAD7 /* ItemSplitPopupUI.cpp in Sources */,
 				551E93E81BD512D3009F788F /* sha1.cpp in Sources */,
 				553BC5011BCDF457003D907A /* Actor.cpp in Sources */,
 				551E93E61BD512D3009F788F /* md5.c in Sources */,
@@ -1355,6 +1369,7 @@
 				553BC50A1BCE499B003D907A /* BaseDoor.cpp in Sources */,
 				55407D581BD5E2BC0000C41C /* GameFormula.cpp in Sources */,
 				550545221BFEF00C006B4500 /* BaseEffect3D.cpp in Sources */,
+				EC72162A1C069A740021DAD7 /* ItemSplitPopupUI.cpp in Sources */,
 				5569713D1BE20CCE00CC2736 /* Layer3D.cpp in Sources */,
 				555B0D261BC51A2C0055FB6D /* VoxelExplorer.cpp in Sources */,
 				55F116D91C04452300A6C191 /* MineLevel.cpp in Sources */,
@@ -1365,6 +1380,7 @@
 				EC7F92D41BCF9ED200B26C6C /* HueSprite.cpp in Sources */,
 				551E93EF1BD512D3009F788F /* FileStream.cpp in Sources */,
 				555B0D201BC51A2C0055FB6D /* StandardLevel.cpp in Sources */,
+				EC7216331C07069F0021DAD7 /* BagShopLayer.cpp in Sources */,
 				55F116DD1C04453500A6C191 /* CaveLevel.cpp in Sources */,
 				55338AEB1BD892C200EA316F /* Archbishop.cpp in Sources */,
 				551E93AA1BD51282009F788F /* AlisaMethod.cpp in Sources */,
