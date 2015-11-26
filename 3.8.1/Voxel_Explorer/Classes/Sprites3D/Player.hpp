@@ -13,6 +13,7 @@
 #include "EventConst.h"
 #include "MonsterProperty.hpp"
 #include "PlayerProperty.hpp"
+class FakeShadow;
 class Player : public Actor
 {
 public:
@@ -41,6 +42,7 @@ public:
     PlayerState getState() const { return m_curState; }
     void setState(PlayerState state);
     
+    void refreshPlayerBuffer();
     void addPlayerBuffer(PlayerBuffer buff);
     void removePlayerBuffer(PlayerBuffer buff);
     
@@ -77,19 +79,22 @@ private:
     void updatePlayerBuffer(float delta);
     
     bool createPlayerLight();
+    
+    bool createFakeShadow();
 private:
     PlayerState                 m_curState;
     cocos2d::PointLight*        m_pPlayerLight;
+    FakeShadow*                 m_pFakeShadow;
     
     bool                        m_bStealth;     ///是否隐身
     
-    CChaosNumber                m_fSpeedupTime; ///加速时间
-    CChaosNumber                m_fStealthTime; ///隐身时间
-    CChaosNumber                m_fStrongerTime; ///强化时间
+    static CChaosNumber                m_fSpeedupTime; ///加速时间
+    static CChaosNumber                m_fStealthTime; ///隐身时间
+    static CChaosNumber                m_fStrongerTime; ///强化时间
     
-    CChaosNumber                m_fFrozenTime;  ///冰冻时间
-    CChaosNumber                m_fParalyticTime;   ///麻痹时间
-    CChaosNumber                m_fFireTime;    ///着火时间
+    static CChaosNumber                m_fFrozenTime;  ///冰冻时间
+    static CChaosNumber                m_fParalyticTime;   ///麻痹时间
+    static CChaosNumber                m_fFireTime;    ///着火时间
     
     float                       m_fSecondTimer;
 

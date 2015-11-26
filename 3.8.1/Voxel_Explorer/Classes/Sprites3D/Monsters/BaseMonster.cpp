@@ -14,6 +14,7 @@
 #include "GameFormula.hpp"
 #include "UtilityHelper.h"
 #include "LevelResourceManager.h"
+#include "FakeShadow.hpp"
 USING_NS_CC;
 const std::string MONSTER_MODEL_NAMES[] = {
     "MMN_UNKNOWN",
@@ -320,6 +321,8 @@ void BaseMonster::update(float delta)
         default:
             break;
     }
+    if(m_pFakeShadow)
+        m_pFakeShadow->setPosition3D(Vec3(getPositionX(),-TerrainTile::CONTENT_SCALE*0.49f,getPositionZ()));
 }
 
 void BaseMonster::onEnterSleeping()
@@ -419,6 +422,8 @@ void BaseMonster::onEnterDeath()
     this->stopAllActions();
     removeTerrainTileFlag(TileInfo::ATTACKABLE);
     this->setVisible(false);
+    if(m_pFakeShadow)
+        m_pFakeShadow->setVisible(false);
     VoxelExplorer::getInstance()->addExplosion(getPosition3D());
     bool generateItem = GameFormula::generatePickItemByMonster(m_pMonsterProperty->isElite(), false);
     VoxelExplorer::getInstance()->generatePickItem(getPosInMap(), generateItem, m_pMonsterProperty->getValueCopper().GetLongValue(), m_pMonsterProperty->getLevel().GetLongValue());
@@ -579,4 +584,17 @@ void BaseMonster::doAttack()
         Sequence* sequence = Sequence::create(spawn, callback2, NULL);
         this->runAction(sequence);
     }
+}
+
+bool BaseMonster::createFakeShadow()
+{
+    m_pFakeShadow = FakeShadow::create();
+    if(!m_pFakeShadow)
+        return false;
+    m_pFakeShadow->setCameraMask((unsigned int)CameraFlag::USER1);
+    m_pFakeShadow->setLightMask((unsigned int)LightFlag::LIGHT0);
+    VoxelExplorer::getInstance()->getFakeShadowLayer()->addChild(m_pFakeShadow);
+    m_pFakeShadow->setScale(2);
+    m_pFakeShadow->setPosition3D(Vec3(getPositionX(),-TerrainTile::CONTENT_SCALE*0.49f,getPositionZ()));
+    return true;
 }

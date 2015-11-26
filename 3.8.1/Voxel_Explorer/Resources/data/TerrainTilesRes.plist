@@ -170,7 +170,7 @@
 		<key>TTN_WALL</key>
 		<string>tile_wall_4.png</string>
 		<key>TTN_ENTRANCE</key>
-		<string>tile_entrance_4.png</string>
+		<string>tile_standard_4.png</string>
 		<key>TTN_EXIT</key>
 		<string>tile_exit_4.png</string>
 		<key>TTN_STANDARD_PORTAL</key>

@@ -15,8 +15,10 @@ class CaveLevel : public StandardLevel
 public:
     CaveLevel();
     
-    virtual bool createMonsters();
-    virtual bool createSummoningMonsters(const cocos2d::Vec2& mapPos);
+    virtual bool createMonsters() override;
+    virtual bool createSummoningMonsters(const cocos2d::Vec2& mapPos) override;
+    
+    virtual void generateSpawnPoint() override;
 };
 
 #endif /* CaveLevel_hpp */

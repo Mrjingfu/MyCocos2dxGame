@@ -14,6 +14,7 @@
 #include "MonsterProperty.hpp"
 #include "EventConst.h"
 extern const std::string MONSTER_MODEL_NAMES[];
+class FakeShadow;
 class BaseMonster : public Actor
 {
 public:
@@ -135,6 +136,8 @@ protected:
     virtual void onExitDeath();
     
     virtual void setActorDir( ActorDir dir );
+    
+    bool createFakeShadow();
 private:
     void onLand();
     void moveToNext(const cocos2d::Vec2& next);
@@ -154,6 +157,8 @@ protected:
     float               m_fConfusingTimer;  ///迷惑时间计时器
     float               m_fFirstTrackingTimer;  ///由睡眠状态进入追踪状态的反应时间
     float               m_fWanderingDelayTimer; ////巡逻时每次移动前的延迟
+    
+    FakeShadow*                 m_pFakeShadow;
 };
 
 #endif /* BaseMonster_hpp */

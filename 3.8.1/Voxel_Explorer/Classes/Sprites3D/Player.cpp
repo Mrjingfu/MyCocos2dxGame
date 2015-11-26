@@ -11,16 +11,26 @@
 #include "VoxelExplorer.h"
 #include "PlayerProperty.hpp"
 #include "AlisaMethod.h"
+#include "FakeShadow.hpp"
 USING_NS_CC;
+
+CChaosNumber Player::m_fSpeedupTime  = 20.0f; ///加速时间
+CChaosNumber Player::m_fStealthTime  = 20.0f; ///隐身时间
+CChaosNumber Player::m_fStrongerTime = 20.0f; ///强化时间
+
+CChaosNumber Player::m_fFrozenTime   = 20.0f;  ///冰冻时间
+CChaosNumber Player::m_fParalyticTime    = 8.0f;   ///麻痹时间
+CChaosNumber Player::m_fFireTime     = 10.0f;  ///着火时间
 
 Player* Player::create(const std::string& modelPath)
 {
     auto player = new (std::nothrow) Player();
-    if (player && player->initWithFile(modelPath) && player->createPlayerLight())
+    if (player && player->initWithFile(modelPath) && player->createPlayerLight() && player->createFakeShadow())
     {
         player->_contentSize = player->getBoundingBox().size;
         player->setCameraMask((unsigned int)CameraFlag::USER1);
         player->setLightMask(((unsigned int)LightFlag::LIGHT0)|(unsigned int)LightFlag::LIGHT1|(unsigned int)LightFlag::LIGHT2);
+        player->refreshPlayerBuffer();
         player->autorelease();
         return player;
     }
@@ -31,15 +41,8 @@ Player::Player()
 {
     m_curState  = PS_UNKNOWN;
     m_pPlayerLight = nullptr;
+    m_pFakeShadow = nullptr;
     m_bStealth = false;
-    
-    m_fSpeedupTime  = 20.0f; ///加速时间
-    m_fStealthTime  = 20.0f; ///隐身时间
-    m_fStrongerTime = 20.0f; ///强化时间
-    
-    m_fFrozenTime   = 20.0f;  ///冰冻时间
-    m_fParalyticTime    = 8.0f;   ///麻痹时间
-    m_fFireTime     = 10.0f;  ///着火时间
     
     m_fSecondTimer = 1.0f;
     
@@ -76,6 +79,68 @@ void Player::update(float delta)
     PlayerProperty::getInstance()->update(delta);
     if(m_pPlayerLight)
         m_pPlayerLight->setPosition3D(Vec3(getPositionX(),TerrainTile::CONTENT_SCALE*2,getPositionZ()));
+    if(m_pFakeShadow)
+        m_pFakeShadow->setPosition3D(Vec3(getPositionX(),-TerrainTile::CONTENT_SCALE*0.49f,getPositionZ()));
+}
+void Player::refreshPlayerBuffer()
+{
+    int bufferFlag = PlayerProperty::getInstance()->getPlayerBuffer();
+    if((bufferFlag & PB_SPEEDUP) != 0)
+    {
+        ///增加拖尾或粒子
+    }
+    if((bufferFlag & PB_STEALTH) != 0)
+    {
+        setOpacity(127);
+    }
+    if((bufferFlag & PB_STRONGER) != 0)
+    {
+        ///增大
+        setScale(1.5f);
+    }
+
+    if((bufferFlag & PB_POISONING) != 0)
+    {
+        auto tex = Director::getInstance()->getTextureCache()->addImage("chr_sword_green.png");
+        if(tex)
+            tex->setAliasTexParameters();
+        setTexture(tex);
+    }
+    
+
+    if((bufferFlag & PB_FROZEN) != 0)
+    {
+        auto tex = Director::getInstance()->getTextureCache()->addImage("chr_sword_blue.png");
+        if(tex)
+            tex->setAliasTexParameters();
+        setTexture(tex);
+    }
+    
+
+    if((bufferFlag & PB_PARALYTIC) != 0)
+    {
+        auto tex = Director::getInstance()->getTextureCache()->addImage("chr_sword_gray.png");
+        if(tex)
+            tex->setAliasTexParameters();
+        setTexture(tex);
+    }
+    
+
+    if((bufferFlag & PB_WEAK) != 0)
+    {
+        auto tex = Director::getInstance()->getTextureCache()->addImage("chr_sword_yellow.png");
+        if(tex)
+            tex->setAliasTexParameters();
+        setTexture(tex);
+    }
+
+    if((bufferFlag & PB_FIRE) != 0)
+    {
+        auto tex = Director::getInstance()->getTextureCache()->addImage("chr_sword_red.png");
+        if(tex)
+            tex->setAliasTexParameters();
+        setTexture(tex);
+    }
 }
 void Player::addPlayerBuffer(PlayerBuffer buff)
 {
@@ -552,6 +617,8 @@ void Player::onEnterDeath()
     PlayerProperty::getInstance()->resetPlayerBuffer();
     this->stopAllActions();
     removeTerrainTileFlag(TileInfo::ATTACKABLE);
+    if(m_pFakeShadow)
+        m_pFakeShadow->setVisible(false);
     this->setVisible(false);
     VoxelExplorer::getInstance()->addExplosion(getPosition3D());
     VoxelExplorer::getInstance()->updateMiniMap();
@@ -745,10 +812,22 @@ bool Player::createPlayerLight()
     m_pPlayerLight->setLightFlag(LightFlag::LIGHT0);
     VoxelExplorer::getInstance()->get3DLayer()->addChild(m_pPlayerLight);
     
-    AmbientLight* ambLight = AmbientLight::create(Color3B(80, 80, 80));
+    AmbientLight* ambLight = AmbientLight::create(Color3B(50, 50, 50));
     if(!ambLight)
         return false;
     ambLight->setLightFlag(LightFlag::LIGHT2);
     VoxelExplorer::getInstance()->get3DLayer()->addChild(ambLight);
+    return true;
+}
+bool Player::createFakeShadow()
+{
+    m_pFakeShadow = FakeShadow::create();
+    if(!m_pFakeShadow)
+        return false;
+    m_pFakeShadow->setCameraMask((unsigned int)CameraFlag::USER1);
+    m_pFakeShadow->setLightMask((unsigned int)LightFlag::LIGHT0);
+    VoxelExplorer::getInstance()->getFakeShadowLayer()->addChild(m_pFakeShadow);
+    m_pFakeShadow->setScale(2);
+    m_pFakeShadow->setPosition3D(Vec3(getPositionX(),-TerrainTile::CONTENT_SCALE*0.49f,getPositionZ()));
     return true;
 }

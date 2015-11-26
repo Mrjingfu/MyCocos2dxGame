@@ -157,6 +157,10 @@
 		5569713D1BE20CCE00CC2736 /* Layer3D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5569713A1BE20CCE00CC2736 /* Layer3D.cpp */; };
 		559B217F1BC65D330047D998 /* textures in Resources */ = {isa = PBXBuildFile; fileRef = 559B217E1BC65D330047D998 /* textures */; };
 		559B21801BC65D330047D998 /* textures in Resources */ = {isa = PBXBuildFile; fileRef = 559B217E1BC65D330047D998 /* textures */; };
+		55A9807B1C05610400722C9D /* FakeShadow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55A980791C05610400722C9D /* FakeShadow.cpp */; };
+		55A9807C1C05610400722C9D /* FakeShadow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55A980791C05610400722C9D /* FakeShadow.cpp */; };
+		55A980811C05AB9400722C9D /* Ladder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55A9807F1C05AB9400722C9D /* Ladder.cpp */; };
+		55A980821C05AB9400722C9D /* Ladder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55A9807F1C05AB9400722C9D /* Ladder.cpp */; };
 		55D6D67F1BC527D000081221 /* models in Resources */ = {isa = PBXBuildFile; fileRef = 55D6D67E1BC527D000081221 /* models */; };
 		55D6D6801BC527D000081221 /* models in Resources */ = {isa = PBXBuildFile; fileRef = 55D6D67E1BC527D000081221 /* models */; };
 		55EC95851BC6AA7B0008D1D7 /* TerrainTile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55EC95831BC6AA7B0008D1D7 /* TerrainTile.cpp */; };
@@ -428,6 +432,10 @@
 		5569713A1BE20CCE00CC2736 /* Layer3D.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Layer3D.cpp; sourceTree = "<group>"; };
 		5569713B1BE20CCE00CC2736 /* Layer3D.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Layer3D.hpp; sourceTree = "<group>"; };
 		559B217E1BC65D330047D998 /* textures */ = {isa = PBXFileReference; lastKnownFileType = folder; path = textures; sourceTree = "<group>"; };
+		55A980791C05610400722C9D /* FakeShadow.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FakeShadow.cpp; sourceTree = "<group>"; };
+		55A9807A1C05610400722C9D /* FakeShadow.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FakeShadow.hpp; sourceTree = "<group>"; };
+		55A9807F1C05AB9400722C9D /* Ladder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Ladder.cpp; sourceTree = "<group>"; };
+		55A980801C05AB9400722C9D /* Ladder.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Ladder.hpp; sourceTree = "<group>"; };
 		55D6D67E1BC527D000081221 /* models */ = {isa = PBXFileReference; lastKnownFileType = folder; path = models; sourceTree = "<group>"; };
 		55EC95831BC6AA7B0008D1D7 /* TerrainTile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TerrainTile.cpp; sourceTree = "<group>"; };
 		55EC95841BC6AA7B0008D1D7 /* TerrainTile.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TerrainTile.hpp; sourceTree = "<group>"; };
@@ -969,6 +977,10 @@
 				55EC95841BC6AA7B0008D1D7 /* TerrainTile.hpp */,
 				55ECFB421BC79852007270CD /* Player.cpp */,
 				55ECFB431BC79852007270CD /* Player.hpp */,
+				55A980791C05610400722C9D /* FakeShadow.cpp */,
+				55A9807A1C05610400722C9D /* FakeShadow.hpp */,
+				55A9807F1C05AB9400722C9D /* Ladder.cpp */,
+				55A980801C05AB9400722C9D /* Ladder.hpp */,
 			);
 			path = Sprites3D;
 			sourceTree = "<group>";
@@ -1265,6 +1277,7 @@
 				55F81CB01BDB74EF002EC075 /* KeyProperty.cpp in Sources */,
 				55F81CB41BDB845A002EC075 /* WeaponProperty.cpp in Sources */,
 				EC00DD5F1BD665A6009BC378 /* MenuScene.cpp in Sources */,
+				55A980811C05AB9400722C9D /* Ladder.cpp in Sources */,
 				554F01051BDA3A3100F4DF8E /* SewerLevel.cpp in Sources */,
 				55338ACF1BD8781E00EA316F /* BaseMonster.cpp in Sources */,
 				555B0D1B1BC51A2C0055FB6D /* Door.cpp in Sources */,
@@ -1293,6 +1306,7 @@
 				EC7F92D31BCF9ED200B26C6C /* HueSprite.cpp in Sources */,
 				EC6264951BF0807F004E0F55 /* MessageManager.cpp in Sources */,
 				55ECFB441BC79852007270CD /* Player.cpp in Sources */,
+				55A9807B1C05610400722C9D /* FakeShadow.cpp in Sources */,
 				55F81CC81BDB928F002EC075 /* MaterialProperty.cpp in Sources */,
 				55F116D41C04450200A6C191 /* FaneLevel.cpp in Sources */,
 				55F81CCC1BDB92AC002EC075 /* QuestItemProperty.cpp in Sources */,
@@ -1323,6 +1337,7 @@
 				551E93E31BD512D3009F788F /* CCCrypto.cpp in Sources */,
 				EC00DD5C1BD66586009BC378 /* MenuUILayer.cpp in Sources */,
 				EC6716461BCE7F2C00C81CFC /* LogoScene.cpp in Sources */,
+				55A980821C05AB9400722C9D /* Ladder.cpp in Sources */,
 				55338ADF1BD8925100EA316F /* Warden.cpp in Sources */,
 				5505453D1BFF3893006B4500 /* SmallPortal.cpp in Sources */,
 				551E93E51BD512D3009F788F /* libb64.c in Sources */,
@@ -1373,6 +1388,7 @@
 				ECECACD01BE7353700B14FFC /* PausePopupUI.cpp in Sources */,
 				ECE1B9591BD8E6660035B4D9 /* RolePopupUI.cpp in Sources */,
 				555B0D1E1BC51A2C0055FB6D /* Graph.cpp in Sources */,
+				55A9807C1C05610400722C9D /* FakeShadow.cpp in Sources */,
 				554F01061BDA3A3100F4DF8E /* SewerLevel.cpp in Sources */,
 				550545241BFEF00C006B4500 /* OutlineEffect3D.cpp in Sources */,
 				554F00EF1BDA210000F4DF8E /* BaseBoss.cpp in Sources */,

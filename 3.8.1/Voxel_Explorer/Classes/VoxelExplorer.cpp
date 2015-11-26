@@ -31,6 +31,7 @@
 #include "Npc.hpp"
 #include "UtilityHelper.h"
 #include "GameScene.h"
+#include "FakeShadow.hpp"
 USING_NS_CC;
 
 VoxelExplorer* g_pVoxelExplorerInstance = nullptr;
@@ -48,6 +49,7 @@ VoxelExplorer::VoxelExplorer()
     m_pMainLayer = nullptr;
     m_p3DLayer  = nullptr;
     m_pTerrainTilesLayer = nullptr;
+    m_pFakeShadowLayer = nullptr;
     m_pTerrainPortalsLayer = nullptr;
     m_pTerrainDoorsLayer = nullptr;
     m_pUseableItemsLayer = nullptr;
@@ -221,7 +223,6 @@ void VoxelExplorer::cameraTrackPlayer()
 {
     if(m_pPlayer && m_pMainCamera)
     {
-        cocos2d::Size size = m_pPlayer->getContentSize();
         Vec3 camPos = m_pPlayer->getPosition3D() + Vec3(0, 5*TerrainTile::CONTENT_SCALE, 4*TerrainTile::CONTENT_SCALE );
         Vec3 targetLookAt = m_pPlayer->getPosition3D() + Vec3(0,0.5f*TerrainTile::CONTENT_SCALE,0);
         EaseSineOut* moveTo = EaseSineOut::create(MoveTo::create(0.4f, camPos));
@@ -307,6 +308,13 @@ void VoxelExplorer::updateFogOfWar(const cocos2d::Rect& areaRect, bool visited)
                 tile->setVisited(visited);
         }
     }
+    if(m_pFakeShadowLayer)
+        for (const auto& child : m_pTerrainTilesLayer->getChildren())
+        {
+            FakeShadow* fakeShadow = dynamic_cast<FakeShadow*>(child);
+            if(fakeShadow && areaRect.containsPoint(fakeShadow->getPosInMap()))
+                fakeShadow->setVisited(visited);
+        }
     if(m_pTerrainPortalsLayer)
     {
         for (const auto& child : m_pTerrainPortalsLayer->getChildren())
@@ -828,6 +836,12 @@ bool VoxelExplorer::createLayers()
     m_pTerrainTilesLayer->setCameraMask((unsigned int)CameraFlag::USER1);
     m_p3DLayer->addChild(m_pTerrainTilesLayer);
     
+    m_pFakeShadowLayer = Layer::create();
+    if(!m_pFakeShadowLayer)
+        return false;
+    m_pFakeShadowLayer->setCameraMask((unsigned int)CameraFlag::USER1);
+    m_p3DLayer->addChild(m_pFakeShadowLayer);
+    
     m_pTerrainPortalsLayer = Layer::create();
     if(!m_pTerrainPortalsLayer)
         return false;
@@ -884,13 +898,13 @@ bool VoxelExplorer::createLights()
 {
     if(!m_p3DLayer)
         return false;
-    AmbientLight* ambLight = AmbientLight::create(Color3B(50, 50, 50));
+    AmbientLight* ambLight = AmbientLight::create(Color3B(30, 30, 30));
     if(!ambLight)
         return false;
     ambLight->setLightFlag(LightFlag::LIGHT1);
     m_p3DLayer->addChild(ambLight);
     
-    DirectionLight* directionLight = DirectionLight::create(Vec3(-2, -4, -3), Color3B(50, 50, 50));
+    DirectionLight* directionLight = DirectionLight::create(Vec3(-2, -4, -3), Color3B(30, 30, 30));
     if(!directionLight)
         return false;
     directionLight->setLightFlag(LightFlag::LIGHT1);
@@ -960,6 +974,9 @@ bool VoxelExplorer::createPlayer()
 {
     if(!m_pCurrentLevel || !m_p3DLayer)
         return false;
+    DungeonNode* node = RandomDungeon::getInstance()->getCurrentDungeonNode();
+    if(!node)
+        return false;
     ///lwwhb 临时
     if (!PlayerProperty::getInstance()->initNewPlayer())
         return false;
@@ -967,9 +984,13 @@ bool VoxelExplorer::createPlayer()
     m_pPlayer = Player::create("chr_sword.c3b");
     if(!m_pPlayer)
         return false;
-    cocos2d::Size size = m_pPlayer->getContentSize();
     m_pPlayer->setPosition3D(Vec3(m_pCurrentLevel->getSpawnPoint().x, -0.5f*TerrainTile::CONTENT_SCALE, -m_pCurrentLevel->getSpawnPoint().y));
-    m_pPlayer->setRotation3D(Vec3(0,90,0));
+    if(node->m_Type == DT_CAVE || node->m_Type == DT_TOMB)
+        m_pPlayer->setRotation3D(Vec3(0,-90,0));
+    else if(node->m_Type == DT_MINES)
+        m_pPlayer->setRotation3D(Vec3(0,0,0));
+    else
+        m_pPlayer->setRotation3D(Vec3(0,90,0));
     m_pPlayer->addTerrainTileFlag(TileInfo::ATTACKABLE);
     m_p3DLayer->addChild(m_pPlayer);
     

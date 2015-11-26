@@ -14,9 +14,11 @@ class MineLevel : public StandardLevel
 {
 public:
     MineLevel();
+    virtual bool createTerrain() override;
+    virtual bool createMonsters() override;
+    virtual bool createSummoningMonsters(const cocos2d::Vec2& mapPos) override;
     
-    virtual bool createMonsters();
-    virtual bool createSummoningMonsters(const cocos2d::Vec2& mapPos);
+    virtual void generateSpawnPoint() override;
 };
 
 #endif /* MineLevel_hpp */
