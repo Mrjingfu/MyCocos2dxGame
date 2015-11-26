@@ -22,22 +22,31 @@ public:
     virtual bool init() override;
     virtual bool addEvents() override;
     
+    //更新商店购买界面
+    void updateShopBuyItems();
+    //更新商店出售界面
     void updateShopSellItems();
     void updateItems();
 private:
     void onClickSortAll(Ref*,cocos2d::ui::Widget::TouchEventType);
     void onClickSortEquip(Ref*,cocos2d::ui::Widget::TouchEventType);
     void onClickSortPotion(Ref*,cocos2d::ui::Widget::TouchEventType);
+    void onClickFrameBuy(Ref*,cocos2d::ui::Widget::TouchEventType);
+    void onClickFrameSell(Ref*,cocos2d::ui::Widget::TouchEventType);
     void selectItemEvent(Ref *pSender, TGridView::EventType type);
     
     private:
     cocos2d::ui::Button* m_pBtnAllBag;
     cocos2d::ui::Button* m_pBtnWeaponBag;
     cocos2d::ui::Button* m_pBtnPotionBag;
+    cocos2d::ui::Button* m_pBtnBuyFrame;
+    cocos2d::ui::Button* m_pBtnSellFrame;
+    
     
     BagLayer*     m_pBagLayer;
     TGridView*    m_pShopGridView;
     BagMangerLayerUI* m_pShopMangerLayer;
+
 };
 
 #endif /* ShopPopupUI_hpp */

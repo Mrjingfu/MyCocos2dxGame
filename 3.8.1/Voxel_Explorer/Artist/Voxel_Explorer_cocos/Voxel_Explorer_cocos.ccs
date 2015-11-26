@@ -27,7 +27,6 @@
           <PlistImageFile Name="progress_exp_style.png" Key="progress_exp_style.png" />
           <PlistImageFile Name="ui_frame_7.png" Key="ui_frame_7.png" />
           <PlistImageFile Name="ui_frame_8.png" Key="ui_frame_8.png" />
-          <PlistImageFile Name="ui_map_icon.png" Key="ui_map_icon.png" />
           <PlistImageFile Name="btn_close.png" Key="btn_close.png" />
           <PlistImageFile Name="ui_shop_icon.png" Key="ui_shop_icon.png" />
           <PlistImageFile Name="ui_equip_label.png" Key="ui_equip_label.png" />
@@ -40,7 +39,6 @@
           <PlistImageFile Name="icon_resource_intermediate_tool.png" Key="icon_resource_intermediate_tool.png" />
           <PlistImageFile Name="button_rewardbtn_bg.png" Key="button_rewardbtn_bg.png" />
           <PlistImageFile Name="icon_artifact.png" Key="icon_artifact.png" />
-          <PlistImageFile Name="ui_lock_icon.png" Key="ui_lock_icon.png" />
           <PlistImageFile Name="ui_pause_icon.png" Key="ui_pause_icon.png" />
           <PlistImageFile Name="ui_dist_icon.png" Key="ui_dist_icon.png" />
           <PlistImageFile Name="ui_armor_icon.png" Key="ui_armor_icon.png" />
@@ -71,6 +69,14 @@
           <PlistImageFile Name="btn_mainmenu_en.png" Key="btn_mainmenu_en.png" />
           <PlistImageFile Name="btn_setting_ch.png" Key="btn_setting_ch.png" />
           <PlistImageFile Name="btn_setting_en.png" Key="btn_setting_en.png" />
+          <PlistImageFile Name="btn_fram_buy_normal_ch.png" Key="btn_fram_buy_normal_ch.png" />
+          <PlistImageFile Name="btn_fram_buy_normal_en.png" Key="btn_fram_buy_normal_en.png" />
+          <PlistImageFile Name="btn_fram_buy_press_ch.png" Key="btn_fram_buy_press_ch.png" />
+          <PlistImageFile Name="btn_fram_buy_press_en.png" Key="btn_fram_buy_press_en.png" />
+          <PlistImageFile Name="btn_fram_sell_normal_ch.png" Key="btn_fram_sell_normal_ch.png" />
+          <PlistImageFile Name="btn_fram_sell_normal_en.png" Key="btn_fram_sell_normal_en.png" />
+          <PlistImageFile Name="btn_fram_sell_press_ch.png" Key="btn_fram_sell_press_ch.png" />
+          <PlistImageFile Name="btn_fram_sell_press_en.png" Key="btn_fram_sell_press_en.png" />
         </PlistImageFolder>
         <Project Name="gameScene.csd" Type="Scene" />
         <Project Name="menuscene.csd" Type="Scene" />

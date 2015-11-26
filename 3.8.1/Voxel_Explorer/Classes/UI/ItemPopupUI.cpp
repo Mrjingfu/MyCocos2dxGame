@@ -615,7 +615,7 @@ void ItemPopupUI::IdentifyEquiipFrame()
     }
 }
 
-void ItemPopupUI::updateItemPopup(int itemId)
+void ItemPopupUI::updateItemPopup(int itemId,bool isBuy)
 {
     m_nItemId = itemId;
     CCLOG("m_nItemId:%d",m_nItemId);

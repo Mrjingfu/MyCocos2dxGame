@@ -140,5 +140,15 @@
 	<string>btn_setting_en.png</string>
 	<key>PAUSE_BTN_EXIT_GAME</key>
 	<string>btn_exit_en.png</string>
+	<key>ITEM_SPLITE_COUNT</key>
+	<string>Count:%d</string>
+	<key>SHOP_BTN_FRAME_BUY_NORMAL</key>
+	<string>btn_fram_buy_normal_en.png</string>
+	<key>SHOP_BTN_FRAME_BUY_PRESS</key>
+	<string>btn_fram_buy_press_en.png</string>
+	<key>SHOP_BTN_FRAME_SELL_NORMAL</key>
+	<string>btn_fram_sell_normal_en.png</string>
+	<key>SHOP_BTN_FRAME_SELL_PRESS</key>
+	<string>btn_fram_sell_press_en.png</string>
 </dict>
 </plist>
