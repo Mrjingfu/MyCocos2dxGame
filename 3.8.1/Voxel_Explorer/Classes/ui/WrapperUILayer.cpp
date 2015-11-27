@@ -21,20 +21,20 @@ WrapperUILayer::~WrapperUILayer()
 }
 void WrapperUILayer::onEnter()
 {
-    Layer::onEnter();
+    Layout::onEnter();
 }
 void WrapperUILayer::onExit()
 {
-    Layer::onExit();
+    Layout::onExit();
 }
 bool WrapperUILayer::init()
 {
-    if (!Layer::init()) {
+    if (!Layout::init()) {
         return false;
     }
     
     ::gettimeofday(&m_actionTime, nullptr);
-    
+    setContentSize(cocos2d::Director::getInstance()->getVisibleSize());
     m_actionRef = nullptr;
     m_pRootLayer = cocos2d::Layer::create();
     m_pRootLayer->setContentSize(cocos2d::Director::getInstance()->getVisibleSize());

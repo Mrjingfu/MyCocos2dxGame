@@ -15,10 +15,8 @@
 #include "VoxelExplorer.h"
 #include "EventConst.h"
 #include "ui/CocosGUI.h"
-#include "NoteUi.h"
 #include "RandomDungeon.hpp"
 #include "StandardMonster.hpp"
-#include "MessageManager.h"
 #include "InfoPopupUI.h"
 #include "BaseDoor.hpp"
 #include "PotionsProperty.hpp"
@@ -26,297 +24,51 @@
 #include "RolePopupUI.h"
 #include "LevelResourceManager.h"
 #include "PromptLayer.hpp"
+#include "GameInfoLayer.hpp"
+#include "GameToolbarLayer.hpp"
+#include "RolePropLayer.hpp"
+#include "MonsterPropLayer.hpp"
 USING_NS_CC;
 GameUILayer::GameUILayer()
 {
-    m_pRoleLayout       = nullptr;
-    m_pRoleBtn          = nullptr;
-    m_pRoleHpBar        = nullptr;
-    m_pRoleCurHp        = nullptr;
-    m_pRoleMaxHp        = nullptr;
-    m_pRoleMpBar        = nullptr;
-    m_pRoleCurMp        = nullptr;
-    m_pRoleMaxMp        = nullptr;
-    m_pRoleExpBar       = nullptr;
-    m_pRoleLevel        = nullptr;
-    m_pRoleName         = nullptr;
-    m_pRoleBufferList   = nullptr;
-    
-    m_pMonsterLayout    = nullptr;
-    m_pMonsterCurHp     = nullptr;
-    m_pMonsterMaxHp     = nullptr;
-    m_pMonsterLevel     = nullptr;
-    m_pMonsterName      = nullptr;
-    m_pMonsterHpBar     = nullptr;
-    m_pMonsterBtn       = nullptr;
-    m_pMonsterMpBar     = nullptr;
-    m_pMonsterCurMp     = nullptr;
-    m_pMonsterMaxMp     = nullptr;
-    
-    m_pGameMapBtn       = nullptr;
-    m_pGameMsgBtn       = nullptr;
-    m_pGameSearchBtn    = nullptr;
-    m_pGameGoldNum      = nullptr;
-    m_pGameSilverNum    = nullptr;
-    m_pGameCopperNum    = nullptr;
-    m_pGameLevelInfoName    = nullptr;
-    m_pListMsgs = nullptr;
-    _isOpenSmailMap = false;
-    _isDist = false;
-    m_pMsgFrame = nullptr;
-    m_pGameDistTipsFrame  = nullptr;
-    m_pGameDistFrameCloseBtn = nullptr;
-    m_pGameDistFrameDesc  = nullptr;
-    m_pGameBagBtn = nullptr;;
-    m_pGameDistBtn = nullptr;;
-    m_pGamePauseBtn = nullptr;;
-
+    m_pGameInfoLayer = nullptr;
+    m_pGameToolBarLayer = nullptr;
+    m_pRolePropLayer = nullptr;
+    m_pMonsterPropLayer = nullptr;
 }
 GameUILayer::~GameUILayer()
 {
     
 }
-bool GameUILayer::init()
+bool GameUILayer::initUi()
 {
-    if (!WrapperUILayer::init())
-        return false;
-
-    if (!load("gameScene.csb"))
-        return false;
-    
-    return true;
-}
-bool GameUILayer::initRoleUI()
-{
-    m_pRoleBtn = dynamic_cast<ui::ImageView*>(UtilityHelper::seekNodeByName(m_pRootNode, "btn_role"));
-    if (!m_pRoleBtn)
-        return false;
-    
-    m_pRoleName =dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "role_name"));
-    if (!m_pRoleName)
-        return false;
-    
-    m_pRoleHpBar = dynamic_cast<ui::LoadingBar*>(UtilityHelper::seekNodeByName(m_pRootNode, "progress_role_blood"));
-    if (!m_pRoleHpBar)
-        return false;
-    m_pRoleMpBar = dynamic_cast<ui::LoadingBar*>(UtilityHelper::seekNodeByName(m_pRootNode, "progress_role_margic"));
-    if (!m_pRoleMpBar)
-        return false;
-    
-    m_pRoleCurHp = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "progress_role_blood_num"));
-    if (!m_pRoleCurHp)
-        return false;
-    
-    m_pRoleMaxHp = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "progress_role_blood_maxnum"));
-    if(!m_pRoleMaxHp)
-        return false;
-    
-    m_pRoleCurMp = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "progress_role_margic_num"));
-    if (!m_pRoleCurMp)
-        return false;
-    
-    
-    m_pRoleMaxMp = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "progress_role_margic_maxnum"));
-    if(!m_pRoleMaxMp)
-        return false;
-    
-    m_pRoleExpBar = dynamic_cast<ui::LoadingBar*>(UtilityHelper::seekNodeByName(m_pRootNode, "progress_role_exp"));
-    if(!m_pRoleExpBar)
-        return false;
-    
-    m_pRoleLevel = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "role_lv_num"));
-    if (!m_pRoleLevel)
-        return false;
-    
-    m_pRoleLayout = dynamic_cast<ui::Layout*>(UtilityHelper::seekNodeByName(m_pRootNode, "Panel_role"));
-    if (!m_pRoleLayout)
-        return false;
-    return true;
-}
-bool GameUILayer::initMonsterUI()
-{
-    m_pMonsterLayout =  dynamic_cast<ui::Layout*>(UtilityHelper::seekNodeByName(m_pRootNode, "Panel_monster"));
-    if (!m_pMonsterLayout)
-        return false;
-    
-    m_pMonsterCurHp = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "progress_monster_blood_num"));
-    if (!m_pMonsterCurHp)
-        return false;
-    
-    m_pMonsterHpBar = dynamic_cast<ui::LoadingBar*>(UtilityHelper::seekNodeByName(m_pRootNode, "progress_monster_blood"));
-    if (!m_pMonsterHpBar)
-        return false;
-    
-    m_pMonsterBtn = dynamic_cast<ui::ImageView*>(UtilityHelper::seekNodeByName(m_pRootNode, "btn_monster"));
-    if (!m_pMonsterBtn)
-        return false;
-    
-    ui::ImageView* monsgerIconFrame =  dynamic_cast<ui::ImageView*>(UtilityHelper::seekNodeByName(m_pRootNode, "btn_monster"));
-    if (!monsgerIconFrame)
-        return false;
-    
-    
-    m_pMonsterIcon = ImageView::create();
-    m_pMonsterIcon->setPosition(monsgerIconFrame->getContentSize()*0.5);
-    monsgerIconFrame->addChild(m_pMonsterIcon);
-    
-    
-    m_pMonsterMaxHp = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "progress_monster_blood_maxnum"));
-    if(!m_pMonsterMaxHp)
-        return false;
-    
-    m_pMonsterName = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "monster_name"));
-    if(!m_pMonsterName)
-        return false;
-    
-    m_pMonsterLevel = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "monster_lv_num"));
-    if (!m_pMonsterLevel)
-        return false;
-    
-    m_pMonsterMpBar = dynamic_cast<ui::LoadingBar*>(UtilityHelper::seekNodeByName(m_pRootNode, "progress_monster_margic"));
-    if (!m_pMonsterMpBar)
-        return false;
-    
-    m_pMonsterCurMp = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "progress_monster_margic_num"));
-    if (!m_pMonsterCurMp)
-        return false;
-    
-    m_pMonsterMaxMp = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "progress_monster_margic_maxnum"));
-    if (!m_pMonsterMaxMp)
-        return false;
-    return true;
-}
-bool GameUILayer::initGameUI()
-{
-    m_pGameMsgBtn = dynamic_cast<ui::ImageView*>(UtilityHelper::seekNodeByName(m_pRootNode, "game_btn_msg"));
-    if (!m_pGameMsgBtn)
-        return false;
-    m_pGameMapBtn = dynamic_cast<ui::ImageView*>(UtilityHelper::seekNodeByName(m_pRootNode, "game_btn_map"));
-    if (!m_pGameMapBtn)
-        return false;
-    m_pGameSearchBtn = dynamic_cast<ui::ImageView*>(UtilityHelper::seekNodeByName(m_pRootNode, "game_btn_search"));
-    if (!m_pGameSearchBtn)
-        return false;
-    m_pGameBagBtn = dynamic_cast<ui::ImageView*>(UtilityHelper::seekNodeByName(m_pRootNode, "game_btn_bag"));
-    if (!m_pGameBagBtn)
-        return false;
-    m_pGameDistBtn = dynamic_cast<ui::ImageView*>(UtilityHelper::seekNodeByName(m_pRootNode, "game_btn_dist"));
-    if (!m_pGameDistBtn)
-        return false;
-    m_pGamePauseBtn = dynamic_cast<ui::ImageView*>(UtilityHelper::seekNodeByName(m_pRootNode, "game_btn_pause"));
-    if (!m_pGamePauseBtn)
-        return false;
-    
-    m_pGameGoldNum   = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "game_gold_num"));
-    if (!m_pGameGoldNum)
-        return false;
-    m_pGameSilverNum    = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "game_silver_num"));
-    if (!m_pGameSilverNum)
-        return false;
-    m_pGameCopperNum    = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "game_copper_num"));
-    if (!m_pGameCopperNum)
-        return false;
-    
-    m_pGameLevelInfoName    = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "game_level_info_name"));
-    if (!m_pGameLevelInfoName)
-        return false;
-    m_pMsgFrame = dynamic_cast<ui::ImageView*>(UtilityHelper::seekNodeByName(m_pRootNode, "game_msg_frame"));
-    if (!m_pMsgFrame)
-        return false;
-    
-    m_pGameDistTipsFrame = dynamic_cast<ui::ImageView*>(UtilityHelper::seekNodeByName(m_pRootNode, "game_dist_dialog"));
-    if (!m_pGameDistTipsFrame)
-        return false;
-    m_pGameDistFrameDesc = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "game_dist_tips_desc"));
-    if (!m_pGameDistFrameDesc)
-        return false;
-    m_pGameDistFrameCloseBtn= dynamic_cast<ui::Button*>(UtilityHelper::seekNodeByName(m_pRootNode, "game_dist_btn_close"));
-    if (!m_pGameDistFrameCloseBtn)
-        return false;
-    
-    return true;
-}
-bool GameUILayer::addEvents()
-{
-    if (!initRoleUI())
-        return false;
-    if (!initMonsterUI())
-        return false;
-    if (!initGameUI())
-        return false;
-        
     if (!registerTouchEvent())
         return false;
     
-    m_pListMsgs = ui::ListView::create();
-    m_pListMsgs->setBackGroundImageScale9Enabled(true);
-    m_pListMsgs->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
-    m_pListMsgs->setScrollBarEnabled(false);
-    m_pListMsgs->setDirection(ui::ScrollView::Direction::VERTICAL);
-    m_pListMsgs->setContentSize(cocos2d::Size(m_pMsgFrame->getContentSize().width*0.95,m_pMsgFrame->getContentSize().height*0.9));
-    m_pListMsgs->setPosition(m_pMsgFrame->getContentSize()*0.5);
-    m_pMsgFrame->addChild(m_pListMsgs);
-    m_pMsgFrame->setVisible(false);
+    m_pGameInfoLayer = GameInfoLayer::create();
+    m_pGameInfoLayer->setAnchorPoint(cocos2d::Vec2::ANCHOR_MIDDLE_TOP);
+    m_pGameInfoLayer->setPosition(cocos2d::Vec2(m_pRootLayer->getContentSize().width*0.5,m_pRootLayer->getContentSize().height));
+    m_pRootLayer->addChild(m_pGameInfoLayer);
     
-    m_pGameMapBtn->setTouchEnabled(true);
-    m_pGameMapBtn->addClickEventListener(CC_CALLBACK_1(GameUILayer::onClickMap, this));
-    m_pGameSearchBtn->setTouchEnabled(true);
-    m_pGameSearchBtn->addClickEventListener(CC_CALLBACK_1(GameUILayer::onClickSearch, this));
-    m_pGameMsgBtn->setTouchEnabled(true);
-    m_pGameMsgBtn->addClickEventListener(CC_CALLBACK_1(GameUILayer::onClickMsg, this));
-    m_pGameBagBtn->setTouchEnabled(true);
-    m_pGameBagBtn->addClickEventListener(CC_CALLBACK_1(GameUILayer::onClickRole, this));
-    m_pGameDistBtn->setTouchEnabled(true);
-    m_pGameDistBtn->addClickEventListener(CC_CALLBACK_1(GameUILayer::onClickDist, this));
-    m_pGamePauseBtn->setTouchEnabled(true);
-    m_pGamePauseBtn->addClickEventListener(CC_CALLBACK_1(GameUILayer::onClickPause, this));
+    m_pGameToolBarLayer = GameToolbarLayer::create();
+    m_pGameToolBarLayer->setAnchorPoint(cocos2d::Vec2::ANCHOR_MIDDLE_BOTTOM);
+    m_pGameToolBarLayer->setPosition(cocos2d::Vec2(m_pRootLayer->getContentSize().width*0.5,0));
+    m_pRootLayer->addChild(m_pGameToolBarLayer);
     
-    m_pRoleBtn->setTouchEnabled(true);
-    m_pRoleBtn->addClickEventListener(CC_CALLBACK_1(GameUILayer::onClickRole, this));
-
-    m_pRoleName->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
-    m_pRoleCurHp->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
-    m_pRoleMaxHp->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
-    m_pRoleCurMp->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
-    m_pRoleMaxMp->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
-//    m_pRoleLevel->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
+    m_pRolePropLayer = RolePropLayer::create();
+    m_pRolePropLayer->setAnchorPoint(cocos2d::Vec2::ANCHOR_TOP_LEFT);
+    m_pRolePropLayer->setPosition(cocos2d::Vec2::ZERO);
+    m_pGameInfoLayer->addChild(m_pRolePropLayer);
     
-    m_pGameLevelInfoName->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
-    m_pGameGoldNum->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
-    m_pGameSilverNum->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
-    m_pGameCopperNum->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
-
-    m_pMonsterLayout->setVisible(false);
-    m_pMonsterHpBar->setPercent(100);
-    m_pMonsterName->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
-    m_pMonsterCurHp->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
-    m_pMonsterMaxHp->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
-//    m_pMonsterLevel->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
+    m_pMonsterPropLayer = MonsterPropLayer::create();
+    m_pMonsterPropLayer->setAnchorPoint(cocos2d::Vec2::ANCHOR_TOP_RIGHT);
+    m_pMonsterPropLayer->setPosition(cocos2d::Vec2(m_pGameInfoLayer->getContentSize().width,0));
+    m_pGameInfoLayer->addChild(m_pMonsterPropLayer);
+    m_pMonsterPropLayer->setVisible(false);
     
-    m_pGameDistTipsFrame->setVisible(false);
-    m_pGameDistFrameDesc->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
-    m_pGameDistFrameDesc->setString(UtilityHelper::getLocalStringForUi("GAME_SERACH_EXPLAIN"));
-    m_pGameDistFrameCloseBtn->addClickEventListener(CC_CALLBACK_1(GameUILayer::onClickDistTipsFrame, this));
-    
-    m_pRoleBufferList = TGridView::create();
-//    m_pRoleBufferList->setBackGroundColorType(cocos2d::ui::Layout::BackGroundColorType::SOLID);
-//    m_pRoleBufferList->setBackGroundColor(Color3B::YELLOW);
-    m_pRoleBufferList->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
-    m_pRoleBufferList->setContentSize(m_pRoleMpBar->getContentSize());
-    m_pRoleBufferList->setCol(8);
-    m_pRoleBufferList->setPosition(cocos2d::Vec2(m_pRoleName->getPositionX(),m_pRoleName->getPositionY()-m_pRoleMpBar->getContentSize().height*4.5));
-    m_pRoleBufferList->setScrollBarEnabled(false);
-    m_pRoleBufferList->setItemsMargin(cocos2d::Size(1.5,2));
-    m_pRoleBufferList->setFrameMargin(cocos2d::Size(1,1));
-    m_pRoleBufferList->setClippingEnabled(false);
-    m_pRoleLayout->addChild(m_pRoleBufferList);
-    
-    
-    updateRoleUi();
-    updateGameInfo();
-    initMessageFrame();
     return true;
 }
+
 
 bool GameUILayer::registerTouchEvent()
 {
@@ -335,7 +87,7 @@ bool GameUILayer::registerTouchEvent()
 bool GameUILayer::onTouchBegan(Touch *touch, Event *event)
 {
 
-    return _isDist;
+    return m_pGameToolBarLayer->isOpenDist();
 }
 void GameUILayer::onTouchMoved(cocos2d::Touch *touch, cocos2d::Event *event)
 {
@@ -345,14 +97,14 @@ void GameUILayer::onTouchEnded(cocos2d::Touch *touch, cocos2d::Event *event)
 {
     if(!touch)
         return;
-    if(_isDist)
+    if(m_pGameToolBarLayer->isOpenDist())
     {
         std::string iconRes;
         std::string desc = VoxelExplorer::getInstance()->getScreenPickDesc(touch->getLocation(), iconRes);
         InfoPopupUI* infoUi = static_cast<InfoPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupInfo));
         if(infoUi)
         {
-            onClickDistTipsFrame(nullptr);
+           m_pGameToolBarLayer->onClickDistTipsFrame();
             infoUi->setDarkLayerVisble(false);
             infoUi->setInfoData(iconRes, desc);
         }
@@ -360,62 +112,7 @@ void GameUILayer::onTouchEnded(cocos2d::Touch *touch, cocos2d::Event *event)
     }
     return;
 }
-void GameUILayer::updateRoleBuff()
-{
-    if (!m_pRoleBufferList->getItems().empty()) {
-        m_pRoleBufferList->removeAllChildren();
-    }
 
-    int flag = PlayerProperty::getInstance()->getPlayerBuffer();
-    if ((flag&PB_SPEEDUP) == PB_SPEEDUP) {
-        ui::ImageView* buffim = ui::ImageView::create("ui_buffer_speedup.png",TextureResType::PLIST);
-        buffim->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
-        m_pRoleBufferList->pushBackCustomItem(buffim);
-    }
-    if ((flag&PB_STEALTH) == PB_STEALTH)
-    {
-        ui::ImageView* buffim = ui::ImageView::create("ui_buffer_stealth.png",TextureResType::PLIST);
-         buffim->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
-        m_pRoleBufferList->pushBackCustomItem(buffim);
-    }
-    if ((flag&PB_STRONGER) == PB_STRONGER)
-    {
-        ui::ImageView* buffim = ui::ImageView::create("ui_buffer_stronger.png",TextureResType::PLIST);
-         buffim->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
-        m_pRoleBufferList->pushBackCustomItem(buffim);
-    }
-    if ((flag&PB_POISONING) == PB_POISONING)
-    {
-        ui::ImageView* buffim = ui::ImageView::create("ui_buffer_poisoning.png",TextureResType::PLIST);
-         buffim->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
-        m_pRoleBufferList->pushBackCustomItem(buffim);
-    }
-    if ((flag&PB_FROZEN) == PB_FROZEN)
-    {
-        ui::ImageView* buffim = ui::ImageView::create("ui_buffer_frozen.png",TextureResType::PLIST);
-         buffim->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
-        m_pRoleBufferList->pushBackCustomItem(buffim);
-    }
-    if ((flag&PB_PARALYTIC) == PB_PARALYTIC)
-    {
-        ui::ImageView* buffim = ui::ImageView::create("ui_buffer_paralytic.png",TextureResType::PLIST);
-         buffim->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
-        m_pRoleBufferList->pushBackCustomItem(buffim);
-    }
-    if ((flag&PB_WEAK) == PB_WEAK)
-    {
-        ui::ImageView* buffim = ui::ImageView::create("ui_buffer_weak.png",TextureResType::PLIST);
-         buffim->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
-        m_pRoleBufferList->pushBackCustomItem(buffim);
-    }
-    if ((flag&PB_FIRE) == PB_FIRE)
-    {
-        ui::ImageView* buffim = ui::ImageView::create("ui_buffer_fire.png",TextureResType::PLIST);
-         buffim->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
-        m_pRoleBufferList->pushBackCustomItem(buffim);
-    }
-
-}
 void GameUILayer::onEventFoundHidderDoor(cocos2d::EventCustom *sender) //发现隐藏门
 {
     CCLOG("onEventFoundHidderDoor");
@@ -475,7 +172,7 @@ void GameUILayer::onEventTriggerToxic(cocos2d::EventCustom *sender) //中毒机�
     CCLOG("onEventTriggerToxic");
     std::string msg = UtilityHelper::getLocalStringForUi("TRIGGER_MESSAGE_TOXIC_TRAP");
     PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
-    sendMessage(msg);
+    m_pGameToolBarLayer->sendMessage(msg);
     
 }
 void GameUILayer::onEventTriggerFire(cocos2d::EventCustom *sender) //火机关
@@ -483,7 +180,7 @@ void GameUILayer::onEventTriggerFire(cocos2d::EventCustom *sender) //火机关
     CCLOG("onEventTriggerFire");
     std::string msg = UtilityHelper::getLocalStringForUi("TRIGGER_MESSAGE_FIRE_TRAP");
     PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
-    sendMessage(msg);
+     m_pGameToolBarLayer->sendMessage(msg);
     
 }
 void GameUILayer::onEventTriggerParalyic(cocos2d::EventCustom *sender)//麻痹机关
@@ -491,7 +188,7 @@ void GameUILayer::onEventTriggerParalyic(cocos2d::EventCustom *sender)//麻痹�
     CCLOG("onEventTriggerParalyic");
     std::string msg = UtilityHelper::getLocalStringForUi("TRIGGER_MESSAGE_PARALYTIC_TRAP");
     PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
-    sendMessage(msg);
+     m_pGameToolBarLayer->sendMessage(msg);
     
 }
 void GameUILayer::onEventTriggerGripping(cocos2d::EventCustom *sender)//夹子机关
@@ -499,7 +196,7 @@ void GameUILayer::onEventTriggerGripping(cocos2d::EventCustom *sender)//夹子�
     CCLOG("onEventTriggerGripping");
     std::string msg = UtilityHelper::getLocalStringForUi("TRIGGER_MESSAGE_GRIPPING_TRAP");
     PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
-    sendMessage(msg);
+     m_pGameToolBarLayer->sendMessage(msg);
     
 }
 void GameUILayer::onEventTriggerSummoning(cocos2d::EventCustom *sender)//召唤机关
@@ -507,7 +204,7 @@ void GameUILayer::onEventTriggerSummoning(cocos2d::EventCustom *sender)//召唤�
     CCLOG("onEventTriggerSummoning");
     std::string msg = UtilityHelper::getLocalStringForUi("TRIGGER_MESSAGE_SUMMONING_TRAP");
     PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
-    sendMessage(msg);
+     m_pGameToolBarLayer->sendMessage(msg);
     
 }
 void GameUILayer::onEventTriggerWeak(cocos2d::EventCustom *sender) //虚弱机关
@@ -515,7 +212,7 @@ void GameUILayer::onEventTriggerWeak(cocos2d::EventCustom *sender) //虚弱机�
     CCLOG("onEventTriggerWeak");
     std::string msg = UtilityHelper::getLocalStringForUi("TRIGGER_MESSAGE_WEAK_TRAP");
     PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
-    sendMessage(msg);
+     m_pGameToolBarLayer->sendMessage(msg);
    
 }
 void GameUILayer::onEventUserPotion(cocos2d::EventCustom *sender)
@@ -605,33 +302,48 @@ void GameUILayer::onEventUserScroll(cocos2d::EventCustom *sender)
     //关闭角色对话框
     PopupUILayerManager::getInstance()->closeCurrentPopup();
 }
-
+void GameUILayer::refreshUIView()
+{
+    if (m_pGameInfoLayer) {
+        m_pGameInfoLayer->refreshUIView();
+    }
+    
+    if (m_pGameToolBarLayer) {
+        m_pGameToolBarLayer->refreshUIView();
+    }
+    
+    if (m_pRolePropLayer) {
+        m_pRolePropLayer->refreshUIView();
+    }
+    
+    if (m_pMonsterPropLayer) {
+        m_pMonsterPropLayer->refreshUIView();
+    }
+}
 void GameUILayer::onEventRoleLevelUp(cocos2d::EventCustom *sender)
 {
     CCLOG("onEventRoleLevelUp");
-    updateRoleUi();
+    refreshUIView();
     PopupUILayerManager::getInstance()->showStatusImport(TIP_DEFAULT, UtilityHelper::getLocalStringForUi("GAME_MESSAGE_LEVEL_UP"));
-    sendMessage(UtilityHelper::getLocalStringForUi("GAME_MESSAGE_LEVEL_UP"),PopupUILayerManager::getInstance()->getTipsColor(TIP_NEUTRAL));
+    m_pGameToolBarLayer->sendMessage(UtilityHelper::getLocalStringForUi("GAME_MESSAGE_LEVEL_UP"),PopupUILayerManager::getInstance()->getTipsColor(TIP_NEUTRAL));
 }
 
 void GameUILayer::onEventRoleUpdateProp(cocos2d::EventCustom *sender)
 {
     CCLOG("onEventUpdateProp");
-    updateRoleUi();
-    updateRoleBuff();
-    updateGameInfo();
+    refreshUIView();
+
 }
 
 void GameUILayer::onEventRoleDead(cocos2d::EventCustom *sender)
 {
     CCLOG("onEventRoleDead");
-    updateRoleUi();
+    refreshUIView();
     CallFunc* func = CallFunc::create([]{
         PopupUILayer* pausePopup = PopupUILayerManager::getInstance()->openPopup(ePopupPause);
         if (pausePopup) {
             pausePopup->setDarkLayerVisble(false);
             pausePopup->setBlankClose(false);
-            //        VoxelExplorer::getInstance()->get3DLayer()->resume();
         }
 
     });
@@ -673,8 +385,6 @@ void GameUILayer::onEventMonsterDead(cocos2d::EventCustom *sender)
     Vec2 pt = VoxelExplorer::getInstance()->getMainCamera()->projectGL(monster->getPosition3D());
     pt = Vec2(pt.x, pt.y+TerrainTile::CONTENT_SCALE*2.5);
     if (monster->getState() == BaseMonster::MonsterState::MS_DEATH) {
-        m_pMonsterLayout->setVisible(false);
-        m_pMonsterHpBar->setPercent(100);
         int roleLevel = PlayerProperty::getInstance()->getLevel();
         int monsterLevel = monster->getMonsterProperty()->getLevel();
         int exp = GameFormula::getKillNormalMonsterExp(roleLevel, monsterLevel);
@@ -682,6 +392,11 @@ void GameUILayer::onEventMonsterDead(cocos2d::EventCustom *sender)
             exp = GameFormula::getKillEliteMonsterExp(roleLevel, monsterLevel);
         }
         PopupUILayerManager::getInstance()->showStatus(TIP_POSITIVE, StringUtils::format(UtilityHelper::getLocalStringForUi("STATUS_TEXT_EXP").c_str(),exp),pt);
+        if (m_pMonsterPropLayer) {
+            m_pMonsterPropLayer->setVisible(false);
+            m_pMonsterPropLayer->setMonster(monster);
+        }
+
     }
  
 
@@ -717,7 +432,9 @@ void GameUILayer::onEventMonsterUpdateProp(cocos2d::EventCustom *sender)
 {
     CCLOG("onEventUpdateMonsterProp");
     BaseMonster* monster = static_cast<BaseMonster*>(sender->getUserData());
-    updateMonsterUi(monster);
+    if (m_pMonsterPropLayer)
+        m_pMonsterPropLayer->setMonster(monster);
+    refreshUIView();
 }
 void GameUILayer::onEventMonsterAlert(cocos2d::EventCustom *sender)
 {
@@ -734,7 +451,10 @@ void GameUILayer::onEventMonsterConfusing(cocos2d::EventCustom *sender)
 {
     CCLOG("onEventMonsterConfusing");
     BaseMonster* monster = static_cast<BaseMonster*>(sender->getUserData());
-    m_pMonsterLayout->setVisible(false);
+    if (m_pMonsterPropLayer) {
+         m_pMonsterPropLayer->setVisible(false);
+    }
+   
 }
 
 void GameUILayer::onEnter()
@@ -817,186 +537,4 @@ void GameUILayer::onExit()
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_GO_BOSSROOM);
     
     WrapperUILayer::onExit();
-}
-void GameUILayer::sendMessage(std::string msg,Color3B msgColor)
-{
-    if (MessageManager::getInstance()->isExceedMsgMax()) {
-        m_pListMsgs->removeItem(0);
-        MessageManager::getInstance()->removeMsg(0);
-    }
-    MessageManager::getInstance()->setMsg(msg, msgColor);
-    setMsgItem(msg,msgColor);
-
-}
-void GameUILayer::setMsgItem(std::string msg,cocos2d::Color3B msgColor )
-{
-    NoteUi* noteui = NoteUi::create();
-    noteui->setMsg(msg,msgColor);
-    m_pListMsgs->pushBackCustomItem( noteui);
-    if ( m_pListMsgs->getItems().size()*noteui->getContentSize().height > m_pListMsgs->getContentSize().height) {
-//        m_pListMsgs->scrollToBottom(0.5,false);
-        m_pListMsgs->forceDoLayout();
-        m_pListMsgs->jumpToBottom();
-    }
-}
-void GameUILayer::initMessageFrame()
-{
-    Vector<MsgData*> msgList = MessageManager::getInstance()->getMsgList();
-    if (msgList.empty())
-    {
-        std::string rungenName =RandomDungeon::getInstance()->getCurrentDungeonNode()->m_strDungeonName.c_str();
-        int flood =  int(RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nCurrentDepth);
-        sendMessage(StringUtils::format(UtilityHelper::getLocalStringForUi("GAME_MESSAGE_NOT").c_str(),rungenName.c_str(),flood));
-        return;
-    }
-    for(Vector<MsgData*>::iterator iter = msgList.begin();iter!=msgList.end();iter++)
-    {
-        MsgData* msgData = (*iter);
-        setMsgItem(msgData->getMsg(),msgData->getMsgColor());
-    }
-}
-void GameUILayer::updateGameInfo()
-{
-    
-    m_pGameLevelInfoName->setString(StringUtils::format("%s %d",RandomDungeon::getInstance()->getCurrentDungeonNode()->m_strDungeonName.c_str(),int(RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nCurrentDepth)));
-    CCLOG(" gold: %s",StringUtils::format("%d",int(PlayerProperty::getInstance()->getGold())).c_str());
-    CCLOG(" silver: %s",StringUtils::format("%d",int(PlayerProperty::getInstance()->getGold())).c_str());
-    CCLOG(" copper: %s",StringUtils::format("%d",int(PlayerProperty::getInstance()->getGold())).c_str());
-    
-    
-    m_pGameGoldNum->setString(StringUtils::format("%d",int(PlayerProperty::getInstance()->getGold())));
-    m_pGameSilverNum->setString(StringUtils::format("%d",int(PlayerProperty::getInstance()->getSilver())));
-    m_pGameCopperNum->setString(StringUtils::format("%d",int(PlayerProperty::getInstance()->getCopper())));
-}
-
-void GameUILayer::updateRoleUi()
-{
-    float hpPer =PlayerProperty::getInstance()->getCurrentHP().GetFloatValue()/PlayerProperty::getInstance()->getMaxHP().GetFloatValue() *100.0f;
-
-    float mpPer =PlayerProperty::getInstance()->getCurrentMP().GetFloatValue()/PlayerProperty::getInstance()->getMaxMP().GetFloatValue() *100.0f;
-    CCLOG("hpPer:%f mpPer:%f",hpPer,mpPer);
-    m_pRoleMpBar->setPercent(mpPer);
-    m_pRoleHpBar->setPercent(hpPer);
-    m_pRoleName->setString("");//角色名
-    m_pRoleCurHp->setString(Value(int(PlayerProperty::getInstance()->getCurrentHP())).asString());
-    m_pRoleMaxHp->setString(StringUtils::format("/%d",int(PlayerProperty::getInstance()->getMaxHP())));
-    m_pRoleCurMp->setString(Value(int(PlayerProperty::getInstance()->getCurrentMP())).asString());
-    m_pRoleMaxMp->setString(StringUtils::format("/%d",int(PlayerProperty::getInstance()->getMaxMP())));
-    float playerExp = PlayerProperty::getInstance()->getExp().GetFloatValue();
-    float nextLevelExp = GameFormula::getNextLevelExp(PlayerProperty::getInstance()->getLevel());
-    float ExpPer = playerExp/nextLevelExp *100.0f;
-    
-    CCLOG("player Exp:%f,nexExp:%f,EXPPER:%f",playerExp,nextLevelExp,ExpPer);
-    m_pRoleExpBar->setPercent(ExpPer);
-    m_pRoleLevel->setString(Value(int(PlayerProperty::getInstance()->getLevel())).asString());
-    
-}
-void GameUILayer::updateMonsterUi(BaseMonster* monster)
-{
-    if (!monster)
-        return;
-    if (monster->getState() != BaseMonster::MonsterState::MS_DEATH)
-    {
-        m_pMonsterLayout->setVisible(true);
-        float hpPer =monster->getMonsterProperty()->getCurrentHP().GetFloatValue()/monster->getMonsterProperty()->getMaxHP().GetFloatValue() *100.0f;
-        m_pMonsterHpBar->setPercent(hpPer);
-        m_pMonsterCurHp->setString(StringUtils::format("%d",int(monster->getMonsterProperty()->getCurrentHP())));
-        m_pMonsterMaxHp->setString(StringUtils::format("/%d",int(monster->getMonsterProperty()->getMaxHP())));
-        m_pMonsterLevel->setString(StringUtils::format("%d",int(monster->getMonsterProperty()->getLevel())));
-        std::string monsterName =UtilityHelper::getLocalString(MONSTER_MODEL_NAMES[monster->getMonsterType()]);
-        if (monster->getMonsterProperty()->isElite()) {
-            m_pMonsterName->setColor(PopupUILayerManager::getInstance()->getTipsColor(TIP_POSITIVE));
-            monsterName = StringUtils::format(UtilityHelper::getLocalStringForUi("MONSTER_ELITE_NAME").c_str(),monsterName.c_str());
-        }else{
-            m_pMonsterName->setColor(PopupUILayerManager::getInstance()->getTipsColor(TIP_DEFAULT));
-        }
-        m_pMonsterIcon->loadTexture(monster->getIconRes(),TextureResType::PLIST);
-        m_pMonsterIcon->setScale(0.35);
-        m_pMonsterIcon->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
-        m_pMonsterName->setString(monsterName);
-}
-}
-
-void GameUILayer::onClickRole(Ref* ref)
-{
-    CHECK_ACTION(ref);
-    CCLOG("onClickRole");
-    PopupUILayerManager::getInstance()->openPopup(ePopupRole);
-    onClickDistTipsFrame(nullptr);
-}
-void GameUILayer::onClickMap(cocos2d::Ref *ref)
-{
-    CHECK_ACTION(ref);
-    CCLOG("onClickMap");
-    
-    if (_isOpenSmailMap) {
-        VoxelExplorer::getInstance()->getCurrentLevel()->showMap(false);
-        _isOpenSmailMap = false;
-    }else{
-        VoxelExplorer::getInstance()->getCurrentLevel()->showMap(true);
-         _isOpenSmailMap = true;
-    }
-     onClickDistTipsFrame(nullptr);
-}
-void GameUILayer::onClickDistTipsFrame(cocos2d::Ref *ref)
-{
-//     CHECK_ACTION(ref);
-     CCLOG("onClickSearchTipsFrame");
-    if (m_pGameDistTipsFrame&& _isDist) {
-        m_pGameDistTipsFrame->setVisible(false);
-        if (m_pMsgFrame->isVisible())
-        {
-            m_pGameDistTipsFrame->setPosition(Vec2(m_pGameDistTipsFrame->getPositionX(), m_pGameDistTipsFrame->getPositionY()-m_pMsgFrame->getContentSize().height));
-        }
-    }
-    _isDist = false;
-    
-}
-
-void GameUILayer::onClickMsg(cocos2d::Ref *ref)
-{
-    CHECK_ACTION(ref);
-    CCLOG("onClickMsg");
-    if (_isOpenSmailMap) {
-        return;
-    }
-     onClickDistTipsFrame(nullptr);
-    if (m_pMsgFrame->isVisible())
-    {
-         m_pMsgFrame->setVisible(false);
-    }else
-    {
-        m_pMsgFrame->setVisible(true);
-        m_pListMsgs->forceDoLayout();
-        m_pListMsgs->scrollToBottom(0.5,false);
-    }
-   
-}
-void GameUILayer::onClickDist(cocos2d::Ref *ref)
-{
-     CCLOG("onClickDist");
-    if (_isDist || _isOpenSmailMap)
-        return;
-    _isDist = true;
-    if (m_pGameDistTipsFrame ) {
-        if (m_pMsgFrame->isVisible()) {
-            m_pGameDistTipsFrame->setPosition(Vec2(m_pGameDistTipsFrame->getPositionX(), m_pGameDistTipsFrame->getPositionY()+m_pMsgFrame->getContentSize().height));
-        }
-        m_pGameDistTipsFrame->setVisible(true);
-    }
-}
-void GameUILayer::onClickPause(cocos2d::Ref *ref)
-{
-    CHECK_ACTION(ref);
-    CCLOG("onClickPause");
-    PopupUILayerManager::getInstance()->openPopup(ePopupPause);
-}
-void GameUILayer::onClickSearch(cocos2d::Ref *ref)
-{
-    CHECK_ACTION(ref);
-    CCLOG("onClickSearch");
-    if (_isDist || _isOpenSmailMap)
-        return;
-    VoxelExplorer::getInstance()->searchAndCheck();
-
 }

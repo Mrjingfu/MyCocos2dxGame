@@ -16,7 +16,7 @@
 
 
 #define CHECK_ACTION(sender) do{  if(isForbiddenAction(sender))  return ;}while(0)
-class WrapperUILayer :public cocos2d::Layer,public CloseCallback{
+class WrapperUILayer :public cocos2d::ui::Layout,public CloseCallback{
     
 public:
     WrapperUILayer();
