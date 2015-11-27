@@ -80,11 +80,16 @@
         </PlistImageFolder>
         <Project Name="gameScene.csd" Type="Scene" />
         <Project Name="menuscene.csd" Type="Scene" />
-        <Project Name="infoPopupLayer.csd" Type="Layer" />
         <Project Name="pausePopupLayer.csd" Type="Layer" />
         <Project Name="achievementPopupLayer.csd" Type="Layer" />
-        <Project Name="characterLayer.csd" Type="Layer" />
         <Project Name="itemPopupLayer.csd" Type="Layer" />
+        <Project Name="shopPopupLayer.csd" Type="Layer" />
+        <Project Name="itemShopPopupLayer.csd" Type="Layer" />
+        <Project Name="characterInfoLayer.csd" Type="Layer" />
+        <Project Name="gameinfoLayer.csd" Type="Layer" />
+        <Project Name="monsterInfoLayer.csd" Type="Layer" />
+        <Project Name="roleLayer.csd" Type="Layer" />
+        <Project Name="gametoolbarLayer.csd" Type="Layer" />
         <PlistImageFolder Image="ui_characters.png" PListFile="ui_characters.plist" Name=".ui_characters_PList.Dir">
           <PlistImageFile Name="bat.png" Key="bat.png" />
           <PlistImageFile Name="chr_child.png" Key="chr_child.png" />
@@ -100,10 +105,32 @@
           <PlistImageFile Name="slime.png" Key="slime.png" />
           <PlistImageFile Name="snake.png" Key="snake.png" />
           <PlistImageFile Name="spider.png" Key="spider.png" />
+          <PlistImageFile Name="adjudicator.png" Key="adjudicator.png" />
+          <PlistImageFile Name="allip.png" Key="allip.png" />
+          <PlistImageFile Name="ankheg.png" Key="ankheg.png" />
+          <PlistImageFile Name="apologist.png" Key="apologist.png" />
+          <PlistImageFile Name="bear.png" Key="bear.png" />
+          <PlistImageFile Name="believer.png" Key="believer.png" />
+          <PlistImageFile Name="deathminer.png" Key="deathminer.png" />
+          <PlistImageFile Name="dinosaur.png" Key="dinosaur.png" />
+          <PlistImageFile Name="gargoyle.png" Key="gargoyle.png" />
+          <PlistImageFile Name="gatekeeper.png" Key="gatekeeper.png" />
+          <PlistImageFile Name="ghost.png" Key="ghost.png" />
+          <PlistImageFile Name="ghoul.png" Key="ghoul.png" />
+          <PlistImageFile Name="gnoll.png" Key="gnoll.png" />
+          <PlistImageFile Name="goblin.png" Key="goblin.png" />
+          <PlistImageFile Name="kobold.png" Key="kobold.png" />
+          <PlistImageFile Name="mob.png" Key="mob.png" />
+          <PlistImageFile Name="ooze.png" Key="ooze.png" />
+          <PlistImageFile Name="priest.png" Key="priest.png" />
+          <PlistImageFile Name="prisoner.png" Key="prisoner.png" />
+          <PlistImageFile Name="prisonguard.png" Key="prisonguard.png" />
+          <PlistImageFile Name="shadow.png" Key="shadow.png" />
+          <PlistImageFile Name="skeleton.png" Key="skeleton.png" />
+          <PlistImageFile Name="torture.png" Key="torture.png" />
+          <PlistImageFile Name="wolf.png" Key="wolf.png" />
+          <PlistImageFile Name="zombie.png" Key="zombie.png" />
         </PlistImageFolder>
-        <Project Name="shopPopupLayer.csd" Type="Layer" />
-        <Project Name="itemSplitLayer.csd" Type="Layer" />
-        <Project Name="itemShopPopupLayer.csd" Type="Layer" />
       </RootFolder>
     </Group>
   </SolutionFolder>

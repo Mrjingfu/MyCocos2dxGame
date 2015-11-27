@@ -3,13 +3,13 @@
   <Content ctype="GameProjectContent">
     <Content>
       <Animation Duration="0" Speed="1.0000" />
-      <ObjectData Name="Layer" Tag="454" ctype="GameLayerObjectData">
+      <ObjectData Name="Layer" Visible="False" Tag="454" ctype="GameLayerObjectData">
         <Size X="250.0000" Y="340.0000" />
         <Children>
           <AbstractNodeData Name="bg_frame" ActionTag="-958135217" Tag="613" IconVisible="False" PercentWidthEnable="True" PercentWidthEnabled="True" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" BottomMargin="160.0000" Scale9Enable="True" LeftEage="5" RightEage="5" TopEage="5" BottomEage="5" Scale9OriginX="5" Scale9OriginY="5" Scale9Width="6" Scale9Height="6" ctype="ImageViewObjectData">
             <Size X="250.0000" Y="180.0000" />
             <Children>
-              <AbstractNodeData Name="role_frame" ActionTag="1765038179" Tag="136" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="12.1361" RightMargin="167.8639" TopMargin="28.7573" BottomMargin="81.2427" TouchEnable="True" BackColorAlpha="102" ComboBoxIndex="1" ColorAngle="90.0000" ctype="PanelObjectData">
+              <AbstractNodeData Name="role_frame" ActionTag="1765038179" Tag="136" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="12.1250" RightMargin="167.8750" TopMargin="28.7560" BottomMargin="81.2440" TouchEnable="True" BackColorAlpha="102" ComboBoxIndex="1" ColorAngle="90.0000" ctype="PanelObjectData">
                 <Size X="70.0000" Y="70.0000" />
                 <Children>
                   <AbstractNodeData Name="role_icon" ActionTag="-1057933375" Tag="135" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="-16.0000" RightMargin="-16.0000" TopMargin="-35.0000" BottomMargin="-35.0000" Scale9Width="102" Scale9Height="140" ctype="ImageViewObjectData">
@@ -24,7 +24,7 @@
                   </AbstractNodeData>
                 </Children>
                 <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-                <Position X="47.1361" Y="116.2427" />
+                <Position X="47.1250" Y="116.2440" />
                 <Scale ScaleX="1.0000" ScaleY="1.0000" />
                 <CColor A="255" R="255" G="255" B="255" />
                 <PrePosition X="0.1885" Y="0.6458" />
@@ -230,7 +230,7 @@
               <AbstractNodeData Name="prop_btn_bag_all" ActionTag="265929769" Tag="43" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="17.7500" RightMargin="196.2500" TopMargin="148.1015" BottomMargin="-20.1015" TouchEnable="True" FontSize="9" Scale9Enable="True" LeftEage="5" RightEage="5" TopEage="4" BottomEage="4" Scale9OriginX="5" Scale9OriginY="4" Scale9Width="26" Scale9Height="19" DisplayState="False" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="ButtonObjectData">
                 <Size X="36.0000" Y="27.0000" />
                 <AnchorPoint ScaleY="1.0000" />
-                <Position X="17.7500" Y="6.8985" />
+                <Position X="17.7500" Y="6.8975" />
                 <Scale ScaleX="1.0000" ScaleY="1.0000" />
                 <CColor A="255" R="255" G="255" B="255" />
                 <PrePosition X="0.0710" Y="0.0445" />
@@ -246,7 +246,7 @@
               <AbstractNodeData Name="prop_btn_bag_wepon" ActionTag="-1559515343" Tag="65" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="60.2500" RightMargin="153.7500" TopMargin="151.4655" BottomMargin="-20.4655" TouchEnable="True" FontSize="9" Scale9Enable="True" LeftEage="5" RightEage="5" TopEage="4" BottomEage="4" Scale9OriginX="5" Scale9OriginY="4" Scale9Width="26" Scale9Height="16" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="ButtonObjectData">
                 <Size X="36.0000" Y="24.0000" />
                 <AnchorPoint ScaleY="1.0000" />
-                <Position X="60.2500" Y="3.5345" />
+                <Position X="60.2500" Y="3.5340" />
                 <Scale ScaleX="1.0000" ScaleY="1.0000" />
                 <CColor A="255" R="255" G="255" B="255" />
                 <PrePosition X="0.2410" Y="0.0228" />
@@ -262,7 +262,7 @@
               <AbstractNodeData Name="prop_btn_bag_poition" ActionTag="266066345" Tag="44" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="102.7500" RightMargin="111.2500" TopMargin="150.0160" BottomMargin="-20.0160" TouchEnable="True" FontSize="9" Scale9Enable="True" LeftEage="5" RightEage="5" TopEage="4" BottomEage="4" Scale9OriginX="5" Scale9OriginY="4" Scale9Width="26" Scale9Height="17" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="ButtonObjectData">
                 <Size X="36.0000" Y="25.0000" />
                 <AnchorPoint ScaleY="1.0000" />
-                <Position X="102.7500" Y="4.9840" />
+                <Position X="102.7500" Y="4.9910" />
                 <Scale ScaleX="1.0000" ScaleY="1.0000" />
                 <CColor A="255" R="255" G="255" B="255" />
                 <PrePosition X="0.4110" Y="0.0322" />

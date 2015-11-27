@@ -31,17 +31,11 @@
     <Item Key="TabsParamsKey">
       <Value ctype="TabsInfo">
         <OpenedDocuments>
-          <FilePathData Path="pausePopupLayer.csd" />
+          <FilePathData Path="characterInfoLayer.csd" />
           <FilePathData Path="gameScene.csd" />
-          <FilePathData Path="characterLayer.csd" />
-          <FilePathData Path="itemSplitLayer.csd" />
-          <FilePathData Path="infoPopupLayer.csd" />
-          <FilePathData Path="achievementPopupLayer.csd" />
-          <FilePathData Path="shopPopupLayer.csd" />
-          <FilePathData Path="itemPopupLayer.csd" />
-          <FilePathData Path="itemShopPopupLayer.csd" />
+          <FilePathData Path="gametoolbarLayer.csd" />
         </OpenedDocuments>
-        <ActiveDocument Path="itemShopPopupLayer.csd" />
+        <ActiveDocument Path="gametoolbarLayer.csd" />
       </Value>
     </Item>
   </Properties>
