@@ -818,6 +818,19 @@ void VoxelExplorer::handlePlayerUseStandardPortal()
 }
 void VoxelExplorer::handlePlayerUseSmallPortal()
 {
+    if(!m_pCurrentLevel)
+        return;
+    if(!m_pPlayer && m_pPlayer->getState() == Player::PS_DEATH)
+        return;
+    
+    m_pPlayer->removeTerrainTileFlag(TileInfo::ATTACKABLE);
+    cocos2d::Vec2 pos = m_pCurrentLevel->getRandomTranspotTile();
+    m_pPlayer->setPosition3D(Vec3(pos.x, -0.5f*TerrainTile::CONTENT_SCALE, -pos.y));
+    m_pPlayer->addTerrainTileFlag(TileInfo::ATTACKABLE);
+    
+    m_pMainCamera->setPosition3D(m_pPlayer->getPosition3D() + Vec3(0, 5*TerrainTile::CONTENT_SCALE, 4*TerrainTile::CONTENT_SCALE ));
+    m_pMainCamera->lookAt(m_pPlayer->getPosition3D() + Vec3(0,0.5f*TerrainTile::CONTENT_SCALE,0));
+    m_pPlayer->setState(Player::PS_IDLE);
 }
 void VoxelExplorer::handleUpstairs()
 {

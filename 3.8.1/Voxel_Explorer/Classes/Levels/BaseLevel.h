@@ -62,6 +62,16 @@ struct TileInfo
             return true;
         return false;
     }
+    bool isAvalidRandomTransport() const
+    {
+        if(m_AreaType != Area::AT_STANDARD || m_AreaType != Area::AT_TUNNEL || m_AreaType != Area::AT_PASSAGE)
+            return false;
+        if(!isPassable())
+            return false;
+        else if(m_Type >= TerrainTile::TT_TOXIC_TRAP && m_Type <= TerrainTile::TT_HIDE_WEAK_TRAP)
+            return false;
+        return true;
+    }
 };
 class BaseLevel : public cocos2d::Ref
 {
@@ -116,7 +126,7 @@ public:
     
     bool getNextPathStep(const cocos2d::Vec2& from, const cocos2d::Vec2& to, cocos2d::Vec2& nextPos);
     cocos2d::Vec2 getRandomPassableTile();
-    
+    cocos2d::Vec2 getRandomTranspotTile();
     void searchAndCheck(int x, int y, int searchDistance);
     
     bool hasShowMap() const { return m_bShowMap; }

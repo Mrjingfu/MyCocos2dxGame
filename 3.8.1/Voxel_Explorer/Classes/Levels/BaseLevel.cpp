@@ -302,6 +302,14 @@ cocos2d::Vec2 BaseLevel::getRandomPassableTile()
     } while (!m_Map[cell].isPassable());
     return Vec2(cell % m_nWidth, cell / m_nWidth);
 }
+cocos2d::Vec2 BaseLevel::getRandomTranspotTile()
+{
+    int cell = -1;
+    do {
+        cell = cocos2d::random(0, (int)(m_Map.size()-1));
+    } while (!m_Map[cell].isAvalidRandomTransport());
+    return Vec2(cell % m_nWidth, cell / m_nWidth);
+}
 void BaseLevel::searchAndCheck(int x, int y, int searchDistance)
 {
     std::vector<int> neighbours;
