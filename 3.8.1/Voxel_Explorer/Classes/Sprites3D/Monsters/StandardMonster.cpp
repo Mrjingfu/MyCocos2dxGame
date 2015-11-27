@@ -11,12 +11,17 @@
 #include "OutlineEffect3D.h"
 USING_NS_CC;
 
-StandardMonster* StandardMonster::create(BaseMonster::MonsterType type)
+StandardMonster* StandardMonster::create(BaseMonster::MonsterType type, bool elite)
 {
     std::string model = LevelResourceManager::getInstance()->getMonsterModelRes(MONSTER_MODEL_NAMES[type]);
     auto monster = new (std::nothrow) StandardMonster();
     if (monster && monster->initWithFile(model) && monster->createFakeShadow())
     {
+        if(elite)
+        {
+            monster->m_pMonsterProperty->setElite(elite);
+            monster->m_pMonsterProperty->adjustByDC();
+        }
         monster->m_Type = type;
         monster->setCameraMask((unsigned int)CameraFlag::USER1);
         monster->setLightMask((unsigned int)LightFlag::LIGHT0);

@@ -61,11 +61,14 @@ void MonsterProperty::adjustByDC()
 {
     if(RandomDungeon::getInstance()->getCurrentDungeonNode() == nullptr)
         return;
-    float percentElite = 0.005f;
-    float percentStandard = 1.0 - percentElite;
-    AlisaMethod* amElite = AlisaMethod::create(percentStandard,percentElite,-1.0, NULL);
-    if(amElite)
-        m_bIsElite = (amElite->getRandomIndex() == 1);
+    if(!m_bIsElite)
+    {
+        float percentElite = 0.005f;
+        float percentStandard = 1.0 - percentElite;
+        AlisaMethod* amElite = AlisaMethod::create(percentStandard,percentElite,-1.0, NULL);
+        if(amElite)
+            m_bIsElite = (amElite->getRandomIndex() == 1);
+    }
     
     CChaosNumber dc = RandomDungeon::getInstance()->getDifficultClass();
     CChaosNumber nodeDepth = RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nNodeDepth;

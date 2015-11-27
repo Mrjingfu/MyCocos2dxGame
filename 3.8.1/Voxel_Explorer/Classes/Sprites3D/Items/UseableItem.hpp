@@ -23,9 +23,9 @@ public:
         //UIT_CHEST_NO_LOCK_END
         
         //UIT_CHEST_BEGIN
-        UIT_CHEST_COPPER = 0,         ///铜宝箱
-        UIT_CHEST_SILVER,             ///银宝箱
-        UIT_CHEST_GOLD,               ///金宝箱
+        UIT_CHEST_COPPER,               ///铜宝箱
+        UIT_CHEST_SILVER,               ///银宝箱
+        UIT_CHEST_GOLD,                 ///金宝箱
         //UIT_CHEST_END
         
         //UIT_JAR_BEGIN

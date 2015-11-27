@@ -125,6 +125,12 @@ void BaseLevel::setTerrainTile(int x, int y, TerrainTile::TileType tileType, Are
     m_Map[index].m_nY = y;
     m_Map[index].m_Dir = dir;
 }
+void BaseLevel::setTerrainTileType(int x, int y, TerrainTile::TileType tileType)
+{
+    int index = x + y * m_nWidth;
+    m_Map[index].m_Type = tileType;
+}
+
 bool BaseLevel::isTerrainTilePassable(int index)
 {
     return m_Map[index].isPassable();
@@ -300,6 +306,14 @@ cocos2d::Vec2 BaseLevel::getRandomPassableTile()
     do {
         cell = cocos2d::random(0, (int)(m_Map.size()-1));
     } while (!m_Map[cell].isPassable());
+    return Vec2(cell % m_nWidth, cell / m_nWidth);
+}
+cocos2d::Vec2 BaseLevel::getRandomTranspotTile()
+{
+    int cell = -1;
+    do {
+        cell = cocos2d::random(0, (int)(m_Map.size()-1));
+    } while (!m_Map[cell].isAvalidRandomTransport());
     return Vec2(cell % m_nWidth, cell / m_nWidth);
 }
 void BaseLevel::searchAndCheck(int x, int y, int searchDistance)

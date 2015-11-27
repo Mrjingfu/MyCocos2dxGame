@@ -62,6 +62,16 @@ struct TileInfo
             return true;
         return false;
     }
+    bool isAvalidRandomTransport() const
+    {
+        if(m_AreaType != Area::AT_STANDARD && m_AreaType != Area::AT_TUNNEL && m_AreaType != Area::AT_PASSAGE)
+            return false;
+        if(!isPassable())
+            return false;
+        else if(m_Type >= TerrainTile::TT_TOXIC_TRAP && m_Type <= TerrainTile::TT_HIDE_WEAK_TRAP)
+            return false;
+        return true;
+    }
 };
 class BaseLevel : public cocos2d::Ref
 {
@@ -102,7 +112,8 @@ public:
     
     std::string getTerrainTileInfoDesc(int x, int y);
     void generateTerrainTiles(int x, int y , int width, int height, TerrainTile::TileType tileType, Area::AREA_TYPE areaType, Actor::ActorDir dir = Actor::AD_UNKNOWN);
-    void setTerrainTile(int x, int y, TerrainTile::TileType tileType, Area::AREA_TYPE areaType , Actor::ActorDir dir = Actor::AD_UNKNOWN);
+    void setTerrainTile(int x, int y, TerrainTile::TileType tileType, Area::AREA_TYPE areaType, Actor::ActorDir dir = Actor::AD_UNKNOWN);
+    void setTerrainTileType(int x, int y, TerrainTile::TileType tileType);
     
     bool isTerrainTilePassable(int index);
     
@@ -116,7 +127,7 @@ public:
     
     bool getNextPathStep(const cocos2d::Vec2& from, const cocos2d::Vec2& to, cocos2d::Vec2& nextPos);
     cocos2d::Vec2 getRandomPassableTile();
-    
+    cocos2d::Vec2 getRandomTranspotTile();
     void searchAndCheck(int x, int y, int searchDistance);
     
     bool hasShowMap() const { return m_bShowMap; }
@@ -125,8 +136,9 @@ public:
     
 public:
     virtual void showMap(bool show) = 0;
-    virtual void updateAreaFogOfWarByPos(const cocos2d::Vec2& pos) = 0;
+    virtual void updateAreaFogOfWarByPos(const cocos2d::Vec2& pos, bool updateSelfArea = false) = 0;
     virtual bool createSummoningMonsters(const cocos2d::Vec2& pos) = 0;
+    virtual void createSiegeMonsters(const cocos2d::Vec2& pos) = 0;
 protected:
     virtual bool build() = 0;
     virtual bool createTerrain() = 0;
@@ -135,6 +147,7 @@ protected:
     virtual bool decorateSpecialArea(Area* area) = 0;
     virtual bool createMonsters() = 0;
     virtual bool createPickableItems() = 0;
+    virtual bool createEliteMonster(int tileIndex) = 0;
 
     virtual int calculateLevelMonsterCount() = 0;
     virtual int calculateLevelUseableItemCount(const cocos2d::Size& areaSize) = 0;

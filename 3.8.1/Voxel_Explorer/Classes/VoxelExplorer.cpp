@@ -457,9 +457,10 @@ void VoxelExplorer::generatePickItemByUseableItem(const cocos2d::Vec2& pos, Usea
     else
     {
         PlayerProperty::getInstance()->addMoney(0, 0, cocos2d::random(5, 30));
-        float percent1 = 0.5f;
-        float percent2 = 1.0 - percent1;
-        AlisaMethod* am = AlisaMethod::create(percent1, percent2, -1.0, NULL);
+        float percent1 = 0.3f;
+        float percent2 = 0.3f;
+        float percent3 = 1.0f - percent1 - percent2;
+        AlisaMethod* am = AlisaMethod::create(percent1, percent2, percent3,-1.0, NULL);
         if(am)
         {
             if(am->getRandomIndex() == 0)
@@ -476,12 +477,16 @@ void VoxelExplorer::generatePickItemByUseableItem(const cocos2d::Vec2& pos, Usea
                     item->setState(PickableItem::PIS_BEGIN_GENERATE);
                 }
             }
+            else if(am->getRandomIndex() == 1)
+            {
+                ///生成怪物 待实现
+            }
         }
     }
 }
 void VoxelExplorer::handleDoor(const cocos2d::Vec2& mapPos)
 {
-    if(m_pTerrainDoorsLayer && m_pPlayer)
+    if(m_pTerrainDoorsLayer && m_pPlayer && m_pCurrentLevel)
     {
         for (const auto& child : m_pTerrainDoorsLayer->getChildren())
         {
@@ -491,6 +496,7 @@ void VoxelExplorer::handleDoor(const cocos2d::Vec2& mapPos)
                 if(door->getDoorState() == BaseDoor::DS_HIDE)
                 {
                     door->setDoorState(BaseDoor::DS_CLOSED);
+                    m_pCurrentLevel->setTerrainTileType(mapPos.x, mapPos.y, TerrainTile::TT_DOOR);
                     return;
                 }
                 else if(door->getDoorState() == BaseDoor::DS_CLOSED)
@@ -513,7 +519,7 @@ void VoxelExplorer::handleDoor(const cocos2d::Vec2& mapPos)
 }
 void VoxelExplorer::handleUseUseableItem(const cocos2d::Vec2& mapPos)
 {
-    if(!m_pPlayer)
+    if(!m_pPlayer || !m_pCurrentLevel)
         return;
     if(m_pUseableItemsLayer)
     {
@@ -524,16 +530,7 @@ void VoxelExplorer::handleUseUseableItem(const cocos2d::Vec2& mapPos)
             {
                 if(useableItem->getUseableItemType() <= UseableItem::UIT_CHEST_NO_LOCK_GOLD)
                 {
-                    float percent1 = 0.8f;
-                    float percent2 = 1.0 - percent1;
-                    AlisaMethod* am = AlisaMethod::create(percent1, percent2, -1.0, NULL);
-                    if(am)
-                    {
-                        if(am->getRandomIndex() == 0)
-                        {
-                            ////处理怪物召唤
-                        }
-                    }
+                    m_pCurrentLevel->createSiegeMonsters(useableItem->getPosInMap());
                     useableItem->setState(UseableItem::UIS_FADEOUT);
                     return;
                 }
@@ -543,6 +540,12 @@ void VoxelExplorer::handleUseUseableItem(const cocos2d::Vec2& mapPos)
                     return;
                 }
             }
+        }
+    }
+    if(m_pNPCsLayer)
+    {
+        for (const auto& child : m_pUseableItemsLayer->getChildren())
+        {
             Npc* npc = dynamic_cast<Npc*>(child);
             if(npc && npc->getPosInMap() == mapPos)
             {
@@ -818,6 +821,22 @@ void VoxelExplorer::handlePlayerUseStandardPortal()
 }
 void VoxelExplorer::handlePlayerUseSmallPortal()
 {
+    if(!m_pCurrentLevel)
+        return;
+    if(!m_pPlayer && m_pPlayer->getState() == Player::PS_DEATH)
+        return;
+    
+    m_pPlayer->removeTerrainTileFlag(TileInfo::ATTACKABLE);
+    cocos2d::Vec2 pos = m_pCurrentLevel->getRandomTranspotTile();
+    m_pPlayer->setPosition3D(Vec3(pos.x*TerrainTile::CONTENT_SCALE, -0.5f*TerrainTile::CONTENT_SCALE, -pos.y*TerrainTile::CONTENT_SCALE));
+    m_pPlayer->addTerrainTileFlag(TileInfo::ATTACKABLE);
+    
+    m_pCurrentLevel->updateAreaFogOfWarByPos(pos, true);
+    m_pCurrentLevel->showMap(true);
+    
+    m_pMainCamera->setPosition3D(m_pPlayer->getPosition3D() + Vec3(0, 5*TerrainTile::CONTENT_SCALE, 4*TerrainTile::CONTENT_SCALE ));
+    m_pMainCamera->lookAt(m_pPlayer->getPosition3D() + Vec3(0,0.5f*TerrainTile::CONTENT_SCALE,0));
+    m_pPlayer->setState(Player::PS_IDLE);
 }
 void VoxelExplorer::handleUpstairs()
 {

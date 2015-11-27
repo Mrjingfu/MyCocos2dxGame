@@ -8,6 +8,7 @@
 
 #include "Area.h"
 #include "BaseLevel.h"
+#include "AlisaMethod.h"
 USING_NS_CC;
 
 Area::AREA_TYPE AT_SpecialTypes[] = { Area::AREA_TYPE::AT_SPECIAL_EQUIPMENT_SHOP, Area::AREA_TYPE::AT_SPECIAL_MAGIC_SHOP, Area::AREA_TYPE::AT_SPECIAL_AID_STATION, Area::AREA_TYPE::AT_SPECIAL_ALCHEMIST_ROOM, Area::AREA_TYPE::AT_SPECIAL_WITCH_ROOM, Area::AREA_TYPE::AT_SPECIAL_THEIF_ROOM, Area::AREA_TYPE::AT_SPECIAL_SAGE_ROOM, Area::AREA_TYPE::AT_SPECIAL_MISSION_ROOM, Area::AREA_TYPE::AT_SPECIAL_TREASURE_ROOM, Area::AREA_TYPE::AT_SPECIAL_DECORATION_ROOM, Area::AREA_TYPE::AT_SPECIAL_TRANSPOT_ROOM };
@@ -94,8 +95,10 @@ void Area::generate(BaseLevel* level)
         case AT_SPECIAL_MISSION_ROOM:
         case AT_SPECIAL_TREASURE_ROOM:
         case AT_SPECIAL_DECORATION_ROOM:
-        case AT_SPECIAL_TRANSPOT_ROOM:
             generateSpecialArea(level);
+            break;
+        case AT_SPECIAL_TRANSPOT_ROOM:
+            generateSpecialTranspotArea(level);
             break;
         default:
             break;
@@ -416,6 +419,18 @@ void Area::generateSpecialArea(BaseLevel* level)
         if(door)
             door->setDoorType(Door::DT_STANDARD);
     }
+}
+void Area::generateSpecialTranspotArea(BaseLevel* level)
+{
+    generateTerrainTiles(level, TerrainTile::TT_WALL);
+    generateTerrainTiles(level, 1, TerrainTile::TT_STANDARD);
+    for (auto iter = m_ConnectedAreas.begin(); iter != m_ConnectedAreas.end(); iter++) {
+        Door* door = iter->second;
+        if(door)
+            door->setDoorType(Door::DT_HIDDEN);
+    }
+    Vec2 center = getCenter();
+    setTerrainTile(level, center.x, center.y, TerrainTile::TT_SMALL_PORTAL);
 }
 void Area::generateTerrainTiles(BaseLevel* level, TerrainTile::TileType type)
 {

@@ -15,7 +15,7 @@ class StandardMonster : public BaseMonster
     StandardMonster();
     virtual ~StandardMonster();
 public:
-    static StandardMonster* create(BaseMonster::MonsterType type);
+    static StandardMonster* create(BaseMonster::MonsterType type, bool elite = false);
 };
 
 #endif /* StandardMonster_hpp */
