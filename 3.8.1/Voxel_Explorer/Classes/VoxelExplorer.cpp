@@ -481,7 +481,7 @@ void VoxelExplorer::generatePickItemByUseableItem(const cocos2d::Vec2& pos, Usea
 }
 void VoxelExplorer::handleDoor(const cocos2d::Vec2& mapPos)
 {
-    if(m_pTerrainDoorsLayer && m_pPlayer)
+    if(m_pTerrainDoorsLayer && m_pPlayer && m_pCurrentLevel)
     {
         for (const auto& child : m_pTerrainDoorsLayer->getChildren())
         {
@@ -491,6 +491,7 @@ void VoxelExplorer::handleDoor(const cocos2d::Vec2& mapPos)
                 if(door->getDoorState() == BaseDoor::DS_HIDE)
                 {
                     door->setDoorState(BaseDoor::DS_CLOSED);
+                    m_pCurrentLevel->setTerrainTileType(mapPos.x, mapPos.y, TerrainTile::TT_DOOR);
                     return;
                 }
                 else if(door->getDoorState() == BaseDoor::DS_CLOSED)
@@ -543,6 +544,12 @@ void VoxelExplorer::handleUseUseableItem(const cocos2d::Vec2& mapPos)
                     return;
                 }
             }
+        }
+    }
+    if(m_pNPCsLayer)
+    {
+        for (const auto& child : m_pUseableItemsLayer->getChildren())
+        {
             Npc* npc = dynamic_cast<Npc*>(child);
             if(npc && npc->getPosInMap() == mapPos)
             {
@@ -825,8 +832,11 @@ void VoxelExplorer::handlePlayerUseSmallPortal()
     
     m_pPlayer->removeTerrainTileFlag(TileInfo::ATTACKABLE);
     cocos2d::Vec2 pos = m_pCurrentLevel->getRandomTranspotTile();
-    m_pPlayer->setPosition3D(Vec3(pos.x, -0.5f*TerrainTile::CONTENT_SCALE, -pos.y));
+    m_pPlayer->setPosition3D(Vec3(pos.x*TerrainTile::CONTENT_SCALE, -0.5f*TerrainTile::CONTENT_SCALE, -pos.y*TerrainTile::CONTENT_SCALE));
     m_pPlayer->addTerrainTileFlag(TileInfo::ATTACKABLE);
+    
+    m_pCurrentLevel->updateAreaFogOfWarByPos(pos, true);
+    m_pCurrentLevel->showMap(true);
     
     m_pMainCamera->setPosition3D(m_pPlayer->getPosition3D() + Vec3(0, 5*TerrainTile::CONTENT_SCALE, 4*TerrainTile::CONTENT_SCALE ));
     m_pMainCamera->lookAt(m_pPlayer->getPosition3D() + Vec3(0,0.5f*TerrainTile::CONTENT_SCALE,0));

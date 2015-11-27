@@ -42,7 +42,10 @@ void BasePortal::update(float delta)
 }
 std::string BasePortal::getDesc()
 {
-    return UtilityHelper::getLocalString(PORTAL_NAMES[m_Type] + "_DESC");
+    if(m_bIsCanUse)
+        return UtilityHelper::getLocalString(PORTAL_NAMES[m_Type] + "_DESC");
+    else
+        return UtilityHelper::getLocalString(PORTAL_NAMES[m_Type] + "_LOCK");
 }
 
 void BasePortal::setVisited(bool visited)

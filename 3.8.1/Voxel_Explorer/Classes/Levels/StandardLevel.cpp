@@ -495,8 +495,12 @@ void StandardLevel::assignSpecialArea(Area* area)
         else
             type = Area::AT_SPECIAL_DECORATION_ROOM;
     }
+    //for debug
+    type = Area::AT_SPECIAL_TRANSPOT_ROOM;
     area->setAreaType(type);
-    m_SpecailAreas.erase(std::find(m_SpecailAreas.begin(), m_SpecailAreas.end(), type));
+    auto iter = std::find(m_SpecailAreas.begin(), m_SpecailAreas.end(), type);
+    if(iter != m_SpecailAreas.end())
+        m_SpecailAreas.erase(std::find(m_SpecailAreas.begin(), m_SpecailAreas.end(), type));
     m_nSpecialAreaCount++;
 }
 void StandardLevel::generate()
@@ -599,7 +603,7 @@ bool StandardLevel::decorateSpecialArea(Area* area)
                 npc->setPosition3D(Vec3(m_Map[tileIndex].m_nX*TerrainTile::CONTENT_SCALE, -0.5f*TerrainTile::CONTENT_SCALE, -m_Map[tileIndex].m_nY*TerrainTile::CONTENT_SCALE));
                 npc->setVisited(m_Map[tileIndex].m_bVisited);
                 npc->addTerrainTileFlag(TileInfo::USEABLE);
-                VoxelExplorer::getInstance()->getUseableItemsLayer()->addChild(npc);
+                VoxelExplorer::getInstance()->getNPCsLayer()->addChild(npc);
                 npc->setState(Npc::NPCS_IDLE);
             }
             break;
@@ -613,7 +617,7 @@ bool StandardLevel::decorateSpecialArea(Area* area)
                 npc->setPosition3D(Vec3(m_Map[tileIndex].m_nX*TerrainTile::CONTENT_SCALE, -0.5f*TerrainTile::CONTENT_SCALE, -m_Map[tileIndex].m_nY*TerrainTile::CONTENT_SCALE));
                 npc->setVisited(m_Map[tileIndex].m_bVisited);
                 npc->addTerrainTileFlag(TileInfo::USEABLE);
-                VoxelExplorer::getInstance()->getUseableItemsLayer()->addChild(npc);
+                VoxelExplorer::getInstance()->getNPCsLayer()->addChild(npc);
                 npc->setState(Npc::NPCS_IDLE);
             }
             break;
@@ -627,7 +631,7 @@ bool StandardLevel::decorateSpecialArea(Area* area)
                 npc->setPosition3D(Vec3(m_Map[tileIndex].m_nX*TerrainTile::CONTENT_SCALE, -0.5f*TerrainTile::CONTENT_SCALE, -m_Map[tileIndex].m_nY*TerrainTile::CONTENT_SCALE));
                 npc->setVisited(m_Map[tileIndex].m_bVisited);
                 npc->addTerrainTileFlag(TileInfo::USEABLE);
-                VoxelExplorer::getInstance()->getUseableItemsLayer()->addChild(npc);
+                VoxelExplorer::getInstance()->getNPCsLayer()->addChild(npc);
                 npc->setState(Npc::NPCS_IDLE);
             }
             break;
@@ -641,7 +645,7 @@ bool StandardLevel::decorateSpecialArea(Area* area)
                 npc->setPosition3D(Vec3(m_Map[tileIndex].m_nX*TerrainTile::CONTENT_SCALE, -0.5f*TerrainTile::CONTENT_SCALE, -m_Map[tileIndex].m_nY*TerrainTile::CONTENT_SCALE));
                 npc->setVisited(m_Map[tileIndex].m_bVisited);
                 npc->addTerrainTileFlag(TileInfo::USEABLE);
-                VoxelExplorer::getInstance()->getUseableItemsLayer()->addChild(npc);
+                VoxelExplorer::getInstance()->getNPCsLayer()->addChild(npc);
                 npc->setState(Npc::NPCS_IDLE);
             }
             break;
@@ -655,7 +659,7 @@ bool StandardLevel::decorateSpecialArea(Area* area)
                 npc->setPosition3D(Vec3(m_Map[tileIndex].m_nX*TerrainTile::CONTENT_SCALE, -0.5f*TerrainTile::CONTENT_SCALE, -m_Map[tileIndex].m_nY*TerrainTile::CONTENT_SCALE));
                 npc->setVisited(m_Map[tileIndex].m_bVisited);
                 npc->addTerrainTileFlag(TileInfo::USEABLE);
-                VoxelExplorer::getInstance()->getUseableItemsLayer()->addChild(npc);
+                VoxelExplorer::getInstance()->getNPCsLayer()->addChild(npc);
                 npc->setState(Npc::NPCS_IDLE);
             }
             break;
@@ -669,7 +673,7 @@ bool StandardLevel::decorateSpecialArea(Area* area)
                 npc->setPosition3D(Vec3(m_Map[tileIndex].m_nX*TerrainTile::CONTENT_SCALE, -0.5f*TerrainTile::CONTENT_SCALE, -m_Map[tileIndex].m_nY*TerrainTile::CONTENT_SCALE));
                 npc->setVisited(m_Map[tileIndex].m_bVisited);
                 npc->addTerrainTileFlag(TileInfo::USEABLE);
-                VoxelExplorer::getInstance()->getUseableItemsLayer()->addChild(npc);
+                VoxelExplorer::getInstance()->getNPCsLayer()->addChild(npc);
                 npc->setState(Npc::NPCS_IDLE);
             }
             break;
@@ -683,7 +687,7 @@ bool StandardLevel::decorateSpecialArea(Area* area)
                 npc->setPosition3D(Vec3(m_Map[tileIndex].m_nX*TerrainTile::CONTENT_SCALE, -0.5f*TerrainTile::CONTENT_SCALE, -m_Map[tileIndex].m_nY*TerrainTile::CONTENT_SCALE));
                 npc->setVisited(m_Map[tileIndex].m_bVisited);
                 npc->addTerrainTileFlag(TileInfo::USEABLE);
-                VoxelExplorer::getInstance()->getUseableItemsLayer()->addChild(npc);
+                VoxelExplorer::getInstance()->getNPCsLayer()->addChild(npc);
                 npc->setState(Npc::NPCS_IDLE);
             }
             break;
@@ -697,7 +701,7 @@ bool StandardLevel::decorateSpecialArea(Area* area)
                 npc->setPosition3D(Vec3(m_Map[tileIndex].m_nX*TerrainTile::CONTENT_SCALE, -0.5f*TerrainTile::CONTENT_SCALE, -m_Map[tileIndex].m_nY*TerrainTile::CONTENT_SCALE));
                 npc->setVisited(m_Map[tileIndex].m_bVisited);
                 npc->addTerrainTileFlag(TileInfo::USEABLE);
-                VoxelExplorer::getInstance()->getUseableItemsLayer()->addChild(npc);
+                VoxelExplorer::getInstance()->getNPCsLayer()->addChild(npc);
                 npc->setState(Npc::NPCS_IDLE);
             }
             break;
@@ -768,11 +772,17 @@ void StandardLevel::showMap(bool show)
                 
                 switch (info.m_Type) {
                     case TerrainTile::TT_STANDARD:
-                        if(info.m_AreaType >= Area::AT_SPECIAL_EQUIPMENT_SHOP)
-                            m_pMapDrawNode->drawPolygon(vertices, 4, Color4F::MAGENTA, 0, Color4F(0,0,0,0));
-                        else
-                            m_pMapDrawNode->drawPolygon(vertices, 4, Color4F::WHITE, 0, Color4F(0,0,0,0));
+                    case TerrainTile::TT_OPENED_DOOR:
+                    case TerrainTile::TT_STANDARD_PORTAL:
+                    case TerrainTile::TT_SMALL_PORTAL:
+                        {
+                            if(info.m_AreaType >= Area::AT_SPECIAL_EQUIPMENT_SHOP)
+                                m_pMapDrawNode->drawPolygon(vertices, 4, Color4F::MAGENTA, 0, Color4F(0,0,0,0));
+                            else
+                                m_pMapDrawNode->drawPolygon(vertices, 4, Color4F::WHITE, 0, Color4F(0,0,0,0));
+                        }
                         break;
+                    case TerrainTile::TT_SECRET_DOOR:
                     case TerrainTile::TT_WALL:
                         m_pMapDrawNode->drawPolygon(vertices, 4, Color4F::GRAY, 0, Color4F(0,0,0,0));
                         break;
@@ -822,6 +832,15 @@ void StandardLevel::showMap(bool show)
                 }
             }
         }
+        if(VoxelExplorer::getInstance()->getTerrainPortalsLayer())
+        {
+            for (const auto& child : VoxelExplorer::getInstance()->getTerrainPortalsLayer()->getChildren())
+            {
+                BasePortal* protal = dynamic_cast<BasePortal*>(child);
+                if(protal && protal->isVisible())
+                    m_pMapDrawNode->drawDot(protal->getPosInMap()+Vec2(0.5f, 0.5f), 0.5f, Color4F::ORANGE);
+            }
+        }
         if(VoxelExplorer::getInstance()->getUseableItemsLayer())
         {
             for (const auto& child : VoxelExplorer::getInstance()->getUseableItemsLayer()->getChildren())
@@ -829,6 +848,15 @@ void StandardLevel::showMap(bool show)
                 UseableItem* useableItem = dynamic_cast<UseableItem*>(child);
                 if(useableItem && useableItem->isVisible())
                     m_pMapDrawNode->drawDot(useableItem->getPosInMap()+Vec2(0.5f, 0.5f), 0.5f, Color4F(0, 1.0f, 1.0f, 1.0f));
+            }
+        }
+        if(VoxelExplorer::getInstance()->getNPCsLayer())
+        {
+            for (const auto& child : VoxelExplorer::getInstance()->getNPCsLayer()->getChildren())
+            {
+                Npc* npc = dynamic_cast<Npc*>(child);
+                if(npc && npc->isVisible())
+                    m_pMapDrawNode->drawDot(npc->getPosInMap()+Vec2(0.5f, 0.5f), 0.5f, Color4F::GREEN);
             }
         }
         if (VoxelExplorer::getInstance()->getPickableItemsLayer())
@@ -855,12 +883,17 @@ void StandardLevel::showMap(bool show)
         }
     }
 }
-void StandardLevel::updateAreaFogOfWarByPos(const cocos2d::Vec2& pos)
+void StandardLevel::updateAreaFogOfWarByPos(const cocos2d::Vec2& pos, bool updateSelfArea)
 {
     for (PathGraphNode* node : m_Areas) {
         Area* area = static_cast<Area*>(node);
         if(area && area->checkInside(pos))
         {
+            if(updateSelfArea)
+            {
+                area->updateAreaFogOfWar(this, true);
+                VoxelExplorer::getInstance()->updateFogOfWar(area->getRect(), true);
+            }
             ///更新地图tile
             for (auto iter = area->getConnectedAreas().begin(); iter != area->getConnectedAreas().end(); iter++) {
                 Area* areaOri = iter->first;

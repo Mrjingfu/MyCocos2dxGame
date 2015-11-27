@@ -64,7 +64,7 @@ struct TileInfo
     }
     bool isAvalidRandomTransport() const
     {
-        if(m_AreaType != Area::AT_STANDARD || m_AreaType != Area::AT_TUNNEL || m_AreaType != Area::AT_PASSAGE)
+        if(m_AreaType != Area::AT_STANDARD && m_AreaType != Area::AT_TUNNEL && m_AreaType != Area::AT_PASSAGE)
             return false;
         if(!isPassable())
             return false;
@@ -112,7 +112,8 @@ public:
     
     std::string getTerrainTileInfoDesc(int x, int y);
     void generateTerrainTiles(int x, int y , int width, int height, TerrainTile::TileType tileType, Area::AREA_TYPE areaType, Actor::ActorDir dir = Actor::AD_UNKNOWN);
-    void setTerrainTile(int x, int y, TerrainTile::TileType tileType, Area::AREA_TYPE areaType , Actor::ActorDir dir = Actor::AD_UNKNOWN);
+    void setTerrainTile(int x, int y, TerrainTile::TileType tileType, Area::AREA_TYPE areaType, Actor::ActorDir dir = Actor::AD_UNKNOWN);
+    void setTerrainTileType(int x, int y, TerrainTile::TileType tileType);
     
     bool isTerrainTilePassable(int index);
     
@@ -135,7 +136,7 @@ public:
     
 public:
     virtual void showMap(bool show) = 0;
-    virtual void updateAreaFogOfWarByPos(const cocos2d::Vec2& pos) = 0;
+    virtual void updateAreaFogOfWarByPos(const cocos2d::Vec2& pos, bool updateSelfArea = false) = 0;
     virtual bool createSummoningMonsters(const cocos2d::Vec2& pos) = 0;
 protected:
     virtual bool build() = 0;
