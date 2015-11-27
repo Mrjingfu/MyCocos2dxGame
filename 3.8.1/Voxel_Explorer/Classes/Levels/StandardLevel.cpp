@@ -18,6 +18,7 @@
 #include "BaseMonster.hpp"
 #include "StandardPortal.hpp"
 #include "SmallPortal.hpp"
+#include "Npc.hpp"
 USING_NS_CC;
 
 StandardLevel::StandardLevel()
@@ -108,12 +109,8 @@ bool StandardLevel::build()
             connected.push_back(oa);
         }
     }
-    ///如果地图上有商店
     ///处理
     m_SpecailAreas = Area::SPECIALS;
-//    if (Dungeon.bossLevel( Dungeon.depth + 1 )) {
-//        specials.remove( Room.Type.WEAK_FLOOR );
-//    }
     assignAreasType();
     generate();
     
@@ -256,11 +253,11 @@ bool StandardLevel::decorateAreas()
                     return false;
                 }
             }
-            else if(area->getAreaType() >= Area::AT_STANDARD)
+            else if(area->getAreaType() >= Area::AT_SPECIAL_EQUIPMENT_SHOP)
             {
-                if(!createNPCs(area))
+                if(!decorateSpecialArea(area))
                 {
-                    CCLOGERROR("Create NPCs failed!");
+                    CCLOGERROR("Decorate special area failed!");
                     return false;
                 }
             }
@@ -335,6 +332,9 @@ void StandardLevel::splitArea(const cocos2d::Rect& rect)
 }
 void StandardLevel::assignAreasType()
 {
+    if(!RandomDungeon::getInstance()->getCurrentDungeonNode())
+        return;
+    
     m_nSpecialAreaCount = 0;
     
     for (PathGraphNode* node : m_Areas) {
@@ -345,8 +345,7 @@ void StandardLevel::assignAreasType()
             {
                 if(m_SpecailAreas.size() > 0 && area->getRect().size.width > 3 && area->getRect().size.height > 3 && cocos2d::random(0, m_nSpecialAreaCount*m_nSpecialAreaCount + 1) == 0)
                 {
-                    area->setAreaType(Area::AT_SPECIAL_EQUIPMENT_SHOP);
-                    m_nSpecialAreaCount++;
+                    assignSpecialArea(area);
                 }
                 else if(cocos2d::random(0, 1) == 0)
                 {
@@ -355,7 +354,7 @@ void StandardLevel::assignAreasType()
                         Area* areaNeigbour = static_cast<Area*>(n);
                         if(areaNeigbour)
                         {
-                            if(/*areaNeigbour->getAreaType() != Area::AT_SPECIAL_PIT && */(areaNeigbour->getConnectedAreas().find(areaNeigbour) == areaNeigbour->getConnectedAreas().end()) && (std::find(Area::SPECIALS.begin(), Area::SPECIALS.end(), areaNeigbour->getAreaType()) != Area::SPECIALS.end()))
+                            if((areaNeigbour->getConnectedAreas().find(areaNeigbour) == areaNeigbour->getConnectedAreas().end()) && (std::find(Area::SPECIALS.begin(), Area::SPECIALS.end(), areaNeigbour->getAreaType()) != Area::SPECIALS.end()))
                             {
                                 neigbours.push_back(areaNeigbour);
                             }
@@ -439,7 +438,66 @@ void StandardLevel::assignAreasType()
     
     ////设置开始区域为探索区域
     m_AreaEntrance->updateAreaFogOfWar(this, true);
+}
+void StandardLevel::assignSpecialArea(Area* area)
+{
+    if(!area)
+        return;
 
+    Area::AREA_TYPE type = Area::AT_UNKNOWN;
+    if(RandomDungeon::getInstance()->getCurrentDungeonNode()->isTransmutation())
+    {
+        if(RandomDungeon::getInstance()->getCurrentDungeonNode()->isLastDepth()
+           && std::find(m_SpecailAreas.begin(), m_SpecailAreas.end(), Area::AT_SPECIAL_AID_STATION) != m_SpecailAreas.end())
+        {
+            type = Area::AT_SPECIAL_AID_STATION;
+        }
+        else
+        {
+            if(RandomDungeon::getInstance()->getCurrentDungeonNode()->isBeginTransmutation()
+               && std::find(m_SpecailAreas.begin(), m_SpecailAreas.end(), Area::AT_SPECIAL_MAGIC_SHOP) != m_SpecailAreas.end())
+            {
+                type = Area::AT_SPECIAL_MAGIC_SHOP;
+            }
+            else if(RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nCurrentDepth.GetLongValue() % 2 == 1)
+            {
+                
+                std::vector<Area::AREA_TYPE> randomTypes = { Area::AT_SPECIAL_EQUIPMENT_SHOP, Area::AT_SPECIAL_MAGIC_SHOP, Area::AT_SPECIAL_ALCHEMIST_ROOM };
+                int rand = cocos2d::random(0, (int)(randomTypes.size()-1));
+                if(std::find(m_SpecailAreas.begin(), m_SpecailAreas.end(), randomTypes[rand]) != m_SpecailAreas.end())
+                    type = randomTypes[rand];
+                else
+                {
+                    int rand2 = cocos2d::random(0, (int)(m_SpecailAreas.size()-1));
+                    type = m_SpecailAreas.at(rand2);
+                }
+            }
+            else
+            {
+                std::vector<Area::AREA_TYPE> randomTypes = { Area::AT_SPECIAL_WITCH_ROOM, Area::AT_SPECIAL_SAGE_ROOM, Area::AT_SPECIAL_THEIF_ROOM };
+                int rand = cocos2d::random(0, (int)(randomTypes.size()-1));
+                if(std::find(m_SpecailAreas.begin(), m_SpecailAreas.end(), randomTypes[rand]) != m_SpecailAreas.end())
+                    type = randomTypes[rand];
+                else
+                {
+                    int rand2 = cocos2d::random(0, (int)(m_SpecailAreas.size()-1));
+                    type = m_SpecailAreas.at(rand2);
+                }
+            }
+        }
+    }
+    else
+    {
+        std::vector<Area::AREA_TYPE> randomTypes = { Area::AT_SPECIAL_WITCH_ROOM, Area::AT_SPECIAL_SAGE_ROOM, Area::AT_SPECIAL_MISSION_ROOM, Area::AT_SPECIAL_TREASURE_ROOM,Area::AT_SPECIAL_DECORATION_ROOM, Area::AT_SPECIAL_TRANSPOT_ROOM };
+        int rand = cocos2d::random(0, (int)(randomTypes.size()-1));
+        if(std::find(m_SpecailAreas.begin(), m_SpecailAreas.end(), randomTypes[rand]) != m_SpecailAreas.end())
+            type = m_SpecailAreas.at(rand);
+        else
+            type = Area::AT_SPECIAL_DECORATION_ROOM;
+    }
+    area->setAreaType(type);
+    m_SpecailAreas.erase(std::find(m_SpecailAreas.begin(), m_SpecailAreas.end(), type));
+    m_nSpecialAreaCount++;
 }
 void StandardLevel::generate()
 {
@@ -526,10 +584,130 @@ bool StandardLevel::createUseableItems(Area* area)
     }
     return true;
 }
-bool StandardLevel::createNPCs(Area* area)
+bool StandardLevel::decorateSpecialArea(Area* area)
 {
     if(!area)
         return false;
+    switch (area->getAreaType()) {
+        case Area::AT_SPECIAL_EQUIPMENT_SHOP:
+            {
+                Npc* npc = Npc::create(Npc::NPC_KNIGHT);
+                if(!npc)
+                    return false;
+                Vec2 center = area->getCenter();
+                int tileIndex = center.x + center.y * m_nWidth;
+                npc->setPosition3D(Vec3(m_Map[tileIndex].m_nX*TerrainTile::CONTENT_SCALE, -0.5f*TerrainTile::CONTENT_SCALE, -m_Map[tileIndex].m_nY*TerrainTile::CONTENT_SCALE));
+                npc->setVisited(m_Map[tileIndex].m_bVisited);
+                npc->addTerrainTileFlag(TileInfo::USEABLE);
+                VoxelExplorer::getInstance()->getUseableItemsLayer()->addChild(npc);
+                npc->setState(Npc::NPCS_IDLE);
+            }
+            break;
+        case Area::AT_SPECIAL_MAGIC_SHOP:
+            {
+                Npc* npc = Npc::create(Npc::NPC_SHOPGIRL);
+                if(!npc)
+                    return false;
+                Vec2 center = area->getCenter();
+                int tileIndex = center.x + center.y * m_nWidth;
+                npc->setPosition3D(Vec3(m_Map[tileIndex].m_nX*TerrainTile::CONTENT_SCALE, -0.5f*TerrainTile::CONTENT_SCALE, -m_Map[tileIndex].m_nY*TerrainTile::CONTENT_SCALE));
+                npc->setVisited(m_Map[tileIndex].m_bVisited);
+                npc->addTerrainTileFlag(TileInfo::USEABLE);
+                VoxelExplorer::getInstance()->getUseableItemsLayer()->addChild(npc);
+                npc->setState(Npc::NPCS_IDLE);
+            }
+            break;
+        case Area::AT_SPECIAL_AID_STATION:
+            {
+                Npc* npc = Npc::create(Npc::NPC_NURSE);
+                if(!npc)
+                    return false;
+                Vec2 center = area->getCenter();
+                int tileIndex = center.x + center.y * m_nWidth;
+                npc->setPosition3D(Vec3(m_Map[tileIndex].m_nX*TerrainTile::CONTENT_SCALE, -0.5f*TerrainTile::CONTENT_SCALE, -m_Map[tileIndex].m_nY*TerrainTile::CONTENT_SCALE));
+                npc->setVisited(m_Map[tileIndex].m_bVisited);
+                npc->addTerrainTileFlag(TileInfo::USEABLE);
+                VoxelExplorer::getInstance()->getUseableItemsLayer()->addChild(npc);
+                npc->setState(Npc::NPCS_IDLE);
+            }
+            break;
+        case Area::AT_SPECIAL_ALCHEMIST_ROOM:
+            {
+                Npc* npc = Npc::create(Npc::NPC_OLDLADY);
+                if(!npc)
+                    return false;
+                Vec2 center = area->getCenter();
+                int tileIndex = center.x + center.y * m_nWidth;
+                npc->setPosition3D(Vec3(m_Map[tileIndex].m_nX*TerrainTile::CONTENT_SCALE, -0.5f*TerrainTile::CONTENT_SCALE, -m_Map[tileIndex].m_nY*TerrainTile::CONTENT_SCALE));
+                npc->setVisited(m_Map[tileIndex].m_bVisited);
+                npc->addTerrainTileFlag(TileInfo::USEABLE);
+                VoxelExplorer::getInstance()->getUseableItemsLayer()->addChild(npc);
+                npc->setState(Npc::NPCS_IDLE);
+            }
+            break;
+        case Area::AT_SPECIAL_WITCH_ROOM:
+            {
+                Npc* npc = Npc::create(Npc::NPC_LITTLEWITCH);
+                if(!npc)
+                    return false;
+                Vec2 center = area->getCenter();
+                int tileIndex = center.x + center.y * m_nWidth;
+                npc->setPosition3D(Vec3(m_Map[tileIndex].m_nX*TerrainTile::CONTENT_SCALE, -0.5f*TerrainTile::CONTENT_SCALE, -m_Map[tileIndex].m_nY*TerrainTile::CONTENT_SCALE));
+                npc->setVisited(m_Map[tileIndex].m_bVisited);
+                npc->addTerrainTileFlag(TileInfo::USEABLE);
+                VoxelExplorer::getInstance()->getUseableItemsLayer()->addChild(npc);
+                npc->setState(Npc::NPCS_IDLE);
+            }
+            break;
+        case Area::AT_SPECIAL_THEIF_ROOM:
+            {
+                Npc* npc = Npc::create(Npc::NPC_WEIRDO);
+                if(!npc)
+                    return false;
+                Vec2 center = area->getCenter();
+                int tileIndex = center.x + center.y * m_nWidth;
+                npc->setPosition3D(Vec3(m_Map[tileIndex].m_nX*TerrainTile::CONTENT_SCALE, -0.5f*TerrainTile::CONTENT_SCALE, -m_Map[tileIndex].m_nY*TerrainTile::CONTENT_SCALE));
+                npc->setVisited(m_Map[tileIndex].m_bVisited);
+                npc->addTerrainTileFlag(TileInfo::USEABLE);
+                VoxelExplorer::getInstance()->getUseableItemsLayer()->addChild(npc);
+                npc->setState(Npc::NPCS_IDLE);
+            }
+            break;
+        case Area::AT_SPECIAL_SAGE_ROOM:
+            {
+                Npc* npc = Npc::create(Npc::NPC_OLDMAN);
+                if(!npc)
+                    return false;
+                Vec2 center = area->getCenter();
+                int tileIndex = center.x + center.y * m_nWidth;
+                npc->setPosition3D(Vec3(m_Map[tileIndex].m_nX*TerrainTile::CONTENT_SCALE, -0.5f*TerrainTile::CONTENT_SCALE, -m_Map[tileIndex].m_nY*TerrainTile::CONTENT_SCALE));
+                npc->setVisited(m_Map[tileIndex].m_bVisited);
+                npc->addTerrainTileFlag(TileInfo::USEABLE);
+                VoxelExplorer::getInstance()->getUseableItemsLayer()->addChild(npc);
+                npc->setState(Npc::NPCS_IDLE);
+            }
+            break;
+        case Area::AT_SPECIAL_MISSION_ROOM:
+            {
+                Npc* npc = Npc::create(Npc::NPC_CHILD);
+                if(!npc)
+                    return false;
+                Vec2 center = area->getCenter();
+                int tileIndex = center.x + center.y * m_nWidth;
+                npc->setPosition3D(Vec3(m_Map[tileIndex].m_nX*TerrainTile::CONTENT_SCALE, -0.5f*TerrainTile::CONTENT_SCALE, -m_Map[tileIndex].m_nY*TerrainTile::CONTENT_SCALE));
+                npc->setVisited(m_Map[tileIndex].m_bVisited);
+                npc->addTerrainTileFlag(TileInfo::USEABLE);
+                VoxelExplorer::getInstance()->getUseableItemsLayer()->addChild(npc);
+                npc->setState(Npc::NPCS_IDLE);
+            }
+            break;
+        case Area::AT_SPECIAL_TREASURE_ROOM:
+        case Area::AT_SPECIAL_DECORATION_ROOM:
+        case Area::AT_SPECIAL_TRANSPOT_ROOM:
+            break;
+        default:
+            break;
+    }
     return true;
 }
 bool StandardLevel::createPickableItems()
@@ -949,13 +1127,17 @@ int StandardLevel::randomMonsterRespawnCell()
             continue;
         if(m_Style == LS_PASSAGE)
         {
-            if(area->getAreaType() != Area::AT_STANDARD)
-                if(area->getAreaType() != Area::AT_PASSAGE)
-                    continue;
+            if(area->getAreaType() != Area::AT_STANDARD
+               && area->getAreaType() != Area::AT_PASSAGE
+               && area->getAreaType() != Area::AT_SPECIAL_DECORATION_ROOM
+               && area->getAreaType() != Area::AT_SPECIAL_TRANSPOT_ROOM)
+                continue;
         }
         else
         {
-            if(area->getAreaType() != Area::AT_STANDARD)
+            if(area->getAreaType() != Area::AT_STANDARD
+               && area->getAreaType() != Area::AT_SPECIAL_DECORATION_ROOM
+               && area->getAreaType() != Area::AT_SPECIAL_TRANSPOT_ROOM)
                 continue;
         }
         tileIndex = area->getRandomTile(this);
@@ -994,11 +1176,11 @@ int StandardLevel::calculateLevelMonsterCount()
 {
     int ret = m_nStandardAreaCount;
     if(m_Style == LS_STANDARD)
-        ret = (int)(m_nStandardAreaCount*0.8f) + cocos2d::random(2, 5);
+        ret = m_nStandardAreaCount + cocos2d::random(2, 5);
     else if (m_Style == LS_TUNNEL)
         ret = m_nStandardAreaCount + cocos2d::random(0, m_nStandardAreaCount);
     else if(m_Style == LS_PASSAGE)
-        ret = (int)(m_nStandardAreaCount*0.5f) + m_nPassageAreaCount + cocos2d::random(2, 5);
+        ret = (int)(m_nStandardAreaCount*0.8f) + m_nPassageAreaCount + cocos2d::random(2, 5);
     return ret;
 }
 int StandardLevel::calculateLevelUseableItemCount(const cocos2d::Size& areaSize)

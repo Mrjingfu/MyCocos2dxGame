@@ -48,6 +48,11 @@ static const std::string EVENT_PLAYER_LEVEL_UP = "PLAYER_LEVEL_UP";
 static const std::string EVENT_PLAYER_BAG_NO_SPACE = "PLAYER_BAG_NO_SPACE";
 static const std::string EVENT_PLAYER_BAG_EXTEND_OK = "PLAYER_BAG_EXTEND_OK";
 static const std::string EVENT_PLAYER_BAG_EXTEND_HAS_REACH_MAXTIMES = "PLAYER_BAG_EXTEND_HAS_REACH_MAXTIMES";
+static const std::string EVENT_PLAYER_NO_COPPER_KEY = "PLAYER_NO_COPPER_KEY";
+static const std::string EVENT_PLAYER_NO_SILVER_KEY = "PLAYER_NO_SILVER_KEY";
+static const std::string EVENT_PLAYER_NO_GOLD_KEY = "PLAYER_NO_GOLD_KEY";
+static const std::string EVENT_PLAYER_NO_ROOM_KEY = "PLAYER_NO_ROOM_KEY";
+static const std::string EVENT_PLAYER_NO_BOSS_KEY = "PLAYER_NO_BOSS_KEY";
 
 static const std::string EVENT_PLAYER_HURT = "PLAYER_HURT";
 
@@ -78,5 +83,14 @@ static const std::string EVENT_GO_UPSTAIRS = "GO_UPSTAIRS";
 static const std::string EVENT_GO_UPSTAIRS_FORBIDDEN = "GO_UPSTAIRS_FORBIDDEN";
 static const std::string EVENT_GO_DOWNSTAIRS = "GO_DOWNSTAIRS";
 static const std::string EVENT_GO_BOSSROOM = "GO_BOSSROOM";
+
+static const std::string EVENT_NPC_KNIGHT_ANSWER = "NPC_KNIGHT_ANSWER";             ///武器店
+static const std::string EVENT_NPC_CHILD_ANSWER = "NPC_CHILD_ANSWER";               ///任务
+static const std::string EVENT_NPC_SHOPGIRL_ANSWER = "NPC_SHOPGIRL_ANSWER";          ///魔法物品店
+static const std::string EVENT_NPC_OLDLADY_ANSWER = "NPC_OLDLADY_ANSWER";          ///炼金店
+static const std::string EVENT_NPC_WEIRDO_ANSWER = "NPC_WEIRDO_ANSWER";          ///赌博店
+static const std::string EVENT_NPC_OLDMAN_ANSWER = "NPC_OLDMAN_ANSWER";          ///智者
+static const std::string EVENT_NPC_LITTLEWITCH_ANSWER = "NPC_LITTLEWITCH_ANSWER";          ///魔女随机事件
+static const std::string EVENT_NPC_NURSE_ANSWER = "NPC_NURSE_ANSWER";          ///护士站
 
 #endif /* EventConst_h */

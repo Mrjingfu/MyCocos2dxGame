@@ -41,6 +41,7 @@ public:
     DungeonNode()
     {
         m_strDungeonName    = "";                           ////地城名称
+        m_nTransmutationDepth = 3;                          ////嬗变深度
         m_nCurrentDepth     = 1;                            ////当前深度
         m_nNodeDepth        = 1;                            ////节点深度
         m_nTotalNum         = 10;                           ////地城层数
@@ -50,7 +51,20 @@ public:
         m_pLeftNode     = nullptr;      ////左节点
         m_pRightNode    = nullptr;      ////右节点
     }
+    bool isTransmutation()
+    {
+        return m_nCurrentDepth >= m_nTransmutationDepth;
+    }
+    bool isBeginTransmutation()
+    {
+        return m_nCurrentDepth == m_nTransmutationDepth;
+    }
+    bool isLastDepth()
+    {
+        return m_nCurrentDepth == m_nTotalNum;
+    }
     std::string     m_strDungeonName;       ////地城名称
+    CChaosNumber    m_nTransmutationDepth;  ////嬗变深度
     CChaosNumber    m_nCurrentDepth;        ////当前深度
     CChaosNumber    m_nNodeDepth;           ////节点深度
     CChaosNumber    m_nTotalNum;            ////地城层数

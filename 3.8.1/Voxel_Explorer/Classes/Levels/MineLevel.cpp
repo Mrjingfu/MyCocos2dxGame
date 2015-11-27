@@ -38,108 +38,108 @@ bool MineLevel::createTerrain()
             
             switch (info.m_Type) {
                 case TerrainTile::TT_WALL:
-                {
-                    tile->setPosition3D(Vec3(j*TerrainTile::CONTENT_SCALE, -TerrainTile::CONTENT_SCALE*0.5f, -i*TerrainTile::CONTENT_SCALE));
-                }
+                    {
+                        tile->setPosition3D(Vec3(j*TerrainTile::CONTENT_SCALE, -TerrainTile::CONTENT_SCALE*0.5f, -i*TerrainTile::CONTENT_SCALE));
+                    }
                     break;
                 case TerrainTile::TT_ENTRANCE:
-                {
-                    if((RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nCurrentDepth == 1))
                     {
-                        StandardPortal* portal = StandardPortal::create(false);
+                        if((RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nCurrentDepth == 1))
+                        {
+                            StandardPortal* portal = StandardPortal::create(false);
+                            if(!portal)
+                                return false;
+                            portal->setPosition3D(Vec3(j*TerrainTile::CONTENT_SCALE, 0, -i*TerrainTile::CONTENT_SCALE));
+                            VoxelExplorer::getInstance()->getTerrainPortalsLayer()->addChild(portal);
+                            portal->setVisited(info.m_bVisited);
+                        }
+                        else
+                        {
+                            Ladder* ladder = Ladder::create();
+                            if(!ladder)
+                                return false;
+                            ladder->setPosition3D(Vec3(j*TerrainTile::CONTENT_SCALE, -TerrainTile::CONTENT_SCALE*0.5f, -i*TerrainTile::CONTENT_SCALE));
+                            VoxelExplorer::getInstance()->getTerrainPortalsLayer()->addChild(ladder);
+                        ladder->setVisited(info.m_bVisited);
+
+                        }
+                    }
+                    break;
+                case TerrainTile::TT_STANDARD_PORTAL:
+                    {
+                        StandardPortal* portal = StandardPortal::create(true);
                         if(!portal)
                             return false;
                         portal->setPosition3D(Vec3(j*TerrainTile::CONTENT_SCALE, 0, -i*TerrainTile::CONTENT_SCALE));
                         VoxelExplorer::getInstance()->getTerrainPortalsLayer()->addChild(portal);
                         portal->setVisited(info.m_bVisited);
                     }
-                    else
-                    {
-                        Ladder* ladder = Ladder::create();
-                        if(!ladder)
-                            return false;
-                        ladder->setPosition3D(Vec3(j*TerrainTile::CONTENT_SCALE, -TerrainTile::CONTENT_SCALE*0.5f, -i*TerrainTile::CONTENT_SCALE));
-                        VoxelExplorer::getInstance()->getTerrainPortalsLayer()->addChild(ladder);
-                        ladder->setVisited(info.m_bVisited);
-
-                    }
-                }
-                    break;
-                case TerrainTile::TT_STANDARD_PORTAL:
-                {
-                    StandardPortal* portal = StandardPortal::create(true);
-                    if(!portal)
-                        return false;
-                    portal->setPosition3D(Vec3(j*TerrainTile::CONTENT_SCALE, 0, -i*TerrainTile::CONTENT_SCALE));
-                    VoxelExplorer::getInstance()->getTerrainPortalsLayer()->addChild(portal);
-                    portal->setVisited(info.m_bVisited);
-                }
                     break;
                 case TerrainTile::TT_SMALL_PORTAL:
-                {
-                    SmallPortal* portal = SmallPortal::create(true);
-                    if(!portal)
-                        return false;
-                    portal->setPosition3D(Vec3(j*TerrainTile::CONTENT_SCALE, 0, -i*TerrainTile::CONTENT_SCALE));
-                    VoxelExplorer::getInstance()->getTerrainPortalsLayer()->addChild(portal);
-                    portal->setVisited(info.m_bVisited);
-                }
+                    {
+                        SmallPortal* portal = SmallPortal::create(true);
+                        if(!portal)
+                            return false;
+                        portal->setPosition3D(Vec3(j*TerrainTile::CONTENT_SCALE, 0, -i*TerrainTile::CONTENT_SCALE));
+                        VoxelExplorer::getInstance()->getTerrainPortalsLayer()->addChild(portal);
+                        portal->setVisited(info.m_bVisited);
+                    }
                     break;
                 case TerrainTile::TT_DOOR:
-                {
-                    StandardDoor* door = StandardDoor::create(false);
-                    if(!door)
-                        return false;
-                    door->setPosition3D(Vec3(j*TerrainTile::CONTENT_SCALE, -TerrainTile::CONTENT_SCALE*0.5f, -i*TerrainTile::CONTENT_SCALE));
-                    VoxelExplorer::getInstance()->getTerrainDoorsLayer()->addChild(door);
-                    if(!door->createFakeDoor())
-                        return false;
-                    door->setVisited(info.m_bVisited);
-                    door->setActorDir(info.m_Dir);
-                    door->setDoorState(BaseDoor::DS_CLOSED);
-                }
+                    {
+                        StandardDoor* door = StandardDoor::create(false);
+                        if(!door)
+                            return false;
+                        door->setPosition3D(Vec3(j*TerrainTile::CONTENT_SCALE, -TerrainTile::CONTENT_SCALE*0.5f, -i*TerrainTile::CONTENT_SCALE));
+                        VoxelExplorer::getInstance()->getTerrainDoorsLayer()->addChild(door);
+                        if(!door->createFakeDoor())
+                            return false;
+                        door->setVisited(info.m_bVisited);
+                        door->setActorDir(info.m_Dir);
+                        door->setDoorState(BaseDoor::DS_CLOSED);
+                    }
                     break;
                 case TerrainTile::TT_OPENED_DOOR:
-                {
-                    StandardDoor* door = StandardDoor::create(false);
-                    if(!door)
-                        return false;
-                    door->setPosition3D(Vec3(j*TerrainTile::CONTENT_SCALE, -TerrainTile::CONTENT_SCALE*0.5f, -i*TerrainTile::CONTENT_SCALE));
-                    VoxelExplorer::getInstance()->getTerrainDoorsLayer()->addChild(door);
-                    if(!door->createFakeDoor())
-                        return false;
-                    door->setVisited(info.m_bVisited);
-                    door->setActorDir(info.m_Dir);
-                    door->setDoorState(BaseDoor::DS_OPENED);
-                }
+                    {
+                        StandardDoor* door = StandardDoor::create(false);
+                        if(!door)
+                            return false;
+                        door->setPosition3D(Vec3(j*TerrainTile::CONTENT_SCALE, -TerrainTile::CONTENT_SCALE*0.5f, -i*TerrainTile::CONTENT_SCALE));
+                        VoxelExplorer::getInstance()->getTerrainDoorsLayer()->addChild(door);
+                        if(!door->createFakeDoor())
+                            return false;
+                        door->setVisited(info.m_bVisited);
+                        door->setActorDir(info.m_Dir);
+                        door->setDoorState(BaseDoor::DS_OPENED);
+                    }
                     break;
                 case TerrainTile::TT_LOCKED_DOOR:
-                {
-                    StandardDoor* door = StandardDoor::create(false);
-                    if(!door)
-                        return false;
-                    door->setPosition3D(Vec3(j*TerrainTile::CONTENT_SCALE, -TerrainTile::CONTENT_SCALE*0.5f, -i*TerrainTile::CONTENT_SCALE));
-                    VoxelExplorer::getInstance()->getTerrainDoorsLayer()->addChild(door);
-                    if(!door->createFakeDoor())
-                        return false;
-                    door->setVisited(info.m_bVisited);
-                    door->setActorDir(info.m_Dir);
-                    door->setDoorState(BaseDoor::DS_LOCKED);
-                }
+                    {
+                        StandardDoor* door = StandardDoor::create(false);
+                        if(!door)
+                            return false;
+                        door->setPosition3D(Vec3(j*TerrainTile::CONTENT_SCALE, -TerrainTile::CONTENT_SCALE*0.5f, -i*TerrainTile::CONTENT_SCALE));
+                        VoxelExplorer::getInstance()->getTerrainDoorsLayer()->addChild(door);
+                        if(!door->createFakeDoor())
+                            return false;
+                        door->setVisited(info.m_bVisited);
+                        door->setActorDir(info.m_Dir);
+                        door->setDoorState(BaseDoor::DS_LOCKED);
+                    }
                     break;
                 case TerrainTile::TT_SECRET_DOOR:
-                {
-                    StandardDoor* door = StandardDoor::create(true);
-                    if(!door)
-                        return false;
-                    door->setPosition3D(Vec3(j*TerrainTile::CONTENT_SCALE, -TerrainTile::CONTENT_SCALE*0.5f, -i*TerrainTile::CONTENT_SCALE));
-                    VoxelExplorer::getInstance()->getTerrainDoorsLayer()->addChild(door);
-                    if(!door->createFakeDoor())
-                        return false;
-                    door->setVisited(info.m_bVisited);
-                    door->setActorDir(info.m_Dir);
-                    door->setDoorState(BaseDoor::DS_HIDE);
-                }
+                    {
+                        StandardDoor* door = StandardDoor::create(true);
+                        if(!door)
+                            return false;
+                        door->setPosition3D(Vec3(j*TerrainTile::CONTENT_SCALE, -TerrainTile::CONTENT_SCALE*0.5f, -i*TerrainTile::CONTENT_SCALE));
+                        VoxelExplorer::getInstance()->getTerrainDoorsLayer()->addChild(door);
+                        if(!door->createFakeDoor())
+                            return false;
+                        door->setVisited(info.m_bVisited);
+                        door->setActorDir(info.m_Dir);
+                        door->setDoorState(BaseDoor::DS_HIDE);
+                    }
                     break;
                 default:
                     break;

@@ -32,11 +32,12 @@ protected:
     virtual bool initAreas();
     virtual void splitArea(const cocos2d::Rect& rect);
     virtual void assignAreasType();
+    virtual void assignSpecialArea(Area* area);
     
     virtual void generate();
     
     virtual bool createUseableItems(Area* area);
-    virtual bool createNPCs(Area* area);
+    virtual bool decorateSpecialArea(Area* area);
     virtual bool createPickableItems();
     
     virtual void generateSpawnPoint();

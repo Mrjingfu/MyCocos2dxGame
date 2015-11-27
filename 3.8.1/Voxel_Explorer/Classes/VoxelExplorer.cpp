@@ -435,9 +435,9 @@ void VoxelExplorer::generatePickItemByUseableItem(const cocos2d::Vec2& pos, Usea
     
     if(type <= UseableItem::UIT_CHEST_GOLD)
     {
-        if(type == UseableItem::UIT_CHEST_GOLD)
+        if(type == UseableItem::UIT_CHEST_GOLD || type == UseableItem::UIT_CHEST_NO_LOCK_GOLD)
             PlayerProperty::getInstance()->addMoney(1, 0, 0);
-        else if(type == UseableItem::UIT_CHEST_SILVER)
+        else if(type == UseableItem::UIT_CHEST_SILVER || type == UseableItem::UIT_CHEST_NO_LOCK_SILVER)
             PlayerProperty::getInstance()->addMoney(0, 25, 0);
         else
             PlayerProperty::getInstance()->addMoney(0, 0, 50);
@@ -522,7 +522,31 @@ void VoxelExplorer::handleUseUseableItem(const cocos2d::Vec2& mapPos)
             UseableItem* useableItem = dynamic_cast<UseableItem*>(child);
             if(useableItem && useableItem->getPosInMap() == mapPos)
             {
-                useableItem->setState(UseableItem::UIS_FADEOUT);
+                if(useableItem->getUseableItemType() <= UseableItem::UIT_CHEST_NO_LOCK_GOLD)
+                {
+                    float percent1 = 0.8f;
+                    float percent2 = 1.0 - percent1;
+                    AlisaMethod* am = AlisaMethod::create(percent1, percent2, -1.0, NULL);
+                    if(am)
+                    {
+                        if(am->getRandomIndex() == 0)
+                        {
+                            ////处理怪物召唤
+                        }
+                    }
+                    useableItem->setState(UseableItem::UIS_FADEOUT);
+                    return;
+                }
+                else
+                {
+                    useableItem->setState(UseableItem::UIS_FADEOUT);
+                    return;
+                }
+            }
+            Npc* npc = dynamic_cast<Npc*>(child);
+            if(npc && npc->getPosInMap() == mapPos)
+            {
+                npc->setState(Npc::NPCS_ANSWER);
                 return;
             }
         }

@@ -15,6 +15,13 @@ class UseableItem : public Actor
 {
 public:
     typedef enum{
+        
+        //UIT_CHEST_NO_LOCK_BEGIN
+        UIT_CHEST_NO_LOCK_COPPER = 0,         ///无锁铜宝箱
+        UIT_CHEST_NO_LOCK_SILVER,             ///无锁银宝箱
+        UIT_CHEST_NO_LOCK_GOLD,               ///无锁金宝箱
+        //UIT_CHEST_NO_LOCK_END
+        
         //UIT_CHEST_BEGIN
         UIT_CHEST_COPPER = 0,         ///铜宝箱
         UIT_CHEST_SILVER,             ///银宝箱
@@ -40,7 +47,7 @@ public:
     
     virtual std::string getDesc() override;
     
-    UseableItemType getPickableItemType() const { return m_Type; }
+    UseableItemType getUseableItemType() const { return m_Type; }
     UseableItemState getState() const { return m_State; }
     void setState(UseableItemState state);
     

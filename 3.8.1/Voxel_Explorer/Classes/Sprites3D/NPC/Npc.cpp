@@ -9,6 +9,8 @@
 #include "Npc.hpp"
 #include "LevelResourceManager.h"
 #include "UtilityHelper.h"
+#include "VoxelExplorer.h"
+#include "Player.hpp"
 USING_NS_CC;
 const std::string NPC_NAMES[] = {
     "NPCN_CHILD",           ///小孩
@@ -40,6 +42,7 @@ Npc* Npc::create(NPC_TYPE type)
 Npc::Npc()
 {
     m_Type = NPC_UNKNOWN;
+    m_State = NPCS_UNKNOWN;
 }
 Npc::~Npc()
 {
@@ -51,4 +54,102 @@ std::string Npc::getIconRes()
 std::string Npc::getDesc()
 {
     return UtilityHelper::getLocalString(NPC_NAMES[m_Type] + "_DESC");
+}
+void Npc::setState(NPCState state)
+{
+    if(m_State == state && m_State != NPCS_ANSWER)
+        return;
+    ///处理上一个状态退出逻辑
+    switch (m_State) {
+        case Npc::NPCS_IDLE:
+            onExitIdle();
+            break;
+        case Npc::NPCS_ANSWER:
+            onExitAnswer();
+            break;
+        case Npc::NPCS_FADEOUT:
+            onExitFadeOut();
+            break;
+        default:
+            break;
+    }
+    m_State = state;
+    ///处理下一个状态进入逻辑
+    switch (m_State) {
+        case Npc::NPCS_IDLE:
+            onEnterIdle();
+            break;
+        case Npc::NPCS_ANSWER:
+            onEnterAnswer();
+            break;
+        case Npc::NPCS_FADEOUT:
+            onEnterFadeOut();
+            break;
+        default:
+            break;
+    }
+}
+void Npc::setActorDir( ActorDir dir )
+{
+    if(m_dir == dir)
+        return;
+    m_dir = dir;
+    EaseSineOut* rotateTo = nullptr;
+    switch (m_dir) {
+        case AD_FORWARD:
+            rotateTo = EaseSineOut::create(RotateTo::create(0.5f, Vec3(0,180,0)));
+            break;
+        case AD_LEFT:
+            rotateTo = EaseSineOut::create(RotateTo::create(0.5f, Vec3(0,-90,0)));
+            break;
+        case AD_RIGHT:
+            rotateTo = EaseSineOut::create(RotateTo::create(0.5f, Vec3(0,90,0)));
+            break;
+        case AD_BACK:
+            rotateTo = EaseSineOut::create(RotateTo::create(0.5f, Vec3(0,0,0)));
+            break;
+        default:
+            break;
+    }
+    this->runAction(rotateTo);
+}
+void Npc::onEnterIdle()
+{
+}
+void Npc::onExitIdle()
+{
+}
+
+void Npc::onEnterAnswer()
+{
+    Player* player = VoxelExplorer::getInstance()->getPlayer();
+    if(player)
+    {
+        Vec2 playerPos = player->getPosInMap();
+        if(playerPos.x > getPosInMap().x)
+            setActorDir(AD_RIGHT);
+        else if(playerPos.x < getPosInMap().x)
+            setActorDir(AD_LEFT);
+        else
+        {
+            if(playerPos.y > getPosInMap().y)
+                setActorDir(AD_FORWARD);
+            else if(playerPos.y < getPosInMap().y)
+                setActorDir(AD_BACK);
+        }
+    }
+}
+void Npc::onExitAnswer()
+{
+}
+
+void Npc::onEnterFadeOut()
+{
+}
+void Npc::onExitFadeOut()
+{
+}
+
+void Npc::destroySelf()
+{
 }

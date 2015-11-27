@@ -557,11 +557,11 @@ PickableItem::PickableItemType PickableItem::generatePickItemByUseableLevel(int 
     else if(level <= 15)
     {
         float percentPro = 0.02f;
-        if(type == UseableItem::UIT_CHEST_COPPER)
+        if(type == UseableItem::UIT_CHEST_COPPER || type == UseableItem::UIT_CHEST_NO_LOCK_COPPER)
             percentPro += 0.02f;
-        else if(type == UseableItem::UIT_CHEST_SILVER)
+        else if(type == UseableItem::UIT_CHEST_SILVER || type == UseableItem::UIT_CHEST_NO_LOCK_SILVER)
             percentPro += 0.04f;
-        else if(type == UseableItem::UIT_CHEST_GOLD)
+        else if(type == UseableItem::UIT_CHEST_GOLD || type == UseableItem::UIT_CHEST_NO_LOCK_GOLD)
             percentPro += 0.06f;
         float percentStandard1 = 0.15f;
         float percentStandard2 = 0.3f;
@@ -584,17 +584,17 @@ PickableItem::PickableItemType PickableItem::generatePickItemByUseableLevel(int 
     {
         float percentPro1 = 0.01f;
         float percentPro2 = 0.01f;
-        if(type == UseableItem::UIT_CHEST_COPPER)
+        if(type == UseableItem::UIT_CHEST_COPPER || type == UseableItem::UIT_CHEST_NO_LOCK_COPPER)
         {
             percentPro1 += 0.01f;
             percentPro2 += 0.01f;
         }
-        else if(type == UseableItem::UIT_CHEST_SILVER)
+        else if(type == UseableItem::UIT_CHEST_SILVER || type == UseableItem::UIT_CHEST_NO_LOCK_SILVER)
         {
             percentPro1 += 0.02f;
             percentPro2 += 0.02f;
         }
-        else if(type == UseableItem::UIT_CHEST_GOLD)
+        else if(type == UseableItem::UIT_CHEST_GOLD || type == UseableItem::UIT_CHEST_NO_LOCK_GOLD)
         {
             percentPro1 += 0.03f;
             percentPro2 += 0.03f;
@@ -621,17 +621,17 @@ PickableItem::PickableItemType PickableItem::generatePickItemByUseableLevel(int 
     {
         float percentPro1 = 0.01f;
         float percentPro2 = 0.01f;
-        if(type == UseableItem::UIT_CHEST_COPPER)
+        if(type == UseableItem::UIT_CHEST_COPPER || type == UseableItem::UIT_CHEST_NO_LOCK_COPPER)
         {
             percentPro1 += 0.01f;
             percentPro2 += 0.01f;
         }
-        else if(type == UseableItem::UIT_CHEST_SILVER)
+        else if(type == UseableItem::UIT_CHEST_SILVER || type == UseableItem::UIT_CHEST_NO_LOCK_SILVER)
         {
             percentPro1 += 0.02f;
             percentPro2 += 0.02f;
         }
-        else if(type == UseableItem::UIT_CHEST_GOLD)
+        else if(type == UseableItem::UIT_CHEST_GOLD || type == UseableItem::UIT_CHEST_NO_LOCK_GOLD)
         {
             percentPro1 += 0.03f;
             percentPro2 += 0.03f;
@@ -658,17 +658,17 @@ PickableItem::PickableItemType PickableItem::generatePickItemByUseableLevel(int 
     {
         float percentPro1 = 0.01f;
         float percentPro2 = 0.01f;
-        if(type == UseableItem::UIT_CHEST_COPPER)
+        if(type == UseableItem::UIT_CHEST_COPPER || type == UseableItem::UIT_CHEST_NO_LOCK_COPPER)
         {
             percentPro1 += 0.01f;
             percentPro2 += 0.01f;
         }
-        else if(type == UseableItem::UIT_CHEST_SILVER)
+        else if(type == UseableItem::UIT_CHEST_SILVER || type == UseableItem::UIT_CHEST_NO_LOCK_SILVER)
         {
             percentPro1 += 0.02f;
             percentPro2 += 0.02f;
         }
-        else if(type == UseableItem::UIT_CHEST_GOLD)
+        else if(type == UseableItem::UIT_CHEST_GOLD || type == UseableItem::UIT_CHEST_NO_LOCK_GOLD)
         {
             percentPro1 += 0.03f;
             percentPro2 += 0.03f;
@@ -695,17 +695,17 @@ PickableItem::PickableItemType PickableItem::generatePickItemByUseableLevel(int 
     {
         float percentPro1 = 0.01f;
         float percentPro2 = 0.01f;
-        if(type == UseableItem::UIT_CHEST_COPPER)
+        if(type == UseableItem::UIT_CHEST_COPPER || type == UseableItem::UIT_CHEST_NO_LOCK_COPPER)
         {
             percentPro1 += 0.01f;
             percentPro2 += 0.01f;
         }
-        else if(type == UseableItem::UIT_CHEST_SILVER)
+        else if(type == UseableItem::UIT_CHEST_SILVER || type == UseableItem::UIT_CHEST_NO_LOCK_SILVER)
         {
             percentPro1 += 0.02f;
             percentPro2 += 0.02f;
         }
-        else if(type == UseableItem::UIT_CHEST_GOLD)
+        else if(type == UseableItem::UIT_CHEST_GOLD || type == UseableItem::UIT_CHEST_NO_LOCK_GOLD)
         {
             percentPro1 += 0.03f;
             percentPro2 += 0.03f;
@@ -733,19 +733,19 @@ PickableItem::PickableItemType PickableItem::generatePickItemByUseableLevel(int 
         float percentPro1 = 0.01f;
         float percentPro2 = 0.01f;
         float percentPro3 = 0.01f;
-        if(type == UseableItem::UIT_CHEST_COPPER)
+        if(type == UseableItem::UIT_CHEST_COPPER || type == UseableItem::UIT_CHEST_NO_LOCK_COPPER)
         {
             percentPro1 += 0.01f;
             percentPro2 += 0.01f;
             percentPro3 += 0.01f;
         }
-        else if(type == UseableItem::UIT_CHEST_SILVER)
+        else if(type == UseableItem::UIT_CHEST_SILVER || type == UseableItem::UIT_CHEST_NO_LOCK_SILVER)
         {
             percentPro1 += 0.02f;
             percentPro2 += 0.02f;
             percentPro3 += 0.02f;
         }
-        else if(type == UseableItem::UIT_CHEST_GOLD)
+        else if(type == UseableItem::UIT_CHEST_GOLD || type == UseableItem::UIT_CHEST_NO_LOCK_GOLD)
         {
             percentPro1 += 0.03f;
             percentPro2 += 0.03f;

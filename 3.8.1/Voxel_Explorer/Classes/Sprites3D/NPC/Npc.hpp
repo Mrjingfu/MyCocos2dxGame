@@ -27,14 +27,38 @@ public:
         NPC_NURSE,          ///小护士
         NPC_UNKNOWN
     } NPC_TYPE;
+    typedef enum{
+        NPCS_UNKNOWN = 0,
+        NPCS_IDLE,
+        NPCS_ANSWER,
+        NPCS_FADEOUT,
+        NPCS_MAX
+    } NPCState;
     static Npc* create(NPC_TYPE type);
     
     std::string getIconRes();
     virtual std::string getDesc();
     
     NPC_TYPE getNPCType() const { return m_Type; }
+    
+    NPCState getState() const { return m_State; }
+    void setState(NPCState state);
+    
+    virtual void setActorDir( ActorDir dir );
+protected:
+    virtual void onEnterIdle();
+    virtual void onExitIdle();
+    
+    virtual void onEnterAnswer();
+    virtual void onExitAnswer();
+    
+    virtual void onEnterFadeOut();
+    virtual void onExitFadeOut();
+    
+    void destroySelf();
 private:
     NPC_TYPE    m_Type;
+    NPCState   m_State;
 };
 
 #endif /* Npc_hpp */
