@@ -181,12 +181,12 @@
             <filename>../ui/ui_character/ooze.png</filename>
             <filename>../ui/ui_character/priest.png</filename>
             <filename>../ui/ui_character/prisoner.png</filename>
-            <filename>../ui/ui_character/prisonerguard.png</filename>
             <filename>../ui/ui_character/shadow.png</filename>
             <filename>../ui/ui_character/skeleton.png</filename>
             <filename>../ui/ui_character/torture.png</filename>
             <filename>../ui/ui_character/wolf.png</filename>
             <filename>../ui/ui_character/zombie.png</filename>
+            <filename>../ui/ui_character/prisonguard.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

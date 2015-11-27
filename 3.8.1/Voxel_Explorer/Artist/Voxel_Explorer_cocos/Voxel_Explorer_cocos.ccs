@@ -103,6 +103,7 @@
         </PlistImageFolder>
         <Project Name="shopPopupLayer.csd" Type="Layer" />
         <Project Name="itemSplitLayer.csd" Type="Layer" />
+        <Project Name="itemShopPopupLayer.csd" Type="Layer" />
       </RootFolder>
     </Group>
   </SolutionFolder>

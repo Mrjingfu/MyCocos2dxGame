@@ -20,6 +20,7 @@ enum ePopupType
     ePopupShop,
     ePopupPause,
     ePopupItemSplit,
+    epopupItemShop,
     ePopupCount
 };
 typedef enum {

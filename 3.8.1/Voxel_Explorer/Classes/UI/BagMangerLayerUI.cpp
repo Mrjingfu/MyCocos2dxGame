@@ -194,6 +194,12 @@ void BagMangerLayerUI::removeItem(int index)
     }
     
 }
+void BagMangerLayerUI::removeCountForItems()
+{
+    if (m_pItemCountLayer) {
+        m_pItemCountLayer->removeAllChildren();
+    }
+}
 int BagMangerLayerUI::getItemId(int index) const
 {
     auto iter = m_items.find(index);

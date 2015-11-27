@@ -32,7 +32,6 @@ SellItem* SellItem::create(int itemId,int count /*=1*/)
 BagLayer::BagLayer()
 {
     _isOpenIdentify = false;
-    m_bIsShopSell = false;
     m_pGridView = nullptr;
     m_BagMsgLayer = nullptr;
     
@@ -149,25 +148,8 @@ void BagLayer::updateBagProp(bool isOpenIdentify,eSortBagType sortType)
             if(itemProp->isStackable())
             {
                 int count = itemProp->getCount();
-                if (m_bIsShopSell)
-                {
-                    //背包剩余商品个数等于总个数-过滤掉的商品个数
-                    for (auto sellIter = m_vSellItems.begin(); sellIter!=m_vSellItems.end(); sellIter++)
-                    {
-                        if (itemProp->getInstanceID() == (*sellIter)->getItemId()) {
-                            count = count -(*sellIter)->getItemCount();
-                            break;
-                        }
-                    }
-                    if (count>1) {
-                        m_BagMsgLayer->setItemCount(itemProp->getInstanceID(),itemUi->getPosition(), count);
-                    }
-                }else
-                {
-                    
-                    m_BagMsgLayer->setItemCount(itemProp->getInstanceID(),itemUi->getPosition(), count);
-                }
-                
+                 m_BagMsgLayer->setItemCount(itemProp->getInstanceID(),itemUi->getPosition(), count);
+
             }
             if (itemProp->getInstanceID() == weaponId) {
                 m_BagMsgLayer->setItemEquipMark(itemProp->getInstanceID(),itemUi->getPosition());
@@ -222,29 +204,7 @@ std::vector<PickableItemProperty*> BagLayer::getItems(eSortBagType sortType)
             continue;
         }
         
-       //如果是在商店贩卖界面 过滤掉需要贩卖的道具
-        if (m_bIsShopSell) {
-            bool isExistId = false;
-             for (auto sellIter = m_vSellItems.begin(); sellIter!=m_vSellItems.end(); sellIter++)
-             {
-                 //过滤掉不可合并的
-                 if (itemProp->getInstanceID() == (*sellIter)->getItemId() && !itemProp->isStackable()) {
-                     isExistId = true;
-                     break;
-                 }
-                 //过滤掉商品个数到达上限的
-                 if (itemProp->getInstanceID() == (*sellIter)->getItemId()
-                     && itemProp->isStackable() && (*sellIter)->getItemCount()==int(itemProp->getCount())) {
-                     isExistId = true;
-                     break;
-                 }
-                 
-             }
-            if (isExistId) {
-                continue;
-            }
-        }
-        
+               
         items.push_back(itemProp);
         PickableItemProperty::PickableItemPropertyType itemtype =itemProp->getPickableItemPropertyType();
         if (itemtype ==PickableItemProperty::PIPT_WEAPON ||itemtype ==PickableItemProperty::PIPT_SECOND_WEAPON||
@@ -366,68 +326,12 @@ void BagLayer::selectItemEvent(cocos2d::Ref *pSender, TGridView::EventType type)
     if (type==TGridView::EventType::ON_SELECTED_ITEM_END) {
         TGridView* gridView = static_cast<TGridView*>(pSender);
         int currentItemId = m_BagMsgLayer->getItemId(gridView->getCurSelectedIndex());
-        if (m_bIsShopSell) {
-            shopSellOpe(gridView->getCurSelectedIndex());
-        }else{
-            showItemInfo(currentItemId);
-        }
+        showItemInfo(currentItemId);
     }
 }
-void BagLayer::shopSellOpe(int index)
-{
-    int currentItemId = m_BagMsgLayer->getItemId(index);
-    if (currentItemId==-1)
-        return;
-    int weaponId = int(PlayerProperty::getInstance()->getEquipedWeaponID());
-    int armorId = int(PlayerProperty::getInstance()->getEquipedArmorID());
-    int OrnamentId = int(PlayerProperty::getInstance()->getEquipedOrnamentsID());
-    int secondWeaponId = int(PlayerProperty::getInstance()->getEquipedSecondWeaponID());
-    
-    if (weaponId==currentItemId || armorId==currentItemId || OrnamentId ==currentItemId || secondWeaponId==currentItemId)
-        return;
-    PickableItemProperty* itemProp = PlayerProperty::getInstance()->getItemFromBag(CChaosNumber(currentItemId));
-    if (!itemProp)
-        return;
-    SellItem* sellItem = nullptr;
-    
-    for (auto iter = m_vSellItems.begin();iter!=m_vSellItems.end();iter++) {
-        if (currentItemId == (*iter)->getItemId()) {
-            sellItem = (*iter);
-            break;
-        }
-    }
-   
-        int count = itemProp->getCount();
-        if (sellItem) {
-            count =itemProp->getCount() - sellItem->getItemCount();
-        }
-        if (count==1) {
-            updateItemSplit(&count,sellItem,currentItemId);
-        }else{
-            
-            ItemSplitPopupUI* splitPopup = static_cast<ItemSplitPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupItemSplit));
-            if (splitPopup) {
-                splitPopup->updateItemSplit(currentItemId,count);
-                splitPopup->registerCloseCallbackD(CC_CALLBACK_1(BagLayer::updateItemSplit, this,sellItem,currentItemId));
-            }
-            
-        }
-    
-    
-}
-void BagLayer::updateItemSplit(void * count ,SellItem* sellItem,int ItemId)
-{
-   
-    if (sellItem) {
-        sellItem->setItemCount(*(int*)count);
-    }else
-    {
-        SellItem* sellItem  = SellItem::create(ItemId,*(int*)count);
-        m_vSellItems.pushBack(sellItem);
-    }
-    updateShopItems();
-}
-void BagLayer::updateShopItems()
+
+
+void BagLayer::updatePopupItems()
 {
     ShopPopupUI* shopPopupUi = nullptr;
     PopupUILayer* popupUi = nullptr;
@@ -435,25 +339,11 @@ void BagLayer::updateShopItems()
     {
         shopPopupUi = static_cast<ShopPopupUI*>(popupUi);
         if (shopPopupUi) {
-            shopPopupUi->updateItems();
+            shopPopupUi->refreshUIView();
         }
     }
 }
-void BagLayer::removeItemForSell(int itemId)
-{
-    SellItem* sellitem = nullptr;
-    
-    for (auto iter = m_vSellItems.begin(); iter!=m_vSellItems.end(); iter++)
-    {
-        if (itemId == (*iter)->getItemId()) {
-            sellitem = (*iter);
-        }
-    }
-    if (sellitem) {
-        m_vSellItems.eraseObject(sellitem);
-    }
-    
-}
+
 void BagLayer::showItemInfo(int currentItemId)
 {
     if (currentItemId==-1)

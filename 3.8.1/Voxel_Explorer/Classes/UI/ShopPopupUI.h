@@ -11,7 +11,7 @@
 
 #include "PopupUILayer.h"
 #include "TGridView.h"
-class BagLayer;
+class BagShopLayer;
 class BagMangerLayerUI;
 class ShopPopupUI:public PopupUILayer {
     ShopPopupUI();
@@ -26,7 +26,7 @@ public:
     void updateShopBuyItems();
     //更新商店出售界面
     void updateShopSellItems();
-    void updateItems();
+    void refreshUIView() override;
 private:
     void onClickSortAll(Ref*,cocos2d::ui::Widget::TouchEventType);
     void onClickSortEquip(Ref*,cocos2d::ui::Widget::TouchEventType);
@@ -43,7 +43,7 @@ private:
     cocos2d::ui::Button* m_pBtnSellFrame;
     
     
-    BagLayer*     m_pBagLayer;
+    BagShopLayer*     m_pBagLayer;
     TGridView*    m_pShopGridView;
     BagMangerLayerUI* m_pShopMangerLayer;
 

@@ -29,6 +29,7 @@ private:
 
 class BagLayer:public cocos2d::ui::Layout
 {
+protected:
     BagLayer();
 public:
     enum eSortBagType{
@@ -38,35 +39,24 @@ public:
     };
     virtual ~BagLayer();
     static BagLayer* create(cocos2d::Size size);
-    bool init(cocos2d::Size size);
+    virtual bool init(cocos2d::Size size);
     //更新背包界面
-    void updateBagProp(bool isOpenIdentify= false,eSortBagType sortType = SBT_ALL);
-    void selectItemEvent(Ref *pSender, TGridView::EventType type);
+    virtual void updateBagProp(bool isOpenIdentify= false,eSortBagType sortType = SBT_ALL);
+    virtual void selectItemEvent(Ref *pSender, TGridView::EventType type);
+    //更新商店界面
+    virtual void updatePopupItems();
     //扩展背包
     void extendBag();
     bool isIdentIfy(){return _isOpenIdentify;}
-    //设置出售状态
-    void setShopSellStatus(bool status){m_bIsShopSell = status;}
-    const cocos2d::Vector<SellItem*>& getSellItems() const{return m_vSellItems;}
-    void clearSellItems(){m_vSellItems.clear();}
-    void removeItemForSell(int itemId);
-    //更新商店界面
-    void updateShopItems();
-private:
+protected:
     //显示道具详情
     void showItemInfo(int itemId);
-    //道具出售操作
-    void shopSellOpe(int index);
-    //更新贩卖道具数据
-    void updateItemSplit(void*,SellItem* ,int ItemId);
-    std::vector<PickableItemProperty*> getItems(eSortBagType sortType);
-private:
-    cocos2d::Vector<SellItem*> m_vSellItems;        //需要贩卖的道具
+    virtual std::vector<PickableItemProperty*> getItems(eSortBagType sortType);
+protected:
+    
     
     bool _isOpenIdentify;
-    bool m_bIsShopSell;
     TGridView* m_pGridView;
-
     BagMangerLayerUI* m_BagMsgLayer;
 };
 

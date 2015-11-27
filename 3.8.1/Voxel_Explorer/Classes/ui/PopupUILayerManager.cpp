@@ -14,6 +14,7 @@
 #include "ShopPopupUI.h"
 #include "PausePopupUI.h"
 #include "ItemSplitPopupUI.h"
+#include "ItemShopPopupUI.hpp"
 PopupUILayerManager::PopupUILayerManager()
 {
     m_pParentLayer = nullptr;
@@ -108,6 +109,10 @@ PopupUILayer* PopupUILayerManager::initPopUp(ePopupType type)
             break;
         case ePopupItemSplit:
             popupLayer = ItemSplitPopupUI::create();
+            break;
+        case epopupItemShop:
+            popupLayer = ItemShopPopupUI::create();
+            break;
         default:
             break;
     }

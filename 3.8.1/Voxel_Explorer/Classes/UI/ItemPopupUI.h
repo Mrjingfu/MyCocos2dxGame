@@ -11,27 +11,32 @@
 #include "PopupUILayer.h"
 #include "PickableItemProperty.hpp"
 class NoteUi;
-
+class CChaosNumber;
 class ItemPopupUI : public PopupUILayer{
-    
+protected:
     ItemPopupUI();
 public:
     CREATE_FUNC(ItemPopupUI);
-    virtual bool init();
-    virtual bool addEvents();
-    void updateItemPopup(int itemId,bool isBuy = false);
+    virtual bool initUi() override;
+    virtual bool addEvents() override;
+    virtual void updateItemPopup(int itemId);
     virtual ~ItemPopupUI();
+protected:
+    void addItemProp(std::string propStr,cocos2d::Color3B fontColor=cocos2d::Color3B::WHITE,cocos2d::ui::LinearLayoutParameter* parmLayout = nullptr);
+    virtual void closePopup() override;
+    void  updateItemMoney(CChaosNumber money);
+    //不可装备对话框 isEquip 是否显示装备按钮
+    void noEquipFrame(bool isEquip);
 private:
-    virtual void closePopup();
+   
     void onClickDiscard(Ref* ref);
     void onClickEquip(Ref* ref);
     void onClickUser(Ref* ref);
     void IdentifyEquiipFrame();
     void itemFrame();
-    //不可装备对话框 isEquip 是否显示装备按钮
-    void noEquipFrame(bool isEquip);
+
     
-private:
+protected:
     
     cocos2d::ui::ImageView* m_pItemIcon;
     cocos2d::ui::Text*   m_pItemName;
@@ -48,19 +53,7 @@ private:
     cocos2d::ui::ImageView* m_pItemSilverIcon;
     cocos2d::ui::ImageView* m_pItemCopperIcon;
     cocos2d::ui::Text*  m_pItemIdentifyDesc;    
-    
-    NoteUi*  m_pItemBasicAtk;           //基础攻击力
-    NoteUi*  m_pItemBasicDef;           //基础防御力
-    NoteUi*  m_pItemHp;                 //Hp
-    NoteUi*  m_pItemMp;                 //MP
-    NoteUi*  m_pItemLightDis;           //光照范围
-    NoteUi*  m_pItemSearchDis;          //搜索范围
-    NoteUi*  m_pItemMargicFind;         //取魔率
-    NoteUi*  m_pItemCriticalStrike;     //暴击率
-    NoteUi*  m_pItemBlock;              //格挡率
-    NoteUi*  m_pItemDodge;              //闪避率
-    NoteUi*  m_pItemMinHurt;            //最小伤害
-    NoteUi*  m_pItemMaxHurt;            //最大伤害
+
     
     cocos2d::ui::Button* m_pBtnDiscard;
     cocos2d::ui::Button* m_pBtnEquip;

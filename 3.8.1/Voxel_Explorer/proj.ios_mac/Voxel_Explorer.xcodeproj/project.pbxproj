@@ -257,6 +257,8 @@
 		ECE1B9481BD8AC820035B4D9 /* TGridView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECE1B9451BD8AC820035B4D9 /* TGridView.cpp */; };
 		ECE1B9581BD8E6660035B4D9 /* RolePopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECE1B9561BD8E6660035B4D9 /* RolePopupUI.cpp */; };
 		ECE1B9591BD8E6660035B4D9 /* RolePopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECE1B9561BD8E6660035B4D9 /* RolePopupUI.cpp */; };
+		ECE75A561C07155F0058C7BD /* ItemShopPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECE75A541C07155F0058C7BD /* ItemShopPopupUI.cpp */; };
+		ECE75A571C07155F0058C7BD /* ItemShopPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECE75A541C07155F0058C7BD /* ItemShopPopupUI.cpp */; };
 		ECECACC21BE7351600B14FFC /* ItemPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECECACC01BE7351600B14FFC /* ItemPopupUI.cpp */; };
 		ECECACCD1BE7353700B14FFC /* DeadPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECECACC51BE7353700B14FFC /* DeadPopupUI.cpp */; };
 		ECECACCE1BE7353700B14FFC /* DeadPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECECACC51BE7353700B14FFC /* DeadPopupUI.cpp */; };
@@ -535,6 +537,8 @@
 		ECE1B9461BD8AC820035B4D9 /* TGridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TGridView.h; sourceTree = "<group>"; };
 		ECE1B9561BD8E6660035B4D9 /* RolePopupUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RolePopupUI.cpp; sourceTree = "<group>"; };
 		ECE1B9571BD8E6660035B4D9 /* RolePopupUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RolePopupUI.h; sourceTree = "<group>"; };
+		ECE75A541C07155F0058C7BD /* ItemShopPopupUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ItemShopPopupUI.cpp; sourceTree = "<group>"; };
+		ECE75A551C07155F0058C7BD /* ItemShopPopupUI.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ItemShopPopupUI.hpp; sourceTree = "<group>"; };
 		ECECACC01BE7351600B14FFC /* ItemPopupUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ItemPopupUI.cpp; sourceTree = "<group>"; };
 		ECECACC11BE7351600B14FFC /* ItemPopupUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemPopupUI.h; sourceTree = "<group>"; };
 		ECECACC51BE7353700B14FFC /* DeadPopupUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DeadPopupUI.cpp; sourceTree = "<group>"; };
@@ -1048,6 +1052,8 @@
 				EC7216281C069A740021DAD7 /* ItemSplitPopupUI.h */,
 				EC6E412E1C03FDB900C77C23 /* BagLayer.cpp */,
 				EC6E412F1C03FDB900C77C23 /* BagLayer.h */,
+				EC7216301C07069F0021DAD7 /* BagShopLayer.cpp */,
+				EC7216311C07069F0021DAD7 /* BagShopLayer.hpp */,
 				ECD64A6F1BF1CD71008E04D7 /* InfoPopupUI.cpp */,
 				ECD64A701BF1CD71008E04D7 /* InfoPopupUI.h */,
 				ECECACC51BE7353700B14FFC /* DeadPopupUI.cpp */,
@@ -1056,10 +1062,10 @@
 				ECECACC81BE7353700B14FFC /* PausePopupUI.h */,
 				ECECACC91BE7353700B14FFC /* ShopPopupUI.cpp */,
 				ECECACCA1BE7353700B14FFC /* ShopPopupUI.h */,
-				EC7216301C07069F0021DAD7 /* BagShopLayer.cpp */,
-				EC7216311C07069F0021DAD7 /* BagShopLayer.hpp */,
 				ECECACC01BE7351600B14FFC /* ItemPopupUI.cpp */,
 				ECECACC11BE7351600B14FFC /* ItemPopupUI.h */,
+				ECE75A541C07155F0058C7BD /* ItemShopPopupUI.cpp */,
+				ECE75A551C07155F0058C7BD /* ItemShopPopupUI.hpp */,
 				ECE1B9561BD8E6660035B4D9 /* RolePopupUI.cpp */,
 				ECE1B9571BD8E6660035B4D9 /* RolePopupUI.h */,
 				ECE1B9451BD8AC820035B4D9 /* TGridView.cpp */,
@@ -1240,6 +1246,7 @@
 				553BC5091BCE499B003D907A /* BaseDoor.cpp in Sources */,
 				55F81CA11BDB208D002EC075 /* UseableItem.cpp in Sources */,
 				5505453C1BFF3893006B4500 /* SmallPortal.cpp in Sources */,
+				ECE75A561C07155F0058C7BD /* ItemShopPopupUI.cpp in Sources */,
 				ECD10D721BD0967B007DD888 /* WrapperUILayer.cpp in Sources */,
 				551E93AF1BD51282009F788F /* NativeBridge.mm in Sources */,
 				55338AEA1BD892C200EA316F /* Archbishop.cpp in Sources */,
@@ -1388,6 +1395,7 @@
 				EC6264961BF0807F004E0F55 /* MessageManager.cpp in Sources */,
 				555B0D161BC51A2C0055FB6D /* AppDelegate.cpp in Sources */,
 				ECD64A721BF1CD71008E04D7 /* InfoPopupUI.cpp in Sources */,
+				ECE75A571C07155F0058C7BD /* ItemShopPopupUI.cpp in Sources */,
 				55F81CAD1BDB69FB002EC075 /* PickableItemProperty.cpp in Sources */,
 				553BC5021BCDF457003D907A /* Actor.cpp in Sources */,
 				551E93C21BD51291009F788F /* ArchiveManager.cpp in Sources */,
@@ -1450,7 +1458,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer: quanlan huang (L4MC53BS3Z)";
 				COMPRESS_PNG_FILES = NO;
 				ENABLE_BITCODE = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -1478,7 +1486,7 @@
 					"$(_COCOS_LIB_IOS_END)",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.wanax.voxelexplorer;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "22b9a94d-953a-486e-a5b1-5b20c81c69a3";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "$(_COCOS_HEADER_IOS_BEGIN) $(_COCOS_HEADER_IOS_END)";
@@ -1490,7 +1498,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer: quanlan huang (L4MC53BS3Z)";
 				COMPRESS_PNG_FILES = NO;
 				ENABLE_BITCODE = NO;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
@@ -1516,7 +1524,7 @@
 					"$(_COCOS_LIB_IOS_END)",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.wanax.voxelexplorer;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "22b9a94d-953a-486e-a5b1-5b20c81c69a3";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "$(_COCOS_HEADER_IOS_BEGIN) $(_COCOS_HEADER_IOS_END)";

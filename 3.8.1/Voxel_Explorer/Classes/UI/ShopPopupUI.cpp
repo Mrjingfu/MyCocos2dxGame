@@ -7,7 +7,7 @@
 //
 
 #include "ShopPopupUI.h"
-#include "BagLayer.h"
+#include "BagShopLayer.hpp"
 #include "UtilityHelper.h"
 #include "PickableItemProperty.hpp"
 #include "PlayerProperty.hpp"
@@ -97,7 +97,7 @@ bool ShopPopupUI::addEvents()
     m_pShopMangerLayer->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
     m_pShopGridView->addChildLayer(m_pShopMangerLayer,60);
     
-    m_pBagLayer = BagLayer::create(m_girdFrame->getContentSize());
+    m_pBagLayer = BagShopLayer::create(m_girdFrame->getContentSize());
     m_pBagLayer->setPosition(m_girdFrame->getContentSize()*0.5);
     m_girdFrame->addChild(m_pBagLayer);
     
@@ -112,12 +112,12 @@ bool ShopPopupUI::addEvents()
     m_pBtnSellFrame->addTouchEventListener(CC_CALLBACK_2(ShopPopupUI::onClickFrameSell, this));
 
     
-    updateItems();
+    refreshUIView();
     
     return true;
 }
 
-void ShopPopupUI::updateItems()
+void ShopPopupUI::refreshUIView()
 {
     if (m_pBagLayer) {
         BagLayer::eSortBagType sortType = BagLayer::SBT_ALL;
@@ -229,11 +229,8 @@ void ShopPopupUI::onClickFrameBuy(cocos2d::Ref * ref, cocos2d::ui::Widget::Touch
         m_pBtnBuyFrame->setEnabled(false);
         m_pBtnSellFrame->setEnabled(true);
     }
-    if (m_pBagLayer) {
-        m_pBagLayer->setShopSellStatus(false);
-    }
+    refreshUIView();
 
-    updateItems();
 }
 
 void ShopPopupUI::onClickFrameSell(cocos2d::Ref * ref, cocos2d::ui::Widget::TouchEventType type)
@@ -242,11 +239,7 @@ void ShopPopupUI::onClickFrameSell(cocos2d::Ref * ref, cocos2d::ui::Widget::Touc
         m_pBtnBuyFrame->setEnabled(true);
         m_pBtnSellFrame->setEnabled(false);
     }
-    if (m_pBagLayer) {
-         m_pBagLayer->setShopSellStatus(true);
-    }
-
-    updateItems();
+        refreshUIView();
 }
 
 void ShopPopupUI::selectItemEvent(cocos2d::Ref *pSender, TGridView::EventType type)
@@ -259,7 +252,7 @@ void ShopPopupUI::selectItemEvent(cocos2d::Ref *pSender, TGridView::EventType ty
                 updateShopBuyItems();
             }else if(!m_pBtnSellFrame->isEnabled()){
                 m_pBagLayer->removeItemForSell(currentItemId);
-                updateItems();
+                refreshUIView();
             }
            
         }

@@ -26,6 +26,7 @@ public:
     void setItemInIentify(int itemId,cocos2d::Vec2 pt);
     void removeItems();
     void removeItem(int index);
+    void removeCountForItems();
     int  getItemId  (int index)const;
     void setLayerContentSize(const cocos2d::Size &contentSize);
 protected:
