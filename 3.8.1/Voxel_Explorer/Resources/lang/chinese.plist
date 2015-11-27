@@ -1016,6 +1016,18 @@
 	<string>万能药水</string>
 	<key>PIN_POTION_UNIVERSAL_DESC</key>
 	<string>解除角色所有负面状态</string>
+	<key>UIN_CHEST_NO_LOCK_COPPER</key>
+	<string>铜质宝箱</string>
+	<key>UIN_CHEST_NO_LOCK_COPPER_DESC</key>
+	<string>铜质宝箱，看样子很沉。</string>
+	<key>UIN_CHEST_NO_LOCK_SILVER</key>
+	<string>银质宝箱</string>
+	<key>UIN_CHEST_NO_LOCK_SILVER_DESC</key>
+	<string>银质宝箱，白花花的银子。</string>
+	<key>UIN_CHEST_NO_LOCK_GOLD</key>
+	<string>金质宝箱</string>
+	<key>UIN_CHEST_NO_LOCK_GOLD_DESC</key>
+	<string>金质宝箱，光这个箱子就值不少钱了。</string>
 	<key>UIN_CHEST_COPPER</key>
 	<string>铜质宝箱</string>
 	<key>UIN_CHEST_COPPER_DESC</key>

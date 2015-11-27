@@ -302,6 +302,12 @@
 	<string>P_Orange04</string>
 	<key>PIN_POTION_UNIVERSAL</key>
 	<string>P_Medicine09</string>
+	<key>UIN_CHEST_NO_LOCK_COPPER</key>
+	<string>copperchest</string>
+	<key>UIN_CHEST_NO_LOCK_SILVER</key>
+	<string>silverchest</string>
+	<key>UIN_CHEST_NO_LOCK_GOLD</key>
+	<string>goldchest</string>
 	<key>UIN_CHEST_COPPER</key>
 	<string>copperchest</string>
 	<key>UIN_CHEST_SILVER</key>

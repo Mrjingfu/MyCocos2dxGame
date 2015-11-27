@@ -15,6 +15,12 @@
 USING_NS_CC;
 const std::string USEABLE_ITEM_NAMES[] = {
     
+    //UIN_CHEST_NO_LOCK_BEGIN
+    "UIN_CHEST_NO_LOCK_COPPER",             ///无锁铜宝箱
+    "UIN_CHEST_NO_LOCK_SILVER",             ///无锁银宝箱
+    "UIN_CHEST_NO_LOCK_GOLD",               ///无锁金宝箱
+    //UIN_CHEST_NO_LOCK_END
+    
     //UIN_CHEST_BEGIN
     "UIN_CHEST_COPPER",             ///铜宝箱
     "UIN_CHEST_SILVER",             ///银宝箱

@@ -457,9 +457,10 @@ void VoxelExplorer::generatePickItemByUseableItem(const cocos2d::Vec2& pos, Usea
     else
     {
         PlayerProperty::getInstance()->addMoney(0, 0, cocos2d::random(5, 30));
-        float percent1 = 0.5f;
-        float percent2 = 1.0 - percent1;
-        AlisaMethod* am = AlisaMethod::create(percent1, percent2, -1.0, NULL);
+        float percent1 = 0.3f;
+        float percent2 = 0.3f;
+        float percent3 = 1.0f - percent1 - percent2;
+        AlisaMethod* am = AlisaMethod::create(percent1, percent2, percent3,-1.0, NULL);
         if(am)
         {
             if(am->getRandomIndex() == 0)
@@ -475,6 +476,10 @@ void VoxelExplorer::generatePickItemByUseableItem(const cocos2d::Vec2& pos, Usea
                     VoxelExplorer::getInstance()->getPickableItemsLayer()->addChild(item);
                     item->setState(PickableItem::PIS_BEGIN_GENERATE);
                 }
+            }
+            else if(am->getRandomIndex() == 1)
+            {
+                ///生成怪物 待实现
             }
         }
     }
@@ -514,7 +519,7 @@ void VoxelExplorer::handleDoor(const cocos2d::Vec2& mapPos)
 }
 void VoxelExplorer::handleUseUseableItem(const cocos2d::Vec2& mapPos)
 {
-    if(!m_pPlayer)
+    if(!m_pPlayer || !m_pCurrentLevel)
         return;
     if(m_pUseableItemsLayer)
     {
@@ -525,16 +530,7 @@ void VoxelExplorer::handleUseUseableItem(const cocos2d::Vec2& mapPos)
             {
                 if(useableItem->getUseableItemType() <= UseableItem::UIT_CHEST_NO_LOCK_GOLD)
                 {
-                    float percent1 = 0.8f;
-                    float percent2 = 1.0 - percent1;
-                    AlisaMethod* am = AlisaMethod::create(percent1, percent2, -1.0, NULL);
-                    if(am)
-                    {
-                        if(am->getRandomIndex() == 0)
-                        {
-                            ////处理怪物召唤
-                        }
-                    }
+                    m_pCurrentLevel->createSiegeMonsters(useableItem->getPosInMap());
                     useableItem->setState(UseableItem::UIS_FADEOUT);
                     return;
                 }

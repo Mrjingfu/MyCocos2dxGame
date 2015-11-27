@@ -496,7 +496,8 @@ void StandardLevel::assignSpecialArea(Area* area)
             type = Area::AT_SPECIAL_DECORATION_ROOM;
     }
     //for debug
-    type = Area::AT_SPECIAL_TRANSPOT_ROOM;
+    //type = Area::AT_SPECIAL_TREASURE_ROOM;
+    //
     area->setAreaType(type);
     auto iter = std::find(m_SpecailAreas.begin(), m_SpecailAreas.end(), type);
     if(iter != m_SpecailAreas.end())
@@ -706,8 +707,96 @@ bool StandardLevel::decorateSpecialArea(Area* area)
             }
             break;
         case Area::AT_SPECIAL_TREASURE_ROOM:
+            {
+                int eliteCount = 0;
+                UseableItem::UseableItemType type = UseableItem::UIT_UNKNOWN;
+                float percentCopper = 0.8f;
+                float percentSilver = 0.15f;
+                float percentGold = 1.0 - percentCopper - percentSilver;
+                AlisaMethod* am = AlisaMethod::create(percentCopper,percentSilver,percentGold,-1.0, NULL);
+                if(am)
+                {
+                    if(am->getRandomIndex() == 0)
+                    {
+                        type = UseableItem::UIT_CHEST_NO_LOCK_COPPER;
+                        eliteCount = 1;
+                    }
+                    else if(am->getRandomIndex() == 1)
+                    {
+                        type = UseableItem::UIT_CHEST_NO_LOCK_SILVER;
+                        eliteCount = 2;
+                    }
+                    else
+                    {
+                        type = UseableItem::UIT_CHEST_NO_LOCK_GOLD;
+                        eliteCount = 3;
+                    }
+                }
+                
+                Vec2 center = area->getCenter();
+                int centerTileIndex = center.x + center.y * m_nWidth;
+                UseableItem* item = UseableItem::create(type);
+                if(!item)
+                    return false;
+                item->setPosition3D(Vec3(m_Map[centerTileIndex].m_nX*TerrainTile::CONTENT_SCALE, -0.5f*TerrainTile::CONTENT_SCALE, -m_Map[centerTileIndex].m_nY*TerrainTile::CONTENT_SCALE));
+                item->setVisited(m_Map[centerTileIndex].m_bVisited);
+                item->addTerrainTileFlag(TileInfo::USEABLE);
+                VoxelExplorer::getInstance()->getUseableItemsLayer()->addChild(item);
+                item->setState(UseableItem::UIS_IDLE);
+                
+                for (int i = 0; i<eliteCount; i++) {
+                    int tileIndex = area->getRandomTile(this);
+                    if(m_Map[tileIndex].isPassable())
+                    {
+                        if(!createEliteMonster(tileIndex))
+                            return false;
+                        else
+                        {
+                            i--;
+                            continue;
+                        }
+                    }
+                }
+            }
+            break;
         case Area::AT_SPECIAL_DECORATION_ROOM:
+            {
+                int tileIndex = area->getRandomTile(this);
+                if(m_Map[tileIndex].isPassable())
+                {
+                    if(!createEliteMonster(tileIndex))
+                        return false;
+                }
+                
+                int count = (area->getRect().size.width - 2)*(area->getRect().size.height - 2)*0.8f;
+                for (int i = 0; i<count; ++i) {
+                    int tileIndex = area->getRandomTile(this);
+                    if(!(m_Map[tileIndex].isPassable()))
+                    {
+                        i--;
+                        continue;
+                    }
+                    UseableItem* item = UseableItem::create(cocos2d::random(UseableItem::UIT_JAR_1, UseableItem::UIT_JAR_3));
+                    if(!item)
+                        return false;
+                    item->setPosition3D(Vec3(m_Map[tileIndex].m_nX*TerrainTile::CONTENT_SCALE, -0.5f*TerrainTile::CONTENT_SCALE, -m_Map[tileIndex].m_nY*TerrainTile::CONTENT_SCALE));
+                    item->setActorDir(cocos2d::random(UseableItem::AD_FORWARD, UseableItem::AD_BACK));
+                    item->setVisited(m_Map[tileIndex].m_bVisited);
+                    item->addTerrainTileFlag(TileInfo::USEABLE);
+                    VoxelExplorer::getInstance()->getUseableItemsLayer()->addChild(item);
+                    item->setState(UseableItem::UIS_IDLE);
+                }
+            }
+            break;
         case Area::AT_SPECIAL_TRANSPOT_ROOM:
+            {
+                int tileIndex = area->getRandomTile(this);
+                if(m_Map[tileIndex].isPassable())
+                {
+                    if(!createEliteMonster(tileIndex))
+                        return false;
+                }
+            }
             break;
         default:
             break;

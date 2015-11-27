@@ -18,6 +18,9 @@ public:
     virtual bool createMonsters() override;
     virtual bool createSummoningMonsters(const cocos2d::Vec2& mapPos) override;
     
+    virtual bool createEliteMonster(int tileIndex) override;
+    virtual void createSiegeMonsters(const cocos2d::Vec2& pos) override;
+    
     virtual void generateSpawnPoint() override;
 };
 

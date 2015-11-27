@@ -138,6 +138,7 @@ public:
     virtual void showMap(bool show) = 0;
     virtual void updateAreaFogOfWarByPos(const cocos2d::Vec2& pos, bool updateSelfArea = false) = 0;
     virtual bool createSummoningMonsters(const cocos2d::Vec2& pos) = 0;
+    virtual void createSiegeMonsters(const cocos2d::Vec2& pos) = 0;
 protected:
     virtual bool build() = 0;
     virtual bool createTerrain() = 0;
@@ -146,6 +147,7 @@ protected:
     virtual bool decorateSpecialArea(Area* area) = 0;
     virtual bool createMonsters() = 0;
     virtual bool createPickableItems() = 0;
+    virtual bool createEliteMonster(int tileIndex) = 0;
 
     virtual int calculateLevelMonsterCount() = 0;
     virtual int calculateLevelUseableItemCount(const cocos2d::Size& areaSize) = 0;

@@ -61,3 +61,43 @@ bool SewerLevel::createSummoningMonsters(const cocos2d::Vec2& mapPos)
     }
     return true;
 }
+bool SewerLevel::createEliteMonster(int tileIndex)
+{
+    BaseMonster::MonsterType type = (BaseMonster::MonsterType)cocos2d::random((int)BaseMonster::MT_RAT, (int)BaseMonster::MT_SLIME);
+    StandardMonster* monster = StandardMonster::create(type, true);
+    if(!monster)
+        return false;
+    monster->setPosition3D(Vec3(m_Map[tileIndex].m_nX*TerrainTile::CONTENT_SCALE, -0.5f*TerrainTile::CONTENT_SCALE, -m_Map[tileIndex].m_nY*TerrainTile::CONTENT_SCALE));
+    monster->setVisited(m_Map[tileIndex].m_bVisited);
+    monster->addTerrainTileFlag(TileInfo::ATTACKABLE);
+    VoxelExplorer::getInstance()->getMonstersLayer()->addChild(monster);
+    monster->setState(BaseMonster::MS_SLEEPING);
+    
+    return true;
+}
+void SewerLevel::createSiegeMonsters(const cocos2d::Vec2& pos)
+{
+    for (PathGraphNode* node : m_Areas) {
+        Area* area = static_cast<Area*>(node);
+        if(area && area->checkInside(pos))
+        {
+            std::vector<int> coners = area->getTilesOnCorner(this);
+            for (int i = 0; i<coners.size(); ++i) {
+                int tileIndex = coners[i];
+                if(m_Map[tileIndex].isPassable())
+                {
+                    BaseMonster::MonsterType type = (BaseMonster::MonsterType)cocos2d::random((int)BaseMonster::MT_RAT, (int)BaseMonster::MT_SLIME);
+                    StandardMonster* monster = StandardMonster::create(type);
+                    if(monster)
+                    {
+                        monster->setPosition3D(Vec3(m_Map[tileIndex].m_nX*TerrainTile::CONTENT_SCALE, -0.5f*TerrainTile::CONTENT_SCALE, -m_Map[tileIndex].m_nY*TerrainTile::CONTENT_SCALE));
+                        monster->setVisited(m_Map[tileIndex].m_bVisited);
+                        monster->addTerrainTileFlag(TileInfo::ATTACKABLE);
+                        VoxelExplorer::getInstance()->getMonstersLayer()->addChild(monster);
+                        monster->setState(BaseMonster::MS_SLEEPING);
+                    }
+                }
+            }
+        }
+    }
+}
