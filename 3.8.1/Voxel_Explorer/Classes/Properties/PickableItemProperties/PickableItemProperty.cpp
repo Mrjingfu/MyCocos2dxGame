@@ -17,6 +17,7 @@ PickableItemProperty::PickableItemProperty(unsigned int instanceID, PickableItem
     m_ItemType = type;
     m_nLevel = 1;
     m_nValueCopper = 0;
+    m_nCopperWhenBuy = 0;
     m_strName = UtilityHelper::getLocalString(PICKABLE_ITEM_NAMES[type]);
     m_strDesc = UtilityHelper::getLocalString(PICKABLE_ITEM_NAMES[type] + "_DESC");
     m_strIconRes = LevelResourceManager::getInstance()->getItemIconRes(PICKABLE_ITEM_NAMES[type]);

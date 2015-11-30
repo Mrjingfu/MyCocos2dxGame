@@ -93,4 +93,6 @@ static const std::string EVENT_NPC_OLDMAN_ANSWER = "NPC_OLDMAN_ANSWER";         
 static const std::string EVENT_NPC_LITTLEWITCH_ANSWER = "NPC_LITTLEWITCH_ANSWER";          ///魔女随机事件
 static const std::string EVENT_NPC_NURSE_ANSWER = "NPC_NURSE_ANSWER";          ///护士站
 
+static const std::string EVENT_NPC_DATA_DIRTY = "NPC_DATA_DIRTY";   ///    NPC数据变化
+
 #endif /* EventConst_h */

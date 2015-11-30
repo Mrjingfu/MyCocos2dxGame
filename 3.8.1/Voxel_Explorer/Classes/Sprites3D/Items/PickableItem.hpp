@@ -268,6 +268,7 @@ private:
     void beginRotate();
     void destroySelf();
     
+public:
     static PickableItem::PickableItemType generateKeyItemType();
     static PickableItem::PickableItemType generateScrollType();
     static PickableItem::PickableItemType generate1_15PotionType();
@@ -289,6 +290,22 @@ private:
     static PickableItem::PickableItemType generate31_35UnStackableItemProType();
     static PickableItem::PickableItemType generate36_40UnStackableItemProType();
     static PickableItem::PickableItemType generate41_45UnStackableItemProType();
+
+    static PickableItem::PickableItemType generate1_5EquipmentShopItemType();
+    static PickableItem::PickableItemType generate6_10EquipmentShopItemType();
+    static PickableItem::PickableItemType generate11_15EquipmentShopItemType();
+    static PickableItem::PickableItemType generate16_20EquipmentShopItemType();
+    static PickableItem::PickableItemType generate21_25EquipmentShopItemType();
+    static PickableItem::PickableItemType generate26_30EquipmentShopItemType();
+    static PickableItem::PickableItemType generate31_35EquipmentShopItemType();
+    
+    static PickableItem::PickableItemType generate1_5MagicShopItemType();
+    static PickableItem::PickableItemType generate6_10MagicShopItemType();
+    static PickableItem::PickableItemType generate11_15MagicShopItemType();
+    static PickableItem::PickableItemType generate16_20MagicShopItemType();
+    static PickableItem::PickableItemType generate21_25MagicShopItemType();
+    static PickableItem::PickableItemType generate26_30MagicShopItemType();
+    static PickableItem::PickableItemType generate31_35MagicShopItemType();
 private:
     PickableItemState   m_State;
     PickableItemType    m_Type;

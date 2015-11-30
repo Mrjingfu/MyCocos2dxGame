@@ -196,6 +196,13 @@ CChaosNumber& CChaosNumber::operator +=(int lValue)
 	SetLongValue((long)result);
 	return *this;
 }
+CChaosNumber& CChaosNumber::operator -=(int lValue)
+{
+    int nRet = (int)GetLongValue();
+    int result = nRet - lValue;
+    SetLongValue((long)result);
+    return *this;
+}
 long CChaosNumber::operator+(long lValue)
 {
     return GetLongValue() + lValue;
