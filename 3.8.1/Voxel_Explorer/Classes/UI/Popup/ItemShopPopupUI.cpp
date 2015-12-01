@@ -48,33 +48,40 @@ void ItemShopPopupUI::updateItemPopup(eItemShopType type,int itemId)
     
     if (!itemprop)
         return;
-    
-    if (itemprop->isStackable()) {
+    int count = itemprop->getCount();
+    if (itemprop->isStackable() && count >1) {
         
-        int count = itemprop->getCount();
+        
         if (type==IST_BUY) {
+            //暂时
             count = 15;
         }
         m_pItemSlider->setMaxPercent(count-1);
         m_pItemSlider->setPercent(m_pItemSlider->getMaxPercent());
         m_pSellCount->setString(cocos2d::StringUtils::format(UtilityHelper::getLocalStringForUi("ITEM_SPLITE_COUNT").c_str(),1+m_pItemSlider->getPercent()));
-        m_pBtnEquip->addClickEventListener(CC_CALLBACK_1(ItemShopPopupUI::onClickSell, this));
+        
     }else
     {
         m_pItemSlider->setVisible(false);
         m_pSellCount->setVisible(false);
         m_pBtnEquip->setPosition(cocos2d::Vec2(m_pRootNode->getContentSize().width*0.5,m_pBtnEquip->getPositionY()));
-        m_pBtnEquip->addClickEventListener(CC_CALLBACK_1(ItemShopPopupUI::onClickBuy, this));
+        
     }
     //暂时
-   cocos2d::Label* btnLabel =  m_pBtnEquip->getTitleRenderer();
+    cocos2d::Label* btnLabel =  m_pBtnEquip->getTitleRenderer();
     btnLabel->setSystemFontName(UtilityHelper::getLocalStringForUi("FONT_NAME"));
 
-    btnLabel->setString("BUY");
-    if (type==IST_SELL) {
-        btnLabel->setString("SELL");
-    }
     
+    if (type==IST_SELL)
+    {
+        btnLabel->setString("SELL");
+        m_pBtnEquip->addClickEventListener(CC_CALLBACK_1(ItemShopPopupUI::onClickSell, this));
+    }else if (type == IST_BUY)
+    {
+        btnLabel->setString("BUY");
+        m_pBtnEquip->addClickEventListener(CC_CALLBACK_1(ItemShopPopupUI::onClickBuy, this));
+    }
+
     updateItemMoney(itemprop->getValueCopper()*(1+m_pItemSlider->getPercent()));
 }
 void ItemShopPopupUI::sliderEvent(cocos2d::Ref* sender, cocos2d::ui::Slider::EventType type)

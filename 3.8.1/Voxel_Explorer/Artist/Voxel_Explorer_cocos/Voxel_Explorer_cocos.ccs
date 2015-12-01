@@ -77,6 +77,7 @@
           <PlistImageFile Name="btn_fram_sell_normal_en.png" Key="btn_fram_sell_normal_en.png" />
           <PlistImageFile Name="btn_fram_sell_press_ch.png" Key="btn_fram_sell_press_ch.png" />
           <PlistImageFile Name="btn_fram_sell_press_en.png" Key="btn_fram_sell_press_en.png" />
+          <PlistImageFile Name="ui_no_user.png" Key="ui_no_user.png" />
         </PlistImageFolder>
         <Project Name="gameScene.csd" Type="Scene" />
         <Project Name="menuscene.csd" Type="Scene" />

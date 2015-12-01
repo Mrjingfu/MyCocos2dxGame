@@ -8,7 +8,6 @@
 
 #include "GameUILayer.h"
 #include "UtilityHelper.h"
-#include "GameConfig.h"
 #include "PopupUILayerManager.h"
 #include "PlayerProperty.hpp"
 #include "GameFormula.hpp"
@@ -112,6 +111,79 @@ void GameUILayer::onTouchEnded(cocos2d::Touch *touch, cocos2d::Event *event)
     }
     return;
 }
+void GameUILayer::onEventRoleMoneyNotEnough(cocos2d::EventCustom *sender)
+{
+    CCLOG("onEventRoleMoneyNotEnough");
+}
+void GameUILayer::onEventRoleNoMana(cocos2d::EventCustom *sender)
+{
+    CCLOG("onEventRoleNoMana");
+}
+void GameUILayer::onEventRoleBagNoSpace(cocos2d::EventCustom *sender)
+{
+    CCLOG("onEventRoleBagNoSpace");
+}
+void GameUILayer::onEventRoleNoCopperKey(cocos2d::EventCustom *sender)
+{
+    CCLOG("onEventRoleNoCopperKey");
+}
+void GameUILayer::onEventRoleNoSilverKey(cocos2d::EventCustom *sender)
+{
+     CCLOG("onEventRoleNoSilverKey");
+}
+void GameUILayer::onEventRoleNoGoldKey(cocos2d::EventCustom *sender)
+{
+     CCLOG("onEventRoleNoGoldKey");
+}
+void GameUILayer::onEventRoleNoRoomKey(cocos2d::EventCustom *sender)
+{
+    CCLOG("onEventRoleNoRoomKey");
+}
+void GameUILayer::onEventRoleNoBossKey(cocos2d::EventCustom *sender)
+{
+    CCLOG("onEventRoleNoBossKey");
+}
+//武器店
+void GameUILayer::onEventNpcKnightAnsWer(cocos2d::EventCustom *sender)
+{
+    CCLOG("onEventNpcKnightAnsWer");
+}
+//任务
+void GameUILayer::onEventNpcChildAnsWer(cocos2d::EventCustom *sender)
+{
+    CCLOG("onEventNpcChildAnsWer");
+}
+//魔法物品店
+void GameUILayer::onEventNpcShopGirlAnsWer(cocos2d::EventCustom *sender)
+{
+     CCLOG("onEventNpcChildAnsWer");
+}
+//炼金店
+void GameUILayer::onEventNpcOldLadyAnsWer(cocos2d::EventCustom *sender)
+{
+    CCLOG("onEventNpcOldLadyAnsWer");
+}
+//赌博店
+void GameUILayer::onEventNpcWeiRdoAnsWer(cocos2d::EventCustom *sender)
+{
+    CCLOG("onEventNpcWeiRdoAnsWer");
+}
+//智者
+void GameUILayer::onEventNpcOldManAnsWer(cocos2d::EventCustom *sender)
+{
+    CCLOG("onEventNpcOldManAnsWer");
+}
+//魔女随机事件
+void GameUILayer::onEventNpcLittleWitchAnsWer(cocos2d::EventCustom *sender)
+{
+    CCLOG("onEventNpcLittleWitchAnsWer");
+}
+//护士站
+void GameUILayer::onEventNpcNurseAnsWer(cocos2d::EventCustom *sender)
+{
+    CCLOG("onEventNpcNurseAnsWer");
+}
+
 
 void GameUILayer::onEventFoundHidderDoor(cocos2d::EventCustom *sender) //发现隐藏门
 {
@@ -215,7 +287,7 @@ void GameUILayer::onEventTriggerWeak(cocos2d::EventCustom *sender) //虚弱机�
      m_pGameToolBarLayer->sendMessage(msg);
    
 }
-void GameUILayer::onEventUserPotion(cocos2d::EventCustom *sender)
+void GameUILayer::onEventRoleUserPotion(cocos2d::EventCustom *sender)
 {
     CCLOG("onEvenetUserPotion");
     //关闭ItemPopup窗口
@@ -263,7 +335,7 @@ void GameUILayer::onEventUserPotion(cocos2d::EventCustom *sender)
     PopupUILayerManager::getInstance()->closeCurrentPopup();
 
 }
-void GameUILayer::onEventUserScroll(cocos2d::EventCustom *sender)
+void GameUILayer::onEventRoleUserScroll(cocos2d::EventCustom *sender)
 {
     //关闭ItemPopup窗口
     PopupUILayerManager::getInstance()->closeCurrentPopup();
@@ -464,10 +536,18 @@ void GameUILayer::onEnter()
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_PLAYER_LEVEL_UP, CC_CALLBACK_1(GameUILayer::onEventRoleLevelUp,this));
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_PLAYER_DEATH, CC_CALLBACK_1(GameUILayer::onEventRoleDead,this));
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_PLAYER_HURT, CC_CALLBACK_1(GameUILayer::onEventRoleHud,this));
-
-    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_PLAYER_USE_POTION, CC_CALLBACK_1(GameUILayer::onEventUserPotion,this));
     
-    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_PLAYER_USE_SCROLL, CC_CALLBACK_1(GameUILayer::onEventUserScroll,this));
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_PLAYER_MONEY_NOT_ENOUGH, CC_CALLBACK_1(GameUILayer::onEventRoleMoneyNotEnough,this));
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_PLAYER_NO_MANA, CC_CALLBACK_1(GameUILayer::onEventRoleNoMana,this));
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_PLAYER_BAG_NO_SPACE, CC_CALLBACK_1(GameUILayer::onEventRoleBagNoSpace,this));
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_PLAYER_NO_COPPER_KEY, CC_CALLBACK_1(GameUILayer::onEventRoleNoCopperKey,this));
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_PLAYER_NO_SILVER_KEY, CC_CALLBACK_1(GameUILayer::onEventRoleNoSilverKey,this));
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_PLAYER_NO_GOLD_KEY, CC_CALLBACK_1(GameUILayer::onEventRoleNoGoldKey,this));
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_PLAYER_NO_ROOM_KEY, CC_CALLBACK_1(GameUILayer::onEventRoleNoRoomKey,this));
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_PLAYER_NO_BOSS_KEY, CC_CALLBACK_1(GameUILayer::onEventRoleNoBossKey,this));
+    
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_PLAYER_USE_POTION, CC_CALLBACK_1(GameUILayer::onEventRoleUserPotion,this));
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_PLAYER_USE_SCROLL, CC_CALLBACK_1(GameUILayer::onEventRoleUserScroll,this));
     
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_MONSTER_HURT, CC_CALLBACK_1(GameUILayer::onEventMonsterHud,this));
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_MONSTER_PROPERTY_DIRTY, CC_CALLBACK_1(GameUILayer::onEventMonsterUpdateProp,this));
@@ -498,6 +578,16 @@ void GameUILayer::onEnter()
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_GO_DOWNSTAIRS, CC_CALLBACK_1(GameUILayer::onEventGoDownStairs,this)) ;
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_GO_BOSSROOM, CC_CALLBACK_1(GameUILayer::onEventGoBossRoom,this));
     
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_NPC_KNIGHT_ANSWER, CC_CALLBACK_1(GameUILayer::onEventNpcKnightAnsWer,this)) ;
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_NPC_CHILD_ANSWER, CC_CALLBACK_1(GameUILayer::onEventNpcChildAnsWer,this)) ;
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_NPC_SHOPGIRL_ANSWER, CC_CALLBACK_1(GameUILayer::onEventNpcShopGirlAnsWer,this)) ;
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_NPC_OLDLADY_ANSWER, CC_CALLBACK_1(GameUILayer::onEventNpcOldLadyAnsWer,this));
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_NPC_WEIRDO_ANSWER, CC_CALLBACK_1(GameUILayer::onEventNpcWeiRdoAnsWer,this)) ;
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_NPC_OLDMAN_ANSWER, CC_CALLBACK_1(GameUILayer::onEventNpcOldManAnsWer,this)) ;
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_NPC_LITTLEWITCH_ANSWER, CC_CALLBACK_1(GameUILayer::onEventNpcLittleWitchAnsWer,this)) ;
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_NPC_NURSE_ANSWER, CC_CALLBACK_1(GameUILayer::onEventNpcNurseAnsWer,this));
+
+    
 }
 void GameUILayer::onExit()
 {
@@ -505,6 +595,17 @@ void GameUILayer::onExit()
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_PLAYER_LEVEL_UP);
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_PLAYER_DEATH);
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_PLAYER_HURT);
+    
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_PLAYER_MONEY_NOT_ENOUGH);
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_PLAYER_NO_MANA);
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_PLAYER_BAG_NO_SPACE);
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_PLAYER_NO_COPPER_KEY);
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_PLAYER_NO_SILVER_KEY);
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_PLAYER_NO_GOLD_KEY);
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_PLAYER_NO_ROOM_KEY);
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_PLAYER_NO_BOSS_KEY);
+    
+    
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_PLAYER_USE_POTION);
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_PLAYER_USE_SCROLL);
     
@@ -535,6 +636,15 @@ void GameUILayer::onExit()
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_GO_UPSTAIRS_FORBIDDEN);
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_GO_DOWNSTAIRS);
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_GO_BOSSROOM);
+    
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_NPC_KNIGHT_ANSWER);
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_NPC_CHILD_ANSWER);
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_NPC_SHOPGIRL_ANSWER);
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_NPC_OLDLADY_ANSWER);
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_NPC_WEIRDO_ANSWER);
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_NPC_OLDMAN_ANSWER);
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_NPC_LITTLEWITCH_ANSWER);
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_NPC_NURSE_ANSWER);
     
     WrapperUILayer::onExit();
 }

@@ -12,7 +12,7 @@
 #include "PickableItemProperty.hpp"
 #include "ItemPopupUI.h"
 #include "PopupUILayerManager.h"
-#include "ShopPopupUI.h"
+
 
 
 SellItem* SellItem::create(int itemId,int count /*=1*/)
@@ -156,7 +156,7 @@ void BagLayer::refreshUIView()
             // 更新装备UI
             
             m_BagMsgLayer->addItem(i, itemProp->getInstanceID(), itemUi->getPosition(), itemProp->getIconRes());
-            
+//            m_BagMsgLayer->setItemNoUse(itemProp->getInstanceID(), itemUi->getPosition());
             //设置品质
             switch (itemProp->getQuality()) {
                 case PIQ_GENERAL:
@@ -372,18 +372,7 @@ void BagLayer::selectItemEvent(cocos2d::Ref *pSender, TGridView::EventType type)
 }
 
 
-void BagLayer::updatePopupItems()
-{
-    ShopPopupUI* shopPopupUi = nullptr;
-    PopupUILayer* popupUi = nullptr;
-    if(PopupUILayerManager::getInstance()->isOpenPopup(ePopupShop, popupUi))
-    {
-        shopPopupUi = static_cast<ShopPopupUI*>(popupUi);
-        if (shopPopupUi) {
-            shopPopupUi->refreshUIView();
-        }
-    }
-}
+
 
 void BagLayer::bagItemOpe(int currentItemId)
 {

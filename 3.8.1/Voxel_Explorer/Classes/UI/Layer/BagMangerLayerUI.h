@@ -24,6 +24,7 @@ public:
     void setItemCount(int itemId,cocos2d::Vec2 pt,int count);
     void setItemEquipMark(int itemId,cocos2d::Vec2 pt);
     void setItemInIentify(int itemId,cocos2d::Vec2 pt);
+    void setItemNoUse(int itemId,cocos2d::Vec2 pt);
     void removeItems();
     void removeItem(int index);
     void removeCountForItems();
@@ -35,6 +36,7 @@ protected:
     cocos2d::ui::Layout* m_pEquipMarkLayer;
     cocos2d::ui::Layout* m_pItemCountLayer;
     cocos2d::ui::Layout* m_pIteminIentifyLayer;
+    cocos2d::ui::Layout* m_pItemNoUse;
     std::map<int,int> m_items;
 };
 

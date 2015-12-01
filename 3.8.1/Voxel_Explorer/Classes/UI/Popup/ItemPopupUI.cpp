@@ -453,6 +453,21 @@ void ItemPopupUI::updateItemPopup(int itemId)
     PickableItemProperty* itemprop = PlayerProperty::getInstance()->getItemFromBag(CChaosNumber(m_nItemId));
     m_pItemIcon->loadTexture(itemprop->getIconRes(),cocos2d::ui::Widget::TextureResType::PLIST);
     m_pItemName->setString(itemprop->getName());
+    //设置品质
+    switch (itemprop->getQuality()) {
+        case PIQ_GENERAL:
+            m_pItemName->setTextColor(Color4B(Color3B::WHITE));
+            break;
+        case PIQ_RARE:
+            m_pItemName->setTextColor(Color4B(Color3B::BLUE));
+            break;
+        case PIQ_EPIC:
+            m_pItemName->setTextColor(Color4B(Color3B(255,0,255)));
+            break;
+        case PIQ_LEGEND:
+            m_pItemName->setTextColor(Color4B(Color3B(250,128,10)));
+            break;
+    }
     
     updateItemMoney(itemprop->getValueCopper());
     
@@ -558,7 +573,7 @@ void ItemPopupUI::onClickUser(cocos2d::Ref *ref)
         isItemUse = PlayerProperty::getInstance()->useScroll(CChaosNumber(m_nItemId));
     }else if (itemtype == PickableItemProperty::PIPT_KEY)
     {
-         PlayerProperty::getInstance()->useKey(itemprop->getPickableItemType());
+        isItemUse = PlayerProperty::getInstance()->useKey(itemprop->getPickableItemType());
     }
     if (!isItemUse) {
       

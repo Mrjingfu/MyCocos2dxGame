@@ -54,9 +54,9 @@
         <key>maxTextureSize</key>
         <QSize>
             <key>width</key>
-            <int>256</int>
+            <int>1024</int>
             <key>height</key>
-            <int>256</int>
+            <int>1024</int>
         </QSize>
         <key>fixedTextureSize</key>
         <QSize>
@@ -217,6 +217,7 @@
             <filename>../ui/ui_sprite/btn_fram_sell_normal_en.png</filename>
             <filename>../ui/ui_sprite/btn_fram_sell_press_ch.png</filename>
             <filename>../ui/ui_sprite/btn_fram_sell_press_en.png</filename>
+            <filename>../ui/ui_sprite/ui_no_user.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

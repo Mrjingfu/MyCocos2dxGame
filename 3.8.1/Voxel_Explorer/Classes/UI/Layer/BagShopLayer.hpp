@@ -19,7 +19,7 @@ public:
     const cocos2d::Vector<SellItem*>& getSellItems() const{return m_vSellItems;}
     virtual void removeItemForSell(int itemId);
     void clearSellItems(){m_vSellItems.clear();}
-    
+    void updatePopupUI();
 protected:
   
     virtual std::vector<PickableItemProperty*> getItems() override;

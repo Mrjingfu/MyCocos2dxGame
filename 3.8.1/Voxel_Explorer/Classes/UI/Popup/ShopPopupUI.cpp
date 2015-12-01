@@ -12,6 +12,8 @@
 #include "PickableItemProperty.hpp"
 #include "PlayerProperty.hpp"
 #include "BagMangerLayerUI.h"
+#include "ItemShopPopupUI.hpp"
+#include "PopupUILayerManager.h"
 ShopPopupUI::ShopPopupUI()
 {
     m_cActionType       = eNone;
@@ -107,8 +109,14 @@ void ShopPopupUI::updateShopBuyItems()
         m_pShopMangerLayer->removeItems();
     }
     
-    //添加商品
-    
+    //添加商品 测试
+    for (int i=0; i<PlayerProperty::getInstance()->getPlayerBag().size(); i++) {
+        PickableItemProperty* property = PlayerProperty::getInstance()->getPlayerBag()[i];
+        ui::ImageView* img =static_cast<ui::ImageView*>( m_pShopGridView->getItem(i));
+        if (property && img) {
+            m_pShopMangerLayer->addItem(i, property->getInstanceID(), img->getPosition(), property->getIconRes());
+        }
+    }
 }
 
 
@@ -129,7 +137,11 @@ void ShopPopupUI::selectItemEvent(cocos2d::Ref *pSender, TGridView::EventType ty
         TGridView* gridView = static_cast<TGridView*>(pSender);
         int currentItemId = m_pShopMangerLayer->getItemId(gridView->getCurSelectedIndex());
         if (currentItemId!=-1) {
-            
+            ItemShopPopupUI* shopItem = static_cast<ItemShopPopupUI*>( PopupUILayerManager::getInstance()->openPopup(epopupItemShop));
+            if (shopItem) {
+                shopItem->updateItemPopup(ItemShopPopupUI::IST_BUY,currentItemId);
+                shopItem->registerCloseCallback(CC_CALLBACK_0(ShopPopupUI::refreshUIView, this));
+            }
         }
     }
 }

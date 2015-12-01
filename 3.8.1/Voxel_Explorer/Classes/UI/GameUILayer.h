@@ -41,16 +41,25 @@ private:
     void onEventRoleDead(cocos2d::EventCustom *sender);         //角色死亡
     void onEventRoleHud(cocos2d::EventCustom *sender);         //更新角色hud伤害
     
+    void onEventRoleMoneyNotEnough(cocos2d::EventCustom *sender);
+    void onEventRoleNoMana(cocos2d::EventCustom *sender);
+    void onEventRoleBagNoSpace(cocos2d::EventCustom *sender);
+    void onEventRoleNoCopperKey(cocos2d::EventCustom *sender);
+    void onEventRoleNoSilverKey(cocos2d::EventCustom *sender);
+    void onEventRoleNoGoldKey(cocos2d::EventCustom *sender);
+    void onEventRoleNoRoomKey(cocos2d::EventCustom *sender);
+    void onEventRoleNoBossKey(cocos2d::EventCustom *sender);
+    
+    void onEventRoleUserPotion(cocos2d::EventCustom *sender);//使用药水物品
+    void onEventRoleUserScroll(cocos2d::EventCustom *sender);//使用卷轴物品
+
+    
     
     void onEventMonsterUpdateProp(cocos2d::EventCustom *sender); //更新怪物信息
     void onEventMonsterHud(cocos2d::EventCustom *sender);        //更新怪物hud伤害
     void onEventMonsterDead(cocos2d::EventCustom *sender);      //怪物死亡
     void onEventMonsterAlert(cocos2d::EventCustom *sender);
     void onEventMonsterConfusing(cocos2d::EventCustom *sender);
-    
-    
-    void onEventUserPotion(cocos2d::EventCustom *sender);//使用药水物品
-    void onEventUserScroll(cocos2d::EventCustom *sender);//使用卷轴物品
     
     void onEventTriggerToxic(cocos2d::EventCustom *sender); //中毒机关
     void onEventTriggerFire(cocos2d::EventCustom *sender); //火机关
@@ -74,6 +83,16 @@ private:
     void onEventGoUpStairsForbidden(cocos2d::EventCustom *sender);
     void onEventGoDownStairs(cocos2d::EventCustom *sender);
     void onEventGoBossRoom(cocos2d::EventCustom *sender);
+    
+    void onEventNpcKnightAnsWer(cocos2d::EventCustom *sender);          //武器店
+    void onEventNpcChildAnsWer(cocos2d::EventCustom *sender);           //任务
+    void onEventNpcShopGirlAnsWer(cocos2d::EventCustom *sender);        //魔法物品店
+    void onEventNpcOldLadyAnsWer(cocos2d::EventCustom *sender);         //炼金店
+    void onEventNpcWeiRdoAnsWer(cocos2d::EventCustom *sender);          //赌博店
+    void onEventNpcOldManAnsWer(cocos2d::EventCustom *sender);          //智者
+    void onEventNpcLittleWitchAnsWer(cocos2d::EventCustom *sender);     //魔女随机事件
+    void onEventNpcNurseAnsWer(cocos2d::EventCustom *sender);           //护士站
+    
     
     
     //注册触摸事件

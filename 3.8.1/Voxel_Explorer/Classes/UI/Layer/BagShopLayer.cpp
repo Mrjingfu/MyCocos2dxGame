@@ -11,6 +11,7 @@
 #include "PlayerProperty.hpp"
 #include "PopupUILayerManager.h"
 #include "ItemShopPopupUI.hpp"
+#include "ShopPopupUI.h"
 BagShopLayer::BagShopLayer()
 {
     
@@ -57,7 +58,18 @@ void BagShopLayer::refreshUIView()
         }
     }
 }
-
+void BagShopLayer::updatePopupUI()
+{
+    ShopPopupUI* shopPopupUi = nullptr;
+    PopupUILayer* popupUi = nullptr;
+    if(PopupUILayerManager::getInstance()->isOpenPopup(ePopupShop, popupUi))
+    {
+        shopPopupUi = static_cast<ShopPopupUI*>(popupUi);
+        if (shopPopupUi) {
+            shopPopupUi->refreshUIView();
+        }
+    }
+}
 void BagShopLayer::bagItemOpe(int itemId)
 {
     if (itemId==-1)
@@ -65,7 +77,7 @@ void BagShopLayer::bagItemOpe(int itemId)
     ItemShopPopupUI* shopItem = static_cast<ItemShopPopupUI*>( PopupUILayerManager::getInstance()->openPopup(epopupItemShop));
     if (shopItem) {
         shopItem->updateItemPopup(ItemShopPopupUI::IST_SELL,itemId);
-        shopItem->registerCloseCallback(CC_CALLBACK_0(BagShopLayer::updatePopupItems, this));
+        shopItem->registerCloseCallback(CC_CALLBACK_0(BagShopLayer::updatePopupUI, this));
     }
 }
 void BagShopLayer::removeItemForSell(int itemId)
@@ -93,7 +105,7 @@ void BagShopLayer::updateItemSplit(void * count ,SellItem* sellItem,int ItemId)
         SellItem* sellItem  = SellItem::create(ItemId,*(int*)count);
         m_vSellItems.pushBack(sellItem);
     }
-    updatePopupItems();
+    updatePopupUI();
 }
 std::vector<PickableItemProperty*> BagShopLayer::getItems()
 {

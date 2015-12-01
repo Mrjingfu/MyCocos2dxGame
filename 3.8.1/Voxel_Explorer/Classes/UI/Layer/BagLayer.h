@@ -43,7 +43,6 @@ public:
     virtual bool init() override;
     virtual void refreshUIView() override;
     virtual void selectItemEvent(Ref *pSender, TGridView::EventType type);
-    virtual void updatePopupItems();
     void extendBag();
     bool isIdentIfy(){return m_bIsIndetify;}
     void setIdentIfy(bool _isIndetify){m_bIsIndetify = _isIndetify;}

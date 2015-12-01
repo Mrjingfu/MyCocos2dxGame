@@ -61,6 +61,14 @@ bool BagMangerLayerUI::init(cocos2d::Size size)
 //        m_pItemCountLayer->setBackGroundColor(Color3B::ORANGE);
     addChild(m_pIteminIentifyLayer);
     
+    m_pItemNoUse  = Layout::create();
+    m_pItemNoUse->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
+    m_pItemNoUse->setContentSize(size);
+    m_pItemNoUse->setPosition(getContentSize()*0.5);
+    //        m_pItemNoUse->setBackGroundColorType(cocos2d::ui::Layout::BackGroundColorType::SOLID);
+    //        m_pItemNoUse->setBackGroundColor(Color3B::ORANGE);
+    addChild(m_pItemNoUse);
+    
     return true;
 }
 BagMangerLayerUI* BagMangerLayerUI::create(cocos2d::Size size)
@@ -95,6 +103,10 @@ void BagMangerLayerUI::setLayerContentSize(const cocos2d::Size &contentSize)
         m_pIteminIentifyLayer->setContentSize(contentSize);
         m_pIteminIentifyLayer->setPosition(getContentSize()*0.5);
 
+    }
+    if (m_pItemNoUse) {
+        m_pItemNoUse->setContentSize(contentSize);
+        m_pItemNoUse->setPosition(getContentSize()*0.5);
     }
     
 }
@@ -148,6 +160,101 @@ void BagMangerLayerUI::setItemInIentify(int itemId,cocos2d::Vec2 pt)
         m_pIteminIentifyLayer->addChild(img);
     }
 }
+void BagMangerLayerUI::setItemNoUse(int itemId,cocos2d::Vec2 pt)
+{
+    if (m_pItemNoUse) {
+        Sprite* img = cocos2d::Sprite::createWithSpriteFrameName("ui_no_user.png");
+//        img->setScale9Enabled(true);
+        img->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
+        img->setPosition(pt);
+        img->setTag(itemId);
+        img->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
+        // 黑暗中的带背景图片纹理的光圈~
+//         BlendFunc tmp_oBlendFunc = {GL_DST_COLOR, GL_ZERO};
+        
+        // 黑暗中的黄色光圈(前面表示upper，后面表示lower)~
+//                BlendFunc tmp_oBlendFunc = {GL_ONE, GL_ZERO};
+        
+        // 黑暗中的黄色光圈(前面表示upper，后面表示lower)~
+//                BlendFunc tmp_oBlendFunc = {GL_DST_ALPHA, GL_ZERO};
+        
+        // 默认的 blend 配置~
+        //        BlendFunc tmp_oBlendFunc = {GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA};
+        
+        // premultiplied~
+//                BlendFunc tmp_oBlendFunc = {GL_ONE, GL_ONE_MINUS_SRC_ALPHA};
+        
+        // 仅背景图片有所显示~
+//                BlendFunc tmp_oBlendFunc = {GL_ZERO, GL_ONE};
+        
+        // 黄色光圈区域亮度加强(2倍的强度)~
+        //        BlendFunc tmp_oBlendFunc = {GL_DST_COLOR, GL_SRC_COLOR};
+        
+        // 正片叠底~
+//                BlendFunc tmp_oBlendFunc = {GL_DST_COLOR, GL_ONE_MINUS_SRC_ALPHA};
+        
+        // 类似柔光：黄色光圈区域亮度加强，其他地方也不会显示为纯黑（接近我想要的想过了）~
+//                BlendFunc tmp_oBlendFunc = {GL_DST_COLOR, GL_ONE};
+        
+        // Screen~
+//                BlendFunc tmp_oBlendFunc = {GL_ONE_MINUS_DST_COLOR, GL_ONE};
+        
+        // Linear Dodge~
+        //        BlendFunc tmp_oBlendFunc = {GL_ONE, GL_ONE};
+        
+        // 很类似柔光效果，这个也最接近我的需求了~
+//        BlendFunc tmp_oBlendFunc = {GL_SRC_ALPHA, GL_ONE};
+        
+        // GL_ONE_MINUS_SRC_ALPHA 注定是不行的（光晕中心会被模糊掉）~
+        //        BlendFunc tmp_oBlendFunc = {GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA};
+        
+        // 标准的正片叠底~
+                BlendFunc tmp_oBlendFunc = {GL_DST_COLOR, GL_ONE_MINUS_SRC_ALPHA};
+//        / 1.正片叠底
+//                BlendFunc tmp_oBlendFunc = {GL_DST_COLOR, GL_ONE_MINUS_SRC_ALPHA};
+        
+        // 2.
+//                BlendFunc tmp_oBlendFunc = {GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA};
+        
+        // 3.黄色光圈区域显示背景图片，其他区域显示黑色(黄色光圈很柔和)~
+//                BlendFunc tmp_oBlendFunc = {GL_ZERO, GL_SRC_ALPHA};
+        
+        // 4.背景图片在黄色光圈区域的图片尤为阴暗~
+        //        BlendFunc tmp_oBlendFunc = {GL_ZERO, GL_ONE_MINUS_SRC_ALPHA};
+        
+        // 5.仅仅显示出了原始的背景图片~
+        //        BlendFunc tmp_oBlendFunc = {GL_ZERO, GL_DST_ALPHA};
+        
+        // 6.全黑~
+        //        BlendFunc tmp_oBlendFunc = {GL_ZERO, GL_ONE_MINUS_DST_ALPHA};
+        
+        // ----------------------------------------
+        
+        // 7.仅显示黄色光圈图片~
+        //        BlendFunc tmp_oBlendFunc = {GL_ONE, GL_ZERO};
+        
+        // 8.纯粹的添加光圈图片到背景图片上面~
+        //        BlendFunc tmp_oBlendFunc = {GL_ONE, GL_ONE};
+        
+        // 9.纯粹的添加光圈图片到背景图片上面~
+        //        BlendFunc tmp_oBlendFunc = {GL_ONE, GL_DST_COLOR};
+        
+        // 10.纯粹的添加光圈图片到背景图片上面~
+        //        BlendFunc tmp_oBlendFunc = {GL_ONE, GL_ONE_MINUS_DST_COLOR};
+        
+        // 11.纯粹的添加光圈图片到背景图片上面~
+        //        BlendFunc tmp_oBlendFunc = {GL_ONE, GL_SRC_ALPHA_SATURATE};
+        
+        // 12.黄色光圈区域显示背景图片，其他区域显示黑色(黄色光圈很刺眼)~
+//                BlendFunc tmp_oBlendFunc = {GL_ONE, GL_SRC_ALPHA};  
+        
+        // 13.  
+//                BlendFunc tmp_oBlendFunc = {GL_SRC_COLOR, GL_DST_COLOR};
+        img->setBlendFunc(tmp_oBlendFunc);
+        img->setOpacity(100);
+        m_pItemNoUse->addChild(img);
+    }
+}
 void BagMangerLayerUI::removeItems()
 {
     if (m_pItemImgLayer) {
@@ -164,6 +271,10 @@ void BagMangerLayerUI::removeItems()
     
     if (m_pIteminIentifyLayer) {
         m_pIteminIentifyLayer->removeAllChildren();
+    }
+    
+    if (m_pItemNoUse) {
+        m_pItemNoUse->removeAllChildren();
     }
     m_items.clear();
 }
