@@ -37,7 +37,11 @@ void GameScene::onExit()
     PopupUILayerManager::getInstance()->onExitScene();
     Layer::onExit();
 }
-
+void GameScene::update(float delta)
+{
+    Layer::update(delta);
+    VoxelExplorer::getInstance()->update(delta);
+}
 // on "init" you need to initialize your instance
 bool GameScene::init()
 {

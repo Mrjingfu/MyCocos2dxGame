@@ -33,6 +33,7 @@
 #include "GameScene.h"
 #include "FakeShadow.hpp"
 #include "StandardMonster.hpp"
+#include "NpcDataManager.hpp"
 USING_NS_CC;
 
 VoxelExplorer* g_pVoxelExplorerInstance = nullptr;
@@ -81,10 +82,6 @@ bool VoxelExplorer::init(Layer* pMainLayer)
         CCLOGERROR("RandomDungeon build failed!");
         return false;
     }
-    if (!LevelResourceManager::getInstance()->initLevelRes()) {
-        CCLOGERROR("load level resource failed!");
-        return false;
-    }
     if(!createLayers())
     {
         CCLOGERROR("Create layers failed!");
@@ -115,7 +112,10 @@ bool VoxelExplorer::init(Layer* pMainLayer)
 
 void VoxelExplorer::destroy()
 {
-//    LevelResourceManager::getInstance()->clearLevelRes();
+}
+void VoxelExplorer::update(float delta)
+{
+    RandomDungeon::getInstance()->update(delta);
 }
 std::string VoxelExplorer::getScreenPickDesc(const cocos2d::Vec2& screenPos, std::string& strIcon)
 {

@@ -10,6 +10,7 @@
 #include "UtilityHelper.h"
 #include "GameScene.h"
 #include "NpcDataManager.hpp"
+#include "LevelResourceManager.h"
 USING_NS_CC;
 
 DUNGEON_TYPE DT_SelectGroup1[] = { DT_SEWER, DT_PRISON, DT_FANE, DT_MINES, DT_CAVE, DT_TOMB };
@@ -68,7 +69,10 @@ RandomDungeon::~RandomDungeon()
     CC_SAFE_DELETE(m_pCurrentNode->m_pRightNode);
     CC_SAFE_DELETE(m_pCurrentNode);
 }
-
+void RandomDungeon::update(float delta)
+{
+    NpcDataManager::getInstance()->update(delta);
+}
 bool RandomDungeon::build()
 {
     if(m_pCurrentNode == nullptr)
@@ -149,9 +153,16 @@ bool RandomDungeon::generateNextDungeonNode()
         assignedDungeonNode(m_pCurrentNode->m_pRightNode);
         m_pCurrentNode->m_pRightNode->autorelease();
     }
-    NpcDataManager::getInstance()->clearNpcData();
-    if(!NpcDataManager::getInstance()->initNpcData())
+    if(!LevelResourceManager::getInstance()->initLevelRes())
+    {
+        CCLOGERROR("load level resource failed!");
         return false;
+    }
+    if(!NpcDataManager::getInstance()->initNpcData())
+    {
+        CCLOGERROR("load npc data failed!");
+        return false;
+    }
     return true;
 }
 DUNGEON_TYPE RandomDungeon::generateDungeonNodeType()

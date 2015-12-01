@@ -22,6 +22,7 @@ public:
     static VoxelExplorer* getInstance();
     bool init(cocos2d::Layer* pMainLayer);
     void destroy();
+    void update(float delta);
     
     std::string getScreenPickDesc(const cocos2d::Vec2& screenPos, std::string& strIcon);
     bool checkMovable(TileInfo& info);
