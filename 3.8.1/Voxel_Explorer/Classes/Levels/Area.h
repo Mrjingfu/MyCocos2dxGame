@@ -83,6 +83,8 @@ private:
     void generateTunnelArea(BaseLevel* level);
     void generatePassageArea(BaseLevel* level);
     void generateSpecialArea(BaseLevel* level);
+    void generateSpecialHiddenArea(BaseLevel* level);
+    void generateSpecialLockedArea(BaseLevel* level);
     void generateSpecialTranspotArea(BaseLevel* level);
     
     void generateTerrainTiles(BaseLevel* level, TerrainTile::TileType type);

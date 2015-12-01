@@ -486,8 +486,8 @@ void VoxelExplorer::generatePickItemByUseableItem(const cocos2d::Vec2& pos, Usea
                 if(m_pMonstersLayer)
                 {
                     std::vector<BaseMonster::MonsterType> monsterTypes = {BaseMonster::MT_RAT, BaseMonster::MT_SPIDER, BaseMonster::MT_SNAKE, BaseMonster::MT_KOBOLD, BaseMonster::MT_ZOMBIE, BaseMonster::MT_SKELETON };
-                    BaseMonster::MonsterType randType = (BaseMonster::MonsterType)cocos2d::random(0, (int)(monsterTypes.size()-1));
-                    StandardMonster* monster = StandardMonster::create(randType);
+                    int randType = cocos2d::random(0, (int)(monsterTypes.size()-1));
+                    StandardMonster* monster = StandardMonster::create(monsterTypes[randType]);
                     if(monster)
                     {
                         monster->setPosition3D(Vec3(pos.x*TerrainTile::CONTENT_SCALE, -0.5f*TerrainTile::CONTENT_SCALE, -pos.y*TerrainTile::CONTENT_SCALE));
