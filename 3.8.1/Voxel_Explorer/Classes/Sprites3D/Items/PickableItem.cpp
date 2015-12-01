@@ -1118,3 +1118,150 @@ PickableItem::PickableItemType PickableItem::generate41_45UnStackableItemProType
     };
     return types[cocos2d::random(0, (int)(types.size()-1))];
 }
+PickableItem::PickableItemType PickableItem::generate1_5EquipmentShopItemType()
+{
+    std::vector<PickableItem::PickableItemType> types {
+        PIT_DAGGER_DAGGER,
+        PIT_AXE_HATCHET,
+        PIT_SWORD_SWORD,
+        PIT_MACE_ROLLINGPIN,
+        PIT_BOW_SHORTBOW,
+        PIT_STAFF_OAKSTAFF,
+        PIT_SHIELD_WOODENSHIELD
+    };
+    return types[cocos2d::random(0, (int)(types.size()-1))];
+}
+PickableItem::PickableItemType PickableItem::generate6_10EquipmentShopItemType()
+{
+    std::vector<PickableItem::PickableItemType> types {
+        PIT_DAGGER_HALFSWORD,
+        PIT_AXE_ADZE,
+        PIT_SWORD_STEELSWORD,
+        PIT_MACE_MALLET,
+        PIT_BOW_LONGBOW,
+        PIT_STAFF_FIRSTAFF,
+        PIT_SHIELD_TRIANGLESHIELD
+    };
+    return types[cocos2d::random(0, (int)(types.size()-1))];
+}
+PickableItem::PickableItemType PickableItem::generate11_15EquipmentShopItemType()
+{
+    std::vector<PickableItem::PickableItemType> types {
+        PIT_DAGGER_KNIFE,
+        PIT_AXE_STONEAXE,
+        PIT_SWORD_SABRE,
+        PIT_MACE_MACE,
+        PIT_BOW_HORNBOW,
+        PIT_STAFF_ASHESSTAFF,
+        PIT_SHIELD_STEELSHIELD
+    };
+    return types[cocos2d::random(0, (int)(types.size()-1))];
+}
+PickableItem::PickableItemType PickableItem::generate16_20EquipmentShopItemType()
+{
+    std::vector<PickableItem::PickableItemType> types {
+        PIT_DAGGER_COLDSTEELDAGGER,
+        PIT_AXE_BROADAX,
+        PIT_SWORD_HUGESWORD,
+        PIT_MACE_HAMMER,
+        PIT_BOW_REFLEXBOW,
+        PIT_STAFF_DEMONSTAFF,
+        PIT_SHIELD_EAGLESHIELD
+    };
+    return types[cocos2d::random(0, (int)(types.size()-1))];
+}
+PickableItem::PickableItemType PickableItem::generate21_25EquipmentShopItemType()
+{
+    std::vector<PickableItem::PickableItemType> types {
+        PIT_DAGGER_RIPPERCUTTER,
+        PIT_AXE_TOMAHAWK,
+        PIT_SWORD_TRIANGLESWORD,
+        PIT_MACE_WOLFFANGSMACE,
+        PIT_BOW_EAGLEBOW,
+        PIT_STAFF_CITRONSTAFF,
+        PIT_SHIELD_OSTEOSCUTE
+    };
+    return types[cocos2d::random(0, (int)(types.size()-1))];
+}
+PickableItem::PickableItemType PickableItem::generate26_30EquipmentShopItemType()
+{
+    std::vector<PickableItem::PickableItemType> types {
+        PIT_DAGGER_BLUELIGHTDAGGER,
+        PIT_AXE_HUGEAXE,
+        PIT_SWORD_JAGGEDSWORD,
+        PIT_MACE_BONEHAMMER,
+        PIT_BOW_LAMINATEDBOW,
+        PIT_STAFF_CLOUDSTAFF,
+        PIT_SHIELD_GOLDENSHIELD
+    };
+    return types[cocos2d::random(0, (int)(types.size()-1))];
+}
+PickableItem::PickableItemType PickableItem::generate31_35EquipmentShopItemType()
+{
+    std::vector<PickableItem::PickableItemType> types {
+        PIT_DAGGER_RUBYDAGGER,
+        PIT_AXE_DOUBLEBITAX,
+        PIT_SWORD_CRYSTALSWORD,
+        PIT_MACE_SLEDGEHAMMER,
+        PIT_BOW_GOLDENBOW,
+        PIT_STAFF_MONKSTAFF,
+        PIT_SHIELD_TOWERSHIELD
+    };
+    return types[cocos2d::random(0, (int)(types.size()-1))];
+}
+PickableItem::PickableItemType PickableItem::generate1_5MagicShopItemType()
+{
+    std::vector<PickableItem::PickableItemType> types {
+        PIT_CLOTH_SHOES,
+        PIT_ORNAMENT_RING
+    };
+    return types[cocos2d::random(0, (int)(types.size()-1))];
+}
+PickableItem::PickableItemType PickableItem::generate6_10MagicShopItemType()
+{
+    std::vector<PickableItem::PickableItemType> types {
+        PIT_CLOTH_MAGA_CAP,
+        PIT_ORNAMENT_MEDAL
+    };
+    return types[cocos2d::random(0, (int)(types.size()-1))];
+}
+PickableItem::PickableItemType PickableItem::generate11_15MagicShopItemType()
+{
+    std::vector<PickableItem::PickableItemType> types {
+        PIT_CLOTH_LEATHERARMOR,
+        PIT_ORNAMENT_PENDANT
+    };
+    return types[cocos2d::random(0, (int)(types.size()-1))];
+}
+PickableItem::PickableItemType PickableItem::generate16_20MagicShopItemType()
+{
+    std::vector<PickableItem::PickableItemType> types {
+        PIT_CLOTH_LEATHERARMOR,
+        PIT_ORNAMENT_PENDANT
+    };
+    return types[cocos2d::random(0, (int)(types.size()-1))];
+}
+PickableItem::PickableItemType PickableItem::generate21_25MagicShopItemType()
+{
+    std::vector<PickableItem::PickableItemType> types {
+        PIT_CLOTH_CHAINSHOES,
+        PIT_ORNAMENT_NECKLACE
+    };
+    return types[cocos2d::random(0, (int)(types.size()-1))];
+}
+PickableItem::PickableItemType PickableItem::generate26_30MagicShopItemType()
+{
+    std::vector<PickableItem::PickableItemType> types {
+        PIT_CLOTH_HELEMT,
+        PIT_ORNAMENT_SUPERMEDAL
+    };
+    return types[cocos2d::random(0, (int)(types.size()-1))];
+}
+PickableItem::PickableItemType PickableItem::generate31_35MagicShopItemType()
+{
+    std::vector<PickableItem::PickableItemType> types {
+        PIT_CLOTH_STEELARMOR,
+        PIT_ORNAMENT_JEWELS
+    };
+    return types[cocos2d::random(0, (int)(types.size()-1))];
+}

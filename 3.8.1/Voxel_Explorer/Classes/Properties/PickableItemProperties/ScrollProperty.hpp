@@ -20,6 +20,10 @@ public:
     
     virtual void increaseCount() { ++m_nCount; }
     virtual void decreaseCount() { --m_nCount; }
+    
+    virtual void addCount(CChaosNumber count) { m_nCount += count; }
+    virtual void removeCount(CChaosNumber count) { m_nCount -= count; }
+
 };
 
 #endif /* ScrollProperty_hpp */

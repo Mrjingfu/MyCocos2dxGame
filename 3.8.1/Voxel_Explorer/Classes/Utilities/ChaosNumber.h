@@ -44,6 +44,7 @@ public:
 
 	//成就那边频繁需要+=，故重写 [17/11/2014/CYN]
 	CChaosNumber& operator+=(int lValue);
+    CChaosNumber& operator-=(int lValue);
 
     long operator-(long lValue);
     int operator-(int nValue);

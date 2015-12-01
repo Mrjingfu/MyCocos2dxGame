@@ -76,7 +76,7 @@ public:
     void resetPlayerBuffer();
     
     void addMoney(CChaosNumber gold, CChaosNumber silver, CChaosNumber copper);
-    void costMoney(CChaosNumber gold, CChaosNumber silver, CChaosNumber copper);
+    bool costMoney(CChaosNumber gold, CChaosNumber silver, CChaosNumber copper);
     void setExp(CChaosNumber exp);
     void setCurrentHP(CChaosNumber hp);
     void setCurrentMP(CChaosNumber mp);
@@ -89,6 +89,8 @@ public:
     bool useScroll(CChaosNumber id);
     bool useKey(PickableItem::PickableItemType type);
     
+    bool buyItemToBag(PickableItemProperty* buyItemProperty, CChaosNumber count);
+    bool sellItemFromBag(PickableItemProperty* sellItemProperty, CChaosNumber count);
     bool addItemToBag(PickableItem::PickableItemType type, CChaosNumber level);
     bool removeStackableItemFromBag(PickableItem::PickableItemType type, CChaosNumber count);
     bool removeItemFromBag(CChaosNumber id);
@@ -141,6 +143,7 @@ private:
     
     bool                    m_bDirty;                 ///数据是否修改了
     
+public:
     static unsigned int     m_snItemInstanceIDCounter;
 };
 

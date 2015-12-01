@@ -32,6 +32,7 @@
 #include "UtilityHelper.h"
 #include "GameScene.h"
 #include "FakeShadow.hpp"
+#include "StandardMonster.hpp"
 USING_NS_CC;
 
 VoxelExplorer* g_pVoxelExplorerInstance = nullptr;
@@ -465,21 +466,37 @@ void VoxelExplorer::generatePickItemByUseableItem(const cocos2d::Vec2& pos, Usea
         {
             if(am->getRandomIndex() == 0)
             {
-                PickableItem::PickableItemType pitType = PickableItem::generatePickItemByUseableLevel(level, type);
-                if(pitType == PickableItem::PIT_UNKNOWN)
-                    return;
-                PickableItem* item = PickableItem::create(pitType, level);
-                if(item)
+                if(m_pPickableItemsLayer)
                 {
-                    item->setPosition3D(Vec3(pos.x*TerrainTile::CONTENT_SCALE, -0.5f*TerrainTile::CONTENT_SCALE, -pos.y*TerrainTile::CONTENT_SCALE));
-                    item->setVisited(true);
-                    VoxelExplorer::getInstance()->getPickableItemsLayer()->addChild(item);
-                    item->setState(PickableItem::PIS_BEGIN_GENERATE);
+                    PickableItem::PickableItemType pitType = PickableItem::generatePickItemByUseableLevel(level, type);
+                    if(pitType == PickableItem::PIT_UNKNOWN)
+                        return;
+                    PickableItem* item = PickableItem::create(pitType, level);
+                    if(item)
+                    {
+                        item->setPosition3D(Vec3(pos.x*TerrainTile::CONTENT_SCALE, -0.5f*TerrainTile::CONTENT_SCALE, -pos.y*TerrainTile::CONTENT_SCALE));
+                        item->setVisited(true);
+                        m_pPickableItemsLayer->addChild(item);
+                        item->setState(PickableItem::PIS_BEGIN_GENERATE);
+                    }
                 }
             }
             else if(am->getRandomIndex() == 1)
             {
-                ///生成怪物 待实现
+                if(m_pMonstersLayer)
+                {
+                    std::vector<BaseMonster::MonsterType> monsterTypes = {BaseMonster::MT_RAT, BaseMonster::MT_SPIDER, BaseMonster::MT_SNAKE, BaseMonster::MT_KOBOLD, BaseMonster::MT_ZOMBIE, BaseMonster::MT_SKELETON };
+                    BaseMonster::MonsterType randType = (BaseMonster::MonsterType)cocos2d::random(0, (int)(monsterTypes.size()-1));
+                    StandardMonster* monster = StandardMonster::create(randType);
+                    if(monster)
+                    {
+                        monster->setPosition3D(Vec3(pos.x*TerrainTile::CONTENT_SCALE, -0.5f*TerrainTile::CONTENT_SCALE, -pos.y*TerrainTile::CONTENT_SCALE));
+                        monster->setVisited(true);
+                        monster->addTerrainTileFlag(TileInfo::ATTACKABLE);
+                        m_pMonstersLayer->addChild(monster);
+                        monster->setState(BaseMonster::MS_TRACKING);
+                    }
+                }
             }
         }
     }
@@ -508,8 +525,10 @@ void VoxelExplorer::handleDoor(const cocos2d::Vec2& mapPos)
                 }
                 else if(door->getDoorState() == BaseDoor::DS_LOCKED)
                 {
-                    ////检查角色钥匙如果有责开启
-                    door->setDoorState(BaseDoor::DS_CLOSED);
+                    if(PlayerProperty::getInstance()->useKey(PickableItem::PIT_KEY_ROOM))
+                        door->setDoorState(BaseDoor::DS_CLOSED);
+                    else
+                        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_NO_ROOM_KEY);
                     return;
                 }
             }

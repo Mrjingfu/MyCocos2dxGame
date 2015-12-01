@@ -37,6 +37,8 @@ class IStackable
 public:
     virtual void increaseCount() = 0;
     virtual void decreaseCount() = 0;
+    virtual void addCount(CChaosNumber count) = 0;
+    virtual void removeCount(CChaosNumber count) = 0;
 };
 
 const std::string PICKABLE_ITEM_PROPERTY_TYPE_NAMES[] = {
@@ -76,6 +78,7 @@ public:
     PickableItem::PickableItemType getPickableItemType() const { return m_ItemType; }
     CChaosNumber getLevel() const { return m_nLevel; }
     CChaosNumber getValueCopper() const { return m_nValueCopper; }
+    CChaosNumber getCopperWhenBuy() { return m_nCopperWhenBuy; }
     std::string getName() const { return m_strName; }
     std::string getDesc() const { return m_strDesc; }
     std::string getBeforeIndentifyDesc() const {return m_strBeforeIndentifyDesc;}
@@ -104,6 +107,7 @@ protected:
     PickableItem::PickableItemType  m_ItemType;             ///物品类型
     CChaosNumber                    m_nLevel;               ///等级
     CChaosNumber                    m_nValueCopper;         ///价值
+    CChaosNumber                    m_nCopperWhenBuy;       ///购买时的价值
     std::string                     m_strName;              ///名称
     std::string                     m_strBeforeIndentifyDesc;   ///未辨识前的描述
     std::string                     m_strDesc;              ///描述

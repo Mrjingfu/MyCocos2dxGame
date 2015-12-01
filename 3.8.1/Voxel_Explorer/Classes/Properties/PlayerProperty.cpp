@@ -188,18 +188,20 @@ void PlayerProperty::addMoney(CChaosNumber gold, CChaosNumber silver, CChaosNumb
     m_nCopper = m_nCopper + copper.GetLongValue();
     m_bDirty = true;
 }
-void PlayerProperty::costMoney(CChaosNumber gold, CChaosNumber silver, CChaosNumber copper)
+bool PlayerProperty::costMoney(CChaosNumber gold, CChaosNumber silver, CChaosNumber copper)
 {
     CChaosNumber cost = GameFormula::exchangeMoney(gold,silver,copper);
     CChaosNumber own = GameFormula::exchangeMoney(m_nGold,m_nSilver,m_nCopper);
     if(own < cost)
-        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_MONEY_NOT_ENOUGH);
-    else
     {
-        CChaosNumber left = own.GetLongValue() - cost.GetLongValue();
-        GameFormula::exchangeMoney(left, m_nGold, m_nSilver, m_nCopper);
+        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_MONEY_NOT_ENOUGH);
+        return false;
     }
+    
+    CChaosNumber left = own.GetLongValue() - cost.GetLongValue();
+    GameFormula::exchangeMoney(left, m_nGold, m_nSilver, m_nCopper);
     m_bDirty = true;
+    return true;
 }
 void PlayerProperty::setExp(CChaosNumber exp)
 {
@@ -609,7 +611,81 @@ bool PlayerProperty::useKey(PickableItem::PickableItemType type)
 {
     return false;
 }
-
+bool PlayerProperty::buyItemToBag(PickableItemProperty* buyItemProperty, CChaosNumber count)
+{
+    if(!buyItemProperty)
+        return false;
+    if(m_Bag.size() >= m_nBagMaxSpace.GetLongValue())
+    {
+        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_BAG_NO_SPACE);
+        return false;
+    }
+    
+    CChaosNumber gold, silver, copper;
+    GameFormula::exchangeMoney(buyItemProperty->getCopperWhenBuy() * count.GetLongValue(), gold, silver, copper);
+    
+    if(buyItemProperty->isStackable())
+    {
+        for (PickableItemProperty* item : m_Bag) {
+            if(item)
+            {
+                if(item->getPickableItemType() == buyItemProperty->getPickableItemType()
+                   && item->getInstanceID() != buyItemProperty->getInstanceID())
+                {
+                    if(costMoney(gold, silver, copper))
+                    {
+                        IStackable* itemProperty = dynamic_cast<IStackable*>(item);
+                        if (itemProperty)
+                            itemProperty->addCount(count);
+                        if(item->isIdentified())
+                            item->adjustByLevel();
+                        return true;
+                    }
+                }
+            }
+        }
+    }
+    else
+    {
+        CCASSERT(count == 1, "UnStackable item count must be 1.");
+        if(costMoney(gold, silver, copper))
+        {
+            if(buyItemProperty->isIdentified())
+                buyItemProperty->adjustByLevel();
+            m_Bag.push_back(buyItemProperty);
+            return true;
+        }
+    }
+    return false;
+}
+bool PlayerProperty::sellItemFromBag(PickableItemProperty* sellItemProperty, CChaosNumber count)
+{
+    if(!sellItemProperty)
+        return false;
+    
+    CChaosNumber gold, silver, copper;
+    GameFormula::exchangeMoney(sellItemProperty->getValueCopper()* count.GetLongValue(), gold, silver, copper);
+    
+    if(sellItemProperty->isStackable())
+    {
+        if(removeStackableItemFromBag(sellItemProperty->getPickableItemType(), count))
+        {
+            addMoney(gold, silver, copper);
+            return true;
+        }
+    }
+    else
+    {
+        CCASSERT(count == 1, "UnStackable item count must be 1.");
+        
+        if(removeItemFromBag((int)(sellItemProperty->getInstanceID())))
+        {
+            addMoney(gold, silver, copper);
+            return true;
+        }
+    }
+    return false;
+}
 bool PlayerProperty::addItemToBag(PickableItem::PickableItemType type, CChaosNumber level)
 {
     if(m_Bag.size() >= m_nBagMaxSpace.GetLongValue())
