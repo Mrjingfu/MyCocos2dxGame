@@ -87,6 +87,8 @@ public:
     
     static std::vector<DUNGEON_TYPE>       SELECT_ALL;
     
+    void update(float delta);
+    
     bool build();
     void selectDungeonNode(bool left);
     

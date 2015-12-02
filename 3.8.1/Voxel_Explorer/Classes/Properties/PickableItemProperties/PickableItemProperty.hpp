@@ -79,6 +79,7 @@ public:
     CChaosNumber getLevel() const { return m_nLevel; }
     CChaosNumber getValueCopper() const { return m_nValueCopper; }
     CChaosNumber getCopperWhenBuy() { return m_nCopperWhenBuy; }
+    void setCopperWhenBuy(CChaosNumber copper) { m_nCopperWhenBuy = copper; }
     std::string getName() const { return m_strName; }
     std::string getDesc() const { return m_strDesc; }
     std::string getBeforeIndentifyDesc() const {return m_strBeforeIndentifyDesc;}

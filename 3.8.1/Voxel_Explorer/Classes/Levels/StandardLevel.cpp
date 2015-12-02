@@ -19,6 +19,7 @@
 #include "StandardPortal.hpp"
 #include "SmallPortal.hpp"
 #include "Npc.hpp"
+#include "PickableItem.hpp"
 USING_NS_CC;
 
 StandardLevel::StandardLevel()
@@ -30,6 +31,7 @@ StandardLevel::StandardLevel()
     m_nSpecialAreaCount = 0;
     m_nTunnelAreaCount = 0;
     m_nPassageAreaCount = 0;
+    m_nLockedDoorCount = 0;
     
     m_Style = LS_UNKNOWN;
 }
@@ -215,6 +217,7 @@ bool StandardLevel::createTerrain()
                         door->setVisited(info.m_bVisited);
                         door->setActorDir(info.m_Dir);
                         door->setDoorState(BaseDoor::DS_LOCKED);
+                        m_nLockedDoorCount++;
                     }
                     break;
                 case TerrainTile::TT_SECRET_DOOR:
@@ -806,14 +809,22 @@ bool StandardLevel::decorateSpecialArea(Area* area)
 bool StandardLevel::createPickableItems()
 {
     ///创建房间钥匙
-    //    PickableItem* item = PickableItem::create(type);
-    //    if(item)
-    //    {
-    //        item->setPosition3D(Vec3(pos.x*TerrainTile::CONTENT_SCALE, -0.5f*TerrainTile::CONTENT_SCALE, -pos.y*TerrainTile::CONTENT_SCALE));
-    //        item->setVisited(true);
-    //        VoxelExplorer::getInstance()->getPickableItemsLayer()->addChild(item);
-    //        item->setState(PickableItem::PIS_BEGIN_GENERATE);
-    //    }
+    for (int i = 0; i<m_nLockedDoorCount; ++i) {
+        PickableItem* item = PickableItem::create(PickableItem::PIT_KEY_ROOM, 1);
+        if(!item)
+            return false;
+        else
+        {
+            int tileIndex = -1;
+            do {
+                tileIndex = randomPickableRespawnCell();
+            } while (tileIndex == -1);
+            item->setPosition3D(Vec3(m_Map[tileIndex].m_nX*TerrainTile::CONTENT_SCALE, -0.5f*TerrainTile::CONTENT_SCALE, -m_Map[tileIndex].m_nY*TerrainTile::CONTENT_SCALE));
+            item->setVisited(m_Map[tileIndex].m_bVisited);
+            VoxelExplorer::getInstance()->getPickableItemsLayer()->addChild(item);
+            item->setState(PickableItem::PIS_BEGIN_GENERATE);
+        }
+    }
     return true;
 }
 void StandardLevel::showMap(bool show)

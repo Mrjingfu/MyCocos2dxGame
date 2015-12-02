@@ -37,6 +37,11 @@ NpcDataManager::~NpcDataManager()
 }
 bool NpcDataManager::initNpcData()
 {
+    m_EquipmentShop.clear();
+    m_MagicShop.clear();
+    m_AlchemistRoom.clear();
+    m_TheifRoom.clear();
+    
     if(!initEquipmentShop())
     {
         CCLOG("initEquipmentShop failed!");
@@ -57,16 +62,13 @@ bool NpcDataManager::initNpcData()
         CCLOG("initTheifRoom failed!");
         return false;
     }
+    if(!initOldManRoom())
+    {
+        CCLOG("initOldManRoom failed!");
+        return false;
+    }
     m_bDirty = true;
     return true;
-}
-void NpcDataManager::clearNpcData()
-{
-    m_EquipmentShop.clear();
-    m_MagicShop.clear();
-    m_AlchemistRoom.clear();
-    m_TheifRoom.clear();
-    m_bDirty = true;
 }
 void NpcDataManager::update(float delta)
 {
@@ -136,7 +138,22 @@ bool NpcDataManager::removeItemFromTheifRoomList(CChaosNumber id)
         }
     }
     return false;
-
+}
+std::string NpcDataManager::getOldManRoomInfoByPart(int part, bool& atEnd)
+{
+    std::string retStr;
+    atEnd = true;
+    int randIndex = cocos2d::random(0, (int)(m_OldManRoom.size()-1));
+    ValueVector infos = m_OldManRoom[randIndex].asValueVector();
+    if(!infos.empty() && part < infos.size())
+    {
+        retStr = infos[part].asString();
+        if(part == (int)(infos.size() - 1))
+            atEnd = true;
+        else
+            atEnd = false;
+    }
+    return retStr;
 }
 bool NpcDataManager::initEquipmentShop()
 {
@@ -321,8 +338,26 @@ bool NpcDataManager::initTheifRoom()
         if(itemProperty)
         {
             itemProperty->adjustByLevel();
+            int mul = (int)(itemLevel / 5) + 1;
+            itemProperty->setCopperWhenBuy(mul*2);
             m_TheifRoom.push_back(itemProperty);
         }
     }
+    return true;
+}
+bool NpcDataManager::initOldManRoom()
+{
+    LanguageType lt= Application::getInstance()->getCurrentLanguage();
+    switch (lt) {
+        case LanguageType::CHINESE:
+            m_OldManRoom = FileUtils::getInstance()->getValueVectorFromFile("npc_info_chinese.plist");
+            break;
+            
+        default:
+            m_OldManRoom = FileUtils::getInstance()->getValueVectorFromFile("npc_info_english.plish");
+            break;
+    }
+    if(m_OldManRoom.empty())
+        return false;
     return true;
 }

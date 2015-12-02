@@ -89,13 +89,17 @@ void Area::generate(BaseLevel* level)
         case AT_SPECIAL_MAGIC_SHOP:
         case AT_SPECIAL_AID_STATION:
         case AT_SPECIAL_ALCHEMIST_ROOM:
+        case AT_SPECIAL_MISSION_ROOM:
+            generateSpecialArea(level);
+            break;
         case AT_SPECIAL_WITCH_ROOM:
         case AT_SPECIAL_THEIF_ROOM:
         case AT_SPECIAL_SAGE_ROOM:
-        case AT_SPECIAL_MISSION_ROOM:
+            generateSpecialHiddenArea(level);
+            break;
         case AT_SPECIAL_TREASURE_ROOM:
         case AT_SPECIAL_DECORATION_ROOM:
-            generateSpecialArea(level);
+            generateSpecialLockedArea(level);
             break;
         case AT_SPECIAL_TRANSPOT_ROOM:
             generateSpecialTranspotArea(level);
@@ -230,7 +234,17 @@ void Area::generateStandardArea(BaseLevel* level)
     for (auto iter = m_ConnectedAreas.begin(); iter != m_ConnectedAreas.end(); iter++) {
         Door* door = iter->second;
         if(door)
+        {
             door->setDoorType(Door::DT_STANDARD);
+            float percentHidden = 0.1f;
+            float percentStandard = 1.0 - percentHidden;
+            AlisaMethod* am = AlisaMethod::create(percentHidden, percentStandard,-1.0, NULL);
+            if(am)
+            {
+                if(am->getRandomIndex() == 0)
+                    door->setDoorType(Door::DT_UNLOCKED);
+            }
+        }
     }
 }
 void Area::generateEntranceArea(BaseLevel* level)
@@ -418,6 +432,26 @@ void Area::generateSpecialArea(BaseLevel* level)
         Door* door = iter->second;
         if(door)
             door->setDoorType(Door::DT_STANDARD);
+    }
+}
+void Area::generateSpecialHiddenArea(BaseLevel* level)
+{
+    generateTerrainTiles(level, TerrainTile::TT_WALL);
+    generateTerrainTiles(level, 1, TerrainTile::TT_STANDARD);
+    for (auto iter = m_ConnectedAreas.begin(); iter != m_ConnectedAreas.end(); iter++) {
+        Door* door = iter->second;
+        if(door)
+            door->setDoorType(Door::DT_HIDDEN);
+    }
+}
+void Area::generateSpecialLockedArea(BaseLevel* level)
+{
+    generateTerrainTiles(level, TerrainTile::TT_WALL);
+    generateTerrainTiles(level, 1, TerrainTile::TT_STANDARD);
+    for (auto iter = m_ConnectedAreas.begin(); iter != m_ConnectedAreas.end(); iter++) {
+        Door* door = iter->second;
+        if(door)
+            door->setDoorType(Door::DT_LOCKED);
     }
 }
 void Area::generateSpecialTranspotArea(BaseLevel* level)

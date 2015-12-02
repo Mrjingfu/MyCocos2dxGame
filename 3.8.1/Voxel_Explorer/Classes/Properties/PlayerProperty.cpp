@@ -83,6 +83,7 @@ PlayerProperty::~PlayerProperty()
 bool PlayerProperty::initNewPlayer()   ///新角色初始化
 {
     bool ret = false;
+    int itemIDCounter = m_snItemInstanceIDCounter;
     WeaponProperty* weaponProperty = new (std::nothrow) WeaponProperty(m_snItemInstanceIDCounter++,PickableItem::PIT_DAGGER_DAGGER, 1, true);
     if(!weaponProperty)
         return ret;
@@ -90,7 +91,7 @@ bool PlayerProperty::initNewPlayer()   ///新角色初始化
         weaponProperty->adjustByLevel();
     m_Bag.push_back(weaponProperty);
     
-    ret = equipWeapon(0);
+    ret = equipWeapon(itemIDCounter);
     ret = addItemToBag(PickableItem::PIT_POTION_MINORHEALTH, 1);
     ret = addItemToBag(PickableItem::PIT_POTION_MINORHEALTH, 1);
     ret = addItemToBag(PickableItem::PIT_POTION_MINORHEALTH, 1);

@@ -153,6 +153,8 @@
 		555B0D241BC51A2C0055FB6D /* GameScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 555B0D101BC51A2C0055FB6D /* GameScene.cpp */; };
 		555B0D251BC51A2C0055FB6D /* VoxelExplorer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 555B0D131BC51A2C0055FB6D /* VoxelExplorer.cpp */; };
 		555B0D261BC51A2C0055FB6D /* VoxelExplorer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 555B0D131BC51A2C0055FB6D /* VoxelExplorer.cpp */; };
+		55619D511C0DAB3900419E40 /* SewerBossLevel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55619D4F1C0DAB3900419E40 /* SewerBossLevel.cpp */; };
+		55619D521C0DAB3900419E40 /* SewerBossLevel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55619D4F1C0DAB3900419E40 /* SewerBossLevel.cpp */; };
 		5569713C1BE20CCE00CC2736 /* Layer3D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5569713A1BE20CCE00CC2736 /* Layer3D.cpp */; };
 		5569713D1BE20CCE00CC2736 /* Layer3D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5569713A1BE20CCE00CC2736 /* Layer3D.cpp */; };
 		559B217F1BC65D330047D998 /* textures in Resources */ = {isa = PBXBuildFile; fileRef = 559B217E1BC65D330047D998 /* textures */; };
@@ -467,6 +469,8 @@
 		555B0D111BC51A2C0055FB6D /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameScene.h; sourceTree = "<group>"; };
 		555B0D131BC51A2C0055FB6D /* VoxelExplorer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VoxelExplorer.cpp; sourceTree = "<group>"; };
 		555B0D141BC51A2C0055FB6D /* VoxelExplorer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VoxelExplorer.h; sourceTree = "<group>"; };
+		55619D4F1C0DAB3900419E40 /* SewerBossLevel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SewerBossLevel.cpp; sourceTree = "<group>"; };
+		55619D501C0DAB3900419E40 /* SewerBossLevel.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SewerBossLevel.hpp; sourceTree = "<group>"; };
 		5569713A1BE20CCE00CC2736 /* Layer3D.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Layer3D.cpp; sourceTree = "<group>"; };
 		5569713B1BE20CCE00CC2736 /* Layer3D.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Layer3D.hpp; sourceTree = "<group>"; };
 		559B217E1BC65D330047D998 /* textures */ = {isa = PBXFileReference; lastKnownFileType = folder; path = textures; sourceTree = "<group>"; };
@@ -1010,6 +1014,8 @@
 				55F116DB1C04453500A6C191 /* CaveLevel.hpp */,
 				55F116DE1C04454300A6C191 /* TombLevel.cpp */,
 				55F116DF1C04454300A6C191 /* TombLevel.hpp */,
+				55619D4F1C0DAB3900419E40 /* SewerBossLevel.cpp */,
+				55619D501C0DAB3900419E40 /* SewerBossLevel.hpp */,
 			);
 			path = Levels;
 			sourceTree = "<group>";
@@ -1356,6 +1362,7 @@
 				551E93EA1BD512D3009F788F /* xor.cpp in Sources */,
 				EC3CC98D1C088F4F00F8CFC8 /* ItemShopPopupUI.cpp in Sources */,
 				55F116E01C04454300A6C191 /* TombLevel.cpp in Sources */,
+				55619D511C0DAB3900419E40 /* SewerBossLevel.cpp in Sources */,
 				EC3CC97F1C088F4F00F8CFC8 /* NoteUi.cpp in Sources */,
 				553BC5091BCE499B003D907A /* BaseDoor.cpp in Sources */,
 				55F81CA11BDB208D002EC075 /* UseableItem.cpp in Sources */,
@@ -1534,6 +1541,8 @@
 				EC3CC9961C088F4F00F8CFC8 /* RolePopupUI.cpp in Sources */,
 				EC6264961BF0807F004E0F55 /* MessageManager.cpp in Sources */,
 				EC3CC97C1C088F4F00F8CFC8 /* GameToolbarLayer.cpp in Sources */,
+				55619D521C0DAB3900419E40 /* SewerBossLevel.cpp in Sources */,
+				EC3CC99A1C088F4F00F8CFC8 /* ShopPopupUI.cpp in Sources */,
 				555B0D161BC51A2C0055FB6D /* AppDelegate.cpp in Sources */,
 				55F81CAD1BDB69FB002EC075 /* PickableItemProperty.cpp in Sources */,
 				553BC5021BCDF457003D907A /* Actor.cpp in Sources */,

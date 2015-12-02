@@ -69,6 +69,8 @@ protected:
     int                 m_nTunnelAreaCount;
     int                 m_nPassageAreaCount;
     
+    int                 m_nLockedDoorCount;
+    
     LevelStyle          m_Style;
 };
 
