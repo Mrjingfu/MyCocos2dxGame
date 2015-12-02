@@ -24,6 +24,8 @@ public:
         AT_STANDARD,
         AT_ENTRANCE,
         AT_EXIT,
+        AT_BOSS_ROOM,    ///boss房间
+        AT_BOSS_EXIT,    ///boss房间出口
         AT_PASSAGE,      ///通道
         AT_TUNNEL,       ///隧道
         
@@ -80,6 +82,8 @@ private:
     void generateStandardArea(BaseLevel* level);
     void generateEntranceArea(BaseLevel* level);
     void generateExitArea(BaseLevel* level);
+    void generateBossRoomArea(BaseLevel* level);
+    void generateBossExitArea(BaseLevel* level);
     void generateTunnelArea(BaseLevel* level);
     void generatePassageArea(BaseLevel* level);
     void generateSpecialArea(BaseLevel* level);

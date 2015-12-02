@@ -79,6 +79,12 @@ void Area::generate(BaseLevel* level)
         case AT_EXIT:
             generateExitArea(level);
             break;
+        case AT_BOSS_ROOM:
+            generateBossRoomArea(level);
+            break;
+        case AT_BOSS_EXIT:
+            generateBossExitArea(level);
+            break;
         case AT_PASSAGE:
             generatePassageArea(level);
             break;
@@ -242,7 +248,7 @@ void Area::generateStandardArea(BaseLevel* level)
             if(am)
             {
                 if(am->getRandomIndex() == 0)
-                    door->setDoorType(Door::DT_UNLOCKED);
+                    door->setDoorType(Door::DT_HIDDEN);
             }
         }
     }
@@ -268,6 +274,31 @@ void Area::generateExitArea(BaseLevel* level)
             door->setDoorType(Door::DT_STANDARD);
     }
     setRandomTerrainTile(level, 2, TerrainTile::TT_EXIT);
+}
+void Area::generateBossRoomArea(BaseLevel* level)
+{
+    generateTerrainTiles(level, TerrainTile::TT_WALL);
+    generateTerrainTiles(level, 1, TerrainTile::TT_STANDARD);
+    for (auto iter = m_ConnectedAreas.begin(); iter != m_ConnectedAreas.end(); iter++) {
+        Door* door = iter->second;
+        if(door && door->getDoorType() == Door::DT_EMPTY)
+        {
+            door->setDoorType(Door::DT_STANDARD);
+        }
+    }
+}
+void Area::generateBossExitArea(BaseLevel* level)
+{
+    generateTerrainTiles(level, TerrainTile::TT_WALL);
+    generateTerrainTiles(level, 1, TerrainTile::TT_STANDARD);
+    for (auto iter = m_ConnectedAreas.begin(); iter != m_ConnectedAreas.end(); iter++) {
+        Door* door = iter->second;
+        if(door)
+            door->setDoorType(Door::DT_LOCKED_EXIT);
+    }
+    Vec2 center = getCenter();
+    setTerrainTile(level, center.x - 1, center.y, TerrainTile::TT_STANDARD_PORTAL);
+    setTerrainTile(level, center.x + 1, center.y, TerrainTile::TT_STANDARD_PORTAL);
 }
 void Area::generateTunnelArea(BaseLevel* level)
 {

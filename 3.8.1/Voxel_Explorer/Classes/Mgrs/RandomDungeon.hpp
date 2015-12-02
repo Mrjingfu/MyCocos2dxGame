@@ -63,6 +63,10 @@ public:
     {
         return m_nCurrentDepth == m_nTotalNum;
     }
+    bool isBossDepth()
+    {
+        return m_nCurrentDepth > m_nTotalNum;
+    }
     std::string     m_strDungeonName;       ////地城名称
     CChaosNumber    m_nTransmutationDepth;  ////嬗变深度
     CChaosNumber    m_nCurrentDepth;        ////当前深度

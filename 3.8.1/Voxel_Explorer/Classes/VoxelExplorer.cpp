@@ -8,6 +8,7 @@
 
 #include "VoxelExplorer.h"
 #include "SewerLevel.hpp"
+#include "SewerBossLevel.hpp"
 #include "PrisonLevel.hpp"
 #include "FaneLevel.hpp"
 #include "MineLevel.hpp"
@@ -981,7 +982,14 @@ bool VoxelExplorer::createLevel()
         return false;
     switch (node->m_Type) {
         case DT_SEWER:
-            m_pCurrentLevel = new(std::nothrow) SewerLevel();
+            {
+                if(node->isBossDepth())
+                    m_pCurrentLevel = new(std::nothrow) SewerBossLevel();
+                else
+                    m_pCurrentLevel = new(std::nothrow) SewerLevel();
+                ///for debug
+                //m_pCurrentLevel = new(std::nothrow) SewerBossLevel();
+            }
             break;
         case DT_PRISON:
             m_pCurrentLevel = new(std::nothrow) PrisonLevel();
