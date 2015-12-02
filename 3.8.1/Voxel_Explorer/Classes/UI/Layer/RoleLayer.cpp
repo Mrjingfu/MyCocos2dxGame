@@ -203,5 +203,5 @@ void RoleLayer::updateEquipProp()
 void RoleLayer::onClickShop(cocos2d::Ref *ref)
 {
     CHECK_ACTION(ref);
-    PopupUILayerManager::getInstance()->openPopup(ePopupShop);
+    PopupUILayerManager::getInstance()->openPopup(ePopupWeaponShop);
 }

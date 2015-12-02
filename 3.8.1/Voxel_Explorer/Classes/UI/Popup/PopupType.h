@@ -12,14 +12,20 @@
 enum ePopupType
 {
     ePopupInvalid = -1,
-    ePopupTest,
-    ePopupRole,
-    ePopupEquipItem,
-    ePopupItem,
-    ePopupInfo,
-    ePopupShop,
-    ePopupPause,
-    epopupItemShop,
+    ePopupRole,         //角色弹窗
+    ePopupEquipItem,    //装备道具弹窗
+    ePopupItem,         //道具弹窗
+    ePopupInfo,         //信息弹窗
+    ePopupPause,        //暂停弹窗
+    ePopupItemShop,     //商店道具购买弹窗
+    ePopupNurse,        //护士弹窗
+    ePopupLittleWitch,  //随机事件弹窗
+    ePopupOldMan,       //智者
+    ePopupGamble,       //赌博
+    ePopupAlchemy,      //炼金
+    ePopupMagicShop,    //魔法物品
+    ePopupWeaponShop,   //装备物品
+    ePopupTask,         //任务
     ePopupCount
 };
 typedef enum {

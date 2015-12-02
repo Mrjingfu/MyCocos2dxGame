@@ -14,6 +14,14 @@
 #include "ShopPopupUI.h"
 #include "PausePopupUI.h"
 #include "ItemShopPopupUI.hpp"
+#include "WeaponShopPopupUI.h"
+#include "MagicShopPopupUI.h"
+#include "TaskPopupUI.hpp"
+#include "AlchemyPopupUI.hpp"
+#include "GamblePopupUI.hpp"
+#include "OldManPopupUI.hpp"
+#include "LittleWitchPopupUI.hpp"
+#include "NursePopupUI.hpp"
 PopupUILayerManager::PopupUILayerManager()
 {
     m_pParentLayer = nullptr;
@@ -100,14 +108,35 @@ PopupUILayer* PopupUILayerManager::initPopUp(ePopupType type)
         case ePopupEquipItem:
             popupLayer = ItemPopupUI::create();
             break;
-        case ePopupShop:
-            popupLayer = ShopPopupUI::create();
-            break;
         case ePopupPause:
             popupLayer = PausePopupUI::create();
             break;
-        case epopupItemShop:
+        case ePopupItemShop:
             popupLayer = ItemShopPopupUI::create();
+            break;
+        case ePopupWeaponShop:
+            popupLayer = WeaponShopPopupUI::create();
+            break;
+        case ePopupMagicShop:
+            popupLayer = MagicShopPopupUI::create();
+            break;
+        case ePopupGamble:
+            popupLayer = GamblePopupUI::create();
+            break;
+        case ePopupAlchemy:
+            popupLayer = AlchemyPopupUI::create();
+            break;
+        case ePopupNurse:
+            popupLayer = NursePopupUI::create();
+            break;
+        case ePopupLittleWitch:
+            popupLayer = LittleWitchPopupUI::create();
+             break;
+        case ePopupOldMan:
+            popupLayer = OldManPopupUI::create();
+            break;
+        case ePopupTask:
+            popupLayer = TaskPopupUI::create();
             break;
         default:
             break;

@@ -14,27 +14,25 @@
 class BagShopLayer;
 class BagMangerLayerUI;
 class ShopPopupUI:public PopupUILayer {
+protected:
     ShopPopupUI();
     
 public:
-    CREATE_FUNC(ShopPopupUI);
     virtual ~ShopPopupUI();
     virtual bool init() override;
     virtual bool addEvents() override;
     
     //更新商店购买界面
-    void updateShopBuyItems();
-    void refreshUIView() override;
-private:
+    virtual void updateShopBuyItems();
+    virtual void refreshUIView() override;
+    virtual void updateShopDataItems() = 0;
+    virtual void shopItemOpe(int itemId) = 0;
+protected:
 
-    void onClickFrameBuy(Ref*,cocos2d::ui::Widget::TouchEventType);
-    void selectItemEvent(Ref *pSender, TGridView::EventType type);
+    virtual void selectItemEvent(Ref *pSender, TGridView::EventType type);
     
-    private:
-
+protected:
     cocos2d::ui::Button* m_pBtnBuyFrame;
-    
-    
     BagShopLayer*     m_pBagLayer;
     TGridView*    m_pShopGridView;
     BagMangerLayerUI* m_pShopMangerLayer;

@@ -251,8 +251,6 @@
 		EC3CC9941C088F4F00F8CFC8 /* PopupUILayerManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC3CC9611C088F4F00F8CFC8 /* PopupUILayerManager.cpp */; };
 		EC3CC9951C088F4F00F8CFC8 /* RolePopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC3CC9631C088F4F00F8CFC8 /* RolePopupUI.cpp */; };
 		EC3CC9961C088F4F00F8CFC8 /* RolePopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC3CC9631C088F4F00F8CFC8 /* RolePopupUI.cpp */; };
-		EC3CC9991C088F4F00F8CFC8 /* ShopPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC3CC9671C088F4F00F8CFC8 /* ShopPopupUI.cpp */; };
-		EC3CC99A1C088F4F00F8CFC8 /* ShopPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC3CC9671C088F4F00F8CFC8 /* ShopPopupUI.cpp */; };
 		EC3CC99B1C088F4F00F8CFC8 /* CloseCallback.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC3CC9691C088F4F00F8CFC8 /* CloseCallback.cpp */; };
 		EC3CC99C1C088F4F00F8CFC8 /* CloseCallback.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC3CC9691C088F4F00F8CFC8 /* CloseCallback.cpp */; };
 		EC3CC99D1C088F4F00F8CFC8 /* GameUILayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC3CC96B1C088F4F00F8CFC8 /* GameUILayer.cpp */; };
@@ -279,6 +277,26 @@
 		EC67165A1BCE7F5F00C81CFC /* lang in Resources */ = {isa = PBXBuildFile; fileRef = EC6716561BCE7F5F00C81CFC /* lang */; };
 		EC67165D1BCE7F5F00C81CFC /* ui in Resources */ = {isa = PBXBuildFile; fileRef = EC6716581BCE7F5F00C81CFC /* ui */; };
 		EC67165E1BCE7F5F00C81CFC /* ui in Resources */ = {isa = PBXBuildFile; fileRef = EC6716581BCE7F5F00C81CFC /* ui */; };
+		EC795F421C0D42340083829B /* MagicShopPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC795F3E1C0D42340083829B /* MagicShopPopupUI.cpp */; };
+		EC795F431C0D42340083829B /* MagicShopPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC795F3E1C0D42340083829B /* MagicShopPopupUI.cpp */; };
+		EC795F491C0D4A4B0083829B /* WeaponShopPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC795F471C0D4A4B0083829B /* WeaponShopPopupUI.cpp */; };
+		EC795F4A1C0D4A4B0083829B /* WeaponShopPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC795F471C0D4A4B0083829B /* WeaponShopPopupUI.cpp */; };
+		EC795F4B1C0D4A4B0083829B /* ShopPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC795F481C0D4A4B0083829B /* ShopPopupUI.cpp */; };
+		EC795F4C1C0D4A4B0083829B /* ShopPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC795F481C0D4A4B0083829B /* ShopPopupUI.cpp */; };
+		EC795F4F1C0D4AB20083829B /* TaskPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC795F4D1C0D4AB20083829B /* TaskPopupUI.cpp */; };
+		EC795F501C0D4AB20083829B /* TaskPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC795F4D1C0D4AB20083829B /* TaskPopupUI.cpp */; };
+		EC795F531C0D4AD70083829B /* AlchemyPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC795F511C0D4AD70083829B /* AlchemyPopupUI.cpp */; };
+		EC795F541C0D4AD70083829B /* AlchemyPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC795F511C0D4AD70083829B /* AlchemyPopupUI.cpp */; };
+		EC795F571C0D4AFD0083829B /* GamblePopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC795F551C0D4AFD0083829B /* GamblePopupUI.cpp */; };
+		EC795F581C0D4AFD0083829B /* GamblePopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC795F551C0D4AFD0083829B /* GamblePopupUI.cpp */; };
+		EC795F5B1C0D4B150083829B /* OldManPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC795F591C0D4B150083829B /* OldManPopupUI.cpp */; };
+		EC795F5C1C0D4B150083829B /* OldManPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC795F591C0D4B150083829B /* OldManPopupUI.cpp */; };
+		EC795F5F1C0D4B560083829B /* LittleWitchPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC795F5D1C0D4B560083829B /* LittleWitchPopupUI.cpp */; };
+		EC795F601C0D4B560083829B /* LittleWitchPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC795F5D1C0D4B560083829B /* LittleWitchPopupUI.cpp */; };
+		EC795F631C0D4B6B0083829B /* NursePopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC795F611C0D4B6B0083829B /* NursePopupUI.cpp */; };
+		EC795F641C0D4B6B0083829B /* NursePopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC795F611C0D4B6B0083829B /* NursePopupUI.cpp */; };
+		EC795F671C0DA57C0083829B /* NpcPropLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC795F651C0DA57C0083829B /* NpcPropLayer.cpp */; };
+		EC795F681C0DA57C0083829B /* NpcPropLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC795F651C0DA57C0083829B /* NpcPropLayer.cpp */; };
 		EC7F92D31BCF9ED200B26C6C /* HueSprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC7F92D11BCF9ED200B26C6C /* HueSprite.cpp */; };
 		EC7F92D41BCF9ED200B26C6C /* HueSprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC7F92D11BCF9ED200B26C6C /* HueSprite.cpp */; };
 		ED545A7C1B68A1F400C3958E /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ED545A7B1B68A1F400C3958E /* libiconv.dylib */; };
@@ -546,7 +564,6 @@
 		EC3CC9621C088F4F00F8CFC8 /* PopupUILayerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopupUILayerManager.h; sourceTree = "<group>"; };
 		EC3CC9631C088F4F00F8CFC8 /* RolePopupUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RolePopupUI.cpp; sourceTree = "<group>"; };
 		EC3CC9641C088F4F00F8CFC8 /* RolePopupUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RolePopupUI.h; sourceTree = "<group>"; };
-		EC3CC9671C088F4F00F8CFC8 /* ShopPopupUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ShopPopupUI.cpp; sourceTree = "<group>"; };
 		EC3CC9681C088F4F00F8CFC8 /* ShopPopupUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopPopupUI.h; sourceTree = "<group>"; };
 		EC3CC9691C088F4F00F8CFC8 /* CloseCallback.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloseCallback.cpp; sourceTree = "<group>"; };
 		EC3CC96A1C088F4F00F8CFC8 /* CloseCallback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloseCallback.h; sourceTree = "<group>"; };
@@ -573,6 +590,25 @@
 		EC6716441BCE7F2C00C81CFC /* LogoScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogoScene.h; sourceTree = "<group>"; };
 		EC6716561BCE7F5F00C81CFC /* lang */ = {isa = PBXFileReference; lastKnownFileType = folder; path = lang; sourceTree = "<group>"; };
 		EC6716581BCE7F5F00C81CFC /* ui */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ui; sourceTree = "<group>"; };
+		EC795F3D1C0D42340083829B /* WeaponShopPopupUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeaponShopPopupUI.h; sourceTree = "<group>"; };
+		EC795F3E1C0D42340083829B /* MagicShopPopupUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MagicShopPopupUI.cpp; sourceTree = "<group>"; };
+		EC795F3F1C0D42340083829B /* MagicShopPopupUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MagicShopPopupUI.h; sourceTree = "<group>"; };
+		EC795F471C0D4A4B0083829B /* WeaponShopPopupUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WeaponShopPopupUI.cpp; sourceTree = "<group>"; };
+		EC795F481C0D4A4B0083829B /* ShopPopupUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ShopPopupUI.cpp; sourceTree = "<group>"; };
+		EC795F4D1C0D4AB20083829B /* TaskPopupUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TaskPopupUI.cpp; sourceTree = "<group>"; };
+		EC795F4E1C0D4AB20083829B /* TaskPopupUI.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TaskPopupUI.hpp; sourceTree = "<group>"; };
+		EC795F511C0D4AD70083829B /* AlchemyPopupUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AlchemyPopupUI.cpp; sourceTree = "<group>"; };
+		EC795F521C0D4AD70083829B /* AlchemyPopupUI.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = AlchemyPopupUI.hpp; sourceTree = "<group>"; };
+		EC795F551C0D4AFD0083829B /* GamblePopupUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GamblePopupUI.cpp; sourceTree = "<group>"; };
+		EC795F561C0D4AFD0083829B /* GamblePopupUI.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GamblePopupUI.hpp; sourceTree = "<group>"; };
+		EC795F591C0D4B150083829B /* OldManPopupUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OldManPopupUI.cpp; sourceTree = "<group>"; };
+		EC795F5A1C0D4B150083829B /* OldManPopupUI.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = OldManPopupUI.hpp; sourceTree = "<group>"; };
+		EC795F5D1C0D4B560083829B /* LittleWitchPopupUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LittleWitchPopupUI.cpp; sourceTree = "<group>"; };
+		EC795F5E1C0D4B560083829B /* LittleWitchPopupUI.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = LittleWitchPopupUI.hpp; sourceTree = "<group>"; };
+		EC795F611C0D4B6B0083829B /* NursePopupUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NursePopupUI.cpp; sourceTree = "<group>"; };
+		EC795F621C0D4B6B0083829B /* NursePopupUI.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = NursePopupUI.hpp; sourceTree = "<group>"; };
+		EC795F651C0DA57C0083829B /* NpcPropLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NpcPropLayer.cpp; sourceTree = "<group>"; };
+		EC795F661C0DA57C0083829B /* NpcPropLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = NpcPropLayer.hpp; sourceTree = "<group>"; };
 		EC7F92D11BCF9ED200B26C6C /* HueSprite.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HueSprite.cpp; sourceTree = "<group>"; };
 		EC7F92D21BCF9ED200B26C6C /* HueSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HueSprite.h; sourceTree = "<group>"; };
 		ED545A7B1B68A1F400C3958E /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.4.sdk/usr/lib/libiconv.dylib; sourceTree = DEVELOPER_DIR; };
@@ -1059,22 +1095,24 @@
 		EC3CC93C1C088F4F00F8CFC8 /* Layer */ = {
 			isa = PBXGroup;
 			children = (
+				EC795F651C0DA57C0083829B /* NpcPropLayer.cpp */,
+				EC795F661C0DA57C0083829B /* NpcPropLayer.hpp */,
+				EC3CC9431C088F4F00F8CFC8 /* CharacterPropLayer.cpp */,
+				EC3CC9441C088F4F00F8CFC8 /* CharacterPropLayer.hpp */,
 				EC3CC9A31C08909B00F8CFC8 /* RolePropLayer.cpp */,
 				EC3CC9A41C08909B00F8CFC8 /* RolePropLayer.hpp */,
+				EC3CC9491C088F4F00F8CFC8 /* MonsterPropLayer.cpp */,
+				EC3CC94A1C088F4F00F8CFC8 /* MonsterPropLayer.hpp */,
 				EC3CC93D1C088F4F00F8CFC8 /* BagLayer.cpp */,
 				EC3CC93E1C088F4F00F8CFC8 /* BagLayer.h */,
 				EC3CC93F1C088F4F00F8CFC8 /* BagMangerLayerUI.cpp */,
 				EC3CC9401C088F4F00F8CFC8 /* BagMangerLayerUI.h */,
 				EC3CC9411C088F4F00F8CFC8 /* BagShopLayer.cpp */,
 				EC3CC9421C088F4F00F8CFC8 /* BagShopLayer.hpp */,
-				EC3CC9431C088F4F00F8CFC8 /* CharacterPropLayer.cpp */,
-				EC3CC9441C088F4F00F8CFC8 /* CharacterPropLayer.hpp */,
 				EC3CC9451C088F4F00F8CFC8 /* GameInfoLayer.cpp */,
 				EC3CC9461C088F4F00F8CFC8 /* GameInfoLayer.hpp */,
 				EC3CC9471C088F4F00F8CFC8 /* GameToolbarLayer.cpp */,
 				EC3CC9481C088F4F00F8CFC8 /* GameToolbarLayer.hpp */,
-				EC3CC9491C088F4F00F8CFC8 /* MonsterPropLayer.cpp */,
-				EC3CC94A1C088F4F00F8CFC8 /* MonsterPropLayer.hpp */,
 				EC3CC94B1C088F4F00F8CFC8 /* NoteUi.cpp */,
 				EC3CC94C1C088F4F00F8CFC8 /* NoteUi.h */,
 				EC3CC94D1C088F4F00F8CFC8 /* PromptLayer.cpp */,
@@ -1090,6 +1128,24 @@
 		EC3CC9531C088F4F00F8CFC8 /* Popup */ = {
 			isa = PBXGroup;
 			children = (
+				EC795F481C0D4A4B0083829B /* ShopPopupUI.cpp */,
+				EC3CC9681C088F4F00F8CFC8 /* ShopPopupUI.h */,
+				EC795F471C0D4A4B0083829B /* WeaponShopPopupUI.cpp */,
+				EC795F3D1C0D42340083829B /* WeaponShopPopupUI.h */,
+				EC795F3E1C0D42340083829B /* MagicShopPopupUI.cpp */,
+				EC795F3F1C0D42340083829B /* MagicShopPopupUI.h */,
+				EC795F4D1C0D4AB20083829B /* TaskPopupUI.cpp */,
+				EC795F4E1C0D4AB20083829B /* TaskPopupUI.hpp */,
+				EC795F511C0D4AD70083829B /* AlchemyPopupUI.cpp */,
+				EC795F521C0D4AD70083829B /* AlchemyPopupUI.hpp */,
+				EC795F551C0D4AFD0083829B /* GamblePopupUI.cpp */,
+				EC795F561C0D4AFD0083829B /* GamblePopupUI.hpp */,
+				EC795F591C0D4B150083829B /* OldManPopupUI.cpp */,
+				EC795F5A1C0D4B150083829B /* OldManPopupUI.hpp */,
+				EC795F5D1C0D4B560083829B /* LittleWitchPopupUI.cpp */,
+				EC795F5E1C0D4B560083829B /* LittleWitchPopupUI.hpp */,
+				EC795F611C0D4B6B0083829B /* NursePopupUI.cpp */,
+				EC795F621C0D4B6B0083829B /* NursePopupUI.hpp */,
 				EC3CC9541C088F4F00F8CFC8 /* DeadPopupUI.cpp */,
 				EC3CC9551C088F4F00F8CFC8 /* DeadPopupUI.h */,
 				EC3CC9561C088F4F00F8CFC8 /* InfoPopupUI.cpp */,
@@ -1107,8 +1163,6 @@
 				EC3CC9621C088F4F00F8CFC8 /* PopupUILayerManager.h */,
 				EC3CC9631C088F4F00F8CFC8 /* RolePopupUI.cpp */,
 				EC3CC9641C088F4F00F8CFC8 /* RolePopupUI.h */,
-				EC3CC9671C088F4F00F8CFC8 /* ShopPopupUI.cpp */,
-				EC3CC9681C088F4F00F8CFC8 /* ShopPopupUI.h */,
 				EC5D568E1C0C4E2200F5EDDF /* DistPopupUI.cpp */,
 				EC5D568F1C0C4E2200F5EDDF /* DistPopupUI.hpp */,
 			);
@@ -1135,8 +1189,6 @@
 		ECD10D621BD0967B007DD888 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				EC3CC93C1C088F4F00F8CFC8 /* Layer */,
-				EC3CC9531C088F4F00F8CFC8 /* Popup */,
 				EC3CC9691C088F4F00F8CFC8 /* CloseCallback.cpp */,
 				EC3CC96A1C088F4F00F8CFC8 /* CloseCallback.h */,
 				EC3CC96B1C088F4F00F8CFC8 /* GameUILayer.cpp */,
@@ -1145,6 +1197,8 @@
 				EC3CC96E1C088F4F00F8CFC8 /* MenuUILayer.h */,
 				EC3CC96F1C088F4F00F8CFC8 /* WrapperUILayer.cpp */,
 				EC3CC9701C088F4F00F8CFC8 /* WrapperUILayer.h */,
+				EC3CC93C1C088F4F00F8CFC8 /* Layer */,
+				EC3CC9531C088F4F00F8CFC8 /* Popup */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -1305,6 +1359,7 @@
 				EC3CC97F1C088F4F00F8CFC8 /* NoteUi.cpp in Sources */,
 				553BC5091BCE499B003D907A /* BaseDoor.cpp in Sources */,
 				55F81CA11BDB208D002EC075 /* UseableItem.cpp in Sources */,
+				EC795F571C0D4AFD0083829B /* GamblePopupUI.cpp in Sources */,
 				5505453C1BFF3893006B4500 /* SmallPortal.cpp in Sources */,
 				551E93AF1BD51282009F788F /* NativeBridge.mm in Sources */,
 				55338AEA1BD892C200EA316F /* Archbishop.cpp in Sources */,
@@ -1318,7 +1373,6 @@
 				EC3CC98B1C088F4F00F8CFC8 /* ItemPopupUI.cpp in Sources */,
 				5505452E1BFF1092006B4500 /* StandardPortal.cpp in Sources */,
 				55F81CAC1BDB69FB002EC075 /* PickableItemProperty.cpp in Sources */,
-				EC3CC9991C088F4F00F8CFC8 /* ShopPopupUI.cpp in Sources */,
 				551E93C31BD51291009F788F /* LevelResourceManager.cpp in Sources */,
 				EC3CC9731C088F4F00F8CFC8 /* BagMangerLayerUI.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
@@ -1339,6 +1393,7 @@
 				55338AD51BD878BF00EA316F /* StandardMonster.cpp in Sources */,
 				551E93C71BD51291009F788F /* MonsterProperty.cpp in Sources */,
 				55338AE21BD8926A00EA316F /* SkeletonKing.cpp in Sources */,
+				EC795F5F1C0D4B560083829B /* LittleWitchPopupUI.cpp in Sources */,
 				555B0D1D1BC51A2C0055FB6D /* Graph.cpp in Sources */,
 				551E93B11BD51282009F788F /* UtilityHelper.cpp in Sources */,
 				EC3CC9871C088F4F00F8CFC8 /* DeadPopupUI.cpp in Sources */,
@@ -1348,9 +1403,12 @@
 				554F00F61BDA219E00F4DF8E /* PickableItem.cpp in Sources */,
 				55F81CD01BDB92CC002EC075 /* PotionsProperty.cpp in Sources */,
 				555B0D171BC51A2C0055FB6D /* Area.cpp in Sources */,
+				EC795F4B1C0D4A4B0083829B /* ShopPopupUI.cpp in Sources */,
 				EC3CC9771C088F4F00F8CFC8 /* CharacterPropLayer.cpp in Sources */,
 				55F81CD41BDB92ED002EC075 /* SundriesProperty.cpp in Sources */,
 				EC3CC9751C088F4F00F8CFC8 /* BagShopLayer.cpp in Sources */,
+				EC795F421C0D42340083829B /* MagicShopPopupUI.cpp in Sources */,
+				EC795F4F1C0D4AB20083829B /* TaskPopupUI.cpp in Sources */,
 				EC3CC9811C088F4F00F8CFC8 /* PromptLayer.cpp in Sources */,
 				551E93F21BD512D3009F788F /* Stream.cpp in Sources */,
 				EC3CC9711C088F4F00F8CFC8 /* BagLayer.cpp in Sources */,
@@ -1361,6 +1419,7 @@
 				554F01051BDA3A3100F4DF8E /* SewerLevel.cpp in Sources */,
 				55338ACF1BD8781E00EA316F /* BaseMonster.cpp in Sources */,
 				EC3CC97B1C088F4F00F8CFC8 /* GameToolbarLayer.cpp in Sources */,
+				EC795F5B1C0D4B150083829B /* OldManPopupUI.cpp in Sources */,
 				555B0D1B1BC51A2C0055FB6D /* Door.cpp in Sources */,
 				551E93E41BD512D3009F788F /* libb64.c in Sources */,
 				550545171BFEEF7E006B4500 /* EffectSprite3D.cpp in Sources */,
@@ -1368,6 +1427,7 @@
 				55338AEE1BD892FC00EA316F /* ShadowDragon.cpp in Sources */,
 				551E93C11BD51291009F788F /* ArchiveManager.cpp in Sources */,
 				553BC50D1BCE5191003D907A /* StandardDoor.cpp in Sources */,
+				EC795F671C0DA57C0083829B /* NpcPropLayer.cpp in Sources */,
 				555B0D231BC51A2C0055FB6D /* GameScene.cpp in Sources */,
 				550545211BFEF00C006B4500 /* BaseEffect3D.cpp in Sources */,
 				55CB9B0A1C07355200BAF60B /* NpcDataManager.cpp in Sources */,
@@ -1380,6 +1440,7 @@
 				55407D571BD5E2BC0000C41C /* GameFormula.cpp in Sources */,
 				55338ADA1BD8920F00EA316F /* SlimeKing.cpp in Sources */,
 				EC6716451BCE7F2C00C81CFC /* LogoScene.cpp in Sources */,
+				EC795F631C0D4B6B0083829B /* NursePopupUI.cpp in Sources */,
 				EC3CC97D1C088F4F00F8CFC8 /* MonsterPropLayer.cpp in Sources */,
 				551E93A91BD51282009F788F /* AlisaMethod.cpp in Sources */,
 				555B0D191BC51A2C0055FB6D /* BaseLevel.cpp in Sources */,
@@ -1392,6 +1453,7 @@
 				55ECFB441BC79852007270CD /* Player.cpp in Sources */,
 				55A9807B1C05610400722C9D /* FakeShadow.cpp in Sources */,
 				EC3CC99F1C088F4F00F8CFC8 /* MenuUILayer.cpp in Sources */,
+				EC795F531C0D4AD70083829B /* AlchemyPopupUI.cpp in Sources */,
 				55F81CC81BDB928F002EC075 /* MaterialProperty.cpp in Sources */,
 				55F116D41C04450200A6C191 /* FaneLevel.cpp in Sources */,
 				EC5D56901C0C4E2200F5EDDF /* DistPopupUI.cpp in Sources */,
@@ -1400,6 +1462,7 @@
 				551E93E81BD512D3009F788F /* sha1.cpp in Sources */,
 				553BC5011BCDF457003D907A /* Actor.cpp in Sources */,
 				EC3CC9791C088F4F00F8CFC8 /* GameInfoLayer.cpp in Sources */,
+				EC795F491C0D4A4B0083829B /* WeaponShopPopupUI.cpp in Sources */,
 				EC3CC9A51C08909B00F8CFC8 /* RolePropLayer.cpp in Sources */,
 				551E93E61BD512D3009F788F /* md5.c in Sources */,
 				EC3CC9891C088F4F00F8CFC8 /* InfoPopupUI.cpp in Sources */,
@@ -1417,12 +1480,15 @@
 				EC5D56911C0C4E2200F5EDDF /* DistPopupUI.cpp in Sources */,
 				551E93C81BD51291009F788F /* MonsterProperty.cpp in Sources */,
 				550545331BFF2081006B4500 /* BasePortal.cpp in Sources */,
+				EC795F681C0DA57C0083829B /* NpcPropLayer.cpp in Sources */,
 				553BC50E1BCE5191003D907A /* StandardDoor.cpp in Sources */,
 				55EC95861BC6ABBA0008D1D7 /* TerrainTile.cpp in Sources */,
+				EC795F4C1C0D4A4B0083829B /* ShopPopupUI.cpp in Sources */,
 				EC3CC9901C088F4F00F8CFC8 /* PausePopupUI.cpp in Sources */,
 				55F81CC11BDB9257002EC075 /* ScrollProperty.cpp in Sources */,
 				EC3CC9781C088F4F00F8CFC8 /* CharacterPropLayer.cpp in Sources */,
 				5529701C1BFB34ED00DBF75B /* Npc.cpp in Sources */,
+				EC795F641C0D4B6B0083829B /* NursePopupUI.cpp in Sources */,
 				551E93E31BD512D3009F788F /* CCCrypto.cpp in Sources */,
 				55CB9B0B1C07355200BAF60B /* NpcDataManager.cpp in Sources */,
 				EC6716461BCE7F2C00C81CFC /* LogoScene.cpp in Sources */,
@@ -1458,6 +1524,7 @@
 				551E93EF1BD512D3009F788F /* FileStream.cpp in Sources */,
 				EC3CC9801C088F4F00F8CFC8 /* NoteUi.cpp in Sources */,
 				EC3CC97A1C088F4F00F8CFC8 /* GameInfoLayer.cpp in Sources */,
+				EC795F4A1C0D4A4B0083829B /* WeaponShopPopupUI.cpp in Sources */,
 				555B0D201BC51A2C0055FB6D /* StandardLevel.cpp in Sources */,
 				55F116DD1C04453500A6C191 /* CaveLevel.cpp in Sources */,
 				EC3CC9A21C088F4F00F8CFC8 /* WrapperUILayer.cpp in Sources */,
@@ -1467,7 +1534,6 @@
 				EC3CC9961C088F4F00F8CFC8 /* RolePopupUI.cpp in Sources */,
 				EC6264961BF0807F004E0F55 /* MessageManager.cpp in Sources */,
 				EC3CC97C1C088F4F00F8CFC8 /* GameToolbarLayer.cpp in Sources */,
-				EC3CC99A1C088F4F00F8CFC8 /* ShopPopupUI.cpp in Sources */,
 				555B0D161BC51A2C0055FB6D /* AppDelegate.cpp in Sources */,
 				55F81CAD1BDB69FB002EC075 /* PickableItemProperty.cpp in Sources */,
 				553BC5021BCDF457003D907A /* Actor.cpp in Sources */,
@@ -1506,9 +1572,12 @@
 				55F4650F1BEAF76A00E1CC79 /* Pathfinder.cpp in Sources */,
 				555B0D1C1BC51A2C0055FB6D /* Door.cpp in Sources */,
 				EC3CC99C1C088F4F00F8CFC8 /* CloseCallback.cpp in Sources */,
+				EC795F581C0D4AFD0083829B /* GamblePopupUI.cpp in Sources */,
 				EC3CC9A61C08909B00F8CFC8 /* RolePropLayer.cpp in Sources */,
+				EC795F501C0D4AB20083829B /* TaskPopupUI.cpp in Sources */,
 				55338AEF1BD892FC00EA316F /* ShadowDragon.cpp in Sources */,
 				55338AE71BD8928E00EA316F /* Giant.cpp in Sources */,
+				EC795F541C0D4AD70083829B /* AlchemyPopupUI.cpp in Sources */,
 				EC3CC9821C088F4F00F8CFC8 /* PromptLayer.cpp in Sources */,
 				55F81CB91BDB8B81002EC075 /* ArmorProperty.cpp in Sources */,
 				550C32ED1BDDE8740015124E /* SecondWeaponProperty.cpp in Sources */,
@@ -1517,8 +1586,11 @@
 				55F116D11C0444EF00A6C191 /* PrisonLevel.cpp in Sources */,
 				551E93E91BD512D3009F788F /* sha1.cpp in Sources */,
 				EC602AAD1BF46A2D00484D42 /* AchievementManager.cpp in Sources */,
+				EC795F5C1C0D4B150083829B /* OldManPopupUI.cpp in Sources */,
 				55338AD61BD878BF00EA316F /* StandardMonster.cpp in Sources */,
 				551E93F11BD512D3009F788F /* MemoryStream.cpp in Sources */,
+				EC795F431C0D42340083829B /* MagicShopPopupUI.cpp in Sources */,
+				EC795F601C0D4B560083829B /* LittleWitchPopupUI.cpp in Sources */,
 				551E93C61BD51291009F788F /* UserRecord.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

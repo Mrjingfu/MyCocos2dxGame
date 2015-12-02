@@ -122,6 +122,46 @@
 	<string>+%d HP</string>
 	<key>USE_POTION_ MAGIC</key>
 	<string>+%d MP</string>
+	<key>USE_POTION_RELIEVE</key>
+	<string>中毒状态被解除了!</string>
+	<key>USE_POTION_WEAK</key>
+	<string>虚弱状态被解除了!</string>
+	<key>USE_POTION_SPECIFIC</key>
+	<string>使用特性药水,部分状态被解除了!</string>
+	<key>USE_POTION_UNIVERSAL</key>
+	<string>使用特性药水,状态全恢复了!</string>
+	<key>FOUND_HIDDER_DOOR</key>
+	<string>发现了隐藏门！</string>
+	<key>FOUND_HIDDER_TRAP_TOXIC</key>
+	<string>发现了隐藏的中毒机关！</string>
+	<key>FOUND_HIDDER_TRAP_FIRE</key>
+	<string>发现了隐藏的火机关！</string>
+	<key>FOUND_HIDDER_TRAP_PARALYIC</key>
+	<string>发现了隐藏的麻痹机关！</string>
+	<key>FOUND_HIDDER_TRAP_GRIPPING</key>
+	<string>发现了隐藏的夹子机关！</string>
+	<key>FOUND_HIDDER_TRAP_SUMMONING</key>
+	<string>发现了隐藏的召唤机关！</string>
+	<key>FOUND_HIDDER_TRAP_WEAK</key>
+	<string>发现了隐藏的虚弱机关！</string>
+	<key>FOUND_HIDDER_TRAP_MSG</key>
+	<string>发现了隐藏的消息！</string>
+	<key>FOUND_HIDDER_TRAP_ITEM</key>
+	<string>发现了隐藏的道具！</string>
+	<key>NOT_HAVE_COPPER_KEY</key>
+	<string>没有铜钥匙！</string>
+	<key>NOT_HAVE_SILVER_KEY</key>
+	<string>没有银钥匙！</string>
+	<key>NOT_HAVE_GOLD_KEY</key>
+	<string>没有金钥匙！</string>
+	<key>NOT_HAVE_ROOM_KEY</key>
+	<string>没有房间钥匙！</string>
+	<key>NOT_HAVE_BOOS_KEY</key>
+	<string>没有Boss钥匙！</string>
+	<key>NOT_HAVE_BAG_SPACE</key>
+	<string>背包没有空间了!!</string>
+	<key>NOT_HAVA_MARGIC_VALUE</key>
+	<string>魔法值不够！！</string>
 	<key>TRIGGER_MESSAGE_TOXIC_TRAP</key>
 	<string>你中毒了！</string>
 	<key>TRIGGER_MESSAGE_FIRE_TRAP</key>

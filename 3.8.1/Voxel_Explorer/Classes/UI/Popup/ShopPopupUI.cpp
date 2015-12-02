@@ -47,6 +47,15 @@ bool ShopPopupUI::addEvents()
     if (!m_pBtnBuyFrame)
         return false;
     
+    m_pBagLayer = BagShopLayer::create();
+    m_pBagLayer->setAnchorPoint(cocos2d::Vec2::ANCHOR_MIDDLE_BOTTOM);
+    m_pBagLayer->setPosition(cocos2d::Size(m_pRootNode->getContentSize().width*0.5,0));
+    m_pRootNode->addChild(m_pBagLayer);
+    
+    m_pBtnBuyFrame->loadTextures(UtilityHelper::getLocalStringForUi("SHOP_BTN_FRAME_BUY_NORMAL"), UtilityHelper::getLocalStringForUi("SHOP_BTN_FRAME_BUY_PRESS"),UtilityHelper::getLocalStringForUi("SHOP_BTN_FRAME_BUY_PRESS"),TextureResType::PLIST);
+    m_pBtnBuyFrame->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
+
+    
     m_pShopGridView = TGridView::create();
     m_pShopGridView->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
     m_pShopGridView->setContentSize(cocos2d::Size(m_shopFrame->getContentSize().width-10,m_shopFrame->getContentSize().height-7));
@@ -79,15 +88,6 @@ bool ShopPopupUI::addEvents()
     m_pShopMangerLayer->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
     m_pShopGridView->addChildLayer(m_pShopMangerLayer,60);
     
-    m_pBagLayer = BagShopLayer::create();
-    m_pBagLayer->setAnchorPoint(cocos2d::Vec2::ANCHOR_MIDDLE_BOTTOM);
-    m_pBagLayer->setPosition(cocos2d::Size(m_pRootNode->getContentSize().width*0.5,0));
-    m_pRootNode->addChild(m_pBagLayer);
-    
-    m_pBtnBuyFrame->loadTextures(UtilityHelper::getLocalStringForUi("SHOP_BTN_FRAME_BUY_NORMAL"), UtilityHelper::getLocalStringForUi("SHOP_BTN_FRAME_BUY_PRESS"),UtilityHelper::getLocalStringForUi("SHOP_BTN_FRAME_BUY_PRESS"),TextureResType::PLIST);
-    m_pBtnBuyFrame->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
-   
-    m_pBtnBuyFrame->addTouchEventListener(CC_CALLBACK_2(ShopPopupUI::onClickFrameBuy, this));
     
     refreshUIView();
     
@@ -99,7 +99,7 @@ void ShopPopupUI::refreshUIView()
     if (m_pBagLayer) {
         m_pBagLayer->refreshUIView();
     }
-       updateShopBuyItems();
+    updateShopBuyItems();
 }
 void ShopPopupUI::updateShopBuyItems()
 {
@@ -110,23 +110,7 @@ void ShopPopupUI::updateShopBuyItems()
     }
     
     //添加商品 测试
-    for (int i=0; i<PlayerProperty::getInstance()->getPlayerBag().size(); i++) {
-        PickableItemProperty* property = PlayerProperty::getInstance()->getPlayerBag()[i];
-        ui::ImageView* img =static_cast<ui::ImageView*>( m_pShopGridView->getItem(i));
-        if (property && img) {
-            m_pShopMangerLayer->addItem(i, property->getInstanceID(), img->getPosition(), property->getIconRes());
-        }
-    }
-}
-
-
-
-void ShopPopupUI::onClickFrameBuy(cocos2d::Ref * ref, cocos2d::ui::Widget::TouchEventType type)
-{
-    if (type == cocos2d::ui::Widget::TouchEventType::BEGAN) {
-        m_pBtnBuyFrame->setEnabled(false);
-    }
-    refreshUIView();
+    updateShopDataItems();
 
 }
 
@@ -137,11 +121,12 @@ void ShopPopupUI::selectItemEvent(cocos2d::Ref *pSender, TGridView::EventType ty
         TGridView* gridView = static_cast<TGridView*>(pSender);
         int currentItemId = m_pShopMangerLayer->getItemId(gridView->getCurSelectedIndex());
         if (currentItemId!=-1) {
-            ItemShopPopupUI* shopItem = static_cast<ItemShopPopupUI*>( PopupUILayerManager::getInstance()->openPopup(epopupItemShop));
-            if (shopItem) {
-                shopItem->updateItemPopup(ItemShopPopupUI::IST_BUY,currentItemId);
-                shopItem->registerCloseCallback(CC_CALLBACK_0(ShopPopupUI::refreshUIView, this));
-            }
+            shopItemOpe(currentItemId);
+//            ItemShopPopupUI* shopItem = static_cast<ItemShopPopupUI*>( PopupUILayerManager::getInstance()->openPopup(ePopupItemShop));
+//            if (shopItem) {
+//                shopItem->updateItemPopup(ItemShopPopupUI::IST_BUY,currentItemId);
+//                shopItem->registerCloseCallback(CC_CALLBACK_0(ShopPopupUI::refreshUIView, this));
+//            }
         }
     }
 }

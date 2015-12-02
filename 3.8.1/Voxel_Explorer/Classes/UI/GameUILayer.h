@@ -17,6 +17,7 @@ class GameInfoLayer;
 class GameToolbarLayer;
 class RolePropLayer;
 class MonsterPropLayer;
+class NpcPropLayer;
 class GameUILayer:public WrapperUILayer {
     
 public:
@@ -103,7 +104,7 @@ private:
    GameToolbarLayer* m_pGameToolBarLayer;
    RolePropLayer*    m_pRolePropLayer;
    MonsterPropLayer* m_pMonsterPropLayer;
-   
+   NpcPropLayer*     m_pNpcPropLayer;
 };
 
 #endif /* GameUILayer_h */

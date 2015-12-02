@@ -132,10 +132,3 @@ void RolePopupUI::onClickColse(Ref* ref)
     }
     
 }
-
-void RolePopupUI::onClickShop(cocos2d::Ref *ref)
-{
-    CHECK_ACTION(ref);
-    PopupUILayerManager::getInstance()->openPopup(ePopupShop);
-}
-

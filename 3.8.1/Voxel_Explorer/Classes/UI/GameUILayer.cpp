@@ -27,6 +27,7 @@
 #include "GameToolbarLayer.hpp"
 #include "RolePropLayer.hpp"
 #include "MonsterPropLayer.hpp"
+#include "NpcPropLayer.hpp"
 USING_NS_CC;
 GameUILayer::GameUILayer()
 {
@@ -65,6 +66,14 @@ bool GameUILayer::initUi()
     m_pGameInfoLayer->addChild(m_pMonsterPropLayer);
     m_pMonsterPropLayer->setVisible(false);
     
+    m_pNpcPropLayer = NpcPropLayer::create();
+    m_pNpcPropLayer->setAnchorPoint(cocos2d::Vec2::ANCHOR_TOP_RIGHT);
+    m_pNpcPropLayer->setPosition(cocos2d::Vec2(m_pGameInfoLayer->getContentSize().width,0));
+    m_pGameInfoLayer->addChild(m_pNpcPropLayer);
+    m_pNpcPropLayer->setVisible(false);
+    
+    
+    refreshUIView();
     return true;
 }
 
@@ -118,35 +127,64 @@ void GameUILayer::onEventRoleMoneyNotEnough(cocos2d::EventCustom *sender)
 void GameUILayer::onEventRoleNoMana(cocos2d::EventCustom *sender)
 {
     CCLOG("onEventRoleNoMana");
+    std::string msg = UtilityHelper::getLocalStringForUi("NOT_HAVA_MARGIC_VALUE");
+    PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
+    m_pGameToolBarLayer->sendMessage(msg);
 }
 void GameUILayer::onEventRoleBagNoSpace(cocos2d::EventCustom *sender)
 {
     CCLOG("onEventRoleBagNoSpace");
+    std::string msg = UtilityHelper::getLocalStringForUi("NOT_HAVE_BAG_SPACE");
+    PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
+    m_pGameToolBarLayer->sendMessage(msg);
+    
+    CallFunc* func = CallFunc::create([]{
+        PopupUILayerManager::getInstance()->openPopup(ePopupRole);
+    });
+    this->runAction(Sequence::createWithTwoActions(DelayTime::create(1.0f), func));
+
+    
 }
 void GameUILayer::onEventRoleNoCopperKey(cocos2d::EventCustom *sender)
 {
+    std::string msg = UtilityHelper::getLocalStringForUi("NOT_HAVE_COPPER_KEY");
+    PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
+    m_pGameToolBarLayer->sendMessage(msg);
     CCLOG("onEventRoleNoCopperKey");
 }
 void GameUILayer::onEventRoleNoSilverKey(cocos2d::EventCustom *sender)
 {
+    std::string msg = UtilityHelper::getLocalStringForUi("NOT_HAVE_SILVER_KEY");
+    PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
+    m_pGameToolBarLayer->sendMessage(msg);
      CCLOG("onEventRoleNoSilverKey");
 }
 void GameUILayer::onEventRoleNoGoldKey(cocos2d::EventCustom *sender)
 {
+    std::string msg = UtilityHelper::getLocalStringForUi("NOT_HAVE_GOLD_KEY");
+    PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
+    m_pGameToolBarLayer->sendMessage(msg);
      CCLOG("onEventRoleNoGoldKey");
 }
 void GameUILayer::onEventRoleNoRoomKey(cocos2d::EventCustom *sender)
 {
+    std::string msg = UtilityHelper::getLocalStringForUi("NOT_HAVE_ROOM_KEY");
+    PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
+    m_pGameToolBarLayer->sendMessage(msg);
     CCLOG("onEventRoleNoRoomKey");
 }
 void GameUILayer::onEventRoleNoBossKey(cocos2d::EventCustom *sender)
 {
+    std::string msg = UtilityHelper::getLocalStringForUi("NOT_HAVE_BOOS_KEY");
+    PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
+    m_pGameToolBarLayer->sendMessage(msg);
     CCLOG("onEventRoleNoBossKey");
 }
 //武器店
 void GameUILayer::onEventNpcKnightAnsWer(cocos2d::EventCustom *sender)
 {
     CCLOG("onEventNpcKnightAnsWer");
+    
 }
 //任务
 void GameUILayer::onEventNpcChildAnsWer(cocos2d::EventCustom *sender)
@@ -188,38 +226,65 @@ void GameUILayer::onEventNpcNurseAnsWer(cocos2d::EventCustom *sender)
 void GameUILayer::onEventFoundHidderDoor(cocos2d::EventCustom *sender) //发现隐藏门
 {
     CCLOG("onEventFoundHidderDoor");
+    std::string msg = UtilityHelper::getLocalStringForUi("FOUND_HIDDER_DOOR");
+    PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
+    m_pGameToolBarLayer->sendMessage(msg);
 }
 void GameUILayer::onEventFoundHidderTrapToxic(cocos2d::EventCustom *sender)//发现隐藏中毒机关
 {
     CCLOG("onEventFoundHidderTrapToxic");
+    std::string msg = UtilityHelper::getLocalStringForUi("FOUND_HIDDER_TRAP_TOXIC");
+    PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
+    m_pGameToolBarLayer->sendMessage(msg);
 }
 void GameUILayer::onEventFoundHidderTrapFire(cocos2d::EventCustom *sender)//发现隐藏火机关
 {
     CCLOG("onEventFoundHidderTrapFire");
+    std::string msg = UtilityHelper::getLocalStringForUi("FOUND_HIDDER_TRAP_FIRE");
+    PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
+    m_pGameToolBarLayer->sendMessage(msg);
 }
 void GameUILayer::onEventFoundHidderTrapParalyic(cocos2d::EventCustom *sender)//发现隐藏麻痹机关
 {
     CCLOG("onEventFoundHidderTrapParalyic");
+    std::string msg = UtilityHelper::getLocalStringForUi("FOUND_HIDDER_TRAP_PARALYIC");
+    PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
+    m_pGameToolBarLayer->sendMessage(msg);
 }
 void GameUILayer::onEventFoundHidderTrapGripping(cocos2d::EventCustom *sender)//发现隐藏夹子机关
 {
      CCLOG("onEventFoundHidderTrapGripping");
+    std::string msg = UtilityHelper::getLocalStringForUi("FOUND_HIDDER_TRAP_GRIPPING");
+    PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
+    m_pGameToolBarLayer->sendMessage(msg);
 }
 void GameUILayer::onEventFoundHidderTrapSummoning(cocos2d::EventCustom *sender)//发现隐藏召唤机关
 {
      CCLOG("onEventFoundHidderTrapSummoning");
+    std::string msg = UtilityHelper::getLocalStringForUi("FOUND_HIDDER_TRAP_SUMMONING");
+    PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
+    m_pGameToolBarLayer->sendMessage(msg);
 }
 void GameUILayer::onEventFoundHidderTrapWeak(cocos2d::EventCustom *sender)//发现隐藏虚弱机关
 {
     CCLOG("onEventFoundHidderTrapWeak");
+    std::string msg = UtilityHelper::getLocalStringForUi("FOUND_HIDDER_TRAP_WEAK");
+    PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
+    m_pGameToolBarLayer->sendMessage(msg);
 }
 void GameUILayer::onEventFoundHidderMsg(cocos2d::EventCustom *sender)
 {
     CCLOG("onEventFoundHidderMsg");
+    std::string msg = UtilityHelper::getLocalStringForUi("FOUND_HIDDER_TRAP_MSG");
+    PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
+    m_pGameToolBarLayer->sendMessage(msg);
 }
 void GameUILayer::onEventFoundHidderItem(cocos2d::EventCustom *sender)
 {
     CCLOG("onEventFoundHidderItem");
+    std::string msg = UtilityHelper::getLocalStringForUi("FOUND_HIDDER_TRAP_ITEM");
+    PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
+    m_pGameToolBarLayer->sendMessage(msg);
 }
 
 void GameUILayer::onEventGoUpStairs(cocos2d::EventCustom *sender)
@@ -244,7 +309,7 @@ void GameUILayer::onEventTriggerToxic(cocos2d::EventCustom *sender) //中毒机�
     CCLOG("onEventTriggerToxic");
     std::string msg = UtilityHelper::getLocalStringForUi("TRIGGER_MESSAGE_TOXIC_TRAP");
     PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
-    m_pGameToolBarLayer->sendMessage(msg);
+    m_pGameToolBarLayer->sendMessage(msg,PopupUILayerManager::getInstance()->getTipsColor(TipTypes::TIP_NEGATIVE));
     
 }
 void GameUILayer::onEventTriggerFire(cocos2d::EventCustom *sender) //火机关
@@ -252,7 +317,7 @@ void GameUILayer::onEventTriggerFire(cocos2d::EventCustom *sender) //火机关
     CCLOG("onEventTriggerFire");
     std::string msg = UtilityHelper::getLocalStringForUi("TRIGGER_MESSAGE_FIRE_TRAP");
     PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
-     m_pGameToolBarLayer->sendMessage(msg);
+     m_pGameToolBarLayer->sendMessage(msg,PopupUILayerManager::getInstance()->getTipsColor(TipTypes::TIP_NEGATIVE));
     
 }
 void GameUILayer::onEventTriggerParalyic(cocos2d::EventCustom *sender)//麻痹机关
@@ -260,7 +325,7 @@ void GameUILayer::onEventTriggerParalyic(cocos2d::EventCustom *sender)//麻痹�
     CCLOG("onEventTriggerParalyic");
     std::string msg = UtilityHelper::getLocalStringForUi("TRIGGER_MESSAGE_PARALYTIC_TRAP");
     PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
-     m_pGameToolBarLayer->sendMessage(msg);
+     m_pGameToolBarLayer->sendMessage(msg,PopupUILayerManager::getInstance()->getTipsColor(TipTypes::TIP_NEGATIVE));
     
 }
 void GameUILayer::onEventTriggerGripping(cocos2d::EventCustom *sender)//夹子机关
@@ -268,7 +333,7 @@ void GameUILayer::onEventTriggerGripping(cocos2d::EventCustom *sender)//夹子�
     CCLOG("onEventTriggerGripping");
     std::string msg = UtilityHelper::getLocalStringForUi("TRIGGER_MESSAGE_GRIPPING_TRAP");
     PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
-     m_pGameToolBarLayer->sendMessage(msg);
+     m_pGameToolBarLayer->sendMessage(msg,PopupUILayerManager::getInstance()->getTipsColor(TipTypes::TIP_NEGATIVE));
     
 }
 void GameUILayer::onEventTriggerSummoning(cocos2d::EventCustom *sender)//召唤机关
@@ -276,7 +341,7 @@ void GameUILayer::onEventTriggerSummoning(cocos2d::EventCustom *sender)//召唤�
     CCLOG("onEventTriggerSummoning");
     std::string msg = UtilityHelper::getLocalStringForUi("TRIGGER_MESSAGE_SUMMONING_TRAP");
     PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
-     m_pGameToolBarLayer->sendMessage(msg);
+     m_pGameToolBarLayer->sendMessage(msg,PopupUILayerManager::getInstance()->getTipsColor(TipTypes::TIP_NEGATIVE));
     
 }
 void GameUILayer::onEventTriggerWeak(cocos2d::EventCustom *sender) //虚弱机关
@@ -284,7 +349,7 @@ void GameUILayer::onEventTriggerWeak(cocos2d::EventCustom *sender) //虚弱机�
     CCLOG("onEventTriggerWeak");
     std::string msg = UtilityHelper::getLocalStringForUi("TRIGGER_MESSAGE_WEAK_TRAP");
     PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
-     m_pGameToolBarLayer->sendMessage(msg);
+     m_pGameToolBarLayer->sendMessage(msg,PopupUILayerManager::getInstance()->getTipsColor(TipTypes::TIP_NEGATIVE));
    
 }
 void GameUILayer::onEventRoleUserPotion(cocos2d::EventCustom *sender)
@@ -303,29 +368,50 @@ void GameUILayer::onEventRoleUserPotion(cocos2d::EventCustom *sender)
         case PickableItem::PIT_POTION_LESSERHEALTH:
         case PickableItem::PIT_POTION_HEALTH:
             CCLOG("使用治疗药水 恢复HP");
-            PopupUILayerManager::getInstance()->showStatus(TIP_POSITIVE, StringUtils::format(UtilityHelper::getLocalStringForUi("USE_POTION_ TREAT").c_str(),int(potionsProperty->getValue())),pt);
+            PopupUILayerManager::getInstance()->showStatus(TIP_POSITIVE, StringUtils::format(UtilityHelper::getLocalStringForUi("USE_POTION_TREAT").c_str(),int(potionsProperty->getValue())),pt);
+            m_pGameToolBarLayer->sendMessage(StringUtils::format(UtilityHelper::getLocalStringForUi("USE_POTION_TREAT").c_str(),int(potionsProperty->getValue())),PopupUILayerManager::getInstance()->getTipsColor(TIP_POSITIVE));
             break;
         case PickableItem::PIT_POTION_MINORMANA:
         case PickableItem::PIT_POTION_LESSERMANA:
         case PickableItem::PIT_POTION_MANA:
             CCLOG("使用魔法药水 恢复MP");
-            PopupUILayerManager::getInstance()->showStatus(TIP_BLUE, StringUtils::format(UtilityHelper::getLocalStringForUi("USE_POTION_ MAGIC").c_str(),int(potionsProperty->getValue())),pt);
+            PopupUILayerManager::getInstance()->showStatus(TIP_BLUE, StringUtils::format(UtilityHelper::getLocalStringForUi("USE_POTION_MAGIC").c_str(),int(potionsProperty->getValue())),pt);
+             m_pGameToolBarLayer->sendMessage(StringUtils::format(UtilityHelper::getLocalStringForUi("USE_POTION_MAGIC").c_str(),int(potionsProperty->getValue())),PopupUILayerManager::getInstance()->getTipsColor(TIP_POSITIVE));
             break;
         case PickableItem::PIT_POTION_MINORRECOVERY:
         case PickableItem::PIT_POTION_LESSERRECOVERY:
         case PickableItem::PIT_POTION_RECOVERY:
-            CCLOG("恢复药水 恢复HP+MP");
+        {
+             CCLOG("恢复药水 恢复HP+MP");
+            PopupUILayerManager::getInstance()->showStatus(TIP_POSITIVE, StringUtils::format(UtilityHelper::getLocalStringForUi("USE_POTION_TREAT").c_str(),int(potionsProperty->getValue())),pt);
+            m_pGameToolBarLayer->sendMessage(StringUtils::format(UtilityHelper::getLocalStringForUi("USE_POTION_TREAT").c_str(),int(potionsProperty->getValue())),PopupUILayerManager::getInstance()->getTipsColor(TIP_POSITIVE));
+
+            CallFunc* func = CallFunc::create([this,potionsProperty,pt]{
+                PopupUILayerManager::getInstance()->showStatus(TIP_BLUE, StringUtils::format(UtilityHelper::getLocalStringForUi("USE_POTION_MAGIC").c_str(),int(potionsProperty->getValue())),pt);
+                m_pGameToolBarLayer->sendMessage(StringUtils::format(UtilityHelper::getLocalStringForUi("USE_POTION_MAGIC").c_str(),int(potionsProperty->getValue())),PopupUILayerManager::getInstance()->getTipsColor(TIP_POSITIVE));
+
+            });
+            this->runAction(Sequence::createWithTwoActions(DelayTime::create(1.0f), func));
+        }
             break;
         case PickableItem::PIT_POTION_DETOXIFICATION:
+            PopupUILayerManager::getInstance()->showStatus(TIP_POSITIVE, UtilityHelper::getLocalStringForUi("USE_POTION_RELIEVE"),pt);
+            m_pGameToolBarLayer->sendMessage(UtilityHelper::getLocalStringForUi("USE_POTION_RELIEVE"),PopupUILayerManager::getInstance()->getTipsColor(TIP_POSITIVE));
             CCLOG("解除中毒");
             break;
         case PickableItem::PIT_POTION_SPECIFIC:
+            PopupUILayerManager::getInstance()->showStatus(TIP_POSITIVE, UtilityHelper::getLocalStringForUi("USE_POTION_SPECIFIC"),pt);
+            m_pGameToolBarLayer->sendMessage(UtilityHelper::getLocalStringForUi("USE_POTION_SPECIFIC"),PopupUILayerManager::getInstance()->getTipsColor(TIP_POSITIVE));
             CCLOG("解除冰冻、麻痹、火");
             break;
         case PickableItem::PIT_POTION_HEALING:
+            PopupUILayerManager::getInstance()->showStatus(TIP_POSITIVE, UtilityHelper::getLocalStringForUi("USE_POTION_WEAK"),pt);
+            m_pGameToolBarLayer->sendMessage(UtilityHelper::getLocalStringForUi("USE_POTION_WEAK"),PopupUILayerManager::getInstance()->getTipsColor(TIP_POSITIVE));
             CCLOG("解除虚弱");
             break;
         case PickableItem::PIT_POTION_UNIVERSAL:
+            PopupUILayerManager::getInstance()->showStatus(TIP_POSITIVE, UtilityHelper::getLocalStringForUi("USE_POTION_UNIVERSAL"),pt);
+            m_pGameToolBarLayer->sendMessage(UtilityHelper::getLocalStringForUi("USE_POTION_UNIVERSAL"),PopupUILayerManager::getInstance()->getTipsColor(TIP_POSITIVE));
             CCLOG("万能药水,解除中毒，冰冻，麻痹，虚弱，着火");
             break;
         default:
@@ -390,6 +476,10 @@ void GameUILayer::refreshUIView()
     
     if (m_pMonsterPropLayer) {
         m_pMonsterPropLayer->refreshUIView();
+    }
+    
+    if (m_pNpcPropLayer) {
+        m_pNpcPropLayer->refreshUIView();
     }
 }
 void GameUILayer::onEventRoleLevelUp(cocos2d::EventCustom *sender)

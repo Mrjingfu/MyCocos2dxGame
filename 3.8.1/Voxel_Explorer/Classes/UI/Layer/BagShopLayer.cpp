@@ -62,7 +62,8 @@ void BagShopLayer::updatePopupUI()
 {
     ShopPopupUI* shopPopupUi = nullptr;
     PopupUILayer* popupUi = nullptr;
-    if(PopupUILayerManager::getInstance()->isOpenPopup(ePopupShop, popupUi))
+    //暂时
+    if(PopupUILayerManager::getInstance()->isOpenPopup(ePopupWeaponShop, popupUi))
     {
         shopPopupUi = static_cast<ShopPopupUI*>(popupUi);
         if (shopPopupUi) {
@@ -74,10 +75,10 @@ void BagShopLayer::bagItemOpe(int itemId)
 {
     if (itemId==-1)
         return;
-    ItemShopPopupUI* shopItem = static_cast<ItemShopPopupUI*>( PopupUILayerManager::getInstance()->openPopup(epopupItemShop));
+    ItemShopPopupUI* shopItem = static_cast<ItemShopPopupUI*>( PopupUILayerManager::getInstance()->openPopup(ePopupItemShop));
     if (shopItem) {
         shopItem->updateItemPopup(ItemShopPopupUI::IST_SELL,itemId);
-        shopItem->registerCloseCallback(CC_CALLBACK_0(BagShopLayer::updatePopupUI, this));
+//        shopItem->registerCloseCallback(CC_CALLBACK_0(BagShopLayer::updatePopupUI, this));
     }
 }
 void BagShopLayer::removeItemForSell(int itemId)

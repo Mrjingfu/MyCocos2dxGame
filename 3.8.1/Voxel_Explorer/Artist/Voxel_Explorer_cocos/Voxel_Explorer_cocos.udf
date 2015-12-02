@@ -28,5 +28,17 @@
         <EnableHTML5Advanced Value="False" />
       </Value>
     </Item>
+    <Item Key="TabsParamsKey">
+      <Value ctype="TabsInfo">
+        <OpenedDocuments>
+          <FilePathData Path="characterInfoLayer.csd" />
+          <FilePathData Path="gameScene.csd" />
+          <FilePathData Path="gametoolbarLayer.csd" />
+          <FilePathData Path="itemPopupLayer.csd" />
+          <FilePathData Path="itemShopPopupLayer.csd" />
+        </OpenedDocuments>
+        <ActiveDocument Path="itemShopPopupLayer.csd" />
+      </Value>
+    </Item>
   </Properties>
 </UserData>
