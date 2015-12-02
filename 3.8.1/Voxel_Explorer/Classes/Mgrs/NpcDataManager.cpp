@@ -339,7 +339,7 @@ bool NpcDataManager::initTheifRoom()
         {
             itemProperty->adjustByLevel();
             int mul = (int)(itemLevel / 5) + 1;
-            itemProperty->setCopperWhenBuy(mul*2);
+            itemProperty->setCopperWhenBuy(mul*20000);
             m_TheifRoom.push_back(itemProperty);
         }
     }

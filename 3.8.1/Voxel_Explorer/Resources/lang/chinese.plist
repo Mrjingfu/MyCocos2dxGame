@@ -243,7 +243,7 @@
 	<key>PIN_DAGGER_PRO_KNIFE_DESC</key>
 	<string>它会让人呕吐，扎敌人的胃～</string>
 	<key>PIN_DAGGER_PRO_KNIFE_BIDESC</key>
-	<string>屎黄色的匕首，问问你的手上有味么。</string>
+	<string>屎黄色的匕首，闻闻你的手上有味么。</string>
 	<key>PIN_DAGGER_PRO_COLDSTEELDAGGER</key>
 	<string>影子袭击者</string>
 	<key>PIN_DAGGER_PRO_COLDSTEELDAGGER_DESC</key>
@@ -283,7 +283,7 @@
 	<key>PIN_AXE_STONEAXE</key>
 	<string>石斧</string>
 	<key>PIN_AXE_STONEAXE_DESC</key>
-	<string>野蛮原始人，粉碎一些。</string>
+	<string>野蛮原始人，粉碎一切。</string>
 	<key>PIN_AXE_STONEAXE_BIDESC</key>
 	<string>木棍，藤条和石头，你也可以做一把。</string>
 	<key>PIN_AXE_BROADAX</key>

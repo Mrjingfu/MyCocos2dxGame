@@ -89,7 +89,7 @@ public:
     bool useScroll(CChaosNumber id);
     bool useKey(PickableItem::PickableItemType type);
     
-    bool buyItemToBag(PickableItemProperty* buyItemProperty, CChaosNumber count);
+    bool buyItemToBag(PickableItemProperty* buyItemProperty, CChaosNumber count, bool toIndentify = false);
     bool sellItemFromBag(PickableItemProperty* sellItemProperty, CChaosNumber count);
     bool addItemToBag(PickableItem::PickableItemType type, CChaosNumber level);
     bool removeStackableItemFromBag(PickableItem::PickableItemType type, CChaosNumber count);
