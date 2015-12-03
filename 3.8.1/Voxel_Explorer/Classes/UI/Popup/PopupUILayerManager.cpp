@@ -18,7 +18,7 @@
 #include "WeaponShopPopupUI.h"
 #include "MagicShopPopupUI.h"
 #include "TaskPopupUI.hpp"
-#include "AlchemyPopupUI.hpp"
+#include "AlchemyShopPopupUI.hpp"
 #include "GambleShopPopupUI.hpp"
 #include "OldManPopupUI.hpp"
 #include "LittleWitchPopupUI.hpp"
@@ -124,11 +124,11 @@ PopupUILayer* PopupUILayerManager::initPopUp(ePopupType type)
         case ePopupMagicShop:
             popupLayer = MagicShopPopupUI::create();
             break;
-        case ePopupGamble:
+        case ePopupGambleShop:
             popupLayer = GambleShopPopupUI::create();
             break;
-        case ePopupAlchemy:
-            popupLayer = AlchemyPopupUI::create();
+        case ePopupAlchemyShop:
+            popupLayer = AlchemyShopPopupUI::create();
             break;
         case ePopupNurse:
             popupLayer = NursePopupUI::create();
@@ -257,13 +257,14 @@ void PopupUILayerManager::showStatusImport(TipTypes tipType, std::string text)
     Label* m_pLabel = cocos2d::Label::createWithTTF(text,UtilityHelper::getLocalString("FONT_NAME"),36);
     m_pLabel->setScale(0.8);
     m_pLabel->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
-    m_pParentLayer->addChild(m_pLabel);
+    m_pParentLayer->addChild(m_pLabel,eZOrderPopupLayer);
     m_pLabel->setPosition(Vec2(WND_CENTER_X,SCREEN_HEIGHT*0.65));
     m_pLabel->setTextColor(cocos2d::Color4B(getTipsColor(tipType)));
 //    m_pLabel->enableOutline(cocos2d::Color4B::BLUE,1);
     cocos2d::MoveTo*  moveTo = cocos2d::MoveTo::create(0.5,Vec2(WND_CENTER_X,SCREEN_HEIGHT*0.73));
     cocos2d::DelayTime* delay = cocos2d::DelayTime::create(1.0f);
     cocos2d::FadeOut* fadeOut = cocos2d::FadeOut::create(0.2);
+    m_pLabel->resume();
     m_pLabel->runAction(cocos2d::Sequence::create(moveTo,delay,fadeOut,RemoveSelf::create(), nil));
 
     

@@ -79,11 +79,15 @@ void ItemShopBuyPopupUI::refreshUIView()
 {
     ItemPopupUI::refreshUIView();
     
+    
     PickableItemProperty* itemprop = getItemIdProperty();
     if (!itemprop)
         return;
-    int count = 15;
-    if (itemprop->isStackable() ) {
+    
+    m_pItemMoneyLayer->updateItemMoney(itemprop->getCopperWhenBuy());
+    
+    int count = itemprop->getCount();
+    if (itemprop->isStackable() && count >1) {
         
         m_pItemSlider->setMaxPercent(count-1);
         m_pItemSlider->setPercent(m_pItemSlider->getMaxPercent());
@@ -117,7 +121,7 @@ void ItemShopBuyPopupUI::sliderEvent(cocos2d::Ref* sender, cocos2d::ui::Slider::
             if (!itemprop)
                 return;
 
-             m_pItemMoneyLayer->updateItemMoney(itemprop->getValueCopper()*(1+m_pItemSlider->getPercent()));
+             m_pItemMoneyLayer->updateItemMoney(itemprop->getCopperWhenBuy()*(1+m_pItemSlider->getPercent()));
         }
     }
 }
@@ -126,5 +130,52 @@ void ItemShopBuyPopupUI::onClickBuy(cocos2d::Ref *ref)
 {
     CHECK_ACTION(ref);
     CCLOG("onClickBuy");
+    bool isSuccess = false;
+    PickableItemProperty* buyItemProperty = getItemIdProperty();
+    if (!buyItemProperty) {
+        isSuccess =false;
+    }else
+    {
+        int count =1;
+        if (buyItemProperty->isStackable()) {
+            count = m_pItemSlider->getPercent() +1;
+        }
+        CCLOG("onClickBuy count:%d",count);
+        if (m_eShopType == ShopPopupUI::eShopType::ST_GAMBLE) {
+            isSuccess = PlayerProperty::getInstance()->buyItemToBag(buyItemProperty, CChaosNumber(count),true);
+        }else
+            isSuccess = PlayerProperty::getInstance()->buyItemToBag(buyItemProperty, CChaosNumber(count));
+
+    }
+    
+    if (isSuccess) {
+        int itemid = buyItemProperty->getInstanceID();
+        int isRemoveSucces = false;
+        if (m_eShopType == ShopPopupUI::ST_GAMBLE)
+        {
+            isRemoveSucces = NpcDataManager::getInstance()->removeItemFromTheifRoomList(itemid);
+            
+        }else if (m_eShopType == ShopPopupUI::ST_WEAPON)
+        {
+            isRemoveSucces = NpcDataManager::getInstance()->removeItemFromEquipmentShopList(itemid);
+            
+        }else if(m_eShopType == ShopPopupUI::ST_MAGIC)
+        {
+            isRemoveSucces = NpcDataManager::getInstance()->removeItemFromMagicShopList(itemid);
+            
+        }else if (m_eShopType==ShopPopupUI::ST_ALCHEMY)
+        {
+            isRemoveSucces = NpcDataManager::getInstance()->removeItemFromAlchemistRoomList(itemid);
+        }
+        if (isRemoveSucces) {
+             CCLOG("购买成功");
+        }
+    }else
+    {
+         CCLOG("购买失败");
+    }
+    
+   
+    closePopup();
 }
 

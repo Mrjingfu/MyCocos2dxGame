@@ -285,8 +285,8 @@
 		EC795F4C1C0D4A4B0083829B /* ShopPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC795F481C0D4A4B0083829B /* ShopPopupUI.cpp */; };
 		EC795F4F1C0D4AB20083829B /* TaskPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC795F4D1C0D4AB20083829B /* TaskPopupUI.cpp */; };
 		EC795F501C0D4AB20083829B /* TaskPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC795F4D1C0D4AB20083829B /* TaskPopupUI.cpp */; };
-		EC795F531C0D4AD70083829B /* AlchemyPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC795F511C0D4AD70083829B /* AlchemyPopupUI.cpp */; };
-		EC795F541C0D4AD70083829B /* AlchemyPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC795F511C0D4AD70083829B /* AlchemyPopupUI.cpp */; };
+		EC795F531C0D4AD70083829B /* AlchemyShopPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC795F511C0D4AD70083829B /* AlchemyShopPopupUI.cpp */; };
+		EC795F541C0D4AD70083829B /* AlchemyShopPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC795F511C0D4AD70083829B /* AlchemyShopPopupUI.cpp */; };
 		EC795F571C0D4AFD0083829B /* GambleShopPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC795F551C0D4AFD0083829B /* GambleShopPopupUI.cpp */; };
 		EC795F581C0D4AFD0083829B /* GambleShopPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC795F551C0D4AFD0083829B /* GambleShopPopupUI.cpp */; };
 		EC795F5B1C0D4B150083829B /* OldManPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC795F591C0D4B150083829B /* OldManPopupUI.cpp */; };
@@ -603,8 +603,8 @@
 		EC795F481C0D4A4B0083829B /* ShopPopupUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ShopPopupUI.cpp; sourceTree = "<group>"; };
 		EC795F4D1C0D4AB20083829B /* TaskPopupUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TaskPopupUI.cpp; sourceTree = "<group>"; };
 		EC795F4E1C0D4AB20083829B /* TaskPopupUI.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TaskPopupUI.hpp; sourceTree = "<group>"; };
-		EC795F511C0D4AD70083829B /* AlchemyPopupUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AlchemyPopupUI.cpp; sourceTree = "<group>"; };
-		EC795F521C0D4AD70083829B /* AlchemyPopupUI.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = AlchemyPopupUI.hpp; sourceTree = "<group>"; };
+		EC795F511C0D4AD70083829B /* AlchemyShopPopupUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AlchemyShopPopupUI.cpp; sourceTree = "<group>"; };
+		EC795F521C0D4AD70083829B /* AlchemyShopPopupUI.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = AlchemyShopPopupUI.hpp; sourceTree = "<group>"; };
 		EC795F551C0D4AFD0083829B /* GambleShopPopupUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GambleShopPopupUI.cpp; sourceTree = "<group>"; };
 		EC795F561C0D4AFD0083829B /* GambleShopPopupUI.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GambleShopPopupUI.hpp; sourceTree = "<group>"; };
 		EC795F591C0D4B150083829B /* OldManPopupUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OldManPopupUI.cpp; sourceTree = "<group>"; };
@@ -1158,10 +1158,10 @@
 				EC795F3F1C0D42340083829B /* MagicShopPopupUI.h */,
 				EC795F551C0D4AFD0083829B /* GambleShopPopupUI.cpp */,
 				EC795F561C0D4AFD0083829B /* GambleShopPopupUI.hpp */,
+				EC795F511C0D4AD70083829B /* AlchemyShopPopupUI.cpp */,
+				EC795F521C0D4AD70083829B /* AlchemyShopPopupUI.hpp */,
 				EC795F4D1C0D4AB20083829B /* TaskPopupUI.cpp */,
 				EC795F4E1C0D4AB20083829B /* TaskPopupUI.hpp */,
-				EC795F511C0D4AD70083829B /* AlchemyPopupUI.cpp */,
-				EC795F521C0D4AD70083829B /* AlchemyPopupUI.hpp */,
 				EC795F591C0D4B150083829B /* OldManPopupUI.cpp */,
 				EC795F5A1C0D4B150083829B /* OldManPopupUI.hpp */,
 				EC795F5D1C0D4B560083829B /* LittleWitchPopupUI.cpp */,
@@ -1474,7 +1474,7 @@
 				55ECFB441BC79852007270CD /* Player.cpp in Sources */,
 				55A9807B1C05610400722C9D /* FakeShadow.cpp in Sources */,
 				EC3CC99F1C088F4F00F8CFC8 /* MenuUILayer.cpp in Sources */,
-				EC795F531C0D4AD70083829B /* AlchemyPopupUI.cpp in Sources */,
+				EC795F531C0D4AD70083829B /* AlchemyShopPopupUI.cpp in Sources */,
 				55F81CC81BDB928F002EC075 /* MaterialProperty.cpp in Sources */,
 				55F116D41C04450200A6C191 /* FaneLevel.cpp in Sources */,
 				EC5D56901C0C4E2200F5EDDF /* DistPopupUI.cpp in Sources */,
@@ -1601,7 +1601,7 @@
 				EC795F501C0D4AB20083829B /* TaskPopupUI.cpp in Sources */,
 				55338AEF1BD892FC00EA316F /* ShadowDragon.cpp in Sources */,
 				55338AE71BD8928E00EA316F /* Giant.cpp in Sources */,
-				EC795F541C0D4AD70083829B /* AlchemyPopupUI.cpp in Sources */,
+				EC795F541C0D4AD70083829B /* AlchemyShopPopupUI.cpp in Sources */,
 				EC3CC9821C088F4F00F8CFC8 /* PromptLayer.cpp in Sources */,
 				55F81CB91BDB8B81002EC075 /* ArmorProperty.cpp in Sources */,
 				550C32ED1BDDE8740015124E /* SecondWeaponProperty.cpp in Sources */,

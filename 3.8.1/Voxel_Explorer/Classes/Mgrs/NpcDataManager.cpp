@@ -85,7 +85,7 @@ bool NpcDataManager::removeItemFromEquipmentShopList(CChaosNumber id)
         if((*iter) != nullptr && (*iter)->getInstanceID() == id.GetLongValue())
         {
             PickableItemProperty* property = static_cast<PickableItemProperty*>(*iter);
-            CC_SAFE_DELETE(property);
+            CC_SAFE_RELEASE(property);
             m_EquipmentShop.erase(iter);
             m_bDirty = true;
             return true;
@@ -100,7 +100,7 @@ bool NpcDataManager::removeItemFromMagicShopList(CChaosNumber id)
         if((*iter) != nullptr && (*iter)->getInstanceID() == id.GetLongValue())
         {
             PickableItemProperty* property = static_cast<PickableItemProperty*>(*iter);
-            CC_SAFE_DELETE(property);
+            CC_SAFE_RELEASE(property);
             m_MagicShop.erase(iter);
             m_bDirty = true;
             return true;
@@ -115,7 +115,7 @@ bool NpcDataManager::removeItemFromAlchemistRoomList(CChaosNumber id)
         if((*iter) != nullptr && (*iter)->getInstanceID() == id.GetLongValue())
         {
             PickableItemProperty* property = static_cast<PickableItemProperty*>(*iter);
-            CC_SAFE_DELETE(property);
+            CC_SAFE_RELEASE(property);
             m_AlchemistRoom.erase(iter);
             m_bDirty = true;
             return true;
@@ -131,7 +131,7 @@ bool NpcDataManager::removeItemFromTheifRoomList(CChaosNumber id)
         if((*iter) != nullptr && (*iter)->getInstanceID() == id.GetLongValue())
         {
             PickableItemProperty* property = static_cast<PickableItemProperty*>(*iter);
-            CC_SAFE_DELETE(property);
+            CC_SAFE_RELEASE(property);
             m_TheifRoom.erase(iter);
             m_bDirty = true;
             return true;

@@ -174,7 +174,7 @@ void ItemPopupUI::IdentifyEquiipFrame()
     
     ui::LinearLayoutParameter* linerParmter = ui::LinearLayoutParameter::create();
     linerParmter->setGravity(cocos2d::ui::LinearLayoutParameter::LinearGravity::CENTER_VERTICAL);
-    linerParmter->setMargin(ui::Margin(10,-6,0,0));
+    linerParmter->setMargin(ui::Margin(10,-7,0,0));
     
     if (itemprop->getPickableItemPropertyType() == PickableItemProperty::PIPT_WEAPON)
     {
@@ -210,10 +210,10 @@ void ItemPopupUI::IdentifyEquiipFrame()
                 
             }else if(effect ==AE_MAGICITEM_FIND_RATE){
                 
-                itemPropStr = StringUtils::format(UtilityHelper::getLocalStringForUi("EQUIP_PROP_MAGIC").c_str(),int(itemproperty->getAddedMagicItemFindRate()));
+                itemPropStr = StringUtils::format(UtilityHelper::getLocalStringForUi("EQUIP_PROP_MAGIC").c_str(),int(itemproperty->getAddedMagicItemFindRate().GetFloatValue()*100.0));
             }else if (effect == AE_CRITICALSTRICK_RATE)
             {
-                itemPropStr = StringUtils::format(UtilityHelper::getLocalStringForUi("EQUIP_PROP_CRITICAL_STRIKE").c_str(),int(itemproperty->getAddedCriticalStrikeRate()));
+                itemPropStr = StringUtils::format(UtilityHelper::getLocalStringForUi("EQUIP_PROP_CRITICAL_STRIKE").c_str(),int(itemproperty->getAddedCriticalStrikeRate().GetFloatValue()*100.0));
             }else if (effect == AE_SEARCH_DISTANCE)
             {
                 itemPropStr = StringUtils::format(UtilityHelper::getLocalStringForUi("EQUIP_PROP_SEQRCH").c_str(),int(itemproperty->getAddedSearchDistance()));
@@ -254,7 +254,7 @@ void ItemPopupUI::IdentifyEquiipFrame()
                 itemPropStr = StringUtils::format(UtilityHelper::getLocalStringForUi("EQUIP_PROP_MP").c_str(),int(itemproperty->getAddedMaxMp()));
  
             }else if(effect ==AE_MAGICITEM_FIND_RATE){
-                itemPropStr = StringUtils::format(UtilityHelper::getLocalStringForUi("EQUIP_PROP_MAGIC").c_str(),int(itemproperty->getAddedMagicItemFindRate()));
+                itemPropStr = StringUtils::format(UtilityHelper::getLocalStringForUi("EQUIP_PROP_MAGIC").c_str(),int(itemproperty->getAddedMagicItemFindRate().GetFloatValue()*100.0));
                 
             }else if (effect ==AE_SEARCH_DISTANCE)
             {
@@ -262,7 +262,7 @@ void ItemPopupUI::IdentifyEquiipFrame()
             }
             else if (effect == AE_DODGE_RATE)
             {
-                itemPropStr = StringUtils::format(UtilityHelper::getLocalStringForUi("EQUIP_PROP_DODGE").c_str(),int(itemproperty->getAddedMagicItemFindRate()));
+                itemPropStr = StringUtils::format(UtilityHelper::getLocalStringForUi("EQUIP_PROP_DODGE").c_str(),int(itemproperty->getAddedDodgeRate().GetFloatValue()*100.0));
                 
             }
         }
@@ -303,7 +303,7 @@ void ItemPopupUI::IdentifyEquiipFrame()
                 
             }else if(effect ==AE_MAGICITEM_FIND_RATE){
                 
-                itemPropStr =StringUtils::format(UtilityHelper::getLocalStringForUi("EQUIP_PROP_MAGIC").c_str(),int(itemproperty->getAddedMagicItemFindRate()));
+                itemPropStr =StringUtils::format(UtilityHelper::getLocalStringForUi("EQUIP_PROP_MAGIC").c_str(),int(itemproperty->getAddedMagicItemFindRate().GetFloatValue()*100.0));
                
             }else if (effect ==AE_SEARCH_DISTANCE)
             {
@@ -311,15 +311,15 @@ void ItemPopupUI::IdentifyEquiipFrame()
                 
             }else if (effect == AE_DODGE_RATE)
             {
-                itemPropStr =StringUtils::format(UtilityHelper::getLocalStringForUi("EQUIP_PROP_DODGE").c_str(),int(itemproperty->getAddedMagicItemFindRate()));
+                itemPropStr =StringUtils::format(UtilityHelper::getLocalStringForUi("EQUIP_PROP_DODGE").c_str(),int(itemproperty->getAddedDodgeRate().GetFloatValue()*100.0));
             }else if (effect == AE_BLOCK_RATE)
             {
-                itemPropStr =StringUtils::format(UtilityHelper::getLocalStringForUi("EQUIP_PROP_BLOCK").c_str(),int(itemproperty->getAddedMagicItemFindRate()));
+                itemPropStr =StringUtils::format(UtilityHelper::getLocalStringForUi("EQUIP_PROP_BLOCK").c_str(),int(itemproperty->getAddedBlockRate().GetFloatValue()*100.0));
                 
             }else if (effect == AE_CRITICALSTRICK_RATE)
             {
                 
-                itemPropStr =StringUtils::format(UtilityHelper::getLocalStringForUi("EQUIP_PROP_CRITICAL_STRIKE").c_str(),int(itemproperty->getAddedMagicItemFindRate()));
+                itemPropStr =StringUtils::format(UtilityHelper::getLocalStringForUi("EQUIP_PROP_CRITICAL_STRIKE").c_str(),int(itemproperty->getAddedCriticalStrikeRate().GetFloatValue()*100.0));
             }
             if (itemPropStr.empty())
                 continue;
@@ -368,7 +368,7 @@ void ItemPopupUI::IdentifyEquiipFrame()
                 
             }else if(effect ==AE_MAGICITEM_FIND_RATE){
                 
-                itemPropStr =StringUtils::format(UtilityHelper::getLocalStringForUi("EQUIP_PROP_MAGIC").c_str(),int(itemproperty->getAddedMagicItemFindRate()));
+                itemPropStr =StringUtils::format(UtilityHelper::getLocalStringForUi("EQUIP_PROP_MAGIC").c_str(),int(itemproperty->getAddedMagicItemFindRate().GetFloatValue()*100.0));
                 
             }else if (effect ==AE_SEARCH_DISTANCE)
             {
@@ -376,15 +376,15 @@ void ItemPopupUI::IdentifyEquiipFrame()
                 
             }else if (effect == AE_DODGE_RATE)
             {
-                itemPropStr =StringUtils::format(UtilityHelper::getLocalStringForUi("EQUIP_PROP_DODGE").c_str(),int(itemproperty->getAddedMagicItemFindRate()));
+                itemPropStr =StringUtils::format(UtilityHelper::getLocalStringForUi("EQUIP_PROP_DODGE").c_str(),int(itemproperty->getAddedDodgeRate().GetFloatValue()*100.0));
             }else if (effect == AE_BLOCK_RATE)
             {
-                itemPropStr =StringUtils::format(UtilityHelper::getLocalStringForUi("EQUIP_PROP_BLOCK").c_str(),int(itemproperty->getAddedMagicItemFindRate()));
+                itemPropStr =StringUtils::format(UtilityHelper::getLocalStringForUi("EQUIP_PROP_BLOCK").c_str(),int(itemproperty->getAddedBlockRate().GetFloatValue()*100.0));
                 
             }else if (effect == AE_CRITICALSTRICK_RATE)
             {
                 
-                itemPropStr =StringUtils::format(UtilityHelper::getLocalStringForUi("EQUIP_PROP_CRITICAL_STRIKE").c_str(),int(itemproperty->getAddedMagicItemFindRate()));
+                itemPropStr =StringUtils::format(UtilityHelper::getLocalStringForUi("EQUIP_PROP_CRITICAL_STRIKE").c_str(),int(itemproperty->getAddedCriticalStrikeRate().GetFloatValue()*100.0));
             }
             if (itemPropStr.empty())
             {
@@ -449,7 +449,7 @@ void ItemPopupUI::addMoneyUI()
 
         ui::LinearLayoutParameter* lastlinerParmter = ui::LinearLayoutParameter::create();
         lastlinerParmter->setGravity(cocos2d::ui::LinearLayoutParameter::LinearGravity::CENTER_VERTICAL);
-        lastlinerParmter->setMargin(ui::Margin(10,-6,0,0));
+        lastlinerParmter->setMargin(ui::Margin(0,-7,0,0));
         
         addSize = addSize +cocos2d::Size(0,m_pItemMoneyLayer->getContentSize().height);
         m_pItemMoneyLayer->setLayoutParameter(lastlinerParmter);
@@ -465,7 +465,12 @@ void ItemPopupUI::addBottomUI()
     cocos2d::Size addSize = cocos2d::Size::ZERO;
     if (m_pBottomFrame) {
 
+        ui::LinearLayoutParameter* lastlinerParmter = ui::LinearLayoutParameter::create();
+        lastlinerParmter->setGravity(cocos2d::ui::LinearLayoutParameter::LinearGravity::CENTER_VERTICAL);
+        lastlinerParmter->setMargin(ui::Margin(0,2,0,0));
+        
         addSize = cocos2d::Size(0,m_pBottomFrame->getContentSize().height);
+        m_pBottomFrame->setLayoutParameter(lastlinerParmter);
         m_pBottomFrame->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
         m_pAttrFrame->addChild(m_pBottomFrame);
     }
@@ -562,6 +567,7 @@ void ItemPopupUI::updateEquipItem()
     m_pItemlv->setString(StringUtils::format("LV.%ld",itemprop->getLevel().GetLongValue()));
     //添加装备属性
     IdentifyEquiipFrame();
+
     
     //装备等级>人物等级不可装备
     if ( itemprop->getLevel().GetLongValue() > PlayerProperty::getInstance()->getLevel().GetLongValue()) {
@@ -570,7 +576,7 @@ void ItemPopupUI::updateEquipItem()
         
         ui::LinearLayoutParameter* linerParmter = ui::LinearLayoutParameter::create();
         linerParmter->setGravity(cocos2d::ui::LinearLayoutParameter::LinearGravity::CENTER_VERTICAL);
-        linerParmter->setMargin(ui::Margin(10,-6,0,0));
+        linerParmter->setMargin(ui::Margin(10,-7,0,0));
         
         addItemProp(str,PopupUILayerManager::getInstance()->getTipsColor(TIP_NEGATIVE),linerParmter);
         updateItemPopupSize(cocos2d::Size(0,11));
@@ -625,6 +631,10 @@ void ItemPopupUI::updateUseItem()
     useItemFrame();
     addMoneyUI();
     addBottomUI();
+    if (m_pBtnEquip) {
+        m_pBtnEquip->setTitleFontName(UtilityHelper::getLocalString("FONT_NAME"));
+        m_pBtnEquip->setTitleText("USE");
+    }
     
 }
 void ItemPopupUI::updateItemAttrUI()

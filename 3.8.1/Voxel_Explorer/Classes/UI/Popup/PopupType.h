@@ -22,8 +22,8 @@ enum ePopupType
     ePopupNurse,            //护士弹窗
     ePopupLittleWitch,      //随机事件弹窗
     ePopupOldMan,           //智者
-    ePopupGamble,           //赌博
-    ePopupAlchemy,          //炼金
+    ePopupGambleShop,           //赌博
+    ePopupAlchemyShop,          //炼金
     ePopupMagicShop,        //魔法物品
     ePopupWeaponShop,       //装备物品
     ePopupTask,             //任务

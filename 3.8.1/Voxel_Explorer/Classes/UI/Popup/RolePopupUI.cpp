@@ -66,8 +66,9 @@ bool RolePopupUI::initUi()
     
     m_pBtnClose = ui::Button::create("ui_btn_back_1.png","","",TextureResType::PLIST);
     m_pBtnClose->setScale9Enabled(true);
-    m_pBtnClose->setPosition(Vec2(SCREEN_WIDTH*0.8, SCREEN_HEIGHT*0.8));
-    m_pRootNode->addChild(m_pBtnClose);
+    m_pBtnClose->setAnchorPoint(cocos2d::Vec2::ZERO);
+    m_pBtnClose->setPosition(cocos2d::Vec2(m_pRoleLayer->getContentSize().width*0.9,m_pRoleLayer->getContentSize().height*1.1));
+    m_pRoleLayer->addChild(m_pBtnClose);
     m_pBtnClose->addClickEventListener(CC_CALLBACK_1(RolePopupUI::onClickColse, this));
   
     refreshUIView();

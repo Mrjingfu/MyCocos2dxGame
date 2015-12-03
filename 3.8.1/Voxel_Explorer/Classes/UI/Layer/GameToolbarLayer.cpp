@@ -173,7 +173,11 @@ void GameToolbarLayer::onClickBag(Ref* ref)
         return;
     }
     
-    PopupUILayerManager::getInstance()->openPopup(ePopupRole);
+//    PopupUILayerManager::getInstance()->openPopup(ePopupRole);
+    PopupUILayer* popupUILayer = PopupUILayerManager::getInstance()->openPopup(ePopupWeaponShop);
+    if (popupUILayer) {
+        popupUILayer->setDarkLayerVisble(false);
+    }
     onClickDistTipsFrame(nullptr);
 }
 void GameToolbarLayer::onClickMap(cocos2d::Ref *ref)

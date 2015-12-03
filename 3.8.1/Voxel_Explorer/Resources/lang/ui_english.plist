@@ -79,13 +79,13 @@
 	<key>EQUIP_PROP_MP</key>
 	<string>+%d MP</string>
 	<key>EQUIP_PROP_BLOCK</key>
-	<string>+%d% Block Rate</string>
+	<string>+%d%% Block Rate</string>
 	<key>EQUIP_PROP_CRITICAL_STRIKE</key>
-	<string>+%d% Critical Strike Rate</string>
+	<string>+%d%% Critical Strike Rate</string>
 	<key>EQUIP_PROP_DODGE</key>
-	<string>+%d% Dodge Rate</string>
+	<string>+%d%% Dodge Rate</string>
 	<key>EQUIP_PROP_MAGIC</key>
-	<string>+%d% Magic Find Rate</string>
+	<string>+%d%% Magic Find Rate</string>
 	<key>EQUIP_PROP_SEQRCH</key>
 	<string>+%d Search Scope</string>
 	<key>EQUIP_PROP_LIGHT</key>
@@ -101,7 +101,7 @@
 	<key>ITEM_PROP_TYPE_WEAPON</key>
 	<string>WEAPON</string>
 	<key>ITEM_PROP_TYPE_SECOND_WEAPON</key>
-	<string>SECOND_WEAPON</string>
+	<string>SECOND WEAPON</string>
 	<key>ITEM_PROP_TYPE_ARMOR</key>
 	<string>ARMOR</string>
 	<key>ITEM_PROP_TYPE_MAGIC_ORNAMENT</key>
@@ -117,7 +117,7 @@
 	<key>ITEM_PROP_TYPE_SUNDRIES</key>
 	<string>SUNDRIES</string>
 	<key>ITEM_MONEY_DESC</key>
-	<string>Selling price:</string>
+	<string>Sell price:</string>
 	<key>USE_POTION_ TREAT</key>
 	<string>+%d HP</string>
 	<key>USE_POTION_ MAGIC</key>
@@ -162,8 +162,10 @@
 	<string>背包没有空间了!!</string>
 	<key>NOT_HAVA_MARGIC_VALUE</key>
 	<string>魔法值不够！！</string>
+	<key>NOT_HAVA_COIN_VALUE</key>
+	<string>货币不足！</string>
 	<key>NOT_EQUIP_LEVEL_ENOUGH</key>
-	<string>等级不足不可装备 !!</string>
+	<string>Level is not enough!</string>
 	<key>TRIGGER_MESSAGE_TOXIC_TRAP</key>
 	<string>你中毒了！</string>
 	<key>TRIGGER_MESSAGE_FIRE_TRAP</key>

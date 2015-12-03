@@ -29,6 +29,7 @@ bool ItemMoneyLayer::initUi()
         return false;
      if(!load("itemMoneyLayer.csb",false))
          return false;
+    setAnchorPoint(cocos2d::Vec2::ANCHOR_MIDDLE);
     setContentSize(m_pRootNode->getContentSize());
     m_pRootNode->setPosition(getContentSize()*0.5);
     return true;

@@ -48,7 +48,8 @@ void ItemShopSellPopupUI::refreshUIView()
     {
         m_pItemSlider->setVisible(false);
         m_pSellCount->setVisible(false);
-        m_pBtnEquip->setPosition(cocos2d::Vec2(m_pBottomFrame->getContentSize().width*0.5,m_pBtnEquip->getPositionY()));
+        m_pBtnEquip->setAnchorPoint(cocos2d::Vec2::ANCHOR_MIDDLE);
+       m_pBtnEquip->setPosition(cocos2d::Vec2(m_pBottomFrame->getContentSize().width*0.5,m_pBtnEquip->getPositionY()));
         
     }
     //暂时
@@ -81,4 +82,27 @@ void ItemShopSellPopupUI::onClickSell(cocos2d::Ref *ref)
 {
     CHECK_ACTION(ref);
     CCLOG("onClickSell");
+    bool isSuccess = false;
+     PickableItemProperty* itemprop = getItemIdProperty();
+    if (!itemprop) {
+        isSuccess = false;
+    }else
+    {
+        int count =1;
+        if (itemprop->isStackable()) {
+            count = m_pItemSlider->getPercent() +1;
+        }
+        CCLOG("onClickSell count:%d",count);
+        isSuccess = PlayerProperty::getInstance()->sellItemFromBag(itemprop, count);
+    }
+    
+    if (isSuccess) {
+        CCLOG("贩卖成功");
+        closePopup();
+    }else
+    {
+        CCLOG("贩卖失败");
+    }
+    
+    
 }

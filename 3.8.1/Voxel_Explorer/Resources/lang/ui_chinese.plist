@@ -17,13 +17,13 @@
 	<key>PROP_SHOW_SEARCH_DIS</key>
 	<string>侦查范围：%d</string>
 	<key>PROP_SHOW_MARGIC_FIND</key>
-	<string>取魔率：%d</string>
+	<string>取魔率：%d%%</string>
 	<key>PROP_SHOW_CRITICAL_STRIKE</key>
-	<string>暴击率：%d</string>
+	<string>暴击率：%d%%</string>
 	<key>PROP_SHOW_BLOCK</key>
-	<string>格挡率：%d</string>
+	<string>格挡率：%d%%</string>
 	<key>PROP_SHOW_DODGE</key>
-	<string>闪避率：%d</string>
+	<string>闪避率：%d%%</string>
 	<key>PROP_SHOW_ATTACK</key>
 	<string>攻击力：%d-%d</string>
 	<key>PROP_SHOW_DEFENSE</key>
@@ -79,13 +79,13 @@
 	<key>EQUIP_PROP_MP</key>
 	<string>+%d魔法值</string>
 	<key>EQUIP_PROP_BLOCK</key>
-	<string>+%d%格挡率</string>
+	<string>+%d%%格挡率</string>
 	<key>EQUIP_PROP_CRITICAL_STRIKE</key>
-	<string>+%d%暴击率</string>
+	<string>+%d%%暴击率</string>
 	<key>EQUIP_PROP_DODGE</key>
-	<string>+%d%闪避率</string>
+	<string>+%d%%闪避率</string>
 	<key>EQUIP_PROP_MAGIC</key>
-	<string>+%d%取魔率</string>
+	<string>+%d%%取魔率</string>
 	<key>EQUIP_PROP_SEQRCH</key>
 	<string>+%d搜索范围</string>
 	<key>EQUIP_PROP_LIGHT</key>
@@ -162,8 +162,10 @@
 	<string>背包没有空间了!!</string>
 	<key>NOT_HAVA_MARGIC_VALUE</key>
 	<string>魔法值不够！！</string>
+	<key>NOT_HAVA_COIN_VALUE</key>
+	<string>货币不足！</string>
 	<key>NOT_EQUIP_LEVEL_ENOUGH</key>
-	<string>等级不足不可装备 !!</string>
+	<string>等级不足 !</string>
 	<key>TRIGGER_MESSAGE_TOXIC_TRAP</key>
 	<string>你中毒了！</string>
 	<key>TRIGGER_MESSAGE_FIRE_TRAP</key>
