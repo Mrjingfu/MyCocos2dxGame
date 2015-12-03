@@ -13,21 +13,21 @@
 #include "ShopPopupUI.h"
 class PickableItemProperty;
 class ItemShopBuyPopupUI:public ItemPopupUI {
-    
+protected:
     ItemShopBuyPopupUI();
 public:
   
     CREATE_FUNC(ItemShopBuyPopupUI);
     virtual ~ItemShopBuyPopupUI();
-    virtual bool initUi() override;
-    virtual bool addEvents() override;
-    virtual void updateItemPopup(ShopPopupUI::eShopType type,int itemId) ;
+    virtual bool initBottom() override;
+    virtual void refreshUIView() override;
+    virtual void setItemShopProp(ShopPopupUI::eShopType type,int itemId) ;
 protected:
     virtual PickableItemProperty* getItemIdProperty()const override;
+    virtual void sliderEvent(cocos2d::Ref* sender, cocos2d::ui::Slider::EventType type);
 private:
     void onClickBuy(Ref* ref);
-    void sliderEvent(cocos2d::Ref* sender, cocos2d::ui::Slider::EventType type);
-private:
+protected:
     ShopPopupUI::eShopType   m_eShopType;
     cocos2d::ui::Slider*     m_pItemSlider;
     cocos2d::ui::Text*       m_pSellCount;

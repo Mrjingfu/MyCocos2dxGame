@@ -20,23 +20,27 @@ public:
     CREATE_FUNC(ItemPopupUI);
     virtual bool initUi() override;
     virtual bool addEvents() override;
-    virtual void updateItemPopup(int itemId);
+    virtual bool initBottom();
+    virtual void refreshUIView() override;
+    virtual void setItemId(int itemId);
+    virtual void updateItemAttrUI();//更新道具属性UI
+    virtual void updateEquipItem();//更新武器道具UI
+    virtual void updateUseItem();//更新使用道具UI
     virtual ~ItemPopupUI();
 protected:
     virtual void closePopup() override;
+    virtual void addBottomUI();//添加底部UI,如按钮等
+    virtual void addMoneyUI();//添加价格UI
+    virtual void updateItemBaseProp();//更新道具基础属性UI
+    void updateItemPopupSize(cocos2d::Size addSize);
     virtual PickableItemProperty* getItemIdProperty()const;
-    virtual void initButtonFrame();
     void addItemProp(std::string propStr,cocos2d::Color3B fontColor=cocos2d::Color3B::WHITE,cocos2d::ui::LinearLayoutParameter* parmLayout = nullptr);
-   
-    void noEquipFrame(bool isEquip);//不可装备对话框 isEquip 是否显示装备按钮
-private:
-   
     void onClickDiscard(Ref* ref);
     void onClickEquip(Ref* ref);
     void onClickUser(Ref* ref);
-    void IdentifyEquiipFrame();
-    void itemFrame();
-
+    void IdentifyEquiipFrame();//添加装备鉴定属性UI
+    void useItemFrame();//添加使用道具UI
+    
     
 protected:
     
@@ -49,13 +53,15 @@ protected:
 
     cocos2d::ui::Text*  m_pItemType;               //类型
     cocos2d::ui::Text*  m_pItemIdentifyDesc;
-    cocos2d::ui::Button* m_pBtnDiscard;
-    cocos2d::ui::Button* m_pBtnEquip;
     cocos2d::ui::Layout* m_pAttrFrame;
     cocos2d::ui::Layout* m_pItemPropFrame;
-    cocos2d::ui::Layout* m_pButtonFrame;
     cocos2d::ui::ImageView* m_pBackGround;
+
     ItemMoneyLayer* m_pItemMoneyLayer;
+    
+    cocos2d::ui::Layout* m_pBottomFrame;
+    cocos2d::ui::Button* m_pBtnDiscard;
+    cocos2d::ui::Button* m_pBtnEquip;
     int m_nItemId;
 };
 

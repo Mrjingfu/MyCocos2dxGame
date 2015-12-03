@@ -141,7 +141,7 @@ void BagLayer::refreshUIView()
     int secondWeaponId = int(PlayerProperty::getInstance()->getEquipedSecondWeaponID());
     
     if (m_bIsIndetify) {
-        setSortBtnEnable(true, false, true);
+//        setSortBtnEnable(true, false, true);
     }
     
     std::vector<PickableItemProperty*> items = getItems();
@@ -161,7 +161,7 @@ void BagLayer::refreshUIView()
             if (itemtype ==PickableItemProperty::PIPT_WEAPON ||itemtype ==PickableItemProperty::PIPT_SECOND_WEAPON||
                 itemtype ==PickableItemProperty::PIPT_ARMOR ||itemtype ==PickableItemProperty::PIPT_MAGIC_ORNAMENT )
             {
-                if (!itemProp->isEquipable()) {
+                if (!itemProp->isEquipable() ) {
                     m_BagMsgLayer->setItemNoUse(itemProp->getInstanceID(), itemUi->getPosition());
                 }
             }
@@ -425,7 +425,7 @@ void BagLayer::bagItemOpe(int currentItemId)
         Equippopupui = static_cast<ItemPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupType::ePopupEquipItem));
         if (Equippopupui)
         {
-            Equippopupui->updateItemPopup(equipId);
+            Equippopupui->setItemId(equipId);
             Equippopupui->getRootNode()->setPosition(cocos2d::Vec2(Equippopupui->getRootNode()->getPositionX(),SCREEN_HEIGHT*0.7));
         }
     }
@@ -444,7 +444,7 @@ void BagLayer::bagItemOpe(int currentItemId)
             this->m_bIsIndetify =false;
             this->refreshUIView();
         });
-        popupui->updateItemPopup(currentItemId);
+        popupui->setItemId(currentItemId);
         
         if (equipId !=-1 && Equippopupui)
         {

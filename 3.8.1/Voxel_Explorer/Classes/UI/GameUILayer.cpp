@@ -123,6 +123,10 @@ void GameUILayer::onTouchEnded(cocos2d::Touch *touch, cocos2d::Event *event)
 void GameUILayer::onEventRoleMoneyNotEnough(cocos2d::EventCustom *sender)
 {
     CCLOG("onEventRoleMoneyNotEnough");
+    std::string msg = UtilityHelper::getLocalStringForUi("NOT_HAVA_COIN_VALUE");
+    PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
+    m_pGameToolBarLayer->sendMessage(msg);
+    
 }
 void GameUILayer::onEventRoleNoMana(cocos2d::EventCustom *sender)
 {
@@ -184,7 +188,10 @@ void GameUILayer::onEventRoleNoBossKey(cocos2d::EventCustom *sender)
 void GameUILayer::onEventNpcKnightAnsWer(cocos2d::EventCustom *sender)
 {
     CCLOG("onEventNpcKnightAnsWer");
-    
+    PopupUILayer* popupUILayer = PopupUILayerManager::getInstance()->openPopup(ePopupWeaponShop);
+    if (popupUILayer) {
+        popupUILayer->setDarkLayerVisble(false);
+    }
 }
 //任务
 void GameUILayer::onEventNpcChildAnsWer(cocos2d::EventCustom *sender)
@@ -195,16 +202,28 @@ void GameUILayer::onEventNpcChildAnsWer(cocos2d::EventCustom *sender)
 void GameUILayer::onEventNpcShopGirlAnsWer(cocos2d::EventCustom *sender)
 {
      CCLOG("onEventNpcChildAnsWer");
+    PopupUILayer* popupUILayer = PopupUILayerManager::getInstance()->openPopup(ePopupMagicShop);
+    if (popupUILayer) {
+        popupUILayer->setDarkLayerVisble(false);
+    }
 }
 //炼金店
 void GameUILayer::onEventNpcOldLadyAnsWer(cocos2d::EventCustom *sender)
 {
     CCLOG("onEventNpcOldLadyAnsWer");
+    PopupUILayer* popupUILayer = PopupUILayerManager::getInstance()->openPopup(ePopupAlchemyShop);
+    if (popupUILayer) {
+        popupUILayer->setDarkLayerVisble(false);
+    }
 }
 //赌博店
 void GameUILayer::onEventNpcWeiRdoAnsWer(cocos2d::EventCustom *sender)
 {
     CCLOG("onEventNpcWeiRdoAnsWer");
+    PopupUILayer* popupUILayer = PopupUILayerManager::getInstance()->openPopup(ePopupGambleShop);
+    if (popupUILayer) {
+        popupUILayer->setDarkLayerVisble(false);
+    }
 }
 //智者
 void GameUILayer::onEventNpcOldManAnsWer(cocos2d::EventCustom *sender)

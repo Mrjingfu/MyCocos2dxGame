@@ -62,7 +62,7 @@ void MagicOrnamentProperty::adjustByLevel()
     {
         if(std::find(m_AddedEffectList.begin(), m_AddedEffectList.end(), AE_LIGHT_DISTANCE) != m_AddedEffectList.end())
             m_nAddedLightDistance = 1;
-        if(std::find(m_AddedEffectList.begin(), m_AddedEffectList.end(), AE_LIGHT_DISTANCE) != m_AddedEffectList.end())
+        if(std::find(m_AddedEffectList.begin(), m_AddedEffectList.end(), AE_SEARCH_DISTANCE) != m_AddedEffectList.end())
             m_nAddedSearchDistance = 1;
         if(std::find(m_AddedEffectList.begin(), m_AddedEffectList.end(), AE_MAX_HP) != m_AddedEffectList.end())
         {
@@ -124,7 +124,7 @@ void MagicOrnamentProperty::adjustByLevel()
     {
         if(std::find(m_AddedEffectList.begin(), m_AddedEffectList.end(), AE_LIGHT_DISTANCE) != m_AddedEffectList.end())
             m_nAddedLightDistance = cocos2d::random(1, 2);
-        if(std::find(m_AddedEffectList.begin(), m_AddedEffectList.end(), AE_LIGHT_DISTANCE) != m_AddedEffectList.end())
+        if(std::find(m_AddedEffectList.begin(), m_AddedEffectList.end(), AE_SEARCH_DISTANCE) != m_AddedEffectList.end())
             m_nAddedSearchDistance = 1;
         if(std::find(m_AddedEffectList.begin(), m_AddedEffectList.end(), AE_MAX_HP) != m_AddedEffectList.end())
         {
@@ -186,7 +186,7 @@ void MagicOrnamentProperty::adjustByLevel()
     {
         if(std::find(m_AddedEffectList.begin(), m_AddedEffectList.end(), AE_LIGHT_DISTANCE) != m_AddedEffectList.end())
             m_nAddedLightDistance = cocos2d::random(1, 2);
-        if(std::find(m_AddedEffectList.begin(), m_AddedEffectList.end(), AE_LIGHT_DISTANCE) != m_AddedEffectList.end())
+        if(std::find(m_AddedEffectList.begin(), m_AddedEffectList.end(), AE_SEARCH_DISTANCE) != m_AddedEffectList.end())
             m_nAddedSearchDistance = cocos2d::random(1, 2);
         
         if(std::find(m_AddedEffectList.begin(), m_AddedEffectList.end(), AE_MAX_HP) != m_AddedEffectList.end())

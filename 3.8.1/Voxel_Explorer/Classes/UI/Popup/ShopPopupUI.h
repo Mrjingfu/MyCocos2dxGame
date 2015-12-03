@@ -24,12 +24,14 @@ public:
         ST_WEAPON,
         ST_MAGIC,
         ST_GAMBLE,
+        ST_ALCHEMY
     };
     
     virtual ~ShopPopupUI();
     virtual bool init() override;
     virtual bool addEvents() override;
-    
+    virtual void onEnter() override;
+    virtual void onExit() override;
     //更新商店购买界面
     virtual void updateShopBuyItems();
     virtual void refreshUIView() override;
@@ -37,7 +39,7 @@ public:
     virtual const std::vector<PickableItemProperty*>& getShopItems() const = 0;
     virtual void shopItemOpe(int itemId) = 0;
 protected:
-
+    virtual  void onEventUpdateNpcData(cocos2d::EventCustom *sender);
     virtual void selectItemEvent(Ref *pSender, TGridView::EventType type);
     
 protected:

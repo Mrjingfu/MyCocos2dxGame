@@ -14,6 +14,7 @@
 #include "BagMangerLayerUI.h"
 #include "PopupUILayerManager.h"
 #include "PickableItemProperty.hpp"
+#include "EventConst.h"
 ShopPopupUI::ShopPopupUI()
 {
     m_cActionType       = eNone;
@@ -96,7 +97,23 @@ bool ShopPopupUI::addEvents()
     
     return true;
 }
-
+void ShopPopupUI::onEnter()
+{
+    PopupUILayer::onEnter();
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_NPC_DATA_DIRTY, CC_CALLBACK_1(ShopPopupUI::onEventUpdateNpcData,this));
+    EventListenerCustom *listener = EventListenerCustom::create(EVENT_PLAYER_PROPERTY_DIRTY, CC_CALLBACK_1(ShopPopupUI::onEventUpdateNpcData,this));
+    Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener,this);
+}
+void ShopPopupUI::onExit()
+{
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_NPC_DATA_DIRTY);
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_PLAYER_PROPERTY_DIRTY);
+    PopupUILayer::onExit();
+}
+void ShopPopupUI::onEventUpdateNpcData(cocos2d::EventCustom *sender)
+{
+    refreshUIView();
+}
 void ShopPopupUI::refreshUIView()
 {
     if (m_pBagLayer) {

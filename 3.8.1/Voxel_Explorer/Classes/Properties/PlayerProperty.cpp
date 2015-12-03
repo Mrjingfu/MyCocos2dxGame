@@ -658,6 +658,7 @@ bool PlayerProperty::buyItemToBag(PickableItemProperty* buyItemProperty, CChaosN
                 if(buyItemProperty->isIdentified())
                     buyItemProperty->adjustByLevel();
             }
+            buyItemProperty->retain();
             m_Bag.push_back(buyItemProperty);
             return true;
         }

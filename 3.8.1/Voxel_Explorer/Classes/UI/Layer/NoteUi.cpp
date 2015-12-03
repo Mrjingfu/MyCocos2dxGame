@@ -69,7 +69,7 @@ void NoteUi::setItemText(std::string msg,cocos2d::Color3B fontColor /*= cocos2d:
         {
             charCount =15;
         }else{
-            charCount = 40;
+            charCount = 23;
         }
         int count = UtilityHelper::getLineStr(msg, charCount);
         setContentSize(cocos2d::Size(getContentSize().width,getContentSize().height*(count+1)));

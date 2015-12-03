@@ -60,7 +60,7 @@ void GambleShopPopupUI::shopItemOpe(int itemId)
 {
     ItemShopBuyPopupUI* shopItem = static_cast<ItemShopBuyPopupUI*>( PopupUILayerManager::getInstance()->openPopup(ePopupItemShopBuy));
     if (shopItem) {
-        shopItem->updateItemPopup(m_eShopType,itemId);
+        shopItem->setItemShopProp(m_eShopType,itemId);
         shopItem->registerCloseCallback(CC_CALLBACK_0(ShopPopupUI::refreshUIView, this));
     }
 

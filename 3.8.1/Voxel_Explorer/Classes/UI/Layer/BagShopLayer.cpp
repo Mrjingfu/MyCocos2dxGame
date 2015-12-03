@@ -77,7 +77,7 @@ void BagShopLayer::bagItemOpe(int itemId)
         return;
     ItemShopSellPopupUI* shopItem = static_cast<ItemShopSellPopupUI*>( PopupUILayerManager::getInstance()->openPopup(ePopupItemShopSell));
     if (shopItem) {
-        shopItem->updateItemPopup(itemId);
+        shopItem->setItemId(itemId);
 //        shopItem->registerCloseCallback(CC_CALLBACK_0(BagShopLayer::updatePopupUI, this));
     }
 }
