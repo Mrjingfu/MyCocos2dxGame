@@ -28,8 +28,8 @@ protected:
 class PathGraph
 {
 public:
-    static void setWeight(const std::list<PathGraphNode*>& nodes, int value);
+    static void setWeight(const std::vector<PathGraphNode*>& nodes, int value);
     static void buildDistanceMap(const std::vector<PathGraphNode*>& nodes, PathGraphNode* focus);
-    static std::list<PathGraphNode*> buildPath(const std::vector<PathGraphNode*>& nodes, PathGraphNode* from, PathGraphNode* to);
+    static std::vector<PathGraphNode*> buildPath(const std::vector<PathGraphNode*>& nodes, PathGraphNode* from, PathGraphNode* to);
 };
 #endif /* defined(__Voxel_Explorer__Graph__) */

@@ -35,12 +35,14 @@ typedef enum{
 }
 DUNGEON_TYPE;
 extern const char* DUNGEON_NAMES[];
+extern const char* DUNGEON_BOSS_NAMES[];
 class DungeonNode : public cocos2d::Ref
 {
 public:
     DungeonNode()
     {
-        m_strDungeonName    = "";                           ////地城名称
+        m_strDungeonName        = "";                       ////地城名称
+        m_strDungeonBossName    = "";                       ////Boss地城名称
         m_nTransmutationDepth = 3;                          ////嬗变深度
         m_nCurrentDepth     = 1;                            ////当前深度
         m_nNodeDepth        = 1;                            ////节点深度
@@ -68,6 +70,7 @@ public:
         return m_nCurrentDepth > m_nTotalNum;
     }
     std::string     m_strDungeonName;       ////地城名称
+    std::string     m_strDungeonBossName;   ////Boss地城名称
     CChaosNumber    m_nTransmutationDepth;  ////嬗变深度
     CChaosNumber    m_nCurrentDepth;        ////当前深度
     CChaosNumber    m_nNodeDepth;           ////节点深度

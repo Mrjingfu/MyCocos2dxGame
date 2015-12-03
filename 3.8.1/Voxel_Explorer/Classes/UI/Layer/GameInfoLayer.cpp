@@ -57,7 +57,10 @@ bool GameInfoLayer::addEvents()
 
 void GameInfoLayer::refreshUIView()
 {
-    m_pGameLevelInfoName->setString(StringUtils::format("%s %d",RandomDungeon::getInstance()->getCurrentDungeonNode()->m_strDungeonName.c_str(),int(RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nCurrentDepth)));
+    if(RandomDungeon::getInstance()->getCurrentDungeonNode()->isBossDepth())
+        m_pGameLevelInfoName->setString(RandomDungeon::getInstance()->getCurrentDungeonNode()->m_strDungeonBossName.c_str());
+    else
+        m_pGameLevelInfoName->setString(StringUtils::format("%s %d",RandomDungeon::getInstance()->getCurrentDungeonNode()->m_strDungeonName.c_str(),int(RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nCurrentDepth)));
     CCLOG(" gold: %s",StringUtils::format("%d",int(PlayerProperty::getInstance()->getGold())).c_str());
     CCLOG(" silver: %s",StringUtils::format("%d",int(PlayerProperty::getInstance()->getGold())).c_str());
     CCLOG(" copper: %s",StringUtils::format("%d",int(PlayerProperty::getInstance()->getGold())).c_str());

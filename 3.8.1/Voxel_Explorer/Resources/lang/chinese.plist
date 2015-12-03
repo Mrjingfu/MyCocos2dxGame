@@ -80,6 +80,36 @@
 	<string>龙穴</string>
 	<key>DN_LICH_TOMB</key>
 	<string>巫妖墓室</string>
+	<key>DN_BOSS_SEWER</key>
+	<string>下水道控制室</string>
+	<key>DN_BOSS_PRISON</key>
+	<string>典狱长室</string>
+	<key>DN_BOSS_FANE</key>
+	<string>礼拜堂</string>
+	<key>DN_BOSS_MINES</key>
+	<string>无底深渊</string>
+	<key>DN_BOSS_CAVE</key>
+	<string>格鲁尔德巢穴</string>
+	<key>DN_BOSS_TOMB</key>
+	<string>尸王殿</string>
+	<key>DN_BOSS_DWARF_CASTLE</key>
+	<string>矮人锻造厂</string>
+	<key>DN_BOSS_MAGA_TOWER</key>
+	<string>图书馆</string>
+	<key>DN_BOSS_ORC_FORTRESS</key>
+	<string>堡垒城墙</string>
+	<key>DN_BOSS_ELF_FOREST</key>
+	<string>精灵圣地</string>
+	<key>DN_BOSS_TROLL_TEMPLE</key>
+	<string>巨魔祭坛</string>
+	<key>DN_BOSS_BEHOLDER_CASTLE</key>
+	<string>眼魔大厅</string>
+	<key>DN_BOSS_WARP_SPACE</key>
+	<string>夺心魔产房</string>
+	<key>DN_BOSS_DRAGON_LAIR</key>
+	<string>巨龙孵化室</string>
+	<key>DN_BOSS_LICH_TOMB</key>
+	<string>巫妖棺椁</string>
 	<key>MONSTER_ELITE</key>
 	<string>(精英)</string>
 	<key>MMN_RAT</key>

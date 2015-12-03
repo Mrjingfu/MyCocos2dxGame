@@ -10,10 +10,15 @@
 #include "SewerLevel.hpp"
 #include "SewerBossLevel.hpp"
 #include "PrisonLevel.hpp"
+#include "PrisonBossLevel.hpp"
 #include "FaneLevel.hpp"
+#include "FaneBossLevel.hpp"
 #include "MineLevel.hpp"
+#include "MineBossLevel.hpp"
 #include "CaveLevel.hpp"
+#include "CaveBossLevel.hpp"
 #include "TombLevel.hpp"
+#include "TombBossLevel.hpp"
 #include "TerrainTile.hpp"
 #include "BaseDoor.hpp"
 #include "LevelResourceManager.h"
@@ -992,16 +997,37 @@ bool VoxelExplorer::createLevel()
             }
             break;
         case DT_PRISON:
-            m_pCurrentLevel = new(std::nothrow) PrisonLevel();
+            {
+                if(node->isBossDepth())
+                    m_pCurrentLevel = new(std::nothrow) PrisonBossLevel();
+                else
+                    m_pCurrentLevel = new(std::nothrow) PrisonLevel();
+                ///for debug
+                //m_pCurrentLevel = new(std::nothrow) PrisonBossLevel();
+            }
             break;
         case DT_FANE:
-            m_pCurrentLevel = new(std::nothrow) FaneLevel();
+            {
+                if(node->isBossDepth())
+                    m_pCurrentLevel = new(std::nothrow) FaneBossLevel();
+                else
+                    m_pCurrentLevel = new(std::nothrow) FaneLevel();
+                // for debug
+                //m_pCurrentLevel = new(std::nothrow) FaneBossLevel();
+            }
             break;
         case DT_MINES:
             m_pCurrentLevel = new(std::nothrow) MineLevel();
             break;
         case DT_CAVE:
-            m_pCurrentLevel = new(std::nothrow) CaveLevel();
+            {
+                if(node->isBossDepth())
+                    m_pCurrentLevel = new(std::nothrow) CaveBossLevel();
+                else
+                    m_pCurrentLevel = new(std::nothrow) CaveLevel();
+                // for debug
+                //m_pCurrentLevel = new(std::nothrow) CaveBossLevel();
+            }
             break;
         case DT_TOMB:
             m_pCurrentLevel = new(std::nothrow) TombLevel();

@@ -19,9 +19,9 @@ protected:
     BasePortal();
     virtual ~BasePortal();
     
-    virtual void onEnter();
-    virtual void onExit();
-    virtual void update(float delta);
+    virtual void onEnter() override;
+    virtual void onExit() override;
+    virtual void update(float delta) override;
     
     bool createFakeShadow();
 public:

@@ -48,6 +48,29 @@ const char* DUNGEON_NAMES[] = {
     
     "DN_MAX"
 };
+const char* DUNGEON_BOSS_NAMES[] = {
+    "DN_BOSS_UNKNOWN",
+    
+    "DN_BOSS_SEWER",
+    "DN_BOSS_PRISON",
+    "DN_BOSS_FANE",
+    "DN_BOSS_MINES",
+    "DN_BOSS_CAVE",
+    "DN_BOSS_TOMB",
+    
+    "DN_BOSS_DWARF_CASTLE",
+    "DN_BOSS_MAGA_TOWER",
+    "DN_BOSS_ORC_FORTRESS",
+    "DN_BOSS_ELF_FOREST",
+    "DN_BOSS_TROLL_TEMPLE",
+    
+    "DN_BOSS_BEHOLDER_CASTLE",
+    "DN_BOSS_WARP_SPACE",
+    "DN_BOSS_DRAGON_LAIR",
+    "DN_BOSS_LICH_TOMB",
+    
+    "DN_BOSS_MAX"
+};
 
 RandomDungeon* g_pRandomDungeonInstance = nullptr;
 RandomDungeon* RandomDungeon::getInstance()
@@ -86,7 +109,7 @@ bool RandomDungeon::build()
         m_pCurrentNode->retain();
         m_pCurrentNode->m_Type = type;
         ///for debug
-        //m_pCurrentNode->m_Type = DT_SEWER;
+        //m_pCurrentNode->m_Type = DT_CAVE;
         m_pCurrentNode->m_nNodeDepth = 1;
         assignedDungeonNode(m_pCurrentNode);
         m_pCurrentNode->autorelease();
@@ -261,6 +284,7 @@ void RandomDungeon::assignedDungeonNode(DungeonNode* node)
     if(!node)
         return;
     node->m_strDungeonName = UtilityHelper::getLocalString(DUNGEON_NAMES[node->m_Type]);
+    node->m_strDungeonBossName = UtilityHelper::getLocalString(DUNGEON_BOSS_NAMES[node->m_Type]);
     if (node->m_Type < DT_DWARF_CASTLE)
     {
         node->m_nTotalNum = cocos2d::random(5, 8);

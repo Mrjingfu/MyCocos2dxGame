@@ -21,8 +21,11 @@ StandardPortal* StandardPortal::create(bool canUse)
         portal->setLightMask((unsigned int)LightFlag::LIGHT0);
         
         OutlineEffect3D* outline = OutlineEffect3D::create();
-        Color3B outlineColor = UtilityHelper::randomColor();
-        outline->setOutlineColor(Vec3(outlineColor.r/255.0f, outlineColor.g/255.0f, outlineColor.b/255.0f));
+        if(canUse)
+        {
+            Color3B outlineColor = UtilityHelper::randomColor();
+            outline->setOutlineColor(Vec3(outlineColor.r/255.0f, outlineColor.g/255.0f, outlineColor.b/255.0f));
+        }
         outline->setOutlineWidth(0.03f);
         portal->addEffect(outline, 1);
         

@@ -30,7 +30,7 @@ const std::vector<PathGraphNode*>& PathGraphNode::getNeigbours()
 {
     return m_Neigbours;
 }
-void PathGraph::setWeight(const std::list<PathGraphNode*>& nodes, int value)
+void PathGraph::setWeight(const std::vector<PathGraphNode*>& nodes, int value)
 {
     for (PathGraphNode* node : nodes) {
         node->setWeight(value);
@@ -59,9 +59,9 @@ void PathGraph::buildDistanceMap(const std::vector<PathGraphNode*>& nodes, PathG
         }
     }
 }
-std::list<PathGraphNode*> PathGraph::buildPath(const std::vector<PathGraphNode*>& nodes, PathGraphNode* from, PathGraphNode* to)
+std::vector<PathGraphNode*> PathGraph::buildPath(const std::vector<PathGraphNode*>& nodes, PathGraphNode* from, PathGraphNode* to)
 {
-    std::list<PathGraphNode*> path;
+    std::vector<PathGraphNode*> path;
     
     PathGraphNode* area = from;
     while (area != to) {

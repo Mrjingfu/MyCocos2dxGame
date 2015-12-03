@@ -80,6 +80,36 @@
 	<string>Dragon Lair</string>
 	<key>DN_LICH_TOMB</key>
 	<string>Lich Tomb</string>
+	<key>DN_BOSS_SEWER</key>
+	<string>Control Room</string>
+	<key>DN_BOSS_PRISON</key>
+	<string>Warden&apos;s Office</string>
+	<key>DN_BOSS_FANE</key>
+	<string>Meeting House</string>
+	<key>DN_BOSS_MINES</key>
+	<string>Bottomless Abyss</string>
+	<key>DN_BOSS_CAVE</key>
+	<string>Gruer‘s Nest</string>
+	<key>DN_BOSS_TOMB</key>
+	<string>Corpse Temple</string>
+	<key>DN_BOSS_DWARF_CASTLE</key>
+	<string>Forging Factory</string>
+	<key>DN_BOSS_MAGA_TOWER</key>
+	<string>Magic Library</string>
+	<key>DN_BOSS_ORC_FORTRESS</key>
+	<string>Fortress Wall</string>
+	<key>DN_BOSS_ELF_FOREST</key>
+	<string>Elf Holy Land</string>
+	<key>DN_BOSS_TROLL_TEMPLE</key>
+	<string>Troll Altar</string>
+	<key>DN_BOSS_BEHOLDER_CASTLE</key>
+	<string>Beholder Hall</string>
+	<key>DN_BOSS_WARP_SPACE</key>
+	<string>Mastermind Room</string>
+	<key>DN_BOSS_DRAGON_LAIR</key>
+	<string>Delivery Room</string>
+	<key>DN_BOSS_LICH_TOMB</key>
+	<string>Lick Coffins</string>
 	<key>MONSTER_ELITE</key>
 	<string>Elite</string>
 	<key>MMN_RAT</key>

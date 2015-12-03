@@ -66,6 +66,7 @@ protected:
     int                 m_nMaxAreaSize;
     int                 m_nSplitAreaSize;
     
+    int                 m_nMinStandardAreaCount;
     int                 m_nStandardAreaCount;
     int                 m_nSpecialAreaCount;
     int                 m_nTunnelAreaCount;

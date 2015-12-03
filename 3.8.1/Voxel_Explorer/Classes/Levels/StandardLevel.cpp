@@ -28,6 +28,7 @@ StandardLevel::StandardLevel()
     m_nMinAreaSize  = 7;
     m_nMaxAreaSize  = 9;
     m_nSplitAreaSize = 3; ///最小划分大小
+    m_nMinStandardAreaCount = 4;
     m_nStandardAreaCount = 0;
     m_nSpecialAreaCount = 0;
     m_nTunnelAreaCount = 0;
@@ -74,7 +75,7 @@ bool StandardLevel::build()
     
     PathGraph::buildDistanceMap( m_Areas, m_AreaExit );
     
-    std::list<PathGraphNode*> path = PathGraph::buildPath( m_Areas, m_AreaEntrance, m_AreaExit );
+    std::vector<PathGraphNode*> path = PathGraph::buildPath( m_Areas, m_AreaEntrance, m_AreaExit );
     Area* startArea = m_AreaEntrance;
     for (PathGraphNode* node : path) {
         Area* next = static_cast<Area*>(node);
@@ -424,7 +425,8 @@ void StandardLevel::assignAreasType()
     }
     
     ///保证标准区域至少4个
-    while (m_nStandardAreaCount < 4) {
+    int retry = 0;
+    while (m_nStandardAreaCount < m_nMinStandardAreaCount) {
         int rand = cocos2d::random(0, (int)(m_Areas.size())-1);
         Area* area = static_cast<Area*>(m_Areas[rand]);
         if (area != nullptr) {
@@ -439,6 +441,12 @@ void StandardLevel::assignAreasType()
                 area->setAreaType(Area::AT_STANDARD);
                 m_nPassageAreaCount--;
                 m_nStandardAreaCount++;
+            }
+            else
+            {
+                if (retry++ > 60) {
+                    break;
+                }
             }
         }
     }
@@ -863,8 +871,8 @@ void StandardLevel::showMap(bool show)
                 TileInfo info = m_Map[index];
                 
                 //for debug
-                if(!info.m_bVisited)
-                    continue;
+                //if(!info.m_bVisited)
+                //    continue;
 
                 cocos2d::Rect rect(j,i,1,1);
                 Vec2 vertices[4] = {
@@ -946,7 +954,7 @@ void StandardLevel::showMap(bool show)
             for (const auto& child : VoxelExplorer::getInstance()->getTerrainPortalsLayer()->getChildren())
             {
                 BasePortal* protal = dynamic_cast<BasePortal*>(child);
-                if(protal && protal->isVisible())
+                if(protal && protal->isVisible() && protal->isCanUse())
                     m_pMapDrawNode->drawDot(protal->getPosInMap()+Vec2(0.5f, 0.5f), 0.5f, Color4F::ORANGE);
             }
         }

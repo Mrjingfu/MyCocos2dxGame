@@ -157,6 +157,16 @@
 		55619D521C0DAB3900419E40 /* SewerBossLevel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55619D4F1C0DAB3900419E40 /* SewerBossLevel.cpp */; };
 		5569713C1BE20CCE00CC2736 /* Layer3D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5569713A1BE20CCE00CC2736 /* Layer3D.cpp */; };
 		5569713D1BE20CCE00CC2736 /* Layer3D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5569713A1BE20CCE00CC2736 /* Layer3D.cpp */; };
+		5586C7A61C0FDD1500DFA588 /* PrisonBossLevel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5586C7A41C0FDD1500DFA588 /* PrisonBossLevel.cpp */; };
+		5586C7A71C0FDD1500DFA588 /* PrisonBossLevel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5586C7A41C0FDD1500DFA588 /* PrisonBossLevel.cpp */; };
+		5586C7AC1C0FDD3F00DFA588 /* FaneBossLevel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5586C7AA1C0FDD3F00DFA588 /* FaneBossLevel.cpp */; };
+		5586C7AD1C0FDD3F00DFA588 /* FaneBossLevel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5586C7AA1C0FDD3F00DFA588 /* FaneBossLevel.cpp */; };
+		5586C7B01C0FDD5400DFA588 /* MineBossLevel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5586C7AE1C0FDD5400DFA588 /* MineBossLevel.cpp */; };
+		5586C7B11C0FDD5400DFA588 /* MineBossLevel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5586C7AE1C0FDD5400DFA588 /* MineBossLevel.cpp */; };
+		5586C7B41C0FDD6200DFA588 /* CaveBossLevel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5586C7B21C0FDD6200DFA588 /* CaveBossLevel.cpp */; };
+		5586C7B51C0FDD6200DFA588 /* CaveBossLevel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5586C7B21C0FDD6200DFA588 /* CaveBossLevel.cpp */; };
+		5586C7B81C0FDD7400DFA588 /* TombBossLevel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5586C7B61C0FDD7400DFA588 /* TombBossLevel.cpp */; };
+		5586C7B91C0FDD7400DFA588 /* TombBossLevel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5586C7B61C0FDD7400DFA588 /* TombBossLevel.cpp */; };
 		559B217F1BC65D330047D998 /* textures in Resources */ = {isa = PBXBuildFile; fileRef = 559B217E1BC65D330047D998 /* textures */; };
 		559B21801BC65D330047D998 /* textures in Resources */ = {isa = PBXBuildFile; fileRef = 559B217E1BC65D330047D998 /* textures */; };
 		55A9807B1C05610400722C9D /* FakeShadow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55A980791C05610400722C9D /* FakeShadow.cpp */; };
@@ -477,6 +487,16 @@
 		55619D501C0DAB3900419E40 /* SewerBossLevel.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SewerBossLevel.hpp; sourceTree = "<group>"; };
 		5569713A1BE20CCE00CC2736 /* Layer3D.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Layer3D.cpp; sourceTree = "<group>"; };
 		5569713B1BE20CCE00CC2736 /* Layer3D.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Layer3D.hpp; sourceTree = "<group>"; };
+		5586C7A41C0FDD1500DFA588 /* PrisonBossLevel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PrisonBossLevel.cpp; sourceTree = "<group>"; };
+		5586C7A51C0FDD1500DFA588 /* PrisonBossLevel.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PrisonBossLevel.hpp; sourceTree = "<group>"; };
+		5586C7AA1C0FDD3F00DFA588 /* FaneBossLevel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FaneBossLevel.cpp; sourceTree = "<group>"; };
+		5586C7AB1C0FDD3F00DFA588 /* FaneBossLevel.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FaneBossLevel.hpp; sourceTree = "<group>"; };
+		5586C7AE1C0FDD5400DFA588 /* MineBossLevel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MineBossLevel.cpp; sourceTree = "<group>"; };
+		5586C7AF1C0FDD5400DFA588 /* MineBossLevel.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = MineBossLevel.hpp; sourceTree = "<group>"; };
+		5586C7B21C0FDD6200DFA588 /* CaveBossLevel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CaveBossLevel.cpp; sourceTree = "<group>"; };
+		5586C7B31C0FDD6200DFA588 /* CaveBossLevel.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CaveBossLevel.hpp; sourceTree = "<group>"; };
+		5586C7B61C0FDD7400DFA588 /* TombBossLevel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TombBossLevel.cpp; sourceTree = "<group>"; };
+		5586C7B71C0FDD7400DFA588 /* TombBossLevel.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TombBossLevel.hpp; sourceTree = "<group>"; };
 		559B217E1BC65D330047D998 /* textures */ = {isa = PBXFileReference; lastKnownFileType = folder; path = textures; sourceTree = "<group>"; };
 		55A980791C05610400722C9D /* FakeShadow.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FakeShadow.cpp; sourceTree = "<group>"; };
 		55A9807A1C05610400722C9D /* FakeShadow.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FakeShadow.hpp; sourceTree = "<group>"; };
@@ -1024,6 +1044,16 @@
 				55F116DF1C04454300A6C191 /* TombLevel.hpp */,
 				55619D4F1C0DAB3900419E40 /* SewerBossLevel.cpp */,
 				55619D501C0DAB3900419E40 /* SewerBossLevel.hpp */,
+				5586C7A41C0FDD1500DFA588 /* PrisonBossLevel.cpp */,
+				5586C7A51C0FDD1500DFA588 /* PrisonBossLevel.hpp */,
+				5586C7AA1C0FDD3F00DFA588 /* FaneBossLevel.cpp */,
+				5586C7AB1C0FDD3F00DFA588 /* FaneBossLevel.hpp */,
+				5586C7AE1C0FDD5400DFA588 /* MineBossLevel.cpp */,
+				5586C7AF1C0FDD5400DFA588 /* MineBossLevel.hpp */,
+				5586C7B21C0FDD6200DFA588 /* CaveBossLevel.cpp */,
+				5586C7B31C0FDD6200DFA588 /* CaveBossLevel.hpp */,
+				5586C7B61C0FDD7400DFA588 /* TombBossLevel.cpp */,
+				5586C7B71C0FDD7400DFA588 /* TombBossLevel.hpp */,
 			);
 			path = Levels;
 			sourceTree = "<group>";
@@ -1387,6 +1417,7 @@
 				551E93E21BD512D3009F788F /* CCCrypto.cpp in Sources */,
 				551E93AB1BD51282009F788F /* ChaosNumber.cpp in Sources */,
 				551E93F01BD512D3009F788F /* MemoryStream.cpp in Sources */,
+				5586C7B01C0FDD5400DFA588 /* MineBossLevel.cpp in Sources */,
 				EC3CC99D1C088F4F00F8CFC8 /* GameUILayer.cpp in Sources */,
 				EC3CC98B1C088F4F00F8CFC8 /* ItemPopupUI.cpp in Sources */,
 				5505452E1BFF1092006B4500 /* StandardPortal.cpp in Sources */,
@@ -1401,8 +1432,10 @@
 				55F81CB81BDB8B81002EC075 /* ArmorProperty.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
+				5586C7AC1C0FDD3F00DFA588 /* FaneBossLevel.cpp in Sources */,
 				551E93EC1BD512D3009F788F /* XXTEA.cpp in Sources */,
 				55F81CC01BDB9257002EC075 /* ScrollProperty.cpp in Sources */,
+				5586C7B41C0FDD6200DFA588 /* CaveBossLevel.cpp in Sources */,
 				55F81CBC1BDB923A002EC075 /* MagicOrnamentProperty.cpp in Sources */,
 				5569713C1BE20CCE00CC2736 /* Layer3D.cpp in Sources */,
 				555B0D251BC51A2C0055FB6D /* VoxelExplorer.cpp in Sources */,
@@ -1471,6 +1504,7 @@
 				EC7F92D31BCF9ED200B26C6C /* HueSprite.cpp in Sources */,
 				EC3CC9A11C088F4F00F8CFC8 /* WrapperUILayer.cpp in Sources */,
 				EC6264951BF0807F004E0F55 /* MessageManager.cpp in Sources */,
+				5586C7A61C0FDD1500DFA588 /* PrisonBossLevel.cpp in Sources */,
 				55ECFB441BC79852007270CD /* Player.cpp in Sources */,
 				55A9807B1C05610400722C9D /* FakeShadow.cpp in Sources */,
 				EC3CC99F1C088F4F00F8CFC8 /* MenuUILayer.cpp in Sources */,
@@ -1480,6 +1514,7 @@
 				EC5D56901C0C4E2200F5EDDF /* DistPopupUI.cpp in Sources */,
 				55F81CCC1BDB92AC002EC075 /* QuestItemProperty.cpp in Sources */,
 				551E93C51BD51291009F788F /* UserRecord.cpp in Sources */,
+				5586C7B81C0FDD7400DFA588 /* TombBossLevel.cpp in Sources */,
 				551E93E81BD512D3009F788F /* sha1.cpp in Sources */,
 				553BC5011BCDF457003D907A /* Actor.cpp in Sources */,
 				EC3CC9791C088F4F00F8CFC8 /* GameInfoLayer.cpp in Sources */,
@@ -1544,6 +1579,7 @@
 				551E93EF1BD512D3009F788F /* FileStream.cpp in Sources */,
 				EC3CC9801C088F4F00F8CFC8 /* NoteUi.cpp in Sources */,
 				EC3CC97A1C088F4F00F8CFC8 /* GameInfoLayer.cpp in Sources */,
+				5586C7B51C0FDD6200DFA588 /* CaveBossLevel.cpp in Sources */,
 				EC795F4A1C0D4A4B0083829B /* WeaponShopPopupUI.cpp in Sources */,
 				555B0D201BC51A2C0055FB6D /* StandardLevel.cpp in Sources */,
 				ECEA4E1F1C0EC69800ED790F /* ItemShopBuyPopupUI.cpp in Sources */,
@@ -1567,6 +1603,7 @@
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
 				551E93F31BD512D3009F788F /* Stream.cpp in Sources */,
 				551E93C41BD51291009F788F /* LevelResourceManager.cpp in Sources */,
+				5586C7B91C0FDD7400DFA588 /* TombBossLevel.cpp in Sources */,
 				555B0D1E1BC51A2C0055FB6D /* Graph.cpp in Sources */,
 				EC3CC9861C088F4F00F8CFC8 /* TGridView.cpp in Sources */,
 				EC3CC98C1C088F4F00F8CFC8 /* ItemPopupUI.cpp in Sources */,
@@ -1579,6 +1616,7 @@
 				554F00EF1BDA210000F4DF8E /* BaseBoss.cpp in Sources */,
 				EC3CC9881C088F4F00F8CFC8 /* DeadPopupUI.cpp in Sources */,
 				55F116E11C04454300A6C191 /* TombLevel.cpp in Sources */,
+				5586C7B11C0FDD5400DFA588 /* MineBossLevel.cpp in Sources */,
 				551E93B21BD51282009F788F /* UtilityHelper.cpp in Sources */,
 				EC3CC9741C088F4F00F8CFC8 /* BagMangerLayerUI.cpp in Sources */,
 				55F81CD11BDB92CC002EC075 /* PotionsProperty.cpp in Sources */,
@@ -1591,12 +1629,14 @@
 				551E93CC1BD51291009F788F /* PlayerProperty.cpp in Sources */,
 				551E93ED1BD512D3009F788F /* XXTEA.cpp in Sources */,
 				551E93E71BD512D3009F788F /* md5.c in Sources */,
+				5586C7A71C0FDD1500DFA588 /* PrisonBossLevel.cpp in Sources */,
 				55F81CA21BDB208D002EC075 /* UseableItem.cpp in Sources */,
 				55F4650F1BEAF76A00E1CC79 /* Pathfinder.cpp in Sources */,
 				555B0D1C1BC51A2C0055FB6D /* Door.cpp in Sources */,
 				EC3CC99C1C088F4F00F8CFC8 /* CloseCallback.cpp in Sources */,
 				ECEA4E251C0EEABE00ED790F /* ItemMoneyLayer.cpp in Sources */,
 				EC795F581C0D4AFD0083829B /* GambleShopPopupUI.cpp in Sources */,
+				5586C7AD1C0FDD3F00DFA588 /* FaneBossLevel.cpp in Sources */,
 				EC3CC9A61C08909B00F8CFC8 /* RolePropLayer.cpp in Sources */,
 				EC795F501C0D4AB20083829B /* TaskPopupUI.cpp in Sources */,
 				55338AEF1BD892FC00EA316F /* ShadowDragon.cpp in Sources */,

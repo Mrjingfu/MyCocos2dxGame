@@ -239,16 +239,20 @@ void Area::generateStandardArea(BaseLevel* level)
     generateTerrainTiles(level, 1, TerrainTile::TT_STANDARD);
     for (auto iter = m_ConnectedAreas.begin(); iter != m_ConnectedAreas.end(); iter++) {
         Door* door = iter->second;
-        if(door)
+        Area* other = iter->first;
+        if(door && other)
         {
             door->setDoorType(Door::DT_STANDARD);
-            float percentHidden = 0.1f;
-            float percentStandard = 1.0 - percentHidden;
-            AlisaMethod* am = AlisaMethod::create(percentHidden, percentStandard,-1.0, NULL);
-            if(am)
+            if(other->getAreaType() != Area::AT_BOSS_ROOM)
             {
-                if(am->getRandomIndex() == 0)
-                    door->setDoorType(Door::DT_HIDDEN);
+                float percentHidden = 0.1f;
+                float percentStandard = 1.0 - percentHidden;
+                AlisaMethod* am = AlisaMethod::create(percentHidden, percentStandard,-1.0, NULL);
+                if(am)
+                {
+                    if(am->getRandomIndex() == 0)
+                        door->setDoorType(Door::DT_HIDDEN);
+                }
             }
         }
     }
@@ -396,8 +400,16 @@ void Area::generateTunnelArea(BaseLevel* level)
     
     for (auto iter = m_ConnectedAreas.begin(); iter != m_ConnectedAreas.end(); iter++) {
         Door* door = iter->second;
-        if(door)
-            door->setDoorType(Door::DT_TUNNEL);
+        Area* other = iter->first;
+        if(door && other)
+        {
+            if(door->getDoorType() != Door::DT_EMPTY)
+                continue;
+            if(other->getAreaType() != Area::AT_BOSS_ROOM)
+                door->setDoorType(Door::DT_TUNNEL);
+            else
+                door->setDoorType(Door::DT_STANDARD);
+        }
     }
 }
 void Area::generatePassageArea(BaseLevel* level)
@@ -451,8 +463,16 @@ void Area::generatePassageArea(BaseLevel* level)
     
     for (auto iter = m_ConnectedAreas.begin(); iter != m_ConnectedAreas.end(); iter++) {
         Door* door = iter->second;
-        if(door)
-            door->setDoorType(Door::DT_PASSAGE);
+        Area* other = iter->first;
+        if(door && other)
+        {
+            if(door->getDoorType() != Door::DT_EMPTY)
+                continue;
+            if(other->getAreaType() != Area::AT_BOSS_ROOM)
+                door->setDoorType(Door::DT_PASSAGE);
+            else
+                door->setDoorType(Door::DT_STANDARD);
+        }
     }
 }
 void Area::generateSpecialArea(BaseLevel* level)
