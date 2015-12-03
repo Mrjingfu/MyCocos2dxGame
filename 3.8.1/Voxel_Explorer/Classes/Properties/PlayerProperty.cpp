@@ -612,7 +612,7 @@ bool PlayerProperty::useKey(PickableItem::PickableItemType type)
 {
     return false;
 }
-bool PlayerProperty::buyItemToBag(PickableItemProperty* buyItemProperty, CChaosNumber count)
+bool PlayerProperty::buyItemToBag(PickableItemProperty* buyItemProperty, CChaosNumber count, bool toIndentify)
 {
     if(!buyItemProperty)
         return false;
@@ -651,8 +651,13 @@ bool PlayerProperty::buyItemToBag(PickableItemProperty* buyItemProperty, CChaosN
         CCASSERT(count == 1, "UnStackable item count must be 1.");
         if(costMoney(gold, silver, copper))
         {
-            if(buyItemProperty->isIdentified())
-                buyItemProperty->adjustByLevel();
+            if(toIndentify)
+                buyItemProperty->handleIdentify();
+            else
+            {
+                if(buyItemProperty->isIdentified())
+                    buyItemProperty->adjustByLevel();
+            }
             m_Bag.push_back(buyItemProperty);
             return true;
         }

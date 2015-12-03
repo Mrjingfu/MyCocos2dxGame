@@ -7,49 +7,49 @@
 	<key>FONT_NAME</key>
 	<string>04B_03.TTF</string>
 	<key>TTN_CHASM</key>
-	<string>黑漆漆的看不太清！</string>
+	<string>It&apos;s too dark to see!</string>
 	<key>TTN_STANDARD</key>
-	<string>很普通的地板。</string>
+	<string>Very ordinary floor.</string>
 	<key>TTN_WALL</key>
-	<string>很普通的墙壁。</string>
+	<string>Very ordinary wall.</string>
 	<key>TTN_ENTRANCE</key>
-	<string>上一层入口。</string>
+	<string>Exit to the upper floor.</string>
 	<key>TTN_EXIT</key>
-	<string>下一层入口。</string>
+	<string>Entrance to the next floor.</string>
 	<key>TTN_TUNNEL</key>
-	<string>普通的通道地板！</string>
+	<string>Very ordinary floor.</string>
 	<key>TTN_DOOR</key>
-	<string>一扇门，要打开看看么？</string>
+	<string>A door, open to have look at it?</string>
 	<key>TTN_OPENED_DOOR</key>
-	<string>很普通的地板。</string>
+	<string>Very ordinary floor.</string>
 	<key>TTN_LOCKED_DOOR</key>
-	<string>上锁的门。</string>
+	<string>Locked door.</string>
 	<key>TTN_SECRET_DOOR</key>
-	<string>这个墙壁看上去有些奇怪！</string>
+	<string>The wall looks a bit strange!</string>
 	<key>TTN_TOXIC_TRAP</key>
-	<string>有毒的陷阱！</string>
+	<string>Toxic trap!</string>
 	<key>TTN_HIDE_TOXIC_TRAP</key>
-	<string>这块地板看上去有些奇怪！</string>
+	<string>The floor looks a bit strange!</string>
 	<key>TTN_FIRE_TRAP</key>
-	<string>火焰陷阱！</string>
+	<string>Flame trap!</string>
 	<key>TTN_HIDE_FIRE_TRAP</key>
-	<string>这块地板看上去有些奇怪！</string>
+	<string>The floor looks a bit strange!</string>
 	<key>TTN_PARALYTIC_TRAP</key>
-	<string>麻痹陷阱！</string>
+	<string>Paralysis trap!</string>
 	<key>TTN_HIDE_PARALYTIC_TRAP</key>
-	<string>这块地板看上去有些奇怪！</string>
+	<string>The floor looks a bit strange!</string>
 	<key>TTN_GRIPPING_TRAP</key>
-	<string>夹子陷阱！</string>
+	<string>Gripping trap!</string>
 	<key>TTN_HIDE_GRIPPING_TRAP</key>
-	<string>这块地板看上去有些奇怪！</string>
+	<string>The floor looks a bit strange!</string>
 	<key>TTN_SUMMONING_TRAP</key>
-	<string>召唤陷阱！</string>
+	<string>Summoning trap!</string>
 	<key>TTN_HIDE_SUMMONING_TRAP</key>
-	<string>这块地板看上去有些奇怪！</string>
+	<string>The floor looks a bit strange!</string>
 	<key>TTN_WEAK_TRAP</key>
-	<string>虚弱陷阱！</string>
+	<string>Weak trap!</string>
 	<key>TTN_HIDE_WEAK_TRAP</key>
-	<string>这块地板看上去有些奇怪！</string>
+	<string>The floor looks a bit strange!</string>
 	<key>DN_SEWER</key>
 	<string>Sewer</string>
 	<key>DN_PRISON</key>
@@ -143,7 +143,7 @@
 	<key>MMN_GHOUL</key>
 	<string>Ghoul</string>
 	<key>PICKITEM_DESC</key>
-	<string>你捡起来仔细看看呗。</string>
+	<string>Pick it up and have a look carefully.</string>
 	<key>PIPN_KEY</key>
 	<string>Key</string>
 	<key>PIPN_WEAPON</key>
@@ -167,125 +167,125 @@
 	<key>PIN_KEY_COPPER</key>
 	<string>Copper Key</string>
 	<key>PIN_KEY_COPPER_DESC</key>
-	<string></string>
+	<string>To open the copper chest.</string>
 	<key>PIN_KEY_SILVER</key>
 	<string>Silver Key</string>
 	<key>PIN_KEY_SILVER_DESC</key>
-	<string></string>
+	<string>To open the silver chest.</string>
 	<key>PIN_KEY_GOLD</key>
 	<string>Gold Key</string>
 	<key>PIN_KEY_GOLD_DESC</key>
-	<string></string>
+	<string>To open the gold chest.</string>
 	<key>PIN_KEY_BOSS</key>
 	<string>The %s&apos;s key</string>
 	<key>PIN_KEY_BOSS_DESC</key>
-	<string></string>
+	<string>To open %s&apos;s room.</string>
 	<key>PIN_KEY_ROOM</key>
 	<string>The key of %s</string>
 	<key>PIN_KEY_ROOM_DESC</key>
-	<string></string>
+	<string>To open locked room.</string>
 	<key>PIN_DAGGER_DAGGER</key>
 	<string>Dagger</string>
 	<key>PIN_DAGGER_DAGGER_DESC</key>
-	<string></string>
+	<string>A very common Dagger.</string>
 	<key>PIN_DAGGER_DAGGER_BIDESC</key>
-	<string></string>
+	<string>A little blunt. sharpen it, perhaps can be used.</string>
 	<key>PIN_DAGGER_HALFSWORD</key>
 	<string>Half sword</string>
 	<key>PIN_DAGGER_HALFSWORD_DESC</key>
-	<string></string>
+	<string>Exquisite dagger, worth your name engraved on top.</string>
 	<key>PIN_DAGGER_HALFSWORD_BIDESC</key>
-	<string></string>
+	<string>The general blacksmith shop can buy, adventurers standard weapon.</string>
 	<key>PIN_DAGGER_KNIFE</key>
 	<string>Knife</string>
 	<key>PIN_DAGGER_KNIFE_DESC</key>
-	<string></string>
+	<string>Don&apos;t judge knife by appearances, hey! Don&apos;t let your face so close by.</string>
 	<key>PIN_DAGGER_KNIFE_BIDESC</key>
-	<string></string>
+	<string>At first glance, it looks like a very common knife.</string>
 	<key>PIN_DAGGER_COLDSTEELDAGGER</key>
 	<string>Cold steel dagger</string>
 	<key>PIN_DAGGER_COLDSTEELDAGGER_DESC</key>
-	<string></string>
+	<string>Cold steel dagger is not a magic sword, but also expensive.</string>
 	<key>PIN_DAGGER_COLDSTEELDAGGER_BIDESC</key>
-	<string></string>
+	<string>Good steel, just the right length.</string>
 	<key>PIN_DAGGER_RIPPERCUTTER</key>
 	<string>Ripper cutter</string>
 	<key>PIN_DAGGER_RIPPERCUTTER_DESC</key>
-	<string></string>
+	<string>When the enemy saw its blade, it wants to drink blood...</string>
 	<key>PIN_DAGGER_RIPPERCUTTER_BIDESC</key>
-	<string></string>
+	<string>It seems that you have seen this knife before.</string>
 	<key>PIN_DAGGER_BLUELIGHTDAGGER</key>
 	<string>Blue light dagger</string>
 	<key>PIN_DAGGER_BLUELIGHTDAGGER_DESC</key>
-	<string></string>
+	<string>Made by the famous blacksmith Tony Swatton.</string>
 	<key>PIN_DAGGER_BLUELIGHTDAGGER_BIDESC</key>
-	<string></string>
+	<string>A faint blue light shone on the blade.</string>
 	<key>PIN_DAGGER_RUBYDAGGER</key>
 	<string>Ruby dagger</string>
 	<key>PIN_DAGGER_RUBYDAGGER_DESC</key>
-	<string></string>
+	<string>Ornaments can also be a murder weapon.</string>
 	<key>PIN_DAGGER_RUBYDAGGER_BIDESC</key>
-	<string></string>
+	<string>A dagger with a gem is usually an ornament.</string>
 	<key>PIN_DAGGER_PRO_DAGGER</key>
 	<string>Candlelight</string>
 	<key>PIN_DAGGER_PRO_DAGGER_DESC</key>
-	<string></string>
+	<string>Really can shine Oh, a little yellow light.</string>
 	<key>PIN_DAGGER_PRO_DAGGER_BIDESC</key>
-	<string></string>
+	<string>It looks like a candle.</string>
 	<key>PIN_DAGGER_PRO_HALFSWORD</key>
 	<string>Stars Shine</string>
 	<key>PIN_DAGGER_PRO_HALFSWORD_DESC</key>
-	<string></string>
+	<string>The tears of stars, moist aerosiderite under the Azeroth stars.</string>
 	<key>PIN_DAGGER_PRO_HALFSWORD_BIDESC</key>
-	<string></string>
+	<string>Feels very wet.</string>
 	<key>PIN_DAGGER_PRO_KNIFE</key>
 	<string>Gold Killer</string>
 	<key>PIN_DAGGER_PRO_KNIFE_DESC</key>
-	<string></string>
+	<string>It will make people vomit, to stab the enemy&apos;s stomach ~</string>
 	<key>PIN_DAGGER_PRO_KNIFE_BIDESC</key>
-	<string></string>
+	<string>The color of the dagger like shit, to smell the smell of your hand.</string>
 	<key>PIN_DAGGER_PRO_COLDSTEELDAGGER</key>
 	<string>Shadow Attacker</string>
 	<key>PIN_DAGGER_PRO_COLDSTEELDAGGER_DESC</key>
-	<string></string>
+	<string>The blade of Thief Linden.</string>
 	<key>PIN_DAGGER_PRO_COLDSTEELDAGGER_BIDESC</key>
-	<string></string>
+	<string>Signs of a trade union of thieves.</string>
 	<key>PIN_DAGGER_PRO_RIPPERCUTTER</key>
 	<string>Six Blade</string>
 	<key>PIN_DAGGER_PRO_RIPPERCUTTER_DESC</key>
-	<string></string>
+	<string>Very special weapon, no one knows who to build, who used.</string>
 	<key>PIN_DAGGER_PRO_RIPPERCUTTER_BIDESC</key>
-	<string></string>
+	<string>It has six sharp end, one stab six holes.</string>
 	<key>PIN_DAGGER_PRO_BLUELIGHTDAGGER</key>
 	<string>Frozen Cloud</string>
 	<key>PIN_DAGGER_PRO_BLUELIGHTDAGGER_DESC</key>
-	<string></string>
+	<string>When brandish the sword, the surrounding air is frozen, as cold as Frostmourne, but it does not control the human nature, ease of use.</string>
 	<key>PIN_DAGGER_PRO_BLUELIGHTDAGGER_BIDESC</key>
-	<string></string>
+	<string>It feels cold.</string>
 	<key>PIN_DAGGER_PRO_RUBYDAGGER</key>
 	<string>Fireflow</string>
 	<key>PIN_DAGGER_PRO_RUBYDAGGER_DESC</key>
-	<string></string>
+	<string>When brandish the sword, like dragon out flames, rare in the world.</string>
 	<key>PIN_DAGGER_PRO_RUBYDAGGER_BIDESC</key>
-	<string></string>
+	<string>Feels a bit hot.</string>
 	<key>PIN_AXE_HATCHET</key>
 	<string>Hatchet</string>
 	<key>PIN_AXE_HATCHET_DESC</key>
-	<string></string>
+	<string>Do you want the woodcutter?</string>
 	<key>PIN_AXE_HATCHET_BIDESC</key>
-	<string></string>
+	<string>Rusty~</string>
 	<key>PIN_AXE_ADZE</key>
 	<string>Adze</string>
 	<key>PIN_AXE_ADZE_DESC</key>
-	<string></string>
+	<string>It will make the enemy daunting.</string>
 	<key>PIN_AXE_ADZE_BIDESC</key>
-	<string></string>
+	<string>Berserker standard weapon.</string>
 	<key>PIN_AXE_STONEAXE</key>
 	<string>Stone Axe</string>
 	<key>PIN_AXE_STONEAXE_DESC</key>
-	<string></string>
+	<string>Smash everything.</string>
 	<key>PIN_AXE_STONEAXE_BIDESC</key>
-	<string></string>
+	<string>Wooden stick、rattan, and big stone, you can also make one.</string>
 	<key>PIN_AXE_BROADAX</key>
 	<string>Broadax</string>
 	<key>PIN_AXE_BROADAX_DESC</key>
@@ -1019,39 +1019,39 @@
 	<key>UIN_CHEST_NO_LOCK_COPPER</key>
 	<string>Copper chest</string>
 	<key>UIN_CHEST_NO_LOCK_COPPER_DESC</key>
-	<string>铜质宝箱，看样子很沉。</string>
+	<string>The copper chest, looked very heavy.</string>
 	<key>UIN_CHEST_NO_LOCK_SILVER</key>
 	<string>Silver chest</string>
 	<key>UIN_CHEST_NO_LOCK_SILVER_DESC</key>
-	<string>银质宝箱，白花花的银子。</string>
+	<string>The silver chest, shining white silver.</string>
 	<key>UIN_CHEST_NO_LOCK_GOLD</key>
 	<string>Gold chest</string>
 	<key>UIN_CHEST_NO_LOCK_GOLD_DESC</key>
-	<string>金质宝箱，光这个箱子就值不少钱了。</string>
+	<string>The gold chest, only the box will value a lot of money.</string>
 	<key>UIN_CHEST_COPPER</key>
 	<string>Copper chest</string>
 	<key>UIN_CHEST_COPPER_DESC</key>
-	<string></string>
+	<string>The copper chest, looked very heavy.</string>
 	<key>UIN_CHEST_SILVER</key>
 	<string>Silver chest</string>
 	<key>UIN_CHEST_SILVER_DESC</key>
-	<string></string>
+	<string>The silver chest, shining white silver.</string>
 	<key>UIN_CHEST_GOLD</key>
 	<string>Gold chest</string>
 	<key>UIN_CHEST_GOLD_DESC</key>
-	<string></string>
+	<string>The gold chest, only the box will value a lot of money.</string>
 	<key>UIN_JAR_1</key>
 	<string>Jar</string>
 	<key>UIN_JAR_1_DESC</key>
-	<string></string>
+	<string>A very ordinary jar.</string>
 	<key>UIN_JAR_2</key>
 	<string>Jar</string>
 	<key>UIN_JAR_2_DESC</key>
-	<string></string>
+	<string>A very ordinary jar.</string>
 	<key>UIN_JAR_3</key>
 	<string>Jar</string>
 	<key>UIN_JAR_3_DESC</key>
-	<string></string>
+	<string>A very ordinary jar.</string>
 	<key>NPCN_CHILD</key>
 	<string>爱丽</string>
 	<key>NPCN_CHILD_DESC</key>

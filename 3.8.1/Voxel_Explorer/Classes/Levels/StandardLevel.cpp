@@ -27,6 +27,7 @@ StandardLevel::StandardLevel()
     m_Type = LT_STANDARD;
     m_nMinAreaSize  = 7;
     m_nMaxAreaSize  = 9;
+    m_nSplitAreaSize = 3; ///最小划分大小
     m_nStandardAreaCount = 0;
     m_nSpecialAreaCount = 0;
     m_nTunnelAreaCount = 0;
@@ -116,9 +117,6 @@ bool StandardLevel::build()
     assignAreasType();
     generate();
     
-#if COCOS2D_DEBUG
-    showMap(false);
-#endif
     return true;
 }
 bool StandardLevel::createTerrain()
@@ -220,6 +218,10 @@ bool StandardLevel::createTerrain()
                         m_nLockedDoorCount++;
                     }
                     break;
+                case TerrainTile::TT_LOCKED_BOSS_DOOR:
+                    {
+                    }
+                    break;
                 case TerrainTile::TT_SECRET_DOOR:
                     {
                         StandardDoor* door = StandardDoor::create(true);
@@ -292,14 +294,14 @@ void StandardLevel::splitArea(const cocos2d::Rect& rect)
     int h = rect.size.height;
     
     if (w > m_nMaxAreaSize && h < m_nMinAreaSize) {
-        int vw = cocos2d::random((int)(rect.getMinX()) + 3, (int)(rect.getMaxX()) - 3);
+        int vw = cocos2d::random((int)(rect.getMinX()) + m_nSplitAreaSize, (int)(rect.getMaxX()) - m_nSplitAreaSize);
         splitArea( cocos2d::Rect( rect.getMinX(), rect.getMinY(), vw-rect.getMinX(), rect.size.height ) );
         splitArea( cocos2d::Rect( vw, rect.getMinY(), rect.getMaxX()-vw, rect.size.height ) );
         
     }
     else if (h > m_nMaxAreaSize && w < m_nMinAreaSize)
     {
-        int vh = cocos2d::random( (int)(rect.getMinY()) + 3, (int)(rect.getMaxY()) - 3 );
+        int vh = cocos2d::random( (int)(rect.getMinY()) + m_nSplitAreaSize, (int)(rect.getMaxY()) - m_nSplitAreaSize );
         splitArea( cocos2d::Rect( rect.getMinX(), rect.getMinY(), rect.size.width, vh-rect.getMinY() ) );
         splitArea( cocos2d::Rect( rect.getMinX(), vh, rect.size.width, rect.getMaxY()-vh ) );
             
@@ -320,18 +322,28 @@ void StandardLevel::splitArea(const cocos2d::Rect& rect)
                 
         if (cocos2d::rand_0_1() < (float)(w - 2) / (w + h - 4))
         {
-            int vw = cocos2d::random( (int)(rect.getMinX()) + 3, (int)(rect.getMaxX()) - 3 );
+            int vw = cocos2d::random( (int)(rect.getMinX()) + m_nSplitAreaSize, (int)(rect.getMaxX()) - m_nSplitAreaSize );
             splitArea( cocos2d::Rect( rect.getMinX(), rect.getMinY(), vw-rect.getMinX(), rect.size.height ) );
             splitArea( cocos2d::Rect( vw, rect.getMinY(), rect.getMaxX()-vw, rect.size.height ) );
         }
         else
         {
-            int vh = cocos2d::random( (int)(rect.getMinY()) + 3, (int)(rect.getMaxY()) - 3 );
+            int vh = cocos2d::random( (int)(rect.getMinY()) + m_nSplitAreaSize, (int)(rect.getMaxY()) - m_nSplitAreaSize );
             splitArea( cocos2d::Rect( rect.getMinX(), rect.getMinY(), rect.size.width, vh-rect.getMinY() ) );
             splitArea( cocos2d::Rect( rect.getMinX(), vh, rect.size.width, rect.getMaxY()-vh) );
         }
                 
     }
+}
+void StandardLevel::generateAreaStyle()
+{
+    ///生成关卡式样
+    float percentStandard = 0.6f;
+    float percentTunnel = 0.05f;
+    float percentPassage = 1.0 - percentStandard - percentTunnel;
+    AlisaMethod* am = AlisaMethod::create(percentStandard,percentTunnel,percentPassage,-1.0, NULL);
+    if(am)
+        m_Style = (LevelStyle)am->getRandomIndex();
 }
 void StandardLevel::assignAreasType()
 {
@@ -371,15 +383,7 @@ void StandardLevel::assignAreasType()
             }
         }
     }
-    ///生成通道
-    //m_Style = cocos2d::random(LS_STANDARD, LS_PASSAGE);
-    
-    float percentStandard = 0.6f;
-    float percentTunnel = 0.05f;
-    float percentPassage = 1.0 - percentStandard - percentTunnel;
-    AlisaMethod* am = AlisaMethod::create(percentStandard,percentTunnel,percentPassage,-1.0, NULL);
-    if(am)
-        m_Style = (LevelStyle)am->getRandomIndex();
+    generateAreaStyle();
     
     m_nStandardAreaCount = 0;
     m_nTunnelAreaCount = 0;
@@ -498,9 +502,6 @@ void StandardLevel::assignSpecialArea(Area* area)
         else
             type = Area::AT_SPECIAL_DECORATION_ROOM;
     }
-    //for debug
-    //type = Area::AT_SPECIAL_TREASURE_ROOM;
-    //
     area->setAreaType(type);
     auto iter = std::find(m_SpecailAreas.begin(), m_SpecailAreas.end(), type);
     if(iter != m_SpecailAreas.end())
@@ -860,8 +861,11 @@ void StandardLevel::showMap(bool show)
             for (int j = 0; j<m_nWidth; j++) {
                 int index = i*m_nWidth+j;
                 TileInfo info = m_Map[index];
+                
+                //for debug
                 if(!info.m_bVisited)
                     continue;
+
                 cocos2d::Rect rect(j,i,1,1);
                 Vec2 vertices[4] = {
                     Vec2( rect.getMinX(), rect.getMinY() ),
@@ -878,6 +882,10 @@ void StandardLevel::showMap(bool show)
                         {
                             if(info.m_AreaType >= Area::AT_SPECIAL_EQUIPMENT_SHOP)
                                 m_pMapDrawNode->drawPolygon(vertices, 4, Color4F::MAGENTA, 0, Color4F(0,0,0,0));
+                            else if(info.m_AreaType == Area::AT_BOSS_EXIT)
+                                m_pMapDrawNode->drawPolygon(vertices, 4, Color4F::YELLOW, 0, Color4F(0,0,0,0));
+                            else if(info.m_AreaType == Area::AT_BOSS_ROOM)
+                                m_pMapDrawNode->drawPolygon(vertices, 4, Color4F(0,1,1,1), 0, Color4F(0,0,0,0));
                             else
                                 m_pMapDrawNode->drawPolygon(vertices, 4, Color4F::WHITE, 0, Color4F(0,0,0,0));
                         }
@@ -899,6 +907,7 @@ void StandardLevel::showMap(bool show)
                         m_pMapDrawNode->drawPolygon(vertices, 4, Color4F::BLUE, 0, Color4F(0,0,0,0));
                         break;
                     case TerrainTile::TT_LOCKED_DOOR:
+                    case TerrainTile::TT_LOCKED_BOSS_DOOR:
                         m_pMapDrawNode->drawPolygon(vertices, 4, Color4F::RED, 0, Color4F(0,0,0,0));
                         break;
                     case TerrainTile::TT_HIDE_TOXIC_TRAP:
@@ -1118,6 +1127,9 @@ void StandardLevel::generateDoors(Area* area)
                 case Door::DT_LOCKED:
                     setTerrainTile(door->getPos().x, door->getPos().y, TerrainTile::TT_LOCKED_DOOR, area->getAreaType(), dir);
                     break;
+                case Door::DT_LOCKED_EXIT:
+                    setTerrainTile(door->getPos().x, door->getPos().y, TerrainTile::TT_LOCKED_BOSS_DOOR, area->getAreaType(), dir);
+                    break;
                 default:
                     break;
             }
@@ -1205,6 +1217,8 @@ void StandardLevel::placeTraps()  ///放置陷阱
         int pos = cocos2d::random(0, (int)m_Map.size()-1);
         if(m_Map[pos].m_AreaType == Area::AT_ENTRANCE
            || m_Map[pos].m_AreaType == Area::AT_EXIT
+           || m_Map[pos].m_AreaType == Area::AT_BOSS_EXIT
+           || m_Map[pos].m_AreaType == Area::AT_BOSS_ROOM
            || m_Map[pos].m_AreaType >= Area::AT_SPECIAL_EQUIPMENT_SHOP)
         {
             i--;

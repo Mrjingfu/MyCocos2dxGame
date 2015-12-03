@@ -27,6 +27,7 @@ public:
         TT_DOOR,            ///门
         TT_OPENED_DOOR,     ///开了的门
         TT_LOCKED_DOOR,     ///上锁的门
+        TT_LOCKED_BOSS_DOOR,///上锁的boss房间的门
         TT_SECRET_DOOR,     ///隐藏的门
         
         TT_TOXIC_TRAP,              ///中毒陷阱

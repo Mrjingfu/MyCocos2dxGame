@@ -31,6 +31,7 @@ protected:
 
     virtual bool initAreas();
     virtual void splitArea(const cocos2d::Rect& rect);
+    virtual void generateAreaStyle();
     virtual void assignAreasType();
     virtual void assignSpecialArea(Area* area);
     
@@ -63,6 +64,7 @@ protected:
     
     int                 m_nMinAreaSize;
     int                 m_nMaxAreaSize;
+    int                 m_nSplitAreaSize;
     
     int                 m_nStandardAreaCount;
     int                 m_nSpecialAreaCount;

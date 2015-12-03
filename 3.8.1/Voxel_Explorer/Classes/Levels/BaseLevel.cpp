@@ -248,7 +248,7 @@ bool BaseLevel::checkMovable(Actor* actor, TileInfo& info)
     }
     if((info.m_Flag & TileInfo::USEABLE) != 0)
     {
-        if( info.m_Type == TerrainTile::TT_DOOR || info.m_Type == TerrainTile::TT_LOCKED_DOOR || info.m_Type == TerrainTile::TT_SECRET_DOOR )
+        if( info.m_Type == TerrainTile::TT_DOOR || info.m_Type == TerrainTile::TT_LOCKED_DOOR || info.m_Type == TerrainTile::TT_LOCKED_BOSS_DOOR || info.m_Type == TerrainTile::TT_SECRET_DOOR )
             VoxelExplorer::getInstance()->handleDoor(pos);
         else
             VoxelExplorer::getInstance()->handleUseUseableItem(pos);
@@ -277,6 +277,7 @@ int BaseLevel::assignTerrainTileFlag(TerrainTile::TileType type)
             break;
         case TerrainTile::TT_DOOR:
         case TerrainTile::TT_LOCKED_DOOR:
+        case TerrainTile::TT_LOCKED_BOSS_DOOR:
         case TerrainTile::TT_SECRET_DOOR:
             flag = TileInfo::PASSABLE | TileInfo::USEABLE;
             break;
