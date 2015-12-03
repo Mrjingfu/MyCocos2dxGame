@@ -87,7 +87,6 @@
         <Project Name="achievementPopupLayer.csd" Type="Layer" />
         <Project Name="itemPopupLayer.csd" Type="Layer" />
         <Project Name="shopPopupLayer.csd" Type="Layer" />
-        <Project Name="itemShopPopupLayer.csd" Type="Layer" />
         <Project Name="characterInfoLayer.csd" Type="Layer" />
         <Project Name="gameinfoLayer.csd" Type="Layer" />
         <Project Name="monsterInfoLayer.csd" Type="Layer" />
@@ -135,6 +134,8 @@
           <PlistImageFile Name="zombie.png" Key="zombie.png" />
         </PlistImageFolder>
         <Project Name="itemMoneyLayer.csd" Type="Layer" />
+        <Project Name="itemBottomLayer.csd" Type="Layer" />
+        <Project Name="itemShopBottomLayer.csd" Type="Layer" />
       </RootFolder>
     </Group>
   </SolutionFolder>

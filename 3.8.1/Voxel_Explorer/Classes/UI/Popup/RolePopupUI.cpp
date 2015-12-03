@@ -99,7 +99,7 @@ void RolePopupUI::refreshUIView()
         m_pRoleLayer->refreshUIView();
     }
     if (m_pBagLayer) {
-        m_pRoleLayer->refreshUIView();
+        m_pBagLayer->refreshUIView();
     }
 }
 void RolePopupUI::updateItems(bool _isOpenIdentify)

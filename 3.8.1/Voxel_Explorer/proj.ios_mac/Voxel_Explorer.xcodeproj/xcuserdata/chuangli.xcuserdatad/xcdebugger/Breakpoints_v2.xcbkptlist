@@ -121,13 +121,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../Classes/UI/Popup/ItemPopupUI.cpp"
-            timestampString = "470751705.68369"
+            filePath = "../Classes/UI/Popup/ItemShopBuyPopupUI.cpp"
+            timestampString = "470819322.173448"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "436"
-            endingLineNumber = "436"
-            landmarkName = "ItemPopupUI::IdentifyEquiipFrame()"
+            startingLineNumber = "82"
+            endingLineNumber = "82"
+            landmarkName = "ItemShopBuyPopupUI::refreshUIView()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

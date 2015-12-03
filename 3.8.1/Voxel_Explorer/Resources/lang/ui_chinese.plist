@@ -162,6 +162,8 @@
 	<string>背包没有空间了!!</string>
 	<key>NOT_HAVA_MARGIC_VALUE</key>
 	<string>魔法值不够！！</string>
+	<key>NOT_EQUIP_LEVEL_ENOUGH</key>
+	<string>等级不足不可装备 !!</string>
 	<key>TRIGGER_MESSAGE_TOXIC_TRAP</key>
 	<string>你中毒了！</string>
 	<key>TRIGGER_MESSAGE_FIRE_TRAP</key>

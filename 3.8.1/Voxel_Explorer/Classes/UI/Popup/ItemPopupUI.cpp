@@ -36,7 +36,7 @@ ItemPopupUI::ItemPopupUI()
     m_pBtnEquip    =nullptr;
     m_pBackGround    =nullptr;
     m_pItemMoneyLayer =nullptr;
-    m_pButtonFrame = nullptr;
+    m_pBottomFrame = nullptr;
     m_nItemId = -2;
     
 }
@@ -46,7 +46,35 @@ ItemPopupUI::~ItemPopupUI()
 }
 bool ItemPopupUI::initUi()
 {
-    return this->load("itemPopupLayer.csb",false);
+     if(!load("itemPopupLayer.csb",false))
+        return false;
+    if (!initBottom())
+        return false;
+    return true;
+}
+bool ItemPopupUI::initBottom()
+{
+    cocos2d::Node*     m_pBottomNode = cocos2d::CSLoader::createNode("itemBottomLayer.csb");
+    if (!m_pBottomNode)
+        return false;
+    
+    m_pBottomFrame = dynamic_cast<ui::Layout*>(UtilityHelper::seekNodeByName(m_pBottomNode, "item_bottom_Layer"));
+    if (!m_pBottomFrame)
+        return false;
+    
+    m_pBtnDiscard = dynamic_cast<ui::Button*>(UtilityHelper::seekNodeByName(m_pBottomNode, "item_btn_discard"));
+    if (!m_pBtnDiscard)
+        return false;
+    
+    m_pBtnEquip = dynamic_cast<ui::Button*>(UtilityHelper::seekNodeByName(m_pBottomNode, "item_btn_equip"));
+    if (!m_pBtnEquip)
+        return false;
+    
+    m_pBtnDiscard->addClickEventListener(CC_CALLBACK_1(ItemPopupUI::onClickDiscard, this));
+
+    m_pBottomFrame->removeFromParentAndCleanup(false);
+    
+    return true;
 }
 bool ItemPopupUI::addEvents()
 {
@@ -57,13 +85,6 @@ bool ItemPopupUI::addEvents()
 
     m_pItemPropFrame= dynamic_cast<ui::Layout*>(UtilityHelper::seekNodeByName(m_pRootNode, "item_prop_layer"));
     if (!m_pItemPropFrame)
-        return false;
-    
-     m_pBtnDiscard = dynamic_cast<ui::Button*>(UtilityHelper::seekNodeByName(m_pRootNode, "item_btn_discard"));
-    if (!m_pBtnDiscard)
-        return false;
-     m_pBtnEquip = dynamic_cast<ui::Button*>(UtilityHelper::seekNodeByName(m_pRootNode, "item_btn_equip"));
-    if (!m_pBtnEquip)
         return false;
     
     m_pBackGround =   dynamic_cast<ui::ImageView*>(UtilityHelper::seekNodeByName(m_pRootNode, "item_background"));
@@ -115,36 +136,10 @@ bool ItemPopupUI::addEvents()
     m_pItemNotIden->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
     m_pItemNotIden->setString(UtilityHelper::getLocalStringForUi("ITEM_NOT_IDENTIFY"));
     
-    
-    
-    m_pBtnDiscard->addClickEventListener(CC_CALLBACK_1(ItemPopupUI::onClickDiscard, this));
-    
-
-  
     return true;
 }
-void ItemPopupUI::noEquipFrame(bool isEquip)
-{
-    if(isEquip)
-    {
-//      m_pBtnDiscard->setPosition(cocos2d::Vec2(m_pRootNode->getContentSize().width*0.5,0));
-//      m_pBtnEquip->setVisible(false);
-        m_pBtnEquip->setBright(true);
-        m_pBtnEquip->setTouchEnabled(false);
-        
-    }else
-    {
-        m_pBtnEquip->setVisible(false);
-        m_pBtnDiscard->setVisible(false);
-        
-        m_pRootNode->setContentSize(cocos2d::Size(m_pRootNode->getContentSize().width,m_pRootNode->getContentSize().height-m_pBtnDiscard->getContentSize().height));
-        m_pBackGround->setContentSize(m_pRootNode->getContentSize());
-        m_pBackGround->setPosition(m_pRootNode->getContentSize()*0.5);
-        m_pItemPropFrame->setPosition(Vec2(m_pItemPropFrame->getPositionX(), m_pRootNode->getContentSize().height));
-        m_pAttrFrame->setPosition(Vec2(m_pItemPropFrame->getContentSize().width*0.5, 0));
-    }
-}
-void ItemPopupUI::itemFrame()
+
+void ItemPopupUI::useItemFrame()
 {
     PickableItemProperty* itemprop = getItemIdProperty();
     std::string str = itemprop->getDesc();
@@ -155,13 +150,7 @@ void ItemPopupUI::itemFrame()
     m_pItemDesc->setItemText(str);
     m_pItemDesc->setLayoutParameter(linerParmter);
     m_pAttrFrame->addChild(m_pItemDesc);
-    
-    ui::LinearLayoutParameter* lastlinerParmter = ui::LinearLayoutParameter::create();
-    lastlinerParmter->setGravity(cocos2d::ui::LinearLayoutParameter::LinearGravity::CENTER_VERTICAL);
-    lastlinerParmter->setMargin(ui::Margin(10,-5,0,2));
-    m_pItemMoneyLayer->setLayoutParameter(lastlinerParmter);
-    m_pItemMoneyLayer->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
-    m_pAttrFrame->addChild(m_pItemMoneyLayer);
+
 }
 
 void ItemPopupUI::IdentifyEquiipFrame()
@@ -421,7 +410,6 @@ void ItemPopupUI::IdentifyEquiipFrame()
         }
     }
     
-    
     if (!str.empty()) {
         m_pItemDesc->setItemText(str);
         m_pItemDesc->setLayoutParameter(linerParmter);
@@ -431,7 +419,7 @@ void ItemPopupUI::IdentifyEquiipFrame()
     }
 
     
-    cocos2d::Size addSize =cocos2d::Size(0,m_pItemMoneyLayer->getContentSize().height);
+    cocos2d::Size addSize =cocos2d::Size::ZERO;
     
     if (addAttrCount>=2) {
         addSize = cocos2d::Size(0,11*addAttrCount+addSize.height);
@@ -441,22 +429,50 @@ void ItemPopupUI::IdentifyEquiipFrame()
         addSize = cocos2d::Size(0,addSize.height-14);
     }
     
+    updateItemPopupSize(addSize);
+}
+void ItemPopupUI::updateItemPopupSize(cocos2d::Size addSize)
+{
     m_pAttrFrame->setContentSize(cocos2d::Size(m_pAttrFrame->getContentSize() + addSize));
     m_pRootNode->setContentSize(m_pRootNode->getContentSize()+addSize);
-    
-    ui::LinearLayoutParameter* lastlinerParmter = ui::LinearLayoutParameter::create();
-    lastlinerParmter->setGravity(cocos2d::ui::LinearLayoutParameter::LinearGravity::CENTER_VERTICAL);
-    lastlinerParmter->setMargin(ui::Margin(10,0,0,3));
-    m_pItemMoneyLayer->setLayoutParameter(linerParmter);
-    m_pItemMoneyLayer->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
-    m_pAttrFrame->addChild(m_pItemMoneyLayer);
-    
     m_pBackGround->setContentSize(m_pRootNode->getContentSize());
     m_pBackGround->setPosition(m_pRootNode->getContentSize()*0.5);
     m_pItemPropFrame->setPosition(Vec2(m_pItemPropFrame->getPositionX(), m_pRootNode->getContentSize().height));
 
 }
+void ItemPopupUI::addMoneyUI()
+{
+    
+    cocos2d::Size addSize = cocos2d::Size::ZERO;
+    
+    if (m_pItemMoneyLayer) {
 
+        ui::LinearLayoutParameter* lastlinerParmter = ui::LinearLayoutParameter::create();
+        lastlinerParmter->setGravity(cocos2d::ui::LinearLayoutParameter::LinearGravity::CENTER_VERTICAL);
+        lastlinerParmter->setMargin(ui::Margin(10,-6,0,0));
+        
+        addSize = addSize +cocos2d::Size(0,m_pItemMoneyLayer->getContentSize().height);
+        m_pItemMoneyLayer->setLayoutParameter(lastlinerParmter);
+        m_pItemMoneyLayer->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
+        m_pAttrFrame->addChild(m_pItemMoneyLayer);
+    }
+
+    updateItemPopupSize(addSize);
+}
+void ItemPopupUI::addBottomUI()
+{
+
+    cocos2d::Size addSize = cocos2d::Size::ZERO;
+    if (m_pBottomFrame) {
+
+        addSize = cocos2d::Size(0,m_pBottomFrame->getContentSize().height);
+        m_pBottomFrame->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
+        m_pAttrFrame->addChild(m_pBottomFrame);
+    }
+    
+    
+    updateItemPopupSize(addSize);
+}
 PickableItemProperty* ItemPopupUI::getItemIdProperty() const
 {
     if (m_nItemId!=-2) {
@@ -464,18 +480,26 @@ PickableItemProperty* ItemPopupUI::getItemIdProperty() const
     }
     return nullptr;
 }
-void ItemPopupUI::initButtonFrame()
+void ItemPopupUI::refreshUIView()
 {
+    updateItemBaseProp();
     
+    updateItemAttrUI();
 }
-void ItemPopupUI::updateItemPopup(int itemId)
+void ItemPopupUI::setItemId(int itemId)
 {
     m_nItemId = itemId;
     CCLOG("m_nItemId:%d",m_nItemId);
     
+    refreshUIView();
+}
+void ItemPopupUI::updateItemBaseProp()
+{
     PickableItemProperty* itemprop = getItemIdProperty();
     CCASSERT(itemprop!=nullptr, "itemprop is null!");
     m_pItemIcon->loadTexture(itemprop->getIconRes(),cocos2d::ui::Widget::TextureResType::PLIST);
+    m_pItemIcon->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
+    
     m_pItemName->setString(itemprop->getName());
     //设置品质
     switch (itemprop->getQuality()) {
@@ -493,80 +517,135 @@ void ItemPopupUI::updateItemPopup(int itemId)
             break;
     }
     
-    m_pItemMoneyLayer->updateItemMoney(itemprop->getValueCopper());
-    
     PickableItemProperty::PickableItemPropertyType itemtype =itemprop->getPickableItemPropertyType();
     std::string str;
     if (itemtype == ArmorProperty::PIPT_KEY) {
         str = UtilityHelper::getLocalStringForUi("ITEM_PROP_TYPE_KEY");
     }else if (itemtype == ArmorProperty::PIPT_WEAPON)
     {
-         str = UtilityHelper::getLocalStringForUi("ITEM_PROP_TYPE_WEAPON");
+        str = UtilityHelper::getLocalStringForUi("ITEM_PROP_TYPE_WEAPON");
     }else if (itemtype == ArmorProperty::PIPT_SECOND_WEAPON)
     {
-         str = UtilityHelper::getLocalStringForUi("ITEM_PROP_TYPE_SECOND_WEAPON");
+        str = UtilityHelper::getLocalStringForUi("ITEM_PROP_TYPE_SECOND_WEAPON");
     }else if (itemtype == ArmorProperty::PIPT_MAGIC_ORNAMENT)
     {
-         str = UtilityHelper::getLocalStringForUi("ITEM_PROP_TYPE_MAGIC_ORNAMENT");
+        str = UtilityHelper::getLocalStringForUi("ITEM_PROP_TYPE_MAGIC_ORNAMENT");
     }else if (itemtype == ArmorProperty::PIPT_SCROLL)
     {
-         str = UtilityHelper::getLocalStringForUi("ITEM_PROP_TYPE_SCROLL");
+        str = UtilityHelper::getLocalStringForUi("ITEM_PROP_TYPE_SCROLL");
     }else if (itemtype == ArmorProperty::PIPT_POTIONS)
     {
-         str = UtilityHelper::getLocalStringForUi("ITEM_PROP_TYPE_POTIONS");
+        str = UtilityHelper::getLocalStringForUi("ITEM_PROP_TYPE_POTIONS");
     }else if (itemtype == ArmorProperty::PIPT_MATERIAL)
     {
-         str = UtilityHelper::getLocalStringForUi("ITEM_PROP_TYPE_MATERIAL");
+        str = UtilityHelper::getLocalStringForUi("ITEM_PROP_TYPE_MATERIAL");
     }else if (itemtype == ArmorProperty::PIPT_QUEST)
     {
-         str = UtilityHelper::getLocalStringForUi("ITEM_PROP_TYPE_QUEST");
+        str = UtilityHelper::getLocalStringForUi("ITEM_PROP_TYPE_QUEST");
     }else if (itemtype == ArmorProperty::PIPT_SUNDRIES)
     {
-         str = UtilityHelper::getLocalStringForUi("ITEM_PROP_TYPE_SUNDRIES");
+        str = UtilityHelper::getLocalStringForUi("ITEM_PROP_TYPE_SUNDRIES");
     }
     
     m_pItemType->setString(str);
     
-    if (itemtype ==PickableItemProperty::PIPT_WEAPON ||itemtype ==PickableItemProperty::PIPT_SECOND_WEAPON||
-        itemtype ==PickableItemProperty::PIPT_ARMOR ||itemtype ==PickableItemProperty::PIPT_MAGIC_ORNAMENT ) {
-        
+    m_pItemMoneyLayer->updateItemMoney(itemprop->getValueCopper());
+}
+void ItemPopupUI::updateEquipItem()
+{
+    PickableItemProperty* itemprop = getItemIdProperty();
+    CCASSERT(itemprop!=nullptr, "itemprop is null!");
+    if (m_pBtnEquip) 
         m_pBtnEquip->addClickEventListener(CC_CALLBACK_1(ItemPopupUI::onClickEquip, this));
-        m_pItemlv->setVisible(true);
-        m_pItemlv->setString(StringUtils::format("LV.%ld",itemprop->getLevel().GetLongValue()));
+    bool isNotEquip = false;
+    m_pItemlv->setVisible(true);
+    m_pItemlv->setString(StringUtils::format("LV.%ld",itemprop->getLevel().GetLongValue()));
+    //添加装备属性
+    IdentifyEquiipFrame();
+    
+    //装备等级>人物等级不可装备
+    if ( itemprop->getLevel().GetLongValue() > PlayerProperty::getInstance()->getLevel().GetLongValue()) {
+        m_pItemlv->setTextColor(Color4B(PopupUILayerManager::getInstance()->getTipsColor(TIP_NEGATIVE)));
+        std::string str = UtilityHelper::getLocalStringForUi("NOT_EQUIP_LEVEL_ENOUGH");
         
-         IdentifyEquiipFrame();
+        ui::LinearLayoutParameter* linerParmter = ui::LinearLayoutParameter::create();
+        linerParmter->setGravity(cocos2d::ui::LinearLayoutParameter::LinearGravity::CENTER_VERTICAL);
+        linerParmter->setMargin(ui::Margin(10,-6,0,0));
         
-        if (itemprop->isEquipable() ) {
-            if (PlayerProperty::getInstance()->getEquipedWeaponID() == m_nItemId ||
-                PlayerProperty::getInstance()->getEquipedArmorID() == m_nItemId ||
-                PlayerProperty::getInstance()->getEquipedOrnamentsID() == m_nItemId||
-                PlayerProperty::getInstance()->getEquipedSecondWeaponID() == m_nItemId){
-                m_pItemEquipDist->setVisible(true);
-                m_pItemEquipDist->setString(UtilityHelper::getLocalStringForUi("ITEM_ALREDY_EQUIP"));
-                
-                noEquipFrame(false);
-            }
-        }else
-        {
-            m_pItemEquipDist->setString(UtilityHelper::getLocalStringForUi("ITEM_NOT_EQUIP"));
-            m_pItemEquipDist->setColor(PopupUILayerManager::getInstance()->getTipsColor(TIP_WARNING));
-            noEquipFrame(true);
-        }
+        addItemProp(str,PopupUILayerManager::getInstance()->getTipsColor(TIP_NEGATIVE),linerParmter);
+        updateItemPopupSize(cocos2d::Size(0,11));
         
-        if (itemprop->isIdentified()) {
-            m_pItemNotIden->setVisible(false);
-        }else
-        {
-            m_pItemNotIden->setVisible(true);
-            
-        }
-       
-    }else{
-         m_pBtnEquip->addClickEventListener(CC_CALLBACK_1(ItemPopupUI::onClickUser, this));
-         itemFrame();
+        isNotEquip = true;
     }
     
-    m_pItemIcon->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
+    addMoneyUI();
+
+    if (itemprop->isEquipable() ) {
+        //如果当前道具就是装备道具不添加底部UI
+        if (PlayerProperty::getInstance()->getEquipedWeaponID() == m_nItemId ||
+            PlayerProperty::getInstance()->getEquipedArmorID() == m_nItemId ||
+            PlayerProperty::getInstance()->getEquipedOrnamentsID() == m_nItemId||
+            PlayerProperty::getInstance()->getEquipedSecondWeaponID() == m_nItemId){
+            
+            m_pItemEquipDist->setVisible(true);
+            m_pItemEquipDist->setString(UtilityHelper::getLocalStringForUi("ITEM_ALREDY_EQUIP"));
+        }else
+            addBottomUI();
+    }else
+    {
+         addBottomUI();
+        isNotEquip = true;
+    }
+    //未鉴定道具也不可以装备
+    if (!itemprop->isIdentified())
+    {
+        isNotEquip = true;
+        m_pItemNotIden->setVisible(true);
+    }
+    
+    //不可装备的隐藏装备按钮,显示不可装备文本,改变删除按钮位置
+    if (isNotEquip) {
+        m_pItemEquipDist->setVisible(true);
+        m_pItemEquipDist->setString(UtilityHelper::getLocalStringForUi("ITEM_NOT_EQUIP"));
+        m_pItemEquipDist->setColor(PopupUILayerManager::getInstance()->getTipsColor(TIP_NEGATIVE));
+        if (m_pBtnDiscard) {
+            m_pBtnDiscard->setVisible(false);
+        }
+        if (m_pBtnEquip) {
+            m_pBtnEquip->setPosition(m_pBottomFrame->getContentSize()*0.5);
+            m_pBtnEquip->addClickEventListener(CC_CALLBACK_1(ItemPopupUI::onClickDiscard, this));
+        }
+    }
+    
+}
+void ItemPopupUI::updateUseItem()
+{
+    if (m_pBtnEquip)
+        m_pBtnEquip->addClickEventListener(CC_CALLBACK_1(ItemPopupUI::onClickUser, this));
+    useItemFrame();
+    addMoneyUI();
+    addBottomUI();
+    
+}
+void ItemPopupUI::updateItemAttrUI()
+{
+    
+    PickableItemProperty* itemprop = getItemIdProperty();
+    CCASSERT(itemprop!=nullptr, "itemprop is null!");
+    
+    PickableItemProperty::PickableItemPropertyType itemtype =itemprop->getPickableItemPropertyType();
+    
+    if (itemtype ==PickableItemProperty::PIPT_WEAPON ||itemtype ==PickableItemProperty::PIPT_SECOND_WEAPON||
+        itemtype ==PickableItemProperty::PIPT_ARMOR ||itemtype ==PickableItemProperty::PIPT_MAGIC_ORNAMENT ) {
+        //更新装备道具UI
+        updateEquipItem();
+        
+    }else{
+        //更新使用道具UI
+        updateUseItem();
+    }
+    
+    
 }
 void ItemPopupUI::onClickDiscard(cocos2d::Ref *ref)
 {
@@ -612,7 +691,7 @@ void ItemPopupUI::onClickUser(cocos2d::Ref *ref)
 void ItemPopupUI::onClickEquip(cocos2d::Ref *ref)
 {
     CHECK_ACTION(ref);
-
+    CCLOG("onClickEquip");
     PickableItemProperty* itemprop = getItemIdProperty();
     CCASSERT(itemprop!=nullptr, "itemprop is null!");
     bool isEquipSuccess = false;

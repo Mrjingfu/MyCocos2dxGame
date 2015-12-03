@@ -20,26 +20,8 @@ ItemShopSellPopupUI::~ItemShopSellPopupUI()
 {
     
 }
-bool ItemShopSellPopupUI::initUi()
-{
-    return this->load("itemShopPopupLayer.csb",false);
-}
-bool ItemShopSellPopupUI::addEvents()
-{
-    if (!ItemPopupUI::addEvents())
-        return false;
-    m_pItemSlider = dynamic_cast<cocos2d::ui::Slider*>(UtilityHelper::seekNodeByName(m_pRootNode, "item_shop_slider"));
-    if (!m_pItemSlider)
-        return false;;
-    m_pSellCount =  dynamic_cast<cocos2d::ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "item_shop_item_count"));
-    if (!m_pSellCount)
-        return false;
-    
-    m_pSellCount->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
-    m_pItemSlider->addEventListener(CC_CALLBACK_2(ItemShopSellPopupUI::sliderEvent, this));
-    
-    return true;
-}
+
+
 PickableItemProperty* ItemShopSellPopupUI::getItemIdProperty() const
 {
     if (m_nItemId!=-2) {
@@ -47,12 +29,10 @@ PickableItemProperty* ItemShopSellPopupUI::getItemIdProperty() const
     }
     return nullptr;
 }
-void ItemShopSellPopupUI::updateItemPopup(int itemId)
-{
-    ItemPopupUI::updateItemPopup(itemId);
 
-    m_pBtnDiscard->setVisible(false);
-    
+void ItemShopSellPopupUI::refreshUIView()
+{
+    ItemPopupUI::refreshUIView();
     PickableItemProperty* itemprop = getItemIdProperty();
     
     if (!itemprop)
@@ -68,17 +48,17 @@ void ItemShopSellPopupUI::updateItemPopup(int itemId)
     {
         m_pItemSlider->setVisible(false);
         m_pSellCount->setVisible(false);
-        m_pBtnEquip->setPosition(cocos2d::Vec2(m_pRootNode->getContentSize().width*0.5,m_pBtnEquip->getPositionY()));
+        m_pBtnEquip->setPosition(cocos2d::Vec2(m_pBottomFrame->getContentSize().width*0.5,m_pBtnEquip->getPositionY()));
         
     }
     //暂时
     cocos2d::Label* btnLabel =  m_pBtnEquip->getTitleRenderer();
     btnLabel->setSystemFontName(UtilityHelper::getLocalStringForUi("FONT_NAME"));
-
+    
     btnLabel->setString("SELL");
     m_pBtnEquip->addClickEventListener(CC_CALLBACK_1(ItemShopSellPopupUI::onClickSell, this));
     
-     m_pItemMoneyLayer->updateItemMoney(itemprop->getValueCopper()*(1+m_pItemSlider->getPercent()));
+    m_pItemMoneyLayer->updateItemMoney(itemprop->getValueCopper()*(1+m_pItemSlider->getPercent()));
 }
 void ItemShopSellPopupUI::sliderEvent(cocos2d::Ref* sender, cocos2d::ui::Slider::EventType type)
 {
