@@ -105,13 +105,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../Classes/Properties/PlayerProperty.cpp"
-            timestampString = "470650367.71024"
+            filePath = "../Classes/UI/Popup/ItemShopPopupUI.cpp"
+            timestampString = "470730406.827598"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "86"
-            endingLineNumber = "86"
-            landmarkName = "PlayerProperty::initNewPlayer()"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
+            landmarkName = "ItemShopPopupUI::updateItemPopup(eItemShopType type,int itemId)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -121,13 +121,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../Classes/Properties/PlayerProperty.cpp"
-            timestampString = "470650547.336918"
+            filePath = "../Classes/UI/Popup/ItemPopupUI.cpp"
+            timestampString = "470751705.68369"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "103"
-            endingLineNumber = "103"
-            landmarkName = "PlayerProperty::initNewPlayer()"
+            startingLineNumber = "436"
+            endingLineNumber = "436"
+            landmarkName = "ItemPopupUI::IdentifyEquiipFrame()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

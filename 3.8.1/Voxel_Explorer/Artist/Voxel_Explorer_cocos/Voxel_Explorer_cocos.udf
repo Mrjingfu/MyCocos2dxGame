@@ -36,6 +36,8 @@
           <FilePathData Path="gametoolbarLayer.csd" />
           <FilePathData Path="itemPopupLayer.csd" />
           <FilePathData Path="itemShopPopupLayer.csd" />
+          <FilePathData Path="itemMoneyLayer.csd" />
+          <FilePathData Path="gameinfoLayer.csd" />
         </OpenedDocuments>
         <ActiveDocument Path="itemShopPopupLayer.csd" />
       </Value>

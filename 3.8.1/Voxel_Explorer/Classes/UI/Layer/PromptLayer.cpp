@@ -11,6 +11,7 @@
 PromptLayer::PromptLayer()
 {
     m_vDisplayPt = cocos2d::Vec3::ZERO;
+    m_bIsAction = false;
 }
 PromptLayer::~PromptLayer()
 {
@@ -34,8 +35,11 @@ bool PromptLayer::init(PromptLayer::ePromptType type)
     }
     setAnchorPoint(cocos2d::Vec2::ANCHOR_MIDDLE);
     switch (type) {
+        case PT_CONFUSING:
+            loadTexture("ui_question_icon.png",TextureResType::PLIST);
+            break;
         case PT_AWAKE:
-            loadTexture("ui_msg_icon.png",TextureResType::PLIST);
+            loadTexture("ui_excalmatory_icon.png",TextureResType::PLIST);
             break;
     }
     
@@ -51,12 +55,13 @@ void PromptLayer::update(float delta)
          cocos2d::Vec2 pt = VoxelExplorer::getInstance()->getMainCamera()->projectGL(m_vDisplayPt);
         pt =  cocos2d::Vec2(pt.x, pt.y+TerrainTile::CONTENT_SCALE*3.5);
         setPosition(pt);
-        if (tempTime >=0.015) {
-            cocos2d::ScaleTo* scaleToStart = cocos2d::ScaleTo::create(0.3, 1.2);
+        if (!m_bIsAction && tempTime >=0.015) {
+            tempTime = 0.0f;
+            m_bIsAction = true;
+            cocos2d::ScaleTo* scaleToStart = cocos2d::ScaleTo::create(0.2, 1.2);
             cocos2d::ScaleTo* scaleToEnd = cocos2d::ScaleTo::create(0.2, 0.8);
             
-            
-            this->runAction(cocos2d::Sequence::create(scaleToStart,scaleToEnd,cocos2d::RemoveSelf::create(), nil));
+            this->runAction(cocos2d::Sequence::create(scaleToStart,scaleToEnd,scaleToStart,scaleToEnd,cocos2d::RemoveSelf::create(), nil));
             
         }
     }

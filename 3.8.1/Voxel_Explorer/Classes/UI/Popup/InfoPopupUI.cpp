@@ -66,7 +66,7 @@ void InfoPopupUI::setInfoData(const std::string& infoRes, std::string& infoDesc)
             m_pInfoIcon->setVisible(false);
             m_pInfoDesc->setPosition(m_pRootNode->getContentSize()*0.5);
         }else{
-            m_pInfoIcon->loadTexture(infoRes,cocos2d::ui::TextureResType::PLIST);
+            m_pInfoIcon->loadTexture(infoRes,TextureResType::PLIST);
             m_pInfoIcon->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
             m_pInfoDesc->setPosition(cocos2d::Vec2(m_pInfoIcon->getPositionX()+m_pInfoIcon->getContentSize().width*0.5,m_pRootNode->getContentSize().height*0.5));
         }

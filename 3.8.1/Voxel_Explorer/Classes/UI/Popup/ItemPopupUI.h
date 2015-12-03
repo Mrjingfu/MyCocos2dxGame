@@ -10,6 +10,7 @@
 #define EquipItemPopupUI_hpp
 #include "PopupUILayer.h"
 #include "PickableItemProperty.hpp"
+class ItemMoneyLayer;
 class NoteUi;
 class CChaosNumber;
 class ItemPopupUI : public PopupUILayer{
@@ -22,11 +23,12 @@ public:
     virtual void updateItemPopup(int itemId);
     virtual ~ItemPopupUI();
 protected:
-    void addItemProp(std::string propStr,cocos2d::Color3B fontColor=cocos2d::Color3B::WHITE,cocos2d::ui::LinearLayoutParameter* parmLayout = nullptr);
     virtual void closePopup() override;
-    void  updateItemMoney(CChaosNumber money);
-    //不可装备对话框 isEquip 是否显示装备按钮
-    void noEquipFrame(bool isEquip);
+    virtual PickableItemProperty* getItemIdProperty()const;
+    virtual void initButtonFrame();
+    void addItemProp(std::string propStr,cocos2d::Color3B fontColor=cocos2d::Color3B::WHITE,cocos2d::ui::LinearLayoutParameter* parmLayout = nullptr);
+   
+    void noEquipFrame(bool isEquip);//不可装备对话框 isEquip 是否显示装备按钮
 private:
    
     void onClickDiscard(Ref* ref);
@@ -46,23 +48,14 @@ protected:
     NoteUi*   m_pItemDesc;
 
     cocos2d::ui::Text*  m_pItemType;               //类型
-    cocos2d::ui::Text*  m_pItemGoldNum;            // 金币
-    cocos2d::ui::Text*  m_pItemSilverNum;          // 银币
-    cocos2d::ui::Text*  m_pItemCopperNum;          // 铜币
-    cocos2d::ui::ImageView* m_pItemGoldIcon;
-    cocos2d::ui::ImageView* m_pItemSilverIcon;
-    cocos2d::ui::ImageView* m_pItemCopperIcon;
-    cocos2d::ui::Text*  m_pItemIdentifyDesc;    
-
-    
+    cocos2d::ui::Text*  m_pItemIdentifyDesc;
     cocos2d::ui::Button* m_pBtnDiscard;
     cocos2d::ui::Button* m_pBtnEquip;
-    
     cocos2d::ui::Layout* m_pAttrFrame;
-    cocos2d::ui::Layout* m_pMoneyFrame;
     cocos2d::ui::Layout* m_pItemPropFrame;
-    
+    cocos2d::ui::Layout* m_pButtonFrame;
     cocos2d::ui::ImageView* m_pBackGround;
+    ItemMoneyLayer* m_pItemMoneyLayer;
     int m_nItemId;
 };
 

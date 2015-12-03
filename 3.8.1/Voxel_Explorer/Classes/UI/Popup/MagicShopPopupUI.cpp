@@ -9,10 +9,13 @@
 #include "MagicShopPopupUI.h"
 #include "NpcDataManager.hpp"
 #include "BagMangerLayerUI.h"
+#include "ItemShopBuyPopupUI.hpp"
+#include "PopupUILayerManager.h"
+#include "ItemShopBuyPopupUI.hpp"
 MagicShopPopupUI::MagicShopPopupUI()
 {
     m_cActionType       = eNone;
-   
+    m_eShopType         = ST_MAGIC;
 
 }
 MagicShopPopupUI::~MagicShopPopupUI()
@@ -33,19 +36,18 @@ bool MagicShopPopupUI::addEvents()
         return false;
     return true;
 }
-void MagicShopPopupUI::updateShopDataItems()
+const std::vector<PickableItemProperty*>& MagicShopPopupUI::getShopItems() const
 {
-    
+    return NpcDataManager::getInstance()->getMagicShop();
 }
+
 void MagicShopPopupUI::shopItemOpe(int itemId)
 {
-//    for (int i=0; i<NpcDataManager::getInstance()->getMagicShop().size(); i++) {
-//        PickableItemProperty* property = NpcDataManager::getInstance()->getMagicShop()[i];
-//        ui::ImageView* img =static_cast<ui::ImageView*>( m_pShopGridView->getItem(i));
-//        if (property && img) {
-//            m_pShopMangerLayer->addItem(i, property->getInstanceID(), img->getPosition(), property->getIconRes());
-//        }
-//    }
+    ItemShopBuyPopupUI* shopItem = static_cast<ItemShopBuyPopupUI*>( PopupUILayerManager::getInstance()->openPopup(ePopupItemShopBuy));
+    if (shopItem) {
+        shopItem->updateItemPopup(m_eShopType,itemId);
+        shopItem->registerCloseCallback(CC_CALLBACK_0(ShopPopupUI::refreshUIView, this));
+    }
 }
 
 

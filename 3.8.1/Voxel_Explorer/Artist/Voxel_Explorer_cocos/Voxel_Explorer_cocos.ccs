@@ -78,6 +78,8 @@
           <PlistImageFile Name="btn_fram_sell_press_ch.png" Key="btn_fram_sell_press_ch.png" />
           <PlistImageFile Name="btn_fram_sell_press_en.png" Key="btn_fram_sell_press_en.png" />
           <PlistImageFile Name="ui_no_user.png" Key="ui_no_user.png" />
+          <PlistImageFile Name="ui_excalmatory_icon.png" Key="ui_excalmatory_icon.png" />
+          <PlistImageFile Name="ui_question_icon.png" Key="ui_question_icon.png" />
         </PlistImageFolder>
         <Project Name="gameScene.csd" Type="Scene" />
         <Project Name="menuscene.csd" Type="Scene" />
@@ -132,6 +134,7 @@
           <PlistImageFile Name="wolf.png" Key="wolf.png" />
           <PlistImageFile Name="zombie.png" Key="zombie.png" />
         </PlistImageFolder>
+        <Project Name="itemMoneyLayer.csd" Type="Layer" />
       </RootFolder>
     </Group>
   </SolutionFolder>

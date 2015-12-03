@@ -156,7 +156,17 @@ void BagLayer::refreshUIView()
             // 更新装备UI
             
             m_BagMsgLayer->addItem(i, itemProp->getInstanceID(), itemUi->getPosition(), itemProp->getIconRes());
-//            m_BagMsgLayer->setItemNoUse(itemProp->getInstanceID(), itemUi->getPosition());
+            
+            PickableItemProperty::PickableItemPropertyType itemtype =itemProp->getPickableItemPropertyType();
+            if (itemtype ==PickableItemProperty::PIPT_WEAPON ||itemtype ==PickableItemProperty::PIPT_SECOND_WEAPON||
+                itemtype ==PickableItemProperty::PIPT_ARMOR ||itemtype ==PickableItemProperty::PIPT_MAGIC_ORNAMENT )
+            {
+                if (!itemProp->isEquipable()) {
+                    m_BagMsgLayer->setItemNoUse(itemProp->getInstanceID(), itemUi->getPosition());
+                }
+            }
+            
+            
             //设置品质
             switch (itemProp->getQuality()) {
                 case PIQ_GENERAL:
@@ -197,10 +207,13 @@ void BagLayer::refreshUIView()
                 m_BagMsgLayer->setItemEquipMark(itemProp->getInstanceID(),itemUi->getPosition());
                 
             }
-            
             //是否是鉴定
-            if (m_bIsIndetify&&!itemProp->isIdentified()) {
-                 m_BagMsgLayer->setItemInIentify(itemProp->getInstanceID(),itemUi->getPosition());
+            if (m_bIsIndetify) {
+                if (itemProp->isIdentified())
+                    m_BagMsgLayer->setItemNoUse(itemProp->getInstanceID(), itemUi->getPosition());
+                else
+                    m_BagMsgLayer->setItemInIentify(itemProp->getInstanceID(),itemUi->getPosition());
+                
             }
            
         }

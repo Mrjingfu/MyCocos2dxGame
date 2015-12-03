@@ -37,9 +37,9 @@ bool PausePopupUI::addEvents()
     if (!m_pBtnExitGame)
         return false;
     
-    m_pBtnMainMenu->loadTextureNormal(UtilityHelper::getLocalStringForUi("PAUSE_BTN_MAIN_MENU"),cocos2d::ui::TextureResType::PLIST);
-    m_pBtnSetting->loadTextureNormal(UtilityHelper::getLocalStringForUi("PAUSE_BTN_SETTING"),cocos2d::ui::TextureResType::PLIST);
-    m_pBtnExitGame->loadTextureNormal(UtilityHelper::getLocalStringForUi("PAUSE_BTN_EXIT_GAME"),cocos2d::ui::TextureResType::PLIST);
+    m_pBtnMainMenu->loadTextureNormal(UtilityHelper::getLocalStringForUi("PAUSE_BTN_MAIN_MENU"),TextureResType::PLIST);
+    m_pBtnSetting->loadTextureNormal(UtilityHelper::getLocalStringForUi("PAUSE_BTN_SETTING"),TextureResType::PLIST);
+    m_pBtnExitGame->loadTextureNormal(UtilityHelper::getLocalStringForUi("PAUSE_BTN_EXIT_GAME"),TextureResType::PLIST);
     
     m_pBtnMainMenu->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
     m_pBtnSetting->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);

@@ -17,6 +17,7 @@
 #include "NoteUi.h"
 #include "GameFormula.hpp"
 #include "PopupUILayerManager.h"
+#include "ItemMoneyLayer.hpp"
 USING_NS_CC;
 ItemPopupUI::ItemPopupUI()
 {
@@ -27,22 +28,15 @@ ItemPopupUI::ItemPopupUI()
     m_pItemlv      =nullptr;
     m_pItemDesc    =nullptr;
     m_pItemType = nullptr;
-    m_pItemGoldNum= nullptr;
-    m_pItemSilverNum= nullptr;
-    m_pItemCopperNum= nullptr;
     m_pItemIdentifyDesc= nullptr;;
     
-    m_pMoneyFrame = nullptr;
     m_pAttrFrame    =nullptr;
     m_pItemPropFrame = nullptr;
     m_pBtnDiscard    =nullptr;
     m_pBtnEquip    =nullptr;
     m_pBackGround    =nullptr;
-
-    
-    m_pItemGoldIcon = nullptr;
-    m_pItemSilverIcon= nullptr;
-    m_pItemCopperIcon= nullptr;
+    m_pItemMoneyLayer =nullptr;
+    m_pButtonFrame = nullptr;
     m_nItemId = -2;
     
 }
@@ -60,9 +54,7 @@ bool ItemPopupUI::addEvents()
     m_pAttrFrame = dynamic_cast<ui::Layout*>(UtilityHelper::seekNodeByName(m_pRootNode, "item_attr_layer"));
     if (!m_pAttrFrame)
         return false;
-    m_pMoneyFrame= dynamic_cast<ui::Layout*>(UtilityHelper::seekNodeByName(m_pRootNode, "item_money_frame"));
-    if (!m_pAttrFrame)
-        return false;
+
     m_pItemPropFrame= dynamic_cast<ui::Layout*>(UtilityHelper::seekNodeByName(m_pRootNode, "item_prop_layer"));
     if (!m_pItemPropFrame)
         return false;
@@ -81,18 +73,7 @@ bool ItemPopupUI::addEvents()
     m_pItemIcon =   dynamic_cast<ui::ImageView*>(UtilityHelper::seekNodeByName(m_pRootNode, "item_icon"));
     if (!m_pItemIcon)
         return false;
-    
-    m_pItemGoldIcon =   dynamic_cast<ui::ImageView*>(UtilityHelper::seekNodeByName(m_pRootNode, "item_gold_icon"));
-    if (!m_pItemGoldIcon)
-        return false;
-    
-    m_pItemSilverIcon =   dynamic_cast<ui::ImageView*>(UtilityHelper::seekNodeByName(m_pRootNode, "item_silver_icon"));
-    if (!m_pItemSilverIcon)
-        return false;
-    
-    m_pItemCopperIcon =   dynamic_cast<ui::ImageView*>(UtilityHelper::seekNodeByName(m_pRootNode, "item_copper_icon"));
-    if (!m_pItemCopperIcon)
-        return false;
+
  
     m_pItemName = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "item_name_text"));
     if (!m_pItemName)
@@ -104,26 +85,6 @@ bool ItemPopupUI::addEvents()
     m_pItemType = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "item_prop_type"));
     if (!m_pItemType)
         return false;
-    
-    m_pItemGoldNum = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "item_gold_num"));
-    if (!m_pItemGoldNum)
-        return false;
-    
-    m_pItemSilverNum = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "item_silver_num"));
-    if (!m_pItemSilverNum)
-        return false;
-    
-    m_pItemCopperNum = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "item_copper_num"));
-    if (!m_pItemCopperNum)
-        return false;
-    
-    ui::Text* m_pItemMoneyDesc = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "item_money_desc"));
-    if (!m_pItemMoneyDesc)
-        return false;
-    m_pItemMoneyDesc->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
-    m_pItemMoneyDesc->setString(UtilityHelper::getLocalStringForUi("ITEM_MONEY_DESC"));
-    
-    
     m_pItemEquipDist = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "item_equip_dist"));
     if (!m_pItemEquipDist)
         return false;
@@ -131,9 +92,14 @@ bool ItemPopupUI::addEvents()
     m_pItemNotIden = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "item_prop_not_idn"));
     if (!m_pItemNotIden)
         return false;
+    
     m_pItemDesc = NoteUi::create();
     if (!m_pItemDesc)
         return false;
+    
+    m_pItemMoneyLayer = ItemMoneyLayer::create();
+    m_pItemMoneyLayer->setAnchorPoint(cocos2d::Vec2::ANCHOR_MIDDLE);
+    
     m_pAttrFrame->setLayoutType(ui::Layout::Type::VERTICAL);
     m_pItemDesc->setFontScale(0.25);
     m_pItemDesc->setContentSize(cocos2d::Size(m_pAttrFrame->getContentSize().width,20));
@@ -150,9 +116,6 @@ bool ItemPopupUI::addEvents()
     m_pItemNotIden->setString(UtilityHelper::getLocalStringForUi("ITEM_NOT_IDENTIFY"));
     
     
-    m_pItemGoldIcon->setVisible(false);
-    m_pItemSilverIcon->setVisible(false);
-    m_pItemCopperIcon->setVisible(false);
     
     m_pBtnDiscard->addClickEventListener(CC_CALLBACK_1(ItemPopupUI::onClickDiscard, this));
     
@@ -178,28 +141,33 @@ void ItemPopupUI::noEquipFrame(bool isEquip)
         m_pBackGround->setContentSize(m_pRootNode->getContentSize());
         m_pBackGround->setPosition(m_pRootNode->getContentSize()*0.5);
         m_pItemPropFrame->setPosition(Vec2(m_pItemPropFrame->getPositionX(), m_pRootNode->getContentSize().height));
-        
-        m_pMoneyFrame->setAnchorPoint(cocos2d::Vec2::ANCHOR_MIDDLE_BOTTOM);
-        m_pMoneyFrame->setPosition(cocos2d::Vec2(m_pMoneyFrame->getPositionX(),5));
+        m_pAttrFrame->setPosition(Vec2(m_pItemPropFrame->getContentSize().width*0.5, 0));
     }
 }
 void ItemPopupUI::itemFrame()
 {
-    PickableItemProperty* itemprop = PlayerProperty::getInstance()->getItemFromBag(CChaosNumber(m_nItemId));
+    PickableItemProperty* itemprop = getItemIdProperty();
     std::string str = itemprop->getDesc();
     ui::LinearLayoutParameter* linerParmter = ui::LinearLayoutParameter::create();
     linerParmter->setGravity(cocos2d::ui::LinearLayoutParameter::LinearGravity::CENTER_VERTICAL);
-    linerParmter->setMargin(ui::Margin(5,15,0,0));
+    linerParmter->setMargin(ui::Margin(10,5,0,0));
     
     m_pItemDesc->setItemText(str);
     m_pItemDesc->setLayoutParameter(linerParmter);
     m_pAttrFrame->addChild(m_pItemDesc);
+    
+    ui::LinearLayoutParameter* lastlinerParmter = ui::LinearLayoutParameter::create();
+    lastlinerParmter->setGravity(cocos2d::ui::LinearLayoutParameter::LinearGravity::CENTER_VERTICAL);
+    lastlinerParmter->setMargin(ui::Margin(10,-5,0,2));
+    m_pItemMoneyLayer->setLayoutParameter(lastlinerParmter);
+    m_pItemMoneyLayer->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
+    m_pAttrFrame->addChild(m_pItemMoneyLayer);
 }
 
 void ItemPopupUI::IdentifyEquiipFrame()
 {
-    PickableItemProperty* itemprop = PlayerProperty::getInstance()->getItemFromBag(CChaosNumber(m_nItemId));
-    std::string str = "传说由来自天魔星的魔矿打造，会逐渐控制主人的心智，使之入魔。";
+    PickableItemProperty* itemprop = getItemIdProperty();
+    std::string str;
     if (itemprop->isIdentified()) {
         str = itemprop->getDesc();
     }else
@@ -207,43 +175,30 @@ void ItemPopupUI::IdentifyEquiipFrame()
         str= itemprop->getBeforeIndentifyDesc();
     }
     
+    int addAttrCount = 0;
+    bool isdescAdd = false;
     std::vector<ADDED_EFFECT> effectList = itemprop->getAddedEffectList();
-//     std::vector<ADDED_EFFECT> effectList ={
-//        AE_LIGHT_DISTANCE,
-//        AE_SEARCH_DISTANCE,
-//        AE_MAX_HP,
-//        AE_MAX_MP,
-//        AE_MIN_ATTACK,
-//        AE_MAX_ATTACK,
-//        AE_BLOCK_RATE,
-//        AE_CRITICALSTRICK_RATE,
-//        AE_DODGE_RATE,
-//        AE_MAGICITEM_FIND_RATE,
-//    };
-    int size = effectList.size();
-    cocos2d::Size addSize = cocos2d::Size(0,10*size);
-    m_pAttrFrame->setContentSize(cocos2d::Size(m_pAttrFrame->getContentSize() + addSize));
-    m_pRootNode->setContentSize(m_pRootNode->getContentSize()+addSize);
-    m_pBackGround->setContentSize(m_pRootNode->getContentSize());
-    m_pBackGround->setPosition(m_pRootNode->getContentSize()*0.5);
-    m_pItemPropFrame->setPosition(Vec2(m_pItemPropFrame->getPositionX(), m_pRootNode->getContentSize().height));
+    int effectSize = effectList.size();
 
     std::sort(effectList.begin(),effectList.end(),std::less<ADDED_EFFECT>());
     Color3B effectColor = PopupUILayerManager::getInstance()->getTipsColor(TIP_EFFECT);
+    
+    ui::LinearLayoutParameter* linerParmter = ui::LinearLayoutParameter::create();
+    linerParmter->setGravity(cocos2d::ui::LinearLayoutParameter::LinearGravity::CENTER_VERTICAL);
+    linerParmter->setMargin(ui::Margin(10,-6,0,0));
+    
     if (itemprop->getPickableItemPropertyType() == PickableItemProperty::PIPT_WEAPON)
     {
         WeaponProperty* itemproperty = static_cast<WeaponProperty*>(itemprop);
         
-        addItemProp(StringUtils::format(UtilityHelper::getLocalStringForUi("EQUIP_PROP_ATTACK").c_str(),int(itemproperty->getMinAttack()),int(itemproperty->getMaxAttack())));
-      
-
-        ui::LinearLayoutParameter* linerParmter = ui::LinearLayoutParameter::create();
-        linerParmter->setGravity(cocos2d::ui::LinearLayoutParameter::LinearGravity::CENTER_VERTICAL);
-        linerParmter->setMargin(ui::Margin(0,-5,0,0));
+        ui::LinearLayoutParameter* onelinerParmter = ui::LinearLayoutParameter::create();
+        onelinerParmter->setGravity(cocos2d::ui::LinearLayoutParameter::LinearGravity::CENTER_VERTICAL);
+        onelinerParmter->setMargin(ui::Margin(10,0,0,0));
         
-        
+        addItemProp(StringUtils::format(UtilityHelper::getLocalStringForUi("EQUIP_PROP_ATTACK").c_str(),int(itemproperty->getMinAttack()),int(itemproperty->getMaxAttack())),Color3B::WHITE,onelinerParmter);
+        ++addAttrCount;
          std::string itemPropStr;
-        for (int i = 0 ; i<size; i++) {
+        for (int i = 0 ; i<effectSize; i++) {
             ADDED_EFFECT effect = effectList.at(i);
             if(effect ==AE_LIGHT_DISTANCE)
             {
@@ -267,27 +222,34 @@ void ItemPopupUI::IdentifyEquiipFrame()
             }else if(effect ==AE_MAGICITEM_FIND_RATE){
                 
                 itemPropStr = StringUtils::format(UtilityHelper::getLocalStringForUi("EQUIP_PROP_MAGIC").c_str(),int(itemproperty->getAddedMagicItemFindRate()));
+            }else if (effect == AE_CRITICALSTRICK_RATE)
+            {
+                itemPropStr = StringUtils::format(UtilityHelper::getLocalStringForUi("EQUIP_PROP_CRITICAL_STRIKE").c_str(),int(itemproperty->getAddedCriticalStrikeRate()));
+            }else if (effect == AE_SEARCH_DISTANCE)
+            {
+                itemPropStr = StringUtils::format(UtilityHelper::getLocalStringForUi("EQUIP_PROP_SEQRCH").c_str(),int(itemproperty->getAddedSearchDistance()));
+            }
+            if (!itemPropStr.empty())
+            {
+                 addItemProp(itemPropStr,effectColor,linerParmter);
+                ++addAttrCount;
             }
             
-            addItemProp(itemPropStr,effectColor,linerParmter);
         }
 
-        m_pItemDesc->setLayoutParameter(linerParmter);
-        m_pItemDesc->setItemText(str);
-        m_pAttrFrame->addChild(m_pItemDesc);
         
     }else if (itemprop->getPickableItemPropertyType() == PickableItemProperty::PIPT_ARMOR)
     {
         ArmorProperty* itemproperty = static_cast<ArmorProperty*>(itemprop);
         
-        addItemProp(StringUtils::format(UtilityHelper::getLocalStringForUi("EQUIP_PROP_DEFENSE").c_str(),int(itemproperty->getAddedDefense())), effectColor);
+        ui::LinearLayoutParameter* onelinerParmter = ui::LinearLayoutParameter::create();
+        onelinerParmter->setGravity(cocos2d::ui::LinearLayoutParameter::LinearGravity::CENTER_VERTICAL);
+        onelinerParmter->setMargin(ui::Margin(10,0,0,0));
         
+        addItemProp(StringUtils::format(UtilityHelper::getLocalStringForUi("EQUIP_PROP_DEFENSE").c_str(),int(itemproperty->getAddedDefense())), Color3B::WHITE,onelinerParmter);
         
-        ui::LinearLayoutParameter* linerParmter = ui::LinearLayoutParameter::create();
-        linerParmter->setGravity(cocos2d::ui::LinearLayoutParameter::LinearGravity::CENTER_VERTICAL);
-        linerParmter->setMargin(ui::Margin(0,-5,0,0));
         std::string itemPropStr;
-        for (int i = 0 ; i<size; i++) {
+        for (int i = 0 ; i<effectSize; i++) {
             ADDED_EFFECT effect = effectList.at(i);
             if(effect ==AE_LIGHT_DISTANCE)
             {
@@ -315,22 +277,21 @@ void ItemPopupUI::IdentifyEquiipFrame()
                 
             }
         }
-        addItemProp(itemPropStr,effectColor,linerParmter);
-        m_pItemDesc->setLayoutParameter(linerParmter);
-        m_pItemDesc->setItemText(str);
-        m_pAttrFrame->addChild(m_pItemDesc);
+        if (!itemPropStr.empty())
+        {
+             ++addAttrCount;
+             addItemProp(itemPropStr,effectColor,linerParmter);
+        }
         
+
         
     }else if (itemprop->getPickableItemPropertyType() == PickableItemProperty::PIPT_MAGIC_ORNAMENT)
     {
         MagicOrnamentProperty* itemproperty = static_cast<MagicOrnamentProperty*>(itemprop);
 
-        ui::LinearLayoutParameter* linerParmter = ui::LinearLayoutParameter::create();
-        linerParmter->setGravity(cocos2d::ui::LinearLayoutParameter::LinearGravity::CENTER_VERTICAL);
-        linerParmter->setMargin(ui::Margin(0,-5,0,0));
         
         std::string itemPropStr;
-        for (int i = 0 ; i<size; i++) {
+        for (int i = 0 ; i<effectSize; i++) {
             ADDED_EFFECT effect = effectList.at(i);
             if(effect ==AE_LIGHT_DISTANCE)
             {
@@ -371,26 +332,31 @@ void ItemPopupUI::IdentifyEquiipFrame()
                 
                 itemPropStr =StringUtils::format(UtilityHelper::getLocalStringForUi("EQUIP_PROP_CRITICAL_STRIKE").c_str(),int(itemproperty->getAddedMagicItemFindRate()));
             }
-            
+            if (itemPropStr.empty())
+                continue;
             if (i!=0)
+            {
                 addItemProp(itemPropStr,effectColor,linerParmter);
+                ++addAttrCount;
+            }
+            
             else
-                addItemProp(itemPropStr,effectColor);
+            {
+                ui::LinearLayoutParameter* onelinerParmter = ui::LinearLayoutParameter::create();
+                onelinerParmter->setGravity(cocos2d::ui::LinearLayoutParameter::LinearGravity::CENTER_VERTICAL);
+                onelinerParmter->setMargin(ui::Margin(10,0,0,0));
+                addItemProp(itemPropStr,effectColor,onelinerParmter);
+                ++addAttrCount;
+            }
         }
         
-        m_pItemDesc->setItemText(str);
-        m_pAttrFrame->addChild(m_pItemDesc);
-
         
     }else if (itemprop->getPickableItemPropertyType() == PickableItemProperty::PIPT_SECOND_WEAPON)
     {
         SecondWeaponProperty* itemproperty = static_cast<SecondWeaponProperty*>(itemprop);
         
-        ui::LinearLayoutParameter* linerParmter = ui::LinearLayoutParameter::create();
-        linerParmter->setGravity(cocos2d::ui::LinearLayoutParameter::LinearGravity::CENTER_VERTICAL);
-        linerParmter->setMargin(ui::Margin(0,-5,0,0));
         std::string itemPropStr;
-        for (int i = 0 ; i<size; i++) {
+        for (int i = 0 ; i<effectSize; i++) {
             ADDED_EFFECT effect = effectList.at(i);
             if(effect ==AE_LIGHT_DISTANCE)
             {
@@ -431,26 +397,84 @@ void ItemPopupUI::IdentifyEquiipFrame()
                 
                 itemPropStr =StringUtils::format(UtilityHelper::getLocalStringForUi("EQUIP_PROP_CRITICAL_STRIKE").c_str(),int(itemproperty->getAddedMagicItemFindRate()));
             }
+            if (itemPropStr.empty())
+            {
+                itemPropStr.clear();
+                continue;
+            }
             
             if (i!=0)
+            {
                 addItemProp(itemPropStr,effectColor,linerParmter);
+                ++addAttrCount;
+            }
             else
-                addItemProp(itemPropStr,effectColor);
+            {
+                ui::LinearLayoutParameter* onelinerParmter = ui::LinearLayoutParameter::create();
+                onelinerParmter->setGravity(cocos2d::ui::LinearLayoutParameter::LinearGravity::CENTER_VERTICAL);
+                onelinerParmter->setMargin(ui::Margin(10,0,0,0));
+                addItemProp(itemPropStr,effectColor,onelinerParmter);
+                ++addAttrCount;
+            }
+             itemPropStr.clear();
     
         }
-        
-        m_pItemDesc->setItemText(str);
-        m_pAttrFrame->addChild(m_pItemDesc);
-
     }
+    
+    
+    if (!str.empty()) {
+        m_pItemDesc->setItemText(str);
+        m_pItemDesc->setLayoutParameter(linerParmter);
+        m_pItemDesc->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
+        m_pAttrFrame->addChild(m_pItemDesc);
+        isdescAdd = true;
+    }
+
+    
+    cocos2d::Size addSize =cocos2d::Size(0,m_pItemMoneyLayer->getContentSize().height);
+    
+    if (addAttrCount>=2) {
+        addSize = cocos2d::Size(0,11*addAttrCount+addSize.height);
+    }
+
+    if (!isdescAdd ) {
+        addSize = cocos2d::Size(0,addSize.height-14);
+    }
+    
+    m_pAttrFrame->setContentSize(cocos2d::Size(m_pAttrFrame->getContentSize() + addSize));
+    m_pRootNode->setContentSize(m_pRootNode->getContentSize()+addSize);
+    
+    ui::LinearLayoutParameter* lastlinerParmter = ui::LinearLayoutParameter::create();
+    lastlinerParmter->setGravity(cocos2d::ui::LinearLayoutParameter::LinearGravity::CENTER_VERTICAL);
+    lastlinerParmter->setMargin(ui::Margin(10,0,0,3));
+    m_pItemMoneyLayer->setLayoutParameter(linerParmter);
+    m_pItemMoneyLayer->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
+    m_pAttrFrame->addChild(m_pItemMoneyLayer);
+    
+    m_pBackGround->setContentSize(m_pRootNode->getContentSize());
+    m_pBackGround->setPosition(m_pRootNode->getContentSize()*0.5);
+    m_pItemPropFrame->setPosition(Vec2(m_pItemPropFrame->getPositionX(), m_pRootNode->getContentSize().height));
+
 }
 
+PickableItemProperty* ItemPopupUI::getItemIdProperty() const
+{
+    if (m_nItemId!=-2) {
+        return PlayerProperty::getInstance()->getItemFromBag(CChaosNumber(m_nItemId));
+    }
+    return nullptr;
+}
+void ItemPopupUI::initButtonFrame()
+{
+    
+}
 void ItemPopupUI::updateItemPopup(int itemId)
 {
     m_nItemId = itemId;
     CCLOG("m_nItemId:%d",m_nItemId);
     
-    PickableItemProperty* itemprop = PlayerProperty::getInstance()->getItemFromBag(CChaosNumber(m_nItemId));
+    PickableItemProperty* itemprop = getItemIdProperty();
+    CCASSERT(itemprop!=nullptr, "itemprop is null!");
     m_pItemIcon->loadTexture(itemprop->getIconRes(),cocos2d::ui::Widget::TextureResType::PLIST);
     m_pItemName->setString(itemprop->getName());
     //设置品质
@@ -469,7 +493,7 @@ void ItemPopupUI::updateItemPopup(int itemId)
             break;
     }
     
-    updateItemMoney(itemprop->getValueCopper());
+    m_pItemMoneyLayer->updateItemMoney(itemprop->getValueCopper());
     
     PickableItemProperty::PickableItemPropertyType itemtype =itemprop->getPickableItemPropertyType();
     std::string str;
@@ -510,6 +534,8 @@ void ItemPopupUI::updateItemPopup(int itemId)
         m_pItemlv->setVisible(true);
         m_pItemlv->setString(StringUtils::format("LV.%ld",itemprop->getLevel().GetLongValue()));
         
+         IdentifyEquiipFrame();
+        
         if (itemprop->isEquipable() ) {
             if (PlayerProperty::getInstance()->getEquipedWeaponID() == m_nItemId ||
                 PlayerProperty::getInstance()->getEquipedArmorID() == m_nItemId ||
@@ -524,7 +550,7 @@ void ItemPopupUI::updateItemPopup(int itemId)
         {
             m_pItemEquipDist->setString(UtilityHelper::getLocalStringForUi("ITEM_NOT_EQUIP"));
             m_pItemEquipDist->setColor(PopupUILayerManager::getInstance()->getTipsColor(TIP_WARNING));
-             noEquipFrame(true);
+            noEquipFrame(true);
         }
         
         if (itemprop->isIdentified()) {
@@ -534,7 +560,7 @@ void ItemPopupUI::updateItemPopup(int itemId)
             m_pItemNotIden->setVisible(true);
             
         }
-        IdentifyEquiipFrame();
+       
     }else{
          m_pBtnEquip->addClickEventListener(CC_CALLBACK_1(ItemPopupUI::onClickUser, this));
          itemFrame();
@@ -546,7 +572,8 @@ void ItemPopupUI::onClickDiscard(cocos2d::Ref *ref)
 {
     CHECK_ACTION(ref);
     CCLOG("onClickDiscard");
-    PickableItemProperty* itemprop = PlayerProperty::getInstance()->getItemFromBag(CChaosNumber(m_nItemId));
+    PickableItemProperty* itemprop = getItemIdProperty();
+    CCASSERT(itemprop!=nullptr, "itemprop is null!");
     bool isSuccess = false;
     if (itemprop->isStackable()) {
         isSuccess = PlayerProperty::getInstance()->removeStackableItemFromBag(itemprop->getPickableItemType(), 1);
@@ -562,7 +589,8 @@ void ItemPopupUI::onClickUser(cocos2d::Ref *ref)
 {
     CHECK_ACTION(ref);
     CCLOG("onClickUser");
-    PickableItemProperty* itemprop = PlayerProperty::getInstance()->getItemFromBag(CChaosNumber(m_nItemId));
+    PickableItemProperty* itemprop = getItemIdProperty();
+    CCASSERT(itemprop!=nullptr, "itemprop is null!");
     PickableItemProperty::PickableItemPropertyType itemtype =itemprop->getPickableItemPropertyType();
      bool isItemUse = false;
     if (itemtype == PickableItemProperty::PIPT_POTIONS)
@@ -585,7 +613,8 @@ void ItemPopupUI::onClickEquip(cocos2d::Ref *ref)
 {
     CHECK_ACTION(ref);
 
-    PickableItemProperty* itemprop = PlayerProperty::getInstance()->getItemFromBag(CChaosNumber(m_nItemId));
+    PickableItemProperty* itemprop = getItemIdProperty();
+    CCASSERT(itemprop!=nullptr, "itemprop is null!");
     bool isEquipSuccess = false;
     if (itemprop->getPickableItemPropertyType() == PickableItemProperty::PIPT_WEAPON) {
         
@@ -621,34 +650,7 @@ void ItemPopupUI::addItemProp(std::string propStr,cocos2d::Color3B fontColor,coc
     itemNote->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
     m_pAttrFrame->addChild(itemNote);
 }
-void ItemPopupUI::updateItemMoney(CChaosNumber money)
-{
-    CChaosNumber goldNum = 0;
-    CChaosNumber silverNum = 0;
-    CChaosNumber copperNum = 0;
-    GameFormula::exchangeMoney(money, goldNum, silverNum, copperNum);
-    CCLOG("=======%d=====, %d, %d, %d", (int)(money), (int)(goldNum.GetLongValue()), (int)(silverNum.GetLongValue()), (int)(copperNum.GetLongValue()));
-    
-    if (goldNum > 0) {
-        m_pItemGoldIcon->setVisible(true);
-        m_pItemGoldNum->setString(StringUtils::format("%d",int(goldNum)));
-        m_pItemSilverIcon->setVisible(true);
-        m_pItemSilverNum->setString(StringUtils::format("%d",int(silverNum)));
-        m_pItemCopperIcon->setVisible(true);
-        m_pItemCopperNum->setString(StringUtils::format("%d",int(copperNum)));
-    }
-    else if (silverNum > 0) {
-        m_pItemSilverIcon->setVisible(true);
-        m_pItemSilverNum->setString(StringUtils::format("%d",int(silverNum)));
-        m_pItemCopperIcon->setVisible(true);
-        m_pItemCopperNum->setString(StringUtils::format("%d",int(copperNum)));
-    }
-    else if (copperNum > 0) {
-        m_pItemCopperIcon->setVisible(true);
-        m_pItemCopperNum->setString(StringUtils::format("%d",int(copperNum)));
-    }
 
-}
 void ItemPopupUI::closePopup()
 {
     

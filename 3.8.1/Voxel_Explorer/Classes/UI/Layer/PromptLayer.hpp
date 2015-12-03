@@ -16,7 +16,8 @@ class PromptLayer:public cocos2d::ui::ImageView
     PromptLayer();
 public:
     enum ePromptType{
-        PT_AWAKE
+        PT_AWAKE,
+        PT_CONFUSING
     };
     virtual ~PromptLayer();
     void onEnter() override;
@@ -27,6 +28,7 @@ public:
     void setDisplayPt(cocos2d::Vec3 pt){m_vDisplayPt = pt;};
 private:
     cocos2d::Vec3 m_vDisplayPt;
+    bool m_bIsAction;
 };
 
 #endif /* PromptLayer_hpp */

@@ -53,7 +53,7 @@ void NoteUi::setMsg(std::string msg,cocos2d::Color3B fontColor /*= cocos2d::Colo
             charCount = 40;
         }
         int count = UtilityHelper::getLineStr(msg, charCount);
-        setContentSize(cocos2d::Size(getContentSize().width,getContentSize().height*(count+1)));
+        setContentSize(cocos2d::Size(getContentSize().width,getContentSize().height*(count>1?(count+1):1)));
         m_pLabel->setString(msg);
         CCLOG("m_pLabel:%d msg:%lu",m_pLabel->getStringLength(),msg.length());
         m_pLabel->setColor(fontColor);

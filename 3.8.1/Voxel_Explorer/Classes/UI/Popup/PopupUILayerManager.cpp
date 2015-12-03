@@ -13,12 +13,13 @@
 #include "InfoPopupUI.h"
 #include "ShopPopupUI.h"
 #include "PausePopupUI.h"
-#include "ItemShopPopupUI.hpp"
+#include "ItemShopBuyPopupUI.hpp"
+#include "ItemShopSellPopupUI.hpp"
 #include "WeaponShopPopupUI.h"
 #include "MagicShopPopupUI.h"
 #include "TaskPopupUI.hpp"
 #include "AlchemyPopupUI.hpp"
-#include "GamblePopupUI.hpp"
+#include "GambleShopPopupUI.hpp"
 #include "OldManPopupUI.hpp"
 #include "LittleWitchPopupUI.hpp"
 #include "NursePopupUI.hpp"
@@ -111,8 +112,11 @@ PopupUILayer* PopupUILayerManager::initPopUp(ePopupType type)
         case ePopupPause:
             popupLayer = PausePopupUI::create();
             break;
-        case ePopupItemShop:
-            popupLayer = ItemShopPopupUI::create();
+        case ePopupItemShopBuy:
+            popupLayer = ItemShopBuyPopupUI::create();
+            break;
+        case ePopupItemShopSell:
+            popupLayer = ItemShopSellPopupUI::create();
             break;
         case ePopupWeaponShop:
             popupLayer = WeaponShopPopupUI::create();
@@ -121,7 +125,7 @@ PopupUILayer* PopupUILayerManager::initPopUp(ePopupType type)
             popupLayer = MagicShopPopupUI::create();
             break;
         case ePopupGamble:
-            popupLayer = GamblePopupUI::create();
+            popupLayer = GambleShopPopupUI::create();
             break;
         case ePopupAlchemy:
             popupLayer = AlchemyPopupUI::create();

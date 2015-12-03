@@ -361,3 +361,28 @@ bool NpcDataManager::initOldManRoom()
         return false;
     return true;
 }
+PickableItemProperty* NpcDataManager::getItemFromEquipMentShop(CChaosNumber id) const
+{
+    return getItemFormVector(m_EquipmentShop,id);
+}
+PickableItemProperty* NpcDataManager::getItemFromMagicShop(CChaosNumber id) const
+{
+    return getItemFormVector(m_MagicShop,id);
+}
+PickableItemProperty* NpcDataManager::getItemFromAlchemistRoom(CChaosNumber id) const
+{
+    return getItemFormVector(m_AlchemistRoom,id);
+}
+PickableItemProperty* NpcDataManager::getItemFromTheifRoom(CChaosNumber id) const
+{
+    return getItemFormVector(m_TheifRoom,id);
+}
+PickableItemProperty* NpcDataManager::getItemFormVector(const std::vector<PickableItemProperty*>& datas,CChaosNumber id) const
+{
+    std::vector<PickableItemProperty*>::const_iterator iter;
+    for (iter = datas.begin(); iter != datas.end(); iter++) {
+        if((*iter) != nullptr && (*iter)->getInstanceID() == id.GetLongValue())
+            return (*iter);
+    }
+    return nullptr;
+}

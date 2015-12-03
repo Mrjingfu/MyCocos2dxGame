@@ -10,7 +10,7 @@
 #include "BagMangerLayerUI.h"
 #include "PlayerProperty.hpp"
 #include "PopupUILayerManager.h"
-#include "ItemShopPopupUI.hpp"
+#include "ItemShopSellPopupUI.hpp"
 #include "ShopPopupUI.h"
 BagShopLayer::BagShopLayer()
 {
@@ -75,9 +75,9 @@ void BagShopLayer::bagItemOpe(int itemId)
 {
     if (itemId==-1)
         return;
-    ItemShopPopupUI* shopItem = static_cast<ItemShopPopupUI*>( PopupUILayerManager::getInstance()->openPopup(ePopupItemShop));
+    ItemShopSellPopupUI* shopItem = static_cast<ItemShopSellPopupUI*>( PopupUILayerManager::getInstance()->openPopup(ePopupItemShopSell));
     if (shopItem) {
-        shopItem->updateItemPopup(ItemShopPopupUI::IST_SELL,itemId);
+        shopItem->updateItemPopup(itemId);
 //        shopItem->registerCloseCallback(CC_CALLBACK_0(BagShopLayer::updatePopupUI, this));
     }
 }

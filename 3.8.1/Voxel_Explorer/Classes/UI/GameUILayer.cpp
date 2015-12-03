@@ -613,6 +613,11 @@ void GameUILayer::onEventMonsterConfusing(cocos2d::EventCustom *sender)
 {
     CCLOG("onEventMonsterConfusing");
     BaseMonster* monster = static_cast<BaseMonster*>(sender->getUserData());
+    PromptLayer* promptLayer = PromptLayer::create(PromptLayer::PT_CONFUSING);
+    if (monster) {
+        promptLayer->setDisplayPt(monster->getPosition3D());
+    }
+    m_pRootLayer->addChild(promptLayer);
     if (m_pMonsterPropLayer) {
          m_pMonsterPropLayer->setVisible(false);
     }

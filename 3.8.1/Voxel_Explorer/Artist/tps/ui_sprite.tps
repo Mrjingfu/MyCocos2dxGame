@@ -218,6 +218,8 @@
             <filename>../ui/ui_sprite/btn_fram_sell_press_ch.png</filename>
             <filename>../ui/ui_sprite/btn_fram_sell_press_en.png</filename>
             <filename>../ui/ui_sprite/ui_no_user.png</filename>
+            <filename>../ui/ui_sprite/ui_excalmatory_icon.png</filename>
+            <filename>../ui/ui_sprite/ui_question_icon.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

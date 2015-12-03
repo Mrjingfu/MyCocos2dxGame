@@ -20,9 +20,8 @@ public:
     virtual ~MagicShopPopupUI();
     virtual bool init() override;
     virtual bool addEvents() override;
-    virtual void updateShopDataItems() override;
+    virtual const std::vector<PickableItemProperty*>& getShopItems() const override;
     virtual void shopItemOpe(int itemId) override;
-   
 private:
 
 

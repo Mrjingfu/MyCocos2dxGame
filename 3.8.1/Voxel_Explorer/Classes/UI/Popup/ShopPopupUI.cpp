@@ -12,8 +12,8 @@
 #include "PickableItemProperty.hpp"
 #include "PlayerProperty.hpp"
 #include "BagMangerLayerUI.h"
-#include "ItemShopPopupUI.hpp"
 #include "PopupUILayerManager.h"
+#include "PickableItemProperty.hpp"
 ShopPopupUI::ShopPopupUI()
 {
     m_cActionType       = eNone;
@@ -50,6 +50,7 @@ bool ShopPopupUI::addEvents()
     m_pBagLayer = BagShopLayer::create();
     m_pBagLayer->setAnchorPoint(cocos2d::Vec2::ANCHOR_MIDDLE_BOTTOM);
     m_pBagLayer->setPosition(cocos2d::Size(m_pRootNode->getContentSize().width*0.5,0));
+    m_pBagLayer->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
     m_pRootNode->addChild(m_pBagLayer);
     
     m_pBtnBuyFrame->loadTextures(UtilityHelper::getLocalStringForUi("SHOP_BTN_FRAME_BUY_NORMAL"), UtilityHelper::getLocalStringForUi("SHOP_BTN_FRAME_BUY_PRESS"),UtilityHelper::getLocalStringForUi("SHOP_BTN_FRAME_BUY_PRESS"),TextureResType::PLIST);
@@ -71,7 +72,9 @@ bool ShopPopupUI::addEvents()
     m_pShopGridView->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
     m_shopFrame->addChild(m_pShopGridView);
 
-    for (int j =0; j<15; j++) {
+    int shopItemSize = getShopItems().size()/15?15:15*(getShopItems().size()/15+1);
+    
+    for (int j =0; j<shopItemSize; j++) {
         
         ImageView* itemui = ImageView::create();
         itemui->setTouchEnabled(true);
@@ -108,13 +111,26 @@ void ShopPopupUI::updateShopBuyItems()
     if (m_pShopMangerLayer) {
         m_pShopMangerLayer->removeItems();
     }
-    
-    //添加商品 测试
+
     updateShopDataItems();
 
 }
 
+void ShopPopupUI::updateShopDataItems()
+{
+    std::vector<PickableItemProperty*> itemProps = getShopItems();
+    
+    for (int i=0; i<itemProps.size(); i++)
+    {
+        PickableItemProperty* property = itemProps[i];
+        ui::ImageView* img =static_cast<ui::ImageView*>( m_pShopGridView->getItem(i));
+        if (property && img)
+        {
+            m_pShopMangerLayer->addItem(i, property->getInstanceID(), img->getPosition(), property->getIconRes());
+        }
+    }
 
+}
 void ShopPopupUI::selectItemEvent(cocos2d::Ref *pSender, TGridView::EventType type)
 {
     if (type==TGridView::EventType::ON_SELECTED_ITEM_END) {
@@ -122,11 +138,6 @@ void ShopPopupUI::selectItemEvent(cocos2d::Ref *pSender, TGridView::EventType ty
         int currentItemId = m_pShopMangerLayer->getItemId(gridView->getCurSelectedIndex());
         if (currentItemId!=-1) {
             shopItemOpe(currentItemId);
-//            ItemShopPopupUI* shopItem = static_cast<ItemShopPopupUI*>( PopupUILayerManager::getInstance()->openPopup(ePopupItemShop));
-//            if (shopItem) {
-//                shopItem->updateItemPopup(ItemShopPopupUI::IST_BUY,currentItemId);
-//                shopItem->registerCloseCallback(CC_CALLBACK_0(ShopPopupUI::refreshUIView, this));
-//            }
         }
     }
 }

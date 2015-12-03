@@ -33,6 +33,11 @@ public:
     const std::vector<PickableItemProperty*>& getAlchemistRoom() const { return m_AlchemistRoom; }
     const std::vector<PickableItemProperty*>& getTheifRoom() const { return m_TheifRoom; }
     
+    PickableItemProperty* getItemFromEquipMentShop(CChaosNumber id) const;
+    PickableItemProperty* getItemFromMagicShop(CChaosNumber id) const;
+    PickableItemProperty* getItemFromAlchemistRoom(CChaosNumber id) const;
+    PickableItemProperty* getItemFromTheifRoom(CChaosNumber id) const;
+    
     std::string getOldManRoomInfoByPart(int part, bool& atEnd);
 private:
     bool initEquipmentShop();
@@ -40,6 +45,8 @@ private:
     bool initAlchemistShop();
     bool initTheifRoom();
     bool initOldManRoom();
+    
+    PickableItemProperty* getItemFormVector(const std::vector<PickableItemProperty*>& datas,CChaosNumber id) const;
 private:
     std::vector<PickableItemProperty*>      m_EquipmentShop;
     std::vector<PickableItemProperty*>      m_MagicShop;
