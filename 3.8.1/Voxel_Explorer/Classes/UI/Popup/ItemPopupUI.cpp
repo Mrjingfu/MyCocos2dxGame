@@ -613,6 +613,7 @@ void ItemPopupUI::updateEquipItem()
     if (isNotEquip) {
         m_pItemEquipDist->setVisible(true);
         m_pItemEquipDist->setString(UtilityHelper::getLocalStringForUi("ITEM_NOT_EQUIP"));
+        m_pItemEquipDist->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
         m_pItemEquipDist->setColor(PopupUILayerManager::getInstance()->getTipsColor(TIP_NEGATIVE));
         if (m_pBtnDiscard) {
             m_pBtnDiscard->setVisible(false);
