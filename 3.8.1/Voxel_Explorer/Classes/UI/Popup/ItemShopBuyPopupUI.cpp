@@ -107,7 +107,7 @@ void ItemShopBuyPopupUI::refreshUIView()
     
     btnLabel->setString("BUY");
     m_pBtnEquip->addClickEventListener(CC_CALLBACK_1(ItemShopBuyPopupUI::onClickBuy, this));
-    m_pItemMoneyLayer->updateItemMoney(itemprop->getValueCopper()*(1+m_pItemSlider->getPercent()));
+    m_pItemMoneyLayer->updateItemMoney(itemprop->getCopperWhenBuy()*(1+m_pItemSlider->getPercent()));
 }
 void ItemShopBuyPopupUI::sliderEvent(cocos2d::Ref* sender, cocos2d::ui::Slider::EventType type)
 {

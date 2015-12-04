@@ -44,8 +44,6 @@ KeyProperty::KeyProperty(unsigned int instanceID, PickableItem::PickableItemType
 
 void KeyProperty::adjustByLevel()
 {
-    m_nValueCopper = m_nValueCopper*m_nCount.GetLongValue();
-    m_nCopperWhenBuy = m_nValueCopper * 1.5f;
 }
 void KeyProperty::handleIdentify()
 {
