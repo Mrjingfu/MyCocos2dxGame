@@ -449,8 +449,12 @@ void ItemPopupUI::addMoneyUI()
 
         ui::LinearLayoutParameter* lastlinerParmter = ui::LinearLayoutParameter::create();
         lastlinerParmter->setGravity(cocos2d::ui::LinearLayoutParameter::LinearGravity::CENTER_VERTICAL);
-        lastlinerParmter->setMargin(ui::Margin(0,-7,0,0));
-        
+        if (m_pAttrFrame->getChildrenCount() <=0) {
+            lastlinerParmter->setMargin(ui::Margin(0,5,0,0));
+        }else
+        {
+            lastlinerParmter->setMargin(ui::Margin(0,-7,0,0));
+        }
         addSize = addSize +cocos2d::Size(0,m_pItemMoneyLayer->getContentSize().height);
         m_pItemMoneyLayer->setLayoutParameter(lastlinerParmter);
         m_pItemMoneyLayer->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
@@ -576,7 +580,13 @@ void ItemPopupUI::updateEquipItem()
         
         ui::LinearLayoutParameter* linerParmter = ui::LinearLayoutParameter::create();
         linerParmter->setGravity(cocos2d::ui::LinearLayoutParameter::LinearGravity::CENTER_VERTICAL);
-        linerParmter->setMargin(ui::Margin(10,-7,0,0));
+        if (m_pAttrFrame->getChildrenCount() <=0) {
+            linerParmter->setMargin(ui::Margin(10,5,0,0));
+        }else
+        {
+            linerParmter->setMargin(ui::Margin(10,-7,0,0));
+        }
+        
         
         addItemProp(str,PopupUILayerManager::getInstance()->getTipsColor(TIP_NEGATIVE),linerParmter);
         updateItemPopupSize(cocos2d::Size(0,11));

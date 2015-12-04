@@ -412,9 +412,8 @@ void VoxelExplorer::generatePickItem(const cocos2d::Vec2& pos, bool generateItem
     {
         if(copper > 0)
         {
-            CChaosNumber copperNum, silverNum, goldNum;
-            GameFormula::exchangeMoney(copper, goldNum, silverNum, copperNum);
-            PlayerProperty::getInstance()->addMoney(goldNum, silverNum, copperNum);
+            
+            PlayerProperty::getInstance()->addMoney(copper);
             ///声音
         }
         if(generateItem)
@@ -443,11 +442,11 @@ void VoxelExplorer::generatePickItemByUseableItem(const cocos2d::Vec2& pos, Usea
     if(type <= UseableItem::UIT_CHEST_GOLD)
     {
         if(type == UseableItem::UIT_CHEST_GOLD || type == UseableItem::UIT_CHEST_NO_LOCK_GOLD)
-            PlayerProperty::getInstance()->addMoney(1, 0, 0);
+            PlayerProperty::getInstance()->addMoney(10000);
         else if(type == UseableItem::UIT_CHEST_SILVER || type == UseableItem::UIT_CHEST_NO_LOCK_SILVER)
-            PlayerProperty::getInstance()->addMoney(0, 25, 0);
+            PlayerProperty::getInstance()->addMoney(2500);
         else
-            PlayerProperty::getInstance()->addMoney(0, 0, 50);
+            PlayerProperty::getInstance()->addMoney(50);
         
         PickableItem::PickableItemType pitType = PickableItem::generatePickItemByUseableLevel(level, type);
         if(pitType == PickableItem::PIT_UNKNOWN)
@@ -463,7 +462,7 @@ void VoxelExplorer::generatePickItemByUseableItem(const cocos2d::Vec2& pos, Usea
     }
     else
     {
-        PlayerProperty::getInstance()->addMoney(0, 0, cocos2d::random(5, 30));
+        PlayerProperty::getInstance()->addMoney(cocos2d::random(5, 30));
         float percent1 = 0.3f;
         float percent2 = 0.3f;
         float percent3 = 1.0f - percent1 - percent2;

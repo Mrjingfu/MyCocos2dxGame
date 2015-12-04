@@ -33,9 +33,7 @@ PlayerProperty* PlayerProperty::getInstance()
 }
 PlayerProperty::PlayerProperty()
 {
-    m_nGold                 = 0;                ///金币
-    m_nSilver               = 0;                ///银币
-    m_nCopper               = 0;                ///铜币
+    m_nValueCopper          = 0;                ///价值
     m_nLevel                = 1;                ///等级
     m_nExp                  = 0;                ///经验
     m_nLightDistance        = 6;                ///光照范围
@@ -177,30 +175,28 @@ CChaosNumber PlayerProperty::getDefense()
 {
     return -m_nArmorClass.GetLongValue() + m_nBaseArmorClass.GetLongValue();
 }
-void PlayerProperty::addMoney(CChaosNumber gold, CChaosNumber silver, CChaosNumber copper)
+void PlayerProperty::addMoney( CChaosNumber copper)
 {
-    if(silver<0 || silver>99 || copper<0 || copper>99 )
-    {
-        CCLOGERROR("Money add error!");
-        return;
-    }
-    m_nGold = m_nGold + gold.GetLongValue();
-    m_nSilver = m_nSilver + silver.GetLongValue();
-    m_nCopper = m_nCopper + copper.GetLongValue();
-    m_bDirty = true;
+//    if(silver<0 || silver>99 || copper<0 || copper>99 )
+//    {
+//        CCLOGERROR("Money add error!");
+//        return;
+//    }
+
+    m_nValueCopper = m_nValueCopper + copper.GetLongValue();
+     m_bDirty = true;
 }
-bool PlayerProperty::costMoney(CChaosNumber gold, CChaosNumber silver, CChaosNumber copper)
+bool PlayerProperty::costMoney( CChaosNumber costcopper)
 {
-    CChaosNumber cost = GameFormula::exchangeMoney(gold,silver,copper);
-    CChaosNumber own = GameFormula::exchangeMoney(m_nGold,m_nSilver,m_nCopper);
-    if(own < cost)
+   
+    if(m_nValueCopper < costcopper)
     {
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_MONEY_NOT_ENOUGH);
         return false;
     }
     
-    CChaosNumber left = own.GetLongValue() - cost.GetLongValue();
-    GameFormula::exchangeMoney(left, m_nGold, m_nSilver, m_nCopper);
+    m_nValueCopper = m_nValueCopper - costcopper.GetLongValue();
+    
     m_bDirty = true;
     return true;
 }
@@ -622,8 +618,7 @@ bool PlayerProperty::buyItemToBag(PickableItemProperty* buyItemProperty, CChaosN
         return false;
     }
     
-    CChaosNumber gold, silver, copper;
-    GameFormula::exchangeMoney(buyItemProperty->getCopperWhenBuy() * count.GetLongValue(), gold, silver, copper);
+    CChaosNumber buycopper = buyItemProperty->getCopperWhenBuy() * count.GetLongValue();
     
     if(buyItemProperty->isStackable())
     {
@@ -633,7 +628,7 @@ bool PlayerProperty::buyItemToBag(PickableItemProperty* buyItemProperty, CChaosN
                 if(item->getPickableItemType() == buyItemProperty->getPickableItemType()
                    && item->getInstanceID() != buyItemProperty->getInstanceID())
                 {
-                    if(costMoney(gold, silver, copper))
+                    if(costMoney(buycopper))
                     {
                         IStackable* itemProperty = dynamic_cast<IStackable*>(item);
                         if (itemProperty)
@@ -649,7 +644,7 @@ bool PlayerProperty::buyItemToBag(PickableItemProperty* buyItemProperty, CChaosN
     else
     {
         CCASSERT(count == 1, "UnStackable item count must be 1.");
-        if(costMoney(gold, silver, copper))
+        if(costMoney(buycopper))
         {
             if(toIndentify)
                 buyItemProperty->handleIdentify();
@@ -670,14 +665,12 @@ bool PlayerProperty::sellItemFromBag(PickableItemProperty* sellItemProperty, CCh
     if(!sellItemProperty)
         return false;
     
-    CChaosNumber gold, silver, copper;
-    GameFormula::exchangeMoney(sellItemProperty->getValueCopper()* count.GetLongValue(), gold, silver, copper);
-    
+    CChaosNumber valueCopper = sellItemProperty->getValueCopper()* count.GetLongValue();
     if(sellItemProperty->isStackable())
     {
         if(removeStackableItemFromBag(sellItemProperty->getPickableItemType(), count))
         {
-            addMoney(gold, silver, copper);
+            addMoney(valueCopper);
             return true;
         }
     }
@@ -687,7 +680,7 @@ bool PlayerProperty::sellItemFromBag(PickableItemProperty* sellItemProperty, CCh
         
         if(removeItemFromBag((int)(sellItemProperty->getInstanceID())))
         {
-            addMoney(gold, silver, copper);
+            addMoney(valueCopper);
             return true;
         }
     }

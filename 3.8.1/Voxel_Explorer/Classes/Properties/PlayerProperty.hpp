@@ -39,9 +39,8 @@ public:
     
     void update(float delta);
     
-    CChaosNumber getGold() const { return m_nGold; }
-    CChaosNumber getSilver() const { return m_nSilver; }
-    CChaosNumber getCopper() const { return m_nCopper; }
+
+    CChaosNumber getValueCopper() const { return m_nValueCopper; }
     CChaosNumber getLevel() const { return m_nLevel; }
     CChaosNumber getExp() const { return m_nExp; }
     CChaosNumber getLightDistance() const { return m_nLightDistance; }
@@ -75,8 +74,8 @@ public:
     void removePlayerBuffer(PlayerBuffer buff);
     void resetPlayerBuffer();
     
-    void addMoney(CChaosNumber gold, CChaosNumber silver, CChaosNumber copper);
-    bool costMoney(CChaosNumber gold, CChaosNumber silver, CChaosNumber copper);
+    void addMoney(CChaosNumber copper);
+    bool costMoney(CChaosNumber copper);
     void setExp(CChaosNumber exp);
     void setCurrentHP(CChaosNumber hp);
     void setCurrentMP(CChaosNumber mp);
@@ -105,9 +104,7 @@ private:
     void levelUp();
     
 private:
-    CChaosNumber    m_nGold;                ///金币
-    CChaosNumber    m_nSilver;              ///银币
-    CChaosNumber    m_nCopper;              ///铜币
+    CChaosNumber    m_nValueCopper;         ///价值
     CChaosNumber    m_nLevel;               ///等级
     CChaosNumber    m_nExp;                 ///经验
     CChaosNumber    m_nLightDistance;       ///光照范围

@@ -10,6 +10,7 @@
 #include "UtilityHelper.h"
 #include "RandomDungeon.hpp"
 #include "PlayerProperty.hpp"
+#include "GameFormula.hpp"
 USING_NS_CC;
 GameInfoLayer::GameInfoLayer()
 {
@@ -61,14 +62,21 @@ void GameInfoLayer::refreshUIView()
         m_pGameLevelInfoName->setString(RandomDungeon::getInstance()->getCurrentDungeonNode()->m_strDungeonBossName.c_str());
     else
         m_pGameLevelInfoName->setString(StringUtils::format("%s %d",RandomDungeon::getInstance()->getCurrentDungeonNode()->m_strDungeonName.c_str(),int(RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nCurrentDepth)));
-    CCLOG(" gold: %s",StringUtils::format("%d",int(PlayerProperty::getInstance()->getGold())).c_str());
-    CCLOG(" silver: %s",StringUtils::format("%d",int(PlayerProperty::getInstance()->getGold())).c_str());
-    CCLOG(" copper: %s",StringUtils::format("%d",int(PlayerProperty::getInstance()->getGold())).c_str());
+    CChaosNumber goldNum = 0;
+    CChaosNumber silverNum = 0;
+    CChaosNumber copperNum = 0;
+    GameFormula::exchangeMoney(PlayerProperty::getInstance()->getValueCopper(), goldNum, silverNum, copperNum);
+    CCLOG("=======%d=====, %d, %d, %d", (int)(PlayerProperty::getInstance()->getValueCopper()), (int)(goldNum.GetLongValue()), (int)(silverNum.GetLongValue()), (int)(copperNum.GetLongValue()));
+
+    
+    CCLOG(" gold: %s",StringUtils::format("%d",int(goldNum)).c_str());
+    CCLOG(" silver: %s",StringUtils::format("%d",int(silverNum)).c_str());
+    CCLOG(" copper: %s",StringUtils::format("%d",int(copperNum)).c_str());
     
     
-    m_pGameGoldNum->setString(StringUtils::format("%d",int(PlayerProperty::getInstance()->getGold())));
-    m_pGameSilverNum->setString(StringUtils::format("%d",int(PlayerProperty::getInstance()->getSilver())));
-    m_pGameCopperNum->setString(StringUtils::format("%d",int(PlayerProperty::getInstance()->getCopper())));
+    m_pGameGoldNum->setString(StringUtils::format("%d",int(goldNum)));
+    m_pGameSilverNum->setString(StringUtils::format("%d",int(silverNum)));
+    m_pGameCopperNum->setString(StringUtils::format("%d",int(copperNum)));
 
 }
 
