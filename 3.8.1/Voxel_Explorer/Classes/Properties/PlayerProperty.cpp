@@ -421,7 +421,7 @@ bool PlayerProperty::equipArmor(CChaosNumber id)
         m_nCurrentHP = MIN(m_nCurrentHP, m_nMaxHP);
         m_nCurrentMP = MIN(m_nCurrentMP, m_nMaxMP);
 
-        m_nArmorClass = m_nArmorClass + armorProperty->getAddedDodgeRate().GetFloatValue();
+        m_nArmorClass = m_nArmorClass + armorProperty->getAddedArmorClass().GetFloatValue();
         m_fDodgeRate = m_fDodgeRate + armorProperty->getAddedDodgeRate().GetFloatValue();
         
         m_fMagicItemFindRate = m_fMagicItemFindRate + m_fBasicMagicItemFindRate*armorProperty->getAddedMagicItemFindRate().GetFloatValue();

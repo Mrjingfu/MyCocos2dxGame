@@ -48,8 +48,6 @@ ScrollProperty::ScrollProperty(unsigned int instanceID, PickableItem::PickableIt
 
 void ScrollProperty::adjustByLevel()
 {
-    m_nValueCopper = m_nValueCopper*m_nCount.GetLongValue();
-    m_nCopperWhenBuy = m_nValueCopper * 1.5f;
 }
 void ScrollProperty::handleIdentify()
 {
