@@ -871,8 +871,8 @@ void StandardLevel::showMap(bool show)
                 TileInfo info = m_Map[index];
                 
                 //for debug
-                //if(!info.m_bVisited)
-                //    continue;
+                if(!info.m_bVisited)
+                    continue;
 
                 cocos2d::Rect rect(j,i,1,1);
                 Vec2 vertices[4] = {
@@ -924,7 +924,12 @@ void StandardLevel::showMap(bool show)
                     case TerrainTile::TT_HIDE_GRIPPING_TRAP:
                     case TerrainTile::TT_HIDE_SUMMONING_TRAP:
                     case TerrainTile::TT_HIDE_WEAK_TRAP:
-                        m_pMapDrawNode->drawPolygon(vertices, 4, Color4F::WHITE, 0, Color4F(0,0,0,0));
+                        {
+                            if(info.m_AreaType == Area::AT_BOSS_ROOM)
+                                m_pMapDrawNode->drawPolygon(vertices, 4, Color4F(0,1,1,1), 0, Color4F(0,0,0,0));
+                            else
+                                m_pMapDrawNode->drawPolygon(vertices, 4, Color4F::WHITE, 0, Color4F(0,0,0,0));
+                        }
                         break;
                     case TerrainTile::TT_TOXIC_TRAP:
                         m_pMapDrawNode->drawPolygon(vertices, 4, Color4F(27.0f/255.0f, 186.0f/255.0f, 52.0f/255.0f, 1.0f), 0, Color4F(0,0,0,0));

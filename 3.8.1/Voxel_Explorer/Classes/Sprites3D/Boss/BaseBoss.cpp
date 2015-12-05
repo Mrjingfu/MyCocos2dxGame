@@ -8,6 +8,19 @@
 
 #include "BaseBoss.hpp"
 USING_NS_CC;
+const std::string BOSS_MODEL_NAMES[] = {
+    "BMN_UNKNOWN",
+    
+    "BMN_SLIMEKING",               ///史莱姆王
+    "BMN_WARDEN",                  ///典狱长
+    "BMN_ARCHBISHOP",              ///大主教
+    "BMN_KOBOLDLEADER",            ///狗头人首领
+    "BMN_GIANT",                   ///巨人格鲁尔德
+    "BMN_SKELETONKING",            ///骷髅王
+    
+    "BMN_MAX"
+};
+
 BaseBoss::BaseBoss()
 {
     m_State = BS_UNKNOWN;

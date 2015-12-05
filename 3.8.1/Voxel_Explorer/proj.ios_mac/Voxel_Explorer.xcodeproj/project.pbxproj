@@ -117,8 +117,6 @@
 		55338AE71BD8928E00EA316F /* Giant.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55338AE41BD8928E00EA316F /* Giant.cpp */; };
 		55338AEA1BD892C200EA316F /* Archbishop.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55338AE81BD892C200EA316F /* Archbishop.cpp */; };
 		55338AEB1BD892C200EA316F /* Archbishop.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55338AE81BD892C200EA316F /* Archbishop.cpp */; };
-		55338AEE1BD892FC00EA316F /* ShadowDragon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55338AEC1BD892FC00EA316F /* ShadowDragon.cpp */; };
-		55338AEF1BD892FC00EA316F /* ShadowDragon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55338AEC1BD892FC00EA316F /* ShadowDragon.cpp */; };
 		553BC5011BCDF457003D907A /* Actor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 553BC4FF1BCDF457003D907A /* Actor.cpp */; };
 		553BC5021BCDF457003D907A /* Actor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 553BC4FF1BCDF457003D907A /* Actor.cpp */; };
 		553BC5091BCE499B003D907A /* BaseDoor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 553BC5071BCE499B003D907A /* BaseDoor.cpp */; };
@@ -153,6 +151,8 @@
 		555B0D241BC51A2C0055FB6D /* GameScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 555B0D101BC51A2C0055FB6D /* GameScene.cpp */; };
 		555B0D251BC51A2C0055FB6D /* VoxelExplorer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 555B0D131BC51A2C0055FB6D /* VoxelExplorer.cpp */; };
 		555B0D261BC51A2C0055FB6D /* VoxelExplorer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 555B0D131BC51A2C0055FB6D /* VoxelExplorer.cpp */; };
+		5560F5EE1C12CB8E001DD164 /* KoboldLeader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5560F5EC1C12CB8E001DD164 /* KoboldLeader.cpp */; };
+		5560F5EF1C12CB8E001DD164 /* KoboldLeader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5560F5EC1C12CB8E001DD164 /* KoboldLeader.cpp */; };
 		55619D511C0DAB3900419E40 /* SewerBossLevel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55619D4F1C0DAB3900419E40 /* SewerBossLevel.cpp */; };
 		55619D521C0DAB3900419E40 /* SewerBossLevel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55619D4F1C0DAB3900419E40 /* SewerBossLevel.cpp */; };
 		5569713C1BE20CCE00CC2736 /* Layer3D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5569713A1BE20CCE00CC2736 /* Layer3D.cpp */; };
@@ -448,8 +448,6 @@
 		55338AE51BD8928E00EA316F /* Giant.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Giant.hpp; sourceTree = "<group>"; };
 		55338AE81BD892C200EA316F /* Archbishop.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Archbishop.cpp; sourceTree = "<group>"; };
 		55338AE91BD892C200EA316F /* Archbishop.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Archbishop.hpp; sourceTree = "<group>"; };
-		55338AEC1BD892FC00EA316F /* ShadowDragon.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ShadowDragon.cpp; sourceTree = "<group>"; };
-		55338AED1BD892FC00EA316F /* ShadowDragon.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ShadowDragon.hpp; sourceTree = "<group>"; };
 		553BC4FF1BCDF457003D907A /* Actor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Actor.cpp; sourceTree = "<group>"; };
 		553BC5001BCDF457003D907A /* Actor.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Actor.hpp; sourceTree = "<group>"; };
 		553BC5071BCE499B003D907A /* BaseDoor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BaseDoor.cpp; sourceTree = "<group>"; };
@@ -483,6 +481,8 @@
 		555B0D111BC51A2C0055FB6D /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameScene.h; sourceTree = "<group>"; };
 		555B0D131BC51A2C0055FB6D /* VoxelExplorer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VoxelExplorer.cpp; sourceTree = "<group>"; };
 		555B0D141BC51A2C0055FB6D /* VoxelExplorer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VoxelExplorer.h; sourceTree = "<group>"; };
+		5560F5EC1C12CB8E001DD164 /* KoboldLeader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KoboldLeader.cpp; sourceTree = "<group>"; };
+		5560F5ED1C12CB8E001DD164 /* KoboldLeader.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = KoboldLeader.hpp; sourceTree = "<group>"; };
 		55619D4F1C0DAB3900419E40 /* SewerBossLevel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SewerBossLevel.cpp; sourceTree = "<group>"; };
 		55619D501C0DAB3900419E40 /* SewerBossLevel.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SewerBossLevel.hpp; sourceTree = "<group>"; };
 		5569713A1BE20CCE00CC2736 /* Layer3D.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Layer3D.cpp; sourceTree = "<group>"; };
@@ -952,10 +952,10 @@
 				55338AE51BD8928E00EA316F /* Giant.hpp */,
 				55338AE81BD892C200EA316F /* Archbishop.cpp */,
 				55338AE91BD892C200EA316F /* Archbishop.hpp */,
-				55338AEC1BD892FC00EA316F /* ShadowDragon.cpp */,
-				55338AED1BD892FC00EA316F /* ShadowDragon.hpp */,
 				554F00EC1BDA210000F4DF8E /* BaseBoss.cpp */,
 				554F00ED1BDA210000F4DF8E /* BaseBoss.hpp */,
+				5560F5EC1C12CB8E001DD164 /* KoboldLeader.cpp */,
+				5560F5ED1C12CB8E001DD164 /* KoboldLeader.hpp */,
 			);
 			path = Boss;
 			sourceTree = "<group>";
@@ -1478,7 +1478,6 @@
 				551E93E41BD512D3009F788F /* libb64.c in Sources */,
 				550545171BFEEF7E006B4500 /* EffectSprite3D.cpp in Sources */,
 				550C32EC1BDDE8740015124E /* SecondWeaponProperty.cpp in Sources */,
-				55338AEE1BD892FC00EA316F /* ShadowDragon.cpp in Sources */,
 				551E93C11BD51291009F788F /* ArchiveManager.cpp in Sources */,
 				553BC50D1BCE5191003D907A /* StandardDoor.cpp in Sources */,
 				EC795F671C0DA57C0083829B /* NpcPropLayer.cpp in Sources */,
@@ -1521,6 +1520,7 @@
 				EC795F491C0D4A4B0083829B /* WeaponShopPopupUI.cpp in Sources */,
 				EC3CC9A51C08909B00F8CFC8 /* RolePropLayer.cpp in Sources */,
 				551E93E61BD512D3009F788F /* md5.c in Sources */,
+				5560F5EE1C12CB8E001DD164 /* KoboldLeader.cpp in Sources */,
 				EC3CC9891C088F4F00F8CFC8 /* InfoPopupUI.cpp in Sources */,
 				EC3CC99B1C088F4F00F8CFC8 /* CloseCallback.cpp in Sources */,
 				EC3CC9931C088F4F00F8CFC8 /* PopupUILayerManager.cpp in Sources */,
@@ -1639,9 +1639,9 @@
 				5586C7AD1C0FDD3F00DFA588 /* FaneBossLevel.cpp in Sources */,
 				EC3CC9A61C08909B00F8CFC8 /* RolePropLayer.cpp in Sources */,
 				EC795F501C0D4AB20083829B /* TaskPopupUI.cpp in Sources */,
-				55338AEF1BD892FC00EA316F /* ShadowDragon.cpp in Sources */,
 				55338AE71BD8928E00EA316F /* Giant.cpp in Sources */,
 				EC795F541C0D4AD70083829B /* AlchemyShopPopupUI.cpp in Sources */,
+				5560F5EF1C12CB8E001DD164 /* KoboldLeader.cpp in Sources */,
 				EC3CC9821C088F4F00F8CFC8 /* PromptLayer.cpp in Sources */,
 				55F81CB91BDB8B81002EC075 /* ArmorProperty.cpp in Sources */,
 				550C32ED1BDDE8740015124E /* SecondWeaponProperty.cpp in Sources */,

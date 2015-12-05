@@ -11,9 +11,22 @@
 
 #include "Actor.hpp"
 #include "TerrainTile.hpp"
+extern const std::string BOSS_MODEL_NAMES[];
 class BaseBoss : public Actor
 {
 public:
+    typedef enum{
+        BT_UNKNOWN = 0,
+
+        BT_SLIMEKING,               ///史莱姆王
+        BT_WARDEN,                  ///典狱长
+        BT_ARCHBISHOP,              ///大主教
+        BT_KOBOLDLEADER,            ///狗头人首领
+        BT_GIANT,                   ///巨人格鲁尔德
+        BT_SKELETONKING,            ///骷髅王
+        
+        BT_MAX
+    } BossType;
     typedef enum{
         BS_UNKNOWN,
         BS_IDLE,

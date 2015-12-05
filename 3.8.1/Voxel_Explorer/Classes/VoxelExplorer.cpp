@@ -520,6 +520,7 @@ void VoxelExplorer::handleDoor(const cocos2d::Vec2& mapPos)
                 {
                     door->setDoorState(BaseDoor::DS_CLOSED);
                     m_pCurrentLevel->setTerrainTileType(mapPos.x, mapPos.y, TerrainTile::TT_DOOR);
+                    Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_FOUND_HIDDEN_DOOR);
                     return;
                 }
                 else if(door->getDoorState() == BaseDoor::DS_CLOSED)
@@ -649,6 +650,7 @@ void VoxelExplorer::handleShowSecretDoor(const cocos2d::Vec2& mapPos)
                 if(door->getDoorState() == BaseDoor::DS_HIDE)
                 {
                     door->setDoorState(BaseDoor::DS_CLOSED);
+                    m_pCurrentLevel->setTerrainTileType(mapPos.x, mapPos.y, TerrainTile::TT_DOOR);
                     Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_FOUND_HIDDEN_DOOR);
                 }
             }
@@ -1017,7 +1019,14 @@ bool VoxelExplorer::createLevel()
             }
             break;
         case DT_MINES:
-            m_pCurrentLevel = new(std::nothrow) MineLevel();
+            {
+                if(node->isBossDepth())
+                    m_pCurrentLevel = new(std::nothrow) MineBossLevel();
+                else
+                    m_pCurrentLevel = new(std::nothrow) MineLevel();
+                //for debug
+                //m_pCurrentLevel = new(std::nothrow) MineBossLevel();
+            }
             break;
         case DT_CAVE:
             {
@@ -1030,7 +1039,14 @@ bool VoxelExplorer::createLevel()
             }
             break;
         case DT_TOMB:
-            m_pCurrentLevel = new(std::nothrow) TombLevel();
+            {
+                if(node->isBossDepth())
+                    m_pCurrentLevel = new(std::nothrow) TombBossLevel();
+                else
+                    m_pCurrentLevel = new(std::nothrow) TombLevel();
+                ///for debug
+                //m_pCurrentLevel = new(std::nothrow) TombBossLevel();
+            }
             break;
         case DT_DWARF_CASTLE:
         case DT_MAGA_TOWER:
