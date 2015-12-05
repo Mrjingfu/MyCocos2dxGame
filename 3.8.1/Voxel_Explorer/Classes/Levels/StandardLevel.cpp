@@ -20,6 +20,7 @@
 #include "SmallPortal.hpp"
 #include "Npc.hpp"
 #include "PickableItem.hpp"
+#include "BossDoor.hpp"
 USING_NS_CC;
 
 StandardLevel::StandardLevel()
@@ -221,6 +222,16 @@ bool StandardLevel::createTerrain()
                     break;
                 case TerrainTile::TT_LOCKED_BOSS_DOOR:
                     {
+                        BossDoor* door = BossDoor::create(false);
+                        if(!door)
+                            return false;
+                        door->setPosition3D(Vec3(j*TerrainTile::CONTENT_SCALE, -TerrainTile::CONTENT_SCALE*0.5f, -i*TerrainTile::CONTENT_SCALE));
+                        VoxelExplorer::getInstance()->getTerrainDoorsLayer()->addChild(door);
+                        if(!door->createFakeDoor())
+                            return false;
+                        door->setVisited(info.m_bVisited);
+                        door->setActorDir(info.m_Dir);
+                        door->setDoorState(BaseDoor::DS_LOCKED);
                     }
                     break;
                 case TerrainTile::TT_SECRET_DOOR:

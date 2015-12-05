@@ -153,6 +153,8 @@
 		555B0D261BC51A2C0055FB6D /* VoxelExplorer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 555B0D131BC51A2C0055FB6D /* VoxelExplorer.cpp */; };
 		5560F5EE1C12CB8E001DD164 /* KoboldLeader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5560F5EC1C12CB8E001DD164 /* KoboldLeader.cpp */; };
 		5560F5EF1C12CB8E001DD164 /* KoboldLeader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5560F5EC1C12CB8E001DD164 /* KoboldLeader.cpp */; };
+		5560F5F31C1300D7001DD164 /* BossDoor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5560F5F11C1300D7001DD164 /* BossDoor.cpp */; };
+		5560F5F41C1300D7001DD164 /* BossDoor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5560F5F11C1300D7001DD164 /* BossDoor.cpp */; };
 		55619D511C0DAB3900419E40 /* SewerBossLevel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55619D4F1C0DAB3900419E40 /* SewerBossLevel.cpp */; };
 		55619D521C0DAB3900419E40 /* SewerBossLevel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55619D4F1C0DAB3900419E40 /* SewerBossLevel.cpp */; };
 		5569713C1BE20CCE00CC2736 /* Layer3D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5569713A1BE20CCE00CC2736 /* Layer3D.cpp */; };
@@ -483,6 +485,8 @@
 		555B0D141BC51A2C0055FB6D /* VoxelExplorer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VoxelExplorer.h; sourceTree = "<group>"; };
 		5560F5EC1C12CB8E001DD164 /* KoboldLeader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KoboldLeader.cpp; sourceTree = "<group>"; };
 		5560F5ED1C12CB8E001DD164 /* KoboldLeader.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = KoboldLeader.hpp; sourceTree = "<group>"; };
+		5560F5F11C1300D7001DD164 /* BossDoor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BossDoor.cpp; sourceTree = "<group>"; };
+		5560F5F21C1300D7001DD164 /* BossDoor.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BossDoor.hpp; sourceTree = "<group>"; };
 		55619D4F1C0DAB3900419E40 /* SewerBossLevel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SewerBossLevel.cpp; sourceTree = "<group>"; };
 		55619D501C0DAB3900419E40 /* SewerBossLevel.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SewerBossLevel.hpp; sourceTree = "<group>"; };
 		5569713A1BE20CCE00CC2736 /* Layer3D.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Layer3D.cpp; sourceTree = "<group>"; };
@@ -967,6 +971,8 @@
 				553BC50C1BCE5191003D907A /* StandardDoor.hpp */,
 				553BC5071BCE499B003D907A /* BaseDoor.cpp */,
 				553BC5081BCE499B003D907A /* BaseDoor.hpp */,
+				5560F5F11C1300D7001DD164 /* BossDoor.cpp */,
+				5560F5F21C1300D7001DD164 /* BossDoor.hpp */,
 			);
 			path = Doors;
 			sourceTree = "<group>";
@@ -1413,6 +1419,7 @@
 				55338AEA1BD892C200EA316F /* Archbishop.cpp in Sources */,
 				555B0D151BC51A2C0055FB6D /* AppDelegate.cpp in Sources */,
 				5529701B1BFB34ED00DBF75B /* Npc.cpp in Sources */,
+				5560F5F31C1300D7001DD164 /* BossDoor.cpp in Sources */,
 				555B0D1F1BC51A2C0055FB6D /* StandardLevel.cpp in Sources */,
 				551E93E21BD512D3009F788F /* CCCrypto.cpp in Sources */,
 				551E93AB1BD51282009F788F /* ChaosNumber.cpp in Sources */,
@@ -1532,6 +1539,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5560F5F41C1300D7001DD164 /* BossDoor.cpp in Sources */,
 				EC3CC9721C088F4F00F8CFC8 /* BagLayer.cpp in Sources */,
 				EC5D56911C0C4E2200F5EDDF /* DistPopupUI.cpp in Sources */,
 				551E93C81BD51291009F788F /* MonsterProperty.cpp in Sources */,
