@@ -21,6 +21,7 @@ public:
     virtual ~ItemShopBuyPopupUI();
     virtual bool initBottom() override;
     virtual void refreshUIView() override;
+    virtual void updateUseItem() override;
     virtual void setItemShopProp(ShopPopupUI::eShopType type,int itemId) ;
 protected:
     virtual PickableItemProperty* getItemIdProperty()const override;

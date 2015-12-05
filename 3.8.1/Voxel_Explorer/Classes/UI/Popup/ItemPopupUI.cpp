@@ -557,8 +557,11 @@ void ItemPopupUI::updateItemBaseProp()
     }
     
     m_pItemType->setString(str);
-    
-    m_pItemMoneyLayer->updateItemMoney(itemprop->getValueCopper());
+    if (itemprop->isStackable() && itemprop->getCount()>1 ) {
+         m_pItemMoneyLayer->updateItemMoney(itemprop->getValueCopper()*itemprop->getCount().GetLongValue());
+    }else
+         m_pItemMoneyLayer->updateItemMoney(itemprop->getValueCopper());
+   
 }
 void ItemPopupUI::updateEquipItem()
 {
@@ -630,6 +633,7 @@ void ItemPopupUI::updateEquipItem()
         }
         if (m_pBtnEquip) {
             m_pBtnEquip->setPosition(m_pBottomFrame->getContentSize()*0.5);
+            m_pBtnEquip->setTitleText("Discard");
             m_pBtnEquip->addClickEventListener(CC_CALLBACK_1(ItemPopupUI::onClickDiscard, this));
         }
     }
@@ -639,6 +643,15 @@ void ItemPopupUI::updateUseItem()
 {
     if (m_pBtnEquip)
         m_pBtnEquip->addClickEventListener(CC_CALLBACK_1(ItemPopupUI::onClickUser, this));
+    
+    PickableItemProperty* itemprop = getItemIdProperty();
+    CCASSERT(itemprop!=nullptr, "itemprop is null!");
+    if (itemprop->isStackable() && itemprop->getCount()>1) {
+        m_pItemEquipDist->setVisible(true);
+        m_pItemEquipDist->setString(StringUtils::format("X%d",int(itemprop->getCount())));
+
+    }
+    
     useItemFrame();
     addMoneyUI();
     addBottomUI();

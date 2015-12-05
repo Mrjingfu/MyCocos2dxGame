@@ -85,7 +85,7 @@
 	<key>EQUIP_PROP_DODGE</key>
 	<string>+%d%%闪避率</string>
 	<key>EQUIP_PROP_MAGIC</key>
-	<string>+%d%%取魔率</string>
+	<string>+%d%%基础取魔率增量</string>
 	<key>EQUIP_PROP_SEQRCH</key>
 	<string>+%d搜索范围</string>
 	<key>EQUIP_PROP_LIGHT</key>

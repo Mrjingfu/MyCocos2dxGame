@@ -251,7 +251,7 @@ void GameToolbarLayer::onClickPause(cocos2d::Ref *ref)
 {
     CHECK_ACTION(ref);
     CCLOG("onClickPause");
-    PopupUILayerManager::getInstance()->openPopup(ePopupPause);
+    PopupUILayerManager::getInstance()->openPopup(ePopupDialogue);
 }
 void GameToolbarLayer::onClickSearch(cocos2d::Ref *ref)
 {

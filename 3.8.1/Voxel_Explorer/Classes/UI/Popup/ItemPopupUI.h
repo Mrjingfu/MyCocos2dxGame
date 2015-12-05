@@ -35,11 +35,11 @@ protected:
     void updateItemPopupSize(cocos2d::Size addSize);
     virtual PickableItemProperty* getItemIdProperty()const;
     void addItemProp(std::string propStr,cocos2d::Color3B fontColor=cocos2d::Color3B::WHITE,cocos2d::ui::LinearLayoutParameter* parmLayout = nullptr);
-    void onClickDiscard(Ref* ref);
-    void onClickEquip(Ref* ref);
-    void onClickUser(Ref* ref);
-    void IdentifyEquiipFrame();//添加装备鉴定属性UI
-    void useItemFrame();//添加使用道具UI
+    virtual void onClickDiscard(Ref* ref);
+    virtual void onClickEquip(Ref* ref);
+    virtual void onClickUser(Ref* ref);
+    virtual void IdentifyEquiipFrame();//添加装备鉴定属性UI
+    virtual void useItemFrame();//添加使用道具UI
     
     
 protected:

@@ -80,6 +80,7 @@
           <PlistImageFile Name="ui_no_user.png" Key="ui_no_user.png" />
           <PlistImageFile Name="ui_excalmatory_icon.png" Key="ui_excalmatory_icon.png" />
           <PlistImageFile Name="ui_question_icon.png" Key="ui_question_icon.png" />
+          <PlistImageFile Name="ui_next_icon.png" Key="ui_next_icon.png" />
         </PlistImageFolder>
         <Project Name="gameScene.csd" Type="Scene" />
         <Project Name="menuscene.csd" Type="Scene" />
@@ -136,6 +137,7 @@
         <Project Name="itemMoneyLayer.csd" Type="Layer" />
         <Project Name="itemBottomLayer.csd" Type="Layer" />
         <Project Name="itemShopBottomLayer.csd" Type="Layer" />
+        <Project Name="dialogueLayer.csd" Type="Layer" />
       </RootFolder>
     </Group>
   </SolutionFolder>

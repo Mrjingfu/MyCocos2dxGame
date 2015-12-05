@@ -271,6 +271,8 @@
 		EC3CC9A21C088F4F00F8CFC8 /* WrapperUILayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC3CC96F1C088F4F00F8CFC8 /* WrapperUILayer.cpp */; };
 		EC3CC9A51C08909B00F8CFC8 /* RolePropLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC3CC9A31C08909B00F8CFC8 /* RolePropLayer.cpp */; };
 		EC3CC9A61C08909B00F8CFC8 /* RolePropLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC3CC9A31C08909B00F8CFC8 /* RolePropLayer.cpp */; };
+		EC54FA001C116D4F002E8D8C /* DialoguePopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC54F9FE1C116D4F002E8D8C /* DialoguePopupUI.cpp */; };
+		EC54FA011C116D4F002E8D8C /* DialoguePopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC54F9FE1C116D4F002E8D8C /* DialoguePopupUI.cpp */; };
 		EC5D56901C0C4E2200F5EDDF /* DistPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC5D568E1C0C4E2200F5EDDF /* DistPopupUI.cpp */; };
 		EC5D56911C0C4E2200F5EDDF /* DistPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC5D568E1C0C4E2200F5EDDF /* DistPopupUI.cpp */; };
 		EC602AAC1BF46A2D00484D42 /* AchievementManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC602AAA1BF46A2D00484D42 /* AchievementManager.cpp */; };
@@ -601,6 +603,8 @@
 		EC3CC9701C088F4F00F8CFC8 /* WrapperUILayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WrapperUILayer.h; sourceTree = "<group>"; };
 		EC3CC9A31C08909B00F8CFC8 /* RolePropLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RolePropLayer.cpp; sourceTree = "<group>"; };
 		EC3CC9A41C08909B00F8CFC8 /* RolePropLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = RolePropLayer.hpp; sourceTree = "<group>"; };
+		EC54F9FE1C116D4F002E8D8C /* DialoguePopupUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DialoguePopupUI.cpp; sourceTree = "<group>"; };
+		EC54F9FF1C116D4F002E8D8C /* DialoguePopupUI.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = DialoguePopupUI.hpp; sourceTree = "<group>"; };
 		EC5D568E1C0C4E2200F5EDDF /* DistPopupUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DistPopupUI.cpp; sourceTree = "<group>"; };
 		EC5D568F1C0C4E2200F5EDDF /* DistPopupUI.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = DistPopupUI.hpp; sourceTree = "<group>"; };
 		EC602AAA1BF46A2D00484D42 /* AchievementManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AchievementManager.cpp; sourceTree = "<group>"; };
@@ -1213,6 +1217,8 @@
 				EC3CC9641C088F4F00F8CFC8 /* RolePopupUI.h */,
 				EC5D568E1C0C4E2200F5EDDF /* DistPopupUI.cpp */,
 				EC5D568F1C0C4E2200F5EDDF /* DistPopupUI.hpp */,
+				EC54F9FE1C116D4F002E8D8C /* DialoguePopupUI.cpp */,
+				EC54F9FF1C116D4F002E8D8C /* DialoguePopupUI.hpp */,
 			);
 			path = Popup;
 			sourceTree = "<group>";
@@ -1426,6 +1432,7 @@
 				EC3CC9731C088F4F00F8CFC8 /* BagMangerLayerUI.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				EC602AB21BF47A4900484D42 /* AchieveProperty.cpp in Sources */,
+				EC54FA001C116D4F002E8D8C /* DialoguePopupUI.cpp in Sources */,
 				551E93EE1BD512D3009F788F /* FileStream.cpp in Sources */,
 				EC3CC98F1C088F4F00F8CFC8 /* PausePopupUI.cpp in Sources */,
 				EC602AAC1BF46A2D00484D42 /* AchievementManager.cpp in Sources */,
@@ -1544,6 +1551,7 @@
 				55F81CC11BDB9257002EC075 /* ScrollProperty.cpp in Sources */,
 				EC3CC9781C088F4F00F8CFC8 /* CharacterPropLayer.cpp in Sources */,
 				5529701C1BFB34ED00DBF75B /* Npc.cpp in Sources */,
+				EC54FA011C116D4F002E8D8C /* DialoguePopupUI.cpp in Sources */,
 				EC795F641C0D4B6B0083829B /* NursePopupUI.cpp in Sources */,
 				551E93E31BD512D3009F788F /* CCCrypto.cpp in Sources */,
 				55CB9B0B1C07355200BAF60B /* NpcDataManager.cpp in Sources */,

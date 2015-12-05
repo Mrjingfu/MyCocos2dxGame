@@ -220,6 +220,7 @@
             <filename>../ui/ui_sprite/ui_no_user.png</filename>
             <filename>../ui/ui_sprite/ui_excalmatory_icon.png</filename>
             <filename>../ui/ui_sprite/ui_question_icon.png</filename>
+            <filename>../ui/ui_sprite/ui_next_icon.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

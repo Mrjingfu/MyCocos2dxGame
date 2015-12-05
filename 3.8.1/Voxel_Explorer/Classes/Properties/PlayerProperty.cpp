@@ -273,7 +273,7 @@ bool PlayerProperty::equipWeapon(CChaosNumber id)
             m_nAttackDiceFaceNum = 0;
             m_fCriticalStrikeRate = m_fCriticalStrikeRate - oldWeaponProperty->getAddedCriticalStrikeRate().GetFloatValue();
             m_fCriticalStrikeRate = MAX(0, m_fCriticalStrikeRate.GetFloatValue());
-            m_fMagicItemFindRate = m_fMagicItemFindRate - m_fBasicMagicItemFindRate*weaponProperty->getAddedMagicItemFindRate().GetFloatValue();
+            m_fMagicItemFindRate = m_fMagicItemFindRate - m_fBasicMagicItemFindRate*oldWeaponProperty->getAddedMagicItemFindRate().GetFloatValue();
             m_fMagicItemFindRate = MAX(0, m_fBasicMagicItemFindRate.GetFloatValue());
             oldWeaponProperty->setEquiped(false);
         }

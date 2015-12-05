@@ -178,4 +178,13 @@ void ItemShopBuyPopupUI::onClickBuy(cocos2d::Ref *ref)
    
     closePopup();
 }
-
+void ItemShopBuyPopupUI::updateUseItem()
+{
+    ItemPopupUI::updateUseItem();
+    PickableItemProperty* itemprop = getItemIdProperty();
+    CCASSERT(itemprop!=nullptr, "itemprop is null!");
+    
+    m_pItemEquipDist->setVisible(false);
+    
+    
+}

@@ -161,44 +161,45 @@ bool NpcDataManager::initEquipmentShop()
     PickableItem::PickableItemType type = PickableItem::PIT_UNKNOWN;
     int count = cocos2d::random(8, 12);
     int itemLevel = 1;
-    if(level <= 5)
-    {
-        type = PickableItem::generate1_5EquipmentShopItemType();
-        itemLevel = cocos2d::random(1, 7);
-    }
-    else if(level <= 10)
-    {
-        type = PickableItem::generate6_10EquipmentShopItemType();
-        itemLevel = cocos2d::random(8, 12);
-    }
-    else if(level <=15)
-    {
-        type = PickableItem::generate11_15EquipmentShopItemType();
-        itemLevel = cocos2d::random(13, 17);
-    }
-    else if(level <= 20)
-    {
-        type = PickableItem::generate16_20EquipmentShopItemType();
-        itemLevel = cocos2d::random(18, 22);
-    }
-    else if(level <= 25)
-    {
-        type = PickableItem::generate21_25EquipmentShopItemType();
-        itemLevel = cocos2d::random(23, 27);
-    }
-    else if(level <= 30)
-    {
-        type = PickableItem::generate26_30EquipmentShopItemType();
-        itemLevel = cocos2d::random(28, 32);
-    }
-    else
-    {
-        type = PickableItem::generate31_35EquipmentShopItemType();
-        itemLevel = cocos2d::random(33, 40);
-    }
     
     PickableItemProperty* itemProperty = nullptr;
     for (int i = 0; i<count; ++i) {
+        if(level <= 5)
+        {
+            type = PickableItem::generate1_5EquipmentShopItemType();
+            itemLevel = cocos2d::random(1, 7);
+        }
+        else if(level <= 10)
+        {
+            type = PickableItem::generate6_10EquipmentShopItemType();
+            itemLevel = cocos2d::random(8, 12);
+        }
+        else if(level <=15)
+        {
+            type = PickableItem::generate11_15EquipmentShopItemType();
+            itemLevel = cocos2d::random(13, 17);
+        }
+        else if(level <= 20)
+        {
+            type = PickableItem::generate16_20EquipmentShopItemType();
+            itemLevel = cocos2d::random(18, 22);
+        }
+        else if(level <= 25)
+        {
+            type = PickableItem::generate21_25EquipmentShopItemType();
+            itemLevel = cocos2d::random(23, 27);
+        }
+        else if(level <= 30)
+        {
+            type = PickableItem::generate26_30EquipmentShopItemType();
+            itemLevel = cocos2d::random(28, 32);
+        }
+        else
+        {
+            type = PickableItem::generate31_35EquipmentShopItemType();
+            itemLevel = cocos2d::random(33, 40);
+        }
+        
         if(type >= PickableItem::PIT_DAGGER_DAGGER && type <= PickableItem::PIT_MACE_SLEDGEHAMMER)
             itemProperty = new (std::nothrow) WeaponProperty(PlayerProperty::m_snItemInstanceIDCounter++,type, itemLevel, false);
         else if (type >= PickableItem::PIT_BOW_SHORTBOW && type <=PickableItem::PIT_SHIELD_TOWERSHIELD)
@@ -218,44 +219,43 @@ bool NpcDataManager::initMagicShop()
     PickableItem::PickableItemType type = PickableItem::PIT_UNKNOWN;
     int count = cocos2d::random(8, 12);
     int itemLevel = 1;
-    if(level <= 5)
-    {
-        type = PickableItem::generate1_5MagicShopItemType();
-        itemLevel = cocos2d::random(1, 7);
-    }
-    else if(level <= 10)
-    {
-        type = PickableItem::generate6_10MagicShopItemType();
-        itemLevel = cocos2d::random(8, 12);
-    }
-    else if(level <=15)
-    {
-        type = PickableItem::generate11_15MagicShopItemType();
-        itemLevel = cocos2d::random(13, 17);
-    }
-    else if(level <= 20)
-    {
-        type = PickableItem::generate16_20MagicShopItemType();
-        itemLevel = cocos2d::random(18, 22);
-    }
-    else if(level <= 25)
-    {
-        type = PickableItem::generate21_25MagicShopItemType();
-        itemLevel = cocos2d::random(23, 27);
-    }
-    else if(level <= 30)
-    {
-        type = PickableItem::generate26_30MagicShopItemType();
-        itemLevel = cocos2d::random(28, 32);
-    }
-    else
-    {
-        type = PickableItem::generate31_35MagicShopItemType();
-        itemLevel = cocos2d::random(33, 40);
-    }
-    
     PickableItemProperty* itemProperty = nullptr;
     for (int i = 0; i<count; ++i) {
+        if(level <= 5)
+        {
+            type = PickableItem::generate1_5MagicShopItemType();
+            itemLevel = cocos2d::random(1, 7);
+        }
+        else if(level <= 10)
+        {
+            type = PickableItem::generate6_10MagicShopItemType();
+            itemLevel = cocos2d::random(8, 12);
+        }
+        else if(level <=15)
+        {
+            type = PickableItem::generate11_15MagicShopItemType();
+            itemLevel = cocos2d::random(13, 17);
+        }
+        else if(level <= 20)
+        {
+            type = PickableItem::generate16_20MagicShopItemType();
+            itemLevel = cocos2d::random(18, 22);
+        }
+        else if(level <= 25)
+        {
+            type = PickableItem::generate21_25MagicShopItemType();
+            itemLevel = cocos2d::random(23, 27);
+        }
+        else if(level <= 30)
+        {
+            type = PickableItem::generate26_30MagicShopItemType();
+            itemLevel = cocos2d::random(28, 32);
+        }
+        else
+        {
+            type = PickableItem::generate31_35MagicShopItemType();
+            itemLevel = cocos2d::random(33, 40);
+        }
         if(type >= PickableItem::PIT_CLOTH_SHOES && type <= PickableItem::PIT_CLOTH_STEELARMOR)
             itemProperty = new (std::nothrow) ArmorProperty(PlayerProperty::m_snItemInstanceIDCounter++,type, level, false);
         else if(type >= PickableItem::PIT_ORNAMENT_RING && type <= PickableItem::PIT_ORNAMENT_JEWELS)
@@ -310,23 +310,24 @@ bool NpcDataManager::initTheifRoom()
     PickableItem::PickableItemType type = PickableItem::PIT_UNKNOWN;
     int count = cocos2d::random(8, 12);
     int itemLevel = 1;
-    if(level <= 15)
-    {
-        type = PickableItem::generatePickItemByUseableLevel(level, UseableItem::UIT_CHEST_COPPER);
-        itemLevel = cocos2d::random(1, 7);
-    }
-    else if(level <= 30)
-    {
-        type = PickableItem::generatePickItemByUseableLevel(level, UseableItem::UIT_CHEST_SILVER);
-        itemLevel = cocos2d::random(8, 12);
-    }
-    else
-    {
-        type = PickableItem::generatePickItemByUseableLevel(level, UseableItem::UIT_CHEST_GOLD);
-        itemLevel = cocos2d::random(13, 17);
-    }
+    
     PickableItemProperty* itemProperty = nullptr;
     for (int i = 0; i<count; ++i) {
+        if(level <= 15)
+        {
+            type = PickableItem::generatePickItemByUseableLevel(level, UseableItem::UIT_CHEST_COPPER);
+            itemLevel = cocos2d::random(1, 7);
+        }
+        else if(level <= 30)
+        {
+            type = PickableItem::generatePickItemByUseableLevel(level, UseableItem::UIT_CHEST_SILVER);
+            itemLevel = cocos2d::random(8, 12);
+        }
+        else
+        {
+            type = PickableItem::generatePickItemByUseableLevel(level, UseableItem::UIT_CHEST_GOLD);
+            itemLevel = cocos2d::random(13, 17);
+        }
         if (type >= PickableItem::PIT_DAGGER_DAGGER && type <= PickableItem::PIT_MACE_PRO_SLEDGEHAMMER)
             itemProperty = new (std::nothrow) WeaponProperty(PlayerProperty::m_snItemInstanceIDCounter++,type, level, true);
         else if (type >= PickableItem::PIT_BOW_SHORTBOW && type <=PickableItem::PIT_SHIELD_PRO_TOWERSHIELD)

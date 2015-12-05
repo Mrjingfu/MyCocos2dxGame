@@ -41,9 +41,10 @@ void RolePopupUI::onEnter()
 }
 void RolePopupUI::onExit()
 {
-    Director::getInstance()->getEventDispatcher()->removeEventListenersForTarget(this);
+    
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_PLAYER_BAG_EXTEND_OK);
-     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_PLAYER_BAG_EXTEND_HAS_REACH_MAXTIMES);
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_PLAYER_BAG_EXTEND_HAS_REACH_MAXTIMES);
+    Director::getInstance()->getEventDispatcher()->removeEventListenersForTarget(this);
     PopupUILayer::onExit();
 }
 bool RolePopupUI::initUi()

@@ -107,7 +107,7 @@ void ShopPopupUI::onEnter()
 void ShopPopupUI::onExit()
 {
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_NPC_DATA_DIRTY);
-    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_PLAYER_PROPERTY_DIRTY);
+    Director::getInstance()->getEventDispatcher()->removeEventListenersForTarget(this);
     PopupUILayer::onExit();
 }
 void ShopPopupUI::onEventUpdateNpcData(cocos2d::EventCustom *sender)
