@@ -1020,12 +1020,12 @@ bool VoxelExplorer::createLevel()
             break;
         case DT_MINES:
             {
-//                if(node->isBossDepth())
-//                    m_pCurrentLevel = new(std::nothrow) MineBossLevel();
-//                else
-//                    m_pCurrentLevel = new(std::nothrow) MineLevel();
+                if(node->isBossDepth())
+                    m_pCurrentLevel = new(std::nothrow) MineBossLevel();
+                else
+                    m_pCurrentLevel = new(std::nothrow) MineLevel();
                 //for debug
-                m_pCurrentLevel = new(std::nothrow) MineBossLevel();
+                //m_pCurrentLevel = new(std::nothrow) MineBossLevel();
             }
             break;
         case DT_CAVE:
