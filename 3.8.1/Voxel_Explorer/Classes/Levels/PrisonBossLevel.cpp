@@ -10,6 +10,7 @@
 #include "Graph.h"
 #include "VoxelExplorer.h"
 #include "StandardMonster.hpp"
+#include "Warden.hpp"
 USING_NS_CC;
 
 PrisonBossLevel::PrisonBossLevel()
@@ -98,6 +99,8 @@ bool PrisonBossLevel::build()
                 areaNode->setAreaType(Area::AT_PASSAGE);
         }
     }
+    
+    m_BossPosition = m_AreaExit->getCenter();
     ///处理
     assignAreasType();
     generate();
@@ -110,6 +113,11 @@ void PrisonBossLevel::generateAreaStyle()
 }
 bool PrisonBossLevel::createMonsters()
 {
+    if(!createBoss(m_BossPosition))
+    {
+        CCLOG("Create boss failed!");
+        return false;
+    }
     int monsterNum = calculateLevelMonsterCount();
     for (int i=0; i < monsterNum; i++) {
         std::vector<BaseMonster::MonsterType> monsterTypes = { BaseMonster::MT_PRISONGUARD, BaseMonster::MT_TORTURE };
@@ -192,4 +200,18 @@ void PrisonBossLevel::createSiegeMonsters(const cocos2d::Vec2& pos)
             }
         }
     }
+}
+bool PrisonBossLevel::createBoss(const cocos2d::Vec2& pos)
+{
+    Warden* warden = Warden::create(BaseBoss::BT_SKELETONKING);
+    if(!warden)
+        return false;
+    int tileIndex = pos.x + pos.y * m_nWidth;
+    warden->setPosition3D(Vec3(m_Map[tileIndex].m_nX*TerrainTile::CONTENT_SCALE, -0.5f*TerrainTile::CONTENT_SCALE, -m_Map[tileIndex].m_nY*TerrainTile::CONTENT_SCALE));
+    warden->setVisited(m_Map[tileIndex].m_bVisited);
+    warden->addTerrainTileFlag(TileInfo::USEABLE);
+    VoxelExplorer::getInstance()->getBossLayer()->addChild(warden);
+    warden->setState(BaseBoss::BS_IDLE);
+
+    return true;
 }

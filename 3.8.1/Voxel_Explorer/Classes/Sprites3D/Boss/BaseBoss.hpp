@@ -12,6 +12,7 @@
 #include "Actor.hpp"
 #include "TerrainTile.hpp"
 extern const std::string BOSS_MODEL_NAMES[];
+class FakeShadow;
 class BaseBoss : public Actor
 {
 public:
@@ -38,6 +39,10 @@ public:
     void setState(BossState state);
     
     void attackedByPlayer();
+    bool createFakeShadow();
+    
+    std::string getIconRes();
+    virtual std::string getDesc();
 protected:
     BaseBoss();
     virtual ~BaseBoss();
@@ -52,8 +57,10 @@ protected:
     virtual void onEnterDeath();
     virtual void onExitDeath();
 protected:
+    BossType         m_Type;
     BossState        m_State;
     BossState        m_LastState;
+    FakeShadow*                 m_pFakeShadow;
 };
 
 #endif /* BaseBoss_hpp */

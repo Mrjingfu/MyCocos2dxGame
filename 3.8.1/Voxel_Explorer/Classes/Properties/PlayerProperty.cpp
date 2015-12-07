@@ -99,6 +99,12 @@ bool PlayerProperty::initNewPlayer()   ///新角色初始化
     ret = addItemToBag(PickableItem::PIT_SCROLL_INDENTIFY, 1);
     ret = addItemToBag(PickableItem::PIT_SCROLL_INDENTIFY, 1);
     ret = addItemToBag(PickableItem::PIT_SCROLL_INDENTIFY, 1);
+    ret = addItemToBag(PickableItem::PIT_KEY_COPPER, 1);
+    ret = addItemToBag(PickableItem::PIT_KEY_COPPER, 1);
+    ret = addItemToBag(PickableItem::PIT_KEY_COPPER, 1);
+    ret = addItemToBag(PickableItem::PIT_POTION_DETOXIFICATION, 1);
+    ret = addItemToBag(PickableItem::PIT_POTION_SPECIFIC, 1);
+    ret = addItemToBag(PickableItem::PIT_POTION_HEALING, 1);
     return ret;
 }
 void PlayerProperty::update(float delta)
@@ -606,6 +612,22 @@ bool PlayerProperty::useScroll(CChaosNumber id)
 }
 bool PlayerProperty::useKey(PickableItem::PickableItemType type)
 {
+    KeyProperty* keyProperty = nullptr;
+    for (PickableItemProperty* item : m_Bag) {
+        if(item)
+        {
+            keyProperty = dynamic_cast<KeyProperty*>(item);
+            if(keyProperty && keyProperty->getPickableItemType() == type && keyProperty->getCount() >= 1)
+                break;
+        }
+    }
+    if(keyProperty)
+    {
+        keyProperty->decreaseCount();
+        if(keyProperty->getCount() <=0 )
+            removeItemFromBag((int)(keyProperty->getInstanceID()));
+        return true;
+    }
     return false;
 }
 bool PlayerProperty::buyItemToBag(PickableItemProperty* buyItemProperty, CChaosNumber count, bool toIndentify)

@@ -51,8 +51,8 @@ protected:
     void generateDoors(Area* area);
     bool mergeSmallIntersectArea(Area* area, Area* other, bool generate = true);
     void placeTraps();  ///放置陷阱
-    int randomMonsterRespawnCell();
-    int randomPickableRespawnCell();
+    virtual int randomMonsterRespawnCell();
+    virtual int randomPickableRespawnCell();
     int calculateLevelMonsterCount();
     int calculateLevelUseableItemCount(const cocos2d::Size& areaSize);
 protected:

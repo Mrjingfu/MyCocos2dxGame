@@ -23,9 +23,12 @@ public:
     virtual bool createEliteMonster(int tileIndex);
     virtual void createSiegeMonsters(const cocos2d::Vec2& pos);
     
+    virtual bool createBoss(const cocos2d::Vec2& pos);
 private:
     Area*               m_pArenaRoom;
     int                 m_nArenaDoor;
+
+    cocos2d::Vec2       m_BossPosition;
 };
 
 #endif /* PrisonBossLevel_hpp */

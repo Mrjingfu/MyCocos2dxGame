@@ -9,6 +9,13 @@
 #ifndef KoboldLeader_hpp
 #define KoboldLeader_hpp
 
-#include <stdio.h>
+#include "BaseBoss.hpp"
+class KoboldLeader : public BaseBoss
+{
+    KoboldLeader();
+    virtual ~KoboldLeader();
+public:
+    static KoboldLeader* create(BaseBoss::BossType type);
+};
 
 #endif /* KoboldLeader_hpp */

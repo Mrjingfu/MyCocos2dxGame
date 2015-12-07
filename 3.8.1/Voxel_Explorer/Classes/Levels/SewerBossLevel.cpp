@@ -10,6 +10,7 @@
 #include "Graph.h"
 #include "VoxelExplorer.h"
 #include "StandardMonster.hpp"
+#include "SlimeKing.hpp"
 USING_NS_CC;
 
 SewerBossLevel::SewerBossLevel()
@@ -113,6 +114,8 @@ bool SewerBossLevel::build()
     }
     else
         return false;
+    
+    m_BossPosition = m_AreaExit->getCenter();
     ///处理
     assignAreasType();
     generate();
@@ -125,6 +128,11 @@ void SewerBossLevel::generateAreaStyle()
 }
 bool SewerBossLevel::createMonsters()
 {
+    if(!createBoss(m_BossPosition))
+    {
+        CCLOG("Create boss failed!");
+        return false;
+    }
     int monsterNum = calculateLevelMonsterCount();
     for (int i=0; i < monsterNum; i++) {
         StandardMonster* monster = StandardMonster::create(BaseMonster::MT_SLIME);
@@ -200,4 +208,18 @@ void SewerBossLevel::createSiegeMonsters(const cocos2d::Vec2& pos)
             }
         }
     }
+}
+bool SewerBossLevel::createBoss(const cocos2d::Vec2& pos)
+{
+    SlimeKing* slimeKing = SlimeKing::create(BaseBoss::BT_SKELETONKING);
+    if(!slimeKing)
+        return false;
+    int tileIndex = pos.x + pos.y * m_nWidth;
+    slimeKing->setPosition3D(Vec3(m_Map[tileIndex].m_nX*TerrainTile::CONTENT_SCALE, -0.5f*TerrainTile::CONTENT_SCALE, -m_Map[tileIndex].m_nY*TerrainTile::CONTENT_SCALE));
+    slimeKing->setVisited(m_Map[tileIndex].m_bVisited);
+    slimeKing->addTerrainTileFlag(TileInfo::USEABLE);
+    VoxelExplorer::getInstance()->getBossLayer()->addChild(slimeKing);
+    slimeKing->setState(BaseBoss::BS_IDLE);
+    
+    return true;
 }

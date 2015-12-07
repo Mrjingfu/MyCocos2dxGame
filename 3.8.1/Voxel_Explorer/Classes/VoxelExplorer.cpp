@@ -61,6 +61,7 @@ VoxelExplorer::VoxelExplorer()
     m_pTerrainPortalsLayer = nullptr;
     m_pTerrainDoorsLayer = nullptr;
     m_pUseableItemsLayer = nullptr;
+    m_pBossLayer         = nullptr;
     m_pNPCsLayer         = nullptr;
     m_pMonstersLayer     = nullptr;
     m_pPickableItemsLayer= nullptr;
@@ -172,7 +173,16 @@ std::string VoxelExplorer::getScreenPickDesc(const cocos2d::Vec2& screenPos, std
                 }
             }
         }
-        
+        if(m_pBossLayer)
+        {
+            for (auto child : m_pBossLayer->getChildren()) {
+                BaseBoss* boss = dynamic_cast<BaseBoss*>(child);
+                if(boss && ray.intersects(boss->getAABB())){
+                    strIcon = boss->getIconRes();
+                    return boss->getDesc();
+                }
+            }
+        }
         if(m_pUseableItemsLayer)
         {
             for (auto child : m_pUseableItemsLayer->getChildren())
@@ -348,6 +358,16 @@ void VoxelExplorer::updateFogOfWar(const cocos2d::Rect& areaRect, bool visited)
             Actor* item = dynamic_cast<Actor*>(child);
             if(item && areaRect.containsPoint(item->getPosInMap()))
                 item->setVisited(visited);
+        }
+    }
+    
+    if(m_pBossLayer)
+    {
+        for (const auto& child : m_pBossLayer->getChildren())
+        {
+            BaseBoss* boss = dynamic_cast<BaseBoss*>(child);
+            if(boss && areaRect.containsPoint(boss->getPosInMap()))
+                boss->setVisited(visited);
         }
     }
     
@@ -557,6 +577,31 @@ void VoxelExplorer::handleUseUseableItem(const cocos2d::Vec2& mapPos)
                 {
                     m_pCurrentLevel->createSiegeMonsters(useableItem->getPosInMap());
                     useableItem->setState(UseableItem::UIS_FADEOUT);
+                    return;
+                }
+                else if(useableItem->getUseableItemType() <= UseableItem::UIT_CHEST_GOLD)
+                {
+                    if(useableItem->getUseableItemType() == UseableItem::UIT_CHEST_COPPER)
+                    {
+                        if(PlayerProperty::getInstance()->useKey(PickableItem::PIT_KEY_COPPER))
+                            useableItem->setState(UseableItem::UIS_FADEOUT);
+                        else
+                            Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_NO_COPPER_KEY);
+                    }
+                    else if(useableItem->getUseableItemType() == UseableItem::UIT_CHEST_SILVER)
+                    {
+                        if(PlayerProperty::getInstance()->useKey(PickableItem::PIT_KEY_SILVER))
+                            useableItem->setState(UseableItem::UIS_FADEOUT);
+                        else
+                            Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_NO_SILVER_KEY);
+                    }
+                    else if(useableItem->getUseableItemType() == UseableItem::UIT_CHEST_GOLD)
+                    {
+                        if(PlayerProperty::getInstance()->useKey(PickableItem::PIT_KEY_GOLD))
+                            useableItem->setState(UseableItem::UIS_FADEOUT);
+                        else
+                            Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_NO_GOLD_KEY);
+                    }
                     return;
                 }
                 else
@@ -928,6 +973,12 @@ bool VoxelExplorer::createLayers()
         return false;
     m_pUseableItemsLayer->setCameraMask((unsigned int)CameraFlag::USER1);
     m_p3DLayer->addChild(m_pUseableItemsLayer);
+    
+    m_pBossLayer = Layer::create();
+    if(!m_pBossLayer)
+        return false;
+    m_pBossLayer->setCameraMask((unsigned int)CameraFlag::USER1);
+    m_p3DLayer->addChild(m_pBossLayer);
     
     m_pNPCsLayer = Layer::create();
     if(!m_pNPCsLayer)

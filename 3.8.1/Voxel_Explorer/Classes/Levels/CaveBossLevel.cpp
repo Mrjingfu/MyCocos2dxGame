@@ -10,6 +10,7 @@
 #include "Graph.h"
 #include "VoxelExplorer.h"
 #include "StandardMonster.hpp"
+#include "Giant.hpp"
 USING_NS_CC;
 
 CaveBossLevel::CaveBossLevel()
@@ -52,8 +53,8 @@ bool CaveBossLevel::build()
     }
     setTerrainTile(leftMost, center.y, TerrainTile::TT_CHASM, Area::AT_UNKNOWN);
     setTerrainTile(rightMost, center.y, TerrainTile::TT_CHASM, Area::AT_UNKNOWN);
-    setTerrainTile(center.x, topMost, TerrainTile::TT_LOCKED_BOSS_DOOR, Area::AT_BOSS_EXIT);
-    setTerrainTile(center.x, bottomMost - 1, TerrainTile::TT_DOOR, Area::AT_BOSS_ROOM);
+    setTerrainTile(center.x, topMost, TerrainTile::TT_LOCKED_BOSS_DOOR, Area::AT_BOSS_EXIT, Actor::AD_FORWARD);
+    setTerrainTile(center.x, bottomMost - 1, TerrainTile::TT_DOOR, Area::AT_BOSS_ROOM, Actor::AD_FORWARD);
     
     generateTerrainTiles( center.x - m_nChamberWidth/2, topMost + 1, m_nChamberWidth, m_nChamberHeight, TerrainTile::TT_STANDARD, Area::AT_BOSS_EXIT );
     
@@ -79,31 +80,16 @@ bool CaveBossLevel::build()
     
     updateTerrainTileFogOfWar(0, 0, m_nWidth, m_nHeight, true);
     
+    m_BossPosition = Vec2(indexCenter%m_nWidth, indexCenter/m_nWidth);
     generate();
     return true;
 }
-void CaveBossLevel::generateAreaStyle()
-{
-    m_Style = LevelStyle::LS_STANDARD;
-}
 bool CaveBossLevel::createMonsters()
 {
-    int monsterNum = calculateLevelMonsterCount();
-    for (int i=0; i < monsterNum; i++) {
-        BaseMonster::MonsterType type = (BaseMonster::MonsterType)cocos2d::random((int)BaseMonster::MT_WOLF, (int)BaseMonster::MT_GNOLL);
-        StandardMonster* monster = StandardMonster::create(type);
-        if(!monster)
-            return false;
-        int tileIndex = -1;
-        do {
-            tileIndex = randomMonsterRespawnCell();
-        } while (tileIndex == -1);
-        
-        monster->setPosition3D(Vec3(m_Map[tileIndex].m_nX*TerrainTile::CONTENT_SCALE, -0.5f*TerrainTile::CONTENT_SCALE, -m_Map[tileIndex].m_nY*TerrainTile::CONTENT_SCALE));
-        monster->setVisited(m_Map[tileIndex].m_bVisited);
-        monster->addTerrainTileFlag(TileInfo::ATTACKABLE);
-        VoxelExplorer::getInstance()->getMonstersLayer()->addChild(monster);
-        monster->setState(BaseMonster::MS_SLEEPING);
+    if(!createBoss(m_BossPosition))
+    {
+        CCLOG("Create boss failed!");
+        return false;
     }
     return true;
 }
@@ -166,4 +152,18 @@ void CaveBossLevel::createSiegeMonsters(const cocos2d::Vec2& pos)
             }
         }
     }
+}
+bool CaveBossLevel::createBoss(const cocos2d::Vec2& pos)
+{
+    Giant* giant = Giant::create(BaseBoss::BT_GIANT);
+    if(!giant)
+        return false;
+    int tileIndex = pos.x + pos.y * m_nWidth;
+    giant->setPosition3D(Vec3(m_Map[tileIndex].m_nX*TerrainTile::CONTENT_SCALE, -0.5f*TerrainTile::CONTENT_SCALE, -m_Map[tileIndex].m_nY*TerrainTile::CONTENT_SCALE));
+    giant->setVisited(m_Map[tileIndex].m_bVisited);
+    giant->addTerrainTileFlag(TileInfo::USEABLE);
+    VoxelExplorer::getInstance()->getBossLayer()->addChild(giant);
+    giant->setState(BaseBoss::BS_IDLE);
+
+    return true;
 }
