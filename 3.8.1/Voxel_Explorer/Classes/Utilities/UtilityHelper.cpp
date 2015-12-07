@@ -98,7 +98,7 @@ int UtilityHelper::getLineStr(std::string &str, int length)
     }
         resultStr.pop_back();
     str = resultStr;
-    return str_vec.size()-1;
+    return str_vec.size();
 }
 int UtilityHelper::getCharUtf8Count(char ch)
 {

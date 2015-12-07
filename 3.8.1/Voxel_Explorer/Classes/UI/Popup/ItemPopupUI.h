@@ -41,6 +41,7 @@ protected:
     virtual void IdentifyEquiipFrame();//添加装备鉴定属性UI
     virtual void useItemFrame();//添加使用道具UI
     
+    void testUI();
     
 protected:
     

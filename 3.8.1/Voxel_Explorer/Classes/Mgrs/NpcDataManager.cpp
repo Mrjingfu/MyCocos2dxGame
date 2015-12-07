@@ -31,6 +31,7 @@ NpcDataManager* NpcDataManager::getInstance()
 NpcDataManager::NpcDataManager()
 {
     m_bDirty = false;
+    m_nOldManRoomIndex = -1;
 }
 NpcDataManager::~NpcDataManager()
 {
@@ -143,15 +144,22 @@ std::string NpcDataManager::getOldManRoomInfoByPart(int part, bool& atEnd)
 {
     std::string retStr;
     atEnd = true;
-    int randIndex = cocos2d::random(0, (int)(m_OldManRoom.size()-1));
-    ValueVector infos = m_OldManRoom[randIndex].asValueVector();
-    if(!infos.empty() && part < infos.size())
-    {
-        retStr = infos[part].asString();
-        if(part == (int)(infos.size() - 1))
-            atEnd = true;
-        else
-            atEnd = false;
+    if (part==0 && m_nOldManRoomIndex==-1) {
+        m_nOldManRoomIndex = cocos2d::random(0, (int)(m_OldManRoom.size()-1));
+    }
+    if (m_nOldManRoomIndex!=-1) {
+        ValueVector infos = m_OldManRoom[m_nOldManRoomIndex].asValueVector();
+        if(!infos.empty() && part < infos.size())
+        {
+            retStr = infos[part].asString();
+            if(part == (int)(infos.size() - 1))
+            {
+                m_nOldManRoomIndex = -1;
+                atEnd = true;
+            }
+            else
+                atEnd = false;
+        }
     }
     return retStr;
 }
@@ -355,7 +363,7 @@ bool NpcDataManager::initOldManRoom()
             break;
             
         default:
-            m_OldManRoom = FileUtils::getInstance()->getValueVectorFromFile("npc_info_english.plish");
+            m_OldManRoom = FileUtils::getInstance()->getValueVectorFromFile("npc_info_english.plist");
             break;
     }
     if(m_OldManRoom.empty())

@@ -14,6 +14,7 @@
 #include "PopupUILayerManager.h"
 #include "VoxelExplorer.h"
 #include "GameFormula.hpp"
+#include "DialoguePopupUI.hpp"
 USING_NS_CC;
 GameToolbarLayer::GameToolbarLayer()
 {
@@ -141,6 +142,7 @@ void GameToolbarLayer::sendMessage(std::string msg,Color3B msgColor)
 void GameToolbarLayer::setMsgItem(std::string msg,cocos2d::Color3B msgColor )
 {
     NoteUi* noteui = NoteUi::create();
+    noteui->setContentSize(noteui->getContentSize()+cocos2d::Size(0,10));
     noteui->setMsg(msg,msgColor);
     m_pListMsgs->pushBackCustomItem( noteui);
     if ( m_pListMsgs->getItems().size()*noteui->getContentSize().height > m_pListMsgs->getContentSize().height) {
@@ -251,7 +253,8 @@ void GameToolbarLayer::onClickPause(cocos2d::Ref *ref)
 {
     CHECK_ACTION(ref);
     CCLOG("onClickPause");
-    PopupUILayerManager::getInstance()->openPopup(ePopupDialogue);
+    DialoguePopupUI* popupUi = static_cast<DialoguePopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupDialogue));
+    
 }
 void GameToolbarLayer::onClickSearch(cocos2d::Ref *ref)
 {

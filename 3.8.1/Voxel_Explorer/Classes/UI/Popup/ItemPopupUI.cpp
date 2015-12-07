@@ -123,7 +123,7 @@ bool ItemPopupUI::addEvents()
     
     m_pAttrFrame->setLayoutType(ui::Layout::Type::VERTICAL);
     m_pItemDesc->setFontScale(0.25);
-    m_pItemDesc->setContentSize(cocos2d::Size(m_pAttrFrame->getContentSize().width,20));
+//    m_pItemDesc->setContentSize(cocos2d::Size(m_pAttrFrame->getContentSize().width,20));
 
     
     m_pItemName->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
@@ -143,13 +143,21 @@ void ItemPopupUI::useItemFrame()
 {
     PickableItemProperty* itemprop = getItemIdProperty();
     std::string str = itemprop->getDesc();
-    ui::LinearLayoutParameter* linerParmter = ui::LinearLayoutParameter::create();
-    linerParmter->setGravity(cocos2d::ui::LinearLayoutParameter::LinearGravity::CENTER_VERTICAL);
-    linerParmter->setMargin(ui::Margin(10,5,0,0));
-    
-    m_pItemDesc->setItemText(str);
-    m_pItemDesc->setLayoutParameter(linerParmter);
-    m_pAttrFrame->addChild(m_pItemDesc);
+    cocos2d::Size addSize = cocos2d::Size::ZERO;
+    if (!str.empty()) {
+        m_pItemDesc->setItemText(str);
+        ui::LinearLayoutParameter* lastlinerParmter = ui::LinearLayoutParameter::create();
+        lastlinerParmter->setGravity(cocos2d::ui::LinearLayoutParameter::LinearGravity::CENTER_VERTICAL);
+        lastlinerParmter->setMargin(ui::Margin(10,5,0,0));
+        m_pItemDesc->setLayoutParameter(lastlinerParmter);
+        m_pItemDesc->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
+        m_pAttrFrame->addChild(m_pItemDesc);
+        addSize = addSize + cocos2d::Size(0,m_pItemDesc->getContentSize().height);
+       
+    }
+
+   
+    updateItemPopupSize(addSize);
 
 }
 
@@ -165,7 +173,6 @@ void ItemPopupUI::IdentifyEquiipFrame()
     }
     
     int addAttrCount = 0;
-    bool isdescAdd = false;
     std::vector<ADDED_EFFECT> effectList = itemprop->getAddedEffectList();
     int effectSize = effectList.size();
 
@@ -174,7 +181,7 @@ void ItemPopupUI::IdentifyEquiipFrame()
     
     ui::LinearLayoutParameter* linerParmter = ui::LinearLayoutParameter::create();
     linerParmter->setGravity(cocos2d::ui::LinearLayoutParameter::LinearGravity::CENTER_VERTICAL);
-    linerParmter->setMargin(ui::Margin(10,-7,0,0));
+     linerParmter->setMargin(ui::Margin(10,2,0,0));
     
     if (itemprop->getPickableItemPropertyType() == PickableItemProperty::PIPT_WEAPON)
     {
@@ -410,25 +417,28 @@ void ItemPopupUI::IdentifyEquiipFrame()
         }
     }
     
-    if (!str.empty()) {
-        m_pItemDesc->setItemText(str);
-        m_pItemDesc->setLayoutParameter(linerParmter);
-        m_pItemDesc->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
-        m_pAttrFrame->addChild(m_pItemDesc);
-        isdescAdd = true;
-    }
-
+    
     
     cocos2d::Size addSize =cocos2d::Size::ZERO;
     
     if (addAttrCount>=2) {
-        addSize = cocos2d::Size(0,11*addAttrCount+addSize.height);
+        addSize = cocos2d::Size(0,m_pItemDesc->getContentSize().height*addAttrCount);
     }
-
-    if (!isdescAdd ) {
-        addSize = cocos2d::Size(0,addSize.height-14);
+    if (addAttrCount>=7) {
+    addSize = addSize +cocos2d::Size(0,10);
     }
     
+    if (!str.empty()) {
+        m_pItemDesc->setItemText(str);
+        ui::LinearLayoutParameter* lastlinerParmter = ui::LinearLayoutParameter::create();
+        lastlinerParmter->setGravity(cocos2d::ui::LinearLayoutParameter::LinearGravity::CENTER_VERTICAL);
+        lastlinerParmter->setMargin(ui::Margin(10,2,0,0));
+        m_pItemDesc->setLayoutParameter(lastlinerParmter);
+        m_pItemDesc->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
+        m_pAttrFrame->addChild(m_pItemDesc);
+        addSize = addSize + cocos2d::Size(0,m_pItemDesc->getContentSize().height);
+    }
+
     updateItemPopupSize(addSize);
 }
 void ItemPopupUI::updateItemPopupSize(cocos2d::Size addSize)
@@ -450,10 +460,10 @@ void ItemPopupUI::addMoneyUI()
         ui::LinearLayoutParameter* lastlinerParmter = ui::LinearLayoutParameter::create();
         lastlinerParmter->setGravity(cocos2d::ui::LinearLayoutParameter::LinearGravity::CENTER_VERTICAL);
         if (m_pAttrFrame->getChildrenCount() <=0) {
-            lastlinerParmter->setMargin(ui::Margin(0,5,0,0));
+            lastlinerParmter->setMargin(ui::Margin(0,10,0,0));
         }else
         {
-            lastlinerParmter->setMargin(ui::Margin(0,-7,0,0));
+            lastlinerParmter->setMargin(ui::Margin(0,3,0,0));
         }
         addSize = addSize +cocos2d::Size(0,m_pItemMoneyLayer->getContentSize().height);
         m_pItemMoneyLayer->setLayoutParameter(lastlinerParmter);
@@ -471,7 +481,7 @@ void ItemPopupUI::addBottomUI()
 
         ui::LinearLayoutParameter* lastlinerParmter = ui::LinearLayoutParameter::create();
         lastlinerParmter->setGravity(cocos2d::ui::LinearLayoutParameter::LinearGravity::CENTER_VERTICAL);
-        lastlinerParmter->setMargin(ui::Margin(0,2,0,0));
+        lastlinerParmter->setMargin(ui::Margin(0,3,0,0));
         
         addSize = cocos2d::Size(0,m_pBottomFrame->getContentSize().height);
         m_pBottomFrame->setLayoutParameter(lastlinerParmter);
@@ -575,6 +585,7 @@ void ItemPopupUI::updateEquipItem()
     //添加装备属性
     IdentifyEquiipFrame();
 
+//    testUI();
     
     //装备等级>人物等级不可装备
     if ( itemprop->getLevel().GetLongValue() > PlayerProperty::getInstance()->getLevel().GetLongValue()) {
@@ -584,10 +595,10 @@ void ItemPopupUI::updateEquipItem()
         ui::LinearLayoutParameter* linerParmter = ui::LinearLayoutParameter::create();
         linerParmter->setGravity(cocos2d::ui::LinearLayoutParameter::LinearGravity::CENTER_VERTICAL);
         if (m_pAttrFrame->getChildrenCount() <=0) {
-            linerParmter->setMargin(ui::Margin(10,5,0,0));
+            linerParmter->setMargin(ui::Margin(10,10,0,0));
         }else
         {
-            linerParmter->setMargin(ui::Margin(10,-7,0,0));
+            linerParmter->setMargin(ui::Margin(10,3,0,0));
         }
         
         
@@ -756,7 +767,7 @@ void ItemPopupUI::addItemProp(std::string propStr,cocos2d::Color3B fontColor,coc
 {
     NoteUi* itemNote = NoteUi::create();
     itemNote->setFontScale(0.25);
-    itemNote->setContentSize(cocos2d::Size(m_pAttrFrame->getContentSize().width,20));
+//    itemNote->setContentSize(cocos2d::Size(m_pAttrFrame->getContentSize().width,20));
     itemNote->setItemText(propStr,fontColor);
     if (paramLayout)
         itemNote->setLayoutParameter(paramLayout);
@@ -779,6 +790,47 @@ void ItemPopupUI::closePopup()
         
     }
     outAction();
-   
+}
+void ItemPopupUI::testUI()
+{
+
+    ui::LinearLayoutParameter* linerParmter = ui::LinearLayoutParameter::create();
+    linerParmter->setGravity(cocos2d::ui::LinearLayoutParameter::LinearGravity::CENTER_VERTICAL);
+    linerParmter->setMargin(ui::Margin(10,2,0,0));
+    int addAttrCount = 9;
+    for (int i=1; i<=addAttrCount; i++) {
+        if (i==0) {
+            linerParmter->setMargin(ui::Margin(10,0,0,0));
+        }
+        std::string str =  StringUtils::format(UtilityHelper::getLocalStringForUi("EQUIP_PROP_CRITICAL_STRIKE").c_str(),int(30.0f*100.0));
+
+
+        addItemProp(str,Color3B::WHITE,linerParmter);
+    }
+
     
+
+    cocos2d::Size addSize = cocos2d::Size::ZERO;
+    if (addAttrCount>=2) {
+        addSize = cocos2d::Size(0,m_pItemDesc->getContentSize().height*addAttrCount);
+    }
+    if (addAttrCount>=7) {
+        addSize = addSize +cocos2d::Size(0,10);
+    }
+    
+    m_pItemDesc->setItemText("爱施德爱的安师爱施德爱的安师爱施德爱的安师");
+    ui::LinearLayoutParameter* lastlinerParmter = ui::LinearLayoutParameter::create();
+    lastlinerParmter->setGravity(cocos2d::ui::LinearLayoutParameter::LinearGravity::CENTER_VERTICAL);
+    lastlinerParmter->setMargin(ui::Margin(10,2,0,0));
+    m_pItemDesc->setLayoutParameter(lastlinerParmter);
+    m_pItemDesc->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
+    m_pAttrFrame->addChild(m_pItemDesc);
+      bool isdescAdd = true;
+      if (isdescAdd ) {
+        addSize = addSize + cocos2d::Size(0,m_pItemDesc->getContentSize().height);
+      }
+
+
+    updateItemPopupSize(addSize);
+
 }

@@ -55,6 +55,7 @@ private:
     
     cocos2d::ValueVector                    m_OldManRoom;
     
+    int                     m_nOldManRoomIndex;
     bool                    m_bDirty;                 ///数据是否修改了
 };
 
