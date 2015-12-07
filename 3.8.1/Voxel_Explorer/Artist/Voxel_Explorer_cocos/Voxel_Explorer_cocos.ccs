@@ -81,11 +81,6 @@
           <PlistImageFile Name="ui_excalmatory_icon.png" Key="ui_excalmatory_icon.png" />
           <PlistImageFile Name="ui_question_icon.png" Key="ui_question_icon.png" />
           <PlistImageFile Name="ui_next_icon.png" Key="ui_next_icon.png" />
-          <PlistImageFile Name="I_Key01.png" Key="I_Key01.png" />
-          <PlistImageFile Name="I_Key02.png" Key="I_Key02.png" />
-          <PlistImageFile Name="I_Key03.png" Key="I_Key03.png" />
-          <PlistImageFile Name="I_Key04.png" Key="I_Key04.png" />
-          <PlistImageFile Name="I_Key05.png" Key="I_Key05.png" />
         </PlistImageFolder>
         <Project Name="gameScene.csd" Type="Scene" />
         <Project Name="menuscene.csd" Type="Scene" />

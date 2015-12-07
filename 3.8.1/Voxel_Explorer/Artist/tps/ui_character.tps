@@ -187,6 +187,11 @@
             <filename>../ui/ui_character/wolf.png</filename>
             <filename>../ui/ui_character/zombie.png</filename>
             <filename>../ui/ui_character/prisonguard.png</filename>
+            <filename>../ui/ui_character/archbishop.png</filename>
+            <filename>../ui/ui_character/giant.png</filename>
+            <filename>../ui/ui_character/koboldleader..png</filename>
+            <filename>../ui/ui_character/skeletonking.png</filename>
+            <filename>../ui/ui_character/slimeking.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>
