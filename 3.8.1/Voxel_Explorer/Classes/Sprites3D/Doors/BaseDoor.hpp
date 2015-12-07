@@ -14,6 +14,7 @@
 
 typedef enum{
     DOT_STANDARD,
+    DOT_BOSS,
     DOT_MAX
 } DoorOpenType;
 extern const char* DOOR_MODEL_NAMES[];

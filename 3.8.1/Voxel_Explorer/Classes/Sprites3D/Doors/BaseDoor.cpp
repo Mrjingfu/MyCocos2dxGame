@@ -12,6 +12,7 @@
 USING_NS_CC;
 const char* DOOR_MODEL_NAMES[] = {
     "DMN_STANDARD",
+    "DMN_BOSS",
     "DMN_MAX"
 };
 BaseDoor::BaseDoor()

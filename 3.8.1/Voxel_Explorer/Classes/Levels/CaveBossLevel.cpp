@@ -14,10 +14,12 @@ USING_NS_CC;
 
 CaveBossLevel::CaveBossLevel()
 {
-    m_nRoomLeft     = m_nWidth / 2 - 2;
-    m_nRoomRight    = m_nWidth / 2 + 2;
-    m_nRoomTop      = m_nHeight / 2 + 2;
-    m_nRoomBottom   = m_nHeight / 2 - 2;
+    m_nHallRadius		= 9;
+    m_nChamberWidth     = 9;
+    m_nChamberHeight	= 7;
+    
+    m_nLeft	= (m_nWidth - m_nHallRadius) / 2 + 1;
+    m_nCenter	= m_nLeft + m_nHallRadius / 2;
     
     m_nIndexEntrance = -1;
     m_nIndexExit = -1;
@@ -26,58 +28,54 @@ CaveBossLevel::CaveBossLevel()
 bool CaveBossLevel::build()
 {
     int topMost = 0;
-    
-    for (int i=0; i < 8; i++) {
-        int left, right, top, bottom;
-        if (cocos2d::random(0, 1) == 0) {
-            left = cocos2d::random( 1, m_nRoomLeft - 3 );
-            right = m_nRoomRight + 3;
-        } else {
-            left = m_nRoomLeft - 3;
-            right = cocos2d::random( m_nRoomRight + 3, m_nWidth - 1 );
-        }
-        if (cocos2d::random(0, 1) == 0) {
-            bottom = cocos2d::random( 2, m_nRoomBottom - 3 );
-            top = m_nRoomTop + 3;
-        } else {
-            bottom = m_nRoomLeft - 3;
-            top = cocos2d::random( m_nRoomBottom + 3, m_nHeight - 1 );
-        }
-        
-        generateTerrainTiles(left, bottom, right - left + 1, top - bottom + 1, TerrainTile::TT_STANDARD, Area::AT_BOSS_ROOM);
-        
-        if (top > topMost) {
-            topMost = top;
-            m_nIndexExit = cocos2d::random( left, right ) + top * m_nWidth;
-        }
-    }
-    
+    int bottomMost = INT_MAX;
+    int leftMost = INT_MAX;
+    int rightMost = 0;
+    int indexCenter = (m_nHeight/2 + 1)*m_nWidth + m_nCenter;
+    Vec2 center = Vec2(indexCenter%m_nWidth, indexCenter/m_nWidth);
     for (int i=0; i < m_nLenght; i++) {
-        if (m_Map[i].m_Type == TerrainTile::TT_STANDARD && cocos2d::random(0, 5) == 0) {
-            m_Map[i].m_Type = TerrainTile::TT_GRIPPING_TRAP;
+        int checkPointX = i%m_nWidth;
+        int checkPointY = i/m_nWidth;
+        Vec2 checkPoint = Vec2(checkPointX, checkPointY);
+        if(checkPoint.distance(center) <= m_nHallRadius)
+        {
+            setTerrainTile(checkPoint.x, checkPoint.y, TerrainTile::TT_STANDARD, Area::AT_BOSS_ROOM);
+            if(checkPoint.y > topMost)
+                topMost = checkPoint.y;
+            else if(checkPoint.y < bottomMost)
+                bottomMost = checkPoint.y;
+            if(checkPoint.x < leftMost)
+                leftMost = checkPoint.x;
+            else if(checkPoint.x > rightMost)
+                rightMost = checkPoint.x;
         }
     }
+    setTerrainTile(leftMost, center.y, TerrainTile::TT_CHASM, Area::AT_UNKNOWN);
+    setTerrainTile(rightMost, center.y, TerrainTile::TT_CHASM, Area::AT_UNKNOWN);
+    setTerrainTile(center.x, topMost, TerrainTile::TT_LOCKED_BOSS_DOOR, Area::AT_BOSS_EXIT);
+    setTerrainTile(center.x, bottomMost - 1, TerrainTile::TT_DOOR, Area::AT_BOSS_ROOM);
     
-    generateTerrainTiles( m_nRoomLeft - 1, m_nRoomBottom - 1,
-                         m_nRoomRight - m_nRoomLeft + 3, m_nRoomTop - m_nRoomBottom + 3, TerrainTile::TT_WALL, Area::AT_BOSS_EXIT );
-    generateTerrainTiles(m_nRoomLeft, m_nRoomBottom + 1,
-                 m_nRoomRight - m_nRoomLeft + 1, m_nRoomTop - m_nRoomBottom, TerrainTile::TT_STANDARD, Area::AT_BOSS_EXIT );
-    generateTerrainTiles(m_nRoomLeft, m_nRoomBottom,
-                         m_nRoomRight - m_nRoomLeft + 1, 1, TerrainTile::TT_TOXIC_TRAP,Area::AT_BOSS_EXIT );
+    generateTerrainTiles( center.x - m_nChamberWidth/2, topMost + 1, m_nChamberWidth, m_nChamberHeight, TerrainTile::TT_STANDARD, Area::AT_BOSS_EXIT );
     
-    m_nArenaDoor = cocos2d::random( m_nRoomLeft, m_nRoomRight ) + (m_nRoomTop + 1) * m_nWidth;
+    generateTerrainTiles( center.x - m_nChamberWidth/2, bottomMost - m_nChamberHeight - 1, m_nChamberWidth, m_nChamberHeight, TerrainTile::TT_STANDARD, Area::AT_STANDARD );
     
-    m_nIndexEntrance = cocos2d::random( m_nRoomLeft, m_nRoomRight ) + cocos2d::random( m_nRoomBottom + 1, m_nRoomTop - 1 ) * m_nWidth;
+    for (int i = 0; i<m_nLenght; i++) {
+        if(m_Map[i].m_Type == TerrainTile::TT_STANDARD)
+        {
+            std::vector<int> neighbour8 = getNeighbours8();
+            for (int k = 0; k < neighbour8.size(); k++) {
+                int checkIndex = i + neighbour8[k];
+                int checkX = checkIndex%m_nWidth;
+                int checkY = checkIndex/m_nWidth;
+                if(m_Map[checkIndex].m_Type == TerrainTile::TT_CHASM)
+                    setTerrainTile(checkX, checkY, TerrainTile::TT_WALL, Area::AT_BOSS_ROOM);
+            }
+        }
+    }
+    m_nIndexEntrance = (bottomMost - m_nChamberHeight/2 - 2) * m_nWidth + m_nCenter;
     int entranceX = m_nIndexEntrance%m_nWidth;
     int entranceY = m_nIndexEntrance/m_nWidth;
-    int arenaDoorX = m_nArenaDoor%m_nWidth;
-    int arenaDoorY = m_nArenaDoor/m_nWidth;
-    int exitX = m_nIndexExit%m_nWidth;
-    int exitY = m_nIndexExit/m_nWidth;
-    
     setTerrainTile(entranceX, entranceY, TerrainTile::TT_ENTRANCE, Area::AT_BOSS_ROOM);
-    setTerrainTile(arenaDoorX, arenaDoorY, TerrainTile::TT_DOOR, Area::AT_BOSS_ROOM);
-    setTerrainTile(exitX, exitY, TerrainTile::TT_LOCKED_BOSS_DOOR, Area::AT_BOSS_EXIT);
     
     updateTerrainTileFogOfWar(0, 0, m_nWidth, m_nHeight, true);
     

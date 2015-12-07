@@ -62,5 +62,17 @@
 	<string>ghost</string>
 	<key>MMN_GHOUL</key>
 	<string>ghoul</string>
+	<key>BMN_SLIMEKING</key>
+	<string>slimeking</string>
+	<key>BMN_WARDEN</key>
+	<string>warden</string>
+	<key>BMN_ARCHBISHOP</key>
+	<string>archbishop</string>
+	<key>BMN_KOBOLDLEADER</key>
+	<string>koboldleader</string>
+	<key>BMN_GIANT</key>
+	<string>giant</string>
+	<key>BMN_SKELETONKING</key>
+	<string>skeletonking</string>
 </dict>
 </plist>

@@ -89,7 +89,7 @@
 	<key>DN_BOSS_MINES</key>
 	<string>Bottomless Abyss</string>
 	<key>DN_BOSS_CAVE</key>
-	<string>Gruer‘s Nest</string>
+	<string>Gruerde‘s Nest</string>
 	<key>DN_BOSS_TOMB</key>
 	<string>Corpse Temple</string>
 	<key>DN_BOSS_DWARF_CASTLE</key>
@@ -172,6 +172,18 @@
 	<string>Ghost</string>
 	<key>MMN_GHOUL</key>
 	<string>Ghoul</string>
+	<key>BMN_SLIMEKING</key>
+	<string>Slime King</string>
+	<key>BMN_WARDEN</key>
+	<string>Warden</string>
+	<key>BMN_ARCHBISHOP</key>
+	<string>Archbishop</string>
+	<key>BMN_KOBOLDLEADER</key>
+	<string>Kobold Leader</string>
+	<key>BMN_GIANT</key>
+	<string>Giant Gruerde</string>
+	<key>BMN_SKELETONKING</key>
+	<string>Skeleton King</string>
 	<key>PICKITEM_DESC</key>
 	<string>Pick it up and have a look carefully.</string>
 	<key>PIPN_KEY</key>

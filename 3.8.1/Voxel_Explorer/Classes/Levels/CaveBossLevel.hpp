@@ -24,10 +24,12 @@ public:
     virtual void createSiegeMonsters(const cocos2d::Vec2& pos);
     
 private:
-    int m_nRoomLeft;
-    int m_nRoomRight;
-    int m_nRoomTop;
-    int m_nRoomBottom;
+    int m_nHallRadius;
+    int m_nChamberWidth;
+    int m_nChamberHeight;
+    
+    int m_nLeft;
+    int m_nCenter;
     
     int m_nIndexEntrance;
     int m_nIndexExit;
