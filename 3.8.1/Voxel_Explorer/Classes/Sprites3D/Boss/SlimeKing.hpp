@@ -9,6 +9,13 @@
 #ifndef SlimeKing_hpp
 #define SlimeKing_hpp
 
-#include <stdio.h>
+#include "BaseBoss.hpp"
+class SlimeKing : public BaseBoss
+{
+    SlimeKing();
+    virtual ~SlimeKing();
+public:
+    static SlimeKing* create(BaseBoss::BossType type);
+};
 
 #endif /* SlimeKing_hpp */

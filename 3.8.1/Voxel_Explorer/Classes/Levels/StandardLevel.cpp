@@ -21,6 +21,7 @@
 #include "Npc.hpp"
 #include "PickableItem.hpp"
 #include "BossDoor.hpp"
+#include "BaseBoss.hpp"
 USING_NS_CC;
 
 StandardLevel::StandardLevel()
@@ -1008,6 +1009,15 @@ void StandardLevel::showMap(bool show)
                 BaseMonster* monster = dynamic_cast<BaseMonster*>(child);
                 if(monster && monster->isVisible())
                     m_pMapDrawNode->drawDot(monster->getPosInMap()+Vec2(0.5f, 0.5f), 0.5f, Color4F(0.0f, 0.5f, 1.0f, 1.0f));
+            }
+        }
+        if(VoxelExplorer::getInstance()->getBossLayer())
+        {
+            for (const auto& child : VoxelExplorer::getInstance()->getBossLayer()->getChildren())
+            {
+                BaseBoss* boss = dynamic_cast<BaseBoss*>(child);
+                if(boss && boss->isVisible())
+                    m_pMapDrawNode->drawDot(boss->getPosInMap()+Vec2(0.5f, 0.5f), 1.0f, Color4F::MAGENTA);
             }
         }
         if(VoxelExplorer::getInstance()->getPlayer() && VoxelExplorer::getInstance()->getPlayer()->isVisible())

@@ -7,6 +7,10 @@
 //
 
 #include "BaseBoss.hpp"
+#include "LevelResourceManager.h"
+#include "FakeShadow.hpp"
+#include "VoxelExplorer.h"
+#include "UtilityHelper.h"
 USING_NS_CC;
 const std::string BOSS_MODEL_NAMES[] = {
     "BMN_UNKNOWN",
@@ -23,14 +27,35 @@ const std::string BOSS_MODEL_NAMES[] = {
 
 BaseBoss::BaseBoss()
 {
+    m_Type = BT_UNKNOWN;
     m_State = BS_UNKNOWN;
     m_LastState = BS_UNKNOWN;
 }
 BaseBoss::~BaseBoss()
 {
 }
+std::string BaseBoss::getIconRes()
+{
+    return LevelResourceManager::getInstance()->getMonsterIconRes(BOSS_MODEL_NAMES[m_Type]);
+}
+std::string BaseBoss::getDesc()
+{
+    return UtilityHelper::getLocalString(BOSS_MODEL_NAMES[m_Type]);
+}
 void BaseBoss::attackedByPlayer()
 {
+}
+bool BaseBoss::createFakeShadow()
+{
+    m_pFakeShadow = FakeShadow::create();
+    if(!m_pFakeShadow)
+        return false;
+    m_pFakeShadow->setCameraMask((unsigned int)CameraFlag::USER1);
+    m_pFakeShadow->setLightMask((unsigned int)LightFlag::LIGHT0);
+    VoxelExplorer::getInstance()->getFakeShadowLayer()->addChild(m_pFakeShadow);
+    m_pFakeShadow->setScale(2);
+    m_pFakeShadow->setPosition3D(Vec3(getPositionX(),-TerrainTile::CONTENT_SCALE*0.49f,getPositionZ()));
+    return true;
 }
 void BaseBoss::setState(BossState state)
 {

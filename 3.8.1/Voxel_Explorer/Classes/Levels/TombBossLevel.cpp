@@ -10,6 +10,7 @@
 #include "Graph.h"
 #include "VoxelExplorer.h"
 #include "StandardMonster.hpp"
+#include "SkeletonKing.hpp"
 USING_NS_CC;
 
 TombBossLevel::TombBossLevel()
@@ -75,7 +76,7 @@ bool TombBossLevel::build()
         }
     }
     
-    m_nIndexEntrance = (m_nBottom - - m_nChamberHeight/2 - 1) * m_nWidth + m_nCenter;
+    m_nIndexEntrance = (m_nBottom - 1 - m_nChamberHeight/2 - 1) * m_nWidth + m_nCenter;
     m_nIndexExit = (m_nBottom + m_nHallHeight) * m_nWidth + m_nCenter;
     m_nArenaDoor = (m_nBottom - 1) * m_nWidth + m_nCenter;
     
@@ -87,35 +88,21 @@ bool TombBossLevel::build()
     int exitY = m_nIndexExit/m_nWidth;
     
     setTerrainTile(entranceX, entranceY, TerrainTile::TT_ENTRANCE, Area::AT_BOSS_ROOM);
-    setTerrainTile(arenaDoorX, arenaDoorY, TerrainTile::TT_DOOR, Area::AT_BOSS_ROOM);
-    setTerrainTile(exitX, exitY, TerrainTile::TT_LOCKED_BOSS_DOOR, Area::AT_BOSS_EXIT);
+    setTerrainTile(arenaDoorX, arenaDoorY, TerrainTile::TT_DOOR, Area::AT_BOSS_ROOM, Actor::AD_FORWARD);
+    setTerrainTile(exitX, exitY, TerrainTile::TT_LOCKED_BOSS_DOOR, Area::AT_BOSS_EXIT, Actor::AD_FORWARD);
     
     updateTerrainTileFogOfWar(0, 0, m_nWidth, m_nHeight, true);
+    
+    m_BossPosition = Vec2(exitX, exitY-2);
     generate();
     return true;
 }
-void TombBossLevel::generateAreaStyle()
-{
-    m_Style = LevelStyle::LS_STANDARD;
-}
 bool TombBossLevel::createMonsters()
 {
-    int monsterNum = calculateLevelMonsterCount();
-    for (int i=0; i < monsterNum; i++) {
-        BaseMonster::MonsterType type = (BaseMonster::MonsterType)cocos2d::random((int)BaseMonster::MT_SKELETON, (int)BaseMonster::MT_GHOUL);
-        StandardMonster* monster = StandardMonster::create(type);
-        if(!monster)
-            return false;
-        int tileIndex = -1;
-        do {
-            tileIndex = randomMonsterRespawnCell();
-        } while (tileIndex == -1);
-        
-        monster->setPosition3D(Vec3(m_Map[tileIndex].m_nX*TerrainTile::CONTENT_SCALE, -0.5f*TerrainTile::CONTENT_SCALE, -m_Map[tileIndex].m_nY*TerrainTile::CONTENT_SCALE));
-        monster->setVisited(m_Map[tileIndex].m_bVisited);
-        monster->addTerrainTileFlag(TileInfo::ATTACKABLE);
-        VoxelExplorer::getInstance()->getMonstersLayer()->addChild(monster);
-        monster->setState(BaseMonster::MS_SLEEPING);
+    if(!createBoss(m_BossPosition))
+    {
+        CCLOG("Create boss failed!");
+        return false;
     }
     return true;
 }
@@ -178,4 +165,18 @@ void TombBossLevel::createSiegeMonsters(const cocos2d::Vec2& pos)
             }
         }
     }
+}
+bool TombBossLevel::createBoss(const cocos2d::Vec2& pos)
+{
+    SkeletonKing* skeletonKing = SkeletonKing::create(BaseBoss::BT_SKELETONKING);
+    if(!skeletonKing)
+        return false;
+    int tileIndex = pos.x + pos.y * m_nWidth;
+    skeletonKing->setPosition3D(Vec3(m_Map[tileIndex].m_nX*TerrainTile::CONTENT_SCALE, -0.5f*TerrainTile::CONTENT_SCALE, -m_Map[tileIndex].m_nY*TerrainTile::CONTENT_SCALE));
+    skeletonKing->setVisited(m_Map[tileIndex].m_bVisited);
+    skeletonKing->addTerrainTileFlag(TileInfo::USEABLE);
+    VoxelExplorer::getInstance()->getBossLayer()->addChild(skeletonKing);
+    skeletonKing->setState(BaseBoss::BS_IDLE);
+    
+    return true;
 }

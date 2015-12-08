@@ -9,6 +9,13 @@
 #ifndef SkeletonKing_hpp
 #define SkeletonKing_hpp
 
-#include <stdio.h>
+#include "BaseBoss.hpp"
+class SkeletonKing : public BaseBoss
+{
+    SkeletonKing();
+    virtual ~SkeletonKing();
+public:
+    static SkeletonKing* create(BaseBoss::BossType type);
+};
 
 #endif /* SkeletonKing_hpp */

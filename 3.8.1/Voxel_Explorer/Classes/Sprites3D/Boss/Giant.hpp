@@ -9,6 +9,13 @@
 #ifndef Giant_hpp
 #define Giant_hpp
 
-#include <stdio.h>
+#include "BaseBoss.hpp"
+class Giant : public BaseBoss
+{
+    Giant();
+    virtual ~Giant();
+public:
+    static Giant* create(BaseBoss::BossType type);
+};
 
 #endif /* Giant_hpp */

@@ -9,6 +9,13 @@
 #ifndef Warden_hpp
 #define Warden_hpp
 
-#include <stdio.h>
+#include "BaseBoss.hpp"
+class Warden : public BaseBoss
+{
+    Warden();
+    virtual ~Warden();
+public:
+    static Warden* create(BaseBoss::BossType type);
+};
 
 #endif /* Warden_hpp */

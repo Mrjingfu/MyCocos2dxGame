@@ -9,6 +9,13 @@
 #ifndef Archbishop_hpp
 #define Archbishop_hpp
 
-#include <stdio.h>
+#include "BaseBoss.hpp"
+class Archbishop : public BaseBoss
+{
+    Archbishop();
+    virtual ~Archbishop();
+public:
+    static Archbishop* create(BaseBoss::BossType type);
+};
 
 #endif /* Archbishop_hpp */

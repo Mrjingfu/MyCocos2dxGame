@@ -10,6 +10,7 @@
 #include "Graph.h"
 #include "VoxelExplorer.h"
 #include "StandardMonster.hpp"
+#include "KoboldLeader.hpp"
 USING_NS_CC;
 
 MineBossLevel::MineBossLevel()
@@ -79,33 +80,73 @@ bool MineBossLevel::build()
     int exitY = m_nIndexExit/m_nWidth;
     
     setTerrainTile(entranceX, entranceY, TerrainTile::TT_ENTRANCE, Area::AT_BOSS_ROOM);
-    setTerrainTile(exitX, exitY, TerrainTile::TT_LOCKED_BOSS_DOOR, Area::AT_BOSS_EXIT);
+    setTerrainTile(exitX, exitY, TerrainTile::TT_LOCKED_BOSS_DOOR, Area::AT_BOSS_EXIT, Actor::AD_FORWARD);
     
     for (int i=0; i < m_nLenght; i++) {
-        if (m_Map[i].m_Type == TerrainTile::TT_STANDARD && cocos2d::random(0, 5) == 0) {
-            m_Map[i].m_Type = TerrainTile::TT_GRIPPING_TRAP;
+        if (m_Map[i].m_AreaType == Area::AT_BOSS_ROOM && m_Map[i].m_Type == TerrainTile::TT_STANDARD && cocos2d::random(0, 5) == 0) {
+            setTerrainTile(i%m_nWidth, i/m_nWidth, TerrainTile::TT_GRIPPING_TRAP, Area::AT_BOSS_ROOM);
         }
     }
+    
+    std::vector<int> neighbour8 = getNeighbours8();
+    for (int k = 0; k < neighbour8.size(); k++) {
+        int checkIndex = m_nIndexEntrance + neighbour8[k];
+        int checkX = checkIndex%m_nWidth;
+        int checkY = checkIndex/m_nWidth;
+        if(m_Map[checkIndex].m_Type == TerrainTile::TT_GRIPPING_TRAP)
+            setTerrainTile(checkX, checkY, TerrainTile::TT_STANDARD, Area::AT_BOSS_ROOM);
+    }
+    
     updateTerrainTileFogOfWar(0, 0, m_nWidth, m_nHeight, true);
+    
+    int tileIndex = -1;
+    do {
+        tileIndex = randomMonsterRespawnCell();
+        m_BossPosition = Vec2(tileIndex%m_nWidth, tileIndex/m_nWidth);
+        if(m_BossPosition.distance(Vec2(entranceX, entranceY)) < 7)
+            tileIndex = -1;
+    } while (tileIndex == -1);
     
     generate();
     return true;
 }
-void MineBossLevel::generateAreaStyle()
+int MineBossLevel::randomMonsterRespawnCell()
 {
-    m_Style = LevelStyle::LS_STANDARD;
+    int count = 0;
+    int tileIndex = -1;
+    
+    while (true) {
+        if (++count > 10) {
+            return -1;
+        }
+        tileIndex = cocos2d::random(0, m_nLenght -1);
+        if(m_Map[tileIndex].m_AreaType != Area::AT_BOSS_ROOM)
+            continue;
+        if((m_Map[tileIndex].m_Flag & TileInfo::USEABLE) != 0 || (m_Map[tileIndex].m_Flag & TileInfo::ATTACKABLE) != 0 || (m_Map[tileIndex].m_Flag & TileInfo::STOPPABLE) != 0)
+            continue;
+        if ((m_Map[tileIndex].m_Flag & TileInfo::PASSABLE) != 0 ) {
+            return tileIndex;
+        }
+    }
 }
 bool MineBossLevel::createMonsters()
 {
-    int monsterNum = calculateLevelMonsterCount();
+    if(!createBoss(m_BossPosition))
+    {
+        CCLOG("Create boss failed!");
+        return false;
+    }
+    int monsterNum = 10;
     for (int i=0; i < monsterNum; i++) {
-        BaseMonster::MonsterType type = (BaseMonster::MonsterType)cocos2d::random((int)BaseMonster::MT_DEATHMINER, (int)BaseMonster::MT_ANKHEG);
-        StandardMonster* monster = StandardMonster::create(type);
+        StandardMonster* monster = StandardMonster::create(BaseMonster::MT_KOBOLD);
         if(!monster)
             return false;
         int tileIndex = -1;
         do {
             tileIndex = randomMonsterRespawnCell();
+            Vec2 monsterPos = Vec2(tileIndex%m_nWidth, tileIndex/m_nWidth);
+            if(monsterPos.distance(m_BossPosition) >= 7)
+                tileIndex = -1;
         } while (tileIndex == -1);
         
         monster->setPosition3D(Vec3(m_Map[tileIndex].m_nX*TerrainTile::CONTENT_SCALE, -0.5f*TerrainTile::CONTENT_SCALE, -m_Map[tileIndex].m_nY*TerrainTile::CONTENT_SCALE));
@@ -175,4 +216,17 @@ void MineBossLevel::createSiegeMonsters(const cocos2d::Vec2& pos)
             }
         }
     }
+}
+bool MineBossLevel::createBoss(const cocos2d::Vec2& pos)
+{
+    KoboldLeader* koboldLeader = KoboldLeader::create(BaseBoss::BT_KOBOLDLEADER);
+    if(!koboldLeader)
+        return false;
+    int tileIndex = pos.x + pos.y * m_nWidth;
+    koboldLeader->setPosition3D(Vec3(m_Map[tileIndex].m_nX*TerrainTile::CONTENT_SCALE, -0.5f*TerrainTile::CONTENT_SCALE, -m_Map[tileIndex].m_nY*TerrainTile::CONTENT_SCALE));
+    koboldLeader->setVisited(m_Map[tileIndex].m_bVisited);
+    koboldLeader->addTerrainTileFlag(TileInfo::USEABLE);
+    VoxelExplorer::getInstance()->getBossLayer()->addChild(koboldLeader);
+    koboldLeader->setState(BaseBoss::BS_IDLE);
+    return true;
 }

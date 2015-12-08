@@ -67,6 +67,7 @@ public:
     cocos2d::Layer* getTerrainPortalsLayer() const { return m_pTerrainPortalsLayer; }
     cocos2d::Layer* getTerrainDoorsLayer() const { return m_pTerrainDoorsLayer; }
     cocos2d::Layer* getUseableItemsLayer() const { return m_pUseableItemsLayer; }
+    cocos2d::Layer* getBossLayer() const { return m_pBossLayer; }
     cocos2d::Layer* getNPCsLayer() const { return m_pNPCsLayer; }
     cocos2d::Layer* getMonstersLayer() const { return m_pMonstersLayer; }
     cocos2d::Layer* getPickableItemsLayer() const { return m_pPickableItemsLayer; }
@@ -95,6 +96,7 @@ private:
     cocos2d::Layer*                         m_pTerrainPortalsLayer;
     cocos2d::Layer*                         m_pTerrainDoorsLayer;
     cocos2d::Layer*                         m_pUseableItemsLayer;
+    cocos2d::Layer*                         m_pBossLayer;
     cocos2d::Layer*                         m_pNPCsLayer;
     cocos2d::Layer*                         m_pMonstersLayer;
     cocos2d::Layer*                         m_pPickableItemsLayer;

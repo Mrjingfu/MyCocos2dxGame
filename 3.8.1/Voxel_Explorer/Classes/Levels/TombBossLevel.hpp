@@ -16,12 +16,13 @@ public:
     TombBossLevel();
     
     virtual bool build();
-    virtual void generateAreaStyle();
     virtual bool createMonsters();
     virtual bool createSummoningMonsters(const cocos2d::Vec2& mapPos);
     
     virtual bool createEliteMonster(int tileIndex);
     virtual void createSiegeMonsters(const cocos2d::Vec2& pos);
+    
+    virtual bool createBoss(const cocos2d::Vec2& pos);
 private:
     int m_nBottom;
     int m_nHallWidth;
@@ -35,6 +36,8 @@ private:
     int m_nIndexEntrance;
     int m_nIndexExit;
     int m_nArenaDoor;
+    
+    cocos2d::Vec2       m_BossPosition;
 };
 
 #endif /* TombBossLevel_hpp */

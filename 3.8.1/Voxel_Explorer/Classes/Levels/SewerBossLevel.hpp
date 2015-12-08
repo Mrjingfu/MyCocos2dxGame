@@ -22,6 +22,11 @@ public:
     
     virtual bool createEliteMonster(int tileIndex);
     virtual void createSiegeMonsters(const cocos2d::Vec2& pos);
+    
+    virtual bool createBoss(const cocos2d::Vec2& pos);
+    
+private:
+    cocos2d::Vec2       m_BossPosition;
 };
 
 
