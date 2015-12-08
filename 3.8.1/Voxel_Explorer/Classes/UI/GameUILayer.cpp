@@ -28,6 +28,7 @@
 #include "RolePropLayer.hpp"
 #include "MonsterPropLayer.hpp"
 #include "NpcPropLayer.hpp"
+#include "ShopPopupUI.h"
 USING_NS_CC;
 GameUILayer::GameUILayer()
 {
@@ -142,10 +143,10 @@ void GameUILayer::onEventRoleBagNoSpace(cocos2d::EventCustom *sender)
     PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
     m_pGameToolBarLayer->sendMessage(msg);
     
-    CallFunc* func = CallFunc::create([]{
-        PopupUILayerManager::getInstance()->openPopup(ePopupRole);
-    });
-    this->runAction(Sequence::createWithTwoActions(DelayTime::create(1.0f), func));
+//    CallFunc* func = CallFunc::create([]{
+//        PopupUILayerManager::getInstance()->openPopup(ePopupRole);
+//    });
+//    this->runAction(Sequence::createWithTwoActions(DelayTime::create(3.0f), func));
 
     
 }
@@ -188,8 +189,9 @@ void GameUILayer::onEventRoleNoBossKey(cocos2d::EventCustom *sender)
 void GameUILayer::onEventNpcKnightAnsWer(cocos2d::EventCustom *sender)
 {
     CCLOG("onEventNpcKnightAnsWer");
-    PopupUILayer* popupUILayer = PopupUILayerManager::getInstance()->openPopup(ePopupWeaponShop);
+    ShopPopupUI* popupUILayer = static_cast<ShopPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupWeaponShop));
     if (popupUILayer) {
+        popupUILayer->setShopTitle("SHOP_TITLE_WEAPON");
         popupUILayer->setDarkLayerVisble(false);
     }
 }
@@ -202,8 +204,9 @@ void GameUILayer::onEventNpcChildAnsWer(cocos2d::EventCustom *sender)
 void GameUILayer::onEventNpcShopGirlAnsWer(cocos2d::EventCustom *sender)
 {
      CCLOG("onEventNpcChildAnsWer");
-    PopupUILayer* popupUILayer = PopupUILayerManager::getInstance()->openPopup(ePopupMagicShop);
+    ShopPopupUI* popupUILayer = static_cast<ShopPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupMagicShop));
     if (popupUILayer) {
+        popupUILayer->setShopTitle("SHOP_TITLE_MAGIC");
         popupUILayer->setDarkLayerVisble(false);
     }
 }
@@ -211,8 +214,9 @@ void GameUILayer::onEventNpcShopGirlAnsWer(cocos2d::EventCustom *sender)
 void GameUILayer::onEventNpcOldLadyAnsWer(cocos2d::EventCustom *sender)
 {
     CCLOG("onEventNpcOldLadyAnsWer");
-    PopupUILayer* popupUILayer = PopupUILayerManager::getInstance()->openPopup(ePopupAlchemyShop);
+    ShopPopupUI* popupUILayer = static_cast<ShopPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupAlchemyShop));
     if (popupUILayer) {
+        popupUILayer->setShopTitle("SHOP_TITLE_ALCHEMY");
         popupUILayer->setDarkLayerVisble(false);
     }
 }
@@ -220,8 +224,9 @@ void GameUILayer::onEventNpcOldLadyAnsWer(cocos2d::EventCustom *sender)
 void GameUILayer::onEventNpcWeiRdoAnsWer(cocos2d::EventCustom *sender)
 {
     CCLOG("onEventNpcWeiRdoAnsWer");
-    PopupUILayer* popupUILayer = PopupUILayerManager::getInstance()->openPopup(ePopupGambleShop);
+    ShopPopupUI* popupUILayer = static_cast<ShopPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupGambleShop));
     if (popupUILayer) {
+        popupUILayer->setShopTitle("SHOP_TITLE_GAMBLE");
         popupUILayer->setDarkLayerVisble(false);
     }
 }
@@ -442,6 +447,11 @@ void GameUILayer::onEventRoleUserPotion(cocos2d::EventCustom *sender)
 }
 void GameUILayer::onEventRoleUserScroll(cocos2d::EventCustom *sender)
 {
+    
+    
+    
+    
+    
     //关闭ItemPopup窗口
     PopupUILayerManager::getInstance()->closeCurrentPopup();
     //窗口都未关闭,回调后来判断是否关闭

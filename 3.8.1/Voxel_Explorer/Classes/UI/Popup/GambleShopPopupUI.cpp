@@ -51,7 +51,9 @@ void GambleShopPopupUI::updateShopDataItems()
         if (property && img)
         {
             m_pShopMangerLayer->addItem(i, property->getInstanceID(), img->getPosition(), property->getIconRes());
-            m_pShopMangerLayer->setItemInIentify(property->getInstanceID(), img->getPosition());
+            if (!property->isIdentified()) {
+                m_pShopMangerLayer->setItemInIentify(property->getInstanceID(), img->getPosition());
+            }
         }
     }
 

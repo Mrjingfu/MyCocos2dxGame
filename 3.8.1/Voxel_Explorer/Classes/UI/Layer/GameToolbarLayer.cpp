@@ -15,6 +15,7 @@
 #include "VoxelExplorer.h"
 #include "GameFormula.hpp"
 #include "DialoguePopupUI.hpp"
+#include "ShopPopupUI.h"
 USING_NS_CC;
 GameToolbarLayer::GameToolbarLayer()
 {
@@ -179,9 +180,10 @@ void GameToolbarLayer::onClickBag(Ref* ref)
         return;
     }
     
-//    PopupUILayerManager::getInstance()->openPopup(ePopupRole);
-    PopupUILayer* popupUILayer = PopupUILayerManager::getInstance()->openPopup(ePopupWeaponShop);
+//  PopupUILayerManager::getInstance()->openPopup(ePopupRole);
+    ShopPopupUI* popupUILayer = static_cast<ShopPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupWeaponShop));
     if (popupUILayer) {
+        popupUILayer->setShopTitle("SHOP_TITLE_WEAPON");
         popupUILayer->setDarkLayerVisble(false);
     }
     onClickDistTipsFrame(nullptr);

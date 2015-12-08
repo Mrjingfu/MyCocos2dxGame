@@ -21,7 +21,7 @@ ShopPopupUI::ShopPopupUI()
     m_pBagLayer         = nullptr;
     m_pShopMangerLayer  = nullptr;
     m_pShopGridView     = nullptr;
-    m_pBtnBuyFrame      = nullptr;
+    m_pShopTitleText      = nullptr;
 
 }
 ShopPopupUI::~ShopPopupUI()
@@ -44,18 +44,17 @@ bool ShopPopupUI::addEvents()
         return false;
   
     
-    m_pBtnBuyFrame= dynamic_cast<ui::Button*>(UtilityHelper::seekNodeByName(m_pRootNode, "shop_prop_btn_frame_buy"));
-    if (!m_pBtnBuyFrame)
+    m_pShopTitleText= dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "shop_title_text"));
+    if (!m_pShopTitleText)
         return false;
+    
+    m_pShopTitleText->setFontName(UtilityHelper::getLocalStringForUi(""));
     
     m_pBagLayer = BagShopLayer::create();
     m_pBagLayer->setAnchorPoint(cocos2d::Vec2::ANCHOR_MIDDLE_BOTTOM);
     m_pBagLayer->setPosition(cocos2d::Size(m_pRootNode->getContentSize().width*0.5,0));
     m_pBagLayer->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
     m_pRootNode->addChild(m_pBagLayer);
-    
-    m_pBtnBuyFrame->loadTextures(UtilityHelper::getLocalStringForUi("SHOP_BTN_FRAME_BUY_NORMAL"), UtilityHelper::getLocalStringForUi("SHOP_BTN_FRAME_BUY_PRESS"),UtilityHelper::getLocalStringForUi("SHOP_BTN_FRAME_BUY_PRESS"),TextureResType::PLIST);
-    m_pBtnBuyFrame->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
 
     
     m_pShopGridView = TGridView::create();
@@ -132,11 +131,20 @@ void ShopPopupUI::updateShopBuyItems()
     updateShopDataItems();
 
 }
+void ShopPopupUI::setShopTitle(const std::string &titleKey)
+{
+   m_sShopTitleKey = titleKey;
+   refreshUIView();
+}
 
 void ShopPopupUI::updateShopDataItems()
 {
     std::vector<PickableItemProperty*> itemProps = getShopItems();
     
+    if (m_pShopTitleText && !m_sShopTitleKey.empty()) {
+        m_pShopTitleText->setString(UtilityHelper::getLocalStringForUi(m_sShopTitleKey));
+    }
+    int playerLevel = PlayerProperty::getInstance()->getLevel();
     for (int i=0; i<itemProps.size(); i++)
     {
         PickableItemProperty* property = itemProps[i];
@@ -144,6 +152,9 @@ void ShopPopupUI::updateShopDataItems()
         if (property && img)
         {
             m_pShopMangerLayer->addItem(i, property->getInstanceID(), img->getPosition(), property->getIconRes());
+            if (!property->isIdentified() || property->getLevel() >playerLevel) {
+                m_pShopMangerLayer->setItemNoUse(property->getInstanceID(), img->getPosition());
+            }
         }
     }
 

@@ -133,6 +133,11 @@
           <PlistImageFile Name="torture.png" Key="torture.png" />
           <PlistImageFile Name="wolf.png" Key="wolf.png" />
           <PlistImageFile Name="zombie.png" Key="zombie.png" />
+          <PlistImageFile Name="archbishop.png" Key="archbishop.png" />
+          <PlistImageFile Name="giant.png" Key="giant.png" />
+          <PlistImageFile Name="koboldleader..png" Key="koboldleader..png" />
+          <PlistImageFile Name="skeletonking.png" Key="skeletonking.png" />
+          <PlistImageFile Name="slimeking.png" Key="slimeking.png" />
         </PlistImageFolder>
         <Project Name="itemMoneyLayer.csd" Type="Layer" />
         <Project Name="itemBottomLayer.csd" Type="Layer" />

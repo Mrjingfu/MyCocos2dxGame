@@ -36,6 +36,7 @@ public:
     virtual void updateShopBuyItems();
     virtual void refreshUIView() override;
     virtual void updateShopDataItems();
+    virtual void setShopTitle(const std::string& titleKey);
     virtual const std::vector<PickableItemProperty*>& getShopItems() const = 0;
     virtual void shopItemOpe(int itemId) = 0;
 protected:
@@ -43,11 +44,12 @@ protected:
     virtual void selectItemEvent(Ref *pSender, TGridView::EventType type);
     
 protected:
-    eShopType m_eShopType;
-    cocos2d::ui::Button* m_pBtnBuyFrame;
-    BagShopLayer*     m_pBagLayer;
-    TGridView*    m_pShopGridView;
-    BagMangerLayerUI* m_pShopMangerLayer;
+    eShopType           m_eShopType;
+    cocos2d::ui::Text*  m_pShopTitleText;
+    BagShopLayer*       m_pBagLayer;
+    TGridView*          m_pShopGridView;
+    BagMangerLayerUI*   m_pShopMangerLayer;
+    std::string         m_sShopTitleKey;
 
 };
 

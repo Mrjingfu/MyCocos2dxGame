@@ -38,6 +38,7 @@ protected:
     virtual void onClickDiscard(Ref* ref);
     virtual void onClickEquip(Ref* ref);
     virtual void onClickUser(Ref* ref);
+    virtual void onClickIdentified(Ref* ref);
     virtual void IdentifyEquiipFrame();//添加装备鉴定属性UI
     virtual void useItemFrame();//添加使用道具UI
     

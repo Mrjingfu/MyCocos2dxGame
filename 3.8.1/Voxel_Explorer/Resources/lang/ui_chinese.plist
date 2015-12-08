@@ -178,6 +178,14 @@
 	<string>啊！召唤陷阱，小心！</string>
 	<key>TRIGGER_MESSAGE_WEAK_TRAP</key>
 	<string>你生病了, 能力降低了！</string>
+	<key>SHOP_TITLE_WEAPON</key>
+	<string>武器店</string>
+	<key>SHOP_TITLE_MAGIC</key>
+	<string>魔法物品店</string>
+	<key>SHOP_TITLE_GAMBLE</key>
+	<string>赌场</string>
+	<key>SHOP_TITLE_ALCHEMY</key>
+	<string>炼金店</string>
 	<key>PAUSE_BTN_MAIN_MENU</key>
 	<string>btn_mainmenu_ch.png</string>
 	<key>PAUSE_BTN_SETTING</key>

@@ -65,6 +65,7 @@ void MenuUILayer::onClickRank(cocos2d::Ref *ref)
     
     CHECK_ACTION(ref);
     CCLOG("onTouchRank");
+//    PopupUILayerManager::getInstance()->openPopup(ePopupInfo);
 }
 void MenuUILayer::onClickStart(cocos2d::Ref *ref)
 {

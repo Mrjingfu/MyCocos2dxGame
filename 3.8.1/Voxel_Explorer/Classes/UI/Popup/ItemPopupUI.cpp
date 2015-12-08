@@ -114,17 +114,10 @@ bool ItemPopupUI::addEvents()
     if (!m_pItemNotIden)
         return false;
     
-    m_pItemDesc = NoteUi::create();
-    if (!m_pItemDesc)
-        return false;
-    
     m_pItemMoneyLayer = ItemMoneyLayer::create();
     m_pItemMoneyLayer->setAnchorPoint(cocos2d::Vec2::ANCHOR_MIDDLE);
     
     m_pAttrFrame->setLayoutType(ui::Layout::Type::VERTICAL);
-    m_pItemDesc->setFontScale(0.25);
-//    m_pItemDesc->setContentSize(cocos2d::Size(m_pAttrFrame->getContentSize().width,20));
-
     
     m_pItemName->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
     m_pItemlv->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
@@ -243,7 +236,7 @@ void ItemPopupUI::IdentifyEquiipFrame()
         onelinerParmter->setMargin(ui::Margin(10,0,0,0));
         
         addItemProp(StringUtils::format(UtilityHelper::getLocalStringForUi("EQUIP_PROP_DEFENSE").c_str(),int(itemproperty->getAddedDefense())), Color3B::WHITE,onelinerParmter);
-        
+        ++addAttrCount;
         std::string itemPropStr;
         for (int i = 0 ; i<effectSize; i++) {
             ADDED_EFFECT effect = effectList.at(i);
@@ -501,6 +494,19 @@ PickableItemProperty* ItemPopupUI::getItemIdProperty() const
 }
 void ItemPopupUI::refreshUIView()
 {
+    if (m_pItemDesc) {
+        m_pItemDesc->removeFromParentAndCleanup(true);
+        m_pItemDesc = nullptr;
+    }
+    if (m_pAttrFrame) {
+        m_pAttrFrame->removeAllChildren();
+        
+        m_pItemDesc = NoteUi::create();
+        if (!m_pItemDesc)
+            return ;
+        m_pItemDesc->setFontScale(0.25);
+    }
+    
     updateItemBaseProp();
     
     updateItemAttrUI();
@@ -598,7 +604,7 @@ void ItemPopupUI::updateEquipItem()
             linerParmter->setMargin(ui::Margin(10,10,0,0));
         }else
         {
-            linerParmter->setMargin(ui::Margin(10,3,0,0));
+            linerParmter->setMargin(ui::Margin(10,2,0,0));
         }
         
         
@@ -610,7 +616,6 @@ void ItemPopupUI::updateEquipItem()
     
     addMoneyUI();
 
-    if (itemprop->isEquipable() ) {
         //如果当前道具就是装备道具不添加底部UI
         if (PlayerProperty::getInstance()->getEquipedWeaponID() == m_nItemId ||
             PlayerProperty::getInstance()->getEquipedArmorID() == m_nItemId ||
@@ -621,11 +626,7 @@ void ItemPopupUI::updateEquipItem()
             m_pItemEquipDist->setString(UtilityHelper::getLocalStringForUi("ITEM_ALREDY_EQUIP"));
         }else
             addBottomUI();
-    }else
-    {
-         addBottomUI();
-        isNotEquip = true;
-    }
+    
     //未鉴定道具也不可以装备
     if (!itemprop->isIdentified())
     {
@@ -639,14 +640,28 @@ void ItemPopupUI::updateEquipItem()
         m_pItemEquipDist->setString(UtilityHelper::getLocalStringForUi("ITEM_NOT_EQUIP"));
         m_pItemEquipDist->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
         m_pItemEquipDist->setColor(PopupUILayerManager::getInstance()->getTipsColor(TIP_NEGATIVE));
-        if (m_pBtnDiscard) {
-            m_pBtnDiscard->setVisible(false);
+        
+
+        //不可装备 但是已经鉴定过 给一个删除按钮
+        if (itemprop->isIdentified()) {
+            if (m_pBtnDiscard) {
+                m_pBtnDiscard->setVisible(false);
+            }
+            if (m_pBtnEquip) {
+                m_pBtnEquip->setPosition(m_pBottomFrame->getContentSize()*0.5);
+                m_pBtnEquip->setTitleText("Discard");
+                m_pBtnEquip->addClickEventListener(CC_CALLBACK_1(ItemPopupUI::onClickDiscard, this));
+            }
+        }else
+        {
+            //未鉴定过的给一个鉴定按钮
+            if (m_pBtnEquip) {
+                m_pBtnEquip->setTitleText("Identified");
+                m_pBtnEquip->addClickEventListener(CC_CALLBACK_1(ItemPopupUI::onClickIdentified, this));
+            }
         }
-        if (m_pBtnEquip) {
-            m_pBtnEquip->setPosition(m_pBottomFrame->getContentSize()*0.5);
-            m_pBtnEquip->setTitleText("Discard");
-            m_pBtnEquip->addClickEventListener(CC_CALLBACK_1(ItemPopupUI::onClickDiscard, this));
-        }
+        
+        
     }
     
 }
@@ -763,6 +778,22 @@ void ItemPopupUI::onClickEquip(cocos2d::Ref *ref)
         CCLOG("装备失败 ");
     }
 }
+void ItemPopupUI::onClickIdentified(cocos2d::Ref *ref)
+{
+    bool isItemUse = false;
+    PickableItemProperty* itemprop = getItemIdProperty();
+    if (itemprop) {
+       isItemUse = PlayerProperty::getInstance()->indentifyItem(CChaosNumber(m_nItemId));
+    }
+    
+    if ( isItemUse) {
+        refreshUIView();
+    }else{
+        CCLOG("鉴定失败");
+    }
+    
+}
+
 void ItemPopupUI::addItemProp(std::string propStr,cocos2d::Color3B fontColor,cocos2d::ui::LinearLayoutParameter* paramLayout)
 {
     NoteUi* itemNote = NoteUi::create();
@@ -797,7 +828,7 @@ void ItemPopupUI::testUI()
     ui::LinearLayoutParameter* linerParmter = ui::LinearLayoutParameter::create();
     linerParmter->setGravity(cocos2d::ui::LinearLayoutParameter::LinearGravity::CENTER_VERTICAL);
     linerParmter->setMargin(ui::Margin(10,2,0,0));
-    int addAttrCount = 9;
+    int addAttrCount = 2;
     for (int i=1; i<=addAttrCount; i++) {
         if (i==0) {
             linerParmter->setMargin(ui::Margin(10,0,0,0));
@@ -818,17 +849,17 @@ void ItemPopupUI::testUI()
         addSize = addSize +cocos2d::Size(0,10);
     }
     
-    m_pItemDesc->setItemText("爱施德爱的安师爱施德爱的安师爱施德爱的安师");
-    ui::LinearLayoutParameter* lastlinerParmter = ui::LinearLayoutParameter::create();
-    lastlinerParmter->setGravity(cocos2d::ui::LinearLayoutParameter::LinearGravity::CENTER_VERTICAL);
-    lastlinerParmter->setMargin(ui::Margin(10,2,0,0));
-    m_pItemDesc->setLayoutParameter(lastlinerParmter);
-    m_pItemDesc->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
-    m_pAttrFrame->addChild(m_pItemDesc);
-      bool isdescAdd = true;
-      if (isdescAdd ) {
-        addSize = addSize + cocos2d::Size(0,m_pItemDesc->getContentSize().height);
-      }
+//    m_pItemDesc->setItemText("爱施德爱的安师爱施德爱的安师爱施德爱的安师");
+//    ui::LinearLayoutParameter* lastlinerParmter = ui::LinearLayoutParameter::create();
+//    lastlinerParmter->setGravity(cocos2d::ui::LinearLayoutParameter::LinearGravity::CENTER_VERTICAL);
+//    lastlinerParmter->setMargin(ui::Margin(10,2,0,0));
+//    m_pItemDesc->setLayoutParameter(lastlinerParmter);
+//    m_pItemDesc->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
+//    m_pAttrFrame->addChild(m_pItemDesc);
+//      bool isdescAdd = true;
+//      if (isdescAdd ) {
+//        addSize = addSize + cocos2d::Size(0,m_pItemDesc->getContentSize().height);
+//      }
 
 
     updateItemPopupSize(addSize);

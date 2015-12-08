@@ -145,6 +145,7 @@ void BagLayer::refreshUIView()
     }
     
     std::vector<PickableItemProperty*> items = getItems();
+    int playerLevel = PlayerProperty::getInstance()->getLevel();
     //放置道具
     CCLOG("bagSize:%d",(int)items.size());
     for (int i =0; i<items.size(); i++)
@@ -161,7 +162,7 @@ void BagLayer::refreshUIView()
             if (itemtype ==PickableItemProperty::PIPT_WEAPON ||itemtype ==PickableItemProperty::PIPT_SECOND_WEAPON||
                 itemtype ==PickableItemProperty::PIPT_ARMOR ||itemtype ==PickableItemProperty::PIPT_MAGIC_ORNAMENT )
             {
-                if (!itemProp->isEquipable() ) {
+                if (!itemProp->isIdentified() || itemProp->getLevel() >playerLevel) {
                     m_BagMsgLayer->setItemNoUse(itemProp->getInstanceID(), itemUi->getPosition());
                 }
             }
