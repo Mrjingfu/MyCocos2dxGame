@@ -130,6 +130,10 @@
 	<string>使用特性药水,部分状态被解除了!</string>
 	<key>USE_POTION_UNIVERSAL</key>
 	<string>使用特性药水,状态全恢复了!</string>
+	<key>DOOR_MAGIC_LOCKED</key>
+	<string>门上有一股魔力，根本打不开！</string>
+	<key>DOOR_MAGIC_CLOSED</key>
+	<string>你身后的门被一股魔力关上了！</string>
 	<key>FOUND_HIDDER_DOOR</key>
 	<string>发现了隐藏门！</string>
 	<key>FOUND_HIDDER_TRAP_TOXIC</key>

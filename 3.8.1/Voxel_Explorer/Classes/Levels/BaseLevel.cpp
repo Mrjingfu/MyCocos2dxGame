@@ -141,6 +141,11 @@ int BaseLevel::getTerrainTileFlag(int x, int y)
     int index = x + y * m_nWidth;
     return m_Map[index].m_Flag;
 }
+Area::AREA_TYPE BaseLevel::getTerrainTileAreaType(int x, int y)
+{
+    int index = x + y * m_nWidth;
+    return m_Map[index].m_AreaType;
+}
 void BaseLevel::setTerrainTileFlag(int x, int y, int flag )
 {
     int index = x + y * m_nWidth;

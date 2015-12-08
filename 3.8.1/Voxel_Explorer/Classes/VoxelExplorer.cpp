@@ -406,6 +406,67 @@ void VoxelExplorer::updateMiniMap()
     if(m_pCurrentLevel && m_pCurrentLevel->hasShowMap())
         m_pCurrentLevel->showMap(true);
 }
+void VoxelExplorer::updateBossRoomDoor()
+{
+    if(m_pCurrentLevel && m_pPlayer && m_pBossLayer && m_pTerrainDoorsLayer)
+    {
+        
+        BaseBoss* boss = nullptr;
+        for (const auto& child : m_pBossLayer->getChildren())
+        {
+            boss = dynamic_cast<BaseBoss*>(child);
+            if(boss)
+                break;
+        }
+        if(!boss)
+            return;
+        if(boss->getState() == BaseBoss::BS_DEATH)
+        {
+            for (const auto& child : m_pTerrainDoorsLayer->getChildren())
+            {
+                BaseDoor* door = dynamic_cast<BaseDoor*>(child);
+                if(door)
+                {
+                    Vec2 pos = door->getPosInMap();
+                    if(m_pCurrentLevel->getTerrainTileAreaType(pos.x, pos.y) == Area::AT_BOSS_ROOM)
+                    {
+                        if(door->isMagicLocked())
+                        {
+                            door->setMagicLocked(false);
+                            return;
+                        }
+                    }
+                }
+            }
+        }
+        else
+        {
+            for (const auto& child : m_pTerrainDoorsLayer->getChildren())
+            {
+                BaseDoor* door = dynamic_cast<BaseDoor*>(child);
+                if(door)
+                {
+                    Vec2 pos = door->getPosInMap();
+                    Vec2 playerPos = m_pPlayer->getPosInMap();
+                    if(pos == playerPos)
+                        return;
+                    if(m_pCurrentLevel->getTerrainTileAreaType(pos.x, pos.y) == Area::AT_BOSS_ROOM
+                       && m_pCurrentLevel->getTerrainTileAreaType(playerPos.x, playerPos.y) == Area::AT_BOSS_ROOM)
+                    {
+                        if(!door->isMagicLocked())
+                        {
+                            door->setMagicLocked(true);
+                            Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_DOOR_MAGIC_CLOSED);
+                        }
+                        door->setDoorState(BaseDoor::DS_CLOSED);
+                        
+                        return;
+                    }
+                }
+            }
+        }
+    }
+}
 void VoxelExplorer::searchAndCheck()    ///侦查
 {
     if(m_pPlayer && m_pCurrentLevel)

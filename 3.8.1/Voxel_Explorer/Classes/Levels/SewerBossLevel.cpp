@@ -211,7 +211,7 @@ void SewerBossLevel::createSiegeMonsters(const cocos2d::Vec2& pos)
 }
 bool SewerBossLevel::createBoss(const cocos2d::Vec2& pos)
 {
-    SlimeKing* slimeKing = SlimeKing::create(BaseBoss::BT_SKELETONKING);
+    SlimeKing* slimeKing = SlimeKing::create(BaseBoss::BT_SLIMEKING);
     if(!slimeKing)
         return false;
     int tileIndex = pos.x + pos.y * m_nWidth;

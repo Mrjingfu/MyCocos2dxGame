@@ -246,7 +246,20 @@ void GameUILayer::onEventNpcNurseAnsWer(cocos2d::EventCustom *sender)
     CCLOG("onEventNpcNurseAnsWer");
 }
 
-
+void GameUILayer::onEventDoorMagicLocked(cocos2d::EventCustom *sender)
+{
+    CCLOG("onEventDoorMagicLocked");
+    std::string msg = UtilityHelper::getLocalStringForUi("DOOR_MAGIC_LOCKED");
+    PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
+    m_pGameToolBarLayer->sendMessage(msg);
+}
+void GameUILayer::onEventDoorMagicClosed(cocos2d::EventCustom *sender)
+{
+    CCLOG("onEventDoorMagicClosed");
+    std::string msg = UtilityHelper::getLocalStringForUi("DOOR_MAGIC_CLOSED");
+    PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
+    m_pGameToolBarLayer->sendMessage(msg);
+}
 void GameUILayer::onEventFoundHidderDoor(cocos2d::EventCustom *sender) //发现隐藏门
 {
     CCLOG("onEventFoundHidderDoor");
@@ -686,6 +699,9 @@ void GameUILayer::onEnter()
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_TRIGGER_GRIPPING_TRAP, CC_CALLBACK_1(GameUILayer::onEventTriggerGripping,this));
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_TRIGGER_SUMMONING_TRAP, CC_CALLBACK_1(GameUILayer::onEventTriggerSummoning,this));
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_TRIGGER_WEAK_TRAP, CC_CALLBACK_1(GameUILayer::onEventTriggerWeak,this)) ;
+    
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_DOOR_MAGIC_LOCKED, CC_CALLBACK_1(GameUILayer::onEventDoorMagicLocked,this));
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_DOOR_MAGIC_CLOSED, CC_CALLBACK_1(GameUILayer::onEventDoorMagicClosed,this));
     
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_FOUND_HIDDEN_DOOR, CC_CALLBACK_1(GameUILayer::onEventFoundHidderDoor,this));
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_FOUND_HIDDEN_TOXIC_TRAP, CC_CALLBACK_1(GameUILayer::onEventFoundHidderTrapToxic,this));

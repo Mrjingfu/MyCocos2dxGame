@@ -69,6 +69,9 @@ static const std::string EVENT_TRIGGER_GRIPPING_TRAP = "TRIGGER_GRIPPING_TRAP";
 static const std::string EVENT_TRIGGER_SUMMONING_TRAP = "TRIGGER_SUMMONING_TRAP";
 static const std::string EVENT_TRIGGER_WEAK_TRAP = "TRIGGER_WEAK_TRAP";
 
+static const std::string EVENT_DOOR_MAGIC_LOCKED = "DOOR_MAGIC_LOCKED";
+static const std::string EVENT_DOOR_MAGIC_CLOSED = "DOOR_MAGIC_CLOSED";
+
 static const std::string EVENT_FOUND_HIDDEN_DOOR = "FOUND_HIDDEN_DOOR";
 static const std::string EVENT_FOUND_HIDDEN_TOXIC_TRAP = "FOUND_HIDDEN_TOXIC_TRAP";
 static const std::string EVENT_FOUND_HIDDEN_FIRE_TRAP = "FOUND_HIDDEN_FIRE_TRAP";

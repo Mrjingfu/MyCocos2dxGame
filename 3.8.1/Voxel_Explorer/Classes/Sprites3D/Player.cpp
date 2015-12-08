@@ -12,6 +12,7 @@
 #include "PlayerProperty.hpp"
 #include "AlisaMethod.h"
 #include "FakeShadow.hpp"
+#include "RandomDungeon.hpp"
 USING_NS_CC;
 
 CChaosNumber Player::m_fSpeedupTime  = 20.0f; ///加速时间
@@ -654,6 +655,8 @@ void Player::onLand(bool triggerTrap)
     if(triggerTrap)
         VoxelExplorer::getInstance()->checkTriggerTrap();
     VoxelExplorer::getInstance()->updateMiniMap();
+   // if(RandomDungeon::getInstance()->getCurrentDungeonNode()->isBossDepth())
+        VoxelExplorer::getInstance()->updateBossRoomDoor();
     CCLOG("player x = %d   y = %d", (int)getPosInMap().x, (int)getPosInMap().y);
 }
 void Player::updatePlayerBuffer(float delta)

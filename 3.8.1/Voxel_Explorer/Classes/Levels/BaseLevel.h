@@ -118,6 +118,7 @@ public:
     bool isTerrainTilePassable(int index);
     
     int getTerrainTileFlag(int x, int y);
+    Area::AREA_TYPE getTerrainTileAreaType(int x, int y);
     void setTerrainTileFlag(int x, int y, int flag );
     void wrapTerrainTiles(int x, int y , int width, int height, TerrainTile::TileType type, TerrainTile::TileType withType);
     
