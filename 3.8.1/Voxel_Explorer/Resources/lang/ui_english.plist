@@ -144,39 +144,39 @@
 	<string>门上有一股魔力，根本打不开！</string>
 	<key>DOOR_MAGIC_CLOSED</key>
 	<string>你身后的门被一股魔力关上了！</string>
-	<key>FOUND_HIDDER_DOOR</key>
+	<key>FOUND_HIDDEN_DOOR</key>
 	<string>发现了隐藏门！</string>
-	<key>FOUND_HIDDER_TRAP_TOXIC</key>
+	<key>FOUND_HIDDEN_TOXIC_TRAP</key>
 	<string>发现了隐藏的中毒机关！</string>
-	<key>FOUND_HIDDER_TRAP_FIRE</key>
+	<key>FOUND_HIDDEN_FIRE_TRAP</key>
 	<string>发现了隐藏的火机关！</string>
-	<key>FOUND_HIDDER_TRAP_PARALYIC</key>
+	<key>FOUND_HIDDEN_PARALYTIC_TRAP</key>
 	<string>发现了隐藏的麻痹机关！</string>
-	<key>FOUND_HIDDER_TRAP_GRIPPING</key>
+	<key>FOUND_HIDDEN_GRIPPING_TRAP</key>
 	<string>发现了隐藏的夹子机关！</string>
-	<key>FOUND_HIDDER_TRAP_SUMMONING</key>
+	<key>FOUND_HIDDEN_SUMMONING_TRAP</key>
 	<string>发现了隐藏的召唤机关！</string>
-	<key>FOUND_HIDDER_TRAP_WEAK</key>
+	<key>FOUND_HIDDEN_WEAK_TRAP</key>
 	<string>发现了隐藏的虚弱机关！</string>
-	<key>FOUND_HIDDER_TRAP_MSG</key>
+	<key>FOUND_HIDDEN_MSG</key>
 	<string>发现了隐藏的消息！</string>
-	<key>FOUND_HIDDER_TRAP_ITEM</key>
+	<key>FOUND_HIDDEN_ITEM</key>
 	<string>发现了隐藏的道具！</string>
-	<key>NOT_HAVE_COPPER_KEY</key>
+	<key>PLAYER_NO_COPPER_KEY</key>
 	<string>没有铜质钥匙！</string>
-	<key>NOT_HAVE_SILVER_KEY</key>
+	<key>PLAYER_NO_SILVER_KEY</key>
 	<string>没有银质钥匙！</string>
-	<key>NOT_HAVE_GOLD_KEY</key>
+	<key>PLAYER_NO_GOLD_KEY</key>
 	<string>没有金质钥匙！</string>
-	<key>NOT_HAVE_ROOM_KEY</key>
+	<key>PLAYER_NO_ROOM_KEY</key>
 	<string>没有房间钥匙！</string>
-	<key>NOT_HAVE_BOOS_KEY</key>
+	<key>PLAYER_NO_BOSS_KEY</key>
 	<string>没有Boss房间钥匙！</string>
-	<key>NOT_HAVE_BAG_SPACE</key>
+	<key>PLAYER_BAG_NO_SPACE</key>
 	<string>背包没有空间了!!</string>
-	<key>NOT_HAVA_MARGIC_VALUE</key>
+	<key>PLAYER_NO_MANA</key>
 	<string>魔法值不够！！</string>
-	<key>NOT_HAVA_COIN_VALUE</key>
+	<key>PLAYER_MONEY_NOT_ENOUGH</key>
 	<string>货币不足！</string>
 	<key>NOT_EQUIP_LEVEL_ENOUGH</key>
 	<string>Level is not enough!</string>
@@ -192,13 +192,13 @@
 	<string>啊！召唤陷阱，小心！</string>
 	<key>TRIGGER_MESSAGE_WEAK_TRAP</key>
 	<string>你生病了, 能力降低了！</string>
-	<key>SHOP_TITLE_WEAPON</key>
+	<key>NPC_KNIGHT_ANSWER</key>
 	<string>武器店</string>
-	<key>SHOP_TITLE_MAGIC</key>
+	<key>NPC_SHOPGIRL_ANSWER</key>
 	<string>魔法物品店</string>
-	<key>SHOP_TITLE_GAMBLE</key>
+	<key>NPC_WEIRDO_ANSWER</key>
 	<string>赌场</string>
-	<key>SHOP_TITLE_ALCHEMY</key>
+	<key>NPC_OLDLADY_ANSWER</key>
 	<string>炼金店</string>
 	<key>PAUSE_BTN_MAIN_MENU</key>
 	<string>btn_mainmenu_en.png</string>
@@ -208,13 +208,5 @@
 	<string>btn_exit_en.png</string>
 	<key>ITEM_SPLITE_COUNT</key>
 	<string>Count:%d</string>
-	<key>SHOP_BTN_FRAME_BUY_NORMAL</key>
-	<string>btn_fram_buy_normal_en.png</string>
-	<key>SHOP_BTN_FRAME_BUY_PRESS</key>
-	<string>btn_fram_buy_press_en.png</string>
-	<key>SHOP_BTN_FRAME_SELL_NORMAL</key>
-	<string>btn_fram_sell_normal_en.png</string>
-	<key>SHOP_BTN_FRAME_SELL_PRESS</key>
-	<string>btn_fram_sell_press_en.png</string>
 </dict>
 </plist>

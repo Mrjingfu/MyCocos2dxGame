@@ -86,7 +86,7 @@ static const std::string EVENT_FOUND_HIDDEN_GRIPPING_TRAP = "FOUND_HIDDEN_GRIPPI
 static const std::string EVENT_FOUND_HIDDEN_SUMMONING_TRAP = "FOUND_HIDDEN_SUMMONING_TRAP";
 static const std::string EVENT_FOUND_HIDDEN_WEAK_TRAP = "FOUND_HIDDEN_WEAK_TRAP";
 static const std::string EVENT_FOUND_HIDDEN_MSG = "FOUND_HIDDEN_MSG";
-static const std::string EVENT_FOUND_HIDDEN_ITEM = "FOUND_HIDDEN_MSG";
+static const std::string EVENT_FOUND_HIDDEN_ITEM = "FOUND_HIDDEN_ITEM";
 
 static const std::string EVENT_GO_UPSTAIRS = "GO_UPSTAIRS";
 static const std::string EVENT_GO_UPSTAIRS_FORBIDDEN = "GO_UPSTAIRS_FORBIDDEN";

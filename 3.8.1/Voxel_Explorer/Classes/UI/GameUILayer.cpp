@@ -30,6 +30,7 @@
 #include "NpcPropLayer.hpp"
 #include "ShopPopupUI.h"
 #include "StatisticsManager.hpp"
+#include "BossPropLayer.hpp"
 USING_NS_CC;
 GameUILayer::GameUILayer()
 {
@@ -66,14 +67,20 @@ bool GameUILayer::initUi()
     m_pMonsterPropLayer->setAnchorPoint(cocos2d::Vec2::ANCHOR_TOP_RIGHT);
     m_pMonsterPropLayer->setPosition(cocos2d::Vec2(m_pGameInfoLayer->getContentSize().width,0));
     m_pGameInfoLayer->addChild(m_pMonsterPropLayer);
-    m_pMonsterPropLayer->setVisible(false);
     
     m_pNpcPropLayer = NpcPropLayer::create();
     m_pNpcPropLayer->setAnchorPoint(cocos2d::Vec2::ANCHOR_TOP_RIGHT);
     m_pNpcPropLayer->setPosition(cocos2d::Vec2(m_pGameInfoLayer->getContentSize().width,0));
     m_pGameInfoLayer->addChild(m_pNpcPropLayer);
-    m_pNpcPropLayer->setVisible(false);
     
+    
+    m_pBossPropLayer = BossPropLayer::create();
+    m_pBossPropLayer->setAnchorPoint(cocos2d::Vec2::ANCHOR_TOP_RIGHT);
+    m_pBossPropLayer->setPosition(cocos2d::Vec2(m_pGameInfoLayer->getContentSize().width,0));
+    m_pGameInfoLayer->addChild(m_pBossPropLayer);
+    
+    
+    setCharacterPropLayerVisible(false,false,false);
     
     refreshUIView();
     return true;
@@ -125,7 +132,7 @@ void GameUILayer::onTouchEnded(cocos2d::Touch *touch, cocos2d::Event *event)
 void GameUILayer::onEventRoleMoneyNotEnough(cocos2d::EventCustom *sender)
 {
     CCLOG("onEventRoleMoneyNotEnough");
-    std::string msg = UtilityHelper::getLocalStringForUi("NOT_HAVA_COIN_VALUE");
+    std::string msg = UtilityHelper::getLocalStringForUi(EVENT_PLAYER_MONEY_NOT_ENOUGH);
     PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
     m_pGameToolBarLayer->sendMessage(msg);
     
@@ -133,14 +140,14 @@ void GameUILayer::onEventRoleMoneyNotEnough(cocos2d::EventCustom *sender)
 void GameUILayer::onEventRoleNoMana(cocos2d::EventCustom *sender)
 {
     CCLOG("onEventRoleNoMana");
-    std::string msg = UtilityHelper::getLocalStringForUi("NOT_HAVA_MARGIC_VALUE");
+    std::string msg = UtilityHelper::getLocalStringForUi(EVENT_PLAYER_NO_MANA);
     PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
     m_pGameToolBarLayer->sendMessage(msg);
 }
 void GameUILayer::onEventRoleBagNoSpace(cocos2d::EventCustom *sender)
 {
     CCLOG("onEventRoleBagNoSpace");
-    std::string msg = UtilityHelper::getLocalStringForUi("NOT_HAVE_BAG_SPACE");
+    std::string msg = UtilityHelper::getLocalStringForUi(EVENT_PLAYER_BAG_NO_SPACE);
     PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
     m_pGameToolBarLayer->sendMessage(msg);
     
@@ -153,35 +160,35 @@ void GameUILayer::onEventRoleBagNoSpace(cocos2d::EventCustom *sender)
 }
 void GameUILayer::onEventRoleNoCopperKey(cocos2d::EventCustom *sender)
 {
-    std::string msg = UtilityHelper::getLocalStringForUi("NOT_HAVE_COPPER_KEY");
+    std::string msg = UtilityHelper::getLocalStringForUi(EVENT_PLAYER_NO_COPPER_KEY);
     PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
     m_pGameToolBarLayer->sendMessage(msg);
     CCLOG("onEventRoleNoCopperKey");
 }
 void GameUILayer::onEventRoleNoSilverKey(cocos2d::EventCustom *sender)
 {
-    std::string msg = UtilityHelper::getLocalStringForUi("NOT_HAVE_SILVER_KEY");
+    std::string msg = UtilityHelper::getLocalStringForUi(EVENT_PLAYER_NO_SILVER_KEY);
     PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
     m_pGameToolBarLayer->sendMessage(msg);
      CCLOG("onEventRoleNoSilverKey");
 }
 void GameUILayer::onEventRoleNoGoldKey(cocos2d::EventCustom *sender)
 {
-    std::string msg = UtilityHelper::getLocalStringForUi("NOT_HAVE_GOLD_KEY");
+    std::string msg = UtilityHelper::getLocalStringForUi(EVENT_PLAYER_NO_GOLD_KEY);
     PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
     m_pGameToolBarLayer->sendMessage(msg);
      CCLOG("onEventRoleNoGoldKey");
 }
 void GameUILayer::onEventRoleNoRoomKey(cocos2d::EventCustom *sender)
 {
-    std::string msg = UtilityHelper::getLocalStringForUi("NOT_HAVE_ROOM_KEY");
+    std::string msg = UtilityHelper::getLocalStringForUi(EVENT_PLAYER_NO_ROOM_KEY);
     PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
     m_pGameToolBarLayer->sendMessage(msg);
     CCLOG("onEventRoleNoRoomKey");
 }
 void GameUILayer::onEventRoleNoBossKey(cocos2d::EventCustom *sender)
 {
-    std::string msg = UtilityHelper::getLocalStringForUi("NOT_HAVE_BOOS_KEY");
+    std::string msg = UtilityHelper::getLocalStringForUi(EVENT_PLAYER_NO_BOSS_KEY);
     PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
     m_pGameToolBarLayer->sendMessage(msg);
     CCLOG("onEventRoleNoBossKey");
@@ -192,7 +199,7 @@ void GameUILayer::onEventNpcKnightAnsWer(cocos2d::EventCustom *sender)
     CCLOG("onEventNpcKnightAnsWer");
     ShopPopupUI* popupUILayer = static_cast<ShopPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupWeaponShop));
     if (popupUILayer) {
-        popupUILayer->setShopTitle("SHOP_TITLE_WEAPON");
+        popupUILayer->setShopTitle(EVENT_NPC_KNIGHT_ANSWER);
         popupUILayer->setDarkLayerVisble(false);
     }
 }
@@ -207,7 +214,7 @@ void GameUILayer::onEventNpcShopGirlAnsWer(cocos2d::EventCustom *sender)
      CCLOG("onEventNpcChildAnsWer");
     ShopPopupUI* popupUILayer = static_cast<ShopPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupMagicShop));
     if (popupUILayer) {
-        popupUILayer->setShopTitle("SHOP_TITLE_MAGIC");
+        popupUILayer->setShopTitle(EVENT_NPC_SHOPGIRL_ANSWER);
         popupUILayer->setDarkLayerVisble(false);
     }
 }
@@ -217,7 +224,7 @@ void GameUILayer::onEventNpcOldLadyAnsWer(cocos2d::EventCustom *sender)
     CCLOG("onEventNpcOldLadyAnsWer");
     ShopPopupUI* popupUILayer = static_cast<ShopPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupAlchemyShop));
     if (popupUILayer) {
-        popupUILayer->setShopTitle("SHOP_TITLE_ALCHEMY");
+        popupUILayer->setShopTitle(EVENT_NPC_OLDLADY_ANSWER);
         popupUILayer->setDarkLayerVisble(false);
     }
 }
@@ -227,7 +234,7 @@ void GameUILayer::onEventNpcWeiRdoAnsWer(cocos2d::EventCustom *sender)
     CCLOG("onEventNpcWeiRdoAnsWer");
     ShopPopupUI* popupUILayer = static_cast<ShopPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupGambleShop));
     if (popupUILayer) {
-        popupUILayer->setShopTitle("SHOP_TITLE_GAMBLE");
+        popupUILayer->setShopTitle(EVENT_NPC_WEIRDO_ANSWER);
         popupUILayer->setDarkLayerVisble(false);
     }
 }
@@ -251,21 +258,21 @@ void GameUILayer::onEventUseGoldChestKey(cocos2d::EventCustom *sender)
 {
     CCLOG("onEventUseGoldChestKey");
     std::string msg = UtilityHelper::getLocalStringForUi(EVENT_PLAYER_USE_GOLD_CHEST_KEY);
-    PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
+    PopupUILayerManager::getInstance()->showStatusImport(TIP_POSITIVE, msg);
     m_pGameToolBarLayer->sendMessage(msg);
 }
 void GameUILayer::onEventUseSilverChestKey(cocos2d::EventCustom *sender)
 {
     CCLOG("onEventUseSilverChestKey");
     std::string msg = UtilityHelper::getLocalStringForUi(EVENT_PLAYER_USE_SILVER_CHEST_KEY);
-    PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
+    PopupUILayerManager::getInstance()->showStatusImport(TIP_POSITIVE, msg);
     m_pGameToolBarLayer->sendMessage(msg);
 }
 void GameUILayer::onEventUseCopperChestKey(cocos2d::EventCustom *sender)
 {
     CCLOG("onEventUseCopperChestKey");
     std::string msg = UtilityHelper::getLocalStringForUi(EVENT_PLAYER_USE_COPPER_CHEST_KEY);
-    PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
+    PopupUILayerManager::getInstance()->showStatusImport(TIP_POSITIVE, msg);
     m_pGameToolBarLayer->sendMessage(msg);
 
 }
@@ -273,7 +280,7 @@ void GameUILayer::onEventUseRoomKey(cocos2d::EventCustom *sender)
 {
     CCLOG("onEventUseRoomKey");
     std::string msg = UtilityHelper::getLocalStringForUi(EVENT_PLAYER_USE_ROOM_KEY);
-    PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
+    PopupUILayerManager::getInstance()->showStatusImport(TIP_POSITIVE, msg);
     m_pGameToolBarLayer->sendMessage(msg);
 }
 void GameUILayer::onEventUseBossKey(cocos2d::EventCustom *sender)
@@ -301,63 +308,63 @@ void GameUILayer::onEventDoorMagicClosed(cocos2d::EventCustom *sender)
 void GameUILayer::onEventFoundHidderDoor(cocos2d::EventCustom *sender) //发现隐藏门
 {
     CCLOG("onEventFoundHidderDoor");
-    std::string msg = UtilityHelper::getLocalStringForUi("FOUND_HIDDER_DOOR");
+    std::string msg = UtilityHelper::getLocalStringForUi(EVENT_FOUND_HIDDEN_DOOR);
     PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
     m_pGameToolBarLayer->sendMessage(msg);
 }
 void GameUILayer::onEventFoundHidderTrapToxic(cocos2d::EventCustom *sender)//发现隐藏中毒机关
 {
     CCLOG("onEventFoundHidderTrapToxic");
-    std::string msg = UtilityHelper::getLocalStringForUi("FOUND_HIDDER_TRAP_TOXIC");
+    std::string msg = UtilityHelper::getLocalStringForUi(EVENT_FOUND_HIDDEN_TOXIC_TRAP);
     PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
     m_pGameToolBarLayer->sendMessage(msg);
 }
 void GameUILayer::onEventFoundHidderTrapFire(cocos2d::EventCustom *sender)//发现隐藏火机关
 {
     CCLOG("onEventFoundHidderTrapFire");
-    std::string msg = UtilityHelper::getLocalStringForUi("FOUND_HIDDER_TRAP_FIRE");
+    std::string msg = UtilityHelper::getLocalStringForUi(EVENT_FOUND_HIDDEN_FIRE_TRAP);
     PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
     m_pGameToolBarLayer->sendMessage(msg);
 }
 void GameUILayer::onEventFoundHidderTrapParalyic(cocos2d::EventCustom *sender)//发现隐藏麻痹机关
 {
     CCLOG("onEventFoundHidderTrapParalyic");
-    std::string msg = UtilityHelper::getLocalStringForUi("FOUND_HIDDER_TRAP_PARALYIC");
+    std::string msg = UtilityHelper::getLocalStringForUi(EVENT_FOUND_HIDDEN_PARALYTIC_TRAP);
     PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
     m_pGameToolBarLayer->sendMessage(msg);
 }
 void GameUILayer::onEventFoundHidderTrapGripping(cocos2d::EventCustom *sender)//发现隐藏夹子机关
 {
      CCLOG("onEventFoundHidderTrapGripping");
-    std::string msg = UtilityHelper::getLocalStringForUi("FOUND_HIDDER_TRAP_GRIPPING");
+    std::string msg = UtilityHelper::getLocalStringForUi(EVENT_FOUND_HIDDEN_GRIPPING_TRAP);
     PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
     m_pGameToolBarLayer->sendMessage(msg);
 }
 void GameUILayer::onEventFoundHidderTrapSummoning(cocos2d::EventCustom *sender)//发现隐藏召唤机关
 {
      CCLOG("onEventFoundHidderTrapSummoning");
-    std::string msg = UtilityHelper::getLocalStringForUi("FOUND_HIDDER_TRAP_SUMMONING");
+    std::string msg = UtilityHelper::getLocalStringForUi(EVENT_FOUND_HIDDEN_SUMMONING_TRAP);
     PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
     m_pGameToolBarLayer->sendMessage(msg);
 }
 void GameUILayer::onEventFoundHidderTrapWeak(cocos2d::EventCustom *sender)//发现隐藏虚弱机关
 {
     CCLOG("onEventFoundHidderTrapWeak");
-    std::string msg = UtilityHelper::getLocalStringForUi("FOUND_HIDDER_TRAP_WEAK");
+    std::string msg = UtilityHelper::getLocalStringForUi(EVENT_FOUND_HIDDEN_WEAK_TRAP);
     PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
     m_pGameToolBarLayer->sendMessage(msg);
 }
 void GameUILayer::onEventFoundHidderMsg(cocos2d::EventCustom *sender)
 {
     CCLOG("onEventFoundHidderMsg");
-    std::string msg = UtilityHelper::getLocalStringForUi("FOUND_HIDDER_TRAP_MSG");
+    std::string msg = UtilityHelper::getLocalStringForUi(EVENT_FOUND_HIDDEN_MSG);
     PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
     m_pGameToolBarLayer->sendMessage(msg);
 }
 void GameUILayer::onEventFoundHidderItem(cocos2d::EventCustom *sender)
 {
     CCLOG("onEventFoundHidderItem");
-    std::string msg = UtilityHelper::getLocalStringForUi("FOUND_HIDDER_TRAP_ITEM");
+    std::string msg = UtilityHelper::getLocalStringForUi(EVENT_FOUND_HIDDEN_ITEM);
     PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
     m_pGameToolBarLayer->sendMessage(msg);
 }
@@ -555,6 +562,9 @@ void GameUILayer::refreshUIView()
     if (m_pNpcPropLayer) {
         m_pNpcPropLayer->refreshUIView();
     }
+    if (m_pBossPropLayer) {
+        m_pBossPropLayer->refreshUIView();
+    }
 }
 void GameUILayer::onEventRoleLevelUp(cocos2d::EventCustom *sender)
 {
@@ -627,8 +637,8 @@ void GameUILayer::onEventMonsterDead(cocos2d::EventCustom *sender)
         }
         PopupUILayerManager::getInstance()->showStatus(TIP_POSITIVE, StringUtils::format(UtilityHelper::getLocalStringForUi("STATUS_TEXT_EXP").c_str(),exp),pt);
         if (m_pMonsterPropLayer) {
-            m_pMonsterPropLayer->setVisible(false);
             m_pMonsterPropLayer->setMonster(monster);
+            m_pMonsterPropLayer->setVisible(false);
         }
 
     }
@@ -667,7 +677,11 @@ void GameUILayer::onEventMonsterUpdateProp(cocos2d::EventCustom *sender)
     CCLOG("onEventUpdateMonsterProp");
     BaseMonster* monster = static_cast<BaseMonster*>(sender->getUserData());
     if (m_pMonsterPropLayer)
+    {
+        setCharacterPropLayerVisible(true, false, false);
         m_pMonsterPropLayer->setMonster(monster);
+    }
+    
     refreshUIView();
 }
 void GameUILayer::onEventMonsterAlert(cocos2d::EventCustom *sender)
@@ -695,7 +709,100 @@ void GameUILayer::onEventMonsterConfusing(cocos2d::EventCustom *sender)
     }
    
 }
+void GameUILayer::onEventBossUpdateProp(cocos2d::EventCustom *sender)
+{
+    CCLOG("onEventBossUpdateProp");
+    BaseBoss* monster = static_cast<BaseBoss*>(sender->getUserData());
+    if (m_pMonsterPropLayer)
+    {
+        setCharacterPropLayerVisible(false, false, true);
+        m_pBossPropLayer->setBoss(monster);
+    }
+    refreshUIView();
 
+}
+void GameUILayer::onEventBossDeath(cocos2d::EventCustom *sender)
+{
+     CCLOG("onEventBossDeath");
+    BaseBoss* monster = static_cast<BaseBoss*>(sender->getUserData());
+    if (!monster)
+        return;
+    Vec2 pt = VoxelExplorer::getInstance()->getMainCamera()->projectGL(monster->getPosition3D());
+    pt = Vec2(pt.x, pt.y+TerrainTile::CONTENT_SCALE*2.5);
+    if (monster->getState() == BaseMonster::MonsterState::MS_DEATH) {
+        int roleLevel = PlayerProperty::getInstance()->getLevel();
+        int exp  = GameFormula::getKillBossExp(roleLevel, roleLevel+5);
+        
+        PopupUILayerManager::getInstance()->showStatus(TIP_POSITIVE, StringUtils::format(UtilityHelper::getLocalStringForUi("STATUS_TEXT_EXP").c_str(),exp),pt);
+        if (m_pBossPropLayer) {
+            m_pBossPropLayer->setBoss(monster);
+            m_pMonsterPropLayer->setVisible(false);
+        }
+        
+    }
+}
+void GameUILayer::onEventBossHud(cocos2d::EventCustom *sender)
+{
+    CCLOG("onEventBossHud");
+    HurtData* hurData = static_cast<HurtData*>(sender->getUserData());
+    Vec2 pt = VoxelExplorer::getInstance()->getMainCamera()->projectGL(hurData->m_vPos);
+    pt = Vec2(pt.x, pt.y+TerrainTile::CONTENT_SCALE*2.5);
+    if (hurData->m_bDodge) {
+        
+        PopupUILayerManager::getInstance()->showStatus(TIP_DODGE,  StringUtils::format(UtilityHelper::getLocalStringForUi("STATUS_TEXT_DODGE").c_str(),hurData->m_nDamage),pt);
+        CCLOG("monster 闪避");
+    }else {
+        if((hurData->m_bBlocked && hurData->m_bCriticalStrike) || hurData->m_bBlocked)
+        {
+            PopupUILayerManager::getInstance()->showStatus(TIP_BOLOCK, StringUtils::format(UtilityHelper::getLocalStringForUi("STATUS_TEXT_BOLOCK").c_str(),hurData->m_nDamage),pt);
+            CCLOG("monster 格挡");
+        }else if (hurData->m_bCriticalStrike)
+        {
+            PopupUILayerManager::getInstance()->showStatus(TIP_CRITICAL_STRIKE, StringUtils::format(UtilityHelper::getLocalStringForUi("STATUS_TEXT_CRITICAL_STRIKE").c_str(),hurData->m_nDamage),pt);
+            CCLOG("monster 暴击");
+        }else{
+            PopupUILayerManager::getInstance()->showStatus(TIP_NEUTRAL, Value(hurData->m_nDamage).asString(),pt);
+            CCLOG("pt x:%f y%f",pt.x,pt.y);
+        }
+    }
+}
+void GameUILayer::onEventBossAlert(cocos2d::EventCustom *sender)
+{
+    CCLOG("onEventBossAlert");
+    BaseBoss* monster = static_cast<BaseBoss*>(sender->getUserData());
+    PromptLayer* promptLayer = PromptLayer::create(PromptLayer::PT_AWAKE);
+    if (monster) {
+        promptLayer->setActor(monster);
+    }
+    m_pRootLayer->addChild(promptLayer);
+
+}
+void GameUILayer::onEventBossSkill1(cocos2d::EventCustom *sender)
+{
+    CCLOG("onEventBossSkill1");
+}
+void GameUILayer::onEventBossSkill2(cocos2d::EventCustom *sender)
+{
+    CCLOG("onEventBossSkill2");
+}
+void GameUILayer::onEventBossSkill3(cocos2d::EventCustom *sender)
+{
+    CCLOG("onEventBossSkill3");
+}
+
+void GameUILayer::setCharacterPropLayerVisible(bool isMonster, bool isNpc, bool isBoss)
+{
+    if (m_pMonsterPropLayer) {
+        m_pMonsterPropLayer->setVisible(isMonster);
+    }
+    
+    if (m_pNpcPropLayer) {
+        m_pNpcPropLayer->setVisible(isNpc);
+    }
+    if (m_pBossPropLayer) {
+        m_pBossPropLayer->setVisible(isBoss);
+    }
+}
 void GameUILayer::onEnter()
 {
     WrapperUILayer::onEnter();
@@ -763,6 +870,13 @@ void GameUILayer::onEnter()
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_NPC_LITTLEWITCH_ANSWER, CC_CALLBACK_1(GameUILayer::onEventNpcLittleWitchAnsWer,this)) ;
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_NPC_NURSE_ANSWER, CC_CALLBACK_1(GameUILayer::onEventNpcNurseAnsWer,this));
 
+//    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_BOSS_PROPERTY_DIRTY, CC_CALLBACK_1(GameUILayer::onEventBossUpdateProp,this));
+//    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_BOSS_DEATH, CC_CALLBACK_1(GameUILayer::onEventBossDeath,this));
+//    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_BOSS_HURT, CC_CALLBACK_1(GameUILayer::onEventBossHud,this));
+//    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_BOSS_ALERT, CC_CALLBACK_1(GameUILayer::onEventBossAlert,this));
+//    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_BOSS_SKILL1, CC_CALLBACK_1(GameUILayer::onEventBossSkill1,this));
+//    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_BOSS_SKILL2, CC_CALLBACK_1(GameUILayer::onEventBossSkill2,this));
+//    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_BOSS_SKILL3, CC_CALLBACK_1(GameUILayer::onEventBossSkill3,this));
     
 }
 void GameUILayer::onExit()
@@ -831,5 +945,12 @@ void GameUILayer::onExit()
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_NPC_LITTLEWITCH_ANSWER);
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_NPC_NURSE_ANSWER);
     
+//    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_BOSS_PROPERTY_DIRTY);
+//    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_BOSS_DEATH);
+//    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_BOSS_HURT);
+//    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_BOSS_ALERT);
+//    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_BOSS_SKILL1);
+//    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_BOSS_SKILL2);
+//    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_BOSS_SKILL3);
     WrapperUILayer::onExit();
 }

@@ -53,7 +53,7 @@ void MonsterPropLayer::updateCharacterProp()
         return;
     if (m_pMonster->getState() != BaseMonster::MonsterState::MS_DEATH)
     {
-        this->setVisible(true);
+        
         float hpPer =m_pMonster->getMonsterProperty()->getCurrentHP().GetFloatValue()/m_pMonster->getMonsterProperty()->getMaxHP().GetFloatValue() *100.0f;
         m_pCharacterHpBar->setPercent(hpPer);
         m_pCharacterCurHp->setString(StringUtils::format("%d",int(m_pMonster->getMonsterProperty()->getCurrentHP())));
