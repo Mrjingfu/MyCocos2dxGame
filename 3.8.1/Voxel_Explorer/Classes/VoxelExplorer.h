@@ -13,6 +13,7 @@
 #include "BaseLevel.h"
 #include "Player.hpp"
 #include "BaseMonster.hpp"
+#include "BaseBoss.hpp"
 #include "UseableItem.hpp"
 class VoxelExplorer : public cocos2d::Ref
 {
@@ -31,10 +32,12 @@ public:
     void checkUpdateFogOfWar();
     void checkTriggerTrap();
     bool checkMonsterAlert(BaseMonster* monster);
+    bool checkBossAlert(BaseBoss* boss);
     bool checkMonsterCanAttack(BaseMonster* monster);
-    bool trackToPlayer(BaseMonster* monster, cocos2d::Vec2& nextPos);
-    bool fleeFromPlayer(BaseMonster* monster, cocos2d::Vec2& nextPos);
-    bool wanderingAround(BaseMonster* monster, cocos2d::Vec2& nextPos);
+    bool checkBossCanAttack(BaseBoss* boss);
+    bool trackToPlayer(Actor* tracker, cocos2d::Vec2& nextPos);
+    bool fleeFromPlayer(Actor* tracker, cocos2d::Vec2& nextPos);
+    bool wanderingAround(Actor* tracker, cocos2d::Vec2& nextPos);
     void updateFogOfWar(const cocos2d::Rect& areaRect, bool visited);
     void updateMiniMap();
     void updateBossRoomDoor();
@@ -43,6 +46,7 @@ public:
     void addExplosion(const cocos2d::Vec3& pos);
     void generatePickItem(const cocos2d::Vec2& pos, bool generateItem, int copper, int monsterLevel);
     void generatePickItemByUseableItem(const cocos2d::Vec2& pos, UseableItem::UseableItemType type);
+    void generatePickItemByBoss(const cocos2d::Vec2& pos, int copper);
     
     void handleDoor(const cocos2d::Vec2& mapPos);            ///开门
     void handleUseUseableItem(const cocos2d::Vec2& mapPos);
@@ -53,6 +57,7 @@ public:
     void handlePickItem(const cocos2d::Vec2& mapPos);        ///拾取道具
     void handleMonsterHurt(const cocos2d::Vec2& mapPos);     ///处理攻击怪物
     void handlePlayerHurt(const cocos2d::Vec2& mapPos, MonsterProperty* monsterProperty);      ///处理攻击玩家
+    void handlePlayerHurtByBoss(const cocos2d::Vec2& mapPos, BossProperty* bossProperty); ///处理boss攻击
     void handlePlayerUseScroll(PickableItem::PickableItemType type);
     void handlePlayerUsePotion(PickableItem::PickableItemType type);
     

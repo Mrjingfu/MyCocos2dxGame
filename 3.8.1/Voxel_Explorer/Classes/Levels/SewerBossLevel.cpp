@@ -93,6 +93,7 @@ bool SewerBossLevel::build()
                 areaNode->setAreaType(Area::AT_TUNNEL);
         }
     }
+    
     std::vector<Area*> candidates;
     for (PathGraphNode* node : m_AreaExit->getNeigbours()) {
         Area* areaNode = static_cast<Area*>(node);
@@ -128,6 +129,9 @@ void SewerBossLevel::generateAreaStyle()
 }
 bool SewerBossLevel::createMonsters()
 {
+    //for debug
+    //return true;
+    
     if(!createBoss(m_BossPosition))
     {
         CCLOG("Create boss failed!");
@@ -219,7 +223,7 @@ bool SewerBossLevel::createBoss(const cocos2d::Vec2& pos)
     slimeKing->setVisited(m_Map[tileIndex].m_bVisited);
     slimeKing->addTerrainTileFlag(TileInfo::USEABLE);
     VoxelExplorer::getInstance()->getBossLayer()->addChild(slimeKing);
-    slimeKing->setState(BaseBoss::BS_IDLE);
+    slimeKing->setState(BaseBoss::BS_SLEEPING);
     
     return true;
 }

@@ -24,6 +24,7 @@ public:
         DT_LOCKED,
         DT_HIDDEN,
         DT_BARRICADE,
+        DT_ARENA,
         DT_LOCKED_EXIT,
         DT_MAX
     }

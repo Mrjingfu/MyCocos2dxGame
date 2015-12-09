@@ -112,10 +112,9 @@ void BaseDoor::onEnterClosed()
         else
         {
             EaseSineOut* moveTo = EaseSineOut::create(MoveTo::create(0.5f, Vec3(m_pFakeDoor->getPositionX()+TerrainTile::CONTENT_SCALE, m_pFakeDoor->getPositionY(), m_pFakeDoor->getPositionZ())));
-            CallFunc* callback1 = CallFunc::create(CC_CALLBACK_0(BaseDoor::setVisible,m_pFakeDoor, true));
-            CallFunc* callback2 = CallFunc::create(CC_CALLBACK_0(BaseDoor::addTerrainTileFlag,this, TileInfo::USEABLE));
-            Sequence* sequence = Sequence::create(callback1, moveTo, callback2, NULL);
-            m_pFakeDoor->runAction(sequence);
+            m_pFakeDoor->setVisible(true);
+            addTerrainTileFlag(TileInfo::USEABLE);
+            m_pFakeDoor->runAction(moveTo);
         }
     }
     else if(m_dir == AD_LEFT || m_dir == AD_RIGHT)
@@ -128,10 +127,9 @@ void BaseDoor::onEnterClosed()
         else
         {
             EaseSineOut* moveTo = EaseSineOut::create(MoveTo::create(0.5f, Vec3(m_pFakeDoor->getPositionX(),m_pFakeDoor->getPositionY(), m_pFakeDoor->getPositionZ()-TerrainTile::CONTENT_SCALE)));
-            CallFunc* callback1 = CallFunc::create(CC_CALLBACK_0(BaseDoor::setVisible,m_pFakeDoor, true));
-            CallFunc* callback2 = CallFunc::create(CC_CALLBACK_0(BaseDoor::addTerrainTileFlag,this, TileInfo::USEABLE));
-            Sequence* sequence = Sequence::create(callback1, moveTo, callback2, NULL);
-            m_pFakeDoor->runAction(sequence);
+            m_pFakeDoor->setVisible(true);
+            addTerrainTileFlag(TileInfo::USEABLE);
+            m_pFakeDoor->runAction(moveTo);
         }
     }
 }
@@ -143,11 +141,6 @@ void BaseDoor::onEnterOpened()
 {
     if(!m_pFakeDoor)
         return;
-    if(m_bMagicLocked)
-    {
-        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_DOOR_MAGIC_LOCKED);
-        return;
-    }
     if (m_dir == AD_FORWARD || m_dir == AD_BACK) {
         if(m_DoorLastState == BaseDoor::DS_UNKNOWN)
         {

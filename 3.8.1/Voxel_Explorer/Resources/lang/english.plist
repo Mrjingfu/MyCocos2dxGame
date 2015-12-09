@@ -24,6 +24,10 @@
 	<string>Very ordinary floor.</string>
 	<key>TTN_LOCKED_DOOR</key>
 	<string>Locked door.</string>
+	<key>TTN_LOCKED_BOSS_DOOR</key>
+	<string>Locked door.</string>
+	<key>TTN_LOCKED_MAGIC_DOOR</key>
+	<string>A door, open to have look at it?</string>
 	<key>TTN_SECRET_DOOR</key>
 	<string>The wall looks a bit strange!</string>
 	<key>TTN_TOXIC_TRAP</key>

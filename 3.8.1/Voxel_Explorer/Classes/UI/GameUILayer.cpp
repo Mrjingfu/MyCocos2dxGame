@@ -246,17 +246,54 @@ void GameUILayer::onEventNpcNurseAnsWer(cocos2d::EventCustom *sender)
     CCLOG("onEventNpcNurseAnsWer");
 }
 
+void GameUILayer::onEventUseGoldChestKey(cocos2d::EventCustom *sender)
+{
+    CCLOG("onEventUseGoldChestKey");
+    std::string msg = UtilityHelper::getLocalStringForUi(EVENT_PLAYER_USE_GOLD_CHEST_KEY);
+    PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
+    m_pGameToolBarLayer->sendMessage(msg);
+}
+void GameUILayer::onEventUseSilverChestKey(cocos2d::EventCustom *sender)
+{
+    CCLOG("onEventUseSilverChestKey");
+    std::string msg = UtilityHelper::getLocalStringForUi(EVENT_PLAYER_USE_SILVER_CHEST_KEY);
+    PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
+    m_pGameToolBarLayer->sendMessage(msg);
+}
+void GameUILayer::onEventUseCopperChestKey(cocos2d::EventCustom *sender)
+{
+    CCLOG("onEventUseCopperChestKey");
+    std::string msg = UtilityHelper::getLocalStringForUi(EVENT_PLAYER_USE_COPPER_CHEST_KEY);
+    PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
+    m_pGameToolBarLayer->sendMessage(msg);
+
+}
+void GameUILayer::onEventUseRoomKey(cocos2d::EventCustom *sender)
+{
+    CCLOG("onEventUseRoomKey");
+    std::string msg = UtilityHelper::getLocalStringForUi(EVENT_PLAYER_USE_ROOM_KEY);
+    PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
+    m_pGameToolBarLayer->sendMessage(msg);
+}
+void GameUILayer::onEventUseBossKey(cocos2d::EventCustom *sender)
+{
+    CCLOG("onEventUseBossKey");
+    std::string msg = UtilityHelper::getLocalStringForUi(EVENT_PLAYER_USE_BOSS_KEY);
+    PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
+    m_pGameToolBarLayer->sendMessage(msg);
+}
+
 void GameUILayer::onEventDoorMagicLocked(cocos2d::EventCustom *sender)
 {
     CCLOG("onEventDoorMagicLocked");
-    std::string msg = UtilityHelper::getLocalStringForUi("DOOR_MAGIC_LOCKED");
+    std::string msg = UtilityHelper::getLocalStringForUi(EVENT_DOOR_MAGIC_LOCKED);
     PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
     m_pGameToolBarLayer->sendMessage(msg);
 }
 void GameUILayer::onEventDoorMagicClosed(cocos2d::EventCustom *sender)
 {
     CCLOG("onEventDoorMagicClosed");
-    std::string msg = UtilityHelper::getLocalStringForUi("DOOR_MAGIC_CLOSED");
+    std::string msg = UtilityHelper::getLocalStringForUi(EVENT_DOOR_MAGIC_CLOSED);
     PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
     m_pGameToolBarLayer->sendMessage(msg);
 }
@@ -700,6 +737,12 @@ void GameUILayer::onEnter()
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_TRIGGER_SUMMONING_TRAP, CC_CALLBACK_1(GameUILayer::onEventTriggerSummoning,this));
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_TRIGGER_WEAK_TRAP, CC_CALLBACK_1(GameUILayer::onEventTriggerWeak,this)) ;
     
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_PLAYER_USE_GOLD_CHEST_KEY, CC_CALLBACK_1(GameUILayer::onEventUseGoldChestKey,this));
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_PLAYER_USE_SILVER_CHEST_KEY, CC_CALLBACK_1(GameUILayer::onEventUseSilverChestKey,this));
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_PLAYER_USE_COPPER_CHEST_KEY, CC_CALLBACK_1(GameUILayer::onEventUseCopperChestKey,this));
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_PLAYER_USE_ROOM_KEY, CC_CALLBACK_1(GameUILayer::onEventUseRoomKey,this));
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_PLAYER_USE_BOSS_KEY, CC_CALLBACK_1(GameUILayer::onEventUseBossKey,this));
+    
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_DOOR_MAGIC_LOCKED, CC_CALLBACK_1(GameUILayer::onEventDoorMagicLocked,this));
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_DOOR_MAGIC_CLOSED, CC_CALLBACK_1(GameUILayer::onEventDoorMagicClosed,this));
     
@@ -761,6 +804,15 @@ void GameUILayer::onExit()
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_TRIGGER_GRIPPING_TRAP);
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_TRIGGER_SUMMONING_TRAP);
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_TRIGGER_WEAK_TRAP);
+    
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_PLAYER_USE_GOLD_CHEST_KEY);
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_PLAYER_USE_SILVER_CHEST_KEY);
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_PLAYER_USE_COPPER_CHEST_KEY);
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_PLAYER_USE_ROOM_KEY);
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_PLAYER_USE_BOSS_KEY);
+    
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_DOOR_MAGIC_LOCKED);
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_DOOR_MAGIC_CLOSED);
     
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_FOUND_HIDDEN_DOOR);
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_FOUND_HIDDEN_TOXIC_TRAP);

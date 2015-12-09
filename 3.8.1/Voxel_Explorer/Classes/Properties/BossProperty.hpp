@@ -1,23 +1,22 @@
 //
-//  MonsterProperty.hpp
+//  BossProperty.hpp
 //  Voxel_Explorer
 //
-//  Created by wang haibo on 15/10/19.
+//  Created by wang haibo on 15/12/8.
 //
 //
 
-#ifndef MonsterProperty_hpp
-#define MonsterProperty_hpp
+#ifndef BossProperty_hpp
+#define BossProperty_hpp
 
 #include "cocos2d.h"
 #include "ChaosNumber.h"
-class MonsterProperty : public cocos2d::Ref
+class BossProperty : public cocos2d::Ref
 {
 public:
-    MonsterProperty();
-    virtual ~MonsterProperty();
+    BossProperty();
+    virtual ~BossProperty();
 public:
-    CChaosNumber getLevel() const { return m_nLevel; }
     CChaosNumber getValueCopper() const { return m_nValueCopper; }
     CChaosNumber getMaxHP() const { return m_nMaxHP; }
     CChaosNumber getCurrentHP() const { return m_nCurrentHP; }
@@ -35,11 +34,7 @@ public:
     void adjustByDC();
     
     CChaosNumber getRandomAttack();
-    
-    bool isElite() const { return m_bIsElite; }
-    void setElite(bool elite) { m_bIsElite = elite; }
 private:
-    CChaosNumber    m_nLevel;                    ///等级
     CChaosNumber    m_nValueCopper;              ///价值铜币
     CChaosNumber    m_nMaxHP;                    ///最大生命值
     CChaosNumber    m_nCurrentHP;                ///当前生命值
@@ -52,8 +47,6 @@ private:
     CChaosNumber    m_fBlockRate;                ///格挡率
     CChaosNumber    m_fCriticalStrikeRate;       ///暴击率
     CChaosNumber    m_fDodgeRate;                ///闪避率
-    
-    bool            m_bIsElite;                  ///是否为精英怪
 };
 
-#endif /* MonsterProperty_hpp */
+#endif /* BossProperty_hpp */

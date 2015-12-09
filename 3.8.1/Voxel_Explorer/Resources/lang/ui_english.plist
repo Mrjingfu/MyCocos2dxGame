@@ -130,10 +130,20 @@
 	<string>使用特性药水,部分状态被解除了!</string>
 	<key>USE_POTION_UNIVERSAL</key>
 	<string>使用特性药水,状态全恢复了!</string>
+	<key>PLAYER_USE_GOLD_CHEST_KEY</key>
+	<string>使用了金质钥匙！</string>
+	<key>PLAYER_USE_SILVER_CHEST_KEY</key>
+	<string>使用了银质钥匙！</string>
+	<key>PLAYER_USE_COPPER_CHEST_KEY</key>
+	<string>使用了铜质钥匙！</string>
+	<key>PLAYER_USE_ROOM_KEY</key>
+	<string>使用了房间钥匙！</string>
+	<key>PLAYER_USE_BOSS_KEY</key>
+	<string>使用了boss房间钥匙！</string>
 	<key>DOOR_MAGIC_LOCKED</key>
 	<string>门上有一股魔力，根本打不开！</string>
 	<key>DOOR_MAGIC_CLOSED</key>
-	<string>你身后的被一股魔力关上了！</string>
+	<string>你身后的门被一股魔力关上了！</string>
 	<key>FOUND_HIDDER_DOOR</key>
 	<string>发现了隐藏门！</string>
 	<key>FOUND_HIDDER_TRAP_TOXIC</key>
@@ -153,15 +163,15 @@
 	<key>FOUND_HIDDER_TRAP_ITEM</key>
 	<string>发现了隐藏的道具！</string>
 	<key>NOT_HAVE_COPPER_KEY</key>
-	<string>没有铜钥匙！</string>
+	<string>没有铜质钥匙！</string>
 	<key>NOT_HAVE_SILVER_KEY</key>
-	<string>没有银钥匙！</string>
+	<string>没有银质钥匙！</string>
 	<key>NOT_HAVE_GOLD_KEY</key>
-	<string>没有金钥匙！</string>
+	<string>没有金质钥匙！</string>
 	<key>NOT_HAVE_ROOM_KEY</key>
 	<string>没有房间钥匙！</string>
 	<key>NOT_HAVE_BOOS_KEY</key>
-	<string>没有Boss钥匙！</string>
+	<string>没有Boss房间钥匙！</string>
 	<key>NOT_HAVE_BAG_SPACE</key>
 	<string>背包没有空间了!!</string>
 	<key>NOT_HAVA_MARGIC_VALUE</key>

@@ -24,6 +24,10 @@
 	<string>很普通的地板。</string>
 	<key>TTN_LOCKED_DOOR</key>
 	<string>上锁的门。</string>
+	<key>TTN_LOCKED_BOSS_DOOR</key>
+	<string>上锁的门。</string>
+	<key>TTN_LOCKED_MAGIC_DOOR</key>
+	<string>一扇门，要打开看看么？</string>
 	<key>TTN_SECRET_DOOR</key>
 	<string>这个墙壁看上去有些奇怪！</string>
 	<key>TTN_TOXIC_TRAP</key>

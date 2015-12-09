@@ -26,7 +26,6 @@ MonsterProperty::MonsterProperty()
     m_fBlockRate            = 0.01f;                ///格挡率
     m_fCriticalStrikeRate   = 0.02f;                ///暴击率
     m_fDodgeRate            = 0.01f;                ///闪避率
-    m_nDropItemNum          = 0;                    ///掉落物品个数
     
     m_bIsElite              = false;                ///是否为精英怪
 }
@@ -84,28 +83,17 @@ void MonsterProperty::adjustByDC()
     m_nMaxHP = m_nMaxHP + m_nLevel.GetLongValue()*m_nMaxHP.GetLongValue();
     m_nCurrentHP = m_nMaxHP;
     
-    m_nAddedMinAttack = (int)(m_nAddedMinAttack*dc.GetLongValue()*1.5f) + (nodeDepth-1)*10 + (int)((currentDepth-1)*0.5f);
-    m_nAddedMaxAttack = m_nAddedMaxAttack*dc.GetLongValue() + (nodeDepth-1)*10 + (int)(currentDepth-1);
+    m_nAddedMinAttack = m_nAddedMinAttack + (dc-1)*10 + (nodeDepth-1)*6 + (currentDepth-1)*2;
+    m_nAddedMaxAttack = m_nAddedMaxAttack + (dc-1)*30 + + (nodeDepth-1)*20 + (currentDepth-1)*4;
     
-    m_nAttackDiceNum = m_nAttackDiceNum + (dc-1)*2;
-    m_nAttackDiceFaceNum = m_nAttackDiceFaceNum + dc*2;
+    m_nAttackDiceNum = m_nAttackDiceNum + (dc-1)*5 + (nodeDepth-1)*2 + 1;
+    m_nAttackDiceFaceNum = m_nAttackDiceFaceNum + (nodeDepth-1)*2 + (currentDepth-1)*4 + 2;
     
-    m_nArmorClass = m_nArmorClass - (dc-1)*m_nBaseArmorClass.GetLongValue()*10 - (nodeDepth-1)*5 - (currentDepth-1) * 2;
+    m_nArmorClass = m_nArmorClass - (dc-1)*m_nBaseArmorClass.GetLongValue()*20 - (nodeDepth-1)*10 - (currentDepth-1) * 4;
     
-    m_fBlockRate = MIN(m_fBlockRate + m_fBlockRate*(nodeDepth-1)*0.5f + m_fBlockRate*(dc-1)*5, 0.2f);
-    m_fCriticalStrikeRate = MIN(m_fCriticalStrikeRate + m_fCriticalStrikeRate*(nodeDepth-1)*0.5f + m_fCriticalStrikeRate*(dc-1)*5, 0.3f);
-    m_fDodgeRate = MIN(m_fDodgeRate + m_fDodgeRate*(nodeDepth-1)*0.5f + m_fDodgeRate*(dc-1)*5, 0.2f);
-    
-    float rand = cocos2d::rand_0_1();
-    if(rand < 0.1f)
-        m_nDropItemNum = 1;
-    else if(rand > 0.95f)
-        m_nDropItemNum = 2;
-    else
-        m_nDropItemNum = 0;
-    
-    if(m_bIsElite)
-        m_nDropItemNum = 4;
+    m_fBlockRate = MIN(m_fBlockRate + m_fBlockRate*(nodeDepth-1)*0.5f + m_fBlockRate*(dc-1)*5.0f, 0.2f);
+    m_fCriticalStrikeRate = MIN(m_fCriticalStrikeRate + m_fCriticalStrikeRate*(nodeDepth-1)*0.5f + m_fCriticalStrikeRate*(dc-1)*5.0f, 0.3f);
+    m_fDodgeRate = MIN(m_fDodgeRate + m_fDodgeRate*(nodeDepth-1)*0.5f + m_fDodgeRate*(dc-1)*5.0f, 0.2f);
 }
 CChaosNumber MonsterProperty::getRandomAttack()
 {

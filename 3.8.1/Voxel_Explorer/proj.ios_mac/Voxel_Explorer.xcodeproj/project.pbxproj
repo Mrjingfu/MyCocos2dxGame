@@ -179,6 +179,8 @@
 		55CB9B0B1C07355200BAF60B /* NpcDataManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55CB9B081C07355200BAF60B /* NpcDataManager.cpp */; };
 		55D6D67F1BC527D000081221 /* models in Resources */ = {isa = PBXBuildFile; fileRef = 55D6D67E1BC527D000081221 /* models */; };
 		55D6D6801BC527D000081221 /* models in Resources */ = {isa = PBXBuildFile; fileRef = 55D6D67E1BC527D000081221 /* models */; };
+		55E1A5561C16BF21008BEEFD /* BossProperty.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55E1A5541C16BF21008BEEFD /* BossProperty.cpp */; };
+		55E1A5571C16BF21008BEEFD /* BossProperty.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55E1A5541C16BF21008BEEFD /* BossProperty.cpp */; };
 		55EC95851BC6AA7B0008D1D7 /* TerrainTile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55EC95831BC6AA7B0008D1D7 /* TerrainTile.cpp */; };
 		55EC95861BC6ABBA0008D1D7 /* TerrainTile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55EC95831BC6AA7B0008D1D7 /* TerrainTile.cpp */; };
 		55ECFB441BC79852007270CD /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55ECFB421BC79852007270CD /* Player.cpp */; };
@@ -515,6 +517,8 @@
 		55CB9B081C07355200BAF60B /* NpcDataManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NpcDataManager.cpp; sourceTree = "<group>"; };
 		55CB9B091C07355200BAF60B /* NpcDataManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = NpcDataManager.hpp; sourceTree = "<group>"; };
 		55D6D67E1BC527D000081221 /* models */ = {isa = PBXFileReference; lastKnownFileType = folder; path = models; sourceTree = "<group>"; };
+		55E1A5541C16BF21008BEEFD /* BossProperty.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BossProperty.cpp; sourceTree = "<group>"; };
+		55E1A5551C16BF21008BEEFD /* BossProperty.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BossProperty.hpp; sourceTree = "<group>"; };
 		55EC95831BC6AA7B0008D1D7 /* TerrainTile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TerrainTile.cpp; sourceTree = "<group>"; };
 		55EC95841BC6AA7B0008D1D7 /* TerrainTile.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TerrainTile.hpp; sourceTree = "<group>"; };
 		55ECFB421BC79852007270CD /* Player.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Player.cpp; sourceTree = "<group>"; };
@@ -901,6 +905,8 @@
 				551E93C01BD51291009F788F /* PlayerProperty.hpp */,
 				EC602AB01BF47A4900484D42 /* AchieveProperty.cpp */,
 				EC602AB11BF47A4900484D42 /* AchieveProperty.hpp */,
+				55E1A5541C16BF21008BEEFD /* BossProperty.cpp */,
+				55E1A5551C16BF21008BEEFD /* BossProperty.hpp */,
 			);
 			path = Properties;
 			sourceTree = "<group>";
@@ -1480,6 +1486,7 @@
 				55338ADE1BD8925100EA316F /* Warden.cpp in Sources */,
 				55F4650E1BEAF76A00E1CC79 /* Pathfinder.cpp in Sources */,
 				55F116D01C0444EF00A6C191 /* PrisonLevel.cpp in Sources */,
+				55E1A5561C16BF21008BEEFD /* BossProperty.cpp in Sources */,
 				ECEA4E1E1C0EC69800ED790F /* ItemShopBuyPopupUI.cpp in Sources */,
 				554F00F61BDA219E00F4DF8E /* PickableItem.cpp in Sources */,
 				55F81CD01BDB92CC002EC075 /* PotionsProperty.cpp in Sources */,
@@ -1624,6 +1631,7 @@
 				EC6264961BF0807F004E0F55 /* MessageManager.cpp in Sources */,
 				EC3CC97C1C088F4F00F8CFC8 /* GameToolbarLayer.cpp in Sources */,
 				55619D521C0DAB3900419E40 /* SewerBossLevel.cpp in Sources */,
+				55E1A5571C16BF21008BEEFD /* BossProperty.cpp in Sources */,
 				555B0D161BC51A2C0055FB6D /* AppDelegate.cpp in Sources */,
 				55F81CAD1BDB69FB002EC075 /* PickableItemProperty.cpp in Sources */,
 				553BC5021BCDF457003D907A /* Actor.cpp in Sources */,

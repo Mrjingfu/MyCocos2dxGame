@@ -226,7 +226,7 @@ bool FaneBossLevel::createBoss(const cocos2d::Vec2& pos)
     archbishop->setVisited(m_Map[tileIndex].m_bVisited);
     archbishop->addTerrainTileFlag(TileInfo::USEABLE);
     VoxelExplorer::getInstance()->getBossLayer()->addChild(archbishop);
-    archbishop->setState(BaseBoss::BS_IDLE);
+    archbishop->setState(BaseBoss::BS_SLEEPING);
     
     return true;
 }

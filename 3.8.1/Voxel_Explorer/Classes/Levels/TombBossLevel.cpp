@@ -88,7 +88,7 @@ bool TombBossLevel::build()
     int exitY = m_nIndexExit/m_nWidth;
     
     setTerrainTile(entranceX, entranceY, TerrainTile::TT_ENTRANCE, Area::AT_BOSS_ROOM);
-    setTerrainTile(arenaDoorX, arenaDoorY, TerrainTile::TT_DOOR, Area::AT_BOSS_ROOM, Actor::AD_FORWARD);
+    setTerrainTile(arenaDoorX, arenaDoorY, TerrainTile::TT_LOCKED_MAGIC_DOOR, Area::AT_BOSS_ROOM, Actor::AD_FORWARD);
     setTerrainTile(exitX, exitY, TerrainTile::TT_LOCKED_BOSS_DOOR, Area::AT_BOSS_EXIT, Actor::AD_FORWARD);
     
     updateTerrainTileFogOfWar(0, 0, m_nWidth, m_nHeight, true);
@@ -176,7 +176,7 @@ bool TombBossLevel::createBoss(const cocos2d::Vec2& pos)
     skeletonKing->setVisited(m_Map[tileIndex].m_bVisited);
     skeletonKing->addTerrainTileFlag(TileInfo::USEABLE);
     VoxelExplorer::getInstance()->getBossLayer()->addChild(skeletonKing);
-    skeletonKing->setState(BaseBoss::BS_IDLE);
+    skeletonKing->setState(BaseBoss::BS_SLEEPING);
     
     return true;
 }

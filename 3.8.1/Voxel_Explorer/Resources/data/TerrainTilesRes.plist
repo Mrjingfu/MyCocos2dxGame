@@ -28,6 +28,8 @@
 		<string>tile_standard_1.png</string>
 		<key>TTN_LOCKED_BOSS_DOOR</key>
 		<string>tile_standard_1.png</string>
+		<key>TTN_LOCKED_MAGIC_DOOR</key>
+		<string>tile_standard_1.png</string>
 		<key>TTN_SECRET_DOOR</key>
 		<string>tile_standard_1.png</string>
 		<key>TTN_TOXIC_TRAP</key>
@@ -82,6 +84,8 @@
 		<key>TTN_LOCKED_DOOR</key>
 		<string>tile_standard_2.png</string>
 		<key>TTN_LOCKED_BOSS_DOOR</key>
+		<string>tile_standard_2.png</string>
+		<key>TTN_LOCKED_MAGIC_DOOR</key>
 		<string>tile_standard_2.png</string>
 		<key>TTN_SECRET_DOOR</key>
 		<string>tile_standard_2.png</string>
@@ -138,6 +142,8 @@
 		<string>tile_standard_3.png</string>
 		<key>TTN_LOCKED_BOSS_DOOR</key>
 		<string>tile_standard_3.png</string>
+		<key>TTN_LOCKED_MAGIC_DOOR</key>
+		<string>tile_standard_3.png</string>
 		<key>TTN_SECRET_DOOR</key>
 		<string>tile_standard_3.png</string>
 		<key>TTN_TOXIC_TRAP</key>
@@ -192,6 +198,8 @@
 		<key>TTN_LOCKED_DOOR</key>
 		<string>tile_standard_4.png</string>
 		<key>TTN_LOCKED_BOSS_DOOR</key>
+		<string>tile_standard_4.png</string>
+		<key>TTN_LOCKED_MAGIC_DOOR</key>
 		<string>tile_standard_4.png</string>
 		<key>TTN_SECRET_DOOR</key>
 		<string>tile_standard_4.png</string>
@@ -248,6 +256,8 @@
 		<string>tile_standard_6.png</string>
 		<key>TTN_LOCKED_BOSS_DOOR</key>
 		<string>tile_standard_6.png</string>
+		<key>TTN_LOCKED_MAGIC_DOOR</key>
+		<string>tile_standard_6.png</string>
 		<key>TTN_SECRET_DOOR</key>
 		<string>tile_standard_6.png</string>
 		<key>TTN_TOXIC_TRAP</key>
@@ -302,6 +312,8 @@
 		<key>TTN_LOCKED_DOOR</key>
 		<string>tile_standard_5.png</string>
 		<key>TTN_LOCKED_BOSS_DOOR</key>
+		<string>tile_standard_5.png</string>
+		<key>TTN_LOCKED_MAGIC_DOOR</key>
 		<string>tile_standard_5.png</string>
 		<key>TTN_SECRET_DOOR</key>
 		<string>tile_standard_5.png</string>
@@ -358,6 +370,8 @@
 		<string>tile_standard_1.png</string>
 		<key>TTN_LOCKED_BOSS_DOOR</key>
 		<string>tile_standard_1.png</string>
+		<key>TTN_LOCKED_MAGIC_DOOR</key>
+		<string>tile_standard_1.png</string>
 		<key>TTN_SECRET_DOOR</key>
 		<string>tile_standard_1.png</string>
 		<key>TTN_TOXIC_TRAP</key>
@@ -412,6 +426,8 @@
 		<key>TTN_LOCKED_DOOR</key>
 		<string>tile_standard_1.png</string>
 		<key>TTN_LOCKED_BOSS_DOOR</key>
+		<string>tile_standard_1.png</string>
+		<key>TTN_LOCKED_MAGIC_DOOR</key>
 		<string>tile_standard_1.png</string>
 		<key>TTN_SECRET_DOOR</key>
 		<string>tile_standard_1.png</string>
@@ -468,6 +484,8 @@
 		<string>tile_standard_1.png</string>
 		<key>TTN_LOCKED_BOSS_DOOR</key>
 		<string>tile_standard_1.png</string>
+		<key>TTN_LOCKED_MAGIC_DOOR</key>
+		<string>tile_standard_1.png</string>
 		<key>TTN_SECRET_DOOR</key>
 		<string>tile_standard_1.png</string>
 		<key>TTN_TOXIC_TRAP</key>
@@ -522,6 +540,8 @@
 		<key>TTN_LOCKED_DOOR</key>
 		<string>tile_standard_1.png</string>
 		<key>TTN_LOCKED_BOSS_DOOR</key>
+		<string>tile_standard_1.png</string>
+		<key>TTN_LOCKED_MAGIC_DOOR</key>
 		<string>tile_standard_1.png</string>
 		<key>TTN_SECRET_DOOR</key>
 		<string>tile_standard_1.png</string>
@@ -578,6 +598,8 @@
 		<string>tile_standard_1.png</string>
 		<key>TTN_LOCKED_BOSS_DOOR</key>
 		<string>tile_standard_1.png</string>
+		<key>TTN_LOCKED_MAGIC_DOOR</key>
+		<string>tile_standard_1.png</string>
 		<key>TTN_SECRET_DOOR</key>
 		<string>tile_standard_1.png</string>
 		<key>TTN_TOXIC_TRAP</key>
@@ -632,6 +654,8 @@
 		<key>TTN_LOCKED_DOOR</key>
 		<string>tile_standard_1.png</string>
 		<key>TTN_LOCKED_BOSS_DOOR</key>
+		<string>tile_standard_1.png</string>
+		<key>TTN_LOCKED_MAGIC_DOOR</key>
 		<string>tile_standard_1.png</string>
 		<key>TTN_SECRET_DOOR</key>
 		<string>tile_standard_1.png</string>
@@ -688,6 +712,8 @@
 		<string>tile_standard_1.png</string>
 		<key>TTN_LOCKED_BOSS_DOOR</key>
 		<string>tile_standard_1.png</string>
+		<key>TTN_LOCKED_MAGIC_DOOR</key>
+		<string>tile_standard_1.png</string>
 		<key>TTN_SECRET_DOOR</key>
 		<string>tile_standard_1.png</string>
 		<key>TTN_TOXIC_TRAP</key>
@@ -743,6 +769,8 @@
 		<string>tile_standard_1.png</string>
 		<key>TTN_LOCKED_BOSS_DOOR</key>
 		<string>tile_standard_1.png</string>
+		<key>TTN_LOCKED_MAGIC_DOOR</key>
+		<string>tile_standard_1.png</string>
 		<key>TTN_SECRET_DOOR</key>
 		<string>tile_standard_1.png</string>
 		<key>TTN_TOXIC_TRAP</key>
@@ -797,6 +825,8 @@
 		<key>TTN_LOCKED_DOOR</key>
 		<string>tile_standard_1.png</string>
 		<key>TTN_LOCKED_BOSS_DOOR</key>
+		<string>tile_standard_1.png</string>
+		<key>TTN_LOCKED_MAGIC_DOOR</key>
 		<string>tile_standard_1.png</string>
 		<key>TTN_SECRET_DOOR</key>
 		<string>tile_standard_1.png</string>

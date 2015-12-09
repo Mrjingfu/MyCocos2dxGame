@@ -58,6 +58,8 @@ public:
     
     bool isMagicLocked() const { return m_bMagicLocked; }
     void setMagicLocked(bool magicLocked) { m_bMagicLocked = magicLocked; }
+    
+    bool getOpenType() const { return m_OpenType; }
 protected:
     DoorState   m_DoorState;
     DoorState   m_DoorLastState;

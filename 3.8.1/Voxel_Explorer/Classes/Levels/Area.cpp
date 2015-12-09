@@ -254,6 +254,8 @@ void Area::generateStandardArea(BaseLevel* level)
                         door->setDoorType(Door::DT_HIDDEN);
                 }
             }
+            else
+                door->setDoorType(Door::DT_ARENA);
         }
     }
 }
@@ -284,10 +286,16 @@ void Area::generateBossRoomArea(BaseLevel* level)
     generateTerrainTiles(level, TerrainTile::TT_WALL);
     generateTerrainTiles(level, 1, TerrainTile::TT_STANDARD);
     for (auto iter = m_ConnectedAreas.begin(); iter != m_ConnectedAreas.end(); iter++) {
+        Area* area = iter->first;
+        if(!area)
+            continue;
         Door* door = iter->second;
-        if(door && door->getDoorType() == Door::DT_EMPTY)
+        if(door)
         {
-            door->setDoorType(Door::DT_STANDARD);
+            if(area->getAreaType() == Area::AT_BOSS_EXIT)
+                door->setDoorType(Door::DT_LOCKED_EXIT);
+            else
+                door->setDoorType(Door::DT_ARENA);
         }
     }
 }
@@ -301,8 +309,16 @@ void Area::generateBossExitArea(BaseLevel* level)
             door->setDoorType(Door::DT_LOCKED_EXIT);
     }
     Vec2 center = getCenter();
-    setTerrainTile(level, center.x - 1, center.y, TerrainTile::TT_STANDARD_PORTAL);
-    setTerrainTile(level, center.x + 1, center.y, TerrainTile::TT_STANDARD_PORTAL);
+    if(m_Rect.size.width >= m_Rect.size.height)
+    {
+        setTerrainTile(level, center.x - 1, center.y, TerrainTile::TT_STANDARD_PORTAL);
+        setTerrainTile(level, center.x + 1, center.y, TerrainTile::TT_STANDARD_PORTAL);
+    }
+    else
+    {
+        setTerrainTile(level, center.x, center.y - 1, TerrainTile::TT_STANDARD_PORTAL);
+        setTerrainTile(level, center.x, center.y + 1, TerrainTile::TT_STANDARD_PORTAL);
+    }
 }
 void Area::generateTunnelArea(BaseLevel* level)
 {
@@ -408,7 +424,7 @@ void Area::generateTunnelArea(BaseLevel* level)
             if(other->getAreaType() != Area::AT_BOSS_ROOM)
                 door->setDoorType(Door::DT_TUNNEL);
             else
-                door->setDoorType(Door::DT_STANDARD);
+                door->setDoorType(Door::DT_ARENA);
         }
     }
 }
@@ -471,7 +487,7 @@ void Area::generatePassageArea(BaseLevel* level)
             if(other->getAreaType() != Area::AT_BOSS_ROOM)
                 door->setDoorType(Door::DT_PASSAGE);
             else
-                door->setDoorType(Door::DT_STANDARD);
+                door->setDoorType(Door::DT_ARENA);
         }
     }
 }

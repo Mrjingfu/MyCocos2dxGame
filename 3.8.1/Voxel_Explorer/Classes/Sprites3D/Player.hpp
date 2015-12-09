@@ -13,6 +13,7 @@
 #include "EventConst.h"
 #include "MonsterProperty.hpp"
 #include "PlayerProperty.hpp"
+#include "BossProperty.hpp"
 class FakeShadow;
 class Player : public Actor
 {
@@ -57,6 +58,7 @@ public:
     virtual void rotateToBack();
     
     void attackByMonster(MonsterProperty* monsterProperty, bool miss);
+    void attackByBoss(BossProperty* bossProperty, bool miss);
     void hurtByGrippingTrap();
 private:
     void onEnterIdle();

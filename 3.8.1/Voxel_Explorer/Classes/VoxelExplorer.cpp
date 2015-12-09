@@ -278,6 +278,20 @@ bool VoxelExplorer::checkMonsterAlert(BaseMonster* monster)
         return false;
     return true;
 }
+bool VoxelExplorer::checkBossAlert(BaseBoss* boss)
+{
+    if(boss == nullptr || !(boss->isVisible()))
+        return false;
+    if(m_pPlayer == nullptr || m_pPlayer->getState() == Player::PS_DEATH || m_pPlayer->isStealth())
+        return false;
+    
+    Vec2 playerPosInMap = m_pPlayer->getPosInMap();
+    Vec2 bossPosInMap = boss->getPosInMap();
+    if(std::abs(playerPosInMap.x - bossPosInMap.x) > boss->getMonsterFOV() || std::abs(playerPosInMap.y - bossPosInMap.y) > boss->getMonsterFOV())
+        return false;
+    
+    return true;
+}
 bool VoxelExplorer::checkMonsterCanAttack(BaseMonster* monster)
 {
     if(monster == nullptr || !(monster->isVisible()))
@@ -292,25 +306,39 @@ bool VoxelExplorer::checkMonsterCanAttack(BaseMonster* monster)
         return true;
     return false;
 }
-bool VoxelExplorer::trackToPlayer(BaseMonster* monster, cocos2d::Vec2& nextPos)
+bool VoxelExplorer::checkBossCanAttack(BaseBoss* boss)
 {
-    if(monster == nullptr || m_pPlayer == nullptr || m_pCurrentLevel == nullptr || !(monster->isVisible()))
+    if(boss == nullptr || !(boss->isVisible()))
+        return false;
+    if(m_pPlayer == nullptr || m_pPlayer->getState() == Player::PS_DEATH || m_pPlayer->isStealth())
+        return false;
+    Vec2 playerPosInMap = m_pPlayer->getPosInMap();
+    Vec2 bossPosInMap = boss->getPosInMap();
+    if(playerPosInMap.x == bossPosInMap.x && std::abs(playerPosInMap.y - bossPosInMap.y) <= boss->getAttackRange())
+        return true;
+    else if(playerPosInMap.y == bossPosInMap.y && std::abs(playerPosInMap.x - bossPosInMap.x) <= boss->getAttackRange())
+        return true;
+    return false;
+}
+bool VoxelExplorer::trackToPlayer(Actor* tracker, cocos2d::Vec2& nextPos)
+{
+    if(tracker == nullptr || m_pPlayer == nullptr || m_pCurrentLevel == nullptr || !(tracker->isVisible()))
        return false;
     Vec2 playerPosInMap = m_pPlayer->getPosInMap();
-    Vec2 monsterPosInMap = monster->getPosInMap();
+    Vec2 monsterPosInMap = tracker->getPosInMap();
     return m_pCurrentLevel->getNextPathStep(monsterPosInMap, playerPosInMap, nextPos);
 }
-bool VoxelExplorer::fleeFromPlayer(BaseMonster* monster, cocos2d::Vec2& nextPos)
+bool VoxelExplorer::fleeFromPlayer(Actor* tracker, cocos2d::Vec2& nextPos)
 {
-    if(monster == nullptr || m_pPlayer == nullptr || m_pCurrentLevel == nullptr || !(monster->isVisible()))
+    if(tracker == nullptr || m_pPlayer == nullptr || m_pCurrentLevel == nullptr || !(tracker->isVisible()))
         return false;
     return true;
 }
-bool VoxelExplorer::wanderingAround(BaseMonster* monster, cocos2d::Vec2& nextPos)
+bool VoxelExplorer::wanderingAround(Actor* tracker, cocos2d::Vec2& nextPos)
 {
-    if(monster == nullptr  || m_pCurrentLevel == nullptr || !(monster->isVisible()))
+    if(tracker == nullptr  || m_pCurrentLevel == nullptr || !(tracker->isVisible()))
         return false;
-    Vec2 monsterPosInMap = monster->getPosInMap();
+    Vec2 monsterPosInMap = tracker->getPosInMap();
     Vec2 randomPos = m_pCurrentLevel->getRandomPassableTile();
     return m_pCurrentLevel->getNextPathStep(monsterPosInMap, randomPos, nextPos);
 }
@@ -411,35 +439,35 @@ void VoxelExplorer::updateBossRoomDoor()
     if(m_pCurrentLevel && m_pPlayer && m_pBossLayer && m_pTerrainDoorsLayer)
     {
         
-        BaseBoss* boss = nullptr;
-        for (const auto& child : m_pBossLayer->getChildren())
-        {
-            boss = dynamic_cast<BaseBoss*>(child);
-            if(boss)
-                break;
-        }
-        if(!boss)
-            return;
-        if(boss->getState() == BaseBoss::BS_DEATH)
-        {
-            for (const auto& child : m_pTerrainDoorsLayer->getChildren())
-            {
-                BaseDoor* door = dynamic_cast<BaseDoor*>(child);
-                if(door)
-                {
-                    Vec2 pos = door->getPosInMap();
-                    if(m_pCurrentLevel->getTerrainTileAreaType(pos.x, pos.y) == Area::AT_BOSS_ROOM)
-                    {
-                        if(door->isMagicLocked())
-                        {
-                            door->setMagicLocked(false);
-                            return;
-                        }
-                    }
-                }
-            }
-        }
-        else
+//        BaseBoss* boss = nullptr;
+//        for (const auto& child : m_pBossLayer->getChildren())
+//        {
+//            boss = dynamic_cast<BaseBoss*>(child);
+//            if(boss)
+//                break;
+//        }
+//        if(!boss)
+//            return;
+//        if(boss->getState() == BaseBoss::BS_DEATH)
+//        {
+//            for (const auto& child : m_pTerrainDoorsLayer->getChildren())
+//            {
+//                BaseDoor* door = dynamic_cast<BaseDoor*>(child);
+//                if(door)
+//                {
+//                    Vec2 pos = door->getPosInMap();
+//                    if(m_pCurrentLevel->getTerrainTileAreaType(pos.x, pos.y) == Area::AT_BOSS_ROOM)
+//                    {
+//                        if(door->isMagicLocked())
+//                        {
+//                            door->setMagicLocked(false);
+//                            return;
+//                        }
+//                    }
+//                }
+//            }
+//        }
+//        else
         {
             for (const auto& child : m_pTerrainDoorsLayer->getChildren())
             {
@@ -587,6 +615,25 @@ void VoxelExplorer::generatePickItemByUseableItem(const cocos2d::Vec2& pos, Usea
         }
     }
 }
+void VoxelExplorer::generatePickItemByBoss(const cocos2d::Vec2& pos, int copper)
+{
+    if(m_pPickableItemsLayer && m_pCurrentLevel)
+    {
+        if(copper > 0)
+        {
+            PlayerProperty::getInstance()->addMoney(copper);
+            ///声音
+        }
+        PickableItem* item = PickableItem::create(PickableItem::PIT_KEY_BOSS, 1);
+        if(item)
+        {
+            item->setPosition3D(Vec3(pos.x*TerrainTile::CONTENT_SCALE, -0.5f*TerrainTile::CONTENT_SCALE, -pos.y*TerrainTile::CONTENT_SCALE));
+            item->setVisited(true);
+            VoxelExplorer::getInstance()->getPickableItemsLayer()->addChild(item);
+            item->setState(PickableItem::PIS_BEGIN_GENERATE);
+        }
+    }
+}
 void VoxelExplorer::handleDoor(const cocos2d::Vec2& mapPos)
 {
     if(m_pTerrainDoorsLayer && m_pPlayer && m_pCurrentLevel)
@@ -605,17 +652,41 @@ void VoxelExplorer::handleDoor(const cocos2d::Vec2& mapPos)
                 }
                 else if(door->getDoorState() == BaseDoor::DS_CLOSED)
                 {
-                    door->setDoorState(BaseDoor::DS_OPENED);
-                    if(m_pCurrentLevel)
-                        m_pCurrentLevel->updateAreaFogOfWarByPos(door->getPosInMap());
-                    return;
+                    if(door->isMagicLocked())
+                    {
+                        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_DOOR_MAGIC_LOCKED);
+                        return;
+                    }
+                    else
+                    {
+                        door->setDoorState(BaseDoor::DS_OPENED);
+                        if(m_pCurrentLevel)
+                            m_pCurrentLevel->updateAreaFogOfWarByPos(door->getPosInMap());
+                        return;
+                    }
                 }
                 else if(door->getDoorState() == BaseDoor::DS_LOCKED)
                 {
-                    if(PlayerProperty::getInstance()->useKey(PickableItem::PIT_KEY_ROOM))
-                        door->setDoorState(BaseDoor::DS_CLOSED);
+                    if(door->getOpenType() == DoorOpenType::DOT_BOSS)
+                    {
+                        if(PlayerProperty::getInstance()->useKey(PickableItem::PIT_KEY_BOSS))
+                        {
+                            door->setDoorState(BaseDoor::DS_CLOSED);
+                            Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_USE_BOSS_KEY);
+                        }
+                        else
+                            Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_NO_BOSS_KEY);
+                    }
                     else
-                        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_NO_ROOM_KEY);
+                    {
+                        if(PlayerProperty::getInstance()->useKey(PickableItem::PIT_KEY_ROOM))
+                        {
+                            door->setDoorState(BaseDoor::DS_CLOSED);
+                            Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_USE_ROOM_KEY);
+                        }
+                        else
+                            Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_NO_ROOM_KEY);
+                    }
                     return;
                 }
             }
@@ -645,23 +716,44 @@ void VoxelExplorer::handleUseUseableItem(const cocos2d::Vec2& mapPos)
                     if(useableItem->getUseableItemType() == UseableItem::UIT_CHEST_COPPER)
                     {
                         if(PlayerProperty::getInstance()->useKey(PickableItem::PIT_KEY_COPPER))
+                        {
+                            //声音
                             useableItem->setState(UseableItem::UIS_FADEOUT);
+                            Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_USE_COPPER_CHEST_KEY);
+                        }
                         else
+                        {
+                            ///声音
                             Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_NO_COPPER_KEY);
+                        }
                     }
                     else if(useableItem->getUseableItemType() == UseableItem::UIT_CHEST_SILVER)
                     {
                         if(PlayerProperty::getInstance()->useKey(PickableItem::PIT_KEY_SILVER))
+                        {
+                            ///声音
                             useableItem->setState(UseableItem::UIS_FADEOUT);
+                            Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_USE_SILVER_CHEST_KEY);
+                        }
                         else
+                        {
+                            ///声音
                             Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_NO_SILVER_KEY);
+                        }
                     }
                     else if(useableItem->getUseableItemType() == UseableItem::UIT_CHEST_GOLD)
                     {
                         if(PlayerProperty::getInstance()->useKey(PickableItem::PIT_KEY_GOLD))
+                        {
+                            ///声音
                             useableItem->setState(UseableItem::UIS_FADEOUT);
+                            Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_USE_GOLD_CHEST_KEY);
+                        }
                         else
+                        {
+                            ///声音
                             Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_NO_GOLD_KEY);
+                        }
                     }
                     return;
                 }
@@ -853,12 +945,14 @@ void VoxelExplorer::handlePickItem(const cocos2d::Vec2& mapPos)        ///拾取
 }
 void VoxelExplorer::handleMonsterHurt(const cocos2d::Vec2& mapPos)
 {
-    if(m_pMonstersLayer && m_pPlayer)
+    if(!m_pPlayer)
+        return;
+    if(m_pMonstersLayer)
     {
         for (const auto& child : m_pMonstersLayer->getChildren())
         {
             BaseMonster* monster = dynamic_cast<BaseMonster*>(child);
-            if(monster && (monster->getPosInMap() == mapPos || monster->getPosInMap().distance(mapPos) <= 1))
+            if(monster && (monster->getPosInMap() == mapPos || monster->getPosInMap().distance(mapPos) < 1))
             {
                 if(monster->getState() != BaseMonster::MS_DEATH)
                 {
@@ -866,16 +960,20 @@ void VoxelExplorer::handleMonsterHurt(const cocos2d::Vec2& mapPos)
                     return;
                 }
             }
-            else
+        }
+    }
+    
+    if(m_pBossLayer)
+    {
+        for (const auto& child : m_pBossLayer->getChildren())
+        {
+            BaseBoss* boss = dynamic_cast<BaseBoss*>(child);
+            if(boss && (boss->getPosInMap() == mapPos || boss->getPosInMap().distance(mapPos) < 1))
             {
-                BaseBoss* boss = dynamic_cast<BaseBoss*>(child);
-                if(boss && boss->getPosInMap() == mapPos)
+                if(boss->getState() != BaseBoss::BS_DEATH)
                 {
-                    if(boss->getState() != BaseBoss::BS_DEATH)
-                    {
-                        boss->attackedByPlayer();
-                        return;
-                    }
+                    boss->attackedByPlayer(false);
+                    return;
                 }
             }
         }
@@ -890,6 +988,16 @@ void VoxelExplorer::handlePlayerHurt(const cocos2d::Vec2& mapPos, MonsterPropert
         return m_pPlayer->attackByMonster(monsterProperty, true);
     
     return m_pPlayer->attackByMonster(monsterProperty, false);
+}
+void VoxelExplorer::handlePlayerHurtByBoss(const cocos2d::Vec2& mapPos, BossProperty* bossProperty)
+{
+    if(!m_pPlayer || !bossProperty ||m_pPlayer->getState() == Player::PS_DEATH)
+        return;
+    
+    if(m_pPlayer->getPosInMap() != mapPos)
+        return m_pPlayer->attackByBoss(bossProperty, true);
+    
+    return m_pPlayer->attackByBoss(bossProperty, false);
 }
 void VoxelExplorer::handlePlayerUseScroll(PickableItem::PickableItemType type)
 {
