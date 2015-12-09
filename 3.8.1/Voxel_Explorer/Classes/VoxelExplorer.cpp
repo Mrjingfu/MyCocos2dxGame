@@ -40,6 +40,7 @@
 #include "FakeShadow.hpp"
 #include "StandardMonster.hpp"
 #include "NpcDataManager.hpp"
+#include "StatisticsManager.hpp"
 USING_NS_CC;
 
 VoxelExplorer* g_pVoxelExplorerInstance = nullptr;
@@ -575,6 +576,7 @@ void VoxelExplorer::handleUseUseableItem(const cocos2d::Vec2& mapPos)
             {
                 if(useableItem->getUseableItemType() <= UseableItem::UIT_CHEST_NO_LOCK_GOLD)
                 {
+                    StatisticsManager::getInstance()->addUserableOpenNum(useableItem->getUseableItemType());
                     m_pCurrentLevel->createSiegeMonsters(useableItem->getPosInMap());
                     useableItem->setState(UseableItem::UIS_FADEOUT);
                     return;
@@ -584,21 +586,30 @@ void VoxelExplorer::handleUseUseableItem(const cocos2d::Vec2& mapPos)
                     if(useableItem->getUseableItemType() == UseableItem::UIT_CHEST_COPPER)
                     {
                         if(PlayerProperty::getInstance()->useKey(PickableItem::PIT_KEY_COPPER))
+                        {
+                            StatisticsManager::getInstance()->addUserableOpenNum(useableItem->getUseableItemType());
                             useableItem->setState(UseableItem::UIS_FADEOUT);
+                        }
                         else
                             Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_NO_COPPER_KEY);
                     }
                     else if(useableItem->getUseableItemType() == UseableItem::UIT_CHEST_SILVER)
                     {
                         if(PlayerProperty::getInstance()->useKey(PickableItem::PIT_KEY_SILVER))
+                        {
+                            StatisticsManager::getInstance()->addUserableOpenNum(useableItem->getUseableItemType());
                             useableItem->setState(UseableItem::UIS_FADEOUT);
+                        }
                         else
                             Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_NO_SILVER_KEY);
                     }
                     else if(useableItem->getUseableItemType() == UseableItem::UIT_CHEST_GOLD)
                     {
                         if(PlayerProperty::getInstance()->useKey(PickableItem::PIT_KEY_GOLD))
+                        {
                             useableItem->setState(UseableItem::UIS_FADEOUT);
+                            StatisticsManager::getInstance()->addUserableOpenNum(useableItem->getUseableItemType());
+                        }
                         else
                             Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_NO_GOLD_KEY);
                     }
@@ -607,6 +618,7 @@ void VoxelExplorer::handleUseUseableItem(const cocos2d::Vec2& mapPos)
                 else
                 {
                     useableItem->setState(UseableItem::UIS_FADEOUT);
+                    StatisticsManager::getInstance()->addUserableOpenNum(useableItem->getUseableItemType());
                     return;
                 }
             }
@@ -631,32 +643,38 @@ void VoxelExplorer::handleTriggerTrap(const cocos2d::Vec2& mapPos, TerrainTile::
     {
         if(trapType == TerrainTile::TT_TOXIC_TRAP)
         {
+            StatisticsManager::getInstance()->addTriggerToxicNum(trapType);
             Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_TRIGGER_TOXIC_TRAP);
             m_pPlayer->addPlayerBuffer(PB_POISONING);
         }
         else if(trapType == TerrainTile::TT_FIRE_TRAP)
         {
+            StatisticsManager::getInstance()->addTriggerToxicNum(trapType);
             Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_TRIGGER_FIRE_TRAP);
             m_pPlayer->addPlayerBuffer(PB_FIRE);
         }
         else if(trapType == TerrainTile::TT_PARALYTIC_TRAP)
         {
+            StatisticsManager::getInstance()->addTriggerToxicNum(trapType);
             Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_TRIGGER_PARALYTIC_TRAP);
             m_pPlayer->addPlayerBuffer(PB_PARALYTIC);
         }
         else if(trapType == TerrainTile::TT_GRIPPING_TRAP)
         {
+            StatisticsManager::getInstance()->addTriggerToxicNum(trapType);
             Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_TRIGGER_GRIPPING_TRAP);
             m_pPlayer->hurtByGrippingTrap();
         }
         else if(trapType == TerrainTile::TT_SUMMONING_TRAP)
         {
+            StatisticsManager::getInstance()->addTriggerToxicNum(trapType);
             Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_TRIGGER_SUMMONING_TRAP);
             if(!m_pCurrentLevel->createSummoningMonsters(mapPos))
                 CCLOG("Handle trigger summoning trap failed!");
         }
         else if(trapType == TerrainTile::TT_WEAK_TRAP)
         {
+            StatisticsManager::getInstance()->addTriggerToxicNum(trapType);
             Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_TRIGGER_WEAK_TRAP);
             m_pPlayer->addPlayerBuffer(PB_WEAK);
         }

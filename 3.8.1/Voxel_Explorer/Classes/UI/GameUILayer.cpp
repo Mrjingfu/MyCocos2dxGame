@@ -29,6 +29,7 @@
 #include "MonsterPropLayer.hpp"
 #include "NpcPropLayer.hpp"
 #include "ShopPopupUI.h"
+#include "StatisticsManager.hpp"
 USING_NS_CC;
 GameUILayer::GameUILayer()
 {
@@ -447,17 +448,11 @@ void GameUILayer::onEventRoleUserPotion(cocos2d::EventCustom *sender)
 }
 void GameUILayer::onEventRoleUserScroll(cocos2d::EventCustom *sender)
 {
-    
-    
-    
-    
-    
     //关闭ItemPopup窗口
     PopupUILayerManager::getInstance()->closeCurrentPopup();
     //窗口都未关闭,回调后来判断是否关闭
     CCLOG("onEvenetUserScroll");
     ScrollProperty* scrollProperty = static_cast<ScrollProperty*>(sender->getUserData());
-    
     if (scrollProperty->getPickableItemType() == PickableItem::PIT_SCROLL_INDENTIFY)
     {
         CCLOG("鉴定卷轴");
@@ -547,7 +542,6 @@ void GameUILayer::onEventRoleHud(cocos2d::EventCustom *sender)
     Vec2 pt = VoxelExplorer::getInstance()->getMainCamera()->projectGL(hurData->m_vPos);
     pt = Vec2(pt.x, pt.y+TerrainTile::CONTENT_SCALE*2.5);
      if (hurData->m_bDodge) {
-        
         PopupUILayerManager::getInstance()->showStatus(TIP_DODGE,  StringUtils::format(UtilityHelper::getLocalStringForUi("STATUS_TEXT_DODGE").c_str(),hurData->m_nDamage),pt);
         CCLOG("monster 闪避");
     }else {
@@ -555,7 +549,7 @@ void GameUILayer::onEventRoleHud(cocos2d::EventCustom *sender)
         {
             PopupUILayerManager::getInstance()->showStatus(TIP_BOLOCK, StringUtils::format(UtilityHelper::getLocalStringForUi("STATUS_TEXT_BOLOCK").c_str(),hurData->m_nDamage),pt);
             CCLOG("monster 格挡");
-        }else if (hurData->m_bCriticalStrike)
+        }else if (hurData->m_bCriticalStrike && !hurData->m_bBlocked)
         {
             PopupUILayerManager::getInstance()->showStatus(TIP_CRITICAL_STRIKE, StringUtils::format(UtilityHelper::getLocalStringForUi("STATUS_TEXT_CRITICAL_STRIKE").c_str(),hurData->m_nDamage),pt);
             CCLOG("monster 暴击");
@@ -563,9 +557,8 @@ void GameUILayer::onEventRoleHud(cocos2d::EventCustom *sender)
             PopupUILayerManager::getInstance()->showStatus(TIP_NEGATIVE, Value(hurData->m_nDamage).asString(),pt);
             CCLOG("pt x:%f y%f",pt.x,pt.y);
         }
-        
     }
-    
+   
 }
 void GameUILayer::onEventMonsterDead(cocos2d::EventCustom *sender)
 {
@@ -633,7 +626,7 @@ void GameUILayer::onEventMonsterAlert(cocos2d::EventCustom *sender)
     BaseMonster* monster = static_cast<BaseMonster*>(sender->getUserData());
     PromptLayer* promptLayer = PromptLayer::create(PromptLayer::PT_AWAKE);
     if (monster) {
-        promptLayer->setDisplayPt(monster->getPosition3D());
+       promptLayer->setActor(monster);
     }
     m_pRootLayer->addChild(promptLayer);
 
@@ -644,7 +637,7 @@ void GameUILayer::onEventMonsterConfusing(cocos2d::EventCustom *sender)
     BaseMonster* monster = static_cast<BaseMonster*>(sender->getUserData());
     PromptLayer* promptLayer = PromptLayer::create(PromptLayer::PT_CONFUSING);
     if (monster) {
-        promptLayer->setDisplayPt(monster->getPosition3D());
+        promptLayer->setActor(monster);
     }
     m_pRootLayer->addChild(promptLayer);
     if (m_pMonsterPropLayer) {

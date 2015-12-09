@@ -157,7 +157,7 @@
 		<key>TTN_HIDE_GRIPPING_TRAP</key>
 		<string>tile_standard_3.png</string>
 		<key>TTN_SUMMONING_TRAP</key>
-		<string>tile_summoning_trap_3png</string>
+		<string>tile_summoning_trap_3.png</string>
 		<key>TTN_HIDE_SUMMONING_TRAP</key>
 		<string>tile_standard_3.png</string>
 		<key>TTN_WEAK_TRAP</key>

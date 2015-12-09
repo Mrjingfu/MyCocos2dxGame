@@ -20,6 +20,7 @@
 #include "QuestItemProperty.hpp"
 #include "SundriesProperty.hpp"
 #include "VoxelExplorer.h"
+#include "StatisticsManager.hpp"
 USING_NS_CC;
 
 unsigned int PlayerProperty::m_snItemInstanceIDCounter = 0;
@@ -183,14 +184,9 @@ CChaosNumber PlayerProperty::getDefense()
 }
 void PlayerProperty::addMoney( CChaosNumber copper)
 {
-//    if(silver<0 || silver>99 || copper<0 || copper>99 )
-//    {
-//        CCLOGERROR("Money add error!");
-//        return;
-//    }
-
+    StatisticsManager::getInstance()->addCopperTotalNum(copper);
     m_nValueCopper = m_nValueCopper + copper.GetLongValue();
-     m_bDirty = true;
+    m_bDirty = true;
 }
 bool PlayerProperty::costMoney( CChaosNumber costcopper)
 {
@@ -200,7 +196,7 @@ bool PlayerProperty::costMoney( CChaosNumber costcopper)
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_MONEY_NOT_ENOUGH);
         return false;
     }
-    
+    StatisticsManager::getInstance()->addCostCopperNum(costcopper);
     m_nValueCopper = m_nValueCopper - costcopper.GetLongValue();
     
     m_bDirty = true;
@@ -513,6 +509,7 @@ bool PlayerProperty::indentifyItem(CChaosNumber id)
             if(scrollProperty && (scrollProperty->getPickableItemType() == PickableItem::PIT_SCROLL_INDENTIFY) && (scrollProperty->getCount() >= 1))
             {
                 scrollProperty->decreaseCount();
+                StatisticsManager::getInstance()->addUseItemNum(scrollProperty->getPickableItemType());
                 hasIndentifyScroll = true;
                 break;
             }
@@ -576,6 +573,7 @@ bool PlayerProperty::usePotion(CChaosNumber id)
             default:
                 break;
         }
+        StatisticsManager::getInstance()->addUseItemNum(potionsProperty->getPickableItemType());
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_USE_POTION, potionsProperty);
         if(potionsProperty->getCount() <= 0)
             removeItemFromBag(id);
@@ -603,6 +601,7 @@ bool PlayerProperty::useScroll(CChaosNumber id)
             scrollProperty->decreaseCount();
             if(scrollProperty->getCount() <= 0)
                 removeItemFromBag(id);
+            StatisticsManager::getInstance()->addUseItemNum(scrollProperty->getPickableItemType());
             VoxelExplorer::getInstance()->handlePlayerUseScroll(scrollProperty->getPickableItemType());
             Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_USE_SCROLL, scrollProperty);
         }
@@ -623,6 +622,7 @@ bool PlayerProperty::useKey(PickableItem::PickableItemType type)
     }
     if(keyProperty)
     {
+        StatisticsManager::getInstance()->addUseItemNum(type);
         keyProperty->decreaseCount();
         if(keyProperty->getCount() <=0 )
             removeItemFromBag((int)(keyProperty->getInstanceID()));

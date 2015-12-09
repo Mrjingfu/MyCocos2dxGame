@@ -10,7 +10,6 @@
 
 StatisticsManager::StatisticsManager()
 {
-    m_nPoisoningDeadNum         = 0;                //中毒死亡
     m_nCopperTotalNum           = 0;                //金币收集数
     m_nfoodEaten                = 0;                //到达最远深度
     m_nStepNum                  = 0;                //步数
@@ -23,33 +22,45 @@ StatisticsManager::StatisticsManager()
     m_nCriticalTotalNum         = 0;                //暴击数
     m_nDodgeTotalNum            = 0;                //闪避数
     m_nBlockTotalNum            = 0;                //格挡数
+    m_nTriggerToxicTotalNum      = 0;               //触发机关总数
+    m_nRoleDeadTotalNum         = 0;                //人物死亡次数
+    m_nChestCopperTotalNum      = 0;                //打开铜宝箱数
+    m_nChestSilverTotalNum      = 0;                //打开银宝箱数
+    m_nChestGoldTotalNum        = 0;                //打开金宝箱数
+    m_nJarTotalNum              = 0;                //打破罐子数
     
+    //初始化怪物死亡
     for (int i = BaseMonster::MT_UNKNOWN; i<BaseMonster::MT_MAX; i++) {
         
         m_mMonsterKills[i]=0;
     }
   
+    //初始化陷阱
     for (int i = TerrainTile::TT_TOXIC_TRAP; i<TerrainTile::TT_HIDE_WEAK_TRAP; i+=2) {
         
-       m_nTriggerToxicNums.insert(std::pair<TerrainTile::TileType,CChaosNumber>((TerrainTile::TileType)i,CChaosNumber(0)));
+       m_mTriggerToxicNums.insert(std::pair<TerrainTile::TileType,CChaosNumber>((TerrainTile::TileType)i,CChaosNumber(0)));
     }
-        
     
-    {
-        for (int i= PickableItem::PIT_KEY_COPPER; i<=PickableItem::PIT_KEY_ROOM; i++) {
-            
-            m_nUseItemNums.insert(std::pair<PickableItem::PickableItemType, CChaosNumber>(PickableItem::PickableItemType(i),CChaosNumber(0)));
-            
-        }
+    //初始化使用道具
+    for (int i= PickableItem::PIT_KEY_COPPER; i<=PickableItem::PIT_KEY_ROOM; i++) {
         
-        for (int i= PickableItem::PIT_SCROLL_INDENTIFY; i<=PickableItem::PIT_POTION_UNIVERSAL; i++) {
-            
-            m_nUseItemNums.insert(std::pair<PickableItem::PickableItemType, CChaosNumber>(PickableItem::PickableItemType(i),CChaosNumber(0)));
-            
-        }
+        m_mUseItemNums.insert(std::pair<PickableItem::PickableItemType, CChaosNumber>(PickableItem::PickableItemType(i),CChaosNumber(0)));
         
     }
 
+    for (int i= PickableItem::PIT_SCROLL_INDENTIFY; i<=PickableItem::PIT_POTION_UNIVERSAL; i++) {
+        
+        m_mUseItemNums.insert(std::pair<PickableItem::PickableItemType, CChaosNumber>(PickableItem::PickableItemType(i),CChaosNumber(0)));
+        
+    }
+    //初始化可以打破的道具
+    for (int i= UseableItem::UIT_CHEST_NO_LOCK_COPPER; i<UseableItem::UIT_UNKNOWN; i++) {
+        m_mUserableOpenNums[i] = 0;;
+    }
+     //初始化死亡类型
+    for (int i= eRoleDeadType::RET_MONSTER_ATTACK; i<eRoleDeadType::RET_MAX; i++) {
+        m_mDeadTypeNums[i]=0;
+    }
     
 }
 StatisticsManager::~StatisticsManager()
@@ -70,7 +81,7 @@ void StatisticsManager::addMonsterKillNum(BaseMonster::MonsterType type)
 void StatisticsManager::addUseItemNum(PickableItem::PickableItemType type)
 {
     CCASSERT(!(type>=PickableItem::PIT_DAGGER_DAGGER && type<=PickableItem::PIT_ORNAMENT_PRO_JEWELS) , "Itemtype error");
-    ++m_nUseItemNums[type];
+    ++m_mUseItemNums[type];
     
     if (type >=PickableItem::PIT_KEY_COPPER && type<=PickableItem::PIT_KEY_ROOM) {
         ++m_nUseKeyTotalNum;
@@ -85,10 +96,37 @@ void StatisticsManager::addUseItemNum(PickableItem::PickableItemType type)
 }
 void StatisticsManager::addTriggerToxicNum(TerrainTile::TileType type)
 {
-    CCASSERT(type>=TerrainTile::TT_TOXIC_TRAP && type>=TerrainTile::TT_HIDE_WEAK_TRAP, "Tile type error");
+    CCASSERT(type>=TerrainTile::TT_TOXIC_TRAP && type<TerrainTile::TT_MAX, "Tile type error");
     
-    ++m_nTriggerToxicNums[type];
-    ++m_TriggerToxicTotalNum;
+    ++m_mTriggerToxicNums[type];
+    ++m_nTriggerToxicTotalNum;
+}
+
+void StatisticsManager::addRoleDeadNum(eRoleDeadType type)
+{
+    ++m_mDeadTypeNums[type] ;
+    ++m_nRoleDeadTotalNum;
+}
+
+void StatisticsManager::addUserableOpenNum(UseableItem::UseableItemType type)
+{
+    CCASSERT(type>=UseableItem::UseableItemType::UIT_CHEST_NO_LOCK_COPPER && type<UseableItem::UseableItemType::UIT_UNKNOWN, "Tile type error");
+    ++m_mUserableOpenNums[type];
+    
+    if (type==UseableItem::UseableItemType::UIT_CHEST_NO_LOCK_COPPER || type==UseableItem::UseableItemType::UIT_CHEST_COPPER) {
+        ++m_nChestCopperTotalNum;
+    }
+    if (type==UseableItem::UseableItemType::UIT_CHEST_NO_LOCK_SILVER || type==UseableItem::UseableItemType::UIT_CHEST_COPPER) {
+        ++m_nChestSilverTotalNum;
+    }
+    if (type==UseableItem::UseableItemType::UIT_CHEST_NO_LOCK_GOLD || type==UseableItem::UseableItemType::UIT_CHEST_GOLD) {
+        ++m_nChestGoldTotalNum;
+    }
+    if (type>=UseableItem::UseableItemType::UIT_JAR_1 && type<=UseableItem::UseableItemType::UIT_JAR_3) {
+        ++m_nJarTotalNum;
+    }
+    
+    
 }
 void StatisticsManager::addCopperTotalNum(int num)
 {
@@ -127,13 +165,16 @@ CChaosNumber StatisticsManager::getDataStatistType(eStatistType type) const
 {
     
     if (type>=ST_MONSTER_RAT && type <=ST_MONSTER_GHOUL) {
-       return getDataMonsterType(type).GetLongValue();
+       return getDataMonsterType(type);
     }
     if (type>=ST_ITEM_KEY_COPPER && type <=ST_ITEM_POTION_UNIVERSAL) {
-       return  getDataUseType(type).GetLongValue();
+       return  getDataUseType(type);
     }
     if (type>=ST_TRIGGER_TOXIC_TRAP && type <=ST_TRIGGER_WEAK_TRAP) {
-        return getDataTriggerType(type).GetLongValue();
+        return getDataTriggerType(type);
+    }
+    if (type>=ST_DEAD_MONSTER_ATTACK && type <=ST_DEAD_BUFFER_POISONING) {
+        return getDataDeadType(type);
     }
     if (type>=ST_TOTAL_COPPER && type <=ST_TOTAL_TRIGGER) {
         return getDataTotalType(type).GetLongValue();
@@ -223,11 +264,11 @@ CChaosNumber StatisticsManager::getDataUseType(eStatistType type) const
                 ptyp =  PickableItem::PickableItemType::PIT_POTION_UNIVERSAL;
                 break;
             }
-    return m_nUseItemNums.at(ptyp);
+    return m_mUseItemNums.at(ptyp);
 }
 CChaosNumber StatisticsManager::getDataTriggerType(eStatistType type) const
 {
-    CCASSERT(type>=ST_TRIGGER_TOXIC_TRAP && type <=ST_TRIGGER_WEAK_TRAP,"use type error");
+    CCASSERT(type>=ST_TRIGGER_TOXIC_TRAP && type <=ST_TRIGGER_WEAK_TRAP,"Trigger type error");
     TerrainTile::TileType ptyp = TerrainTile::TileType::TT_MAX;
     switch (type) {
         case ST_TRIGGER_TOXIC_TRAP:
@@ -249,11 +290,31 @@ CChaosNumber StatisticsManager::getDataTriggerType(eStatistType type) const
             ptyp =  TerrainTile::TileType::TT_WEAK_TRAP;
             break;
     }
-    return m_nTriggerToxicNums.at(ptyp);
+    return m_mTriggerToxicNums.at(ptyp);
+}
+CChaosNumber StatisticsManager::getDataDeadType(eStatistType type) const
+{
+    CCASSERT(type>=ST_DEAD_MONSTER_ATTACK && type <=ST_DEAD_BUFFER_POISONING,"DataDead type error");
+    eRoleDeadType deadType = eRoleDeadType::RET_MAX;
+    switch (type) {
+        case ST_DEAD_MONSTER_ATTACK:
+            deadType = eRoleDeadType::RET_MONSTER_ATTACK;
+            break;
+        case ST_DEAD_TRIGGER_GRIPPING_TRAP:
+            deadType = eRoleDeadType::RET_TRIGGER_GRIPPING_TRAP;
+            break;
+        case ST_DEAD_BUFFER_FIRE:
+            deadType = eRoleDeadType::RET_BUFFER_FIRE;
+            break;
+        case ST_DEAD_BUFFER_POISONING:
+            deadType = eRoleDeadType::RET_BUFFER_POISONING;
+            break;
+    }
+    return m_mDeadTypeNums[deadType];
 }
 CChaosNumber StatisticsManager::getDataTotalType(eStatistType type) const
 {
-    CCASSERT(type>=ST_TOTAL_COPPER && type <=ST_TOTAL_TRIGGER,"use type error");
+    CCASSERT(type>=ST_TOTAL_COPPER && type <ST_MAX,"DataTotal type error");
     
     switch (type) {
         case ST_TOTAL_COPPER:
@@ -279,7 +340,17 @@ CChaosNumber StatisticsManager::getDataTotalType(eStatistType type) const
         case ST_TOTAL_BLOCK:
             return m_nBlockTotalNum;
         case ST_TOTAL_TRIGGER:
-            return m_TriggerToxicTotalNum;
+            return m_nTriggerToxicTotalNum;
+        case ST_TOTAL_ROLE_DEAD:
+            return m_nRoleDeadTotalNum;
+        case ST_TOTAL_CHEST_COPPER:
+            return m_nChestCopperTotalNum;
+        case ST_TOTAL_CHEST_SILVER:
+            return m_nChestSilverTotalNum;
+        case ST_TOTAL_CHEST_GOLD:
+            return m_nChestGoldTotalNum;
+        case ST_TOTAL_JAR:
+            return m_nJarTotalNum;
     }
     return CChaosNumber(0);
 }

@@ -127,6 +127,12 @@ enum eZOrder
      ST_TRIGGER_SUMMONING_TRAP,                   ///召唤陷阱
      ST_TRIGGER_WEAK_TRAP,                        ///虚弱陷阱
      
+     ST_DEAD_MONSTER_ATTACK,
+     ST_DEAD_TRIGGER_GRIPPING_TRAP,
+     ST_DEAD_BUFFER_FIRE,
+     ST_DEAD_BUFFER_POISONING,
+     
+     
      ST_TOTAL_COPPER,
      ST_TOTAL_COST_COPPER,
      ST_TOTAL_STEP,
@@ -139,6 +145,11 @@ enum eZOrder
      ST_TOTAL_DODGE,
      ST_TOTAL_BLOCK,
      ST_TOTAL_TRIGGER,
+     ST_TOTAL_ROLE_DEAD,
+     ST_TOTAL_CHEST_COPPER,
+     ST_TOTAL_CHEST_SILVER,
+     ST_TOTAL_CHEST_GOLD,
+     ST_TOTAL_JAR,
      ST_MAX
      
 };

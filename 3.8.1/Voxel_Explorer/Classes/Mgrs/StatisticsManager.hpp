@@ -11,19 +11,30 @@
 #include "BaseMonster.hpp"
 #include "PickableItem.hpp"
 #include "TerrainTile.hpp"
+#include "UseableItem.hpp"
 #include "GameConfig.h"
 class StatisticsManager {
     StatisticsManager();
     
 public:
-
+    //死亡类型
+    enum eRoleDeadType
+    {
+        RET_MONSTER_ATTACK = 0,         //怪物攻击死亡
+        RET_TRIGGER_GRIPPING_TRAP,      //夹子陷阱死亡
+        RET_BUFFER_FIRE,                //火 死亡
+        RET_BUFFER_POISONING,           //中毒死亡
+        RET_MAX
+    };
     virtual ~StatisticsManager();
     static StatisticsManager* getInstance();
     
     void addMonsterKillNum(BaseMonster::MonsterType type);
     void addUseItemNum(PickableItem::PickableItemType type);
     void addTriggerToxicNum(TerrainTile::TileType type);
-
+    void addUserableOpenNum(UseableItem::UseableItemType type);
+    void addRoleDeadNum(eRoleDeadType type);
+    
     void addCopperTotalNum(int num);
     void addCostCopperNum(int num);
     void addStepNum();
@@ -31,7 +42,7 @@ public:
     void addDodgeTotalNum();
     void addBlockTotalNum();
     void addSearchHideInfoNum();
-    
+   
     CChaosNumber getDataStatistType(eStatistType type) const;
     
     void load();
@@ -41,11 +52,13 @@ private:
     CChaosNumber getDataUseType(eStatistType type) const;
     CChaosNumber getDataTriggerType(eStatistType type) const;
     CChaosNumber getDataTotalType(eStatistType type) const;
+    CChaosNumber getDataDeadType(eStatistType type) const;
 private:
     CChaosNumber m_mMonsterKills[BaseMonster::MT_MAX];//杀死不同类型敌人数
-    std::map<PickableItem::PickableItemType,CChaosNumber> m_nUseItemNums; //使用不同道具数
-    std::map<TerrainTile::TileType,CChaosNumber> m_nTriggerToxicNums;  //触发机关数
-    CChaosNumber m_nPoisoningDeadNum;       //中毒死亡
+    std::map<PickableItem::PickableItemType,CChaosNumber> m_mUseItemNums; //使用不同道具数
+    std::map<TerrainTile::TileType,CChaosNumber> m_mTriggerToxicNums;  //触发不同机关数
+    CChaosNumber m_mUserableOpenNums[UseableItem::UseableItemType::UIT_UNKNOWN]; //
+    CChaosNumber m_mDeadTypeNums[eRoleDeadType::RET_MAX];
     CChaosNumber m_nCopperTotalNum;         //铜币收集总数
     CChaosNumber m_nCostCopperNum;          //花费铜币个数
     CChaosNumber m_nfoodEaten;              //到达最远深度
@@ -59,8 +72,12 @@ private:
     CChaosNumber m_nCriticalTotalNum;       //暴击数
     CChaosNumber m_nDodgeTotalNum;          //闪避数
     CChaosNumber m_nBlockTotalNum;          //格挡数
-    CChaosNumber m_TriggerToxicTotalNum;    //触发机关总数
-    
+    CChaosNumber m_nTriggerToxicTotalNum;    //触发机关总数
+    CChaosNumber m_nRoleDeadTotalNum;       //人物死亡次数
+    CChaosNumber m_nChestCopperTotalNum;    //打开铜宝箱数
+    CChaosNumber m_nChestSilverTotalNum;    //打开银宝箱数
+    CChaosNumber m_nChestGoldTotalNum;      //打开金宝箱数
+    CChaosNumber m_nJarTotalNum;            //打破罐子数
 };
 
 #endif /* StatisticsManager_hpp */
