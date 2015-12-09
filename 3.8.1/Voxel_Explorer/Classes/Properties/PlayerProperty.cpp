@@ -106,7 +106,6 @@ bool PlayerProperty::initNewPlayer()   ///新角色初始化
     ret = addItemToBag(PickableItem::PIT_POTION_DETOXIFICATION, 1);
     ret = addItemToBag(PickableItem::PIT_POTION_SPECIFIC, 1);
     ret = addItemToBag(PickableItem::PIT_POTION_HEALING, 1);
-    ret = addItemToBag(PickableItem::PIT_KEY_BOSS, 1);
     return ret;
 }
 void PlayerProperty::update(float delta)

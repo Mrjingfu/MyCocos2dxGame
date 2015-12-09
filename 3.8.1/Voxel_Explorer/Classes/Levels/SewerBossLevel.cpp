@@ -245,7 +245,7 @@ bool SewerBossLevel::createSummoningMonstersBySlimeKing(const cocos2d::Vec2& map
                 monster->addTerrainTileFlag(TileInfo::ATTACKABLE);
                 VoxelExplorer::getInstance()->getMonstersLayer()->addChild(monster);
                 monster->setState(BaseMonster::MS_TRACKING);
-                monster->setMonsterFOV(7);
+                monster->setMonsterFOV(4);
                 count++;
                 if(count == 2)
                     break;
@@ -269,7 +269,7 @@ bool SewerBossLevel::createSummoningMonstersBySlimeKing(const cocos2d::Vec2& map
                 monster->addTerrainTileFlag(TileInfo::ATTACKABLE);
                 VoxelExplorer::getInstance()->getMonstersLayer()->addChild(monster);
                 monster->setState(BaseMonster::MS_TRACKING);
-                monster->setMonsterFOV(7);
+                monster->setMonsterFOV(4);
                 count++;
                 if(count == 4)
                     break;
@@ -303,7 +303,7 @@ bool SewerBossLevel::createSummoningMonstersBySlimeKing(const cocos2d::Vec2& map
                 monster->addTerrainTileFlag(TileInfo::ATTACKABLE);
                 VoxelExplorer::getInstance()->getMonstersLayer()->addChild(monster);
                 monster->setState(BaseMonster::MS_TRACKING);
-                monster->setMonsterFOV(7);
+                monster->setMonsterFOV(4);
                 count++;
                 if(count == 2)
                     break;

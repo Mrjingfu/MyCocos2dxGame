@@ -9,6 +9,8 @@
 #include "SlimeKing.hpp"
 #include "LevelResourceManager.h"
 #include "OutlineEffect3D.h"
+#include "VoxelExplorer.h"
+#include "SewerBossLevel.hpp"
 USING_NS_CC;
 
 SlimeKing* SlimeKing::create(BaseBoss::BossType type)
@@ -30,17 +32,34 @@ SlimeKing::SlimeKing()
 {
     m_Type = BT_SLIMEKING;
     
-    m_nFOV = 7;
+    m_nFOV = 4;
 }
 SlimeKing::~SlimeKing()
 {
 }
 void SlimeKing::onEnterSkill1()
 {
+    SewerBossLevel* level = dynamic_cast<SewerBossLevel*>(VoxelExplorer::getInstance()->getCurrentLevel());
+    if(level)
+    {
+        level->createSummoningMonstersBySlimeKing(getPosInMap(), 1);
+    }
 }
 void SlimeKing::onEnterSkill2()
 {
+    SewerBossLevel* level = dynamic_cast<SewerBossLevel*>(VoxelExplorer::getInstance()->getCurrentLevel());
+    if(level)
+    {
+        level->createSummoningMonstersBySlimeKing(getPosInMap(), 2);
+    }
+
 }
 void SlimeKing::onEnterSkill3()
 {
+    SewerBossLevel* level = dynamic_cast<SewerBossLevel*>(VoxelExplorer::getInstance()->getCurrentLevel());
+    if(level)
+    {
+        level->createSummoningMonstersBySlimeKing(getPosInMap(), 3);
+    }
+
 }

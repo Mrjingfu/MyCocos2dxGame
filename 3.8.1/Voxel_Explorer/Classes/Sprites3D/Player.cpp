@@ -247,7 +247,7 @@ void Player::removePlayerBuffer(PlayerBuffer buff)
     int bufferFlag = PlayerProperty::getInstance()->getPlayerBuffer();
     if(buff == PB_POISONING)
     {
-        if((bufferFlag & PB_POISONING) == 0)
+        if((bufferFlag & PB_POISONING) != 0)
         {
             std::string texName = "chr_sword.png";
             if((bufferFlag & PB_WEAK) != 0)
@@ -266,7 +266,7 @@ void Player::removePlayerBuffer(PlayerBuffer buff)
     }
     else if(buff == PB_WEAK)
     {
-        if((bufferFlag & PB_WEAK) == 0)
+        if((bufferFlag & PB_WEAK) != 0)
         {
             std::string texName = "chr_sword.png";
             if((bufferFlag & PB_POISONING) != 0)
@@ -277,6 +277,66 @@ void Player::removePlayerBuffer(PlayerBuffer buff)
                 texName = "chr_sword_red.png";
             else if((bufferFlag & PB_FROZEN) != 0)
                 texName = "chr_sword_blue.png";
+            auto tex = Director::getInstance()->getTextureCache()->addImage(texName);
+            if(tex)
+                tex->setAliasTexParameters();
+            setTexture(tex);
+            
+        }
+    }
+    else if(buff == PB_PARALYTIC)
+    {
+        if((bufferFlag & PB_PARALYTIC) != 0)
+        {
+            std::string texName = "chr_sword.png";
+            if((bufferFlag & PB_POISONING) != 0)
+                texName = "chr_sword_green.png";
+            else if((bufferFlag & PB_WEAK) != 0)
+                texName = "chr_sword_yellow.png";
+            else if((bufferFlag & PB_FIRE) != 0)
+                texName = "chr_sword_red.png";
+            else if((bufferFlag & PB_FROZEN) != 0)
+                texName = "chr_sword_blue.png";
+            auto tex = Director::getInstance()->getTextureCache()->addImage(texName);
+            if(tex)
+                tex->setAliasTexParameters();
+            setTexture(tex);
+            
+        }
+    }
+    else if(buff == PB_FIRE)
+    {
+        if((bufferFlag & PB_FIRE) != 0)
+        {
+            std::string texName = "chr_sword.png";
+            if((bufferFlag & PB_POISONING) != 0)
+                texName = "chr_sword_green.png";
+            else if((bufferFlag & PB_WEAK) != 0)
+                texName = "chr_sword_yellow.png";
+            else if((bufferFlag & PB_PARALYTIC) != 0)
+                texName = "chr_sword_gray.png";
+            else if((bufferFlag & PB_FROZEN) != 0)
+                texName = "chr_sword_blue.png";
+            auto tex = Director::getInstance()->getTextureCache()->addImage(texName);
+            if(tex)
+                tex->setAliasTexParameters();
+            setTexture(tex);
+            
+        }
+    }
+    else if(buff == PB_FROZEN)
+    {
+        if((bufferFlag & PB_FROZEN) != 0)
+        {
+            std::string texName = "chr_sword.png";
+            if((bufferFlag & PB_POISONING) != 0)
+                texName = "chr_sword_green.png";
+            else if((bufferFlag & PB_WEAK) != 0)
+                texName = "chr_sword_yellow.png";
+            else if((bufferFlag & PB_PARALYTIC) != 0)
+                texName = "chr_sword_gray.png";
+            else if((bufferFlag & PB_FIRE) != 0)
+                texName = "chr_sword_red.png";
             auto tex = Director::getInstance()->getTextureCache()->addImage(texName);
             if(tex)
                 tex->setAliasTexParameters();
