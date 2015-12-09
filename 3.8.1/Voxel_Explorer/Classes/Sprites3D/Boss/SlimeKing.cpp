@@ -32,7 +32,7 @@ SlimeKing::SlimeKing()
 {
     m_Type = BT_SLIMEKING;
     
-    m_nFOV = 4;
+    m_nFOV = 7;
 }
 SlimeKing::~SlimeKing()
 {

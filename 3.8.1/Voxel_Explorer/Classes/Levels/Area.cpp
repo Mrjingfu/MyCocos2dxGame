@@ -188,9 +188,9 @@ std::vector<int> Area::getTilesOnEdge(BaseLevel* level, int m)
     int rightInner = m_Rect.getMaxX() - m - 1;
     int bottomInner = m_Rect.getMinY() + m + 1;
     int topInner = m_Rect.getMaxY() - m - 1;
-    cocos2d::Rect rectOuter = cocos2d::Rect(MIN(leftOuter, rightOuter), MAX(bottomOuter, topOuter), std::abs(rightOuter - leftOuter), std::abs(topOuter - bottomOuter));
+    cocos2d::Rect rectOuter = cocos2d::Rect(MIN(leftOuter, rightOuter), MIN(bottomOuter, topOuter), std::abs(rightOuter - leftOuter), std::abs(topOuter - bottomOuter));
     
-    cocos2d::Rect rectInner = cocos2d::Rect(MIN(leftInner, rightInner), MAX(bottomInner, topInner), std::abs(rightInner - leftInner), std::abs(topInner - bottomInner));
+    cocos2d::Rect rectInner = cocos2d::Rect(MIN(leftInner, rightInner), MIN(bottomInner, topInner), std::abs(rightInner - leftInner), std::abs(topInner - bottomInner));
     
     std::vector<int> ret;
     for (int j = MIN(bottomOuter, topOuter); j <= MAX(bottomOuter, topOuter); ++j)
