@@ -58,8 +58,8 @@ void PromptLayer::update(float delta)
         if (!m_bIsAction && tempTime >=0.015) {
             tempTime = 0.0f;
             m_bIsAction = true;
-            cocos2d::ScaleTo* scaleToStart = cocos2d::ScaleTo::create(0.2, 1.2);
-            cocos2d::ScaleTo* scaleToEnd = cocos2d::ScaleTo::create(0.2, 0.8);
+            cocos2d::ScaleTo* scaleToStart = cocos2d::ScaleTo::create(0.4, 1.2);
+            cocos2d::ScaleTo* scaleToEnd = cocos2d::ScaleTo::create(0.4, 0.8);
             
             this->runAction(cocos2d::Sequence::create(scaleToStart,scaleToEnd,scaleToStart,scaleToEnd,cocos2d::RemoveSelf::create(), nil));
             

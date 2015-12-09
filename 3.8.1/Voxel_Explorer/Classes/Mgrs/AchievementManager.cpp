@@ -21,24 +21,46 @@ AchievementManager* AchievementManager::getInstance()
     static AchievementManager instance;
     return &instance;
 }
-
-void AchievementManager::handleAchievement(eAchievementDetailType achiId,int value)
+void AchievementManager::loadAchieveData()
 {
-    std::vector<CChaosNumber> targetList;
-    targetList.clear();
+    
+}
+
+void AchievementManager::handleAchievement(eAchievementDetailType achiId)
+{
+
     AchieveProperty* achieveProp = getAchievement(achiId);
     switch (achiId) {
         case eAchiDetailType_Firstkill:
            
-            updateAchieve(achieveProp, targetList);
+            updateAchieve(achieveProp);
             break;
         default:
             break;
     }
 }
-void AchievementManager::updateAchieve(AchieveProperty *achieve,std::vector<CChaosNumber> targetList)
+void AchievementManager::updateAchieve(AchieveProperty *achieve)
 {
+    bool isComplete = false;
     
+    for (auto iter = achieve->m_mTargets.begin(); iter!=achieve->m_mTargets.end(); iter++) {
+        
+        CChaosNumber sourceNum =  StatisticsManager::getInstance()->getDataStatistType(iter->first);
+        CChaosNumber targetNum = iter->second;
+        if (sourceNum >= targetNum) {
+            achieve->m_mProgress[iter->first] = targetNum;
+            isComplete = true;
+        }else{
+            achieve->m_mProgress[iter->first] = sourceNum.GetLongValue();
+            isComplete = false;
+        }
+    }
+    
+    if (isComplete) {
+        CCLOG("成就完成");
+    }else{
+        CCLOG("成就未完成");
+    }
 }
 AchieveProperty* AchievementManager::getAchievement(eAchievementDetailType type)
 {
