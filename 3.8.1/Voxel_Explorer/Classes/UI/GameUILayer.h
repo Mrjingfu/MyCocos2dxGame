@@ -18,6 +18,7 @@ class GameToolbarLayer;
 class RolePropLayer;
 class MonsterPropLayer;
 class NpcPropLayer;
+class BossPropLayer;
 class GameUILayer:public WrapperUILayer {
     
 public:
@@ -103,16 +104,26 @@ private:
     void onEventNpcNurseAnsWer(cocos2d::EventCustom *sender);           //护士站
     
     
+    void onEventBossUpdateProp(cocos2d::EventCustom *sender);
+    void onEventBossDeath(cocos2d::EventCustom *sender);
+    void onEventBossHud(cocos2d::EventCustom *sender);
+    void onEventBossAlert(cocos2d::EventCustom *sender);
+    void onEventBossSkill1(cocos2d::EventCustom *sender);
+    void onEventBossSkill2(cocos2d::EventCustom *sender);
+    void onEventBossSkill3(cocos2d::EventCustom *sender);
+    
     
     //注册触摸事件
     bool registerTouchEvent();
-
+    
+    void setCharacterPropLayerVisible(bool isMonster,bool isNpc,bool isBoss);
 private:
    GameInfoLayer*    m_pGameInfoLayer;
    GameToolbarLayer* m_pGameToolBarLayer;
    RolePropLayer*    m_pRolePropLayer;
    MonsterPropLayer* m_pMonsterPropLayer;
    NpcPropLayer*     m_pNpcPropLayer;
+   BossPropLayer*    m_pBossPropLayer;
 };
 
 #endif /* GameUILayer_h */

@@ -138,6 +138,10 @@ std::vector<PickableItemProperty*> BagShopLayer::getItems()
             continue;
         }
         
+        if (itemProp->getPickableItemType()>=PickableItem::PIT_KEY_COPPER && itemProp->getPickableItemType()<=PickableItem::PIT_KEY_ROOM) {
+            continue;
+        }
+        
 //        //如果是在商店贩卖界面 过滤掉需要贩卖的道具
 //   
 //            bool isExistId = false;

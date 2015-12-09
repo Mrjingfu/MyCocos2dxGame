@@ -10,7 +10,7 @@
 #define PromptLayer_hpp
 
 #include "ui/CocosGUI.h"
-
+#include "Actor.hpp"
 class PromptLayer:public cocos2d::ui::ImageView
 {
     PromptLayer();
@@ -25,9 +25,9 @@ public:
     static PromptLayer* create(ePromptType type);
     bool init(ePromptType type);
     void update(float delta) override;
-    void setDisplayPt(cocos2d::Vec3 pt){m_vDisplayPt = pt;};
+    void setActor(Actor* actor){m_pActor = actor;};
 private:
-    cocos2d::Vec3 m_vDisplayPt;
+    Actor* m_pActor;
     bool m_bIsAction;
 };
 

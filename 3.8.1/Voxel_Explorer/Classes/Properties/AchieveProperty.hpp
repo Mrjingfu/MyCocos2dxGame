@@ -10,20 +10,32 @@
 #define AchieveProperty_hpp
 
 #include "GameConfig.h"
-
+#include "ChaosNumber.h"
+enum AchievementType
+{
+    eAchieveTypeOne = 1,
+    eAchieveTypeTwo,
+    eAchieveTypeThree,
+    eAchieveTypeFour,
+    eAchieveTypeFive,
+    eAchieveCount
+};
 class AchieveProperty:public cocos2d::Ref {
     
     
 public:
+
+    CREATE_FUNC(AchieveProperty);
+    virtual bool init(){return true;}
     AchieveProperty(){};
     virtual ~AchieveProperty(){};
     
-    
-private:
     std::string m_sAchieveIcon;    //成就图标
     std::string m_sAchieveDesc;    //成就描述
-    std::vector<int> m_vTargets;   //成就完成目标
-    int m_nAchiveId;               //成就ID
+    std::map<eStatistType,CChaosNumber> m_mTargets;   //成就完成目标
+    std::map<eStatistType, CChaosNumber> m_mProgress;  //完成目标
+    AchievementType m_achieveType;
+    eAchievementDetailType m_detailType;  //成就ID
     
 };
 

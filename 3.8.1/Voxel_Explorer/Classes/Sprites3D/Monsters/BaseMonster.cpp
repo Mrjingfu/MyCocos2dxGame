@@ -15,6 +15,7 @@
 #include "UtilityHelper.h"
 #include "LevelResourceManager.h"
 #include "FakeShadow.hpp"
+#include "StatisticsManager.hpp"
 USING_NS_CC;
 const std::string MONSTER_MODEL_NAMES[] = {
     "MMN_UNKNOWN",
@@ -176,6 +177,7 @@ void BaseMonster::attackedByPlayer(bool miss)
         else
             addexp = GameFormula::getKillNormalMonsterExp(PlayerProperty::getInstance()->getLevel(), m_pMonsterProperty->getLevel());
         PlayerProperty::getInstance()->setExp(PlayerProperty::getInstance()->getExp() + addexp.GetLongValue());
+        StatisticsManager::getInstance()->addMonsterKillNum(this->getMonsterType());
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_MONSTER_DEATH, this);
     }
     else

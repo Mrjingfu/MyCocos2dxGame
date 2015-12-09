@@ -10,7 +10,7 @@
 #include "VoxelExplorer.h"
 PromptLayer::PromptLayer()
 {
-    m_vDisplayPt = cocos2d::Vec3::ZERO;
+    m_pActor = nullptr;
     m_bIsAction = false;
 }
 PromptLayer::~PromptLayer()
@@ -42,29 +42,31 @@ bool PromptLayer::init(PromptLayer::ePromptType type)
             loadTexture("ui_excalmatory_icon.png",TextureResType::PLIST);
             break;
     }
-    
+    setVisible(false);
     setCameraMask((unsigned int)cocos2d::CameraFlag::USER2);
     return true;
 }
 
 void PromptLayer::update(float delta)
 {
+    if (!m_pActor)
+        return;
     float tempTime = 0.0f;
     tempTime+=delta;
-    if (m_vDisplayPt !=cocos2d::Vec3::ZERO) {
-         cocos2d::Vec2 pt = VoxelExplorer::getInstance()->getMainCamera()->projectGL(m_vDisplayPt);
-        pt =  cocos2d::Vec2(pt.x, pt.y+TerrainTile::CONTENT_SCALE*3.5);
-        setPosition(pt);
-        if (!m_bIsAction && tempTime >=0.015) {
-            tempTime = 0.0f;
-            m_bIsAction = true;
-            cocos2d::ScaleTo* scaleToStart = cocos2d::ScaleTo::create(0.2, 1.2);
-            cocos2d::ScaleTo* scaleToEnd = cocos2d::ScaleTo::create(0.2, 0.8);
-            
-            this->runAction(cocos2d::Sequence::create(scaleToStart,scaleToEnd,scaleToStart,scaleToEnd,cocos2d::RemoveSelf::create(), nil));
-            
-        }
+    
+    cocos2d::Vec3 displayPt = m_pActor->getPosition3D();
+    cocos2d::Vec2 pt = VoxelExplorer::getInstance()->getMainCamera()->projectGL(displayPt);
+    pt =  cocos2d::Vec2(pt.x, pt.y+TerrainTile::CONTENT_SCALE*3.5);
+    setPosition(pt);
+    if (!m_bIsAction && tempTime >=0.013) {
+        tempTime = 0.0f;
+        m_bIsAction = true;
+        setVisible(true);
+        cocos2d::ScaleTo* scaleToStart = cocos2d::ScaleTo::create(0.35, 1.3);
+        cocos2d::ScaleTo* scaleToEnd = cocos2d::ScaleTo::create(0.35, 0.6);
+        this->runAction(cocos2d::Sequence::create(scaleToStart,scaleToEnd,scaleToStart,scaleToEnd,cocos2d::RemoveSelf::create(), nil));
     }
+    
 }
 void PromptLayer::onEnter()
 {

@@ -291,6 +291,8 @@
 		EC602AB71BF47CAC00484D42 /* StatisticsManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC602AB41BF47CAC00484D42 /* StatisticsManager.cpp */; };
 		EC6264951BF0807F004E0F55 /* MessageManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC6264931BF0807F004E0F55 /* MessageManager.cpp */; };
 		EC6264961BF0807F004E0F55 /* MessageManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC6264931BF0807F004E0F55 /* MessageManager.cpp */; };
+		EC6617651C182A3B0004209F /* BossPropLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC6617631C182A3B0004209F /* BossPropLayer.cpp */; };
+		EC6617661C182A3B0004209F /* BossPropLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC6617631C182A3B0004209F /* BossPropLayer.cpp */; };
 		EC6716451BCE7F2C00C81CFC /* LogoScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC6716431BCE7F2C00C81CFC /* LogoScene.cpp */; };
 		EC6716461BCE7F2C00C81CFC /* LogoScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC6716431BCE7F2C00C81CFC /* LogoScene.cpp */; };
 		EC6716591BCE7F5F00C81CFC /* lang in Resources */ = {isa = PBXBuildFile; fileRef = EC6716561BCE7F5F00C81CFC /* lang */; };
@@ -631,6 +633,8 @@
 		EC602AB51BF47CAC00484D42 /* StatisticsManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = StatisticsManager.hpp; sourceTree = "<group>"; };
 		EC6264931BF0807F004E0F55 /* MessageManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MessageManager.cpp; sourceTree = "<group>"; };
 		EC6264941BF0807F004E0F55 /* MessageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageManager.h; sourceTree = "<group>"; };
+		EC6617631C182A3B0004209F /* BossPropLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BossPropLayer.cpp; sourceTree = "<group>"; };
+		EC6617641C182A3B0004209F /* BossPropLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BossPropLayer.hpp; sourceTree = "<group>"; };
 		EC6715EE1BCE7EE500C81CFC /* GameConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameConfig.h; sourceTree = "<group>"; };
 		EC6716431BCE7F2C00C81CFC /* LogoScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LogoScene.cpp; sourceTree = "<group>"; };
 		EC6716441BCE7F2C00C81CFC /* LogoScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogoScene.h; sourceTree = "<group>"; };
@@ -1163,6 +1167,8 @@
 		EC3CC93C1C088F4F00F8CFC8 /* Layer */ = {
 			isa = PBXGroup;
 			children = (
+				EC6617631C182A3B0004209F /* BossPropLayer.cpp */,
+				EC6617641C182A3B0004209F /* BossPropLayer.hpp */,
 				EC3DC0C01C157FFE00D0FE47 /* AchieveMangerLayerUI.cpp */,
 				EC3DC0C11C157FFE00D0FE47 /* AchieveMangerLayerUI.h */,
 				EC795F651C0DA57C0083829B /* NpcPropLayer.cpp */,
@@ -1436,6 +1442,7 @@
 				55619D511C0DAB3900419E40 /* SewerBossLevel.cpp in Sources */,
 				EC3CC97F1C088F4F00F8CFC8 /* NoteUi.cpp in Sources */,
 				553BC5091BCE499B003D907A /* BaseDoor.cpp in Sources */,
+				EC6617651C182A3B0004209F /* BossPropLayer.cpp in Sources */,
 				55F81CA11BDB208D002EC075 /* UseableItem.cpp in Sources */,
 				EC795F571C0D4AFD0083829B /* GambleShopPopupUI.cpp in Sources */,
 				5505453C1BFF3893006B4500 /* SmallPortal.cpp in Sources */,
@@ -1656,6 +1663,7 @@
 				554F00EF1BDA210000F4DF8E /* BaseBoss.cpp in Sources */,
 				EC3CC9881C088F4F00F8CFC8 /* DeadPopupUI.cpp in Sources */,
 				55F116E11C04454300A6C191 /* TombLevel.cpp in Sources */,
+				EC6617661C182A3B0004209F /* BossPropLayer.cpp in Sources */,
 				5586C7B11C0FDD5400DFA588 /* MineBossLevel.cpp in Sources */,
 				551E93B21BD51282009F788F /* UtilityHelper.cpp in Sources */,
 				EC3CC9741C088F4F00F8CFC8 /* BagMangerLayerUI.cpp in Sources */,

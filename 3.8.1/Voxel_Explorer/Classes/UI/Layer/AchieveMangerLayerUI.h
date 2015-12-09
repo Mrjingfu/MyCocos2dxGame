@@ -11,7 +11,7 @@
 
 #include "ui/CocosGUI.h"
 #include "ChaosNumber.h"
-#include "PickableItemProperty.hpp"
+
 class AchieveMangerLayerUI:public cocos2d::ui::Layout {
     
     AchieveMangerLayerUI();
@@ -20,7 +20,7 @@ public:
     static AchieveMangerLayerUI* create(cocos2d::Size size);
     bool init(cocos2d::Size size);
     void addItem(int index,int itemId,cocos2d::Vec2 pt,std::string itemIcon);
-    void setItemQulity(int itemId,cocos2d::Vec2 pt,PICKABLEITEM_QUALITY Quality);
+    void setItemQulity(int itemId,cocos2d::Vec2 pt);
     void setItemCount(int itemId,cocos2d::Vec2 pt,int count);
 
     void removeItems();

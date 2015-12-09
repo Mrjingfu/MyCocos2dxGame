@@ -12,7 +12,9 @@
 #include "PlayerProperty.hpp"
 #include "AlisaMethod.h"
 #include "FakeShadow.hpp"
+#include "StatisticsManager.hpp"
 #include "RandomDungeon.hpp"
+
 USING_NS_CC;
 
 CChaosNumber Player::m_fSpeedupTime  = 20.0f; ///加速时间
@@ -414,6 +416,7 @@ void Player::attackByMonster(MonsterProperty* monsterProperty, bool miss)
     if(miss)
     {
         m_pHurtData->m_bDodge = true;
+        StatisticsManager::getInstance()->addDodgeTotalNum();
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_HURT, m_pHurtData);
         return;
     }
@@ -426,6 +429,7 @@ void Player::attackByMonster(MonsterProperty* monsterProperty, bool miss)
         if(amDodgeRate->getRandomIndex() == 0)
         {
             m_pHurtData->m_bDodge = true;
+            StatisticsManager::getInstance()->addDodgeTotalNum();
             Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_HURT, m_pHurtData);
             return;
         }
@@ -440,6 +444,7 @@ void Player::attackByMonster(MonsterProperty* monsterProperty, bool miss)
         {
             attack = attack*2.0f;
             m_pHurtData->m_bCriticalStrike = true;
+            StatisticsManager::getInstance()->addCriticalTotalNum();
         }
     }
     
@@ -456,6 +461,7 @@ void Player::attackByMonster(MonsterProperty* monsterProperty, bool miss)
         {
             attack = attack*0.5f;
             m_pHurtData->m_bBlocked = true;
+            StatisticsManager::getInstance()->addBlockTotalNum();
         }
     }
     
@@ -468,6 +474,7 @@ void Player::attackByMonster(MonsterProperty* monsterProperty, bool miss)
     {
         setState(PS_DEATH);
         PlayerProperty::getInstance()->setCurrentHP(currentHp);
+        StatisticsManager::getInstance()->addRoleDeadNum(StatisticsManager::eRoleDeadType::RET_MONSTER_ATTACK);
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_DEATH, this);
     }
     else
@@ -570,6 +577,7 @@ void Player::hurtByGrippingTrap()
     {
         setState(PS_DEATH);
         PlayerProperty::getInstance()->setCurrentHP(currentHp);
+        StatisticsManager::getInstance()->addRoleDeadNum(StatisticsManager::eRoleDeadType::RET_TRIGGER_GRIPPING_TRAP);
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_DEATH, this);
     }
     else
@@ -644,6 +652,8 @@ void Player::onEnterJumpMove()
         this->runAction(Speed::create(sequence, 0.5f));
     else
         this->runAction(sequence);
+    
+    StatisticsManager::getInstance()->addStepNum();
 }
 void Player::onEnterAttack()
 {
@@ -846,6 +856,7 @@ void Player::updatePlayerBuffer(float delta)
                 {
                     setState(PS_DEATH);
                     PlayerProperty::getInstance()->setCurrentHP(currentHp);
+                    StatisticsManager::getInstance()->addRoleDeadNum(StatisticsManager::eRoleDeadType::RET_BUFFER_FIRE);
                     Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_DEATH, this);
                 }
                 else
@@ -873,6 +884,7 @@ void Player::updatePlayerBuffer(float delta)
             {
                 setState(PS_DEATH);
                 PlayerProperty::getInstance()->setCurrentHP(currentHp);
+                StatisticsManager::getInstance()->addRoleDeadNum(StatisticsManager::eRoleDeadType::RET_BUFFER_POISONING);
                 Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_DEATH, this);
             }
             else
