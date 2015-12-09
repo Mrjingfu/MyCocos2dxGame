@@ -713,7 +713,7 @@ void GameUILayer::onEventBossUpdateProp(cocos2d::EventCustom *sender)
 {
     CCLOG("onEventBossUpdateProp");
     BaseBoss* monster = static_cast<BaseBoss*>(sender->getUserData());
-    if (m_pMonsterPropLayer)
+    if (m_pBossPropLayer)
     {
         setCharacterPropLayerVisible(false, false, true);
         m_pBossPropLayer->setBoss(monster);
@@ -729,14 +729,14 @@ void GameUILayer::onEventBossDeath(cocos2d::EventCustom *sender)
         return;
     Vec2 pt = VoxelExplorer::getInstance()->getMainCamera()->projectGL(monster->getPosition3D());
     pt = Vec2(pt.x, pt.y+TerrainTile::CONTENT_SCALE*2.5);
-    if (monster->getState() == BaseMonster::MonsterState::MS_DEATH) {
+    if (monster->getState() == BaseBoss::BossState::BS_DEATH) {
         int roleLevel = PlayerProperty::getInstance()->getLevel();
         int exp  = GameFormula::getKillBossExp(roleLevel, roleLevel+5);
         
         PopupUILayerManager::getInstance()->showStatus(TIP_POSITIVE, StringUtils::format(UtilityHelper::getLocalStringForUi("STATUS_TEXT_EXP").c_str(),exp),pt);
         if (m_pBossPropLayer) {
             m_pBossPropLayer->setBoss(monster);
-            m_pMonsterPropLayer->setVisible(false);
+            m_pBossPropLayer->setVisible(false);
         }
         
     }
@@ -870,13 +870,13 @@ void GameUILayer::onEnter()
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_NPC_LITTLEWITCH_ANSWER, CC_CALLBACK_1(GameUILayer::onEventNpcLittleWitchAnsWer,this)) ;
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_NPC_NURSE_ANSWER, CC_CALLBACK_1(GameUILayer::onEventNpcNurseAnsWer,this));
 
-//    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_BOSS_PROPERTY_DIRTY, CC_CALLBACK_1(GameUILayer::onEventBossUpdateProp,this));
-//    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_BOSS_DEATH, CC_CALLBACK_1(GameUILayer::onEventBossDeath,this));
-//    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_BOSS_HURT, CC_CALLBACK_1(GameUILayer::onEventBossHud,this));
-//    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_BOSS_ALERT, CC_CALLBACK_1(GameUILayer::onEventBossAlert,this));
-//    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_BOSS_SKILL1, CC_CALLBACK_1(GameUILayer::onEventBossSkill1,this));
-//    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_BOSS_SKILL2, CC_CALLBACK_1(GameUILayer::onEventBossSkill2,this));
-//    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_BOSS_SKILL3, CC_CALLBACK_1(GameUILayer::onEventBossSkill3,this));
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_BOSS_PROPERTY_DIRTY, CC_CALLBACK_1(GameUILayer::onEventBossUpdateProp,this));
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_BOSS_DEATH, CC_CALLBACK_1(GameUILayer::onEventBossDeath,this));
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_BOSS_HURT, CC_CALLBACK_1(GameUILayer::onEventBossHud,this));
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_BOSS_ALERT, CC_CALLBACK_1(GameUILayer::onEventBossAlert,this));
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_BOSS_SKILL1, CC_CALLBACK_1(GameUILayer::onEventBossSkill1,this));
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_BOSS_SKILL2, CC_CALLBACK_1(GameUILayer::onEventBossSkill2,this));
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_BOSS_SKILL3, CC_CALLBACK_1(GameUILayer::onEventBossSkill3,this));
     
 }
 void GameUILayer::onExit()
@@ -945,12 +945,12 @@ void GameUILayer::onExit()
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_NPC_LITTLEWITCH_ANSWER);
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_NPC_NURSE_ANSWER);
     
-//    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_BOSS_PROPERTY_DIRTY);
-//    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_BOSS_DEATH);
-//    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_BOSS_HURT);
-//    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_BOSS_ALERT);
-//    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_BOSS_SKILL1);
-//    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_BOSS_SKILL2);
-//    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_BOSS_SKILL3);
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_BOSS_PROPERTY_DIRTY);
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_BOSS_DEATH);
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_BOSS_HURT);
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_BOSS_ALERT);
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_BOSS_SKILL1);
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_BOSS_SKILL2);
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_BOSS_SKILL3);
     WrapperUILayer::onExit();
 }

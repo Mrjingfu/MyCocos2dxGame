@@ -250,16 +250,16 @@ cocos2d::Color3B PopupUILayerManager::getTipsColor(TipTypes tipType)
 }
 void PopupUILayerManager::showStatusImport(TipTypes tipType, std::string text)
 {
-//    int charCount = 0;
-//    if(cocos2d::Application::getInstance()->getCurrentLanguage() ==cocos2d::LanguageType::CHINESE)
-//    {
-//        charCount =10;
-//    }else{
-//        charCount = 40;
-//    }
-//    UtilityHelper::getLineStr(text, charCount);
+    int charCount = 0;
+    if(cocos2d::Application::getInstance()->getCurrentLanguage() ==cocos2d::LanguageType::CHINESE)
+    {
+        charCount =10;
+    }else{
+        charCount = 40;
+    }
+    UtilityHelper::getLineStr(text, charCount);
     Label* m_pLabel = cocos2d::Label::createWithTTF(text,UtilityHelper::getLocalString("FONT_NAME"),36);
-    m_pLabel->setScale(0.8);
+    m_pLabel->setScale(0.7);
     m_pLabel->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
     m_pParentLayer->addChild(m_pLabel,eZOrderPopupLayer);
     m_pLabel->setPosition(Vec2(WND_CENTER_X,SCREEN_HEIGHT*0.65));

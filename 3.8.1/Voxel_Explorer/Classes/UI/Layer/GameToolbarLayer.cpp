@@ -183,7 +183,7 @@ void GameToolbarLayer::onClickBag(Ref* ref)
 //  PopupUILayerManager::getInstance()->openPopup(ePopupRole);
     ShopPopupUI* popupUILayer = static_cast<ShopPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupWeaponShop));
     if (popupUILayer) {
-        popupUILayer->setShopTitle("SHOP_TITLE_WEAPON");
+        popupUILayer->setShopTitle(EVENT_NPC_KNIGHT_ANSWER);
         popupUILayer->setDarkLayerVisble(false);
     }
     onClickDistTipsFrame(nullptr);
