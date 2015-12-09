@@ -16,19 +16,20 @@ class TerrainTile : public EffectSprite3D
 public:
     typedef enum
     {
-        TT_CHASM = 0,       ///深渊
-        TT_STANDARD,        ///标准地板
-        TT_WALL,            ///墙
-        TT_ENTRANCE,        ///入口
-        TT_EXIT,            ///出口
-        TT_STANDARD_PORTAL, ///标准传送门
-        TT_SMALL_PORTAL,    ///小传送门
-        TT_TUNNEL,          ///通道
-        TT_DOOR,            ///门
-        TT_OPENED_DOOR,     ///开了的门
-        TT_LOCKED_DOOR,     ///上锁的门
-        TT_LOCKED_BOSS_DOOR,///上锁的boss房间的门
-        TT_SECRET_DOOR,     ///隐藏的门
+        TT_CHASM = 0,           ///深渊
+        TT_STANDARD,            ///标准地板
+        TT_WALL,                ///墙
+        TT_ENTRANCE,            ///入口
+        TT_EXIT,                ///出口
+        TT_STANDARD_PORTAL,     ///标准传送门
+        TT_SMALL_PORTAL,        ///小传送门
+        TT_TUNNEL,              ///通道
+        TT_DOOR,                ///门
+        TT_OPENED_DOOR,         ///开了的门
+        TT_LOCKED_DOOR,         ///上锁的门
+        TT_LOCKED_BOSS_DOOR,    ///上锁的boss房间的门
+        TT_LOCKED_MAGIC_DOOR,   ///竞技场的门
+        TT_SECRET_DOOR,         ///隐藏的门
         
         TT_TOXIC_TRAP,              ///中毒陷阱
         TT_HIDE_TOXIC_TRAP,         ///隐藏的中毒陷阱

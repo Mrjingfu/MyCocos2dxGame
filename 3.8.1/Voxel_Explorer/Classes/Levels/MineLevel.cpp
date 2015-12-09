@@ -142,6 +142,20 @@ bool MineLevel::createTerrain()
                         door->setDoorState(BaseDoor::DS_LOCKED);
                     }
                     break;
+                case TerrainTile::TT_LOCKED_MAGIC_DOOR:
+                    {
+                        StandardDoor* door = StandardDoor::create(false);
+                        if(!door)
+                            return false;
+                        door->setPosition3D(Vec3(j*TerrainTile::CONTENT_SCALE, -TerrainTile::CONTENT_SCALE*0.5f, -i*TerrainTile::CONTENT_SCALE));
+                        VoxelExplorer::getInstance()->getTerrainDoorsLayer()->addChild(door);
+                        if(!door->createFakeDoor())
+                            return false;
+                        door->setVisited(info.m_bVisited);
+                        door->setActorDir(info.m_Dir);
+                        door->setDoorState(BaseDoor::DS_CLOSED);
+                    }
+                    break;
                 case TerrainTile::TT_SECRET_DOOR:
                     {
                         StandardDoor* door = StandardDoor::create(true);

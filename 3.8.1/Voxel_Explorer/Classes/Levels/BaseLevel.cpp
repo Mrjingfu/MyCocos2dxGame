@@ -141,6 +141,11 @@ int BaseLevel::getTerrainTileFlag(int x, int y)
     int index = x + y * m_nWidth;
     return m_Map[index].m_Flag;
 }
+Area::AREA_TYPE BaseLevel::getTerrainTileAreaType(int x, int y)
+{
+    int index = x + y * m_nWidth;
+    return m_Map[index].m_AreaType;
+}
 void BaseLevel::setTerrainTileFlag(int x, int y, int flag )
 {
     int index = x + y * m_nWidth;
@@ -248,7 +253,7 @@ bool BaseLevel::checkMovable(Actor* actor, TileInfo& info)
     }
     if((info.m_Flag & TileInfo::USEABLE) != 0)
     {
-        if( info.m_Type == TerrainTile::TT_DOOR || info.m_Type == TerrainTile::TT_LOCKED_DOOR || info.m_Type == TerrainTile::TT_LOCKED_BOSS_DOOR || info.m_Type == TerrainTile::TT_SECRET_DOOR )
+        if( info.m_Type == TerrainTile::TT_DOOR || info.m_Type == TerrainTile::TT_LOCKED_DOOR || info.m_Type == TerrainTile::TT_LOCKED_BOSS_DOOR || info.m_Type == TerrainTile::TT_LOCKED_MAGIC_DOOR || info.m_Type == TerrainTile::TT_SECRET_DOOR )
             VoxelExplorer::getInstance()->handleDoor(pos);
         else
             VoxelExplorer::getInstance()->handleUseUseableItem(pos);
@@ -278,6 +283,7 @@ int BaseLevel::assignTerrainTileFlag(TerrainTile::TileType type)
         case TerrainTile::TT_DOOR:
         case TerrainTile::TT_LOCKED_DOOR:
         case TerrainTile::TT_LOCKED_BOSS_DOOR:
+        case TerrainTile::TT_LOCKED_MAGIC_DOOR:
         case TerrainTile::TT_SECRET_DOOR:
             flag = TileInfo::PASSABLE | TileInfo::USEABLE;
             break;

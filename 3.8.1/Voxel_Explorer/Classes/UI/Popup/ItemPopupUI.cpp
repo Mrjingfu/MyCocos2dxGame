@@ -738,9 +738,6 @@ void ItemPopupUI::onClickUser(cocos2d::Ref *ref)
     }else if (itemtype == PickableItemProperty::PIPT_SCROLL)
     {
         isItemUse = PlayerProperty::getInstance()->useScroll(CChaosNumber(m_nItemId));
-    }else if (itemtype == PickableItemProperty::PIPT_KEY)
-    {
-        isItemUse = PlayerProperty::getInstance()->useKey(itemprop->getPickableItemType());
     }
     if (!isItemUse) {
       

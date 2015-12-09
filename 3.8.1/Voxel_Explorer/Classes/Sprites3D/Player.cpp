@@ -13,6 +13,8 @@
 #include "AlisaMethod.h"
 #include "FakeShadow.hpp"
 #include "StatisticsManager.hpp"
+#include "RandomDungeon.hpp"
+
 USING_NS_CC;
 
 CChaosNumber Player::m_fSpeedupTime  = 20.0f; ///加速时间
@@ -403,6 +405,9 @@ void Player::rotateToBack()
 }
 void Player::attackByMonster(MonsterProperty* monsterProperty, bool miss)
 {
+    ///for debug
+    //return;
+    
     if(!monsterProperty || !m_pHurtData)
         return;
     
@@ -477,7 +482,81 @@ void Player::attackByMonster(MonsterProperty* monsterProperty, bool miss)
         PlayerProperty::getInstance()->setCurrentHP(currentHp);
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_PROPERTY_DIRTY, this);
     }
-
+}
+void Player::attackByBoss(BossProperty* bossProperty, bool miss)
+{
+    //for debug
+    //return;
+    
+    if(!bossProperty || !m_pHurtData)
+        return;
+    
+    m_pHurtData->reset();
+    m_pHurtData->m_vPos = this->getPosition3D();
+    if(miss)
+    {
+        m_pHurtData->m_bDodge = true;
+        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_HURT, m_pHurtData);
+        return;
+    }
+    
+    float percentDodgeRate = PlayerProperty::getInstance()->getDodgeRate().GetFloatValue();
+    float percentHit = 1.0 - percentDodgeRate;
+    AlisaMethod* amDodgeRate = AlisaMethod::create(percentDodgeRate,percentHit,-1.0, NULL);
+    if(amDodgeRate)
+    {
+        if(amDodgeRate->getRandomIndex() == 0)
+        {
+            m_pHurtData->m_bDodge = true;
+            Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_HURT, m_pHurtData);
+            return;
+        }
+    }
+    int attack = bossProperty->getRandomAttack().GetLongValue();
+    float percentCriticalStrikeRate = bossProperty->getCriticalStrikeRate().GetFloatValue();
+    float percentNormal = 1.0 - percentCriticalStrikeRate;
+    AlisaMethod* amCriticalStrikeRate = AlisaMethod::create(percentCriticalStrikeRate,percentNormal,-1.0, NULL);
+    if(amCriticalStrikeRate)
+    {
+        if(amCriticalStrikeRate->getRandomIndex() == 0)
+        {
+            attack = attack*2.0f;
+            m_pHurtData->m_bCriticalStrike = true;
+        }
+    }
+    
+    int defense = PlayerProperty::getInstance()->getDefense().GetLongValue();
+    
+    attack = MAX(attack + defense, 0);
+    
+    float percentBlockRate = PlayerProperty::getInstance()->getBlockRate().GetFloatValue();
+    float percentNull = 1.0 - percentBlockRate;
+    AlisaMethod* amBlockRate = AlisaMethod::create(percentBlockRate,percentNull,-1.0, NULL);
+    if(amBlockRate)
+    {
+        if(amBlockRate->getRandomIndex() == 0)
+        {
+            attack = attack*0.5f;
+            m_pHurtData->m_bBlocked = true;
+        }
+    }
+    
+    int currentHp = PlayerProperty::getInstance()->getCurrentHP().GetLongValue();
+    currentHp = MAX(currentHp - attack , 0);
+    CCLOG("Player: CurrentHp = %d, bossAttack = %d", currentHp, attack);
+    m_pHurtData->m_nDamage = -attack;
+    Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_HURT, m_pHurtData);
+    if(currentHp == 0)
+    {
+        setState(PS_DEATH);
+        PlayerProperty::getInstance()->setCurrentHP(currentHp);
+        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_DEATH, this);
+    }
+    else
+    {
+        PlayerProperty::getInstance()->setCurrentHP(currentHp);
+        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_PROPERTY_DIRTY, this);
+    }
 }
 void Player::hurtByGrippingTrap()
 {
@@ -663,6 +742,8 @@ void Player::onLand(bool triggerTrap)
     if(triggerTrap)
         VoxelExplorer::getInstance()->checkTriggerTrap();
     VoxelExplorer::getInstance()->updateMiniMap();
+   // if(RandomDungeon::getInstance()->getCurrentDungeonNode()->isBossDepth())
+        VoxelExplorer::getInstance()->updateBossRoomDoor();
     CCLOG("player x = %d   y = %d", (int)getPosInMap().x, (int)getPosInMap().y);
 }
 void Player::updatePlayerBuffer(float delta)

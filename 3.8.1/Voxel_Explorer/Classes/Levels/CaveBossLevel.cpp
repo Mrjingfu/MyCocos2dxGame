@@ -54,7 +54,7 @@ bool CaveBossLevel::build()
     setTerrainTile(leftMost, center.y, TerrainTile::TT_CHASM, Area::AT_UNKNOWN);
     setTerrainTile(rightMost, center.y, TerrainTile::TT_CHASM, Area::AT_UNKNOWN);
     setTerrainTile(center.x, topMost, TerrainTile::TT_LOCKED_BOSS_DOOR, Area::AT_BOSS_EXIT, Actor::AD_FORWARD);
-    setTerrainTile(center.x, bottomMost - 1, TerrainTile::TT_DOOR, Area::AT_BOSS_ROOM, Actor::AD_FORWARD);
+    setTerrainTile(center.x, bottomMost - 1, TerrainTile::TT_LOCKED_MAGIC_DOOR, Area::AT_BOSS_ROOM, Actor::AD_FORWARD);
     
     generateTerrainTiles( center.x - m_nChamberWidth/2, topMost + 1, m_nChamberWidth, m_nChamberHeight, TerrainTile::TT_STANDARD, Area::AT_BOSS_EXIT );
     
@@ -163,7 +163,7 @@ bool CaveBossLevel::createBoss(const cocos2d::Vec2& pos)
     giant->setVisited(m_Map[tileIndex].m_bVisited);
     giant->addTerrainTileFlag(TileInfo::USEABLE);
     VoxelExplorer::getInstance()->getBossLayer()->addChild(giant);
-    giant->setState(BaseBoss::BS_IDLE);
+    giant->setState(BaseBoss::BS_SLEEPING);
 
     return true;
 }

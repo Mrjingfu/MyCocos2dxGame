@@ -54,6 +54,12 @@ static const std::string EVENT_PLAYER_NO_GOLD_KEY = "PLAYER_NO_GOLD_KEY";
 static const std::string EVENT_PLAYER_NO_ROOM_KEY = "PLAYER_NO_ROOM_KEY";
 static const std::string EVENT_PLAYER_NO_BOSS_KEY = "PLAYER_NO_BOSS_KEY";
 
+static const std::string EVENT_PLAYER_USE_GOLD_CHEST_KEY = "PLAYER_USE_GOLD_CHEST_KEY";
+static const std::string EVENT_PLAYER_USE_SILVER_CHEST_KEY = "PLAYER_USE_SILVER_CHEST_KEY";
+static const std::string EVENT_PLAYER_USE_COPPER_CHEST_KEY = "PLAYER_USE_COPPER_CHEST_KEY";
+static const std::string EVENT_PLAYER_USE_ROOM_KEY = "PLAYER_USE_ROOM_KEY";
+static const std::string EVENT_PLAYER_USE_BOSS_KEY = "PLAYER_USE_BOSS_KEY";
+
 static const std::string EVENT_PLAYER_HURT = "PLAYER_HURT";
 
 static const std::string EVENT_MONSTER_PROPERTY_DIRTY = "MONSTER_PROPERTY_DIRTY";
@@ -68,6 +74,9 @@ static const std::string EVENT_TRIGGER_PARALYTIC_TRAP = "TRIGGER_PARALYTIC_TRAP"
 static const std::string EVENT_TRIGGER_GRIPPING_TRAP = "TRIGGER_GRIPPING_TRAP";
 static const std::string EVENT_TRIGGER_SUMMONING_TRAP = "TRIGGER_SUMMONING_TRAP";
 static const std::string EVENT_TRIGGER_WEAK_TRAP = "TRIGGER_WEAK_TRAP";
+
+static const std::string EVENT_DOOR_MAGIC_LOCKED = "DOOR_MAGIC_LOCKED";
+static const std::string EVENT_DOOR_MAGIC_CLOSED = "DOOR_MAGIC_CLOSED";
 
 static const std::string EVENT_FOUND_HIDDEN_DOOR = "FOUND_HIDDEN_DOOR";
 static const std::string EVENT_FOUND_HIDDEN_TOXIC_TRAP = "FOUND_HIDDEN_TOXIC_TRAP";

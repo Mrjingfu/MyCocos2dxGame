@@ -227,6 +227,6 @@ bool MineBossLevel::createBoss(const cocos2d::Vec2& pos)
     koboldLeader->setVisited(m_Map[tileIndex].m_bVisited);
     koboldLeader->addTerrainTileFlag(TileInfo::USEABLE);
     VoxelExplorer::getInstance()->getBossLayer()->addChild(koboldLeader);
-    koboldLeader->setState(BaseBoss::BS_IDLE);
+    koboldLeader->setState(BaseBoss::BS_SLEEPING);
     return true;
 }

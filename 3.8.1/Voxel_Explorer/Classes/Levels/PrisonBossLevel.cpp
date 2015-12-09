@@ -211,7 +211,7 @@ bool PrisonBossLevel::createBoss(const cocos2d::Vec2& pos)
     warden->setVisited(m_Map[tileIndex].m_bVisited);
     warden->addTerrainTileFlag(TileInfo::USEABLE);
     VoxelExplorer::getInstance()->getBossLayer()->addChild(warden);
-    warden->setState(BaseBoss::BS_IDLE);
+    warden->setState(BaseBoss::BS_SLEEPING);
 
     return true;
 }

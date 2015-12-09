@@ -69,7 +69,15 @@ private:
     void onEventTriggerSummoning(cocos2d::EventCustom *sender);//召唤机关
     void onEventTriggerWeak(cocos2d::EventCustom *sender);  //虚弱机关
     
-
+    void onEventUseGoldChestKey(cocos2d::EventCustom *sender);
+    void onEventUseSilverChestKey(cocos2d::EventCustom *sender);
+    void onEventUseCopperChestKey(cocos2d::EventCustom *sender);
+    void onEventUseRoomKey(cocos2d::EventCustom *sender);
+    void onEventUseBossKey(cocos2d::EventCustom *sender);
+    
+    void onEventDoorMagicLocked(cocos2d::EventCustom *sender);
+    void onEventDoorMagicClosed(cocos2d::EventCustom *sender);
+    
     void onEventFoundHidderDoor(cocos2d::EventCustom *sender); //发现隐藏门
     void onEventFoundHidderTrapToxic(cocos2d::EventCustom *sender);//发现隐藏中毒机关
     void onEventFoundHidderTrapFire(cocos2d::EventCustom *sender);//发现隐藏火机关

@@ -55,11 +55,17 @@ public:
     virtual void setVisited(bool visited) override;
     
     virtual std::string getDesc() override;
+    
+    bool isMagicLocked() const { return m_bMagicLocked; }
+    void setMagicLocked(bool magicLocked) { m_bMagicLocked = magicLocked; }
+    
+    bool getOpenType() const { return m_OpenType; }
 protected:
     DoorState   m_DoorState;
     DoorState   m_DoorLastState;
     cocos2d::Sprite3D*      m_pFakeDoor;
     DoorOpenType            m_OpenType;
+    bool                    m_bMagicLocked;
 };
 
 #endif /* BaseDoor_hpp */

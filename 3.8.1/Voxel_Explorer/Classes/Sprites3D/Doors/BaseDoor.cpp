@@ -21,6 +21,8 @@ BaseDoor::BaseDoor()
     m_DoorLastState = DS_UNKNOWN;
     m_pFakeDoor = 0;
     m_OpenType = DOT_STANDARD;
+    
+    m_bMagicLocked = false;
 }
 BaseDoor::~BaseDoor()
 {
@@ -109,11 +111,10 @@ void BaseDoor::onEnterClosed()
         }
         else
         {
-            EaseSineOut* moveTo = EaseSineOut::create(MoveTo::create(0.5f, Vec3(getPositionX()+TerrainTile::CONTENT_SCALE, getPositionY(), getPositionZ())));
-            CallFunc* callback1 = CallFunc::create(CC_CALLBACK_0(BaseDoor::setVisible,m_pFakeDoor, true));
-            CallFunc* callback2 = CallFunc::create(CC_CALLBACK_0(BaseDoor::addTerrainTileFlag,this, TileInfo::USEABLE));
-            Sequence* sequence = Sequence::create(moveTo, callback1, callback2, NULL);
-            m_pFakeDoor->runAction(sequence);
+            EaseSineOut* moveTo = EaseSineOut::create(MoveTo::create(0.5f, Vec3(m_pFakeDoor->getPositionX()+TerrainTile::CONTENT_SCALE, m_pFakeDoor->getPositionY(), m_pFakeDoor->getPositionZ())));
+            m_pFakeDoor->setVisible(true);
+            addTerrainTileFlag(TileInfo::USEABLE);
+            m_pFakeDoor->runAction(moveTo);
         }
     }
     else if(m_dir == AD_LEFT || m_dir == AD_RIGHT)
@@ -125,11 +126,10 @@ void BaseDoor::onEnterClosed()
         }
         else
         {
-            EaseSineOut* moveTo = EaseSineOut::create(MoveTo::create(0.5f, Vec3(getPositionX(),getPositionY(), getPositionZ()+TerrainTile::CONTENT_SCALE)));
-            CallFunc* callback1 = CallFunc::create(CC_CALLBACK_0(BaseDoor::setVisible,m_pFakeDoor, true));
-            CallFunc* callback2 = CallFunc::create(CC_CALLBACK_0(BaseDoor::addTerrainTileFlag,this, TileInfo::USEABLE));
-            Sequence* sequence = Sequence::create(moveTo, callback1, callback2, NULL);
-            m_pFakeDoor->runAction(sequence);
+            EaseSineOut* moveTo = EaseSineOut::create(MoveTo::create(0.5f, Vec3(m_pFakeDoor->getPositionX(),m_pFakeDoor->getPositionY(), m_pFakeDoor->getPositionZ()-TerrainTile::CONTENT_SCALE)));
+            m_pFakeDoor->setVisible(true);
+            addTerrainTileFlag(TileInfo::USEABLE);
+            m_pFakeDoor->runAction(moveTo);
         }
     }
 }
