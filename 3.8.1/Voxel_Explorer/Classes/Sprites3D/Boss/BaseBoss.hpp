@@ -100,6 +100,7 @@ protected:
     virtual void setActorDir( ActorDir dir );
     
     virtual void handleAttackStyle(const cocos2d::Vec2& playerPos, const cocos2d::Vec3& dir);
+    virtual void handleSkillStage(int currentHp);
 private:
     void onLand();
     void moveToNext(const cocos2d::Vec2& next);

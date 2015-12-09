@@ -16,6 +16,10 @@ class SlimeKing : public BaseBoss
     virtual ~SlimeKing();
 public:
     static SlimeKing* create(BaseBoss::BossType type);
+    
+    virtual void onEnterSkill1();
+    virtual void onEnterSkill2();
+    virtual void onEnterSkill3();
 };
 
 #endif /* SlimeKing_hpp */

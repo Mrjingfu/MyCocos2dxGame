@@ -354,12 +354,10 @@ void BaseMonster::onEnterTracking()
     if(m_LastState == MS_SLEEPING || m_LastState == MS_CONFUSING || m_LastState == MS_WANDERING)
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_MONSTER_ALERT, this);
     if(m_LastState == MS_SLEEPING)
-    {
-        unsigned int lightmask = getLightMask();
-        lightmask = lightmask | (unsigned int)LightFlag::LIGHT2;
-        setLightMask(lightmask);
         m_fFirstTrackingTimer = cocos2d::random(1.0f, 1.5f);
-    }
+    unsigned int lightmask = getLightMask();
+    lightmask = lightmask | (unsigned int)LightFlag::LIGHT2;
+    setLightMask(lightmask);
 }
 void BaseMonster::onExitTracking()
 {

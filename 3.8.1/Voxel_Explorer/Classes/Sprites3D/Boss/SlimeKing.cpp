@@ -29,7 +29,18 @@ SlimeKing* SlimeKing::create(BaseBoss::BossType type)
 SlimeKing::SlimeKing()
 {
     m_Type = BT_SLIMEKING;
+    
+    m_nFOV = 7;
 }
 SlimeKing::~SlimeKing()
+{
+}
+void SlimeKing::onEnterSkill1()
+{
+}
+void SlimeKing::onEnterSkill2()
+{
+}
+void SlimeKing::onEnterSkill3()
 {
 }

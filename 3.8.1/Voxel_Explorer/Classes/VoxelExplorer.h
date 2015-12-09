@@ -43,6 +43,8 @@ public:
     void updateBossRoomDoor();
     void searchAndCheck();      ///侦查
     
+    void updateTerrainTile(int x, int y, TerrainTile::TileType type);
+    
     void addExplosion(const cocos2d::Vec3& pos);
     void generatePickItem(const cocos2d::Vec2& pos, bool generateItem, int copper, int monsterLevel);
     void generatePickItemByUseableItem(const cocos2d::Vec2& pos, UseableItem::UseableItemType type);

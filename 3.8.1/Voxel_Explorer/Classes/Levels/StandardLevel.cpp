@@ -897,8 +897,8 @@ void StandardLevel::showMap(bool show)
                 TileInfo info = m_Map[index];
                 
                 //for debug
-                if(!info.m_bVisited)
-                    continue;
+                //if(!info.m_bVisited)
+                //    continue;
 
                 cocos2d::Rect rect(j,i,1,1);
                 Vec2 vertices[4] = {

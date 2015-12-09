@@ -70,7 +70,7 @@ void BaseBoss::attackedByPlayer(bool miss)
     if(miss)
     {
         m_pHurtData->m_bDodge = true;
-        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_MONSTER_HURT, m_pHurtData);
+        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_BOSS_HURT, m_pHurtData);
         return;
     }
     
@@ -82,7 +82,7 @@ void BaseBoss::attackedByPlayer(bool miss)
         if(amDodgeRate->getRandomIndex() == 0)
         {
             m_pHurtData->m_bDodge = true;
-            Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_MONSTER_HURT, m_pHurtData);
+            Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_BOSS_HURT, m_pHurtData);
             return;
         }
     }
@@ -117,21 +117,22 @@ void BaseBoss::attackedByPlayer(bool miss)
     
     int currentHp = m_pBossProperty->getCurrentHP().GetLongValue();
     currentHp = MAX(currentHp - attack , 0);
-    CCLOG("Monster: CurrentHp = %d, playerAttack = %d", currentHp, attack);
+    CCLOG("Boss: CurrentHp = %d, playerAttack = %d", currentHp, attack);
     m_pHurtData->m_nDamage = -attack;
-    Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_MONSTER_HURT, m_pHurtData);
+    Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_BOSS_HURT, m_pHurtData);
     if(currentHp == 0)
     {
         setState(BS_DEATH);
         CChaosNumber addexp = 0;
         addexp = GameFormula::getKillBossExp(PlayerProperty::getInstance()->getLevel(), PlayerProperty::getInstance()->getLevel()+5);
         PlayerProperty::getInstance()->setExp(PlayerProperty::getInstance()->getExp() + addexp.GetLongValue());
-        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_MONSTER_DEATH, this);
+        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_BOSS_DEATH, this);
     }
     else
     {
+        handleSkillStage(currentHp);
         m_pBossProperty->setCurrentHP(currentHp);
-        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_MONSTER_PROPERTY_DIRTY, this);
+        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_BOSS_PROPERTY_DIRTY, this);
     }
 }
 bool BaseBoss::createFakeShadow()
@@ -263,6 +264,10 @@ void BaseBoss::update(float delta)
                         setState(BS_MOVING);
                 }
             }
+        case BS_FLEEING:
+            {
+                
+            }
             break;
         default:
             break;
@@ -287,6 +292,7 @@ void BaseBoss::onEnterTracking()
 {
     if(m_LastState == BS_SLEEPING)
     {
+        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_BOSS_ALERT, this);
         m_fFirstTrackingTimer = 2;
     }
 }
@@ -526,5 +532,22 @@ void BaseBoss::handleAttackStyle(const cocos2d::Vec2& playerPos, const cocos2d::
         Sequence* sequence = Sequence::create(spawn, callback2, NULL);
         this->runAction(sequence);
     }
-
+}
+void BaseBoss::handleSkillStage(int currentHp)
+{
+    if((m_pBossProperty->getCurrentHP() > m_pBossProperty->getMaxHP() * 0.75f) && (currentHp <= m_pBossProperty->getMaxHP() * 0.75f))
+    {
+        setState(BS_SKILL1);
+        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_BOSS_SKILL1, this);
+    }
+    else if((m_pBossProperty->getCurrentHP() > m_pBossProperty->getMaxHP() * 0.5f) && (currentHp <= m_pBossProperty->getMaxHP() * 0.5f))
+    {
+        setState(BS_SKILL2);
+        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_BOSS_SKILL2, this);
+    }
+    else if ((m_pBossProperty->getCurrentHP() > m_pBossProperty->getMaxHP() * 0.25f) && (currentHp <= m_pBossProperty->getMaxHP() * 0.25f))
+    {
+        setState(BS_SKILL3);
+        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_BOSS_SKILL3, this);
+    }
 }

@@ -504,6 +504,26 @@ void VoxelExplorer::searchAndCheck()    ///侦查
         m_pCurrentLevel->searchAndCheck(playerPosInMap.x, playerPosInMap.y, searchDistance);
     }
 }
+void VoxelExplorer::updateTerrainTile(int x, int y, TerrainTile::TileType type)
+{
+    if(m_pTerrainTilesLayer)
+    {
+        for (const auto& child : m_pTerrainTilesLayer->getChildren())
+        {
+            TerrainTile* tile = dynamic_cast<TerrainTile*>(child);
+            if(tile)
+            {
+                if(tile->getPosInMap() == Vec2(x, y))
+                {
+                    std::string tileTex = LevelResourceManager::getInstance()->getTerrainTileRes(TERRAIN_TILES_NAME[type]);
+                    if(!tileTex.empty())
+                        tile->setTexture(tileTex);
+                    return;
+                }
+            }
+        }
+    }
+}
 void VoxelExplorer::addExplosion(const cocos2d::Vec3& pos)
 {
     if(m_p3DLayer)
@@ -1209,12 +1229,12 @@ bool VoxelExplorer::createLevel()
     switch (node->m_Type) {
         case DT_SEWER:
             {
-                if(node->isBossDepth())
-                    m_pCurrentLevel = new(std::nothrow) SewerBossLevel();
-                else
-                    m_pCurrentLevel = new(std::nothrow) SewerLevel();
+//                if(node->isBossDepth())
+//                    m_pCurrentLevel = new(std::nothrow) SewerBossLevel();
+//                else
+//                    m_pCurrentLevel = new(std::nothrow) SewerLevel();
                 ///for debug
-                //m_pCurrentLevel = new(std::nothrow) SewerBossLevel();
+                m_pCurrentLevel = new(std::nothrow) SewerBossLevel();
             }
             break;
         case DT_PRISON:

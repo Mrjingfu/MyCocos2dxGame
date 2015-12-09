@@ -404,7 +404,7 @@ void Player::rotateToBack()
 void Player::attackByMonster(MonsterProperty* monsterProperty, bool miss)
 {
     ///for debug
-    //return;
+    return;
     
     if(!monsterProperty || !m_pHurtData)
         return;
@@ -479,7 +479,7 @@ void Player::attackByMonster(MonsterProperty* monsterProperty, bool miss)
 void Player::attackByBoss(BossProperty* bossProperty, bool miss)
 {
     //for debug
-    //return;
+    return;
     
     if(!bossProperty || !m_pHurtData)
         return;

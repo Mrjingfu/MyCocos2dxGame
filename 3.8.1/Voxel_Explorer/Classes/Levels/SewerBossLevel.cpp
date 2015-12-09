@@ -129,14 +129,14 @@ void SewerBossLevel::generateAreaStyle()
 }
 bool SewerBossLevel::createMonsters()
 {
-    //for debug
-    //return true;
-    
     if(!createBoss(m_BossPosition))
     {
         CCLOG("Create boss failed!");
         return false;
     }
+    //for debug
+    return true;
+    
     int monsterNum = calculateLevelMonsterCount();
     for (int i=0; i < monsterNum; i++) {
         StandardMonster* monster = StandardMonster::create(BaseMonster::MT_SLIME);
@@ -221,9 +221,95 @@ bool SewerBossLevel::createBoss(const cocos2d::Vec2& pos)
     int tileIndex = pos.x + pos.y * m_nWidth;
     slimeKing->setPosition3D(Vec3(m_Map[tileIndex].m_nX*TerrainTile::CONTENT_SCALE, -0.5f*TerrainTile::CONTENT_SCALE, -m_Map[tileIndex].m_nY*TerrainTile::CONTENT_SCALE));
     slimeKing->setVisited(m_Map[tileIndex].m_bVisited);
-    slimeKing->addTerrainTileFlag(TileInfo::USEABLE);
+    slimeKing->addTerrainTileFlag(TileInfo::ATTACKABLE);
     VoxelExplorer::getInstance()->getBossLayer()->addChild(slimeKing);
     slimeKing->setState(BaseBoss::BS_SLEEPING);
     
+    return true;
+}
+bool SewerBossLevel::createSummoningMonstersBySlimeKing(const cocos2d::Vec2& mapPos, int skillStage)
+{
+    if(skillStage == 1)
+    {
+        int count = 0;
+        std::vector<int> neighbours8 = getNeighbours8();
+        for (int i = 0; i < neighbours8.size(); i++) {
+            int index = mapPos.x + mapPos.y * m_nWidth + neighbours8[i];
+            if(isTerrainTilePassable(index))
+            {
+                StandardMonster* monster = StandardMonster::create(BaseMonster::MT_SLIME);
+                if(!monster)
+                    return false;
+                monster->setPosition3D(Vec3(m_Map[index].m_nX*TerrainTile::CONTENT_SCALE, -0.5f*TerrainTile::CONTENT_SCALE, -m_Map[index].m_nY*TerrainTile::CONTENT_SCALE));
+                monster->setVisited(m_Map[index].m_bVisited);
+                monster->addTerrainTileFlag(TileInfo::ATTACKABLE);
+                VoxelExplorer::getInstance()->getMonstersLayer()->addChild(monster);
+                monster->setState(BaseMonster::MS_TRACKING);
+                monster->setMonsterFOV(7);
+                count++;
+                if(count == 2)
+                    break;
+            }
+        }
+        return true;
+    }
+    else if(skillStage == 2)
+    {
+        int count = 0;
+        std::vector<int> neighbours8 = getNeighbours8();
+        for (int i = 0; i < neighbours8.size(); i++) {
+            int index = mapPos.x + mapPos.y * m_nWidth + neighbours8[i];
+            if(isTerrainTilePassable(index))
+            {
+                StandardMonster* monster = StandardMonster::create(BaseMonster::MT_SLIME);
+                if(!monster)
+                    return false;
+                monster->setPosition3D(Vec3(m_Map[index].m_nX*TerrainTile::CONTENT_SCALE, -0.5f*TerrainTile::CONTENT_SCALE, -m_Map[index].m_nY*TerrainTile::CONTENT_SCALE));
+                monster->setVisited(m_Map[index].m_bVisited);
+                monster->addTerrainTileFlag(TileInfo::ATTACKABLE);
+                VoxelExplorer::getInstance()->getMonstersLayer()->addChild(monster);
+                monster->setState(BaseMonster::MS_TRACKING);
+                monster->setMonsterFOV(7);
+                count++;
+                if(count == 4)
+                    break;
+            }
+        }
+        if(m_AreaExit)
+        {
+            std::vector<int> edgeIndexList = m_AreaExit->getTilesOnEdge(this, 1);
+            for (int i = 0; i < edgeIndexList.size(); i++) {
+                int x = edgeIndexList[i]%m_nWidth;
+                int y = edgeIndexList[i]/m_nHeight;
+                setTerrainTileType(x, y, TerrainTile::TT_TOXIC_TRAP);
+                VoxelExplorer::getInstance()->updateTerrainTile(x, y, TerrainTile::TT_TOXIC_TRAP);
+            }
+        }
+        return true;
+    }
+    else if(skillStage == 3)
+    {
+        int count = 0;
+        std::vector<int> neighbours8 = getNeighbours8();
+        for (int i = 0; i < neighbours8.size(); i++) {
+            int index = mapPos.x + mapPos.y * m_nWidth + neighbours8[i];
+            if(isTerrainTilePassable(index))
+            {
+                StandardMonster* monster = StandardMonster::create(BaseMonster::MT_SLIME, true);
+                if(!monster)
+                    return false;
+                monster->setPosition3D(Vec3(m_Map[index].m_nX*TerrainTile::CONTENT_SCALE, -0.5f*TerrainTile::CONTENT_SCALE, -m_Map[index].m_nY*TerrainTile::CONTENT_SCALE));
+                monster->setVisited(m_Map[index].m_bVisited);
+                monster->addTerrainTileFlag(TileInfo::ATTACKABLE);
+                VoxelExplorer::getInstance()->getMonstersLayer()->addChild(monster);
+                monster->setState(BaseMonster::MS_TRACKING);
+                monster->setMonsterFOV(7);
+                count++;
+                if(count == 2)
+                    break;
+            }
+        }
+        return true;
+    }
     return true;
 }

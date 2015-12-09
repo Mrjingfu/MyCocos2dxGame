@@ -68,6 +68,14 @@ static const std::string EVENT_MONSTER_HURT = "MONSTER_HURT";
 static const std::string EVENT_MONSTER_ALERT = "MONSTER_ALERT";
 static const std::string EVENT_MONSTER_CONFUSING = "MONSTER_CONFUSING";
 
+static const std::string EVENT_BOSS_PROPERTY_DIRTY = "BOSS_PROPERTY_DIRTY";
+static const std::string EVENT_BOSS_DEATH = "BOSS_DEATH";
+static const std::string EVENT_BOSS_HURT = "BOSS_HURT";
+static const std::string EVENT_BOSS_ALERT = "BOSS_ALERT";
+static const std::string EVENT_BOSS_SKILL1 = "BOSS_SKILL1";
+static const std::string EVENT_BOSS_SKILL2 = "BOSS_SKILL2";
+static const std::string EVENT_BOSS_SKILL3 = "BOSS_SKILL3";
+
 static const std::string EVENT_TRIGGER_TOXIC_TRAP = "TRIGGER_TOXIC_TRAP";
 static const std::string EVENT_TRIGGER_FIRE_TRAP = "TRIGGER_FIRE_TRAP";
 static const std::string EVENT_TRIGGER_PARALYTIC_TRAP = "TRIGGER_PARALYTIC_TRAP";

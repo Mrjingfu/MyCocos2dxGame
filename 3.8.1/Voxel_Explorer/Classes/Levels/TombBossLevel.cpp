@@ -174,7 +174,7 @@ bool TombBossLevel::createBoss(const cocos2d::Vec2& pos)
     int tileIndex = pos.x + pos.y * m_nWidth;
     skeletonKing->setPosition3D(Vec3(m_Map[tileIndex].m_nX*TerrainTile::CONTENT_SCALE, -0.5f*TerrainTile::CONTENT_SCALE, -m_Map[tileIndex].m_nY*TerrainTile::CONTENT_SCALE));
     skeletonKing->setVisited(m_Map[tileIndex].m_bVisited);
-    skeletonKing->addTerrainTileFlag(TileInfo::USEABLE);
+    skeletonKing->addTerrainTileFlag(TileInfo::ATTACKABLE);
     VoxelExplorer::getInstance()->getBossLayer()->addChild(skeletonKing);
     skeletonKing->setState(BaseBoss::BS_SLEEPING);
     

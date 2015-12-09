@@ -161,7 +161,7 @@ bool CaveBossLevel::createBoss(const cocos2d::Vec2& pos)
     int tileIndex = pos.x + pos.y * m_nWidth;
     giant->setPosition3D(Vec3(m_Map[tileIndex].m_nX*TerrainTile::CONTENT_SCALE, -0.5f*TerrainTile::CONTENT_SCALE, -m_Map[tileIndex].m_nY*TerrainTile::CONTENT_SCALE));
     giant->setVisited(m_Map[tileIndex].m_bVisited);
-    giant->addTerrainTileFlag(TileInfo::USEABLE);
+    giant->addTerrainTileFlag(TileInfo::ATTACKABLE);
     VoxelExplorer::getInstance()->getBossLayer()->addChild(giant);
     giant->setState(BaseBoss::BS_SLEEPING);
 
