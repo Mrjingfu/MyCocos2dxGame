@@ -21,7 +21,7 @@ public:
     virtual void updateCharacterBuff() override;
     virtual void updateCharacterProp() override;
     virtual bool addEvents() override;
-    void setBoss(BaseBoss* boss){m_pBoss = m_pBoss;}
+    void setBoss(BaseBoss* boss){m_pBoss = boss;}
 private:
     BaseBoss* m_pBoss;
 };
