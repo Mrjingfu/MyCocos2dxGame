@@ -395,7 +395,7 @@ void VoxelExplorer::updateFogOfWar(const cocos2d::Rect& areaRect, bool visited)
         for (const auto& child : m_pBossLayer->getChildren())
         {
             BaseBoss* boss = dynamic_cast<BaseBoss*>(child);
-            if(boss && areaRect.containsPoint(boss->getPosInMap()))
+            if(boss && areaRect.containsPoint(boss->getPosInMap()) && boss->getState() != BaseMonster::MS_DEATH)
                 boss->setVisited(visited);
         }
     }
@@ -514,7 +514,8 @@ void VoxelExplorer::updateTerrainTile(int x, int y, TerrainTile::TileType type)
             TerrainTile* tile = dynamic_cast<TerrainTile*>(child);
             if(tile)
             {
-                if(tile->getPosInMap() == Vec2(x, y))
+                Vec2 pos = tile->getPosInMap();
+                if(pos == Vec2(x, y))
                 {
                     std::string tileTex = LevelResourceManager::getInstance()->getTerrainTileRes(TERRAIN_TILES_NAME[type]);
                     if(!tileTex.empty())

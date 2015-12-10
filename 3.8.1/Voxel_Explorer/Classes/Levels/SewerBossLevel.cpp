@@ -245,7 +245,7 @@ bool SewerBossLevel::createSummoningMonstersBySlimeKing(const cocos2d::Vec2& map
                 monster->addTerrainTileFlag(TileInfo::ATTACKABLE);
                 VoxelExplorer::getInstance()->getMonstersLayer()->addChild(monster);
                 monster->setState(BaseMonster::MS_TRACKING);
-                monster->setMonsterFOV(4);
+                monster->setMonsterFOV(7);
                 count++;
                 if(count == 2)
                     break;
@@ -269,7 +269,7 @@ bool SewerBossLevel::createSummoningMonstersBySlimeKing(const cocos2d::Vec2& map
                 monster->addTerrainTileFlag(TileInfo::ATTACKABLE);
                 VoxelExplorer::getInstance()->getMonstersLayer()->addChild(monster);
                 monster->setState(BaseMonster::MS_TRACKING);
-                monster->setMonsterFOV(4);
+                monster->setMonsterFOV(7);
                 count++;
                 if(count == 4)
                     break;
@@ -280,7 +280,7 @@ bool SewerBossLevel::createSummoningMonstersBySlimeKing(const cocos2d::Vec2& map
             std::vector<int> edgeIndexList = m_AreaExit->getTilesOnEdge(this, 1);
             for (int i = 0; i < edgeIndexList.size(); i++) {
                 int x = edgeIndexList[i]%m_nWidth;
-                int y = edgeIndexList[i]/m_nHeight;
+                int y = edgeIndexList[i]/m_nWidth;
                 setTerrainTileType(x, y, TerrainTile::TT_TOXIC_TRAP);
                 VoxelExplorer::getInstance()->updateTerrainTile(x, y, TerrainTile::TT_TOXIC_TRAP);
             }
@@ -303,7 +303,7 @@ bool SewerBossLevel::createSummoningMonstersBySlimeKing(const cocos2d::Vec2& map
                 monster->addTerrainTileFlag(TileInfo::ATTACKABLE);
                 VoxelExplorer::getInstance()->getMonstersLayer()->addChild(monster);
                 monster->setState(BaseMonster::MS_TRACKING);
-                monster->setMonsterFOV(4);
+                monster->setMonsterFOV(7);
                 count++;
                 if(count == 2)
                     break;
