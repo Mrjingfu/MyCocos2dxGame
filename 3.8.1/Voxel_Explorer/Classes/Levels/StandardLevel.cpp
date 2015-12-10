@@ -754,12 +754,13 @@ bool StandardLevel::decorateSpecialArea(Area* area)
                 AlisaMethod* am = AlisaMethod::create(percentCopper,percentSilver,percentGold,-1.0, NULL);
                 if(am)
                 {
-                    if(am->getRandomIndex() == 0)
+                    int randIndex = am->getRandomIndex();
+                    if(randIndex == 0)
                     {
                         type = UseableItem::UIT_CHEST_NO_LOCK_COPPER;
                         eliteCount = 1;
                     }
-                    else if(am->getRandomIndex() == 1)
+                    else if(randIndex == 1)
                     {
                         type = UseableItem::UIT_CHEST_NO_LOCK_SILVER;
                         eliteCount = 2;

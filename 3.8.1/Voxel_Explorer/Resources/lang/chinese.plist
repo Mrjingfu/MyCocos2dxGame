@@ -59,7 +59,7 @@
 	<key>DN_PRISON</key>
 	<string>监狱</string>
 	<key>DN_FANE</key>
-	<string>神殿</string>
+	<string>网红教</string>
 	<key>DN_MINES</key>
 	<string>矿坑</string>
 	<key>DN_CAVE</key>
@@ -137,15 +137,15 @@
 	<key>MMN_MOB</key>
 	<string>暴徒</string>
 	<key>MMN_BELIEVER</key>
-	<string>信徒</string>
+	<string>脑残粉</string>
 	<key>MMN_GATEKEEPER</key>
-	<string>看门人</string>
+	<string>矮丑矬</string>
 	<key>MMN_APOLOGIST</key>
-	<string>辩护者</string>
+	<string>绿茶婊</string>
 	<key>MMN_ADJUDICATOR</key>
-	<string>审判者</string>
+	<string>肥猪流</string>
 	<key>MMN_PRIEST</key>
-	<string>祭祀</string>
+	<string>段子手</string>
 	<key>MMN_DEATHMINER</key>
 	<string>死亡矿工</string>
 	<key>MMN_KOBOLD</key>
@@ -181,7 +181,7 @@
 	<key>BMN_WARDEN</key>
 	<string>典狱长</string>
 	<key>BMN_ARCHBISHOP</key>
-	<string>大主教</string>
+	<string>网红教主</string>
 	<key>BMN_KOBOLDLEADER</key>
 	<string>狗头人首领</string>
 	<key>BMN_GIANT</key>
@@ -1140,5 +1140,65 @@
 	<string>小传送阵</string>
 	<key>PTN_SMALL_DESC</key>
 	<string>小传送阵，可以在本层地牢间传送。</string>
+	<key>BSC_SLIMEKING_ALERT</key>
+	<string>咕噜～～咕噜～～</string>
+	<key>BSC_SLIMEKING_SKILL1</key>
+	<string>史莱姆王开始分裂了～</string>
+	<key>BSC_SLIMEKING_SKILL2</key>
+	<string>史莱姆王变的愤怒了～～</string>
+	<key>BSC_SLIMEKING_SKILL3</key>
+	<string>史莱姆王开始暴躁了～～～</string>
+	<key>BSC_SLIMEKING_DEATH</key>
+	<string>咕噜～～咕噜～～</string>
+	<key>BSC_WARDEN_ALERT</key>
+	<string>嘿，不许动～你有权不沉默，但我很快会让你沉默！</string>
+	<key>BSC_WARDEN_SKILL1</key>
+	<string>让你尝尝电棍的滋味！！</string>
+	<key>BSC_WARDEN_SKILL2</key>
+	<string>来人～来人～放狗！！</string>
+	<key>BSC_WARDEN_SKILL3</key>
+	<string>敖广～敖钦～敖顺～敖闰～你们4个死哪去了，快揍扁他！！</string>
+	<key>BSC_WARDEN_DEATH</key>
+	<string>光天化日之下竟然有人敢劫狱～啊啊啊啊～</string>
+	<key>BSC_ARCHBISHOP_ALERT</key>
+	<string>少年！接受网红教主的改造吧！</string>
+	<key>BSC_ARCHBISHOP_SKILL1</key>
+	<string>来人，给我喷死他～～</string>
+	<key>BSC_ARCHBISHOP_SKILL2</key>
+	<string>让你体会下什么叫细思恐极～～</string>
+	<key>BSC_ARCHBISHOP_SKILL3</key>
+	<string>来吧，我的网络大军在哪里？</string>
+	<key>BSC_ARCHBISHOP_DEATH</key>
+	<string>啊啊啊～什么？少了我一个，自有后来人～</string>
+	<key>BSC_KOBOLDLEADER_ALERT</key>
+	<string>谁拿了我的蜡烛～～</string>
+	<key>BSC_KOBOLDLEADER_SKILL1</key>
+	<string>你追不上我的～</string>
+	<key>BSC_KOBOLDLEADER_SKILL2</key>
+	<string>给你试试这个～～</string>
+	<key>BSC_KOBOLDLEADER_SKILL3</key>
+	<string>兄弟们给我拦住他～～</string>
+	<key>BSC_KOBOLDLEADER_DEATH</key>
+	<string>啊啊～我的蜡烛。。。</string>
+	<key>BSC_GIANT_ALERT</key>
+	<string>啊哈～小鲜肉～</string>
+	<key>BSC_GIANT_SKILL1</key>
+	<string>你看起来很好吃～</string>
+	<key>BSC_GIANT_SKILL2</key>
+	<string>怎么样小蚂蚁，试试这个～</string>
+	<key>BSC_GIANT_SKILL3</key>
+	<string>你的命运将和托马斯.瓦格纳一样～小虫子！</string>
+	<key>BSC_GIANT_DEATH</key>
+	<string>不～～～小蚂蚁打败了大象，怎么会这样。。。</string>
+	<key>BSC_SKELETONKING_ALERT</key>
+	<string>谁来打扰我！！！</string>
+	<key>BSC_SKELETONKING_SKILL1</key>
+	<string>出来吧，我的随从们～</string>
+	<key>BSC_SKELETONKING_SKILL2</key>
+	<string>就凭你也想战胜我？</string>
+	<key>BSC_SKELETONKING_SKILL3</key>
+	<string>这不是盖的，我可是镇守过几乎所有的地牢！</string>
+	<key>BSC_SKELETONKING_DEATH</key>
+	<string>额，我还会回来的～</string>
 </dict>
 </plist>

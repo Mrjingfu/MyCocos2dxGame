@@ -41,6 +41,8 @@ public:
     void updateFogOfWar(const cocos2d::Rect& areaRect, bool visited);
     void updateMiniMap();
     void updateBossRoomDoor();
+    bool checkBossRoomDoorClosed();
+    void clearBoosRoom();
     void searchAndCheck();      ///侦查
     
     void updateTerrainTile(int x, int y, TerrainTile::TileType type);

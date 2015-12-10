@@ -391,17 +391,15 @@ void BaseMonster::onEnterMoving()
 {
     if(m_LastState == MS_TRACKING)
     {
-        Vec2 next;
-        if(VoxelExplorer::getInstance()->trackToPlayer(this, next))
-            moveToNext(next);
+        if(VoxelExplorer::getInstance()->trackToPlayer(this, m_NextPos))
+            moveToNext(m_NextPos);
         else
             setState(MS_WANDERING);
     }
     else if(m_LastState == MS_WANDERING)
     {
-        Vec2 next;
-        if(VoxelExplorer::getInstance()->wanderingAround(this, next))
-            moveToNext(next);
+        if(VoxelExplorer::getInstance()->wanderingAround(this, m_NextPos))
+            moveToNext(m_NextPos);
         else
             setState(MS_WANDERING);
     }
@@ -421,12 +419,16 @@ void BaseMonster::onEnterDeath()
 {
     this->stopAllActions();
     removeTerrainTileFlag(TileInfo::ATTACKABLE);
+    removeTerrainTileFlagByPos(TileInfo::ATTACKABLE, m_NextPos);
     this->setVisible(false);
     if(m_pFakeShadow)
         m_pFakeShadow->setVisible(false);
     VoxelExplorer::getInstance()->addExplosion(getPosition3D());
     bool generateItem = GameFormula::generatePickItemByMonster(m_pMonsterProperty->isElite(), false);
-    VoxelExplorer::getInstance()->generatePickItem(getPosInMap(), generateItem, m_pMonsterProperty->getValueCopper().GetLongValue(), m_pMonsterProperty->getLevel().GetLongValue());
+    int level = m_pMonsterProperty->getLevel().GetLongValue();
+    if(m_pMonsterProperty->isElite())
+        level = MAX(1, level- 3);
+    VoxelExplorer::getInstance()->generatePickItem(getPosInMap(), generateItem, m_pMonsterProperty->getValueCopper().GetLongValue(), level);
 }
 void BaseMonster::onExitDeath()
 {
@@ -462,8 +464,7 @@ void BaseMonster::onLand()
     {
         if(VoxelExplorer::getInstance()->checkMonsterAlert(this))
         {
-            Vec2 next;
-            if(VoxelExplorer::getInstance()->trackToPlayer(this, next))
+            if(VoxelExplorer::getInstance()->trackToPlayer(this, m_NextPos))
                 setState(MS_TRACKING);
             else
                 setState(MS_WANDERING);

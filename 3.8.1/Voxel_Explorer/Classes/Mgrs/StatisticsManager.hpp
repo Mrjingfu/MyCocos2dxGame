@@ -31,7 +31,7 @@ public:
     
     void addMonsterKillNum(BaseMonster::MonsterType type);
     void addUseItemNum(PickableItem::PickableItemType type);
-    void addTriggerToxicNum(TerrainTile::TileType type);
+    void addTriggerTrapNum(TerrainTile::TileType type);
     void addUserableOpenNum(UseableItem::UseableItemType type);
     void addRoleDeadNum(eRoleDeadType type);
     

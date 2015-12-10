@@ -14,6 +14,7 @@
 #include "BossProperty.hpp"
 #include "EventConst.h"
 extern const std::string BOSS_MODEL_NAMES[];
+extern const std::string BOSS_STATE_DESC[];
 class FakeShadow;
 class BaseBoss : public Actor
 {
@@ -61,6 +62,8 @@ public:
     
     std::string getIconRes();
     virtual std::string getDesc();
+    
+    virtual std::string getBossDescByEvent(const std::string& event);
 protected:
     BaseBoss();
     virtual ~BaseBoss();
@@ -101,6 +104,8 @@ protected:
     
     virtual void handleAttackStyle(const cocos2d::Vec2& playerPos, const cocos2d::Vec3& dir);
     virtual void handleSkillStage(int currentHp);
+    
+    virtual bool isPlayerInsideBossRoom() { return true; }
 private:
     void onLand();
     void moveToNext(const cocos2d::Vec2& next);
@@ -120,6 +125,8 @@ protected:
     float            m_fFirstTrackingTimer;  ///由睡眠状态进入追踪状态的反应时间
     
     FakeShadow*      m_pFakeShadow;
+    
+    cocos2d::Vec2               m_NextPos;
 };
 
 #endif /* BaseBoss_hpp */

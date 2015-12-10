@@ -367,12 +367,13 @@ PickableItem::PickableItemType PickableItem::generatePickItemByMonsterLevel(int 
     float percentUnStackableItem = 0.3f;
     float percentScroll = 0.2f;
     float percentPotion = 1.0 - percentKey - percentUnStackableItem - percentScroll;
-    AlisaMethod* am = AlisaMethod::create(percentKey, percentUnStackableItem, percentScroll, percentPotion, -1.0, NULL);
-    if(am)
+    AlisaMethod* globalAm = AlisaMethod::create(percentKey, percentUnStackableItem, percentScroll, percentPotion, -1.0, NULL);
+    if(globalAm)
     {
-        if(am->getRandomIndex() == 0)
+        int randIndex = globalAm->getRandomIndex();
+        if(randIndex == 0)
             ret = generateKeyItemType();
-        else if(am->getRandomIndex() == 1)
+        else if(randIndex == 1)
         {
             if(monsterLevel <= 5)
                 ret = generate1_5UnStackableItemType();
@@ -383,9 +384,10 @@ PickableItem::PickableItemType PickableItem::generatePickItemByMonsterLevel(int 
                 AlisaMethod* am = AlisaMethod::create(percentStandard1, percentStandard2, -1.0, NULL);
                 if(am)
                 {
-                    if(am->getRandomIndex() == 0)
+                    int randAm = am->getRandomIndex();
+                    if(randAm == 0)
                         ret = generate1_5UnStackableItemType();
-                    else if(am->getRandomIndex() == 1)
+                    else if(randAm == 1)
                         ret = generate6_10UnStackableItemType();
                 }
             }
@@ -398,13 +400,14 @@ PickableItem::PickableItemType PickableItem::generatePickItemByMonsterLevel(int 
                 AlisaMethod* am = AlisaMethod::create(percentPro, percentStandard1, percentStandard2, percentStandard3, -1.0, NULL);
                 if(am)
                 {
-                    if(am->getRandomIndex() == 0)
+                    int randAm = am->getRandomIndex();
+                    if(randAm == 0)
                         ret = generate11_15UnStackableItemProType();
-                    else if(am->getRandomIndex() == 1)
+                    else if(randAm == 1)
                         ret = generate1_5UnStackableItemType();
-                    else if(am->getRandomIndex() == 2)
+                    else if(randAm == 2)
                         ret = generate6_10UnStackableItemType();
-                    else if(am->getRandomIndex() == 3)
+                    else if(randAm == 3)
                         ret = generate11_15UnStackableItemType();
                 }
 
@@ -419,15 +422,16 @@ PickableItem::PickableItemType PickableItem::generatePickItemByMonsterLevel(int 
                 AlisaMethod* am = AlisaMethod::create(percentPro1, percentPro2, percentStandard1, percentStandard2, percentStandard3, -1.0, NULL);
                 if(am)
                 {
-                    if(am->getRandomIndex() == 0)
+                    int randAm = am->getRandomIndex();
+                    if(randAm == 0)
                         ret = generate11_15UnStackableItemProType();
-                    else if(am->getRandomIndex() == 1)
+                    else if(randAm == 1)
                         ret = generate16_20UnStackableItemProType();
-                    else if(am->getRandomIndex() == 2)
+                    else if(randAm == 2)
                         ret = generate6_10UnStackableItemType();
-                    else if(am->getRandomIndex() == 3)
+                    else if(randAm == 3)
                         ret = generate11_15UnStackableItemType();
-                    else if(am->getRandomIndex() == 4)
+                    else if(randAm == 4)
                         ret = generate16_20UnStackableItemType();
                 }
             }
@@ -441,15 +445,16 @@ PickableItem::PickableItemType PickableItem::generatePickItemByMonsterLevel(int 
                 AlisaMethod* am = AlisaMethod::create(percentPro1, percentPro2, percentStandard1, percentStandard2, percentStandard3, -1.0, NULL);
                 if(am)
                 {
-                    if(am->getRandomIndex() == 0)
+                    int randAm = am->getRandomIndex();
+                    if(randAm == 0)
                         ret = generate16_20UnStackableItemProType();
-                    else if(am->getRandomIndex() == 1)
+                    else if(randAm == 1)
                         ret = generate21_25UnStackableItemProType();
-                    else if(am->getRandomIndex() == 2)
+                    else if(randAm == 2)
                         ret = generate11_15UnStackableItemType();
-                    else if(am->getRandomIndex() == 3)
+                    else if(randAm == 3)
                         ret = generate16_20UnStackableItemType();
-                    else if(am->getRandomIndex() == 4)
+                    else if(randAm == 4)
                         ret = generate21_25UnStackableItemType();
                 }
             }
@@ -463,15 +468,16 @@ PickableItem::PickableItemType PickableItem::generatePickItemByMonsterLevel(int 
                 AlisaMethod* am = AlisaMethod::create(percentPro1, percentPro2, percentStandard1, percentStandard2, percentStandard3, -1.0, NULL);
                 if(am)
                 {
-                    if(am->getRandomIndex() == 0)
+                    int randAm = am->getRandomIndex();
+                    if(randAm == 0)
                         ret = generate21_25UnStackableItemProType();
-                    else if(am->getRandomIndex() == 1)
+                    else if(randAm == 1)
                         ret = generate26_30UnStackableItemProType();
-                    else if(am->getRandomIndex() == 2)
+                    else if(randAm == 2)
                         ret = generate16_20UnStackableItemType();
-                    else if(am->getRandomIndex() == 3)
+                    else if(randAm == 3)
                         ret = generate21_25UnStackableItemType();
-                    else if(am->getRandomIndex() == 4)
+                    else if(randAm == 4)
                         ret = generate26_30UnStackableItemType();
                 }
             }
@@ -485,15 +491,16 @@ PickableItem::PickableItemType PickableItem::generatePickItemByMonsterLevel(int 
                 AlisaMethod* am = AlisaMethod::create(percentPro1, percentPro2, percentStandard1, percentStandard2, percentStandard3, -1.0, NULL);
                 if(am)
                 {
-                    if(am->getRandomIndex() == 0)
+                    int randAm = am->getRandomIndex();
+                    if(randAm == 0)
                         ret = generate26_30UnStackableItemProType();
-                    else if(am->getRandomIndex() == 1)
+                    else if(randAm == 1)
                         ret = generate31_35UnStackableItemProType();
-                    else if(am->getRandomIndex() == 2)
+                    else if(randAm == 2)
                         ret = generate21_25UnStackableItemType();
-                    else if(am->getRandomIndex() == 3)
+                    else if(randAm == 3)
                         ret = generate26_30UnStackableItemType();
-                    else if(am->getRandomIndex() == 4)
+                    else if(randAm == 4)
                         ret = generate31_35UnStackableItemType();
                 }
             }
@@ -507,24 +514,25 @@ PickableItem::PickableItemType PickableItem::generatePickItemByMonsterLevel(int 
                 AlisaMethod* am = AlisaMethod::create(percentPro1, percentPro2, percentPro3,percentStandard1, percentStandard2, -1.0, NULL);
                 if(am)
                 {
-                    if(am->getRandomIndex() == 0)
+                    int randAm = am->getRandomIndex();
+                    if(randAm == 0)
                         ret = generate31_35UnStackableItemProType();
-                    else if(am->getRandomIndex() == 1)
+                    else if(randAm == 1)
                         ret = generate36_40UnStackableItemProType();
-                    else if(am->getRandomIndex() == 2)
+                    else if(randAm == 2)
                         ret = generate41_45UnStackableItemProType();
-                    else if(am->getRandomIndex() == 3)
+                    else if(randAm == 3)
                         ret = generate26_30UnStackableItemType();
-                    else if(am->getRandomIndex() == 4)
+                    else if(randAm == 4)
                         ret = generate31_35UnStackableItemType();
                 }
             }
         }
-        else if(am->getRandomIndex() == 2)
+        else if(randIndex == 2)
         {
             ret = generateScrollType();
         }
-        else if(am->getRandomIndex() == 3)
+        else if(randIndex == 3)
         {
             if(monsterLevel <= 15)
                 ret = generate1_15PotionType();
@@ -532,6 +540,10 @@ PickableItem::PickableItemType PickableItem::generatePickItemByMonsterLevel(int 
                 ret = generate16_30PotionType();
             else
                 ret = generate31_45PotionType();
+        }
+        else
+        {
+            CCLOG("fuck am->getRandomIndex() = %d", randIndex);
         }
     }
     return ret;
@@ -548,9 +560,10 @@ PickableItem::PickableItemType PickableItem::generatePickItemByUseableLevel(int 
         AlisaMethod* am = AlisaMethod::create(percentStandard1, percentStandard2, -1.0, NULL);
         if(am)
         {
-            if(am->getRandomIndex() == 0)
+            int randIndex = am->getRandomIndex();
+            if(randIndex == 0)
                 ret = generate1_5UnStackableItemType();
-            else if(am->getRandomIndex() == 1)
+            else if(randIndex == 1)
                 ret = generate6_10UnStackableItemType();
         }
     }
@@ -569,13 +582,14 @@ PickableItem::PickableItemType PickableItem::generatePickItemByUseableLevel(int 
         AlisaMethod* am = AlisaMethod::create(percentPro, percentStandard1, percentStandard2, percentStandard3, -1.0, NULL);
         if(am)
         {
-            if(am->getRandomIndex() == 0)
+            int randIndex = am->getRandomIndex();
+            if(randIndex == 0)
                 ret = generate11_15UnStackableItemProType();
-            else if(am->getRandomIndex() == 1)
+            else if(randIndex == 1)
                 ret = generate1_5UnStackableItemType();
-            else if(am->getRandomIndex() == 2)
+            else if(randIndex == 2)
                 ret = generate6_10UnStackableItemType();
-            else if(am->getRandomIndex() == 3)
+            else if(randIndex == 3)
                 ret = generate11_15UnStackableItemType();
         }
         
@@ -605,15 +619,16 @@ PickableItem::PickableItemType PickableItem::generatePickItemByUseableLevel(int 
         AlisaMethod* am = AlisaMethod::create(percentPro1, percentPro2, percentStandard1, percentStandard2, percentStandard3, -1.0, NULL);
         if(am)
         {
-            if(am->getRandomIndex() == 0)
+            int randIndex = am->getRandomIndex();
+            if(randIndex == 0)
                 ret = generate11_15UnStackableItemProType();
-            else if(am->getRandomIndex() == 1)
+            else if(randIndex == 1)
                 ret = generate16_20UnStackableItemProType();
-            else if(am->getRandomIndex() == 2)
+            else if(randIndex == 2)
                 ret = generate6_10UnStackableItemType();
-            else if(am->getRandomIndex() == 3)
+            else if(randIndex == 3)
                 ret = generate11_15UnStackableItemType();
-            else if(am->getRandomIndex() == 4)
+            else if(randIndex == 4)
                 ret = generate16_20UnStackableItemType();
         }
     }
@@ -642,15 +657,16 @@ PickableItem::PickableItemType PickableItem::generatePickItemByUseableLevel(int 
         AlisaMethod* am = AlisaMethod::create(percentPro1, percentPro2, percentStandard1, percentStandard2, percentStandard3, -1.0, NULL);
         if(am)
         {
-            if(am->getRandomIndex() == 0)
+            int randIndex = am->getRandomIndex();
+            if(randIndex == 0)
                 ret = generate16_20UnStackableItemProType();
-            else if(am->getRandomIndex() == 1)
+            else if(randIndex == 1)
                 ret = generate21_25UnStackableItemProType();
-            else if(am->getRandomIndex() == 2)
+            else if(randIndex == 2)
                 ret = generate11_15UnStackableItemType();
-            else if(am->getRandomIndex() == 3)
+            else if(randIndex == 3)
                 ret = generate16_20UnStackableItemType();
-            else if(am->getRandomIndex() == 4)
+            else if(randIndex == 4)
                 ret = generate21_25UnStackableItemType();
         }
     }
@@ -679,15 +695,16 @@ PickableItem::PickableItemType PickableItem::generatePickItemByUseableLevel(int 
         AlisaMethod* am = AlisaMethod::create(percentPro1, percentPro2, percentStandard1, percentStandard2, percentStandard3, -1.0, NULL);
         if(am)
         {
-            if(am->getRandomIndex() == 0)
+            int randIndex = am->getRandomIndex();
+            if(randIndex == 0)
                 ret = generate21_25UnStackableItemProType();
-            else if(am->getRandomIndex() == 1)
+            else if(randIndex == 1)
                 ret = generate26_30UnStackableItemProType();
-            else if(am->getRandomIndex() == 2)
+            else if(randIndex == 2)
                 ret = generate16_20UnStackableItemType();
-            else if(am->getRandomIndex() == 3)
+            else if(randIndex == 3)
                 ret = generate21_25UnStackableItemType();
-            else if(am->getRandomIndex() == 4)
+            else if(randIndex == 4)
                 ret = generate26_30UnStackableItemType();
         }
     }
@@ -716,15 +733,16 @@ PickableItem::PickableItemType PickableItem::generatePickItemByUseableLevel(int 
         AlisaMethod* am = AlisaMethod::create(percentPro1, percentPro2, percentStandard1, percentStandard2, percentStandard3, -1.0, NULL);
         if(am)
         {
-            if(am->getRandomIndex() == 0)
+            int randIndex = am->getRandomIndex();
+            if(randIndex == 0)
                 ret = generate26_30UnStackableItemProType();
-            else if(am->getRandomIndex() == 1)
+            else if(randIndex == 1)
                 ret = generate31_35UnStackableItemProType();
-            else if(am->getRandomIndex() == 2)
+            else if(randIndex == 2)
                 ret = generate21_25UnStackableItemType();
-            else if(am->getRandomIndex() == 3)
+            else if(randIndex == 3)
                 ret = generate26_30UnStackableItemType();
-            else if(am->getRandomIndex() == 4)
+            else if(randIndex == 4)
                 ret = generate31_35UnStackableItemType();
         }
     }
@@ -756,15 +774,16 @@ PickableItem::PickableItemType PickableItem::generatePickItemByUseableLevel(int 
         AlisaMethod* am = AlisaMethod::create(percentPro1, percentPro2, percentPro3,percentStandard1, percentStandard2, -1.0, NULL);
         if(am)
         {
-            if(am->getRandomIndex() == 0)
+            int randIndex = am->getRandomIndex();
+            if(randIndex == 0)
                 ret = generate31_35UnStackableItemProType();
-            else if(am->getRandomIndex() == 1)
+            else if(randIndex == 1)
                 ret = generate36_40UnStackableItemProType();
-            else if(am->getRandomIndex() == 2)
+            else if(randIndex == 2)
                 ret = generate41_45UnStackableItemProType();
-            else if(am->getRandomIndex() == 3)
+            else if(randIndex == 3)
                 ret = generate26_30UnStackableItemType();
-            else if(am->getRandomIndex() == 4)
+            else if(randIndex == 4)
                 ret = generate31_35UnStackableItemType();
         }
     }
@@ -778,9 +797,10 @@ PickableItem::PickableItemType PickableItem::generateKeyItemType()
     AlisaMethod* am = AlisaMethod::create(percent1, percent2, percent3, -1.0, NULL);
     if(am)
     {
-        if(am->getRandomIndex() == 0)
+        int randIndex = am->getRandomIndex();
+        if(randIndex == 0)
             return PIT_KEY_GOLD;
-        else if(am->getRandomIndex() == 1)
+        else if(randIndex == 1)
             return PIT_KEY_SILVER;
     }
     return PIT_KEY_COPPER;
@@ -796,16 +816,19 @@ PickableItem::PickableItemType PickableItem::generateScrollType()
     AlisaMethod* am = AlisaMethod::create(percent1, percent2, percent3, percent4, percent5, percent6, -1.0, NULL);
     if(am)
     {
-        if(am->getRandomIndex() == 0)
+        int randIndex = am->getRandomIndex();
+        if(randIndex == 0)
             return PIT_SCROLL_INDENTIFY;
-        else if(am->getRandomIndex() == 1)
+        else if(randIndex == 1)
             return PIT_SCROLL_TELEPORT;
-        else if(am->getRandomIndex() == 2)
+        else if(randIndex == 2)
             return PIT_SCROLL_SPEED;
-        else if(am->getRandomIndex() == 3)
+        else if(randIndex == 3)
             return PIT_SCROLL_STEALTH;
-        else if(am->getRandomIndex() == 4)
+        else if(randIndex == 4)
             return PIT_SCROLL_STRONGER;
+        else if(randIndex == 5)
+            return PIT_SCROLL_DESTINY;
     }
     return PIT_SCROLL_DESTINY;
 }
@@ -821,18 +844,21 @@ PickableItem::PickableItemType PickableItem::generate1_15PotionType()
     AlisaMethod* am = AlisaMethod::create(percent1, percent2, percent3, percent4, percent5, percent6, percent7, -1.0, NULL);
     if(am)
     {
-        if(am->getRandomIndex() == 0)
+        int randIndex = am->getRandomIndex();
+        if(randIndex == 0)
             return PIT_POTION_MINORHEALTH;
-        else if(am->getRandomIndex() == 1)
+        else if(randIndex == 1)
             return PIT_POTION_MINORMANA;
-        else if(am->getRandomIndex() == 2)
+        else if(randIndex == 2)
             return PIT_POTION_MINORRECOVERY;
-        else if(am->getRandomIndex() == 3)
+        else if(randIndex == 3)
             return PIT_POTION_DETOXIFICATION;
-        else if(am->getRandomIndex() == 4)
+        else if(randIndex == 4)
             return PIT_POTION_SPECIFIC;
-        else if(am->getRandomIndex() == 5)
+        else if(randIndex == 5)
             return PIT_POTION_HEALING;
+        else if(randIndex == 6)
+            return PIT_POTION_UNIVERSAL;
     }
     return PIT_POTION_UNIVERSAL;
 }
@@ -851,24 +877,27 @@ PickableItem::PickableItemType PickableItem::generate16_30PotionType()
     AlisaMethod* am = AlisaMethod::create(percent1, percent2, percent3, percent4, percent5, percent6, percent7, percent8, percent9, percent10, -1.0, NULL);
     if(am)
     {
-        if(am->getRandomIndex() == 0)
+        int randIndex = am->getRandomIndex();
+        if(randIndex == 0)
             return PIT_POTION_MINORHEALTH;
-        else if(am->getRandomIndex() == 1)
+        else if(randIndex == 1)
             return PIT_POTION_MINORMANA;
-        else if(am->getRandomIndex() == 2)
+        else if(randIndex == 2)
             return PIT_POTION_MINORRECOVERY;
-        else if(am->getRandomIndex() == 3)
+        else if(randIndex == 3)
             return PIT_POTION_LESSERHEALTH;
-        else if(am->getRandomIndex() == 4)
+        else if(randIndex == 4)
             return PIT_POTION_LESSERMANA;
-        else if(am->getRandomIndex() == 5)
+        else if(randIndex == 5)
             return PIT_POTION_LESSERHEALTH;
-        else if(am->getRandomIndex() == 6)
+        else if(randIndex == 6)
             return PIT_POTION_DETOXIFICATION;
-        else if(am->getRandomIndex() == 7)
+        else if(randIndex == 7)
             return PIT_POTION_SPECIFIC;
-        else if(am->getRandomIndex() == 8)
+        else if(randIndex == 8)
             return PIT_POTION_HEALING;
+        else if(randIndex == 9)
+            return PIT_POTION_UNIVERSAL;
     }
     return PIT_POTION_UNIVERSAL;
 }
@@ -887,24 +916,27 @@ PickableItem::PickableItemType PickableItem::generate31_45PotionType()
     AlisaMethod* am = AlisaMethod::create(percent1, percent2, percent3, percent4, percent5, percent6, percent7, percent8, percent9, percent10, -1.0, NULL);
     if(am)
     {
-        if(am->getRandomIndex() == 0)
+        int randIndex = am->getRandomIndex();
+        if(randIndex == 0)
             return PIT_POTION_MINORHEALTH;
-        else if(am->getRandomIndex() == 1)
+        else if(randIndex == 1)
             return PIT_POTION_MINORMANA;
-        else if(am->getRandomIndex() == 2)
+        else if(randIndex == 2)
             return PIT_POTION_MINORRECOVERY;
-        else if(am->getRandomIndex() == 3)
+        else if(randIndex == 3)
             return PIT_POTION_LESSERHEALTH;
-        else if(am->getRandomIndex() == 4)
+        else if(randIndex == 4)
             return PIT_POTION_LESSERMANA;
-        else if(am->getRandomIndex() == 5)
+        else if(randIndex == 5)
             return PIT_POTION_LESSERHEALTH;
-        else if(am->getRandomIndex() == 6)
+        else if(randIndex == 6)
             return PIT_POTION_DETOXIFICATION;
-        else if(am->getRandomIndex() == 7)
+        else if(randIndex == 7)
             return PIT_POTION_SPECIFIC;
-        else if(am->getRandomIndex() == 8)
+        else if(randIndex == 8)
             return PIT_POTION_HEALING;
+        else if(randIndex == 9)
+            return PIT_POTION_UNIVERSAL;
     }
     return PIT_POTION_UNIVERSAL;
 }

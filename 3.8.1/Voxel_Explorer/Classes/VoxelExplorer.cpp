@@ -437,61 +437,74 @@ void VoxelExplorer::updateMiniMap()
 }
 void VoxelExplorer::updateBossRoomDoor()
 {
-    if(m_pCurrentLevel && m_pPlayer && m_pBossLayer && m_pTerrainDoorsLayer)
+    if(m_pCurrentLevel && m_pPlayer && m_pTerrainDoorsLayer)
     {
-        
-//        BaseBoss* boss = nullptr;
-//        for (const auto& child : m_pBossLayer->getChildren())
-//        {
-//            boss = dynamic_cast<BaseBoss*>(child);
-//            if(boss)
-//                break;
-//        }
-//        if(!boss)
-//            return;
-//        if(boss->getState() == BaseBoss::BS_DEATH)
-//        {
-//            for (const auto& child : m_pTerrainDoorsLayer->getChildren())
-//            {
-//                BaseDoor* door = dynamic_cast<BaseDoor*>(child);
-//                if(door)
-//                {
-//                    Vec2 pos = door->getPosInMap();
-//                    if(m_pCurrentLevel->getTerrainTileAreaType(pos.x, pos.y) == Area::AT_BOSS_ROOM)
-//                    {
-//                        if(door->isMagicLocked())
-//                        {
-//                            door->setMagicLocked(false);
-//                            return;
-//                        }
-//                    }
-//                }
-//            }
-//        }
-//        else
+        for (const auto& child : m_pTerrainDoorsLayer->getChildren())
         {
-            for (const auto& child : m_pTerrainDoorsLayer->getChildren())
+            BaseDoor* door = dynamic_cast<BaseDoor*>(child);
+            if(door)
             {
-                BaseDoor* door = dynamic_cast<BaseDoor*>(child);
-                if(door)
-                {
-                    Vec2 pos = door->getPosInMap();
-                    Vec2 playerPos = m_pPlayer->getPosInMap();
-                    if(pos == playerPos)
-                        return;
-                    if(m_pCurrentLevel->getTerrainTileAreaType(pos.x, pos.y) == Area::AT_BOSS_ROOM
+                Vec2 pos = door->getPosInMap();
+                Vec2 playerPos = m_pPlayer->getPosInMap();
+                if(pos == playerPos)
+                    return;
+                if(m_pCurrentLevel->getTerrainTileAreaType(pos.x, pos.y) == Area::AT_BOSS_ROOM
                        && m_pCurrentLevel->getTerrainTileAreaType(playerPos.x, playerPos.y) == Area::AT_BOSS_ROOM)
+                {
+                    if(!door->isMagicLocked())
                     {
-                        if(!door->isMagicLocked())
-                        {
-                            door->setMagicLocked(true);
-                            Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_DOOR_MAGIC_CLOSED);
-                        }
-                        door->setDoorState(BaseDoor::DS_CLOSED);
-                        
-                        return;
+                        door->setMagicLocked(true);
+                        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_DOOR_MAGIC_CLOSED);
                     }
+                    door->setDoorState(BaseDoor::DS_CLOSED);
+                        
+                    return;
                 }
+            }
+        }
+    }
+}
+bool VoxelExplorer::checkBossRoomDoorClosed()
+{
+    if(m_pCurrentLevel && m_pPlayer && m_pTerrainDoorsLayer)
+    {
+        for (const auto& child : m_pTerrainDoorsLayer->getChildren())
+        {
+            BaseDoor* door = dynamic_cast<BaseDoor*>(child);
+            if(door)
+            {
+                if(door->isMagicLocked())
+                    return true;
+            }
+        }
+    }
+    return false;
+}
+void VoxelExplorer::clearBoosRoom()
+{
+    if(m_pCurrentLevel && m_pPlayer && m_pTerrainDoorsLayer)
+    {
+        for (const auto& child : m_pTerrainDoorsLayer->getChildren())
+        {
+            BaseDoor* door = dynamic_cast<BaseDoor*>(child);
+            if(door)
+            {
+                if(door->isMagicLocked())
+                {
+                    door->setMagicLocked(false);
+                    door->setDoorState(BaseDoor::DS_OPENED);
+                    break;
+                }
+            }
+        }
+        for (const auto& child : m_pMonstersLayer->getChildren())
+        {
+            BaseMonster* monster = dynamic_cast<BaseMonster*>(child);
+            if(monster && monster->getState() != BaseMonster::MS_DEATH)
+            {
+                Vec2 monsterPos = monster->getPosInMap();
+                if(m_pCurrentLevel->getTerrainTileAreaType(monsterPos.x, monsterPos.y) == Area::AT_BOSS_ROOM)
+                    monster->setState(BaseMonster::MS_DEATH);
             }
         }
     }
@@ -594,13 +607,14 @@ void VoxelExplorer::generatePickItemByUseableItem(const cocos2d::Vec2& pos, Usea
     else
     {
         PlayerProperty::getInstance()->addMoney(cocos2d::random(5, 30));
-        float percent1 = 0.3f;
+        float percent1 = 0.1f;
         float percent2 = 0.3f;
         float percent3 = 1.0f - percent1 - percent2;
         AlisaMethod* am = AlisaMethod::create(percent1, percent2, percent3,-1.0, NULL);
         if(am)
         {
-            if(am->getRandomIndex() == 0)
+            int randIndex = am->getRandomIndex();
+            if(randIndex == 0)
             {
                 if(m_pPickableItemsLayer)
                 {
@@ -617,7 +631,7 @@ void VoxelExplorer::generatePickItemByUseableItem(const cocos2d::Vec2& pos, Usea
                     }
                 }
             }
-            else if(am->getRandomIndex() == 1)
+            else if(randIndex == 1)
             {
                 if(m_pMonstersLayer)
                 {
@@ -813,45 +827,72 @@ void VoxelExplorer::handleTriggerTrap(const cocos2d::Vec2& mapPos, TerrainTile::
 {
     if(m_pPlayer && m_pMonstersLayer && m_pCurrentLevel)
     {
+        bool trigged = false;
         if(trapType == TerrainTile::TT_TOXIC_TRAP)
         {
-            StatisticsManager::getInstance()->addTriggerToxicNum(trapType);
-            Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_TRIGGER_TOXIC_TRAP);
-            m_pPlayer->addPlayerBuffer(PB_POISONING);
+            int bufferFlag = PlayerProperty::getInstance()->getPlayerBuffer();
+            if((bufferFlag & PB_POISONING) == 0)
+            {
+                StatisticsManager::getInstance()->addTriggerTrapNum(trapType);
+                Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_TRIGGER_TOXIC_TRAP);
+                m_pPlayer->addPlayerBuffer(PB_POISONING);
+                
+                trigged = true;
+            }
         }
         else if(trapType == TerrainTile::TT_FIRE_TRAP)
         {
-            StatisticsManager::getInstance()->addTriggerToxicNum(trapType);
-            Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_TRIGGER_FIRE_TRAP);
-            m_pPlayer->addPlayerBuffer(PB_FIRE);
+            int bufferFlag = PlayerProperty::getInstance()->getPlayerBuffer();
+            if((bufferFlag & PB_FIRE) == 0)
+            {
+                StatisticsManager::getInstance()->addTriggerTrapNum(trapType);
+                Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_TRIGGER_FIRE_TRAP);
+                m_pPlayer->addPlayerBuffer(PB_FIRE);
+                trigged = true;
+            }
         }
         else if(trapType == TerrainTile::TT_PARALYTIC_TRAP)
         {
-            StatisticsManager::getInstance()->addTriggerToxicNum(trapType);
-            Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_TRIGGER_PARALYTIC_TRAP);
-            m_pPlayer->addPlayerBuffer(PB_PARALYTIC);
+            int bufferFlag = PlayerProperty::getInstance()->getPlayerBuffer();
+            if((bufferFlag & PB_PARALYTIC) == 0)
+            {
+                StatisticsManager::getInstance()->addTriggerTrapNum(trapType);
+                Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_TRIGGER_PARALYTIC_TRAP);
+                m_pPlayer->addPlayerBuffer(PB_PARALYTIC);
+                trigged = true;
+            }
         }
         else if(trapType == TerrainTile::TT_GRIPPING_TRAP)
         {
-            StatisticsManager::getInstance()->addTriggerToxicNum(trapType);
+            StatisticsManager::getInstance()->addTriggerTrapNum(trapType);
             Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_TRIGGER_GRIPPING_TRAP);
             m_pPlayer->hurtByGrippingTrap();
+            trigged = true;
         }
         else if(trapType == TerrainTile::TT_SUMMONING_TRAP)
         {
-            StatisticsManager::getInstance()->addTriggerToxicNum(trapType);
-            Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_TRIGGER_SUMMONING_TRAP);
-            if(!m_pCurrentLevel->createSummoningMonsters(mapPos))
-                CCLOG("Handle trigger summoning trap failed!");
+            if(m_pPlayer->getLastPosInMap() != m_pPlayer->getPosInMap())
+            {
+                StatisticsManager::getInstance()->addTriggerTrapNum(trapType);
+                Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_TRIGGER_SUMMONING_TRAP);
+                if(!m_pCurrentLevel->createSummoningMonsters(mapPos))
+                    CCLOG("Handle trigger summoning trap failed!");
+                trigged = true;
+            }
         }
         else if(trapType == TerrainTile::TT_WEAK_TRAP)
         {
-            StatisticsManager::getInstance()->addTriggerToxicNum(trapType);
-            Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_TRIGGER_WEAK_TRAP);
-            m_pPlayer->addPlayerBuffer(PB_WEAK);
+            int bufferFlag = PlayerProperty::getInstance()->getPlayerBuffer();
+            if((bufferFlag & PB_WEAK) == 0)
+            {
+                StatisticsManager::getInstance()->addTriggerTrapNum(trapType);
+                Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_TRIGGER_WEAK_TRAP);
+                m_pPlayer->addPlayerBuffer(PB_WEAK);
+                trigged = true;
+            }
         }
         
-        if(m_pTerrainTilesLayer)
+        if(m_pTerrainTilesLayer && trigged)
         {
             for (const auto& child : m_pTerrainTilesLayer->getChildren())
             {

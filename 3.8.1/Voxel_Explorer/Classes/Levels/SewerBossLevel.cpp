@@ -18,6 +18,7 @@ SewerBossLevel::SewerBossLevel()
     m_nMinAreaSize  = 9;
     m_nMaxAreaSize  = 11;
     m_nSplitAreaSize = 3;
+    m_pBossExitRoom = nullptr;
 }
 bool SewerBossLevel::build()
 {
@@ -106,11 +107,11 @@ bool SewerBossLevel::build()
     }
     if (candidates.size() > 0) {
         int rand = cocos2d::random(0, (int)(candidates.size())-1);
-        Area* bossExitRoom = candidates[rand];
-        if(bossExitRoom)
+        m_pBossExitRoom = candidates[rand];
+        if(m_pBossExitRoom)
         {
-            bossExitRoom->connectArea(m_AreaExit);
-            bossExitRoom->setAreaType(Area::AT_BOSS_EXIT);
+            m_pBossExitRoom->connectArea(m_AreaExit);
+            m_pBossExitRoom->setAreaType(Area::AT_BOSS_EXIT);
         }
     }
     else
@@ -310,6 +311,60 @@ bool SewerBossLevel::createSummoningMonstersBySlimeKing(const cocos2d::Vec2& map
             }
         }
         return true;
+    }
+    return true;
+}
+void SewerBossLevel::clearBossRoom()
+{
+    if(m_AreaExit)
+    {
+        std::vector<int> edgeIndexList = m_AreaExit->getTilesOnEdge(this, 1);
+        for (int i = 0; i < edgeIndexList.size(); i++) {
+            int x = edgeIndexList[i]%m_nWidth;
+            int y = edgeIndexList[i]/m_nWidth;
+            setTerrainTileType(x, y, TerrainTile::TT_STANDARD);
+            VoxelExplorer::getInstance()->updateTerrainTile(x, y, TerrainTile::TT_STANDARD);
+        }
+    }
+    VoxelExplorer::getInstance()->clearBoosRoom();
+}
+bool SewerBossLevel::createPickableItems()
+{
+    if(!m_pBossExitRoom)
+        return false;
+    std::vector<int> edgeIndexList = m_pBossExitRoom->getTilesOnEdge(this, 1);
+    for (int i = 0; i < edgeIndexList.size(); i++) {
+        int tileIndex = edgeIndexList[i];
+        
+        std::vector<int> neighbours8 = this->getNeighbours8();
+        bool neighbourHasDoor = false;
+        for (int j = 0; j<neighbours8.size(); ++j) {
+            if(m_Map[neighbours8[j] + tileIndex].m_Type == TerrainTile::TT_LOCKED_BOSS_DOOR)
+                neighbourHasDoor = true;
+        }
+        if(neighbourHasDoor)
+            continue;
+        
+        int playerlevel = PlayerProperty::getInstance()->getLevel().GetLongValue();
+        int itemLevel = cocos2d::random(playerlevel - 3, playerlevel + 3);
+        if(itemLevel < 1)
+            itemLevel = 1;
+        
+        PickableItem::PickableItemType type = PickableItem::generatePickItemByMonsterLevel(itemLevel);
+        if(type == PickableItem::PIT_UNKNOWN)
+            continue;
+        
+        PickableItem* item = PickableItem::create(type, itemLevel);
+        if(!item)
+            return false;
+        else
+        {
+            item->setPosition3D(Vec3(m_Map[tileIndex].m_nX*TerrainTile::CONTENT_SCALE, -0.5f*TerrainTile::CONTENT_SCALE, -m_Map[tileIndex].m_nY*TerrainTile::CONTENT_SCALE));
+            item->setVisited(m_Map[tileIndex].m_bVisited);
+            VoxelExplorer::getInstance()->getPickableItemsLayer()->addChild(item);
+            item->setState(PickableItem::PIS_BEGIN_GENERATE);
+        }
+
     }
     return true;
 }

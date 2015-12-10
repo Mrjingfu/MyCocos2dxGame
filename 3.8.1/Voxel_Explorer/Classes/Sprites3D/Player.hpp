@@ -40,6 +40,8 @@ public:
     std::string getIconRes();
     virtual std::string getDesc();
     
+    cocos2d::Vec2 getLastPosInMap() const { return m_LastPosInMap; }
+    
     PlayerState getState() const { return m_curState; }
     void setState(PlayerState state);
     
@@ -77,7 +79,7 @@ private:
     void onExitDrop();
     void onExitDeath();
     
-    void onLand(bool triggerTrap);
+    void onLand();
     void updatePlayerBuffer(float delta);
     
     bool createPlayerLight();
@@ -102,6 +104,8 @@ private:
 
     
     HurtData*                   m_pHurtData;
+    
+    cocos2d::Vec2               m_LastPosInMap;
 };
 
 #endif /* Player_hpp */

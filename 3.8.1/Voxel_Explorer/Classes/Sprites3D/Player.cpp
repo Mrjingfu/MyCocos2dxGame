@@ -663,7 +663,7 @@ void Player::onEnterJumpLocal()
     EaseSineOut* moveDown = EaseSineOut::create(MoveTo::create(0.1f, getPosition3D()));
     Sequence* sequenceJump = Sequence::create(moveUp, moveDown, NULL);
     Spawn* spawn = Spawn::create(scaleTo, sequenceJump, NULL);
-    CallFunc* callback = CallFunc::create(CC_CALLBACK_0(Player::onLand,this,true));
+    CallFunc* callback = CallFunc::create(CC_CALLBACK_0(Player::onLand,this));
     Sequence* sequence = Sequence::create(spawn, callback, NULL);
     
     int bufferFlag = PlayerProperty::getInstance()->getPlayerBuffer();
@@ -702,7 +702,7 @@ void Player::onEnterJumpMove()
     EaseSineOut* moveDown = EaseSineOut::create(MoveTo::create(0.1f, Vec3(getPositionX(), getPositionY(), getPositionZ()) + dir));
     Sequence* sequenceJump = Sequence::create(moveUp, moveDown, NULL);
     Spawn* spawn = Spawn::create(scaleTo, sequenceJump, NULL);
-    CallFunc* callback = CallFunc::create(CC_CALLBACK_0(Player::onLand,this,true));
+    CallFunc* callback = CallFunc::create(CC_CALLBACK_0(Player::onLand,this));
     Sequence* sequence = Sequence::create(spawn, callback, NULL);
     
     int bufferFlag = PlayerProperty::getInstance()->getPlayerBuffer();
@@ -742,7 +742,7 @@ void Player::onEnterAttack()
     EaseSineOut* moveDown = EaseSineOut::create(MoveTo::create(0.1f, getPosition3D()));
     Sequence* sequenceJump = Sequence::create(moveUp, callback, moveDown, NULL);
     Spawn* spawn = Spawn::create(scaleTo, sequenceJump, NULL);
-    CallFunc* callback2 = CallFunc::create(CC_CALLBACK_0(Player::onLand,this,false));
+    CallFunc* callback2 = CallFunc::create(CC_CALLBACK_0(Player::onLand,this));
     Sequence* sequence = Sequence::create(spawn, callback2, NULL);
     
     int bufferFlag = PlayerProperty::getInstance()->getPlayerBuffer();
@@ -793,18 +793,22 @@ void Player::onExitDrop()
 void Player::onExitDeath()
 {
 }
-void Player::onLand(bool triggerTrap)
+void Player::onLand()
 {
     setState(PS_IDLE);
     VoxelExplorer::getInstance()->cameraTrackPlayer();
     VoxelExplorer::getInstance()->checkPickItem();
     VoxelExplorer::getInstance()->checkUpdateFogOfWar();
-    if(triggerTrap)
-        VoxelExplorer::getInstance()->checkTriggerTrap();
+    VoxelExplorer::getInstance()->checkTriggerTrap();
     VoxelExplorer::getInstance()->updateMiniMap();
-   // if(RandomDungeon::getInstance()->getCurrentDungeonNode()->isBossDepth())
+    //for debug
+    //if(RandomDungeon::getInstance()->getCurrentDungeonNode()->isBossDepth())
         VoxelExplorer::getInstance()->updateBossRoomDoor();
-    CCLOG("player x = %d   y = %d", (int)getPosInMap().x, (int)getPosInMap().y);
+    
+    CCLOG("player lastPos x = %d   y = %d", (int)m_LastPosInMap.x, (int)m_LastPosInMap.y);
+    CCLOG("player Pos x = %d   y = %d", (int)getPosInMap().x, (int)getPosInMap().y);
+    m_LastPosInMap = getPosInMap();
+    
 }
 void Player::updatePlayerBuffer(float delta)
 {
