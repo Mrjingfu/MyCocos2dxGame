@@ -61,7 +61,7 @@ void BossPropLayer::updateCharacterProp()
         m_pCharacterCurHp->setString(StringUtils::format("%d",int(m_pBoss->getBossProperty()->getCurrentHP())));
         m_pCharacterMaxHp->setString(StringUtils::format("/%d",int(m_pBoss->getBossProperty()->getMaxHP())));
         std::string BossName =m_pBoss->getDesc();
-        m_pCharacterName->setColor(PopupUILayerManager::getInstance()->getTipsColor(TIP_POSITIVE));
+        m_pCharacterName->setColor(PopupUILayerManager::getInstance()->getTipsColor(TIP_NEUTRAL));
         m_pCharacterIcon->loadTexture(m_pBoss->getIconRes(),TextureResType::PLIST);
         m_pCharacterIcon->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
         m_pCharacterName->setString(BossName);

@@ -223,7 +223,7 @@ void GameToolbarLayer::onClickMsg(cocos2d::Ref *ref)
 {
     CHECK_ACTION(ref);
     CCLOG("onClickMsg");
-    if (m_bIsDist||m_bIsOpenSmailMap) {
+    if (m_bIsDist) {
         return;
     }
     onClickDistTipsFrame(nullptr);
@@ -241,7 +241,7 @@ void GameToolbarLayer::onClickMsg(cocos2d::Ref *ref)
 void GameToolbarLayer::onClickDist(cocos2d::Ref *ref)
 {
     CCLOG("onClickDist");
-    if (m_bIsDist || m_bIsOpenSmailMap)
+    if (m_bIsDist )
         return;
     m_bIsDist = true;
     if (m_pGameDistTipsFrame ) {
@@ -262,7 +262,7 @@ void GameToolbarLayer::onClickSearch(cocos2d::Ref *ref)
 {
     CHECK_ACTION(ref);
     CCLOG("onClickSearch");
-    if (m_bIsDist || m_bIsOpenSmailMap)
+    if (m_bIsDist)
         return;
     VoxelExplorer::getInstance()->searchAndCheck();
     
