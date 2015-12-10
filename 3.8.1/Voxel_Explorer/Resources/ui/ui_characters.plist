@@ -7,7 +7,7 @@
             <key>adjudicator.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{831,98},{90,90}}</string>
+                <string>{{848,2},{90,90}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -202,7 +202,7 @@
             <key>chr_rain.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{739,105},{90,96}}</string>
+                <string>{{756,2},{90,96}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -267,7 +267,7 @@
             <key>gatekeeper.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{756,2},{86,94}}</string>
+                <string>{{733,314},{86,94}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -319,7 +319,7 @@
             <key>gnoll.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{763,203},{90,90}}</string>
+                <string>{{823,100},{90,90}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -436,7 +436,7 @@
             <key>rat.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{743,407},{90,90}}</string>
+                <string>{{763,208},{90,90}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -449,7 +449,7 @@
             <key>shadow.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{733,314},{91,91}}</string>
+                <string>{{743,410},{91,91}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -514,7 +514,7 @@
             <key>snake.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{844,2},{78,89}}</string>
+                <string>{{940,2},{78,89}}</string>
                 <key>offset</key>
                 <string>{0,-6}</string>
                 <key>rotated</key>
@@ -549,6 +549,19 @@
                 <string>{{0,0},{101,101}}</string>
                 <key>sourceSize</key>
                 <string>{101,101}</string>
+            </dict>
+            <key>warden.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{739,105},{82,101}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{82,101}}</string>
+                <key>sourceSize</key>
+                <string>{82,101}</string>
             </dict>
             <key>wolf.png</key>
             <dict>
@@ -586,7 +599,7 @@
             <key>size</key>
             <string>{1024,512}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:de3e69c34219260911651ee37aa8c732:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:52d22e8b3ac03d1a739c6a43965929b3:1/1$</string>
             <key>textureFileName</key>
             <string>ui_characters.png</string>
         </dict>
