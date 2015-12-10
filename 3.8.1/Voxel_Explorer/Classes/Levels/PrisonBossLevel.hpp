@@ -24,6 +24,11 @@ public:
     virtual void createSiegeMonsters(const cocos2d::Vec2& pos);
     
     virtual bool createBoss(const cocos2d::Vec2& pos);
+    
+    virtual bool createSummoningMonstersByWarden(const cocos2d::Vec2& mapPos, int skillStage);
+    virtual void clearBossRoom();
+    
+    virtual bool createPickableItems();
 private:
     Area*               m_pArenaRoom;
     int                 m_nArenaDoor;

@@ -9,6 +9,7 @@
 #include "StandardMonster.hpp"
 #include "LevelResourceManager.h"
 #include "OutlineEffect3D.h"
+#include "UtilityHelper.h"
 USING_NS_CC;
 
 StandardMonster* StandardMonster::create(BaseMonster::MonsterType type, bool elite)
@@ -105,7 +106,8 @@ StandardMonster* StandardMonster::create(BaseMonster::MonsterType type, bool eli
             monster->setScale(monster->getScale() + 0.2f);
             
             OutlineEffect3D* outline = OutlineEffect3D::create();
-            outline->setOutlineColor(Vec3(1.0f, 1.0f, 1.0f));
+            Color3B outlineColor = UtilityHelper::randomColor();
+            outline->setOutlineColor(Vec3(outlineColor.r/255.0f, outlineColor.g/255.0f, outlineColor.b/255.0f));
             outline->setOutlineWidth(0.03f);
             monster->addEffect(outline, 1);
         }

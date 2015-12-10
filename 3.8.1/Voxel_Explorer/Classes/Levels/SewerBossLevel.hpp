@@ -26,8 +26,12 @@ public:
     virtual bool createBoss(const cocos2d::Vec2& pos);
     
     virtual bool createSummoningMonstersBySlimeKing(const cocos2d::Vec2& mapPos, int skillStage);
+    virtual void clearBossRoom();
+
+    virtual bool createPickableItems();
 private:
     cocos2d::Vec2       m_BossPosition;
+    Area*               m_pBossExitRoom;
 };
 
 

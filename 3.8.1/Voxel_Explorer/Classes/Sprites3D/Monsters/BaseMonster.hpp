@@ -159,6 +159,8 @@ protected:
     float               m_fWanderingDelayTimer; ////巡逻时每次移动前的延迟
     
     FakeShadow*                 m_pFakeShadow;
+    
+    cocos2d::Vec2               m_NextPos;
 };
 
 #endif /* BaseMonster_hpp */

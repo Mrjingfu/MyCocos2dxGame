@@ -94,7 +94,7 @@ void StatisticsManager::addUseItemNum(PickableItem::PickableItemType type)
     }
     ++m_nUserItemTotalNum;
 }
-void StatisticsManager::addTriggerToxicNum(TerrainTile::TileType type)
+void StatisticsManager::addTriggerTrapNum(TerrainTile::TileType type)
 {
     CCASSERT(type>=TerrainTile::TT_TOXIC_TRAP && type<TerrainTile::TT_MAX, "Tile type error");
     

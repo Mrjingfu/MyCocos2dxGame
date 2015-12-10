@@ -50,11 +50,12 @@ UseableItem::UseableItemType GameFormula::generateUseItemType()
     AlisaMethod* am = AlisaMethod::create(percent1,percent2,percent3,percent4,-1.0, NULL);
     if(am)
     {
-        if(am->getRandomIndex() == 1)
+        int randIndex = am->getRandomIndex();
+        if(randIndex == 1)
             ret = UseableItem::UIT_CHEST_COPPER;
-        else if(am->getRandomIndex() == 2)
+        else if(randIndex == 2)
             ret = UseableItem::UIT_CHEST_SILVER;
-        else if(am->getRandomIndex() == 3)
+        else if(randIndex == 3)
             ret = UseableItem::UIT_CHEST_GOLD;
         else
             ret = cocos2d::random(UseableItem::UIT_JAR_1, UseableItem::UIT_JAR_3);

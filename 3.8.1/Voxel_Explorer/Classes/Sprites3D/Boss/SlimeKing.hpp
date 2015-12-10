@@ -20,6 +20,9 @@ public:
     virtual void onEnterSkill1();
     virtual void onEnterSkill2();
     virtual void onEnterSkill3();
+    virtual void onEnterDeath();
+    
+    virtual bool isPlayerInsideBossRoom();
 };
 
 #endif /* SlimeKing_hpp */

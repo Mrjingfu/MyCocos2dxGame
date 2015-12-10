@@ -13,6 +13,7 @@
 #include "UtilityHelper.h"
 #include "AlisaMethod.h"
 #include "GameFormula.hpp"
+#include "OutlineEffect3D.h"
 USING_NS_CC;
 const std::string BOSS_MODEL_NAMES[] = {
     "BMN_UNKNOWN",
@@ -26,7 +27,19 @@ const std::string BOSS_MODEL_NAMES[] = {
     
     "BMN_MAX"
 };
-
+const std::string BOSS_STATE_DESC[]
+{
+    "BSC_UNKNOWN",
+    
+    "BSC_SLIMEKING",               ///史莱姆王
+    "BSC_WARDEN",                  ///典狱长
+    "BSC_ARCHBISHOP",              ///大主教
+    "BSC_KOBOLDLEADER",            ///狗头人首领
+    "BSC_GIANT",                   ///巨人格鲁尔德
+    "BSC_SKELETONKING",            ///骷髅王
+    
+    "BSC_MAX"
+};
 BaseBoss::BaseBoss()
 {
     m_Type = BT_UNKNOWN;
@@ -58,6 +71,21 @@ std::string BaseBoss::getIconRes()
 std::string BaseBoss::getDesc()
 {
     return UtilityHelper::getLocalString(BOSS_MODEL_NAMES[m_Type]);
+}
+std::string BaseBoss::getBossDescByEvent(const std::string& event)
+{
+    if(event == EVENT_BOSS_ALERT)
+        return UtilityHelper::getLocalString(BOSS_STATE_DESC[m_Type] + "_ALERT");
+    else if(event == EVENT_BOSS_SKILL1)
+        return UtilityHelper::getLocalString(BOSS_STATE_DESC[m_Type] + "_SKILL1");
+    else if(event == EVENT_BOSS_SKILL2)
+        return UtilityHelper::getLocalString(BOSS_STATE_DESC[m_Type] + "_SKILL2");
+    else if(event == EVENT_BOSS_SKILL3)
+        return UtilityHelper::getLocalString(BOSS_STATE_DESC[m_Type] + "_SKILL3");
+    else if(event == EVENT_BOSS_DEATH)
+        return UtilityHelper::getLocalString(BOSS_STATE_DESC[m_Type] + "_DEATH");
+    else
+        return "";
 }
 void BaseBoss::attackedByPlayer(bool miss)
 {
@@ -244,7 +272,7 @@ void BaseBoss::update(float delta)
     switch (m_State) {
         case BS_SLEEPING:
             {
-                if(VoxelExplorer::getInstance()->checkBossAlert(this))
+                if(isPlayerInsideBossRoom() && VoxelExplorer::getInstance()->checkBossAlert(this))
                     setState(BS_TRACKING);
             }
             break;
@@ -312,17 +340,15 @@ void BaseBoss::onEnterMoving()
 {
     if(m_LastState == BS_TRACKING)
     {
-        Vec2 next;
-        if(VoxelExplorer::getInstance()->trackToPlayer(this, next))
-            moveToNext(next);
+        if(VoxelExplorer::getInstance()->trackToPlayer(this, m_NextPos))
+            moveToNext(m_NextPos);
         else
             setState(BS_WANDERING);
     }
     else if(m_LastState == BS_WANDERING)
     {
-        Vec2 next;
-        if(VoxelExplorer::getInstance()->wanderingAround(this, next))
-            moveToNext(next);
+        if(VoxelExplorer::getInstance()->wanderingAround(this, m_NextPos))
+            moveToNext(m_NextPos);
         else
             setState(BS_WANDERING);
     }
@@ -345,8 +371,18 @@ void BaseBoss::onExitAttack()
 
 void BaseBoss::onEnterDeath()
 {
+    if(getEffectCount() > 0)
+    {
+        OutlineEffect3D* outline = dynamic_cast<OutlineEffect3D*>(getEffect(0));
+        if(outline)
+        {
+            Color3B outlineColor = UtilityHelper::randomColor();
+            outline->setOutlineColor(Vec3(outlineColor.r/255.0f, outlineColor.g/255.0f, outlineColor.b/255.0f));
+        }
+    }
     this->stopAllActions();
     removeTerrainTileFlag(TileInfo::ATTACKABLE);
+    removeTerrainTileFlagByPos(TileInfo::ATTACKABLE, m_NextPos);
     this->setVisible(false);
     if(m_pFakeShadow)
         m_pFakeShadow->setVisible(false);
@@ -406,8 +442,7 @@ void BaseBoss::onLand()
     {
         if(VoxelExplorer::getInstance()->checkBossAlert(this))
         {
-            Vec2 next;
-            if(VoxelExplorer::getInstance()->trackToPlayer(this, next))
+            if(VoxelExplorer::getInstance()->trackToPlayer(this, m_NextPos))
                 setState(BS_TRACKING);
             else
                 setState(BS_WANDERING);

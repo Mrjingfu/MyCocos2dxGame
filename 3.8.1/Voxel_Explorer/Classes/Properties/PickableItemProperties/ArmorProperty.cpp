@@ -174,7 +174,8 @@ void ArmorProperty::handleIdentify()
         AlisaMethod* am = AlisaMethod::create(percent1, percent2, -1.0, NULL);
         if(am)
         {
-            if(am->getRandomIndex() == 0)
+            int randIndex = am->getRandomIndex();
+            if(randIndex == 0)
                 addedEffectCount = cocos2d::random(1, 2);
             else
                 addedEffectCount = cocos2d::random(3, 4);
