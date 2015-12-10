@@ -229,6 +229,10 @@
 		D6B0611B1803AB670077942B /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6B0611A1803AB670077942B /* CoreMotion.framework */; };
 		EC00DD5F1BD665A6009BC378 /* MenuScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC00DD5D1BD665A6009BC378 /* MenuScene.cpp */; };
 		EC00DD601BD665A6009BC378 /* MenuScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC00DD5D1BD665A6009BC378 /* MenuScene.cpp */; };
+		EC25C3C41C19120D00B4340D /* AlertPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC25C3C21C19120D00B4340D /* AlertPopupUI.cpp */; };
+		EC25C3C51C19120D00B4340D /* AlertPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC25C3C21C19120D00B4340D /* AlertPopupUI.cpp */; };
+		EC25C3CA1C1977DF00B4340D /* InformationPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC25C3C81C1977DF00B4340D /* InformationPopupUI.cpp */; };
+		EC25C3CB1C1977DF00B4340D /* InformationPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC25C3C81C1977DF00B4340D /* InformationPopupUI.cpp */; };
 		EC3CC9711C088F4F00F8CFC8 /* BagLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC3CC93D1C088F4F00F8CFC8 /* BagLayer.cpp */; };
 		EC3CC9721C088F4F00F8CFC8 /* BagLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC3CC93D1C088F4F00F8CFC8 /* BagLayer.cpp */; };
 		EC3CC9731C088F4F00F8CFC8 /* BagMangerLayerUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC3CC93F1C088F4F00F8CFC8 /* BagMangerLayerUI.cpp */; };
@@ -569,6 +573,10 @@
 		D6B0611A1803AB670077942B /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/CoreMotion.framework; sourceTree = DEVELOPER_DIR; };
 		EC00DD5D1BD665A6009BC378 /* MenuScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MenuScene.cpp; sourceTree = "<group>"; };
 		EC00DD5E1BD665A6009BC378 /* MenuScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuScene.h; sourceTree = "<group>"; };
+		EC25C3C21C19120D00B4340D /* AlertPopupUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AlertPopupUI.cpp; sourceTree = "<group>"; };
+		EC25C3C31C19120D00B4340D /* AlertPopupUI.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = AlertPopupUI.hpp; sourceTree = "<group>"; };
+		EC25C3C81C1977DF00B4340D /* InformationPopupUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = InformationPopupUI.cpp; sourceTree = "<group>"; };
+		EC25C3C91C1977DF00B4340D /* InformationPopupUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InformationPopupUI.h; sourceTree = "<group>"; };
 		EC3CC93D1C088F4F00F8CFC8 /* BagLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BagLayer.cpp; sourceTree = "<group>"; };
 		EC3CC93E1C088F4F00F8CFC8 /* BagLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BagLayer.h; sourceTree = "<group>"; };
 		EC3CC93F1C088F4F00F8CFC8 /* BagMangerLayerUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BagMangerLayerUI.cpp; sourceTree = "<group>"; };
@@ -1206,6 +1214,8 @@
 		EC3CC9531C088F4F00F8CFC8 /* Popup */ = {
 			isa = PBXGroup;
 			children = (
+				EC25C3C81C1977DF00B4340D /* InformationPopupUI.cpp */,
+				EC25C3C91C1977DF00B4340D /* InformationPopupUI.h */,
 				EC3DC0BC1C157FC800D0FE47 /* AchievePopupUI.cpp */,
 				EC3DC0BD1C157FC800D0FE47 /* AchievePopupUI.hpp */,
 				EC3CC9581C088F4F00F8CFC8 /* ItemPopupUI.cpp */,
@@ -1228,14 +1238,14 @@
 				EC795F4E1C0D4AB20083829B /* TaskPopupUI.hpp */,
 				EC795F591C0D4B150083829B /* OldManPopupUI.cpp */,
 				EC795F5A1C0D4B150083829B /* OldManPopupUI.hpp */,
-				EC795F5D1C0D4B560083829B /* LittleWitchPopupUI.cpp */,
-				EC795F5E1C0D4B560083829B /* LittleWitchPopupUI.hpp */,
 				EC795F611C0D4B6B0083829B /* NursePopupUI.cpp */,
 				EC795F621C0D4B6B0083829B /* NursePopupUI.hpp */,
 				EC3CC9541C088F4F00F8CFC8 /* DeadPopupUI.cpp */,
 				EC3CC9551C088F4F00F8CFC8 /* DeadPopupUI.h */,
-				EC3CC9561C088F4F00F8CFC8 /* InfoPopupUI.cpp */,
+				EC795F5D1C0D4B560083829B /* LittleWitchPopupUI.cpp */,
+				EC795F5E1C0D4B560083829B /* LittleWitchPopupUI.hpp */,
 				EC3CC9571C088F4F00F8CFC8 /* InfoPopupUI.h */,
+				EC3CC9561C088F4F00F8CFC8 /* InfoPopupUI.cpp */,
 				EC3CC95C1C088F4F00F8CFC8 /* PausePopupUI.cpp */,
 				EC3CC95D1C088F4F00F8CFC8 /* PausePopupUI.h */,
 				EC3CC95E1C088F4F00F8CFC8 /* PopupType.h */,
@@ -1249,6 +1259,8 @@
 				EC5D568F1C0C4E2200F5EDDF /* DistPopupUI.hpp */,
 				EC54F9FE1C116D4F002E8D8C /* DialoguePopupUI.cpp */,
 				EC54F9FF1C116D4F002E8D8C /* DialoguePopupUI.hpp */,
+				EC25C3C21C19120D00B4340D /* AlertPopupUI.cpp */,
+				EC25C3C31C19120D00B4340D /* AlertPopupUI.hpp */,
 			);
 			path = Popup;
 			sourceTree = "<group>";
@@ -1513,6 +1525,7 @@
 				55A980811C05AB9400722C9D /* Ladder.cpp in Sources */,
 				554F01051BDA3A3100F4DF8E /* SewerLevel.cpp in Sources */,
 				55338ACF1BD8781E00EA316F /* BaseMonster.cpp in Sources */,
+				EC25C3C41C19120D00B4340D /* AlertPopupUI.cpp in Sources */,
 				EC3CC97B1C088F4F00F8CFC8 /* GameToolbarLayer.cpp in Sources */,
 				EC795F5B1C0D4B150083829B /* OldManPopupUI.cpp in Sources */,
 				555B0D1B1BC51A2C0055FB6D /* Door.cpp in Sources */,
@@ -1525,6 +1538,7 @@
 				555B0D231BC51A2C0055FB6D /* GameScene.cpp in Sources */,
 				550545211BFEF00C006B4500 /* BaseEffect3D.cpp in Sources */,
 				55CB9B0A1C07355200BAF60B /* NpcDataManager.cpp in Sources */,
+				EC25C3CA1C1977DF00B4340D /* InformationPopupUI.cpp in Sources */,
 				EC3CC9951C088F4F00F8CFC8 /* RolePopupUI.cpp in Sources */,
 				55F116D81C04452300A6C191 /* MineLevel.cpp in Sources */,
 				EC3CC9831C088F4F00F8CFC8 /* RoleLayer.cpp in Sources */,
@@ -1674,6 +1688,7 @@
 				555B0D241BC51A2C0055FB6D /* GameScene.cpp in Sources */,
 				55F116D51C04450200A6C191 /* FaneLevel.cpp in Sources */,
 				EC3CC98A1C088F4F00F8CFC8 /* InfoPopupUI.cpp in Sources */,
+				EC25C3C51C19120D00B4340D /* AlertPopupUI.cpp in Sources */,
 				551E93CC1BD51291009F788F /* PlayerProperty.cpp in Sources */,
 				551E93ED1BD512D3009F788F /* XXTEA.cpp in Sources */,
 				551E93E71BD512D3009F788F /* md5.c in Sources */,
@@ -1692,6 +1707,7 @@
 				5560F5EF1C12CB8E001DD164 /* KoboldLeader.cpp in Sources */,
 				EC3CC9821C088F4F00F8CFC8 /* PromptLayer.cpp in Sources */,
 				55F81CB91BDB8B81002EC075 /* ArmorProperty.cpp in Sources */,
+				EC25C3CB1C1977DF00B4340D /* InformationPopupUI.cpp in Sources */,
 				550C32ED1BDDE8740015124E /* SecondWeaponProperty.cpp in Sources */,
 				55F81CBD1BDB923A002EC075 /* MagicOrnamentProperty.cpp in Sources */,
 				551E93B01BD51282009F788F /* NativeBridge.mm in Sources */,

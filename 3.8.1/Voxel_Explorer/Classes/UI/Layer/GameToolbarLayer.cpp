@@ -181,7 +181,7 @@ void GameToolbarLayer::onClickBag(Ref* ref)
     }
     
 //  PopupUILayerManager::getInstance()->openPopup(ePopupRole);
-    ShopPopupUI* popupUILayer = static_cast<ShopPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupWeaponShop));
+    ShopPopupUI* popupUILayer = static_cast<ShopPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupGambleShop));
     if (popupUILayer) {
         popupUILayer->setShopTitle(EVENT_NPC_KNIGHT_ANSWER);
         popupUILayer->setDarkLayerVisble(false);
@@ -256,6 +256,7 @@ void GameToolbarLayer::onClickPause(cocos2d::Ref *ref)
     CHECK_ACTION(ref);
     CCLOG("onClickPause");
     DialoguePopupUI* popupUi = static_cast<DialoguePopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupDialogue));
+
     
 }
 void GameToolbarLayer::onClickSearch(cocos2d::Ref *ref)

@@ -142,7 +142,9 @@ void ItemShopBuyPopupUI::onClickBuy(cocos2d::Ref *ref)
         }
         CCLOG("onClickBuy count:%d",count);
         if (m_eShopType == ShopPopupUI::eShopType::ST_GAMBLE) {
+            
             isSuccess = PlayerProperty::getInstance()->buyItemToBag(buyItemProperty, CChaosNumber(count),true);
+
         }else
             isSuccess = PlayerProperty::getInstance()->buyItemToBag(buyItemProperty, CChaosNumber(count));
 

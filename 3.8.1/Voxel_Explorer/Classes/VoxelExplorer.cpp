@@ -1141,7 +1141,10 @@ void VoxelExplorer::handleDownstairs()
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_GO_BOSSROOM);
     }
 }
-
+void VoxelExplorer::handleGoChasm()
+{
+    ///跳入深渊处理
+}
 bool VoxelExplorer::createLayers()
 {
     m_p3DLayer = Layer3D::create();

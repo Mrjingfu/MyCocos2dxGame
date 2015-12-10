@@ -24,6 +24,7 @@
 #include "LittleWitchPopupUI.hpp"
 #include "NursePopupUI.hpp"
 #include "DialoguePopupUI.hpp"
+#include "AlertPopupUI.hpp"
 PopupUILayerManager::PopupUILayerManager()
 {
     m_pParentLayer = nullptr;
@@ -145,6 +146,9 @@ PopupUILayer* PopupUILayerManager::initPopUp(ePopupType type)
             break;
         case ePopupDialogue:
             popupLayer = DialoguePopupUI::create();
+            break;
+        case ePopupAlert:
+            popupLayer = AlertPopupUI::create();
             break;
         default:
             break;

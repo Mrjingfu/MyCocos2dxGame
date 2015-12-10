@@ -67,6 +67,7 @@ public:
     void handlePlayerUseSmallPortal();
     void handleUpstairs();
     void handleDownstairs();
+    void handleGoChasm();
     
     cocos2d::Layer* getMainLayer() const { return m_pMainLayer; }
     cocos2d::Layer* get3DLayer() const { return m_p3DLayer; }

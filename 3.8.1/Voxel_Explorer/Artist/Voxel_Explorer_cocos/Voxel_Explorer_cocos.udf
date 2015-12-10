@@ -32,8 +32,13 @@
       <Value ctype="TabsInfo">
         <OpenedDocuments>
           <FilePathData Path="shopPopupLayer.csd" />
+          <FilePathData Path="pausePopupLayer.csd" />
+          <FilePathData Path="alertLayer.csd" />
+          <FilePathData Path="dialogueLayer.csd" />
+          <FilePathData Path="characterInfoLayer.csd" />
+          <FilePathData Path="infoLayer.csd" />
         </OpenedDocuments>
-        <ActiveDocument Path="shopPopupLayer.csd" />
+        <ActiveDocument Path="infoLayer.csd" />
       </Value>
     </Item>
   </Properties>

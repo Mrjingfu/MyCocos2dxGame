@@ -89,7 +89,8 @@ bool PlayerProperty::initNewPlayer()   ///新角色初始化
     if(weaponProperty->isIdentified())
         weaponProperty->adjustByLevel();
     m_Bag.push_back(weaponProperty);
-    
+    ///for debug
+    addMoney(900000);
     ret = equipWeapon(itemIDCounter);
     ret = addItemToBag(PickableItem::PIT_POTION_MINORHEALTH, 1);
     ret = addItemToBag(PickableItem::PIT_POTION_MINORHEALTH, 1);
@@ -521,9 +522,9 @@ bool PlayerProperty::indentifyItem(CChaosNumber id)
     if(pickableItemProperty && !pickableItemProperty->isIdentified())
     {
         pickableItemProperty->handleIdentify();
+        m_bDirty = true;
         return true;
     }
-    m_bDirty = true;
     return false;
 }
 bool PlayerProperty::usePotion(CChaosNumber id)

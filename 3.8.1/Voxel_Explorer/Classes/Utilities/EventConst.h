@@ -100,6 +100,7 @@ static const std::string EVENT_GO_UPSTAIRS = "GO_UPSTAIRS";
 static const std::string EVENT_GO_UPSTAIRS_FORBIDDEN = "GO_UPSTAIRS_FORBIDDEN";
 static const std::string EVENT_GO_DOWNSTAIRS = "GO_DOWNSTAIRS";
 static const std::string EVENT_GO_BOSSROOM = "GO_BOSSROOM";
+static const std::string EVENT_GO_CHASM ="GO_CHASM";
 
 static const std::string EVENT_NPC_KNIGHT_ANSWER = "NPC_KNIGHT_ANSWER";             ///武器店
 static const std::string EVENT_NPC_CHILD_ANSWER = "NPC_CHILD_ANSWER";               ///任务

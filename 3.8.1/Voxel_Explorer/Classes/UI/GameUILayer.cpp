@@ -31,6 +31,7 @@
 #include "ShopPopupUI.h"
 #include "StatisticsManager.hpp"
 #include "BossPropLayer.hpp"
+#include "AlertPopupUI.hpp"
 USING_NS_CC;
 GameUILayer::GameUILayer()
 {
@@ -188,7 +189,8 @@ void GameUILayer::onEventRoleNoRoomKey(cocos2d::EventCustom *sender)
 }
 void GameUILayer::onEventRoleNoBossKey(cocos2d::EventCustom *sender)
 {
-    std::string msg = UtilityHelper::getLocalStringForUi(EVENT_PLAYER_NO_BOSS_KEY);
+    
+    std::string msg = cocos2d::StringUtils::format(UtilityHelper::getLocalStringForUi(EVENT_PLAYER_NO_BOSS_KEY).c_str(),RandomDungeon::getInstance()->getCurrentBossName().c_str());
     PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
     m_pGameToolBarLayer->sendMessage(msg);
     CCLOG("onEventRoleNoBossKey");
@@ -286,7 +288,7 @@ void GameUILayer::onEventUseRoomKey(cocos2d::EventCustom *sender)
 void GameUILayer::onEventUseBossKey(cocos2d::EventCustom *sender)
 {
     CCLOG("onEventUseBossKey");
-    std::string msg = UtilityHelper::getLocalStringForUi(EVENT_PLAYER_USE_BOSS_KEY);
+    std::string msg = UtilityHelper::getLocalStringForUi(cocos2d::StringUtils::format(EVENT_PLAYER_USE_BOSS_KEY.c_str(),RandomDungeon::getInstance()->getCurrentBossName().c_str()));
     PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
     m_pGameToolBarLayer->sendMessage(msg);
 }
@@ -384,6 +386,20 @@ void GameUILayer::onEventGoDownStairs(cocos2d::EventCustom *sender)
 void GameUILayer::onEventGoBossRoom(cocos2d::EventCustom *sender)
 {
     CCLOG("onEventGoBossRoom");
+}
+void GameUILayer::onEventGoChasm(cocos2d::EventCustom *sender)
+{
+    CCLOG("onEventGoChasm");
+    AlertPopupUI* alertPopupUI = static_cast<AlertPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupAlert));
+    if (alertPopupUI) {
+        alertPopupUI->setMessage(UtilityHelper::getLocalStringForUi(EVENT_GO_CHASM));
+        alertPopupUI->setPositiveListerner([](Ref* ref)
+        {
+            CCLOG("handleGoChasm");
+            VoxelExplorer::getInstance()->handleGoChasm();
+        });
+        alertPopupUI->setNegativeListerner([](Ref* ref){});
+    }
 }
 
 void GameUILayer::onEventTriggerToxic(cocos2d::EventCustom *sender) //中毒机关
@@ -860,6 +876,8 @@ void GameUILayer::onEnter()
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_GO_UPSTAIRS_FORBIDDEN, CC_CALLBACK_1(GameUILayer::onEventGoUpStairsForbidden,this)) ;
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_GO_DOWNSTAIRS, CC_CALLBACK_1(GameUILayer::onEventGoDownStairs,this)) ;
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_GO_BOSSROOM, CC_CALLBACK_1(GameUILayer::onEventGoBossRoom,this));
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_GO_CHASM, CC_CALLBACK_1(GameUILayer::onEventGoChasm,this));
+
     
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_NPC_KNIGHT_ANSWER, CC_CALLBACK_1(GameUILayer::onEventNpcKnightAnsWer,this)) ;
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_NPC_CHILD_ANSWER, CC_CALLBACK_1(GameUILayer::onEventNpcChildAnsWer,this)) ;
@@ -935,6 +953,7 @@ void GameUILayer::onExit()
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_GO_UPSTAIRS_FORBIDDEN);
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_GO_DOWNSTAIRS);
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_GO_BOSSROOM);
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_GO_CHASM);
     
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_NPC_KNIGHT_ANSWER);
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_NPC_CHILD_ANSWER);

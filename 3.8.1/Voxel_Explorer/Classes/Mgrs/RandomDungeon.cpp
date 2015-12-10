@@ -11,6 +11,7 @@
 #include "GameScene.h"
 #include "NpcDataManager.hpp"
 #include "LevelResourceManager.h"
+#include "BaseBoss.hpp"
 USING_NS_CC;
 
 DUNGEON_TYPE DT_SelectGroup1[] = { DT_SEWER, DT_PRISON, DT_FANE, DT_MINES, DT_CAVE, DT_TOMB };
@@ -300,6 +301,32 @@ void RandomDungeon::assignedDungeonNode(DungeonNode* node)
         node->m_nTotalNum = cocos2d::random(8, 12);
         node->m_nTransmutationDepth = cocos2d::random(4, 8);
     }
+}
+std::string RandomDungeon::getCurrentBossName() const
+{
+    std::string name;
+    DUNGEON_TYPE dungeontype = m_pCurrentNode->m_Type;
+    
+    if (dungeontype == DUNGEON_TYPE::DT_SEWER)
+    {
+        name = UtilityHelper::getLocalString(BOSS_MODEL_NAMES[BaseBoss::BossType::BT_SLIMEKING]);
+    }else if (dungeontype == DUNGEON_TYPE::DT_PRISON)
+    {
+        name = UtilityHelper::getLocalString(BOSS_MODEL_NAMES[BaseBoss::BossType::BT_WARDEN]);
+    }else if (dungeontype == DUNGEON_TYPE::DT_FANE)
+    {
+        name = UtilityHelper::getLocalString(BOSS_MODEL_NAMES[BaseBoss::BossType::BT_ARCHBISHOP]);
+    }else if (dungeontype == DUNGEON_TYPE::DT_MINES)
+    {
+        name = UtilityHelper::getLocalString(BOSS_MODEL_NAMES[BaseBoss::BossType::BT_KOBOLDLEADER]);
+    }else if (dungeontype == DUNGEON_TYPE::DT_CAVE)
+    {
+        name = UtilityHelper::getLocalString(BOSS_MODEL_NAMES[BaseBoss::BossType::BT_GIANT]);
+    }else if (dungeontype == DUNGEON_TYPE::DT_TOMB)
+    {
+        name = UtilityHelper::getLocalString(BOSS_MODEL_NAMES[BaseBoss::BossType::BT_SKELETONKING]);
+    }
+    return name;
 }
 void RandomDungeon::load()
 {

@@ -208,5 +208,7 @@
 	<string>btn_exit_en.png</string>
 	<key>ITEM_SPLITE_COUNT</key>
 	<string>Count:%d</string>
+	<key>ITEM_BAG_DELETE</key>
+	<string>是否移除该道具？</string>
 </dict>
 </plist>
