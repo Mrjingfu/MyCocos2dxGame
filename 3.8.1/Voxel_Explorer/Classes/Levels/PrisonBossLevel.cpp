@@ -100,7 +100,7 @@ bool PrisonBossLevel::build()
         }
     }
     
-    m_BossPosition = m_AreaExit->getCenter();
+    m_BossPosition = m_pArenaRoom->getCenter();
     ///处理
     assignAreasType();
     generate();
@@ -203,7 +203,7 @@ void PrisonBossLevel::createSiegeMonsters(const cocos2d::Vec2& pos)
 }
 bool PrisonBossLevel::createBoss(const cocos2d::Vec2& pos)
 {
-    Warden* warden = Warden::create(BaseBoss::BT_SKELETONKING);
+    Warden* warden = Warden::create(BaseBoss::BT_WARDEN);
     if(!warden)
         return false;
     int tileIndex = pos.x + pos.y * m_nWidth;
@@ -213,5 +213,156 @@ bool PrisonBossLevel::createBoss(const cocos2d::Vec2& pos)
     VoxelExplorer::getInstance()->getBossLayer()->addChild(warden);
     warden->setState(BaseBoss::BS_SLEEPING);
 
+    return true;
+}
+bool PrisonBossLevel::createSummoningMonstersByWarden(const cocos2d::Vec2& mapPos, int skillStage)
+{
+    if(!m_pArenaRoom)
+        return false;
+    if(skillStage == 1)
+    {
+        return true;
+    }
+    else if(skillStage == 2)
+    {
+        int count = 0;
+        std::vector<int> cornerPosList = m_pArenaRoom->getTilesOnCorner(this);
+        for (int i = 0; i<cornerPosList.size(); i++) {
+            int tileIndex = cornerPosList[i];
+            if(isTerrainTilePassable(tileIndex))
+            {
+                StandardMonster* monster = StandardMonster::create(BaseMonster::MT_PRISONGUARD);
+                if(!monster)
+                    return false;
+                monster->setPosition3D(Vec3(m_Map[tileIndex].m_nX*TerrainTile::CONTENT_SCALE, -0.5f*TerrainTile::CONTENT_SCALE, -m_Map[tileIndex].m_nY*TerrainTile::CONTENT_SCALE));
+                monster->setVisited(m_Map[tileIndex].m_bVisited);
+                monster->addTerrainTileFlag(TileInfo::ATTACKABLE);
+                VoxelExplorer::getInstance()->getMonstersLayer()->addChild(monster);
+                monster->setState(BaseMonster::MS_TRACKING);
+                monster->setMonsterFOV(7);
+                count++;
+                if(count == 4)
+                    break;
+            }
+        }
+        if(count < 4)
+        {
+            int newCount = 4 - count;
+            for (int i = 0; i<newCount; i++) {
+                int tileIndex = m_pArenaRoom->getRandomTile(this);
+                if(isTerrainTilePassable(tileIndex))
+                {
+                    StandardMonster* monster = StandardMonster::create(BaseMonster::MT_PRISONGUARD);
+                    if(!monster)
+                        return false;
+                    monster->setPosition3D(Vec3(m_Map[tileIndex].m_nX*TerrainTile::CONTENT_SCALE, -0.5f*TerrainTile::CONTENT_SCALE, -m_Map[tileIndex].m_nY*TerrainTile::CONTENT_SCALE));
+                    monster->setVisited(m_Map[tileIndex].m_bVisited);
+                    monster->addTerrainTileFlag(TileInfo::ATTACKABLE);
+                    VoxelExplorer::getInstance()->getMonstersLayer()->addChild(monster);
+                    monster->setState(BaseMonster::MS_TRACKING);
+                    monster->setMonsterFOV(7);
+                }
+                else
+                {
+                    i--;
+                    continue;
+                }
+            }
+        }
+        return true;
+    }
+    else if(skillStage == 3)
+    {
+        int count = 0;
+        std::vector<int> cornerPosList = m_pArenaRoom->getTilesOnCorner(this);
+        for (int i = 0; i<cornerPosList.size(); i++) {
+            int tileIndex = cornerPosList[i];
+            if(isTerrainTilePassable(tileIndex))
+            {
+                StandardMonster* monster = StandardMonster::create(BaseMonster::MT_TORTURE, true);
+                if(!monster)
+                    return false;
+                monster->setPosition3D(Vec3(m_Map[tileIndex].m_nX*TerrainTile::CONTENT_SCALE, -0.5f*TerrainTile::CONTENT_SCALE, -m_Map[tileIndex].m_nY*TerrainTile::CONTENT_SCALE));
+                monster->setVisited(m_Map[tileIndex].m_bVisited);
+                monster->addTerrainTileFlag(TileInfo::ATTACKABLE);
+                VoxelExplorer::getInstance()->getMonstersLayer()->addChild(monster);
+                monster->setState(BaseMonster::MS_TRACKING);
+                monster->setMonsterFOV(7);
+                count++;
+                if(count == 4)
+                    break;
+            }
+        }
+        if(count < 4)
+        {
+            int newCount = 4 - count;
+            for (int i = 0; i<newCount; i++) {
+                int tileIndex = m_pArenaRoom->getRandomTile(this);
+                if(isTerrainTilePassable(tileIndex))
+                {
+                    StandardMonster* monster = StandardMonster::create(BaseMonster::MT_TORTURE, true);
+                    if(!monster)
+                        return false;
+                    monster->setPosition3D(Vec3(m_Map[tileIndex].m_nX*TerrainTile::CONTENT_SCALE, -0.5f*TerrainTile::CONTENT_SCALE, -m_Map[tileIndex].m_nY*TerrainTile::CONTENT_SCALE));
+                    monster->setVisited(m_Map[tileIndex].m_bVisited);
+                    monster->addTerrainTileFlag(TileInfo::ATTACKABLE);
+                    VoxelExplorer::getInstance()->getMonstersLayer()->addChild(monster);
+                    monster->setState(BaseMonster::MS_TRACKING);
+                    monster->setMonsterFOV(7);
+                }
+                else
+                {
+                    i--;
+                    continue;
+                }
+            }
+        }
+        return true;
+    }
+    return false;
+}
+void PrisonBossLevel::clearBossRoom()
+{
+    VoxelExplorer::getInstance()->clearBoosRoom();
+}
+
+bool PrisonBossLevel::createPickableItems()
+{
+    if(!m_AreaExit)
+        return false;
+    std::vector<int> edgeIndexList = m_AreaExit->getTilesOnEdge(this, 1);
+    for (int i = 0; i < edgeIndexList.size(); i++) {
+        int tileIndex = edgeIndexList[i];
+        
+        std::vector<int> neighbours8 = this->getNeighbours8();
+        bool neighbourHasDoor = false;
+        for (int j = 0; j<neighbours8.size(); ++j) {
+            if(m_Map[neighbours8[j] + tileIndex].m_Type == TerrainTile::TT_LOCKED_BOSS_DOOR)
+                neighbourHasDoor = true;
+        }
+        if(neighbourHasDoor)
+            continue;
+        
+        int playerlevel = PlayerProperty::getInstance()->getLevel().GetLongValue();
+        int itemLevel = cocos2d::random(playerlevel - 3, playerlevel + 3);
+        if(itemLevel < 1)
+            itemLevel = 1;
+        
+        PickableItem::PickableItemType type = PickableItem::generatePickItemByMonsterLevel(itemLevel);
+        if(type == PickableItem::PIT_UNKNOWN)
+            continue;
+        
+        PickableItem* item = PickableItem::create(type, itemLevel);
+        if(!item)
+            return false;
+        else
+        {
+            item->setPosition3D(Vec3(m_Map[tileIndex].m_nX*TerrainTile::CONTENT_SCALE, -0.5f*TerrainTile::CONTENT_SCALE, -m_Map[tileIndex].m_nY*TerrainTile::CONTENT_SCALE));
+            item->setVisited(m_Map[tileIndex].m_bVisited);
+            VoxelExplorer::getInstance()->getPickableItemsLayer()->addChild(item);
+            item->setState(PickableItem::PIS_BEGIN_GENERATE);
+        }
+        
+    }
     return true;
 }

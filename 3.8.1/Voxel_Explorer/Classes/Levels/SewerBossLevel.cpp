@@ -312,7 +312,7 @@ bool SewerBossLevel::createSummoningMonstersBySlimeKing(const cocos2d::Vec2& map
         }
         return true;
     }
-    return true;
+    return false;
 }
 void SewerBossLevel::clearBossRoom()
 {

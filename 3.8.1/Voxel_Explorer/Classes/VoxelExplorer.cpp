@@ -1297,12 +1297,12 @@ bool VoxelExplorer::createLevel()
             break;
         case DT_PRISON:
             {
-                if(node->isBossDepth())
-                    m_pCurrentLevel = new(std::nothrow) PrisonBossLevel();
-                else
-                    m_pCurrentLevel = new(std::nothrow) PrisonLevel();
+//                if(node->isBossDepth())
+//                    m_pCurrentLevel = new(std::nothrow) PrisonBossLevel();
+//                else
+//                    m_pCurrentLevel = new(std::nothrow) PrisonLevel();
                 ///for debug
-                //m_pCurrentLevel = new(std::nothrow) PrisonBossLevel();
+                m_pCurrentLevel = new(std::nothrow) PrisonBossLevel();
             }
             break;
         case DT_FANE:

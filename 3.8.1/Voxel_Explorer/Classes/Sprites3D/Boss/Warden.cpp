@@ -9,6 +9,10 @@
 #include "Warden.hpp"
 #include "LevelResourceManager.h"
 #include "OutlineEffect3D.h"
+#include "PrisonBossLevel.hpp"
+#include "UtilityHelper.h"
+#include "VoxelExplorer.h"
+#include "FakeShadow.hpp"
 USING_NS_CC;
 
 Warden* Warden::create(BaseBoss::BossType type)
@@ -29,7 +33,78 @@ Warden* Warden::create(BaseBoss::BossType type)
 Warden::Warden()
 {
     m_Type = BT_WARDEN;
+    m_nFOV = 7;
 }
 Warden::~Warden()
 {
+}
+void Warden::onEnterSkill1()
+{
+    PrisonBossLevel* level = dynamic_cast<PrisonBossLevel*>(VoxelExplorer::getInstance()->getCurrentLevel());
+    if(level)
+    {
+        level->createSummoningMonstersByWarden(getPosInMap(), 1);
+    }
+}
+void Warden::onEnterSkill2()
+{
+    PrisonBossLevel* level = dynamic_cast<PrisonBossLevel*>(VoxelExplorer::getInstance()->getCurrentLevel());
+    if(level)
+    {
+        level->createSummoningMonstersByWarden(getPosInMap(), 2);
+    }
+    if(getEffectCount() > 0)
+    {
+        OutlineEffect3D* outline = dynamic_cast<OutlineEffect3D*>(getEffect(0));
+        if(outline)
+        {
+            Vec3 color = Vec3(Color3B::ORANGE.r/255.0f, Color3B::ORANGE.g/255.0f, Color3B::ORANGE.b/255.0f);
+            outline->setOutlineColor(color);
+        }
+    }
+}
+void Warden::onEnterSkill3()
+{
+    PrisonBossLevel* level = dynamic_cast<PrisonBossLevel*>(VoxelExplorer::getInstance()->getCurrentLevel());
+    if(level)
+    {
+        level->createSummoningMonstersByWarden(getPosInMap(), 3);
+    }
+    if(getEffectCount() > 0)
+    {
+        OutlineEffect3D* outline = dynamic_cast<OutlineEffect3D*>(getEffect(0));
+        if(outline)
+        {
+            Vec3 color = Vec3(Color3B::RED.r/255.0f, Color3B::RED.g/255.0f, Color3B::RED.b/255.0f);
+            outline->setOutlineColor(color);
+        }
+    }
+}
+void Warden::onEnterDeath()
+{
+    if(getEffectCount() > 0)
+    {
+        OutlineEffect3D* outline = dynamic_cast<OutlineEffect3D*>(getEffect(0));
+        if(outline)
+        {
+            Color3B outlineColor = UtilityHelper::randomColor();
+            outline->setOutlineColor(Vec3(outlineColor.r/255.0f, outlineColor.g/255.0f, outlineColor.b/255.0f));
+        }
+    }
+    this->stopAllActions();
+    removeTerrainTileFlag(TileInfo::ATTACKABLE);
+    removeTerrainTileFlagByPos(TileInfo::ATTACKABLE, m_NextPos);
+    this->setVisible(false);
+    if(m_pFakeShadow)
+        m_pFakeShadow->setVisible(false);
+    VoxelExplorer::getInstance()->addExplosion(getPosition3D());
+    VoxelExplorer::getInstance()->generatePickItemByBoss(getPosInMap(), m_pBossProperty->getValueCopper().GetLongValue());
+    
+    PrisonBossLevel* level = dynamic_cast<PrisonBossLevel*>(VoxelExplorer::getInstance()->getCurrentLevel());
+    if(level)
+        level->clearBossRoom();
+}
+bool Warden::isPlayerInsideBossRoom()
+{
+    return VoxelExplorer::getInstance()->checkBossRoomDoorClosed();
 }
