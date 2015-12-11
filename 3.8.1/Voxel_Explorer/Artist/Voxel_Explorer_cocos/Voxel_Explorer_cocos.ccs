@@ -138,13 +138,14 @@
           <PlistImageFile Name="koboldleader..png" Key="koboldleader..png" />
           <PlistImageFile Name="skeletonking.png" Key="skeletonking.png" />
           <PlistImageFile Name="slimeking.png" Key="slimeking.png" />
+          <PlistImageFile Name="warden.png" Key="warden.png" />
         </PlistImageFolder>
         <Project Name="itemMoneyLayer.csd" Type="Layer" />
         <Project Name="itemBottomLayer.csd" Type="Layer" />
         <Project Name="itemShopBottomLayer.csd" Type="Layer" />
         <Project Name="dialogueLayer.csd" Type="Layer" />
         <Project Name="alertLayer.csd" Type="Layer" />
-        <Project Name="infoLayer.csd" Type="Layer" />
+        <Project Name="informationLayer.csd" Type="Layer" />
       </RootFolder>
     </Group>
   </SolutionFolder>

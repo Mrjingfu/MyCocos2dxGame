@@ -122,11 +122,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/UI/GameUILayer.cpp"
-            timestampString = "471497728.12713"
+            timestampString = "471519636.336018"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "819"
-            endingLineNumber = "819"
+            startingLineNumber = "820"
+            endingLineNumber = "820"
             landmarkName = "GameUILayer::onEventBossSkill1(cocos2d::EventCustom *sender)"
             landmarkType = "5">
          </BreakpointContent>
@@ -138,11 +138,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/UI/GameUILayer.cpp"
-            timestampString = "471497728.12713"
+            timestampString = "471519636.336018"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "825"
-            endingLineNumber = "825"
+            startingLineNumber = "826"
+            endingLineNumber = "826"
             landmarkName = "GameUILayer::onEventBossSkill2(cocos2d::EventCustom *sender)"
             landmarkType = "5">
          </BreakpointContent>
@@ -154,11 +154,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/UI/GameUILayer.cpp"
-            timestampString = "471497728.12713"
+            timestampString = "471519636.336018"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "834"
-            endingLineNumber = "834"
+            startingLineNumber = "835"
+            endingLineNumber = "835"
             landmarkName = "GameUILayer::onEventBossSkill3(cocos2d::EventCustom *sender)"
             landmarkType = "5">
          </BreakpointContent>
@@ -186,12 +186,60 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/UI/GameUILayer.cpp"
-            timestampString = "471497728.12713"
+            timestampString = "471519636.336018"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "799"
-            endingLineNumber = "799"
+            startingLineNumber = "800"
+            endingLineNumber = "800"
             landmarkName = "GameUILayer::onEventBossAlert(cocos2d::EventCustom *sender)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/UI/Popup/InformationPopupUI.cpp"
+            timestampString = "471520001.613735"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "118"
+            endingLineNumber = "118"
+            landmarkName = "InformationPopupUI::refreshUIView()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/UI/Popup/InformationPopupUI.cpp"
+            timestampString = "471520046.777536"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "89"
+            endingLineNumber = "89"
+            landmarkName = "InformationPopupUI::refreshUIView()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/UI/Popup/InformationPopupUI.cpp"
+            timestampString = "471520118.186513"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "145"
+            endingLineNumber = "145"
+            landmarkName = "InformationPopupUI::setInfoIcon(std::string icon)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

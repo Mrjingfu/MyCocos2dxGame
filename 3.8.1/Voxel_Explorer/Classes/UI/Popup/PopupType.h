@@ -15,7 +15,6 @@ enum ePopupType
     ePopupRole,             //角色弹窗
     ePopupEquipItem,        //装备道具弹窗
     ePopupItem,             //道具弹窗
-    ePopupInfo,             //信息弹窗
     ePopupPause,            //暂停弹窗
     ePopupItemShopBuy,      //商店道具购买弹窗
     ePopupItemShopSell,
@@ -27,8 +26,8 @@ enum ePopupType
     ePopupMagicShop,        //魔法物品
     ePopupWeaponShop,       //装备物品
     ePopupTask,             //任务
-    ePopupDialogue,         //对白框
     ePopupAlert,            //提示框
+    ePopupInformation,     
     ePopupCount
 };
 typedef enum {
@@ -42,7 +41,7 @@ typedef enum {
     TIP_BLUE,
     TIP_DODGE,
     TIP_BOLOCK,
-    TIP_CRITICAL_STRIKE,
-
+    TIP_ROLE_CRITICAL_STRIKE,
+    TIP_MONSTER_CRITICAL_STRIKE
 }TipTypes;
 #endif

@@ -16,7 +16,6 @@
 #include "ui/CocosGUI.h"
 #include "RandomDungeon.hpp"
 #include "StandardMonster.hpp"
-#include "InfoPopupUI.h"
 #include "BaseDoor.hpp"
 #include "PotionsProperty.hpp"
 #include "ScrollProperty.hpp"
@@ -32,6 +31,7 @@
 #include "StatisticsManager.hpp"
 #include "BossPropLayer.hpp"
 #include "AlertPopupUI.hpp"
+#include "InformationPopupUI.h"
 USING_NS_CC;
 GameUILayer::GameUILayer()
 {
@@ -119,12 +119,13 @@ void GameUILayer::onTouchEnded(cocos2d::Touch *touch, cocos2d::Event *event)
     {
         std::string iconRes;
         std::string desc = VoxelExplorer::getInstance()->getScreenPickDesc(touch->getLocation(), iconRes);
-        InfoPopupUI* infoUi = static_cast<InfoPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupInfo));
+        InformationPopupUI* infoUi = static_cast<InformationPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupInformation));
         if(infoUi)
         {
-           m_pGameToolBarLayer->onClickDistTipsFrame();
+            m_pGameToolBarLayer->onClickDistTipsFrame();
             infoUi->setDarkLayerVisble(false);
-            infoUi->setInfoData(iconRes, desc);
+            infoUi->setInfoIcon(iconRes);
+            infoUi->setInfoDesc(desc);
         }
         CCLOG("Pick Desc : %s, Icon Res: %s", desc.c_str(), iconRes.c_str());
     }
@@ -628,7 +629,7 @@ void GameUILayer::onEventRoleHud(cocos2d::EventCustom *sender)
             CCLOG("monster 格挡");
         }else if (hurData->m_bCriticalStrike && !hurData->m_bBlocked)
         {
-            PopupUILayerManager::getInstance()->showStatus(TIP_CRITICAL_STRIKE, StringUtils::format(UtilityHelper::getLocalStringForUi("STATUS_TEXT_CRITICAL_STRIKE").c_str(),hurData->m_nDamage),pt);
+            PopupUILayerManager::getInstance()->showStatus(TIP_ROLE_CRITICAL_STRIKE, StringUtils::format(UtilityHelper::getLocalStringForUi("STATUS_TEXT_CRITICAL_STRIKE").c_str(),hurData->m_nDamage),pt);
             CCLOG("monster 暴击");
         }else{
             PopupUILayerManager::getInstance()->showStatus(TIP_NEGATIVE, Value(hurData->m_nDamage).asString(),pt);
@@ -680,7 +681,7 @@ void GameUILayer::onEventMonsterHud(cocos2d::EventCustom *sender)
             CCLOG("monster 格挡");
         }else if (hurData->m_bCriticalStrike)
         {
-            PopupUILayerManager::getInstance()->showStatus(TIP_CRITICAL_STRIKE, StringUtils::format(UtilityHelper::getLocalStringForUi("STATUS_TEXT_CRITICAL_STRIKE").c_str(),hurData->m_nDamage),pt);
+            PopupUILayerManager::getInstance()->showStatus(TIP_MONSTER_CRITICAL_STRIKE, StringUtils::format(UtilityHelper::getLocalStringForUi("STATUS_TEXT_CRITICAL_STRIKE").c_str(),hurData->m_nDamage),pt);
              CCLOG("monster 暴击");
         }else{
             PopupUILayerManager::getInstance()->showStatus(TIP_NEUTRAL, Value(hurData->m_nDamage).asString(),pt);
@@ -761,7 +762,7 @@ void GameUILayer::onEventBossDeath(cocos2d::EventCustom *sender)
     
     CallFunc* func = CallFunc::create([monster]{
         std::string msg = monster->getBossDescByEvent(EVENT_BOSS_DEATH);
-        PopupUILayerManager::getInstance()->showStatusImport(TIP_POSITIVE, msg);
+        PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
     });
     this->runAction(Sequence::createWithTwoActions(DelayTime::create(2.0f), func));
 
@@ -783,7 +784,7 @@ void GameUILayer::onEventBossHud(cocos2d::EventCustom *sender)
             CCLOG("monster 格挡");
         }else if (hurData->m_bCriticalStrike)
         {
-            PopupUILayerManager::getInstance()->showStatus(TIP_CRITICAL_STRIKE, StringUtils::format(UtilityHelper::getLocalStringForUi("STATUS_TEXT_CRITICAL_STRIKE").c_str(),hurData->m_nDamage),pt);
+            PopupUILayerManager::getInstance()->showStatus(TIP_MONSTER_CRITICAL_STRIKE, StringUtils::format(UtilityHelper::getLocalStringForUi("STATUS_TEXT_CRITICAL_STRIKE").c_str(),hurData->m_nDamage),pt);
             CCLOG("monster 暴击");
         }else{
             PopupUILayerManager::getInstance()->showStatus(TIP_NEUTRAL, Value(hurData->m_nDamage).asString(),pt);

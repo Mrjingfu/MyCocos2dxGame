@@ -10,13 +10,15 @@
 #define __TinyFlare__UtilityHelper__
 
 #include "cocos2d.h"
-
+#include "ui/CocosGUI.h"
 class UtilityHelper
 {
 public:
     static std::string getLocalString(const std::string& key);
     static std::string getLocalStringForUi(const std::string& key);
     static std::string getLocalStringForPlist(const std::string& key,const std::string cn_plist,const std::string en_plist);
+    static cocos2d::Size getSingleStrFontSize(cocos2d::ui::Text*  tempText,std::string str);//单个字符Size大小
+    static std::vector<std::string> getStringCount(std::string str ); //字符串字节格式
     static int getLineStr(std::string& str,int length);//对字符串换行符 返回换行符个数
     static int getCharUtf8Count(char ch);
     static void screenshot(const std::string& fileName,const std::function<void(const std::string&)>& callback);

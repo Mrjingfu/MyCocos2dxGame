@@ -31,7 +31,6 @@ NpcDataManager* NpcDataManager::getInstance()
 NpcDataManager::NpcDataManager()
 {
     m_bDirty = false;
-    m_nOldManRoomIndex = -1;
 }
 NpcDataManager::~NpcDataManager()
 {
@@ -140,28 +139,11 @@ bool NpcDataManager::removeItemFromTheifRoomList(CChaosNumber id)
     }
     return false;
 }
-std::string NpcDataManager::getOldManRoomInfoByPart(int part, bool& atEnd)
+ValueVector NpcDataManager::getOldManRoomInfo()
 {
-    std::string retStr;
-    atEnd = true;
-    if (part==0 && m_nOldManRoomIndex==-1) {
-        m_nOldManRoomIndex = cocos2d::random(0, (int)(m_OldManRoom.size()-1));
-    }
-    if (m_nOldManRoomIndex!=-1) {
-        ValueVector infos = m_OldManRoom[m_nOldManRoomIndex].asValueVector();
-        if(!infos.empty() && part < infos.size())
-        {
-            retStr = infos[part].asString();
-            if(part == (int)(infos.size() - 1))
-            {
-                m_nOldManRoomIndex = -1;
-                atEnd = true;
-            }
-            else
-                atEnd = false;
-        }
-    }
-    return retStr;
+    int m_nOldManRoomIndex = cocos2d::random(0, (int)(m_OldManRoom.size()-1));
+    ValueVector infos = m_OldManRoom[m_nOldManRoomIndex].asValueVector();
+    return infos;
 }
 bool NpcDataManager::initEquipmentShop()
 {

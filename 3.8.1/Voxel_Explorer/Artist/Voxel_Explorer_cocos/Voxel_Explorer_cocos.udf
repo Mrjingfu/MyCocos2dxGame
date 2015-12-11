@@ -36,9 +36,9 @@
           <FilePathData Path="alertLayer.csd" />
           <FilePathData Path="dialogueLayer.csd" />
           <FilePathData Path="characterInfoLayer.csd" />
-          <FilePathData Path="infoLayer.csd" />
+          <FilePathData Path="informationLayer.csd" />
         </OpenedDocuments>
-        <ActiveDocument Path="infoLayer.csd" />
+        <ActiveDocument Path="informationLayer.csd" />
       </Value>
     </Item>
   </Properties>
