@@ -192,6 +192,8 @@
 	<string>啊！召唤陷阱，小心！</string>
 	<key>TRIGGER_MESSAGE_WEAK_TRAP</key>
 	<string>你生病了, 能力降低了！</string>
+	<key>TRIGGER_MESSAGE_FROSEN_TRAP</key>
+	<string>你被冰冻了，你的速度降低！</string>
 	<key>NPC_KNIGHT_ANSWER</key>
 	<string>武器店</string>
 	<key>NPC_SHOPGIRL_ANSWER</key>

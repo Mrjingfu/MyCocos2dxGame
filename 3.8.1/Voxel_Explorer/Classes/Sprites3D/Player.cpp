@@ -546,7 +546,7 @@ void Player::attackByMonster(MonsterProperty* monsterProperty, bool miss)
 void Player::attackByBoss(BossProperty* bossProperty, bool miss)
 {
     //for debug
-    return;
+    //return;
     
     if(!bossProperty || !m_pHurtData)
         return;
@@ -614,6 +614,58 @@ void Player::attackByBoss(BossProperty* bossProperty, bool miss)
     }
     else
     {
+        float percentHit = 0.3f;
+        float percentLose = 1.0 - percentHit;
+        AlisaMethod* amDodgeRate = AlisaMethod::create(percentHit,percentLose,-1.0, NULL);
+        if(amDodgeRate)
+        {
+            if(amDodgeRate->getRandomIndex() == 0)
+            {
+                if((bossProperty->getAttackAddBuffer() & PB_POISONING) != 0)
+                {
+                    if((PlayerProperty::getInstance()->getPlayerBuffer() & PB_POISONING) == 0)
+                    {
+                        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_TRIGGER_TOXIC_TRAP);
+                        addPlayerBuffer(PB_POISONING);
+                    }
+                    
+                }
+                else if((bossProperty->getAttackAddBuffer() & PB_FROZEN) != 0)
+                {
+                    if((PlayerProperty::getInstance()->getPlayerBuffer() & PB_FROZEN) == 0)
+                    {
+                        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_TRIGGER_FROZEN_TRAP);
+                        addPlayerBuffer(PB_FROZEN);
+                    }
+                }
+                else if((bossProperty->getAttackAddBuffer() & PB_PARALYTIC) != 0)
+                {
+                    if((PlayerProperty::getInstance()->getPlayerBuffer() & PB_PARALYTIC) == 0)
+                    {
+                        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_TRIGGER_PARALYTIC_TRAP);
+                        addPlayerBuffer(PB_PARALYTIC);
+                    }
+                }
+                else if((bossProperty->getAttackAddBuffer() & PB_WEAK) != 0)
+                {
+                    if((PlayerProperty::getInstance()->getPlayerBuffer() & PB_WEAK) == 0)
+                    {
+                        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_TRIGGER_WEAK_TRAP);
+                        addPlayerBuffer(PB_WEAK);
+                    }
+                }
+                else if((bossProperty->getAttackAddBuffer() & PB_FIRE) != 0)
+                {
+                    if((PlayerProperty::getInstance()->getPlayerBuffer() & PB_FIRE) == 0)
+                    {
+                        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_TRIGGER_FIRE_TRAP);
+                        addPlayerBuffer(PB_FIRE);
+                    }
+                }
+
+            }
+        }
+
         PlayerProperty::getInstance()->setCurrentHP(currentHp);
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_PROPERTY_DIRTY, this);
     }

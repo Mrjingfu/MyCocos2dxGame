@@ -434,6 +434,14 @@ void GameUILayer::onEventTriggerWeak(cocos2d::EventCustom *sender) //虚弱机�
      m_pGameToolBarLayer->sendMessage(msg,PopupUILayerManager::getInstance()->getTipsColor(TipTypes::TIP_NEGATIVE));
    
 }
+void GameUILayer::onEventTriggerFrozen(cocos2d::EventCustom *sender) //冰冻，不一定是机关
+{
+    CCLOG("onEventTriggerFrozen");
+    std::string msg = UtilityHelper::getLocalStringForUi("TRIGGER_MESSAGE_FROZEN_TRAP");
+    PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
+    m_pGameToolBarLayer->sendMessage(msg,PopupUILayerManager::getInstance()->getTipsColor(TipTypes::TIP_NEGATIVE));
+    
+}
 void GameUILayer::onEventRoleUserPotion(cocos2d::EventCustom *sender)
 {
     CCLOG("onEvenetUserPotion");
@@ -835,7 +843,8 @@ void GameUILayer::onEnter()
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_TRIGGER_PARALYTIC_TRAP, CC_CALLBACK_1(GameUILayer::onEventTriggerParalyic,this));
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_TRIGGER_GRIPPING_TRAP, CC_CALLBACK_1(GameUILayer::onEventTriggerGripping,this));
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_TRIGGER_SUMMONING_TRAP, CC_CALLBACK_1(GameUILayer::onEventTriggerSummoning,this));
-    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_TRIGGER_WEAK_TRAP, CC_CALLBACK_1(GameUILayer::onEventTriggerWeak,this)) ;
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_TRIGGER_WEAK_TRAP, CC_CALLBACK_1(GameUILayer::onEventTriggerWeak,this));
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_TRIGGER_FROZEN_TRAP, CC_CALLBACK_1(GameUILayer::onEventTriggerFrozen,this)) ;
     
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_PLAYER_USE_GOLD_CHEST_KEY, CC_CALLBACK_1(GameUILayer::onEventUseGoldChestKey,this));
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_PLAYER_USE_SILVER_CHEST_KEY, CC_CALLBACK_1(GameUILayer::onEventUseSilverChestKey,this));
@@ -911,6 +920,7 @@ void GameUILayer::onExit()
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_TRIGGER_GRIPPING_TRAP);
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_TRIGGER_SUMMONING_TRAP);
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_TRIGGER_WEAK_TRAP);
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_TRIGGER_FROZEN_TRAP);
     
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_PLAYER_USE_GOLD_CHEST_KEY);
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_PLAYER_USE_SILVER_CHEST_KEY);

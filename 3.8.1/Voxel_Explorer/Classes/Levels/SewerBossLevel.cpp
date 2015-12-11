@@ -136,7 +136,7 @@ bool SewerBossLevel::createMonsters()
         return false;
     }
     //for debug
-    return true;
+    //return true;
     
     int monsterNum = calculateLevelMonsterCount();
     for (int i=0; i < monsterNum; i++) {
