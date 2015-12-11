@@ -56,8 +56,7 @@ void PromptLayer::update(float delta)
     
     cocos2d::Vec3 displayPt = m_pActor->getPosition3D();
     cocos2d::Vec2 pt = VoxelExplorer::getInstance()->getMainCamera()->projectGL(displayPt);
-//    pt =  cocos2d::Vec2(pt.x, pt.y+TerrainTile::CONTENT_SCALE*3.5);
-    pt =  cocos2d::Vec2(pt.x, pt.y+m_pActor->getContentSize().height);
+    pt =  cocos2d::Vec2(pt.x, pt.y+m_pActor->getBoundingBox().size.height*3.5);
     setPosition(pt);
     if (!m_bIsAction && tempTime >=0.013) {
         tempTime = 0.0f;

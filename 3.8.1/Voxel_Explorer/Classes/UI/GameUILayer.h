@@ -94,6 +94,7 @@ private:
     void onEventGoUpStairsForbidden(cocos2d::EventCustom *sender);
     void onEventGoDownStairs(cocos2d::EventCustom *sender);
     void onEventGoBossRoom(cocos2d::EventCustom *sender);
+    void onEventGoChasm(cocos2d::EventCustom *sender);
     
     void onEventNpcKnightAnsWer(cocos2d::EventCustom *sender);          //武器店
     void onEventNpcChildAnsWer(cocos2d::EventCustom *sender);           //任务

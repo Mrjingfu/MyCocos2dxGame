@@ -139,7 +139,7 @@
 	<key>PLAYER_USE_ROOM_KEY</key>
 	<string>使用了房间钥匙！</string>
 	<key>PLAYER_USE_BOSS_KEY</key>
-	<string>使用了boss房间钥匙！</string>
+	<string>使用了%s房间钥匙！</string>
 	<key>DOOR_MAGIC_LOCKED</key>
 	<string>门上有一股魔力，根本打不开！</string>
 	<key>DOOR_MAGIC_CLOSED</key>
@@ -171,7 +171,7 @@
 	<key>PLAYER_NO_ROOM_KEY</key>
 	<string>没有房间钥匙！</string>
 	<key>PLAYER_NO_BOSS_KEY</key>
-	<string>没有Boss房间钥匙！</string>
+	<string>没有%s房间钥匙！</string>
 	<key>PLAYER_BAG_NO_SPACE</key>
 	<string>背包没有空间了!!</string>
 	<key>PLAYER_NO_MANA</key>
@@ -180,17 +180,17 @@
 	<string>货币不足！</string>
 	<key>NOT_EQUIP_LEVEL_ENOUGH</key>
 	<string>等级不足 !</string>
-	<key>TRIGGER_MESSAGE_TOXIC_TRAP</key>
+	<key>TRIGGER_TOXIC_TRAP</key>
 	<string>你中毒了！</string>
-	<key>TRIGGER_MESSAGE_FIRE_TRAP</key>
+	<key>TRIGGER_FIRE_TRAP</key>
 	<string>你的身上着火了！</string>
-	<key>TRIGGER_MESSAGE_PARALYTIC_TRAP</key>
+	<key>TRIGGER_PARALYTIC_TRAP</key>
 	<string>你被麻痹不能动了！</string>
-	<key>TRIGGER_MESSAGE_GRIPPING_TRAP</key>
+	<key>TRIGGER_GRIPPING_TRAP</key>
 	<string>你踩到一个夹子陷阱！</string>
-	<key>TRIGGER_MESSAGE_SUMMONING_TRAP</key>
+	<key>TRIGGER_SUMMONING_TRAP</key>
 	<string>啊！召唤陷阱，小心！</string>
-	<key>TRIGGER_MESSAGE_WEAK_TRAP</key>
+	<key>TRIGGER_WEAK_TRAP</key>
 	<string>你生病了, 能力降低了！</string>
 	<key>TRIGGER_MESSAGE_FROSEN_TRAP</key>
 	<string>你被冰冻了，你的速度降低！</string>
@@ -210,5 +210,9 @@
 	<string>btn_exit_ch.png</string>
 	<key>ITEM_SPLITE_COUNT</key>
 	<string>数量：%d</string>
+	<key>ITEM_BAG_DELETE</key>
+	<string>是否移除该道具？</string>
+	<key>GO_CHASM</key>
+	<string>是否跳入深渊呢？</string>
 </dict>
 </plist>

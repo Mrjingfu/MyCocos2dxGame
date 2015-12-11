@@ -158,14 +158,6 @@ void BagLayer::refreshUIView()
             
             m_BagMsgLayer->addItem(i, itemProp->getInstanceID(), itemUi->getPosition(), itemProp->getIconRes());
             
-            PickableItemProperty::PickableItemPropertyType itemtype =itemProp->getPickableItemPropertyType();
-            if (itemtype ==PickableItemProperty::PIPT_WEAPON ||itemtype ==PickableItemProperty::PIPT_SECOND_WEAPON||
-                itemtype ==PickableItemProperty::PIPT_ARMOR ||itemtype ==PickableItemProperty::PIPT_MAGIC_ORNAMENT )
-            {
-                if (!itemProp->isIdentified() || itemProp->getLevel() >playerLevel) {
-                    m_BagMsgLayer->setItemNoUse(itemProp->getInstanceID(), itemUi->getPosition());
-                }
-            }
             
             
             //设置品质
@@ -183,6 +175,16 @@ void BagLayer::refreshUIView()
                     itemUi->setColor(Color3B(250,128,10));
                     break;
             }
+            
+            PickableItemProperty::PickableItemPropertyType itemtype =itemProp->getPickableItemPropertyType();
+            if (itemtype ==PickableItemProperty::PIPT_WEAPON ||itemtype ==PickableItemProperty::PIPT_SECOND_WEAPON||
+                itemtype ==PickableItemProperty::PIPT_ARMOR ||itemtype ==PickableItemProperty::PIPT_MAGIC_ORNAMENT )
+            {
+                if (!itemProp->isIdentified() || itemProp->getLevel() >playerLevel) {
+                    m_BagMsgLayer->setItemNoUse(itemProp->getInstanceID(), itemUi->getPosition());
+                }
+            }
+
             
             //查看是否可以合并
             if(itemProp->isStackable())
@@ -441,9 +443,13 @@ void BagLayer::bagItemOpe(int currentItemId)
     ItemPopupUI* popupui = static_cast<ItemPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupType::ePopupItem));
     if (popupui)
     {
-        popupui->registerCloseCallback([this]{
-            this->m_bIsIndetify =false;
-            this->refreshUIView();
+        //用来回调某些道具直接鉴定
+        popupui->registerCloseCallbackD([this](void* data){
+            
+            if (data) {
+                int* id = static_cast<int*>(data);
+                bagItemOpe(*id);
+            }
         });
         popupui->setItemId(currentItemId);
         

@@ -101,7 +101,7 @@ public:
     
     DungeonNode* getCurrentDungeonNode() const { return m_pCurrentNode; }
     CChaosNumber getDifficultClass() const { return m_nDifficultClass; }
-    
+    std::string  getCurrentBossName() const;
     void load();
     void save();
 private:

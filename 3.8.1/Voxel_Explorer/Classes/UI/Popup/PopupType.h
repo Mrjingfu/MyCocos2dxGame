@@ -27,7 +27,8 @@ enum ePopupType
     ePopupMagicShop,        //魔法物品
     ePopupWeaponShop,       //装备物品
     ePopupTask,             //任务
-    ePopupDialogue,
+    ePopupDialogue,         //对白框
+    ePopupAlert,            //提示框
     ePopupCount
 };
 typedef enum {

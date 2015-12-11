@@ -132,6 +132,8 @@ void UseableItem::onExitIdle()
 
 void UseableItem::onEnterFadeOut()
 {
+    removeTerrainTileFlag(TileInfo::USEABLE);
+    
     if(m_Type <= UIT_CHEST_GOLD)
     {
         EaseSineOut* fadeOut = EaseSineOut::create(FadeOut::create(0.5f));
@@ -152,7 +154,6 @@ void UseableItem::onExitFadeOut()
 }
 void UseableItem::destroySelf()
 {
-    removeTerrainTileFlag(TileInfo::USEABLE);
     VoxelExplorer::getInstance()->generatePickItemByUseableItem(getPosInMap(), m_Type);
     this->removeFromParentAndCleanup(true);
 }

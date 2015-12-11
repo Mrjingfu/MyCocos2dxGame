@@ -20,6 +20,7 @@
 #include "ItemMoneyLayer.hpp"
 #include "RandomDungeon.hpp"
 #include "BaseBoss.hpp"
+#include "AlertPopupUI.hpp"
 USING_NS_CC;
 ItemPopupUI::ItemPopupUI()
 {
@@ -30,7 +31,6 @@ ItemPopupUI::ItemPopupUI()
     m_pItemlv      =nullptr;
     m_pItemDesc    =nullptr;
     m_pItemType = nullptr;
-    m_pItemIdentifyDesc= nullptr;;
     
     m_pAttrFrame    =nullptr;
     m_pItemPropFrame = nullptr;
@@ -114,7 +114,13 @@ bool ItemPopupUI::addEvents()
     
     m_pItemNotIden = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "item_prop_not_idn"));
     if (!m_pItemNotIden)
+        
         return false;
+    m_pItemDesc = NoteUi::create();
+    if (!m_pItemDesc)
+        return false;
+    m_pItemDesc->setFontScale(0.25);
+    
     
     m_pItemMoneyLayer = ItemMoneyLayer::create();
     m_pItemMoneyLayer->setAnchorPoint(cocos2d::Vec2::ANCHOR_MIDDLE);
@@ -145,7 +151,7 @@ void ItemPopupUI::useItemFrame()
         
         if (itemprop->getPickableItemType() == PickableItem::PIT_KEY_BOSS ) {
             //修改钥匙描述 添加BOSS名字
-            str = cocos2d::StringUtils::format(str.c_str(),getBossName().c_str());
+            str = cocos2d::StringUtils::format(str.c_str(),RandomDungeon::getInstance()->getCurrentBossName().c_str());
         }
         if(itemprop->getPickableItemType() == PickableItem::PIT_KEY_ROOM )
         {
@@ -510,17 +516,20 @@ PickableItemProperty* ItemPopupUI::getItemIdProperty() const
 }
 void ItemPopupUI::refreshUIView()
 {
-    if (m_pItemDesc) {
-        m_pItemDesc->removeFromParentAndCleanup(true);
-        m_pItemDesc = nullptr;
-    }
+//    if (m_pItemDesc && m_pItemDesc->getParent()) {
+//        m_pItemDesc->removeFromParentAndCleanup(false);
+//    }
+//    
+//    if (m_pItemMoneyLayer && m_pItemMoneyLayer->getParent()) {
+//        m_pItemMoneyLayer->removeFromParentAndCleanup(false);
+//    }
+//    
+//    if (m_pBottomFrame && m_pBottomFrame->getParent()) {
+//        m_pBottomFrame->removeFromParentAndCleanup(false);
+//    }
+    
     if (m_pAttrFrame) {
         m_pAttrFrame->removeAllChildren();
-        
-        m_pItemDesc = NoteUi::create();
-        if (!m_pItemDesc)
-            return ;
-        m_pItemDesc->setFontScale(0.25);
     }
     
     updateItemBaseProp();
@@ -543,7 +552,7 @@ void ItemPopupUI::updateItemBaseProp()
     std::string propName = itemprop->getName();
     if (itemprop->getPickableItemType() == PickableItem::PIT_KEY_BOSS ) {
         //修改钥匙描述 添加BOSS名字
-        propName = cocos2d::StringUtils::format(propName.c_str(),getBossName().c_str());
+        propName = cocos2d::StringUtils::format(propName.c_str(),RandomDungeon::getInstance()->getCurrentBossName().c_str());
     }
     if(itemprop->getPickableItemType() == PickableItem::PIT_KEY_ROOM )
     {
@@ -743,18 +752,41 @@ void ItemPopupUI::onClickDiscard(cocos2d::Ref *ref)
 {
     CHECK_ACTION(ref);
     CCLOG("onClickDiscard");
+    
+    
     PickableItemProperty* itemprop = getItemIdProperty();
     CCASSERT(itemprop!=nullptr, "itemprop is null!");
-    bool isSuccess = false;
-    if (itemprop->isStackable()) {
-        isSuccess = PlayerProperty::getInstance()->removeStackableItemFromBag(itemprop->getPickableItemType(), 1);
-    }else{
-        isSuccess = PlayerProperty::getInstance()->removeItemFromBag(CChaosNumber(m_nItemId));
+    
+    if (itemprop->getQuality() >=PICKABLEITEM_QUALITY::PIQ_RARE || !itemprop->isIdentified())
+    {
+    
+        AlertPopupUI* popupUILayer = static_cast<AlertPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupAlert));
+        if (popupUILayer)
+        {
+            PopupUILayer* pplayer = nullptr;
+            if (PopupUILayerManager::getInstance()->isOpenPopup(ePopupEquipItem, pplayer)) {
+                pplayer->getRootNode()->setVisible(false);
+            }
+            this->getRootNode()->setVisible(false);
+    
+            popupUILayer->setMessage(UtilityHelper::getLocalStringForUi("ITEM_BAG_DELETE"));
+            popupUILayer->setPositiveListerner([this](Ref*){
+                
+                this->removeItem();
+            });
+            popupUILayer->setNegativeListerner([this,pplayer](Ref*)
+                                               {
+                                                   if (pplayer) {
+                                                       pplayer->getRootNode()->setVisible(true);
+                                                   }
+                                                   this->getRootNode()->setVisible(true);
+                                               });
+            popupUILayer->setDarkLayerVisble(false);
+        }
     }
-    
-    if(isSuccess)
-        closePopup();
-    
+    else
+        removeItem();
+
 }
 void ItemPopupUI::onClickUser(cocos2d::Ref *ref)
 {
@@ -816,7 +848,9 @@ void ItemPopupUI::onClickIdentified(cocos2d::Ref *ref)
     }
     
     if ( isItemUse) {
-        refreshUIView();
+        //鉴定成功回调给BagLayer重新刷新界面,
+        setCloseCallbackParamD(&m_nItemId);
+        closePopup();
     }else{
         CCLOG("鉴定失败");
     }
@@ -851,31 +885,20 @@ void ItemPopupUI::closePopup()
     }
     outAction();
 }
-std::string ItemPopupUI::getBossName() const
+void ItemPopupUI::removeItem()
 {
-    std::string name;
-    DUNGEON_TYPE dungeontype = RandomDungeon::getInstance()->getCurrentDungeonNode()->m_Type;
-    
-    if (dungeontype == DUNGEON_TYPE::DT_SEWER)
-    {
-        name = UtilityHelper::getLocalString(BOSS_MODEL_NAMES[BaseBoss::BossType::BT_SLIMEKING]);
-    }else if (dungeontype == DUNGEON_TYPE::DT_PRISON)
-    {
-        name = UtilityHelper::getLocalString(BOSS_MODEL_NAMES[BaseBoss::BossType::BT_WARDEN]);
-    }else if (dungeontype == DUNGEON_TYPE::DT_FANE)
-    {
-        name = UtilityHelper::getLocalString(BOSS_MODEL_NAMES[BaseBoss::BossType::BT_ARCHBISHOP]);
-    }else if (dungeontype == DUNGEON_TYPE::DT_MINES)
-    {
-       name = UtilityHelper::getLocalString(BOSS_MODEL_NAMES[BaseBoss::BossType::BT_KOBOLDLEADER]);
-    }else if (dungeontype == DUNGEON_TYPE::DT_CAVE)
-    {
-        name = UtilityHelper::getLocalString(BOSS_MODEL_NAMES[BaseBoss::BossType::BT_GIANT]);
-    }else if (dungeontype == DUNGEON_TYPE::DT_TOMB)
-    {
-         name = UtilityHelper::getLocalString(BOSS_MODEL_NAMES[BaseBoss::BossType::BT_SKELETONKING]);
+    PickableItemProperty* itemprop = getItemIdProperty();
+    CCASSERT(itemprop!=nullptr, "itemprop is null!");
+    bool isSuccess = false;
+    if (itemprop->isStackable()) {
+        isSuccess = PlayerProperty::getInstance()->removeStackableItemFromBag(itemprop->getPickableItemType(), 1);
+    }else{
+        isSuccess = PlayerProperty::getInstance()->removeItemFromBag(CChaosNumber(m_nItemId));
     }
-    return name;
+    
+    if(isSuccess)
+        closePopup();
+
 }
 void ItemPopupUI::testUI()
 {

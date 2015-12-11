@@ -220,6 +220,7 @@ bool BaseLevel::checkMovable(Actor* actor, TileInfo& info)
     if((info.m_Flag & TileInfo::INITIALISED) != 0)
     {
         ///发送跳崖事件
+        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_GO_CHASM);
         return false;
     }
     if((info.m_Flag & TileInfo::STOPPABLE) != 0)

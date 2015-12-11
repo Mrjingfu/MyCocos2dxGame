@@ -192,6 +192,7 @@
             <filename>../ui/ui_character/koboldleader..png</filename>
             <filename>../ui/ui_character/skeletonking.png</filename>
             <filename>../ui/ui_character/slimeking.png</filename>
+            <filename>../ui/ui_character/warden.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

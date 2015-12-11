@@ -337,13 +337,13 @@ bool NpcDataManager::initTheifRoom()
             itemLevel = cocos2d::random(13, 17);
         }
         if (type >= PickableItem::PIT_DAGGER_DAGGER && type <= PickableItem::PIT_MACE_PRO_SLEDGEHAMMER)
-            itemProperty = new (std::nothrow) WeaponProperty(PlayerProperty::m_snItemInstanceIDCounter++,type, level, true);
+            itemProperty = new (std::nothrow) WeaponProperty(PlayerProperty::m_snItemInstanceIDCounter++,type, level, false);
         else if (type >= PickableItem::PIT_BOW_SHORTBOW && type <=PickableItem::PIT_SHIELD_PRO_TOWERSHIELD)
-            itemProperty = new (std::nothrow) SecondWeaponProperty(PlayerProperty::m_snItemInstanceIDCounter++,type, level, true);
+            itemProperty = new (std::nothrow) SecondWeaponProperty(PlayerProperty::m_snItemInstanceIDCounter++,type, level, false);
         else if(type >= PickableItem::PIT_CLOTH_SHOES && type <= PickableItem::PIT_CLOTH_PRO_STEELARMOR)
-            itemProperty = new (std::nothrow) ArmorProperty(PlayerProperty::m_snItemInstanceIDCounter++,type, level, true);
+            itemProperty = new (std::nothrow) ArmorProperty(PlayerProperty::m_snItemInstanceIDCounter++,type, level, false);
         else if(type >= PickableItem::PIT_ORNAMENT_RING && type <= PickableItem::PIT_ORNAMENT_PRO_JEWELS)
-            itemProperty = new (std::nothrow) MagicOrnamentProperty(PlayerProperty::m_snItemInstanceIDCounter++,type, level, true);
+            itemProperty = new (std::nothrow) MagicOrnamentProperty(PlayerProperty::m_snItemInstanceIDCounter++,type, level, false);
         if(itemProperty)
         {
             itemProperty->adjustByLevel();
