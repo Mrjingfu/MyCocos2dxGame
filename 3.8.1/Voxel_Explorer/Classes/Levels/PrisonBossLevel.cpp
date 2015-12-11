@@ -221,10 +221,6 @@ bool PrisonBossLevel::createSummoningMonstersByWarden(const cocos2d::Vec2& mapPo
         return false;
     if(skillStage == 1)
     {
-        return true;
-    }
-    else if(skillStage == 2)
-    {
         int count = 0;
         std::vector<int> cornerPosList = m_pArenaRoom->getTilesOnCorner(this);
         for (int i = 0; i<cornerPosList.size(); i++) {
@@ -269,6 +265,20 @@ bool PrisonBossLevel::createSummoningMonstersByWarden(const cocos2d::Vec2& mapPo
                 }
             }
         }
+        if(m_pArenaRoom)
+        {
+            std::vector<int> edgeIndexList = m_pArenaRoom->getTilesOnEdge(this, 1);
+            for (int i = 0; i < edgeIndexList.size(); i++) {
+                int x = edgeIndexList[i]%m_nWidth;
+                int y = edgeIndexList[i]/m_nWidth;
+                setTerrainTileType(x, y, TerrainTile::TT_GRIPPING_TRAP);
+                VoxelExplorer::getInstance()->updateTerrainTile(x, y, TerrainTile::TT_GRIPPING_TRAP);
+            }
+        }
+        return true;
+    }
+    else if(skillStage == 2)
+    {
         return true;
     }
     else if(skillStage == 3)
@@ -279,7 +289,7 @@ bool PrisonBossLevel::createSummoningMonstersByWarden(const cocos2d::Vec2& mapPo
             int tileIndex = cornerPosList[i];
             if(isTerrainTilePassable(tileIndex))
             {
-                StandardMonster* monster = StandardMonster::create(BaseMonster::MT_TORTURE, true);
+                StandardMonster* monster = StandardMonster::create(BaseMonster::MT_TORTURE);
                 if(!monster)
                     return false;
                 monster->setPosition3D(Vec3(m_Map[tileIndex].m_nX*TerrainTile::CONTENT_SCALE, -0.5f*TerrainTile::CONTENT_SCALE, -m_Map[tileIndex].m_nY*TerrainTile::CONTENT_SCALE));
@@ -323,6 +333,17 @@ bool PrisonBossLevel::createSummoningMonstersByWarden(const cocos2d::Vec2& mapPo
 }
 void PrisonBossLevel::clearBossRoom()
 {
+    if(m_pArenaRoom)
+    {
+        std::vector<int> edgeIndexList = m_pArenaRoom->getTilesOnEdge(this, 1);
+        for (int i = 0; i < edgeIndexList.size(); i++) {
+            int x = edgeIndexList[i]%m_nWidth;
+            int y = edgeIndexList[i]/m_nWidth;
+            setTerrainTileType(x, y, TerrainTile::TT_STANDARD);
+            VoxelExplorer::getInstance()->updateTerrainTile(x, y, TerrainTile::TT_STANDARD);
+        }
+    }
+
     VoxelExplorer::getInstance()->clearBoosRoom();
 }
 

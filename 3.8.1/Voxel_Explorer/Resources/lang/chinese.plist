@@ -1153,9 +1153,9 @@
 	<key>BSC_WARDEN_ALERT</key>
 	<string>嘿，不许动～你有权不沉默，但我很快会让你沉默！</string>
 	<key>BSC_WARDEN_SKILL1</key>
-	<string>让你尝尝电棍的滋味！！</string>
-	<key>BSC_WARDEN_SKILL2</key>
 	<string>来人～来人～放狗！！</string>
+	<key>BSC_WARDEN_SKILL2</key>
+	<string>让你尝尝电棍的滋味！！</string>
 	<key>BSC_WARDEN_SKILL3</key>
 	<string>敖广～敖钦～敖顺～敖闰～你们4个死哪去了，快揍扁他！！</string>
 	<key>BSC_WARDEN_DEATH</key>

@@ -614,7 +614,7 @@ void Player::attackByBoss(BossProperty* bossProperty, bool miss)
     }
     else
     {
-        float percentHit = 0.3f;
+        float percentHit = 0.15f;
         float percentLose = 1.0 - percentHit;
         AlisaMethod* amDodgeRate = AlisaMethod::create(percentHit,percentLose,-1.0, NULL);
         if(amDodgeRate)
@@ -665,8 +665,8 @@ void Player::attackByBoss(BossProperty* bossProperty, bool miss)
 
             }
         }
-
-        PlayerProperty::getInstance()->setCurrentHP(currentHp);
+        // for debug
+        //PlayerProperty::getInstance()->setCurrentHP(currentHp);
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_PROPERTY_DIRTY, this);
     }
 }
