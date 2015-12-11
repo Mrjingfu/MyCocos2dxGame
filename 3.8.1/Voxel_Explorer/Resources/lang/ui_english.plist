@@ -180,17 +180,17 @@
 	<string>货币不足！</string>
 	<key>NOT_EQUIP_LEVEL_ENOUGH</key>
 	<string>Level is not enough!</string>
-	<key>TRIGGER_MESSAGE_TOXIC_TRAP</key>
+	<key>TRIGGER_TOXIC_TRAP</key>
 	<string>你中毒了！</string>
-	<key>TRIGGER_MESSAGE_FIRE_TRAP</key>
+	<key>TRIGGER_FIRE_TRAP</key>
 	<string>你的身上着火了！</string>
-	<key>TRIGGER_MESSAGE_PARALYTIC_TRAP</key>
+	<key>TRIGGER_PARALYTIC_TRAP</key>
 	<string>你被麻痹不能动了！</string>
-	<key>TRIGGER_MESSAGE_GRIPPING_TRAP</key>
+	<key>TRIGGER_GRIPPING_TRAP</key>
 	<string>你踩到一个夹子陷阱！</string>
-	<key>TRIGGER_MESSAGE_SUMMONING_TRAP</key>
+	<key>TRIGGER_SUMMONING_TRAP</key>
 	<string>啊！召唤陷阱，小心！</string>
-	<key>TRIGGER_MESSAGE_WEAK_TRAP</key>
+	<key>TRIGGER_WEAK_TRAP</key>
 	<string>你生病了, 能力降低了！</string>
 	<key>NPC_KNIGHT_ANSWER</key>
 	<string>武器店</string>

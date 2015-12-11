@@ -288,7 +288,8 @@ void GameUILayer::onEventUseRoomKey(cocos2d::EventCustom *sender)
 void GameUILayer::onEventUseBossKey(cocos2d::EventCustom *sender)
 {
     CCLOG("onEventUseBossKey");
-    std::string msg = UtilityHelper::getLocalStringForUi(cocos2d::StringUtils::format(EVENT_PLAYER_USE_BOSS_KEY.c_str(),RandomDungeon::getInstance()->getCurrentBossName().c_str()));
+   
+    std::string msg = cocos2d::StringUtils::format(UtilityHelper::getLocalStringForUi(EVENT_PLAYER_USE_BOSS_KEY).c_str(),RandomDungeon::getInstance()->getCurrentBossName().c_str());
     PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
     m_pGameToolBarLayer->sendMessage(msg);
 }
@@ -405,7 +406,7 @@ void GameUILayer::onEventGoChasm(cocos2d::EventCustom *sender)
 void GameUILayer::onEventTriggerToxic(cocos2d::EventCustom *sender) //中毒机关
 {
     CCLOG("onEventTriggerToxic");
-    std::string msg = UtilityHelper::getLocalStringForUi("TRIGGER_MESSAGE_TOXIC_TRAP");
+    std::string msg = UtilityHelper::getLocalStringForUi(EVENT_TRIGGER_TOXIC_TRAP);
     PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
     m_pGameToolBarLayer->sendMessage(msg,PopupUILayerManager::getInstance()->getTipsColor(TipTypes::TIP_NEGATIVE));
     
@@ -413,7 +414,7 @@ void GameUILayer::onEventTriggerToxic(cocos2d::EventCustom *sender) //中毒机�
 void GameUILayer::onEventTriggerFire(cocos2d::EventCustom *sender) //火机关
 {
     CCLOG("onEventTriggerFire");
-    std::string msg = UtilityHelper::getLocalStringForUi("TRIGGER_MESSAGE_FIRE_TRAP");
+    std::string msg = UtilityHelper::getLocalStringForUi(EVENT_TRIGGER_FIRE_TRAP);
     PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
      m_pGameToolBarLayer->sendMessage(msg,PopupUILayerManager::getInstance()->getTipsColor(TipTypes::TIP_NEGATIVE));
     
@@ -421,7 +422,7 @@ void GameUILayer::onEventTriggerFire(cocos2d::EventCustom *sender) //火机关
 void GameUILayer::onEventTriggerParalyic(cocos2d::EventCustom *sender)//麻痹机关
 {
     CCLOG("onEventTriggerParalyic");
-    std::string msg = UtilityHelper::getLocalStringForUi("TRIGGER_MESSAGE_PARALYTIC_TRAP");
+    std::string msg = UtilityHelper::getLocalStringForUi(EVENT_TRIGGER_PARALYTIC_TRAP);
     PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
      m_pGameToolBarLayer->sendMessage(msg,PopupUILayerManager::getInstance()->getTipsColor(TipTypes::TIP_NEGATIVE));
     
@@ -429,7 +430,7 @@ void GameUILayer::onEventTriggerParalyic(cocos2d::EventCustom *sender)//麻痹�
 void GameUILayer::onEventTriggerGripping(cocos2d::EventCustom *sender)//夹子机关
 {
     CCLOG("onEventTriggerGripping");
-    std::string msg = UtilityHelper::getLocalStringForUi("TRIGGER_MESSAGE_GRIPPING_TRAP");
+    std::string msg = UtilityHelper::getLocalStringForUi(EVENT_TRIGGER_GRIPPING_TRAP);
     PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
      m_pGameToolBarLayer->sendMessage(msg,PopupUILayerManager::getInstance()->getTipsColor(TipTypes::TIP_NEGATIVE));
     
@@ -437,7 +438,7 @@ void GameUILayer::onEventTriggerGripping(cocos2d::EventCustom *sender)//夹子�
 void GameUILayer::onEventTriggerSummoning(cocos2d::EventCustom *sender)//召唤机关
 {
     CCLOG("onEventTriggerSummoning");
-    std::string msg = UtilityHelper::getLocalStringForUi("TRIGGER_MESSAGE_SUMMONING_TRAP");
+    std::string msg = UtilityHelper::getLocalStringForUi(EVENT_TRIGGER_SUMMONING_TRAP);
     PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
      m_pGameToolBarLayer->sendMessage(msg,PopupUILayerManager::getInstance()->getTipsColor(TipTypes::TIP_NEGATIVE));
     
@@ -445,7 +446,7 @@ void GameUILayer::onEventTriggerSummoning(cocos2d::EventCustom *sender)//召唤�
 void GameUILayer::onEventTriggerWeak(cocos2d::EventCustom *sender) //虚弱机关
 {
     CCLOG("onEventTriggerWeak");
-    std::string msg = UtilityHelper::getLocalStringForUi("TRIGGER_MESSAGE_WEAK_TRAP");
+    std::string msg = UtilityHelper::getLocalStringForUi(EVENT_TRIGGER_WEAK_TRAP);
     PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
      m_pGameToolBarLayer->sendMessage(msg,PopupUILayerManager::getInstance()->getTipsColor(TipTypes::TIP_NEGATIVE));
    
@@ -745,6 +746,8 @@ void GameUILayer::onEventBossDeath(cocos2d::EventCustom *sender)
         return;
     Vec2 pt = VoxelExplorer::getInstance()->getMainCamera()->projectGL(monster->getPosition3D());
     pt = Vec2(pt.x, pt.y+TerrainTile::CONTENT_SCALE*2.5);
+    
+
     if (monster->getState() == BaseBoss::BossState::BS_DEATH) {
         int roleLevel = PlayerProperty::getInstance()->getLevel();
         int exp  = GameFormula::getKillBossExp(roleLevel, roleLevel+5);
@@ -754,8 +757,14 @@ void GameUILayer::onEventBossDeath(cocos2d::EventCustom *sender)
             m_pBossPropLayer->setBoss(monster);
             m_pBossPropLayer->setVisible(false);
         }
-        
     }
+    
+    CallFunc* func = CallFunc::create([monster]{
+        std::string msg = monster->getBossDescByEvent(EVENT_BOSS_DEATH);
+        PopupUILayerManager::getInstance()->showStatusImport(TIP_POSITIVE, msg);
+    });
+    this->runAction(Sequence::createWithTwoActions(DelayTime::create(2.0f), func));
+
 }
 void GameUILayer::onEventBossHud(cocos2d::EventCustom *sender)
 {
@@ -786,24 +795,48 @@ void GameUILayer::onEventBossAlert(cocos2d::EventCustom *sender)
 {
     CCLOG("onEventBossAlert");
     BaseBoss* monster = static_cast<BaseBoss*>(sender->getUserData());
+    if (!monster)
+        return;
     PromptLayer* promptLayer = PromptLayer::create(PromptLayer::PT_AWAKE);
     if (monster) {
         promptLayer->setActor(monster);
     }
     m_pRootLayer->addChild(promptLayer);
+    
+    CallFunc* func = CallFunc::create([monster]{
+        std::string msg =monster->getBossDescByEvent(EVENT_BOSS_ALERT);
+        PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
+
+    });
+    this->runAction(Sequence::createWithTwoActions(DelayTime::create(2.0f), func));
 
 }
 void GameUILayer::onEventBossSkill1(cocos2d::EventCustom *sender)
 {
     CCLOG("onEventBossSkill1");
+    BaseBoss* monster = static_cast<BaseBoss*>(sender->getUserData());
+    if (!monster)
+        return;
+    std::string msg = monster->getBossDescByEvent(EVENT_BOSS_SKILL1);
+    PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
 }
 void GameUILayer::onEventBossSkill2(cocos2d::EventCustom *sender)
 {
     CCLOG("onEventBossSkill2");
+    BaseBoss* monster = static_cast<BaseBoss*>(sender->getUserData());
+    if (!monster)
+        return;
+    std::string msg = monster->getBossDescByEvent(EVENT_BOSS_SKILL2);
+    PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
 }
 void GameUILayer::onEventBossSkill3(cocos2d::EventCustom *sender)
 {
     CCLOG("onEventBossSkill3");
+    BaseBoss* monster = static_cast<BaseBoss*>(sender->getUserData());
+    if (!monster)
+        return;
+    std::string msg =monster->getBossDescByEvent(EVENT_BOSS_SKILL3);
+    PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
 }
 
 void GameUILayer::setCharacterPropLayerVisible(bool isMonster, bool isNpc, bool isBoss)
