@@ -11,6 +11,7 @@
 
 #include "cocos2d.h"
 #include "ChaosNumber.h"
+#include "PlayerProperty.hpp"
 class BossProperty : public cocos2d::Ref
 {
 public:
@@ -34,6 +35,11 @@ public:
     void adjustByDC();
     
     CChaosNumber getRandomAttack();
+    
+    int getAttackAddBuffer() const { return m_nAttackAddBuffer; }
+    
+    void addAttackAddBuffer(PlayerBuffer buff);
+    void removeAttackAddBuffer(PlayerBuffer buff);
 private:
     CChaosNumber    m_nValueCopper;              ///价值铜币
     CChaosNumber    m_nMaxHP;                    ///最大生命值
@@ -47,6 +53,8 @@ private:
     CChaosNumber    m_fBlockRate;                ///格挡率
     CChaosNumber    m_fCriticalStrikeRate;       ///暴击率
     CChaosNumber    m_fDodgeRate;                ///闪避率
+    
+    int             m_nAttackAddBuffer;          ///攻击附加效果
 };
 
 #endif /* BossProperty_hpp */

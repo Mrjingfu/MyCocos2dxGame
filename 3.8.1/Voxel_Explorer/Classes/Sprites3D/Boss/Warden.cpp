@@ -24,6 +24,12 @@ Warden* Warden::create(BaseBoss::BossType type)
         boss->m_Type = type;
         boss->setCameraMask((unsigned int)CameraFlag::USER1);
         boss->setLightMask((unsigned int)LightFlag::LIGHT0);
+        
+        OutlineEffect3D* outline = OutlineEffect3D::create();
+        outline->setOutlineColor(Vec3(1.0f, 1.0f, 1.0f));
+        outline->setOutlineWidth(0.03f);
+        boss->addEffect(outline, 1);
+        
         boss->autorelease();
         return boss;
     }
@@ -48,11 +54,8 @@ void Warden::onEnterSkill1()
 }
 void Warden::onEnterSkill2()
 {
-    PrisonBossLevel* level = dynamic_cast<PrisonBossLevel*>(VoxelExplorer::getInstance()->getCurrentLevel());
-    if(level)
-    {
-        level->createSummoningMonstersByWarden(getPosInMap(), 2);
-    }
+    if(m_pBossProperty)
+        m_pBossProperty->addAttackAddBuffer(PlayerBuffer::PB_PARALYTIC);
     if(getEffectCount() > 0)
     {
         OutlineEffect3D* outline = dynamic_cast<OutlineEffect3D*>(getEffect(0));

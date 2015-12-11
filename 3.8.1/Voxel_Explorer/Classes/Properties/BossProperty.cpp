@@ -25,6 +25,8 @@ BossProperty::BossProperty()
     m_fBlockRate            = 0.01f;                ///格挡率
     m_fCriticalStrikeRate   = 0.02f;                ///暴击率
     m_fDodgeRate            = 0.01f;                ///闪避率
+    
+    m_nAttackAddBuffer            = PB_NONE;          ///默认附加状态
 }
 BossProperty::~BossProperty()
 {
@@ -84,4 +86,12 @@ void BossProperty::adjustByDC()
 CChaosNumber BossProperty::getRandomAttack()
 {
     return cocos2d::random(getMinAttack().GetLongValue(), getMaxAttack().GetLongValue());
+}
+void BossProperty::addAttackAddBuffer(PlayerBuffer buff)
+{
+    m_nAttackAddBuffer = m_nAttackAddBuffer | buff;
+}
+void BossProperty::removeAttackAddBuffer(PlayerBuffer buff)
+{
+    m_nAttackAddBuffer = m_nAttackAddBuffer &~ buff;
 }

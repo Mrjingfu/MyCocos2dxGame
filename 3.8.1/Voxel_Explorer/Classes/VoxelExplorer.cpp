@@ -395,7 +395,7 @@ void VoxelExplorer::updateFogOfWar(const cocos2d::Rect& areaRect, bool visited)
         for (const auto& child : m_pBossLayer->getChildren())
         {
             BaseBoss* boss = dynamic_cast<BaseBoss*>(child);
-            if(boss && areaRect.containsPoint(boss->getPosInMap()) && boss->getState() != BaseMonster::MS_DEATH)
+            if(boss && areaRect.containsPoint(boss->getPosInMap()) && boss->getState() != BaseBoss::BS_DEATH)
                 boss->setVisited(visited);
         }
     }
@@ -437,8 +437,13 @@ void VoxelExplorer::updateMiniMap()
 }
 void VoxelExplorer::updateBossRoomDoor()
 {
-    if(m_pCurrentLevel && m_pPlayer && m_pTerrainDoorsLayer)
+    if(m_pCurrentLevel && m_pPlayer && m_pTerrainDoorsLayer && m_pBossLayer && m_pBossLayer->getChildrenCount() > 0)
     {
+        
+        BaseBoss* boss = dynamic_cast<BaseBoss*>(m_pBossLayer->getChildren().at(0));
+        if(!boss || boss->getState() == BaseBoss::BS_DEATH)
+            return;
+        
         for (const auto& child : m_pTerrainDoorsLayer->getChildren())
         {
             BaseDoor* door = dynamic_cast<BaseDoor*>(child);
@@ -451,12 +456,12 @@ void VoxelExplorer::updateBossRoomDoor()
                 if(m_pCurrentLevel->getTerrainTileAreaType(pos.x, pos.y) == Area::AT_BOSS_ROOM
                        && m_pCurrentLevel->getTerrainTileAreaType(playerPos.x, playerPos.y) == Area::AT_BOSS_ROOM)
                 {
-                    if(!door->isMagicLocked())
+                    if(!door->isMagicLocked() && (door->getDoorState() == BaseDoor::DS_OPENED))
                     {
                         door->setMagicLocked(true);
                         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_DOOR_MAGIC_CLOSED);
+                        door->setDoorState(BaseDoor::DS_CLOSED);
                     }
-                    door->setDoorState(BaseDoor::DS_CLOSED);
                         
                     return;
                 }
@@ -473,7 +478,7 @@ bool VoxelExplorer::checkBossRoomDoorClosed()
             BaseDoor* door = dynamic_cast<BaseDoor*>(child);
             if(door)
             {
-                if(door->isMagicLocked())
+                if(door->isMagicLocked() && (door->getDoorState() == BaseDoor::DS_CLOSED))
                     return true;
             }
         }
@@ -489,10 +494,9 @@ void VoxelExplorer::clearBoosRoom()
             BaseDoor* door = dynamic_cast<BaseDoor*>(child);
             if(door)
             {
-                if(door->isMagicLocked())
+                if(door->isMagicLocked() && (door->getDoorState() == BaseDoor::DS_CLOSED))
                 {
                     door->setMagicLocked(false);
-                    door->setDoorState(BaseDoor::DS_OPENED);
                     break;
                 }
             }

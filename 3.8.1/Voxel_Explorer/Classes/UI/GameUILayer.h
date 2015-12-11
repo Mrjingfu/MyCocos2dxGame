@@ -69,6 +69,7 @@ private:
     void onEventTriggerGripping(cocos2d::EventCustom *sender);//夹子机关
     void onEventTriggerSummoning(cocos2d::EventCustom *sender);//召唤机关
     void onEventTriggerWeak(cocos2d::EventCustom *sender);  //虚弱机关
+    void onEventTriggerFrozen(cocos2d::EventCustom *sender);  //冰冻，不一定是机关
     
     void onEventUseGoldChestKey(cocos2d::EventCustom *sender);
     void onEventUseSilverChestKey(cocos2d::EventCustom *sender);
