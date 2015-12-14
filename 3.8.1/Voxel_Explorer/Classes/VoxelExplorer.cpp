@@ -307,6 +307,19 @@ bool VoxelExplorer::checkMonsterCanAttack(BaseMonster* monster)
         return true;
     return false;
 }
+bool VoxelExplorer::checkBossFleeFromPlayer(BaseBoss* boss)
+{
+    if(boss == nullptr || !(boss->isVisible()))
+        return false;
+    if(m_pPlayer == nullptr || m_pPlayer->getState() == Player::PS_DEATH || m_pPlayer->isStealth())
+        return false;
+    Vec2 playerPosInMap = m_pPlayer->getPosInMap();
+    Vec2 bossPosInMap = boss->getPosInMap();
+
+    if(std::abs(playerPosInMap.y - bossPosInMap.y) <= boss->getFleeRange() && std::abs(playerPosInMap.x - bossPosInMap.x) <= boss->getFleeRange())
+        return true;
+    return false;
+}
 bool VoxelExplorer::checkBossCanAttack(BaseBoss* boss)
 {
     if(boss == nullptr || !(boss->isVisible()))
@@ -315,33 +328,33 @@ bool VoxelExplorer::checkBossCanAttack(BaseBoss* boss)
         return false;
     Vec2 playerPosInMap = m_pPlayer->getPosInMap();
     Vec2 bossPosInMap = boss->getPosInMap();
-    if(playerPosInMap.x == bossPosInMap.x && std::abs(playerPosInMap.y - bossPosInMap.y) <= boss->getAttackRange())
-        return true;
-    else if(playerPosInMap.y == bossPosInMap.y && std::abs(playerPosInMap.x - bossPosInMap.x) <= boss->getAttackRange())
-        return true;
-    return false;
+    if(std::abs(playerPosInMap.y - bossPosInMap.y) > boss->getAttackRange() || std::abs(playerPosInMap.x - bossPosInMap.x) > boss->getAttackRange())
+        return false;
+    return true;
 }
 bool VoxelExplorer::trackToPlayer(Actor* tracker, cocos2d::Vec2& nextPos)
 {
     if(tracker == nullptr || m_pPlayer == nullptr || m_pCurrentLevel == nullptr || !(tracker->isVisible()))
        return false;
     Vec2 playerPosInMap = m_pPlayer->getPosInMap();
-    Vec2 monsterPosInMap = tracker->getPosInMap();
-    return m_pCurrentLevel->getNextPathStep(monsterPosInMap, playerPosInMap, nextPos);
+    Vec2 trackerPosInMap = tracker->getPosInMap();
+    return m_pCurrentLevel->getNextPathStep(trackerPosInMap, playerPosInMap, nextPos);
 }
-bool VoxelExplorer::fleeFromPlayer(Actor* tracker, cocos2d::Vec2& nextPos)
+bool VoxelExplorer::fleeFromPlayer(Actor* runaway, cocos2d::Vec2& nextPos)
 {
-    if(tracker == nullptr || m_pPlayer == nullptr || m_pCurrentLevel == nullptr || !(tracker->isVisible()))
+    if(runaway == nullptr || runaway == nullptr || m_pCurrentLevel == nullptr || !(runaway->isVisible()))
         return false;
-    return true;
+    Vec2 playerPosInMap = m_pPlayer->getPosInMap();
+    Vec2 runawayPosInMap = runaway->getPosInMap();
+    return m_pCurrentLevel->getBackPathStep(runawayPosInMap, playerPosInMap, nextPos);
 }
-bool VoxelExplorer::wanderingAround(Actor* tracker, cocos2d::Vec2& nextPos)
+bool VoxelExplorer::wanderingAround(Actor* wanderer, cocos2d::Vec2& nextPos)
 {
-    if(tracker == nullptr  || m_pCurrentLevel == nullptr || !(tracker->isVisible()))
+    if(wanderer == nullptr  || m_pCurrentLevel == nullptr || !(wanderer->isVisible()))
         return false;
-    Vec2 monsterPosInMap = tracker->getPosInMap();
-    Vec2 randomPos = m_pCurrentLevel->getRandomPassableTile();
-    return m_pCurrentLevel->getNextPathStep(monsterPosInMap, randomPos, nextPos);
+    Vec2 wandererPosInMap = wanderer->getPosInMap();
+    Vec2 randomPosInMap = m_pCurrentLevel->getRandomPassableTile();
+    return m_pCurrentLevel->getNextPathStep(wandererPosInMap, randomPosInMap, nextPos);
 }
 void VoxelExplorer::updateFogOfWar(const cocos2d::Rect& areaRect, bool visited)
 {
@@ -1314,22 +1327,22 @@ bool VoxelExplorer::createLevel()
             break;
         case DT_FANE:
             {
-                if(node->isBossDepth())
-                    m_pCurrentLevel = new(std::nothrow) FaneBossLevel();
-                else
-                    m_pCurrentLevel = new(std::nothrow) FaneLevel();
+//                if(node->isBossDepth())
+//                    m_pCurrentLevel = new(std::nothrow) FaneBossLevel();
+//                else
+//                    m_pCurrentLevel = new(std::nothrow) FaneLevel();
                 // for debug
-                //m_pCurrentLevel = new(std::nothrow) FaneBossLevel();
+                m_pCurrentLevel = new(std::nothrow) FaneBossLevel();
             }
             break;
         case DT_MINES:
             {
-                if(node->isBossDepth())
-                    m_pCurrentLevel = new(std::nothrow) MineBossLevel();
-                else
-                    m_pCurrentLevel = new(std::nothrow) MineLevel();
+//                if(node->isBossDepth())
+//                    m_pCurrentLevel = new(std::nothrow) MineBossLevel();
+//                else
+//                    m_pCurrentLevel = new(std::nothrow) MineLevel();
                 //for debug
-                //m_pCurrentLevel = new(std::nothrow) MineBossLevel();
+                m_pCurrentLevel = new(std::nothrow) MineBossLevel();
             }
             break;
         case DT_CAVE:

@@ -75,10 +75,26 @@ bool FaneBossLevel::build()
     int exitX = m_nIndexExit%m_nWidth;
     int exitY = m_nIndexExit/m_nWidth;
     
-    generateTerrainTiles( exitX - 3, exitY,
-                         m_nRoomRight - m_nRoomLeft + 7, m_nRoomTop - m_nRoomBottom + 7, TerrainTile::TT_WALL, Area::AT_BOSS_EXIT );;
-    generateTerrainTiles(  exitX - 2, exitY+1,
-                 m_nRoomRight - m_nRoomLeft + 5, m_nRoomTop - m_nRoomBottom + 5, TerrainTile::TT_STANDARD, Area::AT_BOSS_EXIT );
+    m_AreaExitRect = cocos2d::Rect(exitX - 3, exitY, m_nRoomRight - m_nRoomLeft + 7, m_nRoomTop - m_nRoomBottom + 7);
+    
+    m_AreaExitCenter = Vec2((int)(m_AreaExitRect.getMidX()), (int)(m_AreaExitRect.getMidY()));
+    
+    generateTerrainTiles( m_AreaExitRect.origin.x, m_AreaExitRect.origin.y,
+                         m_AreaExitRect.size.width, m_AreaExitRect.size.height, TerrainTile::TT_WALL, Area::AT_BOSS_EXIT );
+    generateTerrainTiles(  m_AreaExitRect.origin.x + 1, m_AreaExitRect.origin.y + 1,
+                 m_AreaExitRect.size.width - 2, m_AreaExitRect.size.height - 2, TerrainTile::TT_STANDARD, Area::AT_BOSS_EXIT );
+    
+    if(m_AreaExitRect.size.width >= m_AreaExitRect.size.height)
+    {
+        setTerrainTileType(m_AreaExitCenter.x - 1, m_AreaExitCenter.y, TerrainTile::TT_STANDARD_PORTAL);
+        setTerrainTileType(m_AreaExitCenter.x + 1, m_AreaExitCenter.y, TerrainTile::TT_STANDARD_PORTAL);
+    }
+    else
+    {
+        setTerrainTileType(m_AreaExitCenter.x, m_AreaExitCenter.y - 1, TerrainTile::TT_STANDARD_PORTAL);
+        setTerrainTileType(m_AreaExitCenter.x, m_AreaExitCenter.y + 1, TerrainTile::TT_STANDARD_PORTAL);
+    }
+
     
     m_nIndexEntrance = cocos2d::random( m_nRoomLeft + 1, m_nRoomRight - 1 ) + cocos2d::random( m_nRoomBottom + 1, m_nRoomTop - 1 ) * m_nWidth;
     
@@ -134,10 +150,12 @@ bool FaneBossLevel::createMonsters()
         CCLOG("Create boss failed!");
         return false;
     }
+    ///for debug
+    return true;
+    
     int monsterNum = 10;
     for (int i=0; i < monsterNum; i++) {
-        BaseMonster::MonsterType type = (BaseMonster::MonsterType)cocos2d::random((int)BaseMonster::MT_BELIEVER, (int)BaseMonster::MT_PRIEST);
-        StandardMonster* monster = StandardMonster::create(type);
+        StandardMonster* monster = StandardMonster::create(BaseMonster::MT_BELIEVER);
         if(!monster)
             return false;
         int tileIndex = -1;
@@ -152,7 +170,7 @@ bool FaneBossLevel::createMonsters()
         monster->setVisited(m_Map[tileIndex].m_bVisited);
         monster->addTerrainTileFlag(TileInfo::ATTACKABLE);
         VoxelExplorer::getInstance()->getMonstersLayer()->addChild(monster);
-        monster->setState(BaseMonster::MS_SLEEPING);
+        monster->setState(BaseMonster::MS_TRACKING);
     }
     return true;
 }
@@ -229,4 +247,153 @@ bool FaneBossLevel::createBoss(const cocos2d::Vec2& pos)
     archbishop->setState(BaseBoss::BS_SLEEPING);
     
     return true;
+}
+bool FaneBossLevel::createSummoningMonstersByArchbishop(const cocos2d::Vec2& mapPos, int skillStage)
+{
+    if(skillStage == 1)
+    {
+        int count = 0;
+        std::vector<int> neighbours8 = getNeighbours8();
+        for (int i = 0; i < neighbours8.size(); i++) {
+            int index = mapPos.x + mapPos.y * m_nWidth + neighbours8[i];
+            if(isTerrainTilePassable(index))
+            {
+                StandardMonster* monster = StandardMonster::create(BaseMonster::MT_PRIEST, true);
+                if(!monster)
+                    return false;
+                monster->setPosition3D(Vec3(m_Map[index].m_nX*TerrainTile::CONTENT_SCALE, -0.5f*TerrainTile::CONTENT_SCALE, -m_Map[index].m_nY*TerrainTile::CONTENT_SCALE));
+                monster->setVisited(m_Map[index].m_bVisited);
+                monster->addTerrainTileFlag(TileInfo::ATTACKABLE);
+                VoxelExplorer::getInstance()->getMonstersLayer()->addChild(monster);
+                monster->setState(BaseMonster::MS_TRACKING);
+                monster->setMonsterFOV(11);
+                count++;
+                if(count == 2)
+                    break;
+            }
+        }
+        return true;
+    }
+    else if(skillStage == 2)
+    {
+        if(VoxelExplorer::getInstance()->getMonstersLayer()->getChildrenCount() >= 30)
+            return true;
+        int count = 0;
+        std::vector<int> neighbours8 = getNeighbours8();
+        for (int i = 0; i < neighbours8.size(); i++) {
+            int index = mapPos.x + mapPos.y * m_nWidth + neighbours8[i];
+            if(isTerrainTilePassable(index))
+            {
+                StandardMonster* monster = StandardMonster::create(BaseMonster::MT_GATEKEEPER);
+                if(!monster)
+                    return false;
+                monster->setPosition3D(Vec3(m_Map[index].m_nX*TerrainTile::CONTENT_SCALE, -0.5f*TerrainTile::CONTENT_SCALE, -m_Map[index].m_nY*TerrainTile::CONTENT_SCALE));
+                monster->setVisited(m_Map[index].m_bVisited);
+                monster->addTerrainTileFlag(TileInfo::ATTACKABLE);
+                VoxelExplorer::getInstance()->getMonstersLayer()->addChild(monster);
+                monster->setState(BaseMonster::MS_TRACKING);
+                monster->setMonsterFOV(11);
+                count++;
+                if(count == 2)
+                    break;
+            }
+        }
+        return true;
+    }
+    else if(skillStage == 3)
+    {
+        int monsterNum = 10;
+        for (int i=0; i < monsterNum; i++) {
+            BaseMonster::MonsterType type = (BaseMonster::MonsterType)cocos2d::random((int)BaseMonster::MT_BELIEVER, (int)BaseMonster::MT_PRIEST);
+            StandardMonster* monster = StandardMonster::create(type);
+            if(!monster)
+                return false;
+            int tileIndex = -1;
+            do {
+                tileIndex = randomMonsterRespawnCell();
+                Vec2 monsterPos = Vec2(tileIndex%m_nWidth, tileIndex/m_nWidth);
+                if(monsterPos.distance(Vec2(m_nIndexEntrance%m_nWidth, m_nIndexEntrance/m_nWidth)) < 7)
+                    tileIndex = -1;
+            } while (tileIndex == -1);
+            
+            monster->setPosition3D(Vec3(m_Map[tileIndex].m_nX*TerrainTile::CONTENT_SCALE, -0.5f*TerrainTile::CONTENT_SCALE, -m_Map[tileIndex].m_nY*TerrainTile::CONTENT_SCALE));
+            monster->setVisited(m_Map[tileIndex].m_bVisited);
+            monster->addTerrainTileFlag(TileInfo::ATTACKABLE);
+            VoxelExplorer::getInstance()->getMonstersLayer()->addChild(monster);
+            monster->setState(BaseMonster::MS_TRACKING);
+            
+            monster->setMonsterFOV(21);
+        }
+        return true;
+    }
+    return false;
+}
+void FaneBossLevel::clearBossRoom()
+{
+    VoxelExplorer::getInstance()->clearBoosRoom();
+}
+
+bool FaneBossLevel::createPickableItems()
+{
+    std::vector<int> edgeIndexList = getTilesOnEdge(1);
+    for (int i = 0; i < edgeIndexList.size(); i++) {
+        int tileIndex = edgeIndexList[i];
+        
+        std::vector<int> neighbours8 = this->getNeighbours8();
+        bool neighbourHasDoor = false;
+        for (int j = 0; j<neighbours8.size(); ++j) {
+            if(m_Map[neighbours8[j] + tileIndex].m_Type == TerrainTile::TT_LOCKED_BOSS_DOOR)
+                neighbourHasDoor = true;
+        }
+        if(neighbourHasDoor)
+            continue;
+        
+        int playerlevel = PlayerProperty::getInstance()->getLevel().GetLongValue();
+        int itemLevel = cocos2d::random(playerlevel - 3, playerlevel + 3);
+        if(itemLevel < 1)
+            itemLevel = 1;
+        
+        PickableItem::PickableItemType type = PickableItem::generatePickItemByMonsterLevel(itemLevel);
+        if(type == PickableItem::PIT_UNKNOWN)
+            continue;
+        
+        PickableItem* item = PickableItem::create(type, itemLevel);
+        if(!item)
+            return false;
+        else
+        {
+            item->setPosition3D(Vec3(m_Map[tileIndex].m_nX*TerrainTile::CONTENT_SCALE, -0.5f*TerrainTile::CONTENT_SCALE, -m_Map[tileIndex].m_nY*TerrainTile::CONTENT_SCALE));
+            item->setVisited(m_Map[tileIndex].m_bVisited);
+            VoxelExplorer::getInstance()->getPickableItemsLayer()->addChild(item);
+            item->setState(PickableItem::PIS_IDLE);
+        }
+        
+    }
+    return true;
+}
+std::vector<int> FaneBossLevel::getTilesOnEdge(int m)
+{
+    int leftOuter = m_AreaExitRect.getMinX() + 1;
+    int rightOuter = m_AreaExitRect.getMaxX() - 2;
+    int bottomOuter = m_AreaExitRect.getMinY() + 1;
+    int topOuter = m_AreaExitRect.getMaxY() - 2;
+    
+    int leftInner = m_AreaExitRect.getMinX() + m + 1;
+    int rightInner = m_AreaExitRect.getMaxX() - m - 2;
+    int bottomInner = m_AreaExitRect.getMinY() + m + 1;
+    int topInner = m_AreaExitRect.getMaxY() - m - 2;
+    cocos2d::Rect rectOuter = cocos2d::Rect(MIN(leftOuter, rightOuter), MIN(bottomOuter, topOuter), std::abs(rightOuter - leftOuter), std::abs(topOuter - bottomOuter));
+    
+    cocos2d::Rect rectInner = cocos2d::Rect(MIN(leftInner, rightInner), MIN(bottomInner, topInner), std::abs(rightInner - leftInner), std::abs(topInner - bottomInner));
+    
+    std::vector<int> ret;
+    for (int j = MIN(bottomOuter, topOuter); j <= MAX(bottomOuter, topOuter); ++j)
+        for (int i = MIN(leftOuter, rightOuter); i <= MAX(leftOuter, rightOuter); ++i)
+        {
+            if(rectInner.containsPoint(Vec2(i, j)))
+                continue;
+            int index = i + j*m_nWidth;
+            ret.push_back(index);
+        }
+    return ret;
 }

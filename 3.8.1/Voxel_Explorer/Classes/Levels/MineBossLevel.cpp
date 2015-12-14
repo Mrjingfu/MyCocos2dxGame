@@ -73,6 +73,10 @@ bool MineBossLevel::build()
     
     m_nIndexExit = cocos2d::random( m_nRoomLeft, m_nRoomRight ) + (m_nRoomBottom-1) * m_nWidth;
     
+    m_AreaExitRect = cocos2d::Rect(m_nRoomLeft - 1, m_nRoomBottom - 1, m_nRoomRight - m_nRoomLeft + 5, m_nRoomTop - m_nRoomBottom + 5);
+    
+    m_AreaExitCenter = Vec2((int)(m_AreaExitRect.getMidX()), (int)(m_AreaExitRect.getMidY()));
+    
     int entranceX = m_nIndexEntrance%m_nWidth;
     int entranceY = m_nIndexEntrance/m_nWidth;
 
@@ -81,21 +85,6 @@ bool MineBossLevel::build()
     
     setTerrainTile(entranceX, entranceY, TerrainTile::TT_ENTRANCE, Area::AT_BOSS_ROOM);
     setTerrainTile(exitX, exitY, TerrainTile::TT_LOCKED_BOSS_DOOR, Area::AT_BOSS_EXIT, Actor::AD_FORWARD);
-    
-    for (int i=0; i < m_nLenght; i++) {
-        if (m_Map[i].m_AreaType == Area::AT_BOSS_ROOM && m_Map[i].m_Type == TerrainTile::TT_STANDARD && cocos2d::random(0, 5) == 0) {
-            setTerrainTile(i%m_nWidth, i/m_nWidth, TerrainTile::TT_GRIPPING_TRAP, Area::AT_BOSS_ROOM);
-        }
-    }
-    
-    std::vector<int> neighbour8 = getNeighbours8();
-    for (int k = 0; k < neighbour8.size(); k++) {
-        int checkIndex = m_nIndexEntrance + neighbour8[k];
-        int checkX = checkIndex%m_nWidth;
-        int checkY = checkIndex/m_nWidth;
-        if(m_Map[checkIndex].m_Type == TerrainTile::TT_GRIPPING_TRAP)
-            setTerrainTile(checkX, checkY, TerrainTile::TT_STANDARD, Area::AT_BOSS_ROOM);
-    }
     
     updateTerrainTileFogOfWar(0, 0, m_nWidth, m_nHeight, true);
     
@@ -153,7 +142,9 @@ bool MineBossLevel::createMonsters()
         monster->setVisited(m_Map[tileIndex].m_bVisited);
         monster->addTerrainTileFlag(TileInfo::ATTACKABLE);
         VoxelExplorer::getInstance()->getMonstersLayer()->addChild(monster);
+        monster->setMonsterFOV(11);
         monster->setState(BaseMonster::MS_SLEEPING);
+        
     }
     return true;
 }
@@ -229,4 +220,138 @@ bool MineBossLevel::createBoss(const cocos2d::Vec2& pos)
     VoxelExplorer::getInstance()->getBossLayer()->addChild(koboldLeader);
     koboldLeader->setState(BaseBoss::BS_SLEEPING);
     return true;
+}
+bool MineBossLevel::createSummoningMonstersByKoboldLeader(const cocos2d::Vec2& mapPos, int skillStage)
+{
+    if(skillStage == 1)
+    {
+        return true;
+    }
+    else if(skillStage == 2)
+    {
+        for (int i=0; i < m_nLenght; i++) {
+            if (m_Map[i].m_AreaType == Area::AT_BOSS_ROOM && m_Map[i].m_Type == TerrainTile::TT_STANDARD && cocos2d::random(0, 4) == 0) {
+                setTerrainTile(i%m_nWidth, i/m_nWidth, TerrainTile::TT_GRIPPING_TRAP, Area::AT_BOSS_ROOM);
+                VoxelExplorer::getInstance()->updateTerrainTile(i%m_nWidth, i/m_nWidth,TerrainTile::TT_GRIPPING_TRAP);
+            }
+        }
+        
+        int monsterNum = 10;
+        for (int i=0; i < monsterNum; i++) {
+            StandardMonster* monster = StandardMonster::create(BaseMonster::MT_KOBOLD);
+            if(!monster)
+                return false;
+            int tileIndex = -1;
+            do {
+                tileIndex = randomMonsterRespawnCell();
+                Vec2 monsterPos = Vec2(tileIndex%m_nWidth, tileIndex/m_nWidth);
+                if(monsterPos.distance(mapPos) >= 7)
+                    tileIndex = -1;
+            } while (tileIndex == -1);
+            
+            monster->setPosition3D(Vec3(m_Map[tileIndex].m_nX*TerrainTile::CONTENT_SCALE, -0.5f*TerrainTile::CONTENT_SCALE, -m_Map[tileIndex].m_nY*TerrainTile::CONTENT_SCALE));
+            monster->setVisited(m_Map[tileIndex].m_bVisited);
+            monster->addTerrainTileFlag(TileInfo::ATTACKABLE);
+            VoxelExplorer::getInstance()->getMonstersLayer()->addChild(monster);
+            monster->setMonsterFOV(11);
+            monster->setState(BaseMonster::MS_TRACKING);
+        }
+        return true;
+    }
+    else if(skillStage == 3)
+    {
+        if(VoxelExplorer::getInstance()->getMonstersLayer()->getChildrenCount() >= 32)
+            return true;
+        int monsterNum = 3;
+        for (int i=0; i < monsterNum; i++) {
+            StandardMonster* monster = StandardMonster::create(BaseMonster::MT_KOBOLD, true);
+            if(!monster)
+                return false;
+            int tileIndex = -1;
+            do {
+                tileIndex = randomMonsterRespawnCell();
+                Vec2 monsterPos = Vec2(tileIndex%m_nWidth, tileIndex/m_nWidth);
+                if(monsterPos.distance(mapPos) >= 3)
+                    tileIndex = -1;
+            } while (tileIndex == -1);
+            
+            monster->setPosition3D(Vec3(m_Map[tileIndex].m_nX*TerrainTile::CONTENT_SCALE, -0.5f*TerrainTile::CONTENT_SCALE, -m_Map[tileIndex].m_nY*TerrainTile::CONTENT_SCALE));
+            monster->setVisited(m_Map[tileIndex].m_bVisited);
+            monster->addTerrainTileFlag(TileInfo::ATTACKABLE);
+            VoxelExplorer::getInstance()->getMonstersLayer()->addChild(monster);
+            monster->setMonsterFOV(11);
+            monster->setState(BaseMonster::MS_TRACKING);
+        }
+        return true;
+    }
+    return false;
+}
+void MineBossLevel::clearBossRoom()
+{
+    VoxelExplorer::getInstance()->clearBoosRoom();
+}
+
+bool MineBossLevel::createPickableItems()
+{
+    std::vector<int> edgeIndexList = getTilesOnEdge(1);
+    for (int i = 0; i < edgeIndexList.size(); i++) {
+        int tileIndex = edgeIndexList[i];
+        
+        std::vector<int> neighbours8 = this->getNeighbours8();
+        bool neighbourHasDoor = false;
+        for (int j = 0; j<neighbours8.size(); ++j) {
+            if(m_Map[neighbours8[j] + tileIndex].m_Type == TerrainTile::TT_LOCKED_BOSS_DOOR)
+                neighbourHasDoor = true;
+        }
+        if(neighbourHasDoor)
+            continue;
+        
+        int playerlevel = PlayerProperty::getInstance()->getLevel().GetLongValue();
+        int itemLevel = cocos2d::random(playerlevel - 3, playerlevel + 3);
+        if(itemLevel < 1)
+            itemLevel = 1;
+        
+        PickableItem::PickableItemType type = PickableItem::generatePickItemByMonsterLevel(itemLevel);
+        if(type == PickableItem::PIT_UNKNOWN)
+            continue;
+        
+        PickableItem* item = PickableItem::create(type, itemLevel);
+        if(!item)
+            return false;
+        else
+        {
+            item->setPosition3D(Vec3(m_Map[tileIndex].m_nX*TerrainTile::CONTENT_SCALE, -0.5f*TerrainTile::CONTENT_SCALE, -m_Map[tileIndex].m_nY*TerrainTile::CONTENT_SCALE));
+            item->setVisited(m_Map[tileIndex].m_bVisited);
+            VoxelExplorer::getInstance()->getPickableItemsLayer()->addChild(item);
+            item->setState(PickableItem::PIS_IDLE);
+        }
+        
+    }
+    return true;
+}
+std::vector<int> MineBossLevel::getTilesOnEdge(int m)
+{
+    int leftOuter = m_AreaExitRect.getMinX() + 1;
+    int rightOuter = m_AreaExitRect.getMaxX() - 2;
+    int bottomOuter = m_AreaExitRect.getMinY() + 1;
+    int topOuter = m_AreaExitRect.getMaxY() - 2;
+    
+    int leftInner = m_AreaExitRect.getMinX() + m + 1;
+    int rightInner = m_AreaExitRect.getMaxX() - m - 2;
+    int bottomInner = m_AreaExitRect.getMinY() + m + 1;
+    int topInner = m_AreaExitRect.getMaxY() - m - 2;
+    cocos2d::Rect rectOuter = cocos2d::Rect(MIN(leftOuter, rightOuter), MIN(bottomOuter, topOuter), std::abs(rightOuter - leftOuter), std::abs(topOuter - bottomOuter));
+    
+    cocos2d::Rect rectInner = cocos2d::Rect(MIN(leftInner, rightInner), MIN(bottomInner, topInner), std::abs(rightInner - leftInner), std::abs(topInner - bottomInner));
+    
+    std::vector<int> ret;
+    for (int j = MIN(bottomOuter, topOuter); j <= MAX(bottomOuter, topOuter); ++j)
+        for (int i = MIN(leftOuter, rightOuter); i <= MAX(leftOuter, rightOuter); ++i)
+        {
+            if(rectInner.containsPoint(Vec2(i, j)))
+                continue;
+            int index = i + j*m_nWidth;
+            ret.push_back(index);
+        }
+    return ret;
 }

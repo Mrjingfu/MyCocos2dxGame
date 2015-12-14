@@ -16,6 +16,7 @@
 #include "LevelResourceManager.h"
 #include "FakeShadow.hpp"
 #include "StatisticsManager.hpp"
+#include "RandomDungeon.hpp"
 USING_NS_CC;
 const std::string MONSTER_MODEL_NAMES[] = {
     "MMN_UNKNOWN",
@@ -406,6 +407,8 @@ void BaseMonster::onEnterMoving()
 }
 void BaseMonster::onExitMoving()
 {
+    setPositionY(-0.5f*TerrainTile::CONTENT_SCALE);
+    this->stopAllActions();
 }
 void BaseMonster::onEnterAttack()
 {
@@ -413,6 +416,8 @@ void BaseMonster::onEnterAttack()
 }
 void BaseMonster::onExitAttack()
 {
+    setPositionY(-0.5f*TerrainTile::CONTENT_SCALE);
+    this->stopAllActions();
 }
 
 void BaseMonster::onEnterDeath()
@@ -424,11 +429,14 @@ void BaseMonster::onEnterDeath()
     if(m_pFakeShadow)
         m_pFakeShadow->setVisible(false);
     VoxelExplorer::getInstance()->addExplosion(getPosition3D());
-    bool generateItem = GameFormula::generatePickItemByMonster(m_pMonsterProperty->isElite(), false);
-    int level = m_pMonsterProperty->getLevel().GetLongValue();
-    if(m_pMonsterProperty->isElite())
-        level = MAX(1, level- 3);
-    VoxelExplorer::getInstance()->generatePickItem(getPosInMap(), generateItem, m_pMonsterProperty->getValueCopper().GetLongValue(), level);
+    if(!RandomDungeon::getInstance()->getCurrentDungeonNode()->isBossDepth())
+    {
+        bool generateItem = GameFormula::generatePickItemByMonster(m_pMonsterProperty->isElite(), false);
+        int level = m_pMonsterProperty->getLevel().GetLongValue();
+        if(m_pMonsterProperty->isElite())
+            level = MAX(1, level- 3);
+        VoxelExplorer::getInstance()->generatePickItem(getPosInMap(), generateItem, m_pMonsterProperty->getValueCopper().GetLongValue(), level);
+    }
 }
 void BaseMonster::onExitDeath()
 {
@@ -457,7 +465,7 @@ void BaseMonster::setActorDir( ActorDir dir )
     }
     this->runAction(rotateTo);
 }
-void BaseMonster::onLand()
+void BaseMonster::onLand(bool updateMiniMap)
 {
     CCLOG("monster onland pos = %f,%f", getPosInMap().x, getPosInMap().y);
     if(m_LastState == MS_WANDERING)
@@ -474,7 +482,7 @@ void BaseMonster::onLand()
     }
     else
         setState(MS_TRACKING);
-    if(isVisible())
+    if(isVisible() && updateMiniMap)
         VoxelExplorer::getInstance()->updateMiniMap();
 }
 void BaseMonster::moveToNext(const cocos2d::Vec2& next)
@@ -509,7 +517,7 @@ void BaseMonster::moveToNext(const cocos2d::Vec2& next)
         Sequence* sequenceJump = Sequence::create(moveUp, moveDown, NULL);
         Spawn* spawn = Spawn::create(scaleTo2, sequenceJump, NULL);
         DelayTime* delay = DelayTime::create(0.3f);
-        CallFunc* callback = CallFunc::create(CC_CALLBACK_0(BaseMonster::onLand,this));
+        CallFunc* callback = CallFunc::create(CC_CALLBACK_0(BaseMonster::onLand,this, true));
         Sequence* sequence = Sequence::create(scaleTo1, spawn, delay, callback, NULL);
         this->runAction(sequence);
     }
@@ -520,7 +528,7 @@ void BaseMonster::moveToNext(const cocos2d::Vec2& next)
         EaseBackIn* move = EaseBackIn::create(MoveTo::create(0.5f, Vec3(next.x*TerrainTile::CONTENT_SCALE, getPositionY(), -next.y*TerrainTile::CONTENT_SCALE)));
         Sequence* sequenceScale = Sequence::create(scaleTo1, scaleTo2, NULL);
         Spawn* spawn = Spawn::create(move, sequenceScale, NULL);
-        CallFunc* callback = CallFunc::create(CC_CALLBACK_0(BaseMonster::onLand,this));
+        CallFunc* callback = CallFunc::create(CC_CALLBACK_0(BaseMonster::onLand,this, true));
         Sequence* sequence = Sequence::create(spawn, callback, NULL);
         this->runAction(sequence);
     }
@@ -565,7 +573,7 @@ void BaseMonster::doAttack()
         CallFunc* callback = CallFunc::create(CC_CALLBACK_0(VoxelExplorer::handlePlayerHurt,VoxelExplorer::getInstance(),playerPos, m_pMonsterProperty));
         EaseSineOut* moveDown = EaseSineOut::create(MoveTo::create(0.1f, getPosition3D()));
         Sequence* sequenceJump = Sequence::create(moveUp, callback, moveDown, NULL);
-        CallFunc* callback2 = CallFunc::create(CC_CALLBACK_0(BaseMonster::setState,this, MS_TRACKING));
+        CallFunc* callback2 = CallFunc::create(CC_CALLBACK_0(BaseMonster::onLand, this, false));
         DelayTime* delay = DelayTime::create(0.7f);
         Sequence* sequence = Sequence::create(sequenceJump, delay, callback2, NULL);
         this->runAction(sequence);
@@ -581,7 +589,7 @@ void BaseMonster::doAttack()
         Sequence* sequenceScale = Sequence::create(scaleTo1, scaleTo2, NULL);
         Sequence* sequenceMove = Sequence::create(moveTo1, callback, moveTo2, NULL);
         Spawn* spawn = Spawn::create(sequenceMove, sequenceScale, NULL);
-        CallFunc* callback2 = CallFunc::create(CC_CALLBACK_0(BaseMonster::setState,this,MS_TRACKING));
+        CallFunc* callback2 = CallFunc::create(CC_CALLBACK_0(BaseMonster::onLand,this, false));
         Sequence* sequence = Sequence::create(spawn, callback2, NULL);
         this->runAction(sequence);
     }

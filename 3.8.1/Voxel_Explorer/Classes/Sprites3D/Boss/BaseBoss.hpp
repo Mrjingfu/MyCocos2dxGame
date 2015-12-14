@@ -56,6 +56,7 @@ public:
     void setMonsterFOV(int fov) { m_nFOV = fov; }
     
     int getAttackRange() const { return m_nAttackRange; }
+    int getFleeRange() const { return m_nFleeRange; }
     
     void attackedByPlayer(bool miss);
     bool createFakeShadow();
@@ -107,7 +108,7 @@ protected:
     
     virtual bool isPlayerInsideBossRoom() { return true; }
 private:
-    void onLand();
+    void onLand(bool updateMiniMap);
     void moveToNext(const cocos2d::Vec2& next);
     void doAttack();
 protected:
@@ -127,6 +128,9 @@ protected:
     FakeShadow*      m_pFakeShadow;
     
     cocos2d::Vec2               m_NextPos;
+    cocos2d::Vec2               m_BackPos;
+    int                     m_nFleeRange;
+    bool                    m_bEnableFlee;
 };
 
 #endif /* BaseBoss_hpp */

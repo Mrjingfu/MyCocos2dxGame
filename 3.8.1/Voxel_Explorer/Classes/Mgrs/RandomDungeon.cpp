@@ -110,7 +110,7 @@ bool RandomDungeon::build()
         m_pCurrentNode->retain();
         m_pCurrentNode->m_Type = type;
         ///for debug
-        m_pCurrentNode->m_Type = DT_PRISON;
+        m_pCurrentNode->m_Type = DT_MINES;
         m_pCurrentNode->m_nNodeDepth = 1;
         assignedDungeonNode(m_pCurrentNode);
         m_pCurrentNode->autorelease();

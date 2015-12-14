@@ -25,7 +25,7 @@ public:
     void buildDistanceMap(int to, const std::vector<TileInfo>& tilesInfo, int limit);
 private:
     bool buildDistanceMap(int from, int to, const std::vector<TileInfo>& tilesInfo);
-    bool buildEscapeDistanceMap(int cur, int from, float factor,const std::vector<TileInfo>& tilesInfo);
+    int buildEscapeDistanceMap(int cur, int from, float factor,const std::vector<TileInfo>& tilesInfo);
     bool buildDistanceMap(int from, const std::vector<bool>& to, const std::vector<TileInfo>& tilesInfo);
 private:
     int                 m_nSize;

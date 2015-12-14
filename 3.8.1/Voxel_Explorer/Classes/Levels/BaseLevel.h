@@ -127,6 +127,7 @@ public:
     bool checkMovable(Actor* actor, TileInfo& info);
     
     bool getNextPathStep(const cocos2d::Vec2& from, const cocos2d::Vec2& to, cocos2d::Vec2& nextPos);
+    bool getBackPathStep(const cocos2d::Vec2& current, const cocos2d::Vec2& from, cocos2d::Vec2& nextPos);
     cocos2d::Vec2 getRandomPassableTile();
     cocos2d::Vec2 getRandomTranspotTile();
     void searchAndCheck(int x, int y, int searchDistance);

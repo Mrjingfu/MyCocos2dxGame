@@ -34,10 +34,11 @@ public:
     bool checkMonsterAlert(BaseMonster* monster);
     bool checkBossAlert(BaseBoss* boss);
     bool checkMonsterCanAttack(BaseMonster* monster);
+    bool checkBossFleeFromPlayer(BaseBoss* boss);
     bool checkBossCanAttack(BaseBoss* boss);
     bool trackToPlayer(Actor* tracker, cocos2d::Vec2& nextPos);
-    bool fleeFromPlayer(Actor* tracker, cocos2d::Vec2& nextPos);
-    bool wanderingAround(Actor* tracker, cocos2d::Vec2& nextPos);
+    bool fleeFromPlayer(Actor* runaway, cocos2d::Vec2& nextPos);
+    bool wanderingAround(Actor* wanderer, cocos2d::Vec2& nextPos);
     void updateFogOfWar(const cocos2d::Rect& areaRect, bool visited);
     void updateMiniMap();
     void updateBossRoomDoor();
