@@ -22,16 +22,22 @@ public:
     void refreshUIView() override;
     void setTitle(std::string title);
     void setInfoIcon(std::string icon);
-    void seInfoDesc(std::string desc);
+    void setInfoDesc(std::string desc);
     void setInfoVector(cocos2d::ValueVector infos);
-    void setInfoData(const std::string& infoRes, std::string& infoDesc);
+    void updateInfoVectorDesc();
     
+//    void setInfoData(const std::string& infoRes, std::string& infoDesc);
+private:
+    void onClickNext(Ref* ref);
 private:
     cocos2d::ValueVector    m_vInfos;
     cocos2d::ui::ImageView* m_pInfoIcon;
     cocos2d::ui::ImageView* m_pBtnNext;
     cocos2d::ui::Text*      m_pInfoDesc;
     cocos2d::ui::Text*      m_pInfoTitle;
+    cocos2d::ui::Layout*    m_pInfoFrame;
+    cocos2d::ui::ImageView* m_pTitleFrame;
+    std::string             m_sInfoDesc;
 };
 
 #endif /* InfoPopupUI_hpp */

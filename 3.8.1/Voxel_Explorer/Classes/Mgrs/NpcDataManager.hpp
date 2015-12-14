@@ -38,7 +38,7 @@ public:
     PickableItemProperty* getItemFromAlchemistRoom(CChaosNumber id) const;
     PickableItemProperty* getItemFromTheifRoom(CChaosNumber id) const;
     
-    std::string getOldManRoomInfoByPart(int part, bool& atEnd);
+    cocos2d::ValueVector getOldManRoomInfo();
 private:
     bool initEquipmentShop();
     bool initMagicShop();
@@ -54,8 +54,7 @@ private:
     std::vector<PickableItemProperty*>      m_TheifRoom;
     
     cocos2d::ValueVector                    m_OldManRoom;
-    
-    int                     m_nOldManRoomIndex;
+ 
     bool                    m_bDirty;                 ///数据是否修改了
 };
 

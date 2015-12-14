@@ -120,13 +120,8 @@ void AlertPopupUI::setMessage( std::string message)
 {
     if (!m_pMessage)
         return;
-    int charCount = 0;
-    if(cocos2d::Application::getInstance()->getCurrentLanguage() ==cocos2d::LanguageType::CHINESE)
-    {
-        charCount =12;
-    }else{
-        charCount = 20;
-    }
+    cocos2d::Size fonSize = UtilityHelper::getSingleStrFontSize(m_pMessage, message);
+    int charCount  = (int)(m_pRootNode->getContentSize().width/fonSize.width);
     UtilityHelper::getLineStr(message, charCount);
     m_pMessage->setString(message);
  }

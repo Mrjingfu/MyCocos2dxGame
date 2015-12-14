@@ -257,8 +257,6 @@
 		EC3CC9861C088F4F00F8CFC8 /* TGridView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC3CC9511C088F4F00F8CFC8 /* TGridView.cpp */; };
 		EC3CC9871C088F4F00F8CFC8 /* DeadPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC3CC9541C088F4F00F8CFC8 /* DeadPopupUI.cpp */; };
 		EC3CC9881C088F4F00F8CFC8 /* DeadPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC3CC9541C088F4F00F8CFC8 /* DeadPopupUI.cpp */; };
-		EC3CC9891C088F4F00F8CFC8 /* InfoPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC3CC9561C088F4F00F8CFC8 /* InfoPopupUI.cpp */; };
-		EC3CC98A1C088F4F00F8CFC8 /* InfoPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC3CC9561C088F4F00F8CFC8 /* InfoPopupUI.cpp */; };
 		EC3CC98B1C088F4F00F8CFC8 /* ItemPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC3CC9581C088F4F00F8CFC8 /* ItemPopupUI.cpp */; };
 		EC3CC98C1C088F4F00F8CFC8 /* ItemPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC3CC9581C088F4F00F8CFC8 /* ItemPopupUI.cpp */; };
 		EC3CC98F1C088F4F00F8CFC8 /* PausePopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC3CC95C1C088F4F00F8CFC8 /* PausePopupUI.cpp */; };
@@ -283,8 +281,6 @@
 		EC3DC0BF1C157FC800D0FE47 /* AchievePopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC3DC0BC1C157FC800D0FE47 /* AchievePopupUI.cpp */; };
 		EC3DC0C21C157FFE00D0FE47 /* AchieveMangerLayerUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC3DC0C01C157FFE00D0FE47 /* AchieveMangerLayerUI.cpp */; };
 		EC3DC0C31C157FFE00D0FE47 /* AchieveMangerLayerUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC3DC0C01C157FFE00D0FE47 /* AchieveMangerLayerUI.cpp */; };
-		EC54FA001C116D4F002E8D8C /* DialoguePopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC54F9FE1C116D4F002E8D8C /* DialoguePopupUI.cpp */; };
-		EC54FA011C116D4F002E8D8C /* DialoguePopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC54F9FE1C116D4F002E8D8C /* DialoguePopupUI.cpp */; };
 		EC5D56901C0C4E2200F5EDDF /* DistPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC5D568E1C0C4E2200F5EDDF /* DistPopupUI.cpp */; };
 		EC5D56911C0C4E2200F5EDDF /* DistPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC5D568E1C0C4E2200F5EDDF /* DistPopupUI.cpp */; };
 		EC602AAC1BF46A2D00484D42 /* AchievementManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC602AAA1BF46A2D00484D42 /* AchievementManager.cpp */; };
@@ -601,8 +597,6 @@
 		EC3CC9521C088F4F00F8CFC8 /* TGridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TGridView.h; sourceTree = "<group>"; };
 		EC3CC9541C088F4F00F8CFC8 /* DeadPopupUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DeadPopupUI.cpp; sourceTree = "<group>"; };
 		EC3CC9551C088F4F00F8CFC8 /* DeadPopupUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeadPopupUI.h; sourceTree = "<group>"; };
-		EC3CC9561C088F4F00F8CFC8 /* InfoPopupUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = InfoPopupUI.cpp; sourceTree = "<group>"; };
-		EC3CC9571C088F4F00F8CFC8 /* InfoPopupUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoPopupUI.h; sourceTree = "<group>"; };
 		EC3CC9581C088F4F00F8CFC8 /* ItemPopupUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ItemPopupUI.cpp; sourceTree = "<group>"; };
 		EC3CC9591C088F4F00F8CFC8 /* ItemPopupUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemPopupUI.h; sourceTree = "<group>"; };
 		EC3CC95C1C088F4F00F8CFC8 /* PausePopupUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PausePopupUI.cpp; sourceTree = "<group>"; };
@@ -629,8 +623,6 @@
 		EC3DC0BD1C157FC800D0FE47 /* AchievePopupUI.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = AchievePopupUI.hpp; sourceTree = "<group>"; };
 		EC3DC0C01C157FFE00D0FE47 /* AchieveMangerLayerUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AchieveMangerLayerUI.cpp; sourceTree = "<group>"; };
 		EC3DC0C11C157FFE00D0FE47 /* AchieveMangerLayerUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AchieveMangerLayerUI.h; sourceTree = "<group>"; };
-		EC54F9FE1C116D4F002E8D8C /* DialoguePopupUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DialoguePopupUI.cpp; sourceTree = "<group>"; };
-		EC54F9FF1C116D4F002E8D8C /* DialoguePopupUI.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = DialoguePopupUI.hpp; sourceTree = "<group>"; };
 		EC5D568E1C0C4E2200F5EDDF /* DistPopupUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DistPopupUI.cpp; sourceTree = "<group>"; };
 		EC5D568F1C0C4E2200F5EDDF /* DistPopupUI.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = DistPopupUI.hpp; sourceTree = "<group>"; };
 		EC602AAA1BF46A2D00484D42 /* AchievementManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AchievementManager.cpp; sourceTree = "<group>"; };
@@ -1244,8 +1236,6 @@
 				EC3CC9551C088F4F00F8CFC8 /* DeadPopupUI.h */,
 				EC795F5D1C0D4B560083829B /* LittleWitchPopupUI.cpp */,
 				EC795F5E1C0D4B560083829B /* LittleWitchPopupUI.hpp */,
-				EC3CC9571C088F4F00F8CFC8 /* InfoPopupUI.h */,
-				EC3CC9561C088F4F00F8CFC8 /* InfoPopupUI.cpp */,
 				EC3CC95C1C088F4F00F8CFC8 /* PausePopupUI.cpp */,
 				EC3CC95D1C088F4F00F8CFC8 /* PausePopupUI.h */,
 				EC3CC95E1C088F4F00F8CFC8 /* PopupType.h */,
@@ -1257,8 +1247,6 @@
 				EC3CC9641C088F4F00F8CFC8 /* RolePopupUI.h */,
 				EC5D568E1C0C4E2200F5EDDF /* DistPopupUI.cpp */,
 				EC5D568F1C0C4E2200F5EDDF /* DistPopupUI.hpp */,
-				EC54F9FE1C116D4F002E8D8C /* DialoguePopupUI.cpp */,
-				EC54F9FF1C116D4F002E8D8C /* DialoguePopupUI.hpp */,
 				EC25C3C21C19120D00B4340D /* AlertPopupUI.cpp */,
 				EC25C3C31C19120D00B4340D /* AlertPopupUI.hpp */,
 			);
@@ -1476,7 +1464,6 @@
 				EC3CC9731C088F4F00F8CFC8 /* BagMangerLayerUI.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				EC602AB21BF47A4900484D42 /* AchieveProperty.cpp in Sources */,
-				EC54FA001C116D4F002E8D8C /* DialoguePopupUI.cpp in Sources */,
 				EC3DC0BE1C157FC800D0FE47 /* AchievePopupUI.cpp in Sources */,
 				551E93EE1BD512D3009F788F /* FileStream.cpp in Sources */,
 				EC3CC98F1C088F4F00F8CFC8 /* PausePopupUI.cpp in Sources */,
@@ -1577,7 +1564,6 @@
 				EC3CC9A51C08909B00F8CFC8 /* RolePropLayer.cpp in Sources */,
 				551E93E61BD512D3009F788F /* md5.c in Sources */,
 				5560F5EE1C12CB8E001DD164 /* KoboldLeader.cpp in Sources */,
-				EC3CC9891C088F4F00F8CFC8 /* InfoPopupUI.cpp in Sources */,
 				EC3CC99B1C088F4F00F8CFC8 /* CloseCallback.cpp in Sources */,
 				EC3CC9931C088F4F00F8CFC8 /* PopupUILayerManager.cpp in Sources */,
 				55338AE61BD8928E00EA316F /* Giant.cpp in Sources */,
@@ -1601,7 +1587,6 @@
 				55F81CC11BDB9257002EC075 /* ScrollProperty.cpp in Sources */,
 				EC3CC9781C088F4F00F8CFC8 /* CharacterPropLayer.cpp in Sources */,
 				5529701C1BFB34ED00DBF75B /* Npc.cpp in Sources */,
-				EC54FA011C116D4F002E8D8C /* DialoguePopupUI.cpp in Sources */,
 				EC795F641C0D4B6B0083829B /* NursePopupUI.cpp in Sources */,
 				551E93E31BD512D3009F788F /* CCCrypto.cpp in Sources */,
 				55CB9B0B1C07355200BAF60B /* NpcDataManager.cpp in Sources */,
@@ -1687,7 +1672,6 @@
 				5505452F1BFF1092006B4500 /* StandardPortal.cpp in Sources */,
 				555B0D241BC51A2C0055FB6D /* GameScene.cpp in Sources */,
 				55F116D51C04450200A6C191 /* FaneLevel.cpp in Sources */,
-				EC3CC98A1C088F4F00F8CFC8 /* InfoPopupUI.cpp in Sources */,
 				EC25C3C51C19120D00B4340D /* AlertPopupUI.cpp in Sources */,
 				551E93CC1BD51291009F788F /* PlayerProperty.cpp in Sources */,
 				551E93ED1BD512D3009F788F /* XXTEA.cpp in Sources */,

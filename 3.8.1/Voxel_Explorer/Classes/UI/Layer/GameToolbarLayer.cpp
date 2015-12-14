@@ -14,8 +14,10 @@
 #include "PopupUILayerManager.h"
 #include "VoxelExplorer.h"
 #include "GameFormula.hpp"
-#include "DialoguePopupUI.hpp"
 #include "ShopPopupUI.h"
+#include "InformationPopupUI.h"
+#include "NpcDataManager.hpp"
+#include "AlertPopupUI.hpp"
 USING_NS_CC;
 GameToolbarLayer::GameToolbarLayer()
 {
@@ -255,8 +257,17 @@ void GameToolbarLayer::onClickPause(cocos2d::Ref *ref)
 {
     CHECK_ACTION(ref);
     CCLOG("onClickPause");
-    DialoguePopupUI* popupUi = static_cast<DialoguePopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupDialogue));
-
+//    InformationPopupUI* popupUi = static_cast<InformationPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupInformation));
+//    if (popupUi) {
+////        popupUi->setInfoIcon("chr_man.png");
+//        popupUi->setInfoVector(NpcDataManager::getInstance()->getOldManRoomInfo());
+////        popupUi->setInfoDesc("爱死爱的爱的爱的啊丁奥斯丁奥斯丁奥斯丁爱死大声道啊暗示法爱死发斯蒂芬爱死发生发生的飞洒发生飞声道啊暗示法爱死发斯蒂芬爱死发生发生的飞洒发生飞");
+//    }
+//     AlertPopupUI* popupUi = static_cast<AlertPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupAlert));
+//    if (popupUi) {
+//        popupUi->setMessage("丰盛的萨芬爱死发生的方式爱死撒的发是飞洒飞");
+//        
+//    }
     
 }
 void GameToolbarLayer::onClickSearch(cocos2d::Ref *ref)

@@ -38,6 +38,37 @@ std::string UtilityHelper::getLocalStringForPlist(const std::string &key, const 
     
     return ret.asString();
 }
+cocos2d::Size UtilityHelper::getSingleStrFontSize(cocos2d::ui::Text* tempText,std::string str)
+{
+    std::vector<std::string > tempVec = getStringCount(str);
+    cocos2d::Size tempSize = cocos2d::Size::ZERO;
+    for (int i =0; i<tempVec.size(); i++) {
+        std::string tempStr = tempVec[i];
+        tempText->setString(tempStr);
+        cocos2d::Size textSize = tempText->getContentSize()*tempText->getScale();
+        if (tempSize.width < textSize.width ) {
+            tempSize =textSize;
+        }
+    }
+    return tempSize;
+}
+std::vector<std::string> UtilityHelper::getStringCount(std::string str )
+{
+    std::vector<std::string > tempVec;
+    
+    if (str.empty() ) {
+        return tempVec;
+    }
+    
+    //1.将字符串中英文切割存放到列表
+    for (int i=0; i<str.length(); ) {
+        //判断当前字符有几个字节
+        int count = getCharUtf8Count(str.at(i));
+        tempVec.push_back(str.substr(i,count));
+        i+=count;
+    }
+    return tempVec;
+}
 int UtilityHelper::getLineStr(std::string &str, int length)
 {
     if (str.empty() ||length<=0) {
@@ -49,24 +80,8 @@ int UtilityHelper::getLineStr(std::string &str, int length)
 
     std::string resultStr;
     std::vector<std::string > str_vec;
-    std::vector<std::string > tempVec;
+    std::vector<std::string > tempVec = getStringCount(str);
  
-    //1.将字符串中英文切割存放到列表
-    for (int i=0; i<str.length(); ) {
-        //判断当前字符有几个字节
-        int count = getCharUtf8Count(str.at(i));
-        tempVec.push_back(str.substr(i,count));
-        i+=count;
-//        if (~(str.at(i) >> 8) == 0)
-//        {
-//            tempVec.push_back(str.substr(i,3));
-//            i+=3;
-//        }else
-//        {
-//            tempVec.push_back(str.substr(i,1));
-//            i+=1;
-//        }
-    }
     if (tempVec.size() <=length) {
         std::string tempStr;
         for (int i=0; i<tempVec.size(); i++) {
