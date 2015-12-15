@@ -16,6 +16,23 @@ class SkeletonKing : public BaseBoss
     virtual ~SkeletonKing();
 public:
     static SkeletonKing* create(BaseBoss::BossType type);
+    
+    virtual void onEnter();
+    virtual void update(float delta);
+    
+    virtual void onEnterSkill1();
+    virtual void onEnterSkill2();
+    virtual void onEnterSkill3();
+    virtual void onEnterDeath();
+    
+    virtual bool isPlayerInsideBossRoom();
+    
+private:
+    float           m_fSkill1Timer;
+    bool            m_bInSkill1Stage;
+    
+    float           m_fSkill3Timer;
+    bool            m_bInSkill3Stage;
 };
 
 #endif /* SkeletonKing_hpp */

@@ -1347,22 +1347,22 @@ bool VoxelExplorer::createLevel()
             break;
         case DT_CAVE:
             {
-                if(node->isBossDepth())
-                    m_pCurrentLevel = new(std::nothrow) CaveBossLevel();
-                else
-                    m_pCurrentLevel = new(std::nothrow) CaveLevel();
+//                if(node->isBossDepth())
+//                    m_pCurrentLevel = new(std::nothrow) CaveBossLevel();
+//                else
+//                    m_pCurrentLevel = new(std::nothrow) CaveLevel();
                 // for debug
-                //m_pCurrentLevel = new(std::nothrow) CaveBossLevel();
+                m_pCurrentLevel = new(std::nothrow) CaveBossLevel();
             }
             break;
         case DT_TOMB:
             {
-                if(node->isBossDepth())
-                    m_pCurrentLevel = new(std::nothrow) TombBossLevel();
-                else
-                    m_pCurrentLevel = new(std::nothrow) TombLevel();
+//                if(node->isBossDepth())
+//                    m_pCurrentLevel = new(std::nothrow) TombBossLevel();
+//                else
+//                    m_pCurrentLevel = new(std::nothrow) TombLevel();
                 ///for debug
-                //m_pCurrentLevel = new(std::nothrow) TombBossLevel();
+                m_pCurrentLevel = new(std::nothrow) TombBossLevel();
             }
             break;
         case DT_DWARF_CASTLE:

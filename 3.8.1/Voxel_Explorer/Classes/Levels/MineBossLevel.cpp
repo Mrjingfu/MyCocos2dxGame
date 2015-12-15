@@ -58,6 +58,8 @@ bool MineBossLevel::build()
             std::vector<int> neighbour8 = getNeighbours8();
             for (int k = 0; k < neighbour8.size(); k++) {
                 int checkIndex = i + neighbour8[k];
+                if(checkIndex >= m_Map.size())
+                    continue;
                 int checkX = checkIndex%m_nWidth;
                 int checkY = checkIndex/m_nWidth;
                 if(m_Map[checkIndex].m_Type == TerrainTile::TT_CHASM)
@@ -76,6 +78,17 @@ bool MineBossLevel::build()
     m_AreaExitRect = cocos2d::Rect(m_nRoomLeft - 1, m_nRoomBottom - 1, m_nRoomRight - m_nRoomLeft + 5, m_nRoomTop - m_nRoomBottom + 5);
     
     m_AreaExitCenter = Vec2((int)(m_AreaExitRect.getMidX()), (int)(m_AreaExitRect.getMidY()));
+    
+    if(m_AreaExitRect.size.width >= m_AreaExitRect.size.height)
+    {
+        setTerrainTile(m_AreaExitCenter.x - 1, m_AreaExitCenter.y, TerrainTile::TT_STANDARD_PORTAL, Area::AT_BOSS_EXIT);
+        setTerrainTile(m_AreaExitCenter.x + 1, m_AreaExitCenter.y, TerrainTile::TT_STANDARD_PORTAL, Area::AT_BOSS_EXIT);
+    }
+    else
+    {
+        setTerrainTile(m_AreaExitCenter.x, m_AreaExitCenter.y - 1, TerrainTile::TT_STANDARD_PORTAL, Area::AT_BOSS_EXIT);
+        setTerrainTile(m_AreaExitCenter.x, m_AreaExitCenter.y + 1, TerrainTile::TT_STANDARD_PORTAL, Area::AT_BOSS_EXIT);
+    }
     
     int entranceX = m_nIndexEntrance%m_nWidth;
     int entranceY = m_nIndexEntrance/m_nWidth;
@@ -223,6 +236,9 @@ bool MineBossLevel::createBoss(const cocos2d::Vec2& pos)
 }
 bool MineBossLevel::createSummoningMonstersByKoboldLeader(const cocos2d::Vec2& mapPos, int skillStage)
 {
+    if(!VoxelExplorer::getInstance()->getPlayer() || VoxelExplorer::getInstance()->getPlayer()->getState() == Player::PS_DEATH)
+        return false;
+    
     if(skillStage == 1)
     {
         return true;
@@ -260,8 +276,8 @@ bool MineBossLevel::createSummoningMonstersByKoboldLeader(const cocos2d::Vec2& m
     }
     else if(skillStage == 3)
     {
-        if(VoxelExplorer::getInstance()->getMonstersLayer()->getChildrenCount() >= 32)
-            return true;
+        if(VoxelExplorer::getInstance()->getMonstersLayer()->getChildrenCount() >= 16)
+            return false;
         int monsterNum = 3;
         for (int i=0; i < monsterNum; i++) {
             StandardMonster* monster = StandardMonster::create(BaseMonster::MT_KOBOLD, true);
@@ -288,6 +304,12 @@ bool MineBossLevel::createSummoningMonstersByKoboldLeader(const cocos2d::Vec2& m
 }
 void MineBossLevel::clearBossRoom()
 {
+    for (int i=0; i < m_nLenght; i++) {
+        if (m_Map[i].m_AreaType == Area::AT_BOSS_ROOM && m_Map[i].m_Type == TerrainTile::TT_GRIPPING_TRAP) {
+            setTerrainTile(i%m_nWidth, i/m_nWidth, TerrainTile::TT_STANDARD, Area::AT_BOSS_ROOM);
+            VoxelExplorer::getInstance()->updateTerrainTile(i%m_nWidth, i/m_nWidth,TerrainTile::TT_STANDARD);
+        }
+    }
     VoxelExplorer::getInstance()->clearBoosRoom();
 }
 

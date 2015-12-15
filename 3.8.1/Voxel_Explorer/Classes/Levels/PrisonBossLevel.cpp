@@ -217,6 +217,8 @@ bool PrisonBossLevel::createBoss(const cocos2d::Vec2& pos)
 }
 bool PrisonBossLevel::createSummoningMonstersByWarden(const cocos2d::Vec2& mapPos, int skillStage)
 {
+    if(!VoxelExplorer::getInstance()->getPlayer() || VoxelExplorer::getInstance()->getPlayer()->getState() == Player::PS_DEATH)
+        return false;
     if(!m_pArenaRoom)
         return false;
     if(skillStage == 1)

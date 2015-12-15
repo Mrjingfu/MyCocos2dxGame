@@ -230,6 +230,8 @@ bool SewerBossLevel::createBoss(const cocos2d::Vec2& pos)
 }
 bool SewerBossLevel::createSummoningMonstersBySlimeKing(const cocos2d::Vec2& mapPos, int skillStage)
 {
+    if(!VoxelExplorer::getInstance()->getPlayer() || VoxelExplorer::getInstance()->getPlayer()->getState() == Player::PS_DEATH)
+        return false;
     if(skillStage == 1)
     {
         int count = 0;
