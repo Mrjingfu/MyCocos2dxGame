@@ -52,7 +52,9 @@ BaseBoss::BaseBoss()
     
     m_nFOV = 6;
     m_nAttackRange = 1;
-    m_fFirstTrackingTimer = 2;
+    m_fFirstTrackingTimer = 1;
+    m_nFleeRange = 0;
+    m_bEnableFlee = false;
     
     m_pBossProperty = new (std::nothrow) BossProperty();
     if(m_pBossProperty)
@@ -292,9 +294,15 @@ void BaseBoss::update(float delta)
                         setState(BS_MOVING);
                 }
             }
+            break;
         case BS_FLEEING:
             {
-                
+                if(VoxelExplorer::getInstance()->checkBossFleeFromPlayer(this))
+                    setState(BS_MOVING);
+                else if (VoxelExplorer::getInstance()->checkBossCanAttack(this))
+                    setState(BS_ATTACK);
+                else
+                    setState(BS_TRACKING);
             }
             break;
         default:
@@ -306,6 +314,7 @@ void BaseBoss::update(float delta)
 
 void BaseBoss::onEnterSleeping()
 {
+    m_bEnableFlee = false;
 }
 void BaseBoss::onExitSleeping()
 {
@@ -322,6 +331,11 @@ void BaseBoss::onEnterTracking()
     {
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_BOSS_ALERT, this);
         m_fFirstTrackingTimer = 2;
+    }
+    else if(m_LastState == BS_FLEEING)
+    {
+        if(VoxelExplorer::getInstance()->checkBossFleeFromPlayer(this))
+            setState(BS_FLEEING);
     }
 }
 void BaseBoss::onExitTracking()
@@ -354,11 +368,16 @@ void BaseBoss::onEnterMoving()
     }
     else if(m_LastState == BS_FLEEING)
     {
-        
+        if(VoxelExplorer::getInstance()->fleeFromPlayer(this, m_BackPos))
+            moveToNext(m_BackPos);
+        else
+            setState(BS_WANDERING);
     }
 }
 void BaseBoss::onExitMoving()
 {
+    setPositionY(-0.5f*TerrainTile::CONTENT_SCALE);
+    this->stopAllActions();
 }
 
 void BaseBoss::onEnterAttack()
@@ -383,6 +402,7 @@ void BaseBoss::onEnterDeath()
     this->stopAllActions();
     removeTerrainTileFlag(TileInfo::ATTACKABLE);
     removeTerrainTileFlagByPos(TileInfo::ATTACKABLE, m_NextPos);
+    removeTerrainTileFlagByPos(TileInfo::ATTACKABLE, m_BackPos);
     this->setVisible(false);
     if(m_pFakeShadow)
         m_pFakeShadow->setVisible(false);
@@ -435,15 +455,17 @@ void BaseBoss::setActorDir( ActorDir dir )
     this->runAction(rotateTo);
 }
 
-void BaseBoss::onLand()
+void BaseBoss::onLand(bool updateMiniMap)
 {
-    CCLOG("bos onland pos = %f,%f", getPosInMap().x, getPosInMap().y);
+    CCLOG("boss onland pos = %f,%f", getPosInMap().x, getPosInMap().y);
     if(m_LastState == BS_WANDERING)
     {
         if(VoxelExplorer::getInstance()->checkBossAlert(this))
         {
             if(VoxelExplorer::getInstance()->trackToPlayer(this, m_NextPos))
                 setState(BS_TRACKING);
+            else if(VoxelExplorer::getInstance()->fleeFromPlayer(this, m_BackPos))
+                setState(BS_FLEEING);
             else
                 setState(BS_WANDERING);
         }
@@ -451,14 +473,19 @@ void BaseBoss::onLand()
             setState(BS_WANDERING);
     }
     else
-        setState(BS_TRACKING);
-    if(isVisible())
+    {
+        if(m_bEnableFlee)
+            setState(BS_FLEEING);
+        else
+            setState(BS_TRACKING);
+    }
+    if(isVisible() && updateMiniMap)
         VoxelExplorer::getInstance()->updateMiniMap();
 }
 void BaseBoss::moveToNext(const cocos2d::Vec2& next)
 {
     CCLOG("Boss posx = %f, posy = %f", getPosInMap().x, getPosInMap().y);
-    CCLOG("Boss track posx = %f, posy = %f", next.x, next.y);
+    CCLOG("Boss next posx = %f, posy = %f", next.x, next.y);
     
     Vec2 vd = next - getPosInMap();
     if(std::abs(vd.x) > std::abs(vd.y))
@@ -487,7 +514,7 @@ void BaseBoss::moveToNext(const cocos2d::Vec2& next)
         Sequence* sequenceJump = Sequence::create(moveUp, moveDown, NULL);
         Spawn* spawn = Spawn::create(scaleTo2, sequenceJump, NULL);
         DelayTime* delay = DelayTime::create(0.3f);
-        CallFunc* callback = CallFunc::create(CC_CALLBACK_0(BaseBoss::onLand,this));
+        CallFunc* callback = CallFunc::create(CC_CALLBACK_0(BaseBoss::onLand,this, true));
         Sequence* sequence = Sequence::create(scaleTo1, spawn, delay, callback, NULL);
         this->runAction(sequence);
     }
@@ -498,7 +525,7 @@ void BaseBoss::moveToNext(const cocos2d::Vec2& next)
         EaseBackIn* move = EaseBackIn::create(MoveTo::create(0.5f, Vec3(next.x*TerrainTile::CONTENT_SCALE, getPositionY(), -next.y*TerrainTile::CONTENT_SCALE)));
         Sequence* sequenceScale = Sequence::create(scaleTo1, scaleTo2, NULL);
         Spawn* spawn = Spawn::create(move, sequenceScale, NULL);
-        CallFunc* callback = CallFunc::create(CC_CALLBACK_0(BaseBoss::onLand,this));
+        CallFunc* callback = CallFunc::create(CC_CALLBACK_0(BaseBoss::onLand,this, true));
         Sequence* sequence = Sequence::create(spawn, callback, NULL);
         this->runAction(sequence);
     }
@@ -547,8 +574,8 @@ void BaseBoss::handleAttackStyle(const cocos2d::Vec2& playerPos, const cocos2d::
         CallFunc* callback = CallFunc::create(CC_CALLBACK_0(VoxelExplorer::handlePlayerHurtByBoss,VoxelExplorer::getInstance(),playerPos, m_pBossProperty));
         EaseSineOut* moveDown = EaseSineOut::create(MoveTo::create(0.1f, getPosition3D()));
         Sequence* sequenceJump = Sequence::create(moveUp, callback, moveDown, NULL);
-        CallFunc* callback2 = CallFunc::create(CC_CALLBACK_0(BaseBoss::setState,this, BS_TRACKING));
-        DelayTime* delay = DelayTime::create(0.7f);
+        CallFunc* callback2 = CallFunc::create(CC_CALLBACK_0(BaseBoss::onLand,this, false));
+        DelayTime* delay = DelayTime::create(0.8f);
         Sequence* sequence = Sequence::create(sequenceJump, delay, callback2, NULL);
         this->runAction(sequence);
     }
@@ -563,7 +590,7 @@ void BaseBoss::handleAttackStyle(const cocos2d::Vec2& playerPos, const cocos2d::
         Sequence* sequenceScale = Sequence::create(scaleTo1, scaleTo2, NULL);
         Sequence* sequenceMove = Sequence::create(moveTo1, callback, moveTo2, NULL);
         Spawn* spawn = Spawn::create(sequenceMove, sequenceScale, NULL);
-        CallFunc* callback2 = CallFunc::create(CC_CALLBACK_0(BaseBoss::setState,this,BS_TRACKING));
+        CallFunc* callback2 = CallFunc::create(CC_CALLBACK_0(BaseBoss::onLand,this, false));
         Sequence* sequence = Sequence::create(spawn, callback2, NULL);
         this->runAction(sequence);
     }

@@ -203,7 +203,7 @@ bool Pathfinder::buildDistanceMap(int from, int to, const std::vector<TileInfo>&
     
     return pathFound;
 }
-bool Pathfinder::buildEscapeDistanceMap(int cur, int from, float factor,const std::vector<TileInfo>& tilesInfo)
+int Pathfinder::buildEscapeDistanceMap(int cur, int from, float factor,const std::vector<TileInfo>& tilesInfo)
 {
     for(int i = 0; i < m_Distance.size(); i++) {
         m_Distance[i] = INT_MAX;

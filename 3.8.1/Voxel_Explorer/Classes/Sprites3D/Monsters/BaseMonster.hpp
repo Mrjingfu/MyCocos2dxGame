@@ -139,7 +139,7 @@ protected:
     
     bool createFakeShadow();
 private:
-    void onLand();
+    void onLand(bool updateMiniMap);
     void moveToNext(const cocos2d::Vec2& next);
     void doAttack();
 protected:

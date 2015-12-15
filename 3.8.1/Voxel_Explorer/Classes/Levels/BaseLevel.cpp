@@ -291,6 +291,20 @@ int BaseLevel::assignTerrainTileFlag(TerrainTile::TileType type)
         case TerrainTile::TT_OPENED_DOOR:
             flag = TileInfo::PASSABLE;
             break;
+        case TerrainTile::TT_TOXIC_TRAP:
+        case TerrainTile::TT_HIDE_TOXIC_TRAP:
+        case TerrainTile::TT_FIRE_TRAP:
+        case TerrainTile::TT_HIDE_FIRE_TRAP:
+        case TerrainTile::TT_PARALYTIC_TRAP:
+        case TerrainTile::TT_HIDE_PARALYTIC_TRAP:
+        case TerrainTile::TT_GRIPPING_TRAP:
+        case TerrainTile::TT_HIDE_GRIPPING_TRAP:
+        case TerrainTile::TT_SUMMONING_TRAP:
+        case TerrainTile::TT_HIDE_SUMMONING_TRAP:
+        case TerrainTile::TT_WEAK_TRAP:
+        case TerrainTile::TT_HIDE_WEAK_TRAP:
+            flag = TileInfo::PASSABLE;
+            break;
         default:
             break;
     }
@@ -302,6 +316,17 @@ bool BaseLevel::getNextPathStep(const cocos2d::Vec2& from, const cocos2d::Vec2& 
     int f = from.x + from.y * m_nWidth;
     int t = to.x + to.y * m_nWidth;
     int next = Pathfinder::getInstance()->getStep(f, t, m_Map);
+    if(next == -1)
+        return false;
+    nextPos.x = next % m_nWidth;
+    nextPos.y = next / m_nWidth;
+    return true;
+}
+bool BaseLevel::getBackPathStep(const cocos2d::Vec2& current, const cocos2d::Vec2& from, cocos2d::Vec2& nextPos)
+{
+    int c = current.x + current.y * m_nWidth;
+    int f = from.x + from.y * m_nWidth;
+    int next = Pathfinder::getInstance()->getStepBack(c, f, m_Map);
     if(next == -1)
         return false;
     nextPos.x = next % m_nWidth;

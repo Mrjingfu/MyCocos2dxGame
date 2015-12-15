@@ -16,6 +16,19 @@ class Archbishop : public BaseBoss
     virtual ~Archbishop();
 public:
     static Archbishop* create(BaseBoss::BossType type);
+    
+    virtual void update(float delta);
+    virtual void onEnterTracking();
+    virtual void onEnterSkill1();
+    virtual void onEnterSkill2();
+    virtual void onEnterSkill3();
+    virtual void onEnterDeath();
+    
+    virtual bool isPlayerInsideBossRoom();
+    
+private:
+    float           m_fSkill2Timer;
+    bool            m_bInSkill2Stage;
 };
 
 #endif /* Archbishop_hpp */
