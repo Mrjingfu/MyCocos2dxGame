@@ -32,6 +32,7 @@
 #include "BossPropLayer.hpp"
 #include "AlertPopupUI.hpp"
 #include "InformationPopupUI.h"
+#include "AchieveProperty.hpp"
 USING_NS_CC;
 GameUILayer::GameUILayer()
 {
@@ -848,6 +849,18 @@ void GameUILayer::onEventBossSkill3(cocos2d::EventCustom *sender)
     PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
 }
 
+void GameUILayer::onEvenetAchieveComplete(cocos2d::EventCustom *sender)
+{
+     CCLOG("onEvenetAchieveComplete");
+    AchieveProperty* achieveProp = static_cast<AchieveProperty*>(sender->getUserData());
+    if (achieveProp) {
+        CCLOG("active:%s",achieveProp->getAchieveDesc().c_str());
+        PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, achieveProp->getAchieveDesc());
+    }
+   
+    
+}
+
 void GameUILayer::setCharacterPropLayerVisible(bool isMonster, bool isNpc, bool isBoss)
 {
     if (m_pMonsterPropLayer) {
@@ -938,7 +951,8 @@ void GameUILayer::onEnter()
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_BOSS_SKILL1, CC_CALLBACK_1(GameUILayer::onEventBossSkill1,this));
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_BOSS_SKILL2, CC_CALLBACK_1(GameUILayer::onEventBossSkill2,this));
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_BOSS_SKILL3, CC_CALLBACK_1(GameUILayer::onEventBossSkill3,this));
-    
+ 
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_ACHIEVE_COMPLETE, CC_CALLBACK_1(GameUILayer::onEvenetAchieveComplete,this));
 }
 void GameUILayer::onExit()
 {
@@ -1015,5 +1029,7 @@ void GameUILayer::onExit()
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_BOSS_SKILL1);
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_BOSS_SKILL2);
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_BOSS_SKILL3);
+    
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_ACHIEVE_COMPLETE);
     WrapperUILayer::onExit();
 }

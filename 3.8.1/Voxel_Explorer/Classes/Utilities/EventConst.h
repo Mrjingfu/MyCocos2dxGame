@@ -114,4 +114,6 @@ static const std::string EVENT_NPC_NURSE_ANSWER = "NPC_NURSE_ANSWER";          /
 
 static const std::string EVENT_NPC_DATA_DIRTY = "NPC_DATA_DIRTY";   ///    NPC数据变化
 
+static const std::string EVENT_ACHIEVE_COMPLETE = "ACHIEVE_COMPLETE"; //成就完成
+
 #endif /* EventConst_h */

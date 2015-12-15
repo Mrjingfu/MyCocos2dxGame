@@ -7,7 +7,7 @@
 //
 
 #include "StatisticsManager.hpp"
-
+#include "AchievementManager.h"
 StatisticsManager::StatisticsManager()
 {
     m_nCopperTotalNum           = 0;                //金币收集数
@@ -77,6 +77,7 @@ void StatisticsManager::addMonsterKillNum(BaseMonster::MonsterType type)
 {
     ++m_mMonsterKills[type] ;
     ++m_nMonsterKillTotalNum;
+    AchievementManager::getInstance()->checkAllAchievement();
 }
 void StatisticsManager::addUseItemNum(PickableItem::PickableItemType type)
 {
@@ -93,6 +94,7 @@ void StatisticsManager::addUseItemNum(PickableItem::PickableItemType type)
         ++m_nUsePotionTotalNum;
     }
     ++m_nUserItemTotalNum;
+    AchievementManager::getInstance()->checkAllAchievement();
 }
 void StatisticsManager::addTriggerTrapNum(TerrainTile::TileType type)
 {
@@ -100,12 +102,14 @@ void StatisticsManager::addTriggerTrapNum(TerrainTile::TileType type)
     
     ++m_mTriggerToxicNums[type];
     ++m_nTriggerToxicTotalNum;
+    AchievementManager::getInstance()->checkAllAchievement();
 }
 
 void StatisticsManager::addRoleDeadNum(eRoleDeadType type)
 {
     ++m_mDeadTypeNums[type] ;
     ++m_nRoleDeadTotalNum;
+    AchievementManager::getInstance()->checkAllAchievement();
 }
 
 void StatisticsManager::addUserableOpenNum(UseableItem::UseableItemType type)
@@ -125,24 +129,28 @@ void StatisticsManager::addUserableOpenNum(UseableItem::UseableItemType type)
     if (type>=UseableItem::UseableItemType::UIT_JAR_1 && type<=UseableItem::UseableItemType::UIT_JAR_3) {
         ++m_nJarTotalNum;
     }
-    
+    AchievementManager::getInstance()->checkAllAchievement();
     
 }
 void StatisticsManager::addCopperTotalNum(int num)
 {
     m_nCopperTotalNum+=num;
+    AchievementManager::getInstance()->checkAllAchievement();
 }
 void StatisticsManager::addCostCopperNum(int num)
 {
     m_nCostCopperNum+=num;
+    AchievementManager::getInstance()->checkAllAchievement();
 }
 void StatisticsManager::addStepNum()
 {
     ++m_nStepNum;
+    AchievementManager::getInstance()->checkAllAchievement();
 }
 void StatisticsManager::addCriticalTotalNum()
 {
     ++m_nCriticalTotalNum;
+    AchievementManager::getInstance()->checkAllAchievement();
 }
 void StatisticsManager::addDodgeTotalNum()
 {
@@ -151,6 +159,7 @@ void StatisticsManager::addDodgeTotalNum()
 void StatisticsManager::addBlockTotalNum()
 {
     ++m_nBlockTotalNum;
+    AchievementManager::getInstance()->checkAllAchievement();
 }
 
 void StatisticsManager::load()

@@ -573,6 +573,7 @@
 		EC25C3C31C19120D00B4340D /* AlertPopupUI.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = AlertPopupUI.hpp; sourceTree = "<group>"; };
 		EC25C3C81C1977DF00B4340D /* InformationPopupUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = InformationPopupUI.cpp; sourceTree = "<group>"; };
 		EC25C3C91C1977DF00B4340D /* InformationPopupUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InformationPopupUI.h; sourceTree = "<group>"; };
+		EC38D0681C1EC7DD00553970 /* AchieveConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AchieveConst.h; sourceTree = "<group>"; };
 		EC3CC93D1C088F4F00F8CFC8 /* BagLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BagLayer.cpp; sourceTree = "<group>"; };
 		EC3CC93E1C088F4F00F8CFC8 /* BagLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BagLayer.h; sourceTree = "<group>"; };
 		EC3CC93F1C088F4F00F8CFC8 /* BagMangerLayerUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BagMangerLayerUI.cpp; sourceTree = "<group>"; };
@@ -1266,6 +1267,7 @@
 				551E93A81BD51282009F788F /* UtilityHelper.h */,
 				EC6715EE1BCE7EE500C81CFC /* GameConfig.h */,
 				55407D5F1BD633590000C41C /* EventConst.h */,
+				EC38D0681C1EC7DD00553970 /* AchieveConst.h */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";

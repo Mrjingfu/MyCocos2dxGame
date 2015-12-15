@@ -72,9 +72,9 @@ void NoteUi::setItemText(std::string msg,cocos2d::Color3B fontColor /*= cocos2d:
         int charCount = 0;
         if(cocos2d::Application::getInstance()->getCurrentLanguage() ==cocos2d::LanguageType::CHINESE)
         {
-            charCount =13;
+            charCount =11;
         }else{
-            charCount = 23;
+            charCount = 18;
         }
         int count = UtilityHelper::getLineStr(msg, charCount);
         m_pLabel->setString(msg);

@@ -10,6 +10,7 @@
 #include "MenuScene.h"
 #include "GameConfig.h"
 #include "LevelResourceManager.h"
+#include "AchievementManager.h"
 USING_NS_CC;
 
 Scene* LogoScene::createScene()
@@ -222,6 +223,11 @@ void LogoScene::precache()
     if (!LevelResourceManager::getInstance()->init()) {
         CCLOGERROR("LevelResourceManager initialize failed!");
     }
+    
+    if (!AchievementManager::getInstance()->loadAchieveData()) {
+         CCLOGERROR("AchievementManager initialize failed!");
+    }
+    
     Texture2D * uiSpriteTx = Director::getInstance()->getTextureCache()->addImage("ui_sprite.png");
     if (uiSpriteTx)
         uiSpriteTx->setAliasTexParameters();

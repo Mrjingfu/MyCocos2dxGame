@@ -355,7 +355,7 @@
                 <key>sourceSize</key>
                 <string>{88,106}</string>
             </dict>
-            <key>koboldleader..png</key>
+            <key>koboldleader.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{2,396},{101,112}}</string>
@@ -599,7 +599,7 @@
             <key>size</key>
             <string>{1024,512}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:52d22e8b3ac03d1a739c6a43965929b3:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:7db3b5d35a648dcc4288edf3842c2ea3:1/1$</string>
             <key>textureFileName</key>
             <string>ui_characters.png</string>
         </dict>

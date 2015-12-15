@@ -19,15 +19,20 @@ class AchievementManager {
 public:
     virtual ~AchievementManager();
     static AchievementManager* getInstance();
-    void loadAchieveData();
+    bool loadAchieveData();
     void handleAchievement(eAchievementDetailType achiId);
-    AchieveProperty* getAchievement(eAchievementDetailType type);
-    const std::map<eAchievementDetailType, AchieveProperty*> & getAllAchieves() const{ return m_pAllAchieves;}
+    void checkAllAchievement();
+    void load();
+    void save();
+    const cocos2d::Vector<AchieveProperty*> & getCompleteAchieves() const{ return m_vCompleteAchieves;}
 protected:
+    AchieveProperty* getAchievement(eAchievementDetailType type);
     void updateAchieve(AchieveProperty * achieve);
    
 private:
-    std::map<eAchievementDetailType, AchieveProperty*> m_pAllAchieves;
+    cocos2d::Vector<AchieveProperty*> m_vAllAchieves;
+    cocos2d::Vector<AchieveProperty*> m_vCompleteAchieves;
+    
  
  };
 

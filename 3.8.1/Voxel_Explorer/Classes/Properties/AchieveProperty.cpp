@@ -7,3 +7,51 @@
 //
 
 #include "AchieveProperty.hpp"
+#include "UtilityHelper.h"
+AchieveProperty::AchieveProperty()
+{
+    isCommple = false;
+}
+AchieveProperty::~AchieveProperty()
+{
+    
+}
+
+bool AchieveProperty::init()
+{
+    return true;
+}
+
+void AchieveProperty::setAchieveTarget(std::string typeStr, CChaosNumber targetNum)
+{
+    int type = checkArrName(STATIST_TYPE_NAME,typeStr);
+    CCASSERT(type!=-1, "type error");
+    eStatistType sStype = (eStatistType)type;
+    m_mAcheveTargets.insert(std::map<eStatistType,CChaosNumber>::value_type(sStype,targetNum));
+}
+void AchieveProperty::setAchieveDesc(std::string desc)
+{
+    m_sAchieveDesc = UtilityHelper::getLocalStringForPlist(desc, "achieve_chinese.plist", "achieve_english.plist");
+}
+
+void AchieveProperty::setAchieveDetailType(std::string achieveDeType)
+{
+    int type = checkArrName(ACHIEVEMENT_DATAIL_TYPE_NAME,achieveDeType);
+    CCASSERT(type!=-1, "type error");
+    m_detailType = (eAchievementDetailType)(type);
+  
+}
+int AchieveProperty::checkArrName(const std::vector<std::string> arr,const std::string str)
+{
+    for (int i =0 ; i< arr.size(); i++)
+    {
+        std::string name = arr[i];
+        if (name == str) {
+            return i;
+        }
+    }
+    return -1;
+}
+
+
+

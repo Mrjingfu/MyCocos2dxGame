@@ -37,8 +37,10 @@
           <FilePathData Path="dialogueLayer.csd" />
           <FilePathData Path="characterInfoLayer.csd" />
           <FilePathData Path="informationLayer.csd" />
+          <FilePathData Path="itemMoneyLayer.csd" />
+          <FilePathData Path="itemPopupLayer.csd" />
         </OpenedDocuments>
-        <ActiveDocument Path="informationLayer.csd" />
+        <ActiveDocument Path="itemPopupLayer.csd" />
       </Value>
     </Item>
   </Properties>

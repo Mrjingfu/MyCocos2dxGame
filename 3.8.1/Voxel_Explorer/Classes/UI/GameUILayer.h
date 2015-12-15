@@ -114,6 +114,7 @@ private:
     void onEventBossSkill2(cocos2d::EventCustom *sender);
     void onEventBossSkill3(cocos2d::EventCustom *sender);
     
+    void onEvenetAchieveComplete(cocos2d::EventCustom *sender);
     
     //注册触摸事件
     bool registerTouchEvent();
