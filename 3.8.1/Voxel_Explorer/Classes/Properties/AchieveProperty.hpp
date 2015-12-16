@@ -33,14 +33,13 @@ public:
     void setAchieveIcon(std::string icon){m_sAchieveIcon = icon;};
     std::string getAchieveIcon() const {return m_sAchieveIcon;};
     
-    void setAchieveDesc(std::string desc);
     std::string getAchieveDesc() const{return m_sAchieveDesc;};
     
     void setAchieveTarget(std::string typeStr,CChaosNumber targetNum);
     const std::map<eStatistType,CChaosNumber>& getAcheveTargets() const {return m_mAcheveTargets;};
     
-    void onAcieveCommple(){isCommple = true;};
-    
+    void onAcieveCommple(){m_bCommple = true;};
+    bool isCommple()const{ return m_bCommple;};
     void setAchieveDetailType(std::string achieveDeType);
     eAchievementDetailType getAchieveDetailType() const{return m_detailType;}
 private:
@@ -51,7 +50,7 @@ private:
     std::map<eStatistType,CChaosNumber> m_mAcheveTargets;   //成就完成目标
     std::map<eStatistType, CChaosNumber> m_mProgress;  //完成目标
     eAchievementDetailType m_detailType;  //成就ID
-    bool isCommple;
+    bool m_bCommple;
     
 };
 

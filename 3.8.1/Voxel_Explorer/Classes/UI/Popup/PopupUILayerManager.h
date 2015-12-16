@@ -13,7 +13,7 @@
 #include "PopupUILayer.h"
 #include "PopupType.h"
 #include "GameConfig.h"
-
+class GlobalPromptLayer;
 class PopupUILayerManager:public cocos2d::Ref
 {
 public:
@@ -24,8 +24,7 @@ public:
     PopupUILayer* openPopup(ePopupType type,int zorder= eZOrderPopupUILayer);
     //显示重要提示
     void showStatusImport(TipTypes tipType ,std::string text);
-    //显示普通提示
-    void showStatus(TipTypes tipType ,std::string text,cocos2d::Vec2 pos);
+
     void closeCurrentPopup();
     void onExitScene();
     void setParentLayer(cocos2d::Layer* parent);
@@ -44,7 +43,7 @@ private:
 private:
     PopupUILayer* m_pPopupContainer[ePopupCount];
     cocos2d::Layer* m_pParentLayer;
-    
+    GlobalPromptLayer* m_pGlobalPromptlayer;
     ePopupType m_cCurrentPopUpType,m_pLastPopUpType;
     std::list<ePopupType> m_lTypeList;
     

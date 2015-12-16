@@ -2,7 +2,7 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>eAchiDetailType_Firstkill</key>
+	<key>ADT_KILL_FIRST</key>
 	<dict>
 		<key>achieve_task</key>
 		<dict>
@@ -11,8 +11,16 @@
 		</dict>
 		<key>achieve_icon</key>
 		<string>aaa.png</string>
-		<key>achieve_desc</key>
-		<string>ACHIEVE_FRIST_KILLS</string>
+	</dict>
+	<key>ADT_STEP_HUNDRED</key>
+	<dict>
+		<key>achieve_task</key>
+		<dict>
+			<key>ST_TOTAL_STEP</key>
+			<string>100</string>
+		</dict>
+		<key>achieve_icon</key>
+		<string>aaa.png</string>
 	</dict>
 </dict>
 </plist>

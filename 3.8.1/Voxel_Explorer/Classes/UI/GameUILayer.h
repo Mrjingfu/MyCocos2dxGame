@@ -10,6 +10,7 @@
 #define GameUILayer_h
 
 #include "WrapperUILayer.h"
+#include "PopupType.h"
 class HudTipUi;
 class TGridView;
 class BaseMonster;
@@ -19,6 +20,8 @@ class RolePropLayer;
 class MonsterPropLayer;
 class NpcPropLayer;
 class BossPropLayer;
+struct HurtData;
+class HudPromptLayer;
 class GameUILayer:public WrapperUILayer {
     
 public:
@@ -116,6 +119,10 @@ private:
     
     void onEvenetAchieveComplete(cocos2d::EventCustom *sender);
     
+    //isWho true角色 false 怪物
+    void updateCharacterHud(HurtData*,TipTypes tipDodge,TipTypes tipBolock,TipTypes tipCriticalStike,TipTypes tipNormal,bool isWho = true);
+    
+    
     //注册触摸事件
     bool registerTouchEvent();
     
@@ -127,6 +134,8 @@ private:
    MonsterPropLayer* m_pMonsterPropLayer;
    NpcPropLayer*     m_pNpcPropLayer;
    BossPropLayer*    m_pBossPropLayer;
+   HudPromptLayer*   m_pRoleHudLayer;
+   HudPromptLayer*   m_pMonsterHudLayer;
 };
 
 #endif /* GameUILayer_h */

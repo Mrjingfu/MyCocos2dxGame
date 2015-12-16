@@ -284,7 +284,6 @@ void PopupUILayer::removeSelfCallFunc()
     if (m_nIsPause) {
         schedulerResume();
     }
-    
     this->removeFromParent();
 }
 bool PopupUILayer::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *unused_event)

@@ -24,6 +24,7 @@
 #include "NursePopupUI.hpp"
 #include "AlertPopupUI.hpp"
 #include "InformationPopupUI.h"
+#include "GlobalPromptLayer.hpp"
 PopupUILayerManager::PopupUILayerManager()
 {
     m_pParentLayer = nullptr;
@@ -237,9 +238,9 @@ cocos2d::Color3B PopupUILayerManager::getTipsColor(TipTypes tipType)
         case TIP_BOLOCK:
             return cocos2d::Color3B(255,135,255); //格挡
         case TIP_ROLE_CRITICAL_STRIKE:
-            return cocos2d::Color3B(255,255,0);   //暴击
-        case TIP_MONSTER_CRITICAL_STRIKE:
             return cocos2d::Color3B(255,0,0);     //红色
+        case TIP_MONSTER_CRITICAL_STRIKE:
+            return cocos2d::Color3B(255,255,0);   //暴击
         case TIP_EFFECT:
             return cocos2d::Color3B(107, 216, 176);
         case TIP_BLUE:
@@ -251,53 +252,13 @@ cocos2d::Color3B PopupUILayerManager::getTipsColor(TipTypes tipType)
 }
 void PopupUILayerManager::showStatusImport(TipTypes tipType, std::string text)
 {
-
     
-    ui::Text* m_pLabel = ui::Text::create();
-    m_pLabel->setFontSize(36);
-    m_pLabel->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
-    m_pLabel->setScale(0.55);
-    m_pLabel->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
-    m_pParentLayer->addChild(m_pLabel,eZOrderPopupLayer);
-    m_pLabel->setPosition(Vec2(WND_CENTER_X,SCREEN_HEIGHT*0.65));
-    m_pLabel->setTextColor(cocos2d::Color4B(getTipsColor(tipType)));
-    //    m_pLabel->enableOutline(cocos2d::Color4B::BLUE,1);
-    
-    cocos2d::Size fonSize = UtilityHelper::getSingleStrFontSize(m_pLabel, text);
-    int charCount  = (int)(SCREEN_WIDTH/fonSize.width);
-    UtilityHelper::getLineStr(text, charCount);
-    m_pLabel->setString(text);
-    
-    cocos2d::MoveTo*  moveTo = cocos2d::MoveTo::create(0.5,Vec2(WND_CENTER_X,SCREEN_HEIGHT*0.75));
-    cocos2d::DelayTime* delay = cocos2d::DelayTime::create(1.0f);
-    cocos2d::FadeOut* fadeOut = cocos2d::FadeOut::create(0.2);
-    m_pLabel->resume();
-    m_pLabel->runAction(cocos2d::Sequence::create(moveTo,delay,fadeOut,RemoveSelf::create(), nil));
-
-    
-}
-void PopupUILayerManager::showStatus(TipTypes tipType,  std::string text,cocos2d::Vec2 pos)
-{
-    Label* m_pLabel = cocos2d::Label::createWithTTF(text,UtilityHelper::getLocalString("FONT_NAME"),36);
-    m_pLabel->setScale(0.5);
-    m_pLabel->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
-    m_pParentLayer->addChild(m_pLabel);
-    m_pLabel->setPosition(pos);
-    m_pLabel->setTextColor(cocos2d::Color4B(getTipsColor(tipType)));
-    if (tipType == TIP_ROLE_CRITICAL_STRIKE || tipType == TIP_MONSTER_CRITICAL_STRIKE) {
-        cocos2d::ScaleTo* ScaleTo1 = cocos2d::ScaleTo::create(0.3, 0.8);
-        cocos2d::MoveBy* moveBy = cocos2d::MoveBy::create(0.3, Vec2(0, 30.0f));
-        cocos2d::DelayTime* delay = cocos2d::DelayTime::create(0.2);
-        cocos2d::FadeOut* fadeOut = cocos2d::FadeOut::create(0.2);
-        m_pLabel->runAction(cocos2d::Sequence::create(cocos2d::Spawn::createWithTwoActions(moveBy, ScaleTo1),delay,fadeOut,RemoveSelf::create(), nil));
+    if (nullptr == m_pGlobalPromptlayer) {
+        m_pGlobalPromptlayer = GlobalPromptLayer::create();
+        m_pParentLayer->addChild(m_pGlobalPromptlayer,eZOrderPopupLayer);
     }
-    else
-    {
-        cocos2d::MoveBy* moveBy = cocos2d::MoveBy::create(0.5, cocos2d::Vec2(0,20.0f));
-        cocos2d::DelayTime* delay = cocos2d::DelayTime::create(0.2);
-        cocos2d::FadeOut* fadeOut = cocos2d::FadeOut::create(0.2);
-        m_pLabel->runAction(cocos2d::Sequence::create(moveBy,delay,fadeOut,RemoveSelf::create(), nil));
-    }
-
+    m_pGlobalPromptlayer->shwoGlobalPrompt(tipType, text);
+  
 }
+
 
