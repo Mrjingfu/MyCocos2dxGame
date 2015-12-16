@@ -260,28 +260,5 @@ void PopupUILayerManager::showStatusImport(TipTypes tipType, std::string text)
     m_pGlobalPromptlayer->shwoGlobalPrompt(tipType, text);
   
 }
-void PopupUILayerManager::showStatus(TipTypes tipType,  std::string text,cocos2d::Vec2 pos)
-{
-    Label* m_pLabel = cocos2d::Label::createWithTTF(text,UtilityHelper::getLocalString("FONT_NAME"),36);
-    m_pLabel->setScale(0.5);
-    m_pLabel->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
-    m_pParentLayer->addChild(m_pLabel);
-    m_pLabel->setPosition(pos);
-    m_pLabel->setTextColor(cocos2d::Color4B(getTipsColor(tipType)));
-    if (tipType == TIP_ROLE_CRITICAL_STRIKE || tipType == TIP_MONSTER_CRITICAL_STRIKE) {
-        cocos2d::ScaleTo* ScaleTo1 = cocos2d::ScaleTo::create(0.3, 0.8);
-        cocos2d::MoveBy* moveBy = cocos2d::MoveBy::create(0.3, Vec2(0, 30.0f));
-        cocos2d::DelayTime* delay = cocos2d::DelayTime::create(0.2);
-        cocos2d::FadeOut* fadeOut = cocos2d::FadeOut::create(0.2);
-        m_pLabel->runAction(cocos2d::Sequence::create(cocos2d::Spawn::createWithTwoActions(moveBy, ScaleTo1),delay,fadeOut,RemoveSelf::create(), nil));
-    }
-    else
-    {
-        cocos2d::MoveBy* moveBy = cocos2d::MoveBy::create(0.5, cocos2d::Vec2(0,20.0f));
-        cocos2d::DelayTime* delay = cocos2d::DelayTime::create(0.2);
-        cocos2d::FadeOut* fadeOut = cocos2d::FadeOut::create(0.2);
-        m_pLabel->runAction(cocos2d::Sequence::create(moveBy,delay,fadeOut,RemoveSelf::create(), nil));
-    }
 
-}
 
