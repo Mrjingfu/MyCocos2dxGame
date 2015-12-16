@@ -61,6 +61,7 @@ static const std::string EVENT_PLAYER_USE_ROOM_KEY = "PLAYER_USE_ROOM_KEY";
 static const std::string EVENT_PLAYER_USE_BOSS_KEY = "PLAYER_USE_BOSS_KEY";
 
 static const std::string EVENT_PLAYER_HURT = "PLAYER_HURT";
+static const std::string EVENT_PLAYER_FALL_AND_DIE = "PLAYER_FALL_AND_DIE";
 
 static const std::string EVENT_MONSTER_PROPERTY_DIRTY = "MONSTER_PROPERTY_DIRTY";
 static const std::string EVENT_MONSTER_DEATH = "MONSTER_DEATH";
@@ -102,6 +103,11 @@ static const std::string EVENT_GO_UPSTAIRS_FORBIDDEN = "GO_UPSTAIRS_FORBIDDEN";
 static const std::string EVENT_GO_DOWNSTAIRS = "GO_DOWNSTAIRS";
 static const std::string EVENT_GO_BOSSROOM = "GO_BOSSROOM";
 static const std::string EVENT_GO_CHASM ="GO_CHASM";
+static const std::string EVENT_FALL_DOWNSTAIRS ="FALL_DOWNSTAIRS";
+static const std::string EVENT_SELECT_LEFT_DUNGEON_NODE = "SELECT_LEFT_DUNGEON_NODE";
+static const std::string EVENT_SELECT_RIGHT_DUNGEON_NODE = "SELECT_RIGHT_DUNGEON_NODE";
+static const std::string EVENT_USE_SMALL_PROTAL = "USE_SMALL_PROTAL";
+static const std::string EVENT_STANDARD_PROTAL_NO_ENERGY = "STANDARD_PROTAL_NO_ENERGY";
 
 static const std::string EVENT_NPC_KNIGHT_ANSWER = "NPC_KNIGHT_ANSWER";             ///武器店
 static const std::string EVENT_NPC_CHILD_ANSWER = "NPC_CHILD_ANSWER";               ///任务

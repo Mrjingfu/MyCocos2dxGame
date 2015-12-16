@@ -29,6 +29,8 @@ public:
     virtual void clearBossRoom();
 
     virtual bool createPickableItems();
+    
+    virtual void handleUseStandardPortal(const cocos2d::Vec2& pos);
 private:
     cocos2d::Vec2       m_BossPosition;
     Area*               m_pBossExitRoom;

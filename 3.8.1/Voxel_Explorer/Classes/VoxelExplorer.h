@@ -66,7 +66,7 @@ public:
     void handlePlayerUseScroll(PickableItem::PickableItemType type);
     void handlePlayerUsePotion(PickableItem::PickableItemType type);
     
-    void handlePlayerUseStandardPortal();
+    void handlePlayerUseStandardPortal(const cocos2d::Vec2& pos);
     void handlePlayerUseSmallPortal();
     void handleUpstairs();
     void handleDownstairs();

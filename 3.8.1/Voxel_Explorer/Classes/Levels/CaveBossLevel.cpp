@@ -308,3 +308,28 @@ std::vector<int> CaveBossLevel::getTilesOnEdge(int m)
         }
     return ret;
 }
+void CaveBossLevel::handleUseStandardPortal(const cocos2d::Vec2& pos)
+{
+    if(m_AreaExitRect.size.width >= m_AreaExitRect.size.height)
+    {
+        if(pos.x < m_AreaExitCenter.x)
+        {
+            Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_SELECT_LEFT_DUNGEON_NODE);
+        }
+        else if(pos.x > m_AreaExitCenter.x)
+        {
+            Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_SELECT_RIGHT_DUNGEON_NODE);
+        }
+    }
+    else
+    {
+        if(pos.y < m_AreaExitCenter.y)
+        {
+            Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_SELECT_LEFT_DUNGEON_NODE);
+        }
+        else if(pos.y > m_AreaExitCenter.y)
+        {
+            Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_SELECT_RIGHT_DUNGEON_NODE);
+        }
+    }
+}

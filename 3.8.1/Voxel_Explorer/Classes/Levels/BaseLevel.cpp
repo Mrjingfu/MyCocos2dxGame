@@ -237,7 +237,8 @@ bool BaseLevel::checkMovable(Actor* actor, TileInfo& info)
         }
         else if(info.m_Type == TerrainTile::TT_STANDARD_PORTAL)
         {
-            VoxelExplorer::getInstance()->handlePlayerUseStandardPortal();
+            Vec2 pos = Vec2(info.m_nX, info.m_nY);
+            VoxelExplorer::getInstance()->handlePlayerUseStandardPortal(pos);
             return false;
         }
         else if(info.m_Type == TerrainTile::TT_SMALL_PORTAL)

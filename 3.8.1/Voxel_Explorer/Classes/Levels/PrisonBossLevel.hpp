@@ -29,6 +29,8 @@ public:
     virtual void clearBossRoom();
     
     virtual bool createPickableItems();
+    
+    virtual void handleUseStandardPortal(const cocos2d::Vec2& pos);
 private:
     Area*               m_pArenaRoom;
     int                 m_nArenaDoor;

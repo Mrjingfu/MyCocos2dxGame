@@ -52,6 +52,8 @@ TerrainTile* TerrainTile::create(TileType type)
         std::string texName = LevelResourceManager::getInstance()->getTerrainTileRes(TERRAIN_TILES_NAME[type]);
         if((type == TerrainTile::TT_ENTRANCE) && (RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nCurrentDepth == 1))
             texName = LevelResourceManager::getInstance()->getTerrainTileRes(TERRAIN_TILES_NAME[TerrainTile::TT_STANDARD]);
+        else if((type == TerrainTile::TT_EXIT) && (RandomDungeon::getInstance()->getCurrentDungeonNode()->isLastDepth()))
+            texName = LevelResourceManager::getInstance()->getTerrainTileRes(TERRAIN_TILES_NAME[TerrainTile::TT_STANDARD]);
         if(!texName.empty())
         {
             auto tex = Director::getInstance()->getTextureCache()->addImage(texName);

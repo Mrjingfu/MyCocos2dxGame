@@ -370,3 +370,33 @@ bool SewerBossLevel::createPickableItems()
     }
     return true;
 }
+void SewerBossLevel::handleUseStandardPortal(const cocos2d::Vec2& pos)
+{
+    if(m_pBossExitRoom)
+    {
+        cocos2d::Rect rect = m_pBossExitRoom->getRect();
+        Vec2 center = m_pBossExitRoom->getCenter();
+        if(rect.size.width >= rect.size.height)
+        {
+            if(pos.x < center.x)
+            {
+                Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_SELECT_LEFT_DUNGEON_NODE);
+            }
+            else if(pos.x > center.x)
+            {
+                Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_SELECT_RIGHT_DUNGEON_NODE);
+            }
+        }
+        else
+        {
+            if(pos.y < center.y)
+            {
+                Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_SELECT_LEFT_DUNGEON_NODE);
+            }
+            else if(pos.y > center.y)
+            {
+                Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_SELECT_RIGHT_DUNGEON_NODE);
+            }
+        }
+    }
+}

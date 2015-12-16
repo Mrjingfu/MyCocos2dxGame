@@ -508,27 +508,27 @@ void BaseBoss::moveToNext(const cocos2d::Vec2& next)
     Vec3 oriScale = Vec3(getScaleX(), getScaleY(), getScaleZ());
     if(m_bJumpMove)
     {
-        ScaleTo* scaleTo1 = ScaleTo::create(0.1f/m_pBossProperty->getFactor().GetFloatValue(), oriScale.x, oriScale.y*0.8f, oriScale.z);
-        ScaleTo* scaleTo2 = ScaleTo::create(0.1f/m_pBossProperty->getFactor().GetFloatValue(), oriScale.x, oriScale.y, oriScale.z);
-        EaseSineOut* moveUp = EaseSineOut::create(MoveTo::create(0.1f/m_pBossProperty->getFactor().GetFloatValue(), Vec3((next.x + getPosInMap().x)*TerrainTile::CONTENT_SCALE*0.5f, getPositionY() + TerrainTile::CONTENT_SCALE*0.5f, -(next.y + getPosInMap().y)*TerrainTile::CONTENT_SCALE*0.5f)));
-        EaseSineOut* moveDown = EaseSineOut::create(MoveTo::create(0.1f/m_pBossProperty->getFactor().GetFloatValue(), Vec3(next.x*TerrainTile::CONTENT_SCALE, getPositionY(), -next.y*TerrainTile::CONTENT_SCALE)));
+        ScaleTo* scaleTo1 = ScaleTo::create(0.1f, oriScale.x, oriScale.y*0.8f, oriScale.z);
+        ScaleTo* scaleTo2 = ScaleTo::create(0.1f, oriScale.x, oriScale.y, oriScale.z);
+        EaseSineOut* moveUp = EaseSineOut::create(MoveTo::create(0.1f, Vec3((next.x + getPosInMap().x)*TerrainTile::CONTENT_SCALE*0.5f, getPositionY() + TerrainTile::CONTENT_SCALE*0.5f, -(next.y + getPosInMap().y)*TerrainTile::CONTENT_SCALE*0.5f)));
+        EaseSineOut* moveDown = EaseSineOut::create(MoveTo::create(0.1f, Vec3(next.x*TerrainTile::CONTENT_SCALE, getPositionY(), -next.y*TerrainTile::CONTENT_SCALE)));
         Sequence* sequenceJump = Sequence::create(moveUp, moveDown, NULL);
         Spawn* spawn = Spawn::create(scaleTo2, sequenceJump, NULL);
-        DelayTime* delay = DelayTime::create(0.3f/m_pBossProperty->getFactor().GetFloatValue());
+        DelayTime* delay = DelayTime::create(0.3f);
         CallFunc* callback = CallFunc::create(CC_CALLBACK_0(BaseBoss::onLand,this, true));
         Sequence* sequence = Sequence::create(scaleTo1, spawn, delay, callback, NULL);
-        this->runAction(sequence);
+        this->runAction(Speed::create(sequence, m_pBossProperty->getFactor().GetFloatValue()));
     }
     else
     {
-        ScaleTo* scaleTo1 = ScaleTo::create(0.25f/m_pBossProperty->getFactor().GetFloatValue(), oriScale.x, oriScale.y, oriScale.z*0.8f);
-        ScaleTo* scaleTo2 = ScaleTo::create(0.25f/m_pBossProperty->getFactor().GetFloatValue(), oriScale.x, oriScale.y, oriScale.z);
-        EaseBackIn* move = EaseBackIn::create(MoveTo::create(0.5f/m_pBossProperty->getFactor().GetFloatValue(), Vec3(next.x*TerrainTile::CONTENT_SCALE, getPositionY(), -next.y*TerrainTile::CONTENT_SCALE)));
+        ScaleTo* scaleTo1 = ScaleTo::create(0.25f, oriScale.x, oriScale.y, oriScale.z*0.8f);
+        ScaleTo* scaleTo2 = ScaleTo::create(0.25f, oriScale.x, oriScale.y, oriScale.z);
+        EaseBackIn* move = EaseBackIn::create(MoveTo::create(0.5f, Vec3(next.x*TerrainTile::CONTENT_SCALE, getPositionY(), -next.y*TerrainTile::CONTENT_SCALE)));
         Sequence* sequenceScale = Sequence::create(scaleTo1, scaleTo2, NULL);
         Spawn* spawn = Spawn::create(move, sequenceScale, NULL);
         CallFunc* callback = CallFunc::create(CC_CALLBACK_0(BaseBoss::onLand,this, true));
         Sequence* sequence = Sequence::create(spawn, callback, NULL);
-        this->runAction(sequence);
+        this->runAction(Speed::create(sequence, m_pBossProperty->getFactor().GetFloatValue()));
     }
 }
 void BaseBoss::doAttack()
@@ -571,29 +571,29 @@ void BaseBoss::handleAttackStyle(const cocos2d::Vec2& playerPos, const cocos2d::
 {
     if(m_bJumpMove)
     {
-        EaseSineOut* moveUp = EaseSineOut::create(MoveTo::create(0.1f/m_pBossProperty->getFactor().GetFloatValue(), Vec3(getPositionX(), getPositionY() + TerrainTile::CONTENT_SCALE*0.25f, getPositionZ()) + dir*0.4f));
+        EaseSineOut* moveUp = EaseSineOut::create(MoveTo::create(0.1f, Vec3(getPositionX(), getPositionY() + TerrainTile::CONTENT_SCALE*0.25f, getPositionZ()) + dir*0.4f));
         CallFunc* callback = CallFunc::create(CC_CALLBACK_0(VoxelExplorer::handlePlayerHurtByBoss,VoxelExplorer::getInstance(),playerPos, m_pBossProperty));
-        EaseSineOut* moveDown = EaseSineOut::create(MoveTo::create(0.1f/m_pBossProperty->getFactor().GetFloatValue(), getPosition3D()));
+        EaseSineOut* moveDown = EaseSineOut::create(MoveTo::create(0.1f, getPosition3D()));
         Sequence* sequenceJump = Sequence::create(moveUp, callback, moveDown, NULL);
         CallFunc* callback2 = CallFunc::create(CC_CALLBACK_0(BaseBoss::onLand,this, false));
-        DelayTime* delay = DelayTime::create(0.8f/m_pBossProperty->getFactor().GetFloatValue());
+        DelayTime* delay = DelayTime::create(0.8f);
         Sequence* sequence = Sequence::create(sequenceJump, delay, callback2, NULL);
-        this->runAction(sequence);
+        this->runAction(Speed::create(sequence, m_pBossProperty->getFactor().GetFloatValue()));
     }
     else
     {
         Vec3 oriScale = Vec3(getScaleX(), getScaleY(), getScaleZ());
-        ScaleTo* scaleTo1 = ScaleTo::create(0.5f/m_pBossProperty->getFactor().GetFloatValue(), oriScale.x, oriScale.y, oriScale.z*0.8f);
-        ScaleTo* scaleTo2 = ScaleTo::create(0.5f/m_pBossProperty->getFactor().GetFloatValue(), oriScale.x, oriScale.y, oriScale.z);
+        ScaleTo* scaleTo1 = ScaleTo::create(0.5f, oriScale.x, oriScale.y, oriScale.z*0.8f);
+        ScaleTo* scaleTo2 = ScaleTo::create(0.5f, oriScale.x, oriScale.y, oriScale.z);
         CallFunc* callback = CallFunc::create(CC_CALLBACK_0(VoxelExplorer::handlePlayerHurtByBoss,VoxelExplorer::getInstance(),playerPos, m_pBossProperty));
-        EaseBackIn* moveTo1 = EaseBackIn::create(MoveTo::create(0.5f/m_pBossProperty->getFactor().GetFloatValue(), getPosition3D() + dir*0.4f));
-        EaseBackIn* moveTo2 = EaseBackIn::create(MoveTo::create(0.5f/m_pBossProperty->getFactor().GetFloatValue(), getPosition3D()));
+        EaseBackIn* moveTo1 = EaseBackIn::create(MoveTo::create(0.5f, getPosition3D() + dir*0.4f));
+        EaseBackIn* moveTo2 = EaseBackIn::create(MoveTo::create(0.5f, getPosition3D()));
         Sequence* sequenceScale = Sequence::create(scaleTo1, scaleTo2, NULL);
         Sequence* sequenceMove = Sequence::create(moveTo1, callback, moveTo2, NULL);
         Spawn* spawn = Spawn::create(sequenceMove, sequenceScale, NULL);
         CallFunc* callback2 = CallFunc::create(CC_CALLBACK_0(BaseBoss::onLand,this, false));
         Sequence* sequence = Sequence::create(spawn, callback2, NULL);
-        this->runAction(sequence);
+        this->runAction(Speed::create(sequence, m_pBossProperty->getFactor().GetFloatValue()));
     }
 }
 void BaseBoss::handleSkillStage(int currentHp)

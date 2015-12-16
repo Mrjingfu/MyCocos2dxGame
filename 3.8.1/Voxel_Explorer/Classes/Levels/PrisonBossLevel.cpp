@@ -389,3 +389,33 @@ bool PrisonBossLevel::createPickableItems()
     }
     return true;
 }
+void PrisonBossLevel::handleUseStandardPortal(const cocos2d::Vec2& pos)
+{
+    if(m_pArenaRoom)
+    {
+        cocos2d::Rect rect = m_pArenaRoom->getRect();
+        Vec2 center = m_pArenaRoom->getCenter();
+        if(rect.size.width >= rect.size.height)
+        {
+            if(pos.x < center.x)
+            {
+                Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_SELECT_LEFT_DUNGEON_NODE);
+            }
+            else if(pos.x > center.x)
+            {
+                Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_SELECT_RIGHT_DUNGEON_NODE);
+            }
+        }
+        else
+        {
+            if(pos.y < center.y)
+            {
+                Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_SELECT_LEFT_DUNGEON_NODE);
+            }
+            else if(pos.y > center.y)
+            {
+                Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_SELECT_RIGHT_DUNGEON_NODE);
+            }
+        }
+    }
+}

@@ -155,7 +155,7 @@ bool FaneBossLevel::createMonsters()
         return false;
     }
     ///for debug
-    return true;
+    //return true;
     
     int monsterNum = 10;
     for (int i=0; i < monsterNum; i++) {
@@ -403,4 +403,30 @@ std::vector<int> FaneBossLevel::getTilesOnEdge(int m)
             ret.push_back(index);
         }
     return ret;
+}
+void FaneBossLevel::handleUseStandardPortal(const cocos2d::Vec2& pos)
+{
+
+    if(m_AreaExitRect.size.width >= m_AreaExitRect.size.height)
+    {
+        if(pos.x < m_AreaExitCenter.x)
+        {
+            Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_SELECT_LEFT_DUNGEON_NODE);
+        }
+        else if(pos.x > m_AreaExitCenter.x)
+        {
+            Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_SELECT_RIGHT_DUNGEON_NODE);
+        }
+    }
+    else
+    {
+        if(pos.y < m_AreaExitCenter.y)
+        {
+            Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_SELECT_LEFT_DUNGEON_NODE);
+        }
+        else if(pos.y > m_AreaExitCenter.y)
+        {
+            Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_SELECT_RIGHT_DUNGEON_NODE);
+        }
+    }
 }

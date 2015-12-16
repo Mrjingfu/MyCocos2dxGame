@@ -85,6 +85,8 @@ void Warden::onEnterSkill3()
 }
 void Warden::onEnterDeath()
 {
+    if(m_pBossProperty)
+        m_pBossProperty->removeAttackAddBuffer(PlayerBuffer::PB_PARALYTIC);
     if(getEffectCount() > 0)
     {
         OutlineEffect3D* outline = dynamic_cast<OutlineEffect3D*>(getEffect(0));
