@@ -16,6 +16,22 @@ class Giant : public BaseBoss
     virtual ~Giant();
 public:
     static Giant* create(BaseBoss::BossType type);
+    
+    virtual void update(float delta);
+    
+    virtual void onEnterSkill1();
+    virtual void onEnterSkill2();
+    virtual void onEnterSkill3();
+    virtual void onEnterDeath();
+    
+    virtual bool isPlayerInsideBossRoom();
+private:
+    
+    float           m_fSkill1Timer;
+    bool            m_bInSkill1Stage;
+    
+    float           m_fSkill2Timer;
+    bool            m_bInSkill2Stage;
 };
 
 #endif /* Giant_hpp */

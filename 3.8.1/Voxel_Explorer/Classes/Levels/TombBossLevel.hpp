@@ -23,6 +23,16 @@ public:
     virtual void createSiegeMonsters(const cocos2d::Vec2& pos);
     
     virtual bool createBoss(const cocos2d::Vec2& pos);
+    
+    virtual bool createSummoningMonstersBySkeletonKing(const cocos2d::Vec2& mapPos, int skillStage);
+    
+    virtual void clearBossRoom();
+    
+    virtual bool createPickableItems();
+    
+    cocos2d::Vec2 getRandomPassableTileInBossRoom();
+private:
+    std::vector<int> getTilesOnEdge(int m = 1);
 private:
     int m_nBottom;
     int m_nHallWidth;
@@ -38,6 +48,11 @@ private:
     int m_nArenaDoor;
     
     cocos2d::Vec2       m_BossPosition;
+    
+    cocos2d::Rect       m_AreaExitRect;
+    cocos2d::Vec2       m_AreaExitCenter;
+    
+    std::vector<cocos2d::Vec2>  m_GeneratePoints;
 };
 
 #endif /* TombBossLevel_hpp */

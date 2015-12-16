@@ -66,6 +66,8 @@ bool CaveBossLevel::build()
             std::vector<int> neighbour8 = getNeighbours8();
             for (int k = 0; k < neighbour8.size(); k++) {
                 int checkIndex = i + neighbour8[k];
+                if(checkIndex >= m_Map.size())
+                    continue;
                 int checkX = checkIndex%m_nWidth;
                 int checkY = checkIndex/m_nWidth;
                 if(m_Map[checkIndex].m_Type == TerrainTile::TT_CHASM)
@@ -74,6 +76,23 @@ bool CaveBossLevel::build()
         }
     }
     m_nIndexEntrance = (bottomMost - m_nChamberHeight/2 - 2) * m_nWidth + m_nCenter;
+    
+    m_AreaExitRect = cocos2d::Rect(center.x - m_nChamberWidth/2 - 1, topMost, m_nChamberWidth + 2, m_nChamberHeight + 2);
+    
+    m_AreaExitCenter = Vec2((int)(m_AreaExitRect.getMidX()), (int)(m_AreaExitRect.getMidY()));
+    
+    if(m_AreaExitRect.size.width >= m_AreaExitRect.size.height)
+    {
+        setTerrainTile(m_AreaExitCenter.x - 1, m_AreaExitCenter.y, TerrainTile::TT_STANDARD_PORTAL, Area::AT_BOSS_EXIT);
+        setTerrainTile(m_AreaExitCenter.x + 1, m_AreaExitCenter.y, TerrainTile::TT_STANDARD_PORTAL, Area::AT_BOSS_EXIT);
+    }
+    else
+    {
+        setTerrainTile(m_AreaExitCenter.x, m_AreaExitCenter.y - 1, TerrainTile::TT_STANDARD_PORTAL, Area::AT_BOSS_EXIT);
+        setTerrainTile(m_AreaExitCenter.x, m_AreaExitCenter.y + 1, TerrainTile::TT_STANDARD_PORTAL, Area::AT_BOSS_EXIT);
+    }
+
+    
     int entranceX = m_nIndexEntrance%m_nWidth;
     int entranceY = m_nIndexEntrance/m_nWidth;
     setTerrainTile(entranceX, entranceY, TerrainTile::TT_ENTRANCE, Area::AT_BOSS_ROOM);
@@ -166,4 +185,126 @@ bool CaveBossLevel::createBoss(const cocos2d::Vec2& pos)
     giant->setState(BaseBoss::BS_SLEEPING);
 
     return true;
+}
+bool CaveBossLevel::createTrapsByGiant(const cocos2d::Vec2& mapPos, int skillStage)
+{
+    if(!VoxelExplorer::getInstance()->getPlayer() || VoxelExplorer::getInstance()->getPlayer()->getState() == Player::PS_DEATH)
+        return false;
+    Vec2 playerPos = VoxelExplorer::getInstance()->getPlayer()->getPosInMap();
+    if(skillStage == 1)
+    {
+        std::vector<int> neighbours13 = getNeighbours13();
+        for (int i = 0; i < neighbours13.size(); i++) {
+            int index = playerPos.x + playerPos.y * m_nWidth + neighbours13[i];
+            if(index >= m_Map.size())
+                continue;
+            if(m_Map[index].m_AreaType == Area::AT_BOSS_ROOM && m_Map[index].m_Type == TerrainTile::TT_STANDARD && cocos2d::random(0, 3) == 0)
+            {
+                std::vector<TerrainTile::TileType> trapTypes = { TerrainTile::TT_TOXIC_TRAP, TerrainTile::TT_FIRE_TRAP, TerrainTile::TT_PARALYTIC_TRAP, TerrainTile::TT_GRIPPING_TRAP, TerrainTile::TT_WEAK_TRAP };
+                int randIndex = cocos2d::random(0, (int)(trapTypes.size() - 1));
+                setTerrainTile(index%m_nWidth, index/m_nWidth, trapTypes[randIndex], Area::AT_BOSS_ROOM);
+                VoxelExplorer::getInstance()->updateTerrainTile(index%m_nWidth, index/m_nWidth,trapTypes[randIndex]);
+            }
+        }
+        return true;
+    }
+    else if(skillStage == 2)
+    {
+        std::vector<TerrainTile::TileType> trapTypes = { TerrainTile::TT_TOXIC_TRAP, TerrainTile::TT_FIRE_TRAP, TerrainTile::TT_PARALYTIC_TRAP, TerrainTile::TT_GRIPPING_TRAP, TerrainTile::TT_WEAK_TRAP };
+        int randIndex = cocos2d::random(0, (int)(trapTypes.size() - 1));
+        
+        std::vector<int> neighbours9 = getNeighbours9();
+        for (int i = 0; i < neighbours9.size(); i++) {
+            int index = mapPos.x + mapPos.y * m_nWidth + neighbours9[i];
+            if(index >= m_Map.size())
+                continue;
+            if(m_Map[index].m_AreaType == Area::AT_BOSS_ROOM)
+            {
+                setTerrainTile(index%m_nWidth, index/m_nWidth, trapTypes[randIndex], Area::AT_BOSS_ROOM);
+                VoxelExplorer::getInstance()->updateTerrainTile(index%m_nWidth, index/m_nWidth,trapTypes[randIndex]);
+            }
+        }
+        return true;
+    }
+    else if(skillStage == 3)
+    {
+        return true;
+    }
+    return false;
+}
+
+void CaveBossLevel::clearBossRoom()
+{
+    for (int i=0; i < m_nLenght; i++) {
+        if (m_Map[i].m_AreaType == Area::AT_BOSS_ROOM && m_Map[i].m_Type >= TerrainTile::TT_TOXIC_TRAP) {
+            setTerrainTile(i%m_nWidth, i/m_nWidth, TerrainTile::TT_STANDARD, Area::AT_BOSS_ROOM);
+            VoxelExplorer::getInstance()->updateTerrainTile(i%m_nWidth, i/m_nWidth,TerrainTile::TT_STANDARD);
+        }
+    }
+    VoxelExplorer::getInstance()->clearBoosRoom();
+}
+
+bool CaveBossLevel::createPickableItems()
+{
+    std::vector<int> edgeIndexList = getTilesOnEdge(1);
+    for (int i = 0; i < edgeIndexList.size(); i++) {
+        int tileIndex = edgeIndexList[i];
+        
+        std::vector<int> neighbours8 = this->getNeighbours8();
+        bool neighbourHasDoor = false;
+        for (int j = 0; j<neighbours8.size(); ++j) {
+            if(m_Map[neighbours8[j] + tileIndex].m_Type == TerrainTile::TT_LOCKED_BOSS_DOOR)
+                neighbourHasDoor = true;
+        }
+        if(neighbourHasDoor)
+            continue;
+        
+        int playerlevel = PlayerProperty::getInstance()->getLevel().GetLongValue();
+        int itemLevel = cocos2d::random(playerlevel - 3, playerlevel + 3);
+        if(itemLevel < 1)
+            itemLevel = 1;
+        
+        PickableItem::PickableItemType type = PickableItem::generatePickItemByMonsterLevel(itemLevel);
+        if(type == PickableItem::PIT_UNKNOWN)
+            continue;
+        
+        PickableItem* item = PickableItem::create(type, itemLevel);
+        if(!item)
+            return false;
+        else
+        {
+            item->setPosition3D(Vec3(m_Map[tileIndex].m_nX*TerrainTile::CONTENT_SCALE, -0.5f*TerrainTile::CONTENT_SCALE, -m_Map[tileIndex].m_nY*TerrainTile::CONTENT_SCALE));
+            item->setVisited(m_Map[tileIndex].m_bVisited);
+            VoxelExplorer::getInstance()->getPickableItemsLayer()->addChild(item);
+            item->setState(PickableItem::PIS_IDLE);
+        }
+        
+    }
+    return true;
+}
+std::vector<int> CaveBossLevel::getTilesOnEdge(int m)
+{
+    int leftOuter = m_AreaExitRect.getMinX() + 1;
+    int rightOuter = m_AreaExitRect.getMaxX() - 2;
+    int bottomOuter = m_AreaExitRect.getMinY() + 1;
+    int topOuter = m_AreaExitRect.getMaxY() - 2;
+    
+    int leftInner = m_AreaExitRect.getMinX() + m + 1;
+    int rightInner = m_AreaExitRect.getMaxX() - m - 2;
+    int bottomInner = m_AreaExitRect.getMinY() + m + 1;
+    int topInner = m_AreaExitRect.getMaxY() - m - 2;
+    cocos2d::Rect rectOuter = cocos2d::Rect(MIN(leftOuter, rightOuter), MIN(bottomOuter, topOuter), std::abs(rightOuter - leftOuter), std::abs(topOuter - bottomOuter));
+    
+    cocos2d::Rect rectInner = cocos2d::Rect(MIN(leftInner, rightInner), MIN(bottomInner, topInner), std::abs(rightInner - leftInner), std::abs(topInner - bottomInner));
+    
+    std::vector<int> ret;
+    for (int j = MIN(bottomOuter, topOuter); j <= MAX(bottomOuter, topOuter); ++j)
+        for (int i = MIN(leftOuter, rightOuter); i <= MAX(leftOuter, rightOuter); ++i)
+        {
+            if(rectInner.containsPoint(Vec2(i, j)))
+                continue;
+            int index = i + j*m_nWidth;
+            ret.push_back(index);
+        }
+    return ret;
 }

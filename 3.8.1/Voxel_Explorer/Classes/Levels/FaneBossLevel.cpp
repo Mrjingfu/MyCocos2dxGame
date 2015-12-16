@@ -65,6 +65,8 @@ bool FaneBossLevel::build()
             std::vector<int> neighbour8 = getNeighbours8();
             for (int k = 0; k < neighbour8.size(); k++) {
                 int checkIndex = i + neighbour8[k];
+                if(checkIndex >= m_Map.size())
+                    continue;
                 int checkX = checkIndex%m_nWidth;
                 int checkY = checkIndex/m_nWidth;
                 if(m_Map[checkIndex].m_Type == TerrainTile::TT_CHASM)
@@ -86,13 +88,13 @@ bool FaneBossLevel::build()
     
     if(m_AreaExitRect.size.width >= m_AreaExitRect.size.height)
     {
-        setTerrainTileType(m_AreaExitCenter.x - 1, m_AreaExitCenter.y, TerrainTile::TT_STANDARD_PORTAL);
-        setTerrainTileType(m_AreaExitCenter.x + 1, m_AreaExitCenter.y, TerrainTile::TT_STANDARD_PORTAL);
+        setTerrainTile(m_AreaExitCenter.x - 1, m_AreaExitCenter.y, TerrainTile::TT_STANDARD_PORTAL, Area::AT_BOSS_EXIT);
+        setTerrainTile(m_AreaExitCenter.x + 1, m_AreaExitCenter.y, TerrainTile::TT_STANDARD_PORTAL, Area::AT_BOSS_EXIT);
     }
     else
     {
-        setTerrainTileType(m_AreaExitCenter.x, m_AreaExitCenter.y - 1, TerrainTile::TT_STANDARD_PORTAL);
-        setTerrainTileType(m_AreaExitCenter.x, m_AreaExitCenter.y + 1, TerrainTile::TT_STANDARD_PORTAL);
+        setTerrainTile(m_AreaExitCenter.x, m_AreaExitCenter.y - 1, TerrainTile::TT_STANDARD_PORTAL, Area::AT_BOSS_EXIT);
+        setTerrainTile(m_AreaExitCenter.x, m_AreaExitCenter.y + 1, TerrainTile::TT_STANDARD_PORTAL, Area::AT_BOSS_EXIT);
     }
 
     
@@ -101,6 +103,8 @@ bool FaneBossLevel::build()
     std::vector<int> neighbour8 = getNeighbours8();
     for (int k = 0; k < neighbour8.size(); k++) {
         int checkIndex = m_nIndexEntrance + neighbour8[k];
+        if(checkIndex >= m_Map.size())
+            continue;
         int checkX = checkIndex%m_nWidth;
         int checkY = checkIndex/m_nWidth;
         if(m_Map[checkIndex].m_Type == TerrainTile::TT_WALL)
@@ -250,6 +254,9 @@ bool FaneBossLevel::createBoss(const cocos2d::Vec2& pos)
 }
 bool FaneBossLevel::createSummoningMonstersByArchbishop(const cocos2d::Vec2& mapPos, int skillStage)
 {
+    if(!VoxelExplorer::getInstance()->getPlayer() || VoxelExplorer::getInstance()->getPlayer()->getState() == Player::PS_DEATH)
+        return false;
+    
     if(skillStage == 1)
     {
         int count = 0;
@@ -276,8 +283,8 @@ bool FaneBossLevel::createSummoningMonstersByArchbishop(const cocos2d::Vec2& map
     }
     else if(skillStage == 2)
     {
-        if(VoxelExplorer::getInstance()->getMonstersLayer()->getChildrenCount() >= 30)
-            return true;
+        if(VoxelExplorer::getInstance()->getMonstersLayer()->getChildrenCount() >= 16)
+            return false;
         int count = 0;
         std::vector<int> neighbours8 = getNeighbours8();
         for (int i = 0; i < neighbours8.size(); i++) {

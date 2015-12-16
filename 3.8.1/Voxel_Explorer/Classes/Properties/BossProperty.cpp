@@ -27,6 +27,8 @@ BossProperty::BossProperty()
     m_fDodgeRate            = 0.01f;                ///闪避率
     
     m_nAttackAddBuffer            = PB_NONE;          ///默认附加状态
+    
+    m_fFactor = 1.0f;
 }
 BossProperty::~BossProperty()
 {
@@ -34,15 +36,15 @@ BossProperty::~BossProperty()
 
 CChaosNumber BossProperty::getMinAttack()
 {
-    return m_nAttackDiceNum + m_nAddedMinAttack.GetLongValue();
+    return (m_nAttackDiceNum + m_nAddedMinAttack.GetLongValue()) * m_fFactor.GetFloatValue();
 }
 CChaosNumber BossProperty::getMaxAttack()
 {
-    return m_nAttackDiceNum*m_nAttackDiceFaceNum.GetLongValue() + m_nAddedMaxAttack.GetLongValue();
+    return (m_nAttackDiceNum*m_nAttackDiceFaceNum.GetLongValue() + m_nAddedMaxAttack.GetLongValue()) * m_fFactor.GetFloatValue();
 }
 CChaosNumber BossProperty::getDefense()
 {
-    return -m_nArmorClass.GetLongValue() + m_nBaseArmorClass.GetLongValue();
+    return (-m_nArmorClass.GetLongValue() + m_nBaseArmorClass.GetLongValue())* m_fFactor.GetFloatValue();
 }
 void BossProperty::setCurrentHP(CChaosNumber hp)
 {

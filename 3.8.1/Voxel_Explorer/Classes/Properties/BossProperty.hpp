@@ -30,6 +30,8 @@ public:
     CChaosNumber getCriticalStrikeRate() const { return m_fCriticalStrikeRate; }
     CChaosNumber getDodgeRate() const { return m_fDodgeRate; }
     
+    CChaosNumber getFactor() const { return m_fFactor; }
+    void setFactor(CChaosNumber factor) { m_fFactor = factor; }
     void setCurrentHP(CChaosNumber hp);
     
     void adjustByDC();
@@ -55,6 +57,8 @@ private:
     CChaosNumber    m_fDodgeRate;                ///闪避率
     
     int             m_nAttackAddBuffer;          ///攻击附加效果
+    
+    CChaosNumber    m_fFactor;                   ///附加系数
 };
 
 #endif /* BossProperty_hpp */

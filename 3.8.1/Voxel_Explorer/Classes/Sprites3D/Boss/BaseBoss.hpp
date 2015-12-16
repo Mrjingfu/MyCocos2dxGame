@@ -107,7 +107,7 @@ protected:
     virtual void handleSkillStage(int currentHp);
     
     virtual bool isPlayerInsideBossRoom() { return true; }
-private:
+protected:
     void onLand(bool updateMiniMap);
     void moveToNext(const cocos2d::Vec2& next);
     void doAttack();

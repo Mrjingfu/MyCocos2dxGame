@@ -97,8 +97,10 @@ void KoboldLeader::update(float delta)
             MineBossLevel* level = dynamic_cast<MineBossLevel*>(VoxelExplorer::getInstance()->getCurrentLevel());
             if(level)
             {
-                level->createSummoningMonstersByKoboldLeader(getPosInMap(), 3);
-                Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_BOSS_SKILL2, this);
+                if(level->createSummoningMonstersByKoboldLeader(getPosInMap(), 3))
+                {
+                    Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_BOSS_SKILL2, this);
+                }
             }
             m_fSkill3Timer = 15.0f;
         }

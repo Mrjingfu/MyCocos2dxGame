@@ -96,8 +96,10 @@ void Archbishop::update(float delta)
             FaneBossLevel* level = dynamic_cast<FaneBossLevel*>(VoxelExplorer::getInstance()->getCurrentLevel());
             if(level)
             {
-                level->createSummoningMonstersByArchbishop(getPosInMap(), 2);
-                Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_BOSS_SKILL2, this);
+                if(level->createSummoningMonstersByArchbishop(getPosInMap(), 2))
+                {
+                    Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_BOSS_SKILL2, this);
+                }
             }
             m_fSkill2Timer = 15.0f;
         }
