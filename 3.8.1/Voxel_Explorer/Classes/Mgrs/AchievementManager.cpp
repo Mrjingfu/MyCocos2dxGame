@@ -61,13 +61,8 @@ bool AchievementManager::loadAchieveData()
         achieveProperty->setAchieveDetailType(iter->first);
         cocos2d::ValueMap achieveItem = iter->second.asValueMap();
         
-        auto iterItem = achieveItem.find("achieve_desc");
-        if (iterItem != achieveItem.end())
-        {
-             achieveProperty->setAchieveDesc(iterItem->second.asString());
-        }
-        
-         iterItem = achieveItem.find("achieve_icon");
+      
+         auto  iterItem = achieveItem.find("achieve_icon");
         if (iterItem != achieveItem.end())
         {
             achieveProperty->setAchieveIcon(iterItem->second.asString());
@@ -98,7 +93,7 @@ void AchievementManager::handleAchievement(eAchievementDetailType achiId)
         return;
     }
     switch (achiId) {
-        case eAchiDetailType_Firstkill:
+        case ADT_KILL_FIRST:
            
             updateAchieve(achieveProp);
             break;
@@ -108,27 +103,24 @@ void AchievementManager::handleAchievement(eAchievementDetailType achiId)
 }
 void AchievementManager::updateAchieve(AchieveProperty *achieve)
 {
-    bool isComplete = false;
-    
+    int targetCompleteCount = 0;
     for (auto iter = achieve->getAcheveTargets().begin(); iter!=achieve->getAcheveTargets().end(); iter++)
     {
         eStatistType type = iter->first;
         CChaosNumber sourceNum =  StatisticsManager::getInstance()->getDataStatistType(type);
         CChaosNumber targetNum = iter->second;
+        CCLOG("sourceNum:%ld",sourceNum.GetLongValue());
+        CCLOG("targetNum:%ld",targetNum.GetLongValue());
         if (sourceNum >= targetNum) {
-            isComplete = true;
-        }else{
-            isComplete = false;
+            ++targetCompleteCount;
         }
     }
-    if (isComplete)
+    if (targetCompleteCount == achieve->getAcheveTargets().size())
     {
         achieve->onAcieveCommple();
         m_vCompleteAchieves.pushBack(achieve);
         m_vAllAchieves.eraseObject(achieve);
         cocos2d::Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_ACHIEVE_COMPLETE,achieve);
-       
-        
     }
 }
 void AchievementManager::checkAllAchievement()
@@ -136,7 +128,7 @@ void AchievementManager::checkAllAchievement()
     for (int i= 0 ; i<m_vAllAchieves.size(); i++)
     {
         AchieveProperty *achieve = m_vAllAchieves.at(i);
-        if (achieve) {
+        if (achieve && !achieve->isCommple()) {
             updateAchieve(achieve);
         }
     }

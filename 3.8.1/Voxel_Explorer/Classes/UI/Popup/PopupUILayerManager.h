@@ -13,7 +13,7 @@
 #include "PopupUILayer.h"
 #include "PopupType.h"
 #include "GameConfig.h"
-
+class GlobalPromptLayer;
 class PopupUILayerManager:public cocos2d::Ref
 {
 public:
@@ -44,7 +44,7 @@ private:
 private:
     PopupUILayer* m_pPopupContainer[ePopupCount];
     cocos2d::Layer* m_pParentLayer;
-    
+    GlobalPromptLayer* m_pGlobalPromptlayer;
     ePopupType m_cCurrentPopUpType,m_pLastPopUpType;
     std::list<ePopupType> m_lTypeList;
     

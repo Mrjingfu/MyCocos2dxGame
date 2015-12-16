@@ -688,7 +688,7 @@ void GameUILayer::onEventMonsterHud(cocos2d::EventCustom *sender)
         {
             PopupUILayerManager::getInstance()->showStatus(TIP_BOLOCK, StringUtils::format(UtilityHelper::getLocalStringForUi("STATUS_TEXT_BOLOCK").c_str(),hurData->m_nDamage),pt);
             CCLOG("monster 格挡");
-        }else if (hurData->m_bCriticalStrike)
+        }else if (hurData->m_bCriticalStrike && !hurData->m_bBlocked)
         {
             PopupUILayerManager::getInstance()->showStatus(TIP_MONSTER_CRITICAL_STRIKE, StringUtils::format(UtilityHelper::getLocalStringForUi("STATUS_TEXT_CRITICAL_STRIKE").c_str(),hurData->m_nDamage),pt);
              CCLOG("monster 暴击");
@@ -791,7 +791,7 @@ void GameUILayer::onEventBossHud(cocos2d::EventCustom *sender)
         {
             PopupUILayerManager::getInstance()->showStatus(TIP_BOLOCK, StringUtils::format(UtilityHelper::getLocalStringForUi("STATUS_TEXT_BOLOCK").c_str(),hurData->m_nDamage),pt);
             CCLOG("monster 格挡");
-        }else if (hurData->m_bCriticalStrike)
+        }else if (hurData->m_bCriticalStrike && !hurData->m_bBlocked)
         {
             PopupUILayerManager::getInstance()->showStatus(TIP_MONSTER_CRITICAL_STRIKE, StringUtils::format(UtilityHelper::getLocalStringForUi("STATUS_TEXT_CRITICAL_STRIKE").c_str(),hurData->m_nDamage),pt);
             CCLOG("monster 暴击");

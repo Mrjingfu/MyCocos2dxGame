@@ -10,7 +10,7 @@
 #include "UtilityHelper.h"
 AchieveProperty::AchieveProperty()
 {
-    isCommple = false;
+    m_bCommple = false;
 }
 AchieveProperty::~AchieveProperty()
 {
@@ -29,13 +29,10 @@ void AchieveProperty::setAchieveTarget(std::string typeStr, CChaosNumber targetN
     eStatistType sStype = (eStatistType)type;
     m_mAcheveTargets.insert(std::map<eStatistType,CChaosNumber>::value_type(sStype,targetNum));
 }
-void AchieveProperty::setAchieveDesc(std::string desc)
-{
-    m_sAchieveDesc = UtilityHelper::getLocalStringForPlist(desc, "achieve_chinese.plist", "achieve_english.plist");
-}
 
 void AchieveProperty::setAchieveDetailType(std::string achieveDeType)
 {
+    m_sAchieveDesc = UtilityHelper::getLocalStringForPlist(achieveDeType, "achieve_chinese.plist", "achieve_english.plist");
     int type = checkArrName(ACHIEVEMENT_DATAIL_TYPE_NAME,achieveDeType);
     CCASSERT(type!=-1, "type error");
     m_detailType = (eAchievementDetailType)(type);
