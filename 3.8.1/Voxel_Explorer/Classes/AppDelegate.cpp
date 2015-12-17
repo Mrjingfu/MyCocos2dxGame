@@ -58,6 +58,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     searchPaths.push_back("fonts");
     searchPaths.push_back("sounds");
     searchPaths.push_back("musics");
+    searchPaths.push_back("particle2d");
     searchPaths.push_back("particle3d/materials");
     searchPaths.push_back("particle3d/scripts");
     searchPaths.push_back("particle3d/textures");

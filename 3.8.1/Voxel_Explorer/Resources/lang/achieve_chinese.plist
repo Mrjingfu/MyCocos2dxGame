@@ -3,8 +3,12 @@
 <plist version="1.0">
 <dict>
 	<key>ADT_KILL_FIRST</key>
-	<string>哇，拿下一滴血哦，厉害</string>
+	<string>第一滴血</string>
+	<key>ADT_KILL_FIRST_TARGET</key>
+	<string>杀死一个敌人</string>
 	<key>ADT_STEP_HUNDRED</key>
-	<string>走了一百步了，真是健步如飞啊</string>
+	<string>健步如飞</string>
+	<key>ADT_STEP_HUNDRED_TARGET</key>
+	<string>行走一百步</string>
 </dict>
 </plist>

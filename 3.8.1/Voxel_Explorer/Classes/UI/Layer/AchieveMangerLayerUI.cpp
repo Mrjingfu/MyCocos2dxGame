@@ -12,8 +12,8 @@ USING_NS_CC;
 AchieveMangerLayerUI::AchieveMangerLayerUI()
 {
     m_pItemImgLayer = nullptr;
-    m_pEquipMarkLayer = nullptr;
-    m_pItemCountLayer = nullptr;
+    m_pAchieveTargetLayer = nullptr;
+    m_pAchieveNameLayer = nullptr;
 }
 
 AchieveMangerLayerUI::~AchieveMangerLayerUI()
@@ -37,25 +37,23 @@ bool AchieveMangerLayerUI::init(cocos2d::Size size)
 //    m_pItemImgLayer->setBackGroundColor(Color3B::RED);
     addChild(m_pItemImgLayer);
     
-    m_pEquipMarkLayer = Layout::create();
-    m_pEquipMarkLayer->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
-    m_pEquipMarkLayer->setContentSize(size);
-    m_pEquipMarkLayer->setPosition(getContentSize()*0.5);
+    m_pAchieveNameLayer = Layout::create();
+    m_pAchieveNameLayer->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
+    m_pAchieveNameLayer->setContentSize(size);
+    m_pAchieveNameLayer->setPosition(getContentSize()*0.5);
 //    m_pEquipMarkLayer->setBackGroundColorType(cocos2d::ui::Layout::BackGroundColorType::SOLID);
 //    m_pEquipMarkLayer->setBackGroundColor(Color3B::YELLOW);
-    addChild(m_pEquipMarkLayer);
+    addChild(m_pAchieveNameLayer);
     
-    m_pItemCountLayer = Layout::create();
-    m_pItemCountLayer->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
-    m_pItemCountLayer->setContentSize(size);
-    m_pItemCountLayer->setPosition(getContentSize()*0.5);
-//    m_pItemCountLayer->setBackGroundColorType(cocos2d::ui::Layout::BackGroundColorType::SOLID);
-//    m_pItemCountLayer->setBackGroundColor(Color3B::ORANGE);
-    addChild(m_pItemCountLayer);
-    
-  
-    
-    return true;
+    m_pAchieveTargetLayer = Layout::create();
+    m_pAchieveTargetLayer->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
+    m_pAchieveTargetLayer->setContentSize(size);
+    m_pAchieveTargetLayer->setPosition(getContentSize()*0.5);
+    //    m_pEquipMarkLayer->setBackGroundColorType(cocos2d::ui::Layout::BackGroundColorType::SOLID);
+    //    m_pEquipMarkLayer->setBackGroundColor(Color3B::YELLOW);
+    addChild(m_pAchieveTargetLayer);
+
+   return true;
 }
 AchieveMangerLayerUI* AchieveMangerLayerUI::create(cocos2d::Size size)
 {
@@ -76,43 +74,90 @@ void AchieveMangerLayerUI::setLayerContentSize(const cocos2d::Size &contentSize)
          m_pItemImgLayer->setContentSize(contentSize);
         m_pItemImgLayer->setPosition(getContentSize()*0.5);
     }
-    if (m_pItemCountLayer) {
-        m_pItemCountLayer->setContentSize(contentSize);
-        m_pItemCountLayer->setPosition(getContentSize()*0.5);
+    
+    if (m_pAchieveTargetLayer) {
+        m_pAchieveTargetLayer->setContentSize(contentSize);
+        m_pAchieveTargetLayer->setPosition(getContentSize()*0.5);
     }
     
-    if (m_pEquipMarkLayer) {
-        m_pEquipMarkLayer->setContentSize(contentSize);
-        m_pEquipMarkLayer->setPosition(getContentSize()*0.5);
+    if (m_pAchieveNameLayer) {
+        m_pAchieveNameLayer->setContentSize(contentSize);
+        m_pAchieveNameLayer->setPosition(getContentSize()*0.5);
     }
     
 }
-void AchieveMangerLayerUI::addItem(int index,int itemId,cocos2d::Vec2 pt,std::string itemIcon)
+void AchieveMangerLayerUI::addItemAchieve(eAchievementDetailType achieveId,cocos2d::Vec2 pt,std::string itemIcon,std::string name,std::string targetDesc,bool isHideAchieve,bool isCommple)
 {
-    m_items.insert(std::pair<int, int>(index,itemId));
-    if (m_pItemImgLayer) {
+    m_Achieves.push_back(achieveId);
+    if (m_pItemImgLayer && m_pAchieveNameLayer && m_pAchieveTargetLayer)
+    {
         ui::ImageView* img = ui::ImageView::create(itemIcon,TextureResType::PLIST);
         img->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
-        img->setPosition(pt);
-        img->setScale(0.9);
+        img->setPosition(pt-cocos2d::Vec2(img->getContentSize().width,0));
+        img->setScale(0.7);
         img->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
-        img->setTag(itemId);
+        img->setTag(achieveId);
+        if (!isCommple &&isHideAchieve) {
+            img->loadTexture("achievement_lock.png",TextureResType::PLIST);
+        }
+         img->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
+        cocos2d::ui::Scale9Sprite* scale9sp=dynamic_cast<cocos2d::ui::Scale9Sprite*>(img->getVirtualRenderer());
+        scale9sp->setState(cocos2d::ui::Scale9Sprite::State::GRAY);
+        if (isCommple) {
+           scale9sp->setState(cocos2d::ui::Scale9Sprite::State::NORMAL);
+        }
         m_pItemImgLayer->addChild(img);
+        
+        ui::Text* nameText = ui::Text::create();
+        nameText->setFontSize(36);
+        nameText->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
+        nameText->setScale(0.3);
+        nameText->setString(name);
+        nameText->setTag(achieveId);
+        float textHeight =nameText->getContentSize().height*nameText->getScale();
+        nameText->setPosition(cocos2d::Vec2(img->getPositionX()+img->getContentSize().width*0.55,pt.y+textHeight*0.5));
+        nameText->setAnchorPoint(cocos2d::Vec2::ANCHOR_MIDDLE_LEFT);
+        nameText->setColor(Color3B(105, 87, 055));
+        if (isCommple) {
+            nameText->setColor(Color3B(200, 182, 150));
+        }
+        if (!isCommple &&isHideAchieve)
+        {
+            nameText->setString("????");
+            nameText->setPosition(cocos2d::Vec2(img->getPositionX()+img->getContentSize().width*0.55,pt.y));
+        }
+        m_pAchieveNameLayer->addChild(nameText);
+        
+        ui::Text* targetText = ui::Text::create();
+        targetText->setFontSize(36);
+        targetText->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
+        targetText->setScale(0.18);
+        targetText->setAnchorPoint(cocos2d::Vec2::ANCHOR_MIDDLE_LEFT);
+        targetText->setTag(achieveId);
+        cocos2d::Size fonSize = UtilityHelper::getSingleStrFontSize(targetText, targetDesc);
+        
+        int charCount  = (int)((130.0 - img->getContentSize().width)/fonSize.width);
+        UtilityHelper::getLineStr(targetDesc, charCount);
+
+        targetText->setString(targetDesc);
+        float targetTextHeight =targetText->getContentSize().height*targetText->getScale();
+        targetText->setPosition(cocos2d::Vec2(nameText->getPositionX(),pt.y-targetTextHeight*0.5 ));
+        m_pAchieveTargetLayer->addChild(targetText);
+
+
+        
+        targetText->setColor(Color3B(105, 87, 055));
+        if (isCommple) {
+            targetText->setColor(Color3B(180, 150, 106));
+        }
+        if (!isCommple &&isHideAchieve)
+        {
+            targetText->setVisible(false);
+        }
+
     }
 }
 
-void AchieveMangerLayerUI::setItemCount(int itemId,cocos2d::Vec2 pt,int count)
-{
-    if (m_pItemCountLayer) {
-        Label* itemCount = Label::createWithTTF(StringUtils::format("X%d",count), UtilityHelper::getLocalString("FONT_NAME"), 36);
-        itemCount->setPosition(pt+cocos2d::Vec2(16,-20));
-        itemCount->setAnchorPoint(Vec2::ANCHOR_BOTTOM_RIGHT);
-        itemCount->setScale(0.23);
-        itemCount->setTag(itemId);
-        itemCount->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
-        m_pItemCountLayer->addChild(itemCount);
-    }
- }
 
 void AchieveMangerLayerUI::removeItems()
 {
@@ -120,44 +165,14 @@ void AchieveMangerLayerUI::removeItems()
         m_pItemImgLayer->removeAllChildren();
     }
     
-    if (m_pEquipMarkLayer) {
-        m_pEquipMarkLayer->removeAllChildren();
+    if (m_pAchieveNameLayer) {
+        m_pAchieveNameLayer->removeAllChildren();
     }
     
-    if (m_pItemCountLayer) {
-        m_pItemCountLayer->removeAllChildren();
+    if (m_pAchieveTargetLayer) {
+        m_pAchieveTargetLayer->removeAllChildren();
     }
 
-    m_items.clear();
-}
-void AchieveMangerLayerUI::removeItem(int index)
-{
-    auto iter = m_items.find(index);
-    int itemId = -1;
-    if (iter != m_items.end())
-    {
-        itemId = iter->second;
-        m_items.erase(iter);
-    }
-    if (itemId==-1)
-        return;
-    if (m_pItemImgLayer) {
-        m_pItemImgLayer->removeChildByTag(itemId);
-    }
-    if (m_pEquipMarkLayer) {
-        m_pEquipMarkLayer->removeChildByTag(itemId);
-    }
-    
-    if (m_pItemCountLayer) {
-        m_pItemCountLayer->removeChildByTag(itemId);
-    }
-  
+    m_Achieves.clear();
 }
 
-int AchieveMangerLayerUI::getItemId(int index) const
-{
-    auto iter = m_items.find(index);
-    if (iter != m_items.end())
-        return iter->second;
-    return -1;
-}

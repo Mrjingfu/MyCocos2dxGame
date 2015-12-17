@@ -240,9 +240,16 @@ void LogoScene::precache()
     if (uiItemTx)
         uiItemTx->setAliasTexParameters();
     
+    Texture2D * uiAchievementTx = Director::getInstance()->getTextureCache()->addImage("achievement_icon.png");
+    if (uiAchievementTx)
+        uiAchievementTx->setAliasTexParameters();
+    
+    
     SpriteFrameCache::getInstance()->addSpriteFramesWithFile("ui_sprite.plist");
     SpriteFrameCache::getInstance()->addSpriteFramesWithFile("ui_characters.plist");
     SpriteFrameCache::getInstance()->addSpriteFramesWithFile("ui_items.plist");
+    SpriteFrameCache::getInstance()->addSpriteFramesWithFile("achievement_icon.plist");
+    
     
     if(m_NodeRoot2)
     {

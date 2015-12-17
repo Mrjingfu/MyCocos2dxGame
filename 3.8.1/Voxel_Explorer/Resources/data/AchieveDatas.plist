@@ -10,7 +10,9 @@
 			<string>1</string>
 		</dict>
 		<key>achieve_icon</key>
-		<string>aaa.png</string>
+		<string>achievement_icon_0001.png</string>
+		<key>achieve_hide</key>
+		<false/>
 	</dict>
 	<key>ADT_STEP_HUNDRED</key>
 	<dict>
@@ -20,7 +22,9 @@
 			<string>100</string>
 		</dict>
 		<key>achieve_icon</key>
-		<string>aaa.png</string>
+		<string>achievement_icon_0002.png</string>
+		<key>achieve_hide</key>
+		<false/>
 	</dict>
 </dict>
 </plist>

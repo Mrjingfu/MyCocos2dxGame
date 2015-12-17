@@ -537,7 +537,7 @@ void Player::attackByMonster(MonsterProperty* monsterProperty, bool miss)
         setState(PS_DEATH);
         PlayerProperty::getInstance()->setCurrentHP(currentHp);
         StatisticsManager::getInstance()->addRoleDeadNum(StatisticsManager::eRoleDeadType::RET_MONSTER_ATTACK);
-        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_DEATH, this);
+//        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_DEATH, this);
     }
     else
     {

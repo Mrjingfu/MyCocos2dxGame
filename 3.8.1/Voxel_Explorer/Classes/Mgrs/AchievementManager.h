@@ -24,15 +24,14 @@ public:
     void checkAllAchievement();
     void load();
     void save();
-    const cocos2d::Vector<AchieveProperty*> & getCompleteAchieves() const{ return m_vCompleteAchieves;}
+   
+    const cocos2d::Vector<AchieveProperty*> & getAllAchieves() const{ return m_vAllAchieves;}
 protected:
     AchieveProperty* getAchievement(eAchievementDetailType type);
     void updateAchieve(AchieveProperty * achieve);
    
 private:
     cocos2d::Vector<AchieveProperty*> m_vAllAchieves;
-    cocos2d::Vector<AchieveProperty*> m_vCompleteAchieves;
-    
  
  };
 
