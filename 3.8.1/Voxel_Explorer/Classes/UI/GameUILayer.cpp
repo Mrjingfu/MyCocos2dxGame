@@ -34,6 +34,7 @@
 #include "InformationPopupUI.h"
 #include "AchieveProperty.hpp"
 #include "HudPromptLayer.hpp"
+#include "AchieveItemPopupUI.hpp"
 USING_NS_CC;
 GameUILayer::GameUILayer()
 {
@@ -824,8 +825,15 @@ void GameUILayer::onEvenetAchieveComplete(cocos2d::EventCustom *sender)
      CCLOG("onEvenetAchieveComplete");
     AchieveProperty* achieveProp = static_cast<AchieveProperty*>(sender->getUserData());
     if (achieveProp) {
-        CCLOG("active:%s",achieveProp->getAchieveDesc().c_str());
-        PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, achieveProp->getAchieveDesc());
+        CCLOG("active:%s",achieveProp->getAchieveName().c_str());
+        std::string icon = achieveProp->getAchieveIcon();
+        std::string name = achieveProp->getAchieveName();
+        std::string targetDesc = achieveProp->getTargetDesc();
+        AchieveItemPopupUI* achieveItermPopup = static_cast<AchieveItemPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupAchieveItem));
+        if (achieveItermPopup) {
+            achieveItermPopup->setDarkLayerVisble(false);
+            achieveItermPopup->setAchieveDatas(icon, name, targetDesc);
+        }
     }
    
     

@@ -22,7 +22,7 @@
         <key>dataFormat</key>
         <string>cocos2d</string>
         <key>textureFileName</key>
-        <filename>../Voxel_Explorer_cocos/cocosstudio/ui_sprite.png</filename>
+        <filename>../../Resources/ui/ui_sprite.png</filename>
         <key>flipPVR</key>
         <false/>
         <key>ditherType</key>
@@ -111,7 +111,7 @@
             <enum type="AndEngine::MagFilter">MagLinear</enum>
         </struct>
         <key>dataFileName</key>
-        <filename>../Voxel_Explorer_cocos/cocosstudio/ui_sprite.plist</filename>
+        <filename>../../Resources/ui/ui_sprite.plist</filename>
         <key>multiPack</key>
         <false/>
         <key>mainExtension</key>
@@ -209,18 +209,11 @@
             <filename>../ui/ui_sprite/btn_mainmenu_en.png</filename>
             <filename>../ui/ui_sprite/btn_setting_ch.png</filename>
             <filename>../ui/ui_sprite/btn_setting_en.png</filename>
-            <filename>../ui/ui_sprite/btn_fram_buy_normal_ch.png</filename>
-            <filename>../ui/ui_sprite/btn_fram_buy_normal_en.png</filename>
-            <filename>../ui/ui_sprite/btn_fram_buy_press_ch.png</filename>
-            <filename>../ui/ui_sprite/btn_fram_buy_press_en.png</filename>
-            <filename>../ui/ui_sprite/btn_fram_sell_normal_ch.png</filename>
-            <filename>../ui/ui_sprite/btn_fram_sell_normal_en.png</filename>
-            <filename>../ui/ui_sprite/btn_fram_sell_press_ch.png</filename>
-            <filename>../ui/ui_sprite/btn_fram_sell_press_en.png</filename>
             <filename>../ui/ui_sprite/ui_no_user.png</filename>
             <filename>../ui/ui_sprite/ui_excalmatory_icon.png</filename>
             <filename>../ui/ui_sprite/ui_question_icon.png</filename>
             <filename>../ui/ui_sprite/ui_next_icon.png</filename>
+            <filename>../ui/ui_sprite/achievement_lock.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

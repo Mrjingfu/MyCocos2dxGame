@@ -29,6 +29,7 @@ enum ePopupType
     ePopupAlert,            //提示框
     ePopupInformation,
     ePopupAchieve,
+    ePopupAchieveItem,
     ePopupCount
 };
 typedef enum {

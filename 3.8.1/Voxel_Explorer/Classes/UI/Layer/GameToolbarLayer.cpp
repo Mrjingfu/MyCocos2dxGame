@@ -257,6 +257,7 @@ void GameToolbarLayer::onClickPause(cocos2d::Ref *ref)
 {
     CHECK_ACTION(ref);
     CCLOG("onClickPause");
+    PopupUILayerManager::getInstance()->openPopup(ePopupAchieve);
 //    InformationPopupUI* popupUi = static_cast<InformationPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupInformation));
 //    if (popupUi) {
 ////        popupUi->setInfoIcon("chr_man.png");

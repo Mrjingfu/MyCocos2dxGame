@@ -23,13 +23,11 @@ public:
     virtual bool addEvents() override;
     virtual void onEnter() override;
     virtual void onExit() override;
-    //更新商店购买界面
-//    virtual void updateShopBuyItems();
     virtual void refreshUIView() override;
-//    virtual void updateShopDataItems();
+
 protected:
-   
-    
+    void updateAllAchieves();
+    void updateCommpleAchieves();
 protected:
     
     TGridView*          m_pAchieveGridView;

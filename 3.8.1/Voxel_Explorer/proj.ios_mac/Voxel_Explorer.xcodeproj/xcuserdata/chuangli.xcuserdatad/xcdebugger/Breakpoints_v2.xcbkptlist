@@ -169,13 +169,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../Classes/UI/Layer/HudPromptLayer.cpp"
-            timestampString = "471935791.050403"
+            filePath = "../Classes/UI/GameUILayer.cpp"
+            timestampString = "472039879.59229"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "61"
-            endingLineNumber = "61"
-            landmarkName = "HudPromptLayer::refreshUIView()"
+            startingLineNumber = "633"
+            endingLineNumber = "633"
+            landmarkName = "GameUILayer::onEventRoleDead(cocos2d::EventCustom *sender)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -185,29 +185,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../Classes/UI/Popup/AchievePopupUI.cpp"
-            timestampString = "471959591.849475"
+            filePath = "../Classes/UI/GameUILayer.cpp"
+            timestampString = "472040038.934735"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "28"
-            endingLineNumber = "28"
-            landmarkName = "AchievePopupUI::initUi()"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../Classes/UI/Popup/AchievePopupUI.cpp"
-            timestampString = "471959545.371625"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "35"
-            endingLineNumber = "35"
-            landmarkName = "AchievePopupUI::addEvents()"
+            startingLineNumber = "637"
+            endingLineNumber = "637"
+            landmarkName = "GameUILayer::onEventRoleDead(cocos2d::EventCustom *sender)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

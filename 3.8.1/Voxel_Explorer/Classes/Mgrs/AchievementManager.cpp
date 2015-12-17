@@ -51,8 +51,6 @@ void AchievementManager::save()
 bool AchievementManager::loadAchieveData()
 {
     cocos2d::ValueMap achieves = cocos2d::FileUtils::getInstance()->getValueMapFromFile("AchieveDatas.plist");
-    if (achieves.empty())
-        return false;
     for (auto iter =achieves.begin(); iter!=achieves.end(); iter++)
     {
         AchieveProperty* achieveProperty = AchieveProperty::create();
@@ -68,8 +66,9 @@ bool AchievementManager::loadAchieveData()
         }
         iterItem = achieveItem.find("achieve_hide");
         if (iterItem!=achieveItem.end()) {
-            achieveProperty->onHideAchieve();
+            achieveProperty->setHideAchieve(iterItem->second.asBool());
         }
+
 
         iterItem = achieveItem.find("achieve_task");
         if (iterItem != achieveItem.end())
@@ -77,12 +76,8 @@ bool AchievementManager::loadAchieveData()
             for (auto iterTask = iterItem->second.asValueMap().begin(); iterTask!=iterItem->second.asValueMap().end(); iterTask++)
             {
                 std::string targetType = iterTask->first;
-                CCLOG("%d",iterTask->second.getType());
-                cocos2d::ValueVector targetVevtor = iterTask->second.asValueVector();
-                //注意配置成就目标的顺序 1 目标  2 目标描述
-                int targetNum = targetVevtor.at(0).asInt();
-                std::string targetStr = targetVevtor.at(1).asString();
-                achieveProperty->setAchieveTarget(targetType, targetStr,targetNum);
+                CChaosNumber  targetNum = iterTask->second.asInt();
+                achieveProperty->setAchieveTarget(targetType,targetNum);
             }
         }
         
@@ -116,7 +111,7 @@ void AchievementManager::updateAchieve(AchieveProperty *achieve)
     {
         eStatistType type = iter->first;
         CChaosNumber sourceNum =  StatisticsManager::getInstance()->getDataStatistType(type);
-        CChaosNumber targetNum = iter->second->m_nTargetNum;
+        CChaosNumber targetNum = iter->second;
         CCLOG("sourceNum:%ld",sourceNum.GetLongValue());
         CCLOG("targetNum:%ld",targetNum.GetLongValue());
         if (sourceNum >= targetNum) {

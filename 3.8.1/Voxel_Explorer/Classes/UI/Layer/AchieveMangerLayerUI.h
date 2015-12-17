@@ -10,7 +10,7 @@
 #define BagMangerLayerUI_hpp
 
 #include "ui/CocosGUI.h"
-#include "ChaosNumber.h"
+#include "AchieveConst.h"
 
 class AchieveMangerLayerUI:public cocos2d::ui::Layout {
     
@@ -19,17 +19,17 @@ public:
     virtual ~AchieveMangerLayerUI();
     static AchieveMangerLayerUI* create(cocos2d::Size size);
     bool init(cocos2d::Size size);
-    void addItem(int index,int itemId,cocos2d::Vec2 pt,std::string itemIcon);
-    
+    void addItemAchieve(eAchievementDetailType achieveId,cocos2d::Vec2 pt,std::string itemIcon,std::string name,std::string targetDesc,bool isHideAchieve = false,bool isCommple = false);
+    void setItemAchieveCommple(eAchievementDetailType achieveId);
+//    void setIteTitle(int itemId);
     void removeItems();
-    void removeItem(int index);
-    int  getItemId  (int index)const;
+
     void setLayerContentSize(const cocos2d::Size &contentSize);
 protected:
     cocos2d::ui::Layout* m_pItemImgLayer;
     cocos2d::ui::Layout* m_pAchieveNameLayer;
     cocos2d::ui::Layout* m_pAchieveTargetLayer;
-    std::map<int,int> m_items;
+    std::vector<eAchievementDetailType> m_Achieves;
 };
 
 #endif /* BagMangerLayerUI */

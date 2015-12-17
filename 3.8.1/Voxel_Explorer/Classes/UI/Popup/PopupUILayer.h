@@ -79,11 +79,12 @@ private:
     
 
 protected:
-    bool m_nIsPause;
+    bool m_nIsPause;//是否暂停
     eActionType m_cActionType;
     cocos2d::LayerColor* m_pDarkLayer;
     ePopupType m_pPopupType;
-    bool m_nIsBlankClose;
+    bool m_nIsBlankClose;//是否点击空白处关闭
+
 };
 
 #endif /* defined(__Tone_Skipper__PopupUILayer__) */

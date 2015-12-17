@@ -233,6 +233,9 @@
           <PlistImageFile Name="achievement_icon_0154.png" Key="achievement_icon_0154.png" />
         </PlistImageFolder>
         <Project Name="achieveItemLayer.csd" Type="Layer" />
+        <Folder Name="particle2d">
+          <PlistParticleFile Name="achievement_particle-ipadhd.plist" />
+        </Folder>
       </RootFolder>
     </Group>
   </SolutionFolder>

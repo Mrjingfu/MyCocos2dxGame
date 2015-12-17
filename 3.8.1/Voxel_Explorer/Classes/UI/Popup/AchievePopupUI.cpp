@@ -8,9 +8,8 @@
 
 #include "AchievePopupUI.h"
 #include "UtilityHelper.h"
-#include "PickableItemProperty.hpp"
 #include "AchieveMangerLayerUI.h"
-#include "PopupUILayerManager.h"
+#include "AchievementManager.h"
 #include "EventConst.h"
 AchievePopupUI::AchievePopupUI()
 {
@@ -48,14 +47,14 @@ bool AchievePopupUI::addEvents()
     m_pAchieveGridView->setScrollBarPositionFromCornerForVertical(cocos2d::Vec2(0,0));
 //    m_pShopGridView->setBackGroundColorType(cocos2d::ui::Layout::BackGroundColorType::SOLID);
     m_pAchieveGridView->setItemsMargin(cocos2d::Size(3,5));
-    m_pAchieveGridView->setFrameMargin(cocos2d::Size(9,5));
+    m_pAchieveGridView->setFrameMargin(cocos2d::Size(9,10));
 //    m_pAchieveGridView->addEventListener(CC_CALLBACK_2(ShopPopupUI::selectItemEvent, this));
     m_pAchieveGridView->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
     m_achieveFrame->addChild(m_pAchieveGridView);
 
-    int shopItemSize = 10;
+    int ItemSize = AchievementManager::getInstance()->getAllAchieves().size();
     
-    for (int j =0; j<shopItemSize; j++) {
+    for (int j =0; j<ItemSize; j++) {
         
         ImageView* itemui = ImageView::create();
         itemui->setTouchEnabled(true);
@@ -70,7 +69,7 @@ bool AchievePopupUI::addEvents()
     m_pAchieveMangerLayer = AchieveMangerLayerUI::create(m_pAchieveGridView->getInnerContainerSize());
     m_pAchieveMangerLayer->setPosition(m_pAchieveGridView->getContentSize()*0.5);
     m_pAchieveMangerLayer->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
-    m_pAchieveGridView->addChildLayer(m_pAchieveMangerLayer,60);
+    m_pAchieveGridView->addChildLayer(m_pAchieveMangerLayer,ItemSize);
     
     
     refreshUIView();
@@ -93,13 +92,35 @@ void AchievePopupUI::onExit()
 
 void AchievePopupUI::refreshUIView()
 {
+    updateAllAchieves();
+ }
+
+void AchievePopupUI::updateAllAchieves()
+{
+    if (m_pAchieveMangerLayer) {
+        m_pAchieveMangerLayer->removeItems();
+    }
     
-//    updateShopBuyItems();
+    
+    cocos2d::Vector<AchieveProperty*> allAchieves = AchievementManager::getInstance()->getAllAchieves();
+    std::sort(allAchieves.begin(), allAchieves.end(), std::less<AchieveProperty*>());
+    for (int i=0; i<allAchieves.size(); i++) {
+        AchieveProperty* achieveProp = allAchieves.at(i);
+        ui::ImageView* itemView = static_cast<ui::ImageView*>(m_pAchieveGridView->getItem(i));
+        if (achieveProp && itemView)
+        {
+            eAchievementDetailType type = achieveProp->getAchieveDetailType();
+            std::string icon = achieveProp->getAchieveIcon();
+            std::string name = achieveProp->getAchieveName();
+            std::string targetDesc = achieveProp->getTargetDesc();
+            bool isCommple = achieveProp->isCommple();
+            bool isHide = achieveProp->isHideAchieve();
+            m_pAchieveMangerLayer->addItemAchieve(type, itemView->getPosition(),icon,name,targetDesc,isHide,isCommple);
+        }
+    }
 }
-//void AchievePopupUI::updateShopBuyItems()
-//{
-//    
-//    updateShopDataItems();
-//
-//}
+void AchievePopupUI::updateCommpleAchieves()
+{
+    
+}
 

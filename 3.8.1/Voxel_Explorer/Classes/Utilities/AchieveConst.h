@@ -195,6 +195,7 @@ const std::vector<std::string> ACHIEVEMENT_DATAIL_TYPE_NAME = {
 };
 enum eAchievementDetailType
 {
+    ADT_UNKOWN=-1,
     ADT_KILL_FIRST =0,
     ADT_STEP_HUNDRED,
     ADT_COUNT
