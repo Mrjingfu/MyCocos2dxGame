@@ -9,7 +9,11 @@
 #include "BaseDoor.hpp"
 #include "BaseLevel.h"
 #include "VoxelExplorer.h"
+#include "SimpleAudioEngine.h"
+#include "LevelResourceManager.h"
+#include "RandomDungeon.hpp"
 USING_NS_CC;
+using namespace CocosDenshion;
 const char* DOOR_MODEL_NAMES[] = {
     "DMN_STANDARD",
     "DMN_BOSS",
@@ -132,6 +136,11 @@ void BaseDoor::onEnterClosed()
             m_pFakeDoor->runAction(moveTo);
         }
     }
+    if(RandomDungeon::getInstance()->getCurrentDungeonNode()->isBossDepth())
+    {
+        std::string soundName = LevelResourceManager::getInstance()->getSoundEffectRes("CLOSE_DOOR");
+        SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+    }
 }
 void BaseDoor::onExitClosed()
 {
@@ -172,6 +181,8 @@ void BaseDoor::onEnterOpened()
             m_pFakeDoor->runAction(sequence);
         }
     }
+    std::string soundName = LevelResourceManager::getInstance()->getSoundEffectRes("OPEN_DOOR");
+    SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
 }
 void BaseDoor::onExitOpened()
 {
@@ -197,6 +208,8 @@ void BaseDoor::onExitLocked()
         EaseSineOut* fadeOut = EaseSineOut::create(TintTo::create(0.5f, Color3B::WHITE));
         m_pFakeDoor->runAction(fadeOut);
     }
+    std::string soundName = LevelResourceManager::getInstance()->getSoundEffectRes("DOOR_UNLOCKED");
+    SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
 }
 void BaseDoor::onEnterHide()
 {

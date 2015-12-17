@@ -113,6 +113,8 @@ public:
     std::string getTerrainTileInfoDesc(int x, int y);
     void generateTerrainTiles(int x, int y , int width, int height, TerrainTile::TileType tileType, Area::AREA_TYPE areaType, Actor::ActorDir dir = Actor::AD_UNKNOWN);
     void setTerrainTile(int x, int y, TerrainTile::TileType tileType, Area::AREA_TYPE areaType, Actor::ActorDir dir = Actor::AD_UNKNOWN);
+    
+    TerrainTile::TileType getTerrainTileType(int x, int y);
     void setTerrainTileType(int x, int y, TerrainTile::TileType tileType);
     
     bool isTerrainTilePassable(int index);

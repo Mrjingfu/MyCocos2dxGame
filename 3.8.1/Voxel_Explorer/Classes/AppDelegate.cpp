@@ -1,7 +1,8 @@
 #include "AppDelegate.h"
 #include "LogoScene.h"
-
+#include "SimpleAudioEngine.h"
 USING_NS_CC;
+using namespace CocosDenshion;
 
 static cocos2d::Size designResolutionSize = cocos2d::Size(320, 480);
 static cocos2d::Size smallResolutionSize = cocos2d::Size(640, 960);
@@ -55,6 +56,8 @@ bool AppDelegate::applicationDidFinishLaunching() {
     searchPaths.push_back("shaders");
     searchPaths.push_back("ui");
     searchPaths.push_back("fonts");
+    searchPaths.push_back("sounds");
+    searchPaths.push_back("musics");
     searchPaths.push_back("particle3d/materials");
     searchPaths.push_back("particle3d/scripts");
     searchPaths.push_back("particle3d/textures");
@@ -118,7 +121,8 @@ void AppDelegate::applicationDidEnterBackground() {
     Director::getInstance()->stopAnimation();
 
     // if you use SimpleAudioEngine, it must be pause
-    // SimpleAudioEngine::getInstance()->pauseBackgroundMusic();
+    SimpleAudioEngine::getInstance()->pauseAllEffects();
+    SimpleAudioEngine::getInstance()->pauseBackgroundMusic();
 }
 
 // this function will be called when the app is active again
@@ -127,4 +131,6 @@ void AppDelegate::applicationWillEnterForeground() {
 
     // if you use SimpleAudioEngine, it must resume here
     // SimpleAudioEngine::getInstance()->resumeBackgroundMusic();
+    SimpleAudioEngine::getInstance()->resumeAllEffects();
+    SimpleAudioEngine::getInstance()->resumeBackgroundMusic();
 }

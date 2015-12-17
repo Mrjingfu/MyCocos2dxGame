@@ -37,12 +37,20 @@ bool LevelResourceManager::init()
     m_ItemsResMap = FileUtils::getInstance()->getValueMapFromFile("ItemsRes.plist");
     if(m_ItemsResMap.empty())
         return false;
+    m_SoundsResMap = FileUtils::getInstance()->getValueMapFromFile("SoundsRes.plist");
+    if(m_SoundsResMap.empty())
+        return false;
+    m_MusicsResMap = FileUtils::getInstance()->getValueMapFromFile("MusicsRes.plist");
+    if(m_MusicsResMap.empty())
+        return false;
     return true;
 }
 bool LevelResourceManager::initLevelRes()
 {
     m_TerrainTilesLevelRes.clear();
     m_DoorsLevelRes.clear();
+    m_SoundsLevelRes.clear();
+    m_MusicsLevelRes.clear();
     if(!RandomDungeon::getInstance()->getCurrentDungeonNode())
         return false;
     std::string dungeonName = DUNGEON_NAMES[RandomDungeon::getInstance()->getCurrentDungeonNode()->m_Type];
@@ -55,8 +63,15 @@ bool LevelResourceManager::initLevelRes()
     m_DoorsLevelRes = m_DoorsResMap.at(dungeonName).asValueMap();
     if(m_DoorsLevelRes.empty())
         return false;
-    return true;
     
+    m_SoundsLevelRes = m_SoundsResMap.at(dungeonName).asValueMap();
+    if(m_SoundsLevelRes.empty())
+        return false;
+    
+    m_MusicsLevelRes = m_MusicsResMap.at(dungeonName).asValueMap();
+    if(m_MusicsLevelRes.empty())
+        return false;
+    return true;
 }
 
 std::string LevelResourceManager::getTerrainTileRes(const std::string& tileTypeName)
@@ -83,5 +98,12 @@ std::string LevelResourceManager::getItemModelRes(const std::string& itemTypeNam
 {
     return m_ItemsResMap.at(itemTypeName).asString() + ".c3b";
 }
-
+std::string LevelResourceManager::getSoundEffectRes(const std::string& soundTypeName)
+{
+    return m_SoundsLevelRes.at(soundTypeName).asString();
+}
+std::string LevelResourceManager::getBackgroundMusicRes(const std::string& bgMusicTypeName)
+{
+    return m_MusicsLevelRes.at(bgMusicTypeName).asString();
+}
 

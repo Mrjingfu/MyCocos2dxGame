@@ -14,8 +14,10 @@
 #include "FakeShadow.hpp"
 #include "StatisticsManager.hpp"
 #include "RandomDungeon.hpp"
-
+#include "SimpleAudioEngine.h"
+#include "LevelResourceManager.h"
 USING_NS_CC;
+using namespace CocosDenshion;
 
 CChaosNumber Player::m_fSpeedupTime  = 20.0f; ///加速时间
 CChaosNumber Player::m_fStealthTime  = 20.0f; ///隐身时间
@@ -751,7 +753,7 @@ void Player::onEnterJumpLocal()
     EaseSineOut* moveDown = EaseSineOut::create(MoveTo::create(0.1f, getPosition3D()));
     Sequence* sequenceJump = Sequence::create(moveUp, moveDown, NULL);
     Spawn* spawn = Spawn::create(scaleTo, sequenceJump, NULL);
-    CallFunc* callback = CallFunc::create(CC_CALLBACK_0(Player::onLand,this));
+    CallFunc* callback = CallFunc::create(CC_CALLBACK_0(Player::onLand,this,false));
     Sequence* sequence = Sequence::create(spawn, callback, NULL);
     
     int bufferFlag = PlayerProperty::getInstance()->getPlayerBuffer();
@@ -790,7 +792,7 @@ void Player::onEnterJumpMove()
     EaseSineOut* moveDown = EaseSineOut::create(MoveTo::create(0.1f, Vec3(getPositionX(), getPositionY(), getPositionZ()) + dir));
     Sequence* sequenceJump = Sequence::create(moveUp, moveDown, NULL);
     Spawn* spawn = Spawn::create(scaleTo, sequenceJump, NULL);
-    CallFunc* callback = CallFunc::create(CC_CALLBACK_0(Player::onLand,this));
+    CallFunc* callback = CallFunc::create(CC_CALLBACK_0(Player::onLand,this, false));
     Sequence* sequence = Sequence::create(spawn, callback, NULL);
     
     int bufferFlag = PlayerProperty::getInstance()->getPlayerBuffer();
@@ -830,7 +832,7 @@ void Player::onEnterAttack()
     EaseSineOut* moveDown = EaseSineOut::create(MoveTo::create(0.1f, getPosition3D()));
     Sequence* sequenceJump = Sequence::create(moveUp, callback, moveDown, NULL);
     Spawn* spawn = Spawn::create(scaleTo, sequenceJump, NULL);
-    CallFunc* callback2 = CallFunc::create(CC_CALLBACK_0(Player::onLand,this));
+    CallFunc* callback2 = CallFunc::create(CC_CALLBACK_0(Player::onLand,this, true));
     Sequence* sequence = Sequence::create(spawn, callback2, NULL);
     
     int bufferFlag = PlayerProperty::getInstance()->getPlayerBuffer();
@@ -881,7 +883,7 @@ void Player::onExitDrop()
 void Player::onExitDeath()
 {
 }
-void Player::onLand()
+void Player::onLand(bool isAttack)
 {
     setState(PS_IDLE);
     VoxelExplorer::getInstance()->cameraTrackPlayer();
@@ -896,7 +898,17 @@ void Player::onLand()
     CCLOG("player lastPos x = %d   y = %d", (int)m_LastPosInMap.x, (int)m_LastPosInMap.y);
     CCLOG("player Pos x = %d   y = %d", (int)getPosInMap().x, (int)getPosInMap().y);
     m_LastPosInMap = getPosInMap();
-    
+    if(!isAttack)
+    {
+        if(VoxelExplorer::getInstance()->getCurrentLevel())
+        {
+            std::string soundName = LevelResourceManager::getInstance()->getSoundEffectRes("STEP_STANDARD");
+            TerrainTile::TileType type = VoxelExplorer::getInstance()->getCurrentLevel()->getTerrainTileType(getPosInMap().x, getPosInMap().x);
+            if(type == TerrainTile::TT_TUNNEL)
+                soundName = LevelResourceManager::getInstance()->getSoundEffectRes("STEP_TUNNEL");
+            SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+        }
+    }
 }
 void Player::onFallDie()
 {

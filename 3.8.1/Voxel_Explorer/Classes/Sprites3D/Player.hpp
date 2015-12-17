@@ -80,7 +80,7 @@ private:
     void onExitDrop();
     void onExitDeath();
     
-    void onLand();
+    void onLand(bool isAttack);
     void onFallDie();
     void updatePlayerBuffer(float delta);
     

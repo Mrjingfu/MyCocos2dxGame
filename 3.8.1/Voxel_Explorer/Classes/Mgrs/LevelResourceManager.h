@@ -24,14 +24,20 @@ public:
     std::string getMonsterIconRes(const std::string& monsterTypeName);
     std::string getItemIconRes(const std::string& itemTypeName);
     std::string getItemModelRes(const std::string& itemTypeName);
+    std::string getSoundEffectRes(const std::string& soundTypeName);
+    std::string getBackgroundMusicRes(const std::string& bgMusicTypeName);
 private:
     cocos2d::ValueMap    m_TerrainTilesResMap;
     cocos2d::ValueMap    m_DoorsResMap;
     cocos2d::ValueMap    m_MonstersResMap;
     cocos2d::ValueMap    m_ItemsResMap;
+    cocos2d::ValueMap    m_SoundsResMap;
+    cocos2d::ValueMap    m_MusicsResMap;
     
     cocos2d::ValueMap    m_TerrainTilesLevelRes;
     cocos2d::ValueMap    m_DoorsLevelRes;
+    cocos2d::ValueMap    m_SoundsLevelRes;
+    cocos2d::ValueMap    m_MusicsLevelRes;
 };
 
 

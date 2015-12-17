@@ -171,6 +171,10 @@
 		5586C7B91C0FDD7400DFA588 /* TombBossLevel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5586C7B61C0FDD7400DFA588 /* TombBossLevel.cpp */; };
 		559B217F1BC65D330047D998 /* textures in Resources */ = {isa = PBXBuildFile; fileRef = 559B217E1BC65D330047D998 /* textures */; };
 		559B21801BC65D330047D998 /* textures in Resources */ = {isa = PBXBuildFile; fileRef = 559B217E1BC65D330047D998 /* textures */; };
+		55A410111C22CE8200ABF4E6 /* musics in Resources */ = {isa = PBXBuildFile; fileRef = 55A4100F1C22CE8200ABF4E6 /* musics */; };
+		55A410121C22CE8200ABF4E6 /* musics in Resources */ = {isa = PBXBuildFile; fileRef = 55A4100F1C22CE8200ABF4E6 /* musics */; };
+		55A410131C22CE8200ABF4E6 /* sounds in Resources */ = {isa = PBXBuildFile; fileRef = 55A410101C22CE8200ABF4E6 /* sounds */; };
+		55A410141C22CE8200ABF4E6 /* sounds in Resources */ = {isa = PBXBuildFile; fileRef = 55A410101C22CE8200ABF4E6 /* sounds */; };
 		55A9807B1C05610400722C9D /* FakeShadow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55A980791C05610400722C9D /* FakeShadow.cpp */; };
 		55A9807C1C05610400722C9D /* FakeShadow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55A980791C05610400722C9D /* FakeShadow.cpp */; };
 		55A980811C05AB9400722C9D /* Ladder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55A9807F1C05AB9400722C9D /* Ladder.cpp */; };
@@ -516,6 +520,8 @@
 		5586C7B61C0FDD7400DFA588 /* TombBossLevel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TombBossLevel.cpp; sourceTree = "<group>"; };
 		5586C7B71C0FDD7400DFA588 /* TombBossLevel.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TombBossLevel.hpp; sourceTree = "<group>"; };
 		559B217E1BC65D330047D998 /* textures */ = {isa = PBXFileReference; lastKnownFileType = folder; path = textures; sourceTree = "<group>"; };
+		55A4100F1C22CE8200ABF4E6 /* musics */ = {isa = PBXFileReference; lastKnownFileType = folder; path = musics; sourceTree = "<group>"; };
+		55A410101C22CE8200ABF4E6 /* sounds */ = {isa = PBXFileReference; lastKnownFileType = folder; path = sounds; sourceTree = "<group>"; };
 		55A980791C05610400722C9D /* FakeShadow.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FakeShadow.cpp; sourceTree = "<group>"; };
 		55A9807A1C05610400722C9D /* FakeShadow.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FakeShadow.hpp; sourceTree = "<group>"; };
 		55A9807F1C05AB9400722C9D /* Ladder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Ladder.cpp; sourceTree = "<group>"; };
@@ -799,6 +805,8 @@
 		46880B7519C43A67006E1F66 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				55A4100F1C22CE8200ABF4E6 /* musics */,
+				55A410101C22CE8200ABF4E6 /* sounds */,
 				550545351BFF2166006B4500 /* shaders */,
 				5558A12A1BE8BD780084A399 /* particle3d */,
 				554F00E61BD9CDF600F4DF8E /* data */,
@@ -1399,6 +1407,7 @@
 			files = (
 				5087E78117EB970100C73F5D /* Icon-120.png in Resources */,
 				5087E78617EB970100C73F5D /* Icon-76.png in Resources */,
+				55A410131C22CE8200ABF4E6 /* sounds in Resources */,
 				55D6D67F1BC527D000081221 /* models in Resources */,
 				5087E77F17EB970100C73F5D /* Default@2x.png in Resources */,
 				50EF629917ECD46A001EB2F8 /* Icon-100.png in Resources */,
@@ -1413,6 +1422,7 @@
 				5087E78017EB970100C73F5D /* Icon-114.png in Resources */,
 				50EF62A217ECD613001EB2F8 /* Icon-29.png in Resources */,
 				50EF629617ECD46A001EB2F8 /* Icon-40.png in Resources */,
+				55A410111C22CE8200ABF4E6 /* musics in Resources */,
 				5087E78217EB970100C73F5D /* Icon-144.png in Resources */,
 				50EF629817ECD46A001EB2F8 /* Icon-80.png in Resources */,
 				EC6716591BCE7F5F00C81CFC /* lang in Resources */,
@@ -1430,10 +1440,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55A410121C22CE8200ABF4E6 /* musics in Resources */,
 				EC67165E1BCE7F5F00C81CFC /* ui in Resources */,
 				554F00E81BD9CDF600F4DF8E /* data in Resources */,
 				EC67165A1BCE7F5F00C81CFC /* lang in Resources */,
 				55D6D6801BC527D000081221 /* models in Resources */,
+				55A410141C22CE8200ABF4E6 /* sounds in Resources */,
 				503AE0F817EB97AB00D1A890 /* Icon.icns in Resources */,
 				5558A12C1BE8BD780084A399 /* particle3d in Resources */,
 				550545371BFF2166006B4500 /* shaders in Resources */,

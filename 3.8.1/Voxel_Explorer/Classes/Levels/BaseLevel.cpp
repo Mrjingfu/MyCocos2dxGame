@@ -125,6 +125,11 @@ void BaseLevel::setTerrainTile(int x, int y, TerrainTile::TileType tileType, Are
     m_Map[index].m_nY = y;
     m_Map[index].m_Dir = dir;
 }
+TerrainTile::TileType BaseLevel::getTerrainTileType(int x, int y)
+{
+    int index = x + y * m_nWidth;
+    return m_Map[index].m_Type;
+}
 void BaseLevel::setTerrainTileType(int x, int y, TerrainTile::TileType tileType)
 {
     int index = x + y * m_nWidth;

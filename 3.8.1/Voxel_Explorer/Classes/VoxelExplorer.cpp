@@ -41,7 +41,9 @@
 #include "StandardMonster.hpp"
 #include "NpcDataManager.hpp"
 #include "StatisticsManager.hpp"
+#include "SimpleAudioEngine.h"
 USING_NS_CC;
+using namespace CocosDenshion;
 
 VoxelExplorer* g_pVoxelExplorerInstance = nullptr;
 VoxelExplorer* VoxelExplorer::getInstance()
@@ -707,6 +709,8 @@ void VoxelExplorer::handleDoor(const cocos2d::Vec2& mapPos)
                 {
                     if(door->isMagicLocked())
                     {
+                        std::string soundName = LevelResourceManager::getInstance()->getSoundEffectRes("DOOR_LOCKED");
+                        SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
                         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_DOOR_MAGIC_LOCKED);
                         return;
                     }
@@ -728,7 +732,11 @@ void VoxelExplorer::handleDoor(const cocos2d::Vec2& mapPos)
                             Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_USE_BOSS_KEY);
                         }
                         else
+                        {
+                            std::string soundName = LevelResourceManager::getInstance()->getSoundEffectRes("DOOR_LOCKED");
+                            SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
                             Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_NO_BOSS_KEY);
+                        }
                     }
                     else
                     {
@@ -738,7 +746,11 @@ void VoxelExplorer::handleDoor(const cocos2d::Vec2& mapPos)
                             Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_USE_ROOM_KEY);
                         }
                         else
+                        {
+                            std::string soundName = LevelResourceManager::getInstance()->getSoundEffectRes("DOOR_LOCKED");
+                            SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
                             Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_NO_ROOM_KEY);
+                        }
                     }
                     return;
                 }
