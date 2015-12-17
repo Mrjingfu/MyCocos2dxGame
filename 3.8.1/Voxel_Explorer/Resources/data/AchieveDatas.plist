@@ -7,17 +7,25 @@
 		<key>achieve_task</key>
 		<dict>
 			<key>ST_TOTAL_MONSTER_KILL</key>
-			<string>1</string>
+			<array>
+				<string>1</string>
+				<string>杀死一个敌人</string>
+			</array>
 		</dict>
 		<key>achieve_icon</key>
 		<string>aaa.png</string>
+		<key>achieve_hide</key>
+		<true/>
 	</dict>
 	<key>ADT_STEP_HUNDRED</key>
 	<dict>
 		<key>achieve_task</key>
 		<dict>
 			<key>ST_TOTAL_STEP</key>
-			<string>100</string>
+			<array>
+				<string>100</string>
+				<string>走一百步</string>
+			</array>
 		</dict>
 		<key>achieve_icon</key>
 		<string>aaa.png</string>

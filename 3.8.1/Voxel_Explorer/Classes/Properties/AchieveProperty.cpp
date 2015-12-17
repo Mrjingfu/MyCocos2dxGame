@@ -11,10 +11,11 @@
 AchieveProperty::AchieveProperty()
 {
     m_bCommple = false;
+    m_bIsHideAchieve = false;
 }
 AchieveProperty::~AchieveProperty()
 {
-    
+    release();
 }
 
 bool AchieveProperty::init()
@@ -22,12 +23,15 @@ bool AchieveProperty::init()
     return true;
 }
 
-void AchieveProperty::setAchieveTarget(std::string typeStr, CChaosNumber targetNum)
+void AchieveProperty::setAchieveTarget(std::string typeStr,std::string targetDesc,CChaosNumber targetNum)
 {
     int type = checkArrName(STATIST_TYPE_NAME,typeStr);
     CCASSERT(type!=-1, "type error");
     eStatistType sStype = (eStatistType)type;
-    m_mAcheveTargets.insert(std::map<eStatistType,CChaosNumber>::value_type(sStype,targetNum));
+    AchieveTarget* achieveTarget = new AchieveTarget;
+    achieveTarget->m_sAchieveTargetDesc = targetDesc;
+    achieveTarget->m_nTargetNum  = targetNum;
+    m_mAcheveTargets.insert(std::map<eStatistType,AchieveTarget*>::value_type(sStype,achieveTarget));
 }
 
 void AchieveProperty::setAchieveDetailType(std::string achieveDeType)
@@ -37,6 +41,16 @@ void AchieveProperty::setAchieveDetailType(std::string achieveDeType)
     CCASSERT(type!=-1, "type error");
     m_detailType = (eAchievementDetailType)(type);
   
+}
+void AchieveProperty::release()
+{
+    for (auto iter = m_mAcheveTargets.begin(); iter!=m_mAcheveTargets.end(); iter++)
+    {
+        
+        AchieveTarget* target = iter->second;
+        CC_SAFE_DELETE(target);
+    }
+    m_mAcheveTargets.clear();
 }
 int AchieveProperty::checkArrName(const std::vector<std::string> arr,const std::string str)
 {

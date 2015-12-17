@@ -625,7 +625,7 @@
 		EC3CC9A31C08909B00F8CFC8 /* RolePropLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RolePropLayer.cpp; sourceTree = "<group>"; };
 		EC3CC9A41C08909B00F8CFC8 /* RolePropLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = RolePropLayer.hpp; sourceTree = "<group>"; };
 		EC3DC0BC1C157FC800D0FE47 /* AchievePopupUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AchievePopupUI.cpp; sourceTree = "<group>"; };
-		EC3DC0BD1C157FC800D0FE47 /* AchievePopupUI.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = AchievePopupUI.hpp; sourceTree = "<group>"; };
+		EC3DC0BD1C157FC800D0FE47 /* AchievePopupUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AchievePopupUI.h; sourceTree = "<group>"; };
 		EC3DC0C01C157FFE00D0FE47 /* AchieveMangerLayerUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AchieveMangerLayerUI.cpp; sourceTree = "<group>"; };
 		EC3DC0C11C157FFE00D0FE47 /* AchieveMangerLayerUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AchieveMangerLayerUI.h; sourceTree = "<group>"; };
 		EC5610221C2007E100A2DDF2 /* GlobalPromptLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GlobalPromptLayer.cpp; sourceTree = "<group>"; };
@@ -1222,7 +1222,7 @@
 				EC25C3C81C1977DF00B4340D /* InformationPopupUI.cpp */,
 				EC25C3C91C1977DF00B4340D /* InformationPopupUI.h */,
 				EC3DC0BC1C157FC800D0FE47 /* AchievePopupUI.cpp */,
-				EC3DC0BD1C157FC800D0FE47 /* AchievePopupUI.hpp */,
+				EC3DC0BD1C157FC800D0FE47 /* AchievePopupUI.h */,
 				EC3CC9581C088F4F00F8CFC8 /* ItemPopupUI.cpp */,
 				EC3CC9591C088F4F00F8CFC8 /* ItemPopupUI.h */,
 				ECEA4E1A1C0EC69800ED790F /* ItemShopBuyPopupUI.cpp */,

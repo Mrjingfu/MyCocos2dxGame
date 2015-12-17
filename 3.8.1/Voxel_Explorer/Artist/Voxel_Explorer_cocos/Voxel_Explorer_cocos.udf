@@ -39,8 +39,10 @@
           <FilePathData Path="informationLayer.csd" />
           <FilePathData Path="itemMoneyLayer.csd" />
           <FilePathData Path="itemPopupLayer.csd" />
+          <FilePathData Path="achievementLayer.csd" />
+          <FilePathData Path="achieveItemLayer.csd" />
         </OpenedDocuments>
-        <ActiveDocument Path="itemPopupLayer.csd" />
+        <ActiveDocument Path="achievementLayer.csd" />
       </Value>
     </Item>
   </Properties>

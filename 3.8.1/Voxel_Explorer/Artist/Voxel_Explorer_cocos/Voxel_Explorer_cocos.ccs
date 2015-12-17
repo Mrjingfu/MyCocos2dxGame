@@ -85,7 +85,7 @@
         <Project Name="gameScene.csd" Type="Scene" />
         <Project Name="menuscene.csd" Type="Scene" />
         <Project Name="pausePopupLayer.csd" Type="Layer" />
-        <Project Name="achievementPopupLayer.csd" Type="Layer" />
+        <Project Name="achievementLayer.csd" Type="Layer" />
         <Project Name="itemPopupLayer.csd" Type="Layer" />
         <Project Name="shopPopupLayer.csd" Type="Layer" />
         <Project Name="characterInfoLayer.csd" Type="Layer" />
@@ -146,6 +146,93 @@
         <Project Name="dialogueLayer.csd" Type="Layer" />
         <Project Name="alertLayer.csd" Type="Layer" />
         <Project Name="informationLayer.csd" Type="Layer" />
+        <PlistImageFolder Image="achievement_icon.png" PListFile="achievement_icon.plist" Name=".achievement_icon_PList.Dir">
+          <PlistImageFile Name="achievement_icon_0001.png" Key="achievement_icon_0001.png" />
+          <PlistImageFile Name="achievement_icon_0002.png" Key="achievement_icon_0002.png" />
+          <PlistImageFile Name="achievement_icon_0003.png" Key="achievement_icon_0003.png" />
+          <PlistImageFile Name="achievement_icon_0004.png" Key="achievement_icon_0004.png" />
+          <PlistImageFile Name="achievement_icon_0005.png" Key="achievement_icon_0005.png" />
+          <PlistImageFile Name="achievement_icon_0006.png" Key="achievement_icon_0006.png" />
+          <PlistImageFile Name="achievement_icon_0007.png" Key="achievement_icon_0007.png" />
+          <PlistImageFile Name="achievement_icon_0008.png" Key="achievement_icon_0008.png" />
+          <PlistImageFile Name="achievement_icon_0009.png" Key="achievement_icon_0009.png" />
+          <PlistImageFile Name="achievement_icon_0010.png" Key="achievement_icon_0010.png" />
+          <PlistImageFile Name="achievement_icon_0011.png" Key="achievement_icon_0011.png" />
+          <PlistImageFile Name="achievement_icon_0012.png" Key="achievement_icon_0012.png" />
+          <PlistImageFile Name="achievement_icon_0014.png" Key="achievement_icon_0014.png" />
+          <PlistImageFile Name="achievement_icon_0015.png" Key="achievement_icon_0015.png" />
+          <PlistImageFile Name="achievement_icon_0016.png" Key="achievement_icon_0016.png" />
+          <PlistImageFile Name="achievement_icon_0017.png" Key="achievement_icon_0017.png" />
+          <PlistImageFile Name="achievement_icon_0018.png" Key="achievement_icon_0018.png" />
+          <PlistImageFile Name="achievement_icon_0019.png" Key="achievement_icon_0019.png" />
+          <PlistImageFile Name="achievement_icon_0020.png" Key="achievement_icon_0020.png" />
+          <PlistImageFile Name="achievement_icon_0021.png" Key="achievement_icon_0021.png" />
+          <PlistImageFile Name="achievement_icon_0022.png" Key="achievement_icon_0022.png" />
+          <PlistImageFile Name="achievement_icon_0023.png" Key="achievement_icon_0023.png" />
+          <PlistImageFile Name="achievement_icon_0026.png" Key="achievement_icon_0026.png" />
+          <PlistImageFile Name="achievement_icon_0030.png" Key="achievement_icon_0030.png" />
+          <PlistImageFile Name="achievement_icon_0049.png" Key="achievement_icon_0049.png" />
+          <PlistImageFile Name="achievement_icon_0050.png" Key="achievement_icon_0050.png" />
+          <PlistImageFile Name="achievement_icon_0051.png" Key="achievement_icon_0051.png" />
+          <PlistImageFile Name="achievement_icon_0056.png" Key="achievement_icon_0056.png" />
+          <PlistImageFile Name="achievement_icon_0057.png" Key="achievement_icon_0057.png" />
+          <PlistImageFile Name="achievement_icon_0100.png" Key="achievement_icon_0100.png" />
+          <PlistImageFile Name="achievement_icon_0101.png" Key="achievement_icon_0101.png" />
+          <PlistImageFile Name="achievement_icon_0102.png" Key="achievement_icon_0102.png" />
+          <PlistImageFile Name="achievement_icon_0103.png" Key="achievement_icon_0103.png" />
+          <PlistImageFile Name="achievement_icon_0104.png" Key="achievement_icon_0104.png" />
+          <PlistImageFile Name="achievement_icon_0105.png" Key="achievement_icon_0105.png" />
+          <PlistImageFile Name="achievement_icon_0106.png" Key="achievement_icon_0106.png" />
+          <PlistImageFile Name="achievement_icon_0107.png" Key="achievement_icon_0107.png" />
+          <PlistImageFile Name="achievement_icon_0108.png" Key="achievement_icon_0108.png" />
+          <PlistImageFile Name="achievement_icon_0109.png" Key="achievement_icon_0109.png" />
+          <PlistImageFile Name="achievement_icon_0110.png" Key="achievement_icon_0110.png" />
+          <PlistImageFile Name="achievement_icon_0111.png" Key="achievement_icon_0111.png" />
+          <PlistImageFile Name="achievement_icon_0112.png" Key="achievement_icon_0112.png" />
+          <PlistImageFile Name="achievement_icon_0113.png" Key="achievement_icon_0113.png" />
+          <PlistImageFile Name="achievement_icon_0114.png" Key="achievement_icon_0114.png" />
+          <PlistImageFile Name="achievement_icon_0115.png" Key="achievement_icon_0115.png" />
+          <PlistImageFile Name="achievement_icon_0116.png" Key="achievement_icon_0116.png" />
+          <PlistImageFile Name="achievement_icon_0117.png" Key="achievement_icon_0117.png" />
+          <PlistImageFile Name="achievement_icon_0118.png" Key="achievement_icon_0118.png" />
+          <PlistImageFile Name="achievement_icon_0119.png" Key="achievement_icon_0119.png" />
+          <PlistImageFile Name="achievement_icon_0120.png" Key="achievement_icon_0120.png" />
+          <PlistImageFile Name="achievement_icon_0121.png" Key="achievement_icon_0121.png" />
+          <PlistImageFile Name="achievement_icon_0122.png" Key="achievement_icon_0122.png" />
+          <PlistImageFile Name="achievement_icon_0123.png" Key="achievement_icon_0123.png" />
+          <PlistImageFile Name="achievement_icon_0124.png" Key="achievement_icon_0124.png" />
+          <PlistImageFile Name="achievement_icon_0125.png" Key="achievement_icon_0125.png" />
+          <PlistImageFile Name="achievement_icon_0126.png" Key="achievement_icon_0126.png" />
+          <PlistImageFile Name="achievement_icon_0127.png" Key="achievement_icon_0127.png" />
+          <PlistImageFile Name="achievement_icon_0128.png" Key="achievement_icon_0128.png" />
+          <PlistImageFile Name="achievement_icon_0129.png" Key="achievement_icon_0129.png" />
+          <PlistImageFile Name="achievement_icon_0130.png" Key="achievement_icon_0130.png" />
+          <PlistImageFile Name="achievement_icon_0131.png" Key="achievement_icon_0131.png" />
+          <PlistImageFile Name="achievement_icon_0132.png" Key="achievement_icon_0132.png" />
+          <PlistImageFile Name="achievement_icon_0133.png" Key="achievement_icon_0133.png" />
+          <PlistImageFile Name="achievement_icon_0134.png" Key="achievement_icon_0134.png" />
+          <PlistImageFile Name="achievement_icon_0135.png" Key="achievement_icon_0135.png" />
+          <PlistImageFile Name="achievement_icon_0136.png" Key="achievement_icon_0136.png" />
+          <PlistImageFile Name="achievement_icon_0137.png" Key="achievement_icon_0137.png" />
+          <PlistImageFile Name="achievement_icon_0138.png" Key="achievement_icon_0138.png" />
+          <PlistImageFile Name="achievement_icon_0139.png" Key="achievement_icon_0139.png" />
+          <PlistImageFile Name="achievement_icon_0140.png" Key="achievement_icon_0140.png" />
+          <PlistImageFile Name="achievement_icon_0141.png" Key="achievement_icon_0141.png" />
+          <PlistImageFile Name="achievement_icon_0142.png" Key="achievement_icon_0142.png" />
+          <PlistImageFile Name="achievement_icon_0143.png" Key="achievement_icon_0143.png" />
+          <PlistImageFile Name="achievement_icon_0144.png" Key="achievement_icon_0144.png" />
+          <PlistImageFile Name="achievement_icon_0145.png" Key="achievement_icon_0145.png" />
+          <PlistImageFile Name="achievement_icon_0146.png" Key="achievement_icon_0146.png" />
+          <PlistImageFile Name="achievement_icon_0147.png" Key="achievement_icon_0147.png" />
+          <PlistImageFile Name="achievement_icon_0148.png" Key="achievement_icon_0148.png" />
+          <PlistImageFile Name="achievement_icon_0149.png" Key="achievement_icon_0149.png" />
+          <PlistImageFile Name="achievement_icon_0150.png" Key="achievement_icon_0150.png" />
+          <PlistImageFile Name="achievement_icon_0151.png" Key="achievement_icon_0151.png" />
+          <PlistImageFile Name="achievement_icon_0152.png" Key="achievement_icon_0152.png" />
+          <PlistImageFile Name="achievement_icon_0153.png" Key="achievement_icon_0153.png" />
+          <PlistImageFile Name="achievement_icon_0154.png" Key="achievement_icon_0154.png" />
+        </PlistImageFolder>
+        <Project Name="achieveItemLayer.csd" Type="Layer" />
       </RootFolder>
     </Group>
   </SolutionFolder>

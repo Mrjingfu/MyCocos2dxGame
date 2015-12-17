@@ -11,20 +11,20 @@
 
 #include "AchieveConst.h"
 #include "ChaosNumber.h"
-enum AchievementType
+
+struct AchieveTarget
 {
-    eAchieveTypeOne = 1,
-    eAchieveTypeTwo,
-    eAchieveTypeThree,
-    eAchieveTypeFour,
-    eAchieveTypeFive,
-    eAchieveCount
+    std::string m_sAchieveTargetDesc;
+    CChaosNumber m_nTargetNum;
+    AchieveTarget()
+    {
+        m_nTargetNum = 0;
+    }
 };
+
 class AchieveProperty:public cocos2d::Ref {
     
-    
 public:
-
     CREATE_FUNC(AchieveProperty);
     virtual bool init();
     AchieveProperty();
@@ -35,21 +35,23 @@ public:
     
     std::string getAchieveDesc() const{return m_sAchieveDesc;};
     
-    void setAchieveTarget(std::string typeStr,CChaosNumber targetNum);
-    const std::map<eStatistType,CChaosNumber>& getAcheveTargets() const {return m_mAcheveTargets;};
-    
+    void setAchieveTarget(std::string typeStr,std::string targetDesc,CChaosNumber targetNum);
+    const std::map<eStatistType,AchieveTarget*>& getAcheveTargets() const {return m_mAcheveTargets;};
+    void onHideAchieve(){m_bIsHideAchieve = true;}
     void onAcieveCommple(){m_bCommple = true;};
     bool isCommple()const{ return m_bCommple;};
     void setAchieveDetailType(std::string achieveDeType);
+    void release();
     eAchievementDetailType getAchieveDetailType() const{return m_detailType;}
 private:
     int checkArrName(const std::vector<std::string> arr,const std::string str);
 private:
     std::string m_sAchieveIcon;    //成就图标
     std::string m_sAchieveDesc;    //成就描述
-    std::map<eStatistType,CChaosNumber> m_mAcheveTargets;   //成就完成目标
+    std::map<eStatistType,AchieveTarget*> m_mAcheveTargets;   //成就完成目标
     std::map<eStatistType, CChaosNumber> m_mProgress;  //完成目标
     eAchievementDetailType m_detailType;  //成就ID
+    bool m_bIsHideAchieve;
     bool m_bCommple;
     
 };

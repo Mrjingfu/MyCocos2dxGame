@@ -72,10 +72,11 @@ bool WrapperUILayer::load(const std::string gameUIFile,bool isSceneUi)
 //  m_pRootNode->setPosition(m_pRootNode->getPosition()+cocos2d::Director::getInstance()->getVisibleOrigin());
     
     this->addChild(m_pRootNode,1);
-    m_pRootNode->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
     if(!addEvents())
         ret = false;
-    
+
+    m_pRootNode->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
+     
     return ret;
 }
 void WrapperUILayer::schedulerPause()

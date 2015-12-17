@@ -24,7 +24,7 @@ AchievementManager* AchievementManager::getInstance()
 }
 void AchievementManager::load()
 {
-    
+    cocos2d::Vector<AchieveProperty*> m_vCompleteAchieves;
     //加载存档时 更新全局成就, 过滤掉已完成的成就
     for (auto iter = m_vAllAchieves.begin() ; iter!=m_vAllAchieves.end(); iter++)
     {
@@ -37,7 +37,6 @@ void AchievementManager::load()
                 if (prop->getAchieveDetailType() == m_vCompleteAchieves.at(i)->getAchieveDetailType())
                 {
                     prop->onAcieveCommple();
-                    m_vCompleteAchieves.erase(iter);
                 }
             }
         }
@@ -62,19 +61,28 @@ bool AchievementManager::loadAchieveData()
         cocos2d::ValueMap achieveItem = iter->second.asValueMap();
         
       
-         auto  iterItem = achieveItem.find("achieve_icon");
+        auto  iterItem = achieveItem.find("achieve_icon");
         if (iterItem != achieveItem.end())
         {
             achieveProperty->setAchieveIcon(iterItem->second.asString());
         }
-        
+        iterItem = achieveItem.find("achieve_hide");
+        if (iterItem!=achieveItem.end()) {
+            achieveProperty->onHideAchieve();
+        }
+
         iterItem = achieveItem.find("achieve_task");
         if (iterItem != achieveItem.end())
         {
             for (auto iterTask = iterItem->second.asValueMap().begin(); iterTask!=iterItem->second.asValueMap().end(); iterTask++)
             {
-                 CChaosNumber targetData = cocos2d::Value(iterTask->second.asString()).asInt();
-                achieveProperty->setAchieveTarget(iterTask->first, targetData);
+                std::string targetType = iterTask->first;
+                CCLOG("%d",iterTask->second.getType());
+                cocos2d::ValueVector targetVevtor = iterTask->second.asValueVector();
+                //注意配置成就目标的顺序 1 目标  2 目标描述
+                int targetNum = targetVevtor.at(0).asInt();
+                std::string targetStr = targetVevtor.at(1).asString();
+                achieveProperty->setAchieveTarget(targetType, targetStr,targetNum);
             }
         }
         
@@ -108,7 +116,7 @@ void AchievementManager::updateAchieve(AchieveProperty *achieve)
     {
         eStatistType type = iter->first;
         CChaosNumber sourceNum =  StatisticsManager::getInstance()->getDataStatistType(type);
-        CChaosNumber targetNum = iter->second;
+        CChaosNumber targetNum = iter->second->m_nTargetNum;
         CCLOG("sourceNum:%ld",sourceNum.GetLongValue());
         CCLOG("targetNum:%ld",targetNum.GetLongValue());
         if (sourceNum >= targetNum) {
@@ -118,8 +126,6 @@ void AchievementManager::updateAchieve(AchieveProperty *achieve)
     if (targetCompleteCount == achieve->getAcheveTargets().size())
     {
         achieve->onAcieveCommple();
-        m_vCompleteAchieves.pushBack(achieve);
-        m_vAllAchieves.eraseObject(achieve);
         cocos2d::Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_ACHIEVE_COMPLETE,achieve);
     }
 }

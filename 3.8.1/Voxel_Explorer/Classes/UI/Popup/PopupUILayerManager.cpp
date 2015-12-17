@@ -25,6 +25,7 @@
 #include "AlertPopupUI.hpp"
 #include "InformationPopupUI.h"
 #include "GlobalPromptLayer.hpp"
+#include "AchievePopupUI.h"
 PopupUILayerManager::PopupUILayerManager()
 {
     m_pParentLayer = nullptr;
@@ -146,6 +147,10 @@ PopupUILayer* PopupUILayerManager::initPopUp(ePopupType type)
             break;
         case ePopupInformation:
             popupLayer = InformationPopupUI::create();
+            break;
+        case ePopupAchieve:
+            popupLayer = AchievePopupUI::create();
+            break;
         default:
             break;
     }

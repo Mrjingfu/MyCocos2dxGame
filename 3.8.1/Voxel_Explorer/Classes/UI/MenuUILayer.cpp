@@ -53,6 +53,7 @@ void MenuUILayer::onClickAchieve(cocos2d::Ref *ref)
 {
     CHECK_ACTION(ref);
     CCLOG("onTouchAchieve");
+    PopupUILayerManager::getInstance()->openPopup(ePopupAchieve);
 }
 void MenuUILayer::onClickSetting(cocos2d::Ref *ref)
 {
