@@ -62,6 +62,7 @@ public:
     void attackByMonster(MonsterProperty* monsterProperty, bool miss);
     void attackByBoss(BossProperty* bossProperty, bool miss);
     void hurtByGrippingTrap();
+    void fallAndDie();
 private:
     void onEnterIdle();
     void onEnterPrepareToJump();
@@ -80,6 +81,7 @@ private:
     void onExitDeath();
     
     void onLand();
+    void onFallDie();
     void updatePlayerBuffer(float delta);
     
     bool createPlayerLight();

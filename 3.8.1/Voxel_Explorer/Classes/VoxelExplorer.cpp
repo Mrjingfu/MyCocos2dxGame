@@ -1151,8 +1151,22 @@ void VoxelExplorer::handlePlayerUsePotion(PickableItem::PickableItemType type)
             break;
     }
 }
-void VoxelExplorer::handlePlayerUseStandardPortal()
+void VoxelExplorer::handlePlayerUseStandardPortal(const cocos2d::Vec2& pos)
 {
+    if(RandomDungeon::getInstance()->getCurrentDungeonNode()->isLastDepth())
+    {
+        ///加载boss房间
+        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_GO_BOSSROOM);
+    }
+    else if(RandomDungeon::getInstance()->getCurrentDungeonNode()->isBossDepth())
+    {
+        if(m_pCurrentLevel)
+            m_pCurrentLevel->handleUseStandardPortal(pos);
+    }
+    else
+    {
+        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_STANDARD_PROTAL_NO_ENERGY);
+    }
 }
 void VoxelExplorer::handlePlayerUseSmallPortal()
 {
@@ -1172,6 +1186,8 @@ void VoxelExplorer::handlePlayerUseSmallPortal()
     m_pMainCamera->setPosition3D(m_pPlayer->getPosition3D() + Vec3(0, 5*TerrainTile::CONTENT_SCALE, 4*TerrainTile::CONTENT_SCALE ));
     m_pMainCamera->lookAt(m_pPlayer->getPosition3D() + Vec3(0,0.5f*TerrainTile::CONTENT_SCALE,0));
     m_pPlayer->setState(Player::PS_IDLE);
+    
+    Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_USE_SMALL_PROTAL);
 }
 void VoxelExplorer::handleUpstairs()
 {
@@ -1201,7 +1217,36 @@ void VoxelExplorer::handleDownstairs()
 }
 void VoxelExplorer::handleGoChasm()
 {
+    if(!m_pPlayer || !m_pCurrentLevel)
+        return;
+    if(m_pPlayer->getState() == Player::PS_DEATH)
+        return;
     ///跳入深渊处理
+    if(RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nCurrentDepth < RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nTotalNum)
+    {
+        float percent1 = 0.7f;
+        float percent2 = 1.0f - percent1;
+        AlisaMethod* am = AlisaMethod::create(percent1, percent2,-1.0, NULL);
+        if(am)
+        {
+            int randIndex = am->getRandomIndex();
+            if(randIndex == 0)
+            {
+                m_pPlayer->fallAndDie();
+            }
+            else
+            {
+                Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_FALL_DOWNSTAIRS);
+                RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nCurrentDepth += 1;
+                auto scene = GameScene::createScene();
+                Director::getInstance()->replaceScene(scene);
+            }
+        }
+    }
+    else
+    {
+        m_pPlayer->fallAndDie();
+    }
 }
 bool VoxelExplorer::createLayers()
 {
@@ -1307,62 +1352,62 @@ bool VoxelExplorer::createLevel()
     switch (node->m_Type) {
         case DT_SEWER:
             {
-//                if(node->isBossDepth())
-//                    m_pCurrentLevel = new(std::nothrow) SewerBossLevel();
-//                else
-//                    m_pCurrentLevel = new(std::nothrow) SewerLevel();
+                if(node->isBossDepth())
+                    m_pCurrentLevel = new(std::nothrow) SewerBossLevel();
+                else
+                    m_pCurrentLevel = new(std::nothrow) SewerLevel();
                 ///for debug
-                m_pCurrentLevel = new(std::nothrow) SewerBossLevel();
+                //m_pCurrentLevel = new(std::nothrow) SewerBossLevel();
             }
             break;
         case DT_PRISON:
             {
-//                if(node->isBossDepth())
-//                    m_pCurrentLevel = new(std::nothrow) PrisonBossLevel();
-//                else
-//                    m_pCurrentLevel = new(std::nothrow) PrisonLevel();
+                if(node->isBossDepth())
+                    m_pCurrentLevel = new(std::nothrow) PrisonBossLevel();
+                else
+                    m_pCurrentLevel = new(std::nothrow) PrisonLevel();
                 ///for debug
-                m_pCurrentLevel = new(std::nothrow) PrisonBossLevel();
+                //m_pCurrentLevel = new(std::nothrow) PrisonBossLevel();
             }
             break;
         case DT_FANE:
             {
-//                if(node->isBossDepth())
-//                    m_pCurrentLevel = new(std::nothrow) FaneBossLevel();
-//                else
-//                    m_pCurrentLevel = new(std::nothrow) FaneLevel();
+                if(node->isBossDepth())
+                    m_pCurrentLevel = new(std::nothrow) FaneBossLevel();
+                else
+                    m_pCurrentLevel = new(std::nothrow) FaneLevel();
                 // for debug
-                m_pCurrentLevel = new(std::nothrow) FaneBossLevel();
+                //m_pCurrentLevel = new(std::nothrow) FaneBossLevel();
             }
             break;
         case DT_MINES:
             {
-//                if(node->isBossDepth())
-//                    m_pCurrentLevel = new(std::nothrow) MineBossLevel();
-//                else
-//                    m_pCurrentLevel = new(std::nothrow) MineLevel();
+                if(node->isBossDepth())
+                    m_pCurrentLevel = new(std::nothrow) MineBossLevel();
+                else
+                    m_pCurrentLevel = new(std::nothrow) MineLevel();
                 //for debug
-                m_pCurrentLevel = new(std::nothrow) MineBossLevel();
+                //m_pCurrentLevel = new(std::nothrow) MineBossLevel();
             }
             break;
         case DT_CAVE:
             {
-//                if(node->isBossDepth())
-//                    m_pCurrentLevel = new(std::nothrow) CaveBossLevel();
-//                else
-//                    m_pCurrentLevel = new(std::nothrow) CaveLevel();
+                if(node->isBossDepth())
+                    m_pCurrentLevel = new(std::nothrow) CaveBossLevel();
+                else
+                    m_pCurrentLevel = new(std::nothrow) CaveLevel();
                 // for debug
-                m_pCurrentLevel = new(std::nothrow) CaveBossLevel();
+                //m_pCurrentLevel = new(std::nothrow) CaveBossLevel();
             }
             break;
         case DT_TOMB:
             {
-//                if(node->isBossDepth())
-//                    m_pCurrentLevel = new(std::nothrow) TombBossLevel();
-//                else
-//                    m_pCurrentLevel = new(std::nothrow) TombLevel();
+                if(node->isBossDepth())
+                    m_pCurrentLevel = new(std::nothrow) TombBossLevel();
+                else
+                    m_pCurrentLevel = new(std::nothrow) TombLevel();
                 ///for debug
-                m_pCurrentLevel = new(std::nothrow) TombBossLevel();
+                //m_pCurrentLevel = new(std::nothrow) TombBossLevel();
             }
             break;
         case DT_DWARF_CASTLE:

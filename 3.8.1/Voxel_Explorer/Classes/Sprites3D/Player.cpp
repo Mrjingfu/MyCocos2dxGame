@@ -466,7 +466,7 @@ void Player::rotateToBack()
 void Player::attackByMonster(MonsterProperty* monsterProperty, bool miss)
 {
     ///for debug
-    return;
+    //return;
     
     if(!monsterProperty || !m_pHurtData)
         return;
@@ -666,7 +666,7 @@ void Player::attackByBoss(BossProperty* bossProperty, bool miss)
             }
         }
         // for debug
-        //PlayerProperty::getInstance()->setCurrentHP(currentHp);
+        PlayerProperty::getInstance()->setCurrentHP(currentHp);
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_PROPERTY_DIRTY, this);
     }
 }
@@ -697,6 +697,42 @@ void Player::hurtByGrippingTrap()
         PlayerProperty::getInstance()->setCurrentHP(currentHp);
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_PROPERTY_DIRTY, this);
     }
+}
+void Player::fallAndDie()
+{
+    Vec3 dir = Vec3::ZERO;
+    switch (m_dir) {
+        case AD_FORWARD:
+            dir = Vec3(0, 0, -TerrainTile::CONTENT_SCALE);
+            break;
+        case AD_BACK:
+            dir = Vec3(0, 0, TerrainTile::CONTENT_SCALE);
+            break;
+        case AD_LEFT:
+            dir = Vec3(-TerrainTile::CONTENT_SCALE, 0, 0);
+            break;
+        case AD_RIGHT:
+            dir = Vec3(TerrainTile::CONTENT_SCALE, 0, 0);
+            break;
+        default:
+            break;
+    }
+    removeTerrainTileFlag(TileInfo::ATTACKABLE);
+    ScaleTo* scaleTo = ScaleTo::create(0.1f, 1.0f, 1.0f, 1.0f);
+    EaseSineOut* moveUp = EaseSineOut::create(MoveTo::create(0.1f, Vec3(getPositionX(), getPositionY() + TerrainTile::CONTENT_SCALE*0.5f, getPositionZ()) + dir));
+    EaseSineOut* moveDown = EaseSineOut::create(MoveTo::create(0.2f, Vec3(getPositionX(), getPositionY() - TerrainTile::CONTENT_SCALE, getPositionZ()) + dir));
+    EaseSineOut* fadeOut = EaseSineOut::create(FadeOut::create(0.3f));
+    Sequence* sequenceJump = Sequence::create(moveUp, moveDown, NULL);
+    Spawn* spawn = Spawn::create(scaleTo, sequenceJump, fadeOut, NULL);
+    CallFunc* callback = CallFunc::create(CC_CALLBACK_0(Player::onFallDie,this));
+    Sequence* sequence = Sequence::create(spawn, callback, NULL);
+    int bufferFlag = PlayerProperty::getInstance()->getPlayerBuffer();
+    if((bufferFlag & PlayerBuffer::PB_SPEEDUP) != 0)
+        this->runAction(Speed::create(sequence, 2.0f));
+    else if((bufferFlag & PlayerBuffer::PB_FROZEN) != 0)
+        this->runAction(Speed::create(sequence, 0.5f));
+    else
+        this->runAction(sequence);
 }
 void Player::onEnterIdle()
 {
@@ -854,13 +890,18 @@ void Player::onLand()
     VoxelExplorer::getInstance()->checkTriggerTrap();
     VoxelExplorer::getInstance()->updateMiniMap();
     //for debug
-    //if(RandomDungeon::getInstance()->getCurrentDungeonNode()->isBossDepth())
+    if(RandomDungeon::getInstance()->getCurrentDungeonNode()->isBossDepth())
         VoxelExplorer::getInstance()->updateBossRoomDoor();
     
     CCLOG("player lastPos x = %d   y = %d", (int)m_LastPosInMap.x, (int)m_LastPosInMap.y);
     CCLOG("player Pos x = %d   y = %d", (int)getPosInMap().x, (int)getPosInMap().y);
     m_LastPosInMap = getPosInMap();
     
+}
+void Player::onFallDie()
+{
+    Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_FALL_AND_DIE);
+    setState(Player::PS_DEATH);
 }
 void Player::updatePlayerBuffer(float delta)
 {

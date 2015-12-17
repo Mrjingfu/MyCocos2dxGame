@@ -123,6 +123,8 @@ void KoboldLeader::onEnterTracking()
 }
 void KoboldLeader::onEnterSkill1()
 {
+    if(m_pBossProperty)
+        m_pBossProperty->addAttackAddBuffer(PlayerBuffer::PB_FROZEN);
     m_nAttackRange = 4;
     m_bEnableFlee = true;
     setState(BS_FLEEING);
@@ -174,6 +176,8 @@ void KoboldLeader::onEnterSkill3()
 }
 void KoboldLeader::onEnterDeath()
 {
+    if(m_pBossProperty)
+        m_pBossProperty->removeAttackAddBuffer(PlayerBuffer::PB_FROZEN);
     if(getEffectCount() > 0)
     {
         OutlineEffect3D* outline = dynamic_cast<OutlineEffect3D*>(getEffect(0));

@@ -30,6 +30,8 @@ public:
     virtual void clearBossRoom();
     
     virtual bool createPickableItems();
+    
+    virtual void handleUseStandardPortal(const cocos2d::Vec2& pos);
 private:
     std::vector<int> getTilesOnEdge(int m = 1);
 private:

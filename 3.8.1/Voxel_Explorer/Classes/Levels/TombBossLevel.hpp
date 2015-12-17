@@ -31,6 +31,8 @@ public:
     virtual bool createPickableItems();
     
     cocos2d::Vec2 getRandomPassableTileInBossRoom();
+    
+    virtual void handleUseStandardPortal(const cocos2d::Vec2& pos);
 private:
     std::vector<int> getTilesOnEdge(int m = 1);
 private:

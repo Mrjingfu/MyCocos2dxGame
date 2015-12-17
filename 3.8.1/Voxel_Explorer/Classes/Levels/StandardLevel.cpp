@@ -158,6 +158,19 @@ bool StandardLevel::createTerrain()
                         }
                     }
                     break;
+                case TerrainTile::TT_EXIT:
+                    {
+                        if((RandomDungeon::getInstance()->getCurrentDungeonNode()->isLastDepth()))
+                        {
+                            StandardPortal* portal = StandardPortal::create(true);
+                            if(!portal)
+                                return false;
+                            portal->setPosition3D(Vec3(j*TerrainTile::CONTENT_SCALE, 0, -i*TerrainTile::CONTENT_SCALE));
+                            VoxelExplorer::getInstance()->getTerrainPortalsLayer()->addChild(portal);
+                            portal->setVisited(info.m_bVisited);
+                        }
+                    }
+                    break;
                 case TerrainTile::TT_STANDARD_PORTAL:
                     {
                         StandardPortal* portal = StandardPortal::create(true);
@@ -898,8 +911,8 @@ void StandardLevel::showMap(bool show)
                 TileInfo info = m_Map[index];
                 
                 //for debug
-                //if(!info.m_bVisited)
-                //    continue;
+                if(!info.m_bVisited)
+                    continue;
 
                 cocos2d::Rect rect(j,i,1,1);
                 Vec2 vertices[4] = {

@@ -141,6 +141,8 @@ public:
     virtual void updateAreaFogOfWarByPos(const cocos2d::Vec2& pos, bool updateSelfArea = false) = 0;
     virtual bool createSummoningMonsters(const cocos2d::Vec2& pos) = 0;
     virtual void createSiegeMonsters(const cocos2d::Vec2& pos) = 0;
+    
+    virtual void handleUseStandardPortal(const cocos2d::Vec2& pos) = 0;
 protected:
     virtual bool build() = 0;
     virtual bool createTerrain() = 0;

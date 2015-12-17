@@ -335,237 +335,237 @@
 	<key>PIN_AXE_BROADAX</key>
 	<string>大斧</string>
 	<key>PIN_AXE_BROADAX_DESC</key>
-	<string></string>
+	<string>锋刃透骨寒的大斧，专砍给人带绿帽者。</string>
 	<key>PIN_AXE_BROADAX_BIDESC</key>
-	<string></string>
+	<string>这把武器有些沉。</string>
 	<key>PIN_AXE_TOMAHAWK</key>
 	<string>战斧</string>
 	<key>PIN_AXE_TOMAHAWK_DESC</key>
-	<string></string>
+	<string>经鉴定，这不是导弹～</string>
 	<key>PIN_AXE_TOMAHAWK_BIDESC</key>
-	<string></string>
+	<string>斧柄上写着BGM-109。</string>
 	<key>PIN_AXE_HUGEAXE</key>
 	<string>巨斧</string>
 	<key>PIN_AXE_HUGEAXE_DESC</key>
-	<string></string>
+	<string>你需要用双手来拿它。</string>
 	<key>PIN_AXE_HUGEAXE_BIDESC</key>
-	<string></string>
+	<string>这把武器你能拿动么？</string>
 	<key>PIN_AXE_DOUBLEBITAX</key>
 	<string>双刃斧</string>
 	<key>PIN_AXE_DOUBLEBITAX_DESC</key>
-	<string></string>
+	<string>险道神郁保四的武器</string>
 	<key>PIN_AXE_DOUBLEBITAX_BIDESC</key>
-	<string></string>
+	<string>这是把格斗斧。</string>
 	<key>PIN_AXE_PRO_HATCHET</key>
 	<string>黑铁</string>
 	<key>PIN_AXE_PRO_HATCHET_DESC</key>
-	<string></string>
+	<string>黑呼呼的，只有手柄处被镀上了金色，矮人们的杰作。</string>
 	<key>PIN_AXE_PRO_HATCHET_BIDESC</key>
-	<string></string>
+	<string>这是把武器？</string>
 	<key>PIN_AXE_PRO_ADZE</key>
 	<string>半月</string>
 	<key>PIN_AXE_PRO_ADZE_DESC</key>
-	<string></string>
+	<string>巨大的斧刃就像下弦月～</string>
 	<key>PIN_AXE_PRO_ADZE_BIDESC</key>
-	<string></string>
+	<string>犹抱斧子半遮面</string>
 	<key>PIN_AXE_PRO_STONEAXE</key>
 	<string>回旋加速器</string>
 	<key>PIN_AXE_PRO_STONEAXE_DESC</key>
-	<string></string>
+	<string>挥舞它都不由自主的开始旋风斩。</string>
 	<key>PIN_AXE_PRO_STONEAXE_BIDESC</key>
-	<string></string>
+	<string>斧柄上有个按钮开关。</string>
 	<key>PIN_AXE_PRO_BROADAX</key>
 	<string>熔岩</string>
 	<key>PIN_AXE_PRO_BROADAX_DESC</key>
-	<string></string>
+	<string>被锋刃砍到的所有东西都被熔化了。</string>
 	<key>PIN_AXE_PRO_BROADAX_BIDESC</key>
-	<string></string>
+	<string>锋刃上闪烁着微微的红光。</string>
 	<key>PIN_AXE_PRO_TOMAHAWK</key>
 	<string>狂战士</string>
 	<key>PIN_AXE_PRO_TOMAHAWK_DESC</key>
-	<string></string>
+	<string>溅射攻击，粉碎伤害，无视物免魔免。</string>
 	<key>PIN_AXE_PRO_TOMAHAWK_BIDESC</key>
-	<string></string>
+	<string>看着有点眼熟～</string>
 	<key>PIN_AXE_PRO_HUGEAXE</key>
 	<string>骷髅撕裂者</string>
 	<key>PIN_AXE_PRO_HUGEAXE_DESC</key>
-	<string></string>
+	<string>也许这是把钝器，用敲的。</string>
 	<key>PIN_AXE_PRO_HUGEAXE_BIDESC</key>
-	<string></string>
+	<string>巨大的斧刃很夸张～但不够锋利。</string>
 	<key>PIN_AXE_PRO_DOUBLEBITAX</key>
 	<string>脑袋</string>
 	<key>PIN_AXE_PRO_DOUBLEBITAX_DESC</key>
-	<string></string>
+	<string>斩首之斧，挥舞之时，犹如无数怨灵在嚎叫。</string>
 	<key>PIN_AXE_PRO_DOUBLEBITAX_BIDESC</key>
-	<string></string>
+	<string>上面的红色血迹已经擦拭不掉了。</string>
 	<key>PIN_SWORD_SWORD</key>
 	<string>铁剑</string>
 	<key>PIN_SWORD_SWORD_DESC</key>
-	<string></string>
+	<string>上面已经锈剂斑斑，也许会让被砍着得破伤风。</string>
 	<key>PIN_SWORD_SWORD_BIDESC</key>
-	<string></string>
+	<string>很普通的一把铁剑。</string>
 	<key>PIN_SWORD_STEELSWORD</key>
 	<string>长钢剑</string>
 	<key>PIN_SWORD_STEELSWORD_DESC</key>
-	<string></string>
+	<string>一般在武器店花点钱都能买到。</string>
 	<key>PIN_SWORD_STEELSWORD_BIDESC</key>
-	<string></string>
+	<string>钢口不错！</string>
 	<key>PIN_SWORD_SABRE</key>
 	<string>军刀</string>
 	<key>PIN_SWORD_SABRE_DESC</key>
-	<string></string>
+	<string>别想多了，只是突厥骑兵标配～</string>
 	<key>PIN_SWORD_SABRE_BIDESC</key>
-	<string></string>
+	<string>幻化之刃</string>
 	<key>PIN_SWORD_HUGESWORD</key>
 	<string>巨剑</string>
 	<key>PIN_SWORD_HUGESWORD_DESC</key>
-	<string></string>
+	<string>一把剑身很厚的大剑，需要双手才能挥舞起来。</string>
 	<key>PIN_SWORD_HUGESWORD_BIDESC</key>
-	<string></string>
+	<string>一只手拿不起来。</string>
 	<key>PIN_SWORD_TRIANGLESWORD</key>
 	<string>三角剑</string>
 	<key>PIN_SWORD_TRIANGLESWORD_DESC</key>
-	<string></string>
+	<string>这把剑的剑身上写着一行字：请在挥舞时画三角。</string>
 	<key>PIN_SWORD_TRIANGLESWORD_BIDESC</key>
-	<string></string>
+	<string>剑尖呈现一个三角形。</string>
 	<key>PIN_SWORD_JAGGEDSWORD</key>
 	<string>锯齿剑</string>
 	<key>PIN_SWORD_JAGGEDSWORD_DESC</key>
-	<string></string>
+	<string>打造这把剑的铸剑师真不容易。</string>
 	<key>PIN_SWORD_JAGGEDSWORD_BIDESC</key>
-	<string></string>
+	<string>这是把锯子么？</string>
 	<key>PIN_SWORD_CRYSTALSWORD</key>
 	<string>水晶剑</string>
 	<key>PIN_SWORD_CRYSTALSWORD_DESC</key>
-	<string></string>
+	<string>豪华饰剑，水晶石的剑身上镶嵌着不少装饰品。</string>
 	<key>PIN_SWORD_CRYSTALSWORD_BIDESC</key>
-	<string></string>
+	<string>这把剑一定不是凡品。</string>
 	<key>PIN_SWORD_PRO_SWORD</key>
 	<string>红莲</string>
 	<key>PIN_SWORD_PRO_SWORD_DESC</key>
-	<string></string>
+	<string>十圣剑之一：红莲剑，使用者：伊达总司</string>
 	<key>PIN_SWORD_PRO_SWORD_BIDESC</key>
-	<string></string>
+	<string>剑身通体呈鲜红色</string>
 	<key>PIN_SWORD_PRO_STEELSWORD</key>
 	<string>一闪</string>
 	<key>PIN_SWORD_PRO_STEELSWORD_DESC</key>
-	<string></string>
+	<string>当敌人看到它出鞘的时候，会被他的光芒所震慑，往往也是他们丢失性命的时候。</string>
 	<key>PIN_SWORD_PRO_STEELSWORD_BIDESC</key>
-	<string></string>
+	<string>一把藏在剑鞘里的利剑。</string>
 	<key>PIN_SWORD_PRO_SABRE</key>
 	<string>劈风者</string>
 	<key>PIN_SWORD_PRO_SABRE_DESC</key>
-	<string></string>
+	<string>当挥动它时，总能看到周边的空气像波浪一样被推开，空间为之扭曲。</string>
 	<key>PIN_SWORD_PRO_SABRE_BIDESC</key>
-	<string></string>
+	<string>剑身上附着着一层蓝色雾气。</string>
 	<key>PIN_SWORD_PRO_HUGESWORD</key>
 	<string>阳炎</string>
 	<key>PIN_SWORD_PRO_HUGESWORD_DESC</key>
-	<string></string>
+	<string>阳炎使者，炙热之剑</string>
 	<key>PIN_SWORD_PRO_HUGESWORD_BIDESC</key>
-	<string></string>
+	<string>剑身上附着着一层红色，微微的冒着红色水汽。</string>
 	<key>PIN_SWORD_PRO_TRIANGLESWORD</key>
 	<string>血之使者</string>
 	<key>PIN_SWORD_PRO_TRIANGLESWORD_DESC</key>
-	<string></string>
+	<string>出鞘必饮血。</string>
 	<key>PIN_SWORD_PRO_TRIANGLESWORD_BIDESC</key>
-	<string></string>
+	<string>离老远就能味道一股血腥之气。</string>
 	<key>PIN_SWORD_PRO_JAGGEDSWORD</key>
 	<string>钢牙</string>
 	<key>PIN_SWORD_PRO_JAGGEDSWORD_DESC</key>
-	<string></string>
+	<string>撕裂一起阻挡之物。</string>
 	<key>PIN_SWORD_PRO_JAGGEDSWORD_BIDESC</key>
-	<string></string>
+	<string>请放倒小朋友触摸不到的地方。</string>
 	<key>PIN_SWORD_PRO_CRYSTALSWORD</key>
 	<string>诛神</string>
 	<key>PIN_SWORD_PRO_CRYSTALSWORD_DESC</key>
-	<string></string>
+	<string>蕴藏着毁天灭地的能量，不过不是每个人都能驾驭。</string>
 	<key>PIN_SWORD_PRO_CRYSTALSWORD_BIDESC</key>
-	<string></string>
+	<string>炼制材料是古铁木树的树心。</string>
 	<key>PIN_MACE_ROLLINGPIN</key>
 	<string>擀面杖</string>
 	<key>PIN_MACE_ROLLINGPIN_DESC</key>
-	<string></string>
+	<string>厨娘的武器</string>
 	<key>PIN_MACE_ROLLINGPIN_BIDESC</key>
-	<string></string>
+	<string>一根擀面杖</string>
 	<key>PIN_MACE_MALLET</key>
 	<string>木棒</string>
 	<key>PIN_MACE_MALLET_DESC</key>
-	<string></string>
+	<string>弄点棉布蘸点油就是火把。</string>
 	<key>PIN_MACE_MALLET_BIDESC</key>
-	<string></string>
+	<string>你可以自己砍个树做一把。</string>
 	<key>PIN_MACE_MACE</key>
 	<string>权杖</string>
 	<key>PIN_MACE_MACE_DESC</key>
-	<string></string>
+	<string>地位的象征。</string>
 	<key>PIN_MACE_MACE_BIDESC</key>
-	<string></string>
+	<string>不像是武器。</string>
 	<key>PIN_MACE_HAMMER</key>
 	<string>钉头锤</string>
 	<key>PIN_MACE_HAMMER_DESC</key>
-	<string></string>
+	<string>”无血的“打击</string>
 	<key>PIN_MACE_HAMMER_BIDESC</key>
-	<string></string>
+	<string>标准型钝器</string>
 	<key>PIN_MACE_WOLFFANGSMACE</key>
 	<string>狼牙棒</string>
 	<key>PIN_MACE_WOLFFANGSMACE_DESC</key>
-	<string></string>
+	<string>属“大规模杀伤性武器”</string>
 	<key>PIN_MACE_WOLFFANGSMACE_BIDESC</key>
-	<string></string>
+	<string>使用者一定是个有气力的人。</string>
 	<key>PIN_MACE_BONEHAMMER</key>
 	<string>骨棒</string>
 	<key>PIN_MACE_BONEHAMMER_DESC</key>
-	<string></string>
+	<string>通常附带击退效果。</string>
 	<key>PIN_MACE_BONEHAMMER_BIDESC</key>
-	<string></string>
+	<string>骨头也可以是武器。</string>
 	<key>PIN_MACE_SLEDGEHAMMER</key>
 	<string>碎骨锤</string>
 	<key>PIN_MACE_SLEDGEHAMMER_DESC</key>
-	<string></string>
+	<string>“马家爵的愤怒”</string>
 	<key>PIN_MACE_SLEDGEHAMMER_BIDESC</key>
-	<string></string>
+	<string>望而生畏的武器。</string>
 	<key>PIN_MACE_PRO_ROLLINGPIN</key>
-	<string>恐龙大骨</string>
+	<string>骷髅棒</string>
 	<key>PIN_MACE_PRO_ROLLINGPIN_DESC</key>
-	<string></string>
+	<string>应该是某位死灵巫师的法杖</string>
 	<key>PIN_MACE_PRO_ROLLINGPIN_BIDESC</key>
-	<string></string>
+	<string>顶端镶嵌着一颗骷髅。</string>
 	<key>PIN_MACE_PRO_MALLET</key>
 	<string>食人魔之锤</string>
 	<key>PIN_MACE_PRO_MALLET_DESC</key>
-	<string></string>
+	<string>“我要打烂你！”</string>
 	<key>PIN_MACE_PRO_MALLET_BIDESC</key>
-	<string></string>
+	<string>食人魔们经常拿着它晃悠。</string>
 	<key>PIN_MACE_PRO_MACE</key>
 	<string>红宝石权杖</string>
 	<key>PIN_MACE_PRO_MACE_DESC</key>
-	<string></string>
+	<string>你舍得用它K人么？</string>
 	<key>PIN_MACE_PRO_MACE_BIDESC</key>
-	<string></string>
+	<string>一个顶端镶嵌着红宝石的权杖。</string>
 	<key>PIN_MACE_PRO_HAMMER</key>
 	<string>金色勇气</string>
 	<key>PIN_MACE_PRO_HAMMER_DESC</key>
-	<string></string>
+	<string>代表着勇气和正义的武器, 锤柄上镌刻着：“白银之手”</string>
 	<key>PIN_MACE_PRO_HAMMER_BIDESC</key>
-	<string></string>
+	<string>一把金色精致的战锤。</string>
 	<key>PIN_MACE_PRO_WOLFFANGSMACE</key>
 	<string>众神之锤</string>
 	<key>PIN_MACE_PRO_WOLFFANGSMACE_DESC</key>
-	<string></string>
+	<string>大天使的权杖，蕴藏着天使之力。</string>
 	<key>PIN_MACE_PRO_WOLFFANGSMACE_BIDESC</key>
-	<string></string>
+	<string>武器上散发着高贵圣洁的气息。</string>
 	<key>PIN_MACE_PRO_BONEHAMMER</key>
 	<string>蓝宝石权杖</string>
 	<key>PIN_MACE_PRO_BONEHAMMER_DESC</key>
-	<string></string>
+	<string>比红宝石权杖更高贵～</string>
 	<key>PIN_MACE_PRO_BONEHAMMER_BIDESC</key>
-	<string></string>
+	<string>一个顶端镶嵌着蓝宝石的权杖。</string>
 	<key>PIN_MACE_PRO_SLEDGEHAMMER</key>
 	<string>死神之力</string>
 	<key>PIN_MACE_PRO_SLEDGEHAMMER_DESC</key>
-	<string></string>
+	<string>死神链子锤，由地狱灵铁铸造而成，使用者一般是死灵族。</string>
 	<key>PIN_MACE_PRO_SLEDGEHAMMER_BIDESC</key>
-	<string></string>
+	<string>《指环王》中的怨灵好像就拿着这么一把。</string>
 	<key>PIN_BOW_SHORTBOW</key>
 	<string>短弓</string>
 	<key>PIN_BOW_SHORTBOW_DESC</key>

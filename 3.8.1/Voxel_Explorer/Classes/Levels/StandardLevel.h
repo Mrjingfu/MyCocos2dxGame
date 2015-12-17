@@ -46,6 +46,7 @@ protected:
     virtual void showMap(bool show);
     
     virtual void updateAreaFogOfWarByPos(const cocos2d::Vec2& pos, bool updateSelfArea = false);
+    virtual void handleUseStandardPortal(const cocos2d::Vec2& pos) {}
 protected:
     void placeDoors(Area* area);
     void generateDoors(Area* area);
