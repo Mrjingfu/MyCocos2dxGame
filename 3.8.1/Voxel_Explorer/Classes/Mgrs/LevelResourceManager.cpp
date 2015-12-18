@@ -37,8 +37,11 @@ bool LevelResourceManager::init()
     m_ItemsResMap = FileUtils::getInstance()->getValueMapFromFile("ItemsRes.plist");
     if(m_ItemsResMap.empty())
         return false;
-    m_SoundsResMap = FileUtils::getInstance()->getValueMapFromFile("SoundsRes.plist");
-    if(m_SoundsResMap.empty())
+    m_DungeonSoundsResMap = FileUtils::getInstance()->getValueMapFromFile("DungeonSoundsRes.plist");
+    if(m_DungeonSoundsResMap.empty())
+        return false;
+    m_MonsterSoundsRes = FileUtils::getInstance()->getValueMapFromFile("MonstersSoundsRes.plist");
+    if(m_MonsterSoundsRes.empty())
         return false;
     m_MusicsResMap = FileUtils::getInstance()->getValueMapFromFile("MusicsRes.plist");
     if(m_MusicsResMap.empty())
@@ -49,7 +52,7 @@ bool LevelResourceManager::initLevelRes()
 {
     m_TerrainTilesLevelRes.clear();
     m_DoorsLevelRes.clear();
-    m_SoundsLevelRes.clear();
+    m_DungeonSoundsLevelRes.clear();
     m_MusicsLevelRes.clear();
     if(!RandomDungeon::getInstance()->getCurrentDungeonNode())
         return false;
@@ -64,8 +67,8 @@ bool LevelResourceManager::initLevelRes()
     if(m_DoorsLevelRes.empty())
         return false;
     
-    m_SoundsLevelRes = m_SoundsResMap.at(dungeonName).asValueMap();
-    if(m_SoundsLevelRes.empty())
+    m_DungeonSoundsLevelRes = m_DungeonSoundsResMap.at(dungeonName).asValueMap();
+    if(m_DungeonSoundsLevelRes.empty())
         return false;
     
     m_MusicsLevelRes = m_MusicsResMap.at(dungeonName).asValueMap();
@@ -98,9 +101,12 @@ std::string LevelResourceManager::getItemModelRes(const std::string& itemTypeNam
 {
     return m_ItemsResMap.at(itemTypeName).asString() + ".c3b";
 }
-std::string LevelResourceManager::getSoundEffectRes(const std::string& soundTypeName)
+std::string LevelResourceManager::getDungeonSoundEffectRes(const std::string& soundTypeName)
 {
-    return m_SoundsLevelRes.at(soundTypeName).asString();
+    return m_DungeonSoundsLevelRes.at(soundTypeName).asString();
+}
+std::string LevelResourceManager::getMonsterSoundEffectRes(const std::string& monsterTypeName, const std::string& soundTypeName)
+{
 }
 std::string LevelResourceManager::getBackgroundMusicRes(const std::string& bgMusicTypeName)
 {

@@ -709,7 +709,7 @@ void VoxelExplorer::handleDoor(const cocos2d::Vec2& mapPos)
                 {
                     if(door->isMagicLocked())
                     {
-                        std::string soundName = LevelResourceManager::getInstance()->getSoundEffectRes("DOOR_LOCKED");
+                        std::string soundName = LevelResourceManager::getInstance()->getDungeonSoundEffectRes("DOOR_LOCKED");
                         SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
                         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_DOOR_MAGIC_LOCKED);
                         return;
@@ -733,7 +733,7 @@ void VoxelExplorer::handleDoor(const cocos2d::Vec2& mapPos)
                         }
                         else
                         {
-                            std::string soundName = LevelResourceManager::getInstance()->getSoundEffectRes("DOOR_LOCKED");
+                            std::string soundName = LevelResourceManager::getInstance()->getDungeonSoundEffectRes("DOOR_LOCKED");
                             SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
                             Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_NO_BOSS_KEY);
                         }
@@ -747,7 +747,7 @@ void VoxelExplorer::handleDoor(const cocos2d::Vec2& mapPos)
                         }
                         else
                         {
-                            std::string soundName = LevelResourceManager::getInstance()->getSoundEffectRes("DOOR_LOCKED");
+                            std::string soundName = LevelResourceManager::getInstance()->getDungeonSoundEffectRes("DOOR_LOCKED");
                             SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
                             Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_NO_ROOM_KEY);
                         }

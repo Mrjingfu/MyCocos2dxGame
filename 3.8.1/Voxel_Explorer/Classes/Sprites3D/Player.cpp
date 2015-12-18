@@ -902,10 +902,10 @@ void Player::onLand(bool isAttack)
     {
         if(VoxelExplorer::getInstance()->getCurrentLevel())
         {
-            std::string soundName = LevelResourceManager::getInstance()->getSoundEffectRes("STEP_STANDARD");
+            std::string soundName = LevelResourceManager::getInstance()->getDungeonSoundEffectRes("STEP_STANDARD");
             TerrainTile::TileType type = VoxelExplorer::getInstance()->getCurrentLevel()->getTerrainTileType(getPosInMap().x, getPosInMap().x);
             if(type == TerrainTile::TT_TUNNEL)
-                soundName = LevelResourceManager::getInstance()->getSoundEffectRes("STEP_TUNNEL");
+                soundName = LevelResourceManager::getInstance()->getDungeonSoundEffectRes("STEP_TUNNEL");
             SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
         }
     }

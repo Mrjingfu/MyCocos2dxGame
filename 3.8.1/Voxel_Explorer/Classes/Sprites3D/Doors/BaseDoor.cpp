@@ -138,7 +138,7 @@ void BaseDoor::onEnterClosed()
     }
     if(RandomDungeon::getInstance()->getCurrentDungeonNode()->isBossDepth())
     {
-        std::string soundName = LevelResourceManager::getInstance()->getSoundEffectRes("CLOSE_DOOR");
+        std::string soundName = LevelResourceManager::getInstance()->getDungeonSoundEffectRes("CLOSE_DOOR");
         SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
     }
 }
@@ -181,7 +181,7 @@ void BaseDoor::onEnterOpened()
             m_pFakeDoor->runAction(sequence);
         }
     }
-    std::string soundName = LevelResourceManager::getInstance()->getSoundEffectRes("OPEN_DOOR");
+    std::string soundName = LevelResourceManager::getInstance()->getDungeonSoundEffectRes("OPEN_DOOR");
     SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
 }
 void BaseDoor::onExitOpened()
@@ -208,7 +208,7 @@ void BaseDoor::onExitLocked()
         EaseSineOut* fadeOut = EaseSineOut::create(TintTo::create(0.5f, Color3B::WHITE));
         m_pFakeDoor->runAction(fadeOut);
     }
-    std::string soundName = LevelResourceManager::getInstance()->getSoundEffectRes("DOOR_UNLOCKED");
+    std::string soundName = LevelResourceManager::getInstance()->getDungeonSoundEffectRes("DOOR_UNLOCKED");
     SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
 }
 void BaseDoor::onEnterHide()
