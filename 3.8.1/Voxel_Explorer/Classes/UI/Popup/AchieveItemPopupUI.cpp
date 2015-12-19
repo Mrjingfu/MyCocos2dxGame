@@ -40,8 +40,8 @@ bool AchieveItemPopupUI::addEvents()
     
     m_pAchieveTargetDesc->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
     m_pAchieveName->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
-    m_pAchieveTargetDesc->setColor(Color3B(200, 182, 150));
-    m_pAchieveName->setColor(Color3B(180, 150, 106));
+    m_pAchieveTargetDesc->setColor(Color3B(185, 153, 109));
+    m_pAchieveName->setColor(Color3B(241, 222, 188));
     return true;
 }
 void AchieveItemPopupUI::inAction()

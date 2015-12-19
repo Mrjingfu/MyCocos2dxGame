@@ -17,6 +17,12 @@ class DeadPopupUI:public PopupUILayer {
 public:
     CREATE_FUNC(DeadPopupUI);
     virtual ~DeadPopupUI();
+    virtual bool initUi();
+private:
+    void onClickMainMenu(cocos2d::Ref* ref);
+    void onClickRestart(cocos2d::Ref* ref);
+private:
+
 };
 
 #endif /* DeadPopupUI_hpp */

@@ -178,7 +178,7 @@ void GameToolbarLayer::onClickBag(Ref* ref)
 {
     CHECK_ACTION(ref);
     CCLOG("onClickRole");
-    if (m_bIsDist||m_bIsOpenSmailMap) {
+    if (m_bIsDist) {
         return;
     }
     
@@ -257,7 +257,7 @@ void GameToolbarLayer::onClickPause(cocos2d::Ref *ref)
 {
     CHECK_ACTION(ref);
     CCLOG("onClickPause");
-    PopupUILayerManager::getInstance()->openPopup(ePopupAchieve);
+    PopupUILayerManager::getInstance()->openPopup(ePopupPause);
 //    InformationPopupUI* popupUi = static_cast<InformationPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupInformation));
 //    if (popupUi) {
 ////        popupUi->setInfoIcon("chr_man.png");

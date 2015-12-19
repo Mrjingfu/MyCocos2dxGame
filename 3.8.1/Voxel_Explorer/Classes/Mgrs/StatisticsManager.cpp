@@ -8,6 +8,7 @@
 
 #include "StatisticsManager.hpp"
 #include "AchievementManager.h"
+#include "PlayerProperty.hpp"
 StatisticsManager::StatisticsManager()
 {
     m_nCopperTotalNum           = 0;                //金币收集数
@@ -360,6 +361,8 @@ CChaosNumber StatisticsManager::getDataTotalType(eStatistType type) const
             return m_nChestGoldTotalNum;
         case ST_TOTAL_JAR:
             return m_nJarTotalNum;
+        case ST_TOTAL_ROLE_LEVEL:
+            return PlayerProperty::getInstance()->getLevel();
     }
     return CChaosNumber(0);
 }

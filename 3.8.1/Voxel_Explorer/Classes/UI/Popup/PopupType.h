@@ -30,6 +30,7 @@ enum ePopupType
     ePopupInformation,
     ePopupAchieve,
     ePopupAchieveItem,
+    ePopupDead,
     ePopupCount
 };
 typedef enum {

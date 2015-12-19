@@ -203,17 +203,15 @@
             <filename>../ui/ui_sprite/I_GoldCoin.png</filename>
             <filename>../ui/ui_sprite/I_SilverCoin.png</filename>
             <filename>../ui/ui_sprite/ui_indentify_icon.png</filename>
-            <filename>../ui/ui_sprite/btn_exit_ch.png</filename>
-            <filename>../ui/ui_sprite/btn_exit_en.png</filename>
-            <filename>../ui/ui_sprite/btn_mainmenu_ch.png</filename>
-            <filename>../ui/ui_sprite/btn_mainmenu_en.png</filename>
-            <filename>../ui/ui_sprite/btn_setting_ch.png</filename>
-            <filename>../ui/ui_sprite/btn_setting_en.png</filename>
             <filename>../ui/ui_sprite/ui_no_user.png</filename>
             <filename>../ui/ui_sprite/ui_excalmatory_icon.png</filename>
             <filename>../ui/ui_sprite/ui_question_icon.png</filename>
             <filename>../ui/ui_sprite/ui_next_icon.png</filename>
             <filename>../ui/ui_sprite/achievement_lock.png</filename>
+            <filename>../ui/ui_sprite/ui_gameover.png</filename>
+            <filename>../ui/ui_sprite/ui_frame_10.png</filename>
+            <filename>../ui/ui_sprite/ui_frame_11.png</filename>
+            <filename>../ui/ui_sprite/ui_frame_9.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

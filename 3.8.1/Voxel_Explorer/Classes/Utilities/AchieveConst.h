@@ -186,18 +186,41 @@ enum eStatistType{
     ST_TOTAL_CHEST_SILVER,
     ST_TOTAL_CHEST_GOLD,
     ST_TOTAL_JAR,
+    ST_TOTAL_ROLE_LEVEL,
+    
     ST_MAX
     
 };
 const std::vector<std::string> ACHIEVEMENT_DATAIL_TYPE_NAME = {
     "ADT_KILL_FIRST",
-    "ADT_STEP_HUNDRED"
+    "ADT_PEROPLE_CUT_HUNDRED",
+    "ADT_BLOOD_SUPPRESS",
+    "ADT_KILLER",
+    "ADT_PAST_HOPE",
+    "ADT_INCENDIES",
+    "ADT_DIE_UNNATURAL",
+    "ADT_MARATHON",
+    "ADT_WALKING_DEAD",
+    "ADT_FINAL_DESTINATION",
+    "ADT_WEALTHY_MEN",
+    "ADT_UPSTART"                
+    
 };
 enum eAchievementDetailType
 {
     ADT_UNKOWN=-1,
-    ADT_KILL_FIRST =0,
-    ADT_STEP_HUNDRED,
+    ADT_KILL_FIRST,           //第一滴血
+    ADT_PEROPLE_CUT_HUNDRED,  //百人斩
+    ADT_BLOOD_SUPPRESS,       //血腥镇压
+    ADT_KILLER,               //杀手
+    ADT_PAST_HOPE,            //无可救药
+    ADT_INCENDIES,            //烈火焚身
+    ADT_DIE_UNNATURAL,         //死于非命
+    ADT_MARATHON,              //马拉松
+    ADT_WALKING_DEAD,          //行尸走肉
+    ADT_FINAL_DESTINATION,     //死神来了
+    ADT_WEALTHY_MEN,           //有钱人
+    ADT_UPSTART,                //暴发户
     ADT_COUNT
 };
 

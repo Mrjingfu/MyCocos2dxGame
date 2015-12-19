@@ -61,6 +61,12 @@ bool ItemShopBuyPopupUI::initBottom()
     if (!m_pSellCount)
         return false;
     
+    m_pBtnEquip->setTitleFontName(UtilityHelper::getLocalString("FONT_NAME"));
+    m_pBtnEquip->setTitleFontSize(36);
+    m_pBtnEquip->getTitleRenderer()->setScale(0.3);
+    m_pBtnEquip->setTitleText(UtilityHelper::getLocalStringForUi("BTN_TEXT_BUY"));
+    
+    
     m_pSellCount->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
     m_pItemSlider->addEventListener(CC_CALLBACK_2(ItemShopBuyPopupUI::sliderEvent, this));
     
@@ -102,10 +108,7 @@ void ItemShopBuyPopupUI::refreshUIView()
         
     }
     //暂时
-    cocos2d::Label* btnLabel =  m_pBtnEquip->getTitleRenderer();
-    btnLabel->setSystemFontName(UtilityHelper::getLocalStringForUi("FONT_NAME"));
-    
-    btnLabel->setString("BUY");
+    m_pBtnEquip->setTitleText(UtilityHelper::getLocalStringForUi("BTN_TEXT_BUY"));
     m_pBtnEquip->addClickEventListener(CC_CALLBACK_1(ItemShopBuyPopupUI::onClickBuy, this));
     m_pItemMoneyLayer->updateItemMoney(itemprop->getCopperWhenBuy()*(1+m_pItemSlider->getPercent()));
 }

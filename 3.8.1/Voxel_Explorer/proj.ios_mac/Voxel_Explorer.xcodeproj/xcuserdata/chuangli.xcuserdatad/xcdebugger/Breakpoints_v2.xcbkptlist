@@ -169,13 +169,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../Classes/UI/GameUILayer.cpp"
-            timestampString = "472039879.59229"
+            filePath = "../Classes/UI/Popup/PausePopupUI.cpp"
+            timestampString = "472126058.63728"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "633"
-            endingLineNumber = "633"
-            landmarkName = "GameUILayer::onEventRoleDead(cocos2d::EventCustom *sender)"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
+            landmarkName = "PausePopupUI::addEvents()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -185,13 +185,29 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../Classes/UI/GameUILayer.cpp"
-            timestampString = "472040038.934735"
+            filePath = "../Classes/UI/Popup/ItemShopBuyPopupUI.cpp"
+            timestampString = "472126469.95588"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "637"
-            endingLineNumber = "637"
-            landmarkName = "GameUILayer::onEventRoleDead(cocos2d::EventCustom *sender)"
+            startingLineNumber = "67"
+            endingLineNumber = "67"
+            landmarkName = "ItemShopBuyPopupUI::initBottom()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../cocos2d/cocos/ui/UIButton.cpp"
+            timestampString = "472126487.689377"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "764"
+            endingLineNumber = "764"
+            landmarkName = "Button::setTitleText(const std::string&amp; text)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

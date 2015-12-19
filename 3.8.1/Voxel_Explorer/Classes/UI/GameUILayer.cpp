@@ -35,6 +35,7 @@
 #include "AchieveProperty.hpp"
 #include "HudPromptLayer.hpp"
 #include "AchieveItemPopupUI.hpp"
+#include "DeadPopupUI.h"
 USING_NS_CC;
 GameUILayer::GameUILayer()
 {
@@ -505,16 +506,23 @@ void GameUILayer::onEventRoleUserPotion(cocos2d::EventCustom *sender)
              CCLOG("恢复药水 恢复HP+MP");
              tipStr =  StringUtils::format(UtilityHelper::getLocalStringForUi("USE_POTION_TREAT").c_str(),int(potionsProperty->getValue()));
             m_pGameToolBarLayer->sendMessage(StringUtils::format(UtilityHelper::getLocalStringForUi("USE_POTION_TREAT").c_str(),int(potionsProperty->getValue())),PopupUILayerManager::getInstance()->getTipsColor(TIP_POSITIVE));
+            
+            if (m_pRoleHudLayer) {
+                m_pRoleHudLayer->shwoPrompt(pt, TIP_BLUE,StringUtils::format(UtilityHelper::getLocalStringForUi("USE_POTION_MAGIC").c_str(),int(potionsProperty->getValue())));
+            }
+            
+            m_pGameToolBarLayer->sendMessage(StringUtils::format(UtilityHelper::getLocalStringForUi("USE_POTION_MAGIC").c_str(),int(potionsProperty->getValue())),PopupUILayerManager::getInstance()->getTipsColor(TIP_POSITIVE));
 
-            CallFunc* func = CallFunc::create([this,potionsProperty,pt]{
-                    if (m_pRoleHudLayer) {
-                        m_pRoleHudLayer->shwoPrompt(pt, TIP_BLUE,StringUtils::format(UtilityHelper::getLocalStringForUi("USE_POTION_MAGIC").c_str(),int(potionsProperty->getValue())));
-                }
-                
-                m_pGameToolBarLayer->sendMessage(StringUtils::format(UtilityHelper::getLocalStringForUi("USE_POTION_MAGIC").c_str(),int(potionsProperty->getValue())),PopupUILayerManager::getInstance()->getTipsColor(TIP_POSITIVE));
-
-            });
-            this->runAction(Sequence::createWithTwoActions(DelayTime::create(1.0f), func));
+            
+//            CallFunc* func = CallFunc::create([this,potionsProperty,pt]{
+//                    if (m_pRoleHudLayer) {
+//                        m_pRoleHudLayer->shwoPrompt(pt, TIP_BLUE,StringUtils::format(UtilityHelper::getLocalStringForUi("USE_POTION_MAGIC").c_str(),int(potionsProperty->getValue())));
+//                }
+//                
+//                m_pGameToolBarLayer->sendMessage(StringUtils::format(UtilityHelper::getLocalStringForUi("USE_POTION_MAGIC").c_str(),int(potionsProperty->getValue())),PopupUILayerManager::getInstance()->getTipsColor(TIP_POSITIVE));
+//
+//            });
+//            this->runAction(Sequence::createWithTwoActions(DelayTime::create(1.0f), func));
         }
             break;
         case PickableItem::PIT_POTION_DETOXIFICATION:
@@ -632,14 +640,14 @@ void GameUILayer::onEventRoleDead(cocos2d::EventCustom *sender)
     CCLOG("onEventRoleDead");
     refreshUIView();
     CallFunc* func = CallFunc::create([]{
-        PopupUILayer* pausePopup = PopupUILayerManager::getInstance()->openPopup(ePopupPause);
+        DeadPopupUI* pausePopup = static_cast<DeadPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupDead));
         if (pausePopup) {
-            pausePopup->setDarkLayerVisble(false);
-            pausePopup->setBlankClose(false);
+//            pausePopup->setDarkLayerVisble(false);
+            
         }
 
     });
-    this->runAction(Sequence::createWithTwoActions(DelayTime::create(3.0F),func ));
+    this->runAction(Sequence::createWithTwoActions(DelayTime::create(2.0F),func ));
    }
 void GameUILayer::onEventRoleHud(cocos2d::EventCustom *sender)
 {
@@ -881,30 +889,15 @@ void GameUILayer::updateCharacterHud(HurtData* hurData,TipTypes tipDodge,TipType
             type = tipNormal;
         }
     }
-    if (isWho && m_pRoleHudLayer) {
+    if (isWho && m_pRoleHudLayer)
+    {
          m_pRoleHudLayer->shwoPrompt(pt, type, str);
     }
-    if (!isWho && m_pMonsterHudLayer) {
+    if (!isWho && m_pMonsterHudLayer)
+    {
        m_pMonsterHudLayer->shwoPrompt(pt, type, str);
     }
- 
-//    if (hurData->m_bDodge) {
-//        PopupUILayerManager::getInstance()->showStatus(tipDodge,  StringUtils::format(UtilityHelper::getLocalStringForUi("STATUS_TEXT_DODGE").c_str(),hurData->m_nDamage),pt);
-//        CCLOG("monster 闪避");
-//    }else {
-//        if((hurData->m_bBlocked && hurData->m_bCriticalStrike) || hurData->m_bBlocked)
-//        {
-//            PopupUILayerManager::getInstance()->showStatus(tipBolock, StringUtils::format(UtilityHelper::getLocalStringForUi("STATUS_TEXT_BOLOCK").c_str(),hurData->m_nDamage),pt);
-//            CCLOG("monster 格挡");
-//        }else if (hurData->m_bCriticalStrike && !hurData->m_bBlocked)
-//        {
-//            PopupUILayerManager::getInstance()->showStatus(tipCriticalStike, StringUtils::format(UtilityHelper::getLocalStringForUi("STATUS_TEXT_CRITICAL_STRIKE").c_str(),hurData->m_nDamage),pt);
-//            CCLOG("monster 暴击");
-//        }else{
-//            PopupUILayerManager::getInstance()->showStatus(tipNormal, Value(hurData->m_nDamage).asString(),pt);
-//            CCLOG("pt x:%f y%f",pt.x,pt.y);
-//        }
-//    }
+
 }
 void GameUILayer::onEnter()
 {

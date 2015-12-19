@@ -648,6 +648,32 @@
             <EndColor A="255" R="255" G="255" B="255" />
             <ColorVector ScaleY="1.0000" />
           </AbstractNodeData>
+          <AbstractNodeData Name="ui_gameover_1" ActionTag="553091885" Tag="57" IconVisible="False" LeftMargin="114.0000" RightMargin="112.0000" TopMargin="135.4818" BottomMargin="326.5182" ctype="SpriteObjectData">
+            <Size X="94.0000" Y="18.0000" />
+            <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+            <Position X="161.0000" Y="335.5182" />
+            <Scale ScaleX="1.0000" ScaleY="1.0000" />
+            <CColor A="255" R="255" G="255" B="255" />
+            <PrePosition X="0.5031" Y="0.6990" />
+            <PreSize X="0.0000" Y="0.0000" />
+            <FileData Type="PlistSubImage" Path="ui_gameover.png" Plist="ui_sprite.plist" />
+            <BlendFunc Src="770" Dst="771" />
+          </AbstractNodeData>
+          <AbstractNodeData Name="Button_1" ActionTag="-920572467" Tag="115" IconVisible="False" LeftMargin="102.0000" RightMargin="148.0000" TopMargin="218.0000" BottomMargin="222.0000" TouchEnable="True" FontSize="14" ButtonText="Button" Scale9Enable="True" LeftEage="4" RightEage="4" TopEage="4" BottomEage="4" Scale9OriginX="4" Scale9OriginY="4" Scale9Width="5" Scale9Height="5" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="ButtonObjectData">
+            <Size X="70.0000" Y="40.0000" />
+            <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+            <Position X="137.0000" Y="242.0000" />
+            <Scale ScaleX="1.0000" ScaleY="1.0000" />
+            <CColor A="255" R="255" G="255" B="255" />
+            <PrePosition X="0.4281" Y="0.5042" />
+            <PreSize X="0.2188" Y="0.0833" />
+            <TextColor A="255" R="255" G="255" B="255" />
+            <DisabledFileData Type="PlistSubImage" Path="ui_frame_7.png" Plist="ui_sprite.plist" />
+            <PressedFileData Type="PlistSubImage" Path="ui_frame_7.png" Plist="ui_sprite.plist" />
+            <NormalFileData Type="PlistSubImage" Path="ui_frame_6.png" Plist="ui_sprite.plist" />
+            <OutlineColor A="255" R="255" G="0" B="0" />
+            <ShadowColor A="255" R="110" G="110" B="110" />
+          </AbstractNodeData>
         </Children>
       </ObjectData>
     </Content>

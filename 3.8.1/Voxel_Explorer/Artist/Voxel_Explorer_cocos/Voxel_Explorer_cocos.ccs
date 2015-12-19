@@ -63,24 +63,15 @@
           <PlistImageFile Name="I_GoldCoin.png" Key="I_GoldCoin.png" />
           <PlistImageFile Name="I_SilverCoin.png" Key="I_SilverCoin.png" />
           <PlistImageFile Name="ui_indentify_icon.png" Key="ui_indentify_icon.png" />
-          <PlistImageFile Name="btn_exit_ch.png" Key="btn_exit_ch.png" />
-          <PlistImageFile Name="btn_exit_en.png" Key="btn_exit_en.png" />
-          <PlistImageFile Name="btn_mainmenu_ch.png" Key="btn_mainmenu_ch.png" />
-          <PlistImageFile Name="btn_mainmenu_en.png" Key="btn_mainmenu_en.png" />
-          <PlistImageFile Name="btn_setting_ch.png" Key="btn_setting_ch.png" />
-          <PlistImageFile Name="btn_setting_en.png" Key="btn_setting_en.png" />
-          <PlistImageFile Name="btn_fram_buy_normal_ch.png" Key="btn_fram_buy_normal_ch.png" />
-          <PlistImageFile Name="btn_fram_buy_normal_en.png" Key="btn_fram_buy_normal_en.png" />
-          <PlistImageFile Name="btn_fram_buy_press_ch.png" Key="btn_fram_buy_press_ch.png" />
-          <PlistImageFile Name="btn_fram_buy_press_en.png" Key="btn_fram_buy_press_en.png" />
-          <PlistImageFile Name="btn_fram_sell_normal_ch.png" Key="btn_fram_sell_normal_ch.png" />
-          <PlistImageFile Name="btn_fram_sell_normal_en.png" Key="btn_fram_sell_normal_en.png" />
-          <PlistImageFile Name="btn_fram_sell_press_ch.png" Key="btn_fram_sell_press_ch.png" />
-          <PlistImageFile Name="btn_fram_sell_press_en.png" Key="btn_fram_sell_press_en.png" />
           <PlistImageFile Name="ui_no_user.png" Key="ui_no_user.png" />
           <PlistImageFile Name="ui_excalmatory_icon.png" Key="ui_excalmatory_icon.png" />
           <PlistImageFile Name="ui_question_icon.png" Key="ui_question_icon.png" />
           <PlistImageFile Name="ui_next_icon.png" Key="ui_next_icon.png" />
+          <PlistImageFile Name="achievement_lock.png" Key="achievement_lock.png" />
+          <PlistImageFile Name="ui_gameover.png" Key="ui_gameover.png" />
+          <PlistImageFile Name="ui_frame_10.png" Key="ui_frame_10.png" />
+          <PlistImageFile Name="ui_frame_11.png" Key="ui_frame_11.png" />
+          <PlistImageFile Name="ui_frame_9.png" Key="ui_frame_9.png" />
         </PlistImageFolder>
         <Project Name="gameScene.csd" Type="Scene" />
         <Project Name="menuscene.csd" Type="Scene" />

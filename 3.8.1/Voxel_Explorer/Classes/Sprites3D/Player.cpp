@@ -692,7 +692,7 @@ void Player::hurtByGrippingTrap()
         setState(PS_DEATH);
         PlayerProperty::getInstance()->setCurrentHP(currentHp);
         StatisticsManager::getInstance()->addRoleDeadNum(StatisticsManager::eRoleDeadType::RET_TRIGGER_GRIPPING_TRAP);
-        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_DEATH, this);
+//        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_DEATH, this);
     }
     else
     {
@@ -1026,7 +1026,7 @@ void Player::updatePlayerBuffer(float delta)
                     setState(PS_DEATH);
                     PlayerProperty::getInstance()->setCurrentHP(currentHp);
                     StatisticsManager::getInstance()->addRoleDeadNum(StatisticsManager::eRoleDeadType::RET_BUFFER_FIRE);
-                    Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_DEATH, this);
+//                    Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_DEATH, this);
                 }
                 else
                 {
@@ -1054,7 +1054,7 @@ void Player::updatePlayerBuffer(float delta)
                 setState(PS_DEATH);
                 PlayerProperty::getInstance()->setCurrentHP(currentHp);
                 StatisticsManager::getInstance()->addRoleDeadNum(StatisticsManager::eRoleDeadType::RET_BUFFER_POISONING);
-                Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_DEATH, this);
+//                Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_DEATH, this);
             }
             else
             {

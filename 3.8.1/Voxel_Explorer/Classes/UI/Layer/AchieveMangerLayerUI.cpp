@@ -119,7 +119,7 @@ void AchieveMangerLayerUI::addItemAchieve(eAchievementDetailType achieveId,cocos
         nameText->setAnchorPoint(cocos2d::Vec2::ANCHOR_MIDDLE_LEFT);
         nameText->setColor(Color3B(105, 87, 055));
         if (isCommple) {
-            nameText->setColor(Color3B(200, 182, 150));
+            nameText->setColor(Color3B(241, 222, 188));
         }
         if (!isCommple &&isHideAchieve)
         {
@@ -148,7 +148,7 @@ void AchieveMangerLayerUI::addItemAchieve(eAchievementDetailType achieveId,cocos
         
         targetText->setColor(Color3B(105, 87, 055));
         if (isCommple) {
-            targetText->setColor(Color3B(180, 150, 106));
+            targetText->setColor(Color3B(185, 153, 109));
         }
         if (!isCommple &&isHideAchieve)
         {

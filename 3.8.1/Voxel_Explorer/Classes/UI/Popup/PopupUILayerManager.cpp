@@ -27,6 +27,7 @@
 #include "GlobalPromptLayer.hpp"
 #include "AchievePopupUI.h"
 #include "AchieveItemPopupUI.hpp"
+#include "DeadPopupUI.h"
 PopupUILayerManager::PopupUILayerManager()
 {
     m_pParentLayer = nullptr;
@@ -154,6 +155,9 @@ PopupUILayer* PopupUILayerManager::initPopUp(ePopupType type)
             break;
         case ePopupAchieveItem:
             popupLayer = AchieveItemPopupUI::create();
+            break;
+        case ePopupDead:
+            popupLayer = DeadPopupUI::create();
             break;
         default:
             break;

@@ -6,7 +6,7 @@
       <ObjectData Name="Layer" Tag="84" ctype="GameLayerObjectData">
         <Size X="140.0000" Y="72.0000" />
         <Children>
-          <AbstractNodeData Name="item_background" ActionTag="-981883369" Tag="89" IconVisible="False" PercentHeightEnable="True" PercentHeightEnabled="True" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" Scale9Enable="True" LeftEage="5" RightEage="5" TopEage="5" BottomEage="5" Scale9OriginX="5" Scale9OriginY="5" Scale9Width="6" Scale9Height="6" ctype="ImageViewObjectData">
+          <AbstractNodeData Name="item_background" ActionTag="-981883369" Tag="89" IconVisible="False" PercentWidthEnable="True" PercentHeightEnable="True" PercentWidthEnabled="True" PercentHeightEnabled="True" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" Scale9Enable="True" LeftEage="4" RightEage="4" TopEage="4" BottomEage="4" Scale9OriginX="4" Scale9OriginY="4" Scale9Width="5" Scale9Height="5" ctype="ImageViewObjectData">
             <Size X="140.0000" Y="72.0000" />
             <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
             <Position X="70.0000" Y="36.0000" />
@@ -14,12 +14,12 @@
             <CColor A="255" R="255" G="255" B="255" />
             <PrePosition X="0.5000" Y="0.5000" />
             <PreSize X="1.0000" Y="1.0000" />
-            <FileData Type="PlistSubImage" Path="ui_frame_1.png" Plist="ui_sprite.plist" />
+            <FileData Type="PlistSubImage" Path="ui_frame_9.png" Plist="ui_sprite.plist" />
           </AbstractNodeData>
-          <AbstractNodeData Name="item_prop_layer" ActionTag="854255081" Tag="92" IconVisible="False" VerticalEdge="TopEdge" BottomMargin="25.0000" TouchEnable="True" BackColorAlpha="102" ColorAngle="90.0000" ctype="PanelObjectData">
+          <AbstractNodeData Name="item_prop_layer" ActionTag="854255081" Tag="92" IconVisible="False" VerticalEdge="TopEdge" BottomMargin="20.0000" TouchEnable="True" BackColorAlpha="102" ColorAngle="90.0000" ctype="PanelObjectData">
             <Size X="140.0000" Y="52.0000" />
             <Children>
-              <AbstractNodeData Name="item_base_layer" ActionTag="-1752329100" Tag="96" IconVisible="False" PercentWidthEnable="True" PercentHeightEnable="True" PercentWidthEnabled="True" PercentHeightEnabled="True" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" TouchEnable="True" BackColorAlpha="102" ComboBoxIndex="1" ColorAngle="90.0000" ctype="PanelObjectData">
+              <AbstractNodeData Name="item_base_layer" ActionTag="-1752329100" Tag="96" IconVisible="False" PercentWidthEnable="True" PercentHeightEnable="True" PercentWidthEnabled="True" PercentHeightEnabled="True" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" TouchEnable="True" BackColorAlpha="102" ColorAngle="90.0000" ctype="PanelObjectData">
                 <Size X="140.0000" Y="52.0000" />
                 <Children>
                   <AbstractNodeData Name="item_lv_num_text" ActionTag="-94841955" Tag="100" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="111.8141" RightMargin="-58.8141" TopMargin="3.9445" BottomMargin="4.0555" FontSize="36" LabelText="Lv.10" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
@@ -104,7 +104,7 @@
                 <EndColor A="255" R="255" G="255" B="255" />
                 <ColorVector ScaleY="1.0000" />
               </AbstractNodeData>
-              <AbstractNodeData Name="item_attr_layer" ActionTag="-1294983277" Tag="95" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" TopMargin="52.0000" BottomMargin="-20.0000" TouchEnable="True" BackColorAlpha="102" ComboBoxIndex="1" ColorAngle="90.0000" ctype="PanelObjectData">
+              <AbstractNodeData Name="item_attr_layer" ActionTag="-1294983277" Tag="95" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" TopMargin="52.0000" BottomMargin="-20.0000" TouchEnable="True" BackColorAlpha="102" ColorAngle="90.0000" ctype="PanelObjectData">
                 <Size X="140.0000" Y="20.0000" />
                 <AnchorPoint ScaleX="0.5000" ScaleY="1.0000" />
                 <Position X="70.0000" />
@@ -123,7 +123,7 @@
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
             <CColor A="255" R="255" G="255" B="255" />
             <PrePosition Y="1.0000" />
-            <PreSize X="1.0000" Y="0.6753" />
+            <PreSize X="1.0000" Y="0.7222" />
             <SingleColor A="255" R="255" G="192" B="203" />
             <FirstColor A="255" R="150" G="200" B="255" />
             <EndColor A="255" R="255" G="255" B="255" />

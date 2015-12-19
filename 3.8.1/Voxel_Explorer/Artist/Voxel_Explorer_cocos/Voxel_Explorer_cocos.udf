@@ -28,5 +28,20 @@
         <EnableHTML5Advanced Value="False" />
       </Value>
     </Item>
+    <Item Key="TabsParamsKey">
+      <Value ctype="TabsInfo">
+        <OpenedDocuments>
+          <FilePathData Path="menuscene.csd" />
+          <FilePathData Path="pausePopupLayer.csd" />
+          <FilePathData Path="itemPopupLayer.csd" />
+          <FilePathData Path="itemBottomLayer.csd" />
+          <FilePathData Path="itemShopBottomLayer.csd" />
+          <FilePathData Path="characterInfoLayer.csd" />
+          <FilePathData Path="dialogueLayer.csd" />
+          <FilePathData Path="alertLayer.csd" />
+        </OpenedDocuments>
+        <ActiveDocument Path="alertLayer.csd" />
+      </Value>
+    </Item>
   </Properties>
 </UserData>

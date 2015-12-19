@@ -42,6 +42,7 @@ public:
     void addDodgeTotalNum();
     void addBlockTotalNum();
     void addSearchHideInfoNum();
+    
    
     CChaosNumber getDataStatistType(eStatistType type) const;
     

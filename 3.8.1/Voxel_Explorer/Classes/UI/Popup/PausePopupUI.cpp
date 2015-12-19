@@ -36,10 +36,21 @@ bool PausePopupUI::addEvents()
     m_pBtnExitGame= dynamic_cast<ui::Button*>(UtilityHelper::seekNodeByName(m_pRootNode, "pause_btn_exitgame"));
     if (!m_pBtnExitGame)
         return false;
+    m_pBtnMainMenu->setTitleFontName(UtilityHelper::getLocalString("FONT_NAME"));
+    m_pBtnMainMenu->setTitleFontSize(36);
+    m_pBtnMainMenu->getTitleRenderer()->setScale(0.4);
+    m_pBtnMainMenu->setTitleText(UtilityHelper::getLocalStringForUi("BTN_TEXT_MAINMENU"));
     
-    m_pBtnMainMenu->loadTextureNormal(UtilityHelper::getLocalStringForUi("PAUSE_BTN_MAIN_MENU"),TextureResType::PLIST);
-    m_pBtnSetting->loadTextureNormal(UtilityHelper::getLocalStringForUi("PAUSE_BTN_SETTING"),TextureResType::PLIST);
-    m_pBtnExitGame->loadTextureNormal(UtilityHelper::getLocalStringForUi("PAUSE_BTN_EXIT_GAME"),TextureResType::PLIST);
+    m_pBtnSetting->setTitleFontName(UtilityHelper::getLocalString("FONT_NAME"));
+    m_pBtnSetting->setTitleFontSize(36);
+    m_pBtnSetting->getTitleRenderer()->setScale(0.4);
+    m_pBtnSetting->setTitleText(UtilityHelper::getLocalStringForUi("BTN_TEXT_SETTING"));
+    
+    m_pBtnExitGame->setTitleFontName(UtilityHelper::getLocalString("FONT_NAME"));
+    m_pBtnExitGame->setTitleFontSize(36);
+    m_pBtnExitGame->getTitleRenderer()->setScale(0.4);
+    m_pBtnExitGame->setTitleText(UtilityHelper::getLocalStringForUi("BTN_TEXT_EXITGAME"));
+    
     
     m_pBtnMainMenu->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
     m_pBtnSetting->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);

@@ -9,24 +9,26 @@
           <AbstractNodeData Name="item_bottom_Layer" ActionTag="-744351137" Tag="144" IconVisible="False" PercentWidthEnable="True" PercentHeightEnable="True" PercentWidthEnabled="True" PercentHeightEnabled="True" HorizontalEdge="BothEdge" TouchEnable="True" BackColorAlpha="102" ColorAngle="90.0000" ctype="PanelObjectData">
             <Size X="140.0000" Y="30.0000" />
             <Children>
-              <AbstractNodeData Name="item_btn_equip" ActionTag="-318034849" Tag="55" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="6.7829" RightMargin="83.2171" TopMargin="4.8370" BottomMargin="4.1630" TouchEnable="True" FontSize="11" ButtonText="equip" Scale9Enable="True" LeftEage="4" RightEage="4" TopEage="4" BottomEage="4" Scale9OriginX="4" Scale9OriginY="4" Scale9Width="5" Scale9Height="5" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="ButtonObjectData">
-                <Size X="50.0000" Y="25.0000" />
+              <AbstractNodeData Name="item_btn_equip" ActionTag="-318034849" Tag="55" IconVisible="False" PercentWidthEnable="True" PercentHeightEnable="True" PercentWidthEnabled="True" PercentHeightEnabled="True" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="6.3415" RightMargin="77.6585" TopMargin="1.5000" BottomMargin="1.5000" TouchEnable="True" FontSize="11" ButtonText="equip" Scale9Enable="True" LeftEage="4" RightEage="4" TopEage="4" BottomEage="4" Scale9OriginX="4" Scale9OriginY="4" Scale9Width="5" Scale9Height="5" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="ButtonObjectData">
+                <Size X="56.0000" Y="27.0000" />
                 <AnchorPoint ScaleY="0.5000" />
-                <Position X="6.7829" Y="14.7026" />
+                <Position X="6.3415" Y="15.0000" />
                 <Scale ScaleX="1.0000" ScaleY="1.0000" />
                 <CColor A="255" R="255" G="255" B="255" />
-                <PrePosition X="0.0484" Y="0.4901" />
-                <PreSize X="0.3571" Y="0.5303" />
+                <PrePosition X="0.0453" Y="0.5000" />
+                <PreSize X="0.4000" Y="0.9000" />
                 <FontResource Type="Normal" Path="fonts/04B_03.TTF" Plist="" />
-                <TextColor A="255" R="30" G="144" B="255" />
-                <NormalFileData Type="PlistSubImage" Path="ui_frame_6.png" Plist="ui_sprite.plist" />
+                <TextColor A="255" R="255" G="255" B="255" />
+                <DisabledFileData Type="PlistSubImage" Path="ui_frame_11.png" Plist="ui_sprite.plist" />
+                <PressedFileData Type="PlistSubImage" Path="ui_frame_11.png" Plist="ui_sprite.plist" />
+                <NormalFileData Type="PlistSubImage" Path="ui_frame_10.png" Plist="ui_sprite.plist" />
                 <OutlineColor A="255" R="255" G="0" B="0" />
                 <ShadowColor A="255" R="110" G="110" B="110" />
               </AbstractNodeData>
               <AbstractNodeData Name="item_shop_slider" ActionTag="66385672" Tag="97" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="79.6500" RightMargin="10.3500" TopMargin="18.4824" BottomMargin="6.5176" TouchEnable="True" ctype="SliderObjectData">
                 <Size X="50.0000" Y="9.0000" />
                 <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-                <Position X="104.6500" Y="9.7214" />
+                <Position X="104.6500" Y="9.7200" />
                 <Scale ScaleX="1.0000" ScaleY="1.0000" />
                 <CColor A="255" R="255" G="255" B="255" />
                 <PrePosition X="0.7475" Y="0.3240" />
@@ -38,7 +40,7 @@
               <AbstractNodeData Name="item_shop_item_count" ActionTag="810671219" Tag="98" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="86.4692" RightMargin="-48.4692" TopMargin="-11.6222" BottomMargin="3.6222" FontSize="36" LabelText="数量:3" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
                 <Size X="102.0000" Y="42.0000" />
                 <AnchorPoint ScaleY="0.5000" />
-                <Position X="86.4692" Y="21.7254" />
+                <Position X="86.4640" Y="21.7260" />
                 <Scale ScaleX="0.3000" ScaleY="0.3000" />
                 <CColor A="255" R="255" G="255" B="255" />
                 <PrePosition X="0.6176" Y="0.7242" />

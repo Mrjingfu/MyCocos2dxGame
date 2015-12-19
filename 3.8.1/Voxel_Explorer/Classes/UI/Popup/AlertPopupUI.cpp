@@ -51,8 +51,17 @@ bool AlertPopupUI::addEvents()
     
     m_pTitle->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
     m_pMessage->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
-    m_pOk->getTitleRenderer()->setSystemFontName(UtilityHelper::getLocalString("FONT_NAME"));
-    m_pCancel->getTitleRenderer()->setSystemFontName(UtilityHelper::getLocalString("FONT_NAME"));
+    
+    m_pOk->setTitleFontName(UtilityHelper::getLocalString("FONT_NAME"));
+    m_pOk->setTitleFontSize(36);
+    m_pOk->getTitleRenderer()->setScale(0.3);
+    m_pOk->setTitleText(UtilityHelper::getLocalStringForUi("BTN_TEXT_OK"));
+
+    m_pCancel->setTitleFontName(UtilityHelper::getLocalString("FONT_NAME"));
+    m_pCancel->setTitleFontSize(36);
+    m_pCancel->getTitleRenderer()->setScale(0.3);
+    m_pCancel->setTitleText(UtilityHelper::getLocalStringForUi("BTN_TEXT_CANCEL"));
+    
     m_pOk->addClickEventListener(CC_CALLBACK_1(AlertPopupUI::onClickOk, this));
     m_pCancel->addClickEventListener(CC_CALLBACK_1(AlertPopupUI::onClickCancel,this));
     
@@ -80,8 +89,9 @@ void AlertPopupUI::refreshUIView()
     if (m_pNegativeFun && m_pPositiveFun) {
         m_pOk->setVisible(true);
         m_pCancel->setVisible(true);
-        m_pCancel->setPosition(cocos2d::Vec2(m_pRootNode->getContentSize().width*0.7,m_pCancel->getPositionY()));
-        m_pOk->setPosition(cocos2d::Vec2(m_pRootNode->getContentSize().width*0.3,m_pOk->getPositionY()));
+        m_pOk->setPosition(cocos2d::Vec2(m_pRootNode->getContentSize().width*0.26,m_pOk->getPositionY()));
+        m_pCancel->setPosition(cocos2d::Vec2(m_pOk->getPositionX()+m_pOk->getContentSize().width*0.5+10,m_pCancel->getPositionY()));
+        
     }
     
     if (m_pNegativeFun&&!m_pPositiveFun) {

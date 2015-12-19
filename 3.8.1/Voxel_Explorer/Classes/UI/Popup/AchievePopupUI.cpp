@@ -39,15 +39,15 @@ bool AchievePopupUI::addEvents()
     
     m_pAchieveGridView = TGridView::create();
     m_pAchieveGridView->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
-    m_pAchieveGridView->setContentSize(cocos2d::Size(m_achieveFrame->getContentSize().width,m_achieveFrame->getContentSize().height-5));
+    m_pAchieveGridView->setContentSize(cocos2d::Size(m_achieveFrame->getContentSize().width,m_achieveFrame->getContentSize().height-25));
     m_pAchieveGridView->setCol(2);
-    m_pAchieveGridView->setPosition(m_achieveFrame->getContentSize()*0.5);
+    m_pAchieveGridView->setPosition(cocos2d::Vec2(m_achieveFrame->getContentSize().width*0.5,m_achieveFrame->getContentSize().width*0.44));
     m_pAchieveGridView->setScrollBarWidth(2);
     m_pAchieveGridView->setScrollBarColor(Color3B::WHITE);
-    m_pAchieveGridView->setScrollBarPositionFromCornerForVertical(cocos2d::Vec2(0,0));
+    m_pAchieveGridView->setScrollBarPositionFromCorner(cocos2d::Vec2(5,0));
 //    m_pShopGridView->setBackGroundColorType(cocos2d::ui::Layout::BackGroundColorType::SOLID);
-    m_pAchieveGridView->setItemsMargin(cocos2d::Size(3,5));
-    m_pAchieveGridView->setFrameMargin(cocos2d::Size(9,10));
+    m_pAchieveGridView->setItemsMargin(cocos2d::Size(3,6));
+    m_pAchieveGridView->setFrameMargin(cocos2d::Size(9,2));
 //    m_pAchieveGridView->addEventListener(CC_CALLBACK_2(ShopPopupUI::selectItemEvent, this));
     m_pAchieveGridView->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
     m_achieveFrame->addChild(m_pAchieveGridView);

@@ -202,17 +202,35 @@
 	<string>赌场</string>
 	<key>NPC_OLDLADY_ANSWER</key>
 	<string>炼金店</string>
-	<key>PAUSE_BTN_MAIN_MENU</key>
-	<string>btn_mainmenu_ch.png</string>
-	<key>PAUSE_BTN_SETTING</key>
-	<string>btn_setting_ch.png</string>
-	<key>PAUSE_BTN_EXIT_GAME</key>
-	<string>btn_exit_ch.png</string>
 	<key>ITEM_SPLITE_COUNT</key>
 	<string>数量：%d</string>
 	<key>ITEM_BAG_DELETE</key>
 	<string>是否移除该道具？</string>
 	<key>GO_CHASM</key>
 	<string>是否跳入深渊呢？</string>
+	<key>BTN_TEXT_MAINMENU</key>
+	<string>主菜单</string>
+	<key>BTN_TEXT_SETTING</key>
+	<string>设置</string>
+	<key>BTN_TEXT_EXITGAME</key>
+	<string>退出游戏</string>
+	<key>BTN_TEXT_DISCARD</key>
+	<string>丢弃</string>
+	<key>BTN_TEXT_EQUIP</key>
+	<string>装备</string>
+	<key>BTN_TEXT_INDENTIFY</key>
+	<string>鉴定</string>
+	<key>BTN_TEXT_RESTART</key>
+	<string>重新开始</string>
+	<key>BTN_TEXT_OK</key>
+	<string>确定</string>
+	<key>BTN_TEXT_CANCEL</key>
+	<string>取消</string>
+	<key>BTN_TEXT_SELL</key>
+	<string>出售</string>
+	<key>BTN_TEXT_BUY</key>
+	<string>购买</string>
+	<key>BTN_TEXT_USE</key>
+	<string>使用</string>
 </dict>
 </plist>

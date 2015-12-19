@@ -72,6 +72,16 @@ bool ItemPopupUI::initBottom()
     if (!m_pBtnEquip)
         return false;
     
+    m_pBtnDiscard->setTitleFontName(UtilityHelper::getLocalString("FONT_NAME"));
+    m_pBtnDiscard->setTitleFontSize(36);
+    m_pBtnDiscard->getTitleRenderer()->setScale(0.3);
+    m_pBtnDiscard->setTitleText(UtilityHelper::getLocalStringForUi("BTN_TEXT_DISCARD"));
+    
+    m_pBtnEquip->setTitleFontName(UtilityHelper::getLocalString("FONT_NAME"));
+    m_pBtnEquip->setTitleFontSize(36);
+    m_pBtnEquip->getTitleRenderer()->setScale(0.3);
+    m_pBtnEquip->setTitleText(UtilityHelper::getLocalStringForUi("BTN_TEXT_EQUIP"));
+    
     m_pBtnDiscard->addClickEventListener(CC_CALLBACK_1(ItemPopupUI::onClickDiscard, this));
 
     m_pBottomFrame->removeFromParentAndCleanup(false);
@@ -686,14 +696,14 @@ void ItemPopupUI::updateEquipItem()
             }
             if (m_pBtnEquip) {
                 m_pBtnEquip->setPosition(m_pBottomFrame->getContentSize()*0.5);
-                m_pBtnEquip->setTitleText("Discard");
+                m_pBtnEquip->setTitleText(UtilityHelper::getLocalStringForUi("BTN_TEXT_DISCARD"));
                 m_pBtnEquip->addClickEventListener(CC_CALLBACK_1(ItemPopupUI::onClickDiscard, this));
             }
         }else
         {
             //未鉴定过的给一个鉴定按钮
             if (m_pBtnEquip) {
-                m_pBtnEquip->setTitleText("Identified");
+                m_pBtnEquip->setTitleText(UtilityHelper::getLocalStringForUi("BTN_TEXT_INDENTIFY"));
                 m_pBtnEquip->addClickEventListener(CC_CALLBACK_1(ItemPopupUI::onClickIdentified, this));
             }
         }
@@ -721,8 +731,7 @@ void ItemPopupUI::updateUseItem()
         addMoneyUI();
         addBottomUI();
         if (m_pBtnEquip) {
-            m_pBtnEquip->setTitleFontName(UtilityHelper::getLocalString("FONT_NAME"));
-            m_pBtnEquip->setTitleText("USE");
+            m_pBtnEquip->setTitleText(UtilityHelper::getLocalStringForUi("BTN_TEXT_USE"));
         }
     }
 
