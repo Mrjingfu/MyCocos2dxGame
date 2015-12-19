@@ -427,11 +427,23 @@ void VoxelExplorer::updateFogOfWar(const cocos2d::Rect& areaRect, bool visited)
     
     if(m_pMonstersLayer)
     {
+        bool makeAlert = false;
         for (const auto& child : m_pMonstersLayer->getChildren())
         {
             BaseMonster* monster = dynamic_cast<BaseMonster*>(child);
             if(monster && areaRect.containsPoint(monster->getPosInMap()) && monster->getState() != BaseMonster::MS_DEATH)
+            {
+                if(monster->getState() == BaseMonster::MS_SLEEPING && !monster->isVisible())
+                {
+                    if(!makeAlert)
+                    {
+                        std::string soundName = LevelResourceManager::getInstance()->getMonsterSoundEffectRes(MONSTER_MODEL_NAMES[monster->getMonsterType()], "ALERT");
+                        SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+                        makeAlert = true;
+                    }
+                }
                 monster->setVisited(visited);
+            }
         }
     }
     
@@ -575,9 +587,7 @@ void VoxelExplorer::generatePickItem(const cocos2d::Vec2& pos, bool generateItem
     {
         if(copper > 0)
         {
-            
             PlayerProperty::getInstance()->addMoney(copper);
-            ///声音
         }
         if(generateItem)
         {
@@ -677,7 +687,6 @@ void VoxelExplorer::generatePickItemByBoss(const cocos2d::Vec2& pos, int copper)
         if(copper > 0)
         {
             PlayerProperty::getInstance()->addMoney(copper);
-            ///声音
         }
         PickableItem* item = PickableItem::create(PickableItem::PIT_KEY_BOSS, 1);
         if(item)
@@ -774,6 +783,10 @@ void VoxelExplorer::handleUseUseableItem(const cocos2d::Vec2& mapPos)
                 {
                     StatisticsManager::getInstance()->addUserableOpenNum(useableItem->getUseableItemType());
                     m_pCurrentLevel->createSiegeMonsters(useableItem->getPosInMap());
+                    
+                    std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("CHEST_UNLOCKED");
+                    SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+                    
                     useableItem->setState(UseableItem::UIS_FADEOUT);
                     return;
                 }
@@ -785,13 +798,18 @@ void VoxelExplorer::handleUseUseableItem(const cocos2d::Vec2& mapPos)
                         {
 
                             StatisticsManager::getInstance()->addUserableOpenNum(useableItem->getUseableItemType());
-                            //声音
+
+                            std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("CHEST_UNLOCKED");
+                                SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+                
                             useableItem->setState(UseableItem::UIS_FADEOUT);
                             Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_USE_COPPER_CHEST_KEY);
                         }
                         else
                         {
-                            ///声音
+
+                            std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("CHEST_LOCKED");
+                            SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
                             Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_NO_COPPER_KEY);
                         }
                     }
@@ -801,13 +819,17 @@ void VoxelExplorer::handleUseUseableItem(const cocos2d::Vec2& mapPos)
                         {
 
                             StatisticsManager::getInstance()->addUserableOpenNum(useableItem->getUseableItemType());
-                            ///声音
+                            
+                            std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("CHEST_UNLOCKED");
+                            SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+                            
                             useableItem->setState(UseableItem::UIS_FADEOUT);
                             Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_USE_SILVER_CHEST_KEY);
                         }
                         else
                         {
-                            ///声音
+                            std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("CHEST_LOCKED");
+                            SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
                             Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_NO_SILVER_KEY);
                         }
                     }
@@ -817,14 +839,19 @@ void VoxelExplorer::handleUseUseableItem(const cocos2d::Vec2& mapPos)
                         {
 
                             StatisticsManager::getInstance()->addUserableOpenNum(useableItem->getUseableItemType());
-                            ///声音
+                            
+                            std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("CHEST_UNLOCKED");
+                            SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+                            
                             useableItem->setState(UseableItem::UIS_FADEOUT);
                             Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_USE_GOLD_CHEST_KEY);
 
                         }
                         else
                         {
-                            ///声音
+                            std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("CHEST_LOCKED");
+                            SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+                            
                             Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_NO_GOLD_KEY);
                         }
                     }
@@ -832,6 +859,22 @@ void VoxelExplorer::handleUseUseableItem(const cocos2d::Vec2& mapPos)
                 }
                 else
                 {
+                    int rand = cocos2d::random(0, 2);
+                    if(rand == 0)
+                    {
+                        std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("JAR_FRAGMENTATION0");
+                        SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+                    }
+                    else if(rand == 1)
+                    {
+                        std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("JAR_FRAGMENTATION1");
+                        SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+                    }
+                    else
+                    {
+                        std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("JAR_FRAGMENTATION2");
+                        SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+                    }
                     useableItem->setState(UseableItem::UIS_FADEOUT);
                     StatisticsManager::getInstance()->addUserableOpenNum(useableItem->getUseableItemType());
                     return;
@@ -1021,7 +1064,7 @@ void VoxelExplorer::handleShowSearchEffect(const cocos2d::Vec2& mapPos)
             {
                 if(tile->getPosInMap() == mapPos)
                 {
-                    EaseSineOut* colorTo1 = EaseSineOut::create(TintTo::create(0.35f, Color3B(255,150,255)));
+                    EaseSineOut* colorTo1 = EaseSineOut::create(TintTo::create(0.35f, UtilityHelper::randomColor()));
                     EaseSineOut* colorTo2 = EaseSineOut::create(TintTo::create(0.35f, Color3B::WHITE));
                     Sequence* sequence = Sequence::create(colorTo1, colorTo2, nullptr);
                     tile->runAction(sequence);
@@ -1086,25 +1129,33 @@ void VoxelExplorer::handleMonsterHurt(const cocos2d::Vec2& mapPos)
         }
     }
 }
-void VoxelExplorer::handlePlayerHurt(const cocos2d::Vec2& mapPos, MonsterProperty* monsterProperty)
+void VoxelExplorer::handlePlayerHurt(const cocos2d::Vec2& mapPos, BaseMonster* monster)
 {
-    if(!m_pPlayer || !monsterProperty ||m_pPlayer->getState() == Player::PS_DEATH)
+    if(!m_pPlayer || !monster ||m_pPlayer->getState() == Player::PS_DEATH)
         return;
     
     if(m_pPlayer->getPosInMap() != mapPos)
-        return m_pPlayer->attackByMonster(monsterProperty, true);
-    
-    return m_pPlayer->attackByMonster(monsterProperty, false);
+    {
+        ///处理miss声音
+        return m_pPlayer->attackByMonster(monster->getMonsterProperty(), true);
+    }
+    std::string soundName = LevelResourceManager::getInstance()->getMonsterSoundEffectRes(MONSTER_MODEL_NAMES[monster->getMonsterType()], "ATTACK");
+    SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+    return m_pPlayer->attackByMonster(monster->getMonsterProperty(), false);
 }
-void VoxelExplorer::handlePlayerHurtByBoss(const cocos2d::Vec2& mapPos, BossProperty* bossProperty)
+void VoxelExplorer::handlePlayerHurtByBoss(const cocos2d::Vec2& mapPos, BaseBoss* boss)
 {
-    if(!m_pPlayer || !bossProperty ||m_pPlayer->getState() == Player::PS_DEATH)
+    if(!m_pPlayer || !boss ||m_pPlayer->getState() == Player::PS_DEATH)
         return;
     
     if(m_pPlayer->getPosInMap() != mapPos)
-        return m_pPlayer->attackByBoss(bossProperty, true);
-    
-    return m_pPlayer->attackByBoss(bossProperty, false);
+    {
+        ///处理miss声音
+        return m_pPlayer->attackByBoss(boss->getBossProperty(), true);
+    }
+    std::string soundName = LevelResourceManager::getInstance()->getMonsterSoundEffectRes(MONSTER_MODEL_NAMES[boss->getBossType()], "ATTACK");
+    SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+    return m_pPlayer->attackByBoss(boss->getBossProperty(), false);
 }
 void VoxelExplorer::handlePlayerUseScroll(PickableItem::PickableItemType type)
 {
@@ -1224,7 +1275,9 @@ void VoxelExplorer::handleDownstairs()
     else
     {
         ///加载boss房间
-        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_GO_BOSSROOM);
+        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_GO_DOWNSTAIRS);
+        auto scene = GameScene::createScene();
+        Director::getInstance()->replaceScene(scene);
     }
 }
 void VoxelExplorer::handleGoChasm()

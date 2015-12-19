@@ -11,7 +11,9 @@
 #include "BaseLevel.h"
 #include "AlisaMethod.h"
 #include "UtilityHelper.h"
+#include "SimpleAudioEngine.h"
 USING_NS_CC;
+using namespace CocosDenshion;
 const std::string PICKABLE_ITEM_NAMES[] = {
     
     //PIN_KEY_BEGIN
@@ -304,6 +306,108 @@ void PickableItem::setState(PickableItemState state)
 
 void PickableItem::onEnterIdle()
 {
+    if(m_Type <= PIT_KEY_ROOM)
+    {
+        std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("KEY_DROP");
+        SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+    }
+    else if(m_Type <= PIT_DAGGER_PRO_RUBYDAGGER)
+    {
+        std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("SWORD_DROP");
+        SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+    }
+    else if(m_Type <= PIT_AXE_PRO_DOUBLEBITAX)
+    {
+        std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("MACE_DROP");
+        SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+    }
+    else if(m_Type <= PIT_DAGGER_PRO_RUBYDAGGER)
+    {
+        std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("SWORD_DROP");
+        SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+    }
+    else if(m_Type <= PIT_MACE_PRO_SLEDGEHAMMER)
+    {
+        std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("MACE_DROP");
+        SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+    }
+    else if(m_Type <= PIT_BOW_PRO_GOLDENBOW)
+    {
+        std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("BOW_DROP");
+        SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+    }
+    else if(m_Type <= PIT_STAFF_PRO_MONKSTAFF)
+    {
+        std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("STAFF_DROP");
+        SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+    }
+    else if(m_Type <= PIT_SHIELD_PRO_TOWERSHIELD)
+    {
+        std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("SHIELD_DROP");
+        SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+    }
+    else if(m_Type <= PIT_CLOTH_LEATHERARMOR)
+    {
+        std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("CLOTH_DROP");
+        SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+    }
+    else if(m_Type <= PIT_CLOTH_CHAINSHOES)
+    {
+        std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("SHOES_DROP");
+        SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+    }
+    else if(m_Type <= PIT_CLOTH_HELEMT)
+    {
+        std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("HELEMT_DROP");
+        SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+    }
+    else if(m_Type <= PIT_CLOTH_STEELARMOR)
+    {
+        std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("ARMOR_DROP");
+        SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+    }
+    else if(m_Type <= PIT_CLOTH_PRO_MAGA_CAP)
+    {
+        std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("CLOTH_DROP");
+        SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+    }
+    else if(m_Type <= PIT_CLOTH_PRO_LEATHERARMOR)
+    {
+        std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("ARMOR_DROP");
+        SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+    }
+    else if(m_Type <= PIT_CLOTH_PRO_CHAINSHOES)
+    {
+        std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("CLOTH_DROP");
+        SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+    }
+    else if(m_Type <= PIT_CLOTH_PRO_HELEMT)
+    {
+        std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("HELEMT_DROP");
+        SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+    }
+    else if(m_Type <= PIT_CLOTH_PRO_STEELARMOR)
+    {
+        std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("ARMOR_DROP");
+        SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+    }
+    else if(m_Type <= PIT_ORNAMENT_PRO_JEWELS)
+    {
+        std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("ORNAMENT_DROP");
+        SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+    }
+    else if(m_Type <= PIT_SCROLL_DESTINY)
+    {
+        std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("SCROLL_DROP");
+        SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+    }
+    else if(m_Type <= PIT_POTION_UNIVERSAL)
+    {
+        std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("POTION_DROP");
+        SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+    }
+
+    
     addTerrainTileFlag(TileInfo::PICKABLE);
     
     EaseSineOut* fadeIn = EaseSineOut::create(FadeIn::create(1.0f));

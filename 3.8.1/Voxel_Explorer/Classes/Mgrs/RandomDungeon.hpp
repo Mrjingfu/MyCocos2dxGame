@@ -69,6 +69,7 @@ public:
     {
         return m_nCurrentDepth > m_nTotalNum;
     }
+    DUNGEON_TYPE getDungeonNodeType() const { return m_Type; }
     std::string     m_strDungeonName;       ////地城名称
     std::string     m_strDungeonBossName;   ////Boss地城名称
     CChaosNumber    m_nTransmutationDepth;  ////嬗变深度

@@ -74,23 +74,23 @@ public:
     void removePlayerBuffer(PlayerBuffer buff);
     void resetPlayerBuffer();
     
-    void addMoney(CChaosNumber copper);
+    void addMoney(CChaosNumber copper, bool sound = true);
     bool costMoney(CChaosNumber copper);
     void setExp(CChaosNumber exp);
     void setCurrentHP(CChaosNumber hp);
     void setCurrentMP(CChaosNumber mp);
-    bool equipWeapon(CChaosNumber id);
-    bool equipSecondWeapon(CChaosNumber id);
-    bool equipArmor(CChaosNumber id);
-    bool equipOrnaments(CChaosNumber id);
+    bool equipWeapon(CChaosNumber id, bool sound = true);
+    bool equipSecondWeapon(CChaosNumber id, bool sound = true);
+    bool equipArmor(CChaosNumber id, bool sound = true);
+    bool equipOrnaments(CChaosNumber id, bool sound = true);
     bool indentifyItem(CChaosNumber id);
     bool usePotion(CChaosNumber id);
     bool useScroll(CChaosNumber id);
     bool useKey(PickableItem::PickableItemType type);
     
-    bool buyItemToBag(PickableItemProperty* buyItemProperty, CChaosNumber count, bool toIndentify = false);
+    bool buyItemToBag(PickableItemProperty* buyItemProperty, CChaosNumber count, bool toIndentify = false, bool sound = true);
     bool sellItemFromBag(PickableItemProperty* sellItemProperty, CChaosNumber count);
-    bool addItemToBag(PickableItem::PickableItemType type, CChaosNumber level);
+    bool addItemToBag(PickableItem::PickableItemType type, CChaosNumber level, bool sound = true);
     bool removeStackableItemFromBag(PickableItem::PickableItemType type, CChaosNumber count);
     bool removeItemFromBag(CChaosNumber id);
     void extendBagSpace();

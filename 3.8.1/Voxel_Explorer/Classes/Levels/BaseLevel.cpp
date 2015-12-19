@@ -13,7 +13,10 @@
 #include "UtilityHelper.h"
 #include "RandomDungeon.hpp"
 #include "BasePortal.hpp"
+#include "LevelResourceManager.h"
+#include "SimpleAudioEngine.h"
 USING_NS_CC;
+using namespace CocosDenshion;
 
 BaseLevel::BaseLevel()
 {
@@ -368,9 +371,13 @@ void BaseLevel::searchAndCheck(int x, int y, int searchDistance)
         neighbours = getNeighbours21();
     else
         neighbours = getNeighbours25();
+    bool found = false;
     int pos = y * m_nWidth + x;
     for (int i = 0; i < neighbours.size(); ++i) {
         int j = pos + neighbours[i];
+        
+        VoxelExplorer::getInstance()->handleShowSearchEffect(Vec2(m_Map[j].m_nX, m_Map[j].m_nY));
+        
         if(m_Map[j].m_Type == TerrainTile::TT_HIDE_TOXIC_TRAP
             || m_Map[j].m_Type == TerrainTile::TT_HIDE_FIRE_TRAP
             || m_Map[j].m_Type == TerrainTile::TT_HIDE_PARALYTIC_TRAP
@@ -380,12 +387,23 @@ void BaseLevel::searchAndCheck(int x, int y, int searchDistance)
         {
             m_Map[j].m_Type = (TerrainTile::TileType)(m_Map[j].m_Type - 1);
             VoxelExplorer::getInstance()->handleShowHiddenTrap(Vec2(m_Map[j].m_nX, m_Map[j].m_nY), m_Map[j].m_Type);
+            found = true;
         }
         else if(m_Map[j].m_Type == TerrainTile::TT_SECRET_DOOR)
         {
             VoxelExplorer::getInstance()->handleShowSecretDoor(Vec2(m_Map[j].m_nX, m_Map[j].m_nY));
+            found = true;
         }
-        VoxelExplorer::getInstance()->handleShowSearchEffect(Vec2(m_Map[j].m_nX, m_Map[j].m_nY));
+    }
+    if(found)
+    {
+        std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("SECRET_FOUND");
+        SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+    }
+    else
+    {
+        std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("SEARCH");
+        SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
     }
 }
 void BaseLevel::load()

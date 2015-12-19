@@ -17,7 +17,9 @@
 #include "FakeShadow.hpp"
 #include "StatisticsManager.hpp"
 #include "RandomDungeon.hpp"
+#include "SimpleAudioEngine.h"
 USING_NS_CC;
+using namespace CocosDenshion;
 const std::string MONSTER_MODEL_NAMES[] = {
     "MMN_UNKNOWN",
     
@@ -118,6 +120,8 @@ void BaseMonster::attackedByPlayer(bool miss)
     
     if(miss)
     {
+        std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("MISS");
+        SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
         m_pHurtData->m_bDodge = true;
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_MONSTER_HURT, m_pHurtData);
         return;
@@ -130,6 +134,8 @@ void BaseMonster::attackedByPlayer(bool miss)
     {
         if(amDodgeRate->getRandomIndex() == 0)
         {
+            std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("MISS");
+            SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
             m_pHurtData->m_bDodge = true;
             Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_MONSTER_HURT, m_pHurtData);
             return;
@@ -145,6 +151,8 @@ void BaseMonster::attackedByPlayer(bool miss)
         {
             attack = attack*2.0f;
             m_pHurtData->m_bCriticalStrike = true;
+            std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("CRITICALSTRIKE");
+            SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
         }
     }
         
@@ -161,6 +169,8 @@ void BaseMonster::attackedByPlayer(bool miss)
         {
             attack = attack*0.5f;
             m_pHurtData->m_bBlocked = true;
+            std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("CRITICALSTRIKE");
+            SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
         }
     }
         
@@ -185,6 +195,9 @@ void BaseMonster::attackedByPlayer(bool miss)
     {
         m_pMonsterProperty->setCurrentHP(currentHp);
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_MONSTER_PROPERTY_DIRTY, this);
+        
+        std::string soundName = LevelResourceManager::getInstance()->getMonsterSoundEffectRes(MONSTER_MODEL_NAMES[m_Type], "BEATTACKED");
+        SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
     }
 }
 void BaseMonster::setState(MonsterState state)
@@ -437,6 +450,8 @@ void BaseMonster::onEnterDeath()
             level = MAX(1, level- 3);
         VoxelExplorer::getInstance()->generatePickItem(getPosInMap(), generateItem, m_pMonsterProperty->getValueCopper().GetLongValue(), level);
     }
+    std::string soundName = LevelResourceManager::getInstance()->getMonsterSoundEffectRes(MONSTER_MODEL_NAMES[m_Type], "DEATH");
+    SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
 }
 void BaseMonster::onExitDeath()
 {
@@ -570,7 +585,7 @@ void BaseMonster::doAttack()
     if(m_bJumpMove)
     {
         EaseSineOut* moveUp = EaseSineOut::create(MoveTo::create(0.1f, Vec3(getPositionX(), getPositionY() + TerrainTile::CONTENT_SCALE*0.25f, getPositionZ()) + dir*0.4f));
-        CallFunc* callback = CallFunc::create(CC_CALLBACK_0(VoxelExplorer::handlePlayerHurt,VoxelExplorer::getInstance(),playerPos, m_pMonsterProperty));
+        CallFunc* callback = CallFunc::create(CC_CALLBACK_0(VoxelExplorer::handlePlayerHurt,VoxelExplorer::getInstance(),playerPos, this));
         EaseSineOut* moveDown = EaseSineOut::create(MoveTo::create(0.1f, getPosition3D()));
         Sequence* sequenceJump = Sequence::create(moveUp, callback, moveDown, NULL);
         CallFunc* callback2 = CallFunc::create(CC_CALLBACK_0(BaseMonster::onLand, this, false));
@@ -583,7 +598,7 @@ void BaseMonster::doAttack()
         Vec3 oriScale = Vec3(getScaleX(), getScaleY(), getScaleZ());
         ScaleTo* scaleTo1 = ScaleTo::create(0.5f, oriScale.x, oriScale.y, oriScale.z*0.8f);
         ScaleTo* scaleTo2 = ScaleTo::create(0.5f, oriScale.x, oriScale.y, oriScale.z);
-        CallFunc* callback = CallFunc::create(CC_CALLBACK_0(VoxelExplorer::handlePlayerHurt,VoxelExplorer::getInstance(),playerPos, m_pMonsterProperty));
+        CallFunc* callback = CallFunc::create(CC_CALLBACK_0(VoxelExplorer::handlePlayerHurt,VoxelExplorer::getInstance(),playerPos, this));
         EaseBackIn* moveTo1 = EaseBackIn::create(MoveTo::create(0.5f, getPosition3D() + dir*0.4f));
         EaseBackIn* moveTo2 = EaseBackIn::create(MoveTo::create(0.5f, getPosition3D()));
         Sequence* sequenceScale = Sequence::create(scaleTo1, scaleTo2, NULL);

@@ -860,6 +860,9 @@ void Player::onEnterDeath()
     this->setVisible(false);
     VoxelExplorer::getInstance()->addExplosion(getPosition3D());
     VoxelExplorer::getInstance()->updateMiniMap();
+    
+    std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("PLAYER_DEATH");
+    SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
 }
 
 void Player::onExitIdle()
@@ -903,7 +906,7 @@ void Player::onLand(bool isAttack)
         if(VoxelExplorer::getInstance()->getCurrentLevel())
         {
             std::string soundName = LevelResourceManager::getInstance()->getDungeonSoundEffectRes("STEP_STANDARD");
-            TerrainTile::TileType type = VoxelExplorer::getInstance()->getCurrentLevel()->getTerrainTileType(getPosInMap().x, getPosInMap().x);
+            TerrainTile::TileType type = VoxelExplorer::getInstance()->getCurrentLevel()->getTerrainTileType(getPosInMap().x, getPosInMap().y);
             if(type == TerrainTile::TT_TUNNEL)
                 soundName = LevelResourceManager::getInstance()->getDungeonSoundEffectRes("STEP_TUNNEL");
             SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
@@ -1026,7 +1029,6 @@ void Player::updatePlayerBuffer(float delta)
                     setState(PS_DEATH);
                     PlayerProperty::getInstance()->setCurrentHP(currentHp);
                     StatisticsManager::getInstance()->addRoleDeadNum(StatisticsManager::eRoleDeadType::RET_BUFFER_FIRE);
-//                    Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_DEATH, this);
                 }
                 else
                 {
