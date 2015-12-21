@@ -488,6 +488,9 @@ void VoxelExplorer::updateBossRoomDoor()
                         door->setMagicLocked(true);
                         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_DOOR_MAGIC_CLOSED);
                         door->setDoorState(BaseDoor::DS_CLOSED);
+                        
+                        if(m_pCurrentLevel)
+                            m_pCurrentLevel->playBGBossMusic();
                     }
                         
                     return;
@@ -800,7 +803,7 @@ void VoxelExplorer::handleUseUseableItem(const cocos2d::Vec2& mapPos)
                             StatisticsManager::getInstance()->addUserableOpenNum(useableItem->getUseableItemType());
 
                             std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("CHEST_UNLOCKED");
-                                SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+                            SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
                 
                             useableItem->setState(UseableItem::UIS_FADEOUT);
                             Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_USE_COPPER_CHEST_KEY);
@@ -1492,6 +1495,7 @@ bool VoxelExplorer::createLevel()
     if(!m_pCurrentLevel)
         return false;
     m_pCurrentLevel->create();
+    m_pCurrentLevel->playBGStandardMusic();
     return true;
 }
 bool VoxelExplorer::createCameras()

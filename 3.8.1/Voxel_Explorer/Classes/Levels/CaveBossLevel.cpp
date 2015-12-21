@@ -242,6 +242,7 @@ void CaveBossLevel::clearBossRoom()
         }
     }
     VoxelExplorer::getInstance()->clearBoosRoom();
+    playBGStandardMusic();
 }
 
 bool CaveBossLevel::createPickableItems()

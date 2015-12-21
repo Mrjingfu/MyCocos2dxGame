@@ -78,6 +78,26 @@
 	<string>bow_drop.wav</string>
 	<key>EQUIP_SHIELD</key>
 	<string>equip_armor.wav</string>
+	<key>BUFFER_SPEEDUP</key>
+	<string>buffer_speedup.wav</string>
+	<key>BUFFER_STEALTH</key>
+	<string>buffer_stealth.wav</string>
+	<key>BUFFER_STRONGER</key>
+	<string>buffer_stronger.wav</string>
+	<key>BUFFER_POISONING</key>
+	<string>poisoning.wav</string>
+	<key>BUFFER_FROZEN</key>
+	<string>frozen.wav</string>
+	<key>BUFFER_PARALYTIC</key>
+	<string>paralytic.wav</string>
+	<key>BUFFER_WEAK</key>
+	<string>weak.wav</string>
+	<key>BUFFER_FIRE</key>
+	<string>fire.wav</string>
+	<key>TRIGGER_GRIPPING_TRAP</key>
+	<string>trigger_gripping_trap.wav</string>
+	<key>TRIGGER_SUMMONING_TRAP</key>
+	<string>trigger_summoning_trap.wav</string>
 	<key>UI_CLOSE_PACKAGE</key>
 	<string>close_package.wav</string>
 	<key>UI_BTN_CLICK</key>

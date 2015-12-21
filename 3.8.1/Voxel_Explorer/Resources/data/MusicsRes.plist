@@ -5,44 +5,44 @@
 	<key>DN_SEWER</key>
 	<dict>
 		<key>STANDARD_BG</key>
-		<string></string>
+		<string>seweramb.mp3</string>
 		<key>BOSS_BG</key>
-		<string></string>
+		<string>sewerboss.mp3</string>
 	</dict>
 	<key>DN_PRISON</key>
 	<dict>
 		<key>STANDARD_BG</key>
-		<string></string>
+		<string>prisonamb.mp3</string>
 		<key>BOSS_BG</key>
-		<string></string>
+		<string>prisonboss.mp3</string>
 	</dict>
 	<key>DN_FANE</key>
 	<dict>
 		<key>STANDARD_BG</key>
-		<string></string>
+		<string>faneamb.mp3</string>
 		<key>BOSS_BG</key>
-		<string></string>
+		<string>faneboss.mp3</string>
 	</dict>
 	<key>DN_MINES</key>
 	<dict>
 		<key>STANDARD_BG</key>
-		<string></string>
+		<string>mineamb.mp3</string>
 		<key>BOSS_BG</key>
-		<string></string>
+		<string>mineboss.mp3</string>
 	</dict>
 	<key>DN_CAVE</key>
 	<dict>
 		<key>STANDARD_BG</key>
-		<string></string>
+		<string>caveamb.mp3</string>
 		<key>BOSS_BG</key>
-		<string></string>
+		<string>caveboss.mp3</string>
 	</dict>
 	<key>DN_TOMB</key>
 	<dict>
 		<key>STANDARD_BG</key>
-		<string></string>
+		<string>tombamb.mp3</string>
 		<key>BOSS_BG</key>
-		<string></string>
+		<string>tombboss.mp3</string>
 	</dict>
 	<key>DN_DWARF_CASTLE</key>
 	<dict>

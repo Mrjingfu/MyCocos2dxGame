@@ -10,8 +10,11 @@
 #include "Graph.h"
 #include "VoxelExplorer.h"
 #include "StandardMonster.hpp"
+#include "LevelResourceManager.h"
 #include "KoboldLeader.hpp"
+#include "SimpleAudioEngine.h"
 USING_NS_CC;
+using namespace CocosDenshion;
 
 MineBossLevel::MineBossLevel()
 {
@@ -311,6 +314,7 @@ void MineBossLevel::clearBossRoom()
         }
     }
     VoxelExplorer::getInstance()->clearBoosRoom();
+    playBGBossMusic();
 }
 
 bool MineBossLevel::createPickableItems()
@@ -402,4 +406,16 @@ void MineBossLevel::handleUseStandardPortal(const cocos2d::Vec2& pos)
             Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_SELECT_RIGHT_DUNGEON_NODE);
         }
     }
+}
+void MineBossLevel::playBGStandardMusic()
+{
+    SimpleAudioEngine::getInstance()->stopBackgroundMusic();
+    std::string musicName = LevelResourceManager::getInstance()->getBackgroundMusicRes("BOSS_BG");
+    SimpleAudioEngine::getInstance()->playBackgroundMusic(musicName.c_str(), true);
+}
+void MineBossLevel::playBGBossMusic()
+{
+    SimpleAudioEngine::getInstance()->stopBackgroundMusic();
+    std::string musicName = LevelResourceManager::getInstance()->getBackgroundMusicRes("STANDARD_BG");
+    SimpleAudioEngine::getInstance()->playBackgroundMusic(musicName.c_str(), true);
 }

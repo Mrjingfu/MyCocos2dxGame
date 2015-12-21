@@ -135,6 +135,9 @@ public:
     void searchAndCheck(int x, int y, int searchDistance);
     
     bool hasShowMap() const { return m_bShowMap; }
+    
+    void preloadBGMusic();
+    
     void load();
     void save();
     
@@ -145,6 +148,9 @@ public:
     virtual void createSiegeMonsters(const cocos2d::Vec2& pos) = 0;
     
     virtual void handleUseStandardPortal(const cocos2d::Vec2& pos) = 0;
+    
+    virtual void playBGStandardMusic();
+    virtual void playBGBossMusic();
 protected:
     virtual bool build() = 0;
     virtual bool createTerrain() = 0;
