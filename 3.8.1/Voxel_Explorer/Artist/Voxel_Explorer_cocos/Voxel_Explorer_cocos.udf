@@ -39,8 +39,12 @@
           <FilePathData Path="characterInfoLayer.csd" />
           <FilePathData Path="dialogueLayer.csd" />
           <FilePathData Path="alertLayer.csd" />
+          <FilePathData Path="shopPopupLayer.csd" />
+          <FilePathData Path="achieveItemLayer.csd" />
+          <FilePathData Path="achievementLayer.csd" />
+          <FilePathData Path="settingLayer.csd" />
         </OpenedDocuments>
-        <ActiveDocument Path="alertLayer.csd" />
+        <ActiveDocument Path="settingLayer.csd" />
       </Value>
     </Item>
   </Properties>

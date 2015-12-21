@@ -49,7 +49,6 @@ protected:
     BagShopLayer*       m_pBagLayer;
     TGridView*          m_pShopGridView;
     BagMangerLayerUI*   m_pShopMangerLayer;
-    std::string         m_sShopTitleKey;
 
 };
 

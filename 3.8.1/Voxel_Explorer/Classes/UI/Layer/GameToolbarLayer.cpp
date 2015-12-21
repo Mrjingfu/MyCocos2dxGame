@@ -146,8 +146,8 @@ void GameToolbarLayer::setMsgItem(std::string msg,cocos2d::Color3B msgColor )
 {
     NoteUi* noteui = NoteUi::create();
     noteui->setContentSize(noteui->getContentSize()+cocos2d::Size(0,10));
-    noteui->setMsg(msg,msgColor);
     m_pListMsgs->pushBackCustomItem( noteui);
+    noteui->setMsg(msg,msgColor);
     if ( m_pListMsgs->getItems().size()*noteui->getContentSize().height > m_pListMsgs->getContentSize().height) {
         //        m_pListMsgs->scrollToBottom(0.5,false);
         m_pListMsgs->forceDoLayout();

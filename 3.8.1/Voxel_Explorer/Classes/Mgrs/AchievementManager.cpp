@@ -112,8 +112,8 @@ void AchievementManager::updateAchieve(AchieveProperty *achieve)
         eStatistType type = iter->first;
         CChaosNumber sourceNum =  StatisticsManager::getInstance()->getDataStatistType(type);
         CChaosNumber targetNum = iter->second;
-        CCLOG("sourceNum:%ld",sourceNum.GetLongValue());
-        CCLOG("targetNum:%ld",targetNum.GetLongValue());
+//        CCLOG("sourceNum:%ld",sourceNum.GetLongValue());
+//        CCLOG("targetNum:%ld",targetNum.GetLongValue());
         if (sourceNum >= targetNum) {
             ++targetCompleteCount;
         }

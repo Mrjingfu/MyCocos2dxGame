@@ -16,13 +16,13 @@
             <PreSize X="1.0000" Y="0.5294" />
             <FileData Type="PlistSubImage" Path="ui_frame_2.png" Plist="ui_sprite.plist" />
           </AbstractNodeData>
-          <AbstractNodeData Name="shop_prop_title_img" ActionTag="1182279746" Tag="146" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="87.5000" RightMargin="87.5000" TopMargin="-10.0000" BottomMargin="330.0000" Scale9Enable="True" LeftEage="5" RightEage="5" TopEage="5" BottomEage="5" Scale9OriginX="5" Scale9OriginY="5" Scale9Width="4" Scale9Height="4" ctype="ImageViewObjectData">
-            <Size X="75.0000" Y="20.0000" />
+          <AbstractNodeData Name="shop_prop_title_img" ActionTag="1182279746" Tag="146" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="77.5000" RightMargin="77.5000" TopMargin="-10.0000" BottomMargin="330.0000" Scale9Enable="True" LeftEage="5" RightEage="5" TopEage="5" BottomEage="5" Scale9OriginX="5" Scale9OriginY="5" Scale9Width="4" Scale9Height="4" ctype="ImageViewObjectData">
+            <Size X="95.0000" Y="20.0000" />
             <Children>
               <AbstractNodeData Name="shop_title_text" ActionTag="-750932487" Tag="147" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="-11.0000" RightMargin="-11.0000" TopMargin="-14.5000" BottomMargin="-14.5000" FontSize="36" LabelText="武器店" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
                 <Size X="108.0000" Y="43.0000" />
                 <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-                <Position X="37.5000" Y="10.0000" />
+                <Position X="47.5000" Y="10.0000" />
                 <Scale ScaleX="0.3000" ScaleY="0.3000" />
                 <CColor A="255" R="255" G="255" B="255" />
                 <PrePosition X="0.5000" Y="0.5000" />
@@ -37,7 +37,7 @@
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
             <CColor A="255" R="255" G="255" B="255" />
             <PrePosition X="0.5000" Y="1.0000" />
-            <PreSize X="0.3000" Y="0.0588" />
+            <PreSize X="0.3800" Y="0.0588" />
             <FileData Type="PlistSubImage" Path="ui_frame_3.png" Plist="ui_sprite.plist" />
           </AbstractNodeData>
         </Children>

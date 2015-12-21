@@ -35,6 +35,11 @@ bool AchievePopupUI::addEvents()
     if (!m_achieveFrame)
         return false;
   
+    cocos2d::ui::Text* title = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "achieve_layer_title"));
+    if (!title)
+        return false;
+    title->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
+    title->setString(UtilityHelper::getLocalStringForUi("TITLE_ACHIEVE"));
 
     
     m_pAchieveGridView = TGridView::create();

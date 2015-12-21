@@ -48,7 +48,7 @@ bool ShopPopupUI::addEvents()
     if (!m_pShopTitleText)
         return false;
     
-    m_pShopTitleText->setFontName(UtilityHelper::getLocalStringForUi(""));
+    m_pShopTitleText->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
     
     m_pBagLayer = BagShopLayer::create();
     m_pBagLayer->setAnchorPoint(cocos2d::Vec2::ANCHOR_MIDDLE_BOTTOM);
@@ -133,7 +133,9 @@ void ShopPopupUI::updateShopBuyItems()
 }
 void ShopPopupUI::setShopTitle(const std::string &titleKey)
 {
-   m_sShopTitleKey = titleKey;
+    if (m_pShopTitleText) {
+        m_pShopTitleText->setString(UtilityHelper::getLocalStringForUi(titleKey));
+    }
    refreshUIView();
 }
 
@@ -141,9 +143,7 @@ void ShopPopupUI::updateShopDataItems()
 {
     std::vector<PickableItemProperty*> itemProps = getShopItems();
     
-    if (m_pShopTitleText && !m_sShopTitleKey.empty()) {
-        m_pShopTitleText->setString(UtilityHelper::getLocalStringForUi(m_sShopTitleKey));
-    }
+
     int playerLevel = PlayerProperty::getInstance()->getLevel();
     for (int i=0; i<itemProps.size(); i++)
     {

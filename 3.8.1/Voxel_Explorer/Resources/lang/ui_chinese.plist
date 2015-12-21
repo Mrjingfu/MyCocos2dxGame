@@ -206,8 +206,24 @@
 	<string>数量：%d</string>
 	<key>ITEM_BAG_DELETE</key>
 	<string>是否移除该道具？</string>
+	<key>ITEM_BAG_SELL</key>
+	<string>是否出售该道具？</string>
 	<key>GO_CHASM</key>
 	<string>是否跳入深渊呢？</string>
+	<key>TITLE_ACHIEVE</key>
+	<string>成就</string>
+	<key>PLAYER_FALL_AND_DIE</key>
+	<string>不幸的事，你摔死了</string>
+	<key>FALL_DOWNSTAIRS</key>
+	<string>幸运是事，你进入到下一层了</string>
+	<key>SELECT_LEFT_DUNGEON_NODE</key>
+	<string>是选择左边开始？</string>
+	<key>SELECT_RIGHT_DUNGEON_NODE</key>
+	<string>是选择右边开始？</string>
+	<key>USE_SMALL_PROTAL</key>
+	<string>你被传送了</string>
+	<key>STANDARD_PROTAL_NO_ENERGY</key>
+	<string>传送能量不足了</string>
 	<key>BTN_TEXT_MAINMENU</key>
 	<string>主菜单</string>
 	<key>BTN_TEXT_SETTING</key>
@@ -232,5 +248,7 @@
 	<string>购买</string>
 	<key>BTN_TEXT_USE</key>
 	<string>使用</string>
+	<key>BTN_TEXT_</key>
+	<string></string>
 </dict>
 </plist>

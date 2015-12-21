@@ -16,10 +16,10 @@
             <PreSize X="1.0000" Y="1.0000" />
             <FileData Type="PlistSubImage" Path="ui_frame_1.png" Plist="ui_sprite.plist" />
           </AbstractNodeData>
-          <AbstractNodeData Name="Image_3" ActionTag="-364456327" Tag="12" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="105.0000" RightMargin="105.0000" TopMargin="-10.0000" BottomMargin="240.0000" Scale9Enable="True" LeftEage="5" RightEage="5" TopEage="5" BottomEage="5" Scale9OriginX="5" Scale9OriginY="5" Scale9Width="4" Scale9Height="4" ctype="ImageViewObjectData">
+          <AbstractNodeData Name="achieve_layer_title_bg" ActionTag="-364456327" Tag="12" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="105.0000" RightMargin="105.0000" TopMargin="-10.0000" BottomMargin="240.0000" Scale9Enable="True" LeftEage="5" RightEage="5" TopEage="5" BottomEage="5" Scale9OriginX="5" Scale9OriginY="5" Scale9Width="4" Scale9Height="4" ctype="ImageViewObjectData">
             <Size X="70.0000" Y="20.0000" />
             <Children>
-              <AbstractNodeData Name="Text_3" ActionTag="1384846905" Tag="13" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="-47.0000" RightMargin="-47.0000" TopMargin="-8.5000" BottomMargin="-8.5000" FontSize="36" LabelText="成就" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
+              <AbstractNodeData Name="achieve_layer_title" ActionTag="1384846905" Tag="13" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="-47.0000" RightMargin="-47.0000" TopMargin="-8.5000" BottomMargin="-8.5000" FontSize="36" LabelText="成就" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
                 <Size X="72.0000" Y="42.0000" />
                 <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
                 <Position X="35.0000" Y="10.0000" />

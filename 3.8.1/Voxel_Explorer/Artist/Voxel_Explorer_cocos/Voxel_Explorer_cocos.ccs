@@ -227,6 +227,7 @@
         <Folder Name="particle2d">
           <PlistParticleFile Name="achievement_particle-ipadhd.plist" />
         </Folder>
+        <Project Name="settingLayer.csd" Type="Layer" />
       </RootFolder>
     </Group>
   </SolutionFolder>

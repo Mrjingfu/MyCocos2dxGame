@@ -12,6 +12,8 @@
 #include "GameFormula.hpp"
 #include "NpcDataManager.hpp"
 #include "ItemMoneyLayer.hpp"
+#include "AlertPopupUI.hpp"
+#include "PopupUILayerManager.h"
 ItemShopSellPopupUI::ItemShopSellPopupUI()
 {
     
@@ -73,17 +75,15 @@ void ItemShopSellPopupUI::sliderEvent(cocos2d::Ref* sender, cocos2d::ui::Slider:
         }
     }
 }
-
-void ItemShopSellPopupUI::onClickSell(cocos2d::Ref *ref)
+void ItemShopSellPopupUI::itemSell()
 {
-    CHECK_ACTION(ref);
-    CCLOG("onClickSell");
     bool isSuccess = false;
-     PickableItemProperty* itemprop = getItemIdProperty();
+    PickableItemProperty* itemprop = getItemIdProperty();
     if (!itemprop) {
         isSuccess = false;
     }else
     {
+        
         int count =1;
         if (itemprop->isStackable()) {
             count = m_pItemSlider->getPercent() +1;
@@ -99,6 +99,42 @@ void ItemShopSellPopupUI::onClickSell(cocos2d::Ref *ref)
     {
         CCLOG("贩卖失败");
     }
-    
-    
+}
+void ItemShopSellPopupUI::onClickSell(cocos2d::Ref *ref)
+{
+    CHECK_ACTION(ref);
+    CCLOG("onClickSell");
+    PickableItemProperty* itemprop = getItemIdProperty();
+    if (itemprop)
+    {
+        if (itemprop->getQuality() >=PICKABLEITEM_QUALITY::PIQ_RARE || !itemprop->isIdentified())
+        {
+            
+            AlertPopupUI* popupUILayer = static_cast<AlertPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupAlert));
+            if (popupUILayer)
+            {
+                PopupUILayer* pplayer = nullptr;
+                if (PopupUILayerManager::getInstance()->isOpenPopup(ePopupItemShopSell, pplayer)) {
+                    pplayer->getRootNode()->setVisible(false);
+                }
+                this->getRootNode()->setVisible(false);
+                
+                popupUILayer->setMessage(UtilityHelper::getLocalStringForUi("ITEM_BAG_SELL"));
+                popupUILayer->setPositiveListerner([this](Ref*){
+                    
+                    this->itemSell();
+                });
+                popupUILayer->setNegativeListerner([this,pplayer](Ref*)
+                                                   {
+                                                       if (pplayer)
+                                                       {
+                                                           pplayer->getRootNode()->setVisible(true);
+                                                       }
+                                                       this->getRootNode()->setVisible(true);
+                                                   });
+                popupUILayer->setDarkLayerVisble(false);
+            }
+        }else
+            itemSell();
+    }
 }

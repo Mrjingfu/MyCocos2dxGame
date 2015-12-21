@@ -415,7 +415,55 @@ void GameUILayer::onEventGoChasm(cocos2d::EventCustom *sender)
         alertPopupUI->setNegativeListerner([](Ref* ref){});
     }
 }
+//跳崖传送
+void GameUILayer::onEventFallDownStairs(cocos2d::EventCustom *sender)
+{
+    CCLOG("onEventFallDownStairs");
+    
+}
+void GameUILayer::onEventSelectLeftDungeonNode(cocos2d::EventCustom *sender)
+{
+    CCLOG("onEventSelectLeftDungeonNode");
+    AlertPopupUI* popupUi = static_cast<AlertPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupAlert));
+    if (popupUi) {
+        popupUi->setMessage(UtilityHelper::getLocalString(EVENT_SELECT_LEFT_DUNGEON_NODE));
+        popupUi->setPositiveListerner([](Ref* ref)
+                                      {
+                                          RandomDungeon::getInstance()->selectDungeonNode(true);
+                                      });
+        popupUi->setNegativeListerner(nullptr);
 
+    }
+}
+void GameUILayer::onEventSelectRightDungeonNode(cocos2d::EventCustom *sender)
+{
+    CCLOG("onEventSelectRightDungeonNode");
+    AlertPopupUI* popupUi = static_cast<AlertPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupAlert));
+    if (popupUi) {
+        popupUi->setMessage(UtilityHelper::getLocalString(EVENT_SELECT_LEFT_DUNGEON_NODE));
+        popupUi->setPositiveListerner([](Ref* ref)
+                                      {
+                                          RandomDungeon::getInstance()->selectDungeonNode(false);
+                                      });
+        popupUi->setNegativeListerner(nullptr);
+        
+    }
+}
+//小传送们
+void GameUILayer::onEventUseSmallProtal(cocos2d::EventCustom *sender)
+{
+    CCLOG("onEventUseSmallProtal");
+}
+void GameUILayer::onEventStandardProtalNoEnergy(cocos2d::EventCustom *sender)
+{
+    CCLOG("onEventStandardProtalNoEnergy");
+     AlertPopupUI* popupUi = static_cast<AlertPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupAlert));
+    if (popupUi) {
+        popupUi->setMessage("");
+        popupUi->setPositiveListerner(nullptr);
+    }
+
+}
 void GameUILayer::onEventTriggerToxic(cocos2d::EventCustom *sender) //中毒机关
 {
     CCLOG("onEventTriggerToxic");
@@ -643,12 +691,16 @@ void GameUILayer::onEventRoleDead(cocos2d::EventCustom *sender)
         DeadPopupUI* pausePopup = static_cast<DeadPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupDead));
         if (pausePopup) {
 //            pausePopup->setDarkLayerVisble(false);
-            
         }
 
     });
     this->runAction(Sequence::createWithTwoActions(DelayTime::create(2.0F),func ));
-   }
+}
+void GameUILayer::onEventRoleFallAndDie(cocos2d::EventCustom *sender)
+{
+    CCLOG("onEventRoleFallAndDie");
+}
+
 void GameUILayer::onEventRoleHud(cocos2d::EventCustom *sender)
 {
        CCLOG("onEvenetRoleHud");
@@ -681,8 +733,6 @@ void GameUILayer::onEventMonsterDead(cocos2d::EventCustom *sender)
         }
 
     }
- 
-
 }
 
 void GameUILayer::onEventMonsterHud(cocos2d::EventCustom *sender)
@@ -843,8 +893,6 @@ void GameUILayer::onEvenetAchieveComplete(cocos2d::EventCustom *sender)
             achieveItermPopup->setAchieveDatas(icon, name, targetDesc);
         }
     }
-   
-    
 }
 
 void GameUILayer::setCharacterPropLayerVisible(bool isMonster, bool isNpc, bool isBoss)
@@ -903,8 +951,9 @@ void GameUILayer::onEnter()
 {
     WrapperUILayer::onEnter();
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_PLAYER_PROPERTY_DIRTY, CC_CALLBACK_1(GameUILayer::onEventRoleUpdateProp,this));
-    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_PLAYER_LEVEL_UP, CC_CALLBACK_1(GameUILayer::onEventRoleLevelUp,this));
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_PLAYER_DEATH, CC_CALLBACK_1(GameUILayer::onEventRoleDead,this));
+   Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_PLAYER_FALL_AND_DIE, CC_CALLBACK_1(GameUILayer::onEventRoleFallAndDie,this));
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_PLAYER_LEVEL_UP, CC_CALLBACK_1(GameUILayer::onEventRoleLevelUp,this));
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_PLAYER_HURT, CC_CALLBACK_1(GameUILayer::onEventRoleHud,this));
     
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_PLAYER_MONEY_NOT_ENOUGH, CC_CALLBACK_1(GameUILayer::onEventRoleMoneyNotEnough,this));
@@ -978,12 +1027,20 @@ void GameUILayer::onEnter()
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_BOSS_SKILL3, CC_CALLBACK_1(GameUILayer::onEventBossSkill3,this));
  
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_ACHIEVE_COMPLETE, CC_CALLBACK_1(GameUILayer::onEvenetAchieveComplete,this));
+    
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_FALL_DOWNSTAIRS, CC_CALLBACK_1(GameUILayer::onEventFallDownStairs,this));
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_SELECT_LEFT_DUNGEON_NODE, CC_CALLBACK_1(GameUILayer::onEventSelectLeftDungeonNode,this));
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_SELECT_RIGHT_DUNGEON_NODE, CC_CALLBACK_1(GameUILayer::onEventSelectRightDungeonNode,this));
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_USE_SMALL_PROTAL, CC_CALLBACK_1(GameUILayer::onEventUseSmallProtal,this));
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_STANDARD_PROTAL_NO_ENERGY, CC_CALLBACK_1(GameUILayer::onEventStandardProtalNoEnergy,this));
+    
 }
 void GameUILayer::onExit()
 {
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_PLAYER_PROPERTY_DIRTY);
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_PLAYER_LEVEL_UP);
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_PLAYER_DEATH);
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_PLAYER_FALL_AND_DIE);
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_PLAYER_HURT);
     
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_PLAYER_MONEY_NOT_ENOUGH);
@@ -1056,5 +1113,12 @@ void GameUILayer::onExit()
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_BOSS_SKILL3);
     
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_ACHIEVE_COMPLETE);
+    
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_FALL_DOWNSTAIRS);
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_SELECT_LEFT_DUNGEON_NODE);
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_SELECT_RIGHT_DUNGEON_NODE);
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_USE_SMALL_PROTAL);
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_STANDARD_PROTAL_NO_ENERGY);
+    
     WrapperUILayer::onExit();
 }

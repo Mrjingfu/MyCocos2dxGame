@@ -24,9 +24,9 @@ protected:
     virtual PickableItemProperty* getItemIdProperty()const override;
 private:
     void onClickSell(Ref* ref);
+    void itemSell();
     void sliderEvent(cocos2d::Ref* sender, cocos2d::ui::Slider::EventType type) override;
-
-   };
+};
 
 
 #endif /* ItemShopSellPopupUI_hpp */

@@ -846,7 +846,7 @@
             <key>size</key>
             <string>{256,256}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:0a8b2ae282f86410675323bbdc1fc7d3:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:97a9ebdebd4855507ad1bf60d9c40778:1/1$</string>
             <key>textureFileName</key>
             <string>ui_sprite.png</string>
         </dict>

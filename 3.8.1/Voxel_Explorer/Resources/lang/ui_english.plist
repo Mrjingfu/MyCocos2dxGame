@@ -195,42 +195,56 @@
 	<key>TRIGGER_MESSAGE_FROSEN_TRAP</key>
 	<string>你被冰冻了，你的速度降低！</string>
 	<key>NPC_KNIGHT_ANSWER</key>
-	<string>武器店</string>
+	<string>SHOP EQUIP</string>
 	<key>NPC_SHOPGIRL_ANSWER</key>
-	<string>魔法物品店</string>
+	<string>SHOP MARGIC</string>
 	<key>NPC_WEIRDO_ANSWER</key>
-	<string>赌场</string>
+	<string>SHOP GAMBLE</string>
 	<key>NPC_OLDLADY_ANSWER</key>
-	<string>炼金店</string>
+	<string>SHOP ALCHEMY</string>
 	<key>ITEM_SPLITE_COUNT</key>
 	<string>Count:%d</string>
 	<key>ITEM_BAG_DELETE</key>
 	<string>是否移除该道具？</string>
 	<key>GO_CHASM</key>
 	<string>是否跳入深渊呢？</string>
+	<key>TITLE_ACHIEVE</key>
+	<string>ACHIEVE</string>
+	<key>EVENT_PLAYER_FALL_AND_DIE</key>
+	<string>不幸的事，你摔死了</string>
+	<key>EVENT_FALL_DOWNSTAIRS</key>
+	<string>幸运是事，你进入到下一层了</string>
+	<key>EVENT_SELECT_LEFT_DUNGEON_NODE</key>
+	<string>是选择左边开始？</string>
+	<key>EVENT_SELECT_RIGHT_DUNGEON_NODE</key>
+	<string>是选择右边开始？</string>
+	<key>EVENT_USE_SMALL_PROTAL</key>
+	<string>你被传送了</string>
+	<key>EVENT_STANDARD_PROTAL_NO_ENERGY</key>
+	<string>传送能量不足了</string>
 	<key>BTN_TEXT_MAINMENU</key>
-	<string>主菜单</string>
+	<string>MAIN MENU</string>
 	<key>BTN_TEXT_SETTING</key>
-	<string>设置</string>
+	<string>SETTING</string>
 	<key>BTN_TEXT_EXITGAME</key>
-	<string>退出游戏</string>
+	<string>EXIT GAME</string>
 	<key>BTN_TEXT_DISCARD</key>
-	<string>丢弃</string>
+	<string>DISCARD</string>
 	<key>BTN_TEXT_EQUIP</key>
-	<string>装备</string>
+	<string>EQUIP</string>
 	<key>BTN_TEXT_INDENTIFY</key>
-	<string>鉴定</string>
+	<string>INDENTIFY</string>
 	<key>BTN_TEXT_RESTART</key>
-	<string>重新开始</string>
+	<string>RESTART</string>
 	<key>BTN_TEXT_OK</key>
-	<string>确定</string>
+	<string>OK</string>
 	<key>BTN_TEXT_CANCEL</key>
-	<string>取消</string>
+	<string>CANCEL</string>
 	<key>BTN_TEXT_SELL</key>
-	<string>出售</string>
+	<string>SELL</string>
 	<key>BTN_TEXT_BUY</key>
-	<string>购买</string>
+	<string>BUY</string>
 	<key>BTN_TEXT_USE</key>
-	<string>使用</string>
+	<string>USE</string>
 </dict>
 </plist>

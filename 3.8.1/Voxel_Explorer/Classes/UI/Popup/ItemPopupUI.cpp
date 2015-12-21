@@ -871,11 +871,12 @@ void ItemPopupUI::addItemProp(std::string propStr,cocos2d::Color3B fontColor,coc
     NoteUi* itemNote = NoteUi::create();
     itemNote->setFontScale(0.25);
 //    itemNote->setContentSize(cocos2d::Size(m_pAttrFrame->getContentSize().width,20));
+    m_pAttrFrame->addChild(itemNote);
     itemNote->setItemText(propStr,fontColor);
     if (paramLayout)
         itemNote->setLayoutParameter(paramLayout);
     itemNote->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
-    m_pAttrFrame->addChild(itemNote);
+    
 }
 
 void ItemPopupUI::closePopup()

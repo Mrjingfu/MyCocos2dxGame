@@ -31,7 +31,9 @@ bool NoteUi::init()
     setContentSize(cocos2d::Size(Director::getInstance()->getVisibleSize().width,10));
 
     setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
-    m_pLabel = cocos2d::Label::createWithTTF("",UtilityHelper::getLocalString("FONT_NAME"),36);
+    m_pLabel = cocos2d::ui::Text::create();
+    m_pLabel->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
+    m_pLabel->setFontSize(36);
     m_pLabel->setScale(0.4);
     m_pLabel->setAnchorPoint(Vec2::ANCHOR_MIDDLE_LEFT);
     m_pLabel->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
@@ -59,7 +61,7 @@ void NoteUi::setMsg(std::string msg,cocos2d::Color3B fontColor /*= cocos2d::Colo
         if(count>1)
             setContentSize(cocos2d::Size(getContentSize().width,lableSizeHeight+getContentSize().height));
         
-        CCLOG("m_pLabel:%d msg:%lu",m_pLabel->getStringLength(),msg.length());
+        CCLOG("m_pLabel:%zd msg:%lu",m_pLabel->getStringLength(),msg.length());
         m_pLabel->setColor(fontColor);
         m_pLabel->setPosition(Vec2(0,getContentSize().height*0.5));
         m_pLabel->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
@@ -74,7 +76,16 @@ void NoteUi::setItemText(std::string msg,cocos2d::Color3B fontColor /*= cocos2d:
         {
             charCount =11;
         }else{
-            charCount = 18;
+            charCount = 30;
+        }
+        
+        float width = 0.0f;
+        if(this->getParent())
+            width = this->getParent()->getContentSize().width -10;
+        if(width>0.0f)
+        {
+            float charWidth = UtilityHelper::getSingleStrFontSize(m_pLabel, msg).width;
+            charCount = (int)(width/charWidth);
         }
         int count = UtilityHelper::getLineStr(msg, charCount);
         m_pLabel->setString(msg);
@@ -82,8 +93,7 @@ void NoteUi::setItemText(std::string msg,cocos2d::Color3B fontColor /*= cocos2d:
         CCLOG("lableSize:%f",lableSizeHeight);
         if(count>1)
             setContentSize(cocos2d::Size(getContentSize().width,lableSizeHeight+getContentSize().height));
-        
-        CCLOG("m_pLabel:%d msg:%lu",m_pLabel->getStringLength(),msg.length());
+
         m_pLabel->setColor(fontColor);
         m_pLabel->setPosition(Vec2(0,getContentSize().height*0.5));
         m_pLabel->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);

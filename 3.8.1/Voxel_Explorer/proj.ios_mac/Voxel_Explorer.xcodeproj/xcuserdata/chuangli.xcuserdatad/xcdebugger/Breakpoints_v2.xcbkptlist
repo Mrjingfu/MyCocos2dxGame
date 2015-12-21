@@ -169,13 +169,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../Classes/UI/Popup/PausePopupUI.cpp"
-            timestampString = "472126058.63728"
+            filePath = "../Classes/UI/Popup/ItemShopSellPopupUI.cpp"
+            timestampString = "472185230.726437"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "42"
-            endingLineNumber = "42"
-            landmarkName = "PausePopupUI::addEvents()"
+            startingLineNumber = "110"
+            endingLineNumber = "110"
+            landmarkName = "ItemShopSellPopupUI::onClickSell(cocos2d::Ref *ref)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -185,29 +185,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../Classes/UI/Popup/ItemShopBuyPopupUI.cpp"
-            timestampString = "472126469.95588"
+            filePath = "../Classes/UI/Popup/ShopPopupUI.cpp"
+            timestampString = "472187383.865972"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "67"
-            endingLineNumber = "67"
-            landmarkName = "ItemShopBuyPopupUI::initBottom()"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../cocos2d/cocos/ui/UIButton.cpp"
-            timestampString = "472126487.689377"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "764"
-            endingLineNumber = "764"
-            landmarkName = "Button::setTitleText(const std::string&amp; text)"
+            startingLineNumber = "136"
+            endingLineNumber = "136"
+            landmarkName = "ShopPopupUI::setShopTitle(const std::string &amp;titleKey)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

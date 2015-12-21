@@ -43,8 +43,11 @@ private:
     
     void onEventRoleUpdateProp(cocos2d::EventCustom *sender);   //更新角色信息
     void onEventRoleLevelUp(cocos2d::EventCustom *sender);      //角色升级
-    void onEventRoleDead(cocos2d::EventCustom *sender);         //角色死亡
     void onEventRoleHud(cocos2d::EventCustom *sender);         //更新角色hud伤害
+    void onEventRoleDead(cocos2d::EventCustom *sender);         //角色死亡
+    void onEventRoleFallAndDie(cocos2d::EventCustom *sender);
+    
+   
     
     void onEventRoleMoneyNotEnough(cocos2d::EventCustom *sender);
     void onEventRoleNoMana(cocos2d::EventCustom *sender);
@@ -58,7 +61,6 @@ private:
     void onEventRoleUserPotion(cocos2d::EventCustom *sender);//使用药水物品
     void onEventRoleUserScroll(cocos2d::EventCustom *sender);//使用卷轴物品
 
-    
     
     void onEventMonsterUpdateProp(cocos2d::EventCustom *sender); //更新怪物信息
     void onEventMonsterHud(cocos2d::EventCustom *sender);        //更新怪物hud伤害
@@ -98,6 +100,12 @@ private:
     void onEventGoDownStairs(cocos2d::EventCustom *sender);
     void onEventGoBossRoom(cocos2d::EventCustom *sender);
     void onEventGoChasm(cocos2d::EventCustom *sender);
+    
+    void onEventFallDownStairs(cocos2d::EventCustom *sender);
+    void onEventSelectLeftDungeonNode(cocos2d::EventCustom *sender);
+    void onEventSelectRightDungeonNode(cocos2d::EventCustom *sender);
+    void onEventUseSmallProtal(cocos2d::EventCustom *sender);
+    void onEventStandardProtalNoEnergy(cocos2d::EventCustom *sender);
     
     void onEventNpcKnightAnsWer(cocos2d::EventCustom *sender);          //武器店
     void onEventNpcChildAnsWer(cocos2d::EventCustom *sender);           //任务
