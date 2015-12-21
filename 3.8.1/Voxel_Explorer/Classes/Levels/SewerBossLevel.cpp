@@ -364,7 +364,7 @@ bool SewerBossLevel::createPickableItems()
             item->setPosition3D(Vec3(m_Map[tileIndex].m_nX*TerrainTile::CONTENT_SCALE, -0.5f*TerrainTile::CONTENT_SCALE, -m_Map[tileIndex].m_nY*TerrainTile::CONTENT_SCALE));
             item->setVisited(m_Map[tileIndex].m_bVisited);
             VoxelExplorer::getInstance()->getPickableItemsLayer()->addChild(item);
-            item->setState(PickableItem::PIS_BEGIN_GENERATE);
+            item->setState(PickableItem::PIS_IDLE);
         }
 
     }

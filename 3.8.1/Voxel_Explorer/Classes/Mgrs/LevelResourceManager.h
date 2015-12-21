@@ -26,6 +26,7 @@ public:
     std::string getItemModelRes(const std::string& itemTypeName);
     std::string getDungeonSoundEffectRes(const std::string& soundTypeName);
     std::string getMonsterSoundEffectRes(const std::string& monsterTypeName, const std::string& soundTypeName);
+    std::string getCommonSoundEffectRes(const std::string& soundTypeName);
     std::string getBackgroundMusicRes(const std::string& bgMusicTypeName);
 private:
     cocos2d::ValueMap    m_TerrainTilesResMap;
@@ -33,12 +34,13 @@ private:
     cocos2d::ValueMap    m_MonstersResMap;
     cocos2d::ValueMap    m_ItemsResMap;
     cocos2d::ValueMap    m_DungeonSoundsResMap;
+    cocos2d::ValueMap    m_MonsterSoundsResMap;
+    cocos2d::ValueMap    m_CommonSoundsResMap;
     cocos2d::ValueMap    m_MusicsResMap;
     
     cocos2d::ValueMap    m_TerrainTilesLevelRes;
     cocos2d::ValueMap    m_DoorsLevelRes;
     cocos2d::ValueMap    m_DungeonSoundsLevelRes;
-    cocos2d::ValueMap    m_MonsterSoundsRes;
     cocos2d::ValueMap    m_MusicsLevelRes;
 };
 

@@ -21,7 +21,10 @@
 #include "SundriesProperty.hpp"
 #include "VoxelExplorer.h"
 #include "StatisticsManager.hpp"
+#include "SimpleAudioEngine.h"
+#include "LevelResourceManager.h"
 USING_NS_CC;
+using namespace CocosDenshion;
 
 unsigned int PlayerProperty::m_snItemInstanceIDCounter = 0;
 PlayerProperty* g_pPlayerPropertyInstance = nullptr;
@@ -90,23 +93,23 @@ bool PlayerProperty::initNewPlayer()   ///新角色初始化
         weaponProperty->adjustByLevel();
     m_Bag.push_back(weaponProperty);
     ///for debug
-    addMoney(900000);
-    ret = equipWeapon(itemIDCounter);
-    ret = addItemToBag(PickableItem::PIT_POTION_MINORHEALTH, 1);
-    ret = addItemToBag(PickableItem::PIT_POTION_MINORHEALTH, 1);
-    ret = addItemToBag(PickableItem::PIT_POTION_MINORHEALTH, 1);
-    ret = addItemToBag(PickableItem::PIT_POTION_MINORMANA, 1);
-    ret = addItemToBag(PickableItem::PIT_POTION_MINORMANA, 1);
-    ret = addItemToBag(PickableItem::PIT_POTION_MINORMANA, 1);
-    ret = addItemToBag(PickableItem::PIT_SCROLL_INDENTIFY, 1);
-    ret = addItemToBag(PickableItem::PIT_SCROLL_INDENTIFY, 1);
-    ret = addItemToBag(PickableItem::PIT_SCROLL_INDENTIFY, 1);
-    ret = addItemToBag(PickableItem::PIT_KEY_COPPER, 1);
-    ret = addItemToBag(PickableItem::PIT_KEY_COPPER, 1);
-    ret = addItemToBag(PickableItem::PIT_KEY_COPPER, 1);
-    ret = addItemToBag(PickableItem::PIT_POTION_DETOXIFICATION, 1);
-    ret = addItemToBag(PickableItem::PIT_POTION_SPECIFIC, 1);
-    ret = addItemToBag(PickableItem::PIT_POTION_HEALING, 1);
+    addMoney(900000, false);
+    ret = equipWeapon(itemIDCounter, false);
+    ret = addItemToBag(PickableItem::PIT_POTION_MINORHEALTH, 1, false);
+    ret = addItemToBag(PickableItem::PIT_POTION_MINORHEALTH, 1, false);
+    ret = addItemToBag(PickableItem::PIT_POTION_MINORHEALTH, 1, false);
+    ret = addItemToBag(PickableItem::PIT_POTION_MINORMANA, 1, false);
+    ret = addItemToBag(PickableItem::PIT_POTION_MINORMANA, 1, false);
+    ret = addItemToBag(PickableItem::PIT_POTION_MINORMANA, 1, false);
+    ret = addItemToBag(PickableItem::PIT_SCROLL_INDENTIFY, 1, false);
+    ret = addItemToBag(PickableItem::PIT_SCROLL_INDENTIFY, 1, false);
+    ret = addItemToBag(PickableItem::PIT_SCROLL_INDENTIFY, 1, false);
+    ret = addItemToBag(PickableItem::PIT_KEY_COPPER, 1, false);
+    ret = addItemToBag(PickableItem::PIT_KEY_COPPER, 1, false);
+    ret = addItemToBag(PickableItem::PIT_KEY_COPPER, 1, false);
+    ret = addItemToBag(PickableItem::PIT_POTION_DETOXIFICATION, 1, false);
+    ret = addItemToBag(PickableItem::PIT_POTION_SPECIFIC, 1, false);
+    ret = addItemToBag(PickableItem::PIT_POTION_HEALING, 1, false);
     return ret;
 }
 void PlayerProperty::update(float delta)
@@ -183,13 +186,20 @@ CChaosNumber PlayerProperty::getDefense()
 {
     return -m_nArmorClass.GetLongValue() + m_nBaseArmorClass.GetLongValue();
 }
-void PlayerProperty::addMoney( CChaosNumber copper)
+void PlayerProperty::addMoney( CChaosNumber copper, bool sound)
 {
     StatisticsManager::getInstance()->addCopperTotalNum(copper);
     m_nValueCopper = m_nValueCopper + copper.GetLongValue();
+    
+    if(sound)
+    {
+        std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("COIN_DROP");
+        SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+    }
+    
     m_bDirty = true;
 }
-bool PlayerProperty::costMoney( CChaosNumber costcopper)
+bool PlayerProperty::costMoney( CChaosNumber costcopper )
 {
    
     if(m_nValueCopper < costcopper)
@@ -243,7 +253,7 @@ void PlayerProperty::setCurrentMP(CChaosNumber mp)
     
     m_bDirty = true;
 }
-bool PlayerProperty::equipWeapon(CChaosNumber id)
+bool PlayerProperty::equipWeapon(CChaosNumber id, bool sound)
 {
     WeaponProperty* weaponProperty = static_cast<WeaponProperty*>(getItemFromBag(id));
     if(weaponProperty)
@@ -300,10 +310,16 @@ bool PlayerProperty::equipWeapon(CChaosNumber id)
         weaponProperty->setEquiped(true);
         m_bDirty = true;
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_EQUIPED_WEAPON, &m_nEquipedWeaponID);
+        if(sound)
+        {
+            std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("EQUIP_WEAPON");
+            SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+        }
+        return true;
     }
-    return true;
+    return false;
 }
-bool PlayerProperty::equipSecondWeapon(CChaosNumber id)
+bool PlayerProperty::equipSecondWeapon(CChaosNumber id, bool sound)
 {
     SecondWeaponProperty* secondWeaponProperty = static_cast<SecondWeaponProperty*>(getItemFromBag(id));
     if(secondWeaponProperty)
@@ -369,10 +385,31 @@ bool PlayerProperty::equipSecondWeapon(CChaosNumber id)
         
         m_bDirty = true;
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_EQUIPED_WEAPON, &m_nEquipedWeaponID);
+        
+        if(sound)
+        {
+            PickableItem::PickableItemType type = secondWeaponProperty->getPickableItemType();
+            if(type >= PickableItem::PIT_STAFF_OAKSTAFF && type <= PickableItem::PIT_STAFF_PRO_MONKSTAFF)
+            {
+                std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("EQUIP_STAFF");
+                SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+            }
+            else if(type >= PickableItem::PIT_BOW_SHORTBOW && type <= PickableItem::PIT_BOW_PRO_GOLDENBOW)
+            {
+                std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("EQUIP_BOW");
+                SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+            }
+            else if(type >= PickableItem::PIT_SHIELD_WOODENSHIELD && type <= PickableItem::PIT_SHIELD_PRO_TOWERSHIELD)
+            {
+                std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("EQUIP_ARMOR");
+                SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+            }
+        }
+        return true;
     }
-    return true;
+    return false;
 }
-bool PlayerProperty::equipArmor(CChaosNumber id)
+bool PlayerProperty::equipArmor(CChaosNumber id, bool sound)
 {
     ArmorProperty* armorProperty = static_cast<ArmorProperty*>(getItemFromBag(id));
     if(armorProperty)
@@ -428,10 +465,26 @@ bool PlayerProperty::equipArmor(CChaosNumber id)
         armorProperty->setEquiped(true);
         m_bDirty = true;
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_EQUIPED_ARMOR, &m_nEquipedArmorID);
+        
+        if(sound)
+        {
+            PickableItem::PickableItemType type = armorProperty->getPickableItemType();
+            if((type >= PickableItem::PIT_CLOTH_SHOES && type <= PickableItem::PIT_CLOTH_CHAINSHOES) || (type >= PickableItem::PIT_CLOTH_PRO_SHOES && type <= PickableItem::PIT_CLOTH_PRO_MAGA_CAP))
+            {
+                std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("EQUIP_CLOTH");
+                SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+            }
+            else
+            {
+                std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("EQUIP_ARMOR");
+                SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+            }
+        }
+        return true;
     }
-    return true;
+    return false;
 }
-bool PlayerProperty::equipOrnaments(CChaosNumber id)
+bool PlayerProperty::equipOrnaments(CChaosNumber id, bool sound)
 {
     MagicOrnamentProperty* magicOrnamentProperty = static_cast<MagicOrnamentProperty*>(getItemFromBag(id));
     if(magicOrnamentProperty)
@@ -496,8 +549,15 @@ bool PlayerProperty::equipOrnaments(CChaosNumber id)
         magicOrnamentProperty->setEquiped(true);
         m_bDirty = true;
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_EQUIPED_ORNAMENTS, &m_nEquipedOrnamentsID);
+        
+        if(sound)
+        {
+            std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("EQUIP_ORNAMENT");
+            SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+        }
+        return true;
     }
-    return true;
+    return false;
 }
 bool PlayerProperty::indentifyItem(CChaosNumber id)
 {
@@ -631,7 +691,7 @@ bool PlayerProperty::useKey(PickableItem::PickableItemType type)
     }
     return false;
 }
-bool PlayerProperty::buyItemToBag(PickableItemProperty* buyItemProperty, CChaosNumber count, bool toIndentify)
+bool PlayerProperty::buyItemToBag(PickableItemProperty* buyItemProperty, CChaosNumber count, bool toIndentify, bool sound)
 {
     if(!buyItemProperty)
         return false;
@@ -658,6 +718,31 @@ bool PlayerProperty::buyItemToBag(PickableItemProperty* buyItemProperty, CChaosN
                             itemProperty->addCount(count);
                         if(item->isIdentified())
                             item->adjustByLevel();
+                        
+                        if(sound)
+                        {
+                            if(item->getPickableItemPropertyType() == PickableItemProperty::PIPT_KEY)
+                            {
+                                std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("PICKUP_KEY");
+                                SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+                            }
+                            else if(item->getPickableItemPropertyType() == PickableItemProperty::PIPT_POTIONS)
+                            {
+                                std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("PICKUP_POTION");
+                                SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+                            }
+                            else if(item->getPickableItemPropertyType() == PickableItemProperty::PIPT_SCROLL)
+                            {
+                                std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("PICKUP_SCROLL");
+                                SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+                                
+                            }
+                            else
+                            {
+                                std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("PICKUP_OTHER");
+                                SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+                            }
+                        }
                         return true;
                     }
                 }
@@ -678,6 +763,36 @@ bool PlayerProperty::buyItemToBag(PickableItemProperty* buyItemProperty, CChaosN
             }
             buyItemProperty->retain();
             m_Bag.push_back(buyItemProperty);
+            
+            if(sound)
+            {
+                if(buyItemProperty->getPickableItemPropertyType() == PickableItemProperty::PIPT_KEY)
+                {
+                    std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("PICKUP_KEY");
+                    SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+                }
+                else if(buyItemProperty->getPickableItemPropertyType() == PickableItemProperty::PIPT_POTIONS)
+                {
+                    std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("PICKUP_POTION");
+                    SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+                }
+                else if(buyItemProperty->getPickableItemPropertyType() == PickableItemProperty::PIPT_SCROLL)
+                {
+                    std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("PICKUP_SCROLL");
+                    SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+                    
+                }
+                else if(buyItemProperty->getPickableItemPropertyType() >=PickableItemProperty::PIPT_WEAPON && buyItemProperty->getPickableItemPropertyType() <=PickableItemProperty::PIPT_MAGIC_ORNAMENT)
+                {
+                    std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("PICKUP_WEAPON");
+                    SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+                }
+                else
+                {
+                    std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("PICKUP_OTHER");
+                    SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+                }
+            }
             return true;
         }
     }
@@ -709,7 +824,7 @@ bool PlayerProperty::sellItemFromBag(PickableItemProperty* sellItemProperty, CCh
     }
     return false;
 }
-bool PlayerProperty::addItemToBag(PickableItem::PickableItemType type, CChaosNumber level)
+bool PlayerProperty::addItemToBag(PickableItem::PickableItemType type, CChaosNumber level, bool sound)
 {
     if(m_Bag.size() >= m_nBagMaxSpace.GetLongValue())
     {
@@ -726,6 +841,31 @@ bool PlayerProperty::addItemToBag(PickableItem::PickableItemType type, CChaosNum
                     itemProperty->increaseCount();
                 if(item->isIdentified())
                     item->adjustByLevel();
+                
+                if(sound)
+                {
+                    if(item->getPickableItemPropertyType() == PickableItemProperty::PIPT_KEY)
+                    {
+                        std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("PICKUP_KEY");
+                        SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+                    }
+                    else if(item->getPickableItemPropertyType() == PickableItemProperty::PIPT_POTIONS)
+                    {
+                        std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("PICKUP_POTION");
+                        SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+                    }
+                    else if(item->getPickableItemPropertyType() == PickableItemProperty::PIPT_SCROLL)
+                    {
+                        std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("PICKUP_SCROLL");
+                        SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+
+                    }
+                    else
+                    {
+                        std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("PICKUP_OTHER");
+                        SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+                    }
+                }
                 return true;
             }
         }
@@ -750,6 +890,36 @@ bool PlayerProperty::addItemToBag(PickableItem::PickableItemType type, CChaosNum
         if(itemProperty->isIdentified())
             itemProperty->adjustByLevel();
         m_Bag.push_back(itemProperty);
+        
+        if(sound)
+        {
+            if(itemProperty->getPickableItemPropertyType() == PickableItemProperty::PIPT_KEY)
+            {
+                std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("PICKUP_KEY");
+                SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+            }
+            else if(itemProperty->getPickableItemPropertyType() == PickableItemProperty::PIPT_POTIONS)
+            {
+                std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("PICKUP_POTION");
+                SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+            }
+            else if(itemProperty->getPickableItemPropertyType() == PickableItemProperty::PIPT_SCROLL)
+            {
+                std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("PICKUP_SCROLL");
+                SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+                
+            }
+            else if(itemProperty->getPickableItemPropertyType() >=PickableItemProperty::PIPT_WEAPON && itemProperty->getPickableItemPropertyType() <=PickableItemProperty::PIPT_MAGIC_ORNAMENT)
+            {
+                std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("PICKUP_WEAPON");
+                SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+            }
+            else
+            {
+                std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("PICKUP_OTHER");
+                SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+            }
+        }
         return true;
     }
     return false;

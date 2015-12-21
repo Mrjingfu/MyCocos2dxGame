@@ -61,8 +61,8 @@ public:
     void handleShowSearchEffect(const cocos2d::Vec2& mapPos);
     void handlePickItem(const cocos2d::Vec2& mapPos);        ///拾取道具
     void handleMonsterHurt(const cocos2d::Vec2& mapPos);     ///处理攻击怪物
-    void handlePlayerHurt(const cocos2d::Vec2& mapPos, MonsterProperty* monsterProperty);      ///处理攻击玩家
-    void handlePlayerHurtByBoss(const cocos2d::Vec2& mapPos, BossProperty* bossProperty); ///处理boss攻击
+    void handlePlayerHurt(const cocos2d::Vec2& mapPos, BaseMonster* monster);      ///处理攻击玩家
+    void handlePlayerHurtByBoss(const cocos2d::Vec2& mapPos, BaseBoss* boss); ///处理boss攻击
     void handlePlayerUseScroll(PickableItem::PickableItemType type);
     void handlePlayerUsePotion(PickableItem::PickableItemType type);
     
