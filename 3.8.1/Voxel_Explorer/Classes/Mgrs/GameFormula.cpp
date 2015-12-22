@@ -58,7 +58,7 @@ UseableItem::UseableItemType GameFormula::generateUseItemType()
         else if(randIndex == 3)
             ret = UseableItem::UIT_CHEST_GOLD;
         else
-            ret = cocos2d::random(UseableItem::UIT_JAR_1, UseableItem::UIT_JAR_3);
+            ret = (UseableItem::UseableItemType)(cocos2d::random((int)UseableItem::UIT_JAR_1, (int)UseableItem::UIT_JAR_3));
     }
     return ret;
 }

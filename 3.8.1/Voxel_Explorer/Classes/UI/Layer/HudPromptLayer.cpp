@@ -54,7 +54,7 @@ void HudPromptLayer::refreshUIView()
                 cocos2d::DelayTime* delay = cocos2d::DelayTime::create(0.2);
                 cocos2d::FadeOut* fadeOut = cocos2d::FadeOut::create(0.2);
                 CallFunc* callfunN = CallFunc::create(CC_CALLBACK_0(HudPromptLayer::removePrompt, this,m_pLabel));
-                m_pLabel->runAction(cocos2d::Sequence::create(cocos2d::Spawn::createWithTwoActions(moveBy, ScaleTo1),delay,fadeOut,callfunN, nil));
+                m_pLabel->runAction(cocos2d::Sequence::create(cocos2d::Spawn::createWithTwoActions(moveBy, ScaleTo1),delay,fadeOut,callfunN, nullptr));
             }
             else
             {
@@ -62,7 +62,7 @@ void HudPromptLayer::refreshUIView()
                 cocos2d::DelayTime* delay = cocos2d::DelayTime::create(0.2);
                 cocos2d::FadeOut* fadeOut = cocos2d::FadeOut::create(0.2);
                 CallFunc* callfunN = CallFunc::create(CC_CALLBACK_0(HudPromptLayer::removePrompt, this,m_pLabel));
-                m_pLabel->runAction(cocos2d::Sequence::create(moveBy,delay,fadeOut,callfunN, nil));
+                m_pLabel->runAction(cocos2d::Sequence::create(moveBy,delay,fadeOut,callfunN, nullptr));
                 
             }
             

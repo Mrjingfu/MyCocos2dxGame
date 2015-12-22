@@ -2,7 +2,7 @@
 
 #include "TGridView.h"
 #include "ui/UIHelper.h"
-
+#include "cocos2d.h"
 
 
 
@@ -107,8 +107,8 @@ void TGridView::remedyLayoutParameter(Widget *item)
     if (itemIndex==-1) {
         return;
     }
-    std::string currenName = StringUtils::format("item_%d",(int)itemIndex);
-    std::string preName = StringUtils::format("item_%d",(int)itemIndex-1);
+    std::string currenName = cocos2d::StringUtils::format("item_%d",(int)itemIndex);
+    std::string preName = cocos2d::StringUtils::format("item_%d",(int)itemIndex-1);
     int x = itemIndex%m_pX;
     int y = itemIndex/m_pX;
     if (itemIndex ==0) {
@@ -119,7 +119,7 @@ void TGridView::remedyLayoutParameter(Widget *item)
         
         if (x==0) {
             //转弯
-            preName = StringUtils::format("item_%d",(y-1)*m_pX);
+            preName = cocos2d::StringUtils::format("item_%d",(y-1)*m_pX);
             CCLOG("preName:%s",preName.c_str());
             reLayoutParameter->setRelativeToWidgetName(preName);
              reLayoutParameter->setRelativeName(currenName );

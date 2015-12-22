@@ -347,7 +347,7 @@ void BaseMonster::onEnterSleeping()
     {
         EaseSineOut* tintTo1 = EaseSineOut::create(TintTo::create(1.0f, Color3B::GRAY));
         EaseSineOut* tintTo2 = EaseSineOut::create(TintTo::create(1.0f, Color3B::WHITE));
-        Sequence* sequence = Sequence::create(tintTo1, tintTo2, nil);
+        Sequence* sequence = Sequence::create(tintTo1, tintTo2, nullptr);
         RepeatForever* repeat = RepeatForever::create(sequence);
         this->runAction(repeat);
     }

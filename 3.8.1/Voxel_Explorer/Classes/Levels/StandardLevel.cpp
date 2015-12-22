@@ -828,11 +828,12 @@ bool StandardLevel::decorateSpecialArea(Area* area)
                         i--;
                         continue;
                     }
-                    UseableItem* item = UseableItem::create(cocos2d::random(UseableItem::UIT_JAR_1, UseableItem::UIT_JAR_3));
+                    UseableItem::UseableItemType useableType = (UseableItem::UseableItemType)cocos2d::random((int)UseableItem::UIT_JAR_1, (int)UseableItem::UIT_JAR_3);
+                    UseableItem* item = UseableItem::create(useableType);
                     if(!item)
                         return false;
                     item->setPosition3D(Vec3(m_Map[tileIndex].m_nX*TerrainTile::CONTENT_SCALE, -0.5f*TerrainTile::CONTENT_SCALE, -m_Map[tileIndex].m_nY*TerrainTile::CONTENT_SCALE));
-                    item->setActorDir(cocos2d::random(UseableItem::AD_FORWARD, UseableItem::AD_BACK));
+                    item->setActorDir((Actor::ActorDir)cocos2d::random((int)UseableItem::AD_FORWARD, (int)UseableItem::AD_BACK));
                     item->setVisited(m_Map[tileIndex].m_bVisited);
                     item->addTerrainTileFlag(TileInfo::USEABLE);
                     VoxelExplorer::getInstance()->getUseableItemsLayer()->addChild(item);

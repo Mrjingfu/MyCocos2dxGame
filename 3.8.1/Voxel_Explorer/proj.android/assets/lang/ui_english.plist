@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>PROP_SHOW_HP</key>
+	<string>HP:%d</string>
+	<key>ROLE_SHOW_HP</key>
+	<string>HP:%d/%d</string>
+	<key>ROLE_SHOW_EXP</key>
+	<string>EXP:%d/%d</string>
+	<key>PROP_SHOW_MP</key>
+	<string>MP:%d</string>
+	<key>ROLE_SHOW_MP</key>
+	<string>MP:%d/%d</string>
+	<key>PROP_SHOW_LIGHT_DIS</key>
+	<string>Light Dis:%d</string>
+	<key>PROP_SHOW_SEARCH_DIS</key>
+	<string>Search Dis:%d</string>
+	<key>PROP_SHOW_MARGIC_FIND</key>
+	<string>Margic:%d</string>
+	<key>PROP_SHOW_CRITICAL_STRIKE</key>
+	<string>Critical strike:%d</string>
+	<key>PROP_SHOW_BLOCK</key>
+	<string>Bolck:%d</string>
+	<key>PROP_SHOW_DODGE</key>
+	<string>Dodge:%d</string>
+	<key>PROP_SHOW_ATTACK</key>
+	<string>Attack:%d-%d</string>
+	<key>PROP_SHOW_DEFENSE</key>
+	<string>Defense:%d</string>
+	<key>STATUS_TEXT_DODGE</key>
+	<string>dogde</string>
+	<key>STATUS_TEXT_BOLOCK</key>
+	<string>Bolock %d</string>
+	<key>STATUS_TEXT_CRITICAL_STRIKE</key>
+	<string>Cirtical Strike %d</string>
+	<key>STATUS_TEXT_EXP</key>
+	<string>+Exp %d</string>
+	<key>GAME_SERACH_EXPLAIN</key>
+	<string>Select a cell to examine</string>
+	<key>GAME_MESSAGE_NOT</key>
+	<string>Welcome to the %s level %d of Voxel</string>
+	<key>GAME_MESSAGE_MONSTER_ATTACK</key>
+	<string>%s hit you</string>
+	<key>GAME_MESSAGE_MONSTER_DODGE</key>
+	<string>%s闪避了你的进攻</string>
+	<key>GAME_MESSAGE_MONSTER_BOLOCK</key>
+	<string>%s产生了一个格挡</string>
+	<key>GAME_MESSAGE_MONSTER_CRITICAL_STRIKE</key>
+	<string>%s产生了一个暴击</string>
+	<key>GAME_MESSAGE_MONSTER_DEAD</key>
+	<string>You defeated %s</string>
+	<key>GAME_MESSAGE_ROLE_ATTACK</key>
+	<string>You hit %s</string>
+	<key>GAME_MESSAGE_ROLE_DODGE</key>
+	<string>you dodged %s&apos;s attack</string>
+	<key>GAME_MESSAGE_ROLE_BOLOCK</key>
+	<string>你产生了一个格挡</string>
+	<key>GAME_MESSAGE_ROLE_CRITICAL_STRIKE</key>
+	<string>你产生了一个暴击</string>
+	<key>GAME_MESSAGE_ROLE_DEAD</key>
+	<string>%s杀死了你...</string>
+	<key>GAME_MESSAGE_ROLE_ADD_EXP</key>
+	<string>You now have %s</string>
+	<key>GAME_MESSAGE_LEVEL_UP</key>
+	<string>Level up!!!</string>
+	<key>MONSTER_ELITE_NAME</key>
+	<string>Elite %s</string>
+	<key>EQUIP_PROP_ATTACK</key>
+	<string>Attack:%d-%d</string>
+	<key>EQUIP_PROP_DEFENSE</key>
+	<string>Defense:%d</string>
+	<key>EQUIP_PROP_MIN_HURT</key>
+	<string>+%d MIN HURT</string>
+	<key>EQUIP_PROP_MAX_HURT</key>
+	<string>+%d MIN HURT</string>
+	<key>EQUIP_PROP_HP</key>
+	<string>+%d HP</string>
+	<key>EQUIP_PROP_MP</key>
+	<string>+%d MP</string>
+	<key>EQUIP_PROP_BLOCK</key>
+	<string>+%d%% Block Rate</string>
+	<key>EQUIP_PROP_CRITICAL_STRIKE</key>
+	<string>+%d%% Critical Strike Rate</string>
+	<key>EQUIP_PROP_DODGE</key>
+	<string>+%d%% Dodge Rate</string>
+	<key>EQUIP_PROP_MAGIC</key>
+	<string>+%d%% Magic Find Rate</string>
+	<key>EQUIP_PROP_SEQRCH</key>
+	<string>+%d Search Scope</string>
+	<key>EQUIP_PROP_LIGHT</key>
+	<string>+%d Light Scope</string>
+	<key>ITEM_NOT_IDENTIFY</key>
+	<string>Not Identify</string>
+	<key>ITEM_ALREDY_EQUIP</key>
+	<string>Equip</string>
+	<key>ITEM_NOT_EQUIP</key>
+	<string>Not Equip</string>
+	<key>ITEM_PROP_TYPE_KEY</key>
+	<string>KEY</string>
+	<key>ITEM_PROP_TYPE_WEAPON</key>
+	<string>WEAPON</string>
+	<key>ITEM_PROP_TYPE_SECOND_WEAPON</key>
+	<string>SECOND WEAPON</string>
+	<key>ITEM_PROP_TYPE_ARMOR</key>
+	<string>ARMOR</string>
+	<key>ITEM_PROP_TYPE_MAGIC_ORNAMENT</key>
+	<string>ORNAMENT</string>
+	<key>ITEM_PROP_TYPE_SCROLL</key>
+	<string>SCROLL</string>
+	<key>ITEM_PROP_TYPE_POTIONS</key>
+	<string>POTIONS</string>
+	<key>ITEM_PROP_TYPE_MATERIAL</key>
+	<string>MATERIAL</string>
+	<key>ITEM_PROP_TYPE_QUEST</key>
+	<string>QUEST</string>
+	<key>ITEM_PROP_TYPE_SUNDRIES</key>
+	<string>SUNDRIES</string>
+	<key>ITEM_MONEY_DESC</key>
+	<string>Sell price:</string>
+	<key>USE_POTION_ TREAT</key>
+	<string>+%d HP</string>
+	<key>USE_POTION_ MAGIC</key>
+	<string>+%d MP</string>
+	<key>USE_POTION_RELIEVE</key>
+	<string>中毒状态被解除了!</string>
+	<key>USE_POTION_WEAK</key>
+	<string>虚弱状态被解除了!</string>
+	<key>USE_POTION_SPECIFIC</key>
+	<string>使用特性药水,部分状态被解除了!</string>
+	<key>USE_POTION_UNIVERSAL</key>
+	<string>使用特性药水,状态全恢复了!</string>
+	<key>PLAYER_USE_GOLD_CHEST_KEY</key>
+	<string>使用了金质钥匙！</string>
+	<key>PLAYER_USE_SILVER_CHEST_KEY</key>
+	<string>使用了银质钥匙！</string>
+	<key>PLAYER_USE_COPPER_CHEST_KEY</key>
+	<string>使用了铜质钥匙！</string>
+	<key>PLAYER_USE_ROOM_KEY</key>
+	<string>使用了房间钥匙！</string>
+	<key>PLAYER_USE_BOSS_KEY</key>
+	<string>使用了%s房间钥匙！</string>
+	<key>DOOR_MAGIC_LOCKED</key>
+	<string>门上有一股魔力，根本打不开！</string>
+	<key>DOOR_MAGIC_CLOSED</key>
+	<string>你身后的门被一股魔力关上了！</string>
+	<key>FOUND_HIDDEN_DOOR</key>
+	<string>发现了隐藏门！</string>
+	<key>FOUND_HIDDEN_TOXIC_TRAP</key>
+	<string>发现了隐藏的中毒机关！</string>
+	<key>FOUND_HIDDEN_FIRE_TRAP</key>
+	<string>发现了隐藏的火机关！</string>
+	<key>FOUND_HIDDEN_PARALYTIC_TRAP</key>
+	<string>发现了隐藏的麻痹机关！</string>
+	<key>FOUND_HIDDEN_GRIPPING_TRAP</key>
+	<string>发现了隐藏的夹子机关！</string>
+	<key>FOUND_HIDDEN_SUMMONING_TRAP</key>
+	<string>发现了隐藏的召唤机关！</string>
+	<key>FOUND_HIDDEN_WEAK_TRAP</key>
+	<string>发现了隐藏的虚弱机关！</string>
+	<key>FOUND_HIDDEN_MSG</key>
+	<string>发现了隐藏的消息！</string>
+	<key>FOUND_HIDDEN_ITEM</key>
+	<string>发现了隐藏的道具！</string>
+	<key>PLAYER_NO_COPPER_KEY</key>
+	<string>没有铜质钥匙！</string>
+	<key>PLAYER_NO_SILVER_KEY</key>
+	<string>没有银质钥匙！</string>
+	<key>PLAYER_NO_GOLD_KEY</key>
+	<string>没有金质钥匙！</string>
+	<key>PLAYER_NO_ROOM_KEY</key>
+	<string>没有房间钥匙！</string>
+	<key>PLAYER_NO_BOSS_KEY</key>
+	<string>没有%s房间钥匙！</string>
+	<key>PLAYER_BAG_NO_SPACE</key>
+	<string>背包没有空间了!!</string>
+	<key>PLAYER_NO_MANA</key>
+	<string>魔法值不够！！</string>
+	<key>PLAYER_MONEY_NOT_ENOUGH</key>
+	<string>货币不足！</string>
+	<key>NOT_EQUIP_LEVEL_ENOUGH</key>
+	<string>Level is not enough!</string>
+	<key>TRIGGER_TOXIC_TRAP</key>
+	<string>你中毒了！</string>
+	<key>TRIGGER_FIRE_TRAP</key>
+	<string>你的身上着火了！</string>
+	<key>TRIGGER_PARALYTIC_TRAP</key>
+	<string>你被麻痹不能动了！</string>
+	<key>TRIGGER_GRIPPING_TRAP</key>
+	<string>你踩到一个夹子陷阱！</string>
+	<key>TRIGGER_SUMMONING_TRAP</key>
+	<string>啊！召唤陷阱，小心！</string>
+	<key>TRIGGER_WEAK_TRAP</key>
+	<string>你生病了, 能力降低了！</string>
+	<key>TRIGGER_MESSAGE_FROSEN_TRAP</key>
+	<string>你被冰冻了，你的速度降低！</string>
+	<key>NPC_KNIGHT_ANSWER</key>
+	<string>SHOP EQUIP</string>
+	<key>NPC_SHOPGIRL_ANSWER</key>
+	<string>SHOP MARGIC</string>
+	<key>NPC_WEIRDO_ANSWER</key>
+	<string>SHOP GAMBLE</string>
+	<key>NPC_OLDLADY_ANSWER</key>
+	<string>SHOP ALCHEMY</string>
+	<key>ITEM_SPLITE_COUNT</key>
+	<string>Count:%d</string>
+	<key>ITEM_BAG_DELETE</key>
+	<string>是否移除该道具？</string>
+	<key>ITEM_BAG_SELL</key>
+	<string>是否出售该道具？</string>
+	<key>TITLE_ACHIEVE</key>
+	<string>ACHIEVE</string>
+	<key>PLAYER_FALL_AND_DIE</key>
+	<string>不幸的事，你摔死了</string>
+	<key>GO_UPSTAIRS</key>
+	<string>你进入上一层。</string>
+	<key>GO_UPSTAIRS_FORBIDDEN</key>
+	<string>禁止传送。</string>
+	<key>GO_DOWNSTAIRS</key>
+	<string>你进入下一层。</string>
+	<key>GO_BOSSROOM</key>
+	<string>进入Boos房间</string>
+	<key>GO_CHASM</key>
+	<string>是否跳入深渊呢？</string>
+	<key>FALL_DOWNSTAIRS</key>
+	<string>幸运是事，你进入到下一层了</string>
+	<key>SELECT_LEFT_DUNGEON_NODE</key>
+	<string>是选择左边开始？</string>
+	<key>SELECT_RIGHT_DUNGEON_NODE</key>
+	<string>是选择右边开始？</string>
+	<key>USE_SMALL_PROTAL</key>
+	<string>你被传送了</string>
+	<key>STANDARD_PROTAL_NO_ENERGY</key>
+	<string>传送能量不足了</string>
+	<key>BTN_TEXT_MAINMENU</key>
+	<string>MAIN MENU</string>
+	<key>BTN_TEXT_SETTING</key>
+	<string>SETTING</string>
+	<key>BTN_TEXT_EXITGAME</key>
+	<string>EXIT GAME</string>
+	<key>BTN_TEXT_DISCARD</key>
+	<string>DISCARD</string>
+	<key>BTN_TEXT_EQUIP</key>
+	<string>EQUIP</string>
+	<key>BTN_TEXT_INDENTIFY</key>
+	<string>INDENTIFY</string>
+	<key>BTN_TEXT_RESTART</key>
+	<string>RESTART</string>
+	<key>BTN_TEXT_OK</key>
+	<string>OK</string>
+	<key>BTN_TEXT_CANCEL</key>
+	<string>CANCEL</string>
+	<key>BTN_TEXT_SELL</key>
+	<string>SELL</string>
+	<key>BTN_TEXT_BUY</key>
+	<string>BUY</string>
+	<key>BTN_TEXT_USE</key>
+	<string>USE</string>
+	<key>BTN_TEXT_HELP</key>
+	<string>HELP</string>
+	<key>BTN_TEXT_SOUND</key>
+	<string>SOUND:</string>
+	<key>BTN_TEXT_MUSIC</key>
+	<string>MUSIC:</string>
+</dict>
+</plist>

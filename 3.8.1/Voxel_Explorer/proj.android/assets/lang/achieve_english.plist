@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>ADT_KILL_FIRST</key>
+	<string>第一滴血</string>
+	<key>ADT_KILL_FIRST_TARGET</key>
+	<string>杀死一个敌人</string>
+	<key>ADT_PEROPLE_CUT_HUNDRED</key>
+	<string>百人斩</string>
+	<key>ADT_PEROPLE_CUT_HUNDRED_TARGET</key>
+	<string>杀手一百个敌人</string>
+	<key>ADT_BLOOD_SUPPRESS</key>
+	<string>血腥镇压</string>
+	<key>ADT_BLOOD_SUPPRESS_TARGET</key>
+	<string>杀手五百个敌人</string>
+	<key>ADT_KILLER</key>
+	<string>杀手</string>
+	<key>ADT_KILLER_TARGET</key>
+	<string>杀手二千五百个敌人</string>
+	<key>ADT_PAST_HOPE</key>
+	<string>无可救药</string>
+	<key>ADT_PAST_HOPE_TARGET</key>
+	<string>中毒死亡五十次</string>
+	<key>ADT_INCENDIES</key>
+	<string>烈火焚身</string>
+	<key>ADT_INCENDIES_TARGET</key>
+	<string>被火烧死五十次</string>
+	<key>ADT_DIE_UNNATURAL</key>
+	<string>死于非命</string>
+	<key>ADT_DIE_UNNATURAL_TARGET</key>
+	<string>死于非命</string>
+	<key>ADT_MARATHON</key>
+	<string>马拉松</string>
+	<key>ADT_MARATHON_TARGET</key>
+	<string>行走42000步</string>
+	<key>ADT_WALKING_DEAD</key>
+	<string>行尸走肉</string>
+	<key>ADT_WALKING_DEAD_TARGET</key>
+	<string>杀死僵尸100个</string>
+	<key>ADT_FINAL_DESTINATION</key>
+	<string>死神来了</string>
+	<key>ADT_FINAL_DESTINATION_TARGET</key>
+	<string>死亡100次</string>
+	<key>ADT_WEALTHY_MEN</key>
+	<string>有钱人</string>
+	<key>ADT_WEALTHY_MEN_TARGET</key>
+	<string>收集金币100个</string>
+	<key>ADT_UPSTART</key>
+	<string>暴发户</string>
+	<key>ADT_UPSTART_TARGET</key>
+	<string>收集金币1000个</string></dict>
+</plist>

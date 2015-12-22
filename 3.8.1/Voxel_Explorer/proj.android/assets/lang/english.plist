@@ -1,0 +1,1204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>GAME_NAME</key>
+	<string>Voxel Dungeon</string>
+	<key>FONT_NAME</key>
+	<string>04B_03.TTF</string>
+	<key>TTN_CHASM</key>
+	<string>It&apos;s too dark to see!</string>
+	<key>TTN_STANDARD</key>
+	<string>Very ordinary floor.</string>
+	<key>TTN_WALL</key>
+	<string>Very ordinary wall.</string>
+	<key>TTN_ENTRANCE</key>
+	<string>Exit to the upper floor.</string>
+	<key>TTN_EXIT</key>
+	<string>Entrance to the next floor.</string>
+	<key>TTN_TUNNEL</key>
+	<string>Very ordinary floor.</string>
+	<key>TTN_DOOR</key>
+	<string>A door, open to have look at it?</string>
+	<key>TTN_OPENED_DOOR</key>
+	<string>Very ordinary floor.</string>
+	<key>TTN_LOCKED_DOOR</key>
+	<string>Locked door.</string>
+	<key>TTN_LOCKED_BOSS_DOOR</key>
+	<string>Locked door.</string>
+	<key>TTN_LOCKED_MAGIC_DOOR</key>
+	<string>A door, open to have look at it?</string>
+	<key>TTN_SECRET_DOOR</key>
+	<string>The wall looks a bit strange!</string>
+	<key>TTN_TOXIC_TRAP</key>
+	<string>Toxic trap!</string>
+	<key>TTN_HIDE_TOXIC_TRAP</key>
+	<string>The floor looks a bit strange!</string>
+	<key>TTN_FIRE_TRAP</key>
+	<string>Flame trap!</string>
+	<key>TTN_HIDE_FIRE_TRAP</key>
+	<string>The floor looks a bit strange!</string>
+	<key>TTN_PARALYTIC_TRAP</key>
+	<string>Paralysis trap!</string>
+	<key>TTN_HIDE_PARALYTIC_TRAP</key>
+	<string>The floor looks a bit strange!</string>
+	<key>TTN_GRIPPING_TRAP</key>
+	<string>Gripping trap!</string>
+	<key>TTN_HIDE_GRIPPING_TRAP</key>
+	<string>The floor looks a bit strange!</string>
+	<key>TTN_SUMMONING_TRAP</key>
+	<string>Summoning trap!</string>
+	<key>TTN_HIDE_SUMMONING_TRAP</key>
+	<string>The floor looks a bit strange!</string>
+	<key>TTN_WEAK_TRAP</key>
+	<string>Weak trap!</string>
+	<key>TTN_HIDE_WEAK_TRAP</key>
+	<string>The floor looks a bit strange!</string>
+	<key>DN_SEWER</key>
+	<string>Sewer</string>
+	<key>DN_PRISON</key>
+	<string>Prison</string>
+	<key>DN_FANE</key>
+	<string>Fane</string>
+	<key>DN_MINES</key>
+	<string>Pit</string>
+	<key>DN_CAVE</key>
+	<string>Cave</string>
+	<key>DN_TOMB</key>
+	<string>Tomb</string>
+	<key>DN_DWARF_CASTLE</key>
+	<string>Dwaft Castle</string>
+	<key>DN_MAGA_TOWER</key>
+	<string>Maga Tower</string>
+	<key>DN_ORC_FORTRESS</key>
+	<string>Orc Fortress</string>
+	<key>DN_ELF_FOREST</key>
+	<string>Elf Forest</string>
+	<key>DN_TROLL_TEMPLE</key>
+	<string>Troll Temple</string>
+	<key>DN_BEHOLDER_CASTLE</key>
+	<string>Beholder Castle</string>
+	<key>DN_WARP_SPACE</key>
+	<string>Wrap Space</string>
+	<key>DN_DRAGON_LAIR</key>
+	<string>Dragon Lair</string>
+	<key>DN_LICH_TOMB</key>
+	<string>Lich Tomb</string>
+	<key>DN_BOSS_SEWER</key>
+	<string>Control Room</string>
+	<key>DN_BOSS_PRISON</key>
+	<string>Warden&apos;s Office</string>
+	<key>DN_BOSS_FANE</key>
+	<string>Meeting House</string>
+	<key>DN_BOSS_MINES</key>
+	<string>Bottomless Abyss</string>
+	<key>DN_BOSS_CAVE</key>
+	<string>Gruerde‘s Nest</string>
+	<key>DN_BOSS_TOMB</key>
+	<string>Corpse Temple</string>
+	<key>DN_BOSS_DWARF_CASTLE</key>
+	<string>Forging Factory</string>
+	<key>DN_BOSS_MAGA_TOWER</key>
+	<string>Magic Library</string>
+	<key>DN_BOSS_ORC_FORTRESS</key>
+	<string>Fortress Wall</string>
+	<key>DN_BOSS_ELF_FOREST</key>
+	<string>Elf Holy Land</string>
+	<key>DN_BOSS_TROLL_TEMPLE</key>
+	<string>Troll Altar</string>
+	<key>DN_BOSS_BEHOLDER_CASTLE</key>
+	<string>Beholder Hall</string>
+	<key>DN_BOSS_WARP_SPACE</key>
+	<string>Mastermind Room</string>
+	<key>DN_BOSS_DRAGON_LAIR</key>
+	<string>Delivery Room</string>
+	<key>DN_BOSS_LICH_TOMB</key>
+	<string>Lick Coffins</string>
+	<key>MONSTER_ELITE</key>
+	<string>Elite</string>
+	<key>MMN_RAT</key>
+	<string>Rat</string>
+	<key>MMN_BAT</key>
+	<string>Bat</string>
+	<key>MMN_SNAKE</key>
+	<string>Snake</string>
+	<key>MMN_SPIDER</key>
+	<string>Spider</string>
+	<key>MMN_SLIME</key>
+	<string>Slime</string>
+	<key>MMN_ALLIP</key>
+	<string>Allip</string>
+	<key>MMN_PRISONER</key>
+	<string>Prisoner</string>
+	<key>MMN_PRISONGUARD</key>
+	<string>Prison Guard</string>
+	<key>MMN_TORTURE</key>
+	<string>Torture</string>
+	<key>MMN_MOB</key>
+	<string>Mob</string>
+	<key>MMN_BELIEVER</key>
+	<string>Believer</string>
+	<key>MMN_GATEKEEPER</key>
+	<string>Gate Keeper</string>
+	<key>MMN_APOLOGIST</key>
+	<string>Apologist</string>
+	<key>MMN_ADJUDICATOR</key>
+	<string>Adjudicator</string>
+	<key>MMN_PRIEST</key>
+	<string>Priest</string>
+	<key>MMN_DEATHMINER</key>
+	<string>Death Miner</string>
+	<key>MMN_KOBOLD</key>
+	<string>Kobold</string>
+	<key>MMN_OOZE</key>
+	<string>Ooze</string>
+	<key>MMN_SHADOW</key>
+	<string>Shadow</string>
+	<key>MMN_ANKHEG</key>
+	<string>Ankheg</string>
+	<key>MMN_WOLF</key>
+	<string>Wolf</string>
+	<key>MMN_BEAR</key>
+	<string>Bear</string>
+	<key>MMN_GOBLIN</key>
+	<string>Goblin</string>
+	<key>MMN_DINOSAUR</key>
+	<string>Dinosaur</string>
+	<key>MMN_GNOLL</key>
+	<string>Gnoll</string>
+	<key>MMN_SKELETON</key>
+	<string>Skeleton</string>
+	<key>MMN_ZOMBIE</key>
+	<string>Zombie</string>
+	<key>MMN_GARGOYLE</key>
+	<string>Gargoyle</string>
+	<key>MMN_GHOST</key>
+	<string>Ghost</string>
+	<key>MMN_GHOUL</key>
+	<string>Ghoul</string>
+	<key>BMN_SLIMEKING</key>
+	<string>Slime King</string>
+	<key>BMN_WARDEN</key>
+	<string>Warden</string>
+	<key>BMN_ARCHBISHOP</key>
+	<string>Archbishop</string>
+	<key>BMN_KOBOLDLEADER</key>
+	<string>Kobold Leader</string>
+	<key>BMN_GIANT</key>
+	<string>Giant Gruerde</string>
+	<key>BMN_SKELETONKING</key>
+	<string>Skeleton King</string>
+	<key>PICKITEM_DESC</key>
+	<string>Pick it up and have a look carefully.</string>
+	<key>PIPN_KEY</key>
+	<string>Key</string>
+	<key>PIPN_WEAPON</key>
+	<string>Weapon</string>
+	<key>PIPN_SECOND_WEAPON</key>
+	<string>Off-hand Weapon</string>
+	<key>PIPN_ARMOR</key>
+	<string>Armor</string>
+	<key>PIPN_MAGIC_ORNAMENT</key>
+	<string>Ornament</string>
+	<key>PIPN_SCROLL</key>
+	<string>Scroll</string>
+	<key>PIPN_POTIONS</key>
+	<string>Potion</string>
+	<key>PIPN_MATERIAL</key>
+	<string>Material</string>
+	<key>PIPN_QUEST</key>
+	<string>Quest Item</string>
+	<key>PIPN_SUNDRIES</key>
+	<string>Sundries</string>
+	<key>PIN_KEY_COPPER</key>
+	<string>Copper Key</string>
+	<key>PIN_KEY_COPPER_DESC</key>
+	<string>To open the copper chest.</string>
+	<key>PIN_KEY_SILVER</key>
+	<string>Silver Key</string>
+	<key>PIN_KEY_SILVER_DESC</key>
+	<string>To open the silver chest.</string>
+	<key>PIN_KEY_GOLD</key>
+	<string>Gold Key</string>
+	<key>PIN_KEY_GOLD_DESC</key>
+	<string>To open the gold chest.</string>
+	<key>PIN_KEY_BOSS</key>
+	<string>The %s&apos;s key</string>
+	<key>PIN_KEY_BOSS_DESC</key>
+	<string>To open %s&apos;s room.</string>
+	<key>PIN_KEY_ROOM</key>
+	<string>The key of %s</string>
+	<key>PIN_KEY_ROOM_DESC</key>
+	<string>To open locked room.</string>
+	<key>PIN_DAGGER_DAGGER</key>
+	<string>Dagger</string>
+	<key>PIN_DAGGER_DAGGER_DESC</key>
+	<string>A very common Dagger.</string>
+	<key>PIN_DAGGER_DAGGER_BIDESC</key>
+	<string>A little blunt. sharpen it, perhaps can be used.</string>
+	<key>PIN_DAGGER_HALFSWORD</key>
+	<string>Half sword</string>
+	<key>PIN_DAGGER_HALFSWORD_DESC</key>
+	<string>Exquisite dagger, worth your name engraved on top.</string>
+	<key>PIN_DAGGER_HALFSWORD_BIDESC</key>
+	<string>The general blacksmith shop can buy, adventurers standard weapon.</string>
+	<key>PIN_DAGGER_KNIFE</key>
+	<string>Knife</string>
+	<key>PIN_DAGGER_KNIFE_DESC</key>
+	<string>Don&apos;t judge knife by appearances, hey! Don&apos;t let your face so close by.</string>
+	<key>PIN_DAGGER_KNIFE_BIDESC</key>
+	<string>At first glance, it looks like a very common knife.</string>
+	<key>PIN_DAGGER_COLDSTEELDAGGER</key>
+	<string>Cold steel dagger</string>
+	<key>PIN_DAGGER_COLDSTEELDAGGER_DESC</key>
+	<string>Cold steel dagger is not a magic sword, but also expensive.</string>
+	<key>PIN_DAGGER_COLDSTEELDAGGER_BIDESC</key>
+	<string>Good steel, just the right length.</string>
+	<key>PIN_DAGGER_RIPPERCUTTER</key>
+	<string>Ripper cutter</string>
+	<key>PIN_DAGGER_RIPPERCUTTER_DESC</key>
+	<string>When the enemy saw its blade, it wants to drink blood...</string>
+	<key>PIN_DAGGER_RIPPERCUTTER_BIDESC</key>
+	<string>It seems that you have seen this knife before.</string>
+	<key>PIN_DAGGER_BLUELIGHTDAGGER</key>
+	<string>Blue light dagger</string>
+	<key>PIN_DAGGER_BLUELIGHTDAGGER_DESC</key>
+	<string>Made by the famous blacksmith Tony Swatton.</string>
+	<key>PIN_DAGGER_BLUELIGHTDAGGER_BIDESC</key>
+	<string>A faint blue light shone on the blade.</string>
+	<key>PIN_DAGGER_RUBYDAGGER</key>
+	<string>Ruby dagger</string>
+	<key>PIN_DAGGER_RUBYDAGGER_DESC</key>
+	<string>Ornaments can also be a murder weapon.</string>
+	<key>PIN_DAGGER_RUBYDAGGER_BIDESC</key>
+	<string>A dagger with a gem is usually an ornament.</string>
+	<key>PIN_DAGGER_PRO_DAGGER</key>
+	<string>Candlelight</string>
+	<key>PIN_DAGGER_PRO_DAGGER_DESC</key>
+	<string>Really can shine Oh, a little yellow light.</string>
+	<key>PIN_DAGGER_PRO_DAGGER_BIDESC</key>
+	<string>It looks like a candle.</string>
+	<key>PIN_DAGGER_PRO_HALFSWORD</key>
+	<string>Stars Shine</string>
+	<key>PIN_DAGGER_PRO_HALFSWORD_DESC</key>
+	<string>The tears of stars, moist aerosiderite under the Azeroth stars.</string>
+	<key>PIN_DAGGER_PRO_HALFSWORD_BIDESC</key>
+	<string>Feels very wet.</string>
+	<key>PIN_DAGGER_PRO_KNIFE</key>
+	<string>Gold Killer</string>
+	<key>PIN_DAGGER_PRO_KNIFE_DESC</key>
+	<string>It will make people vomit, to stab the enemy&apos;s stomach ~</string>
+	<key>PIN_DAGGER_PRO_KNIFE_BIDESC</key>
+	<string>The color of the dagger like shit, to smell the smell of your hand.</string>
+	<key>PIN_DAGGER_PRO_COLDSTEELDAGGER</key>
+	<string>Shadow Attacker</string>
+	<key>PIN_DAGGER_PRO_COLDSTEELDAGGER_DESC</key>
+	<string>The blade of Thief Linden.</string>
+	<key>PIN_DAGGER_PRO_COLDSTEELDAGGER_BIDESC</key>
+	<string>Signs of a trade union of thieves.</string>
+	<key>PIN_DAGGER_PRO_RIPPERCUTTER</key>
+	<string>Six Blade</string>
+	<key>PIN_DAGGER_PRO_RIPPERCUTTER_DESC</key>
+	<string>Very special weapon, no one knows who to build, who used.</string>
+	<key>PIN_DAGGER_PRO_RIPPERCUTTER_BIDESC</key>
+	<string>It has six sharp end, one stab six holes.</string>
+	<key>PIN_DAGGER_PRO_BLUELIGHTDAGGER</key>
+	<string>Frozen Cloud</string>
+	<key>PIN_DAGGER_PRO_BLUELIGHTDAGGER_DESC</key>
+	<string>When brandish the sword, the surrounding air is frozen, as cold as Frostmourne, but it does not control the human nature, ease of use.</string>
+	<key>PIN_DAGGER_PRO_BLUELIGHTDAGGER_BIDESC</key>
+	<string>It feels cold.</string>
+	<key>PIN_DAGGER_PRO_RUBYDAGGER</key>
+	<string>Fireflow</string>
+	<key>PIN_DAGGER_PRO_RUBYDAGGER_DESC</key>
+	<string>When brandish the sword, like dragon out flames, rare in the world.</string>
+	<key>PIN_DAGGER_PRO_RUBYDAGGER_BIDESC</key>
+	<string>Feels a bit hot.</string>
+	<key>PIN_AXE_HATCHET</key>
+	<string>Hatchet</string>
+	<key>PIN_AXE_HATCHET_DESC</key>
+	<string>Do you want the woodcutter?</string>
+	<key>PIN_AXE_HATCHET_BIDESC</key>
+	<string>Rusty~</string>
+	<key>PIN_AXE_ADZE</key>
+	<string>Adze</string>
+	<key>PIN_AXE_ADZE_DESC</key>
+	<string>It will make the enemy daunting.</string>
+	<key>PIN_AXE_ADZE_BIDESC</key>
+	<string>Berserker standard weapon.</string>
+	<key>PIN_AXE_STONEAXE</key>
+	<string>Stone Axe</string>
+	<key>PIN_AXE_STONEAXE_DESC</key>
+	<string>Smash everything.</string>
+	<key>PIN_AXE_STONEAXE_BIDESC</key>
+	<string>Wooden stick、rattan, and big stone, you can also make one.</string>
+	<key>PIN_AXE_BROADAX</key>
+	<string>Broadax</string>
+	<key>PIN_AXE_BROADAX_DESC</key>
+	<string></string>
+	<key>PIN_AXE_BROADAX_BIDESC</key>
+	<string></string>
+	<key>PIN_AXE_TOMAHAWK</key>
+	<string>Tomahawk</string>
+	<key>PIN_AXE_TOMAHAWK_DESC</key>
+	<string></string>
+	<key>PIN_AXE_TOMAHAWK_BIDESC</key>
+	<string></string>
+	<key>PIN_AXE_HUGEAXE</key>
+	<string>Huge Axe</string>
+	<key>PIN_AXE_HUGEAXE_DESC</key>
+	<string></string>
+	<key>PIN_AXE_HUGEAXE_BIDESC</key>
+	<string></string>
+	<key>PIN_AXE_DOUBLEBITAX</key>
+	<string>Double-bit Ax</string>
+	<key>PIN_AXE_DOUBLEBITAX_DESC</key>
+	<string></string>
+	<key>PIN_AXE_DOUBLEBITAX_BIDESC</key>
+	<string></string>
+	<key>PIN_AXE_PRO_HATCHET</key>
+	<string>Dark Iron</string>
+	<key>PIN_AXE_PRO_HATCHET_DESC</key>
+	<string></string>
+	<key>PIN_AXE_PRO_HATCHET_BIDESC</key>
+	<string></string>
+	<key>PIN_AXE_PRO_ADZE</key>
+	<string>Half Moon</string>
+	<key>PIN_AXE_PRO_ADZE_DESC</key>
+	<string></string>
+	<key>PIN_AXE_PRO_ADZE_BIDESC</key>
+	<string></string>
+	<key>PIN_AXE_PRO_STONEAXE</key>
+	<string>Cyclotron</string>
+	<key>PIN_AXE_PRO_STONEAXE_DESC</key>
+	<string></string>
+	<key>PIN_AXE_PRO_STONEAXE_BIDESC</key>
+	<string></string>
+	<key>PIN_AXE_PRO_BROADAX</key>
+	<string>Molten lava</string>
+	<key>PIN_AXE_PRO_BROADAX_DESC</key>
+	<string></string>
+	<key>PIN_AXE_PRO_BROADAX_BIDESC</key>
+	<string></string>
+	<key>PIN_AXE_PRO_TOMAHAWK</key>
+	<string>Berserker</string>
+	<key>PIN_AXE_PRO_TOMAHAWK_DESC</key>
+	<string></string>
+	<key>PIN_AXE_PRO_TOMAHAWK_BIDESC</key>
+	<string></string>
+	<key>PIN_AXE_PRO_HUGEAXE</key>
+	<string>Skull Splitter</string>
+	<key>PIN_AXE_PRO_HUGEAXE_DESC</key>
+	<string></string>
+	<key>PIN_AXE_PRO_HUGEAXE_BIDESC</key>
+	<string></string>
+	<key>PIN_AXE_PRO_DOUBLEBITAX</key>
+	<string>Brainhew</string>
+	<key>PIN_AXE_PRO_DOUBLEBITAX_DESC</key>
+	<string></string>
+	<key>PIN_AXE_PRO_DOUBLEBITAX_BIDESC</key>
+	<string></string>
+	<key>PIN_SWORD_SWORD</key>
+	<string>Sword</string>
+	<key>PIN_SWORD_SWORD_DESC</key>
+	<string></string>
+	<key>PIN_SWORD_SWORD_BIDESC</key>
+	<string></string>
+	<key>PIN_SWORD_STEELSWORD</key>
+	<string>Steel Sword</string>
+	<key>PIN_SWORD_STEELSWORD_DESC</key>
+	<string></string>
+	<key>PIN_SWORD_STEELSWORD_BIDESC</key>
+	<string></string>
+	<key>PIN_SWORD_SABRE</key>
+	<string>Sabre</string>
+	<key>PIN_SWORD_SABRE_DESC</key>
+	<string></string>
+	<key>PIN_SWORD_SABRE_BIDESC</key>
+	<string></string>
+	<key>PIN_SWORD_HUGESWORD</key>
+	<string>Huge Sword</string>
+	<key>PIN_SWORD_HUGESWORD_DESC</key>
+	<string></string>
+	<key>PIN_SWORD_HUGESWORD_BIDESC</key>
+	<string></string>
+	<key>PIN_SWORD_TRIANGLESWORD</key>
+	<string>Triangle Sword</string>
+	<key>PIN_SWORD_TRIANGLESWORD_DESC</key>
+	<string></string>
+	<key>PIN_SWORD_TRIANGLESWORD_BIDESC</key>
+	<string></string>
+	<key>PIN_SWORD_JAGGEDSWORD</key>
+	<string>Jagged Sword</string>
+	<key>PIN_SWORD_JAGGEDSWORD_DESC</key>
+	<string></string>
+	<key>PIN_SWORD_JAGGEDSWORD_BIDESC</key>
+	<string></string>
+	<key>PIN_SWORD_CRYSTALSWORD</key>
+	<string>Crystal Sword</string>
+	<key>PIN_SWORD_CRYSTALSWORD_DESC</key>
+	<string></string>
+	<key>PIN_SWORD_CRYSTALSWORD_BIDESC</key>
+	<string></string>
+	<key>PIN_SWORD_PRO_SWORD</key>
+	<string>Red Lotus</string>
+	<key>PIN_SWORD_PRO_SWORD_DESC</key>
+	<string></string>
+	<key>PIN_SWORD_PRO_SWORD_BIDESC</key>
+	<string></string>
+	<key>PIN_SWORD_PRO_STEELSWORD</key>
+	<string>Flash</string>
+	<key>PIN_SWORD_PRO_STEELSWORD_DESC</key>
+	<string></string>
+	<key>PIN_SWORD_PRO_STEELSWORD_BIDESC</key>
+	<string></string>
+	<key>PIN_SWORD_PRO_SABRE</key>
+	<string>Wind Strike</string>
+	<key>PIN_SWORD_PRO_SABRE_DESC</key>
+	<string></string>
+	<key>PIN_SWORD_PRO_SABRE_BIDESC</key>
+	<string></string>
+	<key>PIN_SWORD_PRO_HUGESWORD</key>
+	<string>Solar Flame</string>
+	<key>PIN_SWORD_PRO_HUGESWORD_DESC</key>
+	<string></string>
+	<key>PIN_SWORD_PRO_HUGESWORD_BIDESC</key>
+	<string></string>
+	<key>PIN_SWORD_PRO_TRIANGLESWORD</key>
+	<string>Bloodletters</string>
+	<key>PIN_SWORD_PRO_TRIANGLESWORD_DESC</key>
+	<string></string>
+	<key>PIN_SWORD_PRO_TRIANGLESWORD_BIDESC</key>
+	<string></string>
+	<key>PIN_SWORD_PRO_JAGGEDSWORD</key>
+	<string>Sawtooth</string>
+	<key>PIN_SWORD_PRO_JAGGEDSWORD_DESC</key>
+	<string></string>
+	<key>PIN_SWORD_PRO_JAGGEDSWORD_BIDESC</key>
+	<string></string>
+	<key>PIN_SWORD_PRO_CRYSTALSWORD</key>
+	<string>No God</string>
+	<key>PIN_SWORD_PRO_CRYSTALSWORD_DESC</key>
+	<string></string>
+	<key>PIN_SWORD_PRO_CRYSTALSWORD_BIDESC</key>
+	<string></string>
+	<key>PIN_MACE_ROLLINGPIN</key>
+	<string>Rolling Pin</string>
+	<key>PIN_MACE_ROLLINGPIN_DESC</key>
+	<string></string>
+	<key>PIN_MACE_ROLLINGPIN_BIDESC</key>
+	<string></string>
+	<key>PIN_MACE_MALLET</key>
+	<string>Mallet</string>
+	<key>PIN_MACE_MALLET_DESC</key>
+	<string></string>
+	<key>PIN_MACE_MALLET_BIDESC</key>
+	<string></string>
+	<key>PIN_MACE_MACE</key>
+	<string>Mace</string>
+	<key>PIN_MACE_MACE_DESC</key>
+	<string></string>
+	<key>PIN_MACE_MACE_BIDESC</key>
+	<string></string>
+	<key>PIN_MACE_HAMMER</key>
+	<string>Hammer</string>
+	<key>PIN_MACE_HAMMER_DESC</key>
+	<string></string>
+	<key>PIN_MACE_HAMMER_BIDESC</key>
+	<string></string>
+	<key>PIN_MACE_WOLFFANGSMACE</key>
+	<string>Wolf&apos;s Fangs Mace</string>
+	<key>PIN_MACE_WOLFFANGSMACE_DESC</key>
+	<string></string>
+	<key>PIN_MACE_WOLFFANGSMACE_BIDESC</key>
+	<string></string>
+	<key>PIN_MACE_BONEHAMMER</key>
+	<string>Bone Hammer</string>
+	<key>PIN_MACE_BONEHAMMER_DESC</key>
+	<string></string>
+	<key>PIN_MACE_BONEHAMMER_BIDESC</key>
+	<string></string>
+	<key>PIN_MACE_SLEDGEHAMMER</key>
+	<string>Sledge Hammer</string>
+	<key>PIN_MACE_SLEDGEHAMMER_DESC</key>
+	<string></string>
+	<key>PIN_MACE_SLEDGEHAMMER_BIDESC</key>
+	<string></string>
+	<key>PIN_MACE_PRO_ROLLINGPIN</key>
+	<string>Dinosaur bone</string>
+	<key>PIN_MACE_PRO_ROLLINGPIN_DESC</key>
+	<string></string>
+	<key>PIN_MACE_PRO_ROLLINGPIN_BIDESC</key>
+	<string></string>
+	<key>PIN_MACE_PRO_MALLET</key>
+	<string>The hammer of ogre</string>
+	<key>PIN_MACE_PRO_MALLET_DESC</key>
+	<string></string>
+	<key>PIN_MACE_PRO_MALLET_BIDESC</key>
+	<string></string>
+	<key>PIN_MACE_PRO_MACE</key>
+	<string>Ruby Mace</string>
+	<key>PIN_MACE_PRO_MACE_DESC</key>
+	<string></string>
+	<key>PIN_MACE_PRO_MACE_BIDESC</key>
+	<string></string>
+	<key>PIN_MACE_PRO_HAMMER</key>
+	<string>Golden glory</string>
+	<key>PIN_MACE_PRO_HAMMER_DESC</key>
+	<string></string>
+	<key>PIN_MACE_PRO_HAMMER_BIDESC</key>
+	<string></string>
+	<key>PIN_MACE_PRO_WOLFFANGSMACE</key>
+	<string>Mace of the gods</string>
+	<key>PIN_MACE_PRO_WOLFFANGSMACE_DESC</key>
+	<string></string>
+	<key>PIN_MACE_PRO_WOLFFANGSMACE_BIDESC</key>
+	<string></string>
+	<key>PIN_MACE_PRO_BONEHAMMER</key>
+	<string>Sapphire Mace</string>
+	<key>PIN_MACE_PRO_BONEHAMMER_DESC</key>
+	<string></string>
+	<key>PIN_MACE_PRO_BONEHAMMER_BIDESC</key>
+	<string></string>
+	<key>PIN_MACE_PRO_SLEDGEHAMMER</key>
+	<string>Azrael Power</string>
+	<key>PIN_MACE_PRO_SLEDGEHAMMER_DESC</key>
+	<string></string>
+	<key>PIN_MACE_PRO_SLEDGEHAMMER_BIDESC</key>
+	<string></string>
+	<key>PIN_BOW_SHORTBOW</key>
+	<string>Short Bow</string>
+	<key>PIN_BOW_SHORTBOW_DESC</key>
+	<string></string>
+	<key>PIN_BOW_SHORTBOW_BIDESC</key>
+	<string></string>
+	<key>PIN_BOW_LONGBOW</key>
+	<string>Long Bow</string>
+	<key>PIN_BOW_LONGBOW_DESC</key>
+	<string></string>
+	<key>PIN_BOW_LONGBOW_BIDESC</key>
+	<string></string>
+	<key>PIN_BOW_HORNBOW</key>
+	<string>Horn Bow</string>
+	<key>PIN_BOW_HORNBOW_DESC</key>
+	<string></string>
+	<key>PIN_BOW_HORNBOW_BIDESC</key>
+	<string></string>
+	<key>PIN_BOW_REFLEXBOW</key>
+	<string>Reflex Bow</string>
+	<key>PIN_BOW_REFLEXBOW_DESC</key>
+	<string></string>
+	<key>PIN_BOW_REFLEXBOW_BIDESC</key>
+	<string></string>
+	<key>PIN_BOW_EAGLEBOW</key>
+	<string>Eagle Bow</string>
+	<key>PIN_BOW_EAGLEBOW_DESC</key>
+	<string></string>
+	<key>PIN_BOW_EAGLEBOW_BIDESC</key>
+	<string></string>
+	<key>PIN_BOW_LAMINATEDBOW</key>
+	<string>Laminated Bow</string>
+	<key>PIN_BOW_LAMINATEDBOW_DESC</key>
+	<string></string>
+	<key>PIN_BOW_LAMINATEDBOW_BIDESC</key>
+	<string></string>
+	<key>PIN_BOW_GOLDENBOW</key>
+	<string>Golden Bow</string>
+	<key>PIN_BOW_GOLDENBOW_DESC</key>
+	<string></string>
+	<key>PIN_BOW_GOLDENBOW_BIDESC</key>
+	<string></string>
+	<key>PIN_BOW_PRO_SHORTBOW</key>
+	<string>Scorpion tail</string>
+	<key>PIN_BOW_PRO_SHORTBOW_DESC</key>
+	<string></string>
+	<key>PIN_BOW_PRO_SHORTBOW_BIDESC</key>
+	<string></string>
+	<key>PIN_BOW_PRO_LONGBOW</key>
+	<string>Hexfire</string>
+	<key>PIN_BOW_PRO_LONGBOW_DESC</key>
+	<string></string>
+	<key>PIN_BOW_PRO_LONGBOW_BIDESC</key>
+	<string></string>
+	<key>PIN_BOW_PRO_HORNBOW</key>
+	<string>Life Terminator</string>
+	<key>PIN_BOW_PRO_HORNBOW_DESC</key>
+	<string></string>
+	<key>PIN_BOW_PRO_HORNBOW_BIDESC</key>
+	<string></string>
+	<key>PIN_BOW_PRO_REFLEXBOW</key>
+	<string>Shadow Impact</string>
+	<key>PIN_BOW_PRO_REFLEXBOW_DESC</key>
+	<string></string>
+	<key>PIN_BOW_PRO_REFLEXBOW_BIDESC</key>
+	<string></string>
+	<key>PIN_BOW_PRO_EAGLEBOW</key>
+	<string>Hawkeye</string>
+	<key>PIN_BOW_PRO_EAGLEBOW_DESC</key>
+	<string></string>
+	<key>PIN_BOW_PRO_EAGLEBOW_BIDESC</key>
+	<string></string>
+	<key>PIN_BOW_PRO_LAMINATEDBOW</key>
+	<string>Green Hat</string>
+	<key>PIN_BOW_PRO_LAMINATEDBOW_DESC</key>
+	<string></string>
+	<key>PIN_BOW_PRO_LAMINATEDBOW_BIDESC</key>
+	<string></string>
+	<key>PIN_BOW_PRO_GOLDENBOW</key>
+	<string>Starsfall</string>
+	<key>PIN_BOW_PRO_GOLDENBOW_DESC</key>
+	<string></string>
+	<key>PIN_BOW_PRO_GOLDENBOW_BIDESC</key>
+	<string></string>
+	<key>PIN_STAFF_OAKSTAFF</key>
+	<string>Oak Staff</string>
+	<key>PIN_STAFF_OAKSTAFF_DESC</key>
+	<string></string>
+	<key>PIN_STAFF_OAKSTAFF_BIDESC</key>
+	<string></string>
+	<key>PIN_STAFF_FIRSTAFF</key>
+	<string>Fir Staff</string>
+	<key>PIN_STAFF_FIRSTAFF_DESC</key>
+	<string></string>
+	<key>PIN_STAFF_FIRSTAFF_BIDESC</key>
+	<string></string>
+	<key>PIN_STAFF_ASHESSTAFF</key>
+	<string>Ashes Staff</string>
+	<key>PIN_STAFF_ASHESSTAFF_DESC</key>
+	<string></string>
+	<key>PIN_STAFF_ASHESSTAFF_BIDESC</key>
+	<string></string>
+	<key>PIN_STAFF_DEMONSTAFF</key>
+	<string>Demon Staff</string>
+	<key>PIN_STAFF_DEMONSTAFF_DESC</key>
+	<string></string>
+	<key>PIN_STAFF_DEMONSTAFF_BIDESC</key>
+	<string></string>
+	<key>PIN_STAFF_CITRONSTAFF</key>
+	<string>Citron Staff</string>
+	<key>PIN_STAFF_CITRONSTAFF_DESC</key>
+	<string></string>
+	<key>PIN_STAFF_CITRONSTAFF_BIDESC</key>
+	<string></string>
+	<key>PIN_STAFF_CLOUDSTAFF</key>
+	<string>Cloud Staff</string>
+	<key>PIN_STAFF_CLOUDSTAFF_DESC</key>
+	<string></string>
+	<key>PIN_STAFF_CLOUDSTAFF_BIDESC</key>
+	<string></string>
+	<key>PIN_STAFF_MONKSTAFF</key>
+	<string>Monk Staff</string>
+	<key>PIN_STAFF_MONKSTAFF_DESC</key>
+	<string></string>
+	<key>PIN_STAFF_MONKSTAFF_BIDESC</key>
+	<string></string>
+	<key>PIN_STAFF_PRO_OAKSTAFF</key>
+	<string>Emerald</string>
+	<key>PIN_STAFF_PRO_OAKSTAFF_DESC</key>
+	<string></string>
+	<key>PIN_STAFF_PRO_OAKSTAFF_BIDESC</key>
+	<string></string>
+	<key>PIN_STAFF_PRO_FIRSTAFF</key>
+	<string>Venus</string>
+	<key>PIN_STAFF_PRO_FIRSTAFF_DESC</key>
+	<string></string>
+	<key>PIN_STAFF_PRO_FIRSTAFF_BIDESC</key>
+	<string></string>
+	<key>PIN_STAFF_PRO_ASHESSTAFF</key>
+	<string>Cerebus&apos; Bite</string>
+	<key>PIN_STAFF_PRO_ASHESSTAFF_DESC</key>
+	<string></string>
+	<key>PIN_STAFF_PRO_ASHESSTAFF_BIDESC</key>
+	<string></string>
+	<key>PIN_STAFF_PRO_DEMONSTAFF</key>
+	<string>Exorcist</string>
+	<key>PIN_STAFF_PRO_DEMONSTAFF_DESC</key>
+	<string></string>
+	<key>PIN_STAFF_PRO_DEMONSTAFF_BIDESC</key>
+	<string></string>
+	<key>PIN_STAFF_PRO_CITRONSTAFF</key>
+	<string>The Prius Spear</string>
+	<key>PIN_STAFF_PRO_CITRONSTAFF_DESC</key>
+	<string></string>
+	<key>PIN_STAFF_PRO_CITRONSTAFF_BIDESC</key>
+	<string></string>
+	<key>PIN_STAFF_PRO_CLOUDSTAFF</key>
+	<string>Blood courage</string>
+	<key>PIN_STAFF_PRO_CLOUDSTAFF_DESC</key>
+	<string></string>
+	<key>PIN_STAFF_PRO_CLOUDSTAFF_BIDESC</key>
+	<string></string>
+	<key>PIN_STAFF_PRO_MONKSTAFF</key>
+	<string>Archangel</string>
+	<key>PIN_STAFF_PRO_MONKSTAFF_DESC</key>
+	<string></string>
+	<key>PIN_STAFF_PRO_MONKSTAFF_BIDESC</key>
+	<string></string>
+	<key>PIN_SHIELD_WOODENSHIELD</key>
+	<string>Wooden Shield</string>
+	<key>PIN_SHIELD_WOODENSHIELD_DESC</key>
+	<string></string>
+	<key>PIN_SHIELD_WOODENSHIELD_BIDESC</key>
+	<string></string>
+	<key>PIN_SHIELD_TRIANGLESHIELD</key>
+	<string>Triangles Shield</string>
+	<key>PIN_SHIELD_TRIANGLESHIELD_DESC</key>
+	<string></string>
+	<key>PIN_SHIELD_TRIANGLESHIELD_BIDESC</key>
+	<string></string>
+	<key>PIN_SHIELD_STEELSHIELD</key>
+	<string>Steel Shield</string>
+	<key>PIN_SHIELD_STEELSHIELD_DESC</key>
+	<string></string>
+	<key>PIN_SHIELD_STEELSHIELD_BIDESC</key>
+	<string></string>
+	<key>PIN_SHIELD_EAGLESHIELD</key>
+	<string>Eagle Shield</string>
+	<key>PIN_SHIELD_EAGLESHIELD_DESC</key>
+	<string></string>
+	<key>PIN_SHIELD_EAGLESHIELD_BIDESC</key>
+	<string></string>
+	<key>PIN_SHIELD_OSTEOSCUTE</key>
+	<string>Osteoscute</string>
+	<key>PIN_SHIELD_OSTEOSCUTE_DESC</key>
+	<string></string>
+	<key>PIN_SHIELD_OSTEOSCUTE_BIDESC</key>
+	<string></string>
+	<key>PIN_SHIELD_GOLDENSHIELD</key>
+	<string>Golden Shield</string>
+	<key>PIN_SHIELD_GOLDENSHIELD_DESC</key>
+	<string></string>
+	<key>PIN_SHIELD_GOLDENSHIELD_BIDESC</key>
+	<string></string>
+	<key>PIN_SHIELD_TOWERSHIELD</key>
+	<string>Tower Shield</string>
+	<key>PIN_SHIELD_TOWERSHIELD_DESC</key>
+	<string></string>
+	<key>PIN_SHIELD_TOWERSHIELD_BIDESC</key>
+	<string></string>
+	<key>PIN_SHIELD_PRO_WOODENSHIELD</key>
+	<string>Dark defender</string>
+	<key>PIN_SHIELD_PRO_WOODENSHIELD_DESC</key>
+	<string></string>
+	<key>PIN_SHIELD_PRO_WOODENSHIELD_BIDESC</key>
+	<string></string>
+	<key>PIN_SHIELD_PRO_TRIANGLESHIELD</key>
+	<string>Grimace</string>
+	<key>PIN_SHIELD_PRO_TRIANGLESHIELD_DESC</key>
+	<string></string>
+	<key>PIN_SHIELD_PRO_TRIANGLESHIELD_BIDESC</key>
+	<string></string>
+	<key>PIN_SHIELD_PRO_STEELSHIELD</key>
+	<string>The night watchman</string>
+	<key>PIN_SHIELD_PRO_STEELSHIELD_DESC</key>
+	<string></string>
+	<key>PIN_SHIELD_PRO_STEELSHIELD_BIDESC</key>
+	<string></string>
+	<key>PIN_SHIELD_PRO_EAGLESHIELD</key>
+	<string>Green Goblin</string>
+	<key>PIN_SHIELD_PRO_EAGLESHIELD_DESC</key>
+	<string></string>
+	<key>PIN_SHIELD_PRO_EAGLESHIELD_BIDESC</key>
+	<string></string>
+	<key>PIN_SHIELD_PRO_OSTEOSCUTE</key>
+	<string>Skeleton King&apos;s body</string>
+	<key>PIN_SHIELD_PRO_OSTEOSCUTE_DESC</key>
+	<string></string>
+	<key>PIN_SHIELD_PRO_OSTEOSCUTE_BIDESC</key>
+	<string></string>
+	<key>PIN_SHIELD_PRO_GOLDENSHIELD</key>
+	<string>Medusa&apos;s mirror</string>
+	<key>PIN_SHIELD_PRO_GOLDENSHIELD_DESC</key>
+	<string></string>
+	<key>PIN_SHIELD_PRO_GOLDENSHIELD_BIDESC</key>
+	<string></string>
+	<key>PIN_SHIELD_PRO_TOWERSHIELD</key>
+	<string>Wall of sighs</string>
+	<key>PIN_SHIELD_PRO_TOWERSHIELD_DESC</key>
+	<string></string>
+	<key>PIN_SHIELD_PRO_TOWERSHIELD_BIDESC</key>
+	<string></string>
+	<key>PIN_CLOTH_SHOES</key>
+	<string>Shoes</string>
+	<key>PIN_CLOTH_SHOES_DESC</key>
+	<string></string>
+	<key>PIN_CLOTH_SHOES_BIDESC</key>
+	<string></string>
+	<key>PIN_CLOTH_MAGA_CAP</key>
+	<string>Maga Cap</string>
+	<key>PIN_CLOTH_MAGA_CAP_DESC</key>
+	<string></string>
+	<key>PIN_CLOTH_MAGA_CAP_BIDESC</key>
+	<string></string>
+	<key>PIN_CLOTH_CLOTH</key>
+	<string>Cloth</string>
+	<key>PIN_CLOTH_CLOTH_DESC</key>
+	<string></string>
+	<key>PIN_CLOTH_CLOTH_BIDESC</key>
+	<string></string>
+	<key>PIN_CLOTH_LEATHERARMOR</key>
+	<string>Leather Armor</string>
+	<key>PIN_CLOTH_LEATHERARMOR_DESC</key>
+	<string></string>
+	<key>PIN_CLOTH_LEATHERARMOR_BIDESC</key>
+	<string></string>
+	<key>PIN_CLOTH_CHAINSHOES</key>
+	<string>Chain Shoes</string>
+	<key>PIN_CLOTH_CHAINSHOES_DESC</key>
+	<string></string>
+	<key>PIN_CLOTH_CHAINSHOES_BIDESC</key>
+	<string></string>
+	<key>PIN_CLOTH_HELEMT</key>
+	<string>Helemt</string>
+	<key>PIN_CLOTH_HELEMT_DESC</key>
+	<string></string>
+	<key>PIN_CLOTH_HELEMT_BIDESC</key>
+	<string></string>
+	<key>PIN_CLOTH_STEELARMOR</key>
+	<string>Steel Armor</string>
+	<key>PIN_CLOTH_STEELARMOR_DESC</key>
+	<string></string>
+	<key>PIN_CLOTH_STEELARMOR_BIDESC</key>
+	<string></string>
+	<key>PIN_CLOTH_PRO_SHOES</key>
+	<string>Boots of travel</string>
+	<key>PIN_CLOTH_PRO_SHOES_DESC</key>
+	<string></string>
+	<key>PIN_CLOTH_PRO_SHOES_BIDESC</key>
+	<string></string>
+	<key>PIN_CLOTH_PRO_MAGA_CAP</key>
+	<string>Grand Master&apos;s hat</string>
+	<key>PIN_CLOTH_PRO_MAGA_CAP_DESC</key>
+	<string></string>
+	<key>PIN_CLOTH_PRO_MAGA_CAP_BIDESC</key>
+	<string></string>
+	<key>PIN_CLOTH_PRO_CLOTH</key>
+	<string>Silver moonlight</string>
+	<key>PIN_CLOTH_PRO_CLOTH_DESC</key>
+	<string></string>
+	<key>PIN_CLOTH_PRO_CLOTH_BIDESC</key>
+	<string></string>
+	<key>PIN_CLOTH_PRO_LEATHERARMOR</key>
+	<string>Life Cage</string>
+	<key>PIN_CLOTH_PRO_LEATHERARMOR_DESC</key>
+	<string></string>
+	<key>PIN_CLOTH_PRO_LEATHERARMOR_BIDESC</key>
+	<string></string>
+	<key>PIN_CLOTH_PRO_CHAINSHOES</key>
+	<string>Foot diameter of cloud</string>
+	<key>PIN_CLOTH_PRO_CHAINSHOES_DESC</key>
+	<string></string>
+	<key>PIN_CLOTH_PRO_CHAINSHOES_BIDESC</key>
+	<string></string>
+	<key>PIN_CLOTH_PRO_HELEMT</key>
+	<string>Knight looks</string>
+	<key>PIN_CLOTH_PRO_HELEMT_DESC</key>
+	<string></string>
+	<key>PIN_CLOTH_PRO_HELEMT_BIDESC</key>
+	<string></string>
+	<key>PIN_CLOTH_PRO_STEELARMOR</key>
+	<string>No widow</string>
+	<key>PIN_CLOTH_PRO_STEELARMOR_DESC</key>
+	<string></string>
+	<key>PIN_CLOTH_PRO_STEELARMOR_BIDESC</key>
+	<string></string>
+	<key>PIN_ORNAMENT_RING</key>
+	<string>Silver Ring</string>
+	<key>PIN_ORNAMENT_RING_DESC</key>
+	<string></string>
+	<key>PIN_ORNAMENT_RING_BIDESC</key>
+	<string></string>
+	<key>PIN_ORNAMENT_MEDAL</key>
+	<string>Medal</string>
+	<key>PIN_ORNAMENT_MEDAL_DESC</key>
+	<string></string>
+	<key>PIN_ORNAMENT_MEDAL_BIDESC</key>
+	<string></string>
+	<key>PIN_ORNAMENT_SHELLNECKLACE</key>
+	<string>Shell Necklace</string>
+	<key>PIN_ORNAMENT_SHELLNECKLACE_DESC</key>
+	<string></string>
+	<key>PIN_ORNAMENT_SHELLNECKLACE_BIDESC</key>
+	<string></string>
+	<key>PIN_ORNAMENT_PENDANT</key>
+	<string>Pendant</string>
+	<key>PIN_ORNAMENT_PENDANT_DESC</key>
+	<string></string>
+	<key>PIN_ORNAMENT_PENDANT_BIDESC</key>
+	<string></string>
+	<key>PIN_ORNAMENT_NECKLACE</key>
+	<string>Aquamarine Necklace</string>
+	<key>PIN_ORNAMENT_NECKLACE_DESC</key>
+	<string></string>
+	<key>PIN_ORNAMENT_NECKLACE_BIDESC</key>
+	<string></string>
+	<key>PIN_ORNAMENT_SUPERMEDAL</key>
+	<string>Superior Medal</string>
+	<key>PIN_ORNAMENT_SUPERMEDAL_DESC</key>
+	<string></string>
+	<key>PIN_ORNAMENT_SUPERMEDAL_BIDESC</key>
+	<string></string>
+	<key>PIN_ORNAMENT_JEWELS</key>
+	<string>Jewels Necklace</string>
+	<key>PIN_ORNAMENT_JEWELS_DESC</key>
+	<string></string>
+	<key>PIN_ORNAMENT_JEWELS_BIDESC</key>
+	<string></string>
+	<key>PIN_ORNAMENT_PRO_RING</key>
+	<string>Emerald Ring</string>
+	<key>PIN_ORNAMENT_PRO_RING_DESC</key>
+	<string></string>
+	<key>PIN_ORNAMENT_PRO_RING_BIDESC</key>
+	<string></string>
+	<key>PIN_ORNAMENT_PRO_MEDAL</key>
+	<string>Golden Courage</string>
+	<key>PIN_ORNAMENT_PRO_MEDAL_DESC</key>
+	<string></string>
+	<key>PIN_ORNAMENT_PRO_MEDAL_BIDESC</key>
+	<string></string>
+	<key>PIN_ORNAMENT_PRO_SHELLNECKLACE</key>
+	<string>William Medal</string>
+	<key>PIN_ORNAMENT_PRO_SHELLNECKLACE_DESC</key>
+	<string></string>
+	<key>PIN_ORNAMENT_PRO_SHELLNECKLACE_BIDESC</key>
+	<string></string>
+	<key>PIN_ORNAMENT_PRO_PENDANT</key>
+	<string>Blood of Onyxia</string>
+	<key>PIN_ORNAMENT_PRO_PENDANT_DESC</key>
+	<string></string>
+	<key>PIN_ORNAMENT_PRO_PENDANT_BIDESC</key>
+	<string></string>
+	<key>PIN_ORNAMENT_PRO_NECKLACE</key>
+	<string>Sacred Relic</string>
+	<key>PIN_ORNAMENT_PRO_NECKLACE_DESC</key>
+	<string></string>
+	<key>PIN_ORNAMENT_PRO_NECKLACE_BIDESC</key>
+	<string></string>
+	<key>PIN_ORNAMENT_PRO_SUPERMEDAL</key>
+	<string>Hyperstone</string>
+	<key>PIN_ORNAMENT_PRO_SUPERMEDAL_DESC</key>
+	<string></string>
+	<key>PIN_ORNAMENT_PRO_SUPERMEDAL_BIDESC</key>
+	<string></string>
+	<key>PIN_ORNAMENT_PRO_JEWELS</key>
+	<string>Meteor Tears</string>
+	<key>PIN_ORNAMENT_PRO_JEWELS_DESC</key>
+	<string></string>
+	<key>PIN_ORNAMENT_PRO_JEWELS_BIDESC</key>
+	<string></string>
+	<key>PIN_SCROLL_INDENTIFY</key>
+	<string>Scroll of Identify</string>
+	<key>PIN_SCROLL_INDENTIFY_DESC</key>
+	<string></string>
+	<key>PIN_SCROLL_TELEPORT</key>
+	<string>Scroll of Random Teleport</string>
+	<key>PIN_SCROLL_TELEPORT_DESC</key>
+	<string></string>
+	<key>PIN_SCROLL_SPEED</key>
+	<string>Scroll of Speed</string>
+	<key>PIN_SCROLL_SPEED_DESC</key>
+	<string></string>
+	<key>PIN_SCROLL_STEALTH</key>
+	<string>Scroll of Stealth</string>
+	<key>PIN_SCROLL_STEALTH_DESC</key>
+	<string></string>
+	<key>PIT_SCROLL_STRONGER</key>
+	<string>Scroll of Stronger</string>
+	<key>PIT_SCROLL_STRONGER_DESC</key>
+	<string></string>
+	<key>PIN_SCROLL_DESTINY</key>
+	<string>Scroll of Destiny</string>
+	<key>PIN_SCROLL_DESTINY_DESC</key>
+	<string></string>
+	<key>PIN_POTION_MINORHEALTH</key>
+	<string>Minor Health Potion</string>
+	<key>PIN_POTION_MINORHEALTH_DESC</key>
+	<string></string>
+	<key>PIN_POTION_LESSERHEALTH</key>
+	<string>Lesser Health Potion</string>
+	<key>PIN_POTION_LESSERHEALTH_DESC</key>
+	<string></string>
+	<key>PIN_POTION_HEALTH</key>
+	<string>Health Potion</string>
+	<key>PIN_POTION_HEALTH_DESC</key>
+	<string></string>
+	<key>PIN_POTION_MINORMANA</key>
+	<string>Minor Mana Potion</string>
+	<key>PIN_POTION_MINORMANA_DESC</key>
+	<string></string>
+	<key>PIN_POTION_LESSERMANA</key>
+	<string>Lesser Mana Potion</string>
+	<key>PIN_POTION_LESSERMANA_DESC</key>
+	<string></string>
+	<key>PIN_POTION_MANA</key>
+	<string>Mana Potion</string>
+	<key>PIN_POTION_MANA_DESC</key>
+	<string></string>
+	<key>PIN_POTION_MINORRECOVERY</key>
+	<string>Minor Recovery Potion</string>
+	<key>PIN_POTION_MINORRECOVERY_DESC</key>
+	<string></string>
+	<key>PIN_POTION_LESSERRECOVERY</key>
+	<string>Lesser Recovery Potion</string>
+	<key>PIN_POTION_LESSERRECOVERY_DESC</key>
+	<string></string>
+	<key>PIN_POTION_RECOVERY</key>
+	<string>Recovery Potion</string>
+	<key>PIN_POTION_RECOVERY_DESC</key>
+	<string></string>
+	<key>PIN_POTION_DETOXIFICATION</key>
+	<string>Detoxification Potion</string>
+	<key>PIN_POTION_DETOXIFICATION_DESC</key>
+	<string></string>
+	<key>PIN_POTION_SPECIFIC</key>
+	<string>Specific Potion</string>
+	<key>PIN_POTION_SPECIFIC_DESC</key>
+	<string></string>
+	<key>PIN_POTION_HEALING</key>
+	<string>Healing Potion</string>
+	<key>PIN_POTION_HEALING_DESC</key>
+	<string></string>
+	<key>PIN_POTION_UNIVERSAL</key>
+	<string>Universal Potion</string>
+	<key>PIN_POTION_UNIVERSAL_DESC</key>
+	<string></string>
+	<key>UIN_CHEST_NO_LOCK_COPPER</key>
+	<string>Copper chest</string>
+	<key>UIN_CHEST_NO_LOCK_COPPER_DESC</key>
+	<string>The copper chest, looked very heavy.</string>
+	<key>UIN_CHEST_NO_LOCK_SILVER</key>
+	<string>Silver chest</string>
+	<key>UIN_CHEST_NO_LOCK_SILVER_DESC</key>
+	<string>The silver chest, shining white silver.</string>
+	<key>UIN_CHEST_NO_LOCK_GOLD</key>
+	<string>Gold chest</string>
+	<key>UIN_CHEST_NO_LOCK_GOLD_DESC</key>
+	<string>The gold chest, only the box will value a lot of money.</string>
+	<key>UIN_CHEST_COPPER</key>
+	<string>Copper chest</string>
+	<key>UIN_CHEST_COPPER_DESC</key>
+	<string>The copper chest, looked very heavy.</string>
+	<key>UIN_CHEST_SILVER</key>
+	<string>Silver chest</string>
+	<key>UIN_CHEST_SILVER_DESC</key>
+	<string>The silver chest, shining white silver.</string>
+	<key>UIN_CHEST_GOLD</key>
+	<string>Gold chest</string>
+	<key>UIN_CHEST_GOLD_DESC</key>
+	<string>The gold chest, only the box will value a lot of money.</string>
+	<key>UIN_JAR_1</key>
+	<string>Jar</string>
+	<key>UIN_JAR_1_DESC</key>
+	<string>A very ordinary jar.</string>
+	<key>UIN_JAR_2</key>
+	<string>Jar</string>
+	<key>UIN_JAR_2_DESC</key>
+	<string>A very ordinary jar.</string>
+	<key>UIN_JAR_3</key>
+	<string>Jar</string>
+	<key>UIN_JAR_3_DESC</key>
+	<string>A very ordinary jar.</string>
+	<key>NPCN_CHILD</key>
+	<string>爱丽</string>
+	<key>NPCN_CHILD_DESC</key>
+	<string>哎呦，别摸我，痒～</string>
+	<key>NPCN_SHOPGIRL</key>
+	<string>售货员</string>
+	<key>NPCN_SHOPGIRL_DESC</key>
+	<string></string>
+	<key>NPCN_OLDLADY</key>
+	<string>老婆婆</string>
+	<key>NPCN_OLDLADY_DESC</key>
+	<string></string>
+	<key>NPCN_KNIGHT</key>
+	<string>小骑士</string>
+	<key>NPCN_KNIGHT_DESC</key>
+	<string></string>
+	<key>NPCN_WEIRDO</key>
+	<string>怪蜀黍</string>
+	<key>NPCN_WEIRDO_DESC</key>
+	<string></string>
+	<key>NPCN_OLDMAN</key>
+	<string>老爷爷</string>
+	<key>NPCN_OLDMAN_DESC</key>
+	<string></string>
+	<key>NPCN_LITTLEWITCH</key>
+	<string>小魔女</string>
+	<key>NPCN_LITTLEWITCH_DESC</key>
+	<string></string>
+	<key>NPCN_NURSE</key>
+	<string>小护士</string>
+	<key>NPCN_NURSE_DESC</key>
+	<string></string>
+	<key>PTN_STANDARD</key>
+	<string>地城传送阵</string>
+	<key>PTN_STANDARD_DESC</key>
+	<string>地城传送阵，可以在不同地城间传送</string>
+	<key>PTN_STANDARD_LOCK</key>
+	<string>地城传送阵，不过刚把你传过来，已经没能量，不能用了。</string>
+	<key>PTN_SMALL</key>
+	<string>小传送阵</string>
+	<key>PTN_SMALL_DESC</key>
+	<string>小传送阵，可以在本层地牢间传送。</string>
+	<key>BSC_SLIMEKING_ALERT</key>
+	<string>咕噜～～咕噜～～</string>
+	<key>BSC_SLIMEKING_SKILL1</key>
+	<string>史莱姆王开始分裂了～</string>
+	<key>BSC_SLIMEKING_SKILL2</key>
+	<string>史莱姆王变的愤怒了～～</string>
+	<key>BSC_SLIMEKING_SKILL3</key>
+	<string>史莱姆王开始暴躁了～～～</string>
+	<key>BSC_SLIMEKING_DEATH</key>
+	<string>咕噜～～咕噜～～</string>
+	<key>BSC_WARDEN_ALERT</key>
+	<string>嘿，不许动～你有权不沉默，但我很快会让你沉默！</string>
+	<key>BSC_WARDEN_SKILL1</key>
+	<string>来人～来人～放狗！！</string>
+	<key>BSC_WARDEN_SKILL2</key>
+	<string>让你尝尝电棍的滋味！！</string>
+	<key>BSC_WARDEN_SKILL3</key>
+	<string>敖广～敖钦～敖顺～敖闰～你们4个死哪去了，快揍扁他！！</string>
+	<key>BSC_WARDEN_DEATH</key>
+	<string>光天化日之下竟然有人敢劫狱～啊啊啊啊～</string>
+	<key>BSC_ARCHBISHOP_ALERT</key>
+	<string>亲！接受网红教主的改造吧！</string>
+	<key>BSC_ARCHBISHOP_SKILL1</key>
+	<string>来人，给我喷死他～～</string>
+	<key>BSC_ARCHBISHOP_SKILL2</key>
+	<string>让你体会下什么叫细思恐极～～五毛给我上～！！！</string>
+	<key>BSC_ARCHBISHOP_SKILL3</key>
+	<string>来吧，我的网络大军在哪里？</string>
+	<key>BSC_ARCHBISHOP_DEATH</key>
+	<string>啊啊啊～什么？少了我一个，自有后来人～</string>
+	<key>BSC_KOBOLDLEADER_ALERT</key>
+	<string>谁拿了我的蜡烛～～</string>
+	<key>BSC_KOBOLDLEADER_SKILL1</key>
+	<string>你追不上我的～</string>
+	<key>BSC_KOBOLDLEADER_SKILL2</key>
+	<string>给你试试这个～～</string>
+	<key>BSC_KOBOLDLEADER_SKILL3</key>
+	<string>孩子们给我拦住他～～</string>
+	<key>BSC_KOBOLDLEADER_DEATH</key>
+	<string>啊啊～我的蜡烛。。。</string>
+	<key>BSC_GIANT_ALERT</key>
+	<string>啊哈～小鲜肉～</string>
+	<key>BSC_GIANT_SKILL1</key>
+	<string>你看起来很好吃～</string>
+	<key>BSC_GIANT_SKILL2</key>
+	<string>送你个小礼物，小蚂蚁～</string>
+	<key>BSC_GIANT_SKILL3</key>
+	<string>你的命运将和托马斯.瓦格纳一样～小虫子！</string>
+	<key>BSC_GIANT_DEATH</key>
+	<string>不～～～小蚂蚁打败了大象，怎么会这样。。。</string>
+	<key>BSC_SKELETONKING_ALERT</key>
+	<string>谁来打扰我！！！</string>
+	<key>BSC_SKELETONKING_SKILL1</key>
+	<string>出来吧，我的随从们～</string>
+	<key>BSC_SKELETONKING_SKILL2</key>
+	<string>就凭你也想战胜我？</string>
+	<key>BSC_SKELETONKING_SKILL3</key>
+	<string>这不是盖的，我可是镇守过几乎所有的地牢！</string>
+	<key>BSC_SKELETONKING_DEATH</key>
+	<string>额，我还会回来的～</string>
+</dict>
+</plist>

@@ -1,6 +1,6 @@
 ﻿
 #include "Stream.h"
-#include "cocos2d.h"
+
 
 #define MAX_STRING_LEN 2048
 

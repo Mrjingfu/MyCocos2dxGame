@@ -48,7 +48,7 @@ void GlobalPromptLayer::refreshUIView()
             cocos2d::DelayTime* delay = cocos2d::DelayTime::create(0.8f);
             cocos2d::FadeOut* fadeOut = cocos2d::FadeOut::create(0.2);
             CallFunc* callfunN = CallFunc::create(CC_CALLBACK_0(GlobalPromptLayer::removePrompt, this,m_pLabel));
-            m_pLabel->runAction(cocos2d::Sequence::create(moveTo,delay,fadeOut,callfunN,nil));
+            m_pLabel->runAction(cocos2d::Sequence::create(moveTo,delay,fadeOut,callfunN,nullptr));
         }
     }
     

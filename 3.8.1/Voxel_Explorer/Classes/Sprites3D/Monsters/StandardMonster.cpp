@@ -26,7 +26,8 @@ StandardMonster* StandardMonster::create(BaseMonster::MonsterType type, bool eli
         monster->m_Type = type;
         monster->setCameraMask((unsigned int)CameraFlag::USER1);
         monster->setLightMask((unsigned int)LightFlag::LIGHT0);
-        monster->setActorDir(cocos2d::random(AD_FORWARD, AD_BACK));
+        ActorDir dir = (ActorDir)(cocos2d::random((int)AD_FORWARD, (int)AD_BACK));
+        monster->setActorDir(dir);
         
         switch (monster->m_Type) {
             case MT_RAT:

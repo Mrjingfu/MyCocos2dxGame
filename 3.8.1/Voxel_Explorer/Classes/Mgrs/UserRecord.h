@@ -9,7 +9,7 @@
 #ifndef __Tone_Skipper__UserRecord__
 #define __Tone_Skipper__UserRecord__
 #include "ChaosNumber.h"
-
+#include "cocos2d.h"
 #define MAX_RECORD_LEN (256*1024)
 #define MD5_LEN 16
 #define MAX_CHAOSE_NUM 8
