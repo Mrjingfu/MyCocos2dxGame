@@ -943,6 +943,8 @@ void VoxelExplorer::handleTriggerTrap(const cocos2d::Vec2& mapPos, TerrainTile::
             Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_TRIGGER_GRIPPING_TRAP);
             m_pPlayer->hurtByGrippingTrap();
             trigged = true;
+            std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("TRIGGER_GRIPPING_TRAP");
+            SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
         }
         else if(trapType == TerrainTile::TT_SUMMONING_TRAP)
         {
@@ -953,6 +955,8 @@ void VoxelExplorer::handleTriggerTrap(const cocos2d::Vec2& mapPos, TerrainTile::
                 if(!m_pCurrentLevel->createSummoningMonsters(mapPos))
                     CCLOG("Handle trigger summoning trap failed!");
                 trigged = true;
+                std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("TRIGGER_SUMMONING_TRAP");
+                SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
             }
         }
         else if(trapType == TerrainTile::TT_WEAK_TRAP)
