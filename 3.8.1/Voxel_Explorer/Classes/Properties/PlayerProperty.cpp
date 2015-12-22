@@ -581,15 +581,23 @@ bool PlayerProperty::indentifyItem(CChaosNumber id)
         }
     }
     if(!hasIndentifyScroll)
+    {
+        std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("HANDLE_FAILED");
+        SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
         return false;
+    }
     PickableItemProperty* pickableItemProperty = static_cast<PickableItemProperty*>(getItemFromBag(id));
     if(pickableItemProperty && !pickableItemProperty->isIdentified())
     {
         pickableItemProperty->handleIdentify();
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_PROPERTY_DIRTY);
         m_bDirty = true;
+        std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("INDENTIFY_OK");
+        SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
         return true;
     }
+    std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("HANDLE_FAILED");
+    SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
     return false;
 }
 bool PlayerProperty::usePotion(CChaosNumber id)
@@ -613,12 +621,20 @@ bool PlayerProperty::usePotion(CChaosNumber id)
             case PickableItem::PIT_POTION_MINORHEALTH:
             case PickableItem::PIT_POTION_LESSERHEALTH:
             case PickableItem::PIT_POTION_HEALTH:
-                setCurrentHP(getCurrentHP() + potionsProperty->getValue().GetLongValue());
+                {
+                    setCurrentHP(getCurrentHP() + potionsProperty->getValue().GetLongValue());
+                    std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("USE_POTION");
+                    SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+                }
                 break;
             case PickableItem::PIT_POTION_MINORMANA:
             case PickableItem::PIT_POTION_LESSERMANA:
             case PickableItem::PIT_POTION_MANA:
-                setCurrentMP(getCurrentMP() + potionsProperty->getValue().GetLongValue());
+                {
+                    setCurrentMP(getCurrentMP() + potionsProperty->getValue().GetLongValue());
+                    std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("USE_POTION");
+                    SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+                }
                 break;
             case PickableItem::PIT_POTION_MINORRECOVERY:
             case PickableItem::PIT_POTION_LESSERRECOVERY:
@@ -626,6 +642,8 @@ bool PlayerProperty::usePotion(CChaosNumber id)
                 {
                     setCurrentHP(getCurrentHP() + getMaxHP()*potionsProperty->getValue().GetFloatValue());
                     setCurrentMP(getCurrentMP() + getMaxMP()*potionsProperty->getValue().GetFloatValue());
+                    std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("USE_POTION");
+                    SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
                 }
                 break;
             case PickableItem::PIT_POTION_DETOXIFICATION:
@@ -634,6 +652,8 @@ bool PlayerProperty::usePotion(CChaosNumber id)
             case PickableItem::PIT_POTION_UNIVERSAL:
                 {
                     VoxelExplorer::getInstance()->handlePlayerUsePotion(potionsProperty->getPickableItemType());
+                    std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("USE_POTION_TAKE_EFFECT");
+                    SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
                 }
                 break;
             default:
@@ -670,6 +690,8 @@ bool PlayerProperty::useScroll(CChaosNumber id)
                 removeItemFromBag(id);
             VoxelExplorer::getInstance()->handlePlayerUseScroll(scrollProperty->getPickableItemType());
             Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_USE_SCROLL, scrollProperty);
+            std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("USE_SCROLL");
+            SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
         }
         return true;
     }
@@ -980,12 +1002,18 @@ void PlayerProperty::extendBagSpace()
     if(m_nBagExtendTimes >= m_nBagExtendMaxTimes)
     {
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_BAG_EXTEND_HAS_REACH_MAXTIMES);
+        
+        std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("HANDLE_FAILED");
+        SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
     }
     else
     {
         m_nBagExtendTimes = m_nBagExtendTimes + 1;
         m_nBagMaxSpace = m_nBagExtendTimes*15;
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_BAG_EXTEND_OK);
+        
+        std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("EXTEND_BAG_OK");
+        SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
     }
 }
 CChaosNumber PlayerProperty::getRandomAttack()

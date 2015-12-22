@@ -98,9 +98,31 @@
 	<string>trigger_gripping_trap.wav</string>
 	<key>TRIGGER_SUMMONING_TRAP</key>
 	<string>trigger_summoning_trap.wav</string>
-	<key>UI_CLOSE_PACKAGE</key>
+	<key>HANDLE_FAILED</key>
+	<string>handle_failed.wav</string>
+	<key>EXTEND_BAG_OK</key>
+	<string>cloth_drop.wav</string>
+	<key>INDENTIFY_OK</key>
+	<string>indentify_ok.wav</string>
+	<key>USE_POTION</key>
+	<string>use_potion.wav</string>
+	<key>USE_POTION_TAKE_EFFECT</key>
+	<string>use_potion_take effect.wav</string>
+	<key>USE_SCROLL</key>
+	<string>use_scroll.wav</string>
+	<key>UI_BTN_PACKAGE_OPEN</key>
+	<string>equip_cloth.wav</string>
+	<key>UI_BTN_PACKAGE_CLOSE</key>
 	<string>close_package.wav</string>
-	<key>UI_BTN_CLICK</key>
+	<key>UI_BTN_MAP_OPEN</key>
+	<string>ui_btn_map_open.wav</string>
+	<key>UI_BTN_MAP_CLOSE</key>
+	<string>ui_btn_map_close.wav</string>
+	<key>UI_BTN_CHAT_OPEN</key>
+	<string>ui_btn_chat_open.wav</string>
+	<key>UI_BTN_CHAT_CLOSE</key>
+	<string>ui_btn_chat_open.wav</string>
+	<key>UI_BTN_COMMON</key>
 	<string>ui_btn_click.wav</string>
 </dict>
 </plist>

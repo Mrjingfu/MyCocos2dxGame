@@ -159,6 +159,8 @@ void Player::addPlayerBuffer(PlayerBuffer buff)
             ///增加拖尾或粒子
             PlayerProperty::getInstance()->addPlayerBuffer(buff);
         }
+        std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("BUFFER_SPEEDUP");
+        SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
     }
     else if(buff == PB_STEALTH)
     {
@@ -171,7 +173,8 @@ void Player::addPlayerBuffer(PlayerBuffer buff)
             this->runAction(fadeTo);
             PlayerProperty::getInstance()->addPlayerBuffer(buff);
         }
-       
+        std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("BUFFER_STEALTH");
+        SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
     }
     else if(buff == PB_STRONGER)
     {
@@ -184,6 +187,8 @@ void Player::addPlayerBuffer(PlayerBuffer buff)
             this->runAction(fadeTo);
             PlayerProperty::getInstance()->addPlayerBuffer(buff);
         }
+        std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("BUFFER_STRONGER");
+        SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
     }
     else if(buff == PB_POISONING)
     {
@@ -195,6 +200,8 @@ void Player::addPlayerBuffer(PlayerBuffer buff)
             setTexture(tex);
             PlayerProperty::getInstance()->addPlayerBuffer(buff);
         }
+        std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("BUFFER_POISONING");
+        SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
     }
     else if(buff == PB_FROZEN)
     {
@@ -207,6 +214,8 @@ void Player::addPlayerBuffer(PlayerBuffer buff)
             setTexture(tex);
             PlayerProperty::getInstance()->addPlayerBuffer(buff);
         }
+        std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("BUFFER_FROZEN");
+        SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
     }
     else if(buff == PB_PARALYTIC)
     {
@@ -219,6 +228,8 @@ void Player::addPlayerBuffer(PlayerBuffer buff)
             setTexture(tex);
             PlayerProperty::getInstance()->addPlayerBuffer(buff);
         }
+        std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("BUFFER_PARALYTIC");
+        SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
     }
     else if(buff == PB_WEAK)
     {
@@ -230,6 +241,8 @@ void Player::addPlayerBuffer(PlayerBuffer buff)
             setTexture(tex);
             PlayerProperty::getInstance()->addPlayerBuffer(buff);
         }
+        std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("BUFFER_WEAK");
+        SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
     }
     else if(buff == PB_FIRE)
     {
@@ -242,6 +255,8 @@ void Player::addPlayerBuffer(PlayerBuffer buff)
             setTexture(tex);
             PlayerProperty::getInstance()->addPlayerBuffer(buff);
         }
+        std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("BUFFER_FIRE");
+        SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
     }
 }
 void Player::removePlayerBuffer(PlayerBuffer buff)
