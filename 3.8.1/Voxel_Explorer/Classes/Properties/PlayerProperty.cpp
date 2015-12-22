@@ -196,7 +196,7 @@ void PlayerProperty::addMoney( CChaosNumber copper, bool sound)
         std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("COIN_DROP");
         SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
     }
-    
+    Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_PROPERTY_DIRTY);
     m_bDirty = true;
 }
 bool PlayerProperty::costMoney( CChaosNumber costcopper )
@@ -209,7 +209,7 @@ bool PlayerProperty::costMoney( CChaosNumber costcopper )
     }
     StatisticsManager::getInstance()->addCostCopperNum(costcopper);
     m_nValueCopper = m_nValueCopper - costcopper.GetLongValue();
-    
+    Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_PROPERTY_DIRTY);
     m_bDirty = true;
     return true;
 }
@@ -223,6 +223,7 @@ void PlayerProperty::setExp(CChaosNumber exp)
     }
     else
         m_nExp = exp;
+    Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_PROPERTY_DIRTY);
     m_bDirty = true;
 }
 void PlayerProperty::setCurrentHP(CChaosNumber hp)
@@ -236,7 +237,7 @@ void PlayerProperty::setCurrentHP(CChaosNumber hp)
     }
     else
         m_nCurrentHP = hp;
-    
+    Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_PROPERTY_DIRTY);
     m_bDirty = true;
 }
 void PlayerProperty::setCurrentMP(CChaosNumber mp)
@@ -250,7 +251,7 @@ void PlayerProperty::setCurrentMP(CChaosNumber mp)
     }
     else
         m_nCurrentMP = mp;
-    
+    Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_PROPERTY_DIRTY);
     m_bDirty = true;
 }
 bool PlayerProperty::equipWeapon(CChaosNumber id, bool sound)
@@ -308,6 +309,7 @@ bool PlayerProperty::equipWeapon(CChaosNumber id, bool sound)
         m_fMagicItemFindRate = m_fMagicItemFindRate + m_fBasicMagicItemFindRate*weaponProperty->getAddedMagicItemFindRate().GetFloatValue();
         m_fMagicItemFindRate = MIN(m_fMagicItemFindRate, m_fMaxMagicItemFindRate);
         weaponProperty->setEquiped(true);
+        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_PROPERTY_DIRTY);
         m_bDirty = true;
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_EQUIPED_WEAPON, &m_nEquipedWeaponID);
         if(sound)
@@ -382,7 +384,7 @@ bool PlayerProperty::equipSecondWeapon(CChaosNumber id, bool sound)
         m_fMagicItemFindRate = m_fMagicItemFindRate + m_fBasicMagicItemFindRate*secondWeaponProperty->getAddedMagicItemFindRate().GetFloatValue();
         m_fMagicItemFindRate = MIN(m_fMagicItemFindRate, m_fMaxMagicItemFindRate);
         secondWeaponProperty->setEquiped(true);
-        
+         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_PROPERTY_DIRTY);
         m_bDirty = true;
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_EQUIPED_WEAPON, &m_nEquipedWeaponID);
         
@@ -463,6 +465,7 @@ bool PlayerProperty::equipArmor(CChaosNumber id, bool sound)
         m_fMagicItemFindRate = m_fMagicItemFindRate + m_fBasicMagicItemFindRate*armorProperty->getAddedMagicItemFindRate().GetFloatValue();
         m_fMagicItemFindRate = MIN(m_fMagicItemFindRate, m_fMaxMagicItemFindRate);
         armorProperty->setEquiped(true);
+         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_PROPERTY_DIRTY);
         m_bDirty = true;
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_EQUIPED_ARMOR, &m_nEquipedArmorID);
         
@@ -547,6 +550,7 @@ bool PlayerProperty::equipOrnaments(CChaosNumber id, bool sound)
         m_fMagicItemFindRate = m_fMagicItemFindRate + m_fBasicMagicItemFindRate*magicOrnamentProperty->getAddedMagicItemFindRate().GetFloatValue();
         m_fMagicItemFindRate = MIN(m_fMagicItemFindRate, m_fMaxMagicItemFindRate);
         magicOrnamentProperty->setEquiped(true);
+         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_PROPERTY_DIRTY);
         m_bDirty = true;
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_EQUIPED_ORNAMENTS, &m_nEquipedOrnamentsID);
         
@@ -582,6 +586,7 @@ bool PlayerProperty::indentifyItem(CChaosNumber id)
     if(pickableItemProperty && !pickableItemProperty->isIdentified())
     {
         pickableItemProperty->handleIdentify();
+        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_PROPERTY_DIRTY);
         m_bDirty = true;
         return true;
     }
@@ -937,12 +942,14 @@ bool PlayerProperty::removeStackableItemFromBag(PickableItem::PickableItemType t
                 PickableItemProperty* property = static_cast<PickableItemProperty*>(*iter);
                 CC_SAFE_DELETE(property);
                 m_Bag.erase(iter);
+                Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_PROPERTY_DIRTY);
                 m_bDirty = true;
                 return true;
             }
             else if((*iter)->getCount() > count)
             {
                 (*iter)->setCount((*iter)->getCount().GetLongValue() - count.GetLongValue());
+                 Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_PROPERTY_DIRTY);
                  m_bDirty = true;
                 return true;
             }
@@ -961,6 +968,7 @@ bool PlayerProperty::removeItemFromBag(CChaosNumber id)
             PickableItemProperty* property = static_cast<PickableItemProperty*>(*iter);
             CC_SAFE_DELETE(property);
             m_Bag.erase(iter);
+            Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_PROPERTY_DIRTY);
             m_bDirty = true;
             return true;
         }

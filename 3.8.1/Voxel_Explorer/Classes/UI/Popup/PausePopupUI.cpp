@@ -8,6 +8,9 @@
 
 #include "PausePopupUI.h"
 #include "UtilityHelper.h"
+#include "PopupUILayerManager.h"
+#include "SettingPopupUI.hpp"
+#include "MenuScene.h"
 USING_NS_CC;
 PausePopupUI::PausePopupUI()
 {
@@ -67,14 +70,33 @@ void PausePopupUI::onClickExitGame(cocos2d::Ref *ref)
 {
     CHECK_ACTION(ref);
     CCLOG("onClickExitGame");
+    Director::getInstance()->end();
+    
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+    exit(0);
+#endif
+    
 }
 void PausePopupUI::onClickMainMenu(cocos2d::Ref *ref)
 {
     CHECK_ACTION(ref);
     CCLOG("onClickMainMenu");
+    Scene* menuScene = MenuScene::createScene();
+    Director::getInstance()->replaceScene(menuScene);
+    
 }
 void PausePopupUI::onClickSetting(cocos2d::Ref *ref)
 {
     CHECK_ACTION(ref);
     CCLOG("onClickSetting");
+    PopupUILayerManager::getInstance()->getCurrentPopUpLayer()->getRootNode()->setVisible(false);
+    SettingPopupUI* settingPopup = static_cast<SettingPopupUI*>( PopupUILayerManager::getInstance()->openPopup(ePopupSetting));
+    if (settingPopup)
+    {
+        settingPopup->setDarkLayerVisble(false);
+        settingPopup->registerCloseCallback([]()
+        {
+             PopupUILayerManager::getInstance()->getCurrentPopUpLayer()->getRootNode()->setVisible(true);
+        });
+    }
 }

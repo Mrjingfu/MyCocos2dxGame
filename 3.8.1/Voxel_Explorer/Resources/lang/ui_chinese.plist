@@ -208,12 +208,20 @@
 	<string>是否移除该道具？</string>
 	<key>ITEM_BAG_SELL</key>
 	<string>是否出售该道具？</string>
-	<key>GO_CHASM</key>
-	<string>是否跳入深渊呢？</string>
 	<key>TITLE_ACHIEVE</key>
 	<string>成就</string>
 	<key>PLAYER_FALL_AND_DIE</key>
 	<string>不幸的事，你摔死了</string>
+	<key>GO_UPSTAIRS</key>
+	<string>你进入上一层。</string>
+	<key>GO_UPSTAIRS_FORBIDDEN</key>
+	<string>禁止传送。</string>
+	<key>GO_DOWNSTAIRS</key>
+	<string>你进入下一层。</string>
+	<key>GO_BOSSROOM</key>
+	<string>进入Boos房间</string>
+	<key>GO_CHASM</key>
+	<string>是否跳入深渊呢？</string>
 	<key>FALL_DOWNSTAIRS</key>
 	<string>幸运是事，你进入到下一层了</string>
 	<key>SELECT_LEFT_DUNGEON_NODE</key>
@@ -248,7 +256,11 @@
 	<string>购买</string>
 	<key>BTN_TEXT_USE</key>
 	<string>使用</string>
-	<key>BTN_TEXT_</key>
-	<string></string>
+	<key>BTN_TEXT_HELP</key>
+	<string>帮助</string>
+	<key>BTN_TEXT_SOUND</key>
+	<string>音效:</string>
+	<key>BTN_TEXT_MUSIC</key>
+	<string>音乐:</string>
 </dict>
 </plist>

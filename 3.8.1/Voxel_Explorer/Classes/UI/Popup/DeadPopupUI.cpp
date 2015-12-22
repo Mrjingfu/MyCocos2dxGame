@@ -8,6 +8,8 @@
 
 #include "DeadPopupUI.h"
 #include "UtilityHelper.h"
+#include "GameScene.h"
+#include "MenuScene.h"
 USING_NS_CC;
 DeadPopupUI::DeadPopupUI()
 {
@@ -47,7 +49,20 @@ bool DeadPopupUI::initUi()
     btnRestart->setPosition(cocos2d::Vec2(m_pRootLayer->getContentSize().width*0.7,m_pRootLayer->getContentSize().height*0.3));
     m_pRootLayer->addChild(btnRestart);
     
+    btnMainMenu->addClickEventListener(CC_CALLBACK_1( DeadPopupUI::onClickMainMenu, this));
+    btnRestart->addClickEventListener(CC_CALLBACK_1( DeadPopupUI::onClickRestart, this));
     
     return true;
+    
+}
+void DeadPopupUI::onClickMainMenu(cocos2d::Ref *ref)
+{
+    cocos2d::Scene* scene = MenuScene::createScene();
+    Director::getInstance()->replaceScene(scene);
+}
+void DeadPopupUI::onClickRestart(cocos2d::Ref *ref)
+{
+//    cocos2d::Scene* scene = GameScene::createScene();
+//    Director::getInstance()->replaceScene(scene);
     
 }

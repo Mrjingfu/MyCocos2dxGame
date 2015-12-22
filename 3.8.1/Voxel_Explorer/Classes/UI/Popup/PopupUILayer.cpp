@@ -78,7 +78,8 @@ void PopupUILayer::openPopup()
     //可以添加暂停监听
     enableDarkLayer(true);
     inAction();
-    if (m_nIsPause) {
+    //只有打开的窗口是第一个窗口时才暂停
+    if (m_nIsPause && PopupUILayerManager::getInstance()->getCurrentPopupTypeList().size()==0) {
         schedulerPause();
     }
     
@@ -274,14 +275,14 @@ void PopupUILayer::inActionCallFunc()
 void PopupUILayer::removeSelfCallFunc()
 {
     CCLOG("removeSelfCallFunc");
+     PopupUILayerManager::getInstance()->resetPopupType(m_pPopupType);
+    
     executeCloseBack();
     executeCloseBackO();
     executeCloseCallbackD();
     
-    PopupUILayerManager::getInstance()->resetPopupType(m_pPopupType);
-    
-    //暂停事件恢复
-    if (m_nIsPause) {
+    //暂停事件恢复 只有关闭的窗口是最后一个窗口时才恢复
+    if (m_nIsPause && PopupUILayerManager::getInstance()->getCurrentPopUpType() == ePopupInvalid) {
         schedulerResume();
     }
     this->removeFromParent();

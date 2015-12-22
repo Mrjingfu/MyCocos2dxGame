@@ -384,22 +384,41 @@ void GameUILayer::onEventFoundHidderItem(cocos2d::EventCustom *sender)
     PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
     m_pGameToolBarLayer->sendMessage(msg);
 }
-
+//上楼提示
 void GameUILayer::onEventGoUpStairs(cocos2d::EventCustom *sender)
 {
      CCLOG("onEventGoUpStairs");
+     std::string msg = UtilityHelper::getLocalStringForUi(EVENT_GO_UPSTAIRS);
+     PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
 }
+//禁止上楼提示
 void GameUILayer::onEventGoUpStairsForbidden(cocos2d::EventCustom *sender)
 {
      CCLOG("onEventGoUpStairsForbidden");
+    std::string msg = UtilityHelper::getLocalStringForUi(EVENT_GO_UPSTAIRS_FORBIDDEN);
+    PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
 }
+//下楼提示
 void GameUILayer::onEventGoDownStairs(cocos2d::EventCustom *sender)
 {
     CCLOG("onEventGoDownStairs");
+    std::string msg = UtilityHelper::getLocalStringForUi(EVENT_GO_DOWNSTAIRS);
+    PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
 }
 void GameUILayer::onEventGoBossRoom(cocos2d::EventCustom *sender)
 {
     CCLOG("onEventGoBossRoom");
+    AlertPopupUI* alertPopupUI = static_cast<AlertPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupAlert));
+    if (alertPopupUI) {
+        alertPopupUI->setMessage(UtilityHelper::getLocalStringForUi(EVENT_GO_BOSSROOM));
+        alertPopupUI->setPositiveListerner([](Ref* ref)
+                                           {
+                                               CCLOG("onEventGoBossRoom");
+                                               VoxelExplorer::getInstance()->handleDownstairs();
+                                           });
+        alertPopupUI->setNegativeListerner([](Ref* ref){});
+    }
+    
 }
 void GameUILayer::onEventGoChasm(cocos2d::EventCustom *sender)
 {
@@ -419,19 +438,21 @@ void GameUILayer::onEventGoChasm(cocos2d::EventCustom *sender)
 void GameUILayer::onEventFallDownStairs(cocos2d::EventCustom *sender)
 {
     CCLOG("onEventFallDownStairs");
-    
+    std::string msg = UtilityHelper::getLocalStringForUi(EVENT_FALL_DOWNSTAIRS);
+    PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
+
 }
 void GameUILayer::onEventSelectLeftDungeonNode(cocos2d::EventCustom *sender)
 {
     CCLOG("onEventSelectLeftDungeonNode");
     AlertPopupUI* popupUi = static_cast<AlertPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupAlert));
     if (popupUi) {
-        popupUi->setMessage(UtilityHelper::getLocalString(EVENT_SELECT_LEFT_DUNGEON_NODE));
+        popupUi->setMessage(UtilityHelper::getLocalStringForUi(EVENT_SELECT_LEFT_DUNGEON_NODE));
         popupUi->setPositiveListerner([](Ref* ref)
                                       {
                                           RandomDungeon::getInstance()->selectDungeonNode(true);
                                       });
-        popupUi->setNegativeListerner(nullptr);
+        popupUi->setNegativeListerner([](Ref* ref){});
 
     }
 }
@@ -440,12 +461,12 @@ void GameUILayer::onEventSelectRightDungeonNode(cocos2d::EventCustom *sender)
     CCLOG("onEventSelectRightDungeonNode");
     AlertPopupUI* popupUi = static_cast<AlertPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupAlert));
     if (popupUi) {
-        popupUi->setMessage(UtilityHelper::getLocalString(EVENT_SELECT_LEFT_DUNGEON_NODE));
+        popupUi->setMessage(UtilityHelper::getLocalStringForUi(EVENT_SELECT_RIGHT_DUNGEON_NODE));
         popupUi->setPositiveListerner([](Ref* ref)
                                       {
                                           RandomDungeon::getInstance()->selectDungeonNode(false);
                                       });
-        popupUi->setNegativeListerner(nullptr);
+        popupUi->setNegativeListerner([](Ref* ref){});
         
     }
 }
@@ -453,14 +474,17 @@ void GameUILayer::onEventSelectRightDungeonNode(cocos2d::EventCustom *sender)
 void GameUILayer::onEventUseSmallProtal(cocos2d::EventCustom *sender)
 {
     CCLOG("onEventUseSmallProtal");
+    std::string msg = UtilityHelper::getLocalStringForUi(EVENT_USE_SMALL_PROTAL);
+    PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
+
 }
 void GameUILayer::onEventStandardProtalNoEnergy(cocos2d::EventCustom *sender)
 {
     CCLOG("onEventStandardProtalNoEnergy");
      AlertPopupUI* popupUi = static_cast<AlertPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupAlert));
     if (popupUi) {
-        popupUi->setMessage("");
-        popupUi->setPositiveListerner(nullptr);
+        popupUi->setMessage(UtilityHelper::getLocalStringForUi(EVENT_STANDARD_PROTAL_NO_ENERGY));
+        popupUi->setPositiveListerner([](Ref* ref){});
     }
 
 }

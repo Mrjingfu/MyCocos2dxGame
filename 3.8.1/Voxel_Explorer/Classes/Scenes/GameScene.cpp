@@ -33,8 +33,8 @@ void GameScene::onEnter()
 }
 void GameScene::onExit()
 {
-    VoxelExplorer::getInstance()->destroy();
     PopupUILayerManager::getInstance()->onExitScene();
+    VoxelExplorer::getInstance()->destroy();
     Layer::onExit();
 }
 void GameScene::update(float delta)

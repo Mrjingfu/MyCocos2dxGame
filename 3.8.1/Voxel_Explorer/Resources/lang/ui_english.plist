@@ -139,7 +139,7 @@
 	<key>PLAYER_USE_ROOM_KEY</key>
 	<string>使用了房间钥匙！</string>
 	<key>PLAYER_USE_BOSS_KEY</key>
-	<string>使用了boss房间钥匙！</string>
+	<string>使用了%s房间钥匙！</string>
 	<key>DOOR_MAGIC_LOCKED</key>
 	<string>门上有一股魔力，根本打不开！</string>
 	<key>DOOR_MAGIC_CLOSED</key>
@@ -171,7 +171,7 @@
 	<key>PLAYER_NO_ROOM_KEY</key>
 	<string>没有房间钥匙！</string>
 	<key>PLAYER_NO_BOSS_KEY</key>
-	<string>没有Boss房间钥匙！</string>
+	<string>没有%s房间钥匙！</string>
 	<key>PLAYER_BAG_NO_SPACE</key>
 	<string>背包没有空间了!!</string>
 	<key>PLAYER_NO_MANA</key>
@@ -206,21 +206,31 @@
 	<string>Count:%d</string>
 	<key>ITEM_BAG_DELETE</key>
 	<string>是否移除该道具？</string>
-	<key>GO_CHASM</key>
-	<string>是否跳入深渊呢？</string>
+	<key>ITEM_BAG_SELL</key>
+	<string>是否出售该道具？</string>
 	<key>TITLE_ACHIEVE</key>
 	<string>ACHIEVE</string>
-	<key>EVENT_PLAYER_FALL_AND_DIE</key>
+	<key>PLAYER_FALL_AND_DIE</key>
 	<string>不幸的事，你摔死了</string>
-	<key>EVENT_FALL_DOWNSTAIRS</key>
+	<key>GO_UPSTAIRS</key>
+	<string>你进入上一层。</string>
+	<key>GO_UPSTAIRS_FORBIDDEN</key>
+	<string>禁止传送。</string>
+	<key>GO_DOWNSTAIRS</key>
+	<string>你进入下一层。</string>
+	<key>GO_BOSSROOM</key>
+	<string>进入Boos房间</string>
+	<key>GO_CHASM</key>
+	<string>是否跳入深渊呢？</string>
+	<key>FALL_DOWNSTAIRS</key>
 	<string>幸运是事，你进入到下一层了</string>
-	<key>EVENT_SELECT_LEFT_DUNGEON_NODE</key>
+	<key>SELECT_LEFT_DUNGEON_NODE</key>
 	<string>是选择左边开始？</string>
-	<key>EVENT_SELECT_RIGHT_DUNGEON_NODE</key>
+	<key>SELECT_RIGHT_DUNGEON_NODE</key>
 	<string>是选择右边开始？</string>
-	<key>EVENT_USE_SMALL_PROTAL</key>
+	<key>USE_SMALL_PROTAL</key>
 	<string>你被传送了</string>
-	<key>EVENT_STANDARD_PROTAL_NO_ENERGY</key>
+	<key>STANDARD_PROTAL_NO_ENERGY</key>
 	<string>传送能量不足了</string>
 	<key>BTN_TEXT_MAINMENU</key>
 	<string>MAIN MENU</string>
@@ -246,5 +256,11 @@
 	<string>BUY</string>
 	<key>BTN_TEXT_USE</key>
 	<string>USE</string>
+	<key>BTN_TEXT_HELP</key>
+	<string>HELP</string>
+	<key>BTN_TEXT_SOUND</key>
+	<string>SOUND:</string>
+	<key>BTN_TEXT_MUSIC</key>
+	<string>MUSIC:</string>
 </dict>
 </plist>

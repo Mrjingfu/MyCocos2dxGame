@@ -212,6 +212,8 @@
             <filename>../ui/ui_sprite/ui_frame_10.png</filename>
             <filename>../ui/ui_sprite/ui_frame_11.png</filename>
             <filename>../ui/ui_sprite/ui_frame_9.png</filename>
+            <filename>../ui/ui_sprite/ui_sound_off.png</filename>
+            <filename>../ui/ui_sprite/ui_sound_on.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

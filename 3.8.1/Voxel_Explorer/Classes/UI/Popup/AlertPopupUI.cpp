@@ -65,7 +65,6 @@ bool AlertPopupUI::addEvents()
     m_pOk->addClickEventListener(CC_CALLBACK_1(AlertPopupUI::onClickOk, this));
     m_pCancel->addClickEventListener(CC_CALLBACK_1(AlertPopupUI::onClickCancel,this));
     
-    
     refreshUIView();
     
     return true;
@@ -90,7 +89,7 @@ void AlertPopupUI::refreshUIView()
         m_pOk->setVisible(true);
         m_pCancel->setVisible(true);
         m_pOk->setPosition(cocos2d::Vec2(m_pRootNode->getContentSize().width*0.26,m_pOk->getPositionY()));
-        m_pCancel->setPosition(cocos2d::Vec2(m_pOk->getPositionX()+m_pOk->getContentSize().width*0.5+10,m_pCancel->getPositionY()));
+        m_pCancel->setPosition(cocos2d::Vec2(m_pOk->getPositionX()+m_pOk->getContentSize().width+5,m_pCancel->getPositionY()));
         
     }
     

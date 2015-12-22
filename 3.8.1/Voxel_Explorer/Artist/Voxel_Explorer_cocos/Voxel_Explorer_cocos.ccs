@@ -72,6 +72,8 @@
           <PlistImageFile Name="ui_frame_10.png" Key="ui_frame_10.png" />
           <PlistImageFile Name="ui_frame_11.png" Key="ui_frame_11.png" />
           <PlistImageFile Name="ui_frame_9.png" Key="ui_frame_9.png" />
+          <PlistImageFile Name="ui_sound_off.png" Key="ui_sound_off.png" />
+          <PlistImageFile Name="ui_sound_on.png" Key="ui_sound_on.png" />
         </PlistImageFolder>
         <Project Name="gameScene.csd" Type="Scene" />
         <Project Name="menuscene.csd" Type="Scene" />
