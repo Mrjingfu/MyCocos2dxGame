@@ -11,6 +11,8 @@
 
 #define MESSAGE_MAX 50
 
+#include "cocos2d.h"
+
 class MsgData:public cocos2d::Ref{
     MsgData(){};
 public:

@@ -11,6 +11,7 @@
 #include "AchieveMangerLayerUI.h"
 #include "AchievementManager.h"
 #include "EventConst.h"
+USING_NS_CC;
 AchievePopupUI::AchievePopupUI()
 {
     m_cActionType       = eNone;

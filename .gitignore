@@ -35,5 +35,14 @@
 3.6/MazeJump/cocos2d/cocos/platform/android/java/obj
 3.6/MazeJump/cocos2d/cocos/platform/android/java/gen
 3.6/MazeJump/cocos2d/cocos/platform/android/java/bin
+
+3.8.1/Voxel_Explorer/bin
+3.8.1/Voxel_Explorer/proj.android/bin
+3.8.1/Voxel_Explorer/proj.android/gen
+3.8.1/Voxel_Explorer/proj.android/obj
+3.8.1/Voxel_Explorer/cocos2d/cocos/platform/android/java/obj
+3.8.1/Voxel_Explorer/cocos2d/cocos/platform/android/java/gen
+3.8.1/Voxel_Explorer/cocos2d/cocos/platform/android/java/bin
+
 libs/google-play-services_lib/bin/
 libs/google-play-services_lib/gen/

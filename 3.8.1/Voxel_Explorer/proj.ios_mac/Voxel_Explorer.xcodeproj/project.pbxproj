@@ -1769,6 +1769,7 @@
 				CODE_SIGN_IDENTITY = "";
 				COMPRESS_PNG_FILES = NO;
 				ENABLE_BITCODE = NO;
+				GCC_C_LANGUAGE_STANDARD = c11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_INPUT_FILETYPE = sourcecode.cpp.objcpp;
@@ -1792,6 +1793,7 @@
 				OTHER_LDFLAGS = (
 					"$(_COCOS_LIB_IOS_BEGIN)",
 					"$(_COCOS_LIB_IOS_END)",
+					"-ObjC",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.wanax.voxelexplorer;
 				PROVISIONING_PROFILE = "";
@@ -1809,6 +1811,7 @@
 				CODE_SIGN_IDENTITY = "";
 				COMPRESS_PNG_FILES = NO;
 				ENABLE_BITCODE = NO;
+				GCC_C_LANGUAGE_STANDARD = c11;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_INPUT_FILETYPE = sourcecode.cpp.objcpp;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1830,6 +1833,7 @@
 				OTHER_LDFLAGS = (
 					"$(_COCOS_LIB_IOS_BEGIN)",
 					"$(_COCOS_LIB_IOS_END)",
+					"-ObjC",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.wanax.voxelexplorer;
 				PROVISIONING_PROFILE = "";

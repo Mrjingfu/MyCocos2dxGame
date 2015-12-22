@@ -67,7 +67,7 @@ bool InformationPopupUI::addEvents()
     
     m_pBtnNext->setVisible(false);
     MoveBy* moveByNext = MoveBy::create(0.5, cocos2d::Vec2(0,-2));
-    m_pBtnNext->runAction(RepeatForever::create(Sequence::create(moveByNext,moveByNext->reverse(), nil)));
+    m_pBtnNext->runAction(RepeatForever::create(Sequence::create(moveByNext,moveByNext->reverse(), nullptr)));
 
     return true;
 }

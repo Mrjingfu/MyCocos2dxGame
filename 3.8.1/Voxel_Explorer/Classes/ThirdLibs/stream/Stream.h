@@ -12,7 +12,7 @@
 #define __TinyFlare_Stream_h__
 
 
-
+#include "cocos2d.h"
 typedef long long int64;
 
 

@@ -1,11 +1,20 @@
 
 #include "CCCrypto.h"
+#include "cocos2d.h"
 #include "xor.h"
-//extern "C" {
+
+#if CC_TARGET_PLATFORM == CC_PLATFORM_MAC
 #include "libb64.h"
 #include "md5.h"
 #include "sha1.h"
-//}
+#else
+extern "C"
+{
+    #include "libb64.h"
+    #include "md5.h"
+    #include "sha1.h"
+}
+#endif
 
 #if CC_LUA_ENGINE_ENABLED > 0
 #include "CCLuaEngine.h"

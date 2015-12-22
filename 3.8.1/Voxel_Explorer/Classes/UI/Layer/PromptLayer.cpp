@@ -64,7 +64,7 @@ void PromptLayer::update(float delta)
         setVisible(true);
         cocos2d::ScaleTo* scaleToStart = cocos2d::ScaleTo::create(0.35, 1.3);
         cocos2d::ScaleTo* scaleToEnd = cocos2d::ScaleTo::create(0.35, 0.6);
-        this->runAction(cocos2d::Sequence::create(scaleToStart,scaleToEnd,scaleToStart,scaleToEnd,cocos2d::RemoveSelf::create(), nil));
+        this->runAction(cocos2d::Sequence::create(scaleToStart,scaleToEnd,scaleToStart,scaleToEnd,cocos2d::RemoveSelf::create(), nullptr));
     }
     
 }

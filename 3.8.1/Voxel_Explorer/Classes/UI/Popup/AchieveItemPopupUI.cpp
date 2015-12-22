@@ -74,7 +74,7 @@ void AchieveItemPopupUI::inActionCallFunc()
                                            {
                                                closePopup();
                                            });
-    runAction(Sequence::create(DelayTime::create(1.5),callFunc, nil));
+    runAction(Sequence::create(DelayTime::create(1.5),callFunc, nullptr));
    
 }
 bool AchieveItemPopupUI::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *unused_event)

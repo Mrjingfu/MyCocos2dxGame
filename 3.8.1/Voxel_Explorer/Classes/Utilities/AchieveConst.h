@@ -9,6 +9,8 @@
 #ifndef AchieveConst_h
 #define AchieveConst_h
 
+#include "cocos2d.h"
+
 const std::vector<std::string> STATIST_TYPE_NAME = {
     "ST_MONSTER_RAT",             ///老鼠
     "ST_MONSTER_BAT",             ///蝙蝠
