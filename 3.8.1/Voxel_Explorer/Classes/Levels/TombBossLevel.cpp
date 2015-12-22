@@ -243,6 +243,7 @@ bool TombBossLevel::createSummoningMonstersBySkeletonKing(const cocos2d::Vec2& m
 void TombBossLevel::clearBossRoom()
 {
     VoxelExplorer::getInstance()->clearBoosRoom();
+    playBGStandardMusic();
 }
 
 bool TombBossLevel::createPickableItems()

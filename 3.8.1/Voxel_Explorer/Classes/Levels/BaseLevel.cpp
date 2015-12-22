@@ -46,6 +46,8 @@ void BaseLevel::create()
     
     if(!Pathfinder::getInstance()->init(m_nWidth, m_nHeight))
         CCLOGERROR("Pathfinder initialize failed!");
+    
+    preloadBGMusic();
 }
 BaseLevel::LEVEL_TYPE BaseLevel::getLevelType() const
 {
@@ -405,6 +407,36 @@ void BaseLevel::searchAndCheck(int x, int y, int searchDistance)
         std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("SEARCH");
         SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
     }
+}
+void BaseLevel::preloadBGMusic()
+{
+    if(RandomDungeon::getInstance()->getCurrentDungeonNode())
+    {
+        if(RandomDungeon::getInstance()->getCurrentDungeonNode()->isBossDepth())
+        {
+            std::string bossMusicName = LevelResourceManager::getInstance()->getBackgroundMusicRes("BOSS_BG");
+            SimpleAudioEngine::getInstance()->preloadBackgroundMusic(bossMusicName.c_str());
+        }
+        else
+        {
+            std::string standardMusicName = LevelResourceManager::getInstance()->getBackgroundMusicRes("STANDARD_BG");
+            SimpleAudioEngine::getInstance()->preloadBackgroundMusic(standardMusicName.c_str());
+        }
+    }
+    SimpleAudioEngine::getInstance()->setBackgroundMusicVolume(0.25f);
+}
+
+void BaseLevel::playBGStandardMusic()
+{
+    SimpleAudioEngine::getInstance()->stopBackgroundMusic();
+    std::string musicName = LevelResourceManager::getInstance()->getBackgroundMusicRes("STANDARD_BG");
+    SimpleAudioEngine::getInstance()->playBackgroundMusic(musicName.c_str(), true);
+}
+void BaseLevel::playBGBossMusic()
+{
+    SimpleAudioEngine::getInstance()->stopBackgroundMusic();
+    std::string musicName = LevelResourceManager::getInstance()->getBackgroundMusicRes("BOSS_BG");
+    SimpleAudioEngine::getInstance()->playBackgroundMusic(musicName.c_str(), true);
 }
 void BaseLevel::load()
 {

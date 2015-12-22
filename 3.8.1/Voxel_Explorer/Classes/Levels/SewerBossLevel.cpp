@@ -329,6 +329,7 @@ void SewerBossLevel::clearBossRoom()
         }
     }
     VoxelExplorer::getInstance()->clearBoosRoom();
+    playBGStandardMusic();
 }
 bool SewerBossLevel::createPickableItems()
 {

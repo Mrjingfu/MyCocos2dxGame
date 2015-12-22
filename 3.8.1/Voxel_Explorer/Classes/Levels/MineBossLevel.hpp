@@ -32,6 +32,9 @@ public:
     virtual bool createPickableItems();
     
     virtual void handleUseStandardPortal(const cocos2d::Vec2& pos);
+    
+    virtual void playBGStandardMusic();
+    virtual void playBGBossMusic();
 private:
     std::vector<int> getTilesOnEdge(int m = 1);
 private:

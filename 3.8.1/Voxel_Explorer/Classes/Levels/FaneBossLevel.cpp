@@ -10,8 +10,11 @@
 #include "Graph.h"
 #include "VoxelExplorer.h"
 #include "StandardMonster.hpp"
+#include "LevelResourceManager.h"
 #include "Archbishop.hpp"
+#include "SimpleAudioEngine.h"
 USING_NS_CC;
+using namespace CocosDenshion;
 
 FaneBossLevel::FaneBossLevel()
 {
@@ -175,6 +178,7 @@ bool FaneBossLevel::createMonsters()
         monster->addTerrainTileFlag(TileInfo::ATTACKABLE);
         VoxelExplorer::getInstance()->getMonstersLayer()->addChild(monster);
         monster->setState(BaseMonster::MS_TRACKING);
+        monster->setMonsterFOV(11);
     }
     return true;
 }
@@ -338,6 +342,7 @@ bool FaneBossLevel::createSummoningMonstersByArchbishop(const cocos2d::Vec2& map
 void FaneBossLevel::clearBossRoom()
 {
     VoxelExplorer::getInstance()->clearBoosRoom();
+    playBGBossMusic();
 }
 
 bool FaneBossLevel::createPickableItems()
@@ -429,4 +434,16 @@ void FaneBossLevel::handleUseStandardPortal(const cocos2d::Vec2& pos)
             Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_SELECT_RIGHT_DUNGEON_NODE);
         }
     }
+}
+void FaneBossLevel::playBGStandardMusic()
+{
+    SimpleAudioEngine::getInstance()->stopBackgroundMusic();
+    std::string musicName = LevelResourceManager::getInstance()->getBackgroundMusicRes("BOSS_BG");
+    SimpleAudioEngine::getInstance()->playBackgroundMusic(musicName.c_str(), true);
+}
+void FaneBossLevel::playBGBossMusic()
+{
+    SimpleAudioEngine::getInstance()->stopBackgroundMusic();
+    std::string musicName = LevelResourceManager::getInstance()->getBackgroundMusicRes("STANDARD_BG");
+    SimpleAudioEngine::getInstance()->playBackgroundMusic(musicName.c_str(), true);
 }

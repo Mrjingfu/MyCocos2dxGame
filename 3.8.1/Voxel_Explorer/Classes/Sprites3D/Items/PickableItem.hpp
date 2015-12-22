@@ -307,6 +307,7 @@ public:
     static PickableItem::PickableItemType generate26_30MagicShopItemType();
     static PickableItem::PickableItemType generate31_35MagicShopItemType();
 private:
+    PickableItemState   m_LastState;
     PickableItemState   m_State;
     PickableItemType    m_Type;
     CChaosNumber        m_nLevel;
