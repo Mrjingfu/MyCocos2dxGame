@@ -106,7 +106,7 @@ bool TombBossLevel::build()
     int exitX = m_nIndexExit%m_nWidth;
     int exitY = m_nIndexExit/m_nWidth;
     
-    setTerrainTile(entranceX, entranceY, TerrainTile::TT_ENTRANCE, Area::AT_BOSS_ROOM);
+    setTerrainTile(entranceX, entranceY, TerrainTile::TT_ENTRANCE, Area::AT_STANDARD);
     setTerrainTile(arenaDoorX, arenaDoorY, TerrainTile::TT_LOCKED_MAGIC_DOOR, Area::AT_BOSS_ROOM, Actor::AD_FORWARD);
     setTerrainTile(exitX, exitY, TerrainTile::TT_LOCKED_BOSS_DOOR, Area::AT_BOSS_EXIT, Actor::AD_FORWARD);
     

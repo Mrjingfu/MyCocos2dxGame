@@ -13,6 +13,19 @@
 #include "ChaosNumber.h"
 #include "UseableItem.hpp"
 extern const std::string PICKABLE_ITEM_NAMES[];
+extern const std::string DESTINY_SCROLL_TYPE_NAMES[];
+typedef enum{
+    DST_ADDMONEY = 0,           ///加钱
+    DST_TRANSPORT,              ///传送
+    DST_STRONGER,               ///强壮
+    DST_STEALTH,                ///隐形
+    DST_SPEEDUP,                ///加速
+    DST_POISIONING,             ///中毒
+    DST_FIRE,                   ///着火
+    DST_FROZEN,                 ///减速
+    DST_WEAK,                   ///虚弱
+    DST_UNKNOWN
+} DestinyScrollType;
 class PickableItem : public Actor
 {
 public:

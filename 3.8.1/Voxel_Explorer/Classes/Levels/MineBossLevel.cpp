@@ -99,7 +99,7 @@ bool MineBossLevel::build()
     int exitX = m_nIndexExit%m_nWidth;
     int exitY = m_nIndexExit/m_nWidth;
     
-    setTerrainTile(entranceX, entranceY, TerrainTile::TT_ENTRANCE, Area::AT_BOSS_ROOM);
+    setTerrainTile(entranceX, entranceY, TerrainTile::TT_ENTRANCE, Area::AT_STANDARD);
     setTerrainTile(exitX, exitY, TerrainTile::TT_LOCKED_BOSS_DOOR, Area::AT_BOSS_EXIT, Actor::AD_FORWARD);
     
     updateTerrainTileFogOfWar(0, 0, m_nWidth, m_nHeight, true);

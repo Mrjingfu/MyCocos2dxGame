@@ -117,7 +117,7 @@ bool FaneBossLevel::build()
     int entranceX = m_nIndexEntrance%m_nWidth;
     int entranceY = m_nIndexEntrance/m_nWidth;
     setTerrainTile(exitX, exitY, TerrainTile::TT_LOCKED_BOSS_DOOR, Area::AT_BOSS_EXIT, Actor::AD_FORWARD);
-    setTerrainTile(entranceX, entranceY, TerrainTile::TT_ENTRANCE, Area::AT_BOSS_ROOM);
+    setTerrainTile(entranceX, entranceY, TerrainTile::TT_ENTRANCE, Area::AT_STANDARD);
     
     updateTerrainTileFogOfWar(0, 0, m_nWidth, m_nHeight, true);
     
