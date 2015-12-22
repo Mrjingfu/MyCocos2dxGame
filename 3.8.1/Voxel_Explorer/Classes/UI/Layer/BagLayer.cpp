@@ -12,8 +12,8 @@
 #include "PickableItemProperty.hpp"
 #include "ItemPopupUI.h"
 #include "PopupUILayerManager.h"
-
-
+#include "AlertPopupUI.hpp"
+#include "UtilityHelper.h"
 
 SellItem* SellItem::create(int itemId,int count /*=1*/)
 {
@@ -177,8 +177,8 @@ void BagLayer::refreshUIView()
             }
             
             PickableItemProperty::PickableItemPropertyType itemtype =itemProp->getPickableItemPropertyType();
-            if (itemtype ==PickableItemProperty::PIPT_WEAPON ||itemtype ==PickableItemProperty::PIPT_SECOND_WEAPON||
-                itemtype ==PickableItemProperty::PIPT_ARMOR ||itemtype ==PickableItemProperty::PIPT_MAGIC_ORNAMENT )
+            if (!m_bIsIndetify && (itemtype ==PickableItemProperty::PIPT_WEAPON ||itemtype ==PickableItemProperty::PIPT_SECOND_WEAPON||
+                itemtype ==PickableItemProperty::PIPT_ARMOR ||itemtype ==PickableItemProperty::PIPT_MAGIC_ORNAMENT) )
             {
                 if (!itemProp->isIdentified() || itemProp->getLevel() >playerLevel) {
                     m_BagMsgLayer->setItemNoUse(itemProp->getInstanceID(), itemUi->getPosition());
@@ -211,11 +211,12 @@ void BagLayer::refreshUIView()
                 
             }
             //是否是鉴定
-            if (m_bIsIndetify) {
+            if (m_bIsIndetify)
+            {
                 if (itemProp->isIdentified())
                     m_BagMsgLayer->setItemNoUse(itemProp->getInstanceID(), itemUi->getPosition());
                 else
-                    m_BagMsgLayer->setItemInIentify(itemProp->getInstanceID(),itemUi->getPosition());
+                    m_BagMsgLayer->setItemNormalIndentify(itemProp->getInstanceID(),itemUi->getPosition());
                 
             }
            
@@ -423,8 +424,8 @@ void BagLayer::bagItemOpe(int currentItemId)
         equipId = secondWeaponId;
     }
     //如果有装备过 打开装备过的武器
-    if (equipId!=-1) {
-        
+    if (equipId!=-1)
+    {
         Equippopupui = static_cast<ItemPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupType::ePopupEquipItem));
         if (Equippopupui)
         {
@@ -438,6 +439,21 @@ void BagLayer::bagItemOpe(int currentItemId)
     {
         isSucces = PlayerProperty::getInstance()->indentifyItem(CChaosNumber(currentItemId));
         m_bIsIndetify =false;
+        
+        if (!isSucces)
+        {
+            AlertPopupUI* alertPopup = static_cast<AlertPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupAlert));
+            if (alertPopup) {
+                alertPopup->setMessage(UtilityHelper::getLocalStringForUi("BAG_INDENTIFY_FAIL"));
+                alertPopup->setPositiveListerner([](Ref* ref){});
+                alertPopup->registerCloseCallback([this]()
+                {
+                     refreshUIView();
+                });
+            }
+            return;
+        }
+        
     }
     
     ItemPopupUI* popupui = static_cast<ItemPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupType::ePopupItem));
@@ -450,6 +466,7 @@ void BagLayer::bagItemOpe(int currentItemId)
                 int* id = static_cast<int*>(data);
                 bagItemOpe(*id);
             }
+            refreshUIView();
         });
         popupui->setItemId(currentItemId);
         

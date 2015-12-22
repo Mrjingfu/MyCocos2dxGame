@@ -118,18 +118,28 @@
 	<string>SUNDRIES</string>
 	<key>ITEM_MONEY_DESC</key>
 	<string>Sell price:</string>
-	<key>USE_POTION_ TREAT</key>
-	<string>+%d HP</string>
-	<key>USE_POTION_ MAGIC</key>
-	<string>+%d MP</string>
+	<key>USE_POTION_TREAT</key>
+	<string>使用治疗药水,恢复%dHP</string>
+	<key>USE_POTION_MAGIC</key>
+	<string>使用魔法药水,恢复%dMP</string>
+	<key>USE_POTION_RECOVERY</key>
+	<string>使用恢复药水,恢复%dHP,%dMP</string>
 	<key>USE_POTION_RELIEVE</key>
-	<string>中毒状态被解除了!</string>
+	<string>使用解毒药水,中毒状态被清除了!</string>
 	<key>USE_POTION_WEAK</key>
-	<string>虚弱状态被解除了!</string>
+	<string>使用治愈药水,虚弱状态被清除了</string>
 	<key>USE_POTION_SPECIFIC</key>
-	<string>使用特性药水,部分状态被解除了!</string>
+	<string>使用特效药水,冰冻、麻痹、着火状态被清除了</string>
 	<key>USE_POTION_UNIVERSAL</key>
-	<string>使用特性药水,状态全恢复了!</string>
+	<string>使用万能药水,状态全恢复了!</string>
+	<key>USE_SCROLL_TELEPORT</key>
+	<string>使用传送卷轴</string>
+	<key>USE_SCROLL_SPEED</key>
+	<string>使用速度卷轴</string>
+	<key>USE_SCROLL_STEALTH</key>
+	<string>使用传隐身卷轴</string>
+	<key>USE_SCROLL_DESTINY</key>
+	<string>使用命运卷轴</string>
 	<key>PLAYER_USE_GOLD_CHEST_KEY</key>
 	<string>使用了金质钥匙！</string>
 	<key>PLAYER_USE_SILVER_CHEST_KEY</key>
@@ -262,5 +272,7 @@
 	<string>SOUND:</string>
 	<key>BTN_TEXT_MUSIC</key>
 	<string>MUSIC:</string>
+	<key>BAG_INDENTIFY_FAIL</key>
+	<string>鉴定失败！</string>
 </dict>
 </plist>

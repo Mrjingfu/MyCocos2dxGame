@@ -125,6 +125,7 @@ void RolePopupUI::onClickColse(Ref* ref)
     CHECK_ACTION(ref);
     if (m_pBagLayer) {
         if (m_pBagLayer->isIdentIfy()) {
+            m_pBagLayer->setIdentIfy(false);
             m_pBagLayer->setSortBtnEnable(false, true, true);
             refreshUIView();
         }else

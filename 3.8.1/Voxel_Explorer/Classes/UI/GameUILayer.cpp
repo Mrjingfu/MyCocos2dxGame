@@ -562,67 +562,53 @@ void GameUILayer::onEventRoleUserPotion(cocos2d::EventCustom *sender)
         case PickableItem::PIT_POTION_HEALTH:
             CCLOG("使用治疗药水 恢复HP");
             tipStr = StringUtils::format(UtilityHelper::getLocalStringForUi("USE_POTION_TREAT").c_str(),int(potionsProperty->getValue()));
-            m_pGameToolBarLayer->sendMessage(StringUtils::format(UtilityHelper::getLocalStringForUi("USE_POTION_TREAT").c_str(),int(potionsProperty->getValue())),PopupUILayerManager::getInstance()->getTipsColor(TIP_POSITIVE));
+            m_pGameToolBarLayer->sendMessage(tipStr,PopupUILayerManager::getInstance()->getTipsColor(TIP_POSITIVE));
             break;
         case PickableItem::PIT_POTION_MINORMANA:
         case PickableItem::PIT_POTION_LESSERMANA:
         case PickableItem::PIT_POTION_MANA:
             CCLOG("使用魔法药水 恢复MP");
              tipStr =  StringUtils::format(UtilityHelper::getLocalStringForUi("USE_POTION_MAGIC").c_str(),int(potionsProperty->getValue()));
-             m_pGameToolBarLayer->sendMessage(StringUtils::format(UtilityHelper::getLocalStringForUi("USE_POTION_MAGIC").c_str(),int(potionsProperty->getValue())),PopupUILayerManager::getInstance()->getTipsColor(TIP_POSITIVE));
+             m_pGameToolBarLayer->sendMessage(tipStr,PopupUILayerManager::getInstance()->getTipsColor(TIP_POSITIVE));
             break;
         case PickableItem::PIT_POTION_MINORRECOVERY:
         case PickableItem::PIT_POTION_LESSERRECOVERY:
         case PickableItem::PIT_POTION_RECOVERY:
         {
-             CCLOG("恢复药水 恢复HP+MP");
-             tipStr =  StringUtils::format(UtilityHelper::getLocalStringForUi("USE_POTION_TREAT").c_str(),int(potionsProperty->getValue()));
-            m_pGameToolBarLayer->sendMessage(StringUtils::format(UtilityHelper::getLocalStringForUi("USE_POTION_TREAT").c_str(),int(potionsProperty->getValue())),PopupUILayerManager::getInstance()->getTipsColor(TIP_POSITIVE));
+            CCLOG("恢复药水 恢复HP+MP");
+            int hp = PlayerProperty::getInstance()->getMaxHP() * potionsProperty->getValue().GetFloatValue();
+            int mp = PlayerProperty::getInstance()->getMaxMP() * potionsProperty->getValue().GetFloatValue();
             
-            if (m_pRoleHudLayer) {
-                m_pRoleHudLayer->shwoPrompt(pt, TIP_BLUE,StringUtils::format(UtilityHelper::getLocalStringForUi("USE_POTION_MAGIC").c_str(),int(potionsProperty->getValue())));
-            }
-            
-            m_pGameToolBarLayer->sendMessage(StringUtils::format(UtilityHelper::getLocalStringForUi("USE_POTION_MAGIC").c_str(),int(potionsProperty->getValue())),PopupUILayerManager::getInstance()->getTipsColor(TIP_POSITIVE));
-
-            
-//            CallFunc* func = CallFunc::create([this,potionsProperty,pt]{
-//                    if (m_pRoleHudLayer) {
-//                        m_pRoleHudLayer->shwoPrompt(pt, TIP_BLUE,StringUtils::format(UtilityHelper::getLocalStringForUi("USE_POTION_MAGIC").c_str(),int(potionsProperty->getValue())));
-//                }
-//                
-//                m_pGameToolBarLayer->sendMessage(StringUtils::format(UtilityHelper::getLocalStringForUi("USE_POTION_MAGIC").c_str(),int(potionsProperty->getValue())),PopupUILayerManager::getInstance()->getTipsColor(TIP_POSITIVE));
-//
-//            });
-//            this->runAction(Sequence::createWithTwoActions(DelayTime::create(1.0f), func));
-        }
+             tipStr =  StringUtils::format(UtilityHelper::getLocalStringForUi("USE_POTION_RECOVERY").c_str(),hp,mp);
+            m_pGameToolBarLayer->sendMessage(tipStr,PopupUILayerManager::getInstance()->getTipsColor(TIP_POSITIVE));
+                   }
             break;
         case PickableItem::PIT_POTION_DETOXIFICATION:
             tipStr =  UtilityHelper::getLocalStringForUi("USE_POTION_RELIEVE");
-           
-            m_pGameToolBarLayer->sendMessage(UtilityHelper::getLocalStringForUi("USE_POTION_RELIEVE"),PopupUILayerManager::getInstance()->getTipsColor(TIP_POSITIVE));
+            m_pGameToolBarLayer->sendMessage(tipStr,PopupUILayerManager::getInstance()->getTipsColor(TIP_POSITIVE));
             CCLOG("解除中毒");
             break;
         case PickableItem::PIT_POTION_SPECIFIC:
             tipStr = UtilityHelper::getLocalStringForUi("USE_POTION_SPECIFIC");
-            m_pGameToolBarLayer->sendMessage(UtilityHelper::getLocalStringForUi("USE_POTION_SPECIFIC"),PopupUILayerManager::getInstance()->getTipsColor(TIP_POSITIVE));
+            m_pGameToolBarLayer->sendMessage(tipStr,PopupUILayerManager::getInstance()->getTipsColor(TIP_POSITIVE));
             CCLOG("解除冰冻、麻痹、火");
             break;
         case PickableItem::PIT_POTION_HEALING:
             tipStr = UtilityHelper::getLocalStringForUi("USE_POTION_WEAK");
-            m_pGameToolBarLayer->sendMessage(UtilityHelper::getLocalStringForUi("USE_POTION_WEAK"),PopupUILayerManager::getInstance()->getTipsColor(TIP_POSITIVE));
+            m_pGameToolBarLayer->sendMessage(tipStr,PopupUILayerManager::getInstance()->getTipsColor(TIP_POSITIVE));
             CCLOG("解除虚弱");
             break;
         case PickableItem::PIT_POTION_UNIVERSAL:
             tipStr = UtilityHelper::getLocalStringForUi("USE_POTION_UNIVERSAL");
-            m_pGameToolBarLayer->sendMessage(UtilityHelper::getLocalStringForUi("USE_POTION_UNIVERSAL"),PopupUILayerManager::getInstance()->getTipsColor(TIP_POSITIVE));
+            m_pGameToolBarLayer->sendMessage(tipStr,PopupUILayerManager::getInstance()->getTipsColor(TIP_POSITIVE));
             CCLOG("万能药水,解除中毒，冰冻，麻痹，虚弱，着火");
             break;
         default:
             break;
     }
-    if (m_pRoleHudLayer && !tipStr.empty()) {
-        m_pRoleHudLayer->shwoPrompt(pt, TIP_POSITIVE, tipStr);
+    if (!tipStr.empty())
+    {
+        PopupUILayerManager::getInstance()->showStatusImport(TIP_POSITIVE, tipStr);
     }
     
     //关闭角色对话框
@@ -636,6 +622,7 @@ void GameUILayer::onEventRoleUserScroll(cocos2d::EventCustom *sender)
     //窗口都未关闭,回调后来判断是否关闭
     CCLOG("onEvenetUserScroll");
     ScrollProperty* scrollProperty = static_cast<ScrollProperty*>(sender->getUserData());
+    std::string tipStr;
     if (scrollProperty->getPickableItemType() == PickableItem::PIT_SCROLL_INDENTIFY)
     {
         CCLOG("鉴定卷轴");
@@ -653,17 +640,26 @@ void GameUILayer::onEventRoleUserScroll(cocos2d::EventCustom *sender)
     }else if(scrollProperty->getPickableItemType() == PickableItem::PIT_SCROLL_TELEPORT)
     {
         CCLOG("传送卷轴");
+        tipStr = UtilityHelper::getLocalStringForUi("USE_SCROLL_TELEPORT");
     }else if(scrollProperty->getPickableItemType() == PickableItem::PIT_SCROLL_SPEED)
     {
         CCLOG("速度卷轴");
-        
+        tipStr = UtilityHelper::getLocalStringForUi("USE_SCROLL_SPEED");
     }else if(scrollProperty->getPickableItemType() == PickableItem::PIT_SCROLL_STEALTH)
     {
         CCLOG("隐身卷轴");
+        tipStr = UtilityHelper::getLocalStringForUi("USE_SCROLL_STEALTH");
     }else if(scrollProperty->getPickableItemType() == PickableItem::PIT_SCROLL_DESTINY)
     {
         CCLOG("命运卷轴");
+        tipStr = UtilityHelper::getLocalStringForUi("USE_SCROLL_DESTINY");
     }
+    
+    if (!tipStr.empty())
+    {
+        PopupUILayerManager::getInstance()->showStatusImport(TIP_POSITIVE, tipStr);
+    }
+
     //关闭角色对话框
     PopupUILayerManager::getInstance()->closeCurrentPopup();
 }

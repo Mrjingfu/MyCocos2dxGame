@@ -16,6 +16,8 @@ AlertPopupUI::AlertPopupUI()
     m_pCancel           = nullptr;
     m_pTitle            = nullptr;
     m_pMessage          = nullptr;
+//    m_pNegativeFun      = [](Ref* ref){};
+//    m_pPositiveFun      = [](Ref* ref){};
     m_pNegativeFun      = nullptr;
     m_pPositiveFun      = nullptr;
     

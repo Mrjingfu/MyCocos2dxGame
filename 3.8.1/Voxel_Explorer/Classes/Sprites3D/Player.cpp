@@ -264,6 +264,7 @@ void Player::removePlayerBuffer(PlayerBuffer buff)
             if(tex)
                 tex->setAliasTexParameters();
             setTexture(tex);
+            PlayerProperty::getInstance()->removePlayerBuffer(buff);
         }
     }
     else if(buff == PB_WEAK)
@@ -283,7 +284,7 @@ void Player::removePlayerBuffer(PlayerBuffer buff)
             if(tex)
                 tex->setAliasTexParameters();
             setTexture(tex);
-            
+            PlayerProperty::getInstance()->removePlayerBuffer(buff);
         }
     }
     else if(buff == PB_PARALYTIC)
@@ -303,7 +304,7 @@ void Player::removePlayerBuffer(PlayerBuffer buff)
             if(tex)
                 tex->setAliasTexParameters();
             setTexture(tex);
-            
+            PlayerProperty::getInstance()->removePlayerBuffer(buff);
         }
     }
     else if(buff == PB_FIRE)
@@ -323,7 +324,7 @@ void Player::removePlayerBuffer(PlayerBuffer buff)
             if(tex)
                 tex->setAliasTexParameters();
             setTexture(tex);
-            
+            PlayerProperty::getInstance()->removePlayerBuffer(buff);
         }
     }
     else if(buff == PB_FROZEN)
@@ -343,10 +344,13 @@ void Player::removePlayerBuffer(PlayerBuffer buff)
             if(tex)
                 tex->setAliasTexParameters();
             setTexture(tex);
-            
+            PlayerProperty::getInstance()->removePlayerBuffer(buff);
         }
+    }else
+    {
+        PlayerProperty::getInstance()->removePlayerBuffer(buff);
     }
-    PlayerProperty::getInstance()->removePlayerBuffer(buff);
+    
 }
 void Player::setState(PlayerState state)
 {

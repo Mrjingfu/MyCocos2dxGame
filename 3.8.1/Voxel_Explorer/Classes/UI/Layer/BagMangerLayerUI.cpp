@@ -69,6 +69,14 @@ bool BagMangerLayerUI::init(cocos2d::Size size)
     //        m_pItemNoUse->setBackGroundColor(Color3B::ORANGE);
     addChild(m_pItemNoUse);
     
+    
+    m_pItemNomalIndentify  = Layout::create();
+    m_pItemNomalIndentify->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
+    m_pItemNomalIndentify->setContentSize(size);
+    m_pItemNomalIndentify->setPosition(getContentSize()*0.5);
+    //        m_pItemNomalIndentify->setBackGroundColorType(cocos2d::ui::Layout::BackGroundColorType::SOLID);
+    //        m_pItemNomalIndentify->setBackGroundColor(Color3B::ORANGE);
+    addChild(m_pItemNomalIndentify);
     return true;
 }
 BagMangerLayerUI* BagMangerLayerUI::create(cocos2d::Size size)
@@ -107,6 +115,11 @@ void BagMangerLayerUI::setLayerContentSize(const cocos2d::Size &contentSize)
     if (m_pItemNoUse) {
         m_pItemNoUse->setContentSize(contentSize);
         m_pItemNoUse->setPosition(getContentSize()*0.5);
+    }
+    
+    if (m_pItemNomalIndentify) {
+        m_pItemNomalIndentify->setContentSize(contentSize);
+        m_pItemNomalIndentify->setPosition(getContentSize()*0.5);
     }
     
 }
@@ -175,6 +188,20 @@ void BagMangerLayerUI::setItemNoUse(int itemId,cocos2d::Vec2 pt)
         m_pItemNoUse->addChild(img);
     }
 }
+void BagMangerLayerUI::setItemNormalIndentify(int itemId, cocos2d::Vec2 pt)
+{
+    if (m_pItemNomalIndentify) {
+        ui::ImageView* img =ui::ImageView::create("ui_indentify_scoll_icon.png",TextureResType::PLIST);
+        img->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
+        img->setPosition(pt);
+        img->setTag(itemId);
+        //        BlendFunc tmp_oBlendFunc = {GL_DST_COLOR, GL_ONE_MINUS_SRC_ALPHA};
+        //        img->setBlendFunc(tmp_oBlendFunc);
+        img->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
+        m_pItemNomalIndentify->addChild(img);
+        
+    }
+}
 void BagMangerLayerUI::removeItems()
 {
     if (m_pItemImgLayer) {
@@ -196,6 +223,11 @@ void BagMangerLayerUI::removeItems()
     if (m_pItemNoUse) {
         m_pItemNoUse->removeAllChildren();
     }
+    
+    if (m_pItemNomalIndentify) {
+        m_pItemNomalIndentify->removeAllChildren();
+    }
+    
     m_items.clear();
 }
 void BagMangerLayerUI::removeItem(int index)
