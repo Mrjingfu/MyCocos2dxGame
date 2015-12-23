@@ -28,7 +28,6 @@
 #include "AchievePopupUI.h"
 #include "AchieveItemPopupUI.hpp"
 #include "DeadPopupUI.h"
-#include "SettingPopupUI.hpp"
 PopupUILayerManager::PopupUILayerManager()
 {
     m_pParentLayer = nullptr;
@@ -76,6 +75,7 @@ void PopupUILayerManager::onExitScene()
     m_lTypeList.clear();
     for (int i=0; i<ePopupCount; i++) {
         if (m_pPopupContainer[i])
+            m_pPopupContainer[i]->schedulerResume();
             m_pPopupContainer[i] = nullptr;
     }
 }
@@ -168,9 +168,6 @@ PopupUILayer* PopupUILayerManager::initPopUp(ePopupType type)
         case ePopupDead:
             popupLayer = DeadPopupUI::create();
              break;
-        case ePopupSetting:
-            popupLayer = SettingPopupUI::create();
-            break;
         default:
             break;
     }

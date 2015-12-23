@@ -86,7 +86,7 @@ void AchieveMangerLayerUI::setLayerContentSize(const cocos2d::Size &contentSize)
     }
     
 }
-void AchieveMangerLayerUI::addItemAchieve(eAchievementDetailType achieveId,cocos2d::Vec2 pt,std::string itemIcon,std::string name,std::string targetDesc,bool isHideAchieve,bool isCommple)
+void AchieveMangerLayerUI::addItemAchieve(eAchievementDetailType achieveId,cocos2d::Vec2 pt,std::string itemIcon,std::string name,std::string targetDesc,bool isUnlockeAchieve,bool isCommple)
 {
     m_Achieves.push_back(achieveId);
     if (m_pItemImgLayer && m_pAchieveNameLayer && m_pAchieveTargetLayer)
@@ -97,7 +97,7 @@ void AchieveMangerLayerUI::addItemAchieve(eAchievementDetailType achieveId,cocos
         img->setScale(0.7);
         img->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
         img->setTag(achieveId);
-        if (!isCommple &&isHideAchieve) {
+        if (!isCommple &&!isUnlockeAchieve) {
             img->loadTexture("achievement_lock.png",TextureResType::PLIST);
         }
          img->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
@@ -121,7 +121,7 @@ void AchieveMangerLayerUI::addItemAchieve(eAchievementDetailType achieveId,cocos
         if (isCommple) {
             nameText->setColor(Color3B(241, 222, 188));
         }
-        if (!isCommple &&isHideAchieve)
+        if (!isCommple &&!isUnlockeAchieve)
         {
             nameText->setString("????");
             nameText->setPosition(cocos2d::Vec2(img->getPositionX()+img->getContentSize().width*0.55,pt.y));
@@ -150,7 +150,7 @@ void AchieveMangerLayerUI::addItemAchieve(eAchievementDetailType achieveId,cocos
         if (isCommple) {
             targetText->setColor(Color3B(185, 153, 109));
         }
-        if (!isCommple &&isHideAchieve)
+        if (!isCommple &&!isUnlockeAchieve)
         {
             targetText->setVisible(false);
         }

@@ -217,12 +217,12 @@ enum eAchievementDetailType
     ADT_KILLER,               //杀手
     ADT_PAST_HOPE,            //无可救药
     ADT_INCENDIES,            //烈火焚身
-    ADT_DIE_UNNATURAL,         //死于非命
-    ADT_MARATHON,              //马拉松
-    ADT_WALKING_DEAD,          //行尸走肉
-    ADT_FINAL_DESTINATION,     //死神来了
-    ADT_WEALTHY_MEN,           //有钱人
-    ADT_UPSTART,                //暴发户
+    ADT_DIE_UNNATURAL,        //死于非命
+    ADT_MARATHON,             //马拉松
+    ADT_WALKING_DEAD,         //行尸走肉
+    ADT_FINAL_DESTINATION,    //死神来了
+    ADT_WEALTHY_MEN,          //有钱人
+    ADT_UPSTART,               //暴发户
     ADT_COUNT
 };
 

@@ -64,12 +64,16 @@ bool AchievementManager::loadAchieveData()
         {
             achieveProperty->setAchieveIcon(iterItem->second.asString());
         }
-        iterItem = achieveItem.find("achieve_hide");
-        if (iterItem!=achieveItem.end()) {
-            achieveProperty->setHideAchieve(iterItem->second.asBool());
+        
+        iterItem = achieveItem.find("achieve_unlock_task");
+        if (iterItem != achieveItem.end()) {
+            for (auto iterUnlockTask = iterItem->second.asValueVector().begin();iterUnlockTask!= iterItem->second.asValueVector().end(); iterUnlockTask++) {
+                std::string targetType = (*iterUnlockTask).asString();
+                achieveProperty->setAchiveUnlockTarget(targetType);
+            }
         }
-
-
+        
+       
         iterItem = achieveItem.find("achieve_task");
         if (iterItem != achieveItem.end())
         {
