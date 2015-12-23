@@ -132,6 +132,7 @@ void ItemShopBuyPopupUI::sliderEvent(cocos2d::Ref* sender, cocos2d::ui::Slider::
 void ItemShopBuyPopupUI::onClickBuy(cocos2d::Ref *ref)
 {
     CHECK_ACTION(ref);
+    clickEffect();
     CCLOG("onClickBuy");
     bool isSuccess = false;
     PickableItemProperty* buyItemProperty = getItemIdProperty();

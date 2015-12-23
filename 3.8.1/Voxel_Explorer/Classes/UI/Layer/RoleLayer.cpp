@@ -203,5 +203,6 @@ void RoleLayer::updateEquipProp()
 void RoleLayer::onClickShop(cocos2d::Ref *ref)
 {
     CHECK_ACTION(ref);
+    clickEffect();
    
 }

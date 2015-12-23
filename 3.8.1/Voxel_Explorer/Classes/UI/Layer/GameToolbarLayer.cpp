@@ -18,6 +18,8 @@
 #include "InformationPopupUI.h"
 #include "NpcDataManager.hpp"
 #include "AlertPopupUI.hpp"
+#include "LevelResourceManager.h"
+#include "SimpleAudioEngine.h"
 USING_NS_CC;
 GameToolbarLayer::GameToolbarLayer()
 {
@@ -177,11 +179,11 @@ void GameToolbarLayer::initMessageFrame()
 void GameToolbarLayer::onClickBag(Ref* ref)
 {
     CHECK_ACTION(ref);
+    clickEffect();
     CCLOG("onClickRole");
     if (m_bIsDist) {
         return;
     }
-    
 //  PopupUILayerManager::getInstance()->openPopup(ePopupRole);
     ShopPopupUI* popupUILayer = static_cast<ShopPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupGambleShop));
     if (popupUILayer) {
@@ -198,9 +200,15 @@ void GameToolbarLayer::onClickMap(cocos2d::Ref *ref)
         return;
     }
     if (m_bIsOpenSmailMap) {
+        std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("UI_BTN_MAP_CLOSE");
+        CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+        
         VoxelExplorer::getInstance()->getCurrentLevel()->showMap(false);
         m_bIsOpenSmailMap = false;
     }else{
+        std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("UI_BTN_MAP_OPEN");
+        CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+        
         VoxelExplorer::getInstance()->getCurrentLevel()->showMap(true);
         m_bIsOpenSmailMap = true;
     }
@@ -208,7 +216,8 @@ void GameToolbarLayer::onClickMap(cocos2d::Ref *ref)
 }
 void GameToolbarLayer::onClickDistTipsFrame(cocos2d::Ref *ref)
 {
-    //     CHECK_ACTION(ref);
+    //CHECK_ACTION(ref);
+    clickEffect();
     CCLOG("onClickSearchTipsFrame");
     if (m_pGameDistTipsFrame&& m_bIsDist) {
         m_pGameDistTipsFrame->setVisible(false);
@@ -224,6 +233,7 @@ void GameToolbarLayer::onClickDistTipsFrame(cocos2d::Ref *ref)
 void GameToolbarLayer::onClickMsg(cocos2d::Ref *ref)
 {
     CHECK_ACTION(ref);
+    clickEffect();
     CCLOG("onClickMsg");
     if (m_bIsDist) {
         return;
@@ -231,9 +241,16 @@ void GameToolbarLayer::onClickMsg(cocos2d::Ref *ref)
     onClickDistTipsFrame(nullptr);
     if (m_pMsgFrame->isVisible())
     {
+        std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("UI_BTN_CHAT_CLOSE");
+        CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+
         m_pMsgFrame->setVisible(false);
+        
     }else
     {
+        std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("UI_BTN_CHAT_OPEN");
+        CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+
         m_pMsgFrame->setVisible(true);
         m_pListMsgs->forceDoLayout();
         m_pListMsgs->scrollToBottom(0.5,false);
@@ -256,6 +273,7 @@ void GameToolbarLayer::onClickDist(cocos2d::Ref *ref)
 void GameToolbarLayer::onClickPause(cocos2d::Ref *ref)
 {
     CHECK_ACTION(ref);
+    clickEffect();
     CCLOG("onClickPause");
     PopupUILayerManager::getInstance()->openPopup(ePopupPause);
 //    InformationPopupUI* popupUi = static_cast<InformationPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupInformation));
@@ -274,6 +292,7 @@ void GameToolbarLayer::onClickPause(cocos2d::Ref *ref)
 void GameToolbarLayer::onClickSearch(cocos2d::Ref *ref)
 {
     CHECK_ACTION(ref);
+    clickEffect();
     CCLOG("onClickSearch");
     if (m_bIsDist)
         return;

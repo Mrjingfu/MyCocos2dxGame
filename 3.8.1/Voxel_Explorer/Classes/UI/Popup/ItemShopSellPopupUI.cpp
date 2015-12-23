@@ -103,6 +103,7 @@ void ItemShopSellPopupUI::itemSell()
 void ItemShopSellPopupUI::onClickSell(cocos2d::Ref *ref)
 {
     CHECK_ACTION(ref);
+    clickEffect();
     CCLOG("onClickSell");
     PickableItemProperty* itemprop = getItemIdProperty();
     if (itemprop)

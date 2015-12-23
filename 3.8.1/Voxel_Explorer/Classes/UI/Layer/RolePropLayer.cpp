@@ -33,6 +33,7 @@ bool RolePropLayer::addEvents()
 void RolePropLayer::onClickRole(cocos2d::Ref *ref)
 {
     CHECK_ACTION(ref);
+    clickEffect();
     PopupUILayerManager::getInstance()->openPopup(ePopupRole);
 }
 void RolePropLayer::updateCharacterBuff()

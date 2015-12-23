@@ -16,6 +16,8 @@
 #include "KeyProperty.hpp"
 #include "BagLayer.h"
 #include "RoleLayer.hpp"
+#include "LevelResourceManager.h"
+#include "SimpleAudioEngine.h"
 USING_NS_CC;
 RolePopupUI::RolePopupUI()
 {
@@ -118,11 +120,16 @@ void RolePopupUI::updateItems(bool _isOpenIdentify)
 void RolePopupUI::onClickChnageBag(Ref* ref)
 {
     CHECK_ACTION(ref);
+    
+    std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("UI_BTN_PACKAGE_OPEN");
+    CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+
     PlayerProperty::getInstance()->extendBagSpace();
 }
 void RolePopupUI::onClickColse(Ref* ref)
 {
     CHECK_ACTION(ref);
+    clickEffect();
     if (m_pBagLayer) {
         if (m_pBagLayer->isIdentIfy()) {
             m_pBagLayer->setIdentIfy(false);
@@ -130,6 +137,9 @@ void RolePopupUI::onClickColse(Ref* ref)
             refreshUIView();
         }else
         {
+            std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("UI_BTN_PACKAGE_CLOSE");
+            CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+
             closePopup();
         }
     }

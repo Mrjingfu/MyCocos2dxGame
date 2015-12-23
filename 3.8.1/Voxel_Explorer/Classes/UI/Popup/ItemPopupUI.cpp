@@ -760,6 +760,7 @@ void ItemPopupUI::updateItemAttrUI()
 void ItemPopupUI::onClickDiscard(cocos2d::Ref *ref)
 {
     CHECK_ACTION(ref);
+    clickEffect();
     CCLOG("onClickDiscard");
     
     
@@ -800,6 +801,7 @@ void ItemPopupUI::onClickDiscard(cocos2d::Ref *ref)
 void ItemPopupUI::onClickUser(cocos2d::Ref *ref)
 {
     CHECK_ACTION(ref);
+    clickEffect();
     CCLOG("onClickUser");
     PickableItemProperty* itemprop = getItemIdProperty();
     CCASSERT(itemprop!=nullptr, "itemprop is null!");
@@ -821,6 +823,7 @@ void ItemPopupUI::onClickUser(cocos2d::Ref *ref)
 void ItemPopupUI::onClickEquip(cocos2d::Ref *ref)
 {
     CHECK_ACTION(ref);
+    clickEffect();
     CCLOG("onClickEquip");
     PickableItemProperty* itemprop = getItemIdProperty();
     CCASSERT(itemprop!=nullptr, "itemprop is null!");

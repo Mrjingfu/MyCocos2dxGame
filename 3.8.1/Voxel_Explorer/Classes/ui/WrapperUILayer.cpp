@@ -7,7 +7,8 @@
 //
 
 #include "WrapperUILayer.h"
-
+#include "LevelResourceManager.h"
+#include "SimpleAudioEngine.h"
 #define UI_ACTION_INTERVAL  500 // 毫秒
 
 WrapperUILayer::WrapperUILayer()
@@ -96,6 +97,11 @@ void WrapperUILayer::schedulerResume()
     {
         cocos2d::Director::getInstance()->getScheduler()->resumeTarget(*it);
     }
+}
+void WrapperUILayer::clickEffect()
+{
+    std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("UI_BTN_COMMON");
+    CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
 }
 bool WrapperUILayer::isForbiddenAction(cocos2d::Ref *sender)
 {

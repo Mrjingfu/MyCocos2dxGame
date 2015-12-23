@@ -69,6 +69,7 @@ bool PausePopupUI::addEvents()
 void PausePopupUI::onClickExitGame(cocos2d::Ref *ref)
 {
     CHECK_ACTION(ref);
+    clickEffect();
     CCLOG("onClickExitGame");
     Director::getInstance()->end();
     
@@ -80,6 +81,7 @@ void PausePopupUI::onClickExitGame(cocos2d::Ref *ref)
 void PausePopupUI::onClickMainMenu(cocos2d::Ref *ref)
 {
     CHECK_ACTION(ref);
+    clickEffect();
     CCLOG("onClickMainMenu");
     Scene* menuScene = MenuScene::createScene();
     Director::getInstance()->replaceScene(menuScene);
@@ -88,6 +90,7 @@ void PausePopupUI::onClickMainMenu(cocos2d::Ref *ref)
 void PausePopupUI::onClickSetting(cocos2d::Ref *ref)
 {
     CHECK_ACTION(ref);
+    clickEffect();
     CCLOG("onClickSetting");
     PopupUILayerManager::getInstance()->getCurrentPopUpLayer()->getRootNode()->setVisible(false);
     SettingPopupUI* settingPopup = static_cast<SettingPopupUI*>( PopupUILayerManager::getInstance()->openPopup(ePopupSetting));
