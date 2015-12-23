@@ -391,7 +391,7 @@ cocos2d::Vec2 BaseLevel::getRandomVisitedTranspotTile(const cocos2d::Vec2& playe
         return Vec2(cell % m_nWidth, cell / m_nWidth);
     }
 }
-bool BaseLevel::searchAndCheck(int x, int y, int searchDistance)
+bool BaseLevel::searchAndCheck(int x, int y, int searchDistance, bool& hasFoundWall)
 {
     std::vector<int> neighbours;
     if(searchDistance == 1)
@@ -408,8 +408,11 @@ bool BaseLevel::searchAndCheck(int x, int y, int searchDistance)
     int pos = y * m_nWidth + x;
     for (int i = 0; i < neighbours.size(); ++i) {
         int j = pos + neighbours[i];
-        
         VoxelExplorer::getInstance()->handleShowSearchEffect(Vec2(m_Map[j].m_nX, m_Map[j].m_nY));
+        if(m_Map[j].m_bSearched)
+            continue;
+        else
+            m_Map[j].m_bSearched = true;
         
         if(m_Map[j].m_Type == TerrainTile::TT_HIDE_TOXIC_TRAP
             || m_Map[j].m_Type == TerrainTile::TT_HIDE_FIRE_TRAP
@@ -427,6 +430,8 @@ bool BaseLevel::searchAndCheck(int x, int y, int searchDistance)
             VoxelExplorer::getInstance()->handleShowSecretDoor(Vec2(m_Map[j].m_nX, m_Map[j].m_nY));
             found = true;
         }
+        else if(m_Map[j].m_Type == TerrainTile::TT_WALL)
+            hasFoundWall = true;
     }
     return found;
 }

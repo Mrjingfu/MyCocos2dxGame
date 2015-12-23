@@ -34,6 +34,7 @@ struct TileInfo
     Area::AREA_TYPE         m_AreaType;
     
     bool        m_bVisited;
+    bool        m_bSearched;
     int         m_Flag;
     int         m_nX;
     int         m_nY;
@@ -44,6 +45,7 @@ struct TileInfo
         m_AreaType = Area::AT_UNKNOWN;
         m_Flag = INITIALISED;
         m_bVisited = false;
+        m_bSearched = false;
         m_nX = -1;
         m_nY = -1;
         m_Dir = Actor::AD_UNKNOWN;
@@ -145,7 +147,7 @@ public:
     cocos2d::Vec2 getRandomPassableTile();
     cocos2d::Vec2 getRandomTranspotTile();
     cocos2d::Vec2 getRandomVisitedTranspotTile(const cocos2d::Vec2& playerPos);
-    bool searchAndCheck(int x, int y, int searchDistance);
+    bool searchAndCheck(int x, int y, int searchDistance, bool& hasFoundWall);
     
     bool hasShowMap() const { return m_bShowMap; }
     
