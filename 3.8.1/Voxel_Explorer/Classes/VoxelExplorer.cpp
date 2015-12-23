@@ -40,6 +40,7 @@
 #include "FakeShadow.hpp"
 #include "StandardMonster.hpp"
 #include "NpcDataManager.hpp"
+#include "RandomEventMgr.hpp"
 #include "StatisticsManager.hpp"
 #include "SimpleAudioEngine.h"
 USING_NS_CC;
@@ -90,6 +91,13 @@ bool VoxelExplorer::init(Layer* pMainLayer)
     if(!RandomDungeon::getInstance()->build())
     {
         CCLOGERROR("RandomDungeon build failed!");
+        return false;
+    }
+    ///lwwhb 临时，之后加载
+    ValueVector eventList;
+    if(!RandomEventMgr::getInstance()->load(eventList))
+    {
+        CCLOGERROR("RandomEventMgr load failed!");
         return false;
     }
     if(!createLayers())
@@ -549,10 +557,57 @@ void VoxelExplorer::searchAndCheck()    ///侦查
     {
         Vec2 playerPosInMap = m_pPlayer->getPosInMap();
         int searchDistance = PlayerProperty::getInstance()->getSearchDistance();
-        if(!m_pCurrentLevel->searchAndCheck(playerPosInMap.x, playerPosInMap.y, searchDistance))
+        bool foundWall = false;
+        if(!m_pCurrentLevel->searchAndCheck(playerPosInMap.x, playerPosInMap.y, searchDistance, foundWall))
         {
-            std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("SEARCH");
-            SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+            float percent1 = 0.1f;
+            float percent2 = 1.0f - percent1;
+            bool found = false;
+            AlisaMethod* am = AlisaMethod::create(percent1, percent2, -1.0, NULL);
+            if(am)
+            {
+                if(am->getRandomIndex() == 0)
+                    found = true;
+            }
+            if(found)
+            {
+                ValueMap* randEvent = RandomEventMgr::getInstance()->getRandomEvent();
+                if(randEvent->at("HAS_READED").asBool())
+                {
+                    std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("SEARCH");
+                    SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+                }
+                else
+                {
+                    if(foundWall)
+                    {
+                        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_FOUND_HIDDEN_MSG, randEvent);
+                        std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("SECRET_FOUND");
+                        SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+                        randEvent->at("HAS_READED") = true;
+                    }
+                    else
+                    {
+                        if(randEvent && randEvent->at("EVENT_TYPE").asInt() != (int)RANDOM_EVENT_TYPE::RET_WALL_STANDARD)
+                        {
+                            Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_FOUND_HIDDEN_MSG, randEvent);
+                            std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("SECRET_FOUND");
+                            SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+                            randEvent->at("HAS_READED") = true;
+                        }
+                        else
+                        {
+                            std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("SEARCH");
+                            SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+                        }
+                    }
+                }
+            }
+            else
+            {
+                std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("SEARCH");
+                SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+            }
         }
         else
         {

@@ -133,6 +133,8 @@
 		554F00F71BDA219E00F4DF8E /* PickableItem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 554F00F41BDA219E00F4DF8E /* PickableItem.cpp */; };
 		554F01051BDA3A3100F4DF8E /* SewerLevel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 554F01031BDA3A3100F4DF8E /* SewerLevel.cpp */; };
 		554F01061BDA3A3100F4DF8E /* SewerLevel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 554F01031BDA3A3100F4DF8E /* SewerLevel.cpp */; };
+		554FE61C1C2A735800419AE1 /* RandomEventMgr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 554FE61A1C2A735800419AE1 /* RandomEventMgr.cpp */; };
+		554FE61D1C2A735800419AE1 /* RandomEventMgr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 554FE61A1C2A735800419AE1 /* RandomEventMgr.cpp */; };
 		5558A12B1BE8BD780084A399 /* particle3d in Resources */ = {isa = PBXBuildFile; fileRef = 5558A12A1BE8BD780084A399 /* particle3d */; };
 		5558A12C1BE8BD780084A399 /* particle3d in Resources */ = {isa = PBXBuildFile; fileRef = 5558A12A1BE8BD780084A399 /* particle3d */; };
 		555B0D151BC51A2C0055FB6D /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 555B0D001BC51A2C0055FB6D /* AppDelegate.cpp */; };
@@ -488,6 +490,8 @@
 		554F00F51BDA219E00F4DF8E /* PickableItem.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PickableItem.hpp; sourceTree = "<group>"; };
 		554F01031BDA3A3100F4DF8E /* SewerLevel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SewerLevel.cpp; sourceTree = "<group>"; };
 		554F01041BDA3A3100F4DF8E /* SewerLevel.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SewerLevel.hpp; sourceTree = "<group>"; };
+		554FE61A1C2A735800419AE1 /* RandomEventMgr.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RandomEventMgr.cpp; sourceTree = "<group>"; };
+		554FE61B1C2A735800419AE1 /* RandomEventMgr.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = RandomEventMgr.hpp; sourceTree = "<group>"; };
 		5558A12A1BE8BD780084A399 /* particle3d */ = {isa = PBXFileReference; lastKnownFileType = folder; path = particle3d; sourceTree = "<group>"; };
 		555B0D001BC51A2C0055FB6D /* AppDelegate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AppDelegate.cpp; sourceTree = "<group>"; };
 		555B0D011BC51A2C0055FB6D /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -920,6 +924,8 @@
 				EC602AB51BF47CAC00484D42 /* StatisticsManager.hpp */,
 				55CB9B081C07355200BAF60B /* NpcDataManager.cpp */,
 				55CB9B091C07355200BAF60B /* NpcDataManager.hpp */,
+				554FE61A1C2A735800419AE1 /* RandomEventMgr.cpp */,
+				554FE61B1C2A735800419AE1 /* RandomEventMgr.hpp */,
 			);
 			path = Mgrs;
 			sourceTree = "<group>";
@@ -1598,6 +1604,7 @@
 				55F81CCC1BDB92AC002EC075 /* QuestItemProperty.cpp in Sources */,
 				551E93C51BD51291009F788F /* UserRecord.cpp in Sources */,
 				5586C7B81C0FDD7400DFA588 /* TombBossLevel.cpp in Sources */,
+				554FE61C1C2A735800419AE1 /* RandomEventMgr.cpp in Sources */,
 				551E93E81BD512D3009F788F /* sha1.cpp in Sources */,
 				553BC5011BCDF457003D907A /* Actor.cpp in Sources */,
 				EC3CC9791C088F4F00F8CFC8 /* GameInfoLayer.cpp in Sources */,
@@ -1695,6 +1702,7 @@
 				555B0D1E1BC51A2C0055FB6D /* Graph.cpp in Sources */,
 				EC3CC9861C088F4F00F8CFC8 /* TGridView.cpp in Sources */,
 				EC3CC98C1C088F4F00F8CFC8 /* ItemPopupUI.cpp in Sources */,
+				554FE61D1C2A735800419AE1 /* RandomEventMgr.cpp in Sources */,
 				ECEA4E211C0EC69800ED790F /* ItemShopSellPopupUI.cpp in Sources */,
 				EC3CC9941C088F4F00F8CFC8 /* PopupUILayerManager.cpp in Sources */,
 				55A9807C1C05610400722C9D /* FakeShadow.cpp in Sources */,

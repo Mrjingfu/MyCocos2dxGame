@@ -169,9 +169,9 @@
 	<key>FOUND_HIDDEN_WEAK_TRAP</key>
 	<string>发现了隐藏的虚弱机关！</string>
 	<key>FOUND_HIDDEN_MSG</key>
-	<string>发现了隐藏的消息！</string>
+	<string>发现了隐藏的一些信息！</string>
 	<key>FOUND_HIDDEN_ITEM</key>
-	<string>发现了隐藏的道具！</string>
+	<string>发现了隐藏的一件道具！</string>
 	<key>PLAYER_NO_COPPER_KEY</key>
 	<string>没有铜质钥匙！</string>
 	<key>PLAYER_NO_SILVER_KEY</key>

@@ -169,9 +169,9 @@
 	<key>FOUND_HIDDEN_WEAK_TRAP</key>
 	<string>发现了隐藏的虚弱机关！</string>
 	<key>FOUND_HIDDEN_MSG</key>
-	<string>发现了隐藏的消息！</string>
+	<string>发现了隐藏的一些信息！</string>
 	<key>FOUND_HIDDEN_ITEM</key>
-	<string>发现了隐藏的道具！</string>
+	<string>发现了隐藏的一件道具！</string>
 	<key>PLAYER_NO_COPPER_KEY</key>
 	<string>没有铜质钥匙！</string>
 	<key>PLAYER_NO_SILVER_KEY</key>
@@ -204,24 +204,24 @@
 	<string>你生病了, 能力降低了！</string>
 	<key>TRIGGER_MESSAGE_FROSEN_TRAP</key>
 	<string>你被冰冻了，你的速度降低！</string>
-    <key>DESTINY_ADDMONEY</key>
-    <string>当你展开卷轴时，有东西砸到了你头上，定睛一看原来是一包钱币。</string>
-    <key>DESTINY_TRANSPORT</key>
-    <string>你感觉一阵昏迷，恍惚之间好像有人拖拽你行走了一段距离。</string>
-    <key>DESTINY_STRONGER</key>
-    <string>超级赛亚人变身～</string>
-    <key>DESTINY_STEALTH</key>
-    <string>卷轴上写着一句话：你要学会躲在阴影里。</string>
-    <key>DESTINY_SPEEDUP</key>
-    <string>啊！这是什么，开挂了吗？</string>
-    <key>DESTINY_POISIONING</key>
-    <string>shit！卷轴上有屎，屎里有毒～</string>
-    <key>DESTINY_FIRE</key>
-    <string>当你打开“卷轴”时，卷轴着起火来～这哪是卷轴，分明是卷白磷纸。</string>
-    <key>DESTINY_FROZEN</key>
-    <string>他的剑是冷的,他的刀也是冷的,他的心是冷的,他的血是冷的～～</string>
-    <key>DESTINY_WEAK</key>
-    <string>你变的虚弱了，早就说过黄色的卷轴和风月宝鉴都要远离吗！</string>
+	<key>DESTINY_ADDMONEY</key>
+	<string>当你展开卷轴时，有东西砸到了你头上，定睛一看原来是一包钱币。</string>
+	<key>DESTINY_TRANSPORT</key>
+	<string>你感觉一阵昏迷，恍惚之间好像有人拖拽你行走了一段距离。</string>
+	<key>DESTINY_STRONGER</key>
+	<string>超级赛亚人变身～</string>
+	<key>DESTINY_STEALTH</key>
+	<string>卷轴上写着一句话：你要学会躲在阴影里。</string>
+	<key>DESTINY_SPEEDUP</key>
+	<string>啊！这是什么，开挂了吗？</string>
+	<key>DESTINY_POISIONING</key>
+	<string>shit！卷轴上有屎，屎里有毒～</string>
+	<key>DESTINY_FIRE</key>
+	<string>当你打开“卷轴”时，卷轴着起火来～这哪是卷轴，分明是卷白磷纸。</string>
+	<key>DESTINY_FROZEN</key>
+	<string>他的剑是冷的,他的刀也是冷的,他的心是冷的,他的血是冷的～～</string>
+	<key>DESTINY_WEAK</key>
+	<string>你变的虚弱了，早就说过黄色的卷轴和风月宝鉴都要远离吗！</string>
 	<key>NPC_KNIGHT_ANSWER</key>
 	<string>SHOP EQUIP</string>
 	<key>NPC_SHOPGIRL_ANSWER</key>
