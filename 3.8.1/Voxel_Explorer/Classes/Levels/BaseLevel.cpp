@@ -360,7 +360,38 @@ cocos2d::Vec2 BaseLevel::getRandomTranspotTile()
     } while (!m_Map[cell].isAvalidRandomTransport());
     return Vec2(cell % m_nWidth, cell / m_nWidth);
 }
-void BaseLevel::searchAndCheck(int x, int y, int searchDistance)
+cocos2d::Vec2 BaseLevel::getRandomVisitedTranspotTile(const cocos2d::Vec2& playerPos)
+{
+    int playerIndex = playerPos.y*m_nWidth + playerPos.x;
+    if(RandomDungeon::getInstance()->getCurrentDungeonNode()->isBossDepth())
+    {
+        if(m_Map[playerIndex].m_AreaType == Area::AT_BOSS_ROOM)
+        {
+            int cell = -1;
+            do {
+                cell = cocos2d::random(0, (int)(m_Map.size()-1));
+            } while (m_Map[cell].m_AreaType != Area::AT_BOSS_ROOM || !(m_Map[cell].m_bVisited) || playerIndex == cell);
+            return Vec2(cell % m_nWidth, cell / m_nWidth);
+        }
+        else
+        {
+            int cell = -1;
+            do {
+                cell = cocos2d::random(0, (int)(m_Map.size()-1));
+            } while (!m_Map[cell].isAvalidAndVistedRandomTransport() || playerIndex == cell);
+            return Vec2(cell % m_nWidth, cell / m_nWidth);
+        }
+    }
+    else
+    {
+        int cell = -1;
+        do {
+            cell = cocos2d::random(0, (int)(m_Map.size()-1));
+        } while (!m_Map[cell].isAvalidAndVistedRandomTransport() || playerIndex == cell );
+        return Vec2(cell % m_nWidth, cell / m_nWidth);
+    }
+}
+bool BaseLevel::searchAndCheck(int x, int y, int searchDistance)
 {
     std::vector<int> neighbours;
     if(searchDistance == 1)
@@ -397,16 +428,7 @@ void BaseLevel::searchAndCheck(int x, int y, int searchDistance)
             found = true;
         }
     }
-    if(found)
-    {
-        std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("SECRET_FOUND");
-        SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
-    }
-    else
-    {
-        std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("SEARCH");
-        SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
-    }
+    return found;
 }
 void BaseLevel::preloadBGMusic()
 {

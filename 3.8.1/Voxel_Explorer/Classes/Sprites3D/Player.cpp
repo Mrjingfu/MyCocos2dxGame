@@ -499,6 +499,8 @@ void Player::attackByMonster(MonsterProperty* monsterProperty, bool miss)
         m_pHurtData->m_bDodge = true;
         StatisticsManager::getInstance()->addDodgeTotalNum();
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_HURT, m_pHurtData);
+        std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("MISS");
+        SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
         return;
     }
     
@@ -512,6 +514,8 @@ void Player::attackByMonster(MonsterProperty* monsterProperty, bool miss)
             m_pHurtData->m_bDodge = true;
             StatisticsManager::getInstance()->addDodgeTotalNum();
             Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_HURT, m_pHurtData);
+            std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("MISS");
+            SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
             return;
         }
     }
@@ -556,7 +560,6 @@ void Player::attackByMonster(MonsterProperty* monsterProperty, bool miss)
         setState(PS_DEATH);
         PlayerProperty::getInstance()->setCurrentHP(currentHp);
         StatisticsManager::getInstance()->addRoleDeadNum(StatisticsManager::eRoleDeadType::RET_MONSTER_ATTACK);
-//        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_DEATH, this);
     }
     else
     {
@@ -578,6 +581,8 @@ void Player::attackByBoss(BossProperty* bossProperty, bool miss)
     {
         m_pHurtData->m_bDodge = true;
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_HURT, m_pHurtData);
+        std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("MISS");
+        SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
         return;
     }
     
@@ -590,6 +595,8 @@ void Player::attackByBoss(BossProperty* bossProperty, bool miss)
         {
             m_pHurtData->m_bDodge = true;
             Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_HURT, m_pHurtData);
+            std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("MISS");
+            SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
             return;
         }
     }

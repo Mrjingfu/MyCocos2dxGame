@@ -204,6 +204,24 @@
 	<string>你生病了, 能力降低了！</string>
 	<key>TRIGGER_MESSAGE_FROSEN_TRAP</key>
 	<string>你被冰冻了，你的速度降低！</string>
+    <key>DESTINY_ADDMONEY</key>
+    <string>当你展开卷轴时，有东西砸到了你头上，定睛一看原来是一包钱币。</string>
+    <key>DESTINY_TRANSPORT</key>
+    <string>你感觉一阵昏迷，恍惚之间好像有人拖拽你行走了一段距离。</string>
+    <key>DESTINY_STRONGER</key>
+    <string>超级赛亚人变身～</string>
+    <key>DESTINY_STEALTH</key>
+    <string>卷轴上写着一句话：你要学会躲在阴影里。</string>
+    <key>DESTINY_SPEEDUP</key>
+    <string>啊！这是什么，开挂了吗？</string>
+    <key>DESTINY_POISIONING</key>
+    <string>shit！卷轴上有屎，屎里有毒～</string>
+    <key>DESTINY_FIRE</key>
+    <string>当你打开“卷轴”时，卷轴着起火来～这哪是卷轴，分明是卷白磷纸。</string>
+    <key>DESTINY_FROZEN</key>
+    <string>他的剑是冷的,他的刀也是冷的,他的心是冷的,他的血是冷的～～</string>
+    <key>DESTINY_WEAK</key>
+    <string>你变的虚弱了，早就说过黄色的卷轴和风月宝鉴都要远离吗！</string>
 	<key>NPC_KNIGHT_ANSWER</key>
 	<string>SHOP EQUIP</string>
 	<key>NPC_SHOPGIRL_ANSWER</key>
@@ -219,21 +237,21 @@
 	<key>ITEM_BAG_SELL</key>
 	<string>是否出售该道具？</string>
 	<key>TITLE_ACHIEVE</key>
-	<string>ACHIEVE</string>
+	<string>ACHIEVEMENT</string>
 	<key>PLAYER_FALL_AND_DIE</key>
-	<string>不幸的事，你摔死了</string>
+	<string>很不幸，但你并不是第一个这样死的冒险者^_^。</string>
 	<key>GO_UPSTAIRS</key>
 	<string>你进入上一层。</string>
 	<key>GO_UPSTAIRS_FORBIDDEN</key>
-	<string>禁止传送。</string>
+	<string>传送阵已经没有能量了～</string>
 	<key>GO_DOWNSTAIRS</key>
 	<string>你进入下一层。</string>
 	<key>GO_BOSSROOM</key>
-	<string>进入Boos房间</string>
+	<string>进入Boss房间</string>
 	<key>GO_CHASM</key>
-	<string>是否跳入深渊呢？</string>
+	<string>你真的要跳下去么？</string>
 	<key>FALL_DOWNSTAIRS</key>
-	<string>幸运是事，你进入到下一层了</string>
+	<string>高空坠落，不死是非常幸运的。</string>
 	<key>SELECT_LEFT_DUNGEON_NODE</key>
 	<string>是选择左边开始？</string>
 	<key>SELECT_RIGHT_DUNGEON_NODE</key>

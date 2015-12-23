@@ -98,6 +98,16 @@ static const std::string EVENT_FOUND_HIDDEN_WEAK_TRAP = "FOUND_HIDDEN_WEAK_TRAP"
 static const std::string EVENT_FOUND_HIDDEN_MSG = "FOUND_HIDDEN_MSG";
 static const std::string EVENT_FOUND_HIDDEN_ITEM = "FOUND_HIDDEN_ITEM";
 
+static const std::string EVENT_DESTINY_ADDMONEY = "DESTINY_ADDMONEY";       ///new
+static const std::string EVENT_DESTINY_TRANSPORT = "DESTINY_TRANSPORT";     ///new
+static const std::string EVENT_DESTINY_STRONGER = "DESTINY_STRONGER";       ///new
+static const std::string EVENT_DESTINY_STEALTH = "DESTINY_STEALTH";         ///new
+static const std::string EVENT_DESTINY_SPEEDUP = "DESTINY_SPEEDUP";         ///new
+static const std::string EVENT_DESTINY_POISIONING = "DESTINY_POISIONING";   ///new
+static const std::string EVENT_DESTINY_FIRE = "DESTINY_FIRE";               ///new
+static const std::string EVENT_DESTINY_FROZEN = "DESTINY_FROZEN";           ///new
+static const std::string EVENT_DESTINY_WEAK = "DESTINY_WEAK";               ///new
+
 static const std::string EVENT_GO_UPSTAIRS = "GO_UPSTAIRS";
 static const std::string EVENT_GO_UPSTAIRS_FORBIDDEN = "GO_UPSTAIRS_FORBIDDEN";
 static const std::string EVENT_GO_DOWNSTAIRS = "GO_DOWNSTAIRS";

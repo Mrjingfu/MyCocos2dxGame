@@ -549,7 +549,16 @@ void VoxelExplorer::searchAndCheck()    ///侦查
     {
         Vec2 playerPosInMap = m_pPlayer->getPosInMap();
         int searchDistance = PlayerProperty::getInstance()->getSearchDistance();
-        m_pCurrentLevel->searchAndCheck(playerPosInMap.x, playerPosInMap.y, searchDistance);
+        if(!m_pCurrentLevel->searchAndCheck(playerPosInMap.x, playerPosInMap.y, searchDistance))
+        {
+            std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("SEARCH");
+            SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+        }
+        else
+        {
+            std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("SECRET_FOUND");
+            SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+        }
     }
 }
 void VoxelExplorer::updateTerrainTile(int x, int y, TerrainTile::TileType type)
@@ -1071,7 +1080,7 @@ void VoxelExplorer::handleShowSearchEffect(const cocos2d::Vec2& mapPos)
             {
                 if(tile->getPosInMap() == mapPos)
                 {
-                    EaseSineOut* colorTo1 = EaseSineOut::create(TintTo::create(0.35f, UtilityHelper::randomColor()));
+                    EaseSineOut* colorTo1 = EaseSineOut::create(TintTo::create(0.35f, Color3B(255, 128, 255)));
                     EaseSineOut* colorTo2 = EaseSineOut::create(TintTo::create(0.35f, Color3B::WHITE));
                     Sequence* sequence = Sequence::create(colorTo1, colorTo2, nullptr);
                     tile->runAction(sequence);
@@ -1143,7 +1152,8 @@ void VoxelExplorer::handlePlayerHurt(const cocos2d::Vec2& mapPos, BaseMonster* m
     
     if(m_pPlayer->getPosInMap() != mapPos)
     {
-        ///处理miss声音
+        std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("MISS");
+        SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
         return m_pPlayer->attackByMonster(monster->getMonsterProperty(), true);
     }
     std::string soundName = LevelResourceManager::getInstance()->getMonsterSoundEffectRes(MONSTER_MODEL_NAMES[monster->getMonsterType()], "ATTACK");
@@ -1157,7 +1167,6 @@ void VoxelExplorer::handlePlayerHurtByBoss(const cocos2d::Vec2& mapPos, BaseBoss
     
     if(m_pPlayer->getPosInMap() != mapPos)
     {
-        ///处理miss声音
         return m_pPlayer->attackByBoss(boss->getBossProperty(), true);
     }
     std::string soundName = LevelResourceManager::getInstance()->getMonsterSoundEffectRes(MONSTER_MODEL_NAMES[boss->getBossType()], "ATTACK");
@@ -1166,11 +1175,21 @@ void VoxelExplorer::handlePlayerHurtByBoss(const cocos2d::Vec2& mapPos, BaseBoss
 }
 void VoxelExplorer::handlePlayerUseScroll(PickableItem::PickableItemType type)
 {
-    if(!m_pPlayer)
+    if(!m_pPlayer && m_pPlayer->getState() == Player::PS_DEATH)
         return;
     switch (type) {
         case PickableItem::PickableItemType::PIT_SCROLL_TELEPORT:
             {
+                m_pPlayer->removeTerrainTileFlag(TileInfo::ATTACKABLE);
+                cocos2d::Vec2 pos = m_pCurrentLevel->getRandomVisitedTranspotTile(m_pPlayer->getPosInMap());
+                m_pPlayer->setPosition3D(Vec3(pos.x*TerrainTile::CONTENT_SCALE, -0.5f*TerrainTile::CONTENT_SCALE, -pos.y*TerrainTile::CONTENT_SCALE));
+                m_pPlayer->addTerrainTileFlag(TileInfo::ATTACKABLE);
+                
+                updateMiniMap();
+                
+                m_pMainCamera->setPosition3D(m_pPlayer->getPosition3D() + Vec3(0, 5*TerrainTile::CONTENT_SCALE, 4*TerrainTile::CONTENT_SCALE ));
+                m_pMainCamera->lookAt(m_pPlayer->getPosition3D() + Vec3(0,0.5f*TerrainTile::CONTENT_SCALE,0));
+                m_pPlayer->setState(Player::PS_IDLE);
             }
             break;
         case PickableItem::PickableItemType::PIT_SCROLL_SPEED:
@@ -1184,6 +1203,75 @@ void VoxelExplorer::handlePlayerUseScroll(PickableItem::PickableItemType type)
             break;
         case PickableItem::PickableItemType::PIT_SCROLL_DESTINY:
             {
+                DestinyScrollType randType = cocos2d::random(DST_ADDMONEY, DST_WEAK);
+                switch (randType) {
+                    case DST_ADDMONEY:
+                        {
+                            int money = cocos2d::random(1000, 5000);
+                            PlayerProperty::getInstance()->addMoney(money);
+                            Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_DESTINY_ADDMONEY);
+                        }
+                        break;
+                    case DST_TRANSPORT:
+                        {
+                            m_pPlayer->removeTerrainTileFlag(TileInfo::ATTACKABLE);
+                            cocos2d::Vec2 pos = m_pCurrentLevel->getRandomVisitedTranspotTile(m_pPlayer->getPosInMap());
+                            m_pPlayer->setPosition3D(Vec3(pos.x*TerrainTile::CONTENT_SCALE, -0.5f*TerrainTile::CONTENT_SCALE, -pos.y*TerrainTile::CONTENT_SCALE));
+                            m_pPlayer->addTerrainTileFlag(TileInfo::ATTACKABLE);
+                            
+                            updateMiniMap();
+                            
+                            m_pMainCamera->setPosition3D(m_pPlayer->getPosition3D() + Vec3(0, 5*TerrainTile::CONTENT_SCALE, 4*TerrainTile::CONTENT_SCALE ));
+                            m_pMainCamera->lookAt(m_pPlayer->getPosition3D() + Vec3(0,0.5f*TerrainTile::CONTENT_SCALE,0));
+                            m_pPlayer->setState(Player::PS_IDLE);
+                            Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_DESTINY_TRANSPORT);
+                        }
+                        break;
+                    case DST_STRONGER:
+                        {
+                            m_pPlayer->addPlayerBuffer(PB_STRONGER);
+                            Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_DESTINY_STRONGER);
+                        }
+                        break;
+                    case DST_STEALTH:
+                        {
+                            m_pPlayer->addPlayerBuffer(PB_STEALTH);
+                            Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_DESTINY_STEALTH);
+                        }
+                        break;
+                    case DST_SPEEDUP:
+                        {
+                            m_pPlayer->addPlayerBuffer(PB_SPEEDUP);
+                            Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_DESTINY_SPEEDUP);
+                        }
+                        break;
+                    case DST_POISIONING:
+                        {
+                            m_pPlayer->addPlayerBuffer(PB_POISONING);
+                            Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_DESTINY_POISIONING);
+                        }
+                        break;
+                    case DST_FIRE:
+                        {
+                            m_pPlayer->addPlayerBuffer(PB_FIRE);
+                            Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_DESTINY_FIRE);
+                        }
+                        break;
+                    case DST_FROZEN:
+                        {
+                            m_pPlayer->addPlayerBuffer(PB_FROZEN);
+                            Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_DESTINY_FROZEN);
+                        }
+                        break;
+                    case DST_WEAK:
+                        {
+                            m_pPlayer->addPlayerBuffer(PB_WEAK);
+                            Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_DESTINY_WEAK);
+                        }
+                        break;
+                    default:
+                        break;
+                }
             }
             break;
         default:
@@ -1251,7 +1339,7 @@ void VoxelExplorer::handlePlayerUseSmallPortal()
     m_pPlayer->addTerrainTileFlag(TileInfo::ATTACKABLE);
     
     m_pCurrentLevel->updateAreaFogOfWarByPos(pos, true);
-    m_pCurrentLevel->showMap(true);
+    updateMiniMap();
     
     m_pMainCamera->setPosition3D(m_pPlayer->getPosition3D() + Vec3(0, 5*TerrainTile::CONTENT_SCALE, 4*TerrainTile::CONTENT_SCALE ));
     m_pMainCamera->lookAt(m_pPlayer->getPosition3D() + Vec3(0,0.5f*TerrainTile::CONTENT_SCALE,0));
