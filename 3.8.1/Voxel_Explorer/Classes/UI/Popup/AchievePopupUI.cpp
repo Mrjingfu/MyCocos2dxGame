@@ -120,8 +120,8 @@ void AchievePopupUI::updateAllAchieves()
             std::string name = achieveProp->getAchieveName();
             std::string targetDesc = achieveProp->getTargetDesc();
             bool isCommple = achieveProp->isCommple();
-            bool isHide = achieveProp->isHideAchieve();
-            m_pAchieveMangerLayer->addItemAchieve(type, itemView->getPosition(),icon,name,targetDesc,isHide,isCommple);
+            bool isUnlock = achieveProp->isUnlockAchieve();
+            m_pAchieveMangerLayer->addItemAchieve(type, itemView->getPosition(),icon,name,targetDesc,isUnlock,isCommple);
         }
     }
 }

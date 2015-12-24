@@ -25,45 +25,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../Classes/UI/Popup/DeadPopupUI.cpp"
-            timestampString = "472382691.336629"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "60"
-            endingLineNumber = "60"
-            landmarkName = "DeadPopupUI::onClickMainMenu(cocos2d::Ref *ref)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "../Classes/UI/GameUILayer.cpp"
-            timestampString = "472467099.865701"
+            timestampString = "472619860.510557"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "578"
-            endingLineNumber = "578"
+            startingLineNumber = "692"
+            endingLineNumber = "692"
             landmarkName = "GameUILayer::onEventRoleUserPotion(cocos2d::EventCustom *sender)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../Classes/Properties/PlayerProperty.cpp"
-            timestampString = "472467483.19539"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "233"
-            endingLineNumber = "233"
-            landmarkName = "PlayerProperty::setCurrentHP(CChaosNumber hp)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -95,7 +63,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1191"
             endingLineNumber = "1191"
-            landmarkName = "VoxelExplorer::handlePlayerUsePotion(PickableItem::PickableItemType type)"
+            landmarkName = "VoxelExplorer::handleMonsterHurt(const cocos2d::Vec2&amp; mapPos)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -106,28 +74,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Properties/PlayerProperty.cpp"
-            timestampString = "472467784.479028"
+            timestampString = "472622551.149111"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "153"
-            endingLineNumber = "153"
-            landmarkName = "PlayerProperty::removePlayerBuffer(PlayerBuffer buff)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../Classes/Sprites3D/Player.cpp"
-            timestampString = "472467918.009633"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "272"
-            endingLineNumber = "272"
-            landmarkName = "Player::removePlayerBuffer(PlayerBuffer buff)"
+            startingLineNumber = "87"
+            endingLineNumber = "87"
+            landmarkName = "PlayerProperty::initNewPlayer()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

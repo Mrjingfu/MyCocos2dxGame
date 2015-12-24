@@ -268,7 +268,103 @@ void GameUILayer::onEventNpcNurseAnsWer(cocos2d::EventCustom *sender)
 {
     CCLOG("onEventNpcNurseAnsWer");
 }
+void GameUILayer::onEventDesTinyAddMoney(cocos2d::EventCustom *sender)
+{
+    CCLOG("onEventDesTinyAddMoney");
+    CallFunc* func = CallFunc::create([this](){
+        
+        std::string str = UtilityHelper::getLocalStringForUi(EVENT_DESTINY_ADDMONEY);
+        PopupUILayerManager::getInstance()->showStatusImport(TipTypes::TIP_POSITIVE, str);
+        m_pGameToolBarLayer->sendMessage(str,PopupUILayerManager::getInstance()->getTipsColor(TIP_POSITIVE));
+    });
+    
+    this->runAction(Sequence::create(DelayTime::create(0.4),func, nullptr));
+}
+void GameUILayer::onEventDesTinyTransport(cocos2d::EventCustom *sender)
+{
+     CCLOG("onEventDesTinyTransport");
+     CallFunc* func = CallFunc::create([this](){
+         std::string str = UtilityHelper::getLocalStringForUi(EVENT_DESTINY_TRANSPORT);
+         PopupUILayerManager::getInstance()->showStatusImport(TipTypes::TIP_POSITIVE, str);
+         m_pGameToolBarLayer->sendMessage(str,PopupUILayerManager::getInstance()->getTipsColor(TIP_POSITIVE));
+    });
+    this->runAction(Sequence::create(DelayTime::create(0.4),func, nullptr));
 
+}
+void GameUILayer::onEventDesTinyStronger(cocos2d::EventCustom *sender)
+{
+     CCLOG("onEventDesTinyStronger");
+    CallFunc* func = CallFunc::create([this](){
+        std::string str = UtilityHelper::getLocalStringForUi(EVENT_DESTINY_STRONGER);
+        PopupUILayerManager::getInstance()->showStatusImport(TipTypes::TIP_POSITIVE, str);
+        m_pGameToolBarLayer->sendMessage(str,PopupUILayerManager::getInstance()->getTipsColor(TIP_POSITIVE));
+    });
+     this->runAction(Sequence::create(DelayTime::create(0.4),func, nullptr));
+}
+void GameUILayer::onEventDesTinyStealth(cocos2d::EventCustom *sender)
+{
+     CCLOG("onEventDesTinyStealth");
+     CallFunc* func = CallFunc::create([this](){
+         std::string str = UtilityHelper::getLocalStringForUi(EVENT_DESTINY_STEALTH);
+         PopupUILayerManager::getInstance()->showStatusImport(TipTypes::TIP_WARNING, str);
+         m_pGameToolBarLayer->sendMessage(str,PopupUILayerManager::getInstance()->getTipsColor(TIP_WARNING));
+
+     });
+    this->runAction(Sequence::create(DelayTime::create(0.4),func, nullptr));
+}
+void GameUILayer::onEventDesTinySpeedup(cocos2d::EventCustom *sender)
+{
+     CCLOG("onEventDesTinySpeedup");
+     CallFunc* func = CallFunc::create([this](){
+         std::string str = UtilityHelper::getLocalStringForUi(EVENT_DESTINY_SPEEDUP);
+         PopupUILayerManager::getInstance()->showStatusImport(TipTypes::TIP_POSITIVE, str);
+         m_pGameToolBarLayer->sendMessage(str,PopupUILayerManager::getInstance()->getTipsColor(TIP_POSITIVE));
+    });
+     this->runAction(Sequence::create(DelayTime::create(0.4),func, nullptr));
+}
+void GameUILayer::onEventDesTinyPoisioning(cocos2d::EventCustom *sender)
+{
+     CCLOG("onEventDesTinyPoisioning");
+    CallFunc* func = CallFunc::create([this](){
+        std::string str = UtilityHelper::getLocalStringForUi(EVENT_DESTINY_POISIONING);
+        PopupUILayerManager::getInstance()->showStatusImport(TipTypes::TIP_NEGATIVE, str);
+        m_pGameToolBarLayer->sendMessage(str,PopupUILayerManager::getInstance()->getTipsColor(TIP_NEGATIVE));
+
+     });
+      this->runAction(Sequence::create(DelayTime::create(0.4),func, nullptr));
+}
+void GameUILayer::onEventDesTinyFire(cocos2d::EventCustom *sender)
+{
+     CCLOG("onEventDesTinyFire");
+     CallFunc* func = CallFunc::create([this](){
+         std::string str = UtilityHelper::getLocalStringForUi(EVENT_DESTINY_FIRE);
+         PopupUILayerManager::getInstance()->showStatusImport(TipTypes::TIP_NEGATIVE, str);
+         m_pGameToolBarLayer->sendMessage(str,PopupUILayerManager::getInstance()->getTipsColor(TIP_NEGATIVE));
+
+     });
+    this->runAction(Sequence::create(DelayTime::create(0.4),func, nullptr));
+}
+void GameUILayer::onEventDesTinyFrozen(cocos2d::EventCustom *sender)
+{
+     CCLOG("onEventDesTinyFrozen");
+    CallFunc* func = CallFunc::create([this](){
+        std::string str = UtilityHelper::getLocalStringForUi(EVENT_DESTINY_FROZEN);
+        PopupUILayerManager::getInstance()->showStatusImport(TipTypes::TIP_NEGATIVE, str);
+        m_pGameToolBarLayer->sendMessage(str,PopupUILayerManager::getInstance()->getTipsColor(TIP_NEGATIVE));
+    });
+    this->runAction(Sequence::create(DelayTime::create(0.4),func, nullptr));
+}
+void GameUILayer::onEventDesTinyWeak(cocos2d::EventCustom *sender)
+{
+     CCLOG("onEventDesTinyWeak");
+    CallFunc* func = CallFunc::create([this](){
+        std::string str = UtilityHelper::getLocalStringForUi(EVENT_DESTINY_WEAK);
+        PopupUILayerManager::getInstance()->showStatusImport(TipTypes::TIP_NEGATIVE, str);
+        m_pGameToolBarLayer->sendMessage(str,PopupUILayerManager::getInstance()->getTipsColor(TIP_NEGATIVE));
+
+    });
+    this->runAction(Sequence::create(DelayTime::create(0.4),func, nullptr));
+}
 void GameUILayer::onEventUseGoldChestKey(cocos2d::EventCustom *sender)
 {
     CCLOG("onEventUseGoldChestKey");
@@ -373,9 +469,27 @@ void GameUILayer::onEventFoundHidderTrapWeak(cocos2d::EventCustom *sender)//å‘ç
 void GameUILayer::onEventFoundHidderMsg(cocos2d::EventCustom *sender)
 {
     CCLOG("onEventFoundHidderMsg");
-    std::string msg = UtilityHelper::getLocalStringForUi(EVENT_FOUND_HIDDEN_MSG);
-    PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
-    m_pGameToolBarLayer->sendMessage(msg);
+    
+    ValueMap* randEvent = static_cast<ValueMap*>(sender->getUserData());
+    if (randEvent) {
+        int eventType = randEvent->at("EVENT_TYPE").asInt();
+        std::string msg = randEvent->at("EVENT_DESC").asString();
+        if(eventType==1){
+            AlertPopupUI* alertPopup = static_cast<AlertPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupAlert));
+            alertPopup->setMessage(msg);
+            if (alertPopup) {
+                alertPopup->setPositiveListerner([](Ref*){
+                    PlayerProperty::getInstance()->addMoney(CChaosNumber(10000));
+                });
+            }
+        }else{
+            InformationPopupUI* popupUi = static_cast<InformationPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupInformation));
+            if (popupUi) {
+                popupUi->setInfoDesc(msg);
+            }
+        }
+    }
+    
 }
 void GameUILayer::onEventFoundHidderItem(cocos2d::EventCustom *sender)
 {
@@ -1054,6 +1168,17 @@ void GameUILayer::onEnter()
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_USE_SMALL_PROTAL, CC_CALLBACK_1(GameUILayer::onEventUseSmallProtal,this));
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_STANDARD_PROTAL_NO_ENERGY, CC_CALLBACK_1(GameUILayer::onEventStandardProtalNoEnergy,this));
     
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_DESTINY_ADDMONEY, CC_CALLBACK_1(GameUILayer::onEventDesTinyAddMoney,this));
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_DESTINY_TRANSPORT, CC_CALLBACK_1(GameUILayer::onEventDesTinyTransport,this));
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_DESTINY_STRONGER, CC_CALLBACK_1(GameUILayer::onEventDesTinyStronger,this));
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_DESTINY_STEALTH, CC_CALLBACK_1(GameUILayer::onEventDesTinyStealth,this));
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_DESTINY_SPEEDUP, CC_CALLBACK_1(GameUILayer::onEventDesTinySpeedup,this));
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_DESTINY_POISIONING, CC_CALLBACK_1(GameUILayer::onEventDesTinyPoisioning,this));
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_DESTINY_FIRE, CC_CALLBACK_1(GameUILayer::onEventDesTinyFire,this));
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_DESTINY_FROZEN, CC_CALLBACK_1(GameUILayer::onEventDesTinyFrozen,this));
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_DESTINY_WEAK, CC_CALLBACK_1(GameUILayer::onEventDesTinyWeak,this));
+
+    
 }
 void GameUILayer::onExit()
 {
@@ -1139,6 +1264,16 @@ void GameUILayer::onExit()
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_SELECT_RIGHT_DUNGEON_NODE);
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_USE_SMALL_PROTAL);
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_STANDARD_PROTAL_NO_ENERGY);
+    
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_DESTINY_ADDMONEY);
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_DESTINY_TRANSPORT);
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_DESTINY_STRONGER);
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_DESTINY_STEALTH);
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_DESTINY_SPEEDUP);
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_DESTINY_POISIONING);
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_DESTINY_FIRE);
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_DESTINY_FROZEN);
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_DESTINY_WEAK);
     
     WrapperUILayer::onExit();
 }

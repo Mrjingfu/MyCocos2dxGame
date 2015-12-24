@@ -31,18 +31,15 @@ enum ePopupType
     ePopupAchieve,
     ePopupAchieveItem,
     ePopupDead,
-    ePopupSetting,
     ePopupCount
 };
 typedef enum {
-    TIP_DEFAULT,
-    TIP_POSITIVE,
-    TIP_NEGATIVE,
-    TIP_WARNING,
-    TIP_NEUTRAL,
-    TIP_QUESTION,
+    TIP_DEFAULT,    //白色
+    TIP_POSITIVE,   //绿色
+    TIP_NEGATIVE,   //红色
+    TIP_WARNING,    //橘色
+    TIP_NEUTRAL,    //黄色
     TIP_EFFECT,
-    TIP_BLUE,
     TIP_DODGE,
     TIP_BOLOCK,
     TIP_ROLE_CRITICAL_STRIKE,

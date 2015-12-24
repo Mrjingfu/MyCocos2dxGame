@@ -26,8 +26,9 @@ public:
     void save();
    
     const cocos2d::Vector<AchieveProperty*> & getAllAchieves() const{ return m_vAllAchieves;}
-protected:
     AchieveProperty* getAchievement(eAchievementDetailType type);
+protected:
+    
     void updateAchieve(AchieveProperty * achieve);
    
 private:

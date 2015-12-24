@@ -11,8 +11,6 @@
 		</dict>
 		<key>achieve_icon</key>
 		<string>achievement_icon_0001.png</string>
-		<key>achieve_hide</key>
-		<false/>
 	</dict>
 	<key>ADT_PEROPLE_CUT_HUNDRED</key>
 	<dict>
@@ -23,11 +21,13 @@
 		</dict>
 		<key>achieve_icon</key>
 		<string>achievement_icon_0002.png</string>
-		<key>achieve_hide</key>
-		<false/>
 	</dict>
 	<key>ADT_BLOOD_SUPPRESS</key>
 	<dict>
+		<key>achieve_unlock_task</key>
+		<array>
+			<string>ADT_PEROPLE_CUT_HUNDRED</string>
+		</array>
 		<key>achieve_task</key>
 		<dict>
 			<key>ST_TOTAL_MONSTER_KILL</key>
@@ -35,11 +35,13 @@
 		</dict>
 		<key>achieve_icon</key>
 		<string>achievement_icon_0003.png</string>
-		<key>achieve_hide</key>
-		<false/>
 	</dict>
 	<key>ADT_KILLER</key>
 	<dict>
+		<key>achieve_unlock_task</key>
+		<array>
+			<string>ADT_BLOOD_SUPPRESS</string>
+		</array>
 		<key>achieve_task</key>
 		<dict>
 			<key>ST_TOTAL_MONSTER_KILL</key>
@@ -47,8 +49,6 @@
 		</dict>
 		<key>achieve_icon</key>
 		<string>achievement_icon_0004.png</string>
-		<key>achieve_hide</key>
-		<false/>
 	</dict>
 	<key>ADT_PAST_HOPE</key>
 	<dict>
@@ -59,8 +59,6 @@
 		</dict>
 		<key>achieve_icon</key>
 		<string>achievement_icon_0005.png</string>
-		<key>achieve_hide</key>
-		<false/>
 	</dict>
 	<key>ADT_INCENDIES</key>
 	<dict>
@@ -71,8 +69,6 @@
 		</dict>
 		<key>achieve_icon</key>
 		<string>achievement_icon_0006.png</string>
-		<key>achieve_hide</key>
-		<false/>
 	</dict>
 	<key>ADT_DIE_UNNATURAL</key>
 	<dict>
@@ -87,8 +83,6 @@
 		</dict>
 		<key>achieve_icon</key>
 		<string>achievement_icon_0007.png</string>
-		<key>achieve_hide</key>
-		<false/>
 	</dict>
 	<key>ADT_MARATHON</key>
 	<dict>
@@ -99,8 +93,6 @@
 		</dict>
 		<key>achieve_icon</key>
 		<string>achievement_icon_0008.png</string>
-		<key>achieve_hide</key>
-		<false/>
 	</dict>
 	<key>ADT_WALKING_DEAD</key>
 	<dict>
@@ -111,8 +103,6 @@
 		</dict>
 		<key>achieve_icon</key>
 		<string>achievement_icon_0009.png</string>
-		<key>achieve_hide</key>
-		<false/>
 	</dict>
 	<key>ADT_FINAL_DESTINATION</key>
 	<dict>
@@ -123,8 +113,6 @@
 		</dict>
 		<key>achieve_icon</key>
 		<string>achievement_icon_0010.png</string>
-		<key>achieve_hide</key>
-		<false/>
 	</dict>
 	<key>ADT_WEALTHY_MEN</key>
 	<dict>
@@ -135,8 +123,6 @@
 		</dict>
 		<key>achieve_icon</key>
 		<string>achievement_icon_0011.png</string>
-		<key>achieve_hide</key>
-		<false/>
 	</dict>
 	<key>ADT_UPSTART</key>
 	<dict>
@@ -147,8 +133,6 @@
 		</dict>
 		<key>achieve_icon</key>
 		<string>achievement_icon_0012.png</string>
-		<key>achieve_hide</key>
-		<false/>
 	</dict>
 </dict>
 </plist>

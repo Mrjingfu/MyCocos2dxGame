@@ -30,13 +30,13 @@ public:
     std::string getTargetDesc() const{return  m_sAchieveTargetDesc;};
     
     void setAchieveTarget(std::string typeStr,CChaosNumber targetNum);
+    void setAchiveUnlockTarget(std::string achieveDeType);
     
     const std::map<eStatistType,CChaosNumber>& getAcheveTargets() const {return m_mAcheveTargets;};
     
-    void setHideAchieve(bool isHide){m_bIsHideAchieve = isHide;}
     void onAcieveCommple(){m_bCommple = true;};
     bool isCommple()const{ return m_bCommple;};
-    bool isHideAchieve() const {return m_bIsHideAchieve;}
+    bool isUnlockAchieve()  ;
     void setAchieveDetailType(std::string achieveDeType);
 
     eAchievementDetailType getAchieveDetailType() const{return m_detailType;}
@@ -51,8 +51,9 @@ private:
     std::string m_sAchieveTargetDesc;
     std::map<eStatistType,CChaosNumber> m_mAcheveTargets;   //成就完成目标
     std::map<eStatistType, CChaosNumber> m_mProgress;  //完成目标
+    std::vector<eAchievementDetailType> m_vUnlockTargets;//解锁目标
     eAchievementDetailType m_detailType;  //成就ID
-    bool m_bIsHideAchieve;
+    bool m_bIsUnlockAchieve;
     bool m_bCommple;
     
 };

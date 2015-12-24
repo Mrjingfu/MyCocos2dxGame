@@ -28,7 +28,6 @@
 #include "AchievePopupUI.h"
 #include "AchieveItemPopupUI.hpp"
 #include "DeadPopupUI.h"
-#include "SettingPopupUI.hpp"
 PopupUILayerManager::PopupUILayerManager()
 {
     m_pParentLayer = nullptr;
@@ -76,12 +75,17 @@ void PopupUILayerManager::onExitScene()
     m_lTypeList.clear();
     for (int i=0; i<ePopupCount; i++) {
         if (m_pPopupContainer[i])
+            m_pPopupContainer[i]->schedulerResume();
             m_pPopupContainer[i] = nullptr;
     }
 }
 
 PopupUILayer* PopupUILayerManager::openPopup(ePopupType type,int zorder /* = eZorderPopupUILayer */)
 {
+    //针对Prompt调用 因为首次打开popup 会暂停界面 得清除所有的
+    if(m_pGlobalPromptlayer)
+        m_pGlobalPromptlayer->clearGlobalPrompt();
+    //end
     m_pLastPopUpType = m_cCurrentPopUpType;
     if(m_cCurrentPopUpType!= ePopupInvalid)
     {
@@ -168,9 +172,6 @@ PopupUILayer* PopupUILayerManager::initPopUp(ePopupType type)
         case ePopupDead:
             popupLayer = DeadPopupUI::create();
              break;
-        case ePopupSetting:
-            popupLayer = SettingPopupUI::create();
-            break;
         default:
             break;
     }
@@ -253,7 +254,6 @@ cocos2d::Color3B PopupUILayerManager::getTipsColor(TipTypes tipType)
             return cocos2d::Color3B(0,255,0);     //绿色
         case TIP_NEGATIVE:
             return cocos2d::Color3B(255,0,0);     //红色
-        case TIP_QUESTION:
         case TIP_WARNING:
             return cocos2d::Color3B(255,136,0);   //橘色
         case TIP_NEUTRAL:
@@ -268,8 +268,6 @@ cocos2d::Color3B PopupUILayerManager::getTipsColor(TipTypes tipType)
             return cocos2d::Color3B(255,255,0);   //暴击
         case TIP_EFFECT:
             return cocos2d::Color3B(107, 216, 176);
-        case TIP_BLUE:
-            return cocos2d::Color3B(0, 127, 224);
         default:
             break;
     }

@@ -301,8 +301,6 @@
 		EC6264961BF0807F004E0F55 /* MessageManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC6264931BF0807F004E0F55 /* MessageManager.cpp */; };
 		EC63CEAF1C20FEB600C84941 /* HudPromptLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC63CEAD1C20FEB600C84941 /* HudPromptLayer.cpp */; };
 		EC63CEB01C20FEB600C84941 /* HudPromptLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC63CEAD1C20FEB600C84941 /* HudPromptLayer.cpp */; };
-		EC6469091C25397B00250362 /* SettingPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC6469071C25397B00250362 /* SettingPopupUI.cpp */; };
-		EC64690A1C25397B00250362 /* SettingPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC6469071C25397B00250362 /* SettingPopupUI.cpp */; };
 		EC6617651C182A3B0004209F /* BossPropLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC6617631C182A3B0004209F /* BossPropLayer.cpp */; };
 		EC6617661C182A3B0004209F /* BossPropLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC6617631C182A3B0004209F /* BossPropLayer.cpp */; };
 		EC6716451BCE7F2C00C81CFC /* LogoScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC6716431BCE7F2C00C81CFC /* LogoScene.cpp */; };
@@ -658,8 +656,6 @@
 		EC6264941BF0807F004E0F55 /* MessageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageManager.h; sourceTree = "<group>"; };
 		EC63CEAD1C20FEB600C84941 /* HudPromptLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HudPromptLayer.cpp; sourceTree = "<group>"; };
 		EC63CEAE1C20FEB600C84941 /* HudPromptLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = HudPromptLayer.hpp; sourceTree = "<group>"; };
-		EC6469071C25397B00250362 /* SettingPopupUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SettingPopupUI.cpp; sourceTree = "<group>"; };
-		EC6469081C25397B00250362 /* SettingPopupUI.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SettingPopupUI.hpp; sourceTree = "<group>"; };
 		EC6617631C182A3B0004209F /* BossPropLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BossPropLayer.cpp; sourceTree = "<group>"; };
 		EC6617641C182A3B0004209F /* BossPropLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BossPropLayer.hpp; sourceTree = "<group>"; };
 		EC6715EE1BCE7EE500C81CFC /* GameConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameConfig.h; sourceTree = "<group>"; };
@@ -1249,8 +1245,6 @@
 				EC25C3C91C1977DF00B4340D /* InformationPopupUI.h */,
 				EC3DC0BC1C157FC800D0FE47 /* AchievePopupUI.cpp */,
 				EC3DC0BD1C157FC800D0FE47 /* AchievePopupUI.h */,
-				EC6469071C25397B00250362 /* SettingPopupUI.cpp */,
-				EC6469081C25397B00250362 /* SettingPopupUI.hpp */,
 				ECBCB4BB1C229888006B85D2 /* AchieveItemPopupUI.cpp */,
 				ECBCB4BC1C229888006B85D2 /* AchieveItemPopupUI.hpp */,
 				EC3CC9581C088F4F00F8CFC8 /* ItemPopupUI.cpp */,
@@ -1600,7 +1594,6 @@
 				EC6264951BF0807F004E0F55 /* MessageManager.cpp in Sources */,
 				5586C7A61C0FDD1500DFA588 /* PrisonBossLevel.cpp in Sources */,
 				55ECFB441BC79852007270CD /* Player.cpp in Sources */,
-				EC6469091C25397B00250362 /* SettingPopupUI.cpp in Sources */,
 				EC3DC0C21C157FFE00D0FE47 /* AchieveMangerLayerUI.cpp in Sources */,
 				55A9807B1C05610400722C9D /* FakeShadow.cpp in Sources */,
 				EC3CC99F1C088F4F00F8CFC8 /* MenuUILayer.cpp in Sources */,
@@ -1763,7 +1756,6 @@
 				EC795F601C0D4B560083829B /* LittleWitchPopupUI.cpp in Sources */,
 				551E93C61BD51291009F788F /* UserRecord.cpp in Sources */,
 				EC63CEB01C20FEB600C84941 /* HudPromptLayer.cpp in Sources */,
-				EC64690A1C25397B00250362 /* SettingPopupUI.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

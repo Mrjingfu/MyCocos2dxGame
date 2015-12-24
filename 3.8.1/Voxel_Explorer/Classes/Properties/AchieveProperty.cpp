@@ -8,10 +8,11 @@
 
 #include "AchieveProperty.hpp"
 #include "UtilityHelper.h"
+#include "AchievementManager.h"
 AchieveProperty::AchieveProperty()
 {
     m_bCommple = false;
-    m_bIsHideAchieve = false;
+    m_bIsUnlockAchieve = false;
 }
 AchieveProperty::~AchieveProperty()
 {
@@ -40,8 +41,36 @@ void AchieveProperty::setAchieveDetailType(std::string achieveDeType)
     m_sAchieveName = UtilityHelper::getLocalStringForPlist(achieveDeType, "achieve_chinese.plist", "achieve_english.plist");
     m_sAchieveTargetDesc = UtilityHelper::getLocalStringForPlist(achieveDeType+"_TARGET", "achieve_chinese.plist", "achieve_english.plist");
 }
+void AchieveProperty::setAchiveUnlockTarget(std::string achieveDeType)
+{
+    int type = checkArrName(ACHIEVEMENT_DATAIL_TYPE_NAME,achieveDeType);
+    CCASSERT(type!=-1, "type error");
+    eAchievementDetailType detailType = (eAchievementDetailType)(type);
+    m_vUnlockTargets.push_back(detailType);
+}
 
-
+bool AchieveProperty::isUnlockAchieve() 
+{
+    if (m_vUnlockTargets.empty()) {
+        
+        m_bIsUnlockAchieve = true;
+    }else
+    {
+        int unlockCount = 0;
+        for (int i =0; i<m_vUnlockTargets.size(); i++)
+        {
+            eAchievementDetailType type = m_vUnlockTargets.at(i);
+            if (AchievementManager::getInstance()->getAchievement(type)->isCommple())
+            {
+                ++unlockCount;
+            }
+        }
+        if (unlockCount == m_vUnlockTargets.size()) {
+            m_bIsUnlockAchieve = true;
+        }
+    }
+    return m_bIsUnlockAchieve;
+}
 
 int AchieveProperty::checkArrName(const std::vector<std::string> arr,const std::string str)
 {

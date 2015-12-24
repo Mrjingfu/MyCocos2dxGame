@@ -21,12 +21,15 @@ public:
     virtual bool addEvents() override;
 private:
     void onClickMainMenu(Ref* ref);
-    void onClickSetting(Ref* ref);
-    void onClickExitGame(Ref* ref);
+    void onClickAchieve(Ref* ref);
+    void onClickHelp(Ref* ref);
+    void onClickSound(Ref* ref);
+    void onClickMuisc(Ref* ref);
 private:
-    cocos2d::ui::Button*     m_pBtnMainMenu;
-    cocos2d::ui::Button*     m_pBtnSetting;
-    cocos2d::ui::Button*     m_pBtnExitGame;
+    cocos2d::ui::ImageView* m_pSoundImg;
+    cocos2d::ui::ImageView* m_pMuiscImg;
+    bool m_bIsSoundOn;
+    bool m_bIsMuiscOn;
 };
 
 #endif /* PausePopupUI_hpp */

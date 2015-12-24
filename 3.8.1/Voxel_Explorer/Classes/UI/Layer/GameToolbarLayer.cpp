@@ -243,9 +243,7 @@ void GameToolbarLayer::onClickMsg(cocos2d::Ref *ref)
     {
         std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("UI_BTN_CHAT_CLOSE");
         CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
-
         m_pMsgFrame->setVisible(false);
-        
     }else
     {
         std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("UI_BTN_CHAT_OPEN");
