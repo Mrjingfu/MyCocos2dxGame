@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/UI/GameUILayer.cpp"
-            timestampString = "472467099.865701"
+            timestampString = "472619860.510557"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "578"
-            endingLineNumber = "578"
+            startingLineNumber = "692"
+            endingLineNumber = "692"
             landmarkName = "GameUILayer::onEventRoleUserPotion(cocos2d::EventCustom *sender)"
             landmarkType = "5">
          </BreakpointContent>
@@ -63,7 +63,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1191"
             endingLineNumber = "1191"
-            landmarkName = "VoxelExplorer::handlePlayerUseScroll(PickableItem::PickableItemType type)"
+            landmarkName = "VoxelExplorer::handleMonsterHurt(const cocos2d::Vec2&amp; mapPos)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -73,45 +73,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../Classes/UI/Layer/GlobalPromptLayer.cpp"
-            timestampString = "472565184.127613"
+            filePath = "../Classes/Properties/PlayerProperty.cpp"
+            timestampString = "472622551.149111"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "88"
-            endingLineNumber = "88"
-            landmarkName = "GlobalPromptLayer::shwoGlobalPrompt(TipTypes tipType, std::string text)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../Classes/UI/Layer/GlobalPromptLayer.cpp"
-            timestampString = "472565198.663232"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "71"
-            endingLineNumber = "71"
-            landmarkName = "GlobalPromptLayer::refreshUIView()"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../Classes/UI/Layer/GlobalPromptLayer.cpp"
-            timestampString = "472565247.09503"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "81"
-            endingLineNumber = "81"
-            landmarkName = "GlobalPromptLayer::removePrompt(cocos2d::Node* node)"
+            startingLineNumber = "87"
+            endingLineNumber = "87"
+            landmarkName = "PlayerProperty::initNewPlayer()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

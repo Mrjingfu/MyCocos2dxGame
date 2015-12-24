@@ -20,6 +20,7 @@ public:
     virtual void refreshUIView();
     virtual bool initUi();
     void shwoGlobalPrompt(TipTypes tipType,std::string text);
+    void clearGlobalPrompt();
 private:
     void removePrompt(cocos2d::Node* node);
 private:

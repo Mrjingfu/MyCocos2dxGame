@@ -127,6 +127,20 @@ private:
     
     void onEvenetAchieveComplete(cocos2d::EventCustom *sender);
     
+    
+    
+    void onEventDesTinyAddMoney(cocos2d::EventCustom *sender);
+    void onEventDesTinyTransport(cocos2d::EventCustom *sender);
+    void onEventDesTinyStronger(cocos2d::EventCustom *sender);
+    void onEventDesTinyStealth(cocos2d::EventCustom *sender);
+    void onEventDesTinySpeedup(cocos2d::EventCustom *sender);
+    void onEventDesTinyPoisioning(cocos2d::EventCustom *sender);
+    void onEventDesTinyFire(cocos2d::EventCustom *sender);
+    void onEventDesTinyFrozen(cocos2d::EventCustom *sender);
+    void onEventDesTinyWeak(cocos2d::EventCustom *sender);
+    
+    
+    
     //isWho true角色 false 怪物
     void updateCharacterHud(HurtData*,TipTypes tipDodge,TipTypes tipBolock,TipTypes tipCriticalStike,TipTypes tipNormal,bool isWho = true);
     

@@ -693,11 +693,11 @@ bool PlayerProperty::useScroll(CChaosNumber id)
         else
         {
             StatisticsManager::getInstance()->addUseItemNum(scrollProperty->getPickableItemType());
+            VoxelExplorer::getInstance()->handlePlayerUseScroll(scrollProperty->getPickableItemType());
+            Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_USE_SCROLL, scrollProperty);
             scrollProperty->decreaseCount();
             if(scrollProperty->getCount() <= 0)
                 removeItemFromBag(id);
-            VoxelExplorer::getInstance()->handlePlayerUseScroll(scrollProperty->getPickableItemType());
-            Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_USE_SCROLL, scrollProperty);
             std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("USE_SCROLL");
             SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
         }
