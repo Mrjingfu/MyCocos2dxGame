@@ -227,7 +227,7 @@
 	<key>PIN_KEY_BOSS_DESC</key>
 	<string>用来打开%s的房间</string>
 	<key>PIN_KEY_ROOM</key>
-	<string>%s的钥匙</string>
+	<string>%s房间的钥匙</string>
 	<key>PIN_KEY_ROOM_DESC</key>
 	<string>用来打开%s的房间</string>
 	<key>PIN_DAGGER_DAGGER</key>
