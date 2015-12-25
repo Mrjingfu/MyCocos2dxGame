@@ -24,6 +24,8 @@ public:
     bool init(cocos2d::Layer* pMainLayer);
     void destroy();
     void update(float delta);
+    void gamePause();
+    void gameResume();
     
     std::string getScreenPickDesc(const cocos2d::Vec2& screenPos, std::string& strIcon);
     bool checkMovable(TileInfo& info);
@@ -100,7 +102,7 @@ private:
     bool createPlayer();
 private:
     BaseLevel*      m_pCurrentLevel;
-
+    
     cocos2d::Layer*                         m_pMainLayer;
     cocos2d::Layer*                         m_p3DLayer;
     cocos2d::Layer*                         m_pTerrainTilesLayer;
@@ -120,6 +122,7 @@ private:
     cocos2d::Camera*                        m_pScreenCamera;
     
     Player*                                 m_pPlayer;
+    bool                                    m_bIsGamePause;
 };
 
 #endif /* defined(__Voxel_Explorer__VoxelExplorer__) */

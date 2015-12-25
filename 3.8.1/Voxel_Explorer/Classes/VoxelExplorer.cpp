@@ -76,6 +76,7 @@ VoxelExplorer::VoxelExplorer()
     m_pMainCamera = nullptr;
     
     m_pPlayer = nullptr;
+    m_bIsGamePause = false;
 }
 VoxelExplorer::~VoxelExplorer()
 {
@@ -134,6 +135,24 @@ void VoxelExplorer::destroy()
 void VoxelExplorer::update(float delta)
 {
     RandomDungeon::getInstance()->update(delta);
+}
+void VoxelExplorer::gamePause()
+{
+    if(m_p3DLayer)
+    {
+        m_bIsGamePause = true;
+        m_p3DLayer->pause();
+    }
+
+}
+void VoxelExplorer::gameResume()
+{
+    if(m_p3DLayer && m_bIsGamePause)
+    {
+        m_bIsGamePause = false;
+       m_p3DLayer->resume();
+    }
+
 }
 std::string VoxelExplorer::getScreenPickDesc(const cocos2d::Vec2& screenPos, std::string& strIcon)
 {

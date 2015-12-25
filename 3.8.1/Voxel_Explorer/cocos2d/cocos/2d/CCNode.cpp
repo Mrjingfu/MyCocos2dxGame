@@ -1723,6 +1723,10 @@ void Node::resume()
     _scheduler->resumeTarget(this);
     _actionManager->resumeTarget(this);
     _eventDispatcher->resumeEventListenersForTarget(this);
+    //add by lichuang
+    for (auto child: getChildren()) {
+        child->resume();
+    }
 }
 
 void Node::pause()
@@ -1730,6 +1734,10 @@ void Node::pause()
     _scheduler->pauseTarget(this);
     _actionManager->pauseTarget(this);
     _eventDispatcher->pauseEventListenersForTarget(this);
+    //add by lichuang
+    for (auto child: getChildren()) {
+        child->pause();
+    }
 }
 
 void Node::resumeSchedulerAndActions()

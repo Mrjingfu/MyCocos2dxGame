@@ -1106,29 +1106,43 @@
 	<string>售货员</string>
 	<key>NPCN_SHOPGIRL_DESC</key>
 	<string></string>
+	<key>NPCN_SHOPGIRL_CONTENT</key>
+	<string></string>
 	<key>NPCN_OLDLADY</key>
 	<string>老婆婆</string>
 	<key>NPCN_OLDLADY_DESC</key>
+	<string></string>
+	<key>NPCN_OLDLADY_CONTENT</key>
 	<string></string>
 	<key>NPCN_KNIGHT</key>
 	<string>小骑士</string>
 	<key>NPCN_KNIGHT_DESC</key>
 	<string></string>
+	<key>NPCN_KNIGHT_CONTENT</key>
+	<string></string>
 	<key>NPCN_WEIRDO</key>
 	<string>怪蜀黍</string>
 	<key>NPCN_WEIRDO_DESC</key>
+	<string></string>
+	<key>NPCN_WEIRDO_CONTENT</key>
 	<string></string>
 	<key>NPCN_OLDMAN</key>
 	<string>老爷爷</string>
 	<key>NPCN_OLDMAN_DESC</key>
 	<string></string>
+	<key>NPCN_OLDMAN_CONTENT</key>
+	<string></string>
 	<key>NPCN_LITTLEWITCH</key>
 	<string>小魔女</string>
 	<key>NPCN_LITTLEWITCH_DESC</key>
 	<string></string>
+	<key>NPCN_LITTLEWITCH_CONTENT</key>
+	<string></string>
 	<key>NPCN_NURSE</key>
 	<string>小护士</string>
 	<key>NPCN_NURSE_DESC</key>
+	<string></string>
+	<key>NPCN_NURSE_CONTENT</key>
 	<string></string>
 	<key>PTN_STANDARD</key>
 	<string>地城传送阵</string>

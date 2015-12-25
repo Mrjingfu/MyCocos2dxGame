@@ -10,7 +10,7 @@
 #define NpcPropLayer_hpp
 
 #include "CharacterPropLayer.hpp"
-class BaseMonster;
+class Npc;
 class NpcPropLayer:public CharacterPropLayer
 {
     NpcPropLayer();
@@ -21,9 +21,9 @@ public:
     virtual void updateCharacterBuff() override;
     virtual void updateCharacterProp() override;
     virtual bool addEvents() override;
-    
+    void setNpc(Npc* npc){m_pNpc = npc;};
 private:
-   
+    Npc* m_pNpc;
 };
 
 #endif /* NpcPropLayer_hpp */

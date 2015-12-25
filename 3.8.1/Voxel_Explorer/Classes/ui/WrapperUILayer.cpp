@@ -9,6 +9,7 @@
 #include "WrapperUILayer.h"
 #include "LevelResourceManager.h"
 #include "SimpleAudioEngine.h"
+#include "VoxelExplorer.h"
 #define UI_ACTION_INTERVAL  500 // 毫秒
 
 WrapperUILayer::WrapperUILayer()
@@ -82,21 +83,23 @@ bool WrapperUILayer::load(const std::string gameUIFile,bool isSceneUi)
 }
 void WrapperUILayer::schedulerPause()
 {
-    std::set<void*> _m_pBeforeTargetSets = cocos2d::Director::getInstance()->getScheduler()->pauseAllTargets();
-    
-    for(std::set<void*>::iterator it=_m_pBeforeTargetSets.begin();it!=_m_pBeforeTargetSets.end();it++)
-    {
-        cocos2d::Director::getInstance()->getScheduler()->pauseTarget(*it);
-    }
+    VoxelExplorer::getInstance()->gamePause();
+//    std::set<void*> _m_pBeforeTargetSets = cocos2d::Director::getInstance()->getScheduler()->pauseAllTargets();
+//    
+//    for(std::set<void*>::iterator it=_m_pBeforeTargetSets.begin();it!=_m_pBeforeTargetSets.end();it++)
+//    {
+//        cocos2d::Director::getInstance()->getScheduler()->pauseTarget(*it);
+//    }
 }
 void WrapperUILayer::schedulerResume()
 {
-    std::set<void*> _m_pBeforeTargetSets = cocos2d::Director::getInstance()->getScheduler()->pauseAllTargets();
-    
-    for(std::set<void*>::iterator it=_m_pBeforeTargetSets.begin();it!=_m_pBeforeTargetSets.end();it++)
-    {
-        cocos2d::Director::getInstance()->getScheduler()->resumeTarget(*it);
-    }
+    VoxelExplorer::getInstance()->gameResume();
+//    std::set<void*> _m_pBeforeTargetSets = cocos2d::Director::getInstance()->getScheduler()->pauseAllTargets();
+//    
+//    for(std::set<void*>::iterator it=_m_pBeforeTargetSets.begin();it!=_m_pBeforeTargetSets.end();it++)
+//    {
+//        cocos2d::Director::getInstance()->getScheduler()->resumeTarget(*it);
+//    }
 }
 void WrapperUILayer::clickEffect()
 {

@@ -22,6 +22,7 @@ class NpcPropLayer;
 class BossPropLayer;
 struct HurtData;
 class HudPromptLayer;
+class Npc;
 class GameUILayer:public WrapperUILayer {
     
 public:
@@ -140,6 +141,7 @@ private:
     void onEventDesTinyWeak(cocos2d::EventCustom *sender);
     
     
+    void popupNpc(Npc* npc,std::string eventStr);
     
     //isWho true角色 false 怪物
     void updateCharacterHud(HurtData*,TipTypes tipDodge,TipTypes tipBolock,TipTypes tipCriticalStike,TipTypes tipNormal,bool isWho = true);

@@ -38,6 +38,8 @@ public:
     
     std::string getIconRes();
     virtual std::string getDesc();
+    std::string getNpcName();
+    std::string getNpcContent();
     
     NPC_TYPE getNPCType() const { return m_Type; }
     

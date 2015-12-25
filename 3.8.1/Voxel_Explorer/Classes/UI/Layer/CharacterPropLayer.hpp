@@ -21,7 +21,6 @@ public:
     virtual bool initUi() override;
     virtual bool addEvents() override;
     virtual void refreshUIView()override;
-    void setCharacterProp(const BaseMonster* monster);
 private:
     virtual void updateCharacterBuff() = 0;
     virtual void updateCharacterProp() = 0;

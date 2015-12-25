@@ -55,6 +55,14 @@ std::string Npc::getDesc()
 {
     return UtilityHelper::getLocalString(NPC_NAMES[m_Type] + "_DESC");
 }
+std::string Npc::getNpcName()
+{
+    return UtilityHelper::getLocalString(NPC_NAMES[m_Type]);
+}
+std::string Npc::getNpcContent()
+{
+    return UtilityHelper::getLocalString(NPC_NAMES[m_Type]+"_CONTENT");
+}
 void Npc::setState(NPCState state)
 {
     if(m_State == state && m_State != NPCS_ANSWER)

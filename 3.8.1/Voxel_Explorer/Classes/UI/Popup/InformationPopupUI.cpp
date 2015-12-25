@@ -14,7 +14,6 @@ InformationPopupUI::InformationPopupUI()
 {
    
     m_cActionType = eNone;
-//    m_nIsPause =false;
     m_nIsBlankClose = false;
     m_pInfoIcon = nullptr;
     m_pInfoDesc = nullptr;
@@ -85,20 +84,19 @@ bool InformationPopupUI::addEvents()
     m_pOk->setTitleText(UtilityHelper::getLocalStringForUi("BTN_TEXT_OK"));
     m_pOk->addClickEventListener(CC_CALLBACK_1(InformationPopupUI::onClickOk, this));
  
+    if (m_pBtnNext )
+    {
+        cocos2d::Director::getInstance()->getScheduler()->resumeTarget(m_pBtnNext);
+        MoveBy* moveByNext = MoveBy::create(0.5, cocos2d::Vec2(0,-2));
+        m_pBtnNext->runAction(RepeatForever::create(Sequence::create(moveByNext,moveByNext->reverse(), nullptr)));
+        
+    }
     
     return true;
 }
 void InformationPopupUI::refreshUIView()
 {
-    if (m_pBtnNext )
-    {
-        //wait
-        cocos2d::Director::getInstance()->getScheduler()->resumeTarget(m_pBtnNext);
-        m_pBtnNext->stopAllActions();
-        MoveBy* moveByNext = MoveBy::create(0.5, cocos2d::Vec2(0,-2));
-        m_pBtnNext->runAction(RepeatForever::create(Sequence::create(moveByNext,moveByNext->reverse(), nullptr)));
-       
-    }
+
      float frameHeight =  m_pRootNode->getContentSize().height;
     if (!m_vInfos.empty())
     {

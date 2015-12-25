@@ -216,8 +216,8 @@ void GameToolbarLayer::onClickMap(cocos2d::Ref *ref)
 }
 void GameToolbarLayer::onClickDistTipsFrame(cocos2d::Ref *ref)
 {
-    //CHECK_ACTION(ref);
-    clickEffect();
+//CHECK_ACTION(ref);
+//   clickEffect();
     CCLOG("onClickSearchTipsFrame");
     if (m_pGameDistTipsFrame&& m_bIsDist) {
         m_pGameDistTipsFrame->setVisible(false);
