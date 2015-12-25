@@ -71,7 +71,6 @@ TerrainTile* TerrainTile::create(TileType type)
 }
 TerrainTile::TerrainTile()
 {
-    m_Type = TT_CHASM;
 }
 TerrainTile::~TerrainTile()
 {

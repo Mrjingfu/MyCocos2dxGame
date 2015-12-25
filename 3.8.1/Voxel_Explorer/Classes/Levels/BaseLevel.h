@@ -132,6 +132,8 @@ public:
     void setTerrainTileType(int x, int y, TerrainTile::TileType tileType);
     
     bool isTerrainTilePassable(int index);
+    bool isTerrainTileSearched(int x, int y);
+    void setTerrainTileSearched(int x, int y);
     
     int getTerrainTileFlag(int x, int y);
     Area::AREA_TYPE getTerrainTileAreaType(int x, int y);
@@ -147,7 +149,7 @@ public:
     cocos2d::Vec2 getRandomPassableTile();
     cocos2d::Vec2 getRandomTranspotTile();
     cocos2d::Vec2 getRandomVisitedTranspotTile(const cocos2d::Vec2& playerPos);
-    bool searchAndCheck(int x, int y, int searchDistance, bool& hasFoundWall);
+    bool searchAndCheck(int x, int y, int searchDistance);
     
     bool hasShowMap() const { return m_bShowMap; }
     

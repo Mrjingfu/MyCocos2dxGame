@@ -143,7 +143,16 @@ bool BaseLevel::isTerrainTilePassable(int index)
 {
     return m_Map[index].isPassable();
 }
-
+bool BaseLevel::isTerrainTileSearched(int x, int y)
+{
+    int index = x + y * m_nWidth;
+    return m_Map[index].m_bSearched;
+}
+void BaseLevel::setTerrainTileSearched(int x, int y)
+{
+    int index = x + y * m_nWidth;
+    m_Map[index].m_bSearched = true;
+}
 int BaseLevel::getTerrainTileFlag(int x, int y)
 {
     int index = x + y * m_nWidth;
@@ -389,7 +398,7 @@ cocos2d::Vec2 BaseLevel::getRandomVisitedTranspotTile(const cocos2d::Vec2& playe
         return Vec2(cell % m_nWidth, cell / m_nWidth);
     }
 }
-bool BaseLevel::searchAndCheck(int x, int y, int searchDistance, bool& hasFoundWall)
+bool BaseLevel::searchAndCheck(int x, int y, int searchDistance)
 {
     std::vector<int> neighbours;
     if(searchDistance == 1)
@@ -428,8 +437,6 @@ bool BaseLevel::searchAndCheck(int x, int y, int searchDistance, bool& hasFoundW
             VoxelExplorer::getInstance()->handleShowSecretDoor(Vec2(m_Map[j].m_nX, m_Map[j].m_nY));
             found = true;
         }
-        else if(m_Map[j].m_Type == TerrainTile::TT_WALL)
-            hasFoundWall = true;
     }
     return found;
 }

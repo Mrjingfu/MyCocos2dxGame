@@ -136,6 +136,7 @@ void VoxelExplorer::update(float delta)
 {
     RandomDungeon::getInstance()->update(delta);
 }
+
 void VoxelExplorer::gamePause()
 {
     if(m_p3DLayer)
@@ -154,7 +155,8 @@ void VoxelExplorer::gameResume()
     }
 
 }
-std::string VoxelExplorer::getScreenPickDesc(const cocos2d::Vec2& screenPos, std::string& strIcon)
+
+std::string VoxelExplorer::getScreenPickDesc(const cocos2d::Vec2& screenPos, std::string& strIcon, const ValueMap* event, bool& isTraps, bool& isCanRemove, cocos2d::Vec2& checkpos)
 {
     if(m_pMainCamera && m_p3DLayer)
     {
@@ -252,11 +254,102 @@ std::string VoxelExplorer::getScreenPickDesc(const cocos2d::Vec2& screenPos, std
             {
                 TerrainTile* tile = dynamic_cast<TerrainTile*>(child);
                 if (tile && tile->isVisible() && ray.intersects(tile->getAABB())) {
-                    return tile->getDesc();
+                    
+                    TerrainTile::TileType type = m_pCurrentLevel->getTerrainTileType(tile->getPosInMap().x, tile->getPosInMap().y);
+                    if(type != TerrainTile::TT_STANDARD  && type != TerrainTile::TT_WALL)
+                    {
+                        Area::AREA_TYPE areaType = m_pCurrentLevel->getTerrainTileAreaType(tile->getPosInMap().x, tile->getPosInMap().y);
+ 
+
+                        if(type == TerrainTile::TT_TOXIC_TRAP ||
+                            type == TerrainTile::TT_FIRE_TRAP ||
+                            type == TerrainTile::TT_PARALYTIC_TRAP ||
+                            type == TerrainTile::TT_GRIPPING_TRAP ||
+                            type == TerrainTile::TT_SUMMONING_TRAP ||
+                            type == TerrainTile::TT_WEAK_TRAP)
+                        {
+                            isTraps = true;
+                            isCanRemove = true;
+                            checkpos = tile->getPosInMap();
+                            if(areaType == Area::AT_ENTRANCE
+                               || areaType == Area::AT_EXIT
+                               || areaType == Area::AT_BOSS_EXIT
+                               || areaType == Area::AT_BOSS_ROOM
+                               || areaType >= Area::AT_SPECIAL_EQUIPMENT_SHOP)
+                                isCanRemove = false;
+                        }
+                        m_pCurrentLevel->setTerrainTileSearched(tile->getPosInMap().x, tile->getPosInMap().y);
+                        return tile->getDesc();
+                    }
+                    else
+                    {
+                        if(m_pCurrentLevel->isTerrainTileSearched(tile->getPosInMap().x, tile->getPosInMap().y))
+                        {
+                            m_pCurrentLevel->setTerrainTileSearched(tile->getPosInMap().x, tile->getPosInMap().y);
+                            return tile->getDesc();
+                        }
+                        else
+                        {
+                            float percent1 = 0.9f;
+                            float percent2 = 1.0f - percent1;
+                            bool found = false;
+                            AlisaMethod* am = AlisaMethod::create(percent1, percent2, -1.0, NULL);
+                            if(am)
+                            {
+                                if(am->getRandomIndex() == 0)
+                                    found = true;
+                            }
+                            if(found)
+                            {
+                                ValueMap* randEvent = RandomEventMgr::getInstance()->getRandomEvent();
+                                if(randEvent->at("HAS_READED").asBool())
+                                {
+                                    m_pCurrentLevel->setTerrainTileSearched(tile->getPosInMap().x, tile->getPosInMap().y);
+                                    return tile->getDesc();
+                                }
+                                else
+                                {
+                                    bool foundWall = type == TerrainTile::TT_WALL;
+                                    if(foundWall)
+                                    {
+                                        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_FOUND_HIDDEN_MSG);
+                                        std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("SECRET_FOUND");
+                                        SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+                                        randEvent->at("HAS_READED") = true;
+                                        m_pCurrentLevel->setTerrainTileSearched(tile->getPosInMap().x, tile->getPosInMap().y);
+                                        event = randEvent;
+                                        return randEvent->at("EVENT_DESC").asString();
+                                    }
+                                    else
+                                    {
+                                        if(randEvent && randEvent->at("EVENT_TYPE").asInt() != (int)RANDOM_EVENT_TYPE::RET_WALL_STANDARD)
+                                        {
+                                            Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_FOUND_HIDDEN_MSG);
+                                            std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("SECRET_FOUND");
+                                            SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+                                            randEvent->at("HAS_READED") = true;
+                                            m_pCurrentLevel->setTerrainTileSearched(tile->getPosInMap().x, tile->getPosInMap().y);
+                                            event = randEvent;
+                                            return randEvent->at("EVENT_DESC").asString();
+                                        }
+                                        else
+                                        {
+                                            m_pCurrentLevel->setTerrainTileSearched(tile->getPosInMap().x, tile->getPosInMap().y);
+                                            return tile->getDesc();
+                                        }
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                m_pCurrentLevel->setTerrainTileSearched(tile->getPosInMap().x, tile->getPosInMap().y);
+                                return tile->getDesc();
+                            }
+                        }
+                    }
                 }
             }
         }
-
     }
     return UtilityHelper::getLocalString(TERRAIN_TILES_NAME[TerrainTile::TT_CHASM]);
 }
@@ -576,57 +669,10 @@ void VoxelExplorer::searchAndCheck()    ///侦查
     {
         Vec2 playerPosInMap = m_pPlayer->getPosInMap();
         int searchDistance = PlayerProperty::getInstance()->getSearchDistance();
-        bool foundWall = false;
-        if(!m_pCurrentLevel->searchAndCheck(playerPosInMap.x, playerPosInMap.y, searchDistance, foundWall))
+        if(!m_pCurrentLevel->searchAndCheck(playerPosInMap.x, playerPosInMap.y, searchDistance))
         {
-            float percent1 = 0.1f;
-            float percent2 = 1.0f - percent1;
-            bool found = false;
-            AlisaMethod* am = AlisaMethod::create(percent1, percent2, -1.0, NULL);
-            if(am)
-            {
-                if(am->getRandomIndex() == 0)
-                    found = true;
-            }
-            if(found)
-            {
-                ValueMap* randEvent = RandomEventMgr::getInstance()->getRandomEvent();
-                if(randEvent->at("HAS_READED").asBool())
-                {
-                    std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("SEARCH");
-                    SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
-                }
-                else
-                {
-                    if(foundWall)
-                    {
-                        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_FOUND_HIDDEN_MSG, randEvent);
-                        std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("SECRET_FOUND");
-                        SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
-                        randEvent->at("HAS_READED") = true;
-                    }
-                    else
-                    {
-                        if(randEvent && randEvent->at("EVENT_TYPE").asInt() != (int)RANDOM_EVENT_TYPE::RET_WALL_STANDARD)
-                        {
-                            Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_FOUND_HIDDEN_MSG, randEvent);
-                            std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("SECRET_FOUND");
-                            SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
-                            randEvent->at("HAS_READED") = true;
-                        }
-                        else
-                        {
-                            std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("SEARCH");
-                            SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
-                        }
-                    }
-                }
-            }
-            else
-            {
-                std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("SEARCH");
-                SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
-            }
+            std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("SEARCH");
+            SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
         }
         else
         {
@@ -1480,6 +1526,41 @@ void VoxelExplorer::handleGoChasm()
     else
     {
         m_pPlayer->fallAndDie();
+    }
+}
+void VoxelExplorer::handleRemoveTrap(const cocos2d::Vec2& mapPos)
+{
+    if(m_pCurrentLevel)
+    {
+        if(m_pTerrainTilesLayer)
+        {
+            for (const auto& child : m_pTerrainTilesLayer->getChildren())
+            {
+                TerrainTile* tile = dynamic_cast<TerrainTile*>(child);
+                if(tile && (mapPos == tile->getPosInMap()))
+                {
+                    TerrainTile::TileType tileType = m_pCurrentLevel->getTerrainTileType(mapPos.x, mapPos.y);
+                    
+                    if(tileType == TerrainTile::TT_TOXIC_TRAP
+                       || tileType == TerrainTile::TT_FIRE_TRAP
+                       || tileType == TerrainTile::TT_PARALYTIC_TRAP
+                       || tileType == TerrainTile::TT_GRIPPING_TRAP
+                       || tileType == TerrainTile::TT_SUMMONING_TRAP
+                       || tileType == TerrainTile::TT_WEAK_TRAP)
+                    {
+                        std::string texName = LevelResourceManager::getInstance()->getTerrainTileRes(TERRAIN_TILES_NAME[TerrainTile::TT_STANDARD]);
+                        if(!texName.empty())
+                        {
+                            auto tex = Director::getInstance()->getTextureCache()->addImage(texName);
+                            if(tex)
+                                tex->setAliasTexParameters();
+                            tile->setTexture(tex);
+                        }
+                        m_pCurrentLevel->setTerrainTileType(mapPos.x, mapPos.y, TerrainTile::TT_STANDARD);
+                    }
+                }
+            }
+        }
     }
 }
 bool VoxelExplorer::createLayers()
