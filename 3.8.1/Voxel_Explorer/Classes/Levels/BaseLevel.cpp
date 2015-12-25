@@ -90,11 +90,9 @@ std::string BaseLevel::getTerrainTileInfoDesc(int x, int y)
         return UtilityHelper::getLocalString(TERRAIN_TILES_NAME[TerrainTile::TT_CHASM]);
     
     if (m_Map[index].m_Type == TerrainTile::TT_STANDARD) {
-        ///lwwhb 处理随机
         return UtilityHelper::getLocalString(TERRAIN_TILES_NAME[m_Map[index].m_Type]);
     }
     else if(m_Map[index].m_Type == TerrainTile::TT_WALL) {
-        ///lwwhb 处理随机
         return UtilityHelper::getLocalString(TERRAIN_TILES_NAME[m_Map[index].m_Type]);
     }
     else if(m_Map[index].m_Type == TerrainTile::TT_ENTRANCE)

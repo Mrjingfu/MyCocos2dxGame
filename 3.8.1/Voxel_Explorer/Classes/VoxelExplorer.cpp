@@ -156,7 +156,7 @@ std::string VoxelExplorer::getScreenPickDesc(const cocos2d::Vec2& screenPos, std
             for (auto child : m_pPickableItemsLayer->getChildren())
             {
                 PickableItem* item = dynamic_cast<PickableItem*>(child);
-                if (item && ray.intersects(item->getAABB())) {
+                if (item && item->isVisible() && ray.intersects(item->getAABB())) {
                     return item->getDesc();
                 }
             }
@@ -167,7 +167,7 @@ std::string VoxelExplorer::getScreenPickDesc(const cocos2d::Vec2& screenPos, std
             for (auto child : m_pMonstersLayer->getChildren())
             {
                 BaseMonster* monster = dynamic_cast<BaseMonster*>(child);
-                if (monster && ray.intersects(monster->getAABB())) {
+                if (monster && monster->isVisible() && ray.intersects(monster->getAABB())) {
                     strIcon = monster->getIconRes();
                     return monster->getDesc();
                 }
@@ -178,7 +178,7 @@ std::string VoxelExplorer::getScreenPickDesc(const cocos2d::Vec2& screenPos, std
             for (auto child : m_pNPCsLayer->getChildren())
             {
                 Npc* npc = dynamic_cast<Npc*>(child);
-                if (npc && ray.intersects(npc->getAABB())) {
+                if (npc && npc->isVisible() && ray.intersects(npc->getAABB())) {
                     strIcon = npc->getIconRes();
                     return npc->getDesc();
                 }
@@ -188,7 +188,7 @@ std::string VoxelExplorer::getScreenPickDesc(const cocos2d::Vec2& screenPos, std
         {
             for (auto child : m_pBossLayer->getChildren()) {
                 BaseBoss* boss = dynamic_cast<BaseBoss*>(child);
-                if(boss && ray.intersects(boss->getAABB())){
+                if(boss && boss->isVisible() && ray.intersects(boss->getAABB())){
                     strIcon = boss->getIconRes();
                     return boss->getDesc();
                 }
@@ -199,7 +199,7 @@ std::string VoxelExplorer::getScreenPickDesc(const cocos2d::Vec2& screenPos, std
             for (auto child : m_pUseableItemsLayer->getChildren())
             {
                 UseableItem* item = dynamic_cast<UseableItem*>(child);
-                if (item && ray.intersects(item->getAABB())) {
+                if (item && item->isVisible() && ray.intersects(item->getAABB())) {
                     return item->getDesc();
                 }
             }
@@ -210,7 +210,7 @@ std::string VoxelExplorer::getScreenPickDesc(const cocos2d::Vec2& screenPos, std
             for (auto child : m_pTerrainPortalsLayer->getChildren())
             {
                 BasePortal* portal = dynamic_cast<BasePortal*>(child);
-                if (portal && ray.intersects(portal->getAABB())) {
+                if (portal && portal->isVisible() && ray.intersects(portal->getAABB())) {
                     return portal->getDesc();
                 }
             }
@@ -221,7 +221,7 @@ std::string VoxelExplorer::getScreenPickDesc(const cocos2d::Vec2& screenPos, std
             for (auto child : m_pTerrainDoorsLayer->getChildren())
             {
                 BaseDoor* door = dynamic_cast<BaseDoor*>(child);
-                if (door && ray.intersects(door->getAABB())) {
+                if (door && door->isVisible() && ray.intersects(door->getAABB())) {
                     return door->getDesc();
                 }
             }
@@ -232,7 +232,7 @@ std::string VoxelExplorer::getScreenPickDesc(const cocos2d::Vec2& screenPos, std
             for (auto child : m_pTerrainTilesLayer->getChildren())
             {
                 TerrainTile* tile = dynamic_cast<TerrainTile*>(child);
-                if (tile && ray.intersects(tile->getAABB())) {
+                if (tile && tile->isVisible() && ray.intersects(tile->getAABB())) {
                     return tile->getDesc();
                 }
             }

@@ -344,7 +344,8 @@ bool Sprite3D::initFrom(const NodeDatas& nodeDatas, const MeshDatas& meshdatas, 
     {
         if(it)
         {
-            createNode(it, this, materialdatas, nodeDatas.nodes.size() == 1);
+            ///lwwhb modify for no aabb generate
+            createNode(it, this, materialdatas, nodeDatas.nodes.size() >= 1);
         }
     }
     for(const auto& it : nodeDatas.skeleton)
@@ -590,7 +591,8 @@ void Sprite3D::createNode(NodeData* nodedata, Node* root, const MaterialDatas& m
     }
     for(const auto& it : nodedata->children)
     {
-        createNode(it,node, materialdatas, nodedata->children.size() == 1);
+        ///lwwhb modify for no aabb generate
+        createNode(it,node, materialdatas, nodedata->children.size() >= 1);
     }
 }
 

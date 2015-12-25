@@ -138,6 +138,33 @@ void Npc::onEnterAnswer()
                 setActorDir(AD_BACK);
         }
     }
+    switch (m_Type) {
+        case NPC_CHILD:
+            Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_NPC_CHILD_ANSWER, this);
+            break;
+        
+        case NPC_SHOPGIRL:
+            Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_NPC_SHOPGIRL_ANSWER, this);
+            break;
+        case NPC_OLDLADY:
+            Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_NPC_OLDLADY_ANSWER, this);
+            break;
+        case NPC_KNIGHT:
+            Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_NPC_KNIGHT_ANSWER, this);
+            break;
+        case NPC_WEIRDO:
+            Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_NPC_WEIRDO_ANSWER, this);
+            break;
+        case NPC_OLDMAN:
+            Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_NPC_OLDMAN_ANSWER, this);
+            break;
+        case NPC_LITTLEWITCH:
+            Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_NPC_LITTLEWITCH_ANSWER, this);
+            break;
+        default:
+            break;
+    }
+    
 }
 void Npc::onExitAnswer()
 {

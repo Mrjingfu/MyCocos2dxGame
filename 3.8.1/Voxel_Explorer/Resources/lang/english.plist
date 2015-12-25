@@ -227,9 +227,9 @@
 	<key>PIN_KEY_BOSS_DESC</key>
 	<string>To open %s&apos;s room.</string>
 	<key>PIN_KEY_ROOM</key>
-	<string>The key of %s</string>
+	<string>The key of %s room.</string>
 	<key>PIN_KEY_ROOM_DESC</key>
-	<string>To open locked room.</string>
+	<string>To open locked room of %s.</string>
 	<key>PIN_DAGGER_DAGGER</key>
 	<string>Dagger</string>
 	<key>PIN_DAGGER_DAGGER_DESC</key>
