@@ -276,9 +276,9 @@ void GameToolbarLayer::onClickPause(cocos2d::Ref *ref)
     PopupUILayerManager::getInstance()->openPopup(ePopupPause);
 //    InformationPopupUI* popupUi = static_cast<InformationPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupInformation));
 //    if (popupUi) {
-////        popupUi->setInfoIcon("chr_man.png");
+//        popupUi->setInfoIcon("chr_man.png");
 //        popupUi->setInfoVector(NpcDataManager::getInstance()->getOldManRoomInfo());
-////        popupUi->setInfoDesc("爱死爱的爱的爱的啊丁奥斯丁奥斯丁奥斯丁爱死大声道啊暗示法爱死发斯蒂芬爱死发生发生的飞洒发生飞声道啊暗示法爱死发斯蒂芬爱死发生发生的飞洒发生飞");
+//        popupUi->setInfoDesc("爱死爱的爱的爱的啊丁奥斯丁奥斯丁奥斯丁爱死大声道啊暗示法爱死发斯蒂芬爱死发生发生的飞洒发生飞声道啊暗示法爱死发斯蒂芬爱死发生发生的飞洒发生飞");
 //    }
 //     AlertPopupUI* popupUi = static_cast<AlertPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupAlert));
 //    if (popupUi) {

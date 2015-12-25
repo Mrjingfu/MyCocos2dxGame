@@ -29,6 +29,7 @@ public:
 //    void setInfoData(const std::string& infoRes, std::string& infoDesc);
 private:
     void onClickNext(Ref* ref);
+    void onClickOk(Ref* ref);
 private:
     cocos2d::ValueVector    m_vInfos;
     cocos2d::ui::ImageView* m_pInfoIcon;
@@ -37,6 +38,7 @@ private:
     cocos2d::ui::Text*      m_pInfoTitle;
     cocos2d::ui::Layout*    m_pInfoFrame;
     cocos2d::ui::ImageView* m_pTitleFrame;
+    cocos2d::ui::Button*    m_pOk;
     std::string             m_sInfoDesc;
 };
 

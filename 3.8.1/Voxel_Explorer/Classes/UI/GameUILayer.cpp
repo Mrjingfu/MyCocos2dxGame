@@ -222,15 +222,30 @@ void GameUILayer::onEventNpcKnightAnsWer(cocos2d::EventCustom *sender)
 void GameUILayer::onEventNpcChildAnsWer(cocos2d::EventCustom *sender)
 {
     CCLOG("onEventNpcChildAnsWer");
+    AlertPopupUI* alertPopup = static_cast<AlertPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupAlert));
+    if (alertPopup) {
+        alertPopup->setMessage(UtilityHelper::getLocalStringForUi(EVENT_NPC_CHILD_ANSWER));
+        alertPopup->registerCloseCallback([this](){
+            if (m_pNpcPropLayer) {
+                m_pNpcPropLayer->setVisible(false);
+            }
+        });
+    }
 }
 //魔法物品店
 void GameUILayer::onEventNpcShopGirlAnsWer(cocos2d::EventCustom *sender)
 {
      CCLOG("onEventNpcChildAnsWer");
+    
     ShopPopupUI* popupUILayer = static_cast<ShopPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupMagicShop));
     if (popupUILayer) {
         popupUILayer->setShopTitle(EVENT_NPC_SHOPGIRL_ANSWER);
         popupUILayer->setDarkLayerVisble(false);
+        popupUILayer->registerCloseCallback([this](){
+            if (m_pNpcPropLayer) {
+                m_pNpcPropLayer->setVisible(false);
+            }
+        });
     }
 }
 //炼金店
@@ -241,6 +256,11 @@ void GameUILayer::onEventNpcOldLadyAnsWer(cocos2d::EventCustom *sender)
     if (popupUILayer) {
         popupUILayer->setShopTitle(EVENT_NPC_OLDLADY_ANSWER);
         popupUILayer->setDarkLayerVisble(false);
+        popupUILayer->registerCloseCallback([this](){
+            if (m_pNpcPropLayer) {
+                m_pNpcPropLayer->setVisible(false);
+            }
+        });
     }
 }
 //赌博店
@@ -251,17 +271,41 @@ void GameUILayer::onEventNpcWeiRdoAnsWer(cocos2d::EventCustom *sender)
     if (popupUILayer) {
         popupUILayer->setShopTitle(EVENT_NPC_WEIRDO_ANSWER);
         popupUILayer->setDarkLayerVisble(false);
+        popupUILayer->registerCloseCallback([this](){
+            if (m_pNpcPropLayer) {
+                m_pNpcPropLayer->setVisible(false);
+            }
+        });
     }
 }
 //智者
 void GameUILayer::onEventNpcOldManAnsWer(cocos2d::EventCustom *sender)
 {
     CCLOG("onEventNpcOldManAnsWer");
+    InformationPopupUI* infoPopup = static_cast<InformationPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupInformation));
+    if (infoPopup) {
+        infoPopup->setInfoVector(NpcDataManager::getInstance()->getOldManRoomInfo());
+        infoPopup->setTitle(UtilityHelper::getLocalStringForUi(EVENT_NPC_OLDMAN_ANSWER));
+        infoPopup->registerCloseCallback([this](){
+            if (m_pNpcPropLayer) {
+                m_pNpcPropLayer->setVisible(false);
+            }
+        });
+    }
 }
 //魔女随机事件
 void GameUILayer::onEventNpcLittleWitchAnsWer(cocos2d::EventCustom *sender)
 {
     CCLOG("onEventNpcLittleWitchAnsWer");
+    AlertPopupUI* alertPopup = static_cast<AlertPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupAlert));
+    if (alertPopup) {
+        alertPopup->setMessage(UtilityHelper::getLocalStringForUi(EVENT_NPC_LITTLEWITCH_ANSWER));
+        alertPopup->registerCloseCallback([this](){
+            if (m_pNpcPropLayer) {
+                m_pNpcPropLayer->setVisible(false);
+            }
+        });
+    }
 }
 //护士站
 void GameUILayer::onEventNpcNurseAnsWer(cocos2d::EventCustom *sender)

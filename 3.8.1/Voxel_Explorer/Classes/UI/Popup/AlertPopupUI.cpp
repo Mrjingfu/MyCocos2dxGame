@@ -73,6 +73,8 @@ bool AlertPopupUI::addEvents()
 }
 void AlertPopupUI::onClickOk(cocos2d::Ref *ref)
 {
+    CHECK_ACTION(ref);
+    clickEffect();
     if (m_pPositiveFun) {
         m_pPositiveFun(this);
     }
@@ -80,6 +82,8 @@ void AlertPopupUI::onClickOk(cocos2d::Ref *ref)
 }
 void AlertPopupUI::onClickCancel(cocos2d::Ref *ref)
 {
+    CHECK_ACTION(ref);
+    clickEffect();
     if (m_pNegativeFun) {
         m_pNegativeFun(this);
     }

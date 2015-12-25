@@ -12,14 +12,17 @@
 USING_NS_CC;
 InformationPopupUI::InformationPopupUI()
 {
-    m_nIsPause    = false;
+   
     m_cActionType = eNone;
+//    m_nIsPause =false;
+    m_nIsBlankClose = false;
     m_pInfoIcon = nullptr;
     m_pInfoDesc = nullptr;
     m_pInfoFrame = nullptr;
     m_pTitleFrame = nullptr;
     m_pBtnNext = nullptr;
     m_pInfoTitle = nullptr;
+    m_pOk = nullptr;
 
 }
 InformationPopupUI::~InformationPopupUI()
@@ -62,22 +65,47 @@ bool InformationPopupUI::addEvents()
     if (!m_pTitleFrame)
         return false;
     
+    m_pOk =  dynamic_cast<ui::Button*>(UtilityHelper::seekNodeByName(m_pRootNode, "info_btn_ok"));
+    if (!m_pOk)
+        return false;
+    
     m_pInfoDesc->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
     m_pInfoTitle->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
     
     m_pBtnNext->setVisible(false);
     MoveBy* moveByNext = MoveBy::create(0.5, cocos2d::Vec2(0,-2));
     m_pBtnNext->runAction(RepeatForever::create(Sequence::create(moveByNext,moveByNext->reverse(), nullptr)));
-
+   
+    
+    
+    m_pOk->setVisible(false);
+    m_pOk->setTitleFontName(UtilityHelper::getLocalString("FONT_NAME"));
+    m_pOk->setTitleFontSize(36);
+    m_pOk->getTitleRenderer()->setScale(0.3);
+    m_pOk->setTitleText(UtilityHelper::getLocalStringForUi("BTN_TEXT_OK"));
+    m_pOk->addClickEventListener(CC_CALLBACK_1(InformationPopupUI::onClickOk, this));
+ 
+    
     return true;
 }
 void InformationPopupUI::refreshUIView()
 {
+    if (m_pBtnNext )
+    {
+        //wait
+        cocos2d::Director::getInstance()->getScheduler()->resumeTarget(m_pBtnNext);
+        m_pBtnNext->stopAllActions();
+        MoveBy* moveByNext = MoveBy::create(0.5, cocos2d::Vec2(0,-2));
+        m_pBtnNext->runAction(RepeatForever::create(Sequence::create(moveByNext,moveByNext->reverse(), nullptr)));
+       
+    }
      float frameHeight =  m_pRootNode->getContentSize().height;
-    if (!m_vInfos.empty()) {
+    if (!m_vInfos.empty())
+    {
         m_pBtnNext->setVisible(true);
     }else{
-        frameHeight =  m_pRootNode->getContentSize().height - m_pBtnNext->getContentSize().height-m_pBtnNext->getPositionY();
+        m_pOk->setVisible(true);
+        frameHeight =  m_pRootNode->getContentSize().height - m_pOk->getContentSize().height-m_pOk->getPositionY()-15;
     }
     
     
@@ -105,6 +133,7 @@ void InformationPopupUI::refreshUIView()
             m_pInfoFrame->setPosition(m_pRootNode->getContentSize()*0.5);
             
             m_pTitleFrame->setPosition(cocos2d::Vec2(m_pInfoFrame->getContentSize().width*0.5,m_pInfoFrame->getContentSize().height));
+            
         }
         
         CCLOG("m_pInfoDesc width:%f height:%f",m_pInfoDesc->getContentSize().width*m_pInfoDesc->getScale(),m_pInfoDesc->getContentSize().height*m_pInfoDesc->getScale());
@@ -127,8 +156,15 @@ void InformationPopupUI::refreshUIView()
         m_pInfoDesc->setPosition(m_pRootNode->getContentSize()*0.5);
     }
     
+    if (m_pOk) {
+        m_pOk->setAnchorPoint(cocos2d::Vec2::ANCHOR_MIDDLE_BOTTOM);
+        m_pOk->setPosition(cocos2d::Vec2(m_pRootNode->getContentSize().width*0.5,m_pRootNode->getContentSize().height*0.05));
+    }
+   
+    
     if (m_vInfos.empty()) {
         m_pBtnNext->setVisible(false);
+        m_pOk->setVisible(true);
         CCLOG("结束");
     }
 }
@@ -177,7 +213,15 @@ void InformationPopupUI::updateInfoVectorDesc()
     }
 
 }
+void InformationPopupUI::onClickOk(Ref* ref)
+{
+    CHECK_ACTION(ref);
+    clickEffect();
+    closePopup();
+}
 void InformationPopupUI::onClickNext(cocos2d::Ref *ref)
 {
+    CHECK_ACTION(ref);
+    clickEffect();
     updateInfoVectorDesc();
 }

@@ -14,7 +14,6 @@
 #include "CloseCallback.h"
 #include "editor-support/cocostudio/CocoStudio.h"
 
-#define CHEACK_SOUND
 
 #define CHECK_ACTION(sender) do{  if(isForbiddenAction(sender))  return ;}while(0)
 class WrapperUILayer :public cocos2d::ui::Layout,public CloseCallback{
