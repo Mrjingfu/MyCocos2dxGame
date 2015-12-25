@@ -60,7 +60,7 @@
 	<string>你产生了一个暴击</string>
 	<key>GAME_MESSAGE_ROLE_DEAD</key>
 	<string>%s杀死了你...</string>
-	<key>GAME_MESSAGE_ROLE_OBTAIN_ITEM</key>
+	<key>GAME_MESSAGE_ROLE_ADD_EXP</key>
 	<string>你获得了%s</string>
 	<key>GAME_MESSAGE_LEVEL_UP</key>
 	<string>你升级了！！！</string>
@@ -235,7 +235,7 @@
 	<key>NPC_OLDMAN_ANSWER</key>
 	<string>智者</string>
 	<key>NPC_LITTLEWITCH_ANSWER</key>
-	<string>不要着急,开发者加班加点赶制中哦。。</string>
+	<string>不要着急,开发者加班加点赶制中哦。。</string>
 	<key>NPC_NURSE_ANSWER</key>
 	<string>护士</string>
 	<key>ITEM_SPLITE_COUNT</key>
@@ -268,6 +268,10 @@
 	<string>你被传送了</string>
 	<key>STANDARD_PROTAL_NO_ENERGY</key>
 	<string>传送能量不足了</string>
+	<key>REMOVE_TRAP_INFO</key>
+	<string>是否摧毁该陷阱？</string>
+	<key>NOT_REMOVE_TRAP</key>
+	<string>该陷阱不能被摧毁？</string>
 	<key>BTN_TEXT_MAINMENU</key>
 	<string>主菜单</string>
 	<key>BTN_TEXT_SETTING</key>
@@ -300,5 +304,7 @@
 	<string>音乐:</string>
 	<key>BAG_INDENTIFY_FAIL</key>
 	<string>鉴定失败！</string>
+	<key>BAG_TEXT_DESTROY</key>
+	<string>摧毁</string>
 </dict>
 </plist>

@@ -290,6 +290,7 @@ std::string VoxelExplorer::getScreenPickDesc(const cocos2d::Vec2& screenPos, std
                         }
                         else
                         {
+                            //wait by lichuang
                             float percent1 = 0.9f;
                             float percent2 = 1.0f - percent1;
                             bool found = false;

@@ -142,7 +142,8 @@ void GameUILayer::onTouchEnded(cocos2d::Touch *touch, cocos2d::Event *event)
             int eventType = randEvent->at("EVENT_TYPE").asInt();
             std::string msg = randEvent->at("EVENT_DESC").asString();
             CCASSERT(msg == desc, "msg == desc");
-            if(eventType==1){
+            if(eventType==1)
+            {
                 AlertPopupUI* alertPopup = static_cast<AlertPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupAlert));
                 alertPopup->setMessage(msg);
                 if (alertPopup) {
@@ -153,17 +154,32 @@ void GameUILayer::onTouchEnded(cocos2d::Touch *touch, cocos2d::Event *event)
             }
             else if(isTraps)
             {
+                AlertPopupUI* alertPopupUi = static_cast<AlertPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupAlert));
                 if(isCanRemove)
                 {
+                    
+                    if (alertPopupUi)
+                    {
+                        alertPopupUi->setMessage(UtilityHelper::getLocalStringForUi("REMOVE_TRAP_INFO"));
+                        alertPopupUi->setPositiveListerner([](Ref* ref){
+                        },UtilityHelper::getLocalStringForUi("BAG_TEXT_DESTROY"));
+                        alertPopupUi->setNegativeListerner([](Ref* ref){});
+                    }
                 }
                 else
                 {
+                    if (alertPopupUi)
+                    {
+                        alertPopupUi->setMessage(UtilityHelper::getLocalStringForUi("NOT_REMOVE_TRAP"));
+                        alertPopupUi->setPositiveListerner([](Ref* ref){});
+                    }
                 }
             }
             else
             {
                 InformationPopupUI* popupUi = static_cast<InformationPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupInformation));
-                if (popupUi) {
+                if (popupUi)
+                {
                     popupUi->setInfoDesc(msg);
                 }
             }

@@ -224,12 +224,18 @@
 	<string>你变的虚弱了，早就说过黄色的卷轴和风月宝鉴都要远离吗！</string>
 	<key>NPC_KNIGHT_ANSWER</key>
 	<string>SHOP EQUIP</string>
+	<key>NPC_CHILD_ANSWER</key>
+	<string>不要着急,开发者加班加点赶制中哦。。</string>
 	<key>NPC_SHOPGIRL_ANSWER</key>
-	<string>SHOP MARGIC</string>
-	<key>NPC_WEIRDO_ANSWER</key>
-	<string>SHOP GAMBLE</string>
+	<string>魔法物品店</string>
 	<key>NPC_OLDLADY_ANSWER</key>
 	<string>SHOP ALCHEMY</string>
+	<key>NPC_WEIRDO_ANSWER</key>
+	<string>SHOP GAMBLE</string>
+	<key>NPC_LITTLEWITCH_ANSWER</key>
+	<string>不要着急,开发者加班加点赶制中哦。。</string>
+	<key>NPC_NURSE_ANSWER</key>
+	<string>护士</string>
 	<key>ITEM_SPLITE_COUNT</key>
 	<string>Count:%d</string>
 	<key>ITEM_BAG_DELETE</key>
@@ -260,6 +266,10 @@
 	<string>你被传送了</string>
 	<key>STANDARD_PROTAL_NO_ENERGY</key>
 	<string>传送能量不足了</string>
+	<key>REMOVE_TRAP_INFO</key>
+	<string>是否摧毁该陷阱？</string>
+	<key>NOT_REMOVE_TRAP</key>
+	<string>gai2xian</string>
 	<key>BTN_TEXT_MAINMENU</key>
 	<string>MAIN MENU</string>
 	<key>BTN_TEXT_SETTING</key>
@@ -292,5 +302,7 @@
 	<string>MUSIC:</string>
 	<key>BAG_INDENTIFY_FAIL</key>
 	<string>鉴定失败！</string>
+	<key>BAG_TEXT_DESTROY</key>
+	<string>摧毁</string>
 </dict>
 </plist>
