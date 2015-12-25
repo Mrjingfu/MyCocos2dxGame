@@ -82,10 +82,6 @@ void PopupUILayerManager::onExitScene()
 
 PopupUILayer* PopupUILayerManager::openPopup(ePopupType type,int zorder /* = eZorderPopupUILayer */)
 {
-    //针对Prompt调用 因为首次打开popup 会暂停界面 得清除所有的
-    if(m_pGlobalPromptlayer)
-        m_pGlobalPromptlayer->clearGlobalPrompt();
-    //end
     m_pLastPopUpType = m_cCurrentPopUpType;
     if(m_cCurrentPopUpType!= ePopupInvalid)
     {

@@ -129,17 +129,57 @@ void GameUILayer::onTouchEnded(cocos2d::Touch *touch, cocos2d::Event *event)
         return;
     if(m_pGameToolBarLayer->isOpenDist())
     {
+        const ValueMap* randEvent = nullptr;
+        bool isTraps = false;
+        bool isCanRemove = false;
+        Vec2 trapPos;
         std::string iconRes;
-        std::string desc = VoxelExplorer::getInstance()->getScreenPickDesc(touch->getLocation(), iconRes);
-        InformationPopupUI* infoUi = static_cast<InformationPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupInformation));
-        if(infoUi)
+        std::string desc = VoxelExplorer::getInstance()->getScreenPickDesc(touch->getLocation(), iconRes, randEvent, isTraps, isCanRemove, trapPos);
+        
+        if(randEvent)
         {
-            m_pGameToolBarLayer->onClickDistTipsFrame();
-            infoUi->setDarkLayerVisble(false);
-            infoUi->setInfoIcon(iconRes);
-            infoUi->setInfoDesc(desc);
+            int eventType = randEvent->at("EVENT_TYPE").asInt();
+            std::string msg = randEvent->at("EVENT_DESC").asString();
+            CCASSERT(msg == desc, "msg == desc");
+            if(eventType==1){
+                AlertPopupUI* alertPopup = static_cast<AlertPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupAlert));
+                alertPopup->setMessage(msg);
+                if (alertPopup) {
+                    alertPopup->setPositiveListerner([](Ref*){
+                        PlayerProperty::getInstance()->addMoney(CChaosNumber(10000));
+                    });
+                }
+            }
+            else if(isTraps)
+            {
+                if(isCanRemove)
+                {
+                }
+                else
+                {
+                }
+            }
+            else
+            {
+                InformationPopupUI* popupUi = static_cast<InformationPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupInformation));
+                if (popupUi) {
+                    popupUi->setInfoDesc(msg);
+                }
+            }
+
         }
-        CCLOG("Pick Desc : %s, Icon Res: %s", desc.c_str(), iconRes.c_str());
+        else
+        {
+            InformationPopupUI* infoUi = static_cast<InformationPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupInformation));
+            if(infoUi)
+            {
+                m_pGameToolBarLayer->onClickDistTipsFrame();
+                infoUi->setDarkLayerVisble(false);
+                infoUi->setInfoIcon(iconRes);
+                infoUi->setInfoDesc(desc);
+            }
+            CCLOG("Pick Desc : %s, Icon Res: %s", desc.c_str(), iconRes.c_str());
+        }
     }
     return;
 }
@@ -469,27 +509,9 @@ void GameUILayer::onEventFoundHidderTrapWeak(cocos2d::EventCustom *sender)//ÂèëÁ
 void GameUILayer::onEventFoundHidderMsg(cocos2d::EventCustom *sender)
 {
     CCLOG("onEventFoundHidderMsg");
-    
-    ValueMap* randEvent = static_cast<ValueMap*>(sender->getUserData());
-    if (randEvent) {
-        int eventType = randEvent->at("EVENT_TYPE").asInt();
-        std::string msg = randEvent->at("EVENT_DESC").asString();
-        if(eventType==1){
-            AlertPopupUI* alertPopup = static_cast<AlertPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupAlert));
-            alertPopup->setMessage(msg);
-            if (alertPopup) {
-                alertPopup->setPositiveListerner([](Ref*){
-                    PlayerProperty::getInstance()->addMoney(CChaosNumber(10000));
-                });
-            }
-        }else{
-            InformationPopupUI* popupUi = static_cast<InformationPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupInformation));
-            if (popupUi) {
-                popupUi->setInfoDesc(msg);
-            }
-        }
-    }
-    
+    std::string msg = UtilityHelper::getLocalStringForUi(EVENT_FOUND_HIDDEN_MSG);
+    PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
+    m_pGameToolBarLayer->sendMessage(msg);
 }
 void GameUILayer::onEventFoundHidderItem(cocos2d::EventCustom *sender)
 {

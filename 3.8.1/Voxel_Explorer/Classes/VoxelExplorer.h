@@ -25,7 +25,7 @@ public:
     void destroy();
     void update(float delta);
     
-    std::string getScreenPickDesc(const cocos2d::Vec2& screenPos, std::string& strIcon);
+    std::string getScreenPickDesc(const cocos2d::Vec2& screenPos, std::string& strIcon, const cocos2d::ValueMap* event, bool& isTraps, bool& isCanRemove, cocos2d::Vec2& checkpos);
     bool checkMovable(TileInfo& info);
     void cameraTrackPlayer();
     void checkPickItem();
@@ -71,6 +71,8 @@ public:
     void handleUpstairs();
     void handleDownstairs();
     void handleGoChasm();
+    
+    void handleRemoveTrap(const cocos2d::Vec2& mapPos);
     
     cocos2d::Layer* getMainLayer() const { return m_pMainLayer; }
     cocos2d::Layer* get3DLayer() const { return m_p3DLayer; }
