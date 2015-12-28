@@ -291,7 +291,7 @@ std::string VoxelExplorer::getScreenPickDesc(const cocos2d::Vec2& screenPos, std
                         else
                         {
                             //wait by lichuang
-                            float percent1 = 0.9f;
+                            float percent1 = 0.01f;
                             float percent2 = 1.0f - percent1;
                             bool found = false;
                             AlisaMethod* am = AlisaMethod::create(percent1, percent2, -1.0, NULL);
@@ -314,6 +314,7 @@ std::string VoxelExplorer::getScreenPickDesc(const cocos2d::Vec2& screenPos, std
                                     if(foundWall)
                                     {
                                         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_FOUND_HIDDEN_MSG);
+                                        StatisticsManager::getInstance()->addHideInfoNum(StatisticsManager::eHideInfoType::HIT_MSG);
                                         std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("SECRET_FOUND");
                                         SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
                                         randEvent->at("HAS_READED") = true;
@@ -326,6 +327,7 @@ std::string VoxelExplorer::getScreenPickDesc(const cocos2d::Vec2& screenPos, std
                                         if(randEvent && randEvent->at("EVENT_TYPE").asInt() != (int)RANDOM_EVENT_TYPE::RET_WALL_STANDARD)
                                         {
                                             Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_FOUND_HIDDEN_MSG);
+                                            StatisticsManager::getInstance()->addHideInfoNum(StatisticsManager::eHideInfoType::HIT_MSG);
                                             std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("SECRET_FOUND");
                                             SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
                                             randEvent->at("HAS_READED") = true;
@@ -383,6 +385,7 @@ void VoxelExplorer::checkUpdateFogOfWar()
     if(!m_pCurrentLevel || !m_pPlayer)
         return;
     m_pCurrentLevel->updateAreaFogOfWarByPos(m_pPlayer->getPosInMap());
+    updateStatisticsAreaDatas();
 }
 void VoxelExplorer::checkTriggerTrap()
 {
@@ -682,6 +685,13 @@ void VoxelExplorer::searchAndCheck()    ///侦查
         }
     }
 }
+void VoxelExplorer::updateStatisticsAreaDatas()
+{
+    if (m_pCurrentLevel->checkAllAreaBeExplored()) {
+        StatisticsManager::getInstance()->decreaseExploreAllAreaNum();
+        StatisticsManager::getInstance()->addExploreAllAreaNum();
+    }
+}
 void VoxelExplorer::updateTerrainTile(int x, int y, TerrainTile::TileType type)
 {
     if(m_pTerrainTilesLayer)
@@ -845,6 +855,7 @@ void VoxelExplorer::handleDoor(const cocos2d::Vec2& mapPos)
                     door->setDoorState(BaseDoor::DS_CLOSED);
                     m_pCurrentLevel->setTerrainTileType(mapPos.x, mapPos.y, TerrainTile::TT_DOOR);
                     Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_FOUND_HIDDEN_DOOR);
+                    StatisticsManager::getInstance()->addHideInfoNum(StatisticsManager::eHideInfoType::HIT_DOOR);
                     return;
                 }
                 else if(door->getDoorState() == BaseDoor::DS_CLOSED)
@@ -860,7 +871,10 @@ void VoxelExplorer::handleDoor(const cocos2d::Vec2& mapPos)
                     {
                         door->setDoorState(BaseDoor::DS_OPENED);
                         if(m_pCurrentLevel)
+                        {
                             m_pCurrentLevel->updateAreaFogOfWarByPos(door->getPosInMap());
+                            updateStatisticsAreaDatas();
+                        }
                         return;
                     }
                 }
@@ -1038,7 +1052,6 @@ void VoxelExplorer::handleTriggerTrap(const cocos2d::Vec2& mapPos, TerrainTile::
             int bufferFlag = PlayerProperty::getInstance()->getPlayerBuffer();
             if((bufferFlag & PB_POISONING) == 0)
             {
-                StatisticsManager::getInstance()->addTriggerTrapNum(trapType);
                 Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_TRIGGER_TOXIC_TRAP);
                 m_pPlayer->addPlayerBuffer(PB_POISONING);
                 
@@ -1050,7 +1063,6 @@ void VoxelExplorer::handleTriggerTrap(const cocos2d::Vec2& mapPos, TerrainTile::
             int bufferFlag = PlayerProperty::getInstance()->getPlayerBuffer();
             if((bufferFlag & PB_FIRE) == 0)
             {
-                StatisticsManager::getInstance()->addTriggerTrapNum(trapType);
                 Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_TRIGGER_FIRE_TRAP);
                 m_pPlayer->addPlayerBuffer(PB_FIRE);
                 trigged = true;
@@ -1061,7 +1073,6 @@ void VoxelExplorer::handleTriggerTrap(const cocos2d::Vec2& mapPos, TerrainTile::
             int bufferFlag = PlayerProperty::getInstance()->getPlayerBuffer();
             if((bufferFlag & PB_PARALYTIC) == 0)
             {
-                StatisticsManager::getInstance()->addTriggerTrapNum(trapType);
                 Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_TRIGGER_PARALYTIC_TRAP);
                 m_pPlayer->addPlayerBuffer(PB_PARALYTIC);
                 trigged = true;
@@ -1069,7 +1080,6 @@ void VoxelExplorer::handleTriggerTrap(const cocos2d::Vec2& mapPos, TerrainTile::
         }
         else if(trapType == TerrainTile::TT_GRIPPING_TRAP)
         {
-            StatisticsManager::getInstance()->addTriggerTrapNum(trapType);
             Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_TRIGGER_GRIPPING_TRAP);
             m_pPlayer->hurtByGrippingTrap();
             trigged = true;
@@ -1080,7 +1090,6 @@ void VoxelExplorer::handleTriggerTrap(const cocos2d::Vec2& mapPos, TerrainTile::
         {
             if(m_pPlayer->getLastPosInMap() != m_pPlayer->getPosInMap())
             {
-                StatisticsManager::getInstance()->addTriggerTrapNum(trapType);
                 Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_TRIGGER_SUMMONING_TRAP);
                 if(!m_pCurrentLevel->createSummoningMonsters(mapPos))
                     CCLOG("Handle trigger summoning trap failed!");
@@ -1094,7 +1103,6 @@ void VoxelExplorer::handleTriggerTrap(const cocos2d::Vec2& mapPos, TerrainTile::
             int bufferFlag = PlayerProperty::getInstance()->getPlayerBuffer();
             if((bufferFlag & PB_WEAK) == 0)
             {
-                StatisticsManager::getInstance()->addTriggerTrapNum(trapType);
                 Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_TRIGGER_WEAK_TRAP);
                 m_pPlayer->addPlayerBuffer(PB_WEAK);
                 trigged = true;
@@ -1148,26 +1156,32 @@ void VoxelExplorer::handleShowHiddenTrap(const cocos2d::Vec2& mapPos, TerrainTil
         if(trapType == TerrainTile::TT_TOXIC_TRAP)
         {
             Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_FOUND_HIDDEN_TOXIC_TRAP);
+            StatisticsManager::getInstance()->addHideInfoNum(StatisticsManager::eHideInfoType::HIT_TRAP);
         }
         else if(trapType == TerrainTile::TT_FIRE_TRAP)
         {
             Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_FOUND_HIDDEN_FIRE_TRAP);
+             StatisticsManager::getInstance()->addHideInfoNum(StatisticsManager::eHideInfoType::HIT_TRAP);
         }
         else if(trapType == TerrainTile::TT_PARALYTIC_TRAP)
         {
             Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_FOUND_HIDDEN_PARALYTIC_TRAP);
+             StatisticsManager::getInstance()->addHideInfoNum(StatisticsManager::eHideInfoType::HIT_TRAP);
         }
         else if(trapType == TerrainTile::TT_GRIPPING_TRAP)
         {
             Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_FOUND_HIDDEN_GRIPPING_TRAP);
+             StatisticsManager::getInstance()->addHideInfoNum(StatisticsManager::eHideInfoType::HIT_TRAP);
         }
         else if(trapType == TerrainTile::TT_SUMMONING_TRAP)
         {
             Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_FOUND_HIDDEN_SUMMONING_TRAP);
+             StatisticsManager::getInstance()->addHideInfoNum(StatisticsManager::eHideInfoType::HIT_TRAP);
         }
         else if(trapType == TerrainTile::TT_WEAK_TRAP)
         {
             Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_FOUND_HIDDEN_WEAK_TRAP);
+             StatisticsManager::getInstance()->addHideInfoNum(StatisticsManager::eHideInfoType::HIT_TRAP);
         }
         if(m_pTerrainTilesLayer)
         {
@@ -1460,6 +1474,7 @@ void VoxelExplorer::handlePlayerUseSmallPortal()
     m_pPlayer->addTerrainTileFlag(TileInfo::ATTACKABLE);
     
     m_pCurrentLevel->updateAreaFogOfWarByPos(pos, true);
+    updateStatisticsAreaDatas();
     updateMiniMap();
     
     m_pMainCamera->setPosition3D(m_pPlayer->getPosition3D() + Vec3(0, 5*TerrainTile::CONTENT_SCALE, 4*TerrainTile::CONTENT_SCALE ));
@@ -1514,9 +1529,11 @@ void VoxelExplorer::handleGoChasm()
             if(randIndex == 0)
             {
                 m_pPlayer->fallAndDie();
+                StatisticsManager::getInstance()->addRoleDeadNum(StatisticsManager::eRoleDeadType::RET_FAIL);
             }
             else
             {
+                StatisticsManager::getInstance()->addNotFailDeadNum();
                 Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_FALL_DOWNSTAIRS);
                 RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nCurrentDepth += 1;
                 auto scene = GameScene::createScene();

@@ -47,6 +47,7 @@ public:
     bool checkBossRoomDoorClosed();
     void clearBoosRoom();
     void searchAndCheck();      ///侦查
+    void updateStatisticsAreaDatas();
     
     void updateTerrainTile(int x, int y, TerrainTile::TileType type);
     

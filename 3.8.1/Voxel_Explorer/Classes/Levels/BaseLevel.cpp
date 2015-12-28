@@ -457,7 +457,22 @@ void BaseLevel::preloadBGMusic()
     }
     SimpleAudioEngine::getInstance()->setBackgroundMusicVolume(0.25f);
 }
-
+bool BaseLevel::checkAllAreaBeExplored()
+{
+    int visSize = 0;
+    for (int i=0; i<m_Map.size(); i++)
+    {
+        TileInfo info = m_Map[i];
+        if (info.m_Type!=TerrainTile::TT_CHASM && info.m_bVisited)
+        {
+            ++visSize;
+        }
+    }
+    if (visSize == m_Map.size() ) {
+        return true;
+    }
+    return false;
+}
 void BaseLevel::playBGStandardMusic()
 {
     SimpleAudioEngine::getInstance()->stopBackgroundMusic();

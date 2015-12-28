@@ -14,7 +14,7 @@
 #include "PopupUILayerManager.h"
 #include "AlertPopupUI.hpp"
 #include "UtilityHelper.h"
-
+#include "StatisticsManager.hpp"
 SellItem* SellItem::create(int itemId,int count /*=1*/)
 {
     SellItem* sellItem = new (std::nothrow) SellItem();
@@ -453,7 +453,19 @@ void BagLayer::bagItemOpe(int currentItemId)
             }
             return;
         }
-        
+        //统计鉴定
+        if (isSucces) {
+            PickableItemProperty* itemprop =  PlayerProperty::getInstance()->getItemFromBag(currentItemId);
+            if (isSucces && itemprop) {
+                StatisticsManager::getInstance()->addIdentifyNum();
+                if (itemprop->getAddedEffectList().size() >2) {
+                    StatisticsManager::getInstance()->addIdentifyAttrNum();
+                }
+                if (itemprop->getQuality()>=PIQ_LEGEND) {
+                    StatisticsManager::getInstance()->addIdentifyLegendNum();
+                }
+            }
+        }
     }
     
     ItemPopupUI* popupui = static_cast<ItemPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupType::ePopupItem));

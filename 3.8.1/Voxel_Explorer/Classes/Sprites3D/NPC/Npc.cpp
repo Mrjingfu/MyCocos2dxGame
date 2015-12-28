@@ -11,6 +11,7 @@
 #include "UtilityHelper.h"
 #include "VoxelExplorer.h"
 #include "Player.hpp"
+#include "StatisticsManager.hpp"
 USING_NS_CC;
 const std::string NPC_NAMES[] = {
     "NPCN_CHILD",           ///小孩
@@ -150,7 +151,6 @@ void Npc::onEnterAnswer()
         case NPC_CHILD:
             Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_NPC_CHILD_ANSWER, this);
             break;
-        
         case NPC_SHOPGIRL:
             Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_NPC_SHOPGIRL_ANSWER, this);
             break;
@@ -161,12 +161,14 @@ void Npc::onEnterAnswer()
             Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_NPC_KNIGHT_ANSWER, this);
             break;
         case NPC_WEIRDO:
+            StatisticsManager::getInstance()->addMeetThiefNum();
             Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_NPC_WEIRDO_ANSWER, this);
             break;
         case NPC_OLDMAN:
             Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_NPC_OLDMAN_ANSWER, this);
             break;
         case NPC_LITTLEWITCH:
+            StatisticsManager::getInstance()->addMeetHagNum();
             Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_NPC_LITTLEWITCH_ANSWER, this);
             break;
         default:

@@ -37,6 +37,7 @@
 #include "AchieveItemPopupUI.hpp"
 #include "DeadPopupUI.h"
 #include "Npc.hpp"
+#include "StatisticsManager.hpp"
 USING_NS_CC;
 GameUILayer::GameUILayer()
 {
@@ -130,6 +131,7 @@ void GameUILayer::onTouchEnded(cocos2d::Touch *touch, cocos2d::Event *event)
         return;
     if(m_pGameToolBarLayer->isOpenDist())
     {
+        StatisticsManager::getInstance()->addSearchNum();
         const ValueMap* randEvent = nullptr;
         bool isTraps = false;
         bool isCanRemove = false;
@@ -403,6 +405,7 @@ void GameUILayer::onEventNpcOldManAnsWer(cocos2d::EventCustom *sender)
             infoPopup->setInfoVector(NpcDataManager::getInstance()->getOldManRoomInfo());
             infoPopup->setTitle(UtilityHelper::getLocalStringForUi(EVENT_NPC_OLDMAN_ANSWER));
             infoPopup->registerCloseCallback([npc,this](){
+                StatisticsManager::getInstance()->addMeetSageNum();
                 npc->setState(Npc::NPCS_IDLE);
                 if (m_pNpcPropLayer) {
                     m_pNpcPropLayer->setVisible(false);

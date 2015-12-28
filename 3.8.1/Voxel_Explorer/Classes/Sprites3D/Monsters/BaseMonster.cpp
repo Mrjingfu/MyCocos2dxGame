@@ -189,6 +189,10 @@ void BaseMonster::attackedByPlayer(bool miss)
             addexp = GameFormula::getKillNormalMonsterExp(PlayerProperty::getInstance()->getLevel(), m_pMonsterProperty->getLevel());
         PlayerProperty::getInstance()->setExp(PlayerProperty::getInstance()->getExp() + addexp.GetLongValue());
         StatisticsManager::getInstance()->addMonsterKillNum(this->getMonsterType());
+        if (m_pMonsterProperty->isElite())
+        {
+            StatisticsManager::getInstance()->addMonsterEliteNum();
+        }
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_MONSTER_DEATH, this);
     }
     else

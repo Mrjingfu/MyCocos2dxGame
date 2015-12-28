@@ -15,6 +15,7 @@
 #include "GameFormula.hpp"
 #include "OutlineEffect3D.h"
 #include "SimpleAudioEngine.h"
+#include "StatisticsManager.hpp"
 USING_NS_CC;
 using namespace CocosDenshion;
 const std::string BOSS_MODEL_NAMES[] = {
@@ -169,6 +170,7 @@ void BaseBoss::attackedByPlayer(bool miss)
         addexp = GameFormula::getKillBossExp(PlayerProperty::getInstance()->getLevel(), PlayerProperty::getInstance()->getLevel()+5);
         PlayerProperty::getInstance()->setExp(PlayerProperty::getInstance()->getExp() + addexp.GetLongValue());
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_BOSS_DEATH, this);
+        StatisticsManager::getInstance()->addBossKillNum(m_Type);
     }
     else
     {

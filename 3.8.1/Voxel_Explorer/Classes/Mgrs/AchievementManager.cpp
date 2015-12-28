@@ -99,14 +99,8 @@ void AchievementManager::handleAchievement(eAchievementDetailType achiId)
         CCLOG("achieveProp is null");
         return;
     }
-    switch (achiId) {
-        case ADT_KILL_FIRST:
-           
-            updateAchieve(achieveProp);
-            break;
-        default:
-            break;
-    }
+    updateAchieve(achieveProp);
+
 }
 void AchievementManager::updateAchieve(AchieveProperty *achieve)
 {

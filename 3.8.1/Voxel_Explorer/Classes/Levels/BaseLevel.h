@@ -155,6 +155,8 @@ public:
     
     void preloadBGMusic();
     
+    bool checkAllAreaBeExplored();
+    
     void load();
     void save();
     

@@ -12,6 +12,7 @@
 #include "GameFormula.hpp"
 #include "NpcDataManager.hpp"
 #include "ItemMoneyLayer.hpp"
+#include "StatisticsManager.hpp"
 ItemShopBuyPopupUI::ItemShopBuyPopupUI()
 {
     
@@ -164,14 +165,24 @@ void ItemShopBuyPopupUI::onClickBuy(cocos2d::Ref *ref)
         }else if (m_eShopType == ShopPopupUI::ST_WEAPON)
         {
             isRemoveSucces = NpcDataManager::getInstance()->removeItemFromEquipmentShopList(itemid);
+            if (isRemoveSucces) {
+                StatisticsManager::getInstance()->addBuyEquipNum();
+            }
             
         }else if(m_eShopType == ShopPopupUI::ST_MAGIC)
         {
             isRemoveSucces = NpcDataManager::getInstance()->removeItemFromMagicShopList(itemid);
+            if (isRemoveSucces) {
+                StatisticsManager::getInstance()->addBuyMagicOramNum();
+            }
             
         }else if (m_eShopType==ShopPopupUI::ST_ALCHEMY)
         {
+            
             isRemoveSucces = NpcDataManager::getInstance()->removeItemFromAlchemistRoomList(itemid);
+            if (isRemoveSucces) {
+                StatisticsManager::getInstance()->addBuyPotionScrollNum();
+            }
         }
         if (isRemoveSucces) {
              CCLOG("购买成功");

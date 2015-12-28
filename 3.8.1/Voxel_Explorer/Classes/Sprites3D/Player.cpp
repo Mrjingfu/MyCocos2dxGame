@@ -158,6 +158,7 @@ void Player::addPlayerBuffer(PlayerBuffer buff)
         {
             ///增加拖尾或粒子
             PlayerProperty::getInstance()->addPlayerBuffer(buff);
+            StatisticsManager::getInstance()->addSpeedUpNum();
         }
         std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("BUFFER_SPEEDUP");
         SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
@@ -172,6 +173,7 @@ void Player::addPlayerBuffer(PlayerBuffer buff)
             EaseSineOut* fadeTo = EaseSineOut::create(FadeTo::create(1.0f, 127));
             this->runAction(fadeTo);
             PlayerProperty::getInstance()->addPlayerBuffer(buff);
+            StatisticsManager::getInstance()->addStealthNum();
         }
         std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("BUFFER_STEALTH");
         SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
@@ -186,6 +188,7 @@ void Player::addPlayerBuffer(PlayerBuffer buff)
             EaseSineOut* fadeTo = EaseSineOut::create(ScaleTo::create(1.0f, 1.5f));
             this->runAction(fadeTo);
             PlayerProperty::getInstance()->addPlayerBuffer(buff);
+            StatisticsManager::getInstance()->addStrongNum();
         }
         std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("BUFFER_STRONGER");
         SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
@@ -280,6 +283,7 @@ void Player::removePlayerBuffer(PlayerBuffer buff)
                 tex->setAliasTexParameters();
             setTexture(tex);
             PlayerProperty::getInstance()->removePlayerBuffer(buff);
+            StatisticsManager::getInstance()->addPoisonRecoverNum();
         }
     }
     else if(buff == PB_WEAK)
@@ -319,6 +323,7 @@ void Player::removePlayerBuffer(PlayerBuffer buff)
             if(tex)
                 tex->setAliasTexParameters();
             setTexture(tex);
+            StatisticsManager::getInstance()->addWeakRecoverNum();
             PlayerProperty::getInstance()->removePlayerBuffer(buff);
         }
     }

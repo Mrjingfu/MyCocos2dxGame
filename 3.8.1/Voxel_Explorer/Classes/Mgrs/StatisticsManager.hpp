@@ -9,9 +9,9 @@
 #ifndef StatisticsManager_hpp
 #define StatisticsManager_hpp
 #include "BaseMonster.hpp"
-#include "PickableItem.hpp"
 #include "TerrainTile.hpp"
 #include "UseableItem.hpp"
+#include "BaseBoss.hpp"
 #include "AchieveConst.h"
 class StatisticsManager {
     StatisticsManager();
@@ -24,25 +24,65 @@ public:
         RET_TRIGGER_GRIPPING_TRAP,      //夹子陷阱死亡
         RET_BUFFER_FIRE,                //火 死亡
         RET_BUFFER_POISONING,           //中毒死亡
+        RET_FAIL,                       //摔死
         RET_MAX
+    };
+    //隐藏信息
+    enum eHideInfoType
+    {
+        HIT_MSG = 0,        //隐藏信息
+        HIT_DOOR,       //隐藏门
+        HIT_TRAP,       //隐藏陷阱
+        HIT_MAX
     };
     virtual ~StatisticsManager();
     static StatisticsManager* getInstance();
     
     void addMonsterKillNum(BaseMonster::MonsterType type);
-    void addUseItemNum(PickableItem::PickableItemType type);
-    void addTriggerTrapNum(TerrainTile::TileType type);
+    void addBossKillNum(BaseBoss::BossType type);
+    void addHideInfoNum(eHideInfoType type);
     void addUserableOpenNum(UseableItem::UseableItemType type);
     void addRoleDeadNum(eRoleDeadType type);
     
     void addCopperTotalNum(int num);
-    void addCostCopperNum(int num);
     void addStepNum();
+    
+    void addUseKeyNum();
     void addCriticalTotalNum();
     void addDodgeTotalNum();
     void addBlockTotalNum();
-    void addSearchHideInfoNum();
+    void addRoleLevelNum(int Level);
+    void addMonsterEliteNum();
+    void addIdentifyNum();
+    void addIdentifyAttrNum();
+    void addIdentifyLegendNum();
+
+    void addBagFullNum();
+    void addDiscardItemNum();
+    void addDiscardEquipNum();
+    void addPickItemNum();
+    void addPickMagicItemNum();
+    void addNineStepTenNum();       //wait
+    void addThirtyNotMoveNum();     //wait
     
+    void addExploreAllAreaNum();
+    void decreaseExploreAllAreaNum();
+    
+    void addSearchNum();
+    void addfoodEaten();
+    void addMeetThiefNum();
+    void addMeetHagNum();
+    void addMeetSageNum();
+    void addNurseTreatNum();        //wait
+    void addBuyEquipNum();
+    void addBuyPotionScrollNum();
+    void addBuyMagicOramNum();
+    void addStealthNum();
+    void addNotFailDeadNum();
+    void addWeakRecoverNum();
+    void addPoisonRecoverNum();
+    void addSpeedUpNum();
+    void addStrongNum();
    
     CChaosNumber getDataStatistType(eStatistType type) const;
     
@@ -50,35 +90,67 @@ public:
     void save();
 private:
     CChaosNumber getDataMonsterType(eStatistType type) const;
-    CChaosNumber getDataUseType(eStatistType type) const;
-    CChaosNumber getDataTriggerType(eStatistType type) const;
     CChaosNumber getDataTotalType(eStatistType type) const;
     CChaosNumber getDataDeadType(eStatistType type) const;
+    CChaosNumber getDataBossType(eStatistType type) const;
+    CChaosNumber getDataHideInfoType(eStatistType type) const;
 private:
     CChaosNumber m_mMonsterKills[BaseMonster::MT_MAX];//杀死不同类型敌人数
-    std::map<PickableItem::PickableItemType,CChaosNumber> m_mUseItemNums; //使用不同道具数
-    std::map<TerrainTile::TileType,CChaosNumber> m_mTriggerToxicNums;  //触发不同机关数
+    CChaosNumber m_mBossKills[BaseBoss::BossType::BT_MAX];  //杀死Boss
     CChaosNumber m_mUserableOpenNums[UseableItem::UseableItemType::UIT_UNKNOWN]; //
     CChaosNumber m_mDeadTypeNums[eRoleDeadType::RET_MAX];
+    CChaosNumber m_mHideInfoTypeNums[eHideInfoType::HIT_MAX];
+    
     CChaosNumber m_nCopperTotalNum;         //铜币收集总数
-    CChaosNumber m_nCostCopperNum;          //花费铜币个数
-    CChaosNumber m_nfoodEaten;              //到达最远深度
     CChaosNumber m_nStepNum;                //步数
     CChaosNumber m_nMonsterKillTotalNum;    //杀死敌人总数
-    CChaosNumber m_nSearchHideInfoNum;      //搜索隐藏信息次数
-    CChaosNumber m_nUsePotionTotalNum;      //使用药品数
-    CChaosNumber m_nUseScrollTotalNum;      //使用卷轴数
     CChaosNumber m_nUseKeyTotalNum;         //使用钥匙数
-    CChaosNumber m_nUserItemTotalNum;       //使用道具数
     CChaosNumber m_nCriticalTotalNum;       //暴击数
     CChaosNumber m_nDodgeTotalNum;          //闪避数
     CChaosNumber m_nBlockTotalNum;          //格挡数
-    CChaosNumber m_nTriggerToxicTotalNum;    //触发机关总数
     CChaosNumber m_nRoleDeadTotalNum;       //人物死亡次数
     CChaosNumber m_nChestCopperTotalNum;    //打开铜宝箱数
     CChaosNumber m_nChestSilverTotalNum;    //打开银宝箱数
     CChaosNumber m_nChestGoldTotalNum;      //打开金宝箱数
     CChaosNumber m_nJarTotalNum;            //打破罐子数
+    CChaosNumber m_nRoleLevelNum;           //人物等级
+    CChaosNumber m_nMonsterEliteKillNum;    //杀死精英怪
+    CChaosNumber m_nIdentifyNum;            //鉴定次数
+    CChaosNumber m_nIdentifyAttrNum;        //鉴定属性两条以上
+    CChaosNumber m_nIdentifyLegend;         //鉴定传说品质
+    //
+    CChaosNumber m_nBagFullNum;             //背包装满
+    CChaosNumber m_nDiscardItemNum;         //道具丢弃
+    CChaosNumber m_nDiscardEquipNum;        //武器丢弃
+    CChaosNumber m_nPickItemNum;            //道具拾取
+    CChaosNumber m_nPickMagicItemNum;       //拾取魔法物品
+    CChaosNumber m_nNineStepTenNum;         //9秒移动10步
+    CChaosNumber m_nThirtyNotMoveNum;       //30秒不动
+    CChaosNumber m_nExploreAllAreaNum;      //当前区域全部探索完成
+    CChaosNumber m_nFoundHideDoorTrapNum;   //发现隐藏门和陷阱
+    CChaosNumber m_nSearchNum;              //搜索
+    CChaosNumber m_nfoodEaten;              //到达最远深度
+    CChaosNumber m_nBoxNum;                 //开启宝箱
+    CChaosNumber m_nMeetThiefNum;           //遇见盗贼
+    CChaosNumber m_nMeetHagNum;             //魔女
+    CChaosNumber m_nMeetSageNum;            //遇见智者对话
+    CChaosNumber m_nNurseTreatNum;          //护士治疗
+    CChaosNumber m_nBuyEquipNum;            //购买装备
+    CChaosNumber m_nBuyPotionScrollNum;     //购买药水卷轴
+    CChaosNumber m_nBuyMagicOramNum;        //购买魔法饰品
+    //
+    //
+    CChaosNumber m_nStealthNum;             //隐身
+    CChaosNumber m_nNotFailDeadNum;         //没有摔死
+    CChaosNumber m_nWeakRecoverNum;         //虚弱恢复
+    CChaosNumber m_nPoisonRecoverNum;       //中毒恢复
+    CChaosNumber m_nSpeedUpNum;             //加速
+    CChaosNumber m_nStrongNum;              //强壮
+    
+
+
+
+    
 };
 
 #endif /* StatisticsManager_hpp */

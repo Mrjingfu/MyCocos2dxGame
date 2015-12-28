@@ -215,7 +215,6 @@ bool PlayerProperty::costMoney( CChaosNumber costcopper )
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_MONEY_NOT_ENOUGH);
         return false;
     }
-    StatisticsManager::getInstance()->addCostCopperNum(costcopper);
     m_nValueCopper = m_nValueCopper - costcopper.GetLongValue();
     Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_PROPERTY_DIRTY);
     m_bDirty = true;
@@ -582,7 +581,6 @@ bool PlayerProperty::indentifyItem(CChaosNumber id)
             if(scrollProperty && (scrollProperty->getPickableItemType() == PickableItem::PIT_SCROLL_INDENTIFY) && (scrollProperty->getCount() >= 1))
             {
                 scrollProperty->decreaseCount();
-                StatisticsManager::getInstance()->addUseItemNum(scrollProperty->getPickableItemType());
                 hasIndentifyScroll = true;
                 break;
             }
@@ -667,7 +665,6 @@ bool PlayerProperty::usePotion(CChaosNumber id)
             default:
                 break;
         }
-        StatisticsManager::getInstance()->addUseItemNum(potionsProperty->getPickableItemType());
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_USE_POTION, potionsProperty);
         if(potionsProperty->getCount() <= 0)
             removeItemFromBag(id);
@@ -692,7 +689,6 @@ bool PlayerProperty::useScroll(CChaosNumber id)
         }
         else
         {
-            StatisticsManager::getInstance()->addUseItemNum(scrollProperty->getPickableItemType());
             VoxelExplorer::getInstance()->handlePlayerUseScroll(scrollProperty->getPickableItemType());
             Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_USE_SCROLL, scrollProperty);
             scrollProperty->decreaseCount();
@@ -718,7 +714,7 @@ bool PlayerProperty::useKey(PickableItem::PickableItemType type)
     }
     if(keyProperty && keyProperty->getPickableItemType() == type)
     {
-        StatisticsManager::getInstance()->addUseItemNum(type);
+        StatisticsManager::getInstance()->addUseKeyNum();
         keyProperty->decreaseCount();
         if(keyProperty->getCount() <=0 )
             removeItemFromBag((int)(keyProperty->getInstanceID()));
@@ -732,6 +728,7 @@ bool PlayerProperty::buyItemToBag(PickableItemProperty* buyItemProperty, CChaosN
         return false;
     if(m_Bag.size() >= m_nBagMaxSpace.GetLongValue())
     {
+        StatisticsManager::getInstance()->addBagFullNum();
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_BAG_NO_SPACE);
         return false;
     }
@@ -863,6 +860,7 @@ bool PlayerProperty::addItemToBag(PickableItem::PickableItemType type, CChaosNum
 {
     if(m_Bag.size() >= m_nBagMaxSpace.GetLongValue())
     {
+        StatisticsManager::getInstance()->addBagFullNum();
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_BAG_NO_SPACE);
         return false;
     }
@@ -909,19 +907,41 @@ bool PlayerProperty::addItemToBag(PickableItem::PickableItemType type, CChaosNum
     if(type >= PickableItem::PIT_KEY_COPPER && type <= PickableItem::PIT_KEY_ROOM)
         itemProperty = new (std::nothrow) KeyProperty(m_snItemInstanceIDCounter++,type);
     else if (type >= PickableItem::PIT_DAGGER_DAGGER && type <= PickableItem::PIT_MACE_PRO_SLEDGEHAMMER)
+    {
         itemProperty = new (std::nothrow) WeaponProperty(m_snItemInstanceIDCounter++,type, level, !GameFormula::generateMagicItem(m_fMagicItemFindRate.GetFloatValue()));
+        if (sound && itemProperty&&itemProperty->isIdentified()) {
+            StatisticsManager::getInstance()->addPickMagicItemNum();
+        }
+    }
     else if (type >= PickableItem::PIT_BOW_SHORTBOW && type <=PickableItem::PIT_SHIELD_PRO_TOWERSHIELD)
+    {
         itemProperty = new (std::nothrow) SecondWeaponProperty(m_snItemInstanceIDCounter++,type, level, !GameFormula::generateMagicItem(m_fMagicItemFindRate.GetFloatValue()));
+        if (sound && itemProperty&&itemProperty->isIdentified()) {
+            StatisticsManager::getInstance()->addPickMagicItemNum();
+        }
+    }
     else if(type >= PickableItem::PIT_CLOTH_SHOES && type <= PickableItem::PIT_CLOTH_PRO_STEELARMOR)
+    {
         itemProperty = new (std::nothrow) ArmorProperty(m_snItemInstanceIDCounter++,type, level, !GameFormula::generateMagicItem(m_fMagicItemFindRate.GetFloatValue()));
+        if (sound && itemProperty&&itemProperty->isIdentified()) {
+            StatisticsManager::getInstance()->addPickMagicItemNum();
+        }
+    }
     else if(type >= PickableItem::PIT_ORNAMENT_RING && type <= PickableItem::PIT_ORNAMENT_PRO_JEWELS)
+    {
         itemProperty = new (std::nothrow) MagicOrnamentProperty(m_snItemInstanceIDCounter++,type, level, !GameFormula::generateMagicItem(m_fMagicItemFindRate.GetFloatValue()));
+        if (sound && itemProperty&&itemProperty->isIdentified()) {
+            StatisticsManager::getInstance()->addPickMagicItemNum();
+        }
+    }
     else if(type >= PickableItem::PIT_SCROLL_INDENTIFY && type <= PickableItem::PIT_SCROLL_DESTINY)
         itemProperty = new (std::nothrow) ScrollProperty(m_snItemInstanceIDCounter++,type);
     else if(type >= PickableItem::PIT_POTION_MINORHEALTH && type <= PickableItem::PIT_POTION_UNIVERSAL)
         itemProperty = new (std::nothrow) PotionsProperty(m_snItemInstanceIDCounter++,type);
     if(itemProperty)
     {
+        if (sound)
+            StatisticsManager::getInstance()->addPickItemNum();
         if(itemProperty->isIdentified())
             itemProperty->adjustByLevel();
         m_Bag.push_back(itemProperty);

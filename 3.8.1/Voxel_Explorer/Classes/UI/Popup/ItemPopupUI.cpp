@@ -21,6 +21,7 @@
 #include "RandomDungeon.hpp"
 #include "BaseBoss.hpp"
 #include "AlertPopupUI.hpp"
+#include "StatisticsManager.hpp"
 USING_NS_CC;
 ItemPopupUI::ItemPopupUI()
 {
@@ -863,6 +864,16 @@ void ItemPopupUI::onClickIdentified(cocos2d::Ref *ref)
         //鉴定成功回调给BagLayer重新刷新界面,
         setCloseCallbackParamD(&m_nItemId);
         closePopup();
+        
+        StatisticsManager::getInstance()->addIdentifyNum();
+        if (itemprop->getAddedEffectList().size() >2) {
+            StatisticsManager::getInstance()->addIdentifyAttrNum();
+        }
+        if (itemprop->getQuality()>=PIQ_LEGEND) {
+            StatisticsManager::getInstance()->addIdentifyLegendNum();
+        }
+        
+        
     }else{
         CCLOG("鉴定失败");
     }
@@ -901,6 +912,7 @@ void ItemPopupUI::closePopup()
 void ItemPopupUI::removeItem()
 {
     PickableItemProperty* itemprop = getItemIdProperty();
+    ArmorProperty::PickableItemPropertyType itemtype = itemprop->getPickableItemPropertyType();
     CCASSERT(itemprop!=nullptr, "itemprop is null!");
     bool isSuccess = false;
     if (itemprop->isStackable()) {
@@ -910,7 +922,15 @@ void ItemPopupUI::removeItem()
     }
     
     if(isSuccess)
+    {
         closePopup();
+        StatisticsManager::getInstance()->addDiscardItemNum();
+        if (itemtype ==PickableItemProperty::PIPT_WEAPON ||itemtype ==PickableItemProperty::PIPT_SECOND_WEAPON||
+            itemtype ==PickableItemProperty::PIPT_ARMOR ||itemtype ==PickableItemProperty::PIPT_MAGIC_ORNAMENT )
+        {
+            StatisticsManager::getInstance()->addDiscardEquipNum();
+        }
+    }
 
 }
 void ItemPopupUI::testUI()
