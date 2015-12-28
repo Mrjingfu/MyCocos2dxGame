@@ -46,6 +46,8 @@ public:
     void clearBoosRoom();
     void searchAndCheck();      ///侦查
     
+    void setPlayerLightColor(const cocos2d::Color3B& color);
+    
     void updateTerrainTile(int x, int y, TerrainTile::TileType type);
     
     void addExplosion(const cocos2d::Vec3& pos);

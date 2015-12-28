@@ -42,6 +42,8 @@ public:
     
     cocos2d::Vec2 getLastPosInMap() const { return m_LastPosInMap; }
     
+    cocos2d::PointLight* getPlayerLight() const { return m_pPlayerLight; }
+    
     PlayerState getState() const { return m_curState; }
     void setState(PlayerState state);
     

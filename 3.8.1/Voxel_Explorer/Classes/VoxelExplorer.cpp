@@ -660,6 +660,14 @@ void VoxelExplorer::searchAndCheck()    ///侦查
         }
     }
 }
+void VoxelExplorer::setPlayerLightColor(const cocos2d::Color3B& color)
+{
+    if(m_pPlayer && m_pPlayer->getPlayerLight())
+    {
+        if(m_pPlayer->getPlayerLight()->getColor() != color)
+            m_pPlayer->getPlayerLight()->setColor(color);
+    }
+}
 void VoxelExplorer::updateTerrainTile(int x, int y, TerrainTile::TileType type)
 {
     if(m_pTerrainTilesLayer)
