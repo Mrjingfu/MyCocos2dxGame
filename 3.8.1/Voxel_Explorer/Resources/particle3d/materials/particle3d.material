@@ -15,3 +15,41 @@ material BaseTexture
         }
     }
 }
+
+material Streak_01
+{
+    technique
+    {
+        pass
+        {
+            lighting off
+            scene_blend add
+            depth_write off
+
+            texture_unit
+            {
+                texture pump_streak_01.png
+                tex_address_mode clamp
+            }
+        }
+    }
+}
+
+material Flare_01
+{
+    technique
+    {
+        pass
+        {
+            lighting off
+            scene_blend add
+            depth_write off
+
+            texture_unit
+            {
+                texture pump_flare_01.png
+                tex_address_mode clamp
+            }
+        }
+    }
+}

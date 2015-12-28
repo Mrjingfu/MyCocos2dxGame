@@ -200,7 +200,7 @@ void Giant::onEnterDeath()
     this->setVisible(false);
     if(m_pFakeShadow)
         m_pFakeShadow->setVisible(false);
-    VoxelExplorer::getInstance()->addExplosion(getPosition3D());
+    VoxelExplorer::getInstance()->addParticle3DEffect(getPosition3D(), P3D_EFFECT_TYPE::P3D_PLAYER_DEATH);
     VoxelExplorer::getInstance()->generatePickItemByBoss(getPosInMap(), m_pBossProperty->getValueCopper().GetLongValue());
     
     CaveBossLevel* level = dynamic_cast<CaveBossLevel*>(VoxelExplorer::getInstance()->getCurrentLevel());

@@ -716,6 +716,8 @@ bool PlayerProperty::usePotion(CChaosNumber id)
                     VoxelExplorer::getInstance()->handlePlayerUsePotion(potionsProperty->getPickableItemType());
                     std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("USE_POTION_TAKE_EFFECT");
                     SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+                    
+                    VoxelExplorer::getInstance()->addParticle3DEffectToPlayer(P3D_PLAYER_USE_POTION_TAKE_EFFECT);
                 }
                 break;
             default:
@@ -1097,6 +1099,11 @@ void PlayerProperty::levelUp()
     m_nCurrentMP = m_nMaxMP;
     m_bDirty = true;
     Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_LEVEL_UP);
+    
+    std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("PLAYER_LEVEL_UP");
+    SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+    
+    VoxelExplorer::getInstance()->addParticle3DEffectToPlayer(P3D_PLAYER_LEVELUP);
 }
 PickableItemProperty* PlayerProperty::getItemFromBag(CChaosNumber id) const
 {

@@ -45,7 +45,11 @@
 #include "SimpleAudioEngine.h"
 USING_NS_CC;
 using namespace CocosDenshion;
-
+const std::string P3D_EFFECT_NAMES[] = {
+    "explosionSystem.pu",       ////P3D_PLAYER_DEATH
+    "spiralStars.pu",           ////P3D_PLAYER_LEVELUP
+    "flareShield.pu",           ////P3D_PLAYER_USE_POTION_TAKE_EFFECT
+};
 VoxelExplorer* g_pVoxelExplorerInstance = nullptr;
 VoxelExplorer* VoxelExplorer::getInstance()
 {
@@ -689,15 +693,26 @@ void VoxelExplorer::updateTerrainTile(int x, int y, TerrainTile::TileType type)
         }
     }
 }
-void VoxelExplorer::addExplosion(const cocos2d::Vec3& pos)
+void VoxelExplorer::addParticle3DEffect(const cocos2d::Vec3& pos, P3D_EFFECT_TYPE type)
 {
     if(m_p3DLayer)
     {
-        auto explosion = PUParticleSystem3D::create("explosionSystem.pu");
-        explosion->setCameraMask((unsigned short)CameraFlag::USER1);
-        explosion->setPosition3D(pos);
-        m_p3DLayer->addChild(explosion);
-        explosion->startParticleSystem();
+        auto effect = PUParticleSystem3D::create(P3D_EFFECT_NAMES[type]);
+        effect->setCameraMask((unsigned short)CameraFlag::USER1);
+        effect->setPosition3D(pos);
+        m_p3DLayer->addChild(effect);
+        effect->startParticleSystem();
+    }
+}
+void VoxelExplorer::addParticle3DEffectToPlayer(P3D_EFFECT_TYPE type)
+{
+    if(m_pPlayer)
+    {
+        auto effect = PUParticleSystem3D::create(P3D_EFFECT_NAMES[type]);
+        effect->setCameraMask((unsigned short)CameraFlag::USER1);
+        effect->setKeepLocal(true);
+        m_pPlayer->addChild(effect);
+        effect->startParticleSystem();
     }
 }
 void VoxelExplorer::generatePickItem(const cocos2d::Vec2& pos, bool generateItem, int copper, int monsterLevel)

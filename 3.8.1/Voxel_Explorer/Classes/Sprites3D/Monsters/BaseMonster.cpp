@@ -441,7 +441,7 @@ void BaseMonster::onEnterDeath()
     this->setVisible(false);
     if(m_pFakeShadow)
         m_pFakeShadow->setVisible(false);
-    VoxelExplorer::getInstance()->addExplosion(getPosition3D());
+    VoxelExplorer::getInstance()->addParticle3DEffect(getPosition3D(), P3D_EFFECT_TYPE::P3D_PLAYER_DEATH);
     if(!RandomDungeon::getInstance()->getCurrentDungeonNode()->isBossDepth())
     {
         bool generateItem = GameFormula::generatePickItemByMonster(m_pMonsterProperty->isElite(), false);
