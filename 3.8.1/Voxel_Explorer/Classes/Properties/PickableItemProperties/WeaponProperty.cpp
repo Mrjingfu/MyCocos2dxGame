@@ -435,7 +435,14 @@ void WeaponProperty::handleIdentify()
                 addedEffectCount = cocos2d::random(3, 4);
         }
     }
-    
+    if(addedEffectCount >= 5)
+        m_Quality = PIQ_LEGEND;
+    else if(addedEffectCount >= 3)
+        m_Quality = PIQ_EPIC;
+    else if(addedEffectCount >= 1)
+        m_Quality = PIQ_RARE;
+    else
+        m_Quality = PIQ_GENERAL;
     while (m_AddedEffectList.size() < addedEffectCount.GetLongValue()) {
         int index = cocos2d::random(0, int(sWeaponAddedEffects.size()-1));
         if(std::find(m_AddedEffectList.begin(), m_AddedEffectList.end(), sWeaponAddedEffects[index]) != m_AddedEffectList.end())

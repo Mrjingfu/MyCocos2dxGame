@@ -4,6 +4,8 @@
 <dict>
 	<key>PLAYER_DEATH</key>
 	<string>rat_death.wav</string>
+	<key>PLAYER_LEVEL_UP</key>
+	<string>levelup.wav</string>
 	<key>JAR_FRAGMENTATION0</key>
 	<string>jar_fragmentation0.wav</string>
 	<key>JAR_FRAGMENTATION1</key>

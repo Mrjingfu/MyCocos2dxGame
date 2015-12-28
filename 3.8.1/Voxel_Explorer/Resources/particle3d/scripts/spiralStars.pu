@@ -1,0 +1,60 @@
+system spiralStars
+{
+    category                                    LightFX
+    technique 
+    {
+        position                                0 0 0
+        visual_particle_quota                   300
+        emitted_emitter_quota                   60
+        material                                Flare_01
+        renderer                                Billboard
+        {
+        }
+        emitter                                 Point 
+        {
+            emission_rate                       1
+            angle                               1
+            time_to_live                        1
+            velocity                            15
+            emits                               emitter_particle CircleEmitter
+            force_emission                      true
+        }
+        emitter                                 Circle CircleEmitter
+        {
+            emission_rate                       100
+            time_to_live                        0.5
+            velocity                            10
+            direction                           0 0 0
+            emits                               emitter_particle PointEmitter
+            radius                              7
+            step                                0.2
+            emit_random                         false
+        }
+        emitter                                 Point PointEmitter
+        {
+            emission_rate                       5
+            angle                               360
+            time_to_live                        0.3
+            velocity                            1.5
+            all_particle_dimensions             dyn_random
+            {
+                min                             0.6
+                max                             3.6
+            }
+            start_colour_range                  0.2 0.2 0.2 1
+        }
+        affector                                Colour 
+        {
+            time_colour                         0    1 1 1 1
+            time_colour                         0.8  1 1 1 1
+            time_colour                         1    0 0 0 0
+            colour_operation                    multiply
+        }
+        observer                                OnClear 
+        {
+            handler                             DoStopSystem 
+            {
+            }
+        }
+    }
+}

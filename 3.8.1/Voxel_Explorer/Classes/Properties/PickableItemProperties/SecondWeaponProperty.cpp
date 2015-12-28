@@ -292,7 +292,14 @@ void SecondWeaponProperty::handleIdentify()
                 addedEffectCount = cocos2d::random(3, 4);
         }
     }
-    
+    if(addedEffectCount >= 5)
+        m_Quality = PIQ_LEGEND;
+    else if(addedEffectCount >= 3)
+        m_Quality = PIQ_EPIC;
+    else if(addedEffectCount >= 1)
+        m_Quality = PIQ_RARE;
+    else
+        m_Quality = PIQ_GENERAL;
     if(m_ItemType >= PickableItem::PIT_BOW_SHORTBOW && m_ItemType <= PickableItem::PIT_BOW_PRO_GOLDENBOW)
     {
         while (m_AddedEffectList.size() < addedEffectCount.GetLongValue()) {

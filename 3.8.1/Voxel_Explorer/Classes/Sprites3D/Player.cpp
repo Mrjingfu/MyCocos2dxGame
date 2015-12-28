@@ -889,7 +889,7 @@ void Player::onEnterDeath()
     if(m_pFakeShadow)
         m_pFakeShadow->setVisible(false);
     this->setVisible(false);
-    VoxelExplorer::getInstance()->addExplosion(getPosition3D());
+    VoxelExplorer::getInstance()->addParticle3DEffect(getPosition3D(), P3D_EFFECT_TYPE::P3D_PLAYER_DEATH);
     VoxelExplorer::getInstance()->updateMiniMap();
     
     std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("PLAYER_DEATH");
@@ -943,6 +943,9 @@ void Player::onLand(bool isAttack)
             SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
         }
     }
+    
+    ///for debug
+    //VoxelExplorer::getInstance()->addParticle3DEffectToPlayer(P3D_EFFECT_TYPE::P3D_PLAYER_LEVELUP);
 }
 void Player::onFallDie()
 {

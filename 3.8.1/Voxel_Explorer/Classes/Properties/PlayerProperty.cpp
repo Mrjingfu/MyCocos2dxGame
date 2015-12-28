@@ -92,6 +92,14 @@ bool PlayerProperty::initNewPlayer()   ///新角色初始化
     if(weaponProperty->isIdentified())
         weaponProperty->adjustByLevel();
     m_Bag.push_back(weaponProperty);
+    
+    WeaponProperty* weaponProperty2 = new (std::nothrow) WeaponProperty(m_snItemInstanceIDCounter++,PickableItem::PIT_DAGGER_PRO_RUBYDAGGER, 1, true);
+    if(!weaponProperty2)
+        return ret;
+    if(weaponProperty2->isIdentified())
+        weaponProperty2->adjustByLevel();
+    m_Bag.push_back(weaponProperty2);
+
     ///for debug
     addMoney(900000, false);
     ret = equipWeapon(itemIDCounter, false);
@@ -297,6 +305,9 @@ bool PlayerProperty::equipWeapon(CChaosNumber id, bool sound)
             m_fMagicItemFindRate = m_fMagicItemFindRate - m_fBasicMagicItemFindRate*oldWeaponProperty->getAddedMagicItemFindRate().GetFloatValue();
             m_fMagicItemFindRate = MAX(0, m_fBasicMagicItemFindRate.GetFloatValue());
             oldWeaponProperty->setEquiped(false);
+            ///处理灯光
+            Color3B color = Color3B::WHITE;
+            VoxelExplorer::getInstance()->setPlayerLightColor(color);
         }
         m_nEquipedWeaponID = id;
         
@@ -316,6 +327,33 @@ bool PlayerProperty::equipWeapon(CChaosNumber id, bool sound)
         m_fMagicItemFindRate = m_fMagicItemFindRate + m_fBasicMagicItemFindRate*weaponProperty->getAddedMagicItemFindRate().GetFloatValue();
         m_fMagicItemFindRate = MIN(m_fMagicItemFindRate, m_fMaxMagicItemFindRate);
         weaponProperty->setEquiped(true);
+        ///处理灯光
+        if(weaponProperty->getPickableItemType() == PickableItem::PIT_DAGGER_PRO_DAGGER)
+        {
+            ///烛光颜色
+            Color3B color = Color3B(252, 225, 90);
+            VoxelExplorer::getInstance()->setPlayerLightColor(color);
+        }
+        else if(weaponProperty->getPickableItemType() == PickableItem::PIT_DAGGER_PRO_RUBYDAGGER
+                || weaponProperty->getPickableItemType() == PickableItem::PIT_SWORD_PRO_SWORD || weaponProperty->getPickableItemType() == PickableItem::PIT_SWORD_PRO_HUGESWORD || weaponProperty->getPickableItemType() == PickableItem::PIT_MACE_PRO_MACE)
+        {
+            ///火焰颜色
+            Color3B color = Color3B(252, 152, 126);
+            VoxelExplorer::getInstance()->setPlayerLightColor(color);
+        }
+        else if(weaponProperty->getPickableItemType() == PickableItem::PIT_MACE_PRO_BONEHAMMER || weaponProperty->getPickableItemType() == PickableItem::PIT_SWORD_PRO_CRYSTALSWORD || weaponProperty->getPickableItemType() == PickableItem::PIT_DAGGER_PRO_BLUELIGHTDAGGER)
+        {
+            ///淡蓝色
+            Color3B color = Color3B(126, 235, 251);
+            VoxelExplorer::getInstance()->setPlayerLightColor(color);
+        }
+        else if(weaponProperty->getPickableItemType() == PickableItem::PIT_MACE_PRO_HAMMER || weaponProperty->getPickableItemType() == PickableItem::PIT_AXE_PRO_TOMAHAWK || weaponProperty->getPickableItemType() == PickableItem::PIT_DAGGER_PRO_KNIFE)
+        {
+            ///金色颜色
+            Color3B color = Color3B(251, 250, 126);
+            VoxelExplorer::getInstance()->setPlayerLightColor(color);
+        }
+
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_PROPERTY_DIRTY);
         m_bDirty = true;
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_EQUIPED_WEAPON, &m_nEquipedWeaponID);
@@ -370,6 +408,9 @@ bool PlayerProperty::equipSecondWeapon(CChaosNumber id, bool sound)
             m_fMagicItemFindRate = m_fMagicItemFindRate - m_fBasicMagicItemFindRate*oldSecondWeaponProperty->getAddedMagicItemFindRate().GetFloatValue();
             m_fMagicItemFindRate = MAX(0, m_fBasicMagicItemFindRate.GetFloatValue());
             oldSecondWeaponProperty->setEquiped(false);
+            ///处理灯光
+            Color3B color = Color3B::WHITE;
+            VoxelExplorer::getInstance()->setPlayerLightColor(color);
         }
         m_nEquipedSecondWeaponID = id;
         
@@ -391,6 +432,19 @@ bool PlayerProperty::equipSecondWeapon(CChaosNumber id, bool sound)
         m_fMagicItemFindRate = m_fMagicItemFindRate + m_fBasicMagicItemFindRate*secondWeaponProperty->getAddedMagicItemFindRate().GetFloatValue();
         m_fMagicItemFindRate = MIN(m_fMagicItemFindRate, m_fMaxMagicItemFindRate);
         secondWeaponProperty->setEquiped(true);
+        ///处理灯光
+        if(secondWeaponProperty->getPickableItemType() == PickableItem::PIT_STAFF_PRO_OAKSTAFF || secondWeaponProperty->getPickableItemType() == PickableItem::PIT_BOW_PRO_LAMINATEDBOW)
+        {
+            ///绿光颜色
+            Color3B color = Color3B(126, 251, 191);
+            VoxelExplorer::getInstance()->setPlayerLightColor(color);
+        }
+        else if(secondWeaponProperty->getPickableItemType() == PickableItem::PIT_STAFF_PRO_FIRSTAFF)
+        {
+            ///金色颜色
+            Color3B color = Color3B(251, 250, 126);
+            VoxelExplorer::getInstance()->setPlayerLightColor(color);
+        }
          Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_PROPERTY_DIRTY);
         m_bDirty = true;
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_EQUIPED_WEAPON, &m_nEquipedWeaponID);
@@ -660,6 +714,8 @@ bool PlayerProperty::usePotion(CChaosNumber id)
                     VoxelExplorer::getInstance()->handlePlayerUsePotion(potionsProperty->getPickableItemType());
                     std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("USE_POTION_TAKE_EFFECT");
                     SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+                    
+                    VoxelExplorer::getInstance()->addParticle3DEffectToPlayer(P3D_PLAYER_USE_POTION_TAKE_EFFECT);
                 }
                 break;
             default:
@@ -1063,6 +1119,11 @@ void PlayerProperty::levelUp()
     m_nCurrentMP = m_nMaxMP;
     m_bDirty = true;
     Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_LEVEL_UP);
+    
+    std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("PLAYER_LEVEL_UP");
+    SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+    
+    VoxelExplorer::getInstance()->addParticle3DEffectToPlayer(P3D_PLAYER_LEVELUP);
 }
 PickableItemProperty* PlayerProperty::getItemFromBag(CChaosNumber id) const
 {

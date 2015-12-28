@@ -143,7 +143,7 @@ void UseableItem::onEnterFadeOut()
     }
     else
     {
-        VoxelExplorer::getInstance()->addExplosion(getPosition3D());
+        VoxelExplorer::getInstance()->addParticle3DEffect(getPosition3D(), P3D_EFFECT_TYPE::P3D_PLAYER_DEATH);
         CallFunc* callback = CallFunc::create(CC_CALLBACK_0(UseableItem::destroySelf, this));
         Sequence* sequence = Sequence::create(callback, nullptr);
         this->runAction(sequence);

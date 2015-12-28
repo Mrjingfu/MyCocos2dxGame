@@ -15,6 +15,15 @@
 #include "BaseMonster.hpp"
 #include "BaseBoss.hpp"
 #include "UseableItem.hpp"
+extern const std::string P3D_EFFECT_NAMES[];
+typedef enum
+{
+    P3D_PLAYER_DEATH = 0,
+    P3D_PLAYER_LEVELUP = 1,
+    P3D_PLAYER_USE_POTION_TAKE_EFFECT = 2,
+    P3D_MAX
+}
+P3D_EFFECT_TYPE;
 class VoxelExplorer : public cocos2d::Ref
 {
     VoxelExplorer();
@@ -49,9 +58,12 @@ public:
     void searchAndCheck();      ///侦查
     void updateStatisticsAreaDatas();
     
+    void setPlayerLightColor(const cocos2d::Color3B& color);
+    
     void updateTerrainTile(int x, int y, TerrainTile::TileType type);
     
-    void addExplosion(const cocos2d::Vec3& pos);
+    void addParticle3DEffect(const cocos2d::Vec3& pos, P3D_EFFECT_TYPE type);
+    void addParticle3DEffectToPlayer(P3D_EFFECT_TYPE type);
     void generatePickItem(const cocos2d::Vec2& pos, bool generateItem, int copper, int monsterLevel);
     void generatePickItemByUseableItem(const cocos2d::Vec2& pos, UseableItem::UseableItemType type);
     void generatePickItemByBoss(const cocos2d::Vec2& pos, int copper);
