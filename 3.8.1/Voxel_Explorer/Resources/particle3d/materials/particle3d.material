@@ -15,8 +15,43 @@ material BaseTexture
         }
     }
 }
+material Bubble
+{
+    technique
+    {
+        pass
+        {
+            lighting off
+            scene_blend alpha_blend
+            depth_write off
 
-material Streak_01
+            texture_unit
+            {
+                texture pump_bubble.png
+                tex_address_mode clamp
+            }
+        }
+    }
+}
+material BlurredBubble
+{
+    technique
+    {
+        pass
+        {
+            lighting off
+            scene_blend alpha_blend
+            depth_write off
+
+            texture_unit
+            {
+                texture pump_bubble_blurred.png
+                tex_address_mode clamp
+            }
+        }
+    }
+}
+material Spark_01
 {
     technique
     {
@@ -28,7 +63,25 @@ material Streak_01
 
             texture_unit
             {
-                texture pump_streak_01.png
+                texture pump_spark_01.png
+                tex_address_mode clamp
+            }
+        }
+    }
+}
+material Streak_03
+{
+    technique
+    {
+        pass
+        {
+            lighting off
+            scene_blend add
+            depth_write off
+
+            texture_unit
+            {
+                texture pump_streak_03.png
                 tex_address_mode clamp
             }
         }
@@ -48,6 +101,24 @@ material Flare_01
             texture_unit
             {
                 texture pump_flare_01.png
+                tex_address_mode clamp
+            }
+        }
+    }
+}
+material Flare_04
+{
+    technique
+    {
+        pass
+        {
+            lighting off
+            scene_blend add
+            depth_write off
+
+            texture_unit
+            {
+                texture pump_flare_04.png
                 tex_address_mode clamp
             }
         }

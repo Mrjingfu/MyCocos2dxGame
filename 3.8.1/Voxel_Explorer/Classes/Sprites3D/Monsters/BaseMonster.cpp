@@ -152,6 +152,7 @@ void BaseMonster::attackedByPlayer(bool miss)
             attack = attack*2.0f;
             m_pHurtData->m_bCriticalStrike = true;
             StatisticsManager::getInstance()->addCriticalTotalNum();
+            VoxelExplorer::getInstance()->shakeScreen();
             std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("CRITICALSTRIKE");
             SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
         }
@@ -159,7 +160,7 @@ void BaseMonster::attackedByPlayer(bool miss)
         
     int defense = m_pMonsterProperty->getDefense().GetLongValue();
         
-    attack = MAX(attack + defense, 0);
+    attack = MAX(attack - defense, 1);
         
     float percentBlockRate = m_pMonsterProperty->getBlockRate().GetFloatValue();
     float percentNull = 1.0 - percentBlockRate;

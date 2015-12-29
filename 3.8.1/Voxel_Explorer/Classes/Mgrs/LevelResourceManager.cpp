@@ -49,6 +49,9 @@ bool LevelResourceManager::init()
     m_MusicsResMap = FileUtils::getInstance()->getValueMapFromFile("MusicsRes.plist");
     if(m_MusicsResMap.empty())
         return false;
+    m_Particles3DResMap = FileUtils::getInstance()->getValueMapFromFile("Particles3DRes.plist");
+    if(m_Particles3DResMap.empty())
+        return false;
     return true;
 }
 bool LevelResourceManager::initLevelRes()
@@ -120,4 +123,7 @@ std::string LevelResourceManager::getBackgroundMusicRes(const std::string& bgMus
 {
     return m_MusicsLevelRes.at(bgMusicTypeName).asString();
 }
-
+std::string LevelResourceManager::getParticles3DRes(const std::string& particles3DTypeName)
+{
+    return m_Particles3DResMap.at(particles3DTypeName).asString();
+}

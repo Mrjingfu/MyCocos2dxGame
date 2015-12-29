@@ -1002,9 +1002,9 @@
 	<string>隐身卷轴</string>
 	<key>PIN_SCROLL_STEALTH_DESC</key>
 	<string>使用后角色进入隐身状态，持续20秒。</string>
-	<key>PIT_SCROLL_STRONGER</key>
+	<key>PIN_SCROLL_STRONGER</key>
 	<string>强壮卷轴</string>
-	<key>PIT_SCROLL_STRONGER_DESC</key>
+	<key>PIN_SCROLL_STRONGER_DESC</key>
 	<string>使用后角色属性增强，持续20秒。</string>
 	<key>PIN_SCROLL_DESTINY</key>
 	<string>命运卷轴</string>

@@ -9,6 +9,7 @@
 #include "StandardPortal.hpp"
 #include "OutlineEffect3D.h"
 #include "UtilityHelper.h"
+#include "VoxelExplorer.h"
 USING_NS_CC;
 StandardPortal* StandardPortal::create(bool canUse)
 {
@@ -72,6 +73,8 @@ bool StandardPortal::createCenterModel(bool canUse, OutlineEffect3D* outline)
             m_pCenterSprite->setColor(UtilityHelper::randomColor(400,80));
             RepeatForever* repeat = RepeatForever::create(RotateBy::create(1.0f, Vec3(270, -270, 0)));
             m_pCenterSprite->runAction(repeat);
+            
+            VoxelExplorer::getInstance()->addParticle3DEffectToActor(this, P3D_EFFECT_TYPE::P3D_STANDARD_PORTAL);
         }
         return true;
     }

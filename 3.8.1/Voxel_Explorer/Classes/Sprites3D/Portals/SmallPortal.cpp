@@ -9,6 +9,7 @@
 #include "SmallPortal.hpp"
 #include "OutlineEffect3D.h"
 #include "UtilityHelper.h"
+#include "VoxelExplorer.h"
 USING_NS_CC;
 SmallPortal* SmallPortal::create(bool canUse)
 {
@@ -32,6 +33,8 @@ SmallPortal* SmallPortal::create(bool canUse)
             portal->setColor(randomColor);
             RepeatForever* repeat = RepeatForever::create(RotateBy::create(1.0f, Vec3(-90, 90, 0)));
             portal->runAction(repeat);
+            
+            VoxelExplorer::getInstance()->addParticle3DEffectToActor(portal, P3D_EFFECT_TYPE::P3D_SMALL_PORTAL);
         }
         
         portal->autorelease();
