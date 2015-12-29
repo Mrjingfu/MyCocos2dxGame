@@ -152,6 +152,8 @@
 		555B0D241BC51A2C0055FB6D /* GameScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 555B0D101BC51A2C0055FB6D /* GameScene.cpp */; };
 		555B0D251BC51A2C0055FB6D /* VoxelExplorer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 555B0D131BC51A2C0055FB6D /* VoxelExplorer.cpp */; };
 		555B0D261BC51A2C0055FB6D /* VoxelExplorer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 555B0D131BC51A2C0055FB6D /* VoxelExplorer.cpp */; };
+		555DCB791C3266DC007C868B /* ScreenShake.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 555DCB771C3266DC007C868B /* ScreenShake.cpp */; };
+		555DCB7A1C3266DC007C868B /* ScreenShake.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 555DCB771C3266DC007C868B /* ScreenShake.cpp */; };
 		5560F5EE1C12CB8E001DD164 /* KoboldLeader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5560F5EC1C12CB8E001DD164 /* KoboldLeader.cpp */; };
 		5560F5EF1C12CB8E001DD164 /* KoboldLeader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5560F5EC1C12CB8E001DD164 /* KoboldLeader.cpp */; };
 		5560F5F31C1300D7001DD164 /* BossDoor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5560F5F11C1300D7001DD164 /* BossDoor.cpp */; };
@@ -510,6 +512,8 @@
 		555B0D111BC51A2C0055FB6D /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameScene.h; sourceTree = "<group>"; };
 		555B0D131BC51A2C0055FB6D /* VoxelExplorer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VoxelExplorer.cpp; sourceTree = "<group>"; };
 		555B0D141BC51A2C0055FB6D /* VoxelExplorer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VoxelExplorer.h; sourceTree = "<group>"; };
+		555DCB771C3266DC007C868B /* ScreenShake.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ScreenShake.cpp; sourceTree = "<group>"; };
+		555DCB781C3266DC007C868B /* ScreenShake.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ScreenShake.hpp; sourceTree = "<group>"; };
 		5560F5EC1C12CB8E001DD164 /* KoboldLeader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KoboldLeader.cpp; sourceTree = "<group>"; };
 		5560F5ED1C12CB8E001DD164 /* KoboldLeader.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = KoboldLeader.hpp; sourceTree = "<group>"; };
 		5560F5F11C1300D7001DD164 /* BossDoor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BossDoor.cpp; sourceTree = "<group>"; };
@@ -1061,6 +1065,7 @@
 		555B0CFF1BC51A2C0055FB6D /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				555DCB761C3266CA007C868B /* Actions */,
 				5505451C1BFEF00C006B4500 /* Effects */,
 				551E93CD1BD512D3009F788F /* ThirdLibs */,
 				551E93B31BD51291009F788F /* Mgrs */,
@@ -1136,6 +1141,15 @@
 				5569713B1BE20CCE00CC2736 /* Layer3D.hpp */,
 			);
 			path = Scenes;
+			sourceTree = "<group>";
+		};
+		555DCB761C3266CA007C868B /* Actions */ = {
+			isa = PBXGroup;
+			children = (
+				555DCB771C3266DC007C868B /* ScreenShake.cpp */,
+				555DCB781C3266DC007C868B /* ScreenShake.hpp */,
+			);
+			path = Actions;
 			sourceTree = "<group>";
 		};
 		559B21841BC663CE0047D998 /* Sprites2D */ = {
@@ -1616,6 +1630,7 @@
 				EC3DC0C21C157FFE00D0FE47 /* AchieveMangerLayerUI.cpp in Sources */,
 				55A9807B1C05610400722C9D /* FakeShadow.cpp in Sources */,
 				EC3CC99F1C088F4F00F8CFC8 /* MenuUILayer.cpp in Sources */,
+				555DCB791C3266DC007C868B /* ScreenShake.cpp in Sources */,
 				EC795F531C0D4AD70083829B /* AlchemyShopPopupUI.cpp in Sources */,
 				55F81CC81BDB928F002EC075 /* MaterialProperty.cpp in Sources */,
 				55F116D41C04450200A6C191 /* FaneLevel.cpp in Sources */,
@@ -1645,6 +1660,7 @@
 				EC3CC9721C088F4F00F8CFC8 /* BagLayer.cpp in Sources */,
 				EC5D56911C0C4E2200F5EDDF /* DistPopupUI.cpp in Sources */,
 				551E93C81BD51291009F788F /* MonsterProperty.cpp in Sources */,
+				555DCB7A1C3266DC007C868B /* ScreenShake.cpp in Sources */,
 				550545331BFF2081006B4500 /* BasePortal.cpp in Sources */,
 				EC795F681C0DA57C0083829B /* NpcPropLayer.cpp in Sources */,
 				553BC50E1BCE5191003D907A /* StandardDoor.cpp in Sources */,

@@ -28,6 +28,8 @@ public:
     std::string getMonsterSoundEffectRes(const std::string& monsterTypeName, const std::string& soundTypeName);
     std::string getCommonSoundEffectRes(const std::string& soundTypeName);
     std::string getBackgroundMusicRes(const std::string& bgMusicTypeName);
+    
+    std::string getParticles3DRes(const std::string& particles3DTypeName);
 private:
     cocos2d::ValueMap    m_TerrainTilesResMap;
     cocos2d::ValueMap    m_DoorsResMap;
@@ -37,6 +39,7 @@ private:
     cocos2d::ValueMap    m_MonsterSoundsResMap;
     cocos2d::ValueMap    m_CommonSoundsResMap;
     cocos2d::ValueMap    m_MusicsResMap;
+    cocos2d::ValueMap    m_Particles3DResMap;
     
     cocos2d::ValueMap    m_TerrainTilesLevelRes;
     cocos2d::ValueMap    m_DoorsLevelRes;

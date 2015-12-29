@@ -41,14 +41,23 @@
 #include "StandardMonster.hpp"
 #include "NpcDataManager.hpp"
 #include "RandomEventMgr.hpp"
+#include "ScreenShake.hpp"
 #include "StatisticsManager.hpp"
 #include "SimpleAudioEngine.h"
 USING_NS_CC;
 using namespace CocosDenshion;
 const std::string P3D_EFFECT_NAMES[] = {
-    "explosionSystem.pu",       ////P3D_PLAYER_DEATH
-    "spiralStars.pu",           ////P3D_PLAYER_LEVELUP
-    "flareShield.pu",           ////P3D_PLAYER_USE_POTION_TAKE_EFFECT
+    "P3DN_PLAYER_DEATH",
+    "P3DN_PLAYER_LEVELUP",
+    "P3DN_PLAYER_USE_POTION_TAKE_EFFECT",
+    "P3DN_SMALL_PORTAL",
+    "P3DN_STANDARD_PORTAL",
+    "P3DN_STRONGER_BUFFER",
+    "P3DN_STEALTH_BUFFER",
+    "P3DN_SPEEDUP_BUFFER",
+    "P3DN_POISIONING_BUFFER",
+    "P3DN_PARALYTIC_BUFFER",
+    "P3DN_FROZEN_BUFFER"
 };
 VoxelExplorer* g_pVoxelExplorerInstance = nullptr;
 VoxelExplorer* VoxelExplorer::getInstance()
@@ -64,6 +73,7 @@ VoxelExplorer::VoxelExplorer()
     
     m_pMainLayer = nullptr;
     m_p3DLayer  = nullptr;
+    m_pShakeLayer = nullptr;
     m_pTerrainTilesLayer = nullptr;
     m_pFakeShadowLayer = nullptr;
     m_pTerrainPortalsLayer = nullptr;
@@ -689,7 +699,14 @@ void VoxelExplorer::searchAndCheck()    ///侦查
         }
     }
 }
-
+void VoxelExplorer::shakeScreen()     ////屏幕晃动
+{
+    if(m_pShakeLayer)
+    {
+        ScreenShake* shake = ScreenShake::create(0.2f, 0.8, 0.2, 0.8);
+        m_pShakeLayer->runAction(shake);
+    }
+}
 void VoxelExplorer::updateStatisticsAreaDatas()
 {
     if (m_pCurrentLevel->checkAllAreaBeExplored())
@@ -731,21 +748,51 @@ void VoxelExplorer::addParticle3DEffect(const cocos2d::Vec3& pos, P3D_EFFECT_TYP
 {
     if(m_p3DLayer)
     {
-        auto effect = PUParticleSystem3D::create(P3D_EFFECT_NAMES[type]);
+        std::string res = LevelResourceManager::getInstance()->getParticles3DRes(P3D_EFFECT_NAMES[type]);
+        auto effect = PUParticleSystem3D::create(res);
         effect->setCameraMask((unsigned short)CameraFlag::USER1);
+        effect->setName(P3D_EFFECT_NAMES[type]);
         effect->setPosition3D(pos);
         m_p3DLayer->addChild(effect);
         effect->startParticleSystem();
     }
 }
-void VoxelExplorer::addParticle3DEffectToPlayer(P3D_EFFECT_TYPE type)
+void VoxelExplorer::addParticle3DEffectToPlayer(P3D_EFFECT_TYPE type, bool keepLocal)
 {
     if(m_pPlayer)
     {
-        auto effect = PUParticleSystem3D::create(P3D_EFFECT_NAMES[type]);
+        PUParticleSystem3D* effect = dynamic_cast<PUParticleSystem3D*>(m_pPlayer->getChildByName(P3D_EFFECT_NAMES[type]));
+        if(!effect)
+        {
+            std::string res = LevelResourceManager::getInstance()->getParticles3DRes(P3D_EFFECT_NAMES[type]);
+            effect = PUParticleSystem3D::create(res);
+            effect->setCameraMask((unsigned short)CameraFlag::USER1);
+            effect->setName(P3D_EFFECT_NAMES[type]);
+            effect->setKeepLocal(keepLocal);
+            m_pPlayer->addChild(effect);
+        }
+        effect->startParticleSystem();
+    }
+}
+void VoxelExplorer::removeParticle3D3DEffectFromPlayer(P3D_EFFECT_TYPE type)
+{
+    if(m_pPlayer)
+    {
+        PUParticleSystem3D* effect = dynamic_cast<PUParticleSystem3D*>(m_pPlayer->getChildByName(P3D_EFFECT_NAMES[type]));
+        if(effect)
+            effect->stopParticleSystem();
+    }
+}
+void VoxelExplorer::addParticle3DEffectToActor(Actor* actor, P3D_EFFECT_TYPE type)
+{
+    if(actor)
+    {
+        std::string res = LevelResourceManager::getInstance()->getParticles3DRes(P3D_EFFECT_NAMES[type]);
+        auto effect = PUParticleSystem3D::create(res);
         effect->setCameraMask((unsigned short)CameraFlag::USER1);
+        effect->setName(P3D_EFFECT_NAMES[type]);
         effect->setKeepLocal(true);
-        m_pPlayer->addChild(effect);
+        actor->addChild(effect);
         effect->startParticleSystem();
     }
 }
@@ -1614,59 +1661,65 @@ bool VoxelExplorer::createLayers()
     m_p3DLayer->setCameraMask((unsigned int)CameraFlag::USER1);
     m_pMainLayer->addChild(m_p3DLayer);
     
+    m_pShakeLayer = Layer::create();
+    if(!m_pShakeLayer)
+        return false;
+    m_pShakeLayer->setCameraMask((unsigned int)CameraFlag::USER1);
+    m_p3DLayer->addChild(m_pShakeLayer);
+    
     m_pTerrainTilesLayer = Layer::create();
     if(!m_pTerrainTilesLayer)
         return false;
     m_pTerrainTilesLayer->setCameraMask((unsigned int)CameraFlag::USER1);
-    m_p3DLayer->addChild(m_pTerrainTilesLayer);
+    m_pShakeLayer->addChild(m_pTerrainTilesLayer);
     
     m_pFakeShadowLayer = Layer::create();
     if(!m_pFakeShadowLayer)
         return false;
     m_pFakeShadowLayer->setCameraMask((unsigned int)CameraFlag::USER1);
-    m_p3DLayer->addChild(m_pFakeShadowLayer);
+    m_pShakeLayer->addChild(m_pFakeShadowLayer);
     
     m_pTerrainPortalsLayer = Layer::create();
     if(!m_pTerrainPortalsLayer)
         return false;
     m_pTerrainPortalsLayer->setCameraMask((unsigned int)CameraFlag::USER1);
-    m_p3DLayer->addChild(m_pTerrainPortalsLayer);
+    m_pShakeLayer->addChild(m_pTerrainPortalsLayer);
     
     m_pTerrainDoorsLayer = Layer::create();
     if(!m_pTerrainDoorsLayer)
         return false;
     m_pTerrainDoorsLayer->setCameraMask((unsigned int)CameraFlag::USER1);
-    m_p3DLayer->addChild(m_pTerrainDoorsLayer);
+    m_pShakeLayer->addChild(m_pTerrainDoorsLayer);
     
     m_pUseableItemsLayer = Layer::create();
     if(!m_pUseableItemsLayer)
         return false;
     m_pUseableItemsLayer->setCameraMask((unsigned int)CameraFlag::USER1);
-    m_p3DLayer->addChild(m_pUseableItemsLayer);
+    m_pShakeLayer->addChild(m_pUseableItemsLayer);
     
     m_pBossLayer = Layer::create();
     if(!m_pBossLayer)
         return false;
     m_pBossLayer->setCameraMask((unsigned int)CameraFlag::USER1);
-    m_p3DLayer->addChild(m_pBossLayer);
+    m_pShakeLayer->addChild(m_pBossLayer);
     
     m_pNPCsLayer = Layer::create();
     if(!m_pNPCsLayer)
         return false;
     m_pNPCsLayer->setCameraMask((unsigned int)CameraFlag::USER1);
-    m_p3DLayer->addChild(m_pNPCsLayer);
+    m_pShakeLayer->addChild(m_pNPCsLayer);
     
     m_pMonstersLayer = Layer::create();
     if(!m_pMonstersLayer)
         return false;
     m_pMonstersLayer->setCameraMask((unsigned int)CameraFlag::USER1);
-    m_p3DLayer->addChild(m_pMonstersLayer);
+    m_pShakeLayer->addChild(m_pMonstersLayer);
     
     m_pPickableItemsLayer = Layer::create();
     if(!m_pPickableItemsLayer)
         return false;
     m_pPickableItemsLayer->setCameraMask((unsigned int)CameraFlag::USER1);
-    m_p3DLayer->addChild(m_pPickableItemsLayer);
+    m_pShakeLayer->addChild(m_pPickableItemsLayer);
     
     m_p2DLayer = Layer::create();
     if(!m_p2DLayer)

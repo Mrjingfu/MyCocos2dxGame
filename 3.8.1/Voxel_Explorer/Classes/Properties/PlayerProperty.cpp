@@ -126,6 +126,18 @@ bool PlayerProperty::initNewPlayer()   ///新角色初始化
     ret = addItemToBag(PickableItem::PIT_SCROLL_DESTINY, 1, false);
     ret = addItemToBag(PickableItem::PIT_SCROLL_DESTINY, 1, false);
     ret = addItemToBag(PickableItem::PIT_SCROLL_DESTINY, 1, false);
+    
+    ret = addItemToBag(PickableItem::PIT_SCROLL_SPEED, 1, false);
+    ret = addItemToBag(PickableItem::PIT_SCROLL_SPEED, 1, false);
+    ret = addItemToBag(PickableItem::PIT_SCROLL_SPEED, 1, false);
+    
+    ret = addItemToBag(PickableItem::PIT_SCROLL_STEALTH, 1, false);
+    ret = addItemToBag(PickableItem::PIT_SCROLL_STEALTH, 1, false);
+    ret = addItemToBag(PickableItem::PIT_SCROLL_STEALTH, 1, false);
+    
+    ret = addItemToBag(PickableItem::PIT_SCROLL_STRONGER, 1, false);
+    ret = addItemToBag(PickableItem::PIT_SCROLL_STRONGER, 1, false);
+    ret = addItemToBag(PickableItem::PIT_SCROLL_STRONGER, 1, false);
     return ret;
 }
 void PlayerProperty::update(float delta)

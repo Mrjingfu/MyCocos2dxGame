@@ -21,6 +21,14 @@ typedef enum
     P3D_PLAYER_DEATH = 0,
     P3D_PLAYER_LEVELUP = 1,
     P3D_PLAYER_USE_POTION_TAKE_EFFECT = 2,
+    P3D_SMALL_PORTAL = 3,
+    P3D_STANDARD_PORTAL = 4,
+    P3D_STRONGER_BUFFER = 5,
+    P3D_STEALTH_BUFFER = 6,
+    P3D_SPEEDUP_BUFFER = 7,
+    P3D_POISIONING_BUFFER = 8,
+    P3D_PARALYTIC_BUFFER = 9,
+    P3D_FROZEN_BUFFER = 10,
     P3D_MAX
 }
 P3D_EFFECT_TYPE;
@@ -58,12 +66,16 @@ public:
     void searchAndCheck();      ///侦查
     void updateStatisticsAreaDatas();
     
+    void shakeScreen();     ////屏幕晃动
+    
     void setPlayerLightColor(const cocos2d::Color3B& color);
     
     void updateTerrainTile(int x, int y, TerrainTile::TileType type);
     
     void addParticle3DEffect(const cocos2d::Vec3& pos, P3D_EFFECT_TYPE type);
-    void addParticle3DEffectToPlayer(P3D_EFFECT_TYPE type);
+    void addParticle3DEffectToPlayer(P3D_EFFECT_TYPE type, bool keepLocal = true);
+    void removeParticle3D3DEffectFromPlayer(P3D_EFFECT_TYPE type);
+    void addParticle3DEffectToActor(Actor* actor, P3D_EFFECT_TYPE type);
     void generatePickItem(const cocos2d::Vec2& pos, bool generateItem, int copper, int monsterLevel);
     void generatePickItemByUseableItem(const cocos2d::Vec2& pos, UseableItem::UseableItemType type);
     void generatePickItemByBoss(const cocos2d::Vec2& pos, int copper);
@@ -120,6 +132,7 @@ private:
     
     cocos2d::Layer*                         m_pMainLayer;
     cocos2d::Layer*                         m_p3DLayer;
+    cocos2d::Layer*                         m_pShakeLayer;
     cocos2d::Layer*                         m_pTerrainTilesLayer;
     cocos2d::Layer*                         m_pFakeShadowLayer;
     cocos2d::Layer*                         m_pTerrainPortalsLayer;

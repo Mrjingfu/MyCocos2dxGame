@@ -156,8 +156,9 @@ void Player::addPlayerBuffer(PlayerBuffer buff)
             m_fSpeedupTime = 20.0f;
         else
         {
-            ///增加拖尾或粒子
+            m_fSpeedupTime = 20.0f;
             PlayerProperty::getInstance()->addPlayerBuffer(buff);
+            //VoxelExplorer::getInstance()->addParticle3DEffectToPlayer(P3D_EFFECT_TYPE::P3D_STRONGER_BUFFER, false);
             StatisticsManager::getInstance()->addSpeedUpNum();
         }
         std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("BUFFER_SPEEDUP");
@@ -169,10 +170,11 @@ void Player::addPlayerBuffer(PlayerBuffer buff)
             m_fStealthTime = 20.0f;
         else
         {
-            ///渐变
+            m_fStealthTime = 20.0f;
             EaseSineOut* fadeTo = EaseSineOut::create(FadeTo::create(1.0f, 127));
             this->runAction(fadeTo);
             PlayerProperty::getInstance()->addPlayerBuffer(buff);
+            //VoxelExplorer::getInstance()->addParticle3DEffectToPlayer(P3D_EFFECT_TYPE::P3D_STRONGER_BUFFER, true);
             StatisticsManager::getInstance()->addStealthNum();
         }
         std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("BUFFER_STEALTH");
@@ -184,10 +186,9 @@ void Player::addPlayerBuffer(PlayerBuffer buff)
             m_fStrongerTime = 20.0f;
         else
         {
-            ///增大
-            EaseSineOut* fadeTo = EaseSineOut::create(ScaleTo::create(1.0f, 1.5f));
-            this->runAction(fadeTo);
+            m_fStrongerTime = 20.0f;
             PlayerProperty::getInstance()->addPlayerBuffer(buff);
+            VoxelExplorer::getInstance()->addParticle3DEffectToPlayer(P3D_EFFECT_TYPE::P3D_STRONGER_BUFFER, true);
             StatisticsManager::getInstance()->addStrongNum();
         }
         std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("BUFFER_STRONGER");
@@ -202,9 +203,10 @@ void Player::addPlayerBuffer(PlayerBuffer buff)
                 tex->setAliasTexParameters();
             setTexture(tex);
             PlayerProperty::getInstance()->addPlayerBuffer(buff);
+            VoxelExplorer::getInstance()->addParticle3DEffectToPlayer(P3D_EFFECT_TYPE::P3D_POISIONING_BUFFER, false);
+            std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("BUFFER_POISONING");
+            SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
         }
-        std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("BUFFER_POISONING");
-        SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
     }
     else if(buff == PB_FROZEN)
     {
@@ -216,9 +218,9 @@ void Player::addPlayerBuffer(PlayerBuffer buff)
                 tex->setAliasTexParameters();
             setTexture(tex);
             PlayerProperty::getInstance()->addPlayerBuffer(buff);
+            std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("BUFFER_FROZEN");
+            SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
         }
-        std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("BUFFER_FROZEN");
-        SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
     }
     else if(buff == PB_PARALYTIC)
     {
@@ -230,9 +232,10 @@ void Player::addPlayerBuffer(PlayerBuffer buff)
                 tex->setAliasTexParameters();
             setTexture(tex);
             PlayerProperty::getInstance()->addPlayerBuffer(buff);
+            VoxelExplorer::getInstance()->addParticle3DEffectToPlayer(P3D_EFFECT_TYPE::P3D_PARALYTIC_BUFFER, true);
+            std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("BUFFER_PARALYTIC");
+            SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
         }
-        std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("BUFFER_PARALYTIC");
-        SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
     }
     else if(buff == PB_WEAK)
     {
@@ -243,9 +246,9 @@ void Player::addPlayerBuffer(PlayerBuffer buff)
                 tex->setAliasTexParameters();
             setTexture(tex);
             PlayerProperty::getInstance()->addPlayerBuffer(buff);
+            std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("BUFFER_WEAK");
+            SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
         }
-        std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("BUFFER_WEAK");
-        SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
     }
     else if(buff == PB_FIRE)
     {
@@ -257,15 +260,41 @@ void Player::addPlayerBuffer(PlayerBuffer buff)
                 tex->setAliasTexParameters();
             setTexture(tex);
             PlayerProperty::getInstance()->addPlayerBuffer(buff);
+            std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("BUFFER_FIRE");
+            SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
         }
-        std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("BUFFER_FIRE");
-        SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
     }
 }
 void Player::removePlayerBuffer(PlayerBuffer buff)
 {
     int bufferFlag = PlayerProperty::getInstance()->getPlayerBuffer();
-    if(buff == PB_POISONING)
+    if(buff == PB_STRONGER)
+    {
+        if((bufferFlag & PB_STRONGER) != 0)
+        {
+            PlayerProperty::getInstance()->removePlayerBuffer(buff);
+            VoxelExplorer::getInstance()->removeParticle3D3DEffectFromPlayer(P3D_EFFECT_TYPE::P3D_STRONGER_BUFFER);
+        }
+    }
+    else if(buff == PB_STEALTH)
+    {
+        if((bufferFlag & PB_STEALTH) != 0)
+        {
+            EaseSineOut* fadeTo = EaseSineOut::create(FadeTo::create(1.0f, 255));
+            this->runAction(fadeTo);
+            PlayerProperty::getInstance()->removePlayerBuffer(buff);
+            //VoxelExplorer::getInstance()->removeParticle3D3DEffectFromPlayer(P3D_EFFECT_TYPE::P3D_POISIONING_BUFFER);
+        }
+    }
+    else if(buff == PB_SPEEDUP)
+    {
+        if((bufferFlag & PB_SPEEDUP) != 0)
+        {
+            PlayerProperty::getInstance()->removePlayerBuffer(buff);
+            //VoxelExplorer::getInstance()->removeParticle3D3DEffectFromPlayer(P3D_EFFECT_TYPE::P3D_POISIONING_BUFFER);
+        }
+    }
+    else if(buff == PB_POISONING)
     {
         if((bufferFlag & PB_POISONING) != 0)
         {
@@ -283,6 +312,7 @@ void Player::removePlayerBuffer(PlayerBuffer buff)
                 tex->setAliasTexParameters();
             setTexture(tex);
             PlayerProperty::getInstance()->removePlayerBuffer(buff);
+            VoxelExplorer::getInstance()->removeParticle3D3DEffectFromPlayer(P3D_EFFECT_TYPE::P3D_POISIONING_BUFFER);
             StatisticsManager::getInstance()->addPoisonRecoverNum();
         }
     }
@@ -325,6 +355,8 @@ void Player::removePlayerBuffer(PlayerBuffer buff)
             setTexture(tex);
             StatisticsManager::getInstance()->addWeakRecoverNum();
             PlayerProperty::getInstance()->removePlayerBuffer(buff);
+            
+            VoxelExplorer::getInstance()->removeParticle3D3DEffectFromPlayer(P3D_EFFECT_TYPE::P3D_PARALYTIC_BUFFER);
         }
     }
     else if(buff == PB_FIRE)
@@ -366,11 +398,11 @@ void Player::removePlayerBuffer(PlayerBuffer buff)
             setTexture(tex);
             PlayerProperty::getInstance()->removePlayerBuffer(buff);
         }
-    }else
+    }
+    else
     {
         PlayerProperty::getInstance()->removePlayerBuffer(buff);
     }
-    
 }
 void Player::setState(PlayerState state)
 {
@@ -534,13 +566,14 @@ void Player::attackByMonster(MonsterProperty* monsterProperty, bool miss)
         {
             attack = attack*2.0f;
             m_pHurtData->m_bCriticalStrike = true;
+            VoxelExplorer::getInstance()->shakeScreen();
             StatisticsManager::getInstance()->addCriticalTotalNum();
         }
     }
     
     int defense = PlayerProperty::getInstance()->getDefense().GetLongValue();
     
-    attack = MAX(attack + defense, 0);
+    attack = MAX(attack - defense, 1);
     
     float percentBlockRate = PlayerProperty::getInstance()->getBlockRate().GetFloatValue();
     float percentNull = 1.0 - percentBlockRate;
@@ -615,12 +648,13 @@ void Player::attackByBoss(BossProperty* bossProperty, bool miss)
         {
             attack = attack*2.0f;
             m_pHurtData->m_bCriticalStrike = true;
+            VoxelExplorer::getInstance()->shakeScreen();
         }
     }
     
     int defense = PlayerProperty::getInstance()->getDefense().GetLongValue();
     
-    attack = MAX(attack + defense, 0);
+    attack = MAX(attack - defense, 1);
     
     float percentBlockRate = PlayerProperty::getInstance()->getBlockRate().GetFloatValue();
     float percentNull = 1.0 - percentBlockRate;
@@ -945,7 +979,7 @@ void Player::onLand(bool isAttack)
     }
     
     ///for debug
-    //VoxelExplorer::getInstance()->addParticle3DEffectToPlayer(P3D_EFFECT_TYPE::P3D_PLAYER_LEVELUP);
+    //VoxelExplorer::getInstance()->addParticle3DEffectToPlayer(P3D_EFFECT_TYPE::P3D_STRONGER_BUFFER, true);
 }
 void Player::onFallDie()
 {
@@ -965,86 +999,31 @@ void Player::updatePlayerBuffer(float delta)
     {
         m_fStealthTime = m_fStealthTime - delta;
         if(m_fStealthTime <= 0)
-        {
-            ///渐变
-            EaseSineOut* fadeTo = EaseSineOut::create(FadeTo::create(1.0f, 255));
-            this->runAction(fadeTo);
             removePlayerBuffer(PB_STEALTH);
-        }
     }
     if((bufferFlag & PB_STRONGER) != 0)
     {
         m_fStrongerTime = m_fStrongerTime - delta;
         if(m_fStrongerTime <= 0)
-        {
-            ///缩小
-            EaseSineOut* fadeTo = EaseSineOut::create(ScaleTo::create(1.0f, 1.0f));
-            this->runAction(fadeTo);
             removePlayerBuffer(PB_STRONGER);
-        }
     }
     if((bufferFlag & PB_FROZEN) != 0)
     {
         m_fFrozenTime = m_fFrozenTime - delta;
         if(m_fFrozenTime <= 0)
-        {
-            std::string texName = "chr_sword.png";
-            if((bufferFlag & PB_POISONING) != 0)
-                texName = "chr_sword_green.png";
-            else if((bufferFlag & PB_WEAK) != 0)
-                texName = "chr_sword_yellow.png";
-            else if((bufferFlag & PB_PARALYTIC) != 0)
-                texName = "chr_sword_gray.png";
-            else if((bufferFlag & PB_FIRE) != 0)
-                texName = "chr_sword_red.png";
-            auto tex = Director::getInstance()->getTextureCache()->addImage(texName);
-            if(tex)
-                tex->setAliasTexParameters();
-            setTexture(tex);
             removePlayerBuffer(PB_FROZEN);
-        }
     }
     if((bufferFlag & PB_PARALYTIC) != 0)
     {
         m_fParalyticTime = m_fParalyticTime - delta;
         if(m_fParalyticTime <= 0)
-        {
-            std::string texName = "chr_sword.png";
-            if((bufferFlag & PB_POISONING) != 0)
-                texName = "chr_sword_green.png";
-            else if((bufferFlag & PB_WEAK) != 0)
-                texName = "chr_sword_yellow.png";
-            else if((bufferFlag & PB_FIRE) != 0)
-                texName = "chr_sword_red.png";
-            else if((bufferFlag & PB_FROZEN) != 0)
-                texName = "chr_sword_blue.png";
-            auto tex = Director::getInstance()->getTextureCache()->addImage(texName);
-            if(tex)
-                tex->setAliasTexParameters();
-            setTexture(tex);
             removePlayerBuffer(PB_PARALYTIC);
-        }
     }
     if((bufferFlag & PB_FIRE) != 0)
     {
         m_fFireTime = m_fFireTime - delta;
         if(m_fFireTime <= 0)
-        {
-            std::string texName = "chr_sword.png";
-            if((bufferFlag & PB_POISONING) != 0)
-                texName = "chr_sword_green.png";
-            else if((bufferFlag & PB_WEAK) != 0)
-                texName = "chr_sword_yellow.png";
-            else if((bufferFlag & PB_PARALYTIC) != 0)
-                texName = "chr_sword_gray.png";
-            else if((bufferFlag & PB_FROZEN) != 0)
-                texName = "chr_sword_blue.png";
-            auto tex = Director::getInstance()->getTextureCache()->addImage(texName);
-            if(tex)
-                tex->setAliasTexParameters();
-            setTexture(tex);
             removePlayerBuffer(PB_FIRE);
-        }
         else
         {
             m_fSecondTimer = m_fSecondTimer - delta;
@@ -1090,7 +1069,6 @@ void Player::updatePlayerBuffer(float delta)
                 setState(PS_DEATH);
                 PlayerProperty::getInstance()->setCurrentHP(currentHp);
                 StatisticsManager::getInstance()->addRoleDeadNum(StatisticsManager::eRoleDeadType::RET_BUFFER_POISONING);
-//                Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_DEATH, this);
             }
             else
             {
