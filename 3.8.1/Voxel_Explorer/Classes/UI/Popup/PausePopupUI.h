@@ -30,6 +30,7 @@ private:
     cocos2d::ui::ImageView* m_pMuiscImg;
     bool m_bIsSoundOn;
     bool m_bIsMuiscOn;
+    
 };
 
 #endif /* PausePopupUI_hpp */

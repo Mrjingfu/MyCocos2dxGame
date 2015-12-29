@@ -9,6 +9,7 @@
 #include "AchieveProperty.hpp"
 #include "UtilityHelper.h"
 #include "AchievementManager.h"
+#include "StatisticsManager.hpp"
 AchieveProperty::AchieveProperty()
 {
     m_bCommple = false;
@@ -31,6 +32,7 @@ void AchieveProperty::setAchieveTarget(std::string typeStr,CChaosNumber targetNu
     eStatistType sStype = (eStatistType)type;
 
     m_mAcheveTargets.insert(std::map<eStatistType,CChaosNumber>::value_type(sStype,targetNum));
+    m_mProgress.insert(std::map<eStatistType,CChaosNumber>::value_type(sStype,CChaosNumber(0)));
 }
 
 void AchieveProperty::setAchieveDetailType(std::string achieveDeType)
@@ -41,37 +43,31 @@ void AchieveProperty::setAchieveDetailType(std::string achieveDeType)
     m_sAchieveName = UtilityHelper::getLocalStringForPlist(achieveDeType, "achieve_chinese.plist", "achieve_english.plist");
     m_sAchieveTargetDesc = UtilityHelper::getLocalStringForPlist(achieveDeType+"_TARGET", "achieve_chinese.plist", "achieve_english.plist");
 }
-void AchieveProperty::setAchiveUnlockTarget(std::string achieveDeType)
+void AchieveProperty::setAchiveUnlockTarget(std::string typeStr,CChaosNumber targetNum)
 {
-    int type = checkArrName(ACHIEVEMENT_DATAIL_TYPE_NAME,achieveDeType);
+    int type = checkArrName(STATIST_TYPE_NAME,typeStr);;
     CCASSERT(type!=-1, "type error");
-    eAchievementDetailType detailType = (eAchievementDetailType)(type);
-    m_vUnlockTargets.push_back(detailType);
+    eStatistType sStype = (eStatistType)type;
+    m_mUnlockTargets.insert(std::map<eStatistType,CChaosNumber>::value_type(sStype,targetNum));
 }
-
-bool AchieveProperty::isUnlockAchieve() 
+void AchieveProperty::setProgress(eStatistType type,CChaosNumber targetNum)
 {
-    if (m_vUnlockTargets.empty()) {
-        
-        m_bIsUnlockAchieve = true;
-    }else
+    auto iter = m_mProgress.find(type);
+    if (iter!=m_mProgress.end())
     {
-        int unlockCount = 0;
-        for (int i =0; i<m_vUnlockTargets.size(); i++)
-        {
-            eAchievementDetailType type = m_vUnlockTargets.at(i);
-            if (AchievementManager::getInstance()->getAchievement(type)->isCommple())
-            {
-                ++unlockCount;
-            }
-        }
-        if (unlockCount == m_vUnlockTargets.size()) {
-            m_bIsUnlockAchieve = true;
-        }
+        m_mProgress[iter->first] = targetNum;
     }
-    return m_bIsUnlockAchieve;
 }
 
+CChaosNumber AchieveProperty::getPorgress(eStatistType type)
+{
+    auto iter = m_mProgress.find(type);
+    if (iter!=m_mProgress.end())
+    {
+        return iter->second ;
+    }
+    return CChaosNumber(0);
+}
 int AchieveProperty::checkArrName(const std::vector<std::string> arr,const std::string str)
 {
     for (int i =0 ; i< arr.size(); i++)

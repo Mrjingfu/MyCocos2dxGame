@@ -284,8 +284,6 @@
 		EC3CC9A21C088F4F00F8CFC8 /* WrapperUILayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC3CC96F1C088F4F00F8CFC8 /* WrapperUILayer.cpp */; };
 		EC3CC9A51C08909B00F8CFC8 /* RolePropLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC3CC9A31C08909B00F8CFC8 /* RolePropLayer.cpp */; };
 		EC3CC9A61C08909B00F8CFC8 /* RolePropLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC3CC9A31C08909B00F8CFC8 /* RolePropLayer.cpp */; };
-		EC3DC0BE1C157FC800D0FE47 /* AchievePopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC3DC0BC1C157FC800D0FE47 /* AchievePopupUI.cpp */; };
-		EC3DC0BF1C157FC800D0FE47 /* AchievePopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC3DC0BC1C157FC800D0FE47 /* AchievePopupUI.cpp */; };
 		EC3DC0C21C157FFE00D0FE47 /* AchieveMangerLayerUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC3DC0C01C157FFE00D0FE47 /* AchieveMangerLayerUI.cpp */; };
 		EC3DC0C31C157FFE00D0FE47 /* AchieveMangerLayerUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC3DC0C01C157FFE00D0FE47 /* AchieveMangerLayerUI.cpp */; };
 		EC5610241C2007E100A2DDF2 /* GlobalPromptLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC5610221C2007E100A2DDF2 /* GlobalPromptLayer.cpp */; };
@@ -332,8 +330,12 @@
 		EC795F681C0DA57C0083829B /* NpcPropLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC795F651C0DA57C0083829B /* NpcPropLayer.cpp */; };
 		EC7F92D31BCF9ED200B26C6C /* HueSprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC7F92D11BCF9ED200B26C6C /* HueSprite.cpp */; };
 		EC7F92D41BCF9ED200B26C6C /* HueSprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC7F92D11BCF9ED200B26C6C /* HueSprite.cpp */; };
-		ECBCB4BD1C229888006B85D2 /* AchieveItemPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECBCB4BB1C229888006B85D2 /* AchieveItemPopupUI.cpp */; };
-		ECBCB4BE1C229888006B85D2 /* AchieveItemPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECBCB4BB1C229888006B85D2 /* AchieveItemPopupUI.cpp */; };
+		EC8A27DA1C32629C00B2C352 /* AchieveItemUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC8A27D81C32629C00B2C352 /* AchieveItemUI.cpp */; };
+		EC8A27DB1C32629C00B2C352 /* AchieveItemUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC8A27D81C32629C00B2C352 /* AchieveItemUI.cpp */; };
+		EC8A27E01C32670800B2C352 /* AchieveItemLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC8A27DE1C32670800B2C352 /* AchieveItemLayer.cpp */; };
+		EC8A27E11C32670800B2C352 /* AchieveItemLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC8A27DE1C32670800B2C352 /* AchieveItemLayer.cpp */; };
+		EC8A27E41C327A4B00B2C352 /* AchievePopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC8A27E21C327A4B00B2C352 /* AchievePopupUI.cpp */; };
+		EC8A27E51C327A4B00B2C352 /* AchievePopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC8A27E21C327A4B00B2C352 /* AchievePopupUI.cpp */; };
 		ECBCB4C21C22AE24006B85D2 /* particle2d in Resources */ = {isa = PBXBuildFile; fileRef = ECBCB4C11C22AE24006B85D2 /* particle2d */; };
 		ECBCB4C31C22AE24006B85D2 /* particle2d in Resources */ = {isa = PBXBuildFile; fileRef = ECBCB4C11C22AE24006B85D2 /* particle2d */; };
 		ECEA4E1E1C0EC69800ED790F /* ItemShopBuyPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECEA4E1A1C0EC69800ED790F /* ItemShopBuyPopupUI.cpp */; };
@@ -641,8 +643,6 @@
 		EC3CC9701C088F4F00F8CFC8 /* WrapperUILayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WrapperUILayer.h; sourceTree = "<group>"; };
 		EC3CC9A31C08909B00F8CFC8 /* RolePropLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RolePropLayer.cpp; sourceTree = "<group>"; };
 		EC3CC9A41C08909B00F8CFC8 /* RolePropLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = RolePropLayer.hpp; sourceTree = "<group>"; };
-		EC3DC0BC1C157FC800D0FE47 /* AchievePopupUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AchievePopupUI.cpp; sourceTree = "<group>"; };
-		EC3DC0BD1C157FC800D0FE47 /* AchievePopupUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AchievePopupUI.h; sourceTree = "<group>"; };
 		EC3DC0C01C157FFE00D0FE47 /* AchieveMangerLayerUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AchieveMangerLayerUI.cpp; sourceTree = "<group>"; };
 		EC3DC0C11C157FFE00D0FE47 /* AchieveMangerLayerUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AchieveMangerLayerUI.h; sourceTree = "<group>"; };
 		EC5610221C2007E100A2DDF2 /* GlobalPromptLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GlobalPromptLayer.cpp; sourceTree = "<group>"; };
@@ -687,8 +687,12 @@
 		EC795F661C0DA57C0083829B /* NpcPropLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = NpcPropLayer.hpp; sourceTree = "<group>"; };
 		EC7F92D11BCF9ED200B26C6C /* HueSprite.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HueSprite.cpp; sourceTree = "<group>"; };
 		EC7F92D21BCF9ED200B26C6C /* HueSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HueSprite.h; sourceTree = "<group>"; };
-		ECBCB4BB1C229888006B85D2 /* AchieveItemPopupUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AchieveItemPopupUI.cpp; sourceTree = "<group>"; };
-		ECBCB4BC1C229888006B85D2 /* AchieveItemPopupUI.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = AchieveItemPopupUI.hpp; sourceTree = "<group>"; };
+		EC8A27D81C32629C00B2C352 /* AchieveItemUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AchieveItemUI.cpp; sourceTree = "<group>"; };
+		EC8A27D91C32629C00B2C352 /* AchieveItemUI.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = AchieveItemUI.hpp; sourceTree = "<group>"; };
+		EC8A27DE1C32670800B2C352 /* AchieveItemLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AchieveItemLayer.cpp; sourceTree = "<group>"; };
+		EC8A27DF1C32670800B2C352 /* AchieveItemLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = AchieveItemLayer.hpp; sourceTree = "<group>"; };
+		EC8A27E21C327A4B00B2C352 /* AchievePopupUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AchievePopupUI.cpp; sourceTree = "<group>"; };
+		EC8A27E31C327A4B00B2C352 /* AchievePopupUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AchievePopupUI.h; sourceTree = "<group>"; };
 		ECBCB4C11C22AE24006B85D2 /* particle2d */ = {isa = PBXFileReference; lastKnownFileType = folder; path = particle2d; sourceTree = "<group>"; };
 		ECEA4E1A1C0EC69800ED790F /* ItemShopBuyPopupUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ItemShopBuyPopupUI.cpp; sourceTree = "<group>"; };
 		ECEA4E1B1C0EC69800ED790F /* ItemShopBuyPopupUI.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ItemShopBuyPopupUI.hpp; sourceTree = "<group>"; };
@@ -1204,6 +1208,10 @@
 		EC3CC93C1C088F4F00F8CFC8 /* Layer */ = {
 			isa = PBXGroup;
 			children = (
+				EC8A27DE1C32670800B2C352 /* AchieveItemLayer.cpp */,
+				EC8A27DF1C32670800B2C352 /* AchieveItemLayer.hpp */,
+				EC8A27D81C32629C00B2C352 /* AchieveItemUI.cpp */,
+				EC8A27D91C32629C00B2C352 /* AchieveItemUI.hpp */,
 				EC63CEAD1C20FEB600C84941 /* HudPromptLayer.cpp */,
 				EC63CEAE1C20FEB600C84941 /* HudPromptLayer.hpp */,
 				EC5610221C2007E100A2DDF2 /* GlobalPromptLayer.cpp */,
@@ -1247,12 +1255,10 @@
 		EC3CC9531C088F4F00F8CFC8 /* Popup */ = {
 			isa = PBXGroup;
 			children = (
+				EC8A27E21C327A4B00B2C352 /* AchievePopupUI.cpp */,
+				EC8A27E31C327A4B00B2C352 /* AchievePopupUI.h */,
 				EC25C3C81C1977DF00B4340D /* InformationPopupUI.cpp */,
 				EC25C3C91C1977DF00B4340D /* InformationPopupUI.h */,
-				EC3DC0BC1C157FC800D0FE47 /* AchievePopupUI.cpp */,
-				EC3DC0BD1C157FC800D0FE47 /* AchievePopupUI.h */,
-				ECBCB4BB1C229888006B85D2 /* AchieveItemPopupUI.cpp */,
-				ECBCB4BC1C229888006B85D2 /* AchieveItemPopupUI.hpp */,
 				EC3CC9581C088F4F00F8CFC8 /* ItemPopupUI.cpp */,
 				EC3CC9591C088F4F00F8CFC8 /* ItemPopupUI.h */,
 				ECEA4E1A1C0EC69800ED790F /* ItemShopBuyPopupUI.cpp */,
@@ -1500,6 +1506,7 @@
 			files = (
 				EC602AB61BF47CAC00484D42 /* StatisticsManager.cpp in Sources */,
 				550545321BFF2081006B4500 /* BasePortal.cpp in Sources */,
+				EC8A27E41C327A4B00B2C352 /* AchievePopupUI.cpp in Sources */,
 				551E93EA1BD512D3009F788F /* xor.cpp in Sources */,
 				55F116E01C04454300A6C191 /* TombLevel.cpp in Sources */,
 				55619D511C0DAB3900419E40 /* SewerBossLevel.cpp in Sources */,
@@ -1508,6 +1515,7 @@
 				EC6617651C182A3B0004209F /* BossPropLayer.cpp in Sources */,
 				55F81CA11BDB208D002EC075 /* UseableItem.cpp in Sources */,
 				EC795F571C0D4AFD0083829B /* GambleShopPopupUI.cpp in Sources */,
+				EC8A27E01C32670800B2C352 /* AchieveItemLayer.cpp in Sources */,
 				5505453C1BFF3893006B4500 /* SmallPortal.cpp in Sources */,
 				551E93AF1BD51282009F788F /* NativeBridge.mm in Sources */,
 				55338AEA1BD892C200EA316F /* Archbishop.cpp in Sources */,
@@ -1527,7 +1535,6 @@
 				EC3CC9731C088F4F00F8CFC8 /* BagMangerLayerUI.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				EC602AB21BF47A4900484D42 /* AchieveProperty.cpp in Sources */,
-				EC3DC0BE1C157FC800D0FE47 /* AchievePopupUI.cpp in Sources */,
 				551E93EE1BD512D3009F788F /* FileStream.cpp in Sources */,
 				EC3CC98F1C088F4F00F8CFC8 /* PausePopupUI.cpp in Sources */,
 				EC602AAC1BF46A2D00484D42 /* AchievementManager.cpp in Sources */,
@@ -1567,7 +1574,6 @@
 				EC3CC9751C088F4F00F8CFC8 /* BagShopLayer.cpp in Sources */,
 				EC795F421C0D42340083829B /* MagicShopPopupUI.cpp in Sources */,
 				EC795F4F1C0D4AB20083829B /* TaskPopupUI.cpp in Sources */,
-				ECBCB4BD1C229888006B85D2 /* AchieveItemPopupUI.cpp in Sources */,
 				EC3CC9811C088F4F00F8CFC8 /* PromptLayer.cpp in Sources */,
 				551E93F21BD512D3009F788F /* Stream.cpp in Sources */,
 				EC3CC9711C088F4F00F8CFC8 /* BagLayer.cpp in Sources */,
@@ -1621,6 +1627,7 @@
 				55F116D41C04450200A6C191 /* FaneLevel.cpp in Sources */,
 				EC5D56901C0C4E2200F5EDDF /* DistPopupUI.cpp in Sources */,
 				55F81CCC1BDB92AC002EC075 /* QuestItemProperty.cpp in Sources */,
+				EC8A27DA1C32629C00B2C352 /* AchieveItemUI.cpp in Sources */,
 				551E93C51BD51291009F788F /* UserRecord.cpp in Sources */,
 				5586C7B81C0FDD7400DFA588 /* TombBossLevel.cpp in Sources */,
 				554FE61C1C2A735800419AE1 /* RandomEventMgr.cpp in Sources */,
@@ -1657,11 +1664,13 @@
 				5529701C1BFB34ED00DBF75B /* Npc.cpp in Sources */,
 				EC795F641C0D4B6B0083829B /* NursePopupUI.cpp in Sources */,
 				551E93E31BD512D3009F788F /* CCCrypto.cpp in Sources */,
+				EC8A27DB1C32629C00B2C352 /* AchieveItemUI.cpp in Sources */,
 				55CB9B0B1C07355200BAF60B /* NpcDataManager.cpp in Sources */,
 				EC6716461BCE7F2C00C81CFC /* LogoScene.cpp in Sources */,
 				55A980821C05AB9400722C9D /* Ladder.cpp in Sources */,
 				EC3CC99E1C088F4F00F8CFC8 /* GameUILayer.cpp in Sources */,
 				55338ADF1BD8925100EA316F /* Warden.cpp in Sources */,
+				EC8A27E11C32670800B2C352 /* AchieveItemLayer.cpp in Sources */,
 				5505453D1BFF3893006B4500 /* SmallPortal.cpp in Sources */,
 				EC3CC9841C088F4F00F8CFC8 /* RoleLayer.cpp in Sources */,
 				551E93E51BD512D3009F788F /* libb64.c in Sources */,
@@ -1696,7 +1705,6 @@
 				555B0D201BC51A2C0055FB6D /* StandardLevel.cpp in Sources */,
 				ECEA4E1F1C0EC69800ED790F /* ItemShopBuyPopupUI.cpp in Sources */,
 				55F116DD1C04453500A6C191 /* CaveLevel.cpp in Sources */,
-				EC3DC0BF1C157FC800D0FE47 /* AchievePopupUI.cpp in Sources */,
 				EC3CC9A21C088F4F00F8CFC8 /* WrapperUILayer.cpp in Sources */,
 				55338AEB1BD892C200EA316F /* Archbishop.cpp in Sources */,
 				551E93AA1BD51282009F788F /* AlisaMethod.cpp in Sources */,
@@ -1747,7 +1755,6 @@
 				551E93E71BD512D3009F788F /* md5.c in Sources */,
 				5586C7A71C0FDD1500DFA588 /* PrisonBossLevel.cpp in Sources */,
 				55F81CA21BDB208D002EC075 /* UseableItem.cpp in Sources */,
-				ECBCB4BE1C229888006B85D2 /* AchieveItemPopupUI.cpp in Sources */,
 				55F4650F1BEAF76A00E1CC79 /* Pathfinder.cpp in Sources */,
 				555B0D1C1BC51A2C0055FB6D /* Door.cpp in Sources */,
 				EC3CC99C1C088F4F00F8CFC8 /* CloseCallback.cpp in Sources */,
@@ -1770,6 +1777,7 @@
 				EC602AAD1BF46A2D00484D42 /* AchievementManager.cpp in Sources */,
 				EC795F5C1C0D4B150083829B /* OldManPopupUI.cpp in Sources */,
 				55338AD61BD878BF00EA316F /* StandardMonster.cpp in Sources */,
+				EC8A27E51C327A4B00B2C352 /* AchievePopupUI.cpp in Sources */,
 				551E93F11BD512D3009F788F /* MemoryStream.cpp in Sources */,
 				EC795F431C0D42340083829B /* MagicShopPopupUI.cpp in Sources */,
 				EC795F601C0D4B560083829B /* LittleWitchPopupUI.cpp in Sources */,
@@ -1813,7 +1821,6 @@
 				OTHER_LDFLAGS = (
 					"$(_COCOS_LIB_IOS_BEGIN)",
 					"$(_COCOS_LIB_IOS_END)",
-					"-ObjC",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.wanax.voxelexplorer;
 				PROVISIONING_PROFILE = "22898643-fe52-415a-b17e-b28409c9005b";
@@ -1854,7 +1861,6 @@
 				OTHER_LDFLAGS = (
 					"$(_COCOS_LIB_IOS_BEGIN)",
 					"$(_COCOS_LIB_IOS_END)",
-					"-ObjC",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.wanax.voxelexplorer;
 				PROVISIONING_PROFILE = "c4afc8fa-72ba-4d86-b334-308f434cc9bf";
@@ -1872,6 +1878,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				COMBINE_HIDPI_IMAGES = YES;
+				GCC_C_LANGUAGE_STANDARD = c11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_INPUT_FILETYPE = sourcecode.cpp.objcpp;
@@ -1907,6 +1914,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				COMBINE_HIDPI_IMAGES = YES;
+				GCC_C_LANGUAGE_STANDARD = c11;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_INPUT_FILETYPE = sourcecode.cpp.objcpp;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;

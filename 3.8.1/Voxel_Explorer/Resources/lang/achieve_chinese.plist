@@ -33,15 +33,15 @@
 	<key>ADT_SPECIFIED_MONSTER_2</key>
 	<string>野兽猎人</string>
 	<key>ADT_SPECIFIED_MONSTER_2_TARGET</key>
-	<string>杀死野兽（蛇，蝙蝠，狼，熊，恐龙）各100个</string>
+	<string>杀死野兽蛇,蝙蝠,狼,熊,恐龙各100个</string>
 	<key>ADT_SPECIFIED_MONSTER_3</key>
 	<string>亡灵杀手 </string>
 	<key>ADT_SPECIFIED_MONSTER_3_TARGET</key>
-	<string>杀死亡灵怪物 (僵尸，骷髅，怨魂，幽灵，食尸鬼，石像鬼)   各100个</string>
+	<string>杀死亡灵怪物僵尸,骷髅,怨魂,幽灵,食尸鬼,石像鬼各100个</string>
 	<key>ADT_SPECIFIED_MONSTER_4</key>
 	<string>清洁工 </string>
 	<key>ADT_SPECIFIED_MONSTER_4_TARGET</key>
-	<string>杀死 （蜘蛛，老鼠，史莱姆，软泥怪，阴影怪）各100个</string>
+	<string>杀死蜘蛛,老鼠,史莱姆,软泥怪,阴影怪各100个</string>
 	<key>ADT_SPECIFIED_MONSTER_5</key>
 	<string>王牌精英  </string>
 	<key>ADT_SPECIFIED_MONSTER_5_TARGET</key>
@@ -157,7 +157,7 @@
 	<key>ADT_WORLD_RECORD</key>
 	<string>世界纪录保持者</string>
 	<key>ADT_WORLD_RECORD_TARGET</key>
-	<string>9秒钟之内移动超过10步</string>
+	<string>5秒钟之内移动超过10步</string>
 	<key>ADT_THIRTY_NOT_MOVE</key>
 	<string>稳如泰山</string>
 	<key>ADT_THIRTY_NOT_MOVE_TARGET</key>
@@ -171,7 +171,7 @@
 	<key>ADT_FOUND_HIDDEN_DOOR_TARGET</key>
 	<string> 第1次发现隐藏门</string>
 	<key>ADT_FOUND_HIDDEN_TRAP_FIRST</key>
-	<string>哎呦，吓死宝宝了</string>
+	<string>哎呦,吓死宝宝了</string>
 	<key>ADT_FOUND_HIDDEN_TRAP_FIRST_TARGET</key>
 	<string>第1次发现隐藏陷阱</string>
 	<key>ADT_FOUND_HIDDEN_TRAP</key>
@@ -246,13 +246,13 @@
 	<string>北市买长鞭</string>
 	<key>ADT_BUY_EQUIP_TARGET</key>
 	<string>从骑士手中购买过武器和装备</string>
-	<key>ADT_BUY_POTION</key>
+	<key>ADT_BUY_MARICORIM</key>
 	<string>穷家富路</string>
-	<key>ADT_BUY_POTION_TARGET</key>
+	<key>ADT_BUY_MARICORIM_TARGET</key>
 	<string>从售货员手中购买过药水</string>
-	<key>ADT_BUY_SCROLL</key>
+	<key>ADT_BUY_SCROLL_POTION</key>
 	<string>我需要卷轴</string>
-	<key>ADT_BUY_SCROLL_TARGET</key>
+	<key>ADT_BUY_SCROLL_POTION_TARGET</key>
 	<string>从巫婆手中购买过卷轴</string>
 	<key>ADT_HAVE_GOLD_1</key>
 	<string>第一桶金</string>

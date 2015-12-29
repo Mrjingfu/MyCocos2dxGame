@@ -534,7 +534,6 @@ void Player::attackByMonster(MonsterProperty* monsterProperty, bool miss)
         {
             attack = attack*2.0f;
             m_pHurtData->m_bCriticalStrike = true;
-            StatisticsManager::getInstance()->addCriticalTotalNum();
         }
     }
     
@@ -551,7 +550,6 @@ void Player::attackByMonster(MonsterProperty* monsterProperty, bool miss)
         {
             attack = attack*0.5f;
             m_pHurtData->m_bBlocked = true;
-            StatisticsManager::getInstance()->addBlockTotalNum();
         }
     }
     

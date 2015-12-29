@@ -133,7 +133,7 @@ void BaseBoss::attackedByPlayer(bool miss)
         {
             attack = attack*2.0f;
             m_pHurtData->m_bCriticalStrike = true;
-            
+            StatisticsManager::getInstance()->addCriticalTotalNum();
             std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("CRITICALSTRIKE");
             SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
         }
@@ -152,7 +152,7 @@ void BaseBoss::attackedByPlayer(bool miss)
         {
             attack = attack*0.5f;
             m_pHurtData->m_bBlocked = true;
-            
+            StatisticsManager::getInstance()->addBlockTotalNum();
             std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("BLOCK");
             SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
         }

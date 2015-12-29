@@ -20,8 +20,7 @@ public:
     static AchieveMangerLayerUI* create(cocos2d::Size size);
     bool init(cocos2d::Size size);
     void addItemAchieve(eAchievementDetailType achieveId,cocos2d::Vec2 pt,std::string itemIcon,std::string name,std::string targetDesc,bool isUnlockeAchieve = false,bool isCommple = false);
-    void setItemAchieveCommple(eAchievementDetailType achieveId);
-//    void setIteTitle(int itemId);
+  
     void removeItems();
 
     void setLayerContentSize(const cocos2d::Size &contentSize);

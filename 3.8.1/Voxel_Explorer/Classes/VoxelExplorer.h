@@ -15,6 +15,7 @@
 #include "BaseMonster.hpp"
 #include "BaseBoss.hpp"
 #include "UseableItem.hpp"
+class GameUILayer;
 extern const std::string P3D_EFFECT_NAMES[];
 typedef enum
 {
@@ -102,7 +103,7 @@ public:
     cocos2d::Layer* getPickableItemsLayer() const { return m_pPickableItemsLayer; }
     cocos2d::Layer* get2DLayer() const { return m_p2DLayer; }
     cocos2d::Layer* getHUDLayer() const { return m_pHUDLayer; }
-    cocos2d::Layer* getUILayer() const { return m_pUILayer; }
+    GameUILayer* getUILayer() const { return m_pUILayer; }
     
     cocos2d::Camera* getMainCamera() const { return m_pMainCamera; }
     cocos2d::Camera* getScreenCamera() const { return m_pScreenCamera; }
@@ -131,7 +132,7 @@ private:
     cocos2d::Layer*                         m_pPickableItemsLayer;
     cocos2d::Layer*                         m_p2DLayer;
     cocos2d::Layer*                         m_pHUDLayer;
-    cocos2d::Layer*                         m_pUILayer;
+    GameUILayer*                            m_pUILayer;
     
     cocos2d::Camera*                        m_pMainCamera;
     cocos2d::Camera*                        m_pScreenCamera;

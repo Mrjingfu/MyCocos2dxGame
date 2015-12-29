@@ -11,6 +11,7 @@
 
 #include "WrapperUILayer.h"
 #include "TGridView.h"
+class AchievePopupUI;
 class MenuUILayer:public WrapperUILayer {
     
 public:
@@ -25,7 +26,8 @@ protected:
     void onClickRank(Ref*);
     void onClickRate(Ref*);
     void onClickAchieve(Ref*);
-    
+private:
+    AchievePopupUI* m_pAchievePopupUI;
     
 };
 

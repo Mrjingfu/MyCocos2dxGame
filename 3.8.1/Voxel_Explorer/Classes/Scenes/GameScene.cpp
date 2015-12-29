@@ -10,6 +10,8 @@
 #include "VoxelExplorer.h"
 #include "GameUILayer.h"
 #include "PopupUILayerManager.h"
+#include "StatisticsManager.hpp"
+#include "RandomDungeon.hpp"
 USING_NS_CC;
 
 Scene* GameScene::createScene()
@@ -55,11 +57,11 @@ bool GameScene::init()
     if(!VoxelExplorer::getInstance()->init(this))
         return false;
    
-    auto gameui = GameUILayer::create();
-    if (!gameui)
-        return false;
-    gameui->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
+    DungeonNode* dungeonNode = RandomDungeon::getInstance()->getCurrentDungeonNode();
+    if (dungeonNode) {
+        StatisticsManager::getInstance()->addArriveDungeon(dungeonNode->getDungeonNodeType());
+    }
     
-    VoxelExplorer::getInstance()->get2DLayer()->addChild(gameui);
+ 
     return true;
 }

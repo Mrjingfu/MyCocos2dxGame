@@ -103,19 +103,16 @@ void AchievePopupUI::refreshUIView()
 
 void AchievePopupUI::updateAllAchieves()
 {
-    if (m_pAchieveMangerLayer) {
-        m_pAchieveMangerLayer->removeItems();
-    }
-    
     
     cocos2d::Vector<AchieveProperty*> allAchieves = AchievementManager::getInstance()->getAllAchieves();
-    std::sort(allAchieves.begin(), allAchieves.end(), std::less<AchieveProperty*>());
+
     for (int i=0; i<allAchieves.size(); i++) {
         AchieveProperty* achieveProp = allAchieves.at(i);
         ui::ImageView* itemView = static_cast<ui::ImageView*>(m_pAchieveGridView->getItem(i));
         if (achieveProp && itemView)
         {
             eAchievementDetailType type = achieveProp->getAchieveDetailType();
+            CCLOG("type :%d",type);
             std::string icon = achieveProp->getAchieveIcon();
             std::string name = achieveProp->getAchieveName();
             std::string targetDesc = achieveProp->getTargetDesc();
@@ -128,5 +125,23 @@ void AchievePopupUI::updateAllAchieves()
 void AchievePopupUI::updateCommpleAchieves()
 {
     
+}
+void AchievePopupUI::removeSelfCallFunc()
+{
+    executeCloseBack();
+    executeCloseBackO();
+    executeCloseCallbackD();
+    this->setVisible(false);
+}
+bool AchievePopupUI::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *unused_event)
+{
+    return this->isVisible();
+}
+void AchievePopupUI::onTouchEnded(cocos2d::Touch *touch, cocos2d::Event *unused_event)
+{
+    if (this->isVisible() && m_pRootNode &&  !m_pRootNode->getBoundingBox().containsPoint(touch->getLocationInView()) && m_nIsBlankClose) {
+       
+        closePopup();
+    }
 }
 

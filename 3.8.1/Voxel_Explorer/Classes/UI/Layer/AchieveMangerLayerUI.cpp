@@ -91,62 +91,86 @@ void AchieveMangerLayerUI::addItemAchieve(eAchievementDetailType achieveId,cocos
     m_Achieves.push_back(achieveId);
     if (m_pItemImgLayer && m_pAchieveNameLayer && m_pAchieveTargetLayer)
     {
-        ui::ImageView* img = ui::ImageView::create(itemIcon,TextureResType::PLIST);
-        img->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
-        img->setPosition(pt-cocos2d::Vec2(img->getContentSize().width,0));
-        img->setScale(0.7);
-        img->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
+        ui::ImageView* img = static_cast<ui::ImageView*>(m_pItemImgLayer->getChildByTag(achieveId));
+        if (!img ) {
+            img = ui::ImageView::create();
+            m_pItemImgLayer->addChild(img);
+            img->setScale(0.7);
+        }
+
         img->setTag(achieveId);
         if (!isCommple &&!isUnlockeAchieve) {
             img->loadTexture("achievement_lock.png",TextureResType::PLIST);
         }
-         img->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
+        if (isCommple || isUnlockeAchieve) {
+            img->loadTexture(itemIcon,TextureResType::PLIST);
+        }
+        img->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
+        img->setPosition(pt-cocos2d::Vec2(img->getContentSize().width,0));
         cocos2d::ui::Scale9Sprite* scale9sp=dynamic_cast<cocos2d::ui::Scale9Sprite*>(img->getVirtualRenderer());
         scale9sp->setState(cocos2d::ui::Scale9Sprite::State::GRAY);
         if (isCommple) {
            scale9sp->setState(cocos2d::ui::Scale9Sprite::State::NORMAL);
         }
-        m_pItemImgLayer->addChild(img);
+        img->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
         
-        ui::Text* nameText = ui::Text::create();
-        nameText->setFontSize(36);
-        nameText->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
-        nameText->setScale(0.3);
-        nameText->setString(name);
+        ui::Text* nameText = static_cast<ui::Text*>(m_pAchieveNameLayer->getChildByTag(achieveId));
+        if (!nameText) {
+            nameText = ui::Text::create();
+            nameText->setFontSize(36);
+            nameText->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
+            nameText->setScale(0.3);
+            m_pAchieveNameLayer->addChild(nameText);
+        }
+
         nameText->setTag(achieveId);
+        nameText->setString(name);
+        
         float textHeight =nameText->getContentSize().height*nameText->getScale();
-        nameText->setPosition(cocos2d::Vec2(img->getPositionX()+img->getContentSize().width*0.55,pt.y+textHeight*0.5));
-        nameText->setAnchorPoint(cocos2d::Vec2::ANCHOR_MIDDLE_LEFT);
+       
+        float textWidth = nameText->getContentSize().width*nameText->getScale();
+        if ((textWidth+img->getContentSize().width) > 120) {
+            CCLOG("LAST WIDTH");
+            UtilityHelper::getLineStr(name, 7);
+            nameText->setString(name);
+            
+            textHeight = nameText->getContentSize().height*nameText->getScale();
+        }
+        nameText->setAnchorPoint(cocos2d::Vec2::ANCHOR_TOP_LEFT);
+        nameText->setPosition(cocos2d::Vec2(img->getPositionX()+img->getContentSize().width*0.55,pt.y+textHeight*0.88));
+        
         nameText->setColor(Color3B(105, 87, 055));
         if (isCommple) {
             nameText->setColor(Color3B(241, 222, 188));
         }
         if (!isCommple &&!isUnlockeAchieve)
         {
-            nameText->setString("????");
-            nameText->setPosition(cocos2d::Vec2(img->getPositionX()+img->getContentSize().width*0.55,pt.y));
+            nameText->setString("??");
+            textHeight = nameText->getContentSize().height*nameText->getScale();
+            nameText->setPosition(cocos2d::Vec2(img->getPositionX()+img->getContentSize().width*0.55,pt.y+textHeight*0.88));
         }
-        m_pAchieveNameLayer->addChild(nameText);
+        nameText->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
         
-        ui::Text* targetText = ui::Text::create();
-        targetText->setFontSize(36);
-        targetText->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
-        targetText->setScale(0.18);
-        targetText->setAnchorPoint(cocos2d::Vec2::ANCHOR_MIDDLE_LEFT);
-        targetText->setTag(achieveId);
+        ui::Text* targetText = static_cast<ui::Text*>(m_pAchieveTargetLayer->getChildByTag(achieveId));
+        if (!targetText) {
+            targetText = ui::Text::create();
+            targetText->setFontSize(36);
+            targetText->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
+            targetText->setScale(0.18);
+            targetText->setTag(achieveId);
+            targetText->setAnchorPoint(cocos2d::Vec2::ANCHOR_TOP_LEFT);
+            m_pAchieveTargetLayer->addChild(targetText);
+
+        }
+        
         cocos2d::Size fonSize = UtilityHelper::getSingleStrFontSize(targetText, targetDesc);
-        
         int charCount  = (int)((130.0 - img->getContentSize().width)/fonSize.width);
         UtilityHelper::getLineStr(targetDesc, charCount);
-
         targetText->setString(targetDesc);
-        float targetTextHeight =targetText->getContentSize().height*targetText->getScale();
-        targetText->setPosition(cocos2d::Vec2(nameText->getPositionX(),pt.y-targetTextHeight*0.5 ));
-        m_pAchieveTargetLayer->addChild(targetText);
-
-
         
+        targetText->setPosition(cocos2d::Vec2(nameText->getPositionX(),nameText->getPositionY() - textHeight));
         targetText->setColor(Color3B(105, 87, 055));
+
         if (isCommple) {
             targetText->setColor(Color3B(185, 153, 109));
         }
@@ -154,10 +178,10 @@ void AchieveMangerLayerUI::addItemAchieve(eAchievementDetailType achieveId,cocos
         {
             targetText->setVisible(false);
         }
+        targetText->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
 
     }
 }
-
 
 void AchieveMangerLayerUI::removeItems()
 {

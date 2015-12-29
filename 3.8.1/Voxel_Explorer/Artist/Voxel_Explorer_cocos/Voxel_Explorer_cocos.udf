@@ -35,8 +35,9 @@
           <FilePathData Path="itemPopupLayer.csd" />
           <FilePathData Path="itemShopBottomLayer.csd" />
           <FilePathData Path="informationLayer.csd" />
+          <FilePathData Path="achievementLayer.csd" />
         </OpenedDocuments>
-        <ActiveDocument Path="informationLayer.csd" />
+        <ActiveDocument Path="achievementLayer.csd" />
       </Value>
     </Item>
   </Properties>

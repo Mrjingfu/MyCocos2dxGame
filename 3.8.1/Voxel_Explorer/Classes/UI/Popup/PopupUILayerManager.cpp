@@ -26,12 +26,13 @@
 #include "InformationPopupUI.h"
 #include "GlobalPromptLayer.hpp"
 #include "AchievePopupUI.h"
-#include "AchieveItemPopupUI.hpp"
 #include "DeadPopupUI.h"
+#include "AchieveItemLayer.hpp"
 PopupUILayerManager::PopupUILayerManager()
 {
     m_pParentLayer = nullptr;
     m_pGlobalPromptlayer = nullptr;
+    m_pAchieveItemLayer = nullptr;
     for (int i=0; i<ePopupCount; i++) {
         m_pPopupContainer[i] = nullptr;
     }
@@ -68,8 +69,13 @@ void PopupUILayerManager::onExitScene()
 {
     if (m_pParentLayer)
         m_pParentLayer = nullptr;
+    
     if (m_pGlobalPromptlayer)
         m_pGlobalPromptlayer = nullptr;
+    
+    if (m_pAchieveItemLayer)
+        m_pAchieveItemLayer = nullptr;
+    
     m_cCurrentPopUpType = ePopupInvalid;
     m_pLastPopUpType = ePopupInvalid;
     m_lTypeList.clear();
@@ -161,9 +167,6 @@ PopupUILayer* PopupUILayerManager::initPopUp(ePopupType type)
             break;
         case ePopupAchieve:
             popupLayer = AchievePopupUI::create();
-            break;
-        case ePopupAchieveItem:
-            popupLayer = AchieveItemPopupUI::create();
             break;
         case ePopupDead:
             popupLayer = DeadPopupUI::create();
@@ -279,5 +282,12 @@ void PopupUILayerManager::showStatusImport(TipTypes tipType, std::string text)
     m_pGlobalPromptlayer->shwoGlobalPrompt(tipType, text);
   
 }
-
+void PopupUILayerManager::showAchieveItem(const std::string icon,const std::string name,const std::string targetDesc)
+{
+    if (nullptr == m_pAchieveItemLayer) {
+        m_pAchieveItemLayer = AchieveItemLayer::create();
+        m_pParentLayer->addChild(m_pAchieveItemLayer,eZOrderPopupLayer);
+    }
+    m_pAchieveItemLayer->showAchieveItem(icon, name, targetDesc);
+}
 

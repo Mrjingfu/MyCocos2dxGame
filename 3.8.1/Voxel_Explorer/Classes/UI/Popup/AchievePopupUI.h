@@ -24,7 +24,9 @@ public:
     virtual void onEnter() override;
     virtual void onExit() override;
     virtual void refreshUIView() override;
-
+    void removeSelfCallFunc() override;
+    bool onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *unused_event) override;
+    void onTouchEnded(cocos2d::Touch *touch, cocos2d::Event *unused_event) override;
 protected:
     void updateAllAchieves();
     void updateCommpleAchieves();

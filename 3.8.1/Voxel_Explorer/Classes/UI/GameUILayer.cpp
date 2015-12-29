@@ -34,10 +34,10 @@
 #include "InformationPopupUI.h"
 #include "AchieveProperty.hpp"
 #include "HudPromptLayer.hpp"
-#include "AchieveItemPopupUI.hpp"
 #include "DeadPopupUI.h"
 #include "Npc.hpp"
 #include "StatisticsManager.hpp"
+#include "AchievePopupUI.h"
 USING_NS_CC;
 GameUILayer::GameUILayer()
 {
@@ -50,7 +50,7 @@ GameUILayer::GameUILayer()
 }
 GameUILayer::~GameUILayer()
 {
-    
+    CC_SAFE_RELEASE_NULL(m_pAchievePopupUI);
 }
 bool GameUILayer::initUi()
 {
@@ -95,6 +95,9 @@ bool GameUILayer::initUi()
     m_pRootLayer->addChild(m_pMonsterHudLayer);
     
     
+    m_pAchievePopupUI = AchievePopupUI::create();
+    m_pAchievePopupUI->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
+    m_pAchievePopupUI->retain();
     setCharacterPropLayerVisible(false,false,false);
     
     refreshUIView();
@@ -1180,11 +1183,7 @@ void GameUILayer::onEvenetAchieveComplete(cocos2d::EventCustom *sender)
         std::string icon = achieveProp->getAchieveIcon();
         std::string name = achieveProp->getAchieveName();
         std::string targetDesc = achieveProp->getTargetDesc();
-        AchieveItemPopupUI* achieveItermPopup = static_cast<AchieveItemPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupAchieveItem));
-        if (achieveItermPopup) {
-            achieveItermPopup->setDarkLayerVisble(false);
-            achieveItermPopup->setAchieveDatas(icon, name, targetDesc);
-        }
+        PopupUILayerManager::getInstance()->showAchieveItem(icon, name, targetDesc);
     }
 }
 

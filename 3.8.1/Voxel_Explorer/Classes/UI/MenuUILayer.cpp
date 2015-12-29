@@ -11,11 +11,11 @@
 #include "GameConfig.h"
 #include "GameScene.h"
 #include "PopupUILayerManager.h"
-
+#include "AchievePopupUI.h"
 USING_NS_CC;
 MenuUILayer::MenuUILayer()
 {
-    
+    m_pAchievePopupUI = nullptr;
 }
 MenuUILayer::~MenuUILayer()
 {
@@ -40,12 +40,20 @@ bool MenuUILayer::addEvents()
     cocos2d::ui::Button* btn_start = dynamic_cast<cocos2d::ui::Button*>(UtilityHelper::seekNodeByName(m_pRootNode,"btn_start"));
     if (!btn_start)
         return false;
-
+    
+    
+    m_pAchievePopupUI = AchievePopupUI::create();
+    m_pAchievePopupUI->setVisible(false);
+    m_pRootNode->addChild(m_pAchievePopupUI,eZOrderPopupUILayer);
+    m_pAchievePopupUI->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
+    
     btn_achieve->addClickEventListener(CC_CALLBACK_1(MenuUILayer::onClickAchieve, this));
     btn_setting->addClickEventListener(CC_CALLBACK_1(MenuUILayer::onClickSetting, this));
     btn_rank->addClickEventListener(CC_CALLBACK_1(MenuUILayer::onClickRank, this));
     btn_start->addClickEventListener(CC_CALLBACK_1(MenuUILayer::onClickStart, this));
     btn_rate->addClickEventListener(CC_CALLBACK_1(MenuUILayer::onClickRate, this));
+    
+
     return true;
 }
 
@@ -54,7 +62,20 @@ void MenuUILayer::onClickAchieve(cocos2d::Ref *ref)
     CHECK_ACTION(ref);
     clickEffect();
     CCLOG("onTouchAchieve");
-    PopupUILayerManager::getInstance()->openPopup(ePopupAchieve);
+    if (m_pAchievePopupUI)
+    {
+        if (m_pAchievePopupUI->isVisible())
+        {
+            m_pAchievePopupUI->setVisible(false);
+        }
+        else
+        {
+            m_pAchievePopupUI->setVisible(true);
+            m_pAchievePopupUI->refreshUIView();
+        }
+        
+    }
+
 }
 void MenuUILayer::onClickSetting(cocos2d::Ref *ref)
 {

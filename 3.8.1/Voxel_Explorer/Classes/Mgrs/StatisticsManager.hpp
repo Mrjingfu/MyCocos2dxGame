@@ -13,6 +13,12 @@
 #include "UseableItem.hpp"
 #include "BaseBoss.hpp"
 #include "AchieveConst.h"
+#include "RandomDungeon.hpp"
+
+const int TIME_NINE = 5;
+const int TIME_THIRTY = 30;
+const std::string SCHEDU_NINE_KEY = "SCHEDU_NINE_KEY";
+const std::string SCHEDU_THIRTY_KEY = "SCHEDU_NINE_KEY";
 class StatisticsManager {
     StatisticsManager();
     
@@ -43,6 +49,7 @@ public:
     void addHideInfoNum(eHideInfoType type);
     void addUserableOpenNum(UseableItem::UseableItemType type);
     void addRoleDeadNum(eRoleDeadType type);
+    void addArriveDungeon(DUNGEON_TYPE type);
     
     void addCopperTotalNum(int num);
     void addStepNum();
@@ -62,14 +69,13 @@ public:
     void addDiscardEquipNum();
     void addPickItemNum();
     void addPickMagicItemNum();
-    void addNineStepTenNum();       //wait
-    void addThirtyNotMoveNum();     //wait
+    void addNineStepTenNum();
+    void addThirtyNotMoveNum();     
     
     void addExploreAllAreaNum();
     void decreaseExploreAllAreaNum();
     
     void addSearchNum();
-    void addfoodEaten();
     void addMeetThiefNum();
     void addMeetHagNum();
     void addMeetSageNum();
@@ -84,6 +90,12 @@ public:
     void addSpeedUpNum();
     void addStrongNum();
    
+    void addRoleAttr();
+    void addBagExtend();
+    
+    void pauseSchedu();
+    void resumeSchedu();
+    
     CChaosNumber getDataStatistType(eStatistType type) const;
     
     void load();
@@ -94,12 +106,14 @@ private:
     CChaosNumber getDataDeadType(eStatistType type) const;
     CChaosNumber getDataBossType(eStatistType type) const;
     CChaosNumber getDataHideInfoType(eStatistType type) const;
+    CChaosNumber getDataArriveDungeon(eStatistType type) const;
 private:
     CChaosNumber m_mMonsterKills[BaseMonster::MT_MAX];//杀死不同类型敌人数
     CChaosNumber m_mBossKills[BaseBoss::BossType::BT_MAX];  //杀死Boss
     CChaosNumber m_mUserableOpenNums[UseableItem::UseableItemType::UIT_UNKNOWN]; //
     CChaosNumber m_mDeadTypeNums[eRoleDeadType::RET_MAX];
     CChaosNumber m_mHideInfoTypeNums[eHideInfoType::HIT_MAX];
+    CChaosNumber m_mArriveDungeon[DUNGEON_TYPE::DT_MAX];
     
     CChaosNumber m_nCopperTotalNum;         //铜币收集总数
     CChaosNumber m_nStepNum;                //步数
@@ -129,7 +143,7 @@ private:
     CChaosNumber m_nExploreAllAreaNum;      //当前区域全部探索完成
     CChaosNumber m_nFoundHideDoorTrapNum;   //发现隐藏门和陷阱
     CChaosNumber m_nSearchNum;              //搜索
-    CChaosNumber m_nfoodEaten;              //到达最远深度
+ 
     CChaosNumber m_nBoxNum;                 //开启宝箱
     CChaosNumber m_nMeetThiefNum;           //遇见盗贼
     CChaosNumber m_nMeetHagNum;             //魔女
@@ -148,7 +162,10 @@ private:
     CChaosNumber m_nStrongNum;              //强壮
     
 
-
+    int m_nNineTime;
+    int m_nThirtyTime;
+    int m_nNineStepRecord;
+    int m_nThirtyStepRecord;
 
     
 };

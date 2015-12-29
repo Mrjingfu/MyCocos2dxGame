@@ -3,7 +3,7 @@
 #include "cocos2d.h"
 #include "xor.h"
 
-#if CC_TARGET_PLATFORM == CC_PLATFORM_MAC
+#if CC_TARGET_PLATFORM == CC_PLATFORM_MAC || CC_TARGET_PLATFORM == CC_PLATFORM_IOS
 #include "libb64.h"
 #include "md5.h"
 #include "sha1.h"

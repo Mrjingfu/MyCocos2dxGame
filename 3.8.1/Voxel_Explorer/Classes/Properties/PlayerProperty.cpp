@@ -353,7 +353,7 @@ bool PlayerProperty::equipWeapon(CChaosNumber id, bool sound)
             Color3B color = Color3B(251, 250, 126);
             VoxelExplorer::getInstance()->setPlayerLightColor(color);
         }
-
+        StatisticsManager::getInstance()->addRoleAttr();
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_PROPERTY_DIRTY);
         m_bDirty = true;
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_EQUIPED_WEAPON, &m_nEquipedWeaponID);
@@ -445,6 +445,7 @@ bool PlayerProperty::equipSecondWeapon(CChaosNumber id, bool sound)
             Color3B color = Color3B(251, 250, 126);
             VoxelExplorer::getInstance()->setPlayerLightColor(color);
         }
+        StatisticsManager::getInstance()->addRoleAttr();
          Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_PROPERTY_DIRTY);
         m_bDirty = true;
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_EQUIPED_WEAPON, &m_nEquipedWeaponID);
@@ -526,6 +527,7 @@ bool PlayerProperty::equipArmor(CChaosNumber id, bool sound)
         m_fMagicItemFindRate = m_fMagicItemFindRate + m_fBasicMagicItemFindRate*armorProperty->getAddedMagicItemFindRate().GetFloatValue();
         m_fMagicItemFindRate = MIN(m_fMagicItemFindRate, m_fMaxMagicItemFindRate);
         armorProperty->setEquiped(true);
+        StatisticsManager::getInstance()->addRoleAttr();
          Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_PROPERTY_DIRTY);
         m_bDirty = true;
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_EQUIPED_ARMOR, &m_nEquipedArmorID);
@@ -611,6 +613,7 @@ bool PlayerProperty::equipOrnaments(CChaosNumber id, bool sound)
         m_fMagicItemFindRate = m_fMagicItemFindRate + m_fBasicMagicItemFindRate*magicOrnamentProperty->getAddedMagicItemFindRate().GetFloatValue();
         m_fMagicItemFindRate = MIN(m_fMagicItemFindRate, m_fMaxMagicItemFindRate);
         magicOrnamentProperty->setEquiped(true);
+        StatisticsManager::getInstance()->addRoleAttr();
          Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_PROPERTY_DIRTY);
         m_bDirty = true;
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_EQUIPED_ORNAMENTS, &m_nEquipedOrnamentsID);
@@ -1094,6 +1097,7 @@ void PlayerProperty::extendBagSpace()
     {
         m_nBagExtendTimes = m_nBagExtendTimes + 1;
         m_nBagMaxSpace = m_nBagExtendTimes*15;
+        StatisticsManager::getInstance()->addBagExtend();
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_BAG_EXTEND_OK);
         
         std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("EXTEND_BAG_OK");
@@ -1122,7 +1126,7 @@ void PlayerProperty::levelUp()
     
     std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("PLAYER_LEVEL_UP");
     SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
-    
+    StatisticsManager::getInstance()->addRoleAttr();
     VoxelExplorer::getInstance()->addParticle3DEffectToPlayer(P3D_PLAYER_LEVELUP);
 }
 PickableItemProperty* PlayerProperty::getItemFromBag(CChaosNumber id) const

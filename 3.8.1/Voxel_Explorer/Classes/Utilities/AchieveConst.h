@@ -62,6 +62,22 @@ const std::vector<std::string> STATIST_TYPE_NAME = {
     "ST_BOSS_GIANT",                   ///巨人格鲁尔德    ///NEW
     "ST_BOSS_SKELETONKING",            ///骷髅王          ///NEW
 
+    "ST_DT_SEWER",              ////下水道
+    "ST_DT_PRISON",             ////监狱
+    "ST_DT_FANE",               ////神殿
+    "ST_DT_MINES",              ////矿坑
+    "ST_DT_CAVE",               ////洞穴
+    "ST_DT_TOMB",               ////古墓
+    "ST_DT_DWARF_CASTLE",       ////矮人城堡
+    "ST_DT_MAGA_TOWER",         ////法师塔
+    "ST_DT_ORC_FORTRESS",       ////兽人堡垒
+    "ST_DT_ELF_FOREST",         ////妖精森林
+    "ST_DT_TROLL_TEMPLE",       ////巨魔神庙
+    "ST_DT_BEHOLDER_CASTLE",     ////眼魔
+    "ST_DT_WARP_SPACE",          ////异空间
+    "ST_DT_DRAGON_LAIR",         ////龙穴
+    "ST_DT_LICH_TOMB",           ////巫妖墓室
+    
     "ST_TOTAL_COPPER",
     "ST_TOTAL_STEP",
     "ST_TOTAL_MONSTER_KILL",
@@ -90,7 +106,6 @@ const std::vector<std::string> STATIST_TYPE_NAME = {
     "ST_TOTAL_EXPLORE_ALL_AREA",          //探索区域                  ///NEW
     "ST_TOTAL_FOUND_DOOR_TRAP",            //隐藏门_陷阱               ///NEW
     "ST_TOTAL_SEARCH",                    //检索                    ///NEW
-    "ST_TOTAL_STEP_DUNGEON",              //到达过所有地下城         ///NEW
     "ST_TOTAL_CHEST_BOX",                 //开启宝箱
     "ST_TOTAL_MEET_THIEF",                //遇见盗贼
     "ST_TOTAL_MEET_HAG",                  //遇见魔女
@@ -161,6 +176,22 @@ enum eStatistType{
     ST_BOSS_GIANT,                   ///巨人格鲁尔德
     ST_BOSS_SKELETONKING,            ///骷髅王
 
+    ST_DT_SEWER,              ////下水道
+    ST_DT_PRISON,             ////监狱
+    ST_DT_FANE,               ////神殿
+    ST_DT_MINES,              ////矿坑
+    ST_DT_CAVE,               ////洞穴
+    ST_DT_TOMB,               ////古墓
+    ST_DT_DWARF_CASTLE,       ////矮人城堡
+    ST_DT_MAGA_TOWER,         ////法师塔
+    ST_DT_ORC_FORTRESS,       ////兽人堡垒
+    ST_DT_ELF_FOREST,         ////妖精森林
+    ST_DT_TROLL_TEMPLE,       ////巨魔神庙
+    ST_DT_BEHOLDER_CASTLE,     ////眼魔
+    ST_DT_WARP_SPACE,          ////异空间
+    ST_DT_DRAGON_LAIR,         ////龙穴
+    ST_DT_LICH_TOMB,           ////巫妖墓室
+    
     ST_TOTAL_COPPER,
     ST_TOTAL_STEP,
     ST_TOTAL_MONSTER_KILL,
@@ -189,7 +220,7 @@ enum eStatistType{
     ST_TOTAL_EXPLORE_ALL_AREA,          //探索区域
     ST_TOTAL_FOUND_DOOR_TRAP,           //隐藏门_陷阱
     ST_TOTAL_SEARCH,                    //检索
-    ST_TOTAL_STEP_DUNGEON,              //到达过所有地下城
+
     ST_TOTAL_CHEST_BOX,                 //开启宝箱
     ST_TOTAL_MEET_THIEF,                //遇见盗贼
     ST_TOTAL_MEET_HAG,                  //遇见魔女
@@ -304,8 +335,8 @@ const std::vector<std::string> ACHIEVEMENT_DATAIL_TYPE_NAME = {
     "ADT_MEET_HAG_FIRST",     //魔女的条件
     "ADT_SAGE_STORY",         //听爷爷讲故事
     "ADT_BUY_EQUIP",          //北市买长鞭
-    "ADT_BUY_POTION",         //穷家富路
-    "ADT_BUY_SCROLL",         //我需要卷轴
+    "ADT_BUY_MARICORIM",         //穷家富路
+    "ADT_BUY_SCROLL_POTION",         //我需要卷轴
     //end
 
 
@@ -332,7 +363,7 @@ const std::vector<std::string> ACHIEVEMENT_DATAIL_TYPE_NAME = {
     "ADT_POISON_NOT_DEAD",    //毒不死的小强
 
     "ADT_SPEED_UP_FIRST",     //飞一般的感觉
-    "ADT_STRONG_FIRST",       //无可救药
+    "ADT_STRONG_FIRST",       //挡我者死
     //end
 
 };
@@ -434,8 +465,8 @@ enum eAchievementDetailType
     ADT_MEET_HAG_FIRST,     //魔女的条件
     ADT_SAGE_STORY,         //听爷爷讲故事
     ADT_BUY_EQUIP,          //北市买长鞭
-    ADT_BUY_POTION,         //穷家富路
-    ADT_BUY_SCROLL,         //我需要卷轴
+    ADT_BUY_MARICORIM,         //穷家富路
+    ADT_BUY_SCROLL_POTION,         //我需要卷轴
     //end
 
 
@@ -462,7 +493,7 @@ enum eAchievementDetailType
     ADT_POISON_NOT_DEAD,    //毒不死的小强
 
     ADT_SPEED_UP_FIRST,     //飞一般的感觉
-    ADT_STRONG_FIRST,       //无可救药
+    ADT_STRONG_FIRST,       //挡我者死
     //end
 
     ADT_COUNT

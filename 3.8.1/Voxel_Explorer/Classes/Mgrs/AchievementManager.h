@@ -22,6 +22,14 @@ public:
     bool loadAchieveData();
     void handleAchievement(eAchievementDetailType achiId);
     void checkAllAchievement();
+    void checkKillMonsterAchievement();
+    void checkKillBossAchievement();
+    void checkRoleDeadAchievement();
+    void checkHaveGoldAchievement();
+    void checkFoundHideAchievement();
+    void checkBoxAchievement();
+    void checkAchieveUnlock(AchieveProperty* prop);
+    void sortAchieves();
     void load();
     void save();
    

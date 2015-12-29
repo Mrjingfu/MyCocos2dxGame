@@ -40,7 +40,7 @@ StatisticsManager::StatisticsManager()
     m_nExploreAllAreaNum        =0;         //当前区域全部探索完成
     m_nFoundHideDoorTrapNum     =0;         //发现隐藏门和陷阱
     m_nSearchNum                =0;         //搜索
-    m_nfoodEaten                =0;         //到达最远深度
+
     m_nBoxNum                   =0;         //开启宝箱
     m_nMeetThiefNum             =0;         //遇见盗贼
     m_nMeetHagNum               =0;         //魔女
@@ -59,6 +59,10 @@ StatisticsManager::StatisticsManager()
     m_nStrongNum                =0;         //强壮
     
 
+    m_nNineTime                 =0;
+    m_nThirtyTime               =0;
+    m_nNineStepRecord           =0;
+    m_nThirtyStepRecord         =0;
     
     //初始化怪物死亡数据
     for (int i = BaseMonster::MT_UNKNOWN; i<BaseMonster::MT_MAX; i++) {
@@ -82,6 +86,10 @@ StatisticsManager::StatisticsManager()
     for (int i= eHideInfoType::HIT_MSG; i<eHideInfoType::HIT_MAX; i++) {
         m_mHideInfoTypeNums[i]=0;
     }
+    //初始化地城信息数据
+    for (int i = DUNGEON_TYPE::DT_UNKNOWN; i<DT_MAX; i++) {
+        m_mArriveDungeon[i] = 0;
+    }
    
 }
 StatisticsManager::~StatisticsManager()
@@ -98,13 +106,13 @@ void StatisticsManager::addMonsterKillNum(BaseMonster::MonsterType type)
 {
     ++m_mMonsterKills[type] ;
     ++m_nMonsterKillTotalNum;
-    AchievementManager::getInstance()->checkAllAchievement();
+    AchievementManager::getInstance()->checkKillMonsterAchievement();
 }
 
 void StatisticsManager::addBossKillNum(BaseBoss::BossType type)
 {
     ++m_mBossKills[type];
-    AchievementManager::getInstance()->checkAllAchievement();
+    AchievementManager::getInstance()->checkKillBossAchievement();
 }
 void StatisticsManager::addHideInfoNum(eHideInfoType type)
 {
@@ -112,19 +120,20 @@ void StatisticsManager::addHideInfoNum(eHideInfoType type)
     if (type>=HIT_DOOR && type<=HIT_TRAP) {
         ++m_nFoundHideDoorTrapNum;
     }
+    AchievementManager::getInstance()->checkFoundHideAchievement();
 }
 void StatisticsManager::addUserableOpenNum(UseableItem::UseableItemType type)
 {
     CCASSERT(type>=UseableItem::UseableItemType::UIT_CHEST_NO_LOCK_COPPER && type<UseableItem::UseableItemType::UIT_UNKNOWN, "Tile type error");
     
     if (type==UseableItem::UseableItemType::UIT_CHEST_NO_LOCK_COPPER || type==UseableItem::UseableItemType::UIT_CHEST_COPPER) {
-        m_nChestCopperTotalNum = 1;
+        ++m_nChestCopperTotalNum ;
     }
     if (type==UseableItem::UseableItemType::UIT_CHEST_NO_LOCK_SILVER || type==UseableItem::UseableItemType::UIT_CHEST_COPPER) {
-        m_nChestSilverTotalNum = 1;
+        ++m_nChestSilverTotalNum ;
     }
     if (type==UseableItem::UseableItemType::UIT_CHEST_NO_LOCK_GOLD || type==UseableItem::UseableItemType::UIT_CHEST_GOLD) {
-        m_nChestGoldTotalNum = 1;
+        ++m_nChestGoldTotalNum ;
     }
     
     if (type >= UseableItem::UseableItemType::UIT_CHEST_NO_LOCK_COPPER && type <=UseableItem::UseableItemType::UIT_CHEST_GOLD) {
@@ -134,7 +143,7 @@ void StatisticsManager::addUserableOpenNum(UseableItem::UseableItemType type)
     if (type>=UseableItem::UseableItemType::UIT_JAR_1 && type<=UseableItem::UseableItemType::UIT_JAR_3) {
         ++m_nJarTotalNum;
     }
-    AchievementManager::getInstance()->checkAllAchievement();
+    AchievementManager::getInstance()->checkBoxAchievement();
 }
 
 
@@ -142,36 +151,44 @@ void StatisticsManager::addRoleDeadNum(eRoleDeadType type)
 {
     ++m_mDeadTypeNums[type] ;
     ++m_nRoleDeadTotalNum;
-    AchievementManager::getInstance()->checkAllAchievement();
+    AchievementManager::getInstance()->checkRoleDeadAchievement();
+}
+void StatisticsManager::addArriveDungeon(DUNGEON_TYPE type)
+{
+    ++m_mArriveDungeon[type];
 }
 void StatisticsManager::addCopperTotalNum(int num)
 {
     m_nCopperTotalNum+=num;
-    AchievementManager::getInstance()->handleAchievement(eAchievementDetailType::ADT_HAVE_GOLD_1);
+    AchievementManager::getInstance()->checkHaveGoldAchievement();
 }
 
 void StatisticsManager::addStepNum()
 {
     ++m_nStepNum;
-    AchievementManager::getInstance()->checkAllAchievement();
+    AchievementManager::getInstance()->handleAchievement(ADT_MARATHON);
+    addNineStepTenNum();
+    addThirtyNotMoveNum();
 }
 void StatisticsManager::addUseKeyNum()
 {
     ++m_nUseKeyTotalNum;
+    AchievementManager::getInstance()->handleAchievement(ADT_USE_KEY);
 }
 void StatisticsManager::addCriticalTotalNum()
 {
     ++m_nCriticalTotalNum;
-    AchievementManager::getInstance()->checkAllAchievement();
+    AchievementManager::getInstance()->handleAchievement(ADT_ROLE_CRIT);
 }
 void StatisticsManager::addDodgeTotalNum()
 {
     ++m_nDodgeTotalNum;
+    AchievementManager::getInstance()->handleAchievement(ADT_ROLE_DODGE);
 }
 void StatisticsManager::addBlockTotalNum()
 {
     ++m_nBlockTotalNum;
-    AchievementManager::getInstance()->checkAllAchievement();
+    AchievementManager::getInstance()->handleAchievement(ADT_ROLE_BLOCK);
 }
 void StatisticsManager::addMonsterEliteNum()
 {
@@ -180,55 +197,117 @@ void StatisticsManager::addMonsterEliteNum()
 void StatisticsManager::addIdentifyNum()
 {
     ++m_nIdentifyNum;
+    AchievementManager::getInstance()->handleAchievement(eAchievementDetailType::ADT_IDENTIFY_1);
+    AchievementManager::getInstance()->handleAchievement(eAchievementDetailType::ADT_IDENTIFY_4);
 }
 void StatisticsManager::addIdentifyAttrNum()
 {
     ++m_nIdentifyAttrNum;
+    AchievementManager::getInstance()->handleAchievement(eAchievementDetailType::ADT_IDENTIFY_2);
 }
 void StatisticsManager::addIdentifyLegendNum()
 {
     ++m_nIdentifyLegend;
+    AchievementManager::getInstance()->handleAchievement(eAchievementDetailType::ADT_IDENTIFY_3);
 }
 
 void StatisticsManager::addBagFullNum()
 {
     ++m_nBagFullNum;
+     AchievementManager::getInstance()->handleAchievement(eAchievementDetailType::ADT_BAG_FULL);
 }
 
 void StatisticsManager::addDiscardItemNum()
 {
     ++m_nDiscardItemNum;
+    AchievementManager::getInstance()->handleAchievement(ADT_WEALTHY_MEN);
 }
 
 void StatisticsManager::addDiscardEquipNum()
 {
     ++m_nDiscardEquipNum;
+    AchievementManager::getInstance()->handleAchievement(ADT_SPENDERS_MEN);
 }
 
 void StatisticsManager::addPickItemNum()
 {
     ++m_nPickItemNum;
+    AchievementManager::getInstance()->handleAchievement(ADT_PICK_ITEM);
 }
 
 void StatisticsManager::addPickMagicItemNum()
 {
     ++m_nPickMagicItemNum;
+    AchievementManager::getInstance()->handleAchievement(ADT_PICK_NOT_MARIC_ITEM);
 }
 
 void StatisticsManager::addNineStepTenNum()
 {
-    ++m_nNineStepTenNum;
+    if (m_nNineStepTenNum ==0)
+    {
+        if (!cocos2d::Director::getInstance()->getScheduler()->isScheduled(SCHEDU_NINE_KEY, this)) {
+            m_nNineStepRecord = m_nStepNum;
+            cocos2d::Director::getInstance()->getScheduler()->schedule([this](float dt){
+                CCLOG("addNineStepTenNum");
+                ++m_nNineTime;
+                if (m_nNineTime >=TIME_NINE )
+                {
+                    if (m_nStepNum - m_nNineStepRecord> 10)
+                    {
+                        m_nNineStepTenNum = 1;
+                        cocos2d::Director::getInstance()->getScheduler()->unschedule(SCHEDU_NINE_KEY, this);
+                        AchievementManager::getInstance()->handleAchievement(eAchievementDetailType::ADT_WORLD_RECORD);
+
+                    }else
+                    {
+                        m_nNineStepRecord = 0;
+                        m_nNineTime = 0;
+                        m_nNineStepRecord = m_nStepNum;
+                    }
+                }
+            }, this, 1.0f, false, SCHEDU_NINE_KEY);
+        }
+
+    }
 }
 
 void StatisticsManager::addThirtyNotMoveNum()
 {
-    ++m_nThirtyNotMoveNum;
+    if (m_nThirtyNotMoveNum ==0)
+    {
+        m_nThirtyStepRecord = m_nStepNum;
+        m_nThirtyTime = 0;
+        if (!cocos2d::Director::getInstance()->getScheduler()->isScheduled(SCHEDU_THIRTY_KEY, this)) {
+            
+            cocos2d::Director::getInstance()->getScheduler()->schedule([this](float dt){
+                CCLOG("addThirtyNotMoveNum");
+                ++m_nThirtyTime;
+                if (m_nThirtyTime >=TIME_THIRTY )
+                {
+                    if (m_nStepNum == m_nThirtyStepRecord)
+                    {
+                        m_nThirtyNotMoveNum = 1;
+                        cocos2d::Director::getInstance()->getScheduler()->unschedule(SCHEDU_THIRTY_KEY, this);
+                        AchievementManager::getInstance()->handleAchievement(eAchievementDetailType::ADT_THIRTY_NOT_MOVE);
+                    }else
+                    {
+                        m_nThirtyStepRecord = 0;
+                        m_nThirtyTime = 0;
+                        m_nThirtyStepRecord = m_nStepNum;
+                    }
+                    
+                }
+            }, this, 1.0f, false, SCHEDU_THIRTY_KEY);
+        }
+        
+    }
 }
 
 void StatisticsManager::addExploreAllAreaNum()
 {
     //检测区域
     m_nExploreAllAreaNum = 1;
+    AchievementManager::getInstance()->handleAchievement(ADT_OBSESSION_MEN);
 }
 void StatisticsManager::decreaseExploreAllAreaNum()
 {
@@ -237,75 +316,107 @@ void StatisticsManager::decreaseExploreAllAreaNum()
 void StatisticsManager::addSearchNum()
 {
     ++m_nSearchNum;
+    AchievementManager::getInstance()->handleAchievement(ADT_LOVE_QUESTION);
+    AchievementManager::getInstance()->handleAchievement(ADT_SEARCH_KING);
 }
 
-void StatisticsManager::addfoodEaten()
-{
-    //深度
-}
 
 void StatisticsManager::addMeetThiefNum()
 {
     m_nMeetThiefNum  = 1;
+    AchievementManager::getInstance()->handleAchievement(ADT_MEET_THIEF_FIRST);
 }
 
 void StatisticsManager::addMeetHagNum()
 {
     m_nMeetSageNum  =1;
+     AchievementManager::getInstance()->handleAchievement(ADT_MEET_HAG_FIRST);
 }
 
 void StatisticsManager::addMeetSageNum()
 {
     ++m_nMeetSageNum;
+    AchievementManager::getInstance()->handleAchievement(ADT_SAGE_STORY);
 }
 
 void StatisticsManager::addNurseTreatNum()
 {
     ++m_nNurseTreatNum;
+    AchievementManager::getInstance()->handleAchievement(ADT_NURSE_TREAT);
 }
 
 void StatisticsManager::addBuyEquipNum()
 {
     m_nBuyEquipNum = 1;
+    AchievementManager::getInstance()->handleAchievement(ADT_BUY_EQUIP);
 }
 
 void StatisticsManager::addBuyPotionScrollNum()
 {
     m_nBuyPotionScrollNum  = 1;
+    AchievementManager::getInstance()->handleAchievement(ADT_BUY_MARICORIM);
 }
 void StatisticsManager::addBuyMagicOramNum()
 {
     m_nBuyMagicOramNum = 1;
+    AchievementManager::getInstance()->handleAchievement(ADT_BUY_SCROLL_POTION);
 }
 
 void StatisticsManager::addStealthNum()
 {
     m_nStealthNum =1;
+    AchievementManager::getInstance()->handleAchievement(ADT_STEALTHY_FIRST);
 }
 
 void StatisticsManager::addNotFailDeadNum()
 {
     m_nNotFailDeadNum =1;
+    AchievementManager::getInstance()->handleAchievement(ADT_ROLE_LUCK_NOT_DEAD);
 }
 
 void StatisticsManager::addWeakRecoverNum()
 {
     m_nWeakRecoverNum =1;
+    AchievementManager::getInstance()->handleAchievement(ADT_WEAK_RECOVER);
 }
 
 void StatisticsManager::addPoisonRecoverNum()
 {
     m_nPoisonRecoverNum =1;
+    AchievementManager::getInstance()->handleAchievement(ADT_POISON_NOT_DEAD);
 }
 
 void StatisticsManager::addSpeedUpNum()
 {
     m_nSpeedUpNum =1;
+    AchievementManager::getInstance()->handleAchievement(ADT_SPEED_UP_FIRST);
 }
 
 void StatisticsManager::addStrongNum()
 {
     m_nStrongNum =1;
+    AchievementManager::getInstance()->handleAchievement(ADT_STRONG_FIRST);
+}
+
+void StatisticsManager::addRoleAttr()
+{
+    AchievementManager::getInstance()->handleAchievement(ADT_ROLE_LEVEL_1);
+    AchievementManager::getInstance()->handleAchievement(ADT_ROLE_LEVEL_2);
+    AchievementManager::getInstance()->handleAchievement(ADT_ROLE_HP);
+    AchievementManager::getInstance()->handleAchievement(ADT_ROLE_ATTACK);
+}
+void StatisticsManager::addBagExtend()
+{
+    AchievementManager::getInstance()->handleAchievement(ADT_EXTEND_BAG);
+    AchievementManager::getInstance()->handleAchievement(ADT_EXTEND_BAG_MAX);
+}
+void StatisticsManager::pauseSchedu()
+{
+    cocos2d::Director::getInstance()->getScheduler()->pauseTarget(this);
+}
+void StatisticsManager::resumeSchedu()
+{
+     cocos2d::Director::getInstance()->getScheduler()->resumeTarget(this);
 }
 
 void StatisticsManager::load()
@@ -318,6 +429,7 @@ void StatisticsManager::save()
 }
 CChaosNumber StatisticsManager::getDataStatistType(eStatistType type) const
 {
+    CCASSERT(type>=ST_MONSTER_RAT && type <ST_MAX, "Statist type error");
     
     if (type>=ST_MONSTER_RAT && type <=ST_MONSTER_GHOUL) {
        return getDataMonsterType(type);
@@ -333,6 +445,10 @@ CChaosNumber StatisticsManager::getDataStatistType(eStatistType type) const
     
     if (type>=ST_BOSS_SLIMEKING && type<=ST_BOSS_SKELETONKING) {
         return getDataBossType(type);
+    }
+    
+    if (type>=ST_DT_SEWER && type<=ST_DT_LICH_TOMB) {
+        return getDataArriveDungeon(type);
     }
     
     if (type>=ST_TOTAL_COPPER && type <=ST_TOTAL_STRONG) {
@@ -388,54 +504,54 @@ CChaosNumber StatisticsManager::getDataTotalType(eStatistType type) const
             return m_nJarTotalNum;
             break;
         case ST_TOTAL_ROLE_LEVEL:
+            return PlayerProperty::getInstance()->getLevel();
             break;
         case ST_TOTAL_ELITE_MONSTER:
             return m_nMonsterEliteKillNum;
-            break;                                                      ///NEW
+            break;
         case ST_TOTAL_IDENTIFY:
             return m_nIdentifyNum;
-            break;                                                             ///NEW
-        case ST_TOTAL_IDENTIFY_BEOW_TOW:         ///鉴定属性超过两条次数   ///NEW
+            break;
+        case ST_TOTAL_IDENTIFY_BEOW_TOW:         ///鉴定属性超过两条次数
             return m_nIdentifyAttrNum;
             break;
-        case ST_TOTAL_IDENTIFY_QUALITY:          //鉴定品质               ///NEW
+        case ST_TOTAL_IDENTIFY_QUALITY:          //鉴定品质
             return m_nIdentifyLegend;
             break;
-        case ST_TOTAL_BAG_EXTEND:               //背包扩容次数           ///NEW
+        case ST_TOTAL_BAG_EXTEND:               //背包扩容次数
+            return PlayerProperty::getInstance()->getBagExtendTimes();
             break;
-        case ST_TOTAL_BAG_FULL:                  //背包装满               ///NEW
+        case ST_TOTAL_BAG_FULL:                  //背包装满
             return m_nBagFullNum;
             break;
-        case ST_TOTAL_DISCARD_ITEM:              //道具丢弃总计            ///NEW
+        case ST_TOTAL_DISCARD_ITEM:              //道具丢弃总计
             return m_nDiscardItemNum;
             break;
-        case ST_TOTAL_DISCARD_EQUIP:             //丢弃装备                ///NEW
+        case ST_TOTAL_DISCARD_EQUIP:             //丢弃装备
             return m_nDiscardEquipNum;
             break;
-        case ST_TOTAL_PICK_ITEM:                 //拾取道具                ///new
+        case ST_TOTAL_PICK_ITEM:                 //拾取道具
             return m_nPickItemNum;
             break;
-        case ST_TOTAL_PICK_NOT_MARIC:            //拾取费魔法物品           ///new
+        case ST_TOTAL_PICK_NOT_MARIC:            //拾取费魔法物品
             return m_nPickMagicItemNum;
             break;
-        case ST_TOTAL_NINE_STEP:                 //9秒移动超过10步          ///new
+        case ST_TOTAL_NINE_STEP:                 //9秒移动超过10步
             return m_nNineStepTenNum;
             break;
-        case ST_TOTAL_THIRTY_NOT_MOVE:           //30秒不动                 ///new
+        case ST_TOTAL_THIRTY_NOT_MOVE:           //30秒不动
             return m_nThirtyNotMoveNum;
             break;
-        case ST_TOTAL_EXPLORE_ALL_AREA:          //探索区域                  ///NEW
+        case ST_TOTAL_EXPLORE_ALL_AREA:          //探索区域
             return m_nExploreAllAreaNum;
             break;
-        case ST_TOTAL_FOUND_DOOR_TRAP:           //隐藏门_陷阱               ///NEW
+        case ST_TOTAL_FOUND_DOOR_TRAP:           //隐藏门_陷阱
             return m_nFoundHideDoorTrapNum;
             break;
-        case ST_TOTAL_SEARCH:                    //检索                    ///NEW
+        case ST_TOTAL_SEARCH:                    //检索
             return m_nSearchNum;
             break;
-        case ST_TOTAL_STEP_DUNGEON:              //到达过所有地下城         ///NEW
-            return m_nfoodEaten;
-            break;
+
         case ST_TOTAL_CHEST_BOX:                 //开启宝箱
             return m_nBoxNum;
             break;
@@ -461,8 +577,10 @@ CChaosNumber StatisticsManager::getDataTotalType(eStatistType type) const
             return m_nBuyMagicOramNum;
             break;
         case ST_TOTAL_ROLE_HP:                   //生命值
+            return PlayerProperty::getInstance()->getMaxHP();
             break;
         case ST_TOTAL_ROLE_MAX_ATTACK:           //攻击力
+            return PlayerProperty::getInstance()->getMaxAttack();
             break;
         case ST_TOTAL_STEALTH:                   //隐身
             return m_nStealthNum;
@@ -558,4 +676,59 @@ CChaosNumber StatisticsManager::getDataHideInfoType(eStatistType type) const
             break;
     }
     return m_mHideInfoTypeNums[infoType];
+}
+CChaosNumber StatisticsManager::getDataArriveDungeon(eStatistType type) const
+{
+    CCASSERT(type>=ST_DT_SEWER && type <=ST_DT_LICH_TOMB,"DataHideInfo type error");
+    DUNGEON_TYPE dungeonType = DT_UNKNOWN;
+    switch (type) {
+        case ST_DT_SEWER:              ////下水道
+            dungeonType =DT_SEWER;
+            break;
+        case ST_DT_PRISON:             ////监狱
+            dungeonType =DT_PRISON;
+            break;
+        case ST_DT_FANE:               ////神殿
+            dungeonType =DT_FANE;
+            break;
+        case ST_DT_MINES:              ////矿坑
+            dungeonType =DT_MINES;
+            break;
+        case ST_DT_CAVE:               ////洞穴
+            dungeonType =DT_CAVE;
+            break;
+        case ST_DT_TOMB:               ////古墓
+            dungeonType =DT_TOMB;
+            break;
+        case ST_DT_DWARF_CASTLE:       ////矮人城堡
+            dungeonType =DT_DWARF_CASTLE;
+            break;
+        case ST_DT_MAGA_TOWER:         ////法师塔
+            dungeonType =DT_MAGA_TOWER;
+            break;
+        case ST_DT_ORC_FORTRESS:       ////兽人堡垒
+            dungeonType =DT_ORC_FORTRESS;
+            break;
+        case ST_DT_ELF_FOREST:         ////妖精森林
+            dungeonType =DT_ELF_FOREST;
+            break;
+        case ST_DT_TROLL_TEMPLE:       ////巨魔神庙
+            dungeonType =DT_TROLL_TEMPLE;
+            break;
+        case ST_DT_BEHOLDER_CASTLE:     ////眼魔
+            dungeonType =DT_BEHOLDER_CASTLE;
+            break;
+        case ST_DT_WARP_SPACE:          ////异空间
+            dungeonType =DT_WARP_SPACE;
+            break;
+        case ST_DT_DRAGON_LAIR:         ////龙穴
+            dungeonType =DT_DRAGON_LAIR;
+            break;
+        case ST_DT_LICH_TOMB:           ////巫妖墓室
+            dungeonType =DT_LICH_TOMB;
+            break;
+        default:
+            break;
+    }
+    return m_mArriveDungeon[dungeonType];
 }

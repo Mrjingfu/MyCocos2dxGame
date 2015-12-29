@@ -5,7 +5,7 @@
 	<key>ADT_MONSTER_1</key>
 	<dict>
 		<key>achieve_unlock_task</key>
-		<array/>
+		<dict/>
 		<key>achieve_task</key>
 		<dict>
 			<key>ST_TOTAL_MONSTER_KILL</key>
@@ -17,7 +17,10 @@
 	<key>ADT_MONSTER_2</key>
 	<dict>
 		<key>achieve_unlock_task</key>
-		<array/>
+		<dict>
+			<key>ST_TOTAL_MONSTER_KILL</key>
+			<string>15</string>
+		</dict>
 		<key>achieve_task</key>
 		<dict>
 			<key>ST_TOTAL_MONSTER_KILL</key>
@@ -29,7 +32,10 @@
 	<key>ADT_MONSTER_3</key>
 	<dict>
 		<key>achieve_unlock_task</key>
-		<array/>
+		<dict>
+			<key>ST_TOTAL_MONSTER_KILL</key>
+			<string>50</string>
+		</dict>
 		<key>achieve_task</key>
 		<dict>
 			<key>ST_TOTAL_MONSTER_KILL</key>
@@ -41,7 +47,10 @@
 	<key>ADT_MONSTER_4</key>
 	<dict>
 		<key>achieve_unlock_task</key>
-		<array/>
+		<dict>
+			<key>ST_TOTAL_MONSTER_KILL</key>
+			<string>300</string>
+		</dict>
 		<key>achieve_task</key>
 		<dict>
 			<key>ST_TOTAL_MONSTER_KILL</key>
@@ -53,7 +62,10 @@
 	<key>ADT_MONSTER_5</key>
 	<dict>
 		<key>achieve_unlock_task</key>
-		<array/>
+		<dict>
+			<key>ST_TOTAL_MONSTER_KILL</key>
+			<string>1000</string>
+		</dict>
 		<key>achieve_task</key>
 		<dict>
 			<key>ST_TOTAL_MONSTER_KILL</key>
@@ -65,7 +77,10 @@
 	<key>ADT_MONSTER_6</key>
 	<dict>
 		<key>achieve_unlock_task</key>
-		<array/>
+		<dict>
+			<key>ST_TOTAL_MONSTER_KILL</key>
+			<string>2000</string>
+		</dict>
 		<key>achieve_task</key>
 		<dict>
 			<key>ST_TOTAL_MONSTER_KILL</key>
@@ -77,7 +92,7 @@
 	<key>ADT_SPECIFIED_MONSTER_1</key>
 	<dict>
 		<key>achieve_unlock_task</key>
-		<array/>
+		<dict/>
 		<key>achieve_task</key>
 		<dict>
 			<key>ST_MONSTER_ZOMBIE</key>
@@ -89,7 +104,18 @@
 	<key>ADT_SPECIFIED_MONSTER_2</key>
 	<dict>
 		<key>achieve_unlock_task</key>
-		<array/>
+		<dict>
+			<key>ST_MONSTER_SNAKE</key>
+			<string>50</string>
+			<key>ST_MONSTER_BAT</key>
+			<string>50</string>
+			<key>ST_MONSTER_WOLF</key>
+			<string>50</string>
+			<key>ST_MONSTER_BEAR</key>
+			<string>50</string>
+			<key>ST_MONSTER_DINOSAUR</key>
+			<string>50</string>
+		</dict>
 		<key>achieve_task</key>
 		<dict>
 			<key>ST_MONSTER_SNAKE</key>
@@ -109,7 +135,20 @@
 	<key>ADT_SPECIFIED_MONSTER_3</key>
 	<dict>
 		<key>achieve_unlock_task</key>
-		<array/>
+		<dict>
+			<key>ST_MONSTER_ZOMBIE</key>
+			<string>50</string>
+			<key>ST_MONSTER_SKELETON</key>
+			<string>50</string>
+			<key>ST_MONSTER_ALLIP</key>
+			<string>50</string>
+			<key>ST_MONSTER_GHOST</key>
+			<string>50</string>
+			<key>ST_MONSTER_GHOUL</key>
+			<string>50</string>
+			<key>ST_MONSTER_GARGOYLE</key>
+			<string>50</string>
+		</dict>
 		<key>achieve_task</key>
 		<dict>
 			<key>ST_MONSTER_ZOMBIE</key>
@@ -131,7 +170,18 @@
 	<key>ADT_SPECIFIED_MONSTER_4</key>
 	<dict>
 		<key>achieve_unlock_task</key>
-		<array/>
+		<dict>
+			<key>ST_MONSTER_SPIDER</key>
+			<string>50</string>
+			<key>ST_MONSTER_RAT</key>
+			<string>50</string>
+			<key>ST_MONSTER_SLIME</key>
+			<string>50</string>
+			<key>ST_MONSTER_OOZE</key>
+			<string>50</string>
+			<key>ST_MONSTER_SHADOW</key>
+			<string>50</string>
+		</dict>
 		<key>achieve_task</key>
 		<dict>
 			<key>ST_MONSTER_SPIDER</key>
@@ -151,7 +201,7 @@
 	<key>ADT_SPECIFIED_MONSTER_5</key>
 	<dict>
 		<key>achieve_unlock_task</key>
-		<array/>
+		<dict/>
 		<key>achieve_task</key>
 		<dict>
 			<key>ST_TOTAL_ELITE_MONSTER</key>
@@ -163,7 +213,7 @@
 	<key>ADT_SPECIFIED_MONSTER_6</key>
 	<dict>
 		<key>achieve_unlock_task</key>
-		<array/>
+		<dict/>
 		<key>achieve_task</key>
 		<dict>
 			<key>ST_MONSTER_RAT</key>
@@ -233,7 +283,7 @@
 	<key>ADT_BOSS_KILL_1</key>
 	<dict>
 		<key>achieve_unlock_task</key>
-		<array/>
+		<dict/>
 		<key>achieve_task</key>
 		<dict>
 			<key>ST_BOSS_SLIMEKING</key>
@@ -245,7 +295,7 @@
 	<key>ADT_BOSS_KILL_2</key>
 	<dict>
 		<key>achieve_unlock_task</key>
-		<array/>
+		<dict/>
 		<key>achieve_task</key>
 		<dict>
 			<key>ST_BOSS_WARDEN</key>
@@ -257,7 +307,7 @@
 	<key>ADT_BOSS_KILL_3</key>
 	<dict>
 		<key>achieve_unlock_task</key>
-		<array/>
+		<dict/>
 		<key>achieve_task</key>
 		<dict>
 			<key>ST_BOSS_ARCHBISHOP</key>
@@ -269,7 +319,7 @@
 	<key>ADT_BOSS_KILL_4</key>
 	<dict>
 		<key>achieve_unlock_task</key>
-		<array/>
+		<dict/>
 		<key>achieve_task</key>
 		<dict>
 			<key>ST_BOSS_KOBOLDLEADER</key>
@@ -281,7 +331,7 @@
 	<key>ADT_BOSS_KILL_5</key>
 	<dict>
 		<key>achieve_unlock_task</key>
-		<array/>
+		<dict/>
 		<key>achieve_task</key>
 		<dict>
 			<key>ST_BOSS_GIANT</key>
@@ -293,7 +343,7 @@
 	<key>ADT_BOSS_KILL_6</key>
 	<dict>
 		<key>achieve_unlock_task</key>
-		<array/>
+		<dict/>
 		<key>achieve_task</key>
 		<dict>
 			<key>ST_BOSS_SKELETONKING</key>
@@ -305,7 +355,7 @@
 	<key>ADT_ROLE_FALL_DEAD</key>
 	<dict>
 		<key>achieve_unlock_task</key>
-		<array/>
+		<dict/>
 		<key>achieve_task</key>
 		<dict>
 			<key>ST_DEAD_FALL</key>
@@ -317,7 +367,7 @@
 	<key>ADT_ROLE_POISON_DEAD</key>
 	<dict>
 		<key>achieve_unlock_task</key>
-		<array/>
+		<dict/>
 		<key>achieve_task</key>
 		<dict>
 			<key>ST_DEAD_BUFFER_POISONING</key>
@@ -329,7 +379,7 @@
 	<key>ADT_ROLE_CLIP_DEAD</key>
 	<dict>
 		<key>achieve_unlock_task</key>
-		<array/>
+		<dict/>
 		<key>achieve_task</key>
 		<dict>
 			<key>ST_DEAD_TRIGGER_GRIPPING_TRAP</key>
@@ -341,7 +391,7 @@
 	<key>ADT_ROLE_FILE_DEAD</key>
 	<dict>
 		<key>achieve_unlock_task</key>
-		<array/>
+		<dict/>
 		<key>achieve_task</key>
 		<dict>
 			<key>ST_DEAD_BUFFER_FIRE</key>
@@ -353,7 +403,7 @@
 	<key>ADT_ROLE_DEAD_1</key>
 	<dict>
 		<key>achieve_unlock_task</key>
-		<array/>
+		<dict/>
 		<key>achieve_task</key>
 		<dict>
 			<key>ST_TOTAL_ROLE_DEAD</key>
@@ -365,7 +415,10 @@
 	<key>ADT_ROLE_DEAD_2</key>
 	<dict>
 		<key>achieve_unlock_task</key>
-		<array/>
+		<dict>
+			<key>ST_TOTAL_ROLE_DEAD</key>
+			<string>5</string>
+		</dict>
 		<key>achieve_task</key>
 		<dict>
 			<key>ST_TOTAL_ROLE_DEAD</key>
@@ -377,7 +430,10 @@
 	<key>ADT_ROLE_DEAD_3</key>
 	<dict>
 		<key>achieve_unlock_task</key>
-		<array/>
+		<dict>
+			<key>ST_TOTAL_ROLE_DEAD</key>
+			<string>30</string>
+		</dict>
 		<key>achieve_task</key>
 		<dict>
 			<key>ST_TOTAL_ROLE_DEAD</key>
@@ -389,7 +445,10 @@
 	<key>ADT_ROLE_DEAD_4</key>
 	<dict>
 		<key>achieve_unlock_task</key>
-		<array/>
+		<dict>
+			<key>ST_TOTAL_ROLE_DEAD</key>
+			<string>60</string>
+		</dict>
 		<key>achieve_task</key>
 		<dict>
 			<key>ST_TOTAL_ROLE_DEAD</key>
@@ -401,7 +460,7 @@
 	<key>ADT_IDENTIFY_1</key>
 	<dict>
 		<key>achieve_unlock_task</key>
-		<array/>
+		<dict/>
 		<key>achieve_task</key>
 		<dict>
 			<key>ST_TOTAL_IDENTIFY</key>
@@ -413,7 +472,7 @@
 	<key>ADT_IDENTIFY_2</key>
 	<dict>
 		<key>achieve_unlock_task</key>
-		<array/>
+		<dict/>
 		<key>achieve_task</key>
 		<dict>
 			<key>ST_TOTAL_IDENTIFY_BEOW_TOW</key>
@@ -425,7 +484,7 @@
 	<key>ADT_IDENTIFY_3</key>
 	<dict>
 		<key>achieve_unlock_task</key>
-		<array/>
+		<dict/>
 		<key>achieve_task</key>
 		<dict>
 			<key>ST_TOTAL_IDENTIFY_QUALITY</key>
@@ -437,7 +496,10 @@
 	<key>ADT_IDENTIFY_4</key>
 	<dict>
 		<key>achieve_unlock_task</key>
-		<array/>
+		<dict>
+			<key>ST_TOTAL_IDENTIFY</key>
+			<string>60</string>
+		</dict>
 		<key>achieve_task</key>
 		<dict>
 			<key>ST_TOTAL_IDENTIFY</key>
@@ -449,7 +511,7 @@
 	<key>ADT_EXTEND_BAG</key>
 	<dict>
 		<key>achieve_unlock_task</key>
-		<array/>
+		<dict/>
 		<key>achieve_task</key>
 		<dict>
 			<key>ST_TOTAL_BAG_EXTEND</key>
@@ -461,7 +523,7 @@
 	<key>ADT_BAG_FULL</key>
 	<dict>
 		<key>achieve_unlock_task</key>
-		<array/>
+		<dict/>
 		<key>achieve_task</key>
 		<dict>
 			<key>ST_TOTAL_BAG_FULL</key>
@@ -473,10 +535,13 @@
 	<key>ADT_EXTEND_BAG_MAX</key>
 	<dict>
 		<key>achieve_unlock_task</key>
-		<array/>
+		<dict>
+			<key>ST_TOTAL_BAG_EXTEND</key>
+			<string>2</string>
+		</dict>
 		<key>achieve_task</key>
 		<dict>
-			<key>ST_TOTAL_BAG_FULL</key>
+			<key>ST_TOTAL_BAG_EXTEND</key>
 			<string>4</string>
 		</dict>
 		<key>achieve_icon</key>
@@ -485,7 +550,7 @@
 	<key>ADT_WEALTHY_MEN</key>
 	<dict>
 		<key>achieve_unlock_task</key>
-		<array/>
+		<dict/>
 		<key>achieve_task</key>
 		<dict>
 			<key>ST_TOTAL_DISCARD_ITEM</key>
@@ -497,7 +562,10 @@
 	<key>ADT_SPENDERS_MEN</key>
 	<dict>
 		<key>achieve_unlock_task</key>
-		<array/>
+		<dict>
+			<key>ST_TOTAL_DISCARD_EQUIP</key>
+			<string>30</string>
+		</dict>
 		<key>achieve_task</key>
 		<dict>
 			<key>ST_TOTAL_DISCARD_EQUIP</key>
@@ -509,7 +577,7 @@
 	<key>ADT_PICK_ITEM</key>
 	<dict>
 		<key>achieve_unlock_task</key>
-		<array/>
+		<dict/>
 		<key>achieve_task</key>
 		<dict>
 			<key>ST_TOTAL_PICK_ITEM</key>
@@ -521,7 +589,10 @@
 	<key>ADT_PICK_NOT_MARIC_ITEM</key>
 	<dict>
 		<key>achieve_unlock_task</key>
-		<array/>
+		<dict>
+			<key>ST_TOTAL_PICK_NOT_MARIC</key>
+			<string>20</string>
+		</dict>
 		<key>achieve_task</key>
 		<dict>
 			<key>ST_TOTAL_PICK_NOT_MARIC</key>
@@ -533,7 +604,10 @@
 	<key>ADT_MARATHON</key>
 	<dict>
 		<key>achieve_unlock_task</key>
-		<array/>
+		<dict>
+			<key>ST_TOTAL_STEP</key>
+			<string>30000</string>
+		</dict>
 		<key>achieve_task</key>
 		<dict>
 			<key>ST_TOTAL_STEP</key>
@@ -545,7 +619,7 @@
 	<key>ADT_WORLD_RECORD</key>
 	<dict>
 		<key>achieve_unlock_task</key>
-		<array/>
+		<dict/>
 		<key>achieve_task</key>
 		<dict>
 			<key>ST_TOTAL_NINE_STEP</key>
@@ -557,7 +631,7 @@
 	<key>ADT_THIRTY_NOT_MOVE</key>
 	<dict>
 		<key>achieve_unlock_task</key>
-		<array/>
+		<dict/>
 		<key>achieve_task</key>
 		<dict>
 			<key>ST_TOTAL_THIRTY_NOT_MOVE</key>
@@ -569,7 +643,7 @@
 	<key>ADT_OBSESSION_MEN</key>
 	<dict>
 		<key>achieve_unlock_task</key>
-		<array/>
+		<dict/>
 		<key>achieve_task</key>
 		<dict>
 			<key>ST_TOTAL_EXPLORE_ALL_AREA</key>
@@ -581,7 +655,7 @@
 	<key>ADT_FOUND_HIDDEN_DOOR</key>
 	<dict>
 		<key>achieve_unlock_task</key>
-		<array/>
+		<dict/>
 		<key>achieve_task</key>
 		<dict>
 			<key>ST_FOUND_HIDE_DOOR</key>
@@ -593,7 +667,7 @@
 	<key>ADT_FOUND_HIDDEN_TRAP_FIRST</key>
 	<dict>
 		<key>achieve_unlock_task</key>
-		<array/>
+		<dict/>
 		<key>achieve_task</key>
 		<dict>
 			<key>ST_FOUND_HIDE_TRAP</key>
@@ -605,7 +679,10 @@
 	<key>ADT_FOUND_HIDDEN_TRAP</key>
 	<dict>
 		<key>achieve_unlock_task</key>
-		<array/>
+		<dict>
+			<key>ST_FOUND_HIDE_TRAP</key>
+			<string>30</string>
+		</dict>
 		<key>achieve_task</key>
 		<dict>
 			<key>ST_FOUND_HIDE_TRAP</key>
@@ -617,7 +694,7 @@
 	<key>ADT_FOUND_HIDDEN_MSG_FIRST</key>
 	<dict>
 		<key>achieve_unlock_task</key>
-		<array/>
+		<dict/>
 		<key>achieve_task</key>
 		<dict>
 			<key>ST_FOUND_HIDE_MSG</key>
@@ -629,7 +706,10 @@
 	<key>ADT_FOUND_HIDDEN_MSG</key>
 	<dict>
 		<key>achieve_unlock_task</key>
-		<array/>
+		<dict>
+			<key>ST_FOUND_HIDE_MSG</key>
+			<string>1</string>
+		</dict>
 		<key>achieve_task</key>
 		<dict>
 			<key>ST_FOUND_HIDE_MSG</key>
@@ -641,7 +721,10 @@
 	<key>ADT_SEARCH_KING</key>
 	<dict>
 		<key>achieve_unlock_task</key>
-		<array/>
+		<dict>
+			<key>ST_TOTAL_SEARCH</key>
+			<string>60</string>
+		</dict>
 		<key>achieve_task</key>
 		<dict>
 			<key>ST_TOTAL_SEARCH</key>
@@ -653,7 +736,7 @@
 	<key>ADT_LOVE_QUESTION</key>
 	<dict>
 		<key>achieve_unlock_task</key>
-		<array/>
+		<dict/>
 		<key>achieve_task</key>
 		<dict>
 			<key>ST_TOTAL_SEARCH</key>
@@ -665,10 +748,20 @@
 	<key>ADT_ALL_ARRIVE_DUNGEON</key>
 	<dict>
 		<key>achieve_unlock_task</key>
-		<array/>
+		<dict/>
 		<key>achieve_task</key>
 		<dict>
-			<key>ST_TOTAL_STEP_DUNGEON</key>
+			<key>ST_DT_SEWER</key>
+			<string>1</string>
+			<key>ST_DT_PRISON</key>
+			<string>1</string>
+			<key>ST_DT_FANE</key>
+			<string>1</string>
+			<key>ST_DT_MINES</key>
+			<string>1</string>
+			<key>ST_DT_CAVE</key>
+			<string>1</string>
+			<key>ST_DT_TOMB</key>
 			<string>1</string>
 		</dict>
 		<key>achieve_icon</key>
@@ -677,7 +770,7 @@
 	<key>ADT_BREAK_JAR_1</key>
 	<dict>
 		<key>achieve_unlock_task</key>
-		<array/>
+		<dict/>
 		<key>achieve_task</key>
 		<dict>
 			<key>ST_TOTAL_JAR</key>
@@ -689,7 +782,10 @@
 	<key>ADT_BREAK_JAR_2</key>
 	<dict>
 		<key>achieve_unlock_task</key>
-		<array/>
+		<dict>
+			<key>ST_TOTAL_JAR</key>
+			<string>60</string>
+		</dict>
 		<key>achieve_task</key>
 		<dict>
 			<key>ST_TOTAL_JAR</key>
@@ -701,7 +797,7 @@
 	<key>ADT_COPPER_BOX_FIRST</key>
 	<dict>
 		<key>achieve_unlock_task</key>
-		<array/>
+		<dict/>
 		<key>achieve_task</key>
 		<dict>
 			<key>ST_TOTAL_CHEST_COPPER</key>
@@ -713,7 +809,7 @@
 	<key>ADT_SILVER_BOX_FIRST</key>
 	<dict>
 		<key>achieve_unlock_task</key>
-		<array/>
+		<dict/>
 		<key>achieve_task</key>
 		<dict>
 			<key>ST_TOTAL_CHEST_SILVER</key>
@@ -725,7 +821,7 @@
 	<key>ADT_GOLD_BOX_FIRST</key>
 	<dict>
 		<key>achieve_unlock_task</key>
-		<array/>
+		<dict/>
 		<key>achieve_task</key>
 		<dict>
 			<key>ST_TOTAL_CHEST_GOLD</key>
@@ -737,7 +833,10 @@
 	<key>ADT_OPEN_BOX</key>
 	<dict>
 		<key>achieve_unlock_task</key>
-		<array/>
+		<dict>
+			<key>ST_TOTAL_CHEST_BOX</key>
+			<string>30</string>
+		</dict>
 		<key>achieve_task</key>
 		<dict>
 			<key>ST_TOTAL_CHEST_BOX</key>
@@ -749,7 +848,10 @@
 	<key>ADT_USE_KEY</key>
 	<dict>
 		<key>achieve_unlock_task</key>
-		<array/>
+		<dict>
+			<key>ST_TOTAL_USE_KEY</key>
+			<string>60</string>
+		</dict>
 		<key>achieve_task</key>
 		<dict>
 			<key>ST_TOTAL_USE_KEY</key>
@@ -761,7 +863,7 @@
 	<key>ADT_MEET_THIEF_FIRST</key>
 	<dict>
 		<key>achieve_unlock_task</key>
-		<array/>
+		<dict/>
 		<key>achieve_task</key>
 		<dict>
 			<key>ST_TOTAL_MEET_THIEF</key>
@@ -773,7 +875,7 @@
 	<key>ADT_NURSE_TREAT</key>
 	<dict>
 		<key>achieve_unlock_task</key>
-		<array/>
+		<dict/>
 		<key>achieve_task</key>
 		<dict>
 			<key>ST_TOTAL_NURSE_TREAT</key>
@@ -785,7 +887,7 @@
 	<key>ADT_MEET_HAG_FIRST</key>
 	<dict>
 		<key>achieve_unlock_task</key>
-		<array/>
+		<dict/>
 		<key>achieve_task</key>
 		<dict>
 			<key>ST_TOTAL_MEET_HAG</key>
@@ -797,7 +899,7 @@
 	<key>ADT_SAGE_STORY</key>
 	<dict>
 		<key>achieve_unlock_task</key>
-		<array/>
+		<dict/>
 		<key>achieve_task</key>
 		<dict>
 			<key>ST_TOTAL_MEET_SAGE</key>
@@ -809,7 +911,7 @@
 	<key>ADT_BUY_EQUIP</key>
 	<dict>
 		<key>achieve_unlock_task</key>
-		<array/>
+		<dict/>
 		<key>achieve_task</key>
 		<dict>
 			<key>ST_TOTAL_BUY_EQUIP</key>
@@ -818,10 +920,10 @@
 		<key>achieve_icon</key>
 		<string>achievement_icon_0003.png</string>
 	</dict>
-	<key>ADT_BUY_POTION</key>
+	<key>ADT_BUY_MARICORIM</key>
 	<dict>
 		<key>achieve_unlock_task</key>
-		<array/>
+		<dict/>
 		<key>achieve_task</key>
 		<dict>
 			<key>ST_TOTAL_BUY_POTION</key>
@@ -830,10 +932,10 @@
 		<key>achieve_icon</key>
 		<string>achievement_icon_0003.png</string>
 	</dict>
-	<key>ADT_BUY_SCROLL</key>
+	<key>ADT_BUY_SCROLL_POTION</key>
 	<dict>
 		<key>achieve_unlock_task</key>
-		<array/>
+		<dict/>
 		<key>achieve_task</key>
 		<dict>
 			<key>ST_TOTAL_BUY_SCROLL</key>
@@ -845,7 +947,10 @@
 	<key>ADT_HAVE_GOLD_1</key>
 	<dict>
 		<key>achieve_unlock_task</key>
-		<array/>
+		<dict>
+			<key>ST_TOTAL_COPPER</key>
+			<string>5000</string>
+		</dict>
 		<key>achieve_task</key>
 		<dict>
 			<key>ST_TOTAL_COPPER</key>
@@ -857,7 +962,10 @@
 	<key>ADT_HAVE_GOLD_2</key>
 	<dict>
 		<key>achieve_unlock_task</key>
-		<array/>
+		<dict>
+			<key>ST_TOTAL_COPPER</key>
+			<string>500000</string>
+		</dict>
 		<key>achieve_task</key>
 		<dict>
 			<key>ST_TOTAL_COPPER</key>
@@ -869,7 +977,10 @@
 	<key>ADT_HAVE_GOLD_3</key>
 	<dict>
 		<key>achieve_unlock_task</key>
-		<array/>
+		<dict>
+			<key>ST_TOTAL_COPPER</key>
+			<string>3000000</string>
+		</dict>
 		<key>achieve_task</key>
 		<dict>
 			<key>ST_TOTAL_COPPER</key>
@@ -881,7 +992,10 @@
 	<key>ADT_HAVE_GOLD_4</key>
 	<dict>
 		<key>achieve_unlock_task</key>
-		<array/>
+		<dict>
+			<key>ST_TOTAL_COPPER</key>
+			<string>30000000</string>
+		</dict>
 		<key>achieve_task</key>
 		<dict>
 			<key>ST_TOTAL_COPPER</key>
@@ -893,7 +1007,7 @@
 	<key>ADT_ROLE_LEVEL_1</key>
 	<dict>
 		<key>achieve_unlock_task</key>
-		<array/>
+		<dict/>
 		<key>achieve_task</key>
 		<dict>
 			<key>ST_TOTAL_ROLE_LEVEL</key>
@@ -905,7 +1019,10 @@
 	<key>ADT_ROLE_LEVEL_2</key>
 	<dict>
 		<key>achieve_unlock_task</key>
-		<array/>
+		<dict>
+			<key>ST_TOTAL_ROLE_LEVEL</key>
+			<string>10</string>
+		</dict>
 		<key>achieve_task</key>
 		<dict>
 			<key>ST_TOTAL_ROLE_LEVEL</key>
@@ -917,7 +1034,10 @@
 	<key>ADT_ROLE_HP</key>
 	<dict>
 		<key>achieve_unlock_task</key>
-		<array/>
+		<dict>
+			<key>ST_TOTAL_ROLE_HP</key>
+			<string>200</string>
+		</dict>
 		<key>achieve_task</key>
 		<dict>
 			<key>ST_TOTAL_ROLE_HP</key>
@@ -929,7 +1049,10 @@
 	<key>ADT_ROLE_ATTACK</key>
 	<dict>
 		<key>achieve_unlock_task</key>
-		<array/>
+		<dict>
+			<key>ST_TOTAL_ROLE_MAX_ATTACK</key>
+			<string>20</string>
+		</dict>
 		<key>achieve_task</key>
 		<dict>
 			<key>ST_TOTAL_ROLE_MAX_ATTACK</key>
@@ -941,7 +1064,7 @@
 	<key>ADT_ROLE_DODGE</key>
 	<dict>
 		<key>achieve_unlock_task</key>
-		<array/>
+		<dict/>
 		<key>achieve_task</key>
 		<dict>
 			<key>ST_TOTAL_DODGE</key>
@@ -953,7 +1076,7 @@
 	<key>ADT_ROLE_CRIT</key>
 	<dict>
 		<key>achieve_unlock_task</key>
-		<array/>
+		<dict/>
 		<key>achieve_task</key>
 		<dict>
 			<key>ST_TOTAL_CRITICAL</key>
@@ -965,7 +1088,7 @@
 	<key>ADT_ROLE_BLOCK</key>
 	<dict>
 		<key>achieve_unlock_task</key>
-		<array/>
+		<dict/>
 		<key>achieve_task</key>
 		<dict>
 			<key>ST_TOTAL_BLOCK</key>
@@ -977,7 +1100,7 @@
 	<key>ADT_ROLE_LUCK_NOT_DEAD</key>
 	<dict>
 		<key>achieve_unlock_task</key>
-		<array/>
+		<dict/>
 		<key>achieve_task</key>
 		<dict>
 			<key>ST_TOTAL_NOT_FAIL_DEAD</key>
@@ -989,7 +1112,7 @@
 	<key>ADT_STEALTHY_FIRST</key>
 	<dict>
 		<key>achieve_unlock_task</key>
-		<array/>
+		<dict/>
 		<key>achieve_task</key>
 		<dict>
 			<key>ST_TOTAL_STEALTH</key>
@@ -1001,7 +1124,7 @@
 	<key>ADT_WEAK_RECOVER</key>
 	<dict>
 		<key>achieve_unlock_task</key>
-		<array/>
+		<dict/>
 		<key>achieve_task</key>
 		<dict>
 			<key>ST_TOTAL_WEAK_RECOVER</key>
@@ -1013,7 +1136,7 @@
 	<key>ADT_POISON_NOT_DEAD</key>
 	<dict>
 		<key>achieve_unlock_task</key>
-		<array/>
+		<dict/>
 		<key>achieve_task</key>
 		<dict>
 			<key>ST_TOTAL_POISON_RECOVER</key>
@@ -1025,7 +1148,7 @@
 	<key>ADT_SPEED_UP_FIRST</key>
 	<dict>
 		<key>achieve_unlock_task</key>
-		<array/>
+		<dict/>
 		<key>achieve_task</key>
 		<dict>
 			<key>ST_TOTAL_SPEED_UP</key>
@@ -1037,7 +1160,7 @@
 	<key>ADT_STRONG_FIRST</key>
 	<dict>
 		<key>achieve_unlock_task</key>
-		<array/>
+		<dict/>
 		<key>achieve_task</key>
 		<dict>
 			<key>ST_TOTAL_STRONG</key>

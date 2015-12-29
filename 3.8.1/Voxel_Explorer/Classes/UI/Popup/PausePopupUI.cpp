@@ -12,6 +12,9 @@
 #include "AchievePopupUI.h"
 #include "MenuScene.h"
 #include "SimpleAudioEngine.h"
+#include "VoxelExplorer.h"
+#include "AchievePopupUI.h"
+#include "GameUILayer.h"
 USING_NS_CC;
 PausePopupUI::PausePopupUI()
 {
@@ -101,6 +104,7 @@ bool PausePopupUI::addEvents()
     m_pBtnHelp->addClickEventListener(CC_CALLBACK_1(PausePopupUI::onClickHelp, this));
     m_pBtnAchieve->addClickEventListener(CC_CALLBACK_1(PausePopupUI::onClickAchieve, this));
     
+    
     return true;
 
 }
@@ -158,14 +162,17 @@ void PausePopupUI::onClickAchieve(cocos2d::Ref *ref)
     CHECK_ACTION(ref);
     clickEffect();
     CCLOG("onClickAchieve");
-    PopupUILayerManager::getInstance()->getCurrentPopUpLayer()->getRootNode()->setVisible(false);
-    AchievePopupUI* achievePopup = static_cast<AchievePopupUI*>( PopupUILayerManager::getInstance()->openPopup(ePopupAchieve));
-    if (achievePopup)
-    {
-        achievePopup->setDarkLayerVisble(false);
-        achievePopup->registerCloseCallback([]()
-        {
-             PopupUILayerManager::getInstance()->getCurrentPopUpLayer()->getRootNode()->setVisible(true);
+    this->getRootNode()->setVisible(false);
+    AchievePopupUI* m_pAchievePopupUI = VoxelExplorer::getInstance()->getUILayer()->getAchievePopupUI();
+    
+    if (m_pAchievePopupUI && !m_pAchievePopupUI->getParent()) {
+        this->addChild(m_pAchievePopupUI);
+        m_pAchievePopupUI->setVisible(true);
+        m_pAchievePopupUI->refreshUIView();
+        
+        m_pAchievePopupUI->registerCloseCallback([this,m_pAchievePopupUI](){
+             this->getRootNode()->setVisible(true);
+             m_pAchievePopupUI->removeFromParentAndCleanup(false);
         });
     }
 }

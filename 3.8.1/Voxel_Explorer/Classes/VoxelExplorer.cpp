@@ -43,6 +43,7 @@
 #include "RandomEventMgr.hpp"
 #include "StatisticsManager.hpp"
 #include "SimpleAudioEngine.h"
+#include "GameUILayer.h"
 USING_NS_CC;
 using namespace CocosDenshion;
 const std::string P3D_EFFECT_NAMES[] = {
@@ -147,6 +148,7 @@ void VoxelExplorer::gamePause()
     {
         m_bIsGamePause = true;
         m_p3DLayer->pause();
+        StatisticsManager::getInstance()->pauseSchedu();
     }
 
 }
@@ -156,6 +158,7 @@ void VoxelExplorer::gameResume()
     {
         m_bIsGamePause = false;
        m_p3DLayer->resume();
+        StatisticsManager::getInstance()->resumeSchedu();
     }
 
 }
@@ -1678,7 +1681,7 @@ bool VoxelExplorer::createLayers()
         return false;
     m_p2DLayer->addChild(m_pHUDLayer);
     
-    m_pUILayer = Layer::create();
+    m_pUILayer = GameUILayer::create();
     if (!m_pUILayer)
         return false;
     m_p2DLayer->addChild(m_pUILayer);
