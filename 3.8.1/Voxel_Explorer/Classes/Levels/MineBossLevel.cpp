@@ -44,7 +44,7 @@ bool MineBossLevel::build()
             top = m_nRoomTop + 3;
         } else {
             bottom = m_nRoomLeft - 3;
-            top = cocos2d::random( m_nRoomBottom + 3, m_nHeight - 1 );
+            top = cocos2d::random( m_nRoomBottom + 3, m_nHeight - 2 );
         }
         
         generateTerrainTiles(left, bottom, right - left + 1, top - bottom + 1, TerrainTile::TT_STANDARD, Area::AT_BOSS_ROOM);

@@ -124,3 +124,113 @@ material Flare_04
         }
     }
 }
+material Smoke_01
+{
+    technique
+    {
+        pass
+        {
+            lighting off
+            scene_blend add
+            depth_write off
+
+            texture_unit
+            {
+                texture pump_smoke_01.png
+                tex_address_mode clamp
+            }
+        }
+    }
+}
+material Ring_14
+{
+    technique
+    {
+        pass
+        {
+            lighting off
+            scene_blend alpha_blend
+            depth_write off
+
+            texture_unit
+            {
+                texture pump_ring_04.png
+                tex_address_mode clamp
+            }
+        }
+    }
+}
+
+material Pentagram_02
+{
+    technique
+    {
+        pass
+        {
+            lighting off
+            scene_blend add
+            depth_write off
+
+            texture_unit
+            {
+                texture pump_pentagram_02.png
+                tex_address_mode clamp
+            }
+        }
+    }
+}
+material Star_01
+{
+    technique
+    {
+        pass
+        {
+            lighting off
+            scene_blend add
+            depth_write off
+
+            texture_unit
+            {
+                texture pu_flare_12_256x256.png
+                tex_address_mode clamp
+            }
+        }
+    }
+}
+material Fire_01
+{
+    technique
+    {
+        pass
+        {
+            lighting off
+            scene_blend add
+            depth_write off
+
+            texture_unit
+            {
+                texture pump_smoke_01.png
+                tex_address_mode clamp
+            }
+        }
+    }
+}
+
+material Fire_02
+{
+    technique
+    {
+        pass
+        {
+            lighting off
+            scene_blend add
+            depth_write off
+
+            texture_unit
+            {
+                texture pump_smoke_01.png
+                tex_address_mode clamp
+            }
+        }
+    }
+}
