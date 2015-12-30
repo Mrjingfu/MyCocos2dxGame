@@ -158,7 +158,7 @@ void Player::addPlayerBuffer(PlayerBuffer buff)
         {
             m_fSpeedupTime = 20.0f;
             PlayerProperty::getInstance()->addPlayerBuffer(buff);
-            //VoxelExplorer::getInstance()->addParticle3DEffectToPlayer(P3D_EFFECT_TYPE::P3D_STRONGER_BUFFER, false);
+            VoxelExplorer::getInstance()->addParticle3DEffectToPlayer(P3D_EFFECT_TYPE::P3D_SPEEDUP_BUFFER, false);
             StatisticsManager::getInstance()->addSpeedUpNum();
         }
         std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("BUFFER_SPEEDUP");
@@ -171,10 +171,9 @@ void Player::addPlayerBuffer(PlayerBuffer buff)
         else
         {
             m_fStealthTime = 20.0f;
-            EaseSineOut* fadeTo = EaseSineOut::create(FadeTo::create(1.0f, 127));
-            this->runAction(fadeTo);
+            setStealth(true);
             PlayerProperty::getInstance()->addPlayerBuffer(buff);
-            //VoxelExplorer::getInstance()->addParticle3DEffectToPlayer(P3D_EFFECT_TYPE::P3D_STRONGER_BUFFER, true);
+            VoxelExplorer::getInstance()->addParticle3DEffectToPlayer(P3D_EFFECT_TYPE::P3D_STEALTH_BUFFER, true);
             StatisticsManager::getInstance()->addStealthNum();
         }
         std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("BUFFER_STEALTH");
@@ -218,6 +217,7 @@ void Player::addPlayerBuffer(PlayerBuffer buff)
                 tex->setAliasTexParameters();
             setTexture(tex);
             PlayerProperty::getInstance()->addPlayerBuffer(buff);
+            VoxelExplorer::getInstance()->addParticle3DEffectToPlayer(P3D_EFFECT_TYPE::P3D_FROZEN_BUFFER, false);
             std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("BUFFER_FROZEN");
             SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
         }
@@ -246,6 +246,7 @@ void Player::addPlayerBuffer(PlayerBuffer buff)
                 tex->setAliasTexParameters();
             setTexture(tex);
             PlayerProperty::getInstance()->addPlayerBuffer(buff);
+            VoxelExplorer::getInstance()->addParticle3DEffectToPlayer(P3D_EFFECT_TYPE::P3D_WEAK_BUFFER, true);
             std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("BUFFER_WEAK");
             SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
         }
@@ -260,6 +261,7 @@ void Player::addPlayerBuffer(PlayerBuffer buff)
                 tex->setAliasTexParameters();
             setTexture(tex);
             PlayerProperty::getInstance()->addPlayerBuffer(buff);
+            VoxelExplorer::getInstance()->addParticle3DEffectToPlayer(P3D_EFFECT_TYPE::P3D_FIRE_BUFFER, false);
             std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("BUFFER_FIRE");
             SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
         }
@@ -280,10 +282,9 @@ void Player::removePlayerBuffer(PlayerBuffer buff)
     {
         if((bufferFlag & PB_STEALTH) != 0)
         {
-            EaseSineOut* fadeTo = EaseSineOut::create(FadeTo::create(1.0f, 255));
-            this->runAction(fadeTo);
+            setStealth(false);
             PlayerProperty::getInstance()->removePlayerBuffer(buff);
-            //VoxelExplorer::getInstance()->removeParticle3D3DEffectFromPlayer(P3D_EFFECT_TYPE::P3D_POISIONING_BUFFER);
+            VoxelExplorer::getInstance()->removeParticle3D3DEffectFromPlayer(P3D_EFFECT_TYPE::P3D_STEALTH_BUFFER);
         }
     }
     else if(buff == PB_SPEEDUP)
@@ -291,7 +292,7 @@ void Player::removePlayerBuffer(PlayerBuffer buff)
         if((bufferFlag & PB_SPEEDUP) != 0)
         {
             PlayerProperty::getInstance()->removePlayerBuffer(buff);
-            //VoxelExplorer::getInstance()->removeParticle3D3DEffectFromPlayer(P3D_EFFECT_TYPE::P3D_POISIONING_BUFFER);
+            VoxelExplorer::getInstance()->removeParticle3D3DEffectFromPlayer(P3D_EFFECT_TYPE::P3D_SPEEDUP_BUFFER);
         }
     }
     else if(buff == PB_POISONING)
@@ -334,6 +335,7 @@ void Player::removePlayerBuffer(PlayerBuffer buff)
                 tex->setAliasTexParameters();
             setTexture(tex);
             PlayerProperty::getInstance()->removePlayerBuffer(buff);
+            VoxelExplorer::getInstance()->removeParticle3D3DEffectFromPlayer(P3D_EFFECT_TYPE::P3D_WEAK_BUFFER);
         }
     }
     else if(buff == PB_PARALYTIC)
@@ -377,6 +379,7 @@ void Player::removePlayerBuffer(PlayerBuffer buff)
                 tex->setAliasTexParameters();
             setTexture(tex);
             PlayerProperty::getInstance()->removePlayerBuffer(buff);
+            VoxelExplorer::getInstance()->removeParticle3D3DEffectFromPlayer(P3D_EFFECT_TYPE::P3D_FIRE_BUFFER);
         }
     }
     else if(buff == PB_FROZEN)
@@ -397,6 +400,7 @@ void Player::removePlayerBuffer(PlayerBuffer buff)
                 tex->setAliasTexParameters();
             setTexture(tex);
             PlayerProperty::getInstance()->removePlayerBuffer(buff);
+            VoxelExplorer::getInstance()->removeParticle3D3DEffectFromPlayer(P3D_EFFECT_TYPE::P3D_FROZEN_BUFFER);
         }
     }
     else
@@ -959,7 +963,7 @@ void Player::onLand(bool isAttack)
     VoxelExplorer::getInstance()->checkTriggerTrap();
     VoxelExplorer::getInstance()->updateMiniMap();
     //for debug
-    if(RandomDungeon::getInstance()->getCurrentDungeonNode()->isBossDepth())
+    //if(RandomDungeon::getInstance()->getCurrentDungeonNode()->isBossDepth())
         VoxelExplorer::getInstance()->updateBossRoomDoor();
     
     CCLOG("player lastPos x = %d   y = %d", (int)m_LastPosInMap.x, (int)m_LastPosInMap.y);
@@ -977,8 +981,10 @@ void Player::onLand(bool isAttack)
         }
     }
     
-    ///for debug
-    //VoxelExplorer::getInstance()->addParticle3DEffectToPlayer(P3D_EFFECT_TYPE::P3D_STRONGER_BUFFER, true);
+    if(isStealth())
+    {
+        VoxelExplorer::getInstance()->addParticle3DEffectToPlayer(P3D_EFFECT_TYPE::P3D_STEALTH_BUFFER, true);
+    }
 }
 void Player::onFallDie()
 {

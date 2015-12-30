@@ -69,6 +69,10 @@ public:
     {
         return m_nCurrentDepth > m_nTotalNum;
     }
+    bool isFirstDepth()
+    {
+        return m_nCurrentDepth == 1;
+    }
     DUNGEON_TYPE getDungeonNodeType() const { return m_Type; }
     std::string     m_strDungeonName;       ////地城名称
     std::string     m_strDungeonBossName;   ////Boss地城名称

@@ -58,7 +58,11 @@ const std::string P3D_EFFECT_NAMES[] = {
     "P3DN_SPEEDUP_BUFFER",
     "P3DN_POISIONING_BUFFER",
     "P3DN_PARALYTIC_BUFFER",
-    "P3DN_FROZEN_BUFFER"
+    "P3DN_FROZEN_BUFFER",
+    "P3DN_WEAK_BUFFER",
+    "P3DN_FIRE_BUFFER",
+    "P3DN_PLAYER_TELEPORT",
+    "P3DN_BOSS_BULLET01"
 };
 VoxelExplorer* g_pVoxelExplorerInstance = nullptr;
 VoxelExplorer* VoxelExplorer::getInstance()
@@ -1400,6 +1404,8 @@ void VoxelExplorer::handlePlayerUseScroll(PickableItem::PickableItemType type)
                 m_pMainCamera->setPosition3D(m_pPlayer->getPosition3D() + Vec3(0, 5*TerrainTile::CONTENT_SCALE, 4*TerrainTile::CONTENT_SCALE ));
                 m_pMainCamera->lookAt(m_pPlayer->getPosition3D() + Vec3(0,0.5f*TerrainTile::CONTENT_SCALE,0));
                 m_pPlayer->setState(Player::PS_IDLE);
+                
+                VoxelExplorer::getInstance()->addParticle3DEffect(Vec3(pos.x*TerrainTile::CONTENT_SCALE, -0.5f*TerrainTile::CONTENT_SCALE, -pos.y*TerrainTile::CONTENT_SCALE), P3D_PLAYER_TELEPORT);
             }
             break;
         case PickableItem::PickableItemType::PIT_SCROLL_SPEED:
@@ -1556,6 +1562,9 @@ void VoxelExplorer::handlePlayerUseSmallPortal()
     m_pMainCamera->lookAt(m_pPlayer->getPosition3D() + Vec3(0,0.5f*TerrainTile::CONTENT_SCALE,0));
     m_pPlayer->setState(Player::PS_IDLE);
     
+    VoxelExplorer::getInstance()->addParticle3DEffect(Vec3(pos.x*TerrainTile::CONTENT_SCALE, -0.5f*TerrainTile::CONTENT_SCALE, -pos.y*TerrainTile::CONTENT_SCALE), P3D_PLAYER_TELEPORT);
+    std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("USE_SCROLL");
+    SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
     Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_USE_SMALL_PROTAL);
 }
 void VoxelExplorer::handleUpstairs()
@@ -1796,12 +1805,12 @@ bool VoxelExplorer::createLevel()
             break;
         case DT_MINES:
             {
-                if(node->isBossDepth())
-                    m_pCurrentLevel = new(std::nothrow) MineBossLevel();
-                else
-                    m_pCurrentLevel = new(std::nothrow) MineLevel();
+//                if(node->isBossDepth())
+//                    m_pCurrentLevel = new(std::nothrow) MineBossLevel();
+//                else
+//                    m_pCurrentLevel = new(std::nothrow) MineLevel();
                 //for debug
-                //m_pCurrentLevel = new(std::nothrow) MineBossLevel();
+                m_pCurrentLevel = new(std::nothrow) MineBossLevel();
             }
             break;
         case DT_CAVE:
@@ -1870,6 +1879,14 @@ bool VoxelExplorer::createPlayer()
     if (!PlayerProperty::getInstance()->initNewPlayer())
         return false;
     ///
+    
+    if(node->isBossDepth() || node->isFirstDepth())
+    {
+        VoxelExplorer::getInstance()->addParticle3DEffect(Vec3(m_pCurrentLevel->getSpawnPoint().x, -0.5f*TerrainTile::CONTENT_SCALE, -m_pCurrentLevel->getSpawnPoint().y), P3D_PLAYER_TELEPORT);
+        std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("USE_SCROLL");
+        SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+    }
+    
     m_pPlayer = Player::create("chr_sword.c3b");
     if(!m_pPlayer)
         return false;
@@ -1886,5 +1903,6 @@ bool VoxelExplorer::createPlayer()
     m_pMainCamera->setPosition3D(m_pPlayer->getPosition3D() + Vec3(0, 5*TerrainTile::CONTENT_SCALE, 4*TerrainTile::CONTENT_SCALE ));
     m_pMainCamera->lookAt(m_pPlayer->getPosition3D() + Vec3(0,0.5f*TerrainTile::CONTENT_SCALE,0));
     m_pPlayer->setState(Player::PS_IDLE);
+    
     return true;
 }
