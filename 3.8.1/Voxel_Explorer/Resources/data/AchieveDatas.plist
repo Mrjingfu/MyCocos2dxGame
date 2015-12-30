@@ -947,10 +947,7 @@
 	<key>ADT_HAVE_GOLD_1</key>
 	<dict>
 		<key>achieve_unlock_task</key>
-		<dict>
-			<key>ST_TOTAL_COPPER</key>
-			<string>5000</string>
-		</dict>
+		<dict/>
 		<key>achieve_task</key>
 		<dict>
 			<key>ST_TOTAL_COPPER</key>

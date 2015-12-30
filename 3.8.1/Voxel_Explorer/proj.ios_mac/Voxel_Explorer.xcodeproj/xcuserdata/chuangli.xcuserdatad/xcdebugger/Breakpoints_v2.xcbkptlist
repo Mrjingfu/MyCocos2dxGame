@@ -9,13 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../Classes/UI/Layer/AchieveItemLayer.cpp"
-            timestampString = "473069992.572904"
+            filePath = "../Classes/ThirdLibs/SuperAnim/SuperAnimNodeV2.cpp"
+            timestampString = "473156827.511173"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "125"
-            endingLineNumber = "125"
-            landmarkName = "AchieveItemLayer::showAchieveItem(const std::string icon, const std::string name, const std::string targetDesc)"
+            startingLineNumber = "747"
+            endingLineNumber = "747"
+            landmarkName = "SuperAnimNode::update(float dt)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -25,13 +25,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../Classes/UI/Layer/AchieveMangerLayerUI.cpp"
-            timestampString = "473089020.452969"
+            filePath = "../Classes/UI/Popup/PopupUILayer.cpp"
+            timestampString = "473167795.086373"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "113"
-            endingLineNumber = "113"
-            landmarkName = "AchieveMangerLayerUI::addItemAchieve(eAchievementDetailType achieveId,cocos2d::Vec2 pt,std::string itemIcon,std::string name,std::string targetDesc,bool isUnlockeAchieve,bool isCommple)"
+            startingLineNumber = "300"
+            endingLineNumber = "300"
+            landmarkName = "PopupUILayer::onTouchEnded(cocos2d::Touch *touch, cocos2d::Event *unused_event)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -41,13 +41,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../Classes/UI/Layer/AchieveMangerLayerUI.cpp"
-            timestampString = "473089052.107037"
+            filePath = "../Classes/UI/Popup/ItemPopupUI.cpp"
+            timestampString = "473168665.407984"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "154"
-            endingLineNumber = "154"
-            landmarkName = "AchieveMangerLayerUI::addItemAchieve(eAchievementDetailType achieveId,cocos2d::Vec2 pt,std::string itemIcon,std::string name,std::string targetDesc,bool isUnlockeAchieve,bool isCommple)"
+            startingLineNumber = "723"
+            endingLineNumber = "723"
+            landmarkName = "ItemPopupUI::onTouchEnded(cocos2d::Touch *touch, cocos2d::Event *unused_event)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -57,13 +57,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../Classes/UI/Layer/BagLayer.cpp"
-            timestampString = "473091224.253907"
+            filePath = "../Classes/UI/Popup/ItemPopupUI.cpp"
+            timestampString = "473168665.407984"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "164"
-            endingLineNumber = "164"
-            landmarkName = "BagLayer::refreshUIView()"
+            startingLineNumber = "730"
+            endingLineNumber = "730"
+            landmarkName = "ItemPopupUI::onTouchEnded(cocos2d::Touch *touch, cocos2d::Event *unused_event)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

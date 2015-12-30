@@ -112,7 +112,6 @@ void AchievePopupUI::updateAllAchieves()
         if (achieveProp && itemView)
         {
             eAchievementDetailType type = achieveProp->getAchieveDetailType();
-            CCLOG("type :%d",type);
             std::string icon = achieveProp->getAchieveIcon();
             std::string name = achieveProp->getAchieveName();
             std::string targetDesc = achieveProp->getTargetDesc();

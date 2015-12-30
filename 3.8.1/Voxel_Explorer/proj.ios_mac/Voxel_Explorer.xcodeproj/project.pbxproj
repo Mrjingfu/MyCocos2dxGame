@@ -288,6 +288,8 @@
 		EC3CC9A61C08909B00F8CFC8 /* RolePropLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC3CC9A31C08909B00F8CFC8 /* RolePropLayer.cpp */; };
 		EC3DC0C21C157FFE00D0FE47 /* AchieveMangerLayerUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC3DC0C01C157FFE00D0FE47 /* AchieveMangerLayerUI.cpp */; };
 		EC3DC0C31C157FFE00D0FE47 /* AchieveMangerLayerUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC3DC0C01C157FFE00D0FE47 /* AchieveMangerLayerUI.cpp */; };
+		EC470E161C33CB6500B5915D /* sam in Resources */ = {isa = PBXBuildFile; fileRef = EC470E151C33CB6500B5915D /* sam */; };
+		EC470E171C33CB6500B5915D /* sam in Resources */ = {isa = PBXBuildFile; fileRef = EC470E151C33CB6500B5915D /* sam */; };
 		EC5610241C2007E100A2DDF2 /* GlobalPromptLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC5610221C2007E100A2DDF2 /* GlobalPromptLayer.cpp */; };
 		EC5610251C2007E100A2DDF2 /* GlobalPromptLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC5610221C2007E100A2DDF2 /* GlobalPromptLayer.cpp */; };
 		EC5D56901C0C4E2200F5EDDF /* DistPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC5D568E1C0C4E2200F5EDDF /* DistPopupUI.cpp */; };
@@ -304,6 +306,10 @@
 		EC63CEB01C20FEB600C84941 /* HudPromptLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC63CEAD1C20FEB600C84941 /* HudPromptLayer.cpp */; };
 		EC6617651C182A3B0004209F /* BossPropLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC6617631C182A3B0004209F /* BossPropLayer.cpp */; };
 		EC6617661C182A3B0004209F /* BossPropLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC6617631C182A3B0004209F /* BossPropLayer.cpp */; };
+		EC6625481C3375A900166131 /* SuperAnimCore.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC6625451C3375A900166131 /* SuperAnimCore.cpp */; };
+		EC6625491C3375A900166131 /* SuperAnimCore.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC6625451C3375A900166131 /* SuperAnimCore.cpp */; };
+		EC66254A1C3375A900166131 /* SuperAnimNodeV2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC6625461C3375A900166131 /* SuperAnimNodeV2.cpp */; };
+		EC66254B1C3375A900166131 /* SuperAnimNodeV2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC6625461C3375A900166131 /* SuperAnimNodeV2.cpp */; };
 		EC6716451BCE7F2C00C81CFC /* LogoScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC6716431BCE7F2C00C81CFC /* LogoScene.cpp */; };
 		EC6716461BCE7F2C00C81CFC /* LogoScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC6716431BCE7F2C00C81CFC /* LogoScene.cpp */; };
 		EC6716591BCE7F5F00C81CFC /* lang in Resources */ = {isa = PBXBuildFile; fileRef = EC6716561BCE7F5F00C81CFC /* lang */; };
@@ -649,6 +655,7 @@
 		EC3CC9A41C08909B00F8CFC8 /* RolePropLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = RolePropLayer.hpp; sourceTree = "<group>"; };
 		EC3DC0C01C157FFE00D0FE47 /* AchieveMangerLayerUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AchieveMangerLayerUI.cpp; sourceTree = "<group>"; };
 		EC3DC0C11C157FFE00D0FE47 /* AchieveMangerLayerUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AchieveMangerLayerUI.h; sourceTree = "<group>"; };
+		EC470E151C33CB6500B5915D /* sam */ = {isa = PBXFileReference; lastKnownFileType = folder; path = sam; sourceTree = "<group>"; };
 		EC5610221C2007E100A2DDF2 /* GlobalPromptLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GlobalPromptLayer.cpp; sourceTree = "<group>"; };
 		EC5610231C2007E100A2DDF2 /* GlobalPromptLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GlobalPromptLayer.hpp; sourceTree = "<group>"; };
 		EC5D568E1C0C4E2200F5EDDF /* DistPopupUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DistPopupUI.cpp; sourceTree = "<group>"; };
@@ -665,6 +672,10 @@
 		EC63CEAE1C20FEB600C84941 /* HudPromptLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = HudPromptLayer.hpp; sourceTree = "<group>"; };
 		EC6617631C182A3B0004209F /* BossPropLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BossPropLayer.cpp; sourceTree = "<group>"; };
 		EC6617641C182A3B0004209F /* BossPropLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BossPropLayer.hpp; sourceTree = "<group>"; };
+		EC6625441C3375A900166131 /* SuperAnimCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuperAnimCommon.h; sourceTree = "<group>"; };
+		EC6625451C3375A900166131 /* SuperAnimCore.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SuperAnimCore.cpp; sourceTree = "<group>"; };
+		EC6625461C3375A900166131 /* SuperAnimNodeV2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SuperAnimNodeV2.cpp; sourceTree = "<group>"; };
+		EC6625471C3375A900166131 /* SuperAnimNodeV2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuperAnimNodeV2.h; sourceTree = "<group>"; };
 		EC6715EE1BCE7EE500C81CFC /* GameConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameConfig.h; sourceTree = "<group>"; };
 		EC6716431BCE7F2C00C81CFC /* LogoScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LogoScene.cpp; sourceTree = "<group>"; };
 		EC6716441BCE7F2C00C81CFC /* LogoScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogoScene.h; sourceTree = "<group>"; };
@@ -830,6 +841,7 @@
 		46880B7519C43A67006E1F66 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				EC470E151C33CB6500B5915D /* sam */,
 				55A410181C22DA7300ABF4E6 /* musics */,
 				55A410191C22DA7300ABF4E6 /* sounds */,
 				ECBCB4C11C22AE24006B85D2 /* particle2d */,
@@ -963,6 +975,7 @@
 		551E93CD1BD512D3009F788F /* ThirdLibs */ = {
 			isa = PBXGroup;
 			children = (
+				EC6625431C3375A900166131 /* SuperAnim */,
 				551E93CE1BD512D3009F788F /* crypto */,
 				551E93DB1BD512D3009F788F /* stream */,
 			);
@@ -1316,6 +1329,17 @@
 			path = Popup;
 			sourceTree = "<group>";
 		};
+		EC6625431C3375A900166131 /* SuperAnim */ = {
+			isa = PBXGroup;
+			children = (
+				EC6625441C3375A900166131 /* SuperAnimCommon.h */,
+				EC6625451C3375A900166131 /* SuperAnimCore.cpp */,
+				EC6625461C3375A900166131 /* SuperAnimNodeV2.cpp */,
+				EC6625471C3375A900166131 /* SuperAnimNodeV2.h */,
+			);
+			path = SuperAnim;
+			sourceTree = "<group>";
+		};
 		EC6715EB1BCE7EE500C81CFC /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
@@ -1478,6 +1502,7 @@
 				55A4101A1C22DA7300ABF4E6 /* musics in Resources */,
 				5087E78017EB970100C73F5D /* Icon-114.png in Resources */,
 				50EF62A217ECD613001EB2F8 /* Icon-29.png in Resources */,
+				EC470E161C33CB6500B5915D /* sam in Resources */,
 				50EF629617ECD46A001EB2F8 /* Icon-40.png in Resources */,
 				5087E78217EB970100C73F5D /* Icon-144.png in Resources */,
 				50EF629817ECD46A001EB2F8 /* Icon-80.png in Resources */,
@@ -1502,6 +1527,7 @@
 				554F00E81BD9CDF600F4DF8E /* data in Resources */,
 				EC67165A1BCE7F5F00C81CFC /* lang in Resources */,
 				55D6D6801BC527D000081221 /* models in Resources */,
+				EC470E171C33CB6500B5915D /* sam in Resources */,
 				503AE0F817EB97AB00D1A890 /* Icon.icns in Resources */,
 				5558A12C1BE8BD780084A399 /* particle3d in Resources */,
 				55A4101B1C22DA7300ABF4E6 /* musics in Resources */,
@@ -1528,6 +1554,7 @@
 				553BC5091BCE499B003D907A /* BaseDoor.cpp in Sources */,
 				EC6617651C182A3B0004209F /* BossPropLayer.cpp in Sources */,
 				55F81CA11BDB208D002EC075 /* UseableItem.cpp in Sources */,
+				EC66254A1C3375A900166131 /* SuperAnimNodeV2.cpp in Sources */,
 				EC795F571C0D4AFD0083829B /* GambleShopPopupUI.cpp in Sources */,
 				EC8A27E01C32670800B2C352 /* AchieveItemLayer.cpp in Sources */,
 				5505453C1BFF3893006B4500 /* SmallPortal.cpp in Sources */,
@@ -1625,6 +1652,7 @@
 				EC3CC97D1C088F4F00F8CFC8 /* MonsterPropLayer.cpp in Sources */,
 				551E93A91BD51282009F788F /* AlisaMethod.cpp in Sources */,
 				555B0D191BC51A2C0055FB6D /* BaseLevel.cpp in Sources */,
+				EC6625481C3375A900166131 /* SuperAnimCore.cpp in Sources */,
 				55EC95851BC6AA7B0008D1D7 /* TerrainTile.cpp in Sources */,
 				550545231BFEF00C006B4500 /* OutlineEffect3D.cpp in Sources */,
 				551651C51BD73102004ED7F6 /* RandomDungeon.cpp in Sources */,
@@ -1667,12 +1695,14 @@
 				EC3CC9721C088F4F00F8CFC8 /* BagLayer.cpp in Sources */,
 				EC5D56911C0C4E2200F5EDDF /* DistPopupUI.cpp in Sources */,
 				551E93C81BD51291009F788F /* MonsterProperty.cpp in Sources */,
+				EC66254B1C3375A900166131 /* SuperAnimNodeV2.cpp in Sources */,
 				555DCB7A1C3266DC007C868B /* ScreenShake.cpp in Sources */,
 				550545331BFF2081006B4500 /* BasePortal.cpp in Sources */,
 				EC795F681C0DA57C0083829B /* NpcPropLayer.cpp in Sources */,
 				553BC50E1BCE5191003D907A /* StandardDoor.cpp in Sources */,
 				55EC95861BC6ABBA0008D1D7 /* TerrainTile.cpp in Sources */,
 				EC795F4C1C0D4A4B0083829B /* ShopPopupUI.cpp in Sources */,
+				EC6625491C3375A900166131 /* SuperAnimCore.cpp in Sources */,
 				EC3CC9901C088F4F00F8CFC8 /* PausePopupUI.cpp in Sources */,
 				55F81CC11BDB9257002EC075 /* ScrollProperty.cpp in Sources */,
 				EC5610251C2007E100A2DDF2 /* GlobalPromptLayer.cpp in Sources */,

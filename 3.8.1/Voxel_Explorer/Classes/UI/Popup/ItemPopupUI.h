@@ -26,6 +26,7 @@ public:
     virtual void updateItemAttrUI();//更新道具属性UI
     virtual void updateEquipItem();//更新武器道具UI
     virtual void updateUseItem();//更新使用道具UI
+    void onTouchEnded(cocos2d::Touch *touch, cocos2d::Event *unused_event) override;
     virtual ~ItemPopupUI();
 protected:
     virtual void closePopup() override;

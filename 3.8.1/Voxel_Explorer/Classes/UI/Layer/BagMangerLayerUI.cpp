@@ -182,9 +182,9 @@ void BagMangerLayerUI::setItemNoUse(int itemId,cocos2d::Vec2 pt)
         img->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
         img->setPosition(pt);
         img->setTag(itemId);
-        img->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
         BlendFunc tmp_oBlendFunc = {GL_DST_COLOR, GL_ONE_MINUS_SRC_ALPHA};
         img->setBlendFunc(tmp_oBlendFunc);
+        img->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
         m_pItemNoUse->addChild(img);
     }
 }

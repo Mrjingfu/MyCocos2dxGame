@@ -12,7 +12,9 @@
 #include "GameScene.h"
 #include "PopupUILayerManager.h"
 #include "AchievePopupUI.h"
+
 USING_NS_CC;
+
 MenuUILayer::MenuUILayer()
 {
     m_pAchievePopupUI = nullptr;
@@ -52,7 +54,7 @@ bool MenuUILayer::addEvents()
     btn_rank->addClickEventListener(CC_CALLBACK_1(MenuUILayer::onClickRank, this));
     btn_start->addClickEventListener(CC_CALLBACK_1(MenuUILayer::onClickStart, this));
     btn_rate->addClickEventListener(CC_CALLBACK_1(MenuUILayer::onClickRate, this));
-    
+
 
     return true;
 }

@@ -129,7 +129,7 @@ void StatisticsManager::addUserableOpenNum(UseableItem::UseableItemType type)
     if (type==UseableItem::UseableItemType::UIT_CHEST_NO_LOCK_COPPER || type==UseableItem::UseableItemType::UIT_CHEST_COPPER) {
         ++m_nChestCopperTotalNum ;
     }
-    if (type==UseableItem::UseableItemType::UIT_CHEST_NO_LOCK_SILVER || type==UseableItem::UseableItemType::UIT_CHEST_COPPER) {
+    if (type==UseableItem::UseableItemType::UIT_CHEST_NO_LOCK_SILVER || type==UseableItem::UseableItemType::UIT_CHEST_SILVER) {
         ++m_nChestSilverTotalNum ;
     }
     if (type==UseableItem::UseableItemType::UIT_CHEST_NO_LOCK_GOLD || type==UseableItem::UseableItemType::UIT_CHEST_GOLD) {

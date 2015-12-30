@@ -24,7 +24,7 @@ bool NoteUi::init()
     if (!Layout::init())
         return false;
     setAnchorPoint(Vec2::ANCHOR_MIDDLE);
-    setTouchEnabled(true);
+   
 //    setBackGroundImageScale9Enabled(true);
 //    setBackGroundColorType(BackGroundColorType::SOLID);
 //    setBackGroundColor(Color3B::BLUE);

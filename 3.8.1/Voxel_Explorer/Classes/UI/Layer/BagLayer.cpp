@@ -128,6 +128,7 @@ void BagLayer::refreshUIView()
         m_BagMsgLayer->removeItems();
 
     //重置边框颜色
+    BlendFunc tmp_oBlendFunc = {GL_DST_COLOR, GL_ONE_MINUS_SRC_ALPHA};
     for(int i=0; i<m_pGridView->getItems().size(); i++)
     {
         ImageView* itemImg = static_cast<ImageView*>(m_pGridView->getItem(i));
@@ -148,6 +149,7 @@ void BagLayer::refreshUIView()
     int playerLevel = PlayerProperty::getInstance()->getLevel();
     //放置道具
     CCLOG("bagSize:%d",(int)items.size());
+    
     for (int i =0; i<items.size(); i++)
     {
         PickableItemProperty* itemProp =items[i];
@@ -162,20 +164,26 @@ void BagLayer::refreshUIView()
             
             //设置品质
             switch (itemProp->getQuality()) {
-                case PIQ_GENERAL:
-                    itemUi->setColor(Color3B::WHITE);
-                    break;
                 case PIQ_RARE:
-                    itemUi->setColor(Color3B::BLUE);
-                    break;
+                    itemUi->loadTexture("ui_rape.png",TextureResType::PLIST);
+                break;
                 case PIQ_EPIC:
-                    itemUi->setColor(Color3B(255,0,255));
+                    itemUi->loadTexture("ui_epic.png",TextureResType::PLIST);
                     break;
                 case PIQ_LEGEND:
-                    itemUi->setColor(Color3B(250,128,10));
+                    itemUi->loadTexture("ui_legend.png",TextureResType::PLIST);
+                    break;
+                default:
                     break;
             }
-            
+            itemUi->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
+//            Scale9Sprite* spriteItem = static_cast<Scale9Sprite*>(itemUi->getVirtualRenderer());
+//            if (spriteItem) {
+//                spriteItem->setBlendFunc(tmp_oBlendFunc);
+//                spriteItem->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
+////                itemUi->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
+//            }
+
             PickableItemProperty::PickableItemPropertyType itemtype =itemProp->getPickableItemPropertyType();
             if (!m_bIsIndetify && (itemtype ==PickableItemProperty::PIPT_WEAPON ||itemtype ==PickableItemProperty::PIPT_SECOND_WEAPON||
                 itemtype ==PickableItemProperty::PIPT_ARMOR ||itemtype ==PickableItemProperty::PIPT_MAGIC_ORNAMENT) )

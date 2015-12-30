@@ -968,7 +968,10 @@ void GameUILayer::onEventRoleLevelUp(cocos2d::EventCustom *sender)
 {
     CCLOG("onEventRoleLevelUp");
     refreshUIView();
-    PopupUILayerManager::getInstance()->showStatusImport(TIP_DEFAULT, UtilityHelper::getLocalStringForUi("GAME_MESSAGE_LEVEL_UP"));
+    Vec2 pt = VoxelExplorer::getInstance()->getMainCamera()->projectGL(VoxelExplorer::getInstance()->getPlayer()->getPosition3D());
+    pt = Vec2(pt.x, pt.y+TerrainTile::CONTENT_SCALE*5);
+    PopupUILayerManager::getInstance()->showLevelUp(pt);
+//    PopupUILayerManager::getInstance()->showStatusImport(TIP_DEFAULT, UtilityHelper::getLocalStringForUi("GAME_MESSAGE_LEVEL_UP"));
     m_pGameToolBarLayer->sendMessage(UtilityHelper::getLocalStringForUi("GAME_MESSAGE_LEVEL_UP"),PopupUILayerManager::getInstance()->getTipsColor(TIP_NEUTRAL));
 }
 
@@ -990,7 +993,7 @@ void GameUILayer::onEventRoleDead(cocos2d::EventCustom *sender)
         }
 
     });
-    this->runAction(Sequence::createWithTwoActions(DelayTime::create(2.0F),func ));
+    this->runAction(Sequence::createWithTwoActions(DelayTime::create(3.0F),func ));
 }
 void GameUILayer::onEventRoleFallAndDie(cocos2d::EventCustom *sender)
 {

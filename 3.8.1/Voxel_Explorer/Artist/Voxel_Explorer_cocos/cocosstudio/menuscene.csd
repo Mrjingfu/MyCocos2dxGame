@@ -6,6 +6,16 @@
       <ObjectData Name="Scene" Tag="10" ctype="GameNodeObjectData">
         <Size X="320.0000" Y="480.0000" />
         <Children>
+          <AbstractNodeData Name="menu_bg" ActionTag="1254546527" Tag="18" IconVisible="False" PercentWidthEnable="True" PercentHeightEnable="True" PercentWidthEnabled="True" PercentHeightEnabled="True" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" Scale9Width="640" Scale9Height="960" ctype="ImageViewObjectData">
+            <Size X="320.0000" Y="480.0000" />
+            <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+            <Position X="160.0000" Y="240.0000" />
+            <Scale ScaleX="1.0000" ScaleY="1.0000" />
+            <CColor A="255" R="255" G="255" B="255" />
+            <PrePosition X="0.5000" Y="0.5000" />
+            <PreSize X="1.0000" Y="1.0000" />
+            <FileData Type="Normal" Path="ui_splash.png" Plist="" />
+          </AbstractNodeData>
           <AbstractNodeData Name="btn_achieve" ActionTag="391959339" Tag="11" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="147.0000" RightMargin="147.0000" TopMargin="431.2306" BottomMargin="23.7694" TouchEnable="True" FontSize="14" Scale9Enable="True" LeftEage="4" RightEage="4" TopEage="4" BottomEage="4" Scale9OriginX="4" Scale9OriginY="4" Scale9Width="18" Scale9Height="17" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="ButtonObjectData">
             <Size X="26.0000" Y="25.0000" />
             <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
@@ -58,19 +68,30 @@
             <OutlineColor A="255" R="255" G="0" B="0" />
             <ShadowColor A="255" R="110" G="110" B="110" />
           </AbstractNodeData>
-          <AbstractNodeData Name="btn_start" ActionTag="-560233107" Tag="18" IconVisible="False" PercentWidthEnable="True" PercentHeightEnable="True" PercentWidthEnabled="True" PercentHeightEnabled="True" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="96.0000" RightMargin="96.0000" TopMargin="199.3984" BottomMargin="242.2016" TouchEnable="True" FontSize="24" ButtonText="start" Scale9Enable="True" LeftEage="4" RightEage="4" TopEage="4" BottomEage="4" Scale9OriginX="4" Scale9OriginY="4" Scale9Width="6" Scale9Height="6" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="ButtonObjectData">
+          <AbstractNodeData Name="btn_start" ActionTag="-560233107" Tag="18" IconVisible="False" PercentWidthEnable="True" PercentHeightEnable="True" PercentWidthEnabled="True" PercentHeightEnabled="True" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="94.9172" RightMargin="97.0828" TopMargin="343.4019" BottomMargin="98.1982" TouchEnable="True" FontSize="24" ButtonText="start" Scale9Enable="True" LeftEage="4" RightEage="4" TopEage="4" BottomEage="4" Scale9OriginX="4" Scale9OriginY="4" Scale9Width="6" Scale9Height="6" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="ButtonObjectData">
             <Size X="128.0000" Y="38.4000" />
             <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-            <Position X="160.0000" Y="261.4080" />
+            <Position X="158.9120" Y="117.4080" />
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
             <CColor A="255" R="255" G="255" B="255" />
-            <PrePosition X="0.5000" Y="0.5446" />
+            <PrePosition X="0.4966" Y="0.2446" />
             <PreSize X="0.4000" Y="0.0800" />
             <FontResource Type="Normal" Path="fonts/04B_03.TTF" Plist="" />
             <TextColor A="255" R="255" G="255" B="255" />
             <NormalFileData Type="PlistSubImage" Path="ui_frame_3.png" Plist="ui_sprite.plist" />
             <OutlineColor A="255" R="255" G="0" B="0" />
             <ShadowColor A="255" R="110" G="110" B="110" />
+          </AbstractNodeData>
+          <AbstractNodeData Name="menu_particle" ActionTag="-578985138" Tag="17" IconVisible="True" LeftMargin="158.3139" RightMargin="161.6861" TopMargin="405.5820" BottomMargin="74.4180" ctype="ParticleObjectData">
+            <Size X="0.0000" Y="0.0000" />
+            <AnchorPoint />
+            <Position X="158.3139" Y="74.4180" />
+            <Scale ScaleX="1.0000" ScaleY="1.0000" />
+            <CColor A="255" R="255" G="255" B="255" />
+            <PrePosition X="0.4947" Y="0.1550" />
+            <PreSize X="0.0000" Y="0.0000" />
+            <FileData Type="Normal" Path="particle2d/eff_page_1101.plist" Plist="" />
+            <BlendFunc Src="770" Dst="1" />
           </AbstractNodeData>
         </Children>
       </ObjectData>

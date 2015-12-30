@@ -244,6 +244,10 @@ void LogoScene::precache()
     if (uiAchievementTx)
         uiAchievementTx->setAliasTexParameters();
     
+    Texture2D * splashTx = Director::getInstance()->getTextureCache()->addImage("ui_splash.png");
+    if (splashTx)
+        splashTx->setAliasTexParameters();
+    
     
     SpriteFrameCache::getInstance()->addSpriteFramesWithFile("ui_sprite.plist");
     SpriteFrameCache::getInstance()->addSpriteFramesWithFile("ui_characters.plist");

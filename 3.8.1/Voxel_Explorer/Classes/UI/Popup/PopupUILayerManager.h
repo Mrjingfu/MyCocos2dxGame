@@ -26,6 +26,7 @@ public:
     //显示重要提示
     void showStatusImport(TipTypes tipType ,std::string text);
     void showAchieveItem(const std::string icon,const std::string name,const std::string targetDesc);
+    void showLevelUp(cocos2d::Vec2 pt);
     void closeCurrentPopup();
     void onExitScene();
     void setParentLayer(cocos2d::Layer* parent);

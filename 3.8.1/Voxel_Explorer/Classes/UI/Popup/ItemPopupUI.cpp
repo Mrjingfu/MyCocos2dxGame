@@ -99,7 +99,6 @@ bool ItemPopupUI::addEvents()
     m_pItemPropFrame= dynamic_cast<ui::Layout*>(UtilityHelper::seekNodeByName(m_pRootNode, "item_prop_layer"));
     if (!m_pItemPropFrame)
         return false;
-    
     m_pBackGround =   dynamic_cast<ui::ImageView*>(UtilityHelper::seekNodeByName(m_pRootNode, "item_background"));
     if (!m_pBackGround)
         return false;
@@ -580,13 +579,13 @@ void ItemPopupUI::updateItemBaseProp()
             m_pItemName->setTextColor(Color4B(Color3B::WHITE));
             break;
         case PIQ_RARE:
-            m_pItemName->setTextColor(Color4B(Color3B::BLUE));
+            m_pItemName->setTextColor(Color4B(Color3B::GREEN));
             break;
         case PIQ_EPIC:
-            m_pItemName->setTextColor(Color4B(Color3B(255,0,255)));
+            m_pItemName->setTextColor(Color4B(Color3B::BLUE));
             break;
         case PIQ_LEGEND:
-            m_pItemName->setTextColor(Color4B(Color3B(250,128,10)));
+            m_pItemName->setTextColor(Color4B(Color3B(114,49,149)));
             break;
     }
     
@@ -709,9 +708,27 @@ void ItemPopupUI::updateEquipItem()
             }
         }
         
-        
     }
     
+}
+
+void ItemPopupUI::onTouchEnded(cocos2d::Touch *touch, cocos2d::Event *unused_event)
+{
+    if (!m_pRootNode)
+        return;
+    cocos2d::Rect rootRect = m_pRootNode->getBoundingBox();
+    PopupUILayer* pLayer = nullptr;
+    if (PopupUILayerManager::getInstance()->isOpenPopup(ePopupEquipItem,pLayer))
+    {
+        float height = pLayer->getRootNode()->getBoundingBox().size.height + rootRect.size.height;
+        
+        rootRect.setRect(rootRect.origin.x,rootRect.origin.y,rootRect.size.width,+height);
+    }
+    
+    if (!rootRect.containsPoint(touch->getLocation()) && m_nIsBlankClose) {
+        //        CCLOG("onTouchEnded");
+        closePopup();
+    }
 }
 void ItemPopupUI::updateUseItem()
 {

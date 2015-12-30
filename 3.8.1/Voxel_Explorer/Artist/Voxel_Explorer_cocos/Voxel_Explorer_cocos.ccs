@@ -74,6 +74,10 @@
           <PlistImageFile Name="ui_frame_9.png" Key="ui_frame_9.png" />
           <PlistImageFile Name="ui_sound_off.png" Key="ui_sound_off.png" />
           <PlistImageFile Name="ui_sound_on.png" Key="ui_sound_on.png" />
+          <PlistImageFile Name="ui_epic.png" Key="ui_epic.png" />
+          <PlistImageFile Name="ui_indentify_scoll_icon.png" Key="ui_indentify_scoll_icon.png" />
+          <PlistImageFile Name="ui_legend.png" Key="ui_legend.png" />
+          <PlistImageFile Name="ui_rape.png" Key="ui_rape.png" />
         </PlistImageFolder>
         <Project Name="gameScene.csd" Type="Scene" />
         <Project Name="menuscene.csd" Type="Scene" />
@@ -228,8 +232,10 @@
         <Project Name="achieveItemLayer.csd" Type="Layer" />
         <Folder Name="particle2d">
           <PlistParticleFile Name="achievement_particle-ipadhd.plist" />
+          <PlistParticleFile Name="eff_page_1101.plist" />
         </Folder>
         <Project Name="settingLayer.csd" Type="Layer" />
+        <Image Name="ui_splash.png" />
       </RootFolder>
     </Group>
   </SolutionFolder>

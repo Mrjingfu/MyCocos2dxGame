@@ -942,7 +942,11 @@ bool PlayerProperty::addItemToBag(PickableItem::PickableItemType type, CChaosNum
             {
                 IStackable* itemProperty = dynamic_cast<IStackable*>(item);
                 if (itemProperty)
+                {
                     itemProperty->increaseCount();
+                    if (sound)
+                        StatisticsManager::getInstance()->addPickItemNum();
+                }
                 if(item->isIdentified())
                     item->adjustByLevel();
                 

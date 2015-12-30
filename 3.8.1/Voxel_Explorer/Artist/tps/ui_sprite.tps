@@ -215,6 +215,10 @@
             <filename>../ui/ui_sprite/ui_sound_off.png</filename>
             <filename>../ui/ui_sprite/ui_sound_on.png</filename>
             <filename>../ui/ui_sprite/ui_indentify_scoll_icon.png</filename>
+            <filename>../ui/ui_sprite/ui_epic.png</filename>
+            <filename>../ui/ui_sprite/ui_legend.png</filename>
+            <filename>../ui/ui_sprite/ui_rape.png</filename>
+            <filename>../ui/ui_sprite/ui_bag_frame.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>
