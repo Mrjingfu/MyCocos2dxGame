@@ -316,6 +316,8 @@
 		EC67165A1BCE7F5F00C81CFC /* lang in Resources */ = {isa = PBXBuildFile; fileRef = EC6716561BCE7F5F00C81CFC /* lang */; };
 		EC67165D1BCE7F5F00C81CFC /* ui in Resources */ = {isa = PBXBuildFile; fileRef = EC6716581BCE7F5F00C81CFC /* ui */; };
 		EC67165E1BCE7F5F00C81CFC /* ui in Resources */ = {isa = PBXBuildFile; fileRef = EC6716581BCE7F5F00C81CFC /* ui */; };
+		EC711F3F1C35489300ABB374 /* CircleMoveAct.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC711F3D1C35489300ABB374 /* CircleMoveAct.cpp */; };
+		EC711F401C35489300ABB374 /* CircleMoveAct.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC711F3D1C35489300ABB374 /* CircleMoveAct.cpp */; };
 		EC795F421C0D42340083829B /* MagicShopPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC795F3E1C0D42340083829B /* MagicShopPopupUI.cpp */; };
 		EC795F431C0D42340083829B /* MagicShopPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC795F3E1C0D42340083829B /* MagicShopPopupUI.cpp */; };
 		EC795F491C0D4A4B0083829B /* WeaponShopPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC795F471C0D4A4B0083829B /* WeaponShopPopupUI.cpp */; };
@@ -681,6 +683,8 @@
 		EC6716441BCE7F2C00C81CFC /* LogoScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogoScene.h; sourceTree = "<group>"; };
 		EC6716561BCE7F5F00C81CFC /* lang */ = {isa = PBXFileReference; lastKnownFileType = folder; path = lang; sourceTree = "<group>"; };
 		EC6716581BCE7F5F00C81CFC /* ui */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ui; sourceTree = "<group>"; };
+		EC711F3D1C35489300ABB374 /* CircleMoveAct.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CircleMoveAct.cpp; sourceTree = "<group>"; };
+		EC711F3E1C35489300ABB374 /* CircleMoveAct.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CircleMoveAct.hpp; sourceTree = "<group>"; };
 		EC795F3D1C0D42340083829B /* WeaponShopPopupUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeaponShopPopupUI.h; sourceTree = "<group>"; };
 		EC795F3E1C0D42340083829B /* MagicShopPopupUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MagicShopPopupUI.cpp; sourceTree = "<group>"; };
 		EC795F3F1C0D42340083829B /* MagicShopPopupUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MagicShopPopupUI.h; sourceTree = "<group>"; };
@@ -1163,6 +1167,8 @@
 		555DCB761C3266CA007C868B /* Actions */ = {
 			isa = PBXGroup;
 			children = (
+				EC711F3D1C35489300ABB374 /* CircleMoveAct.cpp */,
+				EC711F3E1C35489300ABB374 /* CircleMoveAct.hpp */,
 				555DCB771C3266DC007C868B /* ScreenShake.cpp */,
 				555DCB781C3266DC007C868B /* ScreenShake.hpp */,
 			);
@@ -1640,6 +1646,7 @@
 				EC63CEAF1C20FEB600C84941 /* HudPromptLayer.cpp in Sources */,
 				EC25C3CA1C1977DF00B4340D /* InformationPopupUI.cpp in Sources */,
 				EC3CC9951C088F4F00F8CFC8 /* RolePopupUI.cpp in Sources */,
+				EC711F3F1C35489300ABB374 /* CircleMoveAct.cpp in Sources */,
 				55F116D81C04452300A6C191 /* MineLevel.cpp in Sources */,
 				EC3CC9831C088F4F00F8CFC8 /* RoleLayer.cpp in Sources */,
 				55F116DC1C04453500A6C191 /* CaveLevel.cpp in Sources */,
@@ -1820,6 +1827,7 @@
 				551E93B01BD51282009F788F /* NativeBridge.mm in Sources */,
 				55F116D11C0444EF00A6C191 /* PrisonLevel.cpp in Sources */,
 				551E93E91BD512D3009F788F /* sha1.cpp in Sources */,
+				EC711F401C35489300ABB374 /* CircleMoveAct.cpp in Sources */,
 				EC602AAD1BF46A2D00484D42 /* AchievementManager.cpp in Sources */,
 				EC795F5C1C0D4B150083829B /* OldManPopupUI.cpp in Sources */,
 				55338AD61BD878BF00EA316F /* StandardMonster.cpp in Sources */,

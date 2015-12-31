@@ -82,13 +82,13 @@
             <OutlineColor A="255" R="255" G="0" B="0" />
             <ShadowColor A="255" R="110" G="110" B="110" />
           </AbstractNodeData>
-          <AbstractNodeData Name="menu_particle" ActionTag="-578985138" Tag="17" IconVisible="True" LeftMargin="158.3139" RightMargin="161.6861" TopMargin="405.5820" BottomMargin="74.4180" ctype="ParticleObjectData">
+          <AbstractNodeData Name="menu_particle" ActionTag="-578985138" Tag="17" IconVisible="True" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="160.0000" RightMargin="160.0000" TopMargin="420.6000" BottomMargin="59.4000" ctype="ParticleObjectData">
             <Size X="0.0000" Y="0.0000" />
             <AnchorPoint />
-            <Position X="158.3139" Y="74.4180" />
+            <Position X="160.0000" Y="59.4000" />
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
             <CColor A="255" R="255" G="255" B="255" />
-            <PrePosition X="0.4947" Y="0.1550" />
+            <PrePosition X="0.5000" Y="0.1237" />
             <PreSize X="0.0000" Y="0.0000" />
             <FileData Type="Normal" Path="particle2d/eff_page_1101.plist" Plist="" />
             <BlendFunc Src="770" Dst="1" />

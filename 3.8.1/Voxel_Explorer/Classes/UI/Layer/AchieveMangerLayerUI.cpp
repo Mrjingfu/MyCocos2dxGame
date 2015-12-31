@@ -105,7 +105,7 @@ void AchieveMangerLayerUI::addItemAchieve(eAchievementDetailType achieveId,cocos
             img->loadTexture(itemIcon,TextureResType::PLIST);
         }
         if (!isUnlockeAchieve) {
-            img->loadTexture("achievement_lock.png",TextureResType::PLIST);
+            img->loadTexture("achieve_icon_07.png",TextureResType::PLIST);
         }
         img->setPosition(pt-cocos2d::Vec2(img->getContentSize().width,0));
         cocos2d::ui::Scale9Sprite* scale9sp=dynamic_cast<cocos2d::ui::Scale9Sprite*>(img->getVirtualRenderer());
@@ -136,7 +136,7 @@ void AchieveMangerLayerUI::addItemAchieve(eAchievementDetailType achieveId,cocos
         }
         if (!isUnlockeAchieve)
         {
-            nameText->setString("??");
+            nameText->setString(UtilityHelper::getLocalStringForUi("ACHIEVE_ITEM_LOCK"));
             textHeight = nameText->getContentSize().height*nameText->getScale();
             nameText->setPosition(cocos2d::Vec2(img->getPositionX()+img->getContentSize().width*0.55,pt.y+textHeight*0.88));
         }
