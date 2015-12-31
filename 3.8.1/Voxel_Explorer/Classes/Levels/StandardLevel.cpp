@@ -433,7 +433,7 @@ void StandardLevel::assignAreasType()
         if(area)
         {
             if (area->getAreaType() == Area::AT_UNKNOWN) {
-                int connections = area->getConnectedAreas().size();
+                int connections = (int)area->getConnectedAreas().size();
                 if ( connections == 0) {
                     CCASSERT(connections == 0, "Error: connections == 0");
                 } else if (cocos2d::random(0, connections * connections-1) == 0) {

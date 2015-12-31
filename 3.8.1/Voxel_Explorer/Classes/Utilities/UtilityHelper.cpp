@@ -89,7 +89,7 @@ int UtilityHelper::getLineStr(std::string &str, int length)
         }
         str_vec.push_back(tempStr);
     }else{
-        int tempCount = tempVec.size()/length;
+        int tempCount = (int)tempVec.size()/length;
         for (int i =0; i< tempCount; i++)
         {
             std::string tempStr;

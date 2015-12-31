@@ -431,7 +431,7 @@ namespace SuperAnim {
 		mData.clear();
 		mData.reserve(theCount);
 		mData.insert(mData.begin(), thePtr, thePtr + theCount);
-		mDataBitSize = mData.size() * 8;
+		mDataBitSize = (int)mData.size() * 8;
 	}
 
 	uchar* BufferReader::GetDataPtr()
@@ -581,7 +581,7 @@ namespace SuperAnim {
 			return false;
 		}
 		BufferReader aBuffer;
-		aBuffer.SetData(aFileBuffer, aFileSize);
+		aBuffer.SetData(aFileBuffer, (int)aFileSize);
 		// free memory
 		delete[] aFileBuffer;
 
@@ -591,7 +591,7 @@ namespace SuperAnim {
 			return false;
 		}
 
-		int aVersion = aBuffer.ReadLong();
+		int aVersion = (int)aBuffer.ReadLong();
 
 		if (aVersion != SAM_VERSION)
 		{

@@ -69,7 +69,7 @@ void TGridView::setItemModel(Widget *model)
 
 void TGridView::updateInnerContainerSize()
 {
-    int y = _items.size()/m_pX;
+    int y = (int)_items.size()/m_pX;
     float totalHeight = y*_itemMarginSize.height;
     float totalWidth = m_pX* _itemMarginSize.width ;
     
@@ -109,8 +109,8 @@ void TGridView::remedyLayoutParameter(Widget *item)
     }
     std::string currenName = cocos2d::StringUtils::format("item_%d",(int)itemIndex);
     std::string preName = cocos2d::StringUtils::format("item_%d",(int)itemIndex-1);
-    int x = itemIndex%m_pX;
-    int y = itemIndex/m_pX;
+    int x = (int)itemIndex%m_pX;
+    int y = (int)itemIndex/m_pX;
     if (itemIndex ==0) {
         reLayoutParameter->setAlign(RelativeLayoutParameter::RelativeAlign::PARENT_TOP_LEFT);
         reLayoutParameter->setRelativeName(currenName );

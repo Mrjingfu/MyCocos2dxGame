@@ -440,7 +440,7 @@ void Area::generatePassageArea(BaseLevel* level)
     }
     std::sort(joints.begin(), joints.end());
     
-    int nJoints = joints.size();
+    int nJoints = (int)joints.size();
     int perimeter = pasWidth * 2 + pasHeight * 2;
     
     int start = 0;

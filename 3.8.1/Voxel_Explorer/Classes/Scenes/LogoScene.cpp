@@ -11,6 +11,7 @@
 #include "GameConfig.h"
 #include "LevelResourceManager.h"
 #include "AchievementManager.h"
+#include "UtilityHelper.h"
 USING_NS_CC;
 
 Scene* LogoScene::createScene()
@@ -244,7 +245,8 @@ void LogoScene::precache()
     if (uiAchievementTx)
         uiAchievementTx->setAliasTexParameters();
     
-    Texture2D * splashTx = Director::getInstance()->getTextureCache()->addImage("ui_splash.png");
+    std::string splashTxName = UtilityHelper::getLocalStringForUi("SPLASH_RES");
+    Texture2D * splashTx = Director::getInstance()->getTextureCache()->addImage(splashTxName);
     if (splashTx)
         splashTx->setAliasTexParameters();
     

@@ -123,7 +123,7 @@ void BaseBoss::attackedByPlayer(bool miss)
             return;
         }
     }
-    int attack = PlayerProperty::getInstance()->getRandomAttack().GetLongValue();
+    int attack = (int)PlayerProperty::getInstance()->getRandomAttack().GetLongValue();
     float percentCriticalStrikeRate = PlayerProperty::getInstance()->getCriticalStrikeRate().GetFloatValue();
     float percentNormal = 1.0 - percentCriticalStrikeRate;
     AlisaMethod* amCriticalStrikeRate = AlisaMethod::create(percentCriticalStrikeRate,percentNormal,-1.0, NULL);
@@ -142,7 +142,7 @@ void BaseBoss::attackedByPlayer(bool miss)
         }
     }
     
-    int defense = m_pBossProperty->getDefense().GetLongValue();
+    int defense = (int)m_pBossProperty->getDefense().GetLongValue();
     
     attack = MAX(attack - defense, 1);
     
@@ -161,7 +161,7 @@ void BaseBoss::attackedByPlayer(bool miss)
         }
     }
     
-    int currentHp = m_pBossProperty->getCurrentHP().GetLongValue();
+    int currentHp = (int)m_pBossProperty->getCurrentHP().GetLongValue();
     currentHp = MAX(currentHp - attack , 0);
     CCLOG("Boss: CurrentHp = %d, playerAttack = %d", currentHp, attack);
     m_pHurtData->m_nDamage = -attack;
@@ -425,7 +425,7 @@ void BaseBoss::onEnterDeath()
     if(m_pFakeShadow)
         m_pFakeShadow->setVisible(false);
     VoxelExplorer::getInstance()->addParticle3DEffect(getPosition3D(), P3D_EFFECT_TYPE::P3D_PLAYER_DEATH);
-    VoxelExplorer::getInstance()->generatePickItemByBoss(getPosInMap(), m_pBossProperty->getValueCopper().GetLongValue());
+    VoxelExplorer::getInstance()->generatePickItemByBoss(getPosInMap(), (int)m_pBossProperty->getValueCopper().GetLongValue());
 }
 void BaseBoss::onExitDeath()
 {

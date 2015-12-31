@@ -52,7 +52,7 @@ bool PrisonBossLevel::build()
         } while (m_AreaExit == m_AreaEntrance || m_AreaExit->getRect().size.width < 7 || m_AreaExit->getRect().size.height < 7 || m_AreaExit->getRect().getMinY() <= m_AreaEntrance->getRect().getMaxY());
         
         PathGraph::buildDistanceMap(m_Areas, m_AreaExit);
-        distance = PathGraph::buildPath(m_Areas, m_AreaEntrance, m_AreaExit).size();
+        distance = (int)PathGraph::buildPath(m_Areas, m_AreaEntrance, m_AreaExit).size();
         
         if (retry++ > 10) {
             return false;
@@ -366,7 +366,7 @@ bool PrisonBossLevel::createPickableItems()
         if(neighbourHasDoor)
             continue;
         
-        int playerlevel = PlayerProperty::getInstance()->getLevel().GetLongValue();
+        int playerlevel = (int)PlayerProperty::getInstance()->getLevel().GetLongValue();
         int itemLevel = cocos2d::random(playerlevel - 3, playerlevel + 3);
         if(itemLevel < 1)
             itemLevel = 1;

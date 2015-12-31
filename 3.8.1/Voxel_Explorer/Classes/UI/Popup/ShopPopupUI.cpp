@@ -72,7 +72,7 @@ bool ShopPopupUI::addEvents()
     m_pShopGridView->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
     m_shopFrame->addChild(m_pShopGridView);
 
-    int shopItemSize = getShopItems().size()/15?15:15*(getShopItems().size()/15+1);
+    int shopItemSize = getShopItems().size()/15?15:15*((int)getShopItems().size()/15+1);
     
     for (int j =0; j<shopItemSize; j++) {
         

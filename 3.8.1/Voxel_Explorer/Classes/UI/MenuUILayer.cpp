@@ -43,6 +43,16 @@ bool MenuUILayer::addEvents()
     if (!btn_start)
         return false;
     
+    cocos2d::ui::ImageView* splash = dynamic_cast<cocos2d::ui::ImageView*>(UtilityHelper::seekNodeByName(m_pRootNode,"menu_bg"));
+    if (!splash)
+        return false;
+    std::string splashTxName = UtilityHelper::getLocalStringForUi("SPLASH_RES");
+    splash->loadTexture(splashTxName);
+    
+    
+    if (!btn_start)
+        return false;
+    
     
     m_pAchievePopupUI = AchievePopupUI::create();
     m_pAchievePopupUI->setVisible(false);

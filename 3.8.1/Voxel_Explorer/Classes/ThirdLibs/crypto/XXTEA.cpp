@@ -72,7 +72,7 @@ size_t XXTEA_encrypt(const unsigned char * pInputBuffer,
 		memset(pOutputBuffer, 0, nResult * 8);
 		memcpy(pOutputBuffer, pInputBuffer, nLength);
 		unsigned int const * pnKey = pUserDefineKey ? (unsigned int const *)pUserDefineKey : s_DefaultEncryptKey;
-		btea((unsigned int *)pOutputBuffer, nResult, pnKey);
+		btea((unsigned int *)pOutputBuffer, (int)nResult, pnKey);
 
 		nResult *= 4;
 	}

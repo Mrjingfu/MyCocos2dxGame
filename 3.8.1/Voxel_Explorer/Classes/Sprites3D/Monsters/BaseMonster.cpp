@@ -141,7 +141,7 @@ void BaseMonster::attackedByPlayer(bool miss)
             return;
         }
     }
-    int attack = PlayerProperty::getInstance()->getRandomAttack().GetLongValue();
+    int attack = (int)PlayerProperty::getInstance()->getRandomAttack().GetLongValue();
     float percentCriticalStrikeRate = PlayerProperty::getInstance()->getCriticalStrikeRate().GetFloatValue();
     float percentNormal = 1.0 - percentCriticalStrikeRate;
     AlisaMethod* amCriticalStrikeRate = AlisaMethod::create(percentCriticalStrikeRate,percentNormal,-1.0, NULL);
@@ -158,7 +158,7 @@ void BaseMonster::attackedByPlayer(bool miss)
         }
     }
         
-    int defense = m_pMonsterProperty->getDefense().GetLongValue();
+    int defense = (int)m_pMonsterProperty->getDefense().GetLongValue();
         
     attack = MAX(attack - defense, 1);
         
@@ -177,7 +177,7 @@ void BaseMonster::attackedByPlayer(bool miss)
         }
     }
         
-    int currentHp = m_pMonsterProperty->getCurrentHP().GetLongValue();
+    int currentHp = (int)m_pMonsterProperty->getCurrentHP().GetLongValue();
     currentHp = MAX(currentHp - attack , 0);
     CCLOG("Monster: CurrentHp = %d, playerAttack = %d", currentHp, attack);
     m_pHurtData->m_nDamage = -attack;
@@ -452,10 +452,10 @@ void BaseMonster::onEnterDeath()
     if(!RandomDungeon::getInstance()->getCurrentDungeonNode()->isBossDepth())
     {
         bool generateItem = GameFormula::generatePickItemByMonster(m_pMonsterProperty->isElite(), false);
-        int level = m_pMonsterProperty->getLevel().GetLongValue();
+        int level = (int)m_pMonsterProperty->getLevel().GetLongValue();
         if(m_pMonsterProperty->isElite())
             level = MAX(1, level- 3);
-        VoxelExplorer::getInstance()->generatePickItem(getPosInMap(), generateItem, m_pMonsterProperty->getValueCopper().GetLongValue(), level);
+        VoxelExplorer::getInstance()->generatePickItem(getPosInMap(), generateItem, (int)m_pMonsterProperty->getValueCopper().GetLongValue(), level);
     }
     std::string soundName = LevelResourceManager::getInstance()->getMonsterSoundEffectRes(MONSTER_MODEL_NAMES[m_Type], "DEATH");
     SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());

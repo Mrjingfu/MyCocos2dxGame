@@ -124,7 +124,7 @@ void Stream::write8(char c)
 void Stream::writeString(const std::string& str)
 {
     size_t len = str.size();
-    write32le(len);
+    write32le((int)len);
     write(str.c_str(), len);
 }
 
