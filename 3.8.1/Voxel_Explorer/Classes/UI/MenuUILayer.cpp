@@ -43,16 +43,15 @@ bool MenuUILayer::addEvents()
     if (!btn_start)
         return false;
     
+    m_pEyes = dynamic_cast<cocos2d::Sprite*>(UtilityHelper::seekNodeByName(m_pRootNode,"menu_eyes"));
+    if (!m_pEyes)
+        return false;
+    
     cocos2d::ui::ImageView* splash = dynamic_cast<cocos2d::ui::ImageView*>(UtilityHelper::seekNodeByName(m_pRootNode,"menu_bg"));
     if (!splash)
         return false;
     std::string splashTxName = UtilityHelper::getLocalStringForUi("SPLASH_RES");
     splash->loadTexture(splashTxName);
-    
-    
-    if (!btn_start)
-        return false;
-    
     
     m_pAchievePopupUI = AchievePopupUI::create();
     m_pAchievePopupUI->setVisible(false);
@@ -108,8 +107,21 @@ void MenuUILayer::onClickStart(cocos2d::Ref *ref)
     CHECK_ACTION(ref);
     clickEffect();
     CCLOG("onTouchStart");
-    auto scene = GameScene::createScene();
-    Director::getInstance()->replaceScene(scene);
+    ui::Button* startBtn = static_cast<ui::Button*>(ref);
+    if (startBtn) {
+        startBtn->setVisible(false);
+        
+        FadeIn* fadeIn = FadeIn::create(2.5);
+        FadeOut* fadeout = FadeOut::create(1.5);
+        CallFunc* func = CallFunc::create([](){
+            
+            auto scene = GameScene::createScene();
+            Director::getInstance()->replaceScene(scene);
+        });
+        
+        m_pEyes->runAction(Sequence::create(fadeIn, fadeout,func,nullptr));
+    }
+    
     
 }
 

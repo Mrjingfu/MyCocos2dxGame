@@ -306,5 +306,7 @@
 	<string>鉴定失败！</string>
 	<key>BAG_TEXT_DESTROY</key>
 	<string>摧毁</string>
+	<key>ACHIEVE_ITEM_LOCK</key>
+	<string>未解锁</string>
 </dict>
 </plist>

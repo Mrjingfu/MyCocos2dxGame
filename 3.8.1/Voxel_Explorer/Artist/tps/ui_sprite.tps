@@ -219,6 +219,7 @@
             <filename>../ui/ui_sprite/ui_legend.png</filename>
             <filename>../ui/ui_sprite/ui_rape.png</filename>
             <filename>../ui/ui_sprite/ui_bag_frame.png</filename>
+            <filename>../ui/ui_sprite/eyes.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

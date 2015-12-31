@@ -28,7 +28,7 @@ protected:
     void onClickAchieve(Ref*);
 private:
     AchievePopupUI* m_pAchievePopupUI;
-    
+    cocos2d::Sprite* m_pEyes;
 };
 
 #endif /* MenuUILayer_h */

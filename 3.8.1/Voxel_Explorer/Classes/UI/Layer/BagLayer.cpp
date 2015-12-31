@@ -133,7 +133,8 @@ void BagLayer::refreshUIView()
     {
         ImageView* itemImg = static_cast<ImageView*>(m_pGridView->getItem(i));
         if (itemImg) {
-            itemImg->setColor(Color3B::WHITE);
+            itemImg->loadTexture("ui_frame_5.png",TextureResType::PLIST);
+            itemImg->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
         }
     }
     int weaponId = int(PlayerProperty::getInstance()->getEquipedWeaponID());
@@ -159,8 +160,6 @@ void BagLayer::refreshUIView()
             // 更新装备UI
             
             m_BagMsgLayer->addItem(i, itemProp->getInstanceID(), itemUi->getPosition(), itemProp->getIconRes());
-            
-            
             
             //设置品质
             switch (itemProp->getQuality()) {

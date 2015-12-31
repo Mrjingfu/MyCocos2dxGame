@@ -16,6 +16,17 @@
             <PreSize X="1.0000" Y="1.0000" />
             <FileData Type="Normal" Path="ui_splash.png" Plist="" />
           </AbstractNodeData>
+          <AbstractNodeData Name="menu_eyes" ActionTag="-1410662835" Alpha="0" Tag="10" RotationSkewX="39.2668" RotationSkewY="39.2566" IconVisible="False" LeftMargin="128.4762" RightMargin="-33.4763" TopMargin="331.0893" BottomMargin="27.9107" ctype="SpriteObjectData">
+            <Size X="225.0000" Y="121.0000" />
+            <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+            <Position X="240.9762" Y="88.4107" />
+            <Scale ScaleX="0.7000" ScaleY="0.7000" />
+            <CColor A="255" R="255" G="255" B="255" />
+            <PrePosition X="0.7531" Y="0.1842" />
+            <PreSize X="0.0000" Y="0.0000" />
+            <FileData Type="PlistSubImage" Path="eyes.png" Plist="ui_sprite.plist" />
+            <BlendFunc Src="770" Dst="771" />
+          </AbstractNodeData>
           <AbstractNodeData Name="btn_achieve" ActionTag="391959339" Tag="11" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="147.0000" RightMargin="147.0000" TopMargin="431.2306" BottomMargin="23.7694" TouchEnable="True" FontSize="14" Scale9Enable="True" LeftEage="4" RightEage="4" TopEage="4" BottomEage="4" Scale9OriginX="4" Scale9OriginY="4" Scale9Width="18" Scale9Height="17" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="ButtonObjectData">
             <Size X="26.0000" Y="25.0000" />
             <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
@@ -82,13 +93,13 @@
             <OutlineColor A="255" R="255" G="0" B="0" />
             <ShadowColor A="255" R="110" G="110" B="110" />
           </AbstractNodeData>
-          <AbstractNodeData Name="menu_particle" ActionTag="-578985138" Tag="17" IconVisible="True" LeftMargin="158.3139" RightMargin="161.6861" TopMargin="405.5820" BottomMargin="74.4180" ctype="ParticleObjectData">
+          <AbstractNodeData Name="menu_particle" ActionTag="-578985138" Tag="17" IconVisible="True" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="160.0000" RightMargin="160.0000" TopMargin="420.6000" BottomMargin="59.4000" ctype="ParticleObjectData">
             <Size X="0.0000" Y="0.0000" />
             <AnchorPoint />
-            <Position X="158.3139" Y="74.4180" />
+            <Position X="160.0000" Y="59.3760" />
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
             <CColor A="255" R="255" G="255" B="255" />
-            <PrePosition X="0.4947" Y="0.1550" />
+            <PrePosition X="0.5000" Y="0.1237" />
             <PreSize X="0.0000" Y="0.0000" />
             <FileData Type="Normal" Path="particle2d/eff_page_1101.plist" Plist="" />
             <BlendFunc Src="770" Dst="1" />

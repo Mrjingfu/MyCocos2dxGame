@@ -16,7 +16,7 @@
             <PreSize X="1.0000" Y="1.0000" />
             <FileData Type="PlistSubImage" Path="ui_frame_9.png" Plist="ui_sprite.plist" />
           </AbstractNodeData>
-          <AbstractNodeData Name="item_prop_layer" ActionTag="854255081" Tag="92" IconVisible="False" VerticalEdge="TopEdge" BottomMargin="20.0000" TouchEnable="True" BackColorAlpha="102" ComboBoxIndex="1" ColorAngle="90.0000" ctype="PanelObjectData">
+          <AbstractNodeData Name="item_prop_layer" ActionTag="854255081" Tag="92" IconVisible="False" VerticalEdge="TopEdge" BottomMargin="20.0000" TouchEnable="True" BackColorAlpha="102" ColorAngle="90.0000" ctype="PanelObjectData">
             <Size X="140.0000" Y="52.0000" />
             <Children>
               <AbstractNodeData Name="item_base_layer" ActionTag="-1752329100" Tag="96" IconVisible="False" PercentWidthEnable="True" PercentHeightEnable="True" PercentWidthEnabled="True" PercentHeightEnabled="True" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" TouchEnable="True" BackColorAlpha="102" ColorAngle="90.0000" ctype="PanelObjectData">
@@ -104,7 +104,7 @@
                 <EndColor A="255" R="255" G="255" B="255" />
                 <ColorVector ScaleY="1.0000" />
               </AbstractNodeData>
-              <AbstractNodeData Name="item_attr_layer" ActionTag="-1294983277" Tag="95" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" TopMargin="52.0000" BottomMargin="-20.0000" TouchEnable="True" BackColorAlpha="102" ComboBoxIndex="1" ColorAngle="90.0000" ctype="PanelObjectData">
+              <AbstractNodeData Name="item_attr_layer" ActionTag="-1294983277" Tag="95" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" TopMargin="52.0000" BottomMargin="-20.0000" TouchEnable="True" BackColorAlpha="102" ColorAngle="90.0000" ctype="PanelObjectData">
                 <Size X="140.0000" Y="20.0000" />
                 <AnchorPoint ScaleX="0.5000" ScaleY="1.0000" />
                 <Position X="70.0000" />
