@@ -147,7 +147,7 @@ ValueVector NpcDataManager::getOldManRoomInfo()
 }
 bool NpcDataManager::initEquipmentShop()
 {
-    int level = PlayerProperty::getInstance()->getLevel().GetLongValue();
+    int level = (int)PlayerProperty::getInstance()->getLevel().GetLongValue();
     PickableItem::PickableItemType type = PickableItem::PIT_UNKNOWN;
     int count = cocos2d::random(8, 12);
     int itemLevel = 1;
@@ -205,7 +205,7 @@ bool NpcDataManager::initEquipmentShop()
 }
 bool NpcDataManager::initMagicShop()
 {
-    int level = PlayerProperty::getInstance()->getLevel().GetLongValue();
+    int level = (int)PlayerProperty::getInstance()->getLevel().GetLongValue();
     PickableItem::PickableItemType type = PickableItem::PIT_UNKNOWN;
     int count = cocos2d::random(8, 12);
     int itemLevel = 1;
@@ -261,7 +261,7 @@ bool NpcDataManager::initMagicShop()
 }
 bool NpcDataManager::initAlchemistShop()
 {
-    int level = PlayerProperty::getInstance()->getLevel().GetLongValue();
+    int level = (int)PlayerProperty::getInstance()->getLevel().GetLongValue();
     PickableItem::PickableItemType type = PickableItem::PIT_UNKNOWN;
     PickableItemProperty* itemProperty = nullptr;
     std::vector<PickableItem::PickableItemType> types;
@@ -296,7 +296,7 @@ bool NpcDataManager::initAlchemistShop()
 }
 bool NpcDataManager::initTheifRoom()
 {
-    int level = PlayerProperty::getInstance()->getLevel().GetLongValue();
+    int level = (int)PlayerProperty::getInstance()->getLevel().GetLongValue();
     PickableItem::PickableItemType type = PickableItem::PIT_UNKNOWN;
     int count = cocos2d::random(8, 12);
     int itemLevel = 1;

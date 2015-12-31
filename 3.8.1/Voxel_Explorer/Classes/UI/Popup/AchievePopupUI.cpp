@@ -58,7 +58,7 @@ bool AchievePopupUI::addEvents()
     m_pAchieveGridView->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
     m_achieveFrame->addChild(m_pAchieveGridView);
 
-    int ItemSize = AchievementManager::getInstance()->getAllAchieves().size();
+    int ItemSize = (int)AchievementManager::getInstance()->getAllAchieves().size();
     
     for (int j =0; j<ItemSize; j++) {
         

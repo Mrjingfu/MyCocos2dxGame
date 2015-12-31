@@ -560,7 +560,7 @@ void Player::attackByMonster(MonsterProperty* monsterProperty, bool miss)
             return;
         }
     }
-    int attack = monsterProperty->getRandomAttack().GetLongValue();
+    int attack = (int)monsterProperty->getRandomAttack().GetLongValue();
     float percentCriticalStrikeRate = monsterProperty->getCriticalStrikeRate().GetFloatValue();
     float percentNormal = 1.0 - percentCriticalStrikeRate;
     AlisaMethod* amCriticalStrikeRate = AlisaMethod::create(percentCriticalStrikeRate,percentNormal,-1.0, NULL);
@@ -575,7 +575,7 @@ void Player::attackByMonster(MonsterProperty* monsterProperty, bool miss)
         }
     }
     
-    int defense = PlayerProperty::getInstance()->getDefense().GetLongValue();
+    int defense = (int)PlayerProperty::getInstance()->getDefense().GetLongValue();
     
     attack = MAX(attack - defense, 1);
     
@@ -591,7 +591,7 @@ void Player::attackByMonster(MonsterProperty* monsterProperty, bool miss)
         }
     }
     
-    int currentHp = PlayerProperty::getInstance()->getCurrentHP().GetLongValue();
+    int currentHp = (int)PlayerProperty::getInstance()->getCurrentHP().GetLongValue();
     currentHp = MAX(currentHp - attack , 0);
     CCLOG("Player: CurrentHp = %d, monsterAttack = %d", currentHp, attack);
     m_pHurtData->m_nDamage = -attack;
@@ -641,7 +641,7 @@ void Player::attackByBoss(BossProperty* bossProperty, bool miss)
             return;
         }
     }
-    int attack = bossProperty->getRandomAttack().GetLongValue();
+    int attack = (int)bossProperty->getRandomAttack().GetLongValue();
     float percentCriticalStrikeRate = bossProperty->getCriticalStrikeRate().GetFloatValue();
     float percentNormal = 1.0 - percentCriticalStrikeRate;
     AlisaMethod* amCriticalStrikeRate = AlisaMethod::create(percentCriticalStrikeRate,percentNormal,-1.0, NULL);
@@ -655,7 +655,7 @@ void Player::attackByBoss(BossProperty* bossProperty, bool miss)
         }
     }
     
-    int defense = PlayerProperty::getInstance()->getDefense().GetLongValue();
+    int defense = (int)PlayerProperty::getInstance()->getDefense().GetLongValue();
     
     attack = MAX(attack - defense, 1);
     
@@ -671,7 +671,7 @@ void Player::attackByBoss(BossProperty* bossProperty, bool miss)
         }
     }
     
-    int currentHp = PlayerProperty::getInstance()->getCurrentHP().GetLongValue();
+    int currentHp = (int)PlayerProperty::getInstance()->getCurrentHP().GetLongValue();
     currentHp = MAX(currentHp - attack , 0);
     CCLOG("Player: CurrentHp = %d, bossAttack = %d", currentHp, attack);
     m_pHurtData->m_nDamage = -attack;
@@ -749,7 +749,7 @@ void Player::hurtByGrippingTrap()
     m_pHurtData->m_vPos = this->getPosition3D();
     
     int attack = PlayerProperty::getInstance()->getMaxHP() * cocos2d::random(0.2f, 0.5f);
-    int currentHp = PlayerProperty::getInstance()->getCurrentHP().GetLongValue();
+    int currentHp = (int)PlayerProperty::getInstance()->getCurrentHP().GetLongValue();
     currentHp = MAX(currentHp - attack , 0);
     CCLOG("Player: CurrentHp = %d, GrippingTrap Attack = %d", currentHp, attack);
     
@@ -1038,7 +1038,7 @@ void Player::updatePlayerBuffer(float delta)
                 m_pHurtData->m_vPos = this->getPosition3D();
                 
                 int deltaHp = PlayerProperty::getInstance()->getMaxHP() * 0.05f;
-                int currentHp = PlayerProperty::getInstance()->getCurrentHP().GetLongValue();
+                int currentHp = (int)PlayerProperty::getInstance()->getCurrentHP().GetLongValue();
                 currentHp = MAX(currentHp - deltaHp , 0);
                 m_pHurtData->m_nDamage = - deltaHp;
                 Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_HURT, m_pHurtData);
@@ -1065,7 +1065,7 @@ void Player::updatePlayerBuffer(float delta)
             m_pHurtData->reset();
             m_pHurtData->m_vPos = this->getPosition3D();
             
-            int currentHp = PlayerProperty::getInstance()->getCurrentHP().GetLongValue();
+            int currentHp = (int)PlayerProperty::getInstance()->getCurrentHP().GetLongValue();
             currentHp = MAX(currentHp - 5 , 0);
             m_pHurtData->m_nDamage = - 5;
             Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_HURT, m_pHurtData);

@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>SPLASH_RES</key>
+	<string>splash_en.png</string>
 	<key>PROP_SHOW_HP</key>
 	<string>HP:%d</string>
 	<key>ROLE_SHOW_HP</key>

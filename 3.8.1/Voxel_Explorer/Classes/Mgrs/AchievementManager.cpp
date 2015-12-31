@@ -9,6 +9,10 @@
 #include "AchievementManager.h"
 #include "StatisticsManager.hpp"
 #include "EventConst.h"
+#include "LevelResourceManager.h"
+#include "SimpleAudioEngine.h"
+USING_NS_CC;
+using namespace CocosDenshion;
 AchievementManager::AchievementManager()
 {
     
@@ -125,6 +129,11 @@ void AchievementManager::updateAchieve(AchieveProperty *achieve)
     if (targetCompleteCount == achieve->getAcheveTargets().size())
     {
         achieve->onAcieveCommple();
+        if(achieve->getAchieveDetailType() == ADT_MONSTER_1)
+        {
+            std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("FIRST_BLOOD");
+            SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+        }
         sortAchieves();
         cocos2d::Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_ACHIEVE_COMPLETE,achieve);
     }

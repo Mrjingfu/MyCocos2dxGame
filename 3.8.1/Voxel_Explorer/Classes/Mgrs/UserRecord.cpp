@@ -66,7 +66,7 @@ void UserRecord::load(int archiveCount)
     memcpy(m_buf, content, size);
     CC_SAFE_DELETE_ARRAY(content);
     //3.校验MD5
-    CCCrypto::md5((void *)m_buf, size, m_md5);
+    CCCrypto::md5((void *)m_buf, (int)size, m_md5);
     std::string hex;
     UtilityHelper::getHexDigest(m_md5, MD5_LEN, hex);
     
@@ -116,7 +116,7 @@ void UserRecord::save()
     size_t writeCount = stream.tell();
     stream.close();
     
-    CCCrypto::md5((void*)m_buf, writeCount, m_md5);
+    CCCrypto::md5((void*)m_buf, (int)writeCount, m_md5);
     std::string hex;
     UtilityHelper::getHexDigest(m_md5, MD5_LEN, hex);
     CCLOG("save md5 to userdefault: md5=%s, begin", hex.c_str());

@@ -2877,7 +2877,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "284"
             endingLineNumber = "284"
-            landmarkName = "BaseMonster::onEnter()"
+            landmarkName = "BaseMonster::setState(MonsterState state)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2893,7 +2893,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "401"
             endingLineNumber = "401"
-            landmarkName = "BaseMonster::onEnterConfusing()"
+            landmarkName = "BaseMonster::onExitPassive()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2941,7 +2941,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "405"
             endingLineNumber = "405"
-            landmarkName = "BaseMonster::onExitConfusing()"
+            landmarkName = "BaseMonster::onEnterConfusing()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -3132,7 +3132,9 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "440"
-            endingLineNumber = "440">
+            endingLineNumber = "440"
+            landmarkName = "BaseMonster::onExitAttack()"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3243,7 +3245,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "426"
             endingLineNumber = "426"
-            landmarkName = "BaseMonster::onExitMoving()"
+            landmarkName = "BaseMonster::onEnterMoving()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -3483,7 +3485,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "294"
             endingLineNumber = "294"
-            landmarkName = "BaseMonster::update(float delta)"
+            landmarkName = "BaseMonster::onExit()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -3499,7 +3501,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "295"
             endingLineNumber = "295"
-            landmarkName = "BaseMonster::update(float delta)"
+            landmarkName = "BaseMonster::onExit()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -3627,7 +3629,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "290"
             endingLineNumber = "290"
-            landmarkName = "BaseMonster::onExit()"
+            landmarkName = "BaseMonster::onEnter()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -3659,7 +3661,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "368"
             endingLineNumber = "368"
-            landmarkName = "BaseMonster::onExitWandering()"
+            landmarkName = "BaseMonster::onEnterWandering()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -3771,7 +3773,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "406"
             endingLineNumber = "406"
-            landmarkName = "BaseMonster::onExitConfusing()"
+            landmarkName = "BaseMonster::onEnterConfusing()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -4358,12 +4360,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/UI/MenuUILayer.cpp"
-            timestampString = "470030832.475111"
+            timestampString = "473246362.257048"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "73"
-            endingLineNumber = "73"
-            landmarkName = "MenuUILayer::onClickStart(cocos2d::Ref *ref)"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
+            landmarkName = "MenuUILayer::onClickAchieve(cocos2d::Ref *ref)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -7812,9 +7814,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "369"
-            endingLineNumber = "369"
-            landmarkName = "BaseBoss::onEnterMoving()"
-            landmarkType = "5">
+            endingLineNumber = "369">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -7861,7 +7861,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "501"
             endingLineNumber = "501"
-            landmarkName = "BaseBoss::moveToNext(const cocos2d::Vec2&amp; next)"
+            landmarkName = "BaseBoss::onLand(bool updateMiniMap)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -7957,7 +7957,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "194"
             endingLineNumber = "194"
-            landmarkName = "BaseBoss::setState(BossState state)"
+            landmarkName = "BaseBoss::createFakeShadow()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -8005,7 +8005,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "474"
             endingLineNumber = "474"
-            landmarkName = "BaseBoss::onLand(bool updateMiniMap)"
+            landmarkName = "BaseBoss::setActorDir( ActorDir dir )"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -8021,7 +8021,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "473"
             endingLineNumber = "473"
-            landmarkName = "BaseBoss::onLand(bool updateMiniMap)"
+            landmarkName = "BaseBoss::setActorDir( ActorDir dir )"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -8085,7 +8085,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "586"
             endingLineNumber = "586"
-            landmarkName = "BaseBoss::handleAttackStyle(const cocos2d::Vec2&amp; playerPos, const cocos2d::Vec3&amp; dir)"
+            landmarkName = "BaseBoss::doAttack()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -8149,7 +8149,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "548"
             endingLineNumber = "548"
-            landmarkName = "BaseBoss::doAttack()"
+            landmarkName = "BaseBoss::moveToNext(const cocos2d::Vec2&amp; next)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -8181,7 +8181,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "284"
             endingLineNumber = "284"
-            landmarkName = "BaseBoss::update(float delta)"
+            landmarkName = "BaseBoss::onExit()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -8885,7 +8885,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "433"
             endingLineNumber = "433"
-            landmarkName = "BaseBoss::onExitSkill1()"
+            landmarkName = "BaseBoss::onEnterSkill1()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -10038,6 +10038,86 @@
             startingLineNumber = "984"
             endingLineNumber = "984"
             landmarkName = "Player::onLand(bool isAttack)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/Levels/BaseLevel.cpp"
+            timestampString = "473221871.207176"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "377"
+            endingLineNumber = "377"
+            landmarkName = "BaseLevel::getRandomVisitedTranspotTile(const cocos2d::Vec2&amp; playerPos)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/Levels/BaseLevel.cpp"
+            timestampString = "473221906.410865"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "375"
+            endingLineNumber = "375"
+            landmarkName = "BaseLevel::getRandomVisitedTranspotTile(const cocos2d::Vec2&amp; playerPos)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/Levels/BaseLevel.cpp"
+            timestampString = "473221932.416725"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "394"
+            endingLineNumber = "394"
+            landmarkName = "BaseLevel::getRandomVisitedTranspotTile(const cocos2d::Vec2&amp; playerPos)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/Levels/BaseLevel.cpp"
+            timestampString = "473221933.125158"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "397"
+            endingLineNumber = "397"
+            landmarkName = "BaseLevel::getRandomVisitedTranspotTile(const cocos2d::Vec2&amp; playerPos)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/Scenes/LogoScene.cpp"
+            timestampString = "473246099.187017"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "249"
+            endingLineNumber = "249"
+            landmarkName = "LogoScene::precache()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

@@ -53,7 +53,7 @@ int CCCrypto::decodeBase64(const char* input,
                            void* output,
                            int outputBufferLength)
 {
-    int bufferSize = strlen(input) + 1;
+    int bufferSize = (int)strlen(input) + 1;
     char* buffer = (char*)malloc(bufferSize);
     memset(buffer, 0, bufferSize);
     base64_decodestate state;

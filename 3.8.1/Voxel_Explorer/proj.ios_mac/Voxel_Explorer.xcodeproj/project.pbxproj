@@ -228,6 +228,7 @@
 		55F81CD11BDB92CC002EC075 /* PotionsProperty.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55F81CCE1BDB92CC002EC075 /* PotionsProperty.cpp */; };
 		55F81CD41BDB92ED002EC075 /* SundriesProperty.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55F81CD21BDB92ED002EC075 /* SundriesProperty.cpp */; };
 		55F81CD51BDB92ED002EC075 /* SundriesProperty.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55F81CD21BDB92ED002EC075 /* SundriesProperty.cpp */; };
+		55FCC8FC1C35369A00A92513 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 55FCC8FA1C35369A00A92513 /* InfoPlist.strings */; };
 		8262943E1AAF051F00CB7CF7 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8262943D1AAF051F00CB7CF7 /* Security.framework */; };
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
 		BF1712471292920000B8313A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB412928DE900B8313A /* libz.dylib */; };
@@ -403,7 +404,6 @@
 		5087E77917EB970100C73F5D /* Icon-57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-57.png"; sourceTree = "<group>"; };
 		5087E77A17EB970100C73F5D /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
 		5087E77B17EB970100C73F5D /* Icon-76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-76.png"; sourceTree = "<group>"; };
-		5087E77C17EB970100C73F5D /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5087E78817EB974C00C73F5D /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		5087E78A17EB975400C73F5D /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		50EF629217ECD46A001EB2F8 /* Icon-40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-40.png"; sourceTree = "<group>"; };
@@ -592,6 +592,9 @@
 		55F81CCF1BDB92CC002EC075 /* PotionsProperty.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PotionsProperty.hpp; sourceTree = "<group>"; };
 		55F81CD21BDB92ED002EC075 /* SundriesProperty.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SundriesProperty.cpp; sourceTree = "<group>"; };
 		55F81CD31BDB92ED002EC075 /* SundriesProperty.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SundriesProperty.hpp; sourceTree = "<group>"; };
+		55FCC8FD1C3536BB00A92513 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		55FCC9021C3537B500A92513 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		55FCC9031C353BE400A92513 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8262943D1AAF051F00CB7CF7 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB412928DE900B8313A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
@@ -881,6 +884,8 @@
 		5087E77117EB970100C73F5D /* Icons */ = {
 			isa = PBXGroup;
 			children = (
+				55FCC9031C353BE400A92513 /* Info.plist */,
+				55FCC8FA1C35369A00A92513 /* InfoPlist.strings */,
 				521A8E6219F0C34300D177D7 /* Default-667h@2x.png */,
 				521A8E6319F0C34300D177D7 /* Default-736h@3x.png */,
 				5087E77217EB970100C73F5D /* Default-568h@2x.png */,
@@ -899,7 +904,6 @@
 				5087E77917EB970100C73F5D /* Icon-57.png */,
 				5087E77A17EB970100C73F5D /* Icon-72.png */,
 				5087E77B17EB970100C73F5D /* Icon-76.png */,
-				5087E77C17EB970100C73F5D /* Info.plist */,
 			);
 			name = Icons;
 			path = ios;
@@ -1443,8 +1447,8 @@
 				French,
 				German,
 				Base,
-				en,
 				"zh-Hans",
+				en,
 			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
 			projectDirPath = "";
@@ -1485,6 +1489,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5087E78117EB970100C73F5D /* Icon-120.png in Resources */,
+				55FCC8FC1C35369A00A92513 /* InfoPlist.strings in Resources */,
 				5087E78617EB970100C73F5D /* Icon-76.png in Resources */,
 				55D6D67F1BC527D000081221 /* models in Resources */,
 				5087E77F17EB970100C73F5D /* Default@2x.png in Resources */,
@@ -1833,6 +1838,18 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		55FCC8FA1C35369A00A92513 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				55FCC8FD1C3536BB00A92513 /* zh-Hans */,
+				55FCC9021C3537B500A92513 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		1D6058940D05DD3E006BFB54 /* Debug */ = {

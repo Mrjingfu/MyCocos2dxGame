@@ -199,7 +199,7 @@ void ItemPopupUI::IdentifyEquiipFrame()
     
     int addAttrCount = 0;
     std::vector<ADDED_EFFECT> effectList = itemprop->getAddedEffectList();
-    int effectSize = effectList.size();
+    int effectSize = (int)effectList.size();
 
     std::sort(effectList.begin(),effectList.end(),std::less<ADDED_EFFECT>());
     Color3B effectColor = PopupUILayerManager::getInstance()->getTipsColor(TIP_EFFECT);

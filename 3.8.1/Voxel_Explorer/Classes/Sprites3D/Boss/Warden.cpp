@@ -103,7 +103,7 @@ void Warden::onEnterDeath()
     if(m_pFakeShadow)
         m_pFakeShadow->setVisible(false);
     VoxelExplorer::getInstance()->addParticle3DEffect(getPosition3D(), P3D_EFFECT_TYPE::P3D_PLAYER_DEATH);
-    VoxelExplorer::getInstance()->generatePickItemByBoss(getPosInMap(), m_pBossProperty->getValueCopper().GetLongValue());
+    VoxelExplorer::getInstance()->generatePickItemByBoss(getPosInMap(), (int)m_pBossProperty->getValueCopper().GetLongValue());
     
     PrisonBossLevel* level = dynamic_cast<PrisonBossLevel*>(VoxelExplorer::getInstance()->getCurrentLevel());
     if(level)
