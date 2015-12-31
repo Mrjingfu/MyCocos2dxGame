@@ -79,6 +79,7 @@
           <PlistImageFile Name="ui_legend.png" Key="ui_legend.png" />
           <PlistImageFile Name="ui_rape.png" Key="ui_rape.png" />
           <PlistImageFile Name="ui_bag_frame.png" Key="ui_bag_frame.png" />
+          <PlistImageFile Name="eyes.png" Key="eyes.png" />
         </PlistImageFolder>
         <Project Name="gameScene.csd" Type="Scene" />
         <Project Name="menuscene.csd" Type="Scene" />
