@@ -13,7 +13,9 @@
 #include "CaveBossLevel.hpp"
 #include "FakeShadow.hpp"
 #include "UtilityHelper.h"
+#include "SimpleAudioEngine.h"
 USING_NS_CC;
+using namespace CocosDenshion;
 
 Giant* Giant::create(BaseBoss::BossType type)
 {
@@ -206,6 +208,9 @@ void Giant::onEnterDeath()
     CaveBossLevel* level = dynamic_cast<CaveBossLevel*>(VoxelExplorer::getInstance()->getCurrentLevel());
     if(level)
         level->clearBossRoom();
+    
+    std::string soundName = LevelResourceManager::getInstance()->getMonsterSoundEffectRes(BOSS_MODEL_NAMES[m_Type], "DEATH");
+    SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
 }
 bool Giant::isPlayerInsideBossRoom()
 {

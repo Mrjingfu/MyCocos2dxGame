@@ -158,7 +158,7 @@ bool FaneBossLevel::createMonsters()
         return false;
     }
     ///for debug
-    //return true;
+    return true;
     
     int monsterNum = 10;
     for (int i=0; i < monsterNum; i++) {

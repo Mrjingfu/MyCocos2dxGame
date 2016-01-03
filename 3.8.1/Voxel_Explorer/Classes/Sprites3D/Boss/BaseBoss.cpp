@@ -180,6 +180,9 @@ void BaseBoss::attackedByPlayer(bool miss)
         handleSkillStage(currentHp);
         m_pBossProperty->setCurrentHP(currentHp);
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_BOSS_PROPERTY_DIRTY, this);
+        
+        std::string soundName = LevelResourceManager::getInstance()->getMonsterSoundEffectRes(BOSS_MODEL_NAMES[m_Type], "BEATTACKED");
+        SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
     }
 }
 bool BaseBoss::createFakeShadow()

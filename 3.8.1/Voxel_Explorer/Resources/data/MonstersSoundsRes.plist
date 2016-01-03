@@ -359,7 +359,7 @@
 		<key>ALERT</key>
 		<string>adjudicator_alert.wav</string>
 		<key>ATTACK</key>
-		<string>archbishop.wav</string>
+		<string>archbishop_attack.wav</string>
 		<key>BEATTACKED</key>
 		<string>adjudicator_beattacked.wav</string>
 		<key>DEATH</key>

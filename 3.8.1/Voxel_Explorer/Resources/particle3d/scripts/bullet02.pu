@@ -1,4 +1,4 @@
-system bullet02
+system bullet01
 {
     category                                    Bullet
     technique
@@ -7,8 +7,8 @@ system bullet02
         visual_particle_quota                   500
         emitted_emitter_quota                   1
         material                                Flare_01
-        default_particle_width                  2.0
-        default_particle_height                 2.0
+        default_particle_width                  2.5
+        default_particle_height                 2.5
         renderer                                Billboard
         {
         }
@@ -31,10 +31,14 @@ system bullet02
         }
         affector                                Colour
         {
-            time_colour                         0    0 0.5 1 1
-            time_colour                         0.5  0 0.7 1 1
+            time_colour                         0    1 0.5 0 1
+            time_colour                         0.5  1 0.7 0 1
             time_colour                         0.9  1 0 1 1
             time_colour                         1    0 0 0 1
+        }
+        affector                                Scale
+        {
+            xyz_scale                           -2
         }
     }
 }

@@ -34,6 +34,9 @@ typedef enum
     P3D_FIRE_BUFFER = 12,
     P3D_PLAYER_TELEPORT = 13,
     P3D_BOSS_BULLET01 = 14,
+    P3D_BOSS_BULLET01_EXPLOSION = 15,
+    P3D_BOSS_BULLET02 = 16,
+    P3D_BOSS_BULLET02_EXPLOSION = 17,
     P3D_MAX
 }
 P3D_EFFECT_TYPE;
@@ -117,6 +120,7 @@ public:
     cocos2d::Layer* getNPCsLayer() const { return m_pNPCsLayer; }
     cocos2d::Layer* getMonstersLayer() const { return m_pMonstersLayer; }
     cocos2d::Layer* getPickableItemsLayer() const { return m_pPickableItemsLayer; }
+    cocos2d::Layer* getBulletsLayer() const { return m_pBulletsLayer; }
     cocos2d::Layer* get2DLayer() const { return m_p2DLayer; }
     cocos2d::Layer* getHUDLayer() const { return m_pHUDLayer; }
     GameUILayer* getUILayer() const { return m_pUILayer; }
@@ -147,6 +151,7 @@ private:
     cocos2d::Layer*                         m_pNPCsLayer;
     cocos2d::Layer*                         m_pMonstersLayer;
     cocos2d::Layer*                         m_pPickableItemsLayer;
+    cocos2d::Layer*                         m_pBulletsLayer;
     cocos2d::Layer*                         m_p2DLayer;
     cocos2d::Layer*                         m_pHUDLayer;
     GameUILayer*                            m_pUILayer;

@@ -528,7 +528,7 @@ void Player::rotateToBack()
 void Player::attackByMonster(MonsterProperty* monsterProperty, bool miss)
 {
     ///for debug
-    //return;
+    return;
     
     if(!monsterProperty || !m_pHurtData)
         return;
@@ -572,6 +572,8 @@ void Player::attackByMonster(MonsterProperty* monsterProperty, bool miss)
             m_pHurtData->m_bCriticalStrike = true;
             VoxelExplorer::getInstance()->shakeScreen();
             StatisticsManager::getInstance()->addCriticalTotalNum();
+            std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("CRITICALSTRIKE");
+            SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
         }
     }
     
@@ -652,6 +654,8 @@ void Player::attackByBoss(BossProperty* bossProperty, bool miss)
             attack = attack*2.0f;
             m_pHurtData->m_bCriticalStrike = true;
             VoxelExplorer::getInstance()->shakeScreen();
+            std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("CRITICALSTRIKE");
+            SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
         }
     }
     
@@ -736,7 +740,7 @@ void Player::attackByBoss(BossProperty* bossProperty, bool miss)
             }
         }
         // for debug
-        PlayerProperty::getInstance()->setCurrentHP(currentHp);
+        //PlayerProperty::getInstance()->setCurrentHP(currentHp);
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_PROPERTY_DIRTY, this);
     }
 }
@@ -985,6 +989,9 @@ void Player::onLand(bool isAttack)
     {
         VoxelExplorer::getInstance()->addParticle3DEffectToPlayer(P3D_EFFECT_TYPE::P3D_STEALTH_BUFFER, true);
     }
+    
+    ///for debug
+    //VoxelExplorer::getInstance()->addParticle3DEffect(getPosition3D(), P3D_EFFECT_TYPE::P3D_BOSS_BULLET01);
 }
 void Player::onFallDie()
 {

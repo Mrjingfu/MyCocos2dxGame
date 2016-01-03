@@ -62,7 +62,10 @@ const std::string P3D_EFFECT_NAMES[] = {
     "P3DN_WEAK_BUFFER",
     "P3DN_FIRE_BUFFER",
     "P3DN_PLAYER_TELEPORT",
-    "P3DN_BOSS_BULLET01"
+    "P3DN_BOSS_BULLET01",
+    "P3DN_BOSS_BULLET01_EXPLOSION",
+    "P3DN_BOSS_BULLET02",
+    "P3DN_BOSS_BULLET02_EXPLOSION"
 };
 VoxelExplorer* g_pVoxelExplorerInstance = nullptr;
 VoxelExplorer* VoxelExplorer::getInstance()
@@ -88,6 +91,7 @@ VoxelExplorer::VoxelExplorer()
     m_pNPCsLayer         = nullptr;
     m_pMonstersLayer     = nullptr;
     m_pPickableItemsLayer= nullptr;
+    m_pBulletsLayer      = nullptr;
     m_p2DLayer = nullptr;
     m_pHUDLayer = nullptr;
     m_pUILayer = nullptr;
@@ -1383,7 +1387,7 @@ void VoxelExplorer::handlePlayerHurtByBoss(const cocos2d::Vec2& mapPos, BaseBoss
     {
         return m_pPlayer->attackByBoss(boss->getBossProperty(), true);
     }
-    std::string soundName = LevelResourceManager::getInstance()->getMonsterSoundEffectRes(MONSTER_MODEL_NAMES[boss->getBossType()], "ATTACK");
+    std::string soundName = LevelResourceManager::getInstance()->getMonsterSoundEffectRes(BOSS_MODEL_NAMES[boss->getBossType()], "ATTACK");
     SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
     return m_pPlayer->attackByBoss(boss->getBossProperty(), false);
 }
@@ -1733,6 +1737,12 @@ bool VoxelExplorer::createLayers()
     m_pPickableItemsLayer->setCameraMask((unsigned int)CameraFlag::USER1);
     m_pShakeLayer->addChild(m_pPickableItemsLayer);
     
+    m_pBulletsLayer = Layer::create();
+    if(!m_pBulletsLayer)
+        return false;
+    m_pBulletsLayer->setCameraMask((unsigned int)CameraFlag::USER1);
+    m_pShakeLayer->addChild(m_pBulletsLayer);
+    
     m_p2DLayer = Layer::create();
     if(!m_p2DLayer)
         return false;
@@ -1795,12 +1805,12 @@ bool VoxelExplorer::createLevel()
             break;
         case DT_FANE:
             {
-                if(node->isBossDepth())
-                    m_pCurrentLevel = new(std::nothrow) FaneBossLevel();
-                else
-                    m_pCurrentLevel = new(std::nothrow) FaneLevel();
+//                if(node->isBossDepth())
+//                    m_pCurrentLevel = new(std::nothrow) FaneBossLevel();
+//                else
+//                    m_pCurrentLevel = new(std::nothrow) FaneLevel();
                 // for debug
-                //m_pCurrentLevel = new(std::nothrow) FaneBossLevel();
+                m_pCurrentLevel = new(std::nothrow) FaneBossLevel();
             }
             break;
         case DT_MINES:

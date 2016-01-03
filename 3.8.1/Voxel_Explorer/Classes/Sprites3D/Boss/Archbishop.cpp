@@ -13,7 +13,10 @@
 #include "FaneBossLevel.hpp"
 #include "UtilityHelper.h"
 #include "FakeShadow.hpp"
+#include "ArchbishopBullet.hpp"
+#include "SimpleAudioEngine.h"
 USING_NS_CC;
+using namespace CocosDenshion;
 
 Archbishop* Archbishop::create(BaseBoss::BossType type)
 {
@@ -191,8 +194,45 @@ void Archbishop::onEnterDeath()
     FaneBossLevel* level = dynamic_cast<FaneBossLevel*>(VoxelExplorer::getInstance()->getCurrentLevel());
     if(level)
         level->clearBossRoom();
+    
+    std::string soundName = LevelResourceManager::getInstance()->getMonsterSoundEffectRes(BOSS_MODEL_NAMES[m_Type], "DEATH");
+    SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
 }
 bool Archbishop::isPlayerInsideBossRoom()
 {
     return true;
+}
+void Archbishop::handleAttackStyle(const cocos2d::Vec2& playerPos, const cocos2d::Vec3& dir)
+{
+    if(m_nAttackRange == 1)
+    {
+        EaseSineOut* moveUp = EaseSineOut::create(MoveTo::create(0.1f, Vec3(getPositionX(), getPositionY() + TerrainTile::CONTENT_SCALE*0.25f, getPositionZ()) + dir*0.4f));
+        CallFunc* callback = CallFunc::create(CC_CALLBACK_0(VoxelExplorer::handlePlayerHurtByBoss,VoxelExplorer::getInstance(),playerPos, this));
+        EaseSineOut* moveDown = EaseSineOut::create(MoveTo::create(0.1f, getPosition3D()));
+        Sequence* sequenceJump = Sequence::create(moveUp, callback, moveDown, NULL);
+        CallFunc* callback2 = CallFunc::create(CC_CALLBACK_0(Archbishop::onLand,this, false));
+        DelayTime* delay = DelayTime::create(0.8f);
+        Sequence* sequence = Sequence::create(sequenceJump, delay, callback2, NULL);
+        this->runAction(Speed::create(sequence, m_pBossProperty->getFactor().GetFloatValue()));
+    }
+    else
+    {
+        EaseSineOut* moveUp = EaseSineOut::create(MoveTo::create(0.1f, Vec3(getPositionX(), getPositionY() + TerrainTile::CONTENT_SCALE*0.25f, getPositionZ()) + dir*0.4f));
+        EaseSineOut* moveDown = EaseSineOut::create(MoveTo::create(0.1f, getPosition3D()));
+        CallFunc* callback = CallFunc::create(CC_CALLBACK_0(Archbishop::onLand,this, false));
+        DelayTime* delay = DelayTime::create(1.8f);
+        Sequence* sequence = Sequence::create(moveUp, moveDown, delay, callback, NULL);
+        this->runAction(Speed::create(sequence, m_pBossProperty->getFactor().GetFloatValue()));
+        
+        if(VoxelExplorer::getInstance()->getBulletsLayer())
+        {
+            ArchbishopBullet* bullet = ArchbishopBullet::create(this);
+            if(bullet)
+            {
+                bullet->setPosition3D(getPosition3D() + Vec3(0, TerrainTile::CONTENT_SCALE*0.5f, 0));
+                bullet->setBulletState(BaseBullet::BS_NORMAL);
+                VoxelExplorer::getInstance()->getBulletsLayer()->addChild(bullet);
+            }
+        }
+    }
 }
