@@ -58,8 +58,8 @@ void GlobalPromptLayer::refreshUIView()
          }
         if (m_pLabel) {
             cocos2d::MoveTo*  moveTo = cocos2d::MoveTo::create(0.2,moveToPos);
-            cocos2d::DelayTime* delay = cocos2d::DelayTime::create(1.0f);
-            cocos2d::FadeOut* fadeOut = cocos2d::FadeOut::create(0.2);
+            cocos2d::DelayTime* delay = cocos2d::DelayTime::create(1.2f);
+            cocos2d::FadeOut* fadeOut = cocos2d::FadeOut::create(0.5);
             CallFunc* callfunN = CallFunc::create(CC_CALLBACK_0(GlobalPromptLayer::removePrompt, this,m_pLabel));
             m_pLabel->runAction(cocos2d::Sequence::create(moveTo,delay,fadeOut,callfunN,nullptr));
         }
