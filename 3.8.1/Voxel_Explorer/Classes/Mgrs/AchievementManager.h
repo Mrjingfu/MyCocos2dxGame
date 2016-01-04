@@ -10,10 +10,11 @@
 #define AchievementManager_hpp
 #include "AchieveProperty.hpp"
 #include "ChaosNumber.h"
+#include "ArchiveManager.h"
 
+const std::string ARCHIVE_ACHIEVEMENT_KEY = "ARCHIVE_ACHIEVEMENT_KEY";
 
-
-class AchievementManager {
+class AchievementManager:public iArchive {
     
     AchievementManager();
 public:
@@ -30,8 +31,8 @@ public:
     void checkBoxAchievement();
     void checkAchieveUnlock(AchieveProperty* prop);
     void sortAchieves();
-    void load();
-    void save();
+    virtual bool load(const cocos2d::ValueMap& rootNode );
+    virtual void save(cocos2d::ValueMap& rootNode);
    
     const cocos2d::Vector<AchieveProperty*> & getAllAchieves() const{ return m_vAllAchieves;}
     AchieveProperty* getAchievement(eAchievementDetailType type);

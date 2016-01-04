@@ -269,7 +269,7 @@
 	<key>MMN_GNOLL</key>
 	<dict>
 		<key>ALERT</key>
-		<string>gnoll_alert_alert.wav</string>
+		<string>gnoll_alert.wav</string>
 		<key>ATTACK</key>
 		<string>gnoll_attack.wav</string>
 		<key>BEATTACKED</key>

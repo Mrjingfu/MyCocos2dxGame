@@ -96,6 +96,14 @@ void CCCrypto::decryptXOR(char* memptr, int memlen)
 	return xor_decrypt(memptr, memlen);
 }
 
+void CCCrypto::encryptXOR(char* memptr, int memlen,const char* deKey)
+{
+    return xor_encrypt(memptr, memlen,deKey);
+}
+void CCCrypto::decryptXOR(char* memptr, int memlen,const char* deKey)
+{
+    return xor_decrypt(memptr, memlen,deKey);
+}
 
 #if CC_LUA_ENGINE_ENABLED > 0
 

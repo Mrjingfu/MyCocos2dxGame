@@ -20,6 +20,7 @@ public:
     virtual size_t write(const void* buf,size_t const);
     virtual void skip(size_t count);
     virtual void seek(size_t pos);
+    virtual void seekEnd();
     virtual size_t tell(void);
     virtual bool eof(void) const;
     virtual void close(void);

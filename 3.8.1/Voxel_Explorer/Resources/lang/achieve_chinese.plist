@@ -157,7 +157,7 @@
 	<key>ADT_WORLD_RECORD</key>
 	<string>世界纪录保持者</string>
 	<key>ADT_WORLD_RECORD_TARGET</key>
-	<string>5秒钟之内移动超过10步</string>
+	<string>9秒钟之内移动超过30步</string>
 	<key>ADT_THIRTY_NOT_MOVE</key>
 	<string>稳如泰山</string>
 	<key>ADT_THIRTY_NOT_MOVE_TARGET</key>

@@ -1,0 +1,61 @@
+system bubbles
+{
+    technique 
+    {
+        visual_particle_quota                   50
+        emitted_emitter_quota                   10
+        material                                Bubble
+        renderer                                Billboard
+        {
+        }
+        emitter                                 Box 
+        {
+            angle                               10
+            time_to_live                        2
+            velocity                            dyn_random
+            {
+                min                             3
+                max                             10
+            }
+            all_particle_dimensions             dyn_random
+            {
+                min                             0.5
+                max                             2.0
+            }
+            colour                              0.384314 0.976471 0.34902 1
+            box_width                           10
+            box_height                          10
+            box_depth                           10
+        }
+    }
+    technique 
+    {
+        enabled                                 true
+        visual_particle_quota                   50
+        material                                BlurredBubble
+        renderer                                Billboard
+        {
+        }
+        emitter                                 Box
+        {
+            emission_rate                       10
+            angle                               10
+            time_to_live                        3
+            velocity                            dyn_random
+            {
+                min                             1.5
+                max                             6
+            }
+            all_particle_dimensions             dyn_random
+            {
+                min                             0.5
+                max                             2
+            }
+            enabled                             true
+            colour                              0.384314 0.976471 0.34902 1
+            box_width                           12
+            box_height                          12
+            box_depth                           12
+        }
+    }
+}

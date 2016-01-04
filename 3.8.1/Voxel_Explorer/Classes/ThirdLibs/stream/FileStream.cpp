@@ -43,7 +43,10 @@ void FileStream::seek( size_t pos )
 {
     fseek(m_file, static_cast<long>(pos), SEEK_SET);
 }
-
+void FileStream::seekEnd()
+{
+    fseek(m_file, static_cast<long>(0), SEEK_END);
+}
 size_t FileStream::tell(void)
 {
     return ftell(m_file);

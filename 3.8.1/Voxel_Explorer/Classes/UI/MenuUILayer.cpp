@@ -12,7 +12,7 @@
 #include "GameScene.h"
 #include "PopupUILayerManager.h"
 #include "AchievePopupUI.h"
-
+#include "ArchiveManager.h"
 USING_NS_CC;
 
 MenuUILayer::MenuUILayer()
@@ -93,6 +93,7 @@ void MenuUILayer::onClickSetting(cocos2d::Ref *ref)
     CHECK_ACTION(ref);
     clickEffect();
     CCLOG("onTouchSetting");
+    ArchiveManager::getInstance()->loadGame();
 }
 void MenuUILayer::onClickRank(cocos2d::Ref *ref)
 {
@@ -100,6 +101,7 @@ void MenuUILayer::onClickRank(cocos2d::Ref *ref)
     CHECK_ACTION(ref);
     clickEffect();
     CCLOG("onTouchRank");
+    ArchiveManager::getInstance()->saveGame();
 //    PopupUILayerManager::getInstance()->openPopup(ePopupInfo);
 }
 void MenuUILayer::onClickStart(cocos2d::Ref *ref)
@@ -111,8 +113,8 @@ void MenuUILayer::onClickStart(cocos2d::Ref *ref)
     if (startBtn) {
         startBtn->setVisible(false);
         
-        FadeIn* fadeIn = FadeIn::create(2.5);
-        FadeOut* fadeout = FadeOut::create(1.5);
+        FadeIn* fadeIn = FadeIn::create(0.5);
+        FadeOut* fadeout = FadeOut::create(0.3);
         CallFunc* func = CallFunc::create([](){
             
             auto scene = GameScene::createScene();

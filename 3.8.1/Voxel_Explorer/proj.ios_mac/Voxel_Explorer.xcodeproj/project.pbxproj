@@ -249,6 +249,8 @@
 		EC25C3C51C19120D00B4340D /* AlertPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC25C3C21C19120D00B4340D /* AlertPopupUI.cpp */; };
 		EC25C3CA1C1977DF00B4340D /* InformationPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC25C3C81C1977DF00B4340D /* InformationPopupUI.cpp */; };
 		EC25C3CB1C1977DF00B4340D /* InformationPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC25C3C81C1977DF00B4340D /* InformationPopupUI.cpp */; };
+		EC3051B01C3A3C9D00A7A10E /* PlistBinaryUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC3051AE1C3A3C9D00A7A10E /* PlistBinaryUtil.cpp */; };
+		EC3051B11C3A3C9D00A7A10E /* PlistBinaryUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC3051AE1C3A3C9D00A7A10E /* PlistBinaryUtil.cpp */; };
 		EC3CC9711C088F4F00F8CFC8 /* BagLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC3CC93D1C088F4F00F8CFC8 /* BagLayer.cpp */; };
 		EC3CC9721C088F4F00F8CFC8 /* BagLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC3CC93D1C088F4F00F8CFC8 /* BagLayer.cpp */; };
 		EC3CC9731C088F4F00F8CFC8 /* BagMangerLayerUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC3CC93F1C088F4F00F8CFC8 /* BagMangerLayerUI.cpp */; };
@@ -623,6 +625,8 @@
 		EC25C3C31C19120D00B4340D /* AlertPopupUI.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = AlertPopupUI.hpp; sourceTree = "<group>"; };
 		EC25C3C81C1977DF00B4340D /* InformationPopupUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = InformationPopupUI.cpp; sourceTree = "<group>"; };
 		EC25C3C91C1977DF00B4340D /* InformationPopupUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InformationPopupUI.h; sourceTree = "<group>"; };
+		EC3051AE1C3A3C9D00A7A10E /* PlistBinaryUtil.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PlistBinaryUtil.cpp; sourceTree = "<group>"; };
+		EC3051AF1C3A3C9D00A7A10E /* PlistBinaryUtil.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PlistBinaryUtil.hpp; sourceTree = "<group>"; };
 		EC38D0681C1EC7DD00553970 /* AchieveConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AchieveConst.h; sourceTree = "<group>"; };
 		EC3CC93D1C088F4F00F8CFC8 /* BagLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BagLayer.cpp; sourceTree = "<group>"; };
 		EC3CC93E1C088F4F00F8CFC8 /* BagLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BagLayer.h; sourceTree = "<group>"; };
@@ -1390,6 +1394,8 @@
 				EC6715EE1BCE7EE500C81CFC /* GameConfig.h */,
 				55407D5F1BD633590000C41C /* EventConst.h */,
 				EC38D0681C1EC7DD00553970 /* AchieveConst.h */,
+				EC3051AE1C3A3C9D00A7A10E /* PlistBinaryUtil.cpp */,
+				EC3051AF1C3A3C9D00A7A10E /* PlistBinaryUtil.hpp */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -1646,6 +1652,7 @@
 				55E1A5561C16BF21008BEEFD /* BossProperty.cpp in Sources */,
 				ECEA4E1E1C0EC69800ED790F /* ItemShopBuyPopupUI.cpp in Sources */,
 				554F00F61BDA219E00F4DF8E /* PickableItem.cpp in Sources */,
+				EC3051B01C3A3C9D00A7A10E /* PlistBinaryUtil.cpp in Sources */,
 				55F81CD01BDB92CC002EC075 /* PotionsProperty.cpp in Sources */,
 				555B0D171BC51A2C0055FB6D /* Area.cpp in Sources */,
 				EC795F4B1C0D4A4B0083829B /* ShopPopupUI.cpp in Sources */,
@@ -1790,6 +1797,7 @@
 				5586C7B51C0FDD6200DFA588 /* CaveBossLevel.cpp in Sources */,
 				EC795F4A1C0D4A4B0083829B /* WeaponShopPopupUI.cpp in Sources */,
 				EC3DC0C31C157FFE00D0FE47 /* AchieveMangerLayerUI.cpp in Sources */,
+				EC3051B11C3A3C9D00A7A10E /* PlistBinaryUtil.cpp in Sources */,
 				555B0D201BC51A2C0055FB6D /* StandardLevel.cpp in Sources */,
 				ECEA4E1F1C0EC69800ED790F /* ItemShopBuyPopupUI.cpp in Sources */,
 				55F116DD1C04453500A6C191 /* CaveLevel.cpp in Sources */,

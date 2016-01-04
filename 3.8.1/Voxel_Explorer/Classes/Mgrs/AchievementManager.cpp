@@ -26,9 +26,12 @@ AchievementManager* AchievementManager::getInstance()
     static AchievementManager instance;
     return &instance;
 }
-void AchievementManager::load()
+bool AchievementManager::load(const cocos2d::ValueMap& rootNode)
 {
-    cocos2d::Vector<AchieveProperty*> m_vCompleteAchieves;
+    cocos2d::ValueVector m_vCompleteAchieves = rootNode.at(ARCHIVE_ACHIEVEMENT_KEY).asValueVector();
+
+    CCLOG("ARCHIVE_ACHIEVEMENT_KEY:%s",Value(m_vCompleteAchieves).getDescription().c_str());
+    
     //加载存档时 更新全局成就, 过滤掉已完成的成就
     for (auto iter = m_vAllAchieves.begin() ; iter!=m_vAllAchieves.end(); iter++)
     {
@@ -38,17 +41,31 @@ void AchievementManager::load()
             AchieveProperty *prop = (*iter);
             for (int i =0; i< m_vCompleteAchieves.size(); i++)
             {
-                if (prop->getAchieveDetailType() == m_vCompleteAchieves.at(i)->getAchieveDetailType())
+                if (prop->getAchieveDetailType() == (eAchievementDetailType)(m_vCompleteAchieves.at(i).asInt()))
                 {
                     prop->onAcieveCommple();
                 }
             }
         }
     }
+    sortAchieves();
+    return true;
 }
-void AchievementManager::save()
+void AchievementManager::save( cocos2d::ValueMap& rootNode)
 {
-    
+    cocos2d::ValueVector achievementVector;
+    for (auto iter = m_vAllAchieves.begin() ; iter!=m_vAllAchieves.end(); iter++)
+    {
+        
+        if (nullptr !=(*iter))
+        {
+            AchieveProperty *prop = (*iter);
+            if (prop->isCommple()) {
+                achievementVector.push_back(cocos2d::Value(prop->getAchieveDetailType()));
+            }
+        }
+    }
+    rootNode.insert(cocos2d::ValueMap::value_type(ARCHIVE_ACHIEVEMENT_KEY,cocos2d::Value(achievementVector)));
 }
 bool AchievementManager::loadAchieveData()
 {

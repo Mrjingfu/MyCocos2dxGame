@@ -14,12 +14,21 @@
 #include "BaseBoss.hpp"
 #include "AchieveConst.h"
 #include "RandomDungeon.hpp"
-
-const int TIME_NINE = 5;
+#include "ArchiveManager.h"
+const int TIME_NINE = 9;
 const int TIME_THIRTY = 30;
 const std::string SCHEDU_NINE_KEY = "SCHEDU_NINE_KEY";
 const std::string SCHEDU_THIRTY_KEY = "SCHEDU_NINE_KEY";
-class StatisticsManager {
+
+const std::string ARCHIVE_MONSTER_KILL_KEY ="ARCHIVE_MONSTER_KILL_KEY";
+const std::string ARCHIVE_BOSS_KILL_KEY ="ARCHIVE_BOSS_KILL_KEY";
+const std::string ARCHIVE_USEABLEOPEN_KEY ="ARCHIVE_USEABLEOPEN_KEY";
+const std::string ARCHIVE_DEAD_TYPE_KEY ="ARCHIVE_DEAD_TYPE_KEY";
+const std::string ARCHIVE_HIDE_INFO_KEY ="ARCHIVE_HIDE_INFO_KEY";
+const std::string ARCHIVE_DUNGEON_KEY ="ARCHIVE_DUNGEON_KEY";
+const std::string ARCHIVE_STATISTICS = "ARCHIVE_STATISTICS";
+
+class StatisticsManager :public iArchive{
     StatisticsManager();
     
 public:
@@ -43,7 +52,7 @@ public:
     };
     virtual ~StatisticsManager();
     static StatisticsManager* getInstance();
-    
+    void init();
     void addMonsterKillNum(BaseMonster::MonsterType type);
     void addBossKillNum(BaseBoss::BossType type);
     void addHideInfoNum(eHideInfoType type);
@@ -98,8 +107,8 @@ public:
     
     CChaosNumber getDataStatistType(eStatistType type) const;
     
-    void load();
-    void save();
+    virtual bool load(const cocos2d::ValueMap& rootNode) ;
+    virtual void save(cocos2d::ValueMap& rootNode);
 private:
     CChaosNumber getDataMonsterType(eStatistType type) const;
     CChaosNumber getDataTotalType(eStatistType type) const;

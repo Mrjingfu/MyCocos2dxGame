@@ -1427,7 +1427,7 @@ void VoxelExplorer::handlePlayerUseScroll(PickableItem::PickableItemType type)
             break;
         case PickableItem::PickableItemType::PIT_SCROLL_DESTINY:
             {
-                DestinyScrollType randType = cocos2d::random(DST_ADDMONEY, DST_WEAK);
+                DestinyScrollType randType = (DestinyScrollType)cocos2d::random((int)DST_ADDMONEY, (int)DST_WEAK);
                 switch (randType) {
                     case DST_ADDMONEY:
                         {

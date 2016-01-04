@@ -12,6 +12,19 @@
 #include "VoxelExplorer.h"
 StatisticsManager::StatisticsManager()
 {
+    init();
+}
+StatisticsManager::~StatisticsManager()
+{
+    
+}
+StatisticsManager* StatisticsManager::getInstance()
+{
+    static StatisticsManager instance;
+    return &instance;
+}
+void StatisticsManager::init()
+{
     m_nCopperTotalNum           =0;         //铜币收集总数
     m_nStepNum                  =0;         //步数
     m_nMonsterKillTotalNum      =0;         //杀死敌人总数
@@ -40,7 +53,7 @@ StatisticsManager::StatisticsManager()
     m_nExploreAllAreaNum        =0;         //当前区域全部探索完成
     m_nFoundHideDoorTrapNum     =0;         //发现隐藏门和陷阱
     m_nSearchNum                =0;         //搜索
-
+    
     m_nBoxNum                   =0;         //开启宝箱
     m_nMeetThiefNum             =0;         //遇见盗贼
     m_nMeetHagNum               =0;         //魔女
@@ -58,7 +71,7 @@ StatisticsManager::StatisticsManager()
     m_nSpeedUpNum               =0;         //加速
     m_nStrongNum                =0;         //强壮
     
-
+    
     m_nNineTime                 =0;
     m_nThirtyTime               =0;
     m_nNineStepRecord           =0;
@@ -73,12 +86,12 @@ StatisticsManager::StatisticsManager()
     for (int i = BaseBoss::BT_UNKNOWN; i<BaseBoss::BT_MAX; i++) {
         m_mBossKills[i]=0;
     }
-   
+    
     //初始化可以打破的道具
     for (int i= UseableItem::UIT_CHEST_NO_LOCK_COPPER; i<UseableItem::UIT_UNKNOWN; i++) {
         m_mUserableOpenNums[i] = 0;;
     }
-     //初始化死亡类型
+    //初始化死亡类型
     for (int i= eRoleDeadType::RET_MONSTER_ATTACK; i<eRoleDeadType::RET_MAX; i++) {
         m_mDeadTypeNums[i]=0;
     }
@@ -90,16 +103,6 @@ StatisticsManager::StatisticsManager()
     for (int i = DUNGEON_TYPE::DT_UNKNOWN; i<DT_MAX; i++) {
         m_mArriveDungeon[i] = 0;
     }
-   
-}
-StatisticsManager::~StatisticsManager()
-{
-    
-}
-StatisticsManager* StatisticsManager::getInstance()
-{
-    static StatisticsManager instance;
-    return &instance;
 }
 
 void StatisticsManager::addMonsterKillNum(BaseMonster::MonsterType type)
@@ -252,7 +255,7 @@ void StatisticsManager::addNineStepTenNum()
                 ++m_nNineTime;
                 if (m_nNineTime >=TIME_NINE )
                 {
-                    if (m_nStepNum - m_nNineStepRecord> 10)
+                    if (m_nStepNum - m_nNineStepRecord> 30)
                     {
                         m_nNineStepTenNum = 1;
                         cocos2d::Director::getInstance()->getScheduler()->unschedule(SCHEDU_NINE_KEY, this);
@@ -419,13 +422,174 @@ void StatisticsManager::resumeSchedu()
      cocos2d::Director::getInstance()->getScheduler()->resumeTarget(this);
 }
 
-void StatisticsManager::load()
+bool StatisticsManager::load(const cocos2d::ValueMap& rootNode )
 {
+    init();
+    cocos2d::ValueMap statistValueMap = rootNode.at(ARCHIVE_STATISTICS).asValueMap();
+    if (statistValueMap.empty()) {
+        return false;
+    }
     
+    CCLOG("statistValueMap:%s",cocos2d::Value(statistValueMap).getDescription().c_str());
+    cocos2d::ValueMap monsterKillsMap = statistValueMap.at(ARCHIVE_MONSTER_KILL_KEY).asValueMap();
+    for (int i = BaseMonster::MT_UNKNOWN; i<BaseMonster::MT_MAX; i++) {
+        m_mMonsterKills[i] = monsterKillsMap.at(cocos2d::Value(i).asString()).asInt();
+    }
+    cocos2d::ValueMap bossKillsMap = statistValueMap.at(ARCHIVE_BOSS_KILL_KEY).asValueMap();
+    for (int i = BaseBoss::BT_UNKNOWN; i<BaseBoss::BT_MAX; i++) {
+        m_mBossKills[i] = bossKillsMap.at(cocos2d::Value(i).asString()).asInt();
+    }
+    cocos2d::ValueMap userableOpenMap = statistValueMap.at(ARCHIVE_USEABLEOPEN_KEY).asValueMap();
+    for (int i= UseableItem::UIT_CHEST_NO_LOCK_COPPER; i<UseableItem::UIT_UNKNOWN; i++) {
+        m_mUserableOpenNums[i] = userableOpenMap.at(cocos2d::Value(i).asString()).asInt();
+    }
+
+    cocos2d::ValueMap deadTypeMap = statistValueMap.at(ARCHIVE_DEAD_TYPE_KEY).asValueMap();
+    for (int i= eRoleDeadType::RET_MONSTER_ATTACK; i<eRoleDeadType::RET_MAX; i++) {
+        m_mDeadTypeNums[i] = deadTypeMap.at(cocos2d::Value(i).asString()).asInt();
+    }
+    cocos2d::ValueMap hideInfoTypeMap = statistValueMap.at(ARCHIVE_HIDE_INFO_KEY).asValueMap();
+    for (int i= eHideInfoType::HIT_MSG; i<eHideInfoType::HIT_MAX; i++) {
+        m_mHideInfoTypeNums[i] = hideInfoTypeMap.at(cocos2d::Value(i).asString()).asInt();
+    }
+    cocos2d::ValueMap arriveDungeonMap = statistValueMap.at(ARCHIVE_DUNGEON_KEY).asValueMap();
+    for (int i = DUNGEON_TYPE::DT_UNKNOWN; i<DT_MAX; i++) {
+        m_mArriveDungeon[i] = arriveDungeonMap.at(cocos2d::Value(i).asString()).asInt();
+    }
+    
+    m_nCopperTotalNum = statistValueMap.at(STATIST_TYPE_NAME[ST_TOTAL_COPPER]).asInt();
+    m_nStepNum = statistValueMap.at(STATIST_TYPE_NAME[ST_TOTAL_STEP]).asInt();
+    m_nMonsterKillTotalNum = statistValueMap.at(STATIST_TYPE_NAME[ST_TOTAL_MONSTER_KILL]).asInt();
+    m_nUseKeyTotalNum = statistValueMap.at(STATIST_TYPE_NAME[ST_TOTAL_USE_KEY]).asInt();
+    m_nCriticalTotalNum = statistValueMap.at(STATIST_TYPE_NAME[ST_TOTAL_CRITICAL]).asInt();
+    m_nDodgeTotalNum = statistValueMap.at(STATIST_TYPE_NAME[ST_TOTAL_DODGE]).asInt();
+    m_nBlockTotalNum = statistValueMap.at(STATIST_TYPE_NAME[ST_TOTAL_BLOCK]).asInt();
+    m_nRoleDeadTotalNum = statistValueMap.at(STATIST_TYPE_NAME[ST_TOTAL_ROLE_DEAD]).asInt();
+    m_nChestCopperTotalNum = statistValueMap.at(STATIST_TYPE_NAME[ST_TOTAL_CHEST_COPPER]).asInt();
+    m_nChestSilverTotalNum = statistValueMap.at(STATIST_TYPE_NAME[ST_TOTAL_CHEST_SILVER]).asInt();
+    m_nChestGoldTotalNum = statistValueMap.at(STATIST_TYPE_NAME[ST_TOTAL_CHEST_GOLD]).asInt();
+    m_nJarTotalNum = statistValueMap.at(STATIST_TYPE_NAME[ST_TOTAL_JAR]).asInt();
+    m_nRoleLevelNum = statistValueMap.at(STATIST_TYPE_NAME[ST_TOTAL_ROLE_LEVEL]).asInt();
+    m_nMonsterEliteKillNum = statistValueMap.at(STATIST_TYPE_NAME[ST_TOTAL_ELITE_MONSTER]).asInt();
+    m_nIdentifyNum = statistValueMap.at(STATIST_TYPE_NAME[ST_TOTAL_IDENTIFY]).asInt();
+    m_nIdentifyAttrNum = statistValueMap.at(STATIST_TYPE_NAME[ST_TOTAL_IDENTIFY_BEOW_TOW]).asInt();
+    m_nIdentifyLegend = statistValueMap.at(STATIST_TYPE_NAME[ST_TOTAL_IDENTIFY_QUALITY]).asInt();
+    //
+    m_nBagFullNum = statistValueMap.at(STATIST_TYPE_NAME[ST_TOTAL_BAG_FULL]).asInt();
+    m_nDiscardItemNum = statistValueMap.at(STATIST_TYPE_NAME[ST_TOTAL_DISCARD_ITEM]).asInt();
+    m_nDiscardEquipNum = statistValueMap.at(STATIST_TYPE_NAME[ST_TOTAL_DISCARD_EQUIP]).asInt();
+    m_nPickItemNum = statistValueMap.at(STATIST_TYPE_NAME[ST_TOTAL_PICK_ITEM]).asInt();
+    m_nPickMagicItemNum = statistValueMap.at(STATIST_TYPE_NAME[ST_TOTAL_PICK_NOT_MARIC]).asInt();
+    m_nNineStepTenNum = statistValueMap.at(STATIST_TYPE_NAME[ST_TOTAL_NINE_STEP]).asInt();
+    m_nThirtyNotMoveNum = statistValueMap.at(STATIST_TYPE_NAME[ST_TOTAL_THIRTY_NOT_MOVE]).asInt();
+    m_nExploreAllAreaNum = statistValueMap.at(STATIST_TYPE_NAME[ST_TOTAL_EXPLORE_ALL_AREA]).asInt();
+    m_nFoundHideDoorTrapNum = statistValueMap.at(STATIST_TYPE_NAME[ST_TOTAL_FOUND_DOOR_TRAP]).asInt();
+    m_nSearchNum = statistValueMap.at(STATIST_TYPE_NAME[ST_TOTAL_SEARCH]).asInt();
+    
+    m_nBoxNum = statistValueMap.at(STATIST_TYPE_NAME[ST_TOTAL_CHEST_BOX]).asInt();
+    m_nMeetThiefNum = statistValueMap.at(STATIST_TYPE_NAME[ST_TOTAL_MEET_THIEF]).asInt();
+    m_nMeetHagNum = statistValueMap.at(STATIST_TYPE_NAME[ST_TOTAL_MEET_HAG]).asInt();
+    m_nMeetSageNum = statistValueMap.at(STATIST_TYPE_NAME[ST_TOTAL_MEET_SAGE]).asInt();
+    m_nNurseTreatNum = statistValueMap.at(STATIST_TYPE_NAME[ST_TOTAL_NURSE_TREAT]).asInt();
+    m_nBuyEquipNum = statistValueMap.at(STATIST_TYPE_NAME[ST_TOTAL_BUY_EQUIP]).asInt();
+    m_nBuyPotionScrollNum = statistValueMap.at(STATIST_TYPE_NAME[ST_TOTAL_BUY_POTION_SCROLL]).asInt();
+    m_nBuyMagicOramNum = statistValueMap.at(STATIST_TYPE_NAME[ST_TOTAL_BUY_MARICORAM]).asInt();
+    //
+    //
+    m_nStealthNum = statistValueMap.at(STATIST_TYPE_NAME[ST_TOTAL_STEALTH]).asInt();
+    m_nNotFailDeadNum = statistValueMap.at(STATIST_TYPE_NAME[ST_TOTAL_NOT_FAIL_DEAD]).asInt();
+    m_nWeakRecoverNum = statistValueMap.at(STATIST_TYPE_NAME[ST_TOTAL_WEAK_RECOVER]).asInt();
+    m_nPoisonRecoverNum = statistValueMap.at(STATIST_TYPE_NAME[ST_TOTAL_POISON_RECOVER]).asInt();
+    m_nSpeedUpNum = statistValueMap.at(STATIST_TYPE_NAME[ST_TOTAL_SPEED_UP]).asInt();
+    m_nStrongNum = statistValueMap.at(STATIST_TYPE_NAME[ST_TOTAL_STRONG]).asInt();
+    
+    return true;
 }
-void StatisticsManager::save()
+void StatisticsManager::save(cocos2d::ValueMap& rootNode )
 {
     
+    cocos2d::ValueMap statistValueMap;
+    cocos2d::ValueMap monsterKillsMap;
+    cocos2d::ValueMap bossKillsMap;
+    cocos2d::ValueMap userableOpenMap;
+    cocos2d::ValueMap deadTypeMap;
+    cocos2d::ValueMap hideInfoTypeMap;
+    cocos2d::ValueMap arriveDungeonMap;
+    for (int i = BaseMonster::MT_UNKNOWN; i<BaseMonster::MT_MAX; i++) {
+        monsterKillsMap.insert(cocos2d::ValueMap::value_type(cocos2d::Value(i).asString(),cocos2d::Value(int(m_mMonsterKills[i]))));
+    }
+    statistValueMap.insert(cocos2d::ValueMap::value_type(ARCHIVE_MONSTER_KILL_KEY,cocos2d::Value(monsterKillsMap)));
+    
+    for (int i = BaseBoss::BT_UNKNOWN; i<BaseBoss::BT_MAX; i++) {
+        bossKillsMap.insert(cocos2d::ValueMap::value_type(cocos2d::Value(i).asString(),cocos2d::Value(int(m_mBossKills[i]))));
+    }
+    statistValueMap.insert(cocos2d::ValueMap::value_type(ARCHIVE_BOSS_KILL_KEY,cocos2d::Value(bossKillsMap)));
+    
+    for (int i= UseableItem::UIT_CHEST_NO_LOCK_COPPER; i<UseableItem::UIT_UNKNOWN; i++) {
+        userableOpenMap.insert(cocos2d::ValueMap::value_type(cocos2d::Value(i).asString(),cocos2d::Value(int(m_mUserableOpenNums[i]))));
+    }
+    statistValueMap.insert(cocos2d::ValueMap::value_type(ARCHIVE_USEABLEOPEN_KEY,cocos2d::Value(userableOpenMap)));
+    
+    for (int i= eRoleDeadType::RET_MONSTER_ATTACK; i<eRoleDeadType::RET_MAX; i++) {
+        deadTypeMap.insert(cocos2d::ValueMap::value_type(cocos2d::Value(i).asString(),cocos2d::Value(int(m_mDeadTypeNums[i]))));
+    }
+    statistValueMap.insert(cocos2d::ValueMap::value_type(ARCHIVE_DEAD_TYPE_KEY,cocos2d::Value(deadTypeMap)));
+    
+    for (int i= eHideInfoType::HIT_MSG; i<eHideInfoType::HIT_MAX; i++) {
+        hideInfoTypeMap.insert(cocos2d::ValueMap::value_type(cocos2d::Value(i).asString(),cocos2d::Value(int(m_mHideInfoTypeNums[i]))));
+    }
+    statistValueMap.insert(cocos2d::ValueMap::value_type(ARCHIVE_HIDE_INFO_KEY,cocos2d::Value(hideInfoTypeMap)));
+    
+    for (int i = DUNGEON_TYPE::DT_UNKNOWN; i<DT_MAX; i++) {
+        arriveDungeonMap.insert(cocos2d::ValueMap::value_type(cocos2d::Value(i).asString(),cocos2d::Value(int(m_mArriveDungeon[i]))));
+    }
+    statistValueMap.insert(cocos2d::ValueMap::value_type(ARCHIVE_DUNGEON_KEY,cocos2d::Value(arriveDungeonMap)));
+    
+    statistValueMap.insert(cocos2d::ValueMap::value_type(STATIST_TYPE_NAME[ST_TOTAL_COPPER],cocos2d::Value(int(m_nCopperTotalNum))));
+    statistValueMap.insert(cocos2d::ValueMap::value_type(STATIST_TYPE_NAME[ST_TOTAL_STEP],cocos2d::Value(int(m_nStepNum))));
+    statistValueMap.insert(cocos2d::ValueMap::value_type(STATIST_TYPE_NAME[ST_TOTAL_MONSTER_KILL],cocos2d::Value(int(m_nMonsterKillTotalNum))));
+    statistValueMap.insert(cocos2d::ValueMap::value_type(STATIST_TYPE_NAME[ST_TOTAL_USE_KEY],cocos2d::Value(int(m_nUseKeyTotalNum))));
+    statistValueMap.insert(cocos2d::ValueMap::value_type(STATIST_TYPE_NAME[ST_TOTAL_CRITICAL],cocos2d::Value(int(m_nCriticalTotalNum))));
+    statistValueMap.insert(cocos2d::ValueMap::value_type(STATIST_TYPE_NAME[ST_TOTAL_DODGE],cocos2d::Value(int(m_nDodgeTotalNum))));
+    statistValueMap.insert(cocos2d::ValueMap::value_type(STATIST_TYPE_NAME[ST_TOTAL_BLOCK],cocos2d::Value(int(m_nBlockTotalNum))));
+    statistValueMap.insert(cocos2d::ValueMap::value_type(STATIST_TYPE_NAME[ST_TOTAL_ROLE_DEAD],cocos2d::Value(int(m_nRoleDeadTotalNum))));
+    statistValueMap.insert(cocos2d::ValueMap::value_type(STATIST_TYPE_NAME[ST_TOTAL_CHEST_COPPER],cocos2d::Value(int(m_nChestCopperTotalNum))));
+    statistValueMap.insert(cocos2d::ValueMap::value_type(STATIST_TYPE_NAME[ST_TOTAL_CHEST_SILVER],cocos2d::Value(int(m_nChestSilverTotalNum))));
+    statistValueMap.insert(cocos2d::ValueMap::value_type(STATIST_TYPE_NAME[ST_TOTAL_CHEST_GOLD],cocos2d::Value(int(m_nChestGoldTotalNum))));
+    statistValueMap.insert(cocos2d::ValueMap::value_type(STATIST_TYPE_NAME[ST_TOTAL_JAR],cocos2d::Value(int(m_nJarTotalNum))));
+    statistValueMap.insert(cocos2d::ValueMap::value_type(STATIST_TYPE_NAME[ST_TOTAL_ROLE_LEVEL],cocos2d::Value(int(m_nRoleLevelNum))));
+    statistValueMap.insert(cocos2d::ValueMap::value_type(STATIST_TYPE_NAME[ST_TOTAL_ELITE_MONSTER],cocos2d::Value(int(m_nMonsterEliteKillNum))));
+    statistValueMap.insert(cocos2d::ValueMap::value_type(STATIST_TYPE_NAME[ST_TOTAL_IDENTIFY],cocos2d::Value(int(m_nIdentifyNum))));
+    statistValueMap.insert(cocos2d::ValueMap::value_type(STATIST_TYPE_NAME[ST_TOTAL_IDENTIFY_BEOW_TOW],cocos2d::Value(int(m_nIdentifyAttrNum))));
+    statistValueMap.insert(cocos2d::ValueMap::value_type(STATIST_TYPE_NAME[ST_TOTAL_IDENTIFY_QUALITY],cocos2d::Value(int(m_nIdentifyLegend))));
+    //ST_TOTAL_BAG_EXTEND
+    statistValueMap.insert(cocos2d::ValueMap::value_type(STATIST_TYPE_NAME[ST_TOTAL_BAG_FULL],cocos2d::Value(int(m_nBagFullNum))));
+    statistValueMap.insert(cocos2d::ValueMap::value_type(STATIST_TYPE_NAME[ST_TOTAL_DISCARD_ITEM],cocos2d::Value(int(m_nDiscardItemNum))));
+    statistValueMap.insert(cocos2d::ValueMap::value_type(STATIST_TYPE_NAME[ST_TOTAL_DISCARD_EQUIP],cocos2d::Value(int(m_nDiscardEquipNum))));
+    statistValueMap.insert(cocos2d::ValueMap::value_type(STATIST_TYPE_NAME[ST_TOTAL_PICK_ITEM],cocos2d::Value(int(m_nPickItemNum))));
+    statistValueMap.insert(cocos2d::ValueMap::value_type(STATIST_TYPE_NAME[ST_TOTAL_PICK_NOT_MARIC],cocos2d::Value(int(m_nPickMagicItemNum))));
+    statistValueMap.insert(cocos2d::ValueMap::value_type(STATIST_TYPE_NAME[ST_TOTAL_NINE_STEP],cocos2d::Value(int(m_nNineStepTenNum))));
+    statistValueMap.insert(cocos2d::ValueMap::value_type(STATIST_TYPE_NAME[ST_TOTAL_THIRTY_NOT_MOVE],cocos2d::Value(int(m_nThirtyNotMoveNum))));
+    statistValueMap.insert(cocos2d::ValueMap::value_type(STATIST_TYPE_NAME[ST_TOTAL_EXPLORE_ALL_AREA],cocos2d::Value(int(m_nExploreAllAreaNum))));
+    statistValueMap.insert(cocos2d::ValueMap::value_type(STATIST_TYPE_NAME[ST_TOTAL_FOUND_DOOR_TRAP],cocos2d::Value(int(m_nFoundHideDoorTrapNum))));
+    statistValueMap.insert(cocos2d::ValueMap::value_type(STATIST_TYPE_NAME[ST_TOTAL_SEARCH],cocos2d::Value(int(m_nSearchNum))));
+    statistValueMap.insert(cocos2d::ValueMap::value_type(STATIST_TYPE_NAME[ST_TOTAL_CHEST_BOX],cocos2d::Value(int(m_nBoxNum))));
+    statistValueMap.insert(cocos2d::ValueMap::value_type(STATIST_TYPE_NAME[ST_TOTAL_MEET_THIEF],cocos2d::Value(int(m_nMeetThiefNum))));
+    statistValueMap.insert(cocos2d::ValueMap::value_type(STATIST_TYPE_NAME[ST_TOTAL_MEET_HAG],cocos2d::Value(int(m_nMeetHagNum))));
+    statistValueMap.insert(cocos2d::ValueMap::value_type(STATIST_TYPE_NAME[ST_TOTAL_MEET_SAGE],cocos2d::Value(int(m_nMeetSageNum))));
+    statistValueMap.insert(cocos2d::ValueMap::value_type(STATIST_TYPE_NAME[ST_TOTAL_NURSE_TREAT],cocos2d::Value(int(m_nNurseTreatNum))));
+    statistValueMap.insert(cocos2d::ValueMap::value_type(STATIST_TYPE_NAME[ST_TOTAL_BUY_EQUIP],cocos2d::Value(int(m_nBuyEquipNum))));
+    statistValueMap.insert(cocos2d::ValueMap::value_type(STATIST_TYPE_NAME[ST_TOTAL_BUY_POTION_SCROLL],cocos2d::Value(int(m_nBuyPotionScrollNum))));
+    statistValueMap.insert(cocos2d::ValueMap::value_type(STATIST_TYPE_NAME[ST_TOTAL_BUY_MARICORAM],cocos2d::Value(int(m_nBuyMagicOramNum))));
+    //ST_TOTAL_ROLE_HP
+    //ST_TOTAL_ROLE_MAX_ATTACK
+    statistValueMap.insert(cocos2d::ValueMap::value_type(STATIST_TYPE_NAME[ST_TOTAL_STEALTH],cocos2d::Value(int(m_nStealthNum))));
+    statistValueMap.insert(cocos2d::ValueMap::value_type(STATIST_TYPE_NAME[ST_TOTAL_NOT_FAIL_DEAD],cocos2d::Value(int(m_nNotFailDeadNum))));
+    statistValueMap.insert(cocos2d::ValueMap::value_type(STATIST_TYPE_NAME[ST_TOTAL_WEAK_RECOVER],cocos2d::Value(int(m_nWeakRecoverNum))));
+    statistValueMap.insert(cocos2d::ValueMap::value_type(STATIST_TYPE_NAME[ST_TOTAL_POISON_RECOVER],cocos2d::Value(int(m_nPoisonRecoverNum))));
+    statistValueMap.insert(cocos2d::ValueMap::value_type(STATIST_TYPE_NAME[ST_TOTAL_SPEED_UP],cocos2d::Value(int(m_nSpeedUpNum))));
+    statistValueMap.insert(cocos2d::ValueMap::value_type(STATIST_TYPE_NAME[ST_TOTAL_STRONG],cocos2d::Value(int(m_nStrongNum))));
+    rootNode.insert(cocos2d::ValueMap::value_type(ARCHIVE_STATISTICS,cocos2d::Value(statistValueMap)));
 }
 CChaosNumber StatisticsManager::getDataStatistType(eStatistType type) const
 {
