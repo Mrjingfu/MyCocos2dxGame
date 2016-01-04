@@ -39,6 +39,7 @@ bool AchievementManager::load(const cocos2d::ValueMap& rootNode)
         if (nullptr !=(*iter))
         {
             AchieveProperty *prop = (*iter);
+            checkAchieveUnlock(prop);
             for (int i =0; i< m_vCompleteAchieves.size(); i++)
             {
                 if (prop->getAchieveDetailType() == (eAchievementDetailType)(m_vCompleteAchieves.at(i).asInt()))
@@ -48,6 +49,7 @@ bool AchievementManager::load(const cocos2d::ValueMap& rootNode)
             }
         }
     }
+    
     sortAchieves();
     return true;
 }

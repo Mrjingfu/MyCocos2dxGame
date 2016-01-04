@@ -31,12 +31,14 @@ Scene* GameScene::createScene()
 void GameScene::onEnter()
 {
     Layer::onEnter();
+    StatisticsManager::getInstance()->resumeSchedu();
     PopupUILayerManager::getInstance()->setParentLayer(this);
 }
 void GameScene::onExit()
 {
     PopupUILayerManager::getInstance()->onExitScene();
     VoxelExplorer::getInstance()->destroy();
+    StatisticsManager::getInstance()->pauseSchedu();
     Layer::onExit();
 }
 void GameScene::update(float delta)
