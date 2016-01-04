@@ -527,9 +527,6 @@ void Player::rotateToBack()
 }
 void Player::attackByMonster(MonsterProperty* monsterProperty, bool miss)
 {
-    ///for debug
-    return;
-    
     if(!monsterProperty || !m_pHurtData)
         return;
     
@@ -612,9 +609,6 @@ void Player::attackByMonster(MonsterProperty* monsterProperty, bool miss)
 }
 void Player::attackByBoss(BossProperty* bossProperty, bool miss)
 {
-    //for debug
-    //return;
-    
     if(!bossProperty || !m_pHurtData)
         return;
     
@@ -739,8 +733,7 @@ void Player::attackByBoss(BossProperty* bossProperty, bool miss)
 
             }
         }
-        // for debug
-        //PlayerProperty::getInstance()->setCurrentHP(currentHp);
+        PlayerProperty::getInstance()->setCurrentHP(currentHp);
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_PROPERTY_DIRTY, this);
     }
 }
@@ -966,8 +959,8 @@ void Player::onLand(bool isAttack)
     VoxelExplorer::getInstance()->checkUpdateFogOfWar();
     VoxelExplorer::getInstance()->checkTriggerTrap();
     VoxelExplorer::getInstance()->updateMiniMap();
-    //for debug
-    //if(RandomDungeon::getInstance()->getCurrentDungeonNode()->isBossDepth())
+    
+    if(RandomDungeon::getInstance()->getCurrentDungeonNode()->isBossDepth())
         VoxelExplorer::getInstance()->updateBossRoomDoor();
     
     CCLOG("player lastPos x = %d   y = %d", (int)m_LastPosInMap.x, (int)m_LastPosInMap.y);
@@ -989,9 +982,6 @@ void Player::onLand(bool isAttack)
     {
         VoxelExplorer::getInstance()->addParticle3DEffectToPlayer(P3D_EFFECT_TYPE::P3D_STEALTH_BUFFER, true);
     }
-    
-    ///for debug
-    //VoxelExplorer::getInstance()->addParticle3DEffect(getPosition3D(), P3D_EFFECT_TYPE::P3D_BOSS_BULLET01);
 }
 void Player::onFallDie()
 {

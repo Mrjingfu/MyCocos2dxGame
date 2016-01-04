@@ -315,7 +315,6 @@ std::string VoxelExplorer::getScreenPickDesc(const cocos2d::Vec2& screenPos, std
                         }
                         else
                         {
-                            //wait by lichuang
                             float percent1 = 0.01f;
                             float percent2 = 1.0f - percent1;
                             bool found = false;
@@ -1789,8 +1788,6 @@ bool VoxelExplorer::createLevel()
                     m_pCurrentLevel = new(std::nothrow) SewerBossLevel();
                 else
                     m_pCurrentLevel = new(std::nothrow) SewerLevel();
-                ///for debug
-                //m_pCurrentLevel = new(std::nothrow) SewerBossLevel();
             }
             break;
         case DT_PRISON:
@@ -1799,28 +1796,22 @@ bool VoxelExplorer::createLevel()
                     m_pCurrentLevel = new(std::nothrow) PrisonBossLevel();
                 else
                     m_pCurrentLevel = new(std::nothrow) PrisonLevel();
-                ///for debug
-                //m_pCurrentLevel = new(std::nothrow) PrisonBossLevel();
             }
             break;
         case DT_FANE:
             {
-//                if(node->isBossDepth())
-//                    m_pCurrentLevel = new(std::nothrow) FaneBossLevel();
-//                else
-//                    m_pCurrentLevel = new(std::nothrow) FaneLevel();
-                // for debug
-                m_pCurrentLevel = new(std::nothrow) FaneBossLevel();
+                if(node->isBossDepth())
+                    m_pCurrentLevel = new(std::nothrow) FaneBossLevel();
+                else
+                    m_pCurrentLevel = new(std::nothrow) FaneLevel();
             }
             break;
         case DT_MINES:
             {
-//                if(node->isBossDepth())
-//                    m_pCurrentLevel = new(std::nothrow) MineBossLevel();
-//                else
-//                    m_pCurrentLevel = new(std::nothrow) MineLevel();
-                //for debug
-                m_pCurrentLevel = new(std::nothrow) MineBossLevel();
+                if(node->isBossDepth())
+                    m_pCurrentLevel = new(std::nothrow) MineBossLevel();
+                else
+                    m_pCurrentLevel = new(std::nothrow) MineLevel();
             }
             break;
         case DT_CAVE:
@@ -1829,8 +1820,6 @@ bool VoxelExplorer::createLevel()
                     m_pCurrentLevel = new(std::nothrow) CaveBossLevel();
                 else
                     m_pCurrentLevel = new(std::nothrow) CaveLevel();
-                // for debug
-                //m_pCurrentLevel = new(std::nothrow) CaveBossLevel();
             }
             break;
         case DT_TOMB:
@@ -1839,8 +1828,6 @@ bool VoxelExplorer::createLevel()
                     m_pCurrentLevel = new(std::nothrow) TombBossLevel();
                 else
                     m_pCurrentLevel = new(std::nothrow) TombLevel();
-                ///for debug
-                //m_pCurrentLevel = new(std::nothrow) TombBossLevel();
             }
             break;
         case DT_DWARF_CASTLE:

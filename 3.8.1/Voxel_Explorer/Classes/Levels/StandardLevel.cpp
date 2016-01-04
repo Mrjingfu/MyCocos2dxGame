@@ -911,7 +911,6 @@ void StandardLevel::showMap(bool show)
                 int index = i*m_nWidth+j;
                 TileInfo info = m_Map[index];
                 
-                //for debug
                 if(!info.m_bVisited)
                     continue;
 

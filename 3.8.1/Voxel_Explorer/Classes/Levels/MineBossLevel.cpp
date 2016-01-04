@@ -142,9 +142,6 @@ bool MineBossLevel::createMonsters()
         return false;
     }
     
-    ///for debug
-    //return true;
-    
     int monsterNum = 10;
     for (int i=0; i < monsterNum; i++) {
         StandardMonster* monster = StandardMonster::create(BaseMonster::MT_KOBOLD);
