@@ -13,7 +13,9 @@
 #include "TombBossLevel.hpp"
 #include "FakeShadow.hpp"
 #include "UtilityHelper.h"
+#include "SimpleAudioEngine.h"
 USING_NS_CC;
+using namespace CocosDenshion;
 
 SkeletonKing* SkeletonKing::create(BaseBoss::BossType type)
 {
@@ -234,6 +236,9 @@ void SkeletonKing::onEnterDeath()
     TombBossLevel* level = dynamic_cast<TombBossLevel*>(VoxelExplorer::getInstance()->getCurrentLevel());
     if(level)
         level->clearBossRoom();
+    
+    std::string soundName = LevelResourceManager::getInstance()->getMonsterSoundEffectRes(BOSS_MODEL_NAMES[m_Type], "DEATH");
+    SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
 }
 
 bool SkeletonKing::isPlayerInsideBossRoom()

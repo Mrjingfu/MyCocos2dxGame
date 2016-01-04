@@ -32,5 +32,11 @@
 	<string>teleport.pu</string>
 	<key>P3DN_BOSS_BULLET01</key>
 	<string>bullet01.pu</string>
+	<key>P3DN_BOSS_BULLET01_EXPLOSION</key>
+	<string>atomicity.pu</string>
+	<key>P3DN_BOSS_BULLET02</key>
+	<string>bullet02.pu</string>
+	<key>P3DN_BOSS_BULLET02_EXPLOSION</key>
+	<string>explosion.pu</string>
 </dict>
 </plist>

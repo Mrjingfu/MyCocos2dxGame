@@ -25,6 +25,8 @@ public:
     virtual void onEnterDeath();
     
     virtual bool isPlayerInsideBossRoom();
+    
+    virtual void handleAttackStyle(const cocos2d::Vec2& playerPos, const cocos2d::Vec3& dir);
 private:
     float           m_fSkill3Timer;
     bool            m_bInSkill3Stage;

@@ -527,9 +527,6 @@ void Player::rotateToBack()
 }
 void Player::attackByMonster(MonsterProperty* monsterProperty, bool miss)
 {
-    ///for debug
-    //return;
-    
     if(!monsterProperty || !m_pHurtData)
         return;
     
@@ -572,6 +569,8 @@ void Player::attackByMonster(MonsterProperty* monsterProperty, bool miss)
             m_pHurtData->m_bCriticalStrike = true;
             VoxelExplorer::getInstance()->shakeScreen();
             StatisticsManager::getInstance()->addCriticalTotalNum();
+            std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("CRITICALSTRIKE");
+            SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
         }
     }
     
@@ -610,9 +609,6 @@ void Player::attackByMonster(MonsterProperty* monsterProperty, bool miss)
 }
 void Player::attackByBoss(BossProperty* bossProperty, bool miss)
 {
-    //for debug
-    //return;
-    
     if(!bossProperty || !m_pHurtData)
         return;
     
@@ -652,6 +648,8 @@ void Player::attackByBoss(BossProperty* bossProperty, bool miss)
             attack = attack*2.0f;
             m_pHurtData->m_bCriticalStrike = true;
             VoxelExplorer::getInstance()->shakeScreen();
+            std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("CRITICALSTRIKE");
+            SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
         }
     }
     
@@ -735,7 +733,6 @@ void Player::attackByBoss(BossProperty* bossProperty, bool miss)
 
             }
         }
-        // for debug
         PlayerProperty::getInstance()->setCurrentHP(currentHp);
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_PROPERTY_DIRTY, this);
     }
@@ -962,8 +959,8 @@ void Player::onLand(bool isAttack)
     VoxelExplorer::getInstance()->checkUpdateFogOfWar();
     VoxelExplorer::getInstance()->checkTriggerTrap();
     VoxelExplorer::getInstance()->updateMiniMap();
-    //for debug
-    //if(RandomDungeon::getInstance()->getCurrentDungeonNode()->isBossDepth())
+    
+    if(RandomDungeon::getInstance()->getCurrentDungeonNode()->isBossDepth())
         VoxelExplorer::getInstance()->updateBossRoomDoor();
     
     CCLOG("player lastPos x = %d   y = %d", (int)m_LastPosInMap.x, (int)m_LastPosInMap.y);

@@ -135,8 +135,6 @@ bool SewerBossLevel::createMonsters()
         CCLOG("Create boss failed!");
         return false;
     }
-    //for debug
-    //return true;
     
     int monsterNum = calculateLevelMonsterCount();
     for (int i=0; i < monsterNum; i++) {

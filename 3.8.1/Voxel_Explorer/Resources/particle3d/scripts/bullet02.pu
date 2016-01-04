@@ -1,0 +1,44 @@
+system bullet01
+{
+    category                                    Bullet
+    technique
+    {
+        position                                0 0 0
+        visual_particle_quota                   500
+        emitted_emitter_quota                   1
+        material                                Flare_01
+        default_particle_width                  2.5
+        default_particle_height                 2.5
+        renderer                                Billboard
+        {
+        }
+        emitter                                 SphereSurface Flares
+        {
+            emission_rate                       300
+            angle                               360
+            time_to_live                        dyn_random
+            {
+                min                             0.5
+                max                             1.5
+            }
+            velocity                            dyn_random
+            {
+                min                             1.8
+                max                             7.5
+            }
+            auto_direction                      true
+            radius                              1
+        }
+        affector                                Colour
+        {
+            time_colour                         0    1 0.5 0 1
+            time_colour                         0.5  1 0.7 0 1
+            time_colour                         0.9  1 0 1 1
+            time_colour                         1    0 0 0 1
+        }
+        affector                                Scale
+        {
+            xyz_scale                           -2
+        }
+    }
+}

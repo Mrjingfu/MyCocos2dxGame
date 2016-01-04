@@ -1,0 +1,74 @@
+system atomicity
+{
+    category                                    LightFX
+    technique 
+    {
+        visual_particle_quota                   40
+        material                                Streak_03
+        default_particle_width                  2.4
+        default_particle_height                 2.4
+        default_particle_depth                  2.4
+        renderer                                Sphere
+        {
+        }
+        emitter                                 Point StreakEmitter
+        {
+            emission_rate                       dyn_oscillate
+            {
+                oscillate_frequency             0.4
+                oscillate_phase                 0
+                oscillate_base                  200
+                oscillate_amplitude             200
+                oscillate_type                  sine
+            }
+            time_to_live                        0.6
+            direction                           0 0 0
+        }
+        affector                                Colour 
+        {
+            time_colour                         0    0.27 0.5 1 1
+            time_colour                         0.3  0.27 0.5 1 1
+            time_colour                         0.6  0.43 0.28 1 1
+            time_colour                         1    0 0 0 1
+        }
+        affector                                GeometryRotator 
+        {
+            rotation_speed                      dyn_curved_linear
+            {
+                control_point                   0 3
+                control_point                   1 0.2
+            }
+        }
+        affector                                Scale 
+        {
+            xyz_scale                           dyn_curved_linear
+            {
+                control_point                   0 12
+                control_point                   0.8 12
+                control_point                   1 24
+            }
+        }
+        observer                                OnCount 
+        {
+            handler                             DoEnableComponent 
+            {
+                enable_component                emitter_component StreakEmitter false
+            }
+            handler                             DoEnableComponent 
+            {
+                enable_component                emitter_component FlareEmitter false
+            }
+            handler                             DoEnableComponent 
+            {
+                enable_component                emitter_component FlareCoreEmitter false
+            }
+            count_threshold                     greater_than 39
+        }
+        observer                                OnClear 
+        {
+            handler                             DoStopSystem 
+            {
+            }
+        }
+    }
+}

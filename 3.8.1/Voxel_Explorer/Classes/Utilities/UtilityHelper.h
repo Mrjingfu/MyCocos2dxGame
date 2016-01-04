@@ -36,6 +36,9 @@ public:
     static cocos2d::Color3B randomCyanColor();
     static cocos2d::Color3B randomBlueColor();
     static cocos2d::Color3B randomPurpleColor();
+    
+    
+    static float InvSqrt (float x);
 };
 
 #endif /* defined(__TinyFlare__UtilityHelper__) */

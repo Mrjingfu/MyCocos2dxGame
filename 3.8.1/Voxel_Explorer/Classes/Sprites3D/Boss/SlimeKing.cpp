@@ -13,7 +13,9 @@
 #include "SewerBossLevel.hpp"
 #include "FakeShadow.hpp"
 #include "UtilityHelper.h"
+#include "SimpleAudioEngine.h"
 USING_NS_CC;
+using namespace CocosDenshion;
 
 SlimeKing* SlimeKing::create(BaseBoss::BossType type)
 {
@@ -110,6 +112,9 @@ void SlimeKing::onEnterDeath()
     SewerBossLevel* level = dynamic_cast<SewerBossLevel*>(VoxelExplorer::getInstance()->getCurrentLevel());
     if(level)
         level->clearBossRoom();
+    
+    std::string soundName = LevelResourceManager::getInstance()->getMonsterSoundEffectRes(BOSS_MODEL_NAMES[m_Type], "DEATH");
+    SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
 }
 bool SlimeKing::isPlayerInsideBossRoom()
 {

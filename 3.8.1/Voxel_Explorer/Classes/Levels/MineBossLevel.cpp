@@ -141,6 +141,7 @@ bool MineBossLevel::createMonsters()
         CCLOG("Create boss failed!");
         return false;
     }
+    
     int monsterNum = 10;
     for (int i=0; i < monsterNum; i++) {
         StandardMonster* monster = StandardMonster::create(BaseMonster::MT_KOBOLD);

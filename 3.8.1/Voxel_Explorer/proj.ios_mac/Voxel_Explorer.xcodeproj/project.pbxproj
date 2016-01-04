@@ -174,6 +174,12 @@
 		5586C7B91C0FDD7400DFA588 /* TombBossLevel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5586C7B61C0FDD7400DFA588 /* TombBossLevel.cpp */; };
 		559B217F1BC65D330047D998 /* textures in Resources */ = {isa = PBXBuildFile; fileRef = 559B217E1BC65D330047D998 /* textures */; };
 		559B21801BC65D330047D998 /* textures in Resources */ = {isa = PBXBuildFile; fileRef = 559B217E1BC65D330047D998 /* textures */; };
+		55A2CFF21C3906A600E591AA /* BaseBullet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55A2CFF01C3906A600E591AA /* BaseBullet.cpp */; };
+		55A2CFF31C3906A600E591AA /* BaseBullet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55A2CFF01C3906A600E591AA /* BaseBullet.cpp */; };
+		55A2CFF61C3907E900E591AA /* ArchbishopBullet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55A2CFF41C3907E900E591AA /* ArchbishopBullet.cpp */; };
+		55A2CFF71C3907E900E591AA /* ArchbishopBullet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55A2CFF41C3907E900E591AA /* ArchbishopBullet.cpp */; };
+		55A2CFFA1C39080800E591AA /* KoboldLeaderBullet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55A2CFF81C39080800E591AA /* KoboldLeaderBullet.cpp */; };
+		55A2CFFB1C39080800E591AA /* KoboldLeaderBullet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55A2CFF81C39080800E591AA /* KoboldLeaderBullet.cpp */; };
 		55A4101A1C22DA7300ABF4E6 /* musics in Resources */ = {isa = PBXBuildFile; fileRef = 55A410181C22DA7300ABF4E6 /* musics */; };
 		55A4101B1C22DA7300ABF4E6 /* musics in Resources */ = {isa = PBXBuildFile; fileRef = 55A410181C22DA7300ABF4E6 /* musics */; };
 		55A4101C1C22DA7300ABF4E6 /* sounds in Resources */ = {isa = PBXBuildFile; fileRef = 55A410191C22DA7300ABF4E6 /* sounds */; };
@@ -545,6 +551,12 @@
 		5586C7B61C0FDD7400DFA588 /* TombBossLevel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TombBossLevel.cpp; sourceTree = "<group>"; };
 		5586C7B71C0FDD7400DFA588 /* TombBossLevel.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TombBossLevel.hpp; sourceTree = "<group>"; };
 		559B217E1BC65D330047D998 /* textures */ = {isa = PBXFileReference; lastKnownFileType = folder; path = textures; sourceTree = "<group>"; };
+		55A2CFF01C3906A600E591AA /* BaseBullet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BaseBullet.cpp; sourceTree = "<group>"; };
+		55A2CFF11C3906A600E591AA /* BaseBullet.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BaseBullet.hpp; sourceTree = "<group>"; };
+		55A2CFF41C3907E900E591AA /* ArchbishopBullet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ArchbishopBullet.cpp; sourceTree = "<group>"; };
+		55A2CFF51C3907E900E591AA /* ArchbishopBullet.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ArchbishopBullet.hpp; sourceTree = "<group>"; };
+		55A2CFF81C39080800E591AA /* KoboldLeaderBullet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KoboldLeaderBullet.cpp; sourceTree = "<group>"; };
+		55A2CFF91C39080800E591AA /* KoboldLeaderBullet.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = KoboldLeaderBullet.hpp; sourceTree = "<group>"; };
 		55A410181C22DA7300ABF4E6 /* musics */ = {isa = PBXFileReference; lastKnownFileType = folder; path = musics; sourceTree = "<group>"; };
 		55A410191C22DA7300ABF4E6 /* sounds */ = {isa = PBXFileReference; lastKnownFileType = folder; path = sounds; sourceTree = "<group>"; };
 		55A980791C05610400722C9D /* FakeShadow.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FakeShadow.cpp; sourceTree = "<group>"; };
@@ -1192,9 +1204,23 @@
 			path = Sprites2D;
 			sourceTree = "<group>";
 		};
+		55A2CFEF1C39069400E591AA /* Bullets */ = {
+			isa = PBXGroup;
+			children = (
+				55A2CFF01C3906A600E591AA /* BaseBullet.cpp */,
+				55A2CFF11C3906A600E591AA /* BaseBullet.hpp */,
+				55A2CFF41C3907E900E591AA /* ArchbishopBullet.cpp */,
+				55A2CFF51C3907E900E591AA /* ArchbishopBullet.hpp */,
+				55A2CFF81C39080800E591AA /* KoboldLeaderBullet.cpp */,
+				55A2CFF91C39080800E591AA /* KoboldLeaderBullet.hpp */,
+			);
+			path = Bullets;
+			sourceTree = "<group>";
+		};
 		55EC95761BC673690008D1D7 /* Sprites3D */ = {
 			isa = PBXGroup;
 			children = (
+				55A2CFEF1C39069400E591AA /* Bullets */,
 				550545151BFEEF7E006B4500 /* EffectSprite3D.cpp */,
 				550545161BFEEF7E006B4500 /* EffectSprite3D.h */,
 				5505450F1BFEEF40006B4500 /* Portals */,
@@ -1572,6 +1598,7 @@
 				EC6617651C182A3B0004209F /* BossPropLayer.cpp in Sources */,
 				55F81CA11BDB208D002EC075 /* UseableItem.cpp in Sources */,
 				EC66254A1C3375A900166131 /* SuperAnimNodeV2.cpp in Sources */,
+				55A2CFF61C3907E900E591AA /* ArchbishopBullet.cpp in Sources */,
 				EC795F571C0D4AFD0083829B /* GambleShopPopupUI.cpp in Sources */,
 				EC8A27E01C32670800B2C352 /* AchieveItemLayer.cpp in Sources */,
 				5505453C1BFF3893006B4500 /* SmallPortal.cpp in Sources */,
@@ -1615,6 +1642,7 @@
 				55338AE21BD8926A00EA316F /* SkeletonKing.cpp in Sources */,
 				EC795F5F1C0D4B560083829B /* LittleWitchPopupUI.cpp in Sources */,
 				555B0D1D1BC51A2C0055FB6D /* Graph.cpp in Sources */,
+				55A2CFFA1C39080800E591AA /* KoboldLeaderBullet.cpp in Sources */,
 				ECEA4E241C0EEABE00ED790F /* ItemMoneyLayer.cpp in Sources */,
 				551E93B11BD51282009F788F /* UtilityHelper.cpp in Sources */,
 				EC3CC9871C088F4F00F8CFC8 /* DeadPopupUI.cpp in Sources */,
@@ -1688,6 +1716,7 @@
 				55F81CC81BDB928F002EC075 /* MaterialProperty.cpp in Sources */,
 				55F116D41C04450200A6C191 /* FaneLevel.cpp in Sources */,
 				EC5D56901C0C4E2200F5EDDF /* DistPopupUI.cpp in Sources */,
+				55A2CFF21C3906A600E591AA /* BaseBullet.cpp in Sources */,
 				55F81CCC1BDB92AC002EC075 /* QuestItemProperty.cpp in Sources */,
 				EC8A27DA1C32629C00B2C352 /* AchieveItemUI.cpp in Sources */,
 				551E93C51BD51291009F788F /* UserRecord.cpp in Sources */,
@@ -1734,6 +1763,7 @@
 				EC6716461BCE7F2C00C81CFC /* LogoScene.cpp in Sources */,
 				55A980821C05AB9400722C9D /* Ladder.cpp in Sources */,
 				EC3CC99E1C088F4F00F8CFC8 /* GameUILayer.cpp in Sources */,
+				55A2CFF71C3907E900E591AA /* ArchbishopBullet.cpp in Sources */,
 				55338ADF1BD8925100EA316F /* Warden.cpp in Sources */,
 				EC8A27E11C32670800B2C352 /* AchieveItemLayer.cpp in Sources */,
 				5505453D1BFF3893006B4500 /* SmallPortal.cpp in Sources */,
@@ -1781,6 +1811,7 @@
 				55619D521C0DAB3900419E40 /* SewerBossLevel.cpp in Sources */,
 				55E1A5571C16BF21008BEEFD /* BossProperty.cpp in Sources */,
 				555B0D161BC51A2C0055FB6D /* AppDelegate.cpp in Sources */,
+				55A2CFFB1C39080800E591AA /* KoboldLeaderBullet.cpp in Sources */,
 				55F81CAD1BDB69FB002EC075 /* PickableItemProperty.cpp in Sources */,
 				553BC5021BCDF457003D907A /* Actor.cpp in Sources */,
 				551E93C21BD51291009F788F /* ArchiveManager.cpp in Sources */,
@@ -1817,6 +1848,7 @@
 				55F116D51C04450200A6C191 /* FaneLevel.cpp in Sources */,
 				EC25C3C51C19120D00B4340D /* AlertPopupUI.cpp in Sources */,
 				551E93CC1BD51291009F788F /* PlayerProperty.cpp in Sources */,
+				55A2CFF31C3906A600E591AA /* BaseBullet.cpp in Sources */,
 				551E93ED1BD512D3009F788F /* XXTEA.cpp in Sources */,
 				551E93E71BD512D3009F788F /* md5.c in Sources */,
 				5586C7A71C0FDD1500DFA588 /* PrisonBossLevel.cpp in Sources */,

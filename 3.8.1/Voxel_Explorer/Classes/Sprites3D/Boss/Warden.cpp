@@ -13,7 +13,9 @@
 #include "UtilityHelper.h"
 #include "VoxelExplorer.h"
 #include "FakeShadow.hpp"
+#include "SimpleAudioEngine.h"
 USING_NS_CC;
+using namespace CocosDenshion;
 
 Warden* Warden::create(BaseBoss::BossType type)
 {
@@ -108,6 +110,9 @@ void Warden::onEnterDeath()
     PrisonBossLevel* level = dynamic_cast<PrisonBossLevel*>(VoxelExplorer::getInstance()->getCurrentLevel());
     if(level)
         level->clearBossRoom();
+    
+    std::string soundName = LevelResourceManager::getInstance()->getMonsterSoundEffectRes(BOSS_MODEL_NAMES[m_Type], "DEATH");
+    SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
 }
 bool Warden::isPlayerInsideBossRoom()
 {
