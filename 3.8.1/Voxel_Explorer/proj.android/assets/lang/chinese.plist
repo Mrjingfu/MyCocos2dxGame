@@ -227,7 +227,7 @@
 	<key>PIN_KEY_BOSS_DESC</key>
 	<string>用来打开%s的房间</string>
 	<key>PIN_KEY_ROOM</key>
-	<string>%s的钥匙</string>
+	<string>%s房间的钥匙</string>
 	<key>PIN_KEY_ROOM_DESC</key>
 	<string>用来打开%s的房间</string>
 	<key>PIN_DAGGER_DAGGER</key>
@@ -569,189 +569,189 @@
 	<key>PIN_BOW_SHORTBOW</key>
 	<string>短弓</string>
 	<key>PIN_BOW_SHORTBOW_DESC</key>
-	<string></string>
+	<string>适合身材矮小的人使用，威力一般。</string>
 	<key>PIN_BOW_SHORTBOW_BIDESC</key>
-	<string></string>
+	<string>貌似是个玩具？</string>
 	<key>PIN_BOW_LONGBOW</key>
 	<string>长弓</string>
 	<key>PIN_BOW_LONGBOW_DESC</key>
-	<string></string>
+	<string>紫衫木的弓身，拉开它要费点气力。</string>
 	<key>PIN_BOW_LONGBOW_BIDESC</key>
-	<string></string>
+	<string>大概五英尺左右的一把弓箭。</string>
 	<key>PIN_BOW_HORNBOW</key>
 	<string>角弓</string>
 	<key>PIN_BOW_HORNBOW_DESC</key>
-	<string></string>
+	<string>麒麟角，蛟龙筋，这把弓的材料都不易获得。</string>
 	<key>PIN_BOW_HORNBOW_BIDESC</key>
-	<string></string>
+	<string>骍骍角弓，翩其反矣。</string>
 	<key>PIN_BOW_REFLEXBOW</key>
 	<string>反曲弓</string>
 	<key>PIN_BOW_REFLEXBOW_DESC</key>
-	<string></string>
+	<string>弓力强劲，穿透1英寸的钢板是不可能了，穿透1英寸的木板跟玩一样。</string>
 	<key>PIN_BOW_REFLEXBOW_BIDESC</key>
-	<string></string>
+	<string>很轻巧的一把好弓。</string>
 	<key>PIN_BOW_EAGLEBOW</key>
 	<string>鹰弓</string>
 	<key>PIN_BOW_EAGLEBOW_DESC</key>
-	<string></string>
+	<string>外形怎么看都不象天火鹰弓，一定是假的。</string>
 	<key>PIN_BOW_EAGLEBOW_BIDESC</key>
-	<string></string>
+	<string>弓柄上刻有：“天火鹰弓” </string>
 	<key>PIN_BOW_LAMINATEDBOW</key>
 	<string>复合弓</string>
 	<key>PIN_BOW_LAMINATEDBOW_DESC</key>
-	<string></string>
+	<string>请定期保养，保修期12个月，Oneida</string>
 	<key>PIN_BOW_LAMINATEDBOW_BIDESC</key>
-	<string></string>
+	<string>很复杂的一把弓，找找看有说明书么。</string>
 	<key>PIN_BOW_GOLDENBOW</key>
 	<string>金弓</string>
 	<key>PIN_BOW_GOLDENBOW_DESC</key>
-	<string></string>
+	<string>这么精美的一把金弓，竟然没有堂号，要不然能值不少钱。</string>
 	<key>PIN_BOW_GOLDENBOW_BIDESC</key>
-	<string></string>
+	<string>通体黄金打造，应该是个装饰品。</string>
 	<key>PIN_BOW_PRO_SHORTBOW</key>
 	<string>蝎尾</string>
 	<key>PIN_BOW_PRO_SHORTBOW_DESC</key>
-	<string></string>
+	<string>温馨提示：请使用蝎尾弓指定蝎刺箭失以发挥最大威力。</string>
 	<key>PIN_BOW_PRO_SHORTBOW_BIDESC</key>
-	<string></string>
+	<string>弓首和弓尾分别呈现蝎子尾巴的的样子，并泛着幽幽的绿色。</string>
 	<key>PIN_BOW_PRO_LONGBOW</key>
 	<string>六面火</string>
 	<key>PIN_BOW_PRO_LONGBOW_DESC</key>
-	<string></string>
+	<string>发射爆裂箭失，范围性伤害。</string>
 	<key>PIN_BOW_PRO_LONGBOW_BIDESC</key>
-	<string></string>
+	<string>这又是把大规模杀伤性武器，咦？为什么说又？</string>
 	<key>PIN_BOW_PRO_HORNBOW</key>
 	<string>要你命三千</string>
 	<key>PIN_BOW_PRO_HORNBOW_DESC</key>
-	<string></string>
+	<string>十种用法集于一身，而且每一种皆可独当一面。</string>
 	<key>PIN_BOW_PRO_HORNBOW_BIDESC</key>
-	<string></string>
+	<string>上刻：版权所有，达文西。</string>
 	<key>PIN_BOW_PRO_REFLEXBOW</key>
 	<string>影袭</string>
 	<key>PIN_BOW_PRO_REFLEXBOW_DESC</key>
-	<string></string>
+	<string>通体黑色，不知何种材料制作，不被任何金属探测器检测到。</string>
 	<key>PIN_BOW_PRO_REFLEXBOW_BIDESC</key>
-	<string></string>
+	<string>弓身时隐时现，时虚时实。</string>
 	<key>PIN_BOW_PRO_EAGLEBOW</key>
 	<string>鹰眼</string>
 	<key>PIN_BOW_PRO_EAGLEBOW_DESC</key>
-	<string></string>
+	<string>可发射追踪箭矢，无需瞄准。</string>
 	<key>PIN_BOW_PRO_EAGLEBOW_BIDESC</key>
-	<string></string>
+	<string>当你拿起它时，发出了一声鹰鸣响起。</string>
 	<key>PIN_BOW_PRO_LAMINATEDBOW</key>
 	<string>绿帽</string>
 	<key>PIN_BOW_PRO_LAMINATEDBOW_DESC</key>
-	<string></string>
+	<string>树精灵专属武器，不过一般人类不怎么喜欢用。</string>
 	<key>PIN_BOW_PRO_LAMINATEDBOW_BIDESC</key>
-	<string></string>
+	<string>拾取绑定，不用的时候折叠起来就是个帽子</string>
 	<key>PIN_BOW_PRO_GOLDENBOW</key>
 	<string>群星陨落</string>
 	<key>PIN_BOW_PRO_GOLDENBOW_DESC</key>
-	<string></string>
+	<string>不需要箭矢，每当轻拨弓弦就会有一个流星从天而落，小心别砸着自己。</string>
 	<key>PIN_BOW_PRO_GOLDENBOW_BIDESC</key>
-	<string></string>
+	<string>弓身通体流窜着斑斑星光，非常璀璨耀眼。</string>
 	<key>PIN_STAFF_OAKSTAFF</key>
 	<string>橡木法杖</string>
 	<key>PIN_STAFF_OAKSTAFF_DESC</key>
-	<string></string>
+	<string>不一定有法力，但抡起来打人还是很趁手的。</string>
 	<key>PIN_STAFF_OAKSTAFF_BIDESC</key>
-	<string></string>
+	<string>德鲁伊一般都拿着这么一根棍子。</string>
 	<key>PIN_STAFF_FIRSTAFF</key>
 	<string>冷杉法杖</string>
 	<key>PIN_STAFF_FIRSTAFF_DESC</key>
-	<string></string>
+	<string>材料很常见，但你需要盘。</string>
 	<key>PIN_STAFF_FIRSTAFF_BIDESC</key>
-	<string></string>
+	<string>非常结实，能抗住刀剑的挥砍。</string>
 	<key>PIN_STAFF_ASHESSTAFF</key>
 	<string>灰烬法杖</string>
 	<key>PIN_STAFF_ASHESSTAFF_DESC</key>
-	<string></string>
+	<string>烈火赋予了这个法杖火焰的魔力。</string>
 	<key>PIN_STAFF_ASHESSTAFF_BIDESC</key>
-	<string></string>
+	<string>被烧过的木杖更加强韧。</string>
 	<key>PIN_STAFF_DEMONSTAFF</key>
 	<string>恶魔法杖</string>
 	<key>PIN_STAFF_DEMONSTAFF_DESC</key>
-	<string></string>
+	<string>召唤恶魔的法器，挂上几个骷髅会更有逼格。</string>
 	<key>PIN_STAFF_DEMONSTAFF_BIDESC</key>
-	<string></string>
+	<string>男巫，术士都爱它。</string>
 	<key>PIN_STAFF_CITRONSTAFF</key>
 	<string>枸木法杖</string>
 	<key>PIN_STAFF_CITRONSTAFF_DESC</key>
-	<string></string>
+	<string>枸木有恢复的能力，拿上它做个辅助职业吧。</string>
 	<key>PIN_STAFF_CITRONSTAFF_BIDESC</key>
-	<string></string>
+	<string>材料比较稀少，但香八拉线上有不少。</string>
 	<key>PIN_STAFF_CLOUDSTAFF</key>
 	<string>云之法杖</string>
 	<key>PIN_STAFF_CLOUDSTAFF_DESC</key>
-	<string></string>
+	<string>蕴含水与风之能力，不可多的的好法杖。</string>
 	<key>PIN_STAFF_CLOUDSTAFF_BIDESC</key>
-	<string></string>
+	<string>看上去很重，那起来却很轻巧。</string>
 	<key>PIN_STAFF_MONKSTAFF</key>
 	<string>武僧法杖</string>
 	<key>PIN_STAFF_MONKSTAFF_DESC</key>
-	<string></string>
+	<string>横当棍，纵成枪，旋转起来就是直升机。</string>
 	<key>PIN_STAFF_MONKSTAFF_BIDESC</key>
-	<string></string>
+	<string>僧人的禅杖。</string>
 	<key>PIN_STAFF_PRO_OAKSTAFF</key>
 	<string>绿玉</string>
 	<key>PIN_STAFF_PRO_OAKSTAFF_DESC</key>
-	<string></string>
+	<string>通体绿色的法杖，顶端镶嵌着一颗绿宝石。</string>
 	<key>PIN_STAFF_PRO_OAKSTAFF_BIDESC</key>
-	<string></string>
+	<string>这不是打狗棒。</string>
 	<key>PIN_STAFF_PRO_FIRSTAFF</key>
 	<string>启明星</string>
 	<key>PIN_STAFF_PRO_FIRSTAFF_DESC</key>
-	<string></string>
+	<string>当挥舞它的时候，法杖顶端会发出耀眼的光芒，驱赶黑暗和野兽。</string>
 	<key>PIN_STAFF_PRO_FIRSTAFF_BIDESC</key>
-	<string></string>
+	<string>一个字：漂亮！</string>
 	<key>PIN_STAFF_PRO_ASHESSTAFF</key>
 	<string>地狱之吻</string>
 	<key>PIN_STAFF_PRO_ASHESSTAFF_DESC</key>
-	<string></string>
+	<string>法杖透露着地狱来的气息，扫过之处，花草凋零，树木干枯。</string>
 	<key>PIN_STAFF_PRO_ASHESSTAFF_BIDESC</key>
-	<string></string>
+	<string>来自地狱的礼物。</string>
 	<key>PIN_STAFF_PRO_DEMONSTAFF</key>
 	<string>招魂者</string>
 	<key>PIN_STAFF_PRO_DEMONSTAFF_DESC</key>
-	<string></string>
+	<string>死者复生，生者丧命。</string>
 	<key>PIN_STAFF_PRO_DEMONSTAFF_BIDESC</key>
-	<string></string>
+	<string>招引亡魂的旗子。</string>
 	<key>PIN_STAFF_PRO_CITRONSTAFF</key>
 	<string>英普瑞斯之矛</string>
 	<key>PIN_STAFF_PRO_CITRONSTAFF_DESC</key>
-	<string></string>
+	<string>多么装逼的武器啊！买不到的，但也说不定。</string>
 	<key>PIN_STAFF_PRO_CITRONSTAFF_BIDESC</key>
-	<string></string>
+	<string>大天使英普瑞斯的武器。</string>
 	<key>PIN_STAFF_PRO_CLOUDSTAFF</key>
 	<string>鲜血勇气</string>
 	<key>PIN_STAFF_PRO_CLOUDSTAFF_DESC</key>
-	<string></string>
+	<string>拿上它，立马热血沸腾，无所畏惧，比磕药来的还快。</string>
 	<key>PIN_STAFF_PRO_CLOUDSTAFF_BIDESC</key>
-	<string></string>
+	<string>勇猛杀戮的象征，怂人的武器。</string>
 	<key>PIN_STAFF_PRO_MONKSTAFF</key>
 	<string>大天使</string>
 	<key>PIN_STAFF_PRO_MONKSTAFF_DESC</key>
-	<string></string>
+	<string>天使身份的象征，不管是圣洁天使还是恶棍天使。</string>
 	<key>PIN_STAFF_PRO_MONKSTAFF_BIDESC</key>
-	<string></string>
+	<string>雅典娜貌似也有这么一根。</string>
 	<key>PIN_SHIELD_WOODENSHIELD</key>
 	<string>圆木盾</string>
 	<key>PIN_SHIELD_WOODENSHIELD_DESC</key>
-	<string></string>
+	<string>很薄，穷人的防弹衣。</string>
 	<key>PIN_SHIELD_WOODENSHIELD_BIDESC</key>
-	<string></string>
+	<string>兴许防御力还不如个树根。</string>
 	<key>PIN_SHIELD_TRIANGLESHIELD</key>
 	<string>三角盾</string>
 	<key>PIN_SHIELD_TRIANGLESHIELD_DESC</key>
-	<string></string>
+	<string>做成三角的还是个木盾，防御力还是要看脸。</string>
 	<key>PIN_SHIELD_TRIANGLESHIELD_BIDESC</key>
-	<string></string>
+	<string>三角的木盾，只是在边上包了点铁皮。</string>
 	<key>PIN_SHIELD_STEELSHIELD</key>
 	<string>精钢盾</string>
 	<key>PIN_SHIELD_STEELSHIELD_DESC</key>
-	<string></string>
+	<string>钢盾的防御还是可以的，但拿不拿的起就是另外一回事了。</string>
 	<key>PIN_SHIELD_STEELSHIELD_BIDESC</key>
-	<string></string>
+	<string>精钢打造，生锈包赔。</string>
 	<key>PIN_SHIELD_EAGLESHIELD</key>
 	<string>鹰盾</string>
 	<key>PIN_SHIELD_EAGLESHIELD_DESC</key>
@@ -1002,9 +1002,9 @@
 	<string>隐身卷轴</string>
 	<key>PIN_SCROLL_STEALTH_DESC</key>
 	<string>使用后角色进入隐身状态，持续20秒。</string>
-	<key>PIT_SCROLL_STRONGER</key>
+	<key>PIN_SCROLL_STRONGER</key>
 	<string>强壮卷轴</string>
-	<key>PIT_SCROLL_STRONGER_DESC</key>
+	<key>PIN_SCROLL_STRONGER_DESC</key>
 	<string>使用后角色属性增强，持续20秒。</string>
 	<key>PIN_SCROLL_DESTINY</key>
 	<string>命运卷轴</string>
@@ -1106,29 +1106,43 @@
 	<string>售货员</string>
 	<key>NPCN_SHOPGIRL_DESC</key>
 	<string></string>
+	<key>NPCN_SHOPGIRL_CONTENT</key>
+	<string></string>
 	<key>NPCN_OLDLADY</key>
 	<string>老婆婆</string>
 	<key>NPCN_OLDLADY_DESC</key>
+	<string></string>
+	<key>NPCN_OLDLADY_CONTENT</key>
 	<string></string>
 	<key>NPCN_KNIGHT</key>
 	<string>小骑士</string>
 	<key>NPCN_KNIGHT_DESC</key>
 	<string></string>
+	<key>NPCN_KNIGHT_CONTENT</key>
+	<string></string>
 	<key>NPCN_WEIRDO</key>
 	<string>怪蜀黍</string>
 	<key>NPCN_WEIRDO_DESC</key>
+	<string></string>
+	<key>NPCN_WEIRDO_CONTENT</key>
 	<string></string>
 	<key>NPCN_OLDMAN</key>
 	<string>老爷爷</string>
 	<key>NPCN_OLDMAN_DESC</key>
 	<string></string>
+	<key>NPCN_OLDMAN_CONTENT</key>
+	<string></string>
 	<key>NPCN_LITTLEWITCH</key>
 	<string>小魔女</string>
 	<key>NPCN_LITTLEWITCH_DESC</key>
 	<string></string>
+	<key>NPCN_LITTLEWITCH_CONTENT</key>
+	<string></string>
 	<key>NPCN_NURSE</key>
 	<string>小护士</string>
 	<key>NPCN_NURSE_DESC</key>
+	<string></string>
+	<key>NPCN_NURSE_CONTENT</key>
 	<string></string>
 	<key>PTN_STANDARD</key>
 	<string>地城传送阵</string>

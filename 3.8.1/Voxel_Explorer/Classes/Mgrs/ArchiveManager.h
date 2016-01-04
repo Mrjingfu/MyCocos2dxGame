@@ -11,26 +11,36 @@
 
 #include "UserRecord.h"
 #include "GameConfig.h"
+#include "FileStream.h"
+#include "MemoryStream.h"
+class iArchive
+{
+   virtual bool load(const cocos2d::ValueMap& archiveNode ) = 0;
+   virtual void save(cocos2d::ValueMap& archiveNode) = 0;
+protected:
+    
+   bool hasKey(std::string key,const cocos2d::ValueMap& rootNode )
+   {
+       auto iter = rootNode.find(key);
+       if (iter!= rootNode.end()) {
+           return true;
+       }
+       return false;
+   }
+    
+};
+
 class ArchiveManager
 {
     ArchiveManager();
 public:
     ~ArchiveManager();
-   static ArchiveManager* getInstance();
-    void init(int archiveCount);
-    
-    UserRecord* getUserRecord();
-    std::string getDeviceUUid();
-    void setChaosValue(eChaoType eType,CChaosNumber nNumber);
-    bool changeChaosValue(eChaoType eType,CChaosNumber chageValue);
-    int getChaosValue(eChaoType eType);
-    void LoadInitData();
-    void saveData();
-    eStartupType getStartupType();
-    std::string getCurrentArchiveName();
+    SINGLE_FUNC(ArchiveManager);
+    bool loadGame();
+    void saveGame();
 private:
-    void setFirstSetting();
-    UserRecord* mUserRecord;
+    std::string getStringValueMap(cocos2d::ValueMap& dict,const std::string& fullPath);
+
 };
 
 #endif /* defined(__TinyFlare__ArchiveManager__) */

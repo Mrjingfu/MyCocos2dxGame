@@ -7,98 +7,83 @@
 //
 
 #include "ArchiveManager.h"
-
+#include "CCCrypto.h"
+#include "UtilityHelper.h"
+#include "StatisticsManager.hpp"
+#include "AchievementManager.h"
+#include "PlistBinaryUtil.hpp"
+USING_NS_CC;
 ArchiveManager::ArchiveManager()
 {
-    mUserRecord = nullptr;
+    
 }
 ArchiveManager::~ArchiveManager()
 {
    
 }
-void ArchiveManager::init(int archiveCount)
+
+bool  ArchiveManager::loadGame()
 {
-    CCLOG(" ArchiveManager::init");
-    mUserRecord = nullptr;
-    mUserRecord = new UserRecord();
-    setFirstSetting();
-    eStartupType type = getStartupType();
-    if (eStartupFirstInstall == type) {
-        CCLOG("start game first");
-        setFirstSetting();
-        LoadInitData();
-        saveData();
-    }else{
-        mUserRecord->load(archiveCount);
+    
+    std::string path = cocos2d::FileUtils::getInstance()->getWritablePath()+sArchiveName;
+    
+    ValueMap gameMap = PlistBinaryUtil::getInstance()->getValueMapFromFile(path);
+
+#if COCOS2D_DEBUG==1
+    //!!!!!!!!打包一定记得检查
+    std::string debugPath = cocos2d::FileUtils::getInstance()->getWritablePath()+"Debug.plist";
+    CCLOG("LOADGAME:%s",getStringValueMap(gameMap,debugPath).c_str());
+#endif
+    if (gameMap.empty()) {
+        CCLOG("gamemap is null");
+        return false;
     }
+
+    //加载游戏数据
+    if (!StatisticsManager::getInstance()->load(gameMap)) {
+        return false;
+    }
+    if (!AchievementManager::getInstance()->load(gameMap)) {
+        return false;
+    }
+   
+
+    return true;
+}
+void  ArchiveManager::saveGame()
+{
+    ValueMap map;
+    
+    //存储游戏数据
+    StatisticsManager::getInstance()->save(map);
+    AchievementManager::getInstance()->save(map);
+    
+    std::string path = cocos2d::FileUtils::getInstance()->getWritablePath()+ sArchiveName;
+#if COCOS2D_DEBUG==1
+    std::string debugPath = cocos2d::FileUtils::getInstance()->getWritablePath()+"Debug.plist";
+    CCLOG("SAVEGAME:%s",getStringValueMap(map,debugPath).c_str());
+#endif
+    PlistBinaryUtil::getInstance()->writeValueMapToFile(map, path,true);
     
 }
+std::string ArchiveManager::getStringValueMap(cocos2d::ValueMap& dict,const std::string &fullPath)
+{
+    std::string result;
 
-ArchiveManager* ArchiveManager::getInstance()
-{
-    static ArchiveManager instance;
-    return &instance;
-}
-void ArchiveManager::LoadInitData()
-{
-    if (mUserRecord) {
-        mUserRecord->init();
-    }
-}
-void ArchiveManager::saveData()
-{
-    if (mUserRecord) {
-        mUserRecord->save();
-    }
-}
+    FileUtils::getInstance()->writeValueMapToFile(dict, fullPath);
 
-UserRecord* ArchiveManager::getUserRecord()
-{
-    return mUserRecord;
-}
-std::string ArchiveManager::getDeviceUUid()
-{
-    if (mUserRecord) {
-        return mUserRecord->mDeciveUid;
+    ssize_t size;
+    const unsigned char* content = cocos2d::FileUtils::getInstance()->getFileData(fullPath.c_str(), "rb", &size);
+    if (size <= 0 )
+    {
+        CCLOG("file content is null");
+        return result;
     }
-    return "";
+    
+    std::string sRet((char*)content,size);
+    CC_SAFE_DELETE_ARRAY(content);
+    return sRet;
 }
 
-void ArchiveManager::setChaosValue(eChaoType eType, CChaosNumber nNumber)
-{
-    if (mUserRecord) {
-        mUserRecord->mChaosValues[eType] = nNumber;
-    }
-}
-bool ArchiveManager::changeChaosValue(eChaoType eType, CChaosNumber chageValue)
-{
-    if (mUserRecord) {
-        CChaosNumber oldVal = getChaosValue(eType);
-        CChaosNumber newVal = (long)oldVal+(long)chageValue;
-        if (newVal < 0) {
-            return false;
-        }
-        setChaosValue(eType, newVal);
-        return true;
-    }
-    return false;
-}
-int ArchiveManager::getChaosValue(eChaoType eType)
-{
-    if (mUserRecord) {
-        return mUserRecord->mChaosValues[eType];
-    }
-    return 0;
-}
-eStartupType ArchiveManager::getStartupType()
-{
-    bool havePlayedGame = cocos2d::UserDefault::getInstance()->getBoolForKey(sHavePlayedGame);
-    if (!havePlayedGame) {
-        return eStartupFirstInstall;
-    }
-    return eStartupNormal;
-}
-void ArchiveManager::setFirstSetting()
-{
-    cocos2d::UserDefault::getInstance()->setBoolForKey(sHavePlayedGame, true);
-}
+
+

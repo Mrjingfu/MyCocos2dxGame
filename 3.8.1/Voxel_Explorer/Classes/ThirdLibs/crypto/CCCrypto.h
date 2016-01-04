@@ -40,6 +40,8 @@ public:
 	static void encryptXOR(char* memptr, int memlen);
 	static void decryptXOR(char* memptr, int memlen);
 
+    static void encryptXOR(char* memptr, int memlen,const char* deKey);
+    static void decryptXOR(char* memptr, int memlen,const char* deKey);
 
     
 #if CC_LUA_ENGINE_ENABLED > 0

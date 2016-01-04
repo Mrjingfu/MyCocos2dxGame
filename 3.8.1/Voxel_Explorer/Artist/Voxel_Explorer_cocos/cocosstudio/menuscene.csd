@@ -16,13 +16,13 @@
             <PreSize X="1.0000" Y="1.0000" />
             <FileData Type="Normal" Path="ui_splash.png" Plist="" />
           </AbstractNodeData>
-          <AbstractNodeData Name="menu_eyes" ActionTag="-1410662835" Alpha="0" Tag="10" RotationSkewX="39.2668" RotationSkewY="39.2566" IconVisible="False" LeftMargin="128.4762" RightMargin="-33.4763" TopMargin="331.0893" BottomMargin="27.9107" ctype="SpriteObjectData">
+          <AbstractNodeData Name="menu_eyes" ActionTag="-1410662835" Alpha="0" Tag="10" RotationSkewX="-36.5844" RotationSkewY="-36.5861" IconVisible="False" LeftMargin="135.4745" RightMargin="-40.4745" TopMargin="333.0903" BottomMargin="25.9097" ctype="SpriteObjectData">
             <Size X="225.0000" Y="121.0000" />
             <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-            <Position X="240.9762" Y="88.4107" />
+            <Position X="247.9745" Y="86.4097" />
             <Scale ScaleX="0.7000" ScaleY="0.7000" />
             <CColor A="255" R="255" G="255" B="255" />
-            <PrePosition X="0.7531" Y="0.1842" />
+            <PrePosition X="0.7749" Y="0.1800" />
             <PreSize X="0.0000" Y="0.0000" />
             <FileData Type="PlistSubImage" Path="eyes.png" Plist="ui_sprite.plist" />
             <BlendFunc Src="770" Dst="771" />

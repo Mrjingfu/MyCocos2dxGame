@@ -13,14 +13,7 @@ using namespace std;
 
 #include "xor.h"
 
-const int XOR_KEY1_LEN = 13;		
-#define KT_ECRP_KEY1 "e30ddb77251ab"
 
-const int XOR_KEY2_LEN = 23;		
-#define KT_ECRP_KEY2 "db1ef22ed6d9c2c4191f86e"
-
-const int MOVE_POS1 = 133;
-const int MOVE_POS2 = 71;
 
 
 static void XOR( char *data, char *key, int datalen, int keylen)
@@ -61,7 +54,7 @@ static void MOVE( char *data, int datalen, int pos )
 	delete[] tmp;
 }
 
-void xor_encrypt(char* memptr, int memlen)
+void xor_encrypt(char* memptr, int memlen,const char* dekey)
 {
 	if (memlen == 0 || !memptr)
 		return;
@@ -71,19 +64,23 @@ void xor_encrypt(char* memptr, int memlen)
 	MOVE( memptr, memlen,MOVE_POS1);		
 	XOR( memptr, key1, memlen, XOR_KEY1_LEN );
 	char key2[XOR_KEY2_LEN];
-	memcpy(key2,KT_ECRP_KEY2,XOR_KEY2_LEN);
+    //modified by lichuang
+    memcpy(key2,dekey,XOR_KEY2_LEN);
+//	memcpy(key2,KT_ECRP_KEY2,XOR_KEY2_LEN);
 	MOVE( memptr, memlen,-MOVE_POS2);
 	XOR( memptr, key2, memlen, XOR_KEY2_LEN );
 
 }
 
-void xor_decrypt(char* memptr, int memlen)
+void xor_decrypt(char* memptr, int memlen,const char* dekey)
 {
 	if (memlen == 0 || !memptr)
 		return;
 
 	char key2[XOR_KEY2_LEN];
-	memcpy(key2,KT_ECRP_KEY2,XOR_KEY2_LEN);	
+    //modified by lichuang
+    memcpy(key2,dekey,XOR_KEY2_LEN);
+//	memcpy(key2,KT_ECRP_KEY2,XOR_KEY2_LEN);	
 	XOR( memptr, key2, memlen, XOR_KEY2_LEN );
 	MOVE( memptr, memlen,MOVE_POS2);	
 

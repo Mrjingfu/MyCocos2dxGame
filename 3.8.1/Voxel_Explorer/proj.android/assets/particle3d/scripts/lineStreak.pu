@@ -1,0 +1,44 @@
+system lineStreak
+{
+    category                                    LightFX
+    technique 
+    {
+        position                                0 3 0
+        keep_local                              false
+        visual_particle_quota                   250
+        material                                Pentagram_02
+        renderer                                Billboard
+        {
+            billboard_type                      oriented_self
+        }
+        emitter                                 Point 
+        {
+            emission_rate                       40
+            angle                               360
+            time_to_live                        1
+            velocity                            dyn_random
+            {
+                min                             6
+                max                             15
+            }
+            particle_width                      dyn_random
+            {
+                min                             0.3
+                max                             1.4
+            }
+            particle_height                     dyn_random
+            {
+                min                             9
+                max                             16
+            }
+            colour                              1 0.84 0.45 1
+        }
+        affector                                Colour 
+        {
+            time_colour                         0    1 1 1 1
+            time_colour                         0.8  1 1 1 1
+            time_colour                         1    0 0 0 0
+            colour_operation                    multiply
+        }
+    }
+}

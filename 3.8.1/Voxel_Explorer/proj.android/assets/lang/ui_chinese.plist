@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>SPLASH_RES</key>
+	<string>splash_cn.png</string>
 	<key>PROP_SHOW_HP</key>
 	<string>生命值：%d</string>
 	<key>ROLE_SHOW_HP</key>
@@ -37,7 +39,7 @@
 	<key>STATUS_TEXT_EXP</key>
 	<string>+经验 %d</string>
 	<key>GAME_SERACH_EXPLAIN</key>
-	<string>请选择一个方块</string>
+	<string>请点击屏幕位置查看</string>
 	<key>GAME_MESSAGE_NOT</key>
 	<string>欢迎来到像素的%s第%d层</string>
 	<key>GAME_MESSAGE_MONSTER_ATTACK</key>
@@ -60,7 +62,7 @@
 	<string>你产生了一个暴击</string>
 	<key>GAME_MESSAGE_ROLE_DEAD</key>
 	<string>%s杀死了你...</string>
-	<key>GAME_MESSAGE_ROLE_OBTAIN_ITEM</key>
+	<key>GAME_MESSAGE_ROLE_ADD_EXP</key>
 	<string>你获得了%s</string>
 	<key>GAME_MESSAGE_LEVEL_UP</key>
 	<string>你升级了！！！</string>
@@ -119,17 +121,27 @@
 	<key>ITEM_MONEY_DESC</key>
 	<string>出售：</string>
 	<key>USE_POTION_TREAT</key>
-	<string>+%d HP</string>
+	<string>使用治疗药水,恢复%dHP</string>
 	<key>USE_POTION_MAGIC</key>
-	<string>+%d MP</string>
+	<string>使用魔法药水,恢复%dMP</string>
+	<key>USE_POTION_RECOVERY</key>
+	<string>使用恢复药水,恢复%dHP,%dMP</string>
 	<key>USE_POTION_RELIEVE</key>
-	<string>中毒状态被解除了!</string>
+	<string>使用解毒药水,中毒状态被清除了!</string>
 	<key>USE_POTION_WEAK</key>
-	<string>虚弱状态被解除了!</string>
+	<string>使用治愈药水,虚弱状态被清除了</string>
 	<key>USE_POTION_SPECIFIC</key>
-	<string>使用特性药水,部分状态被解除了!</string>
+	<string>使用特效药水,冰冻、麻痹、着火状态被清除了</string>
 	<key>USE_POTION_UNIVERSAL</key>
-	<string>使用特性药水,状态全恢复了!</string>
+	<string>使用万能药水,状态全被清除了!</string>
+	<key>USE_SCROLL_TELEPORT</key>
+	<string>使用传送卷轴,你被传送到某个地方了！</string>
+	<key>USE_SCROLL_SPEED</key>
+	<string>使用速度卷轴,速度变快了!</string>
+	<key>USE_SCROLL_STEALTH</key>
+	<string>使用传隐身卷轴,你进入隐身状态！</string>
+	<key>USE_SCROLL_DESTINY</key>
+	<string>使用命运卷轴</string>
 	<key>PLAYER_USE_GOLD_CHEST_KEY</key>
 	<string>使用了金质钥匙！</string>
 	<key>PLAYER_USE_SILVER_CHEST_KEY</key>
@@ -159,9 +171,9 @@
 	<key>FOUND_HIDDEN_WEAK_TRAP</key>
 	<string>发现了隐藏的虚弱机关！</string>
 	<key>FOUND_HIDDEN_MSG</key>
-	<string>发现了隐藏的消息！</string>
+	<string>发现了隐藏的一些信息！</string>
 	<key>FOUND_HIDDEN_ITEM</key>
-	<string>发现了隐藏的道具！</string>
+	<string>发现了隐藏的一件道具！</string>
 	<key>PLAYER_NO_COPPER_KEY</key>
 	<string>没有铜质钥匙！</string>
 	<key>PLAYER_NO_SILVER_KEY</key>
@@ -194,14 +206,40 @@
 	<string>你生病了, 能力降低了！</string>
 	<key>TRIGGER_MESSAGE_FROSEN_TRAP</key>
 	<string>你被冰冻了，你的速度降低！</string>
+	<key>DESTINY_ADDMONEY</key>
+	<string>当你展开卷轴时，有东西砸到了你头上，定睛一看原来是一包钱币。</string>
+	<key>DESTINY_TRANSPORT</key>
+	<string>你感觉一阵昏迷，恍惚之间好像有人拖拽你行走了一段距离。</string>
+	<key>DESTINY_STRONGER</key>
+	<string>超级赛亚人变身～</string>
+	<key>DESTINY_STEALTH</key>
+	<string>卷轴上写着一句话：你要学会躲在阴影里。</string>
+	<key>DESTINY_SPEEDUP</key>
+	<string>啊！这是什么，开挂了吗？</string>
+	<key>DESTINY_POISIONING</key>
+	<string>shit！卷轴上有屎，屎里有毒～</string>
+	<key>DESTINY_FIRE</key>
+	<string>当你打开“卷轴”时，卷轴着起火来～这哪是卷轴，分明是卷白磷纸。</string>
+	<key>DESTINY_FROZEN</key>
+	<string>他的剑是冷的,他的刀也是冷的,他的心是冷的,他的血是冷的～～</string>
+	<key>DESTINY_WEAK</key>
+	<string>你变的虚弱了，早就说过黄色的卷轴和风月宝鉴都要远离吗！</string>
 	<key>NPC_KNIGHT_ANSWER</key>
 	<string>武器店</string>
+	<key>NPC_CHILD_ANSWER</key>
+	<string>不要着急,开发者加班加点赶制中哦。。</string>
 	<key>NPC_SHOPGIRL_ANSWER</key>
 	<string>魔法物品店</string>
-	<key>NPC_WEIRDO_ANSWER</key>
-	<string>赌场</string>
 	<key>NPC_OLDLADY_ANSWER</key>
 	<string>炼金店</string>
+	<key>NPC_WEIRDO_ANSWER</key>
+	<string>赌场</string>
+	<key>NPC_OLDMAN_ANSWER</key>
+	<string>智者</string>
+	<key>NPC_LITTLEWITCH_ANSWER</key>
+	<string>不要着急,开发者加班加点赶制中哦。。</string>
+	<key>NPC_NURSE_ANSWER</key>
+	<string>护士</string>
 	<key>ITEM_SPLITE_COUNT</key>
 	<string>数量：%d</string>
 	<key>ITEM_BAG_DELETE</key>
@@ -211,19 +249,19 @@
 	<key>TITLE_ACHIEVE</key>
 	<string>成就</string>
 	<key>PLAYER_FALL_AND_DIE</key>
-	<string>不幸的事，你摔死了</string>
+	<string>很不幸，但你并不是第一个这样死的冒险者^_^。</string>
 	<key>GO_UPSTAIRS</key>
-	<string>你进入上一层。</string>
+	<string>你进入了上一层。</string>
 	<key>GO_UPSTAIRS_FORBIDDEN</key>
-	<string>禁止传送。</string>
+	<string>传送阵已经没有能量了～</string>
 	<key>GO_DOWNSTAIRS</key>
-	<string>你进入下一层。</string>
+	<string>你进入了下一层。</string>
 	<key>GO_BOSSROOM</key>
 	<string>进入Boos房间</string>
 	<key>GO_CHASM</key>
-	<string>是否跳入深渊呢？</string>
+	<string>你真的要跳下去么？</string>
 	<key>FALL_DOWNSTAIRS</key>
-	<string>幸运是事，你进入到下一层了</string>
+	<string>高空坠落，不死是非常幸运的。</string>
 	<key>SELECT_LEFT_DUNGEON_NODE</key>
 	<string>是选择左边开始？</string>
 	<key>SELECT_RIGHT_DUNGEON_NODE</key>
@@ -232,6 +270,10 @@
 	<string>你被传送了</string>
 	<key>STANDARD_PROTAL_NO_ENERGY</key>
 	<string>传送能量不足了</string>
+	<key>REMOVE_TRAP_INFO</key>
+	<string>是否摧毁该陷阱？</string>
+	<key>NOT_REMOVE_TRAP</key>
+	<string>该陷阱不能被摧毁？</string>
 	<key>BTN_TEXT_MAINMENU</key>
 	<string>主菜单</string>
 	<key>BTN_TEXT_SETTING</key>
@@ -262,5 +304,11 @@
 	<string>音效:</string>
 	<key>BTN_TEXT_MUSIC</key>
 	<string>音乐:</string>
+	<key>BAG_INDENTIFY_FAIL</key>
+	<string>鉴定失败！</string>
+	<key>BAG_TEXT_DESTROY</key>
+	<string>摧毁</string>
+	<key>ACHIEVE_ITEM_LOCK</key>
+	<string>未解锁</string>
 </dict>
 </plist>

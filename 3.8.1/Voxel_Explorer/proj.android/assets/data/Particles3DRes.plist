@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>P3DN_PLAYER_DEATH</key>
+	<string>explosionSystem.pu</string>
+	<key>P3DN_PLAYER_LEVELUP</key>
+	<string>spiralStars.pu</string>
+	<key>P3DN_PLAYER_USE_POTION_TAKE_EFFECT</key>
+	<string>flareShield.pu</string>
+	<key>P3DN_SMALL_PORTAL</key>
+	<string>blackHoleBlue.pu</string>
+	<key>P3DN_STANDARD_PORTAL</key>
+	<string>blackHoleRed.pu</string>
+	<key>P3DN_STRONGER_BUFFER</key>
+	<string>propulsion.pu</string>
+	<key>P3DN_STEALTH_BUFFER</key>
+	<string>woosh.pu</string>
+	<key>P3DN_SPEEDUP_BUFFER</key>
+	<string>lineStreak.pu</string>
+	<key>P3DN_POISIONING_BUFFER</key>
+	<string>bubbles.pu</string>
+	<key>P3DN_PARALYTIC_BUFFER</key>
+	<string>electroShield.pu</string>
+	<key>P3DN_FROZEN_BUFFER</key>
+	<string>lightningbolt.pu</string>
+	<key>P3DN_WEAK_BUFFER</key>
+	<string>fxPression.pu</string>
+	<key>P3DN_FIRE_BUFFER</key>
+	<string>firePlace.pu</string>
+	<key>P3DN_PLAYER_TELEPORT</key>
+	<string>teleport.pu</string>
+	<key>P3DN_BOSS_BULLET01</key>
+	<string>bullet01.pu</string>
+</dict>
+</plist>
