@@ -24,7 +24,8 @@ class RandomEventMgr : public cocos2d::Ref
     ~RandomEventMgr();
 public:
     static RandomEventMgr* getInstance();
-    bool load(const cocos2d::ValueVector& eventList);
+    bool load(const cocos2d::ValueMap& data);
+    bool save(cocos2d::ValueMap& data);
     
     const cocos2d::ValueVector& getEventList() const { return m_EventList; }
     

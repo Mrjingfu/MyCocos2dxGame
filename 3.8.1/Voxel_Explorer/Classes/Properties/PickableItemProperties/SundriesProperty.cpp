@@ -20,3 +20,12 @@ SundriesProperty::SundriesProperty(unsigned int instanceID, PickableItem::Pickab
     
     m_strPropertyTypeName = UtilityHelper::getLocalString(PICKABLE_ITEM_PROPERTY_TYPE_NAMES[m_PropertyType]);
 }
+
+bool SundriesProperty::load(const cocos2d::ValueMap& data)
+{
+    return true;
+}
+bool SundriesProperty::save(cocos2d::ValueMap& data)
+{
+    return true;
+}

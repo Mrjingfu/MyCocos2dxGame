@@ -50,3 +50,27 @@ void KeyProperty::handleIdentify()
     if(m_bIdentified)
         return;
 }
+bool KeyProperty::load(const cocos2d::ValueMap& data)
+{
+    m_PropertyType = (PickableItemPropertyType)data.at("PropertyType").asInt();
+    m_nInstanceID = data.at("InstanceID").asInt();
+    m_ItemType = (PickableItem::PickableItemType)data.at("ItemType").asInt();
+    m_nLevel = (PickableItem::PickableItemType)data.at("Level").asInt();
+    m_nValueCopper = data.at("ValueCopper").asInt();
+    m_nCopperWhenBuy = data.at("CopperWhenBuy").asInt();
+    
+    m_nCount = data.at("Count").asInt();
+    return true;
+}
+bool KeyProperty::save(cocos2d::ValueMap& data)
+{
+    data["PropertyType"] = (int)m_PropertyType;
+    data["InstanceID"] = (int)m_nInstanceID;
+    data["ItemType"] = (int)m_ItemType;
+    data["Level"] = (int)m_nLevel.GetLongValue();
+    data["ValueCopper"] = (int)m_nValueCopper.GetLongValue();
+    data["CopperWhenBuy"] = (int)m_nCopperWhenBuy.GetLongValue();
+    
+    data["Count"] = (int)m_nCount;
+    return true;
+}

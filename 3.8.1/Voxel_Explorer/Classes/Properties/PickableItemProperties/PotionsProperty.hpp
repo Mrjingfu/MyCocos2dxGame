@@ -25,6 +25,9 @@ public:
     virtual void removeCount(CChaosNumber count) { m_nCount -= count; }
     
     CChaosNumber getValue() const { return m_nValue; }
+    
+    virtual bool load(const cocos2d::ValueMap& data);
+    virtual bool save(cocos2d::ValueMap& data);
 private:
     CChaosNumber    m_nValue;
 };

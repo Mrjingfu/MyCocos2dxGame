@@ -102,6 +102,9 @@ protected:
 public:
     virtual void adjustByLevel() = 0;
     virtual void handleIdentify() = 0;
+    
+    virtual bool load(const cocos2d::ValueMap& data) = 0;
+    virtual bool save(cocos2d::ValueMap& data) = 0;
 protected:
     unsigned int                    m_nInstanceID;
     PickableItemPropertyType        m_PropertyType;         ///物品属性类型

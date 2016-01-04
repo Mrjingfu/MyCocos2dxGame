@@ -1124,11 +1124,110 @@ CChaosNumber PlayerProperty::getRandomAttack()
 {
     return cocos2d::random(getMinAttack().GetLongValue(), getMaxAttack().GetLongValue());
 }
-void PlayerProperty::load()
+bool PlayerProperty::load(const cocos2d::ValueMap& data)
 {
+    if(data.find("PlayerProperty") == data.end())
+    {
+        return initNewPlayer();
+    }
+    else
+    {
+        ValueMap playerProperty = data.at("PlayerProperty").asValueMap();
+        m_nValueCopper = playerProperty.at("ValueCopper").asInt();
+        m_nLevel = playerProperty.at("Level").asInt();
+        m_nExp = playerProperty.at("Exp").asInt();
+        
+        m_nBagMaxSpace = playerProperty.at("BagMaxSpace").asInt();
+        m_nBagExtendTimes = playerProperty.at("BagExtendTimes").asInt();
+        
+        m_snItemInstanceIDCounter = playerProperty.at("ItemInstanceIDCounter").asInt();
+        
+        ValueVector playerBag = data.at("PlayerBag").asValueVector();
+        for (Value value : playerBag) {
+            PickableItemProperty* property = nullptr;
+            PickableItemProperty::PickableItemPropertyType propertyType = (PickableItemProperty::PickableItemPropertyType)value.asValueMap().at("PropertyType").asInt();
+            PickableItem::PickableItemType itemType = (PickableItem::PickableItemType)value.asValueMap().at("ItemType").asInt();
+            int instanceId = data.at("InstanceID").asInt();
+            int level = data.at("Level").asInt();
+            bool identified = data.at("Identified").asInt();
+            if(propertyType == PickableItemProperty::PIPT_KEY)
+                property = new (std::nothrow) KeyProperty(instanceId, itemType);
+            else if(propertyType == PickableItemProperty::PIPT_WEAPON)
+                property = new (std::nothrow) WeaponProperty(instanceId, itemType, level, identified);
+            else if(propertyType == PickableItemProperty::PIPT_SECOND_WEAPON)
+                property = new (std::nothrow) SecondWeaponProperty(instanceId, itemType, level, identified);
+            else if(propertyType == PickableItemProperty::PIPT_ARMOR)
+                property = new (std::nothrow) ArmorProperty(instanceId, itemType, level, identified);
+            else if(propertyType == PickableItemProperty::PIPT_MAGIC_ORNAMENT)
+                property = new (std::nothrow) MagicOrnamentProperty(instanceId, itemType, level, identified);
+            else if(propertyType == PickableItemProperty::PIPT_SCROLL)
+                property = new (std::nothrow) ScrollProperty(instanceId, itemType);
+            else if(propertyType == PickableItemProperty::PIPT_POTIONS)
+                property = new (std::nothrow) PotionsProperty(instanceId, itemType);
+            if(!property || !property->load(value.asValueMap()))
+                return false;
+            m_Bag.push_back(property);
+        }
+        
+        m_nEquipedWeaponID = playerProperty.at("EquipedWeaponID").asInt();
+        if(m_nEquipedWeaponID.GetLongValue() != -1)
+        {
+            if(!equipWeapon(m_nEquipedWeaponID, false))
+                return false;
+        }
+        
+        m_nEquipedSecondWeaponID = playerProperty.at("EquipedSecondWeaponID").asInt();
+        if(m_nEquipedSecondWeaponID.GetLongValue() != -1)
+        {
+            if(!equipSecondWeapon(m_nEquipedSecondWeaponID, false))
+                return false;
+        }
+        
+        m_nEquipedArmorID = playerProperty.at("EquipedArmorID").asInt();
+        if(m_nEquipedArmorID.GetLongValue() != -1)
+        {
+            if(!equipArmor(m_nEquipedArmorID, false))
+                return false;
+        }
+        
+        m_nEquipedOrnamentsID = playerProperty.at("EquipedOrnamentsID").asInt();
+        if(m_nEquipedOrnamentsID.GetLongValue() != -1)
+        {
+            if(!equipOrnaments(m_nEquipedOrnamentsID, false))
+                return false;
+        }
+        
+        return true;
+    }
 }
-void PlayerProperty::save()
+bool PlayerProperty::save(cocos2d::ValueMap& data)
 {
+    ValueMap playerProperty;
+    playerProperty["ValueCopper"] = (int)m_nValueCopper.GetLongValue();
+    playerProperty["Level"] = (int)m_nLevel.GetLongValue();
+    playerProperty["Exp"] = (int)m_nExp.GetLongValue();
+    
+    playerProperty["EquipedWeaponID"] = (int)m_nEquipedWeaponID.GetLongValue();
+    playerProperty["EquipedSecondWeaponID"] = (int)m_nEquipedSecondWeaponID.GetLongValue();
+    playerProperty["EquipedArmorID"] = (int)m_nEquipedArmorID.GetLongValue();
+    playerProperty["EquipedOrnamentsID"] = (int)m_nEquipedOrnamentsID.GetLongValue();
+    
+    playerProperty["BagMaxSpace"] = (int)m_nBagMaxSpace.GetLongValue();
+    playerProperty["BagExtendTimes"] = (int)m_nBagExtendTimes.GetLongValue();
+    
+    playerProperty["ItemInstanceIDCounter"] = (int)m_snItemInstanceIDCounter;
+
+    ValueVector playerBag;
+    playerProperty["PlayerBag"] = playerBag;
+    
+    for (PickableItemProperty* property : m_Bag) {
+        ValueMap pickableItemProperty;
+        if(!property || !property->save(pickableItemProperty))
+            return false;
+        playerBag.push_back(Value(pickableItemProperty));
+    }
+    data["PlayerProperty"] = playerProperty;
+    return true;
 }
 void PlayerProperty::levelUp()
 {

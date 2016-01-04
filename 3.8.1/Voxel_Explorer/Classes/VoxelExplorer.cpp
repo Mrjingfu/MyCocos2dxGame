@@ -111,19 +111,24 @@ bool VoxelExplorer::init(Layer* pMainLayer)
     if(pMainLayer == nullptr)
         return false;
     m_pMainLayer = pMainLayer;
+    ValueMap playerData;
     ///lwwhb 临时，之后需要加载。
-    if(!RandomDungeon::getInstance()->build())
+    if(!RandomDungeon::getInstance()->load(playerData))
     {
-        CCLOGERROR("RandomDungeon build failed!");
+        CCLOGERROR("RandomDungeon load failed!");
         return false;
     }
-    ///lwwhb 临时，之后加载
-    ValueVector eventList;
-    if(!RandomEventMgr::getInstance()->load(eventList))
+    if(!RandomEventMgr::getInstance()->load(playerData))
     {
         CCLOGERROR("RandomEventMgr load failed!");
         return false;
     }
+    if (!PlayerProperty::getInstance()->load(playerData))
+    {
+        CCLOGERROR("PlayerProperty load failed!");
+        return false;
+    }
+
     if(!createLayers())
     {
         CCLOGERROR("Create layers failed!");
@@ -1872,10 +1877,6 @@ bool VoxelExplorer::createPlayer()
     DungeonNode* node = RandomDungeon::getInstance()->getCurrentDungeonNode();
     if(!node)
         return false;
-    ///lwwhb 临时
-    if (!PlayerProperty::getInstance()->initNewPlayer())
-        return false;
-    ///
     
     if(node->isBossDepth() || node->isFirstDepth())
     {

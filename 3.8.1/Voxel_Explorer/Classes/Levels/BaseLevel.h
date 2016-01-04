@@ -157,8 +157,8 @@ public:
     
     bool checkAllAreaBeExplored();
     
-    void load();
-    void save();
+    bool load(const cocos2d::ValueMap& data);
+    bool save(cocos2d::ValueMap& data);
     
 public:
     virtual void showMap(bool show) = 0;

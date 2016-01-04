@@ -73,6 +73,9 @@ public:
     {
         return m_nCurrentDepth == 1;
     }
+    void load(const cocos2d::ValueMap& data);
+    void save(cocos2d::ValueMap& data);
+    
     DUNGEON_TYPE getDungeonNodeType() const { return m_Type; }
     std::string     m_strDungeonName;       ////地城名称
     std::string     m_strDungeonBossName;   ////Boss地城名称
@@ -107,8 +110,8 @@ public:
     DungeonNode* getCurrentDungeonNode() const { return m_pCurrentNode; }
     CChaosNumber getDifficultClass() const { return m_nDifficultClass; }
     std::string  getCurrentBossName() const;
-    void load();
-    void save();
+    bool load(const cocos2d::ValueMap& data);
+    bool save(cocos2d::ValueMap& data);
 private:
     DUNGEON_TYPE generateDungeonNodeType();
     bool generateNextDungeonNode();
