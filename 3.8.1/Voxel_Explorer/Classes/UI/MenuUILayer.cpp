@@ -93,7 +93,6 @@ void MenuUILayer::onClickSetting(cocos2d::Ref *ref)
     CHECK_ACTION(ref);
     clickEffect();
     CCLOG("onTouchSetting");
-    ArchiveManager::getInstance()->loadGame();
 }
 void MenuUILayer::onClickRank(cocos2d::Ref *ref)
 {

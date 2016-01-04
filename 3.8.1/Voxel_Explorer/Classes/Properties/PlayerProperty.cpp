@@ -283,6 +283,10 @@ void PlayerProperty::setCurrentMP(CChaosNumber mp)
 }
 bool PlayerProperty::equipWeapon(CChaosNumber id, bool sound)
 {
+    if (id == m_nEquipedWeaponID ) {
+        return true;
+    }
+    
     WeaponProperty* weaponProperty = static_cast<WeaponProperty*>(getItemFromBag(id));
     if(weaponProperty)
     {
@@ -380,6 +384,9 @@ bool PlayerProperty::equipWeapon(CChaosNumber id, bool sound)
 }
 bool PlayerProperty::equipSecondWeapon(CChaosNumber id, bool sound)
 {
+    if (id == m_nEquipedSecondWeaponID ) {
+        return true;
+    }
     SecondWeaponProperty* secondWeaponProperty = static_cast<SecondWeaponProperty*>(getItemFromBag(id));
     if(secondWeaponProperty)
     {
@@ -487,6 +494,9 @@ bool PlayerProperty::equipSecondWeapon(CChaosNumber id, bool sound)
 }
 bool PlayerProperty::equipArmor(CChaosNumber id, bool sound)
 {
+    if (id == m_nEquipedArmorID ) {
+        return true;
+    }
     ArmorProperty* armorProperty = static_cast<ArmorProperty*>(getItemFromBag(id));
     if(armorProperty)
     {
@@ -564,6 +574,9 @@ bool PlayerProperty::equipArmor(CChaosNumber id, bool sound)
 }
 bool PlayerProperty::equipOrnaments(CChaosNumber id, bool sound)
 {
+    if (id == m_nEquipedSecondWeaponID ) {
+        return true;
+    }
     MagicOrnamentProperty* magicOrnamentProperty = static_cast<MagicOrnamentProperty*>(getItemFromBag(id));
     if(magicOrnamentProperty)
     {
@@ -1142,14 +1155,14 @@ bool PlayerProperty::load(const cocos2d::ValueMap& data)
         
         m_snItemInstanceIDCounter = playerProperty.at("ItemInstanceIDCounter").asInt();
         
-        ValueVector playerBag = data.at("PlayerBag").asValueVector();
+        ValueVector playerBag = playerProperty.at("PlayerBag").asValueVector();
         for (Value value : playerBag) {
             PickableItemProperty* property = nullptr;
             PickableItemProperty::PickableItemPropertyType propertyType = (PickableItemProperty::PickableItemPropertyType)value.asValueMap().at("PropertyType").asInt();
             PickableItem::PickableItemType itemType = (PickableItem::PickableItemType)value.asValueMap().at("ItemType").asInt();
-            int instanceId = data.at("InstanceID").asInt();
-            int level = data.at("Level").asInt();
-            bool identified = data.at("Identified").asInt();
+            int instanceId = value.asValueMap().at("InstanceID").asInt();
+            int level = value.asValueMap().at("Level").asInt();
+            bool identified = value.asValueMap().at("Identified").asInt();
             if(propertyType == PickableItemProperty::PIPT_KEY)
                 property = new (std::nothrow) KeyProperty(instanceId, itemType);
             else if(propertyType == PickableItemProperty::PIPT_WEAPON)
@@ -1218,14 +1231,13 @@ bool PlayerProperty::save(cocos2d::ValueMap& data)
     playerProperty["ItemInstanceIDCounter"] = (int)m_snItemInstanceIDCounter;
 
     ValueVector playerBag;
-    playerProperty["PlayerBag"] = playerBag;
-    
     for (PickableItemProperty* property : m_Bag) {
         ValueMap pickableItemProperty;
         if(!property || !property->save(pickableItemProperty))
             return false;
         playerBag.push_back(Value(pickableItemProperty));
     }
+    playerProperty["PlayerBag"] = playerBag;
     data["PlayerProperty"] = playerProperty;
     return true;
 }

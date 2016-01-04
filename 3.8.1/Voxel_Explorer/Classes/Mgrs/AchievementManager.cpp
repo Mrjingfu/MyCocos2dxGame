@@ -28,6 +28,11 @@ AchievementManager* AchievementManager::getInstance()
 }
 bool AchievementManager::load(const cocos2d::ValueMap& rootNode)
 {
+    if (!hasKey(ARCHIVE_ACHIEVEMENT_KEY,rootNode) ||rootNode.empty() )
+    {
+        return true;
+    }
+        
     cocos2d::ValueVector m_vCompleteAchieves = rootNode.at(ARCHIVE_ACHIEVEMENT_KEY).asValueVector();
 
     CCLOG("ARCHIVE_ACHIEVEMENT_KEY:%s",Value(m_vCompleteAchieves).getDescription().c_str());
@@ -53,7 +58,7 @@ bool AchievementManager::load(const cocos2d::ValueMap& rootNode)
     sortAchieves();
     return true;
 }
-void AchievementManager::save( cocos2d::ValueMap& rootNode)
+bool AchievementManager::save( cocos2d::ValueMap& rootNode)
 {
     cocos2d::ValueVector achievementVector;
     for (auto iter = m_vAllAchieves.begin() ; iter!=m_vAllAchieves.end(); iter++)
@@ -68,6 +73,7 @@ void AchievementManager::save( cocos2d::ValueMap& rootNode)
         }
     }
     rootNode.insert(cocos2d::ValueMap::value_type(ARCHIVE_ACHIEVEMENT_KEY,cocos2d::Value(achievementVector)));
+    return true;
 }
 bool AchievementManager::loadAchieveData()
 {

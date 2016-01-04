@@ -32,7 +32,7 @@ public:
     void checkAchieveUnlock(AchieveProperty* prop);
     void sortAchieves();
     virtual bool load(const cocos2d::ValueMap& rootNode );
-    virtual void save(cocos2d::ValueMap& rootNode);
+    virtual bool save(cocos2d::ValueMap& rootNode);
    
     const cocos2d::Vector<AchieveProperty*> & getAllAchieves() const{ return m_vAllAchieves;}
     AchieveProperty* getAchievement(eAchievementDetailType type);

@@ -108,7 +108,7 @@ public:
     CChaosNumber getDataStatistType(eStatistType type) const;
     
     virtual bool load(const cocos2d::ValueMap& rootNode) ;
-    virtual void save(cocos2d::ValueMap& rootNode);
+    virtual bool save(cocos2d::ValueMap& rootNode);
 private:
     CChaosNumber getDataMonsterType(eStatistType type) const;
     CChaosNumber getDataTotalType(eStatistType type) const;

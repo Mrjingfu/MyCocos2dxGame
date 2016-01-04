@@ -63,6 +63,8 @@ bool ScrollProperty::load(const cocos2d::ValueMap& data)
     m_nValueCopper = data.at("ValueCopper").asInt();
     m_nCopperWhenBuy = data.at("CopperWhenBuy").asInt();
     
+    m_bIdentified = data.at("Identified").asBool();
+    
     m_nCount = data.at("Count").asInt();
     return true;
 }
@@ -74,6 +76,8 @@ bool ScrollProperty::save(cocos2d::ValueMap& data)
     data["Level"] = (int)m_nLevel.GetLongValue();
     data["ValueCopper"] = (int)m_nValueCopper.GetLongValue();
     data["CopperWhenBuy"] = (int)m_nCopperWhenBuy.GetLongValue();
+    
+    data["Identified"] = m_bIdentified;
     
     data["Count"] = (int)m_nCount;
     return true;

@@ -12,6 +12,8 @@
 #include "StatisticsManager.hpp"
 #include "AchievementManager.h"
 #include "PlistBinaryUtil.hpp"
+#include "PlayerProperty.hpp"
+#include "RandomEventMgr.hpp"
 USING_NS_CC;
 ArchiveManager::ArchiveManager()
 {
@@ -34,37 +36,55 @@ bool  ArchiveManager::loadGame()
     std::string debugPath = cocos2d::FileUtils::getInstance()->getWritablePath()+"Debug.plist";
     CCLOG("LOADGAME:%s",getStringValueMap(gameMap,debugPath).c_str());
 #endif
-    if (gameMap.empty()) {
-        CCLOG("gamemap is null");
-        return false;
-    }
 
     //加载游戏数据
+    if(!RandomDungeon::getInstance()->load(gameMap))
+    {
+        CCLOGERROR("RandomDungeon load failed!");
+        return false;
+    }
+    if(!RandomEventMgr::getInstance()->load(gameMap))
+    {
+        CCLOGERROR("RandomEventMgr load failed!");
+        return false;
+    }
+    if (!PlayerProperty::getInstance()->load(gameMap))
+    {
+        CCLOGERROR("PlayerProperty load failed!");
+        return false;
+    }
     if (!StatisticsManager::getInstance()->load(gameMap)) {
         return false;
     }
     if (!AchievementManager::getInstance()->load(gameMap)) {
         return false;
     }
-   
 
     return true;
 }
-void  ArchiveManager::saveGame()
+bool  ArchiveManager::saveGame()
 {
     ValueMap map;
     
     //存储游戏数据
-    StatisticsManager::getInstance()->save(map);
-    AchievementManager::getInstance()->save(map);
+    if (!StatisticsManager::getInstance()->save(map))
+        return false;
+    if(!AchievementManager::getInstance()->save(map))
+        return false;
+    if (!PlayerProperty::getInstance()->save(map))
+        return false;
     
     std::string path = cocos2d::FileUtils::getInstance()->getWritablePath()+ sArchiveName;
 #if COCOS2D_DEBUG==1
     std::string debugPath = cocos2d::FileUtils::getInstance()->getWritablePath()+"Debug.plist";
     CCLOG("SAVEGAME:%s",getStringValueMap(map,debugPath).c_str());
 #endif
-    PlistBinaryUtil::getInstance()->writeValueMapToFile(map, path,true);
+   
+    if ( !PlistBinaryUtil::getInstance()->writeValueMapToFile(map, path,true)) {
+        return false;
+    }
     
+    return true;
 }
 std::string ArchiveManager::getStringValueMap(cocos2d::ValueMap& dict,const std::string &fullPath)
 {

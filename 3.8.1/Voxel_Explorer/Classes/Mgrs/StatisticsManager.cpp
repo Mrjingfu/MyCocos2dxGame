@@ -424,7 +424,12 @@ void StatisticsManager::resumeSchedu()
 
 bool StatisticsManager::load(const cocos2d::ValueMap& rootNode )
 {
-    init();
+   
+    if (!hasKey(ARCHIVE_STATISTICS,rootNode) || rootNode.empty()) {
+         init();
+        return true;
+    }
+    
     cocos2d::ValueMap statistValueMap = rootNode.at(ARCHIVE_STATISTICS).asValueMap();
     if (statistValueMap.empty()) {
         return false;
@@ -505,7 +510,7 @@ bool StatisticsManager::load(const cocos2d::ValueMap& rootNode )
     
     return true;
 }
-void StatisticsManager::save(cocos2d::ValueMap& rootNode )
+bool StatisticsManager::save(cocos2d::ValueMap& rootNode )
 {
     
     cocos2d::ValueMap statistValueMap;
@@ -590,6 +595,8 @@ void StatisticsManager::save(cocos2d::ValueMap& rootNode )
     statistValueMap.insert(cocos2d::ValueMap::value_type(STATIST_TYPE_NAME[ST_TOTAL_SPEED_UP],cocos2d::Value(int(m_nSpeedUpNum))));
     statistValueMap.insert(cocos2d::ValueMap::value_type(STATIST_TYPE_NAME[ST_TOTAL_STRONG],cocos2d::Value(int(m_nStrongNum))));
     rootNode.insert(cocos2d::ValueMap::value_type(ARCHIVE_STATISTICS,cocos2d::Value(statistValueMap)));
+    
+    return true;
 }
 CChaosNumber StatisticsManager::getDataStatistType(eStatistType type) const
 {

@@ -45,6 +45,7 @@
 #include "StatisticsManager.hpp"
 #include "SimpleAudioEngine.h"
 #include "GameUILayer.h"
+#include "ArchiveManager.h"
 USING_NS_CC;
 using namespace CocosDenshion;
 const std::string P3D_EFFECT_NAMES[] = {
@@ -111,23 +112,11 @@ bool VoxelExplorer::init(Layer* pMainLayer)
     if(pMainLayer == nullptr)
         return false;
     m_pMainLayer = pMainLayer;
-    ValueMap playerData;
+    ValueMap playerData ;
     ///lwwhb 临时，之后需要加载。
-    if(!RandomDungeon::getInstance()->load(playerData))
-    {
-        CCLOGERROR("RandomDungeon load failed!");
+
+    if(!ArchiveManager::getInstance()->loadGame())
         return false;
-    }
-    if(!RandomEventMgr::getInstance()->load(playerData))
-    {
-        CCLOGERROR("RandomEventMgr load failed!");
-        return false;
-    }
-    if (!PlayerProperty::getInstance()->load(playerData))
-    {
-        CCLOGERROR("PlayerProperty load failed!");
-        return false;
-    }
 
     if(!createLayers())
     {

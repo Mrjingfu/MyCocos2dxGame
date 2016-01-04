@@ -38,6 +38,7 @@
 #include "Npc.hpp"
 #include "StatisticsManager.hpp"
 #include "AchievePopupUI.h"
+#include "ArchiveManager.h"
 USING_NS_CC;
 GameUILayer::GameUILayer()
 {
@@ -990,6 +991,7 @@ void GameUILayer::onEventRoleDead(cocos2d::EventCustom *sender)
         DeadPopupUI* pausePopup = static_cast<DeadPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupDead));
         if (pausePopup) {
 //            pausePopup->setDarkLayerVisble(false);
+            ArchiveManager::getInstance()->saveGame();
         }
 
     });
