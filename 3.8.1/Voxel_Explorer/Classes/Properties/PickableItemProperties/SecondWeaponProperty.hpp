@@ -45,6 +45,9 @@ public:
     CChaosNumber getAddedDodgeRate() const { return m_fAddedDodgeRate; }
     
     CChaosNumber getAddedMagicItemFindRate() const { return m_fAddedMagicItemFindRate; }
+    
+    virtual bool load(const cocos2d::ValueMap& data);
+    virtual bool save(cocos2d::ValueMap& data);
 private:
     bool            m_bHasEquiped;
     

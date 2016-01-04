@@ -46,6 +46,9 @@ public:
     CChaosNumber getAddedCriticalStrikeRate() const { return m_fAddedCriticalStrikeRate; }
     
     CChaosNumber getAddedMagicItemFindRate() const { return m_fAddedMagicItemFindRate; }
+    
+    virtual bool load(const cocos2d::ValueMap& data);
+    virtual bool save(cocos2d::ValueMap& data);
 private:
     bool            m_bHasEquiped;
     

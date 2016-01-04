@@ -14,6 +14,9 @@ class SundriesProperty : public PickableItemProperty
 {
 public:
     SundriesProperty(unsigned int instanceID, PickableItem::PickableItemType type);
+    
+    virtual bool load(const cocos2d::ValueMap& data);
+    virtual bool save(cocos2d::ValueMap& data);
 };
 
 #endif /* SundriesProperty_hpp */

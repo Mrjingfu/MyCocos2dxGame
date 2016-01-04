@@ -26,9 +26,9 @@ RandomEventMgr::~RandomEventMgr()
 {
     m_EventList.clear();
 }
-bool RandomEventMgr::load(const cocos2d::ValueVector& eventList)
+bool RandomEventMgr::load(const cocos2d::ValueMap& data)
 {
-    if(eventList.empty())
+    if(data.find("RandomEventList") == data.end())
     {
         LanguageType lt= Application::getInstance()->getCurrentLanguage();
         switch (lt) {
@@ -36,15 +36,25 @@ bool RandomEventMgr::load(const cocos2d::ValueVector& eventList)
                 m_EventList = FileUtils::getInstance()->getValueVectorFromFile("random_events_chinese.plist");
                 CCASSERT(!m_EventList.empty(), "cannot create event vector!");
                 break;
-                
+                    
             default:
                 m_EventList = FileUtils::getInstance()->getValueVectorFromFile("random_events_english.plist");
                 CCASSERT(!m_EventList.empty(), "cannot create event vector!");
                 break;
         }
+        if(m_EventList.empty())
+            return false;
+        return true;
     }
     else
-        m_EventList = eventList;
+    {
+        m_EventList = data.at("RandomEventList").asValueVector();
+        return true;
+    }
+}
+bool RandomEventMgr::save(cocos2d::ValueMap& data)
+{
+    data["RandomEventList"] = m_EventList;
     return true;
 }
 cocos2d::ValueMap* RandomEventMgr::getRandomEvent()

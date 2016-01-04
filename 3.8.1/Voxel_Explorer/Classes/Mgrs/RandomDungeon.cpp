@@ -73,6 +73,35 @@ const char* DUNGEON_BOSS_NAMES[] = {
     "DN_BOSS_MAX"
 };
 
+void DungeonNode::load(const cocos2d::ValueMap& data)
+{
+    ValueMap currentDungeonNode = data.at("CurrentDungeonNode").asValueMap();
+    
+    m_strDungeonName = currentDungeonNode.at("DungeonName").asString();
+    m_strDungeonBossName = currentDungeonNode.at("DungeonBossName").asString();
+    m_nTransmutationDepth = currentDungeonNode.at("TransmutationDepth").asInt();
+    m_nCurrentDepth = currentDungeonNode.at("CurrentDepth").asInt();
+    m_nNodeDepth = currentDungeonNode.at("NodeDepth").asInt();
+    m_nTotalNum = currentDungeonNode.at("TotalNum").asInt();
+    m_Type = (DUNGEON_TYPE)(currentDungeonNode.at("DungeonType").asInt());
+    
+    m_strDungeonName = UtilityHelper::getLocalString(DUNGEON_NAMES[m_Type]);
+    m_strDungeonBossName = UtilityHelper::getLocalString(DUNGEON_BOSS_NAMES[m_Type]);
+}
+void DungeonNode::save(cocos2d::ValueMap& data)
+{
+    ValueMap currentDungeonNode;
+    currentDungeonNode["DungeonName"] = m_strDungeonName;
+    currentDungeonNode["DungeonBossName"] = m_strDungeonBossName;
+    currentDungeonNode["TransmutationDepth"] = (int)(m_nTransmutationDepth.GetLongValue());
+    currentDungeonNode["CurrentDepth"] = (int)(m_nCurrentDepth.GetLongValue());
+    currentDungeonNode["NodeDepth"] = (int)(m_nNodeDepth.GetLongValue());
+    currentDungeonNode["TotalNum"] = (int)(m_nTotalNum.GetLongValue());
+    currentDungeonNode["DungeonType"] = (int)(m_Type);
+    
+    data["CurrentDungeonNode"] = currentDungeonNode;
+}
+
 RandomDungeon* g_pRandomDungeonInstance = nullptr;
 RandomDungeon* RandomDungeon::getInstance()
 {
@@ -326,9 +355,55 @@ std::string RandomDungeon::getCurrentBossName() const
     }
     return name;
 }
-void RandomDungeon::load()
+bool RandomDungeon::load(const cocos2d::ValueMap& data)
 {
+    if(data.find("RandomDungeon") == data.end())
+    {
+        if(!build())
+        {
+            CCLOGERROR("RandomDungeon build failed!");
+            return false;
+        }
+        else
+            return true;
+    }
+    else
+    {
+        ValueMap randomDungeon = data.at("RandomDungeon").asValueMap();
+        m_nDifficultClass = randomDungeon.at("DifficultClass").asInt();
+        m_nCurrentSelectGroup = randomDungeon.at("CurrentSelectGroup").asInt();
+        ValueVector unSelectedNodes = randomDungeon.at("UnSelectedNodes").asValueVector();
+        for (Value value : unSelectedNodes ) {
+            m_UnSelected.push_back((DUNGEON_TYPE)value.asInt());
+        }
+        if(!m_pCurrentNode)
+        {
+            m_pCurrentNode = new (std::nothrow) DungeonNode();
+            if(!m_pCurrentNode)
+                return false;
+            m_pCurrentNode->retain();
+            m_pCurrentNode->load(randomDungeon);
+            m_pCurrentNode->autorelease();
+            generateNextDungeonNode();
+        }
+        return true;
+    }
 }
-void RandomDungeon::save()
+bool RandomDungeon::save(cocos2d::ValueMap& data)
 {
+    if(m_pCurrentNode)
+    {
+        ValueMap randomDungeon;
+        randomDungeon["DifficultClass"] = (int)m_nDifficultClass.GetLongValue();
+        randomDungeon["CurrentSelectGroup"] = m_nCurrentSelectGroup;
+        ValueVector unSelectedNodes;
+        for (DUNGEON_TYPE type : m_UnSelected) {
+            unSelectedNodes.push_back(Value((int)type));
+        }
+        randomDungeon["UnSelectedNodes"] = unSelectedNodes;
+        m_pCurrentNode->save(randomDungeon);
+        data["RandomDungeon"] = randomDungeon;
+        return true;
+    }
+    return false;
 }

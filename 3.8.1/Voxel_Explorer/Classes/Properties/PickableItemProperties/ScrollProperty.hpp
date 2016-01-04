@@ -24,6 +24,8 @@ public:
     virtual void addCount(CChaosNumber count) { m_nCount += count; }
     virtual void removeCount(CChaosNumber count) { m_nCount -= count; }
 
+    virtual bool load(const cocos2d::ValueMap& data);
+    virtual bool save(cocos2d::ValueMap& data);
 };
 
 #endif /* ScrollProperty_hpp */

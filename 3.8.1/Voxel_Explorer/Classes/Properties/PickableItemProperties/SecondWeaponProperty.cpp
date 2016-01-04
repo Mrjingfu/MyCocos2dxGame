@@ -337,3 +337,78 @@ CChaosNumber SecondWeaponProperty::getAddedDefense()
 {
     return -m_nAddedArmorClass.GetLongValue();
 }
+bool SecondWeaponProperty::load(const cocos2d::ValueMap& data)
+{
+    m_PropertyType = (PickableItemPropertyType)data.at("PropertyType").asInt();
+    m_nInstanceID = data.at("InstanceID").asInt();
+    m_ItemType = (PickableItem::PickableItemType)data.at("ItemType").asInt();
+    m_nLevel = (PickableItem::PickableItemType)data.at("Level").asInt();
+    m_nValueCopper = data.at("ValueCopper").asInt();
+    m_nCopperWhenBuy = data.at("CopperWhenBuy").asInt();
+    
+    m_bIdentified = data.at("Identified").asBool();
+    
+    if(m_bIdentified)
+    {
+        m_Quality = (PICKABLEITEM_QUALITY)data.at("Quality").asInt();
+        
+        ValueVector addedEffectList = data.at("AddedEffectList").asValueVector();
+        for (Value value : addedEffectList) {
+            m_AddedEffectList.push_back((ADDED_EFFECT)value.asInt());
+        }
+        
+        m_nAddedLightDistance = data.at("AddedLightDistance").asInt();
+        m_nAddedSearchDistance = data.at("AddedSearchDistance").asInt();
+        m_nAddedMaxHP = data.at("AddedMaxHP").asInt();
+        m_nAddedMaxMP = data.at("AddedMaxMP").asInt();
+        
+        m_nAddedMinAttack = data.at("AddedMinAttack").asInt();
+        m_nAddedMaxAttack = data.at("AddedMaxAttack").asInt();
+
+        m_nAddedArmorClass = data.at("AddedArmorClass").asInt();
+        
+        m_fAddedBlockRate = data.at("AddedBlockRate").asFloat();
+        m_fAddedCriticalStrikeRate = data.at("AddedCriticalStrikeRate").asFloat();
+        m_fAddedDodgeRate = data.at("AddedDodgeRate").asFloat();
+        m_fAddedMagicItemFindRate = data.at("AddedMagicItemFindRate").asFloat();
+    }
+    return true;
+}
+bool SecondWeaponProperty::save(cocos2d::ValueMap& data)
+{
+    data["PropertyType"] = (int)m_PropertyType;
+    data["InstanceID"] = (int)m_nInstanceID;
+    data["ItemType"] = (int)m_ItemType;
+    data["Level"] = (int)m_nLevel.GetLongValue();
+    data["ValueCopper"] = (int)m_nValueCopper.GetLongValue();
+    data["CopperWhenBuy"] = (int)m_nCopperWhenBuy.GetLongValue();
+    
+    data["Identified"] = m_bIdentified;
+    
+    if(m_bIdentified)
+    {
+        data["Quality"] = (int)m_Quality;
+        
+        ValueVector addedEffectList;
+        for (ADDED_EFFECT effectType : m_AddedEffectList) {
+            addedEffectList.push_back(Value((int)effectType));
+        }
+        data["AddedEffectList"] = addedEffectList;
+        
+        data["AddedLightDistance"] = (int)m_nAddedLightDistance.GetLongValue();
+        data["AddedSearchDistance"] = (int)m_nAddedSearchDistance.GetLongValue();
+        data["AddedMaxHP"] = (int)m_nAddedMaxHP.GetLongValue();
+        data["AddedMaxMP"] = (int)m_nAddedMaxMP.GetLongValue();
+        
+        data["AddedMinAttack"] = (int)m_nAddedMinAttack.GetLongValue();
+        data["AddedMaxAttack"] = (int)m_nAddedMaxAttack.GetLongValue();
+        
+        data["AddedArmorClass"] = (int)m_nAddedArmorClass.GetLongValue();
+        
+        data["AddedBlockRate"] = (int)m_fAddedBlockRate.GetFloatValue();
+        data["AddedCriticalStrikeRate"] = (int)m_fAddedCriticalStrikeRate.GetFloatValue();
+        data["AddedDodgeRate"] = (int)m_fAddedDodgeRate.GetFloatValue();
+        data["AddedMagicItemFindRate"] = (int)m_fAddedMagicItemFindRate.GetFloatValue();
+    }
+    return true;
+}

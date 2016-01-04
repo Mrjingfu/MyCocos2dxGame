@@ -485,9 +485,11 @@ void BaseLevel::playBGBossMusic()
     std::string musicName = LevelResourceManager::getInstance()->getBackgroundMusicRes("BOSS_BG");
     SimpleAudioEngine::getInstance()->playBackgroundMusic(musicName.c_str(), true);
 }
-void BaseLevel::load()
+bool BaseLevel::load(const cocos2d::ValueMap& data)
 {
+    return true;
 }
-void BaseLevel::save()
+bool BaseLevel::save(cocos2d::ValueMap& data)
 {
+    return true;
 }

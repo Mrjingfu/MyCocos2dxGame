@@ -98,8 +98,8 @@ public:
     PickableItemProperty* getItemFromBag(CChaosNumber id) const;
     
     CChaosNumber getRandomAttack();
-    void load();
-    void save();
+    bool load(const cocos2d::ValueMap& data);
+    bool save(cocos2d::ValueMap& data);
 private:
     void levelUp();
     
