@@ -444,7 +444,8 @@ void BagLayer::bagItemOpe(int currentItemId)
     bool isSucces = false;
     if (m_bIsIndetify )
     {
-        isSucces = PlayerProperty::getInstance()->indentifyItem(CChaosNumber(currentItemId));
+        if (!itemProp->isIdentified())
+            isSucces = PlayerProperty::getInstance()->indentifyItem(CChaosNumber(currentItemId));
         m_bIsIndetify =false;
         
         if (!isSucces)
@@ -461,11 +462,14 @@ void BagLayer::bagItemOpe(int currentItemId)
             return;
         }
         //统计鉴定
-        if (isSucces) {
+        if (isSucces)
+        {
             PickableItemProperty* itemprop =  PlayerProperty::getInstance()->getItemFromBag(currentItemId);
-            if (isSucces && itemprop) {
+            if (isSucces && itemprop)
+            {
                 StatisticsManager::getInstance()->addIdentifyNum();
-                if (itemprop->getAddedEffectList().size() >2) {
+                if (itemprop->getAddedEffectList().size() >2)
+                {
                     StatisticsManager::getInstance()->addIdentifyAttrNum();
                 }
                 if (itemprop->getQuality()>=PIQ_LEGEND) {

@@ -9,29 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../Classes/ThirdLibs/SuperAnim/SuperAnimNodeV2.cpp"
-            timestampString = "473156827.511173"
+            filePath = "../Classes/Properties/PlayerProperty.cpp"
+            timestampString = "473653190.265391"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "747"
-            endingLineNumber = "747"
-            landmarkName = "SuperAnimNode::update(float dt)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../Classes/Utilities/PlistBinaryUtil.cpp"
-            timestampString = "473592913.281661"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "226"
-            endingLineNumber = "226"
-            landmarkName = "PlistBinaryUtil::getValueForFile(cocos2d::Value&amp; dict,const std::string&amp; filename)"
+            startingLineNumber = "1182"
+            endingLineNumber = "1182"
+            landmarkName = "PlayerProperty::load(const cocos2d::ValueMap&amp; data)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -42,12 +26,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Properties/PlayerProperty.cpp"
-            timestampString = "473605791.765299"
+            timestampString = "473654383.037426"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "290"
-            endingLineNumber = "290"
-            landmarkName = "PlayerProperty::equipWeapon(CChaosNumber id, bool sound)"
+            startingLineNumber = "665"
+            endingLineNumber = "665"
+            landmarkName = "PlayerProperty::indentifyItem(CChaosNumber id)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -57,29 +41,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../Classes/Properties/PlayerProperty.cpp"
-            timestampString = "473605790.767662"
+            filePath = "../Classes/UI/Layer/BagLayer.cpp"
+            timestampString = "473654650.483446"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "577"
-            endingLineNumber = "577"
-            landmarkName = "PlayerProperty::equipOrnaments(CChaosNumber id, bool sound)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../Classes/Properties/PlayerProperty.cpp"
-            timestampString = "473605798.771137"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "286"
-            endingLineNumber = "286"
-            landmarkName = "PlayerProperty::equipWeapon(CChaosNumber id, bool sound)"
+            startingLineNumber = "447"
+            endingLineNumber = "447"
+            landmarkName = "BagLayer::bagItemOpe(int currentItemId)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

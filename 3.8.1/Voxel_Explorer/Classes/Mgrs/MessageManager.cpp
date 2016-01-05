@@ -46,7 +46,7 @@ void MessageManager::removeMsg(int index)
 
 bool MessageManager::isExceedMsgMax()
 {
-    return m_Msgs.size() >MESSAGE_MAX;
+    return m_Msgs.size() >=MESSAGE_MAX;
 }
 void MessageManager::clear()
 {
