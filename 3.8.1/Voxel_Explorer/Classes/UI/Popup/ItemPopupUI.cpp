@@ -22,6 +22,7 @@
 #include "BaseBoss.hpp"
 #include "AlertPopupUI.hpp"
 #include "StatisticsManager.hpp"
+#include "PopupUILayerManager.h"
 USING_NS_CC;
 ItemPopupUI::ItemPopupUI()
 {
@@ -671,6 +672,7 @@ void ItemPopupUI::updateEquipItem()
             
             m_pItemEquipDist->setVisible(true);
             m_pItemEquipDist->setString(UtilityHelper::getLocalStringForUi("ITEM_ALREDY_EQUIP"));
+            m_pItemEquipDist->setColor(Color3B(144,248,144));
         }else
             addBottomUI();
     
@@ -685,8 +687,7 @@ void ItemPopupUI::updateEquipItem()
     if (isNotEquip) {
         m_pItemEquipDist->setVisible(true);
         m_pItemEquipDist->setString(UtilityHelper::getLocalStringForUi("ITEM_NOT_EQUIP"));
-        m_pItemEquipDist->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
-        m_pItemEquipDist->setColor(PopupUILayerManager::getInstance()->getTipsColor(TIP_NEGATIVE));
+        m_pItemEquipDist->setColor(Color3B::RED);
         
 
         //不可装备 但是已经鉴定过 给一个删除按钮
@@ -739,6 +740,7 @@ void ItemPopupUI::updateUseItem()
     CCASSERT(itemprop!=nullptr, "itemprop is null!");
     if (itemprop->isStackable() && itemprop->getCount()>1) {
         m_pItemEquipDist->setVisible(true);
+        m_pItemEquipDist->setColor(Color3B(144,248,144));
         m_pItemEquipDist->setString(StringUtils::format("X%d",int(itemprop->getCount())));
 
     }
@@ -835,6 +837,7 @@ void ItemPopupUI::onClickUser(cocos2d::Ref *ref)
     if (!isItemUse) {
       
         CCLOG("使用道具失败");
+        PopupUILayerManager::getInstance()->showStatusImport(TIP_NEGATIVE, UtilityHelper::getLocalStringForUi("ITEM_USE_FAIL"));
     }
 
 }
@@ -867,6 +870,7 @@ void ItemPopupUI::onClickEquip(cocos2d::Ref *ref)
     }else{
         //装备失败 或者提前给出提示
         CCLOG("装备失败 ");
+        PopupUILayerManager::getInstance()->showStatusImport(TIP_NEGATIVE, UtilityHelper::getLocalStringForUi("ITEM_EQUIP_FAIL"));
     }
 }
 void ItemPopupUI::onClickIdentified(cocos2d::Ref *ref)
@@ -893,6 +897,7 @@ void ItemPopupUI::onClickIdentified(cocos2d::Ref *ref)
         
     }else{
         CCLOG("鉴定失败");
+        PopupUILayerManager::getInstance()->showStatusImport(TIP_NEGATIVE, UtilityHelper::getLocalStringForUi("BAG_INDENTIFY_FAIL"));
     }
     
 }
@@ -947,6 +952,9 @@ void ItemPopupUI::removeItem()
         {
             StatisticsManager::getInstance()->addDiscardEquipNum();
         }
+    }else{
+        //移除失败
+        PopupUILayerManager::getInstance()->showStatusImport(TIP_NEGATIVE, UtilityHelper::getLocalStringForUi("ITEM_DISCARD_FAIL"));
     }
 
 }

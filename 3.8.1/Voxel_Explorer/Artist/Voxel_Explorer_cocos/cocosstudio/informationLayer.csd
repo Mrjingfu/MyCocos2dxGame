@@ -48,15 +48,15 @@
                 <PreSize X="0.2778" Y="0.1556" />
                 <FileData Type="PlistSubImage" Path="ui_frame_3.png" Plist="ui_sprite.plist" />
               </AbstractNodeData>
-              <AbstractNodeData Name="info_text_message" ActionTag="1658469580" Tag="23" IconVisible="False" PercentWidthEnable="True" PercentHeightEnable="True" PercentWidthEnabled="True" PercentHeightEnabled="True" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="-270.4882" RightMargin="-273.5118" TopMargin="7.3771" BottomMargin="46.6229" FontSize="36" LabelText="asfdasfasdfasdfasfdsadfasfda" HorizontalAlignmentType="HT_Center" VerticalAlignmentType="VT_Center" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
-                <Size X="609.0000" Y="36.0000" />
+              <AbstractNodeData Name="info_text_message" ActionTag="1658469580" Tag="23" IconVisible="False" PercentWidthEnable="True" PercentHeightEnable="True" PercentWidthEnabled="True" PercentHeightEnabled="True" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="-149.4880" RightMargin="-152.5120" TopMargin="3.8800" BottomMargin="43.1200" FontSize="36" LabelText="asfdasfasdfasdfasfdsadfasfda" HorizontalAlignmentType="HT_Center" VerticalAlignmentType="VT_Center" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
+                <Size X="482.0000" Y="43.0000" />
                 <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
                 <Position X="91.5120" Y="64.6200" />
                 <Scale ScaleX="0.2800" ScaleY="0.2800" />
                 <CColor A="255" R="255" G="255" B="255" />
                 <PrePosition X="0.5084" Y="0.7180" />
-                <PreSize X="4.0222" Y="0.4000" />
-                <FontResource Type="Normal" Path="fonts/04B_03.TTF" Plist="" />
+                <PreSize X="2.6778" Y="0.4778" />
+                <FontResource Type="Normal" Path="fonts/fangz.TTF" Plist="" />
                 <OutlineColor A="255" R="255" G="0" B="0" />
                 <ShadowColor A="255" R="110" G="110" B="110" />
               </AbstractNodeData>

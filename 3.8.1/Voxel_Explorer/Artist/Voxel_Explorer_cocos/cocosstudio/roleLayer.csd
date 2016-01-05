@@ -9,10 +9,10 @@
           <AbstractNodeData Name="bg_frame" ActionTag="-1944278251" Tag="309" IconVisible="False" PercentWidthEnable="True" PercentWidthEnabled="True" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" Scale9Enable="True" LeftEage="5" RightEage="5" TopEage="5" BottomEage="5" Scale9OriginX="5" Scale9OriginY="5" Scale9Width="6" Scale9Height="6" ctype="ImageViewObjectData">
             <Size X="250.0000" Y="180.0000" />
             <Children>
-              <AbstractNodeData Name="role_frame" ActionTag="-1298418487" Tag="310" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="12.1250" RightMargin="167.8750" TopMargin="28.7560" BottomMargin="81.2440" TouchEnable="True" BackColorAlpha="102" ComboBoxIndex="1" ColorAngle="90.0000" ctype="PanelObjectData">
+              <AbstractNodeData Name="role_frame" ActionTag="-1298418487" Tag="310" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="12.1250" RightMargin="167.8750" TopMargin="28.7560" BottomMargin="81.2440" TouchEnable="True" BackColorAlpha="102" ColorAngle="90.0000" ctype="PanelObjectData">
                 <Size X="70.0000" Y="70.0000" />
                 <Children>
-                  <AbstractNodeData Name="role_icon" ActionTag="-1253602598" Tag="311" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="-16.0000" RightMargin="-16.0000" TopMargin="-35.0000" BottomMargin="-35.0000" Scale9Width="102" Scale9Height="140" ctype="ImageViewObjectData">
+                  <AbstractNodeData Name="role_icon" ActionTag="-1253602598" Tag="311" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="-16.0000" RightMargin="-16.0000" TopMargin="-35.0000" BottomMargin="-35.0000" Scale9Width="92" Scale9Height="138" ctype="ImageViewObjectData">
                     <Size X="102.0000" Y="140.0000" />
                     <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
                     <Position X="35.0000" Y="35.0000" />
@@ -178,27 +178,27 @@
                 <PreSize X="0.6000" Y="0.6667" />
                 <FileData Type="PlistSubImage" Path="ui_frame_2.png" Plist="ui_sprite.plist" />
               </AbstractNodeData>
-              <AbstractNodeData Name="role_lv_text" ActionTag="-1723414917" Tag="324" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="14.4750" RightMargin="194.5250" TopMargin="0.7380" BottomMargin="143.2620" FontSize="36" LabelText="LV" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
-                <Size X="41.0000" Y="36.0000" />
+              <AbstractNodeData Name="role_lv_text" ActionTag="-1723414917" Tag="324" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="10.4750" RightMargin="190.5250" TopMargin="-2.7620" BottomMargin="139.7620" FontSize="36" LabelText="LV" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
+                <Size X="49.0000" Y="43.0000" />
                 <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
                 <Position X="34.9750" Y="161.2620" />
                 <Scale ScaleX="0.3000" ScaleY="0.3500" />
                 <CColor A="255" R="144" G="238" B="144" />
                 <PrePosition X="0.1399" Y="0.8959" />
-                <PreSize X="0.2733" Y="0.4500" />
-                <FontResource Type="Normal" Path="fonts/04B_03.TTF" Plist="" />
+                <PreSize X="0.1960" Y="0.2389" />
+                <FontResource Type="Normal" Path="fonts/fangz.TTF" Plist="" />
                 <OutlineColor A="255" R="255" G="0" B="0" />
                 <ShadowColor A="255" R="110" G="110" B="110" />
               </AbstractNodeData>
-              <AbstractNodeData Name="role_lv_num" ActionTag="1511903146" Tag="325" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="45.5750" RightMargin="144.4250" TopMargin="1.0080" BottomMargin="142.9920" FontSize="36" LabelText="123" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
-                <Size X="60.0000" Y="36.0000" />
+              <AbstractNodeData Name="role_lv_num" ActionTag="1511903146" Tag="325" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="45.5750" RightMargin="135.4250" TopMargin="-2.4920" BottomMargin="139.4920" FontSize="36" LabelText="123" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
+                <Size X="69.0000" Y="43.0000" />
                 <AnchorPoint ScaleY="0.5000" />
                 <Position X="45.5750" Y="160.9920" />
                 <Scale ScaleX="0.3000" ScaleY="0.3000" />
                 <CColor A="255" R="255" G="255" B="255" />
                 <PrePosition X="0.1823" Y="0.8944" />
-                <PreSize X="0.4000" Y="0.4500" />
-                <FontResource Type="Normal" Path="fonts/04B_03.TTF" Plist="" />
+                <PreSize X="0.2760" Y="0.2389" />
+                <FontResource Type="Normal" Path="fonts/fangz.TTF" Plist="" />
                 <OutlineColor A="255" R="255" G="0" B="0" />
                 <ShadowColor A="255" R="110" G="110" B="110" />
               </AbstractNodeData>

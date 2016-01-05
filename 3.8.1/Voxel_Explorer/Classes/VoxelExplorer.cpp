@@ -113,7 +113,12 @@ bool VoxelExplorer::init(Layer* pMainLayer)
         return false;
     m_pMainLayer = pMainLayer;
     ValueMap playerData ;
-
+    
+    if(!NpcDataManager::getInstance()->initNpcData())
+    {
+        CCLOGERROR("load npc data failed!");
+        return false;
+    }
     if(!createLayers())
     {
         CCLOGERROR("Create layers failed!");

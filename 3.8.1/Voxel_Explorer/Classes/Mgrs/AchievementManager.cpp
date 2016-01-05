@@ -28,11 +28,12 @@ AchievementManager* AchievementManager::getInstance()
 }
 bool AchievementManager::load(const cocos2d::ValueMap& rootNode)
 {
+    //没有存档时
     if (!hasKey(ARCHIVE_ACHIEVEMENT_KEY,rootNode) ||rootNode.empty() )
     {
         return true;
     }
-        
+    //加载存档
     cocos2d::ValueVector m_vCompleteAchieves = rootNode.at(ARCHIVE_ACHIEVEMENT_KEY).asValueVector();
 
     CCLOG("ARCHIVE_ACHIEVEMENT_KEY:%s",Value(m_vCompleteAchieves).getDescription().c_str());

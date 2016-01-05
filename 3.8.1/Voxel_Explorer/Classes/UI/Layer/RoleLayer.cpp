@@ -88,6 +88,11 @@ bool RoleLayer::addEvents()
     m_pRoleDodge = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "role_prop_dodge"));
     if (!m_pRoleDodge)
         return false;
+    cocos2d::ui::ImageView*  roleImg = dynamic_cast<ui::ImageView*>(UtilityHelper::seekNodeByName(m_pRootNode, "role_icon"));
+    if (roleImg) {
+        roleImg->loadTexture("chr_sword.png",TextureResType::PLIST);
+    }
+    
     
     m_pWeaponUi = cocos2d::ui::ImageView::create();
     m_pWeaponUi->setScale9Enabled(true);

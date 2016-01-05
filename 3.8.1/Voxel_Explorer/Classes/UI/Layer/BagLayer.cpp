@@ -188,6 +188,8 @@ void BagLayer::refreshUIView()
                 itemtype ==PickableItemProperty::PIPT_ARMOR ||itemtype ==PickableItemProperty::PIPT_MAGIC_ORNAMENT) )
             {
                 if (!itemProp->isIdentified() || itemProp->getLevel() >playerLevel) {
+                    itemUi->loadTexture("ui_frame_5.png",TextureResType::PLIST);
+                    itemUi->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
                     m_BagMsgLayer->setItemNoUse(itemProp->getInstanceID(), itemUi->getPosition());
                 }
             }
@@ -444,7 +446,8 @@ void BagLayer::bagItemOpe(int currentItemId)
     bool isSucces = false;
     if (m_bIsIndetify )
     {
-        isSucces = PlayerProperty::getInstance()->indentifyItem(CChaosNumber(currentItemId));
+        if (!itemProp->isIdentified())
+            isSucces = PlayerProperty::getInstance()->indentifyItem(CChaosNumber(currentItemId));
         m_bIsIndetify =false;
         
         if (!isSucces)
@@ -461,11 +464,14 @@ void BagLayer::bagItemOpe(int currentItemId)
             return;
         }
         //统计鉴定
-        if (isSucces) {
+        if (isSucces)
+        {
             PickableItemProperty* itemprop =  PlayerProperty::getInstance()->getItemFromBag(currentItemId);
-            if (isSucces && itemprop) {
+            if (isSucces && itemprop)
+            {
                 StatisticsManager::getInstance()->addIdentifyNum();
-                if (itemprop->getAddedEffectList().size() >2) {
+                if (itemprop->getAddedEffectList().size() >2)
+                {
                     StatisticsManager::getInstance()->addIdentifyAttrNum();
                 }
                 if (itemprop->getQuality()>=PIQ_LEGEND) {

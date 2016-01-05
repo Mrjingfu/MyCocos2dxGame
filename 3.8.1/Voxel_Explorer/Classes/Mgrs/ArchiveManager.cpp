@@ -14,6 +14,8 @@
 #include "PlistBinaryUtil.hpp"
 #include "PlayerProperty.hpp"
 #include "RandomEventMgr.hpp"
+#include "RandomDungeon.hpp"
+#include "RandomEventMgr.hpp"
 USING_NS_CC;
 ArchiveManager::ArchiveManager()
 {
@@ -33,8 +35,13 @@ bool  ArchiveManager::loadGame()
 
 #if COCOS2D_DEBUG==1
     //!!!!!!!!打包一定记得检查
-    std::string debugPath = cocos2d::FileUtils::getInstance()->getWritablePath()+"Debug.plist";
-    CCLOG("LOADGAME:%s",getStringValueMap(gameMap,debugPath).c_str());
+    if (!gameMap.empty()) {
+        std::string debugPath = cocos2d::FileUtils::getInstance()->getWritablePath()+"Debug.plist";
+        CCLOG("LOADGAME:%s",getStringValueMap(gameMap,debugPath).c_str());
+        CCLOG("LOADGAME ARCHIVE PATH:%s",debugPath.c_str());
+    }else
+        CCLOGERROR("SAVEGAME  gamemap is null");
+
 #endif
 
     //加载游戏数据
@@ -54,9 +61,11 @@ bool  ArchiveManager::loadGame()
         return false;
     }
     if (!StatisticsManager::getInstance()->load(gameMap)) {
+        CCLOGERROR("StatisticsManager load failed");
         return false;
     }
     if (!AchievementManager::getInstance()->load(gameMap)) {
+        CCLOGERROR("AchievementManager load failed");
         return false;
     }
 
@@ -65,22 +74,46 @@ bool  ArchiveManager::loadGame()
 bool  ArchiveManager::saveGame()
 {
     ValueMap map;
-    
+    if(!RandomDungeon::getInstance()->save(map))
+    {
+        CCLOGERROR("RandomDungeon load failed!");
+        return false;
+    }
+    if(!RandomEventMgr::getInstance()->save(map))
+    {
+        CCLOGERROR("RandomEventMgr load failed!");
+        return false;
+    }
     //存储游戏数据
-    if (!StatisticsManager::getInstance()->save(map))
-        return false;
-    if(!AchievementManager::getInstance()->save(map))
-        return false;
     if (!PlayerProperty::getInstance()->save(map))
+    {
+        CCLOGERROR("PlayerProperty save failed");
         return false;
+    }
+    if (!StatisticsManager::getInstance()->save(map))
+    {
+        CCLOGERROR("StatisticsManager save failed");
+        return false;
+    }
+    if(!AchievementManager::getInstance()->save(map))
+    {
+        CCLOGERROR("AchievementManager save failed");
+        return false;
+    }
     
-    std::string path = cocos2d::FileUtils::getInstance()->getWritablePath()+ sArchiveName;
+    
 #if COCOS2D_DEBUG==1
-    std::string debugPath = cocos2d::FileUtils::getInstance()->getWritablePath()+"Debug.plist";
-    CCLOG("SAVEGAME:%s",getStringValueMap(map,debugPath).c_str());
+    if (!map.empty()) {
+        std::string debugPath = cocos2d::FileUtils::getInstance()->getWritablePath()+"Debug.plist";
+        CCLOG("SAVEGAME:%s",getStringValueMap(map,debugPath).c_str());
+        CCLOG("SAVEGAME ARCHIVE PATH:%s",debugPath.c_str());
+    }else
+        CCLOGERROR("SAVEGAME  gamemap is null");
 #endif
-   
+    
+   std::string path = cocos2d::FileUtils::getInstance()->getWritablePath()+ sArchiveName;
     if ( !PlistBinaryUtil::getInstance()->writeValueMapToFile(map, path,true)) {
+        CCLOGERROR("wirte Gamemap failed");
         return false;
     }
     
@@ -96,10 +129,9 @@ std::string ArchiveManager::getStringValueMap(cocos2d::ValueMap& dict,const std:
     const unsigned char* content = cocos2d::FileUtils::getInstance()->getFileData(fullPath.c_str(), "rb", &size);
     if (size <= 0 )
     {
-        CCLOG("file content is null");
+        CCLOGERROR("file content is null");
         return result;
     }
-    
     std::string sRet((char*)content,size);
     CC_SAFE_DELETE_ARRAY(content);
     return sRet;

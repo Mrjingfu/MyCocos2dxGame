@@ -237,8 +237,8 @@
           <PlistParticleFile Name="eff_page_1101.plist" />
         </Folder>
         <Project Name="settingLayer.csd" Type="Layer" />
-        <Image Name="ui_splash.png" />
         <Project Name="loadingLayer.csd" Type="Scene" />
+        <Image Name="splash_cn.png" />
       </RootFolder>
     </Group>
   </SolutionFolder>

@@ -41,7 +41,7 @@ cocos2d::ValueMap PlistBinaryUtil::getValueMapFromFile(const std::string& filena
 bool PlistBinaryUtil::writeValueMapToFile(cocos2d::ValueMap& dict, const std::string& fullPath,bool isEncrpty)
 {
     if (dict.empty()) {
-        CCLOG("dict is empty");
+        CCLOGERROR("dict is empty");
         return false;
     }
     cocos2d::Value tempValue = Value(dict);
@@ -69,7 +69,7 @@ cocos2d::ValueVector PlistBinaryUtil::getValueVectorFromFile(const std::string& 
 bool PlistBinaryUtil::writeValueVectorToFile(cocos2d::ValueVector& dict, const std::string& fullPath,bool isEncrpty)
 {
     if (dict.empty()) {
-        CCLOG("dict is empty");
+        CCLOGERROR("dict is empty");
         return false;
     }
     cocos2d::Value tempValue = Value(dict);
@@ -91,14 +91,14 @@ bool PlistBinaryUtil::wiriteValueForFile(cocos2d::Value& dict,const std::string&
     
     if (!cocos2d::FileUtils::getInstance()->isFileExist(fullPath))
     {
-        CCLOG("FILE is not exist!");
+        CCLOGERROR("FILE is not exist!");
         return false;
     }
     ssize_t size;
     const unsigned char* content = cocos2d::FileUtils::getInstance()->getFileData(fullPath.c_str(), "rb", &size);
     if (size <= 0 )
     {
-        CCLOG("file content is null");
+        CCLOGERROR("file content is null");
         return false;
     }
     
@@ -155,20 +155,20 @@ bool PlistBinaryUtil::getValueForFile(cocos2d::Value& dict,const std::string& fi
     const std::string fullPath =  cocos2d::FileUtils::getInstance()->fullPathForFilename(filename.c_str());
     
     if (fullPath.empty()) {
-        CCLOG("filename is not exist");
+        CCLOGERROR("filename is not exist");
         return false;
     }
     
     if (!cocos2d::FileUtils::getInstance()->isFileExist(fullPath))
     {
-        CCLOG("FILE is not exist!");
+        CCLOGERROR("FILE is not exist!");
         return false;
     }
     ssize_t size;
     const unsigned char* content = cocos2d::FileUtils::getInstance()->getFileData(fullPath.c_str(), "rb", &size);
     if (size <= 0 )
     {
-        CCLOG("file content is null");
+        CCLOGERROR("file content is null");
         return false;
     }
     MemoryStream readStream((const char *)content,size);
@@ -178,6 +178,8 @@ bool PlistBinaryUtil::getValueForFile(cocos2d::Value& dict,const std::string& fi
 
         //解密秘钥
         std::string encrtyKey = readStream.readString();
+        if (m_bisDebug)
+            CCLOG("parse encrtyKey=%s, begin", encrtyKey.c_str());
         
         //加密后的base64长度
         int64 base64Length = readStream.read64le();
@@ -209,10 +211,12 @@ bool PlistBinaryUtil::getValueForFile(cocos2d::Value& dict,const std::string& fi
         CCCrypto::md5((void *)dencodeOutStr, dencodelength, m_md5);
         std::string hex;
         UtilityHelper::getHexDigest(m_md5, MD5_LEN, hex);
-
+        if (m_bisDebug)
+            CCLOG("parse hex=%s, begin", hex.c_str());
+        
          if (encrtyKey.compare(hex)!=0)
          {
-             CCLOG("md5 error %s",filename.c_str());
+             CCLOGERROR("encrtyKey:%s, hex:%s",encrtyKey.c_str(),hex.c_str());
              return false;
          }
         

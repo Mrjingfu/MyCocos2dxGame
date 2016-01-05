@@ -12,12 +12,12 @@
               <AbstractNodeData Name="item_btn_equip" ActionTag="-318034849" Tag="55" IconVisible="False" PercentWidthEnable="True" PercentHeightEnable="True" PercentWidthEnabled="True" PercentHeightEnabled="True" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="6.3415" RightMargin="77.6585" TopMargin="1.5000" BottomMargin="1.5000" TouchEnable="True" FontSize="11" ButtonText="equip" Scale9Enable="True" LeftEage="4" RightEage="4" TopEage="4" BottomEage="4" Scale9OriginX="4" Scale9OriginY="4" Scale9Width="5" Scale9Height="5" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="ButtonObjectData">
                 <Size X="56.0000" Y="27.0000" />
                 <AnchorPoint ScaleY="0.5000" />
-                <Position X="6.3415" Y="15.0000" />
+                <Position X="6.3420" Y="15.0000" />
                 <Scale ScaleX="1.0000" ScaleY="1.0000" />
                 <CColor A="255" R="255" G="255" B="255" />
                 <PrePosition X="0.0453" Y="0.5000" />
                 <PreSize X="0.4000" Y="0.9000" />
-                <FontResource Type="Normal" Path="fonts/04B_03.TTF" Plist="" />
+                <FontResource Type="Normal" Path="fonts/fangz.TTF" Plist="" />
                 <TextColor A="255" R="255" G="255" B="255" />
                 <DisabledFileData Type="PlistSubImage" Path="ui_frame_11.png" Plist="ui_sprite.plist" />
                 <PressedFileData Type="PlistSubImage" Path="ui_frame_11.png" Plist="ui_sprite.plist" />
@@ -37,14 +37,15 @@
                 <ProgressBarData Type="PlistSubImage" Path="progress_margic_style.png" Plist="ui_sprite.plist" />
                 <BallNormalData Type="PlistSubImage" Path="progress_margic_bg.png" Plist="ui_sprite.plist" />
               </AbstractNodeData>
-              <AbstractNodeData Name="item_shop_item_count" ActionTag="810671219" Tag="98" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="86.4692" RightMargin="-48.4692" TopMargin="-11.6222" BottomMargin="3.6222" FontSize="36" LabelText="数量:3" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
-                <Size X="102.0000" Y="42.0000" />
+              <AbstractNodeData Name="item_shop_item_count" ActionTag="810671219" Tag="98" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="86.4640" RightMargin="-52.4640" TopMargin="-13.2260" BottomMargin="0.2260" FontSize="36" LabelText="数量:3" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
+                <Size X="106.0000" Y="43.0000" />
                 <AnchorPoint ScaleY="0.5000" />
                 <Position X="86.4640" Y="21.7260" />
                 <Scale ScaleX="0.3000" ScaleY="0.3000" />
                 <CColor A="255" R="255" G="255" B="255" />
                 <PrePosition X="0.6176" Y="0.7242" />
-                <PreSize X="0.0000" Y="0.0000" />
+                <PreSize X="0.7571" Y="1.4333" />
+                <FontResource Type="Normal" Path="fonts/fangz.TTF" Plist="" />
                 <OutlineColor A="255" R="255" G="0" B="0" />
                 <ShadowColor A="255" R="110" G="110" B="110" />
               </AbstractNodeData>

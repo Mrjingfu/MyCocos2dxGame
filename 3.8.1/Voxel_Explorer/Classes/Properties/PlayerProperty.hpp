@@ -143,6 +143,8 @@ private:
     
     bool                    m_bDirty;                 ///数据是否修改了
     
+    bool                    m_bNeedRefreshAfterCreatePlayer;
+    
 public:
     static unsigned int     m_snItemInstanceIDCounter;
 };

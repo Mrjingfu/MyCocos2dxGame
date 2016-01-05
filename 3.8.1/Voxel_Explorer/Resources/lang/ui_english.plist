@@ -238,6 +238,8 @@
 	<string>不要着急,开发者加班加点赶制中哦。。</string>
 	<key>NPC_NURSE_ANSWER</key>
 	<string>护士</string>
+	<key>NPC_NURSE_ANSWER_MESSAGE</key>
+	<string>勇者,让我给你充满能量</string>
 	<key>ITEM_SPLITE_COUNT</key>
 	<string>Count:%d</string>
 	<key>ITEM_BAG_DELETE</key>
@@ -308,5 +310,13 @@
 	<string>摧毁</string>
 	<key>ACHIEVE_ITEM_LOCK</key>
 	<string>未解锁</string>
+	<key>ITEM_USE_FAIL</key>
+	<string>使用失败!</string>
+	<key>ITEM_EQUIP_FAIL</key>
+	<string>装备失败！</string>
+	<key>ITEM_DISCARD_FAIL</key>
+	<string>丢弃失败！</string>
+	<key>GAME_INFO_FLOOR</key>
+	<string>%s %d层</string>
 </dict>
 </plist>

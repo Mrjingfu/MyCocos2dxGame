@@ -104,6 +104,9 @@ void GlobalPromptLayer::shwoGlobalPrompt(TipTypes tipType, std::string text)
     m_pLabel->setAnchorPoint(cocos2d::Vec2::ANCHOR_MIDDLE_TOP);
     m_pLabel->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
     m_pLabel->setScale(0.55);
+    m_pLabel->enableGlow(Color4B(Color3B::GREEN));
+//    m_pLabel->enableShadow(Color4B::BLUE);
+//    m_pLabel->enableOutline(cocos2d::Color4B::BLUE);
     m_pLabel->setTextColor(cocos2d::Color4B(PopupUILayerManager::getInstance()->getTipsColor(tipType)));
     cocos2d::Size fonSize = UtilityHelper::getSingleStrFontSize(m_pLabel, text);
     int charCount  = (int)(getContentSize().width/fonSize.width);

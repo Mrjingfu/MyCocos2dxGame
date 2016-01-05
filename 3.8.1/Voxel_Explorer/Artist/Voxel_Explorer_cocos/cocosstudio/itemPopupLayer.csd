@@ -22,15 +22,15 @@
               <AbstractNodeData Name="item_base_layer" ActionTag="-1752329100" Tag="96" IconVisible="False" PercentWidthEnable="True" PercentHeightEnable="True" PercentWidthEnabled="True" PercentHeightEnabled="True" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" TouchEnable="True" BackColorAlpha="102" ColorAngle="90.0000" ctype="PanelObjectData">
                 <Size X="140.0000" Y="52.0000" />
                 <Children>
-                  <AbstractNodeData Name="item_lv_num_text" ActionTag="-94841955" Tag="100" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="111.8141" RightMargin="-58.8141" TopMargin="3.9445" BottomMargin="4.0555" FontSize="36" LabelText="Lv.10" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
-                    <Size X="87.0000" Y="36.0000" />
+                  <AbstractNodeData Name="item_lv_num_text" ActionTag="-94841955" Tag="100" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="111.8180" RightMargin="-68.8180" TopMargin="4.6592" BottomMargin="4.3408" FontSize="36" LabelText="Lv.10" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
+                    <Size X="97.0000" Y="43.0000" />
                     <AnchorPoint ScaleY="1.0000" />
                     <Position X="111.8180" Y="47.3408" />
                     <Scale ScaleX="0.2500" ScaleY="0.2500" />
                     <CColor A="255" R="255" G="255" B="0" />
                     <PrePosition X="0.7987" Y="0.9104" />
-                    <PreSize X="0.2130" Y="0.4444" />
-                    <FontResource Type="Normal" Path="fonts/04B_03.TTF" Plist="" />
+                    <PreSize X="0.6929" Y="0.8269" />
+                    <FontResource Type="Normal" Path="fonts/fangz.TTF" Plist="" />
                     <OutlineColor A="255" R="255" G="0" B="0" />
                     <ShadowColor A="255" R="110" G="110" B="110" />
                   </AbstractNodeData>
@@ -50,7 +50,7 @@
                     <Size X="144.0000" Y="43.0000" />
                     <AnchorPoint ScaleY="0.5000" />
                     <Position X="43.7780" Y="4.9036" />
-                    <Scale ScaleX="0.2000" ScaleY="0.2000" />
+                    <Scale ScaleX="0.1500" ScaleY="0.1500" />
                     <CColor A="255" R="255" G="255" B="255" />
                     <PrePosition X="0.3127" Y="0.0943" />
                     <PreSize X="0.5714" Y="2.0455" />
@@ -73,21 +73,21 @@
                     <AnchorPoint ScaleX="1.0000" ScaleY="0.5000" />
                     <Position X="132.1320" Y="4.4720" />
                     <Scale ScaleX="0.2000" ScaleY="0.2000" />
-                    <CColor A="255" R="144" G="238" B="144" />
+                    <CColor A="255" R="255" G="255" B="255" />
                     <PrePosition X="0.9438" Y="0.0860" />
                     <PreSize X="0.5714" Y="2.0455" />
                     <FontResource Type="Normal" Path="fonts/fangz.TTF" Plist="" />
                     <OutlineColor A="255" R="255" G="0" B="0" />
                     <ShadowColor A="255" R="110" G="110" B="110" />
                   </AbstractNodeData>
-                  <AbstractNodeData Name="item_prop_not_idn" ActionTag="1415611447" Tag="65" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="46.3168" RightMargin="-34.3168" TopMargin="3.9424" BottomMargin="-2.9424" FontSize="36" LabelText="[未鉴定]" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
+                  <AbstractNodeData Name="item_prop_not_idn" ActionTag="1415611447" Tag="65" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="46.3120" RightMargin="-34.3120" TopMargin="4.6592" BottomMargin="4.3408" FontSize="36" LabelText="[未鉴定]" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
                     <Size X="128.0000" Y="43.0000" />
                     <AnchorPoint ScaleY="1.0000" />
                     <Position X="46.3120" Y="47.3408" />
                     <Scale ScaleX="0.2000" ScaleY="0.2000" />
                     <CColor A="255" R="255" G="0" B="0" />
                     <PrePosition X="0.3308" Y="0.9104" />
-                    <PreSize X="0.5714" Y="2.0455" />
+                    <PreSize X="0.9143" Y="0.8269" />
                     <FontResource Type="Normal" Path="fonts/fangz.TTF" Plist="" />
                     <OutlineColor A="255" R="255" G="0" B="0" />
                     <ShadowColor A="255" R="110" G="110" B="110" />

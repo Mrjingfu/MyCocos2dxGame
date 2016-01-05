@@ -334,6 +334,7 @@ void Player::removePlayerBuffer(PlayerBuffer buff)
             if(tex)
                 tex->setAliasTexParameters();
             setTexture(tex);
+            StatisticsManager::getInstance()->addWeakRecoverNum();
             PlayerProperty::getInstance()->removePlayerBuffer(buff);
             VoxelExplorer::getInstance()->removeParticle3D3DEffectFromPlayer(P3D_EFFECT_TYPE::P3D_WEAK_BUFFER);
         }
@@ -355,7 +356,6 @@ void Player::removePlayerBuffer(PlayerBuffer buff)
             if(tex)
                 tex->setAliasTexParameters();
             setTexture(tex);
-            StatisticsManager::getInstance()->addWeakRecoverNum();
             PlayerProperty::getInstance()->removePlayerBuffer(buff);
             
             VoxelExplorer::getInstance()->removeParticle3D3DEffectFromPlayer(P3D_EFFECT_TYPE::P3D_PARALYTIC_BUFFER);

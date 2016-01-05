@@ -100,7 +100,6 @@ void MenuUILayer::onClickRank(cocos2d::Ref *ref)
     CHECK_ACTION(ref);
     clickEffect();
     CCLOG("onTouchRank");
-    ArchiveManager::getInstance()->saveGame();
 //    PopupUILayerManager::getInstance()->openPopup(ePopupInfo);
 }
 void MenuUILayer::onClickStart(cocos2d::Ref *ref)
@@ -112,15 +111,15 @@ void MenuUILayer::onClickStart(cocos2d::Ref *ref)
     if (startBtn) {
         startBtn->setVisible(false);
         
-        FadeIn* fadeIn = FadeIn::create(0.5);
-        FadeOut* fadeout = FadeOut::create(0.3);
+        EaseSineOut* fadein = EaseSineOut::create(FadeIn::create(0.5));
+        EaseSineOut* fadeout = EaseSineOut::create(FadeOut::create(0.5));
         CallFunc* func = CallFunc::create([](){
             
             auto scene = GameScene::createScene();
             Director::getInstance()->replaceScene(scene);
         });
         
-        m_pEyes->runAction(Sequence::create(fadeIn, fadeout,func,nullptr));
+        m_pEyes->runAction(Sequence::create(fadein, fadeout,func,nullptr));
     }
     
     

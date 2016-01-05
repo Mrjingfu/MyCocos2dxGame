@@ -61,7 +61,7 @@ void GameInfoLayer::refreshUIView()
     if(RandomDungeon::getInstance()->getCurrentDungeonNode()->isBossDepth())
         m_pGameLevelInfoName->setString(RandomDungeon::getInstance()->getCurrentDungeonNode()->m_strDungeonBossName.c_str());
     else
-        m_pGameLevelInfoName->setString(StringUtils::format("%s %d",RandomDungeon::getInstance()->getCurrentDungeonNode()->m_strDungeonName.c_str(),int(RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nCurrentDepth)));
+        m_pGameLevelInfoName->setString(StringUtils::format(UtilityHelper::getLocalStringForUi("GAME_INFO_FLOOR").c_str(),RandomDungeon::getInstance()->getCurrentDungeonNode()->m_strDungeonName.c_str(),int(RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nCurrentDepth)));
     CChaosNumber goldNum = 0;
     CChaosNumber silverNum = 0;
     CChaosNumber copperNum = 0;
