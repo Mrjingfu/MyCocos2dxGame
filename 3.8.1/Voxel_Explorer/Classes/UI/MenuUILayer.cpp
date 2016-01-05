@@ -100,7 +100,6 @@ void MenuUILayer::onClickRank(cocos2d::Ref *ref)
     CHECK_ACTION(ref);
     clickEffect();
     CCLOG("onTouchRank");
-    ArchiveManager::getInstance()->saveGame();
 //    PopupUILayerManager::getInstance()->openPopup(ePopupInfo);
 }
 void MenuUILayer::onClickStart(cocos2d::Ref *ref)

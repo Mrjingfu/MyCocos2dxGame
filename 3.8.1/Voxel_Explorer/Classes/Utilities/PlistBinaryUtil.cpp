@@ -178,6 +178,8 @@ bool PlistBinaryUtil::getValueForFile(cocos2d::Value& dict,const std::string& fi
 
         //解密秘钥
         std::string encrtyKey = readStream.readString();
+        if (m_bisDebug)
+            CCLOG("parse encrtyKey=%s, begin", encrtyKey.c_str());
         
         //加密后的base64长度
         int64 base64Length = readStream.read64le();
@@ -209,10 +211,12 @@ bool PlistBinaryUtil::getValueForFile(cocos2d::Value& dict,const std::string& fi
         CCCrypto::md5((void *)dencodeOutStr, dencodelength, m_md5);
         std::string hex;
         UtilityHelper::getHexDigest(m_md5, MD5_LEN, hex);
-
+        if (m_bisDebug)
+            CCLOG("parse hex=%s, begin", hex.c_str());
+        
          if (encrtyKey.compare(hex)!=0)
          {
-             CCLOGERROR("md5 error %s",filename.c_str());
+             CCLOGERROR("encrtyKey:%s, hex:%s",encrtyKey.c_str(),hex.c_str());
              return false;
          }
         

@@ -610,7 +610,7 @@ bool PlayerProperty::equipOrnaments(CChaosNumber id, bool sound)
             m_fDodgeRate = MAX(0, m_fDodgeRate.GetFloatValue());
             m_fMagicItemFindRate = m_fMagicItemFindRate - m_fBasicMagicItemFindRate*oldMagicOrnamentProperty->getAddedMagicItemFindRate().GetFloatValue();
             m_fMagicItemFindRate = MAX(0, m_fBasicMagicItemFindRate.GetFloatValue());
-            magicOrnamentProperty->setEquiped(false);
+            oldMagicOrnamentProperty->setEquiped(false);
         }
         m_nEquipedOrnamentsID = id;
         

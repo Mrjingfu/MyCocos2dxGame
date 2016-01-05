@@ -167,7 +167,8 @@ void GameUILayer::onTouchEnded(cocos2d::Touch *touch, cocos2d::Event *event)
                     if (alertPopupUi)
                     {
                         alertPopupUi->setMessage(UtilityHelper::getLocalStringForUi("REMOVE_TRAP_INFO"));
-                        alertPopupUi->setPositiveListerner([](Ref* ref){
+                        alertPopupUi->setPositiveListerner([this,trapPos](Ref* ref){
+                            VoxelExplorer::getInstance()->handleRemoveTrap(trapPos);
                         },UtilityHelper::getLocalStringForUi("BAG_TEXT_DESTROY"));
                         alertPopupUi->setNegativeListerner([](Ref* ref){});
                     }
@@ -665,6 +666,7 @@ void GameUILayer::onEventFoundHidderItem(cocos2d::EventCustom *sender)
 void GameUILayer::onEventGoUpStairs(cocos2d::EventCustom *sender)
 {
      CCLOG("onEventGoUpStairs");
+     ArchiveManager::getInstance()->saveGame();
      std::string msg = UtilityHelper::getLocalStringForUi(EVENT_GO_UPSTAIRS);
      PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
 }
@@ -679,6 +681,7 @@ void GameUILayer::onEventGoUpStairsForbidden(cocos2d::EventCustom *sender)
 void GameUILayer::onEventGoDownStairs(cocos2d::EventCustom *sender)
 {
     CCLOG("onEventGoDownStairs");
+    ArchiveManager::getInstance()->saveGame();
     std::string msg = UtilityHelper::getLocalStringForUi(EVENT_GO_DOWNSTAIRS);
     PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
 }

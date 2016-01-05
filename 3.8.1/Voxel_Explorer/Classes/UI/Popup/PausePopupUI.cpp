@@ -15,6 +15,7 @@
 #include "VoxelExplorer.h"
 #include "AchievePopupUI.h"
 #include "GameUILayer.h"
+#include "ArchiveManager.h"
 USING_NS_CC;
 PausePopupUI::PausePopupUI()
 {
@@ -153,6 +154,7 @@ void PausePopupUI::onClickMainMenu(cocos2d::Ref *ref)
     CHECK_ACTION(ref);
     clickEffect();
     CCLOG("onClickMainMenu");
+    ArchiveManager::getInstance()->saveGame();
     Scene* menuScene = MenuScene::createScene();
     Director::getInstance()->replaceScene(menuScene);
     

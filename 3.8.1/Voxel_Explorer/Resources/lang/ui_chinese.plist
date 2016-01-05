@@ -310,5 +310,11 @@
 	<string>摧毁</string>
 	<key>ACHIEVE_ITEM_LOCK</key>
 	<string>未解锁</string>
+	<key>ITEM_USE_FAIL</key>
+	<string>使用失败!</string>
+	<key>ITEM_EQUIP_FAIL</key>
+	<string>装备失败！</string>
+	<key>ITEM_DISCARD_FAIL</key>
+	<string>丢弃失败！</string>
 </dict>
 </plist>
