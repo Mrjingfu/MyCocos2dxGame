@@ -20,6 +20,7 @@ public:
         SWPT_UNKNOWN
     }SecondWeaponPropertyType;
     SecondWeaponProperty(unsigned int instanceID, PickableItem::PickableItemType type, CChaosNumber level, bool identified);
+    virtual ~SecondWeaponProperty(){}
     virtual void adjustByLevel();
     virtual void handleIdentify();
     

@@ -98,8 +98,8 @@ public:
     const std::vector<ADDED_EFFECT>& getAddedEffectList() const { return m_AddedEffectList; }
 protected:
     PickableItemProperty(unsigned int instanceID, PickableItem::PickableItemType type);
-
 public:
+    virtual ~PickableItemProperty(){}
     virtual void adjustByLevel() = 0;
     virtual void handleIdentify() = 0;
     

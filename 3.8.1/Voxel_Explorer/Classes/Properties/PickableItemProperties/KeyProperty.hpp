@@ -14,7 +14,7 @@ class KeyProperty : public PickableItemProperty, public IStackable
 {
 public:
     KeyProperty(unsigned int instanceID, PickableItem::PickableItemType type);
-
+    virtual ~KeyProperty(){}
     virtual void adjustByLevel();
     virtual void handleIdentify();
     

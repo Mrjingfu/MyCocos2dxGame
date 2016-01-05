@@ -14,7 +14,7 @@ class ScrollProperty : public PickableItemProperty, public IStackable
 {
 public:
     ScrollProperty(unsigned int instanceID, PickableItem::PickableItemType type);
-    
+    virtual ~ScrollProperty(){}
     virtual void adjustByLevel();
     virtual void handleIdentify();
     

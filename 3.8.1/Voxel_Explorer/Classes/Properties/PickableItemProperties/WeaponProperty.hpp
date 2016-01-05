@@ -21,6 +21,7 @@ public:
         WPT_UNKNOWN
     }WeaponPropertyType;
     WeaponProperty(unsigned int instanceID, PickableItem::PickableItemType type, CChaosNumber level, bool identified);
+    virtual ~WeaponProperty(){}
     virtual void adjustByLevel();
     virtual void handleIdentify();
     

@@ -14,7 +14,7 @@ class MaterialProperty : public PickableItemProperty
 {
 public:
     MaterialProperty(unsigned int instanceID, PickableItem::PickableItemType type);
-    
+    virtual ~MaterialProperty(){}
     virtual bool load(const cocos2d::ValueMap& data);
     virtual bool save(cocos2d::ValueMap& data);
 };

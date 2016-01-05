@@ -87,51 +87,51 @@ bool PlayerProperty::initNewPlayer()   ///新角色初始化
         weaponProperty->adjustByLevel();
     m_Bag.push_back(weaponProperty);
     
-    WeaponProperty* weaponProperty2 = new (std::nothrow) WeaponProperty(m_snItemInstanceIDCounter++,PickableItem::PIT_DAGGER_PRO_RUBYDAGGER, 1, true);
-    if(!weaponProperty2)
-        return ret;
-    if(weaponProperty2->isIdentified())
-        weaponProperty2->adjustByLevel();
-    m_Bag.push_back(weaponProperty2);
+//    WeaponProperty* weaponProperty2 = new (std::nothrow) WeaponProperty(m_snItemInstanceIDCounter++,PickableItem::PIT_DAGGER_PRO_RUBYDAGGER, 1, true);
+//    if(!weaponProperty2)
+//        return ret;
+//    if(weaponProperty2->isIdentified())
+//        weaponProperty2->adjustByLevel();
+//    m_Bag.push_back(weaponProperty2);
 
     ///for debug
     addMoney(900000, false);
     ret = equipWeapon(itemIDCounter, false);
-    ret = addItemToBag(PickableItem::PIT_POTION_MINORHEALTH, 1, false);
-    ret = addItemToBag(PickableItem::PIT_POTION_MINORHEALTH, 1, false);
-    ret = addItemToBag(PickableItem::PIT_POTION_MINORHEALTH, 1, false);
-    ret = addItemToBag(PickableItem::PIT_POTION_MINORMANA, 1, false);
-    ret = addItemToBag(PickableItem::PIT_POTION_MINORMANA, 1, false);
-    ret = addItemToBag(PickableItem::PIT_POTION_MINORMANA, 1, false);
-    ret = addItemToBag(PickableItem::PIT_SCROLL_INDENTIFY, 1, false);
-    ret = addItemToBag(PickableItem::PIT_SCROLL_INDENTIFY, 1, false);
-    ret = addItemToBag(PickableItem::PIT_SCROLL_INDENTIFY, 1, false);
-    ret = addItemToBag(PickableItem::PIT_KEY_COPPER, 1, false);
-    ret = addItemToBag(PickableItem::PIT_KEY_COPPER, 1, false);
-    ret = addItemToBag(PickableItem::PIT_KEY_COPPER, 1, false);
-    ret = addItemToBag(PickableItem::PIT_POTION_DETOXIFICATION, 1, false);
-    ret = addItemToBag(PickableItem::PIT_POTION_SPECIFIC, 1, false);
+//    ret = addItemToBag(PickableItem::PIT_POTION_MINORHEALTH, 1, false);
+//    ret = addItemToBag(PickableItem::PIT_POTION_MINORHEALTH, 1, false);
+//    ret = addItemToBag(PickableItem::PIT_POTION_MINORHEALTH, 1, false);
+//    ret = addItemToBag(PickableItem::PIT_POTION_MINORMANA, 1, false);
+//    ret = addItemToBag(PickableItem::PIT_POTION_MINORMANA, 1, false);
+//    ret = addItemToBag(PickableItem::PIT_POTION_MINORMANA, 1, false);
+//    ret = addItemToBag(PickableItem::PIT_SCROLL_INDENTIFY, 1, false);
+//    ret = addItemToBag(PickableItem::PIT_SCROLL_INDENTIFY, 1, false);
+//    ret = addItemToBag(PickableItem::PIT_SCROLL_INDENTIFY, 1, false);
+//    ret = addItemToBag(PickableItem::PIT_KEY_COPPER, 1, false);
+//    ret = addItemToBag(PickableItem::PIT_KEY_COPPER, 1, false);
+//    ret = addItemToBag(PickableItem::PIT_KEY_COPPER, 1, false);
+//    ret = addItemToBag(PickableItem::PIT_POTION_DETOXIFICATION, 1, false);
+//    ret = addItemToBag(PickableItem::PIT_POTION_SPECIFIC, 1, false);
     ret = addItemToBag(PickableItem::PIT_POTION_HEALING, 1, false);
     
-    ret = addItemToBag(PickableItem::PIT_SCROLL_TELEPORT, 1, false);
-    ret = addItemToBag(PickableItem::PIT_SCROLL_TELEPORT, 1, false);
-    ret = addItemToBag(PickableItem::PIT_SCROLL_TELEPORT, 1, false);
-    
-    ret = addItemToBag(PickableItem::PIT_SCROLL_DESTINY, 1, false);
-    ret = addItemToBag(PickableItem::PIT_SCROLL_DESTINY, 1, false);
-    ret = addItemToBag(PickableItem::PIT_SCROLL_DESTINY, 1, false);
-    
-    ret = addItemToBag(PickableItem::PIT_SCROLL_SPEED, 1, false);
-    ret = addItemToBag(PickableItem::PIT_SCROLL_SPEED, 1, false);
-    ret = addItemToBag(PickableItem::PIT_SCROLL_SPEED, 1, false);
-    
-    ret = addItemToBag(PickableItem::PIT_SCROLL_STEALTH, 1, false);
-    ret = addItemToBag(PickableItem::PIT_SCROLL_STEALTH, 1, false);
-    ret = addItemToBag(PickableItem::PIT_SCROLL_STEALTH, 1, false);
-    
-    ret = addItemToBag(PickableItem::PIT_SCROLL_STRONGER, 1, false);
-    ret = addItemToBag(PickableItem::PIT_SCROLL_STRONGER, 1, false);
-    ret = addItemToBag(PickableItem::PIT_SCROLL_STRONGER, 1, false);
+//    ret = addItemToBag(PickableItem::PIT_SCROLL_TELEPORT, 1, false);
+//    ret = addItemToBag(PickableItem::PIT_SCROLL_TELEPORT, 1, false);
+//    ret = addItemToBag(PickableItem::PIT_SCROLL_TELEPORT, 1, false);
+//    
+//    ret = addItemToBag(PickableItem::PIT_SCROLL_DESTINY, 1, false);
+//    ret = addItemToBag(PickableItem::PIT_SCROLL_DESTINY, 1, false);
+//    ret = addItemToBag(PickableItem::PIT_SCROLL_DESTINY, 1, false);
+//    
+//    ret = addItemToBag(PickableItem::PIT_SCROLL_SPEED, 1, false);
+//    ret = addItemToBag(PickableItem::PIT_SCROLL_SPEED, 1, false);
+//    ret = addItemToBag(PickableItem::PIT_SCROLL_SPEED, 1, false);
+//    
+//    ret = addItemToBag(PickableItem::PIT_SCROLL_STEALTH, 1, false);
+//    ret = addItemToBag(PickableItem::PIT_SCROLL_STEALTH, 1, false);
+//    ret = addItemToBag(PickableItem::PIT_SCROLL_STEALTH, 1, false);
+//    
+//    ret = addItemToBag(PickableItem::PIT_SCROLL_STRONGER, 1, false);
+//    ret = addItemToBag(PickableItem::PIT_SCROLL_STRONGER, 1, false);
+//    ret = addItemToBag(PickableItem::PIT_SCROLL_STRONGER, 1, false);
     return ret;
 }
 void PlayerProperty::update(float delta)
@@ -1071,8 +1071,7 @@ bool PlayerProperty::removeStackableItemFromBag(PickableItem::PickableItemType t
                 continue;
             if((*iter)->getCount() == count)
             {
-                PickableItemProperty* property = static_cast<PickableItemProperty*>(*iter);
-                CC_SAFE_DELETE(property);
+                CC_SAFE_DELETE(*iter);
                 m_Bag.erase(iter);
                 Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_PROPERTY_DIRTY);
                 m_bDirty = true;
@@ -1097,8 +1096,7 @@ bool PlayerProperty::removeItemFromBag(CChaosNumber id)
     for (iter = m_Bag.begin(); iter != m_Bag.end(); iter++) {
         if((*iter) != nullptr && (*iter)->getInstanceID() == id.GetLongValue())
         {
-            PickableItemProperty* property = static_cast<PickableItemProperty*>(*iter);
-            CC_SAFE_DELETE(property);
+            CC_SAFE_DELETE(*iter);
             m_Bag.erase(iter);
             Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_PROPERTY_DIRTY);
             m_bDirty = true;
@@ -1135,9 +1133,7 @@ void PlayerProperty::clearBag()
 {
     std::vector<PickableItemProperty*>::iterator iter;
     for (iter = m_Bag.begin(); iter != m_Bag.end(); iter++) {
-        PickableItemProperty* property = static_cast<PickableItemProperty*>(*iter);
-        CC_SAFE_DELETE(property);
-        m_Bag.erase(iter);
+        CC_SAFE_DELETE(*iter);
     }
     m_Bag.clear();
 }

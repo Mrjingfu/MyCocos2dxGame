@@ -14,7 +14,7 @@ class PotionsProperty : public PickableItemProperty, public IStackable
 {
 public:
     PotionsProperty(unsigned int instanceID, PickableItem::PickableItemType type);
-    
+    virtual ~PotionsProperty(){}
     virtual void adjustByLevel();
     virtual void handleIdentify();
     
