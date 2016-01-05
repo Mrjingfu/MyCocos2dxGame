@@ -50,8 +50,8 @@ protected:
     cocos2d::ui::ImageView* m_pItemIcon;
     cocos2d::ui::Text*   m_pItemName;
     cocos2d::ui::Text*   m_pItemlv;
-    cocos2d::ui::Text*   m_pItemEquipDist;
-    cocos2d::ui::Text*   m_pItemNotIden;
+    cocos2d::ui::Text*   m_pItemEquipDist;  //已装备 不可装备 可使用用品的count个数 文本标签
+    cocos2d::ui::Text*   m_pItemNotIden;    //是否鉴定文本标签
     NoteUi*   m_pItemDesc;
 
     cocos2d::ui::Text*  m_pItemType;               //类型
@@ -63,8 +63,8 @@ protected:
     ItemMoneyLayer* m_pItemMoneyLayer;
     
     cocos2d::ui::Layout* m_pBottomFrame;
-    cocos2d::ui::Button* m_pBtnDiscard;
-    cocos2d::ui::Button* m_pBtnEquip;
+    cocos2d::ui::Button* m_pBtnDiscard;         //删除按钮
+    cocos2d::ui::Button* m_pBtnEquip;           //装备 鉴定 使用等按钮
     int m_nItemId;
 };
 

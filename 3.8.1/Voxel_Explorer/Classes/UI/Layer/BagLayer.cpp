@@ -188,6 +188,8 @@ void BagLayer::refreshUIView()
                 itemtype ==PickableItemProperty::PIPT_ARMOR ||itemtype ==PickableItemProperty::PIPT_MAGIC_ORNAMENT) )
             {
                 if (!itemProp->isIdentified() || itemProp->getLevel() >playerLevel) {
+                    itemUi->loadTexture("ui_frame_5.png",TextureResType::PLIST);
+                    itemUi->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
                     m_BagMsgLayer->setItemNoUse(itemProp->getInstanceID(), itemUi->getPosition());
                 }
             }

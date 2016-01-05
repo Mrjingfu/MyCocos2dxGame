@@ -277,10 +277,7 @@ void PlayerProperty::setCurrentMP(CChaosNumber mp)
 }
 bool PlayerProperty::equipWeapon(CChaosNumber id, bool sound)
 {
-    if (id == m_nEquipedWeaponID ) {
-        return true;
-    }
-    
+
     WeaponProperty* weaponProperty = static_cast<WeaponProperty*>(getItemFromBag(id));
     if(weaponProperty)
     {
@@ -289,7 +286,7 @@ bool PlayerProperty::equipWeapon(CChaosNumber id, bool sound)
             return false;
         ///卸载旧武器
         WeaponProperty* oldWeaponProperty = static_cast<WeaponProperty*>(getItemFromBag(m_nEquipedWeaponID));
-        if(oldWeaponProperty)
+        if(oldWeaponProperty && id.GetLongValue() != m_nEquipedWeaponID.GetLongValue() )
         {
             ///检测旧装备是否可卸载
             if(!oldWeaponProperty->hasEquiped() || oldWeaponProperty->isCursed())
@@ -378,9 +375,7 @@ bool PlayerProperty::equipWeapon(CChaosNumber id, bool sound)
 }
 bool PlayerProperty::equipSecondWeapon(CChaosNumber id, bool sound)
 {
-    if (id == m_nEquipedSecondWeaponID ) {
-        return true;
-    }
+
     SecondWeaponProperty* secondWeaponProperty = static_cast<SecondWeaponProperty*>(getItemFromBag(id));
     if(secondWeaponProperty)
     {
@@ -389,7 +384,7 @@ bool PlayerProperty::equipSecondWeapon(CChaosNumber id, bool sound)
             return false;
         ///卸载旧武器
         SecondWeaponProperty* oldSecondWeaponProperty = static_cast<SecondWeaponProperty*>(getItemFromBag(m_nEquipedSecondWeaponID));
-        if(oldSecondWeaponProperty)
+        if(oldSecondWeaponProperty && id.GetLongValue() != m_nEquipedSecondWeaponID.GetLongValue() )
         {
             ///检测旧装备是否可卸载
             if(!oldSecondWeaponProperty->hasEquiped() || oldSecondWeaponProperty->isCursed())
@@ -488,9 +483,6 @@ bool PlayerProperty::equipSecondWeapon(CChaosNumber id, bool sound)
 }
 bool PlayerProperty::equipArmor(CChaosNumber id, bool sound)
 {
-    if (id == m_nEquipedArmorID ) {
-        return true;
-    }
     ArmorProperty* armorProperty = static_cast<ArmorProperty*>(getItemFromBag(id));
     if(armorProperty)
     {
@@ -499,7 +491,7 @@ bool PlayerProperty::equipArmor(CChaosNumber id, bool sound)
             return false;
         ///卸载旧护具
         ArmorProperty* oldArmorProperty = static_cast<ArmorProperty*>(getItemFromBag(m_nEquipedArmorID));
-        if(oldArmorProperty)
+        if(oldArmorProperty && id.GetLongValue() != m_nEquipedArmorID.GetLongValue() )
         {
             ///检测旧装备是否可卸载
             if(!oldArmorProperty->hasEquiped() || oldArmorProperty->isCursed())
@@ -568,9 +560,7 @@ bool PlayerProperty::equipArmor(CChaosNumber id, bool sound)
 }
 bool PlayerProperty::equipOrnaments(CChaosNumber id, bool sound)
 {
-    if (id == m_nEquipedSecondWeaponID ) {
-        return true;
-    }
+
     MagicOrnamentProperty* magicOrnamentProperty = static_cast<MagicOrnamentProperty*>(getItemFromBag(id));
     if(magicOrnamentProperty)
     {
@@ -578,8 +568,8 @@ bool PlayerProperty::equipOrnaments(CChaosNumber id, bool sound)
         if(magicOrnamentProperty->hasEquiped() || magicOrnamentProperty->getLevel() > m_nLevel)
             return false;
         ///卸载旧饰品
-        SecondWeaponProperty* oldMagicOrnamentProperty = static_cast<SecondWeaponProperty*>(getItemFromBag(m_nEquipedSecondWeaponID));
-        if(oldMagicOrnamentProperty)
+        SecondWeaponProperty* oldMagicOrnamentProperty = static_cast<SecondWeaponProperty*>(getItemFromBag(m_nEquipedOrnamentsID));
+        if(oldMagicOrnamentProperty && id.GetLongValue() != m_nEquipedOrnamentsID.GetLongValue() )
         {
             ///检测旧装备是否可卸载
             if(!oldMagicOrnamentProperty->hasEquiped() || oldMagicOrnamentProperty->isCursed())

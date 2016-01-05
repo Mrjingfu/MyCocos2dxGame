@@ -14,6 +14,8 @@
 #include "PlistBinaryUtil.hpp"
 #include "PlayerProperty.hpp"
 #include "RandomEventMgr.hpp"
+#include "RandomDungeon.hpp"
+#include "RandomEventMgr.hpp"
 USING_NS_CC;
 ArchiveManager::ArchiveManager()
 {
@@ -36,6 +38,7 @@ bool  ArchiveManager::loadGame()
     if (!gameMap.empty()) {
         std::string debugPath = cocos2d::FileUtils::getInstance()->getWritablePath()+"Debug.plist";
         CCLOG("LOADGAME:%s",getStringValueMap(gameMap,debugPath).c_str());
+        CCLOG("LOADGAME ARCHIVE PATH:%s",debugPath.c_str());
     }else
         CCLOGERROR("SAVEGAME  gamemap is null");
 
@@ -71,7 +74,16 @@ bool  ArchiveManager::loadGame()
 bool  ArchiveManager::saveGame()
 {
     ValueMap map;
-    
+    if(!RandomDungeon::getInstance()->save(map))
+    {
+        CCLOGERROR("RandomDungeon load failed!");
+        return false;
+    }
+    if(!RandomEventMgr::getInstance()->save(map))
+    {
+        CCLOGERROR("RandomEventMgr load failed!");
+        return false;
+    }
     //存储游戏数据
     if (!PlayerProperty::getInstance()->save(map))
     {
@@ -94,6 +106,7 @@ bool  ArchiveManager::saveGame()
     if (!map.empty()) {
         std::string debugPath = cocos2d::FileUtils::getInstance()->getWritablePath()+"Debug.plist";
         CCLOG("SAVEGAME:%s",getStringValueMap(map,debugPath).c_str());
+        CCLOG("SAVEGAME ARCHIVE PATH:%s",debugPath.c_str());
     }else
         CCLOGERROR("SAVEGAME  gamemap is null");
 #endif

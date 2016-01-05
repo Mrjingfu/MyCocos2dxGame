@@ -187,10 +187,10 @@ void GameToolbarLayer::onClickBag(Ref* ref)
 //  PopupUILayerManager::getInstance()->openPopup(ePopupRole);
     ShopPopupUI* popupUILayer = static_cast<ShopPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupGambleShop));
     if (popupUILayer) {
-        popupUILayer->setShopTitle(EVENT_NPC_KNIGHT_ANSWER);
+        popupUILayer->setShopTitle(EVENT_NPC_WEIRDO_ANSWER);
         popupUILayer->setDarkLayerVisble(false);
     }
-    onClickDistTipsFrame(nullptr);
+    setDistTipsFrame();
 }
 void GameToolbarLayer::onClickMap(cocos2d::Ref *ref)
 {
@@ -212,13 +212,10 @@ void GameToolbarLayer::onClickMap(cocos2d::Ref *ref)
         VoxelExplorer::getInstance()->getCurrentLevel()->showMap(true);
         m_bIsOpenSmailMap = true;
     }
-    onClickDistTipsFrame(nullptr);
+    setDistTipsFrame();
 }
-void GameToolbarLayer::onClickDistTipsFrame(cocos2d::Ref *ref)
+void GameToolbarLayer::setDistTipsFrame()
 {
-//CHECK_ACTION(ref);
-//   clickEffect();
-    CCLOG("onClickSearchTipsFrame");
     if (m_pGameDistTipsFrame&& m_bIsDist) {
         m_pGameDistTipsFrame->setVisible(false);
         if (m_pMsgFrame->isVisible())
@@ -227,18 +224,26 @@ void GameToolbarLayer::onClickDistTipsFrame(cocos2d::Ref *ref)
         }
     }
     m_bIsDist = false;
+}
+void GameToolbarLayer::onClickDistTipsFrame(cocos2d::Ref *ref)
+{
+//CHECK_ACTION(ref);
+    clickEffect();
+    CCLOG("onClickSearchTipsFrame");
+    setDistTipsFrame();
     
 }
 
 void GameToolbarLayer::onClickMsg(cocos2d::Ref *ref)
 {
     CHECK_ACTION(ref);
-    clickEffect();
+    
     CCLOG("onClickMsg");
     if (m_bIsDist) {
         return;
     }
-    onClickDistTipsFrame(nullptr);
+    clickEffect();
+    setDistTipsFrame();
     if (m_pMsgFrame->isVisible())
     {
         std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("UI_BTN_CHAT_CLOSE");
@@ -258,8 +263,10 @@ void GameToolbarLayer::onClickMsg(cocos2d::Ref *ref)
 void GameToolbarLayer::onClickDist(cocos2d::Ref *ref)
 {
     CCLOG("onClickDist");
+   
     if (m_bIsDist )
         return;
+     clickEffect();
     m_bIsDist = true;
     if (m_pGameDistTipsFrame ) {
         if (m_pMsgFrame->isVisible()) {
@@ -290,10 +297,11 @@ void GameToolbarLayer::onClickPause(cocos2d::Ref *ref)
 void GameToolbarLayer::onClickSearch(cocos2d::Ref *ref)
 {
     CHECK_ACTION(ref);
-    clickEffect();
+    
     CCLOG("onClickSearch");
     if (m_bIsDist)
         return;
+    clickEffect();
     VoxelExplorer::getInstance()->searchAndCheck();
     
 }

@@ -672,6 +672,7 @@ void ItemPopupUI::updateEquipItem()
             
             m_pItemEquipDist->setVisible(true);
             m_pItemEquipDist->setString(UtilityHelper::getLocalStringForUi("ITEM_ALREDY_EQUIP"));
+            m_pItemEquipDist->setColor(Color3B(144,248,144));
         }else
             addBottomUI();
     
@@ -686,8 +687,7 @@ void ItemPopupUI::updateEquipItem()
     if (isNotEquip) {
         m_pItemEquipDist->setVisible(true);
         m_pItemEquipDist->setString(UtilityHelper::getLocalStringForUi("ITEM_NOT_EQUIP"));
-        m_pItemEquipDist->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
-        m_pItemEquipDist->setColor(PopupUILayerManager::getInstance()->getTipsColor(TIP_NEGATIVE));
+        m_pItemEquipDist->setColor(Color3B::RED);
         
 
         //不可装备 但是已经鉴定过 给一个删除按钮
@@ -740,6 +740,7 @@ void ItemPopupUI::updateUseItem()
     CCASSERT(itemprop!=nullptr, "itemprop is null!");
     if (itemprop->isStackable() && itemprop->getCount()>1) {
         m_pItemEquipDist->setVisible(true);
+        m_pItemEquipDist->setColor(Color3B(144,248,144));
         m_pItemEquipDist->setString(StringUtils::format("X%d",int(itemprop->getCount())));
 
     }

@@ -14,7 +14,7 @@
             <CColor A="255" R="255" G="255" B="255" />
             <PrePosition X="0.5000" Y="0.5000" />
             <PreSize X="1.0000" Y="1.0000" />
-            <FileData Type="Normal" Path="ui_splash.png" Plist="" />
+            <FileData Type="Normal" Path="splash_cn.png" Plist="" />
           </AbstractNodeData>
           <AbstractNodeData Name="menu_eyes" ActionTag="-1410662835" Alpha="0" Tag="10" RotationSkewX="-36.5844" RotationSkewY="-36.5861" IconVisible="False" LeftMargin="135.4745" RightMargin="-40.4745" TopMargin="333.0903" BottomMargin="25.9097" ctype="SpriteObjectData">
             <Size X="225.0000" Y="121.0000" />
@@ -87,7 +87,7 @@
             <CColor A="255" R="255" G="255" B="255" />
             <PrePosition X="0.4966" Y="0.2446" />
             <PreSize X="0.4000" Y="0.0800" />
-            <FontResource Type="Normal" Path="fonts/04B_03.TTF" Plist="" />
+            <FontResource Type="Normal" Path="fonts/fangz.TTF" Plist="" />
             <TextColor A="255" R="255" G="255" B="255" />
             <NormalFileData Type="PlistSubImage" Path="ui_frame_3.png" Plist="ui_sprite.plist" />
             <OutlineColor A="255" R="255" G="0" B="0" />

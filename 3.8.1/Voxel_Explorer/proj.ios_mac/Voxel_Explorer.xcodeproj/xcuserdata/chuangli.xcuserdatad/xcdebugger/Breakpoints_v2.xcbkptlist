@@ -9,28 +9,12 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../Classes/UI/Layer/BagLayer.cpp"
-            timestampString = "473654650.483446"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "447"
-            endingLineNumber = "447"
-            landmarkName = "BagLayer::bagItemOpe(int currentItemId)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "../Classes/UI/Popup/ItemPopupUI.cpp"
-            timestampString = "473670024.411707"
+            timestampString = "473680708.985354"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "845"
-            endingLineNumber = "845"
+            startingLineNumber = "852"
+            endingLineNumber = "852"
             landmarkName = "ItemPopupUI::onClickEquip(cocos2d::Ref *ref)"
             landmarkType = "5">
          </BreakpointContent>
@@ -41,13 +25,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../Classes/Properties/PlayerProperty.cpp"
-            timestampString = "473668159.167884"
+            filePath = "../Classes/UI/Popup/PausePopupUI.cpp"
+            timestampString = "473681986.746018"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1142"
-            endingLineNumber = "1142"
-            landmarkName = "PlayerProperty::load(const cocos2d::ValueMap&amp; data)"
+            startingLineNumber = "157"
+            endingLineNumber = "157"
+            landmarkName = "PausePopupUI::onClickMainMenu(cocos2d::Ref *ref)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -58,12 +42,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Properties/PlayerProperty.cpp"
-            timestampString = "473668197.522525"
+            timestampString = "473683154.893457"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1186"
-            endingLineNumber = "1186"
-            landmarkName = "PlayerProperty::load(const cocos2d::ValueMap&amp; data)"
+            startingLineNumber = "281"
+            endingLineNumber = "281"
+            landmarkName = "PlayerProperty::equipWeapon(CChaosNumber id, bool sound)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

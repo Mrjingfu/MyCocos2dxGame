@@ -427,6 +427,8 @@ void GameUILayer::onEventNpcLittleWitchAnsWer(cocos2d::EventCustom *sender)
     Npc* npc = static_cast<Npc*>(sender->getUserData());
     if (npc)
     {
+        m_pNpcPropLayer->setVisible(true);
+        m_pNpcPropLayer->setNpc(npc);
         AlertPopupUI* alertPopup = static_cast<AlertPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupAlert));
         if (alertPopup) {
             alertPopup->setMessage(UtilityHelper::getLocalStringForUi(EVENT_NPC_LITTLEWITCH_ANSWER));
@@ -447,7 +449,19 @@ void GameUILayer::onEventNpcNurseAnsWer(cocos2d::EventCustom *sender)
     Npc* npc = static_cast<Npc*>(sender->getUserData());
     if (npc)
     {
-        
+        m_pNpcPropLayer->setVisible(true);
+        m_pNpcPropLayer->setNpc(npc);
+        AlertPopupUI* alertPopup = static_cast<AlertPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupAlert));
+        if (alertPopup) {
+            alertPopup->setMessage(UtilityHelper::getLocalStringForUi("NPC_NURSE_ANSWER_MESSAGE"));
+            alertPopup->setPositiveListerner([this,npc](Ref* ref){
+                npc->setState(Npc::NPCS_IDLE);
+                if (m_pNpcPropLayer) {
+                    m_pNpcPropLayer->setVisible(false);
+                }
+                
+            });
+        }
     }
 }
 void GameUILayer::onEventDesTinyAddMoney(cocos2d::EventCustom *sender)
@@ -1192,7 +1206,9 @@ void GameUILayer::onEvenetAchieveComplete(cocos2d::EventCustom *sender)
         std::string name = achieveProp->getAchieveName();
         std::string targetDesc = achieveProp->getTargetDesc();
         PopupUILayerManager::getInstance()->showAchieveItem(icon, name, targetDesc);
+        m_pGameToolBarLayer->sendMessage(targetDesc,PopupUILayerManager::getInstance()->getTipsColor(TIP_POSITIVE));
     }
+    
 }
 
 void GameUILayer::setCharacterPropLayerVisible(bool isMonster, bool isNpc, bool isBoss)

@@ -24,6 +24,7 @@ public:
     //添加游戏文本信息
     void sendMessage(std::string msg,cocos2d::Color3B msgColor = cocos2d::Color3B::WHITE);
     bool isOpenDist(){return m_bIsDist;};
+    void setDistTipsFrame();
     void onClickDistTipsFrame(Ref* ref = nullptr);
 private:
     void onClickBag(Ref* ref);

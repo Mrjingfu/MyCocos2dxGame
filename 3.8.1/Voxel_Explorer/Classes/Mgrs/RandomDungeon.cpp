@@ -211,11 +211,6 @@ bool RandomDungeon::generateNextDungeonNode()
         CCLOGERROR("load level resource failed!");
         return false;
     }
-    if(!NpcDataManager::getInstance()->initNpcData())
-    {
-        CCLOGERROR("load npc data failed!");
-        return false;
-    }
     return true;
 }
 DUNGEON_TYPE RandomDungeon::generateDungeonNodeType()

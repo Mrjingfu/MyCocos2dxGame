@@ -117,7 +117,12 @@ bool VoxelExplorer::init(Layer* pMainLayer)
 
     if(!ArchiveManager::getInstance()->loadGame())
         return false;
-
+    
+    if(!NpcDataManager::getInstance()->initNpcData())
+    {
+        CCLOGERROR("load npc data failed!");
+        return false;
+    }
     if(!createLayers())
     {
         CCLOGERROR("Create layers failed!");
