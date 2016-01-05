@@ -526,8 +526,8 @@ bool WeaponProperty::save(cocos2d::ValueMap& data)
         data["AttackDiceNum"] = (int)m_nAttackDiceNum.GetLongValue();
         data["AttackDiceFaceNum"] = (int)m_nAttackDiceFaceNum.GetLongValue();
         
-        data["AddedCriticalStrikeRate"] = (int)m_fAddedCriticalStrikeRate.GetFloatValue();
-        data["AddedMagicItemFindRate"] = (int)m_fAddedMagicItemFindRate.GetFloatValue();
+        data["AddedCriticalStrikeRate"] = m_fAddedCriticalStrikeRate.GetFloatValue();
+        data["AddedMagicItemFindRate"] = m_fAddedMagicItemFindRate.GetFloatValue();
     }
     return true;
 }

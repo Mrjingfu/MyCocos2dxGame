@@ -130,7 +130,7 @@
 		<key>ATTACK</key>
 		<string>bat_attack.wav</string>
 		<key>BEATTACKED</key>
-		<string>bat_beattack.wav</string>
+		<string>bat_beattacked.wav</string>
 		<key>DEATH</key>
 		<string>bat_death.wav</string>
 	</dict>

@@ -491,7 +491,10 @@ void StandardLevel::assignAreasType()
     }
     
     ////设置开始区域为探索区域
-    m_AreaEntrance->updateAreaFogOfWar(this, true);
+    if(VoxelExplorer::getInstance()->isHasDownStairs())
+        m_AreaEntrance->updateAreaFogOfWar(this, true);
+    else
+        m_AreaExit->updateAreaFogOfWar(this, true);
 }
 void StandardLevel::assignSpecialArea(Area* area)
 {
@@ -579,6 +582,7 @@ void StandardLevel::generate()
     }
     placeTraps();           ///放置陷阱
     generateSpawnPoint();   ///生成出生点
+    generateReturnPoint();   ///生成返回点
 }
 bool StandardLevel::createUseableItems(Area* area)
 {
@@ -802,11 +806,11 @@ bool StandardLevel::decorateSpecialArea(Area* area)
                     {
                         if(!createEliteMonster(tileIndex))
                             return false;
-                        else
-                        {
-                            i--;
-                            continue;
-                        }
+                    }
+                    else
+                    {
+                        i--;
+                        continue;
                     }
                 }
             }
@@ -1323,6 +1327,13 @@ void StandardLevel::generateSpawnPoint()
     for (int i = 0; i<m_Map.size()-1; i++) {
         if(m_Map[i].m_Type == TerrainTile::TT_ENTRANCE)
             m_spawnPoint = Vec2((m_Map[i].m_nX+1)*TerrainTile::CONTENT_SCALE,(m_Map[i].m_nY)*TerrainTile::CONTENT_SCALE);
+    }
+}
+void StandardLevel::generateReturnPoint()
+{
+    for (int i = 0; i<m_Map.size()-1; i++) {
+        if(m_Map[i].m_Type == TerrainTile::TT_EXIT)
+            m_returnPoint = Vec2((m_Map[i].m_nX-1)*TerrainTile::CONTENT_SCALE,(m_Map[i].m_nY)*TerrainTile::CONTENT_SCALE);
     }
 }
 int StandardLevel::randomMonsterRespawnCell()

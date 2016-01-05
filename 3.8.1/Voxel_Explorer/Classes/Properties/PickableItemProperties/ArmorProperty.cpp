@@ -264,8 +264,8 @@ bool ArmorProperty::save(cocos2d::ValueMap& data)
         
         data["AddedArmorClass"] = (int)m_nAddedArmorClass.GetLongValue();
 
-        data["AddedDodgeRate"] = (int)m_fAddedDodgeRate.GetFloatValue();
-        data["AddedMagicItemFindRate"] = (int)m_fAddedMagicItemFindRate.GetFloatValue();
+        data["AddedDodgeRate"] = m_fAddedDodgeRate.GetFloatValue();
+        data["AddedMagicItemFindRate"] = m_fAddedMagicItemFindRate.GetFloatValue();
     }
     return true;
 }

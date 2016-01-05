@@ -45,7 +45,6 @@
 #include "StatisticsManager.hpp"
 #include "SimpleAudioEngine.h"
 #include "GameUILayer.h"
-#include "ArchiveManager.h"
 USING_NS_CC;
 using namespace CocosDenshion;
 const std::string P3D_EFFECT_NAMES[] = {
@@ -101,6 +100,7 @@ VoxelExplorer::VoxelExplorer()
     
     m_pPlayer = nullptr;
     m_bIsGamePause = false;
+    m_bHasDownStairs = true;
 }
 VoxelExplorer::~VoxelExplorer()
 {
@@ -113,10 +113,6 @@ bool VoxelExplorer::init(Layer* pMainLayer)
         return false;
     m_pMainLayer = pMainLayer;
     ValueMap playerData ;
-    ///lwwhb 临时，之后需要加载。
-
-    if(!ArchiveManager::getInstance()->loadGame())
-        return false;
 
     if(!createLayers())
     {
@@ -144,10 +140,6 @@ bool VoxelExplorer::init(Layer* pMainLayer)
         return false;
     }
     return true;
-}
-
-void VoxelExplorer::destroy()
-{
 }
 void VoxelExplorer::update(float delta)
 {
@@ -707,7 +699,7 @@ void VoxelExplorer::shakeScreen()     ////屏幕晃动
 {
     if(m_pShakeLayer)
     {
-        ScreenShake* shake = ScreenShake::create(0.2f, 0.8, 0.2, 0.8);
+        ScreenShake* shake = ScreenShake::create(0.5f, 0.8, 0.2, 0.8);
         m_pShakeLayer->runAction(shake);
     }
 }
@@ -930,6 +922,10 @@ void VoxelExplorer::handleDoor(const cocos2d::Vec2& mapPos)
                 {
                     door->setDoorState(BaseDoor::DS_CLOSED);
                     m_pCurrentLevel->setTerrainTileType(mapPos.x, mapPos.y, TerrainTile::TT_DOOR);
+                    
+                    std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("SECRET_FOUND");
+                    SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+                    
                     Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_FOUND_HIDDEN_DOOR);
                     StatisticsManager::getInstance()->addHideInfoNum(StatisticsManager::eHideInfoType::HIT_DOOR);
                     return;
@@ -1107,7 +1103,7 @@ void VoxelExplorer::handleUseUseableItem(const cocos2d::Vec2& mapPos)
     }
     if(m_pNPCsLayer)
     {
-        for (const auto& child : m_pUseableItemsLayer->getChildren())
+        for (const auto& child : m_pNPCsLayer->getChildren())
         {
             Npc* npc = dynamic_cast<Npc*>(child);
             if(npc && npc->getPosInMap() == mapPos)
@@ -1569,9 +1565,10 @@ void VoxelExplorer::handleUpstairs()
     if(RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nCurrentDepth > 1)
     {
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_GO_DOWNSTAIRS);
+        m_bHasDownStairs = false;
         RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nCurrentDepth -= 1;
-        //auto scene = GameScene::createScene();
-        Director::getInstance()->popScene();
+        auto scene = GameScene::createScene();
+        Director::getInstance()->replaceScene(scene);
     }
     else
     {
@@ -1583,16 +1580,16 @@ void VoxelExplorer::handleDownstairs()
     if(RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nCurrentDepth < RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nTotalNum)
     {
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_GO_DOWNSTAIRS);
+        m_bHasDownStairs = true;
         RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nCurrentDepth += 1;
         auto scene = GameScene::createScene();
-        
-        Director::getInstance()->pushScene(scene);
-        //Director::getInstance()->replaceScene(scene);
+        Director::getInstance()->replaceScene(scene);
     }
     else
     {
         ///加载boss房间
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_GO_DOWNSTAIRS);
+         m_bHasDownStairs = true;
         auto scene = GameScene::createScene();
         Director::getInstance()->popToRootScene();
         Director::getInstance()->replaceScene(scene);
@@ -1622,6 +1619,7 @@ void VoxelExplorer::handleGoChasm()
             {
                 StatisticsManager::getInstance()->addNotFailDeadNum();
                 Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_FALL_DOWNSTAIRS);
+                m_bHasDownStairs = true;
                 RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nCurrentDepth += 1;
                 auto scene = GameScene::createScene();
                 Director::getInstance()->replaceScene(scene);
@@ -1631,6 +1629,7 @@ void VoxelExplorer::handleGoChasm()
     else
     {
         m_pPlayer->fallAndDie();
+        StatisticsManager::getInstance()->addRoleDeadNum(StatisticsManager::eRoleDeadType::RET_FAIL);
     }
 }
 void VoxelExplorer::handleRemoveTrap(const cocos2d::Vec2& mapPos)
@@ -1875,21 +1874,42 @@ bool VoxelExplorer::createPlayer()
     
     if(node->isBossDepth() || node->isFirstDepth())
     {
-        VoxelExplorer::getInstance()->addParticle3DEffect(Vec3(m_pCurrentLevel->getSpawnPoint().x, -0.5f*TerrainTile::CONTENT_SCALE, -m_pCurrentLevel->getSpawnPoint().y), P3D_PLAYER_TELEPORT);
-        std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("USE_SCROLL");
-        SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+        if(m_bHasDownStairs)
+        {
+            VoxelExplorer::getInstance()->addParticle3DEffect(Vec3(m_pCurrentLevel->getSpawnPoint().x, -0.5f*TerrainTile::CONTENT_SCALE, -m_pCurrentLevel->getSpawnPoint().y), P3D_PLAYER_TELEPORT);
+            std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("USE_SCROLL");
+            SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+        }
     }
     
     m_pPlayer = Player::create("chr_sword.c3b");
     if(!m_pPlayer)
         return false;
-    m_pPlayer->setPosition3D(Vec3(m_pCurrentLevel->getSpawnPoint().x, -0.5f*TerrainTile::CONTENT_SCALE, -m_pCurrentLevel->getSpawnPoint().y));
-    if(node->m_Type == DT_CAVE || node->m_Type == DT_TOMB)
-        m_pPlayer->setRotation3D(Vec3(0,-90,0));
-    else if(node->m_Type == DT_MINES)
-        m_pPlayer->setRotation3D(Vec3(0,0,0));
+    if(!PlayerProperty::getInstance()->refreshAfterCreatePlayer())
+    {
+        CCLOGERROR("refreshAfterCreatePlayer  failed!");
+        return false;
+    }
+    if(m_bHasDownStairs)
+    {
+        m_pPlayer->setPosition3D(Vec3(m_pCurrentLevel->getSpawnPoint().x, -0.5f*TerrainTile::CONTENT_SCALE, -m_pCurrentLevel->getSpawnPoint().y));
+        if(node->m_Type == DT_CAVE || node->m_Type == DT_TOMB)
+            m_pPlayer->setRotation3D(Vec3(0,-90,0));
+        else if(node->m_Type == DT_MINES)
+            m_pPlayer->setRotation3D(Vec3(0,0,0));
+        else
+            m_pPlayer->setRotation3D(Vec3(0,90,0));
+    }
     else
-        m_pPlayer->setRotation3D(Vec3(0,90,0));
+    {
+        m_pPlayer->setPosition3D(Vec3(m_pCurrentLevel->getReturnPoint().x, -0.5f*TerrainTile::CONTENT_SCALE, -m_pCurrentLevel->getReturnPoint().y));
+        if(node->m_Type == DT_CAVE || node->m_Type == DT_TOMB)
+            m_pPlayer->setRotation3D(Vec3(0,90,0));
+        else if(node->m_Type == DT_MINES)
+            m_pPlayer->setRotation3D(Vec3(0,0,0));
+        else
+            m_pPlayer->setRotation3D(Vec3(0,-90,0));
+    }
     m_pPlayer->addTerrainTileFlag(TileInfo::ATTACKABLE);
     m_p3DLayer->addChild(m_pPlayer);
     

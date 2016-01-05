@@ -103,3 +103,10 @@ void TombLevel::generateSpawnPoint()
             m_spawnPoint = Vec2((m_Map[i].m_nX-1)*TerrainTile::CONTENT_SCALE,(m_Map[i].m_nY)*TerrainTile::CONTENT_SCALE);
     }
 }
+void TombLevel::generateReturnPoint()
+{
+    for (int i = 0; i<m_Map.size()-1; i++) {
+        if(m_Map[i].m_Type == TerrainTile::TT_EXIT)
+            m_returnPoint = Vec2((m_Map[i].m_nX+1)*TerrainTile::CONTENT_SCALE,(m_Map[i].m_nY)*TerrainTile::CONTENT_SCALE);
+    }
+}

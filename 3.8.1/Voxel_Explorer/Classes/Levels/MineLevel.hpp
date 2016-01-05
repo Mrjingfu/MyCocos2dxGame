@@ -22,6 +22,7 @@ public:
     virtual void createSiegeMonsters(const cocos2d::Vec2& pos) override;
     
     virtual void generateSpawnPoint() override;
+    virtual void generateReturnPoint() override;
 };
 
 #endif /* MineLevel_hpp */

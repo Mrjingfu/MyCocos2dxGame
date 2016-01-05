@@ -405,10 +405,10 @@ bool SecondWeaponProperty::save(cocos2d::ValueMap& data)
         
         data["AddedArmorClass"] = (int)m_nAddedArmorClass.GetLongValue();
         
-        data["AddedBlockRate"] = (int)m_fAddedBlockRate.GetFloatValue();
-        data["AddedCriticalStrikeRate"] = (int)m_fAddedCriticalStrikeRate.GetFloatValue();
-        data["AddedDodgeRate"] = (int)m_fAddedDodgeRate.GetFloatValue();
-        data["AddedMagicItemFindRate"] = (int)m_fAddedMagicItemFindRate.GetFloatValue();
+        data["AddedBlockRate"] = m_fAddedBlockRate.GetFloatValue();
+        data["AddedCriticalStrikeRate"] = m_fAddedCriticalStrikeRate.GetFloatValue();
+        data["AddedDodgeRate"] = m_fAddedDodgeRate.GetFloatValue();
+        data["AddedMagicItemFindRate"] = m_fAddedMagicItemFindRate.GetFloatValue();
     }
     return true;
 }

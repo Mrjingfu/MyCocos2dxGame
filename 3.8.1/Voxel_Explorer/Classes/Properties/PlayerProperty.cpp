@@ -37,44 +37,12 @@ PlayerProperty* PlayerProperty::getInstance()
 }
 PlayerProperty::PlayerProperty()
 {
-    m_nValueCopper          = 0;                ///价值
-    m_nLevel                = 1;                ///等级
-    m_nExp                  = 0;                ///经验
-    m_nLightDistance        = 6;                ///光照范围
-    m_nSearchDistance       = 1;                ///侦查范围
-    m_nMaxHP                = 60;               ///最大生命值
-    m_nMaxMP                = 60;               ///最大魔法值
-    m_nCurrentHP            = 60;               ///当前生命值
-    m_nCurrentMP            = 60;               ///当前魔法值
-    m_nAddedMinAttack       = 1;                ///额外最小攻击增加值
-    m_nAddedMaxAttack       = 4;                ///额外最大攻击增加值
-    m_nAttackDiceNum        = 0;                ///攻击骰子数
-    m_nAttackDiceFaceNum    = 0;                ///攻击骰子面数
-    m_nArmorClass           = 4;                ///防御等级
-    m_nBaseArmorClass       = 4;                ///基础防御等级
-    m_fBlockRate            = 0.01f;            ///格挡率
-    m_fCriticalStrikeRate   = 0.01f;            ///暴击率
-    m_fDodgeRate            = 0.02f;            ///闪避率
-    m_fBasicMagicItemFindRate = 0.2f;           ///基本魔法物品获得率
-    m_fMagicItemFindRate    = m_fBasicMagicItemFindRate;             ///魔法物品获得率
-    m_fMaxMagicItemFindRate = 0.8f;             ///最大魔法物品获得率
-    
-    m_nEquipedWeaponID      = -1;               ///装备了武器ID
-    m_nEquipedSecondWeaponID= -1;               ///装备了副手武器ID
-    m_nEquipedArmorID       = -1;               ///装备了护甲ID
-    m_nEquipedOrnamentsID   = -1;               ///装备了饰品ID
-    
-    m_nBagMaxSpace          = 15;               ///背包最大容量
-    m_nBagExtendTimes       = 1;                ///背包扩容次数
-    m_nBagExtendMaxTimes    = 4;                ///背包最大扩容次数
-    
-    m_BufferFlag            = PB_NONE;          ///默认状态
-    
+    reset();
     m_bDirty = false;
 }
 PlayerProperty::~PlayerProperty()
 {
-    clearBag();
+    reset();
 }
 bool PlayerProperty::initNewPlayer()   ///新角色初始化
 {
@@ -87,51 +55,51 @@ bool PlayerProperty::initNewPlayer()   ///新角色初始化
         weaponProperty->adjustByLevel();
     m_Bag.push_back(weaponProperty);
     
-//    WeaponProperty* weaponProperty2 = new (std::nothrow) WeaponProperty(m_snItemInstanceIDCounter++,PickableItem::PIT_DAGGER_PRO_RUBYDAGGER, 1, true);
-//    if(!weaponProperty2)
-//        return ret;
-//    if(weaponProperty2->isIdentified())
-//        weaponProperty2->adjustByLevel();
-//    m_Bag.push_back(weaponProperty2);
+    WeaponProperty* weaponProperty2 = new (std::nothrow) WeaponProperty(m_snItemInstanceIDCounter++,PickableItem::PIT_DAGGER_PRO_RUBYDAGGER, 1, true);
+    if(!weaponProperty2)
+        return ret;
+    if(weaponProperty2->isIdentified())
+        weaponProperty2->adjustByLevel();
+    m_Bag.push_back(weaponProperty2);
 
     ///for debug
     addMoney(900000, false);
     ret = equipWeapon(itemIDCounter, false);
-//    ret = addItemToBag(PickableItem::PIT_POTION_MINORHEALTH, 1, false);
-//    ret = addItemToBag(PickableItem::PIT_POTION_MINORHEALTH, 1, false);
-//    ret = addItemToBag(PickableItem::PIT_POTION_MINORHEALTH, 1, false);
-//    ret = addItemToBag(PickableItem::PIT_POTION_MINORMANA, 1, false);
-//    ret = addItemToBag(PickableItem::PIT_POTION_MINORMANA, 1, false);
-//    ret = addItemToBag(PickableItem::PIT_POTION_MINORMANA, 1, false);
-//    ret = addItemToBag(PickableItem::PIT_SCROLL_INDENTIFY, 1, false);
-//    ret = addItemToBag(PickableItem::PIT_SCROLL_INDENTIFY, 1, false);
-//    ret = addItemToBag(PickableItem::PIT_SCROLL_INDENTIFY, 1, false);
-//    ret = addItemToBag(PickableItem::PIT_KEY_COPPER, 1, false);
-//    ret = addItemToBag(PickableItem::PIT_KEY_COPPER, 1, false);
-//    ret = addItemToBag(PickableItem::PIT_KEY_COPPER, 1, false);
-//    ret = addItemToBag(PickableItem::PIT_POTION_DETOXIFICATION, 1, false);
-//    ret = addItemToBag(PickableItem::PIT_POTION_SPECIFIC, 1, false);
+    ret = addItemToBag(PickableItem::PIT_POTION_MINORHEALTH, 1, false);
+    ret = addItemToBag(PickableItem::PIT_POTION_MINORHEALTH, 1, false);
+    ret = addItemToBag(PickableItem::PIT_POTION_MINORHEALTH, 1, false);
+    ret = addItemToBag(PickableItem::PIT_POTION_MINORMANA, 1, false);
+    ret = addItemToBag(PickableItem::PIT_POTION_MINORMANA, 1, false);
+    ret = addItemToBag(PickableItem::PIT_POTION_MINORMANA, 1, false);
+    ret = addItemToBag(PickableItem::PIT_SCROLL_INDENTIFY, 1, false);
+    ret = addItemToBag(PickableItem::PIT_SCROLL_INDENTIFY, 1, false);
+    ret = addItemToBag(PickableItem::PIT_SCROLL_INDENTIFY, 1, false);
+    ret = addItemToBag(PickableItem::PIT_KEY_COPPER, 1, false);
+    ret = addItemToBag(PickableItem::PIT_KEY_COPPER, 1, false);
+    ret = addItemToBag(PickableItem::PIT_KEY_COPPER, 1, false);
+    ret = addItemToBag(PickableItem::PIT_POTION_DETOXIFICATION, 1, false);
+    ret = addItemToBag(PickableItem::PIT_POTION_SPECIFIC, 1, false);
     ret = addItemToBag(PickableItem::PIT_POTION_HEALING, 1, false);
     
-//    ret = addItemToBag(PickableItem::PIT_SCROLL_TELEPORT, 1, false);
-//    ret = addItemToBag(PickableItem::PIT_SCROLL_TELEPORT, 1, false);
-//    ret = addItemToBag(PickableItem::PIT_SCROLL_TELEPORT, 1, false);
-//    
-//    ret = addItemToBag(PickableItem::PIT_SCROLL_DESTINY, 1, false);
-//    ret = addItemToBag(PickableItem::PIT_SCROLL_DESTINY, 1, false);
-//    ret = addItemToBag(PickableItem::PIT_SCROLL_DESTINY, 1, false);
-//    
-//    ret = addItemToBag(PickableItem::PIT_SCROLL_SPEED, 1, false);
-//    ret = addItemToBag(PickableItem::PIT_SCROLL_SPEED, 1, false);
-//    ret = addItemToBag(PickableItem::PIT_SCROLL_SPEED, 1, false);
-//    
-//    ret = addItemToBag(PickableItem::PIT_SCROLL_STEALTH, 1, false);
-//    ret = addItemToBag(PickableItem::PIT_SCROLL_STEALTH, 1, false);
-//    ret = addItemToBag(PickableItem::PIT_SCROLL_STEALTH, 1, false);
-//    
-//    ret = addItemToBag(PickableItem::PIT_SCROLL_STRONGER, 1, false);
-//    ret = addItemToBag(PickableItem::PIT_SCROLL_STRONGER, 1, false);
-//    ret = addItemToBag(PickableItem::PIT_SCROLL_STRONGER, 1, false);
+    ret = addItemToBag(PickableItem::PIT_SCROLL_TELEPORT, 1, false);
+    ret = addItemToBag(PickableItem::PIT_SCROLL_TELEPORT, 1, false);
+    ret = addItemToBag(PickableItem::PIT_SCROLL_TELEPORT, 1, false);
+    
+    ret = addItemToBag(PickableItem::PIT_SCROLL_DESTINY, 1, false);
+    ret = addItemToBag(PickableItem::PIT_SCROLL_DESTINY, 1, false);
+    ret = addItemToBag(PickableItem::PIT_SCROLL_DESTINY, 1, false);
+    
+    ret = addItemToBag(PickableItem::PIT_SCROLL_SPEED, 1, false);
+    ret = addItemToBag(PickableItem::PIT_SCROLL_SPEED, 1, false);
+    ret = addItemToBag(PickableItem::PIT_SCROLL_SPEED, 1, false);
+    
+    ret = addItemToBag(PickableItem::PIT_SCROLL_STEALTH, 1, false);
+    ret = addItemToBag(PickableItem::PIT_SCROLL_STEALTH, 1, false);
+    ret = addItemToBag(PickableItem::PIT_SCROLL_STEALTH, 1, false);
+    
+    ret = addItemToBag(PickableItem::PIT_SCROLL_STRONGER, 1, false);
+    ret = addItemToBag(PickableItem::PIT_SCROLL_STRONGER, 1, false);
+    ret = addItemToBag(PickableItem::PIT_SCROLL_STRONGER, 1, false);
     return ret;
 }
 void PlayerProperty::update(float delta)
@@ -206,6 +174,7 @@ CChaosNumber PlayerProperty::getMaxAttack()
 }
 CChaosNumber PlayerProperty::getDefense()
 {
+    CCLOG("m_nArmorClass = %d  m_nBaseArmorClass = %d", (int)m_nArmorClass.GetLongValue(), (int)m_nBaseArmorClass.GetLongValue());
     return -m_nArmorClass.GetLongValue() + m_nBaseArmorClass.GetLongValue();
 }
 void PlayerProperty::addMoney( CChaosNumber copper, bool sound)
@@ -1129,17 +1098,80 @@ CChaosNumber PlayerProperty::getRandomAttack()
 {
     return cocos2d::random(getMinAttack().GetLongValue(), getMaxAttack().GetLongValue());
 }
-void PlayerProperty::clearBag()
+void PlayerProperty::reset()
 {
+    m_nValueCopper          = 0;                ///价值
+    m_nLevel                = 1;                ///等级
+    m_nExp                  = 0;                ///经验
+    m_nLightDistance        = 6;                ///光照范围
+    m_nSearchDistance       = 1;                ///侦查范围
+    m_nMaxHP                = 60;               ///最大生命值
+    m_nMaxMP                = 60;               ///最大魔法值
+    m_nCurrentHP            = 60;               ///当前生命值
+    m_nCurrentMP            = 60;               ///当前魔法值
+    m_nAddedMinAttack       = 1;                ///额外最小攻击增加值
+    m_nAddedMaxAttack       = 4;                ///额外最大攻击增加值
+    m_nAttackDiceNum        = 0;                ///攻击骰子数
+    m_nAttackDiceFaceNum    = 0;                ///攻击骰子面数
+    m_nArmorClass           = 4;                ///防御等级
+    m_nBaseArmorClass       = 4;                ///基础防御等级
+    m_fBlockRate            = 0.01f;            ///格挡率
+    m_fCriticalStrikeRate   = 0.01f;            ///暴击率
+    m_fDodgeRate            = 0.02f;            ///闪避率
+    m_fBasicMagicItemFindRate = 0.2f;           ///基本魔法物品获得率
+    m_fMagicItemFindRate    = m_fBasicMagicItemFindRate;             ///魔法物品获得率
+    m_fMaxMagicItemFindRate = 0.8f;             ///最大魔法物品获得率
+    
+    m_nEquipedWeaponID      = -1;               ///装备了武器ID
+    m_nEquipedSecondWeaponID= -1;               ///装备了副手武器ID
+    m_nEquipedArmorID       = -1;               ///装备了护甲ID
+    m_nEquipedOrnamentsID   = -1;               ///装备了饰品ID
+    
+    m_nBagMaxSpace          = 15;               ///背包最大容量
+    m_nBagExtendTimes       = 1;                ///背包扩容次数
+    m_nBagExtendMaxTimes    = 4;                ///背包最大扩容次数
+    
+    m_BufferFlag            = PB_NONE;          ///默认状态
+    
     std::vector<PickableItemProperty*>::iterator iter;
     for (iter = m_Bag.begin(); iter != m_Bag.end(); iter++) {
         CC_SAFE_DELETE(*iter);
     }
     m_Bag.clear();
 }
+bool PlayerProperty::refreshAfterCreatePlayer()
+{
+    m_nMaxHP = m_nMaxHP + 8*(m_nLevel-1);
+    m_nMaxMP = m_nMaxMP + 8*(m_nLevel-1);
+    if(m_nEquipedWeaponID.GetLongValue() != -1)
+    {
+        if(!equipWeapon(m_nEquipedWeaponID, false))
+            return false;
+    }
+    if(m_nEquipedSecondWeaponID.GetLongValue() != -1)
+    {
+        if(!equipSecondWeapon(m_nEquipedSecondWeaponID, false))
+            return false;
+    }
+    if(m_nEquipedArmorID.GetLongValue() != -1)
+    {
+        if(!equipArmor(m_nEquipedArmorID, false))
+            return false;
+    }
+    if(m_nEquipedOrnamentsID.GetLongValue() != -1)
+    {
+        if(!equipOrnaments(m_nEquipedOrnamentsID, false))
+            return false;
+    }
+    m_nCurrentHP = m_nMaxHP;
+    m_nCurrentMP = m_nMaxMP;
+
+    m_bDirty = true;
+    return true;
+}
 bool PlayerProperty::load(const cocos2d::ValueMap& data)
 {
-    clearBag();
+    reset();
     if(data.find("PlayerProperty") == data.end())
     {
         return initNewPlayer();
@@ -1182,35 +1214,10 @@ bool PlayerProperty::load(const cocos2d::ValueMap& data)
                 return false;
             m_Bag.push_back(property);
         }
-        
         m_nEquipedWeaponID = playerProperty.at("EquipedWeaponID").asInt();
-        if(m_nEquipedWeaponID.GetLongValue() != -1)
-        {
-            if(!equipWeapon(m_nEquipedWeaponID, false))
-                return false;
-        }
-        
         m_nEquipedSecondWeaponID = playerProperty.at("EquipedSecondWeaponID").asInt();
-        if(m_nEquipedSecondWeaponID.GetLongValue() != -1)
-        {
-            if(!equipSecondWeapon(m_nEquipedSecondWeaponID, false))
-                return false;
-        }
-        
         m_nEquipedArmorID = playerProperty.at("EquipedArmorID").asInt();
-        if(m_nEquipedArmorID.GetLongValue() != -1)
-        {
-            if(!equipArmor(m_nEquipedArmorID, false))
-                return false;
-        }
-        
         m_nEquipedOrnamentsID = playerProperty.at("EquipedOrnamentsID").asInt();
-        if(m_nEquipedOrnamentsID.GetLongValue() != -1)
-        {
-            if(!equipOrnaments(m_nEquipedOrnamentsID, false))
-                return false;
-        }
-        
         return true;
     }
 }

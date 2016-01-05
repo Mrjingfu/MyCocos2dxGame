@@ -47,7 +47,6 @@ class VoxelExplorer : public cocos2d::Ref
 public:
     static VoxelExplorer* getInstance();
     bool init(cocos2d::Layer* pMainLayer);
-    void destroy();
     void update(float delta);
     void gamePause();
     void gameResume();
@@ -130,6 +129,8 @@ public:
     
     Player* getPlayer() const { return m_pPlayer; }
     BaseLevel* getCurrentLevel() const { return m_pCurrentLevel; }
+    
+    bool isHasDownStairs() const { return m_bHasDownStairs; }
 private:
     bool createLayers();
     bool createLights();
@@ -161,6 +162,7 @@ private:
     
     Player*                                 m_pPlayer;
     bool                                    m_bIsGamePause;
+    bool                                    m_bHasDownStairs;
 };
 
 #endif /* defined(__Voxel_Explorer__VoxelExplorer__) */

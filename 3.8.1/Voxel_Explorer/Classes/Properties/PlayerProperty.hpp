@@ -99,8 +99,8 @@ public:
     
     CChaosNumber getRandomAttack();
     
-    void clearBag();
-    
+    void reset();
+    bool refreshAfterCreatePlayer();
     bool load(const cocos2d::ValueMap& data);
     bool save(cocos2d::ValueMap& data);
 private:

@@ -123,6 +123,7 @@ public:
     int getDistance(int a, int b);
     
     cocos2d::Vec2 getSpawnPoint() const { return  m_spawnPoint; }
+    cocos2d::Vec2 getReturnPoint() const { return  m_returnPoint; }
     
     std::string getTerrainTileInfoDesc(int x, int y);
     void generateTerrainTiles(int x, int y , int width, int height, TerrainTile::TileType tileType, Area::AREA_TYPE areaType, Actor::ActorDir dir = Actor::AD_UNKNOWN);
@@ -186,6 +187,7 @@ protected:
     std::vector<TileInfo> m_Map;
     
     cocos2d::Vec2        m_spawnPoint;
+    cocos2d::Vec2        m_returnPoint;
     
     cocos2d::DrawNode*   m_pMapDrawNode;
     cocos2d::DrawNode*   m_pDebugDrawNode;

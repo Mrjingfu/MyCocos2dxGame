@@ -42,6 +42,7 @@ protected:
     virtual bool createPickableItems();
     
     virtual void generateSpawnPoint();
+    virtual void generateReturnPoint();
     
     virtual void showMap(bool show);
     
