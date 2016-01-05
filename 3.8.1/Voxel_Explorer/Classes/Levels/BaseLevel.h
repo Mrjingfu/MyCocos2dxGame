@@ -156,10 +156,6 @@ public:
     void preloadBGMusic();
     
     bool checkAllAreaBeExplored();
-    
-    bool load(const cocos2d::ValueMap& data);
-    bool save(cocos2d::ValueMap& data);
-    
 public:
     virtual void showMap(bool show) = 0;
     virtual void updateAreaFogOfWarByPos(const cocos2d::Vec2& pos, bool updateSelfArea = false) = 0;

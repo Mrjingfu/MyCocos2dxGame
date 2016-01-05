@@ -1569,6 +1569,9 @@ void VoxelExplorer::handleUpstairs()
     if(RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nCurrentDepth > 1)
     {
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_GO_DOWNSTAIRS);
+        RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nCurrentDepth -= 1;
+        //auto scene = GameScene::createScene();
+        Director::getInstance()->popScene();
     }
     else
     {
@@ -1582,13 +1585,16 @@ void VoxelExplorer::handleDownstairs()
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_GO_DOWNSTAIRS);
         RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nCurrentDepth += 1;
         auto scene = GameScene::createScene();
-        Director::getInstance()->replaceScene(scene);
+        
+        Director::getInstance()->pushScene(scene);
+        //Director::getInstance()->replaceScene(scene);
     }
     else
     {
         ///加载boss房间
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_GO_DOWNSTAIRS);
         auto scene = GameScene::createScene();
+        Director::getInstance()->popToRootScene();
         Director::getInstance()->replaceScene(scene);
     }
 }

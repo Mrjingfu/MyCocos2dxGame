@@ -14,7 +14,7 @@ class ArmorProperty : public PickableItemProperty
 {
 public:
     ArmorProperty(unsigned int instanceID, PickableItem::PickableItemType type, CChaosNumber level, bool identified);
-    
+    virtual ~ArmorProperty(){}
     virtual void adjustByLevel();
     virtual void handleIdentify();
     

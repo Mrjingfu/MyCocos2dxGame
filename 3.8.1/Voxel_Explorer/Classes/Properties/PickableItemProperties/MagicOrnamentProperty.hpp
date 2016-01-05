@@ -14,7 +14,7 @@ class MagicOrnamentProperty : public PickableItemProperty
 {
 public:
     MagicOrnamentProperty(unsigned int instanceID, PickableItem::PickableItemType type, CChaosNumber level, bool identified);
-    
+    virtual ~MagicOrnamentProperty(){}
     virtual void adjustByLevel();
     virtual void handleIdentify();
     
