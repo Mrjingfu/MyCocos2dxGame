@@ -74,13 +74,7 @@ PlayerProperty::PlayerProperty()
 }
 PlayerProperty::~PlayerProperty()
 {
-    std::vector<PickableItemProperty*>::iterator iter;
-    for (iter = m_Bag.begin(); iter != m_Bag.end(); iter++) {
-        PickableItemProperty* property = static_cast<PickableItemProperty*>(*iter);
-        CC_SAFE_DELETE(property);
-        m_Bag.erase(iter);
-    }
-    m_Bag.clear();
+    clearBag();
 }
 bool PlayerProperty::initNewPlayer()   ///新角色初始化
 {
@@ -1137,8 +1131,19 @@ CChaosNumber PlayerProperty::getRandomAttack()
 {
     return cocos2d::random(getMinAttack().GetLongValue(), getMaxAttack().GetLongValue());
 }
+void PlayerProperty::clearBag()
+{
+    std::vector<PickableItemProperty*>::iterator iter;
+    for (iter = m_Bag.begin(); iter != m_Bag.end(); iter++) {
+        PickableItemProperty* property = static_cast<PickableItemProperty*>(*iter);
+        CC_SAFE_DELETE(property);
+        m_Bag.erase(iter);
+    }
+    m_Bag.clear();
+}
 bool PlayerProperty::load(const cocos2d::ValueMap& data)
 {
+    clearBag();
     if(data.find("PlayerProperty") == data.end())
     {
         return initNewPlayer();
