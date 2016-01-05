@@ -31,6 +31,8 @@ Scene* GameScene::createScene()
 void GameScene::onEnter()
 {
     Layer::onEnter();
+    if(!ArchiveManager::getInstance()->loadGame())
+        CCLOGERROR("Load Game failed!");
     StatisticsManager::getInstance()->resumeSchedu();
     PopupUILayerManager::getInstance()->setParentLayer(this);
 }
@@ -38,6 +40,8 @@ void GameScene::onExit()
 {
     PopupUILayerManager::getInstance()->onExitScene();
     StatisticsManager::getInstance()->pauseSchedu();
+    if(!ArchiveManager::getInstance()->saveGame())
+        CCLOGERROR("Save Game failed!");
     Layer::onExit();
 }
 void GameScene::update(float delta)

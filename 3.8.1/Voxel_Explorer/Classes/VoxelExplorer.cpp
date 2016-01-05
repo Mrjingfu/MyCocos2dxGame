@@ -306,7 +306,7 @@ std::string VoxelExplorer::getScreenPickDesc(const cocos2d::Vec2& screenPos, std
                         }
                         else
                         {
-                            float percent1 = 0.01f;
+                            float percent1 = 0.1f;
                             float percent2 = 1.0f - percent1;
                             bool found = false;
                             AlisaMethod* am = AlisaMethod::create(percent1, percent2, -1.0, NULL);
@@ -325,7 +325,7 @@ std::string VoxelExplorer::getScreenPickDesc(const cocos2d::Vec2& screenPos, std
                                 }
                                 else
                                 {
-                                    bool foundWall = type == TerrainTile::TT_WALL;
+                                    bool foundWall = (type == TerrainTile::TT_WALL);
                                     if(foundWall)
                                     {
                                         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_FOUND_HIDDEN_MSG);

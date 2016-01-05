@@ -60,6 +60,5 @@ bool RandomEventMgr::save(cocos2d::ValueMap& data)
 cocos2d::ValueMap* RandomEventMgr::getRandomEvent()
 {
     int index = cocos2d::random(0, (int)(m_EventList.size()-1));
-    m_LastRandomEvent = m_EventList.at(index).asValueMap();
-    return &m_LastRandomEvent;
+    return &(m_EventList.at(index).asValueMap());
 }

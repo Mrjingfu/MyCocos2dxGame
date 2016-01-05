@@ -31,7 +31,6 @@ public:
     
     cocos2d::ValueMap* getRandomEvent();
 private:
-    cocos2d::ValueMap          m_LastRandomEvent;
     cocos2d::ValueVector       m_EventList;
 };
 #endif /* RandomEventMgr_hpp */
