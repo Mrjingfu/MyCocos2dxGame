@@ -136,7 +136,7 @@ void GameUILayer::onTouchEnded(cocos2d::Touch *touch, cocos2d::Event *event)
     if(m_pGameToolBarLayer->isOpenDist())
     {
         StatisticsManager::getInstance()->addSearchNum();
-        const ValueMap* randEvent = nullptr;
+        ValueMap randEvent;
         bool isTraps = false;
         bool isCanRemove = false;
         Vec2 trapPos;
@@ -168,10 +168,10 @@ void GameUILayer::onTouchEnded(cocos2d::Touch *touch, cocos2d::Event *event)
                     alertPopupUi->setPositiveListerner([](Ref* ref){});
                 }
             }
-        }else if(randEvent)
+        }else if(!randEvent.empty())
         {
-            int eventType = randEvent->at("EVENT_TYPE").asInt();
-            std::string msg = randEvent->at("EVENT_DESC").asString();
+            int eventType = randEvent.at("EVENT_TYPE").asInt();
+            std::string msg = randEvent.at("EVENT_DESC").asString();
             CCASSERT(msg == desc, "msg == desc");
             if(eventType==1)
             {

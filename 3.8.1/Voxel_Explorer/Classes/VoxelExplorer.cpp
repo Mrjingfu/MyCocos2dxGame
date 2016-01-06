@@ -176,7 +176,7 @@ void VoxelExplorer::gameResume()
 
 }
 
-std::string VoxelExplorer::getScreenPickDesc(const cocos2d::Vec2& screenPos, std::string& strIcon, const ValueMap* event, bool& isTraps, bool& isCanRemove, cocos2d::Vec2& checkpos)
+std::string VoxelExplorer::getScreenPickDesc(const cocos2d::Vec2& screenPos, std::string& strIcon, ValueMap& event, bool& isTraps, bool& isCanRemove, cocos2d::Vec2& checkpos)
 {
     if(m_pMainCamera && m_p3DLayer)
     {
@@ -310,7 +310,7 @@ std::string VoxelExplorer::getScreenPickDesc(const cocos2d::Vec2& screenPos, std
                         }
                         else
                         {
-                            float percent1 = 0.1f;
+                            float percent1 = 0.9f;
                             float percent2 = 1.0f - percent1;
                             bool found = false;
                             AlisaMethod* am = AlisaMethod::create(percent1, percent2, -1.0, NULL);
@@ -333,13 +333,12 @@ std::string VoxelExplorer::getScreenPickDesc(const cocos2d::Vec2& screenPos, std
                                     if(foundWall)
                                     {
                                         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_FOUND_HIDDEN_MSG);
-                                        PlayerProperty::getInstance()->setExp(PlayerProperty::getInstance()->getExp() + 100);
                                         StatisticsManager::getInstance()->addHideInfoNum(StatisticsManager::eHideInfoType::HIT_MSG);
                                         std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("SECRET_FOUND");
                                         SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
                                         randEvent->at("HAS_READED") = true;
                                         m_pCurrentLevel->setTerrainTileSearched(tile->getPosInMap().x, tile->getPosInMap().y);
-                                        event = randEvent;
+                                        event = *randEvent;
                                         return randEvent->at("EVENT_DESC").asString();
                                     }
                                     else
@@ -347,13 +346,12 @@ std::string VoxelExplorer::getScreenPickDesc(const cocos2d::Vec2& screenPos, std
                                         if(randEvent && randEvent->at("EVENT_TYPE").asInt() != (int)RANDOM_EVENT_TYPE::RET_WALL_STANDARD)
                                         {
                                             Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_FOUND_HIDDEN_MSG);
-                                            PlayerProperty::getInstance()->setExp(PlayerProperty::getInstance()->getExp() + 100);
                                             StatisticsManager::getInstance()->addHideInfoNum(StatisticsManager::eHideInfoType::HIT_MSG);
                                             std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("SECRET_FOUND");
                                             SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
                                             randEvent->at("HAS_READED") = true;
                                             m_pCurrentLevel->setTerrainTileSearched(tile->getPosInMap().x, tile->getPosInMap().y);
-                                            event = randEvent;
+                                            event = *randEvent;
                                             return randEvent->at("EVENT_DESC").asString();
                                         }
                                         else
