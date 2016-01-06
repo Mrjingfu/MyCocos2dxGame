@@ -79,7 +79,7 @@ bool CharacterPropLayer::addEvents()
         return false;
     
     m_pCharacterIcon = ImageView::create();
-    m_pCharacterIcon->setScale(0.35);
+    m_pCharacterIcon->setScale(0.27);
     m_pCharacterIcon->setPosition(m_pCharacterIconFrame->getContentSize()*0.5);
     m_pCharacterIconFrame->addChild(m_pCharacterIcon);
     

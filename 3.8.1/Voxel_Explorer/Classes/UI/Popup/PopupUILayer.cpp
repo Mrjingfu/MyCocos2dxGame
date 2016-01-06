@@ -297,7 +297,7 @@ void PopupUILayer::onTouchMoved(cocos2d::Touch *touch, cocos2d::Event *unused_ev
 }
 void PopupUILayer::onTouchEnded(cocos2d::Touch *touch, cocos2d::Event *unused_event)
 {
-    if (m_pRootNode &&  !m_pRootNode->getBoundingBox().containsPoint(touch->getLocationInView()) && m_nIsBlankClose) {
+    if (m_pRootNode &&  !m_pRootNode->getBoundingBox().containsPoint(touch->getLocation()) && m_nIsBlankClose) {
 //        CCLOG("onTouchEnded");
         closePopup();
     }

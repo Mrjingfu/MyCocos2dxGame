@@ -56,7 +56,7 @@
             <key>width</key>
             <int>1024</int>
             <key>height</key>
-            <int>512</int>
+            <int>1024</int>
         </QSize>
         <key>fixedTextureSize</key>
         <QSize>
@@ -148,51 +148,54 @@
         </struct>
         <key>fileList</key>
         <array>
-            <filename>../ui/ui_character/bat.png</filename>
-            <filename>../ui/ui_character/chr_child.png</filename>
-            <filename>../ui/ui_character/chr_gumi.png</filename>
-            <filename>../ui/ui_character/chr_jp.png</filename>
-            <filename>../ui/ui_character/chr_knight.png</filename>
-            <filename>../ui/ui_character/chr_man.png</filename>
-            <filename>../ui/ui_character/chr_nurse.png</filename>
-            <filename>../ui/ui_character/chr_old.png</filename>
-            <filename>../ui/ui_character/chr_rain.png</filename>
-            <filename>../ui/ui_character/chr_sword.png</filename>
-            <filename>../ui/ui_character/rat.png</filename>
-            <filename>../ui/ui_character/slime.png</filename>
-            <filename>../ui/ui_character/snake.png</filename>
-            <filename>../ui/ui_character/spider.png</filename>
-            <filename>../ui/ui_character/adjudicator.png</filename>
-            <filename>../ui/ui_character/allip.png</filename>
-            <filename>../ui/ui_character/ankheg.png</filename>
-            <filename>../ui/ui_character/apologist.png</filename>
-            <filename>../ui/ui_character/bear.png</filename>
-            <filename>../ui/ui_character/believer.png</filename>
-            <filename>../ui/ui_character/deathminer.png</filename>
-            <filename>../ui/ui_character/dinosaur.png</filename>
-            <filename>../ui/ui_character/gargoyle.png</filename>
-            <filename>../ui/ui_character/gatekeeper.png</filename>
-            <filename>../ui/ui_character/ghost.png</filename>
-            <filename>../ui/ui_character/ghoul.png</filename>
-            <filename>../ui/ui_character/gnoll.png</filename>
-            <filename>../ui/ui_character/goblin.png</filename>
-            <filename>../ui/ui_character/kobold.png</filename>
-            <filename>../ui/ui_character/mob.png</filename>
-            <filename>../ui/ui_character/ooze.png</filename>
-            <filename>../ui/ui_character/priest.png</filename>
-            <filename>../ui/ui_character/prisoner.png</filename>
-            <filename>../ui/ui_character/shadow.png</filename>
-            <filename>../ui/ui_character/skeleton.png</filename>
-            <filename>../ui/ui_character/torture.png</filename>
-            <filename>../ui/ui_character/wolf.png</filename>
-            <filename>../ui/ui_character/zombie.png</filename>
-            <filename>../ui/ui_character/prisonguard.png</filename>
-            <filename>../ui/ui_character/archbishop.png</filename>
-            <filename>../ui/ui_character/giant.png</filename>
-            <filename>../ui/ui_character/skeletonking.png</filename>
-            <filename>../ui/ui_character/slimeking.png</filename>
-            <filename>../ui/ui_character/warden.png</filename>
-            <filename>../ui/ui_character/koboldleader.png</filename>
+            <filename>../ui/character_icon/adjudicator.png</filename>
+            <filename>../ui/character_icon/allip.png</filename>
+            <filename>../ui/character_icon/ankheg.png</filename>
+            <filename>../ui/character_icon/apologist.png</filename>
+            <filename>../ui/character_icon/archbishop.png</filename>
+            <filename>../ui/character_icon/bat.png</filename>
+            <filename>../ui/character_icon/bear.png</filename>
+            <filename>../ui/character_icon/believer.png</filename>
+            <filename>../ui/character_icon/chr_child.png</filename>
+            <filename>../ui/character_icon/chr_gumi.png</filename>
+            <filename>../ui/character_icon/chr_jp.png</filename>
+            <filename>../ui/character_icon/chr_knight.png</filename>
+            <filename>../ui/character_icon/chr_man.png</filename>
+            <filename>../ui/character_icon/chr_nurse.png</filename>
+            <filename>../ui/character_icon/chr_old.png</filename>
+            <filename>../ui/character_icon/chr_rain.png</filename>
+            <filename>../ui/character_icon/chr_sword.png</filename>
+            <filename>../ui/character_icon/copperchest.png</filename>
+            <filename>../ui/character_icon/deathminer.png</filename>
+            <filename>../ui/character_icon/dinosaur.png</filename>
+            <filename>../ui/character_icon/gargoyle.png</filename>
+            <filename>../ui/character_icon/gatekeeper.png</filename>
+            <filename>../ui/character_icon/ghost.png</filename>
+            <filename>../ui/character_icon/ghoul.png</filename>
+            <filename>../ui/character_icon/giant.png</filename>
+            <filename>../ui/character_icon/gnoll.png</filename>
+            <filename>../ui/character_icon/goblin.png</filename>
+            <filename>../ui/character_icon/goldchest.png</filename>
+            <filename>../ui/character_icon/kobold.png</filename>
+            <filename>../ui/character_icon/koboldleader.png</filename>
+            <filename>../ui/character_icon/mob.png</filename>
+            <filename>../ui/character_icon/ooze.png</filename>
+            <filename>../ui/character_icon/priest.png</filename>
+            <filename>../ui/character_icon/prisoner.png</filename>
+            <filename>../ui/character_icon/prisonguard.png</filename>
+            <filename>../ui/character_icon/rat.png</filename>
+            <filename>../ui/character_icon/shadow.png</filename>
+            <filename>../ui/character_icon/silverchest.png</filename>
+            <filename>../ui/character_icon/skeleton.png</filename>
+            <filename>../ui/character_icon/skeletonking.png</filename>
+            <filename>../ui/character_icon/slime.png</filename>
+            <filename>../ui/character_icon/slimeking.png</filename>
+            <filename>../ui/character_icon/snake.png</filename>
+            <filename>../ui/character_icon/spider.png</filename>
+            <filename>../ui/character_icon/torture.png</filename>
+            <filename>../ui/character_icon/warden.png</filename>
+            <filename>../ui/character_icon/wolf.png</filename>
+            <filename>../ui/character_icon/zombie.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

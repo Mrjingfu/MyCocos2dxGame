@@ -714,8 +714,8 @@ void ItemPopupUI::updateEquipItem()
 }
 bool ItemPopupUI::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *unused_event)
 {
-    PopupUILayer* pLayer = nullptr;
-    if (m_pPopupType ==  ePopupItem && PopupUILayerManager::getInstance()->isOpenPopup(ePopupEquipItem,pLayer)) {
+  
+    if (m_pPopupType ==  ePopupEquipItem ) {
         return false;
     }else
         return true;
@@ -926,7 +926,7 @@ void ItemPopupUI::closePopup()
 {
 
     PopupUILayer* pLayer = nullptr;
-    if (m_pPopupType == ePopupEquipItem &&PopupUILayerManager::getInstance()->isOpenPopup(ePopupItem,pLayer)) {
+    if (m_pPopupType == ePopupItem &&PopupUILayerManager::getInstance()->isOpenPopup(ePopupEquipItem,pLayer)) {
         ItemPopupUI* itemPopupUi = static_cast<ItemPopupUI*>(pLayer);
         if (itemPopupUi) {
             itemPopupUi->closePopup();
