@@ -192,6 +192,11 @@ void GameUILayer::onTouchEnded(cocos2d::Touch *touch, cocos2d::Event *event)
                     infoUi->setDarkLayerVisble(false);
                     infoUi->setInfoIcon(iconRes);
                     infoUi->setInfoDesc(desc);
+                    infoUi->registerCloseCallback([this](){
+                        PlayerProperty::getInstance()->setExp(PlayerProperty::getInstance()->getExp() + 100);
+                        updateShowRoleExp(100);
+                        
+                    });
                 }
                 CCLOG("Pick Desc : %s, Icon Res: %s", desc.c_str(), iconRes.c_str());
             }
@@ -686,7 +691,7 @@ void GameUILayer::onEventFoundHidderTrapWeak(cocos2d::EventCustom *sender)//å‘ç
 void GameUILayer::onEventFoundHidderMsg(cocos2d::EventCustom *sender)
 {
     CCLOG("onEventFoundHidderMsg");
-     updateShowRoleExp(100);
+    
     std::string msg = UtilityHelper::getLocalStringForUi(EVENT_FOUND_HIDDEN_MSG);
     PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
     m_pGameToolBarLayer->sendMessage(msg);

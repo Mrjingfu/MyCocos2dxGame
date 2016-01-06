@@ -47,7 +47,7 @@ cocos2d::Size UtilityHelper::getSingleStrFontSize(cocos2d::ui::Text* tempText,st
         std::string tempStr = tempVec[i];
         tempText->setString(tempStr);
         cocos2d::Size textSize = tempText->getContentSize()*tempText->getScale();
-        CCLOG("width:%f height:%f",textSize.width,textSize.height);
+//        CCLOG("width:%f height:%f",textSize.width,textSize.height);
         sizeWidthVec.push_back(textSize);
     }
 
