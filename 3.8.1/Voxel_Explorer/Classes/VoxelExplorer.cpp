@@ -310,7 +310,7 @@ std::string VoxelExplorer::getScreenPickDesc(const cocos2d::Vec2& screenPos, std
                         }
                         else
                         {
-                            float percent1 = 0.9f;
+                            float percent1 = 0.1f;
                             float percent2 = 1.0f - percent1;
                             bool found = false;
                             AlisaMethod* am = AlisaMethod::create(percent1, percent2, -1.0, NULL);
