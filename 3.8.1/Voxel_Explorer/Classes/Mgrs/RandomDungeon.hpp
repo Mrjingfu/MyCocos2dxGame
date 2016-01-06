@@ -49,7 +49,6 @@ public:
         m_nTotalNum         = 10;                           ////地城层数
         m_Type              = DT_UNKNOWN;                   ////类型
         
-        m_pParentNode   = nullptr;      ////父节点
         m_pLeftNode     = nullptr;      ////左节点
         m_pRightNode    = nullptr;      ////右节点
     }
@@ -85,7 +84,6 @@ public:
     CChaosNumber    m_nTotalNum;            ////地城层数
     DUNGEON_TYPE    m_Type;                 ////类型
     
-    DungeonNode*    m_pParentNode;  ////父节点
     DungeonNode*    m_pLeftNode;    ////左节点
     DungeonNode*    m_pRightNode;   ////右节点
 };
@@ -101,8 +99,6 @@ public:
     static std::vector<DUNGEON_TYPE>       SELECT_GROUP3;
     
     static std::vector<DUNGEON_TYPE>       SELECT_ALL;
-    
-    void update(float delta);
     
     bool build();
     void selectDungeonNode(bool left);

@@ -113,7 +113,11 @@ bool VoxelExplorer::init(Layer* pMainLayer)
         return false;
     m_pMainLayer = pMainLayer;
     ValueMap playerData ;
-    
+    if(!LevelResourceManager::getInstance()->initLevelRes())
+    {
+        CCLOGERROR("load level resource failed!");
+        return false;
+    }
     if(!NpcDataManager::getInstance()->initNpcData())
     {
         CCLOGERROR("load npc data failed!");
@@ -148,7 +152,7 @@ bool VoxelExplorer::init(Layer* pMainLayer)
 }
 void VoxelExplorer::update(float delta)
 {
-    RandomDungeon::getInstance()->update(delta);
+    NpcDataManager::getInstance()->update(delta);
 }
 
 void VoxelExplorer::gamePause()
@@ -1529,6 +1533,10 @@ void VoxelExplorer::handlePlayerUseStandardPortal(const cocos2d::Vec2& pos)
     {
         ///加载boss房间
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_GO_BOSSROOM);
+        RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nCurrentDepth += 1;
+        m_bHasDownStairs = true;
+        auto scene = GameScene::createScene();
+        Director::getInstance()->replaceScene(scene);
     }
     else if(RandomDungeon::getInstance()->getCurrentDungeonNode()->isBossDepth())
     {
@@ -1590,13 +1598,13 @@ void VoxelExplorer::handleDownstairs()
         auto scene = GameScene::createScene();
         Director::getInstance()->replaceScene(scene);
     }
-    else
+    else if(RandomDungeon::getInstance()->getCurrentDungeonNode()->isLastDepth())
     {
         ///加载boss房间
-        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_GO_DOWNSTAIRS);
+        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_GO_BOSSROOM);
+        RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nCurrentDepth += 1;
          m_bHasDownStairs = true;
         auto scene = GameScene::createScene();
-        Director::getInstance()->popToRootScene();
         Director::getInstance()->replaceScene(scene);
     }
 }

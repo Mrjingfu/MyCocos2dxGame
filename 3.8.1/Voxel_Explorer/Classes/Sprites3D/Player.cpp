@@ -16,6 +16,7 @@
 #include "RandomDungeon.hpp"
 #include "SimpleAudioEngine.h"
 #include "LevelResourceManager.h"
+#include "OutlineEffect3D.h"
 USING_NS_CC;
 using namespace CocosDenshion;
 
@@ -36,6 +37,12 @@ Player* Player::create(const std::string& modelPath)
         player->setCameraMask((unsigned int)CameraFlag::USER1);
         player->setLightMask((unsigned int)LightFlag::LIGHT0 |(unsigned int)LightFlag::LIGHT1|(unsigned int)LightFlag::LIGHT2);
         player->refreshPlayerBuffer();
+        
+        OutlineEffect3D* outline = OutlineEffect3D::create();
+        outline->setOutlineColor(Vec3(0.1f, 0.1f, 0.1f));
+        outline->setOutlineWidth(0.05f);
+        player->addEffect(outline, 1);
+        
         player->autorelease();
         return player;
     }
@@ -92,16 +99,16 @@ void Player::refreshPlayerBuffer()
     int bufferFlag = PlayerProperty::getInstance()->getPlayerBuffer();
     if((bufferFlag & PB_SPEEDUP) != 0)
     {
-        ///增加拖尾或粒子
+        VoxelExplorer::getInstance()->addParticle3DEffectToPlayer(P3D_EFFECT_TYPE::P3D_SPEEDUP_BUFFER, false);
     }
     if((bufferFlag & PB_STEALTH) != 0)
     {
         setOpacity(127);
+        VoxelExplorer::getInstance()->addParticle3DEffectToPlayer(P3D_EFFECT_TYPE::P3D_STEALTH_BUFFER, true);
     }
     if((bufferFlag & PB_STRONGER) != 0)
     {
-        ///增大
-        setScale(1.5f);
+        VoxelExplorer::getInstance()->addParticle3DEffectToPlayer(P3D_EFFECT_TYPE::P3D_STRONGER_BUFFER, true);
     }
 
     if((bufferFlag & PB_POISONING) != 0)
@@ -110,6 +117,7 @@ void Player::refreshPlayerBuffer()
         if(tex)
             tex->setAliasTexParameters();
         setTexture(tex);
+        VoxelExplorer::getInstance()->removeParticle3D3DEffectFromPlayer(P3D_EFFECT_TYPE::P3D_POISIONING_BUFFER);
     }
     
 
@@ -119,6 +127,7 @@ void Player::refreshPlayerBuffer()
         if(tex)
             tex->setAliasTexParameters();
         setTexture(tex);
+        VoxelExplorer::getInstance()->addParticle3DEffectToPlayer(P3D_EFFECT_TYPE::P3D_FROZEN_BUFFER, false);
     }
     
 
@@ -128,6 +137,7 @@ void Player::refreshPlayerBuffer()
         if(tex)
             tex->setAliasTexParameters();
         setTexture(tex);
+        VoxelExplorer::getInstance()->addParticle3DEffectToPlayer(P3D_EFFECT_TYPE::P3D_PARALYTIC_BUFFER, true);
     }
     
 
@@ -137,6 +147,7 @@ void Player::refreshPlayerBuffer()
         if(tex)
             tex->setAliasTexParameters();
         setTexture(tex);
+        VoxelExplorer::getInstance()->addParticle3DEffectToPlayer(P3D_EFFECT_TYPE::P3D_WEAK_BUFFER, true);
     }
 
     if((bufferFlag & PB_FIRE) != 0)
@@ -145,6 +156,7 @@ void Player::refreshPlayerBuffer()
         if(tex)
             tex->setAliasTexParameters();
         setTexture(tex);
+        VoxelExplorer::getInstance()->addParticle3DEffectToPlayer(P3D_EFFECT_TYPE::P3D_FIRE_BUFFER, false);
     }
 }
 void Player::addPlayerBuffer(PlayerBuffer buff)

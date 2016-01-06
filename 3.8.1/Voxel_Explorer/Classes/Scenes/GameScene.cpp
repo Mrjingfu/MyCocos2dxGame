@@ -31,8 +31,6 @@ Scene* GameScene::createScene()
 void GameScene::onEnter()
 {
     Layer::onEnter();
-    if(!ArchiveManager::getInstance()->loadGame())
-        CCLOGERROR("Load Game failed!");
     StatisticsManager::getInstance()->resumeSchedu();
     PopupUILayerManager::getInstance()->setParentLayer(this);
 }

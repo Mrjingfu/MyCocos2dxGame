@@ -52,14 +52,10 @@ bool MenuScene::init()
 void MenuScene::onEnter()
 {
     Layer::onEnter();
-    if(!ArchiveManager::getInstance()->loadGame())
-        CCLOGERROR("Load Game failed!");
     PopupUILayerManager::getInstance()->setParentLayer(this);
 }
 void MenuScene::onExit()
 {
     PopupUILayerManager::getInstance()->onExitScene();
-    if(!ArchiveManager::getInstance()->saveGame())
-        CCLOGERROR("Save Game failed!");
     Layer::onExit();
 }

@@ -16,6 +16,8 @@ PrisonLevel::PrisonLevel()
 
 bool PrisonLevel::createMonsters()
 {
+    /// for debug
+    return true;
     int monsterNum = calculateLevelMonsterCount();
     for (int i=0; i < monsterNum; i++) {
         BaseMonster::MonsterType type = (BaseMonster::MonsterType)cocos2d::random((int)BaseMonster::MT_ALLIP, (int)BaseMonster::MT_MOB);

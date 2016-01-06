@@ -65,6 +65,8 @@ bool LevelResourceManager::initLevelRes()
     std::string dungeonName = DUNGEON_NAMES[RandomDungeon::getInstance()->getCurrentDungeonNode()->m_Type];
     if(dungeonName.empty())
         return false;
+    
+    CCLOG("LevelResourceManager : dungeonName = %s", dungeonName.c_str());
     m_TerrainTilesLevelRes = m_TerrainTilesResMap.at(dungeonName).asValueMap();
     if(m_TerrainTilesLevelRes.empty())
         return false;
