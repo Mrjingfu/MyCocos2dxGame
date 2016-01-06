@@ -34,8 +34,12 @@ bool BaseEffect3D::initGLProgramState(const std::string& vertFilename, const std
         cocos2d::GLProgramCache::getInstance()->addGLProgram(glprogram, m_strProgramName);
     }
     
-    m_pGLprogramstate = GLProgramState::getOrCreateWithGLProgram(glprogram);
-    m_pGLprogramstate->retain();
+    cocos2d::GLProgramState* programState = GLProgramState::getOrCreateWithGLProgram(glprogram);
+    if(programState)
+    {
+        m_pGLprogramstate = programState->clone();
+        m_pGLprogramstate->retain();
+    }
     
     return m_pGLprogramstate != nullptr;
 }

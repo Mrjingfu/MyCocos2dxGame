@@ -102,13 +102,13 @@ StandardMonster* StandardMonster::create(BaseMonster::MonsterType type, bool eli
             default:
                 break;
         }
-        if(monster->m_pMonsterProperty && monster->m_pMonsterProperty->isElite())
+        if(monster->m_pMonsterProperty)
         {
-            monster->setScale(monster->getScale() + 0.2f);
+            if(monster->m_pMonsterProperty->isElite())
+                monster->setScale(monster->getScale() + 0.2f);
             
             OutlineEffect3D* outline = OutlineEffect3D::create();
-            Color3B outlineColor = UtilityHelper::randomColor();
-            outline->setOutlineColor(Vec3(outlineColor.r/255.0f, outlineColor.g/255.0f, outlineColor.b/255.0f));
+            outline->setOutlineColor(Vec3(0.1f, 0.1f, 0.1f));
             outline->setOutlineWidth(0.03f);
             monster->addEffect(outline, 1);
         }

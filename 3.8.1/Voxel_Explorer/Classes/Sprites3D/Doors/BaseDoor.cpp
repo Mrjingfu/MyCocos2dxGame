@@ -136,7 +136,7 @@ void BaseDoor::onEnterClosed()
             m_pFakeDoor->runAction(moveTo);
         }
     }
-    if(RandomDungeon::getInstance()->getCurrentDungeonNode()->isBossDepth())
+    if(RandomDungeon::getInstance()->getCurrentDungeonNode()->isBossDepth() && m_DoorLastState == DoorState::DS_OPENED)
     {
         std::string soundName = LevelResourceManager::getInstance()->getDungeonSoundEffectRes("CLOSE_DOOR");
         SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());

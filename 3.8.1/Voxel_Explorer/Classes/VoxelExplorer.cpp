@@ -333,6 +333,7 @@ std::string VoxelExplorer::getScreenPickDesc(const cocos2d::Vec2& screenPos, std
                                     if(foundWall)
                                     {
                                         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_FOUND_HIDDEN_MSG);
+                                        PlayerProperty::getInstance()->setExp(PlayerProperty::getInstance()->getExp() + 100);
                                         StatisticsManager::getInstance()->addHideInfoNum(StatisticsManager::eHideInfoType::HIT_MSG);
                                         std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("SECRET_FOUND");
                                         SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
@@ -346,6 +347,7 @@ std::string VoxelExplorer::getScreenPickDesc(const cocos2d::Vec2& screenPos, std
                                         if(randEvent && randEvent->at("EVENT_TYPE").asInt() != (int)RANDOM_EVENT_TYPE::RET_WALL_STANDARD)
                                         {
                                             Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_FOUND_HIDDEN_MSG);
+                                            PlayerProperty::getInstance()->setExp(PlayerProperty::getInstance()->getExp() + 100);
                                             StatisticsManager::getInstance()->addHideInfoNum(StatisticsManager::eHideInfoType::HIT_MSG);
                                             std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("SECRET_FOUND");
                                             SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
@@ -936,6 +938,7 @@ void VoxelExplorer::handleDoor(const cocos2d::Vec2& mapPos)
                     SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
                     
                     Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_FOUND_HIDDEN_DOOR);
+                    PlayerProperty::getInstance()->setExp(PlayerProperty::getInstance()->getExp() + 100);
                     StatisticsManager::getInstance()->addHideInfoNum(StatisticsManager::eHideInfoType::HIT_DOOR);
                     return;
                 }
@@ -1225,6 +1228,7 @@ void VoxelExplorer::handleShowSecretDoor(const cocos2d::Vec2& mapPos)
                     door->setDoorState(BaseDoor::DS_CLOSED);
                     m_pCurrentLevel->setTerrainTileType(mapPos.x, mapPos.y, TerrainTile::TT_DOOR);
                     Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_FOUND_HIDDEN_DOOR);
+                    PlayerProperty::getInstance()->setExp(PlayerProperty::getInstance()->getExp() + 100);
                 }
             }
         }
@@ -1237,31 +1241,37 @@ void VoxelExplorer::handleShowHiddenTrap(const cocos2d::Vec2& mapPos, TerrainTil
         if(trapType == TerrainTile::TT_TOXIC_TRAP)
         {
             Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_FOUND_HIDDEN_TOXIC_TRAP);
+            PlayerProperty::getInstance()->setExp(PlayerProperty::getInstance()->getExp() + 100);
             StatisticsManager::getInstance()->addHideInfoNum(StatisticsManager::eHideInfoType::HIT_TRAP);
         }
         else if(trapType == TerrainTile::TT_FIRE_TRAP)
         {
             Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_FOUND_HIDDEN_FIRE_TRAP);
+            PlayerProperty::getInstance()->setExp(PlayerProperty::getInstance()->getExp() + 100);
              StatisticsManager::getInstance()->addHideInfoNum(StatisticsManager::eHideInfoType::HIT_TRAP);
         }
         else if(trapType == TerrainTile::TT_PARALYTIC_TRAP)
         {
             Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_FOUND_HIDDEN_PARALYTIC_TRAP);
+            PlayerProperty::getInstance()->setExp(PlayerProperty::getInstance()->getExp() + 100);
              StatisticsManager::getInstance()->addHideInfoNum(StatisticsManager::eHideInfoType::HIT_TRAP);
         }
         else if(trapType == TerrainTile::TT_GRIPPING_TRAP)
         {
             Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_FOUND_HIDDEN_GRIPPING_TRAP);
+            PlayerProperty::getInstance()->setExp(PlayerProperty::getInstance()->getExp() + 100);
              StatisticsManager::getInstance()->addHideInfoNum(StatisticsManager::eHideInfoType::HIT_TRAP);
         }
         else if(trapType == TerrainTile::TT_SUMMONING_TRAP)
         {
             Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_FOUND_HIDDEN_SUMMONING_TRAP);
+            PlayerProperty::getInstance()->setExp(PlayerProperty::getInstance()->getExp() + 100);
              StatisticsManager::getInstance()->addHideInfoNum(StatisticsManager::eHideInfoType::HIT_TRAP);
         }
         else if(trapType == TerrainTile::TT_WEAK_TRAP)
         {
             Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_FOUND_HIDDEN_WEAK_TRAP);
+            PlayerProperty::getInstance()->setExp(PlayerProperty::getInstance()->getExp() + 100);
              StatisticsManager::getInstance()->addHideInfoNum(StatisticsManager::eHideInfoType::HIT_TRAP);
         }
         if(m_pTerrainTilesLayer)
@@ -1277,9 +1287,8 @@ void VoxelExplorer::handleShowHiddenTrap(const cocos2d::Vec2& mapPos, TerrainTil
                         auto tex = Director::getInstance()->getTextureCache()->addImage(texName);
                         if(tex)
                             tex->setAliasTexParameters();
-                            tile->setTexture(tex);
-                            }
-                    
+                        tile->setTexture(tex);
+                    }
                 }
             }
         }
@@ -1674,6 +1683,7 @@ void VoxelExplorer::handleRemoveTrap(const cocos2d::Vec2& mapPos)
                             tile->setTexture(tex);
                         }
                         m_pCurrentLevel->setTerrainTileType(mapPos.x, mapPos.y, TerrainTile::TT_STANDARD);
+                        PlayerProperty::getInstance()->setExp(PlayerProperty::getInstance()->getExp() + 50);
                     }
                 }
             }
