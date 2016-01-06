@@ -712,25 +712,32 @@ void ItemPopupUI::updateEquipItem()
     }
     
 }
-
-void ItemPopupUI::onTouchEnded(cocos2d::Touch *touch, cocos2d::Event *unused_event)
+bool ItemPopupUI::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *unused_event)
 {
-    if (!m_pRootNode)
-        return;
-    cocos2d::Rect rootRect = m_pRootNode->getBoundingBox();
     PopupUILayer* pLayer = nullptr;
-    if (PopupUILayerManager::getInstance()->isOpenPopup(ePopupEquipItem,pLayer))
-    {
-        float width = pLayer->getRootNode()->getBoundingBox().size.width + rootRect.size.width+5;
-        
-        rootRect.setRect(pLayer->getRootNode()->getBoundingBox().origin.x,pLayer->getRootNode()->getBoundingBox().origin.y,width,rootRect.size.height);
-    }
-    
-    if (!rootRect.containsPoint(touch->getLocation()) && m_nIsBlankClose) {
-        //        CCLOG("onTouchEnded");
-        closePopup();
-    }
+    if (m_pPopupType ==  ePopupItem && PopupUILayerManager::getInstance()->isOpenPopup(ePopupEquipItem,pLayer)) {
+        return false;
+    }else
+        return true;
 }
+//void ItemPopupUI::onTouchEnded(cocos2d::Touch *touch, cocos2d::Event *unused_event)
+//{
+//    if (!m_pRootNode)
+//        return;
+//    cocos2d::Rect rootRect = m_pRootNode->getBoundingBox();
+//    PopupUILayer* pLayer = nullptr;
+//    if (PopupUILayerManager::getInstance()->isOpenPopup(ePopupEquipItem,pLayer))
+//    {
+//        float width = pLayer->getRootNode()->getBoundingBox().size.width + rootRect.size.width+5;
+//        
+//        rootRect.setRect(pLayer->getRootNode()->getBoundingBox().origin.x,pLayer->getRootNode()->getBoundingBox().origin.y,width,rootRect.size.height);
+//    }
+//    
+//    if (!rootRect.containsPoint(touch->getLocation()) && m_nIsBlankClose) {
+//        //        CCLOG("onTouchEnded");
+//        closePopup();
+//    }
+//}
 void ItemPopupUI::updateUseItem()
 {
     if (m_pBtnEquip)
@@ -917,18 +924,15 @@ void ItemPopupUI::addItemProp(std::string propStr,cocos2d::Color3B fontColor,coc
 
 void ItemPopupUI::closePopup()
 {
-    
-    if(m_pPopupType == ePopupItem)
-    {
-        PopupUILayer* pLayer = nullptr;
-        if (PopupUILayerManager::getInstance()->isOpenPopup(ePopupEquipItem,pLayer)) {
-            ItemPopupUI* itemPopupUi = static_cast<ItemPopupUI*>(pLayer);
-            if (itemPopupUi) {
-                itemPopupUi->closePopup();
-            }
+
+    PopupUILayer* pLayer = nullptr;
+    if (m_pPopupType == ePopupEquipItem &&PopupUILayerManager::getInstance()->isOpenPopup(ePopupItem,pLayer)) {
+        ItemPopupUI* itemPopupUi = static_cast<ItemPopupUI*>(pLayer);
+        if (itemPopupUi) {
+            itemPopupUi->closePopup();
         }
-        
     }
+
     outAction();
 }
 void ItemPopupUI::removeItem()

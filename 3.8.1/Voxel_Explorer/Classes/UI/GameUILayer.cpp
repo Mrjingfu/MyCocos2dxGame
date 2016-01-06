@@ -153,6 +153,7 @@ void GameUILayer::onTouchEnded(cocos2d::Touch *touch, cocos2d::Event *event)
                     alertPopupUi->setMessage(UtilityHelper::getLocalStringForUi("REMOVE_TRAP_INFO"));
                     alertPopupUi->setPositiveListerner([this,trapPos](Ref* ref){
                         VoxelExplorer::getInstance()->handleRemoveTrap(trapPos);
+                         updateShowRoleExp(50);
                     },UtilityHelper::getLocalStringForUi("BAG_TEXT_DESTROY"));
                     alertPopupUi->setNegativeListerner([](Ref* ref){});
                      m_pGameToolBarLayer->setDistTipsFrame();
@@ -274,6 +275,15 @@ void GameUILayer::onEventRoleNoBossKey(cocos2d::EventCustom *sender)
     PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
     m_pGameToolBarLayer->sendMessage(msg);
     CCLOG("onEventRoleNoBossKey");
+}
+void GameUILayer::updateShowRoleExp(int exp)
+{
+    CCLOG("updateShowRoleExp");
+    Vec2 pt = VoxelExplorer::getInstance()->getMainCamera()->projectGL(VoxelExplorer::getInstance()->getPlayer()->getPosition3D());
+    pt = Vec2(pt.x, pt.y+TerrainTile::CONTENT_SCALE*2.5);
+    if (m_pRoleHudLayer) {
+        m_pRoleHudLayer->shwoPrompt(pt, TIP_POSITIVE, StringUtils::format(UtilityHelper::getLocalStringForUi("STATUS_TEXT_EXP").c_str(),exp));
+    }
 }
  void GameUILayer::popupNpc(Npc* npc,std::string eventStr)
 {
@@ -608,6 +618,7 @@ void GameUILayer::onEventDoorMagicLocked(cocos2d::EventCustom *sender)
     std::string msg = UtilityHelper::getLocalStringForUi(EVENT_DOOR_MAGIC_LOCKED);
     PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
     m_pGameToolBarLayer->sendMessage(msg);
+    
 }
 void GameUILayer::onEventDoorMagicClosed(cocos2d::EventCustom *sender)
 {
@@ -619,6 +630,7 @@ void GameUILayer::onEventDoorMagicClosed(cocos2d::EventCustom *sender)
 void GameUILayer::onEventFoundHidderDoor(cocos2d::EventCustom *sender) //发现隐藏门
 {
     CCLOG("onEventFoundHidderDoor");
+    updateShowRoleExp(100);
     std::string msg = UtilityHelper::getLocalStringForUi(EVENT_FOUND_HIDDEN_DOOR);
     PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
     m_pGameToolBarLayer->sendMessage(msg);
@@ -626,6 +638,7 @@ void GameUILayer::onEventFoundHidderDoor(cocos2d::EventCustom *sender) //发现�
 void GameUILayer::onEventFoundHidderTrapToxic(cocos2d::EventCustom *sender)//发现隐藏中毒机关
 {
     CCLOG("onEventFoundHidderTrapToxic");
+     updateShowRoleExp(100);
     std::string msg = UtilityHelper::getLocalStringForUi(EVENT_FOUND_HIDDEN_TOXIC_TRAP);
     PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
     m_pGameToolBarLayer->sendMessage(msg);
@@ -633,6 +646,7 @@ void GameUILayer::onEventFoundHidderTrapToxic(cocos2d::EventCustom *sender)//发
 void GameUILayer::onEventFoundHidderTrapFire(cocos2d::EventCustom *sender)//发现隐藏火机关
 {
     CCLOG("onEventFoundHidderTrapFire");
+     updateShowRoleExp(100);
     std::string msg = UtilityHelper::getLocalStringForUi(EVENT_FOUND_HIDDEN_FIRE_TRAP);
     PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
     m_pGameToolBarLayer->sendMessage(msg);
@@ -640,6 +654,7 @@ void GameUILayer::onEventFoundHidderTrapFire(cocos2d::EventCustom *sender)//发�
 void GameUILayer::onEventFoundHidderTrapParalyic(cocos2d::EventCustom *sender)//发现隐藏麻痹机关
 {
     CCLOG("onEventFoundHidderTrapParalyic");
+     updateShowRoleExp(100);
     std::string msg = UtilityHelper::getLocalStringForUi(EVENT_FOUND_HIDDEN_PARALYTIC_TRAP);
     PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
     m_pGameToolBarLayer->sendMessage(msg);
@@ -647,6 +662,7 @@ void GameUILayer::onEventFoundHidderTrapParalyic(cocos2d::EventCustom *sender)//
 void GameUILayer::onEventFoundHidderTrapGripping(cocos2d::EventCustom *sender)//发现隐藏夹子机关
 {
      CCLOG("onEventFoundHidderTrapGripping");
+     updateShowRoleExp(100);
     std::string msg = UtilityHelper::getLocalStringForUi(EVENT_FOUND_HIDDEN_GRIPPING_TRAP);
     PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
     m_pGameToolBarLayer->sendMessage(msg);
@@ -654,6 +670,7 @@ void GameUILayer::onEventFoundHidderTrapGripping(cocos2d::EventCustom *sender)//
 void GameUILayer::onEventFoundHidderTrapSummoning(cocos2d::EventCustom *sender)//发现隐藏召唤机关
 {
      CCLOG("onEventFoundHidderTrapSummoning");
+     updateShowRoleExp(100);
     std::string msg = UtilityHelper::getLocalStringForUi(EVENT_FOUND_HIDDEN_SUMMONING_TRAP);
     PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
     m_pGameToolBarLayer->sendMessage(msg);
@@ -661,6 +678,7 @@ void GameUILayer::onEventFoundHidderTrapSummoning(cocos2d::EventCustom *sender)/
 void GameUILayer::onEventFoundHidderTrapWeak(cocos2d::EventCustom *sender)//发现隐藏虚弱机关
 {
     CCLOG("onEventFoundHidderTrapWeak");
+     updateShowRoleExp(100);
     std::string msg = UtilityHelper::getLocalStringForUi(EVENT_FOUND_HIDDEN_WEAK_TRAP);
     PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
     m_pGameToolBarLayer->sendMessage(msg);
@@ -668,6 +686,7 @@ void GameUILayer::onEventFoundHidderTrapWeak(cocos2d::EventCustom *sender)//发�
 void GameUILayer::onEventFoundHidderMsg(cocos2d::EventCustom *sender)
 {
     CCLOG("onEventFoundHidderMsg");
+     updateShowRoleExp(100);
     std::string msg = UtilityHelper::getLocalStringForUi(EVENT_FOUND_HIDDEN_MSG);
     PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
     m_pGameToolBarLayer->sendMessage(msg);
@@ -675,6 +694,7 @@ void GameUILayer::onEventFoundHidderMsg(cocos2d::EventCustom *sender)
 void GameUILayer::onEventFoundHidderItem(cocos2d::EventCustom *sender)
 {
     CCLOG("onEventFoundHidderItem");
+     updateShowRoleExp(100);
     std::string msg = UtilityHelper::getLocalStringForUi(EVENT_FOUND_HIDDEN_ITEM);
     PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
     m_pGameToolBarLayer->sendMessage(msg);
@@ -683,7 +703,6 @@ void GameUILayer::onEventFoundHidderItem(cocos2d::EventCustom *sender)
 void GameUILayer::onEventGoUpStairs(cocos2d::EventCustom *sender)
 {
      CCLOG("onEventGoUpStairs");
-//     ArchiveManager::getInstance()->saveGame();
      std::string msg = UtilityHelper::getLocalStringForUi(EVENT_GO_UPSTAIRS);
      PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
 }
@@ -698,7 +717,6 @@ void GameUILayer::onEventGoUpStairsForbidden(cocos2d::EventCustom *sender)
 void GameUILayer::onEventGoDownStairs(cocos2d::EventCustom *sender)
 {
     CCLOG("onEventGoDownStairs");
-//    ArchiveManager::getInstance()->saveGame();
     std::string msg = UtilityHelper::getLocalStringForUi(EVENT_GO_DOWNSTAIRS);
     PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
 }

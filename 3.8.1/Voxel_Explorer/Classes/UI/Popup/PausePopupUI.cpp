@@ -154,7 +154,6 @@ void PausePopupUI::onClickMainMenu(cocos2d::Ref *ref)
     CHECK_ACTION(ref);
     clickEffect();
     CCLOG("onClickMainMenu");
-    ArchiveManager::getInstance()->saveGame();
     Scene* menuScene = MenuScene::createScene();
     Director::getInstance()->replaceScene(menuScene);
     

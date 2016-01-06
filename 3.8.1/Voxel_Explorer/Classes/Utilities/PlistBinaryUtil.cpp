@@ -117,23 +117,12 @@ bool PlistBinaryUtil::wiriteValueForFile(cocos2d::Value& dict,const std::string&
     UtilityHelper::getHexDigest(m_md5, MD5_LEN, hex);
     if (m_bisDebug)
         CCLOG(" md5=%s, begin", hex.c_str());
-
-    //加密Base64
-    char encodeStr[sourceLentgh*2];
-    memset(encodeStr, 0, sourceLentgh*2);
-    int encodelength = CCCrypto::encodeBase64(sourceContent, sourceLentgh,encodeStr,sourceLentgh*2);
-    
-    char encodeOutStr[encodelength];
-    memset(encodeOutStr, 0, encodelength);
-    memcpy(encodeOutStr, encodeStr,encodelength);
-    if (m_bisDebug)
-        CCLOG("save encodeBase64:%s",encodeOutStr);
     
     
     //加密 encryptXOR
-    CCCrypto::encryptXOR((char*)encodeOutStr, encodelength,hex.c_str());
+    CCCrypto::encryptXOR((char*)sourceContent, sourceLentgh,hex.c_str());
     if (m_bisDebug)
-        CCLOG("save encryptXOR:%s",encodeOutStr);
+        CCLOG("save encryptXOR:%s",sourceContent);
     
     
     FileStream dewriteStr(fullPath.c_str(),"wb");
@@ -142,9 +131,9 @@ bool PlistBinaryUtil::wiriteValueForFile(cocos2d::Value& dict,const std::string&
     //encryptXOR 秘钥md5
     dewriteStr.writeString(hex);
     //加密后的base64长度
-    dewriteStr.write64le(encodelength);
+    dewriteStr.write64le(sourceLentgh);
     //写数据
-    dewriteStr.write(encodeOutStr, encodelength);
+    dewriteStr.write(sourceContent, sourceLentgh);
     dewriteStr.close();
     return true;
     
@@ -182,33 +171,35 @@ bool PlistBinaryUtil::getValueForFile(cocos2d::Value& dict,const std::string& fi
             CCLOG("parse encrtyKey=%s, begin", encrtyKey.c_str());
         
         //加密后的base64长度
-        int64 base64Length = readStream.read64le();
+        int64 sourceLength = readStream.read64le();
+        if (m_bisDebug) {
+            CCLOG("sourceLength:%llu",sourceLength);
+        }
+        //计算剩余长度
+        int64 dataLength = size - readStream.tell();
+        if (m_bisDebug) {
+            CCLOG("dataLength:%llu",dataLength);
+        }
+        if (dataLength != sourceLength) {
+            CCLOG("datalength parse error");
+            return false;
+        }
         
-        
-        char  base64Datas[base64Length];
-        memset(base64Datas, 0, base64Length);
-        readStream.read(base64Datas, base64Length);
+        char  sourceDatas[sourceLength];
+        memset(sourceDatas, 0, sourceLength);
+        readStream.read(sourceDatas, sourceLength);
         if (m_bisDebug)
-            CCLOG("parse encryptXOR:%s",base64Datas);
+            CCLOG("parse encryptXOR:%s",sourceDatas);
         
         //解密XOR
-        CCCrypto::decryptXOR(base64Datas, base64Length,encrtyKey.c_str());
+        CCCrypto::decryptXOR(sourceDatas, sourceLength,encrtyKey.c_str());
         if (m_bisDebug)
-            CCLOG("parse base64:%s",base64Datas);
+            CCLOG("parse base64:%s",sourceDatas);
         
-        
-        //解密base64
-        char dencodeStr[base64Length*2];
-        memset(dencodeStr, 0, base64Length*2);
-        int dencodelength = CCCrypto::decodeBase64(base64Datas,dencodeStr,base64Length*2);
-        
-        char dencodeOutStr[dencodelength];
-        memset(dencodeOutStr, 0, dencodelength);
-        memcpy(dencodeOutStr, dencodeStr,dencodelength);
         
         //对比md5
         unsigned char	m_md5[MD5_LEN];
-        CCCrypto::md5((void *)dencodeOutStr, dencodelength, m_md5);
+        CCCrypto::md5((void *)sourceDatas, sourceLength, m_md5);
         std::string hex;
         UtilityHelper::getHexDigest(m_md5, MD5_LEN, hex);
         if (m_bisDebug)
@@ -220,7 +211,7 @@ bool PlistBinaryUtil::getValueForFile(cocos2d::Value& dict,const std::string& fi
              return false;
          }
         
-        MemoryStream paseseStream((const char *)dencodeOutStr,dencodelength);
+        MemoryStream paseseStream((const char *)sourceDatas,sourceLength);
         
         while (!paseseStream.eof()) {
             parseValue(paseseStream,dict);

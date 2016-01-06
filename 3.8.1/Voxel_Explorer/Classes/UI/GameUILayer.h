@@ -144,7 +144,8 @@ private:
     
     
     void popupNpc(Npc* npc,std::string eventStr);
-    
+    //更新显示角色exp
+    void updateShowRoleExp(int exp);
     //isWho true角色 false 怪物
     void updateCharacterHud(HurtData*,TipTypes tipDodge,TipTypes tipBolock,TipTypes tipCriticalStike,TipTypes tipNormal,bool isWho = true);
     
