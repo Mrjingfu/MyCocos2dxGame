@@ -111,6 +111,9 @@ void MenuUILayer::onClickStart(cocos2d::Ref *ref)
     if (startBtn) {
         startBtn->setVisible(false);
         
+        if(!ArchiveManager::getInstance()->loadGame())
+            CCLOGERROR("Load Game failed!");
+        
         EaseSineOut* fadein = EaseSineOut::create(FadeIn::create(0.5));
         EaseSineOut* fadeout = EaseSineOut::create(FadeOut::create(0.5));
         CallFunc* func = CallFunc::create([](){

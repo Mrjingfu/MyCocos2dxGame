@@ -9,8 +9,6 @@
 #include "RandomDungeon.hpp"
 #include "UtilityHelper.h"
 #include "GameScene.h"
-#include "NpcDataManager.hpp"
-#include "LevelResourceManager.h"
 #include "BaseBoss.hpp"
 USING_NS_CC;
 
@@ -87,6 +85,52 @@ void DungeonNode::load(const cocos2d::ValueMap& data)
     
     m_strDungeonName = UtilityHelper::getLocalString(DUNGEON_NAMES[m_Type]);
     m_strDungeonBossName = UtilityHelper::getLocalString(DUNGEON_BOSS_NAMES[m_Type]);
+    
+    ValueMap leftDungeonNode = currentDungeonNode.at("LeftDungeonNode").asValueMap();
+    if(!leftDungeonNode.empty())
+    {
+        if(m_pLeftNode == nullptr)
+            m_pLeftNode = new (std::nothrow) DungeonNode();
+        if(m_pLeftNode)
+        {
+            m_pLeftNode->retain();
+            m_pLeftNode->m_strDungeonName = leftDungeonNode.at("DungeonName").asString();
+            m_pLeftNode->m_strDungeonBossName = leftDungeonNode.at("DungeonBossName").asString();
+            m_pLeftNode->m_nTransmutationDepth = leftDungeonNode.at("TransmutationDepth").asInt();
+            m_pLeftNode->m_nCurrentDepth = leftDungeonNode.at("CurrentDepth").asInt();
+            m_pLeftNode->m_nNodeDepth = leftDungeonNode.at("NodeDepth").asInt();
+            m_pLeftNode->m_nTotalNum = leftDungeonNode.at("TotalNum").asInt();
+            m_pLeftNode->m_Type = (DUNGEON_TYPE)(leftDungeonNode.at("DungeonType").asInt());
+            
+            m_pLeftNode->m_strDungeonName = UtilityHelper::getLocalString(DUNGEON_NAMES[m_pLeftNode->m_Type]);
+            m_pLeftNode->m_strDungeonBossName = UtilityHelper::getLocalString(DUNGEON_BOSS_NAMES[m_pLeftNode->m_Type]);
+            m_pLeftNode->autorelease();
+        }
+    }
+    
+    ValueMap rightDungeonNode = currentDungeonNode.at("RightDungeonNode").asValueMap();
+    if(!rightDungeonNode.empty())
+    {
+        if(m_pRightNode == nullptr)
+            m_pRightNode = new (std::nothrow) DungeonNode();
+        if(m_pRightNode)
+        {
+            m_pRightNode->retain();
+            m_pRightNode->m_strDungeonName = rightDungeonNode.at("DungeonName").asString();
+            m_pRightNode->m_strDungeonBossName = rightDungeonNode.at("DungeonBossName").asString();
+            m_pRightNode->m_nTransmutationDepth = rightDungeonNode.at("TransmutationDepth").asInt();
+            m_pRightNode->m_nCurrentDepth = rightDungeonNode.at("CurrentDepth").asInt();
+            m_pRightNode->m_nNodeDepth = rightDungeonNode.at("NodeDepth").asInt();
+            m_pRightNode->m_nTotalNum = rightDungeonNode.at("TotalNum").asInt();
+            m_pRightNode->m_Type = (DUNGEON_TYPE)(rightDungeonNode.at("DungeonType").asInt());
+            
+            m_pRightNode->m_strDungeonName = UtilityHelper::getLocalString(DUNGEON_NAMES[m_pRightNode->m_Type]);
+            m_pRightNode->m_strDungeonBossName = UtilityHelper::getLocalString(DUNGEON_BOSS_NAMES[m_pRightNode->m_Type]);
+            m_pRightNode->autorelease();
+        }
+    }
+    
+    CCLOG("m_nCurrentDepth = %d, m_nNodeDepth = %d, m_nTotalNum = %d", (int)m_nCurrentDepth.GetLongValue(), (int)m_nNodeDepth.GetLongValue(), (int)m_nTotalNum.GetLongValue());
 }
 void DungeonNode::save(cocos2d::ValueMap& data)
 {
@@ -98,7 +142,31 @@ void DungeonNode::save(cocos2d::ValueMap& data)
     currentDungeonNode["NodeDepth"] = (int)(m_nNodeDepth.GetLongValue());
     currentDungeonNode["TotalNum"] = (int)(m_nTotalNum.GetLongValue());
     currentDungeonNode["DungeonType"] = (int)(m_Type);
-    
+
+    ValueMap leftDungeonNode;
+    if(m_pLeftNode)
+    {
+        leftDungeonNode["DungeonName"] = m_pLeftNode->m_strDungeonName;
+        leftDungeonNode["DungeonBossName"] = m_pLeftNode->m_strDungeonBossName;
+        leftDungeonNode["TransmutationDepth"] = (int)(m_pLeftNode->m_nTransmutationDepth.GetLongValue());
+        leftDungeonNode["CurrentDepth"] = (int)(m_pLeftNode->m_nCurrentDepth.GetLongValue());
+        leftDungeonNode["NodeDepth"] = (int)(m_pLeftNode->m_nNodeDepth.GetLongValue());
+        leftDungeonNode["TotalNum"] = (int)(m_pLeftNode->m_nTotalNum.GetLongValue());
+        leftDungeonNode["DungeonType"] = (int)(m_pLeftNode->m_Type);
+    }
+    currentDungeonNode["LeftDungeonNode"] = leftDungeonNode;
+    ValueMap rightDungeonNode;
+    if(m_pRightNode)
+    {
+        rightDungeonNode["DungeonName"] = m_pRightNode->m_strDungeonName;
+        rightDungeonNode["DungeonBossName"] = m_pRightNode->m_strDungeonBossName;
+        rightDungeonNode["TransmutationDepth"] = (int)(m_pRightNode->m_nTransmutationDepth.GetLongValue());
+        rightDungeonNode["CurrentDepth"] = (int)(m_pRightNode->m_nCurrentDepth.GetLongValue());
+        rightDungeonNode["NodeDepth"] = (int)(m_pRightNode->m_nNodeDepth.GetLongValue());
+        rightDungeonNode["TotalNum"] = (int)(m_pRightNode->m_nTotalNum.GetLongValue());
+        rightDungeonNode["DungeonType"] = (int)(m_pRightNode->m_Type);
+    }
+    currentDungeonNode["RightDungeonNode"] = rightDungeonNode;
     data["CurrentDungeonNode"] = currentDungeonNode;
 }
 
@@ -121,10 +189,6 @@ RandomDungeon::~RandomDungeon()
     CC_SAFE_DELETE(m_pCurrentNode->m_pLeftNode);
     CC_SAFE_DELETE(m_pCurrentNode->m_pRightNode);
     CC_SAFE_DELETE(m_pCurrentNode);
-}
-void RandomDungeon::update(float delta)
-{
-    NpcDataManager::getInstance()->update(delta);
 }
 bool RandomDungeon::build()
 {
@@ -205,11 +269,6 @@ bool RandomDungeon::generateNextDungeonNode()
         m_pCurrentNode->m_pRightNode->m_nNodeDepth = m_pCurrentNode->m_nNodeDepth + 1;
         assignedDungeonNode(m_pCurrentNode->m_pRightNode);
         m_pCurrentNode->m_pRightNode->autorelease();
-    }
-    if(!LevelResourceManager::getInstance()->initLevelRes())
-    {
-        CCLOGERROR("load level resource failed!");
-        return false;
     }
     return true;
 }
@@ -352,6 +411,7 @@ std::string RandomDungeon::getCurrentBossName() const
 }
 bool RandomDungeon::load(const cocos2d::ValueMap& data)
 {
+    m_UnSelected.clear();
     if(data.find("RandomDungeon") == data.end())
     {
         if(!build())
@@ -372,14 +432,14 @@ bool RandomDungeon::load(const cocos2d::ValueMap& data)
             m_UnSelected.push_back((DUNGEON_TYPE)value.asInt());
         }
         if(!m_pCurrentNode)
-        {
             m_pCurrentNode = new (std::nothrow) DungeonNode();
-            if(!m_pCurrentNode)
-                return false;
+        if(!m_pCurrentNode)
+            return false;
+        else
+        {
             m_pCurrentNode->retain();
             m_pCurrentNode->load(randomDungeon);
             m_pCurrentNode->autorelease();
-            generateNextDungeonNode();
         }
         return true;
     }
