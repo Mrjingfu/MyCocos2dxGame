@@ -28,5 +28,19 @@
         <EnableHTML5Advanced Value="False" />
       </Value>
     </Item>
+    <Item Key="TabsParamsKey">
+      <Value ctype="TabsInfo">
+        <OpenedDocuments>
+          <FilePathData Path="loadingLayer.csd" />
+          <FilePathData Path="achieveItemLayer.csd" />
+          <FilePathData Path="characterInfoLayer.csd" />
+          <FilePathData Path="achievementLayer.csd" />
+          <FilePathData Path="alertLayer.csd" />
+          <FilePathData Path="dialogueLayer.csd" />
+          <FilePathData Path="gameinfoLayer.csd" />
+        </OpenedDocuments>
+        <ActiveDocument Path="loadingLayer.csd" />
+      </Value>
+    </Item>
   </Properties>
 </UserData>

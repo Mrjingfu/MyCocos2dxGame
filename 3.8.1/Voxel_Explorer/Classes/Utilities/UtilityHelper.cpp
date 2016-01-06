@@ -40,20 +40,28 @@ std::string UtilityHelper::getLocalStringForPlist(const std::string &key, const 
 }
 cocos2d::Size UtilityHelper::getSingleStrFontSize(cocos2d::ui::Text* tempText,std::string str)
 {
+    
     std::vector<std::string > tempVec = getStringCount(str);
     std::vector<cocos2d::Size>  sizeWidthVec;
     for (int i =0; i<tempVec.size(); i++) {
         std::string tempStr = tempVec[i];
         tempText->setString(tempStr);
         cocos2d::Size textSize = tempText->getContentSize()*tempText->getScale();
+        CCLOG("width:%f height:%f",textSize.width,textSize.height);
         sizeWidthVec.push_back(textSize);
     }
-    
+
+
     std::sort(sizeWidthVec.begin(), sizeWidthVec.end(),[](cocos2d::Size a, cocos2d::Size b) {
         return a.width < b.width;
     });
     //取最小字体大小  测试之后看要不要做中英文 中文取最大字体 英文取最小字体
-    cocos2d::Size tempSize = sizeWidthVec.at(0);
+    LanguageType lt= Application::getInstance()->getCurrentLanguage();
+    cocos2d::Size tempSize = cocos2d::Size::ZERO;
+    if (lt == LanguageType::CHINESE) {
+        tempSize =  sizeWidthVec.at(sizeWidthVec.size()-1);
+    }else
+        tempSize =  sizeWidthVec.at(0);
     return tempSize;
 }
 std::vector<std::string> UtilityHelper::getStringCount(std::string str )

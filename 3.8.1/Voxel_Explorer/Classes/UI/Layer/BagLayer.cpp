@@ -432,16 +432,7 @@ void BagLayer::bagItemOpe(int currentItemId)
     {
         equipId = secondWeaponId;
     }
-    //如果有装备过 打开装备过的武器
-    if (equipId!=-1)
-    {
-        Equippopupui = static_cast<ItemPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupType::ePopupEquipItem));
-        if (Equippopupui)
-        {
-            Equippopupui->setItemId(equipId);
-//            Equippopupui->getRootNode()->setPosition(cocos2d::Vec2(Equippopupui->getRootNode()->getPositionX(),SCREEN_HEIGHT*0.7));
-        }
-    }
+
 
     bool isSucces = false;
     if (m_bIsIndetify )
@@ -495,9 +486,20 @@ void BagLayer::bagItemOpe(int currentItemId)
         });
         popupui->setItemId(currentItemId);
         
+        //如果有装备过 打开装备过的武器
+        if (equipId!=-1)
+        {
+            Equippopupui = static_cast<ItemPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupType::ePopupEquipItem));
+            if (Equippopupui)
+            {
+                Equippopupui->setItemId(equipId);
+                //            Equippopupui->getRootNode()->setPosition(cocos2d::Vec2(Equippopupui->getRootNode()->getPositionX(),SCREEN_HEIGHT*0.7));
+            }
+        }
+        
         if (equipId !=-1 && Equippopupui)
         {
-            popupui->setDarkLayerVisble(false);
+            Equippopupui->setDarkLayerVisble(false);
             cocos2d::Size itemRootNode = popupui->getRootNode()->getContentSize();
             cocos2d::Size equipRootNode = Equippopupui->getRootNode()->getContentSize();
             float y = 0.0f;

@@ -73,13 +73,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../Classes/Utilities/PlistBinaryUtil.cpp"
-            timestampString = "473757034.608025"
+            filePath = "../Classes/UI/GameUILayer.cpp"
+            timestampString = "473769845.9551"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "34"
-            endingLineNumber = "34"
-            landmarkName = "PlistBinaryUtil::getValueMapFromFile(const std::string&amp; filename)"
+            startingLineNumber = "281"
+            endingLineNumber = "281"
+            landmarkName = "GameUILayer::updateShowRoleExp(int exp)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -89,14 +89,62 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../Classes/UI/GameUILayer.cpp"
-            timestampString = "473763011.264665"
+            filePath = "../Classes/UI/Popup/ItemPopupUI.cpp"
+            timestampString = "473766151.01836"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "281"
-            endingLineNumber = "281"
-            landmarkName = "GameUILayer::updateShowRoleExp(int exp)"
+            startingLineNumber = "717"
+            endingLineNumber = "717"
+            landmarkName = "ItemPopupUI::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *unused_event)"
             landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/Utilities/UtilityHelper.cpp"
+            timestampString = "473770428.514356"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "65"
+            endingLineNumber = "65"
+            landmarkName = "UtilityHelper::getSingleStrFontSize(cocos2d::ui::Text* tempText,std::string str)"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "UtilityHelper::getSingleStrFontSize(cocos2d::ui::Text*, std::__1::basic_string&lt;char, std::__1::char_traits&lt;char&gt;, std::__1::allocator&lt;char&gt; &gt;)"
+                  moduleName = "Voxel_Explorer-desktop"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chuangli/Documents/WorkSpace/MyCocos2dxGame/3.8.1/Voxel_Explorer/Classes/Utilities/UtilityHelper.cpp"
+                  timestampString = "473770615.110098"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "66"
+                  endingLineNumber = "66"
+                  offsetFromSymbolStart = "3287">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "UtilityHelper::getSingleStrFontSize(cocos2d::ui::Text*, std::__1::basic_string&lt;char, std::__1::char_traits&lt;char&gt;, std::__1::allocator&lt;char&gt; &gt;)"
+                  moduleName = "Voxel_Explorer-desktop"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chuangli/Documents/WorkSpace/MyCocos2dxGame/3.8.1/Voxel_Explorer/Classes/Utilities/UtilityHelper.cpp"
+                  timestampString = "473770615.110323"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "66"
+                  endingLineNumber = "66"
+                  offsetFromSymbolStart = "3319">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
