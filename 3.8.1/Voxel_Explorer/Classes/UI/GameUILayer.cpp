@@ -142,8 +142,32 @@ void GameUILayer::onTouchEnded(cocos2d::Touch *touch, cocos2d::Event *event)
         Vec2 trapPos;
         std::string iconRes;
         std::string desc = VoxelExplorer::getInstance()->getScreenPickDesc(touch->getLocation(), iconRes, randEvent, isTraps, isCanRemove, trapPos);
-        
-        if(randEvent)
+        if(isTraps)
+        {
+            AlertPopupUI* alertPopupUi = static_cast<AlertPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupAlert));
+            if(isCanRemove)
+            {
+                
+                if (alertPopupUi)
+                {
+                    alertPopupUi->setMessage(UtilityHelper::getLocalStringForUi("REMOVE_TRAP_INFO"));
+                    alertPopupUi->setPositiveListerner([this,trapPos](Ref* ref){
+                        VoxelExplorer::getInstance()->handleRemoveTrap(trapPos);
+                    },UtilityHelper::getLocalStringForUi("BAG_TEXT_DESTROY"));
+                    alertPopupUi->setNegativeListerner([](Ref* ref){});
+                     m_pGameToolBarLayer->setDistTipsFrame();
+                }
+            }
+            else
+            {
+                if (alertPopupUi)
+                {
+                    m_pGameToolBarLayer->setDistTipsFrame();
+                    alertPopupUi->setMessage(UtilityHelper::getLocalStringForUi("NOT_REMOVE_TRAP"));
+                    alertPopupUi->setPositiveListerner([](Ref* ref){});
+                }
+            }
+        }else if(randEvent)
         {
             int eventType = randEvent->at("EVENT_TYPE").asInt();
             std::string msg = randEvent->at("EVENT_DESC").asString();
@@ -156,54 +180,33 @@ void GameUILayer::onTouchEnded(cocos2d::Touch *touch, cocos2d::Event *event)
                     alertPopup->setPositiveListerner([](Ref*){
                         PlayerProperty::getInstance()->addMoney(CChaosNumber(10000));
                     });
+                     m_pGameToolBarLayer->setDistTipsFrame();
                 }
-            }
-            else if(isTraps)
+            }else
             {
-                AlertPopupUI* alertPopupUi = static_cast<AlertPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupAlert));
-                if(isCanRemove)
+                InformationPopupUI* infoUi = static_cast<InformationPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupInformation));
+                if(infoUi)
                 {
-                    
-                    if (alertPopupUi)
-                    {
-                        alertPopupUi->setMessage(UtilityHelper::getLocalStringForUi("REMOVE_TRAP_INFO"));
-                        alertPopupUi->setPositiveListerner([this,trapPos](Ref* ref){
-                            VoxelExplorer::getInstance()->handleRemoveTrap(trapPos);
-                        },UtilityHelper::getLocalStringForUi("BAG_TEXT_DESTROY"));
-                        alertPopupUi->setNegativeListerner([](Ref* ref){});
-                    }
+                    m_pGameToolBarLayer->setDistTipsFrame();
+                    infoUi->setDarkLayerVisble(false);
+                    infoUi->setInfoIcon(iconRes);
+                    infoUi->setInfoDesc(desc);
                 }
-                else
-                {
-                    if (alertPopupUi)
-                    {
-                        alertPopupUi->setMessage(UtilityHelper::getLocalStringForUi("NOT_REMOVE_TRAP"));
-                        alertPopupUi->setPositiveListerner([](Ref* ref){});
-                    }
-                }
+                CCLOG("Pick Desc : %s, Icon Res: %s", desc.c_str(), iconRes.c_str());
             }
-            else
-            {
-                InformationPopupUI* popupUi = static_cast<InformationPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupInformation));
-                if (popupUi)
-                {
-                    popupUi->setInfoDesc(msg);
-                }
-            }
-
-        }
-        else
+        }else
         {
             InformationPopupUI* infoUi = static_cast<InformationPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupInformation));
             if(infoUi)
             {
-                m_pGameToolBarLayer->onClickDistTipsFrame();
+                m_pGameToolBarLayer->setDistTipsFrame();
                 infoUi->setDarkLayerVisble(false);
                 infoUi->setInfoIcon(iconRes);
                 infoUi->setInfoDesc(desc);
             }
             CCLOG("Pick Desc : %s, Icon Res: %s", desc.c_str(), iconRes.c_str());
         }
+
     }
     return;
 }
@@ -680,7 +683,7 @@ void GameUILayer::onEventFoundHidderItem(cocos2d::EventCustom *sender)
 void GameUILayer::onEventGoUpStairs(cocos2d::EventCustom *sender)
 {
      CCLOG("onEventGoUpStairs");
-     ArchiveManager::getInstance()->saveGame();
+//     ArchiveManager::getInstance()->saveGame();
      std::string msg = UtilityHelper::getLocalStringForUi(EVENT_GO_UPSTAIRS);
      PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
 }
@@ -695,7 +698,7 @@ void GameUILayer::onEventGoUpStairsForbidden(cocos2d::EventCustom *sender)
 void GameUILayer::onEventGoDownStairs(cocos2d::EventCustom *sender)
 {
     CCLOG("onEventGoDownStairs");
-    ArchiveManager::getInstance()->saveGame();
+//    ArchiveManager::getInstance()->saveGame();
     std::string msg = UtilityHelper::getLocalStringForUi(EVENT_GO_DOWNSTAIRS);
     PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
 }

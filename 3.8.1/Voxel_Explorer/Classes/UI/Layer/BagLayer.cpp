@@ -439,7 +439,7 @@ void BagLayer::bagItemOpe(int currentItemId)
         if (Equippopupui)
         {
             Equippopupui->setItemId(equipId);
-            Equippopupui->getRootNode()->setPosition(cocos2d::Vec2(Equippopupui->getRootNode()->getPositionX(),SCREEN_HEIGHT*0.7));
+//            Equippopupui->getRootNode()->setPosition(cocos2d::Vec2(Equippopupui->getRootNode()->getPositionX(),SCREEN_HEIGHT*0.7));
         }
     }
 
@@ -498,7 +498,24 @@ void BagLayer::bagItemOpe(int currentItemId)
         if (equipId !=-1 && Equippopupui)
         {
             popupui->setDarkLayerVisble(false);
-            popupui->getRootNode()->setPosition(cocos2d::Vec2(popupui->getRootNode()->getPositionX(),Equippopupui->getRootNode()->getPositionY()-Equippopupui->getRootNode()->getContentSize().height*0.5 -2- popupui->getRootNode()->getContentSize().height*0.5));
+            cocos2d::Size itemRootNode = popupui->getRootNode()->getContentSize();
+            cocos2d::Size equipRootNode = Equippopupui->getRootNode()->getContentSize();
+            float y = 0.0f;
+            if (equipRootNode.height > itemRootNode.height) {
+                y = SCREEN_HEIGHT*0.5 + equipRootNode.height*0.5;
+            }else
+                y = SCREEN_HEIGHT*0.5 + itemRootNode.height*0.5;
+            
+            Equippopupui->getRootNode()->setAnchorPoint(cocos2d::Vec2::ANCHOR_MIDDLE_TOP);
+            popupui->getRootNode()->setAnchorPoint(cocos2d::Vec2::ANCHOR_MIDDLE_TOP);
+            popupui->getRootNode()->setPosition(cocos2d::Vec2(SCREEN_WIDTH*0.5+5+itemRootNode.width*0.5,y));
+            Equippopupui->getRootNode()->setPosition(cocos2d::Vec2(SCREEN_WIDTH*0.5-equipRootNode.width*0.5,y));
+//            CCLOG("popupui x:%f,y:%f",popupui->getRootNode()->getPositionX(),popupui->getRootNode()->getPositionY());
+//            CCLOG("propupui box x:%f,y:%f width:%f,height:%f",popupui->getRootNode()->getBoundingBox().origin.x,popupui->getRootNode()->getBoundingBox().origin.y,popupui->getRootNode()->getBoundingBox().size.width,popupui->getRootNode()->getBoundingBox().size.height);
+//            CCLOG("Equippopupui x:%f,y:%f",Equippopupui->getRootNode()->getPositionX(),Equippopupui->getRootNode()->getPositionY());
+//            CCLOG("propupui box x:%f,y:%f width:%f,height:%f",Equippopupui->getRootNode()->getBoundingBox().origin.x,Equippopupui->getRootNode()->getBoundingBox().origin.y,Equippopupui->getRootNode()->getBoundingBox().size.width,Equippopupui->getRootNode()->getBoundingBox().size.height);
+            
+//            popupui->getRootNode()->setPosition(cocos2d::Vec2(popupui->getRootNode()->getPositionX(),Equippopupui->getRootNode()->getPositionY()-Equippopupui->getRootNode()->getContentSize().height*0.5 -2- popupui->getRootNode()->getContentSize().height*0.5));
             
         }
     }

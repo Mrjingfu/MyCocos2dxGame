@@ -721,9 +721,9 @@ void ItemPopupUI::onTouchEnded(cocos2d::Touch *touch, cocos2d::Event *unused_eve
     PopupUILayer* pLayer = nullptr;
     if (PopupUILayerManager::getInstance()->isOpenPopup(ePopupEquipItem,pLayer))
     {
-        float height = pLayer->getRootNode()->getBoundingBox().size.height + rootRect.size.height;
+        float width = pLayer->getRootNode()->getBoundingBox().size.width + rootRect.size.width+5;
         
-        rootRect.setRect(rootRect.origin.x,rootRect.origin.y,rootRect.size.width,+height);
+        rootRect.setRect(pLayer->getRootNode()->getBoundingBox().origin.x,pLayer->getRootNode()->getBoundingBox().origin.y,width,rootRect.size.height);
     }
     
     if (!rootRect.containsPoint(touch->getLocation()) && m_nIsBlankClose) {
