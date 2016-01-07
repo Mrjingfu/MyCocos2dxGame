@@ -539,8 +539,6 @@ void Player::rotateToBack()
 }
 void Player::attackByMonster(MonsterProperty* monsterProperty, bool miss)
 {
-    ///for debug
-    return;
     if(!monsterProperty || !m_pHurtData)
         return;
     
@@ -814,6 +812,21 @@ void Player::fallAndDie()
         this->runAction(Speed::create(sequence, 0.5f));
     else
         this->runAction(sequence);
+}
+void Player::healedbyNurse()
+{
+    removePlayerBuffer(PlayerBuffer::PB_FIRE);
+    removePlayerBuffer(PlayerBuffer::PB_FROZEN);
+    removePlayerBuffer(PlayerBuffer::PB_POISONING);
+    removePlayerBuffer(PlayerBuffer::PB_PARALYTIC);
+    removePlayerBuffer(PlayerBuffer::PB_WEAK);
+    auto tex = Director::getInstance()->getTextureCache()->addImage("chr_sword.png");
+    if(tex)
+        tex->setAliasTexParameters();
+    setTexture(tex);
+    PlayerProperty::getInstance()->healedbyNurse();
+    
+    VoxelExplorer::getInstance()->addParticle3DEffectToPlayer(P3D_PLAYER_USE_POTION_TAKE_EFFECT);
 }
 void Player::onEnterIdle()
 {

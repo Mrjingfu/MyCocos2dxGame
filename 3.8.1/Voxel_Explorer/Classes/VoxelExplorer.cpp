@@ -1681,6 +1681,8 @@ void VoxelExplorer::handleRemoveTrap(const cocos2d::Vec2& mapPos)
                             tile->setTexture(tex);
                         }
                         m_pCurrentLevel->setTerrainTileType(mapPos.x, mapPos.y, TerrainTile::TT_STANDARD);
+                        std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("REMOVE_TRAP");
+                        SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
                         PlayerProperty::getInstance()->setExp(PlayerProperty::getInstance()->getExp() + 50);
                     }
                 }

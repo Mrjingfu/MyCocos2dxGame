@@ -46,6 +46,8 @@ protected:
     virtual void onExitDisappear();
     
     virtual bool createParticleEffect() = 0;
+    
+    void destroySelf();
 protected:
     BulletType                      m_Type;
     cocos2d::PUParticleSystem3D*    m_pEffect;

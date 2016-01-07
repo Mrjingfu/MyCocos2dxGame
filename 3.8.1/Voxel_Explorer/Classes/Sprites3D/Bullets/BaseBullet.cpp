@@ -106,7 +106,15 @@ void BaseBullet::onEnterDisappear()
         Vec2 playerPos = VoxelExplorer::getInstance()->getPlayer()->getPosInMap();
         VoxelExplorer::getInstance()->handlePlayerHurtByBoss(playerPos, m_pOwner);
     }
+    DelayTime* delayTime = DelayTime::create(1.5f);
+    CallFunc* callback = CallFunc::create(CC_CALLBACK_0(BaseBullet::destroySelf,this));
+    Sequence* sequence = Sequence::create(delayTime, callback, nullptr);
+    this->runAction(sequence);
 }
 void BaseBullet::onExitDisappear()
 {
+}
+void BaseBullet::destroySelf()
+{
+    this->removeFromParentAndCleanup(true);
 }

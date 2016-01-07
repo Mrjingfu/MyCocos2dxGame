@@ -74,6 +74,8 @@ public:
     void removePlayerBuffer(PlayerBuffer buff);
     void resetPlayerBuffer();
     
+    void healedbyNurse();
+    
     void addMoney(CChaosNumber copper, bool sound = true);
     bool costMoney(CChaosNumber copper);
     void setExp(CChaosNumber exp);
@@ -88,6 +90,7 @@ public:
     bool useScroll(CChaosNumber id);
     bool useKey(PickableItem::PickableItemType type);
     
+    void playPickupItemSound(PickableItemProperty* itemProperty);
     bool buyItemToBag(PickableItemProperty* buyItemProperty, CChaosNumber count, bool toIndentify = false, bool sound = true);
     bool sellItemFromBag(PickableItemProperty* sellItemProperty, CChaosNumber count);
     bool addItemToBag(PickableItem::PickableItemType type, CChaosNumber level, bool sound = true);
@@ -105,7 +108,6 @@ public:
     bool save(cocos2d::ValueMap& data);
 private:
     void levelUp();
-    
 private:
     CChaosNumber    m_nValueCopper;         ///价值
     CChaosNumber    m_nLevel;               ///等级

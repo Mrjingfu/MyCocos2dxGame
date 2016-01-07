@@ -46,7 +46,10 @@ public:
     NPCState getState() const { return m_State; }
     void setState(NPCState state);
     
+    void endAnswer();
+    
     virtual void setActorDir( ActorDir dir );
+    virtual void setVisited(bool visited);
 protected:
     virtual void onEnterIdle();
     virtual void onExitIdle();
@@ -58,6 +61,8 @@ protected:
     virtual void onExitFadeOut();
     
     void destroySelf();
+    void doAnswer();
+    bool createNpcLight();
 private:
     NPC_TYPE    m_Type;
     NPCState   m_State;
