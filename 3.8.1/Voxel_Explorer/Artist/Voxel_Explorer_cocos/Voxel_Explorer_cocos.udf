@@ -28,5 +28,17 @@
         <EnableHTML5Advanced Value="False" />
       </Value>
     </Item>
+    <Item Key="TabsParamsKey">
+      <Value ctype="TabsInfo">
+        <OpenedDocuments>
+          <FilePathData Path="rolenewLayer.csd" />
+          <FilePathData Path="shopPopupLayer.csd" />
+          <FilePathData Path="roleLayer.csd" />
+          <FilePathData Path="achieveItemLayer.csd" />
+          <FilePathData Path="achievementLayer.csd" />
+        </OpenedDocuments>
+        <ActiveDocument Path="achieveItemLayer.csd" />
+      </Value>
+    </Item>
   </Properties>
 </UserData>
