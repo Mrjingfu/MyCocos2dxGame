@@ -11,6 +11,7 @@
 #include "UtilityHelper.h"
 #include "VoxelExplorer.h"
 #include "Player.hpp"
+#include "OutlineEffect3D.h"
 #include "StatisticsManager.hpp"
 USING_NS_CC;
 const std::string NPC_NAMES[] = {
@@ -30,9 +31,16 @@ Npc* Npc::create(NPC_TYPE type)
     if (npc && npc->initWithFile(model))
     {
         npc->m_Type = type;
+        
         npc->setCameraMask((unsigned int)CameraFlag::USER1);
         npc->setLightMask((unsigned int)LightFlag::LIGHT0);
         npc->setCascadeOpacityEnabled(true);
+        
+        OutlineEffect3D* outline = OutlineEffect3D::create();
+        outline->setOutlineColor(Vec3(0.1f, 0.1f, 0.1f));
+        outline->setOutlineWidth(0.05f);
+        npc->addEffect(outline, 1);
+        
         npc->autorelease();
         return npc;
     }
@@ -101,7 +109,13 @@ void Npc::setState(NPCState state)
 void Npc::setActorDir( ActorDir dir )
 {
     if(m_dir == dir)
+    {
+        DelayTime* delay = DelayTime::create(0.5f);
+        CallFunc* callback = CallFunc::create(CC_CALLBACK_0(Npc::doAnswer, this));
+        Sequence* sequence = Sequence::create(delay, callback, nullptr);
+        this->runAction(sequence);
         return;
+    }
     m_dir = dir;
     EaseSineOut* rotateTo = nullptr;
     switch (m_dir) {
@@ -120,10 +134,15 @@ void Npc::setActorDir( ActorDir dir )
         default:
             break;
     }
-    this->runAction(rotateTo);
+    CallFunc* callback = CallFunc::create(CC_CALLBACK_0(Npc::doAnswer, this));
+    Sequence* sequence = Sequence::create(rotateTo, callback, nullptr);
+    this->runAction(sequence);
 }
 void Npc::onEnterIdle()
 {
+    m_dir = AD_BACK;
+    EaseSineOut*rotateTo = EaseSineOut::create(RotateTo::create(0.5f, Vec3(0,0,0)));
+    this->runAction(rotateTo);
 }
 void Npc::onExitIdle()
 {
@@ -147,6 +166,28 @@ void Npc::onEnterAnswer()
                 setActorDir(AD_BACK);
         }
     }
+}
+void Npc::onExitAnswer()
+{
+}
+
+void Npc::onEnterFadeOut()
+{
+    removeTerrainTileFlag(TileInfo::USEABLE);
+    EaseSineOut* fadeOut = EaseSineOut::create(FadeOut::create(0.5f));
+    CallFunc* callback = CallFunc::create(CC_CALLBACK_0(Npc::destroySelf, this));
+    Sequence* sequence = Sequence::create(fadeOut, callback, nullptr);
+    this->runAction(sequence);
+}
+void Npc::onExitFadeOut()
+{
+}
+void Npc::destroySelf()
+{
+    this->removeFromParentAndCleanup(true);
+}
+void Npc::doAnswer()
+{
     switch (m_Type) {
         case NPC_CHILD:
             Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_NPC_CHILD_ANSWER, this);
@@ -171,22 +212,51 @@ void Npc::onEnterAnswer()
             StatisticsManager::getInstance()->addMeetHagNum();
             Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_NPC_LITTLEWITCH_ANSWER, this);
             break;
+        case NPC_NURSE:
+            Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_NPC_NURSE_ANSWER, this);
+            break;
         default:
             break;
     }
-    
 }
-void Npc::onExitAnswer()
+void Npc::endAnswer()
 {
+    switch (m_Type) {
+        case NPC_CHILD:
+        case NPC_SHOPGIRL:
+        case NPC_OLDLADY:
+        case NPC_KNIGHT:
+            setState(NPCS_IDLE);
+            break;
+        case NPC_WEIRDO:
+        case NPC_OLDMAN:
+        case NPC_LITTLEWITCH:
+            setState(NPCS_FADEOUT);
+            break;
+        case NPC_NURSE:
+            {
+                if(VoxelExplorer::getInstance()->getPlayer())
+                    VoxelExplorer::getInstance()->getPlayer()->healedbyNurse();
+                setState(NPCS_FADEOUT);
+                break;
+            }
+        default:
+            break;
+    }
 }
-
-void Npc::onEnterFadeOut()
+void Npc::setVisited(bool visited)
 {
-}
-void Npc::onExitFadeOut()
-{
-}
-
-void Npc::destroySelf()
-{
+    setVisible(visited);
+    unsigned int lightmask = getLightMask();
+    if (visited)
+    {
+        lightmask = lightmask | (unsigned int)LightFlag::LIGHT1;
+        lightmask = lightmask | (unsigned int)LightFlag::LIGHT2;
+    }
+    else
+    {
+        lightmask = lightmask &~ (unsigned int)LightFlag::LIGHT1;
+        lightmask = lightmask &~ (unsigned int)LightFlag::LIGHT2;
+    }
+    setLightMask(lightmask);
 }

@@ -401,7 +401,7 @@
 	<key>PIN_SWORD_SWORD</key>
 	<string>铁剑</string>
 	<key>PIN_SWORD_SWORD_DESC</key>
-	<string>上面已经锈剂斑斑，也许会让被砍着得破伤风。</string>
+	<string>上面已经锈剂斑斑，也许会让被砍者得破伤风。</string>
 	<key>PIN_SWORD_SWORD_BIDESC</key>
 	<string>很普通的一把铁剑。</string>
 	<key>PIN_SWORD_STEELSWORD</key>

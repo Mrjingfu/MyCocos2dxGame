@@ -105,12 +105,21 @@ StandardMonster* StandardMonster::create(BaseMonster::MonsterType type, bool eli
         if(monster->m_pMonsterProperty)
         {
             if(monster->m_pMonsterProperty->isElite())
+            {
                 monster->setScale(monster->getScale() + 0.2f);
-            
-            OutlineEffect3D* outline = OutlineEffect3D::create();
-            outline->setOutlineColor(Vec3(0.1f, 0.1f, 0.1f));
-            outline->setOutlineWidth(0.03f);
-            monster->addEffect(outline, 1);
+                Color3B color = UtilityHelper::randomColor(400,80);
+                OutlineEffect3D* outline = OutlineEffect3D::create();
+                outline->setOutlineColor(Vec3(color.r/255.0f, color.g/255.0f, color.b/255.0f));
+                outline->setOutlineWidth(0.03f);
+                monster->addEffect(outline, 1);
+            }
+            else
+            {
+                OutlineEffect3D* outline = OutlineEffect3D::create();
+                outline->setOutlineColor(Vec3(0.1f, 0.1f, 0.1f));
+                outline->setOutlineWidth(0.05f);
+                monster->addEffect(outline, 1);
+            }
         }
         monster->autorelease();
         return monster;

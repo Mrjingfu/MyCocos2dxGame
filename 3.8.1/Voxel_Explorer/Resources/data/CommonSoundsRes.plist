@@ -52,6 +52,8 @@
 	<string>search.wav</string>
 	<key>SECRET_FOUND</key>
 	<string>secret_found.wav</string>
+	<key>REMOVE_TRAP</key>
+	<string>remove_trap.wav</string>
 	<key>CRITICALSTRIKE</key>
 	<string>criticalstrike.wav</string>
 	<key>BLOCK</key>

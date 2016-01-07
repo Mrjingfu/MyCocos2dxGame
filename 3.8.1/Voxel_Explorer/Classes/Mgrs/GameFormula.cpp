@@ -64,7 +64,8 @@ UseableItem::UseableItemType GameFormula::generateUseItemType()
 }
 int GameFormula::getNextLevelExp(int currentLevel)
 {
-    int exp = floor((pow((currentLevel-1), 3)+60)/5*((currentLevel-1)*2+60)+60);
+    ///按每4秒杀一怪
+    int exp = floor((pow((currentLevel-1), 3)+60)/4*((currentLevel-1)*2+60)+60);
     int mod = exp%50;
     return exp - mod;
 }

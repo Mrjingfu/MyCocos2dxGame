@@ -332,7 +332,7 @@ void GameUILayer::updateShowRoleExp(int exp)
                         popupUILayer->setShopTitle(eventStr);
                         popupUILayer->registerCloseCallback([this,npc]()
                         {
-                            npc->setState(Npc::NPCState::NPCS_IDLE);
+                            npc->endAnswer();
                             if (m_pNpcPropLayer)
                             {
                                 m_pNpcPropLayer->setVisible(false);
@@ -374,7 +374,7 @@ void GameUILayer::onEventNpcChildAnsWer(cocos2d::EventCustom *sender)
         if (alertPopup) {
             alertPopup->setMessage(UtilityHelper::getLocalStringForUi(EVENT_NPC_CHILD_ANSWER));
             alertPopup->setPositiveListerner([this,npc](Ref* ref){
-                npc->setState(Npc::NPCS_IDLE);
+                npc->endAnswer();
                 if (m_pNpcPropLayer) {
                     m_pNpcPropLayer->setVisible(false);
                 }
@@ -428,7 +428,7 @@ void GameUILayer::onEventNpcOldManAnsWer(cocos2d::EventCustom *sender)
             infoPopup->setTitle(UtilityHelper::getLocalStringForUi(EVENT_NPC_OLDMAN_ANSWER));
             infoPopup->registerCloseCallback([npc,this](){
                 StatisticsManager::getInstance()->addMeetSageNum();
-                npc->setState(Npc::NPCS_IDLE);
+                npc->endAnswer();
                 if (m_pNpcPropLayer) {
                     m_pNpcPropLayer->setVisible(false);
                 }
@@ -450,7 +450,7 @@ void GameUILayer::onEventNpcLittleWitchAnsWer(cocos2d::EventCustom *sender)
         if (alertPopup) {
             alertPopup->setMessage(UtilityHelper::getLocalStringForUi(EVENT_NPC_LITTLEWITCH_ANSWER));
             alertPopup->setPositiveListerner([this,npc](Ref* ref){
-                npc->setState(Npc::NPCS_IDLE);
+                npc->endAnswer();
                 if (m_pNpcPropLayer) {
                     m_pNpcPropLayer->setVisible(false);
                 }
@@ -472,7 +472,7 @@ void GameUILayer::onEventNpcNurseAnsWer(cocos2d::EventCustom *sender)
         if (alertPopup) {
             alertPopup->setMessage(UtilityHelper::getLocalStringForUi("NPC_NURSE_ANSWER_MESSAGE"));
             alertPopup->setPositiveListerner([this,npc](Ref* ref){
-                npc->setState(Npc::NPCS_IDLE);
+                npc->endAnswer();
                 if (m_pNpcPropLayer) {
                     m_pNpcPropLayer->setVisible(false);
                 }

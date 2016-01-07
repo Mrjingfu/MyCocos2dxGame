@@ -306,6 +306,20 @@ bool StandardLevel::decorateAreas()
                     return false;
                 }
             }
+            //// for debug
+//            else if(area->getAreaType() == Area::AT_ENTRANCE)
+//            {
+//                Npc* npc = Npc::create(Npc::NPC_KNIGHT);
+//                if(!npc)
+//                    return false;
+//                Vec2 center = area->getCenter();
+//                int tileIndex = center.x + center.y * m_nWidth;
+//                npc->setPosition3D(Vec3(m_Map[tileIndex].m_nX*TerrainTile::CONTENT_SCALE, -0.5f*TerrainTile::CONTENT_SCALE, -m_Map[tileIndex].m_nY*TerrainTile::CONTENT_SCALE));
+//                npc->setVisited(m_Map[tileIndex].m_bVisited);
+//                npc->addTerrainTileFlag(TileInfo::USEABLE);
+//                VoxelExplorer::getInstance()->getNPCsLayer()->addChild(npc);
+//                npc->setState(Npc::NPCS_IDLE);
+//            }
         }
     }
     return true;

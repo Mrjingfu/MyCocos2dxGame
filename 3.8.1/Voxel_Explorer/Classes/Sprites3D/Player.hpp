@@ -65,6 +65,7 @@ public:
     void attackByBoss(BossProperty* bossProperty, bool miss);
     void hurtByGrippingTrap();
     void fallAndDie();
+    void healedbyNurse();
 private:
     void onEnterIdle();
     void onEnterPrepareToJump();
