@@ -425,7 +425,7 @@ void StatisticsManager::resumeSchedu()
 bool StatisticsManager::load(const cocos2d::ValueMap& rootNode )
 {
    
-    if (!hasKey(ARCHIVE_STATISTICS,rootNode) || rootNode.empty()) {
+    if (rootNode.find(ARCHIVE_STATISTICS)==rootNode.end() ) {
          init();
         return true;
     }

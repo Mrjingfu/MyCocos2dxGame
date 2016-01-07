@@ -20,6 +20,8 @@
 #include "AlertPopupUI.hpp"
 #include "LevelResourceManager.h"
 #include "SimpleAudioEngine.h"
+#include "AchieveItemLayer.hpp"
+#include "AchieveItemUI.hpp"
 USING_NS_CC;
 GameToolbarLayer::GameToolbarLayer()
 {
@@ -281,11 +283,21 @@ void GameToolbarLayer::onClickPause(cocos2d::Ref *ref)
     clickEffect();
     CCLOG("onClickPause");
     PopupUILayerManager::getInstance()->openPopup(ePopupPause);
-//    InformationPopupUI* popupUi = static_cast<InformationPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupInformation));
+//    AchieveItemLayer* layer = AchieveItemLayer::create();
+//    if (layer) {
+//        layer->showAchieveItem("achieve_icon_76.png", "听爷爷讲那过去的故事", "杀死亡灵怪物僵尸,骷髅,怨魂,幽灵,食尸鬼,石像鬼各100个");
+//    }
+//    layer->setAnchorPoint(cocos2d::Vec2::ANCHOR_MIDDLE);
+//    m_pRootNode->addChild(layer);
+//    layer->setPosition(m_pRootNode->getContentSize()*0.5);
+//    PopupUILayerManager::getInstance()->openPopup(ePopupPause);
+//    InformationPopupUI* popupUi = static_cast<InformationPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupRandomMsg));
 //    if (popupUi) {
 //        popupUi->setInfoIcon("chr_man.png");
 //        popupUi->setInfoVector(NpcDataManager::getInstance()->getOldManRoomInfo());
-//        popupUi->setInfoDesc("爱死爱的爱的爱的啊丁奥斯丁奥斯丁奥斯丁爱死大声道啊暗示法爱死发斯蒂芬爱死发生发生的飞洒发生飞声道啊暗示法爱死发斯蒂芬爱死发生发生的飞洒发生飞");
+//        ValueVector aaa = cocos2d::FileUtils::getInstance()->getValueVectorFromFile("random_events_chinese.plist");
+//        std::string str = aaa.at(11).asValueMap()["EVENT_DESC"].asString();
+//        popupUi->setInfoDesc(str);
 //    }
 //     AlertPopupUI* popupUi = static_cast<AlertPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupAlert));
 //    if (popupUi) {

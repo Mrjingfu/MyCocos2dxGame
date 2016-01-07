@@ -12,6 +12,8 @@
 #include "PopupUILayer.h"
 
 class InformationPopupUI: public PopupUILayer{
+    
+protected:
     InformationPopupUI();
     
 public:
@@ -24,13 +26,15 @@ public:
     void setInfoIcon(std::string icon);
     void setInfoDesc(std::string desc);
     void setInfoVector(cocos2d::ValueVector infos);
-    void updateInfoVectorDesc();
-    
+    virtual void updateInfoVectorDesc();
+    virtual void updateFrameWidth();
+    virtual void updateFrameHieght();
+    virtual void updateFrameIconSize();
 //    void setInfoData(const std::string& infoRes, std::string& infoDesc);
 private:
     void onClickNext(Ref* ref);
     void onClickOk(Ref* ref);
-private:
+protected:
     cocos2d::ValueVector    m_vInfos;
     cocos2d::ui::ImageView* m_pInfoIcon;
     cocos2d::ui::ImageView* m_pBtnNext;

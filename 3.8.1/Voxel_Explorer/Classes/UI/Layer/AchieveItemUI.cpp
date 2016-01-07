@@ -46,16 +46,34 @@ bool AchieveItemUI::addEvents()
 }
 
 
-void AchieveItemUI::setAchieveDatas(const std::string icon, const std::string name, const std::string targetDesc)
+void AchieveItemUI::setAchieveDatas(const std::string icon,  std::string name,  std::string targetDesc)
 {
     if (m_pAchieveIcon) {
         m_pAchieveIcon->loadTexture(icon,TextureResType::PLIST);
         m_pAchieveIcon->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
     }
+    float width = m_pRootNode->getContentSize().width*0.75;
     if (m_pAchieveName) {
+        
+        cocos2d::Size fontsize = UtilityHelper::getSingleStrFontSize(m_pAchieveName, name);
+        int count = width/fontsize.width;
+        UtilityHelper::getLineStr(name, count);
         m_pAchieveName->setString(name);
     }
     if (m_pAchieveTargetDesc) {
+        
+        cocos2d::Size fontsize = UtilityHelper::getSingleStrFontSize(m_pAchieveTargetDesc, targetDesc);
+        int xCount = width/fontsize.width;
+        UtilityHelper::getLineStr(targetDesc, xCount);
         m_pAchieveTargetDesc->setString(targetDesc);
+        float heigth = m_pRootNode->getContentSize().height*0.5;
+        float descWidth = m_pAchieveTargetDesc->getContentSize().height* m_pAchieveTargetDesc->getScale();
+        if (descWidth > heigth) {
+            m_pRootNode->setContentSize(m_pRootNode->getContentSize() + cocos2d::Size(0,descWidth-heigth +10));
+            m_pAchieveIcon->setAnchorPoint(cocos2d::Vec2(m_pRootNode->getContentSize().width*0.33,m_pRootNode->getContentSize().height));
+            m_pAchieveName->setPosition(cocos2d::Vec2(m_pRootNode->getContentSize().width*0.35,m_pRootNode->getContentSize().height*0.66));
+            m_pAchieveTargetDesc->setPosition(cocos2d::Vec2(m_pRootNode->getContentSize().width*0.35,m_pRootNode->getContentSize().height*0.5));
+        }
+       
     }
 }

@@ -29,14 +29,14 @@ AchievementManager* AchievementManager::getInstance()
 bool AchievementManager::load(const cocos2d::ValueMap& rootNode)
 {
     //没有存档时
-    if (!hasKey(ARCHIVE_ACHIEVEMENT_KEY,rootNode) ||rootNode.empty() )
+    if (rootNode.find(ARCHIVE_ACHIEVEMENT_KEY) == rootNode.end())
     {
         return true;
     }
     //加载存档
-    cocos2d::ValueVector m_vCompleteAchieves = rootNode.at(ARCHIVE_ACHIEVEMENT_KEY).asValueVector();
+    cocos2d::ValueMap m_vAchieves = rootNode.at(ARCHIVE_ACHIEVEMENT_KEY).asValueMap();
 
-    CCLOG("ARCHIVE_ACHIEVEMENT_KEY:%s",Value(m_vCompleteAchieves).getDescription().c_str());
+    CCLOG("ARCHIVE_ACHIEVEMENT_KEY:%s",Value(m_vAchieves).getDescription().c_str());
     
     //加载存档时 更新全局成就, 过滤掉已完成的成就
     for (auto iter = m_vAllAchieves.begin() ; iter!=m_vAllAchieves.end(); iter++)
@@ -45,13 +45,11 @@ bool AchievementManager::load(const cocos2d::ValueMap& rootNode)
         if (nullptr !=(*iter))
         {
             AchieveProperty *prop = (*iter);
-            checkAchieveUnlock(prop);
-            for (int i =0; i< m_vCompleteAchieves.size(); i++)
-            {
-                if (prop->getAchieveDetailType() == (eAchievementDetailType)(m_vCompleteAchieves.at(i).asInt()))
-                {
-                    prop->onAcieveCommple();
-                }
+            auto iter = m_vAchieves.find(prop->getAchieveDesc());
+            if (iter!= m_vAchieves.end()) {
+                cocos2d::ValueMap itemAchieve = iter->second.asValueMap();
+                prop->onAcieveCommple(itemAchieve[ARCHIVE_ACHIEVEMENT_ITEM_COMMPLE].asBool());
+                prop->onUnlockAchieve(itemAchieve[ARCHIVE_ACHIEVEMENT_ITEM_UNLOCK].asBool());
             }
         }
     }
@@ -61,19 +59,22 @@ bool AchievementManager::load(const cocos2d::ValueMap& rootNode)
 }
 bool AchievementManager::save( cocos2d::ValueMap& rootNode)
 {
-    cocos2d::ValueVector achievementVector;
+    cocos2d::ValueMap achieveItems;
     for (auto iter = m_vAllAchieves.begin() ; iter!=m_vAllAchieves.end(); iter++)
     {
         
         if (nullptr !=(*iter))
         {
             AchieveProperty *prop = (*iter);
-            if (prop->isCommple()) {
-                achievementVector.push_back(cocos2d::Value(prop->getAchieveDetailType()));
-            }
+            
+            cocos2d::ValueMap achieve;
+            achieve.insert(cocos2d::ValueMap::value_type(ARCHIVE_ACHIEVEMENT_ITEM_COMMPLE,cocos2d::Value(prop->isCommple())));
+            achieve.insert(cocos2d::ValueMap::value_type(ARCHIVE_ACHIEVEMENT_ITEM_UNLOCK,cocos2d::Value(prop->isUnlockAchieve())));
+            achieveItems.insert(cocos2d::ValueMap::value_type(prop->getAchieveDesc(),cocos2d::Value(achieve)));
+            
         }
     }
-    rootNode.insert(cocos2d::ValueMap::value_type(ARCHIVE_ACHIEVEMENT_KEY,cocos2d::Value(achievementVector)));
+    rootNode.insert(cocos2d::ValueMap::value_type(ARCHIVE_ACHIEVEMENT_KEY,cocos2d::Value(achieveItems)));
     return true;
 }
 bool AchievementManager::loadAchieveData()

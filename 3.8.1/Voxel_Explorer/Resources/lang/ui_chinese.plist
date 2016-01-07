@@ -5,31 +5,31 @@
 	<key>SPLASH_RES</key>
 	<string>splash_cn.png</string>
 	<key>PROP_SHOW_HP</key>
-	<string>生命值：%d</string>
+	<string>生命值：</string>
 	<key>ROLE_SHOW_HP</key>
-	<string>生命值：%d/%d</string>
+	<string>生命值：</string>
 	<key>ROLE_SHOW_EXP</key>
-	<string>经验值：%d/%d</string>
+	<string>经验值：</string>
 	<key>PROP_SHOW_MP</key>
-	<string>魔法值：%d</string>
+	<string>魔法值：</string>
 	<key>ROLE_SHOW_MP</key>
-	<string>魔法值：%d/%d</string>
+	<string>魔法值：</string>
 	<key>PROP_SHOW_LIGHT_DIS</key>
-	<string>光照范围：%d</string>
+	<string>光照范围：</string>
 	<key>PROP_SHOW_SEARCH_DIS</key>
-	<string>侦查范围：%d</string>
+	<string>侦查范围：</string>
 	<key>PROP_SHOW_MARGIC_FIND</key>
-	<string>取魔率：%d%%</string>
+	<string>取魔率：</string>
 	<key>PROP_SHOW_CRITICAL_STRIKE</key>
-	<string>暴击率：%d%%</string>
+	<string>暴击率：</string>
 	<key>PROP_SHOW_BLOCK</key>
-	<string>格挡率：%d%%</string>
+	<string>格挡率：</string>
 	<key>PROP_SHOW_DODGE</key>
-	<string>闪避率：%d%%</string>
+	<string>闪避率：</string>
 	<key>PROP_SHOW_ATTACK</key>
-	<string>攻击力：%d-%d</string>
+	<string>攻击力：</string>
 	<key>PROP_SHOW_DEFENSE</key>
-	<string>防御力：%d</string>
+	<string>防御力：</string>
 	<key>STATUS_TEXT_DODGE</key>
 	<string>闪避</string>
 	<key>STATUS_TEXT_BOLOCK</key>
@@ -273,9 +273,9 @@
 	<key>STANDARD_PROTAL_NO_ENERGY</key>
 	<string>传送能量不足了</string>
 	<key>REMOVE_TRAP_INFO</key>
-	<string>是否摧毁该陷阱？</string>
+	<string>是否拆除该陷阱？</string>
 	<key>NOT_REMOVE_TRAP</key>
-	<string>该陷阱不能被摧毁？</string>
+	<string>该陷阱不能被拆除？</string>
 	<key>BTN_TEXT_MAINMENU</key>
 	<string>主菜单</string>
 	<key>BTN_TEXT_SETTING</key>
@@ -309,7 +309,7 @@
 	<key>BAG_INDENTIFY_FAIL</key>
 	<string>鉴定失败！</string>
 	<key>BAG_TEXT_DESTROY</key>
-	<string>摧毁</string>
+	<string>拆除</string>
 	<key>ACHIEVE_ITEM_LOCK</key>
 	<string>未解锁</string>
 	<key>ITEM_USE_FAIL</key>

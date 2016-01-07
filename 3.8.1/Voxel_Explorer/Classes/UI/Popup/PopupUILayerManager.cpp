@@ -29,6 +29,8 @@
 #include "DeadPopupUI.h"
 #include "AchieveItemLayer.hpp"
 #include "SuperAnimNodeV2.h"
+#include "RandomMsgPopupUI.h"
+#include "DiscardPopupUI.hpp"
 PopupUILayerManager::PopupUILayerManager()
 {
     m_pParentLayer = nullptr;
@@ -172,6 +174,10 @@ PopupUILayer* PopupUILayerManager::initPopUp(ePopupType type)
         case ePopupDead:
             popupLayer = DeadPopupUI::create();
              break;
+        case ePopupRandomMsg:
+            popupLayer = RandomMsgPopupUI::create();
+        case ePopupDiscard:
+            popupLayer = DiscardPopupUI::create();
         default:
             break;
     }

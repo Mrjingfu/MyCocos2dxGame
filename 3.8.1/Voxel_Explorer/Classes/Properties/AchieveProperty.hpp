@@ -37,16 +37,19 @@ public:
     const std::map<eStatistType,CChaosNumber>& getAcheveUnlockTargets() const {return m_mUnlockTargets;};
     
     
-    void onAcieveCommple(){m_bCommple = true;};
+    void onAcieveCommple( bool isFlag = true){m_bCommple = isFlag;};
     bool isCommple()const{ return m_bCommple;};
     bool isUnlockAchieve() const {return m_bIsUnlockAchieve;};
-    void onUnlockAchieve(){m_bIsUnlockAchieve = true;};
+    void onUnlockAchieve(bool isFlag = true){m_bIsUnlockAchieve = isFlag;};
     void setAchieveDetailType(std::string achieveDeType);
     eAchievementDetailType getAchieveDetailType() const{return m_detailType;}
     bool operator<(const AchieveProperty* v) const;
+    std::string getAchieveDesc() const;
+    int checkArrName(const std::vector<std::string> arr,const std::string str);
 private:
     CChaosNumber getPorgress(eStatistType type);
-    int checkArrName(const std::vector<std::string> arr,const std::string str);
+    
+    
 private:
     std::string m_sAchieveIcon;    //成就图标
     std::string m_sAchieveName;    //成就描述

@@ -51,29 +51,25 @@ void RolePopupUI::onExit()
 }
 bool RolePopupUI::initUi()
 {
-    m_pRootNode = cocos2d::Node::create();
-    m_pRootNode->setAnchorPoint(cocos2d::Vec2::ANCHOR_MIDDLE);
-    m_pRootNode->setContentSize(cocos2d::Size(250.00,340.00));
-    m_pRootNode->setPosition(WINDOW_CENTER);
-    addChild(m_pRootNode,1);
+
     
     m_pBagLayer = BagLayer::create();
     m_pBagLayer->setAnchorPoint(cocos2d::Vec2::ANCHOR_MIDDLE_BOTTOM);
-    m_pBagLayer->setPosition(cocos2d::Vec2(m_pRootNode->getContentSize().width*0.5,0));
-    m_pRootNode->addChild(m_pBagLayer);
-    
+
     m_pRoleLayer = RoleLayer::create();
     m_pRoleLayer->setAnchorPoint(cocos2d::Vec2::ANCHOR_MIDDLE_TOP);
-    m_pRoleLayer->setPosition(cocos2d::Vec2(m_pRootNode->getContentSize().width*0.5,m_pRootNode->getContentSize().height));
-    m_pRootNode->addChild(m_pRoleLayer);
+   
+    m_pRootNode = cocos2d::Node::create();
+    m_pRootNode->setAnchorPoint(cocos2d::Vec2::ANCHOR_MIDDLE);
+    m_pRootNode->setContentSize(cocos2d::Size(m_pBagLayer->getContentSize().width,m_pBagLayer->getContentSize().height+m_pRoleLayer->getContentSize().height));
+    m_pRootNode->setPosition(WINDOW_CENTER);
+    addChild(m_pRootNode,1);
     
-    m_pBtnClose = ui::Button::create("ui_btn_back_1.png","","",TextureResType::PLIST);
-    m_pBtnClose->setScale9Enabled(true);
-    m_pBtnClose->setAnchorPoint(cocos2d::Vec2::ZERO);
-    m_pBtnClose->setPosition(cocos2d::Vec2(m_pRoleLayer->getContentSize().width*0.9,m_pRoleLayer->getContentSize().height*1.1));
-    m_pRoleLayer->addChild(m_pBtnClose);
-    m_pBtnClose->addClickEventListener(CC_CALLBACK_1(RolePopupUI::onClickColse, this));
-  
+    
+    m_pBagLayer->setPosition(cocos2d::Vec2(m_pRootNode->getContentSize().width*0.5,0));
+    m_pRoleLayer->setPosition(cocos2d::Vec2(m_pRootNode->getContentSize().width*0.5,m_pRootNode->getContentSize().height+5));
+    m_pRootNode->addChild(m_pRoleLayer);
+    m_pRootNode->addChild(m_pBagLayer);
     refreshUIView();
     
     m_pRootNode->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);

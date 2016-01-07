@@ -23,6 +23,7 @@
 #include "AlertPopupUI.hpp"
 #include "StatisticsManager.hpp"
 #include "PopupUILayerManager.h"
+#include "DiscardPopupUI.hpp"
 USING_NS_CC;
 ItemPopupUI::ItemPopupUI()
 {
@@ -938,11 +939,24 @@ void ItemPopupUI::closePopup()
 void ItemPopupUI::removeItem()
 {
     PickableItemProperty* itemprop = getItemIdProperty();
-    ArmorProperty::PickableItemPropertyType itemtype = itemprop->getPickableItemPropertyType();
+    PickableItemProperty::PickableItemPropertyType itemtype = itemprop->getPickableItemPropertyType();
     CCASSERT(itemprop!=nullptr, "itemprop is null!");
     bool isSuccess = false;
-    if (itemprop->isStackable()) {
-        isSuccess = PlayerProperty::getInstance()->removeStackableItemFromBag(itemprop->getPickableItemType(), 1);
+    int count = itemprop->getCount();
+    if (itemprop->isStackable() && count>1) {
+        //如果是有多个 弹出删除选择框
+        PopupUILayer* pplayer = nullptr;
+        if (PopupUILayerManager::getInstance()->isOpenPopup(ePopupEquipItem, pplayer)) {
+            pplayer->getRootNode()->setVisible(false);
+        }
+        this->getRootNode()->setVisible(false);
+        
+        DiscardPopupUI* discardPopupUi = static_cast<DiscardPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupDiscard));
+        if (discardPopupUi)
+            discardPopupUi->setDarkLayerVisble(false);
+            discardPopupUi->setDiscardItem(m_nItemId);
+        return;
+        
     }else{
         isSuccess = PlayerProperty::getInstance()->removeItemFromBag(CChaosNumber(m_nItemId));
     }

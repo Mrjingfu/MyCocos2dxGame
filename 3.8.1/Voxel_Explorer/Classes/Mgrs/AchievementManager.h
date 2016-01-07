@@ -13,6 +13,8 @@
 #include "ArchiveManager.h"
 
 const std::string ARCHIVE_ACHIEVEMENT_KEY = "ARCHIVE_ACHIEVEMENT_KEY";
+const std::string ARCHIVE_ACHIEVEMENT_ITEM_COMMPLE = "ARCHIVE_ACHIEVEMENT_ITEM_COMMPLE";
+const std::string ARCHIVE_ACHIEVEMENT_ITEM_UNLOCK = "ARCHIVE_ACHIEVEMENT_ITEM_UNLOCK";
 
 class AchievementManager:public iArchive {
     

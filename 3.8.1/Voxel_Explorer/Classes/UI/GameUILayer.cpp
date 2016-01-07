@@ -185,12 +185,11 @@ void GameUILayer::onTouchEnded(cocos2d::Touch *touch, cocos2d::Event *event)
                 }
             }else
             {
-                InformationPopupUI* infoUi = static_cast<InformationPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupInformation));
+                InformationPopupUI* infoUi = static_cast<InformationPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupRandomMsg));
                 if(infoUi)
                 {
                     m_pGameToolBarLayer->setDistTipsFrame();
                     infoUi->setDarkLayerVisble(false);
-                    infoUi->setInfoIcon(iconRes);
                     infoUi->setInfoDesc(desc);
                     infoUi->registerCloseCallback([this](){
                         PlayerProperty::getInstance()->setExp(PlayerProperty::getInstance()->getExp() + 100);

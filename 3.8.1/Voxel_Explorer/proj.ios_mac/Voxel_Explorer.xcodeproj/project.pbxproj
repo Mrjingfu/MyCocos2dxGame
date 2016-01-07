@@ -355,6 +355,10 @@
 		EC8A27E11C32670800B2C352 /* AchieveItemLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC8A27DE1C32670800B2C352 /* AchieveItemLayer.cpp */; };
 		EC8A27E41C327A4B00B2C352 /* AchievePopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC8A27E21C327A4B00B2C352 /* AchievePopupUI.cpp */; };
 		EC8A27E51C327A4B00B2C352 /* AchievePopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC8A27E21C327A4B00B2C352 /* AchievePopupUI.cpp */; };
+		ECBA4FA31C3E07E7004E9188 /* RandomMsgPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECBA4FA11C3E07E7004E9188 /* RandomMsgPopupUI.cpp */; };
+		ECBA4FA41C3E07E7004E9188 /* RandomMsgPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECBA4FA11C3E07E7004E9188 /* RandomMsgPopupUI.cpp */; };
+		ECBA4FA91C3E51CC004E9188 /* DiscardPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECBA4FA71C3E51CC004E9188 /* DiscardPopupUI.cpp */; };
+		ECBA4FAA1C3E51CC004E9188 /* DiscardPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECBA4FA71C3E51CC004E9188 /* DiscardPopupUI.cpp */; };
 		ECBCB4C21C22AE24006B85D2 /* particle2d in Resources */ = {isa = PBXBuildFile; fileRef = ECBCB4C11C22AE24006B85D2 /* particle2d */; };
 		ECBCB4C31C22AE24006B85D2 /* particle2d in Resources */ = {isa = PBXBuildFile; fileRef = ECBCB4C11C22AE24006B85D2 /* particle2d */; };
 		ECEA4E1E1C0EC69800ED790F /* ItemShopBuyPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECEA4E1A1C0EC69800ED790F /* ItemShopBuyPopupUI.cpp */; };
@@ -731,6 +735,10 @@
 		EC8A27DF1C32670800B2C352 /* AchieveItemLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = AchieveItemLayer.hpp; sourceTree = "<group>"; };
 		EC8A27E21C327A4B00B2C352 /* AchievePopupUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AchievePopupUI.cpp; sourceTree = "<group>"; };
 		EC8A27E31C327A4B00B2C352 /* AchievePopupUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AchievePopupUI.h; sourceTree = "<group>"; };
+		ECBA4FA11C3E07E7004E9188 /* RandomMsgPopupUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RandomMsgPopupUI.cpp; sourceTree = "<group>"; };
+		ECBA4FA21C3E07E7004E9188 /* RandomMsgPopupUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RandomMsgPopupUI.h; sourceTree = "<group>"; };
+		ECBA4FA71C3E51CC004E9188 /* DiscardPopupUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DiscardPopupUI.cpp; sourceTree = "<group>"; };
+		ECBA4FA81C3E51CC004E9188 /* DiscardPopupUI.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = DiscardPopupUI.hpp; sourceTree = "<group>"; };
 		ECBCB4C11C22AE24006B85D2 /* particle2d */ = {isa = PBXFileReference; lastKnownFileType = folder; path = particle2d; sourceTree = "<group>"; };
 		ECEA4E1A1C0EC69800ED790F /* ItemShopBuyPopupUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ItemShopBuyPopupUI.cpp; sourceTree = "<group>"; };
 		ECEA4E1B1C0EC69800ED790F /* ItemShopBuyPopupUI.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ItemShopBuyPopupUI.hpp; sourceTree = "<group>"; };
@@ -1322,6 +1330,10 @@
 		EC3CC9531C088F4F00F8CFC8 /* Popup */ = {
 			isa = PBXGroup;
 			children = (
+				ECBA4FA71C3E51CC004E9188 /* DiscardPopupUI.cpp */,
+				ECBA4FA81C3E51CC004E9188 /* DiscardPopupUI.hpp */,
+				ECBA4FA11C3E07E7004E9188 /* RandomMsgPopupUI.cpp */,
+				ECBA4FA21C3E07E7004E9188 /* RandomMsgPopupUI.h */,
 				EC8A27E21C327A4B00B2C352 /* AchievePopupUI.cpp */,
 				EC8A27E31C327A4B00B2C352 /* AchievePopupUI.h */,
 				EC25C3C81C1977DF00B4340D /* InformationPopupUI.cpp */,
@@ -1660,7 +1672,9 @@
 				55F81CD41BDB92ED002EC075 /* SundriesProperty.cpp in Sources */,
 				EC3CC9751C088F4F00F8CFC8 /* BagShopLayer.cpp in Sources */,
 				EC795F421C0D42340083829B /* MagicShopPopupUI.cpp in Sources */,
+				ECBA4FA31C3E07E7004E9188 /* RandomMsgPopupUI.cpp in Sources */,
 				EC795F4F1C0D4AB20083829B /* TaskPopupUI.cpp in Sources */,
+				ECBA4FA91C3E51CC004E9188 /* DiscardPopupUI.cpp in Sources */,
 				EC3CC9811C088F4F00F8CFC8 /* PromptLayer.cpp in Sources */,
 				551E93F21BD512D3009F788F /* Stream.cpp in Sources */,
 				EC3CC9711C088F4F00F8CFC8 /* BagLayer.cpp in Sources */,
@@ -1740,6 +1754,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5560F5F41C1300D7001DD164 /* BossDoor.cpp in Sources */,
+				ECBA4FAA1C3E51CC004E9188 /* DiscardPopupUI.cpp in Sources */,
 				EC3CC9721C088F4F00F8CFC8 /* BagLayer.cpp in Sources */,
 				EC5D56911C0C4E2200F5EDDF /* DistPopupUI.cpp in Sources */,
 				551E93C81BD51291009F788F /* MonsterProperty.cpp in Sources */,
@@ -1786,6 +1801,7 @@
 				55F116D91C04452300A6C191 /* MineLevel.cpp in Sources */,
 				551E93EB1BD512D3009F788F /* xor.cpp in Sources */,
 				EC3CC9761C088F4F00F8CFC8 /* BagShopLayer.cpp in Sources */,
+				ECBA4FA41C3E07E7004E9188 /* RandomMsgPopupUI.cpp in Sources */,
 				55F81CC91BDB928F002EC075 /* MaterialProperty.cpp in Sources */,
 				55F81CD51BDB92ED002EC075 /* SundriesProperty.cpp in Sources */,
 				555B0D181BC51A2C0055FB6D /* Area.cpp in Sources */,
