@@ -1,6 +1,7 @@
 #include "AppDelegate.h"
 #include "LogoScene.h"
 #include "SimpleAudioEngine.h"
+#include "ArchiveManager.h"
 USING_NS_CC;
 using namespace CocosDenshion;
 
@@ -125,6 +126,8 @@ void AppDelegate::applicationDidEnterBackground() {
     // if you use SimpleAudioEngine, it must be pause
     SimpleAudioEngine::getInstance()->pauseAllEffects();
     SimpleAudioEngine::getInstance()->pauseBackgroundMusic();
+    
+    ArchiveManager::getInstance()->saveGame();
 }
 
 // this function will be called when the app is active again
