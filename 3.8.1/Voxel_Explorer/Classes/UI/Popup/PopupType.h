@@ -28,6 +28,8 @@ enum ePopupType
     ePopupTask,             //任务
     ePopupAlert,            //提示框
     ePopupInformation,
+    ePopupRandomMsg,
+    ePopupDiscard,
     ePopupAchieve,
     ePopupDead,
     ePopupCount

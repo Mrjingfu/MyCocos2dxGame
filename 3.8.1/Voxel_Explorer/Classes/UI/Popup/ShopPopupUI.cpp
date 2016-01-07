@@ -18,6 +18,7 @@
 ShopPopupUI::ShopPopupUI()
 {
     m_cActionType       = eNone;
+    m_nIsBlankClose     = false;
     m_pBagLayer         = nullptr;
     m_pShopMangerLayer  = nullptr;
     m_pShopGridView     = nullptr;
@@ -42,7 +43,9 @@ bool ShopPopupUI::addEvents()
     cocos2d::ui::ImageView* m_shopFrame = dynamic_cast<ui::ImageView*>(UtilityHelper::seekNodeByName(m_pRootNode, "shop_bg_frame"));
     if (!m_shopFrame)
         return false;
-  
+    m_pBtnClose = dynamic_cast<ui::Button*>(UtilityHelper::seekNodeByName(m_pRootNode, "shop_btn_close"));
+    if (!m_pBtnClose)
+        return false;
     
     m_pShopTitleText= dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "shop_title_text"));
     if (!m_pShopTitleText)
@@ -91,7 +94,7 @@ bool ShopPopupUI::addEvents()
     m_pShopMangerLayer->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
     m_pShopGridView->addChildLayer(m_pShopMangerLayer,60);
     
-    
+    m_pBtnClose->addClickEventListener(CC_CALLBACK_1(ShopPopupUI::onClickClose, this));
     refreshUIView();
     
     return true;
@@ -158,6 +161,12 @@ void ShopPopupUI::updateShopDataItems()
         }
     }
 
+}
+void ShopPopupUI::onClickClose(Ref* ref)
+{
+    CHECK_ACTION(ref);
+    clickEffect();
+    closePopup();
 }
 void ShopPopupUI::selectItemEvent(cocos2d::Ref *pSender, TGridView::EventType type)
 {

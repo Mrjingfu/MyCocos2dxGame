@@ -40,10 +40,12 @@ public:
     virtual const std::vector<PickableItemProperty*>& getShopItems() const = 0;
     virtual void shopItemOpe(int itemId) = 0;
 protected:
+    void onClickClose(Ref* ref);
     virtual  void onEventUpdateNpcData(cocos2d::EventCustom *sender);
     virtual void selectItemEvent(Ref *pSender, TGridView::EventType type);
     
 protected:
+    cocos2d::ui::Button* m_pBtnClose;
     eShopType           m_eShopType;
     cocos2d::ui::Text*  m_pShopTitleText;
     BagShopLayer*       m_pBagLayer;

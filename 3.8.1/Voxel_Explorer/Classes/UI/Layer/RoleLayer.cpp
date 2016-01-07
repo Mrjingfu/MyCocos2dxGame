@@ -32,7 +32,7 @@ RoleLayer::RoleLayer()
     m_pRoleBlock            = nullptr;
     m_pRoleDodge            = nullptr;
     m_pShopBtn              = nullptr;
-
+    m_pRoleLevel            = nullptr;
 }
 RoleLayer::~RoleLayer()
 {
@@ -40,7 +40,7 @@ RoleLayer::~RoleLayer()
 }
 bool RoleLayer::initUi()
 {
-    if (!load("roleLayer.csb",false))
+    if (!load("rolenewLayer.csb",false))
         return false;
     setContentSize(m_pRootNode->getContentSize());
     m_pRootNode->setPosition(getContentSize()*0.5);
@@ -49,94 +49,157 @@ bool RoleLayer::initUi()
 
 bool RoleLayer::addEvents()
 {
-    Layout* equipFrame = dynamic_cast<ui::Layout*>(UtilityHelper::seekNodeByName(m_pRootNode, "equip_frame"));
-    if (!equipFrame)
-        return false;
 
-    m_pRoleHp = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "role_prop_hp"));
+    
+    
+    m_pRoleHp = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "role_prop_hp_num"));
     if (!m_pRoleHp)
         return false;
-    m_pRoleMp = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "role_prop_mp"));
+    ui::Text* m_pRoleHpDesc = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "role_prop_hp"));
+    if (!m_pRoleHpDesc)
+        return false;
+    
+    m_pRoleMp = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "role_prop_mp_num"));
     if (!m_pRoleMp)
         return false;
-    m_pRoleAttack = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "role_prop_attack"));
+    ui::Text* m_pRoleMpDesc = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "role_prop_mp"));
+    if (!m_pRoleMpDesc)
+        return false;
+    
+    m_pRoleAttack = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "role_prop_attack_num"));
     if (!m_pRoleAttack)
         return false;
+    ui::Text* m_pRoleAttackDesc = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "role_prop_attack"));
+    if (!m_pRoleAttackDesc)
+        return false;
     
-    m_pRoleDefense = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "role_prop_armor"));
+    m_pRoleDefense = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "role_prop_armor_num"));
     if (!m_pRoleDefense)
         return false;
+    ui::Text* m_pRoleDefenseDesc = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "role_prop_armor"));
+    if (!m_pRoleDefenseDesc)
+        return false;
     
-    m_pRoleExp = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "role_prop_exp"));
+    m_pRoleExp = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "role_prop_exp_num"));
     if (!m_pRoleExp)
         return false;
-    m_pRoleLightDis = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "role_prop_light"));
+    ui::Text* m_pRoleExpDesc = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "role_prop_exp"));
+    if (!m_pRoleExpDesc)
+        return false;
+    
+    m_pRoleLightDis = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "role_prop_light_num"));
     if (!m_pRoleLightDis)
         return false;
-    m_pRoleSearchDis = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "role_prop_search"));
+    ui::Text* m_pRoleLightDisDesc = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "role_prop_light"));
+    if (!m_pRoleLightDisDesc)
+        return false;
+    
+    m_pRoleSearchDis = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "role_prop_search_num"));
     if (!m_pRoleSearchDis)
         return false;
-    m_pRoleMargicFind = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "role_prop_magic"));
+    ui::Text* m_pRoleSearchDisDesc = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "role_prop_search"));
+    if (!m_pRoleSearchDisDesc)
+        return false;
+    
+    m_pRoleMargicFind = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "role_prop_magic_num"));
     if (!m_pRoleMargicFind)
         return false;
-    m_pRoleCriticalStrike = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "role_prop_critical_strike"));
+    ui::Text* m_pRoleMargicFindDesc = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "role_prop_magic"));
+    if (!m_pRoleMargicFindDesc)
+        return false;
+    
+    m_pRoleCriticalStrike = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "role_prop_critical_strike_num"));
     if (!m_pRoleCriticalStrike)
         return false;
-    m_pRoleBlock = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "role_prop_block"));
+    ui::Text* m_pRoleCriticalStrikeDesc = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "role_prop_critical_strike"));
+    if (!m_pRoleCriticalStrikeDesc)
+        return false;
+    
+    m_pRoleBlock = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "role_prop_block_num"));
     if (!m_pRoleBlock)
         return false;
-    m_pRoleDodge = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "role_prop_dodge"));
+    ui::Text* m_pRoleBlockDesc = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "role_prop_block"));
+    if (!m_pRoleBlockDesc)
+        return false;
+    
+    m_pRoleDodge = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "role_prop_dodge_num"));
     if (!m_pRoleDodge)
         return false;
+    ui::Text* m_pRoleDodgeDesc = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "role_prop_dodge"));
+    if (!m_pRoleDodgeDesc)
+        return false;
+    
+    m_pRoleLevel = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "role_lv_num"));
+    if (!m_pRoleLevel)
+        return false;
+   
+    m_pWeaponUi = dynamic_cast<ui::ImageView*>(UtilityHelper::seekNodeByName(m_pRootNode, "role_weapon"));
+    if (!m_pWeaponUi)
+        return false;
+    
+    m_pArmorUi = dynamic_cast<ui::ImageView*>(UtilityHelper::seekNodeByName(m_pRootNode, "role_armor"));
+    if (!m_pArmorUi)
+        return false;
+    
+    m_pOrnamentUi = dynamic_cast<ui::ImageView*>(UtilityHelper::seekNodeByName(m_pRootNode, "role_ornament"));
+    if (!m_pOrnamentUi)
+        return false;
+    
+    m_pSecondWeaponUi = dynamic_cast<ui::ImageView*>(UtilityHelper::seekNodeByName(m_pRootNode, "role_second_equip"));
+    if (!m_pSecondWeaponUi)
+        return false;
+    
+    m_pShopBtn = dynamic_cast<ui::ImageView*>(UtilityHelper::seekNodeByName(m_pRootNode, "role_shop"));
+    if (!m_pShopBtn)
+        return false;
+    
+    m_pBtnClose = dynamic_cast<ui::Button*>(UtilityHelper::seekNodeByName(m_pRootNode, "role_btn_close"));
+    if (!m_pBtnClose)
+        return false;
+    
+    m_pEquipFrame = BagMangerLayerUI::create(cocos2d::Size(m_pRootNode->getContentSize().width*0.55,m_pRootNode->getContentSize().height));
+    m_pEquipFrame->setAnchorPoint(cocos2d::Vec2::ANCHOR_TOP_LEFT);
+    m_pEquipFrame->setPosition(cocos2d::Vec2(0,m_pRootNode->getContentSize().height));
+    m_pRootNode->addChild(m_pEquipFrame);
+    
     cocos2d::ui::ImageView*  roleImg = dynamic_cast<ui::ImageView*>(UtilityHelper::seekNodeByName(m_pRootNode, "role_icon"));
     if (roleImg) {
         roleImg->loadTexture("chr_sword.png",TextureResType::PLIST);
     }
     
+    m_pRoleHpDesc->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
+    m_pRoleHpDesc->setString(UtilityHelper::getLocalStringForUi("ROLE_SHOW_HP"));
     
-    m_pWeaponUi = cocos2d::ui::ImageView::create();
-    m_pWeaponUi->setScale9Enabled(true);
-    m_pWeaponUi->setContentSize(cocos2d::Size(45,45));
-    m_pWeaponUi->loadTexture("ui_weapon_icon.png",TextureResType::PLIST);
-    m_pWeaponUi->setPosition(Vec2(m_pWeaponUi->getContentSize().width*0.5+8, equipFrame->getContentSize().height*0.5));
-    equipFrame->addChild(m_pWeaponUi);
+    m_pRoleMpDesc->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
+    m_pRoleMpDesc->setString(UtilityHelper::getLocalStringForUi("ROLE_SHOW_MP"));
     
+    m_pRoleExpDesc->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
+    m_pRoleExpDesc->setString(UtilityHelper::getLocalStringForUi("ROLE_SHOW_EXP"));
     
-    m_pSecondWeaponUi = cocos2d::ui::ImageView::create();
-    m_pSecondWeaponUi->setScale9Enabled(true);
-    m_pSecondWeaponUi->setContentSize(cocos2d::Size(45,45));
-    m_pSecondWeaponUi->loadTexture("ui_secondweapon_icon.png",TextureResType::PLIST);
-    m_pSecondWeaponUi->setPosition(Vec2(m_pWeaponUi->getContentSize().width*0.5+8+m_pWeaponUi->getContentSize().width*1+2, equipFrame->getContentSize().height*0.5));
-    equipFrame->addChild(m_pSecondWeaponUi);
+    m_pRoleLightDisDesc->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
+    m_pRoleLightDisDesc->setString(UtilityHelper::getLocalStringForUi("PROP_SHOW_LIGHT_DIS"));
     
-    m_pArmorUi = cocos2d::ui::ImageView::create();
-    m_pArmorUi->setScale9Enabled(true);
-    m_pArmorUi->setContentSize(cocos2d::Size(45,45));
-    m_pArmorUi->loadTexture("ui_armor_icon.png",TextureResType::PLIST);
-    m_pArmorUi->setPosition(Vec2(m_pWeaponUi->getContentSize().width*0.5+8+m_pWeaponUi->getContentSize().width*2+4, equipFrame->getContentSize().height*0.5));
-    equipFrame->addChild(m_pArmorUi);
+    m_pRoleSearchDisDesc->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
+    m_pRoleSearchDisDesc->setString(UtilityHelper::getLocalStringForUi("PROP_SHOW_SEARCH_DIS"));
     
-    m_pOrnamentUi = cocos2d::ui::ImageView::create();
-    m_pOrnamentUi->setScale9Enabled(true);
-    m_pOrnamentUi->setContentSize(cocos2d::Size(45,45));
-    m_pOrnamentUi->loadTexture("ui_ornament_icon.png",TextureResType::PLIST);
-    m_pOrnamentUi->setPosition(Vec2(m_pWeaponUi->getContentSize().width*0.5+8+m_pWeaponUi->getContentSize().width*3+6, equipFrame->getContentSize().height*0.5));
-    equipFrame->addChild(m_pOrnamentUi);
+    m_pRoleCriticalStrikeDesc->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
+    m_pRoleCriticalStrikeDesc ->setString(UtilityHelper::getLocalStringForUi("PROP_SHOW_CRITICAL_STRIKE"));
     
+    m_pRoleMargicFindDesc->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
+    m_pRoleMargicFindDesc->setString(UtilityHelper::getLocalStringForUi("PROP_SHOW_MARGIC_FIND"));
     
-    m_pShopBtn = cocos2d::ui::ImageView::create("ui_shop_icon.png",TextureResType::PLIST);
-    m_pShopBtn->setScale9Enabled(true);
-    m_pShopBtn->setAnchorPoint(Vec2::ANCHOR_MIDDLE_LEFT);
-    m_pShopBtn->setContentSize(cocos2d::Size(45,45));
-    m_pShopBtn->setPosition(Vec2(8+m_pWeaponUi->getContentSize().width*4+8, equipFrame->getContentSize().height*0.5));
-    m_pShopBtn->setTouchEnabled(true);
-    m_pShopBtn->addClickEventListener(CC_CALLBACK_1(RoleLayer::onClickShop, this));
-    equipFrame->addChild(m_pShopBtn);
+    m_pRoleBlockDesc->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
+    m_pRoleBlockDesc->setString(UtilityHelper::getLocalStringForUi("PROP_SHOW_BLOCK"));
     
+    m_pRoleDodgeDesc->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
+    m_pRoleDodgeDesc->setString(UtilityHelper::getLocalStringForUi("PROP_SHOW_DODGE"));
     
-    m_pEquipFrame = BagMangerLayerUI::create(equipFrame->getContentSize());
-    m_pEquipFrame->setPosition(equipFrame->getContentSize()*0.5);
-    equipFrame->addChild(m_pEquipFrame);
+    m_pRoleAttackDesc->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
+    m_pRoleAttackDesc->setString(UtilityHelper::getLocalStringForUi("PROP_SHOW_ATTACK"));
+    
+    m_pRoleDefenseDesc->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
+    m_pRoleDefenseDesc->setString(UtilityHelper::getLocalStringForUi("PROP_SHOW_DEFENSE"));
+    
     
     m_pRoleHp->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
     m_pRoleMp->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
@@ -151,6 +214,10 @@ bool RoleLayer::addEvents()
     m_pRoleDefense->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
     
     
+    m_pBtnClose->addClickEventListener(CC_CALLBACK_1(RoleLayer::onClickClose, this));
+    m_pShopBtn->addClickEventListener(CC_CALLBACK_1(RoleLayer::onClickShop, this));
+    
+    
     return true;
 }
 void RoleLayer::refreshUIView()
@@ -160,18 +227,19 @@ void RoleLayer::refreshUIView()
 }
 void RoleLayer::updateRoleProp()
 {
-    m_pRoleHp->setString(StringUtils::format(UtilityHelper::getLocalStringForUi("ROLE_SHOW_HP").c_str(),int(PlayerProperty::getInstance()->getCurrentHP()),int(PlayerProperty::getInstance()->getMaxHP())));
-    m_pRoleMp->setString(StringUtils::format(UtilityHelper::getLocalStringForUi("ROLE_SHOW_MP").c_str(),int(PlayerProperty::getInstance()->getCurrentMP()),int(PlayerProperty::getInstance()->getMaxMP())));
-    m_pRoleExp->setString(StringUtils::format(UtilityHelper::getLocalStringForUi("ROLE_SHOW_EXP").c_str(),int(PlayerProperty::getInstance()->getExp()),int(GameFormula::getNextLevelExp(PlayerProperty::getInstance()->getLevel()))));
-    m_pRoleLightDis->setString(StringUtils::format(UtilityHelper::getLocalStringForUi("PROP_SHOW_LIGHT_DIS").c_str(),int(PlayerProperty::getInstance()->getLightDistance())));
-    m_pRoleSearchDis->setString(StringUtils::format(UtilityHelper::getLocalStringForUi("PROP_SHOW_SEARCH_DIS").c_str(),int(PlayerProperty::getInstance()->getSearchDistance())));
-    m_pRoleCriticalStrike ->setString(StringUtils::format(UtilityHelper::getLocalStringForUi("PROP_SHOW_CRITICAL_STRIKE").c_str(),int(PlayerProperty::getInstance()->getCriticalStrikeRate().GetFloatValue()*100.0)));
-    m_pRoleMargicFind->setString(StringUtils::format(UtilityHelper::getLocalStringForUi("PROP_SHOW_MARGIC_FIND").c_str(),int(PlayerProperty::getInstance()->getMagicItemFindRate().GetFloatValue()*100.0)));
-    m_pRoleBlock->setString(StringUtils::format(UtilityHelper::getLocalStringForUi("PROP_SHOW_BLOCK").c_str(),int(PlayerProperty::getInstance()->getBlockRate().GetFloatValue()*100.0)));
-    m_pRoleDodge->setString(StringUtils::format(UtilityHelper::getLocalStringForUi("PROP_SHOW_DODGE").c_str(),int(PlayerProperty::getInstance()->getDodgeRate().GetFloatValue()*100.0)));
+    m_pRoleLevel->setString(Value(int(PlayerProperty::getInstance()->getLevel())).asString());
+    m_pRoleHp->setString(StringUtils::format("%d/%d",int(PlayerProperty::getInstance()->getCurrentHP()),int(PlayerProperty::getInstance()->getMaxHP())));
+    m_pRoleMp->setString(StringUtils::format("%d/%d",int(PlayerProperty::getInstance()->getCurrentMP()),int(PlayerProperty::getInstance()->getMaxMP())));
+    m_pRoleExp->setString(StringUtils::format("%d/%d",int(PlayerProperty::getInstance()->getExp()),int(GameFormula::getNextLevelExp(PlayerProperty::getInstance()->getLevel()))));
+    m_pRoleLightDis->setString(StringUtils::format("%d",int(PlayerProperty::getInstance()->getLightDistance())));
+    m_pRoleSearchDis->setString(StringUtils::format("%d",int(PlayerProperty::getInstance()->getSearchDistance())));
+    m_pRoleCriticalStrike ->setString(StringUtils::format("%d%%",int(PlayerProperty::getInstance()->getCriticalStrikeRate().GetFloatValue()*100.0)));
+    m_pRoleMargicFind->setString(StringUtils::format("%d%%",int(PlayerProperty::getInstance()->getMagicItemFindRate().GetFloatValue()*100.0)));
+    m_pRoleBlock->setString(StringUtils::format("%d%%",int(PlayerProperty::getInstance()->getBlockRate().GetFloatValue()*100.0)));
+    m_pRoleDodge->setString(StringUtils::format("%d%%",int(PlayerProperty::getInstance()->getDodgeRate().GetFloatValue()*100.0)));
     CCLOG("role minAttack:%d,maxAttack:%d",int(PlayerProperty::getInstance()->getMinAttack()),int(PlayerProperty::getInstance()->getMaxAttack()));
-    m_pRoleAttack->setString(StringUtils::format(UtilityHelper::getLocalStringForUi("PROP_SHOW_ATTACK").c_str(),int(PlayerProperty::getInstance()->getMinAttack()),int(PlayerProperty::getInstance()->getMaxAttack())));
-    m_pRoleDefense->setString(StringUtils::format(UtilityHelper::getLocalStringForUi("PROP_SHOW_DEFENSE").c_str(),int(PlayerProperty::getInstance()->getDefense())));
+    m_pRoleAttack->setString(StringUtils::format("%d-%d",int(PlayerProperty::getInstance()->getMinAttack()),int(PlayerProperty::getInstance()->getMaxAttack())));
+    m_pRoleDefense->setString(StringUtils::format("%d",int(PlayerProperty::getInstance()->getDefense())));
     
 }
 void RoleLayer::updateEquipProp()
@@ -210,4 +278,13 @@ void RoleLayer::onClickShop(cocos2d::Ref *ref)
     CHECK_ACTION(ref);
     clickEffect();
    
+}
+void RoleLayer::onClickClose(cocos2d::Ref *ref)
+{
+    CHECK_ACTION(ref);
+    clickEffect();
+    PopupUILayer* popupLayer = PopupUILayerManager::getInstance()->getCurrentPopUpLayer();
+    if (popupLayer) {
+        popupLayer->closePopup();
+    }
 }

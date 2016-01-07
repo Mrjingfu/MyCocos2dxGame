@@ -19,7 +19,7 @@ public:
     CREATE_FUNC(AchieveItemUI);
      bool initUi() override;
      bool addEvents() override;
-     void setAchieveDatas(const std::string icon,const std::string name,const std::string targetDesc);
+     void setAchieveDatas(const std::string icon, std::string name, std::string targetDesc);
 private:
     cocos2d::ui::ImageView* m_pAchieveIcon;
     cocos2d::ui::Text*  m_pAchieveName;

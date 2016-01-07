@@ -97,31 +97,62 @@ bool InformationPopupUI::addEvents()
 void InformationPopupUI::refreshUIView()
 {
 
-     float frameHeight =  m_pRootNode->getContentSize().height;
     if (!m_vInfos.empty())
     {
         m_pBtnNext->setVisible(true);
     }else{
         m_pOk->setVisible(true);
-        frameHeight =  m_pRootNode->getContentSize().height - m_pOk->getContentSize().height-m_pOk->getPositionY()-15;
+    }
+  
+    updateFrameWidth();
+    updateFrameHieght();
+    updateFrameIconSize();
+    
+    if (m_pOk) {
+        m_pOk->setAnchorPoint(cocos2d::Vec2::ANCHOR_MIDDLE_BOTTOM);
+        m_pOk->setPosition(cocos2d::Vec2(m_pRootNode->getContentSize().width*0.5,m_pRootNode->getContentSize().height*0.05));
+    }
+   
+    m_pInfoDesc->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
+    if (m_vInfos.empty()) {
+        m_pBtnNext->setVisible(false);
+        m_pOk->setVisible(true);
+        CCLOG("结束");
     }
     
+}
+void InformationPopupUI::updateFrameWidth()
+{
     
     float fontFrameWidth = m_pRootNode->getContentSize().width;
     if (m_pInfoIcon) {
         fontFrameWidth = m_pRootNode->getContentSize().width - m_pInfoIcon->getContentSize().width*m_pInfoIcon->getScale()-m_pRootNode->getContentSize().width*0.03-10;
     }
-    int charYCount = 1;
-    if (!m_sInfoDesc.empty()) {
+    
+    if (!m_sInfoDesc.empty())
+    {
+        cocos2d::Size fonSize = UtilityHelper::getSingleStrFontSize(m_pInfoDesc, m_sInfoDesc);
+        int charXCount  = (int)(fontFrameWidth/fonSize.width);
+        UtilityHelper::getLineStr(m_sInfoDesc, charXCount);
+        m_pInfoDesc->setString(m_sInfoDesc);
         
-       cocos2d::Size fonSize = UtilityHelper::getSingleStrFontSize(m_pInfoDesc, m_sInfoDesc);
-       int charXCount  = (int)(fontFrameWidth/fonSize.width);
-       UtilityHelper::getLineStr(m_sInfoDesc, charXCount);
-       m_pInfoDesc->setString(m_sInfoDesc);
-        
+    }
+    
+}
+void InformationPopupUI::updateFrameHieght()
+{
+    float frameHeight =  m_pRootNode->getContentSize().height;
+    if (m_vInfos.empty()){
+        frameHeight =  m_pRootNode->getContentSize().height - m_pOk->getContentSize().height-m_pOk->getPositionY()-15;
+    }
+    
+    if (!m_sInfoDesc.empty())
+    {
+        int charYCount = 1;
+        cocos2d::Size fonSize = UtilityHelper::getSingleStrFontSize(m_pInfoDesc, m_sInfoDesc);
+        m_pInfoDesc->setString(m_sInfoDesc);
         //字体高度超过窗体大小是调整窗体大小
         float infoTextHeight = m_pInfoDesc->getContentSize().height*m_pInfoDesc->getScale();
-        charYCount = (int)(infoTextHeight/fonSize.height);
         if (infoTextHeight >frameHeight) {
             CCLOG("max height:%f",infoTextHeight -frameHeight);
             float exceedHeight = infoTextHeight -frameHeight;
@@ -131,17 +162,18 @@ void InformationPopupUI::refreshUIView()
             m_pInfoFrame->setPosition(m_pRootNode->getContentSize()*0.5);
             
             m_pTitleFrame->setPosition(cocos2d::Vec2(m_pInfoFrame->getContentSize().width*0.5,m_pInfoFrame->getContentSize().height));
-            
+           
         }
-        
-        CCLOG("m_pInfoDesc width:%f height:%f",m_pInfoDesc->getContentSize().width*m_pInfoDesc->getScale(),m_pInfoDesc->getContentSize().height*m_pInfoDesc->getScale());
+        charYCount = (int)(infoTextHeight/fonSize.height);
+        m_pInfoDesc->setTextHorizontalAlignment(TextHAlignment::CENTER);
+        if (m_pInfoDesc&& charYCount>1) {
+            m_pInfoDesc->setTextHorizontalAlignment(TextHAlignment::LEFT);
+        }
     }
-    
-     m_pInfoDesc->setTextHorizontalAlignment(TextHAlignment::CENTER);
-    if (m_pInfoDesc&& charYCount>1) {
-        m_pInfoDesc->setTextHorizontalAlignment(TextHAlignment::LEFT);
-    }
-    
+
+}
+void InformationPopupUI::updateFrameIconSize()
+{
     if (m_pInfoIcon) {
         CCLOG("m_pInfoIcon WIDTH:%f",m_pInfoIcon->getContentSize().width);
         m_pInfoIcon->setAnchorPoint(cocos2d::Vec2::ANCHOR_MIDDLE_LEFT);
@@ -152,18 +184,6 @@ void InformationPopupUI::refreshUIView()
     {
         m_pInfoDesc->setAnchorPoint(cocos2d::Vec2::ANCHOR_MIDDLE);
         m_pInfoDesc->setPosition(m_pRootNode->getContentSize()*0.5);
-    }
-    
-    if (m_pOk) {
-        m_pOk->setAnchorPoint(cocos2d::Vec2::ANCHOR_MIDDLE_BOTTOM);
-        m_pOk->setPosition(cocos2d::Vec2(m_pRootNode->getContentSize().width*0.5,m_pRootNode->getContentSize().height*0.05));
-    }
-   
-    
-    if (m_vInfos.empty()) {
-        m_pBtnNext->setVisible(false);
-        m_pOk->setVisible(true);
-        CCLOG("结束");
     }
 }
 void InformationPopupUI::setTitle(std::string title)

@@ -25,26 +25,29 @@ private:
     void updateRoleProp();
     void updateEquipProp();
     void onClickShop(Ref*);
+    void onClickClose(Ref*);
 private:
     BagMangerLayerUI* m_pEquipFrame;
+    cocos2d::ui::Button* m_pBtnClose;
     cocos2d::ui::ImageView* m_pWeaponUi;
     cocos2d::ui::ImageView* m_pArmorUi;
     cocos2d::ui::ImageView* m_pOrnamentUi;
     cocos2d::ui::ImageView* m_pSecondWeaponUi;
+    cocos2d::ui::ImageView* m_pShopBtn;
     
+    cocos2d::ui::Text*  m_pRoleLevel;
     cocos2d::ui::Text*  m_pRoleHp;
     cocos2d::ui::Text*  m_pRoleMp;
-    cocos2d::ui::Text*  m_pRoleExp;
     cocos2d::ui::Text*  m_pRoleAttack;
     cocos2d::ui::Text*  m_pRoleDefense;
-    cocos2d::ui::Text*  m_pRoleLightDis;
-    cocos2d::ui::Text*  m_pRoleSearchDis;
+    cocos2d::ui::Text*  m_pRoleExp;
     cocos2d::ui::Text*  m_pRoleMargicFind;
     cocos2d::ui::Text*  m_pRoleCriticalStrike;
-    cocos2d::ui::Text*  m_pRoleBlock;
     cocos2d::ui::Text*  m_pRoleDodge;
+    cocos2d::ui::Text*  m_pRoleBlock;
+    cocos2d::ui::Text*  m_pRoleLightDis;
+    cocos2d::ui::Text*  m_pRoleSearchDis;
     
-    cocos2d::ui::ImageView* m_pShopBtn;
 
 };
 #endif /* RoleLayer_hpp */

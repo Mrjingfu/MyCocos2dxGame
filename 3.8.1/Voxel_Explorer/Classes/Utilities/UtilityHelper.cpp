@@ -40,7 +40,9 @@ std::string UtilityHelper::getLocalStringForPlist(const std::string &key, const 
 }
 cocos2d::Size UtilityHelper::getSingleStrFontSize(cocos2d::ui::Text* tempText,std::string str)
 {
-    
+     cocos2d::Size tempSize = cocos2d::Size::ZERO;
+    if (str.empty())
+        return tempSize;
     std::vector<std::string > tempVec = getStringCount(str);
     std::vector<cocos2d::Size>  sizeWidthVec;
     for (int i =0; i<tempVec.size(); i++) {
@@ -52,16 +54,23 @@ cocos2d::Size UtilityHelper::getSingleStrFontSize(cocos2d::ui::Text* tempText,st
     }
 
 
-    std::sort(sizeWidthVec.begin(), sizeWidthVec.end(),[](cocos2d::Size a, cocos2d::Size b) {
-        return a.width < b.width;
-    });
+
     //取最小字体大小  测试之后看要不要做中英文 中文取最大字体 英文取最小字体
     LanguageType lt= Application::getInstance()->getCurrentLanguage();
-    cocos2d::Size tempSize = cocos2d::Size::ZERO;
+   
     if (lt == LanguageType::CHINESE) {
-        tempSize =  sizeWidthVec.at(sizeWidthVec.size()-1);
-    }else
+        std::sort(sizeWidthVec.begin(), sizeWidthVec.end(),[](cocos2d::Size a, cocos2d::Size b) {
+            return a.width > b.width;
+        });
         tempSize =  sizeWidthVec.at(0);
+    }else
+    {
+            std::sort(sizeWidthVec.begin(), sizeWidthVec.end(),[](cocos2d::Size a, cocos2d::Size b) {
+                return a.width < b.width;
+            });
+            tempSize =  sizeWidthVec.at(0);
+    }
+    
     return tempSize;
 }
 std::vector<std::string> UtilityHelper::getStringCount(std::string str )

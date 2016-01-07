@@ -41,6 +41,7 @@ void GlobalPromptLayer::refreshUIView()
         }
         if (m_pLabel && m_pLabel->getParent()) {
             m_pLabel->stopAllActions();
+            m_pLabel->setOpacity(255);
             labelHeight = m_pLabel->getContentSize().height*m_pLabel->getScale();
             int tag = std::min(m_pLabel->getTag(),i);
             moveToPos = Vec2(getContentSize().width*0.5,getContentSize().height*0.75-tag*labelHeight);
@@ -103,7 +104,7 @@ void GlobalPromptLayer::shwoGlobalPrompt(TipTypes tipType, std::string text)
     m_pLabel->setFontSize(36);
     m_pLabel->setAnchorPoint(cocos2d::Vec2::ANCHOR_MIDDLE_TOP);
     m_pLabel->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
-    m_pLabel->setScale(0.55);
+    m_pLabel->setScale(0.53);
     m_pLabel->enableGlow(Color4B(Color3B::GREEN));
 //    m_pLabel->enableShadow(Color4B::BLUE);
 //    m_pLabel->enableOutline(cocos2d::Color4B::BLUE);

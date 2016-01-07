@@ -239,6 +239,8 @@
         <Project Name="settingLayer.csd" Type="Layer" />
         <Project Name="loadingLayer.csd" Type="Scene" />
         <Image Name="splash_cn.png" />
+        <Project Name="discardLayer.csd" Type="Layer" />
+        <Project Name="rolenewLayer.csd" Type="Layer" />
       </RootFolder>
     </Group>
   </SolutionFolder>

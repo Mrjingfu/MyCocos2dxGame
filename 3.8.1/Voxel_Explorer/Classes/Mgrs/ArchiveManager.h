@@ -37,6 +37,7 @@ public:
     ~ArchiveManager();
     SINGLE_FUNC(ArchiveManager);
     bool loadGame();
+    bool loadGameAchieve();
     bool saveGame();
 private:
     std::string getStringValueMap(cocos2d::ValueMap& dict,const std::string& fullPath);

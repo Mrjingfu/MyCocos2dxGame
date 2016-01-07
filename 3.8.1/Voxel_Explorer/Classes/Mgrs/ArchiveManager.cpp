@@ -34,7 +34,6 @@ bool  ArchiveManager::loadGame()
     ValueMap gameMap = PlistBinaryUtil::getInstance()->getValueMapFromFile(path);
 
 #if COCOS2D_DEBUG==1
-    //!!!!!!!!打包一定记得检查
     if (!gameMap.empty()) {
         std::string debugPath = cocos2d::FileUtils::getInstance()->getWritablePath()+"Debug.plist";
         CCLOG("LOADGAME:%s",getStringValueMap(gameMap,debugPath).c_str());
@@ -69,6 +68,27 @@ bool  ArchiveManager::loadGame()
         return false;
     }
 
+    return true;
+}
+bool ArchiveManager::loadGameAchieve()
+{
+    std::string path = cocos2d::FileUtils::getInstance()->getWritablePath()+sArchiveName;
+    
+    ValueMap gameMap = PlistBinaryUtil::getInstance()->getValueMapFromFile(path);
+    
+#if COCOS2D_DEBUG==1
+    if (!gameMap.empty()) {
+        std::string debugPath = cocos2d::FileUtils::getInstance()->getWritablePath()+"Debug.plist";
+        CCLOG("LOADGAME:%s",getStringValueMap(gameMap,debugPath).c_str());
+        CCLOG("LOADGAME ARCHIVE PATH:%s",debugPath.c_str());
+    }else
+        CCLOGERROR("SAVEGAME  gamemap is null");
+    
+#endif
+    if (!AchievementManager::getInstance()->load(gameMap)) {
+        CCLOGERROR("AchievementManager load failed");
+        return false;
+    }
     return true;
 }
 bool  ArchiveManager::saveGame()

@@ -11,6 +11,7 @@
 #include "GameConfig.h"
 #include "LevelResourceManager.h"
 #include "AchievementManager.h"
+#include "ArchiveManager.h"
 #include "UtilityHelper.h"
 USING_NS_CC;
 
@@ -227,6 +228,9 @@ void LogoScene::precache()
     
     if (!AchievementManager::getInstance()->loadAchieveData()) {
          CCLOGERROR("AchievementManager initialize failed!");
+    }
+    if (!ArchiveManager::getInstance()->loadGameAchieve()) {
+         CCLOGERROR("ArchiveManager loadGameAchieve failed!");
     }
     
     Texture2D * uiSpriteTx = Director::getInstance()->getTextureCache()->addImage("ui_sprite.png");
