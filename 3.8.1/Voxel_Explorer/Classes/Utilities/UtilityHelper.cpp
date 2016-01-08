@@ -38,6 +38,81 @@ std::string UtilityHelper::getLocalStringForPlist(const std::string &key, const 
     
     return ret.asString();
 }
+void UtilityHelper::getLineForText(cocos2d::ui::Text*  tempText,std::string& str)
+{
+    std::string retultStr;
+    if (!tempText ||str.empty())
+        return ;
+    
+    std::vector<std::string> tempVec;
+    std::vector<std::string> CharVec;
+     for (int i=0; i<str.length(); )
+     {
+         char ch = str.at(i);
+         int count = getCharUtf8Count(ch);
+         
+         std::string subStr =  str.substr(i,count);
+         CharVec.push_back(subStr);
+         i+=count;
+     }
+    int current = 0;
+    std::string patterStr ="？。，““；";
+    for (int i=0; i<CharVec.size(); i++)
+    {
+            if (CharVec[i]=="？"||CharVec[i]=="。"||
+                CharVec[i]=="，"||CharVec[i]=="；"||
+                CharVec[i]==" "||CharVec[i]=="“"||CharVec[i]=="“")
+            {
+                std::string charStr;
+                for (int j=current; j<=i; j++)
+                {
+                    charStr.append(CharVec[j]);
+                }
+                current = i+1;
+                tempVec.push_back(charStr);
+            }
+        
+        if (i==CharVec.size()-1) {
+            std::string charStr;
+            for (int j=current; j<=i; j++)
+            {
+                charStr.append(CharVec[j]);
+            }
+            current = i;
+            tempVec.push_back(charStr);
+        }
+        
+    }
+    
+    CCASSERT(tempText->getParent(), "tempText is not parent" );
+    
+    float parentWidth = tempText->getParent()->getContentSize().width-10;
+    
+    float textWidthSum = 0.0f;
+    for (int i =0; i<tempVec.size(); i++) {
+        
+        tempText->setString(tempVec[i]);
+        cocos2d::Size textSize = tempText->getContentSize()* tempText->getScale();
+        textWidthSum+=textSize.width;
+        if (textWidthSum >= parentWidth){
+            if (i==0) {
+                tempVec[i].append("\n");
+            }else
+            {
+                tempVec[i-1].append("\n");
+                --i;
+            }
+            textWidthSum = 0.0f;
+            
+        }
+    }
+    str.clear();
+    for (int i =0; i<tempVec.size(); i++)
+    {
+        str.append(tempVec[i]);
+    }
+    
+}
 cocos2d::Size UtilityHelper::getSingleStrFontSize(cocos2d::ui::Text* tempText,std::string str)
 {
      cocos2d::Size tempSize = cocos2d::Size::ZERO;
@@ -45,31 +120,28 @@ cocos2d::Size UtilityHelper::getSingleStrFontSize(cocos2d::ui::Text* tempText,st
         return tempSize;
     std::vector<std::string > tempVec = getStringCount(str);
     std::vector<cocos2d::Size>  sizeWidthVec;
+    
+    
     for (int i =0; i<tempVec.size(); i++) {
         std::string tempStr = tempVec[i];
         tempText->setString(tempStr);
         cocos2d::Size textSize = tempText->getContentSize()*tempText->getScale();
 //        CCLOG("width:%f height:%f",textSize.width,textSize.height);
         sizeWidthVec.push_back(textSize);
+        
     }
-
-
-
+ 
     //取最小字体大小  测试之后看要不要做中英文 中文取最大字体 英文取最小字体
-    LanguageType lt= Application::getInstance()->getCurrentLanguage();
    
-    if (lt == LanguageType::CHINESE) {
-        std::sort(sizeWidthVec.begin(), sizeWidthVec.end(),[](cocos2d::Size a, cocos2d::Size b) {
-            return a.width > b.width;
-        });
-        tempSize =  sizeWidthVec.at(0);
-    }else
-    {
-            std::sort(sizeWidthVec.begin(), sizeWidthVec.end(),[](cocos2d::Size a, cocos2d::Size b) {
-                return a.width < b.width;
-            });
-            tempSize =  sizeWidthVec.at(0);
-    }
+    std::sort(sizeWidthVec.begin(), sizeWidthVec.end(),[](cocos2d::Size a, cocos2d::Size b) {
+        return a.width < b.width;
+    });
+     auto end = std::unique(sizeWidthVec.begin(), sizeWidthVec.end(),[](cocos2d::Size a, cocos2d::Size b){
+        return a.width ==b.width;
+    });
+    sizeWidthVec.erase(end, sizeWidthVec.end());
+    tempSize =  sizeWidthVec.at(sizeWidthVec.size()/2);
+    
     
     return tempSize;
 }
@@ -82,11 +154,32 @@ std::vector<std::string> UtilityHelper::getStringCount(std::string str )
     }
     
     //1.将字符串中英文切割存放到列表
+    std::string tempStr;
     for (int i=0; i<str.length(); ) {
         //判断当前字符有几个字节
         int count = getCharUtf8Count(str.at(i));
-        tempVec.push_back(str.substr(i,count));
+
+        std::string subStr =  str.substr(i,count);
+        //三个字节算一个字
+        if (count >0 && count <3 ) {
+            if (tempStr.length() >=3 ) {
+                tempVec.push_back(tempStr);
+                tempStr.clear();
+            }
+            tempStr.append(subStr);
+        }else{
+            if (!tempStr.empty()) {
+                tempVec.push_back(tempStr);
+                tempStr.clear();
+            }
+            tempVec.push_back(subStr);
+        }
         i+=count;
+        if (i==str.length() && !tempStr.empty()) {
+            tempVec.push_back(tempStr);
+            tempStr.clear();
+        }
+
     }
     return tempVec;
 }
@@ -136,24 +229,54 @@ int UtilityHelper::getLineStr(std::string &str, int length)
     str = resultStr;
     return str_vec.size();
 }
-int UtilityHelper::getCharUtf8Count(char ch)
+int UtilityHelper::getCharUtf8Count(unsigned char ch)
 {
     int resultsize = 1;
-    if (ch >= 0x00 && ch <= 0x7f)//说明最高位为'0'，这意味着utf8编码只有1个字节！
-    {
-        
+    if(ch < 0x80) {
         resultsize = 1;
     }
-    else if ((ch & 0xe0)== 0xc0)//只保留最高三位，看最高三位是不是110，如果是则意味着utf8编码有2个字节！
+    else if(ch < 0xc2)
     {
-        
         resultsize = 2;
     }
-    else if ((ch & (0xf0))== 0xe0)//只保留最高四位，看最高三位是不是1110，如果是则意味着utf8编码有3个字节！
+    else if(ch < 0xe0)
     {
-        
+        resultsize = 2;
+    }
+    else if(ch < 0xf0)
+    {
         resultsize = 3;
     }
+    else if(ch < 0xf8)
+    {
+        resultsize = 4;
+    }
+    else if (ch < 0xfc)
+    {
+        resultsize = 5;
+    }
+    else if (ch < 0xfe)
+    {
+        resultsize = 6;
+    }
+    else
+        resultsize = 7;
+
+//    if (ch >= 0x00 && ch <= 0x7f)//说明最高位为'0'，这意味着utf8编码只有1个字节！
+//    {
+//
+//        resultsize = 1;
+//    }
+//    else if ((ch & 0xe0)== 0xc0)//只保留最高三位，看最高三位是不是110，如果是则意味着utf8编码有2个字节！
+//    {
+//        
+//        resultsize = 2;
+//    }
+//    else if ((ch & (0xf0))== 0xe0)//只保留最高四位，看最高三位是不是1110，如果是则意味着utf8编码有3个字节！
+//    {
+//        
+//        resultsize = 3;
+//    }
     return resultsize;
 }
 void UtilityHelper::getHexDigest(const unsigned char* md5, int len, std::string& hexStr)

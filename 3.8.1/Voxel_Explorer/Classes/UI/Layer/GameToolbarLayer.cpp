@@ -190,7 +190,7 @@ void GameToolbarLayer::onClickBag(Ref* ref)
     ShopPopupUI* popupUILayer = static_cast<ShopPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupGambleShop));
     if (popupUILayer) {
         popupUILayer->setShopTitle(EVENT_NPC_WEIRDO_ANSWER);
-        popupUILayer->setDarkLayerVisble(false);
+        popupUILayer->setDarkLayerVisble(true);
     }
     setDistTipsFrame();
 }
@@ -295,9 +295,9 @@ void GameToolbarLayer::onClickPause(cocos2d::Ref *ref)
 //    if (popupUi) {
 //        popupUi->setInfoIcon("chr_man.png");
 //        popupUi->setInfoVector(NpcDataManager::getInstance()->getOldManRoomInfo());
-//        ValueVector aaa = cocos2d::FileUtils::getInstance()->getValueVectorFromFile("random_events_chinese.plist");
+//        ValueVector aaa = cocos2d::FileUtils::getInstance()->getValueVectorFromFile("random_events_english.plist");
 //        std::string str = aaa.at(11).asValueMap()["EVENT_DESC"].asString();
-//        popupUi->setInfoDesc(str);
+//        popupUi->setInfoDesc("The color of the dagger like shit, to smell the smell of your hand.");
 //    }
 //     AlertPopupUI* popupUi = static_cast<AlertPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupAlert));
 //    if (popupUi) {

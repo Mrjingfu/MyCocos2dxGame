@@ -5,31 +5,31 @@
 	<key>SPLASH_RES</key>
 	<string>splash_en.png</string>
 	<key>PROP_SHOW_HP</key>
-	<string>HP:%d</string>
+	<string>HP:</string>
 	<key>ROLE_SHOW_HP</key>
-	<string>HP:%d/%d</string>
+	<string>HP:</string>
 	<key>ROLE_SHOW_EXP</key>
-	<string>EXP:%d/%d</string>
+	<string>EXP:</string>
 	<key>PROP_SHOW_MP</key>
-	<string>MP:%d</string>
+	<string>MP:</string>
 	<key>ROLE_SHOW_MP</key>
-	<string>MP:%d/%d</string>
+	<string>MP:</string>
 	<key>PROP_SHOW_LIGHT_DIS</key>
-	<string>Light Dis:%d</string>
+	<string>Light Dis:</string>
 	<key>PROP_SHOW_SEARCH_DIS</key>
-	<string>Search Dis:%d</string>
+	<string>Search Dis:</string>
 	<key>PROP_SHOW_MARGIC_FIND</key>
-	<string>Margic:%d</string>
+	<string>Margic:</string>
 	<key>PROP_SHOW_CRITICAL_STRIKE</key>
-	<string>Critical strike:%d</string>
+	<string>Critical strike:</string>
 	<key>PROP_SHOW_BLOCK</key>
-	<string>Bolck:%d</string>
+	<string>Bolck:</string>
 	<key>PROP_SHOW_DODGE</key>
-	<string>Dodge:%d</string>
+	<string>Dodge:</string>
 	<key>PROP_SHOW_ATTACK</key>
-	<string>Attack:%d-%d</string>
+	<string>Attack:</string>
 	<key>PROP_SHOW_DEFENSE</key>
-	<string>Defense:%d</string>
+	<string>Defense:</string>
 	<key>STATUS_TEXT_DODGE</key>
 	<string>dogde</string>
 	<key>STATUS_TEXT_BOLOCK</key>

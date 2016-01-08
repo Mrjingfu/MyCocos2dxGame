@@ -143,7 +143,7 @@ void InformationPopupUI::updateFrameHieght()
 {
     float frameHeight =  m_pRootNode->getContentSize().height;
     if (m_vInfos.empty()){
-        frameHeight =  m_pRootNode->getContentSize().height - m_pOk->getContentSize().height-m_pOk->getPositionY()-15;
+        frameHeight =  m_pRootNode->getContentSize().height - m_pOk->getContentSize().height-m_pOk->getPositionY()-20;
     }
     
     if (!m_sInfoDesc.empty())

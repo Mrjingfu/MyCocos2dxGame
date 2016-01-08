@@ -172,13 +172,14 @@ void ItemPopupUI::useItemFrame()
             else
                 str = StringUtils::format(str.c_str(),RandomDungeon::getInstance()->getCurrentDungeonNode()->m_strDungeonName.c_str());
         }
-        m_pItemDesc->setItemText(str);
+        
         ui::LinearLayoutParameter* lastlinerParmter = ui::LinearLayoutParameter::create();
         lastlinerParmter->setGravity(cocos2d::ui::LinearLayoutParameter::LinearGravity::CENTER_VERTICAL);
         lastlinerParmter->setMargin(ui::Margin(10,5,0,0));
         m_pItemDesc->setLayoutParameter(lastlinerParmter);
         m_pItemDesc->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
         m_pAttrFrame->addChild(m_pItemDesc);
+        m_pItemDesc->setItemText(str);
         addSize = addSize + cocos2d::Size(0,m_pItemDesc->getContentSize().height);
        
     }
@@ -456,13 +457,15 @@ void ItemPopupUI::IdentifyEquiipFrame()
     }
     
     if (!str.empty()) {
-        m_pItemDesc->setItemText(str);
+        
         ui::LinearLayoutParameter* lastlinerParmter = ui::LinearLayoutParameter::create();
         lastlinerParmter->setGravity(cocos2d::ui::LinearLayoutParameter::LinearGravity::CENTER_VERTICAL);
         lastlinerParmter->setMargin(ui::Margin(10,2,0,0));
         m_pItemDesc->setLayoutParameter(lastlinerParmter);
         m_pItemDesc->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
         m_pAttrFrame->addChild(m_pItemDesc);
+        m_pItemDesc->setItemText(str);
+        
         addSize = addSize + cocos2d::Size(0,m_pItemDesc->getContentSize().height);
     }
 
@@ -593,30 +596,33 @@ void ItemPopupUI::updateItemBaseProp()
     
     PickableItemProperty::PickableItemPropertyType itemtype =itemprop->getPickableItemPropertyType();
     std::string str;
-    if (itemtype == ArmorProperty::PIPT_KEY) {
+    if (itemtype == PickableItemProperty::PIPT_KEY) {
         str = UtilityHelper::getLocalStringForUi("ITEM_PROP_TYPE_KEY");
-    }else if (itemtype == ArmorProperty::PIPT_WEAPON)
+    }else if (itemtype == PickableItemProperty::PIPT_WEAPON)
     {
         str = UtilityHelper::getLocalStringForUi("ITEM_PROP_TYPE_WEAPON");
-    }else if (itemtype == ArmorProperty::PIPT_SECOND_WEAPON)
+    }else if (itemtype == PickableItemProperty::PIPT_SECOND_WEAPON)
     {
         str = UtilityHelper::getLocalStringForUi("ITEM_PROP_TYPE_SECOND_WEAPON");
-    }else if (itemtype == ArmorProperty::PIPT_MAGIC_ORNAMENT)
+    }else if (itemtype == PickableItemProperty::PIPT_ARMOR)
+    {
+        str = UtilityHelper::getLocalStringForUi("ITEM_PROP_TYPE_ARMOR");
+    }else if (itemtype == PickableItemProperty::PIPT_MAGIC_ORNAMENT)
     {
         str = UtilityHelper::getLocalStringForUi("ITEM_PROP_TYPE_MAGIC_ORNAMENT");
-    }else if (itemtype == ArmorProperty::PIPT_SCROLL)
+    }else if (itemtype == PickableItemProperty::PIPT_SCROLL)
     {
         str = UtilityHelper::getLocalStringForUi("ITEM_PROP_TYPE_SCROLL");
-    }else if (itemtype == ArmorProperty::PIPT_POTIONS)
+    }else if (itemtype == PickableItemProperty::PIPT_POTIONS)
     {
         str = UtilityHelper::getLocalStringForUi("ITEM_PROP_TYPE_POTIONS");
-    }else if (itemtype == ArmorProperty::PIPT_MATERIAL)
+    }else if (itemtype == PickableItemProperty::PIPT_MATERIAL)
     {
         str = UtilityHelper::getLocalStringForUi("ITEM_PROP_TYPE_MATERIAL");
-    }else if (itemtype == ArmorProperty::PIPT_QUEST)
+    }else if (itemtype == PickableItemProperty::PIPT_QUEST)
     {
         str = UtilityHelper::getLocalStringForUi("ITEM_PROP_TYPE_QUEST");
-    }else if (itemtype == ArmorProperty::PIPT_SUNDRIES)
+    }else 
     {
         str = UtilityHelper::getLocalStringForUi("ITEM_PROP_TYPE_SUNDRIES");
     }
