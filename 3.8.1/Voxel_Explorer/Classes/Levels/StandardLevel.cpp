@@ -309,7 +309,7 @@ bool StandardLevel::decorateAreas()
             //// for debug
 //            else if(area->getAreaType() == Area::AT_ENTRANCE)
 //            {
-//                Npc* npc = Npc::create(Npc::NPC_KNIGHT);
+//                Npc* npc = Npc::create(Npc::NPC_LITTLEWITCH);
 //                if(!npc)
 //                    return false;
 //                Vec2 center = area->getCenter();
@@ -332,7 +332,7 @@ bool StandardLevel::initAreas()
     if (m_Areas.size() < 8) {
         return false;
     }
-    for (int i = 0; i<m_Areas.size()-1; i++) {
+    for (int i = 0; i<m_Areas.size(); i++) {
         for (int j = i+1; j<m_Areas.size(); j++) {
             Area* area1 = static_cast<Area*>(m_Areas[i]);
             Area* area2 = static_cast<Area*>(m_Areas[j]);
@@ -1338,14 +1338,14 @@ void StandardLevel::placeTraps()  ///放置陷阱
 }
 void StandardLevel::generateSpawnPoint()
 {
-    for (int i = 0; i<m_Map.size()-1; i++) {
+    for (int i = 0; i<m_Map.size(); i++) {
         if(m_Map[i].m_Type == TerrainTile::TT_ENTRANCE)
             m_spawnPoint = Vec2((m_Map[i].m_nX+1)*TerrainTile::CONTENT_SCALE,(m_Map[i].m_nY)*TerrainTile::CONTENT_SCALE);
     }
 }
 void StandardLevel::generateReturnPoint()
 {
-    for (int i = 0; i<m_Map.size()-1; i++) {
+    for (int i = 0; i<m_Map.size(); i++) {
         if(m_Map[i].m_Type == TerrainTile::TT_EXIT)
             m_returnPoint = Vec2((m_Map[i].m_nX-1)*TerrainTile::CONTENT_SCALE,(m_Map[i].m_nY)*TerrainTile::CONTENT_SCALE);
     }

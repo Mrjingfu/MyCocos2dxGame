@@ -173,11 +173,13 @@ PopupUILayer* PopupUILayerManager::initPopUp(ePopupType type)
             break;
         case ePopupDead:
             popupLayer = DeadPopupUI::create();
-             break;
+            break;
         case ePopupRandomMsg:
             popupLayer = RandomMsgPopupUI::create();
+            break;
         case ePopupDiscard:
             popupLayer = DiscardPopupUI::create();
+            break;
         default:
             break;
     }

@@ -138,7 +138,7 @@ std::vector<PickableItemProperty*> BagShopLayer::getItems()
             continue;
         }
         
-        if (itemProp->getPickableItemType()>=PickableItem::PIT_KEY_COPPER && itemProp->getPickableItemType()<=PickableItem::PIT_KEY_ROOM) {
+        if (itemProp->getPickableItemType()>=PickableItem::PIT_KEY_BOSS && itemProp->getPickableItemType()<=PickableItem::PIT_KEY_ROOM) {
             continue;
         }
         

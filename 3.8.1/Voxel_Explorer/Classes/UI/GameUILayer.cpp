@@ -300,8 +300,8 @@ void GameUILayer::updateShowRoleExp(int exp)
         if (infoPopup)
         {
             infoPopup->setTitle(name);
-            infoPopup->setInfoDesc(content);
             infoPopup->setInfoIcon(icon);
+            infoPopup->setInfoDesc(content);
             m_pNpcPropLayer->setVisible(true);
             m_pNpcPropLayer->setNpc(npc);
             infoPopup->registerCloseCallback([this,npc,eventStr]()
@@ -340,7 +340,8 @@ void GameUILayer::updateShowRoleExp(int exp)
                         });
                     }
                 }
-
+                else
+                    npc->endAnswer();
             });
         }
     }
@@ -367,19 +368,7 @@ void GameUILayer::onEventNpcChildAnsWer(cocos2d::EventCustom *sender)
     Npc* npc = static_cast<Npc*>(sender->getUserData());
     if (npc)
     {
-        m_pNpcPropLayer->setVisible(true);
-        m_pNpcPropLayer->setNpc(npc);
-        
-        AlertPopupUI* alertPopup = static_cast<AlertPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupAlert));
-        if (alertPopup) {
-            alertPopup->setMessage(UtilityHelper::getLocalStringForUi(EVENT_NPC_CHILD_ANSWER));
-            alertPopup->setPositiveListerner([this,npc](Ref* ref){
-                npc->endAnswer();
-                if (m_pNpcPropLayer) {
-                    m_pNpcPropLayer->setVisible(false);
-                }
-            });
-        }
+        popupNpc(npc, EVENT_NPC_CHILD_ANSWER);
     }
 
 }
@@ -420,7 +409,7 @@ void GameUILayer::onEventNpcOldManAnsWer(cocos2d::EventCustom *sender)
     Npc* npc = static_cast<Npc*>(sender->getUserData());
     if (npc)
     {
-        InformationPopupUI* infoPopup = static_cast<InformationPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupInformation));
+        InformationPopupUI* infoPopup = static_cast<InformationPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupRandomMsg));
         if (infoPopup) {
             m_pNpcPropLayer->setVisible(true);
             m_pNpcPropLayer->setNpc(npc);
@@ -444,19 +433,7 @@ void GameUILayer::onEventNpcLittleWitchAnsWer(cocos2d::EventCustom *sender)
     Npc* npc = static_cast<Npc*>(sender->getUserData());
     if (npc)
     {
-        m_pNpcPropLayer->setVisible(true);
-        m_pNpcPropLayer->setNpc(npc);
-        AlertPopupUI* alertPopup = static_cast<AlertPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupAlert));
-        if (alertPopup) {
-            alertPopup->setMessage(UtilityHelper::getLocalStringForUi(EVENT_NPC_LITTLEWITCH_ANSWER));
-            alertPopup->setPositiveListerner([this,npc](Ref* ref){
-                npc->endAnswer();
-                if (m_pNpcPropLayer) {
-                    m_pNpcPropLayer->setVisible(false);
-                }
-                
-            });
-        }
+        popupNpc(npc, EVENT_NPC_LITTLEWITCH_ANSWER);
     }
 }
 //护士站
@@ -466,19 +443,7 @@ void GameUILayer::onEventNpcNurseAnsWer(cocos2d::EventCustom *sender)
     Npc* npc = static_cast<Npc*>(sender->getUserData());
     if (npc)
     {
-        m_pNpcPropLayer->setVisible(true);
-        m_pNpcPropLayer->setNpc(npc);
-        AlertPopupUI* alertPopup = static_cast<AlertPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupAlert));
-        if (alertPopup) {
-            alertPopup->setMessage(UtilityHelper::getLocalStringForUi("NPC_NURSE_ANSWER_MESSAGE"));
-            alertPopup->setPositiveListerner([this,npc](Ref* ref){
-                npc->endAnswer();
-                if (m_pNpcPropLayer) {
-                    m_pNpcPropLayer->setVisible(false);
-                }
-                
-            });
-        }
+        popupNpc(npc, EVENT_NPC_NURSE_ANSWER);
     }
 }
 void GameUILayer::onEventDesTinyAddMoney(cocos2d::EventCustom *sender)
@@ -491,7 +456,7 @@ void GameUILayer::onEventDesTinyAddMoney(cocos2d::EventCustom *sender)
         m_pGameToolBarLayer->sendMessage(str,PopupUILayerManager::getInstance()->getTipsColor(TIP_POSITIVE));
     });
     
-    this->runAction(Sequence::create(DelayTime::create(0.4),func, nullptr));
+    this->runAction(Sequence::create(DelayTime::create(0.5),func, nullptr));
 }
 void GameUILayer::onEventDesTinyTransport(cocos2d::EventCustom *sender)
 {
@@ -501,7 +466,7 @@ void GameUILayer::onEventDesTinyTransport(cocos2d::EventCustom *sender)
          PopupUILayerManager::getInstance()->showStatusImport(TipTypes::TIP_POSITIVE, str);
          m_pGameToolBarLayer->sendMessage(str,PopupUILayerManager::getInstance()->getTipsColor(TIP_POSITIVE));
     });
-    this->runAction(Sequence::create(DelayTime::create(0.4),func, nullptr));
+    this->runAction(Sequence::create(DelayTime::create(0.5),func, nullptr));
 
 }
 void GameUILayer::onEventDesTinyStronger(cocos2d::EventCustom *sender)
@@ -512,7 +477,7 @@ void GameUILayer::onEventDesTinyStronger(cocos2d::EventCustom *sender)
         PopupUILayerManager::getInstance()->showStatusImport(TipTypes::TIP_POSITIVE, str);
         m_pGameToolBarLayer->sendMessage(str,PopupUILayerManager::getInstance()->getTipsColor(TIP_POSITIVE));
     });
-     this->runAction(Sequence::create(DelayTime::create(0.4),func, nullptr));
+     this->runAction(Sequence::create(DelayTime::create(0.5),func, nullptr));
 }
 void GameUILayer::onEventDesTinyStealth(cocos2d::EventCustom *sender)
 {
@@ -523,7 +488,7 @@ void GameUILayer::onEventDesTinyStealth(cocos2d::EventCustom *sender)
          m_pGameToolBarLayer->sendMessage(str,PopupUILayerManager::getInstance()->getTipsColor(TIP_WARNING));
 
      });
-    this->runAction(Sequence::create(DelayTime::create(0.4),func, nullptr));
+    this->runAction(Sequence::create(DelayTime::create(0.5),func, nullptr));
 }
 void GameUILayer::onEventDesTinySpeedup(cocos2d::EventCustom *sender)
 {
@@ -533,7 +498,7 @@ void GameUILayer::onEventDesTinySpeedup(cocos2d::EventCustom *sender)
          PopupUILayerManager::getInstance()->showStatusImport(TipTypes::TIP_POSITIVE, str);
          m_pGameToolBarLayer->sendMessage(str,PopupUILayerManager::getInstance()->getTipsColor(TIP_POSITIVE));
     });
-     this->runAction(Sequence::create(DelayTime::create(0.4),func, nullptr));
+     this->runAction(Sequence::create(DelayTime::create(0.5),func, nullptr));
 }
 void GameUILayer::onEventDesTinyPoisioning(cocos2d::EventCustom *sender)
 {
@@ -544,7 +509,7 @@ void GameUILayer::onEventDesTinyPoisioning(cocos2d::EventCustom *sender)
         m_pGameToolBarLayer->sendMessage(str,PopupUILayerManager::getInstance()->getTipsColor(TIP_NEGATIVE));
 
      });
-      this->runAction(Sequence::create(DelayTime::create(0.4),func, nullptr));
+      this->runAction(Sequence::create(DelayTime::create(0.5),func, nullptr));
 }
 void GameUILayer::onEventDesTinyFire(cocos2d::EventCustom *sender)
 {
@@ -555,7 +520,7 @@ void GameUILayer::onEventDesTinyFire(cocos2d::EventCustom *sender)
          m_pGameToolBarLayer->sendMessage(str,PopupUILayerManager::getInstance()->getTipsColor(TIP_NEGATIVE));
 
      });
-    this->runAction(Sequence::create(DelayTime::create(0.4),func, nullptr));
+    this->runAction(Sequence::create(DelayTime::create(0.5),func, nullptr));
 }
 void GameUILayer::onEventDesTinyFrozen(cocos2d::EventCustom *sender)
 {
@@ -565,7 +530,7 @@ void GameUILayer::onEventDesTinyFrozen(cocos2d::EventCustom *sender)
         PopupUILayerManager::getInstance()->showStatusImport(TipTypes::TIP_NEGATIVE, str);
         m_pGameToolBarLayer->sendMessage(str,PopupUILayerManager::getInstance()->getTipsColor(TIP_NEGATIVE));
     });
-    this->runAction(Sequence::create(DelayTime::create(0.4),func, nullptr));
+    this->runAction(Sequence::create(DelayTime::create(0.5),func, nullptr));
 }
 void GameUILayer::onEventDesTinyWeak(cocos2d::EventCustom *sender)
 {
@@ -576,8 +541,65 @@ void GameUILayer::onEventDesTinyWeak(cocos2d::EventCustom *sender)
         m_pGameToolBarLayer->sendMessage(str,PopupUILayerManager::getInstance()->getTipsColor(TIP_NEGATIVE));
 
     });
-    this->runAction(Sequence::create(DelayTime::create(0.4),func, nullptr));
+    this->runAction(Sequence::create(DelayTime::create(0.5),func, nullptr));
 }
+
+void GameUILayer::onEventLittleWitchAddMoney(cocos2d::EventCustom *sender)
+{
+    CCLOG("onEventLittleWitchAddMoney");
+    
+    CallFunc* func = CallFunc::create([this](){
+        std::string str = UtilityHelper::getLocalStringForUi(EVENT_LITTLEWITCH_ADDMONEY);
+        PopupUILayerManager::getInstance()->showStatusImport(TipTypes::TIP_POSITIVE, str);
+        m_pGameToolBarLayer->sendMessage(str,PopupUILayerManager::getInstance()->getTipsColor(TIP_POSITIVE));
+    });
+    this->runAction(Sequence::create(DelayTime::create(0.5),func, nullptr));
+}
+void GameUILayer::onEventLittleWitchAddPotion(cocos2d::EventCustom *sender)
+{
+    CCLOG("onEventLittleWitchAddPotion");
+    
+    CallFunc* func = CallFunc::create([this](){
+        std::string str = UtilityHelper::getLocalStringForUi(EVENT_LITTLEWITCH_ADDPOTION);
+        PopupUILayerManager::getInstance()->showStatusImport(TipTypes::TIP_POSITIVE, str);
+        m_pGameToolBarLayer->sendMessage(str,PopupUILayerManager::getInstance()->getTipsColor(TIP_POSITIVE));
+    });
+    this->runAction(Sequence::create(DelayTime::create(0.5),func, nullptr));
+}
+void GameUILayer::onEventLittleWitchAddScroll(cocos2d::EventCustom *sender)
+{
+    CCLOG("onEventLittleWitchAddScroll");
+    
+    CallFunc* func = CallFunc::create([this](){
+        std::string str = UtilityHelper::getLocalStringForUi(EVENT_LITTLEWITCH_ADDSCROLL);
+        PopupUILayerManager::getInstance()->showStatusImport(TipTypes::TIP_POSITIVE, str);
+        m_pGameToolBarLayer->sendMessage(str,PopupUILayerManager::getInstance()->getTipsColor(TIP_POSITIVE));
+    });
+    this->runAction(Sequence::create(DelayTime::create(0.5),func, nullptr));
+}
+void GameUILayer::onEventLittleWitchSummonMonster(cocos2d::EventCustom *sender)
+{
+    CCLOG("onEventLittleWitchSummonMonster");
+    CallFunc* func = CallFunc::create([this](){
+        std::string str = UtilityHelper::getLocalStringForUi(EVENT_LITTLEWITCH_SUMMONMONSTER);
+        PopupUILayerManager::getInstance()->showStatusImport(TipTypes::TIP_NEGATIVE, str);
+        m_pGameToolBarLayer->sendMessage(str,PopupUILayerManager::getInstance()->getTipsColor(TIP_NEGATIVE));
+        
+    });
+    this->runAction(Sequence::create(DelayTime::create(0.5),func, nullptr));
+}
+void GameUILayer::onEventLittleWitchWeak(cocos2d::EventCustom *sender)
+{
+    CCLOG("onEventLittleWitchSummonMonster");
+    CallFunc* func = CallFunc::create([this](){
+        std::string str = UtilityHelper::getLocalStringForUi(EVENT_LITTLEWITCH_WEAK);
+        PopupUILayerManager::getInstance()->showStatusImport(TipTypes::TIP_NEGATIVE, str);
+        m_pGameToolBarLayer->sendMessage(str,PopupUILayerManager::getInstance()->getTipsColor(TIP_NEGATIVE));
+        
+    });
+    this->runAction(Sequence::create(DelayTime::create(0.5),func, nullptr));
+}
+
 void GameUILayer::onEventUseGoldChestKey(cocos2d::EventCustom *sender)
 {
     CCLOG("onEventUseGoldChestKey");
@@ -1384,8 +1406,13 @@ void GameUILayer::onEnter()
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_DESTINY_FIRE, CC_CALLBACK_1(GameUILayer::onEventDesTinyFire,this));
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_DESTINY_FROZEN, CC_CALLBACK_1(GameUILayer::onEventDesTinyFrozen,this));
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_DESTINY_WEAK, CC_CALLBACK_1(GameUILayer::onEventDesTinyWeak,this));
-
     
+    
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_LITTLEWITCH_ADDMONEY, CC_CALLBACK_1(GameUILayer::onEventLittleWitchAddMoney,this));
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_LITTLEWITCH_ADDPOTION, CC_CALLBACK_1(GameUILayer::onEventLittleWitchAddPotion,this));
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_LITTLEWITCH_ADDSCROLL, CC_CALLBACK_1(GameUILayer::onEventLittleWitchAddScroll,this));
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_LITTLEWITCH_SUMMONMONSTER, CC_CALLBACK_1(GameUILayer::onEventLittleWitchSummonMonster,this));
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_LITTLEWITCH_WEAK, CC_CALLBACK_1(GameUILayer::onEventLittleWitchWeak,this));
 }
 void GameUILayer::onExit()
 {
@@ -1481,6 +1508,12 @@ void GameUILayer::onExit()
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_DESTINY_FIRE);
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_DESTINY_FROZEN);
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_DESTINY_WEAK);
+    
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_LITTLEWITCH_ADDMONEY);
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_LITTLEWITCH_ADDPOTION);
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_LITTLEWITCH_ADDSCROLL);
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_LITTLEWITCH_SUMMONMONSTER);
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_LITTLEWITCH_WEAK);
     
     WrapperUILayer::onExit();
 }

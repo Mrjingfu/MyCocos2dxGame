@@ -37,7 +37,10 @@ PickableItemProperty* ItemShopBuyPopupUI::getItemIdProperty() const
         {
             return NpcDataManager::getInstance()->getItemFromMagicShop(CChaosNumber(m_nItemId));
         }
-        
+        else if(m_eShopType == ShopPopupUI::ST_ALCHEMY)
+        {
+            return NpcDataManager::getInstance()->getItemFromAlchemistRoom(CChaosNumber(m_nItemId));
+        }
     }
     return nullptr;
 }
@@ -178,11 +181,7 @@ void ItemShopBuyPopupUI::onClickBuy(cocos2d::Ref *ref)
             
         }else if (m_eShopType==ShopPopupUI::ST_ALCHEMY)
         {
-            
-            isRemoveSucces = NpcDataManager::getInstance()->removeItemFromAlchemistRoomList(itemid);
-            if (isRemoveSucces) {
-                StatisticsManager::getInstance()->addBuyPotionScrollNum();
-            }
+            StatisticsManager::getInstance()->addBuyPotionScrollNum();
         }
         if (isRemoveSucces) {
              CCLOG("购买成功");

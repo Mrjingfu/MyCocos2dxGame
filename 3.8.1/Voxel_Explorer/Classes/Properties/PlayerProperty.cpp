@@ -790,36 +790,48 @@ bool PlayerProperty::buyItemToBag(PickableItemProperty* buyItemProperty, CChaosN
                         IStackable* itemProperty = dynamic_cast<IStackable*>(item);
                         if (itemProperty)
                             itemProperty->addCount(count);
-                        if(item->isIdentified())
-                            item->adjustByLevel();
                         
                         if(sound)
                             playPickupItemSound(buyItemProperty);
                         return true;
                     }
                 }
-                else
+            }
+        }
+        
+        if(m_Bag.size() >= m_nBagMaxSpace.GetLongValue())
+        {
+            StatisticsManager::getInstance()->addBagFullNum();
+            Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_BAG_NO_SPACE);
+            return false;
+        }
+        else
+        {
+            if(costMoney(buycopper))
+            {
+                PickableItemProperty::PickableItemPropertyType type = buyItemProperty->getPickableItemPropertyType();
+                
+                PickableItemProperty* itemProperty = nullptr;
+                if(type == PickableItemProperty::PIPT_KEY)
                 {
-                    if(m_Bag.size() >= m_nBagMaxSpace.GetLongValue())
-                    {
-                        StatisticsManager::getInstance()->addBagFullNum();
-                        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_BAG_NO_SPACE);
-                        return false;
-                    }
-                    else
-                    {
-                        if(costMoney(buycopper))
-                        {
-                            if(buyItemProperty->isIdentified())
-                                buyItemProperty->adjustByLevel();
-                            buyItemProperty->retain();
-                            m_Bag.push_back(buyItemProperty);
-                            if(sound)
-                                playPickupItemSound(buyItemProperty);
-                            return true;
-                        }
-                    }
+                    itemProperty = new (std::nothrow) KeyProperty(m_snItemInstanceIDCounter++,buyItemProperty->getPickableItemType());
                 }
+                else if(type == PickableItemProperty::PIPT_POTIONS)
+                {
+                    itemProperty = new (std::nothrow) PotionsProperty(m_snItemInstanceIDCounter++,buyItemProperty->getPickableItemType());
+                }
+                else if(type == PickableItemProperty::PIPT_SCROLL)
+                {
+                    itemProperty = new (std::nothrow) ScrollProperty(m_snItemInstanceIDCounter++,buyItemProperty->getPickableItemType());
+                }
+                if(itemProperty)
+                {
+                    itemProperty->setCount(count);
+                    m_Bag.push_back(itemProperty);
+                    if(sound)
+                        playPickupItemSound(itemProperty);
+                }
+                return true;
             }
         }
     }

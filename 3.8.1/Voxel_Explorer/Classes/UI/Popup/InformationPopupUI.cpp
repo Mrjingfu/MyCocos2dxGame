@@ -156,7 +156,7 @@ void InformationPopupUI::updateFrameHieght()
         if (infoTextHeight >frameHeight) {
             CCLOG("max height:%f",infoTextHeight -frameHeight);
             float exceedHeight = infoTextHeight -frameHeight;
-            m_pRootNode->setContentSize(m_pRootNode->getContentSize()+cocos2d::Size(0,exceedHeight+15));
+            m_pRootNode->setContentSize(m_pRootNode->getContentSize()+cocos2d::Size(0,exceedHeight+25));
             m_pInfoFrame->setAnchorPoint(cocos2d::Vec2::ANCHOR_MIDDLE);
             m_pInfoFrame->setContentSize(m_pRootNode->getContentSize());
             m_pInfoFrame->setPosition(m_pRootNode->getContentSize()*0.5);
