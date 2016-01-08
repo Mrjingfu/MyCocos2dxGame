@@ -87,7 +87,7 @@ PotionsProperty::PotionsProperty(unsigned int instanceID, PickableItem::Pickable
         default:
             break;
     }
-    m_nCopperWhenBuy = m_nValueCopper * 1.5f;
+    m_nCopperWhenBuy = m_nValueCopper * 2.0f;
 }
 
 void PotionsProperty::adjustByLevel()

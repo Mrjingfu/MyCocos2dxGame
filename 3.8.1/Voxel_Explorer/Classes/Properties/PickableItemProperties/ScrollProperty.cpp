@@ -43,7 +43,7 @@ ScrollProperty::ScrollProperty(unsigned int instanceID, PickableItem::PickableIt
         default:
             break;
     }
-    m_nCopperWhenBuy = m_nValueCopper * 1.5f;
+    m_nCopperWhenBuy = m_nValueCopper * 2.0f;
 }
 
 void ScrollProperty::adjustByLevel()

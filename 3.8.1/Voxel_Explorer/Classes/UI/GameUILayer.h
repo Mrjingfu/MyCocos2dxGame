@@ -142,6 +142,12 @@ private:
     void onEventDesTinyFrozen(cocos2d::EventCustom *sender);
     void onEventDesTinyWeak(cocos2d::EventCustom *sender);
     
+    void onEventLittleWitchAddMoney(cocos2d::EventCustom *sender);
+    void onEventLittleWitchAddPotion(cocos2d::EventCustom *sender);
+    void onEventLittleWitchAddScroll(cocos2d::EventCustom *sender);
+    void onEventLittleWitchSummonMonster(cocos2d::EventCustom *sender);
+    void onEventLittleWitchWeak(cocos2d::EventCustom *sender);
+    
     
     void popupNpc(Npc* npc,std::string eventStr);
     //更新显示角色exp

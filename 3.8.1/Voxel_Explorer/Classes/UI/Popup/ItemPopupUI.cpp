@@ -760,12 +760,19 @@ void ItemPopupUI::updateUseItem()
     }
     useItemFrame();
     //如果是钥匙的话 没有价格 没有底部按钮
-    if (itemprop->getPickableItemType()>PickableItem::PIT_KEY_ROOM)
+    if (itemprop->getPickableItemType()>PickableItem::PIT_KEY_ROOM || itemprop->getPickableItemType()<PickableItem::PIT_KEY_BOSS)
     {
         addMoneyUI();
         addBottomUI();
         if (m_pBtnEquip) {
             m_pBtnEquip->setTitleText(UtilityHelper::getLocalStringForUi("BTN_TEXT_USE"));
+        }
+        
+        if(itemprop->getPickableItemType() <= PickableItem::PIT_KEY_GOLD)
+        {
+            m_pBtnEquip->setVisible(false);
+            m_pBtnDiscard->setAnchorPoint(cocos2d::Vec2::ANCHOR_MIDDLE);
+            m_pBtnDiscard->setPosition(m_pBottomFrame->getContentSize()*0.5f);
         }
     }
 

@@ -106,7 +106,13 @@ static const std::string EVENT_DESTINY_SPEEDUP = "DESTINY_SPEEDUP";
 static const std::string EVENT_DESTINY_POISIONING = "DESTINY_POISIONING";
 static const std::string EVENT_DESTINY_FIRE = "DESTINY_FIRE";
 static const std::string EVENT_DESTINY_FROZEN = "DESTINY_FROZEN";
-static const std::string EVENT_DESTINY_WEAK = "DESTINY_WEAK";               
+static const std::string EVENT_DESTINY_WEAK = "DESTINY_WEAK";
+
+static const std::string EVENT_LITTLEWITCH_ADDMONEY = "LITTLEWITCH_ADDMONEY";
+static const std::string EVENT_LITTLEWITCH_ADDPOTION = "LITTLEWITCH_ADDPOTION";
+static const std::string EVENT_LITTLEWITCH_ADDSCROLL = "LITTLEWITCH_ADDSCROLL";
+static const std::string EVENT_LITTLEWITCH_SUMMONMONSTER = "LITTLEWITCH_SUMMONMONSTER";
+static const std::string EVENT_LITTLEWITCH_WEAK = "LITTLEWITCH_WEAK";
 
 static const std::string EVENT_GO_UPSTAIRS = "GO_UPSTAIRS";
 static const std::string EVENT_GO_UPSTAIRS_FORBIDDEN = "GO_UPSTAIRS_FORBIDDEN";

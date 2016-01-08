@@ -223,25 +223,33 @@
 	<key>DESTINY_FROZEN</key>
 	<string>他的剑是冷的,他的刀也是冷的,他的心是冷的,他的血是冷的～～</string>
 	<key>DESTINY_WEAK</key>
-	<string>你变的虚弱了，早就说过黄色的卷轴和风月宝鉴都要远离吗！</string>
+	<string>你变的虚弱了，不是早就说过黄色的卷轴和风月宝鉴都要远离吗！</string>
+	<key>LITTLEWITCH_ADDMONEY</key>
+	<string>今天魔法使用过度了，想休息一天，送你1枚金币作为补偿吧。</string>
+	<key>LITTLEWITCH_ADDPOTION</key>
+	<string>魔法药剂是一个魔法师的必备，今天只随身携带了1瓶送给你吧！</string>
+	<key>LITTLEWITCH_ADDSCROLL</key>
+	<string>这是我抄写的魔法卷轴，送给你！</string>
+	<key>LITTLEWITCH_SUMMONMONSTER</key>
+	<string>哎呀，施法失败，召唤出了怪物，我好怕！我要先走一步了。</string>
+	<key>LITTLEWITCH_WEAK</key>
+	<string>哎呀，施法失败了，给你带来了负面影响真是不好意思。</string>
 	<key>NPC_KNIGHT_ANSWER</key>
 	<string>武器店</string>
 	<key>NPC_CHILD_ANSWER</key>
-	<string>不要着急,开发者加班加点赶制中哦。。</string>
+	<string>任务</string>
 	<key>NPC_SHOPGIRL_ANSWER</key>
-	<string>魔法物品店</string>
+	<string>防具店</string>
 	<key>NPC_OLDLADY_ANSWER</key>
-	<string>炼金店</string>
+	<string>杂货店</string>
 	<key>NPC_WEIRDO_ANSWER</key>
-	<string>赌场</string>
+	<string>黑市</string>
 	<key>NPC_OLDMAN_ANSWER</key>
 	<string>智者</string>
 	<key>NPC_LITTLEWITCH_ANSWER</key>
-	<string>不要着急,开发者加班加点赶制中哦。。</string>
+	<string>见习魔女</string>
 	<key>NPC_NURSE_ANSWER</key>
-	<string>护士</string>
-	<key>NPC_NURSE_ANSWER_MESSAGE</key>
-	<string>勇者,让我给你充满能量</string>
+	<string>小护士</string>
 	<key>ITEM_SPLITE_COUNT</key>
 	<string>数量：%d</string>
 	<key>ITEM_BAG_DELETE</key>

@@ -267,25 +267,34 @@ bool NpcDataManager::initAlchemistShop()
     std::vector<PickableItem::PickableItemType> types;
     if(level <= 15)
     {
-        types = { PickableItem::PIT_SCROLL_INDENTIFY, PickableItem::PIT_SCROLL_TELEPORT, PickableItem::PIT_SCROLL_DESTINY, PickableItem::PIT_POTION_MINORHEALTH, PickableItem::PIT_POTION_MINORMANA, PickableItem::PIT_POTION_DETOXIFICATION, PickableItem::PIT_POTION_HEALING };
+        types = { PickableItem::PIT_SCROLL_INDENTIFY, PickableItem::PIT_SCROLL_TELEPORT, PickableItem::PIT_SCROLL_DESTINY, PickableItem::PIT_POTION_MINORHEALTH, PickableItem::PIT_POTION_MINORMANA, PickableItem::PIT_POTION_DETOXIFICATION, PickableItem::PIT_POTION_HEALING, PickableItem::PIT_KEY_COPPER, PickableItem::PIT_KEY_SILVER, PickableItem::PIT_KEY_GOLD };
         
     }
     else if(level <= 30)
     {
-        types = { PickableItem::PIT_SCROLL_INDENTIFY, PickableItem::PIT_SCROLL_TELEPORT, PickableItem::PIT_SCROLL_DESTINY, PickableItem::PIT_POTION_LESSERHEALTH, PickableItem::PIT_POTION_LESSERMANA, PickableItem::PIT_POTION_DETOXIFICATION, PickableItem::PIT_POTION_HEALING, PickableItem::PIT_POTION_SPECIFIC };
+        types = { PickableItem::PIT_SCROLL_INDENTIFY, PickableItem::PIT_SCROLL_TELEPORT, PickableItem::PIT_SCROLL_DESTINY, PickableItem::PIT_POTION_MINORHEALTH, PickableItem::PIT_POTION_MINORMANA, PickableItem::PIT_POTION_LESSERHEALTH, PickableItem::PIT_POTION_LESSERMANA, PickableItem::PIT_POTION_DETOXIFICATION, PickableItem::PIT_POTION_HEALING, PickableItem::PIT_POTION_SPECIFIC, PickableItem::PIT_KEY_COPPER, PickableItem::PIT_KEY_SILVER, PickableItem::PIT_KEY_GOLD };
     }
     else
     {
-        types = { PickableItem::PIT_SCROLL_INDENTIFY, PickableItem::PIT_SCROLL_TELEPORT, PickableItem::PIT_SCROLL_DESTINY, PickableItem::PIT_POTION_HEALTH, PickableItem::PIT_POTION_MANA, PickableItem::PIT_POTION_DETOXIFICATION, PickableItem::PIT_POTION_HEALING, PickableItem::PIT_POTION_SPECIFIC, PickableItem::PIT_POTION_UNIVERSAL };
+        types = { PickableItem::PIT_SCROLL_INDENTIFY, PickableItem::PIT_SCROLL_TELEPORT, PickableItem::PIT_SCROLL_DESTINY, PickableItem::PIT_POTION_LESSERHEALTH, PickableItem::PIT_POTION_LESSERMANA, PickableItem::PIT_POTION_HEALTH, PickableItem::PIT_POTION_MANA, PickableItem::PIT_POTION_DETOXIFICATION, PickableItem::PIT_POTION_HEALING, PickableItem::PIT_POTION_SPECIFIC, PickableItem::PIT_POTION_UNIVERSAL, PickableItem::PIT_KEY_COPPER, PickableItem::PIT_KEY_SILVER, PickableItem::PIT_KEY_GOLD };
     }
-    for (int i = 0; i< types.size()-1; ++i) {
+    for (int i = 0; i < types.size(); ++i) {
         type = types[i];
         if(type >= PickableItem::PIT_KEY_COPPER && type <= PickableItem::PIT_KEY_GOLD)
+        {
             itemProperty = new (std::nothrow) KeyProperty(PlayerProperty::m_snItemInstanceIDCounter++,type);
+            itemProperty->setCount(5);
+        }
         else if(type >= PickableItem::PIT_SCROLL_INDENTIFY && type <= PickableItem::PIT_SCROLL_DESTINY)
+        {
             itemProperty = new (std::nothrow) ScrollProperty(PlayerProperty::m_snItemInstanceIDCounter++,type);
+            itemProperty->setCount(5);
+        }
         else if(type >= PickableItem::PIT_POTION_MINORHEALTH && type <= PickableItem::PIT_POTION_UNIVERSAL)
+        {
             itemProperty = new (std::nothrow) PotionsProperty(PlayerProperty::m_snItemInstanceIDCounter++,type);
+            itemProperty->setCount(10);
+        }
         if(itemProperty)
         {
             itemProperty->adjustByLevel();

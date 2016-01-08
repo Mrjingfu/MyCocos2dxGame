@@ -222,24 +222,60 @@ void Npc::doAnswer()
 void Npc::endAnswer()
 {
     switch (m_Type) {
-        case NPC_CHILD:
         case NPC_SHOPGIRL:
         case NPC_OLDLADY:
         case NPC_KNIGHT:
             setState(NPCS_IDLE);
             break;
+        case NPC_CHILD:
         case NPC_WEIRDO:
         case NPC_OLDMAN:
         case NPC_LITTLEWITCH:
-            setState(NPCS_FADEOUT);
+            {
+                int rand = cocos2d::random(4, 4);
+                if (rand == 0) {
+                    PlayerProperty::getInstance()->addMoney(10000);
+                    Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_LITTLEWITCH_ADDMONEY);
+                }
+                else if(rand == 1)
+                {
+                    PickableItem::PickableItemType type = cocos2d::random(PickableItem::PIT_POTION_MINORHEALTH, PickableItem::PIT_POTION_UNIVERSAL);
+                    PlayerProperty::getInstance()->addItemToBag(type, 1);
+                    Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_LITTLEWITCH_ADDPOTION);
+                }
+                else if(rand == 2)
+                {
+                    PickableItem::PickableItemType type = cocos2d::random(PickableItem::PIT_SCROLL_INDENTIFY, PickableItem::PIT_SCROLL_DESTINY);
+                    PlayerProperty::getInstance()->addItemToBag(type, 1);
+                    Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_LITTLEWITCH_ADDSCROLL);
+                }
+                else if(rand == 3)
+                {
+                    if(VoxelExplorer::getInstance()->getCurrentLevel())
+                    {
+                        VoxelExplorer::getInstance()->getCurrentLevel()->createSiegeMonsters(getPosInMap());
+                        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_LITTLEWITCH_SUMMONMONSTER);
+                    }
+                    
+                }
+                else if(rand == 4)
+                {
+                    if(VoxelExplorer::getInstance()->getPlayer())
+                    {
+                        VoxelExplorer::getInstance()->getPlayer()->addPlayerBuffer(PlayerBuffer::PB_WEAK);
+                        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_LITTLEWITCH_WEAK);
+                    }
+                }
+                setState(NPCS_FADEOUT);
+            }
             break;
         case NPC_NURSE:
             {
                 if(VoxelExplorer::getInstance()->getPlayer())
                     VoxelExplorer::getInstance()->getPlayer()->healedbyNurse();
                 setState(NPCS_FADEOUT);
-                break;
             }
+            break;
         default:
             break;
     }

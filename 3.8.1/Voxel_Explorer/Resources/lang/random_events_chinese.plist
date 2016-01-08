@@ -6,7 +6,8 @@
 		<key>EVENT_TYPE</key>
 		<integer>0</integer>
 		<key>EVENT_DESC</key>
-		<string>冒险者提示：请为你的膝盖装备盔甲！
+		<string>
+冒险者提示：请为你的膝盖装备盔甲！
 切记！</string>
 		<key>HAS_READED</key>
 		<false/>
@@ -15,9 +16,11 @@
 		<key>EVENT_TYPE</key>
 		<integer>0</integer>
 		<key>EVENT_DESC</key>
-		<string>黑夜给了我黑色的眼睛，我却用它來
+		<string>
+黑夜给了我黑色的眼睛，我却用它來
 寻找bug。   
-				————《开发者墓志铭》</string>
+				————《开发者墓志铭》
+        </string>
 		<key>HAS_READED</key>
 		<false/>
 	</dict>
@@ -25,7 +28,9 @@
 		<key>EVENT_TYPE</key>
 		<integer>1</integer>
 		<key>EVENT_DESC</key>
-		<string>你在地板下面发现了1枚金币</string>
+		<string>
+            你在地板下面发现了1枚金币
+        </string>
 		<key>HAS_READED</key>
 		<false/>
 	</dict>
@@ -33,9 +38,11 @@
 		<key>EVENT_TYPE</key>
 		<integer>0</integer>
 		<key>EVENT_DESC</key>
-		<string>墙壁的石缝中插着一把剑，看上去定
+		<string>
+墙壁的石缝中插着一把剑，看上去定
 非凡品，但你用尽全身的力气去拔，
-纹丝不动。。。</string>
+纹丝不动。。。
+        </string>
 		<key>HAS_READED</key>
 		<false/>
 	</dict>
@@ -43,8 +50,10 @@
 		<key>EVENT_TYPE</key>
 		<integer>0</integer>
 		<key>EVENT_DESC</key>
-		<string>“你要倒霉了，你们全都要倒霉了”。
-		 ———— “琼.艾瑞尼卡斯”</string>
+		<string>
+“你要倒霉了，你们全都要倒霉了”。
+		 ———— “琼.艾瑞尼卡斯”
+        </string>
 		<key>HAS_READED</key>
 		<false/>
 	</dict>
@@ -52,9 +61,11 @@
 		<key>EVENT_TYPE</key>
 		<integer>0</integer>
 		<key>EVENT_DESC</key>
-		<string>种族并不代表荣耀,对于与自身
+		<string>
+种族并不代表荣耀,对于与自身
 不同的存在,不要轻易的给出结论”。
-		————“提里奥·弗丁</string>
+		————“提里奥·弗丁
+        </string>
 		<key>HAS_READED</key>
 		<false/>
 	</dict>
@@ -62,8 +73,10 @@
 		<key>EVENT_TYPE</key>
 		<integer>0</integer>
 		<key>EVENT_DESC</key>
-		<string>“敌羞，吾去脱他衣～“， ？？
-？？神马意思？</string>
+		<string>
+“敌羞，吾去脱他衣～“， ？？
+？？神马意思？
+        </string>
 		<key>HAS_READED</key>
 		<false/>
 	</dict>
@@ -71,9 +84,11 @@
 		<key>EVENT_TYPE</key>
 		<integer>0</integer>
 		<key>EVENT_DESC</key>
-		<string>跳关密码：&quot;锟斤拷&quot;、&quot;烫烫烫&quot;、
+		<string>
+跳关密码：“锟斤拷“、“烫烫烫“、
 “屯屯屯”。
-		 ————《开发者日志》</string>
+		 ————《开发者日志》
+        </string>
 		<key>HAS_READED</key>
 		<false/>
 	</dict>
@@ -81,8 +96,10 @@
 		<key>EVENT_TYPE</key>
 		<integer>0</integer>
 		<key>EVENT_DESC</key>
-		<string>墙壁上写着几组奇怪的数字: 002291, 
-000428, 002467, 002582</string>
+		<string>
+墙壁上写着几组奇怪的数字: 002291,
+000428, 002467, 002582
+        </string>
 		<key>HAS_READED</key>
 		<false/>
 	</dict>
@@ -90,8 +107,10 @@
 		<key>EVENT_TYPE</key>
 		<integer>0</integer>
 		<key>EVENT_DESC</key>
-		<string>“到此一游～我要去甜水镇了～呦呦” 
-			————“尼古拉王子”</string>
+		<string>
+“到此一游～我要去甜水镇了～呦呦”
+			————“尼古拉王子”
+        </string>
 		<key>HAS_READED</key>
 		<false/>
 	</dict>
@@ -99,8 +118,10 @@
 		<key>EVENT_TYPE</key>
 		<integer>2</integer>
 		<key>EVENT_DESC</key>
-		<string>地板下有张纸条：“这里有一条通往
-塔拉夏古墓的捷径～～”</string>
+		<string>
+地板下有张纸条：“这里有一条通往
+塔拉夏古墓的捷径～～”
+        </string>
 		<key>HAS_READED</key>
 		<false/>
 	</dict>
@@ -108,9 +129,11 @@
 		<key>EVENT_TYPE</key>
 		<integer>0</integer>
 		<key>EVENT_DESC</key>
-		<string>“想要我的签名照？，来绝东城找我来
+		<string>
+“想要我的签名照？，来绝东城找我来
 领任务吧” 
-				————“艾瑞贝斯”</string>
+				————“艾瑞贝斯”
+        </string>
 		<key>HAS_READED</key>
 		<false/>
 	</dict>

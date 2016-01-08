@@ -39,7 +39,7 @@ KeyProperty::KeyProperty(unsigned int instanceID, PickableItem::PickableItemType
         m_bDiscardable = false;
         m_nValueCopper = 0;
     }
-    m_nCopperWhenBuy = m_nValueCopper * 1.5f;
+    m_nCopperWhenBuy = m_nValueCopper * 2.0f;
 }
 
 void KeyProperty::adjustByLevel()
