@@ -66,6 +66,8 @@ public:
     void hurtByGrippingTrap();
     void fallAndDie();
     void healedbyNurse();
+    
+    void useSkillToAttack(PlayerSkill skill);
 private:
     void onEnterIdle();
     void onEnterPrepareToJump();
@@ -90,6 +92,9 @@ private:
     bool createPlayerLight();
     
     bool createFakeShadow();
+    
+    void addBlockRateUpEffectNode();
+    void removeBlockRateUpEffectNode();
 private:
     PlayerState                 m_curState;
     cocos2d::PointLight*        m_pPlayerLight;
@@ -104,6 +109,11 @@ private:
     static CChaosNumber                m_fFrozenTime;  ///冰冻时间
     static CChaosNumber                m_fParalyticTime;   ///麻痹时间
     static CChaosNumber                m_fFireTime;    ///着火时间
+    
+    static CChaosNumber                m_fBlockRateUpTime;    ///格挡率上升时间
+    static CChaosNumber                m_fBlockRateUpColdDownTime;    ///格挡率上升冷却时间
+
+    cocos2d::Node*                     m_pBlockRateUpNode;  ///格挡率上升特效节点
     
     float                       m_fSecondTimer;
 

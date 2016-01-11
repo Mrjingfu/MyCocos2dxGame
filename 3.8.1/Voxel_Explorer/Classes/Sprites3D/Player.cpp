@@ -17,6 +17,7 @@
 #include "SimpleAudioEngine.h"
 #include "LevelResourceManager.h"
 #include "OutlineEffect3D.h"
+#include "PlayerFireBallBullet.hpp"
 USING_NS_CC;
 using namespace CocosDenshion;
 
@@ -27,6 +28,9 @@ CChaosNumber Player::m_fStrongerTime = 20.0f; ///强化时间
 CChaosNumber Player::m_fFrozenTime   = 20.0f;  ///冰冻时间
 CChaosNumber Player::m_fParalyticTime    = 8.0f;   ///麻痹时间
 CChaosNumber Player::m_fFireTime     = 10.0f;  ///着火时间
+
+CChaosNumber Player::m_fBlockRateUpTime = 20.0f;    ///格挡率上升时间
+CChaosNumber Player::m_fBlockRateUpColdDownTime = 30.0f; ///格挡率上升冷却时间
 
 Player* Player::create(const std::string& modelPath)
 {
@@ -55,6 +59,8 @@ Player::Player()
     m_pPlayerLight = nullptr;
     m_pFakeShadow = nullptr;
     m_bStealth = false;
+    
+    m_pBlockRateUpNode = nullptr;
     
     m_fSecondTimer = 1.0f;
     
@@ -157,6 +163,11 @@ void Player::refreshPlayerBuffer()
             tex->setAliasTexParameters();
         setTexture(tex);
         VoxelExplorer::getInstance()->addParticle3DEffectToPlayer(P3D_EFFECT_TYPE::P3D_FIRE_BUFFER, false);
+    }
+    
+    if((bufferFlag & PB_BLOCKRATEUP) != 0)
+    {
+        addBlockRateUpEffectNode();
     }
 }
 void Player::addPlayerBuffer(PlayerBuffer buff)
@@ -275,6 +286,16 @@ void Player::addPlayerBuffer(PlayerBuffer buff)
             PlayerProperty::getInstance()->addPlayerBuffer(buff);
             VoxelExplorer::getInstance()->addParticle3DEffectToPlayer(P3D_EFFECT_TYPE::P3D_FIRE_BUFFER, false);
             std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("BUFFER_FIRE");
+            SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+        }
+    }
+    else if(buff == PB_BLOCKRATEUP)
+    {
+        if((bufferFlag & PB_BLOCKRATEUP) == 0)
+        {
+            m_fBlockRateUpColdDownTime = 20.0f;
+            addBlockRateUpEffectNode();
+            std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("BLOCK_RATEUP");
             SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
         }
     }
@@ -415,10 +436,16 @@ void Player::removePlayerBuffer(PlayerBuffer buff)
             VoxelExplorer::getInstance()->removeParticle3D3DEffectFromPlayer(P3D_EFFECT_TYPE::P3D_FROZEN_BUFFER);
         }
     }
-    else
+    else if(buff == PB_BLOCKRATEUP)
     {
-        PlayerProperty::getInstance()->removePlayerBuffer(buff);
+        if((bufferFlag & PB_BLOCKRATEUP) != 0)
+        {
+            PlayerProperty::getInstance()->removePlayerBuffer(buff);
+            removeBlockRateUpEffectNode();
+        }
     }
+    else
+        PlayerProperty::getInstance()->removePlayerBuffer(buff);
 }
 void Player::setState(PlayerState state)
 {
@@ -828,6 +855,26 @@ void Player::healedbyNurse()
     
     VoxelExplorer::getInstance()->addParticle3DEffectToPlayer(P3D_PLAYER_USE_POTION_TAKE_EFFECT);
 }
+void Player::useSkillToAttack(PlayerSkill skill)
+{
+    if(skill == PlayerSkill::PS_FIREBALL)
+    {
+        if(VoxelExplorer::getInstance()->getBulletsLayer())
+        {
+            Actor* nearestEnemy = VoxelExplorer::getInstance()->getNearestEnemy();
+            PlayerFireBallBullet* bullet = PlayerFireBallBullet::create(this, nearestEnemy);
+            if(bullet)
+            {
+                bullet->setPosition3D(getPosition3D() + Vec3(0, TerrainTile::CONTENT_SCALE*0.5f, 0));
+                bullet->setBulletState(BaseBullet::BS_NORMAL);
+                VoxelExplorer::getInstance()->getBulletsLayer()->addChild(bullet);
+            }
+        }
+    }
+    else if(skill == PlayerSkill::PS_MAGICARROW)
+    {
+    }
+}
 void Player::onEnterIdle()
 {
     EaseSineOut* scaleTo = EaseSineOut::create(ScaleTo::create(0.1f, 1.0f, 1.0f, 1.0f));
@@ -1009,6 +1056,9 @@ void Player::onLand(bool isAttack)
     {
         VoxelExplorer::getInstance()->addParticle3DEffectToPlayer(P3D_EFFECT_TYPE::P3D_STEALTH_BUFFER, true);
     }
+    
+    /// for debug
+    useSkillToAttack(PS_FIREBALL);
 }
 void Player::onFallDie()
 {
@@ -1107,6 +1157,12 @@ void Player::updatePlayerBuffer(float delta)
             m_fSecondTimer = 1.0f;
         }
     }
+    if((bufferFlag & PB_BLOCKRATEUP) != 0)
+    {
+        m_fBlockRateUpTime = m_fBlockRateUpTime - delta;
+        if(m_fBlockRateUpTime <= 0)
+            removePlayerBuffer(PB_BLOCKRATEUP);
+    }
 }
 bool Player::createPlayerLight()
 {
@@ -1134,4 +1190,86 @@ bool Player::createFakeShadow()
     m_pFakeShadow->setScale(2);
     m_pFakeShadow->setPosition3D(Vec3(getPositionX(),-TerrainTile::CONTENT_SCALE*0.49f,getPositionZ()));
     return true;
+}
+void Player::addBlockRateUpEffectNode()
+{
+    if(!m_pBlockRateUpNode)
+    {
+        m_pBlockRateUpNode = Node::create();
+        if(m_pBlockRateUpNode)
+        {
+            auto tex = Director::getInstance()->getTextureCache()->addImage("item_color.png");
+            if(tex)
+                tex->setAliasTexParameters();
+            std::string model = LevelResourceManager::getInstance()->getItemModelRes(PICKABLE_ITEM_NAMES[PickableItem::PIT_SHIELD_EAGLESHIELD]);
+            Sprite3D* shield1 = Sprite3D::create(model);
+            if(shield1)
+            {
+                shield1->setTexture(tex);
+                shield1->setScale(0.2f);
+                shield1->setCascadeOpacityEnabled(true);
+                shield1->setOpacity(200);
+                shield1->setPositionZ(TerrainTile::CONTENT_SCALE*0.5f);
+                shield1->setCameraMask((unsigned int)CameraFlag::USER1);
+                shield1->setLightMask((unsigned int)LightFlag::LIGHT0 |(unsigned int)LightFlag::LIGHT1|(unsigned int)LightFlag::LIGHT2);
+            }
+            Sprite3D* shield2 = Sprite3D::create(model);
+            if(shield2)
+            {
+                shield2->setTexture(tex);
+                shield2->setScale(0.2f);
+                shield2->setCascadeOpacityEnabled(true);
+                shield2->setOpacity(200);
+                shield2->setRotation3D(Vec3(0,60,0));
+                shield2->setPositionX(-TerrainTile::CONTENT_SCALE*0.4f);
+                shield2->setPositionZ(-TerrainTile::CONTENT_SCALE*0.3f);
+                shield2->setCameraMask((unsigned int)CameraFlag::USER1);
+                shield2->setLightMask((unsigned int)LightFlag::LIGHT0 |(unsigned int)LightFlag::LIGHT1|(unsigned int)LightFlag::LIGHT2);
+            }
+            
+            Sprite3D* shield3 = Sprite3D::create(model);
+            if(shield3)
+            {
+                shield3->setTexture(tex);
+                shield3->setScale(0.2f);
+                shield3->setCascadeOpacityEnabled(true);
+                shield3->setOpacity(200);
+                shield3->setRotation3D(Vec3(0,-60,0));
+                shield3->setPositionX(TerrainTile::CONTENT_SCALE*0.4f);
+                shield3->setPositionZ(-TerrainTile::CONTENT_SCALE*0.3f);
+                shield3->setCameraMask((unsigned int)CameraFlag::USER1);
+                shield3->setLightMask((unsigned int)LightFlag::LIGHT0 |(unsigned int)LightFlag::LIGHT1|(unsigned int)LightFlag::LIGHT2);
+            }
+            m_pBlockRateUpNode->addChild(shield1);
+            m_pBlockRateUpNode->addChild(shield2);
+            m_pBlockRateUpNode->addChild(shield3);
+            
+        }
+        this->addChild(m_pBlockRateUpNode);
+        m_pBlockRateUpNode->setScale(0.0f);
+    }
+    else
+    {
+        m_pBlockRateUpNode->stopActionByTag(2);
+        m_pBlockRateUpNode->setScale(0.0f);
+        EaseSineOut* scaleTo = EaseSineOut::create(ScaleTo::create(0.5f, 1.0f));
+        RotateBy* rotateBy = RotateBy::create(1.0f, Vec3(0,200,0));
+        Spawn* spawn = Spawn::create(scaleTo, rotateBy, nullptr);
+        RepeatForever* repeat = RepeatForever::create(spawn);
+        repeat->setTag(1);
+        m_pBlockRateUpNode->runAction(repeat);
+    }
+}
+void Player::removeBlockRateUpEffectNode()
+{
+    if(m_pBlockRateUpNode)
+    {
+        m_pBlockRateUpNode->stopActionByTag(1);
+        EaseSineOut* scaleTo = EaseSineOut::create(ScaleTo::create(0.5f, 0.0f));
+        RotateBy* rotateBy = RotateBy::create(1.0f, Vec3(0,200,0));
+        Spawn* spawn = Spawn::create(scaleTo, rotateBy, nullptr);
+        RepeatForever* repeat = RepeatForever::create(spawn);
+        repeat->setTag(2);
+        m_pBlockRateUpNode->runAction(repeat);
+    }
 }

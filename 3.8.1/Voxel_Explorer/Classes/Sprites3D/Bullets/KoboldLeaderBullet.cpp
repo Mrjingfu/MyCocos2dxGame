@@ -48,3 +48,20 @@ bool KoboldLeaderBullet::createParticleEffect()
     this->addChild(m_pExplosionEffect);
     return true;
 }
+void KoboldLeaderBullet::onEnterDisappear()
+{
+    if(m_pEffect)
+        m_pEffect->stopParticleSystem();
+    if(m_pExplosionEffect)
+        m_pExplosionEffect->startParticleSystem();
+    BaseBoss* boss = dynamic_cast<BaseBoss*>(m_pOwner);
+    if(boss)
+    {
+        Vec2 playerPos = VoxelExplorer::getInstance()->getPlayer()->getPosInMap();
+        VoxelExplorer::getInstance()->handlePlayerHurtByBoss(playerPos, boss);
+    }
+    DelayTime* delayTime = DelayTime::create(1.5f);
+    CallFunc* callback = CallFunc::create(CC_CALLBACK_0(BaseBullet::destroySelf,this));
+    Sequence* sequence = Sequence::create(delayTime, callback, nullptr);
+    this->runAction(sequence);
+}

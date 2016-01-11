@@ -19,6 +19,7 @@ public:
     typedef enum {
         BT_KOBLODLEADER = 0,            ////狗头人首领
         BT_ARCHBISHOP,                  ////网红教主
+        BT_PLAYER_FIREBALL,             ////角色火球技能
         BT_UNKNOWN
     } BulletType;
     
@@ -31,6 +32,7 @@ public:
 public:
     BulletState getBulletState() const;
     void setBulletState(BulletState state);
+    void destroySelf();
 protected:
     BaseBullet();
     virtual ~BaseBullet();
@@ -46,14 +48,12 @@ protected:
     virtual void onExitDisappear();
     
     virtual bool createParticleEffect() = 0;
-    
-    void destroySelf();
 protected:
     BulletType                      m_Type;
     cocos2d::PUParticleSystem3D*    m_pEffect;
     cocos2d::PUParticleSystem3D*    m_pExplosionEffect;
     BulletState                     m_State;
-    BaseBoss*                       m_pOwner;
+    Actor*                          m_pOwner;
 };
 
 #endif /* BaseBullet_hpp */

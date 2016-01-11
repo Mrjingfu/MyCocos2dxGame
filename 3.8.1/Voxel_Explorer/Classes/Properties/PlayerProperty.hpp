@@ -25,8 +25,18 @@ typedef enum {
     PB_PARALYTIC = 1<<5,            ///麻痹
     PB_WEAK = 1<<6,                 ///虚弱
     PB_FIRE = 1<<7,                 ///着火
+    
+    PB_BLOCKRATEUP = 1<<8,          ///格挡率上升
     PB_MAX
 } PlayerBuffer;
+
+typedef enum {
+    PS_NONE = 0,                 ///无状态
+    PS_BLOCKRATEUP = 1,          ///格挡率上升
+    PS_MAGICARROW = 2,           ///魔法箭矢
+    PS_FIREBALL = 3,             ///火球术
+    PS_MAX
+} PlayerSkill;
 
 class PlayerProperty : public cocos2d::Ref
 {
@@ -100,6 +110,8 @@ public:
     const std::vector<PickableItemProperty*>& getPlayerBag() const { return m_Bag; }
     PickableItemProperty* getItemFromBag(CChaosNumber id) const;
     
+    PlayerSkill getPlayerSkill() const { return m_curPlayerSkill; }
+    
     CChaosNumber getRandomAttack();
     
     void reset();
@@ -146,6 +158,8 @@ private:
     bool                    m_bDirty;                 ///数据是否修改了
     
     bool                    m_bNeedRefreshAfterCreatePlayer;
+    
+    PlayerSkill             m_curPlayerSkill;
     
 public:
     static unsigned int     m_snItemInstanceIDCounter;

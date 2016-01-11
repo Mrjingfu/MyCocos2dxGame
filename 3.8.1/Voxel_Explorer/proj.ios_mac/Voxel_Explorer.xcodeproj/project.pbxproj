@@ -162,6 +162,10 @@
 		55619D521C0DAB3900419E40 /* SewerBossLevel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55619D4F1C0DAB3900419E40 /* SewerBossLevel.cpp */; };
 		5569713C1BE20CCE00CC2736 /* Layer3D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5569713A1BE20CCE00CC2736 /* Layer3D.cpp */; };
 		5569713D1BE20CCE00CC2736 /* Layer3D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5569713A1BE20CCE00CC2736 /* Layer3D.cpp */; };
+		558242F51C43A351004F3092 /* PlayerFireBallBullet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 558242F31C43A351004F3092 /* PlayerFireBallBullet.cpp */; };
+		558242F61C43A351004F3092 /* PlayerFireBallBullet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 558242F31C43A351004F3092 /* PlayerFireBallBullet.cpp */; };
+		558242FC1C43B679004F3092 /* RibbonTrail.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 558242FA1C43B679004F3092 /* RibbonTrail.cpp */; };
+		558242FD1C43B679004F3092 /* RibbonTrail.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 558242FA1C43B679004F3092 /* RibbonTrail.cpp */; };
 		5586C7A61C0FDD1500DFA588 /* PrisonBossLevel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5586C7A41C0FDD1500DFA588 /* PrisonBossLevel.cpp */; };
 		5586C7A71C0FDD1500DFA588 /* PrisonBossLevel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5586C7A41C0FDD1500DFA588 /* PrisonBossLevel.cpp */; };
 		5586C7AC1C0FDD3F00DFA588 /* FaneBossLevel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5586C7AA1C0FDD3F00DFA588 /* FaneBossLevel.cpp */; };
@@ -544,6 +548,10 @@
 		55619D501C0DAB3900419E40 /* SewerBossLevel.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SewerBossLevel.hpp; sourceTree = "<group>"; };
 		5569713A1BE20CCE00CC2736 /* Layer3D.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Layer3D.cpp; sourceTree = "<group>"; };
 		5569713B1BE20CCE00CC2736 /* Layer3D.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Layer3D.hpp; sourceTree = "<group>"; };
+		558242F31C43A351004F3092 /* PlayerFireBallBullet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PlayerFireBallBullet.cpp; sourceTree = "<group>"; };
+		558242F41C43A351004F3092 /* PlayerFireBallBullet.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PlayerFireBallBullet.hpp; sourceTree = "<group>"; };
+		558242FA1C43B679004F3092 /* RibbonTrail.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RibbonTrail.cpp; sourceTree = "<group>"; };
+		558242FB1C43B679004F3092 /* RibbonTrail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RibbonTrail.h; sourceTree = "<group>"; };
 		5586C7A41C0FDD1500DFA588 /* PrisonBossLevel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PrisonBossLevel.cpp; sourceTree = "<group>"; };
 		5586C7A51C0FDD1500DFA588 /* PrisonBossLevel.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PrisonBossLevel.hpp; sourceTree = "<group>"; };
 		5586C7AA1C0FDD3F00DFA588 /* FaneBossLevel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FaneBossLevel.cpp; sourceTree = "<group>"; };
@@ -1221,6 +1229,8 @@
 				55A2CFF51C3907E900E591AA /* ArchbishopBullet.hpp */,
 				55A2CFF81C39080800E591AA /* KoboldLeaderBullet.cpp */,
 				55A2CFF91C39080800E591AA /* KoboldLeaderBullet.hpp */,
+				558242F31C43A351004F3092 /* PlayerFireBallBullet.cpp */,
+				558242F41C43A351004F3092 /* PlayerFireBallBullet.hpp */,
 			);
 			path = Bullets;
 			sourceTree = "<group>";
@@ -1228,6 +1238,8 @@
 		55EC95761BC673690008D1D7 /* Sprites3D */ = {
 			isa = PBXGroup;
 			children = (
+				558242FA1C43B679004F3092 /* RibbonTrail.cpp */,
+				558242FB1C43B679004F3092 /* RibbonTrail.h */,
 				55A2CFEF1C39069400E591AA /* Bullets */,
 				550545151BFEEF7E006B4500 /* EffectSprite3D.cpp */,
 				550545161BFEEF7E006B4500 /* EffectSprite3D.h */,
@@ -1622,6 +1634,7 @@
 				555B0D1F1BC51A2C0055FB6D /* StandardLevel.cpp in Sources */,
 				551E93E21BD512D3009F788F /* CCCrypto.cpp in Sources */,
 				551E93AB1BD51282009F788F /* ChaosNumber.cpp in Sources */,
+				558242F51C43A351004F3092 /* PlayerFireBallBullet.cpp in Sources */,
 				551E93F01BD512D3009F788F /* MemoryStream.cpp in Sources */,
 				5586C7B01C0FDD5400DFA588 /* MineBossLevel.cpp in Sources */,
 				EC3CC99D1C088F4F00F8CFC8 /* GameUILayer.cpp in Sources */,
@@ -1743,6 +1756,7 @@
 				EC3CC9A51C08909B00F8CFC8 /* RolePropLayer.cpp in Sources */,
 				551E93E61BD512D3009F788F /* md5.c in Sources */,
 				5560F5EE1C12CB8E001DD164 /* KoboldLeader.cpp in Sources */,
+				558242FC1C43B679004F3092 /* RibbonTrail.cpp in Sources */,
 				EC3CC99B1C088F4F00F8CFC8 /* CloseCallback.cpp in Sources */,
 				EC3CC9931C088F4F00F8CFC8 /* PopupUILayerManager.cpp in Sources */,
 				55338AE61BD8928E00EA316F /* Giant.cpp in Sources */,
@@ -1806,6 +1820,7 @@
 				55F81CD51BDB92ED002EC075 /* SundriesProperty.cpp in Sources */,
 				555B0D181BC51A2C0055FB6D /* Area.cpp in Sources */,
 				EC3CC97E1C088F4F00F8CFC8 /* MonsterPropLayer.cpp in Sources */,
+				558242F61C43A351004F3092 /* PlayerFireBallBullet.cpp in Sources */,
 				EC7F92D41BCF9ED200B26C6C /* HueSprite.cpp in Sources */,
 				551E93EF1BD512D3009F788F /* FileStream.cpp in Sources */,
 				EC3CC9801C088F4F00F8CFC8 /* NoteUi.cpp in Sources */,
@@ -1865,6 +1880,7 @@
 				EC25C3C51C19120D00B4340D /* AlertPopupUI.cpp in Sources */,
 				551E93CC1BD51291009F788F /* PlayerProperty.cpp in Sources */,
 				55A2CFF31C3906A600E591AA /* BaseBullet.cpp in Sources */,
+				558242FD1C43B679004F3092 /* RibbonTrail.cpp in Sources */,
 				551E93ED1BD512D3009F788F /* XXTEA.cpp in Sources */,
 				551E93E71BD512D3009F788F /* md5.c in Sources */,
 				5586C7A71C0FDD1500DFA588 /* PrisonBossLevel.cpp in Sources */,

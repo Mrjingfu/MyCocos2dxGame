@@ -97,19 +97,6 @@ void BaseBullet::onExitNormal()
 }
 void BaseBullet::onEnterDisappear()
 {
-    if(m_pEffect)
-        m_pEffect->stopParticleSystem();
-    if(m_pExplosionEffect)
-        m_pExplosionEffect->startParticleSystem();
-    if(m_pOwner)
-    {
-        Vec2 playerPos = VoxelExplorer::getInstance()->getPlayer()->getPosInMap();
-        VoxelExplorer::getInstance()->handlePlayerHurtByBoss(playerPos, m_pOwner);
-    }
-    DelayTime* delayTime = DelayTime::create(1.5f);
-    CallFunc* callback = CallFunc::create(CC_CALLBACK_0(BaseBullet::destroySelf,this));
-    Sequence* sequence = Sequence::create(delayTime, callback, nullptr);
-    this->runAction(sequence);
 }
 void BaseBullet::onExitDisappear()
 {

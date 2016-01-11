@@ -116,6 +116,8 @@
 	<string>use_potion_take effect.wav</string>
 	<key>USE_SCROLL</key>
 	<string>use_scroll.wav</string>
+	<key>BLOCK_RATEUP</key>
+	<string>block_rateup.wav</string>
 	<key>UI_BTN_PACKAGE_OPEN</key>
 	<string>equip_cloth.wav</string>
 	<key>UI_BTN_PACKAGE_CLOSE</key>

@@ -10,6 +10,7 @@
 #include "PickableItem.hpp"
 #include "UtilityHelper.h"
 #include "AlisaMethod.h"
+#include "PlayerProperty.hpp"
 USING_NS_CC;
 static std::vector<ADDED_EFFECT> sBowAddedEffects =
 {
@@ -70,13 +71,22 @@ SecondWeaponProperty::SecondWeaponProperty(unsigned int instanceID, PickableItem
     m_strPropertyTypeName = UtilityHelper::getLocalString(PICKABLE_ITEM_PROPERTY_TYPE_NAMES[m_PropertyType]);
     
     if(type > PickableItem::PIT_BOW_SHORTBOW && type < PickableItem::PIT_BOW_PRO_GOLDENBOW)
+    {
         m_SWPType = SWPT_BOW;
+        m_PlayerSkill = PS_MAGICARROW;
+    }
     else if(type > PickableItem::PIT_STAFF_OAKSTAFF && type < PickableItem::PIT_STAFF_PRO_MONKSTAFF)
+    {
         m_SWPType = SWPT_STAFF;
+        m_PlayerSkill = PS_FIREBALL;
+    }
     else if(type > PickableItem::PIT_SHIELD_WOODENSHIELD && type < PickableItem::PIT_SHIELD_PRO_TOWERSHIELD)
         m_SWPType = SWPT_SHIELD;
     else
+    {
         m_SWPType = SWPT_UNKNOWN;
+        m_PlayerSkill = PS_BLOCKRATEUP;
+    }
     
     if((type >= PickableItem::PIT_BOW_PRO_SHORTBOW && type <= PickableItem::PIT_BOW_PRO_GOLDENBOW) ||
        (type >= PickableItem::PIT_STAFF_PRO_OAKSTAFF && type <= PickableItem::PIT_STAFF_PRO_MONKSTAFF) ||
@@ -345,6 +355,7 @@ bool SecondWeaponProperty::load(const cocos2d::ValueMap& data)
     m_nLevel = (PickableItem::PickableItemType)data.at("Level").asInt();
     m_nValueCopper = data.at("ValueCopper").asInt();
     m_nCopperWhenBuy = data.at("CopperWhenBuy").asInt();
+    m_PlayerSkill = (PlayerSkill)data.at("PlayerSkill").asInt();
     
     m_bIdentified = data.at("Identified").asBool();
     
@@ -382,6 +393,7 @@ bool SecondWeaponProperty::save(cocos2d::ValueMap& data)
     data["Level"] = (int)m_nLevel.GetLongValue();
     data["ValueCopper"] = (int)m_nValueCopper.GetLongValue();
     data["CopperWhenBuy"] = (int)m_nCopperWhenBuy.GetLongValue();
+    data["PlayerSkill"] = (int)m_PlayerSkill;
     
     data["Identified"] = m_bIdentified;
     

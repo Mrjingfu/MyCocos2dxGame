@@ -18,6 +18,8 @@ class KoboldLeaderBullet : public BaseBullet
     bool createParticleEffect();
 public:
     static KoboldLeaderBullet* create(BaseBoss* pOwner);
+    
+    virtual void onEnterDisappear();
 };
 
 #endif /* KoboldLeaderBullet_hpp */

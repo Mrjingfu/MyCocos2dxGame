@@ -1690,6 +1690,66 @@ void VoxelExplorer::handleRemoveTrap(const cocos2d::Vec2& mapPos)
         }
     }
 }
+
+bool VoxelExplorer::handlePlayerUseSkill()
+{
+    bool ret = false;
+    if(m_pPlayer && m_pPlayer->getState() == Player::PS_IDLE)
+    {
+        PlayerSkill skill = PlayerProperty::getInstance()->getPlayerSkill();
+        switch (skill) {
+            case PS_BLOCKRATEUP:
+                m_pPlayer->addPlayerBuffer(PB_BLOCKRATEUP);
+                break;
+            case PS_FIREBALL:
+            case PS_MAGICARROW:
+                m_pPlayer->useSkillToAttack(skill);
+                break;
+            default:
+                break;
+        }
+    }
+    return ret;
+}
+Actor* VoxelExplorer::getNearestEnemy()
+{
+    Actor* ret = nullptr;
+    if(m_pPlayer)
+    {
+        if(m_pBossLayer)
+        {
+            for (auto child : m_pBossLayer->getChildren()) {
+                BaseBoss* boss = dynamic_cast<BaseBoss*>(child);
+                if(boss && boss->isVisible() && boss->getState() != BaseBoss::BS_DEATH){
+                    if(ret == nullptr)
+                        ret = boss;
+                    else
+                    {
+                        if(boss->getPosInMap().distance(m_pPlayer->getPosInMap()) < ret->getPosInMap().distance(m_pPlayer->getPosInMap()))
+                            ret = boss;
+                    }
+                }
+            }
+        }
+        
+        if(m_pMonstersLayer)
+        {
+            for (auto child : m_pMonstersLayer->getChildren()) {
+                BaseMonster* monster = dynamic_cast<BaseMonster*>(child);
+                if(monster && monster->isVisible() && monster->getState() != BaseMonster::MS_DEATH){
+                    if(ret == nullptr)
+                        ret = monster;
+                    else
+                    {
+                        if(monster->getPosInMap().distance(m_pPlayer->getPosInMap()) < ret->getPosInMap().distance(m_pPlayer->getPosInMap()))
+                            ret = monster;
+                    }
+                }
+            }
+        }
+    }
+    return ret;
+}
 bool VoxelExplorer::createLayers()
 {
     m_p3DLayer = Layer3D::create();

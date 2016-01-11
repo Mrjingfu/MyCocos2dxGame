@@ -364,6 +364,7 @@ bool PlayerProperty::equipSecondWeapon(CChaosNumber id, bool sound)
             m_fDodgeRate = MAX(0, m_fDodgeRate.GetFloatValue());
             m_fMagicItemFindRate = m_fMagicItemFindRate - m_fBasicMagicItemFindRate*oldSecondWeaponProperty->getAddedMagicItemFindRate().GetFloatValue();
             m_fMagicItemFindRate = MAX(0, m_fBasicMagicItemFindRate.GetFloatValue());
+            m_curPlayerSkill = PS_NONE;
             oldSecondWeaponProperty->setEquiped(false);
             ///处理灯光
             Color3B color = Color3B::WHITE;
@@ -388,6 +389,8 @@ bool PlayerProperty::equipSecondWeapon(CChaosNumber id, bool sound)
         
         m_fMagicItemFindRate = m_fMagicItemFindRate + m_fBasicMagicItemFindRate*secondWeaponProperty->getAddedMagicItemFindRate().GetFloatValue();
         m_fMagicItemFindRate = MIN(m_fMagicItemFindRate, m_fMaxMagicItemFindRate);
+        
+        m_curPlayerSkill = secondWeaponProperty->getPlayerSkill();
         secondWeaponProperty->setEquiped(true);
         ///处理灯光
         if(secondWeaponProperty->getPickableItemType() == PickableItem::PIT_STAFF_PRO_OAKSTAFF || secondWeaponProperty->getPickableItemType() == PickableItem::PIT_BOW_PRO_LAMINATEDBOW)
@@ -1070,6 +1073,8 @@ void PlayerProperty::reset()
     m_nBagExtendMaxTimes    = 4;                ///背包最大扩容次数
     
     m_BufferFlag            = PB_NONE;          ///默认状态
+    
+    m_curPlayerSkill        = PS_NONE;          ///无技能
     
     std::vector<PickableItemProperty*>::iterator iter;
     for (iter = m_Bag.begin(); iter != m_Bag.end(); iter++) {
