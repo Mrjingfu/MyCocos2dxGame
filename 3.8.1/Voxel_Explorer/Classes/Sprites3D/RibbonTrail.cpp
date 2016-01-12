@@ -27,7 +27,6 @@ RibbonTrail* RibbonTrail::create(const std::string &textureFile, float width, fl
 RibbonTrail::RibbonTrail()
 :m_pTrail(nullptr)
 {
-    m_BlendFunc = {GL_SRC_ALPHA , GL_ONE};
 }
 RibbonTrail::~RibbonTrail()
 {
@@ -43,10 +42,13 @@ bool RibbonTrail::initWithFile(const std::string &path, float width, float lengt
         m_pTrail->setTrailLength(length);
         m_pTrail->setUseVertexColours(true);
         m_pTrail->setInitialColour(0, Vec4(1, 1, 1, 1));
-        //m_pTrail->setColourChange(0, Vec4(0.8, 0.8, 0.8, 0.8));
+        m_pTrail->setColourChange(0, Vec4(0.8, 0.8, 0.8, 0.8));
         m_pTrail->setInitialWidth(0, width);
+        m_pTrail->setWidthChange(0, 0.8f);
         m_pTrail->setDepthTest(true);
         m_pTrail->setDepthWrite(true);
+        m_pTrail->setBlendFunc(BlendFunc::ADDITIVE);
+        m_pTrail->addNode(this);
         return true;
     }
     return false;
@@ -58,15 +60,6 @@ void RibbonTrail::update(float delta)
 }
 void RibbonTrail::draw(Renderer* renderer, const Mat4& transform, uint32_t flags)
 {
-    //if(m_pTrail)
-    //    m_pTrail->render(renderer, transform, m_BlendFunc);
-}
-const BlendFunc& RibbonTrail::getBlendFunc() const
-{
-    return m_BlendFunc;
-}
-
-void RibbonTrail::setBlendFunc(const BlendFunc &blendFunc)
-{
-    m_BlendFunc = blendFunc;
+    if(m_pTrail)
+        m_pTrail->render(renderer, transform, nullptr);
 }

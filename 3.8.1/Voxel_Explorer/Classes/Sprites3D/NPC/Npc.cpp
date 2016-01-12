@@ -230,6 +230,8 @@ void Npc::endAnswer()
         case NPC_CHILD:
         case NPC_WEIRDO:
         case NPC_OLDMAN:
+            setState(NPCS_FADEOUT);
+            break;
         case NPC_LITTLEWITCH:
             {
                 int rand = cocos2d::random(4, 4);

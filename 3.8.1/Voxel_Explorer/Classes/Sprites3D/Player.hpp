@@ -112,6 +112,8 @@ private:
     
     static CChaosNumber                m_fBlockRateUpTime;    ///格挡率上升时间
     static CChaosNumber                m_fBlockRateUpColdDownTime;    ///格挡率上升冷却时间
+    static CChaosNumber                m_fFireBallColdDownTime; ///火球冷却时间
+    static CChaosNumber                m_fMagicArrowColdDownTime; ///魔法箭矢冷却时间
 
     cocos2d::Node*                     m_pBlockRateUpNode;  ///格挡率上升特效节点
     

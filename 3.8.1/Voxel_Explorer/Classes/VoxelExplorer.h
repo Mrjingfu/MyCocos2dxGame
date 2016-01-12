@@ -37,6 +37,7 @@ typedef enum
     P3D_BOSS_BULLET01_EXPLOSION = 15,
     P3D_BOSS_BULLET02 = 16,
     P3D_BOSS_BULLET02_EXPLOSION = 17,
+    P3D_PLAYER_MAGICARROW = 18,
     P3D_MAX
 }
 P3D_EFFECT_TYPE;
@@ -135,6 +136,7 @@ public:
     bool isHasDownStairs() const { return m_bHasDownStairs; }
     
     Actor* getNearestEnemy();
+    bool checkBulletCollideMonster(const cocos2d::Vec3& bulletPos);
 private:
     bool createLayers();
     bool createLights();

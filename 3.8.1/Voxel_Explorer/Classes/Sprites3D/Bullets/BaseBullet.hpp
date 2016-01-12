@@ -20,6 +20,7 @@ public:
         BT_KOBLODLEADER = 0,            ////狗头人首领
         BT_ARCHBISHOP,                  ////网红教主
         BT_PLAYER_FIREBALL,             ////角色火球技能
+        BT_PLAYER_MAGICARROW,           ////角色魔法箭矢
         BT_UNKNOWN
     } BulletType;
     

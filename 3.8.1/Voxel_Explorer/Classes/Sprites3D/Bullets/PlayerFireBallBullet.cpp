@@ -85,14 +85,14 @@ void PlayerFireBallBullet::update(float delta)
             else
             {
                 dir.normalize();
-                currentPos = currentPos + dir*delta*40;
+                currentPos = currentPos + dir*delta*80;
                 setPosition3D(currentPos);
             }
         }
         else
         {
             Vec3 currentPos = getPosition3D();
-            currentPos = currentPos + m_DefaultDir*delta*60;
+            currentPos = currentPos + m_DefaultDir*delta*80;
             setPosition3D(currentPos);
             m_fLifeTime = m_fLifeTime - delta;
             if(m_fLifeTime<=0)

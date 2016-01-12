@@ -11,7 +11,7 @@
 
 #include "cocos2d.h"
 #include "extensions/Particle3D/PU/CCPURibbonTrail.h"
-class RibbonTrail : public cocos2d::Node, public cocos2d::BlendProtocol
+class RibbonTrail : public cocos2d::Node
 {
     RibbonTrail();
     virtual ~RibbonTrail();
@@ -20,14 +20,10 @@ public:
     bool initWithFile(const std::string &path, float width, float length);
     virtual void update(float delta) override;
     virtual void draw(cocos2d::Renderer* renderer, const cocos2d::Mat4& transform, uint32_t flags) override;
-    // overrides
-    virtual void setBlendFunc(const cocos2d::BlendFunc &blendFunc) override;
-    virtual const cocos2d::BlendFunc &getBlendFunc() const override;
     
     cocos2d::PURibbonTrail* getTrail() const { return m_pTrail; }
 private:
     cocos2d::PURibbonTrail*             m_pTrail;
-    cocos2d::BlendFunc                  m_BlendFunc;
 };
 
 

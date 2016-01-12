@@ -18,6 +18,7 @@
 #include "LevelResourceManager.h"
 #include "OutlineEffect3D.h"
 #include "PlayerFireBallBullet.hpp"
+#include "PlayerMagicArrowBullet.hpp"
 USING_NS_CC;
 using namespace CocosDenshion;
 
@@ -31,6 +32,9 @@ CChaosNumber Player::m_fFireTime     = 10.0f;  ///着火时间
 
 CChaosNumber Player::m_fBlockRateUpTime = 20.0f;    ///格挡率上升时间
 CChaosNumber Player::m_fBlockRateUpColdDownTime = 30.0f; ///格挡率上升冷却时间
+
+CChaosNumber Player::m_fFireBallColdDownTime = 1.0f;    ///火球冷却时间
+CChaosNumber Player::m_fMagicArrowColdDownTime = 1.0f;  ///魔法箭矢冷却时间
 
 Player* Player::create(const std::string& modelPath)
 {
@@ -868,11 +872,75 @@ void Player::useSkillToAttack(PlayerSkill skill)
                 bullet->setPosition3D(getPosition3D() + Vec3(0, TerrainTile::CONTENT_SCALE*0.5f, 0));
                 bullet->setBulletState(BaseBullet::BS_NORMAL);
                 VoxelExplorer::getInstance()->getBulletsLayer()->addChild(bullet);
+                
+                std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("FIRE_BALL");
+                SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
             }
         }
     }
     else if(skill == PlayerSkill::PS_MAGICARROW)
     {
+        if(VoxelExplorer::getInstance()->getBulletsLayer())
+        {
+            Vec3 dir;
+            switch (m_dir) {
+                case Actor::AD_FORWARD:
+                    dir = Vec3(0,0,-1);
+                    break;
+                case Actor::AD_LEFT:
+                    dir = Vec3(-1,0,0);
+                    break;
+                case Actor::AD_RIGHT:
+                    dir = Vec3(1,0,0);
+                    break;
+                case Actor::AD_BACK:
+                    dir = Vec3(0,0,1);
+                    break;
+                default:
+                    break;
+            }
+
+            Actor* nearestEnemy = VoxelExplorer::getInstance()->getNearestEnemy();
+            if(nearestEnemy)
+            {
+                dir = nearestEnemy->getPosition3D() - getPosition3D();
+                dir.normalize();
+            }
+            PlayerMagicArrowBullet* bullet = PlayerMagicArrowBullet::create(this, dir);
+            if(bullet)
+            {
+                bullet->setPosition3D(getPosition3D() + Vec3(0, TerrainTile::CONTENT_SCALE*0.5f, 0));
+                bullet->setBulletState(BaseBullet::BS_NORMAL);
+                VoxelExplorer::getInstance()->getBulletsLayer()->addChild(bullet);
+            }
+            
+            Quaternion rotRight = Quaternion(Vec3::UNIT_Y, M_PI/12);
+            Vec3 rightDir = rotRight*dir;
+            rightDir.normalize();
+            
+            PlayerMagicArrowBullet* bullet1 = PlayerMagicArrowBullet::create(this, rightDir);
+            if(bullet1)
+            {
+                bullet1->setPosition3D(getPosition3D() + Vec3(0, TerrainTile::CONTENT_SCALE*0.5f, 0));
+                bullet1->setBulletState(BaseBullet::BS_NORMAL);
+                VoxelExplorer::getInstance()->getBulletsLayer()->addChild(bullet1);
+            }
+            
+            Quaternion rotLeft = Quaternion(Vec3::UNIT_Y, -M_PI/12);
+            Vec3 leftDir = rotLeft*dir;
+            leftDir.normalize();
+            
+            PlayerMagicArrowBullet* bullet2 = PlayerMagicArrowBullet::create(this, leftDir);
+            if(bullet2)
+            {
+                bullet2->setPosition3D(getPosition3D() + Vec3(0, TerrainTile::CONTENT_SCALE*0.5f, 0));
+                bullet2->setBulletState(BaseBullet::BS_NORMAL);
+                VoxelExplorer::getInstance()->getBulletsLayer()->addChild(bullet2);
+            }
+            
+            std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("MAGIC_ARROW");
+            SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+        }
     }
 }
 void Player::onEnterIdle()
@@ -1058,7 +1126,7 @@ void Player::onLand(bool isAttack)
     }
     
     /// for debug
-    useSkillToAttack(PS_FIREBALL);
+    //useSkillToAttack(PS_FIREBALL);
 }
 void Player::onFallDie()
 {

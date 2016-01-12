@@ -176,6 +176,8 @@
 		5586C7B51C0FDD6200DFA588 /* CaveBossLevel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5586C7B21C0FDD6200DFA588 /* CaveBossLevel.cpp */; };
 		5586C7B81C0FDD7400DFA588 /* TombBossLevel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5586C7B61C0FDD7400DFA588 /* TombBossLevel.cpp */; };
 		5586C7B91C0FDD7400DFA588 /* TombBossLevel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5586C7B61C0FDD7400DFA588 /* TombBossLevel.cpp */; };
+		559925221C44E561001D8EEF /* PlayerMagicArrowBullet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 559925201C44E561001D8EEF /* PlayerMagicArrowBullet.cpp */; };
+		559925231C44E561001D8EEF /* PlayerMagicArrowBullet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 559925201C44E561001D8EEF /* PlayerMagicArrowBullet.cpp */; };
 		559B217F1BC65D330047D998 /* textures in Resources */ = {isa = PBXBuildFile; fileRef = 559B217E1BC65D330047D998 /* textures */; };
 		559B21801BC65D330047D998 /* textures in Resources */ = {isa = PBXBuildFile; fileRef = 559B217E1BC65D330047D998 /* textures */; };
 		55A2CFF21C3906A600E591AA /* BaseBullet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55A2CFF01C3906A600E591AA /* BaseBullet.cpp */; };
@@ -562,6 +564,8 @@
 		5586C7B31C0FDD6200DFA588 /* CaveBossLevel.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CaveBossLevel.hpp; sourceTree = "<group>"; };
 		5586C7B61C0FDD7400DFA588 /* TombBossLevel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TombBossLevel.cpp; sourceTree = "<group>"; };
 		5586C7B71C0FDD7400DFA588 /* TombBossLevel.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TombBossLevel.hpp; sourceTree = "<group>"; };
+		559925201C44E561001D8EEF /* PlayerMagicArrowBullet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PlayerMagicArrowBullet.cpp; sourceTree = "<group>"; };
+		559925211C44E561001D8EEF /* PlayerMagicArrowBullet.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PlayerMagicArrowBullet.hpp; sourceTree = "<group>"; };
 		559B217E1BC65D330047D998 /* textures */ = {isa = PBXFileReference; lastKnownFileType = folder; path = textures; sourceTree = "<group>"; };
 		55A2CFF01C3906A600E591AA /* BaseBullet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BaseBullet.cpp; sourceTree = "<group>"; };
 		55A2CFF11C3906A600E591AA /* BaseBullet.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BaseBullet.hpp; sourceTree = "<group>"; };
@@ -1231,6 +1235,8 @@
 				55A2CFF91C39080800E591AA /* KoboldLeaderBullet.hpp */,
 				558242F31C43A351004F3092 /* PlayerFireBallBullet.cpp */,
 				558242F41C43A351004F3092 /* PlayerFireBallBullet.hpp */,
+				559925201C44E561001D8EEF /* PlayerMagicArrowBullet.cpp */,
+				559925211C44E561001D8EEF /* PlayerMagicArrowBullet.hpp */,
 			);
 			path = Bullets;
 			sourceTree = "<group>";
@@ -1749,6 +1755,7 @@
 				551E93C51BD51291009F788F /* UserRecord.cpp in Sources */,
 				5586C7B81C0FDD7400DFA588 /* TombBossLevel.cpp in Sources */,
 				554FE61C1C2A735800419AE1 /* RandomEventMgr.cpp in Sources */,
+				559925221C44E561001D8EEF /* PlayerMagicArrowBullet.cpp in Sources */,
 				551E93E81BD512D3009F788F /* sha1.cpp in Sources */,
 				553BC5011BCDF457003D907A /* Actor.cpp in Sources */,
 				EC3CC9791C088F4F00F8CFC8 /* GameInfoLayer.cpp in Sources */,
@@ -1911,6 +1918,7 @@
 				EC8A27E51C327A4B00B2C352 /* AchievePopupUI.cpp in Sources */,
 				551E93F11BD512D3009F788F /* MemoryStream.cpp in Sources */,
 				EC795F431C0D42340083829B /* MagicShopPopupUI.cpp in Sources */,
+				559925231C44E561001D8EEF /* PlayerMagicArrowBullet.cpp in Sources */,
 				EC795F601C0D4B560083829B /* LittleWitchPopupUI.cpp in Sources */,
 				551E93C61BD51291009F788F /* UserRecord.cpp in Sources */,
 				EC63CEB01C20FEB600C84941 /* HudPromptLayer.cpp in Sources */,
