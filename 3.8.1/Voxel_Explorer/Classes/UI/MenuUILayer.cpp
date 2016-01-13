@@ -15,7 +15,7 @@
 #include "ArchiveManager.h"
 #include "ArchiveLayer.hpp"
 #include "LoadingLayer.hpp"
-#include "LoadingScene.h"
+
 USING_NS_CC;
 
 MenuUILayer::MenuUILayer()
