@@ -37,6 +37,7 @@ typedef enum
     P3D_BOSS_BULLET01_EXPLOSION = 15,
     P3D_BOSS_BULLET02 = 16,
     P3D_BOSS_BULLET02_EXPLOSION = 17,
+    P3D_PLAYER_MAGICARROW = 18,
     P3D_MAX
 }
 P3D_EFFECT_TYPE;
@@ -108,6 +109,8 @@ public:
     
     void handleRemoveTrap(const cocos2d::Vec2& mapPos);
     
+    bool handlePlayerUseSkill();
+    
     cocos2d::Layer* getMainLayer() const { return m_pMainLayer; }
     cocos2d::Layer* get3DLayer() const { return m_p3DLayer; }
     cocos2d::Layer* getTerrainTilesLayer() const { return m_pTerrainTilesLayer; }
@@ -131,6 +134,9 @@ public:
     BaseLevel* getCurrentLevel() const { return m_pCurrentLevel; }
     
     bool isHasDownStairs() const { return m_bHasDownStairs; }
+    
+    Actor* getNearestEnemy();
+    bool checkBulletCollideMonster(const cocos2d::Vec3& bulletPos);
 private:
     bool createLayers();
     bool createLights();

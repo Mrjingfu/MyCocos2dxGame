@@ -10,6 +10,7 @@
 #define SecondWeaponProperty_hpp
 
 #include "PickableItemProperty.hpp"
+#include "PlayerProperty.hpp"
 class SecondWeaponProperty : public PickableItemProperty
 {
 public:
@@ -47,6 +48,8 @@ public:
     
     CChaosNumber getAddedMagicItemFindRate() const { return m_fAddedMagicItemFindRate; }
     
+    PlayerSkill getPlayerSkill() const { return m_PlayerSkill; }
+    
     virtual bool load(const cocos2d::ValueMap& data);
     virtual bool save(cocos2d::ValueMap& data);
 private:
@@ -69,6 +72,8 @@ private:
     CChaosNumber    m_fAddedMagicItemFindRate;  ///附加取魔率
     
     SecondWeaponPropertyType    m_SWPType;      ///第二武器类型
+    
+    PlayerSkill     m_PlayerSkill;
 };
 
 #endif /* SecondWeaponProperty_hpp */

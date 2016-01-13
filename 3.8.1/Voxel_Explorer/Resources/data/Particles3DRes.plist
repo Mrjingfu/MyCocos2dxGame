@@ -38,5 +38,7 @@
 	<string>bullet02.pu</string>
 	<key>P3DN_BOSS_BULLET02_EXPLOSION</key>
 	<string>explosion.pu</string>
+	<key>P3DN_PLAYER_MAGICARROW</key>
+	<string>bullet03.pu</string>
 </dict>
 </plist>

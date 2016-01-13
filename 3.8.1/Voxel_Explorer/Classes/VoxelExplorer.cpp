@@ -65,7 +65,8 @@ const std::string P3D_EFFECT_NAMES[] = {
     "P3DN_BOSS_BULLET01",
     "P3DN_BOSS_BULLET01_EXPLOSION",
     "P3DN_BOSS_BULLET02",
-    "P3DN_BOSS_BULLET02_EXPLOSION"
+    "P3DN_BOSS_BULLET02_EXPLOSION",
+    "P3DN_PLAYER_MAGICARROW"
 };
 VoxelExplorer* g_pVoxelExplorerInstance = nullptr;
 VoxelExplorer* VoxelExplorer::getInstance()
@@ -1689,6 +1690,135 @@ void VoxelExplorer::handleRemoveTrap(const cocos2d::Vec2& mapPos)
             }
         }
     }
+}
+
+bool VoxelExplorer::handlePlayerUseSkill()
+{
+    bool ret = false;
+    if(m_pPlayer && m_pPlayer->getState() == Player::PS_IDLE)
+    {
+        PlayerSkill skill = PlayerProperty::getInstance()->getPlayerSkill();
+        switch (skill) {
+            case PS_BLOCKRATEUP:
+                PlayerProperty::getInstance()->setCurrentMP(PlayerProperty::getInstance()->getCurrentMP() - 10);
+                m_pPlayer->addPlayerBuffer(PB_BLOCKRATEUP);
+                break;
+            case PS_FIREBALL:
+                PlayerProperty::getInstance()->setCurrentMP(PlayerProperty::getInstance()->getCurrentMP() - 8);
+                m_pPlayer->useSkillToAttack(skill);
+                break;
+            case PS_MAGICARROW:
+                PlayerProperty::getInstance()->setCurrentMP(PlayerProperty::getInstance()->getCurrentMP() - 12);
+                m_pPlayer->useSkillToAttack(skill);
+                break;
+            default:
+                break;
+        }
+    }
+    return ret;
+}
+Actor* VoxelExplorer::getNearestEnemy()
+{
+    Actor* ret = nullptr;
+    if(m_pPlayer)
+    {
+        if(m_pBossLayer)
+        {
+            for (auto child : m_pBossLayer->getChildren()) {
+                BaseBoss* boss = dynamic_cast<BaseBoss*>(child);
+                if(boss && boss->isVisible() && boss->getState() != BaseBoss::BS_DEATH){
+                    if(ret == nullptr)
+                        ret = boss;
+                    else
+                    {
+                        if(boss->getPosInMap().distance(m_pPlayer->getPosInMap()) < ret->getPosInMap().distance(m_pPlayer->getPosInMap()))
+                            ret = boss;
+                    }
+                }
+            }
+        }
+        
+        if(m_pMonstersLayer)
+        {
+            for (auto child : m_pMonstersLayer->getChildren()) {
+                BaseMonster* monster = dynamic_cast<BaseMonster*>(child);
+                if(monster && monster->isVisible() && monster->getState() != BaseMonster::MS_DEATH){
+                    if(ret == nullptr)
+                        ret = monster;
+                    else
+                    {
+                        if(monster->getPosInMap().distance(m_pPlayer->getPosInMap()) < ret->getPosInMap().distance(m_pPlayer->getPosInMap()))
+                            ret = monster;
+                    }
+                }
+            }
+        }
+        
+        if(ret && m_pPlayer->getPosInMap().distance(ret->getPosInMap()) > TerrainTile::CONTENT_SCALE*5)
+            ret = nullptr;
+    }
+    return ret;
+}
+bool VoxelExplorer::checkBulletCollideMonster(const cocos2d::Vec3& bulletPos)
+{
+    if(m_pBossLayer)
+    {
+        for (auto child : m_pBossLayer->getChildren()) {
+            BaseBoss* boss = dynamic_cast<BaseBoss*>(child);
+            if(boss && boss->isVisible() && boss->getState() != BaseBoss::BS_DEATH){
+                if(boss->getAABB().containPoint(bulletPos))
+                {
+                    boss->attackedByPlayer(cocos2d::random(0, 3) == 0);
+                    return true;
+                }
+            }
+        }
+    }
+    
+    if(m_pMonstersLayer)
+    {
+        for (auto child : m_pMonstersLayer->getChildren()) {
+            BaseMonster* monster = dynamic_cast<BaseMonster*>(child);
+            if(monster && monster->isVisible() && monster->getState() != BaseMonster::MS_DEATH){
+                if(monster->getAABB().containPoint(bulletPos))
+                {
+                    monster->attackedByPlayer(cocos2d::random(0, 3) == 0);
+                    return true;
+                }
+            }
+        }
+    }
+    if(m_pUseableItemsLayer)
+    {
+        for (auto child : m_pUseableItemsLayer->getChildren()) {
+            UseableItem* item = dynamic_cast<UseableItem*>(child);
+            if(item && item->isVisible() && (item->getUseableItemType() >= UseableItem::UIT_JAR_1) && item->getState() == UseableItem::UIS_IDLE)
+            {
+                if(item->getAABB().containPoint(bulletPos - Vec3(0,TerrainTile::CONTENT_SCALE*0.2f, 0)))
+                {
+                    int rand = cocos2d::random(0, 2);
+                    if(rand == 0)
+                    {
+                        std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("JAR_FRAGMENTATION0");
+                        SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+                    }
+                    else if(rand == 1)
+                    {
+                        std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("JAR_FRAGMENTATION1");
+                        SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+                    }
+                    else
+                    {
+                        std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("JAR_FRAGMENTATION2");
+                        SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+                    }
+                    item->setState(UseableItem::UIS_FADEOUT);
+                    return true;
+                }
+            }
+        }
+    }
+    return false;
 }
 bool VoxelExplorer::createLayers()
 {

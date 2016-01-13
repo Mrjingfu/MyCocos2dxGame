@@ -18,6 +18,8 @@ class ArchbishopBullet : public BaseBullet
     bool createParticleEffect();
 public:
     static ArchbishopBullet* create(BaseBoss* pOwner);
+    
+    virtual void onEnterDisappear();
 };
 
 #endif /* ArchbishopBullet_hpp */

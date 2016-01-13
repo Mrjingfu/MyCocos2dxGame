@@ -696,7 +696,10 @@ void PUBillboardChain::render( Renderer* renderer, const Mat4 &transform, Partic
         if (!_vertices.empty() && !_indices.empty())
         {
             GLuint texId = (_texture ? _texture->getName() : 0);
-            _stateBlock->setBlendFunc(particleSystem->getBlendFunc());
+            ///lwwhb modify
+            if(particleSystem)
+                _stateBlock->setBlendFunc(particleSystem->getBlendFunc());
+            ///
             _meshCommand->init(0,
                                texId,
                                _glProgramState,
