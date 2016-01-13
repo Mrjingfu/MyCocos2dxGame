@@ -80,6 +80,8 @@
           <PlistImageFile Name="ui_rape.png" Key="ui_rape.png" />
           <PlistImageFile Name="ui_bag_frame.png" Key="ui_bag_frame.png" />
           <PlistImageFile Name="eyes.png" Key="eyes.png" />
+          <PlistImageFile Name="ui_delete_game_normal.png" Key="ui_delete_game_normal.png" />
+          <PlistImageFile Name="ui_delete_game_press.png" Key="ui_delete_game_press.png" />
         </PlistImageFolder>
         <Project Name="gameScene.csd" Type="Scene" />
         <Project Name="menuscene.csd" Type="Scene" />
@@ -90,7 +92,6 @@
         <Project Name="characterInfoLayer.csd" Type="Layer" />
         <Project Name="gameinfoLayer.csd" Type="Layer" />
         <Project Name="monsterInfoLayer.csd" Type="Layer" />
-        <Project Name="roleLayer.csd" Type="Layer" />
         <Project Name="gametoolbarLayer.csd" Type="Layer" />
         <PlistImageFolder Image="ui_characters.png" PListFile="ui_characters.plist" Name=".ui_characters_PList.Dir">
           <PlistImageFile Name="bat.png" Key="bat.png" />
@@ -138,6 +139,9 @@
           <PlistImageFile Name="slimeking.png" Key="slimeking.png" />
           <PlistImageFile Name="warden.png" Key="warden.png" />
           <PlistImageFile Name="koboldleader.png" Key="koboldleader.png" />
+          <PlistImageFile Name="copperchest.png" Key="copperchest.png" />
+          <PlistImageFile Name="goldchest.png" Key="goldchest.png" />
+          <PlistImageFile Name="silverchest.png" Key="silverchest.png" />
         </PlistImageFolder>
         <Project Name="itemMoneyLayer.csd" Type="Layer" />
         <Project Name="itemBottomLayer.csd" Type="Layer" />
@@ -241,6 +245,8 @@
         <Image Name="splash_cn.png" />
         <Project Name="discardLayer.csd" Type="Layer" />
         <Project Name="rolenewLayer.csd" Type="Layer" />
+        <Project Name="archiveLayer.csd" Type="Layer" />
+        <Image Name="bg1_p1.png" />
       </RootFolder>
     </Group>
   </SolutionFolder>

@@ -325,6 +325,10 @@
 		EC67165A1BCE7F5F00C81CFC /* lang in Resources */ = {isa = PBXBuildFile; fileRef = EC6716561BCE7F5F00C81CFC /* lang */; };
 		EC67165D1BCE7F5F00C81CFC /* ui in Resources */ = {isa = PBXBuildFile; fileRef = EC6716581BCE7F5F00C81CFC /* ui */; };
 		EC67165E1BCE7F5F00C81CFC /* ui in Resources */ = {isa = PBXBuildFile; fileRef = EC6716581BCE7F5F00C81CFC /* ui */; };
+		EC6C4BD31C43A58800342D8E /* ArchiveLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC6C4BD11C43A58800342D8E /* ArchiveLayer.cpp */; };
+		EC6C4BD41C43A58800342D8E /* ArchiveLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC6C4BD11C43A58800342D8E /* ArchiveLayer.cpp */; };
+		EC6C4BD91C43B0DB00342D8E /* LoadingLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC6C4BD71C43B0DB00342D8E /* LoadingLayer.cpp */; };
+		EC6C4BDA1C43B0DB00342D8E /* LoadingLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC6C4BD71C43B0DB00342D8E /* LoadingLayer.cpp */; };
 		EC711F3F1C35489300ABB374 /* CircleMoveAct.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC711F3D1C35489300ABB374 /* CircleMoveAct.cpp */; };
 		EC711F401C35489300ABB374 /* CircleMoveAct.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC711F3D1C35489300ABB374 /* CircleMoveAct.cpp */; };
 		EC795F421C0D42340083829B /* MagicShopPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC795F3E1C0D42340083829B /* MagicShopPopupUI.cpp */; };
@@ -361,6 +365,8 @@
 		ECBA4FAA1C3E51CC004E9188 /* DiscardPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECBA4FA71C3E51CC004E9188 /* DiscardPopupUI.cpp */; };
 		ECBCB4C21C22AE24006B85D2 /* particle2d in Resources */ = {isa = PBXBuildFile; fileRef = ECBCB4C11C22AE24006B85D2 /* particle2d */; };
 		ECBCB4C31C22AE24006B85D2 /* particle2d in Resources */ = {isa = PBXBuildFile; fileRef = ECBCB4C11C22AE24006B85D2 /* particle2d */; };
+		ECE8CCD51C4514E800A18960 /* LoadingScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECE8CCD31C4514E800A18960 /* LoadingScene.cpp */; };
+		ECE8CCD61C4514E800A18960 /* LoadingScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECE8CCD31C4514E800A18960 /* LoadingScene.cpp */; };
 		ECEA4E1E1C0EC69800ED790F /* ItemShopBuyPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECEA4E1A1C0EC69800ED790F /* ItemShopBuyPopupUI.cpp */; };
 		ECEA4E1F1C0EC69800ED790F /* ItemShopBuyPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECEA4E1A1C0EC69800ED790F /* ItemShopBuyPopupUI.cpp */; };
 		ECEA4E201C0EC69800ED790F /* ItemShopSellPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECEA4E1C1C0EC69800ED790F /* ItemShopSellPopupUI.cpp */; };
@@ -706,6 +712,10 @@
 		EC6716441BCE7F2C00C81CFC /* LogoScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogoScene.h; sourceTree = "<group>"; };
 		EC6716561BCE7F5F00C81CFC /* lang */ = {isa = PBXFileReference; lastKnownFileType = folder; path = lang; sourceTree = "<group>"; };
 		EC6716581BCE7F5F00C81CFC /* ui */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ui; sourceTree = "<group>"; };
+		EC6C4BD11C43A58800342D8E /* ArchiveLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ArchiveLayer.cpp; sourceTree = "<group>"; };
+		EC6C4BD21C43A58800342D8E /* ArchiveLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ArchiveLayer.hpp; sourceTree = "<group>"; };
+		EC6C4BD71C43B0DB00342D8E /* LoadingLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LoadingLayer.cpp; sourceTree = "<group>"; };
+		EC6C4BD81C43B0DB00342D8E /* LoadingLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = LoadingLayer.hpp; sourceTree = "<group>"; };
 		EC711F3D1C35489300ABB374 /* CircleMoveAct.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CircleMoveAct.cpp; sourceTree = "<group>"; };
 		EC711F3E1C35489300ABB374 /* CircleMoveAct.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CircleMoveAct.hpp; sourceTree = "<group>"; };
 		EC795F3D1C0D42340083829B /* WeaponShopPopupUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeaponShopPopupUI.h; sourceTree = "<group>"; };
@@ -740,6 +750,8 @@
 		ECBA4FA71C3E51CC004E9188 /* DiscardPopupUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DiscardPopupUI.cpp; sourceTree = "<group>"; };
 		ECBA4FA81C3E51CC004E9188 /* DiscardPopupUI.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = DiscardPopupUI.hpp; sourceTree = "<group>"; };
 		ECBCB4C11C22AE24006B85D2 /* particle2d */ = {isa = PBXFileReference; lastKnownFileType = folder; path = particle2d; sourceTree = "<group>"; };
+		ECE8CCD31C4514E800A18960 /* LoadingScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LoadingScene.cpp; sourceTree = "<group>"; };
+		ECE8CCD41C4514E800A18960 /* LoadingScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingScene.h; sourceTree = "<group>"; };
 		ECEA4E1A1C0EC69800ED790F /* ItemShopBuyPopupUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ItemShopBuyPopupUI.cpp; sourceTree = "<group>"; };
 		ECEA4E1B1C0EC69800ED790F /* ItemShopBuyPopupUI.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ItemShopBuyPopupUI.hpp; sourceTree = "<group>"; };
 		ECEA4E1C1C0EC69800ED790F /* ItemShopSellPopupUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ItemShopSellPopupUI.cpp; sourceTree = "<group>"; };
@@ -1180,6 +1192,8 @@
 		555B0D0F1BC51A2C0055FB6D /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				ECE8CCD31C4514E800A18960 /* LoadingScene.cpp */,
+				ECE8CCD41C4514E800A18960 /* LoadingScene.h */,
 				EC00DD5D1BD665A6009BC378 /* MenuScene.cpp */,
 				EC00DD5E1BD665A6009BC378 /* MenuScene.h */,
 				EC6716431BCE7F2C00C81CFC /* LogoScene.cpp */,
@@ -1283,6 +1297,10 @@
 		EC3CC93C1C088F4F00F8CFC8 /* Layer */ = {
 			isa = PBXGroup;
 			children = (
+				EC6C4BD71C43B0DB00342D8E /* LoadingLayer.cpp */,
+				EC6C4BD81C43B0DB00342D8E /* LoadingLayer.hpp */,
+				EC6C4BD11C43A58800342D8E /* ArchiveLayer.cpp */,
+				EC6C4BD21C43A58800342D8E /* ArchiveLayer.hpp */,
 				EC8A27DE1C32670800B2C352 /* AchieveItemLayer.cpp */,
 				EC8A27DF1C32670800B2C352 /* AchieveItemLayer.hpp */,
 				EC8A27D81C32629C00B2C352 /* AchieveItemUI.cpp */,
@@ -1625,6 +1643,7 @@
 				551E93F01BD512D3009F788F /* MemoryStream.cpp in Sources */,
 				5586C7B01C0FDD5400DFA588 /* MineBossLevel.cpp in Sources */,
 				EC3CC99D1C088F4F00F8CFC8 /* GameUILayer.cpp in Sources */,
+				EC6C4BD91C43B0DB00342D8E /* LoadingLayer.cpp in Sources */,
 				EC3CC98B1C088F4F00F8CFC8 /* ItemPopupUI.cpp in Sources */,
 				5505452E1BFF1092006B4500 /* StandardPortal.cpp in Sources */,
 				55F81CAC1BDB69FB002EC075 /* PickableItemProperty.cpp in Sources */,
@@ -1635,6 +1654,7 @@
 				551E93EE1BD512D3009F788F /* FileStream.cpp in Sources */,
 				EC3CC98F1C088F4F00F8CFC8 /* PausePopupUI.cpp in Sources */,
 				EC602AAC1BF46A2D00484D42 /* AchievementManager.cpp in Sources */,
+				EC6C4BD31C43A58800342D8E /* ArchiveLayer.cpp in Sources */,
 				55F81CB81BDB8B81002EC075 /* ArmorProperty.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
@@ -1666,6 +1686,7 @@
 				554F00F61BDA219E00F4DF8E /* PickableItem.cpp in Sources */,
 				EC3051B01C3A3C9D00A7A10E /* PlistBinaryUtil.cpp in Sources */,
 				55F81CD01BDB92CC002EC075 /* PotionsProperty.cpp in Sources */,
+				ECE8CCD51C4514E800A18960 /* LoadingScene.cpp in Sources */,
 				555B0D171BC51A2C0055FB6D /* Area.cpp in Sources */,
 				EC795F4B1C0D4A4B0083829B /* ShopPopupUI.cpp in Sources */,
 				EC3CC9771C088F4F00F8CFC8 /* CharacterPropLayer.cpp in Sources */,
@@ -1758,6 +1779,7 @@
 				EC3CC9721C088F4F00F8CFC8 /* BagLayer.cpp in Sources */,
 				EC5D56911C0C4E2200F5EDDF /* DistPopupUI.cpp in Sources */,
 				551E93C81BD51291009F788F /* MonsterProperty.cpp in Sources */,
+				EC6C4BDA1C43B0DB00342D8E /* LoadingLayer.cpp in Sources */,
 				EC66254B1C3375A900166131 /* SuperAnimNodeV2.cpp in Sources */,
 				555DCB7A1C3266DC007C868B /* ScreenShake.cpp in Sources */,
 				550545331BFF2081006B4500 /* BasePortal.cpp in Sources */,
@@ -1853,6 +1875,7 @@
 				EC3CC9881C088F4F00F8CFC8 /* DeadPopupUI.cpp in Sources */,
 				55F116E11C04454300A6C191 /* TombLevel.cpp in Sources */,
 				EC6617661C182A3B0004209F /* BossPropLayer.cpp in Sources */,
+				ECE8CCD61C4514E800A18960 /* LoadingScene.cpp in Sources */,
 				5586C7B11C0FDD5400DFA588 /* MineBossLevel.cpp in Sources */,
 				551E93B21BD51282009F788F /* UtilityHelper.cpp in Sources */,
 				EC3CC9741C088F4F00F8CFC8 /* BagMangerLayerUI.cpp in Sources */,
@@ -1891,6 +1914,7 @@
 				EC711F401C35489300ABB374 /* CircleMoveAct.cpp in Sources */,
 				EC602AAD1BF46A2D00484D42 /* AchievementManager.cpp in Sources */,
 				EC795F5C1C0D4B150083829B /* OldManPopupUI.cpp in Sources */,
+				EC6C4BD41C43A58800342D8E /* ArchiveLayer.cpp in Sources */,
 				55338AD61BD878BF00EA316F /* StandardMonster.cpp in Sources */,
 				EC8A27E51C327A4B00B2C352 /* AchievePopupUI.cpp in Sources */,
 				551E93F11BD512D3009F788F /* MemoryStream.cpp in Sources */,

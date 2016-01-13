@@ -220,6 +220,8 @@
             <filename>../ui/ui_sprite/ui_rape.png</filename>
             <filename>../ui/ui_sprite/ui_bag_frame.png</filename>
             <filename>../ui/ui_sprite/eyes.png</filename>
+            <filename>../ui/ui_sprite/ui_delete_game_normal.png</filename>
+            <filename>../ui/ui_sprite/ui_delete_game_press.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

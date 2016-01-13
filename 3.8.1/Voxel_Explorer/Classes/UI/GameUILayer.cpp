@@ -39,6 +39,9 @@
 #include "StatisticsManager.hpp"
 #include "AchievePopupUI.h"
 #include "ArchiveManager.h"
+#include "MenuScene.h"
+#include "GameScene.h"
+#include "LoadingLayer.hpp"
 USING_NS_CC;
 GameUILayer::GameUILayer()
 {
@@ -57,6 +60,8 @@ bool GameUILayer::initUi()
 {
     if (!registerTouchEvent())
         return false;
+    
+
     
     m_pGameInfoLayer = GameInfoLayer::create();
     m_pGameInfoLayer->setAnchorPoint(cocos2d::Vec2::ANCHOR_MIDDLE_TOP);
@@ -101,6 +106,13 @@ bool GameUILayer::initUi()
     m_pAchievePopupUI->retain();
     setCharacterPropLayerVisible(false,false,false);
     
+    m_pWhiteLayer = LayerColor::create(Color4B::WHITE);
+    if(!m_pWhiteLayer)
+        return false;
+    m_pRootLayer->addChild(m_pWhiteLayer);
+    EaseExponentialOut* fadeOut = EaseExponentialOut::create(FadeOut::create(1.0f));
+    m_pWhiteLayer->runAction(fadeOut);
+
     refreshUIView();
     return true;
 }
@@ -119,6 +131,32 @@ bool GameUILayer::registerTouchEvent()
     dispatcher->addEventListenerWithSceneGraphPriority(touchListener, this);
     
     return true;
+}
+void GameUILayer::switchToMenuScene()
+{
+    if(m_pWhiteLayer)
+    {
+        EaseExponentialOut* fadeIn = EaseExponentialOut::create(FadeIn::create(1.0f));
+        CallFunc* callFunc = CallFunc::create([this](){
+            auto scene = MenuScene::createScene();
+            Director::getInstance()->replaceScene(scene);
+        });
+        Sequence* sequence = Sequence::create( fadeIn, callFunc, NULL);
+        m_pWhiteLayer->runAction(sequence);
+    }
+}
+void GameUILayer::switchToGameScene()
+{
+    if(m_pWhiteLayer)
+    {
+        EaseExponentialOut* fadeIn = EaseExponentialOut::create(FadeIn::create(1.0f));
+        CallFunc* callFunc = CallFunc::create([this](){
+            auto scene = MenuScene::createScene();
+            Director::getInstance()->replaceScene(scene);
+        });
+        Sequence* sequence = Sequence::create( fadeIn, callFunc, NULL);
+        m_pWhiteLayer->runAction(sequence);
+    }
 }
 bool GameUILayer::onTouchBegan(Touch *touch, Event *event)
 {

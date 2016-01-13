@@ -9,45 +9,93 @@
           <AbstractNodeData Name="bg_frame" CanEdit="False" ActionTag="-1944278251" Tag="309" IconVisible="False" PercentWidthEnable="True" PercentHeightEnable="True" PercentWidthEnabled="True" PercentHeightEnabled="True" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" RightMargin="117.5000" Scale9Enable="True" LeftEage="4" RightEage="4" TopEage="4" BottomEage="4" Scale9OriginX="4" Scale9OriginY="4" Scale9Width="5" Scale9Height="5" ctype="ImageViewObjectData">
             <Size X="132.5000" Y="150.0000" />
             <Children>
-              <AbstractNodeData Name="role_weapon" ActionTag="299232227" Tag="334" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="3.5916" RightMargin="96.9084" TopMargin="29.5920" BottomMargin="88.4080" Scale9Width="32" Scale9Height="32" ctype="ImageViewObjectData">
+              <AbstractNodeData Name="role_weapon" ActionTag="299232227" Tag="334" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="3.5968" RightMargin="96.9032" TopMargin="23.5906" BottomMargin="94.4094" Scale9Enable="True" LeftEage="3" RightEage="3" TopEage="3" BottomEage="3" Scale9OriginX="3" Scale9OriginY="3" Scale9Width="39" Scale9Height="39" ctype="ImageViewObjectData">
                 <Size X="32.0000" Y="32.0000" />
+                <Children>
+                  <AbstractNodeData Name="role_weapon_icon" ActionTag="-1849359274" Tag="44" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="1.0000" RightMargin="1.0000" TopMargin="1.0000" BottomMargin="1.0000" Scale9Width="30" Scale9Height="30" ctype="ImageViewObjectData">
+                    <Size X="30.0000" Y="30.0000" />
+                    <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+                    <Position X="16.0000" Y="16.0000" />
+                    <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                    <CColor A="255" R="255" G="255" B="255" />
+                    <PrePosition X="0.5000" Y="0.5000" />
+                    <PreSize X="0.9375" Y="0.9375" />
+                    <FileData Type="PlistSubImage" Path="ui_weapon_icon.png" Plist="ui_sprite.plist" />
+                  </AbstractNodeData>
+                </Children>
                 <AnchorPoint ScaleX="0.4626" ScaleY="0.5658" />
-                <Position X="18.3910" Y="106.5150" />
+                <Position X="18.4000" Y="112.5150" />
                 <Scale ScaleX="1.0000" ScaleY="1.0000" />
                 <CColor A="255" R="255" G="255" B="255" />
-                <PrePosition X="0.1388" Y="0.7101" />
-                <PreSize X="0.1280" Y="0.1778" />
-                <FileData Type="PlistSubImage" Path="ui_weapon_icon.png" Plist="ui_sprite.plist" />
+                <PrePosition X="0.1389" Y="0.7501" />
+                <PreSize X="0.2415" Y="0.2133" />
+                <FileData Type="PlistSubImage" Path="ui_bag_frame.png" Plist="ui_sprite.plist" />
               </AbstractNodeData>
-              <AbstractNodeData Name="role_second_equip" ActionTag="-1839953241" Tag="336" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="3.5916" RightMargin="96.9084" TopMargin="72.8774" BottomMargin="45.1226" Scale9Width="32" Scale9Height="32" ctype="ImageViewObjectData">
+              <AbstractNodeData Name="role_second_equip" ActionTag="-1839953241" Tag="336" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="3.5968" RightMargin="96.9033" TopMargin="72.8750" BottomMargin="45.1250" Scale9Enable="True" LeftEage="3" RightEage="3" TopEage="3" BottomEage="3" Scale9OriginX="3" Scale9OriginY="3" Scale9Width="39" Scale9Height="39" ctype="ImageViewObjectData">
                 <Size X="32.0000" Y="32.0000" />
+                <Children>
+                  <AbstractNodeData Name="role_second_equip_icon" ActionTag="182617578" Tag="45" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="1.0000" RightMargin="1.0000" TopMargin="1.0000" BottomMargin="1.0000" Scale9Width="30" Scale9Height="30" ctype="ImageViewObjectData">
+                    <Size X="30.0000" Y="30.0000" />
+                    <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+                    <Position X="16.0000" Y="16.0000" />
+                    <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                    <CColor A="255" R="255" G="255" B="255" />
+                    <PrePosition X="0.5000" Y="0.5000" />
+                    <PreSize X="0.9375" Y="0.9375" />
+                    <FileData Type="PlistSubImage" Path="ui_secondweapon_icon.png" Plist="ui_sprite.plist" />
+                  </AbstractNodeData>
+                </Children>
                 <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
                 <Position X="19.5968" Y="61.1250" />
                 <Scale ScaleX="1.0000" ScaleY="1.0000" />
                 <CColor A="255" R="255" G="255" B="255" />
                 <PrePosition X="0.1479" Y="0.4075" />
-                <PreSize X="0.4571" Y="0.4571" />
-                <FileData Type="PlistSubImage" Path="ui_secondweapon_icon.png" Plist="ui_sprite.plist" />
+                <PreSize X="0.2415" Y="0.2133" />
+                <FileData Type="PlistSubImage" Path="ui_bag_frame.png" Plist="ui_sprite.plist" />
               </AbstractNodeData>
-              <AbstractNodeData Name="role_armor" ActionTag="-1238095999" Tag="338" IconVisible="False" HorizontalEdge="LeftEdge" VerticalEdge="TopEdge" LeftMargin="96.6361" RightMargin="3.8639" TopMargin="29.5920" BottomMargin="88.4080" Scale9Width="32" Scale9Height="32" ctype="ImageViewObjectData">
+              <AbstractNodeData Name="role_armor" ActionTag="-1238095999" Tag="338" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="96.6362" RightMargin="3.8638" TopMargin="23.5906" BottomMargin="94.4094" Scale9Enable="True" LeftEage="3" RightEage="3" TopEage="3" BottomEage="3" Scale9OriginX="3" Scale9OriginY="3" Scale9Width="39" Scale9Height="39" ctype="ImageViewObjectData">
                 <Size X="32.0000" Y="32.0000" />
+                <Children>
+                  <AbstractNodeData Name="role_armor_icon" ActionTag="-355903524" Tag="46" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="1.0000" RightMargin="1.0000" TopMargin="1.0000" BottomMargin="1.0000" Scale9Width="30" Scale9Height="30" ctype="ImageViewObjectData">
+                    <Size X="30.0000" Y="30.0000" />
+                    <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+                    <Position X="16.0000" Y="16.0000" />
+                    <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                    <CColor A="255" R="255" G="255" B="255" />
+                    <PrePosition X="0.5000" Y="0.5000" />
+                    <PreSize X="0.9375" Y="0.9375" />
+                    <FileData Type="PlistSubImage" Path="ui_armor_icon.png" Plist="ui_sprite.plist" />
+                  </AbstractNodeData>
+                </Children>
                 <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-                <Position X="112.6361" Y="104.4080" />
+                <Position X="112.6362" Y="110.4094" />
                 <Scale ScaleX="1.0000" ScaleY="1.0000" />
                 <CColor A="255" R="255" G="255" B="255" />
-                <PrePosition X="0.8501" Y="0.6961" />
-                <PreSize X="0.1280" Y="0.1778" />
-                <FileData Type="PlistSubImage" Path="ui_armor_icon.png" Plist="ui_sprite.plist" />
+                <PrePosition X="0.8501" Y="0.7361" />
+                <PreSize X="0.2415" Y="0.2133" />
+                <FileData Type="PlistSubImage" Path="ui_bag_frame.png" Plist="ui_sprite.plist" />
               </AbstractNodeData>
-              <AbstractNodeData Name="role_ornament" ActionTag="-532798956" Tag="337" IconVisible="False" HorizontalEdge="LeftEdge" VerticalEdge="TopEdge" LeftMargin="96.6362" RightMargin="3.8638" TopMargin="73.8775" BottomMargin="44.1225" Scale9Width="32" Scale9Height="32" ctype="ImageViewObjectData">
+              <AbstractNodeData Name="role_ornament" ActionTag="-532798956" Tag="337" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="TopEdge" LeftMargin="96.6362" RightMargin="3.8638" TopMargin="73.8750" BottomMargin="44.1250" Scale9Enable="True" LeftEage="3" RightEage="3" TopEage="3" BottomEage="3" Scale9OriginX="3" Scale9OriginY="3" Scale9Width="39" Scale9Height="39" ctype="ImageViewObjectData">
                 <Size X="32.0000" Y="32.0000" />
+                <Children>
+                  <AbstractNodeData Name="role_ornament_icon" ActionTag="539942612" Tag="47" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="1.0000" RightMargin="1.0000" TopMargin="1.0000" BottomMargin="1.0000" Scale9Width="30" Scale9Height="30" ctype="ImageViewObjectData">
+                    <Size X="30.0000" Y="30.0000" />
+                    <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+                    <Position X="16.0000" Y="16.0000" />
+                    <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                    <CColor A="255" R="255" G="255" B="255" />
+                    <PrePosition X="0.5000" Y="0.5000" />
+                    <PreSize X="0.9375" Y="0.9375" />
+                    <FileData Type="PlistSubImage" Path="ui_ornament_icon.png" Plist="ui_sprite.plist" />
+                  </AbstractNodeData>
+                </Children>
                 <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-                <Position X="112.6362" Y="60.1225" />
+                <Position X="112.6362" Y="60.1250" />
                 <Scale ScaleX="1.0000" ScaleY="1.0000" />
                 <CColor A="255" R="255" G="255" B="255" />
                 <PrePosition X="0.8501" Y="0.4008" />
-                <PreSize X="0.1280" Y="0.1778" />
-                <FileData Type="PlistSubImage" Path="ui_ornament_icon.png" Plist="ui_sprite.plist" />
+                <PreSize X="0.2415" Y="0.2133" />
+                <FileData Type="PlistSubImage" Path="ui_bag_frame.png" Plist="ui_sprite.plist" />
               </AbstractNodeData>
               <AbstractNodeData Name="role_shop" ActionTag="180799393" Tag="339" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="50.2500" RightMargin="50.2500" TopMargin="111.2357" BottomMargin="6.7643" Scale9Width="32" Scale9Height="32" ctype="ImageViewObjectData">
                 <Size X="32.0000" Y="32.0000" />

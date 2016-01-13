@@ -19,7 +19,7 @@ public:
     virtual ~BagMangerLayerUI();
     static BagMangerLayerUI* create(cocos2d::Size size);
     bool init(cocos2d::Size size);
-    void addItem(int index,int itemId,cocos2d::Vec2 pt,std::string itemIcon);
+    void addItem(int index,int itemId,cocos2d::Vec2 pt,std::string itemIcon,float scale=0.9);
     void setItemQulity(int itemId,cocos2d::Vec2 pt,PICKABLEITEM_QUALITY Quality);
     void setItemCount(int itemId,cocos2d::Vec2 pt,int count);
     void setItemEquipMark(int itemId,cocos2d::Vec2 pt);

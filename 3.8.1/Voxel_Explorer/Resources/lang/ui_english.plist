@@ -314,6 +314,12 @@
 	<string>SOUND:</string>
 	<key>BTN_TEXT_MUSIC</key>
 	<string>MUSIC:</string>
+    <key>BTN_TEXT_NEW_GAME</key>
+    <string>新的游戏</string>
+    <key>BTN_TEXT_CONTINUE_GAME</key>
+    <string>继续游戏</string>
+    <key>BTN_TEXT_RESTART_GAME</key>
+    <string>重新开始</string>
 	<key>BAG_INDENTIFY_FAIL</key>
 	<string>鉴定失败！</string>
 	<key>BAG_TEXT_DESTROY</key>

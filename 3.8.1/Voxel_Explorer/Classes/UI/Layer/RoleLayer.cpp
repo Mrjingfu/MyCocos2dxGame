@@ -242,6 +242,29 @@ void RoleLayer::updateRoleProp()
     m_pRoleDefense->setString(StringUtils::format("%d",int(PlayerProperty::getInstance()->getDefense())));
     
 }
+void RoleLayer::updateEquipQuality(cocos2d::ui::ImageView *icon, PICKABLEITEM_QUALITY quality)
+{
+    if (icon)
+    {
+        //设置品质
+        switch (quality) {
+            case PIQ_RARE:
+                icon->loadTexture("ui_rape.png",TextureResType::PLIST);
+                break;
+            case PIQ_EPIC:
+                icon->loadTexture("ui_epic.png",TextureResType::PLIST);
+                break;
+            case PIQ_LEGEND:
+                icon->loadTexture("ui_legend.png",TextureResType::PLIST);
+                break;
+            default:
+                break;
+        }
+        icon->setContentSize(cocos2d::Size(32,32));
+        icon->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
+    }
+
+}
 void RoleLayer::updateEquipProp()
 {
     //清除装备栏信息
@@ -255,22 +278,26 @@ void RoleLayer::updateEquipProp()
     
     if (weaponId!=-1) {
         PickableItemProperty* weaponProp = PlayerProperty::getInstance()->getItemFromBag(weaponId);
-        m_pEquipFrame->addItem(1, weaponId, m_pWeaponUi->getPosition(), weaponProp->getIconRes());
+        m_pEquipFrame->addItem(1, weaponId, m_pWeaponUi->getPosition(), weaponProp->getIconRes(),0.85);
+        updateEquipQuality(m_pWeaponUi,weaponProp->getQuality());
     }
     
     if (secondWeaponId!=-1) {
         PickableItemProperty* weaponProp = PlayerProperty::getInstance()->getItemFromBag(secondWeaponId);
-        m_pEquipFrame->addItem(2, weaponId, m_pSecondWeaponUi->getPosition(), weaponProp->getIconRes());
+        m_pEquipFrame->addItem(2, weaponId, m_pSecondWeaponUi->getPosition(), weaponProp->getIconRes(),0.85);
+        updateEquipQuality(m_pSecondWeaponUi,weaponProp->getQuality());
     }
     
     if (armorId!=-1) {
         PickableItemProperty* weaponProp = PlayerProperty::getInstance()->getItemFromBag(armorId);
-        m_pEquipFrame->addItem(3, armorId, m_pArmorUi->getPosition(), weaponProp->getIconRes());
+        m_pEquipFrame->addItem(3, armorId, m_pArmorUi->getPosition(), weaponProp->getIconRes(),0.85);
+        updateEquipQuality(m_pArmorUi,weaponProp->getQuality());
     }
     
     if (OrnamentId!=-1) {
         PickableItemProperty* weaponProp = PlayerProperty::getInstance()->getItemFromBag(OrnamentId);
-        m_pEquipFrame->addItem(4, weaponId, m_pOrnamentUi->getPosition(), weaponProp->getIconRes());
+        m_pEquipFrame->addItem(4, weaponId, m_pOrnamentUi->getPosition(), weaponProp->getIconRes(),0.85);
+        updateEquipQuality(m_pOrnamentUi,weaponProp->getQuality());
     }
 }
 void RoleLayer::onClickShop(cocos2d::Ref *ref)

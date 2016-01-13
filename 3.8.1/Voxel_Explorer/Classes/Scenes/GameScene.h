@@ -10,9 +10,11 @@
 #define __Voxel_Explorer__GameScene__
 
 #include "cocos2d.h"
-
+#include "LoadingLayer.hpp"
+class LoadingLayer;
 class GameScene : public cocos2d::Layer
 {
+    GameScene();
 public:
     static cocos2d::Scene* createScene();
     
@@ -23,6 +25,12 @@ public:
     virtual void onEnter() override;
     virtual void onExit() override;
     virtual void update(float delta) override;
+    
+    void loadGameThread();
+private:
+    float timedt;
+    bool isLoading;
+    LoadingLayer* loadingLayer;
 };
 
 #endif /* defined(__Voxel_Explorer__GameScene__) */

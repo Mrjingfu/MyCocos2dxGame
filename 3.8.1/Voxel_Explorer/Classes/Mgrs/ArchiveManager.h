@@ -36,6 +36,8 @@ class ArchiveManager
 public:
     ~ArchiveManager();
     SINGLE_FUNC(ArchiveManager);
+    bool isExistArchive();
+    bool restartArchive();
     bool loadGame();
     bool loadGameAchieve();
     bool saveGame();

@@ -123,14 +123,14 @@ void BagMangerLayerUI::setLayerContentSize(const cocos2d::Size &contentSize)
     }
     
 }
-void BagMangerLayerUI::addItem(int index,int itemId,cocos2d::Vec2 pt,std::string itemIcon)
+void BagMangerLayerUI::addItem(int index,int itemId,cocos2d::Vec2 pt,std::string itemIcon,float scale)
 {
     m_items.insert(std::pair<int, int>(index,itemId));
     if (m_pItemImgLayer) {
         ui::ImageView* img = ui::ImageView::create(itemIcon,TextureResType::PLIST);
         img->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
         img->setPosition(pt);
-        img->setScale(0.9);
+        img->setScale(scale);
         img->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
         img->setTag(itemId);
         m_pItemImgLayer->addChild(img);

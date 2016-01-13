@@ -460,15 +460,21 @@ void BaseLevel::preloadBGMusic()
 bool BaseLevel::checkAllAreaBeExplored()
 {
     int visSize = 0;
+    int tileInfoSize = 0;
     for (int i=0; i<m_Map.size(); i++)
     {
         TileInfo info = m_Map[i];
-        if (info.m_Type!=TerrainTile::TT_CHASM && info.m_bVisited)
+        if (info.m_Type!=TerrainTile::TT_CHASM )
         {
-            ++visSize;
+            if (info.m_bVisited) {
+                 ++visSize;
+            }
+           ++tileInfoSize;
         }
     }
-    if (visSize == m_Map.size() ) {
+    
+    
+    if (visSize == tileInfoSize ) {
         return true;
     }
     return false;

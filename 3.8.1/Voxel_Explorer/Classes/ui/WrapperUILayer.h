@@ -46,7 +46,7 @@ protected:
     cocos2d::Layer*	m_pRootLayer;   //手工编写ui布局用到
     cocos2d::Node*	m_pRootNode;//cocostudio布局用到
     Ref* m_actionRef;
-    
+    cocos2d::CameraFlag m_nCamerFlag;
     timeval m_actionTime;
 
     

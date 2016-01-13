@@ -24,6 +24,7 @@ struct HurtData;
 class HudPromptLayer;
 class Npc;
 class AchievePopupUI;
+class LoadingLayer;
 class GameUILayer:public WrapperUILayer {
     
 public:
@@ -37,6 +38,9 @@ public:
     void onExit()override;
    
     AchievePopupUI* getAchievePopupUI() const{return m_pAchievePopupUI;};
+    
+    void switchToMenuScene();
+    void switchToGameScene();
 protected:
     virtual bool onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event) override;
     virtual void onTouchMoved(cocos2d::Touch *touch, cocos2d::Event *event) override;
@@ -158,9 +162,12 @@ private:
     
     //注册触摸事件
     bool registerTouchEvent();
+
     
     void setCharacterPropLayerVisible(bool isMonster,bool isNpc,bool isBoss);
 private:
+   LoadingLayer* m_pLoadingLayer;
+   cocos2d::LayerColor* m_pWhiteLayer;
    GameInfoLayer*    m_pGameInfoLayer;
    GameToolbarLayer* m_pGameToolBarLayer;
    RolePropLayer*    m_pRolePropLayer;

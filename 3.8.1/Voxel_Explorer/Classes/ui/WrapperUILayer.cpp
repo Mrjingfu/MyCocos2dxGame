@@ -16,6 +16,8 @@ WrapperUILayer::WrapperUILayer()
 {
     m_pRootLayer = nullptr;
     m_pRootNode  = nullptr;
+    
+    m_nCamerFlag = cocos2d::CameraFlag::USER2;
 }
 WrapperUILayer::~WrapperUILayer()
 {
@@ -42,12 +44,11 @@ bool WrapperUILayer::init()
     m_pRootLayer->setContentSize(cocos2d::Director::getInstance()->getVisibleSize());
     this->addChild(m_pRootLayer,1);
     
-    
     //
     if(!initUi())
         return false;
     //setCameraMask 只能使node的当前所有子节点的cameraMask设置为mask 之后新添加的子节点则不会受影响 所以在初始化UI之后设置
-    m_pRootLayer->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
+    m_pRootLayer->setCameraMask((unsigned short)m_nCamerFlag);
     return true;
     
 }
@@ -77,7 +78,7 @@ bool WrapperUILayer::load(const std::string gameUIFile,bool isSceneUi)
     if(!addEvents())
         ret = false;
 
-    m_pRootNode->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
+    m_pRootNode->setCameraMask((unsigned short)m_nCamerFlag);
      
     return ret;
 }

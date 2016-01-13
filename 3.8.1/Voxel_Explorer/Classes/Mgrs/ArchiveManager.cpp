@@ -25,7 +25,21 @@ ArchiveManager::~ArchiveManager()
 {
    
 }
-
+bool ArchiveManager::isExistArchive()
+{
+     std::string path = cocos2d::FileUtils::getInstance()->getWritablePath()+sArchiveName;
+    return cocos2d::FileUtils::getInstance()->isFileExist(path);
+}
+bool ArchiveManager::restartArchive()
+{
+     std::string path = cocos2d::FileUtils::getInstance()->getWritablePath()+sArchiveName;
+     if(!cocos2d::FileUtils::getInstance()->removeFile(path))
+          return false;
+    if (!loadGame())
+        return false;
+    
+    return true;
+}
 bool  ArchiveManager::loadGame()
 {
     

@@ -10,8 +10,9 @@
 #define RoleLayer_hpp
 
 #include "WrapperUILayer.h"
-
+#include "PickableItemProperty.hpp"
 class BagMangerLayerUI;
+
 class RoleLayer :public WrapperUILayer {
     RoleLayer();
     
@@ -23,6 +24,7 @@ public:
     virtual void refreshUIView()override;
 private:
     void updateRoleProp();
+    void updateEquipQuality(cocos2d::ui::ImageView* icon,PICKABLEITEM_QUALITY quality);
     void updateEquipProp();
     void onClickShop(Ref*);
     void onClickClose(Ref*);

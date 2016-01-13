@@ -10,6 +10,9 @@
 #include "UtilityHelper.h"
 #include "GameScene.h"
 #include "MenuScene.h"
+#include "ArchiveManager.h"
+#include "VoxelExplorer.h"
+#include "GameUILayer.h"
 USING_NS_CC;
 DeadPopupUI::DeadPopupUI()
 {
@@ -57,8 +60,10 @@ bool DeadPopupUI::initUi()
 }
 void DeadPopupUI::onClickMainMenu(cocos2d::Ref *ref)
 {
-    cocos2d::Scene* scene = MenuScene::createScene();
-    Director::getInstance()->replaceScene(scene);
+    if(!ArchiveManager::getInstance()->saveGame())
+        CCLOGERROR("Save Game failed!");
+    closePopup();
+    VoxelExplorer::getInstance()->getUILayer()->switchToMenuScene();
 }
 void DeadPopupUI::onClickRestart(cocos2d::Ref *ref)
 {
