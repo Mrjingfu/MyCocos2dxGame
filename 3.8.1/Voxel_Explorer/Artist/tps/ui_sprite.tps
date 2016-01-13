@@ -222,6 +222,14 @@
             <filename>../ui/ui_sprite/eyes.png</filename>
             <filename>../ui/ui_sprite/ui_delete_game_normal.png</filename>
             <filename>../ui/ui_sprite/ui_delete_game_press.png</filename>
+            <filename>../ui/ui_sprite/ui_health_icon.png</filename>
+            <filename>../ui/ui_sprite/ui_magic_icon.png</filename>
+            <filename>../ui/ui_sprite/ui_skill_arrow.png</filename>
+            <filename>../ui/ui_sprite/ui_skill_bg.png</filename>
+            <filename>../ui/ui_sprite/ui_skill_block.png</filename>
+            <filename>../ui/ui_sprite/ui_skill_fire.png</filename>
+            <filename>../ui/ui_sprite/ui_skill_lock.png</filename>
+            <filename>../ui/ui_sprite/ui_skill_prog.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

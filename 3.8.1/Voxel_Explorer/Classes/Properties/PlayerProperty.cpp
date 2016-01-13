@@ -56,7 +56,7 @@ bool PlayerProperty::initNewPlayer()   ///新角色初始化
         weaponProperty->adjustByLevel();
     m_Bag.push_back(weaponProperty);
 
-    addMoney(1000, false);
+    addMoney(90000, false);
     ret = equipWeapon(itemIDCounter, false);
     ret = addItemToBag(PickableItem::PIT_POTION_MINORHEALTH, 1, false);
     ret = addItemToBag(PickableItem::PIT_POTION_MINORHEALTH, 1, false);
@@ -408,7 +408,7 @@ bool PlayerProperty::equipSecondWeapon(CChaosNumber id, bool sound)
         StatisticsManager::getInstance()->addRoleAttr();
          Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_PROPERTY_DIRTY);
         m_bDirty = true;
-        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_EQUIPED_WEAPON, &m_nEquipedWeaponID);
+        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_EQUIPED_SECOND_WEAPON, &m_nEquipedWeaponID);
         
         if(sound)
         {
@@ -793,7 +793,7 @@ bool PlayerProperty::buyItemToBag(PickableItemProperty* buyItemProperty, CChaosN
                         IStackable* itemProperty = dynamic_cast<IStackable*>(item);
                         if (itemProperty)
                             itemProperty->addCount(count);
-                        
+                        m_bDirty = true;
                         if(sound)
                             playPickupItemSound(buyItemProperty);
                         return true;
@@ -859,7 +859,7 @@ bool PlayerProperty::buyItemToBag(PickableItemProperty* buyItemProperty, CChaosN
             }
             buyItemProperty->retain();
             m_Bag.push_back(buyItemProperty);
-            
+            m_bDirty = true;
             if(sound)
                 playPickupItemSound(buyItemProperty);
             return true;
@@ -904,6 +904,7 @@ bool PlayerProperty::addItemToBag(PickableItem::PickableItemType type, CChaosNum
                 if (itemProperty)
                 {
                     itemProperty->increaseCount();
+                    m_bDirty = true;
                     if (sound)
                         StatisticsManager::getInstance()->addPickItemNum();
                 }
@@ -964,7 +965,7 @@ bool PlayerProperty::addItemToBag(PickableItem::PickableItemType type, CChaosNum
         if(itemProperty->isIdentified())
             itemProperty->adjustByLevel();
         m_Bag.push_back(itemProperty);
-        
+        m_bDirty = true;
         if(sound)
             playPickupItemSound(itemProperty);
         return true;

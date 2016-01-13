@@ -21,9 +21,8 @@ public:
     virtual void updateCharacterBuff() override;
     virtual void updateCharacterProp() override;
     virtual bool addEvents() override;
-    void setNpc(Npc* npc){m_pNpc = npc;};
-private:
-    Npc* m_pNpc;
+    void setNpc(Npc* npc);
+
 };
 
 #endif /* NpcPropLayer_hpp */

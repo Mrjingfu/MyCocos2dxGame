@@ -163,7 +163,7 @@
                 <PreSize X="1.0000" Y="0.1000" />
                 <FileData Type="PlistSubImage" Path="progress_exp_bg.png" Plist="ui_sprite.plist" />
               </AbstractNodeData>
-              <AbstractNodeData Name="game_msg_frame" ActionTag="-654621271" Tag="206" IconVisible="False" PercentWidthEnable="True" PercentWidthEnabled="True" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" TopMargin="-79.8000" BottomMargin="44.8000" Scale9Enable="True" LeftEage="10" RightEage="10" TopEage="10" BottomEage="10" Scale9OriginX="10" Scale9OriginY="10" Scale9Width="12" Scale9Height="12" ctype="ImageViewObjectData">
+              <AbstractNodeData Name="game_msg_frame" Visible="False" ActionTag="-654621271" Tag="206" IconVisible="False" PercentWidthEnable="True" PercentWidthEnabled="True" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" TopMargin="-79.8000" BottomMargin="44.8000" Scale9Enable="True" LeftEage="10" RightEage="10" TopEage="10" BottomEage="10" Scale9OriginX="10" Scale9OriginY="10" Scale9Width="12" Scale9Height="12" ctype="ImageViewObjectData">
                 <Size X="320.0000" Y="75.0000" />
                 <AnchorPoint />
                 <Position Y="44.8000" />
@@ -173,7 +173,7 @@
                 <PreSize X="1.0000" Y="1.8750" />
                 <FileData Type="PlistSubImage" Path="ui_frame_5.png" Plist="ui_sprite.plist" />
               </AbstractNodeData>
-              <AbstractNodeData Name="game_dist_dialog" ActionTag="-931570552" Tag="207" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="60.0000" RightMargin="60.0000" TopMargin="-36.0000" BottomMargin="46.0000" Scale9Enable="True" LeftEage="4" RightEage="4" TopEage="4" BottomEage="4" Scale9OriginX="4" Scale9OriginY="4" Scale9Width="5" Scale9Height="5" ctype="ImageViewObjectData">
+              <AbstractNodeData Name="game_dist_dialog" Visible="False" ActionTag="-931570552" Tag="207" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="60.0000" RightMargin="60.0000" TopMargin="-36.0000" BottomMargin="46.0000" Scale9Enable="True" LeftEage="4" RightEage="4" TopEage="4" BottomEage="4" Scale9OriginX="4" Scale9OriginY="4" Scale9Width="5" Scale9Height="5" ctype="ImageViewObjectData">
                 <Size X="200.0000" Y="30.0000" />
                 <Children>
                   <AbstractNodeData Name="game_dist_btn_close" ActionTag="336726434" Tag="208" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="98.0000" RightMargin="2.0000" TopMargin="5.0000" BottomMargin="5.0000" TouchEnable="True" FontSize="14" Scale9Enable="True" LeftEage="5" RightEage="5" TopEage="5" BottomEage="5" Scale9OriginX="5" Scale9OriginY="5" Scale9Width="6" Scale9Height="6" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="ButtonObjectData">

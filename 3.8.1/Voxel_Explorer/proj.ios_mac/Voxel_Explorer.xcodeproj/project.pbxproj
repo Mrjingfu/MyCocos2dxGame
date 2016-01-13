@@ -371,6 +371,8 @@
 		ECBA4FAA1C3E51CC004E9188 /* DiscardPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECBA4FA71C3E51CC004E9188 /* DiscardPopupUI.cpp */; };
 		ECBCB4C21C22AE24006B85D2 /* particle2d in Resources */ = {isa = PBXBuildFile; fileRef = ECBCB4C11C22AE24006B85D2 /* particle2d */; };
 		ECBCB4C31C22AE24006B85D2 /* particle2d in Resources */ = {isa = PBXBuildFile; fileRef = ECBCB4C11C22AE24006B85D2 /* particle2d */; };
+		ECD845071C45F93200C11269 /* SkillLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECD845051C45F93200C11269 /* SkillLayer.cpp */; };
+		ECD845081C45F93200C11269 /* SkillLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECD845051C45F93200C11269 /* SkillLayer.cpp */; };
 		ECEA4E1E1C0EC69800ED790F /* ItemShopBuyPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECEA4E1A1C0EC69800ED790F /* ItemShopBuyPopupUI.cpp */; };
 		ECEA4E1F1C0EC69800ED790F /* ItemShopBuyPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECEA4E1A1C0EC69800ED790F /* ItemShopBuyPopupUI.cpp */; };
 		ECEA4E201C0EC69800ED790F /* ItemShopSellPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECEA4E1C1C0EC69800ED790F /* ItemShopSellPopupUI.cpp */; };
@@ -760,6 +762,8 @@
 		ECBA4FA71C3E51CC004E9188 /* DiscardPopupUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DiscardPopupUI.cpp; sourceTree = "<group>"; };
 		ECBA4FA81C3E51CC004E9188 /* DiscardPopupUI.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = DiscardPopupUI.hpp; sourceTree = "<group>"; };
 		ECBCB4C11C22AE24006B85D2 /* particle2d */ = {isa = PBXFileReference; lastKnownFileType = folder; path = particle2d; sourceTree = "<group>"; };
+		ECD845051C45F93200C11269 /* SkillLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SkillLayer.cpp; sourceTree = "<group>"; };
+		ECD845061C45F93200C11269 /* SkillLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SkillLayer.hpp; sourceTree = "<group>"; };
 		ECEA4E1A1C0EC69800ED790F /* ItemShopBuyPopupUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ItemShopBuyPopupUI.cpp; sourceTree = "<group>"; };
 		ECEA4E1B1C0EC69800ED790F /* ItemShopBuyPopupUI.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ItemShopBuyPopupUI.hpp; sourceTree = "<group>"; };
 		ECEA4E1C1C0EC69800ED790F /* ItemShopSellPopupUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ItemShopSellPopupUI.cpp; sourceTree = "<group>"; };
@@ -1309,6 +1313,8 @@
 		EC3CC93C1C088F4F00F8CFC8 /* Layer */ = {
 			isa = PBXGroup;
 			children = (
+				ECD845051C45F93200C11269 /* SkillLayer.cpp */,
+				ECD845061C45F93200C11269 /* SkillLayer.hpp */,
 				EC6C4BD71C43B0DB00342D8E /* LoadingLayer.cpp */,
 				EC6C4BD81C43B0DB00342D8E /* LoadingLayer.hpp */,
 				EC6C4BD11C43A58800342D8E /* ArchiveLayer.cpp */,
@@ -1641,6 +1647,7 @@
 				55F81CA11BDB208D002EC075 /* UseableItem.cpp in Sources */,
 				EC66254A1C3375A900166131 /* SuperAnimNodeV2.cpp in Sources */,
 				55A2CFF61C3907E900E591AA /* ArchbishopBullet.cpp in Sources */,
+				ECD845071C45F93200C11269 /* SkillLayer.cpp in Sources */,
 				EC795F571C0D4AFD0083829B /* GambleShopPopupUI.cpp in Sources */,
 				EC8A27E01C32670800B2C352 /* AchieveItemLayer.cpp in Sources */,
 				5505453C1BFF3893006B4500 /* SmallPortal.cpp in Sources */,
@@ -1919,6 +1926,7 @@
 				EC795F541C0D4AD70083829B /* AlchemyShopPopupUI.cpp in Sources */,
 				5560F5EF1C12CB8E001DD164 /* KoboldLeader.cpp in Sources */,
 				EC3CC9821C088F4F00F8CFC8 /* PromptLayer.cpp in Sources */,
+				ECD845081C45F93200C11269 /* SkillLayer.cpp in Sources */,
 				55F81CB91BDB8B81002EC075 /* ArmorProperty.cpp in Sources */,
 				EC25C3CB1C1977DF00B4340D /* InformationPopupUI.cpp in Sources */,
 				550C32ED1BDDE8740015124E /* SecondWeaponProperty.cpp in Sources */,

@@ -24,7 +24,7 @@ struct HurtData;
 class HudPromptLayer;
 class Npc;
 class AchievePopupUI;
-class LoadingLayer;
+class SkillLayer;
 class GameUILayer:public WrapperUILayer {
     
 public:
@@ -54,7 +54,11 @@ private:
     void onEventRoleDead(cocos2d::EventCustom *sender);         //角色死亡
     void onEventRoleFallAndDie(cocos2d::EventCustom *sender);
     
-   
+    
+    void onEvenetRoleEquipedWeapon(cocos2d::EventCustom *sender);
+    void onEvenetRoleEquipedSecondWeapon(cocos2d::EventCustom *sender);
+    void onEvenetRoleEquipedArmor(cocos2d::EventCustom *sender);
+    void onEvenetRoleEquipedOrnaments(cocos2d::EventCustom *sender);
     
     void onEventRoleMoneyNotEnough(cocos2d::EventCustom *sender);
     void onEventRoleNoMana(cocos2d::EventCustom *sender);
@@ -166,7 +170,8 @@ private:
     
     void setCharacterPropLayerVisible(bool isMonster,bool isNpc,bool isBoss);
 private:
-   LoadingLayer* m_pLoadingLayer;
+   
+    SkillLayer* m_pSkillLayer;
    cocos2d::LayerColor* m_pWhiteLayer;
    GameInfoLayer*    m_pGameInfoLayer;
    GameToolbarLayer* m_pGameToolBarLayer;

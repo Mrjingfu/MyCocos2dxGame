@@ -70,22 +70,25 @@ SecondWeaponProperty::SecondWeaponProperty(unsigned int instanceID, PickableItem
     m_strBeforeIndentifyDesc = UtilityHelper::getLocalString(PICKABLE_ITEM_NAMES[type] + "_BIDESC");
     m_strPropertyTypeName = UtilityHelper::getLocalString(PICKABLE_ITEM_PROPERTY_TYPE_NAMES[m_PropertyType]);
     
-    if(type > PickableItem::PIT_BOW_SHORTBOW && type < PickableItem::PIT_BOW_PRO_GOLDENBOW)
+    if(type >= PickableItem::PIT_BOW_SHORTBOW && type <= PickableItem::PIT_BOW_PRO_GOLDENBOW)
     {
         m_SWPType = SWPT_BOW;
         m_PlayerSkill = PS_MAGICARROW;
     }
-    else if(type > PickableItem::PIT_STAFF_OAKSTAFF && type < PickableItem::PIT_STAFF_PRO_MONKSTAFF)
+    else if(type >= PickableItem::PIT_STAFF_OAKSTAFF && type <= PickableItem::PIT_STAFF_PRO_MONKSTAFF)
     {
         m_SWPType = SWPT_STAFF;
         m_PlayerSkill = PS_FIREBALL;
     }
-    else if(type > PickableItem::PIT_SHIELD_WOODENSHIELD && type < PickableItem::PIT_SHIELD_PRO_TOWERSHIELD)
+    else if(type >= PickableItem::PIT_SHIELD_WOODENSHIELD && type <= PickableItem::PIT_SHIELD_PRO_TOWERSHIELD)
+    {
         m_SWPType = SWPT_SHIELD;
+        m_PlayerSkill = PS_BLOCKRATEUP;
+    }
     else
     {
         m_SWPType = SWPT_UNKNOWN;
-        m_PlayerSkill = PS_BLOCKRATEUP;
+        m_PlayerSkill = PS_NONE;
     }
     
     if((type >= PickableItem::PIT_BOW_PRO_SHORTBOW && type <= PickableItem::PIT_BOW_PRO_GOLDENBOW) ||

@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/UI/GameUILayer.cpp"
-            timestampString = "474289098.930448"
+            timestampString = "474350529.250685"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "318"
-            endingLineNumber = "318"
+            startingLineNumber = "324"
+            endingLineNumber = "324"
             landmarkName = "GameUILayer::onEventRoleNoBossKey(cocos2d::EventCustom *sender)"
             landmarkType = "5">
          </BreakpointContent>
@@ -48,6 +48,38 @@
             startingLineNumber = "110"
             endingLineNumber = "110"
             landmarkName = "UtilityHelper::getLineForText(cocos2d::ui::Text* tempText,std::string&amp; str)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/Sprites3D/Player.cpp"
+            timestampString = "474369592.000461"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "179"
+            endingLineNumber = "179"
+            landmarkName = "Player::addPlayerBuffer(PlayerBuffer buff)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/UI/Layer/SkillLayer.cpp"
+            timestampString = "474374422.309927"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "251"
+            endingLineNumber = "251"
+            landmarkName = "SkillLayer::onTouchSkill(Ref* ref,Widget::TouchEventType type)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
