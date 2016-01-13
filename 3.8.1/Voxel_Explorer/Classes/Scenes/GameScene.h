@@ -25,8 +25,6 @@ public:
     virtual void onEnter() override;
     virtual void onExit() override;
     virtual void update(float delta) override;
-    
-    void loadGameThread();
 private:
     float timedt;
     bool isLoading;

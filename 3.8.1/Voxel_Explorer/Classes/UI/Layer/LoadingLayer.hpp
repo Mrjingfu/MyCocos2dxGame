@@ -24,7 +24,6 @@ public:
      
 private:
     cocos2d::ui::ImageView* m_LoadingIcon;
-    cocos2d::ui::ImageView* m_LoadingBg;
 };
 
 #endif /* LoadingLayer_hpp */

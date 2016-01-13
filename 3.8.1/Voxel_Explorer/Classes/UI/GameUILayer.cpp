@@ -106,7 +106,7 @@ bool GameUILayer::initUi()
     m_pAchievePopupUI->retain();
     setCharacterPropLayerVisible(false,false,false);
     
-    m_pWhiteLayer = LayerColor::create(Color4B::WHITE);
+    m_pWhiteLayer = LayerColor::create(Color4B::BLACK);
     if(!m_pWhiteLayer)
         return false;
     m_pRootLayer->addChild(m_pWhiteLayer);

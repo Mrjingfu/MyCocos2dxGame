@@ -55,7 +55,7 @@ void GameScene::update(float delta)
     Layer::update(delta);
     
     timedt+=delta;
-    if (timedt >0.2 && isLoading)
+    if (timedt > 3.0f && isLoading)
     {
         if (!VoxelExplorer::getInstance()->init(this)) {
             return ;
@@ -65,8 +65,7 @@ void GameScene::update(float delta)
         if (dungeonNode) {
             StatisticsManager::getInstance()->addArriveDungeon(dungeonNode->getDungeonNodeType());
         }
-        loadingLayer->setVisible(false);
-        
+        loadingLayer->removeFromParentAndCleanup(true);
         isLoading = false;
     }
     

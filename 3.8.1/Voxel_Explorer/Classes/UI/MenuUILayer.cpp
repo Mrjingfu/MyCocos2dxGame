@@ -65,7 +65,7 @@ bool MenuUILayer::addEvents()
     if (!m_pArchiveRestart)
         return false;
 
-    m_pWhiteLayer = LayerColor::create(Color4B::WHITE);
+    m_pWhiteLayer = LayerColor::create(Color4B::BLACK);
     if(!m_pWhiteLayer)
         return false;
     m_pRootNode->addChild(m_pWhiteLayer);
@@ -208,12 +208,12 @@ void MenuUILayer::switchToGameScene()
 {
     if(m_pWhiteLayer)
     {
-//      EaseExponentialOut* fadeIn = EaseExponentialOut::create(FadeIn::create(1.0f));
+        EaseExponentialOut* fadeIn = EaseExponentialOut::create(FadeIn::create(1.0f));
         CallFunc* callFunc = CallFunc::create([](){
             auto scene = GameScene::createScene();
             Director::getInstance()->replaceScene(scene);
         });
-        Sequence* sequence = Sequence::create(callFunc, NULL);
+        Sequence* sequence = Sequence::create(fadeIn, callFunc, NULL);
         m_pWhiteLayer->runAction(sequence);
     }
 }
