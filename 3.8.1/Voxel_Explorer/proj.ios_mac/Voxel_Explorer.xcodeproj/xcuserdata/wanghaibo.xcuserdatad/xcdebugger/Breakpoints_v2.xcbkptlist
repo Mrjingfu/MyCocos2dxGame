@@ -202,11 +202,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Player.cpp"
-            timestampString = "474288268.691306"
+            timestampString = "474377450.945651"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "966"
-            endingLineNumber = "966"
+            startingLineNumber = "967"
+            endingLineNumber = "967"
             landmarkName = "Player::onEnterJumpLocal()"
             landmarkType = "5">
          </BreakpointContent>
@@ -218,11 +218,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Player.cpp"
-            timestampString = "474288268.691306"
+            timestampString = "474377450.945651"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "539"
-            endingLineNumber = "539"
+            startingLineNumber = "540"
+            endingLineNumber = "540"
             landmarkName = "Player::rotateToLeft()"
             landmarkType = "5">
          </BreakpointContent>
@@ -1992,11 +1992,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Properties/PlayerProperty.cpp"
-            timestampString = "474189974.97581"
+            timestampString = "474377450.945651"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "896"
-            endingLineNumber = "896"
+            startingLineNumber = "906"
+            endingLineNumber = "906"
             landmarkName = "PlayerProperty::addItemToBag(PickableItem::PickableItemType type, CChaosNumber level, bool sound)"
             landmarkType = "5">
          </BreakpointContent>
@@ -2248,11 +2248,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Player.cpp"
-            timestampString = "474288268.691306"
+            timestampString = "474377450.945651"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "984"
-            endingLineNumber = "984"
+            startingLineNumber = "985"
+            endingLineNumber = "985"
             landmarkName = "Player::onEnterJumpMove()"
             landmarkType = "5">
          </BreakpointContent>
@@ -3768,11 +3768,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Player.cpp"
-            timestampString = "474288268.691306"
+            timestampString = "474377450.945651"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1152"
-            endingLineNumber = "1152"
+            startingLineNumber = "1153"
+            endingLineNumber = "1153"
             landmarkName = "Player::updatePlayerBuffer(float delta)"
             landmarkType = "5">
          </BreakpointContent>
@@ -4950,11 +4950,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Player.cpp"
-            timestampString = "474288268.691306"
+            timestampString = "474377450.945651"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1212"
-            endingLineNumber = "1212"
+            startingLineNumber = "1213"
+            endingLineNumber = "1213"
             landmarkName = "Player::updatePlayerBuffer(float delta)"
             landmarkType = "5">
          </BreakpointContent>
@@ -5382,11 +5382,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Properties/PlayerProperty.cpp"
-            timestampString = "473860743.839343"
+            timestampString = "474377450.945651"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "236"
-            endingLineNumber = "236"
+            startingLineNumber = "246"
+            endingLineNumber = "246"
             landmarkName = "PlayerProperty::equipWeapon(CChaosNumber id, bool sound)"
             landmarkType = "5">
          </BreakpointContent>
@@ -6580,11 +6580,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Player.cpp"
-            timestampString = "474288268.691306"
+            timestampString = "474377450.945651"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1073"
-            endingLineNumber = "1073"
+            startingLineNumber = "1074"
+            endingLineNumber = "1074"
             landmarkName = "Player::onEnterDeath()"
             landmarkType = "5">
          </BreakpointContent>
@@ -6596,11 +6596,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Player.cpp"
-            timestampString = "474288268.691306"
+            timestampString = "474377450.945651"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1072"
-            endingLineNumber = "1072"
+            startingLineNumber = "1073"
+            endingLineNumber = "1073"
             landmarkName = "Player::onEnterDeath()"
             landmarkType = "5">
          </BreakpointContent>
@@ -8898,11 +8898,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Player.cpp"
-            timestampString = "474288268.691306"
+            timestampString = "474377450.945651"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1090"
-            endingLineNumber = "1090"
+            startingLineNumber = "1091"
+            endingLineNumber = "1091"
             landmarkName = "Player::onExitDrop()"
             landmarkType = "5">
          </BreakpointContent>
@@ -8930,11 +8930,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Player.cpp"
-            timestampString = "474288268.691306"
+            timestampString = "474377450.945651"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1096"
-            endingLineNumber = "1096"
+            startingLineNumber = "1097"
+            endingLineNumber = "1097"
             landmarkName = "Player::onLand(bool isAttack)"
             landmarkType = "5">
          </BreakpointContent>
@@ -8994,23 +8994,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Player.cpp"
-            timestampString = "474288268.691306"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1094"
-            endingLineNumber = "1094"
-            landmarkName = "Player::onExitDeath()"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../Classes/Sprites3D/Player.cpp"
-            timestampString = "474288268.691306"
+            timestampString = "474377450.945651"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1095"
@@ -9026,11 +9010,27 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Player.cpp"
-            timestampString = "474288268.691306"
+            timestampString = "474377450.945651"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1093"
-            endingLineNumber = "1093"
+            startingLineNumber = "1096"
+            endingLineNumber = "1096"
+            landmarkName = "Player::onExitDeath()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/Sprites3D/Player.cpp"
+            timestampString = "474377450.945651"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1094"
+            endingLineNumber = "1094"
             landmarkName = "Player::onExitDeath()"
             landmarkType = "5">
          </BreakpointContent>
@@ -9058,11 +9058,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Player.cpp"
-            timestampString = "474288268.691306"
+            timestampString = "474377450.945651"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1088"
-            endingLineNumber = "1088"
+            startingLineNumber = "1089"
+            endingLineNumber = "1089"
             landmarkName = "Player::onExitAttack()"
             landmarkType = "5">
          </BreakpointContent>
@@ -9794,11 +9794,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Player.cpp"
-            timestampString = "474288268.691306"
+            timestampString = "474377450.945651"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "331"
-            endingLineNumber = "331"
+            startingLineNumber = "332"
+            endingLineNumber = "332"
             landmarkName = "Player::removePlayerBuffer(PlayerBuffer buff)"
             landmarkType = "5">
          </BreakpointContent>
@@ -9826,11 +9826,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Properties/PlayerProperty.cpp"
-            timestampString = "473849038.297909"
+            timestampString = "474377450.945651"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "115"
-            endingLineNumber = "115"
+            startingLineNumber = "120"
+            endingLineNumber = "120"
             landmarkName = "PlayerProperty::removePlayerBuffer(PlayerBuffer buff)"
             landmarkType = "5">
          </BreakpointContent>
@@ -9842,11 +9842,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Player.cpp"
-            timestampString = "474288268.691306"
+            timestampString = "474377450.945651"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1123"
-            endingLineNumber = "1123"
+            startingLineNumber = "1124"
+            endingLineNumber = "1124"
             landmarkName = "Player::onLand(bool isAttack)"
             landmarkType = "5">
          </BreakpointContent>
@@ -10034,11 +10034,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Properties/PlayerProperty.cpp"
-            timestampString = "474189974.97581"
+            timestampString = "474377450.945651"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1020"
-            endingLineNumber = "1020"
+            startingLineNumber = "1030"
+            endingLineNumber = "1030"
             landmarkName = "PlayerProperty::extendBagSpace()"
             landmarkType = "5">
          </BreakpointContent>
@@ -10050,11 +10050,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Properties/PlayerProperty.cpp"
-            timestampString = "474189974.97581"
+            timestampString = "474377450.945651"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "995"
-            endingLineNumber = "995"
+            startingLineNumber = "1005"
+            endingLineNumber = "1005"
             landmarkName = "PlayerProperty::removeStackableItemFromBag(PickableItem::PickableItemType type, CChaosNumber count)"
             landmarkType = "5">
          </BreakpointContent>
@@ -10071,7 +10071,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "189"
             endingLineNumber = "189"
-            landmarkName = "RoleLayer::updateEquipProp()"
+            landmarkName = "RoleLayer::addEvents()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -10242,11 +10242,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Properties/PlayerProperty.cpp"
-            timestampString = "473860743.839343"
+            timestampString = "474377450.945651"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "158"
-            endingLineNumber = "158"
+            startingLineNumber = "168"
+            endingLineNumber = "168"
             landmarkName = "PlayerProperty::getDefense()"
             landmarkType = "5">
          </BreakpointContent>
@@ -10754,11 +10754,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Properties/PlayerProperty.cpp"
-            timestampString = "474189974.97581"
+            timestampString = "474377450.945651"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "897"
-            endingLineNumber = "897"
+            startingLineNumber = "907"
+            endingLineNumber = "907"
             landmarkName = "PlayerProperty::addItemToBag(PickableItem::PickableItemType type, CChaosNumber level, bool sound)"
             landmarkType = "5">
          </BreakpointContent>
@@ -10818,11 +10818,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Properties/PlayerProperty.cpp"
-            timestampString = "474189974.97581"
+            timestampString = "474377450.945651"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1209"
-            endingLineNumber = "1209"
+            startingLineNumber = "1219"
+            endingLineNumber = "1219"
             landmarkName = "PlayerProperty::levelUp()"
             landmarkType = "5">
          </BreakpointContent>
@@ -10962,11 +10962,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Properties/PlayerProperty.cpp"
-            timestampString = "474189974.97581"
+            timestampString = "474377450.945651"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "791"
-            endingLineNumber = "791"
+            startingLineNumber = "801"
+            endingLineNumber = "801"
             landmarkName = "PlayerProperty::buyItemToBag(PickableItemProperty* buyItemProperty, CChaosNumber count, bool toIndentify, bool sound)"
             landmarkType = "5">
          </BreakpointContent>
@@ -11138,11 +11138,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Player.cpp"
-            timestampString = "474288268.691306"
+            timestampString = "474377450.945651"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1264"
-            endingLineNumber = "1264"
+            startingLineNumber = "1265"
+            endingLineNumber = "1265"
             landmarkName = "Player::addBlockRateUpEffectNode()"
             landmarkType = "5">
          </BreakpointContent>
@@ -11202,11 +11202,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Player.cpp"
-            timestampString = "474288268.691306"
+            timestampString = "474377450.945651"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "919"
-            endingLineNumber = "919"
+            startingLineNumber = "920"
+            endingLineNumber = "920"
             landmarkName = "Player::useSkillToAttack(PlayerSkill skill)"
             landmarkType = "5">
          </BreakpointContent>
@@ -11218,11 +11218,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Player.cpp"
-            timestampString = "474288268.691306"
+            timestampString = "474377450.945651"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "933"
-            endingLineNumber = "933"
+            startingLineNumber = "934"
+            endingLineNumber = "934"
             landmarkName = "Player::useSkillToAttack(PlayerSkill skill)"
             landmarkType = "5">
          </BreakpointContent>
@@ -11256,6 +11256,22 @@
             startingLineNumber = "43"
             endingLineNumber = "43"
             landmarkName = "LoadingLayer::loadingGameAction()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/UI/Layer/RoleLayer.cpp"
+            timestampString = "474377586.869993"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "238"
+            endingLineNumber = "238"
+            landmarkName = "RoleLayer::updateRoleProp()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

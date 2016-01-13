@@ -107,6 +107,11 @@ void PlayerProperty::addPlayerBuffer(PlayerBuffer buff)
         
         m_nBaseArmorClass = m_nBaseArmorClass + m_nLevel.GetLongValue();
     }
+    else if(buff == PB_BLOCKRATEUP)
+    {
+        m_fBlockRate = m_fBlockRate + 0.1f;
+        m_fBlockRate = MIN(m_fBlockRate.GetFloatValue(), 0.3f);
+    }
     m_BufferFlag = m_BufferFlag | buff;
     m_bDirty = true;
 }
@@ -129,6 +134,11 @@ void PlayerProperty::removePlayerBuffer(PlayerBuffer buff)
         m_nCurrentMP = MIN(m_nCurrentMP, m_nMaxMP);
         
         m_nBaseArmorClass = m_nBaseArmorClass - m_nLevel.GetLongValue();
+    }
+    else if(buff == PB_BLOCKRATEUP)
+    {
+        m_fBlockRate = m_fBlockRate - 0.1f;
+        m_fBlockRate = MAX(0, m_fBlockRate.GetFloatValue());
     }
     m_BufferFlag = m_BufferFlag &~ buff;
     m_bDirty = true;
