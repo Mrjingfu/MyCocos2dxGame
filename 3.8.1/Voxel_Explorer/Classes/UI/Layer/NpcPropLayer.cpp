@@ -14,7 +14,7 @@
 USING_NS_CC;
 NpcPropLayer::NpcPropLayer()
 {
-    m_pNpc = nullptr;
+   
 }
 NpcPropLayer::~NpcPropLayer()
 {
@@ -49,18 +49,15 @@ void NpcPropLayer::updateCharacterBuff()
 {
     
 }
-
-void NpcPropLayer::updateCharacterProp()
+void NpcPropLayer::setNpc(Npc *npc)
 {
-    if (!m_pNpc)
-        return;
     
-    std::string npcName = m_pNpc->getNpcName();
-    
-    m_pCharacterIcon->loadTexture(m_pNpc->getIconRes(),TextureResType::PLIST);
+    std::string npcName = npc->getNpcName();
+    m_pCharacterIcon->loadTexture(npc->getIconRes(),TextureResType::PLIST);
     m_pCharacterIcon->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
     m_pCharacterName->setString(npcName);
-
-    m_pNpc =nullptr;
+}
+void NpcPropLayer::updateCharacterProp()
+{
 
 }

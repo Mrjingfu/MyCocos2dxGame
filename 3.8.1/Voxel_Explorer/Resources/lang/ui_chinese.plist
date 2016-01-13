@@ -334,5 +334,13 @@
 	<string>丢弃失败！</string>
 	<key>GAME_INFO_FLOOR</key>
 	<string>%s %d层</string>
+	<key>SKILL_TIP_NOT_EQUIP</key>
+	<string>请装备副手武器！</string>
+	<key>SKILL_TIP_COOLING</key>
+	<string>技能冷却中!</string>
+	<key>SKILL_TIP_NOT_BLOOD_POTION</key>
+	<string>没有恢复药水了!</string>
+	<key>SKILL_TIP_NOT_MAGIC_POTION</key>
+	<string>没有魔法药水了!</string>
 </dict>
 </plist>

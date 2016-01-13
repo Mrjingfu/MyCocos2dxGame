@@ -1700,16 +1700,31 @@ bool VoxelExplorer::handlePlayerUseSkill()
         PlayerSkill skill = PlayerProperty::getInstance()->getPlayerSkill();
         switch (skill) {
             case PS_BLOCKRATEUP:
-                PlayerProperty::getInstance()->setCurrentMP(PlayerProperty::getInstance()->getCurrentMP() - 10);
-                m_pPlayer->addPlayerBuffer(PB_BLOCKRATEUP);
+                if (PlayerProperty::getInstance()->getCurrentMP() >=10)
+                {
+                    PlayerProperty::getInstance()->setCurrentMP(PlayerProperty::getInstance()->getCurrentMP() - 10);
+                    m_pPlayer->addPlayerBuffer(PB_BLOCKRATEUP);
+                    ret = true;
+                }else
+                    Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_NO_MANA);
                 break;
             case PS_FIREBALL:
-                PlayerProperty::getInstance()->setCurrentMP(PlayerProperty::getInstance()->getCurrentMP() - 8);
-                m_pPlayer->useSkillToAttack(skill);
+                if (PlayerProperty::getInstance()->getCurrentMP() >=8)
+                {
+                    PlayerProperty::getInstance()->setCurrentMP(PlayerProperty::getInstance()->getCurrentMP() - 8);
+                    m_pPlayer->useSkillToAttack(skill);
+                    ret = true;
+                }else
+                     Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_NO_MANA);
                 break;
             case PS_MAGICARROW:
-                PlayerProperty::getInstance()->setCurrentMP(PlayerProperty::getInstance()->getCurrentMP() - 12);
-                m_pPlayer->useSkillToAttack(skill);
+                if (PlayerProperty::getInstance()->getCurrentMP() >=12)
+                {
+                    PlayerProperty::getInstance()->setCurrentMP(PlayerProperty::getInstance()->getCurrentMP() - 12);
+                    m_pPlayer->useSkillToAttack(skill);
+                    ret = true;
+                }else
+                    Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_NO_MANA);
                 break;
             default:
                 break;
@@ -2047,21 +2062,21 @@ bool VoxelExplorer::createPlayer()
     {
         m_pPlayer->setPosition3D(Vec3(m_pCurrentLevel->getSpawnPoint().x, -0.5f*TerrainTile::CONTENT_SCALE, -m_pCurrentLevel->getSpawnPoint().y));
         if(node->m_Type == DT_CAVE || node->m_Type == DT_TOMB)
-            m_pPlayer->setRotation3D(Vec3(0,-90,0));
+            m_pPlayer->setActorDir(Actor::AD_LEFT);
         else if(node->m_Type == DT_MINES)
-            m_pPlayer->setRotation3D(Vec3(0,0,0));
+            m_pPlayer->setActorDir(Actor::AD_BACK);
         else
-            m_pPlayer->setRotation3D(Vec3(0,90,0));
+            m_pPlayer->setActorDir(Actor::AD_RIGHT);
     }
     else
     {
         m_pPlayer->setPosition3D(Vec3(m_pCurrentLevel->getReturnPoint().x, -0.5f*TerrainTile::CONTENT_SCALE, -m_pCurrentLevel->getReturnPoint().y));
         if(node->m_Type == DT_CAVE || node->m_Type == DT_TOMB)
-            m_pPlayer->setRotation3D(Vec3(0,90,0));
+            m_pPlayer->setActorDir(Actor::AD_RIGHT);
         else if(node->m_Type == DT_MINES)
-            m_pPlayer->setRotation3D(Vec3(0,0,0));
+            m_pPlayer->setActorDir(Actor::AD_BACK);
         else
-            m_pPlayer->setRotation3D(Vec3(0,-90,0));
+            m_pPlayer->setActorDir(Actor::AD_LEFT);
     }
     m_pPlayer->addTerrainTileFlag(TileInfo::ATTACKABLE);
     m_p3DLayer->addChild(m_pPlayer);

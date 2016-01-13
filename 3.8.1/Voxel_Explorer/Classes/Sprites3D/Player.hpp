@@ -95,6 +95,10 @@ private:
     
     void addBlockRateUpEffectNode();
     void removeBlockRateUpEffectNode();
+public:
+    static CChaosNumber                m_fBlockRateUpColdDownTime;    ///格挡率上升冷却时间
+    static CChaosNumber                m_fFireBallColdDownTime; ///火球冷却时间
+    static CChaosNumber                m_fMagicArrowColdDownTime; ///魔法箭矢冷却时间
 private:
     PlayerState                 m_curState;
     cocos2d::PointLight*        m_pPlayerLight;
@@ -111,9 +115,6 @@ private:
     static CChaosNumber                m_fFireTime;    ///着火时间
     
     static CChaosNumber                m_fBlockRateUpTime;    ///格挡率上升时间
-    static CChaosNumber                m_fBlockRateUpColdDownTime;    ///格挡率上升冷却时间
-    static CChaosNumber                m_fFireBallColdDownTime; ///火球冷却时间
-    static CChaosNumber                m_fMagicArrowColdDownTime; ///魔法箭矢冷却时间
 
     cocos2d::Node*                     m_pBlockRateUpNode;  ///格挡率上升特效节点
     

@@ -42,6 +42,7 @@
 #include "MenuScene.h"
 #include "GameScene.h"
 #include "LoadingLayer.hpp"
+#include "SkillLayer.hpp"
 USING_NS_CC;
 GameUILayer::GameUILayer()
 {
@@ -72,6 +73,11 @@ bool GameUILayer::initUi()
     m_pGameToolBarLayer->setAnchorPoint(cocos2d::Vec2::ANCHOR_MIDDLE_BOTTOM);
     m_pGameToolBarLayer->setPosition(cocos2d::Vec2(m_pRootLayer->getContentSize().width*0.5,0));
     m_pRootLayer->addChild(m_pGameToolBarLayer);
+    
+    m_pSkillLayer = SkillLayer::create();
+    m_pSkillLayer->getRootNode()->setAnchorPoint(cocos2d::Vec2::ANCHOR_MIDDLE_BOTTOM);
+    m_pSkillLayer->getRootNode()->setPosition(cocos2d::Vec2(m_pGameToolBarLayer->getContentSize().width*0.5,m_pGameToolBarLayer->getContentSize().height));
+    m_pGameToolBarLayer->addChild(m_pSkillLayer);
     
     m_pRolePropLayer = RolePropLayer::create();
     m_pRolePropLayer->setAnchorPoint(cocos2d::Vec2::ANCHOR_TOP_LEFT);
@@ -1066,6 +1072,9 @@ void GameUILayer::refreshUIView()
     if (m_pBossPropLayer) {
         m_pBossPropLayer->refreshUIView();
     }
+    if (m_pSkillLayer) {
+        m_pSkillLayer->refreshUIView();
+    }
 }
 void GameUILayer::onEventRoleLevelUp(cocos2d::EventCustom *sender)
 {
@@ -1102,6 +1111,25 @@ void GameUILayer::onEventRoleDead(cocos2d::EventCustom *sender)
 void GameUILayer::onEventRoleFallAndDie(cocos2d::EventCustom *sender)
 {
     CCLOG("onEventRoleFallAndDie");
+}
+void GameUILayer::onEvenetRoleEquipedWeapon(cocos2d::EventCustom *sender)
+{
+    CCLOG("onEvenetRoleEquipedWeapon");
+}
+void GameUILayer::onEvenetRoleEquipedSecondWeapon(cocos2d::EventCustom *sender)
+{
+    CCLOG("onEvenetRoleEquipedSecondWeapon");
+    if (m_pSkillLayer) {
+        m_pSkillLayer->refreshSkillView();
+    }
+}
+void GameUILayer::onEvenetRoleEquipedArmor(cocos2d::EventCustom *sender)
+{
+    CCLOG("onEvenetRoleEquipedArmor");
+}
+void GameUILayer::onEvenetRoleEquipedOrnaments(cocos2d::EventCustom *sender)
+{
+    CCLOG("onEvenetRoleEquipedOrnaments");
 }
 
 void GameUILayer::onEventRoleHud(cocos2d::EventCustom *sender)
@@ -1356,6 +1384,13 @@ void GameUILayer::onEnter()
    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_PLAYER_FALL_AND_DIE, CC_CALLBACK_1(GameUILayer::onEventRoleFallAndDie,this));
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_PLAYER_LEVEL_UP, CC_CALLBACK_1(GameUILayer::onEventRoleLevelUp,this));
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_PLAYER_HURT, CC_CALLBACK_1(GameUILayer::onEventRoleHud,this));
+   
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_PLAYER_EQUIPED_WEAPON, CC_CALLBACK_1(GameUILayer::onEvenetRoleEquipedWeapon,this));
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_PLAYER_EQUIPED_ARMOR, CC_CALLBACK_1(GameUILayer::onEvenetRoleEquipedArmor,this));
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_PLAYER_EQUIPED_ORNAMENTS, CC_CALLBACK_1(GameUILayer::onEvenetRoleEquipedOrnaments,this));
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_PLAYER_EQUIPED_SECOND_WEAPON, CC_CALLBACK_1(GameUILayer::onEvenetRoleEquipedSecondWeapon,this));
+
+    
     
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_PLAYER_MONEY_NOT_ENOUGH, CC_CALLBACK_1(GameUILayer::onEventRoleMoneyNotEnough,this));
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_PLAYER_NO_MANA, CC_CALLBACK_1(GameUILayer::onEventRoleNoMana,this));
@@ -1459,6 +1494,12 @@ void GameUILayer::onExit()
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_PLAYER_DEATH);
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_PLAYER_FALL_AND_DIE);
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_PLAYER_HURT);
+    
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_PLAYER_EQUIPED_WEAPON);
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_PLAYER_EQUIPED_ARMOR);
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_PLAYER_EQUIPED_ORNAMENTS);
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_PLAYER_EQUIPED_SECOND_WEAPON);
+    
     
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_PLAYER_MONEY_NOT_ENOUGH);
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_PLAYER_NO_MANA);

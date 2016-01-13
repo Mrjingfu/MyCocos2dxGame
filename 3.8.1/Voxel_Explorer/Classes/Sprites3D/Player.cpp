@@ -1316,8 +1316,6 @@ void Player::addBlockRateUpEffectNode()
         this->addChild(m_pBlockRateUpNode);
         m_pBlockRateUpNode->setScale(0.0f);
     }
-    else
-    {
         m_pBlockRateUpNode->stopActionByTag(2);
         m_pBlockRateUpNode->setScale(0.0f);
         EaseSineOut* scaleTo = EaseSineOut::create(ScaleTo::create(0.5f, 1.0f));
@@ -1326,7 +1324,7 @@ void Player::addBlockRateUpEffectNode()
         RepeatForever* repeat = RepeatForever::create(spawn);
         repeat->setTag(1);
         m_pBlockRateUpNode->runAction(repeat);
-    }
+    
 }
 void Player::removeBlockRateUpEffectNode()
 {
