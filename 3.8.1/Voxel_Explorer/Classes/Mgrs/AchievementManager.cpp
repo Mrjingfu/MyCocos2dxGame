@@ -11,6 +11,7 @@
 #include "EventConst.h"
 #include "LevelResourceManager.h"
 #include "SimpleAudioEngine.h"
+#include "SdkBoxManager.hpp"
 USING_NS_CC;
 using namespace CocosDenshion;
 AchievementManager::AchievementManager()
@@ -132,7 +133,12 @@ void AchievementManager::handleAchievement(eAchievementDetailType achiId)
         return;
     }
     if (!achieveProp->isCommple())
+    {
         updateAchieve(achieveProp);
+#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM ==CC_PLATFORM_ANDROID )
+        SdkBoxManager::getInstance()->logEvent("Player", "AchieveComplete", "AchieveType", (int)achiId);
+#endif
+    }
 
 }
 void AchievementManager::updateAchieve(AchieveProperty *achieve)

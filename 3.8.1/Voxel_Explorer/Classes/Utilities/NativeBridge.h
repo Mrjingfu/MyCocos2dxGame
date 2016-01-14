@@ -29,16 +29,7 @@ public:
     void exitGame();
     void openGooglePlay();
 #endif
-    void initAdmob();
-    void showAdsView();
-    void hideAdsView();
     void playInterstitialAds();
-    void showIndicatorView();
-    void hideIndicatorView();
-    
-    void showRateAppView();
-    
-    std::string generateUUID();
 private:
 #if CC_TARGET_PLATFORM == CC_PLATFORM_IOS 
     RootViewController* mViewController;

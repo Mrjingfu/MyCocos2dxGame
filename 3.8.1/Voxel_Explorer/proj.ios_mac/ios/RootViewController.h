@@ -24,11 +24,16 @@
  ****************************************************************************/
 
 #import <UIKit/UIKit.h>
-
-
-@interface RootViewController : UIViewController {
-
+#import <GoogleMobileAds/GADBannerView.h>
+#import <GoogleMobileAds/GADInterstitial.h>
+@interface RootViewController : UIViewController<GADInterstitialDelegate> {
+    GADInterstitial *admobInterstitial;
 }
 - (BOOL) prefersStatusBarHidden;
+- (void) requestAndLoadInterstitialAds;
+- (void) playInterstitialAds;
 
+- (GADRequest *)createRequest;
+
+- (void) openItunesURL:(NSString*) urlStr;
 @end

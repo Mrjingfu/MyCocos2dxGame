@@ -19,6 +19,7 @@
 #include "OutlineEffect3D.h"
 #include "PlayerFireBallBullet.hpp"
 #include "PlayerMagicArrowBullet.hpp"
+#include "SdkBoxManager.hpp"
 USING_NS_CC;
 using namespace CocosDenshion;
 
@@ -474,9 +475,6 @@ void Player::setState(PlayerState state)
         case PlayerState::PS_ATTACK:
             onExitAttack();
             break;
-        case PlayerState::PS_DROP:
-            onExitDrop();
-            break;
         case PlayerState::PS_DEATH:
             onExitDeath();
             break;
@@ -501,9 +499,6 @@ void Player::setState(PlayerState state)
             break;
         case PlayerState::PS_ATTACK:
             onEnterAttack();
-            break;
-        case PlayerState::PS_DROP:
-            onEnterDrop();
             break;
         case PlayerState::PS_DEATH:
             onEnterDeath();
@@ -644,6 +639,9 @@ void Player::attackByMonster(MonsterProperty* monsterProperty, bool miss)
         setState(PS_DEATH);
         PlayerProperty::getInstance()->setCurrentHP(currentHp);
         StatisticsManager::getInstance()->addRoleDeadNum(StatisticsManager::eRoleDeadType::RET_MONSTER_ATTACK);
+#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM ==CC_PLATFORM_ANDROID )
+        SdkBoxManager::getInstance()->logEvent("Player", "Death", "AttackByMonster", 1);
+#endif
     }
     else
     {
@@ -723,6 +721,9 @@ void Player::attackByBoss(BossProperty* bossProperty, bool miss)
         setState(PS_DEATH);
         PlayerProperty::getInstance()->setCurrentHP(currentHp);
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_DEATH, this);
+#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM ==CC_PLATFORM_ANDROID )
+        SdkBoxManager::getInstance()->logEvent("Player", "Death", "AttackByBoss", 1);
+#endif
     }
     else
     {
@@ -801,7 +802,9 @@ void Player::hurtByGrippingTrap()
         setState(PS_DEATH);
         PlayerProperty::getInstance()->setCurrentHP(currentHp);
         StatisticsManager::getInstance()->addRoleDeadNum(StatisticsManager::eRoleDeadType::RET_TRIGGER_GRIPPING_TRAP);
-//        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_DEATH, this);
+#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM ==CC_PLATFORM_ANDROID )
+        SdkBoxManager::getInstance()->logEvent("Player", "Death", "TriggerGrippingTrap", 1);
+#endif
     }
     else
     {
@@ -859,6 +862,9 @@ void Player::healedbyNurse()
     PlayerProperty::getInstance()->healedbyNurse();
     
     VoxelExplorer::getInstance()->addParticle3DEffectToPlayer(P3D_PLAYER_USE_POTION_TAKE_EFFECT);
+    
+    std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("USE_SCROLL");
+    SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
 }
 void Player::useSkillToAttack(PlayerSkill skill)
 {
@@ -948,6 +954,11 @@ void Player::onEnterIdle()
 {
     EaseSineOut* scaleTo = EaseSineOut::create(ScaleTo::create(0.1f, 1.0f, 1.0f, 1.0f));
     this->runAction(scaleTo);
+    
+    if(m_pFakeShadow)
+        m_pFakeShadow->setVisible(true);
+    this->setVisible(true);
+
 }
 void Player::onEnterPrepareToJump()
 {
@@ -1051,9 +1062,7 @@ void Player::onEnterAttack()
     else
         this->runAction(sequence);
 }
-void Player::onEnterDrop()
-{
-}
+
 void Player::onEnterDeath()
 {
     auto tex = Director::getInstance()->getTextureCache()->addImage("chr_sword.png");
@@ -1086,9 +1095,6 @@ void Player::onExitJumpMove()
 {
 }
 void Player::onExitAttack()
-{
-}
-void Player::onExitDrop()
 {
 }
 void Player::onExitDeath()
@@ -1125,9 +1131,6 @@ void Player::onLand(bool isAttack)
     {
         VoxelExplorer::getInstance()->addParticle3DEffectToPlayer(P3D_EFFECT_TYPE::P3D_STEALTH_BUFFER, true);
     }
-    
-    /// for debug
-    //useSkillToAttack(PS_FIREBALL);
 }
 void Player::onFallDie()
 {
@@ -1190,6 +1193,9 @@ void Player::updatePlayerBuffer(float delta)
                     setState(PS_DEATH);
                     PlayerProperty::getInstance()->setCurrentHP(currentHp);
                     StatisticsManager::getInstance()->addRoleDeadNum(StatisticsManager::eRoleDeadType::RET_BUFFER_FIRE);
+#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM ==CC_PLATFORM_ANDROID )
+                    SdkBoxManager::getInstance()->logEvent("Player", "Death", "KilledByBufferFire", 1);
+#endif
                 }
                 else
                 {
@@ -1217,6 +1223,9 @@ void Player::updatePlayerBuffer(float delta)
                 setState(PS_DEATH);
                 PlayerProperty::getInstance()->setCurrentHP(currentHp);
                 StatisticsManager::getInstance()->addRoleDeadNum(StatisticsManager::eRoleDeadType::RET_BUFFER_POISONING);
+#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM ==CC_PLATFORM_ANDROID )
+                SdkBoxManager::getInstance()->logEvent("Player", "Death", "KilledByBufferPoisoning", 1);
+#endif
             }
             else
             {

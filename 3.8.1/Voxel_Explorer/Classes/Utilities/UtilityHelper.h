@@ -14,6 +14,7 @@
 class UtilityHelper
 {
 public:
+    static std::string getAppStoreURL();
     static std::string getLocalString(const std::string& key);
     static std::string getLocalStringForUi(const std::string& key);
     static std::string getLocalStringForPlist(const std::string& key,const std::string cn_plist,const std::string en_plist);

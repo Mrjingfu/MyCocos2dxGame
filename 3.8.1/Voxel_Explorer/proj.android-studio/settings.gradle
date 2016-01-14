@@ -2,3 +2,6 @@ include ':libcocos2dx'
 project(':libcocos2dx').projectDir = new File(settingsDir, '../cocos2d/cocos/platform/android/libcocos2dx')
 include ':Voxel_Explorer'
 project(':Voxel_Explorer').projectDir = new File(settingsDir, 'app')
+
+include ':gps'
+project(':gps').projectDir = new File(settingsDir, '../cocos2d/cocos/platform/android/java/libs/gps')

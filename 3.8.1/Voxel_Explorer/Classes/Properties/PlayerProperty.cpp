@@ -23,6 +23,7 @@
 #include "StatisticsManager.hpp"
 #include "SimpleAudioEngine.h"
 #include "LevelResourceManager.h"
+#include "SdkBoxManager.hpp"
 USING_NS_CC;
 using namespace CocosDenshion;
 
@@ -171,7 +172,6 @@ void PlayerProperty::addMoney( CChaosNumber copper, bool sound)
 {
     StatisticsManager::getInstance()->addCopperTotalNum(copper);
     m_nValueCopper = m_nValueCopper + copper.GetLongValue();
-    
     if(sound)
     {
         std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("COIN_DROP");
@@ -628,6 +628,9 @@ bool PlayerProperty::indentifyItem(CChaosNumber id)
         m_bDirty = true;
         std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("INDENTIFY_OK");
         SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM ==CC_PLATFORM_ANDROID )
+        SdkBoxManager::getInstance()->logEvent("Player", "IndentifyItem", "ItemType", (int)(pickableItemProperty->getPickableItemType()));
+#endif
         return true;
     }
     std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("HANDLE_FAILED");
@@ -806,6 +809,9 @@ bool PlayerProperty::buyItemToBag(PickableItemProperty* buyItemProperty, CChaosN
                         m_bDirty = true;
                         if(sound)
                             playPickupItemSound(buyItemProperty);
+#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM ==CC_PLATFORM_ANDROID )
+                        SdkBoxManager::getInstance()->logEvent("Player", "BuyItem", "ItemType", (int)(buyItemProperty->getPickableItemType()));
+#endif
                         return true;
                     }
                 }
@@ -816,6 +822,9 @@ bool PlayerProperty::buyItemToBag(PickableItemProperty* buyItemProperty, CChaosN
         {
             StatisticsManager::getInstance()->addBagFullNum();
             Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_BAG_NO_SPACE);
+#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM ==CC_PLATFORM_ANDROID )
+            SdkBoxManager::getInstance()->logEvent("Player", "BuyItem", "BagNoSpace", 0);
+#endif
             return false;
         }
         else
@@ -844,6 +853,9 @@ bool PlayerProperty::buyItemToBag(PickableItemProperty* buyItemProperty, CChaosN
                     if(sound)
                         playPickupItemSound(itemProperty);
                 }
+#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM ==CC_PLATFORM_ANDROID )
+                SdkBoxManager::getInstance()->logEvent("Player", "BuyItem", "ItemType", (int)(itemProperty->getPickableItemType()));
+#endif
                 return true;
             }
         }
@@ -854,6 +866,9 @@ bool PlayerProperty::buyItemToBag(PickableItemProperty* buyItemProperty, CChaosN
         {
             StatisticsManager::getInstance()->addBagFullNum();
             Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_BAG_NO_SPACE);
+#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM ==CC_PLATFORM_ANDROID )
+            SdkBoxManager::getInstance()->logEvent("Player", "BuyItem", "BagNoSpace", 0);
+#endif
             return false;
         }
         
@@ -872,6 +887,9 @@ bool PlayerProperty::buyItemToBag(PickableItemProperty* buyItemProperty, CChaosN
             m_bDirty = true;
             if(sound)
                 playPickupItemSound(buyItemProperty);
+#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM ==CC_PLATFORM_ANDROID )
+            SdkBoxManager::getInstance()->logEvent("Player", "BuyItem", "ItemType", (int)(buyItemProperty->getPickableItemType()));
+#endif
             return true;
         }
     }
@@ -888,6 +906,9 @@ bool PlayerProperty::sellItemFromBag(PickableItemProperty* sellItemProperty, CCh
         if(removeStackableItemFromBag(sellItemProperty->getPickableItemType(), count))
         {
             addMoney(valueCopper);
+#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM ==CC_PLATFORM_ANDROID )
+            SdkBoxManager::getInstance()->logEvent("Player", "SellItem", "ItemType", (int)(sellItemProperty->getPickableItemType()));
+#endif
             return true;
         }
     }
@@ -898,6 +919,9 @@ bool PlayerProperty::sellItemFromBag(PickableItemProperty* sellItemProperty, CCh
         if(removeItemFromBag((int)(sellItemProperty->getInstanceID())))
         {
             addMoney(valueCopper);
+#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM ==CC_PLATFORM_ANDROID )
+            SdkBoxManager::getInstance()->logEvent("Player", "SellItem", "ItemType", (int)(sellItemProperty->getPickableItemType()));
+#endif
             return true;
         }
     }
@@ -1034,6 +1058,9 @@ void PlayerProperty::extendBagSpace()
         
         std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("HANDLE_FAILED");
         SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM ==CC_PLATFORM_ANDROID )
+        SdkBoxManager::getInstance()->logEvent("Player", "ExtendBagSpace", "Failed", 0);
+#endif
     }
     else
     {
@@ -1044,6 +1071,10 @@ void PlayerProperty::extendBagSpace()
         
         std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("EXTEND_BAG_OK");
         SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+        
+#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM ==CC_PLATFORM_ANDROID )
+        SdkBoxManager::getInstance()->logEvent("Player", "ExtendBagSpaceOK", "Times", m_nBagExtendTimes);
+#endif
     }
 }
 CChaosNumber PlayerProperty::getRandomAttack()
@@ -1223,6 +1254,10 @@ void PlayerProperty::levelUp()
     SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
     StatisticsManager::getInstance()->addRoleAttr();
     VoxelExplorer::getInstance()->addParticle3DEffectToPlayer(P3D_PLAYER_LEVELUP);
+    
+#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM ==CC_PLATFORM_ANDROID )
+    SdkBoxManager::getInstance()->logEvent("Player", "LevelUp", "level", (int)m_nLevel.GetLongValue());
+#endif
 }
 PickableItemProperty* PlayerProperty::getItemFromBag(CChaosNumber id) const
 {

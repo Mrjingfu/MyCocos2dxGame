@@ -45,6 +45,7 @@
 #include "StatisticsManager.hpp"
 #include "SimpleAudioEngine.h"
 #include "GameUILayer.h"
+#include "SdkBoxManager.hpp"
 USING_NS_CC;
 using namespace CocosDenshion;
 const std::string P3D_EFFECT_NAMES[] = {
@@ -176,7 +177,27 @@ void VoxelExplorer::gameResume()
     }
 
 }
-
+void VoxelExplorer::respawnPlayer()
+{
+    if(!m_pPlayer || !m_pCurrentLevel || !m_p3DLayer)
+        return;
+    if(m_pPlayer->getState() == Player::PS_DEATH)
+    {
+        Vec2 pos = m_pPlayer->getLastPosInMap();
+        Vec3 respawnPos = Vec3(pos.x*TerrainTile::CONTENT_SCALE, -0.5f*TerrainTile::CONTENT_SCALE, -pos.y*TerrainTile::CONTENT_SCALE);
+        m_pPlayer->setPosition3D(respawnPos);
+        m_pPlayer->healedbyNurse();
+        m_pPlayer->addTerrainTileFlag(TileInfo::ATTACKABLE);
+        
+        m_pMainCamera->setPosition3D(m_pPlayer->getPosition3D() + Vec3(0, 5*TerrainTile::CONTENT_SCALE, 4*TerrainTile::CONTENT_SCALE ));
+        m_pMainCamera->lookAt(m_pPlayer->getPosition3D() + Vec3(0,0.5f*TerrainTile::CONTENT_SCALE,0));
+        m_pPlayer->setState(Player::PS_IDLE);
+        
+#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID )
+        SdkBoxManager::getInstance()->logEvent("Player", "Respawn", "", 1);
+#endif
+    }
+}
 std::string VoxelExplorer::getScreenPickDesc(const cocos2d::Vec2& screenPos, std::string& strIcon, ValueMap& event, bool& isTraps, bool& isCanRemove, cocos2d::Vec2& checkpos)
 {
     if(m_pMainCamera && m_p3DLayer)
@@ -199,6 +220,9 @@ std::string VoxelExplorer::getScreenPickDesc(const cocos2d::Vec2& screenPos, std
             {
                 PickableItem* item = dynamic_cast<PickableItem*>(child);
                 if (item && item->isVisible() && ray.intersects(item->getAABB())) {
+#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM ==CC_PLATFORM_ANDROID )
+                    SdkBoxManager::getInstance()->logEvent("Player", "ScreenPick", "PickableItem", 1);
+#endif
                     return item->getDesc();
                 }
             }
@@ -210,6 +234,9 @@ std::string VoxelExplorer::getScreenPickDesc(const cocos2d::Vec2& screenPos, std
             {
                 BaseMonster* monster = dynamic_cast<BaseMonster*>(child);
                 if (monster && monster->isVisible() && ray.intersects(monster->getAABB())) {
+#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM ==CC_PLATFORM_ANDROID )
+                    SdkBoxManager::getInstance()->logEvent("Player", "ScreenPick", "Monster", 1);
+#endif
                     strIcon = monster->getIconRes();
                     return monster->getDesc();
                 }
@@ -221,6 +248,9 @@ std::string VoxelExplorer::getScreenPickDesc(const cocos2d::Vec2& screenPos, std
             {
                 Npc* npc = dynamic_cast<Npc*>(child);
                 if (npc && npc->isVisible() && ray.intersects(npc->getAABB())) {
+#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM ==CC_PLATFORM_ANDROID )
+                    SdkBoxManager::getInstance()->logEvent("Player", "ScreenPick", "NPC", 1);
+#endif
                     strIcon = npc->getIconRes();
                     return npc->getDesc();
                 }
@@ -231,6 +261,9 @@ std::string VoxelExplorer::getScreenPickDesc(const cocos2d::Vec2& screenPos, std
             for (auto child : m_pBossLayer->getChildren()) {
                 BaseBoss* boss = dynamic_cast<BaseBoss*>(child);
                 if(boss && boss->isVisible() && ray.intersects(boss->getAABB())){
+#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM ==CC_PLATFORM_ANDROID )
+                    SdkBoxManager::getInstance()->logEvent("Player", "ScreenPick", "Boss", 1);
+#endif
                     strIcon = boss->getIconRes();
                     return boss->getDesc();
                 }
@@ -242,6 +275,9 @@ std::string VoxelExplorer::getScreenPickDesc(const cocos2d::Vec2& screenPos, std
             {
                 UseableItem* item = dynamic_cast<UseableItem*>(child);
                 if (item && item->isVisible() && ray.intersects(item->getAABB())) {
+#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM ==CC_PLATFORM_ANDROID )
+                    SdkBoxManager::getInstance()->logEvent("Player", "ScreenPick", "UseableItem", 1);
+#endif
                     return item->getDesc();
                 }
             }
@@ -253,6 +289,9 @@ std::string VoxelExplorer::getScreenPickDesc(const cocos2d::Vec2& screenPos, std
             {
                 BasePortal* portal = dynamic_cast<BasePortal*>(child);
                 if (portal && portal->isVisible() && ray.intersects(portal->getAABB())) {
+#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM ==CC_PLATFORM_ANDROID )
+                    SdkBoxManager::getInstance()->logEvent("Player", "ScreenPick", "Protal", 1);
+#endif
                     return portal->getDesc();
                 }
             }
@@ -264,6 +303,9 @@ std::string VoxelExplorer::getScreenPickDesc(const cocos2d::Vec2& screenPos, std
             {
                 BaseDoor* door = dynamic_cast<BaseDoor*>(child);
                 if (door && door->isVisible() && ray.intersects(door->getAABB())) {
+#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM ==CC_PLATFORM_ANDROID )
+                    SdkBoxManager::getInstance()->logEvent("Player", "ScreenPick", "Door", 1);
+#endif
                     return door->getDesc();
                 }
             }
@@ -275,7 +317,9 @@ std::string VoxelExplorer::getScreenPickDesc(const cocos2d::Vec2& screenPos, std
             {
                 TerrainTile* tile = dynamic_cast<TerrainTile*>(child);
                 if (tile && tile->isVisible() && ray.intersects(tile->getAABB())) {
-                    
+#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM ==CC_PLATFORM_ANDROID )
+                    SdkBoxManager::getInstance()->logEvent("Player", "ScreenPick", "TerrainTile", 1);
+#endif
                     TerrainTile::TileType type = m_pCurrentLevel->getTerrainTileType(tile->getPosInMap().x, tile->getPosInMap().y);
                     if(type != TerrainTile::TT_STANDARD  && type != TerrainTile::TT_WALL)
                     {
@@ -325,6 +369,9 @@ std::string VoxelExplorer::getScreenPickDesc(const cocos2d::Vec2& screenPos, std
                                 ValueMap* randEvent = RandomEventMgr::getInstance()->getRandomEvent();
                                 if(randEvent->at("HAS_READED").asBool())
                                 {
+#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM ==CC_PLATFORM_ANDROID )
+                                    SdkBoxManager::getInstance()->logEvent("Player", "ScreenPick", "FoundHiddenMsg", 0);
+#endif
                                     m_pCurrentLevel->setTerrainTileSearched(tile->getPosInMap().x, tile->getPosInMap().y);
                                     return tile->getDesc();
                                 }
@@ -333,6 +380,9 @@ std::string VoxelExplorer::getScreenPickDesc(const cocos2d::Vec2& screenPos, std
                                     bool foundWall = (type == TerrainTile::TT_WALL);
                                     if(foundWall)
                                     {
+#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM ==CC_PLATFORM_ANDROID )
+                                        SdkBoxManager::getInstance()->logEvent("Player", "ScreenPick", "FoundHiddenMsg", 1);
+#endif
                                         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_FOUND_HIDDEN_MSG);
                                         StatisticsManager::getInstance()->addHideInfoNum(StatisticsManager::eHideInfoType::HIT_MSG);
                                         std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("SECRET_FOUND");
@@ -346,6 +396,9 @@ std::string VoxelExplorer::getScreenPickDesc(const cocos2d::Vec2& screenPos, std
                                     {
                                         if(randEvent && randEvent->at("EVENT_TYPE").asInt() != (int)RANDOM_EVENT_TYPE::RET_WALL_STANDARD)
                                         {
+#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM ==CC_PLATFORM_ANDROID )
+                                            SdkBoxManager::getInstance()->logEvent("Player", "ScreenPick", "FoundHiddenMsg", 1);
+#endif
                                             Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_FOUND_HIDDEN_MSG);
                                             StatisticsManager::getInstance()->addHideInfoNum(StatisticsManager::eHideInfoType::HIT_MSG);
                                             std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("SECRET_FOUND");
@@ -357,6 +410,9 @@ std::string VoxelExplorer::getScreenPickDesc(const cocos2d::Vec2& screenPos, std
                                         }
                                         else
                                         {
+#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM ==CC_PLATFORM_ANDROID )
+                                            SdkBoxManager::getInstance()->logEvent("Player", "ScreenPick", "FoundHiddenMsg", 0);
+#endif
                                             m_pCurrentLevel->setTerrainTileSearched(tile->getPosInMap().x, tile->getPosInMap().y);
                                             return tile->getDesc();
                                         }
@@ -397,7 +453,7 @@ void VoxelExplorer::checkPickItem()
     if(!m_pCurrentLevel || !m_pPlayer)
         return;
     int flag = m_pCurrentLevel->getTerrainTileFlag(m_pPlayer->getPosInMap().x, m_pPlayer->getPosInMap().y);
-    if(flag & TileInfo::PICKABLE)
+    //if(flag & TileInfo::PICKABLE)
         handlePickItem(m_pPlayer->getPosInMap());
 }
 void VoxelExplorer::checkUpdateFogOfWar()
@@ -695,11 +751,17 @@ void VoxelExplorer::searchAndCheck()    ///侦查
         int searchDistance = PlayerProperty::getInstance()->getSearchDistance();
         if(!m_pCurrentLevel->searchAndCheck(playerPosInMap.x, playerPosInMap.y, searchDistance))
         {
+#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM ==CC_PLATFORM_ANDROID )
+            SdkBoxManager::getInstance()->logEvent("Player", "Search", "NothingFound", 0);
+#endif
             std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("SEARCH");
             SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
         }
         else
         {
+#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM ==CC_PLATFORM_ANDROID )
+            SdkBoxManager::getInstance()->logEvent("Player", "Search", "SecretFound", 1);
+#endif
             std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("SECRET_FOUND");
             SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
         }
@@ -930,6 +992,9 @@ void VoxelExplorer::handleDoor(const cocos2d::Vec2& mapPos)
             {
                 if(door->getDoorState() == BaseDoor::DS_HIDE)
                 {
+#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM ==CC_PLATFORM_ANDROID )
+                    SdkBoxManager::getInstance()->logEvent("Player", "Handle", "SecretFound", 1);
+#endif
                     door->setDoorState(BaseDoor::DS_CLOSED);
                     m_pCurrentLevel->setTerrainTileType(mapPos.x, mapPos.y, TerrainTile::TT_DOOR);
                     
@@ -1018,6 +1083,10 @@ void VoxelExplorer::handleUseUseableItem(const cocos2d::Vec2& mapPos)
                     SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
                     
                     useableItem->setState(UseableItem::UIS_FADEOUT);
+                    
+#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM ==CC_PLATFORM_ANDROID )
+                    SdkBoxManager::getInstance()->logEvent("Player", "handleUseableItem", "OpenNoLockChest", (int)useableItem->getUseableItemType());
+#endif
                     return;
                 }
                 else if(useableItem->getUseableItemType() <= UseableItem::UIT_CHEST_GOLD)
@@ -1034,6 +1103,9 @@ void VoxelExplorer::handleUseUseableItem(const cocos2d::Vec2& mapPos)
                 
                             useableItem->setState(UseableItem::UIS_FADEOUT);
                             Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_USE_COPPER_CHEST_KEY);
+#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM ==CC_PLATFORM_ANDROID )
+                            SdkBoxManager::getInstance()->logEvent("Player", "handleUseableItem", "OpenLockedChest", (int)useableItem->getUseableItemType());
+#endif
                         }
                         else
                         {
@@ -1055,6 +1127,9 @@ void VoxelExplorer::handleUseUseableItem(const cocos2d::Vec2& mapPos)
                             
                             useableItem->setState(UseableItem::UIS_FADEOUT);
                             Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_USE_SILVER_CHEST_KEY);
+#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM ==CC_PLATFORM_ANDROID )
+                            SdkBoxManager::getInstance()->logEvent("Player", "handleUseableItem", "OpenLockedChest", (int)useableItem->getUseableItemType());
+#endif
                         }
                         else
                         {
@@ -1075,7 +1150,9 @@ void VoxelExplorer::handleUseUseableItem(const cocos2d::Vec2& mapPos)
                             
                             useableItem->setState(UseableItem::UIS_FADEOUT);
                             Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_USE_GOLD_CHEST_KEY);
-
+#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM ==CC_PLATFORM_ANDROID )
+                            SdkBoxManager::getInstance()->logEvent("Player", "handleUseableItem", "OpenLockedChest", (int)useableItem->getUseableItemType());
+#endif
                         }
                         else
                         {
@@ -1089,6 +1166,9 @@ void VoxelExplorer::handleUseUseableItem(const cocos2d::Vec2& mapPos)
                 }
                 else
                 {
+#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM ==CC_PLATFORM_ANDROID )
+                    SdkBoxManager::getInstance()->logEvent("Player", "handleUseableItem", "DestroyJar", 1);
+#endif
                     int rand = cocos2d::random(0, 2);
                     if(rand == 0)
                     {
@@ -1119,6 +1199,9 @@ void VoxelExplorer::handleUseUseableItem(const cocos2d::Vec2& mapPos)
             Npc* npc = dynamic_cast<Npc*>(child);
             if(npc && npc->getPosInMap() == mapPos)
             {
+#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM ==CC_PLATFORM_ANDROID )
+                SdkBoxManager::getInstance()->logEvent("Player", "MeetNpc", "NpcType", (int)npc->getNPCType());
+#endif
                 npc->setState(Npc::NPCS_ANSWER);
                 return;
             }
@@ -1416,19 +1499,41 @@ void VoxelExplorer::handlePlayerUseScroll(PickableItem::PickableItemType type)
                 m_pPlayer->setState(Player::PS_IDLE);
                 
                 VoxelExplorer::getInstance()->addParticle3DEffect(Vec3(pos.x*TerrainTile::CONTENT_SCALE, -0.5f*TerrainTile::CONTENT_SCALE, -pos.y*TerrainTile::CONTENT_SCALE), P3D_PLAYER_TELEPORT);
+                
+#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM ==CC_PLATFORM_ANDROID )
+                SdkBoxManager::getInstance()->logEvent("Player", "UseScroll", "TeleportScroll", 1);
+#endif
             }
             break;
         case PickableItem::PickableItemType::PIT_SCROLL_SPEED:
-            m_pPlayer->addPlayerBuffer(PB_SPEEDUP);
+            {
+                m_pPlayer->addPlayerBuffer(PB_SPEEDUP);
+#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM ==CC_PLATFORM_ANDROID )
+                SdkBoxManager::getInstance()->logEvent("Player", "UseScroll", "SpeedScroll", 1);
+#endif
+            }
             break;
         case PickableItem::PickableItemType::PIT_SCROLL_STEALTH:
-            m_pPlayer->addPlayerBuffer(PB_STEALTH);
+            {
+                m_pPlayer->addPlayerBuffer(PB_STEALTH);
+#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM ==CC_PLATFORM_ANDROID )
+                SdkBoxManager::getInstance()->logEvent("Player", "UseScroll", "StealthScroll", 1);
+#endif
+            }
             break;
         case PickableItem::PickableItemType::PIT_SCROLL_STRONGER:
-            m_pPlayer->addPlayerBuffer(PB_STRONGER);
+            {
+                m_pPlayer->addPlayerBuffer(PB_STRONGER);
+#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM ==CC_PLATFORM_ANDROID )
+                SdkBoxManager::getInstance()->logEvent("Player", "UseScroll", "StrongerScroll", 1);
+#endif
+            }
             break;
         case PickableItem::PickableItemType::PIT_SCROLL_DESTINY:
             {
+#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM ==CC_PLATFORM_ANDROID )
+                SdkBoxManager::getInstance()->logEvent("Player", "UseScroll", "DestinyScroll", 1);
+#endif
                 DestinyScrollType randType = (DestinyScrollType)cocos2d::random((int)DST_ADDMONEY, (int)DST_WEAK);
                 switch (randType) {
                     case DST_ADDMONEY:
@@ -1510,17 +1615,30 @@ void VoxelExplorer::handlePlayerUsePotion(PickableItem::PickableItemType type)
         return;
     switch (type) {
         case PickableItem::PickableItemType::PIT_POTION_DETOXIFICATION:
-            m_pPlayer->removePlayerBuffer(PB_POISONING);
+            {
+                m_pPlayer->removePlayerBuffer(PB_POISONING);
+#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM ==CC_PLATFORM_ANDROID )
+                SdkBoxManager::getInstance()->logEvent("Player", "UsePotion", "DetoxificationPotion", 1);
+#endif
+            }
             break;
         case PickableItem::PickableItemType::PIT_POTION_SPECIFIC:
             {
                 m_pPlayer->removePlayerBuffer(PB_FROZEN);
                 m_pPlayer->removePlayerBuffer(PB_PARALYTIC);
                 m_pPlayer->removePlayerBuffer(PB_FIRE);
+#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM ==CC_PLATFORM_ANDROID )
+                SdkBoxManager::getInstance()->logEvent("Player", "UsePotion", "SpecificPotion", 1);
+#endif
             }
             break;
         case PickableItem::PickableItemType::PIT_POTION_HEALING:
-            m_pPlayer->removePlayerBuffer(PB_WEAK);
+            {
+                m_pPlayer->removePlayerBuffer(PB_WEAK);
+#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM ==CC_PLATFORM_ANDROID )
+                SdkBoxManager::getInstance()->logEvent("Player", "UsePotion", "HealingPotion", 1);
+#endif
+            }
             break;
         case PickableItem::PickableItemType::PIT_POTION_UNIVERSAL:
             {
@@ -1529,6 +1647,9 @@ void VoxelExplorer::handlePlayerUsePotion(PickableItem::PickableItemType type)
                 m_pPlayer->removePlayerBuffer(PB_PARALYTIC);
                 m_pPlayer->removePlayerBuffer(PB_FIRE);
                 m_pPlayer->removePlayerBuffer(PB_WEAK);
+#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM ==CC_PLATFORM_ANDROID )
+                SdkBoxManager::getInstance()->logEvent("Player", "UsePotion", "UniversalPotion", 1);
+#endif
             }
             break;
         default:
@@ -1545,15 +1666,25 @@ void VoxelExplorer::handlePlayerUseStandardPortal(const cocos2d::Vec2& pos)
         m_bHasDownStairs = true;
         auto scene = GameScene::createScene();
         Director::getInstance()->replaceScene(scene);
+        
+#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM ==CC_PLATFORM_ANDROID )
+        SdkBoxManager::getInstance()->logEvent("Player", "UseStandardPortal", "ToBossRoom", 1);
+#endif
     }
     else if(RandomDungeon::getInstance()->getCurrentDungeonNode()->isBossDepth())
     {
         if(m_pCurrentLevel)
             m_pCurrentLevel->handleUseStandardPortal(pos);
+#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM ==CC_PLATFORM_ANDROID )
+        SdkBoxManager::getInstance()->logEvent("Player", "UseStandardPortal", "ToNewDungeon", 1);
+#endif
     }
     else
     {
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_STANDARD_PROTAL_NO_ENERGY);
+#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM ==CC_PLATFORM_ANDROID )
+        SdkBoxManager::getInstance()->logEvent("Player", "UseStandardPortal", "Failed", 0);
+#endif
     }
 }
 void VoxelExplorer::handlePlayerUseSmallPortal()
@@ -1580,6 +1711,10 @@ void VoxelExplorer::handlePlayerUseSmallPortal()
     std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("USE_SCROLL");
     SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
     Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_USE_SMALL_PROTAL);
+    
+#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM ==CC_PLATFORM_ANDROID )
+    SdkBoxManager::getInstance()->logEvent("Player", "UseSmallPortal", "OK", 1);
+#endif
 }
 void VoxelExplorer::handleUpstairs()
 {
@@ -1590,10 +1725,16 @@ void VoxelExplorer::handleUpstairs()
         RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nCurrentDepth -= 1;
         auto scene = GameScene::createScene();
         Director::getInstance()->replaceScene(scene);
+#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM ==CC_PLATFORM_ANDROID )
+        SdkBoxManager::getInstance()->logEvent("Player", "handleUpstairs", "OK", 1);
+#endif
     }
     else
     {
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_GO_UPSTAIRS_FORBIDDEN);
+#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM ==CC_PLATFORM_ANDROID )
+        SdkBoxManager::getInstance()->logEvent("Player", "handleUpstairs", "Failed", 0);
+#endif
     }
 }
 void VoxelExplorer::handleDownstairs()
@@ -1605,6 +1746,9 @@ void VoxelExplorer::handleDownstairs()
         RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nCurrentDepth += 1;
         auto scene = GameScene::createScene();
         Director::getInstance()->replaceScene(scene);
+#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM ==CC_PLATFORM_ANDROID )
+        SdkBoxManager::getInstance()->logEvent("Player", "handleDownstairs", "ToNextLevel", 1);
+#endif
     }
     else if(RandomDungeon::getInstance()->getCurrentDungeonNode()->isLastDepth())
     {
@@ -1614,6 +1758,9 @@ void VoxelExplorer::handleDownstairs()
          m_bHasDownStairs = true;
         auto scene = GameScene::createScene();
         Director::getInstance()->replaceScene(scene);
+#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM ==CC_PLATFORM_ANDROID )
+        SdkBoxManager::getInstance()->logEvent("Player", "handleDownstairs", "ToBossRoom", 1);
+#endif
     }
 }
 void VoxelExplorer::handleGoChasm()
@@ -1635,6 +1782,10 @@ void VoxelExplorer::handleGoChasm()
             {
                 m_pPlayer->fallAndDie();
                 StatisticsManager::getInstance()->addRoleDeadNum(StatisticsManager::eRoleDeadType::RET_FAIL);
+#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM ==CC_PLATFORM_ANDROID )
+                SdkBoxManager::getInstance()->logEvent("Player", "handleGoChasm", "Failed", 0);
+                SdkBoxManager::getInstance()->logEvent("Player", "Death", "ByGoChasm", 1);
+#endif
             }
             else
             {
@@ -1644,6 +1795,9 @@ void VoxelExplorer::handleGoChasm()
                 RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nCurrentDepth += 1;
                 auto scene = GameScene::createScene();
                 Director::getInstance()->replaceScene(scene);
+#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM ==CC_PLATFORM_ANDROID )
+                SdkBoxManager::getInstance()->logEvent("Player", "handleGoChasm", "OK", 1);
+#endif
             }
         }
     }
@@ -1651,6 +1805,10 @@ void VoxelExplorer::handleGoChasm()
     {
         m_pPlayer->fallAndDie();
         StatisticsManager::getInstance()->addRoleDeadNum(StatisticsManager::eRoleDeadType::RET_FAIL);
+#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM ==CC_PLATFORM_ANDROID )
+        SdkBoxManager::getInstance()->logEvent("Player", "handleGoChasm", "Failed", 0);
+        SdkBoxManager::getInstance()->logEvent("Player", "Death", "ByGoChasm", 1);
+#endif
     }
 }
 void VoxelExplorer::handleRemoveTrap(const cocos2d::Vec2& mapPos)
@@ -1685,6 +1843,9 @@ void VoxelExplorer::handleRemoveTrap(const cocos2d::Vec2& mapPos)
                         std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("REMOVE_TRAP");
                         SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
                         PlayerProperty::getInstance()->setExp(PlayerProperty::getInstance()->getExp() + 50);
+#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM ==CC_PLATFORM_ANDROID )
+                        SdkBoxManager::getInstance()->logEvent("Player", "RemoveTrap", "OK", 1);
+#endif
                     }
                 }
             }
@@ -1705,6 +1866,9 @@ bool VoxelExplorer::handlePlayerUseSkill()
                     PlayerProperty::getInstance()->setCurrentMP(PlayerProperty::getInstance()->getCurrentMP() - 10);
                     m_pPlayer->addPlayerBuffer(PB_BLOCKRATEUP);
                     ret = true;
+#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM ==CC_PLATFORM_ANDROID )
+                    SdkBoxManager::getInstance()->logEvent("Player", "UseSkill", "BlockRateUp", 1);
+#endif
                 }else
                     Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_NO_MANA);
                 break;
@@ -1714,6 +1878,9 @@ bool VoxelExplorer::handlePlayerUseSkill()
                     PlayerProperty::getInstance()->setCurrentMP(PlayerProperty::getInstance()->getCurrentMP() - 8);
                     m_pPlayer->useSkillToAttack(skill);
                     ret = true;
+#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM ==CC_PLATFORM_ANDROID )
+                    SdkBoxManager::getInstance()->logEvent("Player", "UseSkill", "Fireball", 1);
+#endif
                 }else
                      Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_NO_MANA);
                 break;
@@ -1723,6 +1890,9 @@ bool VoxelExplorer::handlePlayerUseSkill()
                     PlayerProperty::getInstance()->setCurrentMP(PlayerProperty::getInstance()->getCurrentMP() - 12);
                     m_pPlayer->useSkillToAttack(skill);
                     ret = true;
+#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM ==CC_PLATFORM_ANDROID )
+                    SdkBoxManager::getInstance()->logEvent("Player", "UseSkill", "MagicArrow", 1);
+#endif
                 }else
                     Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_NO_MANA);
                 break;
@@ -1811,6 +1981,9 @@ bool VoxelExplorer::checkBulletCollideMonster(const cocos2d::Vec3& bulletPos)
             {
                 if(item->getAABB().containPoint(bulletPos - Vec3(0,TerrainTile::CONTENT_SCALE*0.2f, 0)))
                 {
+#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM ==CC_PLATFORM_ANDROID )
+                    SdkBoxManager::getInstance()->logEvent("Player", "handleUseableItem", "DestroyJar", 1);
+#endif
                     int rand = cocos2d::random(0, 2);
                     if(rand == 0)
                     {

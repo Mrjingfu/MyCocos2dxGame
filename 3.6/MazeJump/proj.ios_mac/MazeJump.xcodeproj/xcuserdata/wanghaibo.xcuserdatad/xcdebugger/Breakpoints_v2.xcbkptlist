@@ -6610,7 +6610,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "277"
             endingLineNumber = "277"
-            landmarkName = "GameUI::onRecoverPause(cocos2d::EventCustom *sender)"
+            landmarkName = "GameUI::setResume()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -6642,7 +6642,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "269"
             endingLineNumber = "269"
-            landmarkName = "GameUI::setResume()"
+            landmarkName = "GameUI::setPause()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

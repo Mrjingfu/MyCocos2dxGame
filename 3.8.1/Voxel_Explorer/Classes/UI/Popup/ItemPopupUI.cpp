@@ -24,6 +24,7 @@
 #include "StatisticsManager.hpp"
 #include "PopupUILayerManager.h"
 #include "DiscardPopupUI.hpp"
+#include "SdkBoxManager.hpp"
 USING_NS_CC;
 ItemPopupUI::ItemPopupUI()
 {
@@ -983,6 +984,10 @@ void ItemPopupUI::removeItem()
         {
             StatisticsManager::getInstance()->addDiscardEquipNum();
         }
+#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM ==CC_PLATFORM_ANDROID )
+        SdkBoxManager::getInstance()->logEvent("Player", "DiscardItem", "ItemType", (int)itemprop->getPickableItemType());
+#endif
+        
     }else{
         //移除失败
         PopupUILayerManager::getInstance()->showStatusImport(TIP_NEGATIVE, UtilityHelper::getLocalStringForUi("ITEM_DISCARD_FAIL"));
