@@ -157,6 +157,7 @@ void PausePopupUI::onClickMainMenu(cocos2d::Ref *ref)
     if(!ArchiveManager::getInstance()->saveGame())
         CCLOGERROR("Save Game failed!");
      closePopup();
+    VoxelExplorer::getInstance()->getCurrentLevel()->showMap(false);
     VoxelExplorer::getInstance()->getUILayer()->switchToMenuScene();
     
 }

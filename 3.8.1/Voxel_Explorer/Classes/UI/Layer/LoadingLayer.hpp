@@ -21,7 +21,7 @@ public:
     virtual bool initUi() override;
     virtual bool addEvents() override;
     void loadingGameAction();
-     
+
 private:
     cocos2d::ui::ImageView* m_LoadingIcon;
 };

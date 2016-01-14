@@ -15,7 +15,8 @@
 #include "ArchiveManager.h"
 #include "ArchiveLayer.hpp"
 #include "LoadingLayer.hpp"
-
+#include "LevelResourceManager.h"
+#include "SimpleAudioEngine.h"
 USING_NS_CC;
 
 MenuUILayer::MenuUILayer()
@@ -194,6 +195,8 @@ void MenuUILayer::onClickStart(cocos2d::Ref *ref)
 }
 void MenuUILayer::startGameAction()
 {
+    std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("START_GAME_EYES");
+    CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
     EaseSineOut* fadein = EaseSineOut::create(FadeIn::create(0.5));
     EaseSineOut* fadeout = EaseSineOut::create(FadeOut::create(0.5));
     CallFunc* func = CallFunc::create([this](){

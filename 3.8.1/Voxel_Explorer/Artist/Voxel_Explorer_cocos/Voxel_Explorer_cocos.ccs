@@ -90,6 +90,7 @@
           <PlistImageFile Name="ui_skill_fire.png" Key="ui_skill_fire.png" />
           <PlistImageFile Name="ui_skill_lock.png" Key="ui_skill_lock.png" />
           <PlistImageFile Name="ui_skill_prog.png" Key="ui_skill_prog.png" />
+          <PlistImageFile Name="ui_buffer_block.png" Key="ui_buffer_block.png" />
         </PlistImageFolder>
         <Project Name="gameScene.csd" Type="Scene" />
         <Project Name="menuscene.csd" Type="Scene" />
@@ -254,8 +255,8 @@
         <Project Name="discardLayer.csd" Type="Layer" />
         <Project Name="rolenewLayer.csd" Type="Layer" />
         <Project Name="archiveLayer.csd" Type="Layer" />
-        <Image Name="bg1_p1.png" />
         <Project Name="skillLayer.csd" Type="Layer" />
+        <Project Name="deadLayer.csd" Type="Scene" />
       </RootFolder>
     </Group>
   </SolutionFolder>

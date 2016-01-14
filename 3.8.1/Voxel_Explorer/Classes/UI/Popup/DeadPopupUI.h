@@ -17,12 +17,14 @@ class DeadPopupUI:public PopupUILayer {
 public:
     CREATE_FUNC(DeadPopupUI);
     virtual ~DeadPopupUI();
-    virtual bool initUi();
+    virtual bool initUi() override;
+    bool addEvents() override;
 private:
     void onClickMainMenu(cocos2d::Ref* ref);
     void onClickRestart(cocos2d::Ref* ref);
 private:
-
+    cocos2d::ui::Button* m_pBtnMenu;
+    cocos2d::ui::Button* m_pBtnRestart;
 };
 
 #endif /* DeadPopupUI_hpp */

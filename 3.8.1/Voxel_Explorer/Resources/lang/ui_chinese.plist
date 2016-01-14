@@ -4,6 +4,8 @@
 <dict>
 	<key>SPLASH_RES</key>
 	<string>splash_cn.png</string>
+	<key>DEAD_RES</key>
+	<string>ui_gameover_cn.png</string>
 	<key>PROP_SHOW_HP</key>
 	<string>生命值：</string>
 	<key>ROLE_SHOW_HP</key>
@@ -81,13 +83,13 @@
 	<key>EQUIP_PROP_MP</key>
 	<string>+%d魔法值</string>
 	<key>EQUIP_PROP_BLOCK</key>
-	<string>+%d%%格挡率</string>
+	<string>+%.1f%%格挡率</string>
 	<key>EQUIP_PROP_CRITICAL_STRIKE</key>
-	<string>+%d%%暴击率</string>
+	<string>+%.1f%%暴击率</string>
 	<key>EQUIP_PROP_DODGE</key>
-	<string>+%d%%闪避率</string>
+	<string>+%.1f%%闪避率</string>
 	<key>EQUIP_PROP_MAGIC</key>
-	<string>+%d%%基础取魔率增量</string>
+	<string>+%.1f%%基础取魔率增量</string>
 	<key>EQUIP_PROP_SEQRCH</key>
 	<string>+%d搜索范围</string>
 	<key>EQUIP_PROP_LIGHT</key>

@@ -773,6 +773,7 @@ void GameUILayer::onEventFoundHidderItem(cocos2d::EventCustom *sender)
 void GameUILayer::onEventGoUpStairs(cocos2d::EventCustom *sender)
 {
      CCLOG("onEventGoUpStairs");
+    VoxelExplorer::getInstance()->getCurrentLevel()->showMap(false);
      std::string msg = UtilityHelper::getLocalStringForUi(EVENT_GO_UPSTAIRS);
      PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
 }
@@ -787,6 +788,7 @@ void GameUILayer::onEventGoUpStairsForbidden(cocos2d::EventCustom *sender)
 void GameUILayer::onEventGoDownStairs(cocos2d::EventCustom *sender)
 {
     CCLOG("onEventGoDownStairs");
+    VoxelExplorer::getInstance()->getCurrentLevel()->showMap(false);
     std::string msg = UtilityHelper::getLocalStringForUi(EVENT_GO_DOWNSTAIRS);
     PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
 }
@@ -1098,15 +1100,20 @@ void GameUILayer::onEventRoleDead(cocos2d::EventCustom *sender)
 {
     CCLOG("onEventRoleDead");
     refreshUIView();
-    CallFunc* func = CallFunc::create([]{
-        DeadPopupUI* pausePopup = static_cast<DeadPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupDead));
-        if (pausePopup) {
-//            pausePopup->setDarkLayerVisble(false);
-            ArchiveManager::getInstance()->saveGame();
-        }
-
-    });
-    this->runAction(Sequence::createWithTwoActions(DelayTime::create(3.0F),func ));
+    DeadPopupUI* pausePopup = static_cast<DeadPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupDead));
+    if (pausePopup) {
+        pausePopup->setDarkLayerVisble(true);
+        pausePopup->getRootNode()->setVisible(true);
+        ArchiveManager::getInstance()->saveGame();
+        VoxelExplorer::getInstance()->getCurrentLevel()->showMap(false);
+    }
+//    this->runAction(Sequence::createWithTwoActions(DelayTime::create(2.0F),CallFunc::create([pausePopup](){
+//        if (pausePopup) {
+//             pausePopup->setDarkLayerVisble(true);
+//            pausePopup->setVisible(true);
+//        }
+//    
+//    } )));
 }
 void GameUILayer::onEventRoleFallAndDie(cocos2d::EventCustom *sender)
 {
@@ -1120,7 +1127,7 @@ void GameUILayer::onEvenetRoleEquipedSecondWeapon(cocos2d::EventCustom *sender)
 {
     CCLOG("onEvenetRoleEquipedSecondWeapon");
     if (m_pSkillLayer) {
-        m_pSkillLayer->refreshSkillView();
+        m_pSkillLayer->refreshSkillView(true);
     }
 }
 void GameUILayer::onEvenetRoleEquipedArmor(cocos2d::EventCustom *sender)

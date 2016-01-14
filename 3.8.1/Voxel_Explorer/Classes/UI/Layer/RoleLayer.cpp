@@ -233,10 +233,10 @@ void RoleLayer::updateRoleProp()
     m_pRoleExp->setString(StringUtils::format("%d/%d",int(PlayerProperty::getInstance()->getExp()),int(GameFormula::getNextLevelExp(PlayerProperty::getInstance()->getLevel()))));
     m_pRoleLightDis->setString(StringUtils::format("%d",int(PlayerProperty::getInstance()->getLightDistance())));
     m_pRoleSearchDis->setString(StringUtils::format("%d",int(PlayerProperty::getInstance()->getSearchDistance())));
-    m_pRoleCriticalStrike ->setString(StringUtils::format("%d%%",int(PlayerProperty::getInstance()->getCriticalStrikeRate().GetFloatValue()*100.0)));
-    m_pRoleMargicFind->setString(StringUtils::format("%d%%",int(PlayerProperty::getInstance()->getMagicItemFindRate().GetFloatValue()*100.0)));
-    m_pRoleBlock->setString(StringUtils::format("%d%%",int(PlayerProperty::getInstance()->getBlockRate().GetFloatValue()*100.0)));
-    m_pRoleDodge->setString(StringUtils::format("%d%%",int(PlayerProperty::getInstance()->getDodgeRate().GetFloatValue()*100.0)));
+    m_pRoleCriticalStrike ->setString(StringUtils::format("%.1f%%",PlayerProperty::getInstance()->getCriticalStrikeRate().GetFloatValue()*100.0));
+    m_pRoleMargicFind->setString(StringUtils::format("%.1f%%",PlayerProperty::getInstance()->getMagicItemFindRate().GetFloatValue()*100.0));
+    m_pRoleBlock->setString(StringUtils::format("%.1f%%",PlayerProperty::getInstance()->getBlockRate().GetFloatValue()*100.0));
+    m_pRoleDodge->setString(StringUtils::format("%.1f%%",PlayerProperty::getInstance()->getDodgeRate().GetFloatValue()*100.0));
     CCLOG("role minAttack:%d,maxAttack:%d",int(PlayerProperty::getInstance()->getMinAttack()),int(PlayerProperty::getInstance()->getMaxAttack()));
     m_pRoleAttack->setString(StringUtils::format("%d-%d",int(PlayerProperty::getInstance()->getMinAttack()),int(PlayerProperty::getInstance()->getMaxAttack())));
     m_pRoleDefense->setString(StringUtils::format("%d",int(PlayerProperty::getInstance()->getDefense())));

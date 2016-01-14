@@ -122,7 +122,7 @@ void TGridView::remedyLayoutParameter(Widget *item)
             preName = cocos2d::StringUtils::format("item_%d",(y-1)*m_pX);
             CCLOG("preName:%s",preName.c_str());
             reLayoutParameter->setRelativeToWidgetName(preName);
-             reLayoutParameter->setRelativeName(currenName );
+            reLayoutParameter->setRelativeName(currenName );
             reLayoutParameter->setAlign(RelativeLayoutParameter::RelativeAlign::LOCATION_BELOW_CENTER);
             reLayoutParameter->setMargin(Margin(0.0f,_itemMarginSize.height,0.0f, 0.0f));
         }else{

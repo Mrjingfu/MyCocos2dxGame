@@ -245,10 +245,10 @@ void ItemPopupUI::IdentifyEquiipFrame()
                 
             }else if(effect ==AE_MAGICITEM_FIND_RATE){
                 
-                itemPropStr = StringUtils::format(UtilityHelper::getLocalStringForUi("EQUIP_PROP_MAGIC").c_str(),int(itemproperty->getAddedMagicItemFindRate().GetFloatValue()*100.0));
+                itemPropStr = StringUtils::format(UtilityHelper::getLocalStringForUi("EQUIP_PROP_MAGIC").c_str(),itemproperty->getAddedMagicItemFindRate().GetFloatValue()*100.0);
             }else if (effect == AE_CRITICALSTRICK_RATE)
             {
-                itemPropStr = StringUtils::format(UtilityHelper::getLocalStringForUi("EQUIP_PROP_CRITICAL_STRIKE").c_str(),int(itemproperty->getAddedCriticalStrikeRate().GetFloatValue()*100.0));
+                itemPropStr = StringUtils::format(UtilityHelper::getLocalStringForUi("EQUIP_PROP_CRITICAL_STRIKE").c_str(),itemproperty->getAddedCriticalStrikeRate().GetFloatValue()*100.0);
             }else if (effect == AE_SEARCH_DISTANCE)
             {
                 itemPropStr = StringUtils::format(UtilityHelper::getLocalStringForUi("EQUIP_PROP_SEQRCH").c_str(),int(itemproperty->getAddedSearchDistance()));
@@ -289,7 +289,7 @@ void ItemPopupUI::IdentifyEquiipFrame()
                 itemPropStr = StringUtils::format(UtilityHelper::getLocalStringForUi("EQUIP_PROP_MP").c_str(),int(itemproperty->getAddedMaxMp()));
  
             }else if(effect ==AE_MAGICITEM_FIND_RATE){
-                itemPropStr = StringUtils::format(UtilityHelper::getLocalStringForUi("EQUIP_PROP_MAGIC").c_str(),int(itemproperty->getAddedMagicItemFindRate().GetFloatValue()*100.0));
+                itemPropStr = StringUtils::format(UtilityHelper::getLocalStringForUi("EQUIP_PROP_MAGIC").c_str(),itemproperty->getAddedMagicItemFindRate().GetFloatValue()*100.0);
                 
             }else if (effect ==AE_SEARCH_DISTANCE)
             {
@@ -297,7 +297,7 @@ void ItemPopupUI::IdentifyEquiipFrame()
             }
             else if (effect == AE_DODGE_RATE)
             {
-                itemPropStr = StringUtils::format(UtilityHelper::getLocalStringForUi("EQUIP_PROP_DODGE").c_str(),int(itemproperty->getAddedDodgeRate().GetFloatValue()*100.0));
+                itemPropStr = StringUtils::format(UtilityHelper::getLocalStringForUi("EQUIP_PROP_DODGE").c_str(),itemproperty->getAddedDodgeRate().GetFloatValue()*100.0);
                 
             }
         }
@@ -338,7 +338,7 @@ void ItemPopupUI::IdentifyEquiipFrame()
                 
             }else if(effect ==AE_MAGICITEM_FIND_RATE){
                 
-                itemPropStr =StringUtils::format(UtilityHelper::getLocalStringForUi("EQUIP_PROP_MAGIC").c_str(),int(itemproperty->getAddedMagicItemFindRate().GetFloatValue()*100.0));
+                itemPropStr =StringUtils::format(UtilityHelper::getLocalStringForUi("EQUIP_PROP_MAGIC").c_str(),itemproperty->getAddedMagicItemFindRate().GetFloatValue()*100.0);
                
             }else if (effect ==AE_SEARCH_DISTANCE)
             {
@@ -346,15 +346,15 @@ void ItemPopupUI::IdentifyEquiipFrame()
                 
             }else if (effect == AE_DODGE_RATE)
             {
-                itemPropStr =StringUtils::format(UtilityHelper::getLocalStringForUi("EQUIP_PROP_DODGE").c_str(),int(itemproperty->getAddedDodgeRate().GetFloatValue()*100.0));
+                itemPropStr =StringUtils::format(UtilityHelper::getLocalStringForUi("EQUIP_PROP_DODGE").c_str(),itemproperty->getAddedDodgeRate().GetFloatValue()*100.0);
             }else if (effect == AE_BLOCK_RATE)
             {
-                itemPropStr =StringUtils::format(UtilityHelper::getLocalStringForUi("EQUIP_PROP_BLOCK").c_str(),int(itemproperty->getAddedBlockRate().GetFloatValue()*100.0));
+                itemPropStr =StringUtils::format(UtilityHelper::getLocalStringForUi("EQUIP_PROP_BLOCK").c_str(),itemproperty->getAddedBlockRate().GetFloatValue()*100.0);
                 
             }else if (effect == AE_CRITICALSTRICK_RATE)
             {
                 
-                itemPropStr =StringUtils::format(UtilityHelper::getLocalStringForUi("EQUIP_PROP_CRITICAL_STRIKE").c_str(),int(itemproperty->getAddedCriticalStrikeRate().GetFloatValue()*100.0));
+                itemPropStr =StringUtils::format(UtilityHelper::getLocalStringForUi("EQUIP_PROP_CRITICAL_STRIKE").c_str(),itemproperty->getAddedCriticalStrikeRate().GetFloatValue()*100.0);
             }
             if (itemPropStr.empty())
                 continue;
@@ -403,7 +403,7 @@ void ItemPopupUI::IdentifyEquiipFrame()
                 
             }else if(effect ==AE_MAGICITEM_FIND_RATE){
                 
-                itemPropStr =StringUtils::format(UtilityHelper::getLocalStringForUi("EQUIP_PROP_MAGIC").c_str(),int(itemproperty->getAddedMagicItemFindRate().GetFloatValue()*100.0));
+                itemPropStr =StringUtils::format(UtilityHelper::getLocalStringForUi("EQUIP_PROP_MAGIC").c_str(),itemproperty->getAddedMagicItemFindRate().GetFloatValue()*100.0);
                 
             }else if (effect ==AE_SEARCH_DISTANCE)
             {
@@ -411,15 +411,15 @@ void ItemPopupUI::IdentifyEquiipFrame()
                 
             }else if (effect == AE_DODGE_RATE)
             {
-                itemPropStr =StringUtils::format(UtilityHelper::getLocalStringForUi("EQUIP_PROP_DODGE").c_str(),int(itemproperty->getAddedDodgeRate().GetFloatValue()*100.0));
+                itemPropStr =StringUtils::format(UtilityHelper::getLocalStringForUi("EQUIP_PROP_DODGE").c_str(),itemproperty->getAddedDodgeRate().GetFloatValue()*100.0);
             }else if (effect == AE_BLOCK_RATE)
             {
-                itemPropStr =StringUtils::format(UtilityHelper::getLocalStringForUi("EQUIP_PROP_BLOCK").c_str(),int(itemproperty->getAddedBlockRate().GetFloatValue()*100.0));
+                itemPropStr =StringUtils::format(UtilityHelper::getLocalStringForUi("EQUIP_PROP_BLOCK").c_str(),itemproperty->getAddedBlockRate().GetFloatValue()*100.0);
                 
             }else if (effect == AE_CRITICALSTRICK_RATE)
             {
                 
-                itemPropStr =StringUtils::format(UtilityHelper::getLocalStringForUi("EQUIP_PROP_CRITICAL_STRIKE").c_str(),int(itemproperty->getAddedCriticalStrikeRate().GetFloatValue()*100.0));
+                itemPropStr =StringUtils::format(UtilityHelper::getLocalStringForUi("EQUIP_PROP_CRITICAL_STRIKE").c_str(),itemproperty->getAddedCriticalStrikeRate().GetFloatValue()*100.0);
             }
             if (itemPropStr.empty())
             {

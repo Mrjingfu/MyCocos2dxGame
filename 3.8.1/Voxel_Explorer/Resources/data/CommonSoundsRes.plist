@@ -122,6 +122,8 @@
 	<string>archer_attack.wav</string>
 	<key>FIRE_BALL</key>
 	<string>fireball_attack.wav</string>
+	<key>START_GAME_EYES</key>
+	<string>evil_laugh.wav</string>
 	<key>UI_BTN_PACKAGE_OPEN</key>
 	<string>equip_cloth.wav</string>
 	<key>UI_BTN_PACKAGE_CLOSE</key>

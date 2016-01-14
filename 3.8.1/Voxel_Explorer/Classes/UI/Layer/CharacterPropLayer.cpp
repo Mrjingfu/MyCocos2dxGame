@@ -88,7 +88,7 @@ bool CharacterPropLayer::addEvents()
 //  m_pRoleBufferList->setBackGroundColor(Color3B::YELLOW);
     m_pCharacterBufferList->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
     m_pCharacterBufferList->setContentSize(m_pCharacterMpBar->getContentSize());
-    m_pCharacterBufferList->setCol(8);
+    m_pCharacterBufferList->setCol(5);
     m_pCharacterBufferList->setPosition(cocos2d::Vec2(m_pCharacterName->getPositionX(),m_pCharacterName->getPositionY()-m_pCharacterMpBar->getContentSize().height*4.5));
     m_pCharacterBufferList->setScrollBarEnabled(false);
     m_pCharacterBufferList->setItemsMargin(cocos2d::Size(1.5,2));

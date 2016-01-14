@@ -25,6 +25,7 @@ SkillLayer::SkillLayer()
     m_nMagicPotionId   = -1;
     m_nBloodPotionId = -1;
     m_fCoolTime = 0.0f;
+    m_bIsRloadEquip = false;
 }
 
 SkillLayer::~SkillLayer()
@@ -71,7 +72,7 @@ bool SkillLayer::addEvents()
     m_pSkill->setTouchEnabled(true);
     m_pBloodPotion->setTouchEnabled(true);
     refreshUIView();
-    refreshSkillView();
+    refreshSkillView(true);
     return true;
 }
 void SkillLayer::refreshUIView()
@@ -124,8 +125,9 @@ void SkillLayer::refreshUIView()
     }
     
 }
-void SkillLayer::refreshSkillView()
+void SkillLayer::refreshSkillView(bool isRloadEquip)
 {
+    m_bIsRloadEquip = isRloadEquip;
     std::string imgName = "ui_skill_lock.png" ;
     if (m_pSkill) {
         m_pSkillProgress->setPercentage(100);
@@ -164,10 +166,15 @@ void SkillLayer::refreshSkillView()
             }
             
         }
+        if (m_bIsRloadEquip) {
+            m_bIsRloadEquip = false;
+            m_fCoolTime = 5.0f;
+        }
         if (m_bIsUseSkill){
                 skillProgressAction();
         }else
             m_pSkillProgress->setPercentage(0);
+        
         
         m_pSkill->loadTexture(imgName,TextureResType::PLIST);
         m_pSkillProgress->setCameraMask((unsigned short)m_nCamerFlag);
@@ -181,13 +188,13 @@ void SkillLayer::onTouchBlood(Ref* ref,Widget::TouchEventType type)
         case Widget::TouchEventType::BEGAN:
                clickEffect();
             if (m_pBloodPotion) {
-                m_pBloodPotion->setScale(0.45);
+                m_pBloodPotion->setScale(0.3);
             }
             break;
         case Widget::TouchEventType::ENDED:
             if (m_pBloodPotion) {
                 m_pBloodPotion->stopAllActions();
-                m_pBloodPotion->runAction(Sequence::create(EaseBackInOut::create(ScaleTo::create(0.2f, 0.5f)),CallFunc::create([this](){
+                m_pBloodPotion->runAction(Sequence::create(EaseBackInOut::create(ScaleTo::create(0.2f, 0.35f)),CallFunc::create([this](){
                     if (m_nBloodPotionId!=-1)
                     {
                         PlayerProperty::getInstance()->usePotion(m_nBloodPotionId);
@@ -203,7 +210,7 @@ void SkillLayer::onTouchBlood(Ref* ref,Widget::TouchEventType type)
         case Widget::TouchEventType::CANCELED:
            if (m_pBloodPotion) {
                m_pBloodPotion->stopAllActions();
-               m_pBloodPotion->runAction(EaseBackInOut::create(ScaleTo::create(0.2f, 0.5f)));
+               m_pBloodPotion->runAction(EaseBackInOut::create(ScaleTo::create(0.2f, 0.35f)));
            }
                break;
             break;
@@ -217,13 +224,13 @@ void SkillLayer::onTouchMagic(Ref* ref,Widget::TouchEventType type)
         case Widget::TouchEventType::BEGAN:
             clickEffect();
             if (m_pMagicPotion) {
-                m_pMagicPotion->setScale(0.45);
+                m_pMagicPotion->setScale(0.3);
             }
             break;
         case Widget::TouchEventType::ENDED:
             if (m_pMagicPotion) {
                 m_pMagicPotion->stopAllActions();
-                m_pMagicPotion->runAction(Sequence::create(EaseBackInOut::create(ScaleTo::create(0.2f, 0.5f)),CallFunc::create([this](){
+                m_pMagicPotion->runAction(Sequence::create(EaseBackInOut::create(ScaleTo::create(0.2f, 0.35f)),CallFunc::create([this](){
                     if (m_nMagicPotionId!=-1)
                     {
                         PlayerProperty::getInstance()->usePotion(m_nMagicPotionId);
@@ -239,7 +246,7 @@ void SkillLayer::onTouchMagic(Ref* ref,Widget::TouchEventType type)
        case Widget::TouchEventType::CANCELED:
             if (m_pMagicPotion) {
                 m_pMagicPotion->stopAllActions();
-                m_pMagicPotion->runAction(EaseBackInOut::create(ScaleTo::create(0.2f, 0.5f)));
+                m_pMagicPotion->runAction(EaseBackInOut::create(ScaleTo::create(0.2f, 0.35f)));
             }
             break;
         default:
@@ -252,12 +259,12 @@ void SkillLayer::onTouchSkill(Ref* ref,Widget::TouchEventType type)
         case Widget::TouchEventType::BEGAN:
             clickEffect();
             if (m_pSkill) {
-                m_pSkill->setScale(0.65);
+                m_pSkill->setScale(0.45);
             }
              break;
         case Widget::TouchEventType::ENDED:
                 if (m_pSkill) {
-                    m_pSkill->runAction(Sequence::create(EaseBackInOut::create(ScaleTo::create(0.2f, 0.7f)),CallFunc::create([this](){
+                    m_pSkill->runAction(Sequence::create(EaseBackInOut::create(ScaleTo::create(0.2f, 0.5f)),CallFunc::create([this](){
                         if (m_bIsUseSkill )
                         {
                             if(m_pSkillProgress->getPercentage()==0)
@@ -282,7 +289,7 @@ void SkillLayer::onTouchSkill(Ref* ref,Widget::TouchEventType type)
         case Widget::TouchEventType::CANCELED:
             if (m_pSkill) {
                 m_pSkill->stopAllActions();
-                m_pSkill->runAction(EaseBackInOut::create(ScaleTo::create(0.2f, 0.7f)));
+                m_pSkill->runAction(EaseBackInOut::create(ScaleTo::create(0.2f, 0.5f)));
             }
              break;
         default:
@@ -297,7 +304,7 @@ void SkillLayer::skillProgressAction()
         if (m_pSkill) {
             m_pSkillProgress->setPercentage(0);
             m_pSkill->stopAllActions();
-            m_pSkill->runAction(Sequence::create(EaseBackInOut::create(ScaleTo::create(0.1f, 0.65f)), EaseBackInOut::create(ScaleTo::create(0.1f, 0.7f)),nullptr));
+            m_pSkill->runAction(Sequence::create(EaseBackInOut::create(ScaleTo::create(0.1f, 0.45f)), EaseBackInOut::create(ScaleTo::create(0.1f, 0.5f)),nullptr));
         }
         
     }),nullptr));

@@ -4,6 +4,8 @@
 <dict>
 	<key>SPLASH_RES</key>
 	<string>splash_en.png</string>
+	<key>DEAD_RES</key>
+	<string>ui_gameover_en.png</string>
 	<key>PROP_SHOW_HP</key>
 	<string>HP:</string>
 	<key>ROLE_SHOW_HP</key>
@@ -81,13 +83,13 @@
 	<key>EQUIP_PROP_MP</key>
 	<string>+%d MP</string>
 	<key>EQUIP_PROP_BLOCK</key>
-	<string>+%d%% Block Rate</string>
+	<string>+%.1f%% Block Rate</string>
 	<key>EQUIP_PROP_CRITICAL_STRIKE</key>
-	<string>+%d%% Critical Strike Rate</string>
+	<string>+%.1f%% Critical Strike Rate</string>
 	<key>EQUIP_PROP_DODGE</key>
-	<string>+%d%% Dodge Rate</string>
+	<string>+%.1f%% Dodge Rate</string>
 	<key>EQUIP_PROP_MAGIC</key>
-	<string>+%d%% Magic Find Rate</string>
+	<string>+%.1f%% Magic Find Rate</string>
 	<key>EQUIP_PROP_SEQRCH</key>
 	<string>+%d Search Scope</string>
 	<key>EQUIP_PROP_LIGHT</key>
@@ -224,16 +226,16 @@
 	<string>他的剑是冷的,他的刀也是冷的,他的心是冷的,他的血是冷的～～</string>
 	<key>DESTINY_WEAK</key>
 	<string>你变的虚弱了，不是早就说过黄色的卷轴和风月宝鉴都要远离吗！</string>
-    <key>LITTLEWITCH_ADDMONEY</key>
-    <string>今天魔法使用过度了，想休息一天，送你1枚金币作为补偿吧。</string>
-    <key>LITTLEWITCH_ADDPOTION</key>
-    <string>魔法药剂是一个魔法师的必备，今天只随身携带了1瓶送给你吧！</string>
-    <key>LITTLEWITCH_ADDSCROLL</key>
-    <string>这是我抄写的魔法卷轴，送给你！</string>
-    <key>LITTLEWITCH_SUMMONMONSTER</key>
-    <string>哎呀，施法失败，召唤出了怪物，我好怕！我要先走一步了。</string>
-    <key>LITTLEWITCH_WEAK</key>
-    <string>哎呀，施法失败了，给你带来了负面影响真是不好意思。</string>
+	<key>LITTLEWITCH_ADDMONEY</key>
+	<string>今天魔法使用过度了，想休息一天，送你1枚金币作为补偿吧。</string>
+	<key>LITTLEWITCH_ADDPOTION</key>
+	<string>魔法药剂是一个魔法师的必备，今天只随身携带了1瓶送给你吧！</string>
+	<key>LITTLEWITCH_ADDSCROLL</key>
+	<string>这是我抄写的魔法卷轴，送给你！</string>
+	<key>LITTLEWITCH_SUMMONMONSTER</key>
+	<string>哎呀，施法失败，召唤出了怪物，我好怕！我要先走一步了。</string>
+	<key>LITTLEWITCH_WEAK</key>
+	<string>哎呀，施法失败了，给你带来了负面影响真是不好意思。</string>
 	<key>NPC_KNIGHT_ANSWER</key>
 	<string>武器店</string>
 	<key>NPC_CHILD_ANSWER</key>
@@ -314,12 +316,12 @@
 	<string>SOUND:</string>
 	<key>BTN_TEXT_MUSIC</key>
 	<string>MUSIC:</string>
-    <key>BTN_TEXT_NEW_GAME</key>
-    <string>新的游戏</string>
-    <key>BTN_TEXT_CONTINUE_GAME</key>
-    <string>继续游戏</string>
-    <key>BTN_TEXT_RESTART_GAME</key>
-    <string>重新开始</string>
+	<key>BTN_TEXT_NEW_GAME</key>
+	<string>新的游戏</string>
+	<key>BTN_TEXT_CONTINUE_GAME</key>
+	<string>继续游戏</string>
+	<key>BTN_TEXT_RESTART_GAME</key>
+	<string>重新开始</string>
 	<key>BAG_INDENTIFY_FAIL</key>
 	<string>鉴定失败！</string>
 	<key>BAG_TEXT_DESTROY</key>
@@ -334,13 +336,13 @@
 	<string>丢弃失败！</string>
 	<key>GAME_INFO_FLOOR</key>
 	<string>%s %d层</string>
-    <key>SKILL_TIP_NOT_EQUIP</key>
-    <string>请装备副手武器！</string>
-    <key>SKILL_TIP_COOLING</key>
-    <string>技能冷却中!</string>
-    <key>SKILL_TIP_NOT_BLOOD_POTION</key>
-    <string>没有恢复药水了!</string>
-    <key>SKILL_TIP_NOT_MAGIC_POTION</key>
-    <string>没有魔法药水了!</string>
+	<key>SKILL_TIP_NOT_EQUIP</key>
+	<string>请装备副手武器！</string>
+	<key>SKILL_TIP_COOLING</key>
+	<string>技能冷却中!</string>
+	<key>SKILL_TIP_NOT_BLOOD_POTION</key>
+	<string>没有恢复药水了!</string>
+	<key>SKILL_TIP_NOT_MAGIC_POTION</key>
+	<string>没有魔法药水了!</string>
 </dict>
 </plist>

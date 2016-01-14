@@ -161,8 +161,8 @@ std::vector<std::string> UtilityHelper::getStringCount(std::string str )
 
         std::string subStr =  str.substr(i,count);
         //三个字节算一个字
-        if (count >0 && count <3 ) {
-            if (tempStr.length() >=3 ) {
+        if (count >0 && count <2 ) {
+            if (tempStr.length() >=2 ) {
                 tempVec.push_back(tempStr);
                 tempStr.clear();
             }

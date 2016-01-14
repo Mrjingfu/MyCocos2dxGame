@@ -22,7 +22,7 @@ public:
     virtual bool initUi() override;
     virtual bool addEvents() override;
     virtual void refreshUIView() override;
-    virtual void refreshSkillView();
+    virtual void refreshSkillView(bool isRloadEquip = false);
 private:
     void onTouchBlood(Ref*,Widget::TouchEventType);
     void onTouchMagic(Ref*,Widget::TouchEventType);
@@ -40,6 +40,7 @@ protected:
     bool m_bIsUseSkill;
     int m_nMagicPotionId;
     int m_nBloodPotionId;
+    bool m_bIsRloadEquip;
 };
 
 #endif /* SkillLayer_hpp */

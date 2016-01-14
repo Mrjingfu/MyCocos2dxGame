@@ -16,8 +16,10 @@
 USING_NS_CC;
 DeadPopupUI::DeadPopupUI()
 {
-    m_nIsBlankClose = false;
+    m_pBtnMenu      = nullptr;
+    m_pBtnRestart  = nullptr;
     m_nIsPause = false;
+//    m_cActionType = eCenterScale;
 }
 DeadPopupUI::~DeadPopupUI()
 {
@@ -26,37 +28,43 @@ DeadPopupUI::~DeadPopupUI()
 
 bool DeadPopupUI::initUi()
 {
-    ui::ImageView* titleImg = ui::ImageView::create("ui_gameover.png",TextureResType::PLIST);
-    titleImg->setScale(2.0);
-    titleImg->setPosition(cocos2d::Vec2(m_pRootLayer->getContentSize().width*0.5,m_pRootLayer->getContentSize().height*0.8));
-    titleImg->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
-    m_pRootLayer->addChild(titleImg);
+    if (!PopupUILayer::initUi())
+        return false;
     
-    ui::Button*  btnMainMenu = ui::Button::create("ui_frame_10.png","ui_frame_11.png","ui_frame_11.png",TextureResType::PLIST);
-    btnMainMenu->setScale9Enabled(true);
-    btnMainMenu->setContentSize(cocos2d::Size(100,40));
-    btnMainMenu->setTitleFontName(UtilityHelper::getLocalString("FONT_NAME"));
-    btnMainMenu->setTitleFontSize(36);
-    btnMainMenu->getTitleRenderer()->setScale(0.4);
-    btnMainMenu->setTitleText(UtilityHelper::getLocalStringForUi("BTN_TEXT_MAINMENU"));
-    btnMainMenu->setPosition(cocos2d::Vec2(m_pRootLayer->getContentSize().width*0.3,m_pRootLayer->getContentSize().height*0.3));
-     m_pRootLayer->addChild(btnMainMenu);
+    return load("deadLayer.csb",false);
     
-    ui::Button*  btnRestart = ui::Button::create("ui_frame_10.png","ui_frame_11.png","ui_frame_11.png",TextureResType::PLIST);
-    btnRestart->setScale9Enabled(true);
-    btnRestart->setContentSize(cocos2d::Size(100,40));
-    btnRestart->setTitleFontName(UtilityHelper::getLocalString("FONT_NAME"));
-    btnRestart->setTitleFontSize(36);
-    btnRestart->getTitleRenderer()->setScale(0.4);
-    btnRestart->setTitleText(UtilityHelper::getLocalStringForUi("BTN_TEXT_RESTART"));
-    btnRestart->setPosition(cocos2d::Vec2(m_pRootLayer->getContentSize().width*0.7,m_pRootLayer->getContentSize().height*0.3));
-    m_pRootLayer->addChild(btnRestart);
+}
+bool DeadPopupUI::addEvents()
+{
     
-    btnMainMenu->addClickEventListener(CC_CALLBACK_1( DeadPopupUI::onClickMainMenu, this));
-    btnRestart->addClickEventListener(CC_CALLBACK_1( DeadPopupUI::onClickRestart, this));
+    
+    m_pBtnMenu = dynamic_cast<cocos2d::ui::Button*>(UtilityHelper::seekNodeByName(m_pRootNode,"dead_btn_menu"));
+    if (!m_pBtnMenu)
+        return false;
+    
+    m_pBtnRestart = dynamic_cast<cocos2d::ui::Button*>(UtilityHelper::seekNodeByName(m_pRootNode,"dead_btn_restart"));
+    if (!m_pBtnRestart)
+        return false;
+    ui::ImageView* title = dynamic_cast<cocos2d::ui::ImageView*>(UtilityHelper::seekNodeByName(m_pRootNode,"dead_title"));
+    if (!title)
+        return false;
+    title->loadTexture(UtilityHelper::getLocalStringForUi("DEAD_RES"),TextureResType::PLIST);
+    
+    m_pBtnMenu->setTitleFontName(UtilityHelper::getLocalString("FONT_NAME"));
+    m_pBtnMenu->setTitleFontSize(36);
+    m_pBtnMenu->getTitleRenderer()->setScale(0.4);
+    m_pBtnMenu->setTitleText(UtilityHelper::getLocalStringForUi("BTN_TEXT_MAINMENU"));
+    
+    
+    m_pBtnRestart->setTitleFontName(UtilityHelper::getLocalString("FONT_NAME"));
+    m_pBtnRestart->setTitleFontSize(36);
+    m_pBtnRestart->getTitleRenderer()->setScale(0.4);
+    m_pBtnRestart->setTitleText(UtilityHelper::getLocalStringForUi("BTN_TEXT_RESTART"));
+
+    m_pBtnMenu->addClickEventListener(CC_CALLBACK_1(DeadPopupUI::onClickMainMenu, this));
+    m_pBtnRestart->addClickEventListener(CC_CALLBACK_1(DeadPopupUI::onClickRestart, this));
     
     return true;
-    
 }
 void DeadPopupUI::onClickMainMenu(cocos2d::Ref *ref)
 {

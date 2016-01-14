@@ -208,7 +208,6 @@
             <filename>../ui/ui_sprite/ui_question_icon.png</filename>
             <filename>../ui/ui_sprite/ui_next_icon.png</filename>
             <filename>../ui/ui_sprite/achievement_lock.png</filename>
-            <filename>../ui/ui_sprite/ui_gameover.png</filename>
             <filename>../ui/ui_sprite/ui_frame_10.png</filename>
             <filename>../ui/ui_sprite/ui_frame_11.png</filename>
             <filename>../ui/ui_sprite/ui_frame_9.png</filename>
@@ -230,6 +229,9 @@
             <filename>../ui/ui_sprite/ui_skill_fire.png</filename>
             <filename>../ui/ui_sprite/ui_skill_lock.png</filename>
             <filename>../ui/ui_sprite/ui_skill_prog.png</filename>
+            <filename>../ui/ui_sprite/ui_buffer_block.png</filename>
+            <filename>../ui/ui_sprite/ui_gameover_cn.png</filename>
+            <filename>../ui/ui_sprite/ui_gameover_en.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

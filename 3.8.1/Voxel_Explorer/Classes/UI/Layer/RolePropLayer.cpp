@@ -90,6 +90,12 @@ void RolePropLayer::updateCharacterBuff()
         buffim->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
         m_pCharacterBufferList->pushBackCustomItem(buffim);
     }
+    if ((flag&PB_BLOCKRATEUP) == PB_BLOCKRATEUP)
+    {
+        ui::ImageView* buffim = ui::ImageView::create("ui_buffer_block.png",TextureResType::PLIST);
+        buffim->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
+        m_pCharacterBufferList->pushBackCustomItem(buffim);
+    }
 
 }
 
