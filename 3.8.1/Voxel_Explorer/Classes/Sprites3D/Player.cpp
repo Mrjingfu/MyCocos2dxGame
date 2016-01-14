@@ -297,7 +297,8 @@ void Player::addPlayerBuffer(PlayerBuffer buff)
     {
         if((bufferFlag & PB_BLOCKRATEUP) == 0)
         {
-            m_fBlockRateUpColdDownTime = 20.0f;
+            m_fBlockRateUpTime = 20.0f;
+            PlayerProperty::getInstance()->addPlayerBuffer(buff);
             addBlockRateUpEffectNode();
             std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("BLOCK_RATEUP");
             SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
