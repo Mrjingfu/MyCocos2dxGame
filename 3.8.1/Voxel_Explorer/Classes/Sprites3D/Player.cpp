@@ -19,6 +19,7 @@
 #include "OutlineEffect3D.h"
 #include "PlayerFireBallBullet.hpp"
 #include "PlayerMagicArrowBullet.hpp"
+#include "SdkBoxManager.hpp"
 USING_NS_CC;
 using namespace CocosDenshion;
 
@@ -638,6 +639,9 @@ void Player::attackByMonster(MonsterProperty* monsterProperty, bool miss)
         setState(PS_DEATH);
         PlayerProperty::getInstance()->setCurrentHP(currentHp);
         StatisticsManager::getInstance()->addRoleDeadNum(StatisticsManager::eRoleDeadType::RET_MONSTER_ATTACK);
+#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM ==CC_PLATFORM_ANDROID )
+        SdkBoxManager::getInstance()->logEvent("Player", "Death", "AttackByMonster", 1);
+#endif
     }
     else
     {
@@ -717,6 +721,9 @@ void Player::attackByBoss(BossProperty* bossProperty, bool miss)
         setState(PS_DEATH);
         PlayerProperty::getInstance()->setCurrentHP(currentHp);
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_DEATH, this);
+#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM ==CC_PLATFORM_ANDROID )
+        SdkBoxManager::getInstance()->logEvent("Player", "Death", "AttackByBoss", 1);
+#endif
     }
     else
     {
@@ -795,7 +802,9 @@ void Player::hurtByGrippingTrap()
         setState(PS_DEATH);
         PlayerProperty::getInstance()->setCurrentHP(currentHp);
         StatisticsManager::getInstance()->addRoleDeadNum(StatisticsManager::eRoleDeadType::RET_TRIGGER_GRIPPING_TRAP);
-//        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_DEATH, this);
+#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM ==CC_PLATFORM_ANDROID )
+        SdkBoxManager::getInstance()->logEvent("Player", "Death", "TriggerGrippingTrap", 1);
+#endif
     }
     else
     {
@@ -1184,6 +1193,9 @@ void Player::updatePlayerBuffer(float delta)
                     setState(PS_DEATH);
                     PlayerProperty::getInstance()->setCurrentHP(currentHp);
                     StatisticsManager::getInstance()->addRoleDeadNum(StatisticsManager::eRoleDeadType::RET_BUFFER_FIRE);
+#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM ==CC_PLATFORM_ANDROID )
+                    SdkBoxManager::getInstance()->logEvent("Player", "Death", "KilledByBufferFire", 1);
+#endif
                 }
                 else
                 {
@@ -1211,6 +1223,9 @@ void Player::updatePlayerBuffer(float delta)
                 setState(PS_DEATH);
                 PlayerProperty::getInstance()->setCurrentHP(currentHp);
                 StatisticsManager::getInstance()->addRoleDeadNum(StatisticsManager::eRoleDeadType::RET_BUFFER_POISONING);
+#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM ==CC_PLATFORM_ANDROID )
+                SdkBoxManager::getInstance()->logEvent("Player", "Death", "KilledByBufferPoisoning", 1);
+#endif
             }
             else
             {

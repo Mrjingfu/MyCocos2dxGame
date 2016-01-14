@@ -13,6 +13,7 @@
 #include "AchievementManager.h"
 #include "ArchiveManager.h"
 #include "UtilityHelper.h"
+#include "SdkBoxManager.hpp"
 USING_NS_CC;
 
 Scene* LogoScene::createScene()
@@ -185,6 +186,11 @@ bool LogoScene::init()
     Sequence* sequence10 = Sequence::create(delay1, delay2, delay2, delay2, delay1, delay2, delay2,delay2, delay2, callback, delay1, fadeOut, callback1, NULL);
     m_NodeRoot1->runAction(sequence10);
     
+    
+#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID )
+    SdkBoxManager::getInstance()->logScreen("LogoScene");
+#endif
+    
     return true;
 }
 void LogoScene::onEnter()
@@ -221,7 +227,6 @@ void LogoScene::update(float delta)
 }
 void LogoScene::precache()
 {
-    
     if (!LevelResourceManager::getInstance()->init()) {
         CCLOGERROR("LevelResourceManager initialize failed!");
     }

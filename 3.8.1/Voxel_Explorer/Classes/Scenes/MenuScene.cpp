@@ -9,6 +9,7 @@
 #include "MenuUILayer.h"
 #include "PopupUILayerManager.h"
 #include "ArchiveManager.h"
+#include "SdkBoxManager.hpp"
 USING_NS_CC;
 
 Scene* MenuScene::createScene()
@@ -46,6 +47,10 @@ bool MenuScene::init()
     if(!menuUiLayer->load("menuscene.csb"))
         return false;
     addChild(menuUiLayer);
+    
+#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID )
+    SdkBoxManager::getInstance()->logScreen("MenuScene");
+#endif
     
     return true;
 }

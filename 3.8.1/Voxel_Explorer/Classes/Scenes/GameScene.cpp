@@ -13,6 +13,7 @@
 #include "StatisticsManager.hpp"
 #include "RandomDungeon.hpp"
 #include "LoadingLayer.hpp"
+#include "SdkBoxManager.hpp"
 USING_NS_CC;
 
 Scene* GameScene::createScene()
@@ -80,9 +81,13 @@ bool GameScene::init()
     {
         return false;
     }
+    
     loadingLayer = LoadingLayer::create();
     addChild(loadingLayer);
     
- 
+#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID )
+    SdkBoxManager::getInstance()->logScreen("GameScene");
+#endif
+    
     return true;
 }

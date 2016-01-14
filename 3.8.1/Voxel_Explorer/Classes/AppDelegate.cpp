@@ -2,6 +2,7 @@
 #include "LogoScene.h"
 #include "SimpleAudioEngine.h"
 #include "ArchiveManager.h"
+#include "SdkBoxManager.hpp"
 USING_NS_CC;
 using namespace CocosDenshion;
 
@@ -48,6 +49,10 @@ bool AppDelegate::applicationDidFinishLaunching() {
 #endif
         director->setOpenGLView(glview);
     }
+    
+#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID )
+    SdkBoxManager::getInstance()->registerGoogleAnalytics();
+#endif
 
     std::vector<std::string> searchPaths;
     searchPaths.push_back("lang");
