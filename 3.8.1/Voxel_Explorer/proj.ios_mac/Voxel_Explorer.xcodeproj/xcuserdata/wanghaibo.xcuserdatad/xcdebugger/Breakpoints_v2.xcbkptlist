@@ -90,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "474287788.265658"
+            timestampString = "474448336.088248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1947"
-            endingLineNumber = "1947"
+            startingLineNumber = "1963"
+            endingLineNumber = "1963"
             landmarkName = "VoxelExplorer::createLevel()"
             landmarkType = "5">
          </BreakpointContent>
@@ -122,11 +122,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "474287788.265658"
+            timestampString = "474448336.088248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1951"
-            endingLineNumber = "1951"
+            startingLineNumber = "1967"
+            endingLineNumber = "1967"
             landmarkName = "VoxelExplorer::createLevel()"
             landmarkType = "5">
          </BreakpointContent>
@@ -202,11 +202,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Player.cpp"
-            timestampString = "474377450.945651"
+            timestampString = "474448336.088248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "967"
-            endingLineNumber = "967"
+            startingLineNumber = "969"
+            endingLineNumber = "969"
             landmarkName = "Player::onEnterJumpLocal()"
             landmarkType = "5">
          </BreakpointContent>
@@ -218,11 +218,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Player.cpp"
-            timestampString = "474377450.945651"
+            timestampString = "474446872.937687"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "540"
-            endingLineNumber = "540"
+            startingLineNumber = "534"
+            endingLineNumber = "534"
             landmarkName = "Player::rotateToLeft()"
             landmarkType = "5">
          </BreakpointContent>
@@ -874,11 +874,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "474280502.772043"
+            timestampString = "474448336.088248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "361"
-            endingLineNumber = "361"
+            startingLineNumber = "377"
+            endingLineNumber = "377"
             landmarkName = "VoxelExplorer::getScreenPickDesc(const cocos2d::Vec2&amp; screenPos, std::string&amp; strIcon, ValueMap&amp; event, bool&amp; isTraps, bool&amp; isCanRemove, cocos2d::Vec2&amp; checkpos)"
             landmarkType = "5">
          </BreakpointContent>
@@ -890,11 +890,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "474280502.772043"
+            timestampString = "474448336.088248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "757"
-            endingLineNumber = "757"
+            startingLineNumber = "773"
+            endingLineNumber = "773"
             landmarkName = "VoxelExplorer::addParticle3DEffect(const cocos2d::Vec3&amp; pos, P3D_EFFECT_TYPE type)"
             landmarkType = "5">
          </BreakpointContent>
@@ -906,11 +906,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "474280502.772043"
+            timestampString = "474448336.088248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "879"
-            endingLineNumber = "879"
+            startingLineNumber = "895"
+            endingLineNumber = "895"
             landmarkName = "VoxelExplorer::generatePickItemByUseableItem(const cocos2d::Vec2&amp; pos, UseableItem::UseableItemType type)"
             landmarkType = "5">
          </BreakpointContent>
@@ -922,11 +922,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "474280502.772043"
+            timestampString = "474448336.088248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "884"
-            endingLineNumber = "884"
+            startingLineNumber = "900"
+            endingLineNumber = "900"
             landmarkName = "VoxelExplorer::generatePickItemByUseableItem(const cocos2d::Vec2&amp; pos, UseableItem::UseableItemType type)"
             landmarkType = "5">
          </BreakpointContent>
@@ -1960,11 +1960,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "474280502.772043"
+            timestampString = "474448336.088248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1256"
-            endingLineNumber = "1256"
+            startingLineNumber = "1272"
+            endingLineNumber = "1272"
             landmarkName = "VoxelExplorer::handleShowHiddenTrap(const cocos2d::Vec2&amp; mapPos, TerrainTile::TileType trapType)"
             landmarkType = "5">
          </BreakpointContent>
@@ -1976,11 +1976,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "474280502.772043"
+            timestampString = "474448336.088248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "370"
-            endingLineNumber = "370"
+            startingLineNumber = "386"
+            endingLineNumber = "386"
             landmarkName = "VoxelExplorer::getScreenPickDesc(const cocos2d::Vec2&amp; screenPos, std::string&amp; strIcon, ValueMap&amp; event, bool&amp; isTraps, bool&amp; isCanRemove, cocos2d::Vec2&amp; checkpos)"
             landmarkType = "5">
          </BreakpointContent>
@@ -2104,11 +2104,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "474280502.772043"
+            timestampString = "474448336.088248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "471"
-            endingLineNumber = "471"
+            startingLineNumber = "487"
+            endingLineNumber = "487"
             landmarkName = "VoxelExplorer::checkBossCanAttack(BaseBoss* boss)"
             landmarkType = "5">
          </BreakpointContent>
@@ -2120,11 +2120,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "474280502.772043"
+            timestampString = "474448336.088248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "500"
-            endingLineNumber = "500"
+            startingLineNumber = "516"
+            endingLineNumber = "516"
             landmarkName = "VoxelExplorer::wanderingAround(Actor* wanderer, cocos2d::Vec2&amp; nextPos)"
             landmarkType = "5">
          </BreakpointContent>
@@ -2136,11 +2136,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "474280502.772043"
+            timestampString = "474448336.088248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "512"
-            endingLineNumber = "512"
+            startingLineNumber = "528"
+            endingLineNumber = "528"
             landmarkName = "VoxelExplorer::updateFogOfWar(const cocos2d::Rect&amp; areaRect, bool visited)"
             landmarkType = "5">
          </BreakpointContent>
@@ -2152,11 +2152,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "474280502.772043"
+            timestampString = "474448336.088248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "501"
-            endingLineNumber = "501"
+            startingLineNumber = "517"
+            endingLineNumber = "517"
             landmarkName = "VoxelExplorer::wanderingAround(Actor* wanderer, cocos2d::Vec2&amp; nextPos)"
             landmarkType = "5">
          </BreakpointContent>
@@ -2248,11 +2248,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Player.cpp"
-            timestampString = "474377450.945651"
+            timestampString = "474448336.088248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "985"
-            endingLineNumber = "985"
+            startingLineNumber = "987"
+            endingLineNumber = "987"
             landmarkName = "Player::onEnterJumpMove()"
             landmarkType = "5">
          </BreakpointContent>
@@ -2264,11 +2264,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "474280502.772043"
+            timestampString = "474448336.088248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1270"
-            endingLineNumber = "1270"
+            startingLineNumber = "1286"
+            endingLineNumber = "1286"
             landmarkName = "VoxelExplorer::handleShowHiddenTrap(const cocos2d::Vec2&amp; mapPos, TerrainTile::TileType trapType)"
             landmarkType = "5">
          </BreakpointContent>
@@ -2280,11 +2280,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "474280502.772043"
+            timestampString = "474448336.088248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1305"
-            endingLineNumber = "1305"
+            startingLineNumber = "1321"
+            endingLineNumber = "1321"
             landmarkName = "VoxelExplorer::handleShowSearchEffect(const cocos2d::Vec2&amp; mapPos)"
             landmarkType = "5">
          </BreakpointContent>
@@ -2408,11 +2408,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "474280502.772043"
+            timestampString = "474448336.088248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "711"
-            endingLineNumber = "711"
+            startingLineNumber = "727"
+            endingLineNumber = "727"
             landmarkName = "VoxelExplorer::shakeScreen()"
             landmarkType = "5">
          </BreakpointContent>
@@ -3048,11 +3048,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "474280502.772043"
+            timestampString = "474448336.088248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "392"
-            endingLineNumber = "392"
+            startingLineNumber = "408"
+            endingLineNumber = "408"
             landmarkName = "VoxelExplorer::cameraTrackPlayer()"
             landmarkType = "5">
          </BreakpointContent>
@@ -3208,11 +3208,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "474280502.772043"
+            timestampString = "474448336.088248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1281"
-            endingLineNumber = "1281"
+            startingLineNumber = "1297"
+            endingLineNumber = "1297"
             landmarkName = "VoxelExplorer::handleShowHiddenTrap(const cocos2d::Vec2&amp; mapPos, TerrainTile::TileType trapType)"
             landmarkType = "5">
          </BreakpointContent>
@@ -3256,11 +3256,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "474280502.772043"
+            timestampString = "474448336.088248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1250"
-            endingLineNumber = "1250"
+            startingLineNumber = "1266"
+            endingLineNumber = "1266"
             landmarkName = "VoxelExplorer::handleShowHiddenTrap(const cocos2d::Vec2&amp; mapPos, TerrainTile::TileType trapType)"
             landmarkType = "5">
          </BreakpointContent>
@@ -3272,11 +3272,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "474280502.772043"
+            timestampString = "474448336.088248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1253"
-            endingLineNumber = "1253"
+            startingLineNumber = "1269"
+            endingLineNumber = "1269"
             landmarkName = "VoxelExplorer::handleShowHiddenTrap(const cocos2d::Vec2&amp; mapPos, TerrainTile::TileType trapType)"
             landmarkType = "5">
          </BreakpointContent>
@@ -3288,11 +3288,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "474280502.772043"
+            timestampString = "474448336.088248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1245"
-            endingLineNumber = "1245"
+            startingLineNumber = "1261"
+            endingLineNumber = "1261"
             landmarkName = "VoxelExplorer::handleShowHiddenTrap(const cocos2d::Vec2&amp; mapPos, TerrainTile::TileType trapType)"
             landmarkType = "5">
          </BreakpointContent>
@@ -3304,11 +3304,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "474280502.772043"
+            timestampString = "474448336.088248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "369"
-            endingLineNumber = "369"
+            startingLineNumber = "385"
+            endingLineNumber = "385"
             landmarkName = "VoxelExplorer::getScreenPickDesc(const cocos2d::Vec2&amp; screenPos, std::string&amp; strIcon, ValueMap&amp; event, bool&amp; isTraps, bool&amp; isCanRemove, cocos2d::Vec2&amp; checkpos)"
             landmarkType = "5">
          </BreakpointContent>
@@ -3352,11 +3352,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "474280502.772043"
+            timestampString = "474448336.088248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1279"
-            endingLineNumber = "1279"
+            startingLineNumber = "1295"
+            endingLineNumber = "1295"
             landmarkName = "VoxelExplorer::handleShowHiddenTrap(const cocos2d::Vec2&amp; mapPos, TerrainTile::TileType trapType)"
             landmarkType = "5">
          </BreakpointContent>
@@ -3752,11 +3752,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "474280502.772043"
+            timestampString = "474448336.088248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1071"
-            endingLineNumber = "1071"
+            startingLineNumber = "1087"
+            endingLineNumber = "1087"
             landmarkName = "VoxelExplorer::handleUseUseableItem(const cocos2d::Vec2&amp; mapPos)"
             landmarkType = "5">
          </BreakpointContent>
@@ -3768,11 +3768,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Player.cpp"
-            timestampString = "474377450.945651"
+            timestampString = "474448336.088248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1153"
-            endingLineNumber = "1153"
+            startingLineNumber = "1147"
+            endingLineNumber = "1147"
             landmarkName = "Player::updatePlayerBuffer(float delta)"
             landmarkType = "5">
          </BreakpointContent>
@@ -3848,11 +3848,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "474280502.772043"
+            timestampString = "474448336.088248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1107"
-            endingLineNumber = "1107"
+            startingLineNumber = "1123"
+            endingLineNumber = "1123"
             landmarkName = "VoxelExplorer::handleUseUseableItem(const cocos2d::Vec2&amp; mapPos)"
             landmarkType = "5">
          </BreakpointContent>
@@ -3880,11 +3880,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "474280502.772043"
+            timestampString = "474448336.088248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1175"
-            endingLineNumber = "1175"
+            startingLineNumber = "1191"
+            endingLineNumber = "1191"
             landmarkName = "VoxelExplorer::handleTriggerTrap(const cocos2d::Vec2&amp; mapPos, TerrainTile::TileType trapType)"
             landmarkType = "5">
          </BreakpointContent>
@@ -3928,11 +3928,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "474280502.772043"
+            timestampString = "474448336.088248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1246"
-            endingLineNumber = "1246"
+            startingLineNumber = "1262"
+            endingLineNumber = "1262"
             landmarkName = "VoxelExplorer::handleShowHiddenTrap(const cocos2d::Vec2&amp; mapPos, TerrainTile::TileType trapType)"
             landmarkType = "5">
          </BreakpointContent>
@@ -4216,11 +4216,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "474280502.772043"
+            timestampString = "474448336.088248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1525"
-            endingLineNumber = "1525"
+            startingLineNumber = "1541"
+            endingLineNumber = "1541"
             landmarkName = "VoxelExplorer::handlePlayerUsePotion(PickableItem::PickableItemType type)"
             landmarkType = "5">
          </BreakpointContent>
@@ -4444,7 +4444,9 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "120"
-            endingLineNumber = "120">
+            endingLineNumber = "120"
+            landmarkName = "GameUILayer::initUi()"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -4459,7 +4461,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "124"
             endingLineNumber = "124"
-            landmarkName = "GameUILayer::registerTouchEvent()"
+            landmarkName = "GameUILayer::initUi()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -4491,7 +4493,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "138"
             endingLineNumber = "138"
-            landmarkName = "GameUILayer::switchToMenuScene()"
+            landmarkName = "GameUILayer::registerTouchEvent()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -4811,7 +4813,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "258"
             endingLineNumber = "258"
-            landmarkName = "GameUILayer::onEventRoleMoneyNotEnough(cocos2d::EventCustom *sender)"
+            landmarkName = "GameUILayer::onTouchEnded(cocos2d::Touch *touch, cocos2d::Event *event)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -4827,7 +4829,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "261"
             endingLineNumber = "261"
-            landmarkName = "GameUILayer::onEventRoleMoneyNotEnough(cocos2d::EventCustom *sender)"
+            landmarkName = "GameUILayer::onTouchEnded(cocos2d::Touch *touch, cocos2d::Event *event)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -4843,7 +4845,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "265"
             endingLineNumber = "265"
-            landmarkName = "GameUILayer::onEventRoleNoMana(cocos2d::EventCustom *sender)"
+            landmarkName = "GameUILayer::onEventRoleMoneyNotEnough(cocos2d::EventCustom *sender)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -4902,11 +4904,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "474280502.772043"
+            timestampString = "474448336.088248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1144"
-            endingLineNumber = "1144"
+            startingLineNumber = "1160"
+            endingLineNumber = "1160"
             landmarkName = "VoxelExplorer::handleTriggerTrap(const cocos2d::Vec2&amp; mapPos, TerrainTile::TileType trapType)"
             landmarkType = "5">
          </BreakpointContent>
@@ -4950,11 +4952,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Player.cpp"
-            timestampString = "474377450.945651"
+            timestampString = "474448336.088248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1213"
-            endingLineNumber = "1213"
+            startingLineNumber = "1207"
+            endingLineNumber = "1207"
             landmarkName = "Player::updatePlayerBuffer(float delta)"
             landmarkType = "5">
          </BreakpointContent>
@@ -4998,11 +5000,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "474280502.772043"
+            timestampString = "474448336.088248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1036"
-            endingLineNumber = "1036"
+            startingLineNumber = "1052"
+            endingLineNumber = "1052"
             landmarkName = "VoxelExplorer::handleUseUseableItem(const cocos2d::Vec2&amp; mapPos)"
             landmarkType = "5">
          </BreakpointContent>
@@ -5460,11 +5462,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "474280502.772043"
+            timestampString = "474448336.088248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1481"
-            endingLineNumber = "1481"
+            startingLineNumber = "1497"
+            endingLineNumber = "1497"
             landmarkName = "VoxelExplorer::handlePlayerUseScroll(PickableItem::PickableItemType type)"
             landmarkType = "5">
          </BreakpointContent>
@@ -5716,11 +5718,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "474280502.772043"
+            timestampString = "474448336.088248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "842"
-            endingLineNumber = "842"
+            startingLineNumber = "858"
+            endingLineNumber = "858"
             landmarkName = "VoxelExplorer::generatePickItemByUseableItem(const cocos2d::Vec2&amp; pos, UseableItem::UseableItemType type)"
             landmarkType = "5">
          </BreakpointContent>
@@ -5748,12 +5750,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "474287788.265658"
+            timestampString = "474448336.088248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1937"
-            endingLineNumber = "1937"
-            landmarkName = "VoxelExplorer::createLevel()"
+            startingLineNumber = "1953"
+            endingLineNumber = "1953"
+            landmarkName = "VoxelExplorer::createLights()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -5796,11 +5798,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "474280502.772043"
+            timestampString = "474448336.088248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "389"
-            endingLineNumber = "389"
+            startingLineNumber = "405"
+            endingLineNumber = "405"
             landmarkName = "VoxelExplorer::cameraTrackPlayer()"
             landmarkType = "5">
          </BreakpointContent>
@@ -6420,11 +6422,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "474280502.772043"
+            timestampString = "474448336.088248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "960"
-            endingLineNumber = "960"
+            startingLineNumber = "976"
+            endingLineNumber = "976"
             landmarkName = "VoxelExplorer::handleDoor(const cocos2d::Vec2&amp; mapPos)"
             landmarkType = "5">
          </BreakpointContent>
@@ -6436,11 +6438,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "474280502.772043"
+            timestampString = "474448336.088248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "963"
-            endingLineNumber = "963"
+            startingLineNumber = "979"
+            endingLineNumber = "979"
             landmarkName = "VoxelExplorer::handleDoor(const cocos2d::Vec2&amp; mapPos)"
             landmarkType = "5">
          </BreakpointContent>
@@ -6452,11 +6454,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "474280502.772043"
+            timestampString = "474448336.088248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "972"
-            endingLineNumber = "972"
+            startingLineNumber = "988"
+            endingLineNumber = "988"
             landmarkName = "VoxelExplorer::handleDoor(const cocos2d::Vec2&amp; mapPos)"
             landmarkType = "5">
          </BreakpointContent>
@@ -6516,11 +6518,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "474280502.772043"
+            timestampString = "474448336.088248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "939"
-            endingLineNumber = "939"
+            startingLineNumber = "955"
+            endingLineNumber = "955"
             landmarkName = "VoxelExplorer::handleDoor(const cocos2d::Vec2&amp; mapPos)"
             landmarkType = "5">
          </BreakpointContent>
@@ -6532,11 +6534,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "474280502.772043"
+            timestampString = "474448336.088248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "904"
-            endingLineNumber = "904"
+            startingLineNumber = "920"
+            endingLineNumber = "920"
             landmarkName = "VoxelExplorer::generatePickItemByBoss(const cocos2d::Vec2&amp; pos, int copper)"
             landmarkType = "5">
          </BreakpointContent>
@@ -6548,11 +6550,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "474280502.772043"
+            timestampString = "474448336.088248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "886"
-            endingLineNumber = "886"
+            startingLineNumber = "902"
+            endingLineNumber = "902"
             landmarkName = "VoxelExplorer::generatePickItemByUseableItem(const cocos2d::Vec2&amp; pos, UseableItem::UseableItemType type)"
             landmarkType = "5">
          </BreakpointContent>
@@ -6564,11 +6566,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "474280502.772043"
+            timestampString = "474448336.088248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "575"
-            endingLineNumber = "575"
+            startingLineNumber = "591"
+            endingLineNumber = "591"
             landmarkName = "VoxelExplorer::updateFogOfWar(const cocos2d::Rect&amp; areaRect, bool visited)"
             landmarkType = "5">
          </BreakpointContent>
@@ -6580,7 +6582,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Player.cpp"
-            timestampString = "474377450.945651"
+            timestampString = "474448336.088248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1074"
@@ -6596,7 +6598,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Player.cpp"
-            timestampString = "474377450.945651"
+            timestampString = "474448336.088248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1073"
@@ -6612,11 +6614,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "474280502.772043"
+            timestampString = "474448336.088248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "588"
-            endingLineNumber = "588"
+            startingLineNumber = "604"
+            endingLineNumber = "604"
             landmarkName = "VoxelExplorer::updateFogOfWar(const cocos2d::Rect&amp; areaRect, bool visited)"
             landmarkType = "5">
          </BreakpointContent>
@@ -6644,11 +6646,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "474280502.772043"
+            timestampString = "474448336.088248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1290"
-            endingLineNumber = "1290"
+            startingLineNumber = "1306"
+            endingLineNumber = "1306"
             landmarkName = "VoxelExplorer::handleShowHiddenTrap(const cocos2d::Vec2&amp; mapPos, TerrainTile::TileType trapType)"
             landmarkType = "5">
             <Locations>
@@ -6692,11 +6694,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "474280502.772043"
+            timestampString = "474448336.088248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "574"
-            endingLineNumber = "574"
+            startingLineNumber = "590"
+            endingLineNumber = "590"
             landmarkName = "VoxelExplorer::updateFogOfWar(const cocos2d::Rect&amp; areaRect, bool visited)"
             landmarkType = "5">
          </BreakpointContent>
@@ -6740,11 +6742,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "474280502.772043"
+            timestampString = "474448336.088248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "600"
-            endingLineNumber = "600"
+            startingLineNumber = "616"
+            endingLineNumber = "616"
             landmarkName = "VoxelExplorer::updateFogOfWar(const cocos2d::Rect&amp; areaRect, bool visited)"
             landmarkType = "5">
          </BreakpointContent>
@@ -6756,11 +6758,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "474280502.772043"
+            timestampString = "474448336.088248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "591"
-            endingLineNumber = "591"
+            startingLineNumber = "607"
+            endingLineNumber = "607"
             landmarkName = "VoxelExplorer::updateFogOfWar(const cocos2d::Rect&amp; areaRect, bool visited)"
             landmarkType = "5">
          </BreakpointContent>
@@ -6772,11 +6774,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "474280502.772043"
+            timestampString = "474448336.088248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "590"
-            endingLineNumber = "590"
+            startingLineNumber = "606"
+            endingLineNumber = "606"
             landmarkName = "VoxelExplorer::updateFogOfWar(const cocos2d::Rect&amp; areaRect, bool visited)"
             landmarkType = "5">
          </BreakpointContent>
@@ -6820,11 +6822,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "474280502.772043"
+            timestampString = "474448336.088248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "587"
-            endingLineNumber = "587"
+            startingLineNumber = "603"
+            endingLineNumber = "603"
             landmarkName = "VoxelExplorer::updateFogOfWar(const cocos2d::Rect&amp; areaRect, bool visited)"
             landmarkType = "5">
          </BreakpointContent>
@@ -6852,11 +6854,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "474280502.772043"
+            timestampString = "474448336.088248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "593"
-            endingLineNumber = "593"
+            startingLineNumber = "609"
+            endingLineNumber = "609"
             landmarkName = "VoxelExplorer::updateFogOfWar(const cocos2d::Rect&amp; areaRect, bool visited)"
             landmarkType = "5">
          </BreakpointContent>
@@ -6868,11 +6870,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "474280502.772043"
+            timestampString = "474448336.088248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "593"
-            endingLineNumber = "593"
+            startingLineNumber = "609"
+            endingLineNumber = "609"
             landmarkName = "VoxelExplorer::updateFogOfWar(const cocos2d::Rect&amp; areaRect, bool visited)"
             landmarkType = "5">
          </BreakpointContent>
@@ -6900,11 +6902,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "474280502.772043"
+            timestampString = "474448336.088248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "594"
-            endingLineNumber = "594"
+            startingLineNumber = "610"
+            endingLineNumber = "610"
             landmarkName = "VoxelExplorer::updateFogOfWar(const cocos2d::Rect&amp; areaRect, bool visited)"
             landmarkType = "5">
          </BreakpointContent>
@@ -6916,11 +6918,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "474280502.772043"
+            timestampString = "474448336.088248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "596"
-            endingLineNumber = "596"
+            startingLineNumber = "612"
+            endingLineNumber = "612"
             landmarkName = "VoxelExplorer::updateFogOfWar(const cocos2d::Rect&amp; areaRect, bool visited)"
             landmarkType = "5">
          </BreakpointContent>
@@ -6964,11 +6966,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "474280502.772043"
+            timestampString = "474448336.088248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "693"
-            endingLineNumber = "693"
+            startingLineNumber = "709"
+            endingLineNumber = "709"
             landmarkName = "VoxelExplorer::searchAndCheck()"
             landmarkType = "5">
          </BreakpointContent>
@@ -6980,11 +6982,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "474280502.772043"
+            timestampString = "474448336.088248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "691"
-            endingLineNumber = "691"
+            startingLineNumber = "707"
+            endingLineNumber = "707"
             landmarkName = "VoxelExplorer::searchAndCheck()"
             landmarkType = "5">
          </BreakpointContent>
@@ -7012,11 +7014,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "474280502.772043"
+            timestampString = "474448336.088248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "583"
-            endingLineNumber = "583"
+            startingLineNumber = "599"
+            endingLineNumber = "599"
             landmarkName = "VoxelExplorer::updateFogOfWar(const cocos2d::Rect&amp; areaRect, bool visited)"
             landmarkType = "5">
             <Locations>
@@ -7060,11 +7062,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "474280502.772043"
+            timestampString = "474448336.088248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "576"
-            endingLineNumber = "576"
+            startingLineNumber = "592"
+            endingLineNumber = "592"
             landmarkName = "VoxelExplorer::updateFogOfWar(const cocos2d::Rect&amp; areaRect, bool visited)"
             landmarkType = "5">
          </BreakpointContent>
@@ -7412,11 +7414,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "474280502.772043"
+            timestampString = "474448336.088248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "638"
-            endingLineNumber = "638"
+            startingLineNumber = "654"
+            endingLineNumber = "654"
             landmarkName = "VoxelExplorer::updateBossRoomDoor()"
             landmarkType = "5">
          </BreakpointContent>
@@ -7428,11 +7430,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "474280502.772043"
+            timestampString = "474448336.088248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "638"
-            endingLineNumber = "638"
+            startingLineNumber = "654"
+            endingLineNumber = "654"
             landmarkName = "VoxelExplorer::updateBossRoomDoor()"
             landmarkType = "5">
          </BreakpointContent>
@@ -7444,11 +7446,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "474280502.772043"
+            timestampString = "474448336.088248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "595"
-            endingLineNumber = "595"
+            startingLineNumber = "611"
+            endingLineNumber = "611"
             landmarkName = "VoxelExplorer::updateFogOfWar(const cocos2d::Rect&amp; areaRect, bool visited)"
             landmarkType = "5">
          </BreakpointContent>
@@ -7460,11 +7462,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "474280502.772043"
+            timestampString = "474448336.088248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "523"
-            endingLineNumber = "523"
+            startingLineNumber = "539"
+            endingLineNumber = "539"
             landmarkName = "VoxelExplorer::updateFogOfWar(const cocos2d::Rect&amp; areaRect, bool visited)"
             landmarkType = "5">
          </BreakpointContent>
@@ -7476,11 +7478,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "474280502.772043"
+            timestampString = "474448336.088248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "521"
-            endingLineNumber = "521"
+            startingLineNumber = "537"
+            endingLineNumber = "537"
             landmarkName = "VoxelExplorer::updateFogOfWar(const cocos2d::Rect&amp; areaRect, bool visited)"
             landmarkType = "5">
          </BreakpointContent>
@@ -8258,11 +8260,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "474280502.772043"
+            timestampString = "474448336.088248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "468"
-            endingLineNumber = "468"
+            startingLineNumber = "484"
+            endingLineNumber = "484"
             landmarkName = "VoxelExplorer::checkBossFleeFromPlayer(BaseBoss* boss)"
             landmarkType = "5">
          </BreakpointContent>
@@ -8274,11 +8276,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "474280502.772043"
+            timestampString = "474448336.088248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "452"
-            endingLineNumber = "452"
+            startingLineNumber = "468"
+            endingLineNumber = "468"
             landmarkName = "VoxelExplorer::checkMonsterCanAttack(BaseMonster* monster)"
             landmarkType = "5">
          </BreakpointContent>
@@ -8290,11 +8292,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "474280502.772043"
+            timestampString = "474448336.088248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "464"
-            endingLineNumber = "464"
+            startingLineNumber = "480"
+            endingLineNumber = "480"
             landmarkName = "VoxelExplorer::checkBossFleeFromPlayer(BaseBoss* boss)"
             landmarkType = "5">
          </BreakpointContent>
@@ -8658,11 +8660,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "474280502.772043"
+            timestampString = "474448336.088248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "697"
-            endingLineNumber = "697"
+            startingLineNumber = "713"
+            endingLineNumber = "713"
             landmarkName = "VoxelExplorer::searchAndCheck()"
             landmarkType = "5">
          </BreakpointContent>
@@ -8690,11 +8692,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "474280502.772043"
+            timestampString = "474448336.088248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "695"
-            endingLineNumber = "695"
+            startingLineNumber = "711"
+            endingLineNumber = "711"
             landmarkName = "VoxelExplorer::searchAndCheck()"
             landmarkType = "5">
          </BreakpointContent>
@@ -8897,22 +8899,6 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../Classes/Sprites3D/Player.cpp"
-            timestampString = "474377450.945651"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1091"
-            endingLineNumber = "1091"
-            landmarkName = "Player::onExitDrop()"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "../Classes/Mgrs/LevelResourceManager.cpp"
             timestampString = "472038090.821545"
             startingColumnNumber = "9223372036854775807"
@@ -8930,11 +8916,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Player.cpp"
-            timestampString = "474377450.945651"
+            timestampString = "474448336.088248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1097"
-            endingLineNumber = "1097"
+            startingLineNumber = "1094"
+            endingLineNumber = "1094"
             landmarkName = "Player::onLand(bool isAttack)"
             landmarkType = "5">
          </BreakpointContent>
@@ -8994,11 +8980,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Player.cpp"
-            timestampString = "474377450.945651"
+            timestampString = "474448336.088248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1095"
-            endingLineNumber = "1095"
+            startingLineNumber = "1092"
+            endingLineNumber = "1092"
             landmarkName = "Player::onExitDeath()"
             landmarkType = "5">
          </BreakpointContent>
@@ -9010,11 +8996,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Player.cpp"
-            timestampString = "474377450.945651"
+            timestampString = "474448336.088248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1096"
-            endingLineNumber = "1096"
+            startingLineNumber = "1093"
+            endingLineNumber = "1093"
             landmarkName = "Player::onExitDeath()"
             landmarkType = "5">
          </BreakpointContent>
@@ -9026,11 +9012,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Player.cpp"
-            timestampString = "474377450.945651"
+            timestampString = "474448336.088248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1094"
-            endingLineNumber = "1094"
+            startingLineNumber = "1091"
+            endingLineNumber = "1091"
             landmarkName = "Player::onExitDeath()"
             landmarkType = "5">
          </BreakpointContent>
@@ -9042,11 +9028,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "474280502.772043"
+            timestampString = "474448336.088248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "552"
-            endingLineNumber = "552"
+            startingLineNumber = "568"
+            endingLineNumber = "568"
             landmarkName = "VoxelExplorer::updateFogOfWar(const cocos2d::Rect&amp; areaRect, bool visited)"
             landmarkType = "5">
          </BreakpointContent>
@@ -9058,7 +9044,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Player.cpp"
-            timestampString = "474377450.945651"
+            timestampString = "474448336.088248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1089"
@@ -9090,11 +9076,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "474280502.772043"
+            timestampString = "474448336.088248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "580"
-            endingLineNumber = "580"
+            startingLineNumber = "596"
+            endingLineNumber = "596"
             landmarkName = "VoxelExplorer::updateFogOfWar(const cocos2d::Rect&amp; areaRect, bool visited)"
             landmarkType = "5">
          </BreakpointContent>
@@ -9106,11 +9092,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "474287788.265658"
+            timestampString = "474448336.088248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1957"
-            endingLineNumber = "1957"
+            startingLineNumber = "1973"
+            endingLineNumber = "1973"
             landmarkName = "VoxelExplorer::createLevel()"
             landmarkType = "5">
          </BreakpointContent>
@@ -9122,11 +9108,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "474287788.265658"
+            timestampString = "474448336.088248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1879"
-            endingLineNumber = "1879"
+            startingLineNumber = "1895"
+            endingLineNumber = "1895"
             landmarkName = "VoxelExplorer::createLayers()"
             landmarkType = "5">
          </BreakpointContent>
@@ -9154,11 +9140,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "474280502.772043"
+            timestampString = "474448336.088248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1363"
-            endingLineNumber = "1363"
+            startingLineNumber = "1379"
+            endingLineNumber = "1379"
             landmarkName = "VoxelExplorer::handleMonsterHurt(const cocos2d::Vec2&amp; mapPos)"
             landmarkType = "5">
          </BreakpointContent>
@@ -9186,11 +9172,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "474280502.772043"
+            timestampString = "474448336.088248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1365"
-            endingLineNumber = "1365"
+            startingLineNumber = "1381"
+            endingLineNumber = "1381"
             landmarkName = "VoxelExplorer::handleMonsterHurt(const cocos2d::Vec2&amp; mapPos)"
             landmarkType = "5">
          </BreakpointContent>
@@ -9394,11 +9380,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "474280502.772043"
+            timestampString = "474448336.088248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "341"
-            endingLineNumber = "341"
+            startingLineNumber = "357"
+            endingLineNumber = "357"
             landmarkName = "VoxelExplorer::getScreenPickDesc(const cocos2d::Vec2&amp; screenPos, std::string&amp; strIcon, ValueMap&amp; event, bool&amp; isTraps, bool&amp; isCanRemove, cocos2d::Vec2&amp; checkpos)"
             landmarkType = "5">
          </BreakpointContent>
@@ -9410,11 +9396,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "474280502.772043"
+            timestampString = "474448336.088248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "249"
-            endingLineNumber = "249"
+            startingLineNumber = "265"
+            endingLineNumber = "265"
             landmarkName = "VoxelExplorer::getScreenPickDesc(const cocos2d::Vec2&amp; screenPos, std::string&amp; strIcon, ValueMap&amp; event, bool&amp; isTraps, bool&amp; isCanRemove, cocos2d::Vec2&amp; checkpos)"
             landmarkType = "5">
          </BreakpointContent>
@@ -9426,11 +9412,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "474280502.772043"
+            timestampString = "474448336.088248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "253"
-            endingLineNumber = "253"
+            startingLineNumber = "269"
+            endingLineNumber = "269"
             landmarkName = "VoxelExplorer::getScreenPickDesc(const cocos2d::Vec2&amp; screenPos, std::string&amp; strIcon, ValueMap&amp; event, bool&amp; isTraps, bool&amp; isCanRemove, cocos2d::Vec2&amp; checkpos)"
             landmarkType = "5">
          </BreakpointContent>
@@ -9442,11 +9428,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "474280502.772043"
+            timestampString = "474448336.088248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "287"
-            endingLineNumber = "287"
+            startingLineNumber = "303"
+            endingLineNumber = "303"
             landmarkName = "VoxelExplorer::getScreenPickDesc(const cocos2d::Vec2&amp; screenPos, std::string&amp; strIcon, ValueMap&amp; event, bool&amp; isTraps, bool&amp; isCanRemove, cocos2d::Vec2&amp; checkpos)"
             landmarkType = "5">
          </BreakpointContent>
@@ -9458,11 +9444,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "474280502.772043"
+            timestampString = "474448336.088248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "338"
-            endingLineNumber = "338"
+            startingLineNumber = "354"
+            endingLineNumber = "354"
             landmarkName = "VoxelExplorer::getScreenPickDesc(const cocos2d::Vec2&amp; screenPos, std::string&amp; strIcon, ValueMap&amp; event, bool&amp; isTraps, bool&amp; isCanRemove, cocos2d::Vec2&amp; checkpos)"
             landmarkType = "5">
          </BreakpointContent>
@@ -9474,27 +9460,27 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "474280502.772043"
+            timestampString = "474448336.088248"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "314"
+            endingLineNumber = "314"
+            landmarkName = "VoxelExplorer::getScreenPickDesc(const cocos2d::Vec2&amp; screenPos, std::string&amp; strIcon, ValueMap&amp; event, bool&amp; isTraps, bool&amp; isCanRemove, cocos2d::Vec2&amp; checkpos)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/VoxelExplorer.cpp"
+            timestampString = "474448336.088248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "298"
             endingLineNumber = "298"
-            landmarkName = "VoxelExplorer::getScreenPickDesc(const cocos2d::Vec2&amp; screenPos, std::string&amp; strIcon, ValueMap&amp; event, bool&amp; isTraps, bool&amp; isCanRemove, cocos2d::Vec2&amp; checkpos)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "474280502.772043"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "282"
-            endingLineNumber = "282"
             landmarkName = "VoxelExplorer::getScreenPickDesc(const cocos2d::Vec2&amp; screenPos, std::string&amp; strIcon, ValueMap&amp; event, bool&amp; isTraps, bool&amp; isCanRemove, cocos2d::Vec2&amp; checkpos)"
             landmarkType = "5">
          </BreakpointContent>
@@ -9511,7 +9497,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "478"
             endingLineNumber = "478"
-            landmarkName = "GameUILayer::onEventNpcNurseAnsWer(cocos2d::EventCustom *sender)"
+            landmarkName = "GameUILayer::onEventNpcLittleWitchAnsWer(cocos2d::EventCustom *sender)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -9527,7 +9513,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "479"
             endingLineNumber = "479"
-            landmarkName = "GameUILayer::onEventNpcNurseAnsWer(cocos2d::EventCustom *sender)"
+            landmarkName = "GameUILayer::onEventNpcLittleWitchAnsWer(cocos2d::EventCustom *sender)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -9554,11 +9540,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "474280502.772043"
+            timestampString = "474448336.088248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "706"
-            endingLineNumber = "706"
+            startingLineNumber = "722"
+            endingLineNumber = "722"
             landmarkName = "VoxelExplorer::searchAndCheck()"
             landmarkType = "5">
          </BreakpointContent>
@@ -9602,11 +9588,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "474280502.772043"
+            timestampString = "474448336.088248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "764"
-            endingLineNumber = "764"
+            startingLineNumber = "780"
+            endingLineNumber = "780"
             landmarkName = "VoxelExplorer::addParticle3DEffect(const cocos2d::Vec3&amp; pos, P3D_EFFECT_TYPE type)"
             landmarkType = "5">
          </BreakpointContent>
@@ -9618,11 +9604,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "474280502.772043"
+            timestampString = "474448336.088248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "765"
-            endingLineNumber = "765"
+            startingLineNumber = "781"
+            endingLineNumber = "781"
             landmarkName = "VoxelExplorer::addParticle3DEffect(const cocos2d::Vec3&amp; pos, P3D_EFFECT_TYPE type)"
             landmarkType = "5">
          </BreakpointContent>
@@ -9634,11 +9620,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "474280502.772043"
+            timestampString = "474448336.088248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "769"
-            endingLineNumber = "769"
+            startingLineNumber = "785"
+            endingLineNumber = "785"
             landmarkName = "VoxelExplorer::addParticle3DEffectToPlayer(P3D_EFFECT_TYPE type, bool keepLocal)"
             landmarkType = "5">
          </BreakpointContent>
@@ -9730,11 +9716,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "474280502.772043"
+            timestampString = "474448336.088248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "775"
-            endingLineNumber = "775"
+            startingLineNumber = "791"
+            endingLineNumber = "791"
             landmarkName = "VoxelExplorer::addParticle3DEffectToPlayer(P3D_EFFECT_TYPE type, bool keepLocal)"
             landmarkType = "5">
          </BreakpointContent>
@@ -9746,11 +9732,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "474280502.772043"
+            timestampString = "474448336.088248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "766"
-            endingLineNumber = "766"
+            startingLineNumber = "782"
+            endingLineNumber = "782"
             landmarkName = "VoxelExplorer::addParticle3DEffectToPlayer(P3D_EFFECT_TYPE type, bool keepLocal)"
             landmarkType = "5">
          </BreakpointContent>
@@ -9842,11 +9828,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Player.cpp"
-            timestampString = "474377450.945651"
+            timestampString = "474448336.088248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1124"
-            endingLineNumber = "1124"
+            startingLineNumber = "1121"
+            endingLineNumber = "1121"
             landmarkName = "Player::onLand(bool isAttack)"
             landmarkType = "5">
          </BreakpointContent>
@@ -10018,11 +10004,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "474280502.772043"
+            timestampString = "474448336.088248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1395"
-            endingLineNumber = "1395"
+            startingLineNumber = "1411"
+            endingLineNumber = "1411"
             landmarkName = "VoxelExplorer::handlePlayerHurtByBoss(const cocos2d::Vec2&amp; mapPos, BaseBoss* boss)"
             landmarkType = "5">
          </BreakpointContent>
@@ -10098,11 +10084,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "474280502.772043"
+            timestampString = "474448336.088248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1579"
-            endingLineNumber = "1579"
+            startingLineNumber = "1595"
+            endingLineNumber = "1595"
             landmarkName = "VoxelExplorer::handlePlayerUseSmallPortal()"
             landmarkType = "5">
          </BreakpointContent>
@@ -10162,11 +10148,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "474287788.265658"
+            timestampString = "474448336.088248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "2045"
-            endingLineNumber = "2045"
+            startingLineNumber = "2061"
+            endingLineNumber = "2061"
             landmarkName = "VoxelExplorer::createPlayer()"
             landmarkType = "5">
          </BreakpointContent>
@@ -10226,11 +10212,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "474280502.772043"
+            timestampString = "474448336.088248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1106"
-            endingLineNumber = "1106"
+            startingLineNumber = "1122"
+            endingLineNumber = "1122"
             landmarkName = "VoxelExplorer::handleUseUseableItem(const cocos2d::Vec2&amp; mapPos)"
             landmarkType = "5">
          </BreakpointContent>
@@ -10274,11 +10260,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "474280502.772043"
+            timestampString = "474448336.088248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "349"
-            endingLineNumber = "349"
+            startingLineNumber = "365"
+            endingLineNumber = "365"
             landmarkName = "VoxelExplorer::getScreenPickDesc(const cocos2d::Vec2&amp; screenPos, std::string&amp; strIcon, ValueMap&amp; event, bool&amp; isTraps, bool&amp; isCanRemove, cocos2d::Vec2&amp; checkpos)"
             landmarkType = "5">
          </BreakpointContent>
@@ -10290,11 +10276,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "474280502.772043"
+            timestampString = "474448336.088248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "336"
-            endingLineNumber = "336"
+            startingLineNumber = "352"
+            endingLineNumber = "352"
             landmarkName = "VoxelExplorer::getScreenPickDesc(const cocos2d::Vec2&amp; screenPos, std::string&amp; strIcon, ValueMap&amp; event, bool&amp; isTraps, bool&amp; isCanRemove, cocos2d::Vec2&amp; checkpos)"
             landmarkType = "5">
          </BreakpointContent>
@@ -10306,11 +10292,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "474280502.772043"
+            timestampString = "474448336.088248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "321"
-            endingLineNumber = "321"
+            startingLineNumber = "337"
+            endingLineNumber = "337"
             landmarkName = "VoxelExplorer::getScreenPickDesc(const cocos2d::Vec2&amp; screenPos, std::string&amp; strIcon, ValueMap&amp; event, bool&amp; isTraps, bool&amp; isCanRemove, cocos2d::Vec2&amp; checkpos)"
             landmarkType = "5">
          </BreakpointContent>
@@ -10322,11 +10308,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "474280502.772043"
+            timestampString = "474448336.088248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "347"
-            endingLineNumber = "347"
+            startingLineNumber = "363"
+            endingLineNumber = "363"
             landmarkName = "VoxelExplorer::getScreenPickDesc(const cocos2d::Vec2&amp; screenPos, std::string&amp; strIcon, ValueMap&amp; event, bool&amp; isTraps, bool&amp; isCanRemove, cocos2d::Vec2&amp; checkpos)"
             landmarkType = "5">
          </BreakpointContent>
@@ -10338,11 +10324,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "474280502.772043"
+            timestampString = "474448336.088248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "310"
-            endingLineNumber = "310"
+            startingLineNumber = "326"
+            endingLineNumber = "326"
             landmarkName = "VoxelExplorer::getScreenPickDesc(const cocos2d::Vec2&amp; screenPos, std::string&amp; strIcon, ValueMap&amp; event, bool&amp; isTraps, bool&amp; isCanRemove, cocos2d::Vec2&amp; checkpos)"
             landmarkType = "5">
          </BreakpointContent>
@@ -10354,11 +10340,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "474280502.772043"
+            timestampString = "474448336.088248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "328"
-            endingLineNumber = "328"
+            startingLineNumber = "344"
+            endingLineNumber = "344"
             landmarkName = "VoxelExplorer::getScreenPickDesc(const cocos2d::Vec2&amp; screenPos, std::string&amp; strIcon, ValueMap&amp; event, bool&amp; isTraps, bool&amp; isCanRemove, cocos2d::Vec2&amp; checkpos)"
             landmarkType = "5">
          </BreakpointContent>
@@ -10375,7 +10361,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "153"
             endingLineNumber = "153"
-            landmarkName = "GameUILayer::switchToGameScene()"
+            landmarkName = "GameUILayer::switchToMenuScene()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -10386,11 +10372,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "474280502.772043"
+            timestampString = "474448336.088248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "340"
-            endingLineNumber = "340"
+            startingLineNumber = "356"
+            endingLineNumber = "356"
             landmarkName = "VoxelExplorer::getScreenPickDesc(const cocos2d::Vec2&amp; screenPos, std::string&amp; strIcon, ValueMap&amp; event, bool&amp; isTraps, bool&amp; isCanRemove, cocos2d::Vec2&amp; checkpos)"
             landmarkType = "5">
          </BreakpointContent>
@@ -10482,11 +10468,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "474280502.772043"
+            timestampString = "474448336.088248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1552"
-            endingLineNumber = "1552"
+            startingLineNumber = "1568"
+            endingLineNumber = "1568"
             landmarkName = "VoxelExplorer::handlePlayerUseStandardPortal(const cocos2d::Vec2&amp; pos)"
             landmarkType = "5">
          </BreakpointContent>
@@ -10498,11 +10484,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "474280502.772043"
+            timestampString = "474448336.088248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1617"
-            endingLineNumber = "1617"
+            startingLineNumber = "1633"
+            endingLineNumber = "1633"
             landmarkName = "VoxelExplorer::handleDownstairs()"
             landmarkType = "5">
          </BreakpointContent>
@@ -10530,11 +10516,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "474280502.772043"
+            timestampString = "474448336.088248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "634"
-            endingLineNumber = "634"
+            startingLineNumber = "650"
+            endingLineNumber = "650"
             landmarkName = "VoxelExplorer::updateBossRoomDoor()"
             landmarkType = "5">
          </BreakpointContent>
@@ -10546,11 +10532,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "474280502.772043"
+            timestampString = "474448336.088248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "933"
-            endingLineNumber = "933"
+            startingLineNumber = "949"
+            endingLineNumber = "949"
             landmarkName = "VoxelExplorer::handleDoor(const cocos2d::Vec2&amp; mapPos)"
             landmarkType = "5">
          </BreakpointContent>
@@ -10562,11 +10548,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "474280502.772043"
+            timestampString = "474448336.088248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "955"
-            endingLineNumber = "955"
+            startingLineNumber = "971"
+            endingLineNumber = "971"
             landmarkName = "VoxelExplorer::handleDoor(const cocos2d::Vec2&amp; mapPos)"
             landmarkType = "5">
          </BreakpointContent>
@@ -10578,11 +10564,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "474280502.772043"
+            timestampString = "474448336.088248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "970"
-            endingLineNumber = "970"
+            startingLineNumber = "986"
+            endingLineNumber = "986"
             landmarkName = "VoxelExplorer::handleDoor(const cocos2d::Vec2&amp; mapPos)"
             landmarkType = "5">
          </BreakpointContent>
@@ -10594,11 +10580,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "474280502.772043"
+            timestampString = "474448336.088248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "984"
-            endingLineNumber = "984"
+            startingLineNumber = "1000"
+            endingLineNumber = "1000"
             landmarkName = "VoxelExplorer::handleDoor(const cocos2d::Vec2&amp; mapPos)"
             landmarkType = "5">
          </BreakpointContent>
@@ -10610,11 +10596,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "474280502.772043"
+            timestampString = "474448336.088248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1227"
-            endingLineNumber = "1227"
+            startingLineNumber = "1243"
+            endingLineNumber = "1243"
             landmarkName = "VoxelExplorer::handleShowSecretDoor(const cocos2d::Vec2&amp; mapPos)"
             landmarkType = "5">
          </BreakpointContent>
@@ -10647,7 +10633,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "171"
             endingLineNumber = "171"
-            landmarkName = "GameUILayer::onTouchEnded(cocos2d::Touch *touch, cocos2d::Event *event)"
+            landmarkName = "GameUILayer::onTouchBegan(Touch *touch, Event *event)"
             landmarkType = "5">
             <Locations>
                <Location
@@ -10690,11 +10676,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "474280502.772043"
+            timestampString = "474448336.088248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "355"
-            endingLineNumber = "355"
+            startingLineNumber = "371"
+            endingLineNumber = "371"
             landmarkName = "VoxelExplorer::getScreenPickDesc(const cocos2d::Vec2&amp; screenPos, std::string&amp; strIcon, ValueMap&amp; event, bool&amp; isTraps, bool&amp; isCanRemove, cocos2d::Vec2&amp; checkpos)"
             landmarkType = "5">
          </BreakpointContent>
@@ -10706,11 +10692,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "474280502.772043"
+            timestampString = "474448336.088248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "341"
-            endingLineNumber = "341"
+            startingLineNumber = "357"
+            endingLineNumber = "357"
             landmarkName = "VoxelExplorer::getScreenPickDesc(const cocos2d::Vec2&amp; screenPos, std::string&amp; strIcon, ValueMap&amp; event, bool&amp; isTraps, bool&amp; isCanRemove, cocos2d::Vec2&amp; checkpos)"
             landmarkType = "5">
          </BreakpointContent>
@@ -10855,7 +10841,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "302"
             endingLineNumber = "302"
-            landmarkName = "GameUILayer::onEventRoleNoGoldKey(cocos2d::EventCustom *sender)"
+            landmarkName = "GameUILayer::onEventRoleNoSilverKey(cocos2d::EventCustom *sender)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -11031,7 +11017,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "309"
             endingLineNumber = "309"
-            landmarkName = "GameUILayer::onEventRoleNoRoomKey(cocos2d::EventCustom *sender)"
+            landmarkName = "GameUILayer::onEventRoleNoGoldKey(cocos2d::EventCustom *sender)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -11047,7 +11033,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "416"
             endingLineNumber = "416"
-            landmarkName = "GameUILayer::onEventNpcShopGirlAnsWer(cocos2d::EventCustom *sender)"
+            landmarkName = "GameUILayer::onEventNpcChildAnsWer(cocos2d::EventCustom *sender)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -11138,11 +11124,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Player.cpp"
-            timestampString = "474377450.945651"
+            timestampString = "474448336.088248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1265"
-            endingLineNumber = "1265"
+            startingLineNumber = "1259"
+            endingLineNumber = "1259"
             landmarkName = "Player::addBlockRateUpEffectNode()"
             landmarkType = "5">
          </BreakpointContent>
@@ -11202,11 +11188,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Player.cpp"
-            timestampString = "474377450.945651"
+            timestampString = "474448336.088248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "920"
-            endingLineNumber = "920"
+            startingLineNumber = "917"
+            endingLineNumber = "917"
             landmarkName = "Player::useSkillToAttack(PlayerSkill skill)"
             landmarkType = "5">
          </BreakpointContent>
@@ -11218,11 +11204,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Player.cpp"
-            timestampString = "474377450.945651"
+            timestampString = "474448336.088248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "934"
-            endingLineNumber = "934"
+            startingLineNumber = "931"
+            endingLineNumber = "931"
             landmarkName = "Player::useSkillToAttack(PlayerSkill skill)"
             landmarkType = "5">
          </BreakpointContent>
@@ -11234,11 +11220,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "474286476.766285"
+            timestampString = "474448336.088248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1797"
-            endingLineNumber = "1797"
+            startingLineNumber = "1813"
+            endingLineNumber = "1813"
             landmarkName = "VoxelExplorer::checkBulletCollideMonster(const cocos2d::Vec3&amp; bulletPos)"
             landmarkType = "5">
          </BreakpointContent>
@@ -11272,6 +11258,38 @@
             startingLineNumber = "238"
             endingLineNumber = "238"
             landmarkName = "RoleLayer::updateRoleProp()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/VoxelExplorer.cpp"
+            timestampString = "474447026.960142"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "185"
+            endingLineNumber = "185"
+            landmarkName = "VoxelExplorer::respawnPlayer()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/VoxelExplorer.cpp"
+            timestampString = "474448136.759076"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "187"
+            endingLineNumber = "187"
+            landmarkName = "VoxelExplorer::respawnPlayer()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

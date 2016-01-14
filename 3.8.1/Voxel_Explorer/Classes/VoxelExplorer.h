@@ -52,6 +52,7 @@ public:
     void gamePause();
     void gameResume();
     
+    void respawnPlayer();
     std::string getScreenPickDesc(const cocos2d::Vec2& screenPos, std::string& strIcon, cocos2d::ValueMap& event, bool& isTraps, bool& isCanRemove, cocos2d::Vec2& checkpos);
     bool checkMovable(TileInfo& info);
     void cameraTrackPlayer();

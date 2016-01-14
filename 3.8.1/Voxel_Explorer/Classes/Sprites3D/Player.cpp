@@ -474,9 +474,6 @@ void Player::setState(PlayerState state)
         case PlayerState::PS_ATTACK:
             onExitAttack();
             break;
-        case PlayerState::PS_DROP:
-            onExitDrop();
-            break;
         case PlayerState::PS_DEATH:
             onExitDeath();
             break;
@@ -501,9 +498,6 @@ void Player::setState(PlayerState state)
             break;
         case PlayerState::PS_ATTACK:
             onEnterAttack();
-            break;
-        case PlayerState::PS_DROP:
-            onEnterDrop();
             break;
         case PlayerState::PS_DEATH:
             onEnterDeath();
@@ -859,6 +853,9 @@ void Player::healedbyNurse()
     PlayerProperty::getInstance()->healedbyNurse();
     
     VoxelExplorer::getInstance()->addParticle3DEffectToPlayer(P3D_PLAYER_USE_POTION_TAKE_EFFECT);
+    
+    std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("USE_SCROLL");
+    SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
 }
 void Player::useSkillToAttack(PlayerSkill skill)
 {
@@ -948,6 +945,11 @@ void Player::onEnterIdle()
 {
     EaseSineOut* scaleTo = EaseSineOut::create(ScaleTo::create(0.1f, 1.0f, 1.0f, 1.0f));
     this->runAction(scaleTo);
+    
+    if(m_pFakeShadow)
+        m_pFakeShadow->setVisible(true);
+    this->setVisible(true);
+
 }
 void Player::onEnterPrepareToJump()
 {
@@ -1051,9 +1053,7 @@ void Player::onEnterAttack()
     else
         this->runAction(sequence);
 }
-void Player::onEnterDrop()
-{
-}
+
 void Player::onEnterDeath()
 {
     auto tex = Director::getInstance()->getTextureCache()->addImage("chr_sword.png");
@@ -1086,9 +1086,6 @@ void Player::onExitJumpMove()
 {
 }
 void Player::onExitAttack()
-{
-}
-void Player::onExitDrop()
 {
 }
 void Player::onExitDeath()
@@ -1125,9 +1122,6 @@ void Player::onLand(bool isAttack)
     {
         VoxelExplorer::getInstance()->addParticle3DEffectToPlayer(P3D_EFFECT_TYPE::P3D_STEALTH_BUFFER, true);
     }
-    
-    /// for debug
-    //useSkillToAttack(PS_FIREBALL);
 }
 void Player::onFallDie()
 {

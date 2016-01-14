@@ -176,7 +176,23 @@ void VoxelExplorer::gameResume()
     }
 
 }
-
+void VoxelExplorer::respawnPlayer()
+{
+    if(!m_pPlayer || !m_pCurrentLevel || !m_p3DLayer)
+        return;
+    if(m_pPlayer->getState() == Player::PS_DEATH)
+    {
+        Vec2 pos = m_pPlayer->getLastPosInMap();
+        Vec3 respawnPos = Vec3(pos.x*TerrainTile::CONTENT_SCALE, -0.5f*TerrainTile::CONTENT_SCALE, -pos.y*TerrainTile::CONTENT_SCALE);
+        m_pPlayer->setPosition3D(respawnPos);
+        m_pPlayer->healedbyNurse();
+        m_pPlayer->addTerrainTileFlag(TileInfo::ATTACKABLE);
+        
+        m_pMainCamera->setPosition3D(m_pPlayer->getPosition3D() + Vec3(0, 5*TerrainTile::CONTENT_SCALE, 4*TerrainTile::CONTENT_SCALE ));
+        m_pMainCamera->lookAt(m_pPlayer->getPosition3D() + Vec3(0,0.5f*TerrainTile::CONTENT_SCALE,0));
+        m_pPlayer->setState(Player::PS_IDLE);
+    }
+}
 std::string VoxelExplorer::getScreenPickDesc(const cocos2d::Vec2& screenPos, std::string& strIcon, ValueMap& event, bool& isTraps, bool& isCanRemove, cocos2d::Vec2& checkpos)
 {
     if(m_pMainCamera && m_p3DLayer)

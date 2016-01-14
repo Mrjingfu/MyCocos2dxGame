@@ -13,6 +13,7 @@
 #include "ArchiveManager.h"
 #include "VoxelExplorer.h"
 #include "GameUILayer.h"
+#include "PopupUILayerManager.h"
 USING_NS_CC;
 DeadPopupUI::DeadPopupUI()
 {
@@ -70,4 +71,7 @@ void DeadPopupUI::onClickRestart(cocos2d::Ref *ref)
 //    cocos2d::Scene* scene = GameScene::createScene();
 //    Director::getInstance()->replaceScene(scene);
     
+    ///for debug
+    PopupUILayerManager::getInstance()->closeCurrentPopup();
+    VoxelExplorer::getInstance()->respawnPlayer();
 }

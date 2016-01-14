@@ -24,7 +24,6 @@ public:
         PS_JUMPLOCAL,
         PS_JUMPMOVE,
         PS_ATTACK,
-        PS_DROP,
         PS_DEATH,
         PS_UNKNOWN
     } PlayerState;
@@ -74,7 +73,6 @@ private:
     void onEnterJumpLocal();
     void onEnterJumpMove();
     void onEnterAttack();
-    void onEnterDrop();
     void onEnterDeath();
     
     void onExitIdle();
@@ -82,7 +80,6 @@ private:
     void onExitJumpLocal();
     void onExitJumpMove();
     void onExitAttack();
-    void onExitDrop();
     void onExitDeath();
     
     void onLand(bool isAttack);
