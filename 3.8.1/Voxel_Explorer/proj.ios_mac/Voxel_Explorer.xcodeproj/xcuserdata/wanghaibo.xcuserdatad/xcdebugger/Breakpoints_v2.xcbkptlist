@@ -10852,12 +10852,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Utilities/UtilityHelper.cpp"
-            timestampString = "473915670.208153"
+            timestampString = "474466165.506223"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "95"
-            endingLineNumber = "95"
-            landmarkName = "UtilityHelper::getLineStr(std::string &amp;str, int length)"
+            startingLineNumber = "108"
+            endingLineNumber = "108"
+            landmarkName = "UtilityHelper::getLineForText(cocos2d::ui::Text* tempText,std::string&amp; str)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -10868,12 +10868,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Utilities/UtilityHelper.cpp"
-            timestampString = "473915692.191732"
+            timestampString = "474466165.506223"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "136"
-            endingLineNumber = "136"
-            landmarkName = "UtilityHelper::getLineStr(std::string &amp;str, int length)"
+            startingLineNumber = "149"
+            endingLineNumber = "149"
+            landmarkName = "UtilityHelper::getSingleStrFontSize(cocos2d::ui::Text* tempText,std::string str)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

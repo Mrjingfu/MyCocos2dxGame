@@ -8,7 +8,20 @@
 
 #include "UtilityHelper.h"
 USING_NS_CC;
-
+std::string UtilityHelper::getAppStoreURL()
+{
+    std::string retString;
+    LanguageType lt= Application::getInstance()->getCurrentLanguage();
+    switch (lt) {
+        case LanguageType::CHINESE:
+            retString = "itms://itunes.apple.com/cn/app/dungeon-laughter/id1050626034?l=zh&ls=1&mt=8";
+            break;
+        default:
+            retString = "itms://itunes.apple.com/us/app/dungeon-laughter/id1050626034?l=zh&ls=1&mt=8";
+            break;
+    }
+    return retString;
+}
 std::string UtilityHelper::getLocalString(const std::string& key)
 {
     return  getLocalStringForPlist(key, "chinese.plist", "english.plist");

@@ -110,5 +110,63 @@
     [super dealloc];
 }
 
+- (void) initAdmob {
+    [self requestAndLoadInterstitialAds];
+}
+- (GADRequest *)createRequest {
+    GADRequest *request = [GADRequest request];
+    // Requests test ads on devices you specify. Your test device ID is printed to the console when
+    // an ad request is made.
+    request.testDevices = [NSArray arrayWithObjects:
+                           @"63c2655bf2b6d8b7776d3e37639a6a0add8ea741",
+                           nil];
+    return request;
+}
+- (void) requestAndLoadInterstitialAds {
+    NSLog(@"requestAndLoadInterstitialAds");
+    admobInterstitial = [[GADInterstitial alloc] initWithAdUnitID:@"ca-app-pub-3628527903442392/4990241464"];
+    if(admobInterstitial != nil)
+    {
+        admobInterstitial.delegate = self;
+        [admobInterstitial loadRequest:[self createRequest]];
+    }
+}
+- (void) playInterstitialAds {
+    if(admobInterstitial != nil)
+    {
+        if (admobInterstitial.isReady)
+        [admobInterstitial presentFromRootViewController:self];
+        else
+        {
+            NSLog(@"The interstitial didn't finish loading or failed to load");
+            [self requestAndLoadInterstitialAds];
+        }
+    }
+}
 
+- (void)openItunesURL:(NSString*) urlStr {
+    NSURL *url = [NSURL URLWithString:urlStr];
+    
+    BOOL launchSuccess = [[UIApplication sharedApplication] openURL:url];
+    
+    if(launchSuccess == NO)
+    {
+        NSLog(@"openItunesURL :: Failed to open URL (this is normal in the iOS Simulator ...)");
+    }
+}
+
+#pragma mark GADInterstitialDelegate implementation
+- (void)interstitialDidReceiveAd:(GADInterstitial *)ad
+{
+    NSLog(@"Received interstitial ad");
+}
+
+- (void)interstitial:(GADInterstitial *)interstitial didFailToReceiveAdWithError:(GADRequestError *)error {
+    NSLog(@"interstitialDidFailToReceiveAdWithError: %@", [error localizedDescription]);
+}
+
+- (void)interstitialDidDismissScreen:(GADInterstitial *)interstitial {
+    NSLog(@"interstitialDidDismissScreen");
+    [self requestAndLoadInterstitialAds];
+}
 @end
