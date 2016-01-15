@@ -140,129 +140,119 @@ void PopupUILayer::outAction()
 }
 void PopupUILayer::inActionCenterScale()
 {
-    cocos2d::Layer* root = getRootLayer();
-    
-
-    if (root) {
-        root->setAnchorPoint(cocos2d::Vec2::ANCHOR_MIDDLE);
+     if (m_pRootNode) {
+        m_pRootNode->setAnchorPoint(cocos2d::Vec2::ANCHOR_MIDDLE);
         //    root->setPosition(WINDOW_CENTER);
-        root->setScale(0.001f);
+        m_pRootNode->setScale(0.001f);
         
         EaseIn* scale1 = EaseIn::create(ScaleTo::create(0.3f,1.1f *1),0.3f);
         
         ScaleTo* scale2 = ScaleTo::create(0.1f,1.0f * 1);
         CallFunc* callFunc =  CallFunc::create(CC_CALLBACK_0(PopupUILayer::inActionCallFunc, this));
-        root->runAction(Sequence::create(scale1,scale2, callFunc,nullptr));
+        m_pRootNode->runAction(Sequence::create(scale1,scale2, callFunc,nullptr));
     }
 }
 void PopupUILayer::outActionCenterScale()
 {
-   cocos2d::Layer* root = getRootLayer();
-    if (root) {
+   
+    if (m_pRootNode) {
         ScaleTo* scale1 = ScaleTo::create(0.1f,1.1f * 1);
         EaseOut* scale2 = EaseOut::create(ScaleTo::create(0.4f,0.001f * 1),0.3f);
         CallFunc* callFunc =  CallFunc::create(CC_CALLBACK_0(PopupUILayer::removeSelfCallFunc, this));
-        root->runAction(Sequence::create(scale1,scale2, callFunc,nullptr));
+        m_pRootNode->runAction(Sequence::create(scale1,scale2, callFunc,nullptr));
     }
 }
 
 void PopupUILayer::inActionDownCenter()
 {
-    cocos2d::Layer* root = getRootLayer();
     
-    if (root)
+    if (m_pRootNode)
     {
-        root->setPosition(Vec2(0, -SCREEN_HEIGHT));
-        cocos2d::MoveTo* moveTo = cocos2d::MoveTo::create(0.5,Vec2::ZERO);
+        m_pRootNode->setPosition(Vec2(m_pRootNode->getPositionX(), -SCREEN_HEIGHT));
+        cocos2d::MoveTo* moveTo = cocos2d::MoveTo::create(0.5,Vec2(m_pRootNode->getPositionX(), SCREEN_HEIGHT*0.5));
         cocos2d::EaseBackOut* inout = cocos2d::EaseBackOut::create(moveTo);
         CallFunc* callFunc =  CallFunc::create(CC_CALLBACK_0(PopupUILayer::inActionCallFunc, this));
-        root->runAction(Sequence::create(inout,callFunc, nullptr));
+        m_pRootNode->runAction(Sequence::create(inout,callFunc, nullptr));
     }
 }
 void PopupUILayer::outActionDownCenter()
 {
-    cocos2d::Layer* root = getRootLayer();
-    if (root)
+    if (m_pRootNode)
     {
-        cocos2d::MoveTo* moveTo = cocos2d::MoveTo::create(0.5,Vec2(0,-SCREEN_HEIGHT));
+        cocos2d::MoveTo* moveTo = cocos2d::MoveTo::create(0.5,Vec2(m_pRootNode->getPositionX(),-SCREEN_HEIGHT));
         cocos2d::EaseBackIn* inout = cocos2d::EaseBackIn::create(moveTo);
         CallFunc* callFunc =  CallFunc::create(CC_CALLBACK_0(PopupUILayer::removeSelfCallFunc, this));
-        root->runAction(Sequence::create(inout,callFunc, nullptr));
+        m_pRootNode->runAction(Sequence::create(inout,callFunc, nullptr));
     }
 }
 
 void PopupUILayer::inActionTopCenter()
 {
-    cocos2d::Layer* root = getRootLayer();
-    if (root)
+    if (m_pRootNode)
     {
-        root->setPosition(Vec2(0, SCREEN_HEIGHT));
-        cocos2d::MoveTo* moveTo = cocos2d::MoveTo::create(0.5,Vec2::ZERO);
+        m_pRootNode->setPosition(Vec2(m_pRootNode->getPositionX(), SCREEN_HEIGHT));
+        cocos2d::MoveTo* moveTo = cocos2d::MoveTo::create(0.5,Vec2(m_pRootNode->getPositionX(), SCREEN_HEIGHT*0.5));
         cocos2d::EaseBackOut* inout = cocos2d::EaseBackOut::create(moveTo);
         CallFunc* callFunc =  CallFunc::create(CC_CALLBACK_0(PopupUILayer::inActionCallFunc, this));
-        root->runAction(Sequence::create(inout,callFunc, nullptr));
+        m_pRootNode->runAction(Sequence::create(inout,callFunc, nullptr));
     }
 }
 void PopupUILayer::outActionTopCenter()
 {
-    cocos2d::Layer* root = getRootLayer();
-    if (root)
+    if (m_pRootNode)
     {
-        cocos2d::MoveTo* moveTo = cocos2d::MoveTo::create(0.5,Vec2(0,SCREEN_HEIGHT));
+        cocos2d::MoveTo* moveTo = cocos2d::MoveTo::create(0.5,Vec2(m_pRootNode->getPositionX(),SCREEN_HEIGHT));
         cocos2d::EaseBackIn* inout = cocos2d::EaseBackIn::create(moveTo);
         CallFunc* callFunc =  CallFunc::create(CC_CALLBACK_0(PopupUILayer::removeSelfCallFunc, this));
-        root->runAction(Sequence::create(inout,callFunc, nullptr));
+        m_pRootNode->runAction(Sequence::create(inout,callFunc, nullptr));
 
     }
 }
 
 void PopupUILayer::inActionLeftCenter()
 {
-   cocos2d::Layer* root = getRootLayer();
-    if (root)
+     if (m_pRootNode)
     {
-        root->setPosition(Vec2(-SCREEN_WIDTH, 0));
-        cocos2d::MoveTo* moveTo = cocos2d::MoveTo::create(0.5,Vec2::ZERO);
+        m_pRootNode->setPosition(Vec2(-SCREEN_WIDTH, m_pRootNode->getPositionY()));
+        cocos2d::MoveTo* moveTo = cocos2d::MoveTo::create(0.5,Vec2(SCREEN_WIDTH*0.5, m_pRootNode->getPositionY()));
         cocos2d::EaseBackOut* inout = cocos2d::EaseBackOut::create(moveTo);
         CallFunc* callFunc =  CallFunc::create(CC_CALLBACK_0(PopupUILayer::inActionCallFunc, this));
-        root->runAction(Sequence::create(inout,callFunc, nullptr));
+        m_pRootNode->runAction(Sequence::create(inout,callFunc, nullptr));
 
     }
 }
 void PopupUILayer::outActionLeftCenter()
 {
-  cocos2d::Layer* root = getRootLayer();
-    if (root)
+
+    if (m_pRootNode)
     {
-        cocos2d::MoveTo* moveTo = cocos2d::MoveTo::create(0.5,Vec2(-SCREEN_WIDTH,0));
+        cocos2d::MoveTo* moveTo = cocos2d::MoveTo::create(0.5,Vec2(-SCREEN_WIDTH,m_pRootNode->getPositionY()));
         cocos2d::EaseBackIn* inout = cocos2d::EaseBackIn::create(moveTo);
         CallFunc* callFunc =  CallFunc::create(CC_CALLBACK_0(PopupUILayer::removeSelfCallFunc, this));
-        root->runAction(Sequence::create(inout,callFunc, nullptr));
+        m_pRootNode->runAction(Sequence::create(inout,callFunc, nullptr));
     }
 }
 
 void PopupUILayer::inActionRightCenter()
 {
-  cocos2d::Layer* root = getRootLayer();
-    if (root)
+    if (m_pRootNode)
     {
-        root->setPosition(Vec2(SCREEN_WIDTH, 0));
-        cocos2d::MoveTo* moveTo = cocos2d::MoveTo::create(0.5,Vec2::ZERO);
+        m_pRootNode->setPosition(Vec2(SCREEN_WIDTH, m_pRootNode->getPositionY()));
+        cocos2d::MoveTo* moveTo = cocos2d::MoveTo::create(0.5,Vec2(SCREEN_WIDTH*0.5, m_pRootNode->getPositionY()));
         cocos2d::EaseBackOut* inout = cocos2d::EaseBackOut::create(moveTo);
         CallFunc* callFunc =  CallFunc::create(CC_CALLBACK_0(PopupUILayer::inActionCallFunc, this));
-        root->runAction(Sequence::create(inout,callFunc, nullptr));
-
+        m_pRootNode->runAction(Sequence::create(inout,callFunc, nullptr));
     }
 }
 void PopupUILayer::outActionRightCenter()
 {
-  cocos2d::Layer* root = getRootLayer();
-    if (root)
+
+    if (m_pRootNode)
     {
-        cocos2d::MoveTo* moveTo = cocos2d::MoveTo::create(0.5,Vec2(SCREEN_WIDTH,0));
+        cocos2d::MoveTo* moveTo = cocos2d::MoveTo::create(0.5,Vec2(SCREEN_WIDTH,SCREEN_HEIGHT*0.5));
         cocos2d::EaseBackIn* inout = cocos2d::EaseBackIn::create(moveTo);
         CallFunc* callFunc =  CallFunc::create(CC_CALLBACK_0(PopupUILayer::removeSelfCallFunc, this));
-        root->runAction(Sequence::create(inout,callFunc, nullptr));
+        m_pRootNode->runAction(Sequence::create(inout,callFunc, nullptr));
 
     }
 }

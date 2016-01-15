@@ -14,6 +14,7 @@
 #include "RandomDungeon.hpp"
 #include "LoadingLayer.hpp"
 #include "SdkBoxManager.hpp"
+#include "LoadingLayer.hpp"
 USING_NS_CC;
 
 Scene* GameScene::createScene()

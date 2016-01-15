@@ -28,5 +28,10 @@
         <EnableHTML5Advanced Value="False" />
       </Value>
     </Item>
+    <Item Key="TabsParamsKey">
+      <Value ctype="TabsInfo">
+        <ActiveDocument />
+      </Value>
+    </Item>
   </Properties>
 </UserData>

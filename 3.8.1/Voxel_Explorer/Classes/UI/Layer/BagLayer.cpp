@@ -37,6 +37,7 @@ BagLayer::BagLayer()
     m_pBtnAllBag= nullptr;
     m_pBtnWeaponBag= nullptr;
     m_pBtnPotionBag= nullptr;
+    m_pBtnBagExtend = nullptr;
     
 }
 BagLayer::~BagLayer()
@@ -77,7 +78,13 @@ bool BagLayer::init()
     m_pBtnPotionBag->setEnabled(true);
     addChild(m_pBtnPotionBag);
 
+    m_pBtnBagExtend =  Button::create("ui_bag_extend_normal.png","ui_bag_extend_press.png","ui_bag_extend_press.png",TextureResType::PLIST);
+    m_pBtnBagExtend->setAnchorPoint(cocos2d::Vec2::ONE);
+    m_pBtnBagExtend->setPosition(cocos2d::Vec2(getContentSize().width*0.95,getContentSize().height*0.052));
+    m_pBtnBagExtend->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
+    addChild(m_pBtnBagExtend);
     
+    m_pBtnBagExtend->addClickEventListener(CC_CALLBACK_1(BagLayer::onClickBagExtend, this));
     m_pBtnWeaponBag->addTouchEventListener(CC_CALLBACK_2(BagLayer::onClickSortEquip, this));
     m_pBtnPotionBag->addTouchEventListener(CC_CALLBACK_2(BagLayer::onClickSortPotion, this));
     m_pBtnAllBag->addTouchEventListener(CC_CALLBACK_2(BagLayer::onClickSortAll, this));
@@ -120,6 +127,11 @@ bool BagLayer::init()
 }
 void BagLayer::refreshUIView()
 {
+     //扩展次数超过最大扩展次数,隐藏按钮
+    if (PlayerProperty::getInstance()->getBagExtendTimes().GetLongValue() >= PlayerProperty::getInstance()->getBagExtendMaxTimes().GetLongValue()) {
+        if (m_pBtnBagExtend)
+            m_pBtnBagExtend->setVisible(false);
+        }
     
     m_BagMsgLayer->setLayerContentSize(cocos2d::Size(m_pGridView->getInnerContainerSize()));
     m_BagMsgLayer->setPosition(m_pGridView->getInnerContainerSize()*0.5);
@@ -373,7 +385,8 @@ std::vector<PickableItemProperty*> BagLayer::getItems()
 void BagLayer::extendBag()
 {
     CCLOG("onEventBagExtend");
-    for (int j =0; j<15; j++) {
+    int extendNum = PlayerProperty::getInstance()->getBagMaxSpace() - m_pGridView->getItems().size();
+    for (int j =0; j<extendNum; j++) {
         ImageView* itemui = ImageView::create();
         itemui->setTouchEnabled(true);
         itemui->setScale9Enabled(true);
@@ -385,7 +398,6 @@ void BagLayer::extendBag()
     m_pGridView->forceDoLayout();
     m_BagMsgLayer->setLayerContentSize(m_pGridView->getInnerContainerSize());
     m_BagMsgLayer->setPosition(m_pGridView->getInnerContainerSize()*0.5);
-    m_pGridView->resume();
     m_pGridView->scrollToBottom(0.8,false);
 }
 void BagLayer::selectItemEvent(cocos2d::Ref *pSender, TGridView::EventType type)
@@ -525,8 +537,10 @@ void BagLayer::bagItemOpe(int currentItemId)
 void BagLayer::onClickSortAll(cocos2d::Ref * ref, cocos2d::ui::Widget::TouchEventType type)
 {
     if (type == cocos2d::ui::Widget::TouchEventType::BEGAN) {
+        clickEffect();
         setSortBtnEnable(false,true,true);
         refreshUIView();
+        m_pGridView->scrollToTop(0.5,false);
     }
     
 }
@@ -534,7 +548,9 @@ void BagLayer::onClickSortEquip(cocos2d::Ref * ref, cocos2d::ui::Widget::TouchEv
 {
     if (type == cocos2d::ui::Widget::TouchEventType::BEGAN) {
         setSortBtnEnable(true,false,true);
+        clickEffect();
         refreshUIView();
+        m_pGridView->scrollToTop(0.5,false);
     }
    
 }
@@ -543,11 +559,55 @@ void BagLayer::onClickSortPotion(cocos2d::Ref * ref, cocos2d::ui::Widget::TouchE
     if (type == cocos2d::ui::Widget::TouchEventType::BEGAN) {
   
         setSortBtnEnable(true,true,false);
-         refreshUIView();
+        clickEffect();
+        refreshUIView();
+        m_pGridView->scrollToTop(0.5,false);
     }
    
 }
-
+void BagLayer::onClickBagExtend(cocos2d::Ref* ref)
+{
+    CHECK_ACTION(ref);
+    clickEffect();
+    AlertPopupUI* alertPopupUi = static_cast<AlertPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupAlert));
+    if (alertPopupUi) {
+        
+        int copper = PlayerProperty::getInstance()->getValueCopper().GetLongValue();
+        int extendCopper = 0;
+        if (PlayerProperty::getInstance()->getBagExtendTimes() ==1) {
+            extendCopper = 5;
+        }else if (PlayerProperty::getInstance()->getBagExtendTimes() ==2)
+        {
+            extendCopper = 10;
+        }else if (PlayerProperty::getInstance()->getBagExtendTimes() ==3)
+        {
+            extendCopper = 20;
+        }else if (PlayerProperty::getInstance()->getBagExtendTimes() ==4)
+        {
+            extendCopper = 50;
+        }
+        bool isMoneyEnough = false;
+        if (copper >=(extendCopper*10000)) {
+            isMoneyEnough = true;
+        }
+        
+        alertPopupUi->setPositiveListerner([](Ref* ref){
+        
+        },UtilityHelper::getLocalStringForUi("BTN_TEXT_CANCEL"));
+        alertPopupUi->setNegativeListerner([isMoneyEnough,alertPopupUi](Ref* ref){
+            
+            if (isMoneyEnough) {
+                PlayerProperty::getInstance()->extendBagSpace();
+            }else
+                Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_MONEY_NOT_ENOUGH);
+            
+            
+        },UtilityHelper::getLocalStringForUi("BAG_TEXT_EXTEND"));
+        alertPopupUi->setMessage(cocos2d::StringUtils::format(UtilityHelper::getLocalStringForUi("BAG_TEXT_EXTEND_DESC").c_str(),int(extendCopper)));
+        
+    }
+    
+}
 void BagLayer::setSortBtnEnable(bool allEnable, bool equipEnable, bool potionEnable)
 {
     if (m_pBtnAllBag) {

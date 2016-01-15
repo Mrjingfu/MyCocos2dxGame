@@ -1112,7 +1112,7 @@ void PlayerProperty::reset()
     
     m_nBagMaxSpace          = 15;               ///背包最大容量
     m_nBagExtendTimes       = 1;                ///背包扩容次数
-    m_nBagExtendMaxTimes    = 4;                ///背包最大扩容次数
+    m_nBagExtendMaxTimes    = 5;                ///背包最大扩容次数
     
     m_BufferFlag            = PB_NONE;          ///默认状态
     

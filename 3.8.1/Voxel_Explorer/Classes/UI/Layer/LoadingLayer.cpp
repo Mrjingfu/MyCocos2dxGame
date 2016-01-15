@@ -31,18 +31,44 @@ bool LoadingLayer::addEvents()
     m_LoadingIcon = dynamic_cast<cocos2d::ui::ImageView*>(UtilityHelper::seekNodeByName(m_pRootNode, "loading_bar"));
     if (!m_LoadingIcon)
         return false;
-
-    loadingGameAction();
+    
+    ui::Text* tips = dynamic_cast<cocos2d::ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "loading_tips"));
+    if (!tips)
+        return false;
+        
+    m_pTipDesc = dynamic_cast<cocos2d::ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "loading_tips_desc"));
+    if (!m_pTipDesc)
+        return false;
+    
+    tips->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
+    tips->setString(UtilityHelper::getLocalStringForUi("LOAGING_TIPS"));
+    m_pTipDesc->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
+    
+    
+    refreshUIView();
     
     return true;
 }
-void LoadingLayer::loadingGameAction()
+void LoadingLayer::refreshUIView()
 {
-    EaseSineOut* fadeIn = EaseSineOut::create(FadeIn::create(0.5f));
     
+    EaseSineOut* fadeIn = EaseSineOut::create(FadeIn::create(0.5f));
     EaseSineIn* moveUp = EaseSineIn::create(MoveBy::create(0.5,cocos2d::Vec2(0,12)));
     EaseSineIn* moveLeft = EaseSineIn::create(MoveBy::create(0.3,cocos2d::Vec2(-12,0)));
     EaseSineIn* moveRight = EaseSineIn::create(MoveBy::create(0.6,cocos2d::Vec2(15,0)));
     m_LoadingIcon->runAction(RepeatForever::create(Spawn::create(fadeIn, moveUp,moveLeft,moveRight,nullptr)));
+    
+    std::string tipFileName ="tips_chinese.plist";
+    if (Application::getInstance()->getCurrentLanguage()!=LanguageType::CHINESE)
+        tipFileName = "tips_english.plist";
+    
+    cocos2d::ValueVector tipVector = cocos2d::FileUtils::getInstance()->getValueVectorFromFile(tipFileName);
+    int count = cocos2d::random(0,(int)(tipVector.size()-1));
+    std::string tipDesc = tipVector.at(count).asString();
+    CCLOG("tipDesc source:%s",tipDesc.c_str());
+    UtilityHelper::getLineForText(m_pTipDesc,tipDesc);
+    CCLOG("tipDesc target:%s",tipDesc.c_str());
+    m_pTipDesc->setString(tipDesc);
+    
 }
 

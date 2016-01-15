@@ -9,7 +9,7 @@
           <AbstractNodeData Name="alert_layer_layout" ActionTag="-1763356122" Tag="11" IconVisible="False" PercentWidthEnable="True" PercentHeightEnable="True" PercentWidthEnabled="True" PercentHeightEnabled="True" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" TouchEnable="True" BackColorAlpha="102" ComboBoxIndex="1" ColorAngle="90.0000" Scale9Enable="True" LeftEage="5" RightEage="5" TopEage="5" BottomEage="5" ctype="PanelObjectData">
             <Size X="150.0000" Y="100.0000" />
             <Children>
-              <AbstractNodeData Name="alert_layer_title_img" ActionTag="62396566" Tag="20" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="40.0000" RightMargin="40.0000" TopMargin="-10.0000" BottomMargin="90.0000" Scale9Enable="True" LeftEage="5" RightEage="5" TopEage="5" BottomEage="5" Scale9OriginX="5" Scale9OriginY="5" Scale9Width="4" Scale9Height="4" ctype="ImageViewObjectData">
+              <AbstractNodeData Name="alert_layer_title_img" ActionTag="62396566" Tag="20" IconVisible="False" PercentWidthEnable="True" PercentHeightEnable="True" PercentWidthEnabled="True" PercentHeightEnabled="True" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="40.0000" RightMargin="40.0000" TopMargin="-10.0000" BottomMargin="90.0000" Scale9Enable="True" LeftEage="5" RightEage="5" TopEage="5" BottomEage="5" Scale9OriginX="5" Scale9OriginY="5" Scale9Width="4" Scale9Height="4" ctype="ImageViewObjectData">
                 <Size X="70.0000" Y="20.0000" />
                 <Children>
                   <AbstractNodeData Name="alert_layer_title_text" ActionTag="-1076168566" Tag="23" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="-1.0000" RightMargin="-1.0000" TopMargin="-11.5000" BottomMargin="-11.5000" FontSize="36" LabelText="提示" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
@@ -33,7 +33,7 @@
                 <PreSize X="0.4667" Y="0.2000" />
                 <FileData Type="PlistSubImage" Path="ui_frame_3.png" Plist="ui_sprite.plist" />
               </AbstractNodeData>
-              <AbstractNodeData Name="alert_layer_ok" ActionTag="402936973" Tag="21" IconVisible="False" PercentWidthEnable="True" PercentWidthEnabled="True" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="5.2500" RightMargin="77.2500" TopMargin="65.0000" BottomMargin="5.0000" TouchEnable="True" FontSize="14" ButtonText="确定" Scale9Enable="True" LeftEage="4" RightEage="4" TopEage="4" BottomEage="4" Scale9OriginX="4" Scale9OriginY="4" Scale9Width="5" Scale9Height="5" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="ButtonObjectData">
+              <AbstractNodeData Name="alert_layer_ok" ActionTag="402936973" Tag="21" IconVisible="False" PercentWidthEnable="True" PercentHeightEnable="True" PercentWidthEnabled="True" PercentHeightEnabled="True" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="5.2500" RightMargin="77.2500" TopMargin="65.0000" BottomMargin="5.0000" TouchEnable="True" FontSize="14" ButtonText="确定" Scale9Enable="True" LeftEage="4" RightEage="4" TopEage="4" BottomEage="4" Scale9OriginX="4" Scale9OriginY="4" Scale9Width="5" Scale9Height="5" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="ButtonObjectData">
                 <Size X="67.5000" Y="30.0000" />
                 <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
                 <Position X="39.0000" Y="20.0000" />
@@ -49,7 +49,7 @@
                 <OutlineColor A="255" R="255" G="0" B="0" />
                 <ShadowColor A="255" R="110" G="110" B="110" />
               </AbstractNodeData>
-              <AbstractNodeData Name="alert_layer_cancel" ActionTag="-1377375493" Tag="25" IconVisible="False" PercentWidthEnable="True" PercentWidthEnabled="True" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="77.8960" RightMargin="4.6039" TopMargin="65.0000" BottomMargin="5.0000" TouchEnable="True" FontSize="14" ButtonText="取消" Scale9Enable="True" LeftEage="4" RightEage="4" TopEage="4" BottomEage="4" Scale9OriginX="4" Scale9OriginY="4" Scale9Width="5" Scale9Height="5" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="ButtonObjectData">
+              <AbstractNodeData Name="alert_layer_cancel" ActionTag="-1377375493" Tag="25" IconVisible="False" PercentWidthEnable="True" PercentHeightEnable="True" PercentWidthEnabled="True" PercentHeightEnabled="True" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="77.8950" RightMargin="4.6050" TopMargin="65.0000" BottomMargin="5.0000" TouchEnable="True" FontSize="14" ButtonText="取消" Scale9Enable="True" LeftEage="4" RightEage="4" TopEage="4" BottomEage="4" Scale9OriginX="4" Scale9OriginY="4" Scale9Width="5" Scale9Height="5" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="ButtonObjectData">
                 <Size X="67.5000" Y="30.0000" />
                 <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
                 <Position X="111.6450" Y="20.0000" />

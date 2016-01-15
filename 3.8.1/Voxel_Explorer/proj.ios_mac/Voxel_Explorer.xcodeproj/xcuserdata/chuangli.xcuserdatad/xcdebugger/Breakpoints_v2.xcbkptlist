@@ -25,13 +25,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../Classes/UI/Popup/RandomMsgPopupUI.cpp"
-            timestampString = "473934544.448881"
+            filePath = "../Classes/UI/Popup/PopupUILayer.cpp"
+            timestampString = "474519535.455832"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "28"
-            endingLineNumber = "28"
-            landmarkName = "RandomMsgPopupUI::updateFrameWidth()"
+            startingLineNumber = "229"
+            endingLineNumber = "229"
+            landmarkName = "PopupUILayer::outActionLeftCenter()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -42,13 +42,45 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Utilities/UtilityHelper.cpp"
-            timestampString = "473941791.201331"
+            timestampString = "474540222.798588"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "110"
-            endingLineNumber = "110"
-            landmarkName = "UtilityHelper::getLineForText(cocos2d::ui::Text* tempText,std::string&amp; str)"
+            startingLineNumber = "103"
+            endingLineNumber = "103"
+            landmarkName = "UtilityHelper::getLineChineseForText(cocos2d::ui::Text* tempText,std::string&amp; str)"
             landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "UtilityHelper::getLineChineseForText(cocos2d::ui::Text*, std::__1::basic_string&lt;char, std::__1::char_traits&lt;char&gt;, std::__1::allocator&lt;char&gt; &gt;&amp;)"
+                  moduleName = "Voxel_Explorer-desktop"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chuangli/Documents/WorkSpace/MyCocos2dxGame/3.8.1/Voxel_Explorer/Classes/Utilities/UtilityHelper.cpp"
+                  timestampString = "474548722.854285"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "103"
+                  endingLineNumber = "103"
+                  offsetFromSymbolStart = "3961">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "UtilityHelper::getLineChineseForText(cocos2d::ui::Text*, std::__1::basic_string&lt;char, std::__1::char_traits&lt;char&gt;, std::__1::allocator&lt;char&gt; &gt;&amp;)"
+                  moduleName = "Voxel_Explorer-desktop"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chuangli/Documents/WorkSpace/MyCocos2dxGame/3.8.1/Voxel_Explorer/Classes/Utilities/UtilityHelper.cpp"
+                  timestampString = "474548722.85454"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "103"
+                  endingLineNumber = "103"
+                  offsetFromSymbolStart = "9865">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

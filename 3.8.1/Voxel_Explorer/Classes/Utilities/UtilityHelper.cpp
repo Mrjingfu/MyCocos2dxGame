@@ -53,6 +53,56 @@ std::string UtilityHelper::getLocalStringForPlist(const std::string &key, const 
 }
 void UtilityHelper::getLineForText(cocos2d::ui::Text*  tempText,std::string& str)
 {
+    LanguageType lt= Application::getInstance()->getCurrentLanguage();
+    if (lt == LanguageType::CHINESE) {
+        getLineChineseForText(tempText, str);
+    }else
+        getLineEnglistForText(tempText, str);
+}
+void UtilityHelper::getLineChineseForText(cocos2d::ui::Text*  tempText,std::string& str)
+{
+    std::string retultStr;
+    if (!tempText ||str.empty())
+        return ;
+    std::vector<std::string> CharVec;
+    for (int i=0; i<str.length(); )
+    {
+        char ch = str.at(i);
+        int count = getCharUtf8Count(ch);
+        
+        std::string subStr =  str.substr(i,count);
+        CharVec.push_back(subStr);
+        i+=count;
+    }
+    
+    std::vector<int> LinePtS;
+    float parentWidth = tempText->getParent()->getContentSize().width-15;
+    float textWidthSum = 0.0f;
+    str.clear();
+    auto iterPt=CharVec.begin();
+    for (auto iter=CharVec.begin(); iter!=CharVec.end(); ++iter)
+    {
+        tempText->setString(*iter);
+        cocos2d::Size textSize = tempText->getContentSize()* tempText->getScale();
+        textWidthSum+=textSize.width;
+        if (textWidthSum >= parentWidth)
+        {
+            for ( ; iterPt!=iter; ++iterPt) {
+                str.append(*iterPt);
+            }
+            str.append("\n");
+            ++iterPt;
+            textWidthSum = 0.0f;
+        }
+    }
+    for (; iterPt!=CharVec.end(); ++iterPt) {
+        str.append(*iterPt);
+    }
+   
+ 
+}
+void UtilityHelper::getLineEnglistForText(cocos2d::ui::Text*  tempText,std::string& str)
+{
     std::string retultStr;
     if (!tempText ||str.empty())
         return ;
@@ -69,12 +119,11 @@ void UtilityHelper::getLineForText(cocos2d::ui::Text*  tempText,std::string& str
          i+=count;
      }
     int current = 0;
-    std::string patterStr ="？。，““；";
     for (int i=0; i<CharVec.size(); i++)
     {
-            if (CharVec[i]=="？"||CharVec[i]=="。"||
-                CharVec[i]=="，"||CharVec[i]=="；"||
-                CharVec[i]==" "||CharVec[i]=="“"||CharVec[i]=="“")
+            if (CharVec[i]=="?"||CharVec[i]=="."||
+                CharVec[i]==","||CharVec[i]==";"||
+                CharVec[i]==" "||CharVec[i]=="\"")
             {
                 std::string charStr;
                 for (int j=current; j<=i; j++)

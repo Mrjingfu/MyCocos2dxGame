@@ -232,6 +232,8 @@
             <filename>../ui/ui_sprite/ui_buffer_block.png</filename>
             <filename>../ui/ui_sprite/ui_gameover_cn.png</filename>
             <filename>../ui/ui_sprite/ui_gameover_en.png</filename>
+            <filename>../ui/ui_sprite/ui_bag_extend_normal.png</filename>
+            <filename>../ui/ui_sprite/ui_bag_extend_press.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

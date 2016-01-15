@@ -25,7 +25,7 @@ RolePopupUI::RolePopupUI()
     m_cActionType           = eNone;
     m_pBtnClose             = nullptr;
     m_pBtnChangeBag         = nullptr;
-
+    m_cActionType = eRightCenter;
     
 }
 RolePopupUI::~RolePopupUI()
@@ -86,12 +86,14 @@ void RolePopupUI::onEventBagExtend(cocos2d::EventCustom *sender)
     if (m_pBagLayer)
         m_pBagLayer->extendBag();
     refreshUIView();
-    
+    PopupUILayerManager::getInstance()->showStatusImport(TipTypes::TIP_POSITIVE, UtilityHelper::getLocalStringForUi(EVENT_PLAYER_BAG_EXTEND_OK));
 }
 void RolePopupUI::onEventBagExtendHasReachMaxtimes(cocos2d::EventCustom *sender)
 {
     //扩展次数到达上线,给出提示
     CCLOG("onEventBagExtendHasReachMaxtimes");
+    PopupUILayerManager::getInstance()->showStatusImport(TipTypes::TIP_WARNING, UtilityHelper::getLocalStringForUi(EVENT_PLAYER_BAG_EXTEND_HAS_REACH_MAXTIMES));
+    refreshUIView();
 }
 void RolePopupUI::refreshUIView()
 {
@@ -117,10 +119,10 @@ void RolePopupUI::onClickChnageBag(Ref* ref)
 {
     CHECK_ACTION(ref);
     
-    std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("UI_BTN_PACKAGE_OPEN");
-    CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+//    std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("UI_BTN_PACKAGE_OPEN");
+//    CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
 
-    PlayerProperty::getInstance()->extendBagSpace();
+    
 }
 void RolePopupUI::onClickColse(Ref* ref)
 {

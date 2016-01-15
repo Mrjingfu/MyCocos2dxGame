@@ -16,13 +16,13 @@
             <PreSize X="1.0000" Y="1.0000" />
             <FileData Type="PlistSubImage" Path="ui_frame_1.png" Plist="ui_sprite.plist" />
           </AbstractNodeData>
-          <AbstractNodeData Name="achieve_layer_title_bg" ActionTag="-364456327" Tag="12" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="95.0000" RightMargin="95.0000" TopMargin="-12.5000" BottomMargin="237.5000" Scale9Enable="True" LeftEage="5" RightEage="5" TopEage="5" BottomEage="5" Scale9OriginX="5" Scale9OriginY="5" Scale9Width="4" Scale9Height="4" ctype="ImageViewObjectData">
-            <Size X="90.0000" Y="25.0000" />
+          <AbstractNodeData Name="achieve_layer_title_bg" ActionTag="-364456327" Tag="12" IconVisible="False" PercentWidthEnable="True" PercentHeightEnable="True" PercentWidthEnabled="True" PercentHeightEnabled="True" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="91.0000" RightMargin="91.0000" TopMargin="-13.7500" BottomMargin="236.2500" Scale9Enable="True" LeftEage="5" RightEage="5" TopEage="5" BottomEage="5" Scale9OriginX="5" Scale9OriginY="5" Scale9Width="4" Scale9Height="4" ctype="ImageViewObjectData">
+            <Size X="98.0000" Y="27.5000" />
             <Children>
               <AbstractNodeData Name="achieve_layer_title" ActionTag="1384846905" Tag="13" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="9.0000" RightMargin="9.0000" TopMargin="-9.0000" BottomMargin="-9.0000" FontSize="36" LabelText="成就" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
                 <Size X="72.0000" Y="43.0000" />
                 <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-                <Position X="45.0000" Y="12.5000" />
+                <Position X="49.0000" Y="13.7500" />
                 <Scale ScaleX="0.3500" ScaleY="0.3500" />
                 <CColor A="255" R="255" G="255" B="255" />
                 <PrePosition X="0.5000" Y="0.5000" />
@@ -37,7 +37,7 @@
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
             <CColor A="255" R="255" G="255" B="255" />
             <PrePosition X="0.5000" Y="1.0000" />
-            <PreSize X="0.3214" Y="0.1000" />
+            <PreSize X="0.3500" Y="0.1100" />
             <FileData Type="PlistSubImage" Path="ui_frame_2.png" Plist="ui_sprite.plist" />
           </AbstractNodeData>
         </Children>
