@@ -388,7 +388,7 @@
 		<key>achieve_icon</key>
 		<string>achieve_icon_35.png</string>
 	</dict>
-	<key>ADT_ROLE_FILE_DEAD</key>
+	<key>ADT_ROLE_FIRE_DEAD</key>
 	<dict>
 		<key>achieve_unlock_task</key>
 		<dict/>
@@ -542,7 +542,7 @@
 		<key>achieve_task</key>
 		<dict>
 			<key>ST_TOTAL_BAG_EXTEND</key>
-			<string>4</string>
+			<string>5</string>
 		</dict>
 		<key>achieve_icon</key>
 		<string>achieve_icon_04.png</string>
@@ -858,7 +858,7 @@
 			<string>100</string>
 		</dict>
 		<key>achieve_icon</key>
-		<string>achieve_icon_01.png</string>
+		<string>achieve_icon_42.png</string>
 	</dict>
 	<key>ADT_MEET_THIEF_FIRST</key>
 	<dict>
@@ -870,7 +870,7 @@
 			<string>1</string>
 		</dict>
 		<key>achieve_icon</key>
-		<string>achieve_icon_42.png</string>
+		<string>achieve_icon_02.png</string>
 	</dict>
 	<key>ADT_NURSE_TREAT</key>
 	<dict>

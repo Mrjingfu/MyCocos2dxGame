@@ -3,324 +3,324 @@
 <plist version="1.0">
 <dict>
 	<key>ADT_MONSTER_1</key>
-	<string>第一滴血</string>
+	<string>First Blood</string>
 	<key>ADT_MONSTER_1_TARGET</key>
-	<string>杀死第1个怪物</string>
+	<string>The first time to kill the monster.</string>
 	<key>ADT_MONSTER_2</key>
-	<string>牛刀小试 </string>
+	<string>Small-scale test knife.</string>
 	<key>ADT_MONSTER_2_TARGET</key>
-	<string>杀死30个怪物</string>
+	<string>Kill 30 monsters.</string>
 	<key>ADT_MONSTER_3</key>
-	<string>百人斩 </string>
+	<string>One hundred kill</string>
 	<key>ADT_MONSTER_3_TARGET</key>
-	<string>杀死怪物100个</string>
+	<string>Kill 100 monsters.</string>
 	<key>ADT_MONSTER_4</key>
-	<string>冷血屠夫 </string>
+	<string>Cold-blooded butcher</string>
 	<key>ADT_MONSTER_4_TARGET</key>
-	<string>杀死怪物500个</string>
+	<string>Kill 500 monsters.</string>
 	<key>ADT_MONSTER_5</key>
-	<string>血流成河</string>
+	<string>Shed blood like water</string>
 	<key>ADT_MONSTER_5_TARGET</key>
-	<string>杀死怪物1500个</string>
+	<string>Kill 1500 monsters.</string>
 	<key>ADT_MONSTER_6</key>
-	<string>超神 </string>
+	<string>Holy shit</string>
 	<key>ADT_MONSTER_6_TARGET</key>
-	<string>杀死怪物3000个</string>
+	<string>Kill 3000 monsters.</string>
 	<key>ADT_SPECIFIED_MONSTER_1</key>
-	<string>行尸走肉</string>
+	<string>The Walking Dead</string>
 	<key>ADT_SPECIFIED_MONSTER_1_TARGET</key>
-	<string>杀死僵尸50个</string>
+	<string>Kill 50 zombies</string>
 	<key>ADT_SPECIFIED_MONSTER_2</key>
-	<string>野兽猎人</string>
+	<string>Beast Hunter</string>
 	<key>ADT_SPECIFIED_MONSTER_2_TARGET</key>
-	<string>杀死野兽蛇,蝙蝠,狼,熊,恐龙各100个</string>
+	<string>Kill the snake, the bat, the wolf, the bear, the dinosaur each kind of one hundred.</string>
 	<key>ADT_SPECIFIED_MONSTER_3</key>
-	<string>亡灵杀手 </string>
+	<string>Undead Killer</string>
 	<key>ADT_SPECIFIED_MONSTER_3_TARGET</key>
-	<string>杀死亡灵怪物僵尸,骷髅,怨魂,幽灵,食尸鬼,石像鬼各100个</string>
+	<string>Kill zombies, skeletons, ghost, ghosts, ghouls, Gargoyle each kind of one hundred.</string>
 	<key>ADT_SPECIFIED_MONSTER_4</key>
-	<string>清洁工 </string>
+	<string>Cleaner</string>
 	<key>ADT_SPECIFIED_MONSTER_4_TARGET</key>
-	<string>杀死蜘蛛,老鼠,史莱姆,软泥怪,阴影怪各100个</string>
+	<string>Kill spider, mouse, slime, ooze, shadow each kind of one hundred.</string>
 	<key>ADT_SPECIFIED_MONSTER_5</key>
-	<string>王牌精英  </string>
+	<string>Ace Elite</string>
 	<key>ADT_SPECIFIED_MONSTER_5_TARGET</key>
-	<string>杀死精英怪  50个</string>
+	<string>Kill 50 the elite monster.</string>
 	<key>ADT_SPECIFIED_MONSTER_6</key>
-	<string>标本收集者  </string>
+	<string>Specimen Collector</string>
 	<key>ADT_SPECIFIED_MONSTER_6_TARGET</key>
-	<string>杀死所有怪物类型</string>
+	<string>Kill all kinds of monsters</string>
 	<key>ADT_BOSS_KILL_1</key>
-	<string>勇闯下水道</string>
+	<string>In the sewer</string>
 	<key>ADT_BOSS_KILL_1_TARGET</key>
-	<string>杀死史莱姆之王</string>
+	<string>Kill the king of slime.</string>
 	<key>ADT_BOSS_KILL_2</key>
-	<string>监狱风云</string>
+	<string>Prison storm</string>
 	<key>ADT_BOSS_KILL_2_TARGET</key>
-	<string>杀死典狱长</string>
+	<string>Kill the warden.</string>
 	<key>ADT_BOSS_KILL_3</key>
-	<string>网红教覆灭记</string>
+	<string>Red Net fall down</string>
 	<key>ADT_BOSS_KILL_3_TARGET</key>
-	<string>杀死网红教大主教</string>
+	<string>Kill the Archbishop.</string>
 	<key>ADT_BOSS_KILL_4</key>
-	<string>死亡矿井</string>
+	<string>Death Mine</string>
 	<key>ADT_BOSS_KILL_4_TARGET</key>
-	<string>杀死狗头人首领</string>
+	<string>Kill the Kobold leader.</string>
 	<key>ADT_BOSS_KILL_5</key>
-	<string>洞穴历险记</string>
+	<string>The adventures of the cave</string>
 	<key>ADT_BOSS_KILL_5_TARGET</key>
-	<string>杀死巨人格鲁尔德</string>
+	<string>Kill the giant Gruerde.</string>
 	<key>ADT_BOSS_KILL_6</key>
-	<string>墓穴回魂夜 </string>
+	<string>Out of the dark grave</string>
 	<key>ADT_BOSS_KILL_6_TARGET</key>
-	<string>杀死骷髅王</string>
+	<string>Kill the Skeleton King.</string>
 	<key>ADT_ROLE_FALL_DEAD</key>
-	<string>失足青年</string>
+	<string>Lost Youth</string>
 	<key>ADT_ROLE_FALL_DEAD_TARGET</key>
-	<string>第1次跌落深渊而死</string>
+	<string>First fall into the abyss and die.</string>
 	<key>ADT_ROLE_POISON_DEAD</key>
-	<string>娘娘赐你死</string>
+	<string>Queen let you die</string>
 	<key>ADT_ROLE_POISON_DEAD_TARGET</key>
-	<string>第1次中毒而死</string>
+	<string>First poisoning and death.</string>
 	<key>ADT_ROLE_CLIP_DEAD</key>
-	<string>大刑伺候</string>
+	<string>Torture</string>
 	<key>ADT_ROLE_CLIP_DEAD_TARGET</key>
-	<string>第1次死于夹子陷阱</string>
-	<key>ADT_ROLE_FILE_DEAD</key>
-	<string>追寻布鲁诺</string>
-	<key>ADT_ROLE_FILE_DEAD_TARGET</key>
-	<string>第1次死于火焰陷阱</string>
+	<string>First died of gripping trap.</string>
+	<key>ADT_ROLE_FIRE_DEAD</key>
+	<string>Bruno followers</string>
+	<key>ADT_ROLE_FIRE_DEAD_TARGET</key>
+	<string>First died of fire trap.</string>
 	<key>ADT_ROLE_DEAD_1</key>
-	<string>第一块墓碑</string>
+	<string>The first tombstone</string>
 	<key>ADT_ROLE_DEAD_1_TARGET</key>
-	<string>第1次死于怪物之手</string>
+	<string>For the first time to be killed by monsters.</string>
 	<key>ADT_ROLE_DEAD_2</key>
-	<string>无可救药</string>
+	<string>Hopeless</string>
 	<key>ADT_ROLE_DEAD_2_TARGET</key>
-	<string>死亡10次</string>
+	<string>Death 10 times.</string>
 	<key>ADT_ROLE_DEAD_3</key>
-	<string>春哥已死</string>
+	<string>Spring brother is dead</string>
 	<key>ADT_ROLE_DEAD_3_TARGET</key>
-	<string>死亡 50次</string>
+	<string>Death 50 times.</string>
 	<key>ADT_ROLE_DEAD_4</key>
-	<string>你就是死神</string>
+	<string>You are the God of death</string>
 	<key>ADT_ROLE_DEAD_4_TARGET</key>
-	<string>死亡100次</string>
+	<string>Death 100 times.</string>
 	<key>ADT_IDENTIFY_1</key>
-	<string>初出茅庐</string>
+	<string>Fledgling</string>
 	<key>ADT_IDENTIFY_1_TARGET</key>
-	<string>第1次鉴定</string>
+	<string>First identification.</string>
 	<key>ADT_IDENTIFY_2</key>
-	<string>小有名气</string>
+	<string>Little Known</string>
 	<key>ADT_IDENTIFY_2_TARGET</key>
-	<string>第1次鉴定出属性超过2条的道具</string>
+	<string>First identified the equipment more than 2 attributes.</string>
 	<key>ADT_IDENTIFY_3</key>
-	<string>锋芒毕露</string>
+	<string>Fail to show restraint</string>
 	<key>ADT_IDENTIFY_3_TARGET</key>
-	<string>第1次鉴定出传说级装备</string>
+	<string>First time to identify the legendary equipment.</string>
 	<key>ADT_IDENTIFY_4</key>
-	<string>大鉴定师</string>
+	<string>Great Expert</string>
 	<key>ADT_IDENTIFY_4_TARGET</key>
-	<string>使用鉴定卷轴100次</string>
+	<string>Use the identified scroll 100 times.</string>
 	<key>ADT_EXTEND_BAG</key>
-	<string>背包还不够大</string>
+	<string>The backpack is not big enough</string>
 	<key>ADT_EXTEND_BAG_TARGET</key>
-	<string> 第1次扩展背包</string>
+	<string>First extended Backpack.</string>
 	<key>ADT_BAG_FULL</key>
-	<string>满载而归</string>
+	<string>Return fully loaded</string>
 	<key>ADT_BAG_FULL_TARGET</key>
-	<string>第1次背包被填满</string>
+	<string>First times the backpack was filled.</string>
 	<key>ADT_EXTEND_BAG_MAX</key>
-	<string>有钱人就是要买包包</string>
+	<string>The rich is to buy a bag</string>
 	<key>ADT_EXTEND_BAG_MAX_TARGET</key>
-	<string>背包扩展到最大数</string>
+	<string>Backpack extended to maximum number.</string>
 	<key>ADT_WEALTHY_MEN</key>
-	<string>有钱人</string>
+	<string>The rich man</string>
 	<key>ADT_WEALTHY_MEN_TARGET</key>
-	<string>第1次丢弃道具</string>
+	<string>First discarded items.</string>
 	<key>ADT_SPENDERS_MEN</key>
-	<string>败家子</string>
+	<string>Black sheep</string>
 	<key>ADT_SPENDERS_MEN_TARGET</key>
-	<string>丢弃装备50次</string>
+	<string>Discard items 50 times</string>
 	<key>ADT_PICK_ITEM</key>
-	<string>走路要低头</string>
+	<string>Dumbwalking</string>
 	<key>ADT_PICK_ITEM_TARGET</key>
-	<string> 第1次拾取道具</string>
+	<string>First pickup item.</string>
 	<key>ADT_PICK_NOT_MARIC_ITEM</key>
-	<string>破烂王</string>
+	<string>Rag King</string>
 	<key>ADT_PICK_NOT_MARIC_ITEM_TARGET</key>
-	<string>拾取非魔法装备50件</string>
+	<string>Pick up 50 pieces of non magic equipment.</string>
 	<key>ADT_MARATHON</key>
-	<string>马拉松</string>
+	<string>Marathon</string>
 	<key>ADT_MARATHON_TARGET</key>
-	<string>走路步数超过42000步</string>
+	<string>The number of steps to walk more than 42000 steps.</string>
 	<key>ADT_WORLD_RECORD</key>
-	<string>世界纪录保持者</string>
+	<string>World record holder</string>
 	<key>ADT_WORLD_RECORD_TARGET</key>
-	<string>9秒钟之内移动超过30步</string>
+	<string>9 seconds to move more than 30 steps.</string>
 	<key>ADT_THIRTY_NOT_MOVE</key>
-	<string>稳如泰山</string>
+	<string>Be as steady as Mount Tai</string>
 	<key>ADT_THIRTY_NOT_MOVE_TARGET</key>
-	<string> 30秒内不移动</string>
+	<string>Don&apos;t move for 30 seconds.</string>
 	<key>ADT_OBSESSION_MEN</key>
-	<string>强迫症患者</string>
+	<string>Obsessive compulsive disorder patients</string>
 	<key>ADT_OBSESSION_MEN_TARGET</key>
-	<string>探索地牢任何一层的所有区域</string>
+	<string>Explore all areas of any one floor of the dungeon。</string>
 	<key>ADT_FOUND_HIDDEN_DOOR</key>
-	<string>逃不过我的法眼</string>
+	<string>All I See</string>
 	<key>ADT_FOUND_HIDDEN_DOOR_TARGET</key>
-	<string> 第1次发现隐藏门</string>
+	<string>First times to find the hidden door.</string>
 	<key>ADT_FOUND_HIDDEN_TRAP_FIRST</key>
-	<string>哎呦,吓死宝宝了</string>
+	<string>Oh, scared baby</string>
 	<key>ADT_FOUND_HIDDEN_TRAP_FIRST_TARGET</key>
-	<string>第1次发现隐藏陷阱</string>
+	<string>First times to find the hidden trap.</string>
 	<key>ADT_FOUND_HIDDEN_TRAP</key>
-	<string>火眼金睛</string>
+	<string>Piercing Eye</string>
 	<key>ADT_FOUND_HIDDEN_TRAP_TARGET</key>
-	<string>发现隐藏门或陷阱 50次</string>
+	<string>Find the hidden door or the hidden trap for 50 times.</string>
 	<key>ADT_FOUND_HIDDEN_MSG_FIRST</key>
-	<string>这是什么？</string>
+	<string>What is this?</string>
 	<key>ADT_FOUND_HIDDEN_MSG_FIRST_TARGET</key>
-	<string>第1次发现隐藏信息</string>
+	<string>First times to find hidden information.</string>
 	<key>ADT_FOUND_HIDDEN_MSG</key>
-	<string>维基百科</string>
+	<string>Wikipedia</string>
 	<key>ADT_FOUND_HIDDEN_MSG_TARGET</key>
-	<string>发现10条隐藏信息</string>
+	<string>Find 10 hidden information.</string>
 	<key>ADT_SEARCH_KING</key>
-	<string>问题王</string>
+	<string>Enquiring Mind</string>
 	<key>ADT_SEARCH_KING_TARGET</key>
-	<string>检索过100次</string>
+	<string>Scene interaction for 100 times</string>
 	<key>ADT_LOVE_QUESTION</key>
-	<string>爱提问的小盆友</string>
+	<string>Curious Child</string>
 	<key>ADT_LOVE_QUESTION_TARGET</key>
-	<string>检索过10次</string>
+	<string>Scene interaction for 10 times</string>
 	<key>ADT_ALL_ARRIVE_DUNGEON</key>
-	<string>大冒险家</string>
+	<string>The great adventure</string>
 	<key>ADT_ALL_ARRIVE_DUNGEON_TARGET</key>
-	<string>到达过所有地下城</string>
+	<string>Get to all type of Dungeon.</string>
 	<key>ADT_BREAK_JAR_1</key>
-	<string>破罐破摔</string>
+	<string>Kick jar</string>
 	<key>ADT_BREAK_JAR_1_TARGET</key>
-	<string>打破罐子20个</string>
+	<string>Break 20 jars.</string>
 	<key>ADT_BREAK_JAR_2</key>
-	<string>破坏王</string>
+	<string>Destroyer</string>
 	<key>ADT_BREAK_JAR_2_TARGET</key>
-	<string>打破罐子100个</string>
+	<string>Break 100 jars.</string>
 	<key>ADT_COPPER_BOX_FIRST</key>
-	<string>小盗贼</string>
+	<string>Little Thief</string>
 	<key>ADT_COPPER_BOX_FIRST_TARGET</key>
-	<string>第1次开启铜质宝箱</string>
+	<string>Open copper chest for the first time.</string>
 	<key>ADT_SILVER_BOX_FIRST</key>
-	<string>盗贼高手</string>
+	<string>Elite thief</string>
 	<key>ADT_SILVER_BOX_FIRST_TARGET</key>
-	<string>第一次开启银质宝箱</string>
+	<string>Open silver chest for the first time.</string>
 	<key>ADT_GOLD_BOX_FIRST</key>
-	<string>盗贼精英</string>
+	<string>Master thief</string>
 	<key>ADT_GOLD_BOX_FIRST_TARGET</key>
-	<string>第1次开启金质宝箱</string>
+	<string>Open gold chest for the first time.</string>
 	<key>ADT_OPEN_BOX</key>
-	<string>盗贼大王</string>
+	<string>King of Thieves</string>
 	<key>ADT_OPEN_BOX_TARGET</key>
-	<string>开启宝箱 50个</string>
+	<string>Open the chest 50 times.</string>
 	<key>ADT_USE_KEY</key>
-	<string>天下无贼</string>
+	<string>A World Without Thieves</string>
 	<key>ADT_USE_KEY_TARGET</key>
-	<string>使用钥匙100次</string>
+	<string>Use key 100 times.</string>
 	<key>ADT_MEET_THIEF_FIRST</key>
-	<string>加入盗贼工会</string>
+	<string>Join the thieves guild</string>
 	<key>ADT_MEET_THIEF_FIRST_TARGET</key>
-	<string>第1次遇到过盗贼</string>
+	<string>Met a thief for the first time.</string>
 	<key>ADT_NURSE_TREAT</key>
-	<string>制服诱惑</string>
+	<string>Temptation of uniforms</string>
 	<key>ADT_NURSE_TREAT_TARGET</key>
-	<string>请护士小姐为你治疗过10次</string>
+	<string>Ask the nurse to treat you 10 times.</string>
 	<key>ADT_MEET_HAG_FIRST</key>
-	<string>魔女的条件</string>
+	<string>The witch&apos;s condition</string>
 	<key>ADT_MEET_HAG_FIRST_TARGET</key>
-	<string>第1次遇到过魔女</string>
+	<string>Met the witch for the first time.</string>
 	<key>ADT_SAGE_STORY</key>
-	<string>听爷爷讲那过去的故事</string>
+	<string>Listen to grandfather telling stories about the past.</string>
 	<key>ADT_SAGE_STORY_TARGET</key>
-	<string>听过智者的3段故事</string>
+	<string>Listen to the wise man&apos;s 3 story.</string>
 	<key>ADT_BUY_EQUIP</key>
-	<string>北市买长鞭</string>
+	<string>Risk taker‘s weapons</string>
 	<key>ADT_BUY_EQUIP_TARGET</key>
-	<string>从骑士手中购买过武器和装备</string>
+	<string>Buy weapons from the little knights.</string>
 	<key>ADT_BUY_MARICORIM</key>
-	<string>穷家富路</string>
+	<string>You get what you pay for</string>
 	<key>ADT_BUY_MARICORIM_TARGET</key>
-	<string>从售货员手中购买过药水</string>
+	<string>Buy armor or ornaments from the shopgirl.</string>
 	<key>ADT_BUY_SCROLL_POTION</key>
-	<string>我需要卷轴</string>
+	<string>Be thrifty at home and spend liberally while travelling</string>
 	<key>ADT_BUY_SCROLL_POTION_TARGET</key>
-	<string>从巫婆手中购买过卷轴</string>
+	<string>Buy scrolls\potions or keys from the alchemist.</string>
 	<key>ADT_HAVE_GOLD_1</key>
-	<string>第一桶金</string>
+	<string>The first pot of gold</string>
 	<key>ADT_HAVE_GOLD_1_TARGET</key>
-	<string>拥有一个金币</string>
+	<string>Have one gold coin.</string>
 	<key>ADT_HAVE_GOLD_2</key>
-	<string>小富即安</string>
+	<string>Middle Class</string>
 	<key>ADT_HAVE_GOLD_2_TARGET</key>
-	<string>拥有过超过100个金币</string>
+	<string>With over 100 gold coins.</string>
 	<key>ADT_HAVE_GOLD_3</key>
-	<string>大富翁</string>
+	<string>Rich Man</string>
 	<key>ADT_HAVE_GOLD_3_TARGET</key>
-	<string>拥有过超过500个金币</string>
+	<string>With over 500 gold coins</string>
 	<key>ADT_HAVE_GOLD_4</key>
-	<string>富可敌国</string>
+	<string>Fabulously Rich</string>
 	<key>ADT_HAVE_GOLD_4_TARGET</key>
-	<string>拥有过超过5000个金币</string>
+	<string>With over 5000 gold coins</string>
 	<key>ADT_ROLE_LEVEL_1</key>
-	<string>成年了</string>
+	<string>Newly graduated</string>
 	<key>ADT_ROLE_LEVEL_1_TARGET</key>
-	<string>角色达到10级</string>
+	<string>Role reached 10 level.</string>
 	<key>ADT_ROLE_LEVEL_2</key>
-	<string>熟透了</string>
+	<string>Experienced</string>
 	<key>ADT_ROLE_LEVEL_2_TARGET</key>
-	<string>角色达到30级</string>
+	<string>Role reached 30 level.</string>
 	<key>ADT_ROLE_HP</key>
-	<string>血牛</string>
+	<string>Tenacious in life</string>
 	<key>ADT_ROLE_HP_TARGET</key>
-	<string>生命值突破500</string>
+	<string>Health Point exceeded 500.</string>
 	<key>ADT_ROLE_ATTACK</key>
-	<string>赛亚人变身</string>
+	<string>Saiyan turned</string>
 	<key>ADT_ROLE_ATTACK_TARGET</key>
-	<string>最大攻击力突破50</string>
+	<string>Maximum attack breakthrough 50.</string>
 	<key>ADT_ROLE_DODGE</key>
-	<string>凌波微步</string>
+	<string>Flexible Body</string>
 	<key>ADT_ROLE_DODGE_TARGET</key>
-	<string>闪避过50次</string>
+	<string>Dodge for 50 times.</string>
 	<key>ADT_ROLE_CRIT</key>
-	<string>扎你苦胆</string>
+	<string>Headshot</string>
 	<key>ADT_ROLE_CRIT_TARGET</key>
-	<string>爆击过50次</string>
+	<string>Crit for 50 times.</string>
 	<key>ADT_ROLE_BLOCK</key>
-	<string>当当当</string>
+	<string>Shield Wall</string>
 	<key>ADT_ROLE_BLOCK_TARGET</key>
-	<string>格挡过50次</string>
+	<string>Block for 50 times.</string>
 	<key>ADT_ROLE_LUCK_NOT_DEAD</key>
-	<string>大难不死</string>
+	<string>Charmed Life</string>
 	<key>ADT_ROLE_LUCK_NOT_DEAD_TARGET</key>
-	<string>跳入深渊没有被摔死</string>
+	<string>Fall into the abyss，But not dead.</string>
 	<key>ADT_STEALTHY_FIRST</key>
-	<string>阴影下成长</string>
+	<string>Grow in the shadow</string>
 	<key>ADT_STEALTHY_FIRST_TARGET</key>
-	<string>第1次隐身</string>
+	<string>First time into stealth state.</string>
 	<key>ADT_WEAK_RECOVER</key>
-	<string>大病康复</string>
+	<string>Serious illness rehabilitation</string>
 	<key>ADT_WEAK_RECOVER_TARGET</key>
-	<string>第1次从虚弱中恢复</string>
+	<string>Recover from weakness for the first time.</string>
 	<key>ADT_POISON_NOT_DEAD</key>
-	<string>毒不死的小强</string>
+	<string>No poison can kill cockroach.</string>
 	<key>ADT_POISON_NOT_DEAD_TARGET</key>
-	<string>第1次从中毒中恢复</string>
+	<string>Recovery from poisoning for the first time.</string>
 	<key>ADT_SPEED_UP_FIRST</key>
-	<string>飞一般的感觉</string>
+	<string>Flying Feeling</string>
 	<key>ADT_SPEED_UP_FIRST_TARGET</key>
-	<string>第1次加速</string>
+	<string>First time into accelerate state.</string>
 	<key>ADT_STRONG_FIRST</key>
-	<string>挡我者死</string>
+	<string>Who stop me will die.</string>
 	<key>ADT_STRONG_FIRST_TARGET</key>
-	<string>第1次进入强壮状态</string>
+	<string>First time into stronger state.</string>
 </dict>
 </plist>

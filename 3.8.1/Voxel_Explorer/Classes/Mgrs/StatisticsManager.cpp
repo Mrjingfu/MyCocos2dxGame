@@ -357,12 +357,12 @@ void StatisticsManager::addBuyEquipNum()
 void StatisticsManager::addBuyPotionScrollNum()
 {
     m_nBuyPotionScrollNum  = 1;
-    AchievementManager::getInstance()->handleAchievement(ADT_BUY_MARICORIM);
+    AchievementManager::getInstance()->handleAchievement(ADT_BUY_SCROLL_POTION);
 }
 void StatisticsManager::addBuyMagicOramNum()
 {
     m_nBuyMagicOramNum = 1;
-    AchievementManager::getInstance()->handleAchievement(ADT_BUY_SCROLL_POTION);
+    AchievementManager::getInstance()->handleAchievement(ADT_BUY_MARICORIM);
 }
 
 void StatisticsManager::addStealthNum()

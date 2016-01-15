@@ -212,7 +212,7 @@ void AchievementManager::checkRoleDeadAchievement()
     handleAchievement(ADT_ROLE_FALL_DEAD);
     handleAchievement(ADT_ROLE_POISON_DEAD);
     handleAchievement(ADT_ROLE_CLIP_DEAD);
-    handleAchievement(ADT_ROLE_FILE_DEAD);
+    handleAchievement(ADT_ROLE_FIRE_DEAD);
     
     handleAchievement(ADT_ROLE_DEAD_1);
     handleAchievement(ADT_ROLE_DEAD_2);

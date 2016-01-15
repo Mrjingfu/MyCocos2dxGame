@@ -261,7 +261,7 @@ bool TombBossLevel::createPickableItems()
         if(neighbourHasDoor)
             continue;
         
-        int playerlevel = PlayerProperty::getInstance()->getLevel().GetLongValue();
+        int playerlevel = (int)PlayerProperty::getInstance()->getLevel().GetLongValue();
         int itemLevel = cocos2d::random(playerlevel - 3, playerlevel + 3);
         if(itemLevel < 1)
             itemLevel = 1;

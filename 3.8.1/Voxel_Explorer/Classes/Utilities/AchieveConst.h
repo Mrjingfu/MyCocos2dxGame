@@ -276,7 +276,7 @@ const std::vector<std::string> ACHIEVEMENT_DATAIL_TYPE_NAME = {
     "ADT_ROLE_FALL_DEAD",     //失足青年
     "ADT_ROLE_POISON_DEAD",   //娘娘赐你死
     "ADT_ROLE_CLIP_DEAD",     //大刑伺候
-    "ADT_ROLE_FILE_DEAD",     //追寻布鲁偌
+    "ADT_ROLE_FIRE_DEAD",     //追随布鲁偌
 
     //新的墓碑
     "ADT_ROLE_DEAD_1",        //第一次墓碑
@@ -334,9 +334,9 @@ const std::vector<std::string> ACHIEVEMENT_DATAIL_TYPE_NAME = {
     "ADT_NURSE_TREAT",        //制服诱惑
     "ADT_MEET_HAG_FIRST",     //魔女的条件
     "ADT_SAGE_STORY",         //听爷爷讲故事
-    "ADT_BUY_EQUIP",          //北市买长鞭
-    "ADT_BUY_MARICORIM",         //穷家富路
-    "ADT_BUY_SCROLL_POTION",         //我需要卷轴
+    "ADT_BUY_EQUIP",          //南市买武器
+    "ADT_BUY_MARICORIM",         //北市买防具
+    "ADT_BUY_SCROLL_POTION",         //穷家富路
     //end
 
 
@@ -406,7 +406,7 @@ enum eAchievementDetailType
     ADT_ROLE_FALL_DEAD,     //失足青年
     ADT_ROLE_POISON_DEAD,   //娘娘赐你死
     ADT_ROLE_CLIP_DEAD,     //大刑伺候
-    ADT_ROLE_FILE_DEAD,     //追寻布鲁偌
+    ADT_ROLE_FIRE_DEAD,     //追随布鲁偌
 
     //新的墓碑
     ADT_ROLE_DEAD_1,        //第一次墓碑
@@ -464,9 +464,9 @@ enum eAchievementDetailType
     ADT_NURSE_TREAT,        //制服诱惑
     ADT_MEET_HAG_FIRST,     //魔女的条件
     ADT_SAGE_STORY,         //听爷爷讲故事
-    ADT_BUY_EQUIP,          //北市买长鞭
-    ADT_BUY_MARICORIM,         //穷家富路
-    ADT_BUY_SCROLL_POTION,         //我需要卷轴
+    ADT_BUY_EQUIP,          //冒险者的武器
+    ADT_BUY_MARICORIM,         //一分钱一分货
+    ADT_BUY_SCROLL_POTION,         //穷家富路
     //end
 
 
