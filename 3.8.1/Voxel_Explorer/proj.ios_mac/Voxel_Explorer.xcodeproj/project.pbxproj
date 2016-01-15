@@ -138,8 +138,6 @@
 		553BC50E1BCE5191003D907A /* StandardDoor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 553BC50B1BCE5191003D907A /* StandardDoor.cpp */; };
 		55407D571BD5E2BC0000C41C /* GameFormula.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55407D551BD5E2BC0000C41C /* GameFormula.cpp */; };
 		55407D581BD5E2BC0000C41C /* GameFormula.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55407D551BD5E2BC0000C41C /* GameFormula.cpp */; };
-		5542CC341C4890AF001201C6 /* NCSGameCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 5542CC331C4890AF001201C6 /* NCSGameCenter.m */; };
-		5542CC351C4890AF001201C6 /* NCSGameCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 5542CC331C4890AF001201C6 /* NCSGameCenter.m */; };
 		554F00E71BD9CDF600F4DF8E /* data in Resources */ = {isa = PBXBuildFile; fileRef = 554F00E61BD9CDF600F4DF8E /* data */; };
 		554F00E81BD9CDF600F4DF8E /* data in Resources */ = {isa = PBXBuildFile; fileRef = 554F00E61BD9CDF600F4DF8E /* data */; };
 		554F00EE1BDA210000F4DF8E /* BaseBoss.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 554F00EC1BDA210000F4DF8E /* BaseBoss.cpp */; };
@@ -178,6 +176,7 @@
 		55619D521C0DAB3900419E40 /* SewerBossLevel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55619D4F1C0DAB3900419E40 /* SewerBossLevel.cpp */; };
 		5569713C1BE20CCE00CC2736 /* Layer3D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5569713A1BE20CCE00CC2736 /* Layer3D.cpp */; };
 		5569713D1BE20CCE00CC2736 /* Layer3D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5569713A1BE20CCE00CC2736 /* Layer3D.cpp */; };
+		557E66301C492F9B00BDE404 /* NCSGameCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 557E662F1C492F9B00BDE404 /* NCSGameCenter.m */; };
 		558242F51C43A351004F3092 /* PlayerFireBallBullet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 558242F31C43A351004F3092 /* PlayerFireBallBullet.cpp */; };
 		558242F61C43A351004F3092 /* PlayerFireBallBullet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 558242F31C43A351004F3092 /* PlayerFireBallBullet.cpp */; };
 		558242FC1C43B679004F3092 /* RibbonTrail.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 558242FA1C43B679004F3092 /* RibbonTrail.cpp */; };
@@ -559,8 +558,6 @@
 		55407D551BD5E2BC0000C41C /* GameFormula.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameFormula.cpp; sourceTree = "<group>"; };
 		55407D561BD5E2BC0000C41C /* GameFormula.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GameFormula.hpp; sourceTree = "<group>"; };
 		55407D5F1BD633590000C41C /* EventConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventConst.h; sourceTree = "<group>"; };
-		5542CC321C4890AF001201C6 /* NCSGameCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NCSGameCenter.h; path = ios/NCSGameCenter.h; sourceTree = SOURCE_ROOT; };
-		5542CC331C4890AF001201C6 /* NCSGameCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NCSGameCenter.m; path = ios/NCSGameCenter.m; sourceTree = SOURCE_ROOT; };
 		554F00E61BD9CDF600F4DF8E /* data */ = {isa = PBXFileReference; lastKnownFileType = folder; path = data; sourceTree = "<group>"; };
 		554F00EC1BDA210000F4DF8E /* BaseBoss.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BaseBoss.cpp; sourceTree = "<group>"; };
 		554F00ED1BDA210000F4DF8E /* BaseBoss.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BaseBoss.hpp; sourceTree = "<group>"; };
@@ -597,6 +594,8 @@
 		55619D501C0DAB3900419E40 /* SewerBossLevel.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SewerBossLevel.hpp; sourceTree = "<group>"; };
 		5569713A1BE20CCE00CC2736 /* Layer3D.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Layer3D.cpp; sourceTree = "<group>"; };
 		5569713B1BE20CCE00CC2736 /* Layer3D.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Layer3D.hpp; sourceTree = "<group>"; };
+		557E662E1C492F9B00BDE404 /* NCSGameCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NCSGameCenter.h; path = ios/NCSGameCenter.h; sourceTree = SOURCE_ROOT; };
+		557E662F1C492F9B00BDE404 /* NCSGameCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NCSGameCenter.m; path = ios/NCSGameCenter.m; sourceTree = SOURCE_ROOT; };
 		558242F31C43A351004F3092 /* PlayerFireBallBullet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PlayerFireBallBullet.cpp; sourceTree = "<group>"; };
 		558242F41C43A351004F3092 /* PlayerFireBallBullet.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PlayerFireBallBullet.hpp; sourceTree = "<group>"; };
 		558242FA1C43B679004F3092 /* RibbonTrail.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RibbonTrail.cpp; sourceTree = "<group>"; };
@@ -877,8 +876,8 @@
 		080E96DDFE201D6D7F000001 /* ios */ = {
 			isa = PBXGroup;
 			children = (
-				5542CC321C4890AF001201C6 /* NCSGameCenter.h */,
-				5542CC331C4890AF001201C6 /* NCSGameCenter.m */,
+				557E662E1C492F9B00BDE404 /* NCSGameCenter.h */,
+				557E662F1C492F9B00BDE404 /* NCSGameCenter.m */,
 				552DC9691C47B72800C71D34 /* GoogleMobileAdsSdkiOS-7.6.0 */,
 				5087E77117EB970100C73F5D /* Icons */,
 				503AE0FA17EB989F00D1A890 /* AppController.h */,
@@ -1834,7 +1833,7 @@
 				550C32EC1BDDE8740015124E /* SecondWeaponProperty.cpp in Sources */,
 				551E93C11BD51291009F788F /* ArchiveManager.cpp in Sources */,
 				553BC50D1BCE5191003D907A /* StandardDoor.cpp in Sources */,
-				5542CC341C4890AF001201C6 /* NCSGameCenter.m in Sources */,
+				557E66301C492F9B00BDE404 /* NCSGameCenter.m in Sources */,
 				EC795F671C0DA57C0083829B /* NpcPropLayer.cpp in Sources */,
 				555B0D231BC51A2C0055FB6D /* GameScene.cpp in Sources */,
 				550545211BFEF00C006B4500 /* BaseEffect3D.cpp in Sources */,
@@ -1993,7 +1992,6 @@
 				EC3CC9941C088F4F00F8CFC8 /* PopupUILayerManager.cpp in Sources */,
 				55A9807C1C05610400722C9D /* FakeShadow.cpp in Sources */,
 				554F01061BDA3A3100F4DF8E /* SewerLevel.cpp in Sources */,
-				5542CC351C4890AF001201C6 /* NCSGameCenter.m in Sources */,
 				550545241BFEF00C006B4500 /* OutlineEffect3D.cpp in Sources */,
 				EC3CC9921C088F4F00F8CFC8 /* PopupUILayer.cpp in Sources */,
 				554F00EF1BDA210000F4DF8E /* BaseBoss.cpp in Sources */,

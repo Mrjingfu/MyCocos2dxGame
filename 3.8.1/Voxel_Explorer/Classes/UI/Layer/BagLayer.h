@@ -53,11 +53,13 @@ protected:
     virtual void onClickSortAll(Ref*,cocos2d::ui::Widget::TouchEventType);
     virtual void onClickSortEquip(Ref*,cocos2d::ui::Widget::TouchEventType);
     virtual void onClickSortPotion(Ref*,cocos2d::ui::Widget::TouchEventType);
+    void onClickBagExtend(Ref* ref);
 protected:
     
     cocos2d::ui::Button* m_pBtnAllBag;
     cocos2d::ui::Button* m_pBtnWeaponBag;
     cocos2d::ui::Button* m_pBtnPotionBag;
+    cocos2d::ui::Button* m_pBtnBagExtend;
     bool m_bIsIndetify;
     TGridView* m_pGridView;
     BagMangerLayerUI* m_BagMsgLayer;

@@ -1426,10 +1426,10 @@ int StandardLevel::calculateLevelUseableItemCount(const cocos2d::Size& areaSize)
     if(areaSize.width-1 < 4 || areaSize.height-1 < 4)
         return 0;
     int length = (areaSize.width-1) * (areaSize.height-1);
-    if(length <= 15)
+    if(length <= 16)
         return 0;
     else if(length < 25)
-        return cocos2d::random(1, 2);
+        return 1;
     else if(length < 36)
         return cocos2d::random(1, 3);
     else if(length < 49)

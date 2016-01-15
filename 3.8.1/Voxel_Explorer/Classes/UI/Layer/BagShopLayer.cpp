@@ -25,6 +25,11 @@ void BagShopLayer::refreshUIView()
 {
     BagLayer::refreshUIView();
     
+    //商店界面没有扩展按钮
+    if (m_pBtnBagExtend) {
+        m_pBtnBagExtend->setVisible(false);
+    }
+    
     if (m_BagMsgLayer) {
         m_BagMsgLayer->removeCountForItems();
     }

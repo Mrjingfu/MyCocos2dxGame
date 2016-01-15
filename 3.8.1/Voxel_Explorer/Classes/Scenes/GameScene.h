@@ -10,7 +10,7 @@
 #define __Voxel_Explorer__GameScene__
 
 #include "cocos2d.h"
-#include "LoadingLayer.hpp"
+
 class LoadingLayer;
 class GameScene : public cocos2d::Layer
 {

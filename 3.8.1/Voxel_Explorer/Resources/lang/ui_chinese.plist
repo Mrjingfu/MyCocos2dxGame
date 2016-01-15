@@ -257,7 +257,7 @@
 	<key>ITEM_BAG_DELETE</key>
 	<string>是否移除该道具？</string>
 	<key>ITEM_BAG_SELL</key>
-	<string>是否出售该道具？</string>
+	<string>商品比较贵重,是否出售该道具？</string>
 	<key>TITLE_ACHIEVE</key>
 	<string>成就</string>
 	<key>PLAYER_FALL_AND_DIE</key>
@@ -326,6 +326,10 @@
 	<string>鉴定失败！</string>
 	<key>BAG_TEXT_DESTROY</key>
 	<string>拆除</string>
+	<key>BAG_TEXT_EXTEND</key>
+	<string>扩展</string>
+	<key>BAG_TEXT_EXTEND_DESC</key>
+	<string>是否花费%d金币扩展背包?</string>
 	<key>ACHIEVE_ITEM_LOCK</key>
 	<string>未解锁</string>
 	<key>ITEM_USE_FAIL</key>
@@ -344,5 +348,11 @@
 	<string>没有恢复药水了!</string>
 	<key>SKILL_TIP_NOT_MAGIC_POTION</key>
 	<string>没有魔法药水了!</string>
+	<key>LOAGING_TIPS</key>
+	<string>提示:</string>
+	<key>PLAYER_BAG_EXTEND_OK</key>
+	<string>恭喜背包扩展成功!</string>
+	<key>PLAYER_BAG_EXTEND_HAS_REACH_MAXTIMES</key>
+	<string>抱歉哦,背包扩展达到上限了!</string>
 </dict>
 </plist>

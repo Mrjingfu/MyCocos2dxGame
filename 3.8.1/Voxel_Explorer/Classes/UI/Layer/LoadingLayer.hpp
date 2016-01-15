@@ -20,10 +20,10 @@ public:
     CREATE_FUNC(LoadingLayer);
     virtual bool initUi() override;
     virtual bool addEvents() override;
-    void loadingGameAction();
-
+    void refreshUIView() override;
 private:
     cocos2d::ui::ImageView* m_LoadingIcon;
+    cocos2d::ui::Text*  m_pTipDesc;
 };
 
 #endif /* LoadingLayer_hpp */

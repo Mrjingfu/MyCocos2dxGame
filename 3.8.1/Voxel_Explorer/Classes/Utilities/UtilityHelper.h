@@ -41,6 +41,9 @@ public:
     
     
     static float InvSqrt (float x);
+private:
+    static void getLineChineseForText(cocos2d::ui::Text*  tempText,std::string& str);
+    static void getLineEnglistForText(cocos2d::ui::Text*  tempText,std::string& str);
 };
 
 #endif /* defined(__TinyFlare__UtilityHelper__) */

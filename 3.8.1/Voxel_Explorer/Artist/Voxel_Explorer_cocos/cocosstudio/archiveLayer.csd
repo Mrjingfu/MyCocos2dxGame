@@ -6,13 +6,13 @@
       <ObjectData Name="Layer" Tag="19" ctype="GameLayerObjectData">
         <Size X="140.0000" Y="50.0000" />
         <Children>
-          <AbstractNodeData Name="menu_archive_item" ActionTag="-1306603798" Tag="24" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" Scale9Enable="True" LeftEage="5" RightEage="5" TopEage="5" BottomEage="5" Scale9OriginX="5" Scale9OriginY="5" Scale9Width="4" Scale9Height="4" ctype="ImageViewObjectData">
+          <AbstractNodeData Name="menu_archive_item" ActionTag="-1306603798" Tag="24" IconVisible="False" PercentWidthEnable="True" PercentHeightEnable="True" PercentWidthEnabled="True" PercentHeightEnabled="True" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" Scale9Enable="True" LeftEage="5" RightEage="5" TopEage="5" BottomEage="5" Scale9OriginX="5" Scale9OriginY="5" Scale9Width="4" Scale9Height="4" ctype="ImageViewObjectData">
             <Size X="140.0000" Y="50.0000" />
             <Children>
               <AbstractNodeData Name="menu_archive_item_text" ActionTag="-1516934470" Tag="25" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="-2.0000" RightMargin="-2.0000" TopMargin="3.5001" BottomMargin="3.4999" FontSize="36" LabelText="新的游戏&#xA;" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
                 <Size X="144.0000" Y="43.0000" />
                 <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-                <Position X="70.0000" Y="24.9999" />
+                <Position X="70.0000" Y="25.0000" />
                 <Scale ScaleX="0.5000" ScaleY="0.5000" />
                 <CColor A="255" R="255" G="255" B="255" />
                 <PrePosition X="0.5000" Y="0.5000" />

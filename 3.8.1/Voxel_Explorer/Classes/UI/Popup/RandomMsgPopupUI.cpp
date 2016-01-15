@@ -22,9 +22,9 @@ RandomMsgPopupUI::~RandomMsgPopupUI()
 
 void RandomMsgPopupUI::updateFrameWidth()
 {
-    if(m_pInfoDesc)
-    {
-        UtilityHelper::getLineForText(m_pInfoDesc, m_sInfoDesc);
-        m_pInfoDesc->setString(m_sInfoDesc);
-    }
+//    if(m_pInfoDesc)
+//    {
+//        UtilityHelper::getLineEnglistForText(m_pInfoDesc, m_sInfoDesc);
+//        m_pInfoDesc->setString(m_sInfoDesc);
+//    }
 }

@@ -17,6 +17,7 @@
 #include "LoadingLayer.hpp"
 #include "LevelResourceManager.h"
 #include "SimpleAudioEngine.h"
+#include "NativeBridge.h"
 USING_NS_CC;
 
 MenuUILayer::MenuUILayer()
@@ -225,4 +226,11 @@ void MenuUILayer::onClickRate(cocos2d::Ref *ref)
     CHECK_ACTION(ref);
     clickEffect();
     CCLOG("onTouchRate");
+    
+#if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
+    NativeBridge::getInstance()->openGooglePlay();
+#elif  CC_TARGET_PLATFORM == CC_PLATFORM_IOS
+    NativeBridge::getInstance()->openItunesURL();
+#endif
+    
 }

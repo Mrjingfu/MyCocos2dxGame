@@ -385,7 +385,14 @@ void GameUILayer::updateShowRoleExp(int exp)
                     }
                 }
                 else
+                {
                     npc->endAnswer();
+                    if (m_pNpcPropLayer)
+                    {
+                        m_pNpcPropLayer->setVisible(false);
+                    }
+                }
+                
             });
         }
     }

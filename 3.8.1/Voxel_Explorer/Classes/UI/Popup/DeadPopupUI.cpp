@@ -14,13 +14,14 @@
 #include "VoxelExplorer.h"
 #include "GameUILayer.h"
 #include "PopupUILayerManager.h"
+#include "NativeBridge.h"
 USING_NS_CC;
 DeadPopupUI::DeadPopupUI()
 {
     m_pBtnMenu      = nullptr;
     m_pBtnRestart  = nullptr;
     m_nIsPause = false;
-//    m_cActionType = eCenterScale;
+    m_cActionType = eCenterScale;
 }
 DeadPopupUI::~DeadPopupUI()
 {
@@ -79,6 +80,11 @@ void DeadPopupUI::onClickRestart(cocos2d::Ref *ref)
 //    cocos2d::Scene* scene = GameScene::createScene();
 //    Director::getInstance()->replaceScene(scene);
     
+#if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
+//    NativeBridge::getInstance()->openItunesURL();
+#elif  CC_TARGET_PLATFORM == CC_PLATFORM_IOS
+    NativeBridge::getInstance()->playInterstitialAds();
+#endif
     ///for debug
     PopupUILayerManager::getInstance()->closeCurrentPopup();
     VoxelExplorer::getInstance()->respawnPlayer();
