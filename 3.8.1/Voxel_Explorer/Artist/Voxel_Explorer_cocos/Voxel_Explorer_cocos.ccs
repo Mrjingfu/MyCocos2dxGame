@@ -68,7 +68,6 @@
           <PlistImageFile Name="ui_question_icon.png" Key="ui_question_icon.png" />
           <PlistImageFile Name="ui_next_icon.png" Key="ui_next_icon.png" />
           <PlistImageFile Name="achievement_lock.png" Key="achievement_lock.png" />
-          <PlistImageFile Name="ui_gameover.png" Key="ui_gameover.png" />
           <PlistImageFile Name="ui_frame_10.png" Key="ui_frame_10.png" />
           <PlistImageFile Name="ui_frame_11.png" Key="ui_frame_11.png" />
           <PlistImageFile Name="ui_frame_9.png" Key="ui_frame_9.png" />
@@ -91,6 +90,10 @@
           <PlistImageFile Name="ui_skill_lock.png" Key="ui_skill_lock.png" />
           <PlistImageFile Name="ui_skill_prog.png" Key="ui_skill_prog.png" />
           <PlistImageFile Name="ui_buffer_block.png" Key="ui_buffer_block.png" />
+          <PlistImageFile Name="ui_bag_extend_normal.png" Key="ui_bag_extend_normal.png" />
+          <PlistImageFile Name="ui_bag_extend_press.png" Key="ui_bag_extend_press.png" />
+          <PlistImageFile Name="ui_gameover_cn.png" Key="ui_gameover_cn.png" />
+          <PlistImageFile Name="ui_gameover_en.png" Key="ui_gameover_en.png" />
         </PlistImageFolder>
         <Project Name="gameScene.csd" Type="Scene" />
         <Project Name="menuscene.csd" Type="Scene" />

@@ -5,7 +5,7 @@
 	<key>GAME_NAME</key>
 	<string>Voxel Dungeon</string>
 	<key>FONT_NAME</key>
-	<string>04B_03.TTF</string>
+	<string>fangz.TTF</string>
 	<key>TTN_CHASM</key>
 	<string>It&apos;s too dark to see!</string>
 	<key>TTN_STANDARD</key>
@@ -1099,37 +1099,53 @@
 	<key>UIN_JAR_3_DESC</key>
 	<string>A very ordinary jar.</string>
 	<key>NPCN_CHILD</key>
-	<string>爱丽</string>
-	<key>NPCN_CHILD_DESC</key>
-	<string>哎呦，别摸我，痒～</string>
-	<key>NPCN_SHOPGIRL</key>
-	<string>售货员</string>
-	<key>NPCN_SHOPGIRL_DESC</key>
-	<string></string>
-	<key>NPCN_OLDLADY</key>
-	<string>老婆婆</string>
-	<key>NPCN_OLDLADY_DESC</key>
-	<string></string>
-	<key>NPCN_KNIGHT</key>
-	<string>小骑士</string>
-	<key>NPCN_KNIGHT_DESC</key>
-	<string></string>
-	<key>NPCN_WEIRDO</key>
-	<string>怪蜀黍</string>
-	<key>NPCN_WEIRDO_DESC</key>
-	<string></string>
-	<key>NPCN_OLDMAN</key>
-	<string>老爷爷</string>
-	<key>NPCN_OLDMAN_DESC</key>
-	<string></string>
-	<key>NPCN_LITTLEWITCH</key>
-	<string>小魔女</string>
-	<key>NPCN_LITTLEWITCH_DESC</key>
-	<string></string>
-	<key>NPCN_NURSE</key>
-	<string>小护士</string>
-	<key>NPCN_NURSE_DESC</key>
-	<string></string>
+    <string>爱丽</string>
+    <key>NPCN_CHILD_DESC</key>
+    <string>哎呦，别摸我，痒～</string>
+    <key>NPCN_CHILD_CONTENT</key>
+    <string>你好，我是开发者的助手，目前开发者没有交给我新的信息，也许下次见面我会带来惊喜。</string>
+    <key>NPCN_SHOPGIRL</key>
+    <string>售货员</string>
+    <key>NPCN_SHOPGIRL_DESC</key>
+    <string>“别这样，别人会看见的！”</string>
+    <key>NPCN_SHOPGIRL_CONTENT</key>
+    <string>欢迎光临！冒险者都喜欢光临我的防具店，货真价实。</string>
+    <key>NPCN_OLDLADY</key>
+    <string>炼金婆婆</string>
+    <key>NPCN_OLDLADY_DESC</key>
+    <string>“别碰我的炼金炉子，小心伤着！”</string>
+    <key>NPCN_OLDLADY_CONTENT</key>
+    <string>你好，欢迎光临我的炼金房，药水、卷轴应有尽有，不过需要花些小钱。</string>
+    <key>NPCN_KNIGHT</key>
+    <string>小骑士</string>
+    <key>NPCN_KNIGHT_DESC</key>
+    <string>“点我干嘛？你要和我决斗？”</string>
+    <key>NPCN_KNIGHT_CONTENT</key>
+    <string>你好冒险者，一把好的武器可以让你轻松许多，来挑选一把吧！</string>
+    <key>NPCN_WEIRDO</key>
+    <string>怪蜀黍</string>
+    <key>NPCN_WEIRDO_DESC</key>
+    <string>“嘿！你不是要偷东西吧！”</string>
+    <key>NPCN_WEIRDO_CONTENT</key>
+    <string>欢迎加入盗贼工会，工会特权，你可以和我对赌一把，哈哈哈～～</string>
+    <key>NPCN_OLDMAN</key>
+    <string>智者爷爷</string>
+    <key>NPCN_OLDMAN_DESC</key>
+    <string>“你这样可是很不礼貌的！”</string>
+    <key>NPCN_OLDMAN_CONTENT</key>
+    <string>年轻的时候我也是名冒险者，归隐后我还写过自传《伊尔明斯特》三部曲，你可以上网搜搜。</string>
+    <key>NPCN_LITTLEWITCH</key>
+    <string>见习魔女</string>
+    <key>NPCN_LITTLEWITCH_DESC</key>
+    <string>“我在练习增益魔法，可是经常会失败，你要尝试吗？”</string>
+    <key>NPCN_LITTLEWITCH_CONTENT</key>
+    <string>安拉～系米可米可米可变～～</string>
+    <key>NPCN_NURSE</key>
+    <string>小护士</string>
+    <key>NPCN_NURSE_DESC</key>
+    <string>“需要帮助吗？”</string>
+    <key>NPCN_NURSE_CONTENT</key>
+    <string>冒险者你受伤了，让我来给你疗伤吧～</string>
 	<key>PTN_STANDARD</key>
 	<string>地城传送阵</string>
 	<key>PTN_STANDARD_DESC</key>

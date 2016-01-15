@@ -401,7 +401,7 @@
 	<key>PIN_SWORD_SWORD</key>
 	<string>铁剑</string>
 	<key>PIN_SWORD_SWORD_DESC</key>
-	<string>上面已经锈剂斑斑，也许会让被砍着得破伤风。</string>
+	<string>上面已经锈剂斑斑，也许会让被砍者得破伤风。</string>
 	<key>PIN_SWORD_SWORD_BIDESC</key>
 	<string>很普通的一把铁剑。</string>
 	<key>PIN_SWORD_STEELSWORD</key>
@@ -755,237 +755,237 @@
 	<key>PIN_SHIELD_EAGLESHIELD</key>
 	<string>鹰盾</string>
 	<key>PIN_SHIELD_EAGLESHIELD_DESC</key>
-	<string></string>
+	<string>不是所有的鹰盾都是物免盾。</string>
 	<key>PIN_SHIELD_EAGLESHIELD_BIDESC</key>
-	<string></string>
+	<string>哇！貌似是物免盾。</string>
 	<key>PIN_SHIELD_OSTEOSCUTE</key>
 	<string>骨盾</string>
 	<key>PIN_SHIELD_OSTEOSCUTE_DESC</key>
-	<string></string>
+	<string>这副骸骨的主人生前一定练过九转暗金身～</string>
 	<key>PIN_SHIELD_OSTEOSCUTE_BIDESC</key>
-	<string></string>
+	<string>一副动物的骸骨化石。</string>
 	<key>PIN_SHIELD_GOLDENSHIELD</key>
 	<string>金盾</string>
 	<key>PIN_SHIELD_GOLDENSHIELD_DESC</key>
-	<string></string>
+	<string>这只是镀金盾，真金的估计也拿不动。</string>
 	<key>PIN_SHIELD_GOLDENSHIELD_BIDESC</key>
-	<string></string>
+	<string>啊！要发财了吗？</string>
 	<key>PIN_SHIELD_TOWERSHIELD</key>
 	<string>塔盾</string>
 	<key>PIN_SHIELD_TOWERSHIELD_DESC</key>
-	<string></string>
+	<string>上面刻着：“带着我的盾凯旋，或者躺在上面归来。”</string>
 	<key>PIN_SHIELD_TOWERSHIELD_BIDESC</key>
-	<string></string>
+	<string>这盾牌好像个棺材板～</string>
 	<key>PIN_SHIELD_PRO_WOODENSHIELD</key>
 	<string>黑暗防御者</string>
 	<key>PIN_SHIELD_PRO_WOODENSHIELD_DESC</key>
-	<string></string>
+	<string>盾牌正面漆黑如夜，盾牌背面光亮如昼，奇妙奇妙。</string>
 	<key>PIN_SHIELD_PRO_WOODENSHIELD_BIDESC</key>
-	<string></string>
+	<string>一副黑色盾牌，之上泛着幽幽的黑气。</string>
 	<key>PIN_SHIELD_PRO_TRIANGLESHIELD</key>
 	<string>鬼脸</string>
 	<key>PIN_SHIELD_PRO_TRIANGLESHIELD_DESC</key>
-	<string></string>
+	<string>背面有一行字：“一般盾牌上都会画些吓人的东西，我还做过一个与这个类似的，临走前送给了我的兄弟。”</string>
 	<key>PIN_SHIELD_PRO_TRIANGLESHIELD_BIDESC</key>
-	<string></string>
+	<string>盾牌上刻一副恐怖的面容，望之生畏。</string>
 	<key>PIN_SHIELD_PRO_STEELSHIELD</key>
 	<string>守夜人</string>
 	<key>PIN_SHIELD_PRO_STEELSHIELD_DESC</key>
-	<string></string>
+	<string>背面刻着：“Jon Snow所有，如有捡到者请速归还，必有重谢”。</string>
 	<key>PIN_SHIELD_PRO_STEELSHIELD_BIDESC</key>
-	<string></string>
+	<string>“长夜将至，我从今开始守望，至死方休。”</string>
 	<key>PIN_SHIELD_PRO_EAGLESHIELD</key>
 	<string>绿魔</string>
 	<key>PIN_SHIELD_PRO_EAGLESHIELD_DESC</key>
-	<string></string>
+	<string>“送给最可爱的弟弟————爱你的哥哥 雷诺·莫格莱尼”</string>
 	<key>PIN_SHIELD_PRO_EAGLESHIELD_BIDESC</key>
-	<string></string>
+	<string>盾牌正面绘着一颗绿色的鬼脸。</string>
 	<key>PIN_SHIELD_PRO_OSTEOSCUTE</key>
 	<string>骷髅王的身躯</string>
 	<key>PIN_SHIELD_PRO_OSTEOSCUTE_DESC</key>
-	<string></string>
+	<string>实在抗不住就把上面的封印解除，骷髅王将再次复活。</string>
 	<key>PIN_SHIELD_PRO_OSTEOSCUTE_BIDESC</key>
-	<string></string>
+	<string>一副巨大的人形骸骨，身上还穿着铠甲。</string>
 	<key>PIN_SHIELD_PRO_GOLDENSHIELD</key>
 	<string>美杜莎的镜子</string>
 	<key>PIN_SHIELD_PRO_GOLDENSHIELD_DESC</key>
-	<string></string>
+	<string>其实这是美杜莎的另外一件武器，让攻击者通过镜子看到自己的眼睛。</string>
 	<key>PIN_SHIELD_PRO_GOLDENSHIELD_BIDESC</key>
-	<string></string>
+	<string>美杜莎能照镜子吗？</string>
 	<key>PIN_SHIELD_PRO_TOWERSHIELD</key>
 	<string>叹息墙壁</string>
 	<key>PIN_SHIELD_PRO_TOWERSHIELD_DESC</key>
-	<string></string>
+	<string>无数探险者梦寐以求，躲在它后面，任何攻击者都只能叹息。</string>
 	<key>PIN_SHIELD_PRO_TOWERSHIELD_BIDESC</key>
-	<string></string>
+	<string>叹息墙壁，安全保障。</string>
 	<key>PIN_CLOTH_SHOES</key>
 	<string>皮靴</string>
 	<key>PIN_CLOTH_SHOES_DESC</key>
-	<string></string>
+	<string>经典做旧款式。</string>
 	<key>PIN_CLOTH_SHOES_BIDESC</key>
-	<string></string>
+	<string>小牛皮的靴子。</string>
 	<key>PIN_CLOTH_MAGA_CAP</key>
 	<string>法师帽</string>
 	<key>PIN_CLOTH_MAGA_CAP_DESC</key>
-	<string></string>
+	<string>看上去长高了不少～</string>
 	<key>PIN_CLOTH_MAGA_CAP_BIDESC</key>
-	<string></string>
+	<string>看上去像拍照道具，而且很滑稽。</string>
 	<key>PIN_CLOTH_CLOTH</key>
 	<string>布甲</string>
 	<key>PIN_CLOTH_CLOTH_DESC</key>
-	<string></string>
+	<string>既不放火也不防水，但看上去防盗。</string>
 	<key>PIN_CLOTH_CLOTH_BIDESC</key>
-	<string></string>
+	<string>亚麻布甲</string>
 	<key>PIN_CLOTH_LEATHERARMOR</key>
 	<string>皮甲</string>
 	<key>PIN_CLOTH_LEATHERARMOR_DESC</key>
-	<string></string>
+	<string>请认真阅读皮制用品保养手册。</string>
 	<key>PIN_CLOTH_LEATHERARMOR_BIDESC</key>
-	<string></string>
+	<string>用兽皮制的软甲。</string>
 	<key>PIN_CLOTH_CHAINSHOES</key>
 	<string>链子靴</string>
 	<key>PIN_CLOTH_CHAINSHOES_DESC</key>
-	<string></string>
+	<string>穿上它你是做不了盗贼的。</string>
 	<key>PIN_CLOTH_CHAINSHOES_BIDESC</key>
-	<string></string>
+	<string>冒险者中也有爱朋克的。</string>
 	<key>PIN_CLOTH_HELEMT</key>
 	<string>头盔</string>
 	<key>PIN_CLOTH_HELEMT_DESC</key>
-	<string></string>
+	<string>游坦之同款，淘宝有售</string>
 	<key>PIN_CLOTH_HELEMT_BIDESC</key>
-	<string></string>
+	<string>看上去像一罐头盒。</string>
 	<key>PIN_CLOTH_STEELARMOR</key>
 	<string>全钢铠甲</string>
 	<key>PIN_CLOTH_STEELARMOR_DESC</key>
-	<string></string>
+	<string>穿上它你需要再买匹马，再买根长矛。</string>
 	<key>PIN_CLOTH_STEELARMOR_BIDESC</key>
-	<string></string>
+	<string>精钢打造的全身铠甲。</string>
 	<key>PIN_CLOTH_PRO_SHOES</key>
 	<string>旅人之靴</string>
 	<key>PIN_CLOTH_PRO_SHOES_DESC</key>
-	<string></string>
+	<string>你非要把它戴头上，别人也不会拦你。</string>
 	<key>PIN_CLOTH_PRO_SHOES_BIDESC</key>
-	<string></string>
+	<string>鞋与背包二合一。</string>
 	<key>PIN_CLOTH_PRO_MAGA_CAP</key>
 	<string>大法师之帽</string>
 	<key>PIN_CLOTH_PRO_MAGA_CAP_DESC</key>
-	<string></string>
+	<string>大法师身份的象征。</string>
 	<key>PIN_CLOTH_PRO_MAGA_CAP_BIDESC</key>
-	<string></string>
+	<string>又是法师的帽子，为什么说又？</string>
 	<key>PIN_CLOTH_PRO_CLOTH</key>
 	<string>银色月光</string>
 	<key>PIN_CLOTH_PRO_CLOTH_DESC</key>
-	<string></string>
+	<string>请勿在夜战时装备，它会让你成为众矢之的。</string>
 	<key>PIN_CLOTH_PRO_CLOTH_BIDESC</key>
-	<string></string>
+	<string>盔甲上的光华如月光般流荡。</string>
 	<key>PIN_CLOTH_PRO_LEATHERARMOR</key>
 	<string>生命牢笼</string>
 	<key>PIN_CLOTH_PRO_LEATHERARMOR_DESC</key>
-	<string></string>
+	<string>你有了生命的保障，也有了灵魂的束缚。</string>
 	<key>PIN_CLOTH_PRO_LEATHERARMOR_BIDESC</key>
-	<string></string>
+	<string>最安全的地方也是最危险的地方。</string>
 	<key>PIN_CLOTH_PRO_CHAINSHOES</key>
 	<string>云之足径</string>
 	<key>PIN_CLOTH_PRO_CHAINSHOES_DESC</key>
-	<string></string>
+	<string>王重阳脑袋上也插过这么一支，其实它是件暗器。</string>
 	<key>PIN_CLOTH_PRO_CHAINSHOES_BIDESC</key>
-	<string></string>
+	<string>俗称：飞鞋</string>
 	<key>PIN_CLOTH_PRO_HELEMT</key>
 	<string>骑士的容貌</string>
 	<key>PIN_CLOTH_PRO_HELEMT_DESC</key>
-	<string></string>
+	<string>痛苦不会长久，荣耀将会永存。</string>
 	<key>PIN_CLOTH_PRO_HELEMT_BIDESC</key>
-	<string></string>
+	<string>骑士的头盔，做工讲究</string>
 	<key>PIN_CLOTH_PRO_STEELARMOR</key>
 	<string>寡妇对抗者</string>
 	<key>PIN_CLOTH_PRO_STEELARMOR_DESC</key>
-	<string></string>
+	<string>丈夫穿上它，妻子不再嫁。</string>
 	<key>PIN_CLOTH_PRO_STEELARMOR_BIDESC</key>
-	<string></string>
+	<string>目标：没有寡妇</string>
 	<key>PIN_ORNAMENT_RING</key>
 	<string>银戒指</string>
 	<key>PIN_ORNAMENT_RING_DESC</key>
-	<string></string>
+	<string>戴在哪个手指上是有讲究的。</string>
 	<key>PIN_ORNAMENT_RING_BIDESC</key>
-	<string></string>
+	<string>一枚指环。</string>
 	<key>PIN_ORNAMENT_MEDAL</key>
 	<string>勋章</string>
 	<key>PIN_ORNAMENT_MEDAL_DESC</key>
-	<string></string>
+	<string>荣誉的象征</string>
 	<key>PIN_ORNAMENT_MEDAL_BIDESC</key>
-	<string></string>
+	<string>很普通的一枚勋章。</string>
 	<key>PIN_ORNAMENT_SHELLNECKLACE</key>
 	<string>贝壳项链</string>
 	<key>PIN_ORNAMENT_SHELLNECKLACE_DESC</key>
-	<string></string>
+	<string>也许曾经代表过一份心意。</string>
 	<key>PIN_ORNAMENT_SHELLNECKLACE_BIDESC</key>
-	<string></string>
+	<string>看的出是用心之作。</string>
 	<key>PIN_ORNAMENT_PENDANT</key>
 	<string>吊坠项链</string>
 	<key>PIN_ORNAMENT_PENDANT_DESC</key>
-	<string></string>
+	<string>隐约透露着淡淡的魔力。</string>
 	<key>PIN_ORNAMENT_PENDANT_BIDESC</key>
-	<string></string>
+	<string>精美的饰品</string>
 	<key>PIN_ORNAMENT_NECKLACE</key>
 	<string>海蓝项链</string>
 	<key>PIN_ORNAMENT_NECKLACE_DESC</key>
-	<string></string>
+	<string>海蓝宝石：“三月诞生石”，象征“沉着与勇敢”、“幸福和长寿”</string>
 	<key>PIN_ORNAMENT_NECKLACE_BIDESC</key>
-	<string></string>
+	<string>一枚宝石项链，价值不菲</string>
 	<key>PIN_ORNAMENT_SUPERMEDAL</key>
 	<string>高级勋章</string>
 	<key>PIN_ORNAMENT_SUPERMEDAL_DESC</key>
-	<string></string>
+	<string>勋章代表荣誉，而荣誉不分大小。</string>
 	<key>PIN_ORNAMENT_SUPERMEDAL_BIDESC</key>
-	<string></string>
+	<string>一枚精致的勋章，之前的主人一定在很用心的保存。</string>
 	<key>PIN_ORNAMENT_JEWELS</key>
 	<string>珠宝吊饰</string>
 	<key>PIN_ORNAMENT_JEWELS_DESC</key>
-	<string></string>
+	<string>心的归属，爱的承诺，珠宝为爱而生!</string>
 	<key>PIN_ORNAMENT_JEWELS_BIDESC</key>
-	<string></string>
+	<string>上印：“周XX”</string>
 	<key>PIN_ORNAMENT_PRO_RING</key>
 	<string>翠玉指环</string>
 	<key>PIN_ORNAMENT_PRO_RING_DESC</key>
-	<string></string>
+	<string>绿的让人心醉～，魔力让敌人心碎。</string>
 	<key>PIN_ORNAMENT_PRO_RING_BIDESC</key>
-	<string></string>
+	<string>一枚翡翠硬玉戒指。</string>
 	<key>PIN_ORNAMENT_PRO_MEDAL</key>
 	<string>金色勇气</string>
 	<key>PIN_ORNAMENT_PRO_MEDAL_DESC</key>
-	<string></string>
+	<string>来自乌瑟尔的祝福～</string>
 	<key>PIN_ORNAMENT_PRO_MEDAL_BIDESC</key>
-	<string></string>
+	<string>圣骑士的勋章。</string>
 	<key>PIN_ORNAMENT_PRO_SHELLNECKLACE</key>
 	<string>威廉勋章</string>
 	<key>PIN_ORNAMENT_PRO_SHELLNECKLACE_DESC</key>
-	<string></string>
+	<string>“Voor Moed, Beleiden Trouw”</string>
 	<key>PIN_ORNAMENT_PRO_SHELLNECKLACE_BIDESC</key>
-	<string></string>
+	<string>勇敢的象征</string>
 	<key>PIN_ORNAMENT_PRO_PENDANT</key>
 	<string>奥妮克希亚之血</string>
 	<key>PIN_ORNAMENT_PRO_PENDANT_DESC</key>
-	<string></string>
+	<string>屠龙者的荣耀</string>
 	<key>PIN_ORNAMENT_PRO_PENDANT_BIDESC</key>
-	<string></string>
+	<string>一瓶黑龙之血</string>
 	<key>PIN_ORNAMENT_PRO_NECKLACE</key>
 	<string>圣者遗物</string>
 	<key>PIN_ORNAMENT_PRO_NECKLACE_DESC</key>
-	<string></string>
+	<string>这个能值3800枚金币吗～</string>
 	<key>PIN_ORNAMENT_PRO_NECKLACE_BIDESC</key>
-	<string></string>
+	<string>看上去像一截剑柄～</string>
 	<key>PIN_ORNAMENT_PRO_SUPERMEDAL</key>
 	<string>振奋宝石</string>
 	<key>PIN_ORNAMENT_PRO_SUPERMEDAL_DESC</key>
-	<string></string>
+	<string>宝石会让女人振奋，而让男人恐惧。</string>
 	<key>PIN_ORNAMENT_PRO_SUPERMEDAL_BIDESC</key>
-	<string></string>
+	<string>此振奋宝石非彼振奋宝石也～</string>
 	<key>PIN_ORNAMENT_PRO_JEWELS</key>
 	<string>流星泪</string>
 	<key>PIN_ORNAMENT_PRO_JEWELS_DESC</key>
-	<string></string>
+	<string>传说中蕴藏着生命的能量，有起死回生之功效。</string>
 	<key>PIN_ORNAMENT_PRO_JEWELS_BIDESC</key>
-	<string></string>
+	<string>天外飞石，能获得者必是大福之人。</string>
 	<key>PIN_SCROLL_INDENTIFY</key>
 	<string>辨识卷轴</string>
 	<key>PIN_SCROLL_INDENTIFY_DESC</key>
@@ -1102,48 +1102,50 @@
 	<string>爱丽</string>
 	<key>NPCN_CHILD_DESC</key>
 	<string>哎呦，别摸我，痒～</string>
+	<key>NPCN_CHILD_CONTENT</key>
+	<string>你好，我是开发者的助手，目前开发者没有交给我新的信息，也许下次见面我会带来惊喜。</string>
 	<key>NPCN_SHOPGIRL</key>
 	<string>售货员</string>
 	<key>NPCN_SHOPGIRL_DESC</key>
-	<string></string>
+	<string>“别这样，别人会看见的！”</string>
 	<key>NPCN_SHOPGIRL_CONTENT</key>
-	<string></string>
+	<string>欢迎光临！冒险者都喜欢光临我的防具店，货真价实。</string>
 	<key>NPCN_OLDLADY</key>
-	<string>老婆婆</string>
+	<string>炼金婆婆</string>
 	<key>NPCN_OLDLADY_DESC</key>
-	<string></string>
+	<string>“别碰我的炼金炉子，小心伤着！”</string>
 	<key>NPCN_OLDLADY_CONTENT</key>
-	<string></string>
+	<string>你好，欢迎光临我的炼金房，药水、卷轴应有尽有，不过需要花些小钱。</string>
 	<key>NPCN_KNIGHT</key>
 	<string>小骑士</string>
 	<key>NPCN_KNIGHT_DESC</key>
-	<string></string>
+	<string>“点我干嘛？你要和我决斗？”</string>
 	<key>NPCN_KNIGHT_CONTENT</key>
-	<string></string>
+	<string>你好冒险者，一把好的武器可以让你轻松许多，来挑选一把吧！</string>
 	<key>NPCN_WEIRDO</key>
 	<string>怪蜀黍</string>
 	<key>NPCN_WEIRDO_DESC</key>
-	<string></string>
+	<string>“嘿！你不是要偷东西吧！”</string>
 	<key>NPCN_WEIRDO_CONTENT</key>
-	<string></string>
+	<string>欢迎加入盗贼工会，工会特权，你可以和我对赌一把，哈哈哈～～</string>
 	<key>NPCN_OLDMAN</key>
-	<string>老爷爷</string>
+	<string>智者爷爷</string>
 	<key>NPCN_OLDMAN_DESC</key>
-	<string></string>
+	<string>“你这样可是很不礼貌的！”</string>
 	<key>NPCN_OLDMAN_CONTENT</key>
-	<string></string>
+	<string>年轻的时候我也是名冒险者，归隐后我还写过自传《伊尔明斯特》三部曲，你可以上网搜搜。</string>
 	<key>NPCN_LITTLEWITCH</key>
-	<string>小魔女</string>
+	<string>见习魔女</string>
 	<key>NPCN_LITTLEWITCH_DESC</key>
-	<string></string>
+	<string>“我在练习增益魔法，可是经常会失败，你要尝试吗？”</string>
 	<key>NPCN_LITTLEWITCH_CONTENT</key>
-	<string></string>
+	<string>安拉～系米可米可米可变～～</string>
 	<key>NPCN_NURSE</key>
 	<string>小护士</string>
 	<key>NPCN_NURSE_DESC</key>
-	<string></string>
+	<string>“需要帮助吗？”</string>
 	<key>NPCN_NURSE_CONTENT</key>
-	<string></string>
+	<string>冒险者你受伤了，让我来给你疗伤吧～</string>
 	<key>PTN_STANDARD</key>
 	<string>地城传送阵</string>
 	<key>PTN_STANDARD_DESC</key>

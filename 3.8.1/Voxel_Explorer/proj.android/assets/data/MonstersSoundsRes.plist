@@ -130,7 +130,7 @@
 		<key>ATTACK</key>
 		<string>bat_attack.wav</string>
 		<key>BEATTACKED</key>
-		<string>bat_beattack.wav</string>
+		<string>bat_beattacked.wav</string>
 		<key>DEATH</key>
 		<string>bat_death.wav</string>
 	</dict>
@@ -359,7 +359,7 @@
 		<key>ALERT</key>
 		<string>adjudicator_alert.wav</string>
 		<key>ATTACK</key>
-		<string>archbishop.wav</string>
+		<string>archbishop_attack.wav</string>
 		<key>BEATTACKED</key>
 		<string>adjudicator_beattacked.wav</string>
 		<key>DEATH</key>

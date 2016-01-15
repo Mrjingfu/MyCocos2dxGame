@@ -234,3 +234,57 @@ material Fire_02
         }
     }
 }
+material Nucleus
+{
+    technique
+    {
+        pass
+        {
+            lighting off
+            scene_blend add
+            depth_write off
+
+            texture_unit
+            {
+                texture pu_nucleus.png
+                tex_address_mode clamp
+            }
+        }
+    }
+}
+material Debris
+{
+    technique
+    {
+        pass
+        {
+            lighting off
+            scene_blend add
+            depth_write off
+
+            texture_unit
+            {
+                texture pu_fire_01_64x64.png
+                tex_address_mode clamp
+            }
+        }
+    }
+}
+material AtlasSmoke
+{
+    technique
+    {
+        pass
+        {
+            lighting off
+            scene_blend alpha_blend
+            depth_write off
+
+            texture_unit
+            {
+                texture pump_atlas_smoke.png
+                tex_address_mode clamp
+            }
+        }
+        }
+}
