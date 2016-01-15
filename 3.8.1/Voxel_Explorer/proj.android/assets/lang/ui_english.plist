@@ -4,32 +4,34 @@
 <dict>
 	<key>SPLASH_RES</key>
 	<string>splash_en.png</string>
+	<key>DEAD_RES</key>
+	<string>ui_gameover_en.png</string>
 	<key>PROP_SHOW_HP</key>
-	<string>HP:%d</string>
+	<string>HP:</string>
 	<key>ROLE_SHOW_HP</key>
-	<string>HP:%d/%d</string>
+	<string>HP:</string>
 	<key>ROLE_SHOW_EXP</key>
-	<string>EXP:%d/%d</string>
+	<string>EXP:</string>
 	<key>PROP_SHOW_MP</key>
-	<string>MP:%d</string>
+	<string>MP:</string>
 	<key>ROLE_SHOW_MP</key>
-	<string>MP:%d/%d</string>
+	<string>MP:</string>
 	<key>PROP_SHOW_LIGHT_DIS</key>
-	<string>Light Dis:%d</string>
+	<string>Light Dis:</string>
 	<key>PROP_SHOW_SEARCH_DIS</key>
-	<string>Search Dis:%d</string>
+	<string>Search Dis:</string>
 	<key>PROP_SHOW_MARGIC_FIND</key>
-	<string>Margic:%d</string>
+	<string>Margic:</string>
 	<key>PROP_SHOW_CRITICAL_STRIKE</key>
-	<string>Critical strike:%d</string>
+	<string>Critical strike:</string>
 	<key>PROP_SHOW_BLOCK</key>
-	<string>Bolck:%d</string>
+	<string>Bolck:</string>
 	<key>PROP_SHOW_DODGE</key>
-	<string>Dodge:%d</string>
+	<string>Dodge:</string>
 	<key>PROP_SHOW_ATTACK</key>
-	<string>Attack:%d-%d</string>
+	<string>Attack:</string>
 	<key>PROP_SHOW_DEFENSE</key>
-	<string>Defense:%d</string>
+	<string>Defense:</string>
 	<key>STATUS_TEXT_DODGE</key>
 	<string>dogde</string>
 	<key>STATUS_TEXT_BOLOCK</key>
@@ -81,13 +83,13 @@
 	<key>EQUIP_PROP_MP</key>
 	<string>+%d MP</string>
 	<key>EQUIP_PROP_BLOCK</key>
-	<string>+%d%% Block Rate</string>
+	<string>+%.1f%% Block Rate</string>
 	<key>EQUIP_PROP_CRITICAL_STRIKE</key>
-	<string>+%d%% Critical Strike Rate</string>
+	<string>+%.1f%% Critical Strike Rate</string>
 	<key>EQUIP_PROP_DODGE</key>
-	<string>+%d%% Dodge Rate</string>
+	<string>+%.1f%% Dodge Rate</string>
 	<key>EQUIP_PROP_MAGIC</key>
-	<string>+%d%% Magic Find Rate</string>
+	<string>+%.1f%% Magic Find Rate</string>
 	<key>EQUIP_PROP_SEQRCH</key>
 	<string>+%d Search Scope</string>
 	<key>EQUIP_PROP_LIGHT</key>
@@ -223,25 +225,37 @@
 	<key>DESTINY_FROZEN</key>
 	<string>他的剑是冷的,他的刀也是冷的,他的心是冷的,他的血是冷的～～</string>
 	<key>DESTINY_WEAK</key>
-	<string>你变的虚弱了，早就说过黄色的卷轴和风月宝鉴都要远离吗！</string>
+	<string>你变的虚弱了，不是早就说过黄色的卷轴和风月宝鉴都要远离吗！</string>
+	<key>LITTLEWITCH_ADDMONEY</key>
+	<string>今天魔法使用过度了，想休息一天，送你1枚金币作为补偿吧。</string>
+	<key>LITTLEWITCH_ADDPOTION</key>
+	<string>魔法药剂是一个魔法师的必备，今天只随身携带了1瓶送给你吧！</string>
+	<key>LITTLEWITCH_ADDSCROLL</key>
+	<string>这是我抄写的魔法卷轴，送给你！</string>
+	<key>LITTLEWITCH_SUMMONMONSTER</key>
+	<string>哎呀，施法失败，召唤出了怪物，我好怕！我要先走一步了。</string>
+	<key>LITTLEWITCH_WEAK</key>
+	<string>哎呀，施法失败了，给你带来了负面影响真是不好意思。</string>
 	<key>NPC_KNIGHT_ANSWER</key>
-	<string>SHOP EQUIP</string>
+	<string>武器店</string>
 	<key>NPC_CHILD_ANSWER</key>
-	<string>不要着急,开发者加班加点赶制中哦。。</string>
+	<string>任务</string>
 	<key>NPC_SHOPGIRL_ANSWER</key>
-	<string>魔法物品店</string>
+	<string>防具店</string>
 	<key>NPC_OLDLADY_ANSWER</key>
-	<string>SHOP ALCHEMY</string>
+	<string>杂货店</string>
 	<key>NPC_WEIRDO_ANSWER</key>
-	<string>SHOP GAMBLE</string>
+	<string>黑市</string>
+	<key>NPC_OLDMAN_ANSWER</key>
+	<string>智者</string>
 	<key>NPC_LITTLEWITCH_ANSWER</key>
-	<string>不要着急,开发者加班加点赶制中哦。。</string>
+	<string>见习魔女</string>
 	<key>NPC_NURSE_ANSWER</key>
-	<string>护士</string>
+	<string>小护士</string>
 	<key>ITEM_SPLITE_COUNT</key>
 	<string>Count:%d</string>
 	<key>ITEM_BAG_DELETE</key>
-	<string>是否移除该道具？</string>
+	<string>商品比较贵重,是否出售该道具?</string>
 	<key>ITEM_BAG_SELL</key>
 	<string>是否出售该道具？</string>
 	<key>TITLE_ACHIEVE</key>
@@ -302,11 +316,43 @@
 	<string>SOUND:</string>
 	<key>BTN_TEXT_MUSIC</key>
 	<string>MUSIC:</string>
+	<key>BTN_TEXT_NEW_GAME</key>
+	<string>NEW GAME</string>
+	<key>BTN_TEXT_CONTINUE_GAME</key>
+	<string>CONTINUE</string>
+	<key>BTN_TEXT_RESTART_GAME</key>
+	<string>RESTART</string>
 	<key>BAG_INDENTIFY_FAIL</key>
 	<string>鉴定失败！</string>
 	<key>BAG_TEXT_DESTROY</key>
-	<string>摧毁</string>
+	<string>拆除</string>
+	<key>BAG_TEXT_EXTEND</key>
+	<string>扩展</string>
+	<key>BAG_TEXT_EXTEND_DESC</key>
+	<string>是否花费%d金币扩展背包?</string>
 	<key>ACHIEVE_ITEM_LOCK</key>
 	<string>未解锁</string>
+	<key>ITEM_USE_FAIL</key>
+	<string>使用失败!</string>
+	<key>ITEM_EQUIP_FAIL</key>
+	<string>装备失败！</string>
+	<key>ITEM_DISCARD_FAIL</key>
+	<string>丢弃失败！</string>
+	<key>GAME_INFO_FLOOR</key>
+	<string>%s %d F</string>
+	<key>SKILL_TIP_NOT_EQUIP</key>
+	<string>请装备副手武器！</string>
+	<key>SKILL_TIP_COOLING</key>
+	<string>技能冷却中!</string>
+	<key>SKILL_TIP_NOT_BLOOD_POTION</key>
+	<string>没有恢复药水了!</string>
+	<key>SKILL_TIP_NOT_MAGIC_POTION</key>
+	<string>没有魔法药水了!</string>
+	<key>LOAGING_TIPS</key>
+	<string>提示:</string>
+	<key>PLAYER_BAG_EXTEND_OK</key>
+	<string>恭喜背包扩展成功!</string>
+	<key>PLAYER_BAG_EXTEND_HAS_REACH_MAXTIMES</key>
+	<string>抱歉哦,背包扩展达到上限了!</string>
 </dict>
 </plist>

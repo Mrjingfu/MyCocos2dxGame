@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Voxel_Explorer</string>
+     <string name="str_exit">Are You Sure To Exit?</string>
+    <string name="str_ok">Ok</string>
+    <string name="str_cancel">Cancel</string>
 </resources>

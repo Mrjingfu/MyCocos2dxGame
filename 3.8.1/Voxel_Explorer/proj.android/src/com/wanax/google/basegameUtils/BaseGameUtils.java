@@ -10,7 +10,7 @@ import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.games.GamesActivityResultCodes;
-import com.wanax.mazejump.R;
+import com.wanax.voxelexplorer.R;
 
 public class BaseGameUtils {
 

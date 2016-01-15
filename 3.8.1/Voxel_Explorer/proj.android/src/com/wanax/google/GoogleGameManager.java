@@ -13,7 +13,9 @@ import com.google.android.gms.games.Games;
 import com.google.android.gms.games.Player;
 import com.google.android.gms.plus.Plus;
 import com.wanax.google.basegameUtils.BaseGameUtils;
-import com.wanax.mazejump.R;
+import com.wanax.voxelexplorer.R;
+
+
 
 public class GoogleGameManager {
 

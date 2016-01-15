@@ -241,13 +241,13 @@ void Npc::endAnswer()
                 }
                 else if(rand == 1)
                 {
-                    PickableItem::PickableItemType type = cocos2d::random(PickableItem::PIT_POTION_MINORHEALTH, PickableItem::PIT_POTION_UNIVERSAL);
+                    PickableItem::PickableItemType type = (PickableItem::PickableItemType)cocos2d::random((int)PickableItem::PIT_POTION_MINORHEALTH, (int)PickableItem::PIT_POTION_UNIVERSAL);
                     PlayerProperty::getInstance()->addItemToBag(type, 1);
                     Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_LITTLEWITCH_ADDPOTION);
                 }
                 else if(rand == 2)
                 {
-                    PickableItem::PickableItemType type = cocos2d::random(PickableItem::PIT_SCROLL_INDENTIFY, PickableItem::PIT_SCROLL_DESTINY);
+                    PickableItem::PickableItemType type = (PickableItem::PickableItemType)cocos2d::random((int)PickableItem::PIT_SCROLL_INDENTIFY, (int)PickableItem::PIT_SCROLL_DESTINY);
                     PlayerProperty::getInstance()->addItemToBag(type, 1);
                     Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_LITTLEWITCH_ADDSCROLL);
                 }
