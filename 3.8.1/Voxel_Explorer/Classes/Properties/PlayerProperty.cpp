@@ -24,6 +24,7 @@
 #include "SimpleAudioEngine.h"
 #include "LevelResourceManager.h"
 #include "SdkBoxManager.hpp"
+#include "GameCenterController.h"
 USING_NS_CC;
 using namespace CocosDenshion;
 
@@ -178,6 +179,7 @@ void PlayerProperty::addMoney( CChaosNumber copper, bool sound)
         SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
     }
     Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_PROPERTY_DIRTY);
+    GameCenterController::getInstance()->reportMoney((int)m_nValueCopper.GetLongValue());
     m_bDirty = true;
 }
 bool PlayerProperty::costMoney( CChaosNumber costcopper )
@@ -190,6 +192,9 @@ bool PlayerProperty::costMoney( CChaosNumber costcopper )
     }
     m_nValueCopper = m_nValueCopper - costcopper.GetLongValue();
     Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_PROPERTY_DIRTY);
+    
+    GameCenterController::getInstance()->reportMoney((int)m_nValueCopper.GetLongValue());
+    
     m_bDirty = true;
     return true;
 }
@@ -1238,6 +1243,9 @@ bool PlayerProperty::save(cocos2d::ValueMap& data)
     }
     playerProperty["PlayerBag"] = playerBag;
     data["PlayerProperty"] = playerProperty;
+    
+    GameCenterController::getInstance()->reportLevel((int)m_nLevel.GetLongValue());
+    GameCenterController::getInstance()->reportMoney((int)m_nValueCopper.GetLongValue());
     return true;
 }
 void PlayerProperty::levelUp()
@@ -1258,6 +1266,7 @@ void PlayerProperty::levelUp()
 #if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM ==CC_PLATFORM_ANDROID )
     SdkBoxManager::getInstance()->logEvent("Player", "LevelUp", "level", (int)m_nLevel.GetLongValue());
 #endif
+    GameCenterController::getInstance()->reportLevel((int)m_nLevel.GetLongValue());
 }
 PickableItemProperty* PlayerProperty::getItemFromBag(CChaosNumber id) const
 {

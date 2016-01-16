@@ -10,7 +10,7 @@
 #import "AppController.h"
 @implementation NCSGameCenter
 @synthesize gameCenterAvailable;
-@synthesize leaderboardName;
+
 //静态初始化 对外接口
 static NCSGameCenter *sharedHelper = nil;
 + (NCSGameCenter *) sharedGameCenter {
@@ -36,7 +36,6 @@ static NCSGameCenter *sharedHelper = nil;
 
 - (id)init {
     if ((self = [super init])) {
-        leaderboardName = @"BS_01";
         gameCenterAvailable = [self isGameCenterAvailable];
         if (gameCenterAvailable) {
             [self registerForAuthenticationNotification];
@@ -67,7 +66,8 @@ static NCSGameCenter *sharedHelper = nil;
                 if (viewController != nil)
                 {
                     AppController* delegate = (AppController*) [UIApplication sharedApplication].delegate;
-                    [delegate.viewController presentModalViewController:viewController animated:YES];
+                    
+                    [delegate.viewController presentViewController : viewController animated : YES completion : nil];
                 }
                 else if (localPlayer.isAuthenticated)
                 {
@@ -87,7 +87,7 @@ static NCSGameCenter *sharedHelper = nil;
         }
         else // alternative for iOS < 6
         {
-            [[GKLocalPlayer localPlayer] authenticateWithCompletionHandler:^(NSError* error){
+            [[GKLocalPlayer localPlayer] setAuthenticateHandler:^(UIViewController *viewController,NSError *error) {
                 if (error == nil)
                 {
                     //认证完毕后从gamecenter中获取成就状态，以备后面上传成就时查询
@@ -128,17 +128,25 @@ static NCSGameCenter *sharedHelper = nil;
         leaderboardController.leaderboardDelegate = self;
         
         AppController* delegate = (AppController*) [UIApplication sharedApplication].delegate;
-        [delegate.viewController presentModalViewController:leaderboardController animated:YES];
+        
+        [delegate.viewController presentViewController : leaderboardController animated : YES completion : nil];
     }
     
     [self reportCachedScores];
 }
 
 //上传分数到排行榜
-- (void) reportScore: (int64_t) score
+- (void) reportScore:(NSString*)rand_id score:(NSNumber *)score
 {
-    GKScore *scoreReporter = [[[GKScore alloc] initWithCategory:leaderboardName] autorelease];
-    scoreReporter.value = score;
+    GKScore *scoreReporter = [[[GKScore alloc] initWithCategory:rand_id] autorelease];
+    if (strcmp([score objCType], @encode(float)) == 0)
+        scoreReporter.value = [score floatValue];
+    else if (strcmp([score objCType], @encode(double)) == 0)
+        scoreReporter.value = [score doubleValue];
+    else if (strcmp([score objCType], @encode(int)) == 0)
+        scoreReporter.value = [score intValue];
+    else
+        scoreReporter.value = [score longLongValue];
     
     [scoreReporter reportScoreWithCompletionHandler:^(NSError *error) {
         if (error != nil)
@@ -182,7 +190,7 @@ static NCSGameCenter *sharedHelper = nil;
     }
 }
 //下载分数
-- (void) retrieveTopXScores:(int)number
+- (void) retrieveTopXScores:(NSString*)rand_id number:(int)number
 {
     GKLeaderboard *leaderboardRequest = [[GKLeaderboard alloc] init];
     if (leaderboardRequest != nil)
@@ -190,7 +198,7 @@ static NCSGameCenter *sharedHelper = nil;
         leaderboardRequest.playerScope = GKLeaderboardPlayerScopeGlobal;
         leaderboardRequest.timeScope = GKLeaderboardTimeScopeAllTime;
         leaderboardRequest.range = NSMakeRange(1,number);
-        leaderboardRequest.category = leaderboardName;
+        leaderboardRequest.category = rand_id;
         [leaderboardRequest loadScoresWithCompletionHandler: ^(NSArray *scores, NSError *error) {
             if (error != nil){
                 // handle the error.
@@ -224,12 +232,6 @@ static NCSGameCenter *sharedHelper = nil;
     }
     
     GKAchievement* achievement = [[[GKAchievement alloc] initWithIdentifier:id] autorelease];
-    [self unlockAchievement:achievement percent:percent];
-}
-
-//通过成就指针汇报成就
-- (void) unlockAchievement:(GKAchievement *)achievement percent:(float)percent
-{
     if ( achievement != nil )
     {
         achievement.percentComplete = percent;
@@ -241,7 +243,7 @@ static NCSGameCenter *sharedHelper = nil;
             }
             else
             {
-                NSLog(@"上传成就成功\n");
+                NSLog(@"上传成就成功 percent = %f \n", percent);
                 [self displayAchievement:achievement];
             }
         }];
@@ -258,7 +260,8 @@ static NCSGameCenter *sharedHelper = nil;
         achievementController.achievementDelegate = self;
         
         AppController* delegate = (AppController*) [UIApplication sharedApplication].delegate;
-        [delegate.viewController presentModalViewController:achievementController animated:YES];
+        
+        [delegate.viewController presentViewController : achievementController animated : YES completion : nil];
     }
     
 }
@@ -327,26 +330,30 @@ static NCSGameCenter *sharedHelper = nil;
 #pragma mark GKLeaderboardViewControllerDelegate
 - (void)leaderboardViewControllerDidFinish:(GKLeaderboardViewController *)viewController{
     AppController* delegate = (AppController*) [UIApplication sharedApplication].delegate;
-    [delegate.viewController dismissModalViewControllerAnimated:YES];
+
+    [delegate.viewController dismissViewControllerAnimated:YES completion : nil];
 }
 
 //关闭成就回调
 #pragma mark GKAchievementViewControllerDelegate
 - (void)achievementViewControllerDidFinish:(GKAchievementViewController *)viewController{
     AppController* delegate = (AppController*) [UIApplication sharedApplication].delegate;
-    [delegate.viewController dismissModalViewControllerAnimated:YES];
+    
+    [delegate.viewController dismissViewControllerAnimated:YES completion : nil];
 }
 
 #pragma mark GKMatchmakerViewControllerDelegate
 - (void)matchmakerViewControllerWasCancelled:(GKMatchmakerViewController *)viewController{
     
     AppController* delegate = (AppController*) [UIApplication sharedApplication].delegate;
-    [delegate.viewController dismissModalViewControllerAnimated:YES];
+
+    [delegate.viewController dismissViewControllerAnimated:YES completion : nil];
 }
 #pragma mark GKMatchDelegate
 - (void)matchmakerViewController:(GKMatchmakerViewController *)viewController didFailWithError:(NSError *)error{
     
     AppController* delegate = (AppController*) [UIApplication sharedApplication].delegate;
-    [delegate.viewController dismissModalViewControllerAnimated:YES];
+    
+    [delegate.viewController dismissViewControllerAnimated:YES completion : nil];
 }
 @end

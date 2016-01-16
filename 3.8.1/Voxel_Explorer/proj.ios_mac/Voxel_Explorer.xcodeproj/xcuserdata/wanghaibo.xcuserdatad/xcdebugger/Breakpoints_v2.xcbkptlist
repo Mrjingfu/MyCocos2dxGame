@@ -1992,11 +1992,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Properties/PlayerProperty.cpp"
-            timestampString = "474459725.263828"
+            timestampString = "474637265.558103"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "930"
-            endingLineNumber = "930"
+            startingLineNumber = "935"
+            endingLineNumber = "935"
             landmarkName = "PlayerProperty::addItemToBag(PickableItem::PickableItemType type, CChaosNumber level, bool sound)"
             landmarkType = "5">
          </BreakpointContent>
@@ -3640,11 +3640,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Properties/PlayerProperty.cpp"
-            timestampString = "474459725.263828"
+            timestampString = "474609739.034582"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "61"
-            endingLineNumber = "61"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
             landmarkName = "PlayerProperty::initNewPlayer()"
             landmarkType = "5">
          </BreakpointContent>
@@ -4232,11 +4232,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/UI/MenuUILayer.cpp"
-            timestampString = "473246362.257048"
+            timestampString = "474609739.034582"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "83"
-            endingLineNumber = "83"
+            startingLineNumber = "84"
+            endingLineNumber = "84"
             landmarkName = "MenuUILayer::addEvents()"
             landmarkType = "5">
          </BreakpointContent>
@@ -5384,11 +5384,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Properties/PlayerProperty.cpp"
-            timestampString = "474377450.945651"
+            timestampString = "474637265.558103"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "246"
-            endingLineNumber = "246"
+            startingLineNumber = "251"
+            endingLineNumber = "251"
             landmarkName = "PlayerProperty::equipWeapon(CChaosNumber id, bool sound)"
             landmarkType = "5">
          </BreakpointContent>
@@ -9060,11 +9060,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Properties/PlayerProperty.cpp"
-            timestampString = "474459725.263828"
+            timestampString = "474609739.034582"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "60"
-            endingLineNumber = "60"
+            startingLineNumber = "61"
+            endingLineNumber = "61"
             landmarkName = "PlayerProperty::initNewPlayer()"
             landmarkType = "5">
          </BreakpointContent>
@@ -9748,11 +9748,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Properties/PlayerProperty.cpp"
-            timestampString = "474459725.263828"
+            timestampString = "474609739.034582"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "109"
-            endingLineNumber = "109"
+            startingLineNumber = "110"
+            endingLineNumber = "110"
             landmarkName = "PlayerProperty::addPlayerBuffer(PlayerBuffer buff)"
             landmarkType = "5">
          </BreakpointContent>
@@ -9764,11 +9764,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Properties/PlayerProperty.cpp"
-            timestampString = "474459725.263828"
+            timestampString = "474609739.034582"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "85"
-            endingLineNumber = "85"
+            startingLineNumber = "86"
+            endingLineNumber = "86"
             landmarkName = "PlayerProperty::update(float delta)"
             landmarkType = "5">
          </BreakpointContent>
@@ -9812,11 +9812,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Properties/PlayerProperty.cpp"
-            timestampString = "474459725.263828"
+            timestampString = "474609739.034582"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "121"
-            endingLineNumber = "121"
+            startingLineNumber = "122"
+            endingLineNumber = "122"
             landmarkName = "PlayerProperty::removePlayerBuffer(PlayerBuffer buff)"
             landmarkType = "5">
          </BreakpointContent>
@@ -9908,11 +9908,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Scenes/LogoScene.cpp"
-            timestampString = "474459725.263828"
+            timestampString = "474609739.034582"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "254"
-            endingLineNumber = "254"
+            startingLineNumber = "260"
+            endingLineNumber = "260"
             landmarkName = "LogoScene::precache()"
             landmarkType = "5">
          </BreakpointContent>
@@ -9924,11 +9924,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Scenes/MenuScene.cpp"
-            timestampString = "474459725.263828"
+            timestampString = "474609739.034582"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "42"
-            endingLineNumber = "42"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
             landmarkName = "MenuScene::create(bool isFirst )"
             landmarkType = "5">
          </BreakpointContent>
@@ -10020,11 +10020,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Properties/PlayerProperty.cpp"
-            timestampString = "474459725.263828"
+            timestampString = "474637265.558103"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1054"
-            endingLineNumber = "1054"
+            startingLineNumber = "1059"
+            endingLineNumber = "1059"
             landmarkName = "PlayerProperty::extendBagSpace()"
             landmarkType = "5">
          </BreakpointContent>
@@ -10036,11 +10036,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Properties/PlayerProperty.cpp"
-            timestampString = "474459725.263828"
+            timestampString = "474637265.558103"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1029"
-            endingLineNumber = "1029"
+            startingLineNumber = "1034"
+            endingLineNumber = "1034"
             landmarkName = "PlayerProperty::removeStackableItemFromBag(PickableItem::PickableItemType type, CChaosNumber count)"
             landmarkType = "5">
          </BreakpointContent>
@@ -10228,11 +10228,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Properties/PlayerProperty.cpp"
-            timestampString = "474459725.263828"
+            timestampString = "474609739.034582"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "169"
-            endingLineNumber = "169"
+            startingLineNumber = "170"
+            endingLineNumber = "170"
             landmarkName = "PlayerProperty::getDefense()"
             landmarkType = "5">
          </BreakpointContent>
@@ -10740,11 +10740,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Properties/PlayerProperty.cpp"
-            timestampString = "474459725.263828"
+            timestampString = "474637265.558103"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "931"
-            endingLineNumber = "931"
+            startingLineNumber = "936"
+            endingLineNumber = "936"
             landmarkName = "PlayerProperty::addItemToBag(PickableItem::PickableItemType type, CChaosNumber level, bool sound)"
             landmarkType = "5">
          </BreakpointContent>
@@ -10804,11 +10804,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Properties/PlayerProperty.cpp"
-            timestampString = "474459725.263828"
+            timestampString = "474637265.558103"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1250"
-            endingLineNumber = "1250"
+            startingLineNumber = "1258"
+            endingLineNumber = "1258"
             landmarkName = "PlayerProperty::levelUp()"
             landmarkType = "5">
          </BreakpointContent>
@@ -10820,11 +10820,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Properties/PlayerProperty.cpp"
-            timestampString = "474459725.263828"
+            timestampString = "474609739.034582"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "58"
-            endingLineNumber = "58"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
             landmarkName = "PlayerProperty::initNewPlayer()"
             landmarkType = "5">
          </BreakpointContent>
@@ -10948,11 +10948,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Properties/PlayerProperty.cpp"
-            timestampString = "474459725.263828"
+            timestampString = "474637265.558103"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "804"
-            endingLineNumber = "804"
+            startingLineNumber = "809"
+            endingLineNumber = "809"
             landmarkName = "PlayerProperty::buyItemToBag(PickableItemProperty* buyItemProperty, CChaosNumber count, bool toIndentify, bool sound)"
             landmarkType = "5">
          </BreakpointContent>
@@ -11248,7 +11248,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/UI/Layer/RoleLayer.cpp"
@@ -11296,15 +11296,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Scenes/MenuScene.cpp"
-            timestampString = "474558488.697931"
+            timestampString = "474609739.034582"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "51"
-            endingLineNumber = "51"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
             landmarkName = "MenuScene::update(float delta)"
             landmarkType = "5">
          </BreakpointContent>
@@ -12010,6 +12010,294 @@
             startingLineNumber = "630"
             endingLineNumber = "630"
             landmarkName = "StandardLevel::createUseableItems(Area* area)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/Utilities/GameCenterController.mm"
+            timestampString = "474627463.744673"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "105"
+            endingLineNumber = "105"
+            landmarkName = "GameCenterController::reportAchievement(const std::string&amp; strId, float percent)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ios/NCSGameCenter.m"
+            timestampString = "474634719.015976"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "246"
+            endingLineNumber = "246"
+            landmarkName = "@implementation NCSGameCenter"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ios/NCSGameCenter.m"
+            timestampString = "474634719.015976"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "237"
+            endingLineNumber = "237"
+            landmarkName = "@implementation NCSGameCenter"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/Mgrs/AchievementManager.cpp"
+            timestampString = "474632958.284641"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "163"
+            endingLineNumber = "163"
+            landmarkName = "AchievementManager::updateAchieve(AchieveProperty *achieve)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/Mgrs/AchievementManager.cpp"
+            timestampString = "474632958.284641"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "194"
+            endingLineNumber = "194"
+            landmarkName = "AchievementManager::updateAchieve(AchieveProperty *achieve)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/Mgrs/AchievementManager.cpp"
+            timestampString = "474632958.284641"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "164"
+            endingLineNumber = "164"
+            landmarkName = "AchievementManager::updateAchieve(AchieveProperty *achieve)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/Mgrs/AchievementManager.cpp"
+            timestampString = "474633071.578024"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "187"
+            endingLineNumber = "187"
+            landmarkName = "AchievementManager::updateAchieve(AchieveProperty *achieve)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/Mgrs/AchievementManager.cpp"
+            timestampString = "474633306.967494"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "196"
+            endingLineNumber = "196"
+            landmarkName = "AchievementManager::updateAchieve(AchieveProperty *achieve)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/Properties/PlayerProperty.cpp"
+            timestampString = "474637265.558103"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "196"
+            endingLineNumber = "196"
+            landmarkName = "PlayerProperty::costMoney( CChaosNumber costcopper )"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/Properties/PlayerProperty.cpp"
+            timestampString = "474637265.558103"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "182"
+            endingLineNumber = "182"
+            landmarkName = "PlayerProperty::addMoney( CChaosNumber copper, bool sound)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ios/NCSGameCenter.m"
+            timestampString = "474634719.015976"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "161"
+            endingLineNumber = "161"
+            landmarkName = "-reportScore:score:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ios/NCSGameCenter.m"
+            timestampString = "474634719.015976"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "157"
+            endingLineNumber = "157"
+            landmarkName = "-reportScore:score:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ios/NCSGameCenter.m"
+            timestampString = "474634719.015976"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "149"
+            endingLineNumber = "149"
+            landmarkName = "-reportScore:score:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/Utilities/GameCenterController.mm"
+            timestampString = "474633628.586249"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
+            landmarkName = "GameCenterController::reportScore(const std::string&amp; rank_id, const cocos2d::Value&amp; value)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ios/NCSGameCenter.m"
+            timestampString = "474634666.560264"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "143"
+            endingLineNumber = "143"
+            landmarkName = "-reportScore:score:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ios/NCSGameCenter.m"
+            timestampString = "474634667.338179"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "145"
+            endingLineNumber = "145"
+            landmarkName = "-reportScore:score:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ios/NCSGameCenter.m"
+            timestampString = "474634668.114386"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "147"
+            endingLineNumber = "147"
+            landmarkName = "-reportScore:score:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/Properties/PlayerProperty.cpp"
+            timestampString = "474638634.315077"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1223"
+            endingLineNumber = "1223"
+            landmarkName = "PlayerProperty::save(cocos2d::ValueMap&amp; data)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

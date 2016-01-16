@@ -19,6 +19,8 @@
 #include "SimpleAudioEngine.h"
 #include "NativeBridge.h"
 #include "AlertPopupUI.hpp"
+#include "GameCenterController.h"
+
 USING_NS_CC;
 
 MenuUILayer::MenuUILayer()
@@ -150,7 +152,8 @@ void MenuUILayer::onClickAchieve(cocos2d::Ref *ref)
         }
         
     }
-
+    
+    GameCenterController::getInstance()->openAchievementBoard();
 }
 
 void MenuUILayer::onClickRank(cocos2d::Ref *ref)
@@ -160,6 +163,8 @@ void MenuUILayer::onClickRank(cocos2d::Ref *ref)
     clickEffect();
     CCLOG("onTouchRank");
 //    PopupUILayerManager::getInstance()->openPopup(ePopupInfo);
+    
+    GameCenterController::getInstance()->openLeaderBoard();
 }
 void MenuUILayer::onClikcRestart(cocos2d::Ref *ref)
 {

@@ -11,6 +11,7 @@
 #include "ArchiveManager.h"
 #include "SdkBoxManager.hpp"
 #include "LoadingLayer.hpp"
+#include "GameCenterController.h"
 USING_NS_CC;
 
 Scene* MenuScene::createScene()
@@ -42,6 +43,9 @@ bool MenuScene::init()
     {
         return false;
     }
+#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS )
+    GameCenterController::getInstance()->registerGameCenterController();
+#endif
     
     cocos2d::Camera* uiCamera = cocos2d::Camera::create();
     uiCamera->setCameraFlag(cocos2d::CameraFlag::USER2);

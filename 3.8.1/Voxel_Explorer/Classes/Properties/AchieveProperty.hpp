@@ -44,7 +44,7 @@ public:
     void setAchieveDetailType(std::string achieveDeType);
     eAchievementDetailType getAchieveDetailType() const{return m_detailType;}
     bool operator<(const AchieveProperty* v) const;
-    std::string getAchieveDesc() const;
+    std::string getAchieveIDName() const;
     int checkArrName(const std::vector<std::string> arr,const std::string str);
 private:
     CChaosNumber getPorgress(eStatistType type);
