@@ -39,21 +39,6 @@ enum eUserRecordVersion
     eUserRecordVersion0 = 0,
     eUserRecordVersionCount
 };
-enum eChaoType
-{
-    eCTDiamond = 0,
-    eCTBomb,
-    eCTBullet,
-    eCTKeyCopper,
-    eCTKeyGold,
-    eCTKeySilver,
-    eCTMax
-    
-};
-enum eStartupType{
-    eStartupNormal,
-    eStartupFirstInstall
-};
 
 enum eZOrder
 {
@@ -66,8 +51,5 @@ enum eZOrder
 
 
 
-
-//EVENT
-static const std::string EVENT_MAIN_TIPS = "";
 
 #endif//__Tone_Skipper_GameConfig_h__

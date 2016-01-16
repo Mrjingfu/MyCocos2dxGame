@@ -14,6 +14,7 @@
 #include "ArchiveManager.h"
 #include "UtilityHelper.h"
 #include "SdkBoxManager.hpp"
+#include "GameCenterController.h"
 USING_NS_CC;
 
 Scene* LogoScene::createScene()
@@ -63,6 +64,11 @@ bool LogoScene::init()
     {
         return false;
     };
+    
+#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS )
+    GameCenterController::getInstance()->registerGameCenterController();
+#endif
+    
     SpriteFrameCache::getInstance()->addSpriteFramesWithFile("ui_logo_tinyflare.plist");
     
     m_NodeRoot1 = Node::create();

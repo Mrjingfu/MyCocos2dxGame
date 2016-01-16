@@ -12,6 +12,7 @@
 #include "LevelResourceManager.h"
 #include "SimpleAudioEngine.h"
 #include "SdkBoxManager.hpp"
+#include "GameCenterController.h"
 USING_NS_CC;
 using namespace CocosDenshion;
 AchievementManager::AchievementManager()
@@ -46,7 +47,7 @@ bool AchievementManager::load(const cocos2d::ValueMap& rootNode)
         if (nullptr !=(*iter))
         {
             AchieveProperty *prop = (*iter);
-            auto iter = m_vAchieves.find(prop->getAchieveDesc());
+            auto iter = m_vAchieves.find(prop->getAchieveIDName());
             if (iter!= m_vAchieves.end()) {
                 cocos2d::ValueMap itemAchieve = iter->second.asValueMap();
                 prop->onAcieveCommple(itemAchieve[ARCHIVE_ACHIEVEMENT_ITEM_COMMPLE].asBool());
@@ -71,7 +72,7 @@ bool AchievementManager::save( cocos2d::ValueMap& rootNode)
             cocos2d::ValueMap achieve;
             achieve.insert(cocos2d::ValueMap::value_type(ARCHIVE_ACHIEVEMENT_ITEM_COMMPLE,cocos2d::Value(prop->isCommple())));
             achieve.insert(cocos2d::ValueMap::value_type(ARCHIVE_ACHIEVEMENT_ITEM_UNLOCK,cocos2d::Value(prop->isUnlockAchieve())));
-            achieveItems.insert(cocos2d::ValueMap::value_type(prop->getAchieveDesc(),cocos2d::Value(achieve)));
+            achieveItems.insert(cocos2d::ValueMap::value_type(prop->getAchieveIDName(),cocos2d::Value(achieve)));
             
         }
     }
@@ -144,6 +145,7 @@ void AchievementManager::handleAchievement(eAchievementDetailType achiId)
 void AchievementManager::updateAchieve(AchieveProperty *achieve)
 {
     int targetCompleteCount = 0;
+    std::vector<float> targetPercents;
     for (auto iter = achieve->getAcheveTargets().begin(); iter!=achieve->getAcheveTargets().end(); iter++)
     {
         eStatistType type = iter->first;
@@ -153,8 +155,12 @@ void AchievementManager::updateAchieve(AchieveProperty *achieve)
 //        CCLOG("targetNum:%ld",targetNum.GetLongValue());
         if (sourceNum >= targetNum) {
             ++targetCompleteCount;
+            targetPercents.push_back(1.0f);
         }else{
 //            achieve->setProgress(type, sourceNum);
+            CCLOG("sourceNum = %f, targetNum = %f  ", sourceNum.GetFloatValue(), targetNum.GetFloatValue());
+            float percent = sourceNum.GetFloatValue() / targetNum.GetFloatValue();
+            targetPercents.push_back(percent);
             checkAchieveUnlock(achieve);
             sortAchieves();
         }
@@ -169,6 +175,27 @@ void AchievementManager::updateAchieve(AchieveProperty *achieve)
         }
         sortAchieves();
         cocos2d::Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_ACHIEVE_COMPLETE,achieve);
+        
+        GameCenterController::getInstance()->reportAchievement(achieve->getAchieveIDName(), 100.0f);
+    }
+    else if(targetCompleteCount < achieve->getAcheveTargets().size())
+    {
+        if(targetPercents.size() > 0)
+        {
+            if(targetPercents.size() == 1)
+            {
+                GameCenterController::getInstance()->reportAchievement(achieve->getAchieveIDName(), targetPercents[0]*100.0f);
+            }
+            else
+            {
+                float partPercent = 1.0f / targetPercents.size();
+                float totalPercent = 0;
+                for (int i = 0; i<targetPercents.size(); ++i) {
+                    totalPercent = totalPercent + targetPercents[i] * partPercent;
+                }
+                GameCenterController::getInstance()->reportAchievement(achieve->getAchieveIDName(), totalPercent*100.0f);
+            }
+        }
     }
 }
 void AchievementManager::checkAllAchievement()

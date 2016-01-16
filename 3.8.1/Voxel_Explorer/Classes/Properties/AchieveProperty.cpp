@@ -79,7 +79,7 @@ int AchieveProperty::checkArrName(const std::vector<std::string> arr,const std::
     }
     return -1;
 }
-std::string  AchieveProperty::getAchieveDesc() const
+std::string  AchieveProperty::getAchieveIDName() const
 {
     return ACHIEVEMENT_DATAIL_TYPE_NAME[m_detailType];
 }

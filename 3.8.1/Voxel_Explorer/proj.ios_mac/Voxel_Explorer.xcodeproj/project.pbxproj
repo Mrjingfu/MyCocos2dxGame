@@ -138,6 +138,8 @@
 		553BC50E1BCE5191003D907A /* StandardDoor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 553BC50B1BCE5191003D907A /* StandardDoor.cpp */; };
 		55407D571BD5E2BC0000C41C /* GameFormula.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55407D551BD5E2BC0000C41C /* GameFormula.cpp */; };
 		55407D581BD5E2BC0000C41C /* GameFormula.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55407D551BD5E2BC0000C41C /* GameFormula.cpp */; };
+		554D453C1C4A4A0E00903FF1 /* GameCenterController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 554D453B1C4A4A0E00903FF1 /* GameCenterController.mm */; };
+		554D453D1C4A4A0E00903FF1 /* GameCenterController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 554D453B1C4A4A0E00903FF1 /* GameCenterController.mm */; };
 		554F00E71BD9CDF600F4DF8E /* data in Resources */ = {isa = PBXBuildFile; fileRef = 554F00E61BD9CDF600F4DF8E /* data */; };
 		554F00E81BD9CDF600F4DF8E /* data in Resources */ = {isa = PBXBuildFile; fileRef = 554F00E61BD9CDF600F4DF8E /* data */; };
 		554F00EE1BDA210000F4DF8E /* BaseBoss.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 554F00EC1BDA210000F4DF8E /* BaseBoss.cpp */; };
@@ -558,6 +560,8 @@
 		55407D551BD5E2BC0000C41C /* GameFormula.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameFormula.cpp; sourceTree = "<group>"; };
 		55407D561BD5E2BC0000C41C /* GameFormula.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GameFormula.hpp; sourceTree = "<group>"; };
 		55407D5F1BD633590000C41C /* EventConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventConst.h; sourceTree = "<group>"; };
+		554D453A1C4A4A0E00903FF1 /* GameCenterController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameCenterController.h; sourceTree = "<group>"; };
+		554D453B1C4A4A0E00903FF1 /* GameCenterController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GameCenterController.mm; sourceTree = "<group>"; };
 		554F00E61BD9CDF600F4DF8E /* data */ = {isa = PBXFileReference; lastKnownFileType = folder; path = data; sourceTree = "<group>"; };
 		554F00EC1BDA210000F4DF8E /* BaseBoss.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BaseBoss.cpp; sourceTree = "<group>"; };
 		554F00ED1BDA210000F4DF8E /* BaseBoss.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BaseBoss.hpp; sourceTree = "<group>"; };
@@ -1527,6 +1531,8 @@
 		EC6715EB1BCE7EE500C81CFC /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				554D453A1C4A4A0E00903FF1 /* GameCenterController.h */,
+				554D453B1C4A4A0E00903FF1 /* GameCenterController.mm */,
 				551E93A01BD51282009F788F /* AlisaMethod.cpp */,
 				551E93A11BD51282009F788F /* AlisaMethod.h */,
 				551E93A21BD51282009F788F /* ChaosNumber.cpp */,
@@ -1768,6 +1774,7 @@
 				55F81CAC1BDB69FB002EC075 /* PickableItemProperty.cpp in Sources */,
 				551E93C31BD51291009F788F /* LevelResourceManager.cpp in Sources */,
 				EC3CC9731C088F4F00F8CFC8 /* BagMangerLayerUI.cpp in Sources */,
+				554D453C1C4A4A0E00903FF1 /* GameCenterController.mm in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				EC602AB21BF47A4900484D42 /* AchieveProperty.cpp in Sources */,
 				551E93EE1BD512D3009F788F /* FileStream.cpp in Sources */,
@@ -1972,6 +1979,7 @@
 				55619D521C0DAB3900419E40 /* SewerBossLevel.cpp in Sources */,
 				55E1A5571C16BF21008BEEFD /* BossProperty.cpp in Sources */,
 				555B0D161BC51A2C0055FB6D /* AppDelegate.cpp in Sources */,
+				554D453D1C4A4A0E00903FF1 /* GameCenterController.mm in Sources */,
 				55A2CFFB1C39080800E591AA /* KoboldLeaderBullet.cpp in Sources */,
 				55F81CAD1BDB69FB002EC075 /* PickableItemProperty.cpp in Sources */,
 				553BC5021BCDF457003D907A /* Actor.cpp in Sources */,
