@@ -25,7 +25,7 @@ public:
 private:
     void onClickStart(Ref* ref);
     void onClikcRestart(Ref* ref);
-    void onClickSetting(Ref*);
+    void onClickMuisc(Ref* ref);
     void onClickRank(Ref*);
     void onClickRate(Ref*);
     void onClickAchieve(Ref*);
@@ -35,7 +35,8 @@ private:
     cocos2d::LayerColor* m_pWhiteLayer;
     cocos2d::ui::Button* m_pArchiveStart;
     cocos2d::ui::Button* m_pArchiveRestart;
-
+    cocos2d::ui::ImageView* m_pMuiscImg;
+    
     AchievePopupUI* m_pAchievePopupUI;
     cocos2d::Sprite* m_pEyes;
 };

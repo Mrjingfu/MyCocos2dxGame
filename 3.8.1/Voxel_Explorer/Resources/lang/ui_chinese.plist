@@ -322,6 +322,11 @@
 	<string>继续游戏</string>
 	<key>BTN_TEXT_RESTART_GAME</key>
 	<string>重新开始</string>
+	<key>BTN_TEXT_REVIVE</key>
+	<string>复活</string>
+	<key>BTN_TEXT_ADA_REVIVE</key>
+	<string>观看
+复活</string>
 	<key>BAG_INDENTIFY_FAIL</key>
 	<string>鉴定失败！</string>
 	<key>BAG_TEXT_DESTROY</key>
@@ -330,6 +335,8 @@
 	<string>扩展</string>
 	<key>BAG_TEXT_EXTEND_DESC</key>
 	<string>是否花费%d金币扩展背包?</string>
+	<key>ARCHIVE_RESTART_TIPS_DESC</key>
+	<string>重新开始会清除游戏记录,请确定？</string>
 	<key>ACHIEVE_ITEM_LOCK</key>
 	<string>未解锁</string>
 	<key>ITEM_USE_FAIL</key>
@@ -342,8 +349,10 @@
 	<string>%s %d层</string>
 	<key>SKILL_TIP_NOT_EQUIP</key>
 	<string>请装备副手武器！</string>
-	<key>SKILL_TIP_COOLING</key>
+	<key>SKILL_TIP_SKILL_COOLING</key>
 	<string>技能冷却中!</string>
+	<key>SKILL_TIP_POTION_COOLING</key>
+	<string>药水冷却中!</string>
 	<key>SKILL_TIP_NOT_BLOOD_POTION</key>
 	<string>没有恢复药水了!</string>
 	<key>SKILL_TIP_NOT_MAGIC_POTION</key>

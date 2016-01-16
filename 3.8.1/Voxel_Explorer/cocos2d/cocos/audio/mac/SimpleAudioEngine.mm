@@ -147,7 +147,8 @@ static SimpleAudioEngine *s_pEngine;
 
 SimpleAudioEngine::SimpleAudioEngine()
 {
-
+    //add by lichuang
+    m_bIsPauseSound = false;
 }
 
 SimpleAudioEngine::~SimpleAudioEngine()
@@ -188,6 +189,9 @@ void SimpleAudioEngine::playBackgroundMusic(const char* pszFilePath, bool bLoop)
     // Changing file path to full path
     std::string fullPath = FileUtils::getInstance()->fullPathForFilename(pszFilePath);
     static_playBackgroundMusic(fullPath.c_str(), bLoop);
+    //add by lichuang
+    if(m_bIsPauseSound)
+        pauseBackgroundMusic();
 }
 
 void SimpleAudioEngine::stopBackgroundMusic(bool bReleaseData)
@@ -243,6 +247,9 @@ void SimpleAudioEngine::setEffectsVolume(float volume)
 unsigned int SimpleAudioEngine::playEffect(const char *pszFilePath, bool bLoop,
                                            float pitch, float pan, float gain)
 {
+    //add by lichuang
+    if(m_bIsPauseSound)
+        return -1;
     // Changing file path to full path
     std::string fullPath = FileUtils::getInstance()->fullPathForFilename(pszFilePath);
     return static_playEffect(fullPath.c_str(), bLoop, pitch, pan, gain);
@@ -279,11 +286,15 @@ void SimpleAudioEngine::resumeEffect(unsigned int uSoundId)
 
 void SimpleAudioEngine::pauseAllEffects()
 {
+    //add by lichuang
+    m_bIsPauseSound = true;
     static_pauseAllEffects();
 }
 
 void SimpleAudioEngine::resumeAllEffects()
 {
+    //add by lichuang
+    m_bIsPauseSound = false;
     static_resumeAllEffects();
 }
 

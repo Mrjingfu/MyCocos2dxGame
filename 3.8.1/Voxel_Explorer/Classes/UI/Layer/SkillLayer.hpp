@@ -18,7 +18,8 @@ public:
     virtual ~SkillLayer();
     
     CREATE_FUNC(SkillLayer);
-    
+    virtual void onEnter() override;
+    virtual void onExit() override;
     virtual bool initUi() override;
     virtual bool addEvents() override;
     virtual void refreshUIView() override;
@@ -28,6 +29,11 @@ private:
     void onTouchMagic(Ref*,Widget::TouchEventType);
     void onTouchSkill(Ref*,Widget::TouchEventType);
     void skillProgressAction();
+    void bloodProgressAction();
+    void magicProgressAction();
+    
+    void onEventRoleUserPotion(cocos2d::EventCustom *sender);//使用药水物品
+    
 protected:
 
     cocos2d::ui::ImageView * m_pSkill;
@@ -35,6 +41,8 @@ protected:
     cocos2d::ui::ImageView * m_pBloodPotion;
     cocos2d::ui::ImageView * m_pMagicPotionMask;
     cocos2d::ui::ImageView * m_pBloodPotionMask;
+    cocos2d::ProgressTimer * m_pMagicProgress;
+    cocos2d::ProgressTimer * m_pBloodProgress;
     cocos2d::ProgressTimer*  m_pSkillProgress;
     float m_fCoolTime;
     bool m_bIsUseSkill;

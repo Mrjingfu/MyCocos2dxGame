@@ -55,6 +55,8 @@ AndroidJavaEngine::AndroidJavaEngine()
     : _implementBaseOnAudioEngine(false)
     , _effectVolume(1.f)
 {
+        //add by lichuang
+    m_bIsPauseSound = false;
     char sdk_ver_str[PROP_VALUE_MAX] = "0";
     auto len = __system_property_get("ro.build.version.sdk", sdk_ver_str);
     if (len > 0)
@@ -117,6 +119,9 @@ void AndroidJavaEngine::playBackgroundMusic(const char* filePath, bool loop) {
     methodInfo.env->CallStaticVoidMethod(methodInfo.classID, methodInfo.methodID, stringArg, loop);
     methodInfo.env->DeleteLocalRef(stringArg);
     methodInfo.env->DeleteLocalRef(methodInfo.classID);
+        //add by lichuang
+    if(m_bIsPauseSound)
+        pauseBackgroundMusic();
 }
 
 void AndroidJavaEngine::stopBackgroundMusic(bool releaseData) {
@@ -386,6 +391,9 @@ void AndroidJavaEngine::setEffectsVolume(float volume)
 unsigned int AndroidJavaEngine::playEffect(const char* filePath, bool loop,
     float pitch, float pan, float gain)
 {
+        //add by lichuang
+    if(m_bIsPauseSound)
+        return -1;
     if (_implementBaseOnAudioEngine)
     {
         auto soundID = AudioEngine::play2d(filePath, loop, _effectVolume);
@@ -445,6 +453,8 @@ void AndroidJavaEngine::stopEffect(unsigned int soundID)
 
 void AndroidJavaEngine::pauseAllEffects()
 {
+        //add by lichuang
+    m_bIsPauseSound = true;
     if (_implementBaseOnAudioEngine)
     {
         for (auto it : _soundIDs)
@@ -460,6 +470,8 @@ void AndroidJavaEngine::pauseAllEffects()
 
 void AndroidJavaEngine::resumeAllEffects()
 {
+        //add by lichuang
+    m_bIsPauseSound = false;
     if (_implementBaseOnAudioEngine)
     {
         for (auto it : _soundIDs)

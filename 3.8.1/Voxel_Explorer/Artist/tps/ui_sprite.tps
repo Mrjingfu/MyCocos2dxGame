@@ -234,6 +234,12 @@
             <filename>../ui/ui_sprite/ui_gameover_en.png</filename>
             <filename>../ui/ui_sprite/ui_bag_extend_normal.png</filename>
             <filename>../ui/ui_sprite/ui_bag_extend_press.png</filename>
+            <filename>../ui/ui_sprite/ui_frame_13.png</filename>
+            <filename>../ui/ui_sprite/ui_frame_12.png</filename>
+            <filename>../ui/ui_sprite/ui_frame_14.png</filename>
+            <filename>../ui/ui_sprite/ui_btn_sound_off.png</filename>
+            <filename>../ui/ui_sprite/ui_btn_sound_on.png</filename>
+            <filename>../ui/ui_sprite/ui_video_btn.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

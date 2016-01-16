@@ -464,7 +464,7 @@ bool BaseLevel::checkAllAreaBeExplored()
     for (int i=0; i<m_Map.size(); i++)
     {
         TileInfo info = m_Map[i];
-        if (info.m_Type!=TerrainTile::TT_CHASM )
+        if (info.m_AreaType!=Area::AT_UNKNOWN && info.m_Type != TerrainTile::TT_CHASM )
         {
             if (info.m_bVisited) {
                  ++visSize;

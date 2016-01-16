@@ -91,7 +91,6 @@ void UtilityHelper::getLineChineseForText(cocos2d::ui::Text*  tempText,std::stri
                 str.append(*iterPt);
             }
             str.append("\n");
-            ++iterPt;
             textWidthSum = 0.0f;
         }
     }

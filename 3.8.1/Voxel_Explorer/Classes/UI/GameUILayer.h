@@ -156,7 +156,7 @@ private:
     void onEventLittleWitchSummonMonster(cocos2d::EventCustom *sender);
     void onEventLittleWitchWeak(cocos2d::EventCustom *sender);
     
-    
+    void roleDead();
     void popupNpc(Npc* npc,std::string eventStr);
     //更新显示角色exp
     void updateShowRoleExp(int exp);

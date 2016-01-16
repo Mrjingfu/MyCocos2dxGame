@@ -94,6 +94,12 @@
           <PlistImageFile Name="ui_bag_extend_press.png" Key="ui_bag_extend_press.png" />
           <PlistImageFile Name="ui_gameover_cn.png" Key="ui_gameover_cn.png" />
           <PlistImageFile Name="ui_gameover_en.png" Key="ui_gameover_en.png" />
+          <PlistImageFile Name="ui_frame_13.png" Key="ui_frame_13.png" />
+          <PlistImageFile Name="ui_frame_12.png" Key="ui_frame_12.png" />
+          <PlistImageFile Name="ui_frame_14.png" Key="ui_frame_14.png" />
+          <PlistImageFile Name="ui_btn_sound_off.png" Key="ui_btn_sound_off.png" />
+          <PlistImageFile Name="ui_btn_sound_on.png" Key="ui_btn_sound_on.png" />
+          <PlistImageFile Name="ui_video_btn.png" Key="ui_video_btn.png" />
         </PlistImageFolder>
         <Project Name="gameScene.csd" Type="Scene" />
         <Project Name="menuscene.csd" Type="Scene" />
@@ -260,6 +266,7 @@
         <Project Name="archiveLayer.csd" Type="Layer" />
         <Project Name="skillLayer.csd" Type="Layer" />
         <Project Name="deadLayer.csd" Type="Scene" />
+        <Project Name="pausenewPopupLayer.csd" Type="Layer" />
       </RootFolder>
     </Group>
   </SolutionFolder>

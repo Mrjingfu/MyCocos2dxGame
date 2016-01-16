@@ -66,19 +66,6 @@
             <OutlineColor A="255" R="255" G="0" B="0" />
             <ShadowColor A="255" R="110" G="110" B="110" />
           </AbstractNodeData>
-          <AbstractNodeData Name="btn_setting" ActionTag="-346174175" Tag="14" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="265.9306" RightMargin="28.0694" TopMargin="20.3412" BottomMargin="433.6588" TouchEnable="True" FontSize="14" Scale9Enable="True" LeftEage="4" RightEage="4" TopEage="4" BottomEage="4" Scale9OriginX="4" Scale9OriginY="4" Scale9Width="18" Scale9Height="18" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="ButtonObjectData">
-            <Size X="26.0000" Y="26.0000" />
-            <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-            <Position X="278.9440" Y="446.6400" />
-            <Scale ScaleX="1.0000" ScaleY="1.0000" />
-            <CColor A="255" R="255" G="255" B="255" />
-            <PrePosition X="0.8717" Y="0.9305" />
-            <PreSize X="0.0812" Y="0.0542" />
-            <TextColor A="255" R="65" G="65" B="70" />
-            <NormalFileData Type="PlistSubImage" Path="btn_setting.png" Plist="ui_sprite.plist" />
-            <OutlineColor A="255" R="255" G="0" B="0" />
-            <ShadowColor A="255" R="110" G="110" B="110" />
-          </AbstractNodeData>
           <AbstractNodeData Name="menu_particle" ActionTag="-578985138" Tag="17" IconVisible="True" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="160.0000" RightMargin="160.0000" TopMargin="420.6000" BottomMargin="59.4000" ctype="ParticleObjectData">
             <Size X="0.0000" Y="0.0000" />
             <AnchorPoint />
@@ -108,7 +95,7 @@
           <AbstractNodeData Name="menu_archive_item_restart" ActionTag="-1663286647" Tag="15" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="90.0000" RightMargin="90.0000" TopMargin="319.0000" BottomMargin="111.0000" TouchEnable="True" FontSize="14" ButtonText="重新开始" Scale9Enable="True" LeftEage="5" RightEage="5" TopEage="5" BottomEage="5" Scale9OriginX="5" Scale9OriginY="5" Scale9Width="4" Scale9Height="4" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="ButtonObjectData">
             <Size X="140.0000" Y="50.0000" />
             <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-            <Position X="160.0000" Y="136.0000" />
+            <Position X="160.0000" Y="135.9840" />
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
             <CColor A="255" R="255" G="255" B="255" />
             <PrePosition X="0.5000" Y="0.2833" />
@@ -119,6 +106,16 @@
             <NormalFileData Type="PlistSubImage" Path="ui_frame_3.png" Plist="ui_sprite.plist" />
             <OutlineColor A="255" R="255" G="0" B="0" />
             <ShadowColor A="255" R="110" G="110" B="110" />
+          </AbstractNodeData>
+          <AbstractNodeData Name="menu_music_img" ActionTag="-46315320" Tag="67" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="255.5477" RightMargin="5.4523" TopMargin="11.8738" BottomMargin="421.1262" Scale9Width="59" Scale9Height="47" ctype="ImageViewObjectData">
+            <Size X="59.0000" Y="47.0000" />
+            <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+            <Position X="285.0477" Y="444.6262" />
+            <Scale ScaleX="0.5000" ScaleY="0.5000" />
+            <CColor A="255" R="229" G="229" B="229" />
+            <PrePosition X="0.8908" Y="0.9263" />
+            <PreSize X="0.2682" Y="0.2136" />
+            <FileData Type="PlistSubImage" Path="ui_btn_sound_on.png" Plist="ui_sprite.plist" />
           </AbstractNodeData>
         </Children>
       </ObjectData>

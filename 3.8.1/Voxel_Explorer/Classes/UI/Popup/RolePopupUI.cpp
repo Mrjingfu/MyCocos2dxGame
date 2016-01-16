@@ -25,7 +25,7 @@ RolePopupUI::RolePopupUI()
     m_cActionType           = eNone;
     m_pBtnClose             = nullptr;
     m_pBtnChangeBag         = nullptr;
-    m_cActionType = eRightCenter;
+    m_cActionType = eNone;
     
 }
 RolePopupUI::~RolePopupUI()

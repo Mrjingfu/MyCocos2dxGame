@@ -28,7 +28,7 @@
             <PreSize X="0.2688" Y="0.5733" />
             <FileData Type="PlistSubImage" Path="ui_skill_fire.png" Plist="ui_sprite.plist" />
           </AbstractNodeData>
-          <AbstractNodeData Name="skill_magic_icon" ActionTag="941499313" Tag="110" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="187.8318" RightMargin="46.1682" TopMargin="72.2073" BottomMargin="-8.2073" Scale9Width="86" Scale9Height="86" ctype="ImageViewObjectData">
+          <AbstractNodeData Name="skill_magic_icon" ActionTag="941499313" Tag="110" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="187.8160" RightMargin="46.1840" TopMargin="72.2000" BottomMargin="-8.2000" Scale9Width="86" Scale9Height="86" ctype="ImageViewObjectData">
             <Size X="86.0000" Y="86.0000" />
             <Children>
               <AbstractNodeData Name="skill_magic_icon_bg" ActionTag="1670355266" Tag="111" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="-1.0000" RightMargin="-1.0000" TopMargin="-1.0000" BottomMargin="-1.0000" Scale9Width="88" Scale9Height="88" ctype="ImageViewObjectData">
@@ -53,14 +53,14 @@
               </AbstractNodeData>
             </Children>
             <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-            <Position X="230.8318" Y="34.7927" />
+            <Position X="230.8160" Y="34.8000" />
             <Scale ScaleX="0.3500" ScaleY="0.3500" />
             <CColor A="255" R="255" G="255" B="255" />
             <PrePosition X="0.7213" Y="0.2320" />
             <PreSize X="0.2688" Y="0.5733" />
             <FileData Type="PlistSubImage" Path="ui_magic_icon.png" Plist="ui_sprite.plist" />
           </AbstractNodeData>
-          <AbstractNodeData Name="skill_health_icon" ActionTag="-312279628" Tag="135" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="223.4754" RightMargin="11.5246" TopMargin="28.2452" BottomMargin="35.7548" Scale9Width="85" Scale9Height="86" ctype="ImageViewObjectData">
+          <AbstractNodeData Name="skill_health_icon" ActionTag="-312279628" Tag="135" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="223.4840" RightMargin="11.5160" TopMargin="28.2500" BottomMargin="35.7500" Scale9Width="85" Scale9Height="86" ctype="ImageViewObjectData">
             <Size X="85.0000" Y="86.0000" />
             <Children>
               <AbstractNodeData Name="skill_health_icon_bg" ActionTag="-349431293" Tag="136" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="-0.6500" RightMargin="-2.3500" TopMargin="-1.0000" BottomMargin="-1.0000" Scale9Width="88" Scale9Height="88" ctype="ImageViewObjectData">
@@ -85,7 +85,7 @@
               </AbstractNodeData>
             </Children>
             <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-            <Position X="265.9754" Y="78.7548" />
+            <Position X="265.9840" Y="78.7500" />
             <Scale ScaleX="0.3500" ScaleY="0.3500" />
             <CColor A="255" R="255" G="255" B="255" />
             <PrePosition X="0.8312" Y="0.5250" />

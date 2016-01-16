@@ -248,7 +248,8 @@ public:
      * @param filePath The path of the effect file.
      */
     virtual void unloadEffect(const char* filePath);
-
+    //add by lichuang
+    bool  getPauseSound() const{return m_bIsPauseSound;}
 protected:
     /**
     * Constructor of SimpleAudioEngine.
@@ -259,6 +260,9 @@ protected:
     * Destructor of SimpleAudioEngine.
     */
     virtual ~SimpleAudioEngine();
+    
+    //add by lichuang
+    bool m_bIsPauseSound;
 };
 
 } // end of namespace CocosDenshion

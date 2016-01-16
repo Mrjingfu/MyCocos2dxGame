@@ -20,11 +20,17 @@ public:
     virtual bool initUi() override;
     bool addEvents() override;
 private:
-    void onClickMainMenu(cocos2d::Ref* ref);
+    void onClickRevive(cocos2d::Ref* ref);
     void onClickRestart(cocos2d::Ref* ref);
+    void onClickAda(cocos2d::Ref* ref);
+    void CountDown(float dt);
 private:
-    cocos2d::ui::Button* m_pBtnMenu;
-    cocos2d::ui::Button* m_pBtnRestart;
+    cocos2d::ui::Button* m_pBtnDead;
+    cocos2d::ui::ImageView* m_pAdaIcon;
+    cocos2d::ui::Text*  m_pAdaDesc;
+    cocos2d::ui::Text*  m_pContinueNum;
+    int m_nCountDownNum;
+    
 };
 
 #endif /* DeadPopupUI_hpp */

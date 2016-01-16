@@ -333,6 +333,17 @@ void GameUILayer::updateShowRoleExp(int exp)
         m_pRoleHudLayer->shwoPrompt(pt, TIP_POSITIVE, StringUtils::format(UtilityHelper::getLocalStringForUi("STATUS_TEXT_EXP").c_str(),exp));
     }
 }
+void GameUILayer::roleDead()
+{
+    refreshUIView();
+    DeadPopupUI* pausePopup = static_cast<DeadPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupDead));
+    if (pausePopup) {
+        pausePopup->setDarkLayerVisble(true);
+        pausePopup->getRootNode()->setVisible(true);
+        ArchiveManager::getInstance()->saveGame();
+        VoxelExplorer::getInstance()->getCurrentLevel()->showMap(false);
+    }
+}
  void GameUILayer::popupNpc(Npc* npc,std::string eventStr)
 {
     if (npc)
@@ -1106,14 +1117,7 @@ void GameUILayer::onEventRoleUpdateProp(cocos2d::EventCustom *sender)
 void GameUILayer::onEventRoleDead(cocos2d::EventCustom *sender)
 {
     CCLOG("onEventRoleDead");
-    refreshUIView();
-    DeadPopupUI* pausePopup = static_cast<DeadPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupDead));
-    if (pausePopup) {
-        pausePopup->setDarkLayerVisble(true);
-        pausePopup->getRootNode()->setVisible(true);
-        ArchiveManager::getInstance()->saveGame();
-        VoxelExplorer::getInstance()->getCurrentLevel()->showMap(false);
-    }
+    roleDead();
 //    this->runAction(Sequence::createWithTwoActions(DelayTime::create(2.0F),CallFunc::create([pausePopup](){
 //        if (pausePopup) {
 //             pausePopup->setDarkLayerVisble(true);
@@ -1125,6 +1129,7 @@ void GameUILayer::onEventRoleDead(cocos2d::EventCustom *sender)
 void GameUILayer::onEventRoleFallAndDie(cocos2d::EventCustom *sender)
 {
     CCLOG("onEventRoleFallAndDie");
+     roleDead();
 }
 void GameUILayer::onEvenetRoleEquipedWeapon(cocos2d::EventCustom *sender)
 {

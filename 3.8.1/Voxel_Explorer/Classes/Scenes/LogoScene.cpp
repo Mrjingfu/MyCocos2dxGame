@@ -277,7 +277,7 @@ void LogoScene::precache()
 }
 void LogoScene::endcache()
 {
-    auto scene = MenuScene::createScene(true);
+    auto scene = MenuScene::createScene();
     Director::getInstance()->replaceScene(scene);
 }
 void LogoScene::createColorLogo()
