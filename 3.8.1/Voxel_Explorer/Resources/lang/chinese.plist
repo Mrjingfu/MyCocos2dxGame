@@ -685,7 +685,7 @@
 	<key>PIN_STAFF_CLOUDSTAFF_DESC</key>
 	<string>蕴含水与风之能力，不可多的的好法杖。</string>
 	<key>PIN_STAFF_CLOUDSTAFF_BIDESC</key>
-	<string>看上去很重，那起来却很轻巧。</string>
+	<string>看上去很重，拿起来却很轻巧。</string>
 	<key>PIN_STAFF_MONKSTAFF</key>
 	<string>武僧法杖</string>
 	<key>PIN_STAFF_MONKSTAFF_DESC</key>
@@ -997,7 +997,7 @@
 	<key>PIN_SCROLL_SPEED</key>
 	<string>速度卷轴</string>
 	<key>PIN_SCROLL_SPEED_DESC</key>
-	<string>使用后角色攻击速度和移动速度%50 ，持续20秒。</string>
+	<string>使用后角色攻击速度和移动速度提高%50 ，持续20秒。</string>
 	<key>PIN_SCROLL_STEALTH</key>
 	<string>隐身卷轴</string>
 	<key>PIN_SCROLL_STEALTH_DESC</key>
