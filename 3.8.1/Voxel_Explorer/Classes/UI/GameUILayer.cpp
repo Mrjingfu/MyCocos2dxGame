@@ -944,7 +944,11 @@ void GameUILayer::onEventRoleUserPotion(cocos2d::EventCustom *sender)
 {
     CCLOG("onEvenetUserPotion");
     //关闭ItemPopup窗口
-    PopupUILayerManager::getInstance()->closeCurrentPopup();
+    PopupUILayer* itemPopup = nullptr;
+    if (PopupUILayerManager::getInstance()->isOpenPopup(ePopupItem,itemPopup)) {
+        itemPopup->closePopup();
+    }
+    
     
     //窗口都未关闭,回调后来判断是否关闭
     Vec2 pt = VoxelExplorer::getInstance()->getMainCamera()->projectGL(VoxelExplorer::getInstance()->getPlayer()->getPosition3D());
@@ -1002,13 +1006,21 @@ void GameUILayer::onEventRoleUserPotion(cocos2d::EventCustom *sender)
     }
     
     //关闭角色对话框
-    PopupUILayerManager::getInstance()->closeCurrentPopup();
+    PopupUILayer* rolePopup = nullptr;
+    if (PopupUILayerManager::getInstance()->isOpenPopup(ePopupRole,rolePopup)) {
+        rolePopup->closePopup();
+    }
+    
 
 }
 void GameUILayer::onEventRoleUserScroll(cocos2d::EventCustom *sender)
 {
     //关闭ItemPopup窗口
-    PopupUILayerManager::getInstance()->closeCurrentPopup();
+    PopupUILayer* itemPopup = nullptr;
+    if (PopupUILayerManager::getInstance()->isOpenPopup(ePopupItem,itemPopup)) {
+        itemPopup->closePopup();
+    }
+    
     //窗口都未关闭,回调后来判断是否关闭
     CCLOG("onEvenetUserScroll");
     ScrollProperty* scrollProperty = static_cast<ScrollProperty*>(sender->getUserData());
@@ -1052,7 +1064,10 @@ void GameUILayer::onEventRoleUserScroll(cocos2d::EventCustom *sender)
     }
 
     //关闭角色对话框
-    PopupUILayerManager::getInstance()->closeCurrentPopup();
+    PopupUILayer* rolePopup = nullptr;
+    if (PopupUILayerManager::getInstance()->isOpenPopup(ePopupRole,rolePopup)) {
+        rolePopup->closePopup();
+    }
 }
 void GameUILayer::refreshUIView()
 {
