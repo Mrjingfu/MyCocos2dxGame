@@ -21,7 +21,7 @@ DeadPopupUI::DeadPopupUI()
 {
     m_pBtnDead  = nullptr;
     m_nIsPause = false;
-
+    m_nIsBlankClose = false;
     m_pAdaIcon = nullptr;
     m_pAdaDesc = nullptr;
     m_pContinueNum = nullptr;
@@ -92,6 +92,11 @@ void DeadPopupUI::onClickAda(cocos2d::Ref* ref)
     CHECK_ACTION(ref);
     clickEffect();
     this->unschedule(schedule_selector(DeadPopupUI::CountDown));
+#if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
+    //    NativeBridge::getInstance()->openItunesURL();
+#elif  CC_TARGET_PLATFORM == CC_PLATFORM_IOS
+    NativeBridge::getInstance()->playInterstitialAds();
+#endif
     m_pAdaIcon->setVisible(false);
     m_pContinueNum->setVisible(false);
     m_pAdaDesc->setPosition(m_pBtnDead->getContentSize()*0.5);
@@ -102,11 +107,6 @@ void DeadPopupUI::onClickRevive(cocos2d::Ref *ref)
 {
     if(!ArchiveManager::getInstance()->saveGame())
         CCLOGERROR("Save Game failed!");
-#if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
-    //    NativeBridge::getInstance()->openItunesURL();
-#elif  CC_TARGET_PLATFORM == CC_PLATFORM_IOS
-    NativeBridge::getInstance()->playInterstitialAds();
-#endif
     ///for debug
     PopupUILayerManager::getInstance()->closeCurrentPopup();
     VoxelExplorer::getInstance()->respawnPlayer();
