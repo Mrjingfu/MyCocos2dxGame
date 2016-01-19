@@ -30,6 +30,8 @@
     GADInterstitial *admobInterstitial;
 }
 - (BOOL) prefersStatusBarHidden;
+
+- (void) initAdmob;
 - (void) requestAndLoadInterstitialAds;
 - (void) playInterstitialAds;
 

@@ -39,6 +39,13 @@ void NativeBridge::openItunesURL()
         [mViewController openItunesURL : [NSString stringWithUTF8String: UtilityHelper::getAppStoreURL().c_str()]];
 }
 #endif
+void NativeBridge::initAdmob()
+{
+#if CC_TARGET_PLATFORM == CC_PLATFORM_IOS
+    CCLOG("initAdmob");
+    [mViewController initAdmob];
+#endif
+}
 void NativeBridge::playInterstitialAds()
 {
 #if CC_TARGET_PLATFORM == CC_PLATFORM_IOS

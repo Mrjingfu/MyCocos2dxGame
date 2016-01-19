@@ -3,6 +3,7 @@
 #include "SimpleAudioEngine.h"
 #include "ArchiveManager.h"
 #include "SdkBoxManager.hpp"
+#include "NativeBridge.h"
 USING_NS_CC;
 using namespace CocosDenshion;
 
@@ -52,6 +53,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     
 #if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID )
     SdkBoxManager::getInstance()->registerGoogleAnalytics();
+    NativeBridge::getInstance()->initAdmob();
 #endif
 
     std::vector<std::string> searchPaths;

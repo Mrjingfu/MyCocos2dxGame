@@ -24,11 +24,12 @@ public:
     void setRootViewController(RootViewController* viewController);
     void openItunesURL();
 #endif
-
+    
 #if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
     void exitGame();
     void openGooglePlay();
 #endif
+    void initAdmob();
     void playInterstitialAds();
 private:
 #if CC_TARGET_PLATFORM == CC_PLATFORM_IOS 
