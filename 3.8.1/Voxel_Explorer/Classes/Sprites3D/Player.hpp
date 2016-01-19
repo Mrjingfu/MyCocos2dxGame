@@ -49,6 +49,7 @@ public:
     void refreshPlayerBuffer();
     void addPlayerBuffer(PlayerBuffer buff);
     void removePlayerBuffer(PlayerBuffer buff);
+    void resetPlayerBuffer();
     
     bool isStealth() const { return m_bStealth; }
     void setStealth(bool stealth);

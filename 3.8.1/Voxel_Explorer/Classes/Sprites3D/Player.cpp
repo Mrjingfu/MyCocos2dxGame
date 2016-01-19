@@ -453,6 +453,62 @@ void Player::removePlayerBuffer(PlayerBuffer buff)
     else
         PlayerProperty::getInstance()->removePlayerBuffer(buff);
 }
+void Player::resetPlayerBuffer()
+{
+    auto tex = Director::getInstance()->getTextureCache()->addImage("chr_sword.png");
+    if(tex)
+        tex->setAliasTexParameters();
+    setTexture(tex);
+    
+    int bufferFlag = PlayerProperty::getInstance()->getPlayerBuffer();
+    if((bufferFlag & PB_STRONGER) != 0)
+    {
+        PlayerProperty::getInstance()->removePlayerBuffer(PB_STRONGER);
+        VoxelExplorer::getInstance()->removeParticle3D3DEffectFromPlayer(P3D_EFFECT_TYPE::P3D_STRONGER_BUFFER);
+    }
+    if((bufferFlag & PB_STEALTH) != 0)
+    {
+        setOpacity(255);
+        PlayerProperty::getInstance()->removePlayerBuffer(PB_STEALTH);
+        VoxelExplorer::getInstance()->removeParticle3D3DEffectFromPlayer(P3D_EFFECT_TYPE::P3D_STEALTH_BUFFER);
+    }
+    if((bufferFlag & PB_SPEEDUP) != 0)
+    {
+        PlayerProperty::getInstance()->removePlayerBuffer(PB_SPEEDUP);
+        VoxelExplorer::getInstance()->removeParticle3D3DEffectFromPlayer(P3D_EFFECT_TYPE::P3D_SPEEDUP_BUFFER);
+    }
+    if((bufferFlag & PB_POISONING) != 0)
+    {
+        PlayerProperty::getInstance()->removePlayerBuffer(PB_POISONING);
+        VoxelExplorer::getInstance()->removeParticle3D3DEffectFromPlayer(P3D_EFFECT_TYPE::P3D_POISIONING_BUFFER);
+    }
+    if((bufferFlag & PB_WEAK) != 0)
+    {
+        PlayerProperty::getInstance()->removePlayerBuffer(PB_WEAK);
+        VoxelExplorer::getInstance()->removeParticle3D3DEffectFromPlayer(P3D_EFFECT_TYPE::P3D_WEAK_BUFFER);
+    }
+    if((bufferFlag & PB_PARALYTIC) != 0)
+    {
+        PlayerProperty::getInstance()->removePlayerBuffer(PB_PARALYTIC);
+        VoxelExplorer::getInstance()->removeParticle3D3DEffectFromPlayer(P3D_EFFECT_TYPE::P3D_PARALYTIC_BUFFER);
+    }
+    if((bufferFlag & PB_FIRE) != 0)
+    {
+        PlayerProperty::getInstance()->removePlayerBuffer(PB_FIRE);
+        VoxelExplorer::getInstance()->removeParticle3D3DEffectFromPlayer(P3D_EFFECT_TYPE::P3D_FIRE_BUFFER);
+    }
+    if((bufferFlag & PB_FROZEN) != 0)
+    {
+        PlayerProperty::getInstance()->removePlayerBuffer(PB_FROZEN);
+        VoxelExplorer::getInstance()->removeParticle3D3DEffectFromPlayer(P3D_EFFECT_TYPE::P3D_FROZEN_BUFFER);
+    }
+    if((bufferFlag & PB_BLOCKRATEUP) != 0)
+    {
+        PlayerProperty::getInstance()->removePlayerBuffer(PB_BLOCKRATEUP);
+        removeBlockRateUpEffectNode();
+    }
+    PlayerProperty::getInstance()->resetPlayerBuffer();
+}
 void Player::setState(PlayerState state)
 {
     if (m_curState == state)
@@ -1065,13 +1121,9 @@ void Player::onEnterAttack()
 
 void Player::onEnterDeath()
 {
-    auto tex = Director::getInstance()->getTextureCache()->addImage("chr_sword.png");
-    if(tex)
-        tex->setAliasTexParameters();
-    setTexture(tex);
-    PlayerProperty::getInstance()->resetPlayerBuffer();
     this->stopAllActions();
     removeTerrainTileFlag(TileInfo::ATTACKABLE);
+    resetPlayerBuffer();
     if(m_pFakeShadow)
         m_pFakeShadow->setVisible(false);
     this->setVisible(false);
