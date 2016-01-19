@@ -153,7 +153,7 @@ bool AchievePopupUI::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *unused_
 }
 void AchievePopupUI::onTouchEnded(cocos2d::Touch *touch, cocos2d::Event *unused_event)
 {
-    if (this->isVisible() && m_pRootNode &&  !m_pRootNode->getBoundingBox().containsPoint(touch->getLocationInView()) && m_nIsBlankClose) {
+    if (this->isVisible() && m_pRootNode &&  !m_pRootNode->getBoundingBox().containsPoint(touch->getLocation()) && m_nIsBlankClose) {
        
         closePopup();
     }

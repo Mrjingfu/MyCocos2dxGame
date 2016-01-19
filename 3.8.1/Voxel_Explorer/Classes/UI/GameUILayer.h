@@ -40,7 +40,7 @@ public:
     AchievePopupUI* getAchievePopupUI() const{return m_pAchievePopupUI;};
     
     void switchToMenuScene();
-    void switchToGameScene();
+
 protected:
     virtual bool onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event) override;
     virtual void onTouchMoved(cocos2d::Touch *touch, cocos2d::Event *event) override;

@@ -105,7 +105,7 @@ bool MenuUILayer::addEvents()
     m_pArchiveStart->addClickEventListener(CC_CALLBACK_1(MenuUILayer::onClickStart, this));
     m_pArchiveRestart->addClickEventListener(CC_CALLBACK_1(MenuUILayer::onClikcRestart, this));
     
-    refreshUIView();
+    
     return true;
 }
 void MenuUILayer::refreshUIView()
@@ -156,6 +156,15 @@ void MenuUILayer::onClickAchieve(cocos2d::Ref *ref)
     GameCenterController::getInstance()->openAchievementBoard();
 }
 
+void MenuUILayer::onEnter()
+{
+    refreshUIView();
+    WrapperUILayer::onEnter();
+}
+void MenuUILayer::onExit()
+{
+    WrapperUILayer::onExit();
+}
 void MenuUILayer::onClickRank(cocos2d::Ref *ref)
 {
     

@@ -66,7 +66,7 @@ void AchieveMangerEnLayerUI::addItemAchieve(cocos2d::ui::ImageView* achieveItemU
         nameText->setString(name);
         float textHeight =nameText->getContentSize().height*nameText->getScale();
         nameText->setAnchorPoint(cocos2d::Vec2::ANCHOR_MIDDLE_LEFT);
-        nameText->setPosition(cocos2d::Vec2(img->getPositionX()+img->getContentSize().width-5,pt.y+achieveItemSize.height*0.20));
+        nameText->setPosition(cocos2d::Vec2(img->getPositionX()+img->getContentSize().width,pt.y+achieveItemSize.height*0.20));
         
         if (isCommple) {
             nameText->setColor(Color3B(241, 222, 188));

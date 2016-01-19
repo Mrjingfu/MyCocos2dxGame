@@ -10,12 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/UI/GameUILayer.cpp"
-            timestampString = "474350529.250685"
+            timestampString = "474880609.980782"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "324"
-            endingLineNumber = "324"
-            landmarkName = "GameUILayer::onEventRoleNoBossKey(cocos2d::EventCustom *sender)"
+            startingLineNumber = "319"
+            endingLineNumber = "319"
+            landmarkName = "GameUILayer::updateShowRoleExp(int exp)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -96,6 +96,70 @@
             startingLineNumber = "37"
             endingLineNumber = "37"
             landmarkName = "AchieveEnItemUI::setAchieveDatas(const std::string icon, std::string name, std::string targetDesc)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/Scenes/GameScene.cpp"
+            timestampString = "474879922.95835"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
+            landmarkName = "GameScene::onExit()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/UI/MenuUILayer.cpp"
+            timestampString = "474881250.51281"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "183"
+            endingLineNumber = "183"
+            landmarkName = "MenuUILayer::onClikcRestart(cocos2d::Ref *ref)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/Utilities/UtilityHelper.cpp"
+            timestampString = "474883617.757569"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "153"
+            endingLineNumber = "153"
+            landmarkName = "UtilityHelper::getLineEnglistForText(cocos2d::ui::Text* tempText,std::string&amp; str,float parentWidth)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/Utilities/UtilityHelper.cpp"
+            timestampString = "474883621.470916"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "79"
+            endingLineNumber = "79"
+            landmarkName = "UtilityHelper::getLineChineseForText(cocos2d::ui::Text* tempText,std::string&amp; str,float parentWidth)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

@@ -151,19 +151,7 @@ void GameUILayer::switchToMenuScene()
         m_pWhiteLayer->runAction(sequence);
     }
 }
-void GameUILayer::switchToGameScene()
-{
-    if(m_pWhiteLayer)
-    {
-        EaseExponentialOut* fadeIn = EaseExponentialOut::create(FadeIn::create(1.0f));
-        CallFunc* callFunc = CallFunc::create([this](){
-            auto scene = MenuScene::createScene();
-            Director::getInstance()->replaceScene(scene);
-        });
-        Sequence* sequence = Sequence::create( fadeIn, callFunc, NULL);
-        m_pWhiteLayer->runAction(sequence);
-    }
-}
+
 bool GameUILayer::onTouchBegan(Touch *touch, Event *event)
 {
 
@@ -264,7 +252,7 @@ void GameUILayer::onEventRoleMoneyNotEnough(cocos2d::EventCustom *sender)
     CCLOG("onEventRoleMoneyNotEnough");
     std::string msg = UtilityHelper::getLocalStringForUi(EVENT_PLAYER_MONEY_NOT_ENOUGH);
     PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
-    m_pGameToolBarLayer->sendMessage(msg);
+    m_pGameToolBarLayer->sendMessage(msg,PopupUILayerManager::getInstance()->getTipsColor(TIP_WARNING));
     
 }
 void GameUILayer::onEventRoleNoMana(cocos2d::EventCustom *sender)
@@ -272,14 +260,14 @@ void GameUILayer::onEventRoleNoMana(cocos2d::EventCustom *sender)
     CCLOG("onEventRoleNoMana");
     std::string msg = UtilityHelper::getLocalStringForUi(EVENT_PLAYER_NO_MANA);
     PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
-    m_pGameToolBarLayer->sendMessage(msg);
+    m_pGameToolBarLayer->sendMessage(msg,PopupUILayerManager::getInstance()->getTipsColor(TIP_WARNING));
 }
 void GameUILayer::onEventRoleBagNoSpace(cocos2d::EventCustom *sender)
 {
     CCLOG("onEventRoleBagNoSpace");
     std::string msg = UtilityHelper::getLocalStringForUi(EVENT_PLAYER_BAG_NO_SPACE);
     PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
-    m_pGameToolBarLayer->sendMessage(msg);
+    m_pGameToolBarLayer->sendMessage(msg,PopupUILayerManager::getInstance()->getTipsColor(TIP_WARNING));
     
 //    CallFunc* func = CallFunc::create([]{
 //        PopupUILayerManager::getInstance()->openPopup(ePopupRole);
@@ -292,28 +280,28 @@ void GameUILayer::onEventRoleNoCopperKey(cocos2d::EventCustom *sender)
 {
     std::string msg = UtilityHelper::getLocalStringForUi(EVENT_PLAYER_NO_COPPER_KEY);
     PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
-    m_pGameToolBarLayer->sendMessage(msg);
+    m_pGameToolBarLayer->sendMessage(msg,PopupUILayerManager::getInstance()->getTipsColor(TIP_WARNING));
     CCLOG("onEventRoleNoCopperKey");
 }
 void GameUILayer::onEventRoleNoSilverKey(cocos2d::EventCustom *sender)
 {
     std::string msg = UtilityHelper::getLocalStringForUi(EVENT_PLAYER_NO_SILVER_KEY);
     PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
-    m_pGameToolBarLayer->sendMessage(msg);
+    m_pGameToolBarLayer->sendMessage(msg,PopupUILayerManager::getInstance()->getTipsColor(TIP_WARNING));
      CCLOG("onEventRoleNoSilverKey");
 }
 void GameUILayer::onEventRoleNoGoldKey(cocos2d::EventCustom *sender)
 {
     std::string msg = UtilityHelper::getLocalStringForUi(EVENT_PLAYER_NO_GOLD_KEY);
     PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
-    m_pGameToolBarLayer->sendMessage(msg);
+    m_pGameToolBarLayer->sendMessage(msg,PopupUILayerManager::getInstance()->getTipsColor(TIP_WARNING));
      CCLOG("onEventRoleNoGoldKey");
 }
 void GameUILayer::onEventRoleNoRoomKey(cocos2d::EventCustom *sender)
 {
     std::string msg = UtilityHelper::getLocalStringForUi(EVENT_PLAYER_NO_ROOM_KEY);
     PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
-    m_pGameToolBarLayer->sendMessage(msg);
+    m_pGameToolBarLayer->sendMessage(msg,PopupUILayerManager::getInstance()->getTipsColor(TIP_WARNING));
     CCLOG("onEventRoleNoRoomKey");
 }
 void GameUILayer::onEventRoleNoBossKey(cocos2d::EventCustom *sender)
@@ -321,7 +309,7 @@ void GameUILayer::onEventRoleNoBossKey(cocos2d::EventCustom *sender)
     
     std::string msg = cocos2d::StringUtils::format(UtilityHelper::getLocalStringForUi(EVENT_PLAYER_NO_BOSS_KEY).c_str(),RandomDungeon::getInstance()->getCurrentBossName().c_str());
     PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
-    m_pGameToolBarLayer->sendMessage(msg);
+    m_pGameToolBarLayer->sendMessage(msg,PopupUILayerManager::getInstance()->getTipsColor(TIP_WARNING));
     CCLOG("onEventRoleNoBossKey");
 }
 void GameUILayer::updateShowRoleExp(int exp)
@@ -330,7 +318,9 @@ void GameUILayer::updateShowRoleExp(int exp)
     Vec2 pt = VoxelExplorer::getInstance()->getMainCamera()->projectGL(VoxelExplorer::getInstance()->getPlayer()->getPosition3D());
     pt = Vec2(pt.x, pt.y+TerrainTile::CONTENT_SCALE*2.5);
     if (m_pRoleHudLayer) {
-        m_pRoleHudLayer->shwoPrompt(pt, TIP_POSITIVE, StringUtils::format(UtilityHelper::getLocalStringForUi("STATUS_TEXT_EXP").c_str(),exp));
+        std::string msg = StringUtils::format(UtilityHelper::getLocalStringForUi("STATUS_TEXT_EXP").c_str(),exp);
+        m_pRoleHudLayer->shwoPrompt(pt, TIP_POSITIVE, msg);
+        m_pGameToolBarLayer->sendMessage(msg,PopupUILayerManager::getInstance()->getTipsColor(TIP_POSITIVE));
     }
 }
 void GameUILayer::roleDead()
@@ -667,21 +657,21 @@ void GameUILayer::onEventUseGoldChestKey(cocos2d::EventCustom *sender)
     CCLOG("onEventUseGoldChestKey");
     std::string msg = UtilityHelper::getLocalStringForUi(EVENT_PLAYER_USE_GOLD_CHEST_KEY);
     PopupUILayerManager::getInstance()->showStatusImport(TIP_POSITIVE, msg);
-    m_pGameToolBarLayer->sendMessage(msg);
+    m_pGameToolBarLayer->sendMessage(msg,PopupUILayerManager::getInstance()->getTipsColor(TIP_POSITIVE));
 }
 void GameUILayer::onEventUseSilverChestKey(cocos2d::EventCustom *sender)
 {
     CCLOG("onEventUseSilverChestKey");
     std::string msg = UtilityHelper::getLocalStringForUi(EVENT_PLAYER_USE_SILVER_CHEST_KEY);
     PopupUILayerManager::getInstance()->showStatusImport(TIP_POSITIVE, msg);
-    m_pGameToolBarLayer->sendMessage(msg);
+   m_pGameToolBarLayer->sendMessage(msg,PopupUILayerManager::getInstance()->getTipsColor(TIP_POSITIVE));
 }
 void GameUILayer::onEventUseCopperChestKey(cocos2d::EventCustom *sender)
 {
     CCLOG("onEventUseCopperChestKey");
     std::string msg = UtilityHelper::getLocalStringForUi(EVENT_PLAYER_USE_COPPER_CHEST_KEY);
     PopupUILayerManager::getInstance()->showStatusImport(TIP_POSITIVE, msg);
-    m_pGameToolBarLayer->sendMessage(msg);
+    m_pGameToolBarLayer->sendMessage(msg,PopupUILayerManager::getInstance()->getTipsColor(TIP_POSITIVE));;
 
 }
 void GameUILayer::onEventUseRoomKey(cocos2d::EventCustom *sender)
@@ -689,15 +679,15 @@ void GameUILayer::onEventUseRoomKey(cocos2d::EventCustom *sender)
     CCLOG("onEventUseRoomKey");
     std::string msg = UtilityHelper::getLocalStringForUi(EVENT_PLAYER_USE_ROOM_KEY);
     PopupUILayerManager::getInstance()->showStatusImport(TIP_POSITIVE, msg);
-    m_pGameToolBarLayer->sendMessage(msg);
+   m_pGameToolBarLayer->sendMessage(msg,PopupUILayerManager::getInstance()->getTipsColor(TIP_POSITIVE));
 }
 void GameUILayer::onEventUseBossKey(cocos2d::EventCustom *sender)
 {
     CCLOG("onEventUseBossKey");
    
     std::string msg = cocos2d::StringUtils::format(UtilityHelper::getLocalStringForUi(EVENT_PLAYER_USE_BOSS_KEY).c_str(),RandomDungeon::getInstance()->getCurrentBossName().c_str());
-    PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
-    m_pGameToolBarLayer->sendMessage(msg);
+    PopupUILayerManager::getInstance()->showStatusImport(TIP_POSITIVE, msg);
+    m_pGameToolBarLayer->sendMessage(msg,PopupUILayerManager::getInstance()->getTipsColor(TIP_POSITIVE));
 }
 
 void GameUILayer::onEventDoorMagicLocked(cocos2d::EventCustom *sender)
@@ -705,7 +695,7 @@ void GameUILayer::onEventDoorMagicLocked(cocos2d::EventCustom *sender)
     CCLOG("onEventDoorMagicLocked");
     std::string msg = UtilityHelper::getLocalStringForUi(EVENT_DOOR_MAGIC_LOCKED);
     PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
-    m_pGameToolBarLayer->sendMessage(msg);
+    m_pGameToolBarLayer->sendMessage(msg,PopupUILayerManager::getInstance()->getTipsColor(TIP_WARNING));
     
 }
 void GameUILayer::onEventDoorMagicClosed(cocos2d::EventCustom *sender)
@@ -713,79 +703,79 @@ void GameUILayer::onEventDoorMagicClosed(cocos2d::EventCustom *sender)
     CCLOG("onEventDoorMagicClosed");
     std::string msg = UtilityHelper::getLocalStringForUi(EVENT_DOOR_MAGIC_CLOSED);
     PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
-    m_pGameToolBarLayer->sendMessage(msg);
+    m_pGameToolBarLayer->sendMessage(msg,PopupUILayerManager::getInstance()->getTipsColor(TIP_WARNING));
 }
 void GameUILayer::onEventFoundHidderDoor(cocos2d::EventCustom *sender) //发现隐藏门
 {
     CCLOG("onEventFoundHidderDoor");
     updateShowRoleExp(100);
     std::string msg = UtilityHelper::getLocalStringForUi(EVENT_FOUND_HIDDEN_DOOR);
-    PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
-    m_pGameToolBarLayer->sendMessage(msg);
+    PopupUILayerManager::getInstance()->showStatusImport(TIP_POSITIVE, msg);
+    m_pGameToolBarLayer->sendMessage(msg,PopupUILayerManager::getInstance()->getTipsColor(TIP_POSITIVE));
 }
 void GameUILayer::onEventFoundHidderTrapToxic(cocos2d::EventCustom *sender)//发现隐藏中毒机关
 {
     CCLOG("onEventFoundHidderTrapToxic");
      updateShowRoleExp(100);
     std::string msg = UtilityHelper::getLocalStringForUi(EVENT_FOUND_HIDDEN_TOXIC_TRAP);
-    PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
-    m_pGameToolBarLayer->sendMessage(msg);
+    PopupUILayerManager::getInstance()->showStatusImport(TIP_POSITIVE, msg);
+    m_pGameToolBarLayer->sendMessage(msg,PopupUILayerManager::getInstance()->getTipsColor(TIP_POSITIVE));
 }
 void GameUILayer::onEventFoundHidderTrapFire(cocos2d::EventCustom *sender)//发现隐藏火机关
 {
     CCLOG("onEventFoundHidderTrapFire");
      updateShowRoleExp(100);
     std::string msg = UtilityHelper::getLocalStringForUi(EVENT_FOUND_HIDDEN_FIRE_TRAP);
-    PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
-    m_pGameToolBarLayer->sendMessage(msg);
+    PopupUILayerManager::getInstance()->showStatusImport(TIP_POSITIVE, msg);
+    m_pGameToolBarLayer->sendMessage(msg,PopupUILayerManager::getInstance()->getTipsColor(TIP_POSITIVE));
 }
 void GameUILayer::onEventFoundHidderTrapParalyic(cocos2d::EventCustom *sender)//发现隐藏麻痹机关
 {
     CCLOG("onEventFoundHidderTrapParalyic");
      updateShowRoleExp(100);
     std::string msg = UtilityHelper::getLocalStringForUi(EVENT_FOUND_HIDDEN_PARALYTIC_TRAP);
-    PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
-    m_pGameToolBarLayer->sendMessage(msg);
+    PopupUILayerManager::getInstance()->showStatusImport(TIP_POSITIVE, msg);
+    m_pGameToolBarLayer->sendMessage(msg,PopupUILayerManager::getInstance()->getTipsColor(TIP_POSITIVE));
 }
 void GameUILayer::onEventFoundHidderTrapGripping(cocos2d::EventCustom *sender)//发现隐藏夹子机关
 {
      CCLOG("onEventFoundHidderTrapGripping");
      updateShowRoleExp(100);
     std::string msg = UtilityHelper::getLocalStringForUi(EVENT_FOUND_HIDDEN_GRIPPING_TRAP);
-    PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
-    m_pGameToolBarLayer->sendMessage(msg);
+    PopupUILayerManager::getInstance()->showStatusImport(TIP_POSITIVE, msg);
+    m_pGameToolBarLayer->sendMessage(msg,PopupUILayerManager::getInstance()->getTipsColor(TIP_POSITIVE));
 }
 void GameUILayer::onEventFoundHidderTrapSummoning(cocos2d::EventCustom *sender)//发现隐藏召唤机关
 {
      CCLOG("onEventFoundHidderTrapSummoning");
      updateShowRoleExp(100);
     std::string msg = UtilityHelper::getLocalStringForUi(EVENT_FOUND_HIDDEN_SUMMONING_TRAP);
-    PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
-    m_pGameToolBarLayer->sendMessage(msg);
+    PopupUILayerManager::getInstance()->showStatusImport(TIP_POSITIVE, msg);
+    m_pGameToolBarLayer->sendMessage(msg,PopupUILayerManager::getInstance()->getTipsColor(TIP_POSITIVE));
 }
 void GameUILayer::onEventFoundHidderTrapWeak(cocos2d::EventCustom *sender)//发现隐藏虚弱机关
 {
     CCLOG("onEventFoundHidderTrapWeak");
      updateShowRoleExp(100);
     std::string msg = UtilityHelper::getLocalStringForUi(EVENT_FOUND_HIDDEN_WEAK_TRAP);
-    PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
-    m_pGameToolBarLayer->sendMessage(msg);
+    PopupUILayerManager::getInstance()->showStatusImport(TIP_POSITIVE, msg);
+    m_pGameToolBarLayer->sendMessage(msg,PopupUILayerManager::getInstance()->getTipsColor(TIP_POSITIVE));
 }
 void GameUILayer::onEventFoundHidderMsg(cocos2d::EventCustom *sender)
 {
     CCLOG("onEventFoundHidderMsg");
     
     std::string msg = UtilityHelper::getLocalStringForUi(EVENT_FOUND_HIDDEN_MSG);
-    PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
-    m_pGameToolBarLayer->sendMessage(msg);
+    PopupUILayerManager::getInstance()->showStatusImport(TIP_POSITIVE, msg);
+    m_pGameToolBarLayer->sendMessage(msg,PopupUILayerManager::getInstance()->getTipsColor(TIP_POSITIVE));
 }
 void GameUILayer::onEventFoundHidderItem(cocos2d::EventCustom *sender)
 {
     CCLOG("onEventFoundHidderItem");
      updateShowRoleExp(100);
     std::string msg = UtilityHelper::getLocalStringForUi(EVENT_FOUND_HIDDEN_ITEM);
-    PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
-    m_pGameToolBarLayer->sendMessage(msg);
+    PopupUILayerManager::getInstance()->showStatusImport(TIP_POSITIVE, msg);
+    m_pGameToolBarLayer->sendMessage(msg,PopupUILayerManager::getInstance()->getTipsColor(TIP_POSITIVE));
 }
 //上楼提示
 void GameUILayer::onEventGoUpStairs(cocos2d::EventCustom *sender)
@@ -793,7 +783,7 @@ void GameUILayer::onEventGoUpStairs(cocos2d::EventCustom *sender)
      CCLOG("onEventGoUpStairs");
     VoxelExplorer::getInstance()->getCurrentLevel()->showMap(false);
      std::string msg = UtilityHelper::getLocalStringForUi(EVENT_GO_UPSTAIRS);
-     PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
+     PopupUILayerManager::getInstance()->showStatusImport(TIP_POSITIVE, msg);
 }
 //禁止上楼提示
 void GameUILayer::onEventGoUpStairsForbidden(cocos2d::EventCustom *sender)
@@ -845,6 +835,7 @@ void GameUILayer::onEventFallDownStairs(cocos2d::EventCustom *sender)
     CCLOG("onEventFallDownStairs");
     std::string msg = UtilityHelper::getLocalStringForUi(EVENT_FALL_DOWNSTAIRS);
     PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
+     m_pGameToolBarLayer->sendMessage(msg,PopupUILayerManager::getInstance()->getTipsColor(TIP_WARNING));
 
 }
 void GameUILayer::onEventSelectLeftDungeonNode(cocos2d::EventCustom *sender)
@@ -897,7 +888,7 @@ void GameUILayer::onEventTriggerToxic(cocos2d::EventCustom *sender) //中毒机�
 {
     CCLOG("onEventTriggerToxic");
     std::string msg = UtilityHelper::getLocalStringForUi(EVENT_TRIGGER_TOXIC_TRAP);
-    PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
+    PopupUILayerManager::getInstance()->showStatusImport(TIP_NEGATIVE, msg);
     m_pGameToolBarLayer->sendMessage(msg,PopupUILayerManager::getInstance()->getTipsColor(TipTypes::TIP_NEGATIVE));
     
 }
@@ -905,7 +896,7 @@ void GameUILayer::onEventTriggerFire(cocos2d::EventCustom *sender) //火机关
 {
     CCLOG("onEventTriggerFire");
     std::string msg = UtilityHelper::getLocalStringForUi(EVENT_TRIGGER_FIRE_TRAP);
-    PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
+    PopupUILayerManager::getInstance()->showStatusImport(TIP_NEGATIVE, msg);
      m_pGameToolBarLayer->sendMessage(msg,PopupUILayerManager::getInstance()->getTipsColor(TipTypes::TIP_NEGATIVE));
     
 }
@@ -913,7 +904,7 @@ void GameUILayer::onEventTriggerParalyic(cocos2d::EventCustom *sender)//麻痹�
 {
     CCLOG("onEventTriggerParalyic");
     std::string msg = UtilityHelper::getLocalStringForUi(EVENT_TRIGGER_PARALYTIC_TRAP);
-    PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
+    PopupUILayerManager::getInstance()->showStatusImport(TIP_NEGATIVE, msg);
      m_pGameToolBarLayer->sendMessage(msg,PopupUILayerManager::getInstance()->getTipsColor(TipTypes::TIP_NEGATIVE));
     
 }
@@ -921,7 +912,7 @@ void GameUILayer::onEventTriggerGripping(cocos2d::EventCustom *sender)//夹子�
 {
     CCLOG("onEventTriggerGripping");
     std::string msg = UtilityHelper::getLocalStringForUi(EVENT_TRIGGER_GRIPPING_TRAP);
-    PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
+    PopupUILayerManager::getInstance()->showStatusImport(TIP_NEGATIVE, msg);
      m_pGameToolBarLayer->sendMessage(msg,PopupUILayerManager::getInstance()->getTipsColor(TipTypes::TIP_NEGATIVE));
     
 }
@@ -929,7 +920,7 @@ void GameUILayer::onEventTriggerSummoning(cocos2d::EventCustom *sender)//召唤�
 {
     CCLOG("onEventTriggerSummoning");
     std::string msg = UtilityHelper::getLocalStringForUi(EVENT_TRIGGER_SUMMONING_TRAP);
-    PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
+    PopupUILayerManager::getInstance()->showStatusImport(TIP_NEGATIVE, msg);
      m_pGameToolBarLayer->sendMessage(msg,PopupUILayerManager::getInstance()->getTipsColor(TipTypes::TIP_NEGATIVE));
     
 }
@@ -937,7 +928,7 @@ void GameUILayer::onEventTriggerWeak(cocos2d::EventCustom *sender) //虚弱机�
 {
     CCLOG("onEventTriggerWeak");
     std::string msg = UtilityHelper::getLocalStringForUi(EVENT_TRIGGER_WEAK_TRAP);
-    PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
+    PopupUILayerManager::getInstance()->showStatusImport(TIP_NEGATIVE, msg);
      m_pGameToolBarLayer->sendMessage(msg,PopupUILayerManager::getInstance()->getTipsColor(TipTypes::TIP_NEGATIVE));
    
 }
@@ -945,7 +936,7 @@ void GameUILayer::onEventTriggerFrozen(cocos2d::EventCustom *sender) //冰冻，
 {
     CCLOG("onEventTriggerFrozen");
     std::string msg = UtilityHelper::getLocalStringForUi("TRIGGER_MESSAGE_FROZEN_TRAP");
-    PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
+    PopupUILayerManager::getInstance()->showStatusImport(TIP_NEGATIVE, msg);
     m_pGameToolBarLayer->sendMessage(msg,PopupUILayerManager::getInstance()->getTipsColor(TipTypes::TIP_NEGATIVE));
     
 }
@@ -967,14 +958,12 @@ void GameUILayer::onEventRoleUserPotion(cocos2d::EventCustom *sender)
         case PickableItem::PIT_POTION_HEALTH:
             CCLOG("使用治疗药水 恢复HP");
             tipStr = StringUtils::format(UtilityHelper::getLocalStringForUi("USE_POTION_TREAT").c_str(),int(potionsProperty->getValue()));
-            m_pGameToolBarLayer->sendMessage(tipStr,PopupUILayerManager::getInstance()->getTipsColor(TIP_POSITIVE));
             break;
         case PickableItem::PIT_POTION_MINORMANA:
         case PickableItem::PIT_POTION_LESSERMANA:
         case PickableItem::PIT_POTION_MANA:
             CCLOG("使用魔法药水 恢复MP");
              tipStr =  StringUtils::format(UtilityHelper::getLocalStringForUi("USE_POTION_MAGIC").c_str(),int(potionsProperty->getValue()));
-             m_pGameToolBarLayer->sendMessage(tipStr,PopupUILayerManager::getInstance()->getTipsColor(TIP_POSITIVE));
             break;
         case PickableItem::PIT_POTION_MINORRECOVERY:
         case PickableItem::PIT_POTION_LESSERRECOVERY:
@@ -985,27 +974,22 @@ void GameUILayer::onEventRoleUserPotion(cocos2d::EventCustom *sender)
             int mp = PlayerProperty::getInstance()->getMaxMP() * potionsProperty->getValue().GetFloatValue();
             
              tipStr =  StringUtils::format(UtilityHelper::getLocalStringForUi("USE_POTION_RECOVERY").c_str(),hp,mp);
-            m_pGameToolBarLayer->sendMessage(tipStr,PopupUILayerManager::getInstance()->getTipsColor(TIP_POSITIVE));
-                   }
+        }
             break;
         case PickableItem::PIT_POTION_DETOXIFICATION:
             tipStr =  UtilityHelper::getLocalStringForUi("USE_POTION_RELIEVE");
-            m_pGameToolBarLayer->sendMessage(tipStr,PopupUILayerManager::getInstance()->getTipsColor(TIP_POSITIVE));
             CCLOG("解除中毒");
             break;
         case PickableItem::PIT_POTION_SPECIFIC:
             tipStr = UtilityHelper::getLocalStringForUi("USE_POTION_SPECIFIC");
-            m_pGameToolBarLayer->sendMessage(tipStr,PopupUILayerManager::getInstance()->getTipsColor(TIP_POSITIVE));
             CCLOG("解除冰冻、麻痹、火");
             break;
         case PickableItem::PIT_POTION_HEALING:
             tipStr = UtilityHelper::getLocalStringForUi("USE_POTION_WEAK");
-            m_pGameToolBarLayer->sendMessage(tipStr,PopupUILayerManager::getInstance()->getTipsColor(TIP_POSITIVE));
             CCLOG("解除虚弱");
             break;
         case PickableItem::PIT_POTION_UNIVERSAL:
             tipStr = UtilityHelper::getLocalStringForUi("USE_POTION_UNIVERSAL");
-            m_pGameToolBarLayer->sendMessage(tipStr,PopupUILayerManager::getInstance()->getTipsColor(TIP_POSITIVE));
             CCLOG("万能药水,解除中毒，冰冻，麻痹，虚弱，着火");
             break;
         default:
@@ -1014,6 +998,7 @@ void GameUILayer::onEventRoleUserPotion(cocos2d::EventCustom *sender)
     if (!tipStr.empty())
     {
         PopupUILayerManager::getInstance()->showStatusImport(TIP_POSITIVE, tipStr);
+        m_pGameToolBarLayer->sendMessage(tipStr,PopupUILayerManager::getInstance()->getTipsColor(TIP_POSITIVE));
     }
     
     //关闭角色对话框
@@ -1063,6 +1048,7 @@ void GameUILayer::onEventRoleUserScroll(cocos2d::EventCustom *sender)
     if (!tipStr.empty())
     {
         PopupUILayerManager::getInstance()->showStatusImport(TIP_POSITIVE, tipStr);
+        m_pGameToolBarLayer->sendMessage(tipStr,PopupUILayerManager::getInstance()->getTipsColor(TIP_POSITIVE));
     }
 
     //关闭角色对话框
@@ -1102,8 +1088,8 @@ void GameUILayer::onEventRoleLevelUp(cocos2d::EventCustom *sender)
     refreshUIView();
     Vec2 pt = VoxelExplorer::getInstance()->getMainCamera()->projectGL(VoxelExplorer::getInstance()->getPlayer()->getPosition3D());
     pt = Vec2(pt.x, pt.y+TerrainTile::CONTENT_SCALE*5);
-    PopupUILayerManager::getInstance()->showLevelUp(pt);
-//    PopupUILayerManager::getInstance()->showStatusImport(TIP_DEFAULT, UtilityHelper::getLocalStringForUi("GAME_MESSAGE_LEVEL_UP"));
+//    PopupUILayerManager::getInstance()->showLevelUp(pt);
+    PopupUILayerManager::getInstance()->showStatusImport(TIP_DEFAULT, UtilityHelper::getLocalStringForUi("GAME_MESSAGE_LEVEL_UP"));
     m_pGameToolBarLayer->sendMessage(UtilityHelper::getLocalStringForUi("GAME_MESSAGE_LEVEL_UP"),PopupUILayerManager::getInstance()->getTipsColor(TIP_NEUTRAL));
 }
 
@@ -1118,13 +1104,7 @@ void GameUILayer::onEventRoleDead(cocos2d::EventCustom *sender)
 {
     CCLOG("onEventRoleDead");
     roleDead();
-//    this->runAction(Sequence::createWithTwoActions(DelayTime::create(2.0F),CallFunc::create([pausePopup](){
-//        if (pausePopup) {
-//             pausePopup->setDarkLayerVisble(true);
-//            pausePopup->setVisible(true);
-//        }
-//    
-//    } )));
+
 }
 void GameUILayer::onEventRoleFallAndDie(cocos2d::EventCustom *sender)
 {
@@ -1258,8 +1238,7 @@ void GameUILayer::onEventBossDeath(cocos2d::EventCustom *sender)
         if (m_pMonsterHudLayer) {
             m_pMonsterHudLayer->shwoPrompt(pt, TIP_POSITIVE, StringUtils::format(UtilityHelper::getLocalStringForUi("STATUS_TEXT_EXP").c_str(),exp));
         }
-//        
-//        PopupUILayerManager::getInstance()->showStatus(TIP_POSITIVE, StringUtils::format(UtilityHelper::getLocalStringForUi("STATUS_TEXT_EXP").c_str(),exp),pt);
+
         if (m_pBossPropLayer) {
             m_pBossPropLayer->setBoss(monster);
             m_pBossPropLayer->setVisible(false);

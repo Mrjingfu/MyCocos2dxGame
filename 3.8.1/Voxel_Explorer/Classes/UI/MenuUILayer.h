@@ -22,6 +22,8 @@ public:
     CREATE_FUNC(MenuUILayer);
     virtual bool addEvents()override;
     virtual void refreshUIView() override;
+    virtual void onEnter() override;
+    virtual void onExit() override;
 private:
     void onClickStart(Ref* ref);
     void onClikcRestart(Ref* ref);

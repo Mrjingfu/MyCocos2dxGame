@@ -282,8 +282,8 @@ void GameToolbarLayer::onClickPause(cocos2d::Ref *ref)
     CHECK_ACTION(ref);
     clickEffect();
     CCLOG("onClickPause");
-//    PopupUILayerManager::getInstance()->openPopup(ePopupPause);
-    PopupUILayerManager::getInstance()->showAchieveItem("achieve_icon_44.png", "Be thrifty at home and spend liberally while travelling", "Kill zombies, skeletons, ghost, ghosts, ghouls, Gargoyle each kind of one hundred.");
+    PopupUILayerManager::getInstance()->openPopup(ePopupPause);
+//    PopupUILayerManager::getInstance()->showAchieveItem("achieve_icon_44.png", "Be thrifty at home and spend liberally while travelling", "Kill zombies, skeletons, ghost, ghosts, ghouls, Gargoyle each kind of one hundred.");
 //    AchieveItemLayer* layer = AchieveItemLayer::create();
 //    if (layer) {
 //        layer->showAchieveItem("achieve_icon_76.png", "听爷爷讲那过去的故事", "杀死亡灵怪物僵尸,骷髅,怨魂,幽灵,食尸鬼,石像鬼各100个");
