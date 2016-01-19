@@ -336,7 +336,7 @@
 	<key>BAG_TEXT_EXTEND_DESC</key>
 	<string>是否花费%d金币扩展背包?</string>
 	<key>ARCHIVE_RESTART_TIPS_DESC</key>
-	<string>重新开始会清除游戏记录,请确定？</string>
+	<string>重新开始会清除游戏记录,是否重新开始游戏？</string>
 	<key>ACHIEVE_ITEM_LOCK</key>
 	<string>Unlock</string>
 	<key>ITEM_USE_FAIL</key>

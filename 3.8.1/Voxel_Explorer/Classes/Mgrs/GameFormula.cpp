@@ -83,7 +83,7 @@ int GameFormula::getKillNormalMonsterExp(int currentLevel, int monsterLevel)
     else
     {
         if(diff<=-5)
-            monsterExp = 0;
+            monsterExp = cocos2d::random(0, 5);
         else
             monsterExp = monsterExp*pow(0.8f, diff);
     }

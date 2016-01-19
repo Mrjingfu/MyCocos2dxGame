@@ -28,6 +28,7 @@ public:
     bool onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *unused_event) override;
     void onTouchEnded(cocos2d::Touch *touch, cocos2d::Event *unused_event) override;
 protected:
+    bool isLanguageEn();
     void updateAllAchieves();
     void updateCommpleAchieves();
 protected:

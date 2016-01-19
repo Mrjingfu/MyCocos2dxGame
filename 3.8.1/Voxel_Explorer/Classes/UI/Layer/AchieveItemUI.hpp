@@ -12,15 +12,15 @@
 #include "WrapperUILayer.h"
 
 class AchieveItemUI :public WrapperUILayer {
-    
+protected:
     AchieveItemUI();
 public:
     virtual ~AchieveItemUI();
     CREATE_FUNC(AchieveItemUI);
-     bool initUi() override;
-     bool addEvents() override;
-     void setAchieveDatas(const std::string icon, std::string name, std::string targetDesc);
-private:
+    virtual bool initUi() override;
+    bool addEvents() override;
+    virtual void setAchieveDatas(const std::string icon, std::string name, std::string targetDesc);
+protected:
     cocos2d::ui::ImageView* m_pAchieveIcon;
     cocos2d::ui::Text*  m_pAchieveName;
     cocos2d::ui::Text*  m_pAchieveTargetDesc;

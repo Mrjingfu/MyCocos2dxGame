@@ -51,15 +51,15 @@ std::string UtilityHelper::getLocalStringForPlist(const std::string &key, const 
     
     return ret.asString();
 }
-void UtilityHelper::getLineForText(cocos2d::ui::Text*  tempText,std::string& str)
+void UtilityHelper::getLineForText(cocos2d::ui::Text*  tempText,std::string& str,float parentWidth)
 {
     LanguageType lt= Application::getInstance()->getCurrentLanguage();
     if (lt == LanguageType::CHINESE) {
-        getLineChineseForText(tempText, str);
+        getLineChineseForText(tempText, str,parentWidth);
     }else
-        getLineEnglistForText(tempText, str);
+        getLineEnglistForText(tempText, str,parentWidth);
 }
-void UtilityHelper::getLineChineseForText(cocos2d::ui::Text*  tempText,std::string& str)
+void UtilityHelper::getLineChineseForText(cocos2d::ui::Text*  tempText,std::string& str,float parentWidth)
 {
     std::string retultStr;
     if (!tempText ||str.empty())
@@ -76,7 +76,10 @@ void UtilityHelper::getLineChineseForText(cocos2d::ui::Text*  tempText,std::stri
     }
     
     std::vector<int> LinePtS;
-    float parentWidth = tempText->getParent()->getContentSize().width-15;
+    if (std::abs(-1.0 -parentWidth) <=0.00001) {
+         parentWidth = tempText->getParent()->getContentSize().width;
+    }
+    parentWidth = parentWidth -15;
     float textWidthSum = 0.0f;
     str.clear();
     auto iterPt=CharVec.begin();
@@ -100,7 +103,7 @@ void UtilityHelper::getLineChineseForText(cocos2d::ui::Text*  tempText,std::stri
    
  
 }
-void UtilityHelper::getLineEnglistForText(cocos2d::ui::Text*  tempText,std::string& str)
+void UtilityHelper::getLineEnglistForText(cocos2d::ui::Text*  tempText,std::string& str,float parentWidth)
 {
     std::string retultStr;
     if (!tempText ||str.empty())
@@ -121,7 +124,7 @@ void UtilityHelper::getLineEnglistForText(cocos2d::ui::Text*  tempText,std::stri
     for (int i=0; i<CharVec.size(); i++)
     {
             if (CharVec[i]=="?"||CharVec[i]=="."||
-                CharVec[i]==","||CharVec[i]==";"||
+                CharVec[i]==","||CharVec[i]==";"||CharVec[i]=="，"||
                 CharVec[i]==" "||CharVec[i]=="\"")
             {
                 std::string charStr;
@@ -147,30 +150,30 @@ void UtilityHelper::getLineEnglistForText(cocos2d::ui::Text*  tempText,std::stri
     
     CCASSERT(tempText->getParent(), "tempText is not parent" );
     
-    float parentWidth = tempText->getParent()->getContentSize().width-10;
+    if (std::abs(-1.0 -parentWidth) <=0.00001) {
+        parentWidth = tempText->getParent()->getContentSize().width;
+    }
+    parentWidth = parentWidth -10;
     
     float textWidthSum = 0.0f;
-    for (int i =0; i<tempVec.size(); i++) {
-        
-        tempText->setString(tempVec[i]);
+    str.clear();
+    auto iterPt=tempVec.begin();
+    for (auto iter=tempVec.begin(); iter!=tempVec.end(); ++iter)
+    {
+        tempText->setString(*iter);
         cocos2d::Size textSize = tempText->getContentSize()* tempText->getScale();
         textWidthSum+=textSize.width;
-        if (textWidthSum >= parentWidth){
-            if (i==0) {
-                tempVec[i].append("\n");
-            }else
-            {
-                tempVec[i-1].append("\n");
-                --i;
+        if (textWidthSum >= parentWidth)
+        {
+            for ( ; iterPt!=iter; ++iterPt) {
+                str.append(*iterPt);
             }
+            str.append("\n");
             textWidthSum = 0.0f;
-            
         }
     }
-    str.clear();
-    for (int i =0; i<tempVec.size(); i++)
-    {
-        str.append(tempVec[i]);
+    for (; iterPt!=tempVec.end(); ++iterPt) {
+        str.append(*iterPt);
     }
     
 }

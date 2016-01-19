@@ -21,7 +21,7 @@ DeadPopupUI::DeadPopupUI()
 {
     m_pBtnDead  = nullptr;
     m_nIsPause = false;
-    m_cActionType = eCenterScale;
+
     m_pAdaIcon = nullptr;
     m_pAdaDesc = nullptr;
     m_pContinueNum = nullptr;

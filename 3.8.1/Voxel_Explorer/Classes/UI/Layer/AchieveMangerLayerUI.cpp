@@ -86,9 +86,11 @@ void AchieveMangerLayerUI::setLayerContentSize(const cocos2d::Size &contentSize)
     }
     
 }
-void AchieveMangerLayerUI::addItemAchieve(eAchievementDetailType achieveId,cocos2d::Vec2 pt,std::string itemIcon,std::string name,std::string targetDesc,bool isUnlockeAchieve,bool isCommple)
+void AchieveMangerLayerUI::addItemAchieve(cocos2d::ui::ImageView* achieveItemUi,eAchievementDetailType achieveId,std::string itemIcon,std::string name,std::string targetDesc,bool isUnlockeAchieve,bool isCommple)
 {
     m_Achieves.push_back(achieveId);
+    cocos2d::Vec2 pt = achieveItemUi->getPosition();
+    cocos2d::Size achieveItemSize = achieveItemUi->getContentSize();
     if (m_pItemImgLayer && m_pAchieveNameLayer && m_pAchieveTargetLayer)
     {
         ui::ImageView* img = static_cast<ui::ImageView*>(m_pItemImgLayer->getChildByTag(achieveId));

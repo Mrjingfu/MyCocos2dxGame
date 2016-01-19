@@ -70,7 +70,7 @@ void AchieveItemUI::setAchieveDatas(const std::string icon,  std::string name,  
         float descWidth = m_pAchieveTargetDesc->getContentSize().height* m_pAchieveTargetDesc->getScale();
         if (descWidth > heigth) {
             m_pRootNode->setContentSize(m_pRootNode->getContentSize() + cocos2d::Size(0,descWidth-heigth +10));
-            m_pAchieveIcon->setAnchorPoint(cocos2d::Vec2(m_pRootNode->getContentSize().width*0.33,m_pRootNode->getContentSize().height));
+            m_pAchieveIcon->setPosition(cocos2d::Vec2(m_pRootNode->getContentSize().width*0.33,m_pRootNode->getContentSize().height));
             m_pAchieveName->setPosition(cocos2d::Vec2(m_pRootNode->getContentSize().width*0.35,m_pRootNode->getContentSize().height*0.66));
             m_pAchieveTargetDesc->setPosition(cocos2d::Vec2(m_pRootNode->getContentSize().width*0.35,m_pRootNode->getContentSize().height*0.5));
         }

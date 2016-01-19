@@ -267,6 +267,7 @@
         <Project Name="skillLayer.csd" Type="Layer" />
         <Project Name="deadLayer.csd" Type="Scene" />
         <Project Name="pausenewPopupLayer.csd" Type="Layer" />
+        <Project Name="achieveEnItemLayer.csd" Type="Layer" />
       </RootFolder>
     </Group>
   </SolutionFolder>

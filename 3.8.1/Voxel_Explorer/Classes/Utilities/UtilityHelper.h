@@ -18,7 +18,7 @@ public:
     static std::string getLocalString(const std::string& key);
     static std::string getLocalStringForUi(const std::string& key);
     static std::string getLocalStringForPlist(const std::string& key,const std::string cn_plist,const std::string en_plist);
-    static void getLineForText(cocos2d::ui::Text*  tempText,std::string& str);
+    static void getLineForText(cocos2d::ui::Text*  tempText,std::string& str,float parentWidth = -1.0f);
     static cocos2d::Size getSingleStrFontSize(cocos2d::ui::Text*  tempText,std::string str);//单个字符Size大小
     static std::vector<std::string> getStringCount(std::string str ); //字符串字节格式
     static int getLineStr(std::string& str,int length);//对字符串换行符 返回换行符个数
@@ -42,8 +42,8 @@ public:
     
     static float InvSqrt (float x);
 private:
-    static void getLineChineseForText(cocos2d::ui::Text*  tempText,std::string& str);
-    static void getLineEnglistForText(cocos2d::ui::Text*  tempText,std::string& str);
+    static void getLineChineseForText(cocos2d::ui::Text*  tempText,std::string& str,float parentWidth);
+    static void getLineEnglistForText(cocos2d::ui::Text*  tempText,std::string& str,float parentWidth);
 };
 
 #endif /* defined(__TinyFlare__UtilityHelper__) */

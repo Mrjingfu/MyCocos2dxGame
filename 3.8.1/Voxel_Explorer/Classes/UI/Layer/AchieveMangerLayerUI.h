@@ -13,13 +13,14 @@
 #include "AchieveConst.h"
 
 class AchieveMangerLayerUI:public cocos2d::ui::Layout {
-    
+
+protected:
     AchieveMangerLayerUI();
 public:
     virtual ~AchieveMangerLayerUI();
     static AchieveMangerLayerUI* create(cocos2d::Size size);
     bool init(cocos2d::Size size);
-    void addItemAchieve(eAchievementDetailType achieveId,cocos2d::Vec2 pt,std::string itemIcon,std::string name,std::string targetDesc,bool isUnlockeAchieve = false,bool isCommple = false);
+    virtual void addItemAchieve(cocos2d::ui::ImageView* achieveItemUi,eAchievementDetailType achieveId,std::string itemIcon,std::string name,std::string targetDesc,bool isUnlockeAchieve = false,bool isCommple = false);
   
     void removeItems();
 

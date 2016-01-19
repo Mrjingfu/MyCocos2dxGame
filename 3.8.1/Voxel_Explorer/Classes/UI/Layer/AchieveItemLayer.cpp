@@ -9,6 +9,7 @@
 #include "AchieveItemLayer.hpp"
 #include "UtilityHelper.h"
 #include "AchieveItemUI.hpp"
+#include "AchieveEnItemUI.hpp"
 USING_NS_CC;
 AchieveItemLayer::AchieveItemLayer()
 {
@@ -122,7 +123,11 @@ void AchieveItemLayer::moveAction(AchieveItemUI* itemUi,cocos2d::Vec2 pt)
 void AchieveItemLayer::showAchieveItem(const std::string icon, const std::string name, const std::string targetDesc)
 {
     CCLOG("shwoGlobalPrompt");
-    AchieveItemUI* itemUi = AchieveItemUI::create();
+    AchieveItemUI* itemUi = nullptr;
+    if (Application::getInstance()->getCurrentLanguage()!= cocos2d::LanguageType::CHINESE)
+        itemUi = AchieveEnItemUI::create();
+    else
+        itemUi = AchieveItemUI::create();
     itemUi->setAchieveDatas(icon, name, targetDesc);
     m_vAchieves.pushBack(itemUi);
     refreshUIView();
