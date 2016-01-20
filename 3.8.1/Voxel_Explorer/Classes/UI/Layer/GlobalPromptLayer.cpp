@@ -33,18 +33,24 @@ void GlobalPromptLayer::refreshUIView()
     CCLOG("prompt:%ld",m_vPrompts.size());
     cocos2d::Vec2 moveToPos = cocos2d::Vec2::ZERO;
     float labelHeight=0.0f;
-    for (int i=0; i<m_vPrompts.size(); i++) {
+    int tag = 0;
+    int i = 0;
+    for (auto iter=m_vPrompts.begin() ; iter!=m_vPrompts.end(); ++iter) {
         
-         ui::Text* m_pLabel = m_vPrompts.at(i);
+        ui::Text* m_pLabel =*iter;
         if (i==0) {
-             labelHeight = m_pLabel->getContentSize().height*m_pLabel->getScale();
+            labelHeight = m_pLabel->getContentSize().height*m_pLabel->getScale();
+            tag = i;
         }
         if (m_pLabel && m_pLabel->getParent()) {
             m_pLabel->stopAllActions();
             m_pLabel->setOpacity(255);
+            tag = m_pLabel->getTag();
             labelHeight = m_pLabel->getContentSize().height*m_pLabel->getScale();
-            int tag = std::min(m_pLabel->getTag(),i);
-            moveToPos = Vec2(getContentSize().width*0.5,getContentSize().height*0.75-tag*labelHeight);
+            moveToPos = Vec2(getContentSize().width*0.5,getContentSize().height*0.75-i*labelHeight);
+            if (i!=0) {
+                m_pLabel->setPosition(cocos2d::Vec2(getContentSize().width*0.5,getContentSize().height*0.75-tag*labelHeight));
+            }
         }
          CCLOG("i:%d,labelHeight:%f",i,labelHeight);
         if (m_pLabel && !m_pLabel->getParent() )
@@ -53,9 +59,9 @@ void GlobalPromptLayer::refreshUIView()
             m_pLabel->setTag(i);
             m_pLabel->setVisible(true);
             m_pLabel->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
-            m_pLabel->setPosition(cocos2d::Vec2(getContentSize().width*0.5,getContentSize().height*0.65-i*labelHeight));
-            
+            m_pLabel->setPosition(cocos2d::Vec2(getContentSize().width*0.5,getContentSize().height*0.65-tag*labelHeight));
             moveToPos = Vec2(getContentSize().width*0.5,getContentSize().height*0.75-i*labelHeight);
+
          }
         if (m_pLabel) {
             cocos2d::MoveTo*  moveTo = cocos2d::MoveTo::create(0.2,moveToPos);
@@ -64,16 +70,21 @@ void GlobalPromptLayer::refreshUIView()
             CallFunc* callfunN = CallFunc::create(CC_CALLBACK_0(GlobalPromptLayer::removePrompt, this,m_pLabel));
             m_pLabel->runAction(cocos2d::Sequence::create(moveTo,delay,fadeOut,callfunN,nullptr));
         }
+        ++i;
     }
     if (m_vPrompts.size()>2)
     {
-        for (int i=0; i<=m_vPrompts.size()-1; i++) {
-            ui::Text* m_pLabel = m_vPrompts.at(i);
-            if (m_pLabel) {
-                m_pLabel->removeFromParentAndCleanup(true);
-                m_vPrompts.eraseObject(m_pLabel);
+        for (auto iter=m_vPrompts.begin(); iter!=m_vPrompts.end() -1; ) {
+            if (*iter) {
+                ui::Text* m_pLabel = *iter;
+                if (m_pLabel) {
+                    m_pLabel->removeFromParentAndCleanup(true);
+                    iter = m_vPrompts.erase(iter);
+                }
             }
+            
         }
+
         refreshUIView();
     }
     

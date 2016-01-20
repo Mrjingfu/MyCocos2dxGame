@@ -32,8 +32,9 @@
       <Value ctype="TabsInfo">
         <OpenedDocuments>
           <FilePathData Path="achieveEnItemLayer.csd" />
+          <FilePathData Path="skillLayer.csd" />
         </OpenedDocuments>
-        <ActiveDocument Path="achieveEnItemLayer.csd" />
+        <ActiveDocument Path="skillLayer.csd" />
       </Value>
     </Item>
   </Properties>

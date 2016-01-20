@@ -77,14 +77,14 @@ bool SkillLayer::addEvents()
     m_pBloodProgress = ProgressTimer::create(cocos2d::Sprite::createWithSpriteFrameName("ui_skill_prog.png"));
     m_pBloodProgress->setType(cocos2d::ProgressTimer::Type::RADIAL);
     m_pBloodProgress->setReverseDirection(true);
-    m_pBloodProgress->setPosition(m_pSkill->getContentSize()*0.5);
+    m_pBloodProgress->setPosition(m_pBloodPotion->getContentSize()*0.5);
     m_pBloodPotion->addChild(m_pBloodProgress);
     m_pBloodProgress->setPercentage(0);
     
     m_pMagicProgress = ProgressTimer::create(cocos2d::Sprite::createWithSpriteFrameName("ui_skill_prog.png"));
     m_pMagicProgress->setType(cocos2d::ProgressTimer::Type::RADIAL);
     m_pMagicProgress->setReverseDirection(true);
-    m_pMagicProgress->setPosition(m_pSkill->getContentSize()*0.5);
+    m_pMagicProgress->setPosition(m_pMagicPotion->getContentSize()*0.5);
     m_pMagicPotion->addChild(m_pMagicProgress);
     m_pMagicProgress->setPercentage(0);
     
@@ -229,42 +229,45 @@ void SkillLayer::onTouchBlood(Ref* ref,Widget::TouchEventType type)
 {
        switch (type) {
         case Widget::TouchEventType::BEGAN:
-               clickEffect();
+              
             if (m_pBloodPotion) {
                 m_pBloodPotion->setScale(0.3);
             }
+            if (m_nBloodPotionId==-1)
+                clickEffect();
+               
             break;
         case Widget::TouchEventType::ENDED:
                this->stopAllActions();
-               this->runAction(Sequence::create(CallFunc::create([this](){
-               
-                   m_pBloodPotion->runAction(EaseBackInOut::create(ScaleTo::create(0.2f, 0.35f)));
-               
-               }),DelayTime::create(0.3f), CallFunc::create([this](){
+               m_pBloodPotion->runAction(Sequence::create(EaseBackInOut::create(ScaleTo::create(0.1f, 0.35f)), CallFunc::create([this](){
                    if (m_pBloodPotion) {
                        m_pBloodPotion->stopAllActions();
-                      
-                           if (m_nBloodPotionId!=-1)
+                       
+                       if (m_nBloodPotionId!=-1)
+                       {
+                           if (m_pBloodProgress->getPercentage()==0)
                            {
-                               if (m_pBloodProgress->getPercentage()==0)
-                               {
-                                   PlayerProperty::getInstance()->usePotion(m_nBloodPotionId);
-                                   m_pBloodProgress->setPercentage(100);
-                                   this->bloodProgressAction();
-                               }else
-                               {
-                                   PopupUILayerManager::getInstance()->showStatusImport(TIP_NEGATIVE, UtilityHelper::getLocalStringForUi("SKILL_TIP_POTION_COOLING"));
-                               }
-                               
-                               
+                               CCLOG("USE Blood");
+                               PlayerProperty::getInstance()->usePotion(m_nBloodPotionId);
+                               m_pBloodProgress->setPercentage(100);
+                               this->bloodProgressAction();
                            }else
                            {
-                               PopupUILayerManager::getInstance()->showStatusImport(TIP_NEGATIVE, UtilityHelper::getLocalStringForUi("SKILL_TIP_NOT_BLOOD_POTION"));
+                               CCLOG("SKILL_TIP_POTION_COOLING");
+                               PopupUILayerManager::getInstance()->showStatusImport(TIP_NEGATIVE, UtilityHelper::getLocalStringForUi("SKILL_TIP_POTION_COOLING"));
                            }
+                           
+                           
+                       }else
+                       {
+                           CCLOG("SKILL_TIP_NOT_BLOOD_POTION");
+                           PopupUILayerManager::getInstance()->showStatusImport(TIP_NEGATIVE, UtilityHelper::getLocalStringForUi("SKILL_TIP_NOT_BLOOD_POTION"));
+                       }
                        
                    }
-
+                   
                }),nullptr));
+               
             break;
         case Widget::TouchEventType::MOVED:
         case Widget::TouchEventType::CANCELED:
@@ -282,43 +285,46 @@ void SkillLayer::onTouchMagic(Ref* ref,Widget::TouchEventType type)
 {
     switch (type) {
         case Widget::TouchEventType::BEGAN:
-            clickEffect();
+            
             if (m_pMagicPotion) {
                 m_pMagicPotion->setScale(0.3);
             }
+            if (m_nMagicPotionId==-1)
+                clickEffect();
             break;
         case Widget::TouchEventType::ENDED:
             this->stopAllActions();
-            this->runAction(Sequence::create(CallFunc::create([this](){
-            
-                m_pMagicPotion->runAction(EaseBackInOut::create(ScaleTo::create(0.2f, 0.35f)));
-            }),DelayTime::create(0.3f), CallFunc::create([this](){
-            
+            m_pMagicPotion->runAction((Sequence::create(EaseBackInOut::create(ScaleTo::create(0.1f, 0.35f)),CallFunc::create([this](){
+                
                 if (m_pMagicPotion) {
                     m_pMagicPotion->stopAllActions();
-                   
-                        if (m_nMagicPotionId!=-1)
-                        {
-                            if (m_pMagicProgress->getPercentage()==0) {
-                                PlayerProperty::getInstance()->usePotion(m_nMagicPotionId);
-                                m_pMagicProgress->setPercentage(100);
-                                this->magicProgressAction();
-                            }else
-                            {
-                                PopupUILayerManager::getInstance()->showStatusImport(TIP_NEGATIVE, UtilityHelper::getLocalStringForUi("SKILL_TIP_POTION_COOLING"));
-                            }
-                            
-                            
+                    
+                    if (m_nMagicPotionId!=-1)
+                    {
+                        if (m_pMagicProgress->getPercentage()==0) {
+                            CCLOG("USE Magic");
+                            PlayerProperty::getInstance()->usePotion(m_nMagicPotionId);
+                            m_pMagicProgress->setPercentage(100);
+                            this->magicProgressAction();
                         }else
                         {
-                            PopupUILayerManager::getInstance()->showStatusImport(TIP_NEGATIVE, UtilityHelper::getLocalStringForUi("SKILL_TIP_NOT_MAGIC_POTION"));
+                             CCLOG("SKILL_TIP_POTION_COOLING");
+                            PopupUILayerManager::getInstance()->showStatusImport(TIP_NEGATIVE, UtilityHelper::getLocalStringForUi("SKILL_TIP_POTION_COOLING"));
                         }
                         
+                        
+                    }else
+                    {
+                        CCLOG("SKILL_TIP_NOT_MAGIC_POTION");
+                        PopupUILayerManager::getInstance()->showStatusImport(TIP_NEGATIVE, UtilityHelper::getLocalStringForUi("SKILL_TIP_NOT_MAGIC_POTION"));
+                    }
+                    
                     
                 }
-
-            
-            }),nullptr));
+                
+                
+            }),nullptr)));
+          
              break;
        case Widget::TouchEventType::MOVED:
        case Widget::TouchEventType::CANCELED:
@@ -335,39 +341,38 @@ void SkillLayer::onTouchSkill(Ref* ref,Widget::TouchEventType type)
 {
     switch (type) {
         case Widget::TouchEventType::BEGAN:
-            clickEffect();
+            
             if (m_pSkill) {
                 m_pSkill->setScale(0.45);
             }
+            if(!m_bIsUseSkill)
+                clickEffect();
              break;
         case Widget::TouchEventType::ENDED:
             this->stopAllActions();
-            this->runAction(Sequence::create(CallFunc::create([this](){
-            
-                m_pSkill->runAction(EaseBackInOut::create(ScaleTo::create(0.2f, 0.5f)));
+            m_pSkill->runAction(Sequence::create(EaseBackInOut::create(ScaleTo::create(0.1f, 0.5f)),CallFunc::create([this](){
                 
-            }),DelayTime::create(0.3f), CallFunc::create([this](){
-                
-                if (m_pSkill) {
+                if (m_pSkill)
+                {
                     
-                        if (m_bIsUseSkill )
+                    if (m_bIsUseSkill )
+                    {
+                        if(m_pSkillProgress->getPercentage()==0)
                         {
-                            if(m_pSkillProgress->getPercentage()==0)
-                            {
-                                if(VoxelExplorer::getInstance()->handlePlayerUseSkill())
-                                    refreshSkillView();
-                                
-                            }else
-                            {
-                                PopupUILayerManager::getInstance()->showStatusImport(TIP_NEGATIVE, UtilityHelper::getLocalStringForUi("SKILL_TIP_SKILL_COOLING"));
-                            }
+                            if(VoxelExplorer::getInstance()->handlePlayerUseSkill())
+                                refreshSkillView();
+                            
                         }else
                         {
-                            PopupUILayerManager::getInstance()->showStatusImport(TIP_NEGATIVE, UtilityHelper::getLocalStringForUi("SKILL_TIP_NOT_EQUIP"));
+                            PopupUILayerManager::getInstance()->showStatusImport(TIP_NEGATIVE, UtilityHelper::getLocalStringForUi("SKILL_TIP_SKILL_COOLING"));
                         }
+                    }else
+                    {
+                        PopupUILayerManager::getInstance()->showStatusImport(TIP_NEGATIVE, UtilityHelper::getLocalStringForUi("SKILL_TIP_NOT_EQUIP"));
+                    }
                     
                 }
-
+                
                 
             }),nullptr));
             break;
@@ -402,12 +407,9 @@ void SkillLayer::bloodProgressAction()
         m_pBloodProgress->runAction(Sequence::create(ProgressTo::create(8.0f, 0),CallFunc::create([this](){
             
             if (m_pBloodPotion) {
+                m_pBloodProgress->setPercentage(0);
                 m_pBloodPotion->stopAllActions();
-                m_pBloodPotion->runAction(Sequence::create(EaseBackInOut::create(ScaleTo::create(0.1f, 0.3f)), EaseBackInOut::create(ScaleTo::create(0.1f, 0.35f)),CallFunc::create([this](){
-                    
-                    m_pBloodProgress->setPercentage(0);
-                    
-                }),nullptr));
+                m_pBloodPotion->runAction(Sequence::create(EaseBackInOut::create(ScaleTo::create(0.1f, 0.3f)), EaseBackInOut::create(ScaleTo::create(0.1f, 0.35f)),nullptr));
             }
             
         }),nullptr));
@@ -421,11 +423,9 @@ void SkillLayer::magicProgressAction()
         m_pMagicProgress->runAction(Sequence::create(ProgressTo::create(8.0f, 0),CallFunc::create([this](){
             
             if (m_pMagicPotion) {
+                m_pMagicProgress->setPercentage(0);
                 m_pMagicPotion->stopAllActions();
-                m_pMagicPotion->runAction(Sequence::create(EaseBackInOut::create(ScaleTo::create(0.1f, 0.3f)), EaseBackInOut::create(ScaleTo::create(0.1f, 0.35f)),CallFunc::create([this](){
-                    m_pMagicProgress->setPercentage(0);
-                    
-                }),nullptr));
+                m_pMagicPotion->runAction(Sequence::create(EaseBackInOut::create(ScaleTo::create(0.1f, 0.3f)), EaseBackInOut::create(ScaleTo::create(0.1f, 0.35f)),nullptr));
             }
             
         }),nullptr));
