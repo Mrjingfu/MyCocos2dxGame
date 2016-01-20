@@ -16,6 +16,7 @@
 #include "AchievePopupUI.h"
 #include "GameUILayer.h"
 #include "ArchiveManager.h"
+#include "GameCenterController.h"
 USING_NS_CC;
 PausePopupUI::PausePopupUI()
 {
@@ -194,4 +195,5 @@ void PausePopupUI::onClickAchieve(cocos2d::Ref *ref)
              m_pAchievePopupUI->removeFromParentAndCleanup(false);
         });
     }
+    GameCenterController::getInstance()->openAchievementBoard();
 }

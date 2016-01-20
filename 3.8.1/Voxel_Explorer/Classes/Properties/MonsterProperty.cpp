@@ -80,7 +80,8 @@ void MonsterProperty::adjustByDC()
     if(m_bIsElite)
         m_nValueCopper = m_nValueCopper*5;
     
-    m_nMaxHP = m_nMaxHP + m_nLevel.GetLongValue()*m_nMaxHP.GetLongValue();
+    CCLOG("MAXHP = %d Level = %d", (int)m_nMaxHP.GetLongValue(), (int)m_nLevel.GetLongValue());
+    m_nMaxHP = m_nMaxHP + m_nLevel.GetLongValue()*10;
     m_nCurrentHP = m_nMaxHP;
     
     m_nAddedMinAttack = m_nAddedMinAttack + (dc-1)*10 + (nodeDepth-1)*6;
