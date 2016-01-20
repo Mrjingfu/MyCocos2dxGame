@@ -42,6 +42,7 @@ void GameScene::onEnter()
     scheduleUpdate();
     StatisticsManager::getInstance()->resumeSchedu();
     PopupUILayerManager::getInstance()->setParentLayer(this);
+     PopupUILayerManager::getInstance()->setSceneType(PopupUILayerManager::eSceneType::ST_GAME);
 }
 void GameScene::onExit()
 {

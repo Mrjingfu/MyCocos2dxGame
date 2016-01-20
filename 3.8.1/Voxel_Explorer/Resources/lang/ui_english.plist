@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>SPLASH_RES</key>
-	<string>splash_en.png</string>
+	<string>splash_front_en.png</string>
 	<key>DEAD_RES</key>
 	<string>ui_gameover_en.png</string>
 	<key>PROP_SHOW_HP</key>

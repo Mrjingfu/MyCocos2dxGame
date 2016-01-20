@@ -268,6 +268,9 @@
         <Project Name="deadLayer.csd" Type="Scene" />
         <Project Name="pausenewPopupLayer.csd" Type="Layer" />
         <Project Name="achieveEnItemLayer.csd" Type="Layer" />
+        <Image Name="splash.png" />
+        <Image Name="splash_front_cn.png" />
+        <Image Name="splash_front_en.png" />
       </RootFolder>
     </Group>
   </SolutionFolder>

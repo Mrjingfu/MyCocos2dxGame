@@ -33,8 +33,11 @@
         <OpenedDocuments>
           <FilePathData Path="achieveEnItemLayer.csd" />
           <FilePathData Path="skillLayer.csd" />
+          <FilePathData Path="menuscene.csd" />
+          <FilePathData Path="pausePopupLayer.csd" />
+          <FilePathData Path="pausenewPopupLayer.csd" />
         </OpenedDocuments>
-        <ActiveDocument Path="skillLayer.csd" />
+        <ActiveDocument Path="menuscene.csd" />
       </Value>
     </Item>
   </Properties>

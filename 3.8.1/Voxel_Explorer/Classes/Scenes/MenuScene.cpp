@@ -69,6 +69,7 @@ void MenuScene::onEnter()
     Layer::onEnter();
 
     PopupUILayerManager::getInstance()->setParentLayer(this);
+    PopupUILayerManager::getInstance()->setSceneType(PopupUILayerManager::eSceneType::ST_MENU);
 }
 void MenuScene::onExit()
 {

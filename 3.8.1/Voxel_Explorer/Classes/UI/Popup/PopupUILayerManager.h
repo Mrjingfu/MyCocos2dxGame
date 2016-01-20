@@ -18,6 +18,12 @@ class AchieveItemLayer;
 class PopupUILayerManager:public cocos2d::Ref
 {
 public:
+    enum eSceneType
+    {
+        ST_MENU,
+        ST_GAME
+    };
+    
     ~PopupUILayerManager();
     
     static PopupUILayerManager* getInstance();
@@ -26,7 +32,7 @@ public:
     //显示重要提示
     void showStatusImport(TipTypes tipType ,std::string text);
     void showAchieveItem(const std::string icon,const std::string name,const std::string targetDesc);
-    void showLevelUp(cocos2d::Vec2 pt);
+    void showLevelUp();
     void closeCurrentPopup();
     void onExitScene();
     void setParentLayer(cocos2d::Layer* parent);
@@ -38,6 +44,8 @@ public:
     void resetPopupType(ePopupType type);
     const std::list<ePopupType>& getCurrentPopupTypeList(){ return m_lTypeList; }
     cocos2d::Color3B getTipsColor(TipTypes tipType);
+    eSceneType getSceneType() const {return m_eSceneType;};
+    void setSceneType(eSceneType type){m_eSceneType = type;}
 private:
     PopupUILayerManager();
     
@@ -49,7 +57,7 @@ private:
     AchieveItemLayer*  m_pAchieveItemLayer;
     ePopupType m_cCurrentPopUpType,m_pLastPopUpType;
     std::list<ePopupType> m_lTypeList;
-    
+    eSceneType m_eSceneType;
 };
 
 #endif /* defined(__Tone_Skipper__PopupUILayerManager__) */

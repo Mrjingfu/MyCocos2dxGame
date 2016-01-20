@@ -14,7 +14,17 @@
             <CColor A="255" R="255" G="255" B="255" />
             <PrePosition X="0.5000" Y="0.5000" />
             <PreSize X="1.0000" Y="1.0000" />
-            <FileData Type="Normal" Path="splash_cn.png" Plist="" />
+            <FileData Type="Normal" Path="splash.png" Plist="" />
+          </AbstractNodeData>
+          <AbstractNodeData Name="menu_title" ActionTag="608657994" Tag="41" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="-245.5000" RightMargin="-245.5000" TopMargin="-196.7000" BottomMargin="33.7000" Scale9Width="811" Scale9Height="643" ctype="ImageViewObjectData">
+            <Size X="811.0000" Y="643.0000" />
+            <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+            <Position X="160.0000" Y="355.2000" />
+            <Scale ScaleX="0.5000" ScaleY="0.5000" />
+            <CColor A="255" R="255" G="255" B="255" />
+            <PrePosition X="0.5000" Y="0.7400" />
+            <PreSize X="2.5344" Y="1.3396" />
+            <FileData Type="Normal" Path="splash_front_cn.png" Plist="" />
           </AbstractNodeData>
           <AbstractNodeData Name="menu_eyes" ActionTag="-1410662835" Alpha="0" Tag="10" RotationSkewX="-36.5844" RotationSkewY="-36.5861" IconVisible="False" LeftMargin="135.4745" RightMargin="-40.4745" TopMargin="333.0903" BottomMargin="25.9097" ctype="SpriteObjectData">
             <Size X="225.0000" Y="121.0000" />
@@ -77,40 +87,40 @@
             <FileData Type="Normal" Path="particle2d/eff_page_1101.plist" Plist="" />
             <BlendFunc Src="770" Dst="1" />
           </AbstractNodeData>
-          <AbstractNodeData Name="menu_archive_item_start" ActionTag="-1959635426" Tag="14" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="90.0000" RightMargin="90.0000" TopMargin="251.0000" BottomMargin="179.0000" TouchEnable="True" FontSize="20" ButtonText=" 新的游戏" Scale9Enable="True" LeftEage="5" RightEage="5" TopEage="5" BottomEage="5" Scale9OriginX="5" Scale9OriginY="5" Scale9Width="4" Scale9Height="4" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="ButtonObjectData">
+          <AbstractNodeData Name="menu_archive_item_start" ActionTag="-1959635426" Tag="14" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="90.0000" RightMargin="90.0000" TopMargin="306.2000" BottomMargin="123.8000" TouchEnable="True" FontSize="20" ButtonText=" 新的游戏" Scale9Enable="True" LeftEage="7" RightEage="7" TopEage="7" BottomEage="7" Scale9OriginX="7" Scale9OriginY="7" Scale9Width="22" Scale9Height="22" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="ButtonObjectData">
             <Size X="140.0000" Y="50.0000" />
             <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-            <Position X="160.0000" Y="204.0000" />
+            <Position X="160.0000" Y="148.8000" />
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
             <CColor A="255" R="255" G="255" B="255" />
-            <PrePosition X="0.5000" Y="0.4250" />
+            <PrePosition X="0.5000" Y="0.3100" />
             <PreSize X="0.4375" Y="0.1042" />
             <TextColor A="255" R="255" G="255" B="255" />
-            <DisabledFileData Type="PlistSubImage" Path="ui_frame_2.png" Plist="ui_sprite.plist" />
-            <PressedFileData Type="PlistSubImage" Path="ui_frame_2.png" Plist="ui_sprite.plist" />
-            <NormalFileData Type="PlistSubImage" Path="ui_frame_3.png" Plist="ui_sprite.plist" />
+            <DisabledFileData Type="PlistSubImage" Path="ui_frame_13.png" Plist="ui_sprite.plist" />
+            <PressedFileData Type="PlistSubImage" Path="ui_frame_13.png" Plist="ui_sprite.plist" />
+            <NormalFileData Type="PlistSubImage" Path="ui_frame_12.png" Plist="ui_sprite.plist" />
             <OutlineColor A="255" R="255" G="0" B="0" />
             <ShadowColor A="255" R="110" G="110" B="110" />
           </AbstractNodeData>
-          <AbstractNodeData Name="menu_archive_item_restart" ActionTag="-1663286647" Tag="15" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="90.0000" RightMargin="90.0000" TopMargin="319.0000" BottomMargin="111.0000" TouchEnable="True" FontSize="14" ButtonText="重新开始" Scale9Enable="True" LeftEage="5" RightEage="5" TopEage="5" BottomEage="5" Scale9OriginX="5" Scale9OriginY="5" Scale9Width="4" Scale9Height="4" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="ButtonObjectData">
+          <AbstractNodeData Name="menu_archive_item_restart" ActionTag="-1663286647" Tag="15" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="90.0000" RightMargin="90.0000" TopMargin="373.4000" BottomMargin="56.6000" TouchEnable="True" FontSize="20" ButtonText="重新开始" Scale9Enable="True" LeftEage="7" RightEage="7" TopEage="7" BottomEage="7" Scale9OriginX="7" Scale9OriginY="7" Scale9Width="22" Scale9Height="22" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="ButtonObjectData">
             <Size X="140.0000" Y="50.0000" />
             <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-            <Position X="160.0000" Y="135.9840" />
+            <Position X="160.0000" Y="81.6000" />
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
             <CColor A="255" R="255" G="255" B="255" />
-            <PrePosition X="0.5000" Y="0.2833" />
+            <PrePosition X="0.5000" Y="0.1700" />
             <PreSize X="0.4375" Y="0.1042" />
             <TextColor A="255" R="255" G="255" B="255" />
-            <DisabledFileData Type="PlistSubImage" Path="ui_frame_2.png" Plist="ui_sprite.plist" />
-            <PressedFileData Type="PlistSubImage" Path="ui_frame_2.png" Plist="ui_sprite.plist" />
-            <NormalFileData Type="PlistSubImage" Path="ui_frame_3.png" Plist="ui_sprite.plist" />
+            <DisabledFileData Type="PlistSubImage" Path="ui_frame_13.png" Plist="ui_sprite.plist" />
+            <PressedFileData Type="PlistSubImage" Path="ui_frame_13.png" Plist="ui_sprite.plist" />
+            <NormalFileData Type="PlistSubImage" Path="ui_frame_12.png" Plist="ui_sprite.plist" />
             <OutlineColor A="255" R="255" G="0" B="0" />
             <ShadowColor A="255" R="110" G="110" B="110" />
           </AbstractNodeData>
           <AbstractNodeData Name="menu_music_img" ActionTag="-46315320" Tag="67" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="255.5477" RightMargin="5.4523" TopMargin="11.8738" BottomMargin="421.1262" Scale9Width="59" Scale9Height="47" ctype="ImageViewObjectData">
             <Size X="59.0000" Y="47.0000" />
             <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-            <Position X="285.0477" Y="444.6262" />
+            <Position X="285.0560" Y="444.6240" />
             <Scale ScaleX="0.5000" ScaleY="0.5000" />
             <CColor A="255" R="229" G="229" B="229" />
             <PrePosition X="0.8908" Y="0.9263" />

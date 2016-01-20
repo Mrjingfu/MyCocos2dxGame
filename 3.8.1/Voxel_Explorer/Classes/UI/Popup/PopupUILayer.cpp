@@ -79,7 +79,8 @@ void PopupUILayer::openPopup()
     enableDarkLayer(true);
     inAction();
     //只有打开的窗口是第一个窗口时才暂停
-    if (m_nIsPause && PopupUILayerManager::getInstance()->getCurrentPopupTypeList().size()==0) {
+    if (m_nIsPause && PopupUILayerManager::getInstance()->getCurrentPopupTypeList().size()==0 &&
+        PopupUILayerManager::getInstance()->getSceneType() == PopupUILayerManager::eSceneType::ST_GAME ) {
         schedulerPause();
     }
     
@@ -287,7 +288,8 @@ void PopupUILayer::onTouchMoved(cocos2d::Touch *touch, cocos2d::Event *unused_ev
 }
 void PopupUILayer::onTouchEnded(cocos2d::Touch *touch, cocos2d::Event *unused_event)
 {
-    if (m_pRootNode &&  !m_pRootNode->getBoundingBox().containsPoint(touch->getLocation()) && m_nIsBlankClose) {
+    if (m_pRootNode &&  !m_pRootNode->getBoundingBox().containsPoint(touch->getLocation()) && m_nIsBlankClose
+        && PopupUILayerManager::getInstance()->getSceneType() == PopupUILayerManager::eSceneType::ST_GAME ) {
 //        CCLOG("onTouchEnded");
         closePopup();
     }

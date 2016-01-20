@@ -55,8 +55,8 @@ bool MenuUILayer::addEvents()
     if (!m_pEyes)
         return false;
     
-    cocos2d::ui::ImageView* splash = dynamic_cast<cocos2d::ui::ImageView*>(UtilityHelper::seekNodeByName(m_pRootNode,"menu_bg"));
-    if (!splash)
+    cocos2d::ui::ImageView* menutitle = dynamic_cast<cocos2d::ui::ImageView*>(UtilityHelper::seekNodeByName(m_pRootNode,"menu_title"));
+    if (!menutitle)
         return false;
     
     m_pArchiveStart = dynamic_cast<cocos2d::ui::Button*>(UtilityHelper::seekNodeByName(m_pRootNode,"menu_archive_item_start"));
@@ -90,9 +90,10 @@ bool MenuUILayer::addEvents()
     
     
     std::string splashTxName = UtilityHelper::getLocalStringForUi("SPLASH_RES");
-    splash->loadTexture(splashTxName);
+    menutitle->loadTexture(splashTxName);
     
     m_pAchievePopupUI = AchievePopupUI::create();
+    m_pAchievePopupUI->openPopup();
     m_pAchievePopupUI->setVisible(false);
     m_pRootNode->addChild(m_pAchievePopupUI,eZOrderPopupUILayer);
     m_pAchievePopupUI->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
@@ -113,13 +114,11 @@ void MenuUILayer::refreshUIView()
     if (ArchiveManager::getInstance()->isExistArchive())
     {
         m_pArchiveStart->setTitleText(UtilityHelper::getLocalStringForUi("BTN_TEXT_CONTINUE_GAME"));
-        m_pArchiveStart->setPosition(cocos2d::Vec2(m_pRootNode->getContentSize().width*0.5,m_pRootNode->getContentSize().height*0.38));
         
-        m_pArchiveRestart->setPosition(cocos2d::Vec2(m_pRootNode->getContentSize().width*0.5,m_pRootNode->getContentSize().height*0.24));
         m_pArchiveRestart->setTitleText(UtilityHelper::getLocalStringForUi("BTN_TEXT_RESTART_GAME"));
     }else
     {
-        m_pArchiveStart->setPosition(cocos2d::Vec2(m_pRootNode->getContentSize().width*0.5,m_pRootNode->getContentSize().height*0.30));
+        m_pArchiveStart->setPosition(cocos2d::Vec2(m_pRootNode->getContentSize().width*0.5,m_pRootNode->getContentSize().height*0.23));
         m_pArchiveStart->setTitleText(UtilityHelper::getLocalStringForUi("BTN_TEXT_NEW_GAME"));
         m_pArchiveRestart->setVisible(false);
     }

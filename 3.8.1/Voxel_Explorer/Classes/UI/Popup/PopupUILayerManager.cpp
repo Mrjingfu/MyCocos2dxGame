@@ -299,7 +299,7 @@ void PopupUILayerManager::showAchieveItem(const std::string icon,const std::stri
     }
     m_pAchieveItemLayer->showAchieveItem(icon, name, targetDesc);
 }
-void PopupUILayerManager::showLevelUp(cocos2d::Vec2 pt)
+void PopupUILayerManager::showLevelUp()
 {
     SuperAnim::SuperAnimNodeListener* superListerner =  SuperAnim::SuperAnimNodeListener::create([](void* self,int, std::string){
       
@@ -307,11 +307,11 @@ void PopupUILayerManager::showLevelUp(cocos2d::Vec2 pt)
         CCLOG("end");
     });
     SuperAnim::SuperAnimNode* animNode1 = SuperAnim::SuperAnimNode::create("LevelUp.sam", 101, superListerner);
-    m_pParentLayer->addChild(animNode1);
+    m_pParentLayer->addChild(animNode1,eZOrderPopupLayer);
     animNode1->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
     animNode1->setTag(101);
     animNode1->setScale(0.4);
-    animNode1->setPosition(pt);
+    animNode1->setPosition(cocos2d::Vec2(WND_CENTER_X,SCREEN_HEIGHT*0.75));
     animNode1->setSpeedFactor(0.5);
     animNode1->PlaySection("delete");
 }
