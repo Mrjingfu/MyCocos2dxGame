@@ -207,7 +207,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "978"
             endingLineNumber = "978"
-            landmarkName = "Player::onEnterJumpLocal()"
+            landmarkName = "Player::useSkillToAttack(PlayerSkill skill)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -223,7 +223,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "535"
             endingLineNumber = "535"
-            landmarkName = "Player::rotateToLeft()"
+            landmarkName = "Player::setState(PlayerState state)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2253,7 +2253,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "996"
             endingLineNumber = "996"
-            landmarkName = "Player::onEnterJumpMove()"
+            landmarkName = "Player::useSkillToAttack(PlayerSkill skill)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -3773,7 +3773,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1156"
             endingLineNumber = "1156"
-            landmarkName = "Player::updatePlayerBuffer(float delta)"
+            landmarkName = "Player::onLand(bool isAttack)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -6587,7 +6587,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1083"
             endingLineNumber = "1083"
-            landmarkName = "Player::onEnterDeath()"
+            landmarkName = "Player::onEnterAttack()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -6603,7 +6603,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1082"
             endingLineNumber = "1082"
-            landmarkName = "Player::onEnterDeath()"
+            landmarkName = "Player::onEnterJumpMove()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -8921,7 +8921,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1103"
             endingLineNumber = "1103"
-            landmarkName = "Player::onLand(bool isAttack)"
+            landmarkName = "Player::onEnterAttack()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -8985,7 +8985,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1101"
             endingLineNumber = "1101"
-            landmarkName = "Player::onExitDeath()"
+            landmarkName = "Player::onEnterAttack()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -9001,7 +9001,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1102"
             endingLineNumber = "1102"
-            landmarkName = "Player::onExitDeath()"
+            landmarkName = "Player::onEnterAttack()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -9017,7 +9017,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1100"
             endingLineNumber = "1100"
-            landmarkName = "Player::onExitDeath()"
+            landmarkName = "Player::onEnterAttack()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -9049,7 +9049,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1098"
             endingLineNumber = "1098"
-            landmarkName = "Player::onExitAttack()"
+            landmarkName = "Player::onEnterAttack()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -9833,7 +9833,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1130"
             endingLineNumber = "1130"
-            landmarkName = "Player::onLand(bool isAttack)"
+            landmarkName = "Player::onEnterDeath()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -11129,7 +11129,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1274"
             endingLineNumber = "1274"
-            landmarkName = "Player::addBlockRateUpEffectNode()"
+            landmarkName = "Player::updatePlayerBuffer(float delta)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -12304,7 +12304,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ios/RootViewController.mm"
@@ -12352,7 +12352,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ios/RootViewController.mm"
