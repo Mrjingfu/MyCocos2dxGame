@@ -43,8 +43,8 @@
           <AbstractNodeData Name="shop_btn_close" ActionTag="-1273827924" Tag="378" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="233.6449" RightMargin="-8.6449" TopMargin="-36.8832" BottomMargin="351.8832" TouchEnable="True" FontSize="14" Scale9Enable="True" LeftEage="8" RightEage="8" TopEage="8" BottomEage="8" Scale9OriginX="8" Scale9OriginY="8" Scale9Width="9" Scale9Height="9" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="ButtonObjectData">
             <Size X="25.0000" Y="25.0000" />
             <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-            <Position X="246.1449" Y="364.3832" />
-            <Scale ScaleX="1.0000" ScaleY="1.0000" />
+            <Position X="246.1500" Y="364.3780" />
+            <Scale ScaleX="1.5000" ScaleY="1.5000" />
             <CColor A="255" R="255" G="255" B="255" />
             <PrePosition X="0.9846" Y="1.0717" />
             <PreSize X="0.1000" Y="0.1923" />

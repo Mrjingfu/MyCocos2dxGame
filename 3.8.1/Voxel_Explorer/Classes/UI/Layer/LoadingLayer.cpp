@@ -43,7 +43,7 @@ bool LoadingLayer::addEvents()
     tips->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
     tips->setString(UtilityHelper::getLocalStringForUi("LOAGING_TIPS"));
     m_pTipDesc->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
-    
+    m_pTipDesc->setTextHorizontalAlignment(cocos2d::TextHAlignment::CENTER);
     
     refreshUIView();
     

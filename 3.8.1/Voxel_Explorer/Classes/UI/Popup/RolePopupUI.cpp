@@ -115,6 +115,15 @@ void RolePopupUI::updateItems(bool _isOpenIdentify)
 
 }
 
+void RolePopupUI::onTouchEnded(cocos2d::Touch *touch, cocos2d::Event *unused_event)
+{
+    cocos2d::Vec2 pt = touch->getLocation();
+    if (m_pBagLayer->isIdentIfy() && !m_pBagLayer->getBoundingBox().containsPoint(pt))
+    {
+        resetBagLayer();
+    }
+}
+
 void RolePopupUI::onClickChnageBag(Ref* ref)
 {
     CHECK_ACTION(ref);
@@ -124,22 +133,10 @@ void RolePopupUI::onClickChnageBag(Ref* ref)
 
     
 }
-void RolePopupUI::onClickColse(Ref* ref)
+void RolePopupUI::resetBagLayer()
 {
-    CHECK_ACTION(ref);
-    clickEffect();
-    if (m_pBagLayer) {
-        if (m_pBagLayer->isIdentIfy()) {
-            m_pBagLayer->setIdentIfy(false);
-            m_pBagLayer->setSortBtnEnable(false, true, true);
-            refreshUIView();
-        }else
-        {
-            std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("UI_BTN_PACKAGE_CLOSE");
-            CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
-
-            closePopup();
-        }
-    }
-    
+    m_pBagLayer->setIdentIfy(false);
+    m_pBagLayer->setSortBtnEnable(false, true, true);
+    refreshUIView();
 }
+

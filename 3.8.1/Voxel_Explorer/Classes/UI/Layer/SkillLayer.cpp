@@ -28,7 +28,9 @@ SkillLayer::SkillLayer()
     m_fCoolTime = 0.0f;
     m_bIsRloadEquip = false;
     m_pMagicPotionMask = nullptr;
-    m_pBloodPotionMask = nullptr;;
+    m_pBloodPotionMask = nullptr;
+    m_bIsUseBloodPotion = false;
+    m_bIsUseMagicPotion = false;
 }
 
 SkillLayer::~SkillLayer()
@@ -143,17 +145,23 @@ void SkillLayer::refreshUIView()
                 }
             }
         }
+        if(!m_bIsUseMagicPotion)
+        {
+            if (m_nMagicPotionId ==-1){
+                m_pMagicProgress->setPercentage(100);
+            }else
+                m_pMagicProgress->setPercentage(0);
+        }
+
+        if(!m_bIsUseBloodPotion)
+        {
+            if (m_nBloodPotionId ==-1){
+                m_pBloodProgress->setPercentage(100);
+            }else
+                m_pBloodProgress->setPercentage(0);
+  
+        }
         
-        if (m_nMagicPotionId ==-1){
-            m_pMagicProgress->setPercentage(100);
-        }else
-            m_pMagicProgress->setPercentage(0);
-        
-        
-        if (m_nBloodPotionId ==-1){
-            m_pBloodProgress->setPercentage(100);
-        }else
-            m_pBloodProgress->setPercentage(0);
     }
     
 }
@@ -216,14 +224,28 @@ void SkillLayer::refreshSkillView(bool isRloadEquip)
 }
 void SkillLayer::onEventRoleUserPotion(cocos2d::EventCustom *sender)
 {
-//    PotionsProperty* potionsProperty = static_cast<PotionsProperty*>(sender->getUserData());
-//    PickableItem::PickableItemType itemType = potionsProperty->getPickableItemType();
-//    if (itemType>=PickableItem::PIT_POTION_MINORHEALTH && itemType<=PickableItem::PIT_POTION_HEALTH) {
-//        m_pBloodProgress->setPercentage(100);
-//    }
-//    if (itemType>=PickableItem::PIT_POTION_MINORMANA && itemType<=PickableItem::PIT_POTION_MANA) {
-//        m_pMagicProgress->setPercentage(100);
-//    }
+
+    PotionsProperty* potionsProperty = static_cast<PotionsProperty*>(sender->getUserData());
+    PickableItem::PickableItemType itemType = potionsProperty->getPickableItemType();
+    if (itemType>=PickableItem::PIT_POTION_MINORHEALTH && itemType<=PickableItem::PIT_POTION_HEALTH) {
+        if (m_nBloodPotionId!=-1) {
+            m_pBloodProgress->stopAllActions();
+            m_pBloodProgress->setPercentage(100);
+            bloodProgressAction();
+            m_bIsUseBloodPotion = true;
+        }
+
+    }
+    if (itemType>=PickableItem::PIT_POTION_MINORMANA && itemType<=PickableItem::PIT_POTION_MANA) {
+        if (m_nMagicPotionId!=-1)
+        {
+            m_pMagicProgress->stopAllActions();
+            m_pMagicProgress->setPercentage(100);
+            magicProgressAction();
+            m_bIsUseMagicPotion = true;
+        }
+       
+    }
 }
 void SkillLayer::onTouchBlood(Ref* ref,Widget::TouchEventType type)
 {
@@ -249,8 +271,6 @@ void SkillLayer::onTouchBlood(Ref* ref,Widget::TouchEventType type)
                            {
                                CCLOG("USE Blood");
                                PlayerProperty::getInstance()->usePotion(m_nBloodPotionId);
-                               m_pBloodProgress->setPercentage(100);
-                               this->bloodProgressAction();
                            }else
                            {
                                CCLOG("SKILL_TIP_POTION_COOLING");
@@ -304,8 +324,6 @@ void SkillLayer::onTouchMagic(Ref* ref,Widget::TouchEventType type)
                         if (m_pMagicProgress->getPercentage()==0) {
                             CCLOG("USE Magic");
                             PlayerProperty::getInstance()->usePotion(m_nMagicPotionId);
-                            m_pMagicProgress->setPercentage(100);
-                            this->magicProgressAction();
                         }else
                         {
                              CCLOG("SKILL_TIP_POTION_COOLING");
@@ -407,7 +425,8 @@ void SkillLayer::bloodProgressAction()
         m_pBloodProgress->runAction(Sequence::create(ProgressTo::create(8.0f, 0),CallFunc::create([this](){
             
             if (m_pBloodPotion) {
-                m_pBloodProgress->setPercentage(0);
+                m_bIsUseBloodPotion = false;
+                this->refreshUIView();
                 m_pBloodPotion->stopAllActions();
                 m_pBloodPotion->runAction(Sequence::create(EaseBackInOut::create(ScaleTo::create(0.1f, 0.3f)), EaseBackInOut::create(ScaleTo::create(0.1f, 0.35f)),nullptr));
             }
@@ -423,7 +442,8 @@ void SkillLayer::magicProgressAction()
         m_pMagicProgress->runAction(Sequence::create(ProgressTo::create(8.0f, 0),CallFunc::create([this](){
             
             if (m_pMagicPotion) {
-                m_pMagicProgress->setPercentage(0);
+                m_bIsUseMagicPotion = false;
+                this->refreshUIView();
                 m_pMagicPotion->stopAllActions();
                 m_pMagicPotion->runAction(Sequence::create(EaseBackInOut::create(ScaleTo::create(0.1f, 0.3f)), EaseBackInOut::create(ScaleTo::create(0.1f, 0.35f)),nullptr));
             }

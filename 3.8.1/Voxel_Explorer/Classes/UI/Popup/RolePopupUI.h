@@ -26,6 +26,8 @@ public:
     void refreshUIView() override;
     void updateItems(bool _isOpenIdentify = false);//更新背包角色信息
     
+    void onTouchEnded(cocos2d::Touch *touch, cocos2d::Event *unused_event) override;
+    
 private:
     
     void onClickColse(Ref* ref);
@@ -36,7 +38,8 @@ private:
 
     void onEventBagExtend(cocos2d::EventCustom *sender);  //背包扩展成功
     void onEventBagExtendHasReachMaxtimes(cocos2d::EventCustom *sender);//背包扩展达到上限
-
+    
+    void resetBagLayer();
 
 private:
    BagLayer*      m_pBagLayer;

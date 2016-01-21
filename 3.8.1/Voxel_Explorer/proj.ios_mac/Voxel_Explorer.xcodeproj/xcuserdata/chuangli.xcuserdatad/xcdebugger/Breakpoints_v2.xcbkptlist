@@ -9,13 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../Classes/UI/Layer/GlobalPromptLayer.cpp"
-            timestampString = "474971698.011452"
+            filePath = "../Classes/UI/Popup/RolePopupUI.cpp"
+            timestampString = "475040075.12083"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "40"
-            endingLineNumber = "40"
-            landmarkName = "GlobalPromptLayer::refreshUIView()"
+            startingLineNumber = "123"
+            endingLineNumber = "123"
+            landmarkName = "RolePopupUI::onTouchEnded(cocos2d::Touch *touch, cocos2d::Event *unused_event)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -25,29 +25,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../Classes/UI/Layer/GlobalPromptLayer.cpp"
-            timestampString = "474972093.274582"
+            filePath = "../Classes/UI/Popup/RolePopupUI.cpp"
+            timestampString = "475040543.915943"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "58"
-            endingLineNumber = "58"
-            landmarkName = "GlobalPromptLayer::refreshUIView()"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../Classes/UI/Popup/PopupUILayer.cpp"
-            timestampString = "474977337.816999"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "300"
-            endingLineNumber = "300"
-            landmarkName = "PopupUILayer::setDarkLayerVisble(bool visble)"
+            startingLineNumber = "138"
+            endingLineNumber = "138"
+            landmarkName = "RolePopupUI::resetBagLayer()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
