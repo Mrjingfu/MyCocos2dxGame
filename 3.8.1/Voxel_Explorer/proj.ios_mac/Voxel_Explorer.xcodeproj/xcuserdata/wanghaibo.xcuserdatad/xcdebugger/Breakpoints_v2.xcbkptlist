@@ -1992,11 +1992,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Properties/PlayerProperty.cpp"
-            timestampString = "474637265.558103"
+            timestampString = "475040045.913693"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "935"
-            endingLineNumber = "935"
+            startingLineNumber = "942"
+            endingLineNumber = "942"
             landmarkName = "PlayerProperty::addItemToBag(PickableItem::PickableItemType type, CChaosNumber level, bool sound)"
             landmarkType = "5">
          </BreakpointContent>
@@ -3640,7 +3640,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Properties/PlayerProperty.cpp"
-            timestampString = "474609739.034582"
+            timestampString = "475040045.913693"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "62"
@@ -4781,7 +4781,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "251"
             endingLineNumber = "251"
-            landmarkName = "GameUILayer::onTouchEnded(cocos2d::Touch *touch, cocos2d::Event *event)"
+            landmarkName = "GameUILayer::onEventRoleMoneyNotEnough(cocos2d::EventCustom *sender)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -4797,7 +4797,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "255"
             endingLineNumber = "255"
-            landmarkName = "GameUILayer::onTouchEnded(cocos2d::Touch *touch, cocos2d::Event *event)"
+            landmarkName = "GameUILayer::onEventRoleMoneyNotEnough(cocos2d::EventCustom *sender)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -4813,7 +4813,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "258"
             endingLineNumber = "258"
-            landmarkName = "GameUILayer::onTouchEnded(cocos2d::Touch *touch, cocos2d::Event *event)"
+            landmarkName = "GameUILayer::onEventRoleNoMana(cocos2d::EventCustom *sender)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -4829,7 +4829,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "261"
             endingLineNumber = "261"
-            landmarkName = "GameUILayer::onTouchEnded(cocos2d::Touch *touch, cocos2d::Event *event)"
+            landmarkName = "GameUILayer::onEventRoleNoMana(cocos2d::EventCustom *sender)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -4845,7 +4845,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "265"
             endingLineNumber = "265"
-            landmarkName = "GameUILayer::onEventRoleMoneyNotEnough(cocos2d::EventCustom *sender)"
+            landmarkName = "GameUILayer::onEventRoleBagNoSpace(cocos2d::EventCustom *sender)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -5384,7 +5384,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Properties/PlayerProperty.cpp"
-            timestampString = "474637265.558103"
+            timestampString = "475040045.913693"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "251"
@@ -9497,7 +9497,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "478"
             endingLineNumber = "478"
-            landmarkName = "GameUILayer::onEventNpcLittleWitchAnsWer(cocos2d::EventCustom *sender)"
+            landmarkName = "GameUILayer::onEventNpcOldManAnsWer(cocos2d::EventCustom *sender)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -9513,7 +9513,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "479"
             endingLineNumber = "479"
-            landmarkName = "GameUILayer::onEventNpcLittleWitchAnsWer(cocos2d::EventCustom *sender)"
+            landmarkName = "GameUILayer::onEventNpcOldManAnsWer(cocos2d::EventCustom *sender)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -9748,7 +9748,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Properties/PlayerProperty.cpp"
-            timestampString = "474609739.034582"
+            timestampString = "475040045.913693"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "110"
@@ -9764,7 +9764,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Properties/PlayerProperty.cpp"
-            timestampString = "474609739.034582"
+            timestampString = "475040045.913693"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "86"
@@ -9812,7 +9812,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Properties/PlayerProperty.cpp"
-            timestampString = "474609739.034582"
+            timestampString = "475040045.913693"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "122"
@@ -10020,11 +10020,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Properties/PlayerProperty.cpp"
-            timestampString = "474637265.558103"
+            timestampString = "475040045.913693"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1059"
-            endingLineNumber = "1059"
+            startingLineNumber = "1066"
+            endingLineNumber = "1066"
             landmarkName = "PlayerProperty::extendBagSpace()"
             landmarkType = "5">
          </BreakpointContent>
@@ -10036,11 +10036,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Properties/PlayerProperty.cpp"
-            timestampString = "474637265.558103"
+            timestampString = "475040045.913693"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1034"
-            endingLineNumber = "1034"
+            startingLineNumber = "1041"
+            endingLineNumber = "1041"
             landmarkName = "PlayerProperty::removeStackableItemFromBag(PickableItem::PickableItemType type, CChaosNumber count)"
             landmarkType = "5">
          </BreakpointContent>
@@ -10228,7 +10228,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Properties/PlayerProperty.cpp"
-            timestampString = "474609739.034582"
+            timestampString = "475040045.913693"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "170"
@@ -10633,7 +10633,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "171"
             endingLineNumber = "171"
-            landmarkName = "GameUILayer::onTouchBegan(Touch *touch, Event *event)"
+            landmarkName = "GameUILayer::onTouchEnded(cocos2d::Touch *touch, cocos2d::Event *event)"
             landmarkType = "5">
             <Locations>
                <Location
@@ -10740,11 +10740,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Properties/PlayerProperty.cpp"
-            timestampString = "474637265.558103"
+            timestampString = "475040045.913693"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "936"
-            endingLineNumber = "936"
+            startingLineNumber = "943"
+            endingLineNumber = "943"
             landmarkName = "PlayerProperty::addItemToBag(PickableItem::PickableItemType type, CChaosNumber level, bool sound)"
             landmarkType = "5">
          </BreakpointContent>
@@ -10804,11 +10804,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Properties/PlayerProperty.cpp"
-            timestampString = "474637265.558103"
+            timestampString = "475040045.913693"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1258"
-            endingLineNumber = "1258"
+            startingLineNumber = "1265"
+            endingLineNumber = "1265"
             landmarkName = "PlayerProperty::levelUp()"
             landmarkType = "5">
          </BreakpointContent>
@@ -10841,7 +10841,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "302"
             endingLineNumber = "302"
-            landmarkName = "GameUILayer::onEventRoleNoSilverKey(cocos2d::EventCustom *sender)"
+            landmarkName = "GameUILayer::onEventRoleNoRoomKey(cocos2d::EventCustom *sender)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -10948,11 +10948,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Properties/PlayerProperty.cpp"
-            timestampString = "474637265.558103"
+            timestampString = "475040045.913693"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "809"
-            endingLineNumber = "809"
+            startingLineNumber = "816"
+            endingLineNumber = "816"
             landmarkName = "PlayerProperty::buyItemToBag(PickableItemProperty* buyItemProperty, CChaosNumber count, bool toIndentify, bool sound)"
             landmarkType = "5">
          </BreakpointContent>
@@ -11017,7 +11017,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "309"
             endingLineNumber = "309"
-            landmarkName = "GameUILayer::onEventRoleNoGoldKey(cocos2d::EventCustom *sender)"
+            landmarkName = "GameUILayer::onEventRoleNoBossKey(cocos2d::EventCustom *sender)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -11032,9 +11032,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "416"
-            endingLineNumber = "416"
-            landmarkName = "GameUILayer::onEventNpcChildAnsWer(cocos2d::EventCustom *sender)"
-            landmarkType = "5">
+            endingLineNumber = "416">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -12148,7 +12146,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Properties/PlayerProperty.cpp"
-            timestampString = "474637265.558103"
+            timestampString = "475040045.913693"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "196"
@@ -12164,7 +12162,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Properties/PlayerProperty.cpp"
-            timestampString = "474637265.558103"
+            timestampString = "475040045.913693"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "182"
@@ -12292,11 +12290,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Properties/PlayerProperty.cpp"
-            timestampString = "474638634.315077"
+            timestampString = "475040045.913693"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1223"
-            endingLineNumber = "1223"
+            startingLineNumber = "1230"
+            endingLineNumber = "1230"
             landmarkName = "PlayerProperty::save(cocos2d::ValueMap&amp; data)"
             landmarkType = "5">
          </BreakpointContent>
@@ -12410,6 +12408,38 @@
             startingLineNumber = "83"
             endingLineNumber = "83"
             landmarkName = "MonsterProperty::adjustByDC()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/Properties/PlayerProperty.cpp"
+            timestampString = "475040045.913693"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1023"
+            endingLineNumber = "1023"
+            landmarkName = "PlayerProperty::removeStackableItemFromBag(PickableItem::PickableItemType type, CChaosNumber count)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/Properties/PlayerProperty.cpp"
+            timestampString = "475040045.913693"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "610"
+            endingLineNumber = "610"
+            landmarkName = "PlayerProperty::indentifyItem(CChaosNumber id)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

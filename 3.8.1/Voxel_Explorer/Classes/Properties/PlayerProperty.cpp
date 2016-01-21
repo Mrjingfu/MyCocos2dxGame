@@ -51,7 +51,7 @@ bool PlayerProperty::initNewPlayer()   ///新角色初始化
 {
     bool ret = false;
     int itemIDCounter = m_snItemInstanceIDCounter;
-    WeaponProperty* weaponProperty = new (std::nothrow) WeaponProperty(m_snItemInstanceIDCounter++,PickableItem::PIT_SWORD_SWORD, 1, true);
+    WeaponProperty* weaponProperty = new (std::nothrow) WeaponProperty(m_snItemInstanceIDCounter++,PickableItem::PIT_DAGGER_PRO_BLUELIGHTDAGGER, 25, true);
     if(!weaponProperty)
         return ret;
     if(weaponProperty->isIdentified())
@@ -606,7 +606,7 @@ bool PlayerProperty::equipOrnaments(CChaosNumber id, bool sound)
 bool PlayerProperty::indentifyItem(CChaosNumber id)
 {
     bool hasIndentifyScroll = false;
-    std::vector<PickableItemProperty*>::const_iterator iter;
+    std::vector<PickableItemProperty*>::iterator iter;
     for (iter = m_Bag.begin(); iter != m_Bag.end(); iter++) {
         if((*iter) != nullptr)
         {
@@ -615,6 +615,13 @@ bool PlayerProperty::indentifyItem(CChaosNumber id)
             {
                 scrollProperty->decreaseCount();
                 hasIndentifyScroll = true;
+                if(scrollProperty->getCount() == 0)
+                {
+                    CC_SAFE_DELETE(*iter);
+                    m_Bag.erase(iter);
+                    Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_PROPERTY_DIRTY);
+                    m_bDirty = true;
+                }
                 break;
             }
         }

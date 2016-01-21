@@ -919,7 +919,7 @@ void ItemPopupUI::onClickIdentified(cocos2d::Ref *ref)
         
     }else{
         CCLOG("鉴定失败");
-        PopupUILayerManager::getInstance()->showStatusImport(TIP_NEGATIVE, UtilityHelper::getLocalStringForUi("BAG_INDENTIFY_FAIL"));
+        PopupUILayerManager::getInstance()->showStatusImport(TIP_NEGATIVE, UtilityHelper::getLocalStringForUi("BAG_NO_INDENTIFY_SCROLL"));
     }
     
 }
