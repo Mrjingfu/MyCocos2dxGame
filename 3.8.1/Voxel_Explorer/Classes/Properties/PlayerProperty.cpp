@@ -622,6 +622,7 @@ bool PlayerProperty::indentifyItem(CChaosNumber id)
                     Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_PROPERTY_DIRTY);
                     m_bDirty = true;
                 }
+                Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_BAG_ITEM_UPDATE);
                 break;
             }
         }
