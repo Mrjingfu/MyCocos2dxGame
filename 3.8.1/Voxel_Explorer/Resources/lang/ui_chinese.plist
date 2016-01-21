@@ -329,6 +329,8 @@
 复活</string>
 	<key>BAG_INDENTIFY_FAIL</key>
 	<string>鉴定失败！</string>
+	<key>BAG_NO_INDENTIFY_SCROLL</key>
+	<string>鉴定失败！没有可用的鉴定卷轴。</string>
 	<key>BAG_TEXT_DESTROY</key>
 	<string>拆除</string>
 	<key>BAG_TEXT_EXTEND</key>
