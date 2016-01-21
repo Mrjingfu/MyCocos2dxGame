@@ -404,7 +404,16 @@ void BagLayer::selectItemEvent(cocos2d::Ref *pSender, TGridView::EventType type)
     if (type==TGridView::EventType::ON_SELECTED_ITEM_END) {
         TGridView* gridView = static_cast<TGridView*>(pSender);
         int currentItemId = m_BagMsgLayer->getItemId((int)gridView->getCurSelectedIndex());
-        bagItemOpe(currentItemId);
+        if (currentItemId!=-1) {
+            bagItemOpe(currentItemId);
+        }else
+        {
+            if (m_bIsIndetify) {
+                m_bIsIndetify = false;
+                refreshUIView();
+            }
+        }
+            
     }
 }
 

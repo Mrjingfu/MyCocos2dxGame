@@ -49,6 +49,8 @@ protected:
     int m_nMagicPotionId;
     int m_nBloodPotionId;
     bool m_bIsRloadEquip;
+    bool m_bIsUseBloodPotion;
+    bool m_bIsUseMagicPotion;
 };
 
 #endif /* SkillLayer_hpp */

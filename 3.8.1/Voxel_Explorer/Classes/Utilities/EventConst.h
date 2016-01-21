@@ -54,6 +54,7 @@ static const std::string EVENT_PLAYER_NO_SILVER_KEY = "PLAYER_NO_SILVER_KEY";
 static const std::string EVENT_PLAYER_NO_GOLD_KEY = "PLAYER_NO_GOLD_KEY";
 static const std::string EVENT_PLAYER_NO_ROOM_KEY = "PLAYER_NO_ROOM_KEY";
 static const std::string EVENT_PLAYER_NO_BOSS_KEY = "PLAYER_NO_BOSS_KEY";
+static const std::string EVENT_PLAYER_BAG_ITEM_UPDATE = "PLAYER_BAG_ITEM_UPDATE";
 
 static const std::string EVENT_PLAYER_USE_GOLD_CHEST_KEY = "PLAYER_USE_GOLD_CHEST_KEY";
 static const std::string EVENT_PLAYER_USE_SILVER_CHEST_KEY = "PLAYER_USE_SILVER_CHEST_KEY";

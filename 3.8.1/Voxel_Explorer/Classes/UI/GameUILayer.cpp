@@ -1069,6 +1069,13 @@ void GameUILayer::onEventRoleUserScroll(cocos2d::EventCustom *sender)
         rolePopup->closePopup();
     }
 }
+void GameUILayer::onEventRoleBagItemUpate(cocos2d::EventCustom *sender)
+{
+    CCLOG("onEventRoleBagItemUpate");
+    if (m_pSkillLayer) {
+        m_pSkillLayer->refreshUIView();
+    }
+}
 void GameUILayer::refreshUIView()
 {
     if (m_pGameInfoLayer) {
@@ -1093,9 +1100,7 @@ void GameUILayer::refreshUIView()
     if (m_pBossPropLayer) {
         m_pBossPropLayer->refreshUIView();
     }
-    if (m_pSkillLayer) {
-        m_pSkillLayer->refreshUIView();
-    }
+
 }
 void GameUILayer::onEventRoleLevelUp(cocos2d::EventCustom *sender)
 {
@@ -1403,7 +1408,7 @@ void GameUILayer::onEnter()
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_PLAYER_EQUIPED_ORNAMENTS, CC_CALLBACK_1(GameUILayer::onEvenetRoleEquipedOrnaments,this));
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_PLAYER_EQUIPED_SECOND_WEAPON, CC_CALLBACK_1(GameUILayer::onEvenetRoleEquipedSecondWeapon,this));
 
-    
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_PLAYER_BAG_ITEM_UPDATE, CC_CALLBACK_1(GameUILayer::onEventRoleBagItemUpate,this));
     
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_PLAYER_MONEY_NOT_ENOUGH, CC_CALLBACK_1(GameUILayer::onEventRoleMoneyNotEnough,this));
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_PLAYER_NO_MANA, CC_CALLBACK_1(GameUILayer::onEventRoleNoMana,this));
@@ -1513,6 +1518,7 @@ void GameUILayer::onExit()
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_PLAYER_EQUIPED_ORNAMENTS);
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_PLAYER_EQUIPED_SECOND_WEAPON);
     
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_PLAYER_BAG_ITEM_UPDATE);
     
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_PLAYER_MONEY_NOT_ENOUGH);
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_PLAYER_NO_MANA);

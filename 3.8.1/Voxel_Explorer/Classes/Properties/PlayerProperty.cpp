@@ -706,6 +706,8 @@ bool PlayerProperty::usePotion(CChaosNumber id)
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_USE_POTION, potionsProperty);
         if(potionsProperty->getCount() <= 0)
             removeItemFromBag(id);
+        else
+            Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_BAG_ITEM_UPDATE);
         return true;
     }
     return false;
@@ -732,6 +734,8 @@ bool PlayerProperty::useScroll(CChaosNumber id)
             scrollProperty->decreaseCount();
             if(scrollProperty->getCount() <= 0)
                 removeItemFromBag(id);
+            else
+                Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_BAG_ITEM_UPDATE);
             std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("USE_SCROLL");
             SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
         }
@@ -756,6 +760,8 @@ bool PlayerProperty::useKey(PickableItem::PickableItemType type)
         keyProperty->decreaseCount();
         if(keyProperty->getCount() <=0 )
             removeItemFromBag((int)(keyProperty->getInstanceID()));
+        else
+            Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_BAG_ITEM_UPDATE);
         return true;
     }
     return false;
@@ -811,6 +817,7 @@ bool PlayerProperty::buyItemToBag(PickableItemProperty* buyItemProperty, CChaosN
                         IStackable* itemProperty = dynamic_cast<IStackable*>(item);
                         if (itemProperty)
                             itemProperty->addCount(count);
+                        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_BAG_ITEM_UPDATE);
                         m_bDirty = true;
                         if(sound)
                             playPickupItemSound(buyItemProperty);
@@ -825,7 +832,6 @@ bool PlayerProperty::buyItemToBag(PickableItemProperty* buyItemProperty, CChaosN
         
         if(m_Bag.size() >= m_nBagMaxSpace.GetLongValue())
         {
-            StatisticsManager::getInstance()->addBagFullNum();
             Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_BAG_NO_SPACE);
 #if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM ==CC_PLATFORM_ANDROID )
             SdkBoxManager::getInstance()->logEvent("Player", "BuyItem", "BagNoSpace", 0);
@@ -855,6 +861,8 @@ bool PlayerProperty::buyItemToBag(PickableItemProperty* buyItemProperty, CChaosN
                 {
                     itemProperty->setCount(count);
                     m_Bag.push_back(itemProperty);
+                    Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_BAG_ITEM_UPDATE);
+                    StatisticsManager::getInstance()->addBagFullNum();
                     if(sound)
                         playPickupItemSound(itemProperty);
                 }
@@ -869,7 +877,7 @@ bool PlayerProperty::buyItemToBag(PickableItemProperty* buyItemProperty, CChaosN
     {
         if(m_Bag.size() >= m_nBagMaxSpace.GetLongValue())
         {
-            StatisticsManager::getInstance()->addBagFullNum();
+            
             Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_BAG_NO_SPACE);
 #if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM ==CC_PLATFORM_ANDROID )
             SdkBoxManager::getInstance()->logEvent("Player", "BuyItem", "BagNoSpace", 0);
@@ -889,6 +897,8 @@ bool PlayerProperty::buyItemToBag(PickableItemProperty* buyItemProperty, CChaosN
             }
             buyItemProperty->retain();
             m_Bag.push_back(buyItemProperty);
+            StatisticsManager::getInstance()->addBagFullNum();
+            Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_BAG_ITEM_UPDATE);
             m_bDirty = true;
             if(sound)
                 playPickupItemSound(buyItemProperty);
@@ -943,7 +953,7 @@ bool PlayerProperty::addItemToBag(PickableItem::PickableItemType type, CChaosNum
                 if (itemProperty)
                 {
                     itemProperty->increaseCount();
-                    m_bDirty = true;
+                    Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_BAG_ITEM_UPDATE);
                     if (sound)
                         StatisticsManager::getInstance()->addPickItemNum();
                 }
@@ -958,7 +968,6 @@ bool PlayerProperty::addItemToBag(PickableItem::PickableItemType type, CChaosNum
     }
     if(m_Bag.size() >= m_nBagMaxSpace.GetLongValue())
     {
-        StatisticsManager::getInstance()->addBagFullNum();
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_BAG_NO_SPACE);
         return false;
     }
@@ -1004,7 +1013,8 @@ bool PlayerProperty::addItemToBag(PickableItem::PickableItemType type, CChaosNum
         if(itemProperty->isIdentified())
             itemProperty->adjustByLevel();
         m_Bag.push_back(itemProperty);
-        m_bDirty = true;
+        StatisticsManager::getInstance()->addBagFullNum();
+        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_BAG_ITEM_UPDATE);
         if(sound)
             playPickupItemSound(itemProperty);
         return true;
@@ -1024,6 +1034,7 @@ bool PlayerProperty::removeStackableItemFromBag(PickableItem::PickableItemType t
                 CC_SAFE_DELETE(*iter);
                 m_Bag.erase(iter);
                 Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_PROPERTY_DIRTY);
+                Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_BAG_ITEM_UPDATE);
                 m_bDirty = true;
                 return true;
             }
@@ -1031,6 +1042,7 @@ bool PlayerProperty::removeStackableItemFromBag(PickableItem::PickableItemType t
             {
                 (*iter)->setCount((*iter)->getCount().GetLongValue() - count.GetLongValue());
                  Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_PROPERTY_DIRTY);
+                 Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_BAG_ITEM_UPDATE);
                  m_bDirty = true;
                 return true;
             }
@@ -1049,6 +1061,7 @@ bool PlayerProperty::removeItemFromBag(CChaosNumber id)
             CC_SAFE_DELETE(*iter);
             m_Bag.erase(iter);
             Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_PROPERTY_DIRTY);
+            Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_BAG_ITEM_UPDATE);
             m_bDirty = true;
             return true;
         }

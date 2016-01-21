@@ -216,7 +216,9 @@ void StatisticsManager::addIdentifyLegendNum()
 
 void StatisticsManager::addBagFullNum()
 {
-    ++m_nBagFullNum;
+    if (PlayerProperty::getInstance()->getPlayerBag().size() >= PlayerProperty::getInstance()->getBagMaxSpace().GetLongValue()) {
+         m_nBagFullNum = 1;
+    }
      AchievementManager::getInstance()->handleAchievement(eAchievementDetailType::ADT_BAG_FULL);
 }
 

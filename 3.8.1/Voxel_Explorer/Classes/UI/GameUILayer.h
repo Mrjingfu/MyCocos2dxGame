@@ -72,6 +72,7 @@ private:
     void onEventRoleUserPotion(cocos2d::EventCustom *sender);//使用药水物品
     void onEventRoleUserScroll(cocos2d::EventCustom *sender);//使用卷轴物品
 
+    void onEventRoleBagItemUpate(cocos2d::EventCustom *sender);//背包道具变化
     
     void onEventMonsterUpdateProp(cocos2d::EventCustom *sender); //更新怪物信息
     void onEventMonsterHud(cocos2d::EventCustom *sender);        //更新怪物hud伤害

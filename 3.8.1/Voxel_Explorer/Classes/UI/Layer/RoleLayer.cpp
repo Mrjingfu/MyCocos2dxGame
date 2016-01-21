@@ -304,7 +304,7 @@ void RoleLayer::onClickShop(cocos2d::Ref *ref)
 {
     CHECK_ACTION(ref);
     clickEffect();
-   
+    ///for debug
 }
 void RoleLayer::onClickClose(cocos2d::Ref *ref)
 {
