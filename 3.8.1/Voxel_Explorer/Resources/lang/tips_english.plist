@@ -2,70 +2,70 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <array>
-	<string>开发者网站：www.tinyflare.com  QQ群: 485788362</string>
-	<string>游戏中将出现许多经典地下城游戏的彩蛋，认真探索～</string>
-	<string>主角装备副手武器可以解锁对应的游戏技能。</string>
-	<string>游戏场景中有很多陷阱，请注意用搜索功能发现，用交互功能拆除。</string>
-	<string>BOSS房间的陷阱是不能拆除的。</string>
-	<string>除了击败怪物获取经验外，还可以通过发现隐藏元素和拆卸陷阱来获取经验。</string>
-	<string>通过提高取魔率可以增加魔法物品出现几率。</string>
-	<string>中毒状态和虚弱状态是不会自动解除的。</string>
-	<string>命运卷轴会触发多种效果，有好也有坏。</string>
-	<string>你可以和“怪蜀黍”赌下运气，也许你可以得到非常好的物品。</string>
-	<string>错过的信息可以通过信息栏回顾。</string>
-	<string>经常使用交互功能你可能会发现一些隐藏元素。</string>
-	<string>你可以通过观看广告来原地复活，这也是支持开发者最有效的途径。</string>
-	<string>如果你觉得这个游戏还不错，请不要忘记给我们评价。</string>
-	<string>注意地图打开时游戏并不会暂停。</string>
-	<string>物品品质分为白色 &lt; 绿色 &lt; 蓝色 &lt; 紫色。</string>
-	<string>后续版本正在开发中，也许会加入新的场景和道具合成功能。</string>
-	<string>请注意攻击力的最大伤害与最小伤害要均衡发展才能保证伤害输出。</string>
-	<string>游戏中有百种成就等你来挑战。</string>
-	<string>不要小看游戏中的精英怪(绿色名字)。</string>
-	<string>请随时保证自己身上有宝箱钥匙，以免错过发现好装备的机会。</string>
-	<string>游戏地图是完全随机的，并且有很多隐藏房间，请留意。</string>
-	<string>遭遇到围攻时可以选择使用隐身药水或者随机传送卷轴帮你脱困。</string>
-	<string>当你发现某层地牢的怪物过于强大时，你可以返回上一次进行升级。</string>
-	<string>每个新的存档也许会从不同的地下城开始。</string>
-	<string>点击主角头像和背包都可以打开信息栏。</string>
-	<string>底层按钮上方的橘红色彩条代表你的经验进度。</string>
-	<string>挑战比自己高的怪物可以获得更高经验。</string>
-	<string>打败比自己等级低5级以上的怪物将不会获得经验。</string>
-	<string>如果你在玩游戏的过程中有任何地方让你发笑的话，请尽情大笑，这是我们最初设计游戏的愿望。</string>
-	<string>也许游戏中的许多梗你并不懂，但你可以百度。</string>
-	<string>如果你喜欢这个游戏，请加入官方QQ群485788362，你的想法很有可能被加入游戏的后续版本。</string>
-	<string>提高角色光照范围属性可以让你看到更多细节。</string>
-	<string>提高角色搜索范围属性可以让你一次探索更大范围。</string>
-	<string>提高格挡率属性可以更多的触发格挡效果，格挡可以伤害减半。</string>
-	<string>提高爆击率属性可以更多的触发爆击效果，爆击可以伤害加倍。</string>
-	<string>提高闪避率属性可以更多的触发闪避效果，闪避可以完全忽略伤害。</string>
-	<string>副手武器装备盾牌可以提高格挡率与防御力。</string>
-	<string>这个游戏没有职业区分，技能与发展方向完全依赖副手武器。</string>
-	<string>打开背包和信息栏都可以让游戏暂停，不必担心被怪物攻击。</string>
-	<string>游戏主界面的药水快捷按钮可以更有效的让你在战斗中不倒下，请保证背包里有充足的药水。</string>
-	<string>同类型的药水和卷轴物品是可以叠加的，数量没有上限。</string>
-	<string>没有鉴别的物品是不能使用的，你可以用鉴定卷轴进行辨识。</string>
-	<string>100个铜币可以兑换1个银币，100个银币可以兑换1个金币。</string>
-	<string>不需要的物品可以选择丢弃，丢弃物品将不会再找回。</string>
-	<string>背包空间不够时，可以使用扩展背包功能，背包最多能扩展4次。</string>
-	<string>物品种类太多时可以使用背包下方的标签进行分类过滤。</string>
-	<string>不能出售的物品将不会在出售时的界面出现。</string>
-	<string>NPC&quot;小骑士&quot;出售游戏中的各种武器。</string>
-	<string>NPC&quot;炼金婆婆&quot;出售游戏中的各种药水，卷轴和钥匙。</string>
-	<string>NPC&quot;售货员&quot;出售游戏中的各种防具与饰品。</string>
-	<string>游戏中的瓶子可以被打碎，里面可能有金币，道具或怪物。</string>
-	<string>游戏中的宝箱分为铜质宝箱，银质宝箱和金质宝箱，品质越好出现的物品越好。</string>
-	<string>当你发现无路可走时，请留意周围墙壁，也许有一面墙是隐藏的门。</string>
-	<string>当你发现一个宝箱没有被上锁时，你要注意了，那很可能是个陷阱。</string>
-	<string>BOSS战相当具有挑战性，请有实力后再去挑战，并准备好充足的药水。</string>
-	<string>BOSS战的时候房门会被反锁，你是无路可逃的。</string>
-	<string>BOSS的房间往往会有大量道具奖励，但你需要击败BOSS并从它身上获取房间钥匙。</string>
-	<string>BOSS的房间的传送阵会将你传送至下一个地下城。</string>
-	<string>地下城中的往往会有上锁的房间，而钥匙往往在本层内获得。</string>
-	<string>BOSS战挑战失败后不能复活，会回到上一层重新开始。</string>
-	<string>游戏会在切换场景时和角色死亡时保存游戏，不用担心角色进度丢失。</string>
-	<string>这不是一个真正的RougeLike游戏，角色的属性是会保存的，但地图信息不会。</string>
-	<string>当需要深渊时，角色可以选择跳下，如果运气好你可以直接进入下一层，运气不好，你会摔死。</string>
-	<string>用不掉的高级装备可以出售给NPC,这是赚钱的好办法。</string>
+	<string>Developer website: www.tinyflare.com  QQ group: 485788362</string>
+	<string>There are a lot of the easter eggs of classic dungeons in the game, to seriously explore.</string>
+	<string>To equiped off-hand weapon can unlock the corresponding skills of the character.</string>
+	<string>There are a lot of traps in the game scene, please pay attention to use the search function to find, use the interactive function to remove.</string>
+	<string>In the BOSS room, the trap can&apos;t be removed.</string>
+	<string>In addition to defeating monsters to gain experience, you can also gain experience by discovering hidden informations and removing traps.</string>
+	<string>By increasing the magic find rate can  improve the magic items dropped channce.</string>
+	<string>Poisoning and weak states can not automatically recovered.</string>
+	<string>Destiny scroll will trigger a variety of effects, there are good and bad.</string>
+	<string>You can bet with the &quot;little thief&quot; for luck, maybe you can get very good props.</string>
+	<string>Missed information can be reviewed through the information bar.</string>
+	<string>Often use interactive features you may find some hidden information from the game.</string>
+	<string>You can come back to life by watching ads, which is the most effective way to support developers.</string>
+	<string>If you think the game is not bad, please don&apos;t forget to rate on App Store.</string>
+	<string>Note that when the map is opened, the game will not be paused.</string>
+	<string>The quality of the items are represented by white green blue and purple.</string>
+	<string>Subsequent versions are being developed, include new scenes and new props features</string>
+	<string>Please note that make the maximum damage and the minimum damage a balanced development in order to ensure maximum attack power.</string>
+	<string>Nearly a hundred kinds of achievements in the game waiting for you to challenge.</string>
+	<string>Don&apos;t look down upon the elite monsters(green name) in the game.</string>
+	<string>To keep carry the keys of chest, so as not to miss the chance to find good props.</string>
+	<string>Game map is randomly generated, and there are a lot of hidden room, please note that.</string>
+	<string>You can choose to use stealth potion or scroll of random teleport to help you out when encountering the siege.</string>
+	<string>You can go back to the upper floor when you find that the monster in the dungeon is too powerful.</string>
+	<string>Each new archive may start with a different dungeon.</string>
+	<string>Click on the character profile image and backpack can open the information bar.</string>
+	<string>The orange color progress bar on the bottom buttons represents the experience of your progress.</string>
+	<string>To challenge higher levels of monsters can gain higher experience.</string>
+	<string>Killed the monster that level lower than the player 5 or more will not gain experience.</string>
+	<string>If you have any place to make you laugh in the process of playing the game, please laugh heartily, this is our desire to design the game at first.</string>
+	<string>Maybe you don&apos;t understand the funny moments in the game, but you can use google.</string>
+	<string>If you like the game, please join the official QQ group 485788362, your idea is likely to be added to the game&apos;s subsequent version.</string>
+	<string>To improve light range properties of player allows you to see farther and more details.</string>
+	<string>To improve the scope property of search can allow you to explore a wider range.</string>
+	<string>To improve the block rate property can be more triggered by block, that can reduce damage by half.</string>
+	<string>To improve the rate of critical strike can be more triggered by crit, that can double the damage.</string>
+	<string>To improve the rate of dodge property can be more triggered by dodge, that can completely ignore the damage.</string>
+	<string>When the off-hand weapon is shield can increase the block rate and defense.</string>
+	<string>There is no classes in game, the skills dependent on the off-hand weapon.</string>
+	<string>Open the backpack and the information bar can be suspended for the game, Don&apos;t worry about being attacked by monsters.</string>
+	<string>In the main interface of the game, the potions shortcut button can be more effective for you to fight, please ensure that there is enough potions in the backpack.</string>
+	<string>The same type of potion and scroll items can be superimposed, there is no limit to the number.</string>
+	<string>No identification of props can not to be use, you need use the &quot;scroll of identify&quot; to identify.</string>
+	<string>100 copper coins can be exchanged for one silver coin, 100 silver coins can be exchanged for one gold coin.</string>
+	<string>No need items can be discard, discarded items will not be recovered.</string>
+	<string>When the backpack space is not enough, you can use the backpack expansion function, the backpack can expand up for 4 times.</string>
+	<string>A variety of items can be used to classify by the label under the backpack.</string>
+	<string>Items that cannot be sold will not appear at the time of sale.</string>
+	<string>The NPC &quot;Little Knight&quot; to sell a variety of weapons in the game.</string>
+	<string>The NPC &quot;Alchemist&quot; to sell all kinds of potions, scrolls and keys in the game.</string>
+	<string>The NPC &quot;Shopgirl&quot; sell all kinds of accessories and armor in the game.</string>
+	<string>The jars in the game can be broken, there may be gold, props or monsters.</string>
+	<string>The chests is divided into copper chest, silver chest and gold chest, the better quality the better props.</string>
+	<string>When you find that there is no way to go, please pay attention to the surrounding walls, and there may be a door that is hidden on the wall.</string>
+	<string>When you find a chest is not locked, you should pay attention to, it is very likely to be a trap.</string>
+	<string>BOSS Fight is quite challenging, please have the enough strength to challenge, and prepare enough potions.</string>
+	<string>When make a fighting with boss, the door will be locked, you can&apos;t escape.</string>
+	<string>There are a lot of props reward in the boss room, but you need to beat the boss and get the room key from it.</string>
+	<string>The portal in boss room will teleport you to the next dungeon.</string>
+	<string>There is often a locked room in the dungeon, and the key is often obtained in this level floor.</string>
+	<string>In Boss Fight floor can not be revived, then restart from the last upper floor.</string>
+	<string>The program will save the game when switch the scene or player death, do not worry about losing game progress.</string>
+	<string>This is not a real RougeLike game, the role of the property will be saved, but the map information will not.</string>
+	<string>When encountered the abyss, the player can choose to jump, the good luck if you can go directly to the next floor, bad luck, you will be killed.</string>
+	<string>When the props no need, it can be sold to NPC, which is a good way to make money.</string>
 </array>
 </plist>

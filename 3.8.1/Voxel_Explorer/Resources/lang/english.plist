@@ -1114,7 +1114,7 @@ A nice bow.very light</string>
 	<key>NPCN_SHOPGIRL_CONTENT</key>
 	<string>Welcome! The adventurers love to visit my armor shop, genuine goods at a fair price.</string>
 	<key>NPCN_OLDLADY</key>
-	<string>The alchemist</string>
+	<string>The Alchemist</string>
 	<key>NPCN_OLDLADY_DESC</key>
 	<string>&quot;Don&apos;t touch my stove, Be careful to hurt!&quot;</string>
 	<key>NPCN_OLDLADY_CONTENT</key>
@@ -1126,7 +1126,7 @@ A nice bow.very light</string>
 	<key>NPCN_KNIGHT_CONTENT</key>
 	<string>Hello adventure, a good weapon can make you a lot easier, to pick one!</string>
 	<key>NPCN_WEIRDO</key>
-	<string>Little thief</string>
+	<string>Little Thief</string>
 	<key>NPCN_WEIRDO_DESC</key>
 	<string>&quot;Hey! Are you stealing from here?&quot;</string>
 	<key>NPCN_WEIRDO_CONTENT</key>
