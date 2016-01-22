@@ -33,25 +33,25 @@ bool GameInfoLayer::initUi()
 }
 bool GameInfoLayer::addEvents()
 {
-    m_pGameGoldNum   = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "game_gold_num"));
+    m_pGameGoldNum   = dynamic_cast<ui::TextBMFont*>(UtilityHelper::seekNodeByName(m_pRootNode, "game_gold_num"));
     if (!m_pGameGoldNum)
         return false;
-    m_pGameSilverNum    = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "game_silver_num"));
+    m_pGameSilverNum    = dynamic_cast<ui::TextBMFont*>(UtilityHelper::seekNodeByName(m_pRootNode, "game_silver_num"));
     if (!m_pGameSilverNum)
         return false;
-    m_pGameCopperNum    = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "game_copper_num"));
+    m_pGameCopperNum    = dynamic_cast<ui::TextBMFont*>(UtilityHelper::seekNodeByName(m_pRootNode, "game_copper_num"));
     if (!m_pGameCopperNum)
         return false;
     
-    m_pGameLevelInfoName    = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "game_level_info_name"));
+    m_pGameLevelInfoName    = dynamic_cast<ui::TextBMFont*>(UtilityHelper::seekNodeByName(m_pRootNode, "game_level_info_name"));
     if (!m_pGameLevelInfoName)
         return false;
     
     
-    m_pGameLevelInfoName->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
-    m_pGameGoldNum->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
-    m_pGameSilverNum->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
-    m_pGameCopperNum->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
+    m_pGameLevelInfoName->setFntFile(UtilityHelper::getLocalStringForUi("FONT_NAME"));
+    m_pGameGoldNum->setFntFile(UtilityHelper::getLocalStringForUi("FONT_NAME"));
+    m_pGameSilverNum->setFntFile(UtilityHelper::getLocalStringForUi("FONT_NAME"));
+    m_pGameCopperNum->setFntFile(UtilityHelper::getLocalStringForUi("FONT_NAME"));
     
     return true;
 }

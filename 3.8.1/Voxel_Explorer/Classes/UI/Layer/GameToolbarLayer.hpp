@@ -51,7 +51,7 @@ private:
     cocos2d::ui::LoadingBar* m_pRoleExpBar;
     cocos2d::ui::ImageView*  m_pGameDistTipsFrame;
     cocos2d::ui::Button*     m_pGameDistFrameCloseBtn;
-    cocos2d::ui::Text*       m_pGameDistFrameDesc;
+    cocos2d::ui::TextBMFont*       m_pGameDistFrameDesc;
     
     
 

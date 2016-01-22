@@ -28,13 +28,13 @@ protected:
    
     TGridView*               m_pCharacterBufferList;
     cocos2d::ui::LoadingBar* m_pCharacterHpBar;
-    cocos2d::ui::Text*       m_pCharacterCurHp;
-    cocos2d::ui::Text*       m_pCharacterMaxHp;
+    cocos2d::ui::TextBMFont*       m_pCharacterCurHp;
+    cocos2d::ui::TextBMFont*       m_pCharacterMaxHp;
     cocos2d::ui::LoadingBar* m_pCharacterMpBar;
-    cocos2d::ui::Text*       m_pCharacterCurMp;
-    cocos2d::ui::Text*       m_pCharacterMaxMp;
-    cocos2d::ui::Text*       m_pCharacterLevel;
-    cocos2d::ui::Text*       m_pCharacterName;
+    cocos2d::ui::TextBMFont*       m_pCharacterCurMp;
+    cocos2d::ui::TextBMFont*       m_pCharacterMaxMp;
+    cocos2d::ui::TextBMFont*       m_pCharacterLevel;
+    cocos2d::ui::TextBMFont*       m_pCharacterName;
     cocos2d::ui::ImageView*  m_pCharacterIcon;
     cocos2d::ui::ImageView*  m_pCharacterIconFrame;
 };

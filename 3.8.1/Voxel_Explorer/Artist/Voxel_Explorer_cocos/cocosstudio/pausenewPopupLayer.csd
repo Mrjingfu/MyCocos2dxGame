@@ -19,7 +19,7 @@
           <AbstractNodeData Name="pause_btn_achieve" ActionTag="-1147036072" Tag="3" IconVisible="False" PercentWidthEnable="True" PercentWidthEnabled="True" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="11.0000" RightMargin="11.0000" TopMargin="52.6650" BottomMargin="57.3350" TouchEnable="True" FontSize="22" ButtonText="成就" Scale9Enable="True" LeftEage="7" RightEage="7" TopEage="7" BottomEage="7" Scale9OriginX="7" Scale9OriginY="7" Scale9Width="22" Scale9Height="22" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="ButtonObjectData">
             <Size X="198.0000" Y="40.0000" />
             <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-            <Position X="110.0000" Y="77.3350" />
+            <Position X="110.0000" Y="77.3400" />
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
             <CColor A="255" R="255" G="255" B="255" />
             <PrePosition X="0.5000" Y="0.5156" />
@@ -51,24 +51,22 @@
           <AbstractNodeData Name="pause_music_img" ActionTag="2026819927" Tag="22" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="124.5000" RightMargin="36.5000" TopMargin="18.3620" BottomMargin="154.6380" Scale9Width="59" Scale9Height="47" ctype="ImageViewObjectData">
             <Size X="59.0000" Y="47.0000" />
             <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-            <Position X="154.0000" Y="121.4577" />
+            <Position X="154.0000" Y="121.4550" />
             <Scale ScaleX="0.6000" ScaleY="0.6000" />
             <CColor A="255" R="229" G="229" B="229" />
             <PrePosition X="0.7000" Y="0.8097" />
             <PreSize X="0.2682" Y="0.2136" />
             <FileData Type="PlistSubImage" Path="ui_btn_sound_on.png" Plist="ui_sprite.plist" />
           </AbstractNodeData>
-          <AbstractNodeData Name="pause_music_text" ActionTag="-1465258887" Tag="23" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="2.5000" RightMargin="134.5000" TopMargin="21.3622" BottomMargin="155.6378" FontSize="36" LabelText="声音:" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
-            <Size X="83.0000" Y="43.0000" />
+          <AbstractNodeData Name="pause_music_text" ActionTag="716134780" Tag="38" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="8.0000" RightMargin="138.0000" TopMargin="9.7200" BottomMargin="101.2800" LabelText="声音:" ctype="TextBMFontObjectData">
+            <Size X="74.0000" Y="39.0000" />
             <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-            <Position X="44.0000" Y="120.7758" />
-            <Scale ScaleX="0.6000" ScaleY="0.6000" />
-            <CColor A="255" R="229" G="229" B="229" />
-            <PrePosition X="0.2000" Y="0.8052" />
-            <PreSize X="0.5556" Y="0.1714" />
-            <FontResource Type="Normal" Path="fonts/fangz.TTF" Plist="" />
-            <OutlineColor A="255" R="255" G="0" B="0" />
-            <ShadowColor A="255" R="110" G="110" B="110" />
+            <Position X="45.0000" Y="120.7800" />
+            <Scale ScaleX="0.6500" ScaleY="0.6500" />
+            <CColor A="255" R="255" G="255" B="255" />
+            <PrePosition X="0.2045" Y="0.8052" />
+            <PreSize X="0.2909" Y="0.2600" />
+            <LabelBMFontFile_CNB Type="Normal" Path="fonts/ui_font.fnt" Plist="" />
           </AbstractNodeData>
         </Children>
       </ObjectData>

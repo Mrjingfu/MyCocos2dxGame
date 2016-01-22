@@ -27,17 +27,15 @@
               <AbstractNodeData Name="info_title_img" ActionTag="-822287822" Tag="20" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="65.0000" RightMargin="65.0000" TopMargin="-7.0000" BottomMargin="83.0000" Scale9Enable="True" LeftEage="5" RightEage="5" TopEage="5" BottomEage="5" Scale9OriginX="5" Scale9OriginY="5" Scale9Width="4" Scale9Height="4" ctype="ImageViewObjectData">
                 <Size X="50.0000" Y="14.0000" />
                 <Children>
-                  <AbstractNodeData Name="info_title_text" ActionTag="2004703511" Tag="21" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="-11.0000" RightMargin="-11.0000" TopMargin="-14.5000" BottomMargin="-14.5000" FontSize="36" LabelText="信息" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
-                    <Size X="72.0000" Y="43.0000" />
+                  <AbstractNodeData Name="info_title_text" ActionTag="1370597224" Tag="28" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="-82.0000" RightMargin="-82.0000" TopMargin="-12.5000" BottomMargin="-12.5000" LabelText="信息" ctype="TextBMFontObjectData">
+                    <Size X="64.0000" Y="39.0000" />
                     <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
                     <Position X="25.0000" Y="7.0000" />
-                    <Scale ScaleX="0.2500" ScaleY="0.2500" />
+                    <Scale ScaleX="0.3000" ScaleY="0.3000" />
                     <CColor A="255" R="255" G="255" B="255" />
                     <PrePosition X="0.5000" Y="0.5000" />
-                    <PreSize X="0.7143" Y="0.4615" />
-                    <FontResource Type="Normal" Path="fonts/fangz.TTF" Plist="" />
-                    <OutlineColor A="255" R="255" G="0" B="0" />
-                    <ShadowColor A="255" R="110" G="110" B="110" />
+                    <PreSize X="4.2800" Y="2.7857" />
+                    <LabelBMFontFile_CNB Type="Normal" Path="fonts/ui_font.fnt" Plist="" />
                   </AbstractNodeData>
                 </Children>
                 <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
@@ -48,17 +46,15 @@
                 <PreSize X="0.2778" Y="0.1556" />
                 <FileData Type="PlistSubImage" Path="ui_frame_3.png" Plist="ui_sprite.plist" />
               </AbstractNodeData>
-              <AbstractNodeData Name="info_text_message" ActionTag="1658469580" Tag="23" IconVisible="False" PercentWidthEnable="True" PercentHeightEnable="True" PercentWidthEnabled="True" PercentHeightEnabled="True" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="-149.4880" RightMargin="-152.5120" TopMargin="3.8800" BottomMargin="43.1200" FontSize="36" LabelText="asfdasfasdfasdfasfdsadfasfda" HorizontalAlignmentType="HT_Center" VerticalAlignmentType="VT_Center" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
-                <Size X="482.0000" Y="43.0000" />
+              <AbstractNodeData Name="info_text_message" ActionTag="-1450578888" Tag="29" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="-114.4880" RightMargin="-117.5120" TopMargin="5.8800" BottomMargin="45.1200" LabelText="asfdasfasdfasdfasfdsadfasfda" ctype="TextBMFontObjectData">
+                <Size X="412.0000" Y="39.0000" />
                 <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
                 <Position X="91.5120" Y="64.6200" />
-                <Scale ScaleX="0.2800" ScaleY="0.2800" />
+                <Scale ScaleX="0.3300" ScaleY="0.3300" />
                 <CColor A="255" R="255" G="255" B="255" />
                 <PrePosition X="0.5084" Y="0.7180" />
-                <PreSize X="2.6778" Y="0.4778" />
-                <FontResource Type="Normal" Path="fonts/fangz.TTF" Plist="" />
-                <OutlineColor A="255" R="255" G="0" B="0" />
-                <ShadowColor A="255" R="110" G="110" B="110" />
+                <PreSize X="2.2889" Y="0.4333" />
+                <LabelBMFontFile_CNB Type="Normal" Path="fonts/ui_font.fnt" Plist="" />
               </AbstractNodeData>
               <AbstractNodeData Name="info_btn_next" ActionTag="-1947659388" Tag="12" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="77.0000" RightMargin="77.0000" TopMargin="69.5000" BottomMargin="4.5000" Scale9Width="26" Scale9Height="16" ctype="ImageViewObjectData">
                 <Size X="26.0000" Y="16.0000" />

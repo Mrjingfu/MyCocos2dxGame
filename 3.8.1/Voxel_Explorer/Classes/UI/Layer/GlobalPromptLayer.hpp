@@ -24,7 +24,7 @@ public:
 private:
     void removePrompt(cocos2d::Node* node);
 private:
-    cocos2d::Vector<cocos2d::ui::Text*> m_vPrompts;
+    cocos2d::Vector<cocos2d::ui::TextBMFont*> m_vPrompts;
 };
 
 #endif /* GlobalPromptLayer_hpp */

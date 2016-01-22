@@ -31,8 +31,8 @@ private:
 private:
     cocos2d::ui::Button* m_pOk;
     cocos2d::ui::Button* m_pCancel;
-    cocos2d::ui::Text*   m_pTitle;
-    cocos2d::ui::Text*   m_pMessage;
+    cocos2d::ui::TextBMFont*   m_pTitle;
+    cocos2d::ui::TextBMFont*   m_pMessage;
     onClickListener     m_pNegativeFun;
     onClickListener     m_pPositiveFun;
     

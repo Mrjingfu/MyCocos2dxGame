@@ -4,97 +4,87 @@
     <Content>
       <Animation Duration="0" Speed="1.0000" />
       <ObjectData Name="Layer" Tag="84" ctype="GameLayerObjectData">
-        <Size X="140.0000" Y="72.0000" />
+        <Size X="150.0000" Y="72.0000" />
         <Children>
           <AbstractNodeData Name="item_background" ActionTag="-981883369" Tag="89" IconVisible="False" PercentWidthEnable="True" PercentHeightEnable="True" PercentWidthEnabled="True" PercentHeightEnabled="True" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" TouchEnable="True" Scale9Enable="True" LeftEage="4" RightEage="4" TopEage="4" BottomEage="4" Scale9OriginX="4" Scale9OriginY="4" Scale9Width="5" Scale9Height="5" ctype="ImageViewObjectData">
-            <Size X="140.0000" Y="72.0000" />
+            <Size X="150.0000" Y="72.0000" />
             <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-            <Position X="70.0000" Y="36.0000" />
+            <Position X="75.0000" Y="36.0000" />
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
             <CColor A="255" R="255" G="255" B="255" />
             <PrePosition X="0.5000" Y="0.5000" />
             <PreSize X="1.0000" Y="1.0000" />
             <FileData Type="PlistSubImage" Path="ui_frame_9.png" Plist="ui_sprite.plist" />
           </AbstractNodeData>
-          <AbstractNodeData Name="item_prop_layer" ActionTag="854255081" Tag="92" IconVisible="False" PercentWidthEnable="True" PercentHeightEnable="True" PercentWidthEnabled="True" PercentHeightEnabled="True" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" BottomMargin="20.0000" TouchEnable="True" BackColorAlpha="102" ColorAngle="90.0000" ctype="PanelObjectData">
-            <Size X="140.0000" Y="52.0000" />
+          <AbstractNodeData Name="item_prop_layer" ActionTag="854255081" Tag="92" IconVisible="False" PercentWidthEnable="True" PercentHeightEnable="True" PercentWidthEnabled="True" PercentHeightEnabled="True" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" BottomMargin="20.0016" TouchEnable="True" BackColorAlpha="102" ColorAngle="90.0000" ctype="PanelObjectData">
+            <Size X="150.0000" Y="51.9984" />
             <Children>
               <AbstractNodeData Name="item_base_layer" ActionTag="-1752329100" Tag="96" IconVisible="False" PercentWidthEnable="True" PercentHeightEnable="True" PercentWidthEnabled="True" PercentHeightEnabled="True" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" TouchEnable="True" BackColorAlpha="102" ColorAngle="90.0000" ctype="PanelObjectData">
-                <Size X="140.0000" Y="52.0000" />
+                <Size X="150.0000" Y="51.9984" />
                 <Children>
-                  <AbstractNodeData Name="item_lv_num_text" ActionTag="-94841955" Tag="100" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="111.8180" RightMargin="-68.8180" TopMargin="4.6592" BottomMargin="4.3408" FontSize="36" LabelText="Lv.10" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
-                    <Size X="97.0000" Y="43.0000" />
+                  <AbstractNodeData Name="item_lv_num_text" ActionTag="-726965974" Tag="16" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="111.8180" RightMargin="-99.8180" TopMargin="4.6591" BottomMargin="8.3393" LabelText="Lv.10" ctype="TextBMFontObjectData">
+                    <Size X="85.0000" Y="39.0000" />
                     <AnchorPoint ScaleY="1.0000" />
-                    <Position X="111.8180" Y="47.3408" />
-                    <Scale ScaleX="0.2500" ScaleY="0.2500" />
+                    <Position X="119.8050" Y="47.3393" />
+                    <Scale ScaleX="0.2800" ScaleY="0.2800" />
                     <CColor A="255" R="255" G="255" B="0" />
                     <PrePosition X="0.7987" Y="0.9104" />
-                    <PreSize X="0.6929" Y="0.8269" />
-                    <FontResource Type="Normal" Path="fonts/fangz.TTF" Plist="" />
-                    <OutlineColor A="255" R="255" G="0" B="0" />
-                    <ShadowColor A="255" R="110" G="110" B="110" />
+                    <PreSize X="0.9071" Y="0.7500" />
+                    <LabelBMFontFile_CNB Type="Normal" Path="fonts/ui_font.fnt" Plist="" />
                   </AbstractNodeData>
-                  <AbstractNodeData Name="item_name_text" ActionTag="1085389335" Tag="96" IconVisible="False" PercentWidthEnable="True" PercentHeightEnable="True" PercentWidthEnabled="True" PercentHeightEnabled="True" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="43.5061" RightMargin="-218.5061" TopMargin="-16.4102" BottomMargin="-24.1498" IsCustomSize="True" FontSize="36" LabelText="Scroll of Random Teleport" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
-                    <Size X="315.0000" Y="92.5600" />
+                  <AbstractNodeData Name="item_name_text" ActionTag="-249285148" Tag="15" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="43.5120" RightMargin="-168.5120" TopMargin="-10.1321" BottomMargin="-15.8695" LabelText="Scroll of Random &#xA;Teleport" ctype="TextBMFontObjectData">
+                    <Size X="265.0000" Y="78.0000" />
                     <AnchorPoint ScaleY="0.5000" />
-                    <Position X="43.5120" Y="22.1312" />
-                    <Scale ScaleX="0.3000" ScaleY="0.3000" />
+                    <Position X="46.6200" Y="23.1305" />
+                    <Scale ScaleX="0.3400" ScaleY="0.3400" />
                     <CColor A="255" R="255" G="255" B="255" />
-                    <PrePosition X="0.3108" Y="0.4256" />
-                    <PreSize X="2.2500" Y="1.7800" />
-                    <FontResource Type="Normal" Path="fonts/fangz.TTF" Plist="" />
-                    <OutlineColor A="255" R="255" G="0" B="0" />
-                    <ShadowColor A="255" R="110" G="110" B="110" />
+                    <PrePosition X="0.3108" Y="0.4448" />
+                    <PreSize X="0.9071" Y="0.7500" />
+                    <LabelBMFontFile_CNB Type="Normal" Path="fonts/ui_font.fnt" Plist="" />
                   </AbstractNodeData>
-                  <AbstractNodeData Name="item_prop_type" ActionTag="-1174215095" Tag="83" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="43.7714" RightMargin="-47.7714" TopMargin="25.5944" BottomMargin="-16.5944" FontSize="36" LabelText="副手武器" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
-                    <Size X="144.0000" Y="43.0000" />
+                  <AbstractNodeData Name="item_prop_type" ActionTag="-255334422" Tag="14" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="43.7780" RightMargin="0.2220" TopMargin="27.5949" BottomMargin="-14.5966" LabelText="副手武器" ctype="TextBMFontObjectData">
+                    <Size X="128.0000" Y="39.0000" />
                     <AnchorPoint ScaleY="0.5000" />
-                    <Position X="43.7780" Y="4.9036" />
-                    <Scale ScaleX="0.1500" ScaleY="0.1500" />
+                    <Position X="46.9050" Y="4.9034" />
+                    <Scale ScaleX="0.1700" ScaleY="0.1700" />
                     <CColor A="255" R="255" G="255" B="255" />
                     <PrePosition X="0.3127" Y="0.0943" />
-                    <PreSize X="0.5714" Y="2.0455" />
-                    <FontResource Type="Normal" Path="fonts/fangz.TTF" Plist="" />
-                    <OutlineColor A="255" R="255" G="0" B="0" />
-                    <ShadowColor A="255" R="110" G="110" B="110" />
+                    <PreSize X="0.9071" Y="0.7500" />
+                    <LabelBMFontFile_CNB Type="Normal" Path="fonts/ui_font.fnt" Plist="" />
                   </AbstractNodeData>
                   <AbstractNodeData Name="item_icon" ActionTag="-251543875" Tag="90" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="1.9432" RightMargin="98.0568" TopMargin="1.2331" BottomMargin="2.7669" Scale9Enable="True" LeftEage="4" RightEage="4" TopEage="4" BottomEage="4" Scale9OriginX="4" Scale9OriginY="4" Scale9Width="32" Scale9Height="32" ctype="ImageViewObjectData">
                     <Size X="40.0000" Y="40.0000" />
                     <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-                    <Position X="21.9380" Y="26.9048" />
+                    <Position X="23.5050" Y="26.9040" />
                     <Scale ScaleX="1.0000" ScaleY="1.0000" />
                     <CColor A="255" R="255" G="255" B="255" />
                     <PrePosition X="0.1567" Y="0.5174" />
                     <PreSize X="0.2857" Y="0.9091" />
                     <FileData Type="PlistSubImage" Path="icon_resource_intermediate_tool.png" Plist="ui_sprite.plist" />
                   </AbstractNodeData>
-                  <AbstractNodeData Name="item_equip_dist" ActionTag="1824447953" Tag="184" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="24.1273" RightMargin="7.8727" TopMargin="24.2017" BottomMargin="-17.2017" FontSize="36" LabelText="已装备" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
-                    <Size X="108.0000" Y="43.0000" />
+                  <AbstractNodeData Name="item_equip_dist" ActionTag="223194052" Tag="13" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="18.1320" RightMargin="7.8680" TopMargin="28.0265" BottomMargin="-15.0281" LabelText="已装备" ctype="TextBMFontObjectData">
+                    <Size X="96.0000" Y="39.0000" />
                     <AnchorPoint ScaleX="1.0000" ScaleY="0.5000" />
-                    <Position X="132.1320" Y="4.4720" />
-                    <Scale ScaleX="0.2000" ScaleY="0.2000" />
+                    <Position X="141.5700" Y="4.4719" />
+                    <Scale ScaleX="0.2200" ScaleY="0.2200" />
                     <CColor A="255" R="255" G="255" B="255" />
                     <PrePosition X="0.9438" Y="0.0860" />
-                    <PreSize X="0.5714" Y="2.0455" />
-                    <FontResource Type="Normal" Path="fonts/fangz.TTF" Plist="" />
-                    <OutlineColor A="255" R="255" G="0" B="0" />
-                    <ShadowColor A="255" R="110" G="110" B="110" />
+                    <PreSize X="0.9071" Y="0.7500" />
+                    <LabelBMFontFile_CNB Type="Normal" Path="fonts/ui_font.fnt" Plist="" />
                   </AbstractNodeData>
-                  <AbstractNodeData Name="item_prop_not_idn" ActionTag="1415611447" Tag="65" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="46.3120" RightMargin="-34.3120" TopMargin="4.6592" BottomMargin="4.3408" FontSize="36" LabelText="[未鉴定]" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
-                    <Size X="128.0000" Y="43.0000" />
+                  <AbstractNodeData Name="item_prop_not_idn" ActionTag="1824777016" Tag="147" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="46.3120" RightMargin="-20.3120" TopMargin="4.6591" BottomMargin="8.3393" LabelText="[未鉴定]" ctype="TextBMFontObjectData">
+                    <Size X="114.0000" Y="39.0000" />
                     <AnchorPoint ScaleY="1.0000" />
-                    <Position X="46.3120" Y="47.3408" />
-                    <Scale ScaleX="0.2000" ScaleY="0.2000" />
+                    <Position X="49.6200" Y="47.3393" />
+                    <Scale ScaleX="0.2200" ScaleY="0.2200" />
                     <CColor A="255" R="255" G="0" B="0" />
                     <PrePosition X="0.3308" Y="0.9104" />
-                    <PreSize X="0.9143" Y="0.8269" />
-                    <FontResource Type="Normal" Path="fonts/fangz.TTF" Plist="" />
-                    <OutlineColor A="255" R="255" G="0" B="0" />
-                    <ShadowColor A="255" R="110" G="110" B="110" />
+                    <PreSize X="0.9071" Y="0.7500" />
+                    <LabelBMFontFile_CNB Type="Normal" Path="fonts/ui_font.fnt" Plist="" />
                   </AbstractNodeData>
                 </Children>
                 <AnchorPoint ScaleX="0.5000" ScaleY="1.0000" />
-                <Position X="70.0000" Y="52.0000" />
+                <Position X="75.0000" Y="51.9984" />
                 <Scale ScaleX="1.0000" ScaleY="1.0000" />
                 <CColor A="255" R="255" G="255" B="255" />
                 <PrePosition X="0.5000" Y="1.0000" />
@@ -105,9 +95,9 @@
                 <ColorVector ScaleY="1.0000" />
               </AbstractNodeData>
               <AbstractNodeData Name="item_attr_layer" ActionTag="-1294983277" Tag="95" IconVisible="False" PercentWidthEnable="True" PercentHeightEnable="True" PercentWidthEnabled="True" PercentHeightEnabled="True" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" TopMargin="52.0000" BottomMargin="-20.0000" TouchEnable="True" BackColorAlpha="102" ColorAngle="90.0000" ctype="PanelObjectData">
-                <Size X="140.0000" Y="20.0000" />
+                <Size X="150.0000" Y="19.9986" />
                 <AnchorPoint ScaleX="0.5000" ScaleY="1.0000" />
-                <Position X="70.0000" />
+                <Position X="75.0000" />
                 <Scale ScaleX="1.0000" ScaleY="1.0000" />
                 <CColor A="255" R="255" G="255" B="255" />
                 <PrePosition X="0.5000" />

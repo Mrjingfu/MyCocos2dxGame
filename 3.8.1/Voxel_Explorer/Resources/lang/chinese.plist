@@ -4,8 +4,6 @@
 <dict>
 	<key>GAME_NAME</key>
 	<string>体素地牢</string>
-	<key>FONT_NAME</key>
-	<string>fangz.TTF</string>
 	<key>TTN_CHASM</key>
 	<string>黑漆漆的看不太清！</string>
 	<key>TTN_STANDARD</key>

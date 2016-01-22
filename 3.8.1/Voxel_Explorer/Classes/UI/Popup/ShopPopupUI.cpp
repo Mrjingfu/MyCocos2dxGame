@@ -47,11 +47,11 @@ bool ShopPopupUI::addEvents()
     if (!m_pBtnClose)
         return false;
     
-    m_pShopTitleText= dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "shop_title_text"));
+    m_pShopTitleText= dynamic_cast<ui::TextBMFont*>(UtilityHelper::seekNodeByName(m_pRootNode, "shop_title_text"));
     if (!m_pShopTitleText)
         return false;
     
-    m_pShopTitleText->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
+    m_pShopTitleText->setFntFile(UtilityHelper::getLocalStringForUi("FONT_NAME"));
     
     m_pBagLayer = BagShopLayer::create();
     m_pBagLayer->setAnchorPoint(cocos2d::Vec2::ANCHOR_MIDDLE_BOTTOM);

@@ -32,18 +32,19 @@ bool LoadingLayer::addEvents()
     if (!m_LoadingIcon)
         return false;
     
-    ui::Text* tips = dynamic_cast<cocos2d::ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "loading_tips"));
+    ui::TextBMFont* tips = dynamic_cast<cocos2d::ui::TextBMFont*>(UtilityHelper::seekNodeByName(m_pRootNode, "loading_tips"));
     if (!tips)
         return false;
         
-    m_pTipDesc = dynamic_cast<cocos2d::ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "loading_tips_desc"));
+    m_pTipDesc = dynamic_cast<cocos2d::ui::TextBMFont*>(UtilityHelper::seekNodeByName(m_pRootNode, "loading_tips_desc"));
     if (!m_pTipDesc)
         return false;
     
-    tips->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
+    tips->setFntFile(UtilityHelper::getLocalStringForUi("FONT_NAME"));
     tips->setString(UtilityHelper::getLocalStringForUi("LOAGING_TIPS"));
-    m_pTipDesc->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
-    m_pTipDesc->setTextHorizontalAlignment(cocos2d::TextHAlignment::CENTER);
+    m_pTipDesc->setFntFile(UtilityHelper::getLocalStringForUi("FONT_NAME"));
+    cocos2d::Label* tipDescLabel =static_cast<Label*>(m_pTipDesc->getVirtualRenderer());
+    tipDescLabel->setHorizontalAlignment(cocos2d::TextHAlignment::CENTER);
     
     refreshUIView();
     
@@ -66,7 +67,7 @@ void LoadingLayer::refreshUIView()
     int count = cocos2d::random(0,(int)(tipVector.size()-1));
     std::string tipDesc = tipVector.at(count).asString();
     CCLOG("tipDesc source:%s",tipDesc.c_str());
-    UtilityHelper::getLineForText(m_pTipDesc,tipDesc);
+    UtilityHelper::getLineForText(m_pTipDesc,tipDesc,getContentSize().width-20);
     CCLOG("tipDesc target:%s",tipDesc.c_str());
     m_pTipDesc->setString(tipDesc);
     

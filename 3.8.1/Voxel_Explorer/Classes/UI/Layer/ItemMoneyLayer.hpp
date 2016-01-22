@@ -21,9 +21,9 @@ public:
     virtual bool addEvents() override;
     void  updateItemMoney(CChaosNumber money);
 private:
-    cocos2d::ui::Text*  m_pItemGoldNum;            // 金币
-    cocos2d::ui::Text*  m_pItemSilverNum;          // 银币
-    cocos2d::ui::Text*  m_pItemCopperNum;          // 铜币
+    cocos2d::ui::TextBMFont*  m_pItemGoldNum;            // 金币
+    cocos2d::ui::TextBMFont*  m_pItemSilverNum;          // 银币
+    cocos2d::ui::TextBMFont*  m_pItemCopperNum;          // 铜币
     cocos2d::ui::ImageView* m_pItemGoldIcon;
     cocos2d::ui::ImageView* m_pItemSilverIcon;
     cocos2d::ui::ImageView* m_pItemCopperIcon;

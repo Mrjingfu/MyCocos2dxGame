@@ -16,29 +16,25 @@
             <PreSize X="0.4656" Y="0.2562" />
             <FileData Type="PlistSubImage" Path="ghost.png" Plist="ui_characters.plist" />
           </AbstractNodeData>
-          <AbstractNodeData Name="loading_tips" ActionTag="1915762986" Tag="3" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="118.5000" RightMargin="118.5000" TopMargin="49.5000" BottomMargin="387.5000" FontSize="36" LabelText="提示:" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
-            <Size X="83.0000" Y="43.0000" />
+          <AbstractNodeData Name="loading_tips" ActionTag="-275844986" Tag="128" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="61.5000" RightMargin="61.5000" TopMargin="51.4920" BottomMargin="389.5080" LabelText="提示" ctype="TextBMFontObjectData">
+            <Size X="64.0000" Y="39.0000" />
             <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
             <Position X="160.0000" Y="409.0080" />
-            <Scale ScaleX="0.5000" ScaleY="0.5000" />
+            <Scale ScaleX="0.6000" ScaleY="0.6000" />
             <CColor A="255" R="30" G="144" B="255" />
             <PrePosition X="0.5000" Y="0.8521" />
-            <PreSize X="0.3125" Y="0.0500" />
-            <FontResource Type="Normal" Path="fonts/fangz.TTF" Plist="" />
-            <OutlineColor A="255" R="255" G="0" B="0" />
-            <ShadowColor A="255" R="110" G="110" B="110" />
+            <PreSize X="0.6156" Y="0.0812" />
+            <LabelBMFontFile_CNB Type="Normal" Path="fonts/ui_font.fnt" Plist="" />
           </AbstractNodeData>
-          <AbstractNodeData Name="loading_tips_desc" ActionTag="1868879923" Tag="4" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="-74.0000" RightMargin="-74.0000" TopMargin="82.5000" BottomMargin="311.5000" FontSize="36" LabelText="游戏主界面的药水快捷按钮可&#xA;" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
-            <Size X="468.0000" Y="43.0000" />
+          <AbstractNodeData Name="loading_tips_desc" ActionTag="-1645563273" Tag="129" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="-48.0000" RightMargin="-48.0000" TopMargin="82.5120" BottomMargin="358.4880" LabelText="游戏主界面的药水快捷按钮可" ctype="TextBMFontObjectData">
+            <Size X="416.0000" Y="39.0000" />
             <AnchorPoint ScaleX="0.5000" ScaleY="1.0000" />
             <Position X="160.0000" Y="397.4880" />
-            <Scale ScaleX="0.5000" ScaleY="0.5000" />
+            <Scale ScaleX="0.5500" ScaleY="0.5500" />
             <CColor A="255" R="173" G="216" B="230" />
             <PrePosition X="0.5000" Y="0.8281" />
-            <PreSize X="0.3125" Y="0.0500" />
-            <FontResource Type="Normal" Path="fonts/fangz.TTF" Plist="" />
-            <OutlineColor A="255" R="255" G="0" B="0" />
-            <ShadowColor A="255" R="110" G="110" B="110" />
+            <PreSize X="0.6156" Y="0.0812" />
+            <LabelBMFontFile_CNB Type="Normal" Path="fonts/ui_font.fnt" Plist="" />
           </AbstractNodeData>
           <AbstractNodeData Name="Particle_1" ActionTag="-734184620" Tag="47" IconVisible="True" LeftMargin="154.0006" RightMargin="165.9994" TopMargin="393.4055" BottomMargin="86.5945" ctype="ParticleObjectData">
             <Size X="0.0000" Y="0.0000" />

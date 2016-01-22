@@ -31,10 +31,9 @@ bool NoteUi::init()
     setContentSize(cocos2d::Size(Director::getInstance()->getVisibleSize().width,10));
 
     setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
-    m_pLabel = cocos2d::ui::Text::create();
-    m_pLabel->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
-    m_pLabel->setFontSize(36);
-    m_pLabel->setScale(0.4);
+    m_pLabel = cocos2d::ui::TextBMFont::create();
+    m_pLabel->setFntFile(UtilityHelper::getLocalStringForUi("FONT_NAME"));
+    m_pLabel->setScale(0.7);
     m_pLabel->setAnchorPoint(Vec2::ANCHOR_MIDDLE_LEFT);
     m_pLabel->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
     addChild(m_pLabel);
@@ -47,19 +46,13 @@ void NoteUi::setMsg(std::string msg,cocos2d::Color3B fontColor /*= cocos2d::Colo
 {
     if (m_pLabel)
     {
-        int charCount = 0;
-        if(cocos2d::Application::getInstance()->getCurrentLanguage() ==cocos2d::LanguageType::CHINESE)
-        {
-            charCount =20;
-        }else{
-            charCount = 40;
-        }
-        int count = UtilityHelper::getLineStr(msg, charCount);
+
+        UtilityHelper::getLineForText(m_pLabel, msg,this->getParent()->getContentSize().width-10);
         m_pLabel->setString(msg);
         float lableSizeHeight = m_pLabel->getContentSize().height*m_pLabel->getScale();
         CCLOG("lableSize:%f",lableSizeHeight);
-        if(count>1)
-            setContentSize(cocos2d::Size(getContentSize().width,lableSizeHeight*0.5+getContentSize().height));
+        if(lableSizeHeight>this->getContentSize().height)
+            setContentSize(cocos2d::Size(getContentSize().width,lableSizeHeight+10));
         
         CCLOG("m_pLabel:%zd msg:%lu",m_pLabel->getStringLength(),msg.length());
         m_pLabel->setColor(fontColor);
@@ -71,28 +64,14 @@ void NoteUi::setItemText(std::string msg,cocos2d::Color3B fontColor /*= cocos2d:
 {
     if (m_pLabel)
     {
-        int charCount = 0;
-        if(cocos2d::Application::getInstance()->getCurrentLanguage() ==cocos2d::LanguageType::CHINESE)
-        {
-            charCount =11;
-        }else{
-            charCount = 30;
-        }
-        
-        float width = 0.0f;
-        if(this->getParent())
-            width = this->getParent()->getContentSize().width -10;
-        if(width>0.0f)
-        {
-            float charWidth = UtilityHelper::getSingleStrFontSize(m_pLabel, msg).width;
-            charCount = (int)(width/charWidth);
-        }
-        int count = UtilityHelper::getLineStr(msg, charCount);
+        float width = this->getParent()->getContentSize().width -14;
+
+        UtilityHelper::getLineForText(m_pLabel, msg,width);
         m_pLabel->setString(msg);
         float lableSizeHeight = m_pLabel->getContentSize().height*m_pLabel->getScale();
         CCLOG("lableSize:%f",lableSizeHeight);
-        if(count>1)
-            setContentSize(cocos2d::Size(getContentSize().width,lableSizeHeight+getContentSize().height));
+        if(lableSizeHeight>this->getContentSize().height)
+            setContentSize(cocos2d::Size(getContentSize().width,lableSizeHeight+10));
 
         m_pLabel->setColor(fontColor);
         m_pLabel->setPosition(Vec2(0,getContentSize().height*0.5));

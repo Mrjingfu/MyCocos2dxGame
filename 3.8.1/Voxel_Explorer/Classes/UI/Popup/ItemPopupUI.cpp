@@ -76,14 +76,12 @@ bool ItemPopupUI::initBottom()
     if (!m_pBtnEquip)
         return false;
     
-    m_pBtnDiscard->setTitleFontName(UtilityHelper::getLocalString("FONT_NAME"));
-    m_pBtnDiscard->setTitleFontSize(36);
-    m_pBtnDiscard->getTitleRenderer()->setScale(0.3);
+    m_pBtnDiscard->setTitleFontName(UtilityHelper::getLocalStringForUi("FONT_NAME"));
+    m_pBtnDiscard->getTitleRenderer()->setScale(0.7);
     m_pBtnDiscard->setTitleText(UtilityHelper::getLocalStringForUi("BTN_TEXT_DISCARD"));
     
-    m_pBtnEquip->setTitleFontName(UtilityHelper::getLocalString("FONT_NAME"));
-    m_pBtnEquip->setTitleFontSize(36);
-    m_pBtnEquip->getTitleRenderer()->setScale(0.3);
+    m_pBtnEquip->setTitleFontName(UtilityHelper::getLocalStringForUi("FONT_NAME"));
+    m_pBtnEquip->getTitleRenderer()->setScale(0.7);
     m_pBtnEquip->setTitleText(UtilityHelper::getLocalStringForUi("BTN_TEXT_EQUIP"));
     
     m_pBtnDiscard->addClickEventListener(CC_CALLBACK_1(ItemPopupUI::onClickDiscard, this));
@@ -111,21 +109,21 @@ bool ItemPopupUI::addEvents()
         return false;
 
  
-    m_pItemName = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "item_name_text"));
+    m_pItemName = dynamic_cast<ui::TextBMFont*>(UtilityHelper::seekNodeByName(m_pRootNode, "item_name_text"));
     if (!m_pItemName)
         return false;
-    m_pItemlv = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "item_lv_num_text"));
+    m_pItemlv = dynamic_cast<ui::TextBMFont*>(UtilityHelper::seekNodeByName(m_pRootNode, "item_lv_num_text"));
     if (!m_pItemlv)
         return false;
    
-    m_pItemType = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "item_prop_type"));
+    m_pItemType = dynamic_cast<ui::TextBMFont*>(UtilityHelper::seekNodeByName(m_pRootNode, "item_prop_type"));
     if (!m_pItemType)
         return false;
-    m_pItemEquipDist = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "item_equip_dist"));
+    m_pItemEquipDist = dynamic_cast<ui::TextBMFont*>(UtilityHelper::seekNodeByName(m_pRootNode, "item_equip_dist"));
     if (!m_pItemEquipDist)
         return false;
     
-    m_pItemNotIden = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "item_prop_not_idn"));
+    m_pItemNotIden = dynamic_cast<ui::TextBMFont*>(UtilityHelper::seekNodeByName(m_pRootNode, "item_prop_not_idn"));
     if (!m_pItemNotIden)
         
         return false;
@@ -140,14 +138,15 @@ bool ItemPopupUI::addEvents()
     
     m_pAttrFrame->setLayoutType(ui::Layout::Type::VERTICAL);
     
-    m_pItemName->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
-    m_pItemlv->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
-    m_pItemType->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
+    m_pItemName->setFntFile(UtilityHelper::getLocalStringForUi("FONT_NAME"));
+    m_pItemlv->setFntFile(UtilityHelper::getLocalStringForUi("FONT_NAME"));
+    m_pItemType->setFntFile(UtilityHelper::getLocalStringForUi("FONT_NAME"));
     m_pItemlv->setVisible(false);
     m_pItemEquipDist->setVisible(false);
     m_pItemNotIden->setVisible(false);
-    m_pItemEquipDist->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
-    m_pItemNotIden->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
+    
+    m_pItemEquipDist->setFntFile(UtilityHelper::getLocalStringForUi("FONT_NAME"));
+    m_pItemNotIden->setFntFile(UtilityHelper::getLocalStringForUi("FONT_NAME"));
     m_pItemNotIden->setString(UtilityHelper::getLocalStringForUi("ITEM_NOT_IDENTIFY"));
     
     return true;
@@ -577,21 +576,21 @@ void ItemPopupUI::updateItemBaseProp()
         else
             propName = StringUtils::format(propName.c_str(),RandomDungeon::getInstance()->getCurrentDungeonNode()->m_strDungeonName.c_str());
     }
-    
+    UtilityHelper::getLineForText(m_pItemName, propName,this->m_pRootNode->getContentSize().width-m_pItemIcon->getContentSize().width-5);
     m_pItemName->setString(propName);
     //设置品质
     switch (itemprop->getQuality()) {
         case PIQ_GENERAL:
-            m_pItemName->setTextColor(Color4B(Color3B::WHITE));
+            m_pItemName->setColor(Color3B::WHITE);
             break;
         case PIQ_RARE:
-            m_pItemName->setTextColor(Color4B(Color3B::GREEN));
+            m_pItemName->setColor(Color3B::GREEN);
             break;
         case PIQ_EPIC:
-            m_pItemName->setTextColor(Color4B(Color3B::BLUE));
+            m_pItemName->setColor(Color3B::BLUE);
             break;
         case PIQ_LEGEND:
-            m_pItemName->setTextColor(Color4B(Color3B(114,49,149)));
+            m_pItemName->setColor(Color3B(114,49,149));
             break;
     }
     
@@ -651,7 +650,7 @@ void ItemPopupUI::updateEquipItem()
     
     //装备等级>人物等级不可装备
     if ( itemprop->getLevel().GetLongValue() > PlayerProperty::getInstance()->getLevel().GetLongValue()) {
-        m_pItemlv->setTextColor(Color4B(PopupUILayerManager::getInstance()->getTipsColor(TIP_NEGATIVE)));
+        m_pItemlv->setColor(PopupUILayerManager::getInstance()->getTipsColor(TIP_NEGATIVE));
         std::string str = UtilityHelper::getLocalStringForUi("NOT_EQUIP_LEVEL_ENOUGH");
         
         ui::LinearLayoutParameter* linerParmter = ui::LinearLayoutParameter::create();
@@ -771,9 +770,15 @@ void ItemPopupUI::updateUseItem()
         
         if(itemprop->getPickableItemType() <= PickableItem::PIT_KEY_GOLD)
         {
-            m_pBtnEquip->setVisible(false);
-            m_pBtnDiscard->setAnchorPoint(cocos2d::Vec2::ANCHOR_MIDDLE);
-            m_pBtnDiscard->setPosition(m_pBottomFrame->getContentSize()*0.5f);
+            if(m_pBtnDiscard)
+                m_pBtnDiscard->setVisible(false);
+            if (m_pBtnEquip) {
+                m_pBtnEquip->setTitleText(UtilityHelper::getLocalStringForUi("BTN_TEXT_DISCARD"));
+                m_pBtnEquip->setAnchorPoint(cocos2d::Vec2::ANCHOR_MIDDLE);
+                m_pBtnEquip->setPosition(m_pBottomFrame->getContentSize()*0.5f);
+                m_pBtnEquip->addClickEventListener(CC_CALLBACK_1(ItemPopupUI::onClickDiscard, this));
+            }
+           
         }
     }
 

@@ -140,7 +140,7 @@ void BagMangerLayerUI::addItem(int index,int itemId,cocos2d::Vec2 pt,std::string
 void BagMangerLayerUI::setItemCount(int itemId,cocos2d::Vec2 pt,int count)
 {
     if (m_pItemCountLayer) {
-        Label* itemCount = Label::createWithTTF(StringUtils::format("X%d",count), UtilityHelper::getLocalString("FONT_NAME"), 36);
+        Label* itemCount = Label::createWithBMFont(UtilityHelper::getLocalStringForUi("FONT_NAME"), StringUtils::format("X%d",count));
         itemCount->setPosition(pt+cocos2d::Vec2(16,-20));
         itemCount->setAnchorPoint(Vec2::ANCHOR_BOTTOM_RIGHT);
         itemCount->setScale(0.23);

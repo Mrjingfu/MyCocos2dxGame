@@ -37,7 +37,7 @@ void GlobalPromptLayer::refreshUIView()
     int i = 0;
     for (auto iter=m_vPrompts.begin() ; iter!=m_vPrompts.end(); ++iter) {
         
-        ui::Text* m_pLabel =*iter;
+        ui::TextBMFont* m_pLabel =*iter;
         if (i==0) {
             labelHeight = m_pLabel->getContentSize().height*m_pLabel->getScale();
             tag = i;
@@ -76,7 +76,7 @@ void GlobalPromptLayer::refreshUIView()
     {
         for (auto iter=m_vPrompts.begin(); iter!=m_vPrompts.end() -1; ) {
             if (*iter) {
-                ui::Text* m_pLabel = *iter;
+                ui::TextBMFont* m_pLabel = *iter;
                 if (m_pLabel) {
                     m_pLabel->removeFromParentAndCleanup(true);
                     iter = m_vPrompts.erase(iter);
@@ -92,7 +92,7 @@ void GlobalPromptLayer::refreshUIView()
 void GlobalPromptLayer::removePrompt(cocos2d::Node* node)
 {
     CCLOG("removePrompt");
-    ui::Text* m_pLabel = static_cast<ui::Text*>(node);
+    ui::TextBMFont* m_pLabel = static_cast<ui::TextBMFont*>(node);
     if (m_pLabel)
     {
             m_pLabel->removeFromParentAndCleanup(false);
@@ -111,18 +111,16 @@ void GlobalPromptLayer::clearGlobalPrompt()
 void GlobalPromptLayer::shwoGlobalPrompt(TipTypes tipType, std::string text)
 {
     CCLOG("shwoGlobalPrompt");
-    ui::Text* m_pLabel = ui::Text::create();
-    m_pLabel->setFontSize(36);
+    ui::TextBMFont* m_pLabel = ui::TextBMFont::create();
     m_pLabel->setAnchorPoint(cocos2d::Vec2::ANCHOR_MIDDLE_TOP);
-    m_pLabel->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
+    m_pLabel->setFntFile(UtilityHelper::getLocalStringForUi("FONT_NAME"));
     m_pLabel->setScale(0.53);
-    m_pLabel->enableGlow(Color4B(Color3B::GREEN));
+
 //    m_pLabel->enableShadow(Color4B::BLUE);
 //    m_pLabel->enableOutline(cocos2d::Color4B::BLUE);
-    m_pLabel->setTextColor(cocos2d::Color4B(PopupUILayerManager::getInstance()->getTipsColor(tipType)));
-    cocos2d::Size fonSize = UtilityHelper::getSingleStrFontSize(m_pLabel, text);
-    int charCount  = (int)(getContentSize().width/fonSize.width);
-    UtilityHelper::getLineStr(text, charCount);
+    m_pLabel->setColor(PopupUILayerManager::getInstance()->getTipsColor(tipType));
+
+    UtilityHelper::getLineForText(m_pLabel, text,getContentSize().width-10);
     m_pLabel->setString(text);
     m_pLabel->setVisible(false);
     m_vPrompts.pushBack(m_pLabel);

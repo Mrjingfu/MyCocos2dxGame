@@ -117,29 +117,25 @@
                 <PreSize X="1.4571" Y="2.0000" />
                 <FileData Type="PlistSubImage" Path="chr_sword.png" Plist="ui_characters.plist" />
               </AbstractNodeData>
-              <AbstractNodeData Name="role_lv_text" ActionTag="-1723414917" Tag="324" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="35.5585" RightMargin="52.9415" TopMargin="-11.7827" BottomMargin="88.7827" FontSize="36" LabelText="LV" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
-                <Size X="49.0000" Y="43.0000" />
+              <AbstractNodeData Name="role_lv_text" ActionTag="1347841285" Tag="387" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="-49.1240" RightMargin="-32.3760" TopMargin="-7.3500" BottomMargin="118.3500" LabelText="LV" ctype="TextBMFontObjectData">
+                <Size X="43.0000" Y="39.0000" />
                 <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
                 <Position X="57.8760" Y="137.8500" />
-                <Scale ScaleX="0.3000" ScaleY="0.3500" />
+                <Scale ScaleX="0.3500" ScaleY="0.3500" />
                 <CColor A="255" R="144" G="238" B="144" />
                 <PrePosition X="0.4368" Y="0.9190" />
-                <PreSize X="0.1960" Y="0.2389" />
-                <FontResource Type="Normal" Path="fonts/fangz.TTF" Plist="" />
-                <OutlineColor A="255" R="255" G="0" B="0" />
-                <ShadowColor A="255" R="110" G="110" B="110" />
+                <PreSize X="1.6151" Y="0.2600" />
+                <LabelBMFontFile_CNB Type="Normal" Path="fonts/ui_font.fnt" Plist="" />
               </AbstractNodeData>
-              <AbstractNodeData Name="role_lv_num" ActionTag="1511903146" Tag="325" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="69.8885" RightMargin="-1.3885" TopMargin="-10.7787" BottomMargin="97.7787" FontSize="36" LabelText="123" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
-                <Size X="69.0000" Y="43.0000" />
+              <AbstractNodeData Name="role_lv_num" ActionTag="-601888730" Tag="388" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="67.3498" RightMargin="22.1502" TopMargin="-7.1250" BottomMargin="118.1250" LabelText="123" ctype="TextBMFontObjectData">
+                <Size X="60.0000" Y="39.0000" />
                 <AnchorPoint ScaleY="0.5000" />
                 <Position X="67.3498" Y="137.6250" />
-                <Scale ScaleX="0.3000" ScaleY="0.3000" />
+                <Scale ScaleX="0.3500" ScaleY="0.3500" />
                 <CColor A="255" R="255" G="255" B="255" />
                 <PrePosition X="0.5083" Y="0.9175" />
-                <PreSize X="0.2760" Y="0.2389" />
-                <FontResource Type="Normal" Path="fonts/fangz.TTF" Plist="" />
-                <OutlineColor A="255" R="255" G="0" B="0" />
-                <ShadowColor A="255" R="110" G="110" B="110" />
+                <PreSize X="1.6151" Y="0.2600" />
+                <LabelBMFontFile_CNB Type="Normal" Path="fonts/ui_font.fnt" Plist="" />
               </AbstractNodeData>
             </Children>
             <AnchorPoint ScaleY="1.0000" />
@@ -153,269 +149,225 @@
           <AbstractNodeData Name="prop_frame" ActionTag="1466961965" Tag="312" IconVisible="False" PercentWidthEnable="True" PercentHeightEnable="True" PercentWidthEnabled="True" PercentHeightEnabled="True" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="135.0000" Scale9Enable="True" LeftEage="4" RightEage="4" TopEage="4" BottomEage="4" Scale9OriginX="4" Scale9OriginY="4" Scale9Width="5" Scale9Height="5" ctype="ImageViewObjectData">
             <Size X="115.0000" Y="150.0000" />
             <Children>
-              <AbstractNodeData Name="role_prop_hp" ActionTag="1098568782" Tag="313" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="7.7063" RightMargin="-14.2063" TopMargin="-11.7823" BottomMargin="98.7823" FontSize="36" LabelText="生命值:" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
-                <Size X="119.0000" Y="43.0000" />
+              <AbstractNodeData Name="role_prop_hp" ActionTag="24001304" Tag="365" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="7.8775" RightMargin="-106.8775" TopMargin="-8.2800" BottomMargin="119.2800" LabelText="生命值:" ctype="TextBMFontObjectData">
+                <Size X="106.0000" Y="39.0000" />
                 <AnchorPoint ScaleY="0.5000" />
                 <Position X="7.8775" Y="138.7800" />
-                <Scale ScaleX="0.2500" ScaleY="0.2500" />
+                <Scale ScaleX="0.2800" ScaleY="0.2800" />
                 <CColor A="255" R="144" G="238" B="144" />
                 <PrePosition X="0.0685" Y="0.9252" />
-                <PreSize X="2.5000" Y="0.8000" />
-                <FontResource Type="Normal" Path="fonts/fangz.TTF" Plist="" />
-                <OutlineColor A="255" R="255" G="0" B="0" />
-                <ShadowColor A="255" R="110" G="110" B="110" />
+                <PreSize X="1.8609" Y="0.2600" />
+                <LabelBMFontFile_CNB Type="Normal" Path="fonts/ui_font.fnt" Plist="" />
               </AbstractNodeData>
-              <AbstractNodeData Name="role_prop_hp_num" ActionTag="1482297345" Tag="341" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="36.2738" RightMargin="9.7262" TopMargin="-9.8900" BottomMargin="116.8900" FontSize="36" LabelText="100&#xA;" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
-                <Size X="69.0000" Y="43.0000" />
+              <AbstractNodeData Name="role_prop_hp_num" ActionTag="584235766" Tag="366" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="45.2710" RightMargin="9.7290" TopMargin="-7.8900" BottomMargin="118.8900" LabelText="100" ctype="TextBMFontObjectData">
+                <Size X="60.0000" Y="39.0000" />
                 <AnchorPoint ScaleX="1.0000" ScaleY="0.5000" />
                 <Position X="105.2710" Y="138.3900" />
-                <Scale ScaleX="0.2500" ScaleY="0.2500" />
+                <Scale ScaleX="0.2800" ScaleY="0.2800" />
                 <CColor A="255" R="255" G="255" B="255" />
                 <PrePosition X="0.9154" Y="0.9226" />
-                <PreSize X="2.5000" Y="0.8000" />
-                <FontResource Type="Normal" Path="fonts/fangz.TTF" Plist="" />
-                <OutlineColor A="255" R="255" G="0" B="0" />
-                <ShadowColor A="255" R="110" G="110" B="110" />
+                <PreSize X="1.8609" Y="0.2600" />
+                <LabelBMFontFile_CNB Type="Normal" Path="fonts/ui_font.fnt" Plist="" />
               </AbstractNodeData>
-              <AbstractNodeData Name="role_prop_mp" ActionTag="103949053" Tag="314" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="7.7063" RightMargin="-14.2063" TopMargin="-0.8150" BottomMargin="87.8150" FontSize="36" LabelText="魔法值:" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
-                <Size X="119.0000" Y="43.0000" />
+              <AbstractNodeData Name="role_prop_mp" ActionTag="-95825565" Tag="367" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="7.8775" RightMargin="1.1225" TopMargin="4.3650" BottomMargin="106.6350" LabelText="魔法值:" ctype="TextBMFontObjectData">
+                <Size X="106.0000" Y="39.0000" />
                 <AnchorPoint ScaleY="0.5000" />
                 <Position X="7.8775" Y="126.1350" />
-                <Scale ScaleX="0.2500" ScaleY="0.2500" />
+                <Scale ScaleX="0.2800" ScaleY="0.2800" />
                 <CColor A="255" R="144" G="238" B="144" />
                 <PrePosition X="0.0685" Y="0.8409" />
-                <PreSize X="2.5000" Y="0.8000" />
-                <FontResource Type="Normal" Path="fonts/fangz.TTF" Plist="" />
-                <OutlineColor A="255" R="173" G="216" B="230" />
-                <ShadowColor A="255" R="127" G="127" B="127" />
+                <PreSize X="1.8609" Y="0.2600" />
+                <LabelBMFontFile_CNB Type="Normal" Path="fonts/ui_font.fnt" Plist="" />
               </AbstractNodeData>
-              <AbstractNodeData Name="role_prop_mp_num" ActionTag="786613207" Tag="343" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="36.2738" RightMargin="9.7262" TopMargin="2.3672" BottomMargin="104.6328" FontSize="36" LabelText="100&#xA;" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
-                <Size X="69.0000" Y="43.0000" />
+              <AbstractNodeData Name="role_prop_mp_num" ActionTag="-1581993765" Tag="368" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="45.2710" RightMargin="9.7290" TopMargin="4.3650" BottomMargin="106.6350" LabelText="100" ctype="TextBMFontObjectData">
+                <Size X="60.0000" Y="39.0000" />
                 <AnchorPoint ScaleX="1.0000" ScaleY="0.5000" />
                 <Position X="105.2710" Y="126.1350" />
-                <Scale ScaleX="0.2500" ScaleY="0.2500" />
+                <Scale ScaleX="0.2800" ScaleY="0.2800" />
                 <CColor A="255" R="255" G="255" B="255" />
                 <PrePosition X="0.9154" Y="0.8409" />
-                <PreSize X="2.5000" Y="0.8000" />
-                <FontResource Type="Normal" Path="fonts/fangz.TTF" Plist="" />
-                <OutlineColor A="255" R="173" G="216" B="230" />
-                <ShadowColor A="255" R="127" G="127" B="127" />
+                <PreSize X="1.8609" Y="0.2600" />
+                <LabelBMFontFile_CNB Type="Normal" Path="fonts/ui_font.fnt" Plist="" />
               </AbstractNodeData>
-              <AbstractNodeData Name="role_prop_attack" ActionTag="-686390794" Tag="315" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="7.7063" RightMargin="-14.2063" TopMargin="10.1522" BottomMargin="76.8478" FontSize="36" LabelText="攻击力:" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
-                <Size X="119.0000" Y="43.0000" />
+              <AbstractNodeData Name="role_prop_attack" ActionTag="-1706649113" Tag="369" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="7.8775" RightMargin="1.1225" TopMargin="17.0250" BottomMargin="93.9750" LabelText="攻击力:" ctype="TextBMFontObjectData">
+                <Size X="106.0000" Y="39.0000" />
                 <AnchorPoint ScaleY="0.5000" />
                 <Position X="7.8775" Y="113.4750" />
-                <Scale ScaleX="0.2500" ScaleY="0.2500" />
+                <Scale ScaleX="0.2800" ScaleY="0.2800" />
                 <CColor A="255" R="144" G="238" B="144" />
                 <PrePosition X="0.0685" Y="0.7565" />
-                <PreSize X="2.5000" Y="0.8000" />
-                <FontResource Type="Normal" Path="fonts/fangz.TTF" Plist="" />
-                <OutlineColor A="255" R="255" G="0" B="0" />
-                <ShadowColor A="255" R="110" G="110" B="110" />
+                <PreSize X="1.8609" Y="0.2600" />
+                <LabelBMFontFile_CNB Type="Normal" Path="fonts/ui_font.fnt" Plist="" />
               </AbstractNodeData>
-              <AbstractNodeData Name="role_prop_attack_num" ActionTag="-1219244535" Tag="344" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="36.2738" RightMargin="9.7262" TopMargin="15.0217" BottomMargin="91.9783" FontSize="36" LabelText="100&#xA;" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
-                <Size X="69.0000" Y="43.0000" />
+              <AbstractNodeData Name="role_prop_attack_num" ActionTag="-826121939" Tag="370" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="45.2710" RightMargin="9.7290" TopMargin="17.0250" BottomMargin="93.9750" LabelText="100" ctype="TextBMFontObjectData">
+                <Size X="60.0000" Y="39.0000" />
                 <AnchorPoint ScaleX="1.0000" ScaleY="0.5000" />
                 <Position X="105.2710" Y="113.4750" />
-                <Scale ScaleX="0.2500" ScaleY="0.2500" />
+                <Scale ScaleX="0.2800" ScaleY="0.2800" />
                 <CColor A="255" R="255" G="255" B="255" />
                 <PrePosition X="0.9154" Y="0.7565" />
-                <PreSize X="2.5000" Y="0.8000" />
-                <FontResource Type="Normal" Path="fonts/fangz.TTF" Plist="" />
-                <OutlineColor A="255" R="255" G="0" B="0" />
-                <ShadowColor A="255" R="110" G="110" B="110" />
+                <PreSize X="1.8609" Y="0.2600" />
+                <LabelBMFontFile_CNB Type="Normal" Path="fonts/ui_font.fnt" Plist="" />
               </AbstractNodeData>
-              <AbstractNodeData Name="role_prop_armor" ActionTag="1234511684" Tag="316" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="7.7063" RightMargin="-14.2063" TopMargin="21.5194" BottomMargin="65.4806" FontSize="36" LabelText="防御力:" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
-                <Size X="119.0000" Y="43.0000" />
+              <AbstractNodeData Name="role_prop_armor" ActionTag="-189366422" Tag="371" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="7.8775" RightMargin="1.1225" TopMargin="30.1350" BottomMargin="80.8650" LabelText="防御力:" ctype="TextBMFontObjectData">
+                <Size X="106.0000" Y="39.0000" />
                 <AnchorPoint ScaleY="0.5000" />
                 <Position X="7.8775" Y="100.3650" />
-                <Scale ScaleX="0.2500" ScaleY="0.2500" />
+                <Scale ScaleX="0.2800" ScaleY="0.2800" />
                 <CColor A="255" R="144" G="238" B="144" />
                 <PrePosition X="0.0685" Y="0.6691" />
-                <PreSize X="2.5000" Y="0.8000" />
-                <FontResource Type="Normal" Path="fonts/fangz.TTF" Plist="" />
-                <OutlineColor A="255" R="255" G="0" B="0" />
-                <ShadowColor A="255" R="110" G="110" B="110" />
+                <PreSize X="1.8609" Y="0.2600" />
+                <LabelBMFontFile_CNB Type="Normal" Path="fonts/ui_font.fnt" Plist="" />
               </AbstractNodeData>
-              <AbstractNodeData Name="role_prop_armor_num" ActionTag="682688992" Tag="345" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="36.2738" RightMargin="9.7262" TopMargin="28.1378" BottomMargin="78.8622" FontSize="36" LabelText="100&#xA;" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
-                <Size X="69.0000" Y="43.0000" />
+              <AbstractNodeData Name="role_prop_armor_num" ActionTag="-1748229169" Tag="372" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="45.2710" RightMargin="9.7290" TopMargin="30.1350" BottomMargin="80.8650" LabelText="100" ctype="TextBMFontObjectData">
+                <Size X="60.0000" Y="39.0000" />
                 <AnchorPoint ScaleX="1.0000" ScaleY="0.5000" />
                 <Position X="105.2710" Y="100.3650" />
-                <Scale ScaleX="0.2500" ScaleY="0.2500" />
+                <Scale ScaleX="0.2800" ScaleY="0.2800" />
                 <CColor A="255" R="255" G="255" B="255" />
                 <PrePosition X="0.9154" Y="0.6691" />
-                <PreSize X="2.5000" Y="0.8000" />
-                <FontResource Type="Normal" Path="fonts/fangz.TTF" Plist="" />
-                <OutlineColor A="255" R="255" G="0" B="0" />
-                <ShadowColor A="255" R="110" G="110" B="110" />
+                <PreSize X="1.8609" Y="0.2600" />
+                <LabelBMFontFile_CNB Type="Normal" Path="fonts/ui_font.fnt" Plist="" />
               </AbstractNodeData>
-              <AbstractNodeData Name="role_prop_exp" ActionTag="1042700847" Tag="317" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="7.7063" RightMargin="-14.2063" TopMargin="32.0866" BottomMargin="54.9134" FontSize="36" LabelText="经验值:" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
-                <Size X="119.0000" Y="43.0000" />
+              <AbstractNodeData Name="role_prop_exp" ActionTag="1903476968" Tag="373" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="7.8775" RightMargin="1.1225" TopMargin="42.3300" BottomMargin="68.6700" LabelText="经验值:" ctype="TextBMFontObjectData">
+                <Size X="106.0000" Y="39.0000" />
                 <AnchorPoint ScaleY="0.5000" />
                 <Position X="7.8775" Y="88.1700" />
-                <Scale ScaleX="0.2500" ScaleY="0.2500" />
+                <Scale ScaleX="0.2800" ScaleY="0.2800" />
                 <CColor A="255" R="144" G="238" B="144" />
                 <PrePosition X="0.0685" Y="0.5878" />
-                <PreSize X="2.5000" Y="0.8000" />
-                <FontResource Type="Normal" Path="fonts/fangz.TTF" Plist="" />
-                <OutlineColor A="255" R="255" G="0" B="0" />
-                <ShadowColor A="255" R="110" G="110" B="110" />
+                <PreSize X="1.8609" Y="0.2600" />
+                <LabelBMFontFile_CNB Type="Normal" Path="fonts/ui_font.fnt" Plist="" />
               </AbstractNodeData>
-              <AbstractNodeData Name="role_prop_exp_num" ActionTag="922684715" Tag="346" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="36.2738" RightMargin="9.7262" TopMargin="40.3307" BottomMargin="66.6693" FontSize="36" LabelText="100&#xA;" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
-                <Size X="69.0000" Y="43.0000" />
+              <AbstractNodeData Name="role_prop_exp_num" ActionTag="-1640110597" Tag="374" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="45.2710" RightMargin="9.7290" TopMargin="42.3300" BottomMargin="68.6700" LabelText="100" ctype="TextBMFontObjectData">
+                <Size X="60.0000" Y="39.0000" />
                 <AnchorPoint ScaleX="1.0000" ScaleY="0.5000" />
                 <Position X="105.2710" Y="88.1700" />
-                <Scale ScaleX="0.2500" ScaleY="0.2500" />
+                <Scale ScaleX="0.2800" ScaleY="0.2800" />
                 <CColor A="255" R="255" G="255" B="255" />
                 <PrePosition X="0.9154" Y="0.5878" />
-                <PreSize X="2.5000" Y="0.8000" />
-                <FontResource Type="Normal" Path="fonts/fangz.TTF" Plist="" />
-                <OutlineColor A="255" R="255" G="0" B="0" />
-                <ShadowColor A="255" R="110" G="110" B="110" />
+                <PreSize X="1.8609" Y="0.2600" />
+                <LabelBMFontFile_CNB Type="Normal" Path="fonts/ui_font.fnt" Plist="" />
               </AbstractNodeData>
-              <AbstractNodeData Name="role_prop_magic" ActionTag="-1066636670" Tag="320" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="7.7063" RightMargin="-14.2063" TopMargin="43.0539" BottomMargin="43.9461" FontSize="36" LabelText="取魔率:" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
-                <Size X="119.0000" Y="43.0000" />
+              <AbstractNodeData Name="role_prop_magic" ActionTag="-2094531603" Tag="375" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="7.8775" RightMargin="1.1225" TopMargin="54.9900" BottomMargin="56.0100" LabelText="取魔率:" ctype="TextBMFontObjectData">
+                <Size X="106.0000" Y="39.0000" />
                 <AnchorPoint ScaleY="0.5000" />
                 <Position X="7.8775" Y="75.5100" />
-                <Scale ScaleX="0.2500" ScaleY="0.2500" />
+                <Scale ScaleX="0.2800" ScaleY="0.2800" />
                 <CColor A="255" R="144" G="238" B="144" />
                 <PrePosition X="0.0685" Y="0.5034" />
-                <PreSize X="2.5000" Y="0.8000" />
-                <FontResource Type="Normal" Path="fonts/fangz.TTF" Plist="" />
-                <OutlineColor A="255" R="255" G="0" B="0" />
-                <ShadowColor A="255" R="110" G="110" B="110" />
+                <PreSize X="1.8609" Y="0.2600" />
+                <LabelBMFontFile_CNB Type="Normal" Path="fonts/ui_font.fnt" Plist="" />
               </AbstractNodeData>
-              <AbstractNodeData Name="role_prop_magic_num" ActionTag="59226583" Tag="347" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="36.2738" RightMargin="9.7262" TopMargin="52.9852" BottomMargin="54.0148" FontSize="36" LabelText="100&#xA;" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
-                <Size X="69.0000" Y="43.0000" />
+              <AbstractNodeData Name="role_prop_magic_num" ActionTag="-1148355570" Tag="376" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="45.2710" RightMargin="9.7290" TopMargin="54.9900" BottomMargin="56.0100" LabelText="100" ctype="TextBMFontObjectData">
+                <Size X="60.0000" Y="39.0000" />
                 <AnchorPoint ScaleX="1.0000" ScaleY="0.5000" />
                 <Position X="105.2710" Y="75.5100" />
-                <Scale ScaleX="0.2500" ScaleY="0.2500" />
+                <Scale ScaleX="0.2800" ScaleY="0.2800" />
                 <CColor A="255" R="255" G="255" B="255" />
                 <PrePosition X="0.9154" Y="0.5034" />
-                <PreSize X="2.5000" Y="0.8000" />
-                <FontResource Type="Normal" Path="fonts/fangz.TTF" Plist="" />
-                <OutlineColor A="255" R="255" G="0" B="0" />
-                <ShadowColor A="255" R="110" G="110" B="110" />
+                <PreSize X="1.8609" Y="0.2600" />
+                <LabelBMFontFile_CNB Type="Normal" Path="fonts/ui_font.fnt" Plist="" />
               </AbstractNodeData>
-              <AbstractNodeData Name="role_prop_critical_strike" ActionTag="2061027895" Tag="321" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="7.7064" RightMargin="-14.2064" TopMargin="54.0999" BottomMargin="32.9001" FontSize="36" LabelText="暴击率:" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
-                <Size X="119.0000" Y="43.0000" />
+              <AbstractNodeData Name="role_prop_critical_strike" ActionTag="-965757101" Tag="377" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="7.8775" RightMargin="1.1225" TopMargin="67.7250" BottomMargin="43.2750" LabelText="暴击率:" ctype="TextBMFontObjectData">
+                <Size X="106.0000" Y="39.0000" />
                 <AnchorPoint ScaleY="0.5000" />
                 <Position X="7.8775" Y="62.7750" />
-                <Scale ScaleX="0.2500" ScaleY="0.2500" />
+                <Scale ScaleX="0.2800" ScaleY="0.2800" />
                 <CColor A="255" R="144" G="238" B="144" />
                 <PrePosition X="0.0685" Y="0.4185" />
-                <PreSize X="2.5000" Y="0.8000" />
-                <FontResource Type="Normal" Path="fonts/fangz.TTF" Plist="" />
-                <OutlineColor A="255" R="255" G="0" B="0" />
-                <ShadowColor A="255" R="110" G="110" B="110" />
+                <PreSize X="1.8609" Y="0.2600" />
+                <LabelBMFontFile_CNB Type="Normal" Path="fonts/ui_font.fnt" Plist="" />
               </AbstractNodeData>
-              <AbstractNodeData Name="role_prop_critical_strike_num" ActionTag="-119475539" Tag="350" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="36.2738" RightMargin="9.7262" TopMargin="65.7307" BottomMargin="41.2693" FontSize="36" LabelText="100&#xA;" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
-                <Size X="69.0000" Y="43.0000" />
+              <AbstractNodeData Name="role_prop_critical_strike_num" ActionTag="352951007" Tag="378" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="45.2710" RightMargin="9.7290" TopMargin="67.7250" BottomMargin="43.2750" LabelText="100" ctype="TextBMFontObjectData">
+                <Size X="60.0000" Y="39.0000" />
                 <AnchorPoint ScaleX="1.0000" ScaleY="0.5000" />
                 <Position X="105.2710" Y="62.7750" />
-                <Scale ScaleX="0.2500" ScaleY="0.2500" />
+                <Scale ScaleX="0.2800" ScaleY="0.2800" />
                 <CColor A="255" R="255" G="255" B="255" />
                 <PrePosition X="0.9154" Y="0.4185" />
-                <PreSize X="2.5000" Y="0.8000" />
-                <FontResource Type="Normal" Path="fonts/fangz.TTF" Plist="" />
-                <OutlineColor A="255" R="255" G="0" B="0" />
-                <ShadowColor A="255" R="110" G="110" B="110" />
+                <PreSize X="1.8609" Y="0.2600" />
+                <LabelBMFontFile_CNB Type="Normal" Path="fonts/ui_font.fnt" Plist="" />
               </AbstractNodeData>
-              <AbstractNodeData Name="role_prop_dodge" ActionTag="1461603970" Tag="322" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="7.7063" RightMargin="-14.2063" TopMargin="64.5869" BottomMargin="22.4131" FontSize="36" LabelText="闪避率:" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
-                <Size X="119.0000" Y="43.0000" />
+              <AbstractNodeData Name="role_prop_dodge" ActionTag="1540572068" Tag="379" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="7.8775" RightMargin="1.1225" TopMargin="79.8300" BottomMargin="31.1700" LabelText="闪避率:" ctype="TextBMFontObjectData">
+                <Size X="106.0000" Y="39.0000" />
                 <AnchorPoint ScaleY="0.5000" />
                 <Position X="7.8775" Y="50.6700" />
-                <Scale ScaleX="0.2500" ScaleY="0.2500" />
+                <Scale ScaleX="0.2800" ScaleY="0.2800" />
                 <CColor A="255" R="144" G="238" B="144" />
                 <PrePosition X="0.0685" Y="0.3378" />
-                <PreSize X="2.5000" Y="0.8000" />
-                <FontResource Type="Normal" Path="fonts/fangz.TTF" Plist="" />
-                <OutlineColor A="255" R="255" G="0" B="0" />
-                <ShadowColor A="255" R="110" G="110" B="110" />
+                <PreSize X="1.8609" Y="0.2600" />
+                <LabelBMFontFile_CNB Type="Normal" Path="fonts/ui_font.fnt" Plist="" />
               </AbstractNodeData>
-              <AbstractNodeData Name="role_prop_dodge_num" ActionTag="-803127279" Tag="351" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="36.2738" RightMargin="9.7262" TopMargin="77.8310" BottomMargin="29.1690" FontSize="36" LabelText="100&#xA;" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
-                <Size X="69.0000" Y="43.0000" />
+              <AbstractNodeData Name="role_prop_dodge_num" ActionTag="1350799331" Tag="380" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="45.2710" RightMargin="9.7290" TopMargin="79.8300" BottomMargin="31.1700" LabelText="100" ctype="TextBMFontObjectData">
+                <Size X="60.0000" Y="39.0000" />
                 <AnchorPoint ScaleX="1.0000" ScaleY="0.5000" />
                 <Position X="105.2710" Y="50.6700" />
-                <Scale ScaleX="0.2500" ScaleY="0.2500" />
+                <Scale ScaleX="0.2800" ScaleY="0.2800" />
                 <CColor A="255" R="255" G="255" B="255" />
                 <PrePosition X="0.9154" Y="0.3378" />
-                <PreSize X="2.5000" Y="0.8000" />
-                <FontResource Type="Normal" Path="fonts/fangz.TTF" Plist="" />
-                <OutlineColor A="255" R="255" G="0" B="0" />
-                <ShadowColor A="255" R="110" G="110" B="110" />
+                <PreSize X="1.8609" Y="0.2600" />
+                <LabelBMFontFile_CNB Type="Normal" Path="fonts/ui_font.fnt" Plist="" />
               </AbstractNodeData>
-              <AbstractNodeData Name="role_prop_block" ActionTag="581801939" Tag="323" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="7.7063" RightMargin="-14.2063" TopMargin="75.5546" BottomMargin="11.4454" FontSize="36" LabelText="格挡率:" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
-                <Size X="119.0000" Y="43.0000" />
+              <AbstractNodeData Name="role_prop_block" ActionTag="1498365969" Tag="381" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="7.8775" RightMargin="1.1225" TopMargin="92.4900" BottomMargin="18.5100" LabelText="闪避率:" ctype="TextBMFontObjectData">
+                <Size X="106.0000" Y="39.0000" />
                 <AnchorPoint ScaleY="0.5000" />
                 <Position X="7.8775" Y="38.0100" />
-                <Scale ScaleX="0.2500" ScaleY="0.2500" />
+                <Scale ScaleX="0.2800" ScaleY="0.2800" />
                 <CColor A="255" R="144" G="238" B="144" />
                 <PrePosition X="0.0685" Y="0.2534" />
-                <PreSize X="1.2857" Y="0.5294" />
-                <FontResource Type="Normal" Path="fonts/fangz.TTF" Plist="" />
-                <OutlineColor A="255" R="255" G="0" B="0" />
-                <ShadowColor A="255" R="110" G="110" B="110" />
+                <PreSize X="1.8609" Y="0.2600" />
+                <LabelBMFontFile_CNB Type="Normal" Path="fonts/ui_font.fnt" Plist="" />
               </AbstractNodeData>
-              <AbstractNodeData Name="role_prop_block_num" ActionTag="522386759" Tag="352" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="36.2738" RightMargin="9.7262" TopMargin="90.4861" BottomMargin="16.5139" FontSize="36" LabelText="100&#xA;" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
-                <Size X="69.0000" Y="43.0000" />
+              <AbstractNodeData Name="role_prop_block_num" ActionTag="-2011457740" Tag="382" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="45.2710" RightMargin="9.7290" TopMargin="92.4900" BottomMargin="18.5100" LabelText="100" ctype="TextBMFontObjectData">
+                <Size X="60.0000" Y="39.0000" />
                 <AnchorPoint ScaleX="1.0000" ScaleY="0.5000" />
                 <Position X="105.2710" Y="38.0100" />
-                <Scale ScaleX="0.2500" ScaleY="0.2500" />
+                <Scale ScaleX="0.2800" ScaleY="0.2800" />
                 <CColor A="255" R="255" G="255" B="255" />
                 <PrePosition X="0.9154" Y="0.2534" />
-                <PreSize X="1.2857" Y="0.5294" />
-                <FontResource Type="Normal" Path="fonts/fangz.TTF" Plist="" />
-                <OutlineColor A="255" R="255" G="0" B="0" />
-                <ShadowColor A="255" R="110" G="110" B="110" />
+                <PreSize X="1.8609" Y="0.2600" />
+                <LabelBMFontFile_CNB Type="Normal" Path="fonts/ui_font.fnt" Plist="" />
               </AbstractNodeData>
-              <AbstractNodeData Name="role_prop_light" ActionTag="-1057605046" Tag="318" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="7.7063" RightMargin="-50.2063" TopMargin="86.9228" BottomMargin="0.0772" FontSize="36" LabelText="光照范围:" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
-                <Size X="155.0000" Y="43.0000" />
+              <AbstractNodeData Name="role_prop_light" ActionTag="-818419515" Tag="383" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="7.8775" RightMargin="1.1225" TopMargin="105.6000" BottomMargin="5.4000" LabelText="光照范围:" ctype="TextBMFontObjectData">
+                <Size X="138.0000" Y="39.0000" />
                 <AnchorPoint ScaleY="0.5000" />
                 <Position X="7.8775" Y="24.9000" />
-                <Scale ScaleX="0.2500" ScaleY="0.2500" />
+                <Scale ScaleX="0.2800" ScaleY="0.2800" />
                 <CColor A="255" R="144" G="238" B="144" />
                 <PrePosition X="0.0685" Y="0.1660" />
-                <PreSize X="2.5000" Y="0.8000" />
-                <FontResource Type="Normal" Path="fonts/fangz.TTF" Plist="" />
-                <OutlineColor A="255" R="255" G="0" B="0" />
-                <ShadowColor A="255" R="110" G="110" B="110" />
+                <PreSize X="1.8609" Y="0.2600" />
+                <LabelBMFontFile_CNB Type="Normal" Path="fonts/ui_font.fnt" Plist="" />
               </AbstractNodeData>
-              <AbstractNodeData Name="role_prop_light_num" ActionTag="-1604439077" Tag="348" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="36.2738" RightMargin="9.7262" TopMargin="103.6032" BottomMargin="3.3968" FontSize="36" LabelText="100&#xA;" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
-                <Size X="69.0000" Y="43.0000" />
+              <AbstractNodeData Name="role_prop_light_num" ActionTag="179346264" Tag="384" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="45.2710" RightMargin="9.7290" TopMargin="105.6000" BottomMargin="5.4000" LabelText="100" ctype="TextBMFontObjectData">
+                <Size X="60.0000" Y="39.0000" />
                 <AnchorPoint ScaleX="1.0000" ScaleY="0.5000" />
                 <Position X="105.2710" Y="24.9000" />
-                <Scale ScaleX="0.2500" ScaleY="0.2500" />
+                <Scale ScaleX="0.2800" ScaleY="0.2800" />
                 <CColor A="255" R="255" G="255" B="255" />
                 <PrePosition X="0.9154" Y="0.1660" />
-                <PreSize X="2.5000" Y="0.8000" />
-                <FontResource Type="Normal" Path="fonts/fangz.TTF" Plist="" />
-                <OutlineColor A="255" R="255" G="0" B="0" />
-                <ShadowColor A="255" R="110" G="110" B="110" />
+                <PreSize X="1.8609" Y="0.2600" />
+                <LabelBMFontFile_CNB Type="Normal" Path="fonts/ui_font.fnt" Plist="" />
               </AbstractNodeData>
-              <AbstractNodeData Name="role_prop_search" ActionTag="-848701960" Tag="319" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="7.7063" RightMargin="-50.2063" TopMargin="97.8900" BottomMargin="-10.8900" FontSize="36" LabelText="侦查范围:" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
-                <Size X="155.0000" Y="43.0000" />
+              <AbstractNodeData Name="role_prop_search" ActionTag="2039717428" Tag="385" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="7.8775" RightMargin="-30.8775" TopMargin="118.2600" BottomMargin="-7.2600" LabelText="侦查范围:" ctype="TextBMFontObjectData">
+                <Size X="138.0000" Y="39.0000" />
                 <AnchorPoint ScaleY="0.5000" />
                 <Position X="7.8775" Y="12.2400" />
-                <Scale ScaleX="0.2500" ScaleY="0.2500" />
+                <Scale ScaleX="0.2800" ScaleY="0.2800" />
                 <CColor A="255" R="144" G="238" B="144" />
                 <PrePosition X="0.0685" Y="0.0816" />
-                <PreSize X="2.5000" Y="0.8000" />
-                <FontResource Type="Normal" Path="fonts/fangz.TTF" Plist="" />
-                <OutlineColor A="255" R="255" G="0" B="0" />
-                <ShadowColor A="255" R="110" G="110" B="110" />
+                <PreSize X="1.8609" Y="0.2600" />
+                <LabelBMFontFile_CNB Type="Normal" Path="fonts/ui_font.fnt" Plist="" />
               </AbstractNodeData>
-              <AbstractNodeData Name="role_prop_search_num" ActionTag="-1910017407" Tag="349" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="36.2738" RightMargin="9.7262" TopMargin="116.2577" BottomMargin="-9.2577" FontSize="36" LabelText="100&#xA;" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
-                <Size X="69.0000" Y="43.0000" />
+              <AbstractNodeData Name="role_prop_search_num" ActionTag="1401593262" Tag="386" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="45.2710" RightMargin="9.7290" TopMargin="118.2600" BottomMargin="-7.2600" LabelText="100" ctype="TextBMFontObjectData">
+                <Size X="60.0000" Y="39.0000" />
                 <AnchorPoint ScaleX="1.0000" ScaleY="0.5000" />
                 <Position X="105.2710" Y="12.2400" />
-                <Scale ScaleX="0.2500" ScaleY="0.2500" />
+                <Scale ScaleX="0.2800" ScaleY="0.2800" />
                 <CColor A="255" R="255" G="255" B="255" />
                 <PrePosition X="0.9154" Y="0.0816" />
-                <PreSize X="2.5000" Y="0.8000" />
-                <FontResource Type="Normal" Path="fonts/fangz.TTF" Plist="" />
-                <OutlineColor A="255" R="255" G="0" B="0" />
-                <ShadowColor A="255" R="110" G="110" B="110" />
+                <PreSize X="1.8609" Y="0.2600" />
+                <LabelBMFontFile_CNB Type="Normal" Path="fonts/ui_font.fnt" Plist="" />
               </AbstractNodeData>
             </Children>
             <AnchorPoint ScaleX="1.0000" ScaleY="1.0000" />
@@ -429,7 +381,7 @@
           <AbstractNodeData Name="role_btn_close" ActionTag="-150698058" Tag="353" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="221.1402" RightMargin="3.8598" TopMargin="-37.9600" BottomMargin="162.9600" TouchEnable="True" FontSize="14" Scale9Enable="True" LeftEage="2" RightEage="2" TopEage="2" BottomEage="2" Scale9OriginX="2" Scale9OriginY="2" Scale9Width="21" Scale9Height="21" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="ButtonObjectData">
             <Size X="25.0000" Y="25.0000" />
             <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-            <Position X="233.6402" Y="175.4600" />
+            <Position X="233.6500" Y="175.4550" />
             <Scale ScaleX="1.5000" ScaleY="1.5000" />
             <CColor A="255" R="255" G="255" B="255" />
             <PrePosition X="0.9346" Y="1.1697" />

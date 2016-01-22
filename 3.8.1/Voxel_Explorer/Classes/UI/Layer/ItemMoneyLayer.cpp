@@ -51,24 +51,27 @@ bool ItemMoneyLayer::addEvents()
     if (!m_pItemCopperIcon)
         return false;
     
-    m_pItemGoldNum = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "item_gold_num"));
+    m_pItemGoldNum = dynamic_cast<ui::TextBMFont*>(UtilityHelper::seekNodeByName(m_pRootNode, "item_gold_num"));
     if (!m_pItemGoldNum)
         return false;
     
-    m_pItemSilverNum = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "item_silver_num"));
+    m_pItemSilverNum = dynamic_cast<ui::TextBMFont*>(UtilityHelper::seekNodeByName(m_pRootNode, "item_silver_num"));
     if (!m_pItemSilverNum)
         return false;
     
-    m_pItemCopperNum = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "item_copper_num"));
+    m_pItemCopperNum = dynamic_cast<ui::TextBMFont*>(UtilityHelper::seekNodeByName(m_pRootNode, "item_copper_num"));
     if (!m_pItemCopperNum)
         return false;
     
-    ui::Text* m_pItemMoneyDesc = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "item_money_desc"));
+    ui::TextBMFont* m_pItemMoneyDesc = dynamic_cast<ui::TextBMFont*>(UtilityHelper::seekNodeByName(m_pRootNode, "item_money_desc"));
     if (!m_pItemMoneyDesc)
         return false;
-    m_pItemMoneyDesc->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
+    m_pItemMoneyDesc->setFntFile(UtilityHelper::getLocalStringForUi("FONT_NAME"));
     m_pItemMoneyDesc->setString(UtilityHelper::getLocalStringForUi("ITEM_MONEY_DESC"));
 
+    m_pItemGoldNum->setFntFile(UtilityHelper::getLocalStringForUi("FONT_NAME"));
+    m_pItemSilverNum->setFntFile(UtilityHelper::getLocalStringForUi("FONT_NAME"));
+    m_pItemCopperNum->setFntFile(UtilityHelper::getLocalStringForUi("FONT_NAME"));
     
     return true;
 }

@@ -45,6 +45,8 @@ void ItemShopSellPopupUI::refreshUIView()
         m_pItemSlider->setMaxPercent(count-1);
         m_pItemSlider->setPercent(m_pItemSlider->getMaxPercent());
         m_pSellCount->setString(cocos2d::StringUtils::format(UtilityHelper::getLocalStringForUi("ITEM_SPLITE_COUNT").c_str(),1+m_pItemSlider->getPercent()));
+        m_pBtnEquip->setAnchorPoint(cocos2d::Vec2::ANCHOR_MIDDLE_LEFT);
+        m_pBtnEquip->setPosition(cocos2d::Vec2(m_pBottomFrame->getContentSize().width*0.045,m_pBtnEquip->getPositionY()));
         
     }else
     {
@@ -54,7 +56,8 @@ void ItemShopSellPopupUI::refreshUIView()
        m_pBtnEquip->setPosition(cocos2d::Vec2(m_pBottomFrame->getContentSize().width*0.5,m_pBtnEquip->getPositionY()));
         
     }
-     m_pBtnEquip->setTitleText(UtilityHelper::getLocalStringForUi("BTN_TEXT_SELL"));
+    m_pBtnEquip->setTitleText(UtilityHelper::getLocalStringForUi("BTN_TEXT_SELL"));
+    m_pBtnEquip->getTitleRenderer()->setScale(0.7);
     m_pBtnEquip->addClickEventListener(CC_CALLBACK_1(ItemShopSellPopupUI::onClickSell, this));
     
     m_pItemMoneyLayer->updateItemMoney(itemprop->getValueCopper()*(1+m_pItemSlider->getPercent()));

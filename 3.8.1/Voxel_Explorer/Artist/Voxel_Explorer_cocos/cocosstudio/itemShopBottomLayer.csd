@@ -4,15 +4,15 @@
     <Content>
       <Animation Duration="0" Speed="1.0000" />
       <ObjectData Name="Layer" Tag="53" ctype="GameLayerObjectData">
-        <Size X="140.0000" Y="30.0000" />
+        <Size X="150.0000" Y="30.0000" />
         <Children>
-          <AbstractNodeData Name="item_bottom_Layer" ActionTag="-744351137" Tag="144" IconVisible="False" PercentWidthEnable="True" PercentHeightEnable="True" PercentWidthEnabled="True" PercentHeightEnabled="True" HorizontalEdge="BothEdge" TouchEnable="True" BackColorAlpha="102" ColorAngle="90.0000" ctype="PanelObjectData">
-            <Size X="140.0000" Y="30.0000" />
+          <AbstractNodeData Name="item_bottom_Layer" ActionTag="-744351137" Tag="144" IconVisible="False" PercentWidthEnable="True" PercentHeightEnable="True" PercentWidthEnabled="True" PercentHeightEnabled="True" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" TouchEnable="True" BackColorAlpha="102" ColorAngle="90.0000" ctype="PanelObjectData">
+            <Size X="150.0000" Y="30.0000" />
             <Children>
-              <AbstractNodeData Name="item_btn_equip" ActionTag="-318034849" Tag="55" IconVisible="False" PercentWidthEnable="True" PercentHeightEnable="True" PercentWidthEnabled="True" PercentHeightEnabled="True" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="6.3415" RightMargin="77.6585" TopMargin="1.5000" BottomMargin="1.5000" TouchEnable="True" FontSize="11" ButtonText="equip" Scale9Enable="True" LeftEage="4" RightEage="4" TopEage="4" BottomEage="4" Scale9OriginX="4" Scale9OriginY="4" Scale9Width="5" Scale9Height="5" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="ButtonObjectData">
-                <Size X="56.0000" Y="27.0000" />
+              <AbstractNodeData Name="item_btn_equip" ActionTag="-318034849" Tag="55" IconVisible="False" PercentWidthEnable="True" PercentHeightEnable="True" PercentWidthEnabled="True" PercentHeightEnabled="True" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="6.3415" RightMargin="77.6585" TopMargin="1.5000" BottomMargin="1.5000" TouchEnable="True" FontSize="16" ButtonText="equip" Scale9Enable="True" LeftEage="4" RightEage="4" TopEage="4" BottomEage="4" Scale9OriginX="4" Scale9OriginY="4" Scale9Width="5" Scale9Height="5" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="ButtonObjectData">
+                <Size X="60.0000" Y="27.0000" />
                 <AnchorPoint ScaleY="0.5000" />
-                <Position X="6.3420" Y="15.0000" />
+                <Position X="6.7950" Y="15.0000" />
                 <Scale ScaleX="1.0000" ScaleY="1.0000" />
                 <CColor A="255" R="255" G="255" B="255" />
                 <PrePosition X="0.0453" Y="0.5000" />
@@ -28,7 +28,7 @@
               <AbstractNodeData Name="item_shop_slider" ActionTag="66385672" Tag="97" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="79.6500" RightMargin="10.3500" TopMargin="18.4824" BottomMargin="6.5176" TouchEnable="True" ctype="SliderObjectData">
                 <Size X="50.0000" Y="9.0000" />
                 <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-                <Position X="104.6500" Y="9.7200" />
+                <Position X="112.1250" Y="9.7200" />
                 <Scale ScaleX="1.0000" ScaleY="1.0000" />
                 <CColor A="255" R="255" G="255" B="255" />
                 <PrePosition X="0.7475" Y="0.3240" />
@@ -37,17 +37,15 @@
                 <ProgressBarData Type="PlistSubImage" Path="progress_margic_style.png" Plist="ui_sprite.plist" />
                 <BallNormalData Type="PlistSubImage" Path="progress_margic_bg.png" Plist="ui_sprite.plist" />
               </AbstractNodeData>
-              <AbstractNodeData Name="item_shop_item_count" ActionTag="810671219" Tag="98" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="86.4640" RightMargin="-52.4640" TopMargin="-13.2260" BottomMargin="0.2260" FontSize="36" LabelText="数量:3" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
-                <Size X="106.0000" Y="43.0000" />
+              <AbstractNodeData Name="item_shop_item_count" ActionTag="-1244908102" Tag="22" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="86.4640" RightMargin="-40.4640" TopMargin="-11.2260" BottomMargin="2.2260" LabelText="数量:3" ctype="TextBMFontObjectData">
+                <Size X="94.0000" Y="39.0000" />
                 <AnchorPoint ScaleY="0.5000" />
-                <Position X="86.4640" Y="21.7260" />
-                <Scale ScaleX="0.3000" ScaleY="0.3000" />
+                <Position X="92.6400" Y="21.7260" />
+                <Scale ScaleX="0.3400" ScaleY="0.3400" />
                 <CColor A="255" R="255" G="255" B="255" />
                 <PrePosition X="0.6176" Y="0.7242" />
-                <PreSize X="0.7571" Y="1.4333" />
-                <FontResource Type="Normal" Path="fonts/fangz.TTF" Plist="" />
-                <OutlineColor A="255" R="255" G="0" B="0" />
-                <ShadowColor A="255" R="110" G="110" B="110" />
+                <PreSize X="1.5286" Y="1.3000" />
+                <LabelBMFontFile_CNB Type="Normal" Path="fonts/ui_font.fnt" Plist="" />
               </AbstractNodeData>
             </Children>
             <AnchorPoint />

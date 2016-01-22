@@ -6,6 +6,8 @@
 	<string>splash_front_en.png</string>
 	<key>DEAD_RES</key>
 	<string>ui_gameover_en.png</string>
+	<key>FONT_NAME</key>
+	<string>ui_font.fnt</string>
 	<key>PROP_SHOW_HP</key>
 	<string>HP:</string>
 	<key>ROLE_SHOW_HP</key>

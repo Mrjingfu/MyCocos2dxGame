@@ -22,7 +22,7 @@ public:
     void setItemText(std::string msg,cocos2d::Color3B fontColor = cocos2d::Color3B::WHITE);
     void setFontScale(float scale);
 private:
-    cocos2d::ui::Text* m_pLabel;
+    cocos2d::ui::TextBMFont* m_pLabel;
 };
 
 #endif /* NoteUi_hpp */

@@ -19,7 +19,7 @@
           <AbstractNodeData Name="discard_layer_ok" ActionTag="-1742519636" Tag="291" IconVisible="False" PercentWidthEnable="True" PercentWidthEnabled="True" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="4.9000" RightMargin="72.1000" TopMargin="45.7501" BottomMargin="4.2499" TouchEnable="True" FontSize="14" ButtonText="确定" Scale9Enable="True" LeftEage="4" RightEage="4" TopEage="4" BottomEage="4" Scale9OriginX="4" Scale9OriginY="4" Scale9Width="5" Scale9Height="5" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="ButtonObjectData">
             <Size X="63.0000" Y="30.0000" />
             <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-            <Position X="36.4000" Y="19.2499" />
+            <Position X="36.4000" Y="19.2480" />
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
             <CColor A="255" R="255" G="255" B="255" />
             <PrePosition X="0.2600" Y="0.2406" />
@@ -35,7 +35,7 @@
           <AbstractNodeData Name="discard_layer_cancel" ActionTag="1144518988" Tag="292" IconVisible="False" PercentWidthEnable="True" PercentWidthEnabled="True" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="72.7020" RightMargin="4.2980" TopMargin="45.7501" BottomMargin="4.2499" TouchEnable="True" FontSize="14" ButtonText="取消" Scale9Enable="True" LeftEage="4" RightEage="4" TopEage="4" BottomEage="4" Scale9OriginX="4" Scale9OriginY="4" Scale9Width="5" Scale9Height="5" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="ButtonObjectData">
             <Size X="63.0000" Y="30.0000" />
             <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-            <Position X="104.2020" Y="19.2499" />
+            <Position X="104.2020" Y="19.2480" />
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
             <CColor A="255" R="255" G="255" B="255" />
             <PrePosition X="0.7443" Y="0.2406" />
@@ -51,7 +51,7 @@
           <AbstractNodeData Name="discard_item_slider" ActionTag="190295595" Tag="293" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="74.9252" RightMargin="15.0748" TopMargin="28.8632" BottomMargin="42.1368" TouchEnable="True" ctype="SliderObjectData">
             <Size X="50.0000" Y="9.0000" />
             <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-            <Position X="99.9252" Y="46.6368" />
+            <Position X="99.9320" Y="46.6400" />
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
             <CColor A="255" R="255" G="255" B="255" />
             <PrePosition X="0.7138" Y="0.5830" />
@@ -60,22 +60,20 @@
             <ProgressBarData Type="PlistSubImage" Path="progress_margic_style.png" Plist="ui_sprite.plist" />
             <BallNormalData Type="PlistSubImage" Path="progress_margic_bg.png" Plist="ui_sprite.plist" />
           </AbstractNodeData>
-          <AbstractNodeData Name="discard_item_count" ActionTag="1199657397" Tag="294" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="79.5578" RightMargin="-45.5578" TopMargin="-3.4336" BottomMargin="40.4336" FontSize="36" LabelText="数量:3" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
-            <Size X="106.0000" Y="43.0000" />
+          <AbstractNodeData Name="discard_item_count" ActionTag="-912280510" Tag="79" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="79.5620" RightMargin="-153.5620" TopMargin="-1.4360" BottomMargin="42.4360" LabelText="数量:3" ctype="TextBMFontObjectData">
+            <Size X="94.0000" Y="39.0000" />
             <AnchorPoint ScaleY="0.5000" />
-            <Position X="79.5578" Y="61.9336" />
-            <Scale ScaleX="0.3000" ScaleY="0.3000" />
+            <Position X="79.5620" Y="61.9360" />
+            <Scale ScaleX="0.3300" ScaleY="0.3300" />
             <CColor A="255" R="255" G="255" B="255" />
             <PrePosition X="0.5683" Y="0.7742" />
-            <PreSize X="0.7571" Y="1.4333" />
-            <FontResource Type="Normal" Path="fonts/fangz.TTF" Plist="" />
-            <OutlineColor A="255" R="255" G="0" B="0" />
-            <ShadowColor A="255" R="110" G="110" B="110" />
+            <PreSize X="1.5286" Y="0.4875" />
+            <LabelBMFontFile_CNB Type="Normal" Path="fonts/ui_font.fnt" Plist="" />
           </AbstractNodeData>
           <AbstractNodeData Name="discard_item_icon" ActionTag="-1465458533" Tag="295" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="6.6629" RightMargin="93.3371" TopMargin="3.7065" BottomMargin="36.2935" Scale9Enable="True" LeftEage="4" RightEage="4" TopEage="4" BottomEage="4" Scale9OriginX="4" Scale9OriginY="4" Scale9Width="32" Scale9Height="32" ctype="ImageViewObjectData">
             <Size X="40.0000" Y="40.0000" />
             <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-            <Position X="26.6629" Y="56.2935" />
+            <Position X="26.6560" Y="56.2960" />
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
             <CColor A="255" R="255" G="255" B="255" />
             <PrePosition X="0.1904" Y="0.7037" />

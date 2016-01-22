@@ -44,7 +44,7 @@ bool InformationPopupUI::addEvents()
     if(!PopupUILayer::addEvents())
         return false;
      
-    m_pInfoDesc = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "info_text_message"));
+    m_pInfoDesc = dynamic_cast<ui::TextBMFont*>(UtilityHelper::seekNodeByName(m_pRootNode, "info_text_message"));
     if (!m_pInfoDesc)
         return false;
     
@@ -52,7 +52,7 @@ bool InformationPopupUI::addEvents()
     if (!m_pBtnNext)
         return false;
     
-    m_pInfoTitle =   dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "info_title_text"));
+    m_pInfoTitle =   dynamic_cast<ui::TextBMFont*>(UtilityHelper::seekNodeByName(m_pRootNode, "info_title_text"));
     if (!m_pInfoTitle)
         return false;
     
@@ -68,8 +68,8 @@ bool InformationPopupUI::addEvents()
     if (!m_pOk)
         return false;
     
-    m_pInfoDesc->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
-    m_pInfoTitle->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
+    m_pInfoDesc->setFntFile(UtilityHelper::getLocalStringForUi("FONT_NAME"));
+    m_pInfoTitle->setFntFile(UtilityHelper::getLocalStringForUi("FONT_NAME"));
     
     m_pBtnNext->setVisible(false);
     MoveBy* moveByNext = MoveBy::create(0.5, cocos2d::Vec2(0,-2));
@@ -78,9 +78,8 @@ bool InformationPopupUI::addEvents()
     
     
     m_pOk->setVisible(false);
-    m_pOk->setTitleFontName(UtilityHelper::getLocalString("FONT_NAME"));
-    m_pOk->setTitleFontSize(36);
-    m_pOk->getTitleRenderer()->setScale(0.3);
+    m_pOk->setTitleFontName(UtilityHelper::getLocalStringForUi("FONT_NAME"));
+    m_pOk->getTitleRenderer()->setScale(0.75);
     m_pOk->setTitleText(UtilityHelper::getLocalStringForUi("BTN_TEXT_OK"));
     m_pOk->addClickEventListener(CC_CALLBACK_1(InformationPopupUI::onClickOk, this));
  
@@ -124,16 +123,15 @@ void InformationPopupUI::refreshUIView()
 void InformationPopupUI::updateFrameWidth()
 {
     
-    float fontFrameWidth = m_pRootNode->getContentSize().width;
+    float fontFrameWidth = m_pRootNode->getContentSize().width-10;
     if (m_pInfoIcon) {
         fontFrameWidth = m_pRootNode->getContentSize().width - m_pInfoIcon->getContentSize().width*m_pInfoIcon->getScale()-m_pRootNode->getContentSize().width*0.03-10;
     }
     
     if (!m_sInfoDesc.empty())
     {
-        cocos2d::Size fonSize = UtilityHelper::getSingleStrFontSize(m_pInfoDesc, m_sInfoDesc);
-        int charXCount  = (int)(fontFrameWidth/fonSize.width);
-        UtilityHelper::getLineStr(m_sInfoDesc, charXCount);
+        
+        UtilityHelper::getLineForText(m_pInfoDesc, m_sInfoDesc,fontFrameWidth);
         m_pInfoDesc->setString(m_sInfoDesc);
         
     }
@@ -165,9 +163,10 @@ void InformationPopupUI::updateFrameHieght()
            
         }
         charYCount = (int)(infoTextHeight/fonSize.height);
-        m_pInfoDesc->setTextHorizontalAlignment(TextHAlignment::CENTER);
+        cocos2d::Label* labelDesc = static_cast<cocos2d::Label*>(m_pInfoDesc->getVirtualRenderer());
+        labelDesc->setHorizontalAlignment(TextHAlignment::CENTER);
         if (m_pInfoDesc&& charYCount>1) {
-            m_pInfoDesc->setTextHorizontalAlignment(TextHAlignment::LEFT);
+            labelDesc->setHorizontalAlignment(TextHAlignment::LEFT);
         }
     }
 

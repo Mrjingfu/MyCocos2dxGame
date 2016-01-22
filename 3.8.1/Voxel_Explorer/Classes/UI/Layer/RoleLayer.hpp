@@ -37,18 +37,18 @@ private:
     cocos2d::ui::ImageView* m_pSecondWeaponUi;
     cocos2d::ui::ImageView* m_pShopBtn;
     
-    cocos2d::ui::Text*  m_pRoleLevel;
-    cocos2d::ui::Text*  m_pRoleHp;
-    cocos2d::ui::Text*  m_pRoleMp;
-    cocos2d::ui::Text*  m_pRoleAttack;
-    cocos2d::ui::Text*  m_pRoleDefense;
-    cocos2d::ui::Text*  m_pRoleExp;
-    cocos2d::ui::Text*  m_pRoleMargicFind;
-    cocos2d::ui::Text*  m_pRoleCriticalStrike;
-    cocos2d::ui::Text*  m_pRoleDodge;
-    cocos2d::ui::Text*  m_pRoleBlock;
-    cocos2d::ui::Text*  m_pRoleLightDis;
-    cocos2d::ui::Text*  m_pRoleSearchDis;
+    cocos2d::ui::TextBMFont*  m_pRoleLevel;
+    cocos2d::ui::TextBMFont*  m_pRoleHp;
+    cocos2d::ui::TextBMFont*  m_pRoleMp;
+    cocos2d::ui::TextBMFont*  m_pRoleAttack;
+    cocos2d::ui::TextBMFont*  m_pRoleDefense;
+    cocos2d::ui::TextBMFont*  m_pRoleExp;
+    cocos2d::ui::TextBMFont*  m_pRoleMargicFind;
+    cocos2d::ui::TextBMFont*  m_pRoleCriticalStrike;
+    cocos2d::ui::TextBMFont*  m_pRoleDodge;
+    cocos2d::ui::TextBMFont*  m_pRoleBlock;
+    cocos2d::ui::TextBMFont*  m_pRoleLightDis;
+    cocos2d::ui::TextBMFont*  m_pRoleSearchDis;
     
 
 };

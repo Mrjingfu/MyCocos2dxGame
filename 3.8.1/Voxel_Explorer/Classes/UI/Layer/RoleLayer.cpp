@@ -52,84 +52,84 @@ bool RoleLayer::addEvents()
 
     
     
-    m_pRoleHp = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "role_prop_hp_num"));
+    m_pRoleHp = dynamic_cast<ui::TextBMFont*>(UtilityHelper::seekNodeByName(m_pRootNode, "role_prop_hp_num"));
     if (!m_pRoleHp)
         return false;
-    ui::Text* m_pRoleHpDesc = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "role_prop_hp"));
+    ui::TextBMFont* m_pRoleHpDesc = dynamic_cast<ui::TextBMFont*>(UtilityHelper::seekNodeByName(m_pRootNode, "role_prop_hp"));
     if (!m_pRoleHpDesc)
         return false;
     
-    m_pRoleMp = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "role_prop_mp_num"));
+    m_pRoleMp = dynamic_cast<ui::TextBMFont*>(UtilityHelper::seekNodeByName(m_pRootNode, "role_prop_mp_num"));
     if (!m_pRoleMp)
         return false;
-    ui::Text* m_pRoleMpDesc = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "role_prop_mp"));
+    ui::TextBMFont* m_pRoleMpDesc = dynamic_cast<ui::TextBMFont*>(UtilityHelper::seekNodeByName(m_pRootNode, "role_prop_mp"));
     if (!m_pRoleMpDesc)
         return false;
     
-    m_pRoleAttack = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "role_prop_attack_num"));
+    m_pRoleAttack = dynamic_cast<ui::TextBMFont*>(UtilityHelper::seekNodeByName(m_pRootNode, "role_prop_attack_num"));
     if (!m_pRoleAttack)
         return false;
-    ui::Text* m_pRoleAttackDesc = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "role_prop_attack"));
+    ui::TextBMFont* m_pRoleAttackDesc = dynamic_cast<ui::TextBMFont*>(UtilityHelper::seekNodeByName(m_pRootNode, "role_prop_attack"));
     if (!m_pRoleAttackDesc)
         return false;
     
-    m_pRoleDefense = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "role_prop_armor_num"));
+    m_pRoleDefense = dynamic_cast<ui::TextBMFont*>(UtilityHelper::seekNodeByName(m_pRootNode, "role_prop_armor_num"));
     if (!m_pRoleDefense)
         return false;
-    ui::Text* m_pRoleDefenseDesc = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "role_prop_armor"));
+    ui::TextBMFont* m_pRoleDefenseDesc = dynamic_cast<ui::TextBMFont*>(UtilityHelper::seekNodeByName(m_pRootNode, "role_prop_armor"));
     if (!m_pRoleDefenseDesc)
         return false;
     
-    m_pRoleExp = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "role_prop_exp_num"));
+    m_pRoleExp = dynamic_cast<ui::TextBMFont*>(UtilityHelper::seekNodeByName(m_pRootNode, "role_prop_exp_num"));
     if (!m_pRoleExp)
         return false;
-    ui::Text* m_pRoleExpDesc = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "role_prop_exp"));
+    ui::TextBMFont* m_pRoleExpDesc = dynamic_cast<ui::TextBMFont*>(UtilityHelper::seekNodeByName(m_pRootNode, "role_prop_exp"));
     if (!m_pRoleExpDesc)
         return false;
     
-    m_pRoleLightDis = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "role_prop_light_num"));
+    m_pRoleLightDis = dynamic_cast<ui::TextBMFont*>(UtilityHelper::seekNodeByName(m_pRootNode, "role_prop_light_num"));
     if (!m_pRoleLightDis)
         return false;
-    ui::Text* m_pRoleLightDisDesc = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "role_prop_light"));
+    ui::TextBMFont* m_pRoleLightDisDesc = dynamic_cast<ui::TextBMFont*>(UtilityHelper::seekNodeByName(m_pRootNode, "role_prop_light"));
     if (!m_pRoleLightDisDesc)
         return false;
     
-    m_pRoleSearchDis = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "role_prop_search_num"));
+    m_pRoleSearchDis = dynamic_cast<ui::TextBMFont*>(UtilityHelper::seekNodeByName(m_pRootNode, "role_prop_search_num"));
     if (!m_pRoleSearchDis)
         return false;
-    ui::Text* m_pRoleSearchDisDesc = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "role_prop_search"));
+    ui::TextBMFont* m_pRoleSearchDisDesc = dynamic_cast<ui::TextBMFont*>(UtilityHelper::seekNodeByName(m_pRootNode, "role_prop_search"));
     if (!m_pRoleSearchDisDesc)
         return false;
     
-    m_pRoleMargicFind = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "role_prop_magic_num"));
+    m_pRoleMargicFind = dynamic_cast<ui::TextBMFont*>(UtilityHelper::seekNodeByName(m_pRootNode, "role_prop_magic_num"));
     if (!m_pRoleMargicFind)
         return false;
-    ui::Text* m_pRoleMargicFindDesc = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "role_prop_magic"));
+    ui::TextBMFont* m_pRoleMargicFindDesc = dynamic_cast<ui::TextBMFont*>(UtilityHelper::seekNodeByName(m_pRootNode, "role_prop_magic"));
     if (!m_pRoleMargicFindDesc)
         return false;
     
-    m_pRoleCriticalStrike = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "role_prop_critical_strike_num"));
+    m_pRoleCriticalStrike = dynamic_cast<ui::TextBMFont*>(UtilityHelper::seekNodeByName(m_pRootNode, "role_prop_critical_strike_num"));
     if (!m_pRoleCriticalStrike)
         return false;
-    ui::Text* m_pRoleCriticalStrikeDesc = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "role_prop_critical_strike"));
+    ui::TextBMFont* m_pRoleCriticalStrikeDesc = dynamic_cast<ui::TextBMFont*>(UtilityHelper::seekNodeByName(m_pRootNode, "role_prop_critical_strike"));
     if (!m_pRoleCriticalStrikeDesc)
         return false;
     
-    m_pRoleBlock = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "role_prop_block_num"));
+    m_pRoleBlock = dynamic_cast<ui::TextBMFont*>(UtilityHelper::seekNodeByName(m_pRootNode, "role_prop_block_num"));
     if (!m_pRoleBlock)
         return false;
-    ui::Text* m_pRoleBlockDesc = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "role_prop_block"));
+    ui::TextBMFont* m_pRoleBlockDesc = dynamic_cast<ui::TextBMFont*>(UtilityHelper::seekNodeByName(m_pRootNode, "role_prop_block"));
     if (!m_pRoleBlockDesc)
         return false;
     
-    m_pRoleDodge = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "role_prop_dodge_num"));
+    m_pRoleDodge = dynamic_cast<ui::TextBMFont*>(UtilityHelper::seekNodeByName(m_pRootNode, "role_prop_dodge_num"));
     if (!m_pRoleDodge)
         return false;
-    ui::Text* m_pRoleDodgeDesc = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "role_prop_dodge"));
+    ui::TextBMFont* m_pRoleDodgeDesc = dynamic_cast<ui::TextBMFont*>(UtilityHelper::seekNodeByName(m_pRootNode, "role_prop_dodge"));
     if (!m_pRoleDodgeDesc)
         return false;
     
-    m_pRoleLevel = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "role_lv_num"));
+    m_pRoleLevel = dynamic_cast<ui::TextBMFont*>(UtilityHelper::seekNodeByName(m_pRootNode, "role_lv_num"));
     if (!m_pRoleLevel)
         return false;
    
@@ -167,51 +167,51 @@ bool RoleLayer::addEvents()
         roleImg->loadTexture("chr_sword.png",TextureResType::PLIST);
     }
     
-    m_pRoleHpDesc->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
+    m_pRoleHpDesc->setFntFile(UtilityHelper::getLocalStringForUi("FONT_NAME"));
     m_pRoleHpDesc->setString(UtilityHelper::getLocalStringForUi("ROLE_SHOW_HP"));
     
-    m_pRoleMpDesc->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
+    m_pRoleMpDesc->setFntFile(UtilityHelper::getLocalStringForUi("FONT_NAME"));
     m_pRoleMpDesc->setString(UtilityHelper::getLocalStringForUi("ROLE_SHOW_MP"));
     
-    m_pRoleExpDesc->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
+    m_pRoleExpDesc->setFntFile(UtilityHelper::getLocalStringForUi("FONT_NAME"));
     m_pRoleExpDesc->setString(UtilityHelper::getLocalStringForUi("ROLE_SHOW_EXP"));
     
-    m_pRoleLightDisDesc->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
+    m_pRoleLightDisDesc->setFntFile(UtilityHelper::getLocalStringForUi("FONT_NAME"));
     m_pRoleLightDisDesc->setString(UtilityHelper::getLocalStringForUi("PROP_SHOW_LIGHT_DIS"));
     
-    m_pRoleSearchDisDesc->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
+    m_pRoleSearchDisDesc->setFntFile(UtilityHelper::getLocalStringForUi("FONT_NAME"));
     m_pRoleSearchDisDesc->setString(UtilityHelper::getLocalStringForUi("PROP_SHOW_SEARCH_DIS"));
     
-    m_pRoleCriticalStrikeDesc->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
+    m_pRoleCriticalStrikeDesc->setFntFile(UtilityHelper::getLocalStringForUi("FONT_NAME"));
     m_pRoleCriticalStrikeDesc ->setString(UtilityHelper::getLocalStringForUi("PROP_SHOW_CRITICAL_STRIKE"));
     
-    m_pRoleMargicFindDesc->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
+    m_pRoleMargicFindDesc->setFntFile(UtilityHelper::getLocalStringForUi("FONT_NAME"));
     m_pRoleMargicFindDesc->setString(UtilityHelper::getLocalStringForUi("PROP_SHOW_MARGIC_FIND"));
     
-    m_pRoleBlockDesc->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
+    m_pRoleBlockDesc->setFntFile(UtilityHelper::getLocalStringForUi("FONT_NAME"));
     m_pRoleBlockDesc->setString(UtilityHelper::getLocalStringForUi("PROP_SHOW_BLOCK"));
     
-    m_pRoleDodgeDesc->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
+    m_pRoleDodgeDesc->setFntFile(UtilityHelper::getLocalStringForUi("FONT_NAME"));
     m_pRoleDodgeDesc->setString(UtilityHelper::getLocalStringForUi("PROP_SHOW_DODGE"));
     
-    m_pRoleAttackDesc->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
+    m_pRoleAttackDesc->setFntFile(UtilityHelper::getLocalStringForUi("FONT_NAME"));
     m_pRoleAttackDesc->setString(UtilityHelper::getLocalStringForUi("PROP_SHOW_ATTACK"));
     
-    m_pRoleDefenseDesc->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
+    m_pRoleDefenseDesc->setFntFile(UtilityHelper::getLocalStringForUi("FONT_NAME"));
     m_pRoleDefenseDesc->setString(UtilityHelper::getLocalStringForUi("PROP_SHOW_DEFENSE"));
     
     
-    m_pRoleHp->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
-    m_pRoleMp->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
-    m_pRoleExp->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
-    m_pRoleLightDis->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
-    m_pRoleSearchDis->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
-    m_pRoleCriticalStrike->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
-    m_pRoleMargicFind->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
-    m_pRoleBlock->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
-    m_pRoleDodge->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
-    m_pRoleAttack->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
-    m_pRoleDefense->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
+    m_pRoleHp->setFntFile(UtilityHelper::getLocalStringForUi("FONT_NAME"));
+    m_pRoleMp->setFntFile(UtilityHelper::getLocalStringForUi("FONT_NAME"));
+    m_pRoleExp->setFntFile(UtilityHelper::getLocalStringForUi("FONT_NAME"));
+    m_pRoleLightDis->setFntFile(UtilityHelper::getLocalStringForUi("FONT_NAME"));
+    m_pRoleSearchDis->setFntFile(UtilityHelper::getLocalStringForUi("FONT_NAME"));
+    m_pRoleCriticalStrike->setFntFile(UtilityHelper::getLocalStringForUi("FONT_NAME"));
+    m_pRoleMargicFind->setFntFile(UtilityHelper::getLocalStringForUi("FONT_NAME"));
+    m_pRoleBlock->setFntFile(UtilityHelper::getLocalStringForUi("FONT_NAME"));
+    m_pRoleDodge->setFntFile(UtilityHelper::getLocalStringForUi("FONT_NAME"));
+    m_pRoleAttack->setFntFile(UtilityHelper::getLocalStringForUi("FONT_NAME"));
+    m_pRoleDefense->setFntFile(UtilityHelper::getLocalStringForUi("FONT_NAME"));
     
     
     m_pBtnClose->addClickEventListener(CC_CALLBACK_1(RoleLayer::onClickClose, this));
