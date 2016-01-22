@@ -32,7 +32,7 @@ protected:
     cocos2d::ui::ImageView * m_pItemIcon;
     cocos2d::ui::Button * m_pOk;;
     cocos2d::ui::Button * m_pCancel;
-    cocos2d::ui::Text * m_pCountText;
+    cocos2d::ui::TextBMFont * m_pCountText;
     cocos2d::ui::Slider*     m_pItemSlider;
     int m_nItemId;
 };

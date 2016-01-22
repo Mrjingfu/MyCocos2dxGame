@@ -6,6 +6,7 @@
         <Folder Name="fonts">
           <TTF Name="04B_03.TTF" />
           <TTF Name="fangz.TTF" />
+          <Fnt Name="ui_font.fnt" />
         </Folder>
         <PlistImageFolder Image="ui_sprite.png" PListFile="ui_sprite.plist" Name=".ui_sprite_PList.Dir">
           <PlistImageFile Name="btn_achieve.png" Key="btn_achieve.png" />
@@ -103,7 +104,6 @@
         </PlistImageFolder>
         <Project Name="gameScene.csd" Type="Scene" />
         <Project Name="menuscene.csd" Type="Scene" />
-        <Project Name="pausePopupLayer.csd" Type="Layer" />
         <Project Name="achievementLayer.csd" Type="Layer" />
         <Project Name="itemPopupLayer.csd" Type="Layer" />
         <Project Name="shopPopupLayer.csd" Type="Layer" />
@@ -164,7 +164,6 @@
         <Project Name="itemMoneyLayer.csd" Type="Layer" />
         <Project Name="itemBottomLayer.csd" Type="Layer" />
         <Project Name="itemShopBottomLayer.csd" Type="Layer" />
-        <Project Name="dialogueLayer.csd" Type="Layer" />
         <Project Name="alertLayer.csd" Type="Layer" />
         <Project Name="informationLayer.csd" Type="Layer" />
         <PlistImageFolder Image="achievement_icon.png" PListFile="achievement_icon.plist" Name=".achievement_icon_PList.Dir">
@@ -258,12 +257,10 @@
           <PlistParticleFile Name="achievement_particle-ipadhd.plist" />
           <PlistParticleFile Name="eff_page_1101.plist" />
         </Folder>
-        <Project Name="settingLayer.csd" Type="Layer" />
         <Project Name="loadingLayer.csd" Type="Scene" />
         <Image Name="splash_cn.png" />
         <Project Name="discardLayer.csd" Type="Layer" />
         <Project Name="rolenewLayer.csd" Type="Layer" />
-        <Project Name="archiveLayer.csd" Type="Layer" />
         <Project Name="skillLayer.csd" Type="Layer" />
         <Project Name="deadLayer.csd" Type="Scene" />
         <Project Name="pausenewPopupLayer.csd" Type="Layer" />

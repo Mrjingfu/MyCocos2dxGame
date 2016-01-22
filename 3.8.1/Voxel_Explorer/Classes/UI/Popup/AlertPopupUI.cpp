@@ -44,24 +44,22 @@ bool AlertPopupUI::addEvents()
     m_pCancel = dynamic_cast<ui::Button*>(UtilityHelper::seekNodeByName(m_pRootNode, "alert_layer_cancel"));
     if (!m_pCancel)
         return false;
-    m_pTitle = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "alert_layer_title_text"));
+    m_pTitle = dynamic_cast<ui::TextBMFont*>(UtilityHelper::seekNodeByName(m_pRootNode, "alert_layer_title_text"));
     if (!m_pTitle)
         return false;
-    m_pMessage = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "alert_layer_message"));
+    m_pMessage = dynamic_cast<ui::TextBMFont*>(UtilityHelper::seekNodeByName(m_pRootNode, "alert_layer_message"));
     if (!m_pMessage)
         return false;
     
-    m_pTitle->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
-    m_pMessage->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
+    m_pTitle->setFntFile(UtilityHelper::getLocalStringForUi("FONT_NAME"));
+    m_pMessage->setFntFile(UtilityHelper::getLocalStringForUi("FONT_NAME"));
     
-    m_pOk->setTitleFontName(UtilityHelper::getLocalString("FONT_NAME"));
-    m_pOk->setTitleFontSize(36);
-    m_pOk->getTitleRenderer()->setScale(0.3);
+    m_pOk->setTitleFontName(UtilityHelper::getLocalStringForUi("FONT_NAME"));
+    m_pOk->getTitleRenderer()->setScale(0.45);
     m_pOk->setTitleText(UtilityHelper::getLocalStringForUi("BTN_TEXT_OK"));
 
-    m_pCancel->setTitleFontName(UtilityHelper::getLocalString("FONT_NAME"));
-    m_pCancel->setTitleFontSize(36);
-    m_pCancel->getTitleRenderer()->setScale(0.3);
+    m_pCancel->setTitleFontName(UtilityHelper::getLocalStringForUi("FONT_NAME"));
+    m_pCancel->getTitleRenderer()->setScale(0.45);
     m_pCancel->setTitleText(UtilityHelper::getLocalStringForUi("BTN_TEXT_CANCEL"));
     
     m_pOk->addClickEventListener(CC_CALLBACK_1(AlertPopupUI::onClickOk, this));
@@ -135,9 +133,7 @@ void AlertPopupUI::setMessage( std::string message)
 {
     if (!m_pMessage)
         return;
-    cocos2d::Size fonSize = UtilityHelper::getSingleStrFontSize(m_pMessage, message);
-    int charCount  = (int)(m_pRootNode->getContentSize().width/fonSize.width);
-    UtilityHelper::getLineStr(message, charCount);
+    UtilityHelper::getLineForText(m_pMessage, message);
     m_pMessage->setString(message);
  }
 

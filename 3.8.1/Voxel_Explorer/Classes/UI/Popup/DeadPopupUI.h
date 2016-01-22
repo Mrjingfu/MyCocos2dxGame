@@ -27,8 +27,8 @@ private:
 private:
     cocos2d::ui::Button* m_pBtnDead;
     cocos2d::ui::ImageView* m_pAdaIcon;
-    cocos2d::ui::Text*  m_pAdaDesc;
-    cocos2d::ui::Text*  m_pContinueNum;
+    cocos2d::ui::TextBMFont*  m_pAdaDesc;
+    cocos2d::ui::TextBMFont*  m_pContinueNum;
     int m_nCountDownNum;
     
 };

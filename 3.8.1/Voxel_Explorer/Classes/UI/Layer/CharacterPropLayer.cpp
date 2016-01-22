@@ -42,7 +42,7 @@ bool CharacterPropLayer::initUi()
 bool CharacterPropLayer::addEvents()
 {
     
-    m_pCharacterName =dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "role_name"));
+    m_pCharacterName =dynamic_cast<ui::TextBMFont*>(UtilityHelper::seekNodeByName(m_pRootNode, "role_name"));
     if (!m_pCharacterName)
         return false;
     
@@ -53,24 +53,24 @@ bool CharacterPropLayer::addEvents()
     if (!m_pCharacterMpBar)
         return false;
     
-    m_pCharacterCurHp = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "progress_role_blood_num"));
+    m_pCharacterCurHp = dynamic_cast<ui::TextBMFont*>(UtilityHelper::seekNodeByName(m_pRootNode, "progress_role_blood_num"));
     if (!m_pCharacterCurHp)
         return false;
     
-    m_pCharacterMaxHp = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "progress_role_blood_maxnum"));
+    m_pCharacterMaxHp = dynamic_cast<ui::TextBMFont*>(UtilityHelper::seekNodeByName(m_pRootNode, "progress_role_blood_maxnum"));
     if(!m_pCharacterMaxHp)
         return false;
     
-    m_pCharacterCurMp = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "progress_role_margic_num"));
+    m_pCharacterCurMp = dynamic_cast<ui::TextBMFont*>(UtilityHelper::seekNodeByName(m_pRootNode, "progress_role_margic_num"));
     if (!m_pCharacterCurMp)
         return false;
     
     
-    m_pCharacterMaxMp = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "progress_role_margic_maxnum"));
+    m_pCharacterMaxMp = dynamic_cast<ui::TextBMFont*>(UtilityHelper::seekNodeByName(m_pRootNode, "progress_role_margic_maxnum"));
     if(!m_pCharacterMaxMp)
         return false;
     
-    m_pCharacterLevel = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "role_lv_num"));
+    m_pCharacterLevel = dynamic_cast<ui::TextBMFont*>(UtilityHelper::seekNodeByName(m_pRootNode, "role_lv_num"));
     if (!m_pCharacterLevel)
         return false;
     
@@ -96,12 +96,12 @@ bool CharacterPropLayer::addEvents()
     m_pCharacterBufferList->setClippingEnabled(false);
     m_pRootNode->addChild(m_pCharacterBufferList);
     
-    m_pCharacterName->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
-    m_pCharacterCurHp->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
-    m_pCharacterMaxHp->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
-    m_pCharacterCurMp->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
-    m_pCharacterMaxMp->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
-//  m_pCharacterLevel->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
+    m_pCharacterName->setFntFile(UtilityHelper::getLocalStringForUi("FONT_NAME"));
+    m_pCharacterCurHp->setFntFile(UtilityHelper::getLocalStringForUi("FONT_NAME"));
+    m_pCharacterMaxHp->setFntFile(UtilityHelper::getLocalStringForUi("FONT_NAME"));
+    m_pCharacterCurMp->setFntFile(UtilityHelper::getLocalStringForUi("FONT_NAME"));
+    m_pCharacterMaxMp->setFntFile(UtilityHelper::getLocalStringForUi("FONT_NAME"));
+    m_pCharacterLevel->setFntFile(UtilityHelper::getLocalStringForUi("FONT_NAME"));
     
     return true;
 }

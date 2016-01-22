@@ -47,7 +47,7 @@ protected:
 protected:
     cocos2d::ui::Button* m_pBtnClose;
     eShopType           m_eShopType;
-    cocos2d::ui::Text*  m_pShopTitleText;
+    cocos2d::ui::TextBMFont*  m_pShopTitleText;
     BagShopLayer*       m_pBagLayer;
     TGridView*          m_pShopGridView;
     BagMangerLayerUI*   m_pShopMangerLayer;

@@ -46,10 +46,10 @@ bool DeadPopupUI::addEvents()
     m_pAdaIcon = dynamic_cast<cocos2d::ui::ImageView*>(UtilityHelper::seekNodeByName(m_pRootNode,"dead_ada_icon"));
     if (!m_pAdaIcon)
         return false;
-    m_pAdaDesc = dynamic_cast<cocos2d::ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode,"dead_ada_desc"));
+    m_pAdaDesc = dynamic_cast<cocos2d::ui::TextBMFont*>(UtilityHelper::seekNodeByName(m_pRootNode,"dead_ada_desc"));
     if(!m_pAdaDesc)
         return false;
-    m_pContinueNum = dynamic_cast<cocos2d::ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode,"dead_continue_text"));
+    m_pContinueNum = dynamic_cast<cocos2d::ui::TextBMFont*>(UtilityHelper::seekNodeByName(m_pRootNode,"dead_continue_text"));
     if(!m_pContinueNum)
         return false;
     
@@ -61,10 +61,9 @@ bool DeadPopupUI::addEvents()
         return false;
     title->loadTexture(UtilityHelper::getLocalStringForUi("DEAD_RES"),TextureResType::PLIST);
    
-    m_pAdaDesc->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
-    m_pAdaDesc->setFontSize(36);
-    m_pAdaDesc->setScale(0.4);
+    m_pAdaDesc->setFntFile(UtilityHelper::getLocalStringForUi("FONT_NAME"));
     m_pAdaDesc->setString(UtilityHelper::getLocalStringForUi("BTN_TEXT_ADA_REVIVE"));
+    m_pContinueNum->setFntFile(UtilityHelper::getLocalStringForUi("FONT_NAME"));
     m_pContinueNum->setString(Value(m_nCountDownNum).asString());
     m_pContinueNum->runAction(RepeatForever::create(Sequence::create(EaseBackIn::create(ScaleTo::create(0.3, 0.8)),EaseBackOut::create(ScaleTo::create(0.3, 1)), nil)));
     m_pBtnDead->addClickEventListener(CC_CALLBACK_1(DeadPopupUI::onClickAda, this));

@@ -22,8 +22,8 @@ public:
     virtual void setAchieveDatas(const std::string icon, std::string name, std::string targetDesc);
 protected:
     cocos2d::ui::ImageView* m_pAchieveIcon;
-    cocos2d::ui::Text*  m_pAchieveName;
-    cocos2d::ui::Text*  m_pAchieveTargetDesc;
+    cocos2d::ui::TextBMFont*  m_pAchieveName;
+    cocos2d::ui::TextBMFont*  m_pAchieveTargetDesc;
 };
 
 #endif /* AchieveItemLayer_hpp */

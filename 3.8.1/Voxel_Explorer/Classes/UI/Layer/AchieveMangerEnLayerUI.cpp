@@ -52,11 +52,10 @@ void AchieveMangerEnLayerUI::addItemAchieve(cocos2d::ui::ImageView* achieveItemU
         }
         img->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
         
-        ui::Text* nameText = static_cast<ui::Text*>(m_pAchieveNameLayer->getChildByTag(achieveId));
+        ui::TextBMFont* nameText = static_cast<ui::TextBMFont*>(m_pAchieveNameLayer->getChildByTag(achieveId));
         if (!nameText) {
-            nameText = ui::Text::create();
-            nameText->setFontSize(36);
-            nameText->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
+            nameText = ui::TextBMFont::create();
+            nameText->setFntFile(UtilityHelper::getLocalStringForUi("FONT_NAME"));
             nameText->setScale(0.29);
             nameText->setTag(achieveId);
             nameText->setColor(Color3B(105, 87, 055));
@@ -80,11 +79,10 @@ void AchieveMangerEnLayerUI::addItemAchieve(cocos2d::ui::ImageView* achieveItemU
         nameText->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
         
         
-        ui::Text* targetText = static_cast<ui::Text*>(m_pAchieveTargetLayer->getChildByTag(achieveId));
+        ui::TextBMFont* targetText = static_cast<ui::TextBMFont*>(m_pAchieveTargetLayer->getChildByTag(achieveId));
         if (!targetText) {
-            targetText = ui::Text::create();
-            targetText->setFontSize(36);
-            targetText->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
+            targetText = ui::TextBMFont::create();
+            targetText->setFntFile(UtilityHelper::getLocalStringForUi("FONT_NAME"));
             targetText->setScale(0.2);
             targetText->setTag(achieveId);
             targetText->setAnchorPoint(cocos2d::Vec2::ANCHOR_TOP_LEFT);

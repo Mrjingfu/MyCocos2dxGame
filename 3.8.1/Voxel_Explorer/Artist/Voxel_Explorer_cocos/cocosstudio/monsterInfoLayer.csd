@@ -29,29 +29,25 @@
                 <PreSize X="0.9714" Y="0.8182" />
                 <ImageFileData Type="PlistSubImage" Path="progress_blood_style.png" Plist="ui_sprite.plist" />
               </AbstractNodeData>
-              <AbstractNodeData Name="progress_role_blood_maxnum" ActionTag="-93884301" Tag="182" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="35.6020" RightMargin="-52.6020" TopMargin="-16.0000" BottomMargin="-16.0000" FontSize="36" LabelText="/100" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
-                <Size X="87.0000" Y="43.0000" />
+              <AbstractNodeData Name="progress_role_blood_maxnum" ActionTag="1625553138" Tag="45" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="35.6020" RightMargin="-40.6020" TopMargin="-14.0000" BottomMargin="-14.0000" LabelText="/100" ctype="TextBMFontObjectData">
+                <Size X="75.0000" Y="39.0000" />
                 <AnchorPoint ScaleY="0.5000" />
                 <Position X="35.6020" Y="5.5000" />
-                <Scale ScaleX="0.2000" ScaleY="0.2000" />
+                <Scale ScaleX="0.2300" ScaleY="0.2300" />
                 <CColor A="255" R="255" G="255" B="255" />
                 <PrePosition X="0.5086" Y="0.5000" />
-                <PreSize X="1.2429" Y="3.9091" />
-                <FontResource Type="Normal" Path="fonts/fangz.TTF" Plist="" />
-                <OutlineColor A="255" R="255" G="0" B="0" />
-                <ShadowColor A="255" R="110" G="110" B="110" />
+                <PreSize X="2.8143" Y="3.5455" />
+                <LabelBMFontFile_CNB Type="Normal" Path="fonts/ui_font.fnt" Plist="" />
               </AbstractNodeData>
-              <AbstractNodeData Name="progress_role_blood_num" ActionTag="1911847288" Tag="183" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="-9.6000" RightMargin="33.6000" TopMargin="-16.0000" BottomMargin="-16.0000" FontSize="36" LabelText="50" VerticalAlignmentType="VT_Center" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
-                <Size X="46.0000" Y="43.0000" />
+              <AbstractNodeData Name="progress_role_blood_num" ActionTag="-267687233" Tag="46" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="-38.6000" RightMargin="33.6000" TopMargin="-14.0000" BottomMargin="-14.0000" LabelText="50" ctype="TextBMFontObjectData">
+                <Size X="40.0000" Y="39.0000" />
                 <AnchorPoint ScaleX="1.0000" ScaleY="0.5000" />
                 <Position X="36.4000" Y="5.5000" />
-                <Scale ScaleX="0.2000" ScaleY="0.2000" />
+                <Scale ScaleX="0.2300" ScaleY="0.2300" />
                 <CColor A="255" R="255" G="255" B="255" />
                 <PrePosition X="0.5200" Y="0.5000" />
-                <PreSize X="0.6571" Y="3.9091" />
-                <FontResource Type="Normal" Path="fonts/fangz.TTF" Plist="" />
-                <OutlineColor A="255" R="255" G="0" B="0" />
-                <ShadowColor A="255" R="110" G="110" B="110" />
+                <PreSize X="2.8143" Y="3.5455" />
+                <LabelBMFontFile_CNB Type="Normal" Path="fonts/ui_font.fnt" Plist="" />
               </AbstractNodeData>
             </Children>
             <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
@@ -75,29 +71,25 @@
                 <PreSize X="0.9714" Y="0.8182" />
                 <ImageFileData Type="PlistSubImage" Path="progress_margic_style.png" Plist="ui_sprite.plist" />
               </AbstractNodeData>
-              <AbstractNodeData Name="progress_role_margic_maxnum" ActionTag="1617287236" Tag="186" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="35.6020" RightMargin="-52.6020" TopMargin="-16.0000" BottomMargin="-16.0000" FontSize="36" LabelText="/100" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
-                <Size X="87.0000" Y="43.0000" />
-                <AnchorPoint ScaleY="0.5000" />
-                <Position X="35.6020" Y="5.5000" />
-                <Scale ScaleX="0.2000" ScaleY="0.2000" />
-                <CColor A="255" R="255" G="255" B="255" />
-                <PrePosition X="0.5086" Y="0.5000" />
-                <PreSize X="1.2429" Y="3.9091" />
-                <FontResource Type="Normal" Path="fonts/fangz.TTF" Plist="" />
-                <OutlineColor A="255" R="255" G="0" B="0" />
-                <ShadowColor A="255" R="110" G="110" B="110" />
-              </AbstractNodeData>
-              <AbstractNodeData Name="progress_role_margic_num" ActionTag="869530375" Tag="187" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="-32.6000" RightMargin="33.6000" TopMargin="-16.0000" BottomMargin="-16.0000" FontSize="36" LabelText="100" VerticalAlignmentType="VT_Center" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
-                <Size X="69.0000" Y="43.0000" />
+              <AbstractNodeData Name="progress_role_margic_num" ActionTag="-1990207571" Tag="48" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="-38.6000" RightMargin="33.6000" TopMargin="-14.0000" BottomMargin="-14.0000" LabelText="52" ctype="TextBMFontObjectData">
+                <Size X="40.0000" Y="39.0000" />
                 <AnchorPoint ScaleX="1.0000" ScaleY="0.5000" />
                 <Position X="36.4000" Y="5.5000" />
-                <Scale ScaleX="0.2000" ScaleY="0.2000" />
+                <Scale ScaleX="0.2300" ScaleY="0.2300" />
                 <CColor A="255" R="255" G="255" B="255" />
                 <PrePosition X="0.5200" Y="0.5000" />
-                <PreSize X="0.9857" Y="3.9091" />
-                <FontResource Type="Normal" Path="fonts/fangz.TTF" Plist="" />
-                <OutlineColor A="255" R="255" G="0" B="0" />
-                <ShadowColor A="255" R="110" G="110" B="110" />
+                <PreSize X="2.8143" Y="3.5455" />
+                <LabelBMFontFile_CNB Type="Normal" Path="fonts/ui_font.fnt" Plist="" />
+              </AbstractNodeData>
+              <AbstractNodeData Name="progress_role_margic_maxnum" ActionTag="1233227025" Tag="47" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="35.6020" RightMargin="-5.6020" TopMargin="-14.0000" BottomMargin="-14.0000" LabelText="/100" ctype="TextBMFontObjectData">
+                <Size X="75.0000" Y="39.0000" />
+                <AnchorPoint ScaleY="0.5000" />
+                <Position X="35.6020" Y="5.5000" />
+                <Scale ScaleX="0.2300" ScaleY="0.2300" />
+                <CColor A="255" R="255" G="255" B="255" />
+                <PrePosition X="0.5086" Y="0.5000" />
+                <PreSize X="2.8143" Y="3.5455" />
+                <LabelBMFontFile_CNB Type="Normal" Path="fonts/ui_font.fnt" Plist="" />
               </AbstractNodeData>
             </Children>
             <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
@@ -108,41 +100,35 @@
             <PreSize X="0.5385" Y="0.1571" />
             <FileData Type="PlistSubImage" Path="progress_margic_bg.png" Plist="ui_sprite.plist" />
           </AbstractNodeData>
-          <AbstractNodeData Name="role_lv_text" ActionTag="-420294869" Tag="188" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="69.5290" RightMargin="11.4710" TopMargin="39.7430" BottomMargin="-12.7430" FontSize="36" LabelText="LV" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
-            <Size X="49.0000" Y="43.0000" />
+          <AbstractNodeData Name="role_lv_text" ActionTag="-948720807" Tag="44" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="72.5290" RightMargin="14.4710" TopMargin="41.7430" BottomMargin="-10.7430" LabelText="LV" ctype="TextBMFontObjectData">
+            <Size X="43.0000" Y="39.0000" />
             <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
             <Position X="94.0290" Y="8.7570" />
-            <Scale ScaleX="0.3000" ScaleY="0.3000" />
+            <Scale ScaleX="0.3300" ScaleY="0.3300" />
             <CColor A="255" R="144" G="238" B="144" />
             <PrePosition X="0.7233" Y="0.1251" />
-            <PreSize X="0.3769" Y="0.6143" />
-            <FontResource Type="Normal" Path="fonts/fangz.TTF" Plist="" />
-            <OutlineColor A="255" R="255" G="0" B="0" />
-            <ShadowColor A="255" R="110" G="110" B="110" />
+            <PreSize X="1.5154" Y="0.5571" />
+            <LabelBMFontFile_CNB Type="Normal" Path="fonts/ui_font.fnt" Plist="" />
           </AbstractNodeData>
-          <AbstractNodeData Name="role_lv_num" ActionTag="1290179042" Tag="189" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="102.2710" RightMargin="-41.2710" TopMargin="39.7430" BottomMargin="-12.7430" FontSize="36" LabelText="123" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
-            <Size X="69.0000" Y="43.0000" />
+          <AbstractNodeData Name="role_lv_num" ActionTag="306830897" Tag="43" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="102.2710" RightMargin="-32.2710" TopMargin="41.7430" BottomMargin="-10.7430" LabelText="123" ctype="TextBMFontObjectData">
+            <Size X="60.0000" Y="39.0000" />
             <AnchorPoint ScaleY="0.5000" />
             <Position X="102.2710" Y="8.7570" />
-            <Scale ScaleX="0.3000" ScaleY="0.3000" />
+            <Scale ScaleX="0.3300" ScaleY="0.3300" />
             <CColor A="255" R="255" G="255" B="255" />
             <PrePosition X="0.7867" Y="0.1251" />
-            <PreSize X="0.5308" Y="0.6143" />
-            <FontResource Type="Normal" Path="fonts/fangz.TTF" Plist="" />
-            <OutlineColor A="255" R="255" G="0" B="0" />
-            <ShadowColor A="255" R="110" G="110" B="110" />
+            <PreSize X="1.5154" Y="0.5571" />
+            <LabelBMFontFile_CNB Type="Normal" Path="fonts/ui_font.fnt" Plist="" />
           </AbstractNodeData>
-          <AbstractNodeData Name="role_name" ActionTag="-177459589" Tag="190" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="-3.6720" RightMargin="41.6720" TopMargin="-15.1510" BottomMargin="42.1510" FontSize="36" LabelText="name" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
-            <Size X="92.0000" Y="43.0000" />
+          <AbstractNodeData Name="role_name" ActionTag="334084466" Tag="42" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="1.8280" RightMargin="47.1720" TopMargin="-13.1510" BottomMargin="44.1510" LabelText="name" ctype="TextBMFontObjectData">
+            <Size X="81.0000" Y="39.0000" />
             <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
             <Position X="42.3280" Y="63.6510" />
-            <Scale ScaleX="0.3000" ScaleY="0.3000" />
+            <Scale ScaleX="0.3500" ScaleY="0.3500" />
             <CColor A="255" R="255" G="255" B="255" />
             <PrePosition X="0.3256" Y="0.9093" />
-            <PreSize X="0.7077" Y="0.6143" />
-            <FontResource Type="Normal" Path="fonts/fangz.TTF" Plist="" />
-            <OutlineColor A="255" R="255" G="0" B="0" />
-            <ShadowColor A="255" R="110" G="110" B="110" />
+            <PreSize X="1.5154" Y="0.5571" />
+            <LabelBMFontFile_CNB Type="Normal" Path="fonts/ui_font.fnt" Plist="" />
           </AbstractNodeData>
         </Children>
       </ObjectData>

@@ -51,7 +51,7 @@ std::string UtilityHelper::getLocalStringForPlist(const std::string &key, const 
     
     return ret.asString();
 }
-void UtilityHelper::getLineForText(cocos2d::ui::Text*  tempText,std::string& str,float parentWidth)
+void UtilityHelper::getLineForText(cocos2d::ui::TextBMFont*  tempText,std::string& str,float parentWidth)
 {
     LanguageType lt= Application::getInstance()->getCurrentLanguage();
     if (lt == LanguageType::CHINESE) {
@@ -59,7 +59,7 @@ void UtilityHelper::getLineForText(cocos2d::ui::Text*  tempText,std::string& str
     }else
         getLineEnglistForText(tempText, str,parentWidth);
 }
-void UtilityHelper::getLineChineseForText(cocos2d::ui::Text*  tempText,std::string& str,float parentWidth)
+void UtilityHelper::getLineChineseForText(cocos2d::ui::TextBMFont*  tempText,std::string& str,float parentWidth)
 {
     std::string retultStr;
     if (!tempText ||str.empty())
@@ -103,7 +103,7 @@ void UtilityHelper::getLineChineseForText(cocos2d::ui::Text*  tempText,std::stri
    
  
 }
-void UtilityHelper::getLineEnglistForText(cocos2d::ui::Text*  tempText,std::string& str,float parentWidth)
+void UtilityHelper::getLineEnglistForText(cocos2d::ui::TextBMFont*  tempText,std::string& str,float parentWidth)
 {
     std::string retultStr;
     if (!tempText ||str.empty())
@@ -169,7 +169,8 @@ void UtilityHelper::getLineEnglistForText(cocos2d::ui::Text*  tempText,std::stri
                 str.append(*iterPt);
             }
             str.append("\n");
-            textWidthSum = 0.0f;
+            tempText->setString(*iterPt);
+            textWidthSum = (tempText->getContentSize()* tempText->getScale()).width;
         }
     }
     for (; iterPt!=tempVec.end(); ++iterPt) {
@@ -177,7 +178,7 @@ void UtilityHelper::getLineEnglistForText(cocos2d::ui::Text*  tempText,std::stri
     }
     
 }
-cocos2d::Size UtilityHelper::getSingleStrFontSize(cocos2d::ui::Text* tempText,std::string str)
+cocos2d::Size UtilityHelper::getSingleStrFontSize(cocos2d::ui::TextBMFont* tempText,std::string str)
 {
      cocos2d::Size tempSize = cocos2d::Size::ZERO;
     if (str.empty())
@@ -220,79 +221,16 @@ std::vector<std::string> UtilityHelper::getStringCount(std::string str )
     //1.将字符串中英文切割存放到列表
     std::string tempStr;
     for (int i=0; i<str.length(); ) {
-        //判断当前字符有几个字节
-        int count = getCharUtf8Count(str.at(i));
-
+        char ch = str.at(i);
+        int count = getCharUtf8Count(ch);
+        
         std::string subStr =  str.substr(i,count);
-        //三个字节算一个字
-        if (count >0 && count <2 ) {
-            if (tempStr.length() >=2 ) {
-                tempVec.push_back(tempStr);
-                tempStr.clear();
-            }
-            tempStr.append(subStr);
-        }else{
-            if (!tempStr.empty()) {
-                tempVec.push_back(tempStr);
-                tempStr.clear();
-            }
-            tempVec.push_back(subStr);
-        }
+        tempVec.push_back(subStr);
         i+=count;
-        if (i==str.length() && !tempStr.empty()) {
-            tempVec.push_back(tempStr);
-            tempStr.clear();
-        }
-
     }
     return tempVec;
 }
-int UtilityHelper::getLineStr(std::string &str, int length)
-{
-    if (str.empty() ||length<=0) {
-        return 0;
-    }
-    if (str.length() < length) {
-        return 0;
-    }
 
-    std::string resultStr;
-    std::vector<std::string > str_vec;
-    std::vector<std::string > tempVec = getStringCount(str);
- 
-    if (tempVec.size() <=length) {
-        std::string tempStr;
-        for (int i=0; i<tempVec.size(); i++) {
-            tempStr.append(tempVec[i]);
-        }
-        str_vec.push_back(tempStr);
-    }else{
-        int tempCount = (int)tempVec.size()/length;
-        for (int i =0; i< tempCount; i++)
-        {
-            std::string tempStr;
-            for(int j=i*length;j<length*(i+1);j++)
-            {
-                tempStr.append(tempVec[j]);
-            }
-             str_vec.push_back(tempStr);
-        }
-         std::string tempStr;
-        for (int i =length*tempCount; i< tempVec.size(); i++)
-        {
-            tempStr.append(tempVec[i]);
-        }
-        str_vec.push_back(tempStr);
-    }
-   
-    for (unsigned int i = 0;i<str_vec.size();++i)
-    {
-        resultStr.append(str_vec.at(i)).append("\n");
-    }
-        resultStr.pop_back();
-    str = resultStr;
-    return str_vec.size();
-}
 int UtilityHelper::getCharUtf8Count(unsigned char ch)
 {
     int resultsize = 1;

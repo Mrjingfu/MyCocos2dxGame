@@ -19,29 +19,25 @@
                 <PreSize X="0.3231" Y="0.8400" />
                 <FileData Type="PlistSubImage" Path="achievement_icon_0002.png" Plist="achievement_icon.plist" />
               </AbstractNodeData>
-              <AbstractNodeData Name="achieveitem_name" ActionTag="1213116446" Tag="197" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="51.2000" RightMargin="-143.2000" TopMargin="0.3000" BottomMargin="26.7000" FontSize="36" LabelText="撒的发是否是否" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
-                <Size X="252.0000" Y="43.0000" />
+              <AbstractNodeData Name="achieveitem_name" ActionTag="-481031028" Tag="144" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="51.2000" RightMargin="-115.2000" TopMargin="2.2980" BottomMargin="28.7020" LabelText="撒的发是否是否" ctype="TextBMFontObjectData">
+                <Size X="224.0000" Y="39.0000" />
                 <AnchorPoint ScaleY="0.5000" />
-                <Position X="51.2000" Y="48.2000" />
-                <Scale ScaleX="0.2500" ScaleY="0.2500" />
+                <Position X="51.2000" Y="48.2020" />
+                <Scale ScaleX="0.2800" ScaleY="0.2800" />
                 <CColor A="255" R="255" G="255" B="255" />
                 <PrePosition X="0.3200" Y="0.6886" />
-                <PreSize X="0.5000" Y="0.0960" />
-                <FontResource Type="Normal" Path="fonts/fangz.TTF" Plist="" />
-                <OutlineColor A="255" R="255" G="0" B="0" />
-                <ShadowColor A="255" R="110" G="110" B="110" />
+                <PreSize X="1.3586" Y="0.7091" />
+                <LabelBMFontFile_CNB Type="Normal" Path="fonts/ui_font.fnt" Plist="" />
               </AbstractNodeData>
-              <AbstractNodeData Name="achieveitem_target_desc" ActionTag="-993470951" Tag="198" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="51.2000" RightMargin="-323.2000" TopMargin="38.5000" BottomMargin="-54.5000" FontSize="36" LabelText="杀什么是是是是是是是是&#xA;是是是是是是是是是是是是&#xA;" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
-                <Size X="432.0000" Y="86.0000" />
+              <AbstractNodeData Name="achieveitem_target_desc" ActionTag="-1757401277" Tag="145" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="51.2000" RightMargin="-275.2000" TopMargin="38.5000" BottomMargin="-46.5000" LabelText="杀什么是是是是是是是是&#xA;是是是是是是是是是是是是" ctype="TextBMFontObjectData">
+                <Size X="384.0000" Y="78.0000" />
                 <AnchorPoint ScaleY="1.0000" />
                 <Position X="51.2000" Y="31.5000" />
-                <Scale ScaleX="0.1700" ScaleY="0.1700" />
+                <Scale ScaleX="0.2000" ScaleY="0.2000" />
                 <CColor A="255" R="255" G="255" B="255" />
                 <PrePosition X="0.3200" Y="0.4500" />
-                <PreSize X="0.5000" Y="0.0960" />
-                <FontResource Type="Normal" Path="fonts/fangz.TTF" Plist="" />
-                <OutlineColor A="255" R="255" G="0" B="0" />
-                <ShadowColor A="255" R="110" G="110" B="110" />
+                <PreSize X="1.3586" Y="0.7091" />
+                <LabelBMFontFile_CNB Type="Normal" Path="fonts/ui_font.fnt" Plist="" />
               </AbstractNodeData>
             </Children>
             <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />

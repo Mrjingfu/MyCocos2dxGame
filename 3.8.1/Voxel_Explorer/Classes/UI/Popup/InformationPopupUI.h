@@ -38,8 +38,8 @@ protected:
     cocos2d::ValueVector    m_vInfos;
     cocos2d::ui::ImageView* m_pInfoIcon;
     cocos2d::ui::ImageView* m_pBtnNext;
-    cocos2d::ui::Text*      m_pInfoDesc;
-    cocos2d::ui::Text*      m_pInfoTitle;
+    cocos2d::ui::TextBMFont*      m_pInfoDesc;
+    cocos2d::ui::TextBMFont*      m_pInfoTitle;
     cocos2d::ui::Layout*    m_pInfoFrame;
     cocos2d::ui::ImageView* m_pTitleFrame;
     cocos2d::ui::Button*    m_pOk;

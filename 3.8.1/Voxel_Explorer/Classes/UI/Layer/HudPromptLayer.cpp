@@ -38,7 +38,7 @@ void HudPromptLayer::refreshUIView()
  
     for (int i=0; i<m_vPrompts.size(); i++) {
         
-         ui::Text* m_pLabel = m_vPrompts.at(i);
+         ui::TextBMFont* m_pLabel = m_vPrompts.at(i);
         if (m_pLabel && !m_pLabel->getParent() )
         {
             addChild(m_pLabel);
@@ -76,7 +76,7 @@ void HudPromptLayer::refreshUIView()
 void HudPromptLayer::removePrompt(cocos2d::Node* node)
 {
     CCLOG("removePrompt");
-    ui::Text* m_pLabel = static_cast<ui::Text*>(node);
+    ui::TextBMFont* m_pLabel = static_cast<ui::TextBMFont*>(node);
     if (m_pLabel) {
         m_pLabel->removeFromParentAndCleanup(false);
     }
@@ -86,15 +86,13 @@ void HudPromptLayer::shwoPrompt(cocos2d::Vec2 pos,TipTypes tipType, std::string 
      CCLOG("shwoGlobalPrompt");
     m_eTipType = tipType;
     m_vPos = pos;
-    ui::Text* m_pLabel = ui::Text::create();
-    m_pLabel->setFontSize(36);
+    ui::TextBMFont* m_pLabel = ui::TextBMFont::create();
     m_pLabel->setAnchorPoint(cocos2d::Vec2::ANCHOR_MIDDLE);
-    m_pLabel->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
+    m_pLabel->setFntFile(UtilityHelper::getLocalStringForUi("FONT_NAME"));
     m_pLabel->setScale(0.55);
-    m_pLabel->setTextColor(cocos2d::Color4B(PopupUILayerManager::getInstance()->getTipsColor(tipType)));
-    cocos2d::Size fonSize = UtilityHelper::getSingleStrFontSize(m_pLabel, text);
-    int charCount  = (int)(getContentSize().width/fonSize.width);
-    UtilityHelper::getLineStr(text, charCount);
+    m_pLabel->setColor(PopupUILayerManager::getInstance()->getTipsColor(tipType));
+
+    UtilityHelper::getLineForText(m_pLabel, text,getContentSize().width-10);
     m_pLabel->setString(text);
     m_pLabel->setVisible(false);
     m_vPrompts.pushBack(m_pLabel);

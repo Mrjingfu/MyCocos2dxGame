@@ -31,15 +31,15 @@ bool AchieveItemUI::addEvents()
     m_pAchieveIcon = dynamic_cast<ui::ImageView*>(UtilityHelper::seekNodeByName(m_pRootNode, "achieveitem_icon"));
     if(!m_pAchieveIcon)
         return false;
-    m_pAchieveTargetDesc = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "achieveitem_target_desc"));
+    m_pAchieveTargetDesc = dynamic_cast<ui::TextBMFont*>(UtilityHelper::seekNodeByName(m_pRootNode, "achieveitem_target_desc"));
     if(!m_pAchieveTargetDesc)
         return false;
-    m_pAchieveName = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "achieveitem_name"));
+    m_pAchieveName = dynamic_cast<ui::TextBMFont*>(UtilityHelper::seekNodeByName(m_pRootNode, "achieveitem_name"));
     if(!m_pAchieveName)
         return false;
     
-    m_pAchieveTargetDesc->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
-    m_pAchieveName->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
+    m_pAchieveTargetDesc->setFntFile(UtilityHelper::getLocalStringForUi("FONT_NAME"));
+    m_pAchieveName->setFntFile(UtilityHelper::getLocalStringForUi("FONT_NAME"));
     m_pAchieveTargetDesc->setColor(Color3B(185, 153, 109));
     m_pAchieveName->setColor(Color3B(241, 222, 188));
     return true;
@@ -54,17 +54,13 @@ void AchieveItemUI::setAchieveDatas(const std::string icon,  std::string name,  
     }
     float width = m_pRootNode->getContentSize().width*0.75;
     if (m_pAchieveName) {
-        
-        cocos2d::Size fontsize = UtilityHelper::getSingleStrFontSize(m_pAchieveName, name);
-        int count = width/fontsize.width;
-        UtilityHelper::getLineStr(name, count);
+
+        UtilityHelper::getLineForText(m_pAchieveName, name,width);
         m_pAchieveName->setString(name);
     }
     if (m_pAchieveTargetDesc) {
-        
-        cocos2d::Size fontsize = UtilityHelper::getSingleStrFontSize(m_pAchieveTargetDesc, targetDesc);
-        int xCount = width/fontsize.width;
-        UtilityHelper::getLineStr(targetDesc, xCount);
+
+        UtilityHelper::getLineForText(m_pAchieveTargetDesc, targetDesc,width);
         m_pAchieveTargetDesc->setString(targetDesc);
         float heigth = m_pRootNode->getContentSize().height*0.5;
         float descWidth = m_pAchieveTargetDesc->getContentSize().height* m_pAchieveTargetDesc->getScale();

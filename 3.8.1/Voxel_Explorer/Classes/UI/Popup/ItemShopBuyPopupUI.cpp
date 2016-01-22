@@ -61,17 +61,16 @@ bool ItemShopBuyPopupUI::initBottom()
     m_pItemSlider = dynamic_cast<cocos2d::ui::Slider*>(UtilityHelper::seekNodeByName(m_pBottomNode, "item_shop_slider"));
     if (!m_pItemSlider)
         return false;;
-    m_pSellCount =  dynamic_cast<cocos2d::ui::Text*>(UtilityHelper::seekNodeByName(m_pBottomNode, "item_shop_item_count"));
+    m_pSellCount =  dynamic_cast<cocos2d::ui::TextBMFont*>(UtilityHelper::seekNodeByName(m_pBottomNode, "item_shop_item_count"));
     if (!m_pSellCount)
         return false;
     
-    m_pBtnEquip->setTitleFontName(UtilityHelper::getLocalString("FONT_NAME"));
-    m_pBtnEquip->setTitleFontSize(36);
-    m_pBtnEquip->getTitleRenderer()->setScale(0.3);
+    m_pBtnEquip->setTitleFontName(UtilityHelper::getLocalStringForUi("FONT_NAME"));
+    m_pBtnEquip->getTitleRenderer()->setScale(0.7);
     m_pBtnEquip->setTitleText(UtilityHelper::getLocalStringForUi("BTN_TEXT_BUY"));
     
     
-    m_pSellCount->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
+    m_pSellCount->setFntFile(UtilityHelper::getLocalStringForUi("FONT_NAME"));
     m_pItemSlider->addEventListener(CC_CALLBACK_2(ItemShopBuyPopupUI::sliderEvent, this));
     
     m_pBottomFrame->removeFromParentAndCleanup(false);

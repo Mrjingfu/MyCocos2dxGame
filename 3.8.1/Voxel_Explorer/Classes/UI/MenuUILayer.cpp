@@ -78,13 +78,11 @@ bool MenuUILayer::addEvents()
     EaseExponentialOut* fadeOut = EaseExponentialOut::create(FadeOut::create(1.0f));
     m_pWhiteLayer->runAction(fadeOut);
     
-    m_pArchiveStart->setTitleFontName(UtilityHelper::getLocalString("FONT_NAME"));
-    m_pArchiveStart->setTitleFontSize(36);
-    m_pArchiveStart->getTitleRenderer()->setScale(0.4);
+    m_pArchiveStart->setTitleFontName(UtilityHelper::getLocalStringForUi("FONT_NAME"));
+    m_pArchiveStart->getTitleRenderer()->setScale(0.8);
 
-    m_pArchiveRestart->setTitleFontName(UtilityHelper::getLocalString("FONT_NAME"));
-    m_pArchiveRestart->setTitleFontSize(36);
-    m_pArchiveRestart->getTitleRenderer()->setScale(0.4);
+    m_pArchiveRestart->setTitleFontName(UtilityHelper::getLocalStringForUi("FONT_NAME"));
+    m_pArchiveRestart->getTitleRenderer()->setScale(0.8);
     
     
     

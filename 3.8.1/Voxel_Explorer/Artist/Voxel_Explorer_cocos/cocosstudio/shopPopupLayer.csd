@@ -19,17 +19,15 @@
           <AbstractNodeData Name="shop_prop_title_img" ActionTag="1182279746" Tag="146" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="77.5000" RightMargin="77.5000" TopMargin="-10.0000" BottomMargin="330.0000" Scale9Enable="True" LeftEage="5" RightEage="5" TopEage="5" BottomEage="5" Scale9OriginX="5" Scale9OriginY="5" Scale9Width="4" Scale9Height="4" ctype="ImageViewObjectData">
             <Size X="95.0000" Y="20.0000" />
             <Children>
-              <AbstractNodeData Name="shop_title_text" ActionTag="-750932487" Tag="147" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="-11.0000" RightMargin="-11.0000" TopMargin="-14.5000" BottomMargin="-14.5000" FontSize="36" LabelText="武器店" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
-                <Size X="108.0000" Y="43.0000" />
+              <AbstractNodeData Name="shop_title_text" ActionTag="-860900601" Tag="395" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="-0.5000" RightMargin="-0.5000" TopMargin="-9.5000" BottomMargin="-9.5000" LabelText="武器店" ctype="TextBMFontObjectData">
+                <Size X="96.0000" Y="39.0000" />
                 <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
                 <Position X="47.5000" Y="10.0000" />
-                <Scale ScaleX="0.3000" ScaleY="0.3000" />
+                <Scale ScaleX="0.3300" ScaleY="0.3300" />
                 <CColor A="255" R="255" G="255" B="255" />
                 <PrePosition X="0.5000" Y="0.5000" />
-                <PreSize X="0.7143" Y="0.4615" />
-                <FontResource Type="Normal" Path="fonts/fangz.TTF" Plist="" />
-                <OutlineColor A="255" R="255" G="0" B="0" />
-                <ShadowColor A="255" R="110" G="110" B="110" />
+                <PreSize X="2.2526" Y="1.9500" />
+                <LabelBMFontFile_CNB Type="Normal" Path="fonts/ui_font.fnt" Plist="" />
               </AbstractNodeData>
             </Children>
             <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />

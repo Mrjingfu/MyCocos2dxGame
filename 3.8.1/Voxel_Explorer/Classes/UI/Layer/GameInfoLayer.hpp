@@ -21,10 +21,10 @@ public:
     virtual bool addEvents() override;
     virtual void refreshUIView()override;
 private:
-    cocos2d::ui::Text*       m_pGameGoldNum;            // 金币
-    cocos2d::ui::Text*       m_pGameSilverNum;          // 银币
-    cocos2d::ui::Text*       m_pGameCopperNum;          // 铜币
-    cocos2d::ui::Text*       m_pGameLevelInfoName;      // 关卡名
+    cocos2d::ui::TextBMFont*       m_pGameGoldNum;            // 金币
+    cocos2d::ui::TextBMFont*       m_pGameSilverNum;          // 银币
+    cocos2d::ui::TextBMFont*       m_pGameCopperNum;          // 铜币
+    cocos2d::ui::TextBMFont*       m_pGameLevelInfoName;      // 关卡名
 };
 
 #endif /* GameInfoLayer_hpp */

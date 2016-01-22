@@ -9,20 +9,18 @@
           <AbstractNodeData Name="alert_layer_layout" ActionTag="-1763356122" Tag="11" IconVisible="False" PercentWidthEnable="True" PercentHeightEnable="True" PercentWidthEnabled="True" PercentHeightEnabled="True" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" TouchEnable="True" BackColorAlpha="102" ComboBoxIndex="1" ColorAngle="90.0000" Scale9Enable="True" LeftEage="5" RightEage="5" TopEage="5" BottomEage="5" ctype="PanelObjectData">
             <Size X="150.0000" Y="100.0000" />
             <Children>
-              <AbstractNodeData Name="alert_layer_title_img" ActionTag="62396566" Tag="20" IconVisible="False" PercentWidthEnable="True" PercentHeightEnable="True" PercentWidthEnabled="True" PercentHeightEnabled="True" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="40.0000" RightMargin="40.0000" TopMargin="-10.0000" BottomMargin="90.0000" Scale9Enable="True" LeftEage="5" RightEage="5" TopEage="5" BottomEage="5" Scale9OriginX="5" Scale9OriginY="5" Scale9Width="4" Scale9Height="4" ctype="ImageViewObjectData">
-                <Size X="70.0000" Y="20.0000" />
+              <AbstractNodeData Name="alert_layer_title_img" ActionTag="62396566" Tag="20" IconVisible="False" PercentWidthEnable="True" PercentHeightEnable="True" PercentWidthEnabled="True" PercentHeightEnabled="True" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="39.9975" RightMargin="39.9975" TopMargin="-10.0000" BottomMargin="90.0000" Scale9Enable="True" LeftEage="5" RightEage="5" TopEage="5" BottomEage="5" Scale9OriginX="5" Scale9OriginY="5" Scale9Width="4" Scale9Height="4" ctype="ImageViewObjectData">
+                <Size X="70.0050" Y="20.0000" />
                 <Children>
-                  <AbstractNodeData Name="alert_layer_title_text" ActionTag="-1076168566" Tag="23" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="-1.0000" RightMargin="-1.0000" TopMargin="-11.5000" BottomMargin="-11.5000" FontSize="36" LabelText="提示" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
-                    <Size X="72.0000" Y="43.0000" />
+                  <AbstractNodeData Name="alert_layer_title_text" ActionTag="872462833" Tag="164" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="-63.4975" RightMargin="-63.4975" TopMargin="-9.5000" BottomMargin="-9.5000" LabelText="提示" ctype="TextBMFontObjectData">
+                    <Size X="64.0000" Y="39.0000" />
                     <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-                    <Position X="35.0000" Y="10.0000" />
-                    <Scale ScaleX="0.3000" ScaleY="0.3000" />
+                    <Position X="35.0025" Y="10.0000" />
+                    <Scale ScaleX="0.3500" ScaleY="0.3500" />
                     <CColor A="255" R="255" G="255" B="255" />
                     <PrePosition X="0.5000" Y="0.5000" />
-                    <PreSize X="1.0286" Y="2.1500" />
-                    <FontResource Type="Normal" Path="fonts/fangz.TTF" Plist="" />
-                    <OutlineColor A="255" R="255" G="0" B="0" />
-                    <ShadowColor A="255" R="110" G="110" B="110" />
+                    <PreSize X="2.8141" Y="1.9500" />
+                    <LabelBMFontFile_CNB Type="Normal" Path="fonts/ui_font.fnt" Plist="" />
                   </AbstractNodeData>
                 </Children>
                 <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
@@ -65,17 +63,15 @@
                 <OutlineColor A="255" R="255" G="0" B="0" />
                 <ShadowColor A="255" R="110" G="110" B="110" />
               </AbstractNodeData>
-              <AbstractNodeData Name="alert_layer_message" ActionTag="-592131196" Tag="24" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="-151.3937" RightMargin="-155.6063" TopMargin="-23.0956" BottomMargin="-5.9044" FontSize="36" LabelText="qqqqqqqqqqqqqqqqqqqqasd&#xA;" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
-                <Size X="457.0000" Y="43.0000" />
+              <AbstractNodeData Name="alert_layer_message" ActionTag="-1137737347" Tag="165" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="-127.4000" RightMargin="-131.6000" TopMargin="21.9000" BottomMargin="39.1000" LabelText="qqqqqqqqqqqqqqqqqqqqasd" ctype="TextBMFontObjectData">
+                <Size X="409.0000" Y="39.0000" />
                 <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
                 <Position X="77.1000" Y="58.6000" />
-                <Scale ScaleX="0.3000" ScaleY="0.3000" />
+                <Scale ScaleX="0.3400" ScaleY="0.3400" />
                 <CColor A="255" R="255" G="255" B="255" />
                 <PrePosition X="0.5140" Y="0.5860" />
-                <PreSize X="1.9933" Y="0.4300" />
-                <FontResource Type="Normal" Path="fonts/fangz.TTF" Plist="" />
-                <OutlineColor A="255" R="255" G="0" B="0" />
-                <ShadowColor A="255" R="110" G="110" B="110" />
+                <PreSize X="1.3133" Y="0.3900" />
+                <LabelBMFontFile_CNB Type="Normal" Path="fonts/ui_font.fnt" Plist="" />
               </AbstractNodeData>
             </Children>
             <AnchorPoint />

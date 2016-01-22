@@ -82,7 +82,7 @@ bool GameToolbarLayer::addEvents()
     m_pGameDistTipsFrame = dynamic_cast<ui::ImageView*>(UtilityHelper::seekNodeByName(m_pRootNode, "game_dist_dialog"));
     if (!m_pGameDistTipsFrame)
         return false;
-    m_pGameDistFrameDesc = dynamic_cast<ui::Text*>(UtilityHelper::seekNodeByName(m_pRootNode, "game_dist_tips_desc"));
+    m_pGameDistFrameDesc = dynamic_cast<ui::TextBMFont*>(UtilityHelper::seekNodeByName(m_pRootNode, "game_dist_tips_desc"));
     if (!m_pGameDistFrameDesc)
         return false;
     m_pGameDistFrameCloseBtn= dynamic_cast<ui::Button*>(UtilityHelper::seekNodeByName(m_pRootNode, "game_dist_btn_close"));
@@ -117,7 +117,7 @@ bool GameToolbarLayer::addEvents()
     m_pGamePauseBtn->addClickEventListener(CC_CALLBACK_1(GameToolbarLayer::onClickPause, this));
 
     m_pGameDistTipsFrame->setVisible(false);
-    m_pGameDistFrameDesc->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
+    m_pGameDistFrameDesc->setFntFile(UtilityHelper::getLocalStringForUi("FONT_NAME"));
     m_pGameDistFrameDesc->setString(UtilityHelper::getLocalStringForUi("GAME_SERACH_EXPLAIN"));
     m_pGameDistFrameCloseBtn->addClickEventListener(CC_CALLBACK_1(GameToolbarLayer::onClickDistTipsFrame, this));
 

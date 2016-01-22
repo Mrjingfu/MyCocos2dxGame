@@ -4,8 +4,6 @@
 <dict>
 	<key>GAME_NAME</key>
 	<string>Voxel Dungeon</string>
-	<key>FONT_NAME</key>
-	<string>fangz.TTF</string>
 	<key>TTN_CHASM</key>
 	<string>It&apos;s too dark to see!</string>
 	<key>TTN_STANDARD</key>

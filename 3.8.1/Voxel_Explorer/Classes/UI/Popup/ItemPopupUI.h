@@ -48,14 +48,14 @@ protected:
 protected:
     
     cocos2d::ui::ImageView* m_pItemIcon;
-    cocos2d::ui::Text*   m_pItemName;
-    cocos2d::ui::Text*   m_pItemlv;
-    cocos2d::ui::Text*   m_pItemEquipDist;  //已装备 不可装备 可使用用品的count个数 文本标签
-    cocos2d::ui::Text*   m_pItemNotIden;    //是否鉴定文本标签
+    cocos2d::ui::TextBMFont*   m_pItemName;
+    cocos2d::ui::TextBMFont*   m_pItemlv;
+    cocos2d::ui::TextBMFont*   m_pItemEquipDist;  //已装备 不可装备 可使用用品的count个数 文本标签
+    cocos2d::ui::TextBMFont*   m_pItemNotIden;    //是否鉴定文本标签
     NoteUi*   m_pItemDesc;
 
-    cocos2d::ui::Text*  m_pItemType;               //类型
-    cocos2d::ui::Text*  m_pItemIdentifyDesc;
+    cocos2d::ui::TextBMFont*  m_pItemType;               //类型
+
     cocos2d::ui::Layout* m_pAttrFrame;
     cocos2d::ui::Layout* m_pItemPropFrame;
     cocos2d::ui::ImageView* m_pBackGround;

@@ -41,7 +41,7 @@ bool DiscardPopupUI::addEvents()
     m_pCancel = dynamic_cast<cocos2d::ui::Button *>(UtilityHelper::seekNodeByName(m_pRootNode, "discard_layer_cancel"));
     if(!m_pCancel)
           return false;
-    m_pCountText = dynamic_cast<cocos2d::ui::Text *>(UtilityHelper::seekNodeByName(m_pRootNode, "discard_item_count"));
+    m_pCountText = dynamic_cast<cocos2d::ui::TextBMFont *>(UtilityHelper::seekNodeByName(m_pRootNode, "discard_item_count"));
     if(!m_pCountText)
           return false;
     m_pItemIcon = dynamic_cast<cocos2d::ui::ImageView *>(UtilityHelper::seekNodeByName(m_pRootNode, "discard_item_icon"));
@@ -51,20 +51,18 @@ bool DiscardPopupUI::addEvents()
     if (!m_pItemSlider)
         return false;
 
-    m_pOk->setTitleFontName(UtilityHelper::getLocalString("FONT_NAME"));
-    m_pOk->setTitleFontSize(36);
-    m_pOk->getTitleRenderer()->setScale(0.3);
+    m_pOk->setTitleFontName(UtilityHelper::getLocalStringForUi("FONT_NAME"));
+    m_pOk->getTitleRenderer()->setScale(0.7);
     m_pOk->setTitleText(UtilityHelper::getLocalStringForUi("BTN_TEXT_OK"));
     
-    m_pCancel->setTitleFontName(UtilityHelper::getLocalString("FONT_NAME"));
-    m_pCancel->setTitleFontSize(36);
-    m_pCancel->getTitleRenderer()->setScale(0.3);
+    m_pCancel->setTitleFontName(UtilityHelper::getLocalStringForUi("FONT_NAME"));
+    m_pCancel->getTitleRenderer()->setScale(0.7);
     m_pCancel->setTitleText(UtilityHelper::getLocalStringForUi("BTN_TEXT_CANCEL"));
     
     m_pOk->addClickEventListener(CC_CALLBACK_1(DiscardPopupUI::onClickOk, this));
     m_pCancel->addClickEventListener(CC_CALLBACK_1(DiscardPopupUI::onClickCancel,this));
 
-    m_pCountText->setFontName(UtilityHelper::getLocalString("FONT_NAME"));
+    m_pCountText->setFntFile(UtilityHelper::getLocalStringForUi("FONT_NAME"));
     m_pItemSlider->addEventListener(CC_CALLBACK_2(DiscardPopupUI::sliderEvent, this));
     
     return true;

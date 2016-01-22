@@ -31,7 +31,7 @@ private:
 protected:
     ShopPopupUI::eShopType   m_eShopType;
     cocos2d::ui::Slider*     m_pItemSlider;
-    cocos2d::ui::Text*       m_pSellCount;
+    cocos2d::ui::TextBMFont*       m_pSellCount;
    };
 
 
