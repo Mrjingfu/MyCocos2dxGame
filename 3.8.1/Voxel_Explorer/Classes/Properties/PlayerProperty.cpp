@@ -51,7 +51,7 @@ bool PlayerProperty::initNewPlayer()   ///新角色初始化
 {
     bool ret = false;
     int itemIDCounter = m_snItemInstanceIDCounter;
-    WeaponProperty* weaponProperty = new (std::nothrow) WeaponProperty(m_snItemInstanceIDCounter++,PickableItem::PIT_DAGGER_PRO_BLUELIGHTDAGGER, 25, true);
+    WeaponProperty* weaponProperty = new (std::nothrow) WeaponProperty(m_snItemInstanceIDCounter++,PickableItem::PIT_DAGGER_DAGGER, 1, true);
     if(!weaponProperty)
         return ret;
     if(weaponProperty->isIdentified())

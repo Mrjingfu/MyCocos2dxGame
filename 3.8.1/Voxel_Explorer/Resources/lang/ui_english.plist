@@ -19,55 +19,55 @@
 	<key>ROLE_SHOW_MP</key>
 	<string>MP:</string>
 	<key>PROP_SHOW_LIGHT_DIS</key>
-	<string>Light Dis:</string>
+	<string>Light Scope:</string>
 	<key>PROP_SHOW_SEARCH_DIS</key>
-	<string>Search Dis:</string>
+	<string>Search Scope:</string>
 	<key>PROP_SHOW_MARGIC_FIND</key>
-	<string>Margic:</string>
+	<string>MF:</string>
 	<key>PROP_SHOW_CRITICAL_STRIKE</key>
-	<string>Critical strike:</string>
+	<string>Crit Rate:</string>
 	<key>PROP_SHOW_BLOCK</key>
-	<string>Bolck:</string>
+	<string>Blocked Rate:</string>
 	<key>PROP_SHOW_DODGE</key>
-	<string>Dodge:</string>
+	<string>Dodge Rate:</string>
 	<key>PROP_SHOW_ATTACK</key>
 	<string>Attack:</string>
 	<key>PROP_SHOW_DEFENSE</key>
 	<string>Defense:</string>
 	<key>STATUS_TEXT_DODGE</key>
-	<string>dogde</string>
+	<string>Dogded</string>
 	<key>STATUS_TEXT_BOLOCK</key>
-	<string>Bolock %d</string>
+	<string>Blocked %d</string>
 	<key>STATUS_TEXT_CRITICAL_STRIKE</key>
-	<string>Cirtical Strike %d</string>
+	<string>Cirted %d</string>
 	<key>STATUS_TEXT_EXP</key>
-	<string>+Exp %d</string>
+	<string>Exp added %d</string>
 	<key>GAME_SERACH_EXPLAIN</key>
-	<string>Select a cell to examine</string>
+	<string>Please tap the screen to check.</string>
 	<key>GAME_MESSAGE_NOT</key>
-	<string>Welcome to the %s level %d of Voxel</string>
+	<string>Welcome to the %d floor of %s.</string>
 	<key>GAME_MESSAGE_MONSTER_ATTACK</key>
-	<string>%s hit you</string>
+	<string>The monster hit you.</string>
 	<key>GAME_MESSAGE_MONSTER_DODGE</key>
-	<string>%s闪避了你的进攻</string>
+	<string>The monster dodged your attack</string>
 	<key>GAME_MESSAGE_MONSTER_BOLOCK</key>
-	<string>%s产生了一个格挡</string>
+	<string>The monster blocked your attack.</string>
 	<key>GAME_MESSAGE_MONSTER_CRITICAL_STRIKE</key>
-	<string>%s产生了一个暴击</string>
+	<string>The monster generated a critical strike.</string>
 	<key>GAME_MESSAGE_MONSTER_DEAD</key>
-	<string>You defeated %s</string>
+	<string>You killed the monster.</string>
 	<key>GAME_MESSAGE_ROLE_ATTACK</key>
-	<string>You hit %s</string>
+	<string>You hit the monster.</string>
 	<key>GAME_MESSAGE_ROLE_DODGE</key>
-	<string>you dodged %s&apos;s attack</string>
+	<string>You dodged the monster&apos;s attack.</string>
 	<key>GAME_MESSAGE_ROLE_BOLOCK</key>
-	<string>你产生了一个格挡</string>
+	<string>You blocked the monster&apos;s attack.</string>
 	<key>GAME_MESSAGE_ROLE_CRITICAL_STRIKE</key>
-	<string>你产生了一个暴击</string>
+	<string>You generated a critical strike.</string>
 	<key>GAME_MESSAGE_ROLE_DEAD</key>
-	<string>%s杀死了你...</string>
+	<string>You&apos;re dead.</string>
 	<key>GAME_MESSAGE_ROLE_ADD_EXP</key>
-	<string>You now have %s</string>
+	<string>Your exp added %s.</string>
 	<key>GAME_MESSAGE_LEVEL_UP</key>
 	<string>Level up!!!</string>
 	<key>MONSTER_ELITE_NAME</key>
@@ -77,9 +77,9 @@
 	<key>EQUIP_PROP_DEFENSE</key>
 	<string>Defense:%d</string>
 	<key>EQUIP_PROP_MIN_HURT</key>
-	<string>+%d MIN HURT</string>
+	<string>+%d Minimum Damage</string>
 	<key>EQUIP_PROP_MAX_HURT</key>
-	<string>+%d MIN HURT</string>
+	<string>+%d Maximum Damage</string>
 	<key>EQUIP_PROP_HP</key>
 	<string>+%d HP</string>
 	<key>EQUIP_PROP_MP</key>
@@ -97,197 +97,197 @@
 	<key>EQUIP_PROP_LIGHT</key>
 	<string>+%d Light Scope</string>
 	<key>ITEM_NOT_IDENTIFY</key>
-	<string>Not Identify</string>
+	<string>Not identified</string>
 	<key>ITEM_ALREDY_EQUIP</key>
-	<string>Equip</string>
+	<string>Equipped</string>
 	<key>ITEM_NOT_EQUIP</key>
-	<string>Not Equip</string>
+	<string>Can not be equipped</string>
 	<key>ITEM_PROP_TYPE_KEY</key>
-	<string>KEY</string>
+	<string>Key</string>
 	<key>ITEM_PROP_TYPE_WEAPON</key>
-	<string>WEAPON</string>
+	<string>Weapon</string>
 	<key>ITEM_PROP_TYPE_SECOND_WEAPON</key>
-	<string>SECOND WEAPON</string>
+	<string>Off-hand Weapon</string>
 	<key>ITEM_PROP_TYPE_ARMOR</key>
-	<string>ARMOR</string>
+	<string>Armor</string>
 	<key>ITEM_PROP_TYPE_MAGIC_ORNAMENT</key>
-	<string>ORNAMENT</string>
+	<string>Accessory</string>
 	<key>ITEM_PROP_TYPE_SCROLL</key>
-	<string>SCROLL</string>
+	<string>Scroll</string>
 	<key>ITEM_PROP_TYPE_POTIONS</key>
-	<string>POTIONS</string>
+	<string>Potion</string>
 	<key>ITEM_PROP_TYPE_MATERIAL</key>
-	<string>MATERIAL</string>
+	<string>Material</string>
 	<key>ITEM_PROP_TYPE_QUEST</key>
-	<string>QUEST</string>
+	<string>Quest</string>
 	<key>ITEM_PROP_TYPE_SUNDRIES</key>
-	<string>SUNDRIES</string>
+	<string>Sundries</string>
 	<key>ITEM_MONEY_DESC</key>
-	<string>Sell price:</string>
+	<string>Selling price:</string>
 	<key>USE_POTION_TREAT</key>
-	<string>使用治疗药水,恢复%dHP</string>
+	<string>Used health potion. Recovered %d health points.</string>
 	<key>USE_POTION_MAGIC</key>
-	<string>使用魔法药水,恢复%dMP</string>
+	<string>Used mana potion. Recovered %d mana points.</string>
 	<key>USE_POTION_RECOVERY</key>
-	<string>使用恢复药水,恢复%dHP,%dMP</string>
+	<string>Used recovery potion. Recovered %d health points and %d mana points.</string>
 	<key>USE_POTION_RELIEVE</key>
-	<string>使用解毒药水,中毒状态被清除了!</string>
+	<string>Used detoxification potion, the poisoning status was cleared.</string>
 	<key>USE_POTION_WEAK</key>
-	<string>使用治愈药水,虚弱状态被清除了</string>
+	<string>Used healing potion, the weak status was cleared.</string>
 	<key>USE_POTION_SPECIFIC</key>
-	<string>使用特效药水,冰冻、麻痹、着火状态被清除了</string>
+	<string>Used specific potion, the freezing, burning and paralysis status was cleared.</string>
 	<key>USE_POTION_UNIVERSAL</key>
-	<string>使用万能药水,状态全恢复了!</string>
+	<string>Used universal potion, All abnormal status were cleared.</string>
 	<key>USE_SCROLL_TELEPORT</key>
-	<string>使用传送卷轴</string>
+	<string>Used the scroll of random teleport.</string>
 	<key>USE_SCROLL_SPEED</key>
-	<string>使用速度卷轴</string>
+	<string>Used the scroll of speed.</string>
 	<key>USE_SCROLL_STEALTH</key>
-	<string>使用传隐身卷轴</string>
+	<string>Used the scroll of stealth.</string>
 	<key>USE_SCROLL_DESTINY</key>
-	<string>使用命运卷轴</string>
+	<string>Used the scroll of destiny.</string>
 	<key>PLAYER_USE_GOLD_CHEST_KEY</key>
-	<string>使用了金质钥匙！</string>
+	<string>Used the gold key.</string>
 	<key>PLAYER_USE_SILVER_CHEST_KEY</key>
-	<string>使用了银质钥匙！</string>
+	<string>Used the silver key.</string>
 	<key>PLAYER_USE_COPPER_CHEST_KEY</key>
-	<string>使用了铜质钥匙！</string>
+	<string>Used the copper key.</string>
 	<key>PLAYER_USE_ROOM_KEY</key>
-	<string>使用了房间钥匙！</string>
+	<string>Used the room key.</string>
 	<key>PLAYER_USE_BOSS_KEY</key>
-	<string>使用了%s房间钥匙！</string>
+	<string>Used the key of %s.</string>
 	<key>DOOR_MAGIC_LOCKED</key>
-	<string>门上有一股魔力，根本打不开！</string>
+	<string>A magical power on the door that can&apos;t be opened!</string>
 	<key>DOOR_MAGIC_CLOSED</key>
-	<string>你身后的门被一股魔力关上了！</string>
+	<string>The door behind you is closed by a spell!</string>
 	<key>FOUND_HIDDEN_DOOR</key>
-	<string>发现了隐藏门！</string>
+	<string>Found a hidden door!</string>
 	<key>FOUND_HIDDEN_TOXIC_TRAP</key>
-	<string>发现了隐藏的中毒机关！</string>
+	<string>Found a hidden toxic trap!</string>
 	<key>FOUND_HIDDEN_FIRE_TRAP</key>
-	<string>发现了隐藏的火机关！</string>
+	<string>Found a hidden fire trap!</string>
 	<key>FOUND_HIDDEN_PARALYTIC_TRAP</key>
-	<string>发现了隐藏的麻痹机关！</string>
+	<string>Found a hidden paralysis trap!</string>
 	<key>FOUND_HIDDEN_GRIPPING_TRAP</key>
-	<string>发现了隐藏的夹子机关！</string>
+	<string>Found a hidden gripping trap!</string>
 	<key>FOUND_HIDDEN_SUMMONING_TRAP</key>
-	<string>发现了隐藏的召唤机关！</string>
+	<string>Found a hidden summoning trap!</string>
 	<key>FOUND_HIDDEN_WEAK_TRAP</key>
-	<string>发现了隐藏的虚弱机关！</string>
+	<string>Found a hidden weak trap!</string>
 	<key>FOUND_HIDDEN_MSG</key>
-	<string>发现了隐藏的一些信息！</string>
+	<string>Found a hidden information!</string>
 	<key>FOUND_HIDDEN_ITEM</key>
-	<string>发现了隐藏的一件道具！</string>
+	<string>Found a hidden prop!</string>
 	<key>PLAYER_NO_COPPER_KEY</key>
-	<string>没有铜质钥匙！</string>
+	<string>No copper key!</string>
 	<key>PLAYER_NO_SILVER_KEY</key>
-	<string>没有银质钥匙！</string>
+	<string>No silver key!</string>
 	<key>PLAYER_NO_GOLD_KEY</key>
-	<string>没有金质钥匙！</string>
+	<string>No gold key!</string>
 	<key>PLAYER_NO_ROOM_KEY</key>
-	<string>没有房间钥匙！</string>
+	<string>No room key!</string>
 	<key>PLAYER_NO_BOSS_KEY</key>
-	<string>没有%s房间钥匙！</string>
+	<string>No %s&apos;s room key!</string>
 	<key>PLAYER_BAG_NO_SPACE</key>
-	<string>背包没有空间了!!</string>
+	<string>The backpack is full.</string>
 	<key>PLAYER_NO_MANA</key>
-	<string>魔法值不够！！</string>
+	<string>Not enough mana!</string>
 	<key>PLAYER_MONEY_NOT_ENOUGH</key>
-	<string>货币不足！</string>
+	<string>Not enough money!</string>
 	<key>NOT_EQUIP_LEVEL_ENOUGH</key>
 	<string>Level is not enough!</string>
 	<key>TRIGGER_TOXIC_TRAP</key>
-	<string>你中毒了！</string>
+	<string>You&apos;re poisoned!</string>
 	<key>TRIGGER_FIRE_TRAP</key>
-	<string>你的身上着火了！</string>
+	<string>You&apos;re on fire!</string>
 	<key>TRIGGER_PARALYTIC_TRAP</key>
-	<string>你被麻痹不能动了！</string>
+	<string>You&apos;re paralyzed!</string>
 	<key>TRIGGER_GRIPPING_TRAP</key>
-	<string>你踩到一个夹子陷阱！</string>
+	<string>You steped onto a gripping trap!</string>
 	<key>TRIGGER_SUMMONING_TRAP</key>
-	<string>啊！召唤陷阱，小心！</string>
+	<string>Ah! Summon trap, be careful!</string>
 	<key>TRIGGER_WEAK_TRAP</key>
-	<string>你生病了, 能力降低了！</string>
+	<string>You&apos;re sick, your ability is reduced!</string>
 	<key>TRIGGER_MESSAGE_FROSEN_TRAP</key>
-	<string>你被冰冻了，你的速度降低！</string>
+	<string>You&apos;re frozen, your speed is reduced!</string>
 	<key>DESTINY_ADDMONEY</key>
-	<string>当你展开卷轴时，有东西砸到了你头上，定睛一看原来是一包钱币。</string>
+	<string>When you open the scroll, something hit on your head,  that is a pack of coins.</string>
 	<key>DESTINY_TRANSPORT</key>
-	<string>你感觉一阵昏迷，恍惚之间好像有人拖拽你行走了一段距离。</string>
+	<string>You were in a coma for quite a while, Absentminded, Someone dragged you out of a distance.</string>
 	<key>DESTINY_STRONGER</key>
-	<string>超级赛亚人变身～</string>
+	<string>Super Saiyan! Switcheroo!</string>
 	<key>DESTINY_STEALTH</key>
-	<string>卷轴上写着一句话：你要学会躲在阴影里。</string>
+	<string>There is some words on the scroll: You must learn to hide in the shadows.</string>
 	<key>DESTINY_SPEEDUP</key>
-	<string>啊！这是什么，开挂了吗？</string>
+	<string>Oh, Opened cheating programs?</string>
 	<key>DESTINY_POISIONING</key>
-	<string>shit！卷轴上有屎，屎里有毒～</string>
+	<string>Oh, Shit! Poisonous to the scrolls</string>
 	<key>DESTINY_FIRE</key>
-	<string>当你打开“卷轴”时，卷轴着起火来～这哪是卷轴，分明是卷白磷纸。</string>
+	<string>When you open the scroll, the scroll is on fire. You&apos;re on fire too.</string>
 	<key>DESTINY_FROZEN</key>
-	<string>他的剑是冷的,他的刀也是冷的,他的心是冷的,他的血是冷的～～</string>
+	<string>Your sword is cold, Your heart is cold, Your blood is cold ~ ~ ~You&apos;re frozen.</string>
 	<key>DESTINY_WEAK</key>
-	<string>你变的虚弱了，不是早就说过黄色的卷轴和风月宝鉴都要远离吗！</string>
+	<string>You become weak, Keep yellow scrolls and &quot;PlayBoy&quot; away from you!</string>
 	<key>LITTLEWITCH_ADDMONEY</key>
-	<string>今天魔法使用过度了，想休息一天，送你1枚金币作为补偿吧。</string>
+	<string>I&apos;m tired, take a break today，So give you 1 gold coins for compensation.</string>
 	<key>LITTLEWITCH_ADDPOTION</key>
-	<string>魔法药剂是一个魔法师的必备，今天只随身携带了1瓶送给你吧！</string>
+	<string>Magic potion is  necessary for a wizard, I had only one today, return to you!</string>
 	<key>LITTLEWITCH_ADDSCROLL</key>
-	<string>这是我抄写的魔法卷轴，送给你！</string>
+	<string>This is a magic scroll I copied, return to you!</string>
 	<key>LITTLEWITCH_SUMMONMONSTER</key>
-	<string>哎呀，施法失败，召唤出了怪物，我好怕！我要先走一步了。</string>
+	<string>Ah, spells fizzled, some monster was summoned, I am afraid! I&apos;ve got to go now.</string>
 	<key>LITTLEWITCH_WEAK</key>
-	<string>哎呀，施法失败了，给你带来了负面影响真是不好意思。</string>
+	<string>Ah, spells fizzled, to bring you a negative impact is really embarrassed.</string>
 	<key>NPC_KNIGHT_ANSWER</key>
-	<string>武器店</string>
+	<string>Weapons Shop</string>
 	<key>NPC_CHILD_ANSWER</key>
-	<string>任务</string>
+	<string>Tasks</string>
 	<key>NPC_SHOPGIRL_ANSWER</key>
-	<string>防具店</string>
+	<string>Armor shop</string>
 	<key>NPC_OLDLADY_ANSWER</key>
-	<string>杂货店</string>
+	<string>Drugstore</string>
 	<key>NPC_WEIRDO_ANSWER</key>
-	<string>黑市</string>
+	<string>Blackmarket</string>
 	<key>NPC_OLDMAN_ANSWER</key>
-	<string>智者</string>
+	<string>Sage</string>
 	<key>NPC_LITTLEWITCH_ANSWER</key>
-	<string>见习魔女</string>
+	<string>Little Witch</string>
 	<key>NPC_NURSE_ANSWER</key>
-	<string>小护士</string>
+	<string>Nurse</string>
 	<key>ITEM_SPLITE_COUNT</key>
 	<string>Count:%d</string>
 	<key>ITEM_BAG_DELETE</key>
-	<string>商品比较贵重,是否出售该道具?</string>
+	<string>Precious goods, whether or not to remove?</string>
 	<key>ITEM_BAG_SELL</key>
-	<string>是否出售该道具？</string>
+	<string>Precious goods, whether or not to sell?</string>
 	<key>TITLE_ACHIEVE</key>
 	<string>ACHIEVEMENT</string>
 	<key>PLAYER_FALL_AND_DIE</key>
-	<string>很不幸，但你并不是第一个这样死的冒险者^_^。</string>
+	<string>Unfortunately, but you are not the first such dead adventurers ^_^.</string>
 	<key>GO_UPSTAIRS</key>
-	<string>你进入上一层。</string>
+	<string>You get into the upper floor.</string>
 	<key>GO_UPSTAIRS_FORBIDDEN</key>
-	<string>传送阵已经没有能量了～</string>
+	<string>The portal has no energy.</string>
 	<key>GO_DOWNSTAIRS</key>
-	<string>你进入下一层。</string>
+	<string>You get into the next floor.</string>
 	<key>GO_BOSSROOM</key>
-	<string>进入Boss房间</string>
+	<string>You entered boss room.</string>
 	<key>GO_CHASM</key>
-	<string>你真的要跳下去么？</string>
+	<string>Do you really want to jump?</string>
 	<key>FALL_DOWNSTAIRS</key>
-	<string>高空坠落，不死是非常幸运的。</string>
+	<string>Falling from the abyss, it&apos;s very lucky no to die.</string>
 	<key>SELECT_LEFT_DUNGEON_NODE</key>
-	<string>是选择左边开始？</string>
+	<string>Are you sure to choose this portal?</string>
 	<key>SELECT_RIGHT_DUNGEON_NODE</key>
-	<string>是选择右边开始？</string>
+	<string>Are you sure to choose this portal?</string>
 	<key>USE_SMALL_PROTAL</key>
-	<string>你被传送了</string>
+	<string>You&apos;ve been teleported!</string>
 	<key>STANDARD_PROTAL_NO_ENERGY</key>
-	<string>传送能量不足了</string>
+	<string>Not enough energy</string>
 	<key>REMOVE_TRAP_INFO</key>
-	<string>是否摧毁该陷阱？</string>
+	<string>Whether to dismantle the trap?</string>
 	<key>NOT_REMOVE_TRAP</key>
-	<string>gai2xian</string>
+	<string>The trap can not be removed.</string>
 	<key>BTN_TEXT_MAINMENU</key>
 	<string>MAIN MENU</string>
 	<key>BTN_TEXT_SETTING</key>
@@ -327,45 +327,44 @@
 	<key>BTN_TEXT_REVIVE</key>
 	<string>REVIVE</string>
 	<key>BTN_TEXT_ADA_REVIVE</key>
-	<string>观看
- 复活</string>
+	<string>View Ads to revive.</string>
 	<key>BAG_INDENTIFY_FAIL</key>
-	<string>Indentify fail！</string>
+	<string>Indentified failed！</string>
 	<key>BAG_NO_INDENTIFY_SCROLL</key>
-	<string>鉴定失败！没有可用的鉴定卷轴。</string>
+	<string>Indentified failed！ No identification scroll available.</string>
 	<key>BAG_TEXT_DESTROY</key>
-	<string>拆除</string>
+	<string>Dismantle</string>
 	<key>BAG_TEXT_EXTEND</key>
 	<string>Extend</string>
 	<key>BAG_TEXT_EXTEND_DESC</key>
-	<string>是否花费%d金币扩展背包?</string>
+	<string>To cost %d gold coins to extend the backpack?</string>
 	<key>ARCHIVE_RESTART_TIPS_DESC</key>
-	<string>重新开始会清除游戏记录,是否重新开始游戏？</string>
+	<string>Restart will clear the game record, whether to restart the game?</string>
 	<key>ACHIEVE_ITEM_LOCK</key>
 	<string>Unlock</string>
 	<key>ITEM_USE_FAIL</key>
-	<string>使用失败!</string>
+	<string>Failure to use!</string>
 	<key>ITEM_EQUIP_FAIL</key>
-	<string>装备失败！</string>
+	<string>Failure to equip!</string>
 	<key>ITEM_DISCARD_FAIL</key>
-	<string>丢弃失败！</string>
+	<string>Failure to discard!</string>
 	<key>GAME_INFO_FLOOR</key>
 	<string>%s %d F</string>
 	<key>SKILL_TIP_NOT_EQUIP</key>
-	<string>请装备副手武器！</string>
+	<string>Please equip the off-hand weapon!</string>
 	<key>SKILL_TIP_SKILL_COOLING</key>
-	<string>技能冷却中!</string>
+	<string>Skill is cooling down!</string>
 	<key>SKILL_TIP_POTION_COOLING</key>
-	<string>药水冷却中!</string>
+	<string>Potion is cooling down!</string>
 	<key>SKILL_TIP_NOT_BLOOD_POTION</key>
-	<string>没有恢复药水了!</string>
+	<string>There is no health potion!</string>
 	<key>SKILL_TIP_NOT_MAGIC_POTION</key>
-	<string>没有魔法药水了!</string>
+	<string>There is no mana potion!</string>
 	<key>LOAGING_TIPS</key>
-	<string>提示:</string>
+	<string>Tips:</string>
 	<key>PLAYER_BAG_EXTEND_OK</key>
-	<string>恭喜背包扩展成功!</string>
+	<string>Congratulations on the success of backpack expansion!</string>
 	<key>PLAYER_BAG_EXTEND_HAS_REACH_MAXTIMES</key>
-	<string>抱歉哦,背包扩展达到上限了!</string>
+	<string>Sorry, the number of backpack expansion has reached the limit!</string>
 </dict>
 </plist>

@@ -41,33 +41,33 @@
 	<key>STATUS_TEXT_CRITICAL_STRIKE</key>
 	<string>暴击 %d</string>
 	<key>STATUS_TEXT_EXP</key>
-	<string>+经验 %d</string>
+	<string>经验增加 %d</string>
 	<key>GAME_SERACH_EXPLAIN</key>
 	<string>请点击屏幕位置查看</string>
 	<key>GAME_MESSAGE_NOT</key>
-	<string>欢迎来到像素的%s第%d层</string>
+	<string>欢迎来到%s第%d层</string>
 	<key>GAME_MESSAGE_MONSTER_ATTACK</key>
-	<string>%s击中了你</string>
+	<string>怪物击中了你</string>
 	<key>GAME_MESSAGE_MONSTER_DODGE</key>
-	<string>%s闪避了你的进攻</string>
+	<string>怪物闪避了你的进攻</string>
 	<key>GAME_MESSAGE_MONSTER_BOLOCK</key>
-	<string>%s产生了一个格挡</string>
+	<string>怪物格挡了你的攻击</string>
 	<key>GAME_MESSAGE_MONSTER_CRITICAL_STRIKE</key>
-	<string>%s产生了一个暴击</string>
+	<string>怪物产生了一个暴击</string>
 	<key>GAME_MESSAGE_MONSTER_DEAD</key>
-	<string>你击败了%s</string>
+	<string>你杀死了怪物</string>
 	<key>GAME_MESSAGE_ROLE_ATTACK</key>
-	<string>你击中了%s</string>
+	<string>你击中了怪物</string>
 	<key>GAME_MESSAGE_ROLE_DODGE</key>
-	<string>你闪避了%s的进攻</string>
+	<string>你闪避了怪物的进攻</string>
 	<key>GAME_MESSAGE_ROLE_BOLOCK</key>
-	<string>你产生了一个格挡</string>
+	<string>你格挡了怪物的攻击</string>
 	<key>GAME_MESSAGE_ROLE_CRITICAL_STRIKE</key>
 	<string>你产生了一个暴击</string>
 	<key>GAME_MESSAGE_ROLE_DEAD</key>
-	<string>%s杀死了你...</string>
+	<string>怪物杀死了你...</string>
 	<key>GAME_MESSAGE_ROLE_ADD_EXP</key>
-	<string>你获得了%s</string>
+	<string>你获得了%s点经验</string>
 	<key>GAME_MESSAGE_LEVEL_UP</key>
 	<string>你升级了！！！</string>
 	<key>MONSTER_ELITE_NAME</key>
@@ -163,7 +163,7 @@
 	<key>FOUND_HIDDEN_DOOR</key>
 	<string>发现了隐藏门！</string>
 	<key>FOUND_HIDDEN_TOXIC_TRAP</key>
-	<string>发现了隐藏的中毒机关！</string>
+	<string>发现了隐藏的毒素机关！</string>
 	<key>FOUND_HIDDEN_FIRE_TRAP</key>
 	<string>发现了隐藏的火机关！</string>
 	<key>FOUND_HIDDEN_PARALYTIC_TRAP</key>
@@ -257,9 +257,9 @@
 	<key>ITEM_SPLITE_COUNT</key>
 	<string>数量：%d</string>
 	<key>ITEM_BAG_DELETE</key>
-	<string>是否移除该道具？</string>
+	<string>珍贵物品,是否丢弃该道具？</string>
 	<key>ITEM_BAG_SELL</key>
-	<string>商品比较贵重,是否出售该道具？</string>
+	<string>珍贵物品,是否出售该道具？</string>
 	<key>TITLE_ACHIEVE</key>
 	<string>成就</string>
 	<key>PLAYER_FALL_AND_DIE</key>
@@ -277,9 +277,9 @@
 	<key>FALL_DOWNSTAIRS</key>
 	<string>高空坠落，不死是非常幸运的。</string>
 	<key>SELECT_LEFT_DUNGEON_NODE</key>
-	<string>是选择左边开始？</string>
+	<string>确定选择这个地牢传送门吗？</string>
 	<key>SELECT_RIGHT_DUNGEON_NODE</key>
-	<string>是选择右边开始？</string>
+	<string>确定选择这个地牢传送门吗？</string>
 	<key>USE_SMALL_PROTAL</key>
 	<string>你被传送了</string>
 	<key>STANDARD_PROTAL_NO_ENERGY</key>
@@ -287,7 +287,7 @@
 	<key>REMOVE_TRAP_INFO</key>
 	<string>是否拆除该陷阱？</string>
 	<key>NOT_REMOVE_TRAP</key>
-	<string>该陷阱不能被拆除？</string>
+	<string>该陷阱不能被拆除.</string>
 	<key>BTN_TEXT_MAINMENU</key>
 	<string>主菜单</string>
 	<key>BTN_TEXT_SETTING</key>
@@ -366,6 +366,6 @@
 	<key>PLAYER_BAG_EXTEND_OK</key>
 	<string>恭喜背包扩展成功!</string>
 	<key>PLAYER_BAG_EXTEND_HAS_REACH_MAXTIMES</key>
-	<string>抱歉哦,背包扩展达到上限了!</string>
+	<string>抱歉,背包扩展次数已达到上限了!</string>
 </dict>
 </plist>

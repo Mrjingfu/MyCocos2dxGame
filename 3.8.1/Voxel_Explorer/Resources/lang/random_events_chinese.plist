@@ -8,7 +8,8 @@
 		<key>EVENT_DESC</key>
 		<string>
 冒险者提示：请为你的膝盖装备盔甲！
-切记！</string>
+切记！
+        </string>
 		<key>HAS_READED</key>
 		<false/>
 	</dict>
