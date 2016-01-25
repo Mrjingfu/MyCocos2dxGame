@@ -31,7 +31,7 @@ private:
     void selectAchieveEvent(Ref *pSender, TGridView::EventType type);
     void selectNpcInfoEvent(Ref *pSender, TGridView::EventType type,cocos2d::ValueVector valueVector);
     void selectRandomEvent(Ref *pSender, TGridView::EventType type,cocos2d::ValueVector valueVector);
-    void selectTipsEvent(Ref *pSender, TGridView::EventType type);
+    void selectTipsEvent(Ref *pSender, TGridView::EventType type,cocos2d::ValueVector valueVector);
 private:
     void testItem(TGridView* m_pGridView);
     void testAchieve(TGridView* m_pGridView);

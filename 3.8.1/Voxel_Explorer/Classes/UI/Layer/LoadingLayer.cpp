@@ -72,4 +72,17 @@ void LoadingLayer::refreshUIView()
     m_pTipDesc->setString(tipDesc);
     
 }
+void LoadingLayer::testDesc(std::string tipDesc)
+{
+    EaseSineOut* fadeIn = EaseSineOut::create(FadeIn::create(0.5f));
+    EaseSineIn* moveUp = EaseSineIn::create(MoveBy::create(0.5,cocos2d::Vec2(0,12)));
+    EaseSineIn* moveLeft = EaseSineIn::create(MoveBy::create(0.3,cocos2d::Vec2(-12,0)));
+    EaseSineIn* moveRight = EaseSineIn::create(MoveBy::create(0.6,cocos2d::Vec2(15,0)));
+    m_LoadingIcon->runAction(RepeatForever::create(Spawn::create(fadeIn, moveUp,moveLeft,moveRight,nullptr)));
+    
+    CCLOG("tipDesc source:%s",tipDesc.c_str());
+    UtilityHelper::getLineForText(m_pTipDesc,tipDesc,getContentSize().width-20);
+    CCLOG("tipDesc target:%s",tipDesc.c_str());
+    m_pTipDesc->setString(tipDesc);
+}
 

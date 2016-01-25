@@ -65,7 +65,7 @@
 	<key>GAME_MESSAGE_ROLE_CRITICAL_STRIKE</key>
 	<string>你产生了一个暴击</string>
 	<key>GAME_MESSAGE_ROLE_DEAD</key>
-	<string>怪物杀死了你...</string>
+	<string>你已经挂了...</string>
 	<key>GAME_MESSAGE_ROLE_ADD_EXP</key>
 	<string>你获得了%s点经验</string>
 	<key>GAME_MESSAGE_LEVEL_UP</key>

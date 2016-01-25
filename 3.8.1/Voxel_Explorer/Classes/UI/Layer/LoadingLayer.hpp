@@ -21,6 +21,7 @@ public:
     virtual bool initUi() override;
     virtual bool addEvents() override;
     void refreshUIView() override;
+    void testDesc(std::string str);
 private:
     cocos2d::ui::ImageView* m_LoadingIcon;
     cocos2d::ui::TextBMFont*  m_pTipDesc;

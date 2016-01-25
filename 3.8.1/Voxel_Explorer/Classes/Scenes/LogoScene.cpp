@@ -289,7 +289,7 @@ void LogoScene::precache()
 }
 void LogoScene::endcache()
 {
-//    auto scene = TestScene::createScene();
+//    auto scene = TestScene::createScene(); 
     auto scene = MenuScene::createScene();
     Director::getInstance()->replaceScene(scene);
 }

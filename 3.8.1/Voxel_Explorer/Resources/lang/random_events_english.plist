@@ -7,7 +7,8 @@
 		<integer>0</integer>
 		<key>EVENT_DESC</key>
 		<string>
-Adventure tips:&quot;Make sure that equip your knees with armor!&quot;
+Adventure tips:&quot;Make sure that
+equip your knees with armor!&quot;
         </string>
 		<key>HAS_READED</key>
 		<false/>
@@ -29,7 +30,8 @@ but I use it to find bug.&quot;
 		<integer>1</integer>
 		<key>EVENT_DESC</key>
 		<string>
-You found one gold coins under the floor.
+You found one gold coins under the
+floor.
         </string>
 		<key>HAS_READED</key>
 		<false/>
@@ -39,9 +41,10 @@ You found one gold coins under the floor.
 		<integer>0</integer>
 		<key>EVENT_DESC</key>
 		<string>
-There&apos;s a sword in the walls of the stone,
-it looks extraordinary, you want to pull it out
-with all you strength, motionless...
+There&apos;s a sword in the walls of
+the stone,it looks extraordinary, you
+want to pull it outwith all you
+strength, motionless...
         </string>
 		<key>HAS_READED</key>
 		<false/>
@@ -95,8 +98,9 @@ What&apos;s the meaning？
 		<integer>0</integer>
 		<key>EVENT_DESC</key>
 		<string>
-The walls were written with a number of odd numbers:
-002291, 000428, 002467, 002582.
+The walls were written with a
+number of odd numbers:
+002291, 000428,002467,002582.
         </string>
 		<key>HAS_READED</key>
 		<false/>
@@ -131,7 +135,8 @@ the tomb of Tal Rasha~ ~&quot;
 		<key>EVENT_DESC</key>
 		<string>
 &quot;Would you like my signature?
-Come to NEVERWINTER and see me. &quot;
+Come to NEVERWINTER and see
+me. &quot;
         ------ Aribeth&quot;
         </string>
 		<key>HAS_READED</key>

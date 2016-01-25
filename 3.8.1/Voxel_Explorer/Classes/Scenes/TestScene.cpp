@@ -16,6 +16,7 @@
 #include "AchievePopupUI.h"
 #include "NpcDataManager.hpp"
 #include "InformationPopupUI.h"
+#include "LoadingLayer.hpp"
 USING_NS_CC;
 
 Scene* TestScene::createScene()
@@ -82,8 +83,8 @@ bool TestScene::addEvents()
 //  testItem(m_pGridView);
 //  testAchieve(m_pGridView);
 //  testNpcInfo(m_pGridView);
-//  testRandom(m_pGridView);
-    
+  testRandom(m_pGridView);
+//    testTips(m_pGridView);
     return true;
 }
 void TestScene::selectAchieveEvent(Ref *pSender, TGridView::EventType type)
@@ -136,12 +137,26 @@ void TestScene::selectRandomEvent(Ref *pSender, TGridView::EventType type,cocos2
         }
     }
 }
-void TestScene::selectTipsEvent(Ref *pSender, TGridView::EventType type)
+void TestScene::selectTipsEvent(Ref *pSender, TGridView::EventType type,cocos2d::ValueVector valueVector)
 {
     if (type==TGridView::EventType::ON_SELECTED_ITEM_END)
     {
         TGridView* gridView = static_cast<TGridView*>(pSender);
         TextBMFont* itemTest = static_cast<TextBMFont*>(gridView->getItem(gridView->getCurSelectedIndex()));
+        if (itemTest) {
+            int index = Value(itemTest->getString()).asInt();
+            LoadingLayer* loading = LoadingLayer::create();
+            loading->testDesc(valueVector.at(index).asString());
+            loading->setTouchEnabled(true);
+            loading->addClickEventListener([](Ref* ref){
+                LoadingLayer* loading = static_cast<LoadingLayer*>(ref);
+                if (loading) {
+                    loading->removeFromParentAndCleanup(true);
+                }
+            });
+            this->addChild(loading);
+            itemTest->setColor(Color3B::BLUE);
+        }
     }
 }
 void TestScene::selectItemEvent(cocos2d::Ref *pSender, TGridView::EventType type)
@@ -230,7 +245,7 @@ void TestScene::testRandom(TGridView* m_pGridView)
             m_random = FileUtils::getInstance()->getValueVectorFromFile("random_events_chinese.plist");
             break;
         default:
-            m_random = FileUtils::getInstance()->getValueVectorFromFile("random_events_chinese.plist");
+            m_random = FileUtils::getInstance()->getValueVectorFromFile("random_events_english.plist");
             break;
     }
     m_pGridView->addEventListener(CC_CALLBACK_2(TestScene::selectRandomEvent, this,m_random));
@@ -246,7 +261,28 @@ void TestScene::testRandom(TGridView* m_pGridView)
 }
 void TestScene::testTips(TGridView* m_pGridView)
 {
-    m_pGridView->addEventListener(CC_CALLBACK_2(TestScene::selectTipsEvent, this));
+ 
+    cocos2d::ValueVector m_Tips;
+    LanguageType lt= Application::getInstance()->getCurrentLanguage();
+    switch (lt) {
+        case LanguageType::CHINESE:
+            m_Tips = FileUtils::getInstance()->getValueVectorFromFile("tips_chinese.plist");
+            break;
+        default:
+            m_Tips = FileUtils::getInstance()->getValueVectorFromFile("tips_english.plist");
+            break;
+    }
+    m_pGridView->addEventListener(CC_CALLBACK_2(TestScene::selectTipsEvent, this,m_Tips));
+    for (int i=0; i<m_Tips.size();i++)
+    {
+        TextBMFont* textItem =TextBMFont::create(cocos2d::Value(i).asString(), UtilityHelper::getLocalStringForUi("FONT_NAME"));
+        textItem->setTouchEnabled(true);
+        textItem->setScale(0.5);
+        m_pGridView->pushBackCustomItem(textItem);
+    }
+    m_pGridView->forceDoLayout();
+
+    
 }
 void TestScene::testItem(TGridView* m_pGridView)
 {

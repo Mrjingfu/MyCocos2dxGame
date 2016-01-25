@@ -48,6 +48,7 @@ void NoteUi::setMsg(std::string msg,cocos2d::Color3B fontColor /*= cocos2d::Colo
     {
 
         UtilityHelper::getLineForText(m_pLabel, msg,this->getParent()->getContentSize().width-10);
+        m_pLabel->setScale(0.5);
         m_pLabel->setString(msg);
         float lableSizeHeight = m_pLabel->getContentSize().height*m_pLabel->getScale();
         CCLOG("lableSize:%f",lableSizeHeight);

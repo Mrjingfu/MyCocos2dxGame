@@ -1123,6 +1123,7 @@ void GameUILayer::onEventRoleUpdateProp(cocos2d::EventCustom *sender)
 void GameUILayer::onEventRoleDead(cocos2d::EventCustom *sender)
 {
     CCLOG("onEventRoleDead");
+    m_pGameToolBarLayer->sendMessage(UtilityHelper::getLocalStringForUi("GAME_MESSAGE_MONSTER_DEAD"),PopupUILayerManager::getInstance()->getTipsColor(TIP_POSITIVE));
     roleDead();
 
 }
@@ -1181,6 +1182,9 @@ void GameUILayer::onEventMonsterDead(cocos2d::EventCustom *sender)
             m_pMonsterPropLayer->setMonster(monster);
             m_pMonsterPropLayer->setVisible(false);
         }
+         m_pGameToolBarLayer->sendMessage(StringUtils::format(UtilityHelper::getLocalStringForUi("GAME_MESSAGE_MONSTER_DEAD").c_str(),exp),PopupUILayerManager::getInstance()->getTipsColor(TIP_POSITIVE));
+        
+         m_pGameToolBarLayer->sendMessage(UtilityHelper::getLocalStringForUi("GAME_MESSAGE_MONSTER_DEAD"),PopupUILayerManager::getInstance()->getTipsColor(TIP_POSITIVE));
 
     }
 }
@@ -1365,23 +1369,38 @@ void GameUILayer::updateCharacterHud(HurtData* hurData,TipTypes tipDodge,TipType
         str = StringUtils::format(UtilityHelper::getLocalStringForUi("STATUS_TEXT_DODGE").c_str(),hurData->m_nDamage);
         type = tipDodge;
         CCLOG("monster 闪避");
-    }else {
+        if (isWho)
+            m_pGameToolBarLayer->sendMessage(UtilityHelper::getLocalStringForUi("GAME_MESSAGE_ROLE_DODGE"),PopupUILayerManager::getInstance()->getTipsColor(type));
+        else
+            m_pGameToolBarLayer->sendMessage(UtilityHelper::getLocalStringForUi("GAME_MESSAGE_MONSTER_DODGE"),PopupUILayerManager::getInstance()->getTipsColor(type));
+    }else
+    {
         if((hurData->m_bBlocked && hurData->m_bCriticalStrike) || hurData->m_bBlocked)
         {
             str = StringUtils::format(UtilityHelper::getLocalStringForUi("STATUS_TEXT_BOLOCK").c_str(),hurData->m_nDamage);
             type = tipBolock;
-            
+            if (isWho)
+                m_pGameToolBarLayer->sendMessage(UtilityHelper::getLocalStringForUi("GAME_MESSAGE_ROLE_BOLOCK"),PopupUILayerManager::getInstance()->getTipsColor(type));
+            else
+                m_pGameToolBarLayer->sendMessage(UtilityHelper::getLocalStringForUi("GAME_MESSAGE_MONSTER_BOLOCK"),PopupUILayerManager::getInstance()->getTipsColor(type));
             CCLOG("monster 格挡");
         }else if (hurData->m_bCriticalStrike && !hurData->m_bBlocked)
         {
             str = StringUtils::format(UtilityHelper::getLocalStringForUi("STATUS_TEXT_CRITICAL_STRIKE").c_str(),hurData->m_nDamage);
             type = tipCriticalStike;
-            
+            if (isWho)
+                m_pGameToolBarLayer->sendMessage(UtilityHelper::getLocalStringForUi("GAME_MESSAGE_MONSTER_CRITICAL_STRIKE"),PopupUILayerManager::getInstance()->getTipsColor(type));
+            else
+                m_pGameToolBarLayer->sendMessage(UtilityHelper::getLocalStringForUi("GAME_MESSAGE_ROLE_CRITICAL_STRIKE"),PopupUILayerManager::getInstance()->getTipsColor(type));
             CCLOG("monster 暴击");
         }else
         {
             str =  Value(hurData->m_nDamage).asString();
             type = tipNormal;
+            if (isWho)
+                m_pGameToolBarLayer->sendMessage(UtilityHelper::getLocalStringForUi("GAME_MESSAGE_MONSTER_ATTACK"),PopupUILayerManager::getInstance()->getTipsColor(type));
+            else
+                m_pGameToolBarLayer->sendMessage(UtilityHelper::getLocalStringForUi("GAME_MESSAGE_ROLE_ATTACK"),PopupUILayerManager::getInstance()->getTipsColor(type));
         }
     }
     if (isWho && m_pRoleHudLayer)
