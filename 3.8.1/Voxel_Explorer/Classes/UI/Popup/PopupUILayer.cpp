@@ -273,7 +273,7 @@ void PopupUILayer::removeSelfCallFunc()
     executeCloseCallbackD();
     
     //暂停事件恢复 只有关闭的窗口是最后一个窗口时才恢复
-    if (m_nIsPause && PopupUILayerManager::getInstance()->getCurrentPopUpType() == ePopupInvalid) {
+    if (m_nIsPause && PopupUILayerManager::getInstance()->getCurrentPopUpType() == ePopupInvalid && PopupUILayerManager::getInstance()->getSceneType() == PopupUILayerManager::eSceneType::ST_GAME) {
         schedulerResume();
     }
     this->removeFromParent();
@@ -288,8 +288,7 @@ void PopupUILayer::onTouchMoved(cocos2d::Touch *touch, cocos2d::Event *unused_ev
 }
 void PopupUILayer::onTouchEnded(cocos2d::Touch *touch, cocos2d::Event *unused_event)
 {
-    if (m_pRootNode &&  !m_pRootNode->getBoundingBox().containsPoint(touch->getLocation()) && m_nIsBlankClose
-        && PopupUILayerManager::getInstance()->getSceneType() == PopupUILayerManager::eSceneType::ST_GAME ) {
+    if (m_pRootNode &&  !m_pRootNode->getBoundingBox().containsPoint(touch->getLocation()) && m_nIsBlankClose) {
 //        CCLOG("onTouchEnded");
         closePopup();
     }

@@ -15,6 +15,7 @@
 #include "UtilityHelper.h"
 #include "SdkBoxManager.hpp"
 #include "GameCenterController.h"
+#include "TestScene.h"
 USING_NS_CC;
 
 Scene* LogoScene::createScene()
@@ -260,6 +261,11 @@ void LogoScene::precache()
     if (uiAchievementTx)
         uiAchievementTx->setAliasTexParameters();
     
+    Texture2D * uiFont0_Tx = Director::getInstance()->getTextureCache()->addImage("ui_font.png");
+    if (uiFont0_Tx)
+        uiFont0_Tx->setAliasTexParameters();
+    
+    
     std::string splashTxName = UtilityHelper::getLocalStringForUi("SPLASH_RES");
     Texture2D * splashTx = Director::getInstance()->getTextureCache()->addImage(splashTxName);
     if (splashTx)
@@ -283,6 +289,7 @@ void LogoScene::precache()
 }
 void LogoScene::endcache()
 {
+//    auto scene = TestScene::createScene();
     auto scene = MenuScene::createScene();
     Director::getInstance()->replaceScene(scene);
 }

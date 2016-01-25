@@ -280,6 +280,8 @@
 		EC25C3CB1C1977DF00B4340D /* InformationPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC25C3C81C1977DF00B4340D /* InformationPopupUI.cpp */; };
 		EC3051B01C3A3C9D00A7A10E /* PlistBinaryUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC3051AE1C3A3C9D00A7A10E /* PlistBinaryUtil.cpp */; };
 		EC3051B11C3A3C9D00A7A10E /* PlistBinaryUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC3051AE1C3A3C9D00A7A10E /* PlistBinaryUtil.cpp */; };
+		EC30DA481C55B433009A3EF8 /* TestScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC30DA461C55B433009A3EF8 /* TestScene.cpp */; };
+		EC30DA491C55B433009A3EF8 /* TestScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC30DA461C55B433009A3EF8 /* TestScene.cpp */; };
 		EC3CC9711C088F4F00F8CFC8 /* BagLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC3CC93D1C088F4F00F8CFC8 /* BagLayer.cpp */; };
 		EC3CC9721C088F4F00F8CFC8 /* BagLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC3CC93D1C088F4F00F8CFC8 /* BagLayer.cpp */; };
 		EC3CC9731C088F4F00F8CFC8 /* BagMangerLayerUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC3CC93F1C088F4F00F8CFC8 /* BagMangerLayerUI.cpp */; };
@@ -704,6 +706,8 @@
 		EC25C3C91C1977DF00B4340D /* InformationPopupUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InformationPopupUI.h; sourceTree = "<group>"; };
 		EC3051AE1C3A3C9D00A7A10E /* PlistBinaryUtil.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PlistBinaryUtil.cpp; sourceTree = "<group>"; };
 		EC3051AF1C3A3C9D00A7A10E /* PlistBinaryUtil.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PlistBinaryUtil.hpp; sourceTree = "<group>"; };
+		EC30DA461C55B433009A3EF8 /* TestScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TestScene.cpp; sourceTree = "<group>"; };
+		EC30DA471C55B433009A3EF8 /* TestScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestScene.h; sourceTree = "<group>"; };
 		EC38D0681C1EC7DD00553970 /* AchieveConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AchieveConst.h; sourceTree = "<group>"; };
 		EC3CC93D1C088F4F00F8CFC8 /* BagLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BagLayer.cpp; sourceTree = "<group>"; };
 		EC3CC93E1C088F4F00F8CFC8 /* BagLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BagLayer.h; sourceTree = "<group>"; };
@@ -1312,6 +1316,8 @@
 		555B0D0F1BC51A2C0055FB6D /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				EC30DA461C55B433009A3EF8 /* TestScene.cpp */,
+				EC30DA471C55B433009A3EF8 /* TestScene.h */,
 				EC00DD5D1BD665A6009BC378 /* MenuScene.cpp */,
 				EC00DD5E1BD665A6009BC378 /* MenuScene.h */,
 				EC6716431BCE7F2C00C81CFC /* LogoScene.cpp */,
@@ -1896,6 +1902,7 @@
 				55F81CCC1BDB92AC002EC075 /* QuestItemProperty.cpp in Sources */,
 				EC8A27DA1C32629C00B2C352 /* AchieveItemUI.cpp in Sources */,
 				551E93C51BD51291009F788F /* UserRecord.cpp in Sources */,
+				EC30DA481C55B433009A3EF8 /* TestScene.cpp in Sources */,
 				5586C7B81C0FDD7400DFA588 /* TombBossLevel.cpp in Sources */,
 				554FE61C1C2A735800419AE1 /* RandomEventMgr.cpp in Sources */,
 				559925221C44E561001D8EEF /* PlayerMagicArrowBullet.cpp in Sources */,
@@ -1953,6 +1960,7 @@
 				55F81CB51BDB845A002EC075 /* WeaponProperty.cpp in Sources */,
 				55338AE31BD8926A00EA316F /* SkeletonKing.cpp in Sources */,
 				55338ADB1BD8921000EA316F /* SlimeKing.cpp in Sources */,
+				EC30DA491C55B433009A3EF8 /* TestScene.cpp in Sources */,
 				EC602AB31BF47A4900484D42 /* AchieveProperty.cpp in Sources */,
 				551651C61BD73102004ED7F6 /* RandomDungeon.cpp in Sources */,
 				55338AD01BD8781E00EA316F /* BaseMonster.cpp in Sources */,

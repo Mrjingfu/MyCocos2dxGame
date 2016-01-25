@@ -268,6 +268,7 @@
         <Image Name="splash.png" />
         <Image Name="splash_front_cn.png" />
         <Image Name="splash_front_en.png" />
+        <Project Name="testlayer.csd" Type="Scene" />
       </RootFolder>
     </Group>
   </SolutionFolder>
