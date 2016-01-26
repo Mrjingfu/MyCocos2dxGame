@@ -20,6 +20,8 @@ class NativeBridge : public cocos2d::Ref
 public:
     static NativeBridge* getInstance();
     virtual ~NativeBridge();
+    
+    bool isNetworkAvailable();
 #if CC_TARGET_PLATFORM == CC_PLATFORM_IOS
     void setRootViewController(RootViewController* viewController);
     void openItunesURL();
@@ -31,6 +33,7 @@ public:
 #endif
     void initAdmob();
     void playInterstitialAds();
+    bool isInterstitialAdsReady();
 private:
 #if CC_TARGET_PLATFORM == CC_PLATFORM_IOS 
     RootViewController* mViewController;

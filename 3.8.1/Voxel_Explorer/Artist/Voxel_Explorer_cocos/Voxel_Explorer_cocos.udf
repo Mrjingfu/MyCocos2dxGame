@@ -32,8 +32,10 @@
       <Value ctype="TabsInfo">
         <OpenedDocuments>
           <FilePathData Path="itemMoneyLayer.csd" />
+          <FilePathData Path="menuscene.csd" />
+          <FilePathData Path="pausenewPopupLayer.csd" />
         </OpenedDocuments>
-        <ActiveDocument Path="itemMoneyLayer.csd" />
+        <ActiveDocument Path="pausenewPopupLayer.csd" />
       </Value>
     </Item>
   </Properties>

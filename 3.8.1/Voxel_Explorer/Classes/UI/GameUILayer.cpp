@@ -1348,7 +1348,10 @@ void GameUILayer::onEvenetAchieveComplete(cocos2d::EventCustom *sender)
 }
 void GameUILayer::onEventGamePause(cocos2d::EventCustom *sender)
 {
-    PopupUILayerManager::getInstance()->openPopup(ePopupPause);
+    if (!PopupUILayerManager::getInstance()->getCurrentPopUpLayer()) {
+        PopupUILayerManager::getInstance()->openPopup(ePopupPause);
+    }
+    
 }
 
 void GameUILayer::setCharacterPropLayerVisible(bool isMonster, bool isNpc, bool isBoss)

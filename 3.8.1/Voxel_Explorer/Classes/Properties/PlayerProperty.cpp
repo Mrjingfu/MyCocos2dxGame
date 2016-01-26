@@ -58,8 +58,9 @@ bool PlayerProperty::initNewPlayer()   ///新角色初始化
         weaponProperty->adjustByLevel();
     m_Bag.push_back(weaponProperty);
 
-    addMoney(90000, false);
+    addMoney(500, false);
     ret = equipWeapon(itemIDCounter, false);
+    
     ret = addItemToBag(PickableItem::PIT_POTION_MINORHEALTH, 1, false);
     ret = addItemToBag(PickableItem::PIT_POTION_MINORHEALTH, 1, false);
     ret = addItemToBag(PickableItem::PIT_POTION_MINORHEALTH, 1, false);

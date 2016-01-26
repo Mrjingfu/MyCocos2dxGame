@@ -76,9 +76,21 @@ bool DeadPopupUI::addEvents()
     m_pContinueNum->setString(Value(m_nCountDownNum).asString());
     m_pContinueNum->runAction(RepeatForever::create(Sequence::create(EaseBackIn::create(ScaleTo::create(0.3, 0.8)),EaseBackOut::create(ScaleTo::create(0.3, 1)), nil)));
     m_pBtnDead->addClickEventListener(CC_CALLBACK_1(DeadPopupUI::onClickAda, this));
+     m_pBossDepthReviveText->setVisible(false);
+#if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID || CC_TARGET_PLATFORM == CC_PLATFORM_IOS
+    if (!NativeBridge::getInstance()->isNetworkAvailable() ) {
+        
+        updateRestartUi();
+        return true;
+    }
+    if(!NativeBridge::getInstance()->isInterstitialAdsReady())
+    {
+        updateRestartUi();
+        NativeBridge::getInstance()->playInterstitialAds();
+        return true;
+    }
 
-    
-    
+#endif
     if (RandomDungeon::getInstance()->getCurrentDungeonNode()->isBossDepth())
     {
         if (m_nBossReviveCount >0) {
@@ -166,7 +178,6 @@ void DeadPopupUI::onClickRevive(cocos2d::Ref *ref)
     }
     if(!ArchiveManager::getInstance()->saveGame())
         CCLOGERROR("Save Game failed!");
-    
     PopupUILayerManager::getInstance()->closeCurrentPopup();
     VoxelExplorer::getInstance()->respawnPlayer();
 }
