@@ -120,7 +120,7 @@ void GlobalPromptLayer::shwoGlobalPrompt(TipTypes tipType, std::string text)
 //    m_pLabel->enableOutline(cocos2d::Color4B::BLUE);
     m_pLabel->setColor(PopupUILayerManager::getInstance()->getTipsColor(tipType));
 
-    UtilityHelper::getLineForText(m_pLabel, text,getContentSize().width-10);
+    UtilityHelper::getLineForText(m_pLabel, text,getContentSize().width-20);
     m_pLabel->setString(text);
     m_pLabel->setVisible(false);
     m_vPrompts.pushBack(m_pLabel);

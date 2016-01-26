@@ -51,6 +51,7 @@ bool AlertPopupUI::addEvents()
     if (!m_pMessage)
         return false;
     
+    m_pTitle->setString(UtilityHelper::getLocalStringForUi("TITLE_TIP_TEXT"));
     m_pTitle->setFntFile(UtilityHelper::getLocalStringForUi("FONT_NAME"));
     m_pMessage->setFntFile(UtilityHelper::getLocalStringForUi("FONT_NAME"));
     
@@ -133,7 +134,7 @@ void AlertPopupUI::setMessage( std::string message)
 {
     if (!m_pMessage)
         return;
-    UtilityHelper::getLineForText(m_pMessage, message);
+    UtilityHelper::getLineForText(m_pMessage, message,m_pRootNode->getContentSize().width -10);
     m_pMessage->setString(message);
  }
 

@@ -70,6 +70,7 @@ bool InformationPopupUI::addEvents()
     
     m_pInfoDesc->setFntFile(UtilityHelper::getLocalStringForUi("FONT_NAME"));
     m_pInfoTitle->setFntFile(UtilityHelper::getLocalStringForUi("FONT_NAME"));
+    m_pInfoTitle->setString(UtilityHelper::getLocalStringForUi("TITLE_TIP_TEXT"));
     
     m_pBtnNext->setVisible(false);
     MoveBy* moveByNext = MoveBy::create(0.5, cocos2d::Vec2(0,-2));

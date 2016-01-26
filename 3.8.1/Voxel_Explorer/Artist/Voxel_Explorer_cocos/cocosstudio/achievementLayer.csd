@@ -36,7 +36,7 @@
             <CColor A="255" R="255" G="255" B="255" />
             <PrePosition X="0.5000" Y="1.0000" />
             <PreSize X="0.3500" Y="0.1100" />
-            <FileData Type="PlistSubImage" Path="ui_frame_2.png" Plist="ui_sprite.plist" />
+            <FileData Type="PlistSubImage" Path="ui_frame_3.png" Plist="ui_sprite.plist" />
           </AbstractNodeData>
         </Children>
       </ObjectData>

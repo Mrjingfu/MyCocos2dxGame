@@ -155,7 +155,7 @@ void GameToolbarLayer::setMsgItem(std::string msg,cocos2d::Color3B msgColor )
     if ( m_pListMsgs->getItems().size()*noteui->getContentSize().height > m_pListMsgs->getContentSize().height) {
         //        m_pListMsgs->scrollToBottom(0.5,false);
         m_pListMsgs->forceDoLayout();
-        m_pListMsgs->jumpToBottom();
+        m_pListMsgs->scrollToBottom(0.8,false);
     }
 }
 void GameToolbarLayer::initMessageFrame()

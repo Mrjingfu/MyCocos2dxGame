@@ -327,15 +327,15 @@
 	<key>BTN_TEXT_REVIVE</key>
 	<string>REVIVE</string>
 	<key>BTN_TEXT_ADA_REVIVE</key>
-	<string>View Ads to revive.</string>
+	<string>REVIVE</string>
 	<key>BAG_INDENTIFY_FAIL</key>
 	<string>Indentified failed！</string>
 	<key>BAG_NO_INDENTIFY_SCROLL</key>
 	<string>Indentified failed！ No identification scroll available.</string>
 	<key>BAG_TEXT_DESTROY</key>
-	<string>Dismantle</string>
+	<string>DISMANTLE</string>
 	<key>BAG_TEXT_EXTEND</key>
-	<string>Extend</string>
+	<string>EXTEND</string>
 	<key>BAG_TEXT_EXTEND_DESC</key>
 	<string>To cost %d gold coins to extend the backpack?</string>
 	<key>ARCHIVE_RESTART_TIPS_DESC</key>
@@ -368,5 +368,7 @@
 	<string>Sorry, the number of backpack expansion has reached the limit!</string>
 	<key>DEAD_BOOS_DEPTH_REVIVE_TXT</key>
 	<string>剩余次数:%d次</string>
+	<key>TITLE_TIP_TEXT</key>
+	<string>TIP</string>
 </dict>
 </plist>

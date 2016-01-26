@@ -16,13 +16,13 @@
             <PreSize X="1.0000" Y="1.0000" />
             <FileData Type="PlistSubImage" Path="ui_frame_3.png" Plist="ui_sprite.plist" />
           </AbstractNodeData>
-          <AbstractNodeData Name="pause_btn_achieve" ActionTag="-1147036072" Tag="3" IconVisible="False" PercentWidthEnable="True" PercentWidthEnabled="True" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="11.0000" RightMargin="11.0000" TopMargin="52.6650" BottomMargin="57.3350" TouchEnable="True" FontSize="22" ButtonText="成就" Scale9Enable="True" LeftEage="7" RightEage="7" TopEage="7" BottomEage="7" Scale9OriginX="7" Scale9OriginY="7" Scale9Width="22" Scale9Height="22" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="ButtonObjectData">
+          <AbstractNodeData Name="pause_btn_achieve" ActionTag="-1147036072" Tag="3" IconVisible="False" PercentWidthEnable="True" PercentWidthEnabled="True" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="11.0000" RightMargin="11.0000" TopMargin="103.0450" BottomMargin="6.9550" TouchEnable="True" FontSize="22" ButtonText="成就" Scale9Enable="True" LeftEage="7" RightEage="7" TopEage="7" BottomEage="7" Scale9OriginX="7" Scale9OriginY="7" Scale9Width="22" Scale9Height="22" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="ButtonObjectData">
             <Size X="198.0000" Y="40.0000" />
             <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-            <Position X="110.0000" Y="77.3400" />
+            <Position X="110.0000" Y="26.9550" />
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
             <CColor A="255" R="255" G="255" B="255" />
-            <PrePosition X="0.5000" Y="0.5156" />
+            <PrePosition X="0.5000" Y="0.1797" />
             <PreSize X="0.9000" Y="0.2667" />
             <FontResource Type="Normal" Path="fonts/fangz.TTF" Plist="" />
             <TextColor A="255" R="229" G="229" B="229" />
@@ -32,13 +32,13 @@
             <OutlineColor A="255" R="255" G="0" B="0" />
             <ShadowColor A="255" R="110" G="110" B="110" />
           </AbstractNodeData>
-          <AbstractNodeData Name="pause_btn_mianmenu" ActionTag="-751152529" Tag="4" IconVisible="False" PercentWidthEnable="True" PercentWidthEnabled="True" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="11.0000" RightMargin="11.0000" TopMargin="103.0450" BottomMargin="6.9550" TouchEnable="True" FontSize="22" ButtonText="主菜单" Scale9Enable="True" LeftEage="7" RightEage="7" TopEage="7" BottomEage="7" Scale9OriginX="7" Scale9OriginY="7" Scale9Width="22" Scale9Height="22" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="ButtonObjectData">
+          <AbstractNodeData Name="pause_btn_mianmenu" ActionTag="-751152529" Tag="4" IconVisible="False" PercentWidthEnable="True" PercentWidthEnabled="True" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="11.0000" RightMargin="11.0000" TopMargin="52.6600" BottomMargin="57.3400" TouchEnable="True" FontSize="22" ButtonText="主菜单" Scale9Enable="True" LeftEage="7" RightEage="7" TopEage="7" BottomEage="7" Scale9OriginX="7" Scale9OriginY="7" Scale9Width="22" Scale9Height="22" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="ButtonObjectData">
             <Size X="198.0000" Y="40.0000" />
             <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-            <Position X="110.0000" Y="26.9550" />
+            <Position X="110.0000" Y="77.3400" />
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
             <CColor A="255" R="255" G="255" B="255" />
-            <PrePosition X="0.5000" Y="0.1797" />
+            <PrePosition X="0.5000" Y="0.5156" />
             <PreSize X="0.9000" Y="0.2667" />
             <FontResource Type="Normal" Path="fonts/fangz.TTF" Plist="" />
             <TextColor A="255" R="229" G="229" B="229" />
@@ -61,7 +61,7 @@
           <AbstractNodeData Name="pause_music_text" ActionTag="716134780" Tag="38" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="8.0000" RightMargin="138.0000" TopMargin="9.7200" BottomMargin="101.2800" LabelText="声音:" ctype="TextBMFontObjectData">
             <Size X="74.0000" Y="39.0000" />
             <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-            <Position X="45.0000" Y="120.7800" />
+            <Position X="44.9900" Y="120.7800" />
             <Scale ScaleX="0.6500" ScaleY="0.6500" />
             <CColor A="255" R="255" G="255" B="255" />
             <PrePosition X="0.2045" Y="0.8052" />
