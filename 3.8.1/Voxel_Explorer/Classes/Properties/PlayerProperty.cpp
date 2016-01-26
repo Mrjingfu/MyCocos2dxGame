@@ -54,8 +54,7 @@ bool PlayerProperty::initNewPlayer()   ///新角色初始化
     WeaponProperty* weaponProperty = new (std::nothrow) WeaponProperty(m_snItemInstanceIDCounter++,PickableItem::PIT_DAGGER_DAGGER, 1, true);
     if(!weaponProperty)
         return ret;
-    if(weaponProperty->isIdentified())
-        weaponProperty->adjustByLevel();
+    weaponProperty->adjustByLevel();
     m_Bag.push_back(weaponProperty);
 
     addMoney(500, false);
@@ -900,10 +899,7 @@ bool PlayerProperty::buyItemToBag(PickableItemProperty* buyItemProperty, CChaosN
             if(toIndentify)
                 buyItemProperty->handleIdentify();
             else
-            {
-                if(buyItemProperty->isIdentified())
-                    buyItemProperty->adjustByLevel();
-            }
+                buyItemProperty->adjustByLevel();
             buyItemProperty->retain();
             m_Bag.push_back(buyItemProperty);
             StatisticsManager::getInstance()->addBagFullNum();
@@ -966,8 +962,7 @@ bool PlayerProperty::addItemToBag(PickableItem::PickableItemType type, CChaosNum
                     if (sound)
                         StatisticsManager::getInstance()->addPickItemNum();
                 }
-                if(item->isIdentified())
-                    item->adjustByLevel();
+                item->adjustByLevel();
                 
                 if(sound)
                     playPickupItemSound(item);
@@ -1019,8 +1014,7 @@ bool PlayerProperty::addItemToBag(PickableItem::PickableItemType type, CChaosNum
     {
         if (sound)
             StatisticsManager::getInstance()->addPickItemNum();
-        if(itemProperty->isIdentified())
-            itemProperty->adjustByLevel();
+        itemProperty->adjustByLevel();
         m_Bag.push_back(itemProperty);
         StatisticsManager::getInstance()->addBagFullNum();
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_BAG_ITEM_UPDATE);

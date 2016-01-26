@@ -1992,12 +1992,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Properties/PlayerProperty.cpp"
-            timestampString = "475484188.309607"
+            timestampString = "475496902.30192"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1000"
-            endingLineNumber = "1000"
-            landmarkName = "PlayerProperty::sellItemFromBag(PickableItemProperty* sellItemProperty, CChaosNumber count)"
+            startingLineNumber = "995"
+            endingLineNumber = "995"
+            landmarkName = "PlayerProperty::addItemToBag(PickableItem::PickableItemType type, CChaosNumber level, bool sound)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -3640,11 +3640,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Properties/PlayerProperty.cpp"
-            timestampString = "475484188.309607"
+            timestampString = "475496902.30192"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "63"
-            endingLineNumber = "63"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
             landmarkName = "PlayerProperty::initNewPlayer()"
             landmarkType = "5">
          </BreakpointContent>
@@ -5384,11 +5384,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Properties/PlayerProperty.cpp"
-            timestampString = "475484188.309607"
+            timestampString = "475496902.30192"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "309"
-            endingLineNumber = "309"
+            startingLineNumber = "308"
+            endingLineNumber = "308"
             landmarkName = "PlayerProperty::equipWeapon(CChaosNumber id, bool sound)"
             landmarkType = "5">
          </BreakpointContent>
@@ -6326,11 +6326,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/UI/Popup/ItemPopupUI.cpp"
-            timestampString = "474461260.956412"
+            timestampString = "475495331.106241"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "558"
-            endingLineNumber = "558"
+            startingLineNumber = "557"
+            endingLineNumber = "557"
             landmarkName = "ItemPopupUI::setItemId(int itemId)"
             landmarkType = "5">
          </BreakpointContent>
@@ -9060,11 +9060,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Properties/PlayerProperty.cpp"
-            timestampString = "474609739.034582"
+            timestampString = "475496253.270245"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "61"
-            endingLineNumber = "61"
+            startingLineNumber = "60"
+            endingLineNumber = "60"
             landmarkName = "PlayerProperty::initNewPlayer()"
             landmarkType = "5">
          </BreakpointContent>
@@ -9636,11 +9636,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/UI/Popup/ItemPopupUI.cpp"
-            timestampString = "474461260.956412"
+            timestampString = "475495331.106241"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "565"
-            endingLineNumber = "565"
+            startingLineNumber = "564"
+            endingLineNumber = "564"
             landmarkName = "ItemPopupUI::updateItemBaseProp()"
             landmarkType = "5">
          </BreakpointContent>
@@ -9652,11 +9652,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/UI/Popup/ItemPopupUI.cpp"
-            timestampString = "474461260.956412"
+            timestampString = "475495331.106241"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "579"
-            endingLineNumber = "579"
+            startingLineNumber = "578"
+            endingLineNumber = "578"
             landmarkName = "ItemPopupUI::updateItemBaseProp()"
             landmarkType = "5">
          </BreakpointContent>
@@ -9748,12 +9748,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Properties/PlayerProperty.cpp"
-            timestampString = "475484188.309607"
+            timestampString = "475496902.30192"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "168"
-            endingLineNumber = "168"
-            landmarkName = "PlayerProperty::addPlayerBuffer(PlayerBuffer buff)"
+            startingLineNumber = "167"
+            endingLineNumber = "167"
+            landmarkName = "PlayerProperty::getDefense()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -9764,12 +9764,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Properties/PlayerProperty.cpp"
-            timestampString = "475484188.309607"
+            timestampString = "475496902.30192"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "144"
-            endingLineNumber = "144"
-            landmarkName = "PlayerProperty::update(float delta)"
+            startingLineNumber = "143"
+            endingLineNumber = "143"
+            landmarkName = "PlayerProperty::removePlayerBuffer(PlayerBuffer buff)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -9812,12 +9812,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Properties/PlayerProperty.cpp"
-            timestampString = "475484188.309607"
+            timestampString = "475496902.30192"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "180"
-            endingLineNumber = "180"
-            landmarkName = "PlayerProperty::removePlayerBuffer(PlayerBuffer buff)"
+            startingLineNumber = "179"
+            endingLineNumber = "179"
+            landmarkName = "PlayerProperty::addMoney( CChaosNumber copper, bool sound)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -10020,12 +10020,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Properties/PlayerProperty.cpp"
-            timestampString = "475484188.309607"
+            timestampString = "475496902.30192"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1124"
-            endingLineNumber = "1124"
-            landmarkName = "PlayerProperty::removeItemFromBag(CChaosNumber id)"
+            startingLineNumber = "1118"
+            endingLineNumber = "1118"
+            landmarkName = "PlayerProperty::reset()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -10036,12 +10036,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Properties/PlayerProperty.cpp"
-            timestampString = "475484188.309607"
+            timestampString = "475496902.30192"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1099"
-            endingLineNumber = "1099"
-            landmarkName = "PlayerProperty::removeStackableItemFromBag(PickableItem::PickableItemType type, CChaosNumber count)"
+            startingLineNumber = "1093"
+            endingLineNumber = "1093"
+            landmarkName = "PlayerProperty::extendBagSpace()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -10228,12 +10228,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Properties/PlayerProperty.cpp"
-            timestampString = "475484188.309607"
+            timestampString = "475496902.30192"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "228"
-            endingLineNumber = "228"
-            landmarkName = "PlayerProperty::getDefense()"
+            startingLineNumber = "227"
+            endingLineNumber = "227"
+            landmarkName = "PlayerProperty::setCurrentHP(CChaosNumber hp)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -10740,12 +10740,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Properties/PlayerProperty.cpp"
-            timestampString = "475484188.309607"
+            timestampString = "475496902.30192"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1001"
-            endingLineNumber = "1001"
-            landmarkName = "PlayerProperty::sellItemFromBag(PickableItemProperty* sellItemProperty, CChaosNumber count)"
+            startingLineNumber = "996"
+            endingLineNumber = "996"
+            landmarkName = "PlayerProperty::addItemToBag(PickableItem::PickableItemType type, CChaosNumber level, bool sound)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -10804,12 +10804,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Properties/PlayerProperty.cpp"
-            timestampString = "475484188.309607"
+            timestampString = "475496902.30192"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1323"
-            endingLineNumber = "1323"
-            landmarkName = "PlayerProperty::save(cocos2d::ValueMap&amp; data)"
+            startingLineNumber = "1317"
+            endingLineNumber = "1317"
+            landmarkName = "PlayerProperty::getItemFromBag(CChaosNumber id)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -10820,11 +10820,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Properties/PlayerProperty.cpp"
-            timestampString = "474609739.034582"
+            timestampString = "475496253.270245"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "59"
-            endingLineNumber = "59"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
             landmarkName = "PlayerProperty::initNewPlayer()"
             landmarkType = "5">
          </BreakpointContent>
@@ -10900,12 +10900,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/UI/Popup/ItemPopupUI.cpp"
-            timestampString = "474461260.956412"
+            timestampString = "475495331.106241"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "561"
-            endingLineNumber = "561"
-            landmarkName = "ItemPopupUI::setItemId(int itemId)"
+            startingLineNumber = "560"
+            endingLineNumber = "560"
+            landmarkName = "ItemPopupUI::updateItemBaseProp()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -10948,11 +10948,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Properties/PlayerProperty.cpp"
-            timestampString = "475484188.309607"
+            timestampString = "475496902.30192"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "874"
-            endingLineNumber = "874"
+            startingLineNumber = "873"
+            endingLineNumber = "873"
             landmarkName = "PlayerProperty::buyItemToBag(PickableItemProperty* buyItemProperty, CChaosNumber count, bool toIndentify, bool sound)"
             landmarkType = "5">
          </BreakpointContent>
@@ -12146,12 +12146,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Properties/PlayerProperty.cpp"
-            timestampString = "475484188.309607"
+            timestampString = "475496902.30192"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "254"
-            endingLineNumber = "254"
-            landmarkName = "PlayerProperty::costMoney( CChaosNumber costcopper )"
+            startingLineNumber = "253"
+            endingLineNumber = "253"
+            landmarkName = "PlayerProperty::equipWeapon(CChaosNumber id, bool sound)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -12162,12 +12162,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Properties/PlayerProperty.cpp"
-            timestampString = "475484188.309607"
+            timestampString = "475496902.30192"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "240"
-            endingLineNumber = "240"
-            landmarkName = "PlayerProperty::addMoney( CChaosNumber copper, bool sound)"
+            startingLineNumber = "239"
+            endingLineNumber = "239"
+            landmarkName = "PlayerProperty::setCurrentMP(CChaosNumber mp)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -12290,12 +12290,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Properties/PlayerProperty.cpp"
-            timestampString = "475484188.309607"
+            timestampString = "475496902.30192"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1288"
-            endingLineNumber = "1288"
-            landmarkName = "PlayerProperty::load(const cocos2d::ValueMap&amp; data)"
+            startingLineNumber = "1282"
+            endingLineNumber = "1282"
+            landmarkName = "PlayerProperty::levelUp()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -12311,7 +12311,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "130"
             endingLineNumber = "130"
-            landmarkName = "-requestAndLoadInterstitialAds"
+            landmarkName = "-isNetworkAvailable"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -12327,7 +12327,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "165"
             endingLineNumber = "165"
-            landmarkName = "-interstitial:didFailToReceiveAdWithError:"
+            landmarkName = "-isInterstitialAdsReady"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -12343,7 +12343,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "161"
             endingLineNumber = "161"
-            landmarkName = "-interstitialDidReceiveAd:"
+            landmarkName = "-playInterstitialAds"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -12359,7 +12359,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "114"
             endingLineNumber = "114"
-            landmarkName = "-initAdmob"
+            landmarkName = "-isNetworkAvailable"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -12418,12 +12418,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Properties/PlayerProperty.cpp"
-            timestampString = "475484188.309607"
+            timestampString = "475496902.30192"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1081"
-            endingLineNumber = "1081"
-            landmarkName = "PlayerProperty::addItemToBag(PickableItem::PickableItemType type, CChaosNumber level, bool sound)"
+            startingLineNumber = "1075"
+            endingLineNumber = "1075"
+            landmarkName = "PlayerProperty::extendBagSpace()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -12434,12 +12434,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Properties/PlayerProperty.cpp"
-            timestampString = "475484188.309607"
+            timestampString = "475496902.30192"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "668"
-            endingLineNumber = "668"
-            landmarkName = "PlayerProperty::indentifyItem(CChaosNumber id)"
+            startingLineNumber = "667"
+            endingLineNumber = "667"
+            landmarkName = "PlayerProperty::usePotion(CChaosNumber id)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -12552,6 +12552,214 @@
             startingLineNumber = "530"
             endingLineNumber = "530"
             landmarkName = "BaseMonster::moveToNext(const cocos2d::Vec2&amp; next)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/Properties/PickableItemProperties/ArmorProperty.cpp"
+            timestampString = "475493849.246877"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
+            landmarkName = "ArmorProperty::ArmorProperty(unsigned int instanceID, PickableItem::PickableItemType type, CChaosNumber level, bool identified)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/Properties/PickableItemProperties/ArmorProperty.cpp"
+            timestampString = "475493885.080013"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "168"
+            endingLineNumber = "168"
+            landmarkName = "ArmorProperty::handleIdentify()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/Properties/PickableItemProperties/ArmorProperty.cpp"
+            timestampString = "475494729.216592"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "199"
+            endingLineNumber = "199"
+            landmarkName = "ArmorProperty::handleIdentify()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/Properties/PickableItemProperties/ArmorProperty.cpp"
+            timestampString = "475494973.407702"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "155"
+            endingLineNumber = "155"
+            landmarkName = "ArmorProperty::adjustByLevel()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/Properties/PickableItemProperties/ArmorProperty.cpp"
+            timestampString = "475495007.916582"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "156"
+            endingLineNumber = "156"
+            landmarkName = "ArmorProperty::adjustByLevel()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/UI/Popup/ItemPopupUI.cpp"
+            timestampString = "475495057.189503"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "203"
+            endingLineNumber = "203"
+            landmarkName = "ItemPopupUI::IdentifyEquiipFrame()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/UI/Popup/ItemPopupUI.cpp"
+            timestampString = "475495095.104457"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "267"
+            endingLineNumber = "267"
+            landmarkName = "ItemPopupUI::IdentifyEquiipFrame()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/UI/Popup/ItemPopupUI.cpp"
+            timestampString = "475495116.255153"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "278"
+            endingLineNumber = "278"
+            landmarkName = "ItemPopupUI::IdentifyEquiipFrame()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/UI/Popup/ItemPopupUI.cpp"
+            timestampString = "475495331.106241"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "309"
+            endingLineNumber = "309"
+            landmarkName = "ItemPopupUI::IdentifyEquiipFrame()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/UI/Popup/ItemPopupUI.cpp"
+            timestampString = "475495387.47688"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "273"
+            endingLineNumber = "273"
+            landmarkName = "ItemPopupUI::IdentifyEquiipFrame()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/Properties/PickableItemProperties/ArmorProperty.cpp"
+            timestampString = "475495464.734379"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
+            landmarkName = "ArmorProperty::adjustByLevel()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/Properties/PickableItemProperties/ArmorProperty.cpp"
+            timestampString = "475495489.434143"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "130"
+            endingLineNumber = "130"
+            landmarkName = "ArmorProperty::adjustByLevel()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/Properties/PickableItemProperties/ArmorProperty.cpp"
+            timestampString = "475495519.005038"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "93"
+            endingLineNumber = "93"
+            landmarkName = "ArmorProperty::adjustByLevel()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

@@ -300,14 +300,13 @@ void ItemPopupUI::IdentifyEquiipFrame()
                 itemPropStr = StringUtils::format(UtilityHelper::getLocalStringForUi("EQUIP_PROP_DODGE").c_str(),itemproperty->getAddedDodgeRate().GetFloatValue()*100.0);
                 
             }
+            
+            if (!itemPropStr.empty())
+            {
+                ++addAttrCount;
+                addItemProp(itemPropStr,effectColor,linerParmter);
+            }
         }
-        if (!itemPropStr.empty())
-        {
-             ++addAttrCount;
-             addItemProp(itemPropStr,effectColor,linerParmter);
-        }
-        
-
         
     }else if (itemprop->getPickableItemPropertyType() == PickableItemProperty::PIPT_MAGIC_ORNAMENT)
     {
