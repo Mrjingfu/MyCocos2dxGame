@@ -55,11 +55,11 @@ bool AlertPopupUI::addEvents()
     m_pMessage->setFntFile(UtilityHelper::getLocalStringForUi("FONT_NAME"));
     
     m_pOk->setTitleFontName(UtilityHelper::getLocalStringForUi("FONT_NAME"));
-    m_pOk->getTitleRenderer()->setScale(0.45);
+    m_pOk->getTitleRenderer()->setScale(0.65);
     m_pOk->setTitleText(UtilityHelper::getLocalStringForUi("BTN_TEXT_OK"));
 
     m_pCancel->setTitleFontName(UtilityHelper::getLocalStringForUi("FONT_NAME"));
-    m_pCancel->getTitleRenderer()->setScale(0.45);
+    m_pCancel->getTitleRenderer()->setScale(0.65);
     m_pCancel->setTitleText(UtilityHelper::getLocalStringForUi("BTN_TEXT_CANCEL"));
     
     m_pOk->addClickEventListener(CC_CALLBACK_1(AlertPopupUI::onClickOk, this));

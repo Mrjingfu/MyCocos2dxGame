@@ -29,6 +29,16 @@
                 <PreSize X="0.2571" Y="0.4500" />
                 <FileData Type="PlistSubImage" Path="ui_video_btn.png" Plist="ui_sprite.plist" />
               </AbstractNodeData>
+              <AbstractNodeData Name="dead_boos_reveive_text" ActionTag="1901116340" Tag="54" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="-46.0000" RightMargin="-46.0000" TopMargin="-44.0000" BottomMargin="55.0000" LabelText="剩余次数:5次" ctype="TextBMFontObjectData">
+                <Size X="190.0000" Y="39.0000" />
+                <AnchorPoint ScaleX="0.5000" />
+                <Position X="65.0000" Y="55.0000" />
+                <Scale ScaleX="0.5500" ScaleY="0.5500" />
+                <CColor A="255" R="173" G="216" B="230" />
+                <PrePosition X="0.5000" Y="1.1000" />
+                <PreSize X="0.6687" Y="0.0812" />
+                <LabelBMFontFile_CNB Type="Normal" Path="fonts/ui_font.fnt" Plist="" />
+              </AbstractNodeData>
             </Children>
             <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
             <Position X="160.0000" Y="123.9840" />

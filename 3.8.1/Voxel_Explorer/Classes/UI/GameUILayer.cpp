@@ -333,6 +333,7 @@ void GameUILayer::roleDead()
         ArchiveManager::getInstance()->saveGame();
         VoxelExplorer::getInstance()->getCurrentLevel()->showMap(false);
     }
+    m_pGameToolBarLayer->sendMessage(UtilityHelper::getLocalStringForUi("GAME_MESSAGE_ROLE_DEAD"),PopupUILayerManager::getInstance()->getTipsColor(TIP_POSITIVE));
 }
  void GameUILayer::popupNpc(Npc* npc,std::string eventStr)
 {
@@ -1123,7 +1124,6 @@ void GameUILayer::onEventRoleUpdateProp(cocos2d::EventCustom *sender)
 void GameUILayer::onEventRoleDead(cocos2d::EventCustom *sender)
 {
     CCLOG("onEventRoleDead");
-    m_pGameToolBarLayer->sendMessage(UtilityHelper::getLocalStringForUi("GAME_MESSAGE_MONSTER_DEAD"),PopupUILayerManager::getInstance()->getTipsColor(TIP_POSITIVE));
     roleDead();
 
 }
@@ -1184,7 +1184,7 @@ void GameUILayer::onEventMonsterDead(cocos2d::EventCustom *sender)
         }
          m_pGameToolBarLayer->sendMessage(StringUtils::format(UtilityHelper::getLocalStringForUi("GAME_MESSAGE_MONSTER_DEAD").c_str(),exp),PopupUILayerManager::getInstance()->getTipsColor(TIP_POSITIVE));
         
-         m_pGameToolBarLayer->sendMessage(UtilityHelper::getLocalStringForUi("GAME_MESSAGE_MONSTER_DEAD"),PopupUILayerManager::getInstance()->getTipsColor(TIP_POSITIVE));
+         m_pGameToolBarLayer->sendMessage( StringUtils::format(UtilityHelper::getLocalStringForUi("STATUS_TEXT_EXP").c_str(),exp),PopupUILayerManager::getInstance()->getTipsColor(TIP_POSITIVE));
 
     }
 }
@@ -1268,7 +1268,8 @@ void GameUILayer::onEventBossDeath(cocos2d::EventCustom *sender)
             m_pBossPropLayer->setVisible(false);
         }
     }
-    
+     m_pGameToolBarLayer->sendMessage(UtilityHelper::getLocalStringForUi("GAME_MESSAGE_MONSTER_DEAD"),PopupUILayerManager::getInstance()->getTipsColor(TIP_POSITIVE));
+     m_pGameToolBarLayer->sendMessage( StringUtils::format(UtilityHelper::getLocalStringForUi("STATUS_TEXT_EXP").c_str(),exp),PopupUILayerManager::getInstance()->getTipsColor(TIP_POSITIVE));
     CallFunc* func = CallFunc::create([monster]{
         std::string msg = monster->getBossDescByEvent(EVENT_BOSS_DEATH);
         PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
@@ -1345,6 +1346,10 @@ void GameUILayer::onEvenetAchieveComplete(cocos2d::EventCustom *sender)
     }
     
 }
+void GameUILayer::onEventGamePause(cocos2d::EventCustom *sender)
+{
+    PopupUILayerManager::getInstance()->openPopup(ePopupPause);
+}
 
 void GameUILayer::setCharacterPropLayerVisible(bool isMonster, bool isNpc, bool isBoss)
 {
@@ -1416,6 +1421,8 @@ void GameUILayer::updateCharacterHud(HurtData* hurData,TipTypes tipDodge,TipType
 void GameUILayer::onEnter()
 {
     WrapperUILayer::onEnter();
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_GAME_PAUSE, CC_CALLBACK_1(GameUILayer::onEventGamePause,this));
+    
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_PLAYER_PROPERTY_DIRTY, CC_CALLBACK_1(GameUILayer::onEventRoleUpdateProp,this));
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_PLAYER_DEATH, CC_CALLBACK_1(GameUILayer::onEventRoleDead,this));
    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_PLAYER_FALL_AND_DIE, CC_CALLBACK_1(GameUILayer::onEventRoleFallAndDie,this));
@@ -1526,6 +1533,8 @@ void GameUILayer::onEnter()
 }
 void GameUILayer::onExit()
 {
+     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_GAME_PAUSE);
+    
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_PLAYER_PROPERTY_DIRTY);
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_PLAYER_LEVEL_UP);
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_PLAYER_DEATH);

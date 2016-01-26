@@ -4,6 +4,7 @@
 #include "ArchiveManager.h"
 #include "SdkBoxManager.hpp"
 #include "NativeBridge.h"
+#include "EventConst.h"
 USING_NS_CC;
 using namespace CocosDenshion;
 
@@ -133,7 +134,7 @@ void AppDelegate::applicationDidEnterBackground() {
     // if you use SimpleAudioEngine, it must be pause
     SimpleAudioEngine::getInstance()->pauseAllEffects();
     SimpleAudioEngine::getInstance()->pauseBackgroundMusic();
-    
+    Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_GAME_PAUSE);
     ArchiveManager::getInstance()->saveGame();
 }
 

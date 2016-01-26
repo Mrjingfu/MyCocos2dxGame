@@ -31,7 +31,7 @@
                 <PreSize X="0.4667" Y="0.2000" />
                 <FileData Type="PlistSubImage" Path="ui_frame_3.png" Plist="ui_sprite.plist" />
               </AbstractNodeData>
-              <AbstractNodeData Name="alert_layer_ok" ActionTag="402936973" Tag="21" IconVisible="False" PercentWidthEnable="True" PercentHeightEnable="True" PercentWidthEnabled="True" PercentHeightEnabled="True" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="5.2500" RightMargin="77.2500" TopMargin="65.0000" BottomMargin="5.0000" TouchEnable="True" FontSize="14" ButtonText="确定" Scale9Enable="True" LeftEage="4" RightEage="4" TopEage="4" BottomEage="4" Scale9OriginX="4" Scale9OriginY="4" Scale9Width="5" Scale9Height="5" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="ButtonObjectData">
+              <AbstractNodeData Name="alert_layer_ok" ActionTag="402936973" Tag="21" IconVisible="False" PercentWidthEnable="True" PercentHeightEnable="True" PercentWidthEnabled="True" PercentHeightEnabled="True" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="5.2500" RightMargin="77.2500" TopMargin="65.0000" BottomMargin="5.0000" TouchEnable="True" FontSize="20" ButtonText="确定" Scale9Enable="True" LeftEage="4" RightEage="4" TopEage="4" BottomEage="4" Scale9OriginX="4" Scale9OriginY="4" Scale9Width="5" Scale9Height="5" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="ButtonObjectData">
                 <Size X="67.5000" Y="30.0000" />
                 <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
                 <Position X="39.0000" Y="20.0000" />
@@ -39,7 +39,6 @@
                 <CColor A="255" R="255" G="255" B="255" />
                 <PrePosition X="0.2600" Y="0.2000" />
                 <PreSize X="0.4500" Y="0.3000" />
-                <FontResource Type="Normal" Path="fonts/fangz.TTF" Plist="" />
                 <TextColor A="255" R="255" G="255" B="255" />
                 <DisabledFileData Type="PlistSubImage" Path="ui_frame_11.png" Plist="ui_sprite.plist" />
                 <PressedFileData Type="PlistSubImage" Path="ui_frame_11.png" Plist="ui_sprite.plist" />
@@ -47,7 +46,7 @@
                 <OutlineColor A="255" R="255" G="0" B="0" />
                 <ShadowColor A="255" R="110" G="110" B="110" />
               </AbstractNodeData>
-              <AbstractNodeData Name="alert_layer_cancel" ActionTag="-1377375493" Tag="25" IconVisible="False" PercentWidthEnable="True" PercentHeightEnable="True" PercentWidthEnabled="True" PercentHeightEnabled="True" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="77.8950" RightMargin="4.6050" TopMargin="65.0000" BottomMargin="5.0000" TouchEnable="True" FontSize="14" ButtonText="取消" Scale9Enable="True" LeftEage="4" RightEage="4" TopEage="4" BottomEage="4" Scale9OriginX="4" Scale9OriginY="4" Scale9Width="5" Scale9Height="5" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="ButtonObjectData">
+              <AbstractNodeData Name="alert_layer_cancel" ActionTag="-1377375493" Tag="25" IconVisible="False" PercentWidthEnable="True" PercentHeightEnable="True" PercentWidthEnabled="True" PercentHeightEnabled="True" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="77.8950" RightMargin="4.6050" TopMargin="65.0000" BottomMargin="5.0000" TouchEnable="True" FontSize="20" ButtonText="取消" Scale9Enable="True" LeftEage="4" RightEage="4" TopEage="4" BottomEage="4" Scale9OriginX="4" Scale9OriginY="4" Scale9Width="5" Scale9Height="5" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="ButtonObjectData">
                 <Size X="67.5000" Y="30.0000" />
                 <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
                 <Position X="111.6450" Y="20.0000" />
@@ -55,7 +54,6 @@
                 <CColor A="255" R="255" G="255" B="255" />
                 <PrePosition X="0.7443" Y="0.2000" />
                 <PreSize X="0.4500" Y="0.3000" />
-                <FontResource Type="Normal" Path="fonts/fangz.TTF" Plist="" />
                 <TextColor A="255" R="255" G="255" B="255" />
                 <DisabledFileData Type="PlistSubImage" Path="ui_frame_11.png" Plist="ui_sprite.plist" />
                 <PressedFileData Type="PlistSubImage" Path="ui_frame_11.png" Plist="ui_sprite.plist" />

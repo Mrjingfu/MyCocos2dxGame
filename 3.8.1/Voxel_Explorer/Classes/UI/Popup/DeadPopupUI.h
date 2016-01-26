@@ -25,12 +25,15 @@ private:
     void onClickAda(cocos2d::Ref* ref);
     void CountDown(float dt);
 private:
+    void updateRestartUi();
+private:
     cocos2d::ui::Button* m_pBtnDead;
     cocos2d::ui::ImageView* m_pAdaIcon;
     cocos2d::ui::TextBMFont*  m_pAdaDesc;
     cocos2d::ui::TextBMFont*  m_pContinueNum;
+    cocos2d::ui::TextBMFont*  m_pBossDepthReviveText;
     int m_nCountDownNum;
-    
+    static int m_nBossReviveCount;
 };
 
 #endif /* DeadPopupUI_hpp */
