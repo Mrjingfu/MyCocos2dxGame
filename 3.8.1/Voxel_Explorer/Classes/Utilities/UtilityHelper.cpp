@@ -148,9 +148,9 @@ void UtilityHelper::getLineEnglistForText(cocos2d::ui::TextBMFont*  tempText,std
         
     }
     
-    CCASSERT(tempText->getParent(), "tempText is not parent" );
     
     if (std::abs(-1.0 -parentWidth) <=0.00001) {
+        CCASSERT(tempText->getParent(), "tempText is not parent" );
         parentWidth = tempText->getParent()->getContentSize().width;
     }
     parentWidth = parentWidth -10;

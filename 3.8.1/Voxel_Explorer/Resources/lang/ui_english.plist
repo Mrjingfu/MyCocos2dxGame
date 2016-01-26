@@ -45,7 +45,7 @@
 	<key>GAME_SERACH_EXPLAIN</key>
 	<string>Please tap the screen to check.</string>
 	<key>GAME_MESSAGE_NOT</key>
-	<string>Welcome to the %d floor of %s.</string>
+	<string>Welcome to the %s floor of %s.</string>
 	<key>GAME_MESSAGE_MONSTER_ATTACK</key>
 	<string>The monster hit you.</string>
 	<key>GAME_MESSAGE_MONSTER_DODGE</key>
@@ -366,5 +366,7 @@
 	<string>Congratulations on the success of backpack expansion!</string>
 	<key>PLAYER_BAG_EXTEND_HAS_REACH_MAXTIMES</key>
 	<string>Sorry, the number of backpack expansion has reached the limit!</string>
+	<key>DEAD_BOOS_DEPTH_REVIVE_TXT</key>
+	<string>剩余次数:%d次</string>
 </dict>
 </plist>

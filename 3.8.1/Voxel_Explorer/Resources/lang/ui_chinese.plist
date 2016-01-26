@@ -45,7 +45,7 @@
 	<key>GAME_SERACH_EXPLAIN</key>
 	<string>请点击屏幕位置查看</string>
 	<key>GAME_MESSAGE_NOT</key>
-	<string>欢迎来到%s第%d层</string>
+	<string>欢迎来到%s第%s层</string>
 	<key>GAME_MESSAGE_MONSTER_ATTACK</key>
 	<string>怪物击中了你</string>
 	<key>GAME_MESSAGE_MONSTER_DODGE</key>
@@ -367,5 +367,7 @@
 	<string>恭喜背包扩展成功!</string>
 	<key>PLAYER_BAG_EXTEND_HAS_REACH_MAXTIMES</key>
 	<string>抱歉,背包扩展次数已达到上限了!</string>
+	<key>DEAD_BOOS_DEPTH_REVIVE_TXT</key>
+	<string>剩余次数:%d次</string>
 </dict>
 </plist>

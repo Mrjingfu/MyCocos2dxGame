@@ -40,14 +40,13 @@ public:
     AchievePopupUI* getAchievePopupUI() const{return m_pAchievePopupUI;};
     
     void switchToMenuScene();
-
 protected:
     virtual bool onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event) override;
     virtual void onTouchMoved(cocos2d::Touch *touch, cocos2d::Event *event) override;
     virtual void onTouchEnded(cocos2d::Touch *touch, cocos2d::Event *event) override;
 private:
  
-    
+    void onEventGamePause(cocos2d::EventCustom *sender);
     void onEventRoleUpdateProp(cocos2d::EventCustom *sender);   //更新角色信息
     void onEventRoleLevelUp(cocos2d::EventCustom *sender);      //角色升级
     void onEventRoleHud(cocos2d::EventCustom *sender);         //更新角色hud伤害

@@ -216,7 +216,7 @@ bool RoleLayer::addEvents()
     
     m_pBtnClose->addClickEventListener(CC_CALLBACK_1(RoleLayer::onClickClose, this));
     m_pShopBtn->addClickEventListener(CC_CALLBACK_1(RoleLayer::onClickShop, this));
-    
+    m_pShopBtn->setVisible(false);
     
     return true;
 }
