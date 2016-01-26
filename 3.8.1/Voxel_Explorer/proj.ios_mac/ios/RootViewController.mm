@@ -26,7 +26,7 @@
 #import "RootViewController.h"
 #import "cocos2d.h"
 #import "platform/ios/CCEAGLView-ios.h"
-
+#import "Reachability.h"
 @implementation RootViewController
 
 /*
@@ -109,7 +109,26 @@
 - (void)dealloc {
     [super dealloc];
 }
-
+- (BOOL) isNetworkAvailable {
+    // 1.检测wifi状态
+    Reachability *wifi = [Reachability reachabilityForLocalWiFi];
+    
+    // 2.检测手机是否能上网络(WIFI\3G\2.5G)
+    Reachability *conn = [Reachability reachabilityForInternetConnection];
+    
+    // 3.判断网络状态
+    BOOL ret = NO;
+    if ([wifi currentReachabilityStatus] != NotReachable) {
+        NSLog(@"使用wifi");
+        ret = YES;
+    } else if ([conn currentReachabilityStatus] != NotReachable) {
+        NSLog(@"使用手机自带网络进行上网");
+        ret = YES;
+    } else {
+        NSLog(@"没有网络");
+    }
+    return ret;
+}
 - (void) initAdmob {
     [self requestAndLoadInterstitialAds];
 }
@@ -135,13 +154,21 @@
     if(admobInterstitial != nil)
     {
         if (admobInterstitial.isReady)
-        [admobInterstitial presentFromRootViewController:self];
+            [admobInterstitial presentFromRootViewController:self];
         else
         {
             NSLog(@"The interstitial didn't finish loading or failed to load");
             [self requestAndLoadInterstitialAds];
         }
     }
+}
+- (BOOL) isInterstitialAdsReady {
+    if(admobInterstitial != nil)
+    {
+        if (admobInterstitial.isReady)
+            return YES;
+    }
+    return NO;
 }
 
 - (void)openItunesURL:(NSString*) urlStr {

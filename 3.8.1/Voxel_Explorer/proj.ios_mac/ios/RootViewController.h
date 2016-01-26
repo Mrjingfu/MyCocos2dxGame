@@ -31,9 +31,11 @@
 }
 - (BOOL) prefersStatusBarHidden;
 
+- (BOOL) isNetworkAvailable;
 - (void) initAdmob;
 - (void) requestAndLoadInterstitialAds;
 - (void) playInterstitialAds;
+- (BOOL) isInterstitialAdsReady;
 
 - (GADRequest *)createRequest;
 

@@ -58,65 +58,8 @@ bool PlayerProperty::initNewPlayer()   ///新角色初始化
         weaponProperty->adjustByLevel();
     m_Bag.push_back(weaponProperty);
 
-    addMoney(90000, false);
+    addMoney(500, false);
     ret = equipWeapon(itemIDCounter, false);
-    
-//    WeaponProperty* weaponProperty1 = new (std::nothrow) WeaponProperty(m_snItemInstanceIDCounter++,PickableItem::PIT_AXE_PRO_BROADAX, 25, false);
-//    if(!weaponProperty1)
-//        return ret;
-//    if(weaponProperty1->isIdentified())
-//        weaponProperty1->adjustByLevel();
-//    m_Bag.push_back(weaponProperty1);
-//    
-//    WeaponProperty* weaponProperty2 = new (std::nothrow) WeaponProperty(m_snItemInstanceIDCounter++,PickableItem::PIT_SWORD_PRO_HUGESWORD, 35, false);
-//    if(!weaponProperty2)
-//        return ret;
-//    if(weaponProperty2->isIdentified())
-//        weaponProperty2->adjustByLevel();
-//    m_Bag.push_back(weaponProperty2);
-//    
-//    WeaponProperty* weaponProperty3 = new (std::nothrow) WeaponProperty(m_snItemInstanceIDCounter++,PickableItem::PIT_MACE_PRO_WOLFFANGSMACE, 30, false);
-//    if(!weaponProperty3)
-//        return ret;
-//    if(weaponProperty3->isIdentified())
-//        weaponProperty3->adjustByLevel();
-//    m_Bag.push_back(weaponProperty3);
-//    
-//    SecondWeaponProperty* weaponProperty4 = new (std::nothrow) SecondWeaponProperty(m_snItemInstanceIDCounter++,PickableItem::PIT_BOW_PRO_GOLDENBOW, 30, false);
-//    if(!weaponProperty4)
-//        return ret;
-//    if(weaponProperty4->isIdentified())
-//        weaponProperty4->adjustByLevel();
-//    m_Bag.push_back(weaponProperty4);
-//    
-//    SecondWeaponProperty* weaponProperty5 = new (std::nothrow) SecondWeaponProperty(m_snItemInstanceIDCounter++,PickableItem::PIT_STAFF_PRO_CLOUDSTAFF, 30, false);
-//    if(!weaponProperty5)
-//        return ret;
-//    if(weaponProperty5->isIdentified())
-//        weaponProperty5->adjustByLevel();
-//    m_Bag.push_back(weaponProperty5);
-//    
-//    SecondWeaponProperty* weaponProperty6 = new (std::nothrow) SecondWeaponProperty(m_snItemInstanceIDCounter++,PickableItem::PIT_SHIELD_PRO_GOLDENSHIELD, 30, false);
-//    if(!weaponProperty6)
-//        return ret;
-//    if(weaponProperty6->isIdentified())
-//        weaponProperty6->adjustByLevel();
-//    m_Bag.push_back(weaponProperty6);
-//    
-//    MagicOrnamentProperty* weaponProperty7 = new (std::nothrow) MagicOrnamentProperty(m_snItemInstanceIDCounter++,PickableItem::PIT_ORNAMENT_PRO_PENDANT, 30, false);
-//    if(!weaponProperty7)
-//        return ret;
-//    if(weaponProperty7->isIdentified())
-//        weaponProperty7->adjustByLevel();
-//    m_Bag.push_back(weaponProperty7);
-//    
-//    ArmorProperty* weaponProperty8 = new (std::nothrow) ArmorProperty(m_snItemInstanceIDCounter++,PickableItem::PIT_CLOTH_PRO_STEELARMOR, 30, false);
-//    if(!weaponProperty8)
-//        return ret;
-//    if(weaponProperty8->isIdentified())
-//        weaponProperty8->adjustByLevel();
-//    m_Bag.push_back(weaponProperty8);
-
     
     ret = addItemToBag(PickableItem::PIT_POTION_MINORHEALTH, 1, false);
     ret = addItemToBag(PickableItem::PIT_POTION_MINORHEALTH, 1, false);

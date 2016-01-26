@@ -26,6 +26,13 @@ NativeBridge* NativeBridge::getInstance()
 NativeBridge::~NativeBridge()
 {
 }
+bool NativeBridge::isNetworkAvailable()
+{
+    return false;
+}
+void NativeBridge::initAdmob()
+{
+}
 void NativeBridge::playInterstitialAds()
 {
     // bool removeAds = Value(localStorageGetItem("RemoveAds")).asBool();
@@ -50,7 +57,10 @@ void NativeBridge::playInterstitialAds()
     // }
 
 }
-
+bool NativeBridge::isInterstitialAdsReady()
+{
+    return false;
+}
 void NativeBridge::exitGame()
 {
     // log("exitGame");

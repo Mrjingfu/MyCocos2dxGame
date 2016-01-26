@@ -219,6 +219,7 @@
 		55D6D6801BC527D000081221 /* models in Resources */ = {isa = PBXBuildFile; fileRef = 55D6D67E1BC527D000081221 /* models */; };
 		55E1A5561C16BF21008BEEFD /* BossProperty.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55E1A5541C16BF21008BEEFD /* BossProperty.cpp */; };
 		55E1A5571C16BF21008BEEFD /* BossProperty.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55E1A5541C16BF21008BEEFD /* BossProperty.cpp */; };
+		55E7B4661C5756050045E7C3 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 55E7B4651C5756050045E7C3 /* Reachability.m */; };
 		55EC95851BC6AA7B0008D1D7 /* TerrainTile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55EC95831BC6AA7B0008D1D7 /* TerrainTile.cpp */; };
 		55EC95861BC6ABBA0008D1D7 /* TerrainTile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55EC95831BC6AA7B0008D1D7 /* TerrainTile.cpp */; };
 		55ECFB441BC79852007270CD /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55ECFB421BC79852007270CD /* Player.cpp */; };
@@ -642,6 +643,8 @@
 		55D6D67E1BC527D000081221 /* models */ = {isa = PBXFileReference; lastKnownFileType = folder; path = models; sourceTree = "<group>"; };
 		55E1A5541C16BF21008BEEFD /* BossProperty.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BossProperty.cpp; sourceTree = "<group>"; };
 		55E1A5551C16BF21008BEEFD /* BossProperty.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BossProperty.hpp; sourceTree = "<group>"; };
+		55E7B4641C5756050045E7C3 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Reachability.h; path = ios/Reachability.h; sourceTree = SOURCE_ROOT; };
+		55E7B4651C5756050045E7C3 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Reachability.m; path = ios/Reachability.m; sourceTree = SOURCE_ROOT; };
 		55EC95831BC6AA7B0008D1D7 /* TerrainTile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TerrainTile.cpp; sourceTree = "<group>"; };
 		55EC95841BC6AA7B0008D1D7 /* TerrainTile.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TerrainTile.hpp; sourceTree = "<group>"; };
 		55ECFB421BC79852007270CD /* Player.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Player.cpp; sourceTree = "<group>"; };
@@ -892,6 +895,8 @@
 		080E96DDFE201D6D7F000001 /* ios */ = {
 			isa = PBXGroup;
 			children = (
+				55E7B4641C5756050045E7C3 /* Reachability.h */,
+				55E7B4651C5756050045E7C3 /* Reachability.m */,
 				557E662E1C492F9B00BDE404 /* NCSGameCenter.h */,
 				557E662F1C492F9B00BDE404 /* NCSGameCenter.m */,
 				552DC9691C47B72800C71D34 /* GoogleMobileAdsSdkiOS-7.6.0 */,
@@ -1912,6 +1917,7 @@
 				EC795F491C0D4A4B0083829B /* WeaponShopPopupUI.cpp in Sources */,
 				EC3CC9A51C08909B00F8CFC8 /* RolePropLayer.cpp in Sources */,
 				551E93E61BD512D3009F788F /* md5.c in Sources */,
+				55E7B4661C5756050045E7C3 /* Reachability.m in Sources */,
 				5560F5EE1C12CB8E001DD164 /* KoboldLeader.cpp in Sources */,
 				558242FC1C43B679004F3092 /* RibbonTrail.cpp in Sources */,
 				EC3CC99B1C088F4F00F8CFC8 /* CloseCallback.cpp in Sources */,
@@ -2102,8 +2108,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: quanlan huang (L4MC53BS3Z)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: quanlan huang (L4MC53BS3Z)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: haibo wang (FT8YEJMWBH)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: haibo wang (FT8YEJMWBH)";
 				COMPRESS_PNG_FILES = NO;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2140,7 +2146,7 @@
 					"$(_COCOS_LIB_IOS_END)",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.wanax.voxelexplorer;
-				PROVISIONING_PROFILE = "22b9a94d-953a-486e-a5b1-5b20c81c69a3";
+				PROVISIONING_PROFILE = "22898643-fe52-415a-b17e-b28409c9005b";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "$(_COCOS_HEADER_IOS_BEGIN) $(_COCOS_HEADER_IOS_END)";
@@ -2152,8 +2158,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: quanlan huang (L4MC53BS3Z)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: quanlan huang (L4MC53BS3Z)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: haibo wang (FT8YEJMWBH)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: haibo wang (FT8YEJMWBH)";
 				COMPRESS_PNG_FILES = NO;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2188,7 +2194,7 @@
 					"$(_COCOS_LIB_IOS_END)",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.wanax.voxelexplorer;
-				PROVISIONING_PROFILE = "22b9a94d-953a-486e-a5b1-5b20c81c69a3";
+				PROVISIONING_PROFILE = "22898643-fe52-415a-b17e-b28409c9005b";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "$(_COCOS_HEADER_IOS_BEGIN) $(_COCOS_HEADER_IOS_END)";

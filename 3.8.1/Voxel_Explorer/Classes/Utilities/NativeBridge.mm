@@ -26,6 +26,16 @@ NativeBridge* NativeBridge::getInstance()
 NativeBridge::~NativeBridge()
 {
 }
+
+bool NativeBridge::isNetworkAvailable()
+{
+#if CC_TARGET_PLATFORM == CC_PLATFORM_IOS
+    CCLOG("isNetworkAvailable");
+    if(mViewController != nil)
+        return [mViewController isNetworkAvailable];
+#endif
+    return false;
+}
 #if CC_TARGET_PLATFORM == CC_PLATFORM_IOS
 void NativeBridge::setRootViewController(RootViewController* viewController)
 {
@@ -53,4 +63,13 @@ void NativeBridge::playInterstitialAds()
     if(mViewController != nil)
         [mViewController playInterstitialAds];
 #endif
+}
+bool NativeBridge::isInterstitialAdsReady()
+{
+#if CC_TARGET_PLATFORM == CC_PLATFORM_IOS
+    CCLOG("isInterstitialAdsReady");
+    if(mViewController != nil)
+        return [mViewController isInterstitialAdsReady];
+#endif
+    return false;
 }

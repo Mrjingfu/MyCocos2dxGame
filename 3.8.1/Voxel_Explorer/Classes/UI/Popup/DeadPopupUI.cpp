@@ -143,7 +143,6 @@ void DeadPopupUI::onClickRevive(cocos2d::Ref *ref)
     }
     if(!ArchiveManager::getInstance()->saveGame())
         CCLOGERROR("Save Game failed!");
-    ///for debug
     PopupUILayerManager::getInstance()->closeCurrentPopup();
     VoxelExplorer::getInstance()->respawnPlayer();
 }
