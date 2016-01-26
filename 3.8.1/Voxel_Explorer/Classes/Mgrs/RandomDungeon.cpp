@@ -192,6 +192,7 @@ RandomDungeon::~RandomDungeon()
 }
 bool RandomDungeon::build()
 {
+    CC_SAFE_RELEASE_NULL(m_pCurrentNode);
     if(m_pCurrentNode == nullptr)
     {
         DUNGEON_TYPE type = generateDungeonNodeType();

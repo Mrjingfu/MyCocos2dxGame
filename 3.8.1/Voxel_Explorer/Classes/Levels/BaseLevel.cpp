@@ -455,7 +455,7 @@ void BaseLevel::preloadBGMusic()
             SimpleAudioEngine::getInstance()->preloadBackgroundMusic(standardMusicName.c_str());
         }
     }
-    SimpleAudioEngine::getInstance()->setBackgroundMusicVolume(0.25f);
+    SimpleAudioEngine::getInstance()->setBackgroundMusicVolume(0.4f);
 }
 bool BaseLevel::checkAllAreaBeExplored()
 {
