@@ -53,13 +53,13 @@
                 <PreSize X="0.2429" Y="3.4000" />
                 <FileData Type="PlistSubImage" Path="I_SilverCoin.png" Plist="ui_sprite.plist" />
               </AbstractNodeData>
-              <AbstractNodeData Name="item_money_desc" ActionTag="998281568" Tag="130" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="9.9960" RightMargin="30.0040" TopMargin="-14.5000" BottomMargin="-14.5000" LabelText="出售：" ctype="TextBMFontObjectData">
+              <AbstractNodeData Name="item_money_desc" ActionTag="998281568" Tag="130" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="7.9960" RightMargin="36.0040" TopMargin="-14.5000" BottomMargin="-14.5000" LabelText="出售：" ctype="TextBMFontObjectData">
                 <Size X="96.0000" Y="39.0000" />
                 <AnchorPoint ScaleY="0.5000" />
-                <Position X="9.9960" Y="5.0000" />
+                <Position X="7.9960" Y="5.0000" />
                 <Scale ScaleX="0.2000" ScaleY="0.2000" />
                 <CColor A="255" R="255" G="255" B="255" />
-                <PrePosition X="0.0714" Y="0.5000" />
+                <PrePosition X="0.0571" Y="0.5000" />
                 <PreSize X="6.2941" Y="1.1471" />
                 <LabelBMFontFile_CNB Type="Normal" Path="fonts/ui_font.fnt" Plist="" />
               </AbstractNodeData>

@@ -28,6 +28,7 @@ DeadPopupUI::DeadPopupUI()
     m_pAdaDesc = nullptr;
     m_pContinueNum = nullptr;
     m_nCountDownNum = 9;
+    m_nReviveTouchNum = 6;
 }
 DeadPopupUI::~DeadPopupUI()
 {
@@ -117,6 +118,14 @@ void DeadPopupUI::updateRestartUi()
     m_pBtnDead->addClickEventListener(CC_CALLBACK_1(DeadPopupUI::onClickRestart, this));
 
 }
+void DeadPopupUI::updateReviveUi()
+{
+    m_pAdaIcon->setVisible(false);
+    m_pContinueNum->setVisible(false);
+    m_pAdaDesc->setPosition(m_pBtnDead->getContentSize()*0.5);
+    m_pBtnDead->addClickEventListener(CC_CALLBACK_1(DeadPopupUI::onClickRevive, this));
+
+}
 void DeadPopupUI::onClickAda(cocos2d::Ref* ref)
 {
     CHECK_ACTION(ref);
@@ -127,12 +136,26 @@ void DeadPopupUI::onClickAda(cocos2d::Ref* ref)
 #elif  CC_TARGET_PLATFORM == CC_PLATFORM_IOS
     NativeBridge::getInstance()->playInterstitialAds();
 #endif
-    m_pAdaIcon->setVisible(false);
-    m_pContinueNum->setVisible(false);
-    m_pAdaDesc->setPosition(m_pBtnDead->getContentSize()*0.5);
-    m_pAdaDesc->setString(UtilityHelper::getLocalStringForUi("BTN_TEXT_REVIVE"));
-    m_pBtnDead->addClickEventListener(CC_CALLBACK_1(DeadPopupUI::onClickRevive, this));
+    updateReviveUi();
+    if(m_pBtnDead)
+    {
+        m_pBtnDead->setTouchEnabled(false);
+        m_pBtnDead->setEnabled(false);
+    }
+     m_pAdaDesc->setString(Value(m_nReviveTouchNum).asString());
+    this->schedule(schedule_selector(DeadPopupUI::reveiveCountDown), 1.0f);
     
+}
+void DeadPopupUI::reveiveCountDown(float dt)
+{
+    --m_nReviveTouchNum;
+    m_pAdaDesc->setString(Value(m_nReviveTouchNum).asString());
+    if (m_nReviveTouchNum==0 && m_pBtnDead) {
+        this->unschedule(schedule_selector(DeadPopupUI::reveiveCountDown));
+        m_pBtnDead->setTouchEnabled(true);
+        m_pBtnDead->setEnabled(true);
+        m_pAdaDesc->setString(UtilityHelper::getLocalStringForUi("BTN_TEXT_REVIVE"));
+    }
 }
 void DeadPopupUI::onClickRevive(cocos2d::Ref *ref)
 {
@@ -143,7 +166,7 @@ void DeadPopupUI::onClickRevive(cocos2d::Ref *ref)
     }
     if(!ArchiveManager::getInstance()->saveGame())
         CCLOGERROR("Save Game failed!");
-    ///for debug
+    
     PopupUILayerManager::getInstance()->closeCurrentPopup();
     VoxelExplorer::getInstance()->respawnPlayer();
 }

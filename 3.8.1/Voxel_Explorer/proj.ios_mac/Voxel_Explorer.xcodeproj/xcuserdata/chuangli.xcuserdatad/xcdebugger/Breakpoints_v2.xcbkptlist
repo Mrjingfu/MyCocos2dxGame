@@ -51,5 +51,115 @@
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/Utilities/UtilityHelper.cpp"
+            timestampString = "475490752.662082"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "108"
+            endingLineNumber = "108"
+            landmarkName = "UtilityHelper::getLineEnglistForText(cocos2d::ui::TextBMFont* tempText,std::string&amp; str,float parentWidth)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/UI/Layer/NoteUi.cpp"
+            timestampString = "475490875.263047"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
+            landmarkName = "NoteUi::setMsg(std::string msg,cocos2d::Color3B fontColor"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/Utilities/UtilityHelper.cpp"
+            timestampString = "475491014.738708"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "180"
+            endingLineNumber = "180"
+            landmarkName = "UtilityHelper::getLineEnglistForText(cocos2d::ui::TextBMFont* tempText,std::string&amp; str,float parentWidth)"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "UtilityHelper::getLineEnglistForText(cocos2d::ui::TextBMFont*, std::__1::basic_string&lt;char, std::__1::char_traits&lt;char&gt;, std::__1::allocator&lt;char&gt; &gt;&amp;, float)"
+                  moduleName = "Voxel_Explorer-mobile"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chuangli/Documents/WorkSpace/MyCocos2dxGame/3.8.1/Voxel_Explorer/Classes/Utilities/UtilityHelper.cpp"
+                  timestampString = "475491015.110852"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "180"
+                  endingLineNumber = "180"
+                  offsetFromSymbolStart = "1180">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "UtilityHelper::getLineEnglistForText(cocos2d::ui::TextBMFont*, std::__1::basic_string&lt;char, std::__1::char_traits&lt;char&gt;, std::__1::allocator&lt;char&gt; &gt;&amp;, float)"
+                  moduleName = "Voxel_Explorer-mobile"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chuangli/Documents/WorkSpace/MyCocos2dxGame/3.8.1/Voxel_Explorer/Classes/Utilities/UtilityHelper.cpp"
+                  timestampString = "475491015.11104"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "180"
+                  endingLineNumber = "180"
+                  offsetFromSymbolStart = "2420">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "UtilityHelper::getLineEnglistForText(cocos2d::ui::TextBMFont*, std::__1::basic_string&lt;char, std::__1::char_traits&lt;char&gt;, std::__1::allocator&lt;char&gt; &gt;&amp;, float)"
+                  moduleName = "Voxel_Explorer-mobile"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chuangli/Documents/WorkSpace/MyCocos2dxGame/3.8.1/Voxel_Explorer/Classes/Utilities/UtilityHelper.cpp"
+                  timestampString = "475491015.111154"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "180"
+                  endingLineNumber = "180"
+                  offsetFromSymbolStart = "3360">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "UtilityHelper::getLineEnglistForText(cocos2d::ui::TextBMFont*, std::__1::basic_string&lt;char, std::__1::char_traits&lt;char&gt;, std::__1::allocator&lt;char&gt; &gt;&amp;, float)"
+                  moduleName = "Voxel_Explorer-mobile"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chuangli/Documents/WorkSpace/MyCocos2dxGame/3.8.1/Voxel_Explorer/Classes/Utilities/UtilityHelper.cpp"
+                  timestampString = "475491015.111261"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "180"
+                  endingLineNumber = "180"
+                  offsetFromSymbolStart = "5984">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

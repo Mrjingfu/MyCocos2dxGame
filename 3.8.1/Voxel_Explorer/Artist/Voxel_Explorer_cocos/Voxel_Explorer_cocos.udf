@@ -31,12 +31,9 @@
     <Item Key="TabsParamsKey">
       <Value ctype="TabsInfo">
         <OpenedDocuments>
-          <FilePathData Path="testlayer.csd" />
-          <FilePathData Path="gameScene.csd" />
-          <FilePathData Path="deadLayer.csd" />
-          <FilePathData Path="alertLayer.csd" />
+          <FilePathData Path="itemMoneyLayer.csd" />
         </OpenedDocuments>
-        <ActiveDocument Path="deadLayer.csd" />
+        <ActiveDocument Path="itemMoneyLayer.csd" />
       </Value>
     </Item>
   </Properties>

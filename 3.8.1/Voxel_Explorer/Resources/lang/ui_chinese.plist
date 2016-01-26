@@ -369,5 +369,7 @@
 	<string>抱歉,背包扩展次数已达到上限了!</string>
 	<key>DEAD_BOOS_DEPTH_REVIVE_TXT</key>
 	<string>剩余次数:%d次</string>
+	<key>TITLE_TIP_TEXT</key>
+	<string>提示</string>
 </dict>
 </plist>
