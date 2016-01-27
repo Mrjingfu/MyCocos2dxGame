@@ -107,6 +107,28 @@
                 <PreSize X="0.1280" Y="0.2462" />
                 <FileData Type="PlistSubImage" Path="ui_shop_icon.png" Plist="ui_sprite.plist" />
               </AbstractNodeData>
+              <AbstractNodeData Name="role_lock" ActionTag="597133702" Tag="39" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="50.2500" RightMargin="50.2500" TopMargin="111.2300" BottomMargin="6.7700" Scale9Enable="True" LeftEage="3" RightEage="3" TopEage="3" BottomEage="3" Scale9OriginX="3" Scale9OriginY="3" Scale9Width="39" Scale9Height="39" ctype="ImageViewObjectData">
+                <Size X="32.0000" Y="32.0000" />
+                <Children>
+                  <AbstractNodeData Name="role_ornament_icon" ActionTag="280554873" Tag="40" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="1.0000" RightMargin="1.0000" TopMargin="1.0000" BottomMargin="1.0000" Scale9Width="30" Scale9Height="30" ctype="ImageViewObjectData">
+                    <Size X="30.0000" Y="30.0000" />
+                    <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+                    <Position X="16.0000" Y="16.0000" />
+                    <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                    <CColor A="255" R="255" G="255" B="255" />
+                    <PrePosition X="0.5000" Y="0.5000" />
+                    <PreSize X="0.9375" Y="0.9375" />
+                    <FileData Type="PlistSubImage" Path="ui_bag_lock_icon.png" Plist="ui_sprite.plist" />
+                  </AbstractNodeData>
+                </Children>
+                <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+                <Position X="66.2500" Y="22.7700" />
+                <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                <CColor A="255" R="255" G="255" B="255" />
+                <PrePosition X="0.5000" Y="0.1518" />
+                <PreSize X="0.2415" Y="0.2133" />
+                <FileData Type="PlistSubImage" Path="ui_bag_frame.png" Plist="ui_sprite.plist" />
+              </AbstractNodeData>
               <AbstractNodeData Name="role_icon" ActionTag="-1253602598" Tag="311" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="16.9357" RightMargin="18.5643" TopMargin="-12.8176" BottomMargin="2.8176" Scale9Width="116" Scale9Height="172" ctype="ImageViewObjectData">
                 <Size X="102.0000" Y="140.0000" />
                 <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />

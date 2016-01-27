@@ -10,6 +10,7 @@
 #include "AchievementManager.h"
 #include "PlayerProperty.hpp"
 #include "VoxelExplorer.h"
+#include "RandomDungeon.hpp"
 StatisticsManager::StatisticsManager()
 {
     init();
@@ -310,9 +311,13 @@ void StatisticsManager::addThirtyNotMoveNum()
 
 void StatisticsManager::addExploreAllAreaNum()
 {
-    //检测区域
-    m_nExploreAllAreaNum = 1;
-    AchievementManager::getInstance()->handleAchievement(ADT_OBSESSION_MEN);
+    if(!RandomDungeon::getInstance()->getCurrentDungeonNode()->isBossDepth())
+    {
+        //检测区域
+        m_nExploreAllAreaNum = 1;
+        AchievementManager::getInstance()->handleAchievement(ADT_OBSESSION_MEN);
+
+    }
 }
 void StatisticsManager::decreaseExploreAllAreaNum()
 {
@@ -830,7 +835,7 @@ CChaosNumber StatisticsManager::getDataBossType(eStatistType type) const
         default:
             break;
     }
-    return m_mDeadTypeNums[bossType];
+    return m_mBossKills[bossType];
 }
 CChaosNumber StatisticsManager::getDataHideInfoType(eStatistType type) const
 {

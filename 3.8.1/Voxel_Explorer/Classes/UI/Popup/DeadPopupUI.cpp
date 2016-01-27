@@ -176,15 +176,14 @@ void DeadPopupUI::onClickRevive(cocos2d::Ref *ref)
     {
         --m_nBossReviveCount;
     }
-    if(!ArchiveManager::getInstance()->saveGame())
-        CCLOGERROR("Save Game failed!");
+
     PopupUILayerManager::getInstance()->closeCurrentPopup();
     VoxelExplorer::getInstance()->respawnPlayer();
 }
 void DeadPopupUI::onClickRestart(cocos2d::Ref *ref)
 {
 
-    if (RandomDungeon::getInstance()->getCurrentDungeonNode()->isBossDepth() && m_nBossReviveCount==0)
+    if (RandomDungeon::getInstance()->getCurrentDungeonNode()->isBossDepth())
     {
         m_nBossReviveCount = 5;
     }

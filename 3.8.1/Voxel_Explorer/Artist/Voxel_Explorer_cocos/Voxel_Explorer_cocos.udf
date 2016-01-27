@@ -31,15 +31,9 @@
     <Item Key="TabsParamsKey">
       <Value ctype="TabsInfo">
         <OpenedDocuments>
-          <FilePathData Path="itemMoneyLayer.csd" />
-          <FilePathData Path="menuscene.csd" />
-          <FilePathData Path="pausenewPopupLayer.csd" />
-          <FilePathData Path="gametoolbarLayer.csd" />
-          <FilePathData Path="skillLayer.csd" />
-          <FilePathData Path="achieveEnItemLayer.csd" />
-          <FilePathData Path="itemPopupLayer.csd" />
+          <FilePathData Path="rolenewLayer.csd" />
         </OpenedDocuments>
-        <ActiveDocument Path="itemPopupLayer.csd" />
+        <ActiveDocument Path="rolenewLayer.csd" />
       </Value>
     </Item>
   </Properties>

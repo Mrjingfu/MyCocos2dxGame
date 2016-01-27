@@ -96,6 +96,7 @@ bool BagLayer::init()
     m_pGridView->setCol(5);
     m_pGridView->setPosition(getContentSize()*0.5);
     m_pGridView->setScrollBarWidth(5);
+    m_pGridView->setScrollBarAutoHideEnabled(false);
     m_pGridView->setScrollBarColor(Color3B::WHITE);
     m_pGridView->setScrollBarPositionFromCornerForVertical(cocos2d::Vec2(0,0));
     m_pGridView->setItemsMargin(cocos2d::Size(1,3.5));
