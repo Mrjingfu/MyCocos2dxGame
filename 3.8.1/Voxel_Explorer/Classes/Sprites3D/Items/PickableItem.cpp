@@ -942,8 +942,8 @@ PickableItem::PickableItemType PickableItem::generateScrollType()
 }
 PickableItem::PickableItemType PickableItem::generate1_15PotionType()
 {
-    float percent1 = 0.35f;
-    float percent2 = 0.35f;
+    float percent1 = 0.4f;
+    float percent2 = 0.3f;
     float percent3 = 0.1f;
     float percent4 = 0.05f;
     float percent5 = 0.05f;
@@ -975,8 +975,8 @@ PickableItem::PickableItemType PickableItem::generate16_30PotionType()
     float percent1 = 0.1f;
     float percent2 = 0.1f;
     float percent3 = 0.1f;
-    float percent4 = 0.2f;
-    float percent5 = 0.2f;
+    float percent4 = 0.25f;
+    float percent5 = 0.15f;
     float percent6 = 0.1f;
     float percent7 = 0.05f;
     float percent8 = 0.05f;
@@ -1014,8 +1014,8 @@ PickableItem::PickableItemType PickableItem::generate31_45PotionType()
     float percent1 = 0.1f;
     float percent2 = 0.1f;
     float percent3 = 0.1f;
-    float percent4 = 0.2f;
-    float percent5 = 0.2f;
+    float percent4 = 0.25f;
+    float percent5 = 0.15f;
     float percent6 = 0.1f;
     float percent7 = 0.05f;
     float percent8 = 0.05f;

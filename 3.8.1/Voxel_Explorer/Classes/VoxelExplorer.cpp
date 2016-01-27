@@ -902,7 +902,7 @@ void VoxelExplorer::generatePickItemByUseableItem(const cocos2d::Vec2& pos, Usea
         else if(type == UseableItem::UIT_CHEST_SILVER || type == UseableItem::UIT_CHEST_NO_LOCK_SILVER)
             PlayerProperty::getInstance()->addMoney(2500);
         else
-            PlayerProperty::getInstance()->addMoney(50);
+            PlayerProperty::getInstance()->addMoney(150);
         
         PickableItem::PickableItemType pitType = PickableItem::generatePickItemByUseableLevel(level, type);
         if(pitType == PickableItem::PIT_UNKNOWN)
@@ -1658,20 +1658,7 @@ void VoxelExplorer::handlePlayerUsePotion(PickableItem::PickableItemType type)
 }
 void VoxelExplorer::handlePlayerUseStandardPortal(const cocos2d::Vec2& pos)
 {
-    if(RandomDungeon::getInstance()->getCurrentDungeonNode()->isLastDepth())
-    {
-        ///加载boss房间
-        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_GO_BOSSROOM);
-        RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nCurrentDepth += 1;
-        m_bHasDownStairs = true;
-        auto scene = GameScene::createScene();
-        Director::getInstance()->replaceScene(scene);
-        
-#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM ==CC_PLATFORM_ANDROID )
-        SdkBoxManager::getInstance()->logEvent("Player", "UseStandardPortal", "ToBossRoom", 1);
-#endif
-    }
-    else if(RandomDungeon::getInstance()->getCurrentDungeonNode()->isBossDepth())
+    if(RandomDungeon::getInstance()->getCurrentDungeonNode()->isBossDepth())
     {
         if(m_pCurrentLevel)
             m_pCurrentLevel->handleUseStandardPortal(pos);
@@ -1679,7 +1666,7 @@ void VoxelExplorer::handlePlayerUseStandardPortal(const cocos2d::Vec2& pos)
         SdkBoxManager::getInstance()->logEvent("Player", "UseStandardPortal", "ToNewDungeon", 1);
 #endif
     }
-    else
+    else if(!RandomDungeon::getInstance()->getCurrentDungeonNode()->isLastDepth())
     {
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_STANDARD_PROTAL_NO_ENERGY);
 #if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM ==CC_PLATFORM_ANDROID )
@@ -1720,7 +1707,6 @@ void VoxelExplorer::handleUpstairs()
 {
     if(RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nCurrentDepth > 1)
     {
-        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_GO_DOWNSTAIRS);
         m_bHasDownStairs = false;
         RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nCurrentDepth -= 1;
         auto scene = GameScene::createScene();
@@ -1731,7 +1717,6 @@ void VoxelExplorer::handleUpstairs()
     }
     else
     {
-        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_GO_UPSTAIRS_FORBIDDEN);
 #if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM ==CC_PLATFORM_ANDROID )
         SdkBoxManager::getInstance()->logEvent("Player", "handleUpstairs", "Failed", 0);
 #endif
@@ -1741,7 +1726,6 @@ void VoxelExplorer::handleDownstairs()
 {
     if(RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nCurrentDepth < RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nTotalNum)
     {
-        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_GO_DOWNSTAIRS);
         m_bHasDownStairs = true;
         RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nCurrentDepth += 1;
         auto scene = GameScene::createScene();
@@ -1753,7 +1737,6 @@ void VoxelExplorer::handleDownstairs()
     else if(RandomDungeon::getInstance()->getCurrentDungeonNode()->isLastDepth())
     {
         ///加载boss房间
-        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_GO_BOSSROOM);
         RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nCurrentDepth += 1;
          m_bHasDownStairs = true;
         auto scene = GameScene::createScene();
@@ -1951,7 +1934,7 @@ bool VoxelExplorer::checkBulletCollideMonster(const cocos2d::Vec3& bulletPos)
         for (auto child : m_pBossLayer->getChildren()) {
             BaseBoss* boss = dynamic_cast<BaseBoss*>(child);
             if(boss && boss->isVisible() && boss->getState() != BaseBoss::BS_DEATH){
-                if(boss->getAABB().containPoint(bulletPos))
+                if(boss->getAABB().containPoint(bulletPos - Vec3(0,TerrainTile::CONTENT_SCALE*0.2f, 0)))
                 {
                     boss->attackedByPlayer(cocos2d::random(0, 3) == 0);
                     return true;
@@ -1965,7 +1948,7 @@ bool VoxelExplorer::checkBulletCollideMonster(const cocos2d::Vec3& bulletPos)
         for (auto child : m_pMonstersLayer->getChildren()) {
             BaseMonster* monster = dynamic_cast<BaseMonster*>(child);
             if(monster && monster->isVisible() && monster->getState() != BaseMonster::MS_DEATH){
-                if(monster->getAABB().containPoint(bulletPos))
+                if(monster->getAABB().containPoint(bulletPos - Vec3(0,TerrainTile::CONTENT_SCALE*0.2f, 0)))
                 {
                     monster->attackedByPlayer(cocos2d::random(0, 3) == 0);
                     return true;
@@ -2226,6 +2209,7 @@ bool VoxelExplorer::createPlayer()
     m_pPlayer = Player::create("chr_sword.c3b");
     if(!m_pPlayer)
         return false;
+    m_pPlayer->refreshPlayerBuffer();
     if(!PlayerProperty::getInstance()->refreshAfterCreatePlayer())
     {
         CCLOGERROR("refreshAfterCreatePlayer  failed!");

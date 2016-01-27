@@ -45,7 +45,6 @@ Player* Player::create(const std::string& modelPath)
         player->_contentSize = player->getBoundingBox().size;
         player->setCameraMask((unsigned int)CameraFlag::USER1);
         player->setLightMask((unsigned int)LightFlag::LIGHT0 |(unsigned int)LightFlag::LIGHT1|(unsigned int)LightFlag::LIGHT2);
-        player->refreshPlayerBuffer();
         
         OutlineEffect3D* outline = OutlineEffect3D::create();
         outline->setOutlineColor(Vec3(0.1f, 0.1f, 0.1f));

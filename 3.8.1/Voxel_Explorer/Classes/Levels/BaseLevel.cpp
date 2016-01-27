@@ -244,12 +244,26 @@ bool BaseLevel::checkMovable(Actor* actor, TileInfo& info)
     {
         if(info.m_Type == TerrainTile::TT_ENTRANCE)
         {
-            VoxelExplorer::getInstance()->handleUpstairs();
+            if(RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nCurrentDepth > 1)
+            {
+                Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_GO_DOWNSTAIRS);
+            }
+            else
+            {
+                Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_GO_UPSTAIRS_FORBIDDEN);
+            }
             return false;
         }
         else if(info.m_Type == TerrainTile::TT_EXIT)
         {
-            VoxelExplorer::getInstance()->handleDownstairs();
+            if(RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nCurrentDepth < RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nTotalNum)
+            {
+                Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_GO_DOWNSTAIRS);
+            }
+            else if(RandomDungeon::getInstance()->getCurrentDungeonNode()->isLastDepth())
+            {
+                Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_GO_BOSSROOM);
+            }
             return false;
         }
         else if(info.m_Type == TerrainTile::TT_STANDARD_PORTAL)

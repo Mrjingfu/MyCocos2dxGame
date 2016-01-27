@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/UI/GameUILayer.cpp"
-            timestampString = "475572096.111129"
+            timestampString = "475580125.240227"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "806"
-            endingLineNumber = "806"
+            startingLineNumber = "823"
+            endingLineNumber = "823"
             landmarkName = "GameUILayer::onEventGoBossRoom(cocos2d::EventCustom *sender)"
             landmarkType = "5">
          </BreakpointContent>
