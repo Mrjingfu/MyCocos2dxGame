@@ -775,7 +775,6 @@ void Player::attackByBoss(BossProperty* bossProperty, bool miss)
     {
         setState(PS_DEATH);
         PlayerProperty::getInstance()->setCurrentHP(currentHp);
-        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_DEATH, this);
 #if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM ==CC_PLATFORM_ANDROID )
         SdkBoxManager::getInstance()->logEvent("Player", "Death", "AttackByBoss", 1);
 #endif

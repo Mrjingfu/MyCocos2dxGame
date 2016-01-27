@@ -90,7 +90,7 @@ void MonsterProperty::adjustByDC()
     m_nAttackDiceNum = m_nAttackDiceNum + (dc-1)*5 + (nodeDepth-1)*2;
     m_nAttackDiceFaceNum = m_nAttackDiceFaceNum + (nodeDepth-1)*2 + (m_nLevel-1);
     
-    m_nArmorClass = m_nArmorClass - (dc-1)*20 - (nodeDepth-1)*10 - (m_nLevel-1);
+    m_nArmorClass = m_nArmorClass - (dc-1)*20 - (nodeDepth-1)*10 - (m_nLevel-1)*1.5f;
     
     m_fBlockRate = MIN(m_fBlockRate + m_fBlockRate*(nodeDepth-1)*0.5f + m_fBlockRate*(dc-1)*5.0f, 0.2f);
     m_fCriticalStrikeRate = MIN(m_fCriticalStrikeRate + m_fCriticalStrikeRate*(nodeDepth-1)*0.5f + m_fCriticalStrikeRate*(dc-1)*5.0f, 0.3f);

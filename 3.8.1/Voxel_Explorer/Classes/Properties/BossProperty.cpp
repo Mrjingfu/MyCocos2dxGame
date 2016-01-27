@@ -64,9 +64,9 @@ void BossProperty::adjustByDC()
     
     CChaosNumber dc = RandomDungeon::getInstance()->getDifficultClass();
     CChaosNumber nodeDepth = RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nNodeDepth;
-    CChaosNumber currentDepth = RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nCurrentDepth;
+    CChaosNumber maxDepth = RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nTotalNum;
     
-    m_nValueCopper = (dc-1)*10000 + (dc-1)*1000 + cocos2d::random(1000, 2000);
+    m_nValueCopper = (dc-1)*10000 + (nodeDepth-1)*1000 + maxDepth * cocos2d::random(100, 200);
     
     m_nMaxHP = m_nMaxHP + (dc-1)*cocos2d::random(500, 600) + (nodeDepth-1)*cocos2d::random(200, 300) + cocos2d::random(300, 400);
     m_nCurrentHP = m_nMaxHP;
@@ -75,9 +75,9 @@ void BossProperty::adjustByDC()
     m_nAddedMaxAttack = m_nAddedMaxAttack + (dc-1)*60 + + (nodeDepth-1)*40;
     
     m_nAttackDiceNum = m_nAttackDiceNum + (dc-1)*5 + (nodeDepth-1)*2 + 2;
-    m_nAttackDiceFaceNum = m_nAttackDiceFaceNum + (nodeDepth-1)*4 + (currentDepth-1)*8 + 4;
+    m_nAttackDiceFaceNum = m_nAttackDiceFaceNum + (nodeDepth-1)*4 + maxDepth*2;
     
-    m_nArmorClass = m_nArmorClass - (dc-1)*m_nBaseArmorClass.GetLongValue()*40 - (nodeDepth-1)*20;
+    m_nArmorClass = m_nArmorClass - (dc-1)*m_nBaseArmorClass.GetLongValue()*40 - (nodeDepth-1)*20 + maxDepth*2;
     
     m_fBlockRate = MIN(m_fBlockRate + m_fBlockRate*(nodeDepth-1)*0.5f + m_fBlockRate*(dc-1)*5.0f, 0.3f);
     m_fCriticalStrikeRate = MIN(m_fCriticalStrikeRate + m_fCriticalStrikeRate*(nodeDepth-1)*0.5f + m_fCriticalStrikeRate*(dc-1)*5.0f, 0.4f);

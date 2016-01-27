@@ -246,7 +246,7 @@ bool BaseLevel::checkMovable(Actor* actor, TileInfo& info)
         {
             if(RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nCurrentDepth > 1)
             {
-                Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_GO_DOWNSTAIRS);
+                Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_GO_UPSTAIRS);
             }
             else
             {
