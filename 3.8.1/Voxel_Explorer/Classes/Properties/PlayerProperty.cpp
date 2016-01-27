@@ -140,7 +140,7 @@ void PlayerProperty::removePlayerBuffer(PlayerBuffer buff)
     else if(buff == PB_BLOCKRATEUP)
     {
         m_fBlockRate = m_fBlockRate - 0.1f;
-        m_fBlockRate = MAX(0, m_fBlockRate.GetFloatValue());
+        m_fBlockRate = MAX(0.01f, m_fBlockRate.GetFloatValue());
     }
     m_BufferFlag = m_BufferFlag &~ buff;
     m_bDirty = true;
@@ -272,9 +272,9 @@ bool PlayerProperty::equipWeapon(CChaosNumber id, bool sound)
             m_nAttackDiceNum = 0;
             m_nAttackDiceFaceNum = 0;
             m_fCriticalStrikeRate = m_fCriticalStrikeRate - oldWeaponProperty->getAddedCriticalStrikeRate().GetFloatValue();
-            m_fCriticalStrikeRate = MAX(0, m_fCriticalStrikeRate.GetFloatValue());
+            m_fCriticalStrikeRate = MAX(0.01f, m_fCriticalStrikeRate.GetFloatValue());
             m_fMagicItemFindRate = m_fMagicItemFindRate - m_fBasicMagicItemFindRate*oldWeaponProperty->getAddedMagicItemFindRate().GetFloatValue();
-            m_fMagicItemFindRate = MAX(0, m_fBasicMagicItemFindRate.GetFloatValue());
+            m_fMagicItemFindRate = MAX(m_fMagicItemFindRate.GetFloatValue(), m_fBasicMagicItemFindRate.GetFloatValue());
             oldWeaponProperty->setEquiped(false);
             ///处理灯光
             Color3B color = Color3B::WHITE;
@@ -372,13 +372,13 @@ bool PlayerProperty::equipSecondWeapon(CChaosNumber id, bool sound)
             m_nArmorClass = MIN(m_nBaseArmorClass.GetLongValue(), m_nArmorClass.GetLongValue());
             
             m_fBlockRate = m_fBlockRate - oldSecondWeaponProperty->getAddedBlockRate().GetFloatValue();
-            m_fBlockRate = MAX(0, m_fBlockRate.GetFloatValue());
+            m_fBlockRate = MAX(0.01f, m_fBlockRate.GetFloatValue());
             m_fCriticalStrikeRate = m_fCriticalStrikeRate - oldSecondWeaponProperty->getAddedCriticalStrikeRate().GetFloatValue();
-            m_fCriticalStrikeRate = MAX(0, m_fCriticalStrikeRate.GetFloatValue());
+            m_fCriticalStrikeRate = MAX(0.01f, m_fCriticalStrikeRate.GetFloatValue());
             m_fDodgeRate = m_fDodgeRate - oldSecondWeaponProperty->getAddedDodgeRate().GetFloatValue();
-            m_fDodgeRate = MAX(0, m_fDodgeRate.GetFloatValue());
+            m_fDodgeRate = MAX(0.02f, m_fDodgeRate.GetFloatValue());
             m_fMagicItemFindRate = m_fMagicItemFindRate - m_fBasicMagicItemFindRate*oldSecondWeaponProperty->getAddedMagicItemFindRate().GetFloatValue();
-            m_fMagicItemFindRate = MAX(0, m_fBasicMagicItemFindRate.GetFloatValue());
+            m_fMagicItemFindRate = MAX(m_fMagicItemFindRate.GetFloatValue(), m_fBasicMagicItemFindRate.GetFloatValue());
             m_curPlayerSkill = PS_NONE;
             oldSecondWeaponProperty->setEquiped(false);
             ///处理灯光
@@ -478,10 +478,10 @@ bool PlayerProperty::equipArmor(CChaosNumber id, bool sound)
             m_nArmorClass = MIN(m_nBaseArmorClass.GetLongValue(), m_nArmorClass.GetLongValue());
             
             m_fDodgeRate = m_fDodgeRate - oldArmorProperty->getAddedDodgeRate().GetFloatValue();
-            m_fDodgeRate = MIN(0, m_fDodgeRate.GetFloatValue());
+            m_fDodgeRate = MAX(0.02f, m_fDodgeRate.GetFloatValue());
             
             m_fMagicItemFindRate = m_fMagicItemFindRate - m_fBasicMagicItemFindRate*oldArmorProperty->getAddedMagicItemFindRate().GetFloatValue();
-            m_fMagicItemFindRate = MAX(0, m_fBasicMagicItemFindRate.GetFloatValue());
+            m_fMagicItemFindRate = MAX(m_fMagicItemFindRate.GetFloatValue(), m_fBasicMagicItemFindRate.GetFloatValue());
             oldArmorProperty->setEquiped(false);
         }
         
@@ -560,13 +560,13 @@ bool PlayerProperty::equipOrnaments(CChaosNumber id, bool sound)
             m_nArmorClass = MIN(m_nBaseArmorClass.GetLongValue(), m_nArmorClass.GetLongValue());
             
             m_fBlockRate = m_fBlockRate - oldMagicOrnamentProperty->getAddedBlockRate().GetFloatValue();
-            m_fBlockRate = MAX(0, m_fBlockRate.GetFloatValue());
+            m_fBlockRate = MAX(0.01f, m_fBlockRate.GetFloatValue());
             m_fCriticalStrikeRate = m_fCriticalStrikeRate - oldMagicOrnamentProperty->getAddedCriticalStrikeRate().GetFloatValue();
-            m_fCriticalStrikeRate = MAX(0, m_fCriticalStrikeRate.GetFloatValue());
+            m_fCriticalStrikeRate = MAX(0.01f, m_fCriticalStrikeRate.GetFloatValue());
             m_fDodgeRate = m_fDodgeRate - oldMagicOrnamentProperty->getAddedDodgeRate().GetFloatValue();
-            m_fDodgeRate = MAX(0, m_fDodgeRate.GetFloatValue());
+            m_fDodgeRate = MAX(0.02f, m_fDodgeRate.GetFloatValue());
             m_fMagicItemFindRate = m_fMagicItemFindRate - m_fBasicMagicItemFindRate*oldMagicOrnamentProperty->getAddedMagicItemFindRate().GetFloatValue();
-            m_fMagicItemFindRate = MAX(0, m_fBasicMagicItemFindRate.GetFloatValue());
+            m_fMagicItemFindRate = MAX(m_fMagicItemFindRate.GetFloatValue(), m_fBasicMagicItemFindRate.GetFloatValue());
             oldMagicOrnamentProperty->setEquiped(false);
         }
         m_nEquipedOrnamentsID = id;
