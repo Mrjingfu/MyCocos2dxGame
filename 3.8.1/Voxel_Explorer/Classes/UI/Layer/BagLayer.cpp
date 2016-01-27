@@ -583,16 +583,16 @@ void BagLayer::onClickBagExtend(cocos2d::Ref* ref)
         int copper = PlayerProperty::getInstance()->getValueCopper().GetLongValue();
         int extendCopper = 0;
         if (PlayerProperty::getInstance()->getBagExtendTimes() ==1) {
-            extendCopper = 5;
+            extendCopper = 1;
         }else if (PlayerProperty::getInstance()->getBagExtendTimes() ==2)
         {
-            extendCopper = 10;
+            extendCopper = 5;
         }else if (PlayerProperty::getInstance()->getBagExtendTimes() ==3)
         {
-            extendCopper = 20;
+            extendCopper = 15;
         }else if (PlayerProperty::getInstance()->getBagExtendTimes() ==4)
         {
-            extendCopper = 50;
+            extendCopper = 35;
         }
         bool isMoneyEnough = false;
         if (copper >=(extendCopper*10000)) {

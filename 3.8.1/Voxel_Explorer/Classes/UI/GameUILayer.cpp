@@ -782,9 +782,17 @@ void GameUILayer::onEventFoundHidderItem(cocos2d::EventCustom *sender)
 void GameUILayer::onEventGoUpStairs(cocos2d::EventCustom *sender)
 {
      CCLOG("onEventGoUpStairs");
-    VoxelExplorer::getInstance()->getCurrentLevel()->showMap(false);
-     std::string msg = UtilityHelper::getLocalStringForUi(EVENT_GO_UPSTAIRS);
-     PopupUILayerManager::getInstance()->showStatusImport(TIP_POSITIVE, msg);
+    AlertPopupUI* alertPopupUI = static_cast<AlertPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupAlert));
+    if (alertPopupUI) {
+        alertPopupUI->setMessage(UtilityHelper::getLocalStringForUi(EVENT_GO_UPSTAIRS));
+        alertPopupUI->setPositiveListerner([](Ref* ref)
+                                           {
+                                               CCLOG("enter onEventGoUpStairs");
+                                               VoxelExplorer::getInstance()->getCurrentLevel()->showMap(false);
+                                               VoxelExplorer::getInstance()->handleUpstairs();
+                                           });
+        alertPopupUI->setNegativeListerner([](Ref* ref){});
+    }
 }
 //禁止上楼提示
 void GameUILayer::onEventGoUpStairsForbidden(cocos2d::EventCustom *sender)
@@ -797,9 +805,18 @@ void GameUILayer::onEventGoUpStairsForbidden(cocos2d::EventCustom *sender)
 void GameUILayer::onEventGoDownStairs(cocos2d::EventCustom *sender)
 {
     CCLOG("onEventGoDownStairs");
-    VoxelExplorer::getInstance()->getCurrentLevel()->showMap(false);
-    std::string msg = UtilityHelper::getLocalStringForUi(EVENT_GO_DOWNSTAIRS);
-    PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
+   
+    AlertPopupUI* alertPopupUI = static_cast<AlertPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupAlert));
+    if (alertPopupUI) {
+        alertPopupUI->setMessage(UtilityHelper::getLocalStringForUi(EVENT_GO_DOWNSTAIRS));
+        alertPopupUI->setPositiveListerner([](Ref* ref)
+                                           {
+                                               CCLOG("enter onEventGoDownStairs");
+                                                VoxelExplorer::getInstance()->getCurrentLevel()->showMap(false);
+                                               VoxelExplorer::getInstance()->handleDownstairs();
+                                           });
+        alertPopupUI->setNegativeListerner([](Ref* ref){});
+    }
 }
 void GameUILayer::onEventGoBossRoom(cocos2d::EventCustom *sender)
 {
@@ -809,7 +826,8 @@ void GameUILayer::onEventGoBossRoom(cocos2d::EventCustom *sender)
         alertPopupUI->setMessage(UtilityHelper::getLocalStringForUi(EVENT_GO_BOSSROOM));
         alertPopupUI->setPositiveListerner([](Ref* ref)
                                            {
-                                               CCLOG("onEventGoBossRoom");
+                                               CCLOG("enter onEventGoBossRoom");
+                                               VoxelExplorer::getInstance()->getCurrentLevel()->showMap(false);
                                                VoxelExplorer::getInstance()->handleDownstairs();
                                            });
         alertPopupUI->setNegativeListerner([](Ref* ref){});

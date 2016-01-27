@@ -206,6 +206,7 @@ void SkillLayer::refreshSkillView(bool isRloadEquip)
             }
             
         }
+        
         if (m_bIsRloadEquip) {
             m_bIsRloadEquip = false;
             m_fCoolTime = 5.0f;

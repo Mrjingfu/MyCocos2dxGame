@@ -154,10 +154,29 @@ void ShopPopupUI::updateShopDataItems()
         ui::ImageView* img =static_cast<ui::ImageView*>( m_pShopGridView->getItem(i));
         if (property && img)
         {
+            
             m_pShopMangerLayer->addItem(i, property->getInstanceID(), img->getPosition(), property->getIconRes());
             if (!property->isIdentified() || property->getLevel() >playerLevel) {
                 m_pShopMangerLayer->setItemNoUse(property->getInstanceID(), img->getPosition());
+            }else
+            {
+                //设置品质
+                switch (property->getQuality()) {
+                    case PIQ_RARE:
+                        img->loadTexture("ui_rape.png",TextureResType::PLIST);
+                        break;
+                    case PIQ_EPIC:
+                        img->loadTexture("ui_epic.png",TextureResType::PLIST);
+                        break;
+                    case PIQ_LEGEND:
+                        img->loadTexture("ui_legend.png",TextureResType::PLIST);
+                        break;
+                    default:
+                        break;
+                }
+
             }
+            
         }
     }
 

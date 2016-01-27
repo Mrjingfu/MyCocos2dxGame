@@ -28,7 +28,7 @@
             <PreSize X="0.2688" Y="0.5667" />
             <FileData Type="PlistSubImage" Path="ui_skill_arrow.png" Plist="ui_sprite.plist" />
           </AbstractNodeData>
-          <AbstractNodeData Name="skill_magic_icon" ActionTag="941499313" Tag="110" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="188.8160" RightMargin="47.1840" TopMargin="74.7000" BottomMargin="-5.7000" Scale9Width="84" Scale9Height="81" ctype="ImageViewObjectData">
+          <AbstractNodeData Name="skill_magic_icon" ActionTag="941499313" Tag="110" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="239.8880" RightMargin="-3.8880" TopMargin="27.0221" BottomMargin="41.9779" Scale9Width="84" Scale9Height="81" ctype="ImageViewObjectData">
             <Size X="84.0000" Y="81.0000" />
             <Children>
               <AbstractNodeData Name="skill_magic_icon_bg" ActionTag="1670355266" Tag="111" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="-1.0000" RightMargin="-1.0000" TopMargin="-2.5000" BottomMargin="-2.5000" Scale9Width="86" Scale9Height="86" ctype="ImageViewObjectData">
@@ -53,14 +53,14 @@
               </AbstractNodeData>
             </Children>
             <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-            <Position X="230.8160" Y="34.8000" />
+            <Position X="281.8880" Y="82.4779" />
             <Scale ScaleX="0.3500" ScaleY="0.3500" />
             <CColor A="255" R="255" G="255" B="255" />
-            <PrePosition X="0.7213" Y="0.2320" />
+            <PrePosition X="0.8809" Y="0.5499" />
             <PreSize X="0.2625" Y="0.5400" />
             <FileData Type="PlistSubImage" Path="ui_magic_icon.png" Plist="ui_sprite.plist" />
           </AbstractNodeData>
-          <AbstractNodeData Name="skill_health_icon" ActionTag="-312279628" Tag="135" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="223.4840" RightMargin="11.5160" TopMargin="29.2500" BottomMargin="36.7500" Scale9Width="85" Scale9Height="84" ctype="ImageViewObjectData">
+          <AbstractNodeData Name="skill_health_icon" ActionTag="-312279628" Tag="135" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="239.3880" RightMargin="-4.3880" TopMargin="-15.9058" BottomMargin="81.9058" Scale9Width="85" Scale9Height="84" ctype="ImageViewObjectData">
             <Size X="85.0000" Y="84.0000" />
             <Children>
               <AbstractNodeData Name="skill_health_icon_bg" ActionTag="-349431293" Tag="136" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="0.3500" RightMargin="-1.3500" TopMargin="-1.0000" BottomMargin="-1.0000" Scale9Width="86" Scale9Height="86" ctype="ImageViewObjectData">
@@ -85,10 +85,10 @@
               </AbstractNodeData>
             </Children>
             <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-            <Position X="265.9840" Y="78.7500" />
+            <Position X="281.8880" Y="123.9058" />
             <Scale ScaleX="0.3500" ScaleY="0.3500" />
             <CColor A="255" R="255" G="255" B="255" />
-            <PrePosition X="0.8312" Y="0.5250" />
+            <PrePosition X="0.8809" Y="0.8260" />
             <PreSize X="0.2656" Y="0.5600" />
             <FileData Type="PlistSubImage" Path="ui_health_icon.png" Plist="ui_sprite.plist" />
           </AbstractNodeData>
