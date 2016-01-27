@@ -393,7 +393,7 @@ void StandardLevel::generateAreaStyle()
 {
     ///生成关卡式样
     float percentStandard = 0.6f;
-    float percentTunnel = 0.05f;
+    float percentTunnel = 0.06f;
     float percentPassage = 1.0 - percentStandard - percentTunnel;
     AlisaMethod* am = AlisaMethod::create(percentStandard,percentTunnel,percentPassage,-1.0, NULL);
     if(am)

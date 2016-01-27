@@ -1008,7 +1008,6 @@ void Player::onEnterIdle()
 {
     EaseSineOut* scaleTo = EaseSineOut::create(ScaleTo::create(0.1f, 1.0f, 1.0f, 1.0f));
     this->runAction(scaleTo);
-    
     if(m_pFakeShadow)
         m_pFakeShadow->setVisible(true);
     this->setVisible(true);
@@ -1080,6 +1079,7 @@ void Player::onEnterJumpMove()
 }
 void Player::onEnterAttack()
 {
+    removePlayerBuffer(PB_STEALTH);
     Vec3 dir = Vec3::ZERO;
     switch (m_dir) {
         case AD_FORWARD:
