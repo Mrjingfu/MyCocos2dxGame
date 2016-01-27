@@ -184,7 +184,7 @@ void DeadPopupUI::onClickRevive(cocos2d::Ref *ref)
 void DeadPopupUI::onClickRestart(cocos2d::Ref *ref)
 {
 
-    if (RandomDungeon::getInstance()->getCurrentDungeonNode()->isBossDepth() && m_nBossReviveCount==0)
+    if (RandomDungeon::getInstance()->getCurrentDungeonNode()->isBossDepth())
     {
         m_nBossReviveCount = 5;
     }

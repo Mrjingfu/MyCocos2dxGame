@@ -333,8 +333,7 @@ void GameUILayer::roleDead()
         ArchiveManager::getInstance()->saveGame();
         VoxelExplorer::getInstance()->getCurrentLevel()->showMap(false);
     }
-    m_pGameToolBarLayer->sendMessage(UtilityHelper::getLocalStringForUi("GAME_MESSAGE_ROLE_DEAD"),PopupUILayerManager::getInstance()->getTipsColor(TIP_POSITIVE));
-}
+  }
  void GameUILayer::popupNpc(Npc* npc,std::string eventStr)
 {
     if (npc)
@@ -1142,12 +1141,15 @@ void GameUILayer::onEventRoleUpdateProp(cocos2d::EventCustom *sender)
 void GameUILayer::onEventRoleDead(cocos2d::EventCustom *sender)
 {
     CCLOG("onEventRoleDead");
+    m_pGameToolBarLayer->sendMessage(UtilityHelper::getLocalStringForUi("GAME_MESSAGE_ROLE_DEAD"),PopupUILayerManager::getInstance()->getTipsColor(TIP_POSITIVE));
+
     roleDead();
 
 }
 void GameUILayer::onEventRoleFallAndDie(cocos2d::EventCustom *sender)
 {
     CCLOG("onEventRoleFallAndDie");
+    m_pGameToolBarLayer->sendMessage(UtilityHelper::getLocalStringForUi(EVENT_PLAYER_FALL_AND_DIE),PopupUILayerManager::getInstance()->getTipsColor(TIP_POSITIVE));
      roleDead();
 }
 void GameUILayer::onEvenetRoleEquipedWeapon(cocos2d::EventCustom *sender)
