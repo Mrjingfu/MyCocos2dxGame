@@ -902,7 +902,7 @@ void VoxelExplorer::generatePickItemByUseableItem(const cocos2d::Vec2& pos, Usea
         else if(type == UseableItem::UIT_CHEST_SILVER || type == UseableItem::UIT_CHEST_NO_LOCK_SILVER)
             PlayerProperty::getInstance()->addMoney(2500);
         else
-            PlayerProperty::getInstance()->addMoney(50);
+            PlayerProperty::getInstance()->addMoney(150);
         
         PickableItem::PickableItemType pitType = PickableItem::generatePickItemByUseableLevel(level, type);
         if(pitType == PickableItem::PIT_UNKNOWN)
