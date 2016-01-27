@@ -192,6 +192,7 @@ void VoxelExplorer::respawnPlayer()
         m_pMainCamera->setPosition3D(m_pPlayer->getPosition3D() + Vec3(0, 5*TerrainTile::CONTENT_SCALE, 4*TerrainTile::CONTENT_SCALE ));
         m_pMainCamera->lookAt(m_pPlayer->getPosition3D() + Vec3(0,0.5f*TerrainTile::CONTENT_SCALE,0));
         m_pPlayer->setState(Player::PS_IDLE);
+        m_pPlayer->cocos2d::Node::runAction(EaseSineOut::create(FadeIn::create(0.5f)));
         
 #if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID )
         SdkBoxManager::getInstance()->logEvent("Player", "Respawn", "", 1);
