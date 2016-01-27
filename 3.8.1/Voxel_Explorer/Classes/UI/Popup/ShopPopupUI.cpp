@@ -174,12 +174,12 @@ void ShopPopupUI::updateShopDataItems()
                     default:
                         break;
                 }
-
+                 img->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
             }
             
         }
     }
-
+    
 }
 void ShopPopupUI::onClickClose(Ref* ref)
 {
