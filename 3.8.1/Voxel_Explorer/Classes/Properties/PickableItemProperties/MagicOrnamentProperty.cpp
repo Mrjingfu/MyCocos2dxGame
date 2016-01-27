@@ -114,11 +114,11 @@ void MagicOrnamentProperty::adjustByLevel()
             m_fAddedMagicItemFindRate = cocos2d::random(0.05f, 0.2f);
         
         if (m_nLevel <= 5)
-            m_nAddedArmorClass = cocos2d::random(-2, -1);
+            m_nAddedArmorClass = m_nAddedArmorClass = MIN((int)m_nAddedArmorClass.GetLongValue(), cocos2d::random(-2, -1));
         else if(m_nLevel <= 10)
-            m_nAddedArmorClass = cocos2d::random(-8, -4);
+            m_nAddedArmorClass = m_nAddedArmorClass = MIN((int)m_nAddedArmorClass.GetLongValue(), cocos2d::random(-8, -4));
         else
-            m_nAddedArmorClass = cocos2d::random(-12, -8);
+            m_nAddedArmorClass = m_nAddedArmorClass = MIN((int)m_nAddedArmorClass.GetLongValue(), cocos2d::random(-12, -8));
     }
     else if(m_nLevel <= 30)
     {
@@ -176,11 +176,11 @@ void MagicOrnamentProperty::adjustByLevel()
             m_fAddedMagicItemFindRate = cocos2d::random(0.1f, 0.3f);
         
         if (m_nLevel <= 20)
-            m_nAddedArmorClass = cocos2d::random(-16, -12);
+            m_nAddedArmorClass = m_nAddedArmorClass = MIN((int)m_nAddedArmorClass.GetLongValue(), cocos2d::random(-16, -12));
         else if(m_nLevel <= 25)
-            m_nAddedArmorClass = cocos2d::random(-20, -16);
+            m_nAddedArmorClass = m_nAddedArmorClass = MIN((int)m_nAddedArmorClass.GetLongValue(), cocos2d::random(-20, -16));
         else
-            m_nAddedArmorClass = cocos2d::random(-24, -20);
+            m_nAddedArmorClass = m_nAddedArmorClass = MIN((int)m_nAddedArmorClass.GetLongValue(), cocos2d::random(-24, -20));
     }
     else
     {
@@ -214,11 +214,11 @@ void MagicOrnamentProperty::adjustByLevel()
             m_fAddedMagicItemFindRate = cocos2d::random(0.15f, 0.45f);
         
         if (m_nLevel <= 35)
-            m_nAddedArmorClass = cocos2d::random(-30, -24);
+            m_nAddedArmorClass = m_nAddedArmorClass = MIN((int)m_nAddedArmorClass.GetLongValue(), cocos2d::random(-30, -24));
         else if(m_nLevel <= 40)
-            m_nAddedArmorClass = cocos2d::random(-40, -30);
+            m_nAddedArmorClass = m_nAddedArmorClass = MIN((int)m_nAddedArmorClass.GetLongValue(), cocos2d::random(-40, -30));
         else
-            m_nAddedArmorClass = cocos2d::random(-50, -40);
+            m_nAddedArmorClass = m_nAddedArmorClass = MIN((int)m_nAddedArmorClass.GetLongValue(), cocos2d::random(-50, -40));
     }
 
     m_nValueCopper = 150 * (int)(m_AddedEffectList.size())*(int)(m_AddedEffectList.size()) + m_nLevel*50;

@@ -311,7 +311,12 @@ void ItemPopupUI::IdentifyEquiipFrame()
     }else if (itemprop->getPickableItemPropertyType() == PickableItemProperty::PIPT_MAGIC_ORNAMENT)
     {
         MagicOrnamentProperty* itemproperty = static_cast<MagicOrnamentProperty*>(itemprop);
-
+        ui::LinearLayoutParameter* onelinerParmter = ui::LinearLayoutParameter::create();
+        onelinerParmter->setGravity(cocos2d::ui::LinearLayoutParameter::LinearGravity::CENTER_VERTICAL);
+        onelinerParmter->setMargin(ui::Margin(10,0,0,0));
+        
+        addItemProp(StringUtils::format(UtilityHelper::getLocalStringForUi("EQUIP_PROP_DEFENSE").c_str(),int(itemproperty->getAddedDefense())), Color3B::WHITE,onelinerParmter);
+        ++addAttrCount;
         
         std::string itemPropStr;
         for (int i = 0 ; i<effectSize; i++) {
@@ -355,28 +360,43 @@ void ItemPopupUI::IdentifyEquiipFrame()
                 
                 itemPropStr =StringUtils::format(UtilityHelper::getLocalStringForUi("EQUIP_PROP_CRITICAL_STRIKE").c_str(),itemproperty->getAddedCriticalStrikeRate().GetFloatValue()*100.0);
             }
-            if (itemPropStr.empty())
-                continue;
-            if (i!=0)
+            if (!itemPropStr.empty())
             {
+                ++addAttrCount;
                 addItemProp(itemPropStr,effectColor,linerParmter);
-                ++addAttrCount;
             }
-            
-            else
-            {
-                ui::LinearLayoutParameter* onelinerParmter = ui::LinearLayoutParameter::create();
-                onelinerParmter->setGravity(cocos2d::ui::LinearLayoutParameter::LinearGravity::CENTER_VERTICAL);
-                onelinerParmter->setMargin(ui::Margin(10,0,0,0));
-                addItemProp(itemPropStr,effectColor,onelinerParmter);
-                ++addAttrCount;
-            }
+//            if (itemPropStr.empty())
+//                continue;
+//            if (i!=0)
+//            {
+//                addItemProp(itemPropStr,effectColor,linerParmter);
+//                ++addAttrCount;
+//            }
+//            
+//            else
+//            {
+//                ui::LinearLayoutParameter* onelinerParmter = ui::LinearLayoutParameter::create();
+//                onelinerParmter->setGravity(cocos2d::ui::LinearLayoutParameter::LinearGravity::CENTER_VERTICAL);
+//                onelinerParmter->setMargin(ui::Margin(10,0,0,0));
+//                addItemProp(itemPropStr,effectColor,onelinerParmter);
+//                ++addAttrCount;
+//            }
         }
         
         
     }else if (itemprop->getPickableItemPropertyType() == PickableItemProperty::PIPT_SECOND_WEAPON)
     {
         SecondWeaponProperty* itemproperty = static_cast<SecondWeaponProperty*>(itemprop);
+        SecondWeaponProperty::SecondWeaponPropertyType secondWtype =itemproperty->getSecondWeaponPropertyType() ;
+        if (secondWtype== SecondWeaponProperty::SWPT_SHIELD)
+        {
+            ui::LinearLayoutParameter* onelinerParmter = ui::LinearLayoutParameter::create();
+            onelinerParmter->setGravity(cocos2d::ui::LinearLayoutParameter::LinearGravity::CENTER_VERTICAL);
+            onelinerParmter->setMargin(ui::Margin(10,0,0,0));
+            
+        addItemProp(StringUtils::format(UtilityHelper::getLocalStringForUi("EQUIP_PROP_DEFENSE").c_str(),int(itemproperty->getAddedDefense())), Color3B::WHITE,onelinerParmter);
+            ++addAttrCount;
+        }
         
         std::string itemPropStr;
         for (int i = 0 ; i<effectSize; i++) {
@@ -425,21 +445,29 @@ void ItemPopupUI::IdentifyEquiipFrame()
                 itemPropStr.clear();
                 continue;
             }
-            
-            if (i!=0)
+            if (secondWtype== SecondWeaponProperty::SWPT_SHIELD)
             {
                 addItemProp(itemPropStr,effectColor,linerParmter);
                 ++addAttrCount;
-            }
-            else
+            }else
             {
-                ui::LinearLayoutParameter* onelinerParmter = ui::LinearLayoutParameter::create();
-                onelinerParmter->setGravity(cocos2d::ui::LinearLayoutParameter::LinearGravity::CENTER_VERTICAL);
-                onelinerParmter->setMargin(ui::Margin(10,0,0,0));
-                addItemProp(itemPropStr,effectColor,onelinerParmter);
-                ++addAttrCount;
+                
+                if (i!=0)
+                {
+                    addItemProp(itemPropStr,effectColor,linerParmter);
+                    ++addAttrCount;
+                }
+                else
+                {
+                    ui::LinearLayoutParameter* onelinerParmter = ui::LinearLayoutParameter::create();
+                    onelinerParmter->setGravity(cocos2d::ui::LinearLayoutParameter::LinearGravity::CENTER_VERTICAL);
+                    onelinerParmter->setMargin(ui::Margin(10,0,0,0));
+                    addItemProp(itemPropStr,effectColor,onelinerParmter);
+                    ++addAttrCount;
+                }
+                itemPropStr.clear();
             }
-             itemPropStr.clear();
+
     
         }
     }
