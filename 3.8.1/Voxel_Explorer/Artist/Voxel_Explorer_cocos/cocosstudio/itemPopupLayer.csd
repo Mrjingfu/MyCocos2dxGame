@@ -35,15 +35,15 @@
                   <AbstractNodeData Name="item_name_text" ActionTag="-249285148" Tag="15" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="43.5120" RightMargin="-168.5120" TopMargin="-10.1321" BottomMargin="-15.8695" LabelText="Scroll of Random &#xA;Teleport" ctype="TextBMFontObjectData">
                     <Size X="265.0000" Y="78.0000" />
                     <AnchorPoint ScaleY="0.5000" />
-                    <Position X="46.6200" Y="23.1305" />
+                    <Position X="46.6200" Y="23.1289" />
                     <Scale ScaleX="0.3400" ScaleY="0.3400" />
                     <CColor A="255" R="255" G="255" B="255" />
                     <PrePosition X="0.3108" Y="0.4448" />
                     <PreSize X="0.9071" Y="0.7500" />
                     <LabelBMFontFile_CNB Type="Normal" Path="fonts/ui_font.fnt" Plist="" />
                   </AbstractNodeData>
-                  <AbstractNodeData Name="item_prop_type" ActionTag="-255334422" Tag="14" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="43.7780" RightMargin="0.2220" TopMargin="27.5949" BottomMargin="-14.5966" LabelText="副手武器" ctype="TextBMFontObjectData">
-                    <Size X="128.0000" Y="39.0000" />
+                  <AbstractNodeData Name="item_prop_type" ActionTag="-255334422" Tag="14" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="43.7780" RightMargin="0.2220" TopMargin="27.5949" BottomMargin="-14.5966" LabelText="Off-hand Weapon" ctype="TextBMFontObjectData">
+                    <Size X="270.0000" Y="39.0000" />
                     <AnchorPoint ScaleY="0.5000" />
                     <Position X="46.9050" Y="4.9034" />
                     <Scale ScaleX="0.1700" ScaleY="0.1700" />
@@ -62,13 +62,13 @@
                     <PreSize X="0.2857" Y="0.9091" />
                     <FileData Type="PlistSubImage" Path="icon_resource_intermediate_tool.png" Plist="ui_sprite.plist" />
                   </AbstractNodeData>
-                  <AbstractNodeData Name="item_equip_dist" ActionTag="223194052" Tag="13" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="18.1320" RightMargin="7.8680" TopMargin="28.0265" BottomMargin="-15.0281" LabelText="已装备" ctype="TextBMFontObjectData">
-                    <Size X="96.0000" Y="39.0000" />
+                  <AbstractNodeData Name="item_equip_dist" ActionTag="223194052" Tag="13" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="-160.5119" RightMargin="3.5119" TopMargin="28.3547" BottomMargin="-15.3563" LabelText="equipped" ctype="TextBMFontObjectData">
+                    <Size X="134.0000" Y="39.0000" />
                     <AnchorPoint ScaleX="1.0000" ScaleY="0.5000" />
-                    <Position X="141.5700" Y="4.4719" />
+                    <Position X="146.4881" Y="4.1437" />
                     <Scale ScaleX="0.2200" ScaleY="0.2200" />
                     <CColor A="255" R="255" G="255" B="255" />
-                    <PrePosition X="0.9438" Y="0.0860" />
+                    <PrePosition X="0.9766" Y="0.0797" />
                     <PreSize X="0.9071" Y="0.7500" />
                     <LabelBMFontFile_CNB Type="Normal" Path="fonts/ui_font.fnt" Plist="" />
                   </AbstractNodeData>

@@ -161,22 +161,20 @@ void GameToolbarLayer::setMsgItem(std::string msg,cocos2d::Color3B msgColor )
 void GameToolbarLayer::initMessageFrame()
 {
     Vector<MsgData*> msgList = MessageManager::getInstance()->getMsgList();
-    if (msgList.empty())
-    {
-        std::string rungenName;
-        if(RandomDungeon::getInstance()->getCurrentDungeonNode()->isBossDepth())
-            rungenName = RandomDungeon::getInstance()->getCurrentDungeonNode()->m_strDungeonBossName.c_str();
-        else
-            rungenName = RandomDungeon::getInstance()->getCurrentDungeonNode()->m_strDungeonName.c_str();
-        int flood =  int(RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nCurrentDepth);
-        sendMessage(StringUtils::format(UtilityHelper::getLocalStringForUi("GAME_MESSAGE_NOT").c_str(),rungenName.c_str(),cocos2d::Value(flood).asString().c_str()));
-        return;
-    }
+
     for(Vector<MsgData*>::iterator iter = msgList.begin();iter!=msgList.end();iter++)
     {
         MsgData* msgData = (*iter);
         setMsgItem(msgData->getMsg(),msgData->getMsgColor());
     }
+    std::string rungenName;
+    if(RandomDungeon::getInstance()->getCurrentDungeonNode()->isBossDepth())
+        rungenName = RandomDungeon::getInstance()->getCurrentDungeonNode()->m_strDungeonBossName.c_str();
+    else
+        rungenName = RandomDungeon::getInstance()->getCurrentDungeonNode()->m_strDungeonName.c_str();
+    int flood =  int(RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nCurrentDepth);
+    sendMessage(StringUtils::format(UtilityHelper::getLocalStringForUi("GAME_MESSAGE_NOT").c_str(),rungenName.c_str(),cocos2d::Value(flood).asString().c_str()));
+
 }
 void GameToolbarLayer::onClickBag(Ref* ref)
 {

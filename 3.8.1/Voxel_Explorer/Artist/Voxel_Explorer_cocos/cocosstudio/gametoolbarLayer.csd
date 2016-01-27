@@ -173,23 +173,23 @@
                 <PreSize X="1.0000" Y="1.8750" />
                 <FileData Type="PlistSubImage" Path="ui_frame_5.png" Plist="ui_sprite.plist" />
               </AbstractNodeData>
-              <AbstractNodeData Name="game_dist_dialog" ActionTag="-931570552" Tag="207" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="60.0000" RightMargin="60.0000" TopMargin="-36.0000" BottomMargin="46.0000" Scale9Enable="True" LeftEage="4" RightEage="4" TopEage="4" BottomEage="4" Scale9OriginX="4" Scale9OriginY="4" Scale9Width="5" Scale9Height="5" ctype="ImageViewObjectData">
-                <Size X="200.0000" Y="30.0000" />
+              <AbstractNodeData Name="game_dist_dialog" ActionTag="-931570552" Tag="207" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="50.0000" RightMargin="50.0000" TopMargin="-36.0000" BottomMargin="46.0000" Scale9Enable="True" LeftEage="4" RightEage="4" TopEage="4" BottomEage="4" Scale9OriginX="4" Scale9OriginY="4" Scale9Width="5" Scale9Height="5" ctype="ImageViewObjectData">
+                <Size X="220.0000" Y="30.0000" />
                 <Children>
-                  <AbstractNodeData Name="game_dist_tips_desc" ActionTag="738486401" Tag="117" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="-23.0000" RightMargin="9.0000" TopMargin="-3.5010" BottomMargin="-5.4990" LabelText="请选择一个方块" ctype="TextBMFontObjectData">
-                    <Size X="224.0000" Y="39.0000" />
+                  <AbstractNodeData Name="game_dist_tips_desc" ActionTag="738486401" Tag="117" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="-138.7003" RightMargin="-119.2997" TopMargin="-3.8797" BottomMargin="-5.1203" LabelText="Please tap the screen to check." ctype="TextBMFontObjectData">
+                    <Size X="458.0000" Y="39.0000" />
                     <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-                    <Position X="84.0000" Y="14.0010" />
-                    <Scale ScaleX="0.4200" ScaleY="0.4200" />
+                    <Position X="99.3297" Y="14.3797" />
+                    <Scale ScaleX="0.3800" ScaleY="0.3800" />
                     <CColor A="255" R="255" G="255" B="255" />
-                    <PrePosition X="0.4200" Y="0.4667" />
+                    <PrePosition X="0.4515" Y="0.4793" />
                     <PreSize X="1.0700" Y="1.3000" />
                     <LabelBMFontFile_CNB Type="Normal" Path="fonts/ui_font.fnt" Plist="" />
                   </AbstractNodeData>
                   <AbstractNodeData Name="game_dist_btn_close" ActionTag="336726434" Tag="208" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="98.0000" RightMargin="2.0000" TopMargin="5.0000" BottomMargin="5.0000" TouchEnable="True" FontSize="14" Scale9Enable="True" LeftEage="5" RightEage="5" TopEage="5" BottomEage="5" Scale9OriginX="5" Scale9OriginY="5" Scale9Width="6" Scale9Height="6" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="ButtonObjectData">
                     <Size X="20.0000" Y="20.0000" />
                     <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-                    <Position X="180.0000" Y="15.0000" />
+                    <Position X="198.0000" Y="15.0000" />
                     <Scale ScaleX="1.0000" ScaleY="1.0000" />
                     <CColor A="255" R="255" G="255" B="255" />
                     <PrePosition X="0.9000" Y="0.5000" />
@@ -205,7 +205,7 @@
                 <Scale ScaleX="1.0000" ScaleY="1.0000" />
                 <CColor A="255" R="255" G="255" B="255" />
                 <PrePosition X="0.5000" Y="1.1500" />
-                <PreSize X="0.6250" Y="0.7500" />
+                <PreSize X="0.6875" Y="0.7500" />
                 <FileData Type="PlistSubImage" Path="ui_frame_6.png" Plist="ui_sprite.plist" />
               </AbstractNodeData>
             </Children>

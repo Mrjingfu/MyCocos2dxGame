@@ -101,7 +101,9 @@ void ItemShopBuyPopupUI::refreshUIView()
         m_pItemSlider->setMaxPercent(count-1);
         m_pItemSlider->setPercent(m_pItemSlider->getMaxPercent());
         m_pSellCount->setString(cocos2d::StringUtils::format(UtilityHelper::getLocalStringForUi("ITEM_SPLITE_COUNT").c_str(),1+m_pItemSlider->getPercent()));
-        
+        m_pBtnEquip->setAnchorPoint(cocos2d::Vec2::ANCHOR_MIDDLE_LEFT);
+        m_pBtnEquip->setPosition(cocos2d::Vec2(m_pBottomFrame->getContentSize().width*0.045,m_pBtnEquip->getPositionY()));
+
     }else
     {
         m_pItemSlider->setVisible(false);

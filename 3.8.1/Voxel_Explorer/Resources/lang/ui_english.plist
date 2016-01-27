@@ -101,7 +101,7 @@
 	<key>ITEM_ALREDY_EQUIP</key>
 	<string>Equipped</string>
 	<key>ITEM_NOT_EQUIP</key>
-	<string>Can not be equipped</string>
+	<string>Unavaliable</string>
 	<key>ITEM_PROP_TYPE_KEY</key>
 	<string>Key</string>
 	<key>ITEM_PROP_TYPE_WEAPON</key>
@@ -265,13 +265,13 @@
 	<key>PLAYER_FALL_AND_DIE</key>
 	<string>Unfortunately, but you are not the first such dead adventurers ^_^.</string>
 	<key>GO_UPSTAIRS</key>
-	<string>You get into the upper floor.</string>
+	<string>Do you want to go upstairs?</string>
 	<key>GO_UPSTAIRS_FORBIDDEN</key>
 	<string>The portal has no energy.</string>
 	<key>GO_DOWNSTAIRS</key>
-	<string>You get into the next floor.</string>
+	<string>Do you want to go downstairs?</string>
 	<key>GO_BOSSROOM</key>
-	<string>You entered boss room.</string>
+	<string>Do you want to enter into the boss room?</string>
 	<key>GO_CHASM</key>
 	<string>Do you really want to jump?</string>
 	<key>FALL_DOWNSTAIRS</key>
@@ -367,7 +367,7 @@
 	<key>PLAYER_BAG_EXTEND_HAS_REACH_MAXTIMES</key>
 	<string>Sorry, the number of backpack expansion has reached the limit!</string>
 	<key>DEAD_BOOS_DEPTH_REVIVE_TXT</key>
-	<string>剩余次数:%d次</string>
+	<string>Left times:%d</string>
 	<key>TITLE_TIP_TEXT</key>
 	<string>TIP</string>
 </dict>

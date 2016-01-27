@@ -265,13 +265,13 @@
 	<key>PLAYER_FALL_AND_DIE</key>
 	<string>很不幸，但你并不是第一个这样死的冒险者^_^。</string>
 	<key>GO_UPSTAIRS</key>
-	<string>你进入了上一层。</string>
+	<string>是否进入上一层?</string>
 	<key>GO_UPSTAIRS_FORBIDDEN</key>
 	<string>传送阵已经没有能量了～</string>
 	<key>GO_DOWNSTAIRS</key>
-	<string>你进入了下一层。</string>
+	<string>是否进入下一层?</string>
 	<key>GO_BOSSROOM</key>
-	<string>进入Boos房间</string>
+	<string>是否进入Boos房间?</string>
 	<key>GO_CHASM</key>
 	<string>你真的要跳下去么？</string>
 	<key>FALL_DOWNSTAIRS</key>
@@ -368,7 +368,7 @@
 	<key>PLAYER_BAG_EXTEND_HAS_REACH_MAXTIMES</key>
 	<string>抱歉,背包扩展次数已达到上限了!</string>
 	<key>DEAD_BOOS_DEPTH_REVIVE_TXT</key>
-	<string>剩余次数:%d次</string>
+	<string>剩余次数:%d</string>
 	<key>TITLE_TIP_TEXT</key>
 	<string>提示</string>
 </dict>

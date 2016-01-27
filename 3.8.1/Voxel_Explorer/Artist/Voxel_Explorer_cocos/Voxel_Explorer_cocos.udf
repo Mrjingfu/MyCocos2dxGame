@@ -34,8 +34,12 @@
           <FilePathData Path="itemMoneyLayer.csd" />
           <FilePathData Path="menuscene.csd" />
           <FilePathData Path="pausenewPopupLayer.csd" />
+          <FilePathData Path="gametoolbarLayer.csd" />
+          <FilePathData Path="skillLayer.csd" />
+          <FilePathData Path="achieveEnItemLayer.csd" />
+          <FilePathData Path="itemPopupLayer.csd" />
         </OpenedDocuments>
-        <ActiveDocument Path="pausenewPopupLayer.csd" />
+        <ActiveDocument Path="itemPopupLayer.csd" />
       </Value>
     </Item>
   </Properties>
