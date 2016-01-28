@@ -8265,7 +8265,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "525"
             endingLineNumber = "525"
-            landmarkName = "VoxelExplorer::checkBossFleeFromPlayer(BaseBoss* boss)"
+            landmarkName = "VoxelExplorer::checkBossCanAttack(BaseBoss* boss)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -9609,7 +9609,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "828"
             endingLineNumber = "828"
-            landmarkName = "VoxelExplorer::addParticle3DEffect(const cocos2d::Vec3&amp; pos, P3D_EFFECT_TYPE type)"
+            landmarkName = "VoxelExplorer::addParticle3DEffectToPlayer(P3D_EFFECT_TYPE type, bool keepLocal)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -11032,9 +11032,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "416"
-            endingLineNumber = "416"
-            landmarkName = "GameUILayer::onEventNpcKnightAnsWer(cocos2d::EventCustom *sender)"
-            landmarkType = "5">
+            endingLineNumber = "416">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

@@ -5,6 +5,7 @@
 #include "SdkBoxManager.hpp"
 #include "NativeBridge.h"
 #include "EventConst.h"
+#include "PopupUILayerManager.h"
 USING_NS_CC;
 using namespace CocosDenshion;
 
@@ -130,12 +131,17 @@ bool AppDelegate::applicationDidFinishLaunching() {
 // This function will be called when the app is inactive. When comes a phone call,it's be invoked too
 void AppDelegate::applicationDidEnterBackground() {
     Director::getInstance()->stopAnimation();
-    Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_GAME_PAUSE);
+    
+    ArchiveManager::getInstance()->saveGame();
+    
+    if (!PopupUILayerManager::getInstance()->getCurrentPopUpLayer()&&
+        PopupUILayerManager::getInstance()->getSceneType()==PopupUILayerManager::ST_GAME) {
+        PopupUILayerManager::getInstance()->openPopup(ePopupPause);
+    }
+    
     // if you use SimpleAudioEngine, it must be pause
     SimpleAudioEngine::getInstance()->pauseAllEffects();
     SimpleAudioEngine::getInstance()->pauseBackgroundMusic();
-    
-    ArchiveManager::getInstance()->saveGame();
 }
 
 // this function will be called when the app is active again
