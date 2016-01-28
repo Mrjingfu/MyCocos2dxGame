@@ -861,9 +861,12 @@ void GameUILayer::onEventSelectLeftDungeonNode(cocos2d::EventCustom *sender)
     CCLOG("onEventSelectLeftDungeonNode");
     AlertPopupUI* popupUi = static_cast<AlertPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupAlert));
     if (popupUi) {
-        popupUi->setMessage(UtilityHelper::getLocalStringForUi(EVENT_SELECT_LEFT_DUNGEON_NODE));
+        std::string dungeonName =  RandomDungeon::getInstance()->getCurrentDungeonNode()->m_pLeftNode->m_strDungeonName;
+        
+        popupUi->setMessage(StringUtils::format(UtilityHelper::getLocalStringForUi(EVENT_SELECT_LEFT_DUNGEON_NODE).c_str(),dungeonName.c_str()));
         popupUi->setPositiveListerner([](Ref* ref)
                                       {
+                                          
                                           RandomDungeon::getInstance()->selectDungeonNode(true);
                                       });
         popupUi->setNegativeListerner([](Ref* ref){});
@@ -875,7 +878,10 @@ void GameUILayer::onEventSelectRightDungeonNode(cocos2d::EventCustom *sender)
     CCLOG("onEventSelectRightDungeonNode");
     AlertPopupUI* popupUi = static_cast<AlertPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupAlert));
     if (popupUi) {
-        popupUi->setMessage(UtilityHelper::getLocalStringForUi(EVENT_SELECT_RIGHT_DUNGEON_NODE));
+        std::string dungeonName =  RandomDungeon::getInstance()->getCurrentDungeonNode()->m_pRightNode->m_strDungeonName;
+        
+        popupUi->setMessage(StringUtils::format(UtilityHelper::getLocalStringForUi(EVENT_SELECT_RIGHT_DUNGEON_NODE).c_str(),dungeonName.c_str()));
+
         popupUi->setPositiveListerner([](Ref* ref)
                                       {
                                           RandomDungeon::getInstance()->selectDungeonNode(false);

@@ -25,7 +25,6 @@
 USING_NS_CC;
 GameToolbarLayer::GameToolbarLayer()
 {
-    m_bIsOpenSmailMap           = false;
     m_bIsDist                   = false;
     
     m_pListMsgs                 = nullptr;
@@ -199,18 +198,17 @@ void GameToolbarLayer::onClickMap(cocos2d::Ref *ref)
     if (m_bIsDist) {
         return;
     }
-    if (m_bIsOpenSmailMap) {
+    if (VoxelExplorer::getInstance()->getCurrentLevel()->hasShowMap()) {
         std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("UI_BTN_MAP_CLOSE");
         CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
         
         VoxelExplorer::getInstance()->getCurrentLevel()->showMap(false);
-        m_bIsOpenSmailMap = false;
     }else{
         std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("UI_BTN_MAP_OPEN");
         CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
         
         VoxelExplorer::getInstance()->getCurrentLevel()->showMap(true);
-        m_bIsOpenSmailMap = true;
+
     }
     setDistTipsFrame();
 }
