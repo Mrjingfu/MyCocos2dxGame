@@ -37,7 +37,7 @@ private:
     
     
 private:
-    bool m_bIsOpenSmailMap;                       //是否打开小地图
+
     bool m_bIsDist;                               //是否点击地图查看信息
     
     cocos2d::ui::ListView*   m_pListMsgs;

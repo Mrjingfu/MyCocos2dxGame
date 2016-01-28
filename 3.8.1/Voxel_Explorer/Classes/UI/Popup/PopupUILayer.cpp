@@ -9,6 +9,7 @@
 #include "PopupUILayer.h"
 #include "GameConfig.h"
 #include "PopupUILayerManager.h"
+#include "StatisticsManager.hpp"
 USING_NS_CC;
 PopupUILayer::PopupUILayer()
 {
@@ -83,7 +84,7 @@ void PopupUILayer::openPopup()
         PopupUILayerManager::getInstance()->getSceneType() == PopupUILayerManager::eSceneType::ST_GAME ) {
         schedulerPause();
     }
-    
+    StatisticsManager::getInstance()->pauseSchedu();
 }
 void PopupUILayer::closePopup()
 {
@@ -276,6 +277,7 @@ void PopupUILayer::removeSelfCallFunc()
     if (m_nIsPause && PopupUILayerManager::getInstance()->getCurrentPopUpType() == ePopupInvalid && PopupUILayerManager::getInstance()->getSceneType() == PopupUILayerManager::eSceneType::ST_GAME) {
         schedulerResume();
     }
+    StatisticsManager::getInstance()->resumeSchedu();
     this->removeFromParent();
 }
 bool PopupUILayer::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *unused_event)

@@ -277,9 +277,9 @@
 	<key>FALL_DOWNSTAIRS</key>
 	<string>Falling from the abyss, it&apos;s very lucky no to die.</string>
 	<key>SELECT_LEFT_DUNGEON_NODE</key>
-	<string>Are you sure to choose this portal?</string>
+	<string>Are you sure to teleport to %s?</string>
 	<key>SELECT_RIGHT_DUNGEON_NODE</key>
-	<string>Are you sure to choose this portal?</string>
+	<string>Are you sure to teleport to %s?</string>
 	<key>USE_SMALL_PROTAL</key>
 	<string>You&apos;ve been teleported!</string>
 	<key>STANDARD_PROTAL_NO_ENERGY</key>

@@ -277,9 +277,9 @@
 	<key>FALL_DOWNSTAIRS</key>
 	<string>高空坠落，不死是非常幸运的。</string>
 	<key>SELECT_LEFT_DUNGEON_NODE</key>
-	<string>确定选择这个地牢传送门吗？</string>
+	<string>确定选择传送到%s吗？</string>
 	<key>SELECT_RIGHT_DUNGEON_NODE</key>
-	<string>确定选择这个地牢传送门吗？</string>
+	<string>确定选择传送到%s吗？</string>
 	<key>USE_SMALL_PROTAL</key>
 	<string>你被传送了</string>
 	<key>STANDARD_PROTAL_NO_ENERGY</key>

@@ -18,7 +18,7 @@
 const int TIME_NINE = 9;
 const int TIME_THIRTY = 30;
 const std::string SCHEDU_NINE_KEY = "SCHEDU_NINE_KEY";
-const std::string SCHEDU_THIRTY_KEY = "SCHEDU_NINE_KEY";
+const std::string SCHEDU_THIRTY_KEY = "SCHEDU_THIRTY_KEY";
 
 const std::string ARCHIVE_MONSTER_KILL_KEY ="ARCHIVE_MONSTER_KILL_KEY";
 const std::string ARCHIVE_BOSS_KILL_KEY ="ARCHIVE_BOSS_KILL_KEY";

@@ -163,7 +163,7 @@ void VoxelExplorer::gamePause()
     {
         m_bIsGamePause = true;
         m_p3DLayer->pause();
-        StatisticsManager::getInstance()->pauseSchedu();
+        
     }
 
 }
@@ -172,8 +172,7 @@ void VoxelExplorer::gameResume()
     if(m_p3DLayer && m_bIsGamePause)
     {
         m_bIsGamePause = false;
-       m_p3DLayer->resume();
-        StatisticsManager::getInstance()->resumeSchedu();
+        m_p3DLayer->resume();
     }
 
 }
