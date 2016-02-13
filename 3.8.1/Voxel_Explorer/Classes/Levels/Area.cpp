@@ -147,6 +147,16 @@ bool Area::checkInside(const cocos2d::Vec2& pos)
 {
     return pos.x >= m_Rect.getMinX() && pos.y >= m_Rect.getMinY() && pos.x <= m_Rect.getMaxX() && pos.y <= m_Rect.getMaxY();
 }
+bool Area::isHiddenArea()
+{
+    bool hiddenArea = false;
+    for (auto iter = m_ConnectedAreas.begin(); iter != m_ConnectedAreas.end(); iter++) {
+        Door* door = iter->second;
+        if(door && door->getDoorType() == Door::DT_HIDDEN)
+            return true;
+    }
+    return hiddenArea;
+}
 cocos2d::Rect Area::getIntersectRect(Area* other)
 {
     CCASSERT(other != nullptr, "Other area must not be null!");

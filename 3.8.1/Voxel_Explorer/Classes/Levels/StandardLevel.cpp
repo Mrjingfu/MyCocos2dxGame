@@ -1045,7 +1045,7 @@ void StandardLevel::showMap(bool show)
             for (const auto& child : VoxelExplorer::getInstance()->getPickableItemsLayer()->getChildren())
             {
                 PickableItem* pickableItem = dynamic_cast<PickableItem*>(child);
-                if(pickableItem && pickableItem->isVisible())
+                if(pickableItem && pickableItem->isVisible() && (pickableItem->getState() == PickableItem::PIS_IDLE))
                     m_pMapDrawNode->drawDot(pickableItem->getPosInMap()+Vec2(0.5f, 0.5f), 0.5f, Color4F(1.0f, 0.5f, 0.0f, 1.0f));
             }
         }
@@ -1400,6 +1400,8 @@ int StandardLevel::randomPickableRespawnCell()
         if (area == nullptr)
             continue;
         if(area->getAreaType() != Area::AT_STANDARD)
+            continue;
+        if(area->isHiddenArea())
             continue;
 
         tileIndex = area->getRandomTile(this);

@@ -67,6 +67,8 @@ public:
     bool checkInside(int p, BaseLevel* level);
     bool checkInside(const cocos2d::Vec2& pos);
     
+    bool isHiddenArea();
+    
     cocos2d::Rect getIntersectRect(Area* other);
     
     std::unordered_map<Area*, Door*>& getConnectedAreas() { return m_ConnectedAreas; }

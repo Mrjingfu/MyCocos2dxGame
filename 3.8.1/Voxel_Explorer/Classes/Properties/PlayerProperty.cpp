@@ -1100,6 +1100,8 @@ void PlayerProperty::extendBagSpace()
 }
 CChaosNumber PlayerProperty::getRandomAttack()
 {
+    if(getMinAttack().GetLongValue() > getMaxAttack().GetLongValue())
+        return cocos2d::random(getMaxAttack().GetLongValue(), getMinAttack().GetLongValue());
     return cocos2d::random(getMinAttack().GetLongValue(), getMaxAttack().GetLongValue());
 }
 void PlayerProperty::reset()
