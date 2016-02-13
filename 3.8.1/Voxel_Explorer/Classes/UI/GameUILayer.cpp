@@ -183,11 +183,13 @@ void GameUILayer::onTouchEnded(cocos2d::Touch *touch, cocos2d::Event *event)
                 if (alertPopupUi)
                 {
                     alertPopupUi->setMessage(UtilityHelper::getLocalStringForUi("REMOVE_TRAP_INFO"));
-                    alertPopupUi->setPositiveListerner([this,trapPos](Ref* ref){
+                    
+                    alertPopupUi->setPositiveListerner([](Ref* ref){},UtilityHelper::getLocalStringForUi("BTN_TEXT_CANCEL"));
+                    alertPopupUi->setNegativeListerner([this,trapPos](Ref* ref){
                         VoxelExplorer::getInstance()->handleRemoveTrap(trapPos);
-                         updateShowRoleExp(50);
+                        updateShowRoleExp(50);
                     },UtilityHelper::getLocalStringForUi("BAG_TEXT_DESTROY"));
-                    alertPopupUi->setNegativeListerner([](Ref* ref){});
+                    
                      m_pGameToolBarLayer->setDistTipsFrame();
                 }
             }
