@@ -40,6 +40,7 @@ public:
     bool restartArchive();
     bool loadGame();
     bool loadGameAchieve();
+    bool saveGameAchieve();
     bool saveGame();
 private:
     std::string getStringValueMap(cocos2d::ValueMap& dict,const std::string& fullPath);

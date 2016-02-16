@@ -77,30 +77,56 @@ bool  ArchiveManager::loadGame()
         CCLOGERROR("StatisticsManager load failed");
         return false;
     }
-    if (!AchievementManager::getInstance()->load(gameMap)) {
-        CCLOGERROR("AchievementManager load failed");
+
+    if(!loadGameAchieve())
+    {
+        CCLOGERROR("loadGameAchieve load failed");
         return false;
     }
-
+    
     return true;
 }
 bool ArchiveManager::loadGameAchieve()
 {
-    std::string path = cocos2d::FileUtils::getInstance()->getWritablePath()+sArchiveName;
+    std::string path = cocos2d::FileUtils::getInstance()->getWritablePath()+sArchiveAchieveName;
     
     ValueMap gameMap = PlistBinaryUtil::getInstance()->getValueMapFromFile(path);
     
 #if COCOS2D_DEBUG==1
     if (!gameMap.empty()) {
-        std::string debugPath = cocos2d::FileUtils::getInstance()->getWritablePath()+"Debug.plist";
+        std::string debugPath = cocos2d::FileUtils::getInstance()->getWritablePath()+"DebugAchieve.plist";
         CCLOG("LOADGAME:%s",getStringValueMap(gameMap,debugPath).c_str());
         CCLOG("LOADGAME ARCHIVE PATH:%s",debugPath.c_str());
     }else
-        CCLOGERROR("SAVEGAME  gamemap is null");
+        CCLOGERROR("LOADGAME  gamemap is null");
     
 #endif
     if (!AchievementManager::getInstance()->load(gameMap)) {
         CCLOGERROR("AchievementManager load failed");
+        return false;
+    }
+    return true;
+}
+bool  ArchiveManager::saveGameAchieve()
+{
+    ValueMap map;
+    if(!AchievementManager::getInstance()->save(map))
+    {
+        CCLOGERROR("AchievementManager save failed");
+        return false;
+    }
+#if COCOS2D_DEBUG==1
+    if (!map.empty()) {
+        std::string debugPath = cocos2d::FileUtils::getInstance()->getWritablePath()+"DebugAchieve.plist";
+        CCLOG("SAVEACHIEVE:%s",getStringValueMap(map,debugPath).c_str());
+        CCLOG("SAVEACHIEVE  PATH:%s",debugPath.c_str());
+    }else
+        CCLOGERROR("SAVEACHIEVE  gamemap is null");
+#endif
+    
+    std::string path = cocos2d::FileUtils::getInstance()->getWritablePath()+ sArchiveAchieveName;
+    if ( !PlistBinaryUtil::getInstance()->writeValueMapToFile(map, path,true)) {
+        CCLOGERROR("wirte Gamemap failed");
         return false;
     }
     return true;
@@ -129,11 +155,7 @@ bool  ArchiveManager::saveGame()
         CCLOGERROR("StatisticsManager save failed");
         return false;
     }
-    if(!AchievementManager::getInstance()->save(map))
-    {
-        CCLOGERROR("AchievementManager save failed");
-        return false;
-    }
+
     
     
 #if COCOS2D_DEBUG==1
@@ -148,6 +170,12 @@ bool  ArchiveManager::saveGame()
    std::string path = cocos2d::FileUtils::getInstance()->getWritablePath()+ sArchiveName;
     if ( !PlistBinaryUtil::getInstance()->writeValueMapToFile(map, path,true)) {
         CCLOGERROR("wirte Gamemap failed");
+        return false;
+    }
+    
+    if(!saveGameAchieve())
+    {
+        CCLOGERROR("saveGameAchieve save failed");
         return false;
     }
     

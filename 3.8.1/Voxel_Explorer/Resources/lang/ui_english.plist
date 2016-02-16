@@ -46,6 +46,8 @@
 	<string>Please tap the screen to check.</string>
 	<key>GAME_MESSAGE_NOT</key>
 	<string>Welcome to the %s floor of %s.</string>
+	<key>GAME_MESSAGE_BOSS_NOT</key>
+	<string>Welcome to the %s</string>
 	<key>GAME_MESSAGE_MONSTER_ATTACK</key>
 	<string>The monster hit you.</string>
 	<key>GAME_MESSAGE_MONSTER_DODGE</key>

@@ -13,6 +13,7 @@
 #include "Player.hpp"
 #include "PopupUILayerManager.h"
 #include "PotionsProperty.hpp"
+#include "RegionImageView.h"
 USING_NS_CC;
 SkillLayer::SkillLayer()
 {
@@ -47,22 +48,65 @@ bool SkillLayer::initUi()
 bool SkillLayer::addEvents()
 {
 
-    m_pSkill = dynamic_cast<cocos2d::ui::ImageView *>(UtilityHelper::seekNodeByName(m_pRootNode, "skill_icon"));
-    if(!m_pSkill)
-        return false;
-    m_pMagicPotion = dynamic_cast<cocos2d::ui::ImageView *>(UtilityHelper::seekNodeByName(m_pRootNode, "skill_magic_icon"));
-    if(!m_pMagicPotion)
-        return false;
-    m_pBloodPotion = dynamic_cast<cocos2d::ui::ImageView *>(UtilityHelper::seekNodeByName(m_pRootNode, "skill_health_icon"));
-    if(!m_pBloodPotion)
-        return false;
+//    m_pSkill = dynamic_cast<cocos2d::ui::ImageView *>(UtilityHelper::seekNodeByName(m_pRootNode, "skill_icon"));
+//    if(!m_pSkill)
+//        return false;
+//    
+//    m_pMagicPotion = dynamic_cast<cocos2d::ui::ImageView *>(UtilityHelper::seekNodeByName(m_pRootNode, "skill_magic_icon"));
+//    if(!m_pMagicPotion)
+//        return false;
+//    m_pBloodPotion = dynamic_cast<cocos2d::ui::ImageView *>(UtilityHelper::seekNodeByName(m_pRootNode, "skill_health_icon"));
+//    if(!m_pBloodPotion)
+//        return false;
     
-    m_pMagicPotionMask = dynamic_cast<cocos2d::ui::ImageView *>(UtilityHelper::seekNodeByName(m_pRootNode, "skill_magic_icon_mask"));
-    if(!m_pMagicPotionMask)
-        return false;
-    m_pBloodPotionMask = dynamic_cast<cocos2d::ui::ImageView *>(UtilityHelper::seekNodeByName(m_pRootNode, "skill_health_icon_mask"));
-    if(!m_pBloodPotionMask)
-        return false;
+    m_pSkill = RegionImageView::create("ui_skill_lock.png",TextureResType::PLIST);
+    m_pSkill->setScale(0.5);
+    m_pSkill->setTouchRegionSize(cocos2d::Size(50,15));
+    m_pSkill->setPosition(cocos2d::Vec2(m_pRootNode->getContentSize().width*0.88,m_pRootNode->getContentSize().height*0.23));
+    m_pRootNode->addChild(m_pSkill);
+    
+    cocos2d::ui::ImageView* skill_bg=  cocos2d::ui::ImageView::create("ui_skill_bg.png",TextureResType::PLIST);
+    skill_bg->setPosition(m_pSkill->getContentSize()*0.5);
+    m_pSkill->addChild(skill_bg);
+    
+    m_pMagicPotion = RegionImageView::create("ui_magic_icon.png",TextureResType::PLIST);
+    m_pMagicPotion->setScale(0.35);
+    m_pMagicPotion->setTouchRegionSize(cocos2d::Size(50,15));
+    m_pMagicPotion->setPosition(cocos2d::Vec2(m_pRootNode->getContentSize().width*0.88,m_pRootNode->getContentSize().height*0.55));
+    m_pRootNode->addChild(m_pMagicPotion);
+    
+    cocos2d::ui::ImageView* magic_bg=  cocos2d::ui::ImageView::create("ui_skill_bg.png",TextureResType::PLIST);
+    magic_bg->setPosition(m_pMagicPotion->getContentSize()*0.5);
+    m_pMagicPotion->addChild(magic_bg);
+    
+    m_pMagicPotionMask=  cocos2d::ui::ImageView::create("ui_skill_prog.png",TextureResType::PLIST);
+    m_pMagicPotionMask->setPosition(m_pMagicPotion->getContentSize()*0.5);
+    m_pMagicPotion->addChild(m_pMagicPotionMask);
+    
+    
+    m_pBloodPotion = RegionImageView::create("ui_health_icon.png",TextureResType::PLIST);
+    m_pBloodPotion->setScale(0.35);
+    m_pBloodPotion->setTouchRegionSize(cocos2d::Size(50,15));
+    m_pBloodPotion->setPosition(cocos2d::Vec2(m_pRootNode->getContentSize().width*0.88,m_pRootNode->getContentSize().height*0.826));
+    m_pRootNode->addChild(m_pBloodPotion);
+    
+    cocos2d::ui::ImageView* blood_bg=  cocos2d::ui::ImageView::create("ui_skill_bg.png",TextureResType::PLIST);
+    blood_bg->setPosition(m_pBloodPotion->getContentSize()*0.5);
+    m_pBloodPotion->addChild(blood_bg);
+    
+    m_pBloodPotionMask=  cocos2d::ui::ImageView::create("ui_skill_prog.png",TextureResType::PLIST);
+    m_pBloodPotionMask->setPosition(m_pBloodPotion->getContentSize()*0.5);
+    m_pBloodPotion->addChild(m_pBloodPotionMask);
+    
+    
+    
+//    m_pMagicPotionMask = dynamic_cast<cocos2d::ui::ImageView *>(UtilityHelper::seekNodeByName(m_pRootNode, "skill_magic_icon_mask"));
+//    if(!m_pMagicPotionMask)
+//        return false;
+//    m_pBloodPotionMask = dynamic_cast<cocos2d::ui::ImageView *>(UtilityHelper::seekNodeByName(m_pRootNode, "skill_health_icon_mask"));
+//    if(!m_pBloodPotionMask)
+//        return false;
+    
     m_pMagicPotionMask->setVisible(false);
     m_pBloodPotionMask->setVisible(false);
     

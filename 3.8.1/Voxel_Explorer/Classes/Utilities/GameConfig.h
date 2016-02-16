@@ -23,6 +23,7 @@
 #define sRecordMD5          "sM"
 #define sHavePlayedGame		"HavePlayedGame"
 #define sArchiveName        "GameArchive"
+#define sArchiveAchieveName "GameAchieve"
 #define MAX_DIAMOD 100
 
 #define SINGLE_FUNC(__TYPE__) \

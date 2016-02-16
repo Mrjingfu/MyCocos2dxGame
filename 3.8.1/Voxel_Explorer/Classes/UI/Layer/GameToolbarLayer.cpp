@@ -166,13 +166,23 @@ void GameToolbarLayer::initMessageFrame()
         MsgData* msgData = (*iter);
         setMsgItem(msgData->getMsg(),msgData->getMsgColor());
     }
-    std::string rungenName;
+   
+    std::string initMsg;
     if(RandomDungeon::getInstance()->getCurrentDungeonNode()->isBossDepth())
-        rungenName = RandomDungeon::getInstance()->getCurrentDungeonNode()->m_strDungeonBossName.c_str();
+    {
+         std::string rungenName = RandomDungeon::getInstance()->getCurrentDungeonNode()->m_strDungeonBossName.c_str();
+        initMsg = StringUtils::format(UtilityHelper::getLocalStringForUi("GAME_MESSAGE_BOSS_NOT").c_str(),rungenName.c_str());
+    }
     else
-        rungenName = RandomDungeon::getInstance()->getCurrentDungeonNode()->m_strDungeonName.c_str();
-    int flood =  int(RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nCurrentDepth);
-    sendMessage(StringUtils::format(UtilityHelper::getLocalStringForUi("GAME_MESSAGE_NOT").c_str(),rungenName.c_str(),cocos2d::Value(flood).asString().c_str()));
+    {
+        std::string rungenName = RandomDungeon::getInstance()->getCurrentDungeonNode()->m_strDungeonName.c_str();
+        int flood =  int(RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nCurrentDepth);
+        initMsg = StringUtils::format(UtilityHelper::getLocalStringForUi("GAME_MESSAGE_NOT").c_str(),rungenName.c_str(),cocos2d::Value(flood).asString().c_str());
+    }
+    runAction(Sequence::create(DelayTime::create(0.5f),CallFunc::create([initMsg](){
+        PopupUILayerManager::getInstance()->showStatusImport(TIP_POSITIVE, initMsg);
+    }), nullptr));
+    sendMessage(initMsg);
 
 }
 void GameToolbarLayer::onClickBag(Ref* ref)
@@ -183,13 +193,13 @@ void GameToolbarLayer::onClickBag(Ref* ref)
     if (m_bIsDist) {
         return;
     }
-  PopupUILayerManager::getInstance()->openPopup(ePopupRole);
-//    ShopPopupUI* popupUILayer = static_cast<ShopPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupGambleShop));
-//    if (popupUILayer) {
-//        popupUILayer->setShopTitle(EVENT_NPC_WEIRDO_ANSWER);
-//        popupUILayer->setDarkLayerVisble(true);
-//    }
-//    setDistTipsFrame();
+//  PopupUILayerManager::getInstance()->openPopup(ePopupRole);
+    ShopPopupUI* popupUILayer = static_cast<ShopPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupGambleShop));
+    if (popupUILayer) {
+        popupUILayer->setShopTitle(EVENT_NPC_WEIRDO_ANSWER);
+        popupUILayer->setDarkLayerVisble(true);
+    }
+    setDistTipsFrame();
 }
 void GameToolbarLayer::onClickMap(cocos2d::Ref *ref)
 {

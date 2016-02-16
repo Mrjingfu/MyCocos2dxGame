@@ -12,7 +12,7 @@
 FileStream::FileStream(const char* path, const char* mode)
 {
     m_file = fopen(path, mode);
-    //ASSERT(m_file!=NULL);
+    CCASSERT(m_file!=NULL,"m_file is null");
 }
 
 FileStream::~FileStream()

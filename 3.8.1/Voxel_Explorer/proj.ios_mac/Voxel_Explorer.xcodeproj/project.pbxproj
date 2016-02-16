@@ -402,6 +402,10 @@
 		ECBCB4C31C22AE24006B85D2 /* particle2d in Resources */ = {isa = PBXBuildFile; fileRef = ECBCB4C11C22AE24006B85D2 /* particle2d */; };
 		ECD845071C45F93200C11269 /* SkillLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECD845051C45F93200C11269 /* SkillLayer.cpp */; };
 		ECD845081C45F93200C11269 /* SkillLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECD845051C45F93200C11269 /* SkillLayer.cpp */; };
+		ECDCAFE91C72B86A00B911F0 /* RegionButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECDCAFE71C72B86A00B911F0 /* RegionButton.cpp */; };
+		ECDCAFEA1C72B86A00B911F0 /* RegionButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECDCAFE71C72B86A00B911F0 /* RegionButton.cpp */; };
+		ECDCAFEF1C72BB0F00B911F0 /* RegionImageView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECDCAFED1C72BB0F00B911F0 /* RegionImageView.cpp */; };
+		ECDCAFF01C72BB0F00B911F0 /* RegionImageView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECDCAFED1C72BB0F00B911F0 /* RegionImageView.cpp */; };
 		ECEA4E1E1C0EC69800ED790F /* ItemShopBuyPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECEA4E1A1C0EC69800ED790F /* ItemShopBuyPopupUI.cpp */; };
 		ECEA4E1F1C0EC69800ED790F /* ItemShopBuyPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECEA4E1A1C0EC69800ED790F /* ItemShopBuyPopupUI.cpp */; };
 		ECEA4E201C0EC69800ED790F /* ItemShopSellPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECEA4E1C1C0EC69800ED790F /* ItemShopSellPopupUI.cpp */; };
@@ -832,6 +836,10 @@
 		ECBCB4C11C22AE24006B85D2 /* particle2d */ = {isa = PBXFileReference; lastKnownFileType = folder; path = particle2d; sourceTree = "<group>"; };
 		ECD845051C45F93200C11269 /* SkillLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SkillLayer.cpp; sourceTree = "<group>"; };
 		ECD845061C45F93200C11269 /* SkillLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SkillLayer.hpp; sourceTree = "<group>"; };
+		ECDCAFE71C72B86A00B911F0 /* RegionButton.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RegionButton.cpp; sourceTree = "<group>"; };
+		ECDCAFE81C72B86A00B911F0 /* RegionButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegionButton.h; sourceTree = "<group>"; };
+		ECDCAFED1C72BB0F00B911F0 /* RegionImageView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RegionImageView.cpp; sourceTree = "<group>"; };
+		ECDCAFEE1C72BB0F00B911F0 /* RegionImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegionImageView.h; sourceTree = "<group>"; };
 		ECEA4E1A1C0EC69800ED790F /* ItemShopBuyPopupUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ItemShopBuyPopupUI.cpp; sourceTree = "<group>"; };
 		ECEA4E1B1C0EC69800ED790F /* ItemShopBuyPopupUI.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ItemShopBuyPopupUI.hpp; sourceTree = "<group>"; };
 		ECEA4E1C1C0EC69800ED790F /* ItemShopSellPopupUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ItemShopSellPopupUI.cpp; sourceTree = "<group>"; };
@@ -1358,6 +1366,10 @@
 		559B21841BC663CE0047D998 /* Sprites2D */ = {
 			isa = PBXGroup;
 			children = (
+				ECDCAFED1C72BB0F00B911F0 /* RegionImageView.cpp */,
+				ECDCAFEE1C72BB0F00B911F0 /* RegionImageView.h */,
+				ECDCAFE71C72B86A00B911F0 /* RegionButton.cpp */,
+				ECDCAFE81C72B86A00B911F0 /* RegionButton.h */,
 				EC7F92D11BCF9ED200B26C6C /* HueSprite.cpp */,
 				EC7F92D21BCF9ED200B26C6C /* HueSprite.h */,
 			);
@@ -1899,6 +1911,7 @@
 				555B0D191BC51A2C0055FB6D /* BaseLevel.cpp in Sources */,
 				EC6625481C3375A900166131 /* SuperAnimCore.cpp in Sources */,
 				55EC95851BC6AA7B0008D1D7 /* TerrainTile.cpp in Sources */,
+				ECDCAFEF1C72BB0F00B911F0 /* RegionImageView.cpp in Sources */,
 				550545231BFEF00C006B4500 /* OutlineEffect3D.cpp in Sources */,
 				551651C51BD73102004ED7F6 /* RandomDungeon.cpp in Sources */,
 				EC7F92D31BCF9ED200B26C6C /* HueSprite.cpp in Sources */,
@@ -1933,6 +1946,7 @@
 				5560F5EE1C12CB8E001DD164 /* KoboldLeader.cpp in Sources */,
 				558242FC1C43B679004F3092 /* RibbonTrail.cpp in Sources */,
 				EC3CC99B1C088F4F00F8CFC8 /* CloseCallback.cpp in Sources */,
+				ECDCAFE91C72B86A00B911F0 /* RegionButton.cpp in Sources */,
 				EC3CC9931C088F4F00F8CFC8 /* PopupUILayerManager.cpp in Sources */,
 				55338AE61BD8928E00EA316F /* Giant.cpp in Sources */,
 			);
@@ -1970,9 +1984,11 @@
 				EC3CC99E1C088F4F00F8CFC8 /* GameUILayer.cpp in Sources */,
 				55A2CFF71C3907E900E591AA /* ArchbishopBullet.cpp in Sources */,
 				55338ADF1BD8925100EA316F /* Warden.cpp in Sources */,
+				ECDCAFF01C72BB0F00B911F0 /* RegionImageView.cpp in Sources */,
 				EC8A27E11C32670800B2C352 /* AchieveItemLayer.cpp in Sources */,
 				5505453D1BFF3893006B4500 /* SmallPortal.cpp in Sources */,
 				EC3CC9841C088F4F00F8CFC8 /* RoleLayer.cpp in Sources */,
+				ECDCAFEA1C72B86A00B911F0 /* RegionButton.cpp in Sources */,
 				551E93E51BD512D3009F788F /* libb64.c in Sources */,
 				EC00DD601BD665A6009BC378 /* MenuScene.cpp in Sources */,
 				55F81CB51BDB845A002EC075 /* WeaponProperty.cpp in Sources */,
@@ -2120,8 +2136,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: haibo wang (FT8YEJMWBH)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: haibo wang (FT8YEJMWBH)";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COMPRESS_PNG_FILES = NO;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2158,7 +2174,7 @@
 					"$(_COCOS_LIB_IOS_END)",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.wanax.voxelexplorer;
-				PROVISIONING_PROFILE = "22898643-fe52-415a-b17e-b28409c9005b";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "$(_COCOS_HEADER_IOS_BEGIN) $(_COCOS_HEADER_IOS_END)";
@@ -2170,8 +2186,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: haibo wang (6NA476HDMX)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: haibo wang (6NA476HDMX)";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COMPRESS_PNG_FILES = NO;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2206,7 +2222,7 @@
 					"$(_COCOS_LIB_IOS_END)",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.wanax.voxelexplorer;
-				PROVISIONING_PROFILE = "c4afc8fa-72ba-4d86-b334-308f434cc9bf";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "$(_COCOS_HEADER_IOS_BEGIN) $(_COCOS_HEADER_IOS_END)";

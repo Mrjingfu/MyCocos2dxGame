@@ -113,9 +113,12 @@ bool DeadPopupUI::addEvents()
 }
 void DeadPopupUI::CountDown(float dt)
 {
-    --m_nCountDownNum;
-    m_pContinueNum->setString(Value(m_nCountDownNum).asString());
-    if (m_nCountDownNum==0) {
+    if (m_nCountDownNum>0) {
+        --m_nCountDownNum;
+        m_pContinueNum->setString(Value(m_nCountDownNum).asString());
+    }
+    if(m_nCountDownNum<=0)
+    {
         updateRestartUi();
     }
 }
@@ -160,13 +163,20 @@ void DeadPopupUI::onClickAda(cocos2d::Ref* ref)
 }
 void DeadPopupUI::reveiveCountDown(float dt)
 {
-    --m_nReviveTouchNum;
-    m_pAdaDesc->setString(Value(m_nReviveTouchNum).asString());
-    if (m_nReviveTouchNum==0 && m_pBtnDead) {
-        this->unschedule(schedule_selector(DeadPopupUI::reveiveCountDown));
-        m_pBtnDead->setTouchEnabled(true);
-        m_pBtnDead->setEnabled(true);
-        m_pAdaDesc->setString(UtilityHelper::getLocalStringForUi("BTN_TEXT_REVIVE"));
+    if (m_nReviveTouchNum>0) {
+        --m_nReviveTouchNum;
+        m_pAdaDesc->setString(Value(m_nReviveTouchNum).asString());
+    }
+    if(m_nReviveTouchNum<=0)
+    {
+        if(m_pBtnDead)
+        {
+            this->unschedule(schedule_selector(DeadPopupUI::reveiveCountDown));
+            m_pBtnDead->setTouchEnabled(true);
+            m_pBtnDead->setEnabled(true);
+            m_pAdaDesc->setString(UtilityHelper::getLocalStringForUi("BTN_TEXT_REVIVE"));
+            
+        }
     }
 }
 void DeadPopupUI::onClickRevive(cocos2d::Ref *ref)

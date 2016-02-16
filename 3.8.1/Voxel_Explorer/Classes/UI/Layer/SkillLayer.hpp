@@ -10,7 +10,7 @@
 #define SkillLayer_hpp
 
 #include "WrapperUILayer.h"
-
+class RegionImageView;
 class SkillLayer : public WrapperUILayer
 {   
 public:
@@ -36,9 +36,9 @@ private:
     
 protected:
 
-    cocos2d::ui::ImageView * m_pSkill;
-    cocos2d::ui::ImageView * m_pMagicPotion;
-    cocos2d::ui::ImageView * m_pBloodPotion;
+    RegionImageView * m_pSkill;
+    RegionImageView * m_pMagicPotion;
+    RegionImageView * m_pBloodPotion;
     cocos2d::ui::ImageView * m_pMagicPotionMask;
     cocos2d::ui::ImageView * m_pBloodPotionMask;
     cocos2d::ProgressTimer * m_pMagicProgress;

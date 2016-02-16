@@ -151,8 +151,8 @@ void AchievementManager::updateAchieve(AchieveProperty *achieve)
         eStatistType type = iter->first;
         CChaosNumber sourceNum =  StatisticsManager::getInstance()->getDataStatistType(type);
         CChaosNumber targetNum = iter->second;
-//        CCLOG("sourceNum:%ld",sourceNum.GetLongValue());
-//        CCLOG("targetNum:%ld",targetNum.GetLongValue());
+        CCLOG("sourceNum:%ld",sourceNum.GetLongValue());
+        CCLOG("targetNum:%ld",targetNum.GetLongValue());
         if (sourceNum >= targetNum) {
             ++targetCompleteCount;
             targetPercents.push_back(1.0f);
@@ -272,6 +272,9 @@ void AchievementManager::checkBoxAchievement()
 }
 void AchievementManager::checkAchieveUnlock(AchieveProperty *prop)
 {
+    if(prop->isUnlockAchieve())
+        return;
+    
     if (prop->isCommple()) {
         prop->onUnlockAchieve();
         return;
@@ -283,7 +286,7 @@ void AchievementManager::checkAchieveUnlock(AchieveProperty *prop)
         eStatistType unlockType = iter->first;
         CChaosNumber unlockNum = iter->second;
         CChaosNumber currentNum = StatisticsManager::getInstance()->getDataStatistType(unlockType);
-        if (currentNum > unlockNum) {
+        if (currentNum >= unlockNum) {
             ++unlockCount;
         }
     }

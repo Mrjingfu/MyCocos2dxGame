@@ -212,7 +212,7 @@ void MenuUILayer::onClickStart(cocos2d::Ref *ref)
         
         if(!ArchiveManager::getInstance()->loadGame())
             CCLOGERROR("Load Game failed!");
-        
+ 
         startGameAction();
         
     }

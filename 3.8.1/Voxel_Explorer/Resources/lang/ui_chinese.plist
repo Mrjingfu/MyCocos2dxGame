@@ -46,6 +46,8 @@
 	<string>请点击屏幕位置查看</string>
 	<key>GAME_MESSAGE_NOT</key>
 	<string>欢迎来到%s第%s层</string>
+	<key>GAME_MESSAGE_BOSS_NOT</key>
+	<string>欢迎来到%s</string>
 	<key>GAME_MESSAGE_MONSTER_ATTACK</key>
 	<string>怪物击中了你</string>
 	<key>GAME_MESSAGE_MONSTER_DODGE</key>
