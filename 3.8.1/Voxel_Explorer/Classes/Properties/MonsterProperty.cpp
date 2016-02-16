@@ -85,7 +85,7 @@ void MonsterProperty::adjustByDC()
     m_nCurrentHP = m_nMaxHP;
     
     m_nAddedMinAttack = m_nAddedMinAttack + (dc-1)*10 + (nodeDepth-1)*6;
-    m_nAddedMaxAttack = m_nAddedMaxAttack + (dc-1)*30 + + (nodeDepth-1)*20;
+    m_nAddedMaxAttack = m_nAddedMaxAttack + (dc-1)*30 + + (nodeDepth-1)*12;
     
     m_nAttackDiceNum = m_nAttackDiceNum + (dc-1)*5 + (nodeDepth-1)*2;
     m_nAttackDiceFaceNum = m_nAttackDiceFaceNum + (nodeDepth-1)*2 + (m_nLevel-1);
