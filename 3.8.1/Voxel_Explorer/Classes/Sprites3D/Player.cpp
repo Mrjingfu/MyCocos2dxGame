@@ -353,7 +353,8 @@ void Player::removePlayerBuffer(PlayerBuffer buff)
             setTexture(tex);
             PlayerProperty::getInstance()->removePlayerBuffer(buff);
             VoxelExplorer::getInstance()->removeParticle3D3DEffectFromPlayer(P3D_EFFECT_TYPE::P3D_POISIONING_BUFFER);
-            StatisticsManager::getInstance()->addPoisonRecoverNum();
+            if(m_curState != PlayerState::PS_DEATH)
+                StatisticsManager::getInstance()->addPoisonRecoverNum();
         }
     }
     else if(buff == PB_WEAK)
@@ -373,9 +374,10 @@ void Player::removePlayerBuffer(PlayerBuffer buff)
             if(tex)
                 tex->setAliasTexParameters();
             setTexture(tex);
-            StatisticsManager::getInstance()->addWeakRecoverNum();
             PlayerProperty::getInstance()->removePlayerBuffer(buff);
             VoxelExplorer::getInstance()->removeParticle3D3DEffectFromPlayer(P3D_EFFECT_TYPE::P3D_WEAK_BUFFER);
+            if(m_curState != PlayerState::PS_DEATH)
+                StatisticsManager::getInstance()->addWeakRecoverNum();
         }
     }
     else if(buff == PB_PARALYTIC)
@@ -396,7 +398,6 @@ void Player::removePlayerBuffer(PlayerBuffer buff)
                 tex->setAliasTexParameters();
             setTexture(tex);
             PlayerProperty::getInstance()->removePlayerBuffer(buff);
-            
             VoxelExplorer::getInstance()->removeParticle3D3DEffectFromPlayer(P3D_EFFECT_TYPE::P3D_PARALYTIC_BUFFER);
         }
     }
