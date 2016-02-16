@@ -179,6 +179,8 @@ void BaseLevel::wrapTerrainTiles(int x, int y , int width, int height, TerrainTi
                     int cell = j + n;
                     if(m_Map[cell].m_Type == TerrainTile::TT_CHASM)
                     {
+                        m_Map[cell].m_nX = cell % m_nWidth;
+                        m_Map[cell].m_nY = cell / m_nWidth;
                         m_Map[cell].m_Type = withType;
                         m_Map[cell].m_Flag = assignTerrainTileFlag(withType);
                     }

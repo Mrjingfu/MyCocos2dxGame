@@ -144,7 +144,7 @@ void BaseBoss::attackedByPlayer(bool miss)
     
     int defense = (int)m_pBossProperty->getDefense().GetLongValue();
     
-    attack = MAX(attack - defense, 1);
+    attack = MAX(attack - defense, cocos2d::random(1, 5));
     
     float percentBlockRate = m_pBossProperty->getBlockRate().GetFloatValue();
     float percentNull = 1.0 - percentBlockRate;

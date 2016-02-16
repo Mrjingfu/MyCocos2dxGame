@@ -9,9 +9,9 @@
 #ifndef TerrainTile_hpp
 #define TerrainTile_hpp
 
-#include "EffectSprite3D.h"
+#include "cocos2d.h"
 extern const std::string TERRAIN_TILES_NAME[];
-class TerrainTile : public EffectSprite3D
+class TerrainTile : public cocos2d::Sprite3D
 {
 public:
     typedef enum
