@@ -160,7 +160,7 @@ void BaseMonster::attackedByPlayer(bool miss)
         
     int defense = (int)m_pMonsterProperty->getDefense().GetLongValue();
         
-    attack = MAX(attack - defense, 1);
+    attack = MAX(attack - defense, cocos2d::random(1, 5));
         
     float percentBlockRate = m_pMonsterProperty->getBlockRate().GetFloatValue();
     float percentNull = 1.0 - percentBlockRate;

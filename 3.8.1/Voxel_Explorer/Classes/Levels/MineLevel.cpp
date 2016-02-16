@@ -61,8 +61,20 @@ bool MineLevel::createTerrain()
                                 return false;
                             ladder->setPosition3D(Vec3(j*TerrainTile::CONTENT_SCALE, -TerrainTile::CONTENT_SCALE*0.5f, -i*TerrainTile::CONTENT_SCALE));
                             VoxelExplorer::getInstance()->getTerrainPortalsLayer()->addChild(ladder);
-                        ladder->setVisited(info.m_bVisited);
-
+                            ladder->setVisited(info.m_bVisited);
+                        }
+                    }
+                    break;
+                case TerrainTile::TT_EXIT:
+                    {
+                        if((RandomDungeon::getInstance()->getCurrentDungeonNode()->isLastDepth()))
+                        {
+                            StandardPortal* portal = StandardPortal::create(true);
+                            if(!portal)
+                                return false;
+                            portal->setPosition3D(Vec3(j*TerrainTile::CONTENT_SCALE, 0, -i*TerrainTile::CONTENT_SCALE));
+                            VoxelExplorer::getInstance()->getTerrainPortalsLayer()->addChild(portal);
+                            portal->setVisited(info.m_bVisited);
                         }
                     }
                     break;

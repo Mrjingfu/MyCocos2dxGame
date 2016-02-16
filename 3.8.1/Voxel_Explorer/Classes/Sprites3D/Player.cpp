@@ -670,7 +670,7 @@ void Player::attackByMonster(MonsterProperty* monsterProperty, bool miss)
     
     int defense = (int)PlayerProperty::getInstance()->getDefense().GetLongValue();
     
-    attack = MAX(attack - defense, 1);
+    attack = MAX(attack - defense, cocos2d::random(1, 3));
     
     float percentBlockRate = PlayerProperty::getInstance()->getBlockRate().GetFloatValue();
     float percentNull = 1.0 - percentBlockRate;
@@ -752,7 +752,7 @@ void Player::attackByBoss(BossProperty* bossProperty, bool miss)
     
     int defense = (int)PlayerProperty::getInstance()->getDefense().GetLongValue();
     
-    attack = MAX(attack - defense, 1);
+    attack = MAX(attack - defense, cocos2d::random(1, 5));
     
     float percentBlockRate = PlayerProperty::getInstance()->getBlockRate().GetFloatValue();
     float percentNull = 1.0 - percentBlockRate;
