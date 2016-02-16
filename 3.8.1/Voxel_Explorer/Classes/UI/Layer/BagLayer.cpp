@@ -260,7 +260,7 @@ std::vector<PickableItemProperty*> BagLayer::getItems()
         sortType = BagLayer::SBT_POTION;
     }
     
-    //对道具进行排序， 武器 0  副手武器 1 护甲 2 饰品 3   装备位置
+    
     //
     int weaponId = int(PlayerProperty::getInstance()->getEquipedWeaponID());
     int armorId = int(PlayerProperty::getInstance()->getEquipedArmorID());
@@ -327,56 +327,76 @@ std::vector<PickableItemProperty*> BagLayer::getItems()
         }
     }
     
-    
+    //对道具进行排序， 武器 0  副手武器 1 护甲 2 饰品 3   装备位置
     if (sortType == eSortBagType::SBT_ALL || sortType == eSortBagType::SBT_EQUIP) {
-        //武器不在首位
-        if (weaponIndex>0)
-        {
-            std::swap( items[0], items[weaponIndex] );
-            weaponIndex = 0;
-        }
-        //护甲不在首位且武器不存在 放在首位
-        if (secondWeaponIndex>0 && weaponIndex<0){
-            std::swap( items[0], items[secondWeaponIndex] );
-            secondWeaponIndex = 0;
-        }else if (secondWeaponIndex >1 && weaponIndex==0) {
-            //护甲不在第2位且武器存在 放在第2位
-            std::swap( items[1], items[secondWeaponIndex] );
-            secondWeaponIndex = 1;
-        }
-        //饰品不在在首位且护甲不存在 武器不存在
-        if (armorIndex>0 && weaponIndex<0 && secondWeaponIndex<0)
-        {
-            std::swap( items[0], items[armorIndex] );
-            armorIndex =0 ;
-        }else if (armorIndex>1 && weaponIndex==0 && secondWeaponIndex<0)
-        {
-            std::swap( items[1], items[armorIndex] );
-            armorIndex = 1;
-        }else if (armorIndex>2 && weaponIndex==0 && secondWeaponIndex==1)
-        {
-            std::swap( items[2], items[armorIndex] );
-            armorIndex = 2;
-            
-        }
         
-        if (OrnamentIndex>0 && weaponIndex<0 && secondWeaponIndex<0 && armorIndex<0)
+        if (weaponId!=-1) {
+             std::swap( items[0], items[weaponIndex] );
+            if (secondWeaponId!=-1) {
+                std::swap( items[1], items[secondWeaponIndex] );
+                if(armorId!=-1)
+                {
+                    std::swap( items[2], items[armorIndex] );
+                    if (OrnamentId!=-1) {
+                         std::swap( items[3], items[OrnamentIndex] );
+                    }
+                }else
+                {
+                    if(OrnamentId!=-1)
+                    {
+                         std::swap( items[2], items[OrnamentIndex] );
+                    }
+                }
+            }else
+            {
+                if(armorId!=-1)
+                {
+                    std::swap( items[1], items[armorIndex] );
+                    if (OrnamentId!=-1) {
+                        std::swap( items[2], items[OrnamentIndex] );
+                    }
+                }else
+                {
+                    if(OrnamentIndex!=-1)
+                    {
+                        std::swap( items[1], items[OrnamentIndex] );
+                    }
+                }
+            }
+        }else
         {
-            std::swap( items[0], items[OrnamentIndex] );
-            OrnamentIndex =0 ;
-        }else if (OrnamentIndex>1 && weaponIndex==0 && secondWeaponIndex<0 && armorIndex<0)
-        {
-            std::swap( items[1], items[OrnamentIndex] );
-            OrnamentIndex = 1;
-        }else if (OrnamentIndex>2 && weaponIndex==0 && secondWeaponIndex==1 && armorIndex<0)
-        {
-            std::swap( items[2], items[OrnamentIndex] );
-            OrnamentIndex = 2;
-            
-        }else if (OrnamentIndex>3 && weaponIndex==0 && secondWeaponIndex==1 && armorIndex==2)
-        {
-            std::swap( items[3], items[OrnamentIndex] );
-            OrnamentIndex = 3;
+            if (secondWeaponId!=-1) {
+                std::swap( items[0], items[secondWeaponIndex] );
+                if(armorId!=-1)
+                {
+                    std::swap( items[1], items[armorIndex] );
+                    if (OrnamentId!=-1) {
+                        std::swap( items[2], items[OrnamentIndex] );
+                    }
+                }else
+                {
+                    if(OrnamentId!=-1)
+                    {
+                        std::swap( items[1], items[OrnamentIndex] );
+                    }
+                }
+            }else
+            {
+                if(armorId!=-1)
+                {
+                    std::swap( items[0], items[armorIndex] );
+                    if (OrnamentId!=-1) {
+                        std::swap( items[1], items[OrnamentIndex] );
+                    }
+                }else
+                {
+                    if(OrnamentIndex!=-1)
+                    {
+                        std::swap( items[0], items[OrnamentIndex] );
+                    }
+                }
+            }
+
         }
     }
     return items;
