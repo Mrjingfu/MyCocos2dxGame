@@ -4,6 +4,8 @@
 <dict>
 	<key>GAME_NAME</key>
 	<string>Voxel Dungeon</string>
+	<key>PLAYER_DESC</key>
+	<string>Huh? You lost yourself?</string>
 	<key>TTN_CHASM</key>
 	<string>It&apos;s too dark to see!</string>
 	<key>TTN_STANDARD</key>

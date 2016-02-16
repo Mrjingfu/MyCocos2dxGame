@@ -172,7 +172,7 @@ void BaseMonster::attackedByPlayer(bool miss)
             attack = attack*0.5f;
             m_pHurtData->m_bBlocked = true;
             StatisticsManager::getInstance()->addBlockTotalNum();
-            std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("CRITICALSTRIKE");
+            std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("BLOCK");
             SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
         }
     }

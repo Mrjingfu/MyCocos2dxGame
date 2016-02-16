@@ -4,6 +4,8 @@
 <dict>
 	<key>GAME_NAME</key>
 	<string>体素地牢</string>
+	<key>PLAYER_DESC</key>
+	<string>嗯？你失忆了吗？</string>
 	<key>TTN_CHASM</key>
 	<string>黑漆漆的看不太清！</string>
 	<key>TTN_STANDARD</key>

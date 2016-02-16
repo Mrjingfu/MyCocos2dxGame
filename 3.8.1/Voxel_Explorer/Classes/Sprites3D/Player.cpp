@@ -19,6 +19,7 @@
 #include "OutlineEffect3D.h"
 #include "PlayerFireBallBullet.hpp"
 #include "PlayerMagicArrowBullet.hpp"
+#include "UtilityHelper.h"
 #include "SdkBoxManager.hpp"
 USING_NS_CC;
 using namespace CocosDenshion;
@@ -80,7 +81,7 @@ std::string Player::getIconRes()
 }
 std::string Player::getDesc()
 {
-    return "Main Player";
+    return UtilityHelper::getLocalString("PLAYER_DESC");
 }
 
 void Player::onEnter()
@@ -454,59 +455,50 @@ void Player::removePlayerBuffer(PlayerBuffer buff)
 }
 void Player::resetPlayerBuffer()
 {
-    auto tex = Director::getInstance()->getTextureCache()->addImage("chr_sword.png");
-    if(tex)
-        tex->setAliasTexParameters();
-    setTexture(tex);
-    
     int bufferFlag = PlayerProperty::getInstance()->getPlayerBuffer();
     if((bufferFlag & PB_STRONGER) != 0)
     {
-        PlayerProperty::getInstance()->removePlayerBuffer(PB_STRONGER);
-        VoxelExplorer::getInstance()->removeParticle3D3DEffectFromPlayer(P3D_EFFECT_TYPE::P3D_STRONGER_BUFFER);
+        removePlayerBuffer(PB_STRONGER);
     }
     if((bufferFlag & PB_STEALTH) != 0)
     {
         setOpacity(255);
-        PlayerProperty::getInstance()->removePlayerBuffer(PB_STEALTH);
-        VoxelExplorer::getInstance()->removeParticle3D3DEffectFromPlayer(P3D_EFFECT_TYPE::P3D_STEALTH_BUFFER);
+        removePlayerBuffer(PB_STEALTH);
     }
     if((bufferFlag & PB_SPEEDUP) != 0)
     {
-        PlayerProperty::getInstance()->removePlayerBuffer(PB_SPEEDUP);
-        VoxelExplorer::getInstance()->removeParticle3D3DEffectFromPlayer(P3D_EFFECT_TYPE::P3D_SPEEDUP_BUFFER);
+        removePlayerBuffer(PB_SPEEDUP);
     }
     if((bufferFlag & PB_POISONING) != 0)
     {
-        PlayerProperty::getInstance()->removePlayerBuffer(PB_POISONING);
-        VoxelExplorer::getInstance()->removeParticle3D3DEffectFromPlayer(P3D_EFFECT_TYPE::P3D_POISIONING_BUFFER);
+        removePlayerBuffer(PB_POISONING);
     }
     if((bufferFlag & PB_WEAK) != 0)
     {
-        PlayerProperty::getInstance()->removePlayerBuffer(PB_WEAK);
-        VoxelExplorer::getInstance()->removeParticle3D3DEffectFromPlayer(P3D_EFFECT_TYPE::P3D_WEAK_BUFFER);
+        removePlayerBuffer(PB_WEAK);
     }
     if((bufferFlag & PB_PARALYTIC) != 0)
     {
-        PlayerProperty::getInstance()->removePlayerBuffer(PB_PARALYTIC);
-        VoxelExplorer::getInstance()->removeParticle3D3DEffectFromPlayer(P3D_EFFECT_TYPE::P3D_PARALYTIC_BUFFER);
+        removePlayerBuffer(PB_PARALYTIC);
     }
     if((bufferFlag & PB_FIRE) != 0)
     {
-        PlayerProperty::getInstance()->removePlayerBuffer(PB_FIRE);
-        VoxelExplorer::getInstance()->removeParticle3D3DEffectFromPlayer(P3D_EFFECT_TYPE::P3D_FIRE_BUFFER);
+        removePlayerBuffer(PB_FIRE);
     }
     if((bufferFlag & PB_FROZEN) != 0)
     {
-        PlayerProperty::getInstance()->removePlayerBuffer(PB_FROZEN);
-        VoxelExplorer::getInstance()->removeParticle3D3DEffectFromPlayer(P3D_EFFECT_TYPE::P3D_FROZEN_BUFFER);
+        removePlayerBuffer(PB_FROZEN);
     }
     if((bufferFlag & PB_BLOCKRATEUP) != 0)
     {
-        PlayerProperty::getInstance()->removePlayerBuffer(PB_BLOCKRATEUP);
-        removeBlockRateUpEffectNode();
+        removePlayerBuffer(PB_BLOCKRATEUP);
     }
     PlayerProperty::getInstance()->resetPlayerBuffer();
+    
+    auto tex = Director::getInstance()->getTextureCache()->addImage("chr_sword.png");
+    if(tex)
+        tex->setAliasTexParameters();
+    setTexture(tex);
 }
 void Player::setState(PlayerState state)
 {
@@ -681,6 +673,8 @@ void Player::attackByMonster(MonsterProperty* monsterProperty, bool miss)
         {
             attack = attack*0.5f;
             m_pHurtData->m_bBlocked = true;
+            std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("BLOCK");
+            SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
         }
     }
     
@@ -692,7 +686,6 @@ void Player::attackByMonster(MonsterProperty* monsterProperty, bool miss)
     if(currentHp == 0)
     {
         setState(PS_DEATH);
-        PlayerProperty::getInstance()->setCurrentHP(currentHp);
         StatisticsManager::getInstance()->addRoleDeadNum(StatisticsManager::eRoleDeadType::RET_MONSTER_ATTACK);
 #if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM ==CC_PLATFORM_ANDROID )
         SdkBoxManager::getInstance()->logEvent("Player", "Death", "AttackByMonster", 1);
@@ -763,6 +756,8 @@ void Player::attackByBoss(BossProperty* bossProperty, bool miss)
         {
             attack = attack*0.5f;
             m_pHurtData->m_bBlocked = true;
+            std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("BLOCK");
+            SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
         }
     }
     
@@ -774,7 +769,6 @@ void Player::attackByBoss(BossProperty* bossProperty, bool miss)
     if(currentHp == 0)
     {
         setState(PS_DEATH);
-        PlayerProperty::getInstance()->setCurrentHP(currentHp);
 #if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM ==CC_PLATFORM_ANDROID )
         SdkBoxManager::getInstance()->logEvent("Player", "Death", "AttackByBoss", 1);
 #endif
@@ -854,7 +848,6 @@ void Player::hurtByGrippingTrap()
     if(currentHp == 0)
     {
         setState(PS_DEATH);
-        PlayerProperty::getInstance()->setCurrentHP(currentHp);
         StatisticsManager::getInstance()->addRoleDeadNum(StatisticsManager::eRoleDeadType::RET_TRIGGER_GRIPPING_TRAP);
 #if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM ==CC_PLATFORM_ANDROID )
         SdkBoxManager::getInstance()->logEvent("Player", "Death", "TriggerGrippingTrap", 1);
@@ -1121,6 +1114,7 @@ void Player::onEnterDeath()
 {
     this->stopAllActions();
     removeTerrainTileFlag(TileInfo::ATTACKABLE);
+    PlayerProperty::getInstance()->setCurrentHP(0);
     resetPlayerBuffer();
     if(m_pFakeShadow)
         m_pFakeShadow->setVisible(false);
@@ -1241,7 +1235,6 @@ void Player::updatePlayerBuffer(float delta)
                 if(currentHp == 0)
                 {
                     setState(PS_DEATH);
-                    PlayerProperty::getInstance()->setCurrentHP(currentHp);
                     StatisticsManager::getInstance()->addRoleDeadNum(StatisticsManager::eRoleDeadType::RET_BUFFER_FIRE);
 #if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM ==CC_PLATFORM_ANDROID )
                     SdkBoxManager::getInstance()->logEvent("Player", "Death", "KilledByBufferFire", 1);
@@ -1271,7 +1264,6 @@ void Player::updatePlayerBuffer(float delta)
             if(currentHp == 0)
             {
                 setState(PS_DEATH);
-                PlayerProperty::getInstance()->setCurrentHP(currentHp);
                 StatisticsManager::getInstance()->addRoleDeadNum(StatisticsManager::eRoleDeadType::RET_BUFFER_POISONING);
 #if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM ==CC_PLATFORM_ANDROID )
                 SdkBoxManager::getInstance()->logEvent("Player", "Death", "KilledByBufferPoisoning", 1);
