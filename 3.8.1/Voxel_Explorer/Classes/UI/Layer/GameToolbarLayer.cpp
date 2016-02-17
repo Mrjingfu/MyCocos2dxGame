@@ -193,12 +193,16 @@ void GameToolbarLayer::onClickBag(Ref* ref)
     if (m_bIsDist) {
         return;
     }
-//  PopupUILayerManager::getInstance()->openPopup(ePopupRole);
-    ShopPopupUI* popupUILayer = static_cast<ShopPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupGambleShop));
-    if (popupUILayer) {
-        popupUILayer->setShopTitle(EVENT_NPC_WEIRDO_ANSWER);
-        popupUILayer->setDarkLayerVisble(true);
-    }
+  
+//#if COCOS2D_DEBUG==1
+//    ShopPopupUI* popupUILayer = static_cast<ShopPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupGambleShop));
+//    if (popupUILayer) {
+//        popupUILayer->setShopTitle(EVENT_NPC_WEIRDO_ANSWER);
+//        popupUILayer->setDarkLayerVisble(true);
+//    }
+//#else
+  PopupUILayerManager::getInstance()->openPopup(ePopupRole);
+//#endif
     setDistTipsFrame();
 }
 void GameToolbarLayer::onClickMap(cocos2d::Ref *ref)
