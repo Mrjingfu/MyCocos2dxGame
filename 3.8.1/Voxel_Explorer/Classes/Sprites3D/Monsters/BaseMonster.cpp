@@ -115,6 +115,9 @@ void BaseMonster::attackedByPlayer(bool miss)
     if(!m_pMonsterProperty || !m_pHurtData)
         return;
     
+    if(m_State == MS_SLEEPING)
+        setState(MS_TRACKING);
+    
     m_pHurtData->reset();
     m_pHurtData->m_vPos = this->getPosition3D();
     

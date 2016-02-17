@@ -138,6 +138,7 @@ bool MineLevel::createTerrain()
                         door->setVisited(info.m_bVisited);
                         door->setActorDir(info.m_Dir);
                         door->setDoorState(BaseDoor::DS_LOCKED);
+                        m_nLockedDoorCount++;
                     }
                     break;
                 case TerrainTile::TT_LOCKED_BOSS_DOOR:

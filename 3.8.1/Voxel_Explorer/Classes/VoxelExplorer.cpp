@@ -1022,6 +1022,10 @@ void VoxelExplorer::handleDoor(const cocos2d::Vec2& mapPos)
                         {
                             m_pCurrentLevel->updateAreaFogOfWarByPos(door->getPosInMap());
                             updateStatisticsAreaDatas();
+                            if(m_pCurrentLevel->getTerrainTileType(mapPos.x, mapPos.y) == TerrainTile::TT_DOOR)
+                            {
+                                m_pCurrentLevel->setTerrainTileType(mapPos.x, mapPos.y, TerrainTile::TT_OPENED_DOOR);
+                            }
                         }
                         return;
                     }
