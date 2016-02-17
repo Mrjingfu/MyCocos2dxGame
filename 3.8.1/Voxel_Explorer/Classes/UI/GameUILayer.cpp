@@ -1158,7 +1158,7 @@ void GameUILayer::onEventRoleFallAndDie(cocos2d::EventCustom *sender)
 {
     CCLOG("onEventRoleFallAndDie");
     m_pGameToolBarLayer->sendMessage(UtilityHelper::getLocalStringForUi(EVENT_PLAYER_FALL_AND_DIE),PopupUILayerManager::getInstance()->getTipsColor(TIP_POSITIVE));
-     roleDead();
+//     roleDead();
 }
 void GameUILayer::onEvenetRoleEquipedWeapon(cocos2d::EventCustom *sender)
 {
