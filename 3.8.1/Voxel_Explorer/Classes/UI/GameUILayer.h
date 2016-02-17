@@ -171,7 +171,7 @@ private:
     void setCharacterPropLayerVisible(bool isMonster,bool isNpc,bool isBoss);
 private:
    
-    SkillLayer* m_pSkillLayer;
+   SkillLayer* m_pSkillLayer;
    cocos2d::LayerColor* m_pWhiteLayer;
    GameInfoLayer*    m_pGameInfoLayer;
    GameToolbarLayer* m_pGameToolBarLayer;
@@ -182,6 +182,7 @@ private:
    HudPromptLayer*   m_pRoleHudLayer;
    HudPromptLayer*   m_pMonsterHudLayer;
    AchievePopupUI*   m_pAchievePopupUI;
+    bool m_bSwitchScene;
 };
 
 #endif /* GameUILayer_h */

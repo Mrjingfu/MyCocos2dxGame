@@ -52,6 +52,7 @@ GameUILayer::GameUILayer()
     m_pMonsterPropLayer         = nullptr;
     m_pRoleHudLayer             = nullptr;
     m_pMonsterHudLayer          = nullptr;
+    m_bSwitchScene              = false;
 }
 GameUILayer::~GameUILayer()
 {
@@ -146,9 +147,11 @@ void GameUILayer::switchToMenuScene()
         CallFunc* callFunc = CallFunc::create([this](){
             auto scene = MenuScene::createScene();
             Director::getInstance()->replaceScene(scene);
+             m_bSwitchScene = false;
         });
         Sequence* sequence = Sequence::create( fadeIn, callFunc, NULL);
         m_pWhiteLayer->runAction(sequence);
+        m_bSwitchScene = true;
     }
 }
 
@@ -328,12 +331,15 @@ void GameUILayer::updateShowRoleExp(int exp)
 void GameUILayer::roleDead()
 {
     refreshUIView();
-    DeadPopupUI* pausePopup = static_cast<DeadPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupDead));
-    if (pausePopup) {
-        pausePopup->setDarkLayerVisble(true);
-        pausePopup->getRootNode()->setVisible(true);
-        ArchiveManager::getInstance()->saveGame();
-        VoxelExplorer::getInstance()->getCurrentLevel()->showMap(false);
+    if (!m_bSwitchScene) {
+        DeadPopupUI* pausePopup = static_cast<DeadPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupDead));
+        if (pausePopup) {
+            pausePopup->setDarkLayerVisble(true);
+            pausePopup->getRootNode()->setVisible(true);
+            ArchiveManager::getInstance()->saveGame();
+            VoxelExplorer::getInstance()->getCurrentLevel()->showMap(false);
+        }
+  
     }
   }
  void GameUILayer::popupNpc(Npc* npc,std::string eventStr)
