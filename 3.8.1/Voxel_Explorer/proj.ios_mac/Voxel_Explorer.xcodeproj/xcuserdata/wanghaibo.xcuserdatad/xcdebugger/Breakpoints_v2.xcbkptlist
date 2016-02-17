@@ -90,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "475586263.946646"
+            timestampString = "477396753.79556"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "2104"
-            endingLineNumber = "2104"
+            startingLineNumber = "2108"
+            endingLineNumber = "2108"
             landmarkName = "VoxelExplorer::createLevel()"
             landmarkType = "5">
          </BreakpointContent>
@@ -122,11 +122,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "475586263.946646"
+            timestampString = "477396753.79556"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "2108"
-            endingLineNumber = "2108"
+            startingLineNumber = "2112"
+            endingLineNumber = "2112"
             landmarkName = "VoxelExplorer::createLevel()"
             landmarkType = "5">
          </BreakpointContent>
@@ -1960,11 +1960,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "475586263.946646"
+            timestampString = "477396753.79556"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1340"
-            endingLineNumber = "1340"
+            startingLineNumber = "1344"
+            endingLineNumber = "1344"
             landmarkName = "VoxelExplorer::handleShowHiddenTrap(const cocos2d::Vec2&amp; mapPos, TerrainTile::TileType trapType)"
             landmarkType = "5">
          </BreakpointContent>
@@ -2264,11 +2264,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "475586263.946646"
+            timestampString = "477396753.79556"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1354"
-            endingLineNumber = "1354"
+            startingLineNumber = "1358"
+            endingLineNumber = "1358"
             landmarkName = "VoxelExplorer::handleShowHiddenTrap(const cocos2d::Vec2&amp; mapPos, TerrainTile::TileType trapType)"
             landmarkType = "5">
          </BreakpointContent>
@@ -2280,11 +2280,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "475586263.946646"
+            timestampString = "477396753.79556"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1389"
-            endingLineNumber = "1389"
+            startingLineNumber = "1393"
+            endingLineNumber = "1393"
             landmarkName = "VoxelExplorer::handleShowSearchEffect(const cocos2d::Vec2&amp; mapPos)"
             landmarkType = "5">
          </BreakpointContent>
@@ -2328,11 +2328,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Monsters/BaseMonster.cpp"
-            timestampString = "473068373.117063"
+            timestampString = "477396753.79556"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "429"
-            endingLineNumber = "429"
+            startingLineNumber = "432"
+            endingLineNumber = "432"
             landmarkName = "BaseMonster::onExitMoving()"
             landmarkType = "5">
          </BreakpointContent>
@@ -2776,11 +2776,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Monsters/BaseMonster.cpp"
-            timestampString = "473068373.117063"
+            timestampString = "477396753.79556"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "367"
-            endingLineNumber = "367"
+            startingLineNumber = "370"
+            endingLineNumber = "370"
             landmarkName = "BaseMonster::onEnterWandering()"
             landmarkType = "5">
          </BreakpointContent>
@@ -2792,11 +2792,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Monsters/BaseMonster.cpp"
-            timestampString = "473068373.117063"
+            timestampString = "477396753.79556"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "307"
-            endingLineNumber = "307"
+            startingLineNumber = "310"
+            endingLineNumber = "310"
             landmarkName = "BaseMonster::update(float delta)"
             landmarkType = "5">
          </BreakpointContent>
@@ -2808,11 +2808,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Monsters/BaseMonster.cpp"
-            timestampString = "473068373.117063"
+            timestampString = "477396753.79556"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "284"
-            endingLineNumber = "284"
+            startingLineNumber = "287"
+            endingLineNumber = "287"
             landmarkName = "BaseMonster::setState(MonsterState state)"
             landmarkType = "5">
          </BreakpointContent>
@@ -2824,11 +2824,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Monsters/BaseMonster.cpp"
-            timestampString = "473068373.117063"
+            timestampString = "477396753.79556"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "401"
-            endingLineNumber = "401"
+            startingLineNumber = "404"
+            endingLineNumber = "404"
             landmarkName = "BaseMonster::onExitPassive()"
             landmarkType = "5">
          </BreakpointContent>
@@ -2840,11 +2840,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Monsters/BaseMonster.cpp"
-            timestampString = "473068373.117063"
+            timestampString = "477396753.79556"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "336"
-            endingLineNumber = "336"
+            startingLineNumber = "339"
+            endingLineNumber = "339"
             landmarkName = "BaseMonster::update(float delta)"
             landmarkType = "5">
          </BreakpointContent>
@@ -2856,11 +2856,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Monsters/BaseMonster.cpp"
-            timestampString = "473068373.117063"
+            timestampString = "477396753.79556"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "287"
-            endingLineNumber = "287"
+            startingLineNumber = "290"
+            endingLineNumber = "290"
             landmarkName = "BaseMonster::onEnter()"
             landmarkType = "5">
          </BreakpointContent>
@@ -2872,11 +2872,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Monsters/BaseMonster.cpp"
-            timestampString = "473068373.117063"
+            timestampString = "477396753.79556"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "405"
-            endingLineNumber = "405"
+            startingLineNumber = "408"
+            endingLineNumber = "408"
             landmarkName = "BaseMonster::onEnterConfusing()"
             landmarkType = "5">
          </BreakpointContent>
@@ -2888,11 +2888,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Monsters/BaseMonster.cpp"
-            timestampString = "473068373.117063"
+            timestampString = "477396753.79556"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "408"
-            endingLineNumber = "408"
+            startingLineNumber = "411"
+            endingLineNumber = "411"
             landmarkName = "BaseMonster::onExitConfusing()"
             landmarkType = "5">
          </BreakpointContent>
@@ -2904,11 +2904,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Monsters/BaseMonster.cpp"
-            timestampString = "473068373.117063"
+            timestampString = "477396753.79556"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "298"
-            endingLineNumber = "298"
+            startingLineNumber = "301"
+            endingLineNumber = "301"
             landmarkName = "BaseMonster::update(float delta)"
             landmarkType = "5">
          </BreakpointContent>
@@ -2920,11 +2920,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Monsters/BaseMonster.cpp"
-            timestampString = "473068373.117063"
+            timestampString = "477396753.79556"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "419"
-            endingLineNumber = "419"
+            startingLineNumber = "422"
+            endingLineNumber = "422"
             landmarkName = "BaseMonster::onEnterMoving()"
             landmarkType = "5">
          </BreakpointContent>
@@ -3064,11 +3064,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Monsters/BaseMonster.cpp"
-            timestampString = "473068373.117063"
+            timestampString = "477396753.79556"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "440"
-            endingLineNumber = "440"
+            startingLineNumber = "443"
+            endingLineNumber = "443"
             landmarkName = "BaseMonster::onExitAttack()"
             landmarkType = "5">
          </BreakpointContent>
@@ -3080,11 +3080,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Monsters/BaseMonster.cpp"
-            timestampString = "473068373.117063"
+            timestampString = "477396753.79556"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "292"
-            endingLineNumber = "292"
+            startingLineNumber = "295"
+            endingLineNumber = "295"
             landmarkName = "BaseMonster::onExit()"
             landmarkType = "5">
          </BreakpointContent>
@@ -3096,11 +3096,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Monsters/BaseMonster.cpp"
-            timestampString = "473068373.117063"
+            timestampString = "477396753.79556"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "300"
-            endingLineNumber = "300"
+            startingLineNumber = "303"
+            endingLineNumber = "303"
             landmarkName = "BaseMonster::update(float delta)"
             landmarkType = "5">
          </BreakpointContent>
@@ -3112,11 +3112,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Monsters/BaseMonster.cpp"
-            timestampString = "473068373.117063"
+            timestampString = "477396753.79556"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "308"
-            endingLineNumber = "308"
+            startingLineNumber = "311"
+            endingLineNumber = "311"
             landmarkName = "BaseMonster::update(float delta)"
             landmarkType = "5">
          </BreakpointContent>
@@ -3128,11 +3128,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Monsters/BaseMonster.cpp"
-            timestampString = "473068373.117063"
+            timestampString = "477396753.79556"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "269"
-            endingLineNumber = "269"
+            startingLineNumber = "272"
+            endingLineNumber = "272"
             landmarkName = "BaseMonster::setState(MonsterState state)"
             landmarkType = "5">
          </BreakpointContent>
@@ -3144,11 +3144,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Monsters/BaseMonster.cpp"
-            timestampString = "473068373.117063"
+            timestampString = "477396753.79556"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "240"
-            endingLineNumber = "240"
+            startingLineNumber = "243"
+            endingLineNumber = "243"
             landmarkName = "BaseMonster::setState(MonsterState state)"
             landmarkType = "5">
          </BreakpointContent>
@@ -3160,11 +3160,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Monsters/BaseMonster.cpp"
-            timestampString = "473068373.117063"
+            timestampString = "477396753.79556"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "291"
-            endingLineNumber = "291"
+            startingLineNumber = "294"
+            endingLineNumber = "294"
             landmarkName = "BaseMonster::onExit()"
             landmarkType = "5">
          </BreakpointContent>
@@ -3176,11 +3176,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Monsters/BaseMonster.cpp"
-            timestampString = "473068373.117063"
+            timestampString = "477396753.79556"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "426"
-            endingLineNumber = "426"
+            startingLineNumber = "429"
+            endingLineNumber = "429"
             landmarkName = "BaseMonster::onEnterMoving()"
             landmarkType = "5">
          </BreakpointContent>
@@ -3192,11 +3192,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Monsters/BaseMonster.cpp"
-            timestampString = "473068373.117063"
+            timestampString = "477396753.79556"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "206"
-            endingLineNumber = "206"
+            startingLineNumber = "209"
+            endingLineNumber = "209"
             landmarkName = "BaseMonster::attackedByPlayer(bool miss)"
             landmarkType = "5">
          </BreakpointContent>
@@ -3208,11 +3208,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "475586263.946646"
+            timestampString = "477396753.79556"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1365"
-            endingLineNumber = "1365"
+            startingLineNumber = "1369"
+            endingLineNumber = "1369"
             landmarkName = "VoxelExplorer::handleShowHiddenTrap(const cocos2d::Vec2&amp; mapPos, TerrainTile::TileType trapType)"
             landmarkType = "5">
          </BreakpointContent>
@@ -3256,11 +3256,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "475586263.946646"
+            timestampString = "477396753.79556"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1334"
-            endingLineNumber = "1334"
+            startingLineNumber = "1338"
+            endingLineNumber = "1338"
             landmarkName = "VoxelExplorer::handleShowHiddenTrap(const cocos2d::Vec2&amp; mapPos, TerrainTile::TileType trapType)"
             landmarkType = "5">
          </BreakpointContent>
@@ -3272,11 +3272,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "475586263.946646"
+            timestampString = "477396753.79556"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1337"
-            endingLineNumber = "1337"
+            startingLineNumber = "1341"
+            endingLineNumber = "1341"
             landmarkName = "VoxelExplorer::handleShowHiddenTrap(const cocos2d::Vec2&amp; mapPos, TerrainTile::TileType trapType)"
             landmarkType = "5">
          </BreakpointContent>
@@ -3288,11 +3288,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "475586263.946646"
+            timestampString = "477396753.79556"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1329"
-            endingLineNumber = "1329"
+            startingLineNumber = "1333"
+            endingLineNumber = "1333"
             landmarkName = "VoxelExplorer::handleShowHiddenTrap(const cocos2d::Vec2&amp; mapPos, TerrainTile::TileType trapType)"
             landmarkType = "5">
          </BreakpointContent>
@@ -3352,11 +3352,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "475586263.946646"
+            timestampString = "477396753.79556"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1363"
-            endingLineNumber = "1363"
+            startingLineNumber = "1367"
+            endingLineNumber = "1367"
             landmarkName = "VoxelExplorer::handleShowHiddenTrap(const cocos2d::Vec2&amp; mapPos, TerrainTile::TileType trapType)"
             landmarkType = "5">
          </BreakpointContent>
@@ -3368,11 +3368,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Monsters/BaseMonster.cpp"
-            timestampString = "473068373.117063"
+            timestampString = "477396753.79556"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "195"
-            endingLineNumber = "195"
+            startingLineNumber = "198"
+            endingLineNumber = "198"
             landmarkName = "BaseMonster::attackedByPlayer(bool miss)"
             landmarkType = "5">
          </BreakpointContent>
@@ -3416,11 +3416,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Monsters/BaseMonster.cpp"
-            timestampString = "473068373.117063"
+            timestampString = "477396753.79556"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "294"
-            endingLineNumber = "294"
+            startingLineNumber = "297"
+            endingLineNumber = "297"
             landmarkName = "BaseMonster::onExit()"
             landmarkType = "5">
          </BreakpointContent>
@@ -3432,11 +3432,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Monsters/BaseMonster.cpp"
-            timestampString = "473068373.117063"
+            timestampString = "477396753.79556"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "295"
-            endingLineNumber = "295"
+            startingLineNumber = "298"
+            endingLineNumber = "298"
             landmarkName = "BaseMonster::onExit()"
             landmarkType = "5">
          </BreakpointContent>
@@ -3464,11 +3464,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Monsters/BaseMonster.cpp"
-            timestampString = "473068373.117063"
+            timestampString = "477396753.79556"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "203"
-            endingLineNumber = "203"
+            startingLineNumber = "206"
+            endingLineNumber = "206"
             landmarkName = "BaseMonster::attackedByPlayer(bool miss)"
             landmarkType = "5">
          </BreakpointContent>
@@ -3480,11 +3480,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Monsters/BaseMonster.cpp"
-            timestampString = "473068373.117063"
+            timestampString = "477396753.79556"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "317"
-            endingLineNumber = "317"
+            startingLineNumber = "320"
+            endingLineNumber = "320"
             landmarkName = "BaseMonster::update(float delta)"
             landmarkType = "5">
          </BreakpointContent>
@@ -3496,87 +3496,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Monsters/BaseMonster.cpp"
-            timestampString = "473068373.117063"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "260"
-            endingLineNumber = "260"
-            landmarkName = "BaseMonster::setState(MonsterState state)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../Classes/Sprites3D/Monsters/BaseMonster.cpp"
-            timestampString = "473068373.117063"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "331"
-            endingLineNumber = "331"
-            landmarkName = "BaseMonster::update(float delta)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../Classes/Sprites3D/Monsters/BaseMonster.cpp"
-            timestampString = "473068373.117063"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "413"
-            endingLineNumber = "413"
-            landmarkName = "BaseMonster::onEnterMoving()"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../Classes/Sprites3D/Monsters/BaseMonster.cpp"
-            timestampString = "473068373.117063"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "415"
-            endingLineNumber = "415"
-            landmarkName = "BaseMonster::onEnterMoving()"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../Classes/Sprites3D/Monsters/BaseMonster.cpp"
-            timestampString = "473068373.117063"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "290"
-            endingLineNumber = "290"
-            landmarkName = "BaseMonster::onEnter()"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../Classes/Sprites3D/Monsters/BaseMonster.cpp"
-            timestampString = "473068373.117063"
+            timestampString = "477396753.79556"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "263"
@@ -3592,11 +3512,91 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Monsters/BaseMonster.cpp"
-            timestampString = "473068373.117063"
+            timestampString = "477396753.79556"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "368"
-            endingLineNumber = "368"
+            startingLineNumber = "334"
+            endingLineNumber = "334"
+            landmarkName = "BaseMonster::update(float delta)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/Sprites3D/Monsters/BaseMonster.cpp"
+            timestampString = "477396753.79556"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "416"
+            endingLineNumber = "416"
+            landmarkName = "BaseMonster::onEnterMoving()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/Sprites3D/Monsters/BaseMonster.cpp"
+            timestampString = "477396753.79556"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "418"
+            endingLineNumber = "418"
+            landmarkName = "BaseMonster::onEnterMoving()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/Sprites3D/Monsters/BaseMonster.cpp"
+            timestampString = "477396753.79556"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "293"
+            endingLineNumber = "293"
+            landmarkName = "BaseMonster::onEnter()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/Sprites3D/Monsters/BaseMonster.cpp"
+            timestampString = "477396753.79556"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "266"
+            endingLineNumber = "266"
+            landmarkName = "BaseMonster::setState(MonsterState state)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/Sprites3D/Monsters/BaseMonster.cpp"
+            timestampString = "477396753.79556"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "371"
+            endingLineNumber = "371"
             landmarkName = "BaseMonster::onEnterWandering()"
             landmarkType = "5">
          </BreakpointContent>
@@ -3608,11 +3608,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Monsters/BaseMonster.cpp"
-            timestampString = "473068373.117063"
+            timestampString = "477396753.79556"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "494"
-            endingLineNumber = "494"
+            startingLineNumber = "497"
+            endingLineNumber = "497"
             landmarkName = "BaseMonster::onLand(bool updateMiniMap)"
             landmarkType = "5">
          </BreakpointContent>
@@ -3624,11 +3624,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Monsters/BaseMonster.cpp"
-            timestampString = "473068373.117063"
+            timestampString = "477396753.79556"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "248"
-            endingLineNumber = "248"
+            startingLineNumber = "251"
+            endingLineNumber = "251"
             landmarkName = "BaseMonster::setState(MonsterState state)"
             landmarkType = "5">
          </BreakpointContent>
@@ -3656,11 +3656,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Monsters/BaseMonster.cpp"
-            timestampString = "473068373.117063"
+            timestampString = "477396753.79556"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "329"
-            endingLineNumber = "329"
+            startingLineNumber = "332"
+            endingLineNumber = "332"
             landmarkName = "BaseMonster::update(float delta)"
             landmarkType = "5">
          </BreakpointContent>
@@ -3672,11 +3672,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Monsters/BaseMonster.cpp"
-            timestampString = "473068373.117063"
+            timestampString = "477396753.79556"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "404"
-            endingLineNumber = "404"
+            startingLineNumber = "407"
+            endingLineNumber = "407"
             landmarkName = "BaseMonster::onEnterConfusing()"
             landmarkType = "5">
          </BreakpointContent>
@@ -3688,11 +3688,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Monsters/BaseMonster.cpp"
-            timestampString = "473068373.117063"
+            timestampString = "477396753.79556"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "406"
-            endingLineNumber = "406"
+            startingLineNumber = "409"
+            endingLineNumber = "409"
             landmarkName = "BaseMonster::onEnterConfusing()"
             landmarkType = "5">
          </BreakpointContent>
@@ -3752,11 +3752,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "475586263.946646"
+            timestampString = "477396753.79556"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1147"
-            endingLineNumber = "1147"
+            startingLineNumber = "1151"
+            endingLineNumber = "1151"
             landmarkName = "VoxelExplorer::handleUseUseableItem(const cocos2d::Vec2&amp; mapPos)"
             landmarkType = "5">
          </BreakpointContent>
@@ -3848,11 +3848,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "475586263.946646"
+            timestampString = "477396753.79556"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1188"
-            endingLineNumber = "1188"
+            startingLineNumber = "1192"
+            endingLineNumber = "1192"
             landmarkName = "VoxelExplorer::handleUseUseableItem(const cocos2d::Vec2&amp; mapPos)"
             landmarkType = "5">
          </BreakpointContent>
@@ -3880,11 +3880,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "475586263.946646"
+            timestampString = "477396753.79556"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1259"
-            endingLineNumber = "1259"
+            startingLineNumber = "1263"
+            endingLineNumber = "1263"
             landmarkName = "VoxelExplorer::handleTriggerTrap(const cocos2d::Vec2&amp; mapPos, TerrainTile::TileType trapType)"
             landmarkType = "5">
          </BreakpointContent>
@@ -3928,11 +3928,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "475586263.946646"
+            timestampString = "477396753.79556"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1330"
-            endingLineNumber = "1330"
+            startingLineNumber = "1334"
+            endingLineNumber = "1334"
             landmarkName = "VoxelExplorer::handleShowHiddenTrap(const cocos2d::Vec2&amp; mapPos, TerrainTile::TileType trapType)"
             landmarkType = "5">
          </BreakpointContent>
@@ -4216,11 +4216,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "475586263.946646"
+            timestampString = "477396753.79556"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1644"
-            endingLineNumber = "1644"
+            startingLineNumber = "1648"
+            endingLineNumber = "1648"
             landmarkName = "VoxelExplorer::handlePlayerUsePotion(PickableItem::PickableItemType type)"
             landmarkType = "5">
          </BreakpointContent>
@@ -4904,11 +4904,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "475586263.946646"
+            timestampString = "477396753.79556"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1228"
-            endingLineNumber = "1228"
+            startingLineNumber = "1232"
+            endingLineNumber = "1232"
             landmarkName = "VoxelExplorer::handleTriggerTrap(const cocos2d::Vec2&amp; mapPos, TerrainTile::TileType trapType)"
             landmarkType = "5">
          </BreakpointContent>
@@ -4968,11 +4968,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Monsters/BaseMonster.cpp"
-            timestampString = "473068373.117063"
+            timestampString = "477396753.79556"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "614"
-            endingLineNumber = "614"
+            startingLineNumber = "617"
+            endingLineNumber = "617"
             landmarkName = "BaseMonster::doAttack()"
             landmarkType = "5">
          </BreakpointContent>
@@ -5000,11 +5000,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "475586263.946646"
+            timestampString = "477396753.79556"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1106"
-            endingLineNumber = "1106"
+            startingLineNumber = "1110"
+            endingLineNumber = "1110"
             landmarkName = "VoxelExplorer::handleUseUseableItem(const cocos2d::Vec2&amp; mapPos)"
             landmarkType = "5">
          </BreakpointContent>
@@ -5462,11 +5462,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "475586263.946646"
+            timestampString = "477396753.79556"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1587"
-            endingLineNumber = "1587"
+            startingLineNumber = "1591"
+            endingLineNumber = "1591"
             landmarkName = "VoxelExplorer::handlePlayerUseScroll(PickableItem::PickableItemType type)"
             landmarkType = "5">
          </BreakpointContent>
@@ -5750,11 +5750,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "475586263.946646"
+            timestampString = "477396753.79556"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "2094"
-            endingLineNumber = "2094"
+            startingLineNumber = "2098"
+            endingLineNumber = "2098"
             landmarkName = "VoxelExplorer::createLights()"
             landmarkType = "5">
          </BreakpointContent>
@@ -6422,11 +6422,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "475586263.946646"
+            timestampString = "477396753.79556"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1026"
-            endingLineNumber = "1026"
+            startingLineNumber = "1030"
+            endingLineNumber = "1030"
             landmarkName = "VoxelExplorer::handleDoor(const cocos2d::Vec2&amp; mapPos)"
             landmarkType = "5">
          </BreakpointContent>
@@ -6438,11 +6438,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "475586263.946646"
+            timestampString = "477396753.79556"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1029"
-            endingLineNumber = "1029"
+            startingLineNumber = "1033"
+            endingLineNumber = "1033"
             landmarkName = "VoxelExplorer::handleDoor(const cocos2d::Vec2&amp; mapPos)"
             landmarkType = "5">
          </BreakpointContent>
@@ -6454,11 +6454,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "475586263.946646"
+            timestampString = "477396753.79556"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1038"
-            endingLineNumber = "1038"
+            startingLineNumber = "1042"
+            endingLineNumber = "1042"
             landmarkName = "VoxelExplorer::handleDoor(const cocos2d::Vec2&amp; mapPos)"
             landmarkType = "5">
          </BreakpointContent>
@@ -6646,11 +6646,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "475586263.946646"
+            timestampString = "477396753.79556"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1374"
-            endingLineNumber = "1374"
+            startingLineNumber = "1378"
+            endingLineNumber = "1378"
             landmarkName = "VoxelExplorer::handleShowHiddenTrap(const cocos2d::Vec2&amp; mapPos, TerrainTile::TileType trapType)"
             landmarkType = "5">
             <Locations>
@@ -7494,23 +7494,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Boss/BaseBoss.cpp"
-            timestampString = "473518037.403993"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "316"
-            endingLineNumber = "316"
-            landmarkName = "BaseBoss::update(float delta)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../Classes/Sprites3D/Boss/BaseBoss.cpp"
-            timestampString = "473518037.403993"
+            timestampString = "477396753.79556"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "319"
@@ -7526,11 +7510,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Boss/BaseBoss.cpp"
-            timestampString = "473518037.403993"
+            timestampString = "477396753.79556"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "308"
-            endingLineNumber = "308"
+            startingLineNumber = "322"
+            endingLineNumber = "322"
             landmarkName = "BaseBoss::update(float delta)"
             landmarkType = "5">
          </BreakpointContent>
@@ -7542,11 +7526,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Boss/BaseBoss.cpp"
-            timestampString = "473518037.403993"
+            timestampString = "477396753.79556"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "309"
-            endingLineNumber = "309"
+            startingLineNumber = "311"
+            endingLineNumber = "311"
             landmarkName = "BaseBoss::update(float delta)"
             landmarkType = "5">
          </BreakpointContent>
@@ -7558,11 +7542,27 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Boss/BaseBoss.cpp"
-            timestampString = "473518037.403993"
+            timestampString = "477396753.79556"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "484"
-            endingLineNumber = "484"
+            startingLineNumber = "312"
+            endingLineNumber = "312"
+            landmarkName = "BaseBoss::update(float delta)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/Sprites3D/Boss/BaseBoss.cpp"
+            timestampString = "477396753.79556"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "487"
+            endingLineNumber = "487"
             landmarkName = "BaseBoss::onLand(bool updateMiniMap)"
             landmarkType = "5">
          </BreakpointContent>
@@ -7590,11 +7590,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Boss/BaseBoss.cpp"
-            timestampString = "473518037.403993"
+            timestampString = "477396753.79556"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "306"
-            endingLineNumber = "306"
+            startingLineNumber = "309"
+            endingLineNumber = "309"
             landmarkName = "BaseBoss::update(float delta)"
             landmarkType = "5">
          </BreakpointContent>
@@ -7622,11 +7622,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Boss/BaseBoss.cpp"
-            timestampString = "473518037.403993"
+            timestampString = "477396753.79556"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "386"
-            endingLineNumber = "386"
+            startingLineNumber = "389"
+            endingLineNumber = "389"
             landmarkName = "BaseBoss::onEnterMoving()"
             landmarkType = "5">
          </BreakpointContent>
@@ -7638,11 +7638,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Boss/BaseBoss.cpp"
-            timestampString = "473518037.403993"
+            timestampString = "477396753.79556"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "379"
-            endingLineNumber = "379"
+            startingLineNumber = "382"
+            endingLineNumber = "382"
             landmarkName = "BaseBoss::onEnterMoving()"
             landmarkType = "5">
          </BreakpointContent>
@@ -7654,11 +7654,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Boss/BaseBoss.cpp"
-            timestampString = "473518037.403993"
+            timestampString = "477396753.79556"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "372"
-            endingLineNumber = "372">
+            startingLineNumber = "375"
+            endingLineNumber = "375">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -7668,11 +7668,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Boss/BaseBoss.cpp"
-            timestampString = "473518037.403993"
+            timestampString = "477396753.79556"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "479"
-            endingLineNumber = "479"
+            startingLineNumber = "482"
+            endingLineNumber = "482"
             landmarkName = "BaseBoss::onLand(bool updateMiniMap)"
             landmarkType = "5">
          </BreakpointContent>
@@ -7700,11 +7700,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Boss/BaseBoss.cpp"
-            timestampString = "473518037.403993"
+            timestampString = "477396753.79556"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "504"
-            endingLineNumber = "504"
+            startingLineNumber = "507"
+            endingLineNumber = "507"
             landmarkName = "BaseBoss::onLand(bool updateMiniMap)"
             landmarkType = "5">
          </BreakpointContent>
@@ -7716,11 +7716,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Boss/BaseBoss.cpp"
-            timestampString = "473518037.403993"
+            timestampString = "477396753.79556"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "506"
-            endingLineNumber = "506"
+            startingLineNumber = "509"
+            endingLineNumber = "509"
             landmarkName = "BaseBoss::moveToNext(const cocos2d::Vec2&amp; next)"
             landmarkType = "5">
          </BreakpointContent>
@@ -7764,11 +7764,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Boss/BaseBoss.cpp"
-            timestampString = "473518037.403993"
+            timestampString = "477396753.79556"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "298"
-            endingLineNumber = "298"
+            startingLineNumber = "301"
+            endingLineNumber = "301"
             landmarkName = "BaseBoss::update(float delta)"
             landmarkType = "5">
          </BreakpointContent>
@@ -7796,11 +7796,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Boss/BaseBoss.cpp"
-            timestampString = "473518037.403993"
+            timestampString = "477396753.79556"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "197"
-            endingLineNumber = "197"
+            startingLineNumber = "200"
+            endingLineNumber = "200"
             landmarkName = "BaseBoss::createFakeShadow()"
             landmarkType = "5">
          </BreakpointContent>
@@ -7812,11 +7812,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Boss/BaseBoss.cpp"
-            timestampString = "473518037.403993"
+            timestampString = "477396753.79556"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "315"
-            endingLineNumber = "315"
+            startingLineNumber = "318"
+            endingLineNumber = "318"
             landmarkName = "BaseBoss::update(float delta)"
             landmarkType = "5">
          </BreakpointContent>
@@ -7844,11 +7844,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Boss/BaseBoss.cpp"
-            timestampString = "473518037.403993"
+            timestampString = "477396753.79556"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "477"
-            endingLineNumber = "477"
+            startingLineNumber = "480"
+            endingLineNumber = "480"
             landmarkName = "BaseBoss::setActorDir( ActorDir dir )"
             landmarkType = "5">
          </BreakpointContent>
@@ -7860,11 +7860,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Boss/BaseBoss.cpp"
-            timestampString = "473518037.403993"
+            timestampString = "477396753.79556"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "476"
-            endingLineNumber = "476"
+            startingLineNumber = "479"
+            endingLineNumber = "479"
             landmarkName = "BaseBoss::setActorDir( ActorDir dir )"
             landmarkType = "5">
          </BreakpointContent>
@@ -7876,11 +7876,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Boss/BaseBoss.cpp"
-            timestampString = "473518037.403993"
+            timestampString = "477396753.79556"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "202"
-            endingLineNumber = "202"
+            startingLineNumber = "205"
+            endingLineNumber = "205"
             landmarkName = "BaseBoss::setState(BossState state)"
             landmarkType = "5">
          </BreakpointContent>
@@ -7892,11 +7892,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Boss/BaseBoss.cpp"
-            timestampString = "473518037.403993"
+            timestampString = "477396753.79556"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "318"
-            endingLineNumber = "318"
+            startingLineNumber = "321"
+            endingLineNumber = "321"
             landmarkName = "BaseBoss::update(float delta)"
             landmarkType = "5">
          </BreakpointContent>
@@ -7908,11 +7908,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Boss/BaseBoss.cpp"
-            timestampString = "473518037.403993"
+            timestampString = "477396753.79556"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "320"
-            endingLineNumber = "320"
+            startingLineNumber = "323"
+            endingLineNumber = "323"
             landmarkName = "BaseBoss::update(float delta)"
             landmarkType = "5">
          </BreakpointContent>
@@ -7924,11 +7924,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Boss/BaseBoss.cpp"
-            timestampString = "473518037.403993"
+            timestampString = "477396753.79556"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "589"
-            endingLineNumber = "589"
+            startingLineNumber = "592"
+            endingLineNumber = "592"
             landmarkName = "BaseBoss::doAttack()"
             landmarkType = "5">
          </BreakpointContent>
@@ -7940,11 +7940,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Boss/BaseBoss.cpp"
-            timestampString = "473518037.403993"
+            timestampString = "477396753.79556"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "533"
-            endingLineNumber = "533"
+            startingLineNumber = "536"
+            endingLineNumber = "536"
             landmarkName = "BaseBoss::moveToNext(const cocos2d::Vec2&amp; next)"
             landmarkType = "5">
          </BreakpointContent>
@@ -7956,11 +7956,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Boss/BaseBoss.cpp"
-            timestampString = "473518037.403993"
+            timestampString = "477396753.79556"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "293"
-            endingLineNumber = "293"
+            startingLineNumber = "296"
+            endingLineNumber = "296"
             landmarkName = "BaseBoss::update(float delta)"
             landmarkType = "5">
          </BreakpointContent>
@@ -7972,11 +7972,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Boss/BaseBoss.cpp"
-            timestampString = "473518037.403993"
+            timestampString = "477396753.79556"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "600"
-            endingLineNumber = "600"
+            startingLineNumber = "603"
+            endingLineNumber = "603"
             landmarkName = "BaseBoss::handleAttackStyle(const cocos2d::Vec2&amp; playerPos, const cocos2d::Vec3&amp; dir)"
             landmarkType = "5">
          </BreakpointContent>
@@ -7988,11 +7988,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Boss/BaseBoss.cpp"
-            timestampString = "473518037.403993"
+            timestampString = "477396753.79556"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "551"
-            endingLineNumber = "551"
+            startingLineNumber = "554"
+            endingLineNumber = "554"
             landmarkName = "BaseBoss::moveToNext(const cocos2d::Vec2&amp; next)"
             landmarkType = "5">
          </BreakpointContent>
@@ -8020,11 +8020,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Boss/BaseBoss.cpp"
-            timestampString = "473518037.403993"
+            timestampString = "477396753.79556"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "287"
-            endingLineNumber = "287"
+            startingLineNumber = "290"
+            endingLineNumber = "290"
             landmarkName = "BaseBoss::onExit()"
             landmarkType = "5">
          </BreakpointContent>
@@ -8228,11 +8228,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Boss/BaseBoss.cpp"
-            timestampString = "473518037.403993"
+            timestampString = "477396753.79556"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "387"
-            endingLineNumber = "387"
+            startingLineNumber = "390"
+            endingLineNumber = "390"
             landmarkName = "BaseBoss::onEnterMoving()"
             landmarkType = "5">
          </BreakpointContent>
@@ -8308,11 +8308,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Boss/BaseBoss.cpp"
-            timestampString = "473518037.403993"
+            timestampString = "477396753.79556"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "496"
-            endingLineNumber = "496"
+            startingLineNumber = "499"
+            endingLineNumber = "499"
             landmarkName = "BaseBoss::onLand(bool updateMiniMap)"
             landmarkType = "5">
          </BreakpointContent>
@@ -8324,11 +8324,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Boss/BaseBoss.cpp"
-            timestampString = "473518037.403993"
+            timestampString = "477396753.79556"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "494"
-            endingLineNumber = "494"
+            startingLineNumber = "497"
+            endingLineNumber = "497"
             landmarkName = "BaseBoss::onLand(bool updateMiniMap)"
             landmarkType = "5">
          </BreakpointContent>
@@ -8340,11 +8340,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Boss/BaseBoss.cpp"
-            timestampString = "473518037.403993"
+            timestampString = "477396753.79556"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "238"
-            endingLineNumber = "238"
+            startingLineNumber = "241"
+            endingLineNumber = "241"
             landmarkName = "BaseBoss::setState(BossState state)"
             landmarkType = "5">
          </BreakpointContent>
@@ -8356,11 +8356,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Boss/BaseBoss.cpp"
-            timestampString = "473518037.403993"
+            timestampString = "477396753.79556"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "389"
-            endingLineNumber = "389"
+            startingLineNumber = "392"
+            endingLineNumber = "392"
             landmarkName = "BaseBoss::onEnterMoving()"
             landmarkType = "5">
          </BreakpointContent>
@@ -8484,11 +8484,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Boss/BaseBoss.cpp"
-            timestampString = "473518037.403993"
+            timestampString = "477396753.79556"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "583"
-            endingLineNumber = "583"
+            startingLineNumber = "586"
+            endingLineNumber = "586"
             landmarkName = "BaseBoss::doAttack()"
             landmarkType = "5">
          </BreakpointContent>
@@ -8724,11 +8724,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Boss/BaseBoss.cpp"
-            timestampString = "473518037.403993"
+            timestampString = "477396753.79556"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "436"
-            endingLineNumber = "436"
+            startingLineNumber = "439"
+            endingLineNumber = "439"
             landmarkName = "BaseBoss::onEnterSkill1()"
             landmarkType = "5">
          </BreakpointContent>
@@ -9092,11 +9092,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "475586263.946646"
+            timestampString = "477396753.79556"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "2114"
-            endingLineNumber = "2114"
+            startingLineNumber = "2118"
+            endingLineNumber = "2118"
             landmarkName = "VoxelExplorer::createLevel()"
             landmarkType = "5">
          </BreakpointContent>
@@ -9108,11 +9108,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "475586263.946646"
+            timestampString = "477396753.79556"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "2036"
-            endingLineNumber = "2036"
+            startingLineNumber = "2040"
+            endingLineNumber = "2040"
             landmarkName = "VoxelExplorer::createLayers()"
             landmarkType = "5">
          </BreakpointContent>
@@ -9140,11 +9140,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "475586263.946646"
+            timestampString = "477396753.79556"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1447"
-            endingLineNumber = "1447"
+            startingLineNumber = "1451"
+            endingLineNumber = "1451"
             landmarkName = "VoxelExplorer::handleMonsterHurt(const cocos2d::Vec2&amp; mapPos)"
             landmarkType = "5">
          </BreakpointContent>
@@ -9172,11 +9172,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "475586263.946646"
+            timestampString = "477396753.79556"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1449"
-            endingLineNumber = "1449"
+            startingLineNumber = "1453"
+            endingLineNumber = "1453"
             landmarkName = "VoxelExplorer::handleMonsterHurt(const cocos2d::Vec2&amp; mapPos)"
             landmarkType = "5">
          </BreakpointContent>
@@ -9988,11 +9988,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Boss/BaseBoss.cpp"
-            timestampString = "473521908.471324"
+            timestampString = "477396753.79556"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "185"
-            endingLineNumber = "185"
+            startingLineNumber = "188"
+            endingLineNumber = "188"
             landmarkName = "BaseBoss::attackedByPlayer(bool miss)"
             landmarkType = "5">
          </BreakpointContent>
@@ -10004,11 +10004,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "475586263.946646"
+            timestampString = "477396753.79556"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1479"
-            endingLineNumber = "1479"
+            startingLineNumber = "1483"
+            endingLineNumber = "1483"
             landmarkName = "VoxelExplorer::handlePlayerHurtByBoss(const cocos2d::Vec2&amp; mapPos, BaseBoss* boss)"
             landmarkType = "5">
          </BreakpointContent>
@@ -10084,11 +10084,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "475586263.946646"
+            timestampString = "477396753.79556"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1698"
-            endingLineNumber = "1698"
+            startingLineNumber = "1702"
+            endingLineNumber = "1702"
             landmarkName = "VoxelExplorer::handlePlayerUseSmallPortal()"
             landmarkType = "5">
          </BreakpointContent>
@@ -10148,11 +10148,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "475586263.946646"
+            timestampString = "477396753.79556"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "2202"
-            endingLineNumber = "2202"
+            startingLineNumber = "2206"
+            endingLineNumber = "2206"
             landmarkName = "VoxelExplorer::createPlayer()"
             landmarkType = "5">
          </BreakpointContent>
@@ -10212,11 +10212,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "475586263.946646"
+            timestampString = "477396753.79556"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1187"
-            endingLineNumber = "1187"
+            startingLineNumber = "1191"
+            endingLineNumber = "1191"
             landmarkName = "VoxelExplorer::handleUseUseableItem(const cocos2d::Vec2&amp; mapPos)"
             landmarkType = "5">
          </BreakpointContent>
@@ -10468,11 +10468,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "475586263.946646"
+            timestampString = "477396753.79556"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1666"
-            endingLineNumber = "1666"
+            startingLineNumber = "1670"
+            endingLineNumber = "1670"
             landmarkName = "VoxelExplorer::handlePlayerUseStandardPortal(const cocos2d::Vec2&amp; pos)"
             landmarkType = "5">
          </BreakpointContent>
@@ -10484,11 +10484,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "475586263.946646"
+            timestampString = "477396753.79556"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1748"
-            endingLineNumber = "1748"
+            startingLineNumber = "1752"
+            endingLineNumber = "1752"
             landmarkName = "VoxelExplorer::handleDownstairs()"
             landmarkType = "5">
          </BreakpointContent>
@@ -10564,11 +10564,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "475586263.946646"
+            timestampString = "477396753.79556"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1036"
-            endingLineNumber = "1036"
+            startingLineNumber = "1040"
+            endingLineNumber = "1040"
             landmarkName = "VoxelExplorer::handleDoor(const cocos2d::Vec2&amp; mapPos)"
             landmarkType = "5">
          </BreakpointContent>
@@ -10580,11 +10580,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "475586263.946646"
+            timestampString = "477396753.79556"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1050"
-            endingLineNumber = "1050"
+            startingLineNumber = "1054"
+            endingLineNumber = "1054"
             landmarkName = "VoxelExplorer::handleDoor(const cocos2d::Vec2&amp; mapPos)"
             landmarkType = "5">
          </BreakpointContent>
@@ -10596,11 +10596,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "475586263.946646"
+            timestampString = "477396753.79556"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1311"
-            endingLineNumber = "1311"
+            startingLineNumber = "1315"
+            endingLineNumber = "1315"
             landmarkName = "VoxelExplorer::handleShowSecretDoor(const cocos2d::Vec2&amp; mapPos)"
             landmarkType = "5">
          </BreakpointContent>
@@ -10756,11 +10756,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Boss/BaseBoss.cpp"
-            timestampString = "473843168.645382"
+            timestampString = "477396753.79556"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "127"
-            endingLineNumber = "127"
+            startingLineNumber = "130"
+            endingLineNumber = "130"
             landmarkName = "BaseBoss::attackedByPlayer(bool miss)"
             landmarkType = "5">
          </BreakpointContent>
@@ -10772,11 +10772,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Monsters/BaseMonster.cpp"
-            timestampString = "473843186.311438"
+            timestampString = "477396753.79556"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "145"
-            endingLineNumber = "145"
+            startingLineNumber = "148"
+            endingLineNumber = "148"
             landmarkName = "BaseMonster::attackedByPlayer(bool miss)"
             landmarkType = "5">
          </BreakpointContent>
@@ -10788,11 +10788,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Monsters/BaseMonster.cpp"
-            timestampString = "473843835.233593"
+            timestampString = "477396753.79556"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "163"
-            endingLineNumber = "163"
+            startingLineNumber = "166"
+            endingLineNumber = "166"
             landmarkName = "BaseMonster::attackedByPlayer(bool miss)"
             landmarkType = "5">
          </BreakpointContent>
@@ -11218,11 +11218,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "475586263.946646"
+            timestampString = "477396753.79556"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1951"
-            endingLineNumber = "1951"
+            startingLineNumber = "1955"
+            endingLineNumber = "1955"
             landmarkName = "VoxelExplorer::checkBulletCollideMonster(const cocos2d::Vec3&amp; bulletPos)"
             landmarkType = "5">
          </BreakpointContent>
@@ -11762,12 +11762,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Levels/MineLevel.cpp"
-            timestampString = "474558773.616531"
+            timestampString = "477392343.516326"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "191"
-            endingLineNumber = "191"
-            landmarkName = "MineLevel::createMonsters()"
+            startingLineNumber = "192"
+            endingLineNumber = "192"
+            landmarkName = "MineLevel::createTerrain()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -11778,12 +11778,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Levels/MineLevel.cpp"
-            timestampString = "474558775.586737"
+            timestampString = "477392343.516326"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "185"
-            endingLineNumber = "185"
-            landmarkName = "MineLevel::createMonsters()"
+            startingLineNumber = "186"
+            endingLineNumber = "186"
+            landmarkName = "MineLevel::createTerrain()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -12546,11 +12546,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Monsters/BaseMonster.cpp"
-            timestampString = "475404312.388599"
+            timestampString = "477396753.79556"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "530"
-            endingLineNumber = "530"
+            startingLineNumber = "533"
+            endingLineNumber = "533"
             landmarkName = "BaseMonster::moveToNext(const cocos2d::Vec2&amp; next)"
             landmarkType = "5">
          </BreakpointContent>
@@ -12930,11 +12930,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "477300447.329433"
+            timestampString = "477396753.79556"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1390"
-            endingLineNumber = "1390"
+            startingLineNumber = "1394"
+            endingLineNumber = "1394"
             landmarkName = "VoxelExplorer::handleShowSearchEffect(const cocos2d::Vec2&amp; mapPos)"
             landmarkType = "5">
          </BreakpointContent>
@@ -12946,11 +12946,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "477300450.672513"
+            timestampString = "477396753.79556"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1383"
-            endingLineNumber = "1383"
+            startingLineNumber = "1387"
+            endingLineNumber = "1387"
             landmarkName = "VoxelExplorer::handleShowSearchEffect(const cocos2d::Vec2&amp; mapPos)"
             landmarkType = "5">
             <Locations>
@@ -12994,11 +12994,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/VoxelExplorer.cpp"
-            timestampString = "477300456.290264"
+            timestampString = "477396753.79556"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1381"
-            endingLineNumber = "1381"
+            startingLineNumber = "1385"
+            endingLineNumber = "1385"
             landmarkName = "VoxelExplorer::handleShowSearchEffect(const cocos2d::Vec2&amp; mapPos)"
             landmarkType = "5">
          </BreakpointContent>
@@ -13032,6 +13032,70 @@
             startingLineNumber = "433"
             endingLineNumber = "433"
             landmarkName = "RandomDungeon::load(const cocos2d::ValueMap&amp; data)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/Levels/StandardLevel.cpp"
+            timestampString = "477391626.35112"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1045"
+            endingLineNumber = "1045"
+            landmarkName = "StandardLevel::showMap(bool show)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/VoxelExplorer.cpp"
+            timestampString = "477396753.79556"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1407"
+            endingLineNumber = "1407"
+            landmarkName = "VoxelExplorer::handlePickItem(const cocos2d::Vec2&amp; mapPos)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/Levels/StandardLevel.cpp"
+            timestampString = "477392015.551369"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "883"
+            endingLineNumber = "883"
+            landmarkName = "StandardLevel::createPickableItems()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/Levels/StandardLevel.cpp"
+            timestampString = "477392053.852972"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "234"
+            endingLineNumber = "234"
+            landmarkName = "StandardLevel::createTerrain()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

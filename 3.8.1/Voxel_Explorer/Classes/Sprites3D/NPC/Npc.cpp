@@ -234,7 +234,7 @@ void Npc::endAnswer()
             break;
         case NPC_LITTLEWITCH:
             {
-                int rand = cocos2d::random(4, 4);
+                int rand = cocos2d::random(0, 4);
                 if (rand == 0) {
                     PlayerProperty::getInstance()->addMoney(10000);
                     Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_LITTLEWITCH_ADDMONEY);

@@ -152,7 +152,7 @@ bool Area::isHiddenArea()
     bool hiddenArea = false;
     for (auto iter = m_ConnectedAreas.begin(); iter != m_ConnectedAreas.end(); iter++) {
         Door* door = iter->second;
-        if(door && door->getDoorType() == Door::DT_HIDDEN)
+        if(door && (door->getDoorType() == Door::DT_HIDDEN || door->getDoorType() == Door::DT_LOCKED))
             return true;
     }
     return hiddenArea;
