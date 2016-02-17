@@ -688,7 +688,6 @@ void Player::attackByMonster(MonsterProperty* monsterProperty, bool miss)
     {
         setState(PS_DEATH);
         StatisticsManager::getInstance()->addRoleDeadNum(StatisticsManager::eRoleDeadType::RET_MONSTER_ATTACK);
-        PlayerProperty::getInstance()->setCurrentHP(currentHp);
 #if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM ==CC_PLATFORM_ANDROID )
         SdkBoxManager::getInstance()->logEvent("Player", "Death", "AttackByMonster", 1);
 #endif

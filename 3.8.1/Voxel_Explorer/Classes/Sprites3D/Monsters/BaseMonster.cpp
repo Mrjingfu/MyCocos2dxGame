@@ -84,8 +84,8 @@ BaseMonster::BaseMonster()
     
     m_nFOV = 4;
     m_nAttackRange = 1;
-    m_fConfusingTimer = 3.0f;
-    m_fFirstTrackingTimer = cocos2d::random(1.0f, 1.5f);
+    m_fConfusingTimer = 2.0f;
+    m_fFirstTrackingTimer = cocos2d::random(0.8f, 1.2f);
     m_fWanderingDelayTimer = cocos2d::random(0.02f, 0.05f); ////巡逻时每次移动前的延迟
     
     m_pMonsterProperty = new (std::nothrow) MonsterProperty();
@@ -377,7 +377,7 @@ void BaseMonster::onEnterTracking()
     if(m_LastState == MS_SLEEPING || m_LastState == MS_CONFUSING || m_LastState == MS_WANDERING)
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_MONSTER_ALERT, this);
     if(m_LastState == MS_SLEEPING)
-        m_fFirstTrackingTimer = cocos2d::random(1.0f, 1.5f);
+        m_fFirstTrackingTimer = cocos2d::random(0.8f, 1.2f);
     unsigned int lightmask = getLightMask();
     lightmask = lightmask | (unsigned int)LightFlag::LIGHT2;
     setLightMask(lightmask);
@@ -406,7 +406,7 @@ void BaseMonster::onEnterConfusing()
 }
 void BaseMonster::onExitConfusing()
 {
-    m_fConfusingTimer = 3.0f;
+    m_fConfusingTimer = 2.0f;
 }
 void BaseMonster::onEnterMoving()
 {
