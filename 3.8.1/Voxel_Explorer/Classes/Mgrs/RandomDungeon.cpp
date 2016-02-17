@@ -186,9 +186,24 @@ RandomDungeon::RandomDungeon()
 }
 RandomDungeon::~RandomDungeon()
 {
-    CC_SAFE_DELETE(m_pCurrentNode->m_pLeftNode);
-    CC_SAFE_DELETE(m_pCurrentNode->m_pRightNode);
-    CC_SAFE_DELETE(m_pCurrentNode);
+    if(m_pCurrentNode)
+    {
+        CC_SAFE_DELETE(m_pCurrentNode->m_pLeftNode);
+        CC_SAFE_DELETE(m_pCurrentNode->m_pRightNode);
+        CC_SAFE_DELETE(m_pCurrentNode);
+    }
+}
+void RandomDungeon::reset()
+{
+    if(m_pCurrentNode)
+    {
+        CC_SAFE_DELETE(m_pCurrentNode->m_pLeftNode);
+        CC_SAFE_DELETE(m_pCurrentNode->m_pRightNode);
+        CC_SAFE_DELETE(m_pCurrentNode);
+    }
+    m_nCurrentSelectGroup = 0;
+    m_nDifficultClass = 1;
+    m_UnSelected.clear();
 }
 bool RandomDungeon::build()
 {
@@ -412,7 +427,7 @@ std::string RandomDungeon::getCurrentBossName() const
 }
 bool RandomDungeon::load(const cocos2d::ValueMap& data)
 {
-    m_UnSelected.clear();
+    reset();
     if(data.find("RandomDungeon") == data.end())
     {
         if(!build())

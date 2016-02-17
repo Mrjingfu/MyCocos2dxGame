@@ -101,6 +101,7 @@ public:
     static std::vector<DUNGEON_TYPE>       SELECT_ALL;
     
     bool build();
+    void reset();
     void selectDungeonNode(bool left);
     
     DungeonNode* getCurrentDungeonNode() const { return m_pCurrentNode; }
