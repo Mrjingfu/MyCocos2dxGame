@@ -54,6 +54,7 @@ protected:
     virtual void onClickSortEquip(Ref*,cocos2d::ui::Widget::TouchEventType);
     virtual void onClickSortPotion(Ref*,cocos2d::ui::Widget::TouchEventType);
     void onClickBagExtend(Ref* ref);
+    int getItemIndexForVector(const std::vector<PickableItemProperty*>& items, int itemId) const ;
 protected:
     
     cocos2d::ui::Button* m_pBtnAllBag;

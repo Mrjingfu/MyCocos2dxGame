@@ -131,6 +131,15 @@ void ShopPopupUI::updateShopBuyItems()
         m_pShopMangerLayer->removeItems();
     }
 
+    //重置边框颜色
+    for(int i=0; i<m_pShopGridView->getItems().size(); i++)
+    {
+        ImageView* itemImg = static_cast<ImageView*>(m_pShopGridView->getItem(i));
+        if (itemImg) {
+            itemImg->loadTexture("ui_frame_5.png",TextureResType::PLIST);
+            itemImg->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
+        }
+    }
     updateShopDataItems();
 
 }

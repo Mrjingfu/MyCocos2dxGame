@@ -31,10 +31,10 @@
     <Item Key="TabsParamsKey">
       <Value ctype="TabsInfo">
         <OpenedDocuments>
-          <FilePathData Path="rolenewLayer.csd" />
+          <FilePathData Path="gametoolbarLayer.csd" />
           <FilePathData Path="skillLayer.csd" />
         </OpenedDocuments>
-        <ActiveDocument Path="skillLayer.csd" />
+        <ActiveDocument Path="gametoolbarLayer.csd" />
       </Value>
     </Item>
   </Properties>

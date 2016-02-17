@@ -61,8 +61,8 @@ bool SkillLayer::addEvents()
     
     m_pSkill = RegionImageView::create("ui_skill_lock.png",TextureResType::PLIST);
     m_pSkill->setScale(0.5);
-    m_pSkill->setTouchRegionSize(cocos2d::Size(50,15));
-    m_pSkill->setPosition(cocos2d::Vec2(m_pRootNode->getContentSize().width*0.88,m_pRootNode->getContentSize().height*0.23));
+    m_pSkill->setTouchRegionSize(cocos2d::Size(45,15));
+    m_pSkill->setPosition(cocos2d::Vec2(m_pRootNode->getContentSize().width*0.1,m_pRootNode->getContentSize().height*0.23));
     m_pRootNode->addChild(m_pSkill);
     
     cocos2d::ui::ImageView* skill_bg=  cocos2d::ui::ImageView::create("ui_skill_bg.png",TextureResType::PLIST);
@@ -72,7 +72,7 @@ bool SkillLayer::addEvents()
     m_pMagicPotion = RegionImageView::create("ui_magic_icon.png",TextureResType::PLIST);
     m_pMagicPotion->setScale(0.35);
     m_pMagicPotion->setTouchRegionSize(cocos2d::Size(50,15));
-    m_pMagicPotion->setPosition(cocos2d::Vec2(m_pRootNode->getContentSize().width*0.88,m_pRootNode->getContentSize().height*0.55));
+    m_pMagicPotion->setPosition(cocos2d::Vec2(m_pRootNode->getContentSize().width*0.1,m_pRootNode->getContentSize().height*0.55));
     m_pRootNode->addChild(m_pMagicPotion);
     
     cocos2d::ui::ImageView* magic_bg=  cocos2d::ui::ImageView::create("ui_skill_bg.png",TextureResType::PLIST);
@@ -87,7 +87,7 @@ bool SkillLayer::addEvents()
     m_pBloodPotion = RegionImageView::create("ui_health_icon.png",TextureResType::PLIST);
     m_pBloodPotion->setScale(0.35);
     m_pBloodPotion->setTouchRegionSize(cocos2d::Size(50,15));
-    m_pBloodPotion->setPosition(cocos2d::Vec2(m_pRootNode->getContentSize().width*0.88,m_pRootNode->getContentSize().height*0.826));
+    m_pBloodPotion->setPosition(cocos2d::Vec2(m_pRootNode->getContentSize().width*0.1,m_pRootNode->getContentSize().height*0.826));
     m_pRootNode->addChild(m_pBloodPotion);
     
     cocos2d::ui::ImageView* blood_bg=  cocos2d::ui::ImageView::create("ui_skill_bg.png",TextureResType::PLIST);
