@@ -89,8 +89,8 @@ void PlayerProperty::addPlayerBuffer(PlayerBuffer buff)
 {
     if(buff == PB_WEAK)
     {
-        m_nMaxHP = m_nMaxHP - m_nLevel*8 - 30;
-        m_nMaxMP = m_nMaxMP - m_nLevel*8 - 30;
+        m_nMaxHP = m_nMaxHP - m_nLevel*6 - 30;
+        m_nMaxMP = m_nMaxMP - m_nLevel*6 - 30;
         m_nCurrentHP = MIN(m_nCurrentHP, m_nMaxHP);
         m_nCurrentMP = MIN(m_nCurrentMP, m_nMaxMP);
         
@@ -99,10 +99,10 @@ void PlayerProperty::addPlayerBuffer(PlayerBuffer buff)
     }
     else if(buff == PB_STRONGER)
     {
-        m_nMaxHP = m_nMaxHP + m_nLevel*8 + 30;
-        m_nMaxMP = m_nMaxMP + m_nLevel*8 + 30;
-        m_nCurrentHP = m_nCurrentHP + m_nLevel*8 + 30;
-        m_nCurrentMP = m_nCurrentMP + m_nLevel*8 + 30;
+        m_nMaxHP = m_nMaxHP + m_nLevel*4 + 30;
+        m_nMaxMP = m_nMaxMP + m_nLevel*4 + 30;
+        m_nCurrentHP = m_nCurrentHP + m_nLevel*4 + 30;
+        m_nCurrentMP = m_nCurrentMP + m_nLevel*4 + 30;
         m_nCurrentHP = MIN(m_nCurrentHP, m_nMaxHP);
         m_nCurrentMP = MIN(m_nCurrentMP, m_nMaxMP);
         
@@ -120,8 +120,8 @@ void PlayerProperty::removePlayerBuffer(PlayerBuffer buff)
 {
     if(buff == PB_WEAK)
     {
-        m_nMaxHP = m_nMaxHP + m_nLevel*8 + 30;
-        m_nMaxMP = m_nMaxMP + m_nLevel*8 + 30;
+        m_nMaxHP = m_nMaxHP + m_nLevel*6 + 30;
+        m_nMaxMP = m_nMaxMP + m_nLevel*6 + 30;
         m_nCurrentHP = MIN(m_nCurrentHP, m_nMaxHP);
         m_nCurrentMP = MIN(m_nCurrentMP, m_nMaxMP);
         
@@ -129,8 +129,8 @@ void PlayerProperty::removePlayerBuffer(PlayerBuffer buff)
     }
     else if(buff == PB_STRONGER)
     {
-        m_nMaxHP = m_nMaxHP - m_nLevel*8 - 30;
-        m_nMaxMP = m_nMaxMP - m_nLevel*8 - 30;
+        m_nMaxHP = m_nMaxHP - m_nLevel*4 - 30;
+        m_nMaxMP = m_nMaxMP - m_nLevel*4 - 30;
         m_nCurrentHP = MIN(m_nCurrentHP, m_nMaxHP);
         m_nCurrentMP = MIN(m_nCurrentMP, m_nMaxMP);
         
@@ -260,9 +260,9 @@ bool PlayerProperty::equipWeapon(CChaosNumber id, bool sound)
             m_nSearchDistance = m_nSearchDistance - oldWeaponProperty->getAddedSearchDistance().GetLongValue();
             m_nSearchDistance = MAX(m_nSearchDistance.GetLongValue(), 1);
             m_nMaxHP = m_nMaxHP - oldWeaponProperty->getAddedMaxHp().GetLongValue();
-            m_nMaxHP = MAX(m_nMaxHP.GetLongValue(), 30);
+            m_nMaxHP = MAX(m_nMaxHP.GetLongValue(), 60);
             m_nMaxMP = m_nMaxMP - oldWeaponProperty->getAddedMaxMp().GetLongValue();
-            m_nMaxMP = MAX(m_nMaxMP.GetLongValue(), 30);
+            m_nMaxMP = MAX(m_nMaxMP.GetLongValue(), 60);
             m_nCurrentHP = MIN(m_nCurrentHP, m_nMaxHP);
             m_nCurrentMP = MIN(m_nCurrentMP, m_nMaxMP);
             m_nAddedMinAttack = m_nAddedMinAttack - oldWeaponProperty->getAddedMinAttack().GetLongValue();
@@ -358,9 +358,9 @@ bool PlayerProperty::equipSecondWeapon(CChaosNumber id, bool sound)
             m_nSearchDistance = m_nSearchDistance - oldSecondWeaponProperty->getAddedSearchDistance().GetLongValue();
             m_nSearchDistance = MAX(m_nSearchDistance.GetLongValue(), 1);
             m_nMaxHP = m_nMaxHP - oldSecondWeaponProperty->getAddedMaxHp().GetLongValue();
-            m_nMaxHP = MAX(m_nMaxHP.GetLongValue(), 30);
+            m_nMaxHP = MAX(m_nMaxHP.GetLongValue(), 60);
             m_nMaxMP = m_nMaxMP - oldSecondWeaponProperty->getAddedMaxMp().GetLongValue();
-            m_nMaxMP = MAX(m_nMaxMP.GetLongValue(), 30);
+            m_nMaxMP = MAX(m_nMaxMP.GetLongValue(), 60);
             m_nCurrentHP = MIN(m_nCurrentHP, m_nMaxHP);
             m_nCurrentMP = MIN(m_nCurrentMP, m_nMaxMP);
             m_nAddedMinAttack = m_nAddedMinAttack - oldSecondWeaponProperty->getAddedMinAttack().GetLongValue();
@@ -468,9 +468,9 @@ bool PlayerProperty::equipArmor(CChaosNumber id, bool sound)
             m_nSearchDistance = m_nSearchDistance - oldArmorProperty->getAddedSearchDistance().GetLongValue();
             m_nSearchDistance = MAX(m_nSearchDistance.GetLongValue(), 1);
             m_nMaxHP = m_nMaxHP - oldArmorProperty->getAddedMaxHp().GetLongValue();
-            m_nMaxHP = MAX(m_nMaxHP.GetLongValue(), 30);
+            m_nMaxHP = MAX(m_nMaxHP.GetLongValue(), 60);
             m_nMaxMP = m_nMaxMP - oldArmorProperty->getAddedMaxMp().GetLongValue();
-            m_nMaxMP = MAX(m_nMaxMP.GetLongValue(), 30);
+            m_nMaxMP = MAX(m_nMaxMP.GetLongValue(), 60);
             m_nCurrentHP = MIN(m_nCurrentHP, m_nMaxHP);
             m_nCurrentMP = MIN(m_nCurrentMP, m_nMaxMP);
             
@@ -546,9 +546,9 @@ bool PlayerProperty::equipOrnaments(CChaosNumber id, bool sound)
             m_nSearchDistance = m_nSearchDistance - oldMagicOrnamentProperty->getAddedSearchDistance().GetLongValue();
             m_nSearchDistance = MAX(m_nSearchDistance.GetLongValue(), 1);
             m_nMaxHP = m_nMaxHP - oldMagicOrnamentProperty->getAddedMaxHp().GetLongValue();
-            m_nMaxHP = MAX(m_nMaxHP.GetLongValue(), 30);
+            m_nMaxHP = MAX(m_nMaxHP.GetLongValue(), 60);
             m_nMaxMP = m_nMaxMP - oldMagicOrnamentProperty->getAddedMaxMp().GetLongValue();
-            m_nMaxMP = MAX(m_nMaxMP.GetLongValue(), 30);
+            m_nMaxMP = MAX(m_nMaxMP.GetLongValue(), 60);
             m_nCurrentHP = MIN(m_nCurrentHP, m_nMaxHP);
             m_nCurrentMP = MIN(m_nCurrentMP, m_nMaxMP);
             m_nAddedMinAttack = m_nAddedMinAttack - oldMagicOrnamentProperty->getAddedMinAttack().GetLongValue();
@@ -1268,9 +1268,33 @@ bool PlayerProperty::save(cocos2d::ValueMap& data)
 }
 void PlayerProperty::levelUp()
 {
+    if((m_BufferFlag & PB_WEAK) != 0)
+    {
+        m_nMaxHP = m_nMaxHP + m_nLevel*6 + 30;
+        m_nMaxMP = m_nMaxMP + m_nLevel*6 + 30;
+    }
+    if((m_BufferFlag & PB_STRONGER) != 0)
+    {
+        m_nMaxHP = m_nMaxHP - m_nLevel*4 - 30;
+        m_nMaxMP = m_nMaxMP - m_nLevel*4 - 30;
+    }
+    
     m_nLevel = m_nLevel + 1;
     m_nMaxHP = m_nMaxHP + 8;
     m_nMaxMP = m_nMaxMP + 8;
+    
+    if((m_BufferFlag & PB_STRONGER) != 0)
+    {
+        m_nMaxHP = m_nMaxHP + m_nLevel*4 + 30;
+        m_nMaxMP = m_nMaxMP + m_nLevel*4 + 30;
+    }
+    
+    if((m_BufferFlag & PB_WEAK) != 0)
+    {
+        m_nMaxHP = m_nMaxHP - m_nLevel*6 - 30;
+        m_nMaxMP = m_nMaxMP - m_nLevel*6 - 30;
+    }
+    
     m_nCurrentHP = m_nMaxHP;
     m_nCurrentMP = m_nMaxMP;
     m_bDirty = true;

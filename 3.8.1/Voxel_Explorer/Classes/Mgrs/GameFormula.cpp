@@ -32,9 +32,9 @@ bool GameFormula::generatePickItemByMonster(bool isElite, bool isBoss)
         return true;
     else
     {
-        float percentOne = 0.5f;
-        float percentZero = 1.0 - percentOne;
-        AlisaMethod* am = AlisaMethod::create(percentOne, percentZero, -1.0, NULL);
+        float percent1 = 0.6f;
+        float percent2 = 1.0 - percent1;
+        AlisaMethod* am = AlisaMethod::create(percent1, percent2, -1.0, NULL);
         if(!am)
             return false;
         return am->getRandomIndex() == 0;

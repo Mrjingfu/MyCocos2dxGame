@@ -12,6 +12,9 @@
 #include "StandardMonster.hpp"
 #include "LevelResourceManager.h"
 #include "KoboldLeader.hpp"
+#include "StandardPortal.hpp"
+#include "BossDoor.hpp"
+#include "Ladder.hpp"
 #include "SimpleAudioEngine.h"
 USING_NS_CC;
 using namespace CocosDenshion;
@@ -133,6 +136,72 @@ int MineBossLevel::randomMonsterRespawnCell()
             return tileIndex;
         }
     }
+}
+bool MineBossLevel::createTerrain()
+{
+    if(!VoxelExplorer::getInstance()->getTerrainTilesLayer())
+        return false;
+    for (int i = 0; i<m_nHeight; i++) {
+        for (int j = 0; j<m_nWidth; j++) {
+            int index = i*m_nWidth+j;
+            TileInfo info = m_Map[index];
+            if(info.m_Type == TerrainTile::TT_CHASM)
+                continue;
+            TerrainTile* tile = TerrainTile::create(info.m_Type);
+            if(!tile)
+                return false;
+            tile->setPosition3D(Vec3(j*TerrainTile::CONTENT_SCALE, -TerrainTile::CONTENT_SCALE, -i*TerrainTile::CONTENT_SCALE));
+            tile->setVisited(info.m_bVisited);
+            VoxelExplorer::getInstance()->getTerrainTilesLayer()->addChild(tile);
+            
+            switch (info.m_Type) {
+                case TerrainTile::TT_WALL:
+                    {
+                        tile->setPosition3D(Vec3(j*TerrainTile::CONTENT_SCALE, -TerrainTile::CONTENT_SCALE*0.5f, -i*TerrainTile::CONTENT_SCALE));
+                    }
+                    break;
+                case TerrainTile::TT_ENTRANCE:
+                    {
+                        Ladder* ladder = Ladder::create();
+                        if(!ladder)
+                            return false;
+                        ladder->setPosition3D(Vec3(j*TerrainTile::CONTENT_SCALE, -TerrainTile::CONTENT_SCALE*0.5f, -i*TerrainTile::CONTENT_SCALE));
+                        VoxelExplorer::getInstance()->getTerrainPortalsLayer()->addChild(ladder);
+                        ladder->setVisited(info.m_bVisited);
+                    
+                    }
+                    break;
+                case TerrainTile::TT_STANDARD_PORTAL:
+                    {
+                        StandardPortal* portal = StandardPortal::create(true);
+                        if(!portal)
+                            return false;
+                        portal->setPosition3D(Vec3(j*TerrainTile::CONTENT_SCALE, 0, -i*TerrainTile::CONTENT_SCALE));
+                        VoxelExplorer::getInstance()->getTerrainPortalsLayer()->addChild(portal);
+                        portal->setVisited(info.m_bVisited);
+                    }
+                    break;
+                case TerrainTile::TT_LOCKED_BOSS_DOOR:
+                    {
+                        BossDoor* door = BossDoor::create(false);
+                        if(!door)
+                            return false;
+                        door->setPosition3D(Vec3(j*TerrainTile::CONTENT_SCALE, -TerrainTile::CONTENT_SCALE*0.5f, -i*TerrainTile::CONTENT_SCALE));
+                        VoxelExplorer::getInstance()->getTerrainDoorsLayer()->addChild(door);
+                        if(!door->createFakeDoor())
+                            return false;
+                        door->setVisited(info.m_bVisited);
+                        door->setActorDir(info.m_Dir);
+                        door->setDoorState(BaseDoor::DS_LOCKED);
+                    }
+                    break;
+                default:
+                    break;
+            }
+            
+        }
+    }
+    return true;
 }
 bool MineBossLevel::createMonsters()
 {

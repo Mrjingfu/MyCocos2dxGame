@@ -471,9 +471,9 @@ void PickableItem::destroySelf()
 PickableItem::PickableItemType PickableItem::generatePickItemByMonsterLevel(int monsterLevel)
 {
     PickableItem::PickableItemType ret = PIT_UNKNOWN;
-    float percentKey = 0.05f;
+    float percentKey = 0.15f;
     float percentUnStackableItem = 0.3f;
-    float percentScroll = 0.2f;
+    float percentScroll = 0.1f;
     float percentPotion = 1.0 - percentKey - percentUnStackableItem - percentScroll;
     AlisaMethod* globalAm = AlisaMethod::create(percentKey, percentUnStackableItem, percentScroll, percentPotion, -1.0, NULL);
     if(globalAm)
@@ -899,8 +899,8 @@ PickableItem::PickableItemType PickableItem::generatePickItemByUseableLevel(int 
 }
 PickableItem::PickableItemType PickableItem::generateKeyItemType()
 {
-    float percent1 = 0.2f;
-    float percent2 = 0.3f;
+    float percent1 = 0.15f;
+    float percent2 = 0.25f;
     float percent3 = 1.0 - percent1 - percent2;
     AlisaMethod* am = AlisaMethod::create(percent1, percent2, percent3, -1.0, NULL);
     if(am)
@@ -942,8 +942,8 @@ PickableItem::PickableItemType PickableItem::generateScrollType()
 }
 PickableItem::PickableItemType PickableItem::generate1_15PotionType()
 {
-    float percent1 = 0.4f;
-    float percent2 = 0.3f;
+    float percent1 = 0.5f;
+    float percent2 = 0.2f;
     float percent3 = 0.1f;
     float percent4 = 0.05f;
     float percent5 = 0.05f;
@@ -975,8 +975,8 @@ PickableItem::PickableItemType PickableItem::generate16_30PotionType()
     float percent1 = 0.1f;
     float percent2 = 0.1f;
     float percent3 = 0.1f;
-    float percent4 = 0.25f;
-    float percent5 = 0.15f;
+    float percent4 = 0.3f;
+    float percent5 = 0.1f;
     float percent6 = 0.1f;
     float percent7 = 0.05f;
     float percent8 = 0.05f;
@@ -1014,8 +1014,8 @@ PickableItem::PickableItemType PickableItem::generate31_45PotionType()
     float percent1 = 0.1f;
     float percent2 = 0.1f;
     float percent3 = 0.1f;
-    float percent4 = 0.25f;
-    float percent5 = 0.15f;
+    float percent4 = 0.3f;
+    float percent5 = 0.1f;
     float percent6 = 0.1f;
     float percent7 = 0.05f;
     float percent8 = 0.05f;
