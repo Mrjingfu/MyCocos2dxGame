@@ -52,7 +52,8 @@ private:
     void onEventRoleHud(cocos2d::EventCustom *sender);         //更新角色hud伤害
     void onEventRoleDead(cocos2d::EventCustom *sender);         //角色死亡
     void onEventRoleFallAndDie(cocos2d::EventCustom *sender);
-    
+    void onEventRoleAddMoney(cocos2d::EventCustom *sender);
+    void onEventRoleCostMoney(cocos2d::EventCustom *sender);
     
     void onEvenetRoleEquipedWeapon(cocos2d::EventCustom *sender);
     void onEvenetRoleEquipedSecondWeapon(cocos2d::EventCustom *sender);

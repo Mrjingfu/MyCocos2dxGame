@@ -177,6 +177,7 @@ void PlayerProperty::addMoney( CChaosNumber copper, bool sound)
         std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("COIN_DROP");
         SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
     }
+    Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_ADD_MONEY,&copper);
     Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_PROPERTY_DIRTY);
     GameCenterController::getInstance()->reportMoney((int)m_nValueCopper.GetLongValue());
     m_bDirty = true;
@@ -191,7 +192,7 @@ bool PlayerProperty::costMoney( CChaosNumber costcopper )
     }
     m_nValueCopper = m_nValueCopper - costcopper.GetLongValue();
     Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_PROPERTY_DIRTY);
-    
+    Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_COST_MONEY,&costcopper);
     GameCenterController::getInstance()->reportMoney((int)m_nValueCopper.GetLongValue());
     
     m_bDirty = true;

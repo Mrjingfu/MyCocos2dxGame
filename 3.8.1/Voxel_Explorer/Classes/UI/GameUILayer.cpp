@@ -819,7 +819,7 @@ void GameUILayer::onEventGoDownStairs(cocos2d::EventCustom *sender)
         alertPopupUI->setPositiveListerner([](Ref* ref)
                                            {
                                                CCLOG("enter onEventGoDownStairs");
-                                                VoxelExplorer::getInstance()->getCurrentLevel()->showMap(false);
+                                               VoxelExplorer::getInstance()->getCurrentLevel()->showMap(false);
                                                VoxelExplorer::getInstance()->handleDownstairs();
                                            });
         alertPopupUI->setNegativeListerner([](Ref* ref){});
@@ -874,7 +874,6 @@ void GameUILayer::onEventSelectLeftDungeonNode(cocos2d::EventCustom *sender)
         popupUi->setMessage(StringUtils::format(UtilityHelper::getLocalStringForUi(EVENT_SELECT_LEFT_DUNGEON_NODE).c_str(),dungeonName.c_str()));
         popupUi->setPositiveListerner([](Ref* ref)
                                       {
-                                          
                                           RandomDungeon::getInstance()->selectDungeonNode(true);
                                       });
         popupUi->setNegativeListerner([](Ref* ref){});
@@ -1166,6 +1165,101 @@ void GameUILayer::onEventRoleFallAndDie(cocos2d::EventCustom *sender)
     m_pGameToolBarLayer->sendMessage(UtilityHelper::getLocalStringForUi(EVENT_PLAYER_FALL_AND_DIE),PopupUILayerManager::getInstance()->getTipsColor(TIP_POSITIVE));
 //     roleDead();
 }
+void GameUILayer::onEventRoleAddMoney(cocos2d::EventCustom *sender)
+{
+   
+    CChaosNumber* addMoneyNum =  static_cast<CChaosNumber*>(sender->getUserData()) ;
+    CCLOG("onEventRoleAddMoney:%ld",addMoneyNum->GetLongValue());
+    
+    CChaosNumber gold = 0;
+    CChaosNumber silver = 0;
+    CChaosNumber copper = 0;
+    GameFormula::exchangeMoney(*addMoneyNum, gold, silver, copper);
+    std::string money ;
+    if (gold.GetLongValue() != 0 && silver.GetLongValue()!=0 && copper.GetLongValue()!=0)
+    {
+        
+         money = StringUtils::format(UtilityHelper::getLocalStringForUi("PLAYER_ADD_MONEY_ALL").c_str(),gold.GetLongValue(),silver.GetLongValue(),copper.GetLongValue());
+    }else if (gold.GetLongValue() != 0 && silver.GetLongValue()==0 && copper.GetLongValue()==0)
+    {
+        
+        money = StringUtils::format(UtilityHelper::getLocalStringForUi("PLAYER_ADD_MONEY_GOLD").c_str(),gold.GetLongValue());
+    }else if (gold.GetLongValue() == 0 && silver.GetLongValue()!=0 && copper.GetLongValue()==0)
+    {
+        
+        money = StringUtils::format(UtilityHelper::getLocalStringForUi("PLAYER_ADD_MONEY_SILVER").c_str(),silver.GetLongValue());
+    }else if (gold.GetLongValue() == 0 && silver.GetLongValue()==0 && copper.GetLongValue()!=0)
+    {
+        
+        money = StringUtils::format(UtilityHelper::getLocalStringForUi("PLAYER_ADD_MONEY_COPPER").c_str(),copper.GetLongValue());
+    }else if (gold.GetLongValue() != 0 && silver.GetLongValue()!=0 && copper.GetLongValue()==0)
+    {
+        
+        money = StringUtils::format(UtilityHelper::getLocalStringForUi("PLAYER_ADD_MONEY_GOLD_SILVER").c_str(),gold.GetLongValue(),silver.GetLongValue());
+    }else if (gold.GetLongValue() != 0 && silver.GetLongValue()==0 && copper.GetLongValue()!=0)
+    {
+     
+        money = StringUtils::format(UtilityHelper::getLocalStringForUi("PLAYER_ADD_MONEY_GOLD_COPPER").c_str(),gold.GetLongValue(),copper.GetLongValue());
+    }else if (gold.GetLongValue() == 0 && silver.GetLongValue()!=0 && copper.GetLongValue()!=0)
+    {
+        
+        money = StringUtils::format(UtilityHelper::getLocalStringForUi("PLAYER_ADD_MONEY_SILVER_COPPER").c_str(),silver.GetLongValue(),copper.GetLongValue());
+    }
+    
+    
+    if(!money.empty())
+    {
+        m_pGameToolBarLayer->sendMessage(money,PopupUILayerManager::getInstance()->getTipsColor(TIP_POSITIVE));
+         PopupUILayerManager::getInstance()->showStatusImport(TIP_POSITIVE, money);
+    }
+   
+}
+void GameUILayer::onEventRoleCostMoney(cocos2d::EventCustom *sender)
+{
+    CChaosNumber* costMoneyNum =  static_cast<CChaosNumber*>(sender->getUserData()) ;
+    
+    CCLOG("onEventRoleCostMoney:%ld",costMoneyNum->GetLongValue());
+    CChaosNumber gold = 0;
+    CChaosNumber silver = 0;
+    CChaosNumber copper = 0;
+    GameFormula::exchangeMoney(*costMoneyNum, gold, silver, copper);
+    std::string money ;
+    if (gold.GetLongValue() != 0 && silver.GetLongValue()!=0 && copper.GetLongValue()!=0)
+    {
+        
+        money = StringUtils::format(UtilityHelper::getLocalStringForUi("PLAYER_COST_MONEY_ALL").c_str(),gold.GetLongValue(),silver.GetLongValue(),copper.GetLongValue());
+    }else if (gold.GetLongValue() != 0 && silver.GetLongValue()==0 && copper.GetLongValue()==0)
+    {
+        
+        money = StringUtils::format(UtilityHelper::getLocalStringForUi("PLAYER_COST_MONEY_GOLD").c_str(),gold.GetLongValue());
+    }else if (gold.GetLongValue() == 0 && silver.GetLongValue()!=0 && copper.GetLongValue()==0)
+    {
+        
+        money = StringUtils::format(UtilityHelper::getLocalStringForUi("PLAYER_COST_MONEY_SILVER").c_str(),silver.GetLongValue());
+    }else if (gold.GetLongValue() == 0 && silver.GetLongValue()==0 && copper.GetLongValue()!=0)
+    {
+        
+        money = StringUtils::format(UtilityHelper::getLocalStringForUi("PLAYER_COST_MONEY_COPPER").c_str(),copper.GetLongValue());
+    }else if (gold.GetLongValue() != 0 && silver.GetLongValue()!=0 && copper.GetLongValue()==0)
+    {
+        
+        money = StringUtils::format(UtilityHelper::getLocalStringForUi("PLAYER_COST_MONEY_GOLD_SILVER").c_str(),gold.GetLongValue(),silver.GetLongValue());
+    }else if (gold.GetLongValue() != 0 && silver.GetLongValue()==0 && copper.GetLongValue()!=0)
+    {
+        
+        money = StringUtils::format(UtilityHelper::getLocalStringForUi("PLAYER_COST_MONEY_GOLD_COPPER").c_str(),gold.GetLongValue(),copper.GetLongValue());
+    }else if (gold.GetLongValue() == 0 && silver.GetLongValue()!=0 && copper.GetLongValue()!=0)
+    {
+        
+        money = StringUtils::format(UtilityHelper::getLocalStringForUi("PLAYER_COST_MONEY_SILVER_COPPER").c_str(),silver.GetLongValue(),copper.GetLongValue());
+    }
+  
+    if(!money.empty())
+    {
+        m_pGameToolBarLayer->sendMessage(money,PopupUILayerManager::getInstance()->getTipsColor(TIP_POSITIVE));
+        PopupUILayerManager::getInstance()->showStatusImport(TIP_POSITIVE, money);
+    }
+}
 void GameUILayer::onEvenetRoleEquipedWeapon(cocos2d::EventCustom *sender)
 {
     CCLOG("onEvenetRoleEquipedWeapon");
@@ -1439,10 +1533,10 @@ void GameUILayer::updateCharacterHud(HurtData* hurData,TipTypes tipDodge,TipType
         {
             str =  Value(hurData->m_nDamage).asString();
             type = tipNormal;
-            if (isWho)
-                m_pGameToolBarLayer->sendMessage(UtilityHelper::getLocalStringForUi("GAME_MESSAGE_MONSTER_ATTACK"),PopupUILayerManager::getInstance()->getTipsColor(type));
-            else
-                m_pGameToolBarLayer->sendMessage(UtilityHelper::getLocalStringForUi("GAME_MESSAGE_ROLE_ATTACK"),PopupUILayerManager::getInstance()->getTipsColor(type));
+//            if (isWho)
+//                m_pGameToolBarLayer->sendMessage(UtilityHelper::getLocalStringForUi("GAME_MESSAGE_MONSTER_ATTACK"),PopupUILayerManager::getInstance()->getTipsColor(type));
+//            else
+//                m_pGameToolBarLayer->sendMessage(UtilityHelper::getLocalStringForUi("GAME_MESSAGE_ROLE_ATTACK"),PopupUILayerManager::getInstance()->getTipsColor(type));
         }
     }
     if (isWho && m_pRoleHudLayer)
@@ -1472,6 +1566,10 @@ void GameUILayer::onEnter()
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_PLAYER_EQUIPED_SECOND_WEAPON, CC_CALLBACK_1(GameUILayer::onEvenetRoleEquipedSecondWeapon,this));
 
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_PLAYER_BAG_ITEM_UPDATE, CC_CALLBACK_1(GameUILayer::onEventRoleBagItemUpate,this));
+    
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_PLAYER_ADD_MONEY, CC_CALLBACK_1(GameUILayer::onEventRoleAddMoney,this));
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_PLAYER_COST_MONEY, CC_CALLBACK_1(GameUILayer::onEventRoleCostMoney,this));
+
     
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_PLAYER_MONEY_NOT_ENOUGH, CC_CALLBACK_1(GameUILayer::onEventRoleMoneyNotEnough,this));
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_PLAYER_NO_MANA, CC_CALLBACK_1(GameUILayer::onEventRoleNoMana,this));
@@ -1594,6 +1692,8 @@ void GameUILayer::onExit()
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_PLAYER_NO_ROOM_KEY);
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_PLAYER_NO_BOSS_KEY);
     
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_PLAYER_ADD_MONEY);
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_PLAYER_COST_MONEY);
     
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_PLAYER_USE_POTION);
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_PLAYER_USE_SCROLL);

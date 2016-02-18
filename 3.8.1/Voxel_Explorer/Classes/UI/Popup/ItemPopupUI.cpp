@@ -237,7 +237,7 @@ void ItemPopupUI::IdentifyEquiipFrame()
                 
             }else if(effect ==AE_MIN_ATTACK)
             {
-                itemPropStr =StringUtils::format(UtilityHelper::getLocalStringForUi("EQUIP_PROP_MIN_HURT").c_str(),int(itemproperty->getMinAttack()));
+                itemPropStr =StringUtils::format(UtilityHelper::getLocalStringForUi("EQUIP_PROP_MIN_HURT").c_str(),int(itemproperty->getAddedMinAttack()));
                 
             }else if(effect ==AE_MAX_ATTACK)
             {

@@ -373,5 +373,33 @@
 	<string>剩余次数:%d</string>
 	<key>TITLE_TIP_TEXT</key>
 	<string>提示</string>
+	<key>PLAYER_ADD_MONEY_ALL</key>
+	<string>获得%d个金币,%d个银币,%d铜币</string>
+	<key>PLAYER_ADD_MONEY_GOLD</key>
+	<string>获得%d个金币</string>
+	<key>PLAYER_ADD_MONEY_SILVER</key>
+	<string>获得%d个银币</string>
+	<key>PLAYER_ADD_MONEY_COPPER</key>
+	<string>获得%d个铜币</string>
+	<key>PLAYER_ADD_MONEY_GOLD_SILVER</key>
+	<string>获得%d个金币,%d个银币</string>
+	<key>PLAYER_ADD_MONEY_GOLD_COPPER</key>
+	<string>获得%d个金币,%d个铜币</string>
+	<key>PLAYER_ADD_MONEY_SILVER_COPPER</key>
+	<string>获得%d个银币,%d个铜币</string>
+	<key>PLAYER_COST_MONEY_ALL</key>
+	<string>花费%d个金币,%d个银币,%d铜币</string>
+	<key>PLAYER_COST_MONEY_GOLD</key>
+	<string>花费%d个金币</string>
+	<key>PLAYER_COST_MONEY_SILVER</key>
+	<string>花费%d个银币</string>
+	<key>PLAYER_COST_MONEY_COPPER</key>
+	<string>花费%d个铜币</string>
+	<key>PLAYER_COST_MONEY_GOLD_SILVER</key>
+	<string>花费%d个金币,%d个银币</string>
+	<key>PLAYER_COST_MONEY_GOLD_COPPER</key>
+	<string>花费%d个金币,%d个铜币</string>
+	<key>PLAYER_COST_MONEY_SILVER_COPPER</key>
+	<string>花费%d个银币,%d个铜币</string>
 </dict>
 </plist>

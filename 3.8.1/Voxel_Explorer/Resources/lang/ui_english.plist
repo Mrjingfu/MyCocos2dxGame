@@ -47,7 +47,7 @@
 	<key>GAME_MESSAGE_NOT</key>
 	<string>Welcome to the %s floor of %s.</string>
 	<key>GAME_MESSAGE_BOSS_NOT</key>
-	<string>Welcome to the %s</string>
+	<string>Welcome to the %s&apos;s room.</string>
 	<key>GAME_MESSAGE_MONSTER_ATTACK</key>
 	<string>The monster hit you.</string>
 	<key>GAME_MESSAGE_MONSTER_DODGE</key>
@@ -372,5 +372,33 @@
 	<string>Left times:%d</string>
 	<key>TITLE_TIP_TEXT</key>
 	<string>TIP</string>
+	<key>PLAYER_ADD_MONEY_ALL</key>
+	<string>Get %d gold coins,%d silver coins,%d copper coins</string>
+	<key>PLAYER_ADD_MONEY_GOLD</key>
+	<string>Get %d gold coins</string>
+	<key>PLAYER_ADD_MONEY_SILVER</key>
+	<string>Get %d silver coins</string>
+	<key>PLAYER_ADD_MONEY_COPPER</key>
+	<string>Get %d copper coins</string>
+	<key>PLAYER_ADD_MONEY_GOLD_SILVER</key>
+	<string>Get %d gold coins,%d silver coins</string>
+	<key>PLAYER_ADD_MONEY_GOLD_COPPER</key>
+	<string>Get %d gold coins,%d copper coins</string>
+	<key>PLAYER_ADD_MONEY_SILVER_COPPER</key>
+	<string>Get %d silver coins,%d copper coins</string>
+	<key>PLAYER_COST_MONEY_ALL</key>
+	<string>Cost %d gold coins,%d silver coins,%d copper coins</string>
+	<key>PLAYER_COST_MONEY_GOLD</key>
+	<string>Cost %d gold coins</string>
+	<key>PLAYER_COST_MONEY_SILVER</key>
+	<string>Cost %d silver coins</string>
+	<key>PLAYER_COST_MONEY_COPPER</key>
+	<string>Cost %d copper coins</string>
+	<key>PLAYER_COST_MONEY_GOLD_SILVER</key>
+	<string>Cost %d gold coins,%d silver coins</string>
+	<key>PLAYER_COST_MONEY_GOLD_COPPER</key>
+	<string>Cost %d gold coins,%d copper coins</string>
+	<key>PLAYER_COST_MONEY_SILVER_COPPER</key>
+	<string>Cost %d silver coins,%d copper coins</string>
 </dict>
 </plist>

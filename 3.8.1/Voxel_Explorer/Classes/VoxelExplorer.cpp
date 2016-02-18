@@ -150,6 +150,9 @@ bool VoxelExplorer::init(Layer* pMainLayer)
         CCLOGERROR("Create Player failed!");
         return false;
     }
+    
+    initReviveCount();
+    
     return true;
 }
 void VoxelExplorer::update(float delta)
@@ -2247,4 +2250,12 @@ bool VoxelExplorer::createPlayer()
     m_pPlayer->setState(Player::PS_IDLE);
     
     return true;
+}
+
+void VoxelExplorer::initReviveCount()
+{
+    if(RandomDungeon::getInstance()->getCurrentDungeonNode()->isBossDepth())
+        m_nReviveCount = 5;
+    else
+        m_nReviveCount = 3;
 }

@@ -19,6 +19,7 @@ public:
     virtual ~DeadPopupUI();
     virtual bool initUi() override;
     bool addEvents() override;
+    
 private:
     void onClickRevive(cocos2d::Ref* ref);
     void onClickRestart(cocos2d::Ref* ref);
@@ -37,10 +38,10 @@ private:
     cocos2d::ui::ImageView* m_pAdaIcon;
     cocos2d::ui::TextBMFont*  m_pAdaDesc;
     cocos2d::ui::TextBMFont*  m_pContinueNum;
-    cocos2d::ui::TextBMFont*  m_pBossDepthReviveText;
+    cocos2d::ui::TextBMFont*  m_pDepthReviveText;
     int m_nCountDownNum;    
     int m_nReviveTouchNum;
-    static int m_nBossReviveCount;
+
 };
 
 #endif /* DeadPopupUI_hpp */

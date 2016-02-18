@@ -18,7 +18,7 @@
 #include "RandomDungeon.hpp"
 
 USING_NS_CC;
-int DeadPopupUI::m_nBossReviveCount = 5;
+
 DeadPopupUI::DeadPopupUI()
 {
     m_pBtnDead  = nullptr;
@@ -60,23 +60,26 @@ bool DeadPopupUI::addEvents()
     if (!m_pBtnDead)
         return false;
     
-    m_pBossDepthReviveText = dynamic_cast<cocos2d::ui::TextBMFont*>(UtilityHelper::seekNodeByName(m_pRootNode,"dead_boos_reveive_text"));
-    if (!m_pBossDepthReviveText)
+    m_pDepthReviveText = dynamic_cast<cocos2d::ui::TextBMFont*>(UtilityHelper::seekNodeByName(m_pRootNode,"dead_boos_reveive_text"));
+    if (!m_pDepthReviveText)
         return false;
     
     ui::ImageView* title = dynamic_cast<cocos2d::ui::ImageView*>(UtilityHelper::seekNodeByName(m_pRootNode,"dead_title"));
     if (!title)
         return false;
     title->loadTexture(UtilityHelper::getLocalStringForUi("DEAD_RES"),TextureResType::PLIST);
-    m_pBossDepthReviveText->setFntFile(UtilityHelper::getLocalStringForUi("FONT_NAME"));
-    m_pBossDepthReviveText->setString(StringUtils::format(UtilityHelper::getLocalStringForUi("DEAD_BOOS_DEPTH_REVIVE_TXT").c_str(),m_nBossReviveCount));
+    m_pDepthReviveText->setFntFile(UtilityHelper::getLocalStringForUi("FONT_NAME"));
+    m_pDepthReviveText->setString(StringUtils::format(UtilityHelper::getLocalStringForUi("DEAD_BOOS_DEPTH_REVIVE_TXT").c_str(),VoxelExplorer::getInstance()->getReviveCount()));
+   
+    
+    
     m_pAdaDesc->setFntFile(UtilityHelper::getLocalStringForUi("FONT_NAME"));
     m_pAdaDesc->setString(UtilityHelper::getLocalStringForUi("BTN_TEXT_ADA_REVIVE"));
     m_pContinueNum->setFntFile(UtilityHelper::getLocalStringForUi("FONT_NAME"));
     m_pContinueNum->setString(Value(m_nCountDownNum).asString());
     m_pContinueNum->runAction(RepeatForever::create(Sequence::create(EaseBackIn::create(ScaleTo::create(0.3, 0.8)),EaseBackOut::create(ScaleTo::create(0.3, 1)), nil)));
     m_pBtnDead->addClickEventListener(CC_CALLBACK_1(DeadPopupUI::onClickAda, this));
-     m_pBossDepthReviveText->setVisible(false);
+     m_pDepthReviveText->setVisible(false);
 #if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID || CC_TARGET_PLATFORM == CC_PLATFORM_IOS
     if (!NativeBridge::getInstance()->isNetworkAvailable() ) {
         
@@ -91,23 +94,15 @@ bool DeadPopupUI::addEvents()
     }
 
 #endif
-    if (RandomDungeon::getInstance()->getCurrentDungeonNode()->isBossDepth())
-    {
-        if (m_nBossReviveCount >0) {
-            m_pBossDepthReviveText->setVisible(true);
-            this->schedule(schedule_selector(DeadPopupUI::CountDown), 1.0f);
-        }else
-        {
-             m_pBossDepthReviveText->setVisible(false);
-             updateRestartUi();
-        }
-    }
-    else
-    {
+
+    if (VoxelExplorer::getInstance()->getReviveCount() >0) {
+        m_pDepthReviveText->setVisible(true);
         this->schedule(schedule_selector(DeadPopupUI::CountDown), 1.0f);
-        m_pBossDepthReviveText->setVisible(false);
+    }else
+    {
+         m_pDepthReviveText->setVisible(false);
+         updateRestartUi();
     }
-    
 
     return true;
 }
@@ -182,10 +177,7 @@ void DeadPopupUI::reveiveCountDown(float dt)
 void DeadPopupUI::onClickRevive(cocos2d::Ref *ref)
 {
 
-    if (RandomDungeon::getInstance()->getCurrentDungeonNode()->isBossDepth())
-    {
-        --m_nBossReviveCount;
-    }
+    VoxelExplorer::getInstance()->declineReviveCount();
 
     PopupUILayerManager::getInstance()->closeCurrentPopup();
     VoxelExplorer::getInstance()->respawnPlayer();
@@ -193,10 +185,6 @@ void DeadPopupUI::onClickRevive(cocos2d::Ref *ref)
 void DeadPopupUI::onClickRestart(cocos2d::Ref *ref)
 {
 
-    if (RandomDungeon::getInstance()->getCurrentDungeonNode()->isBossDepth())
-    {
-        m_nBossReviveCount = 5;
-    }
     ArchiveManager::getInstance()->loadGame();
     cocos2d::Scene* scene = GameScene::createScene();
     Director::getInstance()->replaceScene(scene);

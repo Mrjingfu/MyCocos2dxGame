@@ -138,6 +138,10 @@ public:
     
     Actor* getNearestEnemy();
     bool checkBulletCollideMonster(const cocos2d::Vec3& bulletPos);
+    
+    int getReviveCount() const {return m_nReviveCount;}
+    void declineReviveCount(){--m_nReviveCount;};
+    void initReviveCount();
 private:
     bool createLayers();
     bool createLights();
@@ -170,6 +174,7 @@ private:
     Player*                                 m_pPlayer;
     bool                                    m_bIsGamePause;
     bool                                    m_bHasDownStairs;
+    int                                     m_nReviveCount;
 };
 
 #endif /* defined(__Voxel_Explorer__VoxelExplorer__) */
