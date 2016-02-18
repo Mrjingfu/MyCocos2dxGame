@@ -65,19 +65,6 @@ bool MineLevel::createTerrain()
                         }
                     }
                     break;
-                case TerrainTile::TT_EXIT:
-                    {
-                        if((RandomDungeon::getInstance()->getCurrentDungeonNode()->isLastDepth()))
-                        {
-                            StandardPortal* portal = StandardPortal::create(true);
-                            if(!portal)
-                                return false;
-                            portal->setPosition3D(Vec3(j*TerrainTile::CONTENT_SCALE, 0, -i*TerrainTile::CONTENT_SCALE));
-                            VoxelExplorer::getInstance()->getTerrainPortalsLayer()->addChild(portal);
-                            portal->setVisited(info.m_bVisited);
-                        }
-                    }
-                    break;
                 case TerrainTile::TT_STANDARD_PORTAL:
                     {
                         StandardPortal* portal = StandardPortal::create(true);

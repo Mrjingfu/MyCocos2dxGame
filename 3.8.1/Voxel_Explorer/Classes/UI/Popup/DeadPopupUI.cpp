@@ -197,7 +197,7 @@ void DeadPopupUI::onClickRestart(cocos2d::Ref *ref)
     {
         m_nBossReviveCount = 5;
     }
-    ArchiveManager::getInstance()->loadGame();
+    //ArchiveManager::getInstance()->loadGame();
     cocos2d::Scene* scene = GameScene::createScene();
     Director::getInstance()->replaceScene(scene);
     
