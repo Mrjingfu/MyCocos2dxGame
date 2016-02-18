@@ -9577,7 +9577,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "235"
             endingLineNumber = "235"
-            landmarkName = "GameToolbarLayer::onClickDistTipsFrame(cocos2d::Ref *ref)"
+            landmarkName = "GameToolbarLayer::onClickBag(Ref* ref,Widget::TouchEventType type)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
