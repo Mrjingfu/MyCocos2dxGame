@@ -7,7 +7,6 @@
 //
 
 #include "GambleShopPopupUI.hpp"
-#include "ItemShopBuyPopupUI.hpp"
 #include "PopupUILayerManager.h"
 #include "NpcDataManager.hpp"
 #include "BagMangerLayerUI.h"
@@ -58,12 +57,4 @@ void GambleShopPopupUI::updateShopDataItems()
     }
 
 }
-void GambleShopPopupUI::shopItemOpe(int itemId)
-{
-    ItemShopBuyPopupUI* shopItem = static_cast<ItemShopBuyPopupUI*>( PopupUILayerManager::getInstance()->openPopup(ePopupItemShopBuy));
-    if (shopItem) {
-        shopItem->setItemShopProp(m_eShopType,itemId);
-        shopItem->registerCloseCallback(CC_CALLBACK_0(ShopPopupUI::refreshUIView, this));
-    }
 
-}

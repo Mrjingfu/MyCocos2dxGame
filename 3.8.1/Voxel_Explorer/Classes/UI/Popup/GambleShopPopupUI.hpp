@@ -21,6 +21,7 @@ public:
     virtual bool addEvents() override;
      virtual const std::vector<PickableItemProperty*>& getShopItems() const override;
     virtual void updateShopDataItems() override;
-    virtual void shopItemOpe(int itemId) override;};
+    
+};
 
 #endif /* GambleShopPopupUI_hpp */

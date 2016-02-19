@@ -14,19 +14,7 @@
 class PickableItemProperty;
 class BagMangerLayerUI;
 
-class SellItem :public Ref
-{
-    SellItem():m_nItemId(-1),m_nItemCount(1){};
-public:
-    virtual ~SellItem(){};
-    static SellItem* create(int itemId,int count =1);
-    void setItemCount(int count){ m_nItemCount +=count;};
-    int getItemId() const{return m_nItemId;};
-    int getItemCount() const{return m_nItemCount;};
-private:
-    int m_nItemId;
-    int m_nItemCount;
-};
+
 
 class BagLayer:public WrapperUILayer
 {

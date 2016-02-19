@@ -23,8 +23,9 @@ public:
     virtual void refreshUIView() override;
     virtual void updateUseItem() override;
     virtual void setItemShopProp(ShopPopupUI::eShopType type,int itemId) ;
-protected:
     virtual PickableItemProperty* getItemIdProperty()const override;
+protected:
+    
     virtual void sliderEvent(cocos2d::Ref* sender, cocos2d::ui::Slider::EventType type);
 private:
     void onClickBuy(Ref* ref);

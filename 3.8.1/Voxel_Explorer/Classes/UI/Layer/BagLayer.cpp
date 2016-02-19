@@ -15,19 +15,7 @@
 #include "AlertPopupUI.hpp"
 #include "UtilityHelper.h"
 #include "StatisticsManager.hpp"
-SellItem* SellItem::create(int itemId,int count /*=1*/)
-{
-    SellItem* sellItem = new (std::nothrow) SellItem();
-    if (sellItem )
-    {
-        sellItem->m_nItemId = itemId;
-        sellItem->m_nItemCount = count;
-        sellItem->autorelease();
-        return sellItem;
-    }
-    CC_SAFE_DELETE(sellItem);
-    return nullptr;
-}
+
 
 BagLayer::BagLayer()
 {
@@ -342,11 +330,11 @@ std::vector<PickableItemProperty*> BagLayer::getItems()
             std::swap( items[1], items[getItemIndexForVector(items,OrnamentId)] );
         }
         
-        if (items.size() >4) {
-            std::sort(items.begin()+4, items.end(), [](PickableItemProperty* prop1,PickableItemProperty* prop2){
-                return prop1->getPickableItemPropertyType() < prop2->getPickableItemPropertyType();
-            });
-        }
+//        if (items.size() >4) {
+//            std::sort(items.begin()+4, items.end(), [](PickableItemProperty* prop1,PickableItemProperty* prop2){
+//                return prop1->getPickableItemPropertyType() < prop2->getPickableItemPropertyType();
+//            });
+//        }
 
 
     }else
@@ -591,9 +579,10 @@ void BagLayer::onClickBagExtend(cocos2d::Ref* ref)
         alertPopupUi->setPositiveListerner([](Ref* ref){
         
         },UtilityHelper::getLocalStringForUi("BTN_TEXT_CANCEL"));
-        alertPopupUi->setNegativeListerner([isMoneyEnough,alertPopupUi](Ref* ref){
+        alertPopupUi->setNegativeListerner([isMoneyEnough,alertPopupUi,extendCopper](Ref* ref){
             
             if (isMoneyEnough) {
+                PlayerProperty::getInstance()->costMoney(extendCopper*10000);
                 PlayerProperty::getInstance()->extendBagSpace();
             }else
                 Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_MONEY_NOT_ENOUGH);

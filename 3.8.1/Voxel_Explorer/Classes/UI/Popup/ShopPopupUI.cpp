@@ -14,6 +14,7 @@
 #include "BagMangerLayerUI.h"
 #include "PopupUILayerManager.h"
 #include "PickableItemProperty.hpp"
+#include "ItemShopBuyPopupUI.hpp"
 #include "EventConst.h"
 ShopPopupUI::ShopPopupUI()
 {
@@ -202,7 +203,66 @@ void ShopPopupUI::selectItemEvent(cocos2d::Ref *pSender, TGridView::EventType ty
         TGridView* gridView = static_cast<TGridView*>(pSender);
         int currentItemId = m_pShopMangerLayer->getItemId(gridView->getCurSelectedIndex());
         if (currentItemId!=-1) {
+            
             shopItemOpe(currentItemId);
         }
     }
+}
+void ShopPopupUI::shopItemOpe(int itemId)
+{
+
+    ItemShopBuyPopupUI* shopItem = static_cast<ItemShopBuyPopupUI*>( PopupUILayerManager::getInstance()->openPopup(ePopupItemShopBuy));
+    if (shopItem) {
+        shopItem->setItemShopProp(m_eShopType,itemId);
+        shopItem->registerCloseCallback(CC_CALLBACK_0(ShopPopupUI::refreshUIView, this));
+        PickableItemProperty* itemProp = shopItem->getItemIdProperty();
+        
+        
+        //判断点击的武器 是否已经有装备过
+        int weaponId = int(PlayerProperty::getInstance()->getEquipedWeaponID());
+        int armorId = int(PlayerProperty::getInstance()->getEquipedArmorID());
+        int OrnamentId = int(PlayerProperty::getInstance()->getEquipedOrnamentsID());
+        int secondWeaponId = int(PlayerProperty::getInstance()->getEquipedSecondWeaponID());
+        int equipId = -1;
+        if (itemProp->getPickableItemPropertyType() == PickableItemProperty::PIPT_WEAPON && itemId !=weaponId )
+        {
+            equipId = weaponId;
+        }else if (itemProp->getPickableItemPropertyType() == PickableItemProperty::PIPT_ARMOR && itemId !=armorId )
+        {
+            equipId = armorId;
+        }else if (itemProp->getPickableItemPropertyType() == PickableItemProperty::PIPT_MAGIC_ORNAMENT && itemId !=OrnamentId )
+        {
+            equipId = OrnamentId;
+        }else if (itemProp->getPickableItemPropertyType() == PickableItemProperty::PIPT_SECOND_WEAPON && itemId !=secondWeaponId )
+        {
+            equipId = secondWeaponId;
+        }
+        
+        
+        //如果有装备过 打开装备过的武器
+        if (equipId!=-1)
+        {
+            ItemPopupUI* Equippopupui = static_cast<ItemPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupType::ePopupEquipItem));
+            if (Equippopupui)
+            {
+                Equippopupui->setItemId(equipId);
+                Equippopupui->setDarkLayerVisble(false);
+                cocos2d::Size itemRootNode = shopItem->getRootNode()->getContentSize();
+                cocos2d::Size equipRootNode = Equippopupui->getRootNode()->getContentSize();
+                float y = 0.0f;
+                if (equipRootNode.height > itemRootNode.height) {
+                    y = SCREEN_HEIGHT*0.5 + equipRootNode.height*0.5;
+                }else
+                    y = SCREEN_HEIGHT*0.5 + itemRootNode.height*0.5;
+                
+                Equippopupui->getRootNode()->setAnchorPoint(cocos2d::Vec2::ANCHOR_MIDDLE_TOP);
+                shopItem->getRootNode()->setAnchorPoint(cocos2d::Vec2::ANCHOR_MIDDLE_TOP);
+                shopItem->getRootNode()->setPosition(cocos2d::Vec2(SCREEN_WIDTH*0.5+5+itemRootNode.width*0.5,y));
+                Equippopupui->getRootNode()->setPosition(cocos2d::Vec2(SCREEN_WIDTH*0.5-equipRootNode.width*0.5,y));
+                
+            }
+        }
+    }
+
+
 }

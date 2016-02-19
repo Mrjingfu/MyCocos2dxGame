@@ -9,7 +9,6 @@
 #include "MagicShopPopupUI.h"
 #include "NpcDataManager.hpp"
 #include "BagMangerLayerUI.h"
-#include "ItemShopBuyPopupUI.hpp"
 #include "PopupUILayerManager.h"
 #include "ItemShopBuyPopupUI.hpp"
 MagicShopPopupUI::MagicShopPopupUI()
@@ -41,13 +40,5 @@ const std::vector<PickableItemProperty*>& MagicShopPopupUI::getShopItems() const
     return NpcDataManager::getInstance()->getMagicShop();
 }
 
-void MagicShopPopupUI::shopItemOpe(int itemId)
-{
-    ItemShopBuyPopupUI* shopItem = static_cast<ItemShopBuyPopupUI*>( PopupUILayerManager::getInstance()->openPopup(ePopupItemShopBuy));
-    if (shopItem) {
-        shopItem->setItemShopProp(m_eShopType,itemId);
-        shopItem->registerCloseCallback(CC_CALLBACK_0(ShopPopupUI::refreshUIView, this));
-    }
-}
 
 

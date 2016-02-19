@@ -38,11 +38,11 @@ public:
     virtual void updateShopDataItems();
     virtual void setShopTitle(const std::string& titleKey);
     virtual const std::vector<PickableItemProperty*>& getShopItems() const = 0;
-    virtual void shopItemOpe(int itemId) = 0;
+    virtual void shopItemOpe(int itemId);
 protected:
     void onClickClose(Ref* ref);
-    virtual  void onEventUpdateNpcData(cocos2d::EventCustom *sender);
-    virtual void selectItemEvent(Ref *pSender, TGridView::EventType type);
+    virtual void onEventUpdateNpcData(cocos2d::EventCustom *sender);
+     void selectItemEvent(Ref *pSender, TGridView::EventType type);
     
 protected:
     cocos2d::ui::Button* m_pBtnClose;

@@ -118,7 +118,7 @@ void ItemShopSellPopupUI::onClickSell(cocos2d::Ref *ref)
             if (popupUILayer)
             {
                 PopupUILayer* pplayer = nullptr;
-                if (PopupUILayerManager::getInstance()->isOpenPopup(ePopupItemShopSell, pplayer)) {
+                if (PopupUILayerManager::getInstance()->isOpenPopup(ePopupEquipItem, pplayer)) {
                     pplayer->getRootNode()->setVisible(false);
                 }
                 this->getRootNode()->setVisible(false);

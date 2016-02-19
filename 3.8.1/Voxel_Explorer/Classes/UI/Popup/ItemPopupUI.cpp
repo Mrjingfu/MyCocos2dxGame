@@ -754,24 +754,7 @@ bool ItemPopupUI::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *unused_eve
     }else
         return true;
 }
-//void ItemPopupUI::onTouchEnded(cocos2d::Touch *touch, cocos2d::Event *unused_event)
-//{
-//    if (!m_pRootNode)
-//        return;
-//    cocos2d::Rect rootRect = m_pRootNode->getBoundingBox();
-//    PopupUILayer* pLayer = nullptr;
-//    if (PopupUILayerManager::getInstance()->isOpenPopup(ePopupEquipItem,pLayer))
-//    {
-//        float width = pLayer->getRootNode()->getBoundingBox().size.width + rootRect.size.width+5;
-//        
-//        rootRect.setRect(pLayer->getRootNode()->getBoundingBox().origin.x,pLayer->getRootNode()->getBoundingBox().origin.y,width,rootRect.size.height);
-//    }
-//    
-//    if (!rootRect.containsPoint(touch->getLocation()) && m_nIsBlankClose) {
-//        //        CCLOG("onTouchEnded");
-//        closePopup();
-//    }
-//}
+
 void ItemPopupUI::updateUseItem()
 {
     if (m_pBtnEquip)
@@ -973,7 +956,7 @@ void ItemPopupUI::closePopup()
 {
 
     PopupUILayer* pLayer = nullptr;
-    if (m_pPopupType == ePopupItem &&PopupUILayerManager::getInstance()->isOpenPopup(ePopupEquipItem,pLayer)) {
+    if (m_pPopupType != ePopupEquipItem && PopupUILayerManager::getInstance()->isOpenPopup(ePopupEquipItem,pLayer)) {
         ItemPopupUI* itemPopupUi = static_cast<ItemPopupUI*>(pLayer);
         if (itemPopupUi) {
             itemPopupUi->closePopup();

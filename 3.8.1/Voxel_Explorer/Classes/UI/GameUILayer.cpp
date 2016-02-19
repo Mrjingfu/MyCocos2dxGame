@@ -256,7 +256,7 @@ void GameUILayer::onEventRoleMoneyNotEnough(cocos2d::EventCustom *sender)
 {
     CCLOG("onEventRoleMoneyNotEnough");
     std::string msg = UtilityHelper::getLocalStringForUi(EVENT_PLAYER_MONEY_NOT_ENOUGH);
-    PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
+    PopupUILayerManager::getInstance()->showStatusImport(TIP_NEGATIVE, msg);
     m_pGameToolBarLayer->sendMessage(msg,PopupUILayerManager::getInstance()->getTipsColor(TIP_WARNING));
     
 }
@@ -1301,10 +1301,7 @@ void GameUILayer::onEventMonsterDead(cocos2d::EventCustom *sender)
         if (monster->getMonsterProperty()->isElite()) {
             exp = GameFormula::getKillEliteMonsterExp(roleLevel, monsterLevel);
         }
-        
-        if (m_pMonsterHudLayer) {
-            m_pMonsterHudLayer->shwoPrompt(pt, TIP_POSITIVE, StringUtils::format(UtilityHelper::getLocalStringForUi("STATUS_TEXT_EXP").c_str(),exp));
-        }
+         PopupUILayerManager::getInstance()->showStatusImport(TIP_POSITIVE, StringUtils::format(UtilityHelper::getLocalStringForUi("STATUS_TEXT_EXP").c_str(),exp));
         
         if (m_pMonsterPropLayer) {
             m_pMonsterPropLayer->setMonster(monster);
@@ -1388,7 +1385,8 @@ void GameUILayer::onEventBossDeath(cocos2d::EventCustom *sender)
         int exp  = GameFormula::getKillBossExp(roleLevel, roleLevel+5);
         
         if (m_pMonsterHudLayer) {
-            m_pMonsterHudLayer->shwoPrompt(pt, TIP_POSITIVE, StringUtils::format(UtilityHelper::getLocalStringForUi("STATUS_TEXT_EXP").c_str(),exp));
+            
+            PopupUILayerManager::getInstance()->showStatusImport(TIP_POSITIVE, StringUtils::format(UtilityHelper::getLocalStringForUi("STATUS_TEXT_EXP").c_str(),exp));
         }
 
         if (m_pBossPropLayer) {

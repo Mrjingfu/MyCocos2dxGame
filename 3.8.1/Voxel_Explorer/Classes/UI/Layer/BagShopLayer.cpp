@@ -33,35 +33,7 @@ void BagShopLayer::refreshUIView()
     if (m_BagMsgLayer) {
         m_BagMsgLayer->removeCountForItems();
     }
-    
-    std::vector<PickableItemProperty*> bagItems = getItems();
-    
-    for (int i =0; i<bagItems.size(); i++)
-    {
-        PickableItemProperty* itemProp =bagItems[i];
-        ui::ImageView* itemUi = static_cast<ui::ImageView*>( m_pGridView->getItem(i));
-        
-        if (itemProp && itemUi && itemProp) {
-            
-            //查看是否可以合并
-            if(itemProp->isStackable())
-            {
-                int count = itemProp->getCount();
-           
-                //背包剩余商品个数等于总个数-过滤掉的商品个数
-                for (auto sellIter = m_vSellItems.begin(); sellIter!=m_vSellItems.end(); sellIter++)
-                {
-                    if (itemProp->getInstanceID() == (*sellIter)->getItemId()) {
-                        count = count -(*sellIter)->getItemCount();
-                        break;
-                    }
-                }
-                if (count>1) {
-                    m_BagMsgLayer->setItemCount(itemProp->getInstanceID(),itemUi->getPosition(), count);
-                }
-            }
-        }
-    }
+ 
 }
 void BagShopLayer::updatePopupUI()
 {
@@ -80,39 +52,67 @@ void BagShopLayer::bagItemOpe(int itemId)
 {
     if (itemId==-1)
         return;
+    
+    PickableItemProperty* itemProp = PlayerProperty::getInstance()->getItemFromBag(CChaosNumber(itemId));
+    if (!itemProp)
+    {
+        CCLOG("itemProp is empty");
+        return;
+    }
+    
+    //判断点击的武器 是否已经有装备过
+    int weaponId = int(PlayerProperty::getInstance()->getEquipedWeaponID());
+    int armorId = int(PlayerProperty::getInstance()->getEquipedArmorID());
+    int OrnamentId = int(PlayerProperty::getInstance()->getEquipedOrnamentsID());
+    int secondWeaponId = int(PlayerProperty::getInstance()->getEquipedSecondWeaponID());
+    int equipId = -1;
+    ItemPopupUI* Equippopupui = nullptr;
+    if (itemProp->getPickableItemPropertyType() == PickableItemProperty::PIPT_WEAPON && itemId !=weaponId )
+    {
+        equipId = weaponId;
+    }else if (itemProp->getPickableItemPropertyType() == PickableItemProperty::PIPT_ARMOR && itemId !=armorId )
+    {
+        equipId = armorId;
+    }else if (itemProp->getPickableItemPropertyType() == PickableItemProperty::PIPT_MAGIC_ORNAMENT && itemId !=OrnamentId )
+    {
+        equipId = OrnamentId;
+    }else if (itemProp->getPickableItemPropertyType() == PickableItemProperty::PIPT_SECOND_WEAPON && itemId !=secondWeaponId )
+    {
+        equipId = secondWeaponId;
+    }
+    
     ItemShopSellPopupUI* shopItem = static_cast<ItemShopSellPopupUI*>( PopupUILayerManager::getInstance()->openPopup(ePopupItemShopSell));
     if (shopItem) {
         shopItem->setItemId(itemId);
 //        shopItem->registerCloseCallback(CC_CALLBACK_0(BagShopLayer::updatePopupUI, this));
-    }
-}
-void BagShopLayer::removeItemForSell(int itemId)
-{
-    SellItem* sellitem = nullptr;
-    
-    for (auto iter = m_vSellItems.begin(); iter!=m_vSellItems.end(); iter++)
-    {
-        if (itemId == (*iter)->getItemId()) {
-            sellitem = (*iter);
+        
+        //如果有装备过 打开装备过的武器
+        if (equipId!=-1)
+        {
+            ItemPopupUI* Equippopupui = static_cast<ItemPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupType::ePopupEquipItem));
+            if (Equippopupui)
+            {
+                Equippopupui->setItemId(equipId);
+                Equippopupui->setDarkLayerVisble(false);
+                cocos2d::Size itemRootNode = shopItem->getRootNode()->getContentSize();
+                cocos2d::Size equipRootNode = Equippopupui->getRootNode()->getContentSize();
+                float y = 0.0f;
+                if (equipRootNode.height > itemRootNode.height) {
+                    y = SCREEN_HEIGHT*0.5 + equipRootNode.height*0.5;
+                }else
+                    y = SCREEN_HEIGHT*0.5 + itemRootNode.height*0.5;
+                
+                Equippopupui->getRootNode()->setAnchorPoint(cocos2d::Vec2::ANCHOR_MIDDLE_TOP);
+                shopItem->getRootNode()->setAnchorPoint(cocos2d::Vec2::ANCHOR_MIDDLE_TOP);
+                shopItem->getRootNode()->setPosition(cocos2d::Vec2(SCREEN_WIDTH*0.5+5+itemRootNode.width*0.5,y));
+                Equippopupui->getRootNode()->setPosition(cocos2d::Vec2(SCREEN_WIDTH*0.5-equipRootNode.width*0.5,y));
+                
+            }
         }
-    }
-    if (sellitem) {
-        m_vSellItems.eraseObject(sellitem);
+
     }
 }
 
-void BagShopLayer::updateItemSplit(void * count ,SellItem* sellItem,int ItemId)
-{
-    
-    if (sellItem) {
-        sellItem->setItemCount(*(int*)count);
-    }else
-    {
-        SellItem* sellItem  = SellItem::create(ItemId,*(int*)count);
-        m_vSellItems.pushBack(sellItem);
-    }
-    updatePopupUI();
-}
 std::vector<PickableItemProperty*> BagShopLayer::getItems()
 {
 
