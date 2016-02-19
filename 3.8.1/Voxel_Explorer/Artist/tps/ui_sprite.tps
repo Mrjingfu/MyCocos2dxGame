@@ -241,6 +241,7 @@
             <filename>../ui/ui_sprite/ui_btn_sound_on.png</filename>
             <filename>../ui/ui_sprite/ui_video_btn.png</filename>
             <filename>../ui/ui_sprite/ui_bag_lock_icon.png</filename>
+            <filename>../ui/ui_sprite/ui_exp_desc.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

@@ -53,10 +53,10 @@
                 <PreSize X="0.1406" Y="1.0000" />
                 <FileData Type="PlistSubImage" Path="ui_frame_8.png" Plist="ui_sprite.plist" />
               </AbstractNodeData>
-              <AbstractNodeData Name="game_btn_bag" ActionTag="-913047541" Tag="196" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="87.8720" RightMargin="187.1280" Scale9Enable="True" LeftEage="5" RightEage="5" TopEage="5" BottomEage="5" Scale9OriginX="5" Scale9OriginY="5" Scale9Width="6" Scale9Height="6" ctype="ImageViewObjectData">
+              <AbstractNodeData Name="game_btn_bag" CanEdit="False" ActionTag="-913047541" Tag="196" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="87.8720" RightMargin="187.1280" Scale9Enable="True" LeftEage="5" RightEage="5" TopEage="5" BottomEage="5" Scale9OriginX="5" Scale9OriginY="5" Scale9Width="6" Scale9Height="6" ctype="ImageViewObjectData">
                 <Size X="45.0000" Y="40.0000" />
                 <Children>
-                  <AbstractNodeData Name="game_btn_bag_icon" ActionTag="-970131592" Tag="197" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="2.5000" RightMargin="2.5000" Scale9Width="40" Scale9Height="40" ctype="ImageViewObjectData">
+                  <AbstractNodeData Name="game_btn_bag_icon" ActionTag="-970131592" Tag="197" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="2.5000" RightMargin="2.5000" Scale9Width="22" Scale9Height="26" ctype="ImageViewObjectData">
                     <Size X="40.0000" Y="40.0000" />
                     <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
                     <Position X="22.5000" Y="20.0000" />
@@ -141,45 +141,55 @@
                 <PreSize X="0.1406" Y="1.0000" />
                 <FileData Type="PlistSubImage" Path="ui_frame_8.png" Plist="ui_sprite.plist" />
               </AbstractNodeData>
-              <AbstractNodeData Name="progress_role_exp_bg" ActionTag="353429478" Tag="204" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" TopMargin="-4.0000" BottomMargin="40.0000" Scale9Enable="True" LeftEage="2" RightEage="2" TopEage="3" BottomEage="3" Scale9OriginX="2" Scale9OriginY="3" Scale9Width="12" Scale9Height="5" ctype="ImageViewObjectData">
-                <Size X="320.0000" Y="4.0000" />
+              <AbstractNodeData Name="Image_1" ActionTag="-1671961897" Tag="21" IconVisible="False" LeftMargin="-21.3569" RightMargin="282.3569" TopMargin="-14.9333" BottomMargin="30.9333" Scale9Width="59" Scale9Height="24" ctype="ImageViewObjectData">
+                <Size X="59.0000" Y="24.0000" />
+                <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+                <Position X="8.1431" Y="42.9333" />
+                <Scale ScaleX="0.1900" ScaleY="0.1900" />
+                <CColor A="255" R="255" G="255" B="255" />
+                <PrePosition X="0.0254" Y="1.0733" />
+                <PreSize X="0.1844" Y="0.6000" />
+                <FileData Type="PlistSubImage" Path="ui_exp_desc.png" Plist="ui_sprite.plist" />
+              </AbstractNodeData>
+              <AbstractNodeData Name="progress_role_exp_bg" ActionTag="353429478" Tag="204" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="15.0000" RightMargin="0.0000" TopMargin="-5.0000" BottomMargin="41.0000" Scale9Enable="True" LeftEage="2" RightEage="2" TopEage="3" BottomEage="3" Scale9OriginX="2" Scale9OriginY="3" Scale9Width="12" Scale9Height="5" ctype="ImageViewObjectData">
+                <Size X="305.0000" Y="4.0000" />
                 <Children>
-                  <AbstractNodeData Name="progress_role_exp" ActionTag="-1917743367" Tag="205" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="1.0160" RightMargin="0.9840" TopMargin="1.0000" BottomMargin="1.0000" ProgressInfo="0" ctype="LoadingBarObjectData">
-                    <Size X="318.0000" Y="2.0000" />
+                  <AbstractNodeData Name="progress_role_exp" ActionTag="-1917743367" Tag="205" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="0.9760" RightMargin="2.0240" TopMargin="1.0000" BottomMargin="1.0000" ProgressInfo="0" ctype="LoadingBarObjectData">
+                    <Size X="302.0000" Y="2.0000" />
                     <AnchorPoint ScaleY="0.5000" />
-                    <Position X="1.0240" Y="2.0000" />
+                    <Position X="0.9760" Y="2.0000" />
                     <Scale ScaleX="1.0000" ScaleY="1.0000" />
                     <CColor A="255" R="255" G="255" B="255" />
                     <PrePosition X="0.0032" Y="0.5000" />
-                    <PreSize X="0.9937" Y="0.5000" />
+                    <PreSize X="0.9902" Y="0.5000" />
                     <ImageFileData Type="PlistSubImage" Path="progress_exp_style.png" Plist="ui_sprite.plist" />
                   </AbstractNodeData>
                 </Children>
-                <AnchorPoint />
-                <Position Y="40.0000" />
+                <AnchorPoint ScaleX="1.0000" />
+                <Position X="320.0000" Y="41.0000" />
                 <Scale ScaleX="1.0000" ScaleY="1.0000" />
                 <CColor A="255" R="255" G="255" B="255" />
-                <PrePosition Y="1.0000" />
-                <PreSize X="1.0000" Y="0.1000" />
+                <PrePosition X="1.0000" Y="1.0250" />
+                <PreSize X="0.9531" Y="0.1000" />
                 <FileData Type="PlistSubImage" Path="progress_exp_bg.png" Plist="ui_sprite.plist" />
               </AbstractNodeData>
-              <AbstractNodeData Name="game_msg_frame" ActionTag="-654621271" Tag="206" IconVisible="False" PercentWidthEnable="True" PercentWidthEnabled="True" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" TopMargin="-79.8000" BottomMargin="44.8000" Scale9Enable="True" LeftEage="10" RightEage="10" TopEage="10" BottomEage="10" Scale9OriginX="10" Scale9OriginY="10" Scale9Width="12" Scale9Height="12" ctype="ImageViewObjectData">
+              <AbstractNodeData Name="game_msg_frame" ActionTag="-654621271" Tag="206" IconVisible="False" PercentWidthEnable="True" PercentWidthEnabled="True" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="0.0000" TopMargin="-80.8000" BottomMargin="45.8000" Scale9Enable="True" LeftEage="10" RightEage="10" TopEage="10" BottomEage="10" Scale9OriginX="10" Scale9OriginY="10" Scale9Width="12" Scale9Height="12" ctype="ImageViewObjectData">
                 <Size X="320.0000" Y="75.0000" />
                 <AnchorPoint />
-                <Position Y="44.8000" />
+                <Position X="0.0000" Y="45.8000" />
                 <Scale ScaleX="1.0000" ScaleY="1.0000" />
                 <CColor A="255" R="255" G="255" B="255" />
-                <PrePosition Y="1.1200" />
+                <PrePosition X="0.0000" Y="1.1450" />
                 <PreSize X="1.0000" Y="1.8750" />
                 <FileData Type="PlistSubImage" Path="ui_frame_5.png" Plist="ui_sprite.plist" />
               </AbstractNodeData>
-              <AbstractNodeData Name="game_dist_dialog" ActionTag="-931570552" Tag="207" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="50.0000" RightMargin="50.0000" TopMargin="-36.0000" BottomMargin="46.0000" Scale9Enable="True" LeftEage="4" RightEage="4" TopEage="4" BottomEage="4" Scale9OriginX="4" Scale9OriginY="4" Scale9Width="5" Scale9Height="5" ctype="ImageViewObjectData">
+              <AbstractNodeData Name="game_dist_dialog" ActionTag="-931570552" Tag="207" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="50.0000" RightMargin="50.0000" TopMargin="-37.0000" BottomMargin="47.0000" Scale9Enable="True" LeftEage="4" RightEage="4" TopEage="4" BottomEage="4" Scale9OriginX="4" Scale9OriginY="4" Scale9Width="5" Scale9Height="5" ctype="ImageViewObjectData">
                 <Size X="220.0000" Y="30.0000" />
                 <Children>
                   <AbstractNodeData Name="game_dist_tips_desc" ActionTag="738486401" Tag="117" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="-138.7003" RightMargin="-119.2997" TopMargin="-3.8797" BottomMargin="-5.1203" LabelText="Please tap the screen to check." ctype="TextBMFontObjectData">
                     <Size X="458.0000" Y="39.0000" />
                     <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-                    <Position X="99.3297" Y="14.3797" />
+                    <Position X="99.3300" Y="14.3790" />
                     <Scale ScaleX="0.3800" ScaleY="0.3800" />
                     <CColor A="255" R="255" G="255" B="255" />
                     <PrePosition X="0.4515" Y="0.4793" />
@@ -201,10 +211,10 @@
                   </AbstractNodeData>
                 </Children>
                 <AnchorPoint ScaleX="0.5000" />
-                <Position X="160.0000" Y="46.0000" />
+                <Position X="160.0000" Y="47.0000" />
                 <Scale ScaleX="1.0000" ScaleY="1.0000" />
                 <CColor A="255" R="255" G="255" B="255" />
-                <PrePosition X="0.5000" Y="1.1500" />
+                <PrePosition X="0.5000" Y="1.1750" />
                 <PreSize X="0.6875" Y="0.7500" />
                 <FileData Type="PlistSubImage" Path="ui_frame_6.png" Plist="ui_sprite.plist" />
               </AbstractNodeData>

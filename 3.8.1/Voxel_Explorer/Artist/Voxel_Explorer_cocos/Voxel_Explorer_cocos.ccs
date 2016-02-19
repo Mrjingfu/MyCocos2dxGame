@@ -102,6 +102,7 @@
           <PlistImageFile Name="ui_btn_sound_on.png" Key="ui_btn_sound_on.png" />
           <PlistImageFile Name="ui_video_btn.png" Key="ui_video_btn.png" />
           <PlistImageFile Name="ui_bag_lock_icon.png" Key="ui_bag_lock_icon.png" />
+          <PlistImageFile Name="ui_exp_desc.png" Key="ui_exp_desc.png" />
         </PlistImageFolder>
         <Project Name="gameScene.csd" Type="Scene" />
         <Project Name="menuscene.csd" Type="Scene" />
