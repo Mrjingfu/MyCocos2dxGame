@@ -28,7 +28,7 @@ DeadPopupUI::DeadPopupUI()
     m_pAdaDesc = nullptr;
     m_pContinueNum = nullptr;
     m_nCountDownNum = 6;
-    m_nReviveTouchNum = 6;
+    m_nReviveTouchNum = 4;
 }
 DeadPopupUI::~DeadPopupUI()
 {
