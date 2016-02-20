@@ -19,8 +19,8 @@
 		<key>EVENT_DESC</key>
 		<string>
 黑夜给了我黑色的眼睛，我却用它來
-寻找bug。   
-				————《开发者墓志铭》
+寻找bug。
+        ————《开发者墓志铭》
         </string>
 		<key>HAS_READED</key>
 		<false/>
@@ -30,7 +30,7 @@
 		<integer>1</integer>
 		<key>EVENT_DESC</key>
 		<string>
-            你在地板下面发现了1枚金币
+        你在地板下面发现了1枚金币
         </string>
 		<key>HAS_READED</key>
 		<false/>
@@ -110,7 +110,7 @@
 		<key>EVENT_DESC</key>
 		<string>
 “到此一游～我要去甜水镇了～呦呦”
-			————“尼古拉王子”
+           ————“尼古拉王子”
         </string>
 		<key>HAS_READED</key>
 		<false/>
@@ -131,9 +131,9 @@
 		<integer>0</integer>
 		<key>EVENT_DESC</key>
 		<string>
-“想要我的签名照？，来绝东城找我来
-领任务吧” 
-				————“艾瑞贝斯”
+“想要我的签名照？，来绝东城找我
+来领任务吧”
+            ————“艾瑞贝斯”
         </string>
 		<key>HAS_READED</key>
 		<false/>
