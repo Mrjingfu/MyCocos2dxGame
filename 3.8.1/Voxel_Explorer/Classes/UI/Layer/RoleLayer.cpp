@@ -12,6 +12,7 @@
 #include "PlayerProperty.hpp"
 #include "GameFormula.hpp"
 #include "PopupUILayerManager.h"
+#include "ItemPopupUI.h"
 USING_NS_CC;
 RoleLayer::RoleLayer()
 {
@@ -213,6 +214,17 @@ bool RoleLayer::addEvents()
     m_pRoleAttack->setFntFile(UtilityHelper::getLocalStringForUi("FONT_NAME"));
     m_pRoleDefense->setFntFile(UtilityHelper::getLocalStringForUi("FONT_NAME"));
     
+    m_pWeaponUi->setTouchEnabled(true);
+    m_pWeaponUi->addClickEventListener(CC_CALLBACK_1(RoleLayer::onClickEquipWeapon, this));
+    
+    m_pArmorUi->setTouchEnabled(true);;
+    m_pArmorUi->addClickEventListener(CC_CALLBACK_1(RoleLayer::onClickEquipArmor, this));
+    
+    m_pOrnamentUi->setTouchEnabled(true);
+    m_pOrnamentUi->addClickEventListener(CC_CALLBACK_1(RoleLayer::onClickEquipOrnament, this));
+    
+    m_pSecondWeaponUi->setTouchEnabled(true);
+    m_pSecondWeaponUi->addClickEventListener(CC_CALLBACK_1(RoleLayer::onClickEquipSecondWeapon, this));
     
     m_pBtnClose->addClickEventListener(CC_CALLBACK_1(RoleLayer::onClickClose, this));
     m_pShopBtn->addClickEventListener(CC_CALLBACK_1(RoleLayer::onClickShop, this));
@@ -312,5 +324,43 @@ void RoleLayer::onClickClose(cocos2d::Ref *ref)
     PopupUILayer* popupLayer = PopupUILayerManager::getInstance()->getCurrentPopUpLayer();
     if (popupLayer) {
         popupLayer->closePopup();
+    }
+}
+void RoleLayer::onClickEquipWeapon(Ref* ref)
+{
+    CHECK_ACTION(ref);
+    clickEffect();
+    
+    showEquipItemPopup(int(PlayerProperty::getInstance()->getEquipedWeaponID()));
+    
+}
+void RoleLayer::onClickEquipArmor(Ref* ref)
+{
+    CHECK_ACTION(ref);
+    clickEffect();
+    
+    showEquipItemPopup(int(PlayerProperty::getInstance()->getEquipedArmorID()));
+}
+void RoleLayer::onClickEquipOrnament(Ref* ref)
+{
+    CHECK_ACTION(ref);
+    clickEffect();
+    
+    showEquipItemPopup(int(PlayerProperty::getInstance()->getEquipedOrnamentsID()));
+}
+void RoleLayer::onClickEquipSecondWeapon(Ref* ref)
+{
+    CHECK_ACTION(ref);
+    clickEffect();
+    
+    showEquipItemPopup(int(PlayerProperty::getInstance()->getEquipedSecondWeaponID()));
+}
+void RoleLayer::showEquipItemPopup(int itemId)
+{
+    if (itemId!=-1) {
+        ItemPopupUI* itemPopupUi = static_cast<ItemPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupItem));
+        if (itemPopupUi) {
+            itemPopupUi->setItemId(itemId);
+        }
     }
 }

@@ -28,6 +28,11 @@ private:
     void updateEquipProp();
     void onClickShop(Ref*);
     void onClickClose(Ref*);
+    void onClickEquipWeapon(Ref* ref);
+    void onClickEquipArmor(Ref* ref);
+    void onClickEquipOrnament(Ref* ref);
+    void onClickEquipSecondWeapon(Ref* ref);
+    void showEquipItemPopup(int itemId);
 private:
     BagMangerLayerUI* m_pEquipFrame;
     cocos2d::ui::Button* m_pBtnClose;
