@@ -22,6 +22,8 @@
 #include "SimpleAudioEngine.h"
 #include "AchieveItemLayer.hpp"
 #include "AchieveItemUI.hpp"
+#include "GameUILayer.h"
+#include "SkillLayer.hpp"
 USING_NS_CC;
 GameToolbarLayer::GameToolbarLayer()
 {
@@ -309,13 +311,17 @@ void GameToolbarLayer::onClickMsg(Ref* ref,Widget::TouchEventType type)
         if (m_bIsDist) {
             return;
         }
-        
+        SkillLayer* skillLayer = VoxelExplorer::getInstance()->getUILayer()->getSkillLayer();
         setDistTipsFrame();
         if (m_pMsgFrame->isVisible())
         {
             std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("UI_BTN_CHAT_CLOSE");
             CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
             m_pMsgFrame->setVisible(false);
+            if (skillLayer) {
+                skillLayer->getRootNode()->setPosition(cocos2d::Vec2(getContentSize().width*0.5,getContentSize().height));
+            }
+            
         }else
         {
             std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("UI_BTN_CHAT_OPEN");
@@ -324,6 +330,10 @@ void GameToolbarLayer::onClickMsg(Ref* ref,Widget::TouchEventType type)
             m_pMsgFrame->setVisible(true);
             m_pListMsgs->forceDoLayout();
             m_pListMsgs->scrollToBottom(0.5,false);
+            if (skillLayer) {
+                skillLayer->getRootNode()->setPosition(cocos2d::Vec2(skillLayer->getRootNode()->getPositionX(),skillLayer->getRootNode()->getPositionY()+m_pMsgFrame->getContentSize().height));
+            }
+
         }
         
     },false);

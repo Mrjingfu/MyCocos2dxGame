@@ -38,7 +38,7 @@ public:
     void onExit()override;
    
     AchievePopupUI* getAchievePopupUI() const{return m_pAchievePopupUI;};
-    
+    SkillLayer* getSkillLayer() const {return m_pSkillLayer;};
     void switchToMenuScene();
 protected:
     virtual bool onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event) override;
