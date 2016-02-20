@@ -144,6 +144,8 @@ public:
     int getReviveCount() const {return m_nReviveCount;}
     void declineReviveCount(){--m_nReviveCount;};
     void initReviveCount();
+    void setHasDownStairs() { m_bHasDownStairs = true;}
+    void setHasUpStairs() { m_bHasDownStairs = false;}
 private:
     bool createLayers();
     bool createLights();

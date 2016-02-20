@@ -10,6 +10,7 @@
 #include "UtilityHelper.h"
 #include "GameScene.h"
 #include "BaseBoss.hpp"
+#include "VoxelExplorer.h"
 USING_NS_CC;
 
 DUNGEON_TYPE DT_SelectGroup1[] = { DT_SEWER, DT_PRISON, DT_FANE, DT_MINES, DT_CAVE, DT_TOMB };
@@ -85,6 +86,12 @@ void DungeonNode::load(const cocos2d::ValueMap& data)
     
     m_strDungeonName = UtilityHelper::getLocalString(DUNGEON_NAMES[m_Type]);
     m_strDungeonBossName = UtilityHelper::getLocalString(DUNGEON_BOSS_NAMES[m_Type]);
+    
+    if(isBossDepth())
+    {
+        m_nCurrentDepth = m_nTotalNum;
+        VoxelExplorer::getInstance()->setHasUpStairs();
+    }
     
     ValueMap leftDungeonNode = currentDungeonNode.at("LeftDungeonNode").asValueMap();
     if(!leftDungeonNode.empty())

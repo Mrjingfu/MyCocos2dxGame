@@ -16,6 +16,7 @@ public:
     PrisonBossLevel();
     
     virtual bool build();
+    virtual bool createTerrain();
     virtual void generateAreaStyle();
     virtual bool createMonsters();
     virtual bool createSummoningMonsters(const cocos2d::Vec2& mapPos);

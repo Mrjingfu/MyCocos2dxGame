@@ -15,7 +15,9 @@
 #include "LoadingLayer.hpp"
 #include "SdkBoxManager.hpp"
 #include "LoadingLayer.hpp"
+#include "SimpleAudioEngine.h"
 USING_NS_CC;
+using namespace CocosDenshion;
 
 Scene* GameScene::createScene()
 {
@@ -46,6 +48,7 @@ void GameScene::onEnter()
 }
 void GameScene::onExit()
 {
+    SimpleAudioEngine::getInstance()->stopBackgroundMusic();
     PopupUILayerManager::getInstance()->onExitScene();
     StatisticsManager::getInstance()->pauseSchedu();
     if(!ArchiveManager::getInstance()->saveGame())

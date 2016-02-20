@@ -15,8 +15,8 @@ MonsterProperty::MonsterProperty()
 {
     m_nLevel                = 1;                    ///等级
     m_nValueCopper          = 0;                    ///价值铜币
-    m_nMaxHP                = 10;                   ///最大生命值
-    m_nCurrentHP            = 10;                   ///当前生命值
+    m_nMaxHP                = 30;                   ///最大生命值
+    m_nCurrentHP            = 30;                   ///当前生命值
     m_nAddedMinAttack       = 0;                    ///额外最小攻击增加值
     m_nAddedMaxAttack       = 0;                    ///额外最大攻击增加值
     m_nAttackDiceNum        = 1;                    ///攻击骰子数
@@ -81,13 +81,13 @@ void MonsterProperty::adjustByDC()
         m_nValueCopper = m_nValueCopper*5;
     
     CCLOG("MAXHP = %d Level = %d", (int)m_nMaxHP.GetLongValue(), (int)m_nLevel.GetLongValue());
-    m_nMaxHP = m_nMaxHP + m_nLevel.GetLongValue()*10;
+    m_nMaxHP = m_nMaxHP + m_nLevel.GetLongValue()*cocos2d::random(10, 15);
     m_nCurrentHP = m_nMaxHP;
     
     m_nAddedMinAttack = m_nAddedMinAttack + (dc-1)*10 + (nodeDepth-1)*6;
     m_nAddedMaxAttack = m_nAddedMaxAttack + (dc-1)*30 + + (nodeDepth-1)*12;
     
-    m_nAttackDiceNum = m_nAttackDiceNum + (dc-1)*5 + (nodeDepth-1)*2;
+    m_nAttackDiceNum = m_nAttackDiceNum + (dc-1)*5 + (nodeDepth-1);
     m_nAttackDiceFaceNum = m_nAttackDiceFaceNum + (nodeDepth-1)*2 + (m_nLevel-1);
     
     m_nArmorClass = m_nArmorClass - (dc-1)*20 - (nodeDepth-1)*10 - (m_nLevel-1)*1.5f;

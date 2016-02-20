@@ -16,6 +16,7 @@ public:
     FaneBossLevel();
     
     virtual bool build();
+    virtual bool createTerrain();
     virtual bool createMonsters();
     virtual bool createSummoningMonsters(const cocos2d::Vec2& mapPos);
     

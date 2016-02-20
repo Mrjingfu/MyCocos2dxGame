@@ -162,13 +162,12 @@ bool MineBossLevel::createTerrain()
                     break;
                 case TerrainTile::TT_ENTRANCE:
                     {
-                        Ladder* ladder = Ladder::create();
-                        if(!ladder)
+                        StandardPortal* portal = StandardPortal::create(false);
+                        if(!portal)
                             return false;
-                        ladder->setPosition3D(Vec3(j*TerrainTile::CONTENT_SCALE, -TerrainTile::CONTENT_SCALE*0.5f, -i*TerrainTile::CONTENT_SCALE));
-                        VoxelExplorer::getInstance()->getTerrainPortalsLayer()->addChild(ladder);
-                        ladder->setVisited(info.m_bVisited);
-                    
+                        portal->setPosition3D(Vec3(j*TerrainTile::CONTENT_SCALE, 0, -i*TerrainTile::CONTENT_SCALE));
+                        VoxelExplorer::getInstance()->getTerrainPortalsLayer()->addChild(portal);
+                        portal->setVisited(info.m_bVisited);
                     }
                     break;
                 case TerrainTile::TT_STANDARD_PORTAL:
