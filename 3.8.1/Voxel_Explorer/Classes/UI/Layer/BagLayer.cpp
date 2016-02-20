@@ -68,7 +68,7 @@ bool BagLayer::init()
 
     m_pBtnBagExtend =  Button::create("ui_bag_extend_normal.png","ui_bag_extend_press.png","ui_bag_extend_press.png",TextureResType::PLIST);
     m_pBtnBagExtend->setAnchorPoint(cocos2d::Vec2::ONE);
-    m_pBtnBagExtend->setPosition(cocos2d::Vec2(getContentSize().width*0.95,getContentSize().height*0.052));
+    m_pBtnBagExtend->setPosition(cocos2d::Vec2(getContentSize().width*0.95,getContentSize().height*0.0271 ));
     m_pBtnBagExtend->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
     addChild(m_pBtnBagExtend);
     
@@ -330,11 +330,11 @@ std::vector<PickableItemProperty*> BagLayer::getItems()
             std::swap( items[1], items[getItemIndexForVector(items,OrnamentId)] );
         }
         
-//        if (items.size() >4) {
-//            std::sort(items.begin()+4, items.end(), [](PickableItemProperty* prop1,PickableItemProperty* prop2){
-//                return prop1->getPickableItemPropertyType() < prop2->getPickableItemPropertyType();
-//            });
-//        }
+        if (items.size() >4) {
+            std::sort(items.begin()+4, items.end()-1, [](PickableItemProperty* prop1,PickableItemProperty* prop2){
+                return prop1->getPickableItemPropertyType() < prop2->getPickableItemPropertyType();
+            });
+        }
 
 
     }else

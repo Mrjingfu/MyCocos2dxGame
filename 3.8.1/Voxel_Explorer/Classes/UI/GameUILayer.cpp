@@ -1438,6 +1438,7 @@ void GameUILayer::onEventBossSkill1(cocos2d::EventCustom *sender)
         return;
     std::string msg = monster->getBossDescByEvent(EVENT_BOSS_SKILL1);
     PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
+    m_pGameToolBarLayer->sendMessage(msg,PopupUILayerManager::getInstance()->getTipsColor(TIP_WARNING));
 }
 void GameUILayer::onEventBossSkill2(cocos2d::EventCustom *sender)
 {
@@ -1447,6 +1448,7 @@ void GameUILayer::onEventBossSkill2(cocos2d::EventCustom *sender)
         return;
     std::string msg = monster->getBossDescByEvent(EVENT_BOSS_SKILL2);
     PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
+    m_pGameToolBarLayer->sendMessage(msg,PopupUILayerManager::getInstance()->getTipsColor(TIP_WARNING));
 }
 void GameUILayer::onEventBossSkill3(cocos2d::EventCustom *sender)
 {
@@ -1456,6 +1458,7 @@ void GameUILayer::onEventBossSkill3(cocos2d::EventCustom *sender)
         return;
     std::string msg =monster->getBossDescByEvent(EVENT_BOSS_SKILL3);
     PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
+    m_pGameToolBarLayer->sendMessage(msg,PopupUILayerManager::getInstance()->getTipsColor(TIP_WARNING));
 }
 
 void GameUILayer::onEvenetAchieveComplete(cocos2d::EventCustom *sender)
