@@ -1396,9 +1396,10 @@ void GameUILayer::onEventBossDeath(cocos2d::EventCustom *sender)
         
         m_pGameToolBarLayer->sendMessage(UtilityHelper::getLocalStringForUi("GAME_MESSAGE_MONSTER_DEAD"),PopupUILayerManager::getInstance()->getTipsColor(TIP_POSITIVE));
         m_pGameToolBarLayer->sendMessage( StringUtils::format(UtilityHelper::getLocalStringForUi("STATUS_TEXT_EXP").c_str(),exp),PopupUILayerManager::getInstance()->getTipsColor(TIP_POSITIVE));
-        CallFunc* func = CallFunc::create([monster]{
+        CallFunc* func = CallFunc::create([this,monster]{
             std::string msg = monster->getBossDescByEvent(EVENT_BOSS_DEATH);
             PopupUILayerManager::getInstance()->showStatusImport(TIP_WARNING, msg);
+            m_pGameToolBarLayer->sendMessage(msg,PopupUILayerManager::getInstance()->getTipsColor(TIP_POSITIVE));
         });
         this->runAction(Sequence::createWithTwoActions(DelayTime::create(2.0f), func));
     }

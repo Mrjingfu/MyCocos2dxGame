@@ -332,7 +332,7 @@ std::vector<PickableItemProperty*> BagLayer::getItems()
         
         if (items.size() >4) {
             std::sort(items.begin()+4, items.end()-1, [](PickableItemProperty* prop1,PickableItemProperty* prop2){
-                return prop1->getPickableItemPropertyType() < prop2->getPickableItemPropertyType();
+                return prop1->getPickableItemPropertyType() > prop2->getPickableItemPropertyType();
             });
         }
 
