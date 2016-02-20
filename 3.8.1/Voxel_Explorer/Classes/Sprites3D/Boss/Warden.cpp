@@ -53,6 +53,7 @@ void Warden::onEnterSkill1()
     {
         level->createSummoningMonstersByWarden(getPosInMap(), 1);
     }
+    onLand(true);
 }
 void Warden::onEnterSkill2()
 {
@@ -67,6 +68,7 @@ void Warden::onEnterSkill2()
             outline->setOutlineColor(color);
         }
     }
+    onLand(true);
 }
 void Warden::onEnterSkill3()
 {
@@ -84,6 +86,7 @@ void Warden::onEnterSkill3()
             outline->setOutlineColor(color);
         }
     }
+    onLand(true);
 }
 void Warden::onEnterDeath()
 {

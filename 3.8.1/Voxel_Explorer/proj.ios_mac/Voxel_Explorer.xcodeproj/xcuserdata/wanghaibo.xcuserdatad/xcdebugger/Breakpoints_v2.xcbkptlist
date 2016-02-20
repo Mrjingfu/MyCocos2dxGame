@@ -7780,11 +7780,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Boss/Archbishop.cpp"
-            timestampString = "477630753.912776"
+            timestampString = "477646263.730502"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "145"
-            endingLineNumber = "145"
+            startingLineNumber = "146"
+            endingLineNumber = "146"
             landmarkName = "Archbishop::onEnterSkill2()"
             landmarkType = "5">
          </BreakpointContent>

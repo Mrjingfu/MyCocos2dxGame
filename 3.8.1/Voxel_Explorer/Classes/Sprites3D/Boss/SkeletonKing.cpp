@@ -158,6 +158,7 @@ void SkeletonKing::onEnterSkill1()
     {
         level->createSummoningMonstersBySkeletonKing(getPosInMap(), 1);
     }
+    onLand(true);
 }
 void SkeletonKing::onEnterSkill2()
 {
@@ -181,7 +182,7 @@ void SkeletonKing::onEnterSkill2()
             outline->setOutlineColor(color);
         }
     }
-
+    onLand(true);
 }
 void SkeletonKing::onEnterSkill3()
 {

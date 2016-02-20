@@ -142,6 +142,7 @@ void Giant::onEnterSkill1()
     {
         level->createTrapsByGiant(getPosInMap(), 1);
     }
+    onLand(true);
 }
 void Giant::onEnterSkill2()
 {
@@ -163,6 +164,7 @@ void Giant::onEnterSkill2()
             outline->setOutlineColor(color);
         }
     }
+    onLand(true);
 }
 void Giant::onEnterSkill3()
 {
@@ -186,6 +188,7 @@ void Giant::onEnterSkill3()
             outline->setOutlineColor(color);
         }
     }
+    onLand(true);
 }
 void Giant::onEnterDeath()
 {

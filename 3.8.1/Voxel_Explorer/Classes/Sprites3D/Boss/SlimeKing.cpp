@@ -54,6 +54,7 @@ void SlimeKing::onEnterSkill1()
     {
         level->createSummoningMonstersBySlimeKing(getPosInMap(), 1);
     }
+    onLand(true);
 }
 void SlimeKing::onEnterSkill2()
 {
@@ -71,6 +72,7 @@ void SlimeKing::onEnterSkill2()
             outline->setOutlineColor(color);
         }
     }
+    onLand(true);
 }
 void SlimeKing::onEnterSkill3()
 {
@@ -88,6 +90,7 @@ void SlimeKing::onEnterSkill3()
             outline->setOutlineColor(color);
         }
     }
+    onLand(true);
 }
 void SlimeKing::onEnterDeath()
 {
