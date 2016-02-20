@@ -225,6 +225,7 @@ void GameToolbarLayer::initMessageFrame()
         switch (lt) {
             case LanguageType::CHINESE:
                 initMsg = StringUtils::format(UtilityHelper::getLocalStringForUi("GAME_MESSAGE_NOT").c_str(),dungenName.c_str(),cocos2d::Value(floor).asString().c_str());
+                break;
             default:
                 initMsg = StringUtils::format(UtilityHelper::getLocalStringForUi("GAME_MESSAGE_NOT").c_str(),cocos2d::Value(floor).asString().c_str(),dungenName.c_str());
                 break;

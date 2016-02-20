@@ -132,6 +132,7 @@ void DeadPopupUI::updateReviveUi()
 {
     m_pAdaIcon->setVisible(false);
     m_pContinueNum->setVisible(false);
+    m_pDepthReviveText->setVisible(false);
     m_pAdaDesc->setPosition(m_pBtnDead->getContentSize()*0.5);
     m_pBtnDead->addClickEventListener(CC_CALLBACK_1(DeadPopupUI::onClickRevive, this));
 
@@ -140,7 +141,7 @@ void DeadPopupUI::onClickAda(cocos2d::Ref* ref)
 {
     CHECK_ACTION(ref);
     clickEffect();
-
+    VoxelExplorer::getInstance()->declineReviveCount();
     this->unschedule(schedule_selector(DeadPopupUI::CountDown));
 #if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
 #elif  CC_TARGET_PLATFORM == CC_PLATFORM_IOS
@@ -176,9 +177,6 @@ void DeadPopupUI::reveiveCountDown(float dt)
 }
 void DeadPopupUI::onClickRevive(cocos2d::Ref *ref)
 {
-
-    VoxelExplorer::getInstance()->declineReviveCount();
-
     PopupUILayerManager::getInstance()->closeCurrentPopup();
     VoxelExplorer::getInstance()->respawnPlayer();
 }

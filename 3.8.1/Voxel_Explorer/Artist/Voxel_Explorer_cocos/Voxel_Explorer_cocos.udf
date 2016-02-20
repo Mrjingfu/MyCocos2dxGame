@@ -33,8 +33,9 @@
         <OpenedDocuments>
           <FilePathData Path="gametoolbarLayer.csd" />
           <FilePathData Path="skillLayer.csd" />
+          <FilePathData Path="rolenewLayer.csd" />
         </OpenedDocuments>
-        <ActiveDocument Path="gametoolbarLayer.csd" />
+        <ActiveDocument Path="rolenewLayer.csd" />
       </Value>
     </Item>
   </Properties>
