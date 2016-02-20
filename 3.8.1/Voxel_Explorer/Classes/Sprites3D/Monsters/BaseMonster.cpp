@@ -300,6 +300,11 @@ void BaseMonster::update(float delta)
 {
     if(!isVisible())
         return;
+    if(VoxelExplorer::getInstance()->isPlayerDeath() && m_State != MS_SLEEPING)
+    {
+        setState(MS_SLEEPING);
+        return;
+    }
     switch (m_State) {
         case MS_SLEEPING:
             {
@@ -417,6 +422,8 @@ void BaseMonster::onEnterMoving()
     {
         if(VoxelExplorer::getInstance()->trackToPlayer(this, m_NextPos))
             moveToNext(m_NextPos);
+        else if(VoxelExplorer::getInstance()->checkMonsterCanAttack(this))
+            setState(MS_ATTACK);
         else
             setState(MS_WANDERING);
     }
@@ -424,6 +431,8 @@ void BaseMonster::onEnterMoving()
     {
         if(VoxelExplorer::getInstance()->wanderingAround(this, m_NextPos))
             moveToNext(m_NextPos);
+        else if(VoxelExplorer::getInstance()->checkMonsterCanAttack(this))
+            setState(MS_ATTACK);
         else
             setState(MS_WANDERING);
     }

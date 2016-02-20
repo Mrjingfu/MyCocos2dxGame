@@ -44,8 +44,8 @@ UseableItem::UseableItemType GameFormula::generateUseItemType()
 {
     UseableItem::UseableItemType ret = UseableItem::UIT_UNKNOWN;
     float percent1 = 0.7f;
-    float percent2 = 0.2f;
-    float percent3 = 0.08f;
+    float percent2 = 0.23f;
+    float percent3 = 0.05f;
     float percent4 = 1.0 - percent1 - percent2 - percent3;
     AlisaMethod* am = AlisaMethod::create(percent1,percent2,percent3,percent4,-1.0, NULL);
     if(am)

@@ -214,14 +214,21 @@ void GameToolbarLayer::initMessageFrame()
     std::string initMsg;
     if(RandomDungeon::getInstance()->getCurrentDungeonNode()->isBossDepth())
     {
-         std::string rungenName = RandomDungeon::getInstance()->getCurrentDungeonNode()->m_strDungeonBossName.c_str();
-        initMsg = StringUtils::format(UtilityHelper::getLocalStringForUi("GAME_MESSAGE_BOSS_NOT").c_str(),rungenName.c_str());
+         std::string dungenName = RandomDungeon::getInstance()->getCurrentDungeonNode()->m_strDungeonBossName.c_str();
+        initMsg = StringUtils::format(UtilityHelper::getLocalStringForUi("GAME_MESSAGE_BOSS_NOT").c_str(),dungenName.c_str());
     }
     else
     {
-        std::string rungenName = RandomDungeon::getInstance()->getCurrentDungeonNode()->m_strDungeonName.c_str();
-        int flood =  int(RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nCurrentDepth);
-        initMsg = StringUtils::format(UtilityHelper::getLocalStringForUi("GAME_MESSAGE_NOT").c_str(),rungenName.c_str(),cocos2d::Value(flood).asString().c_str());
+        std::string dungenName = RandomDungeon::getInstance()->getCurrentDungeonNode()->m_strDungeonName.c_str();
+        int floor =  int(RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nCurrentDepth);
+        LanguageType lt= Application::getInstance()->getCurrentLanguage();
+        switch (lt) {
+            case LanguageType::CHINESE:
+                initMsg = StringUtils::format(UtilityHelper::getLocalStringForUi("GAME_MESSAGE_NOT").c_str(),dungenName.c_str(),cocos2d::Value(floor).asString().c_str());
+            default:
+                initMsg = StringUtils::format(UtilityHelper::getLocalStringForUi("GAME_MESSAGE_NOT").c_str(),cocos2d::Value(floor).asString().c_str(),dungenName.c_str());
+                break;
+        }
     }
     runAction(Sequence::create(DelayTime::create(0.5f),CallFunc::create([initMsg](){
         PopupUILayerManager::getInstance()->showStatusImport(TIP_POSITIVE, initMsg);

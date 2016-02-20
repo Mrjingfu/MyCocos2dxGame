@@ -294,6 +294,11 @@ void BaseBoss::update(float delta)
 {
     if(!isVisible())
         return;
+    if(VoxelExplorer::getInstance()->isPlayerDeath() && m_State != BS_SLEEPING)
+    {
+        setState(BS_SLEEPING);
+        return;
+    }
     switch (m_State) {
         case BS_SLEEPING:
             {
@@ -379,6 +384,8 @@ void BaseBoss::onEnterMoving()
     {
         if(VoxelExplorer::getInstance()->trackToPlayer(this, m_NextPos))
             moveToNext(m_NextPos);
+        else if(VoxelExplorer::getInstance()->checkBossCanAttack(this))
+            setState(BS_ATTACK);
         else
             setState(BS_WANDERING);
     }
@@ -386,6 +393,8 @@ void BaseBoss::onEnterMoving()
     {
         if(VoxelExplorer::getInstance()->wanderingAround(this, m_NextPos))
             moveToNext(m_NextPos);
+        else if(VoxelExplorer::getInstance()->checkBossCanAttack(this))
+            setState(BS_ATTACK);
         else
             setState(BS_WANDERING);
     }

@@ -385,17 +385,17 @@ void RandomDungeon::assignedDungeonNode(DungeonNode* node)
     node->m_strDungeonBossName = UtilityHelper::getLocalString(DUNGEON_BOSS_NAMES[node->m_Type]);
     if (node->m_Type < DT_DWARF_CASTLE)
     {
-        node->m_nTotalNum = cocos2d::random(5, 8);
+        node->m_nTotalNum = cocos2d::random(6, 8);
         node->m_nTransmutationDepth = cocos2d::random(3, 5);
     }
     else if(node->m_Type > DT_TROLL_TEMPLE)
     {
-        node->m_nTotalNum = cocos2d::random(10, 15);
+        node->m_nTotalNum = cocos2d::random(11, 15);
         node->m_nTransmutationDepth = cocos2d::random(5, 10);
     }
     else
     {
-        node->m_nTotalNum = cocos2d::random(8, 12);
+        node->m_nTotalNum = cocos2d::random(9, 12);
         node->m_nTransmutationDepth = cocos2d::random(4, 8);
     }
 }

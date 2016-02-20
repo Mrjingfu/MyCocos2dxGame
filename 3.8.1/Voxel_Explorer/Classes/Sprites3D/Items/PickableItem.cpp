@@ -471,9 +471,9 @@ void PickableItem::destroySelf()
 PickableItem::PickableItemType PickableItem::generatePickItemByMonsterLevel(int monsterLevel)
 {
     PickableItem::PickableItemType ret = PIT_UNKNOWN;
-    float percentKey = 0.15f;
+    float percentKey = 0.1f;
     float percentUnStackableItem = 0.3f;
-    float percentScroll = 0.1f;
+    float percentScroll = 0.15f;
     float percentPotion = 1.0 - percentKey - percentUnStackableItem - percentScroll;
     AlisaMethod* globalAm = AlisaMethod::create(percentKey, percentUnStackableItem, percentScroll, percentPotion, -1.0, NULL);
     if(globalAm)
@@ -899,8 +899,8 @@ PickableItem::PickableItemType PickableItem::generatePickItemByUseableLevel(int 
 }
 PickableItem::PickableItemType PickableItem::generateKeyItemType()
 {
-    float percent1 = 0.15f;
-    float percent2 = 0.25f;
+    float percent1 = 0.05f;
+    float percent2 = 0.2f;
     float percent3 = 1.0 - percent1 - percent2;
     AlisaMethod* am = AlisaMethod::create(percent1, percent2, percent3, -1.0, NULL);
     if(am)
