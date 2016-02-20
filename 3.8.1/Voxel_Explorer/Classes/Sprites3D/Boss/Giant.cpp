@@ -155,6 +155,8 @@ void Giant::onEnterSkill2()
     {
         level->createTrapsByGiant(getPosInMap(), 2);
     }
+    if(m_pBossProperty)
+        m_pBossProperty->setFactor(1.5f);
     if(getEffectCount() > 0)
     {
         OutlineEffect3D* outline = dynamic_cast<OutlineEffect3D*>(getEffect(0));
@@ -178,7 +180,7 @@ void Giant::onEnterSkill3()
     this->runAction(scaleTo);
     
     if(m_pBossProperty)
-        m_pBossProperty->setFactor(1.5f);
+        m_pBossProperty->setFactor(2.5f);
     if(getEffectCount() > 0)
     {
         OutlineEffect3D* outline = dynamic_cast<OutlineEffect3D*>(getEffect(0));

@@ -246,7 +246,11 @@ bool BaseLevel::checkMovable(Actor* actor, TileInfo& info)
     {
         if(info.m_Type == TerrainTile::TT_ENTRANCE)
         {
-            if(RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nCurrentDepth > 1)
+            if(RandomDungeon::getInstance()->getCurrentDungeonNode()->isBossDepth())
+            {
+                Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_GO_UPSTAIRS_FORBIDDEN);
+            }
+            else if(RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nCurrentDepth > 1)
             {
                 Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_GO_UPSTAIRS);
             }

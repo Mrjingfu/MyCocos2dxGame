@@ -12,7 +12,10 @@
 #include "SdkBoxManager.hpp"
 #include "LoadingLayer.hpp"
 #include "GameCenterController.h"
+#include "LevelResourceManager.h"
+#include "SimpleAudioEngine.h"
 USING_NS_CC;
+using namespace CocosDenshion;
 
 Scene* MenuScene::createScene()
 {
@@ -56,7 +59,6 @@ bool MenuScene::init()
         return false;
     addChild(menuUiLayer);
     
-    
 #if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID )
     SdkBoxManager::getInstance()->logScreen("MenuScene");
 #endif
@@ -67,13 +69,15 @@ bool MenuScene::init()
 void MenuScene::onEnter()
 {
     Layer::onEnter();
-
+    std::vector<std::string> vecMusic = { "caveamb.mp3", "faneamb.mp3", "mineamb.mp3", "prisonamb.mp3", "seweramb.mp3", "tombamb.mp3"};
+    std::string standardMusicName = vecMusic[cocos2d::random(0, (int)(vecMusic.size()-1))];
+    SimpleAudioEngine::getInstance()->playBackgroundMusic(standardMusicName.c_str(), true);
     PopupUILayerManager::getInstance()->setParentLayer(this);
     PopupUILayerManager::getInstance()->setSceneType(PopupUILayerManager::eSceneType::ST_MENU);
 }
 void MenuScene::onExit()
 {
     PopupUILayerManager::getInstance()->onExitScene();
-
+    SimpleAudioEngine::getInstance()->stopBackgroundMusic();
     Layer::onExit();
 }
