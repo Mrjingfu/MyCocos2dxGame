@@ -20,6 +20,7 @@
 #include "NativeBridge.h"
 #include "AlertPopupUI.hpp"
 #include "GameCenterController.h"
+#include "VoxelExplorer.h"
 
 USING_NS_CC;
 
@@ -187,6 +188,8 @@ void MenuUILayer::onClikcRestart(cocos2d::Ref *ref)
                 
                 if(!ArchiveManager::getInstance()->restartArchive())
                     CCLOGERROR("Load Game failed!");
+                
+                VoxelExplorer::getInstance()->setHasDownStairs();
                 
                 startGameAction();
                 
