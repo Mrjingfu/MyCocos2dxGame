@@ -1011,6 +1011,9 @@ void StandardLevel::showMap(bool show)
                     default:
                         break;
                 }
+                ///for debug
+                if((info.m_Flag & TileInfo::ATTACKABLE) != 0)
+                    m_pMapDrawNode->drawPolygon(vertices, 4, Color4F::BLUE, 0, Color4F(0,0,0,0));
             }
         }
         if(VoxelExplorer::getInstance()->getTerrainPortalsLayer())
@@ -1064,7 +1067,7 @@ void StandardLevel::showMap(bool show)
             {
                 BaseBoss* boss = dynamic_cast<BaseBoss*>(child);
                 if(boss && boss->isVisible())
-                    m_pMapDrawNode->drawDot(boss->getPosInMap()+Vec2(0.5f, 0.5f), 1.0f, Color4F::MAGENTA);
+                    m_pMapDrawNode->drawDot(boss->getPosInMap()+Vec2(0.5f, 0.5f), 0.5f, Color4F::MAGENTA);
             }
         }
         if(VoxelExplorer::getInstance()->getPlayer() && VoxelExplorer::getInstance()->getPlayer()->isVisible())

@@ -225,7 +225,7 @@ bool FaneBossLevel::createMonsters()
         return false;
     }
     
-    int monsterNum = 10;
+    int monsterNum = 8;
     for (int i=0; i < monsterNum; i++) {
         StandardMonster* monster = StandardMonster::create(BaseMonster::MT_BELIEVER);
         if(!monster)
@@ -352,7 +352,7 @@ bool FaneBossLevel::createSummoningMonstersByArchbishop(const cocos2d::Vec2& map
     }
     else if(skillStage == 2)
     {
-        if(VoxelExplorer::getInstance()->getMonstersLayer()->getChildrenCount() >= 16)
+        if(VoxelExplorer::getInstance()->getMonstersLayer()->getChildrenCount() >= 12)
             return false;
         int count = 0;
         std::vector<int> neighbours8 = getNeighbours8();
@@ -378,7 +378,7 @@ bool FaneBossLevel::createSummoningMonstersByArchbishop(const cocos2d::Vec2& map
     }
     else if(skillStage == 3)
     {
-        int monsterNum = 10;
+        int monsterNum = 8;
         for (int i=0; i < monsterNum; i++) {
             BaseMonster::MonsterType type = (BaseMonster::MonsterType)cocos2d::random((int)BaseMonster::MT_BELIEVER, (int)BaseMonster::MT_PRIEST);
             StandardMonster* monster = StandardMonster::create(type);

@@ -285,7 +285,7 @@ bool TombBossLevel::createSummoningMonstersBySkeletonKing(const cocos2d::Vec2& m
 {
     if(!VoxelExplorer::getInstance()->getPlayer() || VoxelExplorer::getInstance()->getPlayer()->getState() == Player::PS_DEATH)
         return false;
-    if(VoxelExplorer::getInstance()->getMonstersLayer()->getChildrenCount() >= 16)
+    if(VoxelExplorer::getInstance()->getMonstersLayer()->getChildrenCount() >= 10)
         return false;
     if(skillStage == 1)
     {

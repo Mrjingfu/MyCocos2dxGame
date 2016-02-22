@@ -210,7 +210,7 @@ bool MineBossLevel::createMonsters()
         return false;
     }
     
-    int monsterNum = 10;
+    int monsterNum = 8;
     for (int i=0; i < monsterNum; i++) {
         StandardMonster* monster = StandardMonster::create(BaseMonster::MT_KOBOLD);
         if(!monster)
@@ -324,7 +324,7 @@ bool MineBossLevel::createSummoningMonstersByKoboldLeader(const cocos2d::Vec2& m
             }
         }
         
-        int monsterNum = 10;
+        int monsterNum = 8;
         for (int i=0; i < monsterNum; i++) {
             StandardMonster* monster = StandardMonster::create(BaseMonster::MT_KOBOLD);
             if(!monster)
@@ -348,7 +348,7 @@ bool MineBossLevel::createSummoningMonstersByKoboldLeader(const cocos2d::Vec2& m
     }
     else if(skillStage == 3)
     {
-        if(VoxelExplorer::getInstance()->getMonstersLayer()->getChildrenCount() >= 16)
+        if(VoxelExplorer::getInstance()->getMonstersLayer()->getChildrenCount() >= 12)
             return false;
         int monsterNum = 3;
         for (int i=0; i < monsterNum; i++) {

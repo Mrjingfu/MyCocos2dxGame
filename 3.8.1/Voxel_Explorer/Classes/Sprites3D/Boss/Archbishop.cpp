@@ -135,7 +135,7 @@ void Archbishop::onEnterSkill1()
     {
         level->createSummoningMonstersByArchbishop(getPosInMap(), 1);
     }
-    onLand(true);
+    setState(BS_TRACKING);
 }
 void Archbishop::onEnterSkill2()
 {
