@@ -1114,6 +1114,7 @@ void Player::onEnterAttack()
 
 void Player::onEnterDeath()
 {
+    m_LastPosInMap = getPosInMap();
     this->stopAllActions();
     removeTerrainTileFlag(TileInfo::ATTACKABLE);
     PlayerProperty::getInstance()->setCurrentHP(0);
