@@ -115,6 +115,7 @@ void Player::refreshPlayerBuffer()
     if((bufferFlag & PB_STEALTH) != 0)
     {
         setOpacity(127);
+        setStealth(true);
         VoxelExplorer::getInstance()->addParticle3DEffectToPlayer(P3D_EFFECT_TYPE::P3D_STEALTH_BUFFER, true);
     }
     if((bufferFlag & PB_STRONGER) != 0)
