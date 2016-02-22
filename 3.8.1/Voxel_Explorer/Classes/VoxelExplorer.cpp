@@ -1237,6 +1237,7 @@ void VoxelExplorer::handleTriggerTrap(const cocos2d::Vec2& mapPos, TerrainTile::
             int bufferFlag = PlayerProperty::getInstance()->getPlayerBuffer();
             if((bufferFlag & PB_POISONING) == 0)
             {
+                m_pPlayer->removePlayerBuffer(PB_STEALTH);
                 Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_TRIGGER_TOXIC_TRAP);
                 m_pPlayer->addPlayerBuffer(PB_POISONING);
                 
@@ -1248,6 +1249,7 @@ void VoxelExplorer::handleTriggerTrap(const cocos2d::Vec2& mapPos, TerrainTile::
             int bufferFlag = PlayerProperty::getInstance()->getPlayerBuffer();
             if((bufferFlag & PB_FIRE) == 0)
             {
+                m_pPlayer->removePlayerBuffer(PB_STEALTH);
                 Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_TRIGGER_FIRE_TRAP);
                 m_pPlayer->addPlayerBuffer(PB_FIRE);
                 trigged = true;
@@ -1258,6 +1260,7 @@ void VoxelExplorer::handleTriggerTrap(const cocos2d::Vec2& mapPos, TerrainTile::
             int bufferFlag = PlayerProperty::getInstance()->getPlayerBuffer();
             if((bufferFlag & PB_PARALYTIC) == 0)
             {
+                m_pPlayer->removePlayerBuffer(PB_STEALTH);
                 Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_TRIGGER_PARALYTIC_TRAP);
                 m_pPlayer->addPlayerBuffer(PB_PARALYTIC);
                 trigged = true;
@@ -1265,6 +1268,7 @@ void VoxelExplorer::handleTriggerTrap(const cocos2d::Vec2& mapPos, TerrainTile::
         }
         else if(trapType == TerrainTile::TT_GRIPPING_TRAP)
         {
+            m_pPlayer->removePlayerBuffer(PB_STEALTH);
             Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_TRIGGER_GRIPPING_TRAP);
             m_pPlayer->hurtByGrippingTrap();
             trigged = true;
@@ -1275,6 +1279,7 @@ void VoxelExplorer::handleTriggerTrap(const cocos2d::Vec2& mapPos, TerrainTile::
         {
             if(m_pPlayer->getLastPosInMap() != m_pPlayer->getPosInMap())
             {
+                m_pPlayer->removePlayerBuffer(PB_STEALTH);
                 Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_TRIGGER_SUMMONING_TRAP);
                 if(!m_pCurrentLevel->createSummoningMonsters(mapPos))
                     CCLOG("Handle trigger summoning trap failed!");
@@ -1288,6 +1293,7 @@ void VoxelExplorer::handleTriggerTrap(const cocos2d::Vec2& mapPos, TerrainTile::
             int bufferFlag = PlayerProperty::getInstance()->getPlayerBuffer();
             if((bufferFlag & PB_WEAK) == 0)
             {
+                m_pPlayer->removePlayerBuffer(PB_STEALTH);
                 Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_TRIGGER_WEAK_TRAP);
                 m_pPlayer->addPlayerBuffer(PB_WEAK);
                 trigged = true;
