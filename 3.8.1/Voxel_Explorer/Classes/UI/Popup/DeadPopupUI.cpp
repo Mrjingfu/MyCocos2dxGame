@@ -121,6 +121,7 @@ void DeadPopupUI::updateRestartUi()
 {
     m_pAdaIcon->setVisible(false);
     m_pContinueNum->setVisible(false);
+    m_pDepthReviveText->setVisible(false);
     this->unschedule(schedule_selector(DeadPopupUI::CountDown));
     m_pAdaDesc->setString(UtilityHelper::getLocalStringForUi("BTN_TEXT_RESTART_GAME"));
     m_pAdaDesc->setCameraMask((unsigned short)m_nCamerFlag);
