@@ -54,7 +54,6 @@ void SlimeKing::onEnterSkill1()
     {
         level->createSummoningMonstersBySlimeKing(getPosInMap(), 1);
     }
-    setState(BS_TRACKING);
 }
 void SlimeKing::onEnterSkill2()
 {
@@ -72,7 +71,6 @@ void SlimeKing::onEnterSkill2()
             outline->setOutlineColor(color);
         }
     }
-    setState(BS_TRACKING);
 }
 void SlimeKing::onEnterSkill3()
 {
@@ -90,7 +88,6 @@ void SlimeKing::onEnterSkill3()
             outline->setOutlineColor(color);
         }
     }
-    setState(BS_TRACKING);
 }
 void SlimeKing::onEnterDeath()
 {

@@ -161,6 +161,7 @@ protected:
     FakeShadow*                 m_pFakeShadow;
     
     cocos2d::Vec2               m_NextPos;
+    cocos2d::Vec2               m_LastPosInMap;
 };
 
 #endif /* BaseMonster_hpp */

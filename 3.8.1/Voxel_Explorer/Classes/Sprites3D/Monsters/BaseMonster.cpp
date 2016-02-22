@@ -369,6 +369,7 @@ void BaseMonster::onEnterSleeping()
 }
 void BaseMonster::onExitSleeping()
 {
+    m_LastPosInMap = getPosInMap();
 }
 
 void BaseMonster::onEnterWandering()
@@ -454,6 +455,7 @@ void BaseMonster::onExitAttack()
 
 void BaseMonster::onEnterDeath()
 {
+    setPosition3D(Vec3(Vec3(m_LastPosInMap.x*TerrainTile::CONTENT_SCALE, -0.5f*TerrainTile::CONTENT_SCALE, -m_LastPosInMap.y*TerrainTile::CONTENT_SCALE)));
     this->stopAllActions();
     removeTerrainTileFlag(TileInfo::ATTACKABLE);
     removeTerrainTileFlagByPos(TileInfo::ATTACKABLE, m_NextPos);
@@ -502,6 +504,7 @@ void BaseMonster::setActorDir( ActorDir dir )
 void BaseMonster::onLand(bool updateMiniMap)
 {
     CCLOG("monster onland pos = %f,%f", getPosInMap().x, getPosInMap().y);
+    m_LastPosInMap = getPosInMap();
     if(m_LastState == MS_WANDERING)
     {
         if(VoxelExplorer::getInstance()->checkMonsterAlert(this))

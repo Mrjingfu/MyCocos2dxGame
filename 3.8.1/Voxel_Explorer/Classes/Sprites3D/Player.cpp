@@ -1118,7 +1118,7 @@ void Player::onEnterAttack()
 
 void Player::onEnterDeath()
 {
-    m_LastPosInMap = getPosInMap();
+    setPosition3D(Vec3(Vec3(m_LastPosInMap.x*TerrainTile::CONTENT_SCALE, -0.5f*TerrainTile::CONTENT_SCALE, -m_LastPosInMap.y*TerrainTile::CONTENT_SCALE)));
     this->stopAllActions();
     removeTerrainTileFlag(TileInfo::ATTACKABLE);
     PlayerProperty::getInstance()->setCurrentHP(0);
@@ -1135,6 +1135,7 @@ void Player::onEnterDeath()
 
 void Player::onExitIdle()
 {
+    m_LastPosInMap = getPosInMap();
 }
 void Player::onExitPrepareToJump()
 {

@@ -158,7 +158,6 @@ void SkeletonKing::onEnterSkill1()
     {
         level->createSummoningMonstersBySkeletonKing(getPosInMap(), 1);
     }
-    setState(BS_TRACKING);
 }
 void SkeletonKing::onEnterSkill2()
 {
@@ -182,7 +181,6 @@ void SkeletonKing::onEnterSkill2()
             outline->setOutlineColor(color);
         }
     }
-    setState(BS_TRACKING);
 }
 void SkeletonKing::onEnterSkill3()
 {
