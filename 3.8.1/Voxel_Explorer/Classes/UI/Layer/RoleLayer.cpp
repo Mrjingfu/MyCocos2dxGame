@@ -270,6 +270,7 @@ void RoleLayer::updateEquipQuality(cocos2d::ui::ImageView *icon, PICKABLEITEM_QU
                 icon->loadTexture("ui_legend.png",TextureResType::PLIST);
                 break;
             default:
+                icon->loadTexture("ui_bag_frame.png",TextureResType::PLIST);
                 break;
         }
         icon->setContentSize(cocos2d::Size(32,32));
