@@ -46,7 +46,7 @@ Warden::Warden()
 Warden::~Warden()
 {
 }
-void Warden::onEnterSkill1()
+void Warden::onEnterSkill1Stage()
 {
     PrisonBossLevel* level = dynamic_cast<PrisonBossLevel*>(VoxelExplorer::getInstance()->getCurrentLevel());
     if(level)
@@ -54,7 +54,7 @@ void Warden::onEnterSkill1()
         level->createSummoningMonstersByWarden(getPosInMap(), 1);
     }
 }
-void Warden::onEnterSkill2()
+void Warden::onEnterSkill2Stage()
 {
     if(m_pBossProperty)
         m_pBossProperty->addAttackAddBuffer(PlayerBuffer::PB_PARALYTIC);
@@ -68,7 +68,7 @@ void Warden::onEnterSkill2()
         }
     }
 }
-void Warden::onEnterSkill3()
+void Warden::onEnterSkill3Stage()
 {
     PrisonBossLevel* level = dynamic_cast<PrisonBossLevel*>(VoxelExplorer::getInstance()->getCurrentLevel());
     if(level)

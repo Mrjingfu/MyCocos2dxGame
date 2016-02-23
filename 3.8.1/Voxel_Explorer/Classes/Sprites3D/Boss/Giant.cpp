@@ -134,7 +134,7 @@ void Giant::update(float delta)
     if(m_pFakeShadow)
         m_pFakeShadow->setPosition3D(Vec3(getPositionX(),-TerrainTile::CONTENT_SCALE*0.49f,getPositionZ()));
 }
-void Giant::onEnterSkill1()
+void Giant::onEnterSkill1Stage()
 {
     m_bInSkill1Stage = true;
     CaveBossLevel* level = dynamic_cast<CaveBossLevel*>(VoxelExplorer::getInstance()->getCurrentLevel());
@@ -143,7 +143,7 @@ void Giant::onEnterSkill1()
         level->createTrapsByGiant(getPosInMap(), 1);
     }
 }
-void Giant::onEnterSkill2()
+void Giant::onEnterSkill2Stage()
 {
     m_bInSkill1Stage = true;
     m_bInSkill2Stage = true;
@@ -166,7 +166,7 @@ void Giant::onEnterSkill2()
         }
     }
 }
-void Giant::onEnterSkill3()
+void Giant::onEnterSkill3Stage()
 {
     m_bInSkill1Stage = true;
     m_bInSkill2Stage = true;

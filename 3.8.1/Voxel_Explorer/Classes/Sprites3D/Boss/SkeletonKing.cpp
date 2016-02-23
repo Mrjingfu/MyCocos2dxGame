@@ -154,7 +154,7 @@ void SkeletonKing::update(float delta)
         m_pFakeShadow->setPosition3D(Vec3(getPositionX(),-TerrainTile::CONTENT_SCALE*0.49f,getPositionZ()));
 }
 
-void SkeletonKing::onEnterSkill1()
+void SkeletonKing::onEnterSkill1Stage()
 {
     m_bInSkill1Stage = true;
     TombBossLevel* level = dynamic_cast<TombBossLevel*>(VoxelExplorer::getInstance()->getCurrentLevel());
@@ -163,7 +163,7 @@ void SkeletonKing::onEnterSkill1()
         level->createSummoningMonstersBySkeletonKing(getPosInMap(), 1);
     }
 }
-void SkeletonKing::onEnterSkill2()
+void SkeletonKing::onEnterSkill2Stage()
 {
     m_bInSkill1Stage = true;
     setCascadeColorEnabled(true);
@@ -186,7 +186,7 @@ void SkeletonKing::onEnterSkill2()
         }
     }
 }
-void SkeletonKing::onEnterSkill3()
+void SkeletonKing::onEnterSkill3Stage()
 {
     m_bInSkill1Stage = true;
     m_bInSkill3Stage = true;

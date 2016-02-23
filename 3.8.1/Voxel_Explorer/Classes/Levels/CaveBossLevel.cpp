@@ -275,11 +275,11 @@ bool CaveBossLevel::createTrapsByGiant(const cocos2d::Vec2& mapPos, int skillSta
     Vec2 playerPos = VoxelExplorer::getInstance()->getPlayer()->getPosInMap();
     if(skillStage == 1)
     {
-        std::vector<int> neighbours25 = getNeighbours25();
-        for (int i = 0; i < neighbours25.size(); i++) {
-            if(neighbours25[i] == 0)
+        std::vector<int> neighbours13 = getNeighbours13();
+        for (int i = 0; i < neighbours13.size(); i++) {
+            if(neighbours13[i] == 0)
                 continue;
-            int index = playerPos.x + playerPos.y * m_nWidth + neighbours25[i];
+            int index = playerPos.x + playerPos.y * m_nWidth + neighbours13[i];
             if(index >= m_Map.size())
                 continue;
             if(m_Map[index].m_AreaType == Area::AT_BOSS_ROOM && m_Map[index].m_Type == TerrainTile::TT_STANDARD && cocos2d::random(0, 3) == 0)

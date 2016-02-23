@@ -229,15 +229,6 @@ void BaseBoss::setState(BossState state)
         case BS_DEATH:
             onExitDeath();
             break;
-        case BS_SKILL1:
-            onExitSkill1();
-            break;
-        case BS_SKILL2:
-            onExitSkill2();
-            break;
-        case BS_SKILL3:
-            onExitSkill3();
-            break;
         default:
             break;
     }
@@ -266,15 +257,6 @@ void BaseBoss::setState(BossState state)
             break;
         case BS_DEATH:
             onEnterDeath();
-            break;
-        case BS_SKILL1:
-            onEnterSkill1();
-            break;
-        case BS_SKILL2:
-            onEnterSkill2();
-            break;
-        case BS_SKILL3:
-            onEnterSkill3();
             break;
         default:
             break;
@@ -449,24 +431,16 @@ void BaseBoss::onEnterDeath()
 void BaseBoss::onExitDeath()
 {
 }
-void BaseBoss::onEnterSkill1()
+void BaseBoss::onEnterSkill1Stage()
 {
 }
-void BaseBoss::onExitSkill1()
+void BaseBoss::onEnterSkill2Stage()
 {
 }
-void BaseBoss::onEnterSkill2()
+void BaseBoss::onEnterSkill3Stage()
 {
 }
-void BaseBoss::onExitSkill2()
-{
-}
-void BaseBoss::onEnterSkill3()
-{
-}
-void BaseBoss::onExitSkill3()
-{
-}
+
 void BaseBoss::setActorDir( ActorDir dir )
 {
     if(m_dir == dir)
@@ -637,17 +611,17 @@ void BaseBoss::handleSkillStage(int currentHp)
 {
     if((m_pBossProperty->getCurrentHP() > m_pBossProperty->getMaxHP() * 0.75f) && (currentHp <= m_pBossProperty->getMaxHP() * 0.75f))
     {
-        setState(BS_SKILL1);
+        onEnterSkill1Stage();
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_BOSS_SKILL1, this);
     }
     else if((m_pBossProperty->getCurrentHP() > m_pBossProperty->getMaxHP() * 0.5f) && (currentHp <= m_pBossProperty->getMaxHP() * 0.5f))
     {
-        setState(BS_SKILL2);
+        onEnterSkill2Stage();
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_BOSS_SKILL2, this);
     }
     else if ((m_pBossProperty->getCurrentHP() > m_pBossProperty->getMaxHP() * 0.25f) && (currentHp <= m_pBossProperty->getMaxHP() * 0.25f))
     {
-        setState(BS_SKILL3);
+        onEnterSkill3Stage();
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_BOSS_SKILL3, this);
     }
 }

@@ -40,9 +40,6 @@ public:
         BS_MOVING,          ///移动
         BS_ATTACK,
         BS_DEATH,
-        BS_SKILL1,          ///第一阶段技能
-        BS_SKILL2,          ///第二阶段技能
-        BS_SKILL3,          ///第三阶段技能
         BS_MAX
     } BossState;
     
@@ -94,12 +91,9 @@ protected:
     virtual void onEnterDeath();
     virtual void onExitDeath();
     
-    virtual void onEnterSkill1();
-    virtual void onExitSkill1();
-    virtual void onEnterSkill2();
-    virtual void onExitSkill2();
-    virtual void onEnterSkill3();
-    virtual void onExitSkill3();
+    virtual void onEnterSkill1Stage();
+    virtual void onEnterSkill2Stage();
+    virtual void onEnterSkill3Stage();
     
     virtual void setActorDir( ActorDir dir );
     

@@ -128,7 +128,7 @@ void Archbishop::onEnterTracking()
             setState(BS_FLEEING);
     }
 }
-void Archbishop::onEnterSkill1()
+void Archbishop::onEnterSkill1Stage()
 {
     FaneBossLevel* level = dynamic_cast<FaneBossLevel*>(VoxelExplorer::getInstance()->getCurrentLevel());
     if(level)
@@ -136,7 +136,7 @@ void Archbishop::onEnterSkill1()
         level->createSummoningMonstersByArchbishop(getPosInMap(), 1);
     }
 }
-void Archbishop::onEnterSkill2()
+void Archbishop::onEnterSkill2Stage()
 {
     m_nAttackRange = 3;
     m_bEnableFlee = true;
@@ -153,7 +153,7 @@ void Archbishop::onEnterSkill2()
         }
     }
 }
-void Archbishop::onEnterSkill3()
+void Archbishop::onEnterSkill3Stage()
 {
     FaneBossLevel* level = dynamic_cast<FaneBossLevel*>(VoxelExplorer::getInstance()->getCurrentLevel());
     if(level)

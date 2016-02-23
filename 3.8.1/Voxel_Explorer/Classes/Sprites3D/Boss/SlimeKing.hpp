@@ -17,9 +17,9 @@ class SlimeKing : public BaseBoss
 public:
     static SlimeKing* create(BaseBoss::BossType type);
     
-    virtual void onEnterSkill1();
-    virtual void onEnterSkill2();
-    virtual void onEnterSkill3();
+    virtual void onEnterSkill1Stage();
+    virtual void onEnterSkill2Stage();
+    virtual void onEnterSkill3Stage();
     virtual void onEnterDeath();
     
     virtual bool isPlayerInsideBossRoom();

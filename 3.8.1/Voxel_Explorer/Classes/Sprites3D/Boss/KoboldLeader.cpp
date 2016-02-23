@@ -129,7 +129,7 @@ void KoboldLeader::onEnterTracking()
             setState(BS_FLEEING);
     }
 }
-void KoboldLeader::onEnterSkill1()
+void KoboldLeader::onEnterSkill1Stage()
 {
     if(m_pBossProperty)
         m_pBossProperty->addAttackAddBuffer(PlayerBuffer::PB_FROZEN);
@@ -137,7 +137,7 @@ void KoboldLeader::onEnterSkill1()
     m_bEnableFlee = true;
     setState(BS_FLEEING);
 }
-void KoboldLeader::onEnterSkill2()
+void KoboldLeader::onEnterSkill2Stage()
 {
     MineBossLevel* level = dynamic_cast<MineBossLevel*>(VoxelExplorer::getInstance()->getCurrentLevel());
     if(level)
@@ -160,7 +160,7 @@ void KoboldLeader::onEnterSkill2()
     }
 
 }
-void KoboldLeader::onEnterSkill3()
+void KoboldLeader::onEnterSkill3Stage()
 {
     MineBossLevel* level = dynamic_cast<MineBossLevel*>(VoxelExplorer::getInstance()->getCurrentLevel());
     if(level)

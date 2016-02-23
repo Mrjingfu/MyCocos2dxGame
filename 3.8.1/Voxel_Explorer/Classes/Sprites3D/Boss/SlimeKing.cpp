@@ -47,7 +47,7 @@ SlimeKing::SlimeKing()
 SlimeKing::~SlimeKing()
 {
 }
-void SlimeKing::onEnterSkill1()
+void SlimeKing::onEnterSkill1Stage()
 {
     SewerBossLevel* level = dynamic_cast<SewerBossLevel*>(VoxelExplorer::getInstance()->getCurrentLevel());
     if(level)
@@ -55,8 +55,10 @@ void SlimeKing::onEnterSkill1()
         level->createSummoningMonstersBySlimeKing(getPosInMap(), 1);
     }
 }
-void SlimeKing::onEnterSkill2()
+void SlimeKing::onEnterSkill2Stage()
 {
+    if(m_pBossProperty)
+        m_pBossProperty->addAttackAddBuffer(PlayerBuffer::PB_POISONING);
     SewerBossLevel* level = dynamic_cast<SewerBossLevel*>(VoxelExplorer::getInstance()->getCurrentLevel());
     if(level)
     {
@@ -72,7 +74,7 @@ void SlimeKing::onEnterSkill2()
         }
     }
 }
-void SlimeKing::onEnterSkill3()
+void SlimeKing::onEnterSkill3Stage()
 {
     SewerBossLevel* level = dynamic_cast<SewerBossLevel*>(VoxelExplorer::getInstance()->getCurrentLevel());
     if(level)
@@ -91,6 +93,8 @@ void SlimeKing::onEnterSkill3()
 }
 void SlimeKing::onEnterDeath()
 {
+    if(m_pBossProperty)
+        m_pBossProperty->removeAttackAddBuffer(PlayerBuffer::PB_POISONING);
     if(getEffectCount() > 0)
     {
         OutlineEffect3D* outline = dynamic_cast<OutlineEffect3D*>(getEffect(0));

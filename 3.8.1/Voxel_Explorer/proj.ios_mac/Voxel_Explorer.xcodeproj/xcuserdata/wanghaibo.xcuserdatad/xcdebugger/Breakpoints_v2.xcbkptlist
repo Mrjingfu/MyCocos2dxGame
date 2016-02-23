@@ -7494,11 +7494,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Boss/BaseBoss.cpp"
-            timestampString = "477630753.912776"
+            timestampString = "477893158.658613"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "324"
-            endingLineNumber = "324"
+            startingLineNumber = "306"
+            endingLineNumber = "306"
             landmarkName = "BaseBoss::update(float delta)"
             landmarkType = "5">
          </BreakpointContent>
@@ -7510,11 +7510,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Boss/BaseBoss.cpp"
-            timestampString = "477630753.912776"
+            timestampString = "477893158.658613"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "327"
-            endingLineNumber = "327"
+            startingLineNumber = "309"
+            endingLineNumber = "309"
             landmarkName = "BaseBoss::update(float delta)"
             landmarkType = "5">
          </BreakpointContent>
@@ -7526,11 +7526,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Boss/BaseBoss.cpp"
-            timestampString = "477630753.912776"
+            timestampString = "477893158.658613"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "316"
-            endingLineNumber = "316"
+            startingLineNumber = "298"
+            endingLineNumber = "298"
             landmarkName = "BaseBoss::update(float delta)"
             landmarkType = "5">
          </BreakpointContent>
@@ -7542,11 +7542,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Boss/BaseBoss.cpp"
-            timestampString = "477630753.912776"
+            timestampString = "477893158.658613"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "317"
-            endingLineNumber = "317"
+            startingLineNumber = "299"
+            endingLineNumber = "299"
             landmarkName = "BaseBoss::update(float delta)"
             landmarkType = "5">
          </BreakpointContent>
@@ -7558,11 +7558,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Boss/BaseBoss.cpp"
-            timestampString = "477890479.441158"
+            timestampString = "477893158.658613"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "501"
-            endingLineNumber = "501"
+            startingLineNumber = "475"
+            endingLineNumber = "475"
             landmarkName = "BaseBoss::onLand(bool updateMiniMap)"
             landmarkType = "5">
          </BreakpointContent>
@@ -7590,11 +7590,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Boss/BaseBoss.cpp"
-            timestampString = "477630753.912776"
+            timestampString = "477893158.658613"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "314"
-            endingLineNumber = "314"
+            startingLineNumber = "296"
+            endingLineNumber = "296"
             landmarkName = "BaseBoss::update(float delta)"
             landmarkType = "5">
          </BreakpointContent>
@@ -7622,43 +7622,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Boss/BaseBoss.cpp"
-            timestampString = "477890479.441158"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "401"
-            endingLineNumber = "401"
-            landmarkName = "BaseBoss::onEnterMoving()"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../Classes/Sprites3D/Boss/BaseBoss.cpp"
-            timestampString = "477890479.441158"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "392"
-            endingLineNumber = "392"
-            landmarkName = "BaseBoss::onEnterMoving()"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../Classes/Sprites3D/Boss/BaseBoss.cpp"
-            timestampString = "477890479.441158"
+            timestampString = "477893158.658613"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "383"
-            endingLineNumber = "383">
+            endingLineNumber = "383"
+            landmarkName = "BaseBoss::onEnterMoving()"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -7668,11 +7638,41 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Boss/BaseBoss.cpp"
-            timestampString = "477890479.441158"
+            timestampString = "477893158.658613"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "495"
-            endingLineNumber = "495"
+            startingLineNumber = "374"
+            endingLineNumber = "374"
+            landmarkName = "BaseBoss::onEnterMoving()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/Sprites3D/Boss/BaseBoss.cpp"
+            timestampString = "477893158.658613"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "365"
+            endingLineNumber = "365">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/Sprites3D/Boss/BaseBoss.cpp"
+            timestampString = "477893158.658613"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "469"
+            endingLineNumber = "469"
             landmarkName = "BaseBoss::onLand(bool updateMiniMap)"
             landmarkType = "5">
          </BreakpointContent>
@@ -7700,11 +7700,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Boss/BaseBoss.cpp"
-            timestampString = "477890479.441158"
+            timestampString = "477893158.658613"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "521"
-            endingLineNumber = "521"
+            startingLineNumber = "495"
+            endingLineNumber = "495"
             landmarkName = "BaseBoss::onLand(bool updateMiniMap)"
             landmarkType = "5">
          </BreakpointContent>
@@ -7716,11 +7716,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Boss/BaseBoss.cpp"
-            timestampString = "477890479.441158"
+            timestampString = "477893158.658613"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "523"
-            endingLineNumber = "523"
+            startingLineNumber = "497"
+            endingLineNumber = "497"
             landmarkName = "BaseBoss::moveToNext(const cocos2d::Vec2&amp; next)"
             landmarkType = "5">
          </BreakpointContent>
@@ -7764,11 +7764,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Boss/BaseBoss.cpp"
-            timestampString = "477630753.912776"
+            timestampString = "477893158.658613"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "306"
-            endingLineNumber = "306"
+            startingLineNumber = "288"
+            endingLineNumber = "288"
             landmarkName = "BaseBoss::update(float delta)"
             landmarkType = "5">
          </BreakpointContent>
@@ -7785,7 +7785,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "145"
             endingLineNumber = "145"
-            landmarkName = "Archbishop::onEnterSkill2()"
+            landmarkName = "Archbishop::onEnterSkill2Stage()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -7812,11 +7812,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Boss/BaseBoss.cpp"
-            timestampString = "477630753.912776"
+            timestampString = "477893158.658613"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "323"
-            endingLineNumber = "323"
+            startingLineNumber = "305"
+            endingLineNumber = "305"
             landmarkName = "BaseBoss::update(float delta)"
             landmarkType = "5">
          </BreakpointContent>
@@ -7844,11 +7844,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Boss/BaseBoss.cpp"
-            timestampString = "477890479.441158"
+            timestampString = "477893158.658613"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "493"
-            endingLineNumber = "493"
+            startingLineNumber = "467"
+            endingLineNumber = "467"
             landmarkName = "BaseBoss::setActorDir( ActorDir dir )"
             landmarkType = "5">
          </BreakpointContent>
@@ -7860,11 +7860,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Boss/BaseBoss.cpp"
-            timestampString = "477890479.441158"
+            timestampString = "477893158.658613"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "492"
-            endingLineNumber = "492"
+            startingLineNumber = "466"
+            endingLineNumber = "466"
             landmarkName = "BaseBoss::setActorDir( ActorDir dir )"
             landmarkType = "5">
          </BreakpointContent>
@@ -7892,11 +7892,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Boss/BaseBoss.cpp"
-            timestampString = "477630753.912776"
+            timestampString = "477893158.658613"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "326"
-            endingLineNumber = "326"
+            startingLineNumber = "308"
+            endingLineNumber = "308"
             landmarkName = "BaseBoss::update(float delta)"
             landmarkType = "5">
          </BreakpointContent>
@@ -7908,11 +7908,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Boss/BaseBoss.cpp"
-            timestampString = "477630753.912776"
+            timestampString = "477893158.658613"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "328"
-            endingLineNumber = "328"
+            startingLineNumber = "310"
+            endingLineNumber = "310"
             landmarkName = "BaseBoss::update(float delta)"
             landmarkType = "5">
          </BreakpointContent>
@@ -7924,11 +7924,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Boss/BaseBoss.cpp"
-            timestampString = "477890479.441158"
+            timestampString = "477893158.658613"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "606"
-            endingLineNumber = "606"
+            startingLineNumber = "580"
+            endingLineNumber = "580"
             landmarkName = "BaseBoss::doAttack()"
             landmarkType = "5">
          </BreakpointContent>
@@ -7940,11 +7940,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Boss/BaseBoss.cpp"
-            timestampString = "477890479.441158"
+            timestampString = "477893158.658613"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "550"
-            endingLineNumber = "550"
+            startingLineNumber = "524"
+            endingLineNumber = "524"
             landmarkName = "BaseBoss::moveToNext(const cocos2d::Vec2&amp; next)"
             landmarkType = "5">
          </BreakpointContent>
@@ -7956,11 +7956,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Boss/BaseBoss.cpp"
-            timestampString = "477630753.912776"
+            timestampString = "477893158.658613"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "297"
-            endingLineNumber = "297"
+            startingLineNumber = "279"
+            endingLineNumber = "279"
             landmarkName = "BaseBoss::update(float delta)"
             landmarkType = "5">
          </BreakpointContent>
@@ -7972,11 +7972,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Boss/BaseBoss.cpp"
-            timestampString = "477890479.441158"
+            timestampString = "477893158.658613"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "617"
-            endingLineNumber = "617"
+            startingLineNumber = "591"
+            endingLineNumber = "591"
             landmarkName = "BaseBoss::handleAttackStyle(const cocos2d::Vec2&amp; playerPos, const cocos2d::Vec3&amp; dir)"
             landmarkType = "5">
          </BreakpointContent>
@@ -7988,11 +7988,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Boss/BaseBoss.cpp"
-            timestampString = "477890479.441158"
+            timestampString = "477893158.658613"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "568"
-            endingLineNumber = "568"
+            startingLineNumber = "542"
+            endingLineNumber = "542"
             landmarkName = "BaseBoss::moveToNext(const cocos2d::Vec2&amp; next)"
             landmarkType = "5">
          </BreakpointContent>
@@ -8020,11 +8020,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Boss/BaseBoss.cpp"
-            timestampString = "477396753.79556"
+            timestampString = "477893158.658613"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "290"
-            endingLineNumber = "290"
+            startingLineNumber = "272"
+            endingLineNumber = "272"
             landmarkName = "BaseBoss::onExit()"
             landmarkType = "5">
          </BreakpointContent>
@@ -8228,11 +8228,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Boss/BaseBoss.cpp"
-            timestampString = "477890479.441158"
+            timestampString = "477893158.658613"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "402"
-            endingLineNumber = "402"
+            startingLineNumber = "384"
+            endingLineNumber = "384"
             landmarkName = "BaseBoss::onEnterMoving()"
             landmarkType = "5">
          </BreakpointContent>
@@ -8308,11 +8308,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Boss/BaseBoss.cpp"
-            timestampString = "477890479.441158"
+            timestampString = "477893158.658613"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "513"
-            endingLineNumber = "513"
+            startingLineNumber = "487"
+            endingLineNumber = "487"
             landmarkName = "BaseBoss::onLand(bool updateMiniMap)"
             landmarkType = "5">
          </BreakpointContent>
@@ -8324,11 +8324,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Boss/BaseBoss.cpp"
-            timestampString = "477890479.441158"
+            timestampString = "477893158.658613"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "511"
-            endingLineNumber = "511"
+            startingLineNumber = "485"
+            endingLineNumber = "485"
             landmarkName = "BaseBoss::onLand(bool updateMiniMap)"
             landmarkType = "5">
          </BreakpointContent>
@@ -8340,11 +8340,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Boss/BaseBoss.cpp"
-            timestampString = "477396753.79556"
+            timestampString = "477893158.658613"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "241"
-            endingLineNumber = "241"
+            startingLineNumber = "232"
+            endingLineNumber = "232"
             landmarkName = "BaseBoss::setState(BossState state)"
             landmarkType = "5">
          </BreakpointContent>
@@ -8356,11 +8356,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Boss/BaseBoss.cpp"
-            timestampString = "477890479.441158"
+            timestampString = "477893158.658613"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "404"
-            endingLineNumber = "404"
+            startingLineNumber = "386"
+            endingLineNumber = "386"
             landmarkName = "BaseBoss::onEnterMoving()"
             landmarkType = "5">
          </BreakpointContent>
@@ -8484,11 +8484,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Boss/BaseBoss.cpp"
-            timestampString = "477890479.441158"
+            timestampString = "477893158.658613"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "600"
-            endingLineNumber = "600"
+            startingLineNumber = "574"
+            endingLineNumber = "574"
             landmarkName = "BaseBoss::doAttack()"
             landmarkType = "5">
          </BreakpointContent>
@@ -8724,12 +8724,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Boss/BaseBoss.cpp"
-            timestampString = "477890479.441158"
+            timestampString = "477893158.658613"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "452"
-            endingLineNumber = "452"
-            landmarkName = "BaseBoss::onEnterSkill1()"
+            startingLineNumber = "434"
+            endingLineNumber = "434"
+            landmarkName = "BaseBoss::onEnterSkill1Stage()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -8857,7 +8857,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "159"
             endingLineNumber = "159"
-            landmarkName = "SkeletonKing::onEnterSkill1()"
+            landmarkName = "SkeletonKing::onEnterSkill1Stage()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -13193,7 +13193,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "204"
             endingLineNumber = "204"
-            landmarkName = "SkeletonKing::onEnterSkill3()"
+            landmarkName = "SkeletonKing::onEnterSkill3Stage()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -13204,11 +13204,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Boss/BaseBoss.cpp"
-            timestampString = "477890479.441158"
+            timestampString = "477893158.658613"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "497"
-            endingLineNumber = "497"
+            startingLineNumber = "471"
+            endingLineNumber = "471"
             landmarkName = "BaseBoss::onLand(bool updateMiniMap)"
             landmarkType = "5">
          </BreakpointContent>
@@ -13236,11 +13236,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Boss/BaseBoss.cpp"
-            timestampString = "477890479.441158"
+            timestampString = "477893158.658613"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "498"
-            endingLineNumber = "498"
+            startingLineNumber = "472"
+            endingLineNumber = "472"
             landmarkName = "BaseBoss::onLand(bool updateMiniMap)"
             landmarkType = "5">
          </BreakpointContent>
@@ -13252,11 +13252,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Sprites3D/Boss/BaseBoss.cpp"
-            timestampString = "477886404.092722"
+            timestampString = "477893158.658613"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "285"
-            endingLineNumber = "285"
+            startingLineNumber = "267"
+            endingLineNumber = "267"
             landmarkName = "BaseBoss::onEnter()"
             landmarkType = "5">
          </BreakpointContent>
