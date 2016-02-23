@@ -379,6 +379,7 @@ void BaseMonster::onEnterWandering()
 void BaseMonster::onExitWandering()
 {
     m_fWanderingDelayTimer = 0;
+    m_LastPosInMap = getPosInMap();
 }
 
 void BaseMonster::onEnterTracking()
@@ -394,6 +395,7 @@ void BaseMonster::onEnterTracking()
 void BaseMonster::onExitTracking()
 {
     m_fFirstTrackingTimer = 0;
+    m_LastPosInMap = getPosInMap();
 }
 
 void BaseMonster::onEnterFleeing()
@@ -401,6 +403,7 @@ void BaseMonster::onEnterFleeing()
 }
 void BaseMonster::onExitFleeing()
 {
+    m_LastPosInMap = getPosInMap();
 }
 
 void BaseMonster::onEnterPassive()
@@ -440,7 +443,7 @@ void BaseMonster::onEnterMoving()
 }
 void BaseMonster::onExitMoving()
 {
-    setPositionY(-0.5f*TerrainTile::CONTENT_SCALE);
+    setPosition3D(Vec3(Vec3(m_LastPosInMap.x*TerrainTile::CONTENT_SCALE, -0.5f*TerrainTile::CONTENT_SCALE, -m_LastPosInMap.y*TerrainTile::CONTENT_SCALE)));
     this->stopAllActions();
 }
 void BaseMonster::onEnterAttack()

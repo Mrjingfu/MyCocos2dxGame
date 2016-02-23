@@ -130,7 +130,11 @@ void SkeletonKing::update(float delta)
             TombBossLevel* level = dynamic_cast<TombBossLevel*>(VoxelExplorer::getInstance()->getCurrentLevel());
             if(level)
             {
+                setPosition3D(Vec3(Vec3(m_LastPosInMap.x*TerrainTile::CONTENT_SCALE, -0.5f*TerrainTile::CONTENT_SCALE, -m_LastPosInMap.y*TerrainTile::CONTENT_SCALE)));
+                stopAllActions();
+                
                 Vec2 transPos = level->getRandomPassableTileInBossRoom();
+                removeTerrainTileFlagByPos(TileInfo::ATTACKABLE, m_NextPos);
                 removeTerrainTileFlag(TileInfo::ATTACKABLE);
                 addTerrainTileFlagByPos(TileInfo::ATTACKABLE, transPos);
                 Vec3 pos = Vec3(transPos.x*TerrainTile::CONTENT_SCALE, -0.5f*TerrainTile::CONTENT_SCALE, -transPos.y*TerrainTile::CONTENT_SCALE);
@@ -192,7 +196,11 @@ void SkeletonKing::onEnterSkill3()
     TombBossLevel* level = dynamic_cast<TombBossLevel*>(VoxelExplorer::getInstance()->getCurrentLevel());
     if(level)
     {
+        setPosition3D(Vec3(Vec3(m_LastPosInMap.x*TerrainTile::CONTENT_SCALE, -0.5f*TerrainTile::CONTENT_SCALE, -m_LastPosInMap.y*TerrainTile::CONTENT_SCALE)));
+        stopAllActions();
+        
         Vec2 transPos = level->getRandomPassableTileInBossRoom();
+        removeTerrainTileFlagByPos(TileInfo::ATTACKABLE, m_NextPos);
         removeTerrainTileFlag(TileInfo::ATTACKABLE);
         addTerrainTileFlagByPos(TileInfo::ATTACKABLE, transPos);
         Vec3 pos = Vec3(transPos.x*TerrainTile::CONTENT_SCALE, -0.5f*TerrainTile::CONTENT_SCALE, -transPos.y*TerrainTile::CONTENT_SCALE);
@@ -228,6 +236,7 @@ void SkeletonKing::onEnterDeath()
             outline->setOutlineColor(Vec3(outlineColor.r/255.0f, outlineColor.g/255.0f, outlineColor.b/255.0f));
         }
     }
+    setPosition3D(Vec3(Vec3(m_LastPosInMap.x*TerrainTile::CONTENT_SCALE, -0.5f*TerrainTile::CONTENT_SCALE, -m_LastPosInMap.y*TerrainTile::CONTENT_SCALE)));
     this->stopAllActions();
     removeTerrainTileFlag(TileInfo::ATTACKABLE);
     removeTerrainTileFlagByPos(TileInfo::ATTACKABLE, m_NextPos);

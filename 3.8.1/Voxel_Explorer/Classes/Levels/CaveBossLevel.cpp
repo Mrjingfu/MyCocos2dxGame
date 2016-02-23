@@ -277,6 +277,8 @@ bool CaveBossLevel::createTrapsByGiant(const cocos2d::Vec2& mapPos, int skillSta
     {
         std::vector<int> neighbours25 = getNeighbours25();
         for (int i = 0; i < neighbours25.size(); i++) {
+            if(neighbours25[i] == 0)
+                continue;
             int index = playerPos.x + playerPos.y * m_nWidth + neighbours25[i];
             if(index >= m_Map.size())
                 continue;
@@ -297,6 +299,8 @@ bool CaveBossLevel::createTrapsByGiant(const cocos2d::Vec2& mapPos, int skillSta
         
         std::vector<int> neighbours9 = getNeighbours9();
         for (int i = 0; i < neighbours9.size(); i++) {
+            if(neighbours9[i] == 0)
+                continue;
             int index = mapPos.x + mapPos.y * m_nWidth + neighbours9[i];
             if(index >= m_Map.size())
                 continue;

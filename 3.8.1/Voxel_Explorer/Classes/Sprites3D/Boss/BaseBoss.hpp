@@ -127,6 +127,7 @@ protected:
     
     FakeShadow*      m_pFakeShadow;
     
+    cocos2d::Vec2               m_LastPosInMap;
     cocos2d::Vec2               m_NextPos;
     cocos2d::Vec2               m_BackPos;
     int                     m_nFleeRange;

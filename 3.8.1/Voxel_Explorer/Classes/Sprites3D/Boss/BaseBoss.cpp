@@ -343,6 +343,7 @@ void BaseBoss::update(float delta)
 void BaseBoss::onEnterSleeping()
 {
     m_bEnableFlee = false;
+    m_LastPosInMap = getPosInMap();
 }
 void BaseBoss::onExitSleeping()
 {
@@ -369,6 +370,7 @@ void BaseBoss::onEnterTracking()
 void BaseBoss::onExitTracking()
 {
     m_fFirstTrackingTimer = 0;
+    m_LastPosInMap = getPosInMap();
 }
 
 void BaseBoss::onEnterFleeing()
@@ -376,6 +378,7 @@ void BaseBoss::onEnterFleeing()
 }
 void BaseBoss::onExitFleeing()
 {
+    m_LastPosInMap = getPosInMap();
 }
 
 void BaseBoss::onEnterMoving()
@@ -408,7 +411,7 @@ void BaseBoss::onEnterMoving()
 }
 void BaseBoss::onExitMoving()
 {
-    setPositionY(-0.5f*TerrainTile::CONTENT_SCALE);
+    setPosition3D(Vec3(Vec3(m_LastPosInMap.x*TerrainTile::CONTENT_SCALE, -0.5f*TerrainTile::CONTENT_SCALE, -m_LastPosInMap.y*TerrainTile::CONTENT_SCALE)));
     setOpacity(255);
     this->stopAllActions();
 }
@@ -432,6 +435,7 @@ void BaseBoss::onEnterDeath()
             outline->setOutlineColor(Vec3(outlineColor.r/255.0f, outlineColor.g/255.0f, outlineColor.b/255.0f));
         }
     }
+    setPosition3D(Vec3(Vec3(m_LastPosInMap.x*TerrainTile::CONTENT_SCALE, -0.5f*TerrainTile::CONTENT_SCALE, -m_LastPosInMap.y*TerrainTile::CONTENT_SCALE)));
     this->stopAllActions();
     removeTerrainTileFlag(TileInfo::ATTACKABLE);
     removeTerrainTileFlagByPos(TileInfo::ATTACKABLE, m_NextPos);
@@ -491,6 +495,7 @@ void BaseBoss::setActorDir( ActorDir dir )
 void BaseBoss::onLand(bool updateMiniMap)
 {
     CCLOG("boss onland pos = %f,%f", getPosInMap().x, getPosInMap().y);
+    m_LastPosInMap = getPosInMap();
     if(m_LastState == BS_WANDERING)
     {
         if(VoxelExplorer::getInstance()->checkBossAlert(this))
