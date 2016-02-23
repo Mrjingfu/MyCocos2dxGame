@@ -806,6 +806,14 @@ void VoxelExplorer::setPlayerLightColor(const cocos2d::Color3B& color)
             m_pPlayer->getPlayerLight()->setColor(color);
     }
 }
+void VoxelExplorer::setPlayerLightRange(float range)
+{
+    if(m_pPlayer && m_pPlayer->getPlayerLight())
+    {
+        if(m_pPlayer->getPlayerLight()->getRange() != range)
+            m_pPlayer->getPlayerLight()->setRange(range);
+    }
+}
 void VoxelExplorer::updateTerrainTile(int x, int y, TerrainTile::TileType type)
 {
     if(m_pTerrainTilesLayer)

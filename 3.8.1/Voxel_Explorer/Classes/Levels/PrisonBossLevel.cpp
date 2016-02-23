@@ -471,6 +471,7 @@ void PrisonBossLevel::clearBossRoom()
     }
 
     VoxelExplorer::getInstance()->clearBoosRoom();
+    playBGStandardMusic();
 }
 
 bool PrisonBossLevel::createPickableItems()
@@ -515,10 +516,10 @@ bool PrisonBossLevel::createPickableItems()
 }
 void PrisonBossLevel::handleUseStandardPortal(const cocos2d::Vec2& pos)
 {
-    if(m_pArenaRoom)
+    if(m_AreaExit)
     {
-        cocos2d::Rect rect = m_pArenaRoom->getRect();
-        Vec2 center = m_pArenaRoom->getCenter();
+        cocos2d::Rect rect = m_AreaExit->getRect();
+        Vec2 center = m_AreaExit->getCenter();
         if(rect.size.width >= rect.size.height)
         {
             if(pos.x < center.x)

@@ -81,6 +81,7 @@ void PlayerProperty::update(float delta)
 {
     if(m_bDirty)
     {
+        VoxelExplorer::getInstance()->setPlayerLightRange(0.5f*TerrainTile::CONTENT_SCALE*PlayerProperty::getInstance()->getLightDistance().GetLongValue());
         m_bDirty = false;
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_PROPERTY_DIRTY);
     }

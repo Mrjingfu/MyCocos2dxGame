@@ -80,6 +80,7 @@ public:
     void shakeScreen();     ////屏幕晃动
     
     void setPlayerLightColor(const cocos2d::Color3B& color);
+    void setPlayerLightRange(float range);
     
     void updateTerrainTile(int x, int y, TerrainTile::TileType type);
     
