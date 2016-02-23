@@ -516,7 +516,7 @@ bool VoxelExplorer::checkBossFleeFromPlayer(BaseBoss* boss)
 {
     if(boss == nullptr || !(boss->isVisible()))
         return false;
-    if(m_pPlayer == nullptr || m_pPlayer->getState() == Player::PS_DEATH || m_pPlayer->isStealth())
+    if(m_pPlayer == nullptr || m_pPlayer->getState() == Player::PS_DEATH /*|| m_pPlayer->isStealth()*/)
         return false;
     Vec2 playerPosInMap = m_pPlayer->getPosInMap();
     Vec2 bossPosInMap = boss->getPosInMap();
