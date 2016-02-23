@@ -1012,8 +1012,8 @@ void StandardLevel::showMap(bool show)
                         break;
                 }
                 ///for debug
-                if((info.m_Flag & TileInfo::ATTACKABLE) != 0)
-                    m_pMapDrawNode->drawPolygon(vertices, 4, Color4F::RED, 0, Color4F(0,0,0,0));
+//                if((info.m_Flag & TileInfo::ATTACKABLE) != 0)
+//                    m_pMapDrawNode->drawPolygon(vertices, 4, Color4F::RED, 0, Color4F(0,0,0,0));
             }
         }
         if(VoxelExplorer::getInstance()->getTerrainPortalsLayer())

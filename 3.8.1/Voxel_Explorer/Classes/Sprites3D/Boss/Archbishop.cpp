@@ -54,11 +54,6 @@ void Archbishop::update(float delta)
 {
     if(!isVisible())
         return;
-    if(VoxelExplorer::getInstance()->isPlayerDeath() && m_State != BS_SLEEPING)
-    {
-        setState(BS_SLEEPING);
-        return;
-    }
     switch (m_State) {
         case BS_SLEEPING:
             {

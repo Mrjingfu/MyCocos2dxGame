@@ -300,11 +300,6 @@ void BaseMonster::update(float delta)
 {
     if(!isVisible())
         return;
-    if(VoxelExplorer::getInstance()->isPlayerDeath() && m_State != MS_SLEEPING)
-    {
-        setState(MS_SLEEPING);
-        return;
-    }
     switch (m_State) {
         case MS_SLEEPING:
             {

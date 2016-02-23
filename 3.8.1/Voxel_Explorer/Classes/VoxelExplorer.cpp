@@ -770,18 +770,6 @@ void VoxelExplorer::searchAndCheck()    ///侦查
         }
     }
 }
-bool VoxelExplorer::isPlayerDeath()
-{
-    if(m_pPlayer)
-    {
-        if(m_pPlayer->getState() == Player::PS_DEATH)
-            return true;
-        else
-            return false;
-    }
-    else
-        return true;
-}
 void VoxelExplorer::shakeScreen()     ////屏幕晃动
 {
     if(m_pShakeLayer)

@@ -75,8 +75,6 @@ public:
     void searchAndCheck();      ///侦查
     void updateStatisticsAreaDatas();
     
-    bool isPlayerDeath();
-    
     void shakeScreen();     ////屏幕晃动
     
     void setPlayerLightColor(const cocos2d::Color3B& color);
