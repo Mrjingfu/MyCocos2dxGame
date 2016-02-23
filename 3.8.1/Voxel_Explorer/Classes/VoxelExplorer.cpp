@@ -1864,7 +1864,7 @@ void VoxelExplorer::handleRemoveTrap(const cocos2d::Vec2& mapPos)
 bool VoxelExplorer::handlePlayerUseSkill()
 {
     bool ret = false;
-    if(m_pPlayer && m_pPlayer->getState() == Player::PS_IDLE)
+    if(m_pPlayer && m_pPlayer->getState() == Player::PS_DEATH)
     {
         PlayerSkill skill = PlayerProperty::getInstance()->getPlayerSkill();
         switch (skill) {
