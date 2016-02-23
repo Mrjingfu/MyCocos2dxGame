@@ -24,7 +24,6 @@
             <CColor A="255" R="255" G="255" B="255" />
             <PrePosition X="0.2600" Y="0.2406" />
             <PreSize X="0.4500" Y="0.3000" />
-            <FontResource Type="Normal" Path="fonts/fangz.TTF" Plist="" />
             <TextColor A="255" R="255" G="255" B="255" />
             <DisabledFileData Type="PlistSubImage" Path="ui_frame_11.png" Plist="ui_sprite.plist" />
             <PressedFileData Type="PlistSubImage" Path="ui_frame_11.png" Plist="ui_sprite.plist" />
@@ -40,7 +39,6 @@
             <CColor A="255" R="255" G="255" B="255" />
             <PrePosition X="0.7443" Y="0.2406" />
             <PreSize X="0.4500" Y="0.3000" />
-            <FontResource Type="Normal" Path="fonts/fangz.TTF" Plist="" />
             <TextColor A="255" R="255" G="255" B="255" />
             <DisabledFileData Type="PlistSubImage" Path="ui_frame_11.png" Plist="ui_sprite.plist" />
             <PressedFileData Type="PlistSubImage" Path="ui_frame_11.png" Plist="ui_sprite.plist" />
@@ -70,7 +68,7 @@
             <PreSize X="1.5286" Y="0.4875" />
             <LabelBMFontFile_CNB Type="Normal" Path="fonts/ui_font.fnt" Plist="" />
           </AbstractNodeData>
-          <AbstractNodeData Name="discard_item_icon" ActionTag="-1465458533" Tag="295" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="6.6629" RightMargin="93.3371" TopMargin="3.7065" BottomMargin="36.2935" Scale9Enable="True" LeftEage="4" RightEage="4" TopEage="4" BottomEage="4" Scale9OriginX="4" Scale9OriginY="4" Scale9Width="32" Scale9Height="32" ctype="ImageViewObjectData">
+          <AbstractNodeData Name="discard_item_icon" ActionTag="-1465458533" Tag="295" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="6.6629" RightMargin="93.3371" TopMargin="3.7065" BottomMargin="36.2935" Scale9Enable="True" LeftEage="4" RightEage="4" TopEage="4" BottomEage="4" Scale9OriginX="4" Scale9OriginY="4" Scale9Width="14" Scale9Height="18" ctype="ImageViewObjectData">
             <Size X="40.0000" Y="40.0000" />
             <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
             <Position X="26.6560" Y="56.2960" />

@@ -24,7 +24,6 @@
             <CColor A="255" R="255" G="255" B="255" />
             <PrePosition X="0.5000" Y="0.1797" />
             <PreSize X="0.9000" Y="0.2667" />
-            <FontResource Type="Normal" Path="fonts/fangz.TTF" Plist="" />
             <TextColor A="255" R="229" G="229" B="229" />
             <DisabledFileData Type="PlistSubImage" Path="ui_frame_13.png" Plist="ui_sprite.plist" />
             <PressedFileData Type="PlistSubImage" Path="ui_frame_13.png" Plist="ui_sprite.plist" />
@@ -40,7 +39,6 @@
             <CColor A="255" R="255" G="255" B="255" />
             <PrePosition X="0.5000" Y="0.5156" />
             <PreSize X="0.9000" Y="0.2667" />
-            <FontResource Type="Normal" Path="fonts/fangz.TTF" Plist="" />
             <TextColor A="255" R="229" G="229" B="229" />
             <DisabledFileData Type="PlistSubImage" Path="ui_frame_13.png" Plist="ui_sprite.plist" />
             <PressedFileData Type="PlistSubImage" Path="ui_frame_13.png" Plist="ui_sprite.plist" />
