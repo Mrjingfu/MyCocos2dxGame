@@ -292,7 +292,7 @@ bool SewerBossLevel::createSummoningMonsters(const cocos2d::Vec2& mapPos)
             monster->setVisited(m_Map[index].m_bVisited);
             monster->addTerrainTileFlag(TileInfo::ATTACKABLE);
             VoxelExplorer::getInstance()->getMonstersLayer()->addChild(monster);
-            monster->setState(BaseMonster::MS_SLEEPING);
+            monster->setState(BaseMonster::MS_TRACKING);
         }
     }
     return true;
@@ -329,7 +329,7 @@ void SewerBossLevel::createSiegeMonsters(const cocos2d::Vec2& pos)
                         monster->setVisited(m_Map[tileIndex].m_bVisited);
                         monster->addTerrainTileFlag(TileInfo::ATTACKABLE);
                         VoxelExplorer::getInstance()->getMonstersLayer()->addChild(monster);
-                        monster->setState(BaseMonster::MS_SLEEPING);
+                        monster->setState(BaseMonster::MS_TRACKING);
                     }
                 }
             }
