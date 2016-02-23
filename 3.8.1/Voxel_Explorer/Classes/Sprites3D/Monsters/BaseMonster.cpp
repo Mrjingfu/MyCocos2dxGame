@@ -358,6 +358,7 @@ void BaseMonster::update(float delta)
 
 void BaseMonster::onEnterSleeping()
 {
+    m_LastPosInMap = getPosInMap();
     if(m_pMonsterProperty && m_pMonsterProperty->isElite())
     {
         EaseSineOut* tintTo1 = EaseSineOut::create(TintTo::create(1.0f, Color3B::GRAY));

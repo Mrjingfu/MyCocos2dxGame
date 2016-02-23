@@ -329,12 +329,14 @@ void BaseBoss::onEnterSleeping()
 }
 void BaseBoss::onExitSleeping()
 {
+    m_LastPosInMap = getPosInMap();
 }
 void BaseBoss::onEnterWandering()
 {
 }
 void BaseBoss::onExitWandering()
 {
+    m_LastPosInMap = getPosInMap();
 }
 void BaseBoss::onEnterTracking()
 {
