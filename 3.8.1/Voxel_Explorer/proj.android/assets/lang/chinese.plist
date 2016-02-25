@@ -833,7 +833,7 @@
 	<key>PIN_CLOTH_CLOTH</key>
 	<string>布甲</string>
 	<key>PIN_CLOTH_CLOTH_DESC</key>
-	<string>既不放火也不防水，但看上去防盗。</string>
+	<string>既不防火也不防水，但看上去防盗。</string>
 	<key>PIN_CLOTH_CLOTH_BIDESC</key>
 	<string>亚麻布甲</string>
 	<key>PIN_CLOTH_LEATHERARMOR</key>
