@@ -219,3 +219,10 @@ bool Giant::isPlayerInsideBossRoom()
 {
     return VoxelExplorer::getInstance()->checkBossRoomDoorClosed();
 }
+void Giant::attackedByPlayer(bool miss)
+{
+    if(isPlayerInsideBossRoom())
+        BaseBoss::attackedByPlayer(miss);
+    else
+        BaseBoss::attackedByPlayer(true);
+}

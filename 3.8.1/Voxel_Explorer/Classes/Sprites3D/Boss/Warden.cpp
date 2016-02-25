@@ -119,3 +119,10 @@ bool Warden::isPlayerInsideBossRoom()
 {
     return VoxelExplorer::getInstance()->checkBossRoomDoorClosed();
 }
+void Warden::attackedByPlayer(bool miss)
+{
+    if(isPlayerInsideBossRoom())
+        BaseBoss::attackedByPlayer(miss);
+    else
+        BaseBoss::attackedByPlayer(true);
+}

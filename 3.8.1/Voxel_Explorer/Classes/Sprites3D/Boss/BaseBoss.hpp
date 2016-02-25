@@ -55,7 +55,7 @@ public:
     int getAttackRange() const { return m_nAttackRange; }
     int getFleeRange() const { return m_nFleeRange; }
     
-    void attackedByPlayer(bool miss);
+    virtual void attackedByPlayer(bool miss);
     bool createFakeShadow();
     
     std::string getIconRes();

@@ -253,3 +253,10 @@ bool SkeletonKing::isPlayerInsideBossRoom()
 {
     return VoxelExplorer::getInstance()->checkBossRoomDoorClosed();
 }
+void SkeletonKing::attackedByPlayer(bool miss)
+{
+    if(isPlayerInsideBossRoom())
+        BaseBoss::attackedByPlayer(miss);
+    else
+        BaseBoss::attackedByPlayer(true);
+}
