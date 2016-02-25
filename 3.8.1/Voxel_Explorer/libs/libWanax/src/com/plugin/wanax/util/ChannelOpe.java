@@ -179,26 +179,40 @@ public class ChannelOpe {
 			@Override
 			public void run() {
 				WanaxWrapper.getInstance().getGooglePlayGame()
-						.reportScore(score,WanaxWrapper.getInstance().getActity().getString(R.string.leaderboard_level));
+						.reportScore(score,WanaxWrapper.getInstance().getActity().getString(R.string.level_ranking));
 
 			}
 
 		});
 
 	}
-	public static void reportMoney(final float score) {
+	public static void reportMoney(final int score) {
 		Logger.d("reportMoney");
 		PluginWrapper.getInstace().runOnMainThread(new Runnable() {
 
 			@Override
 			public void run() {
 				WanaxWrapper.getInstance().getGooglePlayGame()
-						.reportScore((int)score,WanaxWrapper.getInstance().getActity().getString(R.string.leaderboard_money));
+						.reportScore(score,WanaxWrapper.getInstance().getActity().getString(R.string.rich_ranking));
 
 			}
 
 		});
 
+	}
+	
+	public static void reportAchievement(final String activeIDName,final int step)
+	{
+		Logger.d("reportMoney");
+		PluginWrapper.getInstace().runOnMainThread(new Runnable() {
+
+			@Override
+			public void run() {
+				WanaxWrapper.getInstance().getGooglePlayGame().reportAchievement(activeIDName, step);
+
+			}
+
+		});
 	}
 
 	public static boolean isNetworkAvailable() {

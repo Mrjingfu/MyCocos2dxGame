@@ -158,7 +158,7 @@ void AchievementManager::updateAchieve(AchieveProperty *achieve)
             targetPercents.push_back(1.0f);
         }else{
 //            achieve->setProgress(type, sourceNum);
-            CCLOG("sourceNum = %f, targetNum = %f  ", sourceNum.GetFloatValue(), targetNum.GetFloatValue());
+//            CCLOG("sourceNum = %f, targetNum = %f  ", sourceNum.GetFloatValue(), targetNum.GetFloatValue());
             float percent = sourceNum.GetFloatValue() / targetNum.GetFloatValue();
             targetPercents.push_back(percent);
             checkAchieveUnlock(achieve);
@@ -184,6 +184,8 @@ void AchievementManager::updateAchieve(AchieveProperty *achieve)
         {
             if(targetPercents.size() == 1)
             {
+//                CCLOG("achieve:%s float totalPercent:%f",achieve->getAchieveIDName().c_str(),targetPercents[0]*100.0f);
+//                CCLOG("achieve:%s int totalPercent:%d",achieve->getAchieveIDName().c_str(),(int)(targetPercents[0]*100.0f));
                 GameCenterController::getInstance()->reportAchievement(achieve->getAchieveIDName(), targetPercents[0]*100.0f);
             }
             else
@@ -193,6 +195,8 @@ void AchievementManager::updateAchieve(AchieveProperty *achieve)
                 for (int i = 0; i<targetPercents.size(); ++i) {
                     totalPercent = totalPercent + targetPercents[i] * partPercent;
                 }
+//                CCLOG("achieve:%s float totalPercent:%f",achieve->getAchieveIDName().c_str(),totalPercent*100.0f);
+//                CCLOG("achieve:%s int totalPercent:%d",achieve->getAchieveIDName().c_str(),(int)(totalPercent*100.0f));
                 GameCenterController::getInstance()->reportAchievement(achieve->getAchieveIDName(), totalPercent*100.0f);
             }
         }

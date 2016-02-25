@@ -1,5 +1,7 @@
 package com.plugin.wanax.util;
 
+import com.wanax.plugin.BuildConfig;
+
 import android.util.Log;
 
 
@@ -14,7 +16,8 @@ public class Logger{
     }
 
 	public static boolean isDebuggable() {
-		return false;
+		return BuildConfig.DEBUG;
+//		return true;
 	}
 
 	private static String createLog( String log ) {

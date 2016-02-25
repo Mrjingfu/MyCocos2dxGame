@@ -65,10 +65,7 @@ bool LogoScene::init()
     {
         return false;
     };
-    
-#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS )
-    GameCenterController::getInstance()->registerGameCenterController();
-#endif
+
     
     SpriteFrameCache::getInstance()->addSpriteFramesWithFile("ui_logo_tinyflare.plist");
     

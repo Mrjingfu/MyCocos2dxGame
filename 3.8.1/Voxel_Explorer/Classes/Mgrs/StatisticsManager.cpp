@@ -254,7 +254,7 @@ void StatisticsManager::addNineStepTenNum()
         if (!cocos2d::Director::getInstance()->getScheduler()->isScheduled(SCHEDU_NINE_KEY, this)) {
             m_nNineStepRecord = m_nStepNum;
             cocos2d::Director::getInstance()->getScheduler()->schedule([this](float dt){
-                CCLOG("addNineStepTenNum");
+//                CCLOG("addNineStepTenNum");
                 ++m_nNineTime;
                 if (m_nNineTime >=TIME_NINE )
                 {
@@ -286,7 +286,7 @@ void StatisticsManager::addThirtyNotMoveNum()
         if (!cocos2d::Director::getInstance()->getScheduler()->isScheduled(SCHEDU_THIRTY_KEY, this)) {
             
             cocos2d::Director::getInstance()->getScheduler()->schedule([this](float dt){
-                CCLOG("addThirtyNotMoveNum");
+//                CCLOG("addThirtyNotMoveNum");
                 ++m_nThirtyTime;
                 if (m_nThirtyTime >=TIME_THIRTY )
                 {

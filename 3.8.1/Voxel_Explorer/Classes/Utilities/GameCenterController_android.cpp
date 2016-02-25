@@ -78,6 +78,8 @@ void GameCenterController::openLeaderBoard()
 }
 void GameCenterController::reportScore(const std::string& rank_id, const cocos2d::Value& value)
 {
+// (Ljava/lang/String;F)V
+
 
 }
 void GameCenterController::reportCachedScores()
@@ -111,38 +113,28 @@ void GameCenterController::openAchievementBoard()
     }
 }
 
-// //判断成就是否已经解锁
-// bool GameCenterController::isAchievementUnlocked(const std::string& strId)
-// {
-//     bool ret = true;
-// //#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS )
-// //    const char* pIdentifier = m_AchievementDict[strId].asString().c_str();
-// //    GKAchievement* achievement = getAchievementByID(pIdentifier);
-// //    if ( achievement )
-// //    {
-// //        ret = achievement.completed;
-// //    }
-// //#endif
-//     return ret;
-// }
-
-// //解锁成就
-// void GameCenterController::unlockAchievement(const std::string& strId)
-// {
-// //#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS )
-// //    const char* pIdentifier = m_AchievementDict[strId].asString().c_str();
-// //
-// //    GKAchievement* achievement = getAchievementByID(pIdentifier);
-// //    if ( achievement != NULL && achievement.completed != YES )
-// //    {
-// //        [[NCSGameCenter sharedGameCenter] unlockAchievement:achievement
-// //                                                    percent:100.0];
-// //    }
-// //#endif
-// }
 void GameCenterController::reportAchievement(const std::string& strId, float percent)
 {
+    log("reportAchievement");
+    JniMethodInfo t;
 
+    if (JniHelper::getStaticMethodInfo(t, CLASS_NAME, "reportAchievement", "(Ljava/lang/String;I)V")) {
+
+        jstring jstr = t.env->NewStringUTF(strId.c_str());
+
+        t.env->CallStaticVoidMethod(t.classID, t.methodID, jstr,(int)percent);
+
+        if (t.env->ExceptionOccurred()) {
+
+            t.env->ExceptionDescribe();
+
+            t.env->ExceptionClear();
+
+            return;
+        }
+        t.env->DeleteLocalRef(jstr);
+        t.env->DeleteLocalRef(t.classID);
+    }
 }
 
 void GameCenterController::reportLevel(int level)
@@ -170,9 +162,9 @@ void GameCenterController::reportMoney(float goldcoins)
     log("reportLevel");
     JniMethodInfo t;
 
-    if (JniHelper::getStaticMethodInfo(t, CLASS_NAME, "reportMoney", "(F)V")) {
+    if (JniHelper::getStaticMethodInfo(t, CLASS_NAME, "reportMoney", "(I)V")) {
 
-        t.env->CallStaticVoidMethod(t.classID, t.methodID, goldcoins);
+        t.env->CallStaticVoidMethod(t.classID, t.methodID, (int)goldcoins);
 
         if (t.env->ExceptionOccurred()) {
 

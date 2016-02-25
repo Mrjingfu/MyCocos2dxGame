@@ -17,6 +17,7 @@ import com.google.android.gms.games.GamesActivityResultCodes;
 import com.google.android.gms.games.Player;
 import com.google.android.gms.plus.Plus;
 import com.plugin.wanax.util.Logger;
+import com.plugin.wanax.util.ResourcesManager;
 import com.plugin.wanax.warpper.IActivityCallBack;
 import com.wanax.plugin.R;
 
@@ -38,17 +39,17 @@ public class GooglePlayGame implements IActivityCallBack{
 
 	public void disconnect()
 	{
-		if (isConnected()) {
+		if (isSignedIn()) {
             mGoogleApiClient.disconnect();
         }
 	}
 	public void connect() {
 		Log.d(TAG, "connect");
-		if (!isConnected()) {
+		if (!isSignedIn()) {
 			mGoogleApiClient.connect();
 		}
 	}
-    public boolean isConnected() {
+    private boolean isSignedIn() {
         return (mGoogleApiClient != null && mGoogleApiClient.isConnected());
     }
 
@@ -132,20 +133,31 @@ public class GooglePlayGame implements IActivityCallBack{
 	
 	public void reportScore(int score,String leaderStr)
 	{
-		if(isConnected() && score>=0 && mGoogleApiClient!=null)
+		Logger.d( "leaderStr:"+leaderStr+"reportScore: "+score);
+		if(isSignedIn() && score>=0 )
 		{
-			Log.d(TAG, "reportScore: "+score);
+			Logger.d( "commit reportScore: "+score);
 			Games.Leaderboards.submitScore(mGoogleApiClient, leaderStr,
 					score);
 		}
 	}
 	
-	
+	public void reportAchievement(String achieveIDName,int step )
+	{
+
+		Logger.d("reportAchievement:"+achieveIDName+":"+step);
+		if(isSignedIn() && step>0)
+		{
+			Logger.d("commit reportAchievement:"+achieveIDName+":"+step);
+			String achieveValue = m_pContext.getResources().getString(ResourcesManager.getStringId(m_pContext, achieveIDName));
+			Games.Achievements.setSteps(mGoogleApiClient,achieveValue ,step);
+		}
+	}
 
 	public void openLeaderBoard()
 	{
 		Log.d(TAG, "openLeaderBoard");
-		if (isConnected()) {
+		if (isSignedIn()) {
             m_pContext.startActivityForResult(Games.Leaderboards.getAllLeaderboardsIntent(mGoogleApiClient),
                     RC_UNUSED);
         } else {
@@ -154,7 +166,7 @@ public class GooglePlayGame implements IActivityCallBack{
 	}
 	public void openAchievementBoard()
 	{
-		if (isConnected()) {
+		if (isSignedIn()) {
             m_pContext.startActivityForResult(Games.Achievements.getAchievementsIntent(mGoogleApiClient),
                     RC_UNUSED);
         } else {
@@ -246,6 +258,10 @@ public class GooglePlayGame implements IActivityCallBack{
                 }
 
             }
+        }else if(requestCode == RC_UNUSED)
+        {
+        	if(resultCode ==10001 && isSignedIn())
+        		mGoogleApiClient.disconnect();
         }
 	}
 

@@ -502,7 +502,7 @@ void BaseMonster::setActorDir( ActorDir dir )
 }
 void BaseMonster::onLand(bool updateMiniMap)
 {
-    CCLOG("monster onland pos = %f,%f", getPosInMap().x, getPosInMap().y);
+//    CCLOG("monster onland pos = %f,%f", getPosInMap().x, getPosInMap().y);
     m_LastPosInMap = getPosInMap();
     if(m_LastState == MS_WANDERING)
     {
@@ -523,8 +523,8 @@ void BaseMonster::onLand(bool updateMiniMap)
 }
 void BaseMonster::moveToNext(const cocos2d::Vec2& next)
 {
-    CCLOG("monster posx = %f, posy = %f", getPosInMap().x, getPosInMap().y);
-    CCLOG("monster track posx = %f, posy = %f", next.x, next.y);
+//    CCLOG("monster posx = %f, posy = %f", getPosInMap().x, getPosInMap().y);
+//    CCLOG("monster track posx = %f, posy = %f", next.x, next.y);
     
     Vec2 vd = next - getPosInMap();
     if(std::abs(vd.x) > std::abs(vd.y))

@@ -153,7 +153,7 @@ void MenuUILayer::onClickAchieve(cocos2d::Ref *ref)
         }
         
     }
-#if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID || CC_TARGET_PLATFORM == CC_PLATFORM_IOS
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID || CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
     GameCenterController::getInstance()->openAchievementBoard();
 #endif
 }
