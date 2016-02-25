@@ -36,6 +36,7 @@ private:
 private:
     cocos2d::Vec2   m_TouchBegin;
     cocos2d::Vec2   m_TouchEnd;
+    float           m_fRotateThreshold;
 };
 
 #endif /* Layer3D_hpp */

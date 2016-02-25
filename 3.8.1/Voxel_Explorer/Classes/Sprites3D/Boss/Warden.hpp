@@ -23,6 +23,8 @@ public:
     virtual void onEnterDeath();
     
     virtual bool isPlayerInsideBossRoom();
+    
+    virtual void attackedByPlayer(bool miss);
 };
 
 #endif /* Warden_hpp */

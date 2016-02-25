@@ -1206,6 +1206,8 @@ bool PlayerProperty::load(const cocos2d::ValueMap& data)
             PickableItemProperty* property = nullptr;
             PickableItemProperty::PickableItemPropertyType propertyType = (PickableItemProperty::PickableItemPropertyType)value.asValueMap().at("PropertyType").asInt();
             PickableItem::PickableItemType itemType = (PickableItem::PickableItemType)value.asValueMap().at("ItemType").asInt();
+            if(itemType == PickableItem::PIT_KEY_BOSS || itemType == PickableItem::PIT_KEY_ROOM)
+                continue;
             int instanceId = value.asValueMap().at("InstanceID").asInt();
             int level = value.asValueMap().at("Level").asInt();
             bool identified = value.asValueMap().at("Identified").asInt();

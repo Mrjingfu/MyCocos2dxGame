@@ -125,3 +125,10 @@ bool SlimeKing::isPlayerInsideBossRoom()
 {
     return VoxelExplorer::getInstance()->checkBossRoomDoorClosed();
 }
+void SlimeKing::attackedByPlayer(bool miss)
+{
+    if(isPlayerInsideBossRoom())
+        BaseBoss::attackedByPlayer(miss);
+    else
+        BaseBoss::attackedByPlayer(true);
+}

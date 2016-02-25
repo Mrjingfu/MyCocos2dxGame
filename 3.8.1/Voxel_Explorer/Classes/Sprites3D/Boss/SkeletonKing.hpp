@@ -27,6 +27,8 @@ public:
     
     virtual bool isPlayerInsideBossRoom();
     
+    virtual void attackedByPlayer(bool miss);
+    
 private:
     float           m_fSkill1Timer;
     bool            m_bInSkill1Stage;

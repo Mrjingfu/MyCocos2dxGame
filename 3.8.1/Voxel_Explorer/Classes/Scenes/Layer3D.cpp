@@ -34,7 +34,11 @@ bool Layer3D::init()
     {
         return false;
     }
-    
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+    m_fRotateThreshold = 5;
+#else
+    m_fRotateThreshold = 8;
+#endif
     auto dispatcher = Director::getInstance()->getEventDispatcher();
     auto touchListener = EventListenerTouchOneByOne::create();
     if(touchListener == nullptr)
@@ -63,7 +67,7 @@ void Layer3D::onTouchMoved(cocos2d::Touch *touch, cocos2d::Event *event)
     float distanceY = fabsf(m_TouchEnd.y - m_TouchBegin.y);
     if(distanceX >= distanceY)
     {
-        if(distanceX>5)
+        if(distanceX>m_fRotateThreshold)
         {
             if(m_TouchEnd.x < m_TouchBegin.x)
                 rotateToLeft();
@@ -73,7 +77,7 @@ void Layer3D::onTouchMoved(cocos2d::Touch *touch, cocos2d::Event *event)
     }
     else
     {
-        if(distanceY>5)
+        if(distanceY>m_fRotateThreshold)
         {
             if(m_TouchEnd.y < m_TouchBegin.y)
                 rotateToForward();
