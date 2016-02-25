@@ -73,10 +73,6 @@ bool  ArchiveManager::loadGame()
         CCLOGERROR("PlayerProperty load failed!");
         return false;
     }
-    if (!StatisticsManager::getInstance()->load(gameMap)) {
-        CCLOGERROR("StatisticsManager load failed");
-        return false;
-    }
 
     if(!loadGameAchieve())
     {
@@ -101,15 +97,25 @@ bool ArchiveManager::loadGameAchieve()
         CCLOGERROR("LOADGAME  gamemap is null");
     
 #endif
+    if (!StatisticsManager::getInstance()->load(gameMap)) {
+        CCLOGERROR("StatisticsManager load failed");
+        return false;
+    }
     if (!AchievementManager::getInstance()->load(gameMap)) {
         CCLOGERROR("AchievementManager load failed");
         return false;
     }
+    
     return true;
 }
 bool  ArchiveManager::saveGameAchieve()
 {
     ValueMap map;
+    if (!StatisticsManager::getInstance()->save(map))
+    {
+        CCLOGERROR("StatisticsManager save failed");
+        return false;
+    }
     if(!AchievementManager::getInstance()->save(map))
     {
         CCLOGERROR("AchievementManager save failed");
@@ -150,11 +156,7 @@ bool  ArchiveManager::saveGame()
         CCLOGERROR("PlayerProperty save failed");
         return false;
     }
-    if (!StatisticsManager::getInstance()->save(map))
-    {
-        CCLOGERROR("StatisticsManager save failed");
-        return false;
-    }
+
 
     
     

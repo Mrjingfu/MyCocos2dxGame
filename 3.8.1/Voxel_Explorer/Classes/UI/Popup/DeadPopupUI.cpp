@@ -77,19 +77,20 @@ bool DeadPopupUI::addEvents()
     m_pAdaDesc->setString(UtilityHelper::getLocalStringForUi("BTN_TEXT_ADA_REVIVE"));
     m_pContinueNum->setFntFile(UtilityHelper::getLocalStringForUi("FONT_NAME"));
     m_pContinueNum->setString(Value(m_nCountDownNum).asString());
-    m_pContinueNum->runAction(RepeatForever::create(Sequence::create(EaseBackIn::create(ScaleTo::create(0.3, 0.8)),EaseBackOut::create(ScaleTo::create(0.3, 1)), nil)));
+    m_pContinueNum->runAction(RepeatForever::create(Sequence::create(EaseBackIn::create(ScaleTo::create(0.3, 0.8)),EaseBackOut::create(ScaleTo::create(0.3, 1)), nullptr)));
     m_pBtnDead->addClickEventListener(CC_CALLBACK_1(DeadPopupUI::onClickAda, this));
      m_pDepthReviveText->setVisible(false);
 #if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID || CC_TARGET_PLATFORM == CC_PLATFORM_IOS
     if (!NativeBridge::getInstance()->isNetworkAvailable() ) {
-        
+        CCLOG("NativeBridge isNetworkAvailable:%d",NativeBridge::getInstance()->isNetworkAvailable());
         updateRestartUi();
         return true;
     }
     if(!NativeBridge::getInstance()->isInterstitialAdsReady())
     {
+        CCLOG("NativeBridge isInterstitialAdsReady:%d",NativeBridge::getInstance()->isInterstitialAdsReady());
         updateRestartUi();
-        NativeBridge::getInstance()->playInterstitialAds();
+        NativeBridge::getInstance()->requestAndLoadInterstitialAds();
         return true;
     }
 
@@ -144,8 +145,7 @@ void DeadPopupUI::onClickAda(cocos2d::Ref* ref)
     clickEffect();
     VoxelExplorer::getInstance()->declineReviveCount();
     this->unschedule(schedule_selector(DeadPopupUI::CountDown));
-#if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
-#elif  CC_TARGET_PLATFORM == CC_PLATFORM_IOS
+#if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID || CC_TARGET_PLATFORM == CC_PLATFORM_IOS
     NativeBridge::getInstance()->playInterstitialAds();
 #endif
     updateReviveUi();
@@ -187,5 +187,9 @@ void DeadPopupUI::onClickRestart(cocos2d::Ref *ref)
     ArchiveManager::getInstance()->loadGame();
     cocos2d::Scene* scene = GameScene::createScene();
     Director::getInstance()->replaceScene(scene);
+    
+}
+void DeadPopupUI::onKeyBackClick()
+{
     
 }

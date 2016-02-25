@@ -11,6 +11,9 @@
 #include "jni/JniHelper.h"
 USING_NS_CC;
 static NativeBridge *s_NativeBridge = nullptr;
+
+#define CLASS_NAME "com/plugin/wanax/util/ChannelOpe"
+
 NativeBridge::NativeBridge()
 {
 }
@@ -28,78 +31,130 @@ NativeBridge::~NativeBridge()
 }
 bool NativeBridge::isNetworkAvailable()
 {
-    return false;
+   log("isNetworkAvailable");
+   bool result = false;
+   JniMethodInfo t;
+
+    if (JniHelper::getStaticMethodInfo(t, CLASS_NAME, "isNetworkAvailable", "()Z")) {
+
+        result = t.env->CallStaticBooleanMethod(t.classID,t.methodID);
+
+        if (t.env->ExceptionOccurred()) {
+
+            t.env->ExceptionDescribe();
+
+            t.env->ExceptionClear();
+        }
+        t.env->DeleteLocalRef(t.classID);
+    }
+
+    return result;
 }
 void NativeBridge::initAdmob()
 {
 }
 void NativeBridge::playInterstitialAds()
 {
-    // bool removeAds = Value(localStorageGetItem("RemoveAds")).asBool();
-    // if (removeAds)
-    //     return;
-    // log("playInterstitialAds");
-    // JniMethodInfo t;
 
-    // if (JniHelper::getStaticMethodInfo(t, "org/cocos2dx/cpp/AppActivity", "playInterstitialAds", "()V")) {
+    log("playInterstitialAds");
+    JniMethodInfo t;
 
-    //     t.env->CallStaticVoidMethod(t.classID, t.methodID);
+    if (JniHelper::getStaticMethodInfo(t, CLASS_NAME, "playInterstitialAds", "()V")) {
 
-    //     if (t.env->ExceptionOccurred()) {
+        t.env->CallStaticVoidMethod(t.classID, t.methodID);
 
-    //         t.env->ExceptionDescribe();
+        if (t.env->ExceptionOccurred()) {
 
-    //         t.env->ExceptionClear();
+            t.env->ExceptionDescribe();
 
-    //         return;
-    //     }
-    //     t.env->DeleteLocalRef(t.classID);
-    // }
+            t.env->ExceptionClear();
+
+            return;
+        }
+        t.env->DeleteLocalRef(t.classID);
+    }
 
 }
 bool NativeBridge::isInterstitialAdsReady()
 {
-    return false;
+   log("isInterstitialAdsReady");
+   bool result = false;
+   JniMethodInfo t;
+
+    if (JniHelper::getStaticMethodInfo(t, CLASS_NAME, "isInterstitialAdsReady", "()Z")) {
+
+        result = t.env->CallStaticBooleanMethod(t.classID,t.methodID);
+
+        if (t.env->ExceptionOccurred()) {
+
+            t.env->ExceptionDescribe();
+
+            t.env->ExceptionClear();
+        }
+        t.env->DeleteLocalRef(t.classID);
+    }
+
+    return result;
+}
+void NativeBridge::requestAndLoadInterstitialAds()
+{
+    log("requestAndLoadInterstitialAds");
+    JniMethodInfo t;
+
+    if (JniHelper::getStaticMethodInfo(t, CLASS_NAME, "requestAndLoadInterstitialAds", "()V")) {
+
+        t.env->CallStaticVoidMethod(t.classID, t.methodID);
+
+        if (t.env->ExceptionOccurred()) {
+
+            t.env->ExceptionDescribe();
+
+            t.env->ExceptionClear();
+
+            return;
+        }
+        t.env->DeleteLocalRef(t.classID);
+    }
 }
 void NativeBridge::exitGame()
 {
-    // log("exitGame");
-    // JniMethodInfo t;
+    log("exitGame");
+    JniMethodInfo t;
 
-    // if (JniHelper::getStaticMethodInfo(t, "org/cocos2dx/cpp/AppActivity", "exitGame", "()V")) {
+    if (JniHelper::getStaticMethodInfo(t, CLASS_NAME, "exitGame", "()V")) {
 
-    //    t.env->CallStaticVoidMethod(t.classID, t.methodID);
+       t.env->CallStaticVoidMethod(t.classID, t.methodID);
 
-    //     if (t.env->ExceptionOccurred()) {
+        if (t.env->ExceptionOccurred()) {
 
-    //         t.env->ExceptionDescribe();
+            t.env->ExceptionDescribe();
 
-    //         t.env->ExceptionClear();
+            t.env->ExceptionClear();
 
-    //         return;
-    //     }
-    //     t.env->DeleteLocalRef(t.classID);
-    // }
+            return;
+        }
+        t.env->DeleteLocalRef(t.classID);
+    }
 
 }
 void NativeBridge::openGooglePlay()
 {
-    // log("openGooglePlay");
-    // JniMethodInfo t;
+    log("openGooglePlay");
+    JniMethodInfo t;
 
-    // if (JniHelper::getStaticMethodInfo(t, "org/cocos2dx/cpp/AppActivity", "openGooglePlay", "()V")) {
+    if (JniHelper::getStaticMethodInfo(t, CLASS_NAME, "openGooglePlay", "()V")) {
 
-    //    t.env->CallStaticVoidMethod(t.classID, t.methodID);
+       t.env->CallStaticVoidMethod(t.classID, t.methodID);
 
-    //     if (t.env->ExceptionOccurred()) {
+        if (t.env->ExceptionOccurred()) {
 
-    //         t.env->ExceptionDescribe();
+            t.env->ExceptionDescribe();
 
-    //         t.env->ExceptionClear();
+            t.env->ExceptionClear();
 
-    //         return;
-    //     }
-    //     t.env->DeleteLocalRef(t.classID);
-    // }
+            return;
+        }
+        t.env->DeleteLocalRef(t.classID);
+    }
 
 }

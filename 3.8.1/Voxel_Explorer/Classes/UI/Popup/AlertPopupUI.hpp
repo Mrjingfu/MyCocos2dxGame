@@ -25,7 +25,9 @@ public:
     void setPositiveListerner(onClickListener listener ,std::string str ="");
     void setNegativeListerner(onClickListener listener,std::string str ="");
     virtual void refreshUIView() override;
+   
 private:
+    void onKeyBackClick() override;
     void onClickOk(Ref* ref);
     void onClickCancel(Ref* ref);
 private:

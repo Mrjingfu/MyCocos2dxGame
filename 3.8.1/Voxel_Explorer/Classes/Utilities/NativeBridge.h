@@ -34,6 +34,7 @@ public:
     void initAdmob();
     void playInterstitialAds();
     bool isInterstitialAdsReady();
+    void requestAndLoadInterstitialAds();
 private:
 #if CC_TARGET_PLATFORM == CC_PLATFORM_IOS 
     RootViewController* mViewController;

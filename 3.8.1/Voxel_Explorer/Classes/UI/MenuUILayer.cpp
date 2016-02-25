@@ -105,7 +105,10 @@ bool MenuUILayer::addEvents()
     m_pArchiveStart->addClickEventListener(CC_CALLBACK_1(MenuUILayer::onClickStart, this));
     m_pArchiveRestart->addClickEventListener(CC_CALLBACK_1(MenuUILayer::onClikcRestart, this));
     
-    
+    auto listenerkeyPad = EventListenerKeyboard::create();
+    listenerkeyPad->onKeyReleased = CC_CALLBACK_2(MenuUILayer::onKeyPressed, this);
+    _eventDispatcher->addEventListenerWithSceneGraphPriority(listenerkeyPad, this);
+
     return true;
 }
 void MenuUILayer::refreshUIView()
@@ -150,8 +153,9 @@ void MenuUILayer::onClickAchieve(cocos2d::Ref *ref)
         }
         
     }
-    
+#if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID || CC_TARGET_PLATFORM == CC_PLATFORM_IOS
     GameCenterController::getInstance()->openAchievementBoard();
+#endif
 }
 
 void MenuUILayer::onEnter()
@@ -170,8 +174,10 @@ void MenuUILayer::onClickRank(cocos2d::Ref *ref)
     clickEffect();
     CCLOG("onTouchRank");
 //    PopupUILayerManager::getInstance()->openPopup(ePopupInfo);
-    
+#if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID || CC_TARGET_PLATFORM == CC_PLATFORM_IOS
     GameCenterController::getInstance()->openLeaderBoard();
+#endif
+    
 }
 void MenuUILayer::onClikcRestart(cocos2d::Ref *ref)
 {
@@ -283,4 +289,22 @@ void MenuUILayer::onClickRate(cocos2d::Ref *ref)
     NativeBridge::getInstance()->openItunesURL();
 #endif
     
+}
+void MenuUILayer::onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event)
+{
+   if (keyCode == EventKeyboard::KeyCode::KEY_ESCAPE)
+    {
+            if (m_pAchievePopupUI &&m_pAchievePopupUI->isVisible())
+            {
+                m_pAchievePopupUI->setVisible(false);
+            }
+            else
+            {
+                CCLOG("EXIT GAME");
+                #if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
+                NativeBridge::getInstance()->exitGame();
+                #endif
+            }
+    }
+
 }

@@ -297,9 +297,9 @@
 	<key>PIN_POTION_DETOXIFICATION</key>
 	<string>P_Green04</string>
 	<key>PIN_POTION_SPECIFIC</key>
-	<string>P_Yellow04</string>
-	<key>PIN_POTION_HEALING</key>
 	<string>P_Orange04</string>
+	<key>PIN_POTION_HEALING</key>
+	<string>P_Yellow04</string>
 	<key>PIN_POTION_UNIVERSAL</key>
 	<string>P_Medicine09</string>
 	<key>UIN_CHEST_NO_LOCK_COPPER</key>

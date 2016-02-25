@@ -6,6 +6,7 @@
 //
 
 #include "RegionImageView.h"
+#include "cocos2d.h"
 USING_NS_CC;
 
 RegionImageView::RegionImageView()

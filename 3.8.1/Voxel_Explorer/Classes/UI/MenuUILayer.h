@@ -33,6 +33,8 @@ private:
     void onClickAchieve(Ref*);
     void startGameAction();
     void switchToGameScene();
+    
+    virtual void onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event) ;
 private:
     cocos2d::LayerColor* m_pWhiteLayer;
     cocos2d::ui::Button* m_pArchiveStart;

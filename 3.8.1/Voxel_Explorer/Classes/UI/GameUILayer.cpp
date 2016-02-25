@@ -120,6 +120,8 @@ bool GameUILayer::initUi()
     EaseExponentialOut* fadeOut = EaseExponentialOut::create(FadeOut::create(1.0f));
     m_pWhiteLayer->runAction(fadeOut);
 
+    
+    
     refreshUIView();
     return true;
 }
@@ -136,6 +138,11 @@ bool GameUILayer::registerTouchEvent()
     touchListener->onTouchMoved = CC_CALLBACK_2(GameUILayer::onTouchMoved, this);
     touchListener->onTouchEnded = CC_CALLBACK_2(GameUILayer::onTouchEnded, this);
     dispatcher->addEventListenerWithSceneGraphPriority(touchListener, this);
+    
+    auto listenerkeyPad = EventListenerKeyboard::create();
+    listenerkeyPad->onKeyReleased = CC_CALLBACK_2(GameUILayer::onKeyPressed, this);
+    _eventDispatcher->addEventListenerWithSceneGraphPriority(listenerkeyPad, this);
+
     
     return true;
 }
@@ -154,7 +161,32 @@ void GameUILayer::switchToMenuScene()
         m_bSwitchScene = true;
     }
 }
+void GameUILayer::onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event)
+{
+    if (keyCode == EventKeyboard::KeyCode::KEY_ESCAPE)
+    {
+        CCLOG("GameUILayer onKeyBackClick");
+        PopupUILayer* popupLayer = PopupUILayerManager::getInstance()->getCurrentPopUpLayer();
+        if (popupLayer )
+        {
+            
+            if (popupLayer->getPopupType() ==ePopupPause && m_pAchievePopupUI && m_pAchievePopupUI->getParent())
+            {
+                
+                CCLOG("close m_pAchievePopupUI");
+                popupLayer->getRootNode()->setVisible(true);
+                m_pAchievePopupUI->removeFromParentAndCleanup(false);
+                
+            }else
+                popupLayer->onKeyBackClick();
+        }else
+        {
+            CCLOG("open ePopupPause");
+            PopupUILayerManager::getInstance()->openPopup(ePopupPause);
+        }
+    }
 
+}
 bool GameUILayer::onTouchBegan(Touch *touch, Event *event)
 {
 

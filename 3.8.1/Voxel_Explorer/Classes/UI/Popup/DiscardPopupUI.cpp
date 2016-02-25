@@ -135,7 +135,9 @@ void DiscardPopupUI::onClickCancel(cocos2d::Ref *ref)
             equipPopupLayer->getRootNode()->setVisible(true);
         }
     }
-    
-
+}
+void DiscardPopupUI::onKeyBackClick()
+{
+    onClickCancel(nullptr);
 }
 

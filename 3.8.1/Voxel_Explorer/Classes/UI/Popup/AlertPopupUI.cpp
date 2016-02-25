@@ -8,6 +8,7 @@
 
 #include "AlertPopupUI.hpp"
 #include "UtilityHelper.h"
+#include "PopupUILayerManager.h"
 USING_NS_CC;
 AlertPopupUI::AlertPopupUI()
 {
@@ -137,4 +138,22 @@ void AlertPopupUI::setMessage( std::string message)
     UtilityHelper::getLineForText(m_pMessage, message,m_pRootNode->getContentSize().width -10);
     m_pMessage->setString(message);
  }
+void AlertPopupUI::onKeyBackClick()
+{
+    PopupUILayer* equipplayer = nullptr;
+    if (PopupUILayerManager::getInstance()->isOpenPopup(ePopupEquipItem, equipplayer)) {
+        equipplayer->getRootNode()->setVisible(true);
+    }
+    PopupUILayer* itemlayer = nullptr;
+    if (PopupUILayerManager::getInstance()->isOpenPopup(ePopupItem, itemlayer)) {
+        itemlayer->getRootNode()->setVisible(true);
+    }
+    
+    PopupUILayer* itemSelllayer = nullptr;
+    if (PopupUILayerManager::getInstance()->isOpenPopup(ePopupItemShopSell, itemSelllayer)) {
+        itemSelllayer->getRootNode()->setVisible(true);
+    }
+    
+    closePopup();
+}
 

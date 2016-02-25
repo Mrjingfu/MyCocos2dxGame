@@ -32,6 +32,8 @@ private:
     void updateRestartUi();
     //更新复活按钮UI
     void updateReviveUi();
+    
+    void onKeyBackClick()override;
 
 private:
     cocos2d::ui::Button* m_pBtnDead;

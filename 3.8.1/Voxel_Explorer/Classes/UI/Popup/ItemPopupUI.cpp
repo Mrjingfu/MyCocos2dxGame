@@ -965,6 +965,15 @@ void ItemPopupUI::closePopup()
 
     outAction();
 }
+void ItemPopupUI::onKeyBackClick()
+{
+     PopupUILayer* pLayer = nullptr;
+    if (m_pPopupType==ePopupEquipItem && (PopupUILayerManager::getInstance()->isOpenPopup(ePopupItem,pLayer)|| PopupUILayerManager::getInstance()->isOpenPopup(ePopupItemShopBuy,pLayer)||PopupUILayerManager::getInstance()->isOpenPopup(ePopupItemShopSell,pLayer)))
+    {
+        pLayer->closePopup();
+    }else
+        closePopup();
+}
 void ItemPopupUI::removeItem()
 {
     PickableItemProperty* itemprop = getItemIdProperty();

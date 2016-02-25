@@ -13,13 +13,15 @@
 #include "NCSGameCenter.h"
 #endif
 USING_NS_CC;
+#define CLASS_NAME "com/plugin/wanax/util/ChannelOpe"
+
 
 GameCenterController* g_pGameCenterControllerInstance = nullptr;
 GameCenterController* GameCenterController::getInstance()
 {
     if( g_pGameCenterControllerInstance == nullptr )
         g_pGameCenterControllerInstance = new GameCenterController();
-    
+
     return g_pGameCenterControllerInstance;
 }
 
@@ -37,17 +39,17 @@ void GameCenterController::registerGameCenterController()
 {
     log("registerGameCenterController");
     JniMethodInfo t;
-    
-    if (JniHelper::getStaticMethodInfo(t, "org/cocos2dx/cpp/AppActivity", "googleGameConnect", "()V")) {
-        
+
+    if (JniHelper::getStaticMethodInfo(t, CLASS_NAME, "googleGameConnect", "()V")) {
+
        t.env->CallStaticVoidMethod(t.classID, t.methodID);
-        
+
         if (t.env->ExceptionOccurred()) {
-            
+
             t.env->ExceptionDescribe();
-            
+
             t.env->ExceptionClear();
-            
+
             return;
         }
         t.env->DeleteLocalRef(t.classID);
@@ -58,89 +60,136 @@ void GameCenterController::openLeaderBoard()
 {
     log("openLeaderBoard");
     JniMethodInfo t;
-    
-    if (JniHelper::getStaticMethodInfo(t, "org/cocos2dx/cpp/AppActivity", "openLeaderBoard", "()V")) {
-        
+
+    if (JniHelper::getStaticMethodInfo(t, CLASS_NAME, "openLeaderBoard", "()V")) {
+
        t.env->CallStaticVoidMethod(t.classID, t.methodID);
-        
+
         if (t.env->ExceptionOccurred()) {
-            
+
             t.env->ExceptionDescribe();
-            
+
             t.env->ExceptionClear();
-            
+
             return;
         }
         t.env->DeleteLocalRef(t.classID);
     }
 }
-void GameCenterController::reportScore(int score)
+void GameCenterController::reportScore(const std::string& rank_id, const cocos2d::Value& value)
 {
-log("reportScore");
-    JniMethodInfo t;
-    
-    if (JniHelper::getStaticMethodInfo(t, "org/cocos2dx/cpp/AppActivity", "reportScore", "(I)V")) {
-        
-        t.env->CallStaticVoidMethod(t.classID, t.methodID, score);
-        
-        if (t.env->ExceptionOccurred()) {
-            
-            t.env->ExceptionDescribe();
-            
-            t.env->ExceptionClear();
-            
-            return;
-        }
-        t.env->DeleteLocalRef(t.classID);
-    }
+
 }
 void GameCenterController::reportCachedScores()
 {
-//#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS )
-//    [[NCSGameCenter sharedGameCenter] reportCachedScores];
-//#endif
+
 }
-void GameCenterController::retrieveTopXScores(int num)
+void GameCenterController::retrieveTopXScores(const std::string& rank_id, int num)
 {
-//#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS )
-//    [[NCSGameCenter sharedGameCenter] retrieveTopXScores:num];
-//#endif
+
 }
 
 // 打开成就页。
 void GameCenterController::openAchievementBoard()
 {
-//#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS )
-//    [[NCSGameCenter sharedGameCenter] showAchievementboard];
-//#endif
+    log("openLeaderBoard");
+    JniMethodInfo t;
+
+    if (JniHelper::getStaticMethodInfo(t, CLASS_NAME, "openAchievementBoard", "()V")) {
+
+       t.env->CallStaticVoidMethod(t.classID, t.methodID);
+
+        if (t.env->ExceptionOccurred()) {
+
+            t.env->ExceptionDescribe();
+
+            t.env->ExceptionClear();
+
+            return;
+        }
+        t.env->DeleteLocalRef(t.classID);
+    }
 }
 
-//判断成就是否已经解锁
-bool GameCenterController::isAchievementUnlocked(const std::string& strId)
+// //判断成就是否已经解锁
+// bool GameCenterController::isAchievementUnlocked(const std::string& strId)
+// {
+//     bool ret = true;
+// //#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS )
+// //    const char* pIdentifier = m_AchievementDict[strId].asString().c_str();
+// //    GKAchievement* achievement = getAchievementByID(pIdentifier);
+// //    if ( achievement )
+// //    {
+// //        ret = achievement.completed;
+// //    }
+// //#endif
+//     return ret;
+// }
+
+// //解锁成就
+// void GameCenterController::unlockAchievement(const std::string& strId)
+// {
+// //#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS )
+// //    const char* pIdentifier = m_AchievementDict[strId].asString().c_str();
+// //
+// //    GKAchievement* achievement = getAchievementByID(pIdentifier);
+// //    if ( achievement != NULL && achievement.completed != YES )
+// //    {
+// //        [[NCSGameCenter sharedGameCenter] unlockAchievement:achievement
+// //                                                    percent:100.0];
+// //    }
+// //#endif
+// }
+void GameCenterController::reportAchievement(const std::string& strId, float percent)
 {
-    bool ret = true;
-//#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS )
-//    const char* pIdentifier = m_AchievementDict[strId].asString().c_str();
-//    GKAchievement* achievement = getAchievementByID(pIdentifier);
-//    if ( achievement )
-//    {
-//        ret = achievement.completed;
-//    }
-//#endif
-    return ret;
+
 }
 
-//解锁成就
-void GameCenterController::unlockAchievement(const std::string& strId)
+void GameCenterController::reportLevel(int level)
 {
-//#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS )
-//    const char* pIdentifier = m_AchievementDict[strId].asString().c_str();
-//    
-//    GKAchievement* achievement = getAchievementByID(pIdentifier);
-//    if ( achievement != NULL && achievement.completed != YES )
-//    {
-//        [[NCSGameCenter sharedGameCenter] unlockAchievement:achievement
-//                                                    percent:100.0];
-//    }
-//#endif
+    log("reportLevel");
+    JniMethodInfo t;
+
+    if (JniHelper::getStaticMethodInfo(t, CLASS_NAME, "reportLevel", "(I)V")) {
+
+        t.env->CallStaticVoidMethod(t.classID, t.methodID, level);
+
+        if (t.env->ExceptionOccurred()) {
+
+            t.env->ExceptionDescribe();
+
+            t.env->ExceptionClear();
+
+            return;
+        }
+        t.env->DeleteLocalRef(t.classID);
+    }
+}
+void GameCenterController::reportMoney(float goldcoins)
+{
+    log("reportLevel");
+    JniMethodInfo t;
+
+    if (JniHelper::getStaticMethodInfo(t, CLASS_NAME, "reportMoney", "(F)V")) {
+
+        t.env->CallStaticVoidMethod(t.classID, t.methodID, goldcoins);
+
+        if (t.env->ExceptionOccurred()) {
+
+            t.env->ExceptionDescribe();
+
+            t.env->ExceptionClear();
+
+            return;
+        }
+        t.env->DeleteLocalRef(t.classID);
+    }
+}
+void GameCenterController::retrieveTopXLevel(int num)
+{
+
+}
+void GameCenterController::retrieveTopXMoney(int num)
+{
+
 }

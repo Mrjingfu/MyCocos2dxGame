@@ -24,6 +24,7 @@ public:
     void refreshUIView() override;
     void setDiscardItem(int itemId) ;
 private:
+    void onKeyBackClick() override;
     void onClickOk(Ref* ref);
     void onClickCancel(Ref* ref);
     void sliderEvent(cocos2d::Ref* sender, cocos2d::ui::Slider::EventType type);

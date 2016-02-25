@@ -3,9 +3,11 @@
 <plist version="1.0">
 <dict>
 	<key>SPLASH_RES</key>
-	<string>splash_cn.png</string>
+	<string>splash_front_cn.png</string>
 	<key>DEAD_RES</key>
 	<string>ui_gameover_cn.png</string>
+	<key>FONT_NAME</key>
+	<string>ui_font.fnt</string>
 	<key>PROP_SHOW_HP</key>
 	<string>生命值：</string>
 	<key>ROLE_SHOW_HP</key>
@@ -39,33 +41,35 @@
 	<key>STATUS_TEXT_CRITICAL_STRIKE</key>
 	<string>暴击 %d</string>
 	<key>STATUS_TEXT_EXP</key>
-	<string>+经验 %d</string>
+	<string>经验增加 %d</string>
 	<key>GAME_SERACH_EXPLAIN</key>
 	<string>请点击屏幕位置查看</string>
 	<key>GAME_MESSAGE_NOT</key>
-	<string>欢迎来到像素的%s第%d层</string>
+	<string>欢迎来到%s第%s层</string>
+	<key>GAME_MESSAGE_BOSS_NOT</key>
+	<string>欢迎来到%s</string>
 	<key>GAME_MESSAGE_MONSTER_ATTACK</key>
-	<string>%s击中了你</string>
+	<string>怪物击中了你</string>
 	<key>GAME_MESSAGE_MONSTER_DODGE</key>
-	<string>%s闪避了你的进攻</string>
+	<string>怪物闪避了你的进攻</string>
 	<key>GAME_MESSAGE_MONSTER_BOLOCK</key>
-	<string>%s产生了一个格挡</string>
+	<string>怪物格挡了你的攻击</string>
 	<key>GAME_MESSAGE_MONSTER_CRITICAL_STRIKE</key>
-	<string>%s产生了一个暴击</string>
+	<string>怪物产生了一个暴击</string>
 	<key>GAME_MESSAGE_MONSTER_DEAD</key>
-	<string>你击败了%s</string>
+	<string>你杀死了怪物</string>
 	<key>GAME_MESSAGE_ROLE_ATTACK</key>
-	<string>你击中了%s</string>
+	<string>你击中了怪物</string>
 	<key>GAME_MESSAGE_ROLE_DODGE</key>
-	<string>你闪避了%s的进攻</string>
+	<string>你闪避了怪物的进攻</string>
 	<key>GAME_MESSAGE_ROLE_BOLOCK</key>
-	<string>你产生了一个格挡</string>
+	<string>你格挡了怪物的攻击</string>
 	<key>GAME_MESSAGE_ROLE_CRITICAL_STRIKE</key>
 	<string>你产生了一个暴击</string>
 	<key>GAME_MESSAGE_ROLE_DEAD</key>
-	<string>%s杀死了你...</string>
+	<string>你已经挂了...</string>
 	<key>GAME_MESSAGE_ROLE_ADD_EXP</key>
-	<string>你获得了%s</string>
+	<string>你获得了%s点经验</string>
 	<key>GAME_MESSAGE_LEVEL_UP</key>
 	<string>你升级了！！！</string>
 	<key>MONSTER_ELITE_NAME</key>
@@ -161,7 +165,7 @@
 	<key>FOUND_HIDDEN_DOOR</key>
 	<string>发现了隐藏门！</string>
 	<key>FOUND_HIDDEN_TOXIC_TRAP</key>
-	<string>发现了隐藏的中毒机关！</string>
+	<string>发现了隐藏的毒素机关！</string>
 	<key>FOUND_HIDDEN_FIRE_TRAP</key>
 	<string>发现了隐藏的火机关！</string>
 	<key>FOUND_HIDDEN_PARALYTIC_TRAP</key>
@@ -255,29 +259,29 @@
 	<key>ITEM_SPLITE_COUNT</key>
 	<string>数量：%d</string>
 	<key>ITEM_BAG_DELETE</key>
-	<string>是否移除该道具？</string>
+	<string>珍贵物品,是否丢弃该道具？</string>
 	<key>ITEM_BAG_SELL</key>
-	<string>商品比较贵重,是否出售该道具？</string>
+	<string>珍贵物品,是否出售该道具？</string>
 	<key>TITLE_ACHIEVE</key>
 	<string>成就</string>
 	<key>PLAYER_FALL_AND_DIE</key>
 	<string>很不幸，但你并不是第一个这样死的冒险者^_^。</string>
 	<key>GO_UPSTAIRS</key>
-	<string>你进入了上一层。</string>
+	<string>是否进入上一层?</string>
 	<key>GO_UPSTAIRS_FORBIDDEN</key>
 	<string>传送阵已经没有能量了～</string>
 	<key>GO_DOWNSTAIRS</key>
-	<string>你进入了下一层。</string>
+	<string>是否进入下一层?</string>
 	<key>GO_BOSSROOM</key>
-	<string>进入Boos房间</string>
+	<string>是否进入Boos房间?</string>
 	<key>GO_CHASM</key>
 	<string>你真的要跳下去么？</string>
 	<key>FALL_DOWNSTAIRS</key>
 	<string>高空坠落，不死是非常幸运的。</string>
 	<key>SELECT_LEFT_DUNGEON_NODE</key>
-	<string>是选择左边开始？</string>
+	<string>确定选择传送到%s吗？</string>
 	<key>SELECT_RIGHT_DUNGEON_NODE</key>
-	<string>是选择右边开始？</string>
+	<string>确定选择传送到%s吗？</string>
 	<key>USE_SMALL_PROTAL</key>
 	<string>你被传送了</string>
 	<key>STANDARD_PROTAL_NO_ENERGY</key>
@@ -285,7 +289,7 @@
 	<key>REMOVE_TRAP_INFO</key>
 	<string>是否拆除该陷阱？</string>
 	<key>NOT_REMOVE_TRAP</key>
-	<string>该陷阱不能被拆除？</string>
+	<string>该陷阱不能被拆除.</string>
 	<key>BTN_TEXT_MAINMENU</key>
 	<string>主菜单</string>
 	<key>BTN_TEXT_SETTING</key>
@@ -322,14 +326,23 @@
 	<string>继续游戏</string>
 	<key>BTN_TEXT_RESTART_GAME</key>
 	<string>重新开始</string>
+	<key>BTN_TEXT_REVIVE</key>
+	<string>复活</string>
+	<key>BTN_TEXT_ADA_REVIVE</key>
+	<string>观看
+复活</string>
 	<key>BAG_INDENTIFY_FAIL</key>
 	<string>鉴定失败！</string>
+	<key>BAG_NO_INDENTIFY_SCROLL</key>
+	<string>鉴定失败！没有可用的鉴定卷轴。</string>
 	<key>BAG_TEXT_DESTROY</key>
 	<string>拆除</string>
 	<key>BAG_TEXT_EXTEND</key>
 	<string>扩展</string>
 	<key>BAG_TEXT_EXTEND_DESC</key>
 	<string>是否花费%d金币扩展背包?</string>
+	<key>ARCHIVE_RESTART_TIPS_DESC</key>
+	<string>重新开始会清除游戏记录,是否重新开始游戏？</string>
 	<key>ACHIEVE_ITEM_LOCK</key>
 	<string>未解锁</string>
 	<key>ITEM_USE_FAIL</key>
@@ -342,8 +355,10 @@
 	<string>%s %d层</string>
 	<key>SKILL_TIP_NOT_EQUIP</key>
 	<string>请装备副手武器！</string>
-	<key>SKILL_TIP_COOLING</key>
+	<key>SKILL_TIP_SKILL_COOLING</key>
 	<string>技能冷却中!</string>
+	<key>SKILL_TIP_POTION_COOLING</key>
+	<string>药水冷却中!</string>
 	<key>SKILL_TIP_NOT_BLOOD_POTION</key>
 	<string>没有恢复药水了!</string>
 	<key>SKILL_TIP_NOT_MAGIC_POTION</key>
@@ -353,6 +368,38 @@
 	<key>PLAYER_BAG_EXTEND_OK</key>
 	<string>恭喜背包扩展成功!</string>
 	<key>PLAYER_BAG_EXTEND_HAS_REACH_MAXTIMES</key>
-	<string>抱歉哦,背包扩展达到上限了!</string>
+	<string>抱歉,背包扩展次数已达到上限了!</string>
+	<key>DEAD_BOOS_DEPTH_REVIVE_TXT</key>
+	<string>剩余次数:%d</string>
+	<key>TITLE_TIP_TEXT</key>
+	<string>提示</string>
+	<key>PLAYER_ADD_MONEY_ALL</key>
+	<string>获得%d个金币,%d个银币,%d铜币</string>
+	<key>PLAYER_ADD_MONEY_GOLD</key>
+	<string>获得%d个金币</string>
+	<key>PLAYER_ADD_MONEY_SILVER</key>
+	<string>获得%d个银币</string>
+	<key>PLAYER_ADD_MONEY_COPPER</key>
+	<string>获得%d个铜币</string>
+	<key>PLAYER_ADD_MONEY_GOLD_SILVER</key>
+	<string>获得%d个金币,%d个银币</string>
+	<key>PLAYER_ADD_MONEY_GOLD_COPPER</key>
+	<string>获得%d个金币,%d个铜币</string>
+	<key>PLAYER_ADD_MONEY_SILVER_COPPER</key>
+	<string>获得%d个银币,%d个铜币</string>
+	<key>PLAYER_COST_MONEY_ALL</key>
+	<string>花费%d个金币,%d个银币,%d铜币</string>
+	<key>PLAYER_COST_MONEY_GOLD</key>
+	<string>花费%d个金币</string>
+	<key>PLAYER_COST_MONEY_SILVER</key>
+	<string>花费%d个银币</string>
+	<key>PLAYER_COST_MONEY_COPPER</key>
+	<string>花费%d个铜币</string>
+	<key>PLAYER_COST_MONEY_GOLD_SILVER</key>
+	<string>花费%d个金币,%d个银币</string>
+	<key>PLAYER_COST_MONEY_GOLD_COPPER</key>
+	<string>花费%d个金币,%d个铜币</string>
+	<key>PLAYER_COST_MONEY_SILVER_COPPER</key>
+	<string>花费%d个银币,%d个铜币</string>
 </dict>
 </plist>

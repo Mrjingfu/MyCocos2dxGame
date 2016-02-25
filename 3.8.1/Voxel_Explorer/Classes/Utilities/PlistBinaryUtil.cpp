@@ -250,7 +250,7 @@ void  PlistBinaryUtil::wirteValue(FileStream& writeStr,const  cocos2d::Value& av
             cocos2d::Value itemValue = *iter;
             writeStr.write32le((int)itemValue.getType());
             if (m_bisDebug) {
-                 CCLOG("WIRITE VECTOR type:%d",itemValue.getType());
+                 CCLOG("WIRITE VECTOR type:%d",(int)itemValue.getType());
             }
             wirteValueType(itemValue.getType(),writeStr,itemValue);
         }
@@ -261,7 +261,7 @@ void  PlistBinaryUtil::wirteValue(FileStream& writeStr,const  cocos2d::Value& av
         {
             cocos2d::Value itemValue = iter->second;
             if (m_bisDebug) {
-                CCLOG("WIRITE MAP type:%d",itemValue.getType());
+                CCLOG("WIRITE MAP type:%d",(int)itemValue.getType());
                 CCLOG("WIRITE MAP key:%s",iter->first.c_str());
             }
 
@@ -276,7 +276,7 @@ void  PlistBinaryUtil::wirteValue(FileStream& writeStr,const  cocos2d::Value& av
         {
             cocos2d::Value itemValue = iter->second;
              if (m_bisDebug) {
-                 CCLOG("WIRITE INT_KEY_MAP type:%d",itemValue.getType());
+                 CCLOG("WIRITE INT_KEY_MAP type:%d",(int)itemValue.getType());
                  CCLOG("WIRITE INT_KEY_MAP key:%d",iter->first);
              }
             writeStr.write32le((int)itemValue.getType());
@@ -295,35 +295,35 @@ void PlistBinaryUtil::wirteValueType(cocos2d::Value::Type type,FileStream& write
     {
         case cocos2d::Value::Type::BYTE:
             if (m_bisDebug)
-                CCLOG("WIRITE TYPE:%d",type);
+                CCLOG("WIRITE TYPE:%d",(int)type);
             writeStr.write8(value.asByte());
             break;
         case cocos2d::Value::Type::INTEGER:
             if (m_bisDebug)
-                CCLOG("WIRITE TYPE:%d",type);
+                CCLOG("WIRITE TYPE:%d",(int)type);
             writeStr.write32le(value.asInt());
             break;
         case cocos2d::Value::Type::FLOAT:
             if (m_bisDebug)
-                CCLOG("WIRITE TYPE:%d",type);
+                CCLOG("WIRITE TYPE:%d",(int)type);
             writeStr.writef(value.asFloat());
             break;
         case cocos2d::Value::Type::DOUBLE:
         {
             if (m_bisDebug)
-                CCLOG("WIRITE TYPE:%d",type);
+                CCLOG("WIRITE TYPE:%d",(int)type);
             double f = value.asDouble();
             writeStr.write(&f, sizeof(double));
         }
             break;
         case cocos2d::Value::Type::BOOLEAN:
             if (m_bisDebug)
-                CCLOG("WIRITE TYPE:%d",type);
+                CCLOG("WIRITE TYPE:%d",(int)type);
             writeStr.writeBool(value.asBool());
             break;
         case cocos2d::Value::Type::STRING:
             if (m_bisDebug)
-                CCLOG("WIRITE TYPE:%d",type);
+                CCLOG("WIRITE TYPE:%d",(int)type);
             writeStr.writeString(value.asString());
             break;
         case cocos2d::Value::Type::VECTOR:
@@ -370,7 +370,7 @@ void  PlistBinaryUtil::parseValueType(MemoryStream& readStream,cocos2d::Value& n
 cocos2d::Value PlistBinaryUtil::parseBaseicValueType(cocos2d::Value::Type type, MemoryStream& readStream)
 {
     if (m_bisDebug)
-        CCLOG("PARSE TYPE:%d",type);
+        CCLOG("PARSE TYPE:%d",(int)type);
     cocos2d::Value readValue;
     switch (type) {
         case cocos2d::Value::Type::BYTE:
@@ -421,7 +421,7 @@ void  PlistBinaryUtil::parseValue(MemoryStream& readStream,cocos2d::Value& value
     if (type == cocos2d::Value::Type::VECTOR)
     {
         if (m_bisDebug)
-            CCLOG("PARSE VECTOR type:%d",type);
+            CCLOG("PARSE VECTOR type:%d",(int)type);
         
         if (currentValue.getType() == cocos2d::Value::Type::NONE) {
             cocos2d::ValueVector tempValue;
@@ -432,7 +432,7 @@ void  PlistBinaryUtil::parseValue(MemoryStream& readStream,cocos2d::Value& value
     }else if(type == cocos2d::Value::Type::MAP)
     {
         if (m_bisDebug)
-            CCLOG("PARSE MAP type:%d",type);
+            CCLOG("PARSE MAP type:%d",(int)type);
         if (currentValue.getType() == cocos2d::Value::Type::NONE) {
             cocos2d::ValueMap tempValue;
             currentValue = tempValue;
@@ -442,7 +442,7 @@ void  PlistBinaryUtil::parseValue(MemoryStream& readStream,cocos2d::Value& value
     }else if(type == cocos2d::Value::Type::INT_KEY_MAP)
     {
         if (m_bisDebug)
-            CCLOG("PARSE INT_KEY_MAP type:%d",type);
+            CCLOG("PARSE INT_KEY_MAP type:%d",(int)type);
         if (currentValue.getType() == cocos2d::Value::Type::NONE) {
             cocos2d::ValueMapIntKey tempValue;
             currentValue = tempValue;

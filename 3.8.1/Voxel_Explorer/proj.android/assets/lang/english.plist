@@ -4,8 +4,8 @@
 <dict>
 	<key>GAME_NAME</key>
 	<string>Voxel Dungeon</string>
-	<key>FONT_NAME</key>
-	<string>fangz.TTF</string>
+	<key>PLAYER_DESC</key>
+	<string>Huh? You lost yourself?</string>
 	<key>TTN_CHASM</key>
 	<string>It&apos;s too dark to see!</string>
 	<key>TTN_STANDARD</key>
@@ -139,7 +139,7 @@
 	<key>MMN_BELIEVER</key>
 	<string>Believer</string>
 	<key>MMN_GATEKEEPER</key>
-	<string>Gate Keeper</string>
+	<string>Ass Kisser</string>
 	<key>MMN_APOLOGIST</key>
 	<string>Apologist</string>
 	<key>MMN_ADJUDICATOR</key>
@@ -335,733 +335,736 @@
 	<key>PIN_AXE_BROADAX</key>
 	<string>Broadax</string>
 	<key>PIN_AXE_BROADAX_DESC</key>
-	<string></string>
+	<string>Freezing blade has the axe, specially designed to cut bring cuckold.</string>
 	<key>PIN_AXE_BROADAX_BIDESC</key>
-	<string></string>
+	<string>This weapon is a bit heavy.</string>
 	<key>PIN_AXE_TOMAHAWK</key>
 	<string>Tomahawk</string>
 	<key>PIN_AXE_TOMAHAWK_DESC</key>
-	<string></string>
+	<string>After identification, this is not a missile.</string>
 	<key>PIN_AXE_TOMAHAWK_BIDESC</key>
-	<string></string>
+	<string>The handle is written BGM-109.</string>
 	<key>PIN_AXE_HUGEAXE</key>
 	<string>Huge Axe</string>
 	<key>PIN_AXE_HUGEAXE_DESC</key>
-	<string></string>
+	<string>You need to use both hands to get it.</string>
 	<key>PIN_AXE_HUGEAXE_BIDESC</key>
-	<string></string>
+	<string>Can you take this weapon?</string>
 	<key>PIN_AXE_DOUBLEBITAX</key>
 	<string>Double-bit Ax</string>
 	<key>PIN_AXE_DOUBLEBITAX_DESC</key>
-	<string></string>
+	<string>The weapon of Bul-Kathos.</string>
 	<key>PIN_AXE_DOUBLEBITAX_BIDESC</key>
-	<string></string>
+	<string>This is the fighting axe.</string>
 	<key>PIN_AXE_PRO_HATCHET</key>
 	<string>Dark Iron</string>
 	<key>PIN_AXE_PRO_HATCHET_DESC</key>
-	<string></string>
+	<string>Black axe, only the handle is plated with gold, masterpiece of the dwarf.</string>
 	<key>PIN_AXE_PRO_HATCHET_BIDESC</key>
-	<string></string>
+	<string>This is the weapon?
+This is the weapon?</string>
 	<key>PIN_AXE_PRO_ADZE</key>
 	<string>Half Moon</string>
 	<key>PIN_AXE_PRO_ADZE_DESC</key>
-	<string></string>
+	<string>A huge axe blade like the last quarter moon~</string>
 	<key>PIN_AXE_PRO_ADZE_BIDESC</key>
-	<string></string>
+	<string>Axe blade can block one half of the face.</string>
 	<key>PIN_AXE_PRO_STONEAXE</key>
 	<string>Cyclotron</string>
 	<key>PIN_AXE_PRO_STONEAXE_DESC</key>
-	<string></string>
+	<string>Waving it will have to start a strikes-whirlwind.</string>
 	<key>PIN_AXE_PRO_STONEAXE_BIDESC</key>
-	<string></string>
+	<string>There is a button on the handle.</string>
 	<key>PIN_AXE_PRO_BROADAX</key>
 	<string>Molten lava</string>
 	<key>PIN_AXE_PRO_BROADAX_DESC</key>
-	<string></string>
+	<string>Anything that was cut down has been melted down.</string>
 	<key>PIN_AXE_PRO_BROADAX_BIDESC</key>
-	<string></string>
+	<string>The blade flashed slightly red.</string>
 	<key>PIN_AXE_PRO_TOMAHAWK</key>
 	<string>Berserker</string>
 	<key>PIN_AXE_PRO_TOMAHAWK_DESC</key>
-	<string></string>
+	<string>Splash damage,a crushing blow ignore physical and magic immunity.</string>
 	<key>PIN_AXE_PRO_TOMAHAWK_BIDESC</key>
-	<string></string>
+	<string>Look a bit familiar to you.</string>
 	<key>PIN_AXE_PRO_HUGEAXE</key>
 	<string>Skull Splitter</string>
 	<key>PIN_AXE_PRO_HUGEAXE_DESC</key>
-	<string></string>
+	<string>Maybe this is the blunt, knock on.</string>
 	<key>PIN_AXE_PRO_HUGEAXE_BIDESC</key>
-	<string></string>
+	<string>The huge axe is very exaggerated but not sharp enough.</string>
 	<key>PIN_AXE_PRO_DOUBLEBITAX</key>
 	<string>Brainhew</string>
 	<key>PIN_AXE_PRO_DOUBLEBITAX_DESC</key>
-	<string></string>
+	<string>When waving the beheading axe,like countless Wraith in howl.</string>
 	<key>PIN_AXE_PRO_DOUBLEBITAX_BIDESC</key>
-	<string></string>
+	<string>The red blood on the above will never sponge out.</string>
 	<key>PIN_SWORD_SWORD</key>
 	<string>Sword</string>
 	<key>PIN_SWORD_SWORD_DESC</key>
-	<string></string>
+	<string>It has rust stains, may make the enemy to tetanus.</string>
 	<key>PIN_SWORD_SWORD_BIDESC</key>
-	<string></string>
+	<string>An iron sword very ordinary.</string>
 	<key>PIN_SWORD_STEELSWORD</key>
 	<string>Steel Sword</string>
 	<key>PIN_SWORD_STEELSWORD_DESC</key>
-	<string></string>
+	<string>Generally in the arms shop to spend some money can buy.</string>
 	<key>PIN_SWORD_STEELSWORD_BIDESC</key>
-	<string></string>
+	<string>Good steel!</string>
 	<key>PIN_SWORD_SABRE</key>
 	<string>Sabre</string>
 	<key>PIN_SWORD_SABRE_DESC</key>
-	<string></string>
+	<string>Don&apos;t think too much, just to the standard weapon of Turkic cavalry.</string>
 	<key>PIN_SWORD_SABRE_BIDESC</key>
-	<string></string>
+	<string>Phase blade.</string>
 	<key>PIN_SWORD_HUGESWORD</key>
 	<string>Huge Sword</string>
 	<key>PIN_SWORD_HUGESWORD_DESC</key>
-	<string></string>
+	<string>A very thick blade sword, need two hands to brandish.</string>
 	<key>PIN_SWORD_HUGESWORD_BIDESC</key>
-	<string></string>
+	<string>A hand can&apos;t afford it.</string>
 	<key>PIN_SWORD_TRIANGLESWORD</key>
 	<string>Triangle Sword</string>
 	<key>PIN_SWORD_TRIANGLESWORD_DESC</key>
-	<string></string>
+	<string>Words on the blade: Please draw a triangle when you wave.</string>
 	<key>PIN_SWORD_TRIANGLESWORD_BIDESC</key>
-	<string></string>
+	<string>The tip blade of the sword is a triangle.</string>
 	<key>PIN_SWORD_JAGGEDSWORD</key>
 	<string>Jagged Sword</string>
 	<key>PIN_SWORD_JAGGEDSWORD_DESC</key>
-	<string></string>
+	<string>The swordsmith is really not easy to casting this sword .</string>
 	<key>PIN_SWORD_JAGGEDSWORD_BIDESC</key>
-	<string></string>
+	<string>Is it a saw?</string>
 	<key>PIN_SWORD_CRYSTALSWORD</key>
 	<string>Crystal Sword</string>
 	<key>PIN_SWORD_CRYSTALSWORD_DESC</key>
-	<string></string>
+	<string>Luxury decoration sword, crystal stone blade inlaid with many decorations.</string>
 	<key>PIN_SWORD_CRYSTALSWORD_BIDESC</key>
-	<string></string>
+	<string>This sword must be a treasure.</string>
 	<key>PIN_SWORD_PRO_SWORD</key>
 	<string>Red Lotus</string>
 	<key>PIN_SWORD_PRO_SWORD_DESC</key>
-	<string></string>
+	<string>One of the ten sacred swords: Red Lotus.</string>
 	<key>PIN_SWORD_PRO_SWORD_BIDESC</key>
-	<string></string>
+	<string>The sword body is bright red.</string>
 	<key>PIN_SWORD_PRO_STEELSWORD</key>
 	<string>Flash</string>
 	<key>PIN_SWORD_PRO_STEELSWORD_DESC</key>
-	<string></string>
+	<string>When the enemy saw it out, will be shocked by his light, and then lost their lives.</string>
 	<key>PIN_SWORD_PRO_STEELSWORD_BIDESC</key>
-	<string></string>
+	<string>A hidden sword in the scabbard.</string>
 	<key>PIN_SWORD_PRO_SABRE</key>
 	<string>Wind Strike</string>
 	<key>PIN_SWORD_PRO_SABRE_DESC</key>
-	<string></string>
+	<string>When you brandish it, you can always see the surrounding air like waves pushed away, the space is distorted.</string>
 	<key>PIN_SWORD_PRO_SABRE_BIDESC</key>
-	<string></string>
+	<string>The sword body is stuck with a layer of blue mist.</string>
 	<key>PIN_SWORD_PRO_HUGESWORD</key>
 	<string>Solar Flame</string>
 	<key>PIN_SWORD_PRO_HUGESWORD_DESC</key>
-	<string></string>
+	<string>Bright angel, Blazing Sword</string>
 	<key>PIN_SWORD_PRO_HUGESWORD_BIDESC</key>
-	<string></string>
+	<string>The sword body is attached with a layer of red, slightly risked red steam.</string>
 	<key>PIN_SWORD_PRO_TRIANGLESWORD</key>
 	<string>Bloodletters</string>
 	<key>PIN_SWORD_PRO_TRIANGLESWORD_DESC</key>
-	<string></string>
+	<string>It needs to drink blood to keep power.</string>
 	<key>PIN_SWORD_PRO_TRIANGLESWORD_BIDESC</key>
-	<string></string>
+	<string>You can smell a bloody spirit far away from the sword body.</string>
 	<key>PIN_SWORD_PRO_JAGGEDSWORD</key>
 	<string>Sawtooth</string>
 	<key>PIN_SWORD_PRO_JAGGEDSWORD_DESC</key>
-	<string></string>
+	<string>Tear together any barrier.</string>
 	<key>PIN_SWORD_PRO_JAGGEDSWORD_BIDESC</key>
-	<string></string>
+	<string>Keep childs away from it</string>
 	<key>PIN_SWORD_PRO_CRYSTALSWORD</key>
 	<string>No God</string>
 	<key>PIN_SWORD_PRO_CRYSTALSWORD_DESC</key>
-	<string></string>
+	<string>Contains the GOLDION energy, but not everyone can handle it.</string>
 	<key>PIN_SWORD_PRO_CRYSTALSWORD_BIDESC</key>
-	<string></string>
+	<string>Refining material is the ancient iron wood tree heart.</string>
 	<key>PIN_MACE_ROLLINGPIN</key>
 	<string>Rolling Pin</string>
 	<key>PIN_MACE_ROLLINGPIN_DESC</key>
-	<string></string>
+	<string>Weapon of the cook.</string>
 	<key>PIN_MACE_ROLLINGPIN_BIDESC</key>
-	<string></string>
+	<string>A rolling pin</string>
 	<key>PIN_MACE_MALLET</key>
 	<string>Mallet</string>
 	<key>PIN_MACE_MALLET_DESC</key>
-	<string></string>
+	<string>To get some cotton cloth dipped in oil is a torch.</string>
 	<key>PIN_MACE_MALLET_BIDESC</key>
-	<string></string>
+	<string>You can cut down a tree to make one.</string>
 	<key>PIN_MACE_MACE</key>
 	<string>Mace</string>
 	<key>PIN_MACE_MACE_DESC</key>
-	<string></string>
+	<string>A status symbol.</string>
 	<key>PIN_MACE_MACE_BIDESC</key>
-	<string></string>
+	<string>It&apos;s not like a weapon.</string>
 	<key>PIN_MACE_HAMMER</key>
 	<string>Hammer</string>
 	<key>PIN_MACE_HAMMER_DESC</key>
-	<string></string>
+	<string>&quot;No blood&quot; blow.</string>
 	<key>PIN_MACE_HAMMER_BIDESC</key>
-	<string></string>
+	<string>Standard type blunt.</string>
 	<key>PIN_MACE_WOLFFANGSMACE</key>
 	<string>Wolf&apos;s Fangs Mace</string>
 	<key>PIN_MACE_WOLFFANGSMACE_DESC</key>
-	<string></string>
+	<string>&quot;Weapons of mass destruction&quot;.</string>
 	<key>PIN_MACE_WOLFFANGSMACE_BIDESC</key>
-	<string></string>
+	<string>The user must be a man of strength.</string>
 	<key>PIN_MACE_BONEHAMMER</key>
 	<string>Bone Hammer</string>
 	<key>PIN_MACE_BONEHAMMER_DESC</key>
-	<string></string>
+	<string>Usually with a knock off effect.</string>
 	<key>PIN_MACE_BONEHAMMER_BIDESC</key>
-	<string></string>
+	<string>Bones can also be weapons.</string>
 	<key>PIN_MACE_SLEDGEHAMMER</key>
 	<string>Sledge Hammer</string>
 	<key>PIN_MACE_SLEDGEHAMMER_DESC</key>
-	<string></string>
+	<string>&quot;Ma Jia-jue anger&quot;.</string>
 	<key>PIN_MACE_SLEDGEHAMMER_BIDESC</key>
-	<string></string>
+	<string>The formidable weapon.</string>
 	<key>PIN_MACE_PRO_ROLLINGPIN</key>
 	<string>Dinosaur bone</string>
 	<key>PIN_MACE_PRO_ROLLINGPIN_DESC</key>
-	<string></string>
+	<string>It should be a necromancer staves.</string>
 	<key>PIN_MACE_PRO_ROLLINGPIN_BIDESC</key>
-	<string></string>
+	<string>Top with a skeleton.</string>
 	<key>PIN_MACE_PRO_MALLET</key>
 	<string>The hammer of ogre</string>
 	<key>PIN_MACE_PRO_MALLET_DESC</key>
-	<string></string>
+	<string>&quot;I&apos;m gonna beat you like a rented mule, man&quot;.</string>
 	<key>PIN_MACE_PRO_MALLET_BIDESC</key>
-	<string></string>
+	<string>Orge often take it on patrol.</string>
 	<key>PIN_MACE_PRO_MACE</key>
 	<string>Ruby Mace</string>
 	<key>PIN_MACE_PRO_MACE_DESC</key>
-	<string></string>
+	<string>A ruby top of the scepter.</string>
 	<key>PIN_MACE_PRO_MACE_BIDESC</key>
-	<string></string>
+	<string>Would it grieve you to use it hit sombody?</string>
 	<key>PIN_MACE_PRO_HAMMER</key>
 	<string>Golden glory</string>
 	<key>PIN_MACE_PRO_HAMMER_DESC</key>
-	<string></string>
+	<string>Represents the courage and justice of the weapons, hammer engraved with: &quot;The Silver Hand&quot;</string>
 	<key>PIN_MACE_PRO_HAMMER_BIDESC</key>
-	<string></string>
+	<string>A delicate golden hammer.</string>
 	<key>PIN_MACE_PRO_WOLFFANGSMACE</key>
 	<string>Mace of the gods</string>
 	<key>PIN_MACE_PRO_WOLFFANGSMACE_DESC</key>
-	<string></string>
+	<string>The scepter of Archangel, with the power of God.</string>
 	<key>PIN_MACE_PRO_WOLFFANGSMACE_BIDESC</key>
-	<string></string>
+	<string>A weapon with the noble and holy breath.</string>
 	<key>PIN_MACE_PRO_BONEHAMMER</key>
 	<string>Sapphire Mace</string>
 	<key>PIN_MACE_PRO_BONEHAMMER_DESC</key>
-	<string></string>
+	<string>More noble than ruby scepter.</string>
 	<key>PIN_MACE_PRO_BONEHAMMER_BIDESC</key>
-	<string></string>
+	<string>A top set withsapphires scepter.</string>
 	<key>PIN_MACE_PRO_SLEDGEHAMMER</key>
 	<string>Azrael Power</string>
 	<key>PIN_MACE_PRO_SLEDGEHAMMER_DESC</key>
-	<string></string>
+	<string>A chain hammer, is made of casting iron from the hell, the user is generally undead.</string>
 	<key>PIN_MACE_PRO_SLEDGEHAMMER_BIDESC</key>
-	<string></string>
+	<string>In &quot;The Lord of the rings&quot; movies, the Wraith appears to use such a weapon.</string>
 	<key>PIN_BOW_SHORTBOW</key>
 	<string>Short Bow</string>
 	<key>PIN_BOW_SHORTBOW_DESC</key>
-	<string></string>
+	<string>Suitable for short stature people use, poor power.</string>
 	<key>PIN_BOW_SHORTBOW_BIDESC</key>
-	<string></string>
+	<string>Looks like a toy?</string>
 	<key>PIN_BOW_LONGBOW</key>
 	<string>Long Bow</string>
 	<key>PIN_BOW_LONGBOW_DESC</key>
-	<string></string>
+	<string>Yew bow, It is more difficult to draw the bow.</string>
 	<key>PIN_BOW_LONGBOW_BIDESC</key>
-	<string></string>
+	<string>The bow measures almost five feet in length, with a height of about 50 inches.</string>
 	<key>PIN_BOW_HORNBOW</key>
 	<string>Horn Bow</string>
 	<key>PIN_BOW_HORNBOW_DESC</key>
-	<string></string>
+	<string>Kylin horn, dragon rib, the bow of the materials are not easy to get.</string>
 	<key>PIN_BOW_HORNBOW_BIDESC</key>
-	<string></string>
+	<string>Real replicas of the ancient Asiatic Horn Bows. Made of all natural materials.</string>
 	<key>PIN_BOW_REFLEXBOW</key>
 	<string>Reflex Bow</string>
 	<key>PIN_BOW_REFLEXBOW_DESC</key>
-	<string></string>
+	<string>Bow force is strong, through the 1 inch steel plate is not possible, penetrate 1 inches of wood is easy.</string>
 	<key>PIN_BOW_REFLEXBOW_BIDESC</key>
-	<string></string>
+	<string>Very light, a nice bow.
+很轻巧的一把好弓。
+A nice bow.very light</string>
 	<key>PIN_BOW_EAGLEBOW</key>
 	<string>Eagle Bow</string>
 	<key>PIN_BOW_EAGLEBOW_DESC</key>
-	<string></string>
+	<string>The power is different from Skyfire hawk bow, must be imitated.</string>
 	<key>PIN_BOW_EAGLEBOW_BIDESC</key>
-	<string></string>
+	<string>With the bow body: &quot;Skyfire hawk bow&quot;.</string>
 	<key>PIN_BOW_LAMINATEDBOW</key>
 	<string>Laminated Bow</string>
 	<key>PIN_BOW_LAMINATEDBOW_DESC</key>
-	<string></string>
+	<string>Please regular maintenance, the warranty period of 12 months, Oneida.</string>
 	<key>PIN_BOW_LAMINATEDBOW_BIDESC</key>
-	<string></string>
+	<string>A very complex bow, look to see there is a manual.</string>
 	<key>PIN_BOW_GOLDENBOW</key>
 	<string>Golden Bow</string>
 	<key>PIN_BOW_GOLDENBOW_DESC</key>
-	<string></string>
+	<string>Such a beautiful bow, can be worth a lot of money.</string>
 	<key>PIN_BOW_GOLDENBOW_BIDESC</key>
-	<string></string>
+	<string>Gold casting, Too heavy, It should be an ornament.</string>
 	<key>PIN_BOW_PRO_SHORTBOW</key>
 	<string>Scorpion tail</string>
 	<key>PIN_BOW_PRO_SHORTBOW_DESC</key>
-	<string></string>
+	<string>Warm tip: please use the scorpion tail bow with designated arrows to play the maximum power.</string>
 	<key>PIN_BOW_PRO_SHORTBOW_BIDESC</key>
-	<string></string>
+	<string>The bow head and bow tail were showing the appearance of the scorpion&apos;s tail, and faint glowing green.</string>
 	<key>PIN_BOW_PRO_LONGBOW</key>
 	<string>Hexfire</string>
 	<key>PIN_BOW_PRO_LONGBOW_DESC</key>
-	<string></string>
+	<string>Launch burst arrows, range damage.</string>
 	<key>PIN_BOW_PRO_LONGBOW_BIDESC</key>
-	<string></string>
+	<string>This is also the weapons of mass destruction, huh? Why say again?</string>
 	<key>PIN_BOW_PRO_HORNBOW</key>
 	<string>Life Terminator</string>
 	<key>PIN_BOW_PRO_HORNBOW_DESC</key>
-	<string></string>
+	<string>Ten sorts of Usage.</string>
 	<key>PIN_BOW_PRO_HORNBOW_BIDESC</key>
-	<string></string>
+	<string>All rights reserved, Da Vince</string>
 	<key>PIN_BOW_PRO_REFLEXBOW</key>
 	<string>Shadow Impact</string>
 	<key>PIN_BOW_PRO_REFLEXBOW_DESC</key>
-	<string></string>
+	<string>All body are black, I do not know what the production of materials, no metal detectors can detect it.</string>
 	<key>PIN_BOW_PRO_REFLEXBOW_BIDESC</key>
-	<string></string>
+	<string>Bow body flickering in view.</string>
 	<key>PIN_BOW_PRO_EAGLEBOW</key>
 	<string>Hawkeye</string>
 	<key>PIN_BOW_PRO_EAGLEBOW_DESC</key>
-	<string></string>
+	<string>Launch track arrows, no need to aim.</string>
 	<key>PIN_BOW_PRO_EAGLEBOW_BIDESC</key>
-	<string></string>
+	<string>When you pick it up, it sends out the cry of an hawk.</string>
 	<key>PIN_BOW_PRO_LAMINATEDBOW</key>
 	<string>Green Hat</string>
 	<key>PIN_BOW_PRO_LAMINATEDBOW_DESC</key>
-	<string></string>
+	<string>Tree elves exclusive weapons, but no human like to use.</string>
 	<key>PIN_BOW_PRO_LAMINATEDBOW_BIDESC</key>
-	<string></string>
+	<string>It can be folded into a hat.</string>
 	<key>PIN_BOW_PRO_GOLDENBOW</key>
 	<string>Starsfall</string>
 	<key>PIN_BOW_PRO_GOLDENBOW_DESC</key>
-	<string></string>
+	<string>No need to use arrows, every time to toggle the bowstring, there will be a meteor fall from the sky toward to the enemy.</string>
 	<key>PIN_BOW_PRO_GOLDENBOW_BIDESC</key>
-	<string></string>
+	<string>The bow shining with starlight, very dazzling.</string>
 	<key>PIN_STAFF_OAKSTAFF</key>
 	<string>Oak Staff</string>
 	<key>PIN_STAFF_OAKSTAFF_DESC</key>
-	<string></string>
+	<string>Do not have mana, but picked up or hit very handy.</string>
 	<key>PIN_STAFF_OAKSTAFF_BIDESC</key>
-	<string></string>
+	<string>Druids both have a stick like this.</string>
 	<key>PIN_STAFF_FIRSTAFF</key>
 	<string>Fir Staff</string>
 	<key>PIN_STAFF_FIRSTAFF_DESC</key>
-	<string></string>
+	<string>Material is very common.</string>
 	<key>PIN_STAFF_FIRSTAFF_BIDESC</key>
-	<string></string>
+	<string>Very strong, able to withstand the sword to cut.</string>
 	<key>PIN_STAFF_ASHESSTAFF</key>
 	<string>Ashes Staff</string>
 	<key>PIN_STAFF_ASHESSTAFF_DESC</key>
-	<string></string>
+	<string>The flame gave the staff fire magic power.</string>
 	<key>PIN_STAFF_ASHESSTAFF_BIDESC</key>
-	<string></string>
+	<string>Burned wood more tenacity.</string>
 	<key>PIN_STAFF_DEMONSTAFF</key>
 	<string>Demon Staff</string>
 	<key>PIN_STAFF_DEMONSTAFF_DESC</key>
-	<string></string>
+	<string>Demonic skulls, hang a few skeletons will be more magic force.</string>
 	<key>PIN_STAFF_DEMONSTAFF_BIDESC</key>
-	<string></string>
+	<string>Wizards, warlocks are love it.</string>
 	<key>PIN_STAFF_CITRONSTAFF</key>
 	<string>Citron Staff</string>
 	<key>PIN_STAFF_CITRONSTAFF_DESC</key>
-	<string></string>
+	<string>Citron wood has the ability to recover, take it as a support class.</string>
 	<key>PIN_STAFF_CITRONSTAFF_BIDESC</key>
-	<string></string>
+	<string>Materials are scarce, But there are a lot in China.</string>
 	<key>PIN_STAFF_CLOUDSTAFF</key>
 	<string>Cloud Staff</string>
 	<key>PIN_STAFF_CLOUDSTAFF_DESC</key>
-	<string></string>
+	<string>The ability to contain water and wind, it&apos;s a rare weapon.</string>
 	<key>PIN_STAFF_CLOUDSTAFF_BIDESC</key>
-	<string></string>
+	<string>It looks very heavy, but it is very light.</string>
 	<key>PIN_STAFF_MONKSTAFF</key>
 	<string>Monk Staff</string>
 	<key>PIN_STAFF_MONKSTAFF_DESC</key>
-	<string></string>
+	<string>Horizontal as the stick, vertical as a spear , rotating up is a helicopter.</string>
 	<key>PIN_STAFF_MONKSTAFF_BIDESC</key>
-	<string></string>
+	<string>Weapon of buddhist monk.</string>
 	<key>PIN_STAFF_PRO_OAKSTAFF</key>
 	<string>Emerald</string>
 	<key>PIN_STAFF_PRO_OAKSTAFF_DESC</key>
-	<string></string>
+	<string>The green wand, top inlaid with an emerald.</string>
 	<key>PIN_STAFF_PRO_OAKSTAFF_BIDESC</key>
-	<string></string>
+	<string>This is not the beat dog stick.</string>
 	<key>PIN_STAFF_PRO_FIRSTAFF</key>
 	<string>Venus</string>
 	<key>PIN_STAFF_PRO_FIRSTAFF_DESC</key>
-	<string></string>
+	<string>When wave it, the top of the stick will emit a dazzling light, make the darkness and the beast away.</string>
 	<key>PIN_STAFF_PRO_FIRSTAFF_BIDESC</key>
-	<string></string>
+	<string>One word: beautiful!</string>
 	<key>PIN_STAFF_PRO_ASHESSTAFF</key>
 	<string>Cerebus&apos; Bite</string>
 	<key>PIN_STAFF_PRO_ASHESSTAFF_DESC</key>
-	<string></string>
+	<string>The staff revealed the breath of hell, and swept over the place, flowers and trees withered.</string>
 	<key>PIN_STAFF_PRO_ASHESSTAFF_BIDESC</key>
-	<string></string>
+	<string>Gifts from hell.</string>
 	<key>PIN_STAFF_PRO_DEMONSTAFF</key>
 	<string>Exorcist</string>
 	<key>PIN_STAFF_PRO_DEMONSTAFF_DESC</key>
-	<string></string>
+	<string>The dead live ,The living dead!</string>
 	<key>PIN_STAFF_PRO_DEMONSTAFF_BIDESC</key>
-	<string></string>
+	<string>Evocation streamers</string>
 	<key>PIN_STAFF_PRO_CITRONSTAFF</key>
-	<string>The Prius Spear</string>
+	<string>Imperius Spear </string>
 	<key>PIN_STAFF_PRO_CITRONSTAFF_DESC</key>
-	<string></string>
+	<string>What a drunbee weapon, Can not buy, but also perhaps.</string>
 	<key>PIN_STAFF_PRO_CITRONSTAFF_BIDESC</key>
-	<string></string>
+	<string>The weapon of archangel----- owned by Imperius</string>
 	<key>PIN_STAFF_PRO_CLOUDSTAFF</key>
 	<string>Blood courage</string>
 	<key>PIN_STAFF_PRO_CLOUDSTAFF_DESC</key>
-	<string></string>
+	<string>Take it, immediately excited, fearless, faster than the drugs.</string>
 	<key>PIN_STAFF_PRO_CLOUDSTAFF_BIDESC</key>
-	<string></string>
+	<string>A symbol of killing, the best weapon of cowards.</string>
 	<key>PIN_STAFF_PRO_MONKSTAFF</key>
 	<string>Archangel</string>
 	<key>PIN_STAFF_PRO_MONKSTAFF_DESC</key>
-	<string></string>
+	<string>The symbol of the status, whether it is a angel or a villain.</string>
 	<key>PIN_STAFF_PRO_MONKSTAFF_BIDESC</key>
-	<string></string>
+	<string>Athena also seems to have such one.</string>
 	<key>PIN_SHIELD_WOODENSHIELD</key>
 	<string>Wooden Shield</string>
 	<key>PIN_SHIELD_WOODENSHIELD_DESC</key>
-	<string></string>
+	<string>Very thin, The poor&apos;s bullet proof vest.</string>
 	<key>PIN_SHIELD_WOODENSHIELD_BIDESC</key>
-	<string></string>
+	<string>Perhaps the defense is not as a tree root.</string>
 	<key>PIN_SHIELD_TRIANGLESHIELD</key>
 	<string>Triangles Shield</string>
 	<key>PIN_SHIELD_TRIANGLESHIELD_DESC</key>
-	<string></string>
+	<string>The wooden shield just wooden shield,Defense depends on luck.</string>
 	<key>PIN_SHIELD_TRIANGLESHIELD_BIDESC</key>
-	<string></string>
+	<string>The triangular wooden shield, which is covered with a little tin.</string>
 	<key>PIN_SHIELD_STEELSHIELD</key>
 	<string>Steel Shield</string>
 	<key>PIN_SHIELD_STEELSHIELD_DESC</key>
-	<string></string>
+	<string>Defense is guaranteed.</string>
 	<key>PIN_SHIELD_STEELSHIELD_BIDESC</key>
-	<string></string>
+	<string>Fine steel, rust replacement.</string>
 	<key>PIN_SHIELD_EAGLESHIELD</key>
 	<string>Eagle Shield</string>
 	<key>PIN_SHIELD_EAGLESHIELD_DESC</key>
-	<string></string>
+	<string>Not all Eagle shields are physical immunity shield.</string>
 	<key>PIN_SHIELD_EAGLESHIELD_BIDESC</key>
-	<string></string>
+	<string>Wow! Looks like a physical immunity shield.</string>
 	<key>PIN_SHIELD_OSTEOSCUTE</key>
 	<string>Osteoscute</string>
 	<key>PIN_SHIELD_OSTEOSCUTE_DESC</key>
-	<string></string>
+	<string>Strong and light.</string>
 	<key>PIN_SHIELD_OSTEOSCUTE_BIDESC</key>
-	<string></string>
+	<string>Animal osteoscute.</string>
 	<key>PIN_SHIELD_GOLDENSHIELD</key>
 	<string>Golden Shield</string>
 	<key>PIN_SHIELD_GOLDENSHIELD_DESC</key>
-	<string></string>
+	<string>What a pitty, This is just the gilded shield.</string>
 	<key>PIN_SHIELD_GOLDENSHIELD_BIDESC</key>
-	<string></string>
+	<string>Ah! To make a fortune?</string>
 	<key>PIN_SHIELD_TOWERSHIELD</key>
 	<string>Tower Shield</string>
 	<key>PIN_SHIELD_TOWERSHIELD_DESC</key>
-	<string></string>
+	<string>&quot;Triumph with my shield, Or lie on it back.&quot;</string>
 	<key>PIN_SHIELD_TOWERSHIELD_BIDESC</key>
-	<string></string>
+	<string>This shield is like a coffin.</string>
 	<key>PIN_SHIELD_PRO_WOODENSHIELD</key>
 	<string>Dark defender</string>
 	<key>PIN_SHIELD_PRO_WOODENSHIELD_DESC</key>
-	<string></string>
+	<string>The front of the shield is dark as night, but the back of the shield is as bright as the day.</string>
 	<key>PIN_SHIELD_PRO_WOODENSHIELD_BIDESC</key>
-	<string></string>
+	<string>A black shield, above the faint glowing black gas.</string>
 	<key>PIN_SHIELD_PRO_TRIANGLESHIELD</key>
 	<string>Grimace</string>
 	<key>PIN_SHIELD_PRO_TRIANGLESHIELD_DESC</key>
-	<string></string>
+	<string>On the back of a line of words: &quot;shields will paint something scary. Another one like this, before leaving I gave it to my brother.&quot;</string>
 	<key>PIN_SHIELD_PRO_TRIANGLESHIELD_BIDESC</key>
-	<string></string>
+	<string>The shield carved scary faces, looking grim.</string>
 	<key>PIN_SHIELD_PRO_STEELSHIELD</key>
 	<string>The night watchman</string>
 	<key>PIN_SHIELD_PRO_STEELSHIELD_DESC</key>
-	<string></string>
+	<string>Back engraved with:&quot;Jon Snow owned&quot;.</string>
 	<key>PIN_SHIELD_PRO_STEELSHIELD_BIDESC</key>
-	<string></string>
+	<string>&quot;Night gathers,and now my watch begins.It shall not end until my death&quot;.</string>
 	<key>PIN_SHIELD_PRO_EAGLESHIELD</key>
 	<string>Green Goblin</string>
 	<key>PIN_SHIELD_PRO_EAGLESHIELD_DESC</key>
-	<string></string>
+	<string>&quot;To the most lovely brother --- Renault Mograine&quot;.</string>
 	<key>PIN_SHIELD_PRO_EAGLESHIELD_BIDESC</key>
-	<string></string>
+	<string>The shield is painted with a green face.</string>
 	<key>PIN_SHIELD_PRO_OSTEOSCUTE</key>
 	<string>Skeleton King&apos;s body</string>
 	<key>PIN_SHIELD_PRO_OSTEOSCUTE_DESC</key>
-	<string></string>
+	<string>When the seal on it is broken, the skeleton king will rise again.</string>
 	<key>PIN_SHIELD_PRO_OSTEOSCUTE_BIDESC</key>
-	<string></string>
+	<string>A pair of giant humanoid bones, wearing armor.</string>
 	<key>PIN_SHIELD_PRO_GOLDENSHIELD</key>
 	<string>Medusa&apos;s mirror</string>
 	<key>PIN_SHIELD_PRO_GOLDENSHIELD_DESC</key>
-	<string></string>
+	<string>In fact, this is another weapon Medusa, allowing the attacker to see with Medusa eyes in the mirror.</string>
 	<key>PIN_SHIELD_PRO_GOLDENSHIELD_BIDESC</key>
-	<string></string>
+	<string>Medusa can look in the mirror?</string>
 	<key>PIN_SHIELD_PRO_TOWERSHIELD</key>
 	<string>Wall of sighs</string>
 	<key>PIN_SHIELD_PRO_TOWERSHIELD_DESC</key>
-	<string></string>
+	<string>Explorers dream, hide behind it, any attacker can only sigh.</string>
 	<key>PIN_SHIELD_PRO_TOWERSHIELD_BIDESC</key>
-	<string></string>
+	<string>Sigh walls, security.</string>
 	<key>PIN_CLOTH_SHOES</key>
 	<string>Shoes</string>
 	<key>PIN_CLOTH_SHOES_DESC</key>
-	<string></string>
+	<string>Classic to do the old style.</string>
 	<key>PIN_CLOTH_SHOES_BIDESC</key>
-	<string></string>
+	<string>Calf leather boots.</string>
 	<key>PIN_CLOTH_MAGA_CAP</key>
 	<string>Maga Cap</string>
 	<key>PIN_CLOTH_MAGA_CAP_DESC</key>
-	<string></string>
+	<string>Seems to grow taller a lot.</string>
 	<key>PIN_CLOTH_MAGA_CAP_BIDESC</key>
-	<string></string>
+	<string>It looks like a photo prop, and it&apos;s funny.</string>
 	<key>PIN_CLOTH_CLOTH</key>
 	<string>Cloth</string>
 	<key>PIN_CLOTH_CLOTH_DESC</key>
-	<string></string>
+	<string>Neither Fireproof nor waterproof, but theftproof.</string>
 	<key>PIN_CLOTH_CLOTH_BIDESC</key>
-	<string></string>
+	<string>Linen cloth.</string>
 	<key>PIN_CLOTH_LEATHERARMOR</key>
 	<string>Leather Armor</string>
 	<key>PIN_CLOTH_LEATHERARMOR_DESC</key>
-	<string></string>
+	<string>Please read carefully the leather goods maintenance manual.</string>
 	<key>PIN_CLOTH_LEATHERARMOR_BIDESC</key>
-	<string></string>
+	<string>Made of animal skins.</string>
 	<key>PIN_CLOTH_CHAINSHOES</key>
 	<string>Chain Shoes</string>
 	<key>PIN_CLOTH_CHAINSHOES_DESC</key>
-	<string></string>
+	<string>When you wear on it, You can&apos;t be as a thief. </string>
 	<key>PIN_CLOTH_CHAINSHOES_BIDESC</key>
-	<string></string>
+	<string>There are also punk in the adventurers.</string>
 	<key>PIN_CLOTH_HELEMT</key>
 	<string>Helemt</string>
 	<key>PIN_CLOTH_HELEMT_DESC</key>
-	<string></string>
+	<string>The same paragraph helmet, Sales  on Taobao.</string>
 	<key>PIN_CLOTH_HELEMT_BIDESC</key>
-	<string></string>
+	<string>Looks like a tin box.</string>
 	<key>PIN_CLOTH_STEELARMOR</key>
 	<string>Steel Armor</string>
 	<key>PIN_CLOTH_STEELARMOR_DESC</key>
-	<string></string>
+	<string>In it you need to buy a horse, and buy a spear.</string>
 	<key>PIN_CLOTH_STEELARMOR_BIDESC</key>
-	<string></string>
+	<string>Fine steel armor.</string>
 	<key>PIN_CLOTH_PRO_SHOES</key>
 	<string>Boots of travel</string>
 	<key>PIN_CLOTH_PRO_SHOES_DESC</key>
-	<string></string>
+	<string>You have to put it on the head, others will not stop you.</string>
 	<key>PIN_CLOTH_PRO_SHOES_BIDESC</key>
-	<string></string>
+	<string>Shoes and backpacks combo.</string>
 	<key>PIN_CLOTH_PRO_MAGA_CAP</key>
 	<string>Grand Master&apos;s hat</string>
 	<key>PIN_CLOTH_PRO_MAGA_CAP_DESC</key>
-	<string></string>
+	<string>The symbol of the great master&apos;s identity.</string>
 	<key>PIN_CLOTH_PRO_MAGA_CAP_BIDESC</key>
-	<string></string>
+	<string>Is also the master&apos;s hat, why say again?</string>
 	<key>PIN_CLOTH_PRO_CLOTH</key>
 	<string>Silver moonlight</string>
 	<key>PIN_CLOTH_PRO_CLOTH_DESC</key>
-	<string></string>
+	<string>No equipment in the night, it will let you become a target for all.</string>
 	<key>PIN_CLOTH_PRO_CLOTH_BIDESC</key>
-	<string></string>
+	<string>The glory of the armor like moonlight wandering.</string>
 	<key>PIN_CLOTH_PRO_LEATHERARMOR</key>
 	<string>Life Cage</string>
 	<key>PIN_CLOTH_PRO_LEATHERARMOR_DESC</key>
-	<string></string>
+	<string>You have the protection of life, but also the soul of the shackles.</string>
 	<key>PIN_CLOTH_PRO_LEATHERARMOR_BIDESC</key>
-	<string></string>
+	<string>The safest place is the most dangerous place.</string>
 	<key>PIN_CLOTH_PRO_CHAINSHOES</key>
 	<string>Foot diameter of cloud</string>
 	<key>PIN_CLOTH_PRO_CHAINSHOES_DESC</key>
-	<string></string>
+	<string>Do not use after drinking for sake of your happiness of your whole family.</string>
 	<key>PIN_CLOTH_PRO_CHAINSHOES_BIDESC</key>
-	<string></string>
+	<string>Fly shoes</string>
 	<key>PIN_CLOTH_PRO_HELEMT</key>
 	<string>Knight looks</string>
 	<key>PIN_CLOTH_PRO_HELEMT_DESC</key>
-	<string></string>
+	<string>The pain will not last long, the glory will last forever.</string>
 	<key>PIN_CLOTH_PRO_HELEMT_BIDESC</key>
-	<string></string>
+	<string>Knight&apos;s helmet, exquisite workmanship</string>
 	<key>PIN_CLOTH_PRO_STEELARMOR</key>
 	<string>No widow</string>
 	<key>PIN_CLOTH_PRO_STEELARMOR_DESC</key>
-	<string></string>
+	<string>Husband put on it, his wife won&apos;t be married again.</string>
 	<key>PIN_CLOTH_PRO_STEELARMOR_BIDESC</key>
-	<string></string>
+	<string>Target: no widow.</string>
 	<key>PIN_ORNAMENT_RING</key>
 	<string>Silver Ring</string>
 	<key>PIN_ORNAMENT_RING_DESC</key>
-	<string></string>
+	<string>It has different meaningful to wear it on which finger.</string>
 	<key>PIN_ORNAMENT_RING_BIDESC</key>
-	<string></string>
+	<string>A very ordinary ring.</string>
 	<key>PIN_ORNAMENT_MEDAL</key>
 	<string>Medal</string>
 	<key>PIN_ORNAMENT_MEDAL_DESC</key>
-	<string></string>
+	<string>Symbol of honor</string>
 	<key>PIN_ORNAMENT_MEDAL_BIDESC</key>
-	<string></string>
+	<string>A very ordinary medal.</string>
 	<key>PIN_ORNAMENT_SHELLNECKLACE</key>
 	<string>Shell Necklace</string>
 	<key>PIN_ORNAMENT_SHELLNECKLACE_DESC</key>
-	<string></string>
+	<string>Maybe with someone‘s love.</string>
 	<key>PIN_ORNAMENT_SHELLNECKLACE_BIDESC</key>
-	<string></string>
+	<string>As you can see it&apos;s attentively masterpiece.</string>
 	<key>PIN_ORNAMENT_PENDANT</key>
 	<string>Pendant</string>
 	<key>PIN_ORNAMENT_PENDANT_DESC</key>
-	<string></string>
+	<string>A faint hint of magic on it.</string>
 	<key>PIN_ORNAMENT_PENDANT_BIDESC</key>
-	<string></string>
+	<string>Exquisite jewelry</string>
 	<key>PIN_ORNAMENT_NECKLACE</key>
 	<string>Aquamarine Necklace</string>
 	<key>PIN_ORNAMENT_NECKLACE_DESC</key>
-	<string></string>
+	<string>Aquamarine: &quot;March Birthstone&quot;, a symbol of &quot;calm and brave&quot;, &quot;happiness and longevity&quot;</string>
 	<key>PIN_ORNAMENT_NECKLACE_BIDESC</key>
-	<string></string>
+	<string>A jewel necklace, valuable.</string>
 	<key>PIN_ORNAMENT_SUPERMEDAL</key>
 	<string>Superior Medal</string>
 	<key>PIN_ORNAMENT_SUPERMEDAL_DESC</key>
-	<string></string>
+	<string>Medal for honor, and honor regardless of size.</string>
 	<key>PIN_ORNAMENT_SUPERMEDAL_BIDESC</key>
-	<string></string>
+	<string>A delicate medal, the master must be in the very heart of the preservation.</string>
 	<key>PIN_ORNAMENT_JEWELS</key>
 	<string>Jewels Necklace</string>
 	<key>PIN_ORNAMENT_JEWELS_DESC</key>
-	<string></string>
+	<string>The heart of the family, the promise of love, love jewelry!</string>
 	<key>PIN_ORNAMENT_JEWELS_BIDESC</key>
-	<string></string>
+	<string>&quot;XX Chou&quot;.</string>
 	<key>PIN_ORNAMENT_PRO_RING</key>
 	<string>Emerald Ring</string>
 	<key>PIN_ORNAMENT_PRO_RING_DESC</key>
-	<string></string>
+	<string>Green color bewitching person, Magic power broken enemy heart.</string>
 	<key>PIN_ORNAMENT_PRO_RING_BIDESC</key>
-	<string></string>
+	<string>A jadeite ring.</string>
 	<key>PIN_ORNAMENT_PRO_MEDAL</key>
 	<string>Golden Courage</string>
 	<key>PIN_ORNAMENT_PRO_MEDAL_DESC</key>
-	<string></string>
+	<string>Blessing from Uther.</string>
 	<key>PIN_ORNAMENT_PRO_MEDAL_BIDESC</key>
-	<string></string>
+	<string>Medal of the Paladin.</string>
 	<key>PIN_ORNAMENT_PRO_SHELLNECKLACE</key>
 	<string>William Medal</string>
 	<key>PIN_ORNAMENT_PRO_SHELLNECKLACE_DESC</key>
-	<string></string>
+	<string>“Voor Moed, Beleiden Trouw”</string>
 	<key>PIN_ORNAMENT_PRO_SHELLNECKLACE_BIDESC</key>
-	<string></string>
+	<string>A symbol of courage</string>
 	<key>PIN_ORNAMENT_PRO_PENDANT</key>
 	<string>Blood of Onyxia</string>
 	<key>PIN_ORNAMENT_PRO_PENDANT_DESC</key>
-	<string></string>
+	<string>Dragon Slayer glory.</string>
 	<key>PIN_ORNAMENT_PRO_PENDANT_BIDESC</key>
-	<string></string>
+	<string>A bottle of black dragon blood.</string>
 	<key>PIN_ORNAMENT_PRO_NECKLACE</key>
 	<string>Sacred Relic</string>
 	<key>PIN_ORNAMENT_PRO_NECKLACE_DESC</key>
-	<string></string>
+	<string>Can this sword be worth 3800 gold coins？</string>
 	<key>PIN_ORNAMENT_PRO_NECKLACE_BIDESC</key>
-	<string></string>
+	<string>Looks like a broken sword ~</string>
 	<key>PIN_ORNAMENT_PRO_SUPERMEDAL</key>
 	<string>Hyperstone</string>
 	<key>PIN_ORNAMENT_PRO_SUPERMEDAL_DESC</key>
-	<string></string>
+	<string>Hyperstone can make women crazy, make men fear.</string>
 	<key>PIN_ORNAMENT_PRO_SUPERMEDAL_BIDESC</key>
-	<string></string>
+	<string>This hyperstone is not that hyperstone, :)</string>
 	<key>PIN_ORNAMENT_PRO_JEWELS</key>
 	<string>Meteor Tears</string>
 	<key>PIN_ORNAMENT_PRO_JEWELS_DESC</key>
-	<string></string>
+	<string>The legend contains the life energy, that can make the dead come back to life.</string>
 	<key>PIN_ORNAMENT_PRO_JEWELS_BIDESC</key>
-	<string></string>
+	<string>A meteorite, that who can obtain this will is the god blessing person.</string>
 	<key>PIN_SCROLL_INDENTIFY</key>
 	<string>Scroll of Identify</string>
 	<key>PIN_SCROLL_INDENTIFY_DESC</key>
-	<string></string>
+	<string>Use to identify magic items.</string>
 	<key>PIN_SCROLL_TELEPORT</key>
 	<string>Scroll of Random Teleport</string>
 	<key>PIN_SCROLL_TELEPORT_DESC</key>
-	<string></string>
+	<string>After the use the random transfer to the current floor other location of the dungeon.</string>
 	<key>PIN_SCROLL_SPEED</key>
 	<string>Scroll of Speed</string>
 	<key>PIN_SCROLL_SPEED_DESC</key>
-	<string></string>
+	<string>After the use of the role of the attack speed and movement speed increased by fifty percent, for 20 seconds.</string>
 	<key>PIN_SCROLL_STEALTH</key>
 	<string>Scroll of Stealth</string>
 	<key>PIN_SCROLL_STEALTH_DESC</key>
-	<string></string>
+	<string>After the use of the character into the stealth state for 20 seconds.</string>
 	<key>PIN_SCROLL_STRONGER</key>
 	<string>Scroll of Stronger</string>
 	<key>PIN_SCROLL_STRONGER_DESC</key>
-	<string></string>
+	<string>After the use of the role of the property to enhance the duration of 20 seconds.</string>
 	<key>PIN_SCROLL_DESTINY</key>
 	<string>Scroll of Destiny</string>
 	<key>PIN_SCROLL_DESTINY_DESC</key>
-	<string></string>
+	<string>Do not know what will happen, use caution.</string>
 	<key>PIN_POTION_MINORHEALTH</key>
 	<string>Minor Health Potion</string>
 	<key>PIN_POTION_MINORHEALTH_DESC</key>
-	<string></string>
+	<string>Restore player 50 healty point.</string>
 	<key>PIN_POTION_LESSERHEALTH</key>
 	<string>Lesser Health Potion</string>
 	<key>PIN_POTION_LESSERHEALTH_DESC</key>
-	<string></string>
+	<string>Restore player 150 healty point.</string>
 	<key>PIN_POTION_HEALTH</key>
 	<string>Health Potion</string>
 	<key>PIN_POTION_HEALTH_DESC</key>
-	<string></string>
+	<string>Restore player 250 healty point.</string>
 	<key>PIN_POTION_MINORMANA</key>
 	<string>Minor Mana Potion</string>
 	<key>PIN_POTION_MINORMANA_DESC</key>
-	<string></string>
+	<string>Restore player 50 mana point.</string>
 	<key>PIN_POTION_LESSERMANA</key>
 	<string>Lesser Mana Potion</string>
 	<key>PIN_POTION_LESSERMANA_DESC</key>
-	<string></string>
+	<string>Restore player 150 mana point.</string>
 	<key>PIN_POTION_MANA</key>
 	<string>Mana Potion</string>
 	<key>PIN_POTION_MANA_DESC</key>
-	<string></string>
+	<string>Restore player 250 mana point.</string>
 	<key>PIN_POTION_MINORRECOVERY</key>
 	<string>Minor Recovery Potion</string>
 	<key>PIN_POTION_MINORRECOVERY_DESC</key>
-	<string></string>
+	<string>Restore player twenty-five percent healthy point  and mana point.</string>
 	<key>PIN_POTION_LESSERRECOVERY</key>
 	<string>Lesser Recovery Potion</string>
 	<key>PIN_POTION_LESSERRECOVERY_DESC</key>
-	<string></string>
+	<string>Restore player fifty percent healthy point and mana point.</string>
 	<key>PIN_POTION_RECOVERY</key>
 	<string>Recovery Potion</string>
 	<key>PIN_POTION_RECOVERY_DESC</key>
-	<string></string>
+	<string>Restore player seventy-five percent healthy point and mana point.</string>
 	<key>PIN_POTION_DETOXIFICATION</key>
 	<string>Detoxification Potion</string>
 	<key>PIN_POTION_DETOXIFICATION_DESC</key>
-	<string></string>
+	<string>Remove player poisoning status.</string>
 	<key>PIN_POTION_SPECIFIC</key>
 	<string>Specific Potion</string>
 	<key>PIN_POTION_SPECIFIC_DESC</key>
-	<string></string>
+	<string>Remove player  freezing, burning and paralysis status.</string>
 	<key>PIN_POTION_HEALING</key>
 	<string>Healing Potion</string>
 	<key>PIN_POTION_HEALING_DESC</key>
-	<string></string>
+	<string>Remove player weak status.</string>
 	<key>PIN_POTION_UNIVERSAL</key>
 	<string>Universal Potion</string>
 	<key>PIN_POTION_UNIVERSAL_DESC</key>
-	<string></string>
+	<string>Remove player all negative status.</string>
 	<key>UIN_CHEST_NO_LOCK_COPPER</key>
 	<string>Copper chest</string>
 	<key>UIN_CHEST_NO_LOCK_COPPER_DESC</key>
@@ -1099,122 +1102,122 @@
 	<key>UIN_JAR_3_DESC</key>
 	<string>A very ordinary jar.</string>
 	<key>NPCN_CHILD</key>
-    <string>爱丽</string>
-    <key>NPCN_CHILD_DESC</key>
-    <string>哎呦，别摸我，痒～</string>
-    <key>NPCN_CHILD_CONTENT</key>
-    <string>你好，我是开发者的助手，目前开发者没有交给我新的信息，也许下次见面我会带来惊喜。</string>
-    <key>NPCN_SHOPGIRL</key>
-    <string>售货员</string>
-    <key>NPCN_SHOPGIRL_DESC</key>
-    <string>“别这样，别人会看见的！”</string>
-    <key>NPCN_SHOPGIRL_CONTENT</key>
-    <string>欢迎光临！冒险者都喜欢光临我的防具店，货真价实。</string>
-    <key>NPCN_OLDLADY</key>
-    <string>炼金婆婆</string>
-    <key>NPCN_OLDLADY_DESC</key>
-    <string>“别碰我的炼金炉子，小心伤着！”</string>
-    <key>NPCN_OLDLADY_CONTENT</key>
-    <string>你好，欢迎光临我的炼金房，药水、卷轴应有尽有，不过需要花些小钱。</string>
-    <key>NPCN_KNIGHT</key>
-    <string>小骑士</string>
-    <key>NPCN_KNIGHT_DESC</key>
-    <string>“点我干嘛？你要和我决斗？”</string>
-    <key>NPCN_KNIGHT_CONTENT</key>
-    <string>你好冒险者，一把好的武器可以让你轻松许多，来挑选一把吧！</string>
-    <key>NPCN_WEIRDO</key>
-    <string>怪蜀黍</string>
-    <key>NPCN_WEIRDO_DESC</key>
-    <string>“嘿！你不是要偷东西吧！”</string>
-    <key>NPCN_WEIRDO_CONTENT</key>
-    <string>欢迎加入盗贼工会，工会特权，你可以和我对赌一把，哈哈哈～～</string>
-    <key>NPCN_OLDMAN</key>
-    <string>智者爷爷</string>
-    <key>NPCN_OLDMAN_DESC</key>
-    <string>“你这样可是很不礼貌的！”</string>
-    <key>NPCN_OLDMAN_CONTENT</key>
-    <string>年轻的时候我也是名冒险者，归隐后我还写过自传《伊尔明斯特》三部曲，你可以上网搜搜。</string>
-    <key>NPCN_LITTLEWITCH</key>
-    <string>见习魔女</string>
-    <key>NPCN_LITTLEWITCH_DESC</key>
-    <string>“我在练习增益魔法，可是经常会失败，你要尝试吗？”</string>
-    <key>NPCN_LITTLEWITCH_CONTENT</key>
-    <string>安拉～系米可米可米可变～～</string>
-    <key>NPCN_NURSE</key>
-    <string>小护士</string>
-    <key>NPCN_NURSE_DESC</key>
-    <string>“需要帮助吗？”</string>
-    <key>NPCN_NURSE_CONTENT</key>
-    <string>冒险者你受伤了，让我来给你疗伤吧～</string>
+	<string>Aili</string>
+	<key>NPCN_CHILD_DESC</key>
+	<string>Oh, don&apos;t touch me, to itch~</string>
+	<key>NPCN_CHILD_CONTENT</key>
+	<string>Hello, I am a developer&apos;s assistant, the developer did not give me the new information, perhaps the next meeting I will bring a surprise.</string>
+	<key>NPCN_SHOPGIRL</key>
+	<string>Shopgirl</string>
+	<key>NPCN_SHOPGIRL_DESC</key>
+	<string>&quot;Don&apos;t do this, someone will see!&quot;</string>
+	<key>NPCN_SHOPGIRL_CONTENT</key>
+	<string>Welcome! The adventurers love to visit my armor shop, genuine goods at a fair price.</string>
+	<key>NPCN_OLDLADY</key>
+	<string>The Alchemist</string>
+	<key>NPCN_OLDLADY_DESC</key>
+	<string>&quot;Don&apos;t touch my stove, Be careful to hurt!&quot;</string>
+	<key>NPCN_OLDLADY_CONTENT</key>
+	<string>Hello, Welcome my laboratories, potions, scrolls and everything, but need to spend some money.</string>
+	<key>NPCN_KNIGHT</key>
+	<string>Little Knight</string>
+	<key>NPCN_KNIGHT_DESC</key>
+	<string>&quot;Touch me? You want to fight with me?&quot;</string>
+	<key>NPCN_KNIGHT_CONTENT</key>
+	<string>Hello adventure, a good weapon can make you a lot easier, to pick one!</string>
+	<key>NPCN_WEIRDO</key>
+	<string>Little Thief</string>
+	<key>NPCN_WEIRDO_DESC</key>
+	<string>&quot;Hey! Are you stealing from here?&quot;</string>
+	<key>NPCN_WEIRDO_CONTENT</key>
+	<string>You are welcome to join the thieves guild, the trade union privilege, You can bet with me，haha!</string>
+	<key>NPCN_OLDMAN</key>
+	<string>Wise Man</string>
+	<key>NPCN_OLDMAN_DESC</key>
+	<string>&quot;You&apos;re not polite!&quot;</string>
+	<key>NPCN_OLDMAN_CONTENT</key>
+	<string>When i was young,I am also adventurer. After I live in seclusion, I also wrote an autobiography. &quot;Elminster  Trilogy&quot;, You can use Google to search if you don&apos;t believe.</string>
+	<key>NPCN_LITTLEWITCH</key>
+	<string>Trainee Witch</string>
+	<key>NPCN_LITTLEWITCH_DESC</key>
+	<string>&quot;I&apos;m practising gain magic, but often fail, do you want to try?&quot;</string>
+	<key>NPCN_LITTLEWITCH_CONTENT</key>
+	<string>“ah la.... migu migu mina miya~~”</string>
+	<key>NPCN_NURSE</key>
+	<string>Nurse</string>
+	<key>NPCN_NURSE_DESC</key>
+	<string>&quot;Do you need any help?&quot;</string>
+	<key>NPCN_NURSE_CONTENT</key>
+	<string>Are you injured? let me heal you~~</string>
 	<key>PTN_STANDARD</key>
-	<string>地城传送阵</string>
+	<string>Dungeon Gateway</string>
 	<key>PTN_STANDARD_DESC</key>
-	<string>地城传送阵，可以在不同地城间传送</string>
+	<string>Can be transmitted in different Dungeons.</string>
 	<key>PTN_STANDARD_LOCK</key>
-	<string>地城传送阵，不过刚把你传过来，已经没能量，不能用了。</string>
+	<string>Just transmitted you over, already no energy, can not be used now.</string>
 	<key>PTN_SMALL</key>
-	<string>小传送阵</string>
+	<string>Small Gateway</string>
 	<key>PTN_SMALL_DESC</key>
-	<string>小传送阵，可以在本层地牢间传送。</string>
+	<string>Can be transferred between current floor of the dungeon.</string>
 	<key>BSC_SLIMEKING_ALERT</key>
-	<string>咕噜～～咕噜～～</string>
+	<string>gulu~gulu~gugu~</string>
 	<key>BSC_SLIMEKING_SKILL1</key>
-	<string>史莱姆王开始分裂了～</string>
+	<string>Slime King began to split~~</string>
 	<key>BSC_SLIMEKING_SKILL2</key>
-	<string>史莱姆王变的愤怒了～～</string>
+	<string>Slime King becomes angry~~</string>
 	<key>BSC_SLIMEKING_SKILL3</key>
-	<string>史莱姆王开始暴躁了～～～</string>
+	<string>Slime King becames furious~~</string>
 	<key>BSC_SLIMEKING_DEATH</key>
-	<string>咕噜～～咕噜～～</string>
+	<string>gulu~gulu~gugu~</string>
 	<key>BSC_WARDEN_ALERT</key>
-	<string>嘿，不许动～你有权不沉默，但我很快会让你沉默！</string>
+	<string>Hey, don&apos;t move ~ you have the right not to be silent, but I will let you silence soon!</string>
 	<key>BSC_WARDEN_SKILL1</key>
-	<string>来人～来人～放狗！！</string>
+	<string>Close the door and let the dogs out！！</string>
 	<key>BSC_WARDEN_SKILL2</key>
-	<string>让你尝尝电棍的滋味！！</string>
+	<string>Let you taste the taste of electric stick!!</string>
 	<key>BSC_WARDEN_SKILL3</key>
-	<string>敖广～敖钦～敖顺～敖闰～你们4个死哪去了，快揍扁他！！</string>
+	<string>White? Red? Black? Green? Where are you four going? Beat him up!!</string>
 	<key>BSC_WARDEN_DEATH</key>
-	<string>光天化日之下竟然有人敢劫狱～啊啊啊啊～</string>
+	<string>How dare someone break into a jail in broad daylight??</string>
 	<key>BSC_ARCHBISHOP_ALERT</key>
-	<string>亲！接受网红教主的改造吧！</string>
+	<string>Dear! Let me transform you.You won&apos;t be disappointed.～</string>
 	<key>BSC_ARCHBISHOP_SKILL1</key>
-	<string>来人，给我喷死他～～</string>
+	<string>Come on, Spit to his face~~ha ha~~</string>
 	<key>BSC_ARCHBISHOP_SKILL2</key>
-	<string>让你体会下什么叫细思恐极～～五毛给我上～！！！</string>
+	<string>Let you experience what is called fine thinking fear of extreme ~ ~ Ass-kisser? Go! Go! Go!</string>
 	<key>BSC_ARCHBISHOP_SKILL3</key>
-	<string>来吧，我的网络大军在哪里？</string>
+	<string>Come on, my network army in where?</string>
 	<key>BSC_ARCHBISHOP_DEATH</key>
-	<string>啊啊啊～什么？少了我一个，自有后来人～</string>
+	<string>Ah ah ah~ what? Kill me now，since there will be more later~</string>
 	<key>BSC_KOBOLDLEADER_ALERT</key>
-	<string>谁拿了我的蜡烛～～</string>
+	<string>Who took my candle away~~</string>
 	<key>BSC_KOBOLDLEADER_SKILL1</key>
-	<string>你追不上我的～</string>
+	<string>You can&apos;t catch up with me.</string>
 	<key>BSC_KOBOLDLEADER_SKILL2</key>
-	<string>给你试试这个～～</string>
+	<string>Hey,hey, try this for you~~</string>
 	<key>BSC_KOBOLDLEADER_SKILL3</key>
-	<string>孩子们给我拦住他～～</string>
+	<string>Come on, hold him.</string>
 	<key>BSC_KOBOLDLEADER_DEATH</key>
-	<string>啊啊～我的蜡烛。。。</string>
+	<string>Ah ah ~ my candle...</string>
 	<key>BSC_GIANT_ALERT</key>
-	<string>啊哈～小鲜肉～</string>
+	<string>Ah ~ ~ Fresh meat~~</string>
 	<key>BSC_GIANT_SKILL1</key>
-	<string>你看起来很好吃～</string>
+	<string>You look so good to eat~~~</string>
 	<key>BSC_GIANT_SKILL2</key>
-	<string>送你个小礼物，小蚂蚁～</string>
+	<string>Here is my small gift for you～worms.</string>
 	<key>BSC_GIANT_SKILL3</key>
-	<string>你的命运将和托马斯.瓦格纳一样～小虫子！</string>
+	<string>Your fate will be the same as Wagner Thomas!!</string>
 	<key>BSC_GIANT_DEATH</key>
-	<string>不～～～小蚂蚁打败了大象，怎么会这样。。。</string>
+	<string>Oh no ~ ~ I was defeated, how can that be!!!</string>
 	<key>BSC_SKELETONKING_ALERT</key>
-	<string>谁来打扰我！！！</string>
+	<string>Who dares to bothering me?</string>
 	<key>BSC_SKELETONKING_SKILL1</key>
-	<string>出来吧，我的随从们～</string>
+	<string>Come out～My minions！</string>
 	<key>BSC_SKELETONKING_SKILL2</key>
-	<string>就凭你也想战胜我？</string>
+	<string>Do you really think you can beat me?</string>
 	<key>BSC_SKELETONKING_SKILL3</key>
-	<string>这不是盖的，我可是镇守过几乎所有的地牢！</string>
+	<string>I&apos;m not one to brag, I had almost guarded all types of the dungeon!</string>
 	<key>BSC_SKELETONKING_DEATH</key>
-	<string>额，我还会回来的～</string>
+	<string>Ah~, I&apos;ll be back again~~.</string>
 </dict>
 </plist>

@@ -29,6 +29,7 @@ public:
     bool onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *unused_event) override;
     virtual ~ItemPopupUI();
 protected:
+    virtual void onKeyBackClick() override;
     virtual void closePopup() override;
     virtual void addBottomUI();//添加底部UI,如按钮等
     virtual void addMoneyUI();//添加价格UI

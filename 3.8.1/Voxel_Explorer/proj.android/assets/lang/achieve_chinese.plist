@@ -5,7 +5,7 @@
 	<key>ADT_MONSTER_1</key>
 	<string>第一滴血</string>
 	<key>ADT_MONSTER_1_TARGET</key>
-	<string>杀死第1个怪物</string>
+	<string>第一次杀死怪物.</string>
 	<key>ADT_MONSTER_2</key>
 	<string>牛刀小试 </string>
 	<key>ADT_MONSTER_2_TARGET</key>
@@ -86,9 +86,9 @@
 	<string>大刑伺候</string>
 	<key>ADT_ROLE_CLIP_DEAD_TARGET</key>
 	<string>第1次死于夹子陷阱</string>
-	<key>ADT_ROLE_FILE_DEAD</key>
-	<string>追寻布鲁诺</string>
-	<key>ADT_ROLE_FILE_DEAD_TARGET</key>
+	<key>ADT_ROLE_FIRE_DEAD</key>
+	<string>追随布鲁诺</string>
+	<key>ADT_ROLE_FIRE_DEAD_TARGET</key>
 	<string>第1次死于火焰陷阱</string>
 	<key>ADT_ROLE_DEAD_1</key>
 	<string>第一块墓碑</string>
@@ -145,7 +145,7 @@
 	<key>ADT_PICK_ITEM</key>
 	<string>走路要低头</string>
 	<key>ADT_PICK_ITEM_TARGET</key>
-	<string> 第1次拾取道具</string>
+	<string>第1次拾取道具</string>
 	<key>ADT_PICK_NOT_MARIC_ITEM</key>
 	<string>破烂王</string>
 	<key>ADT_PICK_NOT_MARIC_ITEM_TARGET</key>
@@ -161,7 +161,7 @@
 	<key>ADT_THIRTY_NOT_MOVE</key>
 	<string>稳如泰山</string>
 	<key>ADT_THIRTY_NOT_MOVE_TARGET</key>
-	<string> 30秒内不移动</string>
+	<string>30秒内不移动</string>
 	<key>ADT_OBSESSION_MEN</key>
 	<string>强迫症患者</string>
 	<key>ADT_OBSESSION_MEN_TARGET</key>
@@ -169,7 +169,7 @@
 	<key>ADT_FOUND_HIDDEN_DOOR</key>
 	<string>逃不过我的法眼</string>
 	<key>ADT_FOUND_HIDDEN_DOOR_TARGET</key>
-	<string> 第1次发现隐藏门</string>
+	<string>第1次发现隐藏门</string>
 	<key>ADT_FOUND_HIDDEN_TRAP_FIRST</key>
 	<string>哎呦,吓死宝宝了</string>
 	<key>ADT_FOUND_HIDDEN_TRAP_FIRST_TARGET</key>
@@ -189,11 +189,11 @@
 	<key>ADT_SEARCH_KING</key>
 	<string>问题王</string>
 	<key>ADT_SEARCH_KING_TARGET</key>
-	<string>检索过100次</string>
+	<string>场景交互过100次</string>
 	<key>ADT_LOVE_QUESTION</key>
 	<string>爱提问的小盆友</string>
 	<key>ADT_LOVE_QUESTION_TARGET</key>
-	<string>检索过10次</string>
+	<string>场景交互过10次</string>
 	<key>ADT_ALL_ARRIVE_DUNGEON</key>
 	<string>大冒险家</string>
 	<key>ADT_ALL_ARRIVE_DUNGEON_TARGET</key>
@@ -213,7 +213,7 @@
 	<key>ADT_SILVER_BOX_FIRST</key>
 	<string>盗贼高手</string>
 	<key>ADT_SILVER_BOX_FIRST_TARGET</key>
-	<string>第一次开启银质宝箱</string>
+	<string>第1次开启银质宝箱</string>
 	<key>ADT_GOLD_BOX_FIRST</key>
 	<string>盗贼精英</string>
 	<key>ADT_GOLD_BOX_FIRST_TARGET</key>
@@ -243,17 +243,17 @@
 	<key>ADT_SAGE_STORY_TARGET</key>
 	<string>听过智者的3段故事</string>
 	<key>ADT_BUY_EQUIP</key>
-	<string>北市买长鞭</string>
+	<string>冒险者的武器</string>
 	<key>ADT_BUY_EQUIP_TARGET</key>
-	<string>从骑士手中购买过武器和装备</string>
+	<string>从小骑士手中购买过武器</string>
 	<key>ADT_BUY_MARICORIM</key>
-	<string>穷家富路</string>
+	<string>一分钱一分货</string>
 	<key>ADT_BUY_MARICORIM_TARGET</key>
-	<string>从售货员手中购买过药水</string>
+	<string>从女售货员手中购买过防具或饰品</string>
 	<key>ADT_BUY_SCROLL_POTION</key>
-	<string>我需要卷轴</string>
+	<string>穷家富路</string>
 	<key>ADT_BUY_SCROLL_POTION_TARGET</key>
-	<string>从巫婆手中购买过卷轴</string>
+	<string>从炼金婆婆手中购买过卷轴\药水\钥匙.</string>
 	<key>ADT_HAVE_GOLD_1</key>
 	<string>第一桶金</string>
 	<key>ADT_HAVE_GOLD_1_TARGET</key>

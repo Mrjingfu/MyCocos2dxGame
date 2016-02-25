@@ -249,11 +249,8 @@ void GameToolbarLayer::onClickBag(Ref* ref,Widget::TouchEventType type)
             return;
         }
         PopupUILayerManager::getInstance()->openPopup(ePopupRole);
-//        PopupUILayerManager::getInstance()->openPopup(ePopupMagicShop);
         setDistTipsFrame();
         
-        
-    
     });
 
 }

@@ -73,3 +73,11 @@ bool NativeBridge::isInterstitialAdsReady()
 #endif
     return false;
 }
+void NativeBridge::requestAndLoadInterstitialAds()
+{
+#if CC_TARGET_PLATFORM == CC_PLATFORM_IOS
+    CCLOG("requestAndLoadInterstitialAds");
+    if(mViewController != nil)
+        [mViewController requestAndLoadInterstitialAds];
+#endif
+}

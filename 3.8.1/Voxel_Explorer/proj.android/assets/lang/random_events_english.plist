@@ -6,7 +6,10 @@
 		<key>EVENT_TYPE</key>
 		<integer>0</integer>
 		<key>EVENT_DESC</key>
-		<string>冒险者提示：请为你的膝盖装备盔甲！切记！</string>
+		<string>
+Adventure tips:&quot;Make sure that
+equip your knees with armor!&quot;
+        </string>
 		<key>HAS_READED</key>
 		<false/>
 	</dict>
@@ -14,7 +17,11 @@
 		<key>EVENT_TYPE</key>
 		<integer>0</integer>
 		<key>EVENT_DESC</key>
-		<string>黑夜给了我黑色的眼睛，我却用它來寻找bug。   ————《开发者墓志铭》</string>
+		<string>
+&quot;Dark night gave me black eyes,
+but I use it to find bug.&quot;
+    ----&quot;Developer Journal&quot;
+        </string>
 		<key>HAS_READED</key>
 		<false/>
 	</dict>
@@ -22,7 +29,10 @@
 		<key>EVENT_TYPE</key>
 		<integer>1</integer>
 		<key>EVENT_DESC</key>
-		<string>你在地板下面发现了1枚金币</string>
+		<string>
+You found one gold coins under the
+floor.
+        </string>
 		<key>HAS_READED</key>
 		<false/>
 	</dict>
@@ -30,7 +40,12 @@
 		<key>EVENT_TYPE</key>
 		<integer>0</integer>
 		<key>EVENT_DESC</key>
-		<string>墙壁的石缝中插着一把剑，看上去定非凡品，但你用尽全身的力气去拔，纹丝不动。。。</string>
+		<string>
+There&apos;s a sword in the walls of
+the stone,it looks extraordinary, you
+want to pull it outwith all you
+strength, motionless...
+        </string>
 		<key>HAS_READED</key>
 		<false/>
 	</dict>
@@ -38,7 +53,10 @@
 		<key>EVENT_TYPE</key>
 		<integer>0</integer>
 		<key>EVENT_DESC</key>
-		<string>“你要倒霉了，你们全都要倒霉了”。 ———— “琼.艾瑞尼卡斯”</string>
+		<string>
+&quot;You will suffer! You will all suffer!&quot;
+    ---------&quot;Jon Irenicus&quot;
+        </string>
 		<key>HAS_READED</key>
 		<false/>
 	</dict>
@@ -46,7 +64,10 @@
 		<key>EVENT_TYPE</key>
 		<integer>0</integer>
 		<key>EVENT_DESC</key>
-		<string>“种族并不代表荣耀,对于与自身不同的存在,不要轻易的给出结论”。————“提里奥·弗丁”</string>
+		<string>
+&quot;Race does not dictate honor&quot;.
+    ------- &quot;Tirion Fordring&quot;
+        </string>
 		<key>HAS_READED</key>
 		<false/>
 	</dict>
@@ -54,7 +75,10 @@
 		<key>EVENT_TYPE</key>
 		<integer>0</integer>
 		<key>EVENT_DESC</key>
-		<string>“敌羞，吾去脱他衣～“， ？？？？神马意思？</string>
+		<string>
+&quot;WWSSADADAB&quot; ？？？？
+What&apos;s the meaning？
+        </string>
 		<key>HAS_READED</key>
 		<false/>
 	</dict>
@@ -62,7 +86,10 @@
 		<key>EVENT_TYPE</key>
 		<integer>0</integer>
 		<key>EVENT_DESC</key>
-		<string>跳关密码：&quot;锟斤拷&quot;、&quot;烫烫烫&quot;、“屯屯屯”。————《开发者日志》</string>
+		<string>
+&quot;There is no cow level!&quot;
+----- &quot;Developer Journal&quot;
+        </string>
 		<key>HAS_READED</key>
 		<false/>
 	</dict>
@@ -70,7 +97,11 @@
 		<key>EVENT_TYPE</key>
 		<integer>0</integer>
 		<key>EVENT_DESC</key>
-		<string>墙壁上写着几组奇怪的数字: 002291, 000428, 002467, 002582</string>
+		<string>
+The walls were written with a
+number of odd numbers:
+002291, 000428,002467,002582.
+        </string>
 		<key>HAS_READED</key>
 		<false/>
 	</dict>
@@ -78,7 +109,11 @@
 		<key>EVENT_TYPE</key>
 		<integer>0</integer>
 		<key>EVENT_DESC</key>
-		<string>“到此一游～我要去甜水镇了～呦呦” ————“尼古拉王子”</string>
+		<string>
+&quot;Have traveled thus far,
+I&apos;m going to Sweetwater ~&quot;
+        ------ &quot;Prince Nicola&quot;
+        </string>
 		<key>HAS_READED</key>
 		<false/>
 	</dict>
@@ -86,7 +121,11 @@
 		<key>EVENT_TYPE</key>
 		<integer>2</integer>
 		<key>EVENT_DESC</key>
-		<string>地板下有张纸条：“这里有一条通往塔拉夏古墓的捷径～～”</string>
+		<string>
+There is a note under the floor:
+&quot;there is a shortcut leading to
+the tomb of Tal Rasha~ ~&quot;
+        </string>
 		<key>HAS_READED</key>
 		<false/>
 	</dict>
@@ -94,7 +133,12 @@
 		<key>EVENT_TYPE</key>
 		<integer>0</integer>
 		<key>EVENT_DESC</key>
-		<string>“想要我的签名照？，来绝东城找我来领任务吧” ————“艾瑞贝斯”</string>
+		<string>
+&quot;Would you like my signature?
+Come to NEVERWINTER and see
+me. &quot;
+        ------ Aribeth&quot;
+        </string>
 		<key>HAS_READED</key>
 		<false/>
 	</dict>
