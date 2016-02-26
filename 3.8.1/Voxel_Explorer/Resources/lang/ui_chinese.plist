@@ -331,6 +331,8 @@
 	<key>BTN_TEXT_ADA_REVIVE</key>
 	<string>观看
 复活</string>
+	<key>BTN_TEXT_RANK</key>
+	<string>排行榜</string>
 	<key>BAG_INDENTIFY_FAIL</key>
 	<string>鉴定失败！</string>
 	<key>BAG_NO_INDENTIFY_SCROLL</key>

@@ -263,15 +263,17 @@ void MenuUILayer::onClickMuisc(cocos2d::Ref *ref)
         return ;
     if (CocosDenshion::SimpleAudioEngine::getInstance()->getPauseSound())
     {
+        CocosDenshion::SimpleAudioEngine::getInstance()->setPauseSound(false);
         CocosDenshion::SimpleAudioEngine::getInstance()->resumeBackgroundMusic();
         CocosDenshion::SimpleAudioEngine::getInstance()->resumeAllEffects();
         refreshUIView();
         
     }else
     {
-        
+        CocosDenshion::SimpleAudioEngine::getInstance()->setPauseSound(true);
         CocosDenshion::SimpleAudioEngine::getInstance()->pauseBackgroundMusic();
         CocosDenshion::SimpleAudioEngine::getInstance()->pauseAllEffects();
+        
         refreshUIView();
     }
     

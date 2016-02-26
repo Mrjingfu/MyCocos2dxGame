@@ -16,7 +16,7 @@
             <PreSize X="1.0000" Y="1.0000" />
             <FileData Type="PlistSubImage" Path="ui_frame_3.png" Plist="ui_sprite.plist" />
           </AbstractNodeData>
-          <AbstractNodeData Name="pause_btn_achieve" ActionTag="-1147036072" Tag="3" IconVisible="False" PercentWidthEnable="True" PercentWidthEnabled="True" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="11.0000" RightMargin="11.0000" TopMargin="103.0450" BottomMargin="6.9550" TouchEnable="True" FontSize="22" ButtonText="成就" Scale9Enable="True" LeftEage="7" RightEage="7" TopEage="7" BottomEage="7" Scale9OriginX="7" Scale9OriginY="7" Scale9Width="22" Scale9Height="22" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="ButtonObjectData">
+          <AbstractNodeData Name="pause_btn_achieve" ActionTag="-1147036072" Tag="3" IconVisible="False" PercentWidthEnable="True" PercentWidthEnabled="True" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="11.0000" RightMargin="11.0000" TopMargin="127.6540" BottomMargin="12.3460" TouchEnable="True" FontSize="22" ButtonText="成就" Scale9Enable="True" LeftEage="7" RightEage="7" TopEage="7" BottomEage="7" Scale9OriginX="7" Scale9OriginY="7" Scale9Width="22" Scale9Height="22" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="ButtonObjectData">
             <Size X="198.0000" Y="40.0000" />
             <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
             <Position X="110.0000" Y="26.9550" />
@@ -31,7 +31,7 @@
             <OutlineColor A="255" R="255" G="0" B="0" />
             <ShadowColor A="255" R="110" G="110" B="110" />
           </AbstractNodeData>
-          <AbstractNodeData Name="pause_btn_mianmenu" ActionTag="-751152529" Tag="4" IconVisible="False" PercentWidthEnable="True" PercentWidthEnabled="True" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="11.0000" RightMargin="11.0000" TopMargin="52.6600" BottomMargin="57.3400" TouchEnable="True" FontSize="22" ButtonText="主菜单" Scale9Enable="True" LeftEage="7" RightEage="7" TopEage="7" BottomEage="7" Scale9OriginX="7" Scale9OriginY="7" Scale9Width="22" Scale9Height="22" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="ButtonObjectData">
+          <AbstractNodeData Name="pause_btn_mianmenu" ActionTag="-751152529" Tag="4" IconVisible="False" PercentWidthEnable="True" PercentWidthEnabled="True" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="11.0000" RightMargin="11.0000" TopMargin="67.1920" BottomMargin="72.8080" TouchEnable="True" FontSize="22" ButtonText="主菜单" Scale9Enable="True" LeftEage="7" RightEage="7" TopEage="7" BottomEage="7" Scale9OriginX="7" Scale9OriginY="7" Scale9Width="22" Scale9Height="22" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="ButtonObjectData">
             <Size X="198.0000" Y="40.0000" />
             <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
             <Position X="110.0000" Y="77.3400" />
@@ -46,7 +46,7 @@
             <OutlineColor A="255" R="255" G="0" B="0" />
             <ShadowColor A="255" R="110" G="110" B="110" />
           </AbstractNodeData>
-          <AbstractNodeData Name="pause_music_img" ActionTag="2026819927" Tag="22" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="124.5000" RightMargin="36.5000" TopMargin="18.3620" BottomMargin="154.6380" Scale9Width="59" Scale9Height="47" ctype="ImageViewObjectData">
+          <AbstractNodeData Name="pause_music_img" ActionTag="2026819927" Tag="22" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="124.5000" RightMargin="36.5000" TopMargin="10.7540" BottomMargin="122.2460" Scale9Width="59" Scale9Height="47" ctype="ImageViewObjectData">
             <Size X="59.0000" Y="47.0000" />
             <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
             <Position X="154.0000" Y="121.4550" />
@@ -56,7 +56,7 @@
             <PreSize X="0.2682" Y="0.2136" />
             <FileData Type="PlistSubImage" Path="ui_btn_sound_on.png" Plist="ui_sprite.plist" />
           </AbstractNodeData>
-          <AbstractNodeData Name="pause_music_text" ActionTag="716134780" Tag="38" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="8.0000" RightMargin="138.0000" TopMargin="9.7200" BottomMargin="101.2800" LabelText="声音:" ctype="TextBMFontObjectData">
+          <AbstractNodeData Name="pause_music_text" ActionTag="716134780" Tag="38" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="7.9900" RightMargin="138.0100" TopMargin="15.5640" BottomMargin="125.4360" LabelText="声音:" ctype="TextBMFontObjectData">
             <Size X="74.0000" Y="39.0000" />
             <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
             <Position X="44.9900" Y="120.7800" />

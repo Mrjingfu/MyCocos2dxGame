@@ -137,7 +137,10 @@ void AndroidJavaEngine::stopBackgroundMusic(bool releaseData) {
 
 void AndroidJavaEngine::pauseBackgroundMusic() {
     cocos2d::JniMethodInfo methodInfo;
-
+    ///add by lichuang
+    if(!m_bIsPauseSound)
+        return;
+    ///end
     if (!getJNIStaticMethodInfo(methodInfo, "pauseBackgroundMusic", "()V")) {
         return;
     }
@@ -148,7 +151,10 @@ void AndroidJavaEngine::pauseBackgroundMusic() {
 
 void AndroidJavaEngine::resumeBackgroundMusic() {
     cocos2d::JniMethodInfo methodInfo;
-
+    ///add by lichuang
+    if(m_bIsPauseSound)
+        return;
+    ///end
     if (!getJNIStaticMethodInfo(methodInfo, "resumeBackgroundMusic", "()V")) {
         return;
     }
@@ -453,8 +459,10 @@ void AndroidJavaEngine::stopEffect(unsigned int soundID)
 
 void AndroidJavaEngine::pauseAllEffects()
 {
-        //add by lichuang
-    m_bIsPauseSound = true;
+    ///add by lichuang
+    if(!m_bIsPauseSound)
+        return;
+    ///end
     if (_implementBaseOnAudioEngine)
     {
         for (auto it : _soundIDs)
@@ -470,8 +478,10 @@ void AndroidJavaEngine::pauseAllEffects()
 
 void AndroidJavaEngine::resumeAllEffects()
 {
-        //add by lichuang
-    m_bIsPauseSound = false;
+    ///add by lichuang
+    if(m_bIsPauseSound)
+        return;
+    ///end
     if (_implementBaseOnAudioEngine)
     {
         for (auto it : _soundIDs)

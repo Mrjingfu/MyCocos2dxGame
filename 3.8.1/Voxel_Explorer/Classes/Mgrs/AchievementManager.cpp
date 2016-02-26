@@ -136,9 +136,6 @@ void AchievementManager::handleAchievement(eAchievementDetailType achiId)
     if (!achieveProp->isCommple())
     {
         updateAchieve(achieveProp);
-#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM ==CC_PLATFORM_ANDROID )
-        SdkBoxManager::getInstance()->logEvent("Player", "AchieveComplete", "AchieveType", (int)achiId);
-#endif
     }
 
 }
@@ -174,9 +171,14 @@ void AchievementManager::updateAchieve(AchieveProperty *achieve)
             SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
         }
         sortAchieves();
+        
         cocos2d::Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_ACHIEVE_COMPLETE,achieve);
         
         GameCenterController::getInstance()->reportAchievement(achieve->getAchieveIDName(), 100.0f);
+        
+#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM ==CC_PLATFORM_ANDROID )
+        SdkBoxManager::getInstance()->logEvent("Player", "AchieveComplete", achieve->getAchieveIDName(), 1);
+#endif
     }
     else if(targetCompleteCount < achieve->getAcheveTargets().size())
     {

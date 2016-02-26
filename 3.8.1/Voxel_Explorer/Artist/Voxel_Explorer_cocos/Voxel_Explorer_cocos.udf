@@ -30,7 +30,14 @@
     </Item>
     <Item Key="TabsParamsKey">
       <Value ctype="TabsInfo">
-        <ActiveDocument />
+        <OpenedDocuments>
+          <FilePathData Path="gameScene.csd" />
+          <FilePathData Path="gameinfoLayer.csd" />
+          <FilePathData Path="deadLayer.csd" />
+          <FilePathData Path="pausenewPopupLayer.csd" />
+          <FilePathData Path="pausenewPopupLayer_abroad.csd" />
+        </OpenedDocuments>
+        <ActiveDocument Path="pausenewPopupLayer_abroad.csd" />
       </Value>
     </Item>
   </Properties>

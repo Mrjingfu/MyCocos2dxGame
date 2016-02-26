@@ -25,6 +25,7 @@ private:
     void onClickHelp(Ref* ref);
     void onClickSound(Ref* ref);
     void onClickMuisc(Ref* ref);
+    void onClickRank(Ref* ref);
     void refreshUIView() override;
 private:
 //    cocos2d::ui::ImageView* m_pSoundImg;

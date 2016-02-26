@@ -85,10 +85,10 @@ public:
      * @lua preloadMusic
      */
     virtual void preloadBackgroundMusic(const char* filePath);
-    
+
     /**
      * Play background music.
-     * 
+     *
      * @param filePath The path of the background music file,or the FileName of T_SoundResInfo.
      * @param loop Whether the background music loop or not.
      * @js playMusic
@@ -144,7 +144,7 @@ public:
      */
     virtual bool isBackgroundMusicPlaying();
 
-    // 
+    //
     // properties
     //
 
@@ -176,7 +176,7 @@ public:
      */
     virtual void setEffectsVolume(float volume);
 
-    // 
+    //
     // for sound effects
 
     /**
@@ -188,7 +188,7 @@ public:
      * @param pan   Stereo effect, in the range of [-1..1] where -1 enables only left channel.
      * @param gain  Volume, in the range of [0..1]. The normal value is 1.
      * @return The sound id.
-     * 
+     *
      * @note Full support is under development, now there are limitations:
      *     - no pitch effect on Samsung Galaxy S2 with OpenSL backend enabled;
      *     - no pitch/pan/gain on win32.
@@ -250,6 +250,7 @@ public:
     virtual void unloadEffect(const char* filePath);
     //add by lichuang
     bool  getPauseSound() const{return m_bIsPauseSound;}
+    void  setPauseSound(bool isPlay){m_bIsPauseSound = isPlay;}
 protected:
     /**
     * Constructor of SimpleAudioEngine.
@@ -260,7 +261,7 @@ protected:
     * Destructor of SimpleAudioEngine.
     */
     virtual ~SimpleAudioEngine();
-    
+
     //add by lichuang
     bool m_bIsPauseSound;
 };

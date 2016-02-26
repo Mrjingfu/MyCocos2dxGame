@@ -330,6 +330,8 @@
 	<string>REVIVE</string>
 	<key>BTN_TEXT_ADA_REVIVE</key>
 	<string>REVIVE</string>
+	<key>BTN_TEXT_RANK</key>
+	<string>LEADERBOARD</string>
 	<key>BAG_INDENTIFY_FAIL</key>
 	<string>Indentified failed！</string>
 	<key>BAG_NO_INDENTIFY_SCROLL</key>

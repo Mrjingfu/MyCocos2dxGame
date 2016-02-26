@@ -31,7 +31,7 @@ PausePopupUI::~PausePopupUI()
 }
 bool PausePopupUI::initUi()
 {
-    return load("pausenewPopupLayer.csb",false);
+    return load("pausenewPopupLayer_abroad.csb",false);
 }
 bool PausePopupUI::addEvents()
 {
@@ -49,8 +49,30 @@ bool PausePopupUI::addEvents()
         return false;
     
     ui::Button* m_pBtnAchieve= dynamic_cast<ui::Button*>(UtilityHelper::seekNodeByName(m_pRootNode, "pause_btn_achieve"));
-    if (!m_pBtnAchieve)
-        return false;
+    if (m_pBtnAchieve)
+    {
+        m_pBtnAchieve->setTitleFontName(UtilityHelper::getLocalStringForUi("FONT_NAME"));
+        m_pBtnAchieve->setTitleFontSize(36);
+        m_pBtnAchieve->getTitleRenderer()->setScale(0.7);
+        m_pBtnAchieve->setTitleText(UtilityHelper::getLocalStringForUi("TITLE_ACHIEVE"));
+        m_pBtnAchieve->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
+        m_pBtnAchieve->addClickEventListener(CC_CALLBACK_1(PausePopupUI::onClickAchieve, this));
+    }
+    
+    ui::Button* m_pBtnRank= dynamic_cast<ui::Button*>(UtilityHelper::seekNodeByName(m_pRootNode, "pause_btn_rank"));
+    if (m_pBtnRank)
+    {
+        m_pBtnRank->setTitleFontName(UtilityHelper::getLocalStringForUi("FONT_NAME"));
+        m_pBtnRank->setTitleFontSize(36);
+        m_pBtnRank->getTitleRenderer()->setScale(0.7);
+        m_pBtnRank->setTitleText(UtilityHelper::getLocalStringForUi("BTN_TEXT_RANK"));
+        m_pBtnRank->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
+        m_pBtnRank->addClickEventListener(CC_CALLBACK_1(PausePopupUI::onClickRank, this));
+
+    }
+
+    
+    
     
     musicText->setFntFile(UtilityHelper::getLocalStringForUi("FONT_NAME"));
     musicText->setScale(0.65);
@@ -63,19 +85,9 @@ bool PausePopupUI::addEvents()
     m_pBtnMainMenu->setTitleFontName(UtilityHelper::getLocalStringForUi("FONT_NAME"));
     m_pBtnMainMenu->getTitleRenderer()->setScale(0.7);
     m_pBtnMainMenu->setTitleText(UtilityHelper::getLocalStringForUi("BTN_TEXT_MAINMENU"));
-    
-    
-    m_pBtnAchieve->setTitleFontName(UtilityHelper::getLocalStringForUi("FONT_NAME"));
-    m_pBtnAchieve->setTitleFontSize(36);
-    m_pBtnAchieve->getTitleRenderer()->setScale(0.7);
-    m_pBtnAchieve->setTitleText(UtilityHelper::getLocalStringForUi("TITLE_ACHIEVE"));
-    
-    
     m_pBtnMainMenu->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
-    m_pBtnAchieve->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
-    
     m_pBtnMainMenu->addClickEventListener(CC_CALLBACK_1(PausePopupUI::onClickMainMenu, this));
-    m_pBtnAchieve->addClickEventListener(CC_CALLBACK_1(PausePopupUI::onClickAchieve, this));
+    
     
     refreshUIView();
     
@@ -103,13 +115,14 @@ void PausePopupUI::onClickMuisc(cocos2d::Ref *ref)
         return ;
     if (CocosDenshion::SimpleAudioEngine::getInstance()->getPauseSound())
     {
+        CocosDenshion::SimpleAudioEngine::getInstance()->setPauseSound(false);
         CocosDenshion::SimpleAudioEngine::getInstance()->resumeBackgroundMusic();
         CocosDenshion::SimpleAudioEngine::getInstance()->resumeAllEffects();
         refreshUIView();
  
     }else
     {
-
+        CocosDenshion::SimpleAudioEngine::getInstance()->setPauseSound(true);
         CocosDenshion::SimpleAudioEngine::getInstance()->pauseBackgroundMusic();
         CocosDenshion::SimpleAudioEngine::getInstance()->pauseAllEffects();
         refreshUIView();
@@ -121,6 +134,15 @@ void PausePopupUI::onClickHelp(cocos2d::Ref *ref)
 {
  
     
+}
+void PausePopupUI::onClickRank(cocos2d::Ref *ref)
+{
+    CHECK_ACTION(ref);
+    clickEffect();
+    CCLOG("onClickRank");
+#if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID || CC_TARGET_PLATFORM == CC_PLATFORM_IOS
+    GameCenterController::getInstance()->openLeaderBoard();
+#endif
 }
 void PausePopupUI::onClickMainMenu(cocos2d::Ref *ref)
 {
