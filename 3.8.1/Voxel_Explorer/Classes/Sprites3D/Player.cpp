@@ -910,7 +910,7 @@ void Player::healedbyNurse()
     setTexture(tex);
     PlayerProperty::getInstance()->healedbyNurse();
     
-    VoxelExplorer::getInstance()->addParticle3DEffectToPlayer(P3D_PLAYER_USE_POTION_TAKE_EFFECT);
+    VoxelExplorer::getInstance()->addParticle3DEffectToPlayer(P3D_PLAYER_USE_POTION_TAKE_EFFECT, false);
     
     std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("USE_SCROLL");
     SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());

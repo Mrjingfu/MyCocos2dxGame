@@ -402,7 +402,7 @@ void WeaponProperty::adjustByLevel()
             }
         }
     }
-    m_nValueCopper = 150 * (int)(m_AddedEffectList.size())*(int)(m_AddedEffectList.size()) + m_nLevel*50;
+    m_nValueCopper = 250 * (int)(m_AddedEffectList.size())*(int)(m_AddedEffectList.size()) + m_nLevel*50;
     m_nCopperWhenBuy = m_nValueCopper * 2.0f;
 }
 void WeaponProperty::handleIdentify()

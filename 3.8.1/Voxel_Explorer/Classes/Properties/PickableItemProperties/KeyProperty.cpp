@@ -23,11 +23,11 @@ KeyProperty::KeyProperty(unsigned int instanceID, PickableItem::PickableItemType
     m_strPropertyTypeName = UtilityHelper::getLocalString(PICKABLE_ITEM_PROPERTY_TYPE_NAMES[m_PropertyType]);
     
     if(m_ItemType == PickableItem::PIT_KEY_COPPER)
-        m_nValueCopper = 50;
+        m_nValueCopper = 250;
     else if(m_ItemType == PickableItem::PIT_KEY_SILVER)
-        m_nValueCopper = 150;
+        m_nValueCopper = 1000;
     else if(m_ItemType == PickableItem::PIT_KEY_GOLD)
-        m_nValueCopper = 500;
+        m_nValueCopper = 3000;
     else if(m_ItemType == PickableItem::PIT_KEY_ROOM)
     {
         m_bDiscardable = false;
