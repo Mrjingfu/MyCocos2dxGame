@@ -439,7 +439,8 @@ void BaseMonster::onEnterMoving()
 }
 void BaseMonster::onExitMoving()
 {
-    setPosition3D(Vec3(Vec3(m_LastPosInMap.x*TerrainTile::CONTENT_SCALE, -0.5f*TerrainTile::CONTENT_SCALE, -m_LastPosInMap.y*TerrainTile::CONTENT_SCALE)));
+    if(m_LastPosInMap != Vec2::ZERO)
+        setPosition3D(Vec3(Vec3(m_LastPosInMap.x*TerrainTile::CONTENT_SCALE, -0.5f*TerrainTile::CONTENT_SCALE, -m_LastPosInMap.y*TerrainTile::CONTENT_SCALE)));
     this->stopAllActions();
 }
 void BaseMonster::onEnterAttack()
@@ -454,7 +455,8 @@ void BaseMonster::onExitAttack()
 
 void BaseMonster::onEnterDeath()
 {
-    setPosition3D(Vec3(Vec3(m_LastPosInMap.x*TerrainTile::CONTENT_SCALE, -0.5f*TerrainTile::CONTENT_SCALE, -m_LastPosInMap.y*TerrainTile::CONTENT_SCALE)));
+    if(m_LastPosInMap != Vec2::ZERO)
+        setPosition3D(Vec3(Vec3(m_LastPosInMap.x*TerrainTile::CONTENT_SCALE, -0.5f*TerrainTile::CONTENT_SCALE, -m_LastPosInMap.y*TerrainTile::CONTENT_SCALE)));
     this->stopAllActions();
     removeTerrainTileFlag(TileInfo::ATTACKABLE);
     removeTerrainTileFlagByPos(TileInfo::ATTACKABLE, m_NextPos);

@@ -397,7 +397,7 @@ cocos2d::Vec2 BaseLevel::getRandomVisitedTranspotTile(const cocos2d::Vec2& playe
             int cell = -1;
             do {
                 cell = cocos2d::random(0, (int)(m_Map.size()-1));
-            } while (m_Map[cell].m_AreaType != Area::AT_BOSS_ROOM || !(m_Map[cell].m_bVisited) || playerIndex == cell);
+            } while (m_Map[cell].m_AreaType != Area::AT_BOSS_ROOM || !(m_Map[cell].m_bVisited) || !(m_Map[cell].isPassable()) || playerIndex == cell);
             return Vec2(cell % m_nWidth, cell / m_nWidth);
         }
         else

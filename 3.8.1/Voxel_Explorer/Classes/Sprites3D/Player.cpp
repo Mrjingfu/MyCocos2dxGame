@@ -1114,9 +1114,14 @@ void Player::onEnterAttack()
 
 void Player::onEnterDeath()
 {
-    setPosition3D(Vec3(Vec3(m_LastPosInMap.x*TerrainTile::CONTENT_SCALE, -0.5f*TerrainTile::CONTENT_SCALE, -m_LastPosInMap.y*TerrainTile::CONTENT_SCALE)));
     this->stopAllActions();
     removeTerrainTileFlag(TileInfo::ATTACKABLE);
+    if(m_LastPosInMap != getPosInMap() && m_LastPosInMap != Vec2::ZERO)
+    {
+        setPosition3D(Vec3(Vec3(m_LastPosInMap.x*TerrainTile::CONTENT_SCALE, -0.5f*TerrainTile::CONTENT_SCALE, -m_LastPosInMap.y*TerrainTile::CONTENT_SCALE)));
+        removeTerrainTileFlag(TileInfo::ATTACKABLE);
+    }
+    
     PlayerProperty::getInstance()->setCurrentHP(0);
     resetPlayerBuffer();
     if(m_pFakeShadow)

@@ -1943,7 +1943,7 @@ Actor* VoxelExplorer::getNearestEnemy()
             }
         }
         
-        if(ret && m_pPlayer->getPosInMap().distance(ret->getPosInMap()) > TerrainTile::CONTENT_SCALE*5)
+        if(ret && m_pPlayer->getPosInMap().distance(ret->getPosInMap()) > 5)
             ret = nullptr;
     }
     return ret;
