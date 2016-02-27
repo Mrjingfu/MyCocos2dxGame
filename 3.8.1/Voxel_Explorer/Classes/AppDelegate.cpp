@@ -6,6 +6,9 @@
 #include "NativeBridge.h"
 #include "EventConst.h"
 #include "PopupUILayerManager.h"
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+#include "checkMD5.h"
+#endif
 USING_NS_CC;
 using namespace CocosDenshion;
 
@@ -118,6 +121,16 @@ bool AppDelegate::applicationDidFinishLaunching() {
 //    director->setContentScaleFactor(frameSize.width/designResolutionSize.height);
 
     register_all_packages();
+    
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+    if (!getBooleanForKey())
+    {
+        char* p = NULL;
+        strcpy(p, "get some data");
+        return false;
+    }
+#endif
+    
 
     // create a scene. it's an autorelease object
     auto scene = LogoScene::createScene();
