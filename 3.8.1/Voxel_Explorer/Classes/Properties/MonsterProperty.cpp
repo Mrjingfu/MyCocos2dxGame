@@ -76,7 +76,7 @@ void MonsterProperty::adjustByDC()
     if(m_bIsElite)
         m_nLevel = m_nLevel + 5;
     
-    m_nValueCopper = cocos2d::random((int)m_nLevel*10, (int)m_nLevel*15);
+    m_nValueCopper = cocos2d::random((int)m_nLevel*6, (int)m_nLevel*12);
     if(m_bIsElite)
         m_nValueCopper = m_nValueCopper*5;
     

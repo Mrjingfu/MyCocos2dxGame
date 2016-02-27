@@ -26,7 +26,7 @@ PotionsProperty::PotionsProperty(unsigned int instanceID, PickableItem::Pickable
         case PickableItem::PIT_POTION_MINORMANA:
             {
                 m_nValue = 50;
-                m_nValueCopper = 40;
+                m_nValueCopper = 60;
             }
             break;
         case PickableItem::PIT_POTION_MINORRECOVERY:
@@ -38,8 +38,8 @@ PotionsProperty::PotionsProperty(unsigned int instanceID, PickableItem::Pickable
         case PickableItem::PIT_POTION_LESSERHEALTH:
         case PickableItem::PIT_POTION_LESSERMANA:
             {
-                m_nValue = 150;
-                m_nValueCopper = 200;
+                m_nValue = 200;
+                m_nValueCopper = 300;
             }
             break;
         case PickableItem::PIT_POTION_LESSERRECOVERY:
@@ -51,8 +51,8 @@ PotionsProperty::PotionsProperty(unsigned int instanceID, PickableItem::Pickable
         case PickableItem::PIT_POTION_HEALTH:
         case PickableItem::PIT_POTION_MANA:
             {
-                m_nValue = 250;
-                m_nValueCopper = 350;
+                m_nValue = 400;
+                m_nValueCopper = 800;
             }
             break;
         case PickableItem::PIT_POTION_RECOVERY:

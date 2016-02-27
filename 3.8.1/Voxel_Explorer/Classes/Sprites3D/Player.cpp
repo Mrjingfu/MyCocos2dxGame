@@ -910,7 +910,7 @@ void Player::healedbyNurse()
     setTexture(tex);
     PlayerProperty::getInstance()->healedbyNurse();
     
-    VoxelExplorer::getInstance()->addParticle3DEffectToPlayer(P3D_PLAYER_USE_POTION_TAKE_EFFECT);
+    VoxelExplorer::getInstance()->addParticle3DEffectToPlayer(P3D_PLAYER_USE_POTION_TAKE_EFFECT, false);
     
     std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("USE_SCROLL");
     SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
@@ -1051,9 +1051,9 @@ void Player::onEnterJumpMove()
             break;
     }
     Vec3 playerNextPos = getPosition3D() + dir;
-    Vec2 nextPosInMap = Vec2((int)(playerNextPos.x/TerrainTile::CONTENT_SCALE), (int)(-playerNextPos.z /TerrainTile::CONTENT_SCALE));
+    m_NextPosInMap = Vec2((int)(playerNextPos.x/TerrainTile::CONTENT_SCALE), (int)(-playerNextPos.z /TerrainTile::CONTENT_SCALE));
     removeTerrainTileFlag(TileInfo::ATTACKABLE);
-    addTerrainTileFlagByPos(TileInfo::ATTACKABLE, nextPosInMap);
+    addTerrainTileFlagByPos(TileInfo::ATTACKABLE, m_NextPosInMap);
     ScaleTo* scaleTo = ScaleTo::create(0.1f, 1.0f, 1.0f, 1.0f);
     EaseSineOut* moveUp = EaseSineOut::create(MoveTo::create(0.1f, Vec3(getPositionX(), getPositionY() + TerrainTile::CONTENT_SCALE*0.5f, getPositionZ()) + dir));
     EaseSineOut* moveDown = EaseSineOut::create(MoveTo::create(0.1f, Vec3(getPositionX(), getPositionY(), getPositionZ()) + dir));
@@ -1121,6 +1121,8 @@ void Player::onEnterDeath()
         setPosition3D(Vec3(Vec3(m_LastPosInMap.x*TerrainTile::CONTENT_SCALE, -0.5f*TerrainTile::CONTENT_SCALE, -m_LastPosInMap.y*TerrainTile::CONTENT_SCALE)));
         removeTerrainTileFlag(TileInfo::ATTACKABLE);
     }
+    if(m_NextPosInMap != Vec2::ZERO)
+        removeTerrainTileFlagByPos(TileInfo::ATTACKABLE, m_NextPosInMap);
     
     PlayerProperty::getInstance()->setCurrentHP(0);
     resetPlayerBuffer();

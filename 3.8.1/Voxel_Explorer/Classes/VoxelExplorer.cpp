@@ -909,11 +909,11 @@ void VoxelExplorer::generatePickItemByUseableItem(const cocos2d::Vec2& pos, Usea
     if(type <= UseableItem::UIT_CHEST_GOLD)
     {
         if(type == UseableItem::UIT_CHEST_GOLD || type == UseableItem::UIT_CHEST_NO_LOCK_GOLD)
-            PlayerProperty::getInstance()->addMoney(10000);
+            PlayerProperty::getInstance()->addMoney(cocos2d::random(6000, 8000));
         else if(type == UseableItem::UIT_CHEST_SILVER || type == UseableItem::UIT_CHEST_NO_LOCK_SILVER)
-            PlayerProperty::getInstance()->addMoney(2500);
+            PlayerProperty::getInstance()->addMoney(cocos2d::random(1250, 2500));
         else
-            PlayerProperty::getInstance()->addMoney(150);
+            PlayerProperty::getInstance()->addMoney(cocos2d::random(200, 500));
         
         PickableItem::PickableItemType pitType = PickableItem::generatePickItemByUseableLevel(level, type);
         if(pitType == PickableItem::PIT_UNKNOWN)
@@ -929,7 +929,7 @@ void VoxelExplorer::generatePickItemByUseableItem(const cocos2d::Vec2& pos, Usea
     }
     else
     {
-        PlayerProperty::getInstance()->addMoney(cocos2d::random(5, 30));
+        PlayerProperty::getInstance()->addMoney(cocos2d::random(5, 20));
         float percent1 = 0.1f;
         float percent2 = 0.3f;
         float percent3 = 1.0f - percent1 - percent2;

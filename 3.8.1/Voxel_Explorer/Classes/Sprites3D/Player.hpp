@@ -122,6 +122,7 @@ private:
     HurtData*                   m_pHurtData;
     
     cocos2d::Vec2               m_LastPosInMap;
+    cocos2d::Vec2               m_NextPosInMap;
 };
 
 #endif /* Player_hpp */
