@@ -115,7 +115,7 @@ void GameCenterController::openAchievementBoard()
 
 void GameCenterController::reportAchievement(const std::string& strId, float percent)
 {
-    log("reportAchievement");
+    //log("reportAchievement");
     JniMethodInfo t;
 
     if (JniHelper::getStaticMethodInfo(t, CLASS_NAME, "reportAchievement", "(Ljava/lang/String;I)V")) {

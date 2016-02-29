@@ -44,7 +44,7 @@ public class GooglePlayGame implements IActivityCallBack{
         }
 	}
 	public void connect() {
-		Log.d(TAG, "connect");
+		Logger.d( "connect");
 		if (!isSignedIn()) {
 			mGoogleApiClient.connect();
 		}
@@ -54,7 +54,7 @@ public class GooglePlayGame implements IActivityCallBack{
     }
 
 	public void init(Activity context) {
-		Log.d(TAG, "init");
+		Logger.d( "init");
 		if (null == m_pContext)
 			m_pContext = context;
 		if (null == mGoogleApiClient) {			
@@ -71,17 +71,17 @@ public class GooglePlayGame implements IActivityCallBack{
 
 		@Override
 		public void onConnectionSuspended(int arg0) {
-			 Log.d(TAG, "onConnectionSuspended(): attempting to connect");
+			Logger.d("onConnectionSuspended(): attempting to connect");
 			 connect();
 		}
 
 		@Override
 		public void onConnected(Bundle arg0) {
-			 Log.d(TAG, "onConnected(): connected to Google APIs");
+			Logger.d("onConnected(): connected to Google APIs");
 			 Player p = Games.Players.getCurrentPlayer(mGoogleApiClient);
 			 String displayName;
 		        if (p == null) {
-		            Log.w(TAG, "mGamesClient.getCurrentPlayer() is NULL!");
+		        	Logger.w(TAG, "mGamesClient.getCurrentPlayer() is NULL!");
 		            displayName = "???";
 		        } else {
 		            displayName = p.getDisplayName();
@@ -94,10 +94,10 @@ public class GooglePlayGame implements IActivityCallBack{
 
 		@Override
 		public void onConnectionFailed(ConnectionResult connectionResult) {
-			
+			Logger.e("onConnectionFailed errorCode:"+connectionResult.getErrorCode());
 		            if (!resolveConnectionFilure( connectionResult,
 		                    RC_SIGN_IN, "")) {
-		            	 Logger.d("onConnectionFailed(): attempting to resolve");
+		            	 Logger.e("onConnectionFailed(): attempting to resolve");
 		            }
 	
 			
@@ -133,7 +133,7 @@ public class GooglePlayGame implements IActivityCallBack{
 	
 	public void reportScore(int score,String leaderStr)
 	{
-		Logger.d( "leaderStr:"+leaderStr+"reportScore: "+score);
+		Logger.d( "leaderStr:"+leaderStr+" reportScore: "+score);
 		if(isSignedIn() && score>=0 )
 		{
 			Logger.d( "commit reportScore: "+score);
@@ -156,7 +156,7 @@ public class GooglePlayGame implements IActivityCallBack{
 
 	public void openLeaderBoard()
 	{
-		Log.d(TAG, "openLeaderBoard");
+		Logger.d("openLeaderBoard");
 		if (isSignedIn()) {
             m_pContext.startActivityForResult(Games.Leaderboards.getAllLeaderboardsIntent(mGoogleApiClient),
                     RC_UNUSED);
@@ -177,13 +177,13 @@ public class GooglePlayGame implements IActivityCallBack{
 	@Override
 	public void onStart()
 	{
-		Log.d(TAG, "onStart(): connecting");
+		Logger.d("onStart(): connecting");
 //		connect();
 	}
 	@Override
 	public void onStop()
 	{
-		Log.d(TAG, "onStop(): disconnecting");
+		Logger.d("onStop(): disconnecting");
 //		if(isConnected())
 //		{
 //			disconnect();
@@ -212,13 +212,13 @@ public class GooglePlayGame implements IActivityCallBack{
 	@Override
 	public void onActivityResult(int requestCode, int resultCode, Intent intent)
 	{
-		Log.d(TAG, "onActivityResult:"+requestCode);
+		Logger.d("onActivityResult:"+requestCode);
         if (requestCode == RC_SIGN_IN) {
             if (resultCode == Activity.RESULT_OK) {
                 connect();
             } else {
             	if (m_pContext == null) {
-                    Log.e("BaseGameUtils", "*** No Activity. Can't show failure dialog!");
+            		Logger.e("*** No Activity. Can't show failure dialog!");
                     return;
                 }
                AlertDialog.Builder alertBuilder = new AlertDialog.Builder(m_pContext);
@@ -241,7 +241,7 @@ public class GooglePlayGame implements IActivityCallBack{
                         Dialog errorDialog = GooglePlayServicesUtil.getErrorDialog(errorCode,
                         		m_pContext, requestCode, null);
                         if (errorDialog == null) {
-                            Log.e("BaseGamesUtils",
+                        	Logger.e(
                                     "No standard error dialog available. Making fallback dialog.");
                             msg =  m_pContext.getString(R.string.signin_other_error);
                         }else

@@ -32,6 +32,7 @@ import org.cocos2dx.lib.Cocos2dxActivity;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.plugin.wanax.util.Logger;
 import com.plugin.wanax.warpper.PluginWrapper;
 
 public class AppActivity extends Cocos2dxActivity {
@@ -42,7 +43,7 @@ public class AppActivity extends Cocos2dxActivity {
         super.onCreate(savedInstanceState);
         
         PluginWrapper.getInstace().init(this);
-        
+        Logger.d("init");
     }
     
     @Override

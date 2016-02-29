@@ -75,7 +75,7 @@ public class GoogleAdsWarpper implements AdsWarpper,IActivityCallBack {
 			if (isInterstitialAdsReady())
 				interstitial.show();
 			else
-				Logger.d("The interstitial didn't finish loading or failed to load");
+				Logger.e("The interstitial didn't finish loading or failed to load");
 				
 		} else
 			requestAndLoadInterstitialAds();
