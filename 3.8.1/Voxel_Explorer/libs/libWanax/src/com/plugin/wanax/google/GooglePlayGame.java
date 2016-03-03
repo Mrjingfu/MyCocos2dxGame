@@ -19,6 +19,7 @@ import com.google.android.gms.plus.Plus;
 import com.plugin.wanax.util.Logger;
 import com.plugin.wanax.util.ResourcesManager;
 import com.plugin.wanax.warpper.IActivityCallBack;
+import com.plugin.wanax.warpper.PluginWrapper;
 import com.wanax.plugin.R;
 
 
@@ -64,6 +65,8 @@ public class GooglePlayGame implements IActivityCallBack{
             .addApi(Plus.API).addScope(Plus.SCOPE_PLUS_LOGIN)
             .addApi(Games.API).addScope(Games.SCOPE_GAMES)
             .build();
+			
+			 PluginWrapper.getInstace().setActivityCallback(this);
 		}
 	}
 

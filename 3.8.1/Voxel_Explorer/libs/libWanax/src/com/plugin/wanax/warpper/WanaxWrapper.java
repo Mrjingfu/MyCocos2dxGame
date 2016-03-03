@@ -27,9 +27,7 @@ public class WanaxWrapper {
         
         mGoogleAdsWarpper = new GoogleAdsWarpper();
         mGoogleAdsWarpper.initAds(actity);
-        
-        PluginWrapper.getInstace().setActivityCallback(mGooglePlayGame);
-        PluginWrapper.getInstace().setActivityCallback(mGoogleAdsWarpper);
+       
 	}
 
 	public GooglePlayGame getGooglePlayGame() {

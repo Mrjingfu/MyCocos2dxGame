@@ -36,8 +36,10 @@
           <FilePathData Path="deadLayer.csd" />
           <FilePathData Path="pausenewPopupLayer.csd" />
           <FilePathData Path="pausenewPopupLayer_abroad.csd" />
+          <FilePathData Path="menuscene.csd" />
+          <FilePathData Path="menuscene_channel.csd" />
         </OpenedDocuments>
-        <ActiveDocument Path="pausenewPopupLayer_abroad.csd" />
+        <ActiveDocument Path="menuscene_channel.csd" />
       </Value>
     </Item>
   </Properties>

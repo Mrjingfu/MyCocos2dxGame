@@ -15,6 +15,7 @@ import com.google.android.gms.ads.InterstitialAd;
 import com.plugin.wanax.util.Logger;
 import com.plugin.wanax.warpper.AdsWarpper;
 import com.plugin.wanax.warpper.IActivityCallBack;
+import com.plugin.wanax.warpper.PluginWrapper;
 
 public class GoogleAdsWarpper implements AdsWarpper,IActivityCallBack {
 	private static String MY_AD_BANNER_UNIT_ID = "ca-app-pub-3628527903442392/7420311060";
@@ -29,6 +30,7 @@ public class GoogleAdsWarpper implements AdsWarpper,IActivityCallBack {
 		mActivity = activity;
 		windowMgr = mActivity.getWindowManager();
 		requestAndLoadInterstitialAds();
+		PluginWrapper.getInstace().setActivityCallback(this);
 	}
 
 	@Override

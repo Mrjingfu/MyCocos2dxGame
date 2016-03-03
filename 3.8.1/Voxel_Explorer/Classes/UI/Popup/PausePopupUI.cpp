@@ -31,7 +31,12 @@ PausePopupUI::~PausePopupUI()
 }
 bool PausePopupUI::initUi()
 {
+#if (CHINA_CHANEL==0)
     return load("pausenewPopupLayer_abroad.csb",false);
+#else
+    return load("pausenewPopupLayer.csb",false);
+#endif
+    
 }
 bool PausePopupUI::addEvents()
 {

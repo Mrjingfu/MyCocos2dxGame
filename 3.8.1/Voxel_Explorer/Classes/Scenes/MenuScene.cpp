@@ -55,7 +55,11 @@ bool MenuScene::init()
     this->addChild(uiCamera);
     
     MenuUILayer* menuUiLayer = MenuUILayer::create();
+#if CHINA_CHANEL==1
+    if(!menuUiLayer->load("menuscene_channel.csb"))
+#else
     if(!menuUiLayer->load("menuscene.csb"))
+#endif
         return false;
     addChild(menuUiLayer);
     

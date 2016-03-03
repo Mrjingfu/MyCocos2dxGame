@@ -322,10 +322,14 @@ void RoleLayer::onClickClose(cocos2d::Ref *ref)
 {
     CHECK_ACTION(ref);
     clickEffect();
-    PopupUILayer* popupLayer = PopupUILayerManager::getInstance()->getCurrentPopUpLayer();
-    if (popupLayer) {
-        popupLayer->closePopup();
+    PopupUILayer* popupLayer  = nullptr;
+    
+    if(PopupUILayerManager::getInstance()->isOpenPopup(ePopupRole, popupLayer))
+    {
+        if(popupLayer)
+            popupLayer->closePopup();
     }
+    
 }
 void RoleLayer::onClickEquipWeapon(Ref* ref)
 {
