@@ -117,7 +117,7 @@ public class GooglePlayGame implements IActivityCallBack{
 	            } catch (IntentSender.SendIntentException e) {
 	                // The intent was canceled before it was sent.  Return to the default
 	                // state and attempt to connect to get an updated ConnectionResult.
-	            	mGoogleApiClient.connect();
+//	            	mGoogleApiClient.connect();
 	                return false;
 	            }
 	        } else {

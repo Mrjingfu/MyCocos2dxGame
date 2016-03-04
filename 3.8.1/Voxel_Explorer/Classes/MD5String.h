@@ -1,1 +1,1 @@
-#define STR_MD5 "33537afd49448be5d79d431972e65b7b"
+#define STR_MD5 "ae351da3f4c54e39484932e6190cb6c1"

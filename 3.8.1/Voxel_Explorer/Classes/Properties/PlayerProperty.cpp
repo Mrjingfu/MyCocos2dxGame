@@ -899,8 +899,6 @@ bool PlayerProperty::buyItemToBag(PickableItemProperty* buyItemProperty, CChaosN
         {
             if(toIndentify)
                 buyItemProperty->handleIdentify();
-            else
-                buyItemProperty->adjustByLevel();
             buyItemProperty->retain();
             m_Bag.push_back(buyItemProperty);
             StatisticsManager::getInstance()->addBagFullNum();
