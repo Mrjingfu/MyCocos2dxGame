@@ -270,6 +270,7 @@
         <Image Name="splash_front_en.png" />
         <Project Name="testlayer.csd" Type="Scene" />
         <Project Name="pausenewPopupLayer_abroad.csd" Type="Layer" />
+        <Project Name="menuscene_channel.csd" Type="Scene" />
       </RootFolder>
     </Group>
   </SolutionFolder>

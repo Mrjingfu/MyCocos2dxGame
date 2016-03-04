@@ -84,7 +84,9 @@ void PopupUILayer::openPopup()
         PopupUILayerManager::getInstance()->getSceneType() == PopupUILayerManager::eSceneType::ST_GAME ) {
         schedulerPause();
     }
-    StatisticsManager::getInstance()->pauseSchedu();
+    if(PopupUILayerManager::getInstance()->getCurrentPopupTypeList().size()==0 &&
+       PopupUILayerManager::getInstance()->getSceneType() == PopupUILayerManager::eSceneType::ST_GAME)
+         StatisticsManager::getInstance()->pauseSchedu();
 }
 void PopupUILayer::closePopup()
 {
@@ -277,7 +279,10 @@ void PopupUILayer::removeSelfCallFunc()
     if (m_nIsPause && PopupUILayerManager::getInstance()->getCurrentPopUpType() == ePopupInvalid && PopupUILayerManager::getInstance()->getSceneType() == PopupUILayerManager::eSceneType::ST_GAME) {
         schedulerResume();
     }
-    StatisticsManager::getInstance()->resumeSchedu();
+    if(PopupUILayerManager::getInstance()->getCurrentPopUpType() == ePopupInvalid &&
+       PopupUILayerManager::getInstance()->getSceneType() == PopupUILayerManager::eSceneType::ST_GAME)
+        StatisticsManager::getInstance()->resumeSchedu();
+    
     this->removeFromParent();
 }
 bool PopupUILayer::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *unused_event)

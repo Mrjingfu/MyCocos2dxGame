@@ -30,5 +30,27 @@
         </exec>
     </target>
 
+   <tstamp>
+    <format property="current.date" pattern="yyyyMMddHHmm"/>
+  </tstamp>
+
+    <target name="export-signed-apk" depends="release">
+        <!-- delete temp files -->
+        <delete>
+            <fileset dir="${out.absolute.dir}" includes="build.prop resources.ap_ ${dex.file.name}* ${resource.package.file.name}* ${ant.project.name}-release-unaligned.apk ${ant.project.name}-release-unsigned.apk*"/>
+        </delete>
+
+        <property name="apk.dir" value="../bin/release/" />
+        <property name="apk.targetDevice" value="" />
+        <property name="apk.channel.id" value="" />
+        <property name="apk.channel.name" value="" />
+        <property name="apk.comment" value="" />
+        <property name="apk.lang" value="" />
+        <xpath input="AndroidManifest.xml" expression="/manifest/@android:versionCode" output="apk.version.code" default="0"/>
+        <xpath input="AndroidManifest.xml" expression="/manifest/@android:versionName" output="apk.version.name"/>
+
+        <!-- rename final apk file -->
+        <move file="${out.final.file}" tofile="${apk.dir}/${ant.project.name}_${apk.channel.id}${apk.targetDevice}${apk.channel.name}_${apk.version.name}_${apk.version.code}${apk.comment}${apk.lang}_${current.date}.apk" />
+    </target>
 
 </project>

@@ -28,7 +28,11 @@ DeadPopupUI::DeadPopupUI()
     m_pAdaDesc = nullptr;
     m_pContinueNum = nullptr;
     m_nCountDownNum = 6;
+#if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
+    m_nReviveTouchNum = 1;
+#else
     m_nReviveTouchNum = 4;
+#endif
 }
 DeadPopupUI::~DeadPopupUI()
 {
