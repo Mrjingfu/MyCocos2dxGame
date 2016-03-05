@@ -7656,7 +7656,9 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "362"
-            endingLineNumber = "362">
+            endingLineNumber = "362"
+            landmarkName = "BaseBoss::onExitFleeing()"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -7671,7 +7673,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "468"
             endingLineNumber = "468"
-            landmarkName = "BaseBoss::onLand(bool updateMiniMap)"
+            landmarkName = "BaseBoss::setActorDir( ActorDir dir )"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -7719,7 +7721,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "496"
             endingLineNumber = "496"
-            landmarkName = "BaseBoss::moveToNext(const cocos2d::Vec2&amp; next)"
+            landmarkName = "BaseBoss::onLand(bool updateMiniMap)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -7879,7 +7881,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "205"
             endingLineNumber = "205"
-            landmarkName = "BaseBoss::setState(BossState state)"
+            landmarkName = "BaseBoss::createFakeShadow()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -8007,7 +8009,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "272"
             endingLineNumber = "272"
-            landmarkName = "BaseBoss::onExit()"
+            landmarkName = "BaseBoss::onEnter()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -8711,7 +8713,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "433"
             endingLineNumber = "433"
-            landmarkName = "BaseBoss::onEnterSkill1Stage()"
+            landmarkName = "BaseBoss::onExitDeath()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -13190,9 +13192,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "470"
-            endingLineNumber = "470"
-            landmarkName = "BaseBoss::onLand(bool updateMiniMap)"
-            landmarkType = "5">
+            endingLineNumber = "470">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -13239,7 +13239,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "267"
             endingLineNumber = "267"
-            landmarkName = "BaseBoss::onEnter()"
+            landmarkName = "BaseBoss::setState(BossState state)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
