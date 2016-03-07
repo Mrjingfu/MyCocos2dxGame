@@ -219,8 +219,9 @@ void MenuUILayer::onClickStart(cocos2d::Ref *ref)
     if (m_pArchiveStart && m_pArchiveRestart) {
         
         m_pArchiveStart->setVisible(false);
+        m_pArchiveStart->setTouchEnabled(false);
         m_pArchiveRestart->setVisible(false);
-        
+        m_pArchiveRestart->setTouchEnabled(false);
         if(!ArchiveManager::getInstance()->loadGame())
             CCLOGERROR("Load Game failed!");
  

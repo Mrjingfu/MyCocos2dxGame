@@ -38,8 +38,15 @@
           <FilePathData Path="pausenewPopupLayer_abroad.csd" />
           <FilePathData Path="menuscene.csd" />
           <FilePathData Path="menuscene_channel.csd" />
+          <FilePathData Path="alertLayer.csd" />
+          <FilePathData Path="achieveItemLayer.csd" />
+          <FilePathData Path="achieveEnItemLayer.csd" />
+          <FilePathData Path="characterInfoLayer.csd" />
+          <FilePathData Path="informationLayer.csd" />
+          <FilePathData Path="itemBottomLayer.csd" />
+          <FilePathData Path="taskLayer.csd" />
         </OpenedDocuments>
-        <ActiveDocument Path="menuscene_channel.csd" />
+        <ActiveDocument Path="taskLayer.csd" />
       </Value>
     </Item>
   </Properties>

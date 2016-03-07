@@ -38,6 +38,7 @@ public:
 protected:
     virtual void bagItemOpe(int itemId);
     virtual std::vector<PickableItemProperty*> getItems();
+    virtual void sortItem(eSortBagType type,std::vector<PickableItemProperty*>& items);
     virtual void onClickSortAll(Ref*,cocos2d::ui::Widget::TouchEventType);
     virtual void onClickSortEquip(Ref*,cocos2d::ui::Widget::TouchEventType);
     virtual void onClickSortPotion(Ref*,cocos2d::ui::Widget::TouchEventType);

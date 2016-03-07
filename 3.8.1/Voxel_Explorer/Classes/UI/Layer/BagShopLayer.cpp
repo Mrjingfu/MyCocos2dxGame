@@ -29,25 +29,8 @@ void BagShopLayer::refreshUIView()
     if (m_pBtnBagExtend) {
         m_pBtnBagExtend->setVisible(false);
     }
-    
-    if (m_BagMsgLayer) {
-        m_BagMsgLayer->removeCountForItems();
-    }
- 
 }
-void BagShopLayer::updatePopupUI()
-{
-    ShopPopupUI* shopPopupUi = nullptr;
-    PopupUILayer* popupUi = nullptr;
-    //暂时
-    if(PopupUILayerManager::getInstance()->isOpenPopup(ePopupWeaponShop, popupUi))
-    {
-        shopPopupUi = static_cast<ShopPopupUI*>(popupUi);
-        if (shopPopupUi) {
-            shopPopupUi->refreshUIView();
-        }
-    }
-}
+
 void BagShopLayer::bagItemOpe(int itemId)
 {
     if (itemId==-1)
@@ -84,7 +67,7 @@ void BagShopLayer::bagItemOpe(int itemId)
     ItemShopSellPopupUI* shopItem = static_cast<ItemShopSellPopupUI*>( PopupUILayerManager::getInstance()->openPopup(ePopupItemShopSell));
     if (shopItem) {
         shopItem->setItemId(itemId);
-//        shopItem->registerCloseCallback(CC_CALLBACK_0(BagShopLayer::updatePopupUI, this));
+        shopItem->registerCloseCallback(CC_CALLBACK_0(BagShopLayer::refreshUIView, this));
         
         //如果有装备过 打开装备过的武器
         if (equipId!=-1)
@@ -146,29 +129,18 @@ std::vector<PickableItemProperty*> BagShopLayer::getItems()
         if (itemProp->getPickableItemType()>=PickableItem::PIT_KEY_BOSS && itemProp->getPickableItemType()<=PickableItem::PIT_KEY_ROOM) {
             continue;
         }
-        
-//        //如果是在商店贩卖界面 过滤掉需要贩卖的道具
-//   
-//            bool isExistId = false;
-//            for (auto sellIter = m_vSellItems.begin(); sellIter!=m_vSellItems.end(); sellIter++)
-//            {
-//                //过滤掉不可合并的
-//                if (itemProp->getInstanceID() == (*sellIter)->getItemId() && !itemProp->isStackable()) {
-//                    isExistId = true;
-//                    break;
-//                }
-//                //过滤掉商品个数到达上限的
-//                if (itemProp->getInstanceID() == (*sellIter)->getItemId()
-//                    && itemProp->isStackable() && (*sellIter)->getItemCount()==int(itemProp->getCount())) {
-//                    isExistId = true;
-//                    break;
-//                }
-//                
-//            }
-//            if (isExistId) {
-//                continue;
-//            }
+
         items.push_back(itemProp);
     }
+
     return items;
+}
+void BagShopLayer::sortItem(BagLayer::eSortBagType sortType, std::vector<PickableItemProperty *> &items)
+{
+    
+//    std::sort(items.begin(), items.end(), [](PickableItemProperty* prop1,PickableItemProperty* prop2){
+//        return prop1->getPickableItemPropertyType() > prop2->getPickableItemPropertyType();
+//    });
+//    
+//    m_bisItemSort = false;
 }

@@ -104,8 +104,8 @@ void ShopPopupUI::onEnter()
 {
     PopupUILayer::onEnter();
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_NPC_DATA_DIRTY, CC_CALLBACK_1(ShopPopupUI::onEventUpdateNpcData,this));
-    EventListenerCustom *listener = EventListenerCustom::create(EVENT_PLAYER_PROPERTY_DIRTY, CC_CALLBACK_1(ShopPopupUI::onEventUpdateNpcData,this));
-    Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener,this);
+//    EventListenerCustom *listener = EventListenerCustom::create(EVENT_PLAYER_PROPERTY_DIRTY, CC_CALLBACK_1(ShopPopupUI::onEventUpdateNpcData,this));
+//    Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener,this);
 }
 void ShopPopupUI::onExit()
 {

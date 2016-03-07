@@ -271,6 +271,7 @@
         <Project Name="testlayer.csd" Type="Scene" />
         <Project Name="pausenewPopupLayer_abroad.csd" Type="Layer" />
         <Project Name="menuscene_channel.csd" Type="Scene" />
+        <Project Name="taskLayer.csd" Type="Layer" />
       </RootFolder>
     </Group>
   </SolutionFolder>
