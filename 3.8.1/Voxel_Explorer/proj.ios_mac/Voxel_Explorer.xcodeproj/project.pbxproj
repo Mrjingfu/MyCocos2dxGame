@@ -215,6 +215,10 @@
 		55A9807C1C05610400722C9D /* FakeShadow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55A980791C05610400722C9D /* FakeShadow.cpp */; };
 		55A980811C05AB9400722C9D /* Ladder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55A9807F1C05AB9400722C9D /* Ladder.cpp */; };
 		55A980821C05AB9400722C9D /* Ladder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55A9807F1C05AB9400722C9D /* Ladder.cpp */; };
+		55C883C51C8D9B20003B10C7 /* Bugly.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55C883C31C8D9B20003B10C7 /* Bugly.framework */; };
+		55C883C61C8D9B20003B10C7 /* libBuglyAgent.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 55C883C41C8D9B20003B10C7 /* libBuglyAgent.a */; };
+		55C883CB1C8D9C39003B10C7 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 55C883CA1C8D9C39003B10C7 /* libc++.tbd */; };
+		55C883CD1C8D9C47003B10C7 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55C883CC1C8D9C47003B10C7 /* MediaPlayer.framework */; };
 		55CB9B0A1C07355200BAF60B /* NpcDataManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55CB9B081C07355200BAF60B /* NpcDataManager.cpp */; };
 		55CB9B0B1C07355200BAF60B /* NpcDataManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55CB9B081C07355200BAF60B /* NpcDataManager.cpp */; };
 		55CE8B491C311782001B65D4 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55CE8B481C311782001B65D4 /* GameKit.framework */; };
@@ -649,6 +653,11 @@
 		55A9807A1C05610400722C9D /* FakeShadow.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FakeShadow.hpp; sourceTree = "<group>"; };
 		55A9807F1C05AB9400722C9D /* Ladder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Ladder.cpp; sourceTree = "<group>"; };
 		55A980801C05AB9400722C9D /* Ladder.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Ladder.hpp; sourceTree = "<group>"; };
+		55C883C31C8D9B20003B10C7 /* Bugly.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bugly.framework; sourceTree = "<group>"; };
+		55C883C41C8D9B20003B10C7 /* libBuglyAgent.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libBuglyAgent.a; sourceTree = "<group>"; };
+		55C883C91C8D9B5B003B10C7 /* BuglyAgent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BuglyAgent.h; path = ios/BuglyAgent.h; sourceTree = SOURCE_ROOT; };
+		55C883CA1C8D9C39003B10C7 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.2.sdk/usr/lib/libc++.tbd"; sourceTree = DEVELOPER_DIR; };
+		55C883CC1C8D9C47003B10C7 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.2.sdk/System/Library/Frameworks/MediaPlayer.framework; sourceTree = DEVELOPER_DIR; };
 		55CB9B081C07355200BAF60B /* NpcDataManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NpcDataManager.cpp; sourceTree = "<group>"; };
 		55CB9B091C07355200BAF60B /* NpcDataManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = NpcDataManager.hpp; sourceTree = "<group>"; };
 		55CE8B481C311782001B65D4 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.2.sdk/System/Library/Frameworks/GameKit.framework; sourceTree = DEVELOPER_DIR; };
@@ -859,8 +868,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55C883CD1C8D9C47003B10C7 /* MediaPlayer.framework in Frameworks */,
+				55C883CB1C8D9C39003B10C7 /* libc++.tbd in Frameworks */,
 				552DC9851C47C63700C71D34 /* MessageUI.framework in Frameworks */,
 				552DC9831C47C54200C71D34 /* EventKitUI.framework in Frameworks */,
+				55C883C51C8D9B20003B10C7 /* Bugly.framework in Frameworks */,
 				552DC9811C47C53600C71D34 /* EventKit.framework in Frameworks */,
 				552DC97F1C47C52600C71D34 /* CoreTelephony.framework in Frameworks */,
 				552DC97D1C47C50900C71D34 /* CoreMedia.framework in Frameworks */,
@@ -882,6 +894,7 @@
 				D44C6210132DFF4E0009C878 /* AudioToolbox.framework in Frameworks */,
 				291C48A388AEDF4FC3767A38 /* sdkbox.framework in Frameworks */,
 				4B1743039429394F793357BE /* PluginGoogleAnalytics.framework in Frameworks */,
+				55C883C61C8D9B20003B10C7 /* libBuglyAgent.a in Frameworks */,
 				0F4E482B8B96FD4AD1AAC738 /* AdSupport.framework in Frameworks */,
 				37D04AE2BA69CC647C68D2F7 /* CoreData.framework in Frameworks */,
 				8D164045958A7BA4880E7E4B /* SystemConfiguration.framework in Frameworks */,
@@ -913,6 +926,7 @@
 		080E96DDFE201D6D7F000001 /* ios */ = {
 			isa = PBXGroup;
 			children = (
+				55C883C91C8D9B5B003B10C7 /* BuglyAgent.h */,
 				55E7B4641C5756050045E7C3 /* Reachability.h */,
 				55E7B4651C5756050045E7C3 /* Reachability.m */,
 				557E662E1C492F9B00BDE404 /* NCSGameCenter.h */,
@@ -965,6 +979,10 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				55C883CC1C8D9C47003B10C7 /* MediaPlayer.framework */,
+				55C883CA1C8D9C39003B10C7 /* libc++.tbd */,
+				55C883C31C8D9B20003B10C7 /* Bugly.framework */,
+				55C883C41C8D9B20003B10C7 /* libBuglyAgent.a */,
 				557A0D0B1C59E3A1006C6484 /* StoreKit.framework */,
 				552DC9841C47C63700C71D34 /* MessageUI.framework */,
 				552DC9821C47C54200C71D34 /* EventKitUI.framework */,
@@ -2151,6 +2169,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SRCROOT)",
 					"$(PROJECT_DIR)/GoogleMobileAdsSdkiOS-7.6.0",
+					"$(PROJECT_DIR)",
 				);
 				GCC_C_LANGUAGE_STANDARD = c11;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -2173,16 +2192,22 @@
 				INFOPLIST_FILE = ios/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
-					"\"sdkbox.framework\"",
-					"\"PluginGoogleAnalytics.framework\"",
+					sdkbox.framework,
+					PluginGoogleAnalytics.framework,
+					"$(PROJECT_DIR)",
 				);
 				OTHER_CFLAGS = "-DSDKBOX_ENABLED";
 				OTHER_LDFLAGS = (
 					"$(_COCOS_LIB_IOS_BEGIN)",
 					"$(_COCOS_LIB_IOS_END)",
+					"-ObjC",
+					"-force_load",
+					"${SRCROOT}/libBuglyAgent.a",
+					"-force_load",
+					"${SRCROOT}/Bugly.framework/Bugly",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.wanax.voxelexplorer;
-				PROVISIONING_PROFILE = "c4afc8fa-72ba-4d86-b334-308f434cc9bf";
+				PROVISIONING_PROFILE = "22898643-fe52-415a-b17e-b28409c9005b";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "$(_COCOS_HEADER_IOS_BEGIN) $(_COCOS_HEADER_IOS_END)";
@@ -2194,13 +2219,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: haibo wang (6NA476HDMX)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: haibo wang (6NA476HDMX)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: haibo wang (FT8YEJMWBH)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: haibo wang (FT8YEJMWBH)";
 				COMPRESS_PNG_FILES = NO;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SRCROOT)",
 					"$(PROJECT_DIR)/GoogleMobileAdsSdkiOS-7.6.0",
+					"$(PROJECT_DIR)",
 				);
 				GCC_C_LANGUAGE_STANDARD = c11;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
@@ -2221,16 +2247,22 @@
 				INFOPLIST_FILE = ios/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
-					"\"sdkbox.framework\"",
-					"\"PluginGoogleAnalytics.framework\"",
+					sdkbox.framework,
+					PluginGoogleAnalytics.framework,
+					"$(PROJECT_DIR)",
 				);
 				OTHER_CFLAGS = "-DSDKBOX_ENABLED";
 				OTHER_LDFLAGS = (
 					"$(_COCOS_LIB_IOS_BEGIN)",
 					"$(_COCOS_LIB_IOS_END)",
+					"-ObjC",
+					"-force_load",
+					"${SRCROOT}/libBuglyAgent.a",
+					"-force_load",
+					"${SRCROOT}/Bugly.framework/Bugly",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.wanax.voxelexplorer;
-				PROVISIONING_PROFILE = "c4afc8fa-72ba-4d86-b334-308f434cc9bf";
+				PROVISIONING_PROFILE = "22898643-fe52-415a-b17e-b28409c9005b";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "$(_COCOS_HEADER_IOS_BEGIN) $(_COCOS_HEADER_IOS_END)";

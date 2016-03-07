@@ -9,6 +9,7 @@
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
 #include "checkMD5.h"
 #endif
+#include "bugly/CrashReport.h"
 USING_NS_CC;
 using namespace CocosDenshion;
 
@@ -55,6 +56,12 @@ bool AppDelegate::applicationDidFinishLaunching() {
 #endif
         director->setOpenGLView(glview);
     }
+    
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+    CrashReport::initCrashReport("900021714", true);
+#elif (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+    CrashReport::initCrashReport("900021704", true);
+#endif
     
 #if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID )
     SdkBoxManager::getInstance()->registerGoogleAnalytics();

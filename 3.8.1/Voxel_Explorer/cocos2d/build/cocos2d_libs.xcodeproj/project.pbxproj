@@ -1847,6 +1847,9 @@
 		52B47A301A5349A3004E4C60 /* HttpClient-apple.mm in Sources */ = {isa = PBXBuildFile; fileRef = 52B47A2B1A5349A3004E4C60 /* HttpClient-apple.mm */; };
 		52B47A311A5349A3004E4C60 /* HttpCookie.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 52B47A2C1A5349A3004E4C60 /* HttpCookie.cpp */; };
 		52B47A321A5349A3004E4C60 /* HttpCookie.h in Headers */ = {isa = PBXBuildFile; fileRef = 52B47A2D1A5349A3004E4C60 /* HttpCookie.h */; };
+		55C883C01C8D9B04003B10C7 /* CrashReport.h in Headers */ = {isa = PBXBuildFile; fileRef = 55C883BD1C8D9B04003B10C7 /* CrashReport.h */; };
+		55C883C11C8D9B04003B10C7 /* CrashReport.mm in Sources */ = {isa = PBXBuildFile; fileRef = 55C883BE1C8D9B04003B10C7 /* CrashReport.mm */; };
+		55C883C21C8D9B04003B10C7 /* CrashReportFeature.h in Headers */ = {isa = PBXBuildFile; fileRef = 55C883BF1C8D9B04003B10C7 /* CrashReportFeature.h */; };
 		5E9F61261A3FFE3D0038DE01 /* CCFrustum.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5E9F61221A3FFE3D0038DE01 /* CCFrustum.cpp */; };
 		5E9F61271A3FFE3D0038DE01 /* CCFrustum.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5E9F61221A3FFE3D0038DE01 /* CCFrustum.cpp */; };
 		5E9F61281A3FFE3D0038DE01 /* CCFrustum.h in Headers */ = {isa = PBXBuildFile; fileRef = 5E9F61231A3FFE3D0038DE01 /* CCFrustum.h */; };
@@ -4658,6 +4661,10 @@
 		52B47A2B1A5349A3004E4C60 /* HttpClient-apple.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "HttpClient-apple.mm"; sourceTree = "<group>"; };
 		52B47A2C1A5349A3004E4C60 /* HttpCookie.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HttpCookie.cpp; sourceTree = "<group>"; };
 		52B47A2D1A5349A3004E4C60 /* HttpCookie.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpCookie.h; sourceTree = "<group>"; };
+		55C883BC1C8D9B04003B10C7 /* Android.mk */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Android.mk; sourceTree = "<group>"; };
+		55C883BD1C8D9B04003B10C7 /* CrashReport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CrashReport.h; sourceTree = "<group>"; };
+		55C883BE1C8D9B04003B10C7 /* CrashReport.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CrashReport.mm; sourceTree = "<group>"; };
+		55C883BF1C8D9B04003B10C7 /* CrashReportFeature.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CrashReportFeature.h; sourceTree = "<group>"; };
 		5E9F61221A3FFE3D0038DE01 /* CCFrustum.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCFrustum.cpp; sourceTree = "<group>"; };
 		5E9F61231A3FFE3D0038DE01 /* CCFrustum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCFrustum.h; sourceTree = "<group>"; };
 		5E9F61241A3FFE3D0038DE01 /* CCPlane.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCPlane.cpp; sourceTree = "<group>"; };
@@ -6172,6 +6179,7 @@
 		1A57033E180BD0490088DEC7 /* external */ = {
 			isa = PBXGroup;
 			children = (
+				55C883BB1C8D9B04003B10C7 /* bugly */,
 				68B39B391B1C5C670084F72C /* clipper */,
 				B6DD2F731B04820C00E47F5F /* recast */,
 				B6CAB0021AF9A9EE00B9B856 /* bullet */,
@@ -7853,6 +7861,18 @@
 				50FCEB8F18C72017004AD434 /* TextReader.h */,
 			);
 			path = TextReader;
+			sourceTree = "<group>";
+		};
+		55C883BB1C8D9B04003B10C7 /* bugly */ = {
+			isa = PBXGroup;
+			children = (
+				55C883BC1C8D9B04003B10C7 /* Android.mk */,
+				55C883BD1C8D9B04003B10C7 /* CrashReport.h */,
+				55C883BE1C8D9B04003B10C7 /* CrashReport.mm */,
+				55C883BF1C8D9B04003B10C7 /* CrashReportFeature.h */,
+			);
+			name = bugly;
+			path = ../external/bugly;
 			sourceTree = "<group>";
 		};
 		68B39B391B1C5C670084F72C /* clipper */ = {
@@ -10520,6 +10540,7 @@
 				B6CAB3801AF9AA1A00B9B856 /* btManifoldPoint.h in Headers */,
 				50CB247A19D9C5A100687767 /* AudioEngine-inl.h in Headers */,
 				52B47A321A5349A3004E4C60 /* HttpCookie.h in Headers */,
+				55C883C01C8D9B04003B10C7 /* CrashReport.h in Headers */,
 				50ABBD431925AB0000A911A9 /* CCMathBase.h in Headers */,
 				15EFA214198A2BB5000C57D3 /* CCProtectedNode.h in Headers */,
 				B6CAB2261AF9AA1A00B9B856 /* btCollisionCreateFunc.h in Headers */,
@@ -10715,6 +10736,7 @@
 				B665E3051AA80A6500DDB1C5 /* CCPUMeshSurfaceEmitter.h in Headers */,
 				15AE1AB519AAD40300C27E9E /* b2Contact.h in Headers */,
 				B665E23D1AA80A6500DDB1C5 /* CCPUCircleEmitter.h in Headers */,
+				55C883C21C8D9B04003B10C7 /* CrashReportFeature.h in Headers */,
 				50ABBEA61925AB6F00A911A9 /* CCScriptSupport.h in Headers */,
 				B6CAB33C1AF9AA1A00B9B856 /* btTriangleShapeEx.h in Headers */,
 				46C02E0A18E91123004B7456 /* xxhash.h in Headers */,
@@ -11983,6 +12005,7 @@
 				1A570072180BC5A10088DEC7 /* CCActionGrid.cpp in Sources */,
 				15AE1ABC19AAD40300C27E9E /* b2PolygonAndCircleContact.cpp in Sources */,
 				B6CAB3FC1AF9AA1A00B9B856 /* btMultiBodyConstraint.cpp in Sources */,
+				55C883C11C8D9B04003B10C7 /* CrashReport.mm in Sources */,
 				B665E2EB1AA80A6500DDB1C5 /* CCPULinearForceAffectorTranslator.cpp in Sources */,
 				B665E4271AA80A6600DDB1C5 /* CCPUUtil.cpp in Sources */,
 				B665E2BF1AA80A6500DDB1C5 /* CCPUGeometryRotator.cpp in Sources */,
