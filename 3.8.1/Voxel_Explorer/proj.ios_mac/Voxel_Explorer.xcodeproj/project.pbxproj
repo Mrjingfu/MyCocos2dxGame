@@ -412,6 +412,8 @@
 		ECEA4E211C0EC69800ED790F /* ItemShopSellPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECEA4E1C1C0EC69800ED790F /* ItemShopSellPopupUI.cpp */; };
 		ECEA4E241C0EEABE00ED790F /* ItemMoneyLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECEA4E221C0EEABE00ED790F /* ItemMoneyLayer.cpp */; };
 		ECEA4E251C0EEABE00ED790F /* ItemMoneyLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECEA4E221C0EEABE00ED790F /* ItemMoneyLayer.cpp */; };
+		ECFBEF3E1C8A6B0300B60720 /* TaskProperty.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECFBEF3C1C8A6B0300B60720 /* TaskProperty.cpp */; };
+		ECFBEF3F1C8A6B0300B60720 /* TaskProperty.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECFBEF3C1C8A6B0300B60720 /* TaskProperty.cpp */; };
 		ED545A7C1B68A1F400C3958E /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ED545A7B1B68A1F400C3958E /* libiconv.dylib */; };
 		ED545A7E1B68A1FA00C3958E /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ED545A7D1B68A1FA00C3958E /* libiconv.dylib */; };
 		F5AB4467BF879973BA2F498E /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BE140A2A4FF0F3C19810D54 /* libsqlite3.dylib */; };
@@ -846,6 +848,8 @@
 		ECEA4E1D1C0EC69800ED790F /* ItemShopSellPopupUI.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ItemShopSellPopupUI.hpp; sourceTree = "<group>"; };
 		ECEA4E221C0EEABE00ED790F /* ItemMoneyLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ItemMoneyLayer.cpp; sourceTree = "<group>"; };
 		ECEA4E231C0EEABE00ED790F /* ItemMoneyLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ItemMoneyLayer.hpp; sourceTree = "<group>"; };
+		ECFBEF3C1C8A6B0300B60720 /* TaskProperty.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TaskProperty.cpp; sourceTree = "<group>"; };
+		ECFBEF3D1C8A6B0300B60720 /* TaskProperty.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TaskProperty.hpp; sourceTree = "<group>"; };
 		ED545A7B1B68A1F400C3958E /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.4.sdk/usr/lib/libiconv.dylib; sourceTree = DEVELOPER_DIR; };
 		ED545A7D1B68A1FA00C3958E /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -1134,6 +1138,8 @@
 				EC602AB11BF47A4900484D42 /* AchieveProperty.hpp */,
 				55E1A5541C16BF21008BEEFD /* BossProperty.cpp */,
 				55E1A5551C16BF21008BEEFD /* BossProperty.hpp */,
+				ECFBEF3C1C8A6B0300B60720 /* TaskProperty.cpp */,
+				ECFBEF3D1C8A6B0300B60720 /* TaskProperty.hpp */,
 			);
 			path = Properties;
 			sourceTree = "<group>";
@@ -1906,6 +1912,7 @@
 				55338ADA1BD8920F00EA316F /* SlimeKing.cpp in Sources */,
 				EC6716451BCE7F2C00C81CFC /* LogoScene.cpp in Sources */,
 				EC795F631C0D4B6B0083829B /* NursePopupUI.cpp in Sources */,
+				ECFBEF3E1C8A6B0300B60720 /* TaskProperty.cpp in Sources */,
 				EC3CC97D1C088F4F00F8CFC8 /* MonsterPropLayer.cpp in Sources */,
 				551E93A91BD51282009F788F /* AlisaMethod.cpp in Sources */,
 				555B0D191BC51A2C0055FB6D /* BaseLevel.cpp in Sources */,
@@ -2110,6 +2117,7 @@
 				EC8A27E51C327A4B00B2C352 /* AchievePopupUI.cpp in Sources */,
 				551E93F11BD512D3009F788F /* MemoryStream.cpp in Sources */,
 				EC795F431C0D42340083829B /* MagicShopPopupUI.cpp in Sources */,
+				ECFBEF3F1C8A6B0300B60720 /* TaskProperty.cpp in Sources */,
 				559925231C44E561001D8EEF /* PlayerMagicArrowBullet.cpp in Sources */,
 				EC795F601C0D4B560083829B /* LittleWitchPopupUI.cpp in Sources */,
 				551E93C61BD51291009F788F /* UserRecord.cpp in Sources */,

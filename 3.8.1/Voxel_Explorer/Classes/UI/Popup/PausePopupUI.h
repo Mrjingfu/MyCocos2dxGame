@@ -30,6 +30,7 @@ private:
 private:
 //    cocos2d::ui::ImageView* m_pSoundImg;
     cocos2d::ui::ImageView* m_pMuiscImg;
+    cocos2d::ui::Button* m_pBtnMainMenu;
     bool m_bIsSoundOn;
     bool m_bIsMuiscOn;
     

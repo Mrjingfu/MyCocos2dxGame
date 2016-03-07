@@ -24,6 +24,7 @@ PausePopupUI::PausePopupUI()
     m_bIsMuiscOn = true;
 //    m_pSoundImg = nullptr;
     m_pMuiscImg = nullptr;
+    m_pBtnMainMenu = nullptr;
 }
 PausePopupUI::~PausePopupUI()
 {
@@ -49,7 +50,7 @@ bool PausePopupUI::addEvents()
     if (!m_pMuiscImg)
         return false;
     
-    ui::Button* m_pBtnMainMenu= dynamic_cast<ui::Button*>(UtilityHelper::seekNodeByName(m_pRootNode, "pause_btn_mianmenu"));
+    m_pBtnMainMenu= dynamic_cast<ui::Button*>(UtilityHelper::seekNodeByName(m_pRootNode, "pause_btn_mianmenu"));
     if (!m_pBtnMainMenu)
         return false;
     
@@ -154,6 +155,11 @@ void PausePopupUI::onClickMainMenu(cocos2d::Ref *ref)
     CHECK_ACTION(ref);
     clickEffect();
     CCLOG("onClickMainMenu");
+    if(m_pBtnMainMenu)
+    {
+        m_pBtnMainMenu->setTouchEnabled(false);
+        m_pBtnMainMenu->setEnabled(false);
+    }
     VoxelExplorer::getInstance()->getCurrentLevel()->showMap(false);
     VoxelExplorer::getInstance()->getUILayer()->switchToMenuScene();
     closePopup();

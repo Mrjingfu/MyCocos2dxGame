@@ -26,7 +26,6 @@ BagLayer::BagLayer()
     m_pBtnWeaponBag= nullptr;
     m_pBtnPotionBag= nullptr;
     m_pBtnBagExtend = nullptr;
-    
 }
 BagLayer::~BagLayer()
 {
@@ -110,7 +109,6 @@ bool BagLayer::init()
     }
     m_pGridView->forceDoLayout();
     
-    refreshUIView();
     
     return true;
 }
@@ -247,14 +245,6 @@ std::vector<PickableItemProperty*> BagLayer::getItems()
     {
         sortType = BagLayer::SBT_POTION;
     }
-    
-    
-    //
-    int weaponId = int(PlayerProperty::getInstance()->getEquipedWeaponID());
-    int armorId = int(PlayerProperty::getInstance()->getEquipedArmorID());
-    int OrnamentId = int(PlayerProperty::getInstance()->getEquipedOrnamentsID());
-    int secondWeaponId = int(PlayerProperty::getInstance()->getEquipedSecondWeaponID());
-
     std::vector<PickableItemProperty*> items;
     
     std::vector<PickableItemProperty*> equipItems;
@@ -293,6 +283,17 @@ std::vector<PickableItemProperty*> BagLayer::getItems()
     equipItems.clear();
     otherItems.clear();
   
+    sortItem(sortType,items);
+
+    return items;
+}
+void BagLayer::sortItem(eSortBagType sortType,std::vector<PickableItemProperty*>& items)
+{
+    
+    int weaponId = int(PlayerProperty::getInstance()->getEquipedWeaponID());
+    int armorId = int(PlayerProperty::getInstance()->getEquipedArmorID());
+    int OrnamentId = int(PlayerProperty::getInstance()->getEquipedOrnamentsID());
+    int secondWeaponId = int(PlayerProperty::getInstance()->getEquipedSecondWeaponID());
     
     //对道具进行排序， 武器 0  副手武器 1 护甲 2 饰品 3   装备位置
     if (sortType == eSortBagType::SBT_ALL || sortType == eSortBagType::SBT_EQUIP) {
@@ -335,16 +336,12 @@ std::vector<PickableItemProperty*> BagLayer::getItems()
                 return prop1->getPickableItemPropertyType() > prop2->getPickableItemPropertyType();
             });
         }
-
-
     }else
     {
         std::sort(items.begin(), items.end(), [](PickableItemProperty* prop1,PickableItemProperty* prop2){
-            return prop1->getPickableItemPropertyType() < prop2->getPickableItemPropertyType();
+            return prop1->getPickableItemPropertyType() > prop2->getPickableItemPropertyType();
         });
     }
-
-    return items;
 }
 int BagLayer::getItemIndexForVector(const std::vector<PickableItemProperty*>& items,int itemId) const
 {

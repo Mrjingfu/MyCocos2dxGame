@@ -182,12 +182,21 @@ void DeadPopupUI::reveiveCountDown(float dt)
 }
 void DeadPopupUI::onClickRevive(cocos2d::Ref *ref)
 {
+    CHECK_ACTION(ref);
+    clickEffect();
     PopupUILayerManager::getInstance()->closeCurrentPopup();
     VoxelExplorer::getInstance()->respawnPlayer();
 }
 void DeadPopupUI::onClickRestart(cocos2d::Ref *ref)
 {
-
+    CHECK_ACTION(ref);
+    clickEffect();
+    if(m_pBtnDead)
+    {
+        m_pBtnDead->setEnabled(false);
+        m_pBtnDead->setTouchEnabled(false);
+    }
+    
     ArchiveManager::getInstance()->loadGame();
     cocos2d::Scene* scene = GameScene::createScene();
     Director::getInstance()->replaceScene(scene);
