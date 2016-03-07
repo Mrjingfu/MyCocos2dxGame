@@ -47,7 +47,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1189"
             endingLineNumber = "1189"
-            landmarkName = "GameUILayer::onEventRoleDead(cocos2d::EventCustom *sender)"
+            landmarkName = "GameUILayer::refreshUIView()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -141,22 +141,6 @@
             timestampString = "478779005.710311"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "146"
-            endingLineNumber = "146"
-            landmarkName = "AppDelegate::applicationDidEnterBackground()"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../Classes/AppDelegate.cpp"
-            timestampString = "478779005.710311"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
             startingLineNumber = "162"
             endingLineNumber = "162"
             landmarkName = "AppDelegate::applicationWillEnterForeground()"
@@ -176,6 +160,22 @@
             startingLineNumber = "102"
             endingLineNumber = "102"
             landmarkName = "BagShopLayer::getItems()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/UI/Layer/GlobalPromptLayer.cpp"
+            timestampString = "479031834.002232"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "104"
+            endingLineNumber = "104"
+            landmarkName = "GlobalPromptLayer::clearGlobalPrompt()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

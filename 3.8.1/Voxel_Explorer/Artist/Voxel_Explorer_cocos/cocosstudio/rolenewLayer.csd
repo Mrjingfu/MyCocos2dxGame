@@ -171,223 +171,223 @@
           <AbstractNodeData Name="prop_frame" ActionTag="1466961965" Tag="312" IconVisible="False" PercentWidthEnable="True" PercentHeightEnable="True" PercentWidthEnabled="True" PercentHeightEnabled="True" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="135.0000" Scale9Enable="True" LeftEage="4" RightEage="4" TopEage="4" BottomEage="4" Scale9OriginX="4" Scale9OriginY="4" Scale9Width="5" Scale9Height="5" ctype="ImageViewObjectData">
             <Size X="115.0000" Y="150.0000" />
             <Children>
-              <AbstractNodeData Name="role_prop_hp" ActionTag="24001304" Tag="365" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="7.8775" RightMargin="-106.8775" TopMargin="-8.2800" BottomMargin="119.2800" LabelText="生命值:" ctype="TextBMFontObjectData">
+              <AbstractNodeData Name="role_prop_hp" ActionTag="24001304" Tag="365" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="7.8775" RightMargin="1.1225" TopMargin="-8.3774" BottomMargin="119.3774" LabelText="生命值:" ctype="TextBMFontObjectData">
                 <Size X="106.0000" Y="39.0000" />
                 <AnchorPoint ScaleY="0.5000" />
-                <Position X="7.8775" Y="138.7800" />
-                <Scale ScaleX="0.2800" ScaleY="0.2800" />
+                <Position X="7.8775" Y="138.8774" />
+                <Scale ScaleX="0.2700" ScaleY="0.2700" />
                 <CColor A="255" R="144" G="238" B="144" />
-                <PrePosition X="0.0685" Y="0.9252" />
+                <PrePosition X="0.0685" Y="0.9258" />
                 <PreSize X="1.8609" Y="0.2600" />
                 <LabelBMFontFile_CNB Type="Normal" Path="fonts/ui_font.fnt" Plist="" />
               </AbstractNodeData>
-              <AbstractNodeData Name="role_prop_hp_num" ActionTag="584235766" Tag="366" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="45.2710" RightMargin="9.7290" TopMargin="-7.8900" BottomMargin="118.8900" LabelText="100" ctype="TextBMFontObjectData">
+              <AbstractNodeData Name="role_prop_hp_num" ActionTag="584235766" Tag="366" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="50.2707" RightMargin="4.7293" TopMargin="-8.3774" BottomMargin="119.3774" LabelText="100" ctype="TextBMFontObjectData">
                 <Size X="60.0000" Y="39.0000" />
                 <AnchorPoint ScaleX="1.0000" ScaleY="0.5000" />
-                <Position X="105.2710" Y="138.3900" />
-                <Scale ScaleX="0.2800" ScaleY="0.2800" />
+                <Position X="110.2707" Y="138.8774" />
+                <Scale ScaleX="0.2700" ScaleY="0.2700" />
                 <CColor A="255" R="255" G="255" B="255" />
-                <PrePosition X="0.9154" Y="0.9226" />
+                <PrePosition X="0.9589" Y="0.9258" />
                 <PreSize X="1.8609" Y="0.2600" />
                 <LabelBMFontFile_CNB Type="Normal" Path="fonts/ui_font.fnt" Plist="" />
               </AbstractNodeData>
-              <AbstractNodeData Name="role_prop_mp" ActionTag="-95825565" Tag="367" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="7.8775" RightMargin="1.1225" TopMargin="4.3650" BottomMargin="106.6350" LabelText="魔法值:" ctype="TextBMFontObjectData">
+              <AbstractNodeData Name="role_prop_mp" ActionTag="-95825565" Tag="367" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="7.8775" RightMargin="1.1225" TopMargin="3.6879" BottomMargin="107.3121" LabelText="魔法值:" ctype="TextBMFontObjectData">
                 <Size X="106.0000" Y="39.0000" />
                 <AnchorPoint ScaleY="0.5000" />
-                <Position X="7.8775" Y="126.1350" />
-                <Scale ScaleX="0.2800" ScaleY="0.2800" />
+                <Position X="7.8775" Y="126.8121" />
+                <Scale ScaleX="0.2700" ScaleY="0.2700" />
                 <CColor A="255" R="144" G="238" B="144" />
-                <PrePosition X="0.0685" Y="0.8409" />
+                <PrePosition X="0.0685" Y="0.8454" />
                 <PreSize X="1.8609" Y="0.2600" />
                 <LabelBMFontFile_CNB Type="Normal" Path="fonts/ui_font.fnt" Plist="" />
               </AbstractNodeData>
-              <AbstractNodeData Name="role_prop_mp_num" ActionTag="-1581993765" Tag="368" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="45.2710" RightMargin="9.7290" TopMargin="4.3650" BottomMargin="106.6350" LabelText="100" ctype="TextBMFontObjectData">
+              <AbstractNodeData Name="role_prop_mp_num" ActionTag="-1581993765" Tag="368" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="50.2707" RightMargin="4.7293" TopMargin="3.6879" BottomMargin="107.3121" LabelText="100" ctype="TextBMFontObjectData">
                 <Size X="60.0000" Y="39.0000" />
                 <AnchorPoint ScaleX="1.0000" ScaleY="0.5000" />
-                <Position X="105.2710" Y="126.1350" />
-                <Scale ScaleX="0.2800" ScaleY="0.2800" />
+                <Position X="110.2707" Y="126.8121" />
+                <Scale ScaleX="0.2700" ScaleY="0.2700" />
                 <CColor A="255" R="255" G="255" B="255" />
-                <PrePosition X="0.9154" Y="0.8409" />
+                <PrePosition X="0.9589" Y="0.8454" />
                 <PreSize X="1.8609" Y="0.2600" />
                 <LabelBMFontFile_CNB Type="Normal" Path="fonts/ui_font.fnt" Plist="" />
               </AbstractNodeData>
-              <AbstractNodeData Name="role_prop_attack" ActionTag="-1706649113" Tag="369" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="7.8775" RightMargin="1.1225" TopMargin="17.0250" BottomMargin="93.9750" LabelText="攻击力:" ctype="TextBMFontObjectData">
+              <AbstractNodeData Name="role_prop_attack" ActionTag="-1706649113" Tag="369" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="7.8775" RightMargin="1.1225" TopMargin="16.0863" BottomMargin="94.9137" LabelText="攻击力:" ctype="TextBMFontObjectData">
                 <Size X="106.0000" Y="39.0000" />
                 <AnchorPoint ScaleY="0.5000" />
-                <Position X="7.8775" Y="113.4750" />
-                <Scale ScaleX="0.2800" ScaleY="0.2800" />
+                <Position X="7.8775" Y="114.4137" />
+                <Scale ScaleX="0.2700" ScaleY="0.2700" />
                 <CColor A="255" R="144" G="238" B="144" />
-                <PrePosition X="0.0685" Y="0.7565" />
+                <PrePosition X="0.0685" Y="0.7628" />
                 <PreSize X="1.8609" Y="0.2600" />
                 <LabelBMFontFile_CNB Type="Normal" Path="fonts/ui_font.fnt" Plist="" />
               </AbstractNodeData>
-              <AbstractNodeData Name="role_prop_attack_num" ActionTag="-826121939" Tag="370" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="45.2710" RightMargin="9.7290" TopMargin="17.0250" BottomMargin="93.9750" LabelText="100" ctype="TextBMFontObjectData">
+              <AbstractNodeData Name="role_prop_attack_num" ActionTag="-826121939" Tag="370" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="50.2707" RightMargin="4.7293" TopMargin="16.0863" BottomMargin="94.9137" LabelText="100" ctype="TextBMFontObjectData">
                 <Size X="60.0000" Y="39.0000" />
                 <AnchorPoint ScaleX="1.0000" ScaleY="0.5000" />
-                <Position X="105.2710" Y="113.4750" />
-                <Scale ScaleX="0.2800" ScaleY="0.2800" />
+                <Position X="110.2707" Y="114.4137" />
+                <Scale ScaleX="0.2700" ScaleY="0.2700" />
                 <CColor A="255" R="255" G="255" B="255" />
-                <PrePosition X="0.9154" Y="0.7565" />
+                <PrePosition X="0.9589" Y="0.7628" />
                 <PreSize X="1.8609" Y="0.2600" />
                 <LabelBMFontFile_CNB Type="Normal" Path="fonts/ui_font.fnt" Plist="" />
               </AbstractNodeData>
-              <AbstractNodeData Name="role_prop_armor" ActionTag="-189366422" Tag="371" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="7.8775" RightMargin="1.1225" TopMargin="30.1350" BottomMargin="80.8650" LabelText="防御力:" ctype="TextBMFontObjectData">
+              <AbstractNodeData Name="role_prop_armor" ActionTag="-189366422" Tag="371" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="7.8775" RightMargin="1.1225" TopMargin="28.0681" BottomMargin="82.9319" LabelText="防御力:" ctype="TextBMFontObjectData">
                 <Size X="106.0000" Y="39.0000" />
                 <AnchorPoint ScaleY="0.5000" />
-                <Position X="7.8775" Y="100.3650" />
-                <Scale ScaleX="0.2800" ScaleY="0.2800" />
+                <Position X="7.8775" Y="102.4319" />
+                <Scale ScaleX="0.2700" ScaleY="0.2700" />
                 <CColor A="255" R="144" G="238" B="144" />
-                <PrePosition X="0.0685" Y="0.6691" />
+                <PrePosition X="0.0685" Y="0.6829" />
                 <PreSize X="1.8609" Y="0.2600" />
                 <LabelBMFontFile_CNB Type="Normal" Path="fonts/ui_font.fnt" Plist="" />
               </AbstractNodeData>
-              <AbstractNodeData Name="role_prop_armor_num" ActionTag="-1748229169" Tag="372" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="45.2710" RightMargin="9.7290" TopMargin="30.1350" BottomMargin="80.8650" LabelText="100" ctype="TextBMFontObjectData">
+              <AbstractNodeData Name="role_prop_armor_num" ActionTag="-1748229169" Tag="372" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="50.2708" RightMargin="4.7292" TopMargin="28.0681" BottomMargin="82.9319" LabelText="100" ctype="TextBMFontObjectData">
                 <Size X="60.0000" Y="39.0000" />
                 <AnchorPoint ScaleX="1.0000" ScaleY="0.5000" />
-                <Position X="105.2710" Y="100.3650" />
-                <Scale ScaleX="0.2800" ScaleY="0.2800" />
+                <Position X="110.2708" Y="102.4319" />
+                <Scale ScaleX="0.2700" ScaleY="0.2800" />
                 <CColor A="255" R="255" G="255" B="255" />
-                <PrePosition X="0.9154" Y="0.6691" />
+                <PrePosition X="0.9589" Y="0.6829" />
                 <PreSize X="1.8609" Y="0.2600" />
                 <LabelBMFontFile_CNB Type="Normal" Path="fonts/ui_font.fnt" Plist="" />
               </AbstractNodeData>
-              <AbstractNodeData Name="role_prop_exp" ActionTag="1903476968" Tag="373" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="7.8775" RightMargin="1.1225" TopMargin="42.3300" BottomMargin="68.6700" LabelText="经验值:" ctype="TextBMFontObjectData">
+              <AbstractNodeData Name="role_prop_exp" ActionTag="1903476968" Tag="373" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="8.8775" RightMargin="0.1225" TopMargin="114.6352" BottomMargin="-3.6352" LabelText="经验值:" ctype="TextBMFontObjectData">
                 <Size X="106.0000" Y="39.0000" />
                 <AnchorPoint ScaleY="0.5000" />
-                <Position X="7.8775" Y="88.1700" />
-                <Scale ScaleX="0.2800" ScaleY="0.2800" />
+                <Position X="8.8775" Y="15.8648" />
+                <Scale ScaleX="0.2700" ScaleY="0.2700" />
                 <CColor A="255" R="144" G="238" B="144" />
-                <PrePosition X="0.0685" Y="0.5878" />
+                <PrePosition X="0.0772" Y="0.1058" />
                 <PreSize X="1.8609" Y="0.2600" />
                 <LabelBMFontFile_CNB Type="Normal" Path="fonts/ui_font.fnt" Plist="" />
               </AbstractNodeData>
-              <AbstractNodeData Name="role_prop_exp_num" ActionTag="-1640110597" Tag="374" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="45.2710" RightMargin="9.7290" TopMargin="42.3300" BottomMargin="68.6700" LabelText="100" ctype="TextBMFontObjectData">
+              <AbstractNodeData Name="role_prop_exp_num" ActionTag="-1640110597" Tag="374" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="50.2708" RightMargin="4.7292" TopMargin="114.6352" BottomMargin="-3.6352" LabelText="100" ctype="TextBMFontObjectData">
                 <Size X="60.0000" Y="39.0000" />
                 <AnchorPoint ScaleX="1.0000" ScaleY="0.5000" />
-                <Position X="105.2710" Y="88.1700" />
-                <Scale ScaleX="0.2800" ScaleY="0.2800" />
+                <Position X="110.2708" Y="15.8648" />
+                <Scale ScaleX="0.2500" ScaleY="0.2500" />
                 <CColor A="255" R="255" G="255" B="255" />
-                <PrePosition X="0.9154" Y="0.5878" />
+                <PrePosition X="0.9589" Y="0.1058" />
                 <PreSize X="1.8609" Y="0.2600" />
                 <LabelBMFontFile_CNB Type="Normal" Path="fonts/ui_font.fnt" Plist="" />
               </AbstractNodeData>
-              <AbstractNodeData Name="role_prop_magic" ActionTag="-2094531603" Tag="375" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="7.8775" RightMargin="1.1225" TopMargin="54.9900" BottomMargin="56.0100" LabelText="取魔率:" ctype="TextBMFontObjectData">
+              <AbstractNodeData Name="role_prop_magic" ActionTag="-2094531603" Tag="375" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="7.8775" RightMargin="1.1225" TopMargin="40.2165" BottomMargin="70.7835" LabelText="取魔率:" ctype="TextBMFontObjectData">
                 <Size X="106.0000" Y="39.0000" />
                 <AnchorPoint ScaleY="0.5000" />
-                <Position X="7.8775" Y="75.5100" />
-                <Scale ScaleX="0.2800" ScaleY="0.2800" />
+                <Position X="7.8775" Y="90.2835" />
+                <Scale ScaleX="0.2700" ScaleY="0.2700" />
                 <CColor A="255" R="144" G="238" B="144" />
-                <PrePosition X="0.0685" Y="0.5034" />
+                <PrePosition X="0.0685" Y="0.6019" />
                 <PreSize X="1.8609" Y="0.2600" />
                 <LabelBMFontFile_CNB Type="Normal" Path="fonts/ui_font.fnt" Plist="" />
               </AbstractNodeData>
-              <AbstractNodeData Name="role_prop_magic_num" ActionTag="-1148355570" Tag="376" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="45.2710" RightMargin="9.7290" TopMargin="54.9900" BottomMargin="56.0100" LabelText="100" ctype="TextBMFontObjectData">
+              <AbstractNodeData Name="role_prop_magic_num" ActionTag="-1148355570" Tag="376" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="50.2707" RightMargin="4.7293" TopMargin="40.2165" BottomMargin="70.7835" LabelText="100" ctype="TextBMFontObjectData">
                 <Size X="60.0000" Y="39.0000" />
                 <AnchorPoint ScaleX="1.0000" ScaleY="0.5000" />
-                <Position X="105.2710" Y="75.5100" />
-                <Scale ScaleX="0.2800" ScaleY="0.2800" />
+                <Position X="110.2707" Y="90.2835" />
+                <Scale ScaleX="0.2700" ScaleY="0.2700" />
                 <CColor A="255" R="255" G="255" B="255" />
-                <PrePosition X="0.9154" Y="0.5034" />
+                <PrePosition X="0.9589" Y="0.6019" />
                 <PreSize X="1.8609" Y="0.2600" />
                 <LabelBMFontFile_CNB Type="Normal" Path="fonts/ui_font.fnt" Plist="" />
               </AbstractNodeData>
-              <AbstractNodeData Name="role_prop_critical_strike" ActionTag="-965757101" Tag="377" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="7.8775" RightMargin="1.1225" TopMargin="67.7250" BottomMargin="43.2750" LabelText="暴击率:" ctype="TextBMFontObjectData">
+              <AbstractNodeData Name="role_prop_critical_strike" ActionTag="-965757101" Tag="377" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="7.8775" RightMargin="1.1225" TopMargin="52.3650" BottomMargin="58.6350" LabelText="暴击率:" ctype="TextBMFontObjectData">
                 <Size X="106.0000" Y="39.0000" />
                 <AnchorPoint ScaleY="0.5000" />
-                <Position X="7.8775" Y="62.7750" />
-                <Scale ScaleX="0.2800" ScaleY="0.2800" />
+                <Position X="7.8775" Y="78.1350" />
+                <Scale ScaleX="0.2700" ScaleY="0.2700" />
                 <CColor A="255" R="144" G="238" B="144" />
-                <PrePosition X="0.0685" Y="0.4185" />
+                <PrePosition X="0.0685" Y="0.5209" />
                 <PreSize X="1.8609" Y="0.2600" />
                 <LabelBMFontFile_CNB Type="Normal" Path="fonts/ui_font.fnt" Plist="" />
               </AbstractNodeData>
-              <AbstractNodeData Name="role_prop_critical_strike_num" ActionTag="352951007" Tag="378" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="45.2710" RightMargin="9.7290" TopMargin="67.7250" BottomMargin="43.2750" LabelText="100" ctype="TextBMFontObjectData">
+              <AbstractNodeData Name="role_prop_critical_strike_num" ActionTag="352951007" Tag="378" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="50.2707" RightMargin="4.7293" TopMargin="52.3650" BottomMargin="58.6350" LabelText="100" ctype="TextBMFontObjectData">
                 <Size X="60.0000" Y="39.0000" />
                 <AnchorPoint ScaleX="1.0000" ScaleY="0.5000" />
-                <Position X="105.2710" Y="62.7750" />
-                <Scale ScaleX="0.2800" ScaleY="0.2800" />
+                <Position X="110.2707" Y="78.1350" />
+                <Scale ScaleX="0.2700" ScaleY="0.2700" />
                 <CColor A="255" R="255" G="255" B="255" />
-                <PrePosition X="0.9154" Y="0.4185" />
+                <PrePosition X="0.9589" Y="0.5209" />
                 <PreSize X="1.8609" Y="0.2600" />
                 <LabelBMFontFile_CNB Type="Normal" Path="fonts/ui_font.fnt" Plist="" />
               </AbstractNodeData>
-              <AbstractNodeData Name="role_prop_dodge" ActionTag="1540572068" Tag="379" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="7.8775" RightMargin="1.1225" TopMargin="79.8300" BottomMargin="31.1700" LabelText="闪避率:" ctype="TextBMFontObjectData">
+              <AbstractNodeData Name="role_prop_dodge" ActionTag="1540572068" Tag="379" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="7.8775" RightMargin="1.1225" TopMargin="64.5135" BottomMargin="46.4865" LabelText="闪避率:" ctype="TextBMFontObjectData">
                 <Size X="106.0000" Y="39.0000" />
                 <AnchorPoint ScaleY="0.5000" />
-                <Position X="7.8775" Y="50.6700" />
-                <Scale ScaleX="0.2800" ScaleY="0.2800" />
+                <Position X="7.8775" Y="65.9865" />
+                <Scale ScaleX="0.2700" ScaleY="0.2700" />
                 <CColor A="255" R="144" G="238" B="144" />
-                <PrePosition X="0.0685" Y="0.3378" />
+                <PrePosition X="0.0685" Y="0.4399" />
                 <PreSize X="1.8609" Y="0.2600" />
                 <LabelBMFontFile_CNB Type="Normal" Path="fonts/ui_font.fnt" Plist="" />
               </AbstractNodeData>
-              <AbstractNodeData Name="role_prop_dodge_num" ActionTag="1350799331" Tag="380" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="45.2710" RightMargin="9.7290" TopMargin="79.8300" BottomMargin="31.1700" LabelText="100" ctype="TextBMFontObjectData">
+              <AbstractNodeData Name="role_prop_dodge_num" ActionTag="1350799331" Tag="380" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="50.2707" RightMargin="4.7293" TopMargin="64.5135" BottomMargin="46.4865" LabelText="100" ctype="TextBMFontObjectData">
                 <Size X="60.0000" Y="39.0000" />
                 <AnchorPoint ScaleX="1.0000" ScaleY="0.5000" />
-                <Position X="105.2710" Y="50.6700" />
-                <Scale ScaleX="0.2800" ScaleY="0.2800" />
+                <Position X="110.2707" Y="65.9865" />
+                <Scale ScaleX="0.2700" ScaleY="0.2800" />
                 <CColor A="255" R="255" G="255" B="255" />
-                <PrePosition X="0.9154" Y="0.3378" />
+                <PrePosition X="0.9589" Y="0.4399" />
                 <PreSize X="1.8609" Y="0.2600" />
                 <LabelBMFontFile_CNB Type="Normal" Path="fonts/ui_font.fnt" Plist="" />
               </AbstractNodeData>
-              <AbstractNodeData Name="role_prop_block" ActionTag="1498365969" Tag="381" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="7.8775" RightMargin="1.1225" TopMargin="92.4900" BottomMargin="18.5100" LabelText="闪避率:" ctype="TextBMFontObjectData">
+              <AbstractNodeData Name="role_prop_block" ActionTag="1498365969" Tag="381" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="7.8775" RightMargin="1.1225" TopMargin="76.6619" BottomMargin="34.3381" LabelText="闪避率:" ctype="TextBMFontObjectData">
                 <Size X="106.0000" Y="39.0000" />
                 <AnchorPoint ScaleY="0.5000" />
-                <Position X="7.8775" Y="38.0100" />
-                <Scale ScaleX="0.2800" ScaleY="0.2800" />
+                <Position X="7.8775" Y="53.8381" />
+                <Scale ScaleX="0.2700" ScaleY="0.2700" />
                 <CColor A="255" R="144" G="238" B="144" />
-                <PrePosition X="0.0685" Y="0.2534" />
+                <PrePosition X="0.0685" Y="0.3589" />
                 <PreSize X="1.8609" Y="0.2600" />
                 <LabelBMFontFile_CNB Type="Normal" Path="fonts/ui_font.fnt" Plist="" />
               </AbstractNodeData>
-              <AbstractNodeData Name="role_prop_block_num" ActionTag="-2011457740" Tag="382" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="45.2710" RightMargin="9.7290" TopMargin="92.4900" BottomMargin="18.5100" LabelText="100" ctype="TextBMFontObjectData">
+              <AbstractNodeData Name="role_prop_block_num" ActionTag="-2011457740" Tag="382" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="50.2707" RightMargin="4.7293" TopMargin="76.6619" BottomMargin="34.3381" LabelText="100" ctype="TextBMFontObjectData">
                 <Size X="60.0000" Y="39.0000" />
                 <AnchorPoint ScaleX="1.0000" ScaleY="0.5000" />
-                <Position X="105.2710" Y="38.0100" />
-                <Scale ScaleX="0.2800" ScaleY="0.2800" />
+                <Position X="110.2707" Y="53.8381" />
+                <Scale ScaleX="0.2700" ScaleY="0.2800" />
                 <CColor A="255" R="255" G="255" B="255" />
-                <PrePosition X="0.9154" Y="0.2534" />
+                <PrePosition X="0.9589" Y="0.3589" />
                 <PreSize X="1.8609" Y="0.2600" />
                 <LabelBMFontFile_CNB Type="Normal" Path="fonts/ui_font.fnt" Plist="" />
               </AbstractNodeData>
-              <AbstractNodeData Name="role_prop_light" ActionTag="-818419515" Tag="383" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="7.8775" RightMargin="1.1225" TopMargin="105.6000" BottomMargin="5.4000" LabelText="光照范围:" ctype="TextBMFontObjectData">
+              <AbstractNodeData Name="role_prop_light" ActionTag="-818419515" Tag="383" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="7.8775" RightMargin="-30.8775" TopMargin="88.8104" BottomMargin="22.1896" LabelText="光照范围:" ctype="TextBMFontObjectData">
                 <Size X="138.0000" Y="39.0000" />
                 <AnchorPoint ScaleY="0.5000" />
-                <Position X="7.8775" Y="24.9000" />
-                <Scale ScaleX="0.2800" ScaleY="0.2800" />
+                <Position X="7.8775" Y="41.6896" />
+                <Scale ScaleX="0.2700" ScaleY="0.2700" />
                 <CColor A="255" R="144" G="238" B="144" />
-                <PrePosition X="0.0685" Y="0.1660" />
+                <PrePosition X="0.0685" Y="0.2779" />
                 <PreSize X="1.8609" Y="0.2600" />
                 <LabelBMFontFile_CNB Type="Normal" Path="fonts/ui_font.fnt" Plist="" />
               </AbstractNodeData>
-              <AbstractNodeData Name="role_prop_light_num" ActionTag="179346264" Tag="384" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="45.2710" RightMargin="9.7290" TopMargin="105.6000" BottomMargin="5.4000" LabelText="100" ctype="TextBMFontObjectData">
+              <AbstractNodeData Name="role_prop_light_num" ActionTag="179346264" Tag="384" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="50.2707" RightMargin="4.7293" TopMargin="88.8104" BottomMargin="22.1896" LabelText="100" ctype="TextBMFontObjectData">
                 <Size X="60.0000" Y="39.0000" />
                 <AnchorPoint ScaleX="1.0000" ScaleY="0.5000" />
-                <Position X="105.2710" Y="24.9000" />
-                <Scale ScaleX="0.2800" ScaleY="0.2800" />
+                <Position X="110.2707" Y="41.6896" />
+                <Scale ScaleX="0.2700" ScaleY="0.2700" />
                 <CColor A="255" R="255" G="255" B="255" />
-                <PrePosition X="0.9154" Y="0.1660" />
+                <PrePosition X="0.9589" Y="0.2779" />
                 <PreSize X="1.8609" Y="0.2600" />
                 <LabelBMFontFile_CNB Type="Normal" Path="fonts/ui_font.fnt" Plist="" />
               </AbstractNodeData>
-              <AbstractNodeData Name="role_prop_search" ActionTag="2039717428" Tag="385" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="7.8775" RightMargin="-30.8775" TopMargin="118.2600" BottomMargin="-7.2600" LabelText="侦查范围:" ctype="TextBMFontObjectData">
+              <AbstractNodeData Name="role_prop_search" ActionTag="2039717428" Tag="385" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="7.8774" RightMargin="-30.8774" TopMargin="101.2513" BottomMargin="9.7487" LabelText="侦查范围:" ctype="TextBMFontObjectData">
                 <Size X="138.0000" Y="39.0000" />
                 <AnchorPoint ScaleY="0.5000" />
-                <Position X="7.8775" Y="12.2400" />
-                <Scale ScaleX="0.2800" ScaleY="0.2800" />
+                <Position X="7.8774" Y="29.2487" />
+                <Scale ScaleX="0.2700" ScaleY="0.2800" />
                 <CColor A="255" R="144" G="238" B="144" />
-                <PrePosition X="0.0685" Y="0.0816" />
+                <PrePosition X="0.0685" Y="0.1950" />
                 <PreSize X="1.8609" Y="0.2600" />
                 <LabelBMFontFile_CNB Type="Normal" Path="fonts/ui_font.fnt" Plist="" />
               </AbstractNodeData>
-              <AbstractNodeData Name="role_prop_search_num" ActionTag="1401593262" Tag="386" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="45.2710" RightMargin="9.7290" TopMargin="118.2600" BottomMargin="-7.2600" LabelText="100" ctype="TextBMFontObjectData">
+              <AbstractNodeData Name="role_prop_search_num" ActionTag="1401593262" Tag="386" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="50.2707" RightMargin="4.7293" TopMargin="101.2513" BottomMargin="9.7487" LabelText="100" ctype="TextBMFontObjectData">
                 <Size X="60.0000" Y="39.0000" />
                 <AnchorPoint ScaleX="1.0000" ScaleY="0.5000" />
-                <Position X="105.2710" Y="12.2400" />
-                <Scale ScaleX="0.2800" ScaleY="0.2800" />
+                <Position X="110.2707" Y="29.2487" />
+                <Scale ScaleX="0.2700" ScaleY="0.2700" />
                 <CColor A="255" R="255" G="255" B="255" />
-                <PrePosition X="0.9154" Y="0.0816" />
+                <PrePosition X="0.9589" Y="0.1950" />
                 <PreSize X="1.8609" Y="0.2600" />
                 <LabelBMFontFile_CNB Type="Normal" Path="fonts/ui_font.fnt" Plist="" />
               </AbstractNodeData>
