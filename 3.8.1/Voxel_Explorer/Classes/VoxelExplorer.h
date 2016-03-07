@@ -77,6 +77,7 @@ public:
     
     void shakeScreen();     ////屏幕晃动
     
+    const cocos2d::Color3B& getPlayerLightColor();
     void setPlayerLightColor(const cocos2d::Color3B& color);
     void setPlayerLightRange(float range);
     

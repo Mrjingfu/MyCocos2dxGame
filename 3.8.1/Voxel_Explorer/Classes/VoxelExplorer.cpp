@@ -786,6 +786,12 @@ void VoxelExplorer::updateStatisticsAreaDatas()
         StatisticsManager::getInstance()->addExploreAllAreaNum();
     }
 }
+const cocos2d::Color3B& VoxelExplorer::getPlayerLightColor()
+{
+    if(m_pPlayer && m_pPlayer->getPlayerLight())
+        return m_pPlayer->getPlayerLight()->getColor();
+    return cocos2d::Color3B::WHITE;
+}
 void VoxelExplorer::setPlayerLightColor(const cocos2d::Color3B& color)
 {
     if(m_pPlayer && m_pPlayer->getPlayerLight())
