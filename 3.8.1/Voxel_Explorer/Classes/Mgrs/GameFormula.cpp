@@ -71,7 +71,7 @@ int GameFormula::getNextLevelExp(int currentLevel)
 }
 int GameFormula::getKillNormalMonsterExp(int currentLevel, int monsterLevel)
 {
-    int monsterExp = (monsterLevel-1)*2+60;
+    int monsterExp = (monsterLevel-1)*5+80;
     int diff = monsterLevel - currentLevel;
     if(diff>=0)
     {
@@ -83,7 +83,7 @@ int GameFormula::getKillNormalMonsterExp(int currentLevel, int monsterLevel)
     else
     {
         if(diff<=-5)
-            monsterExp = cocos2d::random(0, 5);
+            monsterExp = cocos2d::random(5, 20);
         else
             monsterExp = monsterExp*pow(0.8f, diff);
     }
@@ -91,7 +91,7 @@ int GameFormula::getKillNormalMonsterExp(int currentLevel, int monsterLevel)
 }
 int GameFormula::getKillEliteMonsterExp(int currentLevel, int monsterLevel)
 {
-    int monsterExp = (monsterLevel-1)*2+60;
+    int monsterExp = (monsterLevel-1)*10+160;
     int diff =  monsterLevel - currentLevel;
     if(diff>=0)
     {
@@ -103,7 +103,7 @@ int GameFormula::getKillEliteMonsterExp(int currentLevel, int monsterLevel)
     else
     {
         if(diff<=-8)
-            monsterExp = 0;
+            monsterExp = cocos2d::random(20, 60);
         else
             monsterExp = monsterExp*pow(0.85f, diff);
     }
@@ -111,7 +111,7 @@ int GameFormula::getKillEliteMonsterExp(int currentLevel, int monsterLevel)
 }
 int GameFormula::getKillBossExp(int currentLevel, int bossLevel)
 {
-    return (bossLevel-1)*20+100;
+    return (bossLevel-1)*20+320;
 }
 
 void GameFormula::exchangeMoney(CChaosNumber srcCopper, CChaosNumber& gold, CChaosNumber& silver, CChaosNumber& copper)

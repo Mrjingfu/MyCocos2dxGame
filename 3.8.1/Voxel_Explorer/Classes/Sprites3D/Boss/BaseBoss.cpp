@@ -97,8 +97,11 @@ void BaseBoss::attackedByPlayer(bool miss)
     if(!m_pBossProperty || !m_pHurtData)
         return;
     
-    if(m_State == BS_SLEEPING)
-        setState(BS_TRACKING);
+    if(!miss)
+    {
+        if(m_State == BS_SLEEPING)
+            setState(BS_TRACKING);
+    }
     
     m_pHurtData->reset();
     m_pHurtData->m_vPos = this->getPosition3D();

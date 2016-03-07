@@ -59,22 +59,19 @@ bool PlayerProperty::initNewPlayer()   ///新角色初始化
 
     addMoney(500, false);
     ret = equipWeapon(itemIDCounter, false);
-    
-    ret = addItemToBag(PickableItem::PIT_POTION_MINORHEALTH, 1, false);
-    ret = addItemToBag(PickableItem::PIT_POTION_MINORHEALTH, 1, false);
-    ret = addItemToBag(PickableItem::PIT_POTION_MINORHEALTH, 1, false);
-    ret = addItemToBag(PickableItem::PIT_POTION_MINORMANA, 1, false);
-    ret = addItemToBag(PickableItem::PIT_POTION_MINORMANA, 1, false);
-    ret = addItemToBag(PickableItem::PIT_POTION_MINORMANA, 1, false);
-    ret = addItemToBag(PickableItem::PIT_SCROLL_INDENTIFY, 1, false);
-    ret = addItemToBag(PickableItem::PIT_SCROLL_INDENTIFY, 1, false);
-    ret = addItemToBag(PickableItem::PIT_SCROLL_INDENTIFY, 1, false);
-    ret = addItemToBag(PickableItem::PIT_KEY_COPPER, 1, false);
-    ret = addItemToBag(PickableItem::PIT_KEY_COPPER, 1, false);
-    ret = addItemToBag(PickableItem::PIT_KEY_COPPER, 1, false);
-    ret = addItemToBag(PickableItem::PIT_POTION_DETOXIFICATION, 1, false);
-    ret = addItemToBag(PickableItem::PIT_POTION_SPECIFIC, 1, false);
-    ret = addItemToBag(PickableItem::PIT_POTION_HEALING, 1, false);
+    for(int i = 0; i < 10; i++)
+    {
+        ret = addItemToBag(PickableItem::PIT_POTION_MINORHEALTH, 1, false);
+        ret = addItemToBag(PickableItem::PIT_POTION_MINORMANA, 1, false);
+        ret = addItemToBag(PickableItem::PIT_SCROLL_INDENTIFY, 1, false);
+    }
+    for(int i = 0; i < 3; i++)
+    {
+        ret = addItemToBag(PickableItem::PIT_KEY_COPPER, 1, false);
+        ret = addItemToBag(PickableItem::PIT_POTION_DETOXIFICATION, 1, false);
+        ret = addItemToBag(PickableItem::PIT_POTION_SPECIFIC, 1, false);
+        ret = addItemToBag(PickableItem::PIT_POTION_HEALING, 1, false);
+    }
     return ret;
 }
 void PlayerProperty::update(float delta)
@@ -278,8 +275,27 @@ bool PlayerProperty::equipWeapon(CChaosNumber id, bool sound)
             m_fMagicItemFindRate = MAX(m_fMagicItemFindRate.GetFloatValue(), m_fBasicMagicItemFindRate.GetFloatValue());
             oldWeaponProperty->setEquiped(false);
             ///处理灯光
-            Color3B color = Color3B::WHITE;
-            VoxelExplorer::getInstance()->setPlayerLightColor(color);
+            if(oldWeaponProperty->getPickableItemType() == PickableItem::PIT_DAGGER_PRO_DAGGER)
+            {
+                Color3B color = Color3B::WHITE;
+                VoxelExplorer::getInstance()->setPlayerLightColor(color);
+            }
+            else if(oldWeaponProperty->getPickableItemType() == PickableItem::PIT_DAGGER_PRO_RUBYDAGGER
+                    || oldWeaponProperty->getPickableItemType() == PickableItem::PIT_SWORD_PRO_SWORD || oldWeaponProperty->getPickableItemType() == PickableItem::PIT_SWORD_PRO_HUGESWORD || oldWeaponProperty->getPickableItemType() == PickableItem::PIT_MACE_PRO_MACE)
+            {
+                Color3B color = Color3B::WHITE;
+                VoxelExplorer::getInstance()->setPlayerLightColor(color);
+            }
+            else if(oldWeaponProperty->getPickableItemType() == PickableItem::PIT_MACE_PRO_BONEHAMMER || oldWeaponProperty->getPickableItemType() == PickableItem::PIT_SWORD_PRO_CRYSTALSWORD || oldWeaponProperty->getPickableItemType() == PickableItem::PIT_DAGGER_PRO_BLUELIGHTDAGGER)
+            {
+                Color3B color = Color3B::WHITE;
+                VoxelExplorer::getInstance()->setPlayerLightColor(color);
+            }
+            else if(oldWeaponProperty->getPickableItemType() == PickableItem::PIT_MACE_PRO_HAMMER || oldWeaponProperty->getPickableItemType() == PickableItem::PIT_AXE_PRO_TOMAHAWK || oldWeaponProperty->getPickableItemType() == PickableItem::PIT_DAGGER_PRO_KNIFE)
+            {
+                Color3B color = Color3B::WHITE;
+                VoxelExplorer::getInstance()->setPlayerLightColor(color);
+            }
         }
         m_nEquipedWeaponID = id;
         
@@ -383,8 +399,16 @@ bool PlayerProperty::equipSecondWeapon(CChaosNumber id, bool sound)
             m_curPlayerSkill = PS_NONE;
             oldSecondWeaponProperty->setEquiped(false);
             ///处理灯光
-            Color3B color = Color3B::WHITE;
-            VoxelExplorer::getInstance()->setPlayerLightColor(color);
+            if(oldSecondWeaponProperty->getPickableItemType() == PickableItem::PIT_STAFF_PRO_OAKSTAFF || oldSecondWeaponProperty->getPickableItemType() == PickableItem::PIT_BOW_PRO_LAMINATEDBOW)
+            {
+                Color3B color = Color3B::WHITE;
+                VoxelExplorer::getInstance()->setPlayerLightColor(color);
+            }
+            else if(oldSecondWeaponProperty->getPickableItemType() == PickableItem::PIT_STAFF_PRO_FIRSTAFF)
+            {
+                Color3B color = Color3B::WHITE;
+                VoxelExplorer::getInstance()->setPlayerLightColor(color);
+            }
         }
         m_nEquipedSecondWeaponID = id;
         

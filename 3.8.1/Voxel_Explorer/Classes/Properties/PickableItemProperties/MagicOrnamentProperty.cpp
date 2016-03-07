@@ -305,6 +305,8 @@ bool MagicOrnamentProperty::load(const cocos2d::ValueMap& data)
         m_fAddedDodgeRate = data.at("AddedDodgeRate").asFloat();
         m_fAddedMagicItemFindRate = data.at("AddedMagicItemFindRate").asFloat();
     }
+    else
+        m_nAddedArmorClass = data.at("AddedArmorClass").asInt();
     return true;
 }
 bool MagicOrnamentProperty::save(cocos2d::ValueMap& data)
@@ -343,5 +345,7 @@ bool MagicOrnamentProperty::save(cocos2d::ValueMap& data)
         data["AddedDodgeRate"] = m_fAddedDodgeRate.GetFloatValue();
         data["AddedMagicItemFindRate"] = m_fAddedMagicItemFindRate.GetFloatValue();
     }
+    else
+        data["AddedArmorClass"] = (int)m_nAddedArmorClass.GetLongValue();
     return true;
 }

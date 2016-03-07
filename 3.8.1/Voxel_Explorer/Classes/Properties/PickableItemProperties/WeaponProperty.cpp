@@ -493,6 +493,11 @@ bool WeaponProperty::load(const cocos2d::ValueMap& data)
         m_fAddedCriticalStrikeRate = data.at("AddedCriticalStrikeRate").asFloat();
         m_fAddedMagicItemFindRate = data.at("AddedMagicItemFindRate").asFloat();
     }
+    else
+    {
+        m_nAttackDiceNum = data.at("AttackDiceNum").asInt();
+        m_nAttackDiceFaceNum = data.at("AttackDiceFaceNum").asInt();
+    }
     return true;
 }
 bool WeaponProperty::save(cocos2d::ValueMap& data)
@@ -528,6 +533,11 @@ bool WeaponProperty::save(cocos2d::ValueMap& data)
         
         data["AddedCriticalStrikeRate"] = m_fAddedCriticalStrikeRate.GetFloatValue();
         data["AddedMagicItemFindRate"] = m_fAddedMagicItemFindRate.GetFloatValue();
+    }
+    else
+    {
+        data["AttackDiceNum"] = (int)m_nAttackDiceNum.GetLongValue();
+        data["AttackDiceFaceNum"] = (int)m_nAttackDiceFaceNum.GetLongValue();
     }
     return true;
 }
