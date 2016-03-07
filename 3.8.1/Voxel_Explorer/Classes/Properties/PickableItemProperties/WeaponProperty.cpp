@@ -495,8 +495,10 @@ bool WeaponProperty::load(const cocos2d::ValueMap& data)
     }
     else
     {
-        m_nAttackDiceNum = data.at("AttackDiceNum").asInt();
-        m_nAttackDiceFaceNum = data.at("AttackDiceFaceNum").asInt();
+        if(data.find("AttackDiceNum") != data.end())
+            m_nAttackDiceNum = data.at("AttackDiceNum").asInt();
+        if(data.find("AttackDiceFaceNum") != data.end())
+            m_nAttackDiceFaceNum = data.at("AttackDiceFaceNum").asInt();
     }
     return true;
 }

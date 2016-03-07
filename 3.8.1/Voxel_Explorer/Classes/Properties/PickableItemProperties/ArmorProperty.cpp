@@ -234,7 +234,10 @@ bool ArmorProperty::load(const cocos2d::ValueMap& data)
         m_fAddedMagicItemFindRate = data.at("AddedMagicItemFindRate").asFloat();
     }
     else
-        m_nAddedArmorClass = data.at("AddedArmorClass").asInt();
+    {
+        if(data.find("AddedArmorClass") != data.end())
+            m_nAddedArmorClass = data.at("AddedArmorClass").asInt();
+    }
 
     return true;
 }
