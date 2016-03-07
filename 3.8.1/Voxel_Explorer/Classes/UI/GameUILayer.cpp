@@ -261,8 +261,10 @@ void GameUILayer::onTouchEnded(cocos2d::Touch *touch, cocos2d::Event *event)
                     infoUi->setDarkLayerVisble(false);
                     infoUi->setInfoDesc(desc);
                     infoUi->registerCloseCallback([this](){
-                        PlayerProperty::getInstance()->setExp(PlayerProperty::getInstance()->getExp() + 100);
-                        updateShowRoleExp(100);
+                        int playerLevel = (int)PlayerProperty::getInstance()->getLevel().GetLongValue();
+                        int addExp = ((int)(playerLevel/5) + 1)*200;
+                        PlayerProperty::getInstance()->setExp(PlayerProperty::getInstance()->getExp() + addExp);
+                        updateShowRoleExp(addExp);
                         
                     });
                 }

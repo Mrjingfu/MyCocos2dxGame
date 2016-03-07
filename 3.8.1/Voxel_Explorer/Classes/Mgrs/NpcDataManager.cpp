@@ -149,7 +149,7 @@ bool NpcDataManager::initEquipmentShop()
 {
     int level = (int)PlayerProperty::getInstance()->getLevel().GetLongValue();
     PickableItem::PickableItemType type = PickableItem::PIT_UNKNOWN;
-    int count = cocos2d::random(8, 12);
+    int count = cocos2d::random(11, 15);
     int itemLevel = 1;
     
     PickableItemProperty* itemProperty = nullptr;
@@ -162,32 +162,32 @@ bool NpcDataManager::initEquipmentShop()
         else if(level <= 10)
         {
             type = PickableItem::generate6_10EquipmentShopItemType();
-            itemLevel = cocos2d::random(8, 12);
+            itemLevel = cocos2d::random(6, 12);
         }
         else if(level <=15)
         {
             type = PickableItem::generate11_15EquipmentShopItemType();
-            itemLevel = cocos2d::random(13, 17);
+            itemLevel = cocos2d::random(11, 17);
         }
         else if(level <= 20)
         {
             type = PickableItem::generate16_20EquipmentShopItemType();
-            itemLevel = cocos2d::random(18, 22);
+            itemLevel = cocos2d::random(16, 22);
         }
         else if(level <= 25)
         {
             type = PickableItem::generate21_25EquipmentShopItemType();
-            itemLevel = cocos2d::random(23, 27);
+            itemLevel = cocos2d::random(21, 27);
         }
         else if(level <= 30)
         {
             type = PickableItem::generate26_30EquipmentShopItemType();
-            itemLevel = cocos2d::random(28, 32);
+            itemLevel = cocos2d::random(26, 32);
         }
         else
         {
             type = PickableItem::generate31_35EquipmentShopItemType();
-            itemLevel = cocos2d::random(33, 40);
+            itemLevel = cocos2d::random(31, 40);
         }
         
         if(type >= PickableItem::PIT_DAGGER_DAGGER && type <= PickableItem::PIT_MACE_SLEDGEHAMMER)
@@ -207,7 +207,7 @@ bool NpcDataManager::initMagicShop()
 {
     int level = (int)PlayerProperty::getInstance()->getLevel().GetLongValue();
     PickableItem::PickableItemType type = PickableItem::PIT_UNKNOWN;
-    int count = cocos2d::random(8, 12);
+    int count = cocos2d::random(11, 15);
     int itemLevel = 1;
     PickableItemProperty* itemProperty = nullptr;
     for (int i = 0; i<count; ++i) {
@@ -219,37 +219,37 @@ bool NpcDataManager::initMagicShop()
         else if(level <= 10)
         {
             type = PickableItem::generate6_10MagicShopItemType();
-            itemLevel = cocos2d::random(8, 12);
+            itemLevel = cocos2d::random(6, 12);
         }
         else if(level <=15)
         {
             type = PickableItem::generate11_15MagicShopItemType();
-            itemLevel = cocos2d::random(13, 17);
+            itemLevel = cocos2d::random(11, 17);
         }
         else if(level <= 20)
         {
             type = PickableItem::generate16_20MagicShopItemType();
-            itemLevel = cocos2d::random(18, 22);
+            itemLevel = cocos2d::random(16, 22);
         }
         else if(level <= 25)
         {
             type = PickableItem::generate21_25MagicShopItemType();
-            itemLevel = cocos2d::random(23, 27);
+            itemLevel = cocos2d::random(21, 27);
         }
         else if(level <= 30)
         {
             type = PickableItem::generate26_30MagicShopItemType();
-            itemLevel = cocos2d::random(28, 32);
+            itemLevel = cocos2d::random(26, 32);
         }
         else
         {
             type = PickableItem::generate31_35MagicShopItemType();
-            itemLevel = cocos2d::random(33, 40);
+            itemLevel = cocos2d::random(31, 40);
         }
         if(type >= PickableItem::PIT_CLOTH_SHOES && type <= PickableItem::PIT_CLOTH_STEELARMOR)
-            itemProperty = new (std::nothrow) ArmorProperty(PlayerProperty::m_snItemInstanceIDCounter++,type, level, false);
+            itemProperty = new (std::nothrow) ArmorProperty(PlayerProperty::m_snItemInstanceIDCounter++,type, itemLevel, false);
         else if(type >= PickableItem::PIT_ORNAMENT_RING && type <= PickableItem::PIT_ORNAMENT_JEWELS)
-            itemProperty = new (std::nothrow) MagicOrnamentProperty(PlayerProperty::m_snItemInstanceIDCounter++,type, level, false);
+            itemProperty = new (std::nothrow) MagicOrnamentProperty(PlayerProperty::m_snItemInstanceIDCounter++,type, itemLevel, false);
         if(itemProperty)
         {
             itemProperty->adjustByLevel();
@@ -265,12 +265,12 @@ bool NpcDataManager::initAlchemistShop()
     PickableItem::PickableItemType type = PickableItem::PIT_UNKNOWN;
     PickableItemProperty* itemProperty = nullptr;
     std::vector<PickableItem::PickableItemType> types;
-    if(level <= 15)
+    if(level < 15)
     {
         types = { PickableItem::PIT_SCROLL_INDENTIFY, PickableItem::PIT_SCROLL_TELEPORT, PickableItem::PIT_SCROLL_DESTINY, PickableItem::PIT_POTION_MINORHEALTH, PickableItem::PIT_POTION_MINORMANA, PickableItem::PIT_POTION_DETOXIFICATION, PickableItem::PIT_POTION_HEALING, PickableItem::PIT_KEY_COPPER, PickableItem::PIT_KEY_SILVER, PickableItem::PIT_KEY_GOLD };
         
     }
-    else if(level <= 30)
+    else if(level < 30)
     {
         types = { PickableItem::PIT_SCROLL_INDENTIFY, PickableItem::PIT_SCROLL_TELEPORT, PickableItem::PIT_SCROLL_DESTINY, PickableItem::PIT_POTION_MINORHEALTH, PickableItem::PIT_POTION_MINORMANA, PickableItem::PIT_POTION_LESSERHEALTH, PickableItem::PIT_POTION_LESSERMANA, PickableItem::PIT_POTION_DETOXIFICATION, PickableItem::PIT_POTION_HEALING, PickableItem::PIT_POTION_SPECIFIC, PickableItem::PIT_KEY_COPPER, PickableItem::PIT_KEY_SILVER, PickableItem::PIT_KEY_GOLD };
     }
@@ -307,39 +307,60 @@ bool NpcDataManager::initTheifRoom()
 {
     int level = (int)PlayerProperty::getInstance()->getLevel().GetLongValue();
     PickableItem::PickableItemType type = PickableItem::PIT_UNKNOWN;
-    int count = cocos2d::random(8, 12);
+    int count = cocos2d::random(11, 15);
     int itemLevel = 1;
     
     PickableItemProperty* itemProperty = nullptr;
     for (int i = 0; i<count; ++i) {
-        if(level <= 15)
+        if(level <= 5)
         {
-            type = PickableItem::generatePickItemByUseableLevel(level, UseableItem::UIT_CHEST_COPPER);
+            type = PickableItem::generatePickItemByUseableLevel(level, UseableItem::UIT_CHEST_GOLD);
             itemLevel = cocos2d::random(1, 7);
+        }
+        else if(level <= 10)
+        {
+            type = PickableItem::generatePickItemByUseableLevel(level, UseableItem::UIT_CHEST_GOLD);
+            itemLevel = cocos2d::random(6, 12);
+        }
+        else if(level <=15)
+        {
+            type = PickableItem::generatePickItemByUseableLevel(level, UseableItem::UIT_CHEST_GOLD);
+            itemLevel = cocos2d::random(11, 17);
+        }
+        else if(level <= 20)
+        {
+            type = PickableItem::generatePickItemByUseableLevel(level, UseableItem::UIT_CHEST_GOLD);
+            itemLevel = cocos2d::random(16, 22);
+        }
+        else if(level <= 25)
+        {
+            type = PickableItem::generatePickItemByUseableLevel(level, UseableItem::UIT_CHEST_GOLD);
+            itemLevel = cocos2d::random(21, 27);
         }
         else if(level <= 30)
         {
-            type = PickableItem::generatePickItemByUseableLevel(level, UseableItem::UIT_CHEST_SILVER);
-            itemLevel = cocos2d::random(8, 12);
+            type = PickableItem::generatePickItemByUseableLevel(level, UseableItem::UIT_CHEST_GOLD);
+            itemLevel = cocos2d::random(26, 32);
         }
         else
         {
             type = PickableItem::generatePickItemByUseableLevel(level, UseableItem::UIT_CHEST_GOLD);
-            itemLevel = cocos2d::random(13, 17);
+            itemLevel = cocos2d::random(31, 40);
         }
+
         if (type >= PickableItem::PIT_DAGGER_DAGGER && type <= PickableItem::PIT_MACE_PRO_SLEDGEHAMMER)
-            itemProperty = new (std::nothrow) WeaponProperty(PlayerProperty::m_snItemInstanceIDCounter++,type, level, false);
+            itemProperty = new (std::nothrow) WeaponProperty(PlayerProperty::m_snItemInstanceIDCounter++,type, itemLevel, false);
         else if (type >= PickableItem::PIT_BOW_SHORTBOW && type <=PickableItem::PIT_SHIELD_PRO_TOWERSHIELD)
-            itemProperty = new (std::nothrow) SecondWeaponProperty(PlayerProperty::m_snItemInstanceIDCounter++,type, level, false);
+            itemProperty = new (std::nothrow) SecondWeaponProperty(PlayerProperty::m_snItemInstanceIDCounter++,type, itemLevel, false);
         else if(type >= PickableItem::PIT_CLOTH_SHOES && type <= PickableItem::PIT_CLOTH_PRO_STEELARMOR)
-            itemProperty = new (std::nothrow) ArmorProperty(PlayerProperty::m_snItemInstanceIDCounter++,type, level, false);
+            itemProperty = new (std::nothrow) ArmorProperty(PlayerProperty::m_snItemInstanceIDCounter++,type, itemLevel, false);
         else if(type >= PickableItem::PIT_ORNAMENT_RING && type <= PickableItem::PIT_ORNAMENT_PRO_JEWELS)
-            itemProperty = new (std::nothrow) MagicOrnamentProperty(PlayerProperty::m_snItemInstanceIDCounter++,type, level, false);
+            itemProperty = new (std::nothrow) MagicOrnamentProperty(PlayerProperty::m_snItemInstanceIDCounter++,type, itemLevel, false);
         if(itemProperty)
         {
             itemProperty->adjustByLevel();
             int mul = (int)(itemLevel / 5) + 1;
-            itemProperty->setCopperWhenBuy(mul*20000);
+            itemProperty->setCopperWhenBuy(mul*10000);
             m_TheifRoom.push_back(itemProperty);
         }
     }

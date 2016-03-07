@@ -27,7 +27,7 @@ KeyProperty::KeyProperty(unsigned int instanceID, PickableItem::PickableItemType
     else if(m_ItemType == PickableItem::PIT_KEY_SILVER)
         m_nValueCopper = 1000;
     else if(m_ItemType == PickableItem::PIT_KEY_GOLD)
-        m_nValueCopper = 3000;
+        m_nValueCopper = 2500;
     else if(m_ItemType == PickableItem::PIT_KEY_ROOM)
     {
         m_bDiscardable = false;
