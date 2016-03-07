@@ -33,6 +33,7 @@ private:
     void onClickEquipOrnament(Ref* ref);
     void onClickEquipSecondWeapon(Ref* ref);
     void showEquipItemPopup(int itemId);
+    int  getIntegerDigit(int source);
 private:
     BagMangerLayerUI* m_pEquipFrame;
     cocos2d::ui::Button* m_pBtnClose;

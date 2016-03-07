@@ -242,7 +242,21 @@ void RoleLayer::updateRoleProp()
     m_pRoleLevel->setString(Value(int(PlayerProperty::getInstance()->getLevel())).asString());
     m_pRoleHp->setString(StringUtils::format("%d/%d",int(PlayerProperty::getInstance()->getCurrentHP()),int(PlayerProperty::getInstance()->getMaxHP())));
     m_pRoleMp->setString(StringUtils::format("%d/%d",int(PlayerProperty::getInstance()->getCurrentMP()),int(PlayerProperty::getInstance()->getMaxMP())));
-    m_pRoleExp->setString(StringUtils::format("%d/%d",int(PlayerProperty::getInstance()->getExp()),int(GameFormula::getNextLevelExp(PlayerProperty::getInstance()->getLevel()))));
+    
+    int nextLevelExp = int(GameFormula::getNextLevelExp(PlayerProperty::getInstance()->getLevel()));
+    int digit = getIntegerDigit(nextLevelExp);
+    
+    if (digit==7) {
+        m_pRoleExp->setScale(0.24);
+    }else if(digit==8)
+    {
+        m_pRoleExp->setScale(0.22);
+    }else if(digit>8)
+    {
+         m_pRoleExp->setScale(0.20);
+    }
+    m_pRoleExp->setString(StringUtils::format("%d/%d",int(PlayerProperty::getInstance()->getExp()),nextLevelExp));
+    
     m_pRoleLightDis->setString(StringUtils::format("%d",int(PlayerProperty::getInstance()->getLightDistance())));
     m_pRoleSearchDis->setString(StringUtils::format("%d",int(PlayerProperty::getInstance()->getSearchDistance())));
     m_pRoleCriticalStrike ->setString(StringUtils::format("%.1f%%",PlayerProperty::getInstance()->getCriticalStrikeRate().GetFloatValue()*100.0));
@@ -368,4 +382,13 @@ void RoleLayer::showEquipItemPopup(int itemId)
             itemPopupUi->setItemId(itemId);
         }
     }
+}
+int RoleLayer::getIntegerDigit(int source)
+{
+    int count =0 ;
+    while (source!=0) {
+        source/=10;
+        ++count;
+    }
+    return count;
 }
