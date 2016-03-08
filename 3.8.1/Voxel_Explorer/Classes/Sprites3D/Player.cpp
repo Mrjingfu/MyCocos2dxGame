@@ -68,6 +68,7 @@ Player::Player()
     m_pBlockRateUpNode = nullptr;
     
     m_fSecondTimer = 1.0f;
+    m_fAutoAttackTimer = 0.0f;
     
     m_pHurtData = new (std::nothrow) HurtData();
 }
@@ -104,6 +105,18 @@ void Player::update(float delta)
         m_pPlayerLight->setPosition3D(Vec3(getPositionX(),TerrainTile::CONTENT_SCALE*2,getPositionZ()));
     if(m_pFakeShadow)
         m_pFakeShadow->setPosition3D(Vec3(getPositionX(),-TerrainTile::CONTENT_SCALE*0.49f,getPositionZ()));
+    
+    
+    if(m_curState == PS_IDLE && !isStealth() && !isParalytic() )
+    {
+        m_fAutoAttackTimer = m_fAutoAttackTimer + delta;
+        if(m_fAutoAttackTimer > 0.5f)
+        {
+            TileInfo info;
+            if(VoxelExplorer::getInstance()->checkAutoAttack())
+                setState(Player::PS_ATTACK);
+        }
+    }
 }
 void Player::refreshPlayerBuffer()
 {
@@ -1074,6 +1087,7 @@ void Player::onEnterJumpMove()
 }
 void Player::onEnterAttack()
 {
+    m_fAutoAttackTimer = 0.0f;
     removePlayerBuffer(PB_STEALTH);
     Vec3 dir = Vec3::ZERO;
     switch (m_dir) {

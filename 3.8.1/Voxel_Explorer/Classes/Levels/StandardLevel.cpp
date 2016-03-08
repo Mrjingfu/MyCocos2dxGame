@@ -533,7 +533,7 @@ void StandardLevel::assignSpecialArea(Area* area)
             else if(RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nCurrentDepth.GetLongValue() % 2 == 1)
             {
                 
-                std::vector<Area::AREA_TYPE> randomTypes = { Area::AT_SPECIAL_EQUIPMENT_SHOP, Area::AT_SPECIAL_MAGIC_SHOP, Area::AT_SPECIAL_ALCHEMIST_ROOM };
+                std::vector<Area::AREA_TYPE> randomTypes = { Area::AT_SPECIAL_EQUIPMENT_SHOP, Area::AT_SPECIAL_MAGIC_SHOP, Area::AT_SPECIAL_ALCHEMIST_ROOM, Area::AT_SPECIAL_TREASURE_ROOM, Area::AT_SPECIAL_DECORATION_ROOM, Area::AT_SPECIAL_TRANSPOT_ROOM };
                 int rand = cocos2d::random(0, (int)(randomTypes.size()-1));
                 if(std::find(m_SpecailAreas.begin(), m_SpecailAreas.end(), randomTypes[rand]) != m_SpecailAreas.end())
                     type = randomTypes[rand];
@@ -545,7 +545,7 @@ void StandardLevel::assignSpecialArea(Area* area)
             }
             else
             {
-                std::vector<Area::AREA_TYPE> randomTypes = { Area::AT_SPECIAL_WITCH_ROOM, Area::AT_SPECIAL_SAGE_ROOM, Area::AT_SPECIAL_THEIF_ROOM };
+                std::vector<Area::AREA_TYPE> randomTypes = { Area::AT_SPECIAL_WITCH_ROOM, Area::AT_SPECIAL_SAGE_ROOM, Area::AT_SPECIAL_THEIF_ROOM, Area::AT_SPECIAL_EQUIPMENT_SHOP, Area::AT_SPECIAL_MAGIC_SHOP, Area::AT_SPECIAL_ALCHEMIST_ROOM, Area::AT_SPECIAL_TREASURE_ROOM, Area::AT_SPECIAL_DECORATION_ROOM, Area::AT_SPECIAL_TRANSPOT_ROOM };
                 int rand = cocos2d::random(0, (int)(randomTypes.size()-1));
                 if(std::find(m_SpecailAreas.begin(), m_SpecailAreas.end(), randomTypes[rand]) != m_SpecailAreas.end())
                     type = randomTypes[rand];
@@ -559,13 +559,15 @@ void StandardLevel::assignSpecialArea(Area* area)
     }
     else
     {
-        std::vector<Area::AREA_TYPE> randomTypes = { Area::AT_SPECIAL_WITCH_ROOM, Area::AT_SPECIAL_SAGE_ROOM, Area::AT_SPECIAL_MISSION_ROOM, Area::AT_SPECIAL_TREASURE_ROOM,Area::AT_SPECIAL_DECORATION_ROOM, Area::AT_SPECIAL_TRANSPOT_ROOM };
+        std::vector<Area::AREA_TYPE> randomTypes = { Area::AT_SPECIAL_WITCH_ROOM, Area::AT_SPECIAL_SAGE_ROOM, Area::AT_SPECIAL_MISSION_ROOM, Area::AT_SPECIAL_TREASURE_ROOM,Area::AT_SPECIAL_DECORATION_ROOM, Area::AT_SPECIAL_TRANSPOT_ROOM, Area::AT_SPECIAL_EQUIPMENT_SHOP, Area::AT_SPECIAL_MAGIC_SHOP, Area::AT_SPECIAL_ALCHEMIST_ROOM };
         int rand = cocos2d::random(0, (int)(randomTypes.size()-1));
         if(std::find(m_SpecailAreas.begin(), m_SpecailAreas.end(), randomTypes[rand]) != m_SpecailAreas.end())
             type = randomTypes.at(rand);
         else
             type = Area::AT_SPECIAL_DECORATION_ROOM;
     }
+    if(type == Area::AT_UNKNOWN)
+        type = Area::AT_SPECIAL_DECORATION_ROOM;
     area->setAreaType(type);
     auto iter = std::find(m_SpecailAreas.begin(), m_SpecailAreas.end(), type);
     if(iter != m_SpecailAreas.end())
@@ -947,35 +949,35 @@ void StandardLevel::showMap(bool show)
                     case TerrainTile::TT_SMALL_PORTAL:
                         {
                             if(info.m_AreaType >= Area::AT_SPECIAL_EQUIPMENT_SHOP)
-                                m_pMapDrawNode->drawPolygon(vertices, 4, Color4F::MAGENTA, 0, Color4F(0,0,0,0));
+                                m_pMapDrawNode->drawPolygon(vertices, 4, Color4F(1,0,1, 0.3f), 0, Color4F(0,0,0,0));
                             else if(info.m_AreaType == Area::AT_BOSS_EXIT)
-                                m_pMapDrawNode->drawPolygon(vertices, 4, Color4F::YELLOW, 0, Color4F(0,0,0,0));
+                                m_pMapDrawNode->drawPolygon(vertices, 4, Color4F(1,1,0, 0.3f), 0, Color4F(0,0,0,0));
                             else if(info.m_AreaType == Area::AT_BOSS_ROOM)
-                                m_pMapDrawNode->drawPolygon(vertices, 4, Color4F(0,1,1,1), 0, Color4F(0,0,0,0));
+                                m_pMapDrawNode->drawPolygon(vertices, 4, Color4F(0,1,1, 0.3f), 0, Color4F(0,0,0,0));
                             else
-                                m_pMapDrawNode->drawPolygon(vertices, 4, Color4F::WHITE, 0, Color4F(0,0,0,0));
+                                m_pMapDrawNode->drawPolygon(vertices, 4, Color4F(1,1,1, 0.0f), 0, Color4F(0,0,0,0));
                         }
                         break;
                     case TerrainTile::TT_SECRET_DOOR:
                     case TerrainTile::TT_WALL:
-                        m_pMapDrawNode->drawPolygon(vertices, 4, Color4F::GRAY, 0, Color4F(0,0,0,0));
+                        m_pMapDrawNode->drawPolygon(vertices, 4, Color4F(1.0f,1.0f,1.0f,0.5f), 0, Color4F(0,0,0,0));
                         break;
                     case TerrainTile::TT_ENTRANCE:
-                        m_pMapDrawNode->drawPolygon(vertices, 4, Color4F::YELLOW, 0, Color4F(0,0,0,0));
+                        m_pMapDrawNode->drawPolygon(vertices, 4, Color4F(1,1,0,0.7f), 0, Color4F(0,0,0,0));
                         break;
                     case TerrainTile::TT_EXIT:
-                        m_pMapDrawNode->drawPolygon(vertices, 4, Color4F::GREEN, 0, Color4F(0,0,0,0));
+                        m_pMapDrawNode->drawPolygon(vertices, 4, Color4F(0,1,0,0.7f), 0, Color4F(0,0,0,0));
                         break;
                     case TerrainTile::TT_TUNNEL:
-                        m_pMapDrawNode->drawPolygon(vertices, 4, Color4F::ORANGE, 0, Color4F(0,0,0,0));
+                        m_pMapDrawNode->drawPolygon(vertices, 4, Color4F(1,0.5f,0,0.5f), 0, Color4F(0,0,0,0));
                         break;
                     case TerrainTile::TT_DOOR:
                     case TerrainTile::TT_LOCKED_MAGIC_DOOR:
-                        m_pMapDrawNode->drawPolygon(vertices, 4, Color4F::BLUE, 0, Color4F(0,0,0,0));
+                        m_pMapDrawNode->drawPolygon(vertices, 4, Color4F(0,0,1,0.7f), 0, Color4F(0,0,0,0));
                         break;
                     case TerrainTile::TT_LOCKED_DOOR:
                     case TerrainTile::TT_LOCKED_BOSS_DOOR:
-                        m_pMapDrawNode->drawPolygon(vertices, 4, Color4F::RED, 0, Color4F(0,0,0,0));
+                        m_pMapDrawNode->drawPolygon(vertices, 4, Color4F(1,0,0,0.7f), 0, Color4F(0,0,0,0));
                         break;
                     case TerrainTile::TT_HIDE_TOXIC_TRAP:
                     case TerrainTile::TT_HIDE_FIRE_TRAP:
@@ -985,28 +987,28 @@ void StandardLevel::showMap(bool show)
                     case TerrainTile::TT_HIDE_WEAK_TRAP:
                         {
                             if(info.m_AreaType == Area::AT_BOSS_ROOM)
-                                m_pMapDrawNode->drawPolygon(vertices, 4, Color4F(0,1,1,1), 0, Color4F(0,0,0,0));
+                                m_pMapDrawNode->drawPolygon(vertices, 4, Color4F(0,1,1,0.3f), 0, Color4F(0,0,0,0));
                             else
-                                m_pMapDrawNode->drawPolygon(vertices, 4, Color4F::WHITE, 0, Color4F(0,0,0,0));
+                                m_pMapDrawNode->drawPolygon(vertices, 4, Color4F(1,1,1, 0.0f), 0, Color4F(0,0,0,0));
                         }
                         break;
                     case TerrainTile::TT_TOXIC_TRAP:
-                        m_pMapDrawNode->drawPolygon(vertices, 4, Color4F(27.0f/255.0f, 186.0f/255.0f, 52.0f/255.0f, 1.0f), 0, Color4F(0,0,0,0));
+                        m_pMapDrawNode->drawPolygon(vertices, 4, Color4F(27.0f/255.0f, 186.0f/255.0f, 52.0f/255.0f, 0.7f), 0, Color4F(0,0,0,0));
                         break;
                     case TerrainTile::TT_FIRE_TRAP:
-                        m_pMapDrawNode->drawPolygon(vertices, 4, Color4F(1.0f, 131.0f/255.0f, 41.0f/255.0f, 1.0f), 0, Color4F(0,0,0,0));
+                        m_pMapDrawNode->drawPolygon(vertices, 4, Color4F(1.0f, 131.0f/255.0f, 41.0f/255.0f, 0.7f), 0, Color4F(0,0,0,0));
                         break;
                     case TerrainTile::TT_PARALYTIC_TRAP:
-                        m_pMapDrawNode->drawPolygon(vertices, 4, Color4F(100.0f/255.0f, 201.0f/255.0f, 250.0f/255.0f, 1.0f), 0, Color4F(0,0,0,0));
+                        m_pMapDrawNode->drawPolygon(vertices, 4, Color4F(100.0f/255.0f, 201.0f/255.0f, 250.0f/255.0f, 0.7f), 0, Color4F(0,0,0,0));
                         break;
                     case TerrainTile::TT_GRIPPING_TRAP:
-                        m_pMapDrawNode->drawPolygon(vertices, 4, Color4F(174.0f/255.0f, 230.0f/255.0f, 1.0f, 1.0f), 0, Color4F(0,0,0,0));
+                        m_pMapDrawNode->drawPolygon(vertices, 4, Color4F(174.0f/255.0f, 230.0f/255.0f, 1.0f, 0.7f), 0, Color4F(0,0,0,0));
                         break;
                     case TerrainTile::TT_SUMMONING_TRAP:
-                        m_pMapDrawNode->drawPolygon(vertices, 4, Color4F(178.0f/255.0f, 84.0f/255.0f, 242.0f/255.0f, 1.0f), 0, Color4F(0,0,0,0));
+                        m_pMapDrawNode->drawPolygon(vertices, 4, Color4F(178.0f/255.0f, 84.0f/255.0f, 242.0f/255.0f, 0.7f), 0, Color4F(0,0,0,0));
                         break;
                     case TerrainTile::TT_WEAK_TRAP:
-                        m_pMapDrawNode->drawPolygon(vertices, 4, Color4F(234.0f/255.0f, 196.0f/255.0f, 96.0f/255.0f, 1.0f), 0, Color4F(0,0,0,0));
+                        m_pMapDrawNode->drawPolygon(vertices, 4, Color4F(234.0f/255.0f, 196.0f/255.0f, 96.0f/255.0f, 0.7f), 0, Color4F(0,0,0,0));
                         break;
                     default:
                         break;
@@ -1022,7 +1024,7 @@ void StandardLevel::showMap(bool show)
             {
                 BasePortal* protal = dynamic_cast<BasePortal*>(child);
                 if(protal && protal->isVisible() && protal->isCanUse())
-                    m_pMapDrawNode->drawDot(protal->getPosInMap()+Vec2(0.5f, 0.5f), 0.5f, Color4F::ORANGE);
+                    m_pMapDrawNode->drawDot(protal->getPosInMap()+Vec2(0.5f, 0.5f), 0.5f, Color4F(1,0.5f,0, 0.7f));
             }
         }
         if(VoxelExplorer::getInstance()->getUseableItemsLayer())
@@ -1031,7 +1033,7 @@ void StandardLevel::showMap(bool show)
             {
                 UseableItem* useableItem = dynamic_cast<UseableItem*>(child);
                 if(useableItem && useableItem->isVisible())
-                    m_pMapDrawNode->drawDot(useableItem->getPosInMap()+Vec2(0.5f, 0.5f), 0.5f, Color4F(0, 1.0f, 1.0f, 1.0f));
+                    m_pMapDrawNode->drawDot(useableItem->getPosInMap()+Vec2(0.5f, 0.5f), 0.5f, Color4F(0, 1.0f, 1.0f, 0.7f));
             }
         }
         if(VoxelExplorer::getInstance()->getNPCsLayer())
@@ -1040,7 +1042,7 @@ void StandardLevel::showMap(bool show)
             {
                 Npc* npc = dynamic_cast<Npc*>(child);
                 if(npc && npc->isVisible())
-                    m_pMapDrawNode->drawDot(npc->getPosInMap()+Vec2(0.5f, 0.5f), 0.5f, Color4F::GREEN);
+                    m_pMapDrawNode->drawDot(npc->getPosInMap()+Vec2(0.5f, 0.5f), 0.5f, Color4F(0,1,0, 0.7f));
             }
         }
         if (VoxelExplorer::getInstance()->getPickableItemsLayer())
@@ -1049,7 +1051,7 @@ void StandardLevel::showMap(bool show)
             {
                 PickableItem* pickableItem = dynamic_cast<PickableItem*>(child);
                 if(pickableItem && pickableItem->isVisible() && (pickableItem->getState() == PickableItem::PIS_IDLE))
-                    m_pMapDrawNode->drawDot(pickableItem->getPosInMap()+Vec2(0.5f, 0.5f), 0.5f, Color4F(1.0f, 0.5f, 0.0f, 1.0f));
+                    m_pMapDrawNode->drawDot(pickableItem->getPosInMap()+Vec2(0.5f, 0.5f), 0.5f, Color4F(1.0f, 0.5f, 0.0f, 0.7f));
             }
         }
         if (VoxelExplorer::getInstance()->getMonstersLayer())
@@ -1058,7 +1060,7 @@ void StandardLevel::showMap(bool show)
             {
                 BaseMonster* monster = dynamic_cast<BaseMonster*>(child);
                 if(monster && monster->isVisible())
-                    m_pMapDrawNode->drawDot(monster->getPosInMap()+Vec2(0.5f, 0.5f), 0.5f, Color4F(0.0f, 0.5f, 1.0f, 1.0f));
+                    m_pMapDrawNode->drawDot(monster->getPosInMap()+Vec2(0.5f, 0.5f), 0.5f, Color4F(0.0f, 0.5f, 1.0f, 0.7f));
             }
         }
         if(VoxelExplorer::getInstance()->getBossLayer())
@@ -1067,12 +1069,12 @@ void StandardLevel::showMap(bool show)
             {
                 BaseBoss* boss = dynamic_cast<BaseBoss*>(child);
                 if(boss && boss->isVisible())
-                    m_pMapDrawNode->drawDot(boss->getPosInMap()+Vec2(0.5f, 0.5f), 0.5f, Color4F::MAGENTA);
+                    m_pMapDrawNode->drawDot(boss->getPosInMap()+Vec2(0.5f, 0.5f), 0.5f, Color4F(1,0,1, 0.7f));
             }
         }
         if(VoxelExplorer::getInstance()->getPlayer() && VoxelExplorer::getInstance()->getPlayer()->isVisible())
         {
-            m_pMapDrawNode->drawDot(VoxelExplorer::getInstance()->getPlayer()->getPosInMap()+Vec2(0.5f, 0.5f), 0.5f, Color4F::RED);
+            m_pMapDrawNode->drawDot(VoxelExplorer::getInstance()->getPlayer()->getPosInMap()+Vec2(0.5f, 0.5f), 0.5f, Color4F(1,0,0, 0.7f));
         }
     }
 }

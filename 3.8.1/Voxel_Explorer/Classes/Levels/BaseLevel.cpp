@@ -304,6 +304,25 @@ bool BaseLevel::checkMovable(Actor* actor, TileInfo& info)
     }
     return false;
 }
+bool BaseLevel::checkAutoAttack(Actor* actor)
+{
+    if(!actor)
+        return false;
+    Vec2 pos = actor->getPosInMap();
+    if(actor->getActorDir() == Actor::AD_LEFT)
+        pos += Vec2(-1, 0);
+    else if(actor->getActorDir() == Actor::AD_RIGHT)
+        pos += Vec2(1, 0);
+    else if(actor->getActorDir() == Actor::AD_FORWARD)
+        pos += Vec2(0, 1);
+    else if(actor->getActorDir() == Actor::AD_BACK)
+        pos += Vec2(0, -1);
+    int index = pos.x + pos.y*m_nWidth;
+    
+    if(((m_Map[index].m_Flag & TileInfo::ATTACKABLE) != 0) && ((m_Map[index].m_Flag & TileInfo::USEABLE) == 0))
+        return true;
+    return false;
+}
 int BaseLevel::assignTerrainTileFlag(TerrainTile::TileType type)
 {
     int flag = TileInfo::INITIALISED;

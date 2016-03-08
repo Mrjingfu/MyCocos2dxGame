@@ -117,6 +117,7 @@ private:
     cocos2d::Node*                     m_pBlockRateUpNode;  ///格挡率上升特效节点
     
     float                       m_fSecondTimer;
+    float                       m_fAutoAttackTimer;
 
     
     HurtData*                   m_pHurtData;
