@@ -913,10 +913,9 @@ void VoxelExplorer::generatePickItem(const cocos2d::Vec2& pos, bool generateItem
 }
 void VoxelExplorer::generatePickItemByUseableItem(const cocos2d::Vec2& pos, UseableItem::UseableItemType type)
 {
-    CChaosNumber dc = RandomDungeon::getInstance()->getDifficultClass();
     CChaosNumber nodeDepth = RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nNodeDepth;
     CChaosNumber currentDepth = RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nCurrentDepth;
-    CChaosNumber level = (dc-1)*30 + (nodeDepth-1)*5 + cocos2d::random(0, (int)currentDepth.GetLongValue()) + 1;
+    CChaosNumber level = (nodeDepth-1)*5 + cocos2d::random(0, (int)currentDepth.GetLongValue()) + 1;
     
     if(type <= UseableItem::UIT_CHEST_GOLD)
     {

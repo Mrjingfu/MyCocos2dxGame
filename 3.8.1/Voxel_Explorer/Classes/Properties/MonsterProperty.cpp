@@ -69,10 +69,9 @@ void MonsterProperty::adjustByDC()
             m_bIsElite = (amElite->getRandomIndex() == 1);
     }
     
-    CChaosNumber dc = RandomDungeon::getInstance()->getDifficultClass();
     CChaosNumber nodeDepth = RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nNodeDepth;
     CChaosNumber currentDepth = RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nCurrentDepth;
-    m_nLevel = currentDepth.GetLongValue() + (dc-1)*30 + (nodeDepth-1)*6 + cocos2d::random(0, 2);
+    m_nLevel = currentDepth.GetLongValue()  + (nodeDepth-1)*6 + cocos2d::random(0, 2);
     if(m_bIsElite)
         m_nLevel = m_nLevel + 5;
     
@@ -84,17 +83,17 @@ void MonsterProperty::adjustByDC()
     m_nMaxHP = m_nMaxHP + m_nLevel.GetLongValue()*cocos2d::random(10, 15);
     m_nCurrentHP = m_nMaxHP;
     
-    m_nAddedMinAttack = m_nAddedMinAttack + (dc-1)*10 + (nodeDepth-1)*6;
-    m_nAddedMaxAttack = m_nAddedMaxAttack + (dc-1)*30 + + (nodeDepth-1)*12;
+    m_nAddedMinAttack = m_nAddedMinAttack + (nodeDepth-1)*6;
+    m_nAddedMaxAttack = m_nAddedMaxAttack + (nodeDepth-1)*12;
     
-    m_nAttackDiceNum = m_nAttackDiceNum + (dc-1)*5 + (nodeDepth-1);
+    m_nAttackDiceNum = m_nAttackDiceNum + (nodeDepth-1);
     m_nAttackDiceFaceNum = m_nAttackDiceFaceNum + (nodeDepth-1)*2 + (m_nLevel-1);
     
-    m_nArmorClass = m_nArmorClass - (dc-1)*20 - (nodeDepth-1)*10 - (m_nLevel-1)*1.5f;
+    m_nArmorClass = m_nArmorClass - (nodeDepth-1)*10 - (m_nLevel-1)*1.5f;
     
-    m_fBlockRate = MIN(m_fBlockRate + m_fBlockRate*(nodeDepth-1)*0.5f + m_fBlockRate*(dc-1)*5.0f, 0.4f);
-    m_fCriticalStrikeRate = MIN(m_fCriticalStrikeRate + m_fCriticalStrikeRate*(nodeDepth-1)*0.5f + m_fCriticalStrikeRate*(dc-1)*5.0f, 0.3f);
-    m_fDodgeRate = MIN(m_fDodgeRate + m_fDodgeRate*(nodeDepth-1)*0.5f + m_fDodgeRate*(dc-1)*5.0f, 0.2f);
+    m_fBlockRate = MIN(m_fBlockRate + m_fBlockRate*(nodeDepth-1)*0.5f, 0.4f);
+    m_fCriticalStrikeRate = MIN(m_fCriticalStrikeRate + m_fCriticalStrikeRate*(nodeDepth-1)*0.5f, 0.3f);
+    m_fDodgeRate = MIN(m_fDodgeRate + m_fDodgeRate*(nodeDepth-1)*0.5f, 0.2f);
 }
 CChaosNumber MonsterProperty::getRandomAttack()
 {
