@@ -42,6 +42,8 @@ LOCAL_LDLIBS := -landroid -llog
 
 LOCAL_STATIC_LIBRARIES := cocos2dx_static
 
+LOCAL_STATIC_LIBRARIES += bugly_crashreport_cocos_static
+
 # _COCOS_LIB_ANDROID_BEGIN
 # _COCOS_LIB_ANDROID_END
 
@@ -50,6 +52,7 @@ include $(BUILD_SHARED_LIBRARY)
 $(call import-module,.)
 $(call import-module, ./sdkbox)
 $(call import-module, ./plugingoogleanalytics)
+$(call import-module,external/bugly)
 
 # _COCOS_LIB_IMPORT_ANDROID_BEGIN
 # _COCOS_LIB_IMPORT_ANDROID_END

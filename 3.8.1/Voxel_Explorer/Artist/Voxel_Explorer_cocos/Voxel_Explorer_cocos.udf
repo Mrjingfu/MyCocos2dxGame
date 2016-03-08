@@ -32,8 +32,9 @@
       <Value ctype="TabsInfo">
         <OpenedDocuments>
           <FilePathData Path="rolenewLayer.csd" />
+          <FilePathData Path="gametoolbarLayer.csd" />
         </OpenedDocuments>
-        <ActiveDocument Path="rolenewLayer.csd" />
+        <ActiveDocument Path="gametoolbarLayer.csd" />
       </Value>
     </Item>
   </Properties>

@@ -27,6 +27,8 @@
 
 		<exec executable="python" failonerror="true">
             <arg value="build_native.py"/>
+            <arg value="-b"/>
+            <arg value="release"/>
         </exec>
     </target>
 

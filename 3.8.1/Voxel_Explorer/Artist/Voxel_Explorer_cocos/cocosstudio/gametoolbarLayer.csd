@@ -9,7 +9,7 @@
           <AbstractNodeData Name="game_toolbar_bg" ActionTag="254888657" Tag="191" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" Scale9Enable="True" LeftEage="5" RightEage="5" TopEage="5" BottomEage="5" Scale9OriginX="5" Scale9OriginY="5" Scale9Width="4" Scale9Height="4" ctype="ImageViewObjectData">
             <Size X="320.0000" Y="40.0000" />
             <Children>
-              <AbstractNodeData Name="game_btn_msg" ActionTag="1262454972" Tag="192" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" RightMargin="275.0000" Scale9Enable="True" LeftEage="5" RightEage="5" TopEage="5" BottomEage="5" Scale9OriginX="5" Scale9OriginY="5" Scale9Width="6" Scale9Height="6" ctype="ImageViewObjectData">
+              <AbstractNodeData Name="game_btn_msg" ActionTag="1262454972" Tag="192" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="231.0000" RightMargin="44.0000" Scale9Enable="True" LeftEage="5" RightEage="5" TopEage="5" BottomEage="5" Scale9OriginX="5" Scale9OriginY="5" Scale9Width="6" Scale9Height="6" ctype="ImageViewObjectData">
                 <Size X="45.0000" Y="40.0000" />
                 <Children>
                   <AbstractNodeData Name="game_btn_msg_icon" ActionTag="234881483" Tag="193" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="8.5000" RightMargin="8.5000" TopMargin="6.0000" BottomMargin="6.0000" Scale9Width="28" Scale9Height="28" ctype="ImageViewObjectData">
@@ -23,11 +23,11 @@
                     <FileData Type="PlistSubImage" Path="ui_msg_icon.png" Plist="ui_sprite.plist" />
                   </AbstractNodeData>
                 </Children>
-                <AnchorPoint ScaleY="0.5000" />
-                <Position Y="20.0000" />
+                <AnchorPoint ScaleX="1.0000" ScaleY="0.5000" />
+                <Position X="276.0000" Y="20.0000" />
                 <Scale ScaleX="1.0000" ScaleY="1.0000" />
                 <CColor A="255" R="255" G="255" B="255" />
-                <PrePosition Y="0.5000" />
+                <PrePosition X="0.8625" Y="0.5000" />
                 <PreSize X="0.1406" Y="1.0000" />
                 <FileData Type="PlistSubImage" Path="ui_frame_8.png" Plist="ui_sprite.plist" />
               </AbstractNodeData>
@@ -75,7 +75,7 @@
                 <PreSize X="0.1406" Y="1.0000" />
                 <FileData Type="PlistSubImage" Path="ui_frame_8.png" Plist="ui_sprite.plist" />
               </AbstractNodeData>
-              <AbstractNodeData Name="game_btn_pause" ActionTag="-1390207810" Tag="198" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="186.0080" RightMargin="88.9920" Scale9Enable="True" LeftEage="5" RightEage="5" TopEage="5" BottomEage="5" Scale9OriginX="5" Scale9OriginY="5" Scale9Width="6" Scale9Height="6" ctype="ImageViewObjectData">
+              <AbstractNodeData Name="game_btn_pause" ActionTag="-1390207810" Tag="198" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="275.0000" Scale9Enable="True" LeftEage="5" RightEage="5" TopEage="5" BottomEage="5" Scale9OriginX="5" Scale9OriginY="5" Scale9Width="6" Scale9Height="6" ctype="ImageViewObjectData">
                 <Size X="45.0000" Y="40.0000" />
                 <Children>
                   <AbstractNodeData Name="game_btn_pause_icon" ActionTag="-469568484" Tag="199" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="13.5000" RightMargin="13.5000" TopMargin="8.0000" BottomMargin="8.0000" Scale9Width="18" Scale9Height="24" ctype="ImageViewObjectData">
@@ -90,14 +90,14 @@
                   </AbstractNodeData>
                 </Children>
                 <AnchorPoint ScaleX="1.0000" ScaleY="0.5000" />
-                <Position X="231.0080" Y="20.0000" />
+                <Position X="320.0000" Y="20.0000" />
                 <Scale ScaleX="1.0000" ScaleY="1.0000" />
                 <CColor A="255" R="255" G="255" B="255" />
-                <PrePosition X="0.7219" Y="0.5000" />
+                <PrePosition X="1.0000" Y="0.5000" />
                 <PreSize X="0.1406" Y="1.0000" />
                 <FileData Type="PlistSubImage" Path="ui_frame_8.png" Plist="ui_sprite.plist" />
               </AbstractNodeData>
-              <AbstractNodeData Name="game_btn_search" ActionTag="-1861566974" Tag="200" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="231.0000" RightMargin="44.0000" Scale9Enable="True" LeftEage="5" RightEage="5" TopEage="5" BottomEage="5" Scale9OriginX="5" Scale9OriginY="5" Scale9Width="6" Scale9Height="6" ctype="ImageViewObjectData">
+              <AbstractNodeData Name="game_btn_search" ActionTag="-1861566974" Tag="200" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" RightMargin="275.0000" Scale9Enable="True" LeftEage="5" RightEage="5" TopEage="5" BottomEage="5" Scale9OriginX="5" Scale9OriginY="5" Scale9Width="6" Scale9Height="6" ctype="ImageViewObjectData">
                 <Size X="45.0000" Y="40.0000" />
                 <Children>
                   <AbstractNodeData Name="game_btn_search_icon" ActionTag="224306018" Tag="201" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="2.5000" RightMargin="2.5000" TopMargin="-8.0000" BottomMargin="-8.0000" Scale9Width="40" Scale9Height="56" ctype="ImageViewObjectData">
@@ -111,15 +111,15 @@
                     <FileData Type="PlistSubImage" Path="button_rewardbtn_icon_search.png" Plist="ui_sprite.plist" />
                   </AbstractNodeData>
                 </Children>
-                <AnchorPoint ScaleX="1.0000" ScaleY="0.5000" />
-                <Position X="276.0000" Y="20.0000" />
+                <AnchorPoint ScaleY="0.5000" />
+                <Position Y="20.0000" />
                 <Scale ScaleX="1.0000" ScaleY="1.0000" />
                 <CColor A="255" R="255" G="255" B="255" />
-                <PrePosition X="0.8625" Y="0.5000" />
+                <PrePosition Y="0.5000" />
                 <PreSize X="0.1406" Y="1.0000" />
                 <FileData Type="PlistSubImage" Path="ui_frame_8.png" Plist="ui_sprite.plist" />
               </AbstractNodeData>
-              <AbstractNodeData Name="game_btn_dist" ActionTag="-1048685658" Tag="202" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="275.0000" Scale9Enable="True" LeftEage="5" RightEage="5" TopEage="5" BottomEage="5" Scale9OriginX="5" Scale9OriginY="5" Scale9Width="6" Scale9Height="6" ctype="ImageViewObjectData">
+              <AbstractNodeData Name="game_btn_dist" ActionTag="-1048685658" Tag="202" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="186.0080" RightMargin="88.9920" Scale9Enable="True" LeftEage="5" RightEage="5" TopEage="5" BottomEage="5" Scale9OriginX="5" Scale9OriginY="5" Scale9Width="6" Scale9Height="6" ctype="ImageViewObjectData">
                 <Size X="45.0000" Y="40.0000" />
                 <Children>
                   <AbstractNodeData Name="game_btn_dist_icon" ActionTag="-1616197811" Tag="203" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="11.5000" RightMargin="11.5000" TopMargin="6.0000" BottomMargin="6.0000" Scale9Width="22" Scale9Height="28" ctype="ImageViewObjectData">
@@ -134,10 +134,10 @@
                   </AbstractNodeData>
                 </Children>
                 <AnchorPoint ScaleX="1.0000" ScaleY="0.5000" />
-                <Position X="320.0000" Y="20.0000" />
+                <Position X="231.0080" Y="20.0000" />
                 <Scale ScaleX="1.0000" ScaleY="1.0000" />
                 <CColor A="255" R="255" G="255" B="255" />
-                <PrePosition X="1.0000" Y="0.5000" />
+                <PrePosition X="0.7219" Y="0.5000" />
                 <PreSize X="0.1406" Y="1.0000" />
                 <FileData Type="PlistSubImage" Path="ui_frame_8.png" Plist="ui_sprite.plist" />
               </AbstractNodeData>

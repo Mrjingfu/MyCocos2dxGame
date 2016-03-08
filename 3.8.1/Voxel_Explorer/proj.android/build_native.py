@@ -72,12 +72,12 @@ def do_build(cocos_root, ndk_root, app_android_root,ndk_build_param,sdk_root,and
     elif android_platform is not None:
     	  sdk_tool_path = os.path.join(sdk_root, "tools/android")
     	  cocoslib_path = os.path.join(cocos_root, "cocos/platform/android/java")
-    	  command = '%s update lib-project -t %s -p %s' % (sdk_tool_path,android_platform,cocoslib_path) 
+    	  command = '%s update lib-project -t %s -p %s' % (sdk_tool_path,android_platform,cocoslib_path)
     	  if os.system(command) != 0:
-    	  	  raise Exception("update cocos lib-project [ " + cocoslib_path + " ] fails!")  	  
+    	  	  raise Exception("update cocos lib-project [ " + cocoslib_path + " ] fails!")
     	  command = '%s update project -t %s -p %s -s' % (sdk_tool_path,android_platform,app_android_root)
     	  if os.system(command) != 0:
-    	  	  raise Exception("update project [ " + app_android_root + " ] fails!")    	  	  
+    	  	  raise Exception("update project [ " + app_android_root + " ] fails!")
     	  buildfile_path = os.path.join(app_android_root, "build.xml")
     	  command = 'ant clean %s -f %s -Dsdk.dir=%s' % (build_mode,buildfile_path,sdk_root)
     	  os.system(command)
@@ -118,7 +118,7 @@ def build(ndk_build_param,android_platform,build_mode):
 
     app_android_root = current_dir
     copy_resources(app_android_root)
-    
+
     if android_platform is not None:
 				sdk_root = check_environment_variables_sdk()
 				if android_platform.isdigit():
@@ -126,12 +126,12 @@ def build(ndk_build_param,android_platform,build_mode):
 				else:
 						print 'please use vaild android platform'
 						exit(1)
-		
+
     if build_mode is None:
     	  build_mode = 'debug'
     elif build_mode != 'release':
         build_mode = 'debug'
-    
+
     do_build(cocos_root, ndk_root, app_android_root,ndk_build_param,sdk_root,android_platform,build_mode)
 def generateDexMd5():
     app_android_root=current_dir = os.path.dirname(os.path.realpath(__file__))
@@ -156,17 +156,51 @@ def generateDexMd5():
     f = open(MD5_HEADER_FILE,'wt')
     f.write(RET_STR)
     f.close();
+def post_copy_libs():
+    print 'post_copy_libs'
+    app_android_root=current_dir = os.path.dirname(os.path.realpath(__file__))
+    thirhLibs = os.path.join(app_android_root,'../libs/armeabi')
+    projectLibPath = os.path.join(app_android_root,'libs/armeabi')
+    copyDirFile(thirhLibs,projectLibPath)
+
+def copyDirFile(soruce,target):
+    if (not os.path.isdir(soruce)) or (not os.path.exists(soruce)):
+        return;
+    if (not os.path.isdir(target)) or (not os.path.exists(target)):
+        return;
+    for fName in os.listdir(soruce):
+        sourceFile = os.path.join(soruce,fName)
+        targetFile = os.path.join(target,fName)
+        if fName == ".DS_Store":
+            continue
+        if os.path.isfile(sourceFile):
+            copyFile(sourceFile,targetFile)
+def copyFile(sourceFile, targetFile):
+    print 'sourceFile:'+sourceFile
+    print 'targetFile:'+targetFile
+    if not os.path.exists(sourceFile):
+        return
+    if not os.path.exists(targetFile) or os.path.exists(targetFile) and os.path.getsize(targetFile) != os.path.getsize(sourceFile):
+        targetDir = os.path.dirname(targetFile)
+        if not os.path.exists(targetDir):
+            os.makedirs(targetDir)
+        targetFileHandle = open(targetFile, 'wb')
+        sourceFileHandle = open(sourceFile, 'rb')
+        targetFileHandle.write(sourceFileHandle.read())
+        targetFileHandle.close()
+        sourceFileHandle.close()
 # -------------- main --------------
 if __name__ == '__main__':
 
     parser = OptionParser()
     parser.add_option("-n", "--ndk", dest="ndk_build_param", help='parameter for ndk-build', action="append")
-    parser.add_option("-p", "--platform", dest="android_platform", 
+    parser.add_option("-p", "--platform", dest="android_platform",
     help='parameter for android-update.Without the parameter,the script just build dynamic library for project. Valid android-platform are:[10|11|12|13|14|15|16|17|18|19]')
-    parser.add_option("-b", "--build", dest="build_mode", 
+    parser.add_option("-b", "--build", dest="build_mode",
     help='the build mode for java project,debug[default] or release.Get more information,please refer to http://developer.android.com/tools/building/building-cmdline.html')
     (opts, args) = parser.parse_args()
-    
+
     print "We will remove this script next version,you should use cocos console to build android project.\n"
     generateDexMd5()
     build(opts.ndk_build_param,opts.android_platform,opts.build_mode)
+    post_copy_libs();
