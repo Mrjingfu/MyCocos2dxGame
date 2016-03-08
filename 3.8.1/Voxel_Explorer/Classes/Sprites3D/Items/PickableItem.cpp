@@ -915,7 +915,7 @@ PickableItem::PickableItemType PickableItem::generateKeyItemType()
 }
 PickableItem::PickableItemType PickableItem::generateScrollType()
 {
-    float percent1 = 0.4f;
+    float percent1 = 0.5f;
     float percent2 = 0.15f;
     float percent3 = 0.1f;
     float percent4 = 0.1f;

@@ -441,6 +441,12 @@ bool VoxelExplorer::checkMovable(TileInfo& info)
         return false;
     return m_pCurrentLevel->checkMovable(m_pPlayer, info);
 }
+bool VoxelExplorer::checkAutoAttack()
+{
+    if(!m_pCurrentLevel || !m_pPlayer)
+        return false;
+    return m_pCurrentLevel->checkAutoAttack(m_pPlayer);
+}
 void VoxelExplorer::cameraTrackPlayer()
 {
     if(m_pPlayer && m_pMainCamera)

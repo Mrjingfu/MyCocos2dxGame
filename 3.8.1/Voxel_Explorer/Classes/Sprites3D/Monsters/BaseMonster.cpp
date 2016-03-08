@@ -469,8 +469,9 @@ void BaseMonster::onEnterDeath()
         bool generateItem = GameFormula::generatePickItemByMonster(m_pMonsterProperty->isElite(), false);
         int level = (int)m_pMonsterProperty->getLevel().GetLongValue();
         if(m_pMonsterProperty->isElite())
-            level = MAX(1, level- 3);
-        VoxelExplorer::getInstance()->generatePickItem(getPosInMap(), generateItem, (int)m_pMonsterProperty->getValueCopper().GetLongValue(), level);
+            VoxelExplorer::getInstance()->generatePickItemByUseableItem(getPosInMap(),UseableItem::UIT_CHEST_GOLD);
+        else
+            VoxelExplorer::getInstance()->generatePickItem(getPosInMap(), generateItem, (int)m_pMonsterProperty->getValueCopper().GetLongValue(), level);
     }
     std::string soundName = LevelResourceManager::getInstance()->getMonsterSoundEffectRes(MONSTER_MODEL_NAMES[m_Type], "DEATH");
     SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());

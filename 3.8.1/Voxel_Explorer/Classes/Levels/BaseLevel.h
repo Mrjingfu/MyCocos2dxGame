@@ -144,6 +144,7 @@ public:
     void updateTerrainTileFogOfWar(int x, int y , int width, int height, bool visited);
     void updateTrapTileByPos(const cocos2d::Vec2& pos);
     bool checkMovable(Actor* actor, TileInfo& info);
+    bool checkAutoAttack(Actor* actor);
     
     bool getNextPathStep(const cocos2d::Vec2& from, const cocos2d::Vec2& to, cocos2d::Vec2& nextPos);
     bool getBackPathStep(const cocos2d::Vec2& current, const cocos2d::Vec2& from, cocos2d::Vec2& nextPos);
