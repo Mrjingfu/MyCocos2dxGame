@@ -93,8 +93,8 @@ bool ShopPopupUI::addEvents()
     m_pShopMangerLayer = BagMangerLayerUI::create(m_pShopGridView->getInnerContainerSize());
     m_pShopMangerLayer->setPosition(m_pShopGridView->getContentSize()*0.5);
     m_pShopMangerLayer->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
-    m_pShopGridView->addChildLayer(m_pShopMangerLayer,60);
-    
+    m_pShopGridView->addChildLayer(m_pShopMangerLayer);
+    m_pShopMangerLayer->setZOrder(m_pShopGridView->getItems().size());
     m_pBtnClose->addClickEventListener(CC_CALLBACK_1(ShopPopupUI::onClickClose, this));
     refreshUIView();
     
@@ -201,11 +201,15 @@ void ShopPopupUI::selectItemEvent(cocos2d::Ref *pSender, TGridView::EventType ty
 {
     if (type==TGridView::EventType::ON_SELECTED_ITEM_END) {
         TGridView* gridView = static_cast<TGridView*>(pSender);
-        int currentItemId = m_pShopMangerLayer->getItemId(gridView->getCurSelectedIndex());
-        if (currentItemId!=-1) {
-            
-            shopItemOpe(currentItemId);
+        if(gridView)
+        {
+            int currentItemId = m_pShopMangerLayer->getItemId(gridView->getCurSelectedIndex());
+            if (currentItemId!=-1) {
+                
+                shopItemOpe(currentItemId);
+            }
         }
+
     }
 }
 void ShopPopupUI::shopItemOpe(int itemId)

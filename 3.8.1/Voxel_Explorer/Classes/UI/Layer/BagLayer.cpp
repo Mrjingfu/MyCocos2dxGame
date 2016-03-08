@@ -95,7 +95,7 @@ bool BagLayer::init()
     m_BagMsgLayer = BagMangerLayerUI::create(m_pGridView->getContentSize());
     m_BagMsgLayer->setPosition(m_pGridView->getContentSize()*0.5);
     m_BagMsgLayer->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
-    m_pGridView->addChildLayer(m_BagMsgLayer,60);
+    m_pGridView->addChildLayer(m_BagMsgLayer);
     
     for (int j =0; j<int(PlayerProperty::getInstance()->getBagMaxSpace()); j++) {
         
@@ -108,7 +108,7 @@ bool BagLayer::init()
         m_pGridView->pushBackCustomItem(itemui);
     }
     m_pGridView->forceDoLayout();
-    
+    m_BagMsgLayer->setZOrder(m_pGridView->getItems().size());
     
     return true;
 }
@@ -372,22 +372,25 @@ void BagLayer::extendBag()
     m_BagMsgLayer->setLayerContentSize(m_pGridView->getInnerContainerSize());
     m_BagMsgLayer->setPosition(m_pGridView->getInnerContainerSize()*0.5);
     m_pGridView->scrollToBottom(0.8,false);
+    m_BagMsgLayer->setZOrder(m_pGridView->getItems().size());
 }
 void BagLayer::selectItemEvent(cocos2d::Ref *pSender, TGridView::EventType type)
 {
     if (type==TGridView::EventType::ON_SELECTED_ITEM_END) {
         TGridView* gridView = static_cast<TGridView*>(pSender);
-        int currentItemId = m_BagMsgLayer->getItemId((int)gridView->getCurSelectedIndex());
-        if (currentItemId!=-1) {
-            bagItemOpe(currentItemId);
-        }else
+        if (gridView)
         {
-            if (m_bIsIndetify) {
-                m_bIsIndetify = false;
-                refreshUIView();
+            int currentItemId = m_BagMsgLayer->getItemId((int)gridView->getCurSelectedIndex());
+            if (currentItemId!=-1) {
+                bagItemOpe(currentItemId);
+            }else
+            {
+                if (m_bIsIndetify) {
+                    m_bIsIndetify = false;
+                    refreshUIView();
+                }
             }
         }
-            
     }
 }
 
