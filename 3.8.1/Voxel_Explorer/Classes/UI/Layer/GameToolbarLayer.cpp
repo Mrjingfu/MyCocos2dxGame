@@ -24,6 +24,7 @@
 #include "AchieveItemUI.hpp"
 #include "GameUILayer.h"
 #include "SkillLayer.hpp"
+#include "ConfigManager.hpp"
 USING_NS_CC;
 GameToolbarLayer::GameToolbarLayer()
 {
@@ -223,7 +224,7 @@ void GameToolbarLayer::initMessageFrame()
     {
         std::string dungenName = RandomDungeon::getInstance()->getCurrentDungeonNode()->m_strDungeonName.c_str();
         int floor =  int(RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nCurrentDepth);
-        LanguageType lt= Application::getInstance()->getCurrentLanguage();
+        LanguageType lt= ConfigManager::getInstance()->getLanguageType();
         switch (lt) {
             case LanguageType::CHINESE:
                 initMsg = StringUtils::format(UtilityHelper::getLocalStringForUi("GAME_MESSAGE_NOT").c_str(),dungenName.c_str(),cocos2d::Value(floor).asString().c_str());

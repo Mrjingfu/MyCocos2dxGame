@@ -10,6 +10,7 @@
 #include "UtilityHelper.h"
 #include "AchieveItemUI.hpp"
 #include "AchieveEnItemUI.hpp"
+#include "ConfigManager.hpp"
 USING_NS_CC;
 AchieveItemLayer::AchieveItemLayer()
 {
@@ -124,7 +125,7 @@ void AchieveItemLayer::showAchieveItem(const std::string icon, const std::string
 {
     CCLOG("shwoGlobalPrompt");
     AchieveItemUI* itemUi = nullptr;
-    if (Application::getInstance()->getCurrentLanguage()!= cocos2d::LanguageType::CHINESE)
+    if (ConfigManager::getInstance()->getLanguageType()!= cocos2d::LanguageType::CHINESE)
         itemUi = AchieveEnItemUI::create();
     else
         itemUi = AchieveItemUI::create();

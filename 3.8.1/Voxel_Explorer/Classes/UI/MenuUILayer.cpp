@@ -21,7 +21,7 @@
 #include "AlertPopupUI.hpp"
 #include "GameCenterController.h"
 #include "VoxelExplorer.h"
-
+#include "AchievementManager.h"
 USING_NS_CC;
 
 MenuUILayer::MenuUILayer()
@@ -30,7 +30,7 @@ MenuUILayer::MenuUILayer()
     m_pArchiveStart = nullptr;
     m_pArchiveRestart= nullptr;
     m_pMuiscImg = nullptr;
-
+    m_pMenutitle = nullptr;
 }
 MenuUILayer::~MenuUILayer()
 {
@@ -56,8 +56,8 @@ bool MenuUILayer::addEvents()
     if (!m_pEyes)
         return false;
     
-    cocos2d::ui::ImageView* menutitle = dynamic_cast<cocos2d::ui::ImageView*>(UtilityHelper::seekNodeByName(m_pRootNode,"menu_title"));
-    if (!menutitle)
+     m_pMenutitle = dynamic_cast<cocos2d::ui::ImageView*>(UtilityHelper::seekNodeByName(m_pRootNode,"menu_title"));
+    if (!m_pMenutitle)
         return false;
     
     m_pArchiveStart = dynamic_cast<cocos2d::ui::Button*>(UtilityHelper::seekNodeByName(m_pRootNode,"menu_archive_item_start"));
@@ -67,6 +67,11 @@ bool MenuUILayer::addEvents()
     m_pArchiveRestart = dynamic_cast<cocos2d::ui::Button*>(UtilityHelper::seekNodeByName(m_pRootNode,"menu_archive_item_restart"));
     if (!m_pArchiveRestart)
         return false;
+    
+   cocos2d::ui::Button*  m_pLangugaeBtn = dynamic_cast<cocos2d::ui::Button*>(UtilityHelper::seekNodeByName(m_pRootNode,"menu_langugae_btn"));
+    if (!m_pLangugaeBtn)
+        return false;
+    m_pLangugaeBtn->addClickEventListener(CC_CALLBACK_1(MenuUILayer::onClickLangugae, this));
 
     m_pMuiscImg = dynamic_cast<ui::ImageView*>(UtilityHelper::seekNodeByName(m_pRootNode, "menu_music_img"));
     if (!m_pMuiscImg)
@@ -86,10 +91,7 @@ bool MenuUILayer::addEvents()
     m_pArchiveRestart->getTitleRenderer()->setScale(0.8);
     
     
-    
-    
-    std::string splashTxName = UtilityHelper::getLocalStringForUi("SPLASH_RES");
-    menutitle->loadTexture(splashTxName);
+    m_pMenutitle->loadTexture(UtilityHelper::getLocalStringForUi("SPLASH_RES"));
     
     m_pAchievePopupUI = AchievePopupUI::create();
     m_pAchievePopupUI->openPopup();
@@ -159,15 +161,22 @@ void MenuUILayer::onClickAchieve(cocos2d::Ref *ref)
     GameCenterController::getInstance()->openAchievementBoard();
 #endif
 }
+void MenuUILayer::onEventGameChangeLanguage(cocos2d::EventCustom *sender)
+{
 
+    
+}
 void MenuUILayer::onEnter()
 {
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(EVENT_GAME_CHANGE_LANGUAGE, CC_CALLBACK_1(MenuUILayer::onEventGameChangeLanguage, this));
+    
     refreshUIView();
     WrapperUILayer::onEnter();
 }
 void MenuUILayer::onExit()
 {
     WrapperUILayer::onExit();
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(EVENT_GAME_CHANGE_LANGUAGE);
 }
 void MenuUILayer::onClickRank(cocos2d::Ref *ref)
 {
@@ -294,6 +303,12 @@ void MenuUILayer::onClickRate(cocos2d::Ref *ref)
     NativeBridge::getInstance()->openItunesURL();
 #endif
     
+}
+void MenuUILayer::onClickLangugae(Ref* ref)
+{
+    CHECK_ACTION(ref);
+    clickEffect();
+    PopupUILayerManager::getInstance()->openPopup(ePopupLangugae);
 }
 void MenuUILayer::onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event)
 {

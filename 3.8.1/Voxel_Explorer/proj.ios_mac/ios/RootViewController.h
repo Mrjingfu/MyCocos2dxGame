@@ -36,7 +36,7 @@
 - (void) requestAndLoadInterstitialAds;
 - (void) playInterstitialAds;
 - (BOOL) isInterstitialAdsReady;
-
+- (BOOL) isBelowIPhone4S;
 - (GADRequest *)createRequest;
 
 - (void) openItunesURL:(NSString*) urlStr;

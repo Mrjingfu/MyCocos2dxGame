@@ -7,11 +7,13 @@
 //
 
 #include "UtilityHelper.h"
+#include "ConfigManager.hpp"
+#include "NativeBridge.h"
 USING_NS_CC;
 std::string UtilityHelper::getAppStoreURL()
 {
     std::string retString;
-    LanguageType lt= Application::getInstance()->getCurrentLanguage();
+    LanguageType lt= ConfigManager::getInstance()->getLanguageType();
     switch (lt) {
         case LanguageType::CHINESE:
             retString = "itms://itunes.apple.com/cn/app/dungeon-laughter/id1050626034?l=zh&ls=1&mt=8";
@@ -29,12 +31,25 @@ std::string UtilityHelper::getLocalString(const std::string& key)
 
 std::string UtilityHelper::getLocalStringForUi(const std::string& key)
 {
+#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS )
+    if(NativeBridge::getInstance()->isBelowIPhone4S())
+    {
+        if (key == "FONT_NAME") {
+            return  getLocalStringForPlist("FONT_NAME_IPHONE4", "ui_chinese.plist", "ui_english.plist");
+        }else
+            return  getLocalStringForPlist(key, "ui_chinese.plist", "ui_english.plist");
+    }else
+    {
+        return  getLocalStringForPlist(key, "ui_chinese.plist", "ui_english.plist");
+    }
+#else
     return  getLocalStringForPlist(key, "ui_chinese.plist", "ui_english.plist");
+#endif
 }
 std::string UtilityHelper::getLocalStringForPlist(const std::string &key, const std::string cn_plist,const std::string en_plist)
 {
     ValueMap dict;
-    LanguageType lt= Application::getInstance()->getCurrentLanguage();
+    LanguageType lt= ConfigManager::getInstance()->getLanguageType();
     switch (lt) {
         case LanguageType::CHINESE:
             dict = FileUtils::getInstance()->getValueMapFromFile(cn_plist);
@@ -53,7 +68,7 @@ std::string UtilityHelper::getLocalStringForPlist(const std::string &key, const 
 }
 void UtilityHelper::getLineForText(cocos2d::ui::TextBMFont*  tempText,std::string& str,float parentWidth)
 {
-    LanguageType lt= Application::getInstance()->getCurrentLanguage();
+    LanguageType lt= ConfigManager::getInstance()->getLanguageType();
     if (lt == LanguageType::CHINESE) {
         getLineChineseForText(tempText, str,parentWidth);
     }else
@@ -533,3 +548,4 @@ float UtilityHelper::InvSqrt (float x)
     x = x*(1.5f - xhalf*x*x); // 牛顿迭代法
     return x;
 }
+

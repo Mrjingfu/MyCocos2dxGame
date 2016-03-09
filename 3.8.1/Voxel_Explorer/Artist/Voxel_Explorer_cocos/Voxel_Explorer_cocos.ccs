@@ -103,6 +103,10 @@
           <PlistImageFile Name="ui_video_btn.png" Key="ui_video_btn.png" />
           <PlistImageFile Name="ui_bag_lock_icon.png" Key="ui_bag_lock_icon.png" />
           <PlistImageFile Name="ui_exp_desc.png" Key="ui_exp_desc.png" />
+          <PlistImageFile Name="ui_language_normal.png" Key="ui_language_normal.png" />
+          <PlistImageFile Name="ui_language_press.png" Key="ui_language_press.png" />
+          <PlistImageFile Name="ui_radio_off.png" Key="ui_radio_off.png" />
+          <PlistImageFile Name="ui_radio_on.png" Key="ui_radio_on.png" />
         </PlistImageFolder>
         <Project Name="gameScene.csd" Type="Scene" />
         <Project Name="menuscene.csd" Type="Scene" />
@@ -272,6 +276,7 @@
         <Project Name="pausenewPopupLayer_abroad.csd" Type="Layer" />
         <Project Name="menuscene_channel.csd" Type="Scene" />
         <Project Name="taskLayer.csd" Type="Layer" />
+        <Project Name="langugaeLayer.csd" Type="Layer" />
       </RootFolder>
     </Group>
   </SolutionFolder>

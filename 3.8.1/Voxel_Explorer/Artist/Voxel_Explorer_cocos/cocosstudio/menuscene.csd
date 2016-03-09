@@ -117,15 +117,30 @@
             <OutlineColor A="255" R="255" G="0" B="0" />
             <ShadowColor A="255" R="110" G="110" B="110" />
           </AbstractNodeData>
-          <AbstractNodeData Name="menu_music_img" ActionTag="-46315320" Tag="67" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="255.5477" RightMargin="5.4523" TopMargin="11.8738" BottomMargin="421.1262" Scale9Width="59" Scale9Height="47" ctype="ImageViewObjectData">
+          <AbstractNodeData Name="menu_music_img" ActionTag="-46315320" Tag="67" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="258.5560" RightMargin="2.4440" TopMargin="11.8760" BottomMargin="421.1240" Scale9Width="59" Scale9Height="47" ctype="ImageViewObjectData">
             <Size X="59.0000" Y="47.0000" />
             <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-            <Position X="285.0560" Y="444.6240" />
+            <Position X="288.0560" Y="444.6240" />
             <Scale ScaleX="0.5000" ScaleY="0.5000" />
             <CColor A="255" R="229" G="229" B="229" />
-            <PrePosition X="0.8908" Y="0.9263" />
+            <PrePosition X="0.9002" Y="0.9263" />
             <PreSize X="0.2682" Y="0.2136" />
             <FileData Type="PlistSubImage" Path="ui_btn_sound_on.png" Plist="ui_sprite.plist" />
+          </AbstractNodeData>
+          <AbstractNodeData Name="menu_langugae_btn" ActionTag="43360292" Tag="18" IconVisible="False" LeftMargin="263.5000" RightMargin="8.5000" TopMargin="52.0002" BottomMargin="379.9998" TouchEnable="True" FontSize="14" Scale9Enable="True" LeftEage="15" RightEage="15" TopEage="11" BottomEage="11" Scale9OriginX="15" Scale9OriginY="11" Scale9Width="18" Scale9Height="26" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="ButtonObjectData">
+            <Size X="48.0000" Y="48.0000" />
+            <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+            <Position X="287.5000" Y="403.9998" />
+            <Scale ScaleX="0.5500" ScaleY="0.5500" />
+            <CColor A="255" R="255" G="255" B="255" />
+            <PrePosition X="0.8984" Y="0.8417" />
+            <PreSize X="0.1500" Y="0.1000" />
+            <TextColor A="255" R="65" G="65" B="70" />
+            <DisabledFileData Type="PlistSubImage" Path="ui_language_press.png" Plist="ui_sprite.plist" />
+            <PressedFileData Type="PlistSubImage" Path="ui_language_press.png" Plist="ui_sprite.plist" />
+            <NormalFileData Type="PlistSubImage" Path="ui_language_normal.png" Plist="ui_sprite.plist" />
+            <OutlineColor A="255" R="255" G="0" B="0" />
+            <ShadowColor A="255" R="110" G="110" B="110" />
           </AbstractNodeData>
         </Children>
       </ObjectData>

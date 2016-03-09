@@ -31,8 +31,10 @@ private:
     void onClickRank(Ref*);
     void onClickRate(Ref*);
     void onClickAchieve(Ref*);
+    void onClickLangugae(Ref*);
     void startGameAction();
     void switchToGameScene();
+    void onEventGameChangeLanguage(cocos2d::EventCustom *sender);
     
     virtual void onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event) ;
 private:
@@ -40,7 +42,7 @@ private:
     cocos2d::ui::Button* m_pArchiveStart;
     cocos2d::ui::Button* m_pArchiveRestart;
     cocos2d::ui::ImageView* m_pMuiscImg;
-    
+    cocos2d::ui::ImageView* m_pMenutitle;
     AchievePopupUI* m_pAchievePopupUI;
     cocos2d::Sprite* m_pEyes;
 };

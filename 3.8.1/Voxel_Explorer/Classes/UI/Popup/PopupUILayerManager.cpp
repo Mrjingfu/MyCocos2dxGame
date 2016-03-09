@@ -31,6 +31,7 @@
 #include "SuperAnimNodeV2.h"
 #include "RandomMsgPopupUI.h"
 #include "DiscardPopupUI.hpp"
+#include "LangugaePopup.hpp"
 PopupUILayerManager::PopupUILayerManager()
 {
     m_pParentLayer = nullptr;
@@ -83,8 +84,6 @@ void PopupUILayerManager::onExitScene()
     m_pLastPopUpType = ePopupInvalid;
     m_lTypeList.clear();
     for (int i=0; i<ePopupCount; i++) {
-        if (m_pPopupContainer[i])
-            m_pPopupContainer[i]->schedulerResume();
             m_pPopupContainer[i] = nullptr;
     }
 }
@@ -180,6 +179,8 @@ PopupUILayer* PopupUILayerManager::initPopUp(ePopupType type)
         case ePopupDiscard:
             popupLayer = DiscardPopupUI::create();
             break;
+        case ePopupLangugae:
+            popupLayer = LangugaePopup::create();
         default:
             break;
     }

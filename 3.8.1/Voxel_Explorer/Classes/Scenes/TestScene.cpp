@@ -17,6 +17,7 @@
 #include "NpcDataManager.hpp"
 #include "InformationPopupUI.h"
 #include "LoadingLayer.hpp"
+#include "ConfigManager.hpp"
 USING_NS_CC;
 
 Scene* TestScene::createScene()
@@ -213,7 +214,7 @@ void TestScene::testNpcInfo(TGridView* m_pGridView)
 {
    
     cocos2d::ValueVector m_OldManRoom;
-    LanguageType lt= Application::getInstance()->getCurrentLanguage();
+    LanguageType lt= ConfigManager::getInstance()->getLanguageType();
     switch (lt) {
         case LanguageType::CHINESE:
             m_OldManRoom = FileUtils::getInstance()->getValueVectorFromFile("npc_info_chinese.plist");
@@ -239,7 +240,7 @@ void TestScene::testRandom(TGridView* m_pGridView)
 {
     
     cocos2d::ValueVector m_random;
-    LanguageType lt= Application::getInstance()->getCurrentLanguage();
+    LanguageType lt= ConfigManager::getInstance()->getLanguageType();
     switch (lt) {
         case LanguageType::CHINESE:
             m_random = FileUtils::getInstance()->getValueVectorFromFile("random_events_chinese.plist");
@@ -263,7 +264,7 @@ void TestScene::testTips(TGridView* m_pGridView)
 {
  
     cocos2d::ValueVector m_Tips;
-    LanguageType lt= Application::getInstance()->getCurrentLanguage();
+    LanguageType lt= ConfigManager::getInstance()->getLanguageType();
     switch (lt) {
         case LanguageType::CHINESE:
             m_Tips = FileUtils::getInstance()->getValueVectorFromFile("tips_chinese.plist");

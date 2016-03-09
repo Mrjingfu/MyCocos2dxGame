@@ -42,6 +42,7 @@ public:
     bool loadGameAchieve();
     bool saveGameAchieve();
     bool saveGame();
+    bool loadGameConfig();
 private:
     std::string getStringValueMap(cocos2d::ValueMap& dict,const std::string& fullPath);
 

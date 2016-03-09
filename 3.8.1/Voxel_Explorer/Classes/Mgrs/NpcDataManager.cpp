@@ -19,6 +19,7 @@
 #include "ScrollProperty.hpp"
 #include "PotionsProperty.hpp"
 #include "EventConst.h"
+#include "ConfigManager.hpp"
 USING_NS_CC;
 NpcDataManager* g_pNpcDataManagerInstance = nullptr;
 NpcDataManager* NpcDataManager::getInstance()
@@ -368,7 +369,7 @@ bool NpcDataManager::initTheifRoom()
 }
 bool NpcDataManager::initOldManRoom()
 {
-    LanguageType lt= Application::getInstance()->getCurrentLanguage();
+    LanguageType lt= ConfigManager::getInstance()->getLanguageType();
     switch (lt) {
         case LanguageType::CHINESE:
             m_OldManRoom = FileUtils::getInstance()->getValueVectorFromFile("npc_info_chinese.plist");

@@ -7,7 +7,7 @@
 //
 
 #include "RandomEventMgr.hpp"
-
+#include "ConfigManager.hpp"
 USING_NS_CC;
 
 RandomEventMgr* g_pRandomEventMgrInstance = nullptr;
@@ -30,7 +30,7 @@ bool RandomEventMgr::load(const cocos2d::ValueMap& data)
 {
     if(data.find("RandomEventList") == data.end())
     {
-        LanguageType lt= Application::getInstance()->getCurrentLanguage();
+        LanguageType lt= ConfigManager::getInstance()->getLanguageType();
         switch (lt) {
             case LanguageType::CHINESE:
                 m_EventList = FileUtils::getInstance()->getValueVectorFromFile("random_events_chinese.plist");

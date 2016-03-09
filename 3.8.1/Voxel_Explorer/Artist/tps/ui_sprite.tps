@@ -242,6 +242,10 @@
             <filename>../ui/ui_sprite/ui_video_btn.png</filename>
             <filename>../ui/ui_sprite/ui_bag_lock_icon.png</filename>
             <filename>../ui/ui_sprite/ui_exp_desc.png</filename>
+            <filename>../ui/ui_sprite/ui_language_normal.png</filename>
+            <filename>../ui/ui_sprite/ui_language_press.png</filename>
+            <filename>../ui/ui_sprite/ui_radio_off.png</filename>
+            <filename>../ui/ui_sprite/ui_radio_on.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

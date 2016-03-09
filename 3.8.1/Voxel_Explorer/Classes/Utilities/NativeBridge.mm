@@ -48,6 +48,12 @@ void NativeBridge::openItunesURL()
     if(mViewController != nil)
         [mViewController openItunesURL : [NSString stringWithUTF8String: UtilityHelper::getAppStoreURL().c_str()]];
 }
+bool NativeBridge::isBelowIPhone4S()
+{
+    if(mViewController != nil)
+        return [mViewController isBelowIPhone4S];
+    return false;
+}
 #endif
 void NativeBridge::initAdmob()
 {

@@ -27,6 +27,7 @@
 #import "cocos2d.h"
 #import "platform/ios/CCEAGLView-ios.h"
 #import "Reachability.h"
+#import "sys/utsname.h"
 @implementation RootViewController
 
 /*
@@ -170,7 +171,20 @@
     }
     return NO;
 }
-
+- (BOOL) isBelowIPhone4S
+{
+    struct utsname systemInfo;
+    uname(&systemInfo);
+    NSString *platform = [NSString stringWithCString:systemInfo.machine encoding:NSUTF8StringEncoding];
+    
+    if ([platform isEqualToString:@"iPhone1,1"] ||[platform isEqualToString:@"iPhone1,2"] || [platform isEqualToString:@"iPhone2,1"]||
+        [platform isEqualToString:@"iPhone3,1"] ||[platform isEqualToString:@"iPhone3,2"] || [platform isEqualToString:@"iPhone3,3"]||
+        [platform isEqualToString:@"iPhone4,1"])
+    {
+        return TRUE;
+    }else
+        return FALSE;
+}
 - (void)openItunesURL:(NSString*) urlStr {
     NSURL *url = [NSURL URLWithString:urlStr];
     

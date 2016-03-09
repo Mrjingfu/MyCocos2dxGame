@@ -25,6 +25,7 @@ public:
 #if CC_TARGET_PLATFORM == CC_PLATFORM_IOS
     void setRootViewController(RootViewController* viewController);
     void openItunesURL();
+    bool isBelowIPhone4S();
 #endif
     
 #if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID

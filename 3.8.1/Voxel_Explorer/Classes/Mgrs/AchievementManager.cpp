@@ -81,6 +81,7 @@ bool AchievementManager::save( cocos2d::ValueMap& rootNode)
 }
 bool AchievementManager::loadAchieveData()
 {
+    m_vAllAchieves.clear();
     cocos2d::ValueMap achieves = cocos2d::FileUtils::getInstance()->getValueMapFromFile("AchieveDatas.plist");
     for (auto iter =achieves.begin(); iter!=achieves.end(); iter++)
     {

@@ -12,6 +12,7 @@
 #include "AchievementManager.h"
 #include "EventConst.h"
 #include "AchieveMangerEnLayerUI.hpp"
+#include "ConfigManager.hpp"
 USING_NS_CC;
 AchievePopupUI::AchievePopupUI()
 {
@@ -160,7 +161,7 @@ void AchievePopupUI::onTouchEnded(cocos2d::Touch *touch, cocos2d::Event *unused_
 }
 bool AchievePopupUI::isLanguageEn()
 {
-    if(Application::getInstance()->getCurrentLanguage() != cocos2d::LanguageType::CHINESE)
+    if(ConfigManager::getInstance()->getLanguageType() != cocos2d::LanguageType::CHINESE)
         return true;
     else
         return false;

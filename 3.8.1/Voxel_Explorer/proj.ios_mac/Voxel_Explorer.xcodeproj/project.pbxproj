@@ -398,6 +398,10 @@
 		EC8A27E11C32670800B2C352 /* AchieveItemLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC8A27DE1C32670800B2C352 /* AchieveItemLayer.cpp */; };
 		EC8A27E41C327A4B00B2C352 /* AchievePopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC8A27E21C327A4B00B2C352 /* AchievePopupUI.cpp */; };
 		EC8A27E51C327A4B00B2C352 /* AchievePopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC8A27E21C327A4B00B2C352 /* AchievePopupUI.cpp */; };
+		ECAD01691C8FB507005AE22C /* ConfigManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECAD01671C8FB507005AE22C /* ConfigManager.cpp */; };
+		ECAD016A1C8FB507005AE22C /* ConfigManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECAD01671C8FB507005AE22C /* ConfigManager.cpp */; };
+		ECAD01721C8FC7E2005AE22C /* LangugaePopup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECAD01701C8FC7E2005AE22C /* LangugaePopup.cpp */; };
+		ECAD01731C8FC7E2005AE22C /* LangugaePopup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECAD01701C8FC7E2005AE22C /* LangugaePopup.cpp */; };
 		ECBA4FA31C3E07E7004E9188 /* RandomMsgPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECBA4FA11C3E07E7004E9188 /* RandomMsgPopupUI.cpp */; };
 		ECBA4FA41C3E07E7004E9188 /* RandomMsgPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECBA4FA11C3E07E7004E9188 /* RandomMsgPopupUI.cpp */; };
 		ECBA4FA91C3E51CC004E9188 /* DiscardPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECBA4FA71C3E51CC004E9188 /* DiscardPopupUI.cpp */; };
@@ -840,6 +844,10 @@
 		EC8A27DF1C32670800B2C352 /* AchieveItemLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = AchieveItemLayer.hpp; sourceTree = "<group>"; };
 		EC8A27E21C327A4B00B2C352 /* AchievePopupUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AchievePopupUI.cpp; sourceTree = "<group>"; };
 		EC8A27E31C327A4B00B2C352 /* AchievePopupUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AchievePopupUI.h; sourceTree = "<group>"; };
+		ECAD01671C8FB507005AE22C /* ConfigManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ConfigManager.cpp; sourceTree = "<group>"; };
+		ECAD01681C8FB507005AE22C /* ConfigManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ConfigManager.hpp; sourceTree = "<group>"; };
+		ECAD01701C8FC7E2005AE22C /* LangugaePopup.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LangugaePopup.cpp; sourceTree = "<group>"; };
+		ECAD01711C8FC7E2005AE22C /* LangugaePopup.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = LangugaePopup.hpp; sourceTree = "<group>"; };
 		ECBA4FA11C3E07E7004E9188 /* RandomMsgPopupUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RandomMsgPopupUI.cpp; sourceTree = "<group>"; };
 		ECBA4FA21C3E07E7004E9188 /* RandomMsgPopupUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RandomMsgPopupUI.h; sourceTree = "<group>"; };
 		ECBA4FA71C3E51CC004E9188 /* DiscardPopupUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DiscardPopupUI.cpp; sourceTree = "<group>"; };
@@ -1140,6 +1148,8 @@
 				554FE61B1C2A735800419AE1 /* RandomEventMgr.hpp */,
 				55095CB01C4791230083A234 /* SdkBoxManager.cpp */,
 				55095CB11C4791230083A234 /* SdkBoxManager.hpp */,
+				ECAD01671C8FB507005AE22C /* ConfigManager.cpp */,
+				ECAD01681C8FB507005AE22C /* ConfigManager.hpp */,
 			);
 			path = Mgrs;
 			sourceTree = "<group>";
@@ -1581,6 +1591,8 @@
 				EC5D568F1C0C4E2200F5EDDF /* DistPopupUI.hpp */,
 				EC25C3C21C19120D00B4340D /* AlertPopupUI.cpp */,
 				EC25C3C31C19120D00B4340D /* AlertPopupUI.hpp */,
+				ECAD01701C8FC7E2005AE22C /* LangugaePopup.cpp */,
+				ECAD01711C8FC7E2005AE22C /* LangugaePopup.hpp */,
 			);
 			path = Popup;
 			sourceTree = "<group>";
@@ -1842,6 +1854,7 @@
 				55A2CFF61C3907E900E591AA /* ArchbishopBullet.cpp in Sources */,
 				ECD845071C45F93200C11269 /* SkillLayer.cpp in Sources */,
 				EC795F571C0D4AFD0083829B /* GambleShopPopupUI.cpp in Sources */,
+				ECAD01721C8FC7E2005AE22C /* LangugaePopup.cpp in Sources */,
 				EC8A27E01C32670800B2C352 /* AchieveItemLayer.cpp in Sources */,
 				5505453C1BFF3893006B4500 /* SmallPortal.cpp in Sources */,
 				551E93AF1BD51282009F788F /* NativeBridge.mm in Sources */,
@@ -1907,6 +1920,7 @@
 				55F81CD41BDB92ED002EC075 /* SundriesProperty.cpp in Sources */,
 				EC3CC9751C088F4F00F8CFC8 /* BagShopLayer.cpp in Sources */,
 				EC795F421C0D42340083829B /* MagicShopPopupUI.cpp in Sources */,
+				ECAD01691C8FB507005AE22C /* ConfigManager.cpp in Sources */,
 				ECBA4FA31C3E07E7004E9188 /* RandomMsgPopupUI.cpp in Sources */,
 				EC795F4F1C0D4AB20083829B /* TaskPopupUI.cpp in Sources */,
 				ECBA4FA91C3E51CC004E9188 /* DiscardPopupUI.cpp in Sources */,
@@ -2086,6 +2100,7 @@
 				55F81CB11BDB74EF002EC075 /* KeyProperty.cpp in Sources */,
 				EC3CC9A01C088F4F00F8CFC8 /* MenuUILayer.cpp in Sources */,
 				EC14B2341C4D05E800323905 /* AchieveEnItemUI.cpp in Sources */,
+				ECAD01731C8FC7E2005AE22C /* LangugaePopup.cpp in Sources */,
 				55ECFB451BC79852007270CD /* Player.cpp in Sources */,
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
 				551E93F31BD512D3009F788F /* Stream.cpp in Sources */,
@@ -2145,6 +2160,7 @@
 				55F116D11C0444EF00A6C191 /* PrisonLevel.cpp in Sources */,
 				551E93E91BD512D3009F788F /* sha1.cpp in Sources */,
 				EC711F401C35489300ABB374 /* CircleMoveAct.cpp in Sources */,
+				ECAD016A1C8FB507005AE22C /* ConfigManager.cpp in Sources */,
 				EC602AAD1BF46A2D00484D42 /* AchievementManager.cpp in Sources */,
 				EC795F5C1C0D4B150083829B /* OldManPopupUI.cpp in Sources */,
 				EC6C4BD41C43A58800342D8E /* ArchiveLayer.cpp in Sources */,
@@ -2179,8 +2195,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: haibo wang (FT8YEJMWBH)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: haibo wang (FT8YEJMWBH)";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COMPRESS_PNG_FILES = NO;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2224,7 +2240,7 @@
 					"${SRCROOT}/Bugly.framework/Bugly",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.wanax.voxelexplorer;
-				PROVISIONING_PROFILE = "22898643-fe52-415a-b17e-b28409c9005b";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "$(_COCOS_HEADER_IOS_BEGIN) $(_COCOS_HEADER_IOS_END)";
@@ -2236,8 +2252,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: haibo wang (FT8YEJMWBH)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: haibo wang (FT8YEJMWBH)";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COMPRESS_PNG_FILES = NO;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2279,7 +2295,7 @@
 					"${SRCROOT}/Bugly.framework/Bugly",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.wanax.voxelexplorer;
-				PROVISIONING_PROFILE = "22898643-fe52-415a-b17e-b28409c9005b";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "$(_COCOS_HEADER_IOS_BEGIN) $(_COCOS_HEADER_IOS_END)";

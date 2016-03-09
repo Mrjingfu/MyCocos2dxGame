@@ -143,5 +143,6 @@ static const std::string EVENT_NPC_DATA_DIRTY = "NPC_DATA_DIRTY";   ///    NPC�
 
 static const std::string EVENT_ACHIEVE_COMPLETE = "ACHIEVE_COMPLETE"; //成就完成
 static const std::string EVENT_GAME_PAUSE = "GAME_PAUSE";
+static const std::string EVENT_GAME_CHANGE_LANGUAGE = "GAME_CHANGE_LANGUAGE";
 
 #endif /* EventConst_h */

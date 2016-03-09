@@ -16,6 +16,7 @@
 #include "RandomEventMgr.hpp"
 #include "RandomDungeon.hpp"
 #include "RandomEventMgr.hpp"
+#include "ConfigManager.hpp"
 USING_NS_CC;
 ArchiveManager::ArchiveManager()
 {
@@ -82,6 +83,29 @@ bool  ArchiveManager::loadGame()
     
     return true;
 }
+bool ArchiveManager::loadGameConfig()
+{
+    std::string path = cocos2d::FileUtils::getInstance()->getWritablePath()+sArchiveAchieveName;
+    
+    ValueMap gameMap = PlistBinaryUtil::getInstance()->getValueMapFromFile(path);
+    
+#if COCOS2D_DEBUG==1
+    if (!gameMap.empty()) {
+        std::string debugPath = cocos2d::FileUtils::getInstance()->getWritablePath()+"DebugAchieve.plist";
+        CCLOG("LOADGAME:%s",getStringValueMap(gameMap,debugPath).c_str());
+        CCLOG("LOADGAME ARCHIVE PATH:%s",debugPath.c_str());
+    }else
+        CCLOGERROR("LOADGAME  gamemap is null");
+    
+#endif
+    if (!ConfigManager::getInstance()->load(gameMap)) {
+        CCLOGERROR("ConfigManager load failed");
+        return false;
+    }
+
+    
+    return true;
+}
 bool ArchiveManager::loadGameAchieve()
 {
     std::string path = cocos2d::FileUtils::getInstance()->getWritablePath()+sArchiveAchieveName;
@@ -97,6 +121,10 @@ bool ArchiveManager::loadGameAchieve()
         CCLOGERROR("LOADGAME  gamemap is null");
     
 #endif
+    if (!ConfigManager::getInstance()->load(gameMap)) {
+        CCLOGERROR("ConfigManager load failed");
+        return false;
+    }
     if (!StatisticsManager::getInstance()->load(gameMap)) {
         CCLOGERROR("StatisticsManager load failed");
         return false;
@@ -111,6 +139,10 @@ bool ArchiveManager::loadGameAchieve()
 bool  ArchiveManager::saveGameAchieve()
 {
     ValueMap map;
+    if (!ConfigManager::getInstance()->save(map)) {
+        CCLOGERROR("ConfigManager save failed");
+        return false;
+    }
     if (!StatisticsManager::getInstance()->save(map))
     {
         CCLOGERROR("StatisticsManager save failed");

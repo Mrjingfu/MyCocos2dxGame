@@ -9,6 +9,7 @@
 #include "LoadingLayer.hpp"
 #include "UtilityHelper.h"
 #include "VoxelExplorer.h"
+#include "ConfigManager.hpp"
 USING_NS_CC;
 LoadingLayer::LoadingLayer()
 {
@@ -60,7 +61,7 @@ void LoadingLayer::refreshUIView()
     m_LoadingIcon->runAction(RepeatForever::create(Spawn::create(fadeIn, moveUp,moveLeft,moveRight,nullptr)));
     
     std::string tipFileName ="tips_chinese.plist";
-    if (Application::getInstance()->getCurrentLanguage()!=LanguageType::CHINESE)
+    if (ConfigManager::getInstance()->getLanguageType()!=LanguageType::CHINESE)
         tipFileName = "tips_english.plist";
     
     cocos2d::ValueVector tipVector = cocos2d::FileUtils::getInstance()->getValueVectorFromFile(tipFileName);

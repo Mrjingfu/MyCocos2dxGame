@@ -16,6 +16,7 @@
 #include "SdkBoxManager.hpp"
 #include "GameCenterController.h"
 #include "TestScene.h"
+#include "NativeBridge.h"
 USING_NS_CC;
 
 Scene* LogoScene::createScene()
@@ -234,7 +235,9 @@ void LogoScene::precache()
     if (!LevelResourceManager::getInstance()->init()) {
         CCLOGERROR("LevelResourceManager initialize failed!");
     }
-    
+    if (!ArchiveManager::getInstance()->loadGameConfig()) {
+        CCLOGERROR("ArchiveManager loadGameConfig failed!");
+    }
     if (!AchievementManager::getInstance()->loadAchieveData()) {
          CCLOGERROR("AchievementManager initialize failed!");
     }
@@ -257,10 +260,24 @@ void LogoScene::precache()
     Texture2D * uiAchievementTx = Director::getInstance()->getTextureCache()->addImage("achievement_icon.png");
     if (uiAchievementTx)
         uiAchievementTx->setAliasTexParameters();
-    
+#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS )
+    if(NativeBridge::getInstance()->isBelowIPhone4S())
+    {
+        Texture2D * uiFont0_Tx = Director::getInstance()->getTextureCache()->addImage("ui_font_iphone4.png");
+        if (uiFont0_Tx)
+            uiFont0_Tx->setAliasTexParameters();
+    }else
+    {
+        Texture2D * uiFont0_Tx = Director::getInstance()->getTextureCache()->addImage("ui_font.png");
+        if (uiFont0_Tx)
+            uiFont0_Tx->setAliasTexParameters();
+    }
+#else
     Texture2D * uiFont0_Tx = Director::getInstance()->getTextureCache()->addImage("ui_font.png");
     if (uiFont0_Tx)
         uiFont0_Tx->setAliasTexParameters();
+#endif
+
     
     
     std::string splashTxName = UtilityHelper::getLocalStringForUi("SPLASH_RES");
