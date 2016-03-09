@@ -83,8 +83,8 @@ void MonsterProperty::adjustByDC()
     m_nMaxHP = m_nMaxHP + m_nLevel.GetLongValue()*cocos2d::random(10, 15);
     m_nCurrentHP = m_nMaxHP;
     
-    m_nAddedMinAttack = m_nAddedMinAttack + (nodeDepth-1)*6;
-    m_nAddedMaxAttack = m_nAddedMaxAttack + (nodeDepth-1)*12;
+    m_nAddedMinAttack = m_nAddedMinAttack + (nodeDepth-1)*6 + (int)(currentDepth.GetLongValue());
+    m_nAddedMaxAttack = m_nAddedMaxAttack + (nodeDepth-1)*12 + (int)(currentDepth.GetLongValue()*1.5f);
     
     m_nAttackDiceNum = m_nAttackDiceNum + (nodeDepth-1);
     m_nAttackDiceFaceNum = m_nAttackDiceFaceNum + (nodeDepth-1)*2 + (m_nLevel-1);
