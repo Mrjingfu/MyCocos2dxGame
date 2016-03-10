@@ -13445,7 +13445,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "405"
             endingLineNumber = "405"
-            landmarkName = "SkillLayer::onTouchSkill(Ref* ref,Widget::TouchEventType type)"
+            landmarkName = "SkillLayer::onTouchMagic(Ref* ref,Widget::TouchEventType type)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
