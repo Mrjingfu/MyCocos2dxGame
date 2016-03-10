@@ -232,6 +232,9 @@ void LogoScene::update(float delta)
 }
 void LogoScene::precache()
 {
+#if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS )
+    GameCenterController::getInstance()->registerGameCenterController();
+#endif
     if (!LevelResourceManager::getInstance()->init()) {
         CCLOGERROR("LevelResourceManager initialize failed!");
     }

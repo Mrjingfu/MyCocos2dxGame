@@ -169,22 +169,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../Classes/UI/Popup/ShopPopupUI.cpp"
-            timestampString = "479109431.904926"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "97"
-            endingLineNumber = "97"
-            landmarkName = "ShopPopupUI::addEvents()"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "../Classes/Utilities/UtilityHelper.cpp"
             timestampString = "479207845.169129"
             startingColumnNumber = "9223372036854775807"
@@ -233,13 +217,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../Classes/Scenes/LogoScene.cpp"
-            timestampString = "479209212.368061"
+            filePath = "../Classes/UI/Layer/AchieveItemLayer.cpp"
+            timestampString = "479208752.9958"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "264"
-            endingLineNumber = "264"
-            landmarkName = "LogoScene::precache()"
+            startingLineNumber = "126"
+            endingLineNumber = "126"
+            landmarkName = "AchieveItemLayer::showAchieveItem(const std::string icon, const std::string name, const std::string targetDesc)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -249,13 +233,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../Classes/UI/Layer/AchieveItemLayer.cpp"
-            timestampString = "479208752.9958"
+            filePath = "../Classes/UI/Layer/SkillLayer.cpp"
+            timestampString = "479289180.617949"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "126"
-            endingLineNumber = "126"
-            landmarkName = "AchieveItemLayer::showAchieveItem(const std::string icon, const std::string name, const std::string targetDesc)"
+            startingLineNumber = "169"
+            endingLineNumber = "169"
+            landmarkName = "SkillLayer::refreshUIView()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

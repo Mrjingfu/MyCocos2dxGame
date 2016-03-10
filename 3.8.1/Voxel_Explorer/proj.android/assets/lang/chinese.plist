@@ -1013,27 +1013,27 @@
 	<key>PIN_POTION_MINORHEALTH</key>
 	<string>小治疗药水</string>
 	<key>PIN_POTION_MINORHEALTH_DESC</key>
-	<string>恢复角色50点生命值。</string>
+	<string>恢复角色100点生命值。</string>
 	<key>PIN_POTION_LESSERHEALTH</key>
 	<string>轻微治疗药水</string>
 	<key>PIN_POTION_LESSERHEALTH_DESC</key>
-	<string>恢复角色150点生命值。</string>
+	<string>恢复角色300点生命值。</string>
 	<key>PIN_POTION_HEALTH</key>
 	<string>治疗药水</string>
 	<key>PIN_POTION_HEALTH_DESC</key>
-	<string>恢复角色250点生命值。</string>
+	<string>恢复角色500点生命值。</string>
 	<key>PIN_POTION_MINORMANA</key>
 	<string>小魔法药水</string>
 	<key>PIN_POTION_MINORMANA_DESC</key>
-	<string>恢复角色50点魔法值。</string>
+	<string>恢复角色100点魔法值。</string>
 	<key>PIN_POTION_LESSERMANA</key>
 	<string>轻微魔法药水</string>
 	<key>PIN_POTION_LESSERMANA_DESC</key>
-	<string>恢复角色150点魔法值。</string>
+	<string>恢复角色300点魔法值。</string>
 	<key>PIN_POTION_MANA</key>
 	<string>魔法药水</string>
 	<key>PIN_POTION_MANA_DESC</key>
-	<string>恢复角色250点魔法值。</string>
+	<string>恢复角色500点魔法值。</string>
 	<key>PIN_POTION_MINORRECOVERY</key>
 	<string>小恢复药水</string>
 	<key>PIN_POTION_MINORRECOVERY_DESC</key>

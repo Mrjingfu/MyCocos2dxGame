@@ -320,10 +320,17 @@ void MenuUILayer::onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d:
             }
             else
             {
-                CCLOG("EXIT GAME");
-                #if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
-                NativeBridge::getInstance()->exitGame();
-                #endif
+                PopupUILayer* popupLayer = PopupUILayerManager::getInstance()->getCurrentPopUpLayer();
+                if (popupLayer )
+                {
+                    popupLayer->onKeyBackClick();
+                }else
+                {
+                    CCLOG("EXIT GAME");
+#if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
+    NativeBridge::getInstance()->exitGame();
+#endif
+                }
             }
     }
 

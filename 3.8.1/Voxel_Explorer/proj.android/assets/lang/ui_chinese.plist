@@ -8,6 +8,8 @@
 	<string>ui_gameover_cn.png</string>
 	<key>FONT_NAME</key>
 	<string>ui_font.fnt</string>
+	<key>FONT_NAME_IPHONE4</key>
+	<string>ui_font_iphone4.fnt</string>
 	<key>PROP_SHOW_HP</key>
 	<string>生命值：</string>
 	<key>ROLE_SHOW_HP</key>
@@ -403,5 +405,11 @@
 	<string>花费%d个金币,%d个铜币</string>
 	<key>PLAYER_COST_MONEY_SILVER_COPPER</key>
 	<string>花费%d个银币,%d个铜币</string>
+	<key>LANGUGAE_TEXT_ZH</key>
+	<string>中文</string>
+	<key>LANGUGAE_TEXT_EN</key>
+	<string>英文</string>
+	<key>LANGUGAE_CHANGE_TIPS</key>
+	<string>切换语言需要重新加载，是否切换?</string>
 </dict>
 </plist>

@@ -154,6 +154,12 @@ void AlertPopupUI::onKeyBackClick()
         itemSelllayer->getRootNode()->setVisible(true);
     }
     
+    PopupUILayer* languagePopup = nullptr;
+    if (PopupUILayerManager::getInstance()->isOpenPopup(ePopupLangugae, languagePopup)) {
+        languagePopup->getRootNode()->setVisible(true);
+        languagePopup->closePopup();
+    }
+    
     closePopup();
 }
 

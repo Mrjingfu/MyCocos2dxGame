@@ -246,6 +246,12 @@ void GameToolbarLayer::onClickBag(Ref* ref,Widget::TouchEventType type)
     onTouchToolBtn(type,ref,m_pGameBagBtnIcon,0.6f,0.7f,0.1f,[this,ref](){
     
         CCLOG("onClickRole");
+        CHECK_ACTION(ref);
+        PopupUILayer* popup = nullptr;
+        if (PopupUILayerManager::getInstance()->isOpenPopup(ePopupRole, popup)) {
+            return ;
+        }
+        
         if (m_bIsDist) {
             return;
         }
@@ -260,6 +266,7 @@ void GameToolbarLayer::onClickMap(Ref* ref,Widget::TouchEventType type)
     onTouchToolBtn(type,ref,m_pGameMapBtnIcon,0.6f,0.7f,0.1f,[this,ref](){
         
         CCLOG("onClickMap");
+        CHECK_ACTION(ref);
         if (m_bIsDist) {
             return;
         }
@@ -294,7 +301,7 @@ void GameToolbarLayer::setDistTipsFrame()
 }
 void GameToolbarLayer::onClickDistTipsFrame(cocos2d::Ref *ref)
 {
-//CHECK_ACTION(ref);
+    CHECK_ACTION(ref);
     clickEffect();
     CCLOG("onClickSearchTipsFrame");
     setDistTipsFrame();
@@ -306,6 +313,7 @@ void GameToolbarLayer::onClickMsg(Ref* ref,Widget::TouchEventType type)
     onTouchToolBtn(type,ref,m_pGameMsgBtnIcon,0.9f,1.0f,0.1f,[this,ref](){
         
         CCLOG("onClickMsg");
+        CHECK_ACTION(ref);
         if (m_bIsDist) {
             return;
         }
@@ -344,6 +352,7 @@ void GameToolbarLayer::onClickDist(Ref* ref,Widget::TouchEventType type)
     onTouchToolBtn(type,ref,m_pGameDistBtnIcon,0.9f,1.0f,0.1f,[this,ref](){
         
         CCLOG("onClickDist");
+        CHECK_ACTION(ref);
         if (m_bIsDist )
             return;
         m_bIsDist = true;
@@ -361,8 +370,13 @@ void GameToolbarLayer::onClickPause(Ref* ref,Widget::TouchEventType type)
 {
     onTouchToolBtn(type,ref,m_pGamePauseBtnIcon,0.9f,1.0f,0.1f,[this,ref](){
         
-        
+        CHECK_ACTION(ref);
         CCLOG("onClickPause");
+        PopupUILayer* popup = nullptr;
+        if (PopupUILayerManager::getInstance()->isOpenPopup(ePopupPause, popup)) {
+            return ;
+        }
+        
         PopupUILayerManager::getInstance()->openPopup(ePopupPause);
         
         

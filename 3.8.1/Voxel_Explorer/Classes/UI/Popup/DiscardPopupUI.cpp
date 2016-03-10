@@ -101,6 +101,7 @@ void DiscardPopupUI::sliderEvent(cocos2d::Ref* sender, cocos2d::ui::Slider::Even
 }
 void DiscardPopupUI::onClickOk(cocos2d::Ref *ref)
 {
+    CHECK_ACTION(ref);
     PickableItemProperty* itemprop =  PlayerProperty::getInstance()->getItemFromBag(CChaosNumber(m_nItemId));
     int count = m_pItemSlider->getPercent() +1;
 
@@ -122,6 +123,7 @@ void DiscardPopupUI::onClickOk(cocos2d::Ref *ref)
 }
 void DiscardPopupUI::onClickCancel(cocos2d::Ref *ref)
 {
+    CHECK_ACTION(ref);
     closePopup();
     PopupUILayer* itemPopupLayer;
     if (PopupUILayerManager::getInstance()->isOpenPopup(ePopupItem,itemPopupLayer)) {

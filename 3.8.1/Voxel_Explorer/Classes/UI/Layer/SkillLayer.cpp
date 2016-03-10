@@ -12,7 +12,6 @@
 #include "VoxelExplorer.h"
 #include "Player.hpp"
 #include "PopupUILayerManager.h"
-#include "PotionsProperty.hpp"
 #include "RegionImageView.h"
 USING_NS_CC;
 SkillLayer::SkillLayer()
@@ -163,32 +162,38 @@ void SkillLayer::refreshUIView()
     {
         m_nMagicPotionId = -1;
         m_nBloodPotionId = -1;
-        std::vector<PickableItemProperty*> items = PlayerProperty::getInstance()->getPlayerBag();
-        std::sort(items.begin(), items.end(), [](PickableItemProperty* item1,PickableItemProperty* item2){
-                return item1->getPickableItemType() < item2->getPickableItemType();
-        });
-        for (auto iter =items.begin(); iter!=items.end(); ++iter)
+        
+        int reduceHp = PlayerProperty::getInstance()->getMaxHP().GetLongValue() - PlayerProperty::getInstance()->getCurrentHP().GetLongValue();
+        int reduceMp = PlayerProperty::getInstance()->getMaxMP().GetLongValue() - PlayerProperty::getInstance()->getCurrentMP().GetLongValue();
+        
+         if(reduceHp >=400)
         {
-            if (*iter) {
-                PickableItemProperty* item = (*iter);
-                if (item->getPickableItemType()>=PickableItem::PIT_POTION_MINORHEALTH && item->getPickableItemType()<=PickableItem::PIT_POTION_HEALTH)
-                {
-                    m_nBloodPotionId = item->getInstanceID();
-                    break;
-                }
-            }
-        }
-        for (auto iter =items.begin(); iter!=items.end(); ++iter)
+            //使用大瓶
+            m_nBloodPotionId = getPotionForBag(PickableItem::PIT_POTION_HEALTH, PickableItem::PIT_POTION_LESSERHEALTH, PickableItem::PIT_POTION_MINORHEALTH);
+        }else if(reduceHp >=200)
         {
-            if (*iter) {
-                PickableItemProperty* item = (*iter);
-                if (item->getPickableItemType()>=PickableItem::PIT_POTION_MINORMANA && item->getPickableItemType()<=PickableItem::PIT_POTION_MANA)
-                {
-                    m_nMagicPotionId = item->getInstanceID();
-                    break;
-                }
-            }
+            //使用中瓶
+            m_nBloodPotionId = getPotionForBag(PickableItem::PIT_POTION_LESSERHEALTH, PickableItem::PIT_POTION_MINORHEALTH, PickableItem::PIT_POTION_HEALTH);
+        }else{
+            //使用小瓶
+            m_nBloodPotionId = getPotionForBag(PickableItem::PIT_POTION_MINORHEALTH, PickableItem::PIT_POTION_LESSERHEALTH, PickableItem::PIT_POTION_HEALTH);
         }
+        
+        
+        if(reduceMp >=400)
+        {
+            //使用大瓶
+            m_nMagicPotionId = getPotionForBag(PickableItem::PIT_POTION_HEALTH, PickableItem::PIT_POTION_LESSERHEALTH, PickableItem::PIT_POTION_MINORHEALTH);
+        }else if(reduceMp >=200)
+        {
+            //使用中瓶
+            m_nMagicPotionId = getPotionForBag(PickableItem::PIT_POTION_LESSERHEALTH, PickableItem::PIT_POTION_MINORHEALTH, PickableItem::PIT_POTION_HEALTH);
+        }else{
+            //使用小瓶
+            m_nMagicPotionId = getPotionForBag(PickableItem::PIT_POTION_MINORHEALTH, PickableItem::PIT_POTION_LESSERHEALTH, PickableItem::PIT_POTION_HEALTH);
+        }
+        
+        
         if(!m_bIsUseMagicPotion)
         {
             if (m_nMagicPotionId ==-1){
@@ -315,6 +320,8 @@ void SkillLayer::onTouchBlood(Ref* ref,Widget::TouchEventType type)
                            if (m_pBloodProgress->getPercentage()==0)
                            {
                                CCLOG("USE Blood");
+                               if (VoxelExplorer::getInstance()->getPlayer()->getState()== Player::PS_DEATH)
+                                   return;
                                PlayerProperty::getInstance()->usePotion(m_nBloodPotionId);
                            }else
                            {
@@ -368,6 +375,8 @@ void SkillLayer::onTouchMagic(Ref* ref,Widget::TouchEventType type)
                     {
                         if (m_pMagicProgress->getPercentage()==0) {
                             CCLOG("USE Magic");
+                            if (VoxelExplorer::getInstance()->getPlayer()->getState()== Player::PS_DEATH)
+                                return;
                             PlayerProperty::getInstance()->usePotion(m_nMagicPotionId);
                         }else
                         {
@@ -422,6 +431,8 @@ void SkillLayer::onTouchSkill(Ref* ref,Widget::TouchEventType type)
                     {
                         if(m_pSkillProgress->getPercentage()==0)
                         {
+                            if (VoxelExplorer::getInstance()->getPlayer()->getState()== Player::PS_DEATH)
+                                return;
                             if(VoxelExplorer::getInstance()->handlePlayerUseSkill())
                                 refreshSkillView();
                             
@@ -496,4 +507,72 @@ void SkillLayer::magicProgressAction()
         }),nullptr));
     }
     
+}
+int SkillLayer::getPotionForBag(PickableItem::PickableItemType type,PickableItem::PickableItemType type2,PickableItem::PickableItemType type3)
+{
+    int potionId = -1;
+    std::vector<PickableItemProperty*> bags = PlayerProperty::getInstance()->getPlayerBag();
+    
+    std::sort(bags.begin(), bags.end(), [](PickableItemProperty* item1,PickableItemProperty* item2){
+        return item1->getPickableItemType() > item2->getPickableItemType();
+    });
+    
+    
+    std::vector<PickableItemProperty*> items;
+    
+    for (auto iter =bags.begin(); iter!=bags.end(); ++iter)
+    {
+        if (*iter) {
+            PickableItemProperty* item = (*iter);
+            if (item->getPickableItemType()>=PickableItem::PIT_POTION_MINORHEALTH && item->getPickableItemType()<=PickableItem::PIT_POTION_MANA )
+            {
+                items.push_back(item);
+            }
+        }
+    }
+    
+    for (auto iter =items.begin(); iter!=items.end(); ++iter)
+    {
+        if (*iter) {
+            PickableItemProperty* item = (*iter);
+            if (item->getPickableItemType()==type)
+            {
+                potionId = item->getInstanceID();
+                break;
+            }
+        }
+    }
+    if (potionId==-1)
+    {
+        for (auto iter =items.begin(); iter!=items.end(); ++iter)
+        {
+            if (*iter) {
+                PickableItemProperty* item = (*iter);
+                if (item->getPickableItemType()==type2)
+                {
+                    potionId = item->getInstanceID();
+                    break;
+                }
+            }
+        }
+    }
+
+    if (potionId==-1)
+    {
+        for (auto iter =items.begin(); iter!=items.end(); ++iter)
+        {
+            if (*iter) {
+                PickableItemProperty* item = (*iter);
+                if (item->getPickableItemType()==type3)
+                {
+                    potionId = item->getInstanceID();
+                    break;
+                }
+            }
+        }
+    }
+    
+    items.clear();
+
+    return potionId;
 }

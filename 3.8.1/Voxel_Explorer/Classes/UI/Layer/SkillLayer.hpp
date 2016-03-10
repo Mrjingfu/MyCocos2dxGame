@@ -10,6 +10,7 @@
 #define SkillLayer_hpp
 
 #include "WrapperUILayer.h"
+#include "PotionsProperty.hpp"
 class RegionImageView;
 class SkillLayer : public WrapperUILayer
 {   
@@ -33,6 +34,8 @@ private:
     void magicProgressAction();
     
     void onEventRoleUserPotion(cocos2d::EventCustom *sender);//使用药水物品
+    int getPotionForBag(PickableItem::PickableItemType type,PickableItem::PickableItemType type2,PickableItem::PickableItemType type3);
+    
     
 protected:
 
