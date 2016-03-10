@@ -1016,27 +1016,27 @@ A nice bow.very light</string>
 	<key>PIN_POTION_MINORHEALTH</key>
 	<string>Minor Health Potion</string>
 	<key>PIN_POTION_MINORHEALTH_DESC</key>
-	<string>Restore player 50 healty point.</string>
+	<string>Restore player 100 healty point.</string>
 	<key>PIN_POTION_LESSERHEALTH</key>
 	<string>Lesser Health Potion</string>
 	<key>PIN_POTION_LESSERHEALTH_DESC</key>
-	<string>Restore player 150 healty point.</string>
+	<string>Restore player 300 healty point.</string>
 	<key>PIN_POTION_HEALTH</key>
 	<string>Health Potion</string>
 	<key>PIN_POTION_HEALTH_DESC</key>
-	<string>Restore player 250 healty point.</string>
+	<string>Restore player 500 healty point.</string>
 	<key>PIN_POTION_MINORMANA</key>
 	<string>Minor Mana Potion</string>
 	<key>PIN_POTION_MINORMANA_DESC</key>
-	<string>Restore player 50 mana point.</string>
+	<string>Restore player 100 mana point.</string>
 	<key>PIN_POTION_LESSERMANA</key>
 	<string>Lesser Mana Potion</string>
 	<key>PIN_POTION_LESSERMANA_DESC</key>
-	<string>Restore player 150 mana point.</string>
+	<string>Restore player 300 mana point.</string>
 	<key>PIN_POTION_MANA</key>
 	<string>Mana Potion</string>
 	<key>PIN_POTION_MANA_DESC</key>
-	<string>Restore player 250 mana point.</string>
+	<string>Restore player 500 mana point.</string>
 	<key>PIN_POTION_MINORRECOVERY</key>
 	<string>Minor Recovery Potion</string>
 	<key>PIN_POTION_MINORRECOVERY_DESC</key>

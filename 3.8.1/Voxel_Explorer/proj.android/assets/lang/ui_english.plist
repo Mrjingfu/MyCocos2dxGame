@@ -8,6 +8,8 @@
 	<string>ui_gameover_en.png</string>
 	<key>FONT_NAME</key>
 	<string>ui_font.fnt</string>
+	<key>FONT_NAME_IPHONE4</key>
+	<string>ui_font_iphone4.fnt</string>
 	<key>PROP_SHOW_HP</key>
 	<string>HP:</string>
 	<key>ROLE_SHOW_HP</key>
@@ -402,5 +404,11 @@
 	<string>Cost %d gold coins,%d copper coins</string>
 	<key>PLAYER_COST_MONEY_SILVER_COPPER</key>
 	<string>Cost %d silver coins,%d copper coins</string>
+	<key>LANGUGAE_TEXT_ZH</key>
+	<string>Chinese</string>
+	<key>LANGUGAE_TEXT_EN</key>
+	<string>English</string>
+	<key>LANGUGAE_CHANGE_TIPS</key>
+	<string>Need to reloaded language, switch now?</string>
 </dict>
 </plist>

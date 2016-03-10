@@ -85,6 +85,9 @@ def do_build(cocos_root, ndk_root, app_android_root,ndk_build_param,sdk_root,and
 def copy_files(src, dst):
 
     for item in os.listdir(src):
+    	if item == "ui_font_iphone4.png" or item == "ui_font_iphone4.fnt":
+    		print 'find:'+item
+    		continue
         path = os.path.join(src, item)
         # Android can not package the file that ends with ".gz"
         if not item.startswith('.') and not item.endswith('.gz') and os.path.isfile(path):
