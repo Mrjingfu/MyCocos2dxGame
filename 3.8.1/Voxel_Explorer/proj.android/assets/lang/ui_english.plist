@@ -409,6 +409,6 @@
 	<key>LANGUGAE_TEXT_EN</key>
 	<string>English</string>
 	<key>LANGUGAE_CHANGE_TIPS</key>
-	<string>Need reloaded language, switch now?</string>
+	<string>Need to reloaded language, switch now?</string>
 </dict>
 </plist>
