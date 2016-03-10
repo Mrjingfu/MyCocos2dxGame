@@ -3,7 +3,7 @@
     package="com.wanax.voxelexplorer"
     android:installLocation="auto"
     android:versionCode="3"
-    android:versionName="1.1.1" >
+    android:versionName="1.1" >
 
     <uses-sdk android:minSdkVersion="11" />
 
