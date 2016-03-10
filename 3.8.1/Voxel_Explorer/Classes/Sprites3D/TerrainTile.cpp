@@ -92,5 +92,5 @@ void TerrainTile::setVisited(bool visited)
 }
 cocos2d::Vec2 TerrainTile::getPosInMap()
 {
-    return Vec2( (int)(getPositionX()/TerrainTile::CONTENT_SCALE), int(-getPositionZ() /TerrainTile::CONTENT_SCALE));
+    return Vec2( (int)(getPositionX()/TerrainTile::CONTENT_SCALE + 0.5f), int(-getPositionZ() /TerrainTile::CONTENT_SCALE + 0.5f));
 }

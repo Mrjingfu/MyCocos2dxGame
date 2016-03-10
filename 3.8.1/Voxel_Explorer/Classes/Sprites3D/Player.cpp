@@ -1064,7 +1064,7 @@ void Player::onEnterJumpMove()
             break;
     }
     Vec3 playerNextPos = getPosition3D() + dir;
-    m_NextPosInMap = Vec2((int)(playerNextPos.x/TerrainTile::CONTENT_SCALE), (int)(-playerNextPos.z /TerrainTile::CONTENT_SCALE));
+    m_NextPosInMap = Vec2((int)(playerNextPos.x/TerrainTile::CONTENT_SCALE + 0.5f), (int)(-playerNextPos.z /TerrainTile::CONTENT_SCALE + 0.5f));
     removeTerrainTileFlag(TileInfo::ATTACKABLE);
     addTerrainTileFlagByPos(TileInfo::ATTACKABLE, m_NextPosInMap);
     ScaleTo* scaleTo = ScaleTo::create(0.1f, 1.0f, 1.0f, 1.0f);
@@ -1109,7 +1109,7 @@ void Player::onEnterAttack()
     ScaleTo* scaleTo = ScaleTo::create(0.1f, 1.0f, 1.0f, 1.0f);
     EaseSineOut* moveUp = EaseSineOut::create(MoveTo::create(0.1f, Vec3(getPositionX(), getPositionY() + TerrainTile::CONTENT_SCALE*0.25f, getPositionZ()) + dir*0.4f));
     Vec3 monsterPos = getPosition3D() + dir;
-    Vec2 posInMap = Vec2((int)(monsterPos.x/TerrainTile::CONTENT_SCALE), (int)(-monsterPos.z /TerrainTile::CONTENT_SCALE));
+    Vec2 posInMap = Vec2((int)(monsterPos.x/TerrainTile::CONTENT_SCALE + 0.5f), (int)(-monsterPos.z /TerrainTile::CONTENT_SCALE) + 0.5f);
     CallFunc* callback = CallFunc::create(CC_CALLBACK_0(VoxelExplorer::handleMonsterHurt,VoxelExplorer::getInstance(),posInMap));
     EaseSineOut* moveDown = EaseSineOut::create(MoveTo::create(0.1f, getPosition3D()));
     Sequence* sequenceJump = Sequence::create(moveUp, callback, moveDown, NULL);
