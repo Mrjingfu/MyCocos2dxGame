@@ -1887,6 +1887,7 @@ bool VoxelExplorer::handlePlayerUseSkill()
                 if (PlayerProperty::getInstance()->getCurrentMP() >=10)
                 {
                     PlayerProperty::getInstance()->setCurrentMP(PlayerProperty::getInstance()->getCurrentMP() - 10);
+                    m_pPlayer->removePlayerBuffer(PB_STEALTH);
                     m_pPlayer->addPlayerBuffer(PB_BLOCKRATEUP);
                     ret = true;
 #if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM ==CC_PLATFORM_ANDROID )
@@ -1899,6 +1900,7 @@ bool VoxelExplorer::handlePlayerUseSkill()
                 if (PlayerProperty::getInstance()->getCurrentMP() >=8)
                 {
                     PlayerProperty::getInstance()->setCurrentMP(PlayerProperty::getInstance()->getCurrentMP() - 8);
+                    m_pPlayer->removePlayerBuffer(PB_STEALTH);
                     m_pPlayer->useSkillToAttack(skill);
                     ret = true;
 #if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM ==CC_PLATFORM_ANDROID )
@@ -1911,6 +1913,7 @@ bool VoxelExplorer::handlePlayerUseSkill()
                 if (PlayerProperty::getInstance()->getCurrentMP() >=12)
                 {
                     PlayerProperty::getInstance()->setCurrentMP(PlayerProperty::getInstance()->getCurrentMP() - 12);
+                    m_pPlayer->removePlayerBuffer(PB_STEALTH);
                     m_pPlayer->useSkillToAttack(skill);
                     ret = true;
 #if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM ==CC_PLATFORM_ANDROID )
