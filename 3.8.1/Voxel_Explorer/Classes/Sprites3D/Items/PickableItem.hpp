@@ -243,6 +243,13 @@ public:
         PIT_POTION_UNIVERSAL,                    ///万能药水 Universal Potion
         ///PIT_POTION_END
         
+        ///PIT_MATERIAL_BEGIN
+        PIT_MATERIAL_WHITE,
+        PIT_MATERIAL_GREEN,
+        PIT_MATERIAL_BLUE,
+        PIT_MATERIAL_PURPLE,
+        ///PIT_MATERIAL_END
+        
         PIT_UNKNOWN
     } PickableItemType;
     

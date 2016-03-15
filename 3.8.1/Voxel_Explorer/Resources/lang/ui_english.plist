@@ -334,6 +334,14 @@
 	<string>REVIVE</string>
 	<key>BTN_TEXT_RANK</key>
 	<string>LEADERBOARD</string>
+	<key>BTN_TEXT_BREADDOWN</key>
+	<string>分解</string>
+	<key>BTN_TEXT_WASH</key>
+	<string>洗练</string>
+	<key>BAG_TEXT_BREADDOWN</key>
+	<string>分解物品</string>
+	<key>BAG_TEXT_WASH_TIP</key>
+	<string>请点击需要洗练的装备</string>
 	<key>BAG_INDENTIFY_FAIL</key>
 	<string>Indentified failed！</string>
 	<key>BAG_NO_INDENTIFY_SCROLL</key>

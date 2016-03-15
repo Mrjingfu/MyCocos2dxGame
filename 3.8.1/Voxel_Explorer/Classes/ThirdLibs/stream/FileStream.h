@@ -25,6 +25,7 @@ public:
     virtual bool eof(void) const;
     virtual void close(void);
     void flush();
+    bool isFileNull();
 private:
     FILE* m_file;
 };

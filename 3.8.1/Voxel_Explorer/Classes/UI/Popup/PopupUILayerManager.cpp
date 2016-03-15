@@ -32,6 +32,9 @@
 #include "RandomMsgPopupUI.h"
 #include "DiscardPopupUI.hpp"
 #include "LangugaePopup.hpp"
+#include "ItemBreadDownPopupUI.hpp"
+#include "EquipmentPopupUI.hpp"
+#include "WashPopupUI.hpp"
 PopupUILayerManager::PopupUILayerManager()
 {
     m_pParentLayer = nullptr;
@@ -181,6 +184,15 @@ PopupUILayer* PopupUILayerManager::initPopUp(ePopupType type)
             break;
         case ePopupLangugae:
             popupLayer = LangugaePopup::create();
+            break;
+        case ePopupItemBreadDown:
+            popupLayer = ItemBreadDownPopupUI::create();
+            break;
+        case ePopupBagEquipment:
+            popupLayer = EquipmentPopupUI::create();
+            break;
+        case ePopupWash:
+            popupLayer = WashPopupUI::create();
         default:
             break;
     }

@@ -25,6 +25,7 @@
 #include "LevelResourceManager.h"
 #include "SdkBoxManager.hpp"
 #include "GameCenterController.h"
+#include "AlisaMethod.h"
 USING_NS_CC;
 using namespace CocosDenshion;
 
@@ -799,6 +800,229 @@ bool PlayerProperty::useKey(PickableItem::PickableItemType type)
     }
     return false;
 }
+bool PlayerProperty::equipBreadDown(CChaosNumber id)
+{
+    PickableItemProperty* itemprop = getItemFromBag(id);
+    if (itemprop)
+    {
+        PickableItemProperty::PickableItemPropertyType itemtype = itemprop->getPickableItemPropertyType();
+        if (itemtype>=PickableItemProperty::PIPT_WEAPON && itemtype<=PickableItemProperty::PIPT_MAGIC_ORNAMENT) {
+            PICKABLEITEM_QUALITY itemQualty = itemprop->getQuality();
+            float percentPro = 0.0f;
+            float percentStandard1 = 0.0f;
+            float percentStandard2 = 0.0f;
+            float percentStandard3 = 0.0f;
+            switch (itemQualty) {
+                case PICKABLEITEM_QUALITY::PIQ_RARE:
+                {
+                    percentPro = 0.3f;
+                    percentStandard1 = 0.4f;
+                    percentStandard2 = 0.2f;
+                    percentStandard3 = 1.0f - percentPro - percentStandard1 - percentStandard2- percentStandard3;
+                }
+                    break;
+                case PICKABLEITEM_QUALITY::PIQ_EPIC:
+                {
+                    percentPro = 0.3f;
+                    percentStandard1 = 0.2f;
+                    percentStandard2 = 0.4f;
+                    percentStandard3 = 1.0f - percentPro - percentStandard1 - percentStandard2- percentStandard3;
+
+                }
+                    break;
+                case PICKABLEITEM_QUALITY::PIQ_LEGEND:
+                {
+                    percentPro = 0.3f;
+                    percentStandard1 = 0.1f;
+                    percentStandard2 = 0.1f;
+                    percentStandard3 = 1.0f - percentPro - percentStandard1 - percentStandard2- percentStandard3;
+
+                }
+                    break;
+                case PICKABLEITEM_QUALITY::PIQ_GENERAL:
+                default:
+                {
+                    percentPro = 0.8f;
+                    percentStandard1 = 0.1f;
+                    percentStandard2 = 0.05f;
+                    percentStandard3 = 1.0f - percentPro - percentStandard1 - percentStandard2- percentStandard3;
+                    
+                }
+                    break;
+            }
+            AlisaMethod* am = AlisaMethod::create(percentPro, percentStandard1, percentStandard2, percentStandard3, -1.0, NULL);
+            if (am)
+            {
+                PickableItem::PickableItemType type = PickableItem::PIT_MATERIAL_WHITE;
+                int itemLevel = itemprop->getLevel().GetLongValue();
+                int count = 1;
+                if (am->getRandomIndex() ==1)
+                {
+                    type = PickableItem::PIT_MATERIAL_GREEN;
+                }else if (am->getRandomIndex() ==2)
+                {
+                    type = PickableItem::PIT_MATERIAL_BLUE;
+                }else if (am->getRandomIndex() ==3)
+                {
+                    type = PickableItem::PIT_MATERIAL_PURPLE;
+                }
+                
+                if (type == PickableItem::PIT_MATERIAL_PURPLE)
+                {
+                    if (itemLevel >10 && itemLevel<25)
+                    {
+                        count = cocos2d::random(1, 3);
+                    }else if (itemLevel>25)
+                    {
+                        count = cocos2d::random(3, 5);
+                    }
+                }else
+                {
+                    if (itemLevel >0 && itemLevel<10)
+                    {
+                        count = cocos2d::random(1, 3);
+                    }else if (itemLevel >10 && itemLevel<25)
+                    {
+                        count = cocos2d::random(3, 5);
+                    }else if (itemLevel>25)
+                    {
+                        count = cocos2d::random(3, 8);
+                    }
+                }
+                for (PickableItemProperty* item : m_Bag) {
+                    if(item)
+                    {
+                        if(item->isStackable() && item->getPickableItemType() == type)
+                        {
+                            IStackable* itemProperty = dynamic_cast<IStackable*>(item);
+                            if (itemProperty)
+                            {
+                                itemProperty->addCount(count);
+                                removeItemFromBag(id);
+                            }
+                            item->adjustByLevel();
+                            return true;
+                        }
+                    }
+                }
+                if(m_Bag.size() >= m_nBagMaxSpace.GetLongValue())
+                {
+                    Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_BAG_NO_SPACE);
+                    return false;
+                }
+                
+                MaterialProperty* itemProperty = new (std::nothrow) MaterialProperty(m_snItemInstanceIDCounter++,type);
+                if(itemProperty)
+                {
+                    itemProperty->adjustByLevel();
+                    itemProperty->addCount(count);
+                    m_Bag.push_back(itemProperty);
+                    removeItemFromBag(id);
+                    return true;
+                }
+            }
+            
+        }else
+            return false;
+    }
+    return false;
+}
+
+bool PlayerProperty::equipWashPractice(CChaosNumber id)
+{
+    
+    PickableItemProperty* itemprop = getItemFromBag(id);
+    if (itemprop)
+    {
+        PickableItemProperty::PickableItemPropertyType itemtype = itemprop->getPickableItemPropertyType();
+        if (itemtype>=PickableItemProperty::PIPT_WEAPON && itemtype<=PickableItemProperty::PIPT_MAGIC_ORNAMENT)
+        {
+            PICKABLEITEM_QUALITY itemQualty = itemprop->getQuality();
+            PickableItemProperty* whiteProp = getStackableItemForBag(PickableItem::PIT_MATERIAL_WHITE);
+            PickableItemProperty* greenProp = getStackableItemForBag(PickableItem::PIT_MATERIAL_GREEN);
+            PickableItemProperty* blueProp = getStackableItemForBag(PickableItem::PIT_MATERIAL_BLUE);
+            PickableItemProperty* purpleProp = getStackableItemForBag(PickableItem::PIT_MATERIAL_PURPLE);
+            
+            if (!whiteProp || !greenProp)
+                return false;
+            
+            if (itemQualty == PIQ_RARE)
+            {
+                int surplusWhite = whiteProp->getCount() - MaterialProperty::WASH_PIQ_RARE[PickableItem::PIT_MATERIAL_WHITE];
+                int surplusGreen = greenProp->getCount() - MaterialProperty::WASH_PIQ_RARE[PickableItem::PIT_MATERIAL_GREEN];
+                
+                if ( surplusWhite>=0 && surplusGreen>=0) {
+                    if (!costMoney(3000)) {
+                        return false;
+                    }
+                    whiteProp->setCount(surplusWhite);
+                    greenProp->setCount(surplusGreen);
+                    
+                    itemprop->adjustByLevel();
+                    m_bDirty = true;
+                    return true;
+                }
+                
+            }else if (itemQualty == PIQ_EPIC)
+            {
+                if(!blueProp)
+                    return false;
+                int surplusWhite = whiteProp->getCount() - MaterialProperty::WASH_PIQ_EPIC[PickableItem::PIT_MATERIAL_WHITE];
+                int surplusGreen = greenProp->getCount() - MaterialProperty::WASH_PIQ_EPIC[PickableItem::PIT_MATERIAL_GREEN];
+                int surplusBlue = blueProp ->getCount() - MaterialProperty::WASH_PIQ_EPIC[PickableItem::PIT_MATERIAL_BLUE];
+                if ( surplusWhite>=0 && surplusGreen>=0 && surplusBlue>=0) {
+                    if (!costMoney(3000)) {
+                        return false;
+                    }
+                    whiteProp->setCount(surplusWhite);
+                    greenProp->setCount(surplusGreen);
+                    blueProp->setCount(surplusBlue);
+                    
+                    itemprop->adjustByLevel();
+                    m_bDirty = true;
+                    return true;
+                }
+                
+            }else if (itemQualty == PIQ_LEGEND)
+            {
+                if (!blueProp || !purpleProp)
+                    return false;
+                int surplusWhite = whiteProp->getCount() - MaterialProperty::WASH_PIQ_LEGEND[PickableItem::PIT_MATERIAL_WHITE];
+                int surplusGreen = greenProp->getCount() - MaterialProperty::WASH_PIQ_LEGEND[PickableItem::PIT_MATERIAL_GREEN];
+                int surplusBlue = blueProp ->getCount() - MaterialProperty::WASH_PIQ_LEGEND[PickableItem::PIT_MATERIAL_BLUE];
+                int surplusPurple = purpleProp->getCount() - MaterialProperty::WASH_PIQ_LEGEND[PickableItem::PIT_MATERIAL_PURPLE];
+                if ( surplusWhite>=0 && surplusGreen>=0 && surplusBlue>=0 && surplusPurple>=0) {
+                    if (!costMoney(3000)) {
+                        return false;
+                    }
+                    whiteProp->setCount(surplusWhite);
+                    greenProp->setCount(surplusGreen);
+                    blueProp->setCount(surplusBlue);
+                    purpleProp->setCount(surplusPurple);
+                    m_bDirty = true;
+                    itemprop->adjustByLevel();
+                    return true;
+                }
+            }
+        }else
+            return false;
+    }
+    
+    return false;
+}
+PickableItemProperty* PlayerProperty::getStackableItemForBag(PickableItem::PickableItemType type)
+{
+    for (PickableItemProperty* item : m_Bag) {
+        if(item)
+        {
+            if(item->isStackable() && item->getPickableItemType() == type)
+            {
+                return item;
+            }
+        }
+    }
+    return nullptr;
+}
 void PlayerProperty::playPickupItemSound(PickableItemProperty* itemProperty)
 {
     if(itemProperty)
@@ -1247,6 +1471,8 @@ bool PlayerProperty::load(const cocos2d::ValueMap& data)
                 property = new (std::nothrow) ScrollProperty(instanceId, itemType);
             else if(propertyType == PickableItemProperty::PIPT_POTIONS)
                 property = new (std::nothrow) PotionsProperty(instanceId, itemType);
+            else if(propertyType == PickableItemProperty::PIPT_MATERIAL)
+                property = new (std::nothrow) MaterialProperty(instanceId, itemType);
             if(!property || !property->load(value.asValueMap()))
                 return false;
             m_Bag.push_back(property);

@@ -120,11 +120,14 @@ void BagLayer::refreshUIView()
             m_pBtnBagExtend->setVisible(false);
         }
     
-    m_BagMsgLayer->setLayerContentSize(cocos2d::Size(m_pGridView->getInnerContainerSize()));
-    m_BagMsgLayer->setPosition(m_pGridView->getInnerContainerSize()*0.5);
     //清除背包信息
     if (m_BagMsgLayer)
+    {
+        m_BagMsgLayer->setLayerContentSize(cocos2d::Size(m_pGridView->getInnerContainerSize()));
+        m_BagMsgLayer->setPosition(m_pGridView->getInnerContainerSize()*0.5);
         m_BagMsgLayer->removeItems();
+    }
+    
 
     //重置边框颜色
     for(int i=0; i<m_pGridView->getItems().size(); i++)
@@ -154,7 +157,7 @@ void BagLayer::refreshUIView()
         PickableItemProperty* itemProp =items[i];
         ui::ImageView* itemUi = static_cast<ui::ImageView*>( m_pGridView->getItem(i));
         
-        if (itemProp && itemUi) {
+        if (m_BagMsgLayer && itemProp && itemUi) {
             // 更新装备UI
             
             m_BagMsgLayer->addItem(i, itemProp->getInstanceID(), itemUi->getPosition(), itemProp->getIconRes());
