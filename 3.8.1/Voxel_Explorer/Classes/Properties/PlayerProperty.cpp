@@ -108,8 +108,8 @@ void PlayerProperty::addPlayerBuffer(PlayerBuffer buff)
     }
     else if(buff == PB_BLOCKRATEUP)
     {
-        m_fBlockRate = m_fBlockRate + 0.3f;
-        m_fBlockRate = MIN(m_fBlockRate.GetFloatValue(), 0.5f);
+        m_fBlockRate = m_fBlockRate + 0.5f;
+        m_fBlockRate = MIN(m_fBlockRate.GetFloatValue(), 0.7f);
     }
     m_BufferFlag = m_BufferFlag | buff;
     m_bDirty = true;
@@ -136,7 +136,7 @@ void PlayerProperty::removePlayerBuffer(PlayerBuffer buff)
     }
     else if(buff == PB_BLOCKRATEUP)
     {
-        m_fBlockRate = m_fBlockRate - 0.3f;
+        m_fBlockRate = m_fBlockRate - 0.5f;
         m_fBlockRate = MAX(0.01f, m_fBlockRate.GetFloatValue());
     }
     m_BufferFlag = m_BufferFlag &~ buff;

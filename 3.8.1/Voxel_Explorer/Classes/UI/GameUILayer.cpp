@@ -267,9 +267,9 @@ void GameUILayer::onTouchEnded(cocos2d::Touch *touch, cocos2d::Event *event)
                     infoUi->registerCloseCallback([this](){
                         
                         int playerLevel = (int)PlayerProperty::getInstance()->getLevel().GetLongValue();
-                        int addExp = ((int)(playerLevel/5) + 1)*200;
-                        updateShowRoleExp(addExp);
-                        PlayerProperty::getInstance()->setExp(PlayerProperty::getInstance()->getExp() + addExp);
+                        CChaosNumber addExp = ((int)(playerLevel/5) + 1)*200;
+                        updateShowRoleExp((int)addExp.GetLongValue());
+                        PlayerProperty::getInstance()->setExp(PlayerProperty::getInstance()->getExp() + (int)addExp.GetLongValue());
                        
                         
                     });
