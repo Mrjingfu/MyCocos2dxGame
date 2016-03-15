@@ -1025,8 +1025,8 @@ void VoxelExplorer::handleDoor(const cocos2d::Vec2& mapPos)
                     
                     Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_FOUND_HIDDEN_DOOR);
                     int playerLevel = (int)PlayerProperty::getInstance()->getLevel().GetLongValue();
-                    int addExp = playerLevel*10 + 90;
-                    PlayerProperty::getInstance()->setExp(PlayerProperty::getInstance()->getExp() + addExp);
+                    CChaosNumber addExp = playerLevel*10 + 90;
+                    PlayerProperty::getInstance()->setExp(PlayerProperty::getInstance()->getExp() + (int)addExp.GetLongValue());
                     StatisticsManager::getInstance()->addHideInfoNum(StatisticsManager::eHideInfoType::HIT_DOOR);
                     return;
                 }
@@ -1345,8 +1345,8 @@ void VoxelExplorer::handleShowSecretDoor(const cocos2d::Vec2& mapPos)
                     m_pCurrentLevel->setTerrainTileType(mapPos.x, mapPos.y, TerrainTile::TT_DOOR);
                     Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_FOUND_HIDDEN_DOOR);
                     int playerLevel = (int)PlayerProperty::getInstance()->getLevel().GetLongValue();
-                    int addExp = playerLevel*10 + 90;
-                    PlayerProperty::getInstance()->setExp(PlayerProperty::getInstance()->getExp() + addExp);
+                    CChaosNumber addExp = playerLevel*10 + 90;
+                    PlayerProperty::getInstance()->setExp(PlayerProperty::getInstance()->getExp() + (int)addExp.GetLongValue());
                 }
             }
         }
@@ -1357,41 +1357,41 @@ void VoxelExplorer::handleShowHiddenTrap(const cocos2d::Vec2& mapPos, TerrainTil
     if(m_pPlayer)
     {
         int playerLevel = (int)PlayerProperty::getInstance()->getLevel().GetLongValue();
-        int addExp = playerLevel*10 + 90;
+        CChaosNumber addExp = playerLevel*10 + 90;
         if(trapType == TerrainTile::TT_TOXIC_TRAP)
         {
             Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_FOUND_HIDDEN_TOXIC_TRAP);
-            PlayerProperty::getInstance()->setExp(PlayerProperty::getInstance()->getExp() + addExp);
+            PlayerProperty::getInstance()->setExp(PlayerProperty::getInstance()->getExp() + (int)addExp.GetLongValue());
             StatisticsManager::getInstance()->addHideInfoNum(StatisticsManager::eHideInfoType::HIT_TRAP);
         }
         else if(trapType == TerrainTile::TT_FIRE_TRAP)
         {
             Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_FOUND_HIDDEN_FIRE_TRAP);
-            PlayerProperty::getInstance()->setExp(PlayerProperty::getInstance()->getExp() + addExp);
+            PlayerProperty::getInstance()->setExp(PlayerProperty::getInstance()->getExp() + (int)addExp.GetLongValue());
              StatisticsManager::getInstance()->addHideInfoNum(StatisticsManager::eHideInfoType::HIT_TRAP);
         }
         else if(trapType == TerrainTile::TT_PARALYTIC_TRAP)
         {
             Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_FOUND_HIDDEN_PARALYTIC_TRAP);
-            PlayerProperty::getInstance()->setExp(PlayerProperty::getInstance()->getExp() + addExp);
+            PlayerProperty::getInstance()->setExp(PlayerProperty::getInstance()->getExp() + (int)addExp.GetLongValue());
              StatisticsManager::getInstance()->addHideInfoNum(StatisticsManager::eHideInfoType::HIT_TRAP);
         }
         else if(trapType == TerrainTile::TT_GRIPPING_TRAP)
         {
             Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_FOUND_HIDDEN_GRIPPING_TRAP);
-            PlayerProperty::getInstance()->setExp(PlayerProperty::getInstance()->getExp() + addExp);
+            PlayerProperty::getInstance()->setExp(PlayerProperty::getInstance()->getExp() + (int)addExp.GetLongValue());
              StatisticsManager::getInstance()->addHideInfoNum(StatisticsManager::eHideInfoType::HIT_TRAP);
         }
         else if(trapType == TerrainTile::TT_SUMMONING_TRAP)
         {
             Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_FOUND_HIDDEN_SUMMONING_TRAP);
-            PlayerProperty::getInstance()->setExp(PlayerProperty::getInstance()->getExp() + addExp);
+            PlayerProperty::getInstance()->setExp(PlayerProperty::getInstance()->getExp() + (int)addExp.GetLongValue());
              StatisticsManager::getInstance()->addHideInfoNum(StatisticsManager::eHideInfoType::HIT_TRAP);
         }
         else if(trapType == TerrainTile::TT_WEAK_TRAP)
         {
             Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_FOUND_HIDDEN_WEAK_TRAP);
-            PlayerProperty::getInstance()->setExp(PlayerProperty::getInstance()->getExp() + addExp);
+            PlayerProperty::getInstance()->setExp(PlayerProperty::getInstance()->getExp() + (int)addExp.GetLongValue());
              StatisticsManager::getInstance()->addHideInfoNum(StatisticsManager::eHideInfoType::HIT_TRAP);
         }
         if(m_pTerrainTilesLayer)
@@ -1864,8 +1864,8 @@ void VoxelExplorer::handleRemoveTrap(const cocos2d::Vec2& mapPos)
                         std::string soundName = LevelResourceManager::getInstance()->getCommonSoundEffectRes("REMOVE_TRAP");
                         SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
                         int playerLevel = (int)PlayerProperty::getInstance()->getLevel().GetLongValue();
-                        int addExp = playerLevel*10 + 40;
-                        PlayerProperty::getInstance()->setExp(PlayerProperty::getInstance()->getExp() + addExp);
+                        CChaosNumber addExp = playerLevel*10 + 40;
+                        PlayerProperty::getInstance()->setExp(PlayerProperty::getInstance()->getExp() + (int)addExp.GetLongValue());
 #if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM ==CC_PLATFORM_ANDROID )
                         SdkBoxManager::getInstance()->logEvent("Player", "RemoveTrap", "OK", 1);
 #endif
@@ -1884,9 +1884,10 @@ bool VoxelExplorer::handlePlayerUseSkill()
         PlayerSkill skill = PlayerProperty::getInstance()->getPlayerSkill();
         switch (skill) {
             case PS_BLOCKRATEUP:
-                if (PlayerProperty::getInstance()->getCurrentMP() >=10)
+                if (PlayerProperty::getInstance()->getCurrentMP() >=30)
                 {
-                    PlayerProperty::getInstance()->setCurrentMP(PlayerProperty::getInstance()->getCurrentMP() - 10);
+                    PlayerProperty::getInstance()->setCurrentMP(PlayerProperty::getInstance()->getCurrentMP() - 30);
+                    m_pPlayer->removePlayerBuffer(PB_STEALTH);
                     m_pPlayer->addPlayerBuffer(PB_BLOCKRATEUP);
                     ret = true;
 #if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM ==CC_PLATFORM_ANDROID )
@@ -1896,9 +1897,10 @@ bool VoxelExplorer::handlePlayerUseSkill()
                     Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_NO_MANA);
                 break;
             case PS_FIREBALL:
-                if (PlayerProperty::getInstance()->getCurrentMP() >=8)
+                if (PlayerProperty::getInstance()->getCurrentMP() >=10)
                 {
-                    PlayerProperty::getInstance()->setCurrentMP(PlayerProperty::getInstance()->getCurrentMP() - 8);
+                    PlayerProperty::getInstance()->setCurrentMP(PlayerProperty::getInstance()->getCurrentMP() - 10);
+                    m_pPlayer->removePlayerBuffer(PB_STEALTH);
                     m_pPlayer->useSkillToAttack(skill);
                     ret = true;
 #if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM ==CC_PLATFORM_ANDROID )
@@ -1908,9 +1910,10 @@ bool VoxelExplorer::handlePlayerUseSkill()
                      Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_NO_MANA);
                 break;
             case PS_MAGICARROW:
-                if (PlayerProperty::getInstance()->getCurrentMP() >=12)
+                if (PlayerProperty::getInstance()->getCurrentMP() >=25)
                 {
-                    PlayerProperty::getInstance()->setCurrentMP(PlayerProperty::getInstance()->getCurrentMP() - 12);
+                    PlayerProperty::getInstance()->setCurrentMP(PlayerProperty::getInstance()->getCurrentMP() - 25);
+                    m_pPlayer->removePlayerBuffer(PB_STEALTH);
                     m_pPlayer->useSkillToAttack(skill);
                     ret = true;
 #if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM ==CC_PLATFORM_ANDROID )

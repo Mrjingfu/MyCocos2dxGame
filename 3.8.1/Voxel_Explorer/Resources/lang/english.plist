@@ -590,9 +590,7 @@ This is the weapon?</string>
 	<key>PIN_BOW_REFLEXBOW_DESC</key>
 	<string>Bow force is strong, through the 1 inch steel plate is not possible, penetrate 1 inches of wood is easy.</string>
 	<key>PIN_BOW_REFLEXBOW_BIDESC</key>
-	<string>Very light, a nice bow.
-很轻巧的一把好弓。
-A nice bow.very light</string>
+	<string>A nice bow, very light</string>
 	<key>PIN_BOW_EAGLEBOW</key>
 	<string>Eagle Bow</string>
 	<key>PIN_BOW_EAGLEBOW_DESC</key>
