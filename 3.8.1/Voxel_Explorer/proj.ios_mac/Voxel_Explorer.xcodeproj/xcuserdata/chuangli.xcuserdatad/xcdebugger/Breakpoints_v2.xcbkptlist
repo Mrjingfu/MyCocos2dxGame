@@ -41,22 +41,6 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../Classes/UI/GameUILayer.cpp"
-            timestampString = "478755291.154928"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1189"
-            endingLineNumber = "1189"
-            landmarkName = "GameUILayer::refreshUIView()"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "../Classes/UI/Layer/RolePropLayer.cpp"
             timestampString = "477458265.330674"
             startingColumnNumber = "9223372036854775807"
@@ -137,22 +121,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../Classes/AppDelegate.cpp"
-            timestampString = "478779005.710311"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "162"
-            endingLineNumber = "162"
-            landmarkName = "AppDelegate::applicationDidEnterBackground()"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "../Classes/UI/Layer/GlobalPromptLayer.cpp"
             timestampString = "479031834.002232"
             startingColumnNumber = "9223372036854775807"
@@ -217,13 +185,29 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../Classes/UI/Layer/AchieveItemLayer.cpp"
-            timestampString = "479208752.9958"
+            filePath = "../Classes/Utilities/PlistBinaryUtil.cpp"
+            timestampString = "479354606.961064"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "126"
-            endingLineNumber = "126"
-            landmarkName = "AchieveItemLayer::showAchieveItem(const std::string icon, const std::string name, const std::string targetDesc)"
+            startingLineNumber = "75"
+            endingLineNumber = "75"
+            landmarkName = "PlistBinaryUtil::writeValueVectorToFile(cocos2d::ValueVector&amp; dict, const std::string&amp; fullPath,bool isEncrpty)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/UI/Layer/BagEquipLayer.cpp"
+            timestampString = "479728248.176079"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
+            landmarkName = "BagEquipLayer::bagItemOpe(int itemId)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -233,13 +217,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../Classes/UI/Layer/SkillLayer.cpp"
-            timestampString = "479289180.617949"
+            filePath = "../Classes/UI/Layer/BagMangerLayerUI.cpp"
+            timestampString = "479728991.409858"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "169"
-            endingLineNumber = "169"
-            landmarkName = "SkillLayer::refreshUIView()"
+            startingLineNumber = "235"
+            endingLineNumber = "235"
+            landmarkName = "BagMangerLayerUI::removeItem(int index)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

@@ -81,6 +81,10 @@ bool PlistBinaryUtil::wiriteValueForFile(cocos2d::Value& dict,const std::string&
 {
     
     FileStream writeStr(fullPath.c_str(),"wb");
+    if (writeStr.isFileNull()) {
+        CCLOGERROR("m_file is null");
+        return false;
+    }
     writeStr.writeBool(isEncrpty);
     wirteValue(writeStr, dict);
     writeStr.close();
@@ -126,6 +130,10 @@ bool PlistBinaryUtil::wiriteValueForFile(cocos2d::Value& dict,const std::string&
     
     
     FileStream dewriteStr(fullPath.c_str(),"wb");
+    if (dewriteStr.isFileNull()) {
+        CCLOGERROR("m_file is null");
+        return false;
+    }
     //写加密标志
     dewriteStr.writeBool(isEncrpty);
     //encryptXOR 秘钥md5

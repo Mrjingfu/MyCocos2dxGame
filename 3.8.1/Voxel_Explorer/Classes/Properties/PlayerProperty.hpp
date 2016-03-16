@@ -99,6 +99,9 @@ public:
     bool usePotion(CChaosNumber id);
     bool useScroll(CChaosNumber id);
     bool useKey(PickableItem::PickableItemType type);
+    bool equipBreadDown(CChaosNumber id);   //分解
+    bool equipWashPractice(CChaosNumber id);//洗练
+    PickableItemProperty* getStackableItemForBag(PickableItem::PickableItemType type);
     
     void playPickupItemSound(PickableItemProperty* itemProperty);
     bool buyItemToBag(PickableItemProperty* buyItemProperty, CChaosNumber count, bool toIndentify = false, bool sound = true);

@@ -229,6 +229,12 @@ const std::string PICKABLE_ITEM_NAMES[] = {
     "PIN_POTION_UNIVERSAL",                    ///万能药水 Universal Potion
     ///PIN_POTION_END
     
+    ///PIT_MATERIAL_BEGIN
+    "PIN_MATERIAL_WHITE",                      ///白色矿石 White  Mineral
+    "PIN_MATERIAL_GREEN",                      ///绿色矿石 Green  Mineral
+    "PIN_MATERIAL_BLUE",                       ///蓝色矿石 Blue   Mineral
+    "PIN_MATERIAL_PURPLE",                     ///紫色矿石 Purple Mineral
+    ///PIT_MATERIAL_END
     "PIN_UNKNOWN"
 };
 

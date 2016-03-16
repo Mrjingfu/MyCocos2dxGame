@@ -12,7 +12,7 @@
 FileStream::FileStream(const char* path, const char* mode)
 {
     m_file = fopen(path, mode);
-    CCASSERT(m_file!=NULL,"m_file is null");
+//    CCASSERT(m_file!=NULL,"m_file is null");
 }
 
 FileStream::~FileStream()
@@ -68,4 +68,8 @@ void FileStream::close(void)
 void FileStream::flush(void)
 {
     fflush(m_file);
+}
+bool FileStream::isFileNull()
+{
+    return m_file==NULL?true:false;
 }

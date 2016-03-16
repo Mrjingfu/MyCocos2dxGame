@@ -9,23 +9,102 @@
 #include "MaterialProperty.hpp"
 #include "UtilityHelper.h"
 USING_NS_CC;
+std::map<PickableItem::PickableItemType, int> MaterialProperty::WASH_PIQ_RARE=
+{
+    std::map<PickableItem::PickableItemType, int>::value_type(PickableItem::PIT_MATERIAL_WHITE,1),
+    std::map<PickableItem::PickableItemType, int>::value_type(PickableItem::PIT_MATERIAL_GREEN,1),
+};
+std::map<PickableItem::PickableItemType, int> MaterialProperty::WASH_PIQ_EPIC =
+{
+    std::map<PickableItem::PickableItemType, int>::value_type(PickableItem::PIT_MATERIAL_WHITE,1),
+    std::map<PickableItem::PickableItemType, int>::value_type(PickableItem::PIT_MATERIAL_GREEN,1),
+    std::map<PickableItem::PickableItemType, int>::value_type(PickableItem::PIT_MATERIAL_BLUE,1),
+};
+std::map<PickableItem::PickableItemType, int> MaterialProperty::WASH_PIQ_LEGEND=
+{
+    std::map<PickableItem::PickableItemType, int>::value_type(PickableItem::PIT_MATERIAL_WHITE,1),
+    std::map<PickableItem::PickableItemType, int>::value_type(PickableItem::PIT_MATERIAL_GREEN,1),
+    std::map<PickableItem::PickableItemType, int>::value_type(PickableItem::PIT_MATERIAL_BLUE,1),
+    std::map<PickableItem::PickableItemType, int>::value_type(PickableItem::PIT_MATERIAL_PURPLE,1)
+};
 MaterialProperty::MaterialProperty(unsigned int instanceID, PickableItem::PickableItemType type)
     :PickableItemProperty(instanceID, type)
 {
     m_PropertyType = PIPT_MATERIAL;
+    m_bIdentified = true;
     m_bStackable = true;
     m_bEquipable = false;
     m_bCombinable = true;
     m_bDiscardable = true;
     
     m_strPropertyTypeName = UtilityHelper::getLocalString(PICKABLE_ITEM_PROPERTY_TYPE_NAMES[m_PropertyType]);
+    
+    switch (type) {
+        case PickableItem::PIT_MATERIAL_WHITE:
+        {
+            m_nValue = 0.1f;
+            m_nValueCopper = 250;
+        }
+            break;
+        case PickableItem::PIT_MATERIAL_GREEN:
+        {
+            m_nValue = 0.3f;
+            m_nValueCopper = 550;
+        }
+            break;
+        case PickableItem::PIT_MATERIAL_BLUE:
+        {
+            m_nValue = 0.55f;
+            m_nValueCopper = 1000;
+        }
+            break;
+        case PickableItem::PIT_MATERIAL_PURPLE:
+        {
+            m_nValue = 0.7f;
+            m_nValueCopper = 2500;
+        }
+            break;
+        default:
+            break;
+    }
+     m_nCopperWhenBuy = m_nValueCopper * 1.5f;
+    
 }
-
+void MaterialProperty::adjustByLevel()
+{
+    
+}
+void MaterialProperty::handleIdentify()
+{
+    if (m_bIdentified)
+        return;
+}
 bool MaterialProperty::load(const cocos2d::ValueMap& data)
 {
+    m_PropertyType = (PickableItemPropertyType)data.at("PropertyType").asInt();
+    m_nInstanceID = data.at("InstanceID").asInt();
+    m_ItemType = (PickableItem::PickableItemType)data.at("ItemType").asInt();
+    m_nLevel = (PickableItem::PickableItemType)data.at("Level").asInt();
+    m_nValueCopper = data.at("ValueCopper").asInt();
+    m_nCopperWhenBuy = data.at("CopperWhenBuy").asInt();
+    
+    m_bIdentified = data.at("Identified").asBool();
+    
+    m_nCount = data.at("Count").asInt();
+    
     return true;
 }
 bool MaterialProperty::save(cocos2d::ValueMap& data)
 {
+    data["PropertyType"] = (int)m_PropertyType;
+    data["InstanceID"] = (int)m_nInstanceID;
+    data["ItemType"] = (int)m_ItemType;
+    data["Level"] = (int)m_nLevel.GetLongValue();
+    data["ValueCopper"] = (int)m_nValueCopper.GetLongValue();
+    data["CopperWhenBuy"] = (int)m_nCopperWhenBuy.GetLongValue();
+    
+    data["Identified"] = m_bIdentified;
+    
+    data["Count"] = (int)m_nCount;
     return true;
 }

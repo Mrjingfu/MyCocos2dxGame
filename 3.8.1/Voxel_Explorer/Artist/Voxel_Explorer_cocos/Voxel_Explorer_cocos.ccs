@@ -277,6 +277,8 @@
         <Project Name="menuscene_channel.csd" Type="Scene" />
         <Project Name="taskLayer.csd" Type="Layer" />
         <Project Name="langugaeLayer.csd" Type="Layer" />
+        <Project Name="washpracticePopupLayer.csd" Type="Layer" />
+        <Project Name="equipmentpopupLayer.csd" Type="Layer" />
       </RootFolder>
     </Group>
   </SolutionFolder>

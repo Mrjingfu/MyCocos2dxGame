@@ -1062,6 +1062,22 @@
 	<string>万能药水</string>
 	<key>PIN_POTION_UNIVERSAL_DESC</key>
 	<string>解除角色所有负面状态</string>
+	<key>PIN_MATERIAL_WHITE</key>
+	<string>白色矿石</string>
+	<key>PIN_MATERIAL_WHITE_DESC</key>
+	<string>白色矿石描述</string>
+	<key>PIN_MATERIAL_GREEN</key>
+	<string>绿色矿石</string>
+	<key>PIN_MATERIAL_GREEN_DESC</key>
+	<string>绿色矿石描述</string>
+	<key>PIN_MATERIAL_BLUE</key>
+	<string>蓝色矿石</string>
+	<key>PIN_MATERIAL_BLUE_DESC</key>
+	<string>蓝色矿石描述</string>
+	<key>PIN_MATERIAL_PURPLE</key>
+	<string>紫色矿石</string>
+	<key>PIN_MATERIAL_PURPLE_DESC</key>
+	<string>紫色矿石描述</string>
 	<key>UIN_CHEST_NO_LOCK_COPPER</key>
 	<string>铜质宝箱</string>
 	<key>UIN_CHEST_NO_LOCK_COPPER_DESC</key>

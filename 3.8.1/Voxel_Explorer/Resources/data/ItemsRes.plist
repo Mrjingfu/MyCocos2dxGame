@@ -302,6 +302,14 @@
 	<string>P_Yellow04</string>
 	<key>PIN_POTION_UNIVERSAL</key>
 	<string>P_Medicine09</string>
+	<key>PIN_MATERIAL_WHITE</key>
+	<string>I_Crystal_white</string>
+	<key>PIN_MATERIAL_GREEN</key>
+	<string>I_Crystal_green</string>
+	<key>PIN_MATERIAL_BLUE</key>
+	<string>I_Crystal_blue</string>
+	<key>PIN_MATERIAL_PURPLE</key>
+	<string>I_Crystal_purple</string>
 	<key>UIN_CHEST_NO_LOCK_COPPER</key>
 	<string>copperchest</string>
 	<key>UIN_CHEST_NO_LOCK_SILVER</key>

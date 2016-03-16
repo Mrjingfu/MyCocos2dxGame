@@ -298,6 +298,10 @@
             <filename>../ui/ui_items/W_Sword016.png</filename>
             <filename>../ui/ui_items/W_Sword018.png</filename>
             <filename>../ui/ui_items/W_Sword022.png</filename>
+            <filename>../ui/ui_items/I_Crystal_blue.png</filename>
+            <filename>../ui/ui_items/I_Crystal_green.png</filename>
+            <filename>../ui/ui_items/I_Crystal_purple.png</filename>
+            <filename>../ui/ui_items/I_Crystal_white.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>
