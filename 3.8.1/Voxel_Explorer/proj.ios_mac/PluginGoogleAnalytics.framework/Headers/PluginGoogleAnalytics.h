@@ -1,6 +1,6 @@
 /****************************************************************************
 
- Copyright (c) 2014-2015 Chukong Technologies
+ Copyright (c) 2014-2015 SDKBOX Inc
 
  ****************************************************************************/
 #ifndef _PLUGIN_GA_
@@ -47,7 +47,7 @@ namespace sdkbox
          * or <code>dispatchHits</code> should be called.
          */
         static void stopPeriodicalDispatch();
-        
+
         /*!
          * Set user ID for this tracking session
          */
