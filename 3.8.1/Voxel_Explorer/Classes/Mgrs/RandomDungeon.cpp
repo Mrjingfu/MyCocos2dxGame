@@ -80,6 +80,8 @@ void DungeonNode::load(const cocos2d::ValueMap& data)
     m_strDungeonBossName = currentDungeonNode.at("DungeonBossName").asString();
     m_nTransmutationDepth = currentDungeonNode.at("TransmutationDepth").asInt();
     m_nCurrentDepth = currentDungeonNode.at("CurrentDepth").asInt();
+    if(m_nCurrentDepth.GetLongValue() <= 0)
+        m_nCurrentDepth = 1;
     m_nNodeDepth = currentDungeonNode.at("NodeDepth").asInt();
     m_nTotalNum = currentDungeonNode.at("TotalNum").asInt();
     m_Type = (DUNGEON_TYPE)(currentDungeonNode.at("DungeonType").asInt());
@@ -104,7 +106,7 @@ void DungeonNode::load(const cocos2d::ValueMap& data)
             m_pLeftNode->m_strDungeonName = leftDungeonNode.at("DungeonName").asString();
             m_pLeftNode->m_strDungeonBossName = leftDungeonNode.at("DungeonBossName").asString();
             m_pLeftNode->m_nTransmutationDepth = leftDungeonNode.at("TransmutationDepth").asInt();
-            m_pLeftNode->m_nCurrentDepth = leftDungeonNode.at("CurrentDepth").asInt();
+            m_pLeftNode->m_nCurrentDepth = 1;
             m_pLeftNode->m_nNodeDepth = leftDungeonNode.at("NodeDepth").asInt();
             m_pLeftNode->m_nTotalNum = leftDungeonNode.at("TotalNum").asInt();
             m_pLeftNode->m_Type = (DUNGEON_TYPE)(leftDungeonNode.at("DungeonType").asInt());
@@ -126,7 +128,7 @@ void DungeonNode::load(const cocos2d::ValueMap& data)
             m_pRightNode->m_strDungeonName = rightDungeonNode.at("DungeonName").asString();
             m_pRightNode->m_strDungeonBossName = rightDungeonNode.at("DungeonBossName").asString();
             m_pRightNode->m_nTransmutationDepth = rightDungeonNode.at("TransmutationDepth").asInt();
-            m_pRightNode->m_nCurrentDepth = rightDungeonNode.at("CurrentDepth").asInt();
+            m_pRightNode->m_nCurrentDepth = 1;
             m_pRightNode->m_nNodeDepth = rightDungeonNode.at("NodeDepth").asInt();
             m_pRightNode->m_nTotalNum = rightDungeonNode.at("TotalNum").asInt();
             m_pRightNode->m_Type = (DUNGEON_TYPE)(rightDungeonNode.at("DungeonType").asInt());
@@ -156,7 +158,7 @@ void DungeonNode::save(cocos2d::ValueMap& data)
         leftDungeonNode["DungeonName"] = m_pLeftNode->m_strDungeonName;
         leftDungeonNode["DungeonBossName"] = m_pLeftNode->m_strDungeonBossName;
         leftDungeonNode["TransmutationDepth"] = (int)(m_pLeftNode->m_nTransmutationDepth.GetLongValue());
-        leftDungeonNode["CurrentDepth"] = (int)(m_pLeftNode->m_nCurrentDepth.GetLongValue());
+        leftDungeonNode["CurrentDepth"] = 1;
         leftDungeonNode["NodeDepth"] = (int)(m_pLeftNode->m_nNodeDepth.GetLongValue());
         leftDungeonNode["TotalNum"] = (int)(m_pLeftNode->m_nTotalNum.GetLongValue());
         leftDungeonNode["DungeonType"] = (int)(m_pLeftNode->m_Type);
@@ -168,7 +170,7 @@ void DungeonNode::save(cocos2d::ValueMap& data)
         rightDungeonNode["DungeonName"] = m_pRightNode->m_strDungeonName;
         rightDungeonNode["DungeonBossName"] = m_pRightNode->m_strDungeonBossName;
         rightDungeonNode["TransmutationDepth"] = (int)(m_pRightNode->m_nTransmutationDepth.GetLongValue());
-        rightDungeonNode["CurrentDepth"] = (int)(m_pRightNode->m_nCurrentDepth.GetLongValue());
+        rightDungeonNode["CurrentDepth"] = 1;
         rightDungeonNode["NodeDepth"] = (int)(m_pRightNode->m_nNodeDepth.GetLongValue());
         rightDungeonNode["TotalNum"] = (int)(m_pRightNode->m_nTotalNum.GetLongValue());
         rightDungeonNode["DungeonType"] = (int)(m_pRightNode->m_Type);
