@@ -25,6 +25,8 @@ public:
     virtual void adjustByLevel();
     virtual void handleIdentify();
     
+    virtual SecondWeaponProperty* clone() const override;
+    
     bool hasEquiped() const { return m_bHasEquiped; }
     void setEquiped(bool equiped) { m_bHasEquiped = equiped; }
     

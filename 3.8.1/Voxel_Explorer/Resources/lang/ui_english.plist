@@ -338,10 +338,12 @@
 	<string>分解</string>
 	<key>BTN_TEXT_WASH</key>
 	<string>洗练</string>
+	<key>BTN_TEXT_SELECT</key>
+	<string>选择</string>
 	<key>BAG_TEXT_BREADDOWN</key>
 	<string>分解物品</string>
 	<key>BAG_TEXT_WASH_TIP</key>
-	<string>请点击需要洗练的装备</string>
+	<string>请选择需要洗练的装备</string>
 	<key>BAG_INDENTIFY_FAIL</key>
 	<string>Indentified failed！</string>
 	<key>BAG_NO_INDENTIFY_SCROLL</key>
@@ -352,6 +354,10 @@
 	<string>EXTEND</string>
 	<key>BAG_TEXT_EXTEND_DESC</key>
 	<string>To cost %d gold coins to extend the backpack?</string>
+	<key>BAG_TEXT_WASH_ITEM</key>
+	<string>是否花费%d银币洗练装备?</string>
+	<key>BREAD_DOWN_SETTLEMENT_DESC</key>
+	<string>获得</string>
 	<key>ARCHIVE_RESTART_TIPS_DESC</key>
 	<string>Restart will clear the game record, whether to restart the game?</string>
 	<key>ACHIEVE_ITEM_LOCK</key>

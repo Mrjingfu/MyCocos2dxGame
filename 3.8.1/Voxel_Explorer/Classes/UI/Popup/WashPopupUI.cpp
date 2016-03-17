@@ -12,6 +12,9 @@
 #include "PlayerProperty.hpp"
 #include "BagWashLayer.hpp"
 #include "MaterialProperty.hpp"
+#include "PopupUILayerManager.h"
+#include "ItemWashPopupUI.hpp"
+#include "AlertPopupUI.hpp"
 USING_NS_CC;
 WashPopupUI::WashPopupUI()
 {
@@ -37,10 +40,14 @@ WashPopupUI::WashPopupUI()
     m_pTipText              = nullptr;
     m_bIsCallBack           = false;
     m_nEquipWashId = -1;
+    
+    m_pOldProp              = nullptr;
 }
 WashPopupUI::~WashPopupUI()
 {
-    
+    if (m_pOldProp) {
+        CC_SAFE_DELETE(m_pOldProp);
+    }
 }
 void WashPopupUI::onEnter()
 {
@@ -171,15 +178,19 @@ void WashPopupUI::refreshUIView()
 
 void WashPopupUI::updateMaterial(Ref* data)
 {
+    if (m_pBtnWash)
+    {
+        m_pBtnWash->setTouchEnabled(false);
+        m_pBtnWash->setEnabled(false);
+    }
+
     m_bIsCallBack = true;
+    bool isMaterialEnough = false;
     PickableItemProperty* itemProp = static_cast<PickableItemProperty*>(data);
     if (itemProp)
     {
-        if (m_nEquipWashId != itemProp->getInstanceID()) {
-            m_nEquipWashId =itemProp->getInstanceID();
-        }else
-            return;
-        
+       
+        m_nEquipWashId =itemProp->getInstanceID();
         updateEquipFrame(itemProp);
         m_pTipText->setVisible(false);
         PICKABLEITEM_QUALITY quality = itemProp->getQuality();
@@ -221,8 +232,7 @@ void WashPopupUI::updateMaterial(Ref* data)
             
             if (whilePropCount >= whiteTargetCount && greenPropCount  >= greenTargetCount) {
                 
-                m_pBtnWash->setTouchEnabled(true);
-                m_pBtnWash->setEnabled(true);
+                isMaterialEnough = true;
             }
             
             
@@ -256,8 +266,7 @@ void WashPopupUI::updateMaterial(Ref* data)
             if (whilePropCount >= whiteTargetCount && greenPropCount  >= greenTargetCount
                 && bluePropCount>=blueTargetCount) {
                 
-                m_pBtnWash->setTouchEnabled(true);
-                m_pBtnWash->setEnabled(true);
+                isMaterialEnough = true;
             }
             
             
@@ -299,11 +308,16 @@ void WashPopupUI::updateMaterial(Ref* data)
             if (whilePropCount >= whiteTargetCount && greenPropCount  >= greenTargetCount
                 && bluePropCount>=blueTargetCount  && purplePropCount >= purpleTargetCount) {
                 
-                m_pBtnWash->setTouchEnabled(true);
-                m_pBtnWash->setEnabled(true);
+                isMaterialEnough = true;
             }
 
         }
+    }
+    
+    if (isMaterialEnough)
+    {
+        m_pBtnWash->setTouchEnabled(true);
+        m_pBtnWash->setEnabled(true);
     }
 
 }
@@ -312,13 +326,71 @@ void WashPopupUI::onClickClose(cocos2d::Ref *ref)
     CHECK_ACTION(ref);
     clickEffect();
     CCLOG("onClickClose");
-     closePopup();
+    closePopup();
 }
 void WashPopupUI::onClickWash(cocos2d::Ref *ref)
 {
     CHECK_ACTION(ref);
     clickEffect();
     CCLOG("onClickWash");
+    AlertPopupUI* alertPopupUi = static_cast<AlertPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupAlert));
+    if (alertPopupUi)
+    {
+        PickableItemProperty* itemProp = PlayerProperty::getInstance()->getItemFromBag(m_nEquipWashId);
+        if (itemProp)
+        {
+            PICKABLEITEM_QUALITY quality = itemProp->getQuality();
+            CChaosNumber extendSilver = 0;
+            switch (quality) {
+                case PIQ_RARE:
+                    extendSilver = 2;
+                    break;
+                case PIQ_EPIC:
+                    extendSilver = 25;
+                    break;
+                case PIQ_LEGEND:
+                    extendSilver = 200;
+                    break;
+                default:
+                    break;
+            }
+            alertPopupUi->setPositiveListerner([](Ref* ref){
+                
+            },UtilityHelper::getLocalStringForUi("BTN_TEXT_CANCEL"));
+            alertPopupUi->setNegativeListerner([this,extendSilver](Ref* ref){
+
+                    if(PlayerProperty::getInstance()->costMoney(extendSilver.GetLongValue()*100))
+                        this->itemWash();
+                
+            },UtilityHelper::getLocalStringForUi("BTN_TEXT_OK"));
+            alertPopupUi->setMessage(cocos2d::StringUtils::format(UtilityHelper::getLocalStringForUi("BAG_TEXT_WASH_ITEM").c_str(),int(extendSilver)));
+        }
+
+    }
+    
+}
+void WashPopupUI::itemWash()
+{
+    PickableItemProperty* itemProp = PlayerProperty::getInstance()->getItemFromBag(m_nEquipWashId);
+    if (itemProp) {
+        if (m_pOldProp) {
+            CC_SAFE_DELETE(m_pOldProp);
+        }
+        m_pOldProp= itemProp->clone();
+            bool isSucess = PlayerProperty::getInstance()->equipWashPractice(m_nEquipWashId);
+            if (isSucess) {
+                ItemWashPopupUI* itemPopup = static_cast<ItemWashPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupItemWash)) ;
+                if (itemPopup) {
+                    itemPopup->setOldItemProp(m_pOldProp);
+                    itemPopup->setItemId(m_nEquipWashId);
+                    itemPopup->registerCloseCallbackO(CC_CALLBACK_1(WashPopupUI::updateMaterial, this));
+                }
+            }else
+            {
+                CCLOG("洗练失败");
+            }
+        
+    }
 }
 void WashPopupUI::addIconImg(cocos2d::ui::ImageView* sourceImg,std::string iconStr)
 {

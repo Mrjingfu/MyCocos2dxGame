@@ -34,8 +34,11 @@ enum ePopupType
     ePopupDead,         //死亡界面窗口
     ePopupLangugae,     //语言切换窗口
     ePopupItemBreadDown,//道具分解窗口
-    ePopupBagEquipment, //背包分解窗口
+    ePopupBagBreadDown, //背包分解窗口
     ePopupWash,         //洗练窗口
+    ePopupItemSelect,     //道具选择
+    ePopupItemWash,  //道具确定窗口
+    ePopupBreadDownSettlement,//分解结算界面
     ePopupCount
 };
 typedef enum {

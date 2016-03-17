@@ -9,13 +9,14 @@
 #ifndef BagWashLayer_hpp
 #define BagWashLayer_hpp
 
-#include "BagEquipLayer.hpp"
+#include "BagLayer.h"
 
-class  BagWashLayer:public BagEquipLayer{
+class  BagWashLayer:public BagLayer{
     
     BagWashLayer();
 public:
     CREATE_FUNC(BagWashLayer);
+    virtual bool init() override;
     ~BagWashLayer();
 private:
     virtual void bagItemOpe(int itemId) override;

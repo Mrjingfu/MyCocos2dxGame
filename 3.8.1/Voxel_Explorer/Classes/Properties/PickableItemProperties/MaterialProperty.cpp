@@ -42,32 +42,28 @@ MaterialProperty::MaterialProperty(unsigned int instanceID, PickableItem::Pickab
     switch (type) {
         case PickableItem::PIT_MATERIAL_WHITE:
         {
-            m_nValue = 0.1f;
-            m_nValueCopper = 250;
+            m_nValueCopper = 30;
         }
             break;
         case PickableItem::PIT_MATERIAL_GREEN:
         {
-            m_nValue = 0.3f;
-            m_nValueCopper = 550;
+            m_nValueCopper = 100;
         }
             break;
         case PickableItem::PIT_MATERIAL_BLUE:
         {
-            m_nValue = 0.55f;
-            m_nValueCopper = 1000;
+            m_nValueCopper = 300;
         }
             break;
         case PickableItem::PIT_MATERIAL_PURPLE:
         {
-            m_nValue = 0.7f;
-            m_nValueCopper = 2500;
+            m_nValueCopper = 1000;
         }
             break;
         default:
             break;
     }
-     m_nCopperWhenBuy = m_nValueCopper * 1.5f;
+     m_nCopperWhenBuy = m_nValueCopper * 2.0f;
     
 }
 void MaterialProperty::adjustByLevel()

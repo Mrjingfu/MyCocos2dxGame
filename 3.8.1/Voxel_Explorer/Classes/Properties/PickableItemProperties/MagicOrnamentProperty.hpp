@@ -18,6 +18,8 @@ public:
     virtual void adjustByLevel();
     virtual void handleIdentify();
     
+    virtual MagicOrnamentProperty* clone() const override;
+    
     bool hasEquiped() const { return m_bHasEquiped; }
     void setEquiped(bool equiped) { m_bHasEquiped = equiped; }
     

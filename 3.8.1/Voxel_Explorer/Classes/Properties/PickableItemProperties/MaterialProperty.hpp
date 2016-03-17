@@ -11,9 +11,21 @@
 
 #include "PickableItemProperty.hpp"
 #include "PickableItem.hpp"
+
+typedef enum {
+    MF_NONE   = 0,
+    MF_WHITE  = 1<<0,
+    MF_BLUE   = 1<<1,
+    MF_GREEN  = 1<<2,
+    MF_PURPLE = 1<<3,
+    MF_MAX
+} MaterialFlag;
+
 class MaterialProperty : public PickableItemProperty,public IStackable
 {
 public:
+    
+
     MaterialProperty(unsigned int instanceID, PickableItem::PickableItemType type);
     virtual ~MaterialProperty(){}
     
@@ -32,9 +44,7 @@ public:
     static std::map<PickableItem::PickableItemType, int> WASH_PIQ_RARE;
     static std::map<PickableItem::PickableItemType, int> WASH_PIQ_EPIC;
     static std::map<PickableItem::PickableItemType, int> WASH_PIQ_LEGEND;
-    
-private:
-    CChaosNumber    m_nValue;
+
 };
 
 #endif /* MaterialProperty_hpp */

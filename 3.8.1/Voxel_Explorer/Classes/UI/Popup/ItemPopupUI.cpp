@@ -695,20 +695,11 @@ void ItemPopupUI::updateEquipItem()
         
         isNotEquip = true;
     }
-    
+    //添加价格UI
     addMoneyUI();
 
-        //如果当前道具就是装备道具不添加底部UI
-        if (PlayerProperty::getInstance()->getEquipedWeaponID() == m_nItemId ||
-            PlayerProperty::getInstance()->getEquipedArmorID() == m_nItemId ||
-            PlayerProperty::getInstance()->getEquipedOrnamentsID() == m_nItemId||
-            PlayerProperty::getInstance()->getEquipedSecondWeaponID() == m_nItemId){
-            
-            m_pItemEquipDist->setVisible(true);
-            m_pItemEquipDist->setString(UtilityHelper::getLocalStringForUi("ITEM_ALREDY_EQUIP"));
-            m_pItemEquipDist->setColor(Color3B(144,248,144));
-        }else
-            addBottomUI();
+    //更新底部按钮
+    updateBottomUi();
     
     //未鉴定道具也不可以装备
     if (!itemprop->isIdentified())
@@ -746,6 +737,21 @@ void ItemPopupUI::updateEquipItem()
     }
     
 }
+void ItemPopupUI::updateBottomUi()
+{
+    //如果当前道具就是装备道具不添加底部UI
+    if (PlayerProperty::getInstance()->getEquipedWeaponID() == m_nItemId ||
+        PlayerProperty::getInstance()->getEquipedArmorID() == m_nItemId ||
+        PlayerProperty::getInstance()->getEquipedOrnamentsID() == m_nItemId||
+        PlayerProperty::getInstance()->getEquipedSecondWeaponID() == m_nItemId){
+        
+        m_pItemEquipDist->setVisible(true);
+        m_pItemEquipDist->setString(UtilityHelper::getLocalStringForUi("ITEM_ALREDY_EQUIP"));
+        m_pItemEquipDist->setColor(Color3B(144,248,144));
+    }else
+        addBottomUI();
+
+}
 bool ItemPopupUI::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *unused_event)
 {
   
@@ -778,7 +784,8 @@ void ItemPopupUI::updateUseItem()
             m_pBtnEquip->setTitleText(UtilityHelper::getLocalStringForUi("BTN_TEXT_USE"));
         }
         
-        if(itemprop->getPickableItemType() <= PickableItem::PIT_KEY_GOLD)
+        if(itemprop->getPickableItemType() <= PickableItem::PIT_KEY_GOLD ||
+           (itemprop->getPickableItemType()>=PickableItem::PIT_MATERIAL_WHITE && itemprop->getPickableItemType()<=PickableItem::PIT_MATERIAL_PURPLE))
         {
             if(m_pBtnDiscard)
                 m_pBtnDiscard->setVisible(false);

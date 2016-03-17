@@ -32,6 +32,7 @@ protected:
     virtual void onKeyBackClick() override;
     virtual void closePopup() override;
     virtual void addBottomUI();//添加底部UI,如按钮等
+    virtual void updateBottomUi(); //更新底部UI,入按钮等
     virtual void addMoneyUI();//添加价格UI
     virtual void updateItemBaseProp();//更新道具基础属性UI
     void updateItemPopupSize(cocos2d::Size addSize);
