@@ -454,6 +454,8 @@ bool BaseLevel::searchAndCheck(int x, int y, int searchDistance)
     int pos = y * m_nWidth + x;
     for (int i = 0; i < neighbours.size(); ++i) {
         int j = pos + neighbours[i];
+        if(j < 0 || j >= m_nLenght)
+            continue;
         VoxelExplorer::getInstance()->handleShowSearchEffect(Vec2(m_Map[j].m_nX, m_Map[j].m_nY));
         if(m_Map[j].m_bSearched)
             continue;
