@@ -174,12 +174,12 @@ bool  ArchiveManager::saveGame()
     ValueMap map;
     if(!RandomDungeon::getInstance()->save(map))
     {
-        CCLOGERROR("RandomDungeon load failed!");
+        CCLOGERROR("RandomDungeon save failed!");
         return false;
     }
     if(!RandomEventMgr::getInstance()->save(map))
     {
-        CCLOGERROR("RandomEventMgr load failed!");
+        CCLOGERROR("RandomEventMgr save failed!");
         return false;
     }
     //存储游戏数据
