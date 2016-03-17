@@ -71,32 +71,32 @@ int GameFormula::getNextLevelExp(int currentLevel)
 }
 int GameFormula::getKillNormalMonsterExp(int currentLevel, int monsterLevel)
 {
-    int monsterExp = (monsterLevel-1)*5+80;
+    int monsterExp = (monsterLevel-1)*10+80;
     int diff = monsterLevel - currentLevel;
     if(diff>=0)
     {
         if(diff>=5)
-            monsterExp = monsterExp*2;
+            monsterExp = monsterExp*3;
         else
-            monsterExp = monsterExp*pow(1.15f, diff);
+            monsterExp = monsterExp*pow(1.2f, diff);
     }
     else
     {
         if(diff<=-5)
             monsterExp = cocos2d::random(5, 20);
         else
-            monsterExp = monsterExp*pow(0.8f, abs(diff));
+            monsterExp = monsterExp*pow(0.9f, abs(diff));
     }
     return monsterExp;
 }
 int GameFormula::getKillEliteMonsterExp(int currentLevel, int monsterLevel)
 {
-    int monsterExp = (monsterLevel-1)*10+160;
+    int monsterExp = (monsterLevel-1)*15+160;
     int diff =  monsterLevel - currentLevel;
     if(diff>=0)
     {
         if(diff>=5)
-            monsterExp = monsterExp*6;
+            monsterExp = monsterExp*8;
         else
             monsterExp = monsterExp*pow(1.5f, diff);
     }
@@ -105,7 +105,7 @@ int GameFormula::getKillEliteMonsterExp(int currentLevel, int monsterLevel)
         if(diff<=-8)
             monsterExp = cocos2d::random(20, 60);
         else
-            monsterExp = monsterExp*pow(0.85f, abs(diff));
+            monsterExp = monsterExp*pow(0.9f, abs(diff));
     }
     return monsterExp;
 }
