@@ -154,11 +154,6 @@ void AppDelegate::applicationDidEnterBackground() {
     
     ArchiveManager::getInstance()->saveGame();
     
-    if (!PopupUILayerManager::getInstance()->getCurrentPopUpLayer()&&
-        PopupUILayerManager::getInstance()->getSceneType()==PopupUILayerManager::ST_GAME) {
-        PopupUILayerManager::getInstance()->openPopup(ePopupPause);
-    }
-    
     // if you use SimpleAudioEngine, it must be pause
     SimpleAudioEngine::getInstance()->pauseAllEffects();
     SimpleAudioEngine::getInstance()->pauseBackgroundMusic();
@@ -169,7 +164,12 @@ void AppDelegate::applicationWillEnterForeground() {
     Director::getInstance()->startAnimation();
 
     // if you use SimpleAudioEngine, it must resume here
-    // SimpleAudioEngine::getInstance()->resumeBackgroundMusic();
+    // SimpleAudioEngine::getInstance()->re tsumeBackgroundMusic();
     SimpleAudioEngine::getInstance()->resumeAllEffects();
     SimpleAudioEngine::getInstance()->resumeBackgroundMusic();
+    
+    if (!PopupUILayerManager::getInstance()->getCurrentPopUpLayer()&&
+        PopupUILayerManager::getInstance()->getSceneType()==PopupUILayerManager::ST_GAME) {
+        PopupUILayerManager::getInstance()->openPopup(ePopupPause);
+    }
 }
