@@ -335,23 +335,23 @@
 	<key>BTN_TEXT_RANK</key>
 	<string>LEADERBOARD</string>
 	<key>BTN_TEXT_BREADDOWN</key>
-	<string>分解</string>
+	<string>DISASSEMBLING</string>
 	<key>BTN_TEXT_WASH</key>
-	<string>洗练</string>
+	<string>REFINE</string>
 	<key>BTN_TEXT_SELECT</key>
-	<string>选择</string>
+	<string>SELECT</string>
 	<key>BTN_TEXT_SAVE_GAME</key>
 	<string>SAVE GAME</string>
 	<key>PAUSE_SAVE_LOADING</key>
-	<string>正在保存,请不要关闭游戏...</string>
+	<string>Saving game now, please don&apos;t exit.</string>
 	<key>PAUSE_SAVE_OK</key>
-	<string>保存成功</string>
+	<string>Game saved!</string>
 	<key>PAUSE_SAVE_FAILE</key>
-	<string>保存失败</string>
+	<string>Game save failed!</string>
 	<key>BAG_TEXT_BREADDOWN</key>
-	<string>分解物品</string>
+	<string>Disassembling</string>
 	<key>BAG_TEXT_WASH_TIP</key>
-	<string>请选择需要洗练的装备</string>
+	<string>Please selected prop to refine.</string>
 	<key>BAG_INDENTIFY_FAIL</key>
 	<string>Indentified failed！</string>
 	<key>BAG_NO_INDENTIFY_SCROLL</key>
@@ -363,11 +363,11 @@
 	<key>BAG_TEXT_EXTEND_DESC</key>
 	<string>To cost %d gold coins to extend the backpack?</string>
 	<key>BAG_TEXT_WASH_ITEM_SILVER</key>
-	<string>是否花费%d银币洗练装备?</string>
+	<string>To cost %d silver coins to refining props?</string>
 	<key>BAG_TEXT_WASH_ITEM_GOLD</key>
-	<string>是否花费%d金币洗练装备?</string>
+	<string>To cost %d gold coins to refining props?</string>
 	<key>BREAD_DOWN_SETTLEMENT_DESC</key>
-	<string>获得</string>
+	<string>Received</string>
 	<key>ARCHIVE_RESTART_TIPS_DESC</key>
 	<string>Restart will clear the game record, whether to restart the game?</string>
 	<key>ACHIEVE_ITEM_LOCK</key>
