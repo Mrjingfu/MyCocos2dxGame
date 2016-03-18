@@ -258,6 +258,9 @@ void RandomDungeon::selectDungeonNode(bool left)
         m_pCurrentNode = m_pCurrentNode->m_pRightNode;
         generateNextDungeonNode();
     }
+    
+    Director::getInstance()->purgeCachedData();
+    
     auto scene = GameScene::createScene();
     Director::getInstance()->replaceScene(scene);
 }

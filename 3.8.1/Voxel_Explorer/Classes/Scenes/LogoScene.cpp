@@ -306,7 +306,10 @@ void LogoScene::precache()
 }
 void LogoScene::endcache()
 {
-//    auto scene = TestScene::createScene(); 
+//    auto scene = TestScene::createScene();
+    
+    Director::getInstance()->purgeCachedData();
+    
     auto scene = MenuScene::createScene();
     Director::getInstance()->replaceScene(scene);
 }
