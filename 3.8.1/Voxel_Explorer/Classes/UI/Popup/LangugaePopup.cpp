@@ -133,6 +133,9 @@ void LangugaePopup::onSelectRadioEn(cocos2d::ui::RadioButton* radioButton, cocos
 void LangugaePopup::swtichToLogoScene()
 {
     ArchiveManager::getInstance()->saveGameAchieve();
+    
+    Director::getInstance()->purgeCachedData();
+    
     Scene* logoScene = LogoScene::createScene();
     Director::getInstance()->replaceScene(logoScene);
 }
