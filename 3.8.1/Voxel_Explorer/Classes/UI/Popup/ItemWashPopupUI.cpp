@@ -206,11 +206,11 @@ void ItemWashPopupUI::IdentifyEquiipFrame()
 
         if (oldNum > newNum.GetLongValue())
         {
-            effectColor = downColor;
+            baseColor = downColor;
             baseStr = baseStr.append(StringUtils::format(" (-%ld)",oldNum.GetLongValue() - newNum.GetLongValue()));
         }else if (oldNum < newNum.GetLongValue())
         {
-            effectColor = upColor;
+            baseColor = upColor;
             baseStr = baseStr.append(StringUtils::format(" (+%ld)",newNum.GetLongValue() - oldNum.GetLongValue()));
         }
     
@@ -319,11 +319,11 @@ void ItemWashPopupUI::IdentifyEquiipFrame()
 
         if (oldNum > newNum.GetLongValue())
         {
-            effectColor = downColor;
+            baseColor = downColor;
             baseStr = baseStr.append(StringUtils::format(" (-%ld)",oldNum.GetLongValue() - newNum.GetLongValue()));
         }else if (oldNum < newNum.GetLongValue())
         {
-            effectColor = upColor;
+            baseColor = upColor;
             baseStr = baseStr.append(StringUtils::format(" (+%ld)",newNum.GetLongValue() - oldNum.GetLongValue()));
         }
         addItemProp(baseStr, baseColor,onelinerParmter);
@@ -471,11 +471,11 @@ void ItemWashPopupUI::IdentifyEquiipFrame()
 
             if (oldNum > newNum.GetLongValue())
             {
-                effectColor = downColor;
+                baseColor = downColor;
                 baseStr = baseStr.append(StringUtils::format(" (-%ld)",oldNum.GetLongValue() - newNum.GetLongValue()));
             }else if (oldNum < newNum.GetLongValue())
             {
-                effectColor = upColor;
+                baseColor = upColor;
                 baseStr = baseStr.append(StringUtils::format(" (+%ld)",newNum.GetLongValue() - oldNum.GetLongValue()));
             }
             

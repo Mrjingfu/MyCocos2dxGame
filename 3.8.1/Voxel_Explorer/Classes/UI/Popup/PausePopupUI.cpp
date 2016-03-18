@@ -17,6 +17,7 @@
 #include "GameUILayer.h"
 #include "ArchiveManager.h"
 #include "GameCenterController.h"
+#include "AlertPopupUI.hpp"
 USING_NS_CC;
 PausePopupUI::PausePopupUI()
 {
@@ -77,8 +78,17 @@ bool PausePopupUI::addEvents()
 
     }
 
+    ui::Button* m_pBtnSave= dynamic_cast<ui::Button*>(UtilityHelper::seekNodeByName(m_pRootNode, "pause_btn_save"));
+    if (!m_pBtnSave)
+        return false;
     
-    
+    m_pBtnSave->setTitleFontName(UtilityHelper::getLocalStringForUi("FONT_NAME"));
+    m_pBtnSave->setTitleFontSize(36);
+    m_pBtnSave->getTitleRenderer()->setScale(0.7);
+    m_pBtnSave->setTitleText(UtilityHelper::getLocalStringForUi("BTN_TEXT_SAVE_GAME"));
+    m_pBtnSave->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
+    m_pBtnSave->addClickEventListener(CC_CALLBACK_1(PausePopupUI::onClickSave, this));
+
     
     musicText->setFntFile(UtilityHelper::getLocalStringForUi("FONT_NAME"));
     musicText->setScale(0.65);
@@ -184,4 +194,30 @@ void PausePopupUI::onClickAchieve(cocos2d::Ref *ref)
         });
     }
     GameCenterController::getInstance()->openAchievementBoard();
+}
+ void PausePopupUI::onClickSave(Ref* ref)
+{
+    CHECK_ACTION(ref);
+    clickEffect();
+    CCLOG("onClickSave");
+    AlertPopupUI* popupUi = static_cast<AlertPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupAlert));
+    if (popupUi) {
+        bool isSuccess = ArchiveManager::getInstance()->saveGame();
+        popupUi->setMessage(UtilityHelper::getLocalStringForUi("PAUSE_SAVE_LOADING"));
+        this->runAction(Sequence::createWithTwoActions(DelayTime::create(2.0f), CallFunc::create([popupUi,isSuccess](){
+        
+            if (isSuccess)
+                popupUi->setMessage(UtilityHelper::getLocalStringForUi("PAUSE_SAVE_OK"));
+            else
+                popupUi->setMessage(UtilityHelper::getLocalStringForUi("PAUSE_SAVE_FAILE"));
+            
+        popupUi->setPositiveListerner([](Ref* ref){
+                
+                
+            },UtilityHelper::getLocalStringForUi("BTN_TEXT_OK"));
+        })));
+    }
+
+    
+    
 }

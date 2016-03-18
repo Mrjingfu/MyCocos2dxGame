@@ -185,22 +185,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../Classes/Utilities/PlistBinaryUtil.cpp"
-            timestampString = "479354606.961064"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "75"
-            endingLineNumber = "75"
-            landmarkName = "PlistBinaryUtil::writeValueVectorToFile(cocos2d::ValueVector&amp; dict, const std::string&amp; fullPath,bool isEncrpty)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "../Classes/UI/Layer/BagMangerLayerUI.cpp"
             timestampString = "479728991.409858"
             startingColumnNumber = "9223372036854775807"

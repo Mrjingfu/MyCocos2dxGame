@@ -16,7 +16,7 @@
             <PreSize X="1.0000" Y="1.0000" />
             <FileData Type="PlistSubImage" Path="ui_frame_3.png" Plist="ui_sprite.plist" />
           </AbstractNodeData>
-          <AbstractNodeData Name="pause_btn_achieve" ActionTag="-1147036072" Tag="3" IconVisible="False" PercentWidthEnable="True" PercentWidthEnabled="True" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="11.0000" RightMargin="11.0000" TopMargin="127.6540" BottomMargin="12.3460" TouchEnable="True" FontSize="22" ButtonText="成就" Scale9Enable="True" LeftEage="7" RightEage="7" TopEage="7" BottomEage="7" Scale9OriginX="7" Scale9OriginY="7" Scale9Width="22" Scale9Height="22" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="ButtonObjectData">
+          <AbstractNodeData Name="pause_btn_save" ActionTag="-1147036072" Tag="3" IconVisible="False" PercentWidthEnable="True" PercentWidthEnabled="True" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="11.0000" RightMargin="11.0000" TopMargin="127.6540" BottomMargin="12.3460" TouchEnable="True" FontSize="22" ButtonText="保存游戏" Scale9Enable="True" LeftEage="7" RightEage="7" TopEage="7" BottomEage="7" Scale9OriginX="7" Scale9OriginY="7" Scale9Width="22" Scale9Height="22" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="ButtonObjectData">
             <Size X="198.0000" Y="40.0000" />
             <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
             <Position X="110.0000" Y="26.9550" />

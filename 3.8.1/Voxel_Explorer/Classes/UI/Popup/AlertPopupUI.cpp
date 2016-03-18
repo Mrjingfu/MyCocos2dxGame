@@ -101,12 +101,18 @@ void AlertPopupUI::refreshUIView()
     
     if (m_pNegativeFun&&!m_pPositiveFun) {
         m_pOk->setVisible(false);
+        m_pCancel->setVisible(true);
         m_pCancel->setPosition(cocos2d::Vec2(m_pRootNode->getContentSize().width*0.5,m_pCancel->getPositionY()));
     }
     
     if (!m_pNegativeFun&&m_pPositiveFun) {
         m_pCancel->setVisible(false);
+        m_pOk->setVisible(true);
         m_pOk->setPosition(cocos2d::Vec2(m_pRootNode->getContentSize().width*0.5,m_pCancel->getPositionY()));
+    }
+    if (!m_pNegativeFun&& !m_pPositiveFun) {
+        m_pOk->setVisible(false);
+        m_pCancel->setVisible(false);
     }
 }
 void AlertPopupUI::setNegativeListerner(onClickListener listener,std::string str)

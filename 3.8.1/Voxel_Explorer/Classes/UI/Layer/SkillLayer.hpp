@@ -32,7 +32,8 @@ private:
     void skillProgressAction();
     void bloodProgressAction();
     void magicProgressAction();
-    
+    void updateMagicPotionUse();
+    void updateBloddPotionUse();
     void onEventRoleUserPotion(cocos2d::EventCustom *sender);//使用药水物品
     int getPotionForBag(PickableItem::PickableItemType type,PickableItem::PickableItemType type2,PickableItem::PickableItemType type3);
     

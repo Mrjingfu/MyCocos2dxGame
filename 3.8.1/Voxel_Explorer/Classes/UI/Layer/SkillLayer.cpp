@@ -163,36 +163,8 @@ void SkillLayer::refreshUIView()
         m_nMagicPotionId = -1;
         m_nBloodPotionId = -1;
         
-        int reduceHp = (int)(PlayerProperty::getInstance()->getMaxHP().GetLongValue() - PlayerProperty::getInstance()->getCurrentHP().GetLongValue());
-        int reduceMp = (int)(PlayerProperty::getInstance()->getMaxMP().GetLongValue() - PlayerProperty::getInstance()->getCurrentMP().GetLongValue());
-        
-         if(reduceHp >=400)
-        {
-            //使用大瓶
-            m_nBloodPotionId = getPotionForBag(PickableItem::PIT_POTION_HEALTH, PickableItem::PIT_POTION_LESSERHEALTH, PickableItem::PIT_POTION_MINORHEALTH);
-        }else if(reduceHp >=200)
-        {
-            //使用中瓶
-            m_nBloodPotionId = getPotionForBag(PickableItem::PIT_POTION_LESSERHEALTH, PickableItem::PIT_POTION_MINORHEALTH, PickableItem::PIT_POTION_HEALTH);
-        }else{
-            //使用小瓶
-            m_nBloodPotionId = getPotionForBag(PickableItem::PIT_POTION_MINORHEALTH, PickableItem::PIT_POTION_LESSERHEALTH, PickableItem::PIT_POTION_HEALTH);
-        }
-        
-        
-        if(reduceMp >=400)
-        {
-            //使用大瓶
-            m_nMagicPotionId = getPotionForBag(PickableItem::PIT_POTION_MANA, PickableItem::PIT_POTION_LESSERMANA, PickableItem::PIT_POTION_MINORMANA);
-        }else if(reduceMp >=200)
-        {
-            //使用中瓶
-            m_nMagicPotionId = getPotionForBag(PickableItem::PIT_POTION_LESSERMANA, PickableItem::PIT_POTION_MINORMANA, PickableItem::PIT_POTION_MANA);
-        }else{
-            //使用小瓶
-            m_nMagicPotionId = getPotionForBag(PickableItem::PIT_POTION_MINORMANA, PickableItem::PIT_POTION_LESSERMANA, PickableItem::PIT_POTION_MANA);
-        }
-        
+        updateBloddPotionUse();
+        updateMagicPotionUse();
         
         if(!m_bIsUseMagicPotion)
         {
@@ -314,7 +286,7 @@ void SkillLayer::onTouchBlood(Ref* ref,Widget::TouchEventType type)
                m_pBloodPotion->runAction(Sequence::create(EaseBackInOut::create(ScaleTo::create(0.1f, 0.35f)), CallFunc::create([this](){
                    if (m_pBloodPotion) {
                        m_pBloodPotion->stopAllActions();
-                       
+                       updateBloddPotionUse();
                        if (m_nBloodPotionId!=-1)
                        {
                            if (m_pBloodProgress->getPercentage()==0)
@@ -370,7 +342,7 @@ void SkillLayer::onTouchMagic(Ref* ref,Widget::TouchEventType type)
                 
                 if (m_pMagicPotion) {
                     m_pMagicPotion->stopAllActions();
-                    
+                    updateMagicPotionUse();
                     if (m_nMagicPotionId!=-1)
                     {
                         if (m_pMagicProgress->getPercentage()==0) {
@@ -508,6 +480,39 @@ void SkillLayer::magicProgressAction()
     }
     
 }
+void SkillLayer::updateMagicPotionUse()
+{
+    int reduceMp = (int)(PlayerProperty::getInstance()->getMaxMP().GetLongValue() - PlayerProperty::getInstance()->getCurrentMP().GetLongValue());
+    if(reduceMp >=400)
+    {
+        //使用大瓶
+        m_nMagicPotionId = getPotionForBag(PickableItem::PIT_POTION_MANA, PickableItem::PIT_POTION_LESSERMANA, PickableItem::PIT_POTION_MINORMANA);
+    }else if(reduceMp >=200)
+    {
+        //使用中瓶
+        m_nMagicPotionId = getPotionForBag(PickableItem::PIT_POTION_LESSERMANA, PickableItem::PIT_POTION_MINORMANA, PickableItem::PIT_POTION_MANA);
+    }else{
+        //使用小瓶
+        m_nMagicPotionId = getPotionForBag(PickableItem::PIT_POTION_MINORMANA, PickableItem::PIT_POTION_LESSERMANA, PickableItem::PIT_POTION_MANA);
+    }
+}
+void SkillLayer::updateBloddPotionUse()
+{
+    int reduceHp = (int)(PlayerProperty::getInstance()->getMaxHP().GetLongValue() - PlayerProperty::getInstance()->getCurrentHP().GetLongValue());
+    if(reduceHp >=400)
+    {
+        //使用大瓶
+        m_nBloodPotionId = getPotionForBag(PickableItem::PIT_POTION_HEALTH, PickableItem::PIT_POTION_LESSERHEALTH, PickableItem::PIT_POTION_MINORHEALTH);
+    }else if(reduceHp >=200)
+    {
+        //使用中瓶
+        m_nBloodPotionId = getPotionForBag(PickableItem::PIT_POTION_LESSERHEALTH, PickableItem::PIT_POTION_MINORHEALTH, PickableItem::PIT_POTION_HEALTH);
+    }else{
+        //使用小瓶
+        m_nBloodPotionId = getPotionForBag(PickableItem::PIT_POTION_MINORHEALTH, PickableItem::PIT_POTION_LESSERHEALTH, PickableItem::PIT_POTION_HEALTH);
+    }
+}
+
 int SkillLayer::getPotionForBag(PickableItem::PickableItemType type,PickableItem::PickableItemType type2,PickableItem::PickableItemType type3)
 {
     int potionId = -1;

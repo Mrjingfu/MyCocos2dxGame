@@ -341,15 +341,19 @@ void WashPopupUI::onClickWash(cocos2d::Ref *ref)
         {
             PICKABLEITEM_QUALITY quality = itemProp->getQuality();
             CChaosNumber extendSilver = 0;
+            std::string desc;
             switch (quality) {
                 case PIQ_RARE:
-                    extendSilver = 2;
+                    extendSilver = 200;
+                    desc = cocos2d::StringUtils::format(UtilityHelper::getLocalStringForUi("BAG_TEXT_WASH_ITEM_SILVER").c_str(),int(extendSilver/100));
                     break;
                 case PIQ_EPIC:
-                    extendSilver = 25;
+                    extendSilver = 2500;
+                    desc = cocos2d::StringUtils::format(UtilityHelper::getLocalStringForUi("BAG_TEXT_WASH_ITEM_SILVER").c_str(),int(extendSilver/100));
                     break;
                 case PIQ_LEGEND:
-                    extendSilver = 200;
+                    extendSilver = 20000;
+                    desc = cocos2d::StringUtils::format(UtilityHelper::getLocalStringForUi("BAG_TEXT_WASH_ITEM_GOLD").c_str(),int(extendSilver/10000));
                     break;
                 default:
                     break;
@@ -359,11 +363,11 @@ void WashPopupUI::onClickWash(cocos2d::Ref *ref)
             },UtilityHelper::getLocalStringForUi("BTN_TEXT_CANCEL"));
             alertPopupUi->setNegativeListerner([this,extendSilver](Ref* ref){
 
-                    if(PlayerProperty::getInstance()->costMoney(extendSilver.GetLongValue()*100))
+                    if(PlayerProperty::getInstance()->costMoney(extendSilver.GetLongValue()))
                         this->itemWash();
                 
             },UtilityHelper::getLocalStringForUi("BTN_TEXT_OK"));
-            alertPopupUi->setMessage(cocos2d::StringUtils::format(UtilityHelper::getLocalStringForUi("BAG_TEXT_WASH_ITEM").c_str(),int(extendSilver)));
+            alertPopupUi->setMessage(desc);
         }
 
     }

@@ -340,6 +340,14 @@
 	<string>洗练</string>
 	<key>BTN_TEXT_SELECT</key>
 	<string>选择</string>
+	<key>BTN_TEXT_SAVE_GAME</key>
+	<string>SAVE GAME</string>
+	<key>PAUSE_SAVE_LOADING</key>
+	<string>正在保存,请不要关闭游戏...</string>
+	<key>PAUSE_SAVE_OK</key>
+	<string>保存成功</string>
+	<key>PAUSE_SAVE_FAILE</key>
+	<string>保存失败</string>
 	<key>BAG_TEXT_BREADDOWN</key>
 	<string>分解物品</string>
 	<key>BAG_TEXT_WASH_TIP</key>
@@ -354,8 +362,10 @@
 	<string>EXTEND</string>
 	<key>BAG_TEXT_EXTEND_DESC</key>
 	<string>To cost %d gold coins to extend the backpack?</string>
-	<key>BAG_TEXT_WASH_ITEM</key>
+	<key>BAG_TEXT_WASH_ITEM_SILVER</key>
 	<string>是否花费%d银币洗练装备?</string>
+	<key>BAG_TEXT_WASH_ITEM_GOLD</key>
+	<string>是否花费%d金币洗练装备?</string>
 	<key>BREAD_DOWN_SETTLEMENT_DESC</key>
 	<string>获得</string>
 	<key>ARCHIVE_RESTART_TIPS_DESC</key>
