@@ -170,6 +170,11 @@ void AppDelegate::applicationWillEnterForeground() {
     
     if (!PopupUILayerManager::getInstance()->getCurrentPopUpLayer()&&
         PopupUILayerManager::getInstance()->getSceneType()==PopupUILayerManager::ST_GAME) {
-        PopupUILayerManager::getInstance()->openPopup(ePopupPause);
+        
+        PopupUILayer* popui = nullptr;
+        if (!PopupUILayerManager::getInstance()->isOpenPopup(ePopupPause, popui)) {
+             PopupUILayerManager::getInstance()->openPopup(ePopupPause);
+        }
+       
     }
 }

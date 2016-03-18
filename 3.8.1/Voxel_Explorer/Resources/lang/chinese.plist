@@ -1063,21 +1063,21 @@
 	<key>PIN_POTION_UNIVERSAL_DESC</key>
 	<string>解除角色所有负面状态</string>
 	<key>PIN_MATERIAL_WHITE</key>
-	<string>白色矿石</string>
+	<string>白色晶石</string>
 	<key>PIN_MATERIAL_WHITE_DESC</key>
-	<string>很普通的矿石,但是很坚硬。</string>
+	<string>很普通的晶石,但是很坚硬。</string>
 	<key>PIN_MATERIAL_GREEN</key>
-	<string>绿色矿石</string>
+	<string>绿色晶石</string>
 	<key>PIN_MATERIAL_GREEN_DESC</key>
-	<string>翠绿色的矿石,晶莹剔透。</string>
+	<string>翠绿色的晶石,晶莹剔透。</string>
 	<key>PIN_MATERIAL_BLUE</key>
-	<string>蓝色矿石</string>
+	<string>蓝色晶石</string>
 	<key>PIN_MATERIAL_BLUE_DESC</key>
-	<string>耀眼夺目的色泽,散发奇特的光泽。</string>
+	<string>碧蓝色的晶石,散发奇特的光泽。</string>
 	<key>PIN_MATERIAL_PURPLE</key>
-	<string>紫色矿石</string>
+	<string>紫色晶石</string>
 	<key>PIN_MATERIAL_PURPLE_DESC</key>
-	<string>颜色深沉,蕴含奇特的能量。</string>
+	<string>酱紫色的晶石,蕴含奇特的能量。</string>
 	<key>UIN_CHEST_NO_LOCK_COPPER</key>
 	<string>铜质宝箱</string>
 	<key>UIN_CHEST_NO_LOCK_COPPER_DESC</key>
@@ -1119,7 +1119,7 @@
 	<key>NPCN_CHILD_DESC</key>
 	<string>哎呦，别摸我，痒～</string>
 	<key>NPCN_CHILD_CONTENT</key>
-	<string>欢迎来到洗练室,快来洗洗你的装备,说不定会更强哦。</string>
+	<string>欢迎你找我洗炼装备，快给我你准备好的晶石。</string>
 	<key>NPCN_SHOPGIRL</key>
 	<string>售货员</string>
 	<key>NPCN_SHOPGIRL_DESC</key>

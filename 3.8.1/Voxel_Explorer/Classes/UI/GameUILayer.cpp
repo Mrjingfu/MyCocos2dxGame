@@ -154,8 +154,6 @@ void GameUILayer::switchToMenuScene()
         EaseExponentialOut* fadeIn = EaseExponentialOut::create(FadeIn::create(1.0f));
         CallFunc* callFunc = CallFunc::create([this](){
             
-            Director::getInstance()->purgeCachedData();
-            
             auto scene = MenuScene::createScene();
             Director::getInstance()->replaceScene(scene);
              m_bSwitchScene = false;

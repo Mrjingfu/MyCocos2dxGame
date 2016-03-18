@@ -1725,7 +1725,8 @@ void Node::resume()
     _eventDispatcher->resumeEventListenersForTarget(this);
     //add by lwwhb for resume
     for (auto child: getChildren()) {
-        child->resume();
+        if(child != nullptr)
+            child->resume();
     }
 }
 
@@ -1736,7 +1737,8 @@ void Node::pause()
     _eventDispatcher->pauseEventListenersForTarget(this);
     //add by lwwhb for pause
     for (auto child: getChildren()) {
-        child->pause();
+        if(child != nullptr)
+            child->pause();
     }
 }
 

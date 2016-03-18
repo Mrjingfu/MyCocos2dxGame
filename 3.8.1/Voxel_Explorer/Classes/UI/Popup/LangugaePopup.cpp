@@ -134,8 +134,6 @@ void LangugaePopup::swtichToLogoScene()
 {
     ArchiveManager::getInstance()->saveGameAchieve();
     
-    Director::getInstance()->purgeCachedData();
-    
     Scene* logoScene = LogoScene::createScene();
     Director::getInstance()->replaceScene(logoScene);
 }

@@ -208,6 +208,16 @@ void LogoScene::onEnter()
 }
 void LogoScene::onExit()
 {
+    SpriteFrameCache::getInstance()->removeSpriteFrameByName("t_0.png");
+    SpriteFrameCache::getInstance()->removeSpriteFrameByName("i_0.png");
+    SpriteFrameCache::getInstance()->removeSpriteFrameByName("n_0.png");
+    SpriteFrameCache::getInstance()->removeSpriteFrameByName("y_0.png");
+    
+    SpriteFrameCache::getInstance()->removeSpriteFrameByName("f_0.png");
+    SpriteFrameCache::getInstance()->removeSpriteFrameByName("l_0.png");
+    SpriteFrameCache::getInstance()->removeSpriteFrameByName("a_0.png");
+    SpriteFrameCache::getInstance()->removeSpriteFrameByName("r_0.png");
+    SpriteFrameCache::getInstance()->removeSpriteFrameByName("e_0.png");
     unscheduleUpdate();
     Layer::onExit();
 }
@@ -307,8 +317,6 @@ void LogoScene::precache()
 void LogoScene::endcache()
 {
 //    auto scene = TestScene::createScene();
-    
-    Director::getInstance()->purgeCachedData();
     
     auto scene = MenuScene::createScene();
     Director::getInstance()->replaceScene(scene);

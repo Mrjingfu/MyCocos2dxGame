@@ -13,6 +13,7 @@
 #include "LoadingLayer.hpp"
 #include "GameCenterController.h"
 #include "LevelResourceManager.h"
+#include "UtilityHelper.h"
 #include "SimpleAudioEngine.h"
 USING_NS_CC;
 using namespace CocosDenshion;
@@ -81,6 +82,10 @@ void MenuScene::onEnter()
 }
 void MenuScene::onExit()
 {
+    
+    Director::getInstance()->getTextureCache()->removeTextureForKey(UtilityHelper::getLocalStringForUi("SPLASH_RES"));
+    Director::getInstance()->getTextureCache()->removeTextureForKey("splash.png");
+    
     PopupUILayerManager::getInstance()->onExitScene();
     SimpleAudioEngine::getInstance()->stopBackgroundMusic();
     Layer::onExit();

@@ -1748,8 +1748,6 @@ void VoxelExplorer::handleUpstairs()
         m_bHasDownStairs = false;
         RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nCurrentDepth -= 1;
         
-        Director::getInstance()->purgeCachedData();
-        
         auto scene = GameScene::createScene();
         Director::getInstance()->replaceScene(scene);
 #if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM ==CC_PLATFORM_ANDROID )
@@ -1770,8 +1768,6 @@ void VoxelExplorer::handleDownstairs()
         m_bHasDownStairs = true;
         RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nCurrentDepth += 1;
         
-        Director::getInstance()->purgeCachedData();
-        
         auto scene = GameScene::createScene();
         Director::getInstance()->replaceScene(scene);
         
@@ -1784,8 +1780,6 @@ void VoxelExplorer::handleDownstairs()
         ///加载boss房间
         RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nCurrentDepth += 1;
          m_bHasDownStairs = true;
-        
-        Director::getInstance()->purgeCachedData();
         
         auto scene = GameScene::createScene();
         Director::getInstance()->replaceScene(scene);
@@ -1824,8 +1818,6 @@ void VoxelExplorer::handleGoChasm()
                 Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_FALL_DOWNSTAIRS);
                 m_bHasDownStairs = true;
                 RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nCurrentDepth += 1;
-                
-                Director::getInstance()->purgeCachedData();
                 
                 auto scene = GameScene::createScene();
                 Director::getInstance()->replaceScene(scene);

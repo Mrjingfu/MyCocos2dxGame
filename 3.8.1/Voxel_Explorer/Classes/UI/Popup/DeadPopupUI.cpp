@@ -199,8 +199,6 @@ void DeadPopupUI::onClickRestart(cocos2d::Ref *ref)
     
     ArchiveManager::getInstance()->loadGame();
     
-    Director::getInstance()->purgeCachedData();
-    
     cocos2d::Scene* scene = GameScene::createScene();
     Director::getInstance()->replaceScene(scene);
     

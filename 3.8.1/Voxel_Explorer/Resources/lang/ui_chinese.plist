@@ -121,7 +121,7 @@
 	<key>ITEM_PROP_TYPE_POTIONS</key>
 	<string>药水</string>
 	<key>ITEM_PROP_TYPE_MATERIAL</key>
-	<string>矿石</string>
+	<string>材料</string>
 	<key>ITEM_PROP_TYPE_QUEST</key>
 	<string>任务物品</string>
 	<key>ITEM_PROP_TYPE_SUNDRIES</key>

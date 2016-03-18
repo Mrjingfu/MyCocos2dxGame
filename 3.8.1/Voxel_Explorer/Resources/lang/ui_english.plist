@@ -121,7 +121,7 @@
 	<key>ITEM_PROP_TYPE_POTIONS</key>
 	<string>Potion</string>
 	<key>ITEM_PROP_TYPE_MATERIAL</key>
-	<string>Mineral</string>
+	<string>Material</string>
 	<key>ITEM_PROP_TYPE_QUEST</key>
 	<string>Quest</string>
 	<key>ITEM_PROP_TYPE_SUNDRIES</key>
