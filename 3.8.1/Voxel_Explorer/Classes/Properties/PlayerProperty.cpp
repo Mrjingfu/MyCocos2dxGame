@@ -1045,6 +1045,12 @@ bool PlayerProperty::equipRefine(CChaosNumber id)
                 }else if (level <=25)
                 {
                     washLevel = 30;
+                }else if (level <=30)
+                {
+                    washLevel = 35;
+                }else if (level <=35)
+                {
+                     washLevel = 40;
                 }else
                 {
                     washLevel = level;

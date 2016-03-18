@@ -335,7 +335,7 @@
 复活</string>
 	<key>BTN_TEXT_RANK</key>
 	<string>排行榜</string>
-	<key>BTN_TEXT_BREADDOWN</key>
+	<key>BTN_TEXT_BREAKDOWN</key>
 	<string>分解</string>
 	<key>BTN_TEXT_WASH</key>
 	<string>洗练</string>
@@ -349,7 +349,7 @@
 	<string>保存成功</string>
 	<key>PAUSE_SAVE_FAILE</key>
 	<string>保存失败</string>
-	<key>BAG_TEXT_BREADDOWN</key>
+	<key>BAG_TEXT_BREAKDOWN</key>
 	<string>分解物品</string>
 	<key>BAG_TEXT_WASH_TIP</key>
 	<string>请选择需要洗练的装备</string>
@@ -367,7 +367,7 @@
 	<string>是否花费%d银币洗练装备?</string>
 	<key>BAG_TEXT_WASH_ITEM_GOLD</key>
 	<string>是否花费%d金币洗练装备?</string>
-	<key>BREAD_DOWN_SETTLEMENT_DESC</key>
+	<key>BREAK_DOWN_SETTLEMENT_DESC</key>
 	<string>获得</string>
 	<key>ARCHIVE_RESTART_TIPS_DESC</key>
 	<string>重新开始会清除游戏记录,是否重新开始游戏？</string>

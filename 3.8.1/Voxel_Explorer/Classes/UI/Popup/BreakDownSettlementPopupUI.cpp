@@ -49,7 +49,7 @@ cocos2d::ui::Layout* BreakDownSettlementPopupUI::createBreakDownItem(std::string
     
     m_pMaterialCount->setFntFile(UtilityHelper::getLocalStringForUi("FONT_NAME"));
     m_pMaterialDesc->setFntFile(UtilityHelper::getLocalStringForUi("FONT_NAME"));
-    m_pMaterialDesc->setString(UtilityHelper::getLocalStringForUi("BREAD_DOWN_SETTLEMENT_DESC"));
+    m_pMaterialDesc->setString(UtilityHelper::getLocalStringForUi("BREAK_DOWN_SETTLEMENT_DESC"));
     m_pMaterialCount->setString(StringUtils::format("x%ld",count.GetLongValue()));
     m_pMaterialIcon->loadTexture(icon,TextureResType::PLIST);
     

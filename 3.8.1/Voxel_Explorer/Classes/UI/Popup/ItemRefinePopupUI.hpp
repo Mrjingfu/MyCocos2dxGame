@@ -22,6 +22,7 @@ public:
     virtual void refreshUIView() override;
     void setOldItemProp( PickableItemProperty* itemProp);
 private:
+    std::string calculateFloatDiff(CChaosNumber targetNum ,CChaosNumber sourceNum);
     void IdentifyEquiipFrame() override;
     void updateBottomUi() override;
     void onClickConfirm(Ref* ref);

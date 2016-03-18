@@ -225,9 +225,9 @@ void Npc::endAnswer()
         case NPC_SHOPGIRL:
         case NPC_OLDLADY:
         case NPC_KNIGHT:
+        case NPC_CHILD:
             setState(NPCS_IDLE);
             break;
-        case NPC_CHILD:
         case NPC_WEIRDO:
         case NPC_OLDMAN:
             setState(NPCS_FADEOUT);

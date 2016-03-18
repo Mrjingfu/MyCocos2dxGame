@@ -163,11 +163,11 @@ void ItemRefinePopupUI::IdentifyEquiipFrame()
                     if (oldNum > newNum.GetFloatValue())
                     {
                         effectColor = downColor;
-                        itemPropStr = itemPropStr.append(StringUtils::format(" (-%.1f%%)",oldNum.GetFloatValue()*100.0f - newNum.GetFloatValue()*100.0f));
+                        itemPropStr = itemPropStr.append(StringUtils::format(" (-%s%%)",calculateFloatDiff(oldNum,newNum).c_str()));
                     }else if (oldNum < newNum.GetFloatValue())
                     {
                         effectColor = upColor;
-                        itemPropStr = itemPropStr.append(StringUtils::format(" (+%.1f%%)",newNum.GetFloatValue()*100.0f - oldNum.GetFloatValue()*100.0f));
+                        itemPropStr = itemPropStr.append(StringUtils::format(" (+%s%%)",calculateFloatDiff(newNum,oldNum).c_str()));
                     }
                 }else
                 {
@@ -277,11 +277,11 @@ void ItemRefinePopupUI::IdentifyEquiipFrame()
                     if (oldNum > newNum.GetFloatValue())
                     {
                         effectColor = downColor;
-                        itemPropStr = itemPropStr.append(StringUtils::format(" (-%.1f%%)",oldNum.GetFloatValue()*100.0f - newNum.GetFloatValue()*100.0f));
+                        itemPropStr = itemPropStr.append(StringUtils::format(" (-%s%%)",calculateFloatDiff(oldNum,newNum).c_str()));
                     }else if (oldNum < newNum.GetFloatValue())
                     {
                         effectColor = upColor;
-                        itemPropStr = itemPropStr.append(StringUtils::format(" (+%.1f%%)",newNum.GetFloatValue()*100.0f - oldNum.GetFloatValue()*100.0f));
+                        itemPropStr = itemPropStr.append(StringUtils::format(" (+%s%%)",calculateFloatDiff(newNum,oldNum).c_str()));
                     }
                 }else
                 {
@@ -422,11 +422,11 @@ void ItemRefinePopupUI::IdentifyEquiipFrame()
                     if (oldNum > newNum.GetFloatValue())
                     {
                         effectColor = downColor;
-                        itemPropStr = itemPropStr.append(StringUtils::format(" (-%.1f%%)",oldNum.GetFloatValue()*100.0f - newNum.GetFloatValue()*100.0f));
+                        itemPropStr = itemPropStr.append(StringUtils::format(" (-%s%%)",calculateFloatDiff(oldNum,newNum).c_str()));
                     }else if (oldNum < newNum.GetFloatValue())
                     {
                         effectColor = upColor;
-                        itemPropStr = itemPropStr.append(StringUtils::format(" (+%.1f%%)",newNum.GetFloatValue()*100.0f - oldNum.GetFloatValue()*100.0f));
+                        itemPropStr = itemPropStr.append(StringUtils::format(" (+%s%%)",calculateFloatDiff(newNum,oldNum).c_str()));
                     }
                 }else
                 {
@@ -578,11 +578,11 @@ void ItemRefinePopupUI::IdentifyEquiipFrame()
                 if (oldNum > newNum.GetFloatValue())
                 {
                     effectColor = downColor;
-                    itemPropStr = itemPropStr.append(StringUtils::format(" (-%.1f%%)",oldNum.GetFloatValue()*100.0f - newNum.GetFloatValue()*100.0f));
+                    itemPropStr = itemPropStr.append(StringUtils::format(" (-%s%%)",calculateFloatDiff(oldNum,newNum).c_str()));
                 }else if (oldNum < newNum.GetFloatValue())
                 {
                     effectColor = upColor;
-                    itemPropStr = itemPropStr.append(StringUtils::format(" (+%.1f%%)",newNum.GetFloatValue()*100.0f - oldNum.GetFloatValue()*100.0f));
+                    itemPropStr = itemPropStr.append(StringUtils::format(" (+%s%%)",calculateFloatDiff(newNum,oldNum).c_str()));
                 }
             }else
             {
@@ -681,5 +681,13 @@ void ItemRefinePopupUI::onClickConfirm(Ref* ref)
 void ItemRefinePopupUI::onKeyBackClick()
 {
     
+}
+std::string ItemRefinePopupUI::calculateFloatDiff(CChaosNumber targetNum ,CChaosNumber sourceNum)
+{
+    float targetFloatNum = Value(StringUtils::format("%.1f",targetNum.GetFloatValue()*100.0f)).asFloat();
+    float sourceFloatNum = Value(StringUtils::format("%.1f",sourceNum.GetFloatValue()*100.0f)).asFloat();
+    
+    std::string resultStr = StringUtils::format("%.1f",targetFloatNum-sourceFloatNum);
+    return resultStr;
 }
 

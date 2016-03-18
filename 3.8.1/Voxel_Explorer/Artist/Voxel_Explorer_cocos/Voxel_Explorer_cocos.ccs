@@ -107,6 +107,7 @@
           <PlistImageFile Name="ui_language_press.png" Key="ui_language_press.png" />
           <PlistImageFile Name="ui_radio_off.png" Key="ui_radio_off.png" />
           <PlistImageFile Name="ui_radio_on.png" Key="ui_radio_on.png" />
+          <PlistImageFile Name="ui_icon_hammer.png" Key="ui_icon_hammer.png" />
         </PlistImageFolder>
         <Project Name="gameScene.csd" Type="Scene" />
         <Project Name="menuscene.csd" Type="Scene" />

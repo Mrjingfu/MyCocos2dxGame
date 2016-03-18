@@ -43,6 +43,7 @@
 #include "GameScene.h"
 #include "LoadingLayer.hpp"
 #include "SkillLayer.hpp"
+#include "RefinePopupUI.hpp"
 USING_NS_CC;
 GameUILayer::GameUILayer()
 {
@@ -416,22 +417,39 @@ void GameUILayer::roleDead()
                     case Npc::NPC_WEIRDO:
                          type = ePopupGambleShop;
                         break;
+                    case Npc::NPC_CHILD:
+                        type = ePopupRefine;
                     default:
                         break;
                 }
                 if (type!=ePopupInvalid)
                 {
-                    ShopPopupUI* popupUILayer = static_cast<ShopPopupUI*>(PopupUILayerManager::getInstance()->openPopup(type));
-                    if (popupUILayer) {
-                        popupUILayer->setShopTitle(eventStr);
-                        popupUILayer->registerCloseCallback([this,npc]()
-                        {
-                            npc->endAnswer();
-                            if (m_pNpcPropLayer)
+                    if (type == ePopupRefine) {
+                        RefinePopupUI* popupUILayer = static_cast<RefinePopupUI*>(PopupUILayerManager::getInstance()->openPopup(type));
+                        if (popupUILayer) {
+                            popupUILayer->registerCloseCallback([this,npc]()
+                                {
+                                    npc->endAnswer();
+                                    if (m_pNpcPropLayer)
+                                    {
+                                        m_pNpcPropLayer->setVisible(false);
+                                    }
+                                });
+                        }
+                    }else
+                    {
+                        ShopPopupUI* popupUILayer = static_cast<ShopPopupUI*>(PopupUILayerManager::getInstance()->openPopup(type));
+                        if (popupUILayer) {
+                            popupUILayer->setShopTitle(eventStr);
+                            popupUILayer->registerCloseCallback([this,npc]()
                             {
-                                m_pNpcPropLayer->setVisible(false);
-                            }
-                        });
+                                npc->endAnswer();
+                                if (m_pNpcPropLayer)
+                                {
+                                    m_pNpcPropLayer->setVisible(false);
+                                }
+                            });
+                        }
                     }
                 }
                 else

@@ -33,6 +33,7 @@ private:
     void onClickDist(Ref* ref,Widget::TouchEventType type);
     void onClickMsg(Ref* ref,Widget::TouchEventType type);
     void onClickPause(Ref* ref,Widget::TouchEventType type);
+    void onClickHammer(Ref* ref,Widget::TouchEventType type);
     void setMsgItem(std::string msg,cocos2d::Color3B msgColor = cocos2d::Color3B::WHITE);
     
     void onTouchToolBtn(Widget::TouchEventType type,Ref* ref,cocos2d::ui::ImageView* img,float targetScale,float sourceScale,float time,const std::function<void()> &func,bool isPlaySound = true);
@@ -55,6 +56,8 @@ private:
     cocos2d::ui::ImageView*  m_pGameDistBtnIcon;
     cocos2d::ui::ImageView*  m_pGamePauseBtn;
     cocos2d::ui::ImageView*  m_pGamePauseBtnIcon;
+    cocos2d::ui::ImageView*  m_pGameHammerBtn;
+    cocos2d::ui::ImageView*  m_pGameHammerBtnIcon;
     cocos2d::ui::LoadingBar* m_pRoleExpBar;
     cocos2d::ui::ImageView*  m_pGameDistTipsFrame;
     cocos2d::ui::Button*     m_pGameDistFrameCloseBtn;

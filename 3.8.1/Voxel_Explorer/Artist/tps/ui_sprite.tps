@@ -246,6 +246,7 @@
             <filename>../ui/ui_sprite/ui_language_press.png</filename>
             <filename>../ui/ui_sprite/ui_radio_off.png</filename>
             <filename>../ui/ui_sprite/ui_radio_on.png</filename>
+            <filename>../ui/ui_sprite/ui_icon_hammer.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

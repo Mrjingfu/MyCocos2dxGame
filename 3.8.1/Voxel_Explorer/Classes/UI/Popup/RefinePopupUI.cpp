@@ -183,7 +183,19 @@ void RefinePopupUI::updateMaterial(Ref* data)
         m_pBtnWash->setTouchEnabled(false);
         m_pBtnWash->setEnabled(false);
     }
-
+    
+    if (m_pWhiteMaterialText)
+        m_pWhiteMaterialText->setColor(Color3B::WHITE);
+    
+    if (m_pGreenMaterialText)
+        m_pGreenMaterialText->setColor(Color3B::WHITE);
+    
+    if (m_pBlueMaterialText)
+        m_pBlueMaterialText->setColor(Color3B::WHITE);
+    
+    if (m_pPurpleMaterialText)
+        m_pPurpleMaterialText->setColor(Color3B::WHITE);
+    
     m_bIsCallBack = true;
     bool isMaterialEnough = false;
     PickableItemProperty* itemProp = static_cast<PickableItemProperty*>(data);

@@ -44,6 +44,9 @@ GameToolbarLayer::GameToolbarLayer()
     m_pGameBagBtnIcon           = nullptr;
     m_pGameDistBtnIcon          = nullptr;
     m_pGamePauseBtnIcon         = nullptr;
+    m_pGameHammerBtn            = nullptr;
+    m_pGameHammerBtnIcon        = nullptr;
+    
     
     m_pGameDistTipsFrame        = nullptr;
     m_pGameDistFrameCloseBtn    = nullptr;
@@ -101,7 +104,12 @@ bool GameToolbarLayer::addEvents()
     m_pGamePauseBtnIcon  = dynamic_cast<ui::ImageView*>(UtilityHelper::seekNodeByName(m_pRootNode, "game_btn_pause_icon"));
     if (!m_pGamePauseBtn)
         return false;
-    
+    m_pGameHammerBtn = dynamic_cast<ui::ImageView*>(UtilityHelper::seekNodeByName(m_pRootNode, "game_btn_hammer"));
+    if (!m_pGameHammerBtn)
+        return false;
+    m_pGameHammerBtnIcon = dynamic_cast<ui::ImageView*>(UtilityHelper::seekNodeByName(m_pRootNode, "game_btn_hammer_icon"));
+    if (!m_pGameHammerBtnIcon)
+        return false;
 
     m_pMsgFrame = dynamic_cast<ui::ImageView*>(UtilityHelper::seekNodeByName(m_pRootNode, "game_msg_frame"));
     if (!m_pMsgFrame)
@@ -143,7 +151,10 @@ bool GameToolbarLayer::addEvents()
     m_pGameDistBtn->addTouchEventListener(CC_CALLBACK_2(GameToolbarLayer::onClickDist, this));
     m_pGamePauseBtn->setTouchEnabled(true);
     m_pGamePauseBtn->addTouchEventListener(CC_CALLBACK_2(GameToolbarLayer::onClickPause, this));
-
+    m_pGameHammerBtn->setTouchEnabled(true);
+    m_pGameHammerBtn->addTouchEventListener(CC_CALLBACK_2(GameToolbarLayer::onClickHammer, this));
+    
+    
     m_pGameDistTipsFrame->setVisible(false);
     m_pGameDistFrameDesc->setFntFile(UtilityHelper::getLocalStringForUi("FONT_NAME"));
     m_pGameDistFrameDesc->setString(UtilityHelper::getLocalStringForUi("GAME_SERACH_EXPLAIN"));
@@ -260,6 +271,25 @@ void GameToolbarLayer::onClickBag(Ref* ref,Widget::TouchEventType type)
         
     });
 
+}
+void GameToolbarLayer::onClickHammer(cocos2d::Ref *ref, Widget::TouchEventType type)
+{
+    onTouchToolBtn(type,ref,m_pGameHammerBtnIcon,0.6f,0.7f,0.1f,[this,ref](){
+        
+        CCLOG("onClickHammer");
+        CHECK_ACTION(ref);
+        PopupUILayer* popup = nullptr;
+        if (PopupUILayerManager::getInstance()->isOpenPopup(ePopupBagBreakDown, popup)) {
+            return ;
+        }
+        
+        if (m_bIsDist) {
+            return;
+        }
+        PopupUILayerManager::getInstance()->openPopup(ePopupBagBreakDown);
+        setDistTipsFrame();
+        
+    });
 }
 void GameToolbarLayer::onClickMap(Ref* ref,Widget::TouchEventType type)
 {

@@ -6,13 +6,26 @@
       <ObjectData Name="Layer" Tag="18" ctype="GameLayerObjectData">
         <Size X="170.0000" Y="70.0000" />
         <Children>
-          <AbstractNodeData Name="breadDown_layer_frame" ActionTag="1624360913" Tag="19" IconVisible="False" PercentWidthEnable="True" PercentHeightEnable="True" PercentWidthEnabled="True" PercentHeightEnabled="True" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" BottomMargin="0.0000" TouchEnable="True" BackColorAlpha="102" ColorAngle="90.0000" Scale9Enable="True" LeftEage="4" RightEage="4" TopEage="4" BottomEage="4" ctype="PanelObjectData">
+          <AbstractNodeData Name="breadDown_layer_frame" ActionTag="1624360913" Tag="19" IconVisible="False" PercentWidthEnable="True" PercentHeightEnable="True" PercentWidthEnabled="True" PercentHeightEnabled="True" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" TouchEnable="True" BackColorAlpha="102" ColorAngle="90.0000" Scale9Enable="True" LeftEage="4" RightEage="4" TopEage="4" BottomEage="4" ctype="PanelObjectData">
             <Size X="170.0000" Y="70.0000" />
+            <Children>
+              <AbstractNodeData Name="Particle_1" ActionTag="-629238015" Tag="49" IconVisible="True" LeftMargin="86.3830" RightMargin="83.6170" TopMargin="30.9648" BottomMargin="39.0352" ctype="ParticleObjectData">
+                <Size X="0.0000" Y="0.0000" />
+                <AnchorPoint />
+                <Position X="86.3830" Y="39.0352" />
+                <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                <CColor A="255" R="255" G="255" B="255" />
+                <PrePosition X="0.5081" Y="0.5576" />
+                <PreSize X="0.0000" Y="0.0000" />
+                <FileData Type="Normal" Path="particle2d/achievement_particle-ipadhd.plist" Plist="" />
+                <BlendFunc Src="770" Dst="1" />
+              </AbstractNodeData>
+            </Children>
             <AnchorPoint />
-            <Position Y="0.0000" />
+            <Position />
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
             <CColor A="255" R="255" G="255" B="255" />
-            <PrePosition Y="0.0000" />
+            <PrePosition />
             <PreSize X="1.0000" Y="1.0000" />
             <FileData Type="PlistSubImage" Path="ui_frame_9.png" Plist="ui_sprite.plist" />
             <SingleColor A="255" R="255" G="255" B="0" />
@@ -23,7 +36,7 @@
           <AbstractNodeData Name="breadDown_btn_ok" ActionTag="-1658336731" Tag="40" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="53.9375" RightMargin="56.0625" TopMargin="43.6667" BottomMargin="4.3333" TouchEnable="True" FontSize="14" ButtonText="确定" Scale9Enable="True" LeftEage="4" RightEage="4" TopEage="4" BottomEage="4" Scale9OriginX="4" Scale9OriginY="4" Scale9Width="5" Scale9Height="5" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="ButtonObjectData">
             <Size X="60.0000" Y="22.0000" />
             <AnchorPoint ScaleX="0.5000" />
-            <Position X="83.9375" Y="4.3333" />
+            <Position X="83.9460" Y="4.3330" />
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
             <CColor A="255" R="255" G="255" B="255" />
             <PrePosition X="0.4938" Y="0.0619" />
@@ -35,7 +48,7 @@
             <OutlineColor A="255" R="255" G="0" B="0" />
             <ShadowColor A="255" R="110" G="110" B="110" />
           </AbstractNodeData>
-          <AbstractNodeData Name="breadDown_white" Visible="False" ActionTag="-1200384602" Alpha="0" Tag="28" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="87.1337" RightMargin="38.8663" TopMargin="6.6623" BottomMargin="39.3377" Scale9Width="34" Scale9Height="34" ctype="ImageViewObjectData">
+          <AbstractNodeData Name="breadDown_white" Visible="False" ActionTag="-1200384602" Alpha="0" Tag="28" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="93.6360" RightMargin="42.3640" TopMargin="3.7060" BottomMargin="32.2940" Scale9Width="34" Scale9Height="34" ctype="ImageViewObjectData">
             <Size X="34.0000" Y="34.0000" />
             <Children>
               <AbstractNodeData Name="breadDown_white_text" ActionTag="750854926" Tag="31" IconVisible="False" HorizontalEdge="LeftEdge" VerticalEdge="TopEdge" LeftMargin="34.0000" RightMargin="-37.0000" TopMargin="-2.5000" BottomMargin="-2.5000" LabelText="x1" ctype="TextBMFontObjectData">
@@ -60,14 +73,14 @@
               </AbstractNodeData>
             </Children>
             <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-            <Position X="110.6421" Y="49.2955" />
+            <Position X="110.6360" Y="49.2940" />
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
             <CColor A="255" R="255" G="255" B="255" />
             <PrePosition X="0.6508" Y="0.7042" />
-            <PreSize X="0.2125" Y="0.4250" />
+            <PreSize X="0.2000" Y="0.4857" />
             <FileData Type="PlistSubImage" Path="I_Crystal_white.png" Plist="ui_items.plist" />
           </AbstractNodeData>
-          <AbstractNodeData Name="breadDown_green" Visible="False" ActionTag="-1623423807" Alpha="0" Tag="33" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="92.8000" RightMargin="33.2000" TopMargin="8.6000" BottomMargin="37.4000" Scale9Width="34" Scale9Height="34" ctype="ImageViewObjectData">
+          <AbstractNodeData Name="breadDown_green" Visible="False" ActionTag="-1623423807" Alpha="0" Tag="33" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="98.6000" RightMargin="37.4000" TopMargin="5.4000" BottomMargin="30.6000" Scale9Width="34" Scale9Height="34" ctype="ImageViewObjectData">
             <Size X="34.0000" Y="34.0000" />
             <Children>
               <AbstractNodeData Name="breadDown_green_text" ActionTag="1573702279" Tag="32" IconVisible="False" HorizontalEdge="LeftEdge" VerticalEdge="BothEdge" LeftMargin="34.0000" RightMargin="-37.0000" TopMargin="-2.5000" BottomMargin="-2.5000" LabelText="x1" ctype="TextBMFontObjectData">
@@ -86,10 +99,10 @@
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
             <CColor A="255" R="255" G="255" B="255" />
             <PrePosition X="0.5800" Y="0.6800" />
-            <PreSize X="0.2125" Y="0.4250" />
+            <PreSize X="0.2000" Y="0.4857" />
             <FileData Type="PlistSubImage" Path="I_Crystal_green.png" Plist="ui_items.plist" />
           </AbstractNodeData>
-          <AbstractNodeData Name="breadDown_blue" Visible="False" ActionTag="1008988804" Alpha="0" Tag="36" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="18.2000" RightMargin="107.8000" TopMargin="32.6000" BottomMargin="13.4000" Scale9Width="34" Scale9Height="34" ctype="ImageViewObjectData">
+          <AbstractNodeData Name="breadDown_blue" Visible="False" ActionTag="1008988804" Alpha="0" Tag="36" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="20.4000" RightMargin="115.6000" TopMargin="26.4000" BottomMargin="9.6000" Scale9Width="34" Scale9Height="34" ctype="ImageViewObjectData">
             <Size X="34.0000" Y="34.0000" />
             <Children>
               <AbstractNodeData Name="breadDown_blue_text" ActionTag="-719336451" Tag="34" IconVisible="False" HorizontalEdge="LeftEdge" VerticalEdge="BothEdge" LeftMargin="34.0000" RightMargin="-37.0000" TopMargin="-2.5000" BottomMargin="-2.5000" LabelText="x1" ctype="TextBMFontObjectData">
@@ -108,10 +121,10 @@
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
             <CColor A="255" R="255" G="255" B="255" />
             <PrePosition X="0.2200" Y="0.3800" />
-            <PreSize X="0.2125" Y="0.4250" />
+            <PreSize X="0.2000" Y="0.4857" />
             <FileData Type="PlistSubImage" Path="I_Crystal_blue.png" Plist="ui_items.plist" />
           </AbstractNodeData>
-          <AbstractNodeData Name="breadDown_purple" Visible="False" ActionTag="473288107" Alpha="0" Tag="37" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="92.8000" RightMargin="33.2000" TopMargin="32.6000" BottomMargin="13.4000" Scale9Width="34" Scale9Height="34" ctype="ImageViewObjectData">
+          <AbstractNodeData Name="breadDown_purple" Visible="False" ActionTag="473288107" Alpha="0" Tag="37" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="98.6000" RightMargin="37.4000" TopMargin="26.4000" BottomMargin="9.6000" Scale9Width="34" Scale9Height="34" ctype="ImageViewObjectData">
             <Size X="34.0000" Y="34.0000" />
             <Children>
               <AbstractNodeData Name="breadDown_purple_text" ActionTag="1593267946" Tag="35" IconVisible="False" HorizontalEdge="BothEdge" VerticalEdge="BothEdge" LeftMargin="34.0000" RightMargin="-37.0000" TopMargin="-2.5000" BottomMargin="-2.5000" LabelText="x1" ctype="TextBMFontObjectData">
@@ -130,7 +143,7 @@
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
             <CColor A="255" R="255" G="255" B="255" />
             <PrePosition X="0.5800" Y="0.3800" />
-            <PreSize X="0.2125" Y="0.4250" />
+            <PreSize X="0.2000" Y="0.4857" />
             <FileData Type="PlistSubImage" Path="I_Crystal_purple.png" Plist="ui_items.plist" />
           </AbstractNodeData>
         </Children>

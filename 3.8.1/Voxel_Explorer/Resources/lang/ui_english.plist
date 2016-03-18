@@ -366,7 +366,7 @@
 	<string>To cost %d silver coins to refining props?</string>
 	<key>BAG_TEXT_WASH_ITEM_GOLD</key>
 	<string>To cost %d gold coins to refining props?</string>
-	<key>BREAD_DOWN_SETTLEMENT_DESC</key>
+	<key>BREAK_DOWN_SETTLEMENT_DESC</key>
 	<string>Received</string>
 	<key>ARCHIVE_RESTART_TIPS_DESC</key>
 	<string>Restart will clear the game record, whether to restart the game?</string>

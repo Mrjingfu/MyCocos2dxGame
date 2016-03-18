@@ -975,7 +975,10 @@ void ItemPopupUI::closePopup()
 void ItemPopupUI::onKeyBackClick()
 {
      PopupUILayer* pLayer = nullptr;
-    if (m_pPopupType==ePopupEquipItem && (PopupUILayerManager::getInstance()->isOpenPopup(ePopupItem,pLayer)|| PopupUILayerManager::getInstance()->isOpenPopup(ePopupItemShopBuy,pLayer)||PopupUILayerManager::getInstance()->isOpenPopup(ePopupItemShopSell,pLayer)))
+    if (m_pPopupType==ePopupEquipItem && (PopupUILayerManager::getInstance()->isOpenPopup(ePopupItem,pLayer)|| PopupUILayerManager::getInstance()->isOpenPopup(ePopupItemShopBuy,pLayer)||
+        PopupUILayerManager::getInstance()->isOpenPopup(ePopupItemShopSell,pLayer) ||
+        PopupUILayerManager::getInstance()->isOpenPopup(ePopupItemBreakDown,pLayer)||
+        PopupUILayerManager::getInstance()->isOpenPopup(ePopupItemSelect,pLayer)))
     {
         pLayer->closePopup();
     }else
