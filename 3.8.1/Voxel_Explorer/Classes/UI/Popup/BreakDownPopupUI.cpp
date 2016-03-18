@@ -90,7 +90,7 @@ bool BreakDownPopupUI::addEvents()
     m_pBtnClose->addClickEventListener(CC_CALLBACK_1(BreakDownPopupUI::onClickClose, this));
     
     m_pEquipTitleText->setFntFile(UtilityHelper::getLocalStringForUi("FONT_NAME"));
-    m_pEquipTitleText->setString(UtilityHelper::getLocalStringForUi("BAG_TEXT_BREADDOWN"));
+    m_pEquipTitleText->setString(UtilityHelper::getLocalStringForUi("BAG_TEXT_BREAKDOWN"));
     
     m_pBagEquipLayer = BagBreakDownLayer::create();
     m_pBagEquipLayer->setAnchorPoint(cocos2d::Vec2::ANCHOR_MIDDLE);

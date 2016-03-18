@@ -121,7 +121,7 @@
 	<key>ITEM_PROP_TYPE_POTIONS</key>
 	<string>Potion</string>
 	<key>ITEM_PROP_TYPE_MATERIAL</key>
-	<string>Material</string>
+	<string>Mineral</string>
 	<key>ITEM_PROP_TYPE_QUEST</key>
 	<string>Quest</string>
 	<key>ITEM_PROP_TYPE_SUNDRIES</key>
@@ -334,8 +334,8 @@
 	<string>REVIVE</string>
 	<key>BTN_TEXT_RANK</key>
 	<string>LEADERBOARD</string>
-	<key>BTN_TEXT_BREADDOWN</key>
-	<string>DISASSEMBLING</string>
+	<key>BTN_TEXT_BREAKDOWN</key>
+	<string>MELTING</string>
 	<key>BTN_TEXT_WASH</key>
 	<string>REFINE</string>
 	<key>BTN_TEXT_SELECT</key>
@@ -343,13 +343,13 @@
 	<key>BTN_TEXT_SAVE_GAME</key>
 	<string>SAVE GAME</string>
 	<key>PAUSE_SAVE_LOADING</key>
-	<string>Saving game now, please don&apos;t exit.</string>
+	<string>Saving game now, please don&apos;t exit......</string>
 	<key>PAUSE_SAVE_OK</key>
 	<string>Game saved!</string>
 	<key>PAUSE_SAVE_FAILE</key>
 	<string>Game save failed!</string>
-	<key>BAG_TEXT_BREADDOWN</key>
-	<string>Disassembling</string>
+	<key>BAG_TEXT_BREAKDOWN</key>
+	<string>MELTING</string>
 	<key>BAG_TEXT_WASH_TIP</key>
 	<string>Please selected prop to refine.</string>
 	<key>BAG_INDENTIFY_FAIL</key>

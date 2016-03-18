@@ -30,7 +30,7 @@ void ItemBreakDownPopupUI::refreshUIView()
     m_pBtnDiscard->setVisible(true);
     m_pBtnDiscard->setTitleText(UtilityHelper::getLocalStringForUi("BTN_TEXT_CANCEL"));
   
-    m_pBtnEquip->setTitleText(UtilityHelper::getLocalStringForUi("BTN_TEXT_BREADDOWN"));
+    m_pBtnEquip->setTitleText(UtilityHelper::getLocalStringForUi("BTN_TEXT_BREAKDOWN"));
    
     m_pBtnEquip->setPosition(cocos2d::Vec2(m_pBottomFrame->getContentSize().width*0.7442,m_pBtnEquip->getPositionY()));
     

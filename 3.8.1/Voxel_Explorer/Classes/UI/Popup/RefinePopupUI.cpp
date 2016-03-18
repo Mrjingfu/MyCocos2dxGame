@@ -139,7 +139,7 @@ bool RefinePopupUI::addEvents()
     m_pEquipTitleText->setString(UtilityHelper::getLocalStringForUi("BTN_TEXT_WASH"));
     
     m_pBtnWash->setTitleFontName(UtilityHelper::getLocalStringForUi("FONT_NAME"));
-    m_pBtnWash->getTitleRenderer()->setScale(0.7);
+    m_pBtnWash->getTitleRenderer()->setScale(0.5);
     m_pBtnWash->setTitleText(UtilityHelper::getLocalStringForUi("BTN_TEXT_WASH"));
 
     
