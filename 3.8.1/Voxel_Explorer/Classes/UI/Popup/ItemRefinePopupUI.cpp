@@ -6,7 +6,7 @@
 //
 //
 
-#include "ItemWashPopupUI.hpp"
+#include "ItemRefinePopupUI.hpp"
 #include "UtilityHelper.h"
 #include "PlayerProperty.hpp"
 #include "AlertPopupUI.hpp"
@@ -17,22 +17,22 @@
 #include "SecondWeaponProperty.hpp"
 #include "NoteUi.h"
 USING_NS_CC;
-ItemWashPopupUI::ItemWashPopupUI()
+ItemRefinePopupUI::ItemRefinePopupUI()
 {
     m_nIsBlankClose     = false;
 }
-ItemWashPopupUI::~ItemWashPopupUI()
+ItemRefinePopupUI::~ItemRefinePopupUI()
 {
     
 }
 
-void ItemWashPopupUI::setOldItemProp( PickableItemProperty* itemProp)
+void ItemRefinePopupUI::setOldItemProp( PickableItemProperty* itemProp)
 {
     m_pOldItemProp = itemProp;
 //    refreshUIView();
 }
 
-void ItemWashPopupUI::refreshUIView()
+void ItemRefinePopupUI::refreshUIView()
 {
     ItemPopupUI::refreshUIView();
     
@@ -42,9 +42,9 @@ void ItemWashPopupUI::refreshUIView()
     m_pBtnEquip->setTitleText(UtilityHelper::getLocalStringForUi("BTN_TEXT_OK"));
    
     
-    m_pBtnEquip->addClickEventListener(CC_CALLBACK_1(ItemWashPopupUI::onClickConfirm, this));
+    m_pBtnEquip->addClickEventListener(CC_CALLBACK_1(ItemRefinePopupUI::onClickConfirm, this));
  }
-void ItemWashPopupUI::IdentifyEquiipFrame()
+void ItemRefinePopupUI::IdentifyEquiipFrame()
 {
     PickableItemProperty* itemprop = getItemIdProperty();
     std::string str;
@@ -650,7 +650,7 @@ void ItemWashPopupUI::IdentifyEquiipFrame()
     
     updateItemPopupSize(addSize);
 }
-void ItemWashPopupUI::updateBottomUi()
+void ItemRefinePopupUI::updateBottomUi()
 {
     //如果当前道具就是装备道具不添加底部UI
     if (PlayerProperty::getInstance()->getEquipedWeaponID() == m_nItemId ||
@@ -664,7 +664,7 @@ void ItemWashPopupUI::updateBottomUi()
     }
         addBottomUI();
 }
-void ItemWashPopupUI::onClickConfirm(Ref* ref)
+void ItemRefinePopupUI::onClickConfirm(Ref* ref)
 {
     CHECK_ACTION(ref);
     clickEffect();
@@ -678,7 +678,7 @@ void ItemWashPopupUI::onClickConfirm(Ref* ref)
     closePopup();
     
 }
-void ItemWashPopupUI::onKeyBackClick()
+void ItemRefinePopupUI::onKeyBackClick()
 {
     
 }

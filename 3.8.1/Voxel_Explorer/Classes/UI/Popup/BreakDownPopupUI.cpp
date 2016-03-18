@@ -6,17 +6,17 @@
 //
 //
 
-#include "BreadDownPopupUI.hpp"
-#include "BagEquipLayer.hpp"
+#include "BreakDownPopupUI.hpp"
+#include "BagBreakDownLayer.hpp"
 #include "UtilityHelper.h"
 #include "TGridView.h"
 #include "BagMangerLayerUI.h"
 #include "PlayerProperty.hpp"
 #include "EventConst.h"
-#include "BreadDownSettlementPopupUI.hpp"
+#include "BreakDownSettlementPopupUI.hpp"
 #include "PopupUILayerManager.h"
 USING_NS_CC;
-BreadDownPopupUI::BreadDownPopupUI()
+BreakDownPopupUI::BreakDownPopupUI()
 {
     m_cActionType       = eNone;
     m_nIsBlankClose     = false;
@@ -26,43 +26,43 @@ BreadDownPopupUI::BreadDownPopupUI()
     m_pBagManagerLayer = nullptr;
     m_bIsCallBack = false;
 }
-BreadDownPopupUI::~BreadDownPopupUI()
+BreakDownPopupUI::~BreakDownPopupUI()
 {
     
 }
-void BreadDownPopupUI::onEnter()
+void BreakDownPopupUI::onEnter()
 {
     PopupUILayer::onEnter();
     scheduleUpdate();
-    EventListenerCustom *listener = EventListenerCustom::create(EVENT_PLAYER_BAG_ITEM_UPDATE, CC_CALLBACK_1(BreadDownPopupUI::onEventPlayerBagItemUpdate,this));
+    EventListenerCustom *listener = EventListenerCustom::create(EVENT_PLAYER_BAG_ITEM_UPDATE, CC_CALLBACK_1(BreakDownPopupUI::onEventPlayerBagItemUpdate,this));
     Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener,this);
     
 }
-void BreadDownPopupUI::onExit()
+void BreakDownPopupUI::onExit()
 {
     unscheduleUpdate();
     Director::getInstance()->getEventDispatcher()->removeEventListenersForTarget(this);
     PopupUILayer::onExit();
 }
-void BreadDownPopupUI::update(float dt)
+void BreakDownPopupUI::update(float dt)
 {
     if (m_bIsCallBack) {
-        m_pBagEquipLayer->registerCloseCallbackD(CC_CALLBACK_1(BreadDownPopupUI::showSucessBreadDownPopup, this));
+        m_pBagEquipLayer->registerCloseCallbackD(CC_CALLBACK_1(BreakDownPopupUI::showSucessBreadDownPopup, this));
         m_bIsCallBack = false;
     }
 }
-void BreadDownPopupUI::onEventPlayerBagItemUpdate(cocos2d::EventCustom *sender)
+void BreakDownPopupUI::onEventPlayerBagItemUpdate(cocos2d::EventCustom *sender)
 {
     refreshUIView();
 }
-bool BreadDownPopupUI::initUi()
+bool BreakDownPopupUI::initUi()
 {
     if (!PopupUILayer::initUi())
         return false;
     return load("breaddownpopupLayer.csb",false);
 }
 
-bool BreadDownPopupUI::addEvents()
+bool BreakDownPopupUI::addEvents()
 {
     cocos2d::ui::Layout* m_equipFrame = dynamic_cast<ui::Layout*>(UtilityHelper::seekNodeByName(m_pRootNode, "equip_bg_frame"));
     if (!m_equipFrame)
@@ -87,12 +87,12 @@ bool BreadDownPopupUI::addEvents()
     if (!m_pBtnClose)
         return false;
     
-    m_pBtnClose->addClickEventListener(CC_CALLBACK_1(BreadDownPopupUI::onClickClose, this));
+    m_pBtnClose->addClickEventListener(CC_CALLBACK_1(BreakDownPopupUI::onClickClose, this));
     
     m_pEquipTitleText->setFntFile(UtilityHelper::getLocalStringForUi("FONT_NAME"));
     m_pEquipTitleText->setString(UtilityHelper::getLocalStringForUi("BAG_TEXT_BREADDOWN"));
     
-    m_pBagEquipLayer = BagEquipLayer::create();
+    m_pBagEquipLayer = BagBreakDownLayer::create();
     m_pBagEquipLayer->setAnchorPoint(cocos2d::Vec2::ANCHOR_MIDDLE);
     m_pBagEquipLayer->setPosition(cocos2d::Vec2(m_equipFrame->getContentSize().width*0.5,m_equipFrame->getContentSize().height*0.5));
     m_pBagEquipLayer->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
@@ -127,28 +127,28 @@ bool BreadDownPopupUI::addEvents()
     m_pBagManagerLayer->setZOrder(m_pMaterialGridView->getItems().size());
 
     
-    m_pBagEquipLayer->registerCloseCallbackD(CC_CALLBACK_1(BreadDownPopupUI::showSucessBreadDownPopup, this));
+    m_pBagEquipLayer->registerCloseCallbackD(CC_CALLBACK_1(BreakDownPopupUI::showSucessBreadDownPopup, this));
     
     
     refreshUIView();
     
     return true;
 }
-void BreadDownPopupUI::refreshUIView()
+void BreakDownPopupUI::refreshUIView()
 {
     if (m_pBagEquipLayer) {
         m_pBagEquipLayer->refreshUIView();
     }
     updateMaterialDataItems();
 }
-void BreadDownPopupUI::onClickClose(Ref* ref)
+void BreakDownPopupUI::onClickClose(Ref* ref)
 {
     CHECK_ACTION(ref);
     clickEffect();
     CCLOG("onClickClose");
     closePopup();
 }
-void BreadDownPopupUI::updateMaterialDataItems()
+void BreakDownPopupUI::updateMaterialDataItems()
 {
     if (!m_pMaterialGridView)
         return;
@@ -192,13 +192,13 @@ void BreadDownPopupUI::updateMaterialDataItems()
     }
     
 }
-void BreadDownPopupUI::showSucessBreadDownPopup( void* datas )
+void BreakDownPopupUI::showSucessBreadDownPopup( void* datas )
 {
     m_bIsCallBack = true;
     if (datas) {
         std::map<PickableItem::PickableItemType,CChaosNumber>* reslutDatas = static_cast<std::map<PickableItem::PickableItemType,CChaosNumber>*>(datas);
         if (!reslutDatas->empty()) {
-            BreadDownSettlementPopupUI* popup = static_cast<BreadDownSettlementPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupBreadDownSettlement));
+            BreakDownSettlementPopupUI* popup = static_cast<BreakDownSettlementPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupBreakDownSettlement));
             if (popup) {
                 popup->updateUIView(reslutDatas);
             }

@@ -278,14 +278,14 @@
 		D6B0611B1803AB670077942B /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6B0611A1803AB670077942B /* CoreMotion.framework */; };
 		EC00DD5F1BD665A6009BC378 /* MenuScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC00DD5D1BD665A6009BC378 /* MenuScene.cpp */; };
 		EC00DD601BD665A6009BC378 /* MenuScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC00DD5D1BD665A6009BC378 /* MenuScene.cpp */; };
-		EC12959E1C97A3DF005C7443 /* BagEquipLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC12959C1C97A3DF005C7443 /* BagEquipLayer.cpp */; };
-		EC12959F1C97A3DF005C7443 /* BagEquipLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC12959C1C97A3DF005C7443 /* BagEquipLayer.cpp */; };
-		EC1295A41C97AB6D005C7443 /* BreadDownPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC1295A21C97AB6D005C7443 /* BreadDownPopupUI.cpp */; };
-		EC1295A51C97AB6D005C7443 /* BreadDownPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC1295A21C97AB6D005C7443 /* BreadDownPopupUI.cpp */; };
-		EC1295A81C97F868005C7443 /* WashPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC1295A61C97F868005C7443 /* WashPopupUI.cpp */; };
-		EC1295A91C97F868005C7443 /* WashPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC1295A61C97F868005C7443 /* WashPopupUI.cpp */; };
-		EC1295AC1C9801C5005C7443 /* BagWashLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC1295AA1C9801C5005C7443 /* BagWashLayer.cpp */; };
-		EC1295AD1C9801C5005C7443 /* BagWashLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC1295AA1C9801C5005C7443 /* BagWashLayer.cpp */; };
+		EC12959E1C97A3DF005C7443 /* BagBreakDownLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC12959C1C97A3DF005C7443 /* BagBreakDownLayer.cpp */; };
+		EC12959F1C97A3DF005C7443 /* BagBreakDownLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC12959C1C97A3DF005C7443 /* BagBreakDownLayer.cpp */; };
+		EC1295A41C97AB6D005C7443 /* BreakDownPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC1295A21C97AB6D005C7443 /* BreakDownPopupUI.cpp */; };
+		EC1295A51C97AB6D005C7443 /* BreakDownPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC1295A21C97AB6D005C7443 /* BreakDownPopupUI.cpp */; };
+		EC1295A81C97F868005C7443 /* RefinePopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC1295A61C97F868005C7443 /* RefinePopupUI.cpp */; };
+		EC1295A91C97F868005C7443 /* RefinePopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC1295A61C97F868005C7443 /* RefinePopupUI.cpp */; };
+		EC1295AC1C9801C5005C7443 /* BagRefineLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC1295AA1C9801C5005C7443 /* BagRefineLayer.cpp */; };
+		EC1295AD1C9801C5005C7443 /* BagRefineLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC1295AA1C9801C5005C7443 /* BagRefineLayer.cpp */; };
 		EC14B22D1C4CE1B500323905 /* AchieveMangerEnLayerUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC14B22B1C4CE1B500323905 /* AchieveMangerEnLayerUI.cpp */; };
 		EC14B22E1C4CE1B500323905 /* AchieveMangerEnLayerUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC14B22B1C4CE1B500323905 /* AchieveMangerEnLayerUI.cpp */; };
 		EC14B2331C4D05E800323905 /* AchieveEnItemUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC14B2311C4D05E800323905 /* AchieveEnItemUI.cpp */; };
@@ -400,8 +400,8 @@
 		EC795F681C0DA57C0083829B /* NpcPropLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC795F651C0DA57C0083829B /* NpcPropLayer.cpp */; };
 		EC7F92D31BCF9ED200B26C6C /* HueSprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC7F92D11BCF9ED200B26C6C /* HueSprite.cpp */; };
 		EC7F92D41BCF9ED200B26C6C /* HueSprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC7F92D11BCF9ED200B26C6C /* HueSprite.cpp */; };
-		EC83D6B31C9A5E34008334FD /* BreadDownSettlementPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC83D6B11C9A5E34008334FD /* BreadDownSettlementPopupUI.cpp */; };
-		EC83D6B41C9A5E34008334FD /* BreadDownSettlementPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC83D6B11C9A5E34008334FD /* BreadDownSettlementPopupUI.cpp */; };
+		EC83D6B31C9A5E34008334FD /* BreakDownSettlementPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC83D6B11C9A5E34008334FD /* BreakDownSettlementPopupUI.cpp */; };
+		EC83D6B41C9A5E34008334FD /* BreakDownSettlementPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC83D6B11C9A5E34008334FD /* BreakDownSettlementPopupUI.cpp */; };
 		EC8A27DA1C32629C00B2C352 /* AchieveItemUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC8A27D81C32629C00B2C352 /* AchieveItemUI.cpp */; };
 		EC8A27DB1C32629C00B2C352 /* AchieveItemUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC8A27D81C32629C00B2C352 /* AchieveItemUI.cpp */; };
 		EC8A27E01C32670800B2C352 /* AchieveItemLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC8A27DE1C32670800B2C352 /* AchieveItemLayer.cpp */; };
@@ -424,8 +424,8 @@
 		ECDCAFEA1C72B86A00B911F0 /* RegionButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECDCAFE71C72B86A00B911F0 /* RegionButton.cpp */; };
 		ECDCAFEF1C72BB0F00B911F0 /* RegionImageView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECDCAFED1C72BB0F00B911F0 /* RegionImageView.cpp */; };
 		ECDCAFF01C72BB0F00B911F0 /* RegionImageView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECDCAFED1C72BB0F00B911F0 /* RegionImageView.cpp */; };
-		ECE1DBE11C9690100068B856 /* ItemBreadDownPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECE1DBE01C9690100068B856 /* ItemBreadDownPopupUI.cpp */; };
-		ECE1DBE21C9690100068B856 /* ItemBreadDownPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECE1DBE01C9690100068B856 /* ItemBreadDownPopupUI.cpp */; };
+		ECE1DBE11C9690100068B856 /* ItemBreakDownPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECE1DBE01C9690100068B856 /* ItemBreakDownPopupUI.cpp */; };
+		ECE1DBE21C9690100068B856 /* ItemBreakDownPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECE1DBE01C9690100068B856 /* ItemBreakDownPopupUI.cpp */; };
 		ECEA4E1E1C0EC69800ED790F /* ItemShopBuyPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECEA4E1A1C0EC69800ED790F /* ItemShopBuyPopupUI.cpp */; };
 		ECEA4E1F1C0EC69800ED790F /* ItemShopBuyPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECEA4E1A1C0EC69800ED790F /* ItemShopBuyPopupUI.cpp */; };
 		ECEA4E201C0EC69800ED790F /* ItemShopSellPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECEA4E1C1C0EC69800ED790F /* ItemShopSellPopupUI.cpp */; };
@@ -434,8 +434,8 @@
 		ECEA4E251C0EEABE00ED790F /* ItemMoneyLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECEA4E221C0EEABE00ED790F /* ItemMoneyLayer.cpp */; };
 		ECFAAAAC1C98FDE100BF931D /* ItemSelectPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECFAAAAA1C98FDE100BF931D /* ItemSelectPopupUI.cpp */; };
 		ECFAAAAD1C98FDE100BF931D /* ItemSelectPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECFAAAAA1C98FDE100BF931D /* ItemSelectPopupUI.cpp */; };
-		ECFAAAB21C9910A200BF931D /* ItemWashPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECFAAAB01C9910A200BF931D /* ItemWashPopupUI.cpp */; };
-		ECFAAAB31C9910A200BF931D /* ItemWashPopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECFAAAB01C9910A200BF931D /* ItemWashPopupUI.cpp */; };
+		ECFAAAB21C9910A200BF931D /* ItemRefinePopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECFAAAB01C9910A200BF931D /* ItemRefinePopupUI.cpp */; };
+		ECFAAAB31C9910A200BF931D /* ItemRefinePopupUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECFAAAB01C9910A200BF931D /* ItemRefinePopupUI.cpp */; };
 		ECFBEF3E1C8A6B0300B60720 /* TaskProperty.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECFBEF3C1C8A6B0300B60720 /* TaskProperty.cpp */; };
 		ECFBEF3F1C8A6B0300B60720 /* TaskProperty.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECFBEF3C1C8A6B0300B60720 /* TaskProperty.cpp */; };
 		ED545A7C1B68A1F400C3958E /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ED545A7B1B68A1F400C3958E /* libiconv.dylib */; };
@@ -740,14 +740,14 @@
 		D6B0611A1803AB670077942B /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/CoreMotion.framework; sourceTree = DEVELOPER_DIR; };
 		EC00DD5D1BD665A6009BC378 /* MenuScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MenuScene.cpp; sourceTree = "<group>"; };
 		EC00DD5E1BD665A6009BC378 /* MenuScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuScene.h; sourceTree = "<group>"; };
-		EC12959C1C97A3DF005C7443 /* BagEquipLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BagEquipLayer.cpp; sourceTree = "<group>"; };
-		EC12959D1C97A3DF005C7443 /* BagEquipLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BagEquipLayer.hpp; sourceTree = "<group>"; };
-		EC1295A21C97AB6D005C7443 /* BreadDownPopupUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BreadDownPopupUI.cpp; sourceTree = "<group>"; };
-		EC1295A31C97AB6D005C7443 /* BreadDownPopupUI.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BreadDownPopupUI.hpp; sourceTree = "<group>"; };
-		EC1295A61C97F868005C7443 /* WashPopupUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WashPopupUI.cpp; sourceTree = "<group>"; };
-		EC1295A71C97F868005C7443 /* WashPopupUI.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = WashPopupUI.hpp; sourceTree = "<group>"; };
-		EC1295AA1C9801C5005C7443 /* BagWashLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BagWashLayer.cpp; sourceTree = "<group>"; };
-		EC1295AB1C9801C5005C7443 /* BagWashLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BagWashLayer.hpp; sourceTree = "<group>"; };
+		EC12959C1C97A3DF005C7443 /* BagBreakDownLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BagBreakDownLayer.cpp; sourceTree = "<group>"; };
+		EC12959D1C97A3DF005C7443 /* BagBreakDownLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BagBreakDownLayer.hpp; sourceTree = "<group>"; };
+		EC1295A21C97AB6D005C7443 /* BreakDownPopupUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BreakDownPopupUI.cpp; sourceTree = "<group>"; };
+		EC1295A31C97AB6D005C7443 /* BreakDownPopupUI.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BreakDownPopupUI.hpp; sourceTree = "<group>"; };
+		EC1295A61C97F868005C7443 /* RefinePopupUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RefinePopupUI.cpp; sourceTree = "<group>"; };
+		EC1295A71C97F868005C7443 /* RefinePopupUI.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = RefinePopupUI.hpp; sourceTree = "<group>"; };
+		EC1295AA1C9801C5005C7443 /* BagRefineLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BagRefineLayer.cpp; sourceTree = "<group>"; };
+		EC1295AB1C9801C5005C7443 /* BagRefineLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BagRefineLayer.hpp; sourceTree = "<group>"; };
 		EC14B22B1C4CE1B500323905 /* AchieveMangerEnLayerUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AchieveMangerEnLayerUI.cpp; sourceTree = "<group>"; };
 		EC14B22C1C4CE1B500323905 /* AchieveMangerEnLayerUI.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = AchieveMangerEnLayerUI.hpp; sourceTree = "<group>"; };
 		EC14B2311C4D05E800323905 /* AchieveEnItemUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AchieveEnItemUI.cpp; sourceTree = "<group>"; };
@@ -862,8 +862,8 @@
 		EC795F661C0DA57C0083829B /* NpcPropLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = NpcPropLayer.hpp; sourceTree = "<group>"; };
 		EC7F92D11BCF9ED200B26C6C /* HueSprite.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HueSprite.cpp; sourceTree = "<group>"; };
 		EC7F92D21BCF9ED200B26C6C /* HueSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HueSprite.h; sourceTree = "<group>"; };
-		EC83D6B11C9A5E34008334FD /* BreadDownSettlementPopupUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BreadDownSettlementPopupUI.cpp; sourceTree = "<group>"; };
-		EC83D6B21C9A5E34008334FD /* BreadDownSettlementPopupUI.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BreadDownSettlementPopupUI.hpp; sourceTree = "<group>"; };
+		EC83D6B11C9A5E34008334FD /* BreakDownSettlementPopupUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BreakDownSettlementPopupUI.cpp; sourceTree = "<group>"; };
+		EC83D6B21C9A5E34008334FD /* BreakDownSettlementPopupUI.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BreakDownSettlementPopupUI.hpp; sourceTree = "<group>"; };
 		EC8A27D81C32629C00B2C352 /* AchieveItemUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AchieveItemUI.cpp; sourceTree = "<group>"; };
 		EC8A27D91C32629C00B2C352 /* AchieveItemUI.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = AchieveItemUI.hpp; sourceTree = "<group>"; };
 		EC8A27DE1C32670800B2C352 /* AchieveItemLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AchieveItemLayer.cpp; sourceTree = "<group>"; };
@@ -885,8 +885,8 @@
 		ECDCAFE81C72B86A00B911F0 /* RegionButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegionButton.h; sourceTree = "<group>"; };
 		ECDCAFED1C72BB0F00B911F0 /* RegionImageView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RegionImageView.cpp; sourceTree = "<group>"; };
 		ECDCAFEE1C72BB0F00B911F0 /* RegionImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegionImageView.h; sourceTree = "<group>"; };
-		ECE1DBDF1C9690100068B856 /* ItemBreadDownPopupUI.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ItemBreadDownPopupUI.hpp; sourceTree = "<group>"; };
-		ECE1DBE01C9690100068B856 /* ItemBreadDownPopupUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ItemBreadDownPopupUI.cpp; sourceTree = "<group>"; };
+		ECE1DBDF1C9690100068B856 /* ItemBreakDownPopupUI.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ItemBreakDownPopupUI.hpp; sourceTree = "<group>"; };
+		ECE1DBE01C9690100068B856 /* ItemBreakDownPopupUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ItemBreakDownPopupUI.cpp; sourceTree = "<group>"; };
 		ECEA4E1A1C0EC69800ED790F /* ItemShopBuyPopupUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ItemShopBuyPopupUI.cpp; sourceTree = "<group>"; };
 		ECEA4E1B1C0EC69800ED790F /* ItemShopBuyPopupUI.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ItemShopBuyPopupUI.hpp; sourceTree = "<group>"; };
 		ECEA4E1C1C0EC69800ED790F /* ItemShopSellPopupUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ItemShopSellPopupUI.cpp; sourceTree = "<group>"; };
@@ -895,8 +895,8 @@
 		ECEA4E231C0EEABE00ED790F /* ItemMoneyLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ItemMoneyLayer.hpp; sourceTree = "<group>"; };
 		ECFAAAAA1C98FDE100BF931D /* ItemSelectPopupUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ItemSelectPopupUI.cpp; sourceTree = "<group>"; };
 		ECFAAAAB1C98FDE100BF931D /* ItemSelectPopupUI.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ItemSelectPopupUI.hpp; sourceTree = "<group>"; };
-		ECFAAAB01C9910A200BF931D /* ItemWashPopupUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ItemWashPopupUI.cpp; sourceTree = "<group>"; };
-		ECFAAAB11C9910A200BF931D /* ItemWashPopupUI.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ItemWashPopupUI.hpp; sourceTree = "<group>"; };
+		ECFAAAB01C9910A200BF931D /* ItemRefinePopupUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ItemRefinePopupUI.cpp; sourceTree = "<group>"; };
+		ECFAAAB11C9910A200BF931D /* ItemRefinePopupUI.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ItemRefinePopupUI.hpp; sourceTree = "<group>"; };
 		ECFBEF3C1C8A6B0300B60720 /* TaskProperty.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TaskProperty.cpp; sourceTree = "<group>"; };
 		ECFBEF3D1C8A6B0300B60720 /* TaskProperty.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TaskProperty.hpp; sourceTree = "<group>"; };
 		ED545A7B1B68A1F400C3958E /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.4.sdk/usr/lib/libiconv.dylib; sourceTree = DEVELOPER_DIR; };
@@ -1551,10 +1551,10 @@
 				EC3CC94A1C088F4F00F8CFC8 /* MonsterPropLayer.hpp */,
 				EC3CC93D1C088F4F00F8CFC8 /* BagLayer.cpp */,
 				EC3CC93E1C088F4F00F8CFC8 /* BagLayer.h */,
-				EC1295AA1C9801C5005C7443 /* BagWashLayer.cpp */,
-				EC1295AB1C9801C5005C7443 /* BagWashLayer.hpp */,
-				EC12959C1C97A3DF005C7443 /* BagEquipLayer.cpp */,
-				EC12959D1C97A3DF005C7443 /* BagEquipLayer.hpp */,
+				EC1295AA1C9801C5005C7443 /* BagRefineLayer.cpp */,
+				EC1295AB1C9801C5005C7443 /* BagRefineLayer.hpp */,
+				EC12959C1C97A3DF005C7443 /* BagBreakDownLayer.cpp */,
+				EC12959D1C97A3DF005C7443 /* BagBreakDownLayer.hpp */,
 				EC3CC93F1C088F4F00F8CFC8 /* BagMangerLayerUI.cpp */,
 				EC3CC9401C088F4F00F8CFC8 /* BagMangerLayerUI.h */,
 				EC3CC9411C088F4F00F8CFC8 /* BagShopLayer.cpp */,
@@ -1580,18 +1580,18 @@
 		EC3CC9531C088F4F00F8CFC8 /* Popup */ = {
 			isa = PBXGroup;
 			children = (
-				EC83D6B11C9A5E34008334FD /* BreadDownSettlementPopupUI.cpp */,
-				EC83D6B21C9A5E34008334FD /* BreadDownSettlementPopupUI.hpp */,
-				ECFAAAB01C9910A200BF931D /* ItemWashPopupUI.cpp */,
-				ECFAAAB11C9910A200BF931D /* ItemWashPopupUI.hpp */,
+				EC83D6B11C9A5E34008334FD /* BreakDownSettlementPopupUI.cpp */,
+				EC83D6B21C9A5E34008334FD /* BreakDownSettlementPopupUI.hpp */,
+				ECFAAAB01C9910A200BF931D /* ItemRefinePopupUI.cpp */,
+				ECFAAAB11C9910A200BF931D /* ItemRefinePopupUI.hpp */,
 				ECFAAAAA1C98FDE100BF931D /* ItemSelectPopupUI.cpp */,
 				ECFAAAAB1C98FDE100BF931D /* ItemSelectPopupUI.hpp */,
-				ECE1DBE01C9690100068B856 /* ItemBreadDownPopupUI.cpp */,
-				ECE1DBDF1C9690100068B856 /* ItemBreadDownPopupUI.hpp */,
-				EC1295A21C97AB6D005C7443 /* BreadDownPopupUI.cpp */,
-				EC1295A31C97AB6D005C7443 /* BreadDownPopupUI.hpp */,
-				EC1295A61C97F868005C7443 /* WashPopupUI.cpp */,
-				EC1295A71C97F868005C7443 /* WashPopupUI.hpp */,
+				ECE1DBE01C9690100068B856 /* ItemBreakDownPopupUI.cpp */,
+				ECE1DBDF1C9690100068B856 /* ItemBreakDownPopupUI.hpp */,
+				EC1295A21C97AB6D005C7443 /* BreakDownPopupUI.cpp */,
+				EC1295A31C97AB6D005C7443 /* BreakDownPopupUI.hpp */,
+				EC1295A61C97F868005C7443 /* RefinePopupUI.cpp */,
+				EC1295A71C97F868005C7443 /* RefinePopupUI.hpp */,
 				ECBA4FA71C3E51CC004E9188 /* DiscardPopupUI.cpp */,
 				ECBA4FA81C3E51CC004E9188 /* DiscardPopupUI.hpp */,
 				ECBA4FA11C3E07E7004E9188 /* RandomMsgPopupUI.cpp */,
@@ -1919,7 +1919,7 @@
 				EC3CC99D1C088F4F00F8CFC8 /* GameUILayer.cpp in Sources */,
 				EC6C4BD91C43B0DB00342D8E /* LoadingLayer.cpp in Sources */,
 				EC3CC98B1C088F4F00F8CFC8 /* ItemPopupUI.cpp in Sources */,
-				EC1295A41C97AB6D005C7443 /* BreadDownPopupUI.cpp in Sources */,
+				EC1295A41C97AB6D005C7443 /* BreakDownPopupUI.cpp in Sources */,
 				5505452E1BFF1092006B4500 /* StandardPortal.cpp in Sources */,
 				55F81CAC1BDB69FB002EC075 /* PickableItemProperty.cpp in Sources */,
 				551E93C31BD51291009F788F /* LevelResourceManager.cpp in Sources */,
@@ -1927,7 +1927,7 @@
 				554D453C1C4A4A0E00903FF1 /* GameCenterController.mm in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				EC602AB21BF47A4900484D42 /* AchieveProperty.cpp in Sources */,
-				ECE1DBE11C9690100068B856 /* ItemBreadDownPopupUI.cpp in Sources */,
+				ECE1DBE11C9690100068B856 /* ItemBreakDownPopupUI.cpp in Sources */,
 				551E93EE1BD512D3009F788F /* FileStream.cpp in Sources */,
 				EC3CC98F1C088F4F00F8CFC8 /* PausePopupUI.cpp in Sources */,
 				EC602AAC1BF46A2D00484D42 /* AchievementManager.cpp in Sources */,
@@ -1972,8 +1972,8 @@
 				EC795F421C0D42340083829B /* MagicShopPopupUI.cpp in Sources */,
 				ECAD01691C8FB507005AE22C /* ConfigManager.cpp in Sources */,
 				ECBA4FA31C3E07E7004E9188 /* RandomMsgPopupUI.cpp in Sources */,
-				EC83D6B31C9A5E34008334FD /* BreadDownSettlementPopupUI.cpp in Sources */,
-				EC1295A81C97F868005C7443 /* WashPopupUI.cpp in Sources */,
+				EC83D6B31C9A5E34008334FD /* BreakDownSettlementPopupUI.cpp in Sources */,
+				EC1295A81C97F868005C7443 /* RefinePopupUI.cpp in Sources */,
 				EC795F4F1C0D4AB20083829B /* TaskPopupUI.cpp in Sources */,
 				ECBA4FA91C3E51CC004E9188 /* DiscardPopupUI.cpp in Sources */,
 				EC3CC9811C088F4F00F8CFC8 /* PromptLayer.cpp in Sources */,
@@ -2011,11 +2011,11 @@
 				554F00EE1BDA210000F4DF8E /* BaseBoss.cpp in Sources */,
 				EC3CC9851C088F4F00F8CFC8 /* TGridView.cpp in Sources */,
 				55407D571BD5E2BC0000C41C /* GameFormula.cpp in Sources */,
-				EC1295AC1C9801C5005C7443 /* BagWashLayer.cpp in Sources */,
+				EC1295AC1C9801C5005C7443 /* BagRefineLayer.cpp in Sources */,
 				55338ADA1BD8920F00EA316F /* SlimeKing.cpp in Sources */,
 				EC6716451BCE7F2C00C81CFC /* LogoScene.cpp in Sources */,
 				EC795F631C0D4B6B0083829B /* NursePopupUI.cpp in Sources */,
-				ECFAAAB21C9910A200BF931D /* ItemWashPopupUI.cpp in Sources */,
+				ECFAAAB21C9910A200BF931D /* ItemRefinePopupUI.cpp in Sources */,
 				ECFBEF3E1C8A6B0300B60720 /* TaskProperty.cpp in Sources */,
 				EC3CC97D1C088F4F00F8CFC8 /* MonsterPropLayer.cpp in Sources */,
 				551E93A91BD51282009F788F /* AlisaMethod.cpp in Sources */,
@@ -2048,7 +2048,7 @@
 				554FE61C1C2A735800419AE1 /* RandomEventMgr.cpp in Sources */,
 				559925221C44E561001D8EEF /* PlayerMagicArrowBullet.cpp in Sources */,
 				551E93E81BD512D3009F788F /* sha1.cpp in Sources */,
-				EC12959E1C97A3DF005C7443 /* BagEquipLayer.cpp in Sources */,
+				EC12959E1C97A3DF005C7443 /* BagBreakDownLayer.cpp in Sources */,
 				553BC5011BCDF457003D907A /* Actor.cpp in Sources */,
 				EC3CC9791C088F4F00F8CFC8 /* GameInfoLayer.cpp in Sources */,
 				EC795F491C0D4A4B0083829B /* WeaponShopPopupUI.cpp in Sources */,
@@ -2080,7 +2080,7 @@
 				EC795F681C0DA57C0083829B /* NpcPropLayer.cpp in Sources */,
 				553BC50E1BCE5191003D907A /* StandardDoor.cpp in Sources */,
 				55EC95861BC6ABBA0008D1D7 /* TerrainTile.cpp in Sources */,
-				EC83D6B41C9A5E34008334FD /* BreadDownSettlementPopupUI.cpp in Sources */,
+				EC83D6B41C9A5E34008334FD /* BreakDownSettlementPopupUI.cpp in Sources */,
 				EC795F4C1C0D4A4B0083829B /* ShopPopupUI.cpp in Sources */,
 				EC6625491C3375A900166131 /* SuperAnimCore.cpp in Sources */,
 				EC3CC9901C088F4F00F8CFC8 /* PausePopupUI.cpp in Sources */,
@@ -2108,7 +2108,7 @@
 				55338AE31BD8926A00EA316F /* SkeletonKing.cpp in Sources */,
 				55338ADB1BD8921000EA316F /* SlimeKing.cpp in Sources */,
 				EC30DA491C55B433009A3EF8 /* TestScene.cpp in Sources */,
-				EC1295A51C97AB6D005C7443 /* BreadDownPopupUI.cpp in Sources */,
+				EC1295A51C97AB6D005C7443 /* BreakDownPopupUI.cpp in Sources */,
 				EC602AB31BF47A4900484D42 /* AchieveProperty.cpp in Sources */,
 				551651C61BD73102004ED7F6 /* RandomDungeon.cpp in Sources */,
 				55338AD01BD8781E00EA316F /* BaseMonster.cpp in Sources */,
@@ -2122,7 +2122,7 @@
 				55F116D91C04452300A6C191 /* MineLevel.cpp in Sources */,
 				551E93EB1BD512D3009F788F /* xor.cpp in Sources */,
 				EC3CC9761C088F4F00F8CFC8 /* BagShopLayer.cpp in Sources */,
-				EC1295AD1C9801C5005C7443 /* BagWashLayer.cpp in Sources */,
+				EC1295AD1C9801C5005C7443 /* BagRefineLayer.cpp in Sources */,
 				ECBA4FA41C3E07E7004E9188 /* RandomMsgPopupUI.cpp in Sources */,
 				55F81CC91BDB928F002EC075 /* MaterialProperty.cpp in Sources */,
 				55F81CD51BDB92ED002EC075 /* SundriesProperty.cpp in Sources */,
@@ -2164,7 +2164,7 @@
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
 				551E93F31BD512D3009F788F /* Stream.cpp in Sources */,
 				551E93C41BD51291009F788F /* LevelResourceManager.cpp in Sources */,
-				EC12959F1C97A3DF005C7443 /* BagEquipLayer.cpp in Sources */,
+				EC12959F1C97A3DF005C7443 /* BagBreakDownLayer.cpp in Sources */,
 				5586C7B91C0FDD7400DFA588 /* TombBossLevel.cpp in Sources */,
 				555B0D1E1BC51A2C0055FB6D /* Graph.cpp in Sources */,
 				EC3CC9861C088F4F00F8CFC8 /* TGridView.cpp in Sources */,
@@ -2195,7 +2195,7 @@
 				55A2CFF31C3906A600E591AA /* BaseBullet.cpp in Sources */,
 				EC14B22E1C4CE1B500323905 /* AchieveMangerEnLayerUI.cpp in Sources */,
 				558242FD1C43B679004F3092 /* RibbonTrail.cpp in Sources */,
-				ECFAAAB31C9910A200BF931D /* ItemWashPopupUI.cpp in Sources */,
+				ECFAAAB31C9910A200BF931D /* ItemRefinePopupUI.cpp in Sources */,
 				551E93ED1BD512D3009F788F /* XXTEA.cpp in Sources */,
 				551E93E71BD512D3009F788F /* md5.c in Sources */,
 				5586C7A71C0FDD1500DFA588 /* PrisonBossLevel.cpp in Sources */,
@@ -2217,13 +2217,13 @@
 				EC25C3CB1C1977DF00B4340D /* InformationPopupUI.cpp in Sources */,
 				550C32ED1BDDE8740015124E /* SecondWeaponProperty.cpp in Sources */,
 				55F81CBD1BDB923A002EC075 /* MagicOrnamentProperty.cpp in Sources */,
-				ECE1DBE21C9690100068B856 /* ItemBreadDownPopupUI.cpp in Sources */,
+				ECE1DBE21C9690100068B856 /* ItemBreakDownPopupUI.cpp in Sources */,
 				551E93B01BD51282009F788F /* NativeBridge.mm in Sources */,
 				55F116D11C0444EF00A6C191 /* PrisonLevel.cpp in Sources */,
 				551E93E91BD512D3009F788F /* sha1.cpp in Sources */,
 				EC711F401C35489300ABB374 /* CircleMoveAct.cpp in Sources */,
 				ECAD016A1C8FB507005AE22C /* ConfigManager.cpp in Sources */,
-				EC1295A91C97F868005C7443 /* WashPopupUI.cpp in Sources */,
+				EC1295A91C97F868005C7443 /* RefinePopupUI.cpp in Sources */,
 				EC602AAD1BF46A2D00484D42 /* AchievementManager.cpp in Sources */,
 				EC795F5C1C0D4B150083829B /* OldManPopupUI.cpp in Sources */,
 				EC6C4BD41C43A58800342D8E /* ArchiveLayer.cpp in Sources */,

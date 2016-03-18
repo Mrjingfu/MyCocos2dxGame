@@ -32,12 +32,12 @@
 #include "RandomMsgPopupUI.h"
 #include "DiscardPopupUI.hpp"
 #include "LangugaePopup.hpp"
-#include "ItemBreadDownPopupUI.hpp"
-#include "BreadDownPopupUI.hpp"
-#include "WashPopupUI.hpp"
+#include "ItemBreakDownPopupUI.hpp"
+#include "BreakDownPopupUI.hpp"
+#include "RefinePopupUI.hpp"
 #include "ItemSelectPopupUI.hpp"
-#include "ItemWashPopupUI.hpp"
-#include "BreadDownSettlementPopupUI.hpp"
+#include "ItemRefinePopupUI.hpp"
+#include "BreakDownSettlementPopupUI.hpp"
 PopupUILayerManager::PopupUILayerManager()
 {
     m_pParentLayer = nullptr;
@@ -188,23 +188,23 @@ PopupUILayer* PopupUILayerManager::initPopUp(ePopupType type)
         case ePopupLangugae:
             popupLayer = LangugaePopup::create();
             break;
-        case ePopupItemBreadDown:
-            popupLayer = ItemBreadDownPopupUI::create();
+        case ePopupItemBreakDown:
+            popupLayer = ItemBreakDownPopupUI::create();
             break;
-        case ePopupBagBreadDown:
-            popupLayer = BreadDownPopupUI::create();
+        case ePopupBagBreakDown:
+            popupLayer = BreakDownPopupUI::create();
             break;
-        case ePopupWash:
-            popupLayer = WashPopupUI::create();
+        case ePopupRefine:
+            popupLayer = RefinePopupUI::create();
             break;
         case ePopupItemSelect:
             popupLayer = ItemSelectPopupUI::create();
             break;
-        case ePopupItemWash:
-            popupLayer = ItemWashPopupUI::create();
+        case ePopupItemRefine:
+            popupLayer = ItemRefinePopupUI::create();
             break;
-        case ePopupBreadDownSettlement:
-            popupLayer = BreadDownSettlementPopupUI::create();
+        case ePopupBreakDownSettlement:
+            popupLayer = BreakDownSettlementPopupUI::create();
             break;
         default:
             break;

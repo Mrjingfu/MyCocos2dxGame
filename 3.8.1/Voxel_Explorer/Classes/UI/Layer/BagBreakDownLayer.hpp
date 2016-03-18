@@ -6,21 +6,21 @@
 //
 //
 
-#ifndef BagEquipLayer_hpp
-#define BagEquipLayer_hpp
+#ifndef BagBreakDownLayer_hpp
+#define BagBreakDownLayer_hpp
 
 #include "BagLayer.h"
 
-class  BagEquipLayer:public BagLayer{
+class  BagBreakDownLayer:public BagLayer{
 protected:
-    BagEquipLayer();
+    BagBreakDownLayer();
 public:
-    CREATE_FUNC(BagEquipLayer);
-    ~BagEquipLayer();
+    CREATE_FUNC(BagBreakDownLayer);
+    ~BagBreakDownLayer();
     virtual bool init() override;
 protected:
     virtual std::vector<PickableItemProperty*> getItems() override;
     virtual void bagItemOpe(int itemId) override;
 };
 
-#endif /* BagEquipLayer_hpp */
+#endif /* BagBreakDownLayer_hpp */

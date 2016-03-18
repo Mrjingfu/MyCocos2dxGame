@@ -6,26 +6,26 @@
 //
 //
 
-#include "BreadDownSettlementPopupUI.hpp"
+#include "BreakDownSettlementPopupUI.hpp"
 #include "UtilityHelper.h"
 USING_NS_CC;
-BreadDownSettlementPopupUI::BreadDownSettlementPopupUI()
+BreakDownSettlementPopupUI::BreakDownSettlementPopupUI()
 {
 
     m_pMaterialFrame    = nullptr;
     m_pBtnConfirm       = nullptr;
 }
-BreadDownSettlementPopupUI::~BreadDownSettlementPopupUI()
+BreakDownSettlementPopupUI::~BreakDownSettlementPopupUI()
 {
     
 }
-bool BreadDownSettlementPopupUI::initUi()
+bool BreakDownSettlementPopupUI::initUi()
 {
     if (!PopupUILayer::initUi())
         return false;
     return load("breadkDownbalance.csb",false);
 }
-cocos2d::ui::Layout* BreadDownSettlementPopupUI::createBreadDownItem(std::string icon,CChaosNumber count )
+cocos2d::ui::Layout* BreakDownSettlementPopupUI::createBreakDownItem(std::string icon,CChaosNumber count )
 {
     cocos2d::Node*  m_pBottomNode = cocos2d::CSLoader::createNode("breadkDownbalanceItem.csb");
     if (!m_pBottomNode)
@@ -59,7 +59,7 @@ cocos2d::ui::Layout* BreadDownSettlementPopupUI::createBreadDownItem(std::string
     
     return m_pBreadDownItem;
 }
-bool  BreadDownSettlementPopupUI::addEvents()
+bool  BreakDownSettlementPopupUI::addEvents()
 {
     m_pMaterialFrame = dynamic_cast<ui::Layout*>(UtilityHelper::seekNodeByName(m_pRootNode, "breadDown_layer_frame"));
     if (!m_pMaterialFrame)
@@ -74,20 +74,20 @@ bool  BreadDownSettlementPopupUI::addEvents()
     m_pBtnConfirm->setTitleText(UtilityHelper::getLocalStringForUi("BTN_TEXT_OK"));
     
     
-    m_pBtnConfirm->addClickEventListener(CC_CALLBACK_1(BreadDownSettlementPopupUI::onClickConfirm, this));
+    m_pBtnConfirm->addClickEventListener(CC_CALLBACK_1(BreakDownSettlementPopupUI::onClickConfirm, this));
     
     m_pMaterialFrame->setLayoutType(ui::Layout::Type::VERTICAL);
     
     return true;
 }
-void BreadDownSettlementPopupUI::onClickConfirm(cocos2d::Ref* ref)
+void BreakDownSettlementPopupUI::onClickConfirm(cocos2d::Ref* ref)
 {
     CHECK_ACTION(ref);
     clickEffect();
     CCLOG("onClickConfirm");
     closePopup();
 }
-void BreadDownSettlementPopupUI::updateUIView(const std::map<PickableItem::PickableItemType,CChaosNumber>* reslutDatas)
+void BreakDownSettlementPopupUI::updateUIView(const std::map<PickableItem::PickableItemType,CChaosNumber>* reslutDatas)
 {
     if (!reslutDatas->empty())
     {
@@ -102,28 +102,28 @@ void BreadDownSettlementPopupUI::updateUIView(const std::map<PickableItem::Picka
         int count=-1;
         if (whiteCount.GetLongValue() !=0)
         {
-            ui::Layout* whiteLayout = createBreadDownItem("I_Crystal_white.png",whiteCount);
+            ui::Layout* whiteLayout = createBreakDownItem("I_Crystal_white.png",whiteCount);
             whiteLayout->setLayoutParameter(linerParmter);
             m_pMaterialFrame->addChild(whiteLayout);
             ++count;
         }
         if (greenCount.GetLongValue() !=0)
         {
-            ui::Layout* greenLayout = createBreadDownItem("I_Crystal_green.png",greenCount);
+            ui::Layout* greenLayout = createBreakDownItem("I_Crystal_green.png",greenCount);
             greenLayout->setLayoutParameter(linerParmter);
             m_pMaterialFrame->addChild(greenLayout);
             ++count;
         }
         if (blueCount.GetLongValue() !=0)
         {
-            ui::Layout* blueLayout = createBreadDownItem("I_Crystal_blue.png",blueCount);
+            ui::Layout* blueLayout = createBreakDownItem("I_Crystal_blue.png",blueCount);
             blueLayout->setLayoutParameter(linerParmter);
             m_pMaterialFrame->addChild(blueLayout);
             ++count;
         }
         if (puprpleCount.GetLongValue() !=0)
         {
-            ui::Layout* puprpleLayout = createBreadDownItem("I_Crystal_purple.png",puprpleCount);
+            ui::Layout* puprpleLayout = createBreakDownItem("I_Crystal_purple.png",puprpleCount);
             puprpleLayout->setLayoutParameter(linerParmter);
             m_pMaterialFrame->addChild(puprpleLayout);
             ++count;

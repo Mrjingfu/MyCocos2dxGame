@@ -6,23 +6,23 @@
 //
 //
 
-#include "ItemBreadDownPopupUI.hpp"
+#include "ItemBreakDownPopupUI.hpp"
 #include "UtilityHelper.h"
 #include "PlayerProperty.hpp"
 #include "AlertPopupUI.hpp"
 #include "PopupUILayerManager.h"
-ItemBreadDownPopupUI::ItemBreadDownPopupUI()
+ItemBreakDownPopupUI::ItemBreakDownPopupUI()
 {
     
 }
-ItemBreadDownPopupUI::~ItemBreadDownPopupUI()
+ItemBreakDownPopupUI::~ItemBreakDownPopupUI()
 {
     
 }
 
 
 
-void ItemBreadDownPopupUI::refreshUIView()
+void ItemBreakDownPopupUI::refreshUIView()
 {
     ItemPopupUI::refreshUIView();
     
@@ -34,18 +34,18 @@ void ItemBreadDownPopupUI::refreshUIView()
    
     m_pBtnEquip->setPosition(cocos2d::Vec2(m_pBottomFrame->getContentSize().width*0.7442,m_pBtnEquip->getPositionY()));
     
-    m_pBtnEquip->addClickEventListener(CC_CALLBACK_1(ItemBreadDownPopupUI::onClickBreadDown, this));
+    m_pBtnEquip->addClickEventListener(CC_CALLBACK_1(ItemBreakDownPopupUI::onClickBreadDown, this));
     
-    m_pBtnDiscard->addClickEventListener(CC_CALLBACK_1(ItemBreadDownPopupUI::onClickCancel, this));
+    m_pBtnDiscard->addClickEventListener(CC_CALLBACK_1(ItemBreakDownPopupUI::onClickCancel, this));
 }
 
-void ItemBreadDownPopupUI::onClickBreadDown(Ref* ref)
+void ItemBreakDownPopupUI::onClickBreadDown(Ref* ref)
 {
     CHECK_ACTION(ref);
     clickEffect();
     CCLOG("onClickBreadDown");
     std::map<PickableItem::PickableItemType,CChaosNumber> resultDatas;
-    bool isSucess =  PlayerProperty::getInstance()->equipBreadDown(m_nItemId,resultDatas);
+    bool isSucess =  PlayerProperty::getInstance()->equipBreakDown(m_nItemId,resultDatas);
     if (!isSucess) {
         CCLOG("breadDown fail");
     }
@@ -53,7 +53,7 @@ void ItemBreadDownPopupUI::onClickBreadDown(Ref* ref)
     closePopup();
     
 }
-void ItemBreadDownPopupUI::onClickCancel(Ref* ref)
+void ItemBreakDownPopupUI::onClickCancel(Ref* ref)
 {
     CHECK_ACTION(ref);
     clickEffect();

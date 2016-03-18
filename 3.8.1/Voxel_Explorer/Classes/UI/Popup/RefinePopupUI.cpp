@@ -6,17 +6,17 @@
 //
 //
 
-#include "WashPopupUI.hpp"
+#include "RefinePopupUI.hpp"
 #include "BagMangerLayerUI.h"
 #include "UtilityHelper.h"
 #include "PlayerProperty.hpp"
-#include "BagWashLayer.hpp"
+#include "BagRefineLayer.hpp"
 #include "MaterialProperty.hpp"
 #include "PopupUILayerManager.h"
-#include "ItemWashPopupUI.hpp"
+#include "ItemRefinePopupUI.hpp"
 #include "AlertPopupUI.hpp"
 USING_NS_CC;
-WashPopupUI::WashPopupUI()
+RefinePopupUI::RefinePopupUI()
 {
     m_cActionType       = eNone;
     m_nIsBlankClose     = false;
@@ -43,37 +43,37 @@ WashPopupUI::WashPopupUI()
     
     m_pOldProp              = nullptr;
 }
-WashPopupUI::~WashPopupUI()
+RefinePopupUI::~RefinePopupUI()
 {
     if (m_pOldProp) {
         CC_SAFE_DELETE(m_pOldProp);
     }
 }
-void WashPopupUI::onEnter()
+void RefinePopupUI::onEnter()
 {
     PopupUILayer::onEnter();
     scheduleUpdate();
 }
-void WashPopupUI::onExit()
+void RefinePopupUI::onExit()
 {
     unscheduleUpdate();
     PopupUILayer::onExit();
 }
-void WashPopupUI::update(float dt)
+void RefinePopupUI::update(float dt)
 {
     if (m_bIsCallBack) {
-        m_pBagEquipLayer->registerCloseCallbackO(CC_CALLBACK_1(WashPopupUI::updateMaterial, this));
+        m_pBagEquipLayer->registerCloseCallbackO(CC_CALLBACK_1(RefinePopupUI::updateMaterial, this));
         m_bIsCallBack = false;
     }
 }
-bool WashPopupUI::initUi()
+bool RefinePopupUI::initUi()
 {
     if (!PopupUILayer::initUi())
         return false;
     return load("washpracticePopupLayer.csb",false);
 }
 
-bool WashPopupUI::addEvents()
+bool RefinePopupUI::addEvents()
 {
     m_pBgFrame = dynamic_cast<ui::ImageView*>(UtilityHelper::seekNodeByName(m_pRootNode, "wash_bg_frame"));
     if (!m_pBgFrame)
@@ -125,7 +125,7 @@ bool WashPopupUI::addEvents()
     if (!m_pBtnClose)
         return false;
     
-    m_pBtnClose->addClickEventListener(CC_CALLBACK_1(WashPopupUI::onClickClose, this));
+    m_pBtnClose->addClickEventListener(CC_CALLBACK_1(RefinePopupUI::onClickClose, this));
     
     m_pTipText->setFntFile(UtilityHelper::getLocalStringForUi("FONT_NAME"));
     m_pTipText->setString(UtilityHelper::getLocalStringForUi("BAG_TEXT_WASH_TIP"));
@@ -149,7 +149,7 @@ bool WashPopupUI::addEvents()
     addIconImg(m_pBlueMaterial,"I_Crystal_blue.png");
     addIconImg(m_pPurpleMaterial,"I_Crystal_purple.png");
     
-    m_pBagEquipLayer = BagWashLayer::create();
+    m_pBagEquipLayer = BagRefineLayer::create();
     m_pBagEquipLayer->setAnchorPoint(cocos2d::Vec2::ANCHOR_MIDDLE_BOTTOM);
     m_pBagEquipLayer->setPosition(cocos2d::Size(m_pRootNode->getContentSize().width*0.5,0));
     m_pBagEquipLayer->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
@@ -160,23 +160,23 @@ bool WashPopupUI::addEvents()
 
     m_pBtnWash->setTouchEnabled(false);
     m_pBtnWash->setEnabled(false);
-    m_pBtnWash->addClickEventListener(CC_CALLBACK_1(WashPopupUI::onClickWash, this));
+    m_pBtnWash->addClickEventListener(CC_CALLBACK_1(RefinePopupUI::onClickWash, this));
     
     
     m_pEquipFrame->setPosition(cocos2d::Vec2(m_pRootNode->getContentSize().width*0.5,m_pEquipFrame->getPositionY()));
     
-    m_pBagEquipLayer->registerCloseCallbackO(CC_CALLBACK_1(WashPopupUI::updateMaterial, this));
+    m_pBagEquipLayer->registerCloseCallbackO(CC_CALLBACK_1(RefinePopupUI::updateMaterial, this));
     
     refreshUIView();
     return true;
 }
-void WashPopupUI::refreshUIView()
+void RefinePopupUI::refreshUIView()
 {
     if(m_pBagEquipLayer)
         m_pBagEquipLayer->refreshUIView();
 }
 
-void WashPopupUI::updateMaterial(Ref* data)
+void RefinePopupUI::updateMaterial(Ref* data)
 {
     if (m_pBtnWash)
     {
@@ -321,14 +321,14 @@ void WashPopupUI::updateMaterial(Ref* data)
     }
 
 }
-void WashPopupUI::onClickClose(cocos2d::Ref *ref)
+void RefinePopupUI::onClickClose(cocos2d::Ref *ref)
 {
     CHECK_ACTION(ref);
     clickEffect();
     CCLOG("onClickClose");
     closePopup();
 }
-void WashPopupUI::onClickWash(cocos2d::Ref *ref)
+void RefinePopupUI::onClickWash(cocos2d::Ref *ref)
 {
     CHECK_ACTION(ref);
     clickEffect();
@@ -373,7 +373,7 @@ void WashPopupUI::onClickWash(cocos2d::Ref *ref)
     }
     
 }
-void WashPopupUI::itemWash()
+void RefinePopupUI::itemWash()
 {
     PickableItemProperty* itemProp = PlayerProperty::getInstance()->getItemFromBag(m_nEquipWashId);
     if (itemProp) {
@@ -381,13 +381,13 @@ void WashPopupUI::itemWash()
             CC_SAFE_DELETE(m_pOldProp);
         }
         m_pOldProp= itemProp->clone();
-            bool isSucess = PlayerProperty::getInstance()->equipWashPractice(m_nEquipWashId);
+            bool isSucess = PlayerProperty::getInstance()->equipRefine(m_nEquipWashId);
             if (isSucess) {
-                ItemWashPopupUI* itemPopup = static_cast<ItemWashPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupItemWash)) ;
+                ItemRefinePopupUI* itemPopup = static_cast<ItemRefinePopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupItemRefine)) ;
                 if (itemPopup) {
                     itemPopup->setOldItemProp(m_pOldProp);
                     itemPopup->setItemId(m_nEquipWashId);
-                    itemPopup->registerCloseCallbackO(CC_CALLBACK_1(WashPopupUI::updateMaterial, this));
+                    itemPopup->registerCloseCallbackO(CC_CALLBACK_1(RefinePopupUI::updateMaterial, this));
                 }
             }else
             {
@@ -396,7 +396,7 @@ void WashPopupUI::itemWash()
         
     }
 }
-void WashPopupUI::addIconImg(cocos2d::ui::ImageView* sourceImg,std::string iconStr)
+void RefinePopupUI::addIconImg(cocos2d::ui::ImageView* sourceImg,std::string iconStr)
 {
     ui::ImageView* iconImg = static_cast<ui::ImageView*>(sourceImg->getChildByTag(10));
     if (!iconImg ) {
@@ -412,7 +412,7 @@ void WashPopupUI::addIconImg(cocos2d::ui::ImageView* sourceImg,std::string iconS
     }
     iconImg->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
 }
-void WashPopupUI::updateMaterialDisplay(bool isWhite,bool isGreen,bool isBlue,bool isPurple)
+void RefinePopupUI::updateMaterialDisplay(bool isWhite,bool isGreen,bool isBlue,bool isPurple)
 {
     if (m_pWhiteMaterial)
         m_pWhiteMaterial->setVisible(isWhite);
@@ -423,7 +423,7 @@ void WashPopupUI::updateMaterialDisplay(bool isWhite,bool isGreen,bool isBlue,bo
     if (m_pPurpleMaterial)
         m_pPurpleMaterial->setVisible(isPurple);
 }
-void WashPopupUI::updateEquipFrame(PickableItemProperty* prop)
+void RefinePopupUI::updateEquipFrame(PickableItemProperty* prop)
 {
     if (prop)
     {

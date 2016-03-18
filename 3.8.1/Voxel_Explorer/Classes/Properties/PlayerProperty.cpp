@@ -800,7 +800,7 @@ bool PlayerProperty::useKey(PickableItem::PickableItemType type)
     }
     return false;
 }
-bool PlayerProperty::equipBreadDown(CChaosNumber id,std::map<PickableItem::PickableItemType,CChaosNumber>& resultDatas)
+bool PlayerProperty::equipBreakDown(CChaosNumber id,std::map<PickableItem::PickableItemType,CChaosNumber>& resultDatas)
 {
     PickableItemProperty* itemprop = getItemFromBag(id);
     if (itemprop)
@@ -959,7 +959,7 @@ bool PlayerProperty::equipBreadDown(CChaosNumber id,std::map<PickableItem::Picka
     return false;
 }
 
-bool PlayerProperty::equipWashPractice(CChaosNumber id)
+bool PlayerProperty::equipRefine(CChaosNumber id)
 {
     
     PickableItemProperty* itemprop = getItemFromBag(id);

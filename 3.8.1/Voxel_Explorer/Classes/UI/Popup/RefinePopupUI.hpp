@@ -6,18 +6,18 @@
 //
 //
 
-#ifndef WashPopupUI_hpp
-#define WashPopupUI_hpp
+#ifndef RefinePopupUI_hpp
+#define RefinePopupUI_hpp
 #include "PopupUILayer.h"
-class BagWashLayer;
+class BagRefineLayer;
 class BagMangerLayerUI;
 class PickableItemProperty;
-class  WashPopupUI : public PopupUILayer{
-    WashPopupUI();
+class  RefinePopupUI : public PopupUILayer{
+    RefinePopupUI();
     
 public:
-    ~WashPopupUI();
-    CREATE_FUNC(WashPopupUI);
+    ~RefinePopupUI();
+    CREATE_FUNC(RefinePopupUI);
     
     virtual bool initUi() override;
     virtual bool addEvents() override;
@@ -49,7 +49,7 @@ private:
     cocos2d::ui::TextBMFont* m_pTipText;
     cocos2d::ui::Button* m_pBtnWash;
     
-    BagWashLayer* m_pBagEquipLayer;
+    BagRefineLayer* m_pBagEquipLayer;
     cocos2d::ui::TextBMFont*  m_pEquipTitleText;
 
     bool m_bIsCallBack;
@@ -58,4 +58,4 @@ private:
     
 };
 
-#endif /* WashPopupUI_hpp */
+#endif /* RefinePopupUI_hpp */

@@ -6,19 +6,19 @@
 //
 //
 
-#ifndef BreadDownPopupUI_hpp
-#define BreadDownPopupUI_hpp
+#ifndef BreakDownPopupUI_hpp
+#define BreakDownPopupUI_hpp
 #include "PopupUILayer.h"
 #include "PickableItemProperty.hpp"
-class BagEquipLayer;
+class BagBreakDownLayer;
 class TGridView;
 class BagMangerLayerUI;
-class  BreadDownPopupUI : public PopupUILayer{
-    BreadDownPopupUI();
+class  BreakDownPopupUI : public PopupUILayer{
+    BreakDownPopupUI();
     
 public:
-    ~BreadDownPopupUI();
-    CREATE_FUNC(BreadDownPopupUI);
+    ~BreakDownPopupUI();
+    CREATE_FUNC(BreakDownPopupUI);
     
     virtual bool initUi() override;
     virtual bool addEvents() override;
@@ -32,11 +32,11 @@ private:
     void showSucessBreadDownPopup( void* datas);
     void onEventPlayerBagItemUpdate(cocos2d::EventCustom *sender);
 private:
-    BagEquipLayer* m_pBagEquipLayer;
+    BagBreakDownLayer* m_pBagEquipLayer;
     cocos2d::ui::TextBMFont*  m_pEquipTitleText;
     TGridView* m_pMaterialGridView;
     BagMangerLayerUI* m_pBagManagerLayer;
     bool m_bIsCallBack;
 };
 
-#endif /* BreadDownPopupUI_hpp */
+#endif /* BreakDownPopupUI_hpp */

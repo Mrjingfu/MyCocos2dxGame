@@ -6,26 +6,26 @@
 //
 //
 
-#include "BagWashLayer.hpp"
+#include "BagBreakDownLayer.hpp"
 #include "BagMangerLayerUI.h"
 #include "PlayerProperty.hpp"
 #include "ItemPopupUI.h"
-#include "ItemSelectPopupUI.hpp"
+#include "ItemBreakDownPopupUI.hpp"
 #include "PopupUILayerManager.h"
-BagWashLayer::BagWashLayer()
+BagBreakDownLayer::BagBreakDownLayer()
 {
     
 }
-BagWashLayer::~BagWashLayer()
+BagBreakDownLayer::~BagBreakDownLayer()
 {
     
 }
-bool BagWashLayer::init()
+bool BagBreakDownLayer::init()
 {
     if (!BagLayer::init())
         return false;
     
-    
+
     //商店界面没有扩展按钮
     if (m_pBtnBagExtend) {
         m_pBtnBagExtend->setVisible(false);
@@ -39,39 +39,11 @@ bool BagWashLayer::init()
     if (m_pBtnPotionBag) {
         m_pBtnPotionBag->setVisible(false);
     }
-    
+
     
     return true;
 }
-std::vector<PickableItemProperty*> BagWashLayer::getItems()
-{
-   std::vector<PickableItemProperty*> bagItems = BagLayer::getItems();
-   std::vector<PickableItemProperty*> items;
-    
-    for (int i =0 ; i<bagItems.size(); i++)
-    {
-        PickableItemProperty* itemProp =bagItems[i];
-        
-        if (!itemProp) {
-            continue;
-        }
-        
-        PickableItemProperty::PickableItemPropertyType itemtype =itemProp->getPickableItemPropertyType();
-        
-        if (!(itemtype ==PickableItemProperty::PIPT_WEAPON ||itemtype ==PickableItemProperty::PIPT_SECOND_WEAPON||
-              itemtype ==PickableItemProperty::PIPT_ARMOR ||itemtype ==PickableItemProperty::PIPT_MAGIC_ORNAMENT) )
-            continue;
-
-        if (itemProp->getQuality() == PICKABLEITEM_QUALITY::PIQ_GENERAL) {
-            continue;
-        }
-
-        
-        items.push_back(itemProp);
-    }
-    return items;
-}
-void BagWashLayer::bagItemOpe(int itemId)
+void BagBreakDownLayer::bagItemOpe(int itemId)
 {
     if (itemId==-1)
         return;
@@ -103,18 +75,18 @@ void BagWashLayer::bagItemOpe(int itemId)
         equipId = secondWeaponId;
     }
     
-    ItemSelectPopupUI* shopItem = static_cast<ItemSelectPopupUI*>( PopupUILayerManager::getInstance()->openPopup(ePopupItemSelect));
+    ItemBreakDownPopupUI* shopItem = static_cast<ItemBreakDownPopupUI*>( PopupUILayerManager::getInstance()->openPopup(ePopupItemBreakDown));
     if (shopItem) {
-        shopItem->setItemId(itemId);
-        shopItem->registerCloseCallbackO([this](Ref* ref){
-        
-            if(ref)
-            {
-                this->setCloseCallbackParamO(ref);
-                this->executeCloseBackO();
+        shopItem->registerCloseCallbackD([this](void* data){
+            
+            if (data) {
+
+                this->setCloseCallbackParamD(data);
+                this->executeCloseCallbackD();
             }
             
         });
+        shopItem->setItemId(itemId);
         
         //如果有装备过 打开装备过的武器
         if (equipId!=-1)
@@ -141,6 +113,52 @@ void BagWashLayer::bagItemOpe(int itemId)
         }
         
     }
-
 }
 
+std::vector<PickableItemProperty*> BagBreakDownLayer::getItems()
+{
+    
+    std::vector<PickableItemProperty*> bagItems = BagLayer::getItems();
+    
+    std::vector<PickableItemProperty*> items;
+    int weaponId = int(PlayerProperty::getInstance()->getEquipedWeaponID());
+    int armorId = int(PlayerProperty::getInstance()->getEquipedArmorID());
+    int OrnamentId = int(PlayerProperty::getInstance()->getEquipedOrnamentsID());
+    int secondWeaponId = int(PlayerProperty::getInstance()->getEquipedSecondWeaponID());
+    
+    for (int i =0 ; i<bagItems.size(); i++)
+    {
+        PickableItemProperty* itemProp =bagItems[i];
+        
+        if (!itemProp) {
+            continue;
+        }
+        
+        PickableItemProperty::PickableItemPropertyType itemtype =itemProp->getPickableItemPropertyType();
+        
+        if (!(itemtype ==PickableItemProperty::PIPT_WEAPON ||itemtype ==PickableItemProperty::PIPT_SECOND_WEAPON||
+            itemtype ==PickableItemProperty::PIPT_ARMOR ||itemtype ==PickableItemProperty::PIPT_MAGIC_ORNAMENT) )
+            continue;
+        
+        if (weaponId ==  itemProp->getInstanceID()) {
+            continue;
+        }
+        if (armorId ==  itemProp->getInstanceID()) {
+            continue;
+        }
+        if (OrnamentId ==  itemProp->getInstanceID()) {
+            continue;
+        }
+        if (secondWeaponId ==  itemProp->getInstanceID()) {
+            continue;
+        }
+        
+        if (itemProp->getPickableItemType()>=PickableItem::PIT_KEY_BOSS && itemProp->getPickableItemType()<=PickableItem::PIT_KEY_ROOM) {
+            continue;
+        }
+        
+        items.push_back(itemProp);
+    }
+    
+    return items;
+}

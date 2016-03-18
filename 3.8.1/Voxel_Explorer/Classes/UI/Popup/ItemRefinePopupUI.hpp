@@ -6,19 +6,19 @@
 //
 //
 
-#ifndef ItemWashPopupUI_hpp
-#define ItemWashPopupUI_hpp
+#ifndef ItemRefinePopupUI_hpp
+#define ItemRefinePopupUI_hpp
 
 #include "ItemPopupUI.h"
 #include "PickableItemProperty.hpp"
 class PickableItemProperty;
-class ItemWashPopupUI:public ItemPopupUI {
+class ItemRefinePopupUI:public ItemPopupUI {
     
-    ItemWashPopupUI();
+    ItemRefinePopupUI();
 public:
 
-    CREATE_FUNC(ItemWashPopupUI);
-    virtual ~ItemWashPopupUI();
+    CREATE_FUNC(ItemRefinePopupUI);
+    virtual ~ItemRefinePopupUI();
     virtual void refreshUIView() override;
     void setOldItemProp( PickableItemProperty* itemProp);
 private:
@@ -31,4 +31,4 @@ private:
 };
 
 
-#endif /* ItemWashPopupUI_hpp */
+#endif /* ItemRefinePopupUI_hpp */

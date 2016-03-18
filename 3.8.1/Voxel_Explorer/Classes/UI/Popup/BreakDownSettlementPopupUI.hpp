@@ -6,19 +6,19 @@
 //
 //
 
-#ifndef BreadDownSettlementPopupUI_hpp
-#define BreadDownSettlementPopupUI_hpp
+#ifndef BreakDownSettlementPopupUI_hpp
+#define BreakDownSettlementPopupUI_hpp
 
 #include "PopupUILayer.h"
 #include "PickableItemProperty.hpp"
-class BreadDownSettlementPopupUI :public PopupUILayer{
-    BreadDownSettlementPopupUI();
+class BreakDownSettlementPopupUI :public PopupUILayer{
+    BreakDownSettlementPopupUI();
     
 public:
-    CREATE_FUNC(BreadDownSettlementPopupUI);
-    ~BreadDownSettlementPopupUI();
+    CREATE_FUNC(BreakDownSettlementPopupUI);
+    ~BreakDownSettlementPopupUI();
     bool initUi() override;
-    cocos2d::ui::Layout* createBreadDownItem(std::string icon,CChaosNumber count );
+    cocos2d::ui::Layout* createBreakDownItem(std::string icon,CChaosNumber count );
     bool addEvents() override;
     void updateUIView(const std::map<PickableItem::PickableItemType,CChaosNumber>* reslutDatas) ;
 private:
@@ -29,4 +29,4 @@ private:
     cocos2d::ui::Button* m_pBtnConfirm;
 };
 
-#endif /* BreadDownSettlementPopupUI_hpp */
+#endif /* BreakDownSettlementPopupUI_hpp */

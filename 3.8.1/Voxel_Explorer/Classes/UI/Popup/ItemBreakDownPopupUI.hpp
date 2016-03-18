@@ -6,19 +6,19 @@
 //
 //
 
-#ifndef ItemBreadDownPopupUI_hpp
-#define ItemBreadDownPopupUI_hpp
+#ifndef ItemBreakDownPopupUI_hpp
+#define ItemBreakDownPopupUI_hpp
 
 #include "ItemPopupUI.h"
 
 class PickableItemProperty;
-class ItemBreadDownPopupUI:public ItemPopupUI {
+class ItemBreakDownPopupUI:public ItemPopupUI {
     
-    ItemBreadDownPopupUI();
+    ItemBreakDownPopupUI();
 public:
 
-    CREATE_FUNC(ItemBreadDownPopupUI);
-    virtual ~ItemBreadDownPopupUI();
+    CREATE_FUNC(ItemBreakDownPopupUI);
+    virtual ~ItemBreakDownPopupUI();
     virtual void refreshUIView() override;
 private:
     void onClickBreadDown(Ref* ref);

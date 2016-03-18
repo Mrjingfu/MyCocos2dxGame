@@ -6,21 +6,21 @@
 //
 //
 
-#ifndef BagWashLayer_hpp
-#define BagWashLayer_hpp
+#ifndef BagRefineLayer_hpp
+#define BagRefineLayer_hpp
 
 #include "BagLayer.h"
 
-class  BagWashLayer:public BagLayer{
+class  BagRefineLayer:public BagLayer{
     
-    BagWashLayer();
+    BagRefineLayer();
 public:
-    CREATE_FUNC(BagWashLayer);
+    CREATE_FUNC(BagRefineLayer);
     virtual bool init() override;
-    ~BagWashLayer();
+    ~BagRefineLayer();
 private:
     virtual void bagItemOpe(int itemId) override;
     std::vector<PickableItemProperty*> getItems() override;
 };
 
-#endif /* BagEquipLayer_hpp */
+#endif /* BagRefineLayer_hpp */

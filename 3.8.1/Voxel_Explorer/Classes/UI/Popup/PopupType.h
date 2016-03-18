@@ -33,12 +33,12 @@ enum ePopupType
     ePopupAchieve,      //成就窗口
     ePopupDead,         //死亡界面窗口
     ePopupLangugae,     //语言切换窗口
-    ePopupItemBreadDown,//道具分解窗口
-    ePopupBagBreadDown, //背包分解窗口
-    ePopupWash,         //洗练窗口
+    ePopupItemBreakDown,//道具分解窗口
+    ePopupBagBreakDown, //背包分解窗口
+    ePopupRefine,         //洗练窗口
     ePopupItemSelect,     //道具选择
-    ePopupItemWash,  //道具确定窗口
-    ePopupBreadDownSettlement,//分解结算界面
+    ePopupItemRefine,  //道具洗练窗口
+    ePopupBreakDownSettlement,//分解结算界面
     ePopupCount
 };
 typedef enum {
