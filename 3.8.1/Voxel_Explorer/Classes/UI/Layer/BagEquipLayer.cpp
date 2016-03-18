@@ -77,6 +77,15 @@ void BagEquipLayer::bagItemOpe(int itemId)
     
     ItemBreadDownPopupUI* shopItem = static_cast<ItemBreadDownPopupUI*>( PopupUILayerManager::getInstance()->openPopup(ePopupItemBreadDown));
     if (shopItem) {
+        shopItem->registerCloseCallbackD([this](void* data){
+            
+            if (data) {
+
+                this->setCloseCallbackParamD(data);
+                this->executeCloseCallbackD();
+            }
+            
+        });
         shopItem->setItemId(itemId);
         
         //如果有装备过 打开装备过的武器
@@ -120,15 +129,16 @@ std::vector<PickableItemProperty*> BagEquipLayer::getItems()
     for (int i =0 ; i<bagItems.size(); i++)
     {
         PickableItemProperty* itemProp =bagItems[i];
+        
+        if (!itemProp) {
+            continue;
+        }
+        
         PickableItemProperty::PickableItemPropertyType itemtype =itemProp->getPickableItemPropertyType();
         
         if (!(itemtype ==PickableItemProperty::PIPT_WEAPON ||itemtype ==PickableItemProperty::PIPT_SECOND_WEAPON||
             itemtype ==PickableItemProperty::PIPT_ARMOR ||itemtype ==PickableItemProperty::PIPT_MAGIC_ORNAMENT) )
             continue;
-        
-        if (!itemProp) {
-            continue;
-        }
         
         if (weaponId ==  itemProp->getInstanceID()) {
             continue;

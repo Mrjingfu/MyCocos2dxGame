@@ -55,7 +55,7 @@ const std::string PICKABLE_ITEM_PROPERTY_TYPE_NAMES[] = {
     "PIPN_SUNDRIES"               ///杂物
 };
 
-class PickableItemProperty : public cocos2d::Ref
+class PickableItemProperty : public cocos2d::Ref,public cocos2d::Clonable
 {
     friend class PlayerProperty;
 public:
@@ -77,6 +77,7 @@ public:
     PickableItemPropertyType getPickableItemPropertyType() const { return m_PropertyType; }
     PickableItem::PickableItemType getPickableItemType() const { return m_ItemType; }
     CChaosNumber getLevel() const { return m_nLevel; }
+    void setLevel( CChaosNumber level){m_nLevel = level.GetLongValue();}
     CChaosNumber getValueCopper() const { return m_nValueCopper; }
     CChaosNumber getCopperWhenBuy() { return m_nCopperWhenBuy; }
     void setCopperWhenBuy(CChaosNumber copper) { m_nCopperWhenBuy = copper; }
@@ -93,6 +94,7 @@ public:
     bool isCursed() const { return m_bCursed; }
     CChaosNumber getCount() const { return m_nCount; }
     void setCount(CChaosNumber count) { m_nCount = count; }
+    virtual PickableItemProperty* clone() const override {return nullptr;}
     
     PICKABLEITEM_QUALITY getQuality() const { return m_Quality; }
     const std::vector<ADDED_EFFECT>& getAddedEffectList() const { return m_AddedEffectList; }

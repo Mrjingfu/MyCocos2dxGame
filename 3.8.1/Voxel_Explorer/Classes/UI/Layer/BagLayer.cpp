@@ -585,8 +585,8 @@ void BagLayer::onClickBagExtend(cocos2d::Ref* ref)
         alertPopupUi->setNegativeListerner([isMoneyEnough,alertPopupUi,extendCopper](Ref* ref){
             
             if (isMoneyEnough) {
-                PlayerProperty::getInstance()->costMoney(extendCopper*10000);
-                PlayerProperty::getInstance()->extendBagSpace();
+                if(PlayerProperty::getInstance()->costMoney(extendCopper*10000))
+                    PlayerProperty::getInstance()->extendBagSpace();
             }else
                 Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_MONEY_NOT_ENOUGH);
             

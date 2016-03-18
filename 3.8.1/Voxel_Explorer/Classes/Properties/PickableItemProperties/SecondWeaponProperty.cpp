@@ -11,6 +11,7 @@
 #include "UtilityHelper.h"
 #include "AlisaMethod.h"
 #include "PlayerProperty.hpp"
+#include "PlayerProperty.hpp"
 USING_NS_CC;
 static std::vector<ADDED_EFFECT> sBowAddedEffects =
 {
@@ -345,6 +346,33 @@ void SecondWeaponProperty::handleIdentify()
 
     }
     adjustByLevel();
+}
+SecondWeaponProperty* SecondWeaponProperty::clone() const
+{
+    SecondWeaponProperty* prop = new (std::nothrow) SecondWeaponProperty(PlayerProperty::m_snItemInstanceIDCounter++,this->m_ItemType,this->m_nLevel,this->m_bIdentified);
+    
+    prop->m_PropertyType = this->m_PropertyType;
+    prop->m_nValueCopper = this->m_nValueCopper.GetLongValue();
+    prop->m_nCopperWhenBuy = this->m_nCopperWhenBuy.GetLongValue();
+    prop->m_Quality = this->m_Quality;
+    prop->m_AddedEffectList.assign(this->m_AddedEffectList.begin(),  this->m_AddedEffectList.end());
+    prop->m_nAddedLightDistance = this->m_nAddedLightDistance.GetLongValue();
+    prop->m_nAddedSearchDistance = this->m_nAddedSearchDistance.GetLongValue();
+    prop->m_nAddedMaxHP = this->m_nAddedMaxHP.GetLongValue();
+    prop->m_nAddedMaxMP = this->m_nAddedMaxMP.GetLongValue();
+    
+    prop->m_nAddedMinAttack = this->m_nAddedMinAttack.GetLongValue();
+    prop->m_nAddedMaxAttack = this->m_nAddedMaxAttack.GetLongValue();
+    
+    
+    prop->m_nAddedArmorClass = this->m_nAddedArmorClass.GetLongValue();
+    
+    prop->m_fAddedBlockRate =this->m_fAddedBlockRate.GetFloatValue();
+    prop->m_fAddedCriticalStrikeRate = this->m_fAddedCriticalStrikeRate.GetFloatValue();
+    prop->m_fAddedDodgeRate = this->m_fAddedDodgeRate.GetFloatValue();
+    prop->m_fAddedMagicItemFindRate = this->m_fAddedMagicItemFindRate.GetFloatValue();
+    
+    return prop;
 }
 CChaosNumber SecondWeaponProperty::getAddedDefense()
 {

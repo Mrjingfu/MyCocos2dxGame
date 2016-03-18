@@ -33,8 +33,11 @@
 #include "DiscardPopupUI.hpp"
 #include "LangugaePopup.hpp"
 #include "ItemBreadDownPopupUI.hpp"
-#include "EquipmentPopupUI.hpp"
+#include "BreadDownPopupUI.hpp"
 #include "WashPopupUI.hpp"
+#include "ItemSelectPopupUI.hpp"
+#include "ItemWashPopupUI.hpp"
+#include "BreadDownSettlementPopupUI.hpp"
 PopupUILayerManager::PopupUILayerManager()
 {
     m_pParentLayer = nullptr;
@@ -188,11 +191,21 @@ PopupUILayer* PopupUILayerManager::initPopUp(ePopupType type)
         case ePopupItemBreadDown:
             popupLayer = ItemBreadDownPopupUI::create();
             break;
-        case ePopupBagEquipment:
-            popupLayer = EquipmentPopupUI::create();
+        case ePopupBagBreadDown:
+            popupLayer = BreadDownPopupUI::create();
             break;
         case ePopupWash:
             popupLayer = WashPopupUI::create();
+            break;
+        case ePopupItemSelect:
+            popupLayer = ItemSelectPopupUI::create();
+            break;
+        case ePopupItemWash:
+            popupLayer = ItemWashPopupUI::create();
+            break;
+        case ePopupBreadDownSettlement:
+            popupLayer = BreadDownSettlementPopupUI::create();
+            break;
         default:
             break;
     }

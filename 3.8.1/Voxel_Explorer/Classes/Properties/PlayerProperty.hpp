@@ -99,7 +99,7 @@ public:
     bool usePotion(CChaosNumber id);
     bool useScroll(CChaosNumber id);
     bool useKey(PickableItem::PickableItemType type);
-    bool equipBreadDown(CChaosNumber id);   //分解
+    bool equipBreadDown(CChaosNumber id,std::map<PickableItem::PickableItemType,CChaosNumber>& resultDatas);   //分解
     bool equipWashPractice(CChaosNumber id);//洗练
     PickableItemProperty* getStackableItemForBag(PickableItem::PickableItemType type);
     

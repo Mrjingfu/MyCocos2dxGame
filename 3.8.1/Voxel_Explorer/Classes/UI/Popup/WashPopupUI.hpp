@@ -30,6 +30,7 @@ private:
     void updateMaterial(Ref* data);
     void updateEquipFrame(PickableItemProperty* prop);
     void onClickWash(Ref* ref);
+    void itemWash();
     void updateMaterialDisplay(bool isWhite,bool isGreen,bool isBlue,bool isPurple);
     void addIconImg( cocos2d::ui::ImageView* sourceImg,std::string iconStr);
 private:
@@ -53,6 +54,7 @@ private:
 
     bool m_bIsCallBack;
     int m_nEquipWashId;
+    PickableItemProperty* m_pOldProp;
     
 };
 

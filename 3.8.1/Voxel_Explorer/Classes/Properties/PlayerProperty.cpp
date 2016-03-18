@@ -800,7 +800,7 @@ bool PlayerProperty::useKey(PickableItem::PickableItemType type)
     }
     return false;
 }
-bool PlayerProperty::equipBreadDown(CChaosNumber id)
+bool PlayerProperty::equipBreadDown(CChaosNumber id,std::map<PickableItem::PickableItemType,CChaosNumber>& resultDatas)
 {
     PickableItemProperty* itemprop = getItemFromBag(id);
     if (itemprop)
@@ -808,119 +808,150 @@ bool PlayerProperty::equipBreadDown(CChaosNumber id)
         PickableItemProperty::PickableItemPropertyType itemtype = itemprop->getPickableItemPropertyType();
         if (itemtype>=PickableItemProperty::PIPT_WEAPON && itemtype<=PickableItemProperty::PIPT_MAGIC_ORNAMENT) {
             PICKABLEITEM_QUALITY itemQualty = itemprop->getQuality();
-            float percentPro = 0.0f;
-            float percentStandard1 = 0.0f;
-            float percentStandard2 = 0.0f;
-            float percentStandard3 = 0.0f;
+            int mflag = MF_NONE;
+            CChaosNumber whiteCount = 0;
+            CChaosNumber greenCount = 0;
+            CChaosNumber blueCount = 0;
+            CChaosNumber puprpleCount = 0;
             switch (itemQualty) {
                 case PICKABLEITEM_QUALITY::PIQ_RARE:
                 {
-                    percentPro = 0.3f;
-                    percentStandard1 = 0.4f;
-                    percentStandard2 = 0.2f;
-                    percentStandard3 = 1.0f - percentPro - percentStandard1 - percentStandard2- percentStandard3;
+                    mflag = MF_GREEN |MF_WHITE;
+                    if ((mflag & MF_WHITE)!=0) {
+                        whiteCount = cocos2d::random(3, 5);
+                    }
+                    if ((mflag & MF_GREEN)!=0) {
+                        greenCount = cocos2d::random(1, 2);
+                    }
                 }
                     break;
                 case PICKABLEITEM_QUALITY::PIQ_EPIC:
                 {
-                    percentPro = 0.3f;
-                    percentStandard1 = 0.2f;
-                    percentStandard2 = 0.4f;
-                    percentStandard3 = 1.0f - percentPro - percentStandard1 - percentStandard2- percentStandard3;
-
+                    float percentBlueWhite = 0.5f;
+                    float percentBlueGreen = 0.3f;
+                    float percentBlueWhiteGreen = 1.0f - percentBlueWhite - percentBlueGreen;
+                    AlisaMethod* am = AlisaMethod::create(percentBlueWhite, percentBlueGreen, percentBlueWhiteGreen, -1.0, NULL);
+                    if (am)
+                    {
+                        int amIndex = am->getRandomIndex();
+                        if (amIndex == 0)
+                        {
+                            mflag = MF_BLUE | MF_WHITE;
+                        }else if (amIndex == 1)
+                        {
+                            mflag = MF_BLUE | MF_GREEN;
+                        }else if (amIndex == 2)
+                        {
+                            mflag = MF_BLUE | MF_WHITE | MF_GREEN;
+                        }
+                        
+                        if ((mflag & MF_WHITE)!=0)
+                        {
+                            whiteCount = cocos2d::random(7, 11);
+                        }
+                        if ((mflag & MF_GREEN)!=0)
+                        {
+                            greenCount = cocos2d::random(3, 5);
+                        }
+                        if ((mflag & MF_BLUE)!=0)
+                        {
+                            blueCount = cocos2d::random(1, 2);
+                        }
+                        
+                    }
                 }
                     break;
                 case PICKABLEITEM_QUALITY::PIQ_LEGEND:
                 {
-                    percentPro = 0.3f;
-                    percentStandard1 = 0.1f;
-                    percentStandard2 = 0.1f;
-                    percentStandard3 = 1.0f - percentPro - percentStandard1 - percentStandard2- percentStandard3;
+                    float percentPurpleWhite = 0.35f;
+                    float percentPurpleGreen = 0.15f;
+                    float percentPurpleBlue = 0.15f;
+                    
+                    float percentPurpleWhiteGreen = 0.1f;
+                    float percentPurpleWhiteBlue = 0.1f;
+                    float percentPurpleGreenBlue = 0.1f;
+                    
+                    float percentPurpleWhiteGreenBlue = 1.0f - percentPurpleWhite - percentPurpleGreen -percentPurpleBlue -percentPurpleWhiteGreen - percentPurpleWhiteBlue - percentPurpleGreenBlue;
+                    
+                    AlisaMethod* am = AlisaMethod::create(percentPurpleWhite, percentPurpleGreen, percentPurpleBlue, percentPurpleWhiteGreen,percentPurpleWhiteBlue,percentPurpleGreenBlue,percentPurpleWhiteGreenBlue, -1.0, NULL);
+                    if (am)
+                    {
+                        int amIndex = am->getRandomIndex();
+                        
+                        if ( amIndex== 0)
+                        {
+                            mflag = MF_PURPLE | MF_WHITE;
+                        }else if (amIndex == 1)
+                        {
+                             mflag = MF_PURPLE | MF_GREEN;
+                        }else if (amIndex == 2)
+                        {
+                             mflag = MF_PURPLE | MF_BLUE;
+                        }else if (amIndex == 3)
+                        {
+                             mflag = MF_PURPLE | MF_WHITE | MF_GREEN;
+                        }else if (amIndex == 4)
+                        {
+                             mflag = MF_PURPLE | MF_WHITE | MF_BLUE;
+                        }else if (amIndex == 5)
+                        {
+                             mflag = MF_PURPLE | MF_BLUE | MF_GREEN;
+                        }else if (amIndex == 6)
+                        {
+                             mflag = MF_PURPLE | MF_WHITE | MF_GREEN | MF_BLUE;
+                        }
+                        
+                        if ((mflag & MF_WHITE)!=0) {
+                            whiteCount = cocos2d::random(11, 13);
+                        }
+                        if ((mflag & MF_GREEN)!=0) {
+                            greenCount = cocos2d::random(5, 8);
+                        }
+                        if ((mflag & MF_BLUE)!=0) {
+                            blueCount = cocos2d::random(2, 4);
+                        }
+                        if ((mflag & MF_PURPLE)!=0) {
+                            puprpleCount = 1;
+                        }
 
+                    }
                 }
                     break;
                 case PICKABLEITEM_QUALITY::PIQ_GENERAL:
                 default:
                 {
-                    percentPro = 0.8f;
-                    percentStandard1 = 0.1f;
-                    percentStandard2 = 0.05f;
-                    percentStandard3 = 1.0f - percentPro - percentStandard1 - percentStandard2- percentStandard3;
-                    
+                    mflag = MF_WHITE;
+                    if ((mflag & MF_WHITE)!=0) {
+                        whiteCount = cocos2d::random(1, 3);
+                    }
                 }
                     break;
             }
-            AlisaMethod* am = AlisaMethod::create(percentPro, percentStandard1, percentStandard2, percentStandard3, -1.0, NULL);
-            if (am)
-            {
-                PickableItem::PickableItemType type = PickableItem::PIT_MATERIAL_WHITE;
-                int itemLevel = itemprop->getLevel().GetLongValue();
-                int count = 1;
-                if (am->getRandomIndex() ==1)
-                {
-                    type = PickableItem::PIT_MATERIAL_GREEN;
-                }else if (am->getRandomIndex() ==2)
-                {
-                    type = PickableItem::PIT_MATERIAL_BLUE;
-                }else if (am->getRandomIndex() ==3)
-                {
-                    type = PickableItem::PIT_MATERIAL_PURPLE;
-                }
-                
-                if (type == PickableItem::PIT_MATERIAL_PURPLE)
-                {
-                    if (itemLevel >10 && itemLevel<25)
-                    {
-                        count = cocos2d::random(1, 3);
-                    }else if (itemLevel>25)
-                    {
-                        count = cocos2d::random(3, 5);
-                    }
-                }else
-                {
-                    if (itemLevel >0 && itemLevel<10)
-                    {
-                        count = cocos2d::random(1, 3);
-                    }else if (itemLevel >10 && itemLevel<25)
-                    {
-                        count = cocos2d::random(3, 5);
-                    }else if (itemLevel>25)
-                    {
-                        count = cocos2d::random(3, 8);
-                    }
-                }
-                for (PickableItemProperty* item : m_Bag) {
-                    if(item)
-                    {
-                        if(item->isStackable() && item->getPickableItemType() == type)
-                        {
-                            IStackable* itemProperty = dynamic_cast<IStackable*>(item);
-                            if (itemProperty)
-                            {
-                                itemProperty->addCount(count);
-                                removeItemFromBag(id);
-                            }
-                            item->adjustByLevel();
-                            return true;
-                        }
-                    }
-                }
-                if(m_Bag.size() >= m_nBagMaxSpace.GetLongValue())
-                {
-                    Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_BAG_NO_SPACE);
+
+
+            for (int i = 1 ; i<=whiteCount.GetLongValue(); i++) {
+                if(!addItemToBag(PickableItem::PIT_MATERIAL_WHITE, 1,false))
                     return false;
-                }
-                
-                MaterialProperty* itemProperty = new (std::nothrow) MaterialProperty(m_snItemInstanceIDCounter++,type);
-                if(itemProperty)
-                {
-                    itemProperty->adjustByLevel();
-                    itemProperty->addCount(count);
-                    m_Bag.push_back(itemProperty);
-                    removeItemFromBag(id);
-                    return true;
-                }
             }
+            for (int i = 1 ; i<=greenCount.GetLongValue(); i++) {
+                if(!addItemToBag(PickableItem::PIT_MATERIAL_GREEN, 1,false))
+                    return false;
+            }
+            for (int i = 1 ; i<=blueCount.GetLongValue(); i++) {
+                if(!addItemToBag(PickableItem::PIT_MATERIAL_BLUE,1,false))
+                    return false;
+            }
+            for (int i = 1 ; i<=puprpleCount.GetLongValue(); i++) {
+                if(!addItemToBag(PickableItem::PIT_MATERIAL_PURPLE, 1,false))
+                    return false;
+            }
+            
+            resultDatas[PickableItem::PIT_MATERIAL_WHITE] =whiteCount;
+            resultDatas[PickableItem::PIT_MATERIAL_GREEN] =greenCount;
+            resultDatas[PickableItem::PIT_MATERIAL_BLUE]  =blueCount;
+            resultDatas[PickableItem::PIT_MATERIAL_PURPLE] =puprpleCount;
+            CCLOG("whiteCount:%ld greenCount:%ld blueCount:%ld puprpleCount:%ld",whiteCount.GetLongValue(),greenCount.GetLongValue(),blueCount.GetLongValue(),puprpleCount.GetLongValue());
+            return removeItemFromBag(id);
             
         }else
             return false;
@@ -934,6 +965,7 @@ bool PlayerProperty::equipWashPractice(CChaosNumber id)
     PickableItemProperty* itemprop = getItemFromBag(id);
     if (itemprop)
     {
+        bool isTargetWash = false;
         PickableItemProperty::PickableItemPropertyType itemtype = itemprop->getPickableItemPropertyType();
         if (itemtype>=PickableItemProperty::PIPT_WEAPON && itemtype<=PickableItemProperty::PIPT_MAGIC_ORNAMENT)
         {
@@ -952,15 +984,11 @@ bool PlayerProperty::equipWashPractice(CChaosNumber id)
                 int surplusGreen = greenProp->getCount() - MaterialProperty::WASH_PIQ_RARE[PickableItem::PIT_MATERIAL_GREEN];
                 
                 if ( surplusWhite>=0 && surplusGreen>=0) {
-                    if (!costMoney(3000)) {
-                        return false;
-                    }
-                    whiteProp->setCount(surplusWhite);
-                    greenProp->setCount(surplusGreen);
-                    
-                    itemprop->adjustByLevel();
-                    m_bDirty = true;
-                    return true;
+
+                    isTargetWash = true;
+                
+                    removeStackableItemFromBag(PickableItem::PIT_MATERIAL_WHITE,MaterialProperty::WASH_PIQ_RARE[PickableItem::PIT_MATERIAL_WHITE]);
+                    removeStackableItemFromBag(PickableItem::PIT_MATERIAL_GREEN,MaterialProperty::WASH_PIQ_RARE[PickableItem::PIT_MATERIAL_GREEN]);
                 }
                 
             }else if (itemQualty == PIQ_EPIC)
@@ -971,16 +999,13 @@ bool PlayerProperty::equipWashPractice(CChaosNumber id)
                 int surplusGreen = greenProp->getCount() - MaterialProperty::WASH_PIQ_EPIC[PickableItem::PIT_MATERIAL_GREEN];
                 int surplusBlue = blueProp ->getCount() - MaterialProperty::WASH_PIQ_EPIC[PickableItem::PIT_MATERIAL_BLUE];
                 if ( surplusWhite>=0 && surplusGreen>=0 && surplusBlue>=0) {
-                    if (!costMoney(3000)) {
-                        return false;
-                    }
-                    whiteProp->setCount(surplusWhite);
-                    greenProp->setCount(surplusGreen);
-                    blueProp->setCount(surplusBlue);
+
+                    isTargetWash = true;
                     
-                    itemprop->adjustByLevel();
-                    m_bDirty = true;
-                    return true;
+                    removeStackableItemFromBag(PickableItem::PIT_MATERIAL_WHITE,MaterialProperty::WASH_PIQ_EPIC[PickableItem::PIT_MATERIAL_WHITE]);
+                    removeStackableItemFromBag(PickableItem::PIT_MATERIAL_GREEN,MaterialProperty::WASH_PIQ_EPIC[PickableItem::PIT_MATERIAL_GREEN]);
+                    removeStackableItemFromBag(PickableItem::PIT_MATERIAL_BLUE,MaterialProperty::WASH_PIQ_EPIC[PickableItem::PIT_MATERIAL_BLUE]);
+                    
                 }
                 
             }else if (itemQualty == PIQ_LEGEND)
@@ -992,21 +1017,53 @@ bool PlayerProperty::equipWashPractice(CChaosNumber id)
                 int surplusBlue = blueProp ->getCount() - MaterialProperty::WASH_PIQ_LEGEND[PickableItem::PIT_MATERIAL_BLUE];
                 int surplusPurple = purpleProp->getCount() - MaterialProperty::WASH_PIQ_LEGEND[PickableItem::PIT_MATERIAL_PURPLE];
                 if ( surplusWhite>=0 && surplusGreen>=0 && surplusBlue>=0 && surplusPurple>=0) {
-                    if (!costMoney(3000)) {
-                        return false;
-                    }
-                    whiteProp->setCount(surplusWhite);
-                    greenProp->setCount(surplusGreen);
-                    blueProp->setCount(surplusBlue);
-                    purpleProp->setCount(surplusPurple);
-                    m_bDirty = true;
-                    itemprop->adjustByLevel();
-                    return true;
+                    
+                    isTargetWash = true;
+                    
+                    removeStackableItemFromBag(PickableItem::PIT_MATERIAL_WHITE,MaterialProperty::WASH_PIQ_LEGEND[PickableItem::PIT_MATERIAL_WHITE]);
+                    removeStackableItemFromBag(PickableItem::PIT_MATERIAL_GREEN,MaterialProperty::WASH_PIQ_LEGEND[PickableItem::PIT_MATERIAL_GREEN]);
+                    removeStackableItemFromBag(PickableItem::PIT_MATERIAL_BLUE,MaterialProperty::WASH_PIQ_LEGEND[PickableItem::PIT_MATERIAL_BLUE]);
+                    removeStackableItemFromBag(PickableItem::PIT_MATERIAL_PURPLE,MaterialProperty::WASH_PIQ_LEGEND[PickableItem::PIT_MATERIAL_PURPLE]);
                 }
             }
+            if (isTargetWash)
+            {
+                CChaosNumber level = itemprop->getLevel();
+                CChaosNumber washLevel = 0;
+                if (level <= 5)
+                {
+                    washLevel = 10;
+                }else if(level <=10)
+                {
+                    washLevel = 15;
+                }else if(level <=15)
+                {
+                    washLevel = 20;
+                }else if (level <=20)
+                {
+                    washLevel = 25;
+                }else if (level <=25)
+                {
+                    washLevel = 30;
+                }else
+                {
+                    washLevel = level;
+                }
+                CCLOG("level:%ld,WashLevel:%ld",level.GetLongValue(),washLevel.GetLongValue());
+                washLevel = cocos2d::random(level.GetLongValue(), washLevel.GetLongValue());
+                CCLOG("randowmLevel:%ld",washLevel.GetLongValue());
+                itemprop->setLevel(washLevel);
+                itemprop->adjustByLevel();
+                itemprop->setLevel(level);
+                CCLOG("item prop level:%ld",itemprop->getLevel().GetLongValue());
+                Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_BAG_ITEM_UPDATE);
+                return true;
+            }
+            
         }else
             return false;
     }
+
     
     return false;
 }
@@ -1113,6 +1170,9 @@ bool PlayerProperty::buyItemToBag(PickableItemProperty* buyItemProperty, CChaosN
                 else if(type == PickableItemProperty::PIPT_SCROLL)
                 {
                     itemProperty = new (std::nothrow) ScrollProperty(m_snItemInstanceIDCounter++,buyItemProperty->getPickableItemType());
+                }else if (type == PickableItemProperty::PIPT_MATERIAL)
+                {
+                    itemProperty = new (std::nothrow) MaterialProperty(m_snItemInstanceIDCounter++,buyItemProperty->getPickableItemType());
                 }
                 if(itemProperty)
                 {
@@ -1257,6 +1317,8 @@ bool PlayerProperty::addItemToBag(PickableItem::PickableItemType type, CChaosNum
         itemProperty = new (std::nothrow) ScrollProperty(m_snItemInstanceIDCounter++,type);
     else if(type >= PickableItem::PIT_POTION_MINORHEALTH && type <= PickableItem::PIT_POTION_UNIVERSAL)
         itemProperty = new (std::nothrow) PotionsProperty(m_snItemInstanceIDCounter++,type);
+    else if(type >= PickableItem::PIT_MATERIAL_WHITE && type <= PickableItem::PIT_MATERIAL_PURPLE)
+        itemProperty = new (std::nothrow) MaterialProperty(m_snItemInstanceIDCounter++,type);
     if(itemProperty)
     {
         if (sound)

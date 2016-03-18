@@ -44,10 +44,12 @@ void ItemBreadDownPopupUI::onClickBreadDown(Ref* ref)
     CHECK_ACTION(ref);
     clickEffect();
     CCLOG("onClickBreadDown");
-    bool isSucess =  PlayerProperty::getInstance()->equipBreadDown(m_nItemId);
+    std::map<PickableItem::PickableItemType,CChaosNumber> resultDatas;
+    bool isSucess =  PlayerProperty::getInstance()->equipBreadDown(m_nItemId,resultDatas);
     if (!isSucess) {
-        CCLOG("isSucess");
+        CCLOG("breadDown fail");
     }
+    setCloseCallbackParamD(&resultDatas);
     closePopup();
     
 }
