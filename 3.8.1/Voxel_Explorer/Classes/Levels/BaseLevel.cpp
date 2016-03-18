@@ -97,7 +97,7 @@ std::string BaseLevel::getTerrainTileInfoDesc(int x, int y)
     }
     else if(m_Map[index].m_Type == TerrainTile::TT_ENTRANCE)
     {
-        if((RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nCurrentDepth == 1))
+        if(RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nCurrentDepth == 1)
         {
             return UtilityHelper::getLocalString(PORTAL_NAMES[BasePortal::PT_STANDARD] + "_LOCK");
         }

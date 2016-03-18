@@ -49,7 +49,7 @@ void BagShopLayer::bagItemOpe(int itemId)
     int OrnamentId = int(PlayerProperty::getInstance()->getEquipedOrnamentsID());
     int secondWeaponId = int(PlayerProperty::getInstance()->getEquipedSecondWeaponID());
     int equipId = -1;
-    ItemPopupUI* Equippopupui = nullptr;
+
     if (itemProp->getPickableItemPropertyType() == PickableItemProperty::PIPT_WEAPON && itemId !=weaponId )
     {
         equipId = weaponId;

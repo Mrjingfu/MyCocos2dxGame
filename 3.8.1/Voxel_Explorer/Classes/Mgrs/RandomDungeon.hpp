@@ -78,10 +78,10 @@ public:
     DUNGEON_TYPE getDungeonNodeType() const { return m_Type; }
     std::string     m_strDungeonName;       ////地城名称
     std::string     m_strDungeonBossName;   ////Boss地城名称
-    CChaosNumber    m_nTransmutationDepth;  ////嬗变深度
-    CChaosNumber    m_nCurrentDepth;        ////当前深度
-    CChaosNumber    m_nNodeDepth;           ////节点深度
-    CChaosNumber    m_nTotalNum;            ////地城层数
+    int             m_nTransmutationDepth;  ////嬗变深度
+    int             m_nCurrentDepth;        ////当前深度
+    int             m_nNodeDepth;           ////节点深度
+    int             m_nTotalNum;            ////地城层数
     DUNGEON_TYPE    m_Type;                 ////类型
     
     DungeonNode*    m_pLeftNode;    ////左节点
@@ -119,7 +119,7 @@ private:
     std::vector<DUNGEON_TYPE>   m_UnSelected;           ///还没有选择的。
     int                         m_nCurrentSelectGroup;  ///当前选择的组
     
-    CChaosNumber                m_nDifficultClass;      ////难度等级
+    int                         m_nDifficultClass;      ////难度等级
 };
 
 #endif /* RandomDungeon_hpp */
