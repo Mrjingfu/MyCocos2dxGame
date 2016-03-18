@@ -147,7 +147,7 @@ bool StandardLevel::createTerrain()
                     break;
                 case TerrainTile::TT_ENTRANCE:
                     {
-                        if((RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nCurrentDepth == 1))
+                        if(RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nCurrentDepth == 1)
                         {
                             StandardPortal* portal = StandardPortal::create(false);
                             if(!portal)
@@ -530,7 +530,7 @@ void StandardLevel::assignSpecialArea(Area* area)
             {
                 type = Area::AT_SPECIAL_MAGIC_SHOP;
             }
-            else if(RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nCurrentDepth.GetLongValue() % 2 == 1)
+            else if(RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nCurrentDepth % 2 == 1)
             {
                 
                 std::vector<Area::AREA_TYPE> randomTypes = { Area::AT_SPECIAL_EQUIPMENT_SHOP, Area::AT_SPECIAL_MAGIC_SHOP, Area::AT_SPECIAL_ALCHEMIST_ROOM, Area::AT_SPECIAL_TREASURE_ROOM, Area::AT_SPECIAL_DECORATION_ROOM, Area::AT_SPECIAL_TRANSPOT_ROOM };
@@ -1292,13 +1292,13 @@ void StandardLevel::placeTraps()  ///放置陷阱
 
     if(RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nNodeDepth > 1)
     {
-        nTraps = m_Areas.size()*0.4f + RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nNodeDepth.GetLongValue() + RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nCurrentDepth.GetLongValue();
+        nTraps = m_Areas.size()*0.4f + RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nNodeDepth + RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nCurrentDepth;
     }
     else
     {
         if(RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nCurrentDepth >= 1)
         {
-            nTraps = m_Areas.size()*0.4f + RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nCurrentDepth.GetLongValue();
+            nTraps = m_Areas.size()*0.4f + RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nCurrentDepth;
         }
     }
     

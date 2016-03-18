@@ -461,7 +461,7 @@ void VoxelExplorer::checkPickItem()
 {
     if(!m_pCurrentLevel || !m_pPlayer)
         return;
-    int flag = m_pCurrentLevel->getTerrainTileFlag(m_pPlayer->getPosInMap().x, m_pPlayer->getPosInMap().y);
+    //int flag = m_pCurrentLevel->getTerrainTileFlag(m_pPlayer->getPosInMap().x, m_pPlayer->getPosInMap().y);
     //if(flag & TileInfo::PICKABLE)
         handlePickItem(m_pPlayer->getPosInMap());
 }

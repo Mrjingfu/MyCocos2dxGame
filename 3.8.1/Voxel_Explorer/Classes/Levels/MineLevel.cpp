@@ -45,7 +45,7 @@ bool MineLevel::createTerrain()
                     break;
                 case TerrainTile::TT_ENTRANCE:
                     {
-                        if((RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nCurrentDepth == 1))
+                        if(RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nCurrentDepth == 1)
                         {
                             StandardPortal* portal = StandardPortal::create(false);
                             if(!portal)
