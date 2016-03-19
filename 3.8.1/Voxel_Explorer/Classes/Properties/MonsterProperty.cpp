@@ -80,7 +80,7 @@ void MonsterProperty::adjustByDC()
         m_nValueCopper = m_nValueCopper*5;
     
     CCLOG("MAXHP = %d Level = %d", (int)m_nMaxHP.GetLongValue(), (int)m_nLevel.GetLongValue());
-    m_nMaxHP = m_nMaxHP + m_nLevel.GetLongValue()*cocos2d::random(10, 15);
+    m_nMaxHP = m_nMaxHP + m_nLevel.GetLongValue()*cocos2d::random(10, 15) + (nodeDepth-1)*80;
     m_nCurrentHP = m_nMaxHP;
     
     m_nAddedMinAttack = m_nAddedMinAttack + (nodeDepth-1)*6 + (int)(currentDepth.GetLongValue()) + (m_nLevel-1)*0.25f;
@@ -89,7 +89,7 @@ void MonsterProperty::adjustByDC()
     m_nAttackDiceNum = m_nAttackDiceNum + (nodeDepth-1);
     m_nAttackDiceFaceNum = m_nAttackDiceFaceNum + (nodeDepth-1)*2 + (m_nLevel-1)*0.7f;
     
-    m_nArmorClass = m_nArmorClass - (nodeDepth-1)*10 - (m_nLevel-1)*1.5f;
+    m_nArmorClass = m_nArmorClass - (nodeDepth-1)*15 - (m_nLevel-1)*1.5f;
     
     m_fBlockRate = MIN(m_fBlockRate + m_fBlockRate*(nodeDepth-1)*0.5f, 0.4f);
     m_fCriticalStrikeRate = MIN(m_fCriticalStrikeRate + m_fCriticalStrikeRate*(nodeDepth-1)*0.5f, 0.3f);

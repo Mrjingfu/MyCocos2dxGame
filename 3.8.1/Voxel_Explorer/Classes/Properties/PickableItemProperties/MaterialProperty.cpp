@@ -16,14 +16,14 @@ std::map<PickableItem::PickableItemType, int> MaterialProperty::WASH_PIQ_RARE=
 };
 std::map<PickableItem::PickableItemType, int> MaterialProperty::WASH_PIQ_EPIC =
 {
-    std::map<PickableItem::PickableItemType, int>::value_type(PickableItem::PIT_MATERIAL_WHITE,35),
+    std::map<PickableItem::PickableItemType, int>::value_type(PickableItem::PIT_MATERIAL_WHITE,40),
     std::map<PickableItem::PickableItemType, int>::value_type(PickableItem::PIT_MATERIAL_GREEN,10),
     std::map<PickableItem::PickableItemType, int>::value_type(PickableItem::PIT_MATERIAL_BLUE,1),
 };
 std::map<PickableItem::PickableItemType, int> MaterialProperty::WASH_PIQ_LEGEND=
 {
-    std::map<PickableItem::PickableItemType, int>::value_type(PickableItem::PIT_MATERIAL_WHITE,50),
-    std::map<PickableItem::PickableItemType, int>::value_type(PickableItem::PIT_MATERIAL_GREEN,30),
+    std::map<PickableItem::PickableItemType, int>::value_type(PickableItem::PIT_MATERIAL_WHITE,100),
+    std::map<PickableItem::PickableItemType, int>::value_type(PickableItem::PIT_MATERIAL_GREEN,35),
     std::map<PickableItem::PickableItemType, int>::value_type(PickableItem::PIT_MATERIAL_BLUE,10),
     std::map<PickableItem::PickableItemType, int>::value_type(PickableItem::PIT_MATERIAL_PURPLE,1)
 };
