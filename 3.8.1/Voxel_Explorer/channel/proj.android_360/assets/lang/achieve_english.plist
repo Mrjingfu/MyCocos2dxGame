@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>ADT_MONSTER_1</key>
+	<string>First Blood</string>
+	<key>ADT_MONSTER_1_TARGET</key>
+	<string>The first time to kill the monster.</string>
+	<key>ADT_MONSTER_2</key>
+	<string>Small-scale test knife.</string>
+	<key>ADT_MONSTER_2_TARGET</key>
+	<string>Kill 30 monsters.</string>
+	<key>ADT_MONSTER_3</key>
+	<string>One hundred kill</string>
+	<key>ADT_MONSTER_3_TARGET</key>
+	<string>Kill 100 monsters.</string>
+	<key>ADT_MONSTER_4</key>
+	<string>Cold-blooded butcher</string>
+	<key>ADT_MONSTER_4_TARGET</key>
+	<string>Kill 500 monsters.</string>
+	<key>ADT_MONSTER_5</key>
+	<string>Shed blood like water</string>
+	<key>ADT_MONSTER_5_TARGET</key>
+	<string>Kill 1500 monsters.</string>
+	<key>ADT_MONSTER_6</key>
+	<string>Holy shit</string>
+	<key>ADT_MONSTER_6_TARGET</key>
+	<string>Kill 3000 monsters.</string>
+	<key>ADT_SPECIFIED_MONSTER_1</key>
+	<string>The Walking Dead</string>
+	<key>ADT_SPECIFIED_MONSTER_1_TARGET</key>
+	<string>Kill 50 zombies</string>
+	<key>ADT_SPECIFIED_MONSTER_2</key>
+	<string>Beast Hunter</string>
+	<key>ADT_SPECIFIED_MONSTER_2_TARGET</key>
+	<string>Kill the snake, the bat, the wolf, the bear, the dinosaur each kind of one hundred.</string>
+	<key>ADT_SPECIFIED_MONSTER_3</key>
+	<string>Undead Killer</string>
+	<key>ADT_SPECIFIED_MONSTER_3_TARGET</key>
+	<string>Kill zombies, skeletons, ghost, ghosts, ghouls, Gargoyle each kind of one hundred.</string>
+	<key>ADT_SPECIFIED_MONSTER_4</key>
+	<string>Cleaner</string>
+	<key>ADT_SPECIFIED_MONSTER_4_TARGET</key>
+	<string>Kill spider, mouse, slime, ooze, shadow each kind of one hundred.</string>
+	<key>ADT_SPECIFIED_MONSTER_5</key>
+	<string>Ace Elite</string>
+	<key>ADT_SPECIFIED_MONSTER_5_TARGET</key>
+	<string>Kill 50 the elite monster.</string>
+	<key>ADT_SPECIFIED_MONSTER_6</key>
+	<string>Specimen Collector</string>
+	<key>ADT_SPECIFIED_MONSTER_6_TARGET</key>
+	<string>Kill all kinds of monsters</string>
+	<key>ADT_BOSS_KILL_1</key>
+	<string>In the sewer</string>
+	<key>ADT_BOSS_KILL_1_TARGET</key>
+	<string>Kill the king of slime.</string>
+	<key>ADT_BOSS_KILL_2</key>
+	<string>Prison storm</string>
+	<key>ADT_BOSS_KILL_2_TARGET</key>
+	<string>Kill the warden.</string>
+	<key>ADT_BOSS_KILL_3</key>
+	<string>Red Net fall down</string>
+	<key>ADT_BOSS_KILL_3_TARGET</key>
+	<string>Kill the Archbishop.</string>
+	<key>ADT_BOSS_KILL_4</key>
+	<string>Death Mine</string>
+	<key>ADT_BOSS_KILL_4_TARGET</key>
+	<string>Kill the Kobold leader.</string>
+	<key>ADT_BOSS_KILL_5</key>
+	<string>The adventures of the cave</string>
+	<key>ADT_BOSS_KILL_5_TARGET</key>
+	<string>Kill the giant Gruerde.</string>
+	<key>ADT_BOSS_KILL_6</key>
+	<string>Out of the dark grave</string>
+	<key>ADT_BOSS_KILL_6_TARGET</key>
+	<string>Kill the Skeleton King.</string>
+	<key>ADT_ROLE_FALL_DEAD</key>
+	<string>Lost Youth</string>
+	<key>ADT_ROLE_FALL_DEAD_TARGET</key>
+	<string>First fall into the abyss and die.</string>
+	<key>ADT_ROLE_POISON_DEAD</key>
+	<string>Queen let you die</string>
+	<key>ADT_ROLE_POISON_DEAD_TARGET</key>
+	<string>First poisoning and death.</string>
+	<key>ADT_ROLE_CLIP_DEAD</key>
+	<string>Torture</string>
+	<key>ADT_ROLE_CLIP_DEAD_TARGET</key>
+	<string>First died of gripping trap.</string>
+	<key>ADT_ROLE_FIRE_DEAD</key>
+	<string>Bruno followers</string>
+	<key>ADT_ROLE_FIRE_DEAD_TARGET</key>
+	<string>First died of fire trap.</string>
+	<key>ADT_ROLE_DEAD_1</key>
+	<string>The first tombstone</string>
+	<key>ADT_ROLE_DEAD_1_TARGET</key>
+	<string>For the first time to be killed by monsters.</string>
+	<key>ADT_ROLE_DEAD_2</key>
+	<string>Hopeless</string>
+	<key>ADT_ROLE_DEAD_2_TARGET</key>
+	<string>Death 10 times.</string>
+	<key>ADT_ROLE_DEAD_3</key>
+	<string>Spring brother is dead</string>
+	<key>ADT_ROLE_DEAD_3_TARGET</key>
+	<string>Death 50 times.</string>
+	<key>ADT_ROLE_DEAD_4</key>
+	<string>You are the God of death</string>
+	<key>ADT_ROLE_DEAD_4_TARGET</key>
+	<string>Death 100 times.</string>
+	<key>ADT_IDENTIFY_1</key>
+	<string>Fledgling</string>
+	<key>ADT_IDENTIFY_1_TARGET</key>
+	<string>First identification.</string>
+	<key>ADT_IDENTIFY_2</key>
+	<string>Little Known</string>
+	<key>ADT_IDENTIFY_2_TARGET</key>
+	<string>First identified the equipment more than 2 attributes.</string>
+	<key>ADT_IDENTIFY_3</key>
+	<string>Fail to show restraint</string>
+	<key>ADT_IDENTIFY_3_TARGET</key>
+	<string>First time to identify the legendary equipment.</string>
+	<key>ADT_IDENTIFY_4</key>
+	<string>Great Expert</string>
+	<key>ADT_IDENTIFY_4_TARGET</key>
+	<string>Use the identified scroll 100 times.</string>
+	<key>ADT_EXTEND_BAG</key>
+	<string>The backpack is not big enough</string>
+	<key>ADT_EXTEND_BAG_TARGET</key>
+	<string>First extended Backpack.</string>
+	<key>ADT_BAG_FULL</key>
+	<string>Return fully loaded</string>
+	<key>ADT_BAG_FULL_TARGET</key>
+	<string>First times the backpack was filled.</string>
+	<key>ADT_EXTEND_BAG_MAX</key>
+	<string>The rich is to buy a bag</string>
+	<key>ADT_EXTEND_BAG_MAX_TARGET</key>
+	<string>Backpack extended to maximum number.</string>
+	<key>ADT_WEALTHY_MEN</key>
+	<string>The rich man</string>
+	<key>ADT_WEALTHY_MEN_TARGET</key>
+	<string>First discarded items.</string>
+	<key>ADT_SPENDERS_MEN</key>
+	<string>Black sheep</string>
+	<key>ADT_SPENDERS_MEN_TARGET</key>
+	<string>Discard items 50 times</string>
+	<key>ADT_PICK_ITEM</key>
+	<string>Dumbwalking</string>
+	<key>ADT_PICK_ITEM_TARGET</key>
+	<string>First pickup item.</string>
+	<key>ADT_PICK_NOT_MARIC_ITEM</key>
+	<string>Rag King</string>
+	<key>ADT_PICK_NOT_MARIC_ITEM_TARGET</key>
+	<string>Pick up 50 pieces of non magic equipment.</string>
+	<key>ADT_MARATHON</key>
+	<string>Marathon</string>
+	<key>ADT_MARATHON_TARGET</key>
+	<string>The number of steps to walk more than 42000 steps.</string>
+	<key>ADT_WORLD_RECORD</key>
+	<string>World record holder</string>
+	<key>ADT_WORLD_RECORD_TARGET</key>
+	<string>9 seconds to move more than 30 steps.</string>
+	<key>ADT_THIRTY_NOT_MOVE</key>
+	<string>Be as steady as Mount Tai</string>
+	<key>ADT_THIRTY_NOT_MOVE_TARGET</key>
+	<string>Don&apos;t move for 30 seconds.</string>
+	<key>ADT_OBSESSION_MEN</key>
+	<string>Obsessive compulsive disorder patients</string>
+	<key>ADT_OBSESSION_MEN_TARGET</key>
+	<string>Explore all areas of any one floor of the dungeon。</string>
+	<key>ADT_FOUND_HIDDEN_DOOR</key>
+	<string>All I See</string>
+	<key>ADT_FOUND_HIDDEN_DOOR_TARGET</key>
+	<string>First times to find the hidden door.</string>
+	<key>ADT_FOUND_HIDDEN_TRAP_FIRST</key>
+	<string>Oh, scared baby</string>
+	<key>ADT_FOUND_HIDDEN_TRAP_FIRST_TARGET</key>
+	<string>First times to find the hidden trap.</string>
+	<key>ADT_FOUND_HIDDEN_TRAP</key>
+	<string>Piercing Eye</string>
+	<key>ADT_FOUND_HIDDEN_TRAP_TARGET</key>
+	<string>Find the hidden door or the hidden trap for 50 times.</string>
+	<key>ADT_FOUND_HIDDEN_MSG_FIRST</key>
+	<string>What is this?</string>
+	<key>ADT_FOUND_HIDDEN_MSG_FIRST_TARGET</key>
+	<string>First times to find hidden information.</string>
+	<key>ADT_FOUND_HIDDEN_MSG</key>
+	<string>Wikipedia</string>
+	<key>ADT_FOUND_HIDDEN_MSG_TARGET</key>
+	<string>Find 10 hidden information.</string>
+	<key>ADT_SEARCH_KING</key>
+	<string>Enquiring Mind</string>
+	<key>ADT_SEARCH_KING_TARGET</key>
+	<string>Scene interaction for 100 times</string>
+	<key>ADT_LOVE_QUESTION</key>
+	<string>Curious Child</string>
+	<key>ADT_LOVE_QUESTION_TARGET</key>
+	<string>Scene interaction for 10 times</string>
+	<key>ADT_ALL_ARRIVE_DUNGEON</key>
+	<string>The great adventure</string>
+	<key>ADT_ALL_ARRIVE_DUNGEON_TARGET</key>
+	<string>Get to all type of Dungeon.</string>
+	<key>ADT_BREAK_JAR_1</key>
+	<string>Kick jar</string>
+	<key>ADT_BREAK_JAR_1_TARGET</key>
+	<string>Break 20 jars.</string>
+	<key>ADT_BREAK_JAR_2</key>
+	<string>Destroyer</string>
+	<key>ADT_BREAK_JAR_2_TARGET</key>
+	<string>Break 100 jars.</string>
+	<key>ADT_COPPER_BOX_FIRST</key>
+	<string>Little Thief</string>
+	<key>ADT_COPPER_BOX_FIRST_TARGET</key>
+	<string>Open copper chest for the first time.</string>
+	<key>ADT_SILVER_BOX_FIRST</key>
+	<string>Elite thief</string>
+	<key>ADT_SILVER_BOX_FIRST_TARGET</key>
+	<string>Open silver chest for the first time.</string>
+	<key>ADT_GOLD_BOX_FIRST</key>
+	<string>Master thief</string>
+	<key>ADT_GOLD_BOX_FIRST_TARGET</key>
+	<string>Open gold chest for the first time.</string>
+	<key>ADT_OPEN_BOX</key>
+	<string>King of Thieves</string>
+	<key>ADT_OPEN_BOX_TARGET</key>
+	<string>Open the chest 50 times.</string>
+	<key>ADT_USE_KEY</key>
+	<string>A World Without Thieves</string>
+	<key>ADT_USE_KEY_TARGET</key>
+	<string>Use key 100 times.</string>
+	<key>ADT_MEET_THIEF_FIRST</key>
+	<string>Join the thieves guild</string>
+	<key>ADT_MEET_THIEF_FIRST_TARGET</key>
+	<string>Met a thief for the first time.</string>
+	<key>ADT_NURSE_TREAT</key>
+	<string>Temptation of uniforms</string>
+	<key>ADT_NURSE_TREAT_TARGET</key>
+	<string>Ask the nurse to treat you 10 times.</string>
+	<key>ADT_MEET_HAG_FIRST</key>
+	<string>The witch&apos;s condition</string>
+	<key>ADT_MEET_HAG_FIRST_TARGET</key>
+	<string>Met the witch for the first time.</string>
+	<key>ADT_SAGE_STORY</key>
+	<string>Listen to grandfather telling stories about the past.</string>
+	<key>ADT_SAGE_STORY_TARGET</key>
+	<string>Listen to the wise man&apos;s 3 story.</string>
+	<key>ADT_BUY_EQUIP</key>
+	<string>Risk taker‘s weapons</string>
+	<key>ADT_BUY_EQUIP_TARGET</key>
+	<string>Buy weapons from the little knights.</string>
+	<key>ADT_BUY_MARICORIM</key>
+	<string>You get what you pay for</string>
+	<key>ADT_BUY_MARICORIM_TARGET</key>
+	<string>Buy armor or accessory from the shopgirl.</string>
+	<key>ADT_BUY_SCROLL_POTION</key>
+	<string>Be thrifty at home and spend liberally while travelling</string>
+	<key>ADT_BUY_SCROLL_POTION_TARGET</key>
+	<string>Buy scrolls\potions or keys from the alchemist.</string>
+	<key>ADT_HAVE_GOLD_1</key>
+	<string>The first pot of gold</string>
+	<key>ADT_HAVE_GOLD_1_TARGET</key>
+	<string>Have one gold coin.</string>
+	<key>ADT_HAVE_GOLD_2</key>
+	<string>Middle Class</string>
+	<key>ADT_HAVE_GOLD_2_TARGET</key>
+	<string>With over 100 gold coins.</string>
+	<key>ADT_HAVE_GOLD_3</key>
+	<string>Rich Man</string>
+	<key>ADT_HAVE_GOLD_3_TARGET</key>
+	<string>With over 500 gold coins</string>
+	<key>ADT_HAVE_GOLD_4</key>
+	<string>Fabulously Rich</string>
+	<key>ADT_HAVE_GOLD_4_TARGET</key>
+	<string>With over 5000 gold coins</string>
+	<key>ADT_ROLE_LEVEL_1</key>
+	<string>Newly graduated</string>
+	<key>ADT_ROLE_LEVEL_1_TARGET</key>
+	<string>Role reached 10 level.</string>
+	<key>ADT_ROLE_LEVEL_2</key>
+	<string>Experienced</string>
+	<key>ADT_ROLE_LEVEL_2_TARGET</key>
+	<string>Role reached 30 level.</string>
+	<key>ADT_ROLE_HP</key>
+	<string>Tenacious in life</string>
+	<key>ADT_ROLE_HP_TARGET</key>
+	<string>Health Point exceeded 500.</string>
+	<key>ADT_ROLE_ATTACK</key>
+	<string>Saiyan turned</string>
+	<key>ADT_ROLE_ATTACK_TARGET</key>
+	<string>Maximum attack breakthrough 50.</string>
+	<key>ADT_ROLE_DODGE</key>
+	<string>Flexible Body</string>
+	<key>ADT_ROLE_DODGE_TARGET</key>
+	<string>Dodge for 50 times.</string>
+	<key>ADT_ROLE_CRIT</key>
+	<string>Headshot</string>
+	<key>ADT_ROLE_CRIT_TARGET</key>
+	<string>Crit for 50 times.</string>
+	<key>ADT_ROLE_BLOCK</key>
+	<string>Shield Wall</string>
+	<key>ADT_ROLE_BLOCK_TARGET</key>
+	<string>Block for 50 times.</string>
+	<key>ADT_ROLE_LUCK_NOT_DEAD</key>
+	<string>Charmed Life</string>
+	<key>ADT_ROLE_LUCK_NOT_DEAD_TARGET</key>
+	<string>Fall into the abyss，But not dead.</string>
+	<key>ADT_STEALTHY_FIRST</key>
+	<string>Grow in the shadow</string>
+	<key>ADT_STEALTHY_FIRST_TARGET</key>
+	<string>First time into stealth state.</string>
+	<key>ADT_WEAK_RECOVER</key>
+	<string>Serious illness rehabilitation</string>
+	<key>ADT_WEAK_RECOVER_TARGET</key>
+	<string>Recover from weakness for the first time.</string>
+	<key>ADT_POISON_NOT_DEAD</key>
+	<string>No poison can kill cockroach.</string>
+	<key>ADT_POISON_NOT_DEAD_TARGET</key>
+	<string>Recovery from poisoning for the first time.</string>
+	<key>ADT_SPEED_UP_FIRST</key>
+	<string>Flying Feeling</string>
+	<key>ADT_SPEED_UP_FIRST_TARGET</key>
+	<string>First time into accelerate state.</string>
+	<key>ADT_STRONG_FIRST</key>
+	<string>Who stop me will die.</string>
+	<key>ADT_STRONG_FIRST_TARGET</key>
+	<string>First time into stronger state.</string>
+</dict>
+</plist>
