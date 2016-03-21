@@ -66,16 +66,16 @@ void BossProperty::adjustByDC()
     
     m_nValueCopper = (nodeDepth-1)*1200 + maxDepth * cocos2d::random(100, 200);
     
-    m_nMaxHP = m_nMaxHP + (nodeDepth-1)*cocos2d::random(200, 300) + cocos2d::random(300, 400);
+    m_nMaxHP = m_nMaxHP + (nodeDepth-1)*cocos2d::random(300, 400) + cocos2d::random(300, 400);
     m_nCurrentHP = m_nMaxHP;
     
     m_nAddedMinAttack = m_nAddedMinAttack + (nodeDepth-1)*20;
     m_nAddedMaxAttack = m_nAddedMaxAttack + + (nodeDepth-1)*40;
     
     m_nAttackDiceNum = m_nAttackDiceNum  + (nodeDepth-1)*2 + 2;
-    m_nAttackDiceFaceNum = m_nAttackDiceFaceNum + (nodeDepth-1)*4 + maxDepth*2;
+    m_nAttackDiceFaceNum = m_nAttackDiceFaceNum + (nodeDepth-1)*5 + maxDepth*2;
     
-    m_nArmorClass = m_nArmorClass - (nodeDepth-1)*20 - maxDepth*4;
+    m_nArmorClass = m_nArmorClass - (nodeDepth-1)*25 - maxDepth*5;
     
     m_fBlockRate = MIN(m_fBlockRate + m_fBlockRate*(nodeDepth-1)*0.5f, 0.5f);
     m_fCriticalStrikeRate = MIN(m_fCriticalStrikeRate + m_fCriticalStrikeRate*(nodeDepth-1)*0.5f, 0.4f);

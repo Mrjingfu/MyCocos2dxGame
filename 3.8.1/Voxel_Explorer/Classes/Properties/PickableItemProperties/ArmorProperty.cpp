@@ -134,10 +134,32 @@ void ArmorProperty::adjustByLevel()
             m_nAddedSearchDistance = 1;
         
         if(std::find(m_AddedEffectList.begin(), m_AddedEffectList.end(), AE_MAX_HP) != m_AddedEffectList.end())
-            m_nAddedMaxHP = cocos2d::random(300, 550);
+        {
+            if (m_nLevel <= 35)
+                m_nAddedMaxHP = cocos2d::random(300, 350);
+            else if(m_nLevel <= 40)
+                m_nAddedMaxHP = cocos2d::random(350, 400);
+            else if(m_nLevel <= 45)
+                m_nAddedMaxHP = cocos2d::random(400, 450);
+            else if(m_nLevel <= 50)
+                m_nAddedMaxHP = cocos2d::random(450, 500);
+            else
+                m_nAddedMaxHP = cocos2d::random(500, 550);
+        }
         
         if(std::find(m_AddedEffectList.begin(), m_AddedEffectList.end(), AE_MAX_MP) != m_AddedEffectList.end())
-            m_nAddedMaxMP = cocos2d::random(300, 550);
+        {
+            if (m_nLevel <= 35)
+                m_nAddedMaxMP = cocos2d::random(300, 350);
+            else if(m_nLevel <= 40)
+                m_nAddedMaxMP = cocos2d::random(350, 400);
+            else if(m_nLevel <= 45)
+                m_nAddedMaxMP = cocos2d::random(400, 450);
+            else if(m_nLevel <= 50)
+                m_nAddedMaxMP = cocos2d::random(450, 500);
+            else
+                m_nAddedMaxMP = cocos2d::random(500, 550);
+        }
         
         if(std::find(m_AddedEffectList.begin(), m_AddedEffectList.end(), AE_DODGE_RATE) != m_AddedEffectList.end())
             m_fAddedDodgeRate = cocos2d::random(0.02f, 0.05f);
@@ -149,8 +171,10 @@ void ArmorProperty::adjustByLevel()
             m_nAddedArmorClass = MIN((int)m_nAddedArmorClass.GetLongValue(),cocos2d::random(-30, -24));
         else if(m_nLevel <= 40)
             m_nAddedArmorClass = MIN((int)m_nAddedArmorClass.GetLongValue(),cocos2d::random(-40, -30));
-        else
+        else if(m_nLevel <= 50)
             m_nAddedArmorClass = MIN((int)m_nAddedArmorClass.GetLongValue(),cocos2d::random(-50, -40));
+        else
+            m_nAddedArmorClass = MIN((int)m_nAddedArmorClass.GetLongValue(),cocos2d::random(-60, -50));
     }
     
     m_nValueCopper = 250 * (int)(m_AddedEffectList.size())*(int)(m_AddedEffectList.size()) + m_nLevel*50;

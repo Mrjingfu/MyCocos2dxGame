@@ -847,7 +847,7 @@ bool PlayerProperty::equipBreakDown(CChaosNumber id,std::map<PickableItem::Picka
                         
                         if ((mflag & MF_WHITE)!=0)
                         {
-                            whiteCount = cocos2d::random(7, 11);
+                            whiteCount = cocos2d::random(9, 12);
                         }
                         if ((mflag & MF_GREEN)!=0)
                         {
@@ -902,10 +902,10 @@ bool PlayerProperty::equipBreakDown(CChaosNumber id,std::map<PickableItem::Picka
                         }
                         
                         if ((mflag & MF_WHITE)!=0) {
-                            whiteCount = cocos2d::random(11, 13);
+                            whiteCount = cocos2d::random(25, 36);
                         }
                         if ((mflag & MF_GREEN)!=0) {
-                            greenCount = cocos2d::random(5, 8);
+                            greenCount = cocos2d::random(9, 12);
                         }
                         if ((mflag & MF_BLUE)!=0) {
                             blueCount = cocos2d::random(2, 4);
@@ -922,7 +922,7 @@ bool PlayerProperty::equipBreakDown(CChaosNumber id,std::map<PickableItem::Picka
                 {
                     mflag = MF_WHITE;
                     if ((mflag & MF_WHITE)!=0) {
-                        whiteCount = cocos2d::random(1, 3);
+                        whiteCount = cocos2d::random(1, 5);
                     }
                 }
                     break;
@@ -1033,25 +1033,40 @@ bool PlayerProperty::equipRefine(CChaosNumber id)
                 if (level <= 5)
                 {
                     washLevel = 10;
-                }else if(level <=10)
+                }
+                else if(level <=10)
                 {
                     washLevel = 15;
-                }else if(level <=15)
+                }
+                else if(level <=15)
                 {
                     washLevel = 20;
-                }else if (level <=20)
+                }
+                else if (level <=20)
                 {
                     washLevel = 25;
-                }else if (level <=25)
+                }
+                else if (level <=25)
                 {
                     washLevel = 30;
-                }else if (level <=30)
+                }
+                else if (level <=30)
                 {
                     washLevel = 35;
-                }else if (level <=35)
+                }
+                else if (level <=35)
                 {
-                     washLevel = 40;
-                }else
+                    washLevel = 40;
+                }
+                else if (level <=40)
+                {
+                    washLevel = 45;
+                }
+                else if (level <=45)
+                {
+                    washLevel = 50;
+                }
+                else
                 {
                     washLevel = level;
                 }

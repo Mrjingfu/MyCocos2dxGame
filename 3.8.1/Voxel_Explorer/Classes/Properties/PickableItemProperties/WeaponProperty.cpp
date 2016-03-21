@@ -316,16 +316,60 @@ void WeaponProperty::adjustByLevel()
             m_nAddedSearchDistance = 1;
         
         if(std::find(m_AddedEffectList.begin(), m_AddedEffectList.end(), AE_MAX_HP) != m_AddedEffectList.end())
-            m_nAddedMaxHP = cocos2d::random(300, 550);
+        {
+            if (m_nLevel <= 35)
+                m_nAddedMaxHP = cocos2d::random(300, 350);
+            else if(m_nLevel <= 40)
+                m_nAddedMaxHP = cocos2d::random(350, 400);
+            else if(m_nLevel <= 45)
+                m_nAddedMaxHP = cocos2d::random(400, 450);
+            else if(m_nLevel <= 50)
+                m_nAddedMaxHP = cocos2d::random(450, 500);
+            else
+                m_nAddedMaxHP = cocos2d::random(500, 550);
+        }
         
         if(std::find(m_AddedEffectList.begin(), m_AddedEffectList.end(), AE_MAX_MP) != m_AddedEffectList.end())
-            m_nAddedMaxMP = cocos2d::random(300, 550);
+        {
+            if (m_nLevel <= 35)
+                m_nAddedMaxMP = cocos2d::random(300, 350);
+            else if(m_nLevel <= 40)
+                m_nAddedMaxMP = cocos2d::random(350, 400);
+            else if(m_nLevel <= 45)
+                m_nAddedMaxMP = cocos2d::random(400, 450);
+            else if(m_nLevel <= 50)
+                m_nAddedMaxMP = cocos2d::random(450, 500);
+            else
+                m_nAddedMaxMP = cocos2d::random(500, 550);
+        }
         
         if(std::find(m_AddedEffectList.begin(), m_AddedEffectList.end(), AE_MIN_ATTACK) != m_AddedEffectList.end())
-            m_nAddedMinAttack = cocos2d::random(45, 60);
+        {
+            if (m_nLevel <= 35)
+                m_nAddedMinAttack = cocos2d::random(45, 50);
+            else if(m_nLevel <= 40)
+                m_nAddedMinAttack = cocos2d::random(50, 55);
+            else if(m_nLevel <= 45)
+                m_nAddedMinAttack = cocos2d::random(55, 60);
+            else if(m_nLevel <= 50)
+                m_nAddedMinAttack = cocos2d::random(60, 65);
+            else
+                m_nAddedMinAttack = cocos2d::random(65, 70);
+        }
         
         if(std::find(m_AddedEffectList.begin(), m_AddedEffectList.end(), AE_MAX_ATTACK) != m_AddedEffectList.end())
-            m_nAddedMaxAttack = cocos2d::random(100, 150);
+        {
+            if (m_nLevel <= 35)
+                m_nAddedMaxAttack = cocos2d::random(90, 100);
+            else if(m_nLevel <= 40)
+                m_nAddedMaxAttack = cocos2d::random(100, 110);
+            else if(m_nLevel <= 45)
+                m_nAddedMaxAttack = cocos2d::random(110, 120);
+            else if(m_nLevel <= 50)
+                m_nAddedMaxAttack = cocos2d::random(120, 130);
+            else
+                m_nAddedMaxAttack = cocos2d::random(130, 150);
+        }
         
         if(std::find(m_AddedEffectList.begin(), m_AddedEffectList.end(), AE_CRITICALSTRICK_RATE) != m_AddedEffectList.end())
             m_fAddedCriticalStrikeRate = cocos2d::random(0.04f, 0.1f);

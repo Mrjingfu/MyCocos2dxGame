@@ -402,7 +402,7 @@ bool MineBossLevel::createPickableItems()
             continue;
         
         int playerlevel = (int)PlayerProperty::getInstance()->getLevel().GetLongValue();
-        int itemLevel = cocos2d::random(playerlevel - 3, playerlevel + 3);
+        int itemLevel = cocos2d::random(playerlevel - 1, playerlevel + 5);
         if(itemLevel < 1)
             itemLevel = 1;
         
