@@ -1,7 +1,6 @@
 package com.plugin.wanax.warpper;
 
 import com.plugin.wanax.channel.GoogleAdsWarpper;
-import com.plugin.wanax.channel.YoumiAdsWarpper;
 
 import android.app.Activity;
 
@@ -22,7 +21,7 @@ public class WanaxWrapper {
 	{
 		mActity = actity;
         
-		mAdsWarpper = new YoumiAdsWarpper();
+		mAdsWarpper = new GoogleAdsWarpper();
         mAdsWarpper.initAds(actity);
        
 	}

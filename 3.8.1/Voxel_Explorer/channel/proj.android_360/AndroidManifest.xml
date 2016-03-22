@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.wanax.voxelexplorer"
     android:installLocation="auto"
-    android:versionCode="5"
+    android:versionCode="6"
     android:versionName="1.2" >
 
     <uses-sdk android:minSdkVersion="11" />
@@ -73,7 +73,7 @@
         <service android:name="com.google.android.gms.analytics.CampaignTrackingService" />
         
         <!-- 有米begin -->
-        <activity
+<!--         <activity
             android:name="net.youmi.android.AdBrowser"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
             android:theme="@android:style/Theme.Light.NoTitleBar" >
@@ -90,7 +90,7 @@
 
                 <data android:scheme="package" />
             </intent-filter>
-        </receiver>
+        </receiver> -->
 		<!-- 有米end -->
     </application>
 
@@ -101,8 +101,8 @@
         android:smallScreens="true"
         android:xlargeScreens="true" />
     <!-- 有米begin -->
-	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-	<uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+<!-- 	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+	<uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" /> -->
     <!-- 有米end -->
 	<!--Bugly begin  -->
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
