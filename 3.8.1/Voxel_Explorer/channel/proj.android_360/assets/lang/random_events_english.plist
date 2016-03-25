@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>EVENT_TYPE</key>
+		<integer>0</integer>
+		<key>EVENT_DESC</key>
+		<string>
+Adventure tips:&quot;Make sure that
+equip your knees with armor!&quot;
+        </string>
+		<key>HAS_READED</key>
+		<false/>
+	</dict>
+	<dict>
+		<key>EVENT_TYPE</key>
+		<integer>0</integer>
+		<key>EVENT_DESC</key>
+		<string>
+&quot;Dark night gave me black eyes,
+but I use it to find bug.&quot;
+    ----&quot;Developer Journal&quot;
+        </string>
+		<key>HAS_READED</key>
+		<false/>
+	</dict>
+	<dict>
+		<key>EVENT_TYPE</key>
+		<integer>1</integer>
+		<key>EVENT_DESC</key>
+		<string>
+You found one gold coins under the
+floor.
+        </string>
+		<key>HAS_READED</key>
+		<false/>
+	</dict>
+	<dict>
+		<key>EVENT_TYPE</key>
+		<integer>0</integer>
+		<key>EVENT_DESC</key>
+		<string>
+There&apos;s a sword in the walls of
+the stone,it looks extraordinary, you
+want to pull it outwith all you
+strength, motionless...
+        </string>
+		<key>HAS_READED</key>
+		<false/>
+	</dict>
+	<dict>
+		<key>EVENT_TYPE</key>
+		<integer>0</integer>
+		<key>EVENT_DESC</key>
+		<string>
+&quot;You will suffer! You will all suffer!&quot;
+    ---------&quot;Jon Irenicus&quot;
+        </string>
+		<key>HAS_READED</key>
+		<false/>
+	</dict>
+	<dict>
+		<key>EVENT_TYPE</key>
+		<integer>0</integer>
+		<key>EVENT_DESC</key>
+		<string>
+&quot;Race does not dictate honor&quot;.
+    ------- &quot;Tirion Fordring&quot;
+        </string>
+		<key>HAS_READED</key>
+		<false/>
+	</dict>
+	<dict>
+		<key>EVENT_TYPE</key>
+		<integer>0</integer>
+		<key>EVENT_DESC</key>
+		<string>
+&quot;WWSSADADAB&quot; ？？？？
+What&apos;s the meaning？
+        </string>
+		<key>HAS_READED</key>
+		<false/>
+	</dict>
+	<dict>
+		<key>EVENT_TYPE</key>
+		<integer>0</integer>
+		<key>EVENT_DESC</key>
+		<string>
+&quot;There is no cow level!&quot;
+----- &quot;Developer Journal&quot;
+        </string>
+		<key>HAS_READED</key>
+		<false/>
+	</dict>
+	<dict>
+		<key>EVENT_TYPE</key>
+		<integer>0</integer>
+		<key>EVENT_DESC</key>
+		<string>
+The walls were written with a
+number of odd numbers:
+002291, 000428,002467,002582.
+        </string>
+		<key>HAS_READED</key>
+		<false/>
+	</dict>
+	<dict>
+		<key>EVENT_TYPE</key>
+		<integer>0</integer>
+		<key>EVENT_DESC</key>
+		<string>
+&quot;Have traveled thus far,
+I&apos;m going to Sweetwater ~&quot;
+        ------ &quot;Prince Nicola&quot;
+        </string>
+		<key>HAS_READED</key>
+		<false/>
+	</dict>
+	<dict>
+		<key>EVENT_TYPE</key>
+		<integer>2</integer>
+		<key>EVENT_DESC</key>
+		<string>
+There is a note under the floor:
+&quot;there is a shortcut leading to
+the tomb of Tal Rasha~ ~&quot;
+        </string>
+		<key>HAS_READED</key>
+		<false/>
+	</dict>
+	<dict>
+		<key>EVENT_TYPE</key>
+		<integer>0</integer>
+		<key>EVENT_DESC</key>
+		<string>
+&quot;Would you like my signature?
+Come to NEVERWINTER and see
+me. &quot;
+        ------ Aribeth&quot;
+        </string>
+		<key>HAS_READED</key>
+		<false/>
+	</dict>
+</array>
+</plist>

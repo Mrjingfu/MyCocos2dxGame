@@ -1,0 +1,12 @@
+{
+    "android": {
+        "GoogleAnalytics": {
+            "trackingCode": "UA-61442727-6"
+        }
+    }, 
+    "ios": {
+        "GoogleAnalytics": {
+            "trackingCode": "UA-61442727-5"
+        }
+    }
+}

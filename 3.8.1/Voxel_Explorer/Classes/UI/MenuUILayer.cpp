@@ -45,11 +45,17 @@ bool MenuUILayer::addEvents()
         return false;
 
     cocos2d::ui::Button* btn_rank = dynamic_cast<cocos2d::ui::Button*>(UtilityHelper::seekNodeByName(m_pRootNode,"btn_rank"));
-    if (!btn_rank)
-        return false;
+    if (btn_rank)
+    {
+        btn_rank->addClickEventListener(CC_CALLBACK_1(MenuUILayer::onClickRank, this));
+    }
+
     cocos2d::ui::Button* btn_rate = dynamic_cast<cocos2d::ui::Button*>(UtilityHelper::seekNodeByName(m_pRootNode,"btn_rate"));
-    if (!btn_rate)
-        return false;
+    if (btn_rate)
+    {
+        btn_rate->addClickEventListener(CC_CALLBACK_1(MenuUILayer::onClickRate, this));
+    }
+    
 
     
     m_pEyes = dynamic_cast<cocos2d::Sprite*>(UtilityHelper::seekNodeByName(m_pRootNode,"menu_eyes"));
@@ -101,10 +107,7 @@ bool MenuUILayer::addEvents()
     
     btn_achieve->addClickEventListener(CC_CALLBACK_1(MenuUILayer::onClickAchieve, this));
     m_pMuiscImg->addClickEventListener(CC_CALLBACK_1(MenuUILayer::onClickMuisc, this));
-#if (CHINA_CHANEL==0)
-    btn_rank->addClickEventListener(CC_CALLBACK_1(MenuUILayer::onClickRank, this));
-#endif
-    btn_rate->addClickEventListener(CC_CALLBACK_1(MenuUILayer::onClickRate, this));
+
     
     m_pArchiveStart->addClickEventListener(CC_CALLBACK_1(MenuUILayer::onClickStart, this));
     m_pArchiveRestart->addClickEventListener(CC_CALLBACK_1(MenuUILayer::onClikcRestart, this));

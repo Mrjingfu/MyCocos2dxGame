@@ -31,12 +31,11 @@
     <Item Key="TabsParamsKey">
       <Value ctype="TabsInfo">
         <OpenedDocuments>
-          <FilePathData Path="washpracticePopupLayer.csd" />
-          <FilePathData Path="breadkDownbalance.csd" />
-          <FilePathData Path="breadkDownbalanceItem.csd" />
-          <FilePathData Path="breaddownpopupLayer.csd" />
+          <FilePathData Path="menuscene_channel.csd" />
+          <FilePathData Path="pausenewPopupLayer.csd" />
+          <FilePathData Path="pausenewPopupLayer_abroad.csd" />
         </OpenedDocuments>
-        <ActiveDocument Path="washpracticePopupLayer.csd" />
+        <ActiveDocument Path="menuscene_channel.csd" />
       </Value>
     </Item>
   </Properties>
