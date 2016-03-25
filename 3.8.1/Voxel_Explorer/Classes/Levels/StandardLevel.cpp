@@ -533,7 +533,7 @@ void StandardLevel::assignSpecialArea(Area* area)
             else if(RandomDungeon::getInstance()->getCurrentDungeonNode()->m_nCurrentDepth % 2 == 1)
             {
                 
-                std::vector<Area::AREA_TYPE> randomTypes = { Area::AT_SPECIAL_EQUIPMENT_SHOP, Area::AT_SPECIAL_MAGIC_SHOP, Area::AT_SPECIAL_ALCHEMIST_ROOM, Area::AT_SPECIAL_TREASURE_ROOM, Area::AT_SPECIAL_DECORATION_ROOM, Area::AT_SPECIAL_TRANSPOT_ROOM };
+                std::vector<Area::AREA_TYPE> randomTypes = { Area::AT_SPECIAL_EQUIPMENT_SHOP, Area::AT_SPECIAL_MAGIC_SHOP, Area::AT_SPECIAL_ALCHEMIST_ROOM, Area::AT_SPECIAL_TREASURE_ROOM, Area::AT_SPECIAL_DECORATION_ROOM, Area::AT_SPECIAL_TRANSPOT_ROOM, Area::AT_SPECIAL_MISSION_ROOM };
                 int rand = cocos2d::random(0, (int)(randomTypes.size()-1));
                 if(std::find(m_SpecailAreas.begin(), m_SpecailAreas.end(), randomTypes[rand]) != m_SpecailAreas.end())
                     type = randomTypes[rand];
@@ -545,7 +545,7 @@ void StandardLevel::assignSpecialArea(Area* area)
             }
             else
             {
-                std::vector<Area::AREA_TYPE> randomTypes = { Area::AT_SPECIAL_WITCH_ROOM, Area::AT_SPECIAL_SAGE_ROOM, Area::AT_SPECIAL_THEIF_ROOM, Area::AT_SPECIAL_EQUIPMENT_SHOP, Area::AT_SPECIAL_MAGIC_SHOP, Area::AT_SPECIAL_ALCHEMIST_ROOM, Area::AT_SPECIAL_TREASURE_ROOM, Area::AT_SPECIAL_DECORATION_ROOM, Area::AT_SPECIAL_TRANSPOT_ROOM };
+                std::vector<Area::AREA_TYPE> randomTypes = { Area::AT_SPECIAL_WITCH_ROOM, Area::AT_SPECIAL_SAGE_ROOM, Area::AT_SPECIAL_THEIF_ROOM, Area::AT_SPECIAL_EQUIPMENT_SHOP, Area::AT_SPECIAL_MAGIC_SHOP, Area::AT_SPECIAL_ALCHEMIST_ROOM, Area::AT_SPECIAL_TREASURE_ROOM, Area::AT_SPECIAL_DECORATION_ROOM, Area::AT_SPECIAL_TRANSPOT_ROOM, Area::AT_SPECIAL_MISSION_ROOM };
                 int rand = cocos2d::random(0, (int)(randomTypes.size()-1));
                 if(std::find(m_SpecailAreas.begin(), m_SpecailAreas.end(), randomTypes[rand]) != m_SpecailAreas.end())
                     type = randomTypes[rand];
