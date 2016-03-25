@@ -168,13 +168,13 @@ void AppDelegate::applicationWillEnterForeground() {
     SimpleAudioEngine::getInstance()->resumeAllEffects();
     SimpleAudioEngine::getInstance()->resumeBackgroundMusic();
     
-    if (!PopupUILayerManager::getInstance()->getCurrentPopUpLayer()&&
-        PopupUILayerManager::getInstance()->getSceneType()==PopupUILayerManager::ST_GAME) {
-        
-        PopupUILayer* popui = nullptr;
-        if (!PopupUILayerManager::getInstance()->isOpenPopup(ePopupPause, popui)) {
-             PopupUILayerManager::getInstance()->openPopup(ePopupPause);
-        }
-       
-    }
+//    if (!PopupUILayerManager::getInstance()->getCurrentPopUpLayer()&&
+//        PopupUILayerManager::getInstance()->getSceneType()==PopupUILayerManager::ST_GAME) {
+//        
+//        PopupUILayer* popui = nullptr;
+//        if (!PopupUILayerManager::getInstance()->isOpenPopup(ePopupPause, popui)) {
+//             PopupUILayerManager::getInstance()->openPopup(ePopupPause);
+//        }
+//       
+//    }
 }
