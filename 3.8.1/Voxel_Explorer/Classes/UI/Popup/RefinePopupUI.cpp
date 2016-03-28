@@ -230,8 +230,8 @@ void RefinePopupUI::updateMaterial(Ref* data)
             whiteTargetCount = MaterialProperty::WASH_PIQ_RARE[PickableItem::PIT_MATERIAL_WHITE];
             greenTargetCount = MaterialProperty::WASH_PIQ_RARE[PickableItem::PIT_MATERIAL_GREEN];
             
-            int whilePropCount = whiteProp==nullptr? 0:whiteProp->getCount().GetLongValue();
-            int greenPropCount =  greenProp==nullptr? 0:greenProp->getCount().GetLongValue();
+            int whilePropCount = whiteProp==nullptr? 0:(int)(whiteProp->getCount().GetLongValue());
+            int greenPropCount = greenProp==nullptr? 0:(int)(greenProp->getCount().GetLongValue());
             
             m_pWhiteMaterialText->setString(StringUtils::format("%d/%d",whilePropCount,whiteTargetCount));
             m_pGreenMaterialText->setString(StringUtils::format("%d/%d",greenPropCount,greenTargetCount));
@@ -260,9 +260,9 @@ void RefinePopupUI::updateMaterial(Ref* data)
             greenTargetCount = MaterialProperty::WASH_PIQ_EPIC[PickableItem::PIT_MATERIAL_GREEN];
             blueTargetCount = MaterialProperty::WASH_PIQ_EPIC[PickableItem::PIT_MATERIAL_BLUE];
             
-            int whilePropCount = whiteProp==nullptr? 0:whiteProp->getCount().GetLongValue();
-            int greenPropCount =  greenProp==nullptr? 0:greenProp->getCount().GetLongValue();
-            int bluePropCount =  blueProp==nullptr? 0:blueProp->getCount().GetLongValue();
+            int whilePropCount = whiteProp==nullptr? 0:(int)whiteProp->getCount().GetLongValue();
+            int greenPropCount =  greenProp==nullptr? 0:(int)greenProp->getCount().GetLongValue();
+            int bluePropCount =  blueProp==nullptr? 0:(int)blueProp->getCount().GetLongValue();
             
             m_pWhiteMaterialText->setString(StringUtils::format("%d/%d",whilePropCount,whiteTargetCount));
             m_pGreenMaterialText->setString(StringUtils::format("%d/%d",greenPropCount,greenTargetCount));
@@ -297,10 +297,10 @@ void RefinePopupUI::updateMaterial(Ref* data)
             blueTargetCount = MaterialProperty::WASH_PIQ_LEGEND[PickableItem::PIT_MATERIAL_BLUE];
             purpleTargetCount = MaterialProperty::WASH_PIQ_LEGEND[PickableItem::PIT_MATERIAL_PURPLE];
             
-            int whilePropCount = whiteProp==nullptr? 0:whiteProp->getCount().GetLongValue();
-            int greenPropCount =  greenProp==nullptr? 0:greenProp->getCount().GetLongValue();
-            int bluePropCount =  blueProp==nullptr? 0:blueProp->getCount().GetLongValue();
-            int purplePropCount = purpleProp==nullptr? 0:purpleProp->getCount().GetLongValue();
+            int whilePropCount = whiteProp==nullptr? 0:(int)whiteProp->getCount().GetLongValue();
+            int greenPropCount =  greenProp==nullptr? 0:(int)greenProp->getCount().GetLongValue();
+            int bluePropCount =  blueProp==nullptr? 0:(int)blueProp->getCount().GetLongValue();
+            int purplePropCount = purpleProp==nullptr? 0:(int)purpleProp->getCount().GetLongValue();
             
            m_pWhiteMaterialText->setString(StringUtils::format("%d/%d",whilePropCount,whiteTargetCount));
            m_pGreenMaterialText->setString(StringUtils::format("%d/%d",greenPropCount,greenTargetCount));

@@ -22,8 +22,8 @@ public:
     }SecondWeaponPropertyType;
     SecondWeaponProperty(unsigned int instanceID, PickableItem::PickableItemType type, CChaosNumber level, bool identified);
     virtual ~SecondWeaponProperty(){}
-    virtual void adjustByLevel();
-    virtual void handleIdentify();
+    virtual void adjustByLevel() override;
+    virtual void handleIdentify() override;
     
     virtual SecondWeaponProperty* clone() const override;
     
@@ -52,8 +52,8 @@ public:
     
     PlayerSkill getPlayerSkill() const { return m_PlayerSkill; }
     
-    virtual bool load(const cocos2d::ValueMap& data);
-    virtual bool save(cocos2d::ValueMap& data);
+    virtual bool load(const cocos2d::ValueMap& data) override;
+    virtual bool save(cocos2d::ValueMap& data) override;
 private:
     bool            m_bHasEquiped;
     

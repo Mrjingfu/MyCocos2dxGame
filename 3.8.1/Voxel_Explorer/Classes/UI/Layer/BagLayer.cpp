@@ -108,7 +108,7 @@ bool BagLayer::init()
         m_pGridView->pushBackCustomItem(itemui);
     }
     m_pGridView->forceDoLayout();
-    m_BagMsgLayer->setZOrder(m_pGridView->getItems().size());
+    m_BagMsgLayer->setZOrder((int)(m_pGridView->getItems().size()));
     
     return true;
 }
@@ -361,7 +361,7 @@ int BagLayer::getItemIndexForVector(const std::vector<PickableItemProperty*>& it
 void BagLayer::extendBag()
 {
     CCLOG("onEventBagExtend");
-    int extendNum = PlayerProperty::getInstance()->getBagMaxSpace() - m_pGridView->getItems().size();
+    int extendNum = PlayerProperty::getInstance()->getBagMaxSpace() - (int)(m_pGridView->getItems().size());
     for (int j =0; j<extendNum; j++) {
         ImageView* itemui = ImageView::create();
         itemui->setTouchEnabled(true);
@@ -375,7 +375,7 @@ void BagLayer::extendBag()
     m_BagMsgLayer->setLayerContentSize(m_pGridView->getInnerContainerSize());
     m_BagMsgLayer->setPosition(m_pGridView->getInnerContainerSize()*0.5);
     m_pGridView->scrollToBottom(0.8,false);
-    m_BagMsgLayer->setZOrder(m_pGridView->getItems().size());
+    m_BagMsgLayer->setZOrder((int)(m_pGridView->getItems().size()));
 }
 void BagLayer::selectItemEvent(cocos2d::Ref *pSender, TGridView::EventType type)
 {
@@ -560,7 +560,7 @@ void BagLayer::onClickBagExtend(cocos2d::Ref* ref)
     AlertPopupUI* alertPopupUi = static_cast<AlertPopupUI*>(PopupUILayerManager::getInstance()->openPopup(ePopupAlert));
     if (alertPopupUi) {
         
-        int copper = PlayerProperty::getInstance()->getValueCopper().GetLongValue();
+        int copper = (int)PlayerProperty::getInstance()->getValueCopper().GetLongValue();
         int extendCopper = 0;
         if (PlayerProperty::getInstance()->getBagExtendTimes() ==1) {
             extendCopper = 1;

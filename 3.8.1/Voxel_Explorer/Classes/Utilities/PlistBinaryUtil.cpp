@@ -109,7 +109,7 @@ bool PlistBinaryUtil::wiriteValueForFile(cocos2d::Value& dict,const std::string&
     MemoryStream wirtestStream((char*)content,size);
     wirtestStream.readBool();
     
-    int sourceLentgh = size - wirtestStream.tell();
+    int sourceLentgh = (int)(size - wirtestStream.tell());
     char sourceContent[sourceLentgh];
     memset(sourceContent, 0, sourceLentgh);
     wirtestStream.read(sourceContent, sourceLentgh);
@@ -200,14 +200,14 @@ bool PlistBinaryUtil::getValueForFile(cocos2d::Value& dict,const std::string& fi
             CCLOG("parse encryptXOR:%s",sourceDatas);
         
         //解密XOR
-        CCCrypto::decryptXOR(sourceDatas, sourceLength,encrtyKey.c_str());
+        CCCrypto::decryptXOR(sourceDatas, (int)sourceLength,encrtyKey.c_str());
         if (m_bisDebug)
             CCLOG("parse base64:%s",sourceDatas);
         
         
         //对比md5
         unsigned char	m_md5[MD5_LEN];
-        CCCrypto::md5((void *)sourceDatas, sourceLength, m_md5);
+        CCCrypto::md5((void *)sourceDatas, (int)sourceLength, m_md5);
         std::string hex;
         UtilityHelper::getHexDigest(m_md5, MD5_LEN, hex);
         if (m_bisDebug)

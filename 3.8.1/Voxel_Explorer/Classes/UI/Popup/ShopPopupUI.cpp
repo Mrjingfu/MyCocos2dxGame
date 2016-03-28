@@ -94,7 +94,7 @@ bool ShopPopupUI::addEvents()
     m_pShopMangerLayer->setPosition(m_pShopGridView->getContentSize()*0.5);
     m_pShopMangerLayer->setCameraMask((unsigned short)cocos2d::CameraFlag::USER2);
     m_pShopGridView->addChildLayer(m_pShopMangerLayer);
-    m_pShopMangerLayer->setZOrder(m_pShopGridView->getItems().size());
+    m_pShopMangerLayer->setZOrder((int)m_pShopGridView->getItems().size());
     m_pBtnClose->addClickEventListener(CC_CALLBACK_1(ShopPopupUI::onClickClose, this));
     refreshUIView();
     
@@ -203,7 +203,7 @@ void ShopPopupUI::selectItemEvent(cocos2d::Ref *pSender, TGridView::EventType ty
         TGridView* gridView = static_cast<TGridView*>(pSender);
         if(gridView)
         {
-            int currentItemId = m_pShopMangerLayer->getItemId(gridView->getCurSelectedIndex());
+            int currentItemId = m_pShopMangerLayer->getItemId((int)gridView->getCurSelectedIndex());
             if (currentItemId!=-1) {
                 
                 shopItemOpe(currentItemId);

@@ -15,8 +15,8 @@ class MagicOrnamentProperty : public PickableItemProperty
 public:
     MagicOrnamentProperty(unsigned int instanceID, PickableItem::PickableItemType type, CChaosNumber level, bool identified);
     virtual ~MagicOrnamentProperty(){}
-    virtual void adjustByLevel();
-    virtual void handleIdentify();
+    virtual void adjustByLevel() override;
+    virtual void handleIdentify() override;
     
     virtual MagicOrnamentProperty* clone() const override;
     
@@ -41,8 +41,8 @@ public:
 
     CChaosNumber getAddedMagicItemFindRate() const { return m_fAddedMagicItemFindRate; }
     
-    virtual bool load(const cocos2d::ValueMap& data);
-    virtual bool save(cocos2d::ValueMap& data);
+    virtual bool load(const cocos2d::ValueMap& data) override;
+    virtual bool save(cocos2d::ValueMap& data) override;
 private:
     bool            m_bHasEquiped;
     
