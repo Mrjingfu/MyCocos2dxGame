@@ -315,9 +315,9 @@ void SecondWeaponProperty::adjustByLevel()
             else if(m_nLevel <= 40)
                 m_nAddedArmorClass = MIN((int)m_nAddedArmorClass.GetLongValue(),cocos2d::random(-40, -30));
             else if(m_nLevel <= 50)
-                m_nAddedArmorClass = MIN((int)m_nAddedArmorClass.GetLongValue(),cocos2d::random(-50, -40));
+                m_nAddedArmorClass = MIN((int)m_nAddedArmorClass.GetLongValue(),cocos2d::random(-60, -40));
             else
-                m_nAddedArmorClass = MIN((int)m_nAddedArmorClass.GetLongValue(),cocos2d::random(-60, -50));
+                m_nAddedArmorClass = MIN((int)m_nAddedArmorClass.GetLongValue(),cocos2d::random(-80, -60));
         }
     }
     

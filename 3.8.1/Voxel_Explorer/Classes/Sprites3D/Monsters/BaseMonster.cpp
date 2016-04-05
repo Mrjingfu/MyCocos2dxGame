@@ -152,7 +152,7 @@ void BaseMonster::attackedByPlayer(bool miss)
     {
         if(amCriticalStrikeRate->getRandomIndex() == 0)
         {
-            attack = attack*2.0f;
+            attack = attack*1.5f;
             m_pHurtData->m_bCriticalStrike = true;
             StatisticsManager::getInstance()->addCriticalTotalNum();
             VoxelExplorer::getInstance()->shakeScreen();

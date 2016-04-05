@@ -4100,12 +4100,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Properties/PickableItemProperties/WeaponProperty.cpp"
-            timestampString = "472997260.973063"
+            timestampString = "481533776.920354"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "457"
-            endingLineNumber = "457"
-            landmarkName = "WeaponProperty::clone()"
+            startingLineNumber = "504"
+            endingLineNumber = "504"
+            landmarkName = "WeaponProperty::handleIdentify()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -4116,12 +4116,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Properties/PickableItemProperties/WeaponProperty.cpp"
-            timestampString = "472997260.973063"
+            timestampString = "481533776.920354"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "461"
-            endingLineNumber = "461"
-            landmarkName = "WeaponProperty::clone()"
+            startingLineNumber = "508"
+            endingLineNumber = "508"
+            landmarkName = "WeaponProperty::handleIdentify()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -10005,7 +10005,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1144"
             endingLineNumber = "1144"
-            landmarkName = "PlayerProperty::buyItemToBag(PickableItemProperty* buyItemProperty, CChaosNumber count, bool toIndentify, bool sound)"
+            landmarkName = "PlayerProperty::playPickupItemSound(PickableItemProperty* itemProperty)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -10021,7 +10021,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1117"
             endingLineNumber = "1117"
-            landmarkName = "PlayerProperty::playPickupItemSound(PickableItemProperty* itemProperty)"
+            landmarkName = "PlayerProperty::equipRefine(CChaosNumber id)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -10789,7 +10789,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1367"
             endingLineNumber = "1367"
-            landmarkName = "PlayerProperty::removeStackableItemFromBag(PickableItem::PickableItemType type, CChaosNumber count)"
+            landmarkName = "PlayerProperty::addItemToBag(PickableItem::PickableItemType type, CChaosNumber level, bool sound)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -11344,12 +11344,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/Properties/PickableItemProperties/WeaponProperty.cpp"
-            timestampString = "474558611.415979"
+            timestampString = "481533776.920354"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "448"
-            endingLineNumber = "448"
-            landmarkName = "WeaponProperty::handleIdentify()"
+            startingLineNumber = "449"
+            endingLineNumber = "449"
+            landmarkName = "WeaponProperty::adjustByLevel()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -11573,7 +11573,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "318"
             endingLineNumber = "318"
-            landmarkName = "SecondWeaponProperty::handleIdentify()"
+            landmarkName = "SecondWeaponProperty::adjustByLevel()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -12405,7 +12405,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1099"
             endingLineNumber = "1099"
-            landmarkName = "PlayerProperty::playPickupItemSound(PickableItemProperty* itemProperty)"
+            landmarkName = "PlayerProperty::equipRefine(CChaosNumber id)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -12565,7 +12565,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "168"
             endingLineNumber = "168"
-            landmarkName = "ArmorProperty::handleIdentify()"
+            landmarkName = "ArmorProperty::adjustByLevel()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -12853,7 +12853,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1127"
             endingLineNumber = "1127"
-            landmarkName = "PlayerProperty::buyItemToBag(PickableItemProperty* buyItemProperty, CChaosNumber count, bool toIndentify, bool sound)"
+            landmarkName = "PlayerProperty::getStackableItemForBag(PickableItem::PickableItemType type)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

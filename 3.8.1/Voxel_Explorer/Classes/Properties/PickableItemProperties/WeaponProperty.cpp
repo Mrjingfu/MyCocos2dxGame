@@ -423,7 +423,7 @@ void WeaponProperty::adjustByLevel()
                 m_nAttackDiceFaceNum = 14;
             }
         }
-        else
+        else if(m_nLevel <= 45)
         {
             if(m_WPType == WPT_DAGGER)
             {
@@ -444,6 +444,53 @@ void WeaponProperty::adjustByLevel()
             {
                 m_nAttackDiceNum = 10;
                 m_nAttackDiceFaceNum = 18;
+            }
+        }
+        else if(m_nLevel <= 50)
+        {
+            if(m_WPType == WPT_DAGGER)
+            {
+                m_nAttackDiceNum = 24;
+                m_nAttackDiceFaceNum = 10;
+            }
+            else if(m_WPType == WPT_AXE)
+            {
+                m_nAttackDiceNum = 12;
+                m_nAttackDiceFaceNum = 22;
+            }
+            else if (m_WPType == WPT_SWORD)
+            {
+                m_nAttackDiceNum = 14;
+                m_nAttackDiceFaceNum = 18;
+            }
+            else if(m_WPType == WPT_MACE)
+            {
+                m_nAttackDiceNum = 13;
+                m_nAttackDiceFaceNum = 20;
+            }
+
+        }
+        else
+        {
+            if(m_WPType == WPT_DAGGER)
+            {
+                m_nAttackDiceNum = 32;
+                m_nAttackDiceFaceNum = 10;
+            }
+            else if(m_WPType == WPT_AXE)
+            {
+                m_nAttackDiceNum = 12;
+                m_nAttackDiceFaceNum = 32;
+            }
+            else if (m_WPType == WPT_SWORD)
+            {
+                m_nAttackDiceNum = 15;
+                m_nAttackDiceFaceNum = 24;
+            }
+            else if(m_WPType == WPT_MACE)
+            {
+                m_nAttackDiceNum = 14;
+                m_nAttackDiceFaceNum = 28;
             }
         }
     }

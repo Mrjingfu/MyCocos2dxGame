@@ -69,8 +69,8 @@ void BossProperty::adjustByDC()
     m_nMaxHP = m_nMaxHP + (nodeDepth-1)*cocos2d::random(300, 400) + cocos2d::random(300, 400);
     m_nCurrentHP = m_nMaxHP;
     
-    m_nAddedMinAttack = m_nAddedMinAttack + (nodeDepth-1)*20;
-    m_nAddedMaxAttack = m_nAddedMaxAttack + + (nodeDepth-1)*40;
+    m_nAddedMinAttack = m_nAddedMinAttack + (nodeDepth-1)*15;
+    m_nAddedMaxAttack = m_nAddedMaxAttack + + (nodeDepth-1)*30;
     
     m_nAttackDiceNum = m_nAttackDiceNum  + (nodeDepth-1)*2 + 2;
     m_nAttackDiceFaceNum = m_nAttackDiceFaceNum + (nodeDepth-1)*5 + maxDepth*2;
