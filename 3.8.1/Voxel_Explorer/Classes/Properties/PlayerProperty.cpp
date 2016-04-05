@@ -928,7 +928,36 @@ bool PlayerProperty::equipBreakDown(CChaosNumber id,std::map<PickableItem::Picka
                     break;
             }
 
-
+            
+            PickableItemProperty* whiteProp = getStackableItemForBag(PickableItem::PIT_MATERIAL_WHITE);
+            PickableItemProperty* greenProp = getStackableItemForBag(PickableItem::PIT_MATERIAL_GREEN);
+            PickableItemProperty* blueProp = getStackableItemForBag(PickableItem::PIT_MATERIAL_BLUE);
+            PickableItemProperty* purpleProp = getStackableItemForBag(PickableItem::PIT_MATERIAL_PURPLE);
+            
+            int surBagCount = 0;
+            
+            CCLOG("whiteCount:%ld greenCount:%ld blueCount:%ld puprpleCount:%ld",whiteCount.GetLongValue(),greenCount.GetLongValue(),blueCount.GetLongValue(),puprpleCount.GetLongValue());
+            
+            if(whiteCount.GetLongValue() >0 && !whiteProp)
+                ++surBagCount;
+            
+            if(greenCount.GetLongValue() >0 && !greenProp)
+                ++surBagCount;
+            
+            if(blueCount.GetLongValue() >0 && !blueProp)
+                ++surBagCount;
+            
+            if(puprpleCount.GetLongValue() >0 && !purpleProp)
+                ++surBagCount;
+            
+            CCLOG("surBagCount:%d",surBagCount);
+            if(m_Bag.size()+surBagCount > m_nBagMaxSpace.GetLongValue())
+            {
+                Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_BAG_NO_SPACE);
+                return false;
+            }
+            
+    
             for (int i = 1 ; i<=whiteCount.GetLongValue(); i++) {
                 if(!addItemToBag(PickableItem::PIT_MATERIAL_WHITE, 1,false))
                     return false;
@@ -946,12 +975,18 @@ bool PlayerProperty::equipBreakDown(CChaosNumber id,std::map<PickableItem::Picka
                     return false;
             }
             
-            resultDatas[PickableItem::PIT_MATERIAL_WHITE] =whiteCount;
-            resultDatas[PickableItem::PIT_MATERIAL_GREEN] =greenCount;
-            resultDatas[PickableItem::PIT_MATERIAL_BLUE]  =blueCount;
-            resultDatas[PickableItem::PIT_MATERIAL_PURPLE] =puprpleCount;
-            CCLOG("whiteCount:%ld greenCount:%ld blueCount:%ld puprpleCount:%ld",whiteCount.GetLongValue(),greenCount.GetLongValue(),blueCount.GetLongValue(),puprpleCount.GetLongValue());
-            return removeItemFromBag(id);
+            if(removeItemFromBag(id))
+            {
+                resultDatas[PickableItem::PIT_MATERIAL_WHITE] =whiteCount;
+                resultDatas[PickableItem::PIT_MATERIAL_GREEN] =greenCount;
+                resultDatas[PickableItem::PIT_MATERIAL_BLUE]  =blueCount;
+                resultDatas[PickableItem::PIT_MATERIAL_PURPLE] =puprpleCount;
+
+                return true;
+            }
+            return false;
+            
+            
             
         }else
             return false;

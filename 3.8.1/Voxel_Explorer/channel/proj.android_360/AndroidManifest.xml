@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.wanax.voxelexplorer"
     android:installLocation="auto"
-    android:versionCode="6"
-    android:versionName="1.2" >
+    android:versionCode="7"
+    android:versionName="1.2.2" >
 
     <uses-sdk android:minSdkVersion="11" />
 
@@ -71,7 +71,7 @@
         </receiver>
 
         <service android:name="com.google.android.gms.analytics.CampaignTrackingService" />
-        
+
         <!-- 有米begin -->
 <!--         <activity
             android:name="net.youmi.android.AdBrowser"

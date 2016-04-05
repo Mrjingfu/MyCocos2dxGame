@@ -162,3 +162,10 @@ std::vector<PickableItemProperty*> BagBreakDownLayer::getItems()
     
     return items;
 }
+void BagBreakDownLayer::sortItem(eSortBagType sortType,std::vector<PickableItemProperty*>& items)
+{
+    std::sort(items.begin(), items.end(), [](PickableItemProperty* prop1,PickableItemProperty* prop2){
+        return prop1->getQuality() > prop2->getQuality();
+    });
+    
+}

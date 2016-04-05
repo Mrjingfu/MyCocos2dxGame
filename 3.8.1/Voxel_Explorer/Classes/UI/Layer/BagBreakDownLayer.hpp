@@ -19,6 +19,7 @@ public:
     ~BagBreakDownLayer();
     virtual bool init() override;
 protected:
+    void sortItem(eSortBagType sortType,std::vector<PickableItemProperty*>& items) override;
     virtual std::vector<PickableItemProperty*> getItems() override;
     virtual void bagItemOpe(int itemId) override;
 };
