@@ -121,22 +121,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../Classes/UI/Layer/GlobalPromptLayer.cpp"
-            timestampString = "479031834.002232"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "104"
-            endingLineNumber = "104"
-            landmarkName = "GlobalPromptLayer::clearGlobalPrompt()"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "../Classes/Utilities/UtilityHelper.cpp"
             timestampString = "479207845.169129"
             startingColumnNumber = "9223372036854775807"
@@ -176,22 +160,6 @@
             startingLineNumber = "250"
             endingLineNumber = "250"
             landmarkName = "RandomDungeon::selectDungeonNode(bool left)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../Classes/UI/Layer/BagMangerLayerUI.cpp"
-            timestampString = "479728991.409858"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "235"
-            endingLineNumber = "235"
-            landmarkName = "BagMangerLayerUI::removeItem(int index)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

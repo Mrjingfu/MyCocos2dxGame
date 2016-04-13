@@ -151,6 +151,18 @@
         [admobInterstitial loadRequest:[self createRequest]];
     }
 }
+- (void) setMultipleTouchEnabled:(bool) isEnable
+{
+    auto glview = cocos2d::Director::getInstance()->getOpenGLView();
+    
+    if (glview)
+    {
+        CCEAGLView *eaglview = (CCEAGLView*) glview->getEAGLView();
+        
+        [eaglview setMultipleTouchEnabled:isEnable];
+        
+    }
+}
 - (void) playInterstitialAds {
     if(admobInterstitial != nil)
     {

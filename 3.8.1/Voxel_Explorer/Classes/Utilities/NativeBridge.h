@@ -26,6 +26,7 @@ public:
     void setRootViewController(RootViewController* viewController);
     void openItunesURL();
     bool isBelowIPhone4S();
+    void setMultipleTouchEnabled(bool isEnabled);
 #endif
     
 #if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID

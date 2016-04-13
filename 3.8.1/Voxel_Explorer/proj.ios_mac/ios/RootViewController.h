@@ -38,6 +38,7 @@
 - (BOOL) isInterstitialAdsReady;
 - (BOOL) isBelowIPhone4S;
 - (GADRequest *)createRequest;
+- (void) setMultipleTouchEnabled:(bool) isEnable;
 
 - (void) openItunesURL:(NSString*) urlStr;
 @end

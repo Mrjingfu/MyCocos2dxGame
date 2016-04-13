@@ -41,6 +41,11 @@ void NativeBridge::setRootViewController(RootViewController* viewController)
 {
     mViewController = viewController;
 }
+void NativeBridge::setMultipleTouchEnabled(bool isEnabled)
+{
+    if(mViewController !=nil)
+        [mViewController setMultipleTouchEnabled:isEnabled];
+}
 void NativeBridge::openItunesURL()
 {
     CCLOG("openItunesURL");

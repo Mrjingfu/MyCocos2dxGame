@@ -55,6 +55,14 @@ void BagBreakDownLayer::bagItemOpe(int itemId)
         return;
     }
     
+    PopupUILayer* ItemPopup = nullptr;
+    PopupUILayer* equipPopup = nullptr;
+    bool isOpenPopup =PopupUILayerManager::getInstance()->isOpenPopup(ePopupType::ePopupItemBreakDown,ItemPopup);
+    bool isEquipPopup =PopupUILayerManager::getInstance()->isOpenPopup(ePopupType::ePopupItem,equipPopup);
+    if (isOpenPopup || isEquipPopup) {
+        return;
+    }
+    
     //判断点击的武器 是否已经有装备过
     int weaponId = int(PlayerProperty::getInstance()->getEquipedWeaponID());
     int armorId = int(PlayerProperty::getInstance()->getEquipedArmorID());

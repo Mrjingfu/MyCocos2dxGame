@@ -214,6 +214,14 @@ void ShopPopupUI::selectItemEvent(cocos2d::Ref *pSender, TGridView::EventType ty
 }
 void ShopPopupUI::shopItemOpe(int itemId)
 {
+    PopupUILayer* ItemPopup = nullptr;
+    PopupUILayer* equipPopup = nullptr;
+    bool isOpenPopup =PopupUILayerManager::getInstance()->isOpenPopup(ePopupType::ePopupItemShopBuy,ItemPopup);
+    bool isEquipPopup =PopupUILayerManager::getInstance()->isOpenPopup(ePopupType::ePopupItem,equipPopup);
+    if (isOpenPopup || isEquipPopup) {
+        return;
+    }
+    
 
     ItemShopBuyPopupUI* shopItem = static_cast<ItemShopBuyPopupUI*>( PopupUILayerManager::getInstance()->openPopup(ePopupItemShopBuy));
     if (shopItem) {
