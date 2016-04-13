@@ -862,8 +862,8 @@ void Player::hurtByGrippingTrap()
     Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_HURT, m_pHurtData);
     if(currentHp == 0)
     {
-        setState(PS_DEATH);
         StatisticsManager::getInstance()->addRoleDeadNum(StatisticsManager::eRoleDeadType::RET_TRIGGER_GRIPPING_TRAP);
+        setState(PS_DEATH);
 #if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM ==CC_PLATFORM_ANDROID )
         SdkBoxManager::getInstance()->logEvent("Player", "Death", "TriggerGrippingTrap", 1);
 #endif
@@ -1259,8 +1259,8 @@ void Player::updatePlayerBuffer(float delta)
                 Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_HURT, m_pHurtData);
                 if(currentHp == 0)
                 {
-                    setState(PS_DEATH);
                     StatisticsManager::getInstance()->addRoleDeadNum(StatisticsManager::eRoleDeadType::RET_BUFFER_FIRE);
+                    setState(PS_DEATH);
 #if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM ==CC_PLATFORM_ANDROID )
                     SdkBoxManager::getInstance()->logEvent("Player", "Death", "KilledByBufferFire", 1);
 #endif
@@ -1288,8 +1288,8 @@ void Player::updatePlayerBuffer(float delta)
             Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_PLAYER_HURT, m_pHurtData);
             if(currentHp == 0)
             {
-                setState(PS_DEATH);
                 StatisticsManager::getInstance()->addRoleDeadNum(StatisticsManager::eRoleDeadType::RET_BUFFER_POISONING);
+                setState(PS_DEATH);
 #if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM ==CC_PLATFORM_ANDROID )
                 SdkBoxManager::getInstance()->logEvent("Player", "Death", "KilledByBufferPoisoning", 1);
 #endif
