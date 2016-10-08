@@ -41,3 +41,10 @@
 
 本来是想做一款横版过关类的游戏，类似秘密潜入类，靠男女主角和一只狗三者的技能配合过关的，但个人的美术能力和画面表现让我没有信心做下去了，只做了一个Demo关卡。
 
+
+网站：www.tinyflare.com
+
+微博: http://weibo.com/p/1005055842067354
+
+微信二维码
+![wx](http://ww2.sinaimg.cn/mw690/006nmIAOjw1f89q83j6i8j30by0by0tf.jpg)
